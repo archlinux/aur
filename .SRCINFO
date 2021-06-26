@@ -1,0 +1,15 @@
+pkgbase = vlang-coreutils-git
+	pkgdesc = coreutils in V
+	pkgver = r4.a665583
+	pkgrel = 1
+	url = https://github.com/vlang/coreutils
+	arch = x86_64
+	license = MIT
+	makedepends = vlang
+	makedepends = make
+	provides = false
+	provides = true
+	source = git+https://github.com/vlang/coreutils.git
+	sha256sums = SKIP
+
+pkgname = vlang-coreutils-git
