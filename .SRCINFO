@@ -4,6 +4,7 @@ pkgbase = echaskify
 	url = https://github.com/fraco-oxza/echaskify
 	arch = any
 	license = Apache
+	makedepends = rustup
 	source = https://github.com/fraco-oxza/echaskify/releases/download/0.1.1/echaskify-0.1.1.tar.gz
 	md5sums = 675b9fa3305a176163f088423cb1e6f4
 
