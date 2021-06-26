@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20210618.r0.ge71e3a48a7e8
+pkgver=20210625.r0.g8702f95941c2
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -304,4 +304,4 @@ done
 
 sha512sums=('SKIP'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '8578efb80478493b589e62c0b7d49976d3be464802e57d7f78baf5bf2cd41e883b4fd8cc9217b26ac8584698a58702d390aba1e6461c75245992dc17d0f68689')
+            '0f26e2232d03d386a6b0d9c9fd2f2fe8a91b20c06479d3f3d88087a8fef339f35188311404d25afafc34cd179720c0cd14f1ab7422da353e3fa01feba7e4e8d7')
