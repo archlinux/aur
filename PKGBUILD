@@ -1,30 +1,33 @@
-# Maintainer: Martin Kröning <m dot kroening at hotmail dot de>
+# Maintainer: Martin Kröning (mkroening) <m.kroening@hotmail.de>
+
 pkgname=edu-sync
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Moodle synchronization utility"
+pkgdesc="A command line application for synchronizing the contents of Moodle instances to your computer."
 arch=('x86_64')
-url="https://edu-sync.org/"
+url="http://edu-sync.org/"
 license=('GPL3')
 depends=('dbus')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61a5cca54e082b465de7524e50583ea7543e0bf3ab8bcd8a4d31b601059e65dd')
+sha256sums=('132e8bf52db144b1fe60c9913c412ac0c3dc0152d1477d1602af62f5671476bd')
+
+prepare() {
+    cd $pkgname-$pkgver
+    cargo fetch --locked
+}
 
 build() {
-    cd "$pkgname-$pkgver"
-
-    cargo build --release --locked
+    cd $pkgname-$pkgver
+    cargo build --release --frozen
 }
 
 check() {
-    cd "$pkgname-$pkgver"
-
-    cargo test --release --locked
+    cd $pkgname-$pkgver
+    cargo test --release --frozen
 }
 
 package() {
     cd "$pkgname-$pkgver"
-
-    install -Dm755 "target/release/edu-sync-cli" "$pkgdir/usr/bin/edu-sync-cli"
+    install -Dm 755 target/release/$pkgname-cli -t "$pkgdir/usr/bin"
 }
