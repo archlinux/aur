@@ -1,0 +1,43 @@
+## arg 1:  the new package version
+pre_install() {
+  echo "Installing Drone Runner Docker"
+}
+
+## arg 1:  the new package version
+post_install() {
+  echo "Adding drone user"
+
+  getent group drone &>/dev/null || groupadd -g 633 drone &>/dev/null
+  getent passwd drone &>/dev/null || useradd -u 633 -g drone -s /sbin/nologin \
+    -d /var/lib/drone drone &>/dev/null
+
+  # add drone to docker group
+  gpasswd -a drone docker
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  echo "Upgrading Drone Runner Docker"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  echo "Removing Drone Runner Docker"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  gpasswd -d drone docker
+  ps -u drone &>/dev/null && return 0
+  getent passwd drone &>/dev/null && userdel drone >/dev/null
+  getent group drone &>/dev/null && groupdel drone >/dev/null
+}
+
+# vim:set ts=2 sw=2 et:

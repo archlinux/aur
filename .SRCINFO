@@ -1,0 +1,28 @@
+pkgbase = drone-runner-docker
+	pkgdesc = Drone pipeline runner that executes builds inside Docker containers
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/drone-runners/drone-runner-docker
+	install = drone-runner-docker.install
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache 2
+	makedepends = go
+	depends = docker
+	conflicts = drone-agent
+	backup = etc/drone/drone-runner-docker.ini
+	source = drone-runner-docker-1.6.3.tar.gz::https://github.com/drone-runners/drone-runner-docker/archive/v1.6.3.tar.gz
+	source = drone-runner-docker.service
+	source = drone-runner-docker.ini
+	source = drone-runner-docker.install
+	sha256sums = ef5fd33a55ddb90a5e09a0302c03af2b365b4a0242561d8c4dcbf70953f1cf5d
+	sha256sums = 57a747457cb1557b11ceeffafe8364e974b19a819edb2052d9016abc4efb20d8
+	sha256sums = 2f44ed0aae1df1df1aa2bc99874e43f7000c2ab54bcf60a178580783eb3115f3
+	sha256sums = 000c21b30b1ed811f3ab97b891358d659cf43257f58d522d54d99a8b18572687
+
+pkgname = drone-runner-docker
+
