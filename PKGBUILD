@@ -3,7 +3,7 @@
 _npmname=express-generator
 pkgname=nodejs-$_npmname
 pkgver=4.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Express' application generator"
 arch=(any)
 url=http://expressjs.com
@@ -15,9 +15,8 @@ noextract=($_npmname-$pkgver.tgz)
 sha256sums=('130030d5df75bb8421c3e1e399f089f9436c9abe12b65ffe351f6def4948eeeb')
 
 package() {
-  npm install \
+  npm install --global \
     --cache "$srcdir/.npm-cache" \
-    --user root --global \
     --prefix "$pkgdir/usr" \
     "$srcdir"/$_npmname-$pkgver.tgz
 
