@@ -1,7 +1,7 @@
 # Maintainer: fubarhouse
 pkgname=pygmy-go
 provides=(pygmy-go)
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=3
 pkgdesc="Amazee.io's local docker development tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/fubarhouse/pygmy-go"
 license=('MIT')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/fubarhouse/pygmy-go/archive/v${pkgver}.tar.gz")
-sha512sums=('9a5737ca906910613233d6fded42643d83dd819b30db221aaaacca10875048c455bcc079874746bb9054baafa9f85ab93f9b636e2f2f90e45d8012ca99e2cac1')
+sha512sums=('711e8544a9ee8a1fdd06042b35098536cc33afe70b6115a7e5c4736676d7348a560d3584c2af49267ff105b343c01072545471fa45f9c18e2ca49a7b6f246bd9')
 
 build(){
   cd "$pkgname-$pkgver"
