@@ -1,7 +1,7 @@
 pkgbase = nodejs-postcss
 	pkgdesc = Tool for transforming styles with JS plugins
 	pkgver = 8.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://postcss.org
 	arch = any
 	license = MIT

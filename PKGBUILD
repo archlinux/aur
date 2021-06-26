@@ -3,7 +3,7 @@
 _npmname=postcss
 pkgname=nodejs-$_npmname
 pkgver=8.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for transforming styles with JS plugins"
 arch=(any)
 url=https://postcss.org
@@ -15,9 +15,8 @@ noextract=($_npmname-$pkgver.tgz)
 sha256sums=('a548e49f19ecb00dc9b8396da13beaee5ac923ffa70a0237fe8b55c80df315c4')
 
 package() {
-  npm install \
+  npm install --global \
     --cache "$srcdir/.npm-cache" \
-    --user root --global \
     --prefix "$pkgdir/usr" \
     "$srcdir"/$_npmname-$pkgver.tgz
 
