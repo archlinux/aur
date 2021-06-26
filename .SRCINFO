@@ -1,0 +1,16 @@
+pkgbase = tisc-git
+	pkgdesc = Remake of Kenneth Louden’s "Tiny Machine" computer
+	pkgver = r176.18b01a0
+	pkgrel = 1
+	url = https://github.com/jnguyen1098/TISC
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = tisc
+	conflicts = tisc
+	source = tisc-git::git+https://github.com/jnguyen1098/TISC.git
+	sha256sums = SKIP
+
+pkgname = tisc-git
