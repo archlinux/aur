@@ -1,7 +1,7 @@
 # Maintainer: MFW78 <mfw78@chasingseed.com>
 
 pkgname=swarm-bee-clef
-pkgver=0.4.12
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Go Ethereum's external signer packaged for bee"
 arch=('x86_64')
@@ -31,5 +31,7 @@ package() {
     install -Dm644 packaging/{4byte.json,rules.js} -t "$pkgdir/etc/bee-clef"
     install -Dm644 packaging/bee-clef.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm755 packaging/bee-clef-{keys,service} -t "$pkgdir/usr/bin"
+    mv packaging/default packaging/bee-clef
+    install -Dm644 packaging/bee-clef -t "$pkgdir/etc/default"
     install -Dm755 clef -t "$pkgdir/usr/bin"
 }
