@@ -15,8 +15,8 @@ pkgbase = mc-tlauncher
 	source = mc-tlauncher.png
 	source = mc-tlauncher
 	sha256sums = 95b04ac7b5c2e3b719156c0e2b4b1edcf8c08ddf04afededd4b352dcdbe46d33
-	sha256sums = 0033b18785cdd7e98db431d25e428d4946abd1abbcc62382d87c775d9f095795
+	sha256sums = 8831917db1f83ef128f9e84fdb86116b886be2f7602fc03c17c642949bdd46f5
 	sha256sums = 852fd445fe399114a3a7c9d07779ef2cf691fd674608ae591762ed7ecbe56ebc
-	sha256sums = d00d402d29b017d105fc1e2c32102f320f0cc02e749de3c46433961f14818b57
+	sha256sums = ce8f64c074551f966674181a584cb3af4be8d1b8290f2fca1ee9448e01bc07d7
 
 pkgname = mc-tlauncher

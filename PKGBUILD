@@ -16,15 +16,15 @@ noextract=("jar")
 
 source=( "$_jar" "${pkgname}.desktop" "${pkgname}.png" "${pkgname}")
 sha256sums=('95b04ac7b5c2e3b719156c0e2b4b1edcf8c08ddf04afededd4b352dcdbe46d33'
-            '0033b18785cdd7e98db431d25e428d4946abd1abbcc62382d87c775d9f095795'
+            '8831917db1f83ef128f9e84fdb86116b886be2f7602fc03c17c642949bdd46f5'
             '852fd445fe399114a3a7c9d07779ef2cf691fd674608ae591762ed7ecbe56ebc'
-            'd00d402d29b017d105fc1e2c32102f320f0cc02e749de3c46433961f14818b57')
+            'ce8f64c074551f966674181a584cb3af4be8d1b8290f2fca1ee9448e01bc07d7')
 
 
 prepare() {
-	unzip -o jar -d tlauncher-extracted/
+	unzip -o jar -d mc-tlauncher-extracted/
     echo "1"
-	mv tlauncher-extracted/TLauncher-2.8.jar tlauncher-extracted/tlauncher.jar
+	mv mc-tlauncher-extracted/TLauncher-2.8.jar mc-tlauncher-extracted/tlauncher.jar
     echo "2"
 }
 

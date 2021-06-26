@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=TLauncher
+Name=MC TLauncher
 Comment=Minecraft TLauncher Client for the AUR <visit tlauncher.org>
-Exec=java -jar /opt/tlauncher/tlauncher.jar
-Icon=tlauncher
+Exec=java -jar /opt/mc-tlauncher/tlauncher.jar
+Icon=mc-tlauncher
 Encoding=UTF-8
 Terminal=false
 StartupNotify=true

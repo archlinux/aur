@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-java -jar /opt/tlauncher/tlauncher.jar
+java -jar /opt/mc-tlauncher/tlauncher.jar
