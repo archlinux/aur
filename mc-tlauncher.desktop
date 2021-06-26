@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TLauncher
+Comment=Minecraft TLauncher Client for the AUR <visit tlauncher.org>
+Exec=java -jar /opt/tlauncher/tlauncher.jar
+Icon=tlauncher
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Games;Internet;

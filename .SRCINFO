@@ -1,0 +1,22 @@
+pkgbase = mc-tlauncher
+	pkgdesc = Minecraft TLauncher Client for the AUR <visit tlauncher.org>
+	pkgver = 2.8.0
+	pkgrel = 1
+	epoch = 1
+	url = https://www.tlauncher.org
+	arch = any
+	license = GPL
+	makedepends = imagemagick
+	depends = jre8-openjdk
+	depends = unzip
+	noextract = jar
+	source = https://tlauncher.org/jar
+	source = mc-tlauncher.desktop
+	source = mc-tlauncher.png
+	source = mc-tlauncher
+	sha256sums = 95b04ac7b5c2e3b719156c0e2b4b1edcf8c08ddf04afededd4b352dcdbe46d33
+	sha256sums = 0033b18785cdd7e98db431d25e428d4946abd1abbcc62382d87c775d9f095795
+	sha256sums = 852fd445fe399114a3a7c9d07779ef2cf691fd674608ae591762ed7ecbe56ebc
+	sha256sums = d00d402d29b017d105fc1e2c32102f320f0cc02e749de3c46433961f14818b57
+
+pkgname = mc-tlauncher
