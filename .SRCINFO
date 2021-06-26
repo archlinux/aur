@@ -1,6 +1,6 @@
 pkgbase = river-git
 	pkgdesc = A dynamic tiling wayland compositor.
-	pkgver = r632.cab947b
+	pkgver = r653.5056394
 	pkgrel = 1
 	url = https://github.com/ifreund/river
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = river-git
 	makedepends = zig>=0.8.0
 	makedepends = scdoc
 	depends = mesa>=21.1.2
+	depends = wlroots>=0.14.0
 	depends = wayland
 	depends = wayland-protocols
-	depends = wlroots
 	depends = libxkbcommon
 	depends = libevdev
 	depends = pixman
