@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!package.json
+!PKGBUILD
+!tidal-hifi-desktop
