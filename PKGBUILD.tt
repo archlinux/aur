@@ -10,13 +10,17 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
-source=([% source %])
+source=([% source %] exe-files.patch)
 options=(!emptydirs)
-md5sums=('[% md5sums %]')
+md5sums=('[% md5sums %]' a9d153694858a8ecee0695c84cd54d24)
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 	export PERL_MM_USE_DEFAULT=1
+}
+
+prepare() {
+	patch -d [% distdir %] -p1 < exe-files.patch
 }
 
 build() {

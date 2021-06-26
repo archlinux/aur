@@ -1,7 +1,7 @@
 pkgbase = perl-text-lorem
 	pkgdesc = Perl package and tool to generate random Latin looking text
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Text-Lorem
 	arch = any
 	license = PerlArtistic
@@ -9,7 +9,8 @@ pkgbase = perl-text-lorem
 	depends = perl
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/A/AD/ADEOLA/Text-Lorem-0.34.tar.gz
+	source = exe-files.patch
 	md5sums = 18837055204e72bcb56d972c912795c7
+	md5sums = a9d153694858a8ecee0695c84cd54d24
 
 pkgname = perl-text-lorem
-

@@ -4,19 +4,23 @@
 
 pkgname=perl-text-lorem
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package and tool to generate random Latin looking text'
 arch=('any')
 url='https://metacpan.org/release/Text-Lorem'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
-source=(http://search.cpan.org/CPAN/authors/id/A/AD/ADEOLA/Text-Lorem-0.34.tar.gz)
+source=(http://search.cpan.org/CPAN/authors/id/A/AD/ADEOLA/Text-Lorem-0.34.tar.gz exe-files.patch)
 options=(!emptydirs)
-md5sums=('18837055204e72bcb56d972c912795c7')
+md5sums=('18837055204e72bcb56d972c912795c7' a9d153694858a8ecee0695c84cd54d24)
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 	export PERL_MM_USE_DEFAULT=1
+}
+
+prepare() {
+	patch -d Text-Lorem-0.34 -p1 < exe-files.patch
 }
 
 build() {
