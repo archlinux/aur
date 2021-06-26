@@ -2,7 +2,7 @@
 
 pkgname="riseup-vpn-terminal"
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Script and desktop entry to start RiseupVPN in a terminal; useful when desktop environment does not support tray icons (e.g. GNOME, Phoc)"
 arch=('any')
 license=('MIT')
@@ -23,7 +23,7 @@ package() {
   install -Dm0555 riseup-vpn-terminal         "$pkgdir"/usr/bin/riseup-vpn-terminal
   install -Dm0644 riseup-vpn-terminal.desktop "$pkgdir"/usr/share/applications/riseup-vpn-terminal.desktop
 
-  # Uncomment the line below when using KGX as terminal (this is the case when using Phosh)
+  # Uncomment the line below when using KGX as the only terminal (e.g. on PinePhone with Phosh)
   # See also: https://github.com/dreemurrs-embedded/Pine64-Arch/issues/182
   #ln -sf /usr/bin/kgx "$pkgdir"/usr/bin/konsole
 }
