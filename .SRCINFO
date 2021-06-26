@@ -1,0 +1,22 @@
+pkgbase = pomerium-cli-bin
+	pkgdesc = An identity-aware access proxy -- command-line interface
+	pkgver = 0.14.6
+	pkgrel = 1
+	url = https://www.pomerium.io
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	provides = pomerium-cli
+	conflicts = pomerium-cli
+	source_x86_64 = pomerium-cli-bin-0.14.6-x86_64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.14.6/pomerium-cli-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9b7bb47ba86b6d50d0580fe0a2722119125adbea15411b0ff2eefaf4710d27fe
+	source_armv6h = pomerium-cli-bin-0.14.6-armv6h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.14.6/pomerium-cli-linux-armv6.tar.gz
+	sha256sums_armv6h = eb7b2f3dd8cec1f14f10dc2af634802b4ce5db2a538309da4d56e0148a8d2fbe
+	source_armv7h = pomerium-cli-bin-0.14.6-armv7h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.14.6/pomerium-cli-linux-armv7.tar.gz
+	sha256sums_armv7h = 35d7047b46d19f4791c8191e4a1c6e08f8c83a9d2b38ebd9de328d028fde0f06
+	source_aarch64 = pomerium-cli-bin-0.14.6-aarch64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v0.14.6/pomerium-cli-linux-arm64.tar.gz
+	sha256sums_aarch64 = 45e3dda688db53b35fe481d9d82ff21dae94f6121522df28718d477e5ba72737
+
+pkgname = pomerium-cli-bin
