@@ -1,7 +1,7 @@
 pkgbase = gst-devtools
 	pkgdesc = Development and debugging tools for GStreamer
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/gstreamer/gst-devtools
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = gst-devtools
 	license = LGPL
 	makedepends = meson
 	depends = gstreamer>=1.18.4
+	depends = gst-plugins-base-libs>=1.18.4
+	depends = json-glib
 	source = https://gitlab.freedesktop.org/gstreamer/gst-devtools/-/archive/1.18.4/gst-devtools-1.18.4.tar.gz
 	sha256sums = 0f886306c7588927b55b8e4359de79c9056d549c902ae6a29406d36836989095
 
 pkgname = gst-devtools
-
