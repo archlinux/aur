@@ -1,35 +1,34 @@
-# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=bee-clef-bin
-pkgver=0.4.13
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Go Ethereum's external signer"
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://swarm.ethereum.org/'
-license=('GPLv3')
+license=('GPL3')
 depends=('bash')
-backup=(
-    'etc/bee-clef/4byte.json'
-    'etc/bee-clef/rules.js'
-)
-source=(
-    "https://github.com/ethersphere/bee-clef/releases/download/v$pkgver/bee-clef_${pkgver}_amd64.deb"
-    'https://raw.githubusercontent.com/ethersphere/bee-clef/master/LICENSE'
-)
-sha512sums=(
-    'eaab939d926dd75317f0252d464b124f1c93042245c99bd15d08d36551608060440c298751f7d996abad547edec2749e306af8d2046425ea42a9b5f323b08fc3'
-    'd361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
-)
-install='bee-clef.install'
+provides=('bee-clef')
+conflicts=('bee-clef')
+backup=('etc/bee-clef/4byte.json'
+        'etc/bee-clef/rules.js')
+source_x86_64=("https://github.com/ethersphere/bee-clef/releases/download/v$pkgver/bee-clef_${pkgver}_amd64.deb")
+source_armv7h=("https://github.com/ethersphere/bee-clef/releases/download/v$pkgver/bee-clef_${pkgver}_armv7.deb")
+source_aarch64=("https://github.com/ethersphere/bee-clef/releases/download/v$pkgver/bee-clef_${pkgver}_arm64.deb")
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('59df79c5dc49992cd5f9f02265ac7a5f2480a9d7f1d89959abb2f5ad419872d0')
+sha256sums_armv7h=('844862550d19dcdbc5024dbc617689a1073284c2f4eaaf832b50ce57d7ae5726')
+sha256sums_aarch64=('f8100d7c9f9767567fbe65a993ce0f175cc27862b72cad65de61ecf2f48a82db')
+install=bee-clef.install
 
 prepare() {
-    bsdtar -xf data.tar.gz
+	bsdtar -xf data.tar.gz
 }
 
 package() {
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/bee-clef"
-    install -Dm644 etc/bee-clef/{4byte.json,rules.js} -t "$pkgdir/etc/bee-clef"
-    install -Dm644 lib/systemd/system/bee-clef.service -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm755 usr/bin/bee-clef-{keys,service} -t "$pkgdir/usr/bin"
-    install -Dm755 usr/bin/clef -t "$pkgdir/usr/bin"
+	install -Dm644 etc/bee-clef/{4byte.json,rules.js} -t "$pkgdir/etc/bee-clef"
+	install -Dm644 lib/systemd/system/bee-clef.service -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm755 usr/bin/bee-clef-{keys,service} -t "$pkgdir/usr/bin"
+	install -Dm755 usr/bin/clef -t "$pkgdir/usr/bin"
 }
