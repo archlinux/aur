@@ -1,6 +1,6 @@
 pkgbase = srain
 	pkgdesc = Modern IRC client written in GTK.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	epoch = 1
 	url = https://srain.im
@@ -13,8 +13,7 @@ pkgbase = srain
 	depends = libconfig
 	depends = libsoup
 	depends = libsecret
-	source = https://github.com/SrainApp/srain/archive/1.2.2.tar.gz
-	sha256sums = 05e78161dedeac1f99fed0ff8cbff6a3dbd5cab23d842aff0deb0547170fa1a0
+	source = https://github.com/SrainApp/srain/archive/1.2.3.tar.gz
+	sha256sums = 9a02f469ba1e3b977d6b432985809f7cd61f52410b65cff44be9ff4ae90cf0f5
 
 pkgname = srain
-
