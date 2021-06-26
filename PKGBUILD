@@ -8,8 +8,12 @@ arch=('any')
 url="https://shyanjmc.com"
 license=('GPL')
 depends=('openrc')
-source=('cupsd.initd')
-sha256sums=('SKIP')
+source=('cupsd.initd'
+	'boinc.initd'
+	'template.initd')
+sha256sums=('SKIP'
+	'SKIP'
+	'SKIP')
 
 package(){
 	mkdir -p $pkgdir/etc/init.d/

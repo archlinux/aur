@@ -7,6 +7,10 @@ pkgbase = openrc-init_scripts
 	license = GPL
 	depends = openrc
 	source = cupsd.initd
+	source = boinc.initd
+	source = template.initd
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openrc-init_scripts
