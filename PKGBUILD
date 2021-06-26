@@ -1,7 +1,7 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=('storageexplorer')
 changelog=
 source=("Linux.StorageExplorer-linux-x64-v$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/V$pkgver/Linux_StorageExplorer-x64.tar.gz"
         "storageexplorer.desktop")
-sha256sums=('975d222f3677c1a16f0608a33322425bc8ad5ef4768a927f591278e83d582915'
+sha256sums=('ad12c18814ac8328c85814303f278e1e61bae08ec8ae422c0bffd3271554647b'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
