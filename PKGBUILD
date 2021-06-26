@@ -8,10 +8,10 @@
 # FIXME: mruby disabled until we figure out how to build with it
 
 pkgname=h2o-git
-pkgver=2.2.0.5201
+pkgver=2.2.0.5238
 pkgrel=1
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
 depends=('libuv' 'libyaml' 'zlib')
 makedepends=('cmake')
