@@ -1,6 +1,6 @@
 pkgname=mkunified-git
-pkgver=0.r1.g8b9d817
-pkgrel=3
+pkgver=0.r5.gb77ee61
+pkgrel=1
 pkgdesc="Unified kernel image generation utility which supports initrd generation using mkinitcpio"
 arch=(any)
 url='https://github.com/ErnyTech/mkunified'
