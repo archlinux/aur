@@ -3,10 +3,10 @@
 
 pkgbase=linux-x32
 pkgver=5.12.13.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
+url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -16,7 +16,7 @@ makedepends=(
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   x32.config     # additional config fragment for linux-x32
 )
@@ -26,7 +26,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '5e772eb39e4365d33374922e70253c96b88532ab5837776ada704ccde674c7a8'
+            'c8f26962e51fb2ef7628cb90c93f93d53ff5a8874d16322783152cf89007887c'
             'ef2be62540e48cc1d2343c619b9c8b7791db5e2f966e1a0bb8c86f5c7de74562')
 
 export KBUILD_BUILD_HOST=archlinux
