@@ -1,0 +1,14 @@
+pkgbase = borg-backup
+	pkgdesc = Add multi-machine sync to borg
+	pkgver = 0.6
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = qt5-base
+	depends = borg
+	source = git+https://gitlab.com/tomzander/borg-backup.git#branch=master
+	sha256sums = SKIP
+
+pkgname = borg-backup
+
