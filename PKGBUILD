@@ -5,13 +5,14 @@ pkgname=$_pkgname-bin
 
 _pkgver=1.0.0-16-gb1f81e4
 pkgver="${_pkgver//-/_}"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)"
 conflicts=('cwtch' 'cwtch-git')
 arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
+depends=('tor')
 source=("launch-cwtch.sh")
 source_x86_64=("$url/releases/$_pkgname-v$_pkgver/$_pkgname-v$_pkgver.tar.gz")
 sha512sums=('8d947083bf4f0b4c90d3f714e36c8d59dadf1f7d9599eb226cfd080f7c492fd5ca0a4f423589a20336d8307d9776486bf17105e4f316852581581da3305e55aa')
