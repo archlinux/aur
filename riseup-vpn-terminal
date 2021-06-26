@@ -1,11 +1,2 @@
 #!/bin/bash
-
-# The below does not work, see this issue
-# https://0xacab.org/leap/bitmask-vpn/-/issues/500
-#riseup-vpn --start-vpn on --disable-autostart --no-systray
-#
-# Instead we start riseup-vpn with web API enabled in the foreground
-# and after 5 seconds send a signal to enable the vpn in the background:
-# https://0xacab.org/leap/bitmask-vpn/-/issues/492#note_328136
-(sleep 5s && curl -H "X-Auth-Token: `cat /tmp/bitmask-token`" localhost:8080/vpn/start) &
-riseup-vpn --disable-autostart --web-api --no-systray
+riseup-vpn --disable-autostart --no-systray  --start-vpn on
