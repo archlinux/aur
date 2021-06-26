@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=broom
-_cranver=0.7.7
+_cranver=0.7.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('r>=3.1' r-backports 'r-dplyr>=1.0.0' r-ellipsis 'r-generics>=0.0.2' r-glue r-purrr r-rlang r-stringr 'r-tibble>=3.0.0' 'r-tidyr>=1.0.0')
 optdepends=(r-aer r-akima r-auc r-bbmle r-betareg r-biglm r-bingroup r-car r-caret r-cluster r-coda r-covr r-drc r-e1071 r-emmeans r-epir r-ergm r-fixest r-gam r-gamlss r-gamlss.data r-gamlss.dist r-gee r-geepack r-ggplot2 r-glmnet r-glmnetutils r-gmm r-hmisc r-irlba r-joinerml r-kendall r-knitr r-ks r-lahman r-lavaan r-leaps r-lfe r-lm.beta r-lme4 r-lmodel2 r-lmtest r-lsmeans r-maps r-maptools r-margins r-mclogit r-mclust r-mediation r-metafor r-mfx r-mgcv r-mlogit r-modeldata r-modeltests r-muhaz r-multcomp r-network r-orcutt r-ordinal r-plm r-polca r-psych r-quantreg r-rgeos r-rmarkdown r-robust r-robustbase r-rsample r-sandwich r-sp r-spdep r-spatialreg r-speedglm r-spelling r-survey r-systemfit r-testthat r-tseries r-zoo)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('b05286dd46ae2bb96c796c51729f00bd48807f32ab426f426a9adac68b183aa0')
+sha256sums=('757a670a272917864278d8fc34f69fa213e28b8f00f0ab94874d445b8a8a6241')
 
 build() {
   cd "${srcdir}"
