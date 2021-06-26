@@ -1,0 +1,13 @@
+pkgbase = urlencode
+	pkgdesc = base64-like encoder/decoder for URL percent-encoding
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/AquilaIrreale/urlencode
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = GPL3
+	source = https://github.com/AquilaIrreale/urlencode/archive/refs/tags/v1.2.tar.gz
+	sha512sums = b2963bf5a429bb392ba28e3b660f192c311c3e936b3a0e4d58a675b9346c1866af57a7cb8ebf2ce109cb88363fef96268d6f7cb400f17e2db2712322440ee40a
+
+pkgname = urlencode
