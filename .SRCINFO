@@ -1,6 +1,6 @@
 pkgbase = openrc-init_scripts
 	pkgdesc = A compilation of init scripts for OpenRC sysinit.
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://shyanjmc.com
 	arch = any
