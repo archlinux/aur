@@ -2,7 +2,7 @@
 
 pkgname=camset
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for v4l2-ctl'
 arch=(any)
 provides=($pkgname python-$pkgname)
@@ -17,7 +17,14 @@ noextract=("$_wheel")
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
+	install -d "$site" "$pkgdir/usr/share"
+	# python package
+	unzip "$_wheel" -x "$pkgname-$pkgver.data/*" -d "$site"
+	# binary
 	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	# data
+	unzip "$_wheel" "$pkgname-$pkgver.data/*" -d "$pkgdir/usr"
+	mv "$pkgdir/usr/$pkgname-$pkgver.data/data/"* "$pkgdir/usr"
+	rmdir "$pkgdir/usr/$pkgname-$pkgver.data"{/data,}
+	chmod +x "$pkgdir/usr/share/applications/camset.desktop"
 }
