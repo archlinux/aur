@@ -1,8 +1,8 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.12.12
+_kernver=5.12.13
 _archver=arch1
-_pkgrel=1
+_pkgrel=2
 _pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://git.archlinux.org/linux.git/log/?h=v5.12.12-arch1"
+url="https://github.com/archlinux/linux/commits/v5.12.13-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('bc469ab018ca7d17b46a6013c4194edafdbb290eea6a79a47172e2798e9060c0'
-            'e9ef80960529270834310bc70e75229f0b4bd5ef2e4b4f2ca63adc05a236503b'
-            '090a22154e960ebab6e5dd940a297c6c83b7fd6ff13576645c1f227585da90b6')
+sha256sums=('dc30de642bf10d346db0801808011b1fcee5733327da85318e88e541e8720743'
+            'a2b24cc1c9c967932c1e9c0610f11bd79636588c5613b341f65f7c01eac67376'
+            '3e2735a83bb9efd19c1b5f6013fbd96e1141c1320247d9bada4d33ce04dd39ed')
 
 package_linux-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.12.12.arch1-1-bin() {
+package_linux5.12.13.arch1-2-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.12.12.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.12.12.arch1-1-headers-bin() {
+package_linux5.12.13.arch1-2-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.12.12.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.12.12.arch1-1-docs-bin() {
+package_linux5.12.13.arch1-2-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
