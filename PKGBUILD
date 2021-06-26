@@ -1,7 +1,7 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=doggo-git
 _pkgname=doggo
-pkgver=r92.e5acf12
+pkgver=r95.6b42a5e
 pkgrel=1
 pkgdesc="Command-line DNS Client for Humans. Written in Golang" 
 arch=('any')
@@ -26,6 +26,6 @@ pkgver() {
 package() {
 	cd "${srcdir}"/"${_pkgname}"
 	mkdir -p "$pkgdir"/usr/bin/
-	install -Dm755 "bin/doggo-cli.bin" "${pkgdir}"/usr/bin/"${_pkgname}"
+	install -Dm755 "bin/doggo.bin" "${pkgdir}"/usr/bin/"${_pkgname}"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname2}/LICENSE"
 }
