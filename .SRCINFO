@@ -1,0 +1,25 @@
+pkgbase = am2rlauncher-git
+	pkgdesc = Application for installing the latest Community Updates, APKs and Mods for AM2R.
+	pkgver = 2.1.0.r2.e97d335
+	pkgrel = 1
+	url = https://github.com/AM2R-Community-Developers/AM2RLauncher
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-runtime>=5
+	makedepends = dotnet-sdk>=5
+	depends = dotnet-runtime
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = webkit2gtk
+	depends = openssl
+	depends = icu
+	depends = xdelta3
+	depends = fuse2
+	optdepends = jre-openjdk: Creating APKs
+	conflicts = am2rlauncher
+	options = !strip
+	source = git+https://github.com/AM2R-Community-Developers/AM2RLauncher
+	md5sums = SKIP
+
+pkgname = am2rlauncher-git
