@@ -1,0 +1,16 @@
+pkgbase = cwtch-bin
+	pkgdesc = A decentralized, privacy-preserving, multi-party messaging protocol client (binary distribution)
+	pkgver = 1.0.0_16_gb1f81e4
+	pkgrel = 1
+	url = https://cwtch.im
+	arch = x86_64
+	license = MIT
+	conflicts = cwtch
+	conflicts = cwtch-git
+	source = launch-cwtch.sh
+	sha512sums = 8d947083bf4f0b4c90d3f714e36c8d59dadf1f7d9599eb226cfd080f7c492fd5ca0a4f423589a20336d8307d9776486bf17105e4f316852581581da3305e55aa
+	source_x86_64 = https://cwtch.im/releases/cwtch-v1.0.0-16-gb1f81e4/cwtch-v1.0.0-16-gb1f81e4.tar.gz
+	sha512sums_x86_64 = 262a1ed3dfd36be3544d78d256fd658edf94371eadfa3691f564971c4e63be2d0a77c5cd4474c0a9ef89c79dc645e18aa657973b5060495eb0da77f4489064d4
+
+pkgname = cwtch-bin
+
