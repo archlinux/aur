@@ -10,7 +10,7 @@ url="https://wownero.org/"
 depends=('boost-libs' 'openssl' 'readline' 'zeromq' 'pcsclite' 'protobuf')
 makedepends=('git' 'cmake' 'boost')
 source=(
-    "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git#branch=dev-v0.10"
+    "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git#branch=dev"
     monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch)
 sha512sums=('SKIP'
             'SKIP')
