@@ -1,0 +1,5 @@
+pkg/
+src/
+cubic-bot-telegram-git/
+
+*.tar.zst
