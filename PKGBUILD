@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
@@ -10,7 +10,6 @@ license=('MIT')
 depends=(
     'python-numpy'
     'python-protobuf'
-    'python-six'
     )
 makedepends=('python-setuptools' 'git')
 optdepends=(
@@ -18,13 +17,14 @@ optdepends=(
     'python-soundfile: 200x speed up the add_audio() function'
     )
 checkdepends=(
+    'python-future'
     'python-pytest'
     'python-matplotlib'
     'python-crc32c'
     )
 conflicts=('python-tensorboard-git')
-source+=("https://github.com/lanpa/tensorboardX/archive/v${pkgver}.tar.gz")
-sha256sums=('2556d5601eab25b8fafa20aa0ea36c9c307be225122e68d6047b558edc302fa3')
+source+=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('26d439f430e03f389201314f73f3bc443c877d88ed00e3db79c7dc8b2b12be8f')
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
