@@ -22,10 +22,8 @@ sha256sums=('95b04ac7b5c2e3b719156c0e2b4b1edcf8c08ddf04afededd4b352dcdbe46d33'
 
 
 prepare() {
-	unzip -o jar -d mc-tlauncher-extracted/
-    echo "1"
-	mv mc-tlauncher-extracted/TLauncher-2.8.jar mc-tlauncher-extracted/tlauncher.jar
-    echo "2"
+	unzip -o jar -d "${srcdir}/${pkgname}-extracted/"
+	"mv ${srcdir}/${pkgname}-extracted/TLauncher-2.8.jar" "${srcdir}/${pkgname}-extracted/tlauncher.jar"
 }
 
 package() {
