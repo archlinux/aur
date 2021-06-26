@@ -1,0 +1,5 @@
+pkg/
+src/
+shadowsocks-uri-generator-git/
+
+*.tar.zst
