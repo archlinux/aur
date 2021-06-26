@@ -1,7 +1,7 @@
 # Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
 
 pkgname=zlib-ng
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="zlib replacement with optimizations for \"next generation\" systems"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ provides=('zlib=1.2.11')
 conflicts=('zlib')
 
 source=("https://github.com/zlib-ng/zlib-ng/archive/${pkgver//_/-}.zip")
-sha256sums=('65618f2c7ea48e0a104e8270e5373b758a64c9c6e3623e2bb0f756af9e9ea4a0')
+sha256sums=('fb3a88f1c03afc9e1792abcfd146978239be80843ddf6067bf299806320757b9')
 
 build() {
     cmake \
