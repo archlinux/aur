@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@thesquareplanet.com>
 pkgname=dungeon-revealer-bin
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web app for tabletop gaming to allow the DM to reveal areas of the game map to players"
 arch=('x86_64')
 url="https://github.com/dungeon-revealer/dungeon-revealer"
@@ -29,8 +29,7 @@ build() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/dungeon-revealer-linux" "$pkgdir/usr/lib/dungeon-revealer/main"
-	install -Dm644 "${srcdir}/node_sqlite3.node" "$pkgdir/usr/lib/dungeon-revealer/"
+	install -Dm755 "${srcdir}/dungeon-revealer-linux-x64" "$pkgdir/usr/lib/dungeon-revealer/main"
 	install -Dm755 "${srcdir}/dungeon-revealer.sh" "$pkgdir/usr/bin/dungeon-revealer"
 	install -Dm644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
