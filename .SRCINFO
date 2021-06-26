@@ -1,0 +1,14 @@
+pkgbase = python-aiohttp-oauthlib
+	pkgdesc = oauthlib for aiohttp clients.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~whynothugo/aiohttp-oauthlib
+	arch = any
+	license = ISC
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-oauthlib
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp-oauthlib/aiohttp-oauthlib-0.1.0.tar.gz
+	md5sums = 992e8ca1c72a410c65aadcdd459f7144
+
+pkgname = python-aiohttp-oauthlib
