@@ -1,0 +1,17 @@
+[Unit]
+Description = Wiretrustee Service (%i)
+Documentation = https://github.com/wiretrustee/wiretrustee#readme
+After = multi-user.target network-online.target
+Wants = network-online.target
+
+[Service]
+Type = simple
+EnvironmentFile = -/etc/default/wiretrustee
+ExecStart = /usr/bin/wiretrustee up --config /etc/wiretrustee/%i.json $WIRETRUSTEE_CLIENT_ARGS
+Restart = on-failure
+RestartSec = 5
+TimeoutStopSec = 5
+
+[Install]
+WantedBy = multi-user.target
+
