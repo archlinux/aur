@@ -1,7 +1,7 @@
 pkgname='kanjitomo'
 pkgdesc="identify Japanese characters from images or screen"
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 arch=('any')
 license=('custom')
 url="http://kanjitomo.net"
@@ -11,7 +11,7 @@ depends=('java-environment')
 backup=("etc/kanjitomo.conf")
 
 package () {
-  cd "$pkgsrc"
+  cd "$srcdir/KanjiTomo"
   # install
   mkdir -p "$pkgdir/usr/share/$pkgname"
   cp -r data images lib wallpaper KanjiTomo.jar "$pkgdir/usr/share/$pkgname"

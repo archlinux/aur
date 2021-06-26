@@ -1,7 +1,7 @@
 pkgbase = kanjitomo
 	pkgdesc = identify Japanese characters from images or screen
 	pkgver = 1.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://kanjitomo.net
 	arch = any
 	license = custom
