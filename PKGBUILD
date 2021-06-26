@@ -4,7 +4,7 @@ _npmname=pug-cli
 pkgname=nodejs-$_npmname
 _pkgver=1.0.0-alpha6
 pkgver=1.0.0alpha6
-pkgrel=2
+pkgrel=3
 pkgdesc="Pug's CLI interface"
 arch=(any)
 url=https://pugjs.org
@@ -16,9 +16,8 @@ noextract=($_npmname-$_pkgver.tgz)
 sha256sums=('1fc476f744776a477bfce64b88633176a84b3fd00a34cc3a3499a9aed2acca25')
 
 package() {
-  npm install \
+  npm install --global \
     --cache "$srcdir/.npm-cache" \
-    --user root --global \
     --prefix "$pkgdir/usr" \
     "$srcdir"/$_npmname-$_pkgver.tgz
 
