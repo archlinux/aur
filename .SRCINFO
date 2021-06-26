@@ -1,0 +1,20 @@
+pkgbase = camset
+	pkgdesc = GUI for v4l2-ctl
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://github.com/azeam/camset
+	arch = any
+	license = GPL3
+	makedepends = install-wheel-scripts
+	depends = python
+	depends = python-opencv
+	depends = python-gobject
+	depends = v4l-utils
+	depends = pkgconf
+	provides = camset
+	provides = python-camset
+	noextract = camset-0.0.13-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/c/camset/camset-0.0.13-py3-none-any.whl
+	sha256sums = 09bc128890c7f6567198a672887b6999ac16d3b6a7b312db57974bdb4fe33cc5
+
+pkgname = camset
