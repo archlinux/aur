@@ -1,5 +1,5 @@
 pkgbase = tecate-bitmap-fonts-otb-git
-	pkgdesc = Monospaced bitmap fonts for X11, good for terminal use. (converted to bdf)
+	pkgdesc = Monospaced bitmap fonts for X11, good for terminal use. (converted to otb)
 	pkgver = r64.5c101c9
 	pkgrel = 1
 	url = https://github.com/Tecate/bitmap-fonts
