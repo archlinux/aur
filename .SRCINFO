@@ -1,7 +1,7 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)
-	pkgver = 21.4.0.11
-	pkgrel = 3
+	pkgver = 21.6.0.28
+	pkgrel = 1
 	url = https://www.citrix.com/downloads/workspace-app/linux/
 	install = citrix-client.install
 	arch = x86_64
@@ -38,18 +38,17 @@ pkgbase = icaclient
 	source = wfica.desktop
 	source = wfica.sh
 	source = wfica_assoc.sh
-	md5sums = 71aca6257f259996ac59729604f32978
-	md5sums = a38c3f844a0fefe8017a25bee213b843
-	md5sums = 0e92c33b3fcc99b04269787da2984809
-	md5sums = 1f214f6f456f59afd1a3275580f4240e
-	md5sums = 59f8e50cc0e0c399d47eb7ace1df5a32
-	md5sums = dca5a1f51449ef35f1441b900d622276
-	source_x86_64 = icaclient-x64-21.4.0.11.tar.gz::http://downloads.citrix.com/19434/linuxx64-21.4.0.11.tar.gz?__gda__=1619874626_b6d55785a5aed8cdfbbf3cd0d80a8892
-	sha256sums_x86_64 = c2744b5be36d2c7b49fcec987b8f1c8dd5bc69b7078e50ea50fde4405defe8a8
-	source_i686 = icaclient-x86-21.4.0.11.tar.gz::http://downloads.citrix.com/19434/linuxx86-21.4.0.11.tar.gz?__gda__=1619874625_1783a2f3b1723f09df0073530ef2953b
-	sha256sums_i686 = b143a4c2323ca9d838dbf62fffe117977aec370d90dae2844a30437a66a4ec45
-	source_armv7h = icaclient-armhf-21.4.0.11.tar.gz::http://downloads.citrix.com/19434/linuxarmhf-21.4.0.11.tar.gz?__gda__=1619874627_7004e10ea86a3b29e75c1830a3ab8bae
-	sha256sums_armv7h = ce03ade65ba13469bef9672471f02b6e19c9961f5b9bf8be0be4c8fadb8b09d6
+	sha256sums = 38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637
+	sha256sums = cf9aed0c471658665fdc8bc3b8e7583d78834ecb5066d1c287bbcf890d5d14b9
+	sha256sums = 2d84f8cb6f5dfd1a92024b2344cef0affac021327e5ff6ffe579395fffd1fdf4
+	sha256sums = 1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064
+	sha256sums = a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8
+	sha256sums = a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81
+	source_x86_64 = icaclient-x64-21.6.0.28.tar.gz::http://downloads.citrix.com/19702/linuxx64-21.6.0.28.tar.gz?__gda__=1624714630_4304c1f24a01b966bcd7a148012edc45
+	sha256sums_x86_64 = f3f98c60b0aaac31eb44dc98f22ee7ae7df229c960d5d29785eb5e9554f85f68
+	source_i686 = icaclient-x86-21.6.0.28.tar.gz::http://downloads.citrix.com/19702/linuxx86-21.6.0.28.tar.gz?__gda__=1624714629_b05cea348f6d5410dec2a647eaf7138c
+	sha256sums_i686 = c2d9652ad9488a9ff171e62df8455ebe6890bcfade1cc289893ee35322d9d812
+	source_armv7h = icaclient-armhf-21.6.0.28.tar.gz::http://downloads.citrix.com/19702/linuxarmhf-21.6.0.28.tar.gz?__gda__=1624714631_0337c49b5459902e9962ec3c90747bdd
+	sha256sums_armv7h = acbc71dcf8d39c1a9e5e20e8a230c58660e3cfcfa67dd965beb2f19ebdefedf4
 
 pkgname = icaclient
-
