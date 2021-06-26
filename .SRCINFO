@@ -1,6 +1,6 @@
 pkgbase = qv2ray-git
 	pkgdesc = The original Qv2ray project by the author who contributed over 95% code and other contributors. Unlike Qv2ray/Qv2ray whose control has been forcibly taken away from the author by another organization owner.
-	pkgver = 3.0.0.6253.r3047.194ffa67
+	pkgver = 3.0.0.6253.r3048.5ddfd334
 	pkgrel = 1
 	url = https://github.com/Shadowsocks-NET/Qv2ray
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = qv2ray-git
 	depends = grpc
 	depends = qt6-svg
 	optdepends = v2ray: use packaged v2ray
+	optdepends = qt6-wayland: Wayland support (experimental)
 	provides = qv2ray
 	conflicts = qv2ray
 	source = qv2ray-git::git+https://github.com/Shadowsocks-NET/Qv2ray
