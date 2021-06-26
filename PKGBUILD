@@ -2,8 +2,8 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.18
-_commit=cd1cbc02
+pkgver=1.2.19
+_commit=c684de84
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
@@ -15,16 +15,16 @@ source=("$url/-/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('SKIP')
 
 build() {
-  [[ -d builddir ]] && rm -r builddir
+  [[ -d build ]] && rm -r build
   cmake $_pkgname-$_commit \
-        -Bbuilddir \
+        -Bbuild \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build builddir
+  cmake --build build/
 }
 
 package() {
-  cd builddir
+  cd build
   make DESTDIR="$pkgdir" install
 
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
