@@ -6,7 +6,7 @@ pkgdesc='An IRCd for unified networks'
 arch=(x86_64)
 url='https://solanum.chat/'
 license=(GPL)
-depends=('openssl','flex','bison','yacc','lex')
+depends=('openssl' 'flex' 'bison' 'yacc' 'lex')
 
 source=(https://github.com/solanum-ircd/solanum/archive/refs/heads/main.tar.gz)
 pkgver() {
