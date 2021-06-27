@@ -1,6 +1,6 @@
 pkgbase = boca-git
 	pkgdesc = A component library used by the fre:ac audio converter
-	pkgver = 1.0.3.r21.g2e35aacf
+	pkgver = 1.0.5.r0.g4b041e7f
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/enzo1982/BoCA
@@ -14,7 +14,7 @@ pkgbase = boca-git
 	depends = uriparser
 	depends = smooth-git
 	provides = boca
-	provides = libboca-1.0.so=2-64
+	provides = libboca-1.0.so
 	provides = freac_cdk
 	conflicts = boca
 	conflicts = freac_cdk
@@ -22,4 +22,3 @@ pkgbase = boca-git
 	sha256sums = SKIP
 
 pkgname = boca-git
-

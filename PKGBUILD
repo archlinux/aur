@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=boca-git
-pkgver=1.0.3.r21.g2e35aacf
+pkgver=1.0.5.r0.g4b041e7f
 pkgrel=1
 epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
@@ -9,7 +9,7 @@ url="https://github.com/enzo1982/BoCA"
 license=('GPL2')
 depends=('alsa-lib' 'libcdio-paranoia' 'expat' 'libpulse' 'uriparser' 'smooth-git')
 makedepends=('git')
-provides=("${pkgname%-git}" 'libboca-1.0.so=2-64' 'freac_cdk')
+provides=("${pkgname%-git}" 'libboca-1.0.so' 'freac_cdk')
 conflicts=("${pkgname%-git}" 'freac_cdk')
 source=("${pkgname%-git}::git+https://github.com/enzo1982/BoCA.git")
 sha256sums=('SKIP')
