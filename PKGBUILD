@@ -1,8 +1,9 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
+# Maintainer: macxcool <macxcool at tutanota dot com>
+# Contributor: mutantmonkey <aur@mutantmonkey.mx>
 # Contributor: Boudhayan Gupta <bgupta@kde.org>
 
 _npmname=netlify-cli
-_npmver=3.37.37
+_npmver=3.39.0
 
 pkgname=netlify
 pkgver=${_npmver}
@@ -17,7 +18,7 @@ license=('MIT')
 options=('!strip')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('9dd3024c7968ed6d7d5df8818a0bc161b05e0bfd82156ba095290493901ee90e')
+sha256sums=('47d34627b59490b680ececf5bd81474276229608bf5f7bafa55010584fb45c4d')
 
 package() {
     cd ${srcdir}
