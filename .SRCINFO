@@ -1,6 +1,6 @@
 pkgbase = archivy
 	pkgdesc = A self-hosted knowledge repository, to preserve useful content to your knowledge bank.
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/archivy/archivy
 	arch = any
@@ -25,10 +25,9 @@ pkgbase = archivy
 	depends = python-html2text
 	depends = python-flask-compress
 	optdepends = elasticsearch
-	source = git+https://github.com/archivy/archivy#tag=v1.3.0
+	source = git+https://github.com/archivy/archivy#tag=v1.3.1
 	source = 00-do-not-pin-requirements.patch
 	sha256sums = SKIP
 	sha256sums = 538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4
 
 pkgname = archivy
-
