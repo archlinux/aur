@@ -30,4 +30,3 @@ pkgbase = zfs-utils-rc
 	sha256sums = 93e6ac4e16f6b38b2fa397a63327bcf7001111e3a58eb5fb97c888098c932a51
 
 pkgname = zfs-utils-rc
-
