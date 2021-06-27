@@ -2,8 +2,9 @@
 # -*- mode: sh -*-
 
 pkgname=fuzzynote
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
+pkgdate=1624743041
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
@@ -13,19 +14,19 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
 md5sums=(
-  '6ef7598f38c35151463633bddd507689'
+  '3372c0714f6e8b4dcf48cc1451b4a3f2'
 )
 sha1sums=(
-  '6d81fb2c2e62f6631f986755b7f0fc04826a1eab'
+  '38f6cee02d01907d9de122f88542d599e4cb70ef'
 )
 sha256sums=(
-  '77abe6a9a1bbb3bfea1c315831eecc365dfd712731326f997813710684be32c1'
+  '80692fc267590cbc163b1d53d9bf0d4b082a30ab3601d23f2acf2a0f42ae9067'
 )
 sha512sums=(
-  'c587abbef65f39ddabd1d56a56879a43d6328a6fece5864ba02a0de3e95eae39d0d30460d32868910e1a7873ecc9231b69352771a1440f2f2242c204fa3890b7'
+  'eb29be8428a6ef2265057753766604064f7395eeb94a1db19066e691e14d7a0d28d8851e08f2e25accd70c784c30746ee6b7ead03822b13415c938b254fdf48f'
 )
 b2sums=(
-  '58b3c7133f695f35cded11abd791f265c9e46debf2ca81e2be9cd9732c3f31c242527346a6fb3a644940e587efd7c56a2cf24359f7bbb5a046be9760125b5a54'
+  '50171ac91294a8563a9e121c64c9cbc41f0a7150fca9251f0cfd8b36e50e2379da9952aca5866ec1cda8b6423c07ce4194d34ac250e47ca1f97ac4a4c0c2c61a'
 )
 
 build() {
@@ -40,7 +41,7 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X main.version=$pkgver" \
+    -ldflags="-linkmode=external -X main.version=$pkgver -X main.date=$pkgdate" \
     -mod=readonly \
     -modcacherw \
     -o bin/fzn ./cmd/term
