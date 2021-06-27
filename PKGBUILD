@@ -1,6 +1,6 @@
-# Maintainer: Your Name <thacoon@posteo.de>
+# Maintainer: thacoon <thacoon@posteo.de>
 pkgname=cpass
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A terminal password manager written in Rust."
 arch=("x86_64")
@@ -19,4 +19,3 @@ package() {
     cd $srcdir/$pkgname
     install -D -m755 target/release/$pkgname $pkgdir/usr/bin/$pkgname
 }
-
