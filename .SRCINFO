@@ -1,0 +1,22 @@
+pkgbase = hypnos-soil
+	pkgdesc = Backend for Hypnos - The selfhosted audio cloud
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~serra/Soil
+	arch = i686
+	arch = x86_64
+	groups = hypnos
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	backup = etc/conf.d/soil
+	source = git+https://git.sr.ht/~serra/Soil#tag=v0.1.0
+	source = soil.service
+	source = soil.sysusers
+	source = soil.conf
+	sha256sums = SKIP
+	sha256sums = f329997f32ed78d93191d01f1c5624198ed9fcd5f0e38de82cb472d8c7fe3eb8
+	sha256sums = 42c64e6ba91ec18e02a6d0ba1d58ead765336a5369cefdbf3ea015d0e3667cf1
+	sha256sums = 55bd2fd60ffcb091d72aa9e814b92ea14256441f086fab1353a5743aafc4e9f3
+
+pkgname = hypnos-soil

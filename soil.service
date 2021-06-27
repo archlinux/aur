@@ -1,0 +1,12 @@
+[Unit]
+Description=Soil - Hypnos backend
+Documentation=https://git.sr.ht/~serra/Soil
+After=network.target
+
+[Service]
+User=soil
+EnvironmentFile=/etc/conf.d/soil
+ExecStart=/usr/bin/soil
+
+[Install]
+WantedBy=multi-user.target
