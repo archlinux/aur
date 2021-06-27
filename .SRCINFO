@@ -1,6 +1,6 @@
 pkgbase = csound-blue
 	pkgdesc = A music composition environment for Csound
-	pkgver = 2.7.3
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = http://blue.kunstmusik.com/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = csound-blue
 	provides = csound-blue
 	conflicts = csound-blue
 	options = !strip
-	source = https://github.com/kunstmusik/blue/releases/download/2.7.3/blue_2.7.3.zip
+	source = https://github.com/kunstmusik/blue/releases/download/2.8.1/blue-linux-2.8.1.zip
 	source = blue.desktop
 	source = icons.tar.gz
-	sha256sums = eca0b0f7d716e7df5fdbd4e8902d878f3cda1a8adceb448fbef3dcc3701cc7f3
+	sha256sums = f35867f09b34a47672682700d7e049ef016f7704b4480549c41f546e093194a4
 	sha256sums = 06dcc0dbade0b9c2eb904815aefa86d32e8e21de47fd7cd8873f139c1fb24fe6
 	sha256sums = 60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36
 

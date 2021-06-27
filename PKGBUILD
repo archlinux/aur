@@ -1,10 +1,11 @@
-# Maintainer : Ainola
+# Maintainer : silverhikari
+# Contributor: Ainola
 # Contributor: Arch Linux Pro Audio
 # Contributor: SpepS
 # Contributor: Bernardo Barros
 
 pkgname=csound-blue
-pkgver=2.7.3
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="A music composition environment for Csound"
 arch=('i686' 'x86_64')
@@ -14,10 +15,10 @@ depends=('csound' 'java-environment>=7' 'java-openjfx')
 makedepends=('pd' 'scons' 'swig' 'dssi' 'boost')
 provides=('csound-blue')
 conflicts=('csound-blue')
-source=("https://github.com/kunstmusik/blue/releases/download/${pkgver}/blue_${pkgver}.zip"
+source=("https://github.com/kunstmusik/blue/releases/download/${pkgver}/blue-linux-${pkgver}.zip"
         "blue.desktop"
         "icons.tar.gz")
-sha256sums=('eca0b0f7d716e7df5fdbd4e8902d878f3cda1a8adceb448fbef3dcc3701cc7f3'
+sha256sums=('f35867f09b34a47672682700d7e049ef016f7704b4480549c41f546e093194a4'
             '06dcc0dbade0b9c2eb904815aefa86d32e8e21de47fd7cd8873f139c1fb24fe6'
             '60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36')
 options=(!strip)
