@@ -1,0 +1,14 @@
+post_install () {
+	echo "existing config*.ini files are maintained." 
+	echo "If no existing config*.ini exists, it will include the src file ones."
+	echo "Remember to change the address in the config files to yours"
+	echo "find examples in /opt/nanominer/config_examples/"
+}
+
+post_upgrade() {
+	echo "Your config files should still be there"
+}
+
+post_remove() {
+	echo "config files are not removed from /opt/nanominer/"
+}
