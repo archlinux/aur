@@ -4,15 +4,14 @@ _npmname=markdownlint-cli
 _npmver=0.27.1
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
-pkgrel=1
+pkgrel=2
 pkgdesc="MarkdownLint Command Line Interface"
 arch=('any')
 url="https://github.com/igorshubovych/markdownlint-cli"
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
-noextract=("$_npmname-$_npmver.tgz")
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$_npmname-$pkgver.tgz"
@@ -34,5 +33,7 @@ package() {
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
 
+  # Install license
+  install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha512sums=('a75555e9a49b1ab0e5a545b31e2cc09d2344400c1e551dea508fc0214b9bc56ec118f5f38925e42040feb91b52a21525452fe39aaa775a2e1eb398fa7c8add79')
