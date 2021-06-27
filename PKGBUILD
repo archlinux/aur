@@ -1,39 +1,30 @@
 # Maintainer: Jerry Ling <jerry.ling ^at% cern.ch>
 
 pkgname=gocloc-git
-pkgver=v0.4.1.r17.g734d3a7
+pkgver=0.4.1.r17.g734d3a7
 pkgrel=1
-epoch=1
 pkgdesc="A little fast cloc(Count Lines Of Code)"
-arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
-depends=()
-makedepends=('git' 'go' 'make')
-optdepends=()
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/hhatto/gocloc"
-license=('MIT')
+license=(MIT)
+makedepends=(git go)
+provides=(gocloc)
+conflicts=(gocloc)
 source=(git+https://github.com/hhatto/gocloc)
 sha256sums=('SKIP')
-provides=('gocloc')
-conflicts=()
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags | sed "s+-+.r+" | tr - .
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-
-  msg2 'Building...'
+  cd "${pkgname%-git}"
   make
 }
 
 package() {
-  cd ${pkgname%-git}
-  echo $PWD
-  msg2 'Installing executables...'
-  install -Dm 755 bin/gocloc -t "$pkgdir"/usr/bin
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+  cd "${pkgname%-git}"
+  install -Dm 755 bin/gocloc -t "${pkgdir}"/usr/bin
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
