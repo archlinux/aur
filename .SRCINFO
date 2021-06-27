@@ -1,0 +1,15 @@
+pkgbase = python-naya
+	pkgdesc = A fast streaming JSON parser written in Python.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/danielyule/naya
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/naya/naya-1.1.1.tar.gz
+	source = https://raw.githubusercontent.com/danielyule/naya/master/LICENSE
+	sha256sums = 98076896982955a5129ab649d9cba2b1a5d3f4c4ccb2bc53c4168c0aea4c34f9
+	sha256sums = 7b40115cc151409f3e53c6d0adf1ae89159e5185f6453761e258b506761b64fb
+
+pkgname = python-naya
