@@ -1,5 +1,5 @@
 pkgname=mingw-w64-fpc
-pkgver=3.0.4
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Cross FPC for the MinGW-w64 cross compiler"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ makedepends=(fpc)
 depends=(ncurses expat zlib mingw-w64-binutils)
 options=(staticlibs !emptydirs !strip !buildflags)
 source=("https://sourceforge.net/projects/freepascal/files/Source/$pkgver/fpcbuild-$pkgver.tar.gz")
-sha512sums=('eedfeb4d25b3f4cb30ae9c8f30e0fec2405ef806fa565933cef7904d512f781730e3f023aea2f908c21250e3ced4f74fa780abad77b560728a88cedf591505b6')
+b2sums=('88848308c93f949b59197649cc344498082b6520e43eb1d4413bf68eb251fcab75c863794a188a2298d9e8aba47346253a596ac630b30049ac8bd6f6934aa5a2')
+b2sums=('88848308c93f949b59197649cc344498082b6520e43eb1d4413bf68eb251fcab75c863794a188a2298d9e8aba47346253a596ac630b30049ac8bd6f6934aa5a2')
 
 build() {
   cd "fpcbuild-$pkgver"
@@ -27,6 +28,7 @@ package() {
        OS_TARGET=win64 CPU_TARGET=x86_64
 
   rm -rf "$pkgdir"/usr/{doc,share/doc}
+  rm "$pkgdir"/usr/bin/*
 
   find "$pkgdir" -name '*.exe' -exec rm {} \;
   strip "$pkgdir/usr/lib/fpc/$pkgver/ppcross386"
