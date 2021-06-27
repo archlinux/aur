@@ -1,12 +1,12 @@
 pkgbase = python2-commando
 	pkgdesc = A declarative interface for argparse
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/lakshmivyas/commando
 	arch = any
 	license = MIT
 	makedepends = python2
-	makedepends = python2-distribute
+	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/source/c/commando/commando-1.0.0.tar.gz
 	md5sums = 0ba5d7c211dfa1c8e53ff99e08f33bac
 

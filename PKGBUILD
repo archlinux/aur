@@ -2,12 +2,12 @@
 
 pkgname=python2-commando
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A declarative interface for argparse"
 arch=('any')
 url='http://github.com/lakshmivyas/commando'
 license=('MIT')
-makedepends=('python2' 'python2-distribute')
+makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/c/commando/commando-$pkgver.tar.gz")
 
 package() {
