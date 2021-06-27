@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-userfonts
 	pkgdesc = Official Telegram Desktop client, with your fonts as set by fontconfig
-	pkgver = 2.7.4
-	pkgrel = 2
+	pkgver = 2.8.1
+	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -29,13 +29,7 @@ pkgbase = telegram-desktop-userfonts
 	depends = webkit2gtk
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/telegramdesktop/tdesktop/releases/download/v2.7.4/tdesktop-2.7.4-full.tar.gz
-	source = https://github.com/telegramdesktop/tdesktop/commit/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
-	source = https://github.com/telegramdesktop/tdesktop/commit/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch
-	source = fix-webview-includes.patch
-	sha512sums = 0a796d7a8c5e5982bc60f19c41da53996a609bf794fad224e7beea5fc3816b5cf35f16b0ec2cc7279085c69996063a44085f48e1596dfe746d260a2e8f1b2d14
-	sha512sums = cabdadddc7a6873c7c6fc8128ceddf2712c0c73d3316520482162e5c67937bda2a627ddb2f078558a52e812c2a876351196488a5a75381d84a43815b873bac5b
-	sha512sums = 72ef9bddef1f40e09b9c4334153f1ab8aaddf63d95d9f25dc1b0a0826b7f2ae24f7c5fc4cb5ce90aae2c3144a5d52c4cb870d643f447d654190c4a2c78079354
-	sha512sums = 5492c73f0b984da1e2d1f21c3a36c11c4b9ad511522dccd4d6440681f68d6ebc9e672806a534b1e551f736f080d3ef307c8ddd012e4646bd84d09c5e8fa85a40
+	source = https://github.com/telegramdesktop/tdesktop/releases/download/v2.8.1/tdesktop-2.8.1-full.tar.gz
+	sha512sums = df35cc00dc47a8c65b32b62c139cc3a49333f573aa88fb70cc65197524f9b9b4756c58752866c843704ea4df5d6224eb4cba5b32953dd9a4d721b0ee0e1efc69
 
 pkgname = telegram-desktop-userfonts
