@@ -1,7 +1,7 @@
 pkgbase = nodejs-tern
 	pkgdesc = A JavaScript code analyzer for deep, cross-editor language support
 	pkgver = 0.24.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ternjs.net/
 	arch = any
 	license = MIT
