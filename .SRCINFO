@@ -1,0 +1,15 @@
+pkgbase = toggle-bluetooth
+	pkgdesc = Script to toggle bluetooth on/off
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = make
+	depends = bluez-utils
+	depends = libnotify
+	source = Makefile
+	source = toggle-bluetooth.sh
+	sha256sums = 5c0d84735779e0ae3685ccca9a8750a01adf3af74889e14c0af19150394cbc04
+	sha256sums = e6d8c87b23ddce9c0d57c1b3ba55b240ff6658b4acbd982029cad655c2e14d1e
+
+pkgname = toggle-bluetooth
