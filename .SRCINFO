@@ -1,0 +1,13 @@
+pkgbase = python-xkbcommon
+	pkgdesc = Python bindings for libxkbcommon using cffi
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/sde1000/python-xkbcommon
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-setuptools
+	source = https://github.com/sde1000/python-xkbcommon/archive/62c2d511475a04018cc14f13f660b5f63fd4ec0a.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-xkbcommon
