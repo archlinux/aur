@@ -15,7 +15,6 @@ license=('MIT')
 makedepends=('rust')
 depends=('git' 'libgit2')
 
-backup=('etc/gitconfig.delta')
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e478acf90c1125af0cfcb055c1e2b358080d192fbf83cf5ddfa40241830ab826')
 

@@ -14,7 +14,6 @@ pkgbase = git-delta
 	depends = git
 	depends = libgit2
 	options = !lto
-	backup = etc/gitconfig.delta
 	source = git-delta-0.8.1.tgz::https://github.com/dandavison/delta/archive/0.8.1.tar.gz
 	sha256sums = e478acf90c1125af0cfcb055c1e2b358080d192fbf83cf5ddfa40241830ab826
 
