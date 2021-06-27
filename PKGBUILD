@@ -1,4 +1,6 @@
-# Maintainer: Toasty <toastyyogurttime@gmail.com>
+# Maintainer: Simon Zack <simonzack@gmail.com>
+# Contributor: Toasty <toastyyogurttime@gmail.com>
+# Contributor: Stephen304 <stephen304@gmail.com>
 pkgname=caffeine
 pkgver=2.9.8
 pkgverfull="${pkgver}+684~ubuntu21.04.1"
