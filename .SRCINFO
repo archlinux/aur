@@ -1,11 +1,11 @@
 pkgbase = gd32-isp-console-bin
 	pkgdesc = GigaDevice MCU ISP Console for Linux
 	pkgver = v1.0.1.3411
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gd32mcu.com
 	install = gd32-isp-console-bin.install
 	arch = any
-	license = MIT
+	license = unknow
 	makedepends = unarchiver
 	provides = gd32-isp-console-bin
 	conflicts = gd32-isp-console-bin
