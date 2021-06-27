@@ -5,7 +5,7 @@ pkgbase = solanum-ircd
         url = https://solanum.chat/
         arch = x86_64
         license = GPL
-        depends = openssl
+        depends = openssl, flex, bison, yacc, lex
         source = https://github.com/solanum-ircd/solanum/archive/refs/heads/main.tar.gz
 
 pkgname = solanum-ircd
