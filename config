@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.12.4 Kernel Configuration
+# Linux/um 5.12.13 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -562,6 +562,7 @@ CONFIG_BLK_DEV_NBD=m
 #
 # NVME Support
 #
+# CONFIG_NVME_TCP is not set
 # end of NVME Support
 
 #
@@ -1469,7 +1470,6 @@ CONFIG_BRANCH_PROFILE_NONE=y
 # um Debugging
 #
 # CONFIG_GPROF is not set
-# CONFIG_GCOV is not set
 CONFIG_EARLY_PRINTK=y
 # end of um Debugging
 
