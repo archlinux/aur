@@ -2,7 +2,7 @@
 # Tue Oct 16 18:01:47 UTC 2018
 pkgbase = nginx-devel
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server - development version
-	pkgver = 1.15.5
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = http://nginx.org
 	install = nginx.install
