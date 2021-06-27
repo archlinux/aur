@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-arc-menu-bin
+	pkgdesc = shell extension designed to replace the standard menu found in GNOME
+	pkgver = 49.1
+	pkgrel = 1
+	url = https://gitlab.com/arcmenu/ArcMenu
+	arch = any
+	license = GPL
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-arc-menu
+	conflicts = gnome-shell-extension-arc-menu-git
+	source = http://ftp.debian.org/debian/pool/main/g/gnome-shell-extension-arc-menu/gnome-shell-extension-arc-menu_49-1_all.deb
+	md5sums = SKIP
+
+pkgname = gnome-shell-extension-arc-menu-bin
