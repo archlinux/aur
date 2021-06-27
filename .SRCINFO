@@ -1,16 +1,15 @@
 pkgbase = nginx-mainline-mod-nchan
 	pkgdesc = nchan nginx module
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nchan.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = nginx-mainline=1.19.10
+	depends = nginx-mainline=1.21.0
 	source = https://github.com/slact/nchan/archive/v1.2.8.tar.gz
-	source = http://nginx.org/download/nginx-1.19.10.tar.gz
+	source = http://nginx.org/download/nginx-1.21.0.tar.gz
 	sha256sums = de42e8d4fef6aef9e4c7303a7480adfe9545992470a7f6be008de7a4bb64cc98
-	sha256sums = e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88
+	sha256sums = fe192a4bac2bd3a769e8695cb9fe14a00e57eaceb919095347a83b5b2afc0771
 
 pkgname = nginx-mainline-mod-nchan
-
