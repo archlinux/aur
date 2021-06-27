@@ -1,11 +1,12 @@
 pkgbase = flexoptix
-	pkgdesc = Flexoptix programmer
+	pkgdesc = Flexoptix Flexbox transceiver programmer
 	pkgver = 5.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.flexoptix.net/en/flexoptix-app
 	install = flexoptix.install
 	arch = any
 	license = custom
+	makedepends = asar
 	depends = hidapi
 	source = https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.5.11.0.AppImage
 	source = https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules
