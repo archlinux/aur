@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-th
+	pkgdesc = Thai language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-th-29.2.0.xpi
+	source = palemoon-i18n-th-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-th@palemoon.org
+	sha256sums = 4d93147e7187062c561f3fd34d1a581cc4c0048f5ecf32b2263fb4972f233211
+
+pkgname = palemoon-i18n-th
