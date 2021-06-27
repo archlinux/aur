@@ -1,6 +1,6 @@
 pkgbase = zps-git
 	pkgdesc = A small utility for listing and reaping zombie processes (git)
-	pkgver = 1.2.5.r0.ge0353f5
+	pkgver = 1.2.7.r0.g7ba30e1
 	pkgrel = 1
 	url = https://github.com/orhun/zps
 	arch = x86_64
