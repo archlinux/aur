@@ -3,19 +3,19 @@
 
 
 pkgname=git-delta
-_name="${pkgname#*-}"
+
 pkgver=0.8.1
 pkgrel=1
 
-pkgdesc='A syntax-highlighting pager for git and diff output'
+pkgdesc='Syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/dandavison/$_name"
+url=https://github.com/dandavison/delta
 license=('MIT')
 
 makedepends=('rust')
 depends=('git' 'libgit2')
 
-backup=("etc/gitconfig.$_name")
+backup=('etc/gitconfig.delta')
 source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
 sha256sums=('e478acf90c1125af0cfcb055c1e2b358080d192fbf83cf5ddfa40241830ab826')
 
@@ -42,30 +42,30 @@ _setup_build_env() {
 }
 
 prepare() {
-  sed -i "/path *=/s|=.*|= /etc/gitconfig.$_name|" "$_name-$pkgver/themes.gitconfig"
+  sed -i "/path *=/s|=.*|= /etc/gitconfig.delta|" "delta-$pkgver/themes.gitconfig"
 }
 
 build() {
   _setup_build_env -v
-  cd "$_name-$pkgver"
+  cd "delta-$pkgver"
   cargo build --release --locked --target-dir ./target
 }
 
 check() {
   _setup_build_env
-  cd "$_name-$pkgver"
+  cd "delta-$pkgver"
   cargo test --release --locked --target-dir ./target
 }
 
 package() {
-  cd "$_name-$pkgver"
-  install -Dm755 "target/release/$_name"  -t"$pkgdir/usr/bin/"
-  install -Dm644 themes.gitconfig           "$pkgdir/etc/gitconfig.$_name"
+  cd "delta-$pkgver"
+  install -Dm755 "target/release/delta"   -t"$pkgdir/usr/bin/"
+  install -Dm644 themes.gitconfig           "$pkgdir/etc/gitconfig.delta"
   install -Dm644 {README,CONTRIBUTING}.md -t"$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$pkgname/"
   cd etc
-  install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/delta"
+  install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_delta"
   install -Dm755 bin/*                    -t"$pkgdir/usr/lib/$pkgname/"
 }
 
