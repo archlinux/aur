@@ -1,18 +1,17 @@
 pkgbase = wayback_machine_downloader
 	pkgdesc = Downloader for pages in the Internet Archive
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/hartator/wayback-machine-downloader
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = wayback_machine_downloader-2.2.1.gem
+	noextract = wayback_machine_downloader-2.3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/wayback_machine_downloader-2.2.1.gem
-	source = wayback_machine_downloader-LICENSE::https://raw.githubusercontent.com/hartator/wayback-machine-downloader/2.2.1/MIT-LICENSE.txt
-	sha256sums = 623e5ef663930bb15f0dc46db21e33765a5f99b1f986a5308c4ad7ba2b0e6b8a
+	source = https://rubygems.org/downloads/wayback_machine_downloader-2.3.0.gem
+	source = wayback_machine_downloader-LICENSE::https://raw.githubusercontent.com/hartator/wayback-machine-downloader/2.3.0/MIT-LICENSE.txt
+	sha256sums = d45b5259a23329d71806b1ea75b9cd8295e690734506c3e4fab015a9d7997d76
 	sha256sums = 1819d92f27aa541378c8421df329c54f404168b5bcd6d981f237a33e15f63d5b
 
 pkgname = wayback_machine_downloader
-
