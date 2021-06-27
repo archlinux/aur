@@ -5,7 +5,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.05.23
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -56,8 +56,14 @@ build() {
 		export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
 	fi
 
-	# Build
+	# Disable -D_FORTIFY_SOURCE=2 flag (Required to build mimick_vendor)
+	## For people with the old version of makepkg.conf
 	unset CPPFLAGS
+	## For people with the new version of makepkg.conf
+	CFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CFLAGS))
+	CXXFLAGS=$(sed "s/-Wp,-D_FORTIFY_SOURCE=2\s//g" <(echo $CXXFLAGS))
+
+	# Build
 	colcon build --merge-install ${COLCON_EXTRA_ARGS}
 }
 
