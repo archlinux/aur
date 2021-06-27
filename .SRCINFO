@@ -1,6 +1,6 @@
 pkgbase = cpass
 	pkgdesc = A terminal password manager written in Rust.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/thacoon/cpass.git
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cpass
 	depends = rust
 	depends = cargo
 	depends = gcc-libs
-	source = git+https://gitlab.com/thacoon/cpass.git?ref=v0.0.1
+	source = git+https://gitlab.com/thacoon/cpass.git?ref=v0.0.2
 	sha256sums = SKIP
 
 pkgname = cpass
