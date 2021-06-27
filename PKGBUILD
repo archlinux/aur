@@ -9,7 +9,7 @@ license=('AGPL')
 # Not all deps are explicitly listed on invidious website,
 # but resulting binary is somehow linked against them
 depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg')
-makedepends=('crystal' 'shards')
+makedepends=('crystal' 'shards' 'git')
 optdepends=('postgresql: Database, not needed if remote')
 provides=('invidious')
 conflicts=('invidious')

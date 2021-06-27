@@ -7,6 +7,7 @@ pkgbase = invidious-git
 	license = AGPL
 	makedepends = crystal
 	makedepends = shards
+	makedepends = git
 	depends = gc
 	depends = gcc-libs
 	depends = glibc
