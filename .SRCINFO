@@ -1,7 +1,7 @@
 pkgbase = rtl8761usb-dkms
 	pkgdesc = Realtek bluetooth modules for RTL8761 usb based devices (DKMS)
 	pkgver = 20201202
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xmpow.com/pages/download
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = rtl8761usb-dkms
 	source = https://mpow.s3-us-west-1.amazonaws.com/20201202_mpow_BH456A_driver+for+Linux.7z
 	source = rtl8761usb.conf
 	source = dkms.conf
+	source = Makefile.patch
 	md5sums = 994ad1d6f6bd1e63190dfef7f64bbb34
 	md5sums = 70d0ec0c62293d5c64e0bf148300c998
 	md5sums = 5a5426f2a32be28f0ed00f2cb79731a9
+	md5sums = c9a3067a72131a4b196b5ed833507c08
 
 pkgname = rtl8761usb-dkms
 

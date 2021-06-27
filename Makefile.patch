@@ -1,0 +1,15 @@
+--- Makefile	2020-05-26 13:13:53.000000000 +0200
++++ Makefile.new	2021-06-27 07:47:09.327250943 +0200
+@@ -1,9 +1,9 @@
+ ifneq ($(KERNELRELEASE),)
+-	obj-m := rtk_btusb.o
+-	rtk_btusb-y = rtk_coex.o rtk_misc.o rtk_bt.o
++	obj-m := rtl8761usb.o
++	rtl8761usb-y = rtk_coex.o rtk_misc.o rtk_bt.o
+ else
+ 	PWD := $(shell pwd)
+-	KVER := $(shell uname -r)
++	KVER := $(kernelver)
+ 	KDIR := /lib/modules/$(KVER)/build
+ 
+ all:
