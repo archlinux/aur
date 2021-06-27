@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 
 pkgname=emacs-ng
-pkgver=0.0.e58f270
+pkgver=0.0.e57bacf
 pkgrel=1
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('emacs')
 depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'libtiff' 'giflib' 'libpng' 'gtk3' 'harfbuzz' 'libxcb' 'libxml2' 'gpm' 'libotf' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'gnutls' 'cairo' 'zlib')
 makedepends=('clang' 'rustup')
 source=("https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3856b84cc2c0f9474ef3e9257b54422a4abf235302e0ac7f1eb0fdaf4688f133')
+sha256sums=('d922ee5c5a0feff8ee22a3995b36be40bd150683b47c0766b7d236f240e3af54')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
