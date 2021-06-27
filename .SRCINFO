@@ -1,0 +1,14 @@
+pkgbase = kiln-git
+	pkgdesc = A simple static site generator
+	pkgver = 0.2.1.r0.g7201859
+	pkgrel = 1
+	url = https://sr.ht/~adnano/kiln
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	makedepends = scdoc
+	provides = kiln
+	source = git+https://git.sr.ht/~adnano/kiln
+	sha256sums = SKIP
+
+pkgname = kiln-git
