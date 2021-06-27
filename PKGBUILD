@@ -20,5 +20,13 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/cli/issues/1103 for details.
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 }
