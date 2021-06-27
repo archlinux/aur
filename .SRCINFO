@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-is
+	pkgdesc = Icelandic language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-is-29.2.0.xpi
+	source = palemoon-i18n-is-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-is@palemoon.org
+	sha256sums = 4f9d94218aa3692011fe7072dd2c7dfef09b90933d1ec61f72177f25686e6b94
+
+pkgname = palemoon-i18n-is
