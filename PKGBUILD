@@ -5,7 +5,7 @@
 pkgname=lib32-libbs2b
 _pkgname=libbs2b
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library"
 arch=('i686' 'x86_64')
 url='http://bs2b.sourceforge.net'
@@ -16,8 +16,8 @@ source=(
   printf.patch
 )
 sha512sums=(
-  'SKIP'
-  'SKIP'
+  '3fba925fb07b28183f3bf3abe31c13915cb8c3fdd2a7c567819ab912a61463fd5769c4644faa3a114bd68ed7cd51d6fbf5304ab83a02f1004ae34fb93a748fbb'
+  '55df273d09357605678a036af637626205941f357a3b1dcf5af2a8fa1eb6395a61174536d628e84093f3033c63176ceea1ebd42f717dcc873c680668222298a2'
 )
 
 prepare() {
