@@ -14,7 +14,6 @@ pkgbase = pdf2djvu
 	depends = graphicsmagick
 	depends = exiv2
 	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.18/pdf2djvu-0.9.18.tar.xz
-	source = https://github.com/jwilk/pdf2djvu/releases/download/0.9.18/pdf2djvu-0.9.18.tar.xz.asc
 	sha256sums = 42a855585f9152fad5f1848cc1b0c71a6a102170c452530ba30efef3c602aa6f
 
 pkgname = pdf2djvu
