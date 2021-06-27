@@ -5,7 +5,7 @@
 # This binary release pushes this burden of dependency version resolution to the creator
 
 pkgname=gallery-dl-bin
-pkgver=1.17.5
+pkgver=1.18.0
 pkgrel=1
 url='https://github.com/mikf/gallery-dl'
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (bin)'

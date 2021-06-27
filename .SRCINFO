@@ -1,14 +1,16 @@
 pkgbase = gallery-dl-bin
-	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites
-	pkgver = 1.17.5
+	pkgdesc = Command-line program to download image-galleries and collections from several image hosting sites (bin)
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/mikf/gallery-dl
 	arch = x86_64
 	license = GPL2
 	depends = zlib
 	provides = gallery-dl
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.17.5/gallery-dl.bin
-	source = https://github.com/mikf/gallery-dl/releases/download/v1.17.5/gallery-dl.bin.sig
+	conflicts = gallery-dl
+	conflicts = gallery-dl-git
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.18.0/gallery-dl.bin
+	source = https://github.com/mikf/gallery-dl/releases/download/v1.18.0/gallery-dl.bin.sig
 	source = https://api.github.com/repos/mikf/gallery-dl/releases/latest
 	validpgpkeys = 3E09F5908333DD83DBDCE7375680CA389D365A88
 	sha256sums = SKIP
@@ -16,4 +18,3 @@ pkgbase = gallery-dl-bin
 	sha256sums = SKIP
 
 pkgname = gallery-dl-bin
-
