@@ -10,7 +10,7 @@ pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="https://minecraft.net/"
 license=('custom')
-depends=('java-runtime-headless>=16' 'screen' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless>=16' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
@@ -32,7 +32,7 @@ sha512sums=('fe6e48e2cee38224d2c88f04c19afca9c21fddbe6077b5538e0a0581c2f6c4478ec
             'a62c8c04e08dbac0db0aa2eeb505d70f8fd925bd2e427899512ba3ac828d4644e1c43c8d92325c6bc49c8d9ecb40cb5c44bf5957a63980b1e2cf86fdb38a05a7'
             'a74f4e31065b6c6f5c830182de05a8c75a6de6eaac7b3dc26479827646ef20ab872509aac88be613048c97d378711c38612ec7ac92d22134acefd40f6e0a99da'
             '30e434ba183527da8047b1ffe403a083f1af34dbd229b5871222e9da0004cdf5d4152eaa4b73215befcb1233d08cc757af32ad6b572f4b6d2a623b6f120aa0d9'
-            '37fef61051416d9313e13c75ace5235f110b2a38207a30743427c5337c18d198ac2732795229a7fb3d81e88fabfecd534aa91cf873767c279acc41459599b913')
+            'e6ffe546ce05ad78c29601977de35cd0889e95aa821ee7c6051b8ec97369ac4438ded441bd1768eeef5cf1500ff3c6419115d306d62acdebecb33a86402eb5c1')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
