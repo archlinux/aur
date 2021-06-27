@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=palemoon-i18n-common
-pkgver=28.6.1
+pkgver=29.2.0
 pkgrel=1
 pkgdesc="Common data for Pale Moon language packs"
 arch=('any')

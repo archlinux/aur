@@ -1,6 +1,6 @@
 pkgbase = palemoon-i18n-common
 	pkgdesc = Common data for Pale Moon language packs
-	pkgver = 28.6.1
+	pkgver = 29.2.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = palemoon-i18n-common
 	sha256sums = 664601f9e8985bdbb534859076cf54e974f8b95f483cc2621ed21ca6902c18ab
 
 pkgname = palemoon-i18n-common
-
