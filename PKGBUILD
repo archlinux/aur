@@ -1,14 +1,14 @@
 pkgname=firefox-extension-bitwarden
 pkgver=1.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitwarden addon for Firefox'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/'
 license=('GPLV3')
 depends=('firefox')
 groups=('firefox-addons')
-source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3643785/bitwarden_free_password_manager-${pkgver}-an+fx.xpi")
-sha512sums=('8759626d0b1e5647e58024d9ca74253cdcc6cb45f998a9a71406c562045c8279b1a84574042a22ec564be211b167cef66e1d78148164f897bd7aadb02b4d73be')
+source=("extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3775487/bitwarden_free_password_manager-${pkgver}-an+fx.xpi")
+sha512sums=('2406ea4e3791340649a17ac4c47f1b03212cf68f83a2fa70c772f8634faadf1ffe59d302bfc0b86bf4336502aed504de62e1fdc3d816bad6814f03bbcf26c6ee')
 
 package() {
   install -Dm644 extension.xpi "${pkgdir}/usr/lib/firefox/browser/extensions/{446900e4-71c2-419f-a6a7-df9c091e268b}.xpi"
