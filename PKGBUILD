@@ -3,14 +3,14 @@
 _commit=f530a4e89f930fb36db2ee2b9a4454bce825d3c9
 pkgname=deemix
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://git.freezer.life/RemixDev/deemix-py'
 license=('GPL3')
 depends=(
     'python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen'
-    'python-spotipy' 'python-eventlet' 'python-deezer-py'
+    'python-spotipy' 'python-eventlet' 'python-deezer-py>=1.0.0'
 )
 makedepends=('python-setuptools')
 source=("https://git.freezer.life/RemixDev/deemix-py/archive/$_commit.tar.gz")
