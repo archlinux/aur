@@ -79,7 +79,7 @@ pkgname = nginx-devel-mod-naxsi
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = nginx-devel=1.15.5
+	depends = nginx-devel=1.21.0
 	backup = etc/nginx/naxsi.rules
 	backup = etc/nginx/naxsi_core.rules
 
