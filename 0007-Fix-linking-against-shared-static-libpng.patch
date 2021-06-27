@@ -1,7 +1,7 @@
-From 48e1f2d109147ee04d6675125900dc124f23038c Mon Sep 17 00:00:00 2001
+From 7d65ad4667e08a597fb484885e52bcd2c80f091b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
-Subject: [PATCH 07/32] Fix linking against shared/static libpng
+Subject: [PATCH 07/33] Fix linking against shared/static libpng
 
 Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
 ---
@@ -26,5 +26,5 @@ index 1f08795c57..7a5fc6ce7a 100644
              ],
              "use": [
 -- 
-2.31.1
+2.32.0
 

@@ -1,7 +1,7 @@
-From 7eb97b37768e404b3a919b2d85162943c4ed9ca3 Mon Sep 17 00:00:00 2001
+From 06f2dfec9162ad46deefb0d6a02a5a3ec0074e9c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 1 Jun 2021 13:00:33 +0200
-Subject: [PATCH 32/32] Add missing `#include <limits>` in QOffsetStringArray
+Subject: [PATCH 32/33] Add missing `#include <limits>` in QOffsetStringArray
  header
 
 At least with GCC 10/11 targeting mingw-w64 the compilation
@@ -25,5 +25,5 @@ index 4dd9e9603b..e26a57ff43 100644
  QT_BEGIN_NAMESPACE
  
 -- 
-2.31.1
+2.32.0
 

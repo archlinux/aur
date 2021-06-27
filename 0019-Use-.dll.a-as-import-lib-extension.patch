@@ -1,7 +1,7 @@
-From 6b05a19f07c9e00e56d475a13b53b7b548ebf111 Mon Sep 17 00:00:00 2001
+From 3c6f9d8a92095de476ba005de6c013ed733ff525 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 19/32] Use *.dll.a as import lib extension
+Subject: [PATCH 19/33] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 g++-win32.conf
@@ -94,5 +94,5 @@ index 183cef2908..03732df4a8 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.31.1
+2.32.0
 
