@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended-git
 	pkgdesc = Transportation simulation game - Extended Version - Nightly build from git
-	pkgver = r18906.3ba28b441
+	pkgver = r19131.decc493af
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
