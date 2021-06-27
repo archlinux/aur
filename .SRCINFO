@@ -1,8 +1,9 @@
 pkgbase = xorgxrdp
 	pkgdesc = Xorg drivers for xrdp
 	pkgver = 0.2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neutrinolabs/xorgxrdp
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -18,4 +19,3 @@ pkgbase = xorgxrdp
 	sha256sums = SKIP
 
 pkgname = xorgxrdp
-
