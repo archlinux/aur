@@ -4,7 +4,7 @@
 # Package Information
 _crate="cargo-sort"
 pkgname="$_crate"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Check if tables and items in a .toml file are lexically sorted'
 license=('Apache' 'MIT')
@@ -18,7 +18,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 replaces=('cargo-sort-ck')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('e62df34c569e7b6620400cf0a1da9d4a0c463875197dd3bbaf42dfff3462f3581ab137195d0951b9d1c8ffd055d0d0d8a6f1709f3169cfdaee408656625b9132')
+sha512sums=('d64690c814bb79ac7767ad1f12a766bc72a45bd247df4433bdae86cb8346cc6ed03f1b97a679a8f4ee8bc06a9b4c7c9c9e6a1f5057ea63df377fc0df02588428')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
