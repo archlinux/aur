@@ -1,14 +1,13 @@
 pkgbase = protoc-gen-go
 	pkgdesc = Go support for Google's protocol buffers
-	pkgver = 1.26.0
+	pkgver = 1.27.0
 	pkgrel = 2
 	url = https://github.com/protocolbuffers/protobuf-go
 	arch = any
 	license = BSD
 	makedepends = go
 	optdepends = protobuf: protoc generator
-	source = https://github.com/protocolbuffers/protobuf-go/archive/v1.26.0.tar.gz
-	sha256sums = 26218474bcf776ecf32d7d194c6bfaca8e7b4f0c087e5b595fd50fbb31409676
+	source = https://github.com/protocolbuffers/protobuf-go/archive/v1.27.0.tar.gz
+	sha256sums = 5a928abfdcc7972e92738e7af2b8d1a41f4b2b7511d5b4f4f5b1ce3705668f45
 
 pkgname = protoc-gen-go
-
