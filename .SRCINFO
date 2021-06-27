@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-sr
+	pkgdesc = Serbian language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-sr-29.2.0.xpi
+	source = palemoon-i18n-sr-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-sr@palemoon.org
+	sha256sums = 34a0302254f3449341664b2959a79a3afa3cabc0ef3f82e3260c00766e5990e4
+
+pkgname = palemoon-i18n-sr
