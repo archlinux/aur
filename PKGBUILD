@@ -1,13 +1,13 @@
 _pkgname=texmacs
 pkgname=${_pkgname}-qt
-pkgver=1.99.20
+pkgver=2.1
 pkgrel=1
 pkgdesc="WYSIWYG free scientific text editor and graphical frontend to various CASes \n
 (Giac, GTybalt, Macaulay 2, Maxima, Octave, Pari, Qcl, R and Yacas)"
 arch=('x86_64')
 url='http://texmacs.org/'
 license=('GPL3')
-depends=('qt5-base' 'guile1.8' 'libtool' 'perl' 'python2')
+depends=('qt5-base' 'guile1.8' 'libtool' 'perl' 'python')
 optdepends=(
   'texlive-core: TeX-fonts'		# highly recommended, but optional: http://www.texmacs.org/tmweb/download/packaging.en.html
   'gawk: conversion of some files'
@@ -19,17 +19,9 @@ options=('!emptydirs')
 source=("http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-$pkgver-src.tar.gz"
         'http://www.texmacs.org/Images/tm_gnu1b.png'
         'texmacs.desktop')
-sha256sums=('2afa08167bde8095af3182d1a793c1013b4447cb0545010902f7fea7b119de72'
+sha256sums=('8844618d8d6d597faecb1c4dbd25a199955937a6bb13ea253c3ecccc579886be'
             'f11123275494718a3064c9c3ed9638bcc86402536cdcc875a1dd3c0196d08102'
             '0719f63ac6db6fffd979dba77a4ab8f9a8f21bcfef84ed5f425e709eb4bd503e')
-
-#prepare() {
-#  cd ${srcdir}/TeXmacs-${pkgver}-src
-#
-#  msg "### patch"
-#  find -name '*.py' | xargs sed -i 's/env python/env python2/'
-#  sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
-#}
 
 build() {
   cd TeXmacs-${pkgver}-src
