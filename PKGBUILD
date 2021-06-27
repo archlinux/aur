@@ -3,18 +3,15 @@
 
 pkgname='bitcanna-wallet-bin'
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 _srcdir='unix_13_03_20'
 pkgdesc='Full node BitCanna (BCNA) versions of bitcannad, bitcanna-cli, bitcanna-qt, and bitcanna-tx, w/GUI and wallet'
 arch=('x86_64')
 url='https://www.bitcanna.io/'
 license=('AGPL3')
 depends=(
-  'expat'
   'fontconfig'
-  'freetype2'
-  'libxcb'
-  'pcre'
+  'libx11'
 )
 provides=(
   'bitcannad'
