@@ -1,7 +1,7 @@
 pkgbase = toggle-bluetooth
 	pkgdesc = Script to toggle bluetooth on/off
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = MIT
 	makedepends = make

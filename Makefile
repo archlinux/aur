@@ -1,6 +1,6 @@
-# Variables passed by user
-#   PKGNAME (mandatory for some targets)
-#   DESTDIR (optional)
+# To be overwritten by user
+PKGNAME=
+DESTDIR=/
 
 # Constants
 BINDIR=/usr/bin/
@@ -18,9 +18,9 @@ add-xfce4-launcher:
 	./xfce4-add-launcher.sh
 	xfce4-panel -r
 
-.PHONY: check
-check:
-	[ '$(PKGNAME)' != '' ]  # User variable PKGNAME must not be empty
+.PHONY: check-pkgname
+check-pkgname:
+	[ '$(PKGNAME)' != '' ]  # Variable PKGNAME must not be empty
 
 # This does not remove the launcher from xfce4
 .PHONY: clean
