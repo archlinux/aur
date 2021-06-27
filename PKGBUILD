@@ -2,7 +2,7 @@
 # Contributor: David PS <dps.helio at gmail dot com>
 
 pkgname=jhelioviewer4-bin
-pkgver=4.0.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Visualization software for solar image data in space weather context"
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('sh')
 makedepends=('rpmextract')
 source=(
   "${pkgname}.desktop"
-  "http://swhv.oma.be/download_test/JHelioviewer_4_0_0_amd64.rpm"
+  "http://swhv.oma.be/download_test/JHelioviewer_4_0_3_amd64.rpm"
   'https://raw.githubusercontent.com/Helioviewer-Project/JHelioviewer/master/resources/images/hvImage_160x160.png'
 )
 md5sums=(
          'c7d4c32b587d68c11db5f740550f96f1'
-         'efb18b730755b3d8ce7cca8559f11542'
+         'ecb47d32ef05f58fa8c56c10b7b5ffe9'
          'f59e81237e7069b0793316d30c7bba8c'
 )
 
