@@ -12,9 +12,10 @@ Subsequently the bluetooth status is changed from `on` to `off` or the other way
 In XFCE4 one can add a launcher to the task bar to
 execute the script with just one click.
 
-See [xfce4-add-launcher.sh](xfce4-add-launcher.sh) for an automated way to do this.
-The script can be run with
+See the `add-xfce4-launcher` target of the [Makefile](Makefile) for an
+automated way to do this.
 
-```shell
-make add-xfce4-launcher
-```
+For reference, here is a screenshot of the launcher (top right on taskbar) with a desktop notification
+after the launcher has been clicked.
+
+![](screenshot_launcher-with-icon_notification.png)
