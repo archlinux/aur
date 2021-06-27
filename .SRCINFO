@@ -1,7 +1,7 @@
 pkgbase = ocamlfuse
 	pkgdesc = An ocaml binding for fuse.
 	pkgver = 2.7.1
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/astrada/ocamlfuse/
 	arch = x86_64
 	arch = i686
