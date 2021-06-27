@@ -2,7 +2,7 @@
 
 _pkgname=ttyc
 pkgname=ttyc-git
-pkgver=20210315.v0.1.0.wistty.g3e0b157
+pkgver=20210628.v0.3.0.ttyc.gdf4a5c7
 pkgrel=1
 pkgdesc='ttyd protocol client + Wi-Se remote terminal configuration tool'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
