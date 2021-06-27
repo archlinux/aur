@@ -2,7 +2,7 @@
 # Ex-Maintainer: William Turner <willtur.will@gmail.com>
 pkgname='python-fontmath'
 _pkgname=fontMath
-pkgver=0.6.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A set of objects for performing math operations on font data.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-fonttools')
 checkdepends=('python-pytest' 'python-pytest-runner')
 options=(!emptydirs)
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.zip")
-sha256sums=('5a93002bfdcacd16b117b498f6e5ffa5d8fd263ccd8c587d9aa553e965c3ad27')
+sha256sums=('39d71e8b7eeb33c0ddc25e94c1ae64bf29340aeea443f4327392f2be38175f54')
 
 package() {
   cd "$_pkgname-$pkgver"
