@@ -3,13 +3,13 @@
 
 pkgname=fuzzynote
 pkgver=0.20.0
-pkgrel=1
-pkgdate=1624743041
+pkgrel=2
+_pkgdate=1624743041
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
 license=('unknown') # https://github.com/Sambigeara/fuzzynote/issues/73
-makedepends=('go' 'make')
+makedepends=('go')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
@@ -41,7 +41,7 @@ build() {
   go build \
     -buildmode=pie \
     -trimpath \
-    -ldflags="-linkmode=external -X main.version=$pkgver -X main.date=$pkgdate" \
+    -ldflags="-linkmode=external -X main.version=$pkgver -X main.date=$_pkgdate" \
     -mod=readonly \
     -modcacherw \
     -o bin/fzn ./cmd/term
