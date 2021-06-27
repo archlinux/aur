@@ -1,0 +1,15 @@
+--- app-asar/electron/jsComponents/mainWindowEvents.js.orig	2021-06-27 23:34:49.780811362 +0100
++++ app-asar/electron/jsComponents/mainWindowEvents.js	2021-06-27 23:35:27.750869475 +0100
+@@ -111,7 +111,11 @@
+ 
+ 	if (!isDev) {
+ 		global.mainWindow.webContents.once("did-finish-load", function() {
+-			autoUpdater.checkForUpdates();
++			// managed via package, disable auto-updater
++			global.mainWindow.loadURL(url.format({
++				...global.APPLICATION_URL_OBJECT,
++				slashes: true
++			}));
+ 		});
+ 	} else {
+ 		global.mainWindow.webContents.openDevTools();

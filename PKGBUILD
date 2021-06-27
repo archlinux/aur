@@ -2,7 +2,7 @@
 
 pkgname=flexoptix
 pkgver=5.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
 url='https://www.flexoptix.net/en/flexoptix-app'
