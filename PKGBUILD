@@ -1,4 +1,3 @@
-# Author: Hunter Wittenborn <hunter@hunterwittenborn.com>
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb-alpha
