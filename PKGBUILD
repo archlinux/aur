@@ -2,9 +2,10 @@
 
 pkgname=tr-unicode
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Unix tr command reimplemented in perl with unicode support'
 url='https://github.com/dlazesz/tr-unicode'
+license=('GPL3')
 arch=('any')
 depends=('perl')
 source=('tr-unicode.pl')
