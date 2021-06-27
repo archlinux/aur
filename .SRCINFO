@@ -1,15 +1,14 @@
 pkgbase = palemoon-i18n-it
 	pkgdesc = Italian language pack for Pale Moon browser
-	pkgver = 28.14.0
+	pkgver = 29.2.1
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-it-28.14.0.xpi
-	source = palemoon-i18n-it-28.14.0.xpi::https://addons.palemoon.org/?component=download&version=28.14.0&id=langpack-it@palemoon.org
-	sha256sums = 3c061ae2475a88bc638696c3bd402a4c1d517488d551d214a4e965d15ca5cdf8
+	noextract = palemoon-i18n-it-29.2.1.xpi
+	source = palemoon-i18n-it-29.2.1.xpi::https://addons.palemoon.org/?component=download&version=29.2.1&id=langpack-it@palemoon.org
+	sha256sums = 2df07bd26d100484b0bcedc593b6c7c8c5e058194ed294fb41e6a2bb01397e74
 
 pkgname = palemoon-i18n-it
-
