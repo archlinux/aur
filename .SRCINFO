@@ -9,6 +9,7 @@ pkgbase = vlang-coreutils-git
 	makedepends = make
 	provides = false
 	provides = true
+	conflicts = coreutils
 	source = git+https://github.com/vlang/coreutils.git
 	sha256sums = SKIP
 
