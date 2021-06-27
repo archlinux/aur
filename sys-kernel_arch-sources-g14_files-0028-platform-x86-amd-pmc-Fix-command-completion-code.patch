@@ -1,0 +1,52 @@
+From 375675bfe045e2c3911d6cc5f13281e388ee3544 Mon Sep 17 00:00:00 2001
+From: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+Date: Thu, 17 Jun 2021 17:00:35 +0530
+Subject: [PATCH] platform/x86: amd-pmc: Fix command completion code
+
+The protocol to submit a job request to SMU is to wait for
+AMD_PMC_REGISTER_RESPONSE to return 1,meaning SMU is ready to take
+requests. PMC driver has to make sure that the response code is always
+AMD_PMC_RESULT_OK before making any command submissions.
+
+Also, when we submit a message to SMU, we have to wait until it processes
+the request. Adding a read_poll_timeout() check as this was missing in
+the existing code.
+
+Fixes: 156ec4731cb2 ("platform/x86: amd-pmc: Add AMD platform support for S2Idle")
+Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/platform/x86/amd-pmc.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index b9da58ee9b1e..9c8a53120767 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -140,7 +140,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 
+ 	/* Wait until we get a valid response */
+ 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
+-				val, val > 0, PMC_MSG_DELAY_MIN_US,
++				val, val == AMD_PMC_RESULT_OK, PMC_MSG_DELAY_MIN_US,
+ 				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
+ 	if (rc) {
+ 		dev_err(dev->dev, "failed to talk to SMU\n");
+@@ -156,6 +156,14 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 	/* Write message ID to message ID register */
+ 	msg = (dev->cpu_id == AMD_CPU_ID_RN) ? MSG_OS_HINT_RN : MSG_OS_HINT_PCO;
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
++	/* Wait until we get a valid response */
++	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
++				val, val == AMD_PMC_RESULT_OK, PMC_MSG_DELAY_MIN_US,
++				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
++	if (rc) {
++		dev_err(dev->dev, "SMU response timed out\n");
++		return rc;
++	}
+ 	return 0;
+ }
+ 
+-- 
+GitLab
+

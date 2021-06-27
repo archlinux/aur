@@ -1,0 +1,40 @@
+From ee5468b9f1d3bf48082eed351dace14598e8ca39 Mon Sep 17 00:00:00 2001
+From: Yifan Zhang <yifan1.zhang@amd.com>
+Date: Sat, 19 Jun 2021 11:40:54 +0800
+Subject: [PATCH] Revert "drm/amdgpu/gfx9: fix the doorbell missing when in
+ CGPG issue."
+
+This reverts commit 4cbbe34807938e6e494e535a68d5ff64edac3f20.
+
+Reason for revert: side effect of enlarging CP_MEC_DOORBELL_RANGE may
+cause some APUs fail to enter gfxoff in certain user cases.
+
+Signed-off-by: Yifan Zhang <yifan1.zhang@amd.com>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: stable@vger.kernel.org
+---
+ drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c b/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
+index c09225d065c2..516467e962b7 100644
+--- a/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gfx_v9_0.c
+@@ -3673,12 +3673,8 @@ static int gfx_v9_0_kiq_init_register(struct amdgpu_ring *ring)
+ 	if (ring->use_doorbell) {
+ 		WREG32_SOC15(GC, 0, mmCP_MEC_DOORBELL_RANGE_LOWER,
+ 					(adev->doorbell_index.kiq * 2) << 2);
+-		/* If GC has entered CGPG, ringing doorbell > first page doesn't
+-		 * wakeup GC. Enlarge CP_MEC_DOORBELL_RANGE_UPPER to workaround
+-		 * this issue.
+-		 */
+ 		WREG32_SOC15(GC, 0, mmCP_MEC_DOORBELL_RANGE_UPPER,
+-					(adev->doorbell.size - 4));
++					(adev->doorbell_index.userqueue_end * 2) << 2);
+ 	}
+ 
+ 	WREG32_SOC15_RLC(GC, 0, mmCP_HQD_PQ_DOORBELL_CONTROL,
+-- 
+GitLab
+

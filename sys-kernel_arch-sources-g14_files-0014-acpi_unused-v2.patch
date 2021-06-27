@@ -1,8 +1,45 @@
-diff --git a/drivers/acpi/internal.h b/drivers/acpi/internal.h
-index f973bbe90e5ee..e21611c9a1703 100644
---- a/drivers/acpi/internal.h
-+++ b/drivers/acpi/internal.h
-@@ -134,7 +134,7 @@ int acpi_power_init(void);
+This is a backported version of the following patch from 5.13-rc4
+
+From 9b7ff25d129df7c4f61e08382993e1988d56f6a7 Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Fri, 21 May 2021 15:13:11 +0200
+Subject: ACPI: power: Refine turning off unused power resources
+
+Commit 7e4fdeafa61f ("ACPI: power: Turn off unused power resources
+unconditionally") dropped the power resource state check from
+acpi_turn_off_unused_power_resources(), because according to the
+ACPI specification (e.g. ACPI 6.4, Section 7.2.2) the OS "may run
+the _OFF method repeatedly, even if the resource is already off".
+
+However, it turns out that some systems do not follow the
+specification in this particular respect and that commit introduced
+boot issues on them, so refine acpi_turn_off_unused_power_resources()
+to only turn off power resources without any users after device
+enumeration and restore its previous behavior in the system-wide
+resume path.
+
+Fixes: 7e4fdeafa61f ("ACPI: power: Turn off unused power resources unconditionally")
+Link: https://uefi.org/specs/ACPI/6.4/07_Power_and_Performance_Mgmt/declaring-a-power-resource-object.html#off
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=213019
+Reported-by: Zhang Rui <rui.zhang@intel.com>
+Tested-by: Zhang Rui <rui.zhang@intel.com>
+Reported-by: Dave Olsthoorn <dave@bewaar.me>
+Tested-by: Dave Olsthoorn <dave@bewaar.me>
+Reported-by: Shujun Wang <wsj20369@163.com>
+Tested-by: Shujun Wang <wsj20369@163.com>
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ drivers/acpi/internal.h |  4 ++--
+ drivers/acpi/power.c    | 59 ++++++++++++++++++++++++++++++++++++++-----------
+ drivers/acpi/scan.c     |  2 +-
+ drivers/acpi/sleep.c    |  2 +-
+ 4 files changed, 50 insertions(+), 17 deletions(-)
+
+
+
+--- linux-5.12/drivers/acpi/internal.h.orig	2021-06-11 13:58:34.918396821 -0700
++++ linux-5.12/drivers/acpi/internal.h	2021-06-11 13:59:36.571792727 -0700
+@@ -135,7 +135,7 @@
  void acpi_power_resources_list_free(struct list_head *list);
  int acpi_extract_power_resources(union acpi_object *package, unsigned int start,
  				 struct list_head *list);
@@ -11,7 +48,7 @@ index f973bbe90e5ee..e21611c9a1703 100644
  void acpi_power_add_remove_device(struct acpi_device *adev, bool add);
  int acpi_power_wakeup_list_init(struct list_head *list, int *system_level);
  int acpi_device_sleep_wake(struct acpi_device *dev,
-@@ -142,7 +142,7 @@ int acpi_device_sleep_wake(struct acpi_device *dev,
+@@ -143,7 +143,7 @@
  int acpi_power_get_inferred_state(struct acpi_device *device, int *state);
  int acpi_power_on_resources(struct acpi_device *device, int state);
  int acpi_power_transition(struct acpi_device *device, int state);
@@ -20,11 +57,9 @@ index f973bbe90e5ee..e21611c9a1703 100644
  
  /* --------------------------------------------------------------------------
                                Device Power Management
-diff --git a/drivers/acpi/power.c b/drivers/acpi/power.c
-index 56102eaaa2da8..97c9a94a1a308 100644
---- a/drivers/acpi/power.c
-+++ b/drivers/acpi/power.c
-@@ -52,6 +52,7 @@ struct acpi_power_resource {
+--- linux-5.12/drivers/acpi/power.c.orig	2021-06-11 13:58:34.918396821 -0700
++++ linux-5.12/drivers/acpi/power.c	2021-06-11 14:00:09.121484875 -0700
+@@ -52,6 +52,7 @@
  	u32 system_level;
  	u32 order;
  	unsigned int ref_count;
@@ -32,7 +67,7 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  	bool wakeup_enabled;
  	struct mutex resource_lock;
  	struct list_head dependents;
-@@ -147,6 +148,7 @@ int acpi_extract_power_resources(union acpi_object *package, unsigned int start,
+@@ -147,6 +148,7 @@
  
  	for (i = start; i < package->package.count; i++) {
  		union acpi_object *element = &package->package.elements[i];
@@ -40,7 +75,7 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  		acpi_handle rhandle;
  
  		if (element->type != ACPI_TYPE_LOCAL_REFERENCE) {
-@@ -163,13 +165,16 @@ int acpi_extract_power_resources(union acpi_object *package, unsigned int start,
+@@ -163,13 +165,16 @@
  		if (acpi_power_resource_is_dup(package, start, i))
  			continue;
  
@@ -60,7 +95,7 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  	}
  	if (err)
  		acpi_power_resources_list_free(list);
-@@ -907,7 +912,7 @@ static void acpi_power_add_resource_to_list(struct acpi_power_resource *resource
+@@ -907,7 +912,7 @@
  	mutex_unlock(&power_resource_list_lock);
  }
  
@@ -69,7 +104,7 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  {
  	struct acpi_power_resource *resource;
  	struct acpi_device *device = NULL;
-@@ -918,11 +923,11 @@ int acpi_add_power_resource(acpi_handle handle)
+@@ -918,11 +923,11 @@
  
  	acpi_bus_get_device(handle, &device);
  	if (device)
@@ -82,8 +117,8 @@ index 56102eaaa2da8..97c9a94a1a308 100644
 +		return NULL;
  
  	device = &resource->device;
- 	acpi_init_device_object(device, handle, ACPI_BUS_TYPE_POWER);
-@@ -959,11 +964,11 @@ int acpi_add_power_resource(acpi_handle handle)
+ 	acpi_init_device_object(device, handle, ACPI_BUS_TYPE_POWER,
+@@ -960,11 +965,11 @@
  
  	acpi_power_add_resource_to_list(resource);
  	acpi_device_add_finalize(device);
@@ -97,7 +132,7 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  }
  
  #ifdef CONFIG_ACPI_SLEEP
-@@ -997,7 +1002,38 @@ void acpi_resume_power_resources(void)
+@@ -998,7 +1003,38 @@
  }
  #endif
  
@@ -137,11 +172,12 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  {
  	struct acpi_power_resource *resource;
  
-@@ -1006,10 +1042,7 @@ void acpi_turn_off_unused_power_resources(void)
- 	list_for_each_entry_reverse(resource, &acpi_power_resource_list, list_node) {
- 		mutex_lock(&resource->resource_lock);
+@@ -1015,11 +1051,7 @@
+ 			continue;
+ 		}
  
--		if (!resource->ref_count) {
+-		if (state == ACPI_POWER_RESOURCE_STATE_ON
+-		    && !resource->ref_count) {
 -			dev_info(&resource->device.dev, "Turning OFF\n");
 -			__acpi_power_off(resource);
 -		}
@@ -149,11 +185,9 @@ index 56102eaaa2da8..97c9a94a1a308 100644
  
  		mutex_unlock(&resource->resource_lock);
  	}
-diff --git a/drivers/acpi/scan.c b/drivers/acpi/scan.c
-index 453eff8ec8c33..e10d38ac7cf28 100644
---- a/drivers/acpi/scan.c
-+++ b/drivers/acpi/scan.c
-@@ -2360,7 +2360,7 @@ int __init acpi_scan_init(void)
+--- linux-5.12/drivers/acpi/scan.c.orig	2021-06-11 13:58:34.918396821 -0700
++++ linux-5.12/drivers/acpi/scan.c	2021-06-11 13:59:36.573792709 -0700
+@@ -2394,7 +2394,7 @@
  		}
  	}
  
@@ -162,11 +196,9 @@ index 453eff8ec8c33..e10d38ac7cf28 100644
  
  	acpi_scan_initialized = true;
  
-diff --git a/drivers/acpi/sleep.c b/drivers/acpi/sleep.c
-index 09fd13757b658..df386571da98b 100644
---- a/drivers/acpi/sleep.c
-+++ b/drivers/acpi/sleep.c
-@@ -504,7 +504,7 @@ static void acpi_pm_start(u32 acpi_state)
+--- linux-5.12/drivers/acpi/sleep.c	2021-06-11 14:05:25.798799399 -0700
++++ linux-5.12/drivers/acpi/sleep.c.new	2021-06-11 14:04:41.767145304 -0700
+@@ -504,7 +504,7 @@
   */
  static void acpi_pm_end(void)
  {

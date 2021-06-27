@@ -1,0 +1,40 @@
+From baacf52a473b24e10322b67757ddb92ab8d86717 Mon Sep 17 00:00:00 2001
+From: Yifan Zhang <yifan1.zhang@amd.com>
+Date: Sat, 19 Jun 2021 11:39:43 +0800
+Subject: [PATCH] Revert "drm/amdgpu/gfx10: enlarge CP_MEC_DOORBELL_RANGE_UPPER
+ to cover full doorbell."
+
+This reverts commit 1c0b0efd148d5b24c4932ddb3fa03c8edd6097b3.
+
+Reason for revert: Side effect of enlarging CP_MEC_DOORBELL_RANGE may
+cause some APUs fail to enter gfxoff in certain user cases.
+
+Signed-off-by: Yifan Zhang <yifan1.zhang@amd.com>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+Cc: stable@vger.kernel.org
+---
+ drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c b/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
+index 327b1f8213a8..0597aeb5f0e8 100644
+--- a/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gfx_v10_0.c
+@@ -6871,12 +6871,8 @@ static int gfx_v10_0_kiq_init_register(struct amdgpu_ring *ring)
+ 	if (ring->use_doorbell) {
+ 		WREG32_SOC15(GC, 0, mmCP_MEC_DOORBELL_RANGE_LOWER,
+ 			(adev->doorbell_index.kiq * 2) << 2);
+-		/* If GC has entered CGPG, ringing doorbell > first page doesn't
+-		 * wakeup GC. Enlarge CP_MEC_DOORBELL_RANGE_UPPER to workaround
+-		 * this issue.
+-		 */
+ 		WREG32_SOC15(GC, 0, mmCP_MEC_DOORBELL_RANGE_UPPER,
+-			(adev->doorbell.size - 4));
++			(adev->doorbell_index.userqueue_end * 2) << 2);
+ 	}
+ 
+ 	WREG32_SOC15(GC, 0, mmCP_HQD_PQ_DOORBELL_CONTROL,
+-- 
+GitLab
+

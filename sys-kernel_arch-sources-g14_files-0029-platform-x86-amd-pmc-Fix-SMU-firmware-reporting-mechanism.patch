@@ -1,0 +1,89 @@
+From 5a1cb72ae0adb1249594de47f6a8e6ef77ce173a Mon Sep 17 00:00:00 2001
+From: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+Date: Thu, 17 Jun 2021 17:00:36 +0530
+Subject: [PATCH] platform/x86: amd-pmc: Fix SMU firmware reporting mechanism
+
+It was lately understood that the current mechanism available in the
+driver to get SMU firmware info works only on internal SMU builds and
+there is a separate way to get all the SMU logging counters (addressed
+in the next patch). Hence remove all the smu info shown via debugfs as it
+is no more useful.
+
+Also, use dump registers routine only at one place i.e. after the command
+submission to SMU is done.
+
+Fixes: 156ec4731cb2 ("platform/x86: amd-pmc: Add AMD platform support for S2Idle")
+Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+---
+ drivers/platform/x86/amd-pmc.c | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index 9c8a53120767..ce0e2ad94d09 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -52,7 +52,6 @@
+ #define AMD_CPU_ID_PCO			AMD_CPU_ID_RV
+ #define AMD_CPU_ID_CZN			AMD_CPU_ID_RN
+ 
+-#define AMD_SMU_FW_VERSION		0x0
+ #define PMC_MSG_DELAY_MIN_US		100
+ #define RESPONSE_REGISTER_LOOP_MAX	200
+ 
+@@ -88,11 +87,6 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
+ #ifdef CONFIG_DEBUG_FS
+ static int smu_fw_info_show(struct seq_file *s, void *unused)
+ {
+-	struct amd_pmc_dev *dev = s->private;
+-	u32 value;
+-
+-	value = ioread32(dev->smu_base + AMD_SMU_FW_VERSION);
+-	seq_printf(s, "SMU FW Info: %x\n", value);
+ 	return 0;
+ }
+ DEFINE_SHOW_ATTRIBUTE(smu_fw_info);
+@@ -164,6 +158,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 		dev_err(dev->dev, "SMU response timed out\n");
+ 		return rc;
+ 	}
++	amd_pmc_dump_registers(dev);
+ 	return 0;
+ }
+ 
+@@ -176,7 +171,6 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+ 	if (rc)
+ 		dev_err(pdev->dev, "suspend failed\n");
+ 
+-	amd_pmc_dump_registers(pdev);
+ 	return 0;
+ }
+ 
+@@ -189,7 +183,6 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+ 	if (rc)
+ 		dev_err(pdev->dev, "resume failed\n");
+ 
+-	amd_pmc_dump_registers(pdev);
+ 	return 0;
+ }
+ 
+@@ -256,17 +249,11 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	pci_dev_put(rdev);
+ 	base_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
+ 
+-	dev->smu_base = devm_ioremap(dev->dev, base_addr, AMD_PMC_MAPPING_SIZE);
+-	if (!dev->smu_base)
+-		return -ENOMEM;
+-
+ 	dev->regbase = devm_ioremap(dev->dev, base_addr + AMD_PMC_BASE_ADDR_OFFSET,
+ 				    AMD_PMC_MAPPING_SIZE);
+ 	if (!dev->regbase)
+ 		return -ENOMEM;
+ 
+-	amd_pmc_dump_registers(dev);
+-
+ 	platform_set_drvdata(pdev, dev);
+ 	amd_pmc_dbgfs_register(dev);
+ 	return 0;
+-- 
+GitLab
+
