@@ -1,27 +1,19 @@
 # Maintainer: Axilleas Pipinellis <axilleas archlinux info>
 
 pkgname=python2-commando
-pkgver=0.3.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A declarative interface for argparse"
 arch=('any')
 url='http://github.com/lakshmivyas/commando'
 license=('MIT')
 makedepends=('python2' 'python2-distribute')
-source=("http://pypi.python.org/packages/source/c/commando/commando-$pkgver.tar.gz")
-
-prepare() {
-
-  cd "${srcdir}"/commando-"$pkgver"
-  sed -i 's|#!python|#!/usr/bin/env python2|' distribute_setup.py
-
-}
+source=("https://pypi.python.org/packages/source/c/commando/commando-$pkgver.tar.gz")
 
 package() {
-
   cd "${srcdir}"/commando-"$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python2 setup.py install --root="${pkgdir}" -O1
 }
 
-md5sums=('33c6ec2e7de6d24584fb08cc61029fc9')
+md5sums=('0ba5d7c211dfa1c8e53ff99e08f33bac')
