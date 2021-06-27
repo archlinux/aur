@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-hardened
-	pkgver = 2.0.4_5.12.10.hardened1.1
+	pkgver = 2.0.5_5.12.12.hardened1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-hardened-headers=5.12.10.hardened1-1
+	makedepends = linux-hardened-headers=5.12.12.hardened1-1
 	depends = kmod
-	depends = zfs-utils=2.0.4
-	depends = linux-hardened=5.12.10.hardened1-1
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.4/zfs-2.0.4.tar.gz
-	source = linux-5.12-compat.patch
-	sha256sums = 7d1344c5433b91823f02c2e40b33d181fa6faf286bea5591f4b1965f23d45f6c
-	sha256sums = 9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf
+	depends = zfs-utils=2.0.5
+	depends = linux-hardened=5.12.12.hardened1-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.0.5/zfs-2.0.5.tar.gz
+	sha256sums = 3a17498d704ebf4c5d7231660f6fb44ae07a1545519f567452a4270851a86ec9
 
 pkgname = zfs-linux-hardened
 	pkgdesc = Kernel modules for the Zettabyte File System.
@@ -39,4 +37,3 @@ pkgname = zfs-linux-hardened-headers
 	conflicts = spl-dkms
 	conflicts = spl-dkms-git
 	conflicts = spl-headers
-
