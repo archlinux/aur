@@ -9,6 +9,7 @@ arch=("i686" "x86_64")
 url="http://www.primx.eu"
 license=("Prim'X")
 depends=("libxslt" "qt5-base" "hicolor-icon-theme")
+conflicts=("zedfree")
 options=("!strip" "!emptydirs")
 install=${pkgname}.install
 source_i686=("https://www.zedencrypt.com/file/get/-/item_key/13802-26-7fd209fe")

@@ -10,6 +10,7 @@ pkgbase = zedpro
 	depends = libxslt
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	conflicts = zedfree
 	options = !strip
 	options = !emptydirs
 	source_i686 = https://www.zedencrypt.com/file/get/-/item_key/13802-26-7fd209fe
