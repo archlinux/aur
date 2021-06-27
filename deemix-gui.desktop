@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=deemix-gui
+Comment=A Deezer music downloader
+Exec=deemix-gui
+Icon=deemix-gui
+Terminal=false
+Categories=AudioVideo;Audio;Music;
