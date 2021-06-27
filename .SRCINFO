@@ -34,4 +34,3 @@ pkgbase = deemix-server-git
 	sha256sums = SKIP
 
 pkgname = deemix-server-git
-
