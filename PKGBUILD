@@ -8,10 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=d031469630c70188c20598c0f3a3c3c46c6c7a14
-_mozcver=2.26.4395.102
-_utdicver=20210603
-_buildtype=Release
+_commit=171aebaf3a1fb76d1a460d12c7199bc6fbcec473
+_mozcver=2.26.4416.102
+_utdicver=20210627
 
 pkgname='emacs-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -21,7 +20,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('emacs' 'mozc-ut-common')
-makedepends=('clang' 'git' 'gtk2' 'ninja' 'pkgconf' 'python' 'python-six' 'qt5-base')
+makedepends=('bazel' 'git' 'pkgconf' 'python' 'python-six' 'qt5-base')
 conflicts=('emacs-mozc' 'emacs-mozc-ut2')
 provides=("emacs-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
@@ -32,33 +31,22 @@ prepare() {
 
     git submodule update --init --recursive
 
-    # Fix for GCC11 compatibility
-    # Based on original patch found at https://yanqiyu.fedorapeople.org/fcitx5-mozc/fix-build-gcc11.patch
-    sed -i -e 's/#include <array>/#include <array>\n#include <limits>/' src/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
-
-    # Avoid build errors (don't use libc++)
-    # These should probably be included as options in GYP_DEFINES
-    sed -i -e 's/-stdlib=libc++//' src/gyp/common.gypi
-    sed -i -e 's/-lc++//' src/gyp/common.gypi
+    # Fix the Qt5 include path
+    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' src/config.bzl
 }
 
 build() {
     cd ${pkgname}-git/src
 
-    _targets='unix/emacs/emacs.gyp:mozc_emacs_helper'
-
-    GYP_DEFINES='document_dir=/usr/share/licenses/mozc'
-
-    python build_mozc.py gyp --target_platform=Linux
-    python build_mozc.py build -c ${_buildtype} ${_targets}
+    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build unix/emacs:mozc_emacs_helper --config oss_linux --compilation_mode opt
 }
 
 package() {
     cd ${pkgname}-git/src
 
-    install -Dm644 ../LICENSE                                           ${pkgdir}/usr/share/licenses/mozc/emacs-mozc
-    install -Dm644 data/installer/credits_en.html                       ${pkgdir}/usr/share/licenses/mozc/emacs-mozc-submodules
+    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/emacs-mozc
+    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/emacs-mozc-submodules
 
-    install -Dm755 out_linux/${_buildtype}/mozc_emacs_helper            ${pkgdir}/usr/bin/mozc_emacs_helper
-    install -Dm644 unix/emacs/mozc.el                                   ${pkgdir}/usr/share/emacs/site-lisp/mozc.el
+    install -Dm755 bazel-bin/unix/emacs/mozc_emacs_helper       ${pkgdir}/usr/bin/mozc_emacs_helper
+    install -Dm644 unix/emacs/mozc.el                           ${pkgdir}/usr/share/emacs/site-lisp/mozc.el
 }
