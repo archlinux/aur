@@ -1,0 +1,11 @@
+pkgbase = solanum-ircd
+        pkgdesc = An IRCd for unified networks
+        pkgver = 2.0
+        pkgrel = 1
+        url = https://solanum.chat/
+        arch = x86_64
+        license = GPL
+        depends = openssl
+        source = https://github.com/solanum-ircd/solanum/archive/refs/heads/main.tar.gz
+
+pkgname = solanum-ircd
