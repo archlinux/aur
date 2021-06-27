@@ -1,6 +1,6 @@
 pkgbase = thermofun
 	pkgdesc = Library for calculating standard state thermodynamic properties
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/thermohub/thermofun
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = thermofun
 	makedepends = python-setuptools
 	depends = gcc-libs
 	provides = libThermoFun.so
-	source = thermofun-0.3.7.tar.gz::https://github.com/thermohub/thermofun/archive/refs/tags/v0.3.7.tar.gz
-	sha256sums = 0cf7c9c09e83f56d6d0b43e1c57bc1e1595a6002e87cd2ccf3ec519f2be5323c
+	source = thermofun-0.3.8.tar.gz::https://github.com/thermohub/thermofun/archive/refs/tags/v0.3.8.tar.gz
+	sha256sums = 1daffed5ca3b6187548729da9884f63c76c02af4dd6cb7e649a898b016353c6f
 
 pkgname = thermofun
-
