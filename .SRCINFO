@@ -1,7 +1,7 @@
 pkgbase = zedpro
 	pkgdesc = Zed! Encrypted containers manager
 	pkgver = 2020.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.primx.eu
 	install = zedpro.install
 	arch = i686

@@ -3,7 +3,7 @@
 # Contributor: puleiya <ninettristan@gmail.com>
 pkgname=zedpro
 pkgver=2020.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Zed! Encrypted containers manager"
 arch=("i686" "x86_64")
 url="http://www.primx.eu"
