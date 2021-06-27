@@ -3,13 +3,15 @@
 
 pkgname=fuzzynote
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 _pkgdate=1624743041
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
 license=('unknown') # https://github.com/Sambigeara/fuzzynote/issues/73
 makedepends=('go')
+provides=('fuzzynote')
+conflicts=('fuzzynote')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
