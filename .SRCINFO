@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-ar
+	pkgdesc = Arabic language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-ar-29.2.0.xpi
+	source = palemoon-i18n-ar-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-ar@palemoon.org
+	sha256sums = d8eb949c5d2cf7819313ee118fec2deeb78feedfd6e8881956138f9d3eaada90
+
+pkgname = palemoon-i18n-ar
