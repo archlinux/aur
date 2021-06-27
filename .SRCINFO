@@ -1,7 +1,7 @@
 pkgbase = nodejs-cordova
 	pkgdesc = Cordova command line interface tool
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cordova.apache.org/
 	arch = any
 	license = Apache
