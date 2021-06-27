@@ -7,10 +7,15 @@ pkgbase = python-deemix
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
+	depends = python-click
+	depends = python-pycryptodomex
+	depends = python-mutagen
+	depends = python-requests
+	depends = python-spotipy
+	depends = pythoon-deezer-py
 	provides = deemix
 	conflicts = deemix
 	conflicts = deemix-git
-	conflicts = python-deezer-py
 	source = https://files.pythonhosted.org/packages/source/d/deemix/deemix-3.0.0.tar.gz
 	sha256sums = efc708062719a3d4e024524697d86990fdb465e5d4098389a951d27633073c02
 
