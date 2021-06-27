@@ -5,7 +5,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.05.23
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -47,6 +47,8 @@ prepare() {
 	## Eclipse CycloneDDS
 	git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds checkout 0.8.0beta6
 	git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds cherry-pick bdf270a588aae77d0f1a0f0070b53ad1388da61c
+    ## ros1_bridge
+    git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
 }
 
 build() {
