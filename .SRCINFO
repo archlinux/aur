@@ -1,15 +1,15 @@
 pkgbase = flexoptix
 	pkgdesc = Flexoptix programmer
-	pkgver = 5.10.0
+	pkgver = 5.11.0
 	pkgrel = 2
 	url = https://www.flexoptix.net/en/flexoptix-app
 	install = flexoptix.install
 	arch = any
 	license = custom
 	depends = hidapi
-	source = https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.5.10.0.AppImage
+	source = https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.5.11.0.AppImage
 	source = https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules
-	sha256sums = 2b7b450cfabec3e61e8f4caeb0873427e0793e36b488fdb131ba8112a069f70c
+	sha256sums = 363e92e776f8c3ce2aa6990607b94ca4984997189f683e1a70faf2b99c58edc3
 	sha256sums = 3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157
 
 pkgname = flexoptix
