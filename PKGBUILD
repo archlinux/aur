@@ -1,7 +1,7 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
 pkgver=2021.6.26
-pkgrel=0
+pkgrel=1
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes, Gaana, Deezer etc."
 arch=("any")
 url="https://github.com/deepjyoti30/ytmdl"
@@ -39,23 +39,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/40/3f/3f293181ded9aadce19f779ffeafdfadef64577b93f2702ec5a5b2aadbfa/ytmdl-2021.6.26.tar.gz")
+source=("https://files.pythonhosted.org/packages/92/bb/7d012536e1f47c96dafdb45cc45b037412e15fcddc3284fe775e1e69764d/ytmdl-2021.6.26.post1.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}.post${pkgrel}"
   	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}.post${pkgrel}"
 	python setup.py build
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}-${pkgver}.post${pkgrel}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
 	   	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
