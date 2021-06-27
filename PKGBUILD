@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac046373ff44269d2a5a0bdf4a0c646484e2ce8d451c9066a9155503e595bea8')
+sha256sums=('5d79f23c5f978904f0fb1679ab693985c2c017e986612b531a79ed1a127d1a7a')
 makedepends=('go1.15')
 
 build() {
