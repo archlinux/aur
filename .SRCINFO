@@ -1,11 +1,10 @@
 pkgbase = lfutils-meta
 	pkgdesc = Meta package to install some required packages of lfutils.
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/soystemd/lfutils
 	arch = any
 	license = GPL
-	depends = rsync
 	depends = archivemount
 	depends = ueberzug
 	depends = chafa
