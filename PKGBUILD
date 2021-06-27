@@ -1,24 +1,27 @@
-# Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: RemixDev <RemixDev64@gmail.com>
 
-_commit=47f728e172e3a69e324173acebaad4f7f438b7a2
-pkgname=python-deemix
-pkgver=1.0.4
+pkgname="python-deemix"
+_name="${pkgname#python-}"
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='A barebone deezer downloader library'
-arch=(any)
-url='https://deemix.app/'
-license=('GPL3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy')
-makedepends=('python-setuptools')
-source=("https://notabug.org/RemixDev/deemix/archive/$_commit.tar.gz")
-sha256sums=('0316424e5fe844877312ff1170a2a015872d1b9cb8281938aac086c86dd5b7c9')
+pkgdesc="A barebone deezer downloader library"
+url="https://pypi.org/project/deemix/"
+license=("GPL3")
+arch=("any")
+provides=("deemix")
+conflicts=("deemix" "deemix-git" "python-deezer-py")
+depends=("python")
+makedepends=("python-setuptools")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=("efc708062719a3d4e024524697d86990fdb465e5d4098389a951d27633073c02")
 
-build() {
-  cd deemix
-  python setup.py build
+build(){
+ cd "deemix-$pkgver"
+ python setup.py build
 }
 
-package() {
-  cd deemix
-  python setup.py install --root="$pkgdir" --optimize=1
+package(){
+ cd "deemix-$pkgver"
+ python setup.py install --root="$pkgdir" --optimize=1
 }
