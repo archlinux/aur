@@ -14,12 +14,9 @@ install=.install
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/java/${pkgname}"
     mkdir -p "${pkgdir}/usr/share/java/${pkgname}/bin"
-    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/conf"
     mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/bin"
-    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/boot"
-    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/lib/ext"
-    mkdir -p "${pkgdir}/usr/share/java/${pkgname}/mvn/conf/logging"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/mvn"
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 
@@ -27,14 +24,9 @@ package() {
 
     install -m755 bin/*.* "${pkgdir}/usr/share/java/${pkgname}/bin/"
     install -m755 bin/mvnd "${pkgdir}/usr/share/java/${pkgname}/bin/"
-    install conf/*.* "${pkgdir}/usr/share/java/${pkgname}/conf/"
-    install conf/*.* "${pkgdir}/usr/share/java/${pkgname}/conf/"
     install -m755 mvn/bin/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/bin/"
-    install mvn/conf/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/conf/"
-    install mvn/conf/logging/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/conf/logging/"
-    install mvn/lib/ext/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/lib/ext/"
-    install mvn/lib/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/lib/"
-    install mvn/boot/*.* "${pkgdir}/usr/share/java/${pkgname}/mvn/boot/"
+    cp -r conf "${pkgdir}/usr/share/java/${pkgname}/conf"
+    cp -r mvn "${pkgdir}/usr/share/java/${pkgname}/mvn"
 
     install LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
     install NOTICE.txt "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
