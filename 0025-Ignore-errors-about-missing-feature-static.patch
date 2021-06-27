@@ -1,7 +1,7 @@
-From 54f4a5bd8e239a94f4e48d2f275cadb4dc67bf6e Mon Sep 17 00:00:00 2001
+From dc3330545d086d326388abdfada6944ab40758db Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
-Subject: [PATCH 25/32] Ignore errors about missing feature static
+Subject: [PATCH 25/33] Ignore errors about missing feature static
 
 Not sure why this error occurs, let's hope for the best
 ---
@@ -32,5 +32,5 @@ index 7777e615bd..5f30366660 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 -- 
-2.31.1
+2.32.0
 

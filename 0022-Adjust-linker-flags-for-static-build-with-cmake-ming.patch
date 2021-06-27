@@ -1,7 +1,7 @@
-From 3e2ef8be011b02cbb900717ced96bcd7b0e55a93 Mon Sep 17 00:00:00 2001
+From 591ca364284f36216d94b733199c1c4ecf3875ea Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
-Subject: [PATCH 22/32] Adjust linker flags for static build with
+Subject: [PATCH 22/33] Adjust linker flags for static build with
  cmake/mingw-w64
 
 It is not clear anymore where I picked that change up and for
@@ -27,5 +27,5 @@ index 9da1361c95..5e802dea4c 100644
 +set_target_properties(${IMPORTED_TARGET_NAME} PROPERTIES \"INTERFACE_LINK_LIBRARIES\" \"$<${_isExe}:-static;ws2_32>\")
 +unset(_isExe)
 -- 
-2.31.1
+2.32.0
 
