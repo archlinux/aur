@@ -1,12 +1,10 @@
 post_install() {
-  echo "====>  Replace this line within /etc/pulse/default.pa:"
-  echo "====     load-module module-native-protocol-unix"
-  echo "====>  with:"
-  echo "====     load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulse-socket"
-  echo "====>  Add this line within /etc/pulse/client.conf"
-  echo "====     default-server = unix:/tmp/pulse-socket"
-  echo "====>  Restart PulseAudio"
-  echo "====	 systemctl --user restart pulseaudio"
+  echo "====>  Follow these lines to enable audio through pipewire:"
+  echo "====     cp /usr/share/pipewire/pipewire-pulse.conf /etc/pipewire"
+  echo "====>  Edit the file and enable"
+  echo "====     tcp:4713"
+  echo "====>  Restart Pipewire"
+  echo "====	 systemctl --user restart pipewire-pulse"
   echo "====>  Finally run:"
   echo "====	 systemctl start mycroft.service"
 }

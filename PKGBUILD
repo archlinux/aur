@@ -3,7 +3,7 @@
 
 pkgname=mycroft-core
 pkgver=21.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/MycroftAI/mycroft-core'
@@ -92,6 +92,6 @@ md5sums=('36413c2facd4ccaf1d8f0200688c1d31'
          '39bcf2f0f30854b7b6e516d49946566a'
          'bfe08c1d8cba053ef83cfac5a36c7910'
          '7cbcc7b8b71d00c19a11166fbbd5ed4f'
-         '78ae7633b181fddbeb8e5e8c6a830539'
+         '2d14d871585ffafcf86a52da96ff4c4c'
          '9e760b5fe356a12e126de036120c7319'
          '6c78c4a328e1322b8155086a73a77486')
