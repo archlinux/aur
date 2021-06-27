@@ -1,0 +1,15 @@
+pkgbase = python-json-stream
+	pkgdesc = Simple streaming JSON parser.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/daggaz/json-stream/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-wheel
+	depends = python-twine
+	source = https://files.pythonhosted.org/packages/source/j/json-stream/json-stream-1.0.0.tar.gz
+	sha256sums = f5e614f1cca8a70a5da98107744ae2c6f5be02a8af8f39f3a556dc6258225e65
+
+pkgname = python-json-stream
