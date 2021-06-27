@@ -1,0 +1,10 @@
+post_install(){
+ cat <<INFO
+
+ The default login credentials for the web interface are:
+
+    username: admin
+    password:                               (no password)
+
+INFO
+}

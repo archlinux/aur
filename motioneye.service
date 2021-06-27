@@ -1,0 +1,11 @@
+[Unit]
+Description=motionEye server
+After=local-fs.target network.target
+
+[Service]
+User=motion
+ExecStart=/usr/bin/meyectl startserver -c /etc/motioneye/motioneye.conf
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

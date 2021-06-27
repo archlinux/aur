@@ -1,0 +1,4 @@
+d /etc/motioneye 0770 root motion
+f /etc/motioneye/motioneye.conf 0660 root motion
+d /var/lib/motioneye 0750 motion motion
+Z /var/lib/motioneye - motion motion
