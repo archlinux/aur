@@ -2,7 +2,7 @@
 pkgname_orig=neovide
 pkgname=${pkgname_orig}-bin
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="No Nonsense Neovim Client in Rust (prebuilt)"
 arch=('x86_64')
 url="https://github.com/Kethku/neovide"
@@ -13,7 +13,7 @@ conflicts=('neovide' 'neovide-git')
 binname=${pkgname_orig}-${pkgver}-${pkgrel}
 source_x86_64=(
     "${binname}::${url}/releases/download/${pkgver}/${pkgname_orig}"
-    "neovide.desktop::https://raw.githubusercontent.com/Kethku/neovide/0.7.0/assets/neovide.desktop"
+    "neovide.desktop::https://raw.githubusercontent.com/Kethku/neovide/${pkgver}/assets/neovide.desktop"
 )
 sha512sums_x86_64=(
     '7040cf19faf0fdd7d0b0c354f6e07bbf41a1b3007022bbb80a30dda7d5ee79bda0c64a653017d3f8aa5d4b29455f4874fcca4924f02f35cd3b35e00cf62dadd3'
