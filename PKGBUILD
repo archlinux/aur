@@ -1,7 +1,7 @@
 # Maintainer: Ian Lansdowne <idlansdowne at gmail dot com>
 pkgname=pros-cli
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="Command Line Interface for managing PROS projects. Works with V5 and the Cortex"
 arch=('x86_64')
 url="https://github.com/purduesigbots/pros-cli"
