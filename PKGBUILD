@@ -1,7 +1,7 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=zsh-theme-powerlevel10k-git
-pkgver=r3884.c003c25
+pkgver=r3887.0c862a1
 pkgrel=1
 pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('aarch64' 'i686' 'x86_64')
@@ -28,9 +28,8 @@ build() {
   cd "$srcdir/powerlevel10k/gitstatus"
   ./build -w
   rm ./deps/libgit2-*.tar.gz
-  for file in *.zsh install; do
-    zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
-  done
+  cd ..
+  make zwc
 }
 
 package() {
