@@ -4,7 +4,7 @@
 pkgbase=nginx-devel
 pkgname=(nginx-devel nginx-devel-mod-naxsi)
 _pkgname=nginx
-pkgver=1.15.5
+pkgver=1.21.0
 _nginxver=$pkgver
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
