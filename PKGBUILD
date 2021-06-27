@@ -2,11 +2,11 @@
 
 pkgname=gd32-isp-console-bin
 pkgver=v1.0.1.3411
-pkgrel=1
+pkgrel=2
 pkgdesc="GigaDevice MCU ISP Console for Linux"
 arch=('any')
 url="http://www.gd32mcu.com"
-license=('MIT')
+license=('unknow')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
