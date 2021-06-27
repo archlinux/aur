@@ -2,14 +2,20 @@
 pkgname=kyocera-sane
 pkgver=2.0.0326
 pkgrel=1
-pkgdesc="Kyocera sane scanner support package for many Kyocera printers."
+pkgdesc='Kyocera sane scanner support package for many Kyocera printers.'
 arch=('x86_64')
-url="https://www.kyocera.com/"
+url='https://www.kyocera.com/'
 license=('custom')
 depends=('glibc' 'libusb' 'libtiff4' 'openssl-1.0' 'sane')
 makedepends=('unzip' 'wget')
-source=("https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all/SANE_Driver_zip.download.zip")
-sha256sums=('4bf3f83b0cec6531e794151c076586fcc0f4262fdffa9f2a465ce684aff6f90a')
+source=(
+    'https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all/SANE_Driver_zip.download.zip'
+    'README.txt'
+)
+sha256sums=(
+    '4bf3f83b0cec6531e794151c076586fcc0f4262fdffa9f2a465ce684aff6f90a'
+    '945f922065e8278d2ec6e0c1e8ce6851834359cd02ff85534fa3d7baccec6ffe'
+)
 
 prepare() {
     cd ${srcdir}

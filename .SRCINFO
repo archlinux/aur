@@ -13,6 +13,8 @@ pkgbase = kyocera-sane
 	depends = openssl-1.0
 	depends = sane
 	source = https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all/SANE_Driver_zip.download.zip
+	source = README.txt
 	sha256sums = 4bf3f83b0cec6531e794151c076586fcc0f4262fdffa9f2a465ce684aff6f90a
+	sha256sums = 945f922065e8278d2ec6e0c1e8ce6851834359cd02ff85534fa3d7baccec6ffe
 
 pkgname = kyocera-sane
