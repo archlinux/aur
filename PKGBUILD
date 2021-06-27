@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.10.0.0
+pkgver=0.10.0.0.100eebe660
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
