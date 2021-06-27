@@ -1,0 +1,19 @@
+pkgbase = boomer-git
+	pkgdesc = Zoomer application for Linux.
+	pkgver = r286.cc0f531
+	pkgrel = 1
+	url = https://github.com/tsoding/boomer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nimble
+	depends = mesa
+	depends = libx11
+	depends = libxext
+	depends = libxrandr
+	provides = boomer
+	conflicts = boomer
+	source = boomer::git+https://github.com/tsoding/boomer.git
+	md5sums = SKIP
+
+pkgname = boomer-git
