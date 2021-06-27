@@ -18,9 +18,6 @@ pkgbase = zfs-dkms-rc
 	conflicts = spl
 	conflicts = spl-headers
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0-rc7/zfs-2.1.0-rc7.tar.gz
-	source = linux-5.12-compat.patch
 	sha256sums = d828c06111a46eb5b1a7908014e69a72af96f3c444bd49a103baf974843bdbe5
-	sha256sums = 9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf
 
 pkgname = zfs-dkms-rc
-
