@@ -1,0 +1,21 @@
+pkgbase = jello-bin
+	pkgdesc = Filter JSON and JSON Lines data with Python syntax
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/kellyjonbrazil/jello
+	changelog = CHANGELOG
+	arch = x86_64
+	license = MIT
+	depends = python-pygments
+	provides = jello
+	conflicts = jello
+	source = jello-bin-1.4.4.tar.gz::https://github.com/kellyjonbrazil/jello/releases/download/v1.4.4/jello-1.4.4-linux-x86_64.tar.gz
+	source = LICENSE-1.4.4::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.4.4/LICENSE
+	source = README-1.4.4.md::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.4.4/README.md
+	source = jello-1.4.4.1::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.4.4/man/jello.1
+	sha256sums = 56348cd387d244e87b6c0c6e652172536013965578b29e99571b0346ef1c3212
+	sha256sums = 1a404c97debd32c80005736bd368078ccc8f858c8ebafa2576b0c3919afb92c4
+	sha256sums = beaaf3551e39f89e2883ae0d54d0b581e581124c2553ce2493acd12ee2a5ad23
+	sha256sums = f8bf6563747618790c8c12679c284e23d04aad749063afc4ac471be37c949ac4
+
+pkgname = jello-bin
