@@ -8,10 +8,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/Thulinma/kalu"
 license=('GPL3+')
 depends=('dbus' 'polkit' 'gtk3' 'pacman>=6.0' 'pacman<6.1' 'curl' 'libnotify' 'notification-daemon')
-makedepends=('perl' 'groff' 'git' 'automake')
-source=(git+https://github.com/Thulinma/kalu.git)
+makedepends=('perl' 'groff')
+source=(https://github.com/Thulinma/kalu/archive/refs/tags/$pkgver.tar.gz)
 install=kalu.install
-sha1sums=('SKIP')
+md5sums=('d33dffb2dc4b43c5b2dad234768d2692')
 
 build() {
   cd "$srcdir/$pkgname"
