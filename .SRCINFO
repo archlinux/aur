@@ -1,17 +1,15 @@
 pkgbase = zfs-linux-rc
-	pkgver = 2.1.0_rc7_5.12.10.arch1.1
+	pkgver = 2.1.0_rc7_5.12.13.arch1.2
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.12.10.arch1-1
+	makedepends = linux-headers=5.12.13.arch1-2
 	depends = kmod
 	depends = zfs-utils-rc=2.1.0_rc7
-	depends = linux=5.12.10.arch1-1
+	depends = linux=5.12.13.arch1-2
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0-rc7/zfs-2.1.0-rc7.tar.gz
-	source = linux-5.12-compat.patch
 	sha256sums = d828c06111a46eb5b1a7908014e69a72af96f3c444bd49a103baf974843bdbe5
-	sha256sums = 9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf
 
 pkgname = zfs-linux-rc
 	pkgdesc = Kernel modules for the Zettabyte File System.
@@ -39,4 +37,3 @@ pkgname = zfs-linux-rc-headers
 	conflicts = spl-dkms
 	conflicts = spl-dkms-git
 	conflicts = spl-headers
-
