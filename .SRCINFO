@@ -15,6 +15,9 @@ pkgbase = wownero-git
         depends = zeromq
         depends = pcsclite
         depends = protobuf
+        depends = libpgm
+        depends = unbound
+        depends = libsodium
         source = wownero::git+https://git.wownero.com/wownero/wownero.git#branch=dev
         source = monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch
         sha512sums = SKIP
