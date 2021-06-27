@@ -5,7 +5,7 @@
 pkgname=git-delta
 
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -41,7 +41,7 @@ _setup_build_env() {
 }
 
 prepare() {
-  sed -i "/path *=/s|=.*|= /etc/gitconfig.delta|" "delta-$pkgver/themes.gitconfig"
+  sed -i "/path *=/s|=.*|= /usr/share/gitconfig.delta|" "delta-$pkgver/themes.gitconfig"
 }
 
 build() {
@@ -59,7 +59,7 @@ check() {
 package() {
   cd "delta-$pkgver"
   install -Dm755 "target/release/delta"   -t"$pkgdir/usr/bin/"
-  install -Dm644 themes.gitconfig           "$pkgdir/etc/gitconfig.delta"
+  install -Dm644 themes.gitconfig           "$pkgdir/usr/share/gitconfig.delta"
   install -Dm644 {README,CONTRIBUTING}.md -t"$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$pkgname/"
   cd etc
