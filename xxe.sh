@@ -7,7 +7,7 @@ cp="$dist/xxe.jar:$jars"
 # Disabled Java 9+ native HiDPI mode because the rendering of
 # text and graphics is nicer using built-in HiDPI support:
 # -Dsun.java2d.uiScale.enabled=false
-# You may re-enable Java 9+ native HiDPI mode by removing 
+# You may re-enable Java 9+ native HiDPI mode by removing
 # this option.
 
 exec java -Xss4m -Xmx512m \

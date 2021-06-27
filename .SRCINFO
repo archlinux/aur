@@ -1,6 +1,6 @@
 pkgbase = xmlmind-xmleditor
 	pkgdesc = IDE for editing XML files
-	pkgver = 9.5.0
+	pkgver = 9.5.1
 	pkgrel = 1
 	url = https://www.xmlmind.com/xmleditor
 	install = xxe.install
@@ -14,8 +14,8 @@ pkgbase = xmlmind-xmleditor
 	depends = perl
 	optdepends = cups-pdf: for the ability to print into PDF-files
 	provides = xxe
-	source = http://www.xmlmind.com/xmleditor/_download/xxe-perso-9_5_0.zip
-	source = http://www.xmlmind.com/xmleditor/_download/xxe-devdocs-9_5_0.zip
+	source = http://www.xmlmind.com/xmleditor/_download/xxe-perso-9_5_1.zip
+	source = http://www.xmlmind.com/xmleditor/_download/xxe-devdocs-9_5_1.zip
 	source = xxe.sh
 	source = xxetool.sh
 	source = xmltool.sh
@@ -23,9 +23,9 @@ pkgbase = xmlmind-xmleditor
 	source = authvalue.sh
 	source = deployxxe.sh
 	source = xmltool.1
-	sha256sums = 540494c9461fbc15724a6cc2e55581ae45f80f283bb6a54a1968d1a8a0b05fd9
-	sha256sums = ef814536d19c0781fdd481977e5abd08d39c616c8f5bf7ddfa287e0ab4cadaee
-	sha256sums = e79534cc119fbf63afea0375ca8159294f3821e32b339f517acddb872c81a8ca
+	sha256sums = 46dccd4e8e826d9b6dccb886e72ac2baf08ff250f7c0103122ab0f84fad34dc0
+	sha256sums = 830190d73d8d94646369332d1560933558a25c0e5043172a167e6b8850a686f6
+	sha256sums = b77a9be5922bd692af5ac80a7f1b88fe4b1e997dcdfb5d8fe6e37440c19e1fd3
 	sha256sums = c28c54c62aff121c84cfcda399ff21bd914a4e2757f29358e91c6f4865208fcf
 	sha256sums = 40fd7e5f73eaf9f05adabd29715f3dc2d78f4eeddb9440bdd3aece1341308a01
 	sha256sums = 541de90c98dc15d2957834611df41872837144397735c62be67924ce8af2ef84
@@ -34,4 +34,3 @@ pkgbase = xmlmind-xmleditor
 	sha256sums = dd1efd7074aef4b28c130a781f21e34ada3f9b15673ad9df61ff77dba4930482
 
 pkgname = xmlmind-xmleditor
-
