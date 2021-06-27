@@ -5,7 +5,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.05.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -57,6 +57,7 @@ build() {
 	fi
 
 	# Build
+	unset CPPFLAGS
 	colcon build --merge-install ${COLCON_EXTRA_ARGS}
 }
 
