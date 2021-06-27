@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
 _addon_name=yomichan
-_addon_version=21.4.30.2
+_addon_version=21.5.31.1
 _addon_id=789636
 _addon_filename="${_addon_name}-${_addon_version}-an+fx.xpi"
 _gecko_id="alex@foosoft.net"
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('2c1eb06f27d96094d52f1f743505b708d079f324304b402119a31168eb95cfd9')
+sha256sums=('995a47a1b818a80f108f7c015c971564b75240817903a2ec40f45f3234044f7a')
 
 package() {
     cd "${srcdir}"
