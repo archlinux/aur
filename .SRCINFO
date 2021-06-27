@@ -1,0 +1,32 @@
+pkgbase = python2-twisted
+	pkgdesc = Asynchronous networking framework written in Python (20.3.0 is the last version supporting Python 2)
+	pkgver = 20.3.0
+	pkgrel = 4
+	url = https://twistedmatrix.com/
+	arch = x86_64
+	license = MIT
+	depends = python-twisted
+	depends = python2-zope-interface
+	depends = python2-setuptools
+	depends = python2-service-identity
+	depends = python2-incremental
+	depends = python2-constantly
+	depends = python2-automat
+	depends = python2-hyperlink
+	depends = python2-attrs
+	depends = python2-pyhamcrest
+	optdepends = python2-pyopenssl: for TLS client hostname verification
+	optdepends = python2-idna: for TLS client hostname verification
+	optdepends = python2-cryptography: for using conch
+	optdepends = python2-pyasn1: for using conch
+	optdepends = python2-appdirs: for using conch
+	optdepends = python2-bcrypt: for using conch
+	optdepends = python2-priority: for http2 support
+	optdepends = python2-pyserial: for serial support
+	optdepends = python2-soappy: for twisted.web.soap
+	optdepends = tk: for using tkconch
+	source = python2-twisted-20.3.0.tar.gz::https://github.com/twisted/twisted/archive/twisted-20.3.0.tar.gz
+	sha512sums = 72307a0b9165d5f6b31f5563f4f76f9c759349d55f6dcaf43358eab3e8f1b2065e0b12c8ac43f14061ee17cb2d9b27f463bcb9e642750fb8e6e510e403bd2b06
+
+pkgname = python2-twisted
+
