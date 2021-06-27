@@ -17,25 +17,19 @@
 #
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
-_zfsver="2.0.4"
-_kernelver="5.10.43-1"
-_extramodules="5.10.43-1-lts"
+_zfsver="2.0.5"
+_kernelver="5.10.46-1"
+_extramodules="5.10.46-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
 makedepends=("linux-lts-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
-              "linux-5.12-compat.patch")
-sha256sums=("7d1344c5433b91823f02c2e40b33d181fa6faf286bea5591f4b1965f23d45f6c"
-                        "9c601804dc473766d85da2198aa3769707e051d3659dc82dd1302edd5e91a8cf")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
+sha256sums=("3a17498d704ebf4c5d7231660f6fb44ae07a1545519f567452a4270851a86ec9")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-lts=${_kernelver}")
-prepare() {
-    cd "${srcdir}/zfs-${_zfsver}"
-    patch -Np1 -i ${srcdir}/linux-5.12-compat.patch
-}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
