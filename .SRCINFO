@@ -1,12 +1,12 @@
 pkgbase = zamonia-bin
-	pkgdesc = Zamonia - Executable only - CLI tool to manage work database
-	pkgver = 0.1.5.0
+	pkgdesc = Zamonia - Executable only - CLI tool to manage art database
+	pkgver = 0.1.5.5
 	pkgrel = 1
 	url = https://github.com/Luc-Saccoccio/zamonia
 	arch = x86_64
 	license = custom
 	depends = gmp
-	source = zamonia-bin-0.1.5.0.tar.gz::https://github.com/Luc-Saccoccio/zamonia/releases/download/v0.1.5.0/zamonia-0.1.5.0.tar.gz
+	source = zamonia-bin-0.1.5.5.tar.gz::https://github.com/Luc-Saccoccio/zamonia/releases/download/v0.1.5.5/zamonia-0.1.5.5.tar.gz
 	sha512sums = bf200374191e603f81ab051e339e68549be21041ec513dafccecbfc919d4cd5900dd4a19ea4ae76d1d2b8484d286a562de8e2096948139bc52a5c4e7b8b8229b
 
 pkgname = zamonia-bin
