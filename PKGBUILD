@@ -1,35 +1,31 @@
-# Maintainer: Nissar Chababy <funilrys at outlook dot com>
-# Ex-Maintainer: 	Jeroen Bollen <jbinero at gmail dot comau>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributer: Nissar Chababy <funilrys at outlook dot com>
+# Contributer: Jeroen Bollen <jbinero at gmail dot comau>
 
-pkgname=ckbcomp
-pkgver=1.202
+pkgname="ckbcomp-bin"
+pkgver=1.203
 pkgrel=1
 pkgdesc="Compile a XKB keyboard description to a keymap suitable for loadkeys or kbdcontrol"
 arch=(any)
 url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
 license=('GPL2')
 depends=('perl')
-source=("http://ftp.de.debian.org/debian/pool/main/c/console-setup/console-setup_${pkgver}.tar.xz")
-sha512sums=('caa7dcf667d44edab97811d8f95a3532af6d340e217e4a2acfa02f8812625522823e8d90bd35f701f3fc0b6c6e3b867a0a58c5c2323c64022f2c5ca3527e7d33')
+source=("http://ftp.debian.org/debian/pool/main/c/console-setup/console-setup_1.203_all.deb")
+sha512sums=('59278e5bde389de7f9b51c1a24ff7bd91c2f66be2266b60eac7dc82680f26b6993e335ae38c6e780722084af73e6fb46749f04632c06b9d4b97678be062c25f8')
+provides=("ckbcomp")
+
+prepare(){
+    while read -r pkg; do
+        dir="${srcdir}/$(basename "${pkg}" | cut -d "." -f 1)"
+        mkdir -p "${dir}"
+        tar -x -v -f "${pkg}" -C "${dir}"
+    done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -name "*.tar*" -printf "%p\n")
+}
 
 package() {
-    if [[ -d "${srcdir}/console-setup" ]]
-    then
-        cd console-setup
-    elif [[ -d "${srcdir}/console-setup-${pkgver}" ]]
-    then 
-        cd console-setup-${pkgver} 
-    else
-	echo "Source directory not found.".
-	exit 1
-    fi
-
-
-    if [[ ${?} != 0 ]]
-    then
-        cd console-setup-${pkgver}
-    fi
-
-    install -d ${pkgdir}/usr/bin/
-    install -m755 Keyboard/ckbcomp ${pkgdir}/usr/bin/
+    while read -r file; do
+        echo "Installing ${file}" >&2
+        mkdir -p "$(dirname "${pkgdir}/${file}")"
+        cp -ad "${srcdir}/data/${file}" "${pkgdir}/${file}"
+    done < <(find "${srcdir}/data" -type f -o -type l 2> /dev/null | sed "s|${srcdir}/data||g")
 }
