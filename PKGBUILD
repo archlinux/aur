@@ -11,7 +11,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}"
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 arch=('any')
@@ -32,7 +32,7 @@ options=()
 install="${_name}.install"
 source=("$_name-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
 noextract=()
-sha512sums=('1dcb4a972e0d18fb10aeede84b7c7121c55588c57b7bd6454361f4feabf7a9e4c0fa268af8e77a6e8eed901530718d4270b62cb972d33503989b8ed57e6f0ae0')
+sha512sums=('57e867b3ea7cf8d35655fcbe66b98641cc083d91173d55a13461c896365a47272cc28acd9b5231269e778863b99a4aa9cff90adc603f0c14e62e6ae8cc54b8b3')
 
 prepare() {
   mv "${pkgname}.nvim-${pkgver}" "${pkgname}"
