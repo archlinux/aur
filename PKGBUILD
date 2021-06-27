@@ -3,7 +3,7 @@
 _npmname=http-server
 pkgname=nodejs-$_npmname
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple zero-configuration command-line http server"
 arch=('any')
 url="https://github.com/nodeapps/http-server"
