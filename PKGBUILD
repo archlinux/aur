@@ -1,13 +1,14 @@
 # Maintainer: Peter Lamby <admin@peterlamby.de>
 pkgname=hypnos-soil
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Backend for Hypnos - The selfhosted audio cloud'
 groups=('hypnos')
 arch=('i686' 'x86_64')
 url='https://git.sr.ht/~serra/Soil'
 license=('GPL3')
 makedepends=('git' 'rust')
+depends=('ffmpeg')
 source=("git+https://git.sr.ht/~serra/Soil#tag=v${pkgver}"
         'soil.service'
         'soil.sysusers'

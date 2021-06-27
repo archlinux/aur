@@ -1,7 +1,7 @@
 pkgbase = hypnos-soil
 	pkgdesc = Backend for Hypnos - The selfhosted audio cloud
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~serra/Soil
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = hypnos-soil
 	license = GPL3
 	makedepends = git
 	makedepends = rust
+	depends = ffmpeg
 	backup = etc/conf.d/soil
 	source = git+https://git.sr.ht/~serra/Soil#tag=v0.1.0
 	source = soil.service
