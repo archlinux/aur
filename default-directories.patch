@@ -1,0 +1,14 @@
+diff --git a/gtranslate/main.go b/gtranslate/main.go
+--- a/gtranslate/main.go
++++ b/gtranslate/main.go
+@@ -35,8 +35,8 @@ type TranslateSettings struct {
+ 
+ func main() {
+        bind := pflag.StringP("bind", "b", ":5000", "Address to bind the server to, [addr]:port")
+-       templatesDir := pflag.String("templates-dir", "./templates", "Templates directory")
+-       staticDir := pflag.String("static-dir", "./static", "Static files directory")
++       templatesDir := pflag.String("templates-dir", "/usr/local/share/gtranslate/templates", "Templates directory")
++       staticDir := pflag.String("static-dir", "/usr/local/share/gtranslate/static", "Static files directory")
+        proxy := pflag.String("proxy", "", "Proxy URL, with no scheme http is assumed")
+        userAgent := pflag.String("user-agent", "", "User-Agent header to use")
+        pflag.Parse()

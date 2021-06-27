@@ -1,0 +1,13 @@
+pkgbase = gtranslate-git
+	pkgdesc = Better front-end for Google Translate
+	pkgver = r44.b0c5f2c
+	pkgrel = 1
+	url = https://sr.ht/~yerinalexey/gtranslate
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	provides = gtranslate
+	source = git+https://git.sr.ht/~yerinalexey/gtranslate
+	sha256sums = SKIP
+
+pkgname = gtranslate-git
