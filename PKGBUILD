@@ -2,17 +2,18 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.4.r1.g9eefab0e4a
+pkgver=0.5.4.r9.g7cde5a222c
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
-depends=('libslirp' 'sdl2')
-makedepends=('git' 'glib2' 'glu' 'gtk3' 'libsamplerate' 'meson' 'python')
+depends=('sdl2')
+makedepends=('git' 'glib2' 'glu' 'gtk3' 'libepoxy' 'libpcap' 'libsamplerate' 'libslirp' 'meson' 'ninja' 'openssl' 'pixman' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('lto')
+install=$_pkgname.install
 source=(
 	'git+https://github.com/Cyan4973/xxHash.git'
 	'git+https://github.com/epezent/implot.git'
@@ -53,16 +54,16 @@ prepare() {
 build() {
 	cd $_pkgname
 	./configure \
+		--audio-drv-list="sdl" \
 		--enable-slirp=system \
-		--extra-cflags="$CFLAGS -DXBOX=1 -I$PWD/ui/imgui" \
-		--extra-ldflags="$LDFLAGS" \
+		--extra-cflags="-DXBOX=1" \
 		--target-list=i386-softmmu \
 		--with-git-submodules=ignore
 	make qemu-system-i386
 }
 
 package() {
-	depends+=('libgdk-3.so' 'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-3.so' 'libsamplerate.so')
+	depends+=('libgdk-3.so' 'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-3.so' 'libpcap.so' 'libpixman-1.so' 'libsamplerate.so' 'libslirp.so')
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm755 build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
