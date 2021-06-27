@@ -33,4 +33,3 @@ pkgbase = archivy-git
 	sha256sums = 538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4
 
 pkgname = archivy-git
-
