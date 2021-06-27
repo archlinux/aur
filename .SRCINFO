@@ -1,9 +1,11 @@
 pkgbase = gitstatus-git
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = r1347.6d00edd
+	pkgver = r1363.ea398d9
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
+	arch = aarch64
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -21,4 +23,3 @@ pkgbase = gitstatus-git
 	md5sums = SKIP
 
 pkgname = gitstatus-git
-

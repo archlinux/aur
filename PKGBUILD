@@ -2,10 +2,10 @@
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
 pkgname=gitstatus-git
-pkgver=r1347.6d00edd
+pkgver=r1363.ea398d9
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
-arch=('x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
 depends=('glibc')
