@@ -1,0 +1,21 @@
+pkgbase = python2-service-identity
+	pkgdesc = Service identity verification for pyOpenSSL
+	pkgver = 21.1.0
+	pkgrel = 1
+	url = https://github.com/pyca/service-identity
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest-runner
+	makedepends = python2-setuptools
+	makedepends = python2-idna
+	depends = python2-attrs
+	depends = python2-pyasn1-modules
+	depends = python2-pyasn1
+	depends = python2-cryptography
+	depends = python2-six
+	optdepends = python2-idna: for Internationalized Domain Names support
+	source = python2-service-identity-21.1.0.tar.gz::https://github.com/pyca/service-identity/archive/refs/tags/21.1.0.tar.gz
+	sha512sums = 6375bc5e8329118b2beb163ffffecc1479839e4e98173576e4737deebcc4c057ac357315976d3f53a280defd4e2c1f6b74e9604ec1aa94144240c2fb4bf07461
+
+pkgname = python2-service-identity
+
