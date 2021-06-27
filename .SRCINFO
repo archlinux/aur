@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-da
+	pkgdesc = Danish language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-da-29.2.0.xpi
+	source = palemoon-i18n-da-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-da@palemoon.org
+	sha256sums = 05cb2270c2ce81e1072020bbb2bda60f93e7fd810b1904226549ee8aaa77a672
+
+pkgname = palemoon-i18n-da
