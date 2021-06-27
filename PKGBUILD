@@ -1,15 +1,18 @@
 # Maintainer Alfred Jophy alfredjophy@protonmail.com
 pkgname=motivate
 pkgdesc="Gives you a motivational quote"
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 url="https://github.com/AlfredEVOL/motivate"
 arch=('x86_64')
-makedepends=('git')
 license=('MIT')
-source=("$pkgname::git+https://github.com/AlfredEVOL/motivate.git")
+source=("https://github.com/AlfredEVOL/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 package() {
-       cd "$pkgname"
-       make DESTDIR="$pkgdir/" install
+        
+        mkdir -p $pkgdir/usr/share/$pkgname
+        mkdir -p $pkgdir/usr/bin
+        cp motivate "$pkgdir/usr/bin/"
+        cp data/quotes.map $pkgdir/usr/share/$pkgname
+        cp data/quotes.txt  $pkgdir/usr/share/$pkgname
 }
