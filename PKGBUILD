@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=smooth-git
-pkgver=0.9.6.r19.g7ae4e410
+pkgver=0.9.8.r1.g1813dcf2
 pkgrel=1
 pkgdesc="An object oriented C++ class library"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="http://www.smooth-project.org"
 license=('Artistic2.0')
 depends=('gtk3' 'libjpeg-turbo' 'libxml2')
 makedepends=('git')
-provides=("${pkgname%-git}" 'libsmooth-0.9.so=0-64')
+provides=("${pkgname%-git}" 'libsmooth-0.9.so')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/enzo1982/smooth.git')
 sha256sums=('SKIP')
