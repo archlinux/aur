@@ -2,7 +2,7 @@
 
 pkgname=organize
 _name="$pkgname-tool"
-pkgver=1.9.1
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A command line utility to automate file organization tasks'
 arch=('any')
@@ -16,11 +16,12 @@ depends=('python'
          'python-pendulum'
          'python-pyaml'
          'python-send2trash'
-         'python-textract')
+         'python-simplematch')
+optdepends=('python-textract: extract text from any document')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha1sums=('669a5563aadc717c97d007af08dee4fbeb6894fc')
-sha256sums=('368a265f66f2d5cb2f01e6c76a3d98cac1b1ff6a82c2f5d534f3abb5ca95ad44')
+sha1sums=('2eaeba31fc268262cb882b35672121d1ec3c00d1')
+sha256sums=('c11dd3af2c03132226c218ad661176ef329575bfd324ad7576cd9ab23593cce5')
 
 build() {
   cd "$_name-$pkgver"
