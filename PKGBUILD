@@ -7,7 +7,7 @@ epoch=
 pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
 arch=('any')
 url="https://www.mediahuman.com/youtube-to-mp3-converter/"
-license=('unknown')
+license=('custom')
 groups=()
 depends=(
 	'hicolor-icon-theme>=0.17-1'
@@ -25,8 +25,8 @@ backup=()
 options=()
 install=
 changelog=
-source_i386=("$pkgname-$pkgver.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
-source_x86_64=("$pkgname-$pkgver.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
+source_i386=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
+source_x86_64=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
 noextract=()
 md5sums_i386=("546482dbd9970d7b87c7995fd13681d4")
 md5sums_x86_64=("cd84913ec234a5c8d3edcc00c2b8436b")
@@ -40,10 +40,8 @@ prepare() {
 	else
 		echo "Skipping creating subdirectory '$pkgname-$pkgver': Directory already exists."
 	fi
-	tar -xf "data.tar.xz" -C "$pkgname-$pkgver"
-	tar -xf "control.tar.gz" -C "$pkgname-$pkgver"
-
-	
+	tar -xf "data.tar.xz" -C "${pkgname}-${pkgver}"
+	tar -xf "control.tar.gz" -C "${pkgname}-${pkgver}"
 }
 
 pkgver() {
@@ -73,9 +71,13 @@ package() {
 	# Copy the binaries and application to their destination in /pkg as root folder
 	cp -r -i "usr" "$pkgdir/"
 	cp -r -i "opt" "$pkgdir/"
+	cp "user/share/doc/youtube-to-mp3/copyright" "$pkgdir/LICENSE"
 
 	# Remove .deb packages
 	cd ../..
 	echo "Cleaning up.."
 	rm "$pkgname-$pkgver.deb"
+
+	# install the license
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
