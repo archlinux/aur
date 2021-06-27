@@ -1,6 +1,6 @@
 pkgbase = woob-git
 	pkgdesc = Core library and modules for Web Outside of Browsers
-	pkgver = 3.0.r73.gfd7610aaa
+	pkgver = 3.0.r300.g9b966643d
 	pkgrel = 1
 	url = https://woob.tech
 	arch = any
@@ -30,4 +30,3 @@ pkgbase = woob-git
 	sha256sums = SKIP
 
 pkgname = woob-git
-

@@ -5,7 +5,7 @@
 # Contributor: ianux <ianux@free.fr>
 
 pkgname=woob-git
-pkgver=3.0.r73.gfd7610aaa
+pkgver=3.0.r300.g9b966643d
 pkgrel=1
 pkgdesc="Core library and modules for Web Outside of Browsers"
 arch=(any)
