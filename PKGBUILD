@@ -3,8 +3,8 @@
 
 pkgname=geographiclib
 _pkgname=GeographicLib
-pkgver=1.51
-pkgrel=2
+pkgver=1.52
+pkgrel=1
 pkgdesc="Set of C++ classes for conversions between geographic, UTM, UPS, MGRS, geocentric, and local cartesian coordinates, for gravity, geoid height, and geomagnetic field calculations and for solving geodesic problems. Geotrans replacement."
 arch=('i686' 'x86_64')
 url="http://geographiclib.sourceforge.io/"
@@ -14,7 +14,7 @@ makedepends=('gcc' 'make' 'cmake')
 options=('staticlibs')
 
 source=(http://downloads.sourceforge.net/project/geographiclib/distrib/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('d782c8146945ab6bf5836747b2a4b37d')
+md5sums=('52407e8380335957377c6ac6118ce6e3')
 
 install=geographiclib.install
 
