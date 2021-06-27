@@ -9,8 +9,8 @@ pkgdesc="Python binding to the wlroots library using cffi"
 arch=(any)
 license=('UIUC')
 url="https://github.com/flacjacket/pywlroots"
-depends=('python-setuptools')
-makedepends=('python-setuptools')
+depends=('python-setuptools' 'wlroots' 'python-xkbcommon' 'pywayland')
+makedepends=()
 sha256sums=('SKIP')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
