@@ -1,0 +1,20 @@
+pkgbase = zedpro
+	pkgdesc = Zed! Encrypted containers manager
+	pkgver = 2020.4
+	pkgrel = 1
+	url = http://www.primx.eu
+	install = zedpro.install
+	arch = i686
+	arch = x86_64
+	license = Prim'X
+	depends = libxslt
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !emptydirs
+	source_i686 = https://www.zedencrypt.com/file/get/-/item_key/13802-26-7fd209fe
+	sha512sums_i686 = d489a8567dc3417c6a2c13670e3cc6d092efe5eacf19df41ade55c70204a36ad939bd01f0c9a29eeb10793739b8b2b224f39e2ee91039715445031fd9226f21e
+	source_x86_64 = https://www.zedencrypt.com/file/get/-/item_key/13802-25-299e76f8
+	sha512sums_x86_64 = 79c4eaeeea9fedea87760191bdf505990257674cae8ce98e923cc9afb057f42cfd6cdbb10e5d751ce864418e3f5dc8f82e5b563689b8d1b893eb27abc9f74e78
+
+pkgname = zedpro

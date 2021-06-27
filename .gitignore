@@ -1,0 +1,7 @@
+.gitconfig
+man-pages-fr-*-any.pkg.tar.xz
+man-pages-fr-*-any.pkg.tar.xz.sig
+manpages-fr-l10n-*.tar.bz2
+manpages-l10n/
+pkg/
+src/
