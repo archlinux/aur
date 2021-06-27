@@ -2,7 +2,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! "
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -10,8 +10,8 @@ license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git ${pkgname}-bin)
 #replaces=(${pkgname})
-depends=( 'gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
-makedepends=('unzip' 'yasm' 'nasm' 'clang' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust')
+depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
+makedepends=('unzip' 'yasm' 'nasm' 'clang' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust' 'python')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -23,19 +23,33 @@ sha256sums=('a5338c95ca147c87a8d9eced9674628bd26385a042691ec8cde190847eaaa7ae'
             'SKIP'
             '933402087be7fe14988b43345597158c602fc2adbc7e7631ec82511af5d27698'
             '5b05927b093730188432a12c69ced05fe7489161712da9e5911564bfc2e4ba7a')
-
-package() {
+build() {
 # install vcpkg
+# git clone https://github.com/microsoft/vcpkg --branch 2020.11-1
     vcpkg/bootstrap-vcpkg.sh
     mkdir -pv ${srcdir}/vcpkg
     export VCPKG_ROOT=${srcdir}/vcpkg
     vcpkg/vcpkg install libvpx libyuv opus
 
-
+# build rustdesk
     cd "${srcdir}/${pkgname}-${pkgver}/"
+    cargo run --release
+}
 
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cargo test --release
+}
+
+package() {
 # install rustdesk
-    cargo install --no-track --locked --all-features --root "${pkgdir}/usr/" --path .
+    install -dm0755 "${pkgdir}/usr/bin"
+    #     find "${srcdir}/${pkgname}-${pkgver}/target/debug" \
+    find "${srcdir}/${pkgname}-${pkgver}/target/release" \
+     -maxdepth 1 \
+     -executable \
+     -type f \
+     -exec install -m 0755 "{}" "${pkgdir}/usr/bin" \;
 
 # install libsciter-gtk.so
     cp -r "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/bin/"
