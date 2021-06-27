@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=freac-git
-pkgver=1.1.3.r31.a75a4a43
+pkgver=1.1.5.r1.613b5731
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('fdkaac' 'faad2' 'lame' 'libmp4v2' 'mpg123' 'libogg' 'opus' 'libpng'
          'speex' 'libvorbis' 'libpulse' 'libgudev' 'boca-git' 'hicolor-icon-theme')
 makedepends=('git')
-provides=("${pkgname%-git}" 'freac.so=freac.so-64')
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/enzo1982/freac.git')
 sha256sums=('SKIP')
