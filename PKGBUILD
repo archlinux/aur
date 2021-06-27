@@ -1,10 +1,10 @@
-# Maintainer: Vyacheslav Konovalov <f4f7l1hvr@relay.firefox.com>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_commit=67fcb7d37f0cd24564b7ff2738cd5e69551edc6d
+_commit=f530a4e89f930fb36db2ee2b9a4454bce825d3c9
 pkgname=deemix
-pkgver=2.0.16
-pkgrel=2
-pkgdesc='A deezer downloader built from the ashes of Deezloader Remix'
+pkgver=3.0.0
+pkgrel=1
+pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://git.freezer.life/RemixDev/deemix-py'
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://git.freezer.life/RemixDev/deemix-py/archive/$_commit.tar.gz")
-sha512sums=('51a5b5536ebfa3cc25b8a5757f3b680d5a61a210b58eed0a45bd4408cc5b083d8bd64459d433b60526cceb86f827613f7e7d320f91e9630a9ef370280bab8540')
+sha512sums=('beb7e1d984022e42a227c1113e7a6b90a5925b9e02abaf0770470d0662bbf8d0b69294bf0a6331275c50dd864322e6afb82afa3ffb3b6bcb9319fec6a12b2788')
 
 pkgver() {
     cd deemix-py
