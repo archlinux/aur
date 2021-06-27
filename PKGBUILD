@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=feroxbuster
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A fast, simple, recursive content discovery tool written in Rust"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/epi052/feroxbuster"
 license=("MIT")
 makedepends=("git" "cargo")
 source=("${pkgname}-${pkgver}::https://github.com/epi052/feroxbuster/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('f3890cbcc188f03abaabe3baf9dec2b8d154dc2c09aa5367c2af5edb21ef3139')
+sha256sums=('9dd8423dad962a3e0cccd5c61546d9b63bd5d3082d4544ecee295dee2a960909')
 
 build() {
     cd "$pkgname-$pkgver"
