@@ -1,7 +1,7 @@
 pkgbase = furiusisomount
 	pkgdesc = A PyGTK interface for managing ISO/IMG/BIN/MDF/NRG image files
 	pkgver = 0.11.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/furiusisomount
 	install = furiusisomount.install
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = furiusisomount
 	depends = desktop-file-utils
 	depends = fuseiso
 	depends = pygtk
-	source = http://launchpad.net/furiusisomount/python/0.11.3.1/+download/furiusisomount_0.11.3.1.tar.gz
+	source = https://launchpad.net/furiusisomount/python/0.11.3.1/+download/furiusisomount_0.11.3.1.tar.gz
 	source = furiusisomount.desktop
 	md5sums = 811cc5042c1d7ed69e4c0af347c94848
 	md5sums = ee0a8d9575a608c127ccb362f88508d4
 
 pkgname = furiusisomount
-
