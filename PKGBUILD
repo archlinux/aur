@@ -17,7 +17,7 @@ depends=("python"
          "python-mutagen"
          "python-requests"
          "python-spotipy"
-         "pythoon-deezer-py")
+         "python-deezer-py")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=("efc708062719a3d4e024524697d86990fdb465e5d4098389a951d27633073c02")
