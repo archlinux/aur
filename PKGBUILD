@@ -2,13 +2,13 @@
 pkgname=arcdps-log-manager
 pkgver=1.1.1
 _gitver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Manager for Guild Wars 2 arcdps EVTC logs"
 arch=(x86_64)
 url="https://gw2scratch.com/tools/manager"
 license=(MIT)
 makedepends=(git 'dotnet-sdk>=5' 'dotnet-sdk<6' imagemagick)
-depends=('dotnet-runtime>=3.1' gtk3)
+depends=(dotnet-runtime-3.1 gtk3)
 source=("git+https://github.com/gw2scratch/evtc.git#tag=manager-v$_gitver"
         "$pkgname.desktop")
 sha256sums=(SKIP
