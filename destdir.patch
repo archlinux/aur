@@ -1,0 +1,28 @@
+diff --git a/coreutils/build.vsh b/coreutils/build.vsh
+--- a/coreutils/build.vsh
++++ b/coreutils/build.vsh
+@@ -4,12 +4,14 @@ const (
+        ignore_dirs = []string{}
+ )
+ 
++destdir := if os.environ()["DESTDIR"] != "" { os.environ()["DESTDIR"] } else { "bin" }
++
+ vargs := if os.args.len > 1 { os.args[1..] } else { []string{} }
+ 
+ dirs := ls('.') ?.filter(is_dir(it))
+ 
+-if !exists('bin') {
+-       mkdir('bin') ?
++if !exists(destdir) {
++       mkdir_all(destdir) ?
+ }
+ 
+ for dir in dirs {
+@@ -27,6 +29,6 @@ for dir in dirs {
+                final_args += arg + ' '
+        }
+        println('compiling ${dir}...')
+-       cmd := 'v $final_args-o bin/$dir $dir'
++       cmd := 'v $final_args-o $destdir/$dir $dir'
+        execute_or_panic(cmd)
+ }

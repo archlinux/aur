@@ -22,8 +22,9 @@ pkgver() {
   )
 }
 
-build() {
-  cd "$_pkgname"
+prepare() {
+  cd "$srcdir"
+  patch --verbose --ignore-whitespace --fuzz 3 --forward --strip=1 --input="../destdir.patch"
 }
 
 package() {
