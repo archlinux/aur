@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=noi-despised-git
-pkgver=r39.99c788f
+pkgver=r41.106246a
 pkgrel=1
 pkgdesc='NOI 背笔试工具'
 arch=('x86_64')
@@ -14,17 +14,17 @@ source=('git://github.com/ouuan/Despised.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd Despised
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd Despised
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd Despised
-	g++ main.cpp -o despised -std=c++11
+    cd Despised
+    make
 }
 
 package() {
-	cd Despised
-	install -Dm755 despised "$pkgdir/usr/bin/despised"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd Despised
+    install -Dm755 despised "$pkgdir/usr/bin/despised"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
