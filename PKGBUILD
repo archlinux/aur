@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
-pkgver=1.4.0
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
@@ -11,7 +11,12 @@ license=('MIT')
 depends=('python-pygments')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f1baae99d247628d823659856fa6e734194ad7b4733b7f14fc8607f6f5be06f9')
+sha256sums=('c42d5202282fa10b57f5830b8e4a74da7a75d585f000b812bbfd90bff28c2bfc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  mv jello/man ./
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -20,9 +25,10 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dvm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim: ts=2 sw=2 et:
