@@ -1,0 +1,14 @@
+pkgbase = palemoon-i18n-hr
+	pkgdesc = Croatian language pack for Pale Moon browser
+	pkgver = 29.2.0
+	pkgrel = 1
+	url = https://addons.palemoon.org/language-packs/
+	arch = any
+	license = MPL
+	license = GPL
+	depends = palemoon-i18n-common
+	noextract = palemoon-i18n-hr-29.2.0.xpi
+	source = palemoon-i18n-hr-29.2.0.xpi::https://addons.palemoon.org/?component=download&version=29.2.0&id=langpack-hr@palemoon.org
+	sha256sums = 58185aa4293cf1741fe1780b8901d95410fc4d2148d894c05c395b10df20074c
+
+pkgname = palemoon-i18n-hr
