@@ -1,0 +1,15 @@
+pkgbase = ansible-gsetting-git
+	pkgdesc = Ansible module for setting GSettings entries
+	pkgver = r18.3f21f84
+	pkgrel = 1
+	url = https://github.com/jistr/ansible-gsetting
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = ansible
+	provides = ansible-gsetting
+	conflicts = ansible-gsetting
+	source = git+https://github.com/jistr/ansible-gsetting.git
+	md5sums = SKIP
+
+pkgname = ansible-gsetting-git
