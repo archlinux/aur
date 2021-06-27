@@ -3,7 +3,7 @@
 pkgname=kasumi-git
 _pkgname=kasumi
 pkgver=2.5.r13.83b6025
-pkgrel=1
+pkgrel=2
 pkgdesc="A personal dictionary manager for Anthy"
 url="https://en.osdn.jp/projects/kasumi/"
 arch=(any)
@@ -28,6 +28,7 @@ prepare() {
 }
 
 build() {
+    export CXXFLAGS='-std=c++14'
     cd ${srcdir}/${_pkgname}
     ./configure --prefix=/usr --sysconfdir=/etc
     make

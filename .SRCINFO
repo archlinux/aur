@@ -1,7 +1,7 @@
 pkgbase = kasumi-git
 	pkgdesc = A personal dictionary manager for Anthy
 	pkgver = 2.5.r13.83b6025
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.osdn.jp/projects/kasumi/
 	arch = any
 	makedepends = git
@@ -14,4 +14,3 @@ pkgbase = kasumi-git
 	sha256sums = SKIP
 
 pkgname = kasumi-git
-
