@@ -5,8 +5,8 @@ pkgbase = pywayland
 	url = https://github.com/flacjacket/pywayland
 	arch = any
 	license = Apache2
-	makedepends = python-setuptools
 	depends = python-setuptools
+	depends = wayland
 	source = https://github.com/flacjacket/pywayland/archive/refs/tags/v0.4.4.tar.gz
 	sha256sums = SKIP
 

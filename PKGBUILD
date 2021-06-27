@@ -9,8 +9,8 @@ pkgdesc="Python bindings for the libwayland library"
 arch=(any)
 license=('Apache2')
 url="https://github.com/flacjacket/pywayland"
-depends=('python-setuptools')
-makedepends=('python-setuptools')
+depends=('python-setuptools' 'wayland')
+makedepends=()
 sha256sums=('SKIP')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
