@@ -1,0 +1,14 @@
+pkgbase = ijq-git
+	pkgdesc = Interactive jq
+	pkgver = v0.3.5.r0.ga0abb27
+	pkgrel = 1
+	url = https://sr.ht/~gpanders/ijq
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	makedepends = scdoc
+	provides = ijq
+	source = git+https://git.sr.ht/~gpanders/ijq
+	sha256sums = SKIP
+
+pkgname = ijq-git
