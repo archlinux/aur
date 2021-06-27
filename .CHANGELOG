@@ -1,6 +1,60 @@
 Version history
 ===============
 
+0.9.38
+------
+
+2021-06-27
+
+Windowed mode at 1280x720 is now the default on running Lix for the very first
+time. Before, the default was software fullscreen a.k.a. fullscreen window.
+
+Smaller widescreen resolutions such at 1280x720 that would barely fail to pick
+2x for the skill panel icons (instead of the tiny 1x) will get slightly higher
+panel to accomodate the better-looking 2x skill icons.
+
+Adjusted text vertical offset to vertically center text on buttons better at
+1280x720. 1280x800 is still okay, text is now slightly too high here. The text
+positioning is already full of hacks and compromises, anything better either
+needs more hacks or a clean do-over. I feel like a 90's website designer.
+
+The main menu preserves the background's aspect ratio. To fill a screen that
+is not 4:3, it crops the background's sides.
+
+Revenge of the Giant Crab (2p): Added decoration, walkers 10->30, overtime
+30->90 seconds.
+
+Fix #424: Always show the level title in the lobby under the graphical preview,
+even when we return from a netgame.
+
+Fix #423: De-duplicate the multiplayer level tree, as reported by Dullstar.
+I had extra copies of Along the Fabrics of Your Clothing in the 8p directory.
+
+Updated Allegro DLLs to Allegro 5.2.7.1. You can check what Lix usesat runtime
+with Lix's command-line argument: --allgero-version
+
+I build the 32-bit Windows release with LDC, not with DMD. LDC generates
+faster-running machine code, exactly what we want for a release version. Tell
+me in case you run into any problems. (64-bit Windows release has always been
+built with LDC and it still is.)
+
+During compilation, Lix prints target architecture, OS, and compiler.
+
+Fix deprecations for DMD 2.097.0: In the source code, the "body" keyword is
+finally deprecated. Converted the entire codebase to the "do" keyword in front
+of function bodies. Added "static import std.stdio;" to access std.stdio.File
+in Lix's file.filename.base.
+
+Documentation: src/icon/readme.txt has CRLF line endings, to be readable in
+Windows Notepad. (Documentation should have CRLF endings, code should have LF
+endings.) Removed note in the 32-bit DMD Windows build notes about NuGet libs,
+DMD 32-bit doesn't play well with them.
+
+The build documentation points to new archives (lix-dlls-libs-dmd32.zip, lix-dlls-libs-ldc32.zip, lix-dlls-libs-win64.zip) because the .lib files
+can be incompatible between compilers.
+
+
+
 0.9.37
 ------
 
