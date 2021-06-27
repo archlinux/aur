@@ -2,8 +2,8 @@
 
 pkgname='wiki-monkey'
 # Don't use "-" in pkgver
-pkgver='5.4.0'
-pkgrel=2
+pkgver='5.5.0'
+pkgrel=1
 pkgdesc="Wiki Monkey - MediaWiki (ArchWiki-optimized) bot and editor-assistant user script (server-enabled version)."
 arch=('any')
 url="https://github.com/kynikos/wiki-monkey/wiki"
@@ -15,10 +15,11 @@ depends=('python-configfile'
          'python-flask-cors'
          'python-flask-migrate' # implies 'python-flask-sqlalchemy'
          'python-marshmallow-sqlalchemy')
-optdepends=('python-pyopenssl: use ad-hoc SSL certificates instead of generating one')
+optdepends=("gunicorn: serve the application with a proper WSGI server instead of Flask's local development server"
+            "python-pyopenssl: make Flask's local development server use ad-hoc SSL certificates instead of a permanent one")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9dc3b948bd965cb9620d7e0f16781de3d381e25133aacbec349faec48e7dd0db')
+sha256sums=('65434a6f3a15264b4fe705acac39549a0c39df1adbd569ad3092f2906518827f')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
