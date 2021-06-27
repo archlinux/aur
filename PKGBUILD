@@ -13,7 +13,7 @@
 pkgname=mingw-w64-qt6-base-static
 _qtver=6.1.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -37,15 +37,17 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0004-Fix-transitive-dependencies-of-static-libraries.patch'
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-static-MariaDB-client-library.patch'
-        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
+        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
+        '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
 sha256sums=('21a8aa9f07170e047270c668c8b037536f40226db7adbc529a0b41c3a3cb3ff2'
-            '1b699b33d303275a21f15eeabf7929eb4bb6c0ffc50dc04b818125be9c459f13'
-            '97ffcc7197b74e3cc5492531249c442cdbf02d231dc55af8f10fb688e383105c'
-            '9ad76422d221510074241ccabf3880c19c493aaa1f99a222e34ecade0b64a254'
-            'ea567893e43a23143ec31ff2206a1f221c24588733d55f1d918e9d1dd6746a47'
-            'a42c48bceb8c80eaa870e362cdf5f92634ca8b54cbbf1f58ed3a72d8be8517f7'
-            '5361c88bdf85a54b7438c3aea9a12f9d94822b9cd396da2d15741de8acae5a3a'
-            'dce66f9a271586a46be73689ff64f0d668dfe3f526a3558b3e8ca1169aa711f8')
+            '0668320d4275eea2d7d772dbb55df4eca37520d931d093dcbd80450aa8d72b25'
+            '8b261eccf904561520f51b3e5a290336e014410d1e147def8aa8f21a097feed5'
+            '6b5837037e08da87c70c618ce5f33c3e7031c7593efd10fcb160e41d36e63d6c'
+            'cb920842d1fc89b181acefab20db5b83ae3f39617ce7b507d9f691768900ae6d'
+            '5995785ef5837532cafdacf82e639a74f907c49dd344338584d6c3b4d7bb626d'
+            '1f2b8ef96fb8d3e3c24fc8e0b6e388f1cb6effd2e73d9e6b3d50c8896b055760'
+            '9d0ea0a2621aea3a1ae8066680a7d41ffda1cc9c9b93ebb3f2219c3b613ab061'
+            '272950cba900aa0b11b1c7722eed8ce1ff8c8625de97d9815a8d252ddb6ee947')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
