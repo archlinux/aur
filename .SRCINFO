@@ -1,14 +1,13 @@
 pkgbase = python2-fswrap
 	pkgdesc = An opinionated wrapper on file system and path functions
-	pkgver = 0.1.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/lakshmivyas/fswrap
 	arch = any
 	license = MIT
 	makedepends = python2
-	makedepends = python2-distribute
-	source = http://pypi.python.org/packages/source/f/fswrap/fswrap-0.1.2.tar.gz
-	md5sums = f0654c3c3277316f691af7339fdadfb3
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/f/fswrap/fswrap-1.0.0.tar.gz
+	md5sums = edb6b6a3b456ff2ca46ad2e08e3218fa
 
 pkgname = python2-fswrap
-
