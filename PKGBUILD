@@ -2,15 +2,15 @@
 
 pkgname=drone-runner-docker
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Drone pipeline runner that executes builds inside Docker containers"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('Apache 2')
 url="https://github.com/drone-runners/drone-runner-docker"
 depends=('docker')
 makedepends=('go')
-conflicts=('drone-agent')
-backup=("etc/drone/drone-runner-docker.ini")
+conflicts=('drone-runner-docker-git')
+backup=("etc/drone-runner/drone-runner-docker.ini")
 install='drone-runner-docker.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 		drone-runner-docker.service
