@@ -1,0 +1,14 @@
+pkgbase = nodejs-deemix
+	pkgdesc = A barebone deezer downloader library
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/deemix
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	noextract = deemix-3.0.0.tgz
+	source = http://registry.npmjs.org/deemix/-/deemix-3.0.0.tgz
+	sha256sums = 870c5b4a0600425cd89d79199587875261d263cb3a1465581dfcb21e1c9f000a
+
+pkgname = nodejs-deemix
