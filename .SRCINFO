@@ -1,6 +1,6 @@
 pkgbase = nodejs-svgexport
 	pkgdesc = Node.js module and command-line tool for exporting SVG to PNG and JPEG.
-	pkgver = 0.3.2
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/shakiba/svgexport
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = nodejs-svgexport
 	makedepends = phantomjs
 	depends = nodejs
 	provides = nodejs-svgexport
-	noextract = svgexport-0.3.2.tgz
-	source = http://registry.npmjs.org/svgexport/-/svgexport-0.3.2.tgz
-	md5sums = c3c55197f7fde41a62107b63f9947cc7
+	source = http://registry.npmjs.org/svgexport/-/svgexport-0.4.1.tgz
+	sha512sums = a9142ec5903a813df8c4cb3ef66fc11959711714357ed2e2d4707581488e198ae9fc99bac21853644998721405cbec07286764c8b07ddf0e4c5e811c36d6dc36
 
 pkgname = nodejs-svgexport
-

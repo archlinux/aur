@@ -1,4 +1,7 @@
 pkg/
 src/
-*gz
-*xz
+*.gz
+*.xz
+*.tgz
+*.zst
+*.sig
