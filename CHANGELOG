@@ -1,16 +1,11 @@
-See the full changelog at
+See the full changelog for all versions at:
 https://github.com/krathalan/wtwitch/blob/master/FULLCHANGELOG
 
-2.2.1 (February 6, 2021)
-    Fixed a bug with [w] tab completion where offline streamers were being recommended
-
-2.2.2 (May 12, 2021)
-    Updated links to Github
-    Fixed minor shellcheck warnings
-
-2.2.3 (May 20, 2021)
-    Fixed an issue where ampersands (&) in queries (e.g. "wtwitch g 'dungeons & dragons online'") would not resolve correctly in the Twitch API
-      https://github.com/krathalan/wtwitch/issues/1
-
-2.2.4 (May 20, 2021)
-    Fixed scdoc error
+2.3.0 (June 26, 2021)
+    Added command to show and watch VODs from a streamer
+      To list VODs: wtwitch v [streamer]
+      To watch a VOD: wtwitch v [streamer] [number to watch]
+      Previously 'wtwitch v' would ouptut the wtwitch version.
+      Now, use 'wtwitch version' to print the version.
+    Added pagination to "wtwitch g" command to let you browse more streamers
+    Added more French translations from Léo Villeveygoux

@@ -1,6 +1,6 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
-	pkgver = 2.2.4
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/krathalan/wtwitch
 	changelog = CHANGELOG
@@ -12,11 +12,10 @@ pkgbase = wtwitch
 	depends = streamlink
 	optdepends = mpv: for watching streams
 	optdepends = vlc: for watching streams
-	source = https://github.com/krathalan/wtwitch/archive/refs/tags/2.2.4.tar.gz
-	source = https://github.com/krathalan/wtwitch/releases/download/2.2.4/2.2.4.tar.gz.sig
+	source = https://github.com/krathalan/wtwitch/archive/refs/tags/2.3.0.tar.gz
+	source = https://github.com/krathalan/wtwitch/releases/download/2.3.0/2.3.0.tar.gz.sig
 	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
-	sha256sums = 549d991d023b0bc61acbafa9805bf95a131637e33e4c8db085ef1480c7566fa0
-	sha256sums = 96c8fd3de256a8c730c93d841323990ec021d1e40d04d8f4e024850a8ccf25f6
+	sha256sums = e69ff7ec24c56b90239e9ad644c92fefea0327538abbbbd3bd5ad47daab6bcff
+	sha256sums = bd590ca93fce702c1cd9bc49e3d7f0c0b66312deedff933f9a9a7a3d6368e663
 
 pkgname = wtwitch
-
