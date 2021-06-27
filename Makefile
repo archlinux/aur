@@ -21,3 +21,8 @@ add-xfce4-launcher:
 .PHONY: check
 check:
 	[ '$(PKGNAME)' != '' ]  # User variable PKGNAME must not be empty
+
+# This does not remove the launcher from xfce4
+.PHONY: clean
+clean:
+	rm '$(DESTDIR)$(BINDIR)'toggle-bluetooth

@@ -2,7 +2,7 @@
 
 function main() {
   local lines
-  lines="$(bluetoothctl --show | grep '^\s*Powered:')" || return $?
+  lines="$(bluetoothctl -- show | grep '^\s*Powered:')" || return $?
 
   local status='off'  # bluetooth status
   local line

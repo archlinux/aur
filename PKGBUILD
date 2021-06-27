@@ -1,6 +1,6 @@
 # Maintainer: Daniel Langbein <daniel@systemli.org>
 pkgname="toggle-bluetooth"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Script to toggle bluetooth on/off"
 arch=('any')
