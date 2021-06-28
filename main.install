@@ -3,8 +3,8 @@ post_install() {
     groupadd connective &>/dev/null
     
     chown connective:connective /etc/connective-http -R
-    chmod 660 /etc/connective-http/credentials -R
     chmod 775 /etc/connective-http/ -R
+    chmod 660 /etc/connective-http/credentials -R
     
     if [ ! -f "/etc/authbind/byuid/$(id -u connective)" ]; then
         echo "0.0.0.0,30" > "/etc/authbind/byuid/$(id -u connective)"
