@@ -13,9 +13,11 @@ makedepends=('go' 'git')
 backup=("etc/${_pkgname}/${_pkgname}.conf")
 source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git"
         sysusers.conf
+        tmpfiles.conf
         service)
 sha512sums=('SKIP'
             '6c6761cd37b4b5117c4d7bbb10d77615ca2f08211180fb96f0b5005449b2be4249648f8770f6c161eaaf385f1dd587b97f87bb9655515920a8f25ad8375ad54c'
+            '65c18650a9f27c325057e460fb138552e4957207158f1b737b44e4b3fd35093fb43cd039375680ab84d1a1e92003585b2c18e7d00c3e6f7e14c9792cd5cffb26'
             'a8bdcc2702b64c1b0b80dc09fc870c0ccdf2b6b0a636829ddee52809cc719cb5edb7ff24b6c166efaa5f463ff8289ecede142401bf739dff3a58a34f87a30efb')
 
 pkgver() {
@@ -48,13 +50,13 @@ package() {
   install -Dm755 bin/${_pkgname}-load "${pkgdir}"/usr/bin/${_pkgname}-load
   install -Dm755 bin/${_pkgname}-pbuild "${pkgdir}"/usr/bin/${_pkgname}-pbuild
 
-  install -d "${pkgdir}"/usr/share/webapps/${_pkgname}
+  install -d "${pkgdir}"/usr/share/webapps
   cp -r contrib/webroot "${pkgdir}"/usr/share/webapps/${_pkgname}
-  install -d "${pkgdir}"/var/lib/${_pkgname}
-  cp -r contrib/templates "${pkgdir}"/var/lib/${_pkgname}/templates
-  install -d "${pkgdir}"/var/log/${_pkgname}
+  install -d "${pkgdir}"/usr/share/${_pkgname}
+  cp -r contrib/templates "${pkgdir}"/usr/share/${_pkgname}/templates
 
   install -Dm644 "${srcdir}"/service "${pkgdir}"/usr/lib/systemd/system/"${_pkgname}".service
   install -Dm644 "${srcdir}"/sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/"${_pkgname}".conf
+  install -Dm644 "${srcdir}"/tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/"${_pkgname}".conf
   install -Dm644 contrib/config/hockeypuck.conf.postgres "${pkgdir}"/etc/${_pkgname}/hockeypuck.conf
 }
