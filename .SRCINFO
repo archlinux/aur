@@ -1,7 +1,7 @@
 pkgbase = python-infi.unittest
 	pkgdesc = Various extensions to the unittest module
 	pkgver = 1.1.0
-	pkgrel = 4
+	pkgrel = 5
 	arch = any
 	license = BSD3
 	depends = python-infi
@@ -12,4 +12,3 @@ pkgbase = python-infi.unittest
 	sha256sums = 94fca55157ce215ef89b641b10d7da69c7e3ab8a8ca07cf3462c826a6e89419e
 
 pkgname = python-infi.unittest
-
