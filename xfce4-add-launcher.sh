@@ -15,8 +15,8 @@ set -e
 echo '[Desktop Entry]
 Version=1.0
 Type=Application
-Name=BluetoothOn
-Comment=Turn Bluetooth on
+Name=ToggleBluetooth
+Comment=Toggle Bluetooth on/off
 Exec=toggle-bluetooth
 Icon=nm-device-wwan
 Path=
