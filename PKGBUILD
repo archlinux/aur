@@ -1,6 +1,6 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=digitalroadmap
-pkgver=1.0.0.A1
+pkgver=1.0.0.a1
 
 pkgrel=1
 pkgdesc="DigitalRoadmap - Simple roadmapping utility"
