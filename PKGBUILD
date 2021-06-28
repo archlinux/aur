@@ -1,10 +1,10 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=mtk
-pkgver=1.0.0.a2
+pkgver=1.0.0
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
-pkgrel=1
+pkgrel=2
 pkgdesc="MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit
 (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)"
 arch=( 'any' )
