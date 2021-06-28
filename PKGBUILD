@@ -2,15 +2,15 @@
 
 pkgname=kubernetes-website-git
 pkgdesc="The Kubernetes documentation"
-pkgver=snapshot.initial.v1.17.r464.gea9977e3db
+pkgver=969a3db92.r1369.g6ebdc7cd11
 pkgrel=1
 arch=('any')
-makedepends=('git' 'hugo')
+makedepends=('git' 'hugo' 'npm')
 provides=('kubernetes-website' 'kubernetes-doc')
 conflicts=('kubernetes-website' 'kubernetes-doc')
 url='https://github.com/kubernetes/website'
 license=('custom')
-source=('git+https://github.com/kubernetes/website')
+source=('git+https://github.com/kubernetes/website#branch=main')
 md5sums=('SKIP')
 
 pkgver() {
@@ -20,6 +20,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/website"
+  npm ci
+  make module-init
   make all
 }
 
