@@ -1,0 +1,8 @@
+post_install() {
+	chown pyroscope: /usr/bin/pyroscope
+	chmod ug+s /usr/bin/pyroscope
+}
+
+post_upgrade() {
+	post_install
+}

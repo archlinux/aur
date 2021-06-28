@@ -1,13 +1,14 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=pyroscope-bin
 pkgver=0.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="Continuous profiling platform"
 arch=(x86_64 aarch64)
 url="https://pyroscope.io/"
 license=('APACHE')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
+install=pyroscope.install
 backup=("etc/${pkgname%-bin}/server.yml" "etc/default/${pkgname%-bin}")
 source=(
 	"$pkgname-$pkgver-server.service::https://raw.githubusercontent.com/pyroscope-io/${pkgname%-bin}/v$pkgver/scripts/packages/pyroscope-server.service"
