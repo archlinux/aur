@@ -2,7 +2,7 @@
 
 pkgname=ymuse
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=("x86_64" "aarch64")
 url="https://yktoo.com/en/software/ymuse/"
@@ -32,6 +32,12 @@ prepare() {
 
 
 build() {
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
 	cd "${pkgname}-${pkgver}"
 	go generate
 	go build -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date --iso-8601=seconds)"

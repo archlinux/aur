@@ -1,7 +1,7 @@
 pkgbase = ymuse
 	pkgdesc = Easy, functional, and snappy client for Music Player Daemon
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yktoo.com/en/software/ymuse/
 	arch = x86_64
 	arch = aarch64
@@ -17,4 +17,3 @@ pkgbase = ymuse
 	sha512sums = 10aeae92246376ea4e90ba0180e4c677b32dfd831d54722bf8fa9a7ed4c6d54882f87befda3973482dcf9af081e6a5ec9d0d50167c171d14f2b4ab64326a75ca
 
 pkgname = ymuse
-
