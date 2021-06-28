@@ -18,14 +18,14 @@
 # for his xbmc-vdpau-vdr PKGBUILD at https://archvdr.svn.sourceforge.net/svnroot/archvdr/trunk/archvdr/xbmc-vdpau-vdr/PKGBUILD
 
 # set this to anything to build with clang rather than with gcc
-_clangbuild=1
+_clangbuild=
 
 pkgbase=kodi-git
 pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57875.f14affe3ac9
+pkgver=r57892.4ae5bbfd67b
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
