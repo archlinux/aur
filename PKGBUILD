@@ -1,7 +1,7 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 
 pkgname=vasisualy-git
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Vasisualy is a simple Russian voice assistant written on python 3 for GNU/Linux and Windows."
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('rhvoice' 'speech-dispatcher'
          'python>3'
          'python-beautifulsoup4'
-         'python-future'
          'python-geocoder'
          'python-lxml'
          'python-mss'
+         'python-plyer'
          'python-pyaudio'
          'python-pyalsaaudio'
          'python-pyowm'
@@ -21,7 +21,6 @@ depends=('rhvoice' 'speech-dispatcher'
          'python-pyqt5-webengine'
          'python-qt-material'
          'python-scipy'
-         'python-shell'
          'python-sounddevice'
          'python-speechrecognition'
          'python-translate'
