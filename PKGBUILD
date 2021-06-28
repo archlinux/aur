@@ -5,7 +5,7 @@
 
 pkgbase=lib32-wayland-git
 pkgname=('lib32-wayland-git')
-pkgver=1.17.0.r18.g6908c8c
+pkgver=1.19.0.r23.g3e897fa
 pkgrel=1
 pkgdesc='A computer display server protocol'
 arch=('x86_64')
@@ -26,27 +26,17 @@ pkgver() {
 }
 
 build() {
-    cd wayland
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
 
-    export CC='gcc -m32'
-    export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
-    ./autogen.sh \
-        --prefix='/usr' \
-	--libdir=/usr/lib32 \
-	--disable-documentation \
-        --disable-static 
-        
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    
-    make
+    meson build wayland --buildtype='release' --prefix='/usr' --libdir=/usr/lib32 -D documentation=false
 }
 
 package() {
-
-     make DESTDIR="${pkgdir}" -C wayland install
+     DESTDIR="$pkgdir" ninja -C build install
      rm -rf "${pkgdir}"/usr/{bin,include,share}
 
-     install -dm 755 "${pkgdir}"/usr/share/licenses
-     ln -s wayland "${pkgdir}"/usr/share/licenses/lib32-wayland
+#     install -dm 755 "${pkgdir}"/usr/share/licenses
+#     ln -s wayland "${pkgdir}"/usr/share/licenses/lib32-wayland
 }

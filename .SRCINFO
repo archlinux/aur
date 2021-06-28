@@ -1,6 +1,6 @@
 pkgbase = lib32-wayland-git
 	pkgdesc = A computer display server protocol
-	pkgver = 1.17.0.r18.g6908c8c
+	pkgver = 1.19.0.r23.g3e897fa
 	pkgrel = 1
 	url = https://wayland.freedesktop.org/
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = lib32-wayland-git
 	sha256sums = SKIP
 
 pkgname = lib32-wayland-git
-
