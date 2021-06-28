@@ -1,0 +1,46 @@
+## arg 1:  the new package version
+pre_install() {
+  echo "Installing Drone Runner Docker"
+}
+
+## arg 1:  the new package version
+post_install() {
+  echo "Adding drone-runner-docker user"
+
+  getent group drone-runner &>/dev/null || groupadd -g 634 drone-runner &>/dev/null
+  getent passwd drone-runner-docker &>/dev/null || useradd -u 634 -g drone-runner -s /sbin/nologin \
+    -d /var/lib/drone-runner-docker drone-runner-docker &>/dev/null
+
+  # add drone-runner-docker to docker group
+  gpasswd -a drone-runner-docker docker
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+  echo "Upgrading Drone Runner Docker"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  echo "Removing Drone Runner Docker"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  gpasswd -d drone-runner-docker docker
+  ps -u drone-runner-docker &>/dev/null && return 0 || {
+	getent passwd drone-runner-docker &>/dev/null && userdel drone-runner-docker >/dev/null
+	getent group drone-runner &>/dev/null && {
+		for user in $(compgen -u); do groups $user; done | grep -Eq '\bdrone-runner\b' || groupdel drone-runner >/dev/null
+	}
+  }
+}
+
+# vim:set ts=2 sw=2 et:

@@ -1,0 +1,24 @@
+[Unit]
+Description=Drone pipeline runner that executes builds inside Docker containers
+After=network.target
+After=docker.service
+Requires=network.target
+Requires=docker.service
+
+[Service]
+User=drone-runner-docker
+Group=drone-runner
+Type=simple
+WorkingDirectory=/var/lib/drone-runner-docker
+ReadWritePaths=/var/lib/drone-runner-docker
+ExecStartPre=/usr/bin/mkdir -p /var/lib/drone-runner-docker
+ExecStartPre=/usr/bin/chown -R drone-runner-docker:drone-runner /var/lib/drone-runner-docker
+ExecStart=/usr/bin/drone-runner-docker daemon /etc/drone-runner/drone-runner-docker.ini
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+KillSignal=SIGINT
+LimitNOFILE=8192
+PrivateDevices=yes
+
+[Install]
+WantedBy=multi-user.target
