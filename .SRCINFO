@@ -1,8 +1,8 @@
 pkgbase = ddumbfs
 	pkgdesc = a fast inline deduplication filesystem for Linux. Based on FUSE
 	pkgver = 1.1
-	pkgrel = 1
-	url = http://www.magiksys.net/ddumbfs
+	pkgrel = 2
+	url = https://www.magiksys.net/ddumbfs
 	arch = i686
 	arch = x86_64
 	groups = system
@@ -11,8 +11,7 @@ pkgbase = ddumbfs
 	depends = fuse
 	provides = ddumbfs
 	conflicts = ddumbfs
-	source = http://www.magiksys.net/download/ddumbfs/ddumbfs-1.1.tar.gz
+	source = https://www.magiksys.net/download/ddumbfs/ddumbfs-1.1.tar.gz
 	md5sums = 68c1bf03dbf75be0965d84217966cff9
 
 pkgname = ddumbfs
-
