@@ -1,18 +1,21 @@
 pkgbase = python-healpy-doc
 	pkgdesc = Documentation for Python iminuit module
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = http://healpy.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = python-healpy=1.14.0
+	makedepends = python-healpy=1.15.0
 	makedepends = python-numpydoc
 	makedepends = python-pillow
-	source = https://github.com/healpy/healpy/archive/1.14.0.tar.gz
+	makedepends = python-nbsphinx
+	makedepends = pandoc
+	makedepends = wget
+	makedepends = python-jinja<3.0.0
+	source = https://github.com/healpy/healpy/archive/1.15.0.tar.gz
 	source = fix_doc_warning.patch
-	md5sums = 1d0aa0ee4599f7dc30933fedfafc713b
-	md5sums = 685840f1c3333c81d00b9eea58aafc8e
+	md5sums = b7e683e33e23cc6640d8a1327af3b55f
+	md5sums = 564da1e5f36d3f48543086a233db6ab0
 
 pkgname = python-healpy-doc
-

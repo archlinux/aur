@@ -1,4 +1,3 @@
-diff -ura a/doc/healpy_zoomtool.rst b/doc/healpy_zoomtool.rst
 --- a/doc/healpy_zoomtool.rst	2019-09-10 13:17:36.000000000 +0800
 +++ b/doc/healpy_zoomtool.rst	2019-09-10 14:17:14.230737604 +0800
 @@ -4,7 +4,7 @@
@@ -10,32 +9,3 @@ diff -ura a/doc/healpy_zoomtool.rst b/doc/healpy_zoomtool.rst
  
  Interactive map visualization
  -----------------------------
-diff -ura a/INSTALL.rst b/INSTALL.rst
---- a/INSTALL.rst	2019-09-10 13:17:36.000000000 +0800
-+++ b/INSTALL.rst	2019-09-10 14:16:27.437402127 +0800
-@@ -10,7 +10,7 @@
- Only Linux and MAC OS X are supported, not Windows.
- 
- Binary installation with conda (RECOMMENDED)
-------------------------
-+--------------------------------------------
- 
- Conda forge provides a `conda
- channel <https://anaconda.org/conda-forge/healpy>`_ with a pre-compiled version of ``healpy``
-@@ -20,7 +20,7 @@
-     conda install healpy
-     
- Source installation with Pip
-----------------------------
-+----------------------------
- 
- It is possible to build the latest ``healpy`` with `pip <http://www.pip-installer.org>`_ ::
- 
-@@ -73,6 +73,7 @@
- If everything goes fine, you can test it::
- 
-     python
-+
- >>> import matplotlib.pyplot as plt
- >>> import numpy as np
- >>> import healpy as hp 
