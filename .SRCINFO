@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
 	pkgver = 6.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = anydesk-bin
 	depends = libxdamage
 	depends = gcc-libs
 	depends = lsb-release
+	depends = polkit
 	optdepends = libpulse: audio support
 	optdepends = gnome-themes-extra: adwaita theme
 	provides = anydesk
@@ -41,4 +42,3 @@ pkgbase = anydesk-bin
 	sha256sums_x86_64 = 102e72c75502a4779083320322dd047e2b0c00a25ead7444a00aad1db54325aa
 
 pkgname = anydesk-bin
-

@@ -2,12 +2,12 @@
 pkgname=anydesk-bin
 pkgver=6.1.1
 _pkgver_i686="6.0.1"
-pkgrel=3
+pkgrel=4
 pkgdesc="The Fast Remote Desktop Application"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
 license=('custom')
-depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'lsb-release')
+depends=('fakeroot' 'minizip' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs' 'lsb-release' 'polkit')
 optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 makedepends=('patchelf')
 conflicts=('anydesk')
@@ -43,7 +43,7 @@ package() {
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/icons/hicolor/scalable/apps/anydesk.svg" "${pkgdir}/usr/share/pixmaps/anydesk.svg"
     # install license
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
+
     printf "%b" "\e[1;33m==> WARNING: \e[0mAnyDesk has a systemd service for unattended access. Enable it with: systemctl enable --now anydesk\n"
     # install systemd service
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
