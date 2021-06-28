@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-poliastro
 _pyname=${pkgname#python-}
-pkgver=0.15.0
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Astrodynamics and Orbital Mechanics computations"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ makedepends=('python-setuptools' 'python-dephell')
 #              'python-jplephem'
 #              'python-numba')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('8a366384c8fd8e38b6c3cf21a18aa874')
+md5sums=('6f3e724beff0b8831dc3101acfadb633')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
