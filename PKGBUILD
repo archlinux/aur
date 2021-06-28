@@ -4,7 +4,7 @@
 
 pkgname=mutt-wizard
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
 arch=('any')
@@ -21,7 +21,8 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
             'abook: contact store and tab completion'
             'protonmail-bridge: use neomutt with protonmail accounts'
             'pam-gnupg: automatically unlock gpg keys at session login'
-            'cron: set up automatic mail syncing')
+            'cron: set up automatic mail syncing'
+            'mpop: if you want to use POP3 email access')
 
 options=('zipman')
 

@@ -1,7 +1,7 @@
 pkgbase = mutt-wizard
 	pkgdesc = Simple interface to auto-configure neomutt and isync with safe passwords
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lukesmithxyz/mutt-wizard
 	install = mutt-wizard.install
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = mutt-wizard
 	optdepends = protonmail-bridge: use neomutt with protonmail accounts
 	optdepends = pam-gnupg: automatically unlock gpg keys at session login
 	optdepends = cron: set up automatic mail syncing
+	optdepends = mpop: if you want to use POP3 email access
 	options = zipman
 	source = mutt-wizard-3.2.1.tgz::https://github.com/lukesmithxyz/mutt-wizard/archive/v3.2.1.tar.gz
 	b2sums = 60087ca8b6cfe2f69e1f078942ef24be8d387fbadcacfdf0105e6ee6df315a57fb21320635b685dad5e5e15860adb9cef147dc9b029d77bfdfd196f219faca91
 
 pkgname = mutt-wizard
-
