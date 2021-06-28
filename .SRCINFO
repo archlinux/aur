@@ -1,0 +1,13 @@
+pkgbase = calz-bin
+	pkgdesc = A natural language alternative to Unix 'cal'
+	pkgver = 0.9.2.0
+	pkgrel = 1
+	url = https://github.com/jez/calz
+	arch = x86_64
+	license = MIT
+	provides = calz
+	conflicts = calz
+	source = https://github.com/jez/calz/releases/download/0.9.2.0/calz-0.9.2.0-linux.tar.gz
+	sha512sums = 96ec6f818a97d25dc84cd6eb2b9ba4bd56f7ae806a69f06a0447ac8e03c5cba845b67e22d0014ecc419627ec5c8c08b8989b360dfa411868a0900fbd10110c6d
+
+pkgname = calz-bin
