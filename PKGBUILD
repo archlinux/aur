@@ -4,7 +4,7 @@
 # Contributor: Jishnu Mohan jishnu7 at gmail dot com
 
 pkgname=ttf-malayalam-font-chilanka
-pkgver=1.510
+pkgver=1.540
 pkgrel=1
 pkgdesc="This is Chilanka, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
