@@ -1,6 +1,6 @@
 pkgbase = pcsx-redux-git
 	pkgdesc = Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development
-	pkgver = r1784.97e99941
+	pkgver = r1966.e277597b
 	pkgrel = 1
 	url = https://github.com/grumpycoders/pcsx-redux.git
 	arch = x86_64
@@ -33,8 +33,10 @@ pkgbase = pcsx-redux-git
 	source = git+https://github.com/wolfpld/tracy.git
 	source = git+https://github.com/Neargye/magic_enum.git
 	source = git+https://github.com/Distrotech/ucl.git
+	source = git+https://github.com/gabomdq/SDL_GameControllerDB
 	source = pcsx-redux.sh
 	source = pcsx-redux.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -57,4 +59,3 @@ pkgbase = pcsx-redux-git
 	sha256sums = 9061d4428ba69e06e3a540df6700a637cc28e740f95b07ca46f2cbcc8cdd347c
 
 pkgname = pcsx-redux-git
-
