@@ -1,7 +1,8 @@
 # Maintainer: Carlos Galindo < arch -at_ cgj.es >
 
+_appname=music
 pkgname=nextcloud-app-music
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Music app for Nextcloud and ownCloud"
 arch=('any')
@@ -11,32 +12,43 @@ depends=('nextcloud')
 makedepends=('npm' 'perl' 'perl-locale-po')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('abcef5840f8343cc916efd79d5af788356d4e74d08dd608e65402d4a292ebf20da02b48d512c8333437419c049ed202abc76edc48cfb78a2a080ad2d28cc5cf2')
-
-prepare() {
-    cd "music-$pkgver/build"
-    sed -i 's|cd .. && \\|true|' Makefile
-    sed -i 's|git archive HEAD --format=zip --prefix=music/ > music.zip && \\|true|' Makefile
-    sed -i 's|zip -g music/music.zip music/dist/img|install -D -t $(DESTDIR)/usr/share/webapps/nextcloud/apps/music/dist/img ../dist/img|' Makefile
-    sed -i 's|zip -g music/music.zip music|install -D -t $(DESTDIR)/usr/share/webapps/nextcloud/apps/music/dist ..|' Makefile
-    sed -i 's|zip -d music/music.zip "music|rm -rf $(DESTDIR)/usr/share/webapps/nextcloud/apps/music|' Makefile
-    sed -i 's|"||' Makefile
-}
+sha512sums=('23444780eb13b1a3b143e3a717bed3e87ddda68075b6e732bcfa20c1c288baab9906d5edf8cb1cc6a2c5d898ae728afcd5efd7e5ce84c0242577e05fd33116fc')
 
 build() {
-    cd "music-$pkgver"
+    cd "$_appname-$pkgver"
     make -C build build l10n-extract l10n-compile
 }
 
 package() {
     cd "music-$pkgver"
     _appsdir="$pkgdir/usr/share/webapps/nextcloud/apps"
+    _appdir="$_appsdir/$_appname"
+
+    # Create the base package from the release files
     mkdir -p "$_appsdir"
     tar -xf ../$pkgname-$pkgver.tar.gz -C "$_appsdir/"
-    mv "$_appsdir/music-$pkgver" "$_appsdir/music"
-    make -C build DESTDIR="$pkgdir/" release
+    mv "$_appdir-$pkgver" "$_appdir"
+
+    # Add the generated webpack files to the previously created package
+    mkdir -p "$_appdir/dist/img"
+    cp dist/*.js dist/*.css dist/*.json "$_appdir/dist/."
+    cp dist/img/** "$_appdir/dist/img/."
+
+    # Remove the front-end source files from the package as those are not
+    # needed to run the app.
+    rm -rf "$_appdir/build"
+    rm -rf "$_appdir/css"
+    rm -rf "$_appdir/img"
+    rm -rf "$_appdir/js"
+    find "$_appdir/l10n" -name music.po -delete
+    rm -r  "$_appdir/l10n/.tx"
+    rm -rf "$_appdir/l10n/templates"
+    rm -r  "$_appdir/l10n/l10n.pl"
+    rm -rf "$_appdir/tests"
+
+    # Remove metadata and database schema for ownCloud
+    rm -rf "$_appdir/appinfo/database.xml"
+
+    # Remove empty directories
     find "$pkgdir" -type d -empty -delete
-    rm -rf "$_appsdir/music/l10n/.tx"
-    rm -rf "$_appsdir/music/l10n/l10n.pl"
-    rm -f  "$_appsdir/music/js/.eslint.json"
 }
