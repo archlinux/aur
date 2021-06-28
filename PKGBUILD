@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="scrutiny-web-frontend"
-pkgver=0.3.5
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds - Web Frontend Files"
 url="https://github.com/AnalogJ/scrutiny"
@@ -12,7 +12,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/AnalogJ/scrutiny/master/LICENSE"
 )
 sha512sums=(
-    "adfcf79900f02a40e23978266b1afa52c3b0d28d56db4f0c2ab2d7c34069edbe6c61925e47c3a5c77bafb567a72c92fb3ece2e88b923c2b609f7c7a49aada3ab"
+    "1e79660ead2f7a61649b31134db1d78c43eed040691032fa9c4155a97f68ab920e57eb952e20ec772c51103b5bcc4b747ed0489f9b971cb649def84840ec0b27"
     "4157986cf511d837141657ad499c6d34302a7b2c4fce138d66dd88c50f9b4ece7dbdc03351a41182e79ccedd46abe76cfd452e7e9834b39cad4c7b28d36364f2"
 )
 
