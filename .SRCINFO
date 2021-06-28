@@ -1,6 +1,6 @@
 pkgbase = 2p-kt
 	pkgdesc = A Kotlin Multi-Platform ecosystem for symbolic AI
-	pkgver = 0.17.3
+	pkgver = 0.17.4
 	pkgrel = 1
 	url = https://gitlab.com/pika-lab/tuprolog/2p-in-kotlin
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = 2p-kt
 	makedepends = gendesk
 	depends = java-runtime
 	depends = bash
-	noextract = 2p-kt-0.17.3.tar.gz
-	source = 2p-kt-0.17.3.jar::https://github.com/tuProlog/2p-kt/releases/download/0.17.3/2p-repl-0.17.3-redist.jar
-	sha256sums = 2fe08e050582032a88788aa8bef8d4d7e294bee0d70b2c1a322364d60e189888
+	noextract = 2p-kt-0.17.4.tar.gz
+	source = 2p-kt-0.17.4.jar::https://github.com/tuProlog/2p-kt/releases/download/0.17.4/2p-repl-0.17.4-redist.jar
+	sha256sums = defbb036918e98fcd53f06669f7463411e3965d55c693205ea22639b5b4dd4e5
 
 pkgname = 2p-kt
 
