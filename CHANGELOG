@@ -1,0 +1,172 @@
+0.9.0
+
+Added:
+
+- Search within the current folder, i.e., current window. Key bindings are vim-like:
+  / search forward.
+  ? search backward.
+  n goto next.
+  N goto previous.
+
+Fixed:
+
+- Position indicator not updating when moving the cursor up and down.
+
+
+0.8.2 2021-06-23
+
+`cpass` is uploaded to pypi!
+
+Fixed:
+
+- When copy fails (possibly due to no X11), cpass will crash. Its output also
+  messes the UI. Note after the fix the original error message is also blocked.
+
+
+0.8.1 2021-06-20
+
+Fixed:
+
+- Save the log file in system temporary folder, normally `/tmp` for Linux.
+  It was saved to the current location where cpass is started.
+
+
+0.8.0 2021-06-19
+
+Changed:
+
+- Renamed the excutable to `cpass`, the extension was removed. This breaks
+  compatibility in a way, but I did not start a new major version, since I have
+  not promoted cpass to anyone yet so the impact is nearly zero. Nobody cares.
+
+
+0.7.0 2021-06-16
+
+Added:
+
+- Copy password, any line or specific field.
+
+Fixed:
+
+- Correct the default keybindings.
+
+
+0.6.1 2021-06-12
+
+Fixed:
+
+- Warn the deletion with full path.
+- Use `y` to copy, which is the actual initially planned key binding.
+
+
+0.6.0 2021-06-07
+
+Added:
+
+- Key binding customization support in the configuration file.
+
+Fixed:
+
+- Warning not shown for different password input.
+- Crash if there is no colors section in the configuration file.
+
+
+0.5.0 2021-06-07
+
+Added:
+
+- Deleting passwords/folders with `pass rm -r`.
+
+Fixed:
+
+- Previous messages might persist after unfocusing the editbox.
+- Enter key not working on folders.
+
+
+0.4.1 2021-06-03
+
+Added:
+
+- Focus the new/changed item after insert or generate.
+
+Fixed:
+
+- Update password preview after edit, insert or generate.
+
+
+0.4.0 2021-06-02
+
+Changed:
+
+- Configuration option 'preview' is changed to 'preview_layout'.
+- Keybinding changes: only use 'i' for insert and only 'a' for generate.
+
+Added:
+
+- Generate password by `pass generate`.
+
+Fixed:
+
+- The UI actually updates with password operations like insert, generate, etc.
+
+
+0.3.1  2021-05-30
+
+Hot fix release.
+
+Fixed:
+
+- Wrong folder preview due to duplicated name as files.
+- forgot to add a line of code in a previous commit.
+
+
+0.3.0 2021-05-30
+
+Added:
+
+- Add password by `pass insert`.
+- Show count of folder contents.
+- Show main keybindings on the header.
+
+Fixed:
+
+- File name over-striped due to misuse of `rstrip` function.
+- Keybindings take over text editing.
+
+
+0.2.2 - 2021-05-28
+
+Added:
+
+- Edit password by `pass edit`.
+
+
+0.2.1 - 2021-05-24
+
+Hot fix release.
+
+Fixed:
+
+- Search for configuration file in user configuration folder instead of a relative path.
+
+
+0.2.0 - 2021-05-24
+
+Added:
+
+- Configuration file support.
+- Able to toggle preview.
+
+
+0.1.0 - 2021-05-23
+
+Initial release.
+
+Added:
+
+- Able to browse the password store.
+  - Navigation with vim-like key mappings and mouse support.
+  - Remembers the cursor position in every folder.
+- Preview passwords.
+- Show current directory and file/subfolder counts in top or bottom bar.
+- Some operations are dummy, they don't work.
