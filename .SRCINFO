@@ -1,6 +1,6 @@
 pkgbase = runjs-bin
 	pkgdesc = RunJS is an JavaScript playground that auto-evaluates your code as you type and outputs the results to a console pane
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/lukehaas/RunJS
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = runjs-bin
 	provides = runjs
 	conflicts = runjs
 	conflicts = runjs-git
-	source = runjs-bin-2.0.0.deb::https://github.com/lukehaas/RunJS/releases/download/v2.0.0/runjs_2.0.0_amd64.deb
-	sha256sums = 99f090c98a1edf7084668ee638d82ed0f1cd5ddd81d7737e7406d1596dac26ee
+	source = runjs-bin-2.0.1.deb::https://github.com/lukehaas/RunJS/releases/download/v2.0.1/runjs_2.0.1_amd64.deb
+	sha256sums = a4f99c77ac6929c0a1c73e3ac743392eba4850abbd341812c4c06ae82a09173a
 
 pkgname = runjs-bin
