@@ -4,7 +4,7 @@ obj-m :=                        \
 	hid-polostar.o          \
 	hid-viewsonic.o
 
-hid-uclogic-y :=             \
+hid-uclogic-y :=                \
 	hid-uclogic-core.o      \
 	hid-uclogic-rdesc.o     \
 	hid-uclogic-params.o
