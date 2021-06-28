@@ -1,11 +1,11 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=cq
-pkgver=1.0.0.a17
+pkgver=1.0.0
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=2
+pkgrel=17
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
