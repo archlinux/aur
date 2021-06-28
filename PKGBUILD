@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aa310a8d3d7286d8d4080d348ffca276c3e003d6f16a6a08512d1a97da3f5df9')
+sha256sums=('be2086a8f966aa8834f70b5d6ed621382a73892df2e23d14eb477f8cd04ef2b2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
