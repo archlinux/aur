@@ -1,0 +1,50 @@
+msg() {
+  # check if messages are to be printed using color
+  unset ALL_OFF BOLD BLUE GREEN RED YELLOW
+  # prefer terminal safe colored and bold text when tput is supported
+  if tput setaf 0 &>/dev/null; then
+    ALL_OFF="$(tput sgr0)"
+    BOLD="$(tput bold)"
+    BLUE="${BOLD}$(tput setaf 4)"
+    GREEN="${BOLD}$(tput setaf 2)"
+    RED="${BOLD}$(tput setaf 1)"
+    YELLOW="${BOLD}$(tput setaf 3)"
+  else
+    ALL_OFF="\e[0m"
+    BOLD="\e[1m"
+    BLUE="${BOLD}\e[34m"
+    GREEN="${BOLD}\e[32m"
+    RED="${BOLD}\e[31m"
+    YELLOW="${BOLD}\e[33m"
+  fi
+
+  local mesg=$1; shift
+  printf "${RED}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+flash_uboot() {
+  msg "A new U-Boot version needs to be flashed onto /dev/mmcblk0."
+  msg "Do you want to do this now? [y|N]"
+  read -r shouldwe
+  if [[ $shouldwe =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer
+    dd if=/boot/rksd_loader.img of=/dev/mmcblk0 seek=64 conv=notrunc
+  else
+    msg "You can do this later by running:"
+    msg "# dd if=/dev/zero of=/dev/mmcblk0 bs=1k count=1023 seek=1 status=noxfer"
+    msg "# dd if=/boot/rksd_loader.img of=/dev/mmcblk0 seek=64 conv=notrunc"
+    msg "# if you are using the emmc interface, take care to use the correct device identifier! (probably mmcblk1)"
+  fi
+}
+
+## arg 1:  the new package version
+post_install() {
+  mkimage -A arm -O linux -T script -C none -n "U-Boot boot script" -d "/boot/boot.txt" "/boot/boot.scr"
+  flash_uboot
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install
+}
