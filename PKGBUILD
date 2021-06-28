@@ -1,6 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgname=bsp-tinkerboard-bin
+_pkgname=bsp-tinkerboard
+pkgname="$_pkgname-bin"
 pkgver=21.02.3
 _pkgver=21.05.6
 _ubuntu=focal
@@ -10,7 +11,9 @@ arch=('armv7h')
 url="https://github.com/armbian/build"
 license=('GPL2')
 depends=('bluez' 'systemd' 'util-linux' 'wireless_tools' 'xorg-xrandr')
-install="$pkgname.install"
+provides=("$_pkgname")
+conflics=("$_pkgname")
+install="$_pkgname.install"
 source=(
   "pulseaudio-sink.txt"
   "pulseaudio-source.txt"
