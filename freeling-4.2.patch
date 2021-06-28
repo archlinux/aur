@@ -1,0 +1,195 @@
+diff --unified --text --recursive package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/CMakeLists.txt	2021-06-28 12:40:19.026542598 +0200
+@@ -84,7 +84,7 @@
+   # build dictionary for each language
+   if (EXISTS ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/header)
+     install(CODE "message(STATUS \"Creating ${lg} dictionary...\")" )
+-    install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/build-dict ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/header ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/entries  OUTPUT_FILE ${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/dicc.src RESULT_VARIABLE _res) " )
++    install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/build-dict ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/header ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/entries  OUTPUT_FILE \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/dicc.src RESULT_VARIABLE _res) " )
+     # make sure installation helpers work.  If this one works, the others should too.
+     install(CODE "If (NOT \${_res} EQUAL \"0\")
+                      message(FATAL_ERROR \"Error '\${_res}' while executing dictionary indexation program. Make sure compilation ended without errors, and that boost libraries can be found in the path. \")
+@@ -95,14 +95,14 @@
+     # for variants matching this language, build specific dictionary and multiwords file
+     if (${variant} MATCHES "^${lg}/")
+       install(CODE "message(STATUS \"-- Creating ${variant} dictionary...\")" )
+-      install(CODE "file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/freeling/${variant})")      
+-      install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/build-dict ${CMAKE_SOURCE_DIR}/data/${variant}/dictionary/header ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/entries ${CMAKE_SOURCE_DIR}/data/${variant}/dictionary/entries ${CMAKE_SOURCE_DIR}/data/${variant}/remove OUTPUT_FILE ${CMAKE_INSTALL_PREFIX}/share/freeling/${variant}/dicc.src RESULT_VARIABLE _res)" )
++      install(CODE "file(MAKE_DIRECTORY \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${variant})")      
++      install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/build-dict ${CMAKE_SOURCE_DIR}/data/${variant}/dictionary/header ${CMAKE_SOURCE_DIR}/data/${lg}/dictionary/entries ${CMAKE_SOURCE_DIR}/data/${variant}/dictionary/entries ${CMAKE_SOURCE_DIR}/data/${variant}/remove OUTPUT_FILE \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${variant}/dicc.src RESULT_VARIABLE _res)" )
+       install(CODE "If (NOT \${_res} EQUAL \"0\")
+                         message(FATAL_ERROR \"multiword fusion failed with error: \${_res}\")
+                     endif() ")
+       if (EXISTS ${CMAKE_SOURCE_DIR}/data/${variant}/locucions.dat)
+         install(CODE "message(STATUS \"-- Merging ${variant} multiwords...\")" )
+-	install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/fusion-mw ${CMAKE_SOURCE_DIR}/data/${variant}/locucions.dat ${CMAKE_SOURCE_DIR}/data/${lg}/locucions.dat OUTPUT_FILE ${CMAKE_INSTALL_PREFIX}/share/freeling/${variant}/locucions.dat RESULT_VARIABLE _res)" )
++	install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/fusion-mw ${CMAKE_SOURCE_DIR}/data/${variant}/locucions.dat ${CMAKE_SOURCE_DIR}/data/${lg}/locucions.dat OUTPUT_FILE \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${variant}/locucions.dat RESULT_VARIABLE _res)" )
+         install(CODE "If (NOT \${_res} EQUAL \"0\")
+                         message(FATAL_ERROR \"multiword fusion failed with error: \${_res}\")
+                       endif() ")
+@@ -113,7 +113,7 @@
+   # build phonetic dictionary if needed
+   if (EXISTS ${CMAKE_SOURCE_DIR}/data/${lg}/alternatives-phon.dat)
+     install(CODE "message(STATUS \"-- Creating ${lg} phonetic dictionary...\")" )
+-    install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/dicc2phon ${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/dicc.src ${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/alternatives-phon.dat RESULT_VARIABLE _res)" )
++    install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/dicc2phon \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/dicc.src \$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling/${lg}/alternatives-phon.dat RESULT_VARIABLE _res)" )
+     install(CODE "If (NOT \${_res} EQUAL \"0\")
+                       message(FATAL_ERROR \"creating phonetic dictionary failed with error: \${_res}\")
+                   endif() ")
+@@ -130,7 +130,7 @@
+ 
+   foreach (model ${aafiles})
+     STRING(REGEX REPLACE ".aa\$" "" gzfile "${model}")
+-    STRING(REGEX REPLACE "${CMAKE_SOURCE_DIR}/data" "${CMAKE_INSTALL_PREFIX}/share/freeling" gzfile "${gzfile}")
++    STRING(REGEX REPLACE "${CMAKE_SOURCE_DIR}/data" "\$ENV\{DESTDIR\}${CMAKE_INSTALL_PREFIX}/share/freeling" gzfile "${gzfile}")
+     install(CODE "message(STATUS \"-- Rebuilding data file ${gzfile}\")" )
+     install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/gz-cat ${model} ${gzfile} RESULT_VARIABLE _res)")
+     install(CODE "If (NOT \${_res} EQUAL \"0\")
+diff --unified --text --recursive package.orig/src/crfsuite/CMakeLists.txt package.new/src/crfsuite/CMakeLists.txt
+--- package.orig/src/crfsuite/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/crfsuite/CMakeLists.txt	2021-06-25 11:03:12.849519427 +0200
+@@ -38,7 +38,7 @@
+   add_executable(crfsuite_bin ${crfsuite_main_SRC})
+   target_include_directories(crfsuite_bin PRIVATE crfsuite/frontend)
+   target_link_libraries(crfsuite_bin crfsuite)
+-  set_target_properties(crfsuite_bin PROPERTIES OUTPUT_NAME crfsuite)
++  set_target_properties(crfsuite_bin PROPERTIES OUTPUT_NAME "freeling-crfsuite")
+ 
+   install(TARGETS crfsuite_bin
+           RUNTIME DESTINATION bin)
+diff --unified --text --recursive package.orig/src/libfreeling/csr_kb.cc package.new/src/libfreeling/csr_kb.cc
+--- package.orig/src/libfreeling/csr_kb.cc	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/libfreeling/csr_kb.cc	2021-06-16 17:05:37.352153849 +0200
+@@ -1,6 +1,8 @@
+ 
+ #include <fstream>
+ #include <sstream>
++#include <cmath>
++using std::fabs;
+ 
+ #include "freeling/morfo/util.h"
+ #include "freeling/morfo/traces.h"
+diff --unified --text --recursive package.orig/src/libfreeling/numbers/numbers_cs.cc package.new/src/libfreeling/numbers/numbers_cs.cc
+--- package.orig/src/libfreeling/numbers/numbers_cs.cc	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/libfreeling/numbers/numbers_cs.cc	2021-06-16 17:08:01.320516161 +0200
+@@ -26,6 +26,8 @@
+ //
+ ////////////////////////////////////////////////////////////////
+ 
++#include <cmath>
++
+ #include "freeling/morfo/traces.h"
+ #include "freeling/morfo/util.h"
+ #include "freeling/morfo/numbers_modules.h"
+diff --unified --text --recursive package.orig/src/libfreeling/summarizer/summarizer.cc package.new/src/libfreeling/summarizer/summarizer.cc
+--- package.orig/src/libfreeling/summarizer/summarizer.cc	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/libfreeling/summarizer/summarizer.cc	2021-06-16 17:11:18.559374674 +0200
+@@ -26,6 +26,7 @@
+ //
+ ////////////////////////////////////////////////////////////////
+ 
++#include <cmath>
+ 
+ #include "freeling/morfo/summarizer.h"
+ #include "freeling/morfo/configfile.h"
+diff --unified --text --recursive package.orig/src/libtreeler/main/CMakeLists.txt package.new/src/libtreeler/main/CMakeLists.txt
+--- package.orig/src/libtreeler/main/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/libtreeler/main/CMakeLists.txt	2021-06-25 11:44:23.111838303 +0200
+@@ -9,7 +9,7 @@
+ add_executable(treeler_bin ${treeler_main_SRC})
+ target_include_directories(treeler_bin PRIVATE .)
+ target_link_libraries(treeler_bin treeler ${ZLIB_LIBRARIES})
+-set_target_properties(treeler_bin PROPERTIES OUTPUT_NAME treeler)
++set_target_properties(treeler_bin PROPERTIES OUTPUT_NAME "freeling-treeler")
+ 
+ install(TARGETS treeler_bin
+         RUNTIME DESTINATION bin)
+diff --unified --text --recursive package.orig/src/main/CMakeLists.txt package.new/src/main/CMakeLists.txt
+--- package.orig/src/main/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/main/CMakeLists.txt	2021-06-28 16:00:34.152067571 +0200
+@@ -40,8 +40,11 @@
+           LIBRARY DESTINATION lib
+           ARCHIVE DESTINATION lib/static)
+ else()
+-  install(PROGRAMS sample_analyzer/analyze DESTINATION bin)
+-  install(PROGRAMS sample_analyzer/fl_initialize DESTINATION bin)
++  set_target_properties(analyzer PROPERTIES OUTPUT_NAME "freeling-analyzer")
++  set_target_properties(threaded_analyzer PROPERTIES OUTPUT_NAME "freeling-threaded-analyzer")
++  set_target_properties(analyzer_client PROPERTIES OUTPUT_NAME "freeling-analyzer-client")
++  install(PROGRAMS sample_analyzer/analyze DESTINATION bin RENAME "freeling-analyze")
++  install(PROGRAMS sample_analyzer/fl_initialize DESTINATION bin RENAME "freeling-initialize")
+   install(TARGETS analyzer threaded_analyzer analyzer_client
+           RUNTIME DESTINATION bin
+           LIBRARY DESTINATION lib
+diff --unified --text --recursive package.orig/src/main/sample_analyzer/analyze package.new/src/main/sample_analyzer/analyze
+--- package.orig/src/main/sample_analyzer/analyze	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/main/sample_analyzer/analyze	2021-06-28 17:10:22.442150765 +0200
+@@ -23,7 +23,7 @@
+ shopt -s extglob
+ 
+ ## Execute FreeLing environment initialization
+-. $(cd $(dirname $0) && echo $PWD)/fl_initialize $@
++. /usr/bin/freeling-initialize $@
+ 
+ if [[ "$1" == "stop" ]]; then
+   # If the first argument is the word "stop", signal the server to stop
+@@ -35,7 +35,7 @@
+   kill -15 $2
+ else
+   ## otherwise call the actual executable with given arguments 
+-  $FREELING/bin/analyzer $param
++  /usr/bin/freeling-analyzer $param
+ fi
+ 
+ 
+diff --unified --text --recursive package.orig/src/main/sample_analyzer/fl_initialize package.new/src/main/sample_analyzer/fl_initialize
+--- package.orig/src/main/sample_analyzer/fl_initialize	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/main/sample_analyzer/fl_initialize	2021-06-28 17:10:32.708922645 +0200
+@@ -5,24 +5,8 @@
+ ##
+ #############################################
+ 
+-##--- Get FreeLing installation from the location of this script
+-FREELING=$(dirname $(cd $(dirname $0) && echo $PWD))
++export FREELINGSHARE=/usr/share/freeling
+ 
+-##--- define FREELINGSHARE (if not already defined), which is used in default config files
+-if [ "x$FREELINGSHARE" = "x" ]; then
+-  export FREELINGSHARE=$FREELING/share/freeling
+-fi
+-
+-#--- set paths to libraries required to execute FreeLing
+-OS=`uname -s`
+-if [ $OS == "Linux" ]; then 
+-   export LD_LIBRARY_PATH=$FREELING/lib:$LD_LIBRARY_PATH
+-else
+-   # it is a Mac
+-   export DYLD_LIBRARY_PATH=$FREELING/lib:$DYLD_LIBRARY_PATH
+-fi
+-
+-#--- Pass all parameters to the executable, fixing the config file path if necessary
+ i=1;  eval arg=\${$i}
+ param=""
+ while [[ $i -le $# ]]; do
+@@ -35,7 +19,7 @@
+      if [ -e $arg ]; then
+        param="$param $arg"
+      else 
+-       param="$param $FREELING/share/freeling/config/$arg"
++       param="$param /usr/share/freeling/config/$arg"
+      fi
+    fi
+ 
+diff --unified --text --recursive package.orig/src/utilities/CMakeLists.txt package.new/src/utilities/CMakeLists.txt
+--- package.orig/src/utilities/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/utilities/CMakeLists.txt	2021-06-25 11:02:07.908903840 +0200
+@@ -31,7 +31,7 @@
+ # convert_model
+ add_executable(convert_model embeddings/convert_model.cc)
+ target_link_libraries(convert_model freeling)
+-
++set_target_properties(convert_model PROPERTIES OUTPUT_NAME "freeling-convert-model")
+ install(TARGETS convert_model
+         RUNTIME DESTINATION bin
+         LIBRARY DESTINATION lib
