@@ -6,17 +6,10 @@ pkgbase = spandsp-fs
 	arch = x86_64
 	license = LGPL
 	license = GPL
-	makedepends = gawk
-	makedepends = doxygen
+	depends = libtiff
+	provides = spandsp
+	conflicts = spandsp
 	source = git+https://github.com/freeswitch/spandsp
 	sha256sums = SKIP
 
 pkgname = spandsp-fs
-	depends = libtiff
-	optdepends = spandsp-docs: Documentation
-	provides = spandsp
-	conflicts = spandsp
-
-pkgname = spandsp-docs
-	pkgdesc = A DSP library for telephony documentation (FreeSWITCH version)
-
