@@ -6,7 +6,7 @@ pkgdesc="Pick the most common user-agents on the Internet"
 url="https://github.com/lobstrio/shadow-useragent"
 
 pkgver=0.0.17
-pkgrel=2
+pkgrel=3
 
 arch=("any")
 license=("MIT")
@@ -37,8 +37,11 @@ build() {
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 \
+        "${srcdir}/${_name}-${pkgver}/README.md" \
+        "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 }
