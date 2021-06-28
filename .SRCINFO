@@ -1,15 +1,15 @@
 pkgbase = xgrabcolor
 	pkgdesc = A basic color picker
-	pkgver = 1.4.6
-	pkgrel = 4.1
+	pkgver = 5.4.6
+	pkgrel = 5
 	url = http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=xgrabcolor&full=
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = qt5-base
-	source = http://hugo.pereira.free.fr/software/tgz/xgrabcolor-1.4.6.tar.gz
+	depends = qt5-x11extras
+	source = http://hugo.pereira.free.fr/software/tgz/xgrabcolor-5.4.6.tar.gz
 	sha256sums = 457b73f84f68cf90cf995e719a0bcc2a923bb67e7e459294935b82a346c0e638
 
 pkgname = xgrabcolor
-

@@ -2,13 +2,13 @@
 # Maintainer: TDY <tdy@gmx.com>
 
 pkgname=xgrabcolor
-pkgver=1.4.6
-pkgrel=4.1
+pkgver=5.4.6
+pkgrel=5
 pkgdesc="A basic color picker"
 arch=('i686' 'x86_64')
 url="http://hugo.pereira.free.fr/software/index.php?page=package&package_list=software_list_qt4&package=xgrabcolor&full="
 license=('GPL')
-depends=('qt5-base')
+depends=('qt5-base' 'qt5-x11extras')
 makedepends=('cmake')
 source=(http://hugo.pereira.free.fr/software/tgz/$pkgname-$pkgver.tar.gz)
 
