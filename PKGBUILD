@@ -34,10 +34,6 @@ _setup_build_env() {
             when the CARGO_HOME variable is already set in your environ-
             ment.)"
   fi
-
-  # git2 cannot be built with current nightly due to a regression; for ref.:
-  # https://github.com/rust-lang/rust/issues/85574
-  export RUSTUP_TOOLCHAIN=stable
 }
 
 prepare() {
