@@ -51,7 +51,7 @@ package() {
 
     install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-#    install -dm755 "icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
+    install -Dm 644 "build/icon.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/tidal-hifi.png"
     ln -s "/opt/tidal-hifi/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
     ln -s "/opt/tidal-hifi/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
