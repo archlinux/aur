@@ -4,7 +4,7 @@
 
 pkgname=rtl88xxau-aircrack-dkms-git
 _pkgbase=rtl88xxau
-pkgver=r1159.3a64331
+pkgver=r1164.b8167e6
 pkgrel=1
 pkgdesc="Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au and 8821au chipsets) with monitor mode and injection support"
 url="https://github.com/aircrack-ng/rtl8812au"
@@ -15,12 +15,10 @@ depends=('dkms')
 conflicts=('rtl8812au-aircrack-dkms-git' 'rtl8812au-dkms-git' 'rtl8821au-dkms-git' 'rtl8814au-dkms-git' 'rtl8812au-inject-dkms-git')
 
 source=('rtl88xxau::git+https://github.com/aircrack-ng/rtl8812au.git#branch=v5.6.4.2'
-        'dkms.conf'
-        '857.patch')
+        'dkms.conf')
 
 sha256sums=('SKIP'
-            'a1096f5141292aaf26e7556a170e8c9de86c4b6bb3fd3df48ee01996a223e56f'
-            'be1c0b9d9e0987461439d716e9964ed64a4d7ceac09ab5898734b2fecf66fc65')
+            'a1096f5141292aaf26e7556a170e8c9de86c4b6bb3fd3df48ee01996a223e56f')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
@@ -28,11 +26,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-    cd "${srcdir}/${_pkgbase}"
-    patch --forward --strip=1 --input="${srcdir}/857.patch"
 }
 
 package() {
