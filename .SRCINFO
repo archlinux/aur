@@ -1,0 +1,15 @@
+pkgbase = nocolor
+	pkgdesc = Validate the architecture of your PHP project based on the concept of function colors
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/VKCOM/nocolor
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = nocolor
+	conflicts = nocolor-bin
+	conflicts = nocolor-git
+	source = https://github.com/VKCOM/nocolor/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = caf99846b1472dcc7e2e78e2c56dc15b2ed23b26d6fa0b5113696e60772ed284
+
+pkgname = nocolor
