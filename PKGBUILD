@@ -1,6 +1,6 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=mtk
-pkgver=1.0.0.A2
+pkgver=1.0.0.a2
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
