@@ -30,6 +30,7 @@ pkgbase = mingw-w64-paraview
 	depends = mingw-w64-libtheora
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-gl2ps
+	depends = mingw-w64-libharu
 	options = !buildflags
 	options = !strip
 	options = staticlibs

@@ -5,7 +5,7 @@ pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps')
+depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-libtheora' 'mingw-w64-pugixml' 'mingw-w64-gl2ps' 'mingw-w64-libharu')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-wine-qt' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
@@ -18,6 +18,8 @@ prepare() {
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1 -d VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7611.patch | patch -p1 -d VTK
   curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1 -d ThirdParty/catalyst/vtkcatalyst/catalyst
+  # We have a patched libharu
+  sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
 }
 
 build() {
@@ -31,7 +33,6 @@ build() {
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
       -DPARAVIEW_USE_VTKM=OFF \
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
-      -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
