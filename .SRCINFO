@@ -1,13 +1,13 @@
 pkgbase = bak
 	pkgdesc = A backup tool for Linux/MacOS
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/gamemaker1/bak
 	install = bak.install
 	arch = any
 	license = GPL3
 	depends = tar
-	source = bak-0.2.0.tar.gz::https://github.com/gamemaker1/bak/archive/v0.2.0.tar.gz
-	sha256sums = 15af95de9a1809f339398b4b11b5138b644d07170d04f5ccf3d9536b4864e54e
+	source = bak-0.2.1.tar.gz::https://github.com/gamemaker1/bak/archive/v0.2.1.tar.gz
+	sha256sums = 3b518b42c13b284a14866eae29dcaef29088bd322b0305c006e99c555e34899c
 
 pkgname = bak
