@@ -1,6 +1,6 @@
 pkgbase = ctc
 	pkgdesc = CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers
-	pkgver = 1.0.0.a5
+	pkgver = 1.0.0
 	pkgrel = 5
 	arch = any
 	license = GPL
