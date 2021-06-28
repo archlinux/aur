@@ -1,15 +1,15 @@
 pkgbase = python-coloredlogs
 	pkgdesc = Colored terminal output for Python's logging module
-	pkgver = 15.0
+	pkgver = 15.0.1
 	pkgrel = 1
 	url = https://github.com/xolox/python-coloredlogs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-sphinx
 	depends = python
 	depends = python-humanfriendly
-	source = https://github.com/xolox/python-coloredlogs/archive/15.0.tar.gz
-	md5sums = 1999ab887e0bf410921c85ade47c1317
+	source = https://github.com/xolox/python-coloredlogs/archive/15.0.1.tar.gz
+	sha256sums = e8161222671bb129f7936cd220c275a3cbc0a6c22313bd4483114b9526e5695f
 
 pkgname = python-coloredlogs
-
