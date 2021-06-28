@@ -37,4 +37,4 @@ package() {
   ln -sf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 sha256sums=('bbbdddd292fd590eb1278b9c5a608eb27fc65649cdf8c1981b3f955f312585ad'
-            '5197aab678f4f00fef5e4686ab8cc0be825dcf6674ac21a3f3f338570a6f3a90')
+            '36959c05b857858ce6a0c37f115ddeb584119e8ca279ac632a02ecbdc2504b2f')
