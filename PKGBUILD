@@ -1,29 +1,31 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='naabu'
-pkgname="${_pkgname}-bin"
-pkgver=2.0.3
+pkgname=naabu-bin
+_pkgname="${pkgname%-bin}"
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Fast port scanner with a focus on reliability and simplicity'
-# arch=('x86_64' 'armv6h' 'aarch64')
 arch=('x86_64')
 url='https://github.com/projectdiscovery/naabu'
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.tar.gz")
-# source_armv6h=("${_pkgname}-${pkgver}-armv6h.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
-# source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
-
-sha256sums_x86_64=('b9d24ac3316e4dcbab17cef4e9aac7ae1ca7d0086cf671e6291bb9064a80edba')
-# sha256sums_armv6h=('e8ec2204291c1ab572240ed9affbb913505737b7c156da2b4902c9a17206a2de')
-# sha256sums_aarch64=('17e8abd73c8ebd56826809f38783c013bfcacda6a791866746e19fe27be56e77')
+depends=('libpcap')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/projectdiscovery/naabu/v$pkgver/LICENSE.md"
+        "README-$pkgver::https://raw.githubusercontent.com/projectdiscovery/naabu/v$pkgver/README.md")
+source_x86_64=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.zip")
+sha256sums=('cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb'
+            '2f8b5236d5cd101a9788459a9b5d4ca90b044c0e0a10263908a84fd5e34fad3c')
+sha256sums_x86_64=('babd6a42d0f7aea242abdc7dae195ef34177d051e000db2bc8864b5a6e32922e')
 
 package() {
-  install -Dvm755 "${_pkgname}-linux-amd64" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dvm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 naabu -t "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/lib/"
+  ## ugly hack to fix deps issue
+  ln -s "/usr/lib/libpcap.so" "$pkgdir/usr/lib/libpcap.so.0.8"
+  install -Dm644 "README-$pkgver" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
