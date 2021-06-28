@@ -9,6 +9,7 @@ pkgbase = vim-colorschemes
 	license = GPL2
 	license = public-domain
 	license = as-is
+	makedepends = git
 	depends = vim
 	conflicts = vim-colorsamplerpack
 	conflicts = vim-solarized-git

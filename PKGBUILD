@@ -17,6 +17,7 @@ url="https://github.com/flazz/vim-colorschemes/"
 arch=('any')
 conflicts=('vim-colorsamplerpack' 'vim-solarized-git' 'tomorrow-theme-vim-git')
 depends=('vim')
+makedepends=('git')
 license=('vim' 'GPL2' 'public-domain' 'as-is')
 groups=('vim-plugins')
 source=("git+https://github.com/flazz/vim-colorschemes.git#commit=fd8f122cef604330c96a6a6e434682dbdfb878c9")
