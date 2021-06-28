@@ -1,0 +1,12 @@
+pkgbase = clang-build-analyzer
+	pkgdesc = Clang build analysis tool using -ftime-trace
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/aras-p/ClangBuildAnalyzer
+	arch = x86_64
+	license = Unlicense
+	makedepends = cmake
+	source = clang-build-analyzer-1.2.0.tar.gz::https://github.com/aras-p/ClangBuildAnalyzer/archive/refs/tags/v1.2.0.tar.gz
+	md5sums = b9710ea6e8c9ad18144a61751133698b
+
+pkgname = clang-build-analyzer
