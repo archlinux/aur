@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.12.13
-pkgver=5.12.v.13
-pkgrel=2
+gitver=v5.13
+pkgver=5.13.v.0
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,20 +20,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 	'linux.install'
 	# patch from our gentoo overlords
 	'5010_enable-cpu-optimizations-universal.patch'
-	# revert for idlebug
-	'idlebug.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '43ea92a77109341b1037d9581705fe3730b972d866ddd8bf8de13f8972b66581'
+            '8540445c710a9e9a3d02ff18a1f2855392e581536e2ca198d3d8034e58551fbf'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
             '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a'
-            #idlebug file
-            'c37e1db6b42cdb0e954c250754e707316172633322ddc9c8e05abaecc3c678a3'
            )
 
 _kernelname=${pkgbase#linux}

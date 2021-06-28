@@ -1,6 +1,6 @@
 pkgbase = linux-slim
-	pkgver = 5.12.v.13
-	pkgrel = 2
+	pkgver = 5.13.v.0
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -13,18 +13,16 @@ pkgbase = linux-slim
 	makedepends = libelf
 	makedepends = lzop
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.12.13
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13
 	source = config.x86_64
 	source = linux-slim.preset
 	source = linux.install
 	source = 5010_enable-cpu-optimizations-universal.patch
-	source = idlebug.patch
 	sha256sums = SKIP
-	sha256sums = 43ea92a77109341b1037d9581705fe3730b972d866ddd8bf8de13f8972b66581
+	sha256sums = 8540445c710a9e9a3d02ff18a1f2855392e581536e2ca198d3d8034e58551fbf
 	sha256sums = e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a
-	sha256sums = c37e1db6b42cdb0e954c250754e707316172633322ddc9c8e05abaecc3c678a3
 
 pkgname = linux-slim
 	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
