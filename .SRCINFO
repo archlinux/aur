@@ -1,0 +1,15 @@
+pkgbase = clang-build-analyzer-git
+	pkgdesc = Clang build analysis tool using -ftime-trace
+	pkgver = v1.2.0.r35.e121bf3
+	pkgrel = 1
+	url = https://github.com/aras-p/ClangBuildAnalyzer
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = cmake
+	provides = clang-build-analyzer
+	conflicts = clang-build-analyzer
+	source = clang-build-analyzer::git+https://github.com/aras-p/ClangBuildAnalyzer.git
+	md5sums = SKIP
+
+pkgname = clang-build-analyzer-git
