@@ -1,14 +1,13 @@
 pkgbase = wsdd2
 	pkgdesc = WSD/LLMNR Discovery/Name Service Daemon. Install it to make Samba shares discoverable on Windows hosts.
-	pkgver = 1.8.3.2
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://github.com/Andy2244/wsdd2
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL
-	source = wsdd2-1.8.3.2-1.tar.gz::https://github.com/Andy2244/wsdd2/archive/1.8.3.2.tar.gz
-	sha256sums = f459a85a876d5e1044f6414916cdf81f689dd80188574f93c352c1b9927275ec
+	source = wsdd2-1.8.5-1.tar.gz::https://github.com/Andy2244/wsdd2/archive/1.8.5.tar.gz
+	sha256sums = 1b5ed922da8f39d541e2e712f1991694a002dcde00c43136c9e617229da36184
 
 pkgname = wsdd2
-
