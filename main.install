@@ -6,15 +6,24 @@ post_install() {
     chmod 775 /etc/connective-http/ -R
     chmod 660 /etc/connective-http/credentials -R
     
-    if [ ! -f "/etc/authbind/byuid/$(id -u connective)" ]; then
-        echo "0.0.0.0,30" > "/etc/authbind/byuid/$(id -u connective)"
-        chmod 765 "/etc/authbind/byuid/$(id -u connective)"
+    if [ ! -f "/etc/authbind/byport/80)" ]; then
+        touch /etc/authbind/byport/80
+        chown connective /etc/authbind/byport/80
+        chmod 550 /etc/authbind/byport/80
+    fi    
+    if [ ! -f "/etc/authbind/byport/443)" ]; then
+        touch /etc/authbind/byport/443
+        chown connective /etc/authbind/byport/443
+        chmod 550 /etc/authbind/byport/443
     fi
 }
 
 post_remove() {
-    if [ -f "/etc/authbind/byuid/$(id -u connective)" ]; then
-        rm "/etc/authbind/byuid/$(id -u connective)"
+    if [ -f "/etc/authbind/byport/443" ]; then
+        rm "/etc/authbind/byport/443"
+    fi
+    if [ -f "/etc/authbind/byport/80" ]; then
+        rm "/etc/authbind/byport/80"
     fi
     userdel connective
     groupdel connective
