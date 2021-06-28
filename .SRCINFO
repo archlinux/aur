@@ -3,7 +3,7 @@ pkgbase = wiringpi-tinkerboard-git
 	pkgver = 2.31.r92.57d4c4b
 	pkgrel = 1
 	url = https://github.com/TinkerBoard/gpio_lib_c
-	arch = armv7h
+	arch = any
 	license = LGPL3
 	makedepends = git
 	provides = wiringpi
@@ -12,4 +12,3 @@ pkgbase = wiringpi-tinkerboard-git
 	sha512sums = SKIP
 
 pkgname = wiringpi-tinkerboard-git
-
