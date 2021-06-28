@@ -2,7 +2,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-logo
-pkgver=5.12.11.arch1
+pkgver=5.12.13.arch1
 pkgrel=1
 pkgdesc='Linux with tux logo'
 _srctag=v${pkgver%.*}-${pkgver##*.}
