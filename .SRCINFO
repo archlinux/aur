@@ -1,0 +1,14 @@
+pkgbase = sonobus-aooserver-bin
+	pkgdesc = Connection server for SonoBus.
+	pkgver = 1
+	pkgrel = 1
+	url = https://sonobus.net
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = bash
+	depends = bash
+	source = git+https://github.com/IamDH4/sonobus-aooserver-bin
+	sha512sums = SKIP
+
+pkgname = sonobus-aooserver-bin
