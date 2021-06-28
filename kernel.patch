@@ -170,7 +170,7 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  /*****************************************************************************
   *	Functions to interpret the absolute mode packets
   ****************************************************************************/
-@@ -1412,6 +1548,7 @@
+@@ -1415,6 +1551,7 @@
  		device_remove_file(&psmouse->ps2dev.serio->dev,
  				   &psmouse_attr_disable_gesture.dattr);
  
@@ -178,16 +178,16 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	synaptics_reset(psmouse);
  	kfree(priv);
  	psmouse->private = NULL;
-@@ -1471,6 +1608,8 @@
- 			    priv->info.ext_cap, info.ext_cap);
+@@ -1475,6 +1612,8 @@
  		return -ENXIO;
  	}
-+
-+	synaptics_sync_led(psmouse);
  
++	synaptics_sync_led(psmouse);
++
  	return 0;
  }
-@@ -1590,6 +1729,9 @@
+ 
+@@ -1593,6 +1732,9 @@
  		     info->capabilities, info->ext_cap, info->ext_cap_0c,
  		     info->ext_cap_10, info->board_id, info->firmware_id);
  
@@ -197,7 +197,6 @@ diff -ur old/drivers/input/mouse/synaptics.c new/drivers/input/mouse/synaptics.c
  	err = set_input_params(psmouse, priv);
  	if (err) {
  		psmouse_err(psmouse,
-
 diff -ur old/drivers/input/mouse/synaptics.h new/drivers/input/mouse/synaptics.h
 --- old/drivers/input/mouse/synaptics.h
 +++ new/drivers/input/mouse/synaptics.h
