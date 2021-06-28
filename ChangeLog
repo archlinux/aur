@@ -1,0 +1,17 @@
+=== Morgen 2.1.6
+
+* Bug Fixes
+- Fixed an issue where certain CalDAV accounts could not be connected
+- Fixed a bug causing recurring events to be displayed on the wrong day in some timezones
+- Fixed a problem causing the event detail widget to become unresponsive in some edge cases
+- Fixed an issue causing the wrong organizer to be set when importing external invitations into Google Calendar; now, Morgen also disallows importing multiple times the same event
+- Fixed the colored calendar indicator in the Save button to show the correct calendar color
+- Fixed an issue preventing switching recurrent events to a different calendar
+
+* Improvements
+- Added a loading indicator in the event detail widget to indicate that an event is being updated
+- Prevent entering the alpha channel when defining custom calendar colors, because this is not supported
+- Event colors in dark mode have been slightly adjusted to be less strong
+- Add throttle on the refresh calendars operation, to avoid lag on the calendar view when coming into focus
+- Restore the previous status of the sidebar when the app is launched
+- Ensure that existing events cannot be imported as duplicates

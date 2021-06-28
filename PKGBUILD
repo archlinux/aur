@@ -2,11 +2,12 @@
 
 pkgname=morgen-bin
 pkgver=2.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Morgen is a modern, intuitive and smart calendar application and successor to MineTime'
 arch=('x86_64')
 url='https://morgen.so'
 license=('custom')
+changelog='ChangeLog'
 depends=('libsecret' 'libxss' 'dbus' 'hicolor-icon-theme' 'desktop-file-utils')
 provides=('morgen')
 source=("https://download.todesktop.com/210203cqcj00tw1/morgen-${pkgver}.deb" morgen)
