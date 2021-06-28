@@ -11,6 +11,6 @@ pkgbase = connective-http
 	source = git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git
 	source = scripts-and-configs.tar.gz
 	md5sums = SKIP
-	md5sums = 74e0fbcc0c5853854c2aa5fc7a4d14c3
+	md5sums = 19cb4daffe13ce6251261c11006704e5
 
 pkgname = connective-http

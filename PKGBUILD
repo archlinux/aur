@@ -20,7 +20,7 @@ install=main.install
 changelog=
 source=("git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git" "scripts-and-configs.tar.gz")
 noextract=()
-md5sums=('SKIP' '74e0fbcc0c5853854c2aa5fc7a4d14c3')
+md5sums=('SKIP' '19cb4daffe13ce6251261c11006704e5')
 
 build() {
     cd ConnectiveStandalone
