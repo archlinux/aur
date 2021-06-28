@@ -1,16 +1,17 @@
 # Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Jonathan Shreckengost <jonathanshrek@gmail.com>
 
 pkgbase="liblnk-git"
 pkgname=("liblnk-git" "liblnk-tools-git" "python-liblnk-git" "python2-liblnk-git")
-pkgver=20181227.r2.g1e055a0
+pkgver=20210417.r0.g0c9a2c8
 pkgrel=1
 pkgdesc="Library and tools to access the Windows Shortcut File (LNK) format"
 arch=(x86_64)
 license=(LGPL3)
 url="https://github.com/libyal/liblnk"
 
-depends=(libbfio)
-makedepends=(python python2 automake autoconf libtool pkgconf)
+depends=('libbfio-git')
+makedepends=('git' 'python' 'python2' 'automake' 'autoconf' 'libtool' 'pkgconf')
 
 source=("$pkgname::git+https://github.com/libyal/liblnk.git")
 sha256sums=('SKIP')
@@ -124,4 +125,3 @@ package_python2-liblnk-git() {
     cp -d "$lib" "$pkgdir/$lib"
   done
 }
-

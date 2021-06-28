@@ -1,17 +1,18 @@
 pkgbase = liblnk-git
 	pkgdesc = Library and tools to access the Windows Shortcut File (LNK) format
-	pkgver = 20181227.r2.g1e055a0
+	pkgver = 20210417.r0.g0c9a2c8
 	pkgrel = 1
 	url = https://github.com/libyal/liblnk
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	makedepends = python
 	makedepends = python2
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = libtool
 	makedepends = pkgconf
-	depends = libbfio
+	depends = libbfio-git
 	source = liblnk-git::git+https://github.com/libyal/liblnk.git
 	sha256sums = SKIP
 
@@ -38,4 +39,3 @@ pkgname = python2-liblnk-git
 	depends = liblnk-git
 	provides = python2-liblnk
 	conflicts = python2-liblnk
-
