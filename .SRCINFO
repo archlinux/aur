@@ -27,7 +27,7 @@ pkgname = linux-rockchip64-bin
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = WIREGUARD-MODULE
 	conflicts = linux
-	backup = etc/mkinitcpio.d/linux-rockchip64-bin.preset
+	backup = etc/mkinitcpio.d/linux-rockchip64.preset
 
 pkgname = linux-rockchip64-bin-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip64
