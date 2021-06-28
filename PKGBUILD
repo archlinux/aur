@@ -1,8 +1,8 @@
-# Maintainer: Andrea Corsini <andrea.corsini@outlook.com>
+# Maintainer: Andrea Corsini <andrea dot corsini at outlook dot com>
 
 pkgname=st-solarized-dark
 _pkgname=st
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Simple terminal implementation for X with dark solarized color scheme"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dl.suckless.org/$_pkgname/$_pkgname-$pkgver.tar.gz"
         "https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff"
         "https://st.suckless.org/patches/solarized/st-solarized-dark-20180411-041912a.diff")
 
-sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
+sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
             '71e1211189d9e11da93ee49388379c5f8469fcd3e1f48bb4d791ddaf161f5845'
             'b2d5e88a2616eafb82b2fefb63eecb0f9d71f839349ef40f9f69c1953444f88c')
 
