@@ -1,0 +1,13 @@
+pkgbase = vim-committia
+	pkgdesc = A Vim plugin for more pleasant editing on commit messages
+	pkgver = 2020.08.27
+	pkgrel = 1
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	depends = git
+	source = https://github.com/rhysd/committia.vim/archive/1d288281586d1e6b52646a4c412df3dd3a2fe231.tar.gz
+	sha512sums = 5eb0bd316bac13b18bd651a3d4caf39cee23d4d8f1b35c1847cf80592e7e4f63b44d51e4faf67f0323c38f7e5543c4dcaf52b6a9830dcbbb357fe89de1b30590
+
+pkgname = vim-committia
