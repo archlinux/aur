@@ -1,7 +1,7 @@
 echo ""
 echo "hint:"
 echo "  create an executable"
-echo "    $HOME/.xrandr-watcher to handle xrandr changed events"
+echo "    $HOME/.xrandr-changed to handle xrandr changed events"
 echo "  and restart service:"
 echo "    systemctl restart --user xrandr-watcher.service"
 echo "  to handle xrandr changed events"

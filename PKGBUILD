@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=xrandr-watch-git
-pkgver=r12.b6940ea
+pkgver=r23.56fc8c7
 pkgrel=1
 pkgdesc="xrandr event watcher"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 md5sums=(
 	'SKIP'
-	'55e84a48456024d6d61313bdb15daaee'
+	'b9a8f7d7ef2127b0d88974869fd5b2c2'
 	'd9029d0359429aa3c54acb7e02d111a1'
 )
 
