@@ -12,9 +12,9 @@ pkgbase = googlekeep-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = googlekeep-git
-	source_x86_64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.1-1/-/raw/master/GoogleKeep-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.1.1/-/raw/master/GoogleKeep-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.1-1/-/raw/master/GoogleKeep-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/googlekeep-desktop/binaries/1.0.1.1/-/raw/master/GoogleKeep-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = googlekeep-bin
