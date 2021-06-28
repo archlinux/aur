@@ -1,6 +1,6 @@
 pkgbase = googledot-cursor-theme
 	pkgdesc = Cursor theme inspired on Google
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.pling.com/p/1215613
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = googledot-cursor-theme
 	makedepends = python-clickgen
 	depends = libxcursor
 	depends = libpng
-	noextract = googledot-cursor-theme-bitmaps-1.1.1.zip
-	source = googledot-cursor-theme-1.1.1.tar.gz::https://github.com/ful1e5/Google_Cursor/archive/v1.1.1.tar.gz
-	source = googledot-cursor-theme-bitmaps-1.1.1.zip::https://github.com/ful1e5/Google_Cursor/releases/download/v1.1.1/bitmaps.zip
-	sha256sums = 5e67f2293b098ab6ae0c5cb7a6f740ed834f263e60cefa0b637ab1c43113f69e
-	sha256sums = b414be817b365922f6fc3cf1a95aa8cdf5cd1ca053b40dfe2c8bda6ce308f889
+	noextract = googledot-cursor-theme-bitmaps-1.1.2.zip
+	source = googledot-cursor-theme-1.1.2.tar.gz::https://github.com/ful1e5/Google_Cursor/archive/v1.1.2.tar.gz
+	source = googledot-cursor-theme-bitmaps-1.1.2.zip::https://github.com/ful1e5/Google_Cursor/releases/download/v1.1.2/bitmaps.zip
+	sha256sums = 56b24e9a6141796c598e8904438f623963746dd1f15c22f405093c2b96dd5229
+	sha256sums = f674660783fa0f60fff8ab558687620fc024e7f9c2f0a0ecf0f0d615fda4b87f
 
 pkgname = googledot-cursor-theme
-

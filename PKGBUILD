@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=googledot-cursor-theme
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Cursor theme inspired on Google"
 arch=('any')
@@ -11,8 +11,8 @@ makedepends=('python-clickgen')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ful1e5/Google_Cursor/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::https://github.com/ful1e5/Google_Cursor/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
-sha256sums=('5e67f2293b098ab6ae0c5cb7a6f740ed834f263e60cefa0b637ab1c43113f69e'
-            'b414be817b365922f6fc3cf1a95aa8cdf5cd1ca053b40dfe2c8bda6ce308f889')
+sha256sums=('56b24e9a6141796c598e8904438f623963746dd1f15c22f405093c2b96dd5229'
+            'f674660783fa0f60fff8ab558687620fc024e7f9c2f0a0ecf0f0d615fda4b87f')
 
 prepare() {
 	cd Google_Cursor-$pkgver
