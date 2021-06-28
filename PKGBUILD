@@ -27,4 +27,5 @@ pkgver() {
 package() {
   cd "$pkgname"
   install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
+  install -Dm 644 etc/below.service -t "${pkgdir}/etc/systemd/system"
 }
