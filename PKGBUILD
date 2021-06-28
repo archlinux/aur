@@ -13,8 +13,8 @@ source=("git+https://github.com/IamDH4/sonobus-aooserver-bin")
 sha512sums=('SKIP')
 
 package() {
-    install -d "$pkgdir/usr/local/bin"
+    install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/etc/systemd/system"
-    install "$srcdir/sonobus-aooserver-bin/aooserver" "$pkgdir/usr/local/bin/aooserver"
+    install "$srcdir/sonobus-aooserver-bin/aooserver" "$pkgdir/usr/bin/aooserver"
     install "$srcdir/sonobus-aooserver-bin/aooserver.service" "$pkgdir/etc/systemd/system/aooserver.service"
 }
