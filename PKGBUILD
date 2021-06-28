@@ -3,7 +3,7 @@
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
 pkgver=k1.4.12.g40df43998
-pkgrel=4
+pkgrel=5
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -149,7 +149,7 @@ prepare() {
     # patch -p1 < ${srcdir}/dlopen-gtk.patch
 
     # some fixes
-    patch -p1 < ${srcdir}/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
+    # patch -p1 < ${srcdir}/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
     patch -p1 < ${srcdir}/a8807bc915f2439acc7c84f06d931d96d6ca602a.patch
     patch -p1 < ${srcdir}/d87ea056c6166345d061fc3a69a6f95eceaab0a1.patch
     patch -p1 < ${srcdir}/98180d3a9e994081a134196adad0023651d28bf3.patch
