@@ -28,6 +28,7 @@ pkgbase = mingw-w64-vtk
 	depends = mingw-w64-pugixml
 	depends = mingw-w64-gl2ps
 	depends = mingw-w64-proj
+	depends = mingw-w64-libharu
 	options = !buildflags
 	options = staticlibs
 	options = !strip
