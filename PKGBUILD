@@ -1,7 +1,7 @@
 # Maintainer: Morgan <morganamilo@archlinux.org>
 pkgname=paru-git
 _pkgname=paru
-pkgver=1.6.0.r0.g1ba3bee
+pkgver=1.7.3.r22.g1ed1f29
 pkgrel=1
 pkgdesc='Feature packed AUR helper'
 url='https://github.com/morganamilo/paru'
@@ -10,7 +10,7 @@ backup=("etc/paru.conf")
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
 makedepends=('cargo')
-depends=('git' 'pacman')
+depends=('glibc' 'git' 'pacman')
 optdepends=('asp: downloading repo pkgbuilds' 'bat: colored pkgbuild printing' 'devtools: build in chroot')
 conflicts=('paru')
 provides=('paru')
@@ -32,6 +32,7 @@ build () {
   fi
 
   PARU_VERSION=$pkgver cargo build --locked --features "${_features:-}" --release --target-dir target
+  ./scripts/mkmo locale/
 }
 
 package() {
@@ -46,6 +47,9 @@ package() {
   install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/paru.bash"
   install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/paru.fish"
   install -Dm644 completions/zsh "${pkgdir}/usr/share/zsh/site-functions/_paru"
+
+  install -d "$pkgdir/usr/share/"
+  cp -r locale "$pkgdir/usr/share/"
 }
 
 pkgver() {
