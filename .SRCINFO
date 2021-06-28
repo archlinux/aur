@@ -1,16 +1,15 @@
 pkgbase = libindi-gphoto
 	pkgdesc = 3rd party drivers for INDI, support for DSLR camers using gphoto
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
-	depends = libindi=1.9.0
+	depends = libindi=1.9.1
 	depends = libgphoto2
-	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.0.tar.gz
-	sha256sums = ed4f20d7049e08453e7aa45e1bd5572b23003cfc2d6cb2956f898ccea8010613
+	source = https://github.com/indilib/indi-3rdparty/archive/v1.9.1.tar.gz
+	sha256sums = 5918c3cf7f907201d6cf159ea7cbadf618fda197ba35dff3c0d4b37f2d67f695
 
 pkgname = libindi-gphoto
-
