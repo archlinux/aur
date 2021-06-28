@@ -9,6 +9,8 @@ hid-uclogic-y :=             \
 	hid-uclogic-rdesc.o     \
 	hid-uclogic-params.o
 
+KVERSION := $(shell uname -r)
+
 all:
 	make -C /lib/modules/$(KVERSION)/build M=$(PWD) modules
 
