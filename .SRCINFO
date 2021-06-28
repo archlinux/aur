@@ -1,0 +1,18 @@
+pkgbase = cpass-py-git
+	pkgdesc = An urwid based TUI frontend for pass
+	pkgver = 0.9.0.r7.ga12742b
+	pkgrel = 1
+	url = https://github.com/oliverlew/cpass
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = pass
+	depends = python-urwid
+	depends = python3
+	provides = cpass
+	conflicts = cpass
+	source = cpass-py-git::git+https://github.com/oliverlew/cpass
+	sha256sums = SKIP
+
+pkgname = cpass-py-git
