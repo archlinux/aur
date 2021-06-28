@@ -1,8 +1,8 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-wsgidav
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
@@ -14,16 +14,14 @@ optdepends=(
     "python-cheroot: to use the built-in webserver"
 )
 source=(
-    "https://files.pythonhosted.org/packages/ac/e1/4885f4d8f5b4275be418ebb1b1c76323304799f9c8bd40deeeba23787a29/WsgiDAV-3.0.3.tar.gz"
-    "LICENSE-v${pkgver}::https://raw.githubusercontent.com/mar10/wsgidav/v${pkgver}/LICENSE"
+    "https://pypi.io/packages/source/W/WsgiDAV/WsgiDAV-${pkgver}.tar.gz"
     "uwsgi.py"
     "uwsgi.ini"
     "config.example.json"
     "config.example.json5"
 )
 sha256sums=(
-    "bb1b8ded03daac0638e65385a805ae208d11afe07a1014cee746139fc6ffaad6"
-    "488580937d6e2549a12454861c17b5106c0a62761f2f052ce2453097abbd841f"
+    "963ce0ed546a7bd1ea00013599a4833f31d1fb5e88af71ab66bfc3bb55a14d8d"
     "774ee839b5248d2614294daf2c8a28fda69f1524d8b5b61d9e75de7b9c986b4d"
     "25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250"
     "9e4d7e9ae9e56a5d0f14c91b296825114e57456888280e59dcf158dad36b9474"
@@ -37,9 +35,13 @@ build() {
 
 package() {
     cd "WsgiDAV-${pkgver}"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
-    install -Dm644 "${srcdir}/LICENSE-v${pkgver}" "${pkgdir}/usr/share/licenses/python-wsgidav/LICENSE"
+    PYTHONHASHSEED=0 python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-wsgidav/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/python-wsgidav/README.md"
+    #install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/python-wsgidav/CHANGELOG.md"
+
     install -Dm644 "${srcdir}/uwsgi.py" "${pkgdir}/usr/share/python-wsgidav/uwsgi.py"
     install -Dm644 "${srcdir}/uwsgi.ini" "${pkgdir}/usr/share/python-wsgidav/uwsgi.ini"
     install -Dm644 "${srcdir}/config.example.json" "${pkgdir}/usr/share/python-wsgidav/config.example.json"

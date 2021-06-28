@@ -1,7 +1,7 @@
 pkgbase = python-wsgidav
 	pkgdesc = Generic WebDAV server based on WSGI
-	pkgver = 3.0.3
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/mar10/wsgidav
 	arch = any
 	license = MIT
@@ -15,18 +15,15 @@ pkgbase = python-wsgidav
 	depends = python-six
 	optdepends = python-lxml: for faster XML processing
 	optdepends = python-cheroot: to use the built-in webserver
-	source = https://files.pythonhosted.org/packages/ac/e1/4885f4d8f5b4275be418ebb1b1c76323304799f9c8bd40deeeba23787a29/WsgiDAV-3.0.3.tar.gz
-	source = LICENSE-v3.0.3::https://raw.githubusercontent.com/mar10/wsgidav/v3.0.3/LICENSE
+	source = https://pypi.io/packages/source/W/WsgiDAV/WsgiDAV-3.1.0.tar.gz
 	source = uwsgi.py
 	source = uwsgi.ini
 	source = config.example.json
 	source = config.example.json5
-	sha256sums = bb1b8ded03daac0638e65385a805ae208d11afe07a1014cee746139fc6ffaad6
-	sha256sums = 488580937d6e2549a12454861c17b5106c0a62761f2f052ce2453097abbd841f
+	sha256sums = 963ce0ed546a7bd1ea00013599a4833f31d1fb5e88af71ab66bfc3bb55a14d8d
 	sha256sums = 774ee839b5248d2614294daf2c8a28fda69f1524d8b5b61d9e75de7b9c986b4d
 	sha256sums = 25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250
 	sha256sums = 9e4d7e9ae9e56a5d0f14c91b296825114e57456888280e59dcf158dad36b9474
 	sha256sums = 28ee019fad42e9c7a2611147defec5e3bb6d2fbb3f5f69390a066f1c1033ef16
 
 pkgname = python-wsgidav
-
