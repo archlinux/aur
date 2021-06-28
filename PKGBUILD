@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-git
-pkgver=0.3.0.r5.gcd4053b
+pkgver=0.4.0.r2.g6044c55
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -17,6 +17,11 @@ sha256sums=('SKIP')
 pkgver() {
     cd ${pkgname%-git}
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd ${pkgname%-git}
+    go clean -testcache ./...
 }
 
 build() {
