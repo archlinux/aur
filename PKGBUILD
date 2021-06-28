@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=2p-kt
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc='A Kotlin Multi-Platform ecosystem for symbolic AI'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://github.com/tuProlog/2p-kt/releases/download/${pkgver}/2p-repl-${pkgver}-redist.jar")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('49d14c19fc6dd2cd4d05a97dd84fb6a13c2e3b3bfcdfc6377f024676d914d592')
+sha256sums=('5f95e186aa33c83fd1c0fe11f2d6f1a7de55cda41d34e5388a984f8f5d57dfb2')
 
 package() {
   echo "#!/bin/sh
