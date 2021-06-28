@@ -1,9 +1,9 @@
-# Maintainer: DuckSoft <realducksoft@gmail.com>
 # Maintainer: database64128 <free122448@hotmail.com>
+# Contributor: DuckSoft <realducksoft@gmail.com>
 
 pkgbase=shadowsocks-uri-generator-git
 pkgname=(ss-uri-gen-git ss-uri-gen-chatbot-telegram-git ss-uri-gen-rescue-git)
-pkgver=v4.2.r5.b09be0d
+pkgver=4.3.r2.g0ae8bca
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/database64128/shadowsocks-uri-generator"
@@ -15,7 +15,7 @@ b2sums=(SKIP)
 
 pkgver() {
 	cd $srcdir/$pkgbase
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

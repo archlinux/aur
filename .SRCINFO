@@ -1,5 +1,5 @@
 pkgbase = shadowsocks-uri-generator-git
-	pkgver = v4.2.r5.b09be0d
+	pkgver = 4.3.r2.g0ae8bca
 	pkgrel = 1
 	url = https://github.com/database64128/shadowsocks-uri-generator
 	arch = x86_64
