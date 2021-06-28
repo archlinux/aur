@@ -1,6 +1,6 @@
 pkgbase = digitalroadmap
 	pkgdesc = DigitalRoadmap - Simple roadmapping utility
-	pkgver = 1.0.0.a1
+	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any
 	license = GPL
