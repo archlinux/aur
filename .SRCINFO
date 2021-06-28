@@ -1,6 +1,6 @@
 pkgbase = linux-amd-znver2
-	pkgver = 5.12.v.13
-	pkgrel = 2
+	pkgver = 5.13.v.0
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -14,18 +14,16 @@ pkgbase = linux-amd-znver2
 	makedepends = lzop
 	makedepends = gcc>=9.1
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.12.13
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13
 	source = config.x86_64
 	source = linux-amd-znver2.preset
 	source = linux.install
 	source = 5010_enable-cpu-optimizations-universal.patch
-	source = idlebug.patch
 	sha256sums = SKIP
-	sha256sums = 4b876e8766174d8c0b62faac1709208ee38f82971cbe5bd4590ced7ebc51d8fb
+	sha256sums = 3ab6134f2c438d13ec595214e08f01e989065a2f387c63ed403a099a1f3466cb
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a
-	sha256sums = c37e1db6b42cdb0e954c250754e707316172633322ddc9c8e05abaecc3c678a3
 
 pkgname = linux-amd-znver2
 	pkgdesc = Linux kernel aimed at the znver2 AMD Ryzen CPU based hardware
