@@ -1,7 +1,7 @@
 pkgbase = sql-language-server
 	pkgdesc = SQL Language Server
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joe-re/sql-language-server
 	arch = x86_64
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = sql-language-server
 	sha256sums = SKIP
 
 pkgname = sql-language-server
-

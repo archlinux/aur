@@ -2,7 +2,7 @@
 
 pkgname=sql-language-server
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL Language Server"
 arch=('x86_64')
 url="https://github.com/joe-re/sql-language-server"
@@ -30,7 +30,6 @@ package() {
 	npm install \
 		--cache "$srcdir/npm-cache" \
 		--global \
-		--user root \
 		--prefix "$pkgdir/usr" \
 		"$pkgname-$pkgver.tgz"
 
