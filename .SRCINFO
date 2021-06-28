@@ -1,6 +1,6 @@
 pkgbase = yupass
 	pkgdesc = This is a password manager powered by the YubiKey
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 4
 	url = https://github.com/StratusFearMe21/yupass
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yupass
 	conflicts = yupass
 	conflicts = yupass-bin
 	conflicts = yupass-git
-	source = yupass.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/tags/v0.1.0.tar.gz
+	source = yupass.tar.gz::https://github.com/StratusFearMe21/yupass/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = yupass
