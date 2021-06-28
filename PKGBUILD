@@ -29,7 +29,6 @@ prepare() {
         msg='Configuration found in build directory. '
         msg+='Applying custom configuration.'
         warning msg
-        warning msg
         cp "$BUILDDIR/config.h" "$srcdir/tuidoku/src/config.h"
         if [ -e "$srcdir/tuidoku-bin" ]
         then
