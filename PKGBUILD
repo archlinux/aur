@@ -14,8 +14,8 @@ provides=('atto')
 conflicts=('atto')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/codesoap/atto/releases/download/v$pkgver/atto_${pkgver}_Linux_amd64.tar.gz"
-  "$_rawurl/master/LICENSE"
-  "$_rawurl/master/README.md"
+  "LICENSE::$_rawurl/master/LICENSE"
+  "README.md::$_rawurl/master/README.md"
 )
 md5sums=(
   '681e64a35a4b75fbc9b218fbca15bf15'
