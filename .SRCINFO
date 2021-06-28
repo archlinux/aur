@@ -1,19 +1,19 @@
 pkgbase = nextinspace-git
 	pkgdesc = Print upcoming space-related events to your terminal
-	pkgver = 1.0.6.r2.g1763952
-	pkgrel = 2
-	url = https://github.com/The-Kid-Gid/nextinspace
+	pkgver = 2.0.3.r0.g846056c
+	pkgrel = 1
+	url = https://github.com/not-stirred/nextinspace
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-colorama
-	depends = python-requests
+	makedepends = python-dephell
+	depends = python-colorama>=0.4.3
+	depends = python-requests>=2.24
 	depends = python-tzlocal
 	provides = nextinspace
 	conflicts = nextinspace
-	source = nextinspace::git+https://github.com/The-Kid-Gid/nextinspace.git
+	source = nextinspace::git+https://github.com/not-stirred/nextinspace.git
 	sha256sums = SKIP
 
 pkgname = nextinspace-git
-
