@@ -4,7 +4,7 @@
 _pkgname='atto'
 pkgname="${_pkgname}-bin"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
