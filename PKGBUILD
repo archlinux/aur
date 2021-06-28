@@ -2,10 +2,11 @@
 pkgname=cq
 pkgver=1.0.0
 
+_ccfgversion=1.0.0.A17
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=17
+pkgrel=18
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
@@ -36,7 +37,7 @@ package() {
     mkdir "$pkgdir/usr/lib/ccfg-cq-libs" -p
     cp aosutil-service-SLIB-UTIL-$_aosutilverion.jar "$pkgdir/usr/lib/ccfg-cq-libs/aosutil-slib-util.jar"
     cd build/CCFG/Jars
-    cp CCFG-$pkgver.jar "$pkgdir/usr/lib/ccfg-cq-libs/CCFG.jar"
+    cp CCFG-$_ccfgversion.jar "$pkgdir/usr/lib/ccfg-cq-libs/CCFG.jar"
     cd ../../../CCFG/cq-script
     mkdir -p "$pkgdir/usr/bin"
     cp cq "$pkgdir/usr/bin"
