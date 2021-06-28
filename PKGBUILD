@@ -1,13 +1,13 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
 url="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes"
 license=('Apache')
 groups=()
-depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-certifi' 'python-wxpython>=4.0.1-2' 'python-xarray' 'python-parse' 'fslpy>=3.6.1' 'fsleyes-widgets>=0.12.1' 'fsleyes-props>=1.7.3' 'python-file-tree>=0.3.5')
+depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy' 'python-matplotlib' 'python-nibabel' 'python-jinja' 'python-opengl' 'python-pyparsing' 'python-pillow' 'python-scipy' 'python-opengl-accelerate' 'python-wheel' 'python-twine' 'python-pytest-timeout' 'python-pytest-xdist' 'python-certifi' 'python-wxpython>=4.0.1-2' 'python-xarray' 'python-parse' 'fslpy>=3.6.2' 'fsleyes-widgets>=0.12.1' 'fsleyes-props>=1.7.3' 'python-file-tree>=0.3.5')
 optdepends=('fsl: Enable loading standard images and advanced features (highly recommended)'
             'python-wxnatpy: Enable loading overlay from XNAT'
             'python-indexed-gzip: Fast random access of gzipped image files'
@@ -18,7 +18,7 @@ conflicts=()
 replaces=()
 source=("https://git.fmrib.ox.ac.uk/fsl/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('de8cfeb36081022dd2a623f8276e5eb6fa79a9e3ee9074e913bd3f224c4ffcfb'
+sha256sums=('8c31d8cc3b494e2244b79b0cce0e5a5859a3fe97af5f573655f9eb2f4b65473a'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
 package() {
