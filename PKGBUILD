@@ -1,9 +1,9 @@
-# Maintainer: Lukas1818 aur at lukas1818 dot de
-# Contributor: Mckol <mckol363@gmail.com>
+# Maintainer:    Lukas1818 aur at lukas1818 dot de
+# Co-Maintainer: Mckol <mckol363@gmail.com>
 
 export GIT_LFS_SKIP_SMUDGE=1
 pkgname=veloren-nightly
-pkgver=0.9.0.r860.fb940ad27
+pkgver=0.10.0.r243.78961e895
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -29,7 +29,7 @@ prepare() {
     git remote set-url origin "$_repo"
     git checkout master
     git pull
-    git checkout `git rev-list -n 1 --before="06:00" master`
+    git checkout $(wget -qO - https://download.veloren.net/version/linux)
     unset GIT_LFS_SKIP_SMUDGE
     git lfs install
     git lfs fetch
@@ -38,7 +38,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
-    VELOREN_USERDATA_STRATEGY='system' cargo build --release --bin veloren-voxygen --bin veloren-server-cli
+    export VELOREN_USERDATA_STRATEGY='system' 
+    cargo build --release --bin veloren-voxygen --no-default-features --features="default-publish"
+    cargo build --release --bin veloren-server-cli
 }
 
 package() {
