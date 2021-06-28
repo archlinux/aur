@@ -4,7 +4,7 @@
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2020.09.r94.g1ff371428
+pkgver=2020.12.r662.g8de31c93d
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -21,16 +21,14 @@ optdepends=('u3d: for U3D and IDTF file support'
             'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git"
-        "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
         )
 sha256sums=('SKIP'
             'SKIP'
-            )
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  git -C "${srcdir}/${_name}" submodule init
-  git -C "${srcdir}/${_name}" config submodule.vcglib.url "$srcdir"/vcglib
-  git -C "${srcdir}/${_name}" submodule update
+  prepare_submodule
 }
 
 pkgver() {
@@ -49,5 +47,21 @@ build() {
 package() {
   DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
 }
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/meshlab" config submodule.src/vcglib.url "$srcdir/vcglib"
+  git -C "$srcdir/meshlab" config submodule.src/external/nexus.url "$srcdir/nexus"
+  git -C "$srcdir/meshlab" submodule update --init
+  git -C "$srcdir/meshlab/src/external/nexus" config submodule.src/corto.url "$srcdir/corto"
+  git -C "$srcdir/meshlab/src/external/nexus" submodule update --init
+}
+source+=(
+  "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git"
+  "nexus::git+https://github.com/cnr-isti-vclab/nexus.git"
+  "corto::git+https://github.com/cnr-isti-vclab/corto.git"
+)
 
 # vim:set ts=2 sw=2 et:
