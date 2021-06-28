@@ -1,0 +1,8 @@
+# makepkg
+/pkg/
+/src/
+/*.pkg.tar.zst
+
+# Impostor
+/Impostor/
+/Hazel-Networking/

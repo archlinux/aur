@@ -1,0 +1,15 @@
+[Unit]
+Description=Among Us dedicated server
+After=network.target
+
+[Service]
+Type=simple
+User=impostor
+DynamicUser=yes
+ExecStart=/usr/bin/impostor-server
+BindReadOnlyPaths=/etc/impostor/:/var/lib/impostor/
+WorkingDirectory=/var/lib/impostor/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
