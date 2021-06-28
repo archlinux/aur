@@ -2,8 +2,8 @@
 # Contributor: yochananmargos
 pkgname=lebiniou
 pkgver=3.60.0
-pkgrel=1
-pkgdesc="A tool to create images from sound"
+pkgrel=2
+pkgdesc="User-friendly, powerful music visualization / VJing tool"
 arch=('x86_64')
 url="https://biniou.net"
 license=('GPL')

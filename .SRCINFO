@@ -1,7 +1,7 @@
 pkgbase = lebiniou
-	pkgdesc = A tool to create images from sound
+	pkgdesc = User-friendly, powerful music visualization / VJing tool
 	pkgver = 3.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biniou.net
 	arch = x86_64
 	license = GPL
