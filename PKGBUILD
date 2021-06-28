@@ -1,8 +1,8 @@
 # Maintainer: Nils Czernia <nils[at]czserver.de>
 
 pkgname=qlcplus
-pkgver=4.12.3
-pkgrel=3
+pkgver=4.12.4
+pkgrel=1
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://qlcplus.org/"
@@ -13,7 +13,7 @@ optdepends=('ola: Open Lighting Architecture plugin')
 conflicts=('qlc' 'qlc-svn')
 install=${pkgname}.install
 source=("https://github.com/mcallegari/qlcplus/archive/QLC+_${pkgver}.tar.gz")
-sha512sums=("f25601a44a81d2fd15c54a05588e687fa1f0c0473d0e2188fa0c052b905df806b0516f8b80bf28451a583aa241d137f858fe83b9d7e0e0747bcc3b0bae91d9f0")
+sha512sums=('19893c5f29602e2e65db9eb162c3f45ce3f028424ecf17d7615f9d3ada8a871dd1a1827ea9a243d7bd0f23ba7e9fb2340531154ac557d5756f0aa05648c56b13')
 
 build() {
   cd "${srcdir}/qlcplus-QLC-_${pkgver}"
