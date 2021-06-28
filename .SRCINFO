@@ -35,4 +35,3 @@ pkgbase = mingw-w64-vtk
 	sha256sums = 15def4e6f84d72f82386617fe595ec124dda3cbd13ea19a0dcd91583197d8715
 
 pkgname = mingw-w64-vtk
-

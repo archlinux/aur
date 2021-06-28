@@ -1,4 +1,3 @@
-
 pkgname=mingw-w64-vtk
 pkgver=9.0.0
 pkgrel=1
@@ -16,6 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/VTK-${pkgver}"
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7611.patch | patch -p1
   # fix libharu export
   sed -i "s|WIN32 AND NOT CYGWIN|MSVC|g" ThirdParty/libharu/vtklibharu/src/CMakeLists.txt
 }
