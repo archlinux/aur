@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=poliastro
 pkgname=python-${_pyname}-doc
-pkgver=0.15.0
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Documentation for Python poliastro module"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'graphviz')
 source=("https://github.com/poliastro/poliastro/archive/v${pkgver}.tar.gz"
         'fix_nbsphinx_errors.patch')
-md5sums=('44e494ba6abc405e4d79415535d6a1d6'
+md5sums=('70a049098b664bcbe05ed5ee798c14d7'
          '92c9d10567556123b294c89645a5e4c8')
 
 prepare() {
