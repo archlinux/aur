@@ -2,7 +2,7 @@
 pkgname=below-git
 _pkgname=below
 pkgver=v0.2.0.r35.g584fdef
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive resource monitor for modern Linux systems"
 arch=('x86_64')
 url="https://github.com/facebookincubator/below/"
