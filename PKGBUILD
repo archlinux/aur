@@ -1,37 +1,38 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: mpie <michael.kyne-phillips1@ntlworld.com>
 
 pkgname=parrot
 pkgver=8.1.0
 _rel=stable
 #_rel=devel
-pkgrel=6
-pkgdesc="Standalone VM that can execute bytecode compiled dynamic languages"
-arch=('x86_64')
-url="http://www.parrotcode.org/"
-license=('GPL')
-depends=('icu' 'openssl' 'libffi' 'gmp')
-makedepends=('perl-json')
-optdepends=('freeglut')
+pkgrel=7
+pkgdesc='Standalone VM that can execute bytecode compiled dynamic languages'
+arch=(x86_64)
+url='http://parrot.org/'
+license=(GPL)
+depends=(gmp icu libffi openssl)
+makedepends=(perl-json perl-pod-parser)
+optdepends=(freeglut)
 options=('!makeflags')
-source=(ftp://ftp.parrot.org/pub/parrot/releases/$_rel/$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('436d34ae21b20453dfdc12c86fa671cd')
+source=("ftp://ftp.parrot.org/pub/parrot/releases/$_rel/$pkgver/$pkgname-$pkgver.tar.bz2")
+b2sums=('3dc3397f74b15505ddd9c4fb361a4304b9bddbddb65d79e9e8f7c81ab1a00f85f652a5096a8b7a041f5fa96cbc2f399d2833fd5de4f9cd2c1e816b3c1aac0fd8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  perl Configure.pl --prefix=/usr \
-    --parrot_is_shared \
+  cd $pkgname-$pkgver
+  perl Configure.pl \
     --disable-rpath \
-	--mandir=/usr/share/man \
-    --optimize
+    --mandir=/usr/share/man \
+    --optimize \
+    --parrot_is_shared \
+    --prefix=/usr
   export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$(pwd)/blib/lib"
   make all parrot_utils docs html
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install-dev
-  sed -i "s#"$srcdir"#/usr/src#" \
-    "$pkgdir"/usr/lib/parrot/$pkgver/tools/lib/Parrot/Config/Generated.pm
+  sed -i "s,"$srcdir",/usr/src," \
+    "$pkgdir/usr/lib/parrot/$pkgver/tools/lib/Parrot/Config/Generated.pm"
 }
