@@ -4,6 +4,7 @@ pkgbase = linux-rockchip64-bin
 	url = https://github.com/armbian/build
 	arch = aarch64
 	license = GPL2
+	provides = linux-rockchip64
 	noextract = linux.preset
 	noextract = linux-dtb-current-rockchip64_21.08.0-trunk.77_arm64.deb
 	noextract = linux-image-current-rockchip64_21.08.0-trunk.77_arm64.deb
