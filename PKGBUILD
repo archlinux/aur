@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=terri-fried-git
 pkgver=r34.463aa1e
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
 arch=('any')
 url="https://github.com/polymarsdev/terri-fried"
@@ -10,7 +10,7 @@ depends=('raylib' 'pulseaudio')
 makedepends=('git' 'raylib')
 source=('terri-fried-git::git+https://github.com/polymarsdev/terri-fried' 'terri-fried' 'terri-fried.desktop')
 sha256sums=('SKIP'
-            '18f7163da30769b589b2d8b34183f9baf8f19b2ce330d2cef35076e4c3960e44'
+            '353e46df9fc1a7b0117a1b6854fdc32fbc773d09dc1cc3b9797edf9b5e8df944'
             '2dff3eb7f21bd5dd7a16b9fc1ed53a4de82df389cd98c0ad28a31af4b7571fec')
 pkgver() {
 	cd "$srcdir/terri-fried-git"

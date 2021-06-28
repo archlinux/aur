@@ -12,8 +12,8 @@ fi
 
 
 cd "$HOME/.config/terri-fried" || exit
-cp -r "/usr/share/terri-fried/resources" "$HOME/.config/terri-fried/."
-cp "/usr/share/terri-fried/terri-fried" "$HOME/.config/terri-fried/."
+ln -s "/usr/share/terri-fried/resources" "$HOME/.config/terri-fried/."
+ln -s "/usr/share/terri-fried/terri-fried" "$HOME/.config/terri-fried/."
 
 "./terri-fried"
 
