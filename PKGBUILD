@@ -5,7 +5,7 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=0.6.1.r66.ga3450a47
+pkgver=0.6.1.r70.gc2ed4bbb
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
@@ -19,6 +19,9 @@ provides=("$_basename")
 
 source=("$pkgname::git://github.com/xmoto/$_basename.git")
 sha1sums=('SKIP')
+
+# not stripping for creating a gdb stacktrace
+options=(!strip)
 
 pkgver() {
   cd "$pkgname"
