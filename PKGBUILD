@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=streampager
-pkgver=0.8.0
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='A pager for command output or large files'
 url='https://github.com/markbt/streampager'
@@ -10,8 +10,8 @@ arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/markbt/streampager/archive/v${pkgver}.tar.gz")
-sha256sums=('190085dd597a6497c7f95ebcccdf522876e6ed6f7b55a2a9b0b0a3462c235742')
-b2sums=('f80cd08deeb4b3ada199327ece56fe18086b8ac36cae7f4e03460addcd0402a875a6589f2267daf80d82bcabc5d6a234fe5f1134ea276afe399711c313626c59')
+sha256sums=('a6b186e5f16e5158520b900ce54c14027e9b8357849301b35bc4d0218f4ed7e5')
+b2sums=('6385225cb10d106fdcf63db3ca2289a4b1ac6dca8dcc88ee125f4f841aeb9ba18178abdbc2c719ba5d1ec0aa23764e463355d51991812a9df38d46a2b48c4a09')
 
 build() {
   cd "${pkgname}-${pkgver}"
