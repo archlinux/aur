@@ -3,7 +3,7 @@
 
 pkgname=python-coloredlogs
 pkgver=15.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Colored terminal output for Python's logging module"
 arch=('any')
 url="https://github.com/xolox/python-coloredlogs"
@@ -19,7 +19,7 @@ build() {
   python setup.py build
 
   cd docs
-  sphinx-build -nb html . build/html
+  sphinx-build -nb html -d build/doctrees . build/html
 }
 
 package() {
