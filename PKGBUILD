@@ -13,7 +13,7 @@ license=('MIT')
 provides=('atto')
 conflicts=('atto')
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/codesoap/atto/releases/download/v$pkgver/atto_${pkgver}_Linux_amd64.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/atto_${pkgver}_Linux_amd64.tar.gz"
   "LICENSE::$_rawurl/master/LICENSE"
   "README.md::$_rawurl/master/README.md"
 )
