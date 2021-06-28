@@ -1,7 +1,7 @@
 pkgbase = lebiniou
 	pkgdesc = A tool to create images from sound
-	pkgver = 3.56.1
-	pkgrel = 2
+	pkgver = 3.60.0
+	pkgrel = 1
 	url = https://biniou.net
 	arch = x86_64
 	license = GPL
@@ -13,10 +13,10 @@ pkgbase = lebiniou
 	depends = sdl2_ttf
 	depends = libcaca
 	depends = ffmpeg
-	depends = lebiniou-data>=3.56.0
+	depends = lebiniou-data>=3.60.0
 	depends = ulfius
-	source = https://gitlab.com/lebiniou/lebiniou/-/archive/version-3.56.1/lebiniou-version-3.56.1.tar.gz
-	sha256sums = 7a50ed7d8d3779e4da16c9e5803d28324a47beba077bfa2fff434ec833c4773b
+	source = https://gitlab.com/lebiniou/lebiniou/-/archive/version-3.60.0/lebiniou-version-3.60.0.tar.gz
+	sha256sums = fab53a6360b979e59ba919b78a470db6c3bf374c0849f59fd0e3168ad5302c5e
 
 pkgname = lebiniou
 
