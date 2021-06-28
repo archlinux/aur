@@ -11,14 +11,14 @@ arch=(any)
 url="http://smc.org.in/fonts/"
 license=("OFL")
 source=("http://smc.org.in/downloads/fonts/chilanka/Chilanka-Regular.ttf"
-        "https://gitlab.com/smc/fonts/chilanka/raw/master/LICENSE.txt"
+        "https://gitlab.com/smc/fonts/chilanka/raw/master/OFL.txt"
         "https://gitlab.com/smc/fonts/chilanka/raw/master/67-smc-chilanka.conf")
-sha256sums=('704ff138c32da0ed2d74a7cab614c7e33e2658b6c1a017781cacf30ff02cf71d'
+sha256sums=('3042ab2cd7e9ae4f8f8137c336ccf5186e6235a2901cb46e2544d7277be2c77b'
             '09c51553395ca2401d43c98a034dad1dad96b24706c2ea07972d698f90a0338f'
             'cf9d4c9e6efbd8bf676d9f1cabe86407ee570caa5f299bcbb8e4b5f46b59162a')
 
 package() {
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
   install -Dm644 -t "$pkgdir/etc/fonts/conf.d" *.conf
 }
