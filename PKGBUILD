@@ -1,5 +1,3 @@
-# Contributor: Ludovic LE ROUX <luudoroux at gmail dot com>
-
 pkgname=mingw-w64-libharu
 pkgver=2.3.0
 pkgrel=1
@@ -20,12 +18,12 @@ prepare() {
   sed -i "s|WIN32 AND NOT CYGWIN|WIN32 AND NOT CYGWIN AND NOT MINGW|g" src/CMakeLists.txt
   sed -i "s|install(DIRECTORY if DESTINATION .)|message(STATUS hello)|g" CMakeLists.txt
   sed -i "s|install(FILES README CHANGES INSTALL DESTINATION .)|message(STATUS hello)|g" CMakeLists.txt
+  rm -f src/hpdf_shading.c && curl -L https://github.com/libharu/libharu/pull/157.patch | patch -p1
 }
 
 build() {
   cd "$srcdir/libharu-RELEASE_${pkgver//./_}"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
