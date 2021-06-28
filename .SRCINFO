@@ -1,13 +1,12 @@
 pkgbase = fortune-mod-limericks
 	pkgdesc = A collection of really funny and perverse limericks.
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://billy.wolfe.casa/fortunes/limericks
 	arch = any
 	license = WTFPL
 	depends = fortune-mod
 	source = https://billy.wolfe.casa/fortunes/limericks
-	md5sums = 038b5cc76fdc015223b4e247ce6841ca
+	md5sums = 9f3ee197327169546284c6bf2bd3708e
 
 pkgname = fortune-mod-limericks
-
