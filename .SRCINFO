@@ -1,9 +1,9 @@
-pkgbase = uboot-tinkerboard
+pkgbase = uboot-tinkerboard-bin
 	pkgdesc = U-Boot for Tinker Board / S
 	pkgver = 21.05.1
 	pkgrel = 1
 	url = https://github.com/armbian/build
-	install = uboot-tinkerboard.install
+	install = uboot-tinkerboard-bin.install
 	arch = armv7h
 	license = GPL2
 	makedepends = uboot-tools
@@ -18,4 +18,4 @@ pkgbase = uboot-tinkerboard
 	sha512sums = ef07def032a97f4f8aac3d2a422a3934984ebac923c2c5ee67b6f50e8d406a42476948078868edbc02325bbcc3392a6006c4842f084961203acbd8a8404b6b23
 	sha512sums = SKIP
 
-pkgname = uboot-tinkerboard
+pkgname = uboot-tinkerboard-bin

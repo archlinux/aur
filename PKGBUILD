@@ -1,6 +1,6 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgname=uboot-tinkerboard
+pkgname=uboot-tinkerboard-bin
 pkgver=21.05.1
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
