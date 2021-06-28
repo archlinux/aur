@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=cubic-bot-telegram-git
-pkgver=v1.0.r30.c65f907
+pkgver=1.0.r36.g451e627
 pkgrel=1
 pkgdesc="A stupid and annoying chatbot for your group chats"
 arch=(x86_64)
@@ -15,7 +15,7 @@ b2sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
