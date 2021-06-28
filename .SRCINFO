@@ -1,6 +1,6 @@
 pkgbase = libvshadow-git
 	pkgdesc = Library to access the Volume Shadow Snapshot (VSS) format
-	pkgver = 20161225.e22b93f
+	pkgver = 20210507.9f06d79
 	pkgrel = 1
 	url = https://github.com/libyal/libvshadow
 	arch = any
@@ -20,4 +20,3 @@ pkgbase = libvshadow-git
 	sha1sums = SKIP
 
 pkgname = libvshadow-git
-

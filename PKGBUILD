@@ -1,6 +1,7 @@
-# Maintainer: Jaryl Chng <mrciku@gmail.com>
+# Maintainer: Jonathan Shreckengost <jonathanshrek@gmail.com>
+
 pkgname=libvshadow-git
-pkgver=20161225.e22b93f
+pkgver=20210507.9f06d79
 pkgrel=1
 pkgdesc='Library to access the Volume Shadow Snapshot (VSS) format'
 arch=('any')
