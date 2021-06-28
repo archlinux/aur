@@ -1,6 +1,6 @@
 pkgbase = r-car
 	pkgdesc = Companion to Applied Regression
-	pkgver = 3.0.10
+	pkgver = 3.0.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=car
 	arch = any
@@ -25,8 +25,7 @@ pkgbase = r-car
 	optdepends = r-sandwich
 	optdepends = r-sparsem
 	optdepends = r-survey
-	source = https://cran.r-project.org/src/contrib/car_3.0-10.tar.gz
-	sha256sums = 1ce316d2fee9b47c951d25d096be732489a3c9f6fc9e612a1eca2e50fb5925f1
+	source = https://cran.r-project.org/src/contrib/car_3.0-11.tar.gz
+	sha256sums = b32c927206f515631ff276dbb337b0f22e9b2d851f4abb1d2c272e534c19542c
 
 pkgname = r-car
-
