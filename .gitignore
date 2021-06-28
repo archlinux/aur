@@ -1,6 +1,4 @@
 /pkg/
 /src/
-/LICENSE
-/LICENSE-v*
 *.pkg.tar.*
 *.tar.gz
