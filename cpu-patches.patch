@@ -1,7 +1,7 @@
-From bad953206b2eb3f370f4df36978034e4151c3022 Mon Sep 17 00:00:00 2001
+From 59928a3bbe954a9fe28069a819c04550a6a5aece Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Wed, 16 Jun 2021 16:00:11 +0200
-Subject: [PATCH 1/4] cpu-5.12: merge graysky's patchset
+Subject: [PATCH 1/6] cpu-5.12: merge graysky's patchset
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -11,7 +11,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  3 files changed, 428 insertions(+), 17 deletions(-)
 
 diff --git a/arch/x86/Kconfig.cpu b/arch/x86/Kconfig.cpu
-index 814fe0d..ac30a58 100644
+index 814fe0d34..ac30a581a 100644
 --- a/arch/x86/Kconfig.cpu
 +++ b/arch/x86/Kconfig.cpu
 @@ -157,7 +157,7 @@ config MPENTIUM4
@@ -440,7 +440,7 @@ index 814fe0d..ac30a58 100644
  	default "4"
 
 diff --git a/arch/x86/Makefile b/arch/x86/Makefile
-index 2855a1a..d64b3f6 100644
+index 2855a1a3d..d64b3f6e0 100644
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
 @@ -114,11 +114,48 @@ else
@@ -498,7 +498,7 @@ index 2855a1a..d64b3f6 100644
          KBUILD_CFLAGS += $(cflags-y)
 
 diff --git a/arch/x86/include/asm/vermagic.h b/arch/x86/include/asm/vermagic.h
-index 75884d2..4e6a08d 100644
+index 75884d2cd..4e6a08d4c 100644
 --- a/arch/x86/include/asm/vermagic.h
 +++ b/arch/x86/include/asm/vermagic.h
 @@ -17,6 +17,48 @@
@@ -585,10 +585,10 @@ index 75884d2..4e6a08d 100644
 2.32.0
 
 
-From 511c066786430ae44cb634d09f3e0f5c58b8eed9 Mon Sep 17 00:00:00 2001
+From 5c9bde6c36f9003caef8cd86b594b2e6fb5e3afb Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 15 May 2020 16:58:29 +0200
-Subject: [PATCH 2/4] init/Kconfig: enable -O3 for all arches
+Subject: [PATCH 2/6] init/Kconfig: enable -O3 for all arches
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -596,7 +596,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 1 deletion(-)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 5f5c776..c0f7ef4 100644
+index 5f5c776ef..c0f7ef4b4 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1316,7 +1316,6 @@ config CC_OPTIMIZE_FOR_PERFORMANCE
@@ -611,10 +611,10 @@ index 5f5c776..c0f7ef4 100644
 2.32.0
 
 
-From 501a3443f0dc4692136a3837046d467628e05e39 Mon Sep 17 00:00:00 2001
+From 2c42bca780b94011d7f5400689edcf14670bdbbc Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Tue, 18 May 2021 13:57:41 +0200
-Subject: [PATCH 3/4] init/Kconfig: add -O1 flag
+Subject: [PATCH 3/6] init/Kconfig: add -O1 flag
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
 ---
@@ -623,7 +623,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  2 files changed, 8 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 82ca490..cf7469b 100644
+index e0a252b64..f02860856 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -739,6 +739,8 @@ else ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -636,7 +636,7 @@ index 82ca490..cf7469b 100644
 
  # Tell gcc to never replace conditional load with a non-conditional one
 diff --git a/init/Kconfig b/init/Kconfig
-index c0f7ef4..e5c7099 100644
+index c0f7ef4b4..e5c709976 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1307,6 +1307,12 @@ choice
@@ -656,10 +656,10 @@ index c0f7ef4..e5c7099 100644
 2.32.0
 
 
-From a18827660b127e1ebb0704fb740391646ff075a8 Mon Sep 17 00:00:00 2001
+From 5883f5313fafd4c0a4c8a4b5116b4074f605a693 Mon Sep 17 00:00:00 2001
 From: Piotr Gorski <lucjan.lucjanov@gmail.com>
 Date: Fri, 11 Jun 2021 11:30:19 +0200
-Subject: [PATCH 4/4] Makefile: Turn off loop vectorization for GCC -O3
+Subject: [PATCH 4/6] Makefile: Turn off loop vectorization for GCC -O3
  optimization level
 
 Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
@@ -668,7 +668,7 @@ Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index cf7469b..a41775e 100644
+index f02860856..4a408fd30 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -737,6 +737,9 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
@@ -678,6 +678,64 @@ index cf7469b..a41775e 100644
 +ifdef CONFIG_CC_IS_GCC
 +KBUILD_CFLAGS += -fno-tree-loop-vectorize
 +endif
+ else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+ KBUILD_CFLAGS += -Os
+ else ifdef CONFIG_CC_OPTIMIZE_BASAL
+--
+2.32.0
+
+
+From 623fbfa8799e80facf17651735bf467588cb4809 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Sat, 19 Jun 2021 11:22:24 +0200
+Subject: [PATCH 5/6] Revert "Makefile: Turn off loop vectorization for GCC -O3
+ optimization level"
+
+This reverts commit bbd05a1b94218ad6cbd76d9e9540af4171ab85f7.
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Makefile | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 4a408fd30..f02860856 100644
+--- a/Makefile
++++ b/Makefile
+@@ -737,9 +737,6 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+ KBUILD_CFLAGS += -O2
+ else ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+ KBUILD_CFLAGS += -O3
+-ifdef CONFIG_CC_IS_GCC
+-KBUILD_CFLAGS += -fno-tree-loop-vectorize
+-endif
+ else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+ KBUILD_CFLAGS += -Os
+ else ifdef CONFIG_CC_OPTIMIZE_BASAL
+--
+2.32.0
+
+
+From a6520c552e7590f3d29f905424eaaea8502f7b33 Mon Sep 17 00:00:00 2001
+From: Piotr Gorski <lucjan.lucjanov@gmail.com>
+Date: Sat, 19 Jun 2021 11:24:22 +0200
+Subject: [PATCH 6/6] Makefile: Turn off loop vectorization for GCC -O3
+ optimization level
+
+Signed-off-by: Piotr Gorski <lucjan.lucjanov@gmail.com>
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index f02860856..b81bba0dd 100644
+--- a/Makefile
++++ b/Makefile
+@@ -737,6 +737,7 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+ KBUILD_CFLAGS += -O2
+ else ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+ KBUILD_CFLAGS += -O3
++KBUILD_CFLAGS += $(call cc-option, -fno-tree-loop-vectorize)
  else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
  KBUILD_CFLAGS += -Os
  else ifdef CONFIG_CC_OPTIMIZE_BASAL
