@@ -1,6 +1,7 @@
-# Maintainer: Jaryl Chng <mrciku@gmail.com>
+# Maintainer: Jonathan Shreckengost <jonathanshrek@gmail.com>
+
 pkgname=libpff-git
-pkgver=20161215.56cdada
+pkgver=20210608.07c0f56
 pkgrel=1
 pkgdesc='Library to access the Personal Folder File (PFF) and the Offline Folder File (OFF) format'
 arch=('any')
