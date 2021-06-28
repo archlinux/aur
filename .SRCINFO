@@ -5,6 +5,7 @@ pkgbase = kicad-library-3d-git
 	url = https://gitlab.com/kicad/libraries/kicad-packages3D
 	arch = any
 	license = CC-BY-SA 4.0
+	makedepends = stepreduce-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
