@@ -1,0 +1,19 @@
+pkgbase = hockeypuck-git
+	pkgdesc = An OpenPGP public keyserver.
+	pkgver = 2.1.0.r67.g1531af9
+	pkgrel = 1
+	url = https://github.com/hockeypuck/hockeypuck
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	depends = postgresql
+	backup = etc/hockeypuck/hockeypuck.conf
+	source = hockeypuck::git+https://github.com/hockeypuck/hockeypuck.git
+	source = sysusers.conf
+	source = service
+	sha512sums = SKIP
+	sha512sums = 6c6761cd37b4b5117c4d7bbb10d77615ca2f08211180fb96f0b5005449b2be4249648f8770f6c161eaaf385f1dd587b97f87bb9655515920a8f25ad8375ad54c
+	sha512sums = a8bdcc2702b64c1b0b80dc09fc870c0ccdf2b6b0a636829ddee52809cc719cb5edb7ff24b6c166efaa5f463ff8289ecede142401bf739dff3a58a34f87a30efb
+
+pkgname = hockeypuck-git

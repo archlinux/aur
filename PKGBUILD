@@ -1,0 +1,60 @@
+# Maintainer: Allen Zhong <allen@moe.cat>
+
+_pkgname=hockeypuck
+pkgname=${_pkgname}-git
+pkgver=2.1.0.r67.g1531af9
+pkgrel=1
+pkgdesc='An OpenPGP public keyserver.'
+arch=('x86_64')
+url="https://hockeypuck.io"
+license=('GPL')
+depends=('postgresql')
+makedepends=('go' 'git')
+backup=("etc/${_pkgname}/${_pkgname}.conf")
+source=("${_pkgname}::git+https://github.com/hockeypuck/hockeypuck.git"
+        sysusers.conf
+        service)
+sha512sums=('SKIP'
+            '6c6761cd37b4b5117c4d7bbb10d77615ca2f08211180fb96f0b5005449b2be4249648f8770f6c161eaaf385f1dd587b97f87bb9655515920a8f25ad8375ad54c'
+            'a8bdcc2702b64c1b0b80dc09fc870c0ccdf2b6b0a636829ddee52809cc719cb5edb7ff24b6c166efaa5f463ff8289ecede142401bf739dff3a58a34f87a30efb')
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${_pkgname}"
+
+  sed -i 's/var\/lib\/hockeypuck\/www/usr\/share\/webapps\/hockeypuck/g' contrib/config/hockeypuck.conf.postgres
+}
+
+build() {
+  cd "${_pkgname}"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="$(pwd)"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  make build
+}
+
+package() {
+  cd "${_pkgname}"
+  install -Dm755 bin/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
+  install -Dm755 bin/${_pkgname}-dump "${pkgdir}"/usr/bin/${_pkgname}-dump
+  install -Dm755 bin/${_pkgname}-load "${pkgdir}"/usr/bin/${_pkgname}-load
+  install -Dm755 bin/${_pkgname}-pbuild "${pkgdir}"/usr/bin/${_pkgname}-pbuild
+
+  install -d "${pkgdir}"/usr/share/webapps/${_pkgname}
+  cp -r contrib/webroot "${pkgdir}"/usr/share/webapps/${_pkgname}
+  install -d "${pkgdir}"/var/lib/${_pkgname}
+  cp -r contrib/templates "${pkgdir}"/var/lib/${_pkgname}/templates
+  install -d "${pkgdir}"/var/log/${_pkgname}
+
+  install -Dm644 "${srcdir}"/service "${pkgdir}"/usr/lib/systemd/system/"${_pkgname}".service
+  install -Dm644 "${srcdir}"/sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/"${_pkgname}".conf
+  install -Dm644 contrib/config/hockeypuck.conf.postgres "${pkgdir}"/etc/${_pkgname}/hockeypuck.conf
+}

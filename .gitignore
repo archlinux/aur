@@ -1,0 +1,14 @@
+src/
+pkg/
+tmp/
+hockeypuck/
+*.xz
+*.zst
+*.gz
+*.zip
+*.bz2
+*.tgz
+*.sig
+*.asc
+*.swp
+*.log
