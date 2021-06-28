@@ -14,6 +14,8 @@ _desc="ARMv7 multi-platform $_target"
 url="https://github.com/armbian/build"
 license=('GPL2')
 options=('!strip')
+provides=("$_pkgbase")
+conflics=("$_pkgbase")
 source=(
   "linux.preset"
   "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_armhf.deb"
