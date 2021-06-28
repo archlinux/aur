@@ -1,6 +1,6 @@
 pkgbase = kakoune.cr-git
 	pkgdesc = command-line tool for Kakoune
-	pkgver = r127.21382e9
+	pkgver = r145.4f86083
 	pkgrel = 1
 	url = https://github.com/alexherbo2/kakoune.cr
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kakoune.cr-git
 	makedepends = crystal
 	makedepends = shards
 	makedepends = llvm
+	makedepends = asciidoctor
 	depends = jq
 	optdepends = fzf: fzf integration
 	optdepends = bat: fzf integration
@@ -20,4 +21,3 @@ pkgbase = kakoune.cr-git
 	sha256sums = SKIP
 
 pkgname = kakoune.cr-git
-
