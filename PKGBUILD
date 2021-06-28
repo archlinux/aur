@@ -15,7 +15,7 @@ source=("git+https://github.com/ninja-ide/ninja-ide.git#branch=develop"
         "setup.py"
         "MANIFEST.in")
 sha256sums=('SKIP'
-            '1045011c72b3b192b5919a9625f5b838368d3e492f3c7e569c204b119f74721e'
+            '8c719614480f88061ca16db999b761334fd468715dbdd60bdc89ac3d47067fff'
             '0341af903c8947afaba84555054edf80f1177ad22fc0a17be1c6c9d94536498a')
 
 pkgver() {
