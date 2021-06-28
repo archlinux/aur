@@ -1,7 +1,7 @@
 pkgbase = tinc-pre
 	pkgdesc = VPN (Virtual Private Network) daemon (Pre-release)
-	pkgver = 1.1pre17
-	pkgrel = 2
+	pkgver = 1.1pre18
+	pkgrel = 1
 	url = http://www.tinc-vpn.org/
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,7 @@ pkgbase = tinc-pre
 	provides = tinc-pre-systemd
 	conflicts = tinc
 	conflicts = tinc-pre-systemd
-	source = git+https://github.com/gsliepen/tinc.git#tag=release-1.1pre17
-	sha256sums = SKIP
+	source = tinc-pre-1.1pre18.tar.gz::https://github.com/gsliepen/tinc/archive/refs/tags/release-1.1pre18.tar.gz
+	sha256sums = bd2d010a1bdeb1dd767f6fbc769fce2a2169119fb3d177df928c27d1f20b5775
 
 pkgname = tinc-pre
-
