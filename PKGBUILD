@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=vigil-bin
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="an open-source Status Page you can host on your infrastructure, used to monitor all your servers and apps, and visible to your users"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=('vigil.service'
         "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/v${pkgver}-x86_64.tar.gz")
 sha256sums=('5365129dece19789d6129b4de23f1f9985d9ab19a9b52d95950bff7d4b339e56'
             '320635cb5ed1bae4379c8e70f07898bb70c19755c54fd697ee0cdf1db3fc8eb3'
-            '2e89974a590b3a6f97ad87348425848afc9fa9fe59fe032bb2c6365b53bb32b5')
+            'f60d6b91f60e03801f12048dff970c34e0a477d903c4f33854ee69857a317df3')
 install=vigil-bin.install
 
 prepare() {
