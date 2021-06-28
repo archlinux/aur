@@ -1,16 +1,16 @@
 pkgbase = greetd-tuigreet-bin
 	pkgdesc = A console UI greeter for greetd
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
 	license = GPL3
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-git
-	source = https://github.com/apognu/tuigreet/releases/download/0.4.0/tuigreet-0.4.0-x86_64
-	source = https://raw.githubusercontent.com/apognu/tuigreet/0.4.0/LICENSE
+	source = https://github.com/apognu/tuigreet/releases/download/0.5.0/tuigreet-0.5.0-x86_64
+	source = https://raw.githubusercontent.com/apognu/tuigreet/0.5.0/LICENSE
 	source = tuigreet.conf
-	sha256sums = 9832b2005ca4d069ed6f707ec1a63d8b7ad3e07843d9d403f1e9b6f3034fd899
+	sha256sums = cec28532c267da52267299b07a6456ab9e2bde008a16a624597100518b5a4715
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
