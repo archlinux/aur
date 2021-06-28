@@ -2,7 +2,7 @@
 
 pkgname=rustdesk-git
 pkgver=1.1.6.r47.g25ffaa7
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! "
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -10,8 +10,8 @@ license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git} ${pkgname/git/bin})
 #replaces=(${pkgname})
-depends=( 'gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
-makedepends=('unzip' 'yasm' 'nasm' 'clang' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust')
+depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
+makedepends=('unzip' 'yasm' 'nasm' 'clang' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust' 'python')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
@@ -27,20 +27,47 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+build() {
 # install vcpkg
+# git clone https://github.com/microsoft/vcpkg --branch 2020.11-1
     vcpkg/bootstrap-vcpkg.sh
     mkdir -pv ${srcdir}/vcpkg
     export VCPKG_ROOT=${srcdir}/vcpkg
     vcpkg/vcpkg install libvpx libyuv opus
 
+# build rustdesk
     cd "${srcdir}/${pkgname%-git}/"
+#     RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+    cargo build --release
+}
 
+check() {
+    cd "${srcdir}/${pkgname%-git}/"
+    cargo test --release
+}
+
+package() {
 # install rustdesk
-    cargo install --no-track --locked --all-features --root "${pkgdir}/usr/" --path .
+    install -dm0755 "${pkgdir}/usr/share/${pkgname%-git}"
+
+    #     find "${srcdir}/${pkgname%-git}/target/debug" \
+    find "${srcdir}/${pkgname%-git}/target/release" \
+     -maxdepth 1 \
+     -executable \
+     -type f \
+     -exec install -m 0755 "{}" "${pkgdir}/usr/share/${pkgname%-git}" \;
+
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-git}" << EOF
+#!/bin/env bash
+cd /usr/share/${pkgname%-git}/
+./${pkgname%-git}
+EOF
+
+# install ui
+    cp -r "${srcdir}/${pkgname%-git}/src" "${pkgdir}/usr/share/${pkgname%-git}"
 
 # install libsciter-gtk.so
-    cp -r "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/share/${pkgname%-git}"
 
     install -Dm0644 "${srcdir}/${pkgname%-git}/logo-header.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.svg"
     install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service" << EOF
