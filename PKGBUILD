@@ -1,6 +1,6 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
 pkgname=ctc
-pkgver=1.0.0.A5
+pkgver=1.0.0.a5
 
 _cyanversion=1.0.0.A14 # Needed to find the right version ZIP
 
