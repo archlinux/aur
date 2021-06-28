@@ -2,7 +2,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! "
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -31,9 +31,12 @@ build() {
     export VCPKG_ROOT=${srcdir}/vcpkg
     vcpkg/vcpkg install libvpx libyuv opus
 
+# install libsciter-gtk.so
+    install -Dm0644 "${srcdir}/libsciter-gtk.so" "${srcdir}/${pkgname}-${pkgver}/target/release"
+
 # build rustdesk
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    cargo run --release
+    cargo build --release
 }
 
 check() {
@@ -43,16 +46,19 @@ check() {
 
 package() {
 # install rustdesk
-    install -dm0755 "${pkgdir}/usr/bin"
-    #     find "${srcdir}/${pkgname}-${pkgver}/target/debug" \
-    find "${srcdir}/${pkgname}-${pkgver}/target/release" \
-     -maxdepth 1 \
-     -executable \
-     -type f \
-     -exec install -m 0755 "{}" "${pkgdir}/usr/bin" \;
+    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/bin/env bash
+cd /usr/share/${pkgname}/
+./${pkgname}
+EOF
+
+# install ui
+    cp -r "${srcdir}/${pkgname}-${pkgver}/src" "${pkgdir}/usr/share/${pkgname}"
 
 # install libsciter-gtk.so
-    cp -r "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/libsciter-gtk.so" "${pkgdir}/usr/share/${pkgname}"
 
     install -Dm0644 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 
