@@ -1,12 +1,12 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League of Legends helper script
-	pkgver = 0.11.8.r0.g428d14f
+	pkgver = 0.11.8.r1.g263c91c
 	pkgrel = 1
 	url = https://github.com/kyechou/leagueoflegends
 	arch = any
 	license = GPL3
 	depends = wine-lol
-	depends = winetricks
+	depends = winetricks-git
 	depends = bash
 	depends = curl
 	depends = openssl
@@ -29,4 +29,3 @@ pkgbase = leagueoflegends-git
 	sha256sums = SKIP
 
 pkgname = leagueoflegends-git
-

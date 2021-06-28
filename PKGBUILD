@@ -2,13 +2,13 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=leagueoflegends-git
-pkgver=0.11.8.r0.g428d14f
+pkgver=0.11.8.r1.g263c91c
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
 url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('wine-lol' 'winetricks' 'bash' 'curl' 'openssl' 'lib32-gnutls'
+depends=('wine-lol' 'winetricks-git' 'bash' 'curl' 'openssl' 'lib32-gnutls'
          'lib32-libldap' 'lib32-openal' 'lib32-libpulse' 'vulkan-icd-loader'
          'lib32-vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver')
 makedepends=()
