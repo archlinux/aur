@@ -2,7 +2,7 @@
 pkgname=connective-http
 pkgver=1.0.0
 
-pkgrel=7
+pkgrel=8
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
@@ -21,10 +21,6 @@ changelog=
 source=("git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git" "scripts-and-configs.tar.gz")
 noextract=()
 md5sums=('SKIP' '74e0fbcc0c5853854c2aa5fc7a4d14c3')
-
-prepare() {
-    cp credtool.sh start.sh main.install service.service config.props "$srcdir"
-}
 
 build() {
     cd ConnectiveStandalone
