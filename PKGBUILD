@@ -1,6 +1,6 @@
 pkgname=googlekeep-git
 _pkgname=GoogleKeep-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial Google Keep desktop application."
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@13.1.2 electron-context-menu@3.1.0 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@13.1.4 electron-context-menu@3.1.1 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in GoogleKeep-linux-*/ ; do mv "${dir}" "GoogleKeep" ;done
 }
