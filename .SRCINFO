@@ -3,7 +3,12 @@ pkgbase = autofs-no-locking
 	pkgver = 5.1.7
 	pkgrel = 1
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = libldap
 	makedepends = krb5
@@ -31,4 +36,3 @@ pkgbase = autofs-no-locking
 	sha256sums = SKIP
 
 pkgname = autofs-no-locking
-

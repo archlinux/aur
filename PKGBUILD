@@ -10,12 +10,12 @@ pkgname=${_pkgbase}-no-locking
 pkgver=5.1.7
 pkgrel=1
 pkgdesc='A kernel-based automounter for Linux (disable mount locking, allows recursive auto-mounting)'
-arch=('x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.kernel.org/pub/linux/daemons/autofs/'
 license=('GPL2')
 depends=('libxml2')
-provides=("autofs")
-conflicts=("autofs")
+provides=('autofs')
+conflicts=('autofs')
 makedepends=('libldap' 'krb5' 'kmod' 'sssd' 'libnsl' 'rpcsvc-proto' 'systemd')
 optdepends=('krb5: for LDAP support'
             'sssd: for SSSD integration')
@@ -61,4 +61,3 @@ package() {
 
   install -dm755 "$pkgdir/etc/autofs/auto.master.d"
 }
- 
