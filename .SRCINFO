@@ -1,0 +1,18 @@
+pkgbase = lbry-desktop-bin
+	pkgdesc = A browser for the LBRY network, a digital marketplace controlled by its users
+	pkgver = 0.51.1
+	pkgrel = 1
+	url = https://lbry.com/
+	arch = x86_64
+	license = MIT
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libxtst
+	depends = nss
+	depends = libsecret
+	provides = lbry
+	provides = lbrynet
+	source = https://github.com/lbryio/lbry-desktop/releases/download/v0.51.1/LBRY_0.51.1.deb
+	sha512sums = 6e34cb092378c8b70d3b4856191e2b3963699c8ccb92d32112745af00a8683bcc59c87bb37147cf02544e1eb2a7f81d456729d2c16e0c5b6a3083ddbeba378b9
+
+pkgname = lbry-desktop-bin
