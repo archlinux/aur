@@ -3,7 +3,7 @@
 pkgbase = fortune-mod-bashfr
 	pkgdesc = bashfr.org/DTC (danstonchat.com) fortune file
 	pkgver = 10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://danstonchat.com
 	install = fortune-mod-bashfr.install
 	arch = any
