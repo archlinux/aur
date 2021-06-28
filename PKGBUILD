@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.12.13
-pkgver=5.12.v.13
-pkgrel=2
+gitver=v5.13
+pkgver=5.13.v.0
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -20,20 +20,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         'linux.install'
 	# patch from our gentoo overlords
 	'5010_enable-cpu-optimizations-universal.patch'
-        # revert for idlebug
-        'idlebug.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '8710464a275ba81a273140bc61ff038d20bbbd07669fe8b58075073c360b6414'
+            '777b3699a9c306c8190fc3874e8c0219717671a499827e3ffd1f11e099428df8'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
             '9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a'
-            #idlebug file
-            'c37e1db6b42cdb0e954c250754e707316172633322ddc9c8e05abaecc3c678a3'
 )
 
 _kernelname=${pkgbase#linux}
