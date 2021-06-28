@@ -15,4 +15,5 @@ sha512sums=('SKIP')
 package() {
     install -d "$pkgdir/usr/local/bin"
     install "$srcdir/sonobus-aooserver-bin/aooserver" "$pkgdir/usr/local/bin/aooserver"
+    install "$srcdir/sonobus-aooserver-bin/aooserver.service" "$pkgdir/etc/systemd/system/aooserver.service"
 }
