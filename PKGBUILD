@@ -2,7 +2,7 @@
 
 pkgname=openvas-scanner
 pkgver=21.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
 url="https://github.com/greenbone/openvas-scanner"
@@ -21,8 +21,7 @@ build() {
   cd "${pkgname}-${pkgver}"
   cmake -DCMAKE_BUILD_TYPE=Release -DSBINDIR=/usr/bin \
     -DCMAKE_INSTALL_PREFIX=/usr -DSYSCONFDIR=/etc -DLOCALSTATEDIR=/var -DLIBDIR=/usr/lib \
-    -DOPENVAS_FEED_LOCK_PATH=/run/gvm/feed-update.lock --debug-output .
-  make -j1
+    -DOPENVAS_FEED_LOCK_PATH=/run/gvm/feed-update.lock -DOPENVAS_NVT_DIR=/var/lib/openvas --debug-output .
 }
 
 package() {

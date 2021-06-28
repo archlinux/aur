@@ -1,7 +1,7 @@
 pkgbase = openvas-scanner
 	pkgdesc = Vulnerability scanning Daemon
 	pkgver = 21.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/greenbone/openvas-scanner
 	arch = x86_64
 	groups = greenbone-vulnerability-manager
