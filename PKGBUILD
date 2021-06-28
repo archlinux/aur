@@ -1,7 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 _target=rockchip
-pkgbase="linux-$_target-bin"
+_pkgbase="linux-$_target"
+pkgbase="$_pkgbase-bin"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.10.46
 _armbver=21.08.0
@@ -37,7 +38,7 @@ _package() {
   pkgdesc="The Linux Kernel and modules - $_desc"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
+  backup=("etc/mkinitcpio.d/$_pkgbase.preset")
   provides=('WIREGUARD-MODULE')
   conflicts=('linux')
 
@@ -51,27 +52,27 @@ _package() {
   install -dm755 "$pkgdir/boot"
   cp -r "boot/dtb-$_kernver" "$pkgdir/boot/dtbs"
 
-  ln -s "vmlinuz-$pkgbase" "$pkgdir/boot/zImage"
-  ln -s "initramfs-$pkgbase.img" "$pkgdir/boot/Initrd"
+  ln -s "vmlinuz-$_pkgbase" "$pkgdir/boot/zImage"
+  ln -s "initramfs-$_pkgbase.img" "$pkgdir/boot/Initrd"
 
   install -dm755 "$pkgdir/usr"
   cp -r lib "$pkgdir/usr/lib"
 
   # sed expression for following substitutions
   local _subst="
-    s|%PKGBASE%|$pkgbase|g
+    s|%PKGBASE%|$_pkgbase|g
     s|%KERNVER%|$_kernver|g
   "
 
   # install mkinitcpio preset file
   sed "$_subst" linux.preset |
-    install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
+    install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$_pkgbase.preset"
 
   # install boot image
   install -Dm644 "boot/vmlinuz-$_kernver" "$pkgdir/usr/lib/modules/$_kernver/vmlinuz"
 
   # used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
+  echo "$_pkgbase" | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules/$_kernver/pkgbase"
 }
 
 _package-headers() {
