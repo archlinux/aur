@@ -1,6 +1,6 @@
 pkgbase = qjsonstruct-git
 	pkgdesc = JSON helper library for Qt apps
-	pkgver = v1.0.r0.3c46dbc
+	pkgver = 1.0.r0.g3c46dbc
 	pkgrel = 1
 	url = https://github.com/moodyhunter/QJsonStruct
 	arch = x86_64

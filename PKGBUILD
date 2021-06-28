@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=qjsonstruct-git
-pkgver=v1.0.r0.3c46dbc
+pkgver=1.0.r0.g3c46dbc
 pkgrel=1
 pkgdesc="JSON helper library for Qt apps"
 arch=(x86_64)
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
