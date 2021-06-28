@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-committia-git
-pkgver=r90.c63831f
-pkgrel=2
+pkgver=r134.1d28828
+pkgrel=1
 epoch=1
 pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
 arch=('any')
@@ -39,5 +39,5 @@ package() {
 
   # Install licence
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname%-git}"
-  grep '## License' README.md -A 100 > "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENCE"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
