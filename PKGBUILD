@@ -2,17 +2,17 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='nextinspace'
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Print upcoming space-related events to your terminal'
 arch=('any')
-url='https://github.com/The-Kid-Gid/nextinspace'
+url='https://github.com/not-stirred/nextinspace'
 _url_pypi='https://pypi.org/project/nextinspace'
 license=('GPL3')
 depends=('python-colorama>=0.4.3' 'python-requests>=2.24' 'python-tzlocal')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8d3e3120b5652cf211eba5086151e9f252a0cd15d06e2e1f32d6b936045ba1a1')
+sha256sums=('80937972053a8411b5a145488dbec8e4049320f9014d012776ae9561c70d418e')
 
 build() {
   cd "${pkgname}-${pkgver}"
