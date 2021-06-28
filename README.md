@@ -6,6 +6,8 @@ This is the [official] [PKGBUILD] for [FTXUI] for use on [Arch Linux] via
 
 > It is now available in the AUR - [ftxui-git]
 
+> Using cmake, FetchContent and referring to a specific hash version of FTXUI is recommended instead, especially for public open source projects.
+
 The headers are installed to:
 ```
 /usr/include/ftxui
