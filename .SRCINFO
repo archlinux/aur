@@ -2,7 +2,7 @@ pkgbase = qv2ray-plugin-interface-git
 	pkgdesc = Qv2ray plugin interface
 	pkgver = v4.0.pre1.r0.626190c
 	pkgrel = 1
-	url = https://github.com/moodyhunter/QvPlugin-Interface
+	url = https://github.com/moodyhunter/Qv2rayBase-PluginInterface
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -13,7 +13,7 @@ pkgbase = qv2ray-plugin-interface-git
 	depends = qjsonstruct
 	provides = qv2ray-plugin-interface
 	conflicts = qv2ray-plugin-interface
-	source = qv2ray-plugin-interface-git::git+https://github.com/moodyhunter/QvPlugin-Interface
+	source = qv2ray-plugin-interface-git::git+https://github.com/moodyhunter/Qv2rayBase-PluginInterface
 	sha512sums = SKIP
 
 pkgname = qv2ray-plugin-interface-git
