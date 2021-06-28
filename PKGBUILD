@@ -1,13 +1,13 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=qv2ray-plugin-interface-git
-pkgver=4.0.pre1.r33.gd4a0268
+pkgver=4.0.pre1.r37.g2bd1c2f
 pkgrel=1
 pkgdesc="Qv2ray plugin interface"
 arch=(x86_64)
 url="https://github.com/moodyhunter/Qv2rayBase-PluginInterface"
 license=('MIT')
 depends=('qt6-base')
-makedepends=('git' 'qt6-tools' 'cmake' 'ninja')
+makedepends=('git' 'qt6-tools' 'cmake')
 provides=('qv2ray-plugin-interface')
 conflicts=('qv2ray-plugin-interface')
 source=("$pkgname::git+$url")
@@ -21,13 +21,10 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     mkdir -p build && cd build
-    cmake .. -GNinja \
-        -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-        -DCMAKE_BUILD_TYPE=Release
-    ninja
+    cmake .. -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    ninja -C "build" install
+    cd "$srcdir/$pkgname/build"
+    cmake --install . --component development
 }
