@@ -2,7 +2,7 @@
 # Maintainer: TDY <tdy@gmx.com>
 
 pkgname=xgrabcolor
-pkgver=5.4.6
+pkgver=1.4.6
 pkgrel=5
 pkgdesc="A basic color picker"
 arch=('i686' 'x86_64')
