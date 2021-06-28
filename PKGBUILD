@@ -1,6 +1,7 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
-pkgname=uboot-tinkerboard-bin
+_pkgname=uboot-tinkerboard
+pkgname="$_pkgname-bin"
 pkgver=21.05.1
 pkgrel=1
 pkgdesc="U-Boot for Tinker Board / S"
@@ -9,7 +10,9 @@ url="https://github.com/armbian/build"
 license=('GPL2')
 backup=('boot/boot.txt')
 makedepends=('uboot-tools')
-install="$pkgname.install"
+provides=("$_pkgname")
+conflics=("$_pkgname")
+install="$_pkgname.install"
 source=(
   "mkscr"
   "boot.txt"
