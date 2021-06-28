@@ -1,0 +1,15 @@
+pkgbase = noverify
+	pkgdesc = Pretty fast linter (code static analysis utility) for PHP
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/VKCOM/noverify
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = noverify
+	conflicts = noverify-bin
+	conflicts = noverify-git
+	source = https://github.com/VKCOM/noverify/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 282f59eb4704610fa3b78a3e55bbef148ade64ef3dd0fd4736e7870b56f1e35f
+
+pkgname = noverify
