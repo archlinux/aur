@@ -1,0 +1,14 @@
+#!/bin/bash
+
+rootdir="$(dirname "$(readlink -f "$0")")/../.."
+
+if [[ "${FUNCNAME[0]}" == source ]]; then
+  echo "Can't source the 'bask' executable. Instead, source '/usr/lib/bask/bask.sh' directly."
+  exit 1
+fi
+
+# Include core files
+source "${rootdir}/usr/lib/bask/bask.sh"
+
+# Include CLI specific files
+source "${rootdir}/usr/lib/bask/cli.sh"
