@@ -1,7 +1,7 @@
 pkgbase = code-transparent
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - with transparency enabled.
 	pkgver = 1.56.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/vscode
 	install = code-transparent.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = code-transparent
 	makedepends = python2
 	makedepends = yarn
 	makedepends = nodejs-lts-dubnium
-	depends = electron
+	depends = electron12
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -37,4 +37,3 @@ pkgbase = code-transparent
 	sha512sums = e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e
 
 pkgname = code-transparent
-
