@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-extended-git
-pkgver=r19131.decc493af
+pkgver=r19149.0052ff9be
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version - Nightly build from git"
 arch=('any')
