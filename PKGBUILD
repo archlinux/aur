@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=drawio
-pkgver=14.5.1
+pkgver=14.8.0
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
@@ -16,8 +16,6 @@ sha256sums=(
 )
 
 prepare() {
-    cd "${srcdir}"
-
     rm -rf META-INF WEB-INF
     rm -f yarn.lock
     rm -f service-worker.js
@@ -29,8 +27,6 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}"
-
     install -dm755 "${pkgdir}/usr/share"
 
     cp -r . "${pkgdir}/usr/share/draw.io"

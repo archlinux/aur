@@ -1,13 +1,12 @@
 pkgbase = drawio
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 14.5.1
+	pkgver = 14.8.0
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = any
 	license = Apache
 	options = !strip
-	source = https://github.com/jgraph/drawio/releases/download/v14.5.1/draw.war
+	source = https://github.com/jgraph/drawio/releases/download/v14.8.0/draw.war
 	sha256sums = f4d89497132cc6f10f3b0a33297d101e1b09422019a5b1ec49d4a8442307adb6
 
 pkgname = drawio
-
