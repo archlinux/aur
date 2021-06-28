@@ -1,7 +1,7 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 
 pkgname=alif
-pkgver=3.0.30
+pkgver=3.0.31
 pkgrel=0
 pkgdesc="The Alif Arabic Programming Language - لغة البرمجة العربية ألف"
 arch=('x86_64')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
-    git reset 1cd92a8fd5d62e2056b1a1bd34a0e0ccee45d4cf
+    git reset e2939748d25dad22c632c70de394738fcc5f94ab
 }
 
 build() {

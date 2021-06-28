@@ -1,13 +1,13 @@
 pkgbase = alif
 	pkgdesc = The Alif Arabic Programming Language - لغة البرمجة العربية ألف
-	pkgver = 3.0.30
+	pkgver = 3.0.31
 	pkgrel = 0
 	url = https://www.aliflang.org/
 	arch = x86_64
 	license = GPL3
 	depends = boost
 	optdepends = webui: to use web browsers as UI
-	source = alif-3.0.30::git+https://github.com/alifcommunity/compiler.git
+	source = alif-3.0.31::git+https://github.com/alifcommunity/compiler.git
 	md5sums = SKIP
 
 pkgname = alif
