@@ -28,7 +28,7 @@ prepare() {
     then
         msg='Configuration found in build directory. '
         msg+='Applying custom configuration.'
-        warning msg
+        warning "$msg"
         cp "$BUILDDIR/config.h" "$srcdir/tuidoku/src/config.h"
         if [ -e "$srcdir/tuidoku-bin" ]
         then
@@ -40,7 +40,7 @@ prepare() {
         msg+='Sometimes changes are made to the config that '
         msg+='are required for building. If a build fails remove the '
         msg+='old config.h file.'
-        warning $msg
+        warning "$msg"
         cp "$_pkgname/src/config.h" "$BUILDDIR/"
     fi
 }
