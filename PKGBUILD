@@ -3,14 +3,14 @@
 
 pkgname=bee-clef-bin
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Go Ethereum's external signer"
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://swarm.ethereum.org/'
 license=('GPL3')
 depends=('bash')
 provides=('swarm-bee-clef')
-conflicts=('swarm-bee-clef')
+conflicts=('swarm-bee-clef' 'go-ethereum')
 backup=('etc/bee-clef/4byte.json'
         'etc/bee-clef/rules.js')
 source_x86_64=("https://github.com/ethersphere/bee-clef/releases/download/v$pkgver/bee-clef_${pkgver}_amd64.deb")
