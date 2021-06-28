@@ -1,6 +1,6 @@
 pkgbase = liblinphone-git
 	pkgdesc = A Voice-over-IP phone library and CLI
-	pkgver = 4.5.0.alpha.r300.gf78f649e3
+	pkgver = 5.0.0.alpha.r141.g005c77a4f
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -21,11 +21,10 @@ pkgbase = liblinphone-git
 	depends = ortp>=4.5
 	depends = xerces-c
 	optdepends = pulseaudio
-	provides = liblinphone=4.5.0.alpha.r300.gf78f649e3
+	provides = liblinphone=5.0.0.alpha.r141.g005c77a4f
 	conflicts = liblinphone
 	options = !emptydirs
 	source = git+https://github.com/BelledonneCommunications/linphone.git
 	sha256sums = SKIP
 
 pkgname = liblinphone-git
-

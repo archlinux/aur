@@ -5,7 +5,7 @@
 
 pkgname=liblinphone-git
 _pkgname=linphone
-pkgver=4.5.0.alpha.r300.gf78f649e3
+pkgver=5.0.0.alpha.r141.g005c77a4f
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
@@ -37,6 +37,7 @@ build() {
     -DENABLE_LIME_X3DH=YES \
     -DENABLE_UNIT_TESTS=NO \
     -DENABLE_STRICT=NO \
+    -DENABLE_FLEXIAPI=NO \
     -DCMAKE_INSTALL_RPATH=NO \
     -Wno-dev
   make -C build
