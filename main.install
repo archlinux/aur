@@ -4,7 +4,7 @@ post_install() {
     
     chown connective:connective /etc/connective-http -R
     chmod 775 /etc/connective-http/ -R
-    chmod 660 /etc/connective-http/credentials -R
+    chmod 770 /etc/connective-http/credentials -R
     
     if [ ! -f "/etc/authbind/byport/80)" ]; then
         touch /etc/authbind/byport/80
