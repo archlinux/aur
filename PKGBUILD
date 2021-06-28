@@ -2,8 +2,8 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.1.9.g5124ca1b6
-pkgrel=1
+pkgver=k1.4.12.g40df43998
+pkgrel=4
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Dev branch"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -146,7 +146,7 @@ prepare() {
     popd
 
     patch -p1 < ${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
-    patch -p1 < ${srcdir}/dlopen-gtk.patch
+    # patch -p1 < ${srcdir}/dlopen-gtk.patch
 
     # some fixes
     patch -p1 < ${srcdir}/71deaa48afab2bcf9df67b9b347b1f44aad3a9ce.patch
