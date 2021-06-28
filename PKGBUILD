@@ -2,17 +2,16 @@
 
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
-_name="${_pkgname/-/_}"
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
-pkgdesc="rewrite of doctest module (with pytest integration)"
+pkgdesc="A rewrite of Python's doctest module"
 arch=('any')
 url="https://github.com/Erotemic/xdoctest"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('0b44276a219119196543671d8ac24469ecd73b040bbd03ca416320d407f0dd34361dbb2778121621f6efb65835ea421107883277b6e712f03e4c06ea2b03dd6a')
+b2sums=('632ab549953a170ac469d35c6cc43ed80cbc211ac0afbe3d181397a994d7f909d338b376d315b8abbe21d84a316135ced2046eba34550963f1dbcac35fdd1317')
 
 build() {
   cd "$_pkgname-$pkgver"
