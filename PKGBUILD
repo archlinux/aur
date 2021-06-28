@@ -1,7 +1,7 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=peak-linux-driver
-pkgver=8.10.2
+pkgver=8.12.0
 pkgrel=1
 pkgdesc='Linux driver for PEAK CAN adapter'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "dkms.conf"
 )
 sha256sums=(
-    "766dc4d569c984c5fdcb9446dd3d7a0907627238f56cf1151d20a38c4747361c"
+    "f1692a78a948f3847abdd14689ae24f9eb00ead9f3bf2b6f875f5d905fb3cdcd"
     "20bffab516811f77d0f0f258c7b31939e93e10c82888b37ea2656e579052d5bc"
 )
 
