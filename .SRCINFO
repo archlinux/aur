@@ -1,0 +1,20 @@
+pkgbase = below-git
+	pkgdesc = An interactive resource monitor for modern Linux systems
+	pkgver = v0.2.0.r35.g584fdef
+	pkgrel = 1
+	url = https://github.com/facebookincubator/below/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = libbpf
+	makedepends = clang
+	depends = zlib
+	depends = libelf
+	depends = ncurses
+	provides = below
+	conflicts = below
+	source = below-git::git+https://github.com/facebookincubator/below.git
+	sha1sums = SKIP
+
+pkgname = below-git
