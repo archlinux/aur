@@ -1,7 +1,6 @@
-src
-pkg
+/src/
+/pkg/
 *.sign
-*.xz
-*.pkg*
+*.pkg.tar.*
 *.part
 *.tar.gz
