@@ -1,7 +1,7 @@
 pkgbase = ninja-ide-git
 	pkgdesc = Cross-platform IDE focused on Python application development
-	pkgver = 20190207
-	pkgrel = 4
+	pkgver = 20210526
+	pkgrel = 1
 	url = http://ninja-ide.org
 	arch = any
 	license = GPL3
@@ -12,13 +12,12 @@ pkgbase = ninja-ide-git
 	depends = qt5-declarative
 	depends = python-pycodestyle
 	depends = python-pyflakes
-	options = emptydirs
-	source = git+https://github.com/ninja-ide/ninja-ide.git
+	depends = python-jedi
+	source = git+https://github.com/ninja-ide/ninja-ide.git#branch=develop
 	source = setup.py
 	source = MANIFEST.in
-	md5sums = SKIP
-	md5sums = c4dbf95e76d6507e3c087cc6cdaf64b0
-	md5sums = e8fd6b8243172d576d032c26d9140285
+	sha256sums = SKIP
+	sha256sums = 1045011c72b3b192b5919a9625f5b838368d3e492f3c7e569c204b119f74721e
+	sha256sums = 0341af903c8947afaba84555054edf80f1177ad22fc0a17be1c6c9d94536498a
 
 pkgname = ninja-ide-git
-
