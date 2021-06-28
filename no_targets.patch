@@ -1,0 +1,66 @@
+diff --git a/package.json b/package.json
+index 1d6807f..9dfd510 100644
+--- a/package.json
++++ b/package.json
+@@ -27,35 +27,6 @@
+       "!app",
+       "!main.js"
+     ],
+-    "mac": {
+-      "artifactName": "jitsi-meet.${ext}",
+-      "target": [
+-        {
+-          "arch": "universal",
+-          "target": "dmg"
+-        },
+-        {
+-          "arch": "universal",
+-          "target": "zip"
+-        }
+-      ],
+-      "category": "public.app-category.video",
+-      "darkModeSupport": true,
+-      "hardenedRuntime": true,
+-      "entitlements": "entitlements.mac.plist",
+-      "entitlementsInherit": "entitlements.mac.plist",
+-      "asarUnpack": "**/*.node",
+-      "extendInfo": {
+-        "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
+-        "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video).",
+-        "LSMultipleInstancesProhibited": true
+-      }
+-    },
+-    "mas": {
+-      "entitlements": "resources/entitlements.mas.plist",
+-      "entitlementsInherit": "resources/entitlements.mas.inherit.plist",
+-      "hardenedRuntime": false
+-    },
+     "linux": {
+       "artifactName": "jitsi-meet-${arch}.${ext}",
+       "category": "VideoConference;AudioVideo;Audio;Video;Network",
+@@ -63,24 +34,7 @@
+       "executableName": "jitsi-meet",
+       "target": [
+         {
+-          "arch": "x64",
+-          "target": "AppImage"
+-        },
+-        {
+-          "arch": "x64",
+-          "target": "deb"
+-        }
+-      ]
+-    },
+-    "win": {
+-      "artifactName": "jitsi-meet.${ext}",
+-      "target": [
+-        {
+-          "arch": [
+-            "ia32",
+-            "x64"
+-          ],
+-          "target": "nsis"
++          "target": "dir"
+         }
+       ]
+     },

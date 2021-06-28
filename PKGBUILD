@@ -4,7 +4,7 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -28,9 +28,11 @@ makedepends=('coreutils'
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'pipewire_wayland.patch::https://github.com/jitsi/jitsi-meet-electron/commit/0e0483cbc52a9cad1fef51ed5abb846bd6445b11.patch'
+        'no_targets.patch'
         'jitsi-meet-desktop.desktop')
 sha256sums=('32da999ed1ac2c60a3498639633fcfc84b21e09e447d55adb9da7159cba79017'
             '7c6198c5bd1cb7bb4b082d5da31ef9b21582d77453f9677c24e13e20e1ee337e'
+            '4074fd3e629d1997d2bd080bef8050727b3a446acf388f71c8ed26ed6a8c0390'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 case "$CARCH" in
@@ -49,6 +51,11 @@ prepare() {
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
   nvm install 14
+
+  # remove all hardcoded (x64) electron-builder targets
+  # for some reason, it's not enough to explicitely specify the desired (dir)
+  # target when calling electron-builder..
+  patch -Np1 -i ${srcdir}/no_targets.patch
 
   _electron_dist=/usr/lib/electron12
   _electron_ver=$(cat ${_electron_dist}/version)
@@ -70,7 +77,9 @@ build() {
   _ensure_local_nvm
   nvm use 14
 
-  npm run build
+  # npm run build
+  npx webpack --config ./webpack.main.js --mode production
+  npx webpack --config ./webpack.renderer.js --mode production
   npx electron-builder --linux --${_electronbuilderrarch} --dir $dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
 }
 
