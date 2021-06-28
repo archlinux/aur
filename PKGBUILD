@@ -2,7 +2,7 @@
 # Submitter: portaloffreedom
 
 pkgname=python-vlc
-pkgver=3.0.11115
+pkgver=3.0.12118
 pkgrel=1
 pkgdesc="VLC bindings for python"
 url="http://wiki.videolan.org/PythonBinding"
@@ -18,4 +18,4 @@ package() {
 }
 
 
-sha256sums=('a4d3bdddfce84a8fb1b2d5447193a0239c55c16ca246e5194d48efd59c4e236b')
+sha256sums=('566f2f7c303f6800851cacc016df1c6eeec094ad63e0a49d87db9d698094f1fb')
