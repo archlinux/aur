@@ -1,8 +1,8 @@
-# Maintainer: Davide Depau <davide@depau.eu>
+# Maintainer: Jonathan Shreckengost <jonathanshrek@gmail.com>
 # Contributor: Jaryl Chng <mrciku@gmail.com>
 
-pkgname=libbfio-git
-pkgver=20191230.07a22b0
+pkgname='libbfio-git'
+pkgver='20210624.bfa1f2f'
 pkgrel=1
 pkgdesc='Library to provide basic file input/output abstraction'
 arch=('any')
@@ -41,3 +41,4 @@ package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir/" install
 }
+
