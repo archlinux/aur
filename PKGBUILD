@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  audiolinux@fastmail.fm
 
 pkgname=hqplayer-pro
-_debpkgver=4.13.0-20
-pkgver=4.13.0
+_debpkgver=4.14.1-22
+pkgver=4.14.1
 pkgrel=1
 pkgdesc="Professional high-end audio file converter, recorder and player"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'libx11' 'gcc-libs' 'qt5-base' 'qt5-script' 'qt5-quickcontrols' 'qt5-charts' 'wavpack')
 optdepends=('evince: hqplayer manual reading')
 source=("http://www.signalyst.com/bins/hqplayer4pro_"$_debpkgver"_amd64.deb")
-sha256sums=('a4d8471122063625632b18b5fd228de09271672fbe1e71c8a6feb9bfc61df18d')
+sha256sums=('c0fe3938d378974f7fa17242ab62ffaa1c736386d1082d758cfa678a3e9da42e')
 
 package() {
  cd "$srcdir"
