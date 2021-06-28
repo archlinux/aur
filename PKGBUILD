@@ -3,7 +3,7 @@
 
 pkgname=vim-committia-git
 pkgver=r134.1d28828
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A Vim plugin for more pleasant editing of Git commit messages'
 arch=('any')
