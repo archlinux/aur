@@ -1,12 +1,12 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=qv2ray-plugin-interface-git
-pkgver=v4.0.pre1.r0.626190c
+pkgver=4.0.pre1.r33.gd4a0268
 pkgrel=1
 pkgdesc="Qv2ray plugin interface"
 arch=(x86_64)
 url="https://github.com/moodyhunter/Qv2rayBase-PluginInterface"
-license=('GPL3')
-depends=('qt6-base' 'qjsonstruct')
+license=('MIT')
+depends=('qt6-base')
 makedepends=('git' 'qt6-tools' 'cmake' 'ninja')
 provides=('qv2ray-plugin-interface')
 conflicts=('qv2ray-plugin-interface')
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
