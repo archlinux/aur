@@ -1,7 +1,7 @@
 pkgbase = autofs-no-locking
 	pkgdesc = A kernel-based automounter for Linux (disable mount locking, allows recursive auto-mounting)
 	pkgver = 5.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/pub/linux/daemons/autofs/
 	arch = i686
 	arch = x86_64
