@@ -1,0 +1,22 @@
+pkgbase = contour-git
+	pkgdesc = Modern C++ Terminal Emulator
+	pkgver = 0.2.0.r1691.08d648a
+	pkgrel = 1
+	url = https://github.com/christianparpart/contour
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-base
+	makedepends = harfbuzz
+	makedepends = fontconfig
+	depends = fontconfig
+	provides = contour
+	conflicts = contour
+	options = !strip
+	source = contour-git::git+https://github.com/christianparpart/contour.git
+	sha512sums = SKIP
+
+pkgname = contour-git
