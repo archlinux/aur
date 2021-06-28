@@ -1,7 +1,7 @@
 pkgbase = apple-music-electron
 	pkgdesc = Electron wrapper for Apple Music
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/cryptofyre/Apple-Music-Electron
 	arch = aarch64
 	arch = armv7h

@@ -31,10 +31,10 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -r --preserve=mode "${srcdir}/${_pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/opt/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
-  ln -sf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  cp -r --preserve=mode "${srcdir}/${_pkgname}-${pkgver}/dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
+  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 sha256sums=('bbbdddd292fd590eb1278b9c5a608eb27fc65649cdf8c1981b3f955f312585ad'
-            '36959c05b857858ce6a0c37f115ddeb584119e8ca279ac632a02ecbdc2504b2f')
+            '5ee6328384f5afe500211dcfbe6a429ce29235439469c6d58c2ce65610c09ece')
