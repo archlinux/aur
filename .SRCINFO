@@ -1,20 +1,21 @@
 pkgbase = jdminecraftlauncher
 	pkgdesc = A oldstyle Minecraft launcher written in Python
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://gitlab.com/JakobDev/jdMinecraftLauncher
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
 	makedepends = gendesk
+	depends = python
+	depends = python-setuptools
 	depends = python-pyqt5
 	depends = python-pyqtwebengine
 	depends = python-requests
 	depends = python-minecraft-launcher-lib
 	depends = python-jdtranslationhelper
 	depends = python-cryptography
-	source = jdminecraftlauncher-2.4.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/2.4/jdMinecraftLauncher-2.4.tar.gz
-	sha256sums = 5c00c0ac58b1237582d0407282716dccde53e55b0d1555a9010d5ce2496efdc9
+	source = jdminecraftlauncher-2.5.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/2.5/jdMinecraftLauncher-2.5.tar.gz
+	sha256sums = 3b2fc2f70a1b7a32f688462fe5003e97a75ea2ae0da8f55548b7a9e34a776521
 
 pkgname = jdminecraftlauncher
 
