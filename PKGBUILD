@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=1
 epoch=
 pkgdesc="A fast, header-only, C++17 library for parsing Wavefront .obj files."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/guybrush77/rapidobj"
 license=('MIT')
 groups=()
@@ -62,4 +62,6 @@ package() {
 	cd "$pkgname-$pkgver/build"
 
 	make DESTDIR="$pkgdir/" install
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
