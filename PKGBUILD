@@ -2,7 +2,7 @@
 pkgname=connective-http
 pkgver=1.0.0
 
-pkgrel=8
+pkgrel=9
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
@@ -41,6 +41,7 @@ package() {
     cp -rf "$srcdir/ConnectiveStandalone/build/Installations/"*.jar "$pkgdir/usr/lib/connective-http"
     cp -rf "$srcdir/ConnectiveStandalone/build/Installations/libs" "$pkgdir/usr/lib/connective-http"
     
+    chmod 775 "$pkgdir/etc/connective-http"
     chmod 660 "$pkgdir/etc/connective-http/credentials"
     
     cp config.props "$pkgdir/etc/connective-http"

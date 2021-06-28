@@ -17,4 +17,5 @@ post_remove() {
         rm "/etc/authbind/byuid/$(id -u connective)"
     fi
     userdel connective
+    groupdel connective
 }
