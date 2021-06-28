@@ -1,6 +1,6 @@
 pkgbase = tv-lite
 	pkgdesc = IPTV viewer with Sopcast and Acestream handling capabilities. It wants to be a replacement for the older TV-Maxe
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = http://www.tv-lite.com
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tv-lite
 	depends = sqlite
 	depends = curl
 	depends = util-linux-libs
-	source = https://gitlab.com/cburneci/tv-lite/-/archive/0.5.0/tv-lite-0.5.0.tar.gz
+	source = https://gitlab.com/cburneci/tv-lite/-/archive/0.5.1/tv-lite-0.5.1.tar.gz
 	md5sums = SKIP
 
 pkgname = tv-lite
