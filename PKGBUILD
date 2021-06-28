@@ -26,15 +26,21 @@ prepare() {
 
     if [ -e "$BUILDDIR/config.h" ]
     then
-        printf "applying configuration\n"
+        msg='Configuration found in build directory. '
+        msg+='Applying custom configuration.'
+        warning msg
+        warning msg
         cp "$BUILDDIR/config.h" "$srcdir/tuidoku/src/config.h"
         if [ -e "$srcdir/tuidoku-bin" ]
         then
             rm "$srcdir/tuidoku-bin"
         fi
     else
-        msg="This package can be configured by editing config.h "
-        msg+="Documentation can be found in the comments."
+        msg='This package can be configured by editing config.h '
+        msg+='Documentation can be found in the comments.'
+        msg+='Sometimes changes are made to the config that '
+        msg+='are required for building. If a build fails remove the '
+        msg+='old config.h file.'
         warning $msg
         cp "$_pkgname/src/config.h" "$BUILDDIR/"
     fi
