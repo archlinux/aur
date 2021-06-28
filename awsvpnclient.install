@@ -5,8 +5,8 @@ service=awsvpnclient
 
 post_install() {
   systemctl daemon-reload
-  echo "The AWS VPN client requires the service ${service} to be functional"
-  echo "Please enable with 'sudo systemctl enable ${service} && sudo systemctl start ${service}'"
+  echo "The AWS VPN Client requires the ${service}.service and systemd-resolved.service to be running!"
+  echo "Please enable ${service} with 'sudo systemctl enable ${service} && sudo systemctl start ${service}'"
 }
 
 # pre_upgrade() {}
