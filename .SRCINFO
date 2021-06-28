@@ -1,12 +1,11 @@
 pkgbase = python-infi
 	pkgdesc = Create empty infi namespace for packages by Infinidat
 	pkgver = 2019.01.05
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = BSD3
 	depends = python-setuptools
 	source = __init__.py
-	sha256sums = 1be778dfcbcfc7b9bf92ce5ef574ed337bbb2c344ee5d492ba489bba45a6c8f3
+	sha256sums = ab724d9879f408c3ed12a90c478d25923290cee594b53dfdc48154609f8c2881
 
 pkgname = python-infi
-
