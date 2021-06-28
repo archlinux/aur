@@ -3,32 +3,26 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 
+# releases URL: https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases
+
 _pkgname=telegram-desktop-userfonts
 pkgname=${_pkgname}-bin
-pkgver=2.7.4
-_pkgrel=1
-pkgrel=2
+pkgver=2.8.1  # match telegram-desktop-userfonts:pkgver
+_pkgrel=3     # match telegram-desktop-userfonts:pkgrel
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
+# depends match telegram-desktop-userfonts:depends
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk' 'pipewire' 'rnnoise')
 source=("https://github.com/AndydeCleyre/archbuilder_${_pkgname}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
-sha512sums=('c8dd43ee3c46f689167dade7bae5958aa21fe785574eddc4d63a70180a789ffe38cd17387f205b518022d033f9e9aa2b1489b0496fb6adf33e996a7cce03fd5a')
+# sha512sums match latest successful build at releases URL
+sha512sums=('32b6750bb5d8bb9a04608b96c9c55437e8de2705a37b694e9d1a4873414aa6f876d78d43eb3bbc0bd1f47b80b4d3e3c5d15890868a4c9dfd52b50b1eaca1cc7f')
 
 package() {
   cp -a usr $pkgdir/
 }
-
-# Maintenance Checklist:
-# - match AUR package telegram-desktop-userfonts:
-#   - pkgver
-#   - pkgrel (_pkgrel here)
-#   - depends
-# - match latest successful build:
-#   - pkgrel
-#   - sha512sums
-# - makepkg --printsrcinfo >.SRCINFO
