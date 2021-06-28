@@ -1,0 +1,20 @@
+post_install() {
+    useradd -r connective &>/dev/null
+    groupadd connective &>/dev/null
+    
+    chown connective:connective /etc/connective-http -R
+    chmod 660 /etc/connective-http/credentials -R
+    chmod 775 /etc/connective-http/ -R
+    
+    if [ ! -f "/etc/authbind/byuid/$(id -u connective)" ]; then
+        echo "0.0.0.0,30" > "/etc/authbind/byuid/$(id -u connective)"
+        chmod 765 "/etc/authbind/byuid/$(id -u connective)"
+    fi
+}
+
+post_remove() {
+    if [ -f "/etc/authbind/byuid/$(id -u connective)" ]; then
+        rm "/etc/authbind/byuid/$(id -u connective)"
+    fi
+    userdel connective
+}

@@ -1,0 +1,16 @@
+pkgbase = connective-http
+	pkgdesc = Connective -- Lightweight Java HTTP Server
+	pkgver = 1.0.0
+	pkgrel = 7
+	install = main.install
+	arch = any
+	license = GPL
+	makedepends = gradle>=6.7
+	depends = java-environment>=15.0
+	depends = authbind
+	source = git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git
+	source = scripts-and-configs.tar.gz
+	md5sums = SKIP
+	md5sums = 74e0fbcc0c5853854c2aa5fc7a4d14c3
+
+pkgname = connective-http
