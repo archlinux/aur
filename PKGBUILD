@@ -9,10 +9,10 @@ url=https://gitlab.com/kicad/libraries/kicad-packages3D
 license=('CC-BY-SA 4.0')
 options=('!strip')
 makedepends=(
+  stepreduce-git
   cmake
   git
-  ninja
-)
+  ninja)
 conflicts=('kicad-library-3d')
 provides=('kicad-library-3d')
 source=(git+https://gitlab.com/kicad/libraries/kicad-packages3D.git)
@@ -21,6 +21,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd kicad-packages3D
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd kicad-packages3D
+  msg2 "ensmall the step files"
+  find -name '*.step' -exec stepreduce {} {}.reduced \; -exec mv {}.reduced {} \;
 }
 
 build() {
