@@ -1,6 +1,6 @@
 pkgbase = libretro-pcsx2-git
 	pkgdesc = PlayStation 2 core
-	pkgver = r11469.9addce2e5
+	pkgver = r11708.090599df8
 	pkgrel = 1
 	url = https://github.com/libretro/pcsx2
 	arch = x86_64
@@ -9,15 +9,17 @@ pkgbase = libretro-pcsx2-git
 	license = GPL3
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = git
-	makedepends = cmake
 	makedepends = ccache
+	makedepends = cmake
+	makedepends = git
+	makedepends = libpng
 	makedepends = systemd
-	depends = libretro-core-info
+	makedepends = vim
+	depends = fmt
 	depends = glib2
 	depends = libaio
 	depends = libglvnd
-	depends = libpng
+	depends = libretro-core-info
 	depends = systemd-libs
 	provides = libretro-pcsx2
 	conflicts = libretro-pcsx2
@@ -25,4 +27,3 @@ pkgbase = libretro-pcsx2-git
 	md5sums = SKIP
 
 pkgname = libretro-pcsx2-git
-
