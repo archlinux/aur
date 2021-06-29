@@ -3,12 +3,12 @@
 
 pkgname=jvgs
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="minimalistic platform game loosely based on xkcd webcomic"
 arch=('i686' 'x86_64')
 url="http://jvgs.sourceforge.net/"
 license=('GPL' 'CCPL')
-depends=('libgl' 'lua51' 'freetype2' 'sdl_mixer' 'mesa')
+depends=('libgl' 'lua51' 'freetype2' 'sdl_mixer' 'mesa' 'glu')
 makedepends=('swig' 'cmake')
 md5sums=('606ae3de9b7b5132f9b5813760cf8acd'
          'e39c4244e88342c9599a8135559d165c'

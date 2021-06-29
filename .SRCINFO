@@ -1,7 +1,7 @@
 pkgbase = jvgs
 	pkgdesc = minimalistic platform game loosely based on xkcd webcomic
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jvgs.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = jvgs
 	depends = freetype2
 	depends = sdl_mixer
 	depends = mesa
+	depends = glu
 	source = http://sourceforge.net/projects/jvgs/files/jvgs-0.5/jvgs-0.5.1-src.tar.gz
 	source = jvgs.desktop
 	source = jvgs.png
@@ -22,4 +23,3 @@ pkgbase = jvgs
 	md5sums = 396a3fe5631603e08a60b5d9c6b3cff7
 
 pkgname = jvgs
-
