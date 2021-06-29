@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=steamtinkerlaunch-git
-pkgver=6.8.9_r327.77069b3
+pkgver=6.11_r335.93e81b9
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -27,7 +27,6 @@ optdepends=(
 	'gameconqueror: for optional cheating'
 	'gamescope: for optional GameScope support'
 	'libnotify: for optional Notifier'
-	'cabextract: optional for extracting the wmp10 setup archive'
 	'innoextract: optional for extracting the Cheat Engine setup archive'
 	'usbutils: optional for a quick VR HMD presence check'
 	'jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions'
