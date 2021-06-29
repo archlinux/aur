@@ -1,11 +1,12 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: hamki <hamki.do2000@gmail.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: sballert <sballert@posteo.de>
 
 _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.17.0
+pkgver=2.18.1.r17.g88d7995
 pkgrel=1
 pkgdesc='A modern list API for Emacs, checked out from git master'
 arch=('any')
@@ -32,5 +33,4 @@ package() {
   cd "${_gitrepo}"
   install -d "$pkgdir"/usr/share/emacs/site-lisp
   install -Dm644 dash{,-functional}.{el,elc} "$pkgdir"/usr/share/emacs/site-lisp
-  install -Dm644 dash.info "$pkgdir"/usr/share/info/dash.info
 }
