@@ -2,7 +2,7 @@
 
 pkgname=sirius
 _PkgName=SIRIUS
-pkgver=6.5.7
+pkgver=7.2.4
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libvdwxc' 'libxc' 'spglib' 'elpa' 'spfft' 'gsl' 'hdf5')
 makedepends=('cmake')
 optdepends=('magma: Linear algebra on GPU')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d886c3066163c43666ebac2ea50351df03907b5686671e514a75f131ba51b43c')
+sha256sums=('aeed0e83b80c3a79a9469e7f3fe10d80ad331795e38dbc3c49cb0308e2bd084d')
 options=(!emptydirs)
 
 prepare() {
@@ -31,6 +31,8 @@ prepare() {
   
   # Finding ELPA version
   _ELPAVER=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
+  
+  sed -i 's/&vxc.at/vxc.at/' "$srcdir/$_PkgName-$pkgver/src/potential/xc.cpp"
 }
 
 build() {
