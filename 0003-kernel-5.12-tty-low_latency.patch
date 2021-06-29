@@ -1,0 +1,31 @@
+--- driver/serial_core.c.orig	2021-06-29 16:54:33.109516866 -0400
++++ driver/serial_core.c	2021-06-29 16:55:57.331119360 -0400
+@@ -911,11 +911,13 @@ static int uart_set_info(struct tty_stru
+ 	uport->custom_divisor   = new_info->custom_divisor;
+ 	port->close_delay     = close_delay;
+ 	port->closing_wait    = closing_wait;
+ 	if (new_info->xmit_fifo_size)
+ 		uport->fifosize = new_info->xmit_fifo_size;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ 	port->low_latency = (uport->flags & UPF_LOW_LATENCY) ? 1 : 0;
++#endif
+ 
+  check_and_exit:
+ 	retval = 0;
+ 	if (uport->type == PORT_UNKNOWN)
+ 		goto exit;
+@@ -1749,12 +1751,14 @@ static int uart_open(struct tty_struct *
+ 	 * uart_close() will decrement the driver module use count.
+ 	 * Any failures from here onwards should not touch the count.
+ 	 */
+ 	tty->driver_data = state;
+ 	state->uart_port->state = state;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ 	state->port.low_latency =
+ 		(state->uart_port->flags & UPF_LOW_LATENCY) ? 1 : 0;
++#endif
+ 	tty_port_tty_set(port, tty);
+ 
+ 	/*
+ 	 * If the port is in the middle of closing, bail out now.
+ 	 */
