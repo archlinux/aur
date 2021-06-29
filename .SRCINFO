@@ -1,0 +1,14 @@
+pkgbase = ppfetch-git
+	pkgdesc = Info script written in BASH, alternative for ufetch and neofetch.
+	pkgver = 1.09.8fd1ae9
+	pkgrel = 1
+	url = https://gitlab.com/pedro.portales/ppfetch
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = ppfetch
+	conflicts = ppfetch
+	source = git+https://gitlab.com/pedro.portales/ppfetch.git
+	md5sums = SKIP
+
+pkgname = ppfetch-git
