@@ -1,0 +1,13 @@
+pkgbase = usrefl-git
+	pkgdesc = Header-only, tiny (99 lines) and powerful C++20 static reflection library.
+	pkgver = 0.8.1.r0.gbe9d6d7
+	pkgrel = 1
+	url = https://github.com/Ubpa/USRefl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = utemplate-git
+	source = git+https://github.com/Ubpa/USRefl.git
+	md5sums = SKIP
+
+pkgname = usrefl-git
