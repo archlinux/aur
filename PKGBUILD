@@ -1,8 +1,8 @@
 # Maintainer: Maik Broemme <mbroemme@libmpq.org>
 pkgname="parsec-sdk-bin"
 pkgdesc="Parsec SDK to build interactive and low-latency peer-to-peer connections for game streaming"
-pkgver="5.0"
-pkgrel="4"
+pkgver="6.0"
+pkgrel="1"
 arch=("x86_64")
 url="https://parsec.app/"
 license=("custom")
@@ -14,7 +14,7 @@ source=(
   "https://github.com/parsec-cloud/parsec-sdk/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  "d0b3f46f5b67830f6e38d7417e92ed8bf34d2e8d7508fa796454a0214cdb7452"
+  "2cfb06ab4c38b2dd02baa4b5b335bbf182268891606fb61fc97105c95ee67ea0"
 )
 
 package() {
