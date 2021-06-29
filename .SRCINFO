@@ -1,7 +1,7 @@
 pkgbase = git-vfs
 	pkgdesc = Microsoft fork of git including gvfs and scalar
 	pkgver = 2.32.0.vfs.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git-scm.com/
 	install = git.install
 	arch = x86_64

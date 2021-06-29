@@ -3,8 +3,9 @@
 # https://github.com/archlinux/svntogit-packages/tree/packages/git/trunk
 
 pkgname=git-vfs
+_pkgname=git
 pkgver=2.32.0.vfs.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft fork of git including gvfs and scalar'
 arch=('x86_64')
 url='https://git-scm.com/'
@@ -51,7 +52,7 @@ _make_options=(
 )
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   make \
     "${_make_paths[@]}" \
@@ -67,7 +68,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   local jobs
   jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
@@ -87,7 +88,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   
   make \
     "${_make_paths[@]}" \
