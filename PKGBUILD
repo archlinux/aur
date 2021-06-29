@@ -1,5 +1,6 @@
+# Maintainer: hamki <hamki.do2000@gmail.com>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 _pkgsrcname=transient
 _pkgmaintainer=magit
