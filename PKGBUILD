@@ -3,7 +3,7 @@
 
 _pkgsrcname=transient
 _pkgmaintainer=magit
-pkgver=0.3.0
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Implements prefix commands, infix arguments and suffix commands."
 pkgname=emacs-transient
@@ -12,7 +12,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs-dash' 'emacs-hydra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e193406d1236fdfe50cfa1a9d687390c9c7187b5da7d8f02014eb94da01e9a95')
+sha256sums=('f1d8f641d9e3b4ee1fb7e92842a8ab56f25b1f5d32df73b517b1afbb93e30805')
 
 build() {
   cd ${_pkgsrcname}-${pkgver}/lisp
