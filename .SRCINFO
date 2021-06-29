@@ -18,7 +18,7 @@ pkgbase = wlroots-hidpi-git
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = seatd
+	depends = libseat
 	depends = systemd
 	provides = libwlroots.so=0.13.0
 	conflicts = wlroots
