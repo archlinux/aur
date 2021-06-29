@@ -104,6 +104,7 @@ package_pipewire-common-git() {
   _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
   _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-pulse-tunnel.so
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
+  _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
 
