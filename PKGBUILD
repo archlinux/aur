@@ -1,7 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
 
 pkgname=firefox-extension-flagfox
-pkgver=6.1.37
+pkgver=6.1.39
 pkgrel=1
 pkgdesc='Flagfox addon for Firefox'
 arch=('any')
