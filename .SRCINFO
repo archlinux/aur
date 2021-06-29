@@ -1,6 +1,6 @@
 pkgbase = python-scikit-image
 	pkgdesc = Image processing routines for SciPy
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = http://scikit-image.org
 	arch = i686
@@ -31,8 +31,7 @@ pkgbase = python-scikit-image
 	optdepends = python-dask: used to speed up certain functions
 	optdepends = python-cloudpickle: necessary to provide the processes scheduler for dask
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.18.1.tar.gz
-	sha256sums = fbb618ca911867bce45574c1639618cdfb5d94e207432b19bc19563d80d2f171
+	source = https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-0.18.2.tar.gz
+	sha256sums = 32ff472355fbf8ab40a8e9ed685906c6c51a863f1ea8737882d26be9221631f3
 
 pkgname = python-scikit-image
-
