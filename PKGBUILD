@@ -8,7 +8,7 @@ _major=5.12
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -77,8 +77,7 @@ _package-modules() {
   
   cd ${_srcname}
   local kernver="$(<version)"
-  #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
+  make ARCH=um INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
   rm -f $pkgdir/usr/lib/modules/${kernver}/{source,build}
   # sed expression for following substitutions
   local _subst="
