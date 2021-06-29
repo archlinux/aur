@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!greenfoot.install
+!greenfoot
+!greenfoot.desktop
+!greenfoot.xml
