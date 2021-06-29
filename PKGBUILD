@@ -6,19 +6,20 @@
 # Contributor:  Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 
 pkgname=ovito
-pkgver=3.4.4
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'python' 'netcdf' 'ffmpeg' 'qt5-base')
-makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git')
+makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git'
+             'python-sphinx_rtd_theme')
 conflicts=("$pkgname-git")
 source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2"
-    "https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png"
-    "ovito.desktop")
-sha256sums=('6d2c6f1fdc0d5022156d1a172264d822fca0e9ed5ea8aed80315497360fd123d'
+        "https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png"
+        "ovito.desktop")
+sha256sums=('978807311b873e90d75a76e208dae439cd1b16e6bf0918db5b88284d4986a657'
             '14e98851e5de9bee0c8dabd035a83450895c476c1ad9e9898e2bf0c68261e9f2'
             '09b16de717b1b4140678d17958dcee2ea96ff5ae3a1c75f3168a0ad17f62f4ea')
 
