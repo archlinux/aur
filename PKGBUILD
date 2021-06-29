@@ -3,7 +3,7 @@
 _srcname=dict-cedict
 _txtname=cedict_1_0_ts_utf-8_mdbg.txt
 pkgname=dict-cedict-git
-pkgver=20201202.r6.1a76c1e
+pkgver=20210629.r8.b2e60bc
 pkgrel=1
 pkgdesc="A port of CC-CEDICT database for dictd et al."
 arch=('any')
