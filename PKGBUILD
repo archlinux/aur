@@ -5,7 +5,7 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=dokuwiki-git
-pkgver=0.0.20091252c.r8038.gf2a13d874
+pkgver=20200729.r127.g66ed1b5e1
 pkgrel=1
 pkgdesc='Simple to use and highly versatile Open Source wiki software'
 arch=('any')
@@ -24,7 +24,11 @@ conflicts=("dokuwiki")
 
 pkgver() {
   cd "dokuwiki"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/upstream\///g'
+  TAG=$(git tag -l --sort=-version:refname release_stable_* | head -n1)
+  printf "%s.r%s.g%s" \
+	$(sed -r 's/release_stable_(\S+)/\1/;s/-//g' <<< ${TAG}) \
+	$(git rev-list --count HEAD..${TAG}) \
+	$(git rev-parse --short HEAD)
 }
 
 package() {

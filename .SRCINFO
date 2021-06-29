@@ -1,6 +1,6 @@
 pkgbase = dokuwiki-git
 	pkgdesc = Simple to use and highly versatile Open Source wiki software
-	pkgver = 0.0.20091252c.r8038.gf2a13d874
+	pkgver = 20200729.r127.g66ed1b5e1
 	pkgrel = 1
 	url = https://www.dokuwiki.org/
 	arch = any
