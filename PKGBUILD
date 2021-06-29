@@ -2,15 +2,15 @@
 # Contributor: Tom <reztho@archlinux.org>
 # Contributor: bitwave
 
-pkgname=textadept
+pkgbase=textadept
+pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
 pkgver=11.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://foicica.com/textadept/"
 license=('MIT')
-depends=('gtk2')
-makedepends=('wget' 'unzip')
+makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/orbitalquark/$pkgname/archive/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('87d67975b22952344e1bdcb330301b88cdfe8242e7710526cd344ab252499c2a')
 
@@ -23,21 +23,64 @@ prepare() {
 	sed -i 's/CFLAGS =/CFLAGS +=/g;s/CXXFLAGS =/CXXFLAGS +=/g;s/LDFLAGS =/LDFLAGS +=/g' Makefile
 }
 
-build() {
+package_textadept() {
+	depends=('gtk2')
+	provides=('textadept-curses')
+	conflicts=('textadept-curses')
+
 	cd "textadept-textadept_${pkgver}/src"
+	if [[ -f ../textadept ]]; then
+		make clean
+	fi
 	make
 	make curses
-}
-
-package() {
-	cd "$srcdir/textadept-textadept_${pkgver}/src"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
+	make PREFIX=/usr DESTDIR="$pkgdir" install
 	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
-	make curses PREFIX=/usr DESTDIR="$pkgdir/" install
+	make curses PREFIX=/usr DESTDIR="$pkgdir" install
 
 	# License
-	install -d "$pkgdir/usr/share/licenses/textadept"
-	ln -s /usr/share/textadept/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 "$pkgdir/usr/share/textadept/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+	# Documentation
+	install -d "$pkgdir/usr/share/doc"
+	ln -s /usr/share/textadept/docs "$pkgdir/usr/share/doc/$pkgname"
+}
+
+package_textadept-gtk3() {
+	depends=('gtk3')
+	provides=("$pkgbase" 'textadept-curses')
+	conflicts=("$pkgbase" 'textadept-curses')
+
+	cd "textadept-textadept_${pkgver}/src"
+	if [[ -f ../textadept ]]; then
+		make clean
+	fi
+	make GTK3=1
+	make curses
+	make GTK3=1 PREFIX=/usr DESTDIR="$pkgdir" install
+	rm "$pkgdir/usr/share/pixmaps/"textadept{.svg,.png}
+	make curses PREFIX=/usr DESTDIR="$pkgdir" install
+
+	# License
+	install -Dm644 "$pkgdir/usr/share/textadept/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+	# Documentation
+	install -d "$pkgdir/usr/share/doc"
+	ln -s /usr/share/textadept/docs "$pkgdir/usr/share/doc/$pkgname"
+}
+
+package_textadept-curses() {
+	depends=('ncurses')
+
+	cd "textadept-textadept_${pkgver}/src"
+	if [[ -f ../textadept ]]; then
+		make clean
+	fi
+	make curses
+	make curses PREFIX=/usr DESTDIR="$pkgdir" install
+
+	# License
+	install -Dm644 "$pkgdir/usr/share/textadept/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
 	# Documentation
 	install -d "$pkgdir/usr/share/doc"
