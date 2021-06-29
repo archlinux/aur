@@ -8,8 +8,7 @@ arch=(i686 x86_64)
 url="https://www.math.missouri.edu/~stephen/software/#xkbset"
 license=('custom:BSD')
 groups=()
-depends=(libx11)
-makedepends=(coreutils)
+depends=('libx11')
 optdepends=(perl-tk)
 provides=()
 conflicts=()
@@ -37,6 +36,7 @@ package() {
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man1"
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }
 
 # vim:set ts=2 sw=2 et:
