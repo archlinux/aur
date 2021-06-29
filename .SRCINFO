@@ -1,12 +1,11 @@
 pkgbase = fetchcord-testing
 	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
 	pkgver = 2.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MrPotatoBobx/fetchcord
 	install = fetchcord.install
 	arch = any
 	license = MIT
-	depends = python-pypresence
 	depends = neofetch
 	depends = python-psutil
 	depends = python-setuptools
