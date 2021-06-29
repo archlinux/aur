@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G3.2.1
+pkgver=G3.2.3
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -22,11 +22,11 @@ optdepends=('libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=G3.2.1 # patch releases don't follow the same format so we can't use $pkgver
+_archivename=G3.2.3 # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
         0001-Use-remoting-name-for-GDK-application-names.patch)
-sha256sums=('58957556ef101d308dcc8fd1677369aefbb9f2fd93ed9db4f28ded8b274b9af5'
+sha256sums=('661b25e4fc386242280156d21e8d41e032a9a7daadec206ade69f84ac83529cb'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
             '1dba448eb1605c9dc73c22861a5394b50055909399f056baee4887b29af1b51e')
 #_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
@@ -49,6 +49,7 @@ ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
+ac_add_options --disable-elf-hack
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
