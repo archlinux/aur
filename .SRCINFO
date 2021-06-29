@@ -1,6 +1,6 @@
 pkgbase = btdex
 	pkgdesc = Decentralized cryptocurrency exchange system running on the Burstcoin blockchain
-	pkgver = 0.5.0
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://btdex.trade
 	arch = any
@@ -8,16 +8,15 @@ pkgbase = btdex
 	depends = java-runtime
 	depends = xdg-utils
 	noextract = btdex-all-v$pkgver.jar
-	source = https://github.com/btdex/btdex/releases/download/v0.5.0/btdex-all-v0.5.0.jar
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.0/dist/btdex.sh
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.0/src/main/resources/icon.png
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.0/dist/btdex.desktop
-	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.0/LICENSE
-	sha256sums = 43af236bdbe49a4d3f1d601c96fdef3864fd2d3b9bab3253852374a328214f2a
+	source = https://github.com/btdex/btdex/releases/download/v0.5.2/btdex-all-v0.5.2.jar
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.2/dist/btdex.sh
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.2/src/main/resources/icon.png
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.2/dist/btdex.desktop
+	source = https://raw.githubusercontent.com/btdex/btdex/v0.5.2/LICENSE
+	sha256sums = a5dcc0970b726c91f73ac47c85404a432fa9598e0723298742fcd98cb87cf00a
 	sha256sums = 3c1830a574257a35e4d4e1a242f786b98fb3fa0d3c7db1418d4b69d4df881533
 	sha256sums = 568d8a08b942868ab9aa67458ad9bfcee4d56ef079d2467dd259613bb37d0bff
 	sha256sums = fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = btdex
-
