@@ -1,14 +1,14 @@
 # Maintainer: Kppqju77 <ju.adde-gmail-com>
 
 pkgname=flutter-beta
-pkgver=2.2.2
+pkgver=2.3.0_24.1.pre
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
 url="https://${pkgname%-beta}.io"
 license=("custom" "BSD" "CCPL")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
-optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python")
+optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "android-sdk-cmdline-tools-latest: for android checks")
 makedepends=("python")
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
@@ -20,7 +20,7 @@ source=(
   "${pkgname%-beta}.sh"
   "${pkgname%-beta}.csh"
 )
-sha256sums=('0d89bc31949ff8d00d3784f901539533e4b33b2cd93fb6bf1ab54e47429b3b95'
+sha256sums=('be9089ce541c602c75f03ad4ba56ddcea84e5f30b024eddfded943c401a11ea3'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
