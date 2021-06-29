@@ -1,6 +1,6 @@
 pkgbase = freeplane-git
 	pkgdesc = A Java mindmapping tool
-	pkgver = 1.9.x.8cc76942d
+	pkgver = 1.9.x.562c6ce39
 	pkgrel = 1
 	url = https://github.com/freeplane/freeplane.git
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = freeplane-git
 	sha256sums = 56ac3b9c1711a05f2d04f5587a27a9e05c5c06885d14027363e6c00d2614bc78
 
 pkgname = freeplane-git
-
