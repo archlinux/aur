@@ -2,7 +2,7 @@
 
 _srcname='chinadns-ng'
 pkgname=chinadns-ng-git
-pkgver=r342.748a043
+pkgver=r354.14cc634
 pkgrel=1
 pkgdesc='Chinadns next generation, refactoring with epoll and ipset'
 arch=('i686' 'x86_64')
@@ -28,5 +28,5 @@ build() {
 
 package() {
     cd ${_srcname}
-    install -Dm755 ${_srcname} ${pkgdir}/usr/bin/${_srcname}
+    make DESTDIR=${pkgdir}/usr/bin install
 }
