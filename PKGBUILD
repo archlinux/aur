@@ -3,7 +3,7 @@
 _pkgname=FinalShell
 _pkgnameL=finalshell
 pkgname=finalshell
-pkgver=3.9.0
+pkgver=3.9.2
 pkgrel=0
 epoch=0
 pkgdesc="一体化的的服务器,网络管理软件,不仅是ssh客户端,还是功能强大的开发,运维工具,充分满足开发,运维需求."
@@ -24,7 +24,7 @@ install=
 source=("https://master.dl.sourceforge.net/project/${_pkgnameL}/${_pkgnameL}_linux-${pkgver}.zip"  'LICENSE::http://www.hostbuf.com/t/1081.html')
 noextract=()
 license=('custom')
-md5sums=('648232abed0afa43bf8f92ddb6e3a487' 'SKIP')
+md5sums=('6203adf83c25e1675ec02af126de0fe5' 'SKIP')
 #sha256sums=('5822aecfa9840aeab01dcae5de3976ffa479c07a9cef89ae93a57065d750884e' 'SKIP')
 #validpgpkeys=()
 
