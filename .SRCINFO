@@ -1,4 +1,4 @@
-pkgbase = fetchcord-testing-git
+pkgbase = fetchcord-testing
 	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
 	pkgver = 7.7
 	pkgrel = 2
@@ -14,5 +14,5 @@ pkgbase = fetchcord-testing-git
 	source = fetchcord::git+https://github.com/MrPotatoBobx/fetchcord#branch=testing
 	sha256sums = SKIP
 
-pkgname = fetchcord-testing-git
+pkgname = fetchcord-testing
 
