@@ -1,4 +1,4 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# former maintainer: Jeremy Audet <jerebear@protonmail.com>
 #
 # namcap warns that 'libcups' is an unnecessary dependency. This is untrue.
 # Splitter will produce the following exception if libcups is not installed:
@@ -12,7 +12,7 @@
 
 pkgname=splitter
 pkgrel=1
-pkgver=610
+pkgver=614
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'
 license=(GPL)
