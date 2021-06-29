@@ -1,7 +1,7 @@
 pkgbase = rocketchat-server
 	pkgdesc = The Ultimate Open Source WebChat Platform
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocket.chat
 	install = rocketchat-server.install
 	arch = any
