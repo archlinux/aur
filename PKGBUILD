@@ -11,7 +11,7 @@
 _pack=image
 pkgname=octave-$_pack
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Octave-forge Image package provides functions for processing images. The package also provides functions for feature extraction, image statistics, spatial and geometric transformations, morphological operations, linear filtering, and much more."
 arch=(any)
 url="https://octave.sourceforge.io/$_pack/"
@@ -44,8 +44,6 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-    unset CFLAGS
-    unset CXXFLAGS
 	_octave_run "$(cat <<-EOF
 		pkg local_list octave_packages;
 		pkg prefix $_prefix $_archprefix;
