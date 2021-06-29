@@ -5,6 +5,8 @@ pkgbase = gnuplot-headless
 	url = http://www.gnuplot.info
 	arch = i686
 	arch = x86_64
+	arch = aarch64
+	arch = aarch32
 	license = custom
 	depends = readline
 	depends = lua
@@ -18,4 +20,3 @@ pkgbase = gnuplot-headless
 	sha256sums = bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695
 
 pkgname = gnuplot-headless
-
