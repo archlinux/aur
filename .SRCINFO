@@ -1,7 +1,7 @@
 pkgbase = xkbset
 	pkgdesc = Program to help manage many of XKB features of X window.
-	pkgver = 0.5
-	pkgrel = 2
+	pkgver = 0.6
+	pkgrel = 1
 	url = http://www.math.missouri.edu/~stephen/software/#xkbset
 	arch = i686
 	arch = x86_64

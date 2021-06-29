@@ -1,11 +1,11 @@
 # Maintainer: sputnick <gilles *dot* quenot *at* gmail>
 # Contributor: Maurício CA <mauricio.antunes@gmail.com>
 pkgname=xkbset
-pkgver=0.5
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="Program to help manage many of XKB features of X window."
 arch=(i686 x86_64)
-url="http://www.math.missouri.edu/~stephen/software/#xkbset"
+url="https://www.math.missouri.edu/~stephen/software/#xkbset"
 license=('custom:BSD')
 groups=()
 depends=(libx11)
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://faculty.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz)
+source=( "https://faculty.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz" )
 noextract=()
-md5sums=('282c416a76a237fa84a7b513c9d7b2cf')
+md5sums=('ac032fec49c4c4f0f2318d3f4618970c514191b142e06c51a661fe2342a535a5')
 
 build() {
   sed -r \
