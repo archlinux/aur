@@ -10,7 +10,7 @@ depends=('libuv' 'libsodium' 'curl' 'zeromq' 'unbound' 'sqlite' 'ngtcp2-notls')
 makedepends=('git' 'cmake')
 install='lokinet.install'
 backup=('etc/conf.d/lokinet')
-source=("https://github.com/loki-project/loki-network/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
+source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v$pkgver.tar.xz"{,.sig}
         'lokinet.conf'
         'lokinet.service'
         'lokinet-vpn.service'
