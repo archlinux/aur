@@ -5,7 +5,7 @@
 
 pkgname=torcs
 pkgver=1.3.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A 3D racing cars simulator using OpenGL"
 url="http://torcs.sourceforge.net"
 license=("GPL")
@@ -15,15 +15,19 @@ makedepends=('plib' 'mesa')
 options=('!makeflags')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-${pkgver/_/-}.tar.bz2
 	gcc7.patch
-	gcc6-isnan.patch)
+	gcc6-isnan.patch
+        format-argument.patch)
 md5sums=('de314c3e421e8d7d4323d819c5010d23'
          '64216e9dba6cc030c38cde8efea3e59d'
-         'e84edaa1660f55fd980136f70e6471e6')
+         'e84edaa1660f55fd980136f70e6471e6'
+         '435f63506e8f18a06f119a64d60dd281')
 
 prepare() {
   cd "$srcdir"/$pkgname-${pkgver/_/-}
-  patch -p1 <"$srcdir"/gcc7.patch
-  patch -p1 <"$srcdir"/gcc6-isnan.patch
+  for p in $srcdir/*.patch
+  do
+    patch -p1 -i "$p"
+  done
 }
 
 build() {
