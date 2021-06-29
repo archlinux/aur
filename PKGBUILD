@@ -3,7 +3,7 @@
 
 pkgname=rocketchat-server
 pkgver=3.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
 url="https://rocket.chat"
@@ -29,7 +29,7 @@ sha512sums=('2eebcf3a2c17e54827602a13d496e02525d9956dce94ee0fb366bb03cc90450eb59
 
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
-    cp -dr --no-preserve=ownership ${srcdir}/bundle/* "${pkgdir}/usr/share/${pkgname}"
+    cp -dr --preserve=mode --no-preserve=ownership ${srcdir}/bundle/* "${pkgdir}/usr/share/${pkgname}"
 
     pushd "${pkgdir}/usr/share/${pkgname}/programs/server"
     npm install --cache "${srcdir}/npm-cache"
