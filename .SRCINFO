@@ -1,7 +1,7 @@
 pkgbase = alibuild
 	pkgdesc = A simple build tool for ALICE software at CERN
 	pkgver = 1.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alisw.github.io/alibuild/
 	arch = i686
 	arch = x86_64
