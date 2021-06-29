@@ -4,8 +4,8 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=2.35.0
-pkgrel=3
+pkgver=2.36.0
+pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
 arch=('any')
@@ -17,9 +17,8 @@ optdepends=()
 options=(!strip)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyfa-org/Pyfa/archive/v$pkgver.tar.gz pyfa.desktop pyfa-start.sh)
 
-sha256sums=('6fa27fc235423e1e7888fbe4dc3ac1860d0defd27eac8b8e54df03c238d8ec98'
-            'b54ef367e93d7916f6ef3106a27018571d35afc1aa9eadcccc79463050e70786'
-            '0fa4a1cb835ddbb764957cd00426f9bfa52b17bcb6d5dc7428afc256da5e01da')
+sha256sums=('92e4efbfca70d19c4a43400e5b18c55e296a039e557053e47aff39b34088a90c'
+            SKIP SKIP)
 
 build() {
   cd "${srcdir}"/"${_distname}"
