@@ -1,0 +1,67 @@
+--- npreal2.c.orig	2021-06-29 15:36:40.226223210 -0400
++++ npreal2.c	2021-06-29 15:54:46.222511683 -0400
+@@ -47,10 +47,11 @@
+ #include <linux/sched.h>
+ #include <linux/timer.h>
+ #include <linux/interrupt.h>
+ #include <linux/tty.h>
+ #include <linux/tty_flip.h>
++#include <linux/serial_core.h>
+ #include <linux/serial.h>
+ #include <linux/serial_reg.h>
+ #include <linux/major.h>
+ #include <linux/string.h>
+ #include <linux/fcntl.h>
+@@ -924,20 +925,22 @@ else
+ 	}
+ 
+ 	info->session = MX_SESSION();
+ 	info->pgrp = MX_CGRP();
+ 
++#if (LINUX_VERSION_CODE < VERSION_CODE(5,12,0))
+ #if (LINUX_VERSION_CODE < VERSION_CODE(3,9,0))
+ #if (LINUX_VERSION_CODE < VERSION_CODE(3,2,0))
+ 	/* It must be always on */
+ 	tty->low_latency = 1;
+ #else
+ 	tty->low_latency = 1; /* Read Issue */
+ #endif /* 3,2,0 */
+ #else
+ 	info->ttyPort.low_latency = 1;
+ #endif /* 3,9,0 */
++#endif
+ 	return(0);
+ }
+ 
+ /*
+  * This routine is called when the serial port gets closed.  First, we
+@@ -3932,11 +3935,13 @@ npreal_net_write (
+ 	{
+ 		rtn = count; /* throw it away*/
+ 		up(&info->rx_semaphore);
+ 		goto done;
+ 	}
+-#if (LINUX_VERSION_CODE < VERSION_CODE(3,9,0))
++#if (LINUX_VERSION_CODE >= VERSION_CODE(5,12,0))
++	if(0) /* This code doesn't work without low latency support */
++#elif (LINUX_VERSION_CODE < VERSION_CODE(3,9,0))
+ 	if(!info->tty->low_latency)
+ #else
+ 		if(!info->ttyPort.low_latency)
+ #endif /* 3,9,0 */
+ 		{
+@@ -4207,11 +4212,13 @@ npreal_process_notify(
+ 		if (!(tty= info->tty))
+ 		{
+ 			up (&info->rx_semaphore);
+ 			return;
+ 		}
+-#if (LINUX_VERSION_CODE < VERSION_CODE(3,9,0))
++#if (LINUX_VERSION_CODE >= VERSION_CODE(5,12,0))
++		if(0) /* This code doesn't work without low latency support */
++#elif (LINUX_VERSION_CODE < VERSION_CODE(3,9,0))
+ 		if(!tty->low_latency)
+ #else
+ 			if(!info->ttyPort.low_latency)
+ #endif /* 3,9,0 */
+ 			{
