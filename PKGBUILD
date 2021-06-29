@@ -11,9 +11,8 @@ depends=('ncurses')
 makedepends=('meson' 'ninja' 'valgrind')
 optdepends=('gettext')
 
-#source=(https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-source=(https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('17b11b771befb89adbd7764fb897dff1a32eed34f8cd4d8b495da7f2a66de3b8')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theimpossibleastronaut/rmw/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a3bf20c29b4601b7f0122aa75cccc6887a5187329aff3138936d74c798e219ef')
 
 build() {
   arch-meson $pkgname-$pkgver build

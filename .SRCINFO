@@ -10,7 +10,7 @@ pkgbase = rmw
 	makedepends = valgrind
 	depends = ncurses
 	optdepends = gettext
-	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.8.0/rmw-0.8.0.tar.gz
-	sha256sums = 17b11b771befb89adbd7764fb897dff1a32eed34f8cd4d8b495da7f2a66de3b8
+	source = rmw-0.8.0.tar.gz::https://github.com/theimpossibleastronaut/rmw/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = a3bf20c29b4601b7f0122aa75cccc6887a5187329aff3138936d74c798e219ef
 
 pkgname = rmw
