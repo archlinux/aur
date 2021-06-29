@@ -1,0 +1,13 @@
+diff --git a/src/libSharedComponents/SequenceScore.hpp b/src/libSharedComponents/SequenceScore.hpp
+index a5814a2..17020a9 100644
+--- a/src/libSharedComponents/SequenceScore.hpp
++++ b/src/libSharedComponents/SequenceScore.hpp
+@@ -73,7 +73,7 @@ static const cluster_id_t SEQUENCE_GAP = NOISE_CLUSTERID-1;
+ struct TraceObjectsCompare
+ {
+   bool operator()(const pair<task_id_t, thread_id_t>& obj1,
+-                  const pair<task_id_t, thread_id_t>& obj2)
++                  const pair<task_id_t, thread_id_t>& obj2) const
+   {
+     if (obj1.first < obj2.first)
+     {
