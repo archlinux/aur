@@ -19,7 +19,7 @@ install=
 changelog=
 source=( "https://faculty.missouri.edu/~stephen/software/xkbset/$pkgname-$pkgver.tar.gz" )
 noextract=()
-md5sums=('ac032fec49c4c4f0f2318d3f4618970c514191b142e06c51a661fe2342a535a5')
+sha256sums=('ac032fec49c4c4f0f2318d3f4618970c514191b142e06c51a661fe2342a535a5')
 
 build() {
   sed -r \

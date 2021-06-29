@@ -11,7 +11,7 @@ pkgbase = xkbset
 	depends = libx11
 	optdepends = perl-tk
 	source = http://faculty.missouri.edu/~stephen/software/xkbset/xkbset-0.5.tar.gz
-	sha256sums = 01c2579495b39e00d870f50225c441888dc88021e9ee3b693a842dd72554d172
+	sha256sums = ac032fec49c4c4f0f2318d3f4618970c514191b142e06c51a661fe2342a535a5
 
 pkgname = xkbset
 
