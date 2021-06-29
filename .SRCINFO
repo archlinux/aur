@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-beta-bin
 	pkgdesc = The official GUI for MongoDB - beta version - binary version
-	pkgver = 1.27.0.beta.8
+	pkgver = 1.27.0.beta.9
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mongodb-compass-beta-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-beta
 	conflicts = mongodb-compass-beta
-	source = mongodb-compass-beta-bin-1.27.0.beta.8-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.27.0-beta.8/mongodb-compass-beta-1.27.0-beta.8.x86_64.rpm
-	sha256sums = 07e1b3794a88bf8cfdc5d8ee0a0c08cef1bb1d71703710e2fccee04979dea258
+	source = mongodb-compass-beta-bin-1.27.0.beta.9-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.27.0-beta.9/mongodb-compass-beta-1.27.0-beta.9.x86_64.rpm
+	sha256sums = 020aa3d56083c78b42e66418fd36867b5be06f4efb28a2bac5331a580e89f63f
 
 pkgname = mongodb-compass-beta-bin
