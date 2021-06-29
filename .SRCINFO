@@ -18,7 +18,7 @@ pkgbase = wlroots-git
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
-	depends = seatd
+	depends = libseat
 	depends = systemd
 	depends = xorg-xwayland
 	provides = wlroots=0.13.0
