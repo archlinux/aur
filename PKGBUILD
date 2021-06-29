@@ -2,10 +2,10 @@
 
 pkgname=hawknl-git
 pkgver=20110125
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source game oriented network API (git)"
 arch=('i686' 'x86_64')
-url="http://www.hawksoft.com/hawknl/"
+url="https://github.com/dfyx/HawkNL"
 license=('LGPL')
 depends=('glibc')
 provides=('hawknl')
