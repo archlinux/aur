@@ -8,16 +8,11 @@ pkgrel=3
 name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.devolo.com/support/downloads/download/devolo-cockpit.html"
 license=('nonfree')
 depends=( 'libgnome-keyring')
 
-if [ "${CARCH}" = "x86_64" ]; then
-  _arch="amd64"
-else
-  _arch="i386"
-fi 
 
 source=("https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/$name" 'devolonetsvc.service')
 
