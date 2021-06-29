@@ -1,9 +1,11 @@
 pkgbase = bottom
 	pkgdesc = A cross-platform graphical process/system monitor with a customizable interface and a multitude of features.
 	pkgver = 0.6.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ClementTsang/bottom
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = MIT
 	makedepends = cargo
 	provides = bottom
