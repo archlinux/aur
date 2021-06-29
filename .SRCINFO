@@ -1,0 +1,13 @@
+pkgbase = python-amqpstorm
+	pkgdesc = Thread-safe Python RabbitMQ Client & Management library.
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = https://www.amqpstorm.io/
+	arch = any
+	license = MIT License)
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/eandersson/amqpstorm/archive/refs/tags/2.9.0.zip
+	md5sums = 9a74245095abefe11d540455aa980087
+
+pkgname = python-amqpstorm
