@@ -1,14 +1,16 @@
 pkgbase = rmw
 	pkgdesc = rmw (ReMove to Waste) is a safe-remove utility for the command line.
-	pkgver = 0.7.09
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://remove-to-waste.info
 	arch = any
 	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = valgrind
 	depends = ncurses
 	optdepends = gettext
-	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.7.09/rmw-0.7.09.tar.gz
-	sha256sums = d0a85944d03e7ec2a94b25d6d6ac92880fd0d3f63d90bb9ed56b16418fd41c69
+	source = https://github.com/theimpossibleastronaut/rmw/releases/download/v0.8.0/rmw-0.8.0.tar.gz
+	sha256sums = 17b11b771befb89adbd7764fb897dff1a32eed34f8cd4d8b495da7f2a66de3b8
 
 pkgname = rmw
-

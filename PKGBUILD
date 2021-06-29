@@ -1,24 +1,25 @@
 # Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
-pkgver=0.7.09
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="rmw (ReMove to Waste) is a safe-remove utility for the command line."
 arch=('any')
 url="https://remove-to-waste.info"
 license=('GPL3')
 depends=('ncurses')
+makedepends=('meson' 'ninja' 'valgrind')
 optdepends=('gettext')
 
+#source=(https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
 source=(https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('d0a85944d03e7ec2a94b25d6d6ac92880fd0d3f63d90bb9ed56b16418fd41c69')
+sha256sums=('17b11b771befb89adbd7764fb897dff1a32eed34f8cd4d8b495da7f2a66de3b8')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
+  arch-meson $pkgname-$pkgver build
+  meson compile -C build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build
 }
