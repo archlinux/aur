@@ -8,7 +8,7 @@ pkgbase = apple-music-electron
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = yarn
+	makedepends = yarn, git
 	source = Apple-Music-Electron-2.1.0.tar.gz::https://github.com/cryptofyre/Apple-Music-Electron/archive/v2.1.0.tar.gz
 	source = Apple-Music-Electron.desktop
 
