@@ -1,10 +1,10 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 28/06/2021
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 29/06/2021
 
 
 pkgname=devolo-dlan-cockpit
 pkgver=5.1.5.245
-pkgrel=2
+pkgrel=3
 name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
@@ -27,15 +27,15 @@ build() {
   tail $name -n +$((skip+1)) | tar -x -C .
   ar x "devolo-dlan-cockpit_${pkgver}-0_${_arch}.deb"
   find . -name "adobeair*${_arch}.deb" -print | xargs ar x
+  tar xJf data.tar.xz
   tar xJf data.tar.lzma
   sed -i 's/\.appdata\//~\/\.appdata\//g' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
   echo "StartupWMClass=dlancockpit" >> "${srcdir}/usr/share/applications/devolo-dlan-cockpit.desktop"
 }
 
 package() {
-  cp -r "${srcdir}/opt" "${srcdir}/usr" "${pkgdir}/"
+  cp -r  "${srcdir}/etc/opt" "${srcdir}/opt" "${srcdir}/usr" "${srcdir}/var" "${pkgdir}/"
   mkdir -p "${pkgdir}/var/lib/devolonetsvc"
-  printf "<?xml version="1.0" encoding="utf-8"?>\n<data_collection><allowed>2</allowed></data_collection>" > "${srcdir}/config.xml"
   install -Dm644 "${srcdir}/config.xml" "${pkgdir}/var/lib/devolonetsvc/config.xml"  	
   install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
 }
