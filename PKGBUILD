@@ -10,15 +10,15 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.21.0.r72.ga0e2b1c5b0
+pkgver=5.22.1.r16.g4dc0502a29
 pkgrel=1
 _dictionaries_commit="8cd38fb5138f2e456506aaa889ec2b7042a7439e"
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
 license=('GPL3')
-_py_deps=('apsw' 'beautifulsoup4' 'cchardet' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
-          'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
+_py_deps=('apsw' 'beautifulsoup4' 'cchardet' 'cssselect' 'css-parser' 'dateutil' 'dnspython'
+          'feedparser' 'html2text' 'html5-parser' 'jeepney' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'py7zr' 'pychm' 'pygments' 'pyqt5'
           'pyqtwebengine' 'regex' 'zeroconf')
 depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libstemmer' 'libusb'
