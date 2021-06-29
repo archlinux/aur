@@ -1,0 +1,18 @@
+--- npreal2.c.orig	2021-06-29 10:25:28.056567394 -0400
++++ npreal2.c	2021-06-29 10:26:36.965686095 -0400
+@@ -85,10 +85,15 @@
+ #include <config/ioport.h>
+ #include <config/mm.h>
+ #include <config/proc_fs.h>
+ #endif
+ 
++#ifndef ASYNC_INITIALIZED
++/* ArchLinuxPatch-0005-Begin */
++/* ArchLinuxPatch-0005-End */
++#endif
++
+ #include "np_ver.h"
+ 
+ #if (LINUX_VERSION_CODE < VERSION_CODE(5,0,0))
+ #define ACCESS_OK(x,y,z) access_ok(x,y,z)
+ #else

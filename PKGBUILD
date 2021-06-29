@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -101,6 +101,7 @@ source=(
   '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
   '0003-kernel-5.6-proc_dir_entry-proc_ops.patch'
   '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
+  '0005-kernel-5.10-async-initialized.patch'
   'npreal2.sh'
 )
 #_srcdir="${pkgname}"
@@ -112,12 +113,14 @@ md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          '9cda38abdd17b2af80475ed06bdf0889'
          'bcd835765a6451989195a3518d53088d'
          '0c53bb8e2df459fabbca10b567981a93'
+         '7aac842974d5dd76b9bc8fd9fd4de470'
          '90ac27b669542c11b0a9b6763f6e0d9b')
 sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
             '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e'
             'c3f8502c3e7e600ccc3e778ec25875ddda3a20ed3cb62bc56505e609ac346d79'
             'e1856e4a410af0b112dd8beee58edd2516bb5cd7607d84b06bc25133b8bd8f15'
+            '2e913895e2c382abc8fd610faddf6bbda6b59845fb3f95a1d33136995d27cb3f'
             '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -237,6 +240,15 @@ prepare() {
   #cp -p 'mxloadsvr.c'{,.orig}; false
   #diff -pNau5 'mxloadsvr.c'{.orig,} > '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
   patch -Nbup0 -i "${srcdir}/0004-mxloadsvr.c-disable-built-in-systemd-support.patch"
+
+  # Not compatible with Kernel 4.4 headers
+  #sed -n -e '/^#ifndef __KERNEL__/,/^#endif/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" | sed -e 's:__KERNEL__:ASYNC_INITIALIZED:g' >> 'npreal2_kernel510.h'
+  sed -n -E -e '/ASYNCB_INITIALIZED|ASYNCB_CLOSING|ASYNCB_NORMAL_ACTIVE|ASYNCB_CHECK_CD/ p' "/usr/lib/modules/$(uname -r)/build/include/uapi/linux/tty_flags.h" >> 'npreal2_kernel510.h'
+  #cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0005-kernel-5.10-async-initialized.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.10-async-initialized.patch"
+  sed -e '/ArchLinuxPatch-0005-Begin/ r npreal2_kernel510.h' -i 'npreal2.c'
+  rm 'npreal2_kernel510.h'
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

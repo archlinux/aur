@@ -1,7 +1,7 @@
 pkgbase = npreal2
 	pkgdesc = real tty driver for Moxa NPort serial console terminal server
 	pkgver = 5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/terminal-servers/nport-6100-6200-series
 	install = npreal2-install.sh
 	arch = i686
@@ -22,19 +22,21 @@ pkgbase = npreal2
 	source = 0002-kernel-5.0.0-access_ok.patch
 	source = 0003-kernel-5.6-proc_dir_entry-proc_ops.patch
 	source = 0004-mxloadsvr.c-disable-built-in-systemd-support.patch
+	source = 0005-kernel-5.10-async-initialized.patch
 	source = npreal2.sh
 	md5sums = 4ba260f2e3b2b25419bd40a5f030d926
 	md5sums = 043dac91330a15c38e41bb2e2e1d5598
 	md5sums = 9cda38abdd17b2af80475ed06bdf0889
 	md5sums = bcd835765a6451989195a3518d53088d
 	md5sums = 0c53bb8e2df459fabbca10b567981a93
+	md5sums = 7aac842974d5dd76b9bc8fd9fd4de470
 	md5sums = 90ac27b669542c11b0a9b6763f6e0d9b
 	sha256sums = 33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad
 	sha256sums = 7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605
 	sha256sums = 211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e
 	sha256sums = c3f8502c3e7e600ccc3e778ec25875ddda3a20ed3cb62bc56505e609ac346d79
 	sha256sums = e1856e4a410af0b112dd8beee58edd2516bb5cd7607d84b06bc25133b8bd8f15
+	sha256sums = 2e913895e2c382abc8fd610faddf6bbda6b59845fb3f95a1d33136995d27cb3f
 	sha256sums = 13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153
 
 pkgname = npreal2
-
