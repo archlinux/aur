@@ -15,7 +15,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.30.r237.gcb6dbd16
+pkgver=0.3.31.r2.g5497d2d9
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -77,7 +77,7 @@ _ver=${pkgver:0:3}
 package_pipewire-full-git() {
   license+=(LGPL)
   depends=(rtkit libdbus-1.so libncursesw.so libsndfile.so
-           libudev.so libasound.so libsystemd.so libpulse.so
+           libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libopenaptx.so libfdk-aac.so)
@@ -106,6 +106,10 @@ package_pipewire-full-git() {
   _pick jack usr/share/man/man1/pw-jack.1
   _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
 
+  _pick pulse usr/bin/pipewire-pulse
+  _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-protocol-pulse.so
+  _pick pulse usr/lib/pipewire-$_ver/libpipewire-module-pulse-tunnel.so
+  _pick pulse usr/lib/systemd/user/pipewire-pulse.*
   _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-zeroconf-discover.so
@@ -159,7 +163,8 @@ package_pipewire-full-jack-git() {
 
 package_pipewire-full-pulse-git() {
   pkgdesc+=" - PulseAudio replacement"
-  depends=(pipewire-full-git libpulse)
+  depends=(pipewire-full-git libpipewire-$_ver.so
+           libpulse.so libavahi-{client,common}.so)
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
