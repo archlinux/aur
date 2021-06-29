@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=dokuwiki-plugin-dw2pdf
-pkgver=2020.08.20
-pkgrel=2
+pkgver=2021.02.07
+pkgrel=1
 pkgdesc="Fork of Luigi Micco's PDF export plugin for DokuWiki"
 arch=('any')
 url="http://www.dokuwiki.org/plugin:dw2pdf"
@@ -11,10 +11,10 @@ license=('GPL2')
 depends=('dokuwiki')
 makedepends=()
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/splitbrain/dokuwiki-plugin-dw2pdf/archive/2020-08-20.tar.gz")
-sha512sums=('33cd235ca8158a4216d2313fc1d67cba0ba1fc89bba62ffaf23802a0cbd05cb6327e6a0f8e33383723d4b3e060c207b61cc1ffafef73dbaf7a8cfc1b2597bb11')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/splitbrain/dokuwiki-plugin-dw2pdf/archive/${pkgver//\./-}.tar.gz")
+sha512sums=('2e91d61511fff360170ec926a35f54de90393badb0fc4a5db0565ec81ff92a8a7eb539152b9151c1fd521d40a476013a93defeef14916df9e11f4e76fce30e69')
 
 package() {
   install -d "${pkgdir}/var/lib/dokuwiki/plugins"
-  cp -a "${srcdir}/dokuwiki-plugin-dw2pdf-2020-08-20" "${pkgdir}/var/lib/dokuwiki/plugins/dw2pdf"
+  cp -a "${srcdir}/dokuwiki-plugin-dw2pdf-${pkgver//\./-}" "${pkgdir}/var/lib/dokuwiki/plugins/dw2pdf"
 }
