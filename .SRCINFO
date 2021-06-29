@@ -1,0 +1,11 @@
+pkgbase = archbuilder
+	pkgdesc = makepkg wrapper that uses buildah
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://gitea.olznet.de/mfulz/archbuilder
+	arch = any
+	depends = buildah
+	source = https://gitea.olznet.de/mfulz/archbuilder/archive/v0.9.0.tar.gz
+	sha256sums = ce60d3f40cb4e73d7143bb85429f3660dc925462453ae14de7a3dacdcab55145
+
+pkgname = archbuilder
