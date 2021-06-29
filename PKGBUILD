@@ -8,7 +8,7 @@ arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/cryptofyre/${_pkgname}"
 license=("MIT")
 depends=('libxss')
-makedepends=("yarn")
+makedepends=("yarn, git")
 source=(
   "${_pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz"
   "${_pkgname}.desktop"
