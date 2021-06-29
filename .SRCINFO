@@ -1,6 +1,6 @@
 pkgbase = gpu-trace
 	pkgdesc = GPU Trace capture tool
-	pkgver = v2.3
+	pkgver = v2.4
 	pkgrel = 1
 	url = https://github.com/lostgoat/gpu-trace
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = gpu-trace
 	provides = amdgpu-trace
 	conflicts = gpu-trace
 	conflicts = amdgpu-trace
-	source = git+https://github.com/lostgoat/gpu-trace#tag=v2.3
+	source = git+https://github.com/lostgoat/gpu-trace#tag=v2.4
 	sha256sums = SKIP
 
 pkgname = gpu-trace
-

@@ -1,7 +1,7 @@
 # Maintainer: Andres Rodriguez <andresx7@gmail.com>
 
 pkgname=gpu-trace
-pkgver=v2.3
+pkgver=v2.4
 pkgrel=1
 pkgdesc="GPU Trace capture tool"
 arch=('x86_64')
