@@ -7,9 +7,7 @@ license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
-provides=("wlroots-hidpi=${pkgver%%.r*}"
-          "wlroots=${pkgver%%.r*}"
-          "wlroots-git")
+provides=("libwlroots.so=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
 options=(debug)
 depends=(

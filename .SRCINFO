@@ -20,9 +20,7 @@ pkgbase = wlroots-hidpi-git
 	depends = xcb-util-wm
 	depends = seatd
 	depends = systemd
-	provides = wlroots-hidpi=0.13.0
-	provides = wlroots=0.13.0
-	provides = wlroots-git
+	provides = libwlroots.so=0.13.0
 	conflicts = wlroots
 	conflicts = wlroots-git
 	options = debug
@@ -32,4 +30,3 @@ pkgbase = wlroots-hidpi-git
 	sha512sums = eade099a5db472a3feb6617a03c588e04a980ee474211461bc5d69dcaf09493f6ce55498e649aadf5808a996e52abb24cc32d9107e8400bf93ea17d2f6ba1a2a
 
 pkgname = wlroots-hidpi-git
-
