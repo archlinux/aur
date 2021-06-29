@@ -1,31 +1,38 @@
-From: Markus Koschany <apo@debian.org>
-Date: Mon, 1 May 2017 15:59:09 +0200
-Subject: format argument
-
-Forwarded: https://sourceforge.net/p/torcs/mailman/message/35831161/
----
- src/tools/texmapper/maintexmapper.cpp | 2 +-
- src/tools/trackgen/objects.cpp        | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/src/tools/texmapper/maintexmapper.cpp b/src/tools/texmapper/maintexmapper.cpp
-index c501792..fbfff34 100644
---- a/src/tools/texmapper/maintexmapper.cpp
-+++ b/src/tools/texmapper/maintexmapper.cpp
-@@ -103,7 +103,7 @@ void print_mat4(char *title, sgMat4 m)
+diff -aur src.orig/torcs-1.3.7/src/drivers/olethros/geometry.cpp src/torcs-1.3.7/src/drivers/olethros/geometry.cpp
+--- src.orig/torcs-1.3.7/src/drivers/olethros/geometry.cpp	2021-06-29 20:35:16.127232867 +0200
++++ src/torcs-1.3.7/src/drivers/olethros/geometry.cpp	2021-06-29 20:36:07.637478329 +0200
+@@ -370,7 +370,7 @@
+ 				}
+ 				delta_total += delta;
+ 			}
+-			if (isnan(r)) {
++			if (std::isnan(r)) {
+ 				for (i=0; i<d; i++) {
+ 					center[i] =  ((*(sphere->C))[i] - mean[i]) / scale;
+ 				}
+diff -aur src.orig/torcs-1.3.7/src/libs/musicplayer/OpenALMusicPlayer.cpp src/torcs-1.3.7/src/libs/musicplayer/OpenALMusicPlayer.cpp
+--- src.orig/torcs-1.3.7/src/libs/musicplayer/OpenALMusicPlayer.cpp	2021-06-29 20:35:16.133899565 +0200
++++ src/torcs-1.3.7/src/libs/musicplayer/OpenALMusicPlayer.cpp	2021-06-29 20:36:07.760812253 +0200
+@@ -161,7 +161,7 @@
  {
-     int		i, j;
- 
--    printf(title);
-+    printf("%s", title);
-     for (j = 0; j < 4; j ++){
- 	for (i = 0; i < 4; i ++) {
- 	    printf("%.6f  ", m[i][j]);
-diff --git a/src/tools/trackgen/objects.cpp b/src/tools/trackgen/objects.cpp
-index 0c19f1a..2b44e93 100644
---- a/src/tools/trackgen/objects.cpp
-+++ b/src/tools/trackgen/objects.cpp
-@@ -304,7 +304,7 @@ ssgSaveLeaf (ssgEntity *ent, FILE *save_fd)
+ 	char pcm[BUFFERSIZE];
+ 	int size = 0;
+-	const char* error = '\0';
++	const char* error = nullptr;
+ 	
+ 	if (!stream->read(pcm, BUFFERSIZE, &size, &error)) {
+ 		GfError("OpenALMusicPlayer: Stream read error: %s\n", error);
+@@ -268,4 +268,4 @@
+     alSourcePlay(source);
+     
+     return true;
+-}
+\ No newline at end of file
++}
+diff -aur src.orig/torcs-1.3.7/src/tools/trackgen/objects.cpp src/torcs-1.3.7/src/tools/trackgen/objects.cpp
+--- src.orig/torcs-1.3.7/src/tools/trackgen/objects.cpp	2021-06-29 20:35:16.103899423 +0200
++++ src/torcs-1.3.7/src/tools/trackgen/objects.cpp	2021-06-29 20:36:07.510811054 +0200
+@@ -304,7 +304,7 @@
  	fprintf (save_fd, "numsurf %d\n", num_tris);
  
  	for (i = 0; i < num_tris; i++) {

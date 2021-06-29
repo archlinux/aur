@@ -5,7 +5,7 @@
 
 pkgname=torcs
 pkgver=1.3.7
-pkgrel=4
+pkgrel=5
 pkgdesc="A 3D racing cars simulator using OpenGL"
 url="http://torcs.sourceforge.net"
 license=("GPL")
