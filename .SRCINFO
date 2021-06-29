@@ -1,0 +1,26 @@
+pkgbase = restream-chat
+	pkgdesc = Keep your streaming chats in one place by Restream.io
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://restream.io/chat
+	arch = x86_64
+	makedepends = coreutils
+	depends = alsa-lib
+	depends = avahi
+	depends = gmp
+	depends = gnutls
+	depends = gtk3
+	depends = krb5
+	depends = libglvnd
+	depends = libnotify
+	depends = libxau
+	depends = libxdmcp
+	depends = libxss
+	depends = nss
+	optdepends = libappindicator-gtk2
+	provides = restream-chat
+	conflicts = restream-chat
+	source = https://s3.eu-central-1.amazonaws.com/restream-chat-client/Restream+Chat-2.5.4-beta.AppImage
+	sha512sums = 0bab803e1904c38758816f28e4cf1146a6dd9b4344f972cf88aa537d5ca3b7d9e90e8349804b5c3d411d23c88e82c7b376eb926be163ebb0cbb8fa367b6bd594
+
+pkgname = restream-chat
