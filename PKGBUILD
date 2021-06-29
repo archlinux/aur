@@ -1,6 +1,7 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+
 pkgname=firefox-extension-localcdn
-pkgver=2.6.6
+pkgver=2.6.8
 pkgrel=1
 pkgdesc='LocalCDN addon for Firefox'
 arch=('any')
