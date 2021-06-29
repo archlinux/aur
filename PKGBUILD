@@ -2,7 +2,7 @@
 
 pkgname=filmulator
 _pkgname="$pkgname-gui"
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Simple raw photo editor based on the process of developing film"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('exiv2' 'hicolor-icon-theme' 'lensfun-git' 'libarchive' 'libraw' 'librtprocess' 'qt5-quickcontrols2')
 makedepends=('cmake' 'openmp')
 source=("$_pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha512sums=('8e7d0b57d53bab21d79085646d46fd6f85c025108cc27640368d2762be4c8c662886f868fb865ad7096ef7073ccb0daac9bec7f9adda8c22225a945f8ff9c307')
+sha512sums=('27026fac7c61691e48f589febedb9335fb841280c811d47e866128515a121fbc5a6784983057ce00a3b946d5355e11d146fee9c1d4d0f10c18be49cb288a4e97')
 _xdg_desktop_name="org.$pkgname.${pkgname^}"
 
 prepare() {
