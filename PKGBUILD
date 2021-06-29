@@ -9,7 +9,6 @@ name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
-arch=('x86_64')
 url="https://www.devolo.com/support/downloads/download/devolo-cockpit.html"
 license=('nonfree')
 depends=( 'lib32-glibc' 'gtk2' 'libgnome-keyring')

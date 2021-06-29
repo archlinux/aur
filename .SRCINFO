@@ -4,6 +4,7 @@ pkgbase = devolo-dlan-cockpit
 	pkgrel = 1
 	url = https://www.devolo.com/support/downloads/download/devolo-cockpit.html
 	install = devolo-dlan-cockpit.install
+	arch = i686
 	arch = x86_64
 	license = nonfree
 	depends = lib32-glibc
