@@ -1,0 +1,13 @@
+diff --git a/api/recordlist.h b/api/recordlist.h
+index 892ae6c..31e0c20 100644
+--- a/src/paraver-kernel/api/recordlist.h
++++ b/src/paraver-kernel/api/recordlist.h
+@@ -142,7 +142,7 @@ private:
+ // r1 is less than r2?
+ struct ltrecord
+ {
+-  bool operator()( const RLRecord& r1, const RLRecord& r2 )
++  bool operator()( const RLRecord& r1, const RLRecord& r2 ) const
+   {
+     if ( r1.getTime() < r2.getTime() )
+       return true;
