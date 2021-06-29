@@ -1,7 +1,7 @@
 pkgbase = ares-emu
 	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support
 	pkgver = 120
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ares.dev/
 	arch = x86_64
 	arch = i686
@@ -23,9 +23,10 @@ pkgbase = ares-emu
 	source = https://ares.dev/downloads/ares_v120-source.zip
 	source = LICENSE
 	source = ares-paths.patch
+	source = gcc-serialize-reserved.patch
 	sha256sums = a7aed1968d018d8fdca19e9b836ce447be97efc210425d44b7332b0c900bfcf2
 	sha256sums = 9a91bcfb10df8dfdf02375d9015064de3d20faf251b456caf6760e73a7f4e466
-	sha256sums = 13cacb6773617eecf371ac03081bc1223194deaab368eb8cd04bb546962905c1
+	sha256sums = f81e50dd163c63c4ddfde9379170b7ed659355a1d45cd57c92c9508487c43bbc
+	sha256sums = d7f1ea837583f00a2deaa6840d640f82e514c135aa51e063add6de7bfe88b019
 
 pkgname = ares-emu
-
