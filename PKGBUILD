@@ -1,7 +1,7 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgname=python-moderngl-window
 _name=moderngl-window
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A utility library for ModernGL making window creation and resource loading simple."
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
 )
 provides=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('e0a4a0d92e6ba2c89770b76373b337bac8ab2bcba6758c9b76607941e3b22f6ce7677f213a8e48a6b5367fe487dde8b859d503589c30b918695f4113372b131b')
+sha512sums=('5774db4a52aed7b7dbce56cdfb06bafed04bec8234c84f1cd424cffe8458f0344826d8e52cb53c537d83c83cb4d949ff7f22aded65e0fedae908179e118931a9')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
