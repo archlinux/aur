@@ -21,11 +21,10 @@ pkgbase = wlroots-git
 	depends = libseat
 	depends = systemd
 	depends = xorg-xwayland
-	provides = wlroots=0.13.0
+	provides = libwlroots.so=0.14.0
 	conflicts = wlroots
 	options = debug
 	source = wlroots-git::git+https://github.com/swaywm/wlroots
 	sha512sums = SKIP
 
 pkgname = wlroots-git
-
