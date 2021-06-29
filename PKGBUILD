@@ -1,5 +1,5 @@
-# Maintainer: Redson dos Santos Silva <redsonbr81 {at} protonmail {dot} com>
 # Maintainer: Pedro Portales <pedro.portales {at} protonmail {dot} com>
+# Maintainer: Redson dos Santos Silva <redsonbr81 {at} protonmail {dot} com>
 pkgname=ppfetch-git
 _pkgname=ppfetch
 pkgver=1.09.8fd1ae9
