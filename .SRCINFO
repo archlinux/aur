@@ -1,12 +1,10 @@
 pkgbase = gerbera-mysql
 	pkgdesc = UPnP Media Server (Based on MediaTomb) with MySQL backend
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	license = GPL2
 	makedepends = cmake
 	depends = taglib

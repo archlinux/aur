@@ -3,9 +3,9 @@
 pkgname=gerbera-mysql
 pkgver=1.8.2
 _pkgbase=gerbera
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb) with MySQL backend"
-arch=(i686 x86_64 armv7h)
+arch=(x86_64)
 url="https://github.com/gerbera/gerbera"
 license=('GPL2')
 depends=('taglib' 'curl' 'libmariadbclient' 'file' 'gcc-libs' 'libupnp' 'duktape' 'libexif' 'fmt' 'pugixml' 'spdlog' 'ffmpeg' 'ffmpegthumbnailer' 'libmatroska')
