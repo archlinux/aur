@@ -1,0 +1,26 @@
+pkgbase = manubot
+	pkgdesc = a set of tools for the next generation of scholarly publishing.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://manubot.org/
+	arch = any
+	license = BSD2-patent
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-errorhandler
+	depends = python-isbnlib
+	depends = python-jinja2
+	depends = python-jsonschema
+	depends = python-panflute
+	depends = python-pybase62
+	depends = python-pyaml
+	depends = python-ratelimiter
+	depends = python-requests
+	depends = python-requests-cache
+	depends = python-toml
+	source = manubot::git+https://github.com/manubot/manubot#tag=v0.5.1
+	validpgpkeys = 4AEE18F83AFDEB23
+	md5sums = SKIP
+
+pkgname = manubot
