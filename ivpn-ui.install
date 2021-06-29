@@ -9,11 +9,6 @@ silent() {
   "$@" > /dev/null 2>&1
 }
 
-prepare() {
-  # some linux versions have problems running Electron without this
-  sudo chmod 4755 /opt/ivpn/ui/bin/chrome-sandbox || echo "[!] Failed to 'chmod' for '/opt/ivpn/ui/bin/chrome-sandbox'"
-}
-
 copySettingsFromOldAppVer() {
   if [ -d $_UI_APP_USER_DIR ] ; then
     # if application cache data already exists - do nothing
