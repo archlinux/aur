@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -18,7 +18,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
              'libtg_owt' 'extra-cmake-modules')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "fix-gcc11-assert.patch")
-sha512sums=('7e77fe7ddbaf5590e5e9846e76d987e35fadb4ed7a90ae4c4b3c54ddb331d71be0b046b28217287cb19636514197fc4a3632b09433ab5922f5b22bdfd6e22f75'
+sha512sums=('75ef88440aa3337594d16b8517c5604ee627ade91cdde5de357132a8a827c909c392e30f4f2ac5b9facc3968bdfeb32d7f5370fea9cec2b341325aa979962356'
             'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f')
 
 prepare() {
