@@ -1,8 +1,9 @@
 pkgbase = openvpn-mbedtls
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the mbedtls library for crypto support.
 	pkgver = 2.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openvpn.net/index.php/open-source.html
+	install = openvpn.install
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
@@ -10,7 +11,9 @@ pkgbase = openvpn-mbedtls
 	makedepends = git
 	makedepends = systemd
 	makedepends = cmocka
+	makedepends = python-docutils
 	depends = lzo
+	depends = lz4
 	depends = iproute2
 	depends = systemd-libs
 	depends = mbedtls
@@ -18,10 +21,15 @@ pkgbase = openvpn-mbedtls
 	optdepends = pam: authenticate via PAM
 	provides = openvpn=2.5.3
 	conflicts = openvpn
-	source = https://swupdate.openvpn.org/community/releases/openvpn-2.5.3.tar.xz
-	source = https://swupdate.openvpn.org/community/releases/openvpn-2.5.3.tar.xz.asc
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=0071e180470e6d3a830da7b96df4ea8e510d2987?signed
+	source = 0001-unprivileged.patch
+	source = sysusers.conf
+	source = tmpfiles.conf
 	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
-	sha256sums = fb6a9943c603a1951ca13e9267653f8dd650c02f84bccd2b9d20f06a4c9c9a7e
+	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
 	sha256sums = SKIP
+	sha256sums = 8e7d292514f30729bc37d6681789b1bfdf87a992a3aa77e2a28b8da9cd8d4bfe
+	sha256sums = 3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621
+	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
 
 pkgname = openvpn-mbedtls
