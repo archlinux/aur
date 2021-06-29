@@ -2,7 +2,7 @@
 
 pkgname=zwavejs2mqtt
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zwave to Mqtt gateway and Control Panel Web UI."
 arch=(x86_64)
 url="https://github.com/zwave-js/zwavejs2mqtt"
@@ -27,8 +27,9 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -d "$pkgdir"/usr/share/webapps/$pkgname "$pkgdir"/etc/$pkgname/ "$pkgdir"/var/lib/$pkgname
-  cp -r {node_modules,bin,lib,dist/static,server,app.ts} "$pkgdir"/usr/share/webapps/$pkgname
+  install -d "$pkgdir"/usr/share/webapps/$pkgname/dist/static "$pkgdir"/etc/$pkgname/ "$pkgdir"/var/lib/$pkgname
+  cp -r {node_modules,bin,lib,server,app.ts} "$pkgdir"/usr/share/webapps/$pkgname
+  cp -r dist/static/* "$pkgdir"/usr/share/webapps/$pkgname/dist/static
   cp -r config/* "$pkgdir"/etc/$pkgname/
   ln -s /etc/$pkgname/ "$pkgdir"/usr/share/webapps/$pkgname/config
   ln -s /var/lib/$pkgname "$pkgdir"/usr/share/webapps/$pkgname/store
