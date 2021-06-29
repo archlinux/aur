@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Redact
+StartupWMClass=Redact
+Exec=/usr/bin/redact
+Type=Application
+Icon=redact
+Comment=Redact your history
+Categories=Utility;
+Path=/usr/bin
