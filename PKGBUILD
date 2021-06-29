@@ -4,11 +4,12 @@
 
 pkgname=devolo-dlan-cockpit
 pkgver=5.1.5.245
-pkgrel=4
+pkgrel=5
 name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('x86_64')
+_arch="amd64"
 url="https://www.devolo.com/support/downloads/download/devolo-cockpit.html"
 license=('nonfree')
 depends=( 'libgnome-keyring')
@@ -31,6 +32,7 @@ build() {
 package() {
   cp -r  "${srcdir}/etc/opt" "${srcdir}/opt" "${srcdir}/usr" "${srcdir}/var" "${pkgdir}/"
   mkdir -p "${pkgdir}/var/lib/devolonetsvc"
+  printf "<?xml version="1.0" encoding="utf-8"?>\n<data_collection><allowed>2</allowed></data_collection>" > "${srcdir}/config.xml"
   install -Dm644 "${srcdir}/config.xml" "${pkgdir}/var/lib/devolonetsvc/config.xml"  	
   install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
 }
