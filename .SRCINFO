@@ -1,7 +1,7 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
-	pkgver = 3.3.7
-	pkgrel = 3
+	pkgver = 3.3.20
+	pkgrel = 1
 	url = https://ivpn.net
 	install = ivpn.install
 	arch = x86_64
@@ -13,10 +13,8 @@ pkgbase = ivpn
 	depends = wireless_tools
 	depends = openvpn
 	depends = wireguard-tools
-	source = ivpn-daemon-src-v3.3.7.tar.gz::https://github.com/ivpn/desktop-app-daemon/archive/v3.3.7.tar.gz
-	source = ivpn-cli-src-v3.3.7.tar.gz::https://github.com/ivpn/desktop-app-cli/archive/v3.3.7.tar.gz
-	sha256sums = f80cae692c6291a81e3709a234342620b94bd92b73e57637c8af6540e62a03f9
-	sha256sums = 67e8ecfc04b2a32e14e12ac9f8a9f7471f31786ea0f23c53c9cbec1eee9969cd
+	source = ivpn-src-v3.3.20.tar.gz::https://github.com/ivpn/desktop-app/archive/v3.3.20.tar.gz
+	sha256sums = 36df9e3d048db8d31194e91811e867042a10058096cf04ae11f6befed10c2f04
 
 pkgname = ivpn
 

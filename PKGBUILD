@@ -1,13 +1,9 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
-# dependencies versions
-_ver_ivpn_daemon=3.3.7
-_ver_ivpn_cli=3.3.7
-
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.3.7
-pkgrel=3
+pkgver=3.3.20
+pkgrel=1
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
@@ -15,23 +11,17 @@ license=('GPL3')
 depends=('glibc' 'lsof' 'wireless_tools' 'openvpn' 'wireguard-tools')
 makedepends=('curl' 'go')
 install="ivpn.install"
-source=(
-"ivpn-daemon-src-v${_ver_ivpn_daemon}.tar.gz::https://github.com/ivpn/desktop-app-daemon/archive/v${_ver_ivpn_daemon}.tar.gz"
-"ivpn-cli-src-v${_ver_ivpn_cli}.tar.gz::https://github.com/ivpn/desktop-app-cli/archive/v${_ver_ivpn_cli}.tar.gz"
-)
-sha256sums=(
-'f80cae692c6291a81e3709a234342620b94bd92b73e57637c8af6540e62a03f9' # daemon sources
-'67e8ecfc04b2a32e14e12ac9f8a9f7471f31786ea0f23c53c9cbec1eee9969cd' # CLI sources
-)
+source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
+sha256sums=('36df9e3d048db8d31194e91811e867042a10058096cf04ae11f6befed10c2f04')
 
 build() {
-  echo "*** build daemon ***"
-  cd "$srcdir/desktop-app-daemon-${_ver_ivpn_daemon}"
-  ./References/Linux/scripts/build-all.sh -v $_ver_ivpn_daemon -c "${_ver_ivpn_daemon}_stamped"
+  echo "*** build daemon***"
+  cd "$srcdir/desktop-app-${pkgver}/daemon"
+  ./References/Linux/scripts/build-all.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   echo "*** build CLI ***"
-  cd "$srcdir/desktop-app-cli-${_ver_ivpn_cli}"
-  ./References/Linux/compile-cli.sh -v $_ver_ivpn_daemon -c "${_ver_ivpn_daemon}_stamped"
+  cd "$srcdir/desktop-app-${pkgver}/cli"
+  ./References/Linux/compile-cli.sh -v ${pkgver} -c "${pkgver}_stamped"
 
   # prepare '*.service' file for systemd
   cat > "$srcdir/ivpn-service.service" << EOF
@@ -61,7 +51,7 @@ EOF
 }
 
 package() {
-  cd "$srcdir/desktop-app-daemon-${_ver_ivpn_daemon}"
+  cd "$srcdir/desktop-app-${pkgver}/daemon"
 
   install -Dm755 -g root -o root References/Linux/scripts/_out_bin/ivpn-service "$pkgdir/usr/local/bin/ivpn-service"
 
@@ -72,7 +62,7 @@ package() {
   install -Dm400 -g root -o root References/Linux/etc/ca.crt "$pkgdir/opt/ivpn/etc/ca.crt"
   install -Dm400 -g root -o root References/Linux/etc/ta.key "$pkgdir/opt/ivpn/etc/ta.key"
 
-  cd "$srcdir/desktop-app-cli-${_ver_ivpn_cli}"
+  cd "$srcdir/desktop-app-${pkgver}/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/local/bin/ivpn"
 
   cd "$srcdir"
