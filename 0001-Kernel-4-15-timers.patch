@@ -1,0 +1,145 @@
+diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c dgrp-1.9/driver/2.6.27/dgrp_net_ops.c
+--- dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c	2018-06-03 20:45:01.337174862 -0400
++++ dgrp-1.9/driver/2.6.27/dgrp_net_ops.c	2018-06-03 20:45:01.417174550 -0400
+@@ -87,11 +87,15 @@ static long   node_active_count;	/* one
+ 					 * the poller
+ 					 */
+ static long   poll_round;		/* Timer rouding factor */
+ static ulong poll_time;			/* Time of next poll */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void poll_handler(ulong dummy);
++#else
++static void poll_handler(struct timer_list *dummy);
++#endif
+ static void poll_start_timer(ulong time);
+ static struct timer_list poll_timer = { function: poll_handler };
+ 
+ 
+ /*
+@@ -175,11 +179,15 @@ int register_net_device(struct nd_struct
+ 	struct proc_dir_entry *de;
+ 
+ 	if (!globals_initialized) {
+ 		globals_initialized = 1;
+ 		spin_lock_init(&GLBL(poll_lock));
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 		init_timer(&poll_timer);
++#else
++		timer_setup(&poll_timer,poll_handler,0);
++#endif
+ 	}
+ 
+ 	ID_TO_CHAR(node->nd_ID, buf);
+ 
+ 	len = strlen(buf);
+@@ -4689,11 +4697,15 @@ static int test_perm(int mode, int op)
+ *    waiter needs to be woken up, and (b) whether the poller needs to
+ *    be rescheduled.
+ *
+ ******************************************************************************/
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void poll_handler(ulong dummy)
++#else
++static void poll_handler(struct timer_list *dummy)
++#endif
+ {
+ 	struct nd_struct *nd;
+ 	link_t *lk;
+ 	ulong  freq;
+ 	ulong  lock_flags;
+@@ -4933,13 +4945,17 @@ static void poll_handler(ulong dummy)
+ 	return;
+ }
+ 
+ static void poll_start_timer(ulong time)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&poll_timer);
+ 	poll_timer.function = poll_handler;
+ 	poll_timer.data = 0;
++#else
++	timer_setup(&poll_timer,poll_handler,0);
++#endif
+ 	poll_timer.expires = time;
+ 	add_timer(&poll_timer);
+ }
+ 
+ /*
+diff -pNaru5 dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c dgrp-1.9/driver/2.6.27/dgrp_tty.c
+--- dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c	2018-06-03 20:45:01.340508182 -0400
++++ dgrp-1.9/driver/2.6.27/dgrp_tty.c	2018-06-03 20:46:37.953467319 -0400
+@@ -783,13 +783,25 @@ if (ttylock) tty_lock(ch->port.tty);
+ 
+ /*
+  * This function is just used as a callback for timeouts
+  * waiting on the ch_sleep flag.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void wake_up_drp_sleep_timer(unsigned long ptr)
+ {
+ 	struct ch_struct *ch = (struct ch_struct *) ptr;
++#else
++struct ch_timer_list {
++  struct timer_list tl;
++  struct ch_struct *ch;
++};
++
++static void wake_up_drp_sleep_timer(struct timer_list *ptr)
++{
++	struct ch_timer_list *chtl = (struct ch_timer_list *) ptr;
++	struct ch_struct *ch = chtl->ch;
++#endif
+ 	if (ch)
+ 		wake_up(&ch->ch_sleep);
+ }
+ 
+ 
+@@ -797,11 +809,15 @@ static void wake_up_drp_sleep_timer(unsi
+  * Set up our own sleep that can't be cancelled
+  * until our timeout occurs.
+  */
+ static void drp_my_sleep(struct ch_struct *ch)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	struct timer_list drp_wakeup_timer;
++#else
++  struct ch_timer_list drp_wakeup_timer_ch;
++#endif
+ 	DECLARE_WAITQUEUE(wait, current);
+ 
+ 	/*
+ 	 * First make sure we're ready to receive the wakeup.
+ 	 */
+@@ -812,23 +828,29 @@ static void drp_my_sleep(struct ch_struc
+ 	/*
+ 	 * Since we are uninterruptible, set a timer to
+ 	 * unset the uninterruptable state in 1 second.
+ 	 */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&drp_wakeup_timer);
+ 	drp_wakeup_timer.function = wake_up_drp_sleep_timer;
+ 	drp_wakeup_timer.data = (unsigned long) ch;
++#else
++#define drp_wakeup_timer (drp_wakeup_timer_ch.tl)
++	timer_setup(&drp_wakeup_timer,wake_up_drp_sleep_timer,0);
++	drp_wakeup_timer_ch.ch=ch;
++#endif
+ 	drp_wakeup_timer.expires = jiffies + (1 * HZ);
+ 	add_timer(&drp_wakeup_timer);
+ 
+ 	schedule();
+ 
+ 	del_timer(&drp_wakeup_timer);
+ 
+ 	remove_wait_queue(&ch->ch_sleep, &wait);
+ }
+-
++#undef drp_wakeup_timer
+ 
+ /*****************************************************************************
+ *
+ * Function:
+ *

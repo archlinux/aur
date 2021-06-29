@@ -1,0 +1,59 @@
+diff -r -u5 dgrp-1.9.orig/driver/2.6.27o/dgrp_sysfs.c dgrp-1.9.orig/driver/2.6.27/dgrp_sysfs.c
+--- dgrp-1.9.orig/driver/2.6.27o/dgrp_sysfs.c	2017-07-11 13:01:13.000000000 -0400
++++ dgrp-1.9.orig/driver/2.6.27/dgrp_sysfs.c	2020-07-02 22:27:27.678240692 -0400
+@@ -58,19 +58,23 @@
+ static struct class *dgrp_class;
+ struct device *dgrp_class_nodes_dev;
+ struct device *dgrp_class_global_settings_dev;
+ 
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,13,0)
++static CLASS_ATTR_STRING(driver_version, S_IRUGO, DIGI_VERSION);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,35)
+ static ssize_t dgrp_class_version_show(struct class *class, struct class_attribute *attr, char *buf)
+ #else
+ static ssize_t dgrp_class_version_show(struct class *class, char *buf)
+ #endif
+ {
+ 	return snprintf(buf, PAGE_SIZE, "%s\n", DIGI_VERSION);
+ }
+ static CLASS_ATTR(driver_version, 0400, dgrp_class_version_show, NULL);
++#endif
+ 
+ 
+ static ssize_t dgrp_class_register_with_sysfs_show(struct device *c, struct device_attribute *attr, char *buf)
+ {
+ 	return snprintf(buf, PAGE_SIZE, "1\n");
+@@ -186,11 +190,15 @@
+ {
+ 	int ret = 0;
+         int max_majors = 1U << (32 - MINORBITS);
+ 
+ 	dgrp_class = class_create(THIS_MODULE, "digi_realport");
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,13,0)
++	ret = class_create_file(dgrp_class, &class_attr_driver_version.attr);
++#else
+ 	ret = class_create_file(dgrp_class, &class_attr_driver_version);
++#endif
+ 
+ 	dgrp_class_global_settings_dev = device_create(dgrp_class, NULL,
+ 		MKDEV(0, max_majors + 1), NULL, "driver_settings");
+ 
+ 	ret = sysfs_create_group(&dgrp_class_global_settings_dev->kobj,
+@@ -218,11 +226,15 @@
+ 	}
+ 
+ 	sysfs_remove_group(&dgrp_class_global_settings_dev->kobj,
+ 		&dgrp_global_settings_attribute_group);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,13,0)
++	class_remove_file(dgrp_class, &class_attr_driver_version.attr);
++#else
+ 	class_remove_file(dgrp_class, &class_attr_driver_version);
++#endif
+ 
+ 	device_destroy(dgrp_class, MKDEV(0, max_majors + 1));
+ 	device_destroy(dgrp_class, MKDEV(0, max_majors + 2));
+ 	class_destroy(dgrp_class);
+ }

@@ -1,0 +1,158 @@
+diff -r -u5 dgrp-1.9.orig/driver/2.6.27o/dgrp_net_ops.c dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c
+--- dgrp-1.9.orig/driver/2.6.27o/dgrp_net_ops.c	2017-07-11 13:01:13.000000000 -0400
++++ dgrp-1.9.orig/driver/2.6.27/dgrp_net_ops.c	2020-07-02 22:22:38.092377162 -0400
+@@ -87,11 +87,15 @@
+ 					 * the poller
+ 					 */
+ static long   poll_round;		/* Timer rouding factor */
+ static ulong poll_time;			/* Time of next poll */
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void poll_handler(ulong dummy);
++#else
++static void poll_handler(struct timer_list *);
++#endif
+ static void poll_start_timer(ulong time);
+ static struct timer_list poll_timer = { function: poll_handler };
+ 
+ 
+ /*
+@@ -175,11 +179,15 @@
+ 	struct proc_dir_entry *de;
+ 
+ 	if (!globals_initialized) {
+ 		globals_initialized = 1;
+ 		spin_lock_init(&GLBL(poll_lock));
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 		init_timer(&poll_timer);
++#else
++		timer_setup(&poll_timer, poll_handler, 0);
++#endif
+ 	}
+ 
+ 	ID_TO_CHAR(node->nd_ID, buf);
+ 
+ 	len = strlen(buf);
+@@ -4689,11 +4697,15 @@
+ *    waiter needs to be woken up, and (b) whether the poller needs to
+ *    be rescheduled.
+ *
+ ******************************************************************************/
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void poll_handler(ulong dummy)
++#else
++static void poll_handler(struct timer_list *dummy)
++#endif
+ {
+ 	struct nd_struct *nd;
+ 	link_t *lk;
+ 	ulong  freq;
+ 	ulong  lock_flags;
+@@ -4933,13 +4945,17 @@
+ 	return;
+ }
+ 
+ static void poll_start_timer(ulong time)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&poll_timer);
+ 	poll_timer.function = poll_handler;
+ 	poll_timer.data = 0;
++#else
++	timer_setup(&poll_timer, poll_handler, 0);
++#endif
+ 	poll_timer.expires = time;
+ 	add_timer(&poll_timer);
+ }
+ 
+ /*
+diff -r -u5 dgrp-1.9.orig/driver/2.6.27o/dgrp_tty.c dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c
+--- dgrp-1.9.orig/driver/2.6.27o/dgrp_tty.c	2017-07-11 13:01:13.000000000 -0400
++++ dgrp-1.9.orig/driver/2.6.27/dgrp_tty.c	2020-07-02 22:24:12.892107898 -0400
+@@ -783,13 +783,22 @@
+ 
+ /*
+  * This function is just used as a callback for timeouts
+  * waiting on the ch_sleep flag.
+  */
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ static void wake_up_drp_sleep_timer(unsigned long ptr)
++#else
++static void wake_up_drp_sleep_timer(struct timer_list *t)
++#endif
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	struct ch_struct *ch = (struct ch_struct *) ptr;
++#else
++	struct ch_struct *ch = from_timer(ch, t, drp_wakeup_timer);
++#endif
++
+ 	if (ch)
+ 		wake_up(&ch->ch_sleep);
+ }
+ 
+ 
+@@ -797,11 +806,13 @@
+  * Set up our own sleep that can't be cancelled
+  * until our timeout occurs.
+  */
+ static void drp_my_sleep(struct ch_struct *ch)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	struct timer_list drp_wakeup_timer;
++#endif
+ 	DECLARE_WAITQUEUE(wait, current);
+ 
+ 	/*
+ 	 * First make sure we're ready to receive the wakeup.
+ 	 */
+@@ -812,19 +823,28 @@
+ 	/*
+ 	 * Since we are uninterruptible, set a timer to
+ 	 * unset the uninterruptable state in 1 second.
+ 	 */
+ 
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,15,0)
+ 	init_timer(&drp_wakeup_timer);
+ 	drp_wakeup_timer.function = wake_up_drp_sleep_timer;
+ 	drp_wakeup_timer.data = (unsigned long) ch;
+ 	drp_wakeup_timer.expires = jiffies + (1 * HZ);
+-	add_timer(&drp_wakeup_timer);
+ 
++	add_timer(&drp_wakeup_timer);
+ 	schedule();
+-
+ 	del_timer(&drp_wakeup_timer);
++#else
++	timer_setup(&ch->drp_wakeup_timer, wake_up_drp_sleep_timer, 0);
++	ch->drp_wakeup_timer.expires = jiffies + (1 * HZ);
++
++	add_timer(&ch->drp_wakeup_timer);
++	schedule();
++	del_timer(&ch->drp_wakeup_timer);
++#endif
+ 
+ 	remove_wait_queue(&ch->ch_sleep, &wait);
+ }
+ 
+ 
+diff -r -u5 dgrp-1.9.orig/driver/2.6.27o/include/drp.h dgrp-1.9.orig/driver/2.6.27/include/drp.h
+--- dgrp-1.9.orig/driver/2.6.27o/include/drp.h	2017-07-11 13:01:13.000000000 -0400
++++ dgrp-1.9.orig/driver/2.6.27/include/drp.h	2018-06-01 12:10:27.000000000 -0400
+@@ -545,10 +545,14 @@
+ 	wait_queue_head_t ch_sleep;	/* Wait queue for my_sleep() */
+ 
+ 	int	ch_custom_speed;	/* Realport custom speed */
+ 	int	ch_txcount;		/* Running TX count */
+ 	int	ch_rxcount;		/* Running RX count */
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++	struct timer_list drp_wakeup_timer;
++#endif
+ };
+ 
+ 
+ /************************************************************************
+  * Node State definitions.

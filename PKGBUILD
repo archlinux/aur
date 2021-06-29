@@ -4,12 +4,12 @@
 # Todo: add systemd getty support to drpadmin
 # Todo: Default user, group, and mode are in the backing store. These do not work. They are set by udev and apply to all ports.
 # Digi bug: terminal freezes when viewing /proc/dgrp/mon
-# Digi bug: drpd terminates after the first tty open when launched from dgrp_cfg_node. It stays working when launched by systemd restart
-# Digi bug: occasional Can't open serial /dev/ttyaf00: Resource temporarily unavailable for PortServer TS (not II)
-# Digi bug: occasional dropped characters for PortServer II, PortServer TS, Digi One
+# (fixed) Digi bug: drpd terminates after the first tty open when launched from dgrp_cfg_node. It stays working when launched by systemd restart
+# (hardware) Digi bug: occasional Can't open serial /dev/ttyaf00: Resource temporarily unavailable for PortServer TS (not II)
+# (hardware) Digi bug: occasional dropped characters for PortServer II, PortServer TS, Digi One
 # Digi bug: Digi RealPort Manager (java) is unable to add new Realport because it uses the wrong options
 # Digi bug: mbrowse reports a few parsing errors in MIB
-# Digi bug: make compatible with OpenSSL 1.1
+# (fixed) Digi bug: make compatible with OpenSSL 1.1
 # Digi bug: transfer hangs if unit is repowered during live connection. Tested in 4.11, 4.9, and 4.4
 # Digi bug: tty* takes up to an hour to reappear after unit is powered up after a long time being off
 #  Nov 29 06:16:50 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
@@ -22,8 +22,8 @@
 #  Nov 29 13:48:25 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
 #  Nov 29 14:52:56 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
 #  Nov 29 15:57:26 springport drpd[715]: drpd(ag,128.0.0.92) Cannot connect to server - Connection timed out
-# Arch Kernel 4.16: do_IRQ: 7.36 No irq handler for vector
-#  does not occur in Manjaro Kernel 4.16
+# Digi bug: connect hangs for 15 minutes if no network connection to unit. Tested in 1.9-38..40
+# Digi bug: backing store is rewritten on every service start which can cause loss of config
 
 # Digi Realport driver for Arch Linux. See Digi release notes for supported products.
 
@@ -56,8 +56,6 @@ _opt_defaultgroup="uucp" # default: root
 _opt_RealPort='RealPort' # Can also be Realport
 
 _opt_DKMS=1           # This can be toggled between installs
-
-_opt_SSL10=0
 
 # Since the kernel module isn't loaded until you have a device
 # configured, these services are automatically enabled and started
@@ -107,13 +105,18 @@ pkgname='dgrp'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 _pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
 license=('GPL' 'custom') # OpenSSL=Apache. Arch is always new enough to not need their version.
 depends=('grep' 'awk' 'systemd' 'procps-ng' 'psmisc' 'perl')
+if [ "$(vercmp "${pkgver}" '1.9.39')" -le 0 ]; then
+  _opt_SSL10=1
+else
+  _opt_SSL10=0
+fi
 if [ "${_opt_SSL10}" -ne 0 ]; then
   depends+=('openssl-1.0')
 fi
@@ -183,11 +186,13 @@ source=(
   'addp_perl-1.0.tgz::https://github.com/severach/addp/archive/f92a6fd2050c9f32a5a11cac18cd9def78138530.tar.gz'
   'ftp://ftp1.digi.com/support/utilities/AddpClient.zip'
   "${_mibs[@]/#/${_mibsrc}}"
-  #'0000-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedora-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
-  #'0001-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
-  '0002-kernel-5.0.0-do_gettimeofday.patch'
-  '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
+  # 'a' versions are by Digi from next version
+  '0000'{,a}'-Kernel-4-13-CLASS_ATTR_STRING.patch' # https://www.digi.com/support/forum/67157/realport-compile-error-with-fedor'{,a}'-27-kernel-4-14-14 https://www.digi.com/support/forum/65817/class_attr_driver_version-error-compiling-in-kernel-4-13
+  '0001'{,a}'-Kernel-4-15-timers.patch' # https://forum.blackmagicdesign.com/viewtopic.php?uid=16&f=3&t=68382&start=0
+  '0002'{,a}'-kernel-5.0.0-do_gettimeofday.patch'
+  '0003'{,a}'-kernel-5.0.0-dgrp_mon_ops-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
   '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -223,9 +228,16 @@ md5sums=('175349c08d19158c88ad582c76916397'
          '1f6fcaabe4058c225674f866b19f2ca8'
          '031e105a06300feecacfc2774e48ff2f'
          '699172bf54ec0e45b6aae348b1f570e8'
+         'be3bd26c2b2a74b445854135b17766a8'
+         '60a5d51a562aa1d8fa5f2294a683ce47'
+         '9f9275a3fb9b7a81a2ba098db1738b7d'
+         'c1cd2d98c466e252b6c8f3a85e92489f'
          '6a58beab1cb022cd368e874e24c7b9ef'
+         '91eb572a5ad032073326fd4dd2842504'
          'a65ba371ae411de4607259fc78a55682'
-         'c25c1fdfbdc1fa38d87e45cf1c8511c2')
+         '4f1c03f1cc5f440a770c080a121d998a'
+         'c25c1fdfbdc1fa38d87e45cf1c8511c2'
+         '2596b5f38ef54d72af08dca05fcce369')
 sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -256,9 +268,16 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             'c471cafa43503a40d43b42acd8bc6ef49db29e55a74e0494c85f729ea45fe243'
             '5cac7ce2e6f043127f314b93694af021ae7820ffb5bf3de343da7a240d05e9c8'
             '8654496d83c083e457e8bb9bae2b1e71804d156a38c284d89872d0125eba947d'
+            '61500188b388fd1eb52ec970150cf098d855b8ba09a8efb8192803eebefaba03'
+            'cc54e4bc21255a419ba0a416b1c8d1e705e27676c5561dd4b83fe657f045b65e'
+            '46a87449cd316a621271def4147ba781424dd524ae2332cd55dd07f2ac9ab456'
+            '4cb63ad72244eea04879b07cbca809120bdb08a7d8ea2a37e8d9a6fcc1333f26'
             '353d15624675c78dfd83318195d75bdb0507fd0476f5e22be1329bf257d2de1e'
+            '9c6ce4ae64e206b442aeea6af98b9b86b8a67571ba00a92fc721619ba3061c26'
             'acbcf462628daf4fa2dbee064969a158ccc0bb0ce9f286ceb3617e470eab1c1f'
-            'b812176f6061d135ab45facecf5a05922d9ffd5ec0a6f17c3e3a5a74729034b1')
+            '882019276d59e6cc15fcda1bb1dea75b01591509a2644ddb0225ef1d5a17fd1c'
+            'b812176f6061d135ab45facecf5a05922d9ffd5ec0a6f17c3e3a5a74729034b1'
+            '82f2c244f169c1f5a9b6186e4e4436c116bd020a1be973e8be261097d38bc937')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -339,17 +358,40 @@ prepare() {
     false
   fi
 
-  #cp -p driver/2.6.27/dgrp_mon_ops.c{,.orig}; false
-  #diff -pNau5 driver/2.6.27/dgrp_mon_ops.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
-  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
+  if [ "$(vercmp "${pkgver}" '1.9.38')" -le 0 ]; then
+    #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}
+    #diff -pNaru5 dgrp-1.9{.orig,} > '0000-Kernel-4-13-CLASS_ATTR_STRING.patch'
+    patch -Nup1 -i "${srcdir}/0000a-Kernel-4-13-CLASS_ATTR_STRING.patch"
+    test ! -d "${srcdir}/${_srcdir}.orig-0000" || echo "${}"
+
+    #cp -pr "${srcdir}/${_srcdir}"{,.orig-0001}
+    #diff -pNaru5 dgrp-1.9{.orig-0001,} > '0001-Kernel-4-15-timers.patch'
+    patch -Nup1 -i "${srcdir}/0001a-Kernel-4-15-timers.patch"
+    test ! -d "${srcdir}/${_srcdir}.orig-0001" || echo "${}"
+  fi
+
+  # 1.3-9 adds an 11th parameter on the end of each line in dgrp.backing.store
+  # Remove the last 'default' to go back
+
+  if [ "$(vercmp "${pkgver}" '1.9.39')" -le 0 ]; then
+    #cp -p driver/2.6.27/dgrp_mon_ops.c{,.orig}; false
+    #diff -pNau5 driver/2.6.27/dgrp_mon_ops.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
+    patch -Nbup0 -i "${srcdir}/0002a-kernel-5.0.0-do_gettimeofday.patch"
+
+    #cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
+    patch -Nbup0 -i "${srcdir}/0003a-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+  fi
+
+  if [ "$(vercmp "${pkgver}" '1.9.40')" -le 0 ]; then
+    #cp -pr driver/2.6.27{,.orig}; false
+    #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
+    patch -Nbup0 -i "${srcdir}/0004-kernel-5.6-proc_dir_entry-proc_ops.patch"
+  fi
 
   #cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
-  #patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
-
-  #cp -pr driver/2.6.27{,.orig}; false
-  #diff -pNaru5 driver/2.6.27{.orig,} > '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
-  patch -Nbup0 -i "${srcdir}/0004-kernel-5.6-proc_dir_entry-proc_ops.patch"
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
+  patch -Nbup0 -i "${srcdir}/0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)

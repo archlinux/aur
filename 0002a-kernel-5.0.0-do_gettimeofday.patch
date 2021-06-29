@@ -1,0 +1,36 @@
+--- driver/2.6.27/dgrp_mon_ops.c.orig	2018-06-01 12:10:27.000000000 -0400
++++ driver/2.6.27/dgrp_mon_ops.c	2020-07-02 21:48:51.158972983 -0400
+@@ -319,23 +319,33 @@
+ 			 *  Enter an RPDUMP file header into the buffer.
+ 			 */
+ 
+ 			uchar *buf = nd->nd_mon_buf;
+ 			uint  time;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
+ 			struct timeval tv;
++#else
++			struct timespec64 ts;
++#endif
+ 
+ 			strcpy(buf, RPDUMP_MAGIC);
+ 			buf += strlen(buf) + 1;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,0,0)
+ 			do_gettimeofday(&tv);
+ 
+ 			/*
+ 			 *  tv.tv_sec might be a 64 bit quantity.  Pare
+ 			 *  it down to 32 bits before attempting to encode
+ 			 *  it.
+ 			 */
+ 			time = (uint) (tv.tv_sec & 0xffffffff);
++#else
++			ktime_get_real_ts64(&ts);
++			time = (uint) (ts.tv_sec & 0xffffffff);
++
++#endif
+ 
+ 			dgrp_encode_u4(buf + 0, time);
+ 			dgrp_encode_u2(buf + 4, 0);
+ 			buf += 6;
+ 

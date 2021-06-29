@@ -1,0 +1,18 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_driver.c driver/2.6.27/dgrp_driver.c
+--- driver/2.6.27.orig/dgrp_driver.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_driver.c	2021-06-29 19:07:04.558964855 -0400
+@@ -58,12 +58,13 @@ static char *version = DIGI_VERSION;
+ MODULE_LICENSE("GPL");
+ #endif
+ 
+ MODULE_AUTHOR("Digi International, http://www.digi.com");
+ MODULE_DESCRIPTION("RealPort driver for Digi's ethernet-based serial connectivity product line");
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ MODULE_SUPPORTED_DEVICE("dgrp");
+-
++#endif
+ 
+ /*
+  * insmod command line overrideable parameters
+  *
+  * NOTE: we use a set of macros to create the variables, which allows
