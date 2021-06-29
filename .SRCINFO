@@ -1,7 +1,7 @@
 pkgbase = connecttech-cti-serial
 	pkgdesc = tty UART driver for BlueStorm BlueHeat Xtreme/104-Plus Titan and Xtreme/104-Express families
 	pkgver = 1.43
-	pkgrel = 2
+	pkgrel = 3
 	url = http://connecttech.com/product/pci-express-bluestorm-express/
 	install = connecttech-cti-serial-install.sh
 	arch = i686
@@ -14,10 +14,12 @@ pkgbase = connecttech-cti-serial
 	backup = etc/cti-serial-set485.sh
 	source = manual://cti_serial_143.tgz
 	source = 0001-kernel-5.0.0-8250_core-access_ok.patch
+	source = 0002-kernel-5.10-async-initialized.patch
 	md5sums = 52370a65422a372cc2d7c84b4fee230e
 	md5sums = c9f0fc60446b03a66998d90eff031546
+	md5sums = 97cd518024af079d1188398af69ca6cb
 	sha256sums = 953d136584f7d1bf276211c0d87e46abc951214a0fba8339db8399cf5f8553fd
 	sha256sums = fbb546222486ccbd3fc0cfaf44c146208a27507c20788602fcc6e77853692b00
+	sha256sums = 3f1c0aec4f287803b0c571ce0258bf16163fed920170fb6eac2ec717f704e3e5
 
 pkgname = connecttech-cti-serial
-

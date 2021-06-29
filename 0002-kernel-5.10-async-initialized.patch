@@ -1,0 +1,38 @@
+diff -pNau5 driver.orig/8250_core.c driver/8250_core.c
+--- driver.orig/8250_core.c	2021-06-29 11:09:04.090688628 -0400
++++ driver/8250_core.c	2021-06-29 11:09:31.918364916 -0400
+@@ -47,10 +47,15 @@
+ #include <asm/io.h>
+ #include <asm/irq.h>
+ 
+ #include "8250.h"
+ 
++#ifndef ASYNC_INITIALIZED
++/* ArchLinuxPatch-0002-Begin */
++/* ArchLinuxPatch-0002-End */
++#endif
++
+ #include "cti485.h"
+ 
+ #define MAX_PORTS 128
+ 
+ #ifndef MIN
+diff -pNau5 driver.orig/serial_core.c driver/serial_core.c
+--- driver.orig/serial_core.c	2019-04-02 11:23:14.000000000 -0400
++++ driver/serial_core.c	2021-06-29 11:09:39.398635744 -0400
+@@ -37,10 +37,15 @@
+ #include <linux/mutex.h>
+ 
+ #include <asm/irq.h>
+ #include <asm/uaccess.h>
+ 
++#ifndef ASYNC_INITIALIZED
++/* ArchLinuxPatch-0002-Begin */
++/* ArchLinuxPatch-0002-End */
++#endif
++
+ #include "cti485.h"
+ 
+ #define REVISION "1.43"
+ 
+ /*
