@@ -1,6 +1,6 @@
 pkgbase = sk1-git
 	pkgdesc = An open source vector graphics editor for prepress
-	pkgver = r5100.2b78ef14
+	pkgver = r5194.17caa859
 	pkgrel = 1
 	url = https://sk1project.net/
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = sk1-git
 	md5sums = SKIP
 
 pkgname = sk1-git
-
