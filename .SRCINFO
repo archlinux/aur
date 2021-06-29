@@ -1,12 +1,14 @@
 pkgbase = lando-bin
 	pkgdesc = A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology
 	pkgver = 3.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.lando.dev/
 	arch = x86_64
 	license = GPL
 	depends = docker
 	depends = docker-compose
+	provides = lando
+	conflicts = lando
 	options = !strip
 	source_x86_64 = lando-bin-3.1.4.deb::https://github.com/lando/lando/releases/download/v3.1.4/lando-v3.1.4.deb
 	sha256sums_x86_64 = 632583d5ada314136582c042157cb0192c1b461662ab93616b81684a0ebd461c

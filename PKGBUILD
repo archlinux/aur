@@ -4,7 +4,7 @@
 
 pkgname=lando-bin
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev/"
@@ -12,6 +12,8 @@ license=('GPL')
 depends=('docker' 'docker-compose')
 source_x86_64=("$pkgname-$pkgver.deb::https://github.com/lando/lando/releases/download/v$pkgver/lando-v$pkgver.deb")
 sha256sums_x86_64=('632583d5ada314136582c042157cb0192c1b461662ab93616b81684a0ebd461c')
+conflicts=("lando")
+provides=("lando")
 
 # strip breaks executable
 options=(!strip)
