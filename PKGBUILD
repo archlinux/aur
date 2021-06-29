@@ -27,21 +27,21 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.25.73
+pkgver=1.26.67
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
-makedepends=('git' 'npm' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools' 'pipewire')
+makedepends=('git' 'npm' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
 chromium_base_ver="91"
-patchset="6"
+patchset="5"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=7
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
@@ -54,13 +54,13 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch")
-arch_revision=7cd2f08852ca3b88237a5c563eb8cfc5e471e489
+arch_revision=b4f8953e87de4278ce28d685ac1917744b901a92
 Patches="
         fix-crash-in-ThemeService.patch
         unbundle-use-char16_t-as-UCHAR_TYPE.patch
-        add-clang-nomerge-attribute-to-CheckError.patch
+        make-dom-distiller-protoc-plugin-call-py2.7.patch
+        extend-enable-accelerated-video-decode-flag.patch
         sql-make-VirtualCursor-standard-layout-type.patch
-        unexpire-accelerated-video-decode-flag.patch
         "
 for arch_patch in $Patches
 do
@@ -75,13 +75,13 @@ sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            'deea179eb2c92925b0a46ce3f71d28cbdba9d884f6ba284e2c1cc7758bb53839'
+            '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '50133dd196d288ad538bb536aa51dccd6cb4aacfd9a60160f77e8fb16034b460'
-            'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '82a85105fc33b92a84dabb7ed6725ccbb56f1075c11f9f3f43bb8ff724f88847')
+            '76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c'
+            '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
+            'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -164,24 +164,17 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/1207478
-  patch -Np0 -i ../../unexpire-accelerated-video-decode-flag.patch
-
   # Upstream fixes
   patch -Np1 -i ../../fix-crash-in-ThemeService.patch
   patch -Np1 -i ../../unbundle-use-char16_t-as-UCHAR_TYPE.patch
-
-  # Revert addition of [[clang::nomerge]] attribute; not supported by clang 11
-  patch -Rp1 -i ../../add-clang-nomerge-attribute-to-CheckError.patch
+  patch -Np1 -i ../../make-dom-distiller-protoc-plugin-call-py2.7.patch
+  patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
 
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../../patches/chromium-90-ruy-include.patch
-
-  # Force script incompatible with Python 3 to use /usr/bin/python2
-  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
   # Hacky patching
   sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
