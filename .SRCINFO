@@ -1,6 +1,6 @@
 pkgbase = ss-tproxy-git
 	pkgdesc = A rudimentary script for building SS/SSR/V2Ray/Socks5 transparent proxy environments
-	pkgver = r845.d6cf530
+	pkgver = r851.2b18f64
 	pkgrel = 1
 	url = https://github.com/zfl9/ss-tproxy
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = ss-tproxy-git
 	sha512sums = SKIP
 
 pkgname = ss-tproxy-git
-

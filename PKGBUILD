@@ -2,7 +2,7 @@
 
 _srcname='ss-tproxy'
 pkgname=ss-tproxy-git
-pkgver=r845.d6cf530
+pkgver=r851.2b18f64
 pkgrel=1
 pkgdesc='A rudimentary script for building SS/SSR/V2Ray/Socks5 transparent proxy environments'
 arch=('i686' 'x86_64')
