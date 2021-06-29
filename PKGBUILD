@@ -4,10 +4,13 @@
 
 pkgname=git-vfs
 _pkgname=git
-pkgver=2.32.0.vfs.0.2
-pkgrel=2
+pkgver=2.32.0.vfs.0.99.exp
+_pkgver=${pkgver} # Sometimes needed when the tarball has a different name
+pkgrel=1
 pkgdesc='Microsoft fork of git including gvfs and scalar'
 arch=('x86_64')
+provides=('git')
+conflicts=('git')
 url='https://git-scm.com/'
 license=('GPL2')
 depends=('curl' 'expat' 'perl' 'perl-error' 'perl-mailtools'
@@ -31,7 +34,7 @@ source=("https://github.com/microsoft/git/archive/refs/tags/v${pkgver}.tar.gz"
         'git-daemon@.service'
         'git-daemon.socket'
         'git-sysusers.conf')
-sha256sums=('400c969f3531a252d59ed2db82f2b70939877ba31b4d2d12cfd1507d1a50f5ad'
+sha256sums=('64de8c1958b86a6463e78144ac1af885cefd5b9474d1bd1e050d8f10545b2061'
             '14c0b67cfe116b430645c19d8c4759419657e6809dfa28f438c33a005245ad91'
             'ac4c90d62c44926e6d30d18d97767efc901076d4e0283ed812a349aece72f203'
             '7630e8245526ad80f703fac9900a1328588c503ce32b37b9f8811674fcda4a45')
@@ -52,7 +55,7 @@ _make_options=(
 )
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   make \
     "${_make_paths[@]}" \
@@ -68,7 +71,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
 
   local jobs
   jobs=$(expr "$MAKEFLAGS" : '.*\(-j[0-9]*\).*') || true
@@ -88,7 +91,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
   
   make \
     "${_make_paths[@]}" \
