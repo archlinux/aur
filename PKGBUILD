@@ -21,7 +21,7 @@ _modulename='ax99100'
 set -u
 pkgname="asix-${_modulename,,}"
 pkgver='1.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
 url='https://www.asix.com.tw/'
@@ -32,10 +32,13 @@ install="${pkgname}-install.sh"
 _srcdir="AX99100_SP_PP_SPI_Linux_Driver_v${pkgver}_Source"
 source=("${_srcdir}.tar.bz2::https://www.asix.com.tw/en/support/download/file/529")
 source+=('0000-ax99100_sp.c-ch.patch')
+source+=('0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch')
 md5sums=('ccfce62fb5d3d1680514cddae9a5a361'
-         'e992800dddd65a174ac531448e3f1498')
+         'e992800dddd65a174ac531448e3f1498'
+         'ab3d71682ad549eb51ae8a13aa90efc5')
 sha256sums=('2eab40bb6bc660481099cab832a52e7e0a4044dfa55a686546b1a4bc2c40bdc1'
-            '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36')
+            '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36'
+            '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -71,6 +74,9 @@ prepare() {
 
   # diff -pNau5 ax99100_sp.c{.orig,} > '0000-ax99100_sp.c-ch.patch'
   patch -Nup0 -i "${srcdir}/0000-ax99100_sp.c-ch.patch"
+
+  # diff -pNau5 ax99100_sp.c{.orig,} > '0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch'
+  patch -Nup0 -i "${srcdir}/0001-kernel.5.12.MODULE_SUPPORTED_DEVICE.patch"
 
   # Make package and DKMS compatible
   # cp -p 'Makefile' 'Makefile.Arch'
@@ -194,14 +200,14 @@ EOF
     install -dm755 "${_dkms}/"
     cp -pr './' "${_dkms}/"
     pushd "${_dkms}" > /dev/null
-    rm *BR* gpio* parport* 'readme' spi*
+    rm *BR* gpio* 'readme' spi* # parport* 
     popd > /dev/null
     sed -e '# Fix version checking' \
         -e '/cut -d/ s:shell uname -r:shell echo $$KERNELRELEASE:g' \
         -e '# No DKMS instructions say to do this but it works and keeps the MAKE line real simple' \
         -e 's:shell uname -r:KERNELRELEASE:g' \
         -e '# Get rid of parallel port' \
-        -e 's:^obj-m +=parport_pc.o:#&:g' \
+        -e '#s:^obj-m +=parport_pc.o:#&:g' \
       -i "${_dkms}/Makefile"
     make -s -C "${_dkms}/" KERNELRELEASE="$(uname -r)" clean
   fi
