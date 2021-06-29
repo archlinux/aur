@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.13.0.r12.gb29ac8fb
-pkgrel=1
+pkgver=0.14.0.r11.g7cbcc65a
+pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
 url=https://github.com/swaywm/wlroots
