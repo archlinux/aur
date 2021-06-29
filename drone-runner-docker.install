@@ -30,6 +30,9 @@ post_upgrade() {
 ## arg 1:  the old package version
 pre_remove() {
   echo "Removing Drone Runner Docker"
+  # Stop service
+  systemctl --quiet --no-reload stop --now drone-runner-docker.service
+  systemctl --quiet --no-reload disable --now drone-runner-docker.service
 }
 
 ## arg 1:  the old package version
