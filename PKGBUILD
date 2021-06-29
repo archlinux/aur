@@ -1,6 +1,6 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-pkgver=4.0.6
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	graylog.service
 )
 
-sha256sums=('b716f7733e50e683c893849b32c76e8778eca8e101d2417f44c5034fea6710e6'
+sha256sums=('bebcd86bbbe4786b7a3696a178b43e679bfbbcd5b7b650855a25ecba1e84e4f7'
             'SKIP'
             'SKIP')
 
@@ -29,10 +29,6 @@ prepare() {
 
 package() {
 	cd "$pkgdir"
-
-	for f in sigar.jar libsigar-{amd64,x86}-linux.so; do
-		install -Dm 644 "$srcdir/$pkgname-${pkgver/_/-}/lib/sigar/$f" usr/lib/graylog/lib/sigar/${f##*/}
-	done
 
 	for p in "$srcdir/$pkgname-${pkgver/_/-}"/plugin/*; do
 		install -Dm644 $p usr/lib/graylog/plugin/${p##*/}
@@ -49,6 +45,6 @@ package() {
 
 	# make absolute just in case
 	sed -i 's~^\(plugin_dir =\) plugin$~\1 /usr/lib/graylog/plugin~g' $pkgdir/etc/graylog/server/server.conf
-	sed -i 's~^\(message_journal_dir =\) data/journal$~\1 = /var/lib/graylog/data/journal~g' $pkgdir/etc/graylog/server/server.conf
-	sed -i 's~^\(content_packs_dir =\) data/contentpacks$~\1 = /usr/lib/graylog/data/contentpacks~g' $pkgdir/etc/graylog/server/server.conf
+	sed -i 's~^\(message_journal_dir =\) data/journal$~\1 /var/lib/graylog/data/journal~g' $pkgdir/etc/graylog/server/server.conf
+	sed -i 's~^\(content_packs_dir =\) data/contentpacks$~\1 /usr/lib/graylog/data/contentpacks~g' $pkgdir/etc/graylog/server/server.conf
 }
