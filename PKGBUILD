@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.7.5
+pkgver=2.8.3
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -13,9 +13,10 @@ license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm' 'webkit2gtk')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
-
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
+         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
+             'libtg_owt' 'extra-cmake-modules')
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 _commit="tag=v$pkgver"
@@ -48,8 +49,11 @@ source=(
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
     "lib_tl::git+https://github.com/desktop-app/lib_tl.git"
     "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
+    "lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
     "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
+    "lib_webview::git+https://github.com/desktop-app/lib_webview.git"
     "lz4::git+https://github.com/lz4/lz4.git"
+    "mallocng::git+https://github.com/desktop-app/mallocng.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
     "QR::git+https://github.com/nayuki/QR-Code-generator"
     "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
@@ -57,6 +61,7 @@ source=(
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
+    https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-gcc11-assert.patch
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -88,7 +93,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -108,7 +117,9 @@ prepare() {
     git config submodule.Telegram/lib_storage.url "$srcdir/lib_storage"
     git config submodule.Telegram/lib_tl.url "$srcdir/lib_tl"
     git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
+    git config submodule.Telegram/lib_waylandshells.url "$srcdir/lib_waylandshells"
     git config submodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
+    git config submodule.Telegram/lib_webview.url "$srcdir/lib_webview"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
@@ -119,6 +130,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
+    git config submodule.Telegram/ThirdParty/mallocng.url "$srcdir/mallocng"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
     git config submodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
@@ -140,8 +152,13 @@ prepare() {
 
     # Official package patches
     cd cmake
-    # force webrtc link to libjpeg
+    # force webrtc link to libjpeg and X11 libs
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
+    echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
+    echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
+
+    cd ..
+    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
 }
 
 build() {
