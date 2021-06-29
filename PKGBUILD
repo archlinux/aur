@@ -5,25 +5,23 @@
 #     Marcin Skory <armitage at q84fh dot net>
 #     with Contribution of Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle-git
-pkgver=2019.1.r71.g9b4be5c
+pkgver=2019.1.r212.g240bcee
 pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats (development version)"
 arch=('i686' 'x86_64' 'armv6h')
 url="https://github.com/garglk/garglk"
 license=('GPL')
 depends=('gtk3' 'sdl2_mixer' 'sdl2' 'libvorbis' 'freetype2')
-makedepends=('ftjam' 'pkgconfig' 'desktop-file-utils' 'git')
+makedepends=('cmake' 'pkgconfig' 'desktop-file-utils' 'git')
 provides=('gargoyle-git')
 conflicts=('gargoyle-mod' 'gargoyle')
 replaces=('gargoyle-mod' 'gargoyle')
 groups=(inform)
 source=("$pkgname::git+https://github.com/garglk/garglk.git" \
-	"gargoyle.sh" \
 	"gargoyle-git.install" \
 	"gargoyle.xml")
 install=${pkgname}.install
 sha512sums=('SKIP'
-	'fbfd04e6d62e469b62263f1fb92b314e825784982be3be9f0e506fe6ff7d367704db907c88ec60fc492f35eaa3548fc3a65fd67d8c4c2be7e35ed87a6c9c3489'
             '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e'
             'c9924abc48b6dc5025fb83c040a3bdd2a324302d67683645a4fd1d1f3bcfe92c58a9db71c1e41a26afe8a3144e1cdafbc060df2261d93ddac29a9144ae22db71')
 
@@ -34,27 +32,20 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	# For whatever reason, jam doesn't seem to take the job number setting from
-	# /etc/makepkg.conf . 4 is a good compromise.
-	jam -j 4
-	jam install
+	mkdir -p build
+	cd build
+	# Don't build with Text-to-Speech support.
+	# TODO: Make this an optional package.
+	cmake .. -DWITH_TTS=false -DCMAKE_INSTALL_PREFIX=/usr
+	make
 }
 
 package() {
+	cd "$pkgname/build"
+	make DESTDIR="$pkgdir/" install
+
+	cd -
 	local gsrcdir="$pkgname"
-
-	# Install proper IF-reading binaries
-	install -dm755 "$pkgdir/usr/bin/gargoyle-bins"
-	install -m755 "$gsrcdir"/build/dist/* "$pkgdir/usr/bin/gargoyle-bins/"
-	## Have to clean ourselves first.
-	rm "$pkgdir/usr/bin/gargoyle-bins/libgarglk.so"
-
-	# Install libgarglk library
-	install -dm755 "$pkgdir/usr/lib"
-	install -m755 "$gsrcdir/build/dist/libgarglk.so" "$pkgdir/usr/lib"
-
-	# Install a launching shell script
-	install -m755 "gargoyle.sh" "$pkgdir/usr/bin/gargoyle"
 
 	# Install default config
 	install -dm755 "$pkgdir/etc"
