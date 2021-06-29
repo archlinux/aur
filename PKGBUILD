@@ -2,7 +2,7 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.27.0-beta.8'
+_pkgver='1.27.0-beta.9'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('7f6c190bc7687a64e598c4da3f444783979540906ed0b023ddfbf6e5e487f1f7'
+sha256sums=('46593d5bceb0c0dbd026cf2424160b4f69b26fc10d41bd09da1bba08d28fb111'
             '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
 
 if [[ $_target =~ .*-beta ]]; then
