@@ -1,6 +1,6 @@
 pkgbase = zwavejs2mqtt
 	pkgdesc = Zwave to Mqtt gateway and Control Panel Web UI.
-	pkgver = 4.5.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/zwave-js/zwavejs2mqtt
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = zwavejs2mqtt
 	makedepends = yarn
 	makedepends = node-gyp
 	depends = nodejs
-	source = https://github.com/zwave-js/zwavejs2mqtt/archive/refs/tags/v4.5.0.tar.gz
+	backup = etc/zwavejs2mqtt/app.ts
+	source = https://github.com/zwave-js/zwavejs2mqtt/archive/refs/tags/v5.2.0.tar.gz
 	source = zwavejs2mqtt.sysusers
 	source = zwavejs2mqtt.tmpfiles
 	source = zwavejs2mqtt.service
-	b2sums = e631e41d83dd89ac6cd11f9ed91af4fdb0412b5d0403f9f31ba8ae96462e4d3d02bac0506864435990b325a2a78bb08b7d9b005987fe98b7a93f20dddd63d81e
+	b2sums = d9e6c8e0a9e473a2ebf2c7ce2509be0dcc3d7a1bc25a2ca54cdfc99af00c03cdeece603d046777827e94ef72901bd53b96d5ccd9d1d4589ababe2ad695b13008
 	b2sums = d4a834bd7c8e4c832128f9f9c0ffb9d4409424402ba9c28a430a2d41d19cf780ba606c27b5f3b71f7640caa9883724647f2779cfa3cf2714564eb5e58b6144e2
 	b2sums = 2324c50252e1005b1ec06bf73e9d05937472397f5fc533e7ab468d416bcb6b5d01b87055a41d3b3a5b44b24e02ca45fafb5f79085833988ec458ee72c1d8c31b
-	b2sums = 88af5d6d6ed94f2946f3ed0ceefd16eb548009afce02abf1af399637226b61d810147f1f3ff395a569f9de82b54769299bb78482799b6395335b587e8b83a402
+	b2sums = 48f4a894227918086b7a55a1d20a94cff08088552c7d655a24cddd92e76e74e19cefd4cd7abeb744c0e254bef36cf9e79442dc56c2006ec6a6e94e005a0e906f
 
 pkgname = zwavejs2mqtt
-
