@@ -1,55 +1,29 @@
-From 4904b000ad621c676adcca5f843c13c12b3bc986 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Boris=20Mom=C4=8Dilovi=C4=87?= <boris@firstbeatmedia.com>
-Date: Thu, 15 Apr 2021 20:53:49 +0200
-Subject: [PATCH] Fix
-
----
- deps/Makefile                                 |  4 +++-
- .../syntax-error-cmake-3.20.patch             | 24 +++++++++++++++++++
- 2 files changed, 27 insertions(+), 1 deletion(-)
- create mode 100644 deps/mariadb-client-library/syntax-error-cmake-3.20.patch
-
-diff --git a/deps/Makefile b/deps/Makefile
-index 72635897..eca4d698 100644
---- a/deps/Makefile
-+++ b/deps/Makefile
-@@ -169,6 +169,7 @@ mariadb-client-library/mariadb_client/libmariadb/libmariadbclient.a: libssl/open
+diff --new-file -ur proxysql-2.2.0/deps/Makefile proxysql-2.2.0-patched/deps/Makefile
+--- proxysql-2.2.0/deps/Makefile	2021-05-28 05:14:25.000000000 +1200
++++ proxysql-2.2.0-patched/deps/Makefile	2021-06-29 13:38:43.015414700 +1200
+@@ -169,6 +169,7 @@
  	cd mariadb-client-library && rm -rf mariadb-connector-c-3.1.9-src
  	cd mariadb-client-library && tar -zxf mariadb-connector-c-3.1.9-src.tar.gz
  	cd mariadb-client-library/mariadb_client && patch ./plugins/auth/CMakeLists.txt < ../plugin_auth_CMakeLists.txt.patch
-+	cd mariadb-client-library/mariadb_client && patch -p1 < ../syntax-error-cmake-3.20.patch
++	cd mariadb-client-library/mariadb_client && patch -p0 < ../ConnectorName.cmake.patch
  	cd mariadb-client-library/mariadb_client && cmake . -DOPENSSL_ROOT_DIR=$(shell pwd)/libssl/openssl/ -DOPENSSL_LIBRARIES=$(shell pwd)/libssl/openssl/ .
  #	cd mariadb-client-library/mariadb_client && cmake . -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl # this is needed on MacOSX
  	cd mariadb-client-library/mariadb_client && patch libmariadb/mariadb_stmt.c < ../mariadb_stmt.c.patch
-@@ -230,6 +231,7 @@ re2/re2/obj/libre2.a:
- #	cd re2/re2 && sed -i -e 's/-O3 -g /-O3 -fPIC /' Makefile
- #	cd re2 && patch re2/util/mutex.h < mutex.h.patch
- 	cd re2/re2 && sed -i -e 's/-O3 /-O3 -fPIC -DMEMORY_SANITIZER -DRE2_ON_VALGRIND /' Makefile
-+	cd re2/re2 && sed -i -e 's/RE2_CXXFLAGS?=-std=c++11 /RE2_CXXFLAGS?=-std=c++11 -fPIC /' Makefile
- 	cd re2/re2 && CC=${CC} CXX=${CXX} ${MAKE}
+@@ -217,6 +218,7 @@
+ 	cd prometheus-cpp && tar --strip-components=1 -zxf civetweb-v1.11.tar.gz -C prometheus-cpp/3rdparty/civetweb
+ 	cd prometheus-cpp/prometheus-cpp && patch -p1 < ../serial_exposer.patch
+ 	cd prometheus-cpp/prometheus-cpp && patch -p0 < ../registry_counters_reset.patch
++	cd prometheus-cpp/prometheus-cpp && patch -p0 < ../histogram.cc.fix.patch
+ 	cd prometheus-cpp/prometheus-cpp && cmake . -DBUILD_SHARED_LIBS=OFF -DENABLE_TESTING=OFF -DENABLE_PUSH=OFF
+ 	cd prometheus-cpp/prometheus-cpp && CC=${CC} CXX=${CXX} ${MAKE}
  
- re2: re2/re2/obj/libre2.a
-diff --git a/deps/mariadb-client-library/syntax-error-cmake-3.20.patch b/deps/mariadb-client-library/syntax-error-cmake-3.20.patch
-new file mode 100644
-index 00000000..1fe0e066
---- /dev/null
-+++ b/deps/mariadb-client-library/syntax-error-cmake-3.20.patch
-@@ -0,0 +1,24 @@
-+Upstream: Yes
-+From 242cab8cbcd91af882233730a83627d3b12ced83 Mon Sep 17 00:00:00 2001
-+From: Vladislav Vaintroub <wlad@mariadb.com>
-+Date: Fri, 12 Mar 2021 00:01:11 +0100
-+Subject: [PATCH] Fix syntax error in cmake 3.20
-+
-+---
-+ cmake/ConnectorName.cmake | 2 +-
-+ 1 file changed, 1 insertion(+), 1 deletion(-)
-+
-+diff --git a/cmake/ConnectorName.cmake b/cmake/ConnectorName.cmake
-+index b7bbbad8..357b8ac0 100644
-+--- a/cmake/ConnectorName.cmake
-++++ b/cmake/ConnectorName.cmake
-+@@ -22,7 +22,7 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Windows")
+diff --new-file -ur proxysql-2.2.0/deps/mariadb-client-library/ConnectorName.cmake.patch proxysql-2.2.0-patched/deps/mariadb-client-library/ConnectorName.cmake.patch
+--- proxysql-2.2.0/deps/mariadb-client-library/ConnectorName.cmake.patch	1970-01-01 12:00:00.000000000 +1200
++++ proxysql-2.2.0-patched/deps/mariadb-client-library/ConnectorName.cmake.patch	2021-06-29 13:19:51.861267481 +1200
+@@ -0,0 +1,11 @@
++--- cmake/ConnectorName.cmake	2020-06-19 03:16:18.000000000 +1200
+++++ cmake/ConnectorName.cmake.new	2021-06-29 13:19:07.083221888 +1200
++@@ -22,7 +22,7 @@
 +     SET(MACHINE_NAME "x64")
 +   ELSE()
 +     SET(MACHINE_NAME "32")
@@ -58,7 +32,19 @@ index 00000000..1fe0e066
 + ENDIF()
 + 
 + SET(product_name "mysql-connector-c-${CPACK_PACKAGE_VERSION}-${PLATFORM_NAME}${CONCAT_SIGN}${MACHINE_NAME}")
-+
--- 
-2.31.1
-
+diff --new-file -ur proxysql-2.2.0/deps/prometheus-cpp/histogram.cc.fix.patch proxysql-2.2.0-patched/deps/prometheus-cpp/histogram.cc.fix.patch
+--- proxysql-2.2.0/deps/prometheus-cpp/histogram.cc.fix.patch	1970-01-01 12:00:00.000000000 +1200
++++ proxysql-2.2.0-patched/deps/prometheus-cpp/histogram.cc.fix.patch	2021-06-29 13:37:28.508490721 +1200
+@@ -0,0 +1,10 @@
++--- core/src/histogram.cc	2021-06-29 13:36:58.995962491 +1200
+++++ core/src/histogram.cc.fix	2021-06-29 13:36:53.968117217 +1200
++@@ -5,6 +5,7 @@
++ #include <iterator>
++ #include <numeric>
++ #include <ostream>
+++#include <limits>
++ 
++ namespace prometheus {
++ 
+Binary files proxysql-2.2.0/proxysql.db and proxysql-2.2.0-patched/proxysql.db differ
+Binary files proxysql-2.2.0/proxysql_stats.db and proxysql-2.2.0-patched/proxysql_stats.db differ

@@ -1,6 +1,6 @@
 pkgbase = proxysql
 	pkgdesc = High-performance MySQL proxy with a GPL license
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://proxysql.com
 	arch = x86_64
@@ -18,14 +18,13 @@ pkgbase = proxysql
 	depends = gnutls
 	provides = proxysql
 	backup = etc/proxysql.cnf
-	source = https://github.com/sysown/proxysql/archive/v2.1.1.tar.gz
+	source = https://github.com/sysown/proxysql/archive/v2.2.0.tar.gz
 	source = proxysql.sysusers
 	source = shared-libs.patch
 	source = proxysql.tmpfiles
-	sha256sums = 182483b33c879572bbf78bda0efb1b890485c847fac11c2106f2b3357355001a
+	sha256sums = f0c8c398e5bc285e08f4a555caeabdb5d71a20d6fc1f513dba3943e8e24141f2
 	sha256sums = 8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735
-	sha256sums = 74323f6b93cbfbd4d99d2f7aaf66f33a2bba8619aacf09f61ebe3b7fcb91bee3
+	sha256sums = d4641f367a9c056e02a0b3b86f6870e36026953d2a40433b6c6979bc944ffdfd
 	sha256sums = 6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380
 
 pkgname = proxysql
-
