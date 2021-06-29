@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=dvdisaster-unofficial
-_pkgver=0.79.6-pl8
+_pkgver=0.79.6-pl9
 pkgver=${_pkgver//-/}
 pkgrel=1
 
@@ -10,7 +10,7 @@ url="https://github.com/speed47/dvdisaster"
 license=('GPL3')
 depends=('gtk2')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('a5c95f0ab2f625ed976a4ef2f6a4736646cccdd7176323dd4743fe8d3618a1d0')
+sha256sums=('b8ccd5f4f43884ec8c506356da3d95cb37ae324965423577e4036b13b5dc8e8b')
 
 build() {
 	cd "${pkgname%-unofficial}-${_pkgver}"
