@@ -2,16 +2,17 @@
 
 pkgname=perl-uuid
 _cpanname=uuid
-pkgver=0.05
+pkgver=0.28
 pkgrel=1
 pkgdesc="UUID - Perl extension for using UUID interfaces as defined in e2fsprogs."
 arch=('any')
-url="http://search.cpan.org/~lzap/UUID/UUID.pm"
+url="https://metacpan.org/release/JRM/UUID-${pkgver}"
 license=('PerlArtistic')
 options=('!emptydirs')
 depends=('util-linux' 'perl')
-source=(http://search.cpan.org/CPAN/authors/id/L/LZ/LZAP/UUID-${pkgver}.tar.gz)
-md5sums=('216851ffdf56a07448daef664ca5bb6e')
+depends=('perl-devel-checklib')
+source=("https://cpan.metacpan.org/authors/id/J/JR/JRM/UUID-${pkgver}.tar.gz")
+md5sums=('15c17e1044f7ff686dafa27ff381b007')
 
 build() {
   cd $srcdir/UUID-${pkgver}
