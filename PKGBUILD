@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lfs-git
-pkgver=0.7.1.r0.gc505899
+pkgver=0.7.2.r0.gab8403e
 pkgrel=1
 pkgdesc="Get information on your mounted disks (git)"
 arch=('x86_64')
