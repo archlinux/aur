@@ -4,7 +4,7 @@
 
 pkgname=devolo-dlan-cockpit
 pkgver=5.1.5.245
-pkgrel=3
+pkgrel=4
 name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
