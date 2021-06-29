@@ -1,16 +1,19 @@
 pkgbase = apple-music-electron
 	pkgdesc = Electron wrapper for Apple Music
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/cryptofyre/Apple-Music-Electron
 	arch = aarch64
 	arch = armv7h
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = yarn, git
+	makedepends = yarn
+	makedepends = git
+	depends = libxss
 	source = Apple-Music-Electron-2.1.0.tar.gz::https://github.com/cryptofyre/Apple-Music-Electron/archive/v2.1.0.tar.gz
 	source = Apple-Music-Electron.desktop
+	sha256sums = bbbdddd292fd590eb1278b9c5a608eb27fc65649cdf8c1981b3f955f312585ad
+	sha256sums = 5ee6328384f5afe500211dcfbe6a429ce29235439469c6d58c2ce65610c09ece
 
 pkgname = apple-music-electron
-
