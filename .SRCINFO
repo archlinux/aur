@@ -1,0 +1,13 @@
+pkgbase = openscad-bosl
+	pkgdesc = A library of tools, shapes, and helpers to make OpenScad easier to use.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/revarbat/BOSL
+	arch = any
+	license = BSD
+	depends = openscad
+	source = https://github.com/revarbat/BOSL/archive/refs/tags/v1.0.3.tar.gz
+	sha1sums = ed3e1b56999de79d1d6a9c9537127edb036af6cb
+
+pkgname = openscad-bosl
+
