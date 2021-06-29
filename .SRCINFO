@@ -1,13 +1,13 @@
 pkgbase = makedeb-beta
 	pkgdesc = Create Debian archives from PKGBUILDs (beta release)
-	pkgver = 5.0.1
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/hwittenborn/makedeb
 	arch = any
 	license = GPL3
 	depends = pacman
 	depends = dpkg
-	source = https://proget.hunterwittenborn.com/debian-feeds/makedeb/main/makedeb-beta/all/makedeb-beta_all_5.0.1-1.deb
+	source = https://proget.hunterwittenborn.com/debian-feeds/makedeb/main/makedeb-beta/all/makedeb-beta_all_5.2.0-1.deb
 	sha256sums = SKIP
 
 pkgname = makedeb-beta
