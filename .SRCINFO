@@ -1,0 +1,20 @@
+pkgbase = secret-service
+	pkgdesc = secret service provides secure ways of storing credentials
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/secret-service
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = sudo
+	source = secret-service-0.1.0.tar.gz::https://github.com/yousefvand/secret-service/archive/v0.1.0.tar.gz
+	sha256sums = 131579e47067c86973acc0323cea020bd9730842992352cae1dffef05f5c3f83
+
+pkgname = secret-service
