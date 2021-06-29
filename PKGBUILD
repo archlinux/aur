@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('dkms')
 source=("${url}/archive/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('b4aed4ccf70135141beba141f06c1ccdea86a95a75a51ac177d7130b770271f9'
+sha256sums=('599ca67e46329440959c33ee9baf20dc1ba451021d53d6ca8d388137281e062d'
             'bc325cc6a2e01f8de499676c345962b95d681fcdc623e995a9c5ddfeb77227af')
 
 package() {
