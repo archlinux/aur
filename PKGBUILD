@@ -1,6 +1,6 @@
 ## Maintainer dr460nf1r3 dr460nf1r3@garudalinux.org
 pkgname=librewolf-extension-bitwarden
-pkgver=1.49.1
+pkgver=1.50.0
 pkgrel=1
 pkgdesc='Bitwarden addon for Librewolf'
 arch=('any')

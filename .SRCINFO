@@ -1,13 +1,13 @@
 pkgbase = librewolf-extension-bitwarden
 	pkgdesc = Bitwarden addon for Librewolf
-	pkgver = 1.49.1
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
 	arch = any
 	groups = librewolf-addons
 	license = GPLV3
 	depends = librewolf
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3643785/bitwarden_free_password_manager-1.49.1-an+fx.xpi
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3643785/bitwarden_free_password_manager-1.50.0-an+fx.xpi
 	sha512sums = 8759626d0b1e5647e58024d9ca74253cdcc6cb45f998a9a71406c562045c8279b1a84574042a22ec564be211b167cef66e1d78148164f897bd7aadb02b4d73be
 
 pkgname = librewolf-extension-bitwarden
