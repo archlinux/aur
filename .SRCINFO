@@ -1,0 +1,19 @@
+pkgbase = drjava-svetovid
+	pkgdesc = A lightweight development environment for writing Java programs including Svetovid
+	pkgver = 20140826
+	pkgrel = 1
+	url = https://svetovid.org/lib/drjava.html
+	arch = any
+	license = BSD
+	depends = bash
+	depends = java-environment
+	source = https://svetovid.org/lib/drjava-with-svetovid-lib.jar
+	source = drjava-svetovid.sh
+	source = drjava-svetovid.desktop
+	source = LICENSE
+	sha512sums = f8be92a41159ccb4417726f6b4896628927cd9e51fda54335b5006bf8d921081ab9fd09c1677e0e870e048471778012059326b749f3b0318c3d46b8fd504a39a
+	sha512sums = 619e77fbb1970f68c4de5f0d2d719220f9fb5c0fd15ec746b1c1b181bc757ffe466d09d6deb394c806bb4cc82f091d3e21950e7f82bb8ff9c2a69073d5537663
+	sha512sums = 553614cf30355c09cce2f5d4892486c0687336a1077c5df45ad476fcd6bbb0c98fc0932ebd7699fa236f826c7503d719b0bdd7cd37a4358002573096cee0cfeb
+	sha512sums = 8beb6de3b073857d0eba23c28fcfa7bee669b6caaf8eeb5022f9a78c48d2c8c726bd2448993edcdd8db8e56b3e816d64e21fdfaf392e0440122db67446fada8f
+
+pkgname = drjava-svetovid

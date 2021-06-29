@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=DrJava with Svetovid
+Comment=Lightweight development environment for writing Java programs with Svetovid
+Exec=drjava-svetovid
+Icon=drjava-svetovid
+Terminal=false
+Categories=Development;Education;Java;
