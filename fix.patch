@@ -1,0 +1,17 @@
+--- UTemplateConfig.cmake	2021-06-29 17:20:09.000000000 +0800
++++ UTemplateConfig.cmake.new	2021-06-29 17:24:17.747599074 +0800
+@@ -5,12 +5,12 @@
+ ####### Any changes to this file will be overwritten by the next CMake run ####
+ ####### The input file was Config.cmake.in                            ########
+ 
+-get_filename_component(PACKAGE_PREFIX_DIR "${CMAKE_CURRENT_LIST_DIR}/../../" ABSOLUTE)
++get_filename_component(PACKAGE_PREFIX_DIR "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
+ 
+ ####################################################################################
+ 
+ 
+-get_filename_component(include_dir "${CMAKE_CURRENT_LIST_DIR}/../include" ABSOLUTE)
++get_filename_component(include_dir "/usr/include" ABSOLUTE)
+ include_directories("${include_dir}")
+ 
+ 

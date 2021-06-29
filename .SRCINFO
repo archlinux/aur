@@ -1,0 +1,13 @@
+pkgbase = utemplate-git
+	pkgdesc = Ubpa UTemplate
+	pkgver = 0.7.1.r2.g427d3f7
+	pkgrel = 1
+	url = https://github.com/Ubpa/UTemplate
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ucmake-git
+	source = git+https://github.com/Ubpa/UTemplate.git
+	md5sums = SKIP
+
+pkgname = utemplate-git
