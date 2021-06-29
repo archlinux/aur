@@ -1,7 +1,7 @@
 pkgbase = tuxedo-keyboard
 	pkgdesc = Keyboard Backlight Driver from TUXEDO Computers
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	arch = x86_64
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = tuxedo-keyboard
 	conflicts = tuxedo-cc-wmi
 	replaces = tuxedo-cc-wmi
 	backup = etc/modprobe.d/tuxedo_keyboard.conf
-	source = tuxedo-keyboard-3.0.7-tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.0.7.tar.gz
+	source = tuxedo-keyboard-3.0.7.tar.gz::https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v3.0.7.tar.gz
 	source = tuxedo_io.conf
 	sha256sums = d6b08b3ce0b4e58516af8828fae6f8735b96a24fff95a73198481dba2a7f42c3
 	sha256sums = d94d305bfd2767ad047bc25cc5ce986e76804e7376c3dd4d8e500ebe2c7bef3c
