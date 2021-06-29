@@ -19,31 +19,31 @@ pkgbase = linux-gc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.13.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.13.tar.sign
-	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/f6959f6da7cf155d8f66aec96c97007017c2c36f/trunk/config
+	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/08ebe7e1fe2d69b89649a637dc2b9149ea0f5e9d/trunk/config
 	source = prjc_v5.12-r1.patch::https://gitlab.com/alfredchen/projectc/raw/master/5.12/prjc_v5.12-r1.patch
-	source = more-uarches-20210610.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210610.tar.gz
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=6f0534d5db472b538519a4673a4bffb2d4e408ec
-	source = 0002-x86-setup-Consolidate-early-memory-reservations.patch::https://git.archlinux.org/linux.git/patch/?id=dbb89f5d53a36eef51c8f42a6469eed55da2d59f
-	source = 0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch::https://git.archlinux.org/linux.git/patch/?id=c0831ea64723acc90e36730d8b30b9aa8fe35740
-	source = 0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch::https://git.archlinux.org/linux.git/patch/?id=51a21625df206d92c5aaad513f43e33c8d8297fa
-	source = 0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch::https://git.archlinux.org/linux.git/patch/?id=1a9870292e089e9d6914c5d82427236448ce63ca
-	source = 0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch::https://git.archlinux.org/linux.git/patch/?id=e948c77fea857a5dfa647ad41cfa1e32ee5c20ac
-	source = 0007-x86-crash-remove-crash_reserve_low_1M.patch::https://git.archlinux.org/linux.git/patch/?id=6f078aa59a65b2940905a2eb98b15d5c072930e0
+	source = more-uarches-20210616.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210616.tar.gz
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/6f0534d5db472b538519a4673a4bffb2d4e408ec.patch
+	source = 0002-x86-setup-Consolidate-early-memory-reservations.patch::https://github.com/archlinux/linux/commit/dbb89f5d53a36eef51c8f42a6469eed55da2d59f.patch
+	source = 0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch::https://github.com/archlinux/linux/commit/c0831ea64723acc90e36730d8b30b9aa8fe35740.patch
+	source = 0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch::https://github.com/archlinux/linux/commit/51a21625df206d92c5aaad513f43e33c8d8297fa.patch
+	source = 0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch::https://github.com/archlinux/linux/commit/1a9870292e089e9d6914c5d82427236448ce63ca.patch
+	source = 0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch::https://github.com/archlinux/linux/commit/e948c77fea857a5dfa647ad41cfa1e32ee5c20ac.patch
+	source = 0007-x86-crash-remove-crash_reserve_low_1M.patch::https://github.com/archlinux/linux/commit/6f078aa59a65b2940905a2eb98b15d5c072930e0.patch
 	source = prjc-fix-compilation-error.patch::https://gitlab.com/alfredchen/linux-prjc/uploads/b1121adfd2d2a2c610a1a8d611947d8c/0001-prjc-fix-compilation-error.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 3a959a1779a8c19f59346e4b5cb6f9af84fdca993b248b2ea7c9fac6cd4c1f73d7a268a0f287143bdd4924711cf54223669a4e706327a40776ad0b9683b505de
 	b2sums = SKIP
-	b2sums = 706633b9c2ba4405efa0578f8008dcb0fc9466353b6bdda233477914c8f7e55f8e708622bfd000b54bb890c6957087f12b5b60e00aca9a40b1a256eccde782b5
+	b2sums = 11db4b5f4a22a2cdc75a61dde407957d458f495f38f6d2b6c79fbabc6bccbae999a6e32d1ab4f2f03f028ca64fa0c76480260a262144581691f7faa3c0914964
 	b2sums = 77a1646ffbc67ed88af564b73cf63f0374772bdc1075e771a93ee4fe257b94cb3766a4842898b48f4343458d0b507229182220c7daeb5532df610b964c6640e7
-	b2sums = 30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a
-	b2sums = 0048467f43f143c983d17ada6a2ffeec48d5bb232d0fbc8f10c3b1230aa3d7cb35ed239ff96a98d2a4c30dae7c0e651447d20b32dea002cb5aae4bf6bb48a242
-	b2sums = d59b13e7be4f7ac060acef08850c18c3f847230b12558302adac420b22c66582caeab026af71bcd95f876974840430f6dc165b7fb0994482feae9e7696eab221
-	b2sums = 961829023046ce7b8d1de9bebf7290d312c6583f98a35a7383e407f5141b703c5d11d6bd92a8b08b641235ebefa68145d1bc4d1c5d4ef8e213b3ec9862af5b1f
-	b2sums = 2b18c24bf3a585c95841836ed6c9f675a522d65ef12ff315c1566d8678fe1492cbf2286535e47f4de47e497f38fb7287b406bf2605a5903647d935c34186ae2f
-	b2sums = ff4abad3202a2f7a77b310b03f7ca3528adde7603b91064c389a1876bb730e2141cf81b1ea82368567d063ee147b5f7f4572bb6b9312ac3f0dc0b9adef592c57
-	b2sums = 901f0c5ab3899daf0d3348d9778eab3996fc2b722d324bdc50f8f0b34bdf768ff5b21f4fbd5c9244142a6504bd40e56c5a8e68c03d150466b49c199df7d56b65
-	b2sums = 4279c9f250a83489267a90b71da5522e771640d8e5dda29c9a7f0dab684416e424e5b8dd5275274f3d2552bc5712914f71a2d50705d9e195ecad79bc2a694d3d
+	b2sums = 8eed6c5ac182266a254ad111389f2236e6664341c56d8e4854e722d7323e526d2caa5e5119060fd3cbc119a0682a7ef47fb8a0000cf83acbdfe3a0d4a5446e5d
+	b2sums = e34985eb5060a3ef61f8bb7d352394468519f621f756ed54b5af49762166979d1b38de9fe33e3a180019796dbd601420aafa6868c802cde9b70d6aab562a16ef
+	b2sums = 36b8988b889bface305f6a60768d3ff67082c73de178d6061c8035de89cba5f620f7625fb0eb3274c57c2cc40ddc1af621fbfcb27f5b297a554eec0f9e861be5
+	b2sums = 5ad4cd57d35cc87061e3299c49cc53fbbeb2ff63d693d6adad77cf0d8966613f2719be3502d90478460476c533a2f407a9330bb4d111052f161940389236eefb
+	b2sums = 86e0ab7dea3a2e771ffa8286602be33a2255a39527b90b9617f1e89e210e2f2d952da96ed1c308c1c01568e19bf59ab20e15540ec4785e5914b2ed2c340a3591
+	b2sums = ce8c2b81568c54ae9774c4a2fec21ce4dbb01d016fa5ca30b7633cb88e9aaf2b9e87f48a98db4fc29e3bea31292d1c1fe69758b8662ba407ad075027b78e98f5
+	b2sums = 7d50881e844d991e38c285f002673880b9dc2a074042840efda9e4de44aab9e04c03ef8936c463c90b4e579265bff0f5d4b223bf429bfbb945dd5284e0a942c0
+	b2sums = 6d77a481a765c2c07d16233a95e3486467d22aa7c28a061fccf733584ebd5184c1ea15cb39d5962eabd7f13236461f3e082234148c109a5ed0f6fa19e9861157
 	b2sums = 8bfdf114f40a4d4851c511003d0454b450ad1cffc59f360bef53b7cff9272a743e59da42e8ca067e2f48c1abd89dd4e03dcb681f9fb7a3180eff260cfed713ee
 
 pkgname = linux-gc
