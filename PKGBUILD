@@ -1,26 +1,26 @@
 # $Id$
-# Maintainer: Ido Rosen (ido) <ido@kernel.org>
 # Maintainer: jakob <grandchild@gmx.net>
+# Contributor: Ido Rosen (ido) <ido@kernel.org>
 # Contributor: Alexander Konarev (kale-ru) <AVKonarev@gmail.com>
 # Contributor: Alexander Konarev <avkonarev@gmail.com.cc>
 # Contributor: Andre Bartke (andre) <andrew@archlinux.us>
 
 pkgname=aksusbd
-pkgver=7.103
+pkgver=8.21
 pkgrel=1
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 _rpm_pkgrel=1
-_dl_hash=cbc352ae351348c5980d4437c2250284
-_dl_id=98ade46e1b3bcc14f2888739cd4bcb62
-pkgdesc="SafeNet Sentinel LDK AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
+_dl_hash=e4e1722f4c6a46e1ac2243f0c1e3ca5d
+_dl_id=4a5e2d551bc9bc50e2af520f6e4bcb2b
+pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
-url="https://safenet.gemalto.com/"
+url="https://supportportal.thalesgroup.com/csm?sys_id=54303b92db852e00d298728dae96199c&id=csm_product"
 license=('custom')
 source=("${_tarballname}-${pkgver}.tar.gz::https://fdsext.gemalto.com/filesSN/Index/$_dl_hash?sid=$_dl_id"
         "service-usr-bin-i386.patch"
         "service-usr-bin-x86_64.patch"
         "LICENSE")
-sha256sums=('b9736cf2f546badccff81159f2f30d365cdaa95db91d9bb1fc19ef33bad124f8'
+sha256sums=('83a07df5ed04be1d78e96bc70133c5b4adbdea5dc1f75b3aad5f734298450555'
             '75c02721799e3f2b498d67265201445c963063b331c61402205db2ad91e72ec3'
             'd63548bac27eab7cf4a524830643705bafc63349d2e3c5276a37d3382e5598ec'
             'c67d1383c94e2fda4c25a70d5a5d4a90d692586ff7977eb5e9e82139f85e22dd')
@@ -41,7 +41,7 @@ prepare(){
 
 package() {
   cd $srcdir
-  if [ "${CARCH}" != "i386" ]; then
+  if [ "${CARCH}" == "x86_64" ]; then
     arch_suffix=_${CARCH}
   fi
 
