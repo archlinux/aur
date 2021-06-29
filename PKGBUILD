@@ -1,23 +1,25 @@
 pkgname=1password-beta
 
-_tarver=8.1.0-60.BETA
+_tarver=8.1.0-66.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=60
+pkgrel=66
+conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
 url='https://1password.com'
 license=('LicenseRef-1Password-Proprietary')
-depends=('hicolor-icon-theme')
 options=(!strip)
 install="1password.install"
-source=(https://downloads.1password.com/linux/tar/beta/x86_64/${_tar}{,.sig})
-sha256sums=('48559360d8c641ee3919dbb2f90bf42d2392a764777e7ed5cd720184df8bc1b1'
-            '51eea4fd59e78737f40af60e5bb476efb1c06709567d3ebbb8130474c65c504e'
+source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
+sha256sums=('56c37ff943437f2d70399b9c5062ef3d210ef6ccf0600f2968d7127689e4a8d2'
+            '76949137ed4fb3e6cc9686a9dce4ec09da94a0b87b36a981e4340f7ba60d79b0'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
 package() {
+    depends=('hicolor-icon-theme' 'libgtk-3.so=0' 'nss')
+
     # Go to source directory
     cd "1password-${_tarver}.x64"
 
