@@ -6,7 +6,7 @@
 
 pkgname=dokuwiki-git
 pkgver=20200729.r127.g66ed1b5e1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple to use and highly versatile Open Source wiki software'
 arch=('any')
 url='https://www.dokuwiki.org/'
@@ -18,7 +18,7 @@ options=('!strip')
 source=("git+https://github.com/splitbrain/dokuwiki.git"
         'apache.example.conf')
 sha512sums=('SKIP'
-            'd37c0288121eb509506e060473dc4fa11142a27442ba6c0bb35b43193089f1ae4c1cfea736866db9c2122f086a825220e497e04460c7f2e81966d5a6fbf9b1f6')
+            '0575ad5d1db22e931bcb878db86dc2b60a23bb7d2ce6dc6801906f1358e35a4bee16a70fed11cf67483d8739a216e6063012750792b733735256c4e0f7887e2e')
 provides=("dokuwiki")
 conflicts=("dokuwiki")
 
