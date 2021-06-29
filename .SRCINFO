@@ -1,0 +1,17 @@
+pkgbase = gpgpass-git
+	pkgdesc = POSIX shell script for managing passwords
+	pkgver = r23.388f5f8
+	pkgrel = 1
+	url = https://sr.ht/~billy02357/gpgpass
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = sh
+	depends = gnupg
+	depends = xclip
+	depends = dmenu
+	provides = gpgpass
+	source = git+https://git.sr.ht/~billy02357/gpgpass
+	sha256sums = SKIP
+
+pkgname = gpgpass-git
