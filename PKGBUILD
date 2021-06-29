@@ -1,8 +1,8 @@
 # Maintainer: Platon Pronko <platon7pronko@gmail.com>
 
 pkgname='python-lsp-server'
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Fork of the python-language-server project, maintained by the Spyder IDE team and the community"
 arch=("any")
 url="https://github.com/python-lsp/python-lsp-server"
@@ -16,7 +16,7 @@ depends=(
 makedepends=("python-setuptools")
 
 source=("https://github.com/python-lsp/python-lsp-server/archive/v${pkgver}.tar.gz")
-sha256sums=('b049d9a02cc568814d56278df5e95bcce455182ba7115dcd76b3212ef80f278f')
+sha256sums=('987eb87073fca65bd1b0d32e408935f2146a98d33ae06d716d00969fc8c935b3')
 
 prepare() {
   cd "${srcdir}/python-lsp-server-${pkgver}"
