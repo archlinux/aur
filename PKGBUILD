@@ -18,8 +18,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 		drone-runner-docker.install)
 sha256sums=('ef5fd33a55ddb90a5e09a0302c03af2b365b4a0242561d8c4dcbf70953f1cf5d'
 			'9522dc5f4feacb67b921ed3d96a9de5e224d979953360d7553482231b18264de'
-			'2f44ed0aae1df1df1aa2bc99874e43f7000c2ab54bcf60a178580783eb3115f3'
-			'a2079ac7c935e246e6d77f0f9301971f4f5bc3e9e0ac50b7ea0a60c9daae8d24')
+			'f70c7a90f1acb3056189151be16d41e70b7ca5453b318aa0035a359658a3d2aa'
+			'24d550d856360ba31558177a683bfcdc9535f0b001c4c02c2f502b23b8f7c541')
 
 build() {
   cd "${pkgname}-${pkgver}"
