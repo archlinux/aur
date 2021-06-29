@@ -7,7 +7,7 @@ pkgbase = openmodelica-git
 	arch = x86_64
 	license = OSMC-PL
 	makedepends = git
-	makedepends = gcc9-fortran
+	makedepends = gcc-fortran
 	makedepends = boost
 	makedepends = clang
 	makedepends = cmake
@@ -50,4 +50,3 @@ pkgbase = openmodelica-git
 	md5sums = SKIP
 
 pkgname = openmodelica-git
-
