@@ -2,8 +2,8 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2020.11.001
-pkgrel=3
+pkgver=2021.05.001
+pkgrel=1
 arch=('x86_64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
@@ -12,7 +12,7 @@ depends=('scalapack')
 makedepends=('gcc-fortran' 'python' 'vim')
 provides=('elpa')
 source=("$url/software/tarball-archive/Releases/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('15591f142eeaa98ab3201d27ca9ac328e21beabf0803b011a04183fcaf6efdde')
+sha256sums=('a4f1a4e3964f2473a5f8177f2091a9da5c6b5ef9280b8272dfefcbc3aad44d41')
 options=(!makeflags !buildflags)
 
 prepare() {
