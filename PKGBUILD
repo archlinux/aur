@@ -2,7 +2,7 @@
 
 pkgname=flexoptix
 pkgver=5.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
 url='https://www.flexoptix.net/en/flexoptix-app'
@@ -10,8 +10,7 @@ license=('custom')
 depends=('hidapi')
 makedepends=('asar')
 install=flexoptix.install
-_appimgname="FLEXOPTIX%20App.${pkgver}.AppImage"
-source=("https://flexbox.reconfigure.me/download/electron/linux/x64/${_appimgname}"
+source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.${pkgver}.AppImage"
         'https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules'
         'disable-autoupdate.patch')
 sha256sums=('363e92e776f8c3ce2aa6990607b94ca4984997189f683e1a70faf2b99c58edc3'
@@ -22,8 +21,8 @@ prepare() {
   _appdir="${srcdir}/squashfs-root"
   
   # extract appimage
-  chmod +x "${srcdir}/${_appimgname}"
-  "${srcdir}/${_appimgname}" --appimage-extract >/dev/null
+  chmod +x "${srcdir}/flexoptix-${pkgver}.AppImage"
+  "${srcdir}/flexoptix-${pkgver}.AppImage" --appimage-extract >/dev/null
 
   # use system libs
   rm -rf "${_appdir}/usr/lib"
