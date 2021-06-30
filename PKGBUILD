@@ -1,8 +1,8 @@
-# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 _name=libpysal
 pkgname=python-libpysal
-pkgver=4.4.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
@@ -41,10 +41,11 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('216eb73a276d9975e604217bd931dc3b7770a6efa95999952d027827fad51e0c')
+b2sums=('8353f5043c008b1c7fcfaf0a13304b7fd811e439857d9b0f348de3809d836e599d089b7ebce568ebb8c381961ab6f274d233ede064a75d635b0a54320cfc5f64')
 
 build() {
   cd "$_name-$pkgver"
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
