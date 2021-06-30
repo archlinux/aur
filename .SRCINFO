@@ -1,16 +1,15 @@
 pkgbase = exciting
 	pkgdesc = A full-potential all-electron density-functional-theory package
-	pkgver = 7.14
+	pkgver = 8
 	pkgrel = 1
 	url = http://exciting-code.org
 	arch = x86_64
 	license = GPL
 	depends = scalapack
 	depends = arpack
-	source = http://exciting.wdfiles.com/local--files/nitrogen-14/exciting.nitrogen-14.tar.gz
+	source = http://exciting.wdfiles.com/local--files/oxygen/exciting.oxygen.tar.gz
 	source = make.inc
-	sha256sums = a7feaffdc23881d6c0737d2f79f94d9bf073e85ea358a57196d7f7618a0a3eff
+	sha256sums = 2096aa95bf8b0774ea0187a8bac7d3fb6bb6316f3f49ae19936c61401acd0268
 	sha256sums = 30503a36da77ee97fd7c6beb4445b1215915fad41e4714368b5584866131e5fe
 
 pkgname = exciting
-
