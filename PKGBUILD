@@ -1,4 +1,5 @@
 # Maintainer: Mark Merritt <mark@marktmerritt.com>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-importlab
 _name=${pkgname#python-}
