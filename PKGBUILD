@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_rviz provides a GUI plugin embedding RViz."
 url='https://wiki.ros.org/rqt_rviz'
 
 pkgname='ros-noetic-rqt-rviz'
-pkgver='0.6.1'
+pkgver='0.7.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(
 
 _dir="rqt_rviz-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_rviz/archive/${pkgver}.tar.gz")
-sha256sums=('72d3cce46a1b36a673f0aa5667c62c5b36696bb5261fd429db7fb1962bf4a371')
+sha256sums=('3b3970c40d01a48a6f30f729cd4447d932268602cd603797927d51c8dadc0175')
 
 build() {
 	# Use ROS environment variables.
