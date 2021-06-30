@@ -1,23 +1,22 @@
 pkgbase = visual-paradigm
 	pkgdesc = UML design application (Free 30-day trial)
 	pkgver = 16.3
-	pkgrel = 20210420
+	pkgrel = 20210701
 	url = https://www.visual-paradigm.com/download/
 	install = visual-paradigm-community.install
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
 	conflicts = visual-paradigm-community
-	source = https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_16_3_20210420_Linux64_InstallFree.tar.gz
+	source = https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_16_3_20210701_Linux64_InstallFree.tar.gz
 	source = visual-paradigm-community.install
 	source = visual-paradigm.desktop
 	source = visual-paradigm.png
 	source = x-visual-paradigm.xml
-	sha256sums = 359aea6f2c949bfb506aa44a6cde1733fa896675ff79d463bd6b91070d19f299
+	sha256sums = dbafb784ab2f2677f1f9c41f57ce837c050202707c597dd5dd3d7f8c8d0d6504
 	sha256sums = d49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e
 	sha256sums = fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729
 	sha256sums = 41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15
 	sha256sums = a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c
 
 pkgname = visual-paradigm
-
