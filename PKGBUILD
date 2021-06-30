@@ -4,7 +4,7 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=r653.5056394
+pkgver=r658.e2e4cd2
 pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 	'mesa>=21.1.2' 'wlroots>=0.14.0' 'wayland' 'wayland-protocols'
 	'libxkbcommon' 'libevdev' 'pixman' 'xorg-xwayland'
 )
-makedepends=('zig>=0.8.0' 'scdoc')
+makedepends=('zig>=0.8.0' 'git' 'scdoc')
 provides=('river' 'riverctl' 'rivertile')
 conflicts=('river')
 source=(
