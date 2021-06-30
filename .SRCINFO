@@ -15,7 +15,7 @@ pkgbase = pyslam
 	depends = python-pyxdg
 	depends = youtube-dl
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/p/pyslam/pyslam-1.1.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/P/PySLAM/PySLAM-1.1.1.tar.gz
 	sha256sums = 4acb21ab53bac191692e8381cb03b7b76f31a443e5fe9452626f8b2daa4e541b
 
 pkgname = pyslam
