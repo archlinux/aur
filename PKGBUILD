@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=brainfuck-interp
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="a brainfuck interpreter written in rust"
