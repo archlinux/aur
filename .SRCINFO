@@ -1,0 +1,17 @@
+pkgbase = firecracker
+	pkgdesc = Secure and fast microVMs for serverless computing
+	pkgver = 0.23.4
+	pkgrel = 1
+	url = https://firecracker-microvm.github.io
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = rust-musl
+	source = firecracker-0.23.4.tar.gz::https://github.com/firecracker-microvm/firecracker/archive/v0.23.4.tar.gz
+	b2sums = 644aa5687638b63e448993381e07a4ffcdf1857f7e29a4c4d8aaa9cb62fabb2001626c275ced77b9a18589b5c3ce830613a71162e2b38c34253497360d896e6d
+
+pkgname = firecracker
+
+pkgname = firecracker-docs
+	pkgdesc = Secure and fast microVMs for serverless computing (documentation)
+	arch = any
