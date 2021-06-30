@@ -1,11 +1,9 @@
---- pgadmin4-5.3/pkg/linux/pgadmin4.desktop.old	2021-06-03 13:26:56.702393761 +0200
-+++ pgadmin4-5.3/pkg/linux/pgadmin4.desktop	2021-06-03 13:29:49.358622785 +0200
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Encoding=UTF-8
  Name=pgAdmin 4
 -Exec=/usr/pgadmin4/bin/pgadmin4
-+Exec=/opt/pgadmin4-5.3/runtime/nw
++Exec=/opt/pgadmin4-5.4/runtime/nw
  Icon=pgadmin4
  Type=Application
  Categories=Application;Development;
