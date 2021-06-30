@@ -1,7 +1,7 @@
 pkgbase = git-cal-git
 	pkgdesc = github like contributions calendar on terminal
 	pkgver = r96.b3bb376
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/k4rthik/git-cal
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = git-cal-git
 	sha512sums = SKIP
 
 pkgname = git-cal-git
-

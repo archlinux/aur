@@ -3,7 +3,7 @@
 # pkg: git
 pkgname=git-cal-git
 pkgver=r96.b3bb376
-pkgrel=3
+pkgrel=4
 pkgdesc='github like contributions calendar on terminal'
 arch=('any')
 url='https://github.com/k4rthik/git-cal'
