@@ -1,0 +1,18 @@
+pkgbase = python-hachoir
+	pkgdesc = A Python library to view and edit a binary stream field by field
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/vstinner/hachoir
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-urwid
+	depends = python-wxpython
+	provides = hachoir
+	conflicts = hachoir
+	replaces = hachoir-core
+	source = https://files.pythonhosted.org/packages/source/h/hachoir/hachoir-3.1.2.tar.gz
+	sha256sums = bc1259b1e2970532b2dbd99139cb0de59d9bb8904eb1489c3e8a82c979c98f23
+
+pkgname = python-hachoir
