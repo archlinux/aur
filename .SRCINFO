@@ -1,13 +1,13 @@
 pkgbase = rhvoice
 	pkgdesc = Free and open source speech synthesizer for Russian and other languages
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://github.com/RHVoice/RHVoice
 	arch = x86_64
 	license = GPL3
 	license = custom
 	license = custom:by-nc-nd-4.0
-	license = custom:by-nc-sa-4.0
+	license = custom:by-sa-4.0
 	license = custom:by-sa-4.0
 	makedepends = scons
 	makedepends = portaudio
@@ -17,8 +17,13 @@ pkgbase = rhvoice
 	optdepends = portaudio: for portaudio backend
 	optdepends = libao: for ao backend
 	backup = etc/RHVoice/RHVoice.conf
-	source = rhvoice-1.2.3.tar.gz::https://github.com/RHVoice/RHVoice/archive/1.2.3.tar.gz
-	sha512sums = b79aea1d682a20bedff8e7d01d825204c09a4d5250f9178b96699a7123b3ec692b99fa2af05d4de22e802d799917d48df5f124d020c8541bc2a141c8f5af01a1
+	source = rhvoice-1.2.4.tar.gz::https://github.com/RHVoice/RHVoice/archive/1.2.4.tar.gz
+	source = voice-victoria.tar.gz::https://github.com/RHVoice/victoria-rus/archive/refs/tags/4.0.tar.gz
+	source = voice-evgeniy-rus.tar.gz::https://github.com/RHVoice/evgeniy-rus//archive/refs/tags/4.0.tar.gz
+	source = voice-evgeniy-eng.tar.gz::https://github.com/RHVoice/evgeniy-eng//archive/refs/tags/4.0.tar.gz
+	sha512sums = 747985a8a0fe27fd1dc15e434dc41bbdca169747ae5cb3695df89ceced9131fc9d196916af08f3caacd21c34cfc022989e3753e21dbc2c0095ba7e991dc58bb8
+	sha512sums = 03b95f76bbd0b213fac867705acd3229f2d62448cdb863968b6ff02cc06f162d07a6154418e3ceee63d8d5352a00c1fed57b635d59424234b6cae3b1914da1cb
+	sha512sums = 4053185fd5cff60a8cf3355fad69ab63348fc5047a7e5d2328a639a5c65cecfaadc92d63599b0b8bc7ca804753593c78c837621cdd153c6ce247100141b96500
+	sha512sums = 1096b2d898292739f86333414a32b97b99112a57cf2c98c5ea31d1b92974f3adc4119e0ee031e6961810365432b77eb96229f7a45c55d8b9337a22aa3848dcc8
 
 pkgname = rhvoice
-
