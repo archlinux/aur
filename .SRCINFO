@@ -1,8 +1,7 @@
 pkgbase = search-orphans-pkgs-pacman-hook
 	pkgdesc = Check orphans packages in pacman
 	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://github.com/u0a266/config
+	pkgrel = 2
 	arch = any
 	license = custom
 	depends = pacman
