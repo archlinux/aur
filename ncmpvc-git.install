@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> Before running ncmpvc, run: mpv --input-ipc-server=/tmp/mpvsocket --idle"
+}
+
