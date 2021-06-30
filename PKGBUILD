@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-  ls -la;
-  mkdir -p "${pkgdir}/usr/share/icons/"
-  cp -pr "${srcdir}/${_cursor_name}" "${pkgdir}/usr/share/icons/${_cursor_name}"
+  rm -rf "${pkgdir}/usr/share/icons/";
+  mkdir -p "${pkgdir}/usr/share/icons/";
+  cp -pr "${srcdir}/${_cursor_name}" "${pkgdir}/usr/share/icons/${_cursor_name}";
 }
