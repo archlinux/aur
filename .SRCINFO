@@ -1,6 +1,6 @@
 pkgbase = gamescope-session-git
-	pkgdesc = Steam Big Picture Mode session based on gamescope for GamerOS
-	pkgver = r9.acc8fa5
+	pkgdesc = Steam Big Picture Mode session based on gamescope for ChimeraOS
+	pkgver = r11.939e79f
 	pkgrel = 1
 	url = https://github.com/Samsagax/gamescope-session
 	install = gamescope-session.install
@@ -8,6 +8,7 @@ pkgbase = gamescope-session-git
 	license = WTFPL
 	makedepends = git
 	depends = gamescope
+	optdepends = steam-buddy: for steam-tweaks integration
 	source = gamescope-session::git+https://github.com/Samsagax/gamescope-session.git
 	md5sums = SKIP
 
