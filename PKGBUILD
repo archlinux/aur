@@ -2,7 +2,7 @@
 # Raspberry Pi package Maintainer: Luiz Silveira (zertyz @ gmail)
 
 pkgname=sdl2-rpi
-pkgver=2.0.10
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="SDL2 using the accelerated broadcom driver for Raspbery Pi 0, 1, 2 & 3 - fullscreen without X. Also suports the opensource vc4-(f)kms-v3d driver in both standalone mode and in X11."
 arch=('armv6h' 'armv7h' 'armv8h')
