@@ -1,4 +1,4 @@
-# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
+# Maintainer: Daniil Gentili <daniil@daniil.it>
 # http://github.com/fukawi2/aur-packages
 # Contributor: Manolis Tzanidakis <manolis@archlinux.org>
 # Contributer: Hussam Al-Tayeb <ht990332@gmail.com>
@@ -14,7 +14,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=pppconfig
-pkgver=2.3.23
+pkgver=2.3.25
 pkgrel=1
 pkgdesc="A text menu based utility for configuring ppp."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ license=('GPL2')
 url="http://httpredir.debian.org/debian/pool/main/p/pppconfig"
 depends=('ppp' 'dialog' 'perl')
 source=("http://httpredir.debian.org/debian/pool/main/p/pppconfig/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('7502c947dc8854c1bfebbef1f8da4fe3b9ba047fdc6365b6520cdf483925c41f')
+sha512sums=('6874b93ae34edb2a0ba06a669d930f5023a3eae38b6d10a78179eb69990a8280d41ebc2049461b54b03bd19904d13d2ebb57997599ed650660d0b34c958ad977')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
