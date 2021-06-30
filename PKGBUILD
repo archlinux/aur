@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Leduc <sebastien@sleduc.fr>
 
 pkgname=python-remote-pdb
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Remote vanilla PDB (over TCP sockets) done right: no extras, proper handling around connection failures and CI. Based on pdbx."
 arch=(any)
@@ -10,11 +10,15 @@ license=('BSD')
 depends=('python')
 options=(!emptydirs)
 source=("https://codeload.github.com/ionelmc/${pkgname}/zip/v${pkgver}")
-md5sums=('b7cd6ca00395a12ee15b6e1d26d928d7')
+md5sums=('59e123b9d8c2394c6a1feb7a0c794591')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
+	python setup.py build
 }
 
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
 # vim:set ts=2 sw=2 et:
