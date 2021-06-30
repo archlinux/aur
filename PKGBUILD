@@ -15,15 +15,16 @@
 # Contributor: Tobias Powalowski
 # Contributor: Thomas Baechler
 
+
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 42
+## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 42 => native
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -37,28 +38,19 @@ if [ -z ${use_numa+x} ]; then
 fi
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
+## Stock Archlinux and Xanmod have this enabled.
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable "use_pds" to: n to disable (stock Xanmod)
-##                            y to enable
-if [ -z ${use_pds+x} ]; then
-  use_pds=n
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
 fi
 
-## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
-## Set variable "use_ns" to: n to disable (stock Xanmod)
-##                           y to enable (stock Archlinux)
-if [ -z ${use_ns+x} ]; then
-  use_ns=n
-fi
-
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -75,45 +67,48 @@ _makenconfig=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.4.91
-_major=5.4
+_major=5.10
+pkgver=${_major}.46
 _branch=5.x
 xanmod=1
 pkgrel=1
-pkgdesc='Linux Xanmod'
+pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="58a266eb113701e4ede4914948f098eadd6f267c" # 5.4.91-1
+__commit="096187d78c58496b5415b9f27eae682b96a458b1" # 5.10.46-1
 
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
+if [ "${_compiler}" = "clang" ]; then
+  makedepends+=(clang llvm)
+fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}-lts"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux54/-/archive/${__commit}/linux59-${__commit}.tar.gz")
-sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491' # linux-5.4.tar.xz
+        "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz")
+sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43' # linux-5.4.tar.xz
             'SKIP'                                                             #            .sign
-            'e0338ff18e8785843833b49a0a72301c19f0435c8dbacd88029cd99adeced0b5' # xanmod
-            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511' # choose-gcc-optimization.sh
-            '7c86cd57d53608357d7c61b138b43fac384b736d8543c03184f6676baa9176b0') # manjaro
+            '0e4ab372f141747455b232e60053e9eb39c134570f5807f693b9ee4f6a167e83' # xanmod
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee' # choose-gcc-optimization.sh
+            '929babf42951bdb925ab6df8717e6335dd64a6f7908bd7108522e8258ed4d24e') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
 # Archlinux patches
-_commits=""
-for _patch in $_commits; do
-    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+_commit=""
+_patches=("")
+for _patch in ${_patches[@]}; do
+    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -142,19 +137,26 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux54-$__commit/0103-futex.patch              # remove conflicting patches
-  rm ../linux54-$__commit/aufs5.4-20200622.patch
-  rm ../linux54-$__commit/aufs5-base.patch
-  rm ../linux54-$__commit/aufs5-kbuild.patch
-  rm ../linux54-$__commit/aufs5-mmap.patch
-  rm ../linux54-$__commit/aufs5-standalone.patch
+  rm ../linux510-$__commit/0103-futex.patch              # remove conflicting patches
+
+
   local _patch
   for _patch in ../linux54-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux54-$__commit/$_patch"
+      patch -Np1 < "../linux510-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux54-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux510-$__commit/0513-bootsplash.gitpatch"
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
+  # enable LTO_CLANG_THIN
+  if [ "${_compiler}" = "clang" ]; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+    _LLVM=1
+  fi
+
   scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -166,48 +168,18 @@ prepare() {
 
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-    scripts/config --disable CONFIG_FUNCTION_TRACER \
-                   --disable CONFIG_STACK_TRACER
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+    if [ "${_compiler}" = "gcc" ]; then
+      scripts/config --disable CONFIG_FUNCTION_TRACER \
+                     --disable CONFIG_STACK_TRACER
+    fi
   fi
+
 
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
-
-  if [ "$use_pds" = "y" ]; then
-    msg2 "Enabling PDS CPU scheduler by default..."
-    scripts/config --enable CONFIG_SCHED_PDS
-  fi
-
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
-
-    
-  scripts/config --module CONFIG_AUFS_FS
-  scripts/config --enable CONFIG_AUFS_BRANCH_MAX_127
-  # CONFIG_AUFS_BRANCH_MAX_511 is not set
-  # CONFIG_AUFS_BRANCH_MAX_1023 is not set 
-  # CONFIG_AUFS_BRANCH_MAX_32767 is not set
-  scripts/config --enable CONFIG_AUFS_SBILIST
-  scripts/config --enable CONFIG_AUFS_HNOTIFY
-  scripts/config --enable CONFIG_AUFS_HFSNOTIFY
-  scripts/config --enable CONFIG_AUFS_EXPORT
-  scripts/config --enable CONFIG_AUFS_INO_T_64
-  # CONFIG_AUFS_XATTR is not set
-  # CONFIG_AUFS_FHSM is not set
-  scripts/config --enable CONFIG_AUFS_RDU
-  # CONFIG_AUFS_DIRREN is not set
-  scripts/config --enable CONFIG_AUFS_SHWH
-  scripts/config --enable CONFIG_AUFS_BR_RAMFS
-  scripts/config --enable CONFIG_AUFS_BR_FUSE
-  scripts/config --enable CONFIG_AUFS_POLL
-  scripts/config --enable CONFIG_AUFS_BR_HFSPLUS
-  scripts/config --enable CONFIG_AUFS_BDEV_LOOP
-  # CONFIG_AUFS_DEBUG is not set
 
   
   scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
@@ -216,28 +188,24 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder to use this feature
-  # If it's a full config, will be replaced
-  # If not, you should use scripts/config commands, one by line
-  if [ -f "${startdir}/myconfig" ]; then
-    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
-      # myconfig is a full config file. Replacing default .config
-      msg2 "Using user CUSTOM config..."
-      cp -f "${startdir}"/myconfig .config
-    else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
+  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
+  # If we detect partial file with scripts/config commands, we execute as a script
+  # If not, it's a full config, will be replaced
+  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+    if [ -f "${_myconfig}" ] && [ "$(wc -l <"${_myconfig}")" -gt "0" ]; then
+      if grep -q 'scripts/config' "${_myconfig}"; then
+        # myconfig is a partial file. Executing as a script
+        msg2 "Applying myconfig..."
+        bash -x "${_myconfig}"
+      else
+        # myconfig is a full config file. Replacing default .config
+        msg2 "Using user CUSTOM config..."
+        cp -f "${_myconfig}" .config
+      fi
+      echo
+      break
     fi
-    echo
-  fi
+  done
 
   make olddefconfig
 
@@ -246,25 +214,27 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit
     fi
   fi
 
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
   cd linux-${_major}
-  make all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
@@ -288,23 +258,20 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "manjaro-xanmod-LTS" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
-  # echo "${_major}-${CARCH}" | install -Dm644 /dev/stdin "$modulesdir/kernelbase"
  
   # add kernel version
   echo "${pkgver}-${pkgrel}-Manjaro-Xanmod-LTS x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/linux-manjaro-xanmod-LTS.kver"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"  
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for linux-manjaro-xanmod-lts kernel"
+  pkgdesc="Headers and scripts for building modules for the linux-manjaro-xanmod-lts kernel"
+  depends=(pahole)
   provides=()
   replaces=()
   conflicts=()
@@ -376,12 +343,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers")
