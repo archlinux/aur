@@ -1,7 +1,7 @@
 pkgbase = reduze
 	pkgdesc = Computer program for reducing Feynman integrals to master integrals employing a variant of Laporta's reduction algorithm.
-	pkgver = 2.4
-	pkgrel = 3
+	pkgver = 2.5
+	pkgrel = 1
 	url = https://reduze.hepforge.org/
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = reduze
 	optdepends = db: For Berkeley DB support
 	optdepends = fermat: For faster GCD calculations
 	optdepends = doxygen: To create the docs for reduze
-	source = https://reduze.hepforge.org/download/reduze-2.4.tar.gz
-	sha256sums = 107d6875104f464d677410aebee6d06737c11c5ba21c2bc85e8fab7d500076f6
+	source = https://reduze.hepforge.org/download/reduze-2.5.tar.gz
+	sha256sums = 43c05ec8bc4c0865c92a326c4f482d67b4dc94ceaad9d7dbedfab3c4e099af8d
 
 pkgname = reduze
-
