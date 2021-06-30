@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.16.12361.6c44664c1
+pkgver=0.0.17.12433.020fdcc78
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
