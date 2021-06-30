@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=syrinscape-scifi-player
-pkgver=1.4.10_p0
+pkgver=1.4.11_p9
 pkgrel=2
 pkgdesc="Soundscape creator and sound design app for Sci-Fi games"
 arch=('x86_64')
@@ -12,13 +12,13 @@ options=(!strip)
 source=("syrinscape-${pkgver//_/-}-linux-scifi.tar.gz::https://www.syrinscape.com/get-download/syrinscape-${pkgver//_/-}-linux-scifi.tar.gz?type=linux&version=${pkgver//_/-}"
         "local://syrinscape-scifi-player.desktop"
         )
-sha256sums=('0df0234ae7e13eb64afc02e18cbc4dd16b9a5b58957493313a74ea3e66ef042a'  ## syrinscape-${pkgver//_/-}-linux-scifi.tar.gz
+sha256sums=('6587f7767d1f115017e3774f346dade7bc3cad99ed6329e02722fb9430cda745'  ## syrinscape-${pkgver//_/-}-linux-scifi.tar.gz
             'SKIP'  ## syrinscape-scifi-player.desktop
           ) 
 
 # Look away, this is gross
 download_func() {
-  /usr/bin/curl "https://www.syrinscape.com/get-download/syrinscape-${pkgver//_/-}-linux-scifi.tar.gz?type=linux&version=${pkgver//_/-}" 2>&1 | /usr/bin/grep -P "\tlocation.href" | /usr/bin/cut -d "'" -f 2 | /usr/bin/xargs -n1 /usr/bin/curl -o syrinscape-${pkgver//_/-}-linux-scifi.tar.gz
+  /usr/bin/curl "https://syrinscape.com/get-download/syrinscape-${pkgver//_/-}-linux-scifi.tar.gz?type=linux&version=${pkgver//_/-}" 2>&1 | /usr/bin/grep -P "\tlocation.href" | /usr/bin/cut -d "'" -f 2 | /usr/bin/xargs -n1 /usr/bin/curl -o syrinscape-${pkgver//_/-}-linux-scifi.tar.gz
 }
 export -f download_func; export pkgver; DLAGENTS=('https::/bin/bash -c download_func %o %u')
 
