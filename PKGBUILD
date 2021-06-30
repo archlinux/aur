@@ -2,8 +2,8 @@
 
 pkgname=choose-bin
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="Terminal system monitor with histograms, written in Rust"
+pkgrel=2
+pkgdesc="Human-friendly and fast alternative to cut and (sometimes) awk, written in Rust"
 arch=(x86_64)
 url="https://github.com/theryangeary/choose"
 license=(MIT)
