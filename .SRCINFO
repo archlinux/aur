@@ -1,12 +1,13 @@
 pkgbase = awsvpnclient
 	pkgdesc = AWS VPN Client
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aws.amazon.com/vpn/
 	install = awsvpnclient.install
 	arch = x86_64
 	license = custom
 	makedepends = xz
+	depends = xdg-utils
 	options = !strip
 	options = staticlibs
 	source = https://d20adtppz83p9s.cloudfront.net/GTK/1.0.0/awsvpnclient_amd64.deb

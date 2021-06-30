@@ -1,7 +1,7 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
 license=('custom')
@@ -14,7 +14,7 @@ sha512sums=(
   '07cf41a23b983a98e15719e37d52ce58ad10c0300a8fee03563a6c66b5992b6f148f8075b564f7b254ff230c9772ff692fc248aec45749e11d6b7d076befd880'
   'SKIP'
 )
-depends=()
+depends=('xdg-utils')
 makedepends=('xz')
 options=('!strip' 'staticlibs')
 install='awsvpnclient.install'
