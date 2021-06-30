@@ -1,6 +1,6 @@
 pkgbase = sdl2-rpi
 	pkgdesc = SDL2 using the accelerated broadcom driver for Raspbery Pi 0, 1, 2 & 3 - fullscreen without X. Also suports the opensource vc4-(f)kms-v3d driver in both standalone mode and in X11.
-	pkgver = 2.0.10
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = armv6h
@@ -32,8 +32,7 @@ pkgbase = sdl2-rpi
 	optdepends = jack: JACK audio driver
 	provides = sdl2
 	conflicts = sdl2
-	source = https://www.libsdl.org/release/SDL2-2.0.10.tar.gz
-	sha512sums = f49b869362699b3282f6e82920e59c7fac581bcbf955f18a81cc126293c08093a90df7fcb39517cc8bc32708d2213fe645a42b655d6d811c1386efebb3d3c798
+	source = https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
+	sha512sums = ebc482585bd565bf3003fbcedd91058b2183e333b9ea566d2f386da0298ff970645d9d25c1aa4459c7c96e9ea839fd1c5f2da0242a56892865b2e456cdd027ee
 
 pkgname = sdl2-rpi
-
