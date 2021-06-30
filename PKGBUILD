@@ -1,14 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-charis-sil
-pkgver=5.000
-pkgrel=5
-pkgdesc='Transitional serif typeface based on Bitstream Charter.'
+pkgver=6.000
+pkgrel=1
+pkgdesc='Font family supporting Latin and Cyrillic scripts. Designed for legibility and publishing.'
 arch=('any')
 url='https://software.sil.org/charis/'
 license=('OFL')
-conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/charis/CharisSIL-${pkgver}.zip")
-sha256sums=('5e3e5473b30363008c289cc87e2aa584a0916087a63a3f689defa8e0cee09bfd')
+sha256sums=('9920fc3bfd07a9b43a3472aed9af41309f3b80a4186766ceff480c35275ef897')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
