@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.10.0.0.beefa5e62e
+pkgver=0.10.0.1.623c14e486
 pkgrel=1
 pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
@@ -10,7 +10,7 @@ url="https://wownero.org/"
 depends=('boost-libs' 'openssl' 'readline' 'zeromq' 'pcsclite' 'protobuf' 'libpgm' 'unbound' 'libsodium')
 makedepends=('git' 'cmake' 'boost')
 source=(
-    "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git#branch=dev"
+    "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git"
     monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch)
 sha512sums=('SKIP'
             'SKIP')

@@ -1,6 +1,6 @@
 pkgbase = wownero-git
         pkgdesc = a fairly launched privacy-centric meme coin with no premine and a finite supply
-        pkgver = 0.10.0.0.beefa5e62e
+        pkgver = 0.10.0.1.623c14e486
         pkgrel = 1
         url = https://wownero.org/
         arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = wownero-git
         depends = libpgm
         depends = unbound
         depends = libsodium
-        source = wownero::git+https://git.wownero.com/wownero/wownero.git#branch=dev
+        source = wownero::git+https://git.wownero.com/wownero/wownero.git
         source = monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch
         sha512sums = SKIP
         sha512sums = SKIP
