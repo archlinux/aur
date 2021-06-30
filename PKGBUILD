@@ -3,7 +3,7 @@
 _name=google-cloud-core
 
 pkgname=python-google-cloud-core
-pkgver=1.6.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Google Cloud API client core library"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'c6abb18527545379fc82efc4de75ce9a3772ccad2fc645adace593ba097cbb02'
+  '3bd1e679a3d38b9da93c5919ae56239dda91fb32a2d954b2cd830392337c1cc9'
 )
 
 build() {
