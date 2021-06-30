@@ -1,4 +1,4 @@
-diff --unified --text --recursive package.orig/CMakeLists.txt package.new/CMakeLists.txt
+diff --unified --text --recursive -x data package.orig/CMakeLists.txt package.new/CMakeLists.txt
 --- package.orig/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/CMakeLists.txt	2021-06-28 12:40:19.026542598 +0200
 @@ -84,7 +84,7 @@
@@ -46,7 +46,26 @@ diff --unified --text --recursive package.orig/CMakeLists.txt package.new/CMakeL
      install(CODE "message(STATUS \"-- Rebuilding data file ${gzfile}\")" )
      install(CODE "execute_process(COMMAND ${CMAKE_BINARY_DIR}/src/utilities/gz-cat ${model} ${gzfile} RESULT_VARIABLE _res)")
      install(CODE "If (NOT \${_res} EQUAL \"0\")
-diff --unified --text --recursive package.orig/src/crfsuite/CMakeLists.txt package.new/src/crfsuite/CMakeLists.txt
+diff --unified --text --recursive -x data package.orig/src/CMakeLists.txt package.new/src/CMakeLists.txt
+--- package.orig/src/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
++++ package.new/src/CMakeLists.txt	2021-06-30 11:03:37.953011970 +0200
+@@ -14,7 +14,7 @@
+   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+ endif()
+ 
+-set(EIGEN3_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/src/eigen3)
++set(EIGEN3_INCLUDE_DIR /usr/include/eigen3)
+ add_subdirectory(libdynet)
+ 
+ add_subdirectory(crfsuite)
+@@ -32,6 +32,3 @@
+         FILES_MATCHING PATTERN "*.h"
+         PATTERN "coref.h" EXCLUDE
+         PATTERN "coref_fex.h" EXCLUDE)
+-
+-install(DIRECTORY eigen3 DESTINATION include)
+-
+diff --unified --text --recursive -x data package.orig/src/crfsuite/CMakeLists.txt package.new/src/crfsuite/CMakeLists.txt
 --- package.orig/src/crfsuite/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/crfsuite/CMakeLists.txt	2021-06-25 11:03:12.849519427 +0200
 @@ -38,7 +38,7 @@
@@ -58,7 +77,7 @@ diff --unified --text --recursive package.orig/src/crfsuite/CMakeLists.txt packa
  
    install(TARGETS crfsuite_bin
            RUNTIME DESTINATION bin)
-diff --unified --text --recursive package.orig/src/libfreeling/csr_kb.cc package.new/src/libfreeling/csr_kb.cc
+diff --unified --text --recursive -x data package.orig/src/libfreeling/csr_kb.cc package.new/src/libfreeling/csr_kb.cc
 --- package.orig/src/libfreeling/csr_kb.cc	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/libfreeling/csr_kb.cc	2021-06-16 17:05:37.352153849 +0200
 @@ -1,6 +1,8 @@
@@ -70,7 +89,7 @@ diff --unified --text --recursive package.orig/src/libfreeling/csr_kb.cc package
  
  #include "freeling/morfo/util.h"
  #include "freeling/morfo/traces.h"
-diff --unified --text --recursive package.orig/src/libfreeling/numbers/numbers_cs.cc package.new/src/libfreeling/numbers/numbers_cs.cc
+diff --unified --text --recursive -x data package.orig/src/libfreeling/numbers/numbers_cs.cc package.new/src/libfreeling/numbers/numbers_cs.cc
 --- package.orig/src/libfreeling/numbers/numbers_cs.cc	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/libfreeling/numbers/numbers_cs.cc	2021-06-16 17:08:01.320516161 +0200
 @@ -26,6 +26,8 @@
@@ -82,7 +101,7 @@ diff --unified --text --recursive package.orig/src/libfreeling/numbers/numbers_c
  #include "freeling/morfo/traces.h"
  #include "freeling/morfo/util.h"
  #include "freeling/morfo/numbers_modules.h"
-diff --unified --text --recursive package.orig/src/libfreeling/summarizer/summarizer.cc package.new/src/libfreeling/summarizer/summarizer.cc
+diff --unified --text --recursive -x data package.orig/src/libfreeling/summarizer/summarizer.cc package.new/src/libfreeling/summarizer/summarizer.cc
 --- package.orig/src/libfreeling/summarizer/summarizer.cc	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/libfreeling/summarizer/summarizer.cc	2021-06-16 17:11:18.559374674 +0200
 @@ -26,6 +26,7 @@
@@ -93,7 +112,7 @@ diff --unified --text --recursive package.orig/src/libfreeling/summarizer/summar
  
  #include "freeling/morfo/summarizer.h"
  #include "freeling/morfo/configfile.h"
-diff --unified --text --recursive package.orig/src/libtreeler/main/CMakeLists.txt package.new/src/libtreeler/main/CMakeLists.txt
+diff --unified --text --recursive -x data package.orig/src/libtreeler/main/CMakeLists.txt package.new/src/libtreeler/main/CMakeLists.txt
 --- package.orig/src/libtreeler/main/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/libtreeler/main/CMakeLists.txt	2021-06-25 11:44:23.111838303 +0200
 @@ -9,7 +9,7 @@
@@ -105,7 +124,7 @@ diff --unified --text --recursive package.orig/src/libtreeler/main/CMakeLists.tx
  
  install(TARGETS treeler_bin
          RUNTIME DESTINATION bin)
-diff --unified --text --recursive package.orig/src/main/CMakeLists.txt package.new/src/main/CMakeLists.txt
+diff --unified --text --recursive -x data package.orig/src/main/CMakeLists.txt package.new/src/main/CMakeLists.txt
 --- package.orig/src/main/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/main/CMakeLists.txt	2021-06-28 16:00:34.152067571 +0200
 @@ -40,8 +40,11 @@
@@ -122,7 +141,7 @@ diff --unified --text --recursive package.orig/src/main/CMakeLists.txt package.n
    install(TARGETS analyzer threaded_analyzer analyzer_client
            RUNTIME DESTINATION bin
            LIBRARY DESTINATION lib
-diff --unified --text --recursive package.orig/src/main/sample_analyzer/analyze package.new/src/main/sample_analyzer/analyze
+diff --unified --text --recursive -x data package.orig/src/main/sample_analyzer/analyze package.new/src/main/sample_analyzer/analyze
 --- package.orig/src/main/sample_analyzer/analyze	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/main/sample_analyzer/analyze	2021-06-28 17:10:22.442150765 +0200
 @@ -23,7 +23,7 @@
@@ -143,7 +162,7 @@ diff --unified --text --recursive package.orig/src/main/sample_analyzer/analyze 
  fi
  
  
-diff --unified --text --recursive package.orig/src/main/sample_analyzer/fl_initialize package.new/src/main/sample_analyzer/fl_initialize
+diff --unified --text --recursive -x data package.orig/src/main/sample_analyzer/fl_initialize package.new/src/main/sample_analyzer/fl_initialize
 --- package.orig/src/main/sample_analyzer/fl_initialize	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/main/sample_analyzer/fl_initialize	2021-06-28 17:10:32.708922645 +0200
 @@ -5,24 +5,8 @@
@@ -181,7 +200,7 @@ diff --unified --text --recursive package.orig/src/main/sample_analyzer/fl_initi
       fi
     fi
  
-diff --unified --text --recursive package.orig/src/utilities/CMakeLists.txt package.new/src/utilities/CMakeLists.txt
+diff --unified --text --recursive -x data package.orig/src/utilities/CMakeLists.txt package.new/src/utilities/CMakeLists.txt
 --- package.orig/src/utilities/CMakeLists.txt	2020-08-31 12:26:05.000000000 +0200
 +++ package.new/src/utilities/CMakeLists.txt	2021-06-25 11:02:07.908903840 +0200
 @@ -31,7 +31,7 @@

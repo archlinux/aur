@@ -1,7 +1,7 @@
 pkgbase = freeling
 	pkgdesc = C++ library providing language analysis functionalities for a variety of languages
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nlp.lsi.upc.edu/freeling
 	arch = x86_64
 	license = AGPL
@@ -11,12 +11,13 @@ pkgbase = freeling
 	depends = boost
 	depends = icu
 	depends = zlib
+	depends = eigen
 	optdepends = python: python API support
 	source = https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-src-4.2.tar.gz
 	source = https://github.com/TALP-UPC/FreeLing/releases/download/4.2/FreeLing-langs-src-4.2.tar.gz
 	source = freeling-4.2.patch
 	md5sums = d8ecbb03de2235335d4997a55f2cb073
 	md5sums = b4de527a48e0d423c1b659505b526572
-	md5sums = 3b3c3f73117c7891eced022b4092f4ec
+	md5sums = 9b026acfef35575e200ecc21267c1081
 
 pkgname = freeling
