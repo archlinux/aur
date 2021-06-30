@@ -25,7 +25,7 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver-dwm() {
+pkgver() {
     cd "${_pkgname}"
     printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
