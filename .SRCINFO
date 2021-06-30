@@ -1,7 +1,7 @@
 pkgbase = faubox
-	pkgdesc = Desktop client for FAU's file synchronization service
+	pkgdesc = FAU file synchronization client
 	pkgver = 16.1.100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.intern.fau.de/personal-und-arbeitsleben/arbeitsmittel-und-instrumente/faubox-cloudspeicher-fuer-alle-fau-angehoerigen
 	arch = any
 	license = custom
