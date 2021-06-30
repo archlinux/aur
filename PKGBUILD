@@ -6,13 +6,13 @@
 
 pkgname=tllocalmgr-git
 _pkgname='texlive-localmanager'
-pkgver=v0.7.r3.gbbd8488
-pkgrel=7
+pkgver=r84.bbd8488
+pkgrel=1
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
 license=('GPL')
-provides=("texlive-localmanager=$pkgver")
+provides=("texlive-localmanager=$pkgver" "texlive-localmanager=v0.7.r3.gbbd8488" "$pkgname=v0.7.r3.gbbd8488")
 conflicts=('texlive-localmanager'
            'texlive-localmanager-git')
 depends=('texlive-core>=2016'
@@ -24,7 +24,7 @@ depends=('texlive-core>=2016'
          'perl-lwp-protocol-https')
 makedepends=('git')
 
-source=("${_pkgname}::git+http://git.archlinux.org/users/remy/texlive-localmanager.git"
+source=("${_pkgname}::git+https://gitlab.archlinux.org/remy/texlive-localmanager.git"
         'tllocalmgr-2021.patch'
         'tllocalmgr-enhance.patch'
         'tllocalmgr-fix-texlive-local-match.patch'
@@ -37,7 +37,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
