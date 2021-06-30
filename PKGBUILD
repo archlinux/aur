@@ -5,7 +5,7 @@
 
 pkgname=python35
 pkgver=3.5.10
-pkgrel=1
+pkgrel=2
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
 _github_url="none"
@@ -15,7 +15,6 @@ url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'libnsl' 'libtirpc' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
-options=('!makeflags')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz{,.asc}
         nis.patch)
 sha256sums=('0f0fa8685c1dc1f1dacb0b4e7779796b90aef99dc1fa4967a71b9da7b57d4a28'
