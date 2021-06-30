@@ -3,24 +3,20 @@
 
 pkgname=motogt
 pkgver=20110505
-pkgrel=3
-pkgdesc="MotoGT is a 2D top-viewed game where you drive a MotoGP bike"
+pkgrel=4
+pkgdesc="2D top-viewed game where you drive a MotoGP bike"
 arch=('i686' 'x86_64')
 url="http://motogt.sourceforge.net/"
 license=('GPL2')
 depends=('freeglut' 'libpng' 'sfml1.6')
 source=(http://prdownloads.sourceforge.net/motogt/MotoGT-$pkgver.zip
         motogt
-        motogt-init.patch
-        motogt-png15.patch
-        motogt-savedir.patch
+        cumulative.patch.gz
         MotoGT.desktop
         MotoGT.png)
 md5sums=('5fa3a8ba52ea75bc46f011906ddc6747'
          'fe654d2910156d66efce53f82a1add08'
-         '70eee66a05be2b7bf799bbf392e10fc6'
-         'b653c830225c2fe5abccd6b7134a2e51'
-         '03f67136094c2eafea5daa05ea7f44b9'
+         'ad6beb3cb02e2a1800da9c64615436d2'
          '969b607bd91ebf06f2efd6e0d6595a28'
          '7d426217b802a5691e568134cef89160')
 
@@ -28,15 +24,12 @@ md5sums=('5fa3a8ba52ea75bc46f011906ddc6747'
 build() {
   cd $srcdir
 
-  patch -p0 -i ../motogt-init.patch
-  patch -p0 -i ../motogt-png15.patch
-  patch -p0 -i ../motogt-savedir.patch
+  gunzip -c ../cumulative.patch.gz | patch -p1
 
-  # Patches (Add glut, OpenGL and use sfml1.6 libraries in Makefile.lnx)
+  # Few more patches (Add glut, OpenGL and use sfml1.6 libraries in Makefile.lnx)
   cd MotoGT
   sed -i 's%ffast-math%& -I/usr/include/sfml-1.6%' src/Makefile.lnx
   sed -i '4d' src/Makefile.lnx
-  #sed -i '4iLIBS= -s -lglut -lGL -lpng -lsfml1.6-window -lsfml1.6-graphics -lsfml1.6-system -lsfml1.6-audio' src/Makefile.lnx
   sed -i '4iLIBS= -s -lglut -lGL -lpng -lsfml-window-1.6 -lsfml-graphics-1.6 -lsfml-system-1.6 -lsfml-audio-1.6' src/Makefile.lnx
 
   # Build
