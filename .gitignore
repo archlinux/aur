@@ -1,0 +1,13 @@
+*
+!PKGBUILD
+!.SRCINFO
+!99-anbox.rules
+!anbox-bridge.netdev
+!anbox-bridge.network
+!anbox.conf
+!anbox-container-manager.service
+!anbox.desktop
+!anbox-desktop-dir.patch
+!anbox-session-manager.service
+!.gitignore
+!lxc.patch

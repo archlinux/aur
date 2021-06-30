@@ -9,11 +9,14 @@ arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
 pkgdesc="Running Android in a container"
-depends=('lxc' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
+depends=('lxc-git' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs')
+conflicts=('anbox-launchers-git')
 makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/google/cpu_features.git"
 	"git+https://github.com/Kistler-Group/sdbus-cpp.git"
+	'anbox-desktop-dir.patch'
+	'lxc.patch'
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
 	'99-anbox.rules'
@@ -24,6 +27,8 @@ source=("git+https://github.com/anbox/anbox.git"
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            'd1e2e3fa1299b423f1d98cbd3c591d853f1ce8646f508ef838fe714f986fc5b2'
+            '9212f8b941d62b50b9188aea6218ceb6f6b77761a388f9868b1071557a95e067'
             '5be94b63dc30d141f15ca7d1be6e3e81f26ef33f844614975537562f5d08236c'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
@@ -46,6 +51,9 @@ prepare() {
   # Don't build tests
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
+  sed -i '1i\#include <cstdint>' "$srcdir/anbox/src/anbox/input/manager.cpp"
+  patch -p1 < "$srcdir/anbox-desktop-dir.patch"
+  patch -p1 < "$srcdir/lxc.patch"
 
   git submodule init
   git config submodule.external/cpu_features.url $srcdir/cpu_features
@@ -72,4 +80,6 @@ package() {
   install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d $srcdir/99-anbox.rules
   install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/anbox.desktop
   install -Dm 644 snap/gui/icon.png $pkgdir/usr/share/pixmaps/anbox.png
+  install -Dm 644 -t $pkgdir/usr/share/desktop-directories     data/desktop/anbox-android.directory
+  install -Dm 644 -t $pkgdir/etc/xdg/menus/applications-merged data/desktop/anbox-android.menu
 }
