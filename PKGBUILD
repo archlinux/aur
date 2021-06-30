@@ -18,6 +18,11 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+check() {
+    cd "${srcdir}/${_gitname}/check-broken-packages"
+    cargo test --release --locked
+}
+
 build() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
     cargo build --release --locked
