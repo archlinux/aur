@@ -8,7 +8,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -57,8 +57,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule
-_major=5.12
-pkgver=${_major}.13
+_major=5.13
+pkgver=${_major}.0
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -91,9 +91,9 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
 done
 
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            'b99ced5ce286a3e955ea0030de2dd6cc5b8270d3a33d5c53c5a99e33542f989b'
+            '41c128f1dda625549972a58f198cbc01ca4d41bfc0b1c0973224e4ddcce4cecd'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
 
