@@ -1,13 +1,17 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2021.04.26
-pkgrel=3
+pkgver=2021.06.30
+pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
-depends=('electron')
+# Would be nice to use the latest Electron, but, for example, I've encountered
+# an issue where new windows get stuck on about:blank in Electron 13, but not in
+# Electron 12, the latest supported by Nativefier.
+_electronv=12
+depends=("electron${_electronv}")
 makedepends=(
   'curl'
   'gendesk'
@@ -19,7 +23,7 @@ _name=Todoist
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron /usr/share/${pkgname} "\$@"
+exec electron${_electronv} /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
