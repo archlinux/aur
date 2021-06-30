@@ -1,0 +1,17 @@
+pkgbase = nwg-bar
+	pkgdesc = GTK3-based button bar for sway and other wlroots-based compositors
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-dock
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = gtk3
+	depends = gtk-layer-shell
+	provides = nwg-bar
+	conflicts = nwg-bar-git
+	conflicts = nwg-bar-bin
+	source = nwg-bar-0.0.1.tar.gz::https://github.com/nwg-piotr/nwg-bar/archive/v0.0.1.tar.gz
+	md5sums = 6e8170fa29d16c2d4c81a57e2dc183cb
+
+pkgname = nwg-bar
