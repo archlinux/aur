@@ -1,6 +1,6 @@
 # Maintainer: FreddyMaster <blackcatshd@gmail.com>
 pkgname=rust-clippy
-pkgver=0.1.53
+pkgver=0.0.302
 pkgrel=2
 pkgdesc="A bunch of lints to catch common mistakes and improve your Rust code"
 arch=('i686' 'x86_64')
