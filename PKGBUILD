@@ -1,21 +1,25 @@
-# Maintainer: JUXT <info@juxt.pro>
+# Maintainer: drzee <info@drzee.net>
+# Contributor: JUXT <info@juxt.pro> 
 # Contributor: James Conroy-Finn <james@invetica.co.uk>
 pkgname=codedeploy-agent
-pkgver=1.0_1.1458
+pkgver=1.3.2_1902
 pkgrel=1
 pkgdesc="AWS CodeDeploy is a deployment service that enables developers to automate the deployment of applications to instances and to update the applications as required."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://aws.amazon.com/documentation/codedeploy/"
 license=('APACHE')
 groups=()
-depends=('ruby')
+depends=('ruby2.7' 'systemd')
 source=(https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/${pkgname}_${pkgver//_/-}_all.deb)
-md5sums=('78540a9e2fa0f79820a3b2b7ca998e45')
+md5sums=('4a2697e9e3c022313705497caa197327')
 noextract=()
 
 prepare() {
   cd "$srcdir"
   tar -xf data.tar.gz
+  
+  sed -i 's/\/opt\/codedeploy-agent\/bin\/codedeploy-agent/\/usr\/bin\/ruby*2.7 \/opt\/codedeploy-agent\/lib\/codedeploy-agent.rb/' etc/init.d/codedeploy-agent.service
+  sed -i '/^#!\/usr\/bin\/env ruby/a STDERR.puts \"Please use the systemctl utility to start,stop,restart or status the codedeploy-agent service. This script should not be used.\"\nexit(1)' opt/codedeploy-agent/bin/codedeploy-agent
 }
 
 package() {
@@ -31,6 +35,6 @@ package() {
   install -Dm744 \
       "$srcdir"/etc/init.d/codedeploy-agent.service \
       "$pkgdir"/usr/lib/systemd/system/codedeploy-agent.service
+      
 }
 
-# vim:set ts=2 sw=2 et:
