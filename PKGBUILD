@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
-pkgver=5.10.46
+pkgver=5.10.47
 pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
@@ -24,6 +24,8 @@ source=(
 validpgpkeys=(
 	"ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
 	"647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
+	"E27E5D8A3403A2EF66873BBCDEA66FF797772CDC"  # Sasha Levin
+	"AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109"  # Ben Hutchings
 )
 sha256sums=('SKIP'
             '050c5d02668544d3b07fbd65a5cddb00fe203d07a95b7f924f9de191e55e151f'
