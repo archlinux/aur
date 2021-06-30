@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 _pkgname=vermin
 pkgname=python-$_pkgname
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Concurrently detect the minimum Python versions needed to run code"
 url="https://github.com/netromdk/$_pkgname"
@@ -15,7 +15,7 @@ source=("$_pkgtar::$url/archive/v$pkgver.tar.gz")
 replaces=($_pkgname)
 conflicts=($_pkgname)
 noextract=("$_pkgtar")
-md5sums=('835a1691b793e10e8c4286af8db0d0a6')
+md5sums=('8370cd52ccea941a035cdb25f908bd88')
 
 prepare() {
   mkdir -p "$_pkgtag"
