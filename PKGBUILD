@@ -2,13 +2,15 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
-pkgname=teams-for-linux
+pkgname=teams-for-linux-git
 pkgver=1.0.8.r0.g315ca04
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
 license=("GPL3")
+conflicts=("teams-for-linux")
+provides=("teams-for-linux")
 depends=("gtk3" "libxss" "nss")
 makedepends=("git" "nodejs<15" "node-gyp" "python2" "yarn")
 source=(

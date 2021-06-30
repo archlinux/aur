@@ -16,6 +16,8 @@ pkgbase = teams-for-linux-git
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	provides = teams-for-linux
+	conflicts = teams-for-linux
 	source = teams-for-linux::git+https://github.com/IsmaelMartinez/teams-for-linux#branch=develop
 	source = teams-for-linux.desktop
 	sha256sums = SKIP
