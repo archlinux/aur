@@ -4,7 +4,7 @@ pkgdesc="ROS - The controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-noetic-controller-manager'
-pkgver='0.19.4'
+pkgver='0.19.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -38,7 +38,7 @@ depends=(
 
 _dir="ros_control-${pkgver}/controller_manager"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('e8f12423adf7caefa9f46bf2c1bb4322052f43db8c9a70322228da9bae9d595b')
+sha256sums=('a9e031f7a4a448657f689971d8049351ec31776d15efac45c8c9b44b950f55b1')
 
 build() {
   # Use ROS environment variables
