@@ -1,8 +1,8 @@
 # Maintainer: unknowndev <unknowndevQwQ@protonmail.com>
 
 pkgname=v2ray-exporter
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="An exporter that collect V2Ray metrics over its Stats API and export them to Prometheus"
 arch=('x86_64')
 url="https://github.com/wi1dcard/v2ray-exporter"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('v2ray: provide v2ray status')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('4784a869cc63998c2c0fcc0df9d6c826c6b94eee2ba9f58e5c79655a6eb9ce23e439c31855fae0b06a84151b454fe639cc3a6d3f3f2e7d229b4b09485a33fa2f')
+sha512sums=('c3c0cd348713e0a1fbfd65c85bfed93b62bd57eafacfe782f12222e4577339a1f3ffab5670316b46084aab410e6a69c4cc8bc20873e1daccf1a6ceb9761a21c8')
 
 
 
