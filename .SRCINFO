@@ -1,0 +1,17 @@
+pkgbase = mkdocs-material-pymdownx-extras
+	pkgdesc = MkDocs Material additions used for pymdownx documentation
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/facelessuser/mkdocs_pymdownx_material_extras
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = mkdocs-material
+	provides = mkdocs-pymdownx-material-extras
+	conflicts = python-mkdocs-material-pymdownx-extras-git
+	replaces = python-mkdocs-material-pymdownx-extras-git
+	source = mkdocs-material-pymdownx-extras-1.4.0.tar.gz::https://github.com/facelessuser/mkdocs_pymdownx_material_extras/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = b8573aa879aa5bd84188c7c23f99613493c202e80afe25dc472eec6e2573dbd8
+
+pkgname = mkdocs-material-pymdownx-extras
