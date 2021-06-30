@@ -4,7 +4,7 @@
 pkgname=python-importlab
 _name=${pkgname#python-}
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library to calculate python dependency graphs."
 arch=('any')
 url="https://github.com/google/importlab"
@@ -18,12 +18,15 @@ source=(
 sha256sums=(
   "056503329df1ba8f6291a4b548042aa18620ad91d39388ba58044f0fd44ff83e"
 )
-
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  # Fix permissions
+  chmod -R +r *
+}
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
-
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
