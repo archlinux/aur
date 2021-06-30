@@ -1,7 +1,7 @@
 pkgbase = pgadmin4-nwjs
 	pkgdesc = Comprehensive design and management interface for PostgreSQL
-	pkgver = 5.3
-	pkgrel = 2
+	pkgver = 5.4
+	pkgrel = 1
 	url = https://www.pgadmin.org/
 	arch = x86_64
 	license = custom
@@ -12,14 +12,14 @@ pkgbase = pgadmin4-nwjs
 	depends = hicolor-icon-theme
 	provides = pgadmin4=5.3
 	conflicts = pgadmin4
-	source = pgadmin4-nwjs-5.3.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.3/source/pgadmin4-5.3.tar.gz
-	source = pgadmin4-nwjs-5.3.tar.gz.asc::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.3/source/pgadmin4-5.3.tar.gz.asc
+	source = pgadmin4-nwjs-5.4.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.4/source/pgadmin4-5.4.tar.gz
+	source = pgadmin4-nwjs-5.4.tar.gz.asc::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v5.4/source/pgadmin4-5.4.tar.gz.asc
 	source = config_local.py
 	source = pgadmin4_desktop_entry.patch
 	validpgpkeys = E8697E2EEF76C02D3A6332778881B2A8210976F2
-	sha256sums = 944da81e790dfb41609f73d64e517711553d7bdcfa5f35ee7b47f1d704bac0a8
+	sha256sums = 374f9f9d2d27747fdbab054cadaea44af2a8c510863c2bcbb3c699d0fbd6bf4a
 	sha256sums = SKIP
 	sha256sums = 2a19360c2eec2fa92f91d0fb6fe78dbe8c999beff6a1a73efa3cdbf1da1c4f23
-	sha256sums = bf81d7ddd5ff4e656f2dc05fff6bd7765e67163cb8c7aabcfd2b53e80257c430
+	sha256sums = ab6d148d8ea5a6f6cf5d81836769be302f5c1776822105a8e8058be5c234f3d4
 
 pkgname = pgadmin4-nwjs
