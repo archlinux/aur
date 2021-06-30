@@ -2,7 +2,7 @@
 
 pkgname=varicad-view
 _pkgname=varicad-view
-pkgver=2021.2.04
+pkgver=2021.2.05
 pkgrel=1
 pkgdesc="Free viewer, convertor & printing software working with 2D DWG, DXF, 3D STEP formats."
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=(custom)
 makedepends=()
 depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types gtk2 hicolor-icon-theme)
 provides=(varicad-view)
-source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-2.04-1.$CARCH.rpm")
+source=("https://www.varicad.com/userdata/files/release/en/VariCAD_View_2021-en-2.05-1.$CARCH.rpm")
 url="https://www.varicad.com/"
-md5sums=('52c098810b64fc46e5d1e427760f55e9')
+md5sums=('4b2ee285370d8427ca02d91eac2fe5fd')
 
 package() {
   # Contents of this function are inspired by the install script located at:
