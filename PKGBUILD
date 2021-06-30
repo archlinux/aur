@@ -2,7 +2,7 @@
 
 pkgname=lime-git
 _pkgname=lime
-pkgver=4.5.0.alpha.r13.g550515b
+pkgver=5.0.0.alpha.r5.g446599d
 pkgrel=1
 pkgdesc="C++ library implementing Open Whisper System Signal protocol"
 arch=('x86_64')
@@ -26,6 +26,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DENABLE_STATIC="NO" \
     -DENABLE_UNIT_TESTS=NO \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=maybe-uninitialized" \
     -Wno-dev
   make -C build
 }
