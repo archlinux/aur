@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.19.r582.g0cfea3fee3
+pkgver=0.19.r909.gc401e3efe3
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -65,6 +65,9 @@ pkgver() {
 prepare() {
   cd FreeCAD
 
+  #sed 's,from femexamples.boxanalysis_frequency import setup,return,' -i src/Mod/Fem/femtest/app/test_ccxtools.py
+  #sed 's,from femexamples.thermomech_flow1d import setup,return,' -i src/Mod/Fem/femtest/app/test_ccxtools.py
+
   #git revert --no-commit 663ac994a794606e56d086cac85598517bd323dc
   #git checkout 927fdc9edc
 }
@@ -104,20 +107,14 @@ build() {
 
 check() {
   cd FreeCAD
-  DESTDIR=check cmake --build build_dir -- install
-
-  cd "build_dir/check/${_destdir}"
-  mkdir -p bin
-  ln -sf "../lib/freecad/bin/FreeCADCmd" bin/FreeCADCmd
-  export PATH_TO_FREECAD_LIBDIR="$(pwd)/lib"
-  export LD_LIBRARY_PATH="$(pwd)/lib"
-  export PYTHONPATH="$(pwd)/lib"
+  unset PATH_TO_FREECAD_LIBDIR
+  cd build_dir
   bin/FreeCADCmd --console --run-test 0
 }
 
 package() {
   cd FreeCAD
-  DESTDIR="${pkgdir}" cmake --build build_dir -- install
+  DESTDIR="${pkgdir}" cmake --install build_dir
 
   # get python site package folder in the right place
   cp -a "${pkgdir}${_destdir}"/lib/freecad/lib "${pkgdir}${_destdir}"
