@@ -2,7 +2,7 @@
 
 pkgbase='navidrome-bin'
 pkgname=(navidrome-bin)
-pkgver='0.43.0'
+pkgver='0.44.0'
 pkgrel=1
 pkgdesc='Music Server and Streamer compatible with Subsonic/Airsonic'
 url='https://www.navidrome.org/'
@@ -12,39 +12,39 @@ provides=('navidrome')
 conflicts=('navidrome' 'navidrome-systemd')
 backup=('var/lib/navidrome/navidrome.toml')
 depends=('glibc' 'ffmpeg')
-source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v0.43.0/navidrome_0.43.0_Linux_x86_64.tar.gz'
+source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_x86_64.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v0.43.0/navidrome_0.43.0_Linux_armv6.tar.gz'
+source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_armv6.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v0.43.0/navidrome_0.43.0_Linux_armv7.tar.gz'
+source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_armv7.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v0.43.0/navidrome_0.43.0_Linux_arm64.tar.gz'
+source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_arm64.tar.gz'
                 'navidrome.service'
                 'navidrome.toml'
                'navidrome.sysusers'
               )
-md5sums_x86_64=('57bb6a2b96be1fc275ef9a4e5906b3b4'
+md5sums_x86_64=('484f915a9d60b9673e6ea6655331a873'
                 '7e4600096f11dec326b2340c8c61baab'
                 '620404012c5d9982aafc5630f2d37582'
                 '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_armv6h=('cd2394f9d369e019ce61e7d877c67d05'
+md5sums_armv6h=('436b8213709e40fdd35a72f3eaf59e23'
                 '7e4600096f11dec326b2340c8c61baab'
                 '620404012c5d9982aafc5630f2d37582'
                 '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_armv7h=('45e3bf6ebe894518d59999e94aaea217'
+md5sums_armv7h=('5df25288e7b333ce5f9204b829d8cdfd'
                 '7e4600096f11dec326b2340c8c61baab'
                 '620404012c5d9982aafc5630f2d37582'
                 '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_aarch64=('96d75e1eabe501e349fff5976802b13e'
+md5sums_aarch64=('b8b519474a761b957a010e3efd18ebbc'
                  '7e4600096f11dec326b2340c8c61baab'
                  '620404012c5d9982aafc5630f2d37582'
                  '12bbcd378a346418cf26e4a4598a84a9')
