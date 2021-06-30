@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab3
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
@@ -24,7 +24,7 @@ source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-rel
         "${pkgname}.patch"
         "karaf_wrapper.sh")
 
-sha256sums=('092f40fc0ff19251b7742bf00dcad61cf91fca934eb7dfd8f5b74d0250ffea0f'
+sha256sums=('b06a96cb3ffb1c232391f8aa890aee87653505a0ec4261f325cc50bc93a7acc8'
             '995bb5eacc583c22fe97555fd67e69911a63cfb02449a046481b5a0e64f4032c'
             'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
             '3f7478e5742ff504b3200b580eba84bd10f9adde24c0a5e070dda71125a69c3b'
