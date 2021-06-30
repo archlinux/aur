@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Find orphaned packages
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/search-orphans-packages.sh

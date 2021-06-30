@@ -1,0 +1,15 @@
+pkgbase = search-orphans-pkgs-pacman-hook
+	pkgdesc = Check orphans packages in pacman
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/u0a266/config
+	arch = any
+	license = custom
+	depends = pacman
+	depends = ncurses
+	source = search-orphans-packages.hook
+	source = search-orphans-packages.sh
+	sha256sums = cbfdfba9886099e8f10aa6048625eada5f25329a6ae9eee2081c2be33f130251
+	sha256sums = 4f71c100dd841c704a0ef954f3ccd0501cb568121485e7d87de1758b0bcb8e94
+
+pkgname = search-orphans-pkgs-pacman-hook
