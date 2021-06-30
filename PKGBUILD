@@ -51,11 +51,12 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.12
-_minor=13
+_major=5.13
+#_minor=0
 _srcname=linux-${_major}
 pkgbase=linux-cacule
-pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}
+pkgver=${_major}
 pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
@@ -64,40 +65,34 @@ license=('GPL2')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 options=('!strip')
-_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.12"
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+#  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "config"
-  "${_patchsource}/arch-patches-v7/0001-arch-patches.patch"
-  "${_caculepatches}/v5.12/cacule-5.12.patch"
-  "${_patchsource}/cpu-patches-v6/0001-cpu-patches.patch"
-  "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2-stable-patches-v6/0001-futex2-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/wine-esync-patches/0001-v5.12-winesync.patch"
-  "${_patchsource}/zen-patches-v2/0001-zen-patches.patch"
-  "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-  "${_patchsource}/bfq-patches-v14/0001-bfq-patches.patch"
-  "${_patchsource}/block-patches-v6/0001-block-patches.patch"
+  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+  "${_caculepatches}/v5.13/cacule-5.13.patch"
+  "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+  "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
+  "${_patchsource}/winesync/5.13-winesync.patch"
+  "${_patchsource}/zen-patches/0001-zen-patches.patch"
+  "${_patchsource}/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
+  "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+  "${_patchsource}/block-patches/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/fixes-miscellaneous/2002-tune-vm-mm-and-vfs-settings.patch"
-#  "${_patchsource}/fixes-miscellaneous/lrng/lrng-40.patch"
-#  "${_patchsource}/fixes-miscellaneous/lrng/1004-lrng-update-20210607.patch"
-  "${_patchsource}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-  "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
+  "${_patchsource}/bbr2-patches/0001-bbr2-5.13-introduce-BBRv2.patch"
+  "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v4/0001-pf-patches.patch"
-#  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
-  "${_patchsource}/lru-gen/lru_5.12.patch"
-  "${_patchsource}/le9db_patches/le9db1-5.10.patch"
-  "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-  "${_patchsource}/zstd-dev-patches-v3/0001-zstd-dev-patches.patch"
-  "${_patchsource}/clearlinux-patches-v3/0001-clearlinux-patches.patch"
+  "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
+  "${_patchsource}/lru-patches/0001-lru-patches.patch"
+  "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
+  "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+  "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
-  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
-  "${_patchsource}/compaction-patches/0001-compaction-patches.patch"
+#  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -108,8 +103,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-    echo "Add upstream patches"
-    patch -Np1 -i ../patch-${pkgver}
+#    echo "Add upstream patches"
+#    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
     echo "Setting version..."
@@ -207,18 +202,11 @@ prepare() {
 
 
       ### Enable protect file mappings under memory pressure
-#          if [ -n "$_mm_protect" ]; then
-#          	echo "Enabling protect file mappings under memory pressure..."
-#          	scripts/config --enable CONFIG_UNEVICTABLE_FILE
-#          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-#          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-#          fi
-### Enable protect file mappings under memory pressure
           if [ -n "$_mm_protect" ]; then
           	echo "Enabling protect file mappings under memory pressure..."
-  #        	scripts/config --enable CONFIG_UNEVICTABLE_FILE
-            scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 150000
-          	scripts/config --set-val CONFIG_CLEAN_MIN_KBYTES 0
+          	scripts/config --enable CONFIG_UNEVICTABLE_FILE
+          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+          	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
           fi
 
               ### Enable multigenerational LRU
@@ -250,7 +238,7 @@ prepare() {
           scripts/config --disable CONFIG_SCHED_INFO
           scripts/config --disable CONFIG_SCHEDSTATS
           scripts/config --disable CONFIG_DEBUG_KERNEL
-          scripts/config --disable CONFIG_RT_GROUP_SCHED
+          scripts/config --enable CONFIG_RT_GROUP_SCHED
           echo "Enabling Full Tickless"
           scripts/config --disable CONFIG_HZ_PERIODIC
           scripts/config --disable CONFIG_NO_HZ_IDLE
@@ -307,63 +295,52 @@ prepare() {
           scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
           scripts/config --disable CONFIG_PROFILING
 
-      # Processor type and features
-      scripts/config --disable CONFIG_RETPOLINE
-      scripts/config --disable CONFIG_X86_5LEVEL
-      scripts/config --disable CONFIG_KEXEC
-      scripts/config --disable CONFIG_KEXEC_FILE
-      scripts/config --disable CONFIG_CRASH_DUMPs
-      scripts/config --disable CONFIG_KPROBES
-      # Kernel hacking
-      scripts/config --disable CONFIG_FTRACE
-      scripts/config --disable CONFIG_DEBUG_KERNEL
-      scripts/config --disable CONFIG_PAGE_EXTENSION
-      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
-      scripts/config --disable CONFIG_PRINTK_TIME
-      scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --disable CONFIG_ENABLE_MUST_CHECK
-      scripts/config --disable CONFIG_STRIP_ASM_SYMS
-      scripts/config --disable CONFIG_UNUSED_SYMBOLS
-      scripts/config --disable CONFIG_DEBUG_FS
-      scripts/config --disable CONFIG_OPTIMIZE_INLINING
-      scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
-      scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
-      scripts/config --disable CONFIG_STACK_VALIDATION
-      scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
-      scripts/config --disable CONFIG_MAGIC_SYSRQ
-      scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
-      scripts/config --disable CONFIG_PAGE_EXTENSION
-      scripts/config --disable CONFIG_DEBUG_PAGEALLOC
-      scripts/config --disable CONFIG_PAGE_OWNER
-      scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
-      scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
-      scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
-      scripts/config --disable CONFIG_DETECT_HUNG_TASK
-      scripts/config --disable CONFIG_WQ_WATCHDOG
-      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
-      scripts/config --disable CONFIG_SCHEDSTATS
-      scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
-      scripts/config --disable CONFIG_STACKTRACE
-      scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
-      scripts/config --disable CONFIG_RCU_TRACE
-      scripts/config --disable CONFIG_FAULT_INJECTION
-      scripts/config --disable CONFIG_LATENCYTOP
-      scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
-      scripts/config --disable RUNTIME_TESTING_MENU
-      scripts/config --disable CONFIG_MEMTEST
-      scripts/config --disable CONFIG_KGDB
-      scripts/config --disable CONFIG_EARLY_PRINTK
-      scripts/config --disable CONFIG_DOUBLEFAULT
-
-    # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
-                   --undefine RT_GROUP_SCHED
-
-    # Power management and ACPI options
-    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                   --enable ACPI_TABLE_UPGRADE
-
+          # Processor type and features
+          scripts/config --disable CONFIG_X86_5LEVEL
+          scripts/config --disable CONFIG_KEXEC
+          scripts/config --disable CONFIG_KEXEC_FILE
+          scripts/config --disable CONFIG_CRASH_DUMPs
+          scripts/config --disable CONFIG_KPROBES
+          # Kernel hacking
+          scripts/config --disable CONFIG_FTRACE
+          scripts/config --disable CONFIG_DEBUG_KERNEL
+          scripts/config --disable CONFIG_PAGE_EXTENSION
+          scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+          scripts/config --disable CONFIG_PRINTK_TIME
+          scripts/config --disable CONFIG_DEBUG_INFO
+          scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+          scripts/config --disable CONFIG_STRIP_ASM_SYMS
+          scripts/config --disable CONFIG_UNUSED_SYMBOLS
+          scripts/config --disable CONFIG_DEBUG_FS
+          scripts/config --disable CONFIG_OPTIMIZE_INLINING
+          scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+          scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+          scripts/config --disable CONFIG_STACK_VALIDATION
+          scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+          scripts/config --disable CONFIG_MAGIC_SYSRQ
+          scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+          scripts/config --disable CONFIG_PAGE_EXTENSION
+          scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+          scripts/config --disable CONFIG_PAGE_OWNER
+          scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+          scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+          scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+          scripts/config --disable CONFIG_DETECT_HUNG_TASK
+          scripts/config --disable CONFIG_WQ_WATCHDOG
+          scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+          scripts/config --disable CONFIG_SCHEDSTATS
+          scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+          scripts/config --disable CONFIG_STACKTRACE
+          scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+          scripts/config --disable CONFIG_RCU_TRACE
+          scripts/config --disable CONFIG_FAULT_INJECTION
+          scripts/config --disable CONFIG_LATENCYTOP
+          scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+          scripts/config --disable RUNTIME_TESTING_MENU
+          scripts/config --disable CONFIG_MEMTEST
+          scripts/config --disable CONFIG_KGDB
+          scripts/config --disable CONFIG_EARLY_PRINTK
+          scripts/config --disable CONFIG_DOUBLEFAULT
 
 
     ### Optionally use running kernel's config
@@ -518,31 +495,26 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-            '84a39f8cbcca15af34bf431d6eb14d241bb4d1f0455da96ee0cbe1a22d44a39d'
-            '5cfde84b9b7b71cde2a9823859184ed08f7eece119b2776f0e620c8528a156e5'
-            'dd89db0483301a62cef23ba797fee1fb9804f570f952df87fe418ee22e353227'
-            'a90ec03375bf97c06bf2ca3f1fd0224deee8408077f71447326b2796b53652a1'
-            'd50836cb16ef209b4bdd7bef792485b8f0ff847a96d2b6eca109da0b7e05f79b'
-            '4ff5c33785445f103d479196bb33c4f991d6c5f56df5c643ec6d2451368f0605'
-            'db4707a6430a80447fabc2517e554cf9e055a4039b362f683bd9dd7f04d7a667'
-            'f7c68f43599c53ce19a14e6f296e5e0820257e80acb9f52a1dec036d0d9a62ab'
-            '9eabd1468635477d9c143e9f59d86cf0dd32583bf6bd926080a6707f86d363ed'
-            '5587a2d535dcd7ff09080c27f32a02dc67a0d35145b0b49ae10e8520c906a153'
-            '8c5296b9920d44184fa3aea34e4100e1848617f18b76c883f31c973dd96044f9'
-            '8c892547828704e05cd480e58944327029bf50f81258ae0501a4872b465b20b9'
-            '7cdc6402f6ab8a8b99f7c7c4766a6cf82773ef399903abebf6208bfd2f8b2cf2'
-            'f7a36231b794022d49e53f464d25e48f2eebf6266c2cbe5756c63aa3bf03bae7'
-            '59dc35df675221c9e54326e4a2ca57074c955387e1d4cb0b6543424bc84bdb11'
-            'f71cc3bdd9b3488ece3d7433ff65e0dd9f544f069b82e84e32ad67e2e7f64718'
-            '42dc3c76534393d1b59ca3f321797566a7637bbb110f604eb9bf584b867a97a4'
-            '677aef8d233c9c19f7b9584bb979117f8f87ff4a2e82e597100b71326eb7ef76'
-            '4ad652d36fdd3f5142e66407a964e8e0d3c91ab3e7094a368de1ef1b21f6d19a'
-            'd68ed98e7bc5a8f9ebc48c16cd0be47be948578621a70b13fcbb13e280469056'
-            '7056565c13628e7885538aca4cdb384f1a2b65c4c02a502ddfe182ddb7ce347e'
-            '84c231a4d66726e4ed84807de961e0aa37bc3cb13fda0c3d82f7c23470ca6ecd'
-            '5a0c7b01ce8baf4dc480b33eddd203a1620ad4885122a3967f580cb172d0f9b7'
-            'efc3e1e4c2ef22a570a0e8cfdaea4617655e1baddce02829d6a0acc5b9a7ab58'
-            '64a7a848ca409f359d16e9732f4e623126eeb89bfae85c884391b9b280facdcf'
-            '0b18daa836fd70dbabf68b1db85b01e585f8cad2f1a2ef5c2ced9db4e1f75d3a'
-            '977595514eb3708be814bf33d65a9bdb322e94afea45dd681394c95733b5f01a')
+md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
+         'b102915fcd613be6598260eaa33bd7a4'
+         '9bb46b8ce45259c238c5233b8394d70b'
+         '8fab6f0acf86d138a283c4dd044198ed'
+         '7640a753a7803248543675a6edc75e08'
+         '85f4be6562ee033b83814353a12b61bd'
+         '004c2b38dfc71a279e625a7daeb4fa84'
+         '9573b92353399343db8a691c9b208300'
+         '1217799f33d6ba822152a0e2fb6f2e34'
+         '09a9e83b7b828fae46fd1a4f4cc23c28'
+         'e16eb528e701193bc8cb1facc6b27231'
+         '396c84c4a6557db27f9c3bbfa656ac3e'
+         '9bbbd88f0303ccd59064648eaaf80edd'
+         '12cdc30bc3e2a17825b23b63bd6a5e7a'
+         '63078800040b2a9a9f19c59c4ebf5b23'
+         '81f27f12e20971c7d7fc3a53ffb6842c'
+         'ed551763bd8112d087bcd21782d68325'
+         '3f302dbaceea020abd40f6e9f23b75df'
+         '86825a0c5716a1d9c6a39f9d3886b1bf'
+         '9e5114dba6da65e8d444aa225b109a21'
+         'c360b8c17d778f98a54fa7cddf348566'
+         'ce9beff503ee9e6ce6fd983c1bbbdd9e'
+         'ef7748efcae55f7db8961227cbae3677')
