@@ -4,7 +4,7 @@
 
 pkgname=gamess
 pkgver=2020R2
-pkgrel=2
+pkgrel=3
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
@@ -28,22 +28,26 @@ prepare() {
 
   patch -p1 < "$srcdir/tests.patch"
   
-  # You may comment out the following line to let GAMESS choose compiler options.
+  # You may comment out two lines below to let GAMESS choose compiler options.
   patch -p1 < "$srcdir/opt.patch"
+  echo "Compiler flags '-O3 -march=native -mno-fma' are enabled by default."
   
-  # Fixes for GCC Fortran 10
+  # Optimizations can safely be more aggressive.
+  sed -i 's/ -fno-aggressive-loop-optimizations//g' comp
+  
+  # Fixes for GCC Fortran > 9
   sed -i 's/-ffree-line-length-none/-ffree-line-length-none -fallow-argument-mismatch/g' comp
   sed -i 's/-Ofast -ffast-math/-Ofast -ffast-math -fallow-argument-mismatch/g' comp
-  
-  # Now GAMESS is blas-agnostic
-  sed -i 's/lopenblas/lblas/g' lked
+
+  # Blas-agnostic
+  sed -i 's/-lopenblas/-lblas/g' lked
 }
 
 build() {
   cd "$srcdir/$pkgname"
   python bin/create-install-info.py \
                                     --fortran_version=10.2 \
-                                    --math=openblas \
+                                    --openblas \
                                     --mathlib_path=/usr/lib \
                                     --openmp
   make modules -j1
@@ -51,7 +55,7 @@ build() {
 }
 
 check() {
-  echo "Please, wait for the computation of 48 test examples to finish."
+  echo "Please, wait for the computation of 47 test examples to finish."
   echo "It is going to take about 5 min depending on your CPU frequency."
   cd "$srcdir/$pkgname"
   
