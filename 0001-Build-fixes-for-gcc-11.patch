@@ -1,0 +1,93 @@
+From 626b8c0f6aa2101802a93653bbd18651999caaf1 Mon Sep 17 00:00:00 2001
+From: Marcus Holland-Moritz <github@mhxnet.de>
+Date: Tue, 4 May 2021 13:33:02 +0200
+Subject: [PATCH] Build fixes for gcc-11
+
+---
+ include/dwarfs/block_cache.h   |  1 +
+ include/dwarfs/entry.h         |  1 +
+ include/dwarfs/filesystem_v2.h |  2 +-
+ include/dwarfs/fstypes.h       | 10 +++++-----
+ src/dwarfs/block_cache.cpp     |  1 -
+ 5 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/include/dwarfs/block_cache.h b/include/dwarfs/block_cache.h
+index 7810067..b522419 100644
+--- a/include/dwarfs/block_cache.h
++++ b/include/dwarfs/block_cache.h
+@@ -28,6 +28,7 @@
+ #include <memory>
+ 
+ #include "dwarfs/block_compressor.h"
++#include "dwarfs/fstypes.h"
+ 
+ namespace dwarfs {
+ 
+diff --git a/include/dwarfs/entry.h b/include/dwarfs/entry.h
+index a31faa6..7e89d6b 100644
+--- a/include/dwarfs/entry.h
++++ b/include/dwarfs/entry.h
+@@ -26,6 +26,7 @@
+ #include <cstdint>
+ #include <functional>
+ #include <memory>
++#include <optional>
+ #include <string>
+ #include <string_view>
+ #include <vector>
+diff --git a/include/dwarfs/filesystem_v2.h b/include/dwarfs/filesystem_v2.h
+index c8a6832..72f9232 100644
+--- a/include/dwarfs/filesystem_v2.h
++++ b/include/dwarfs/filesystem_v2.h
+@@ -36,6 +36,7 @@
+ #include <folly/Expected.h>
+ #include <folly/dynamic.h>
+ 
++#include "dwarfs/fstypes.h"
+ #include "dwarfs/metadata_types.h"
+ 
+ struct stat;
+@@ -47,7 +48,6 @@ struct filesystem_options;
+ struct rewrite_options;
+ struct iovec_read_buf;
+ 
+-class block_range;
+ class filesystem_writer;
+ class logger;
+ class mmif;
+diff --git a/include/dwarfs/fstypes.h b/include/dwarfs/fstypes.h
+index 0e5d9ed..1b945ae 100644
+--- a/include/dwarfs/fstypes.h
++++ b/include/dwarfs/fstypes.h
+@@ -44,14 +44,14 @@ class block_range {
+   block_range(std::shared_ptr<cached_block const> block, size_t offset,
+               size_t size);
+ 
+-  const uint8_t* data() const { return begin_; }
+-  const uint8_t* begin() const { return begin_; }
+-  const uint8_t* end() const { return end_; }
++  uint8_t const* data() const { return begin_; }
++  uint8_t const* begin() const { return begin_; }
++  uint8_t const* end() const { return end_; }
+   size_t size() const { return end_ - begin_; }
+ 
+  private:
+-  const uint8_t* const begin_;
+-  const uint8_t* const end_;
++  uint8_t const* const begin_;
++  uint8_t const* const end_;
+   std::shared_ptr<cached_block const> block_;
+ };
+ 
+diff --git a/src/dwarfs/block_cache.cpp b/src/dwarfs/block_cache.cpp
+index b3efe5f..0024078 100644
+--- a/src/dwarfs/block_cache.cpp
++++ b/src/dwarfs/block_cache.cpp
+@@ -40,7 +40,6 @@
+ 
+ #include "dwarfs/block_cache.h"
+ #include "dwarfs/fs_section.h"
+-#include "dwarfs/fstypes.h"
+ #include "dwarfs/logger.h"
+ #include "dwarfs/mmif.h"
+ #include "dwarfs/options.h"
