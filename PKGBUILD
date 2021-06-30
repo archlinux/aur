@@ -1,8 +1,9 @@
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 pkgname='python-taichi'
-_name='taichi'
-pkgver=0.7.23
+_name=${pkgname#python-}
+_py='cp39'
+pkgver=0.7.24
 pkgrel=1
 pkgdesc="Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs"
 arch=('x86_64')
@@ -25,14 +26,23 @@ optdepends=('python-autograd'
   'cuda')
 makedepends=('python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/18/70/df5fb2533f6a4f58dc6c570ad77ba28e899aefa916b57ba3f2a58b897615/taichi-0.7.23-cp39-cp39-manylinux1_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl")
 
-b2sums=('bba5bc8a21ee590288fa78d23d56d51c054ed9b168754b1c93add0db3f6e19a4622fc0e49a29952cb455f74e6bbf8889e7b0724138afb1c75e5484b15871e2b4')
+b2sums=('6f0f99ced428b080ab140bcb71d87340c917e30cfb5df916e2b0502850cc29cecdc766e618d01d7e5232995ff147d22c575a8315c7226a86f87ef0e02a7e8654')
 
 package() {
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --no-deps ${_name//-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl
 
-  python -O -m compileall -p "${pkgdir}" "${pkgdir}"
+  cd $pkgdir/usr/lib/python3.9/site-packages/$_name/
+  # remove pyc and compile by my self
+  find . -name "*.pyc" | xargs rm -rf
+
+  # remove prefix
+  python -O -m compileall -f "${pkgdir}/usr/lib/python3.9/site-packages/$_name/" -s "${pkgdir}" -p "/"
+
+  # manually rewrite direct_url.json
+  cd $pkgdir/usr/lib/python3.9/site-packages/$_name-$pkgver.dist-info/
+  echo "{\"archive_info\": {\"hash\": \"b2sums=$b2sums\"}, \"url\": \"$source\"}" >direct_url.json
 
   install -Dm644 "$srcdir/$_name-$pkgver.dist-info/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
