@@ -1,0 +1,17 @@
+pkgbase = mkdocs-jinja2-filters-plugin-git
+	pkgdesc = MkDocs plugin to use custom Jinja2 filters
+	pkgver = r2.01f18cb
+	pkgrel = 1
+	url = https://github.com/burnedikt/mkdocs-jinja2-filters-plugin
+	install = plugin.install
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = mkdocs
+	depends = python-jinja
+	conflicts = python-mkdocs-jinja2-filters-plugin-git
+	replaces = python-mkdocs-jinja2-filters-plugin-git
+	source = git+https://github.com/burnedikt/mkdocs-jinja2-filters-plugin
+	sha256sums = SKIP
+
+pkgname = mkdocs-jinja2-filters-plugin-git
