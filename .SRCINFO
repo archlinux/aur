@@ -1,11 +1,12 @@
 pkgbase = gimp-plugin-gmic-git
 	pkgdesc = Front-end to the image processing framework G'MICQ
-	pkgver = v.218.r4.g6267a65
-	pkgrel = 2
+	pkgver = 2.9.7.r82.gda87d71.gimp.2.0
+	pkgrel = 1
 	url = https://github.com/c-koi/gmic-qt
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = wget
 	depends = gimp
 	depends = libpng
 	depends = zlib
@@ -18,4 +19,3 @@ pkgbase = gimp-plugin-gmic-git
 	md5sums = SKIP
 
 pkgname = gimp-plugin-gmic-git
-
