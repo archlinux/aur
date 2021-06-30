@@ -3,7 +3,7 @@
 
 pkgname=lens
 pkgdesc='The Kubernetes IDE'
-pkgver=4.2.5
+pkgver=5.0.0
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
@@ -15,8 +15,8 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 conflicts=('lens-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('ef8362f8a9b1cf245f6513d887f41420bbe49ca9045177f020a8f43b56baf432'
-            'd47f9bc17e42df628cac072e13587a9517d38b495828fa65b6d6f8997cb1b23b')
+sha256sums=('d4c7dbc77f08d2f5c794e7edf7819d4c6b89ed78c79b6fbdd1a4ea5ed5e66a5d'
+            '09d155a8f8697dba7e718c22123c08af8b2b22605a9a1998d97ac72a9dacbe54')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -33,7 +33,7 @@ package() {
 
   # icon
   install -Dm 644 "${srcdir}"/${pkgname}-${pkgver}/build/icons/512x512.png \
-    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/kontena-${pkgname}.png
+    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/open-${pkgname}.png
 
   # desktop file
   install -Dm 644 "${srcdir}"/${pkgname}.desktop \
@@ -41,8 +41,8 @@ package() {
 
   # symlink binary
   mkdir -p "${pkgdir}"/usr/bin
-  ln -sf /usr/share/${pkgname}/kontena-lens \
-    "${pkgdir}"/usr/bin/kontena-lens
+  ln -sf /usr/share/${pkgname}/open-lens \
+    "${pkgdir}"/usr/bin/open-lens
 
   # symlink helm binary
   mkdir -p "${pkgdir}"/usr/share/${pkgname}/resources/helm3
