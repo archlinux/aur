@@ -4,14 +4,14 @@
 pkgname=ergochat
 _upstream_pkgname=ergo
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern IRC server written in Go"
 arch=('x86_64')
 url="https://github.com/ergochat/ergo"
 license=('MIT')
 install=install
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'ruby')
 source=("git+$url#tag=v$pkgver"
         "PKGNAME.service.erb"
         "PKGNAME.sysusers.erb"

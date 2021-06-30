@@ -1,13 +1,14 @@
 pkgbase = ergochat
 	pkgdesc = A modern IRC server written in Go
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ergochat/ergo
 	install = install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
+	makedepends = ruby
 	depends = glibc
 	provides = oragono
 	conflicts = oragono
