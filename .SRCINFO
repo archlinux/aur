@@ -1,8 +1,8 @@
 pkgbase = tllocalmgr-git
 	pkgdesc = A shell and command-line utility to manage TeXLive on Arch Linux
 	pkgver = r84.bbd8488
-	pkgrel = 1
-	url = https://git.archlinux.org/users/remy/texlive-localmanager.git/
+	pkgrel = 2
+	url = https://gitlab.archlinux.org/remy/texlive-localmanager.git
 	arch = any
 	license = GPL
 	makedepends = git
@@ -14,8 +14,6 @@ pkgbase = tllocalmgr-git
 	depends = perl-list-moreutils
 	depends = perl-lwp-protocol-https
 	provides = texlive-localmanager=r84.bbd8488
-	provides = texlive-localmanager=v0.7.r3.gbbd8488
-	provides = tllocalmgr-git=v0.7.r3.gbbd8488
 	conflicts = texlive-localmanager
 	conflicts = texlive-localmanager-git
 	source = texlive-localmanager::git+https://gitlab.archlinux.org/remy/texlive-localmanager.git

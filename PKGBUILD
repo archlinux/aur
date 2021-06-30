@@ -7,12 +7,12 @@
 pkgname=tllocalmgr-git
 _pkgname='texlive-localmanager'
 pkgver=r84.bbd8488
-pkgrel=1
+pkgrel=2
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
-url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
+url='https://gitlab.archlinux.org/remy/texlive-localmanager.git'
 license=('GPL')
-provides=("texlive-localmanager=$pkgver" "texlive-localmanager=v0.7.r3.gbbd8488" "$pkgname=v0.7.r3.gbbd8488")
+provides=("texlive-localmanager=$pkgver")
 conflicts=('texlive-localmanager'
            'texlive-localmanager-git')
 depends=('texlive-core>=2016'
