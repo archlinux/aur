@@ -1,7 +1,6 @@
 # Maintainer: a821 <a821 mail.de>
-# Contributor: lukaszimmermann <luk.zim91@gmail.com>
-# Contributor: eomarjee <eyaz.omarjee+arch@gmail.com>
-# Contributor: florianbw <florian.bw@gmail.com>
+# Contributor: lukaszimmermann <luk.zim91 gmail.com>
+# Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
 pkgver=3.8.2
