@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _pkgbase=openhab3
 pkgname=${_pkgbase}-addons
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="addons for openhab3 open source home automation software"
 arch=("any")
@@ -13,7 +13,7 @@ conflicts=("openhab3-snapshot-addons")
 
 source=("openhab-addons-${pkgver}.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/${pkgver}/openhab-addons-${pkgver}.kar")
 
-sha256sums=('86d77be0e9dcc6050c43f68845469b4e64d13a18a0772f01b17d7444e6584627')
+sha256sums=('692bb54f536119bd5c04c0e77ded524eabeb11dc50d013035ba31cd8e27a260b')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/${_pkgbase}/addons"
