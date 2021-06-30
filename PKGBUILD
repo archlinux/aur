@@ -3,7 +3,7 @@
 
 pkgname=python38
 pkgver=3.8.11
-pkgrel=1
+pkgrel=2
 _pybasever=3.8
 _pymajver=3
 pkgdesc="Major release 3.8 of the Python high-level programming language"
@@ -13,7 +13,6 @@ url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
-options=('!makeflags')
 source=(
     https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
     https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz.asc
