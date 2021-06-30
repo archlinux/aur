@@ -1,15 +1,14 @@
 pkgbase = firectl
-	pkgdesc = Modifies .desktop files for firejail.
-	pkgver = 1.1.0
-	pkgrel = 2
-	url = https://github.com/rahiel/firectl
-	arch = any
-	license = GPL2
-	makedepends = python-setuptools
-	depends = python-click
-	depends = firejail
-	source = https://github.com/rahiel/firectl/archive/1.1.0.tar.gz
-	md5sums = 71ffa6f4b0f90d5440ebda9c67894bf4
+	pkgdesc = A command-line tool to run Firecracker microVMs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/firecracker-microvm/firectl
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = firecracker
+	source = firectl-0.1.0.tar.gz::https://github.com/firecracker-microvm/firectl/archive/v0.1.0.tar.gz
+	b2sums = 9f4f765074a205260778d3395b7ae99c6bb3a3edbfa5559ee0e7100d19b9317398cd2df7b8ca6d28cfa2a1d5f86c2ff4d6ac893a19114350e426d405fd04941e
 
 pkgname = firectl
-

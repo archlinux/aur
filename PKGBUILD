@@ -1,24 +1,41 @@
-# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
-# Contributor: BlueSpirit < me AT phre4k DOT at > 
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firectl
-pkgver=1.1.0
-pkgrel=2
-pkgdesc="Modifies .desktop files for firejail."
-url="https://github.com/rahiel/firectl"
-depends=('python-click' 'firejail')
-makedepends=('python-setuptools')
-license=('GPL2')
-arch=('any')
-source=("https://github.com/rahiel/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('71ffa6f4b0f90d5440ebda9c67894bf4')
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A command-line tool to run Firecracker microVMs"
+arch=('x86_64')
+url="https://github.com/firecracker-microvm/firectl"
+license=('Apache')
+depends=('firecracker')
+makedepends=('go' 'git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('9f4f765074a205260778d3395b7ae99c6bb3a3edbfa5559ee0e7100d19b9317398cd2df7b8ca6d28cfa2a1d5f86c2ff4d6ac893a19114350e426d405fd04941e')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+
+  mkdir -p build
+
+  go mod vendor
+}
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    python setup.py build
+	cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
+  go build -v \
+    -trimpath \
+    -buildmode=pie \
+    -mod=vendor \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    -o build .
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+	cd "$pkgname-$pkgver"
+  install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
 }
