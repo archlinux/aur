@@ -10,7 +10,9 @@ url="https://github.com/wilicc/gpu-burn"
 license=("BSD")
 makedepends=("git")
 depends=("nvidia" "opencl-nvidia" "cuda")
-replaces=("gpu_burn-git" "gpu-burn")
+provides=("gpu-burn")
+conflicts=("gpu_burn-git" "gpu-burn")
+replaces=("gpu_burn-git")
 source=("${pkgname}::git+https://github.com/wilicc/gpu-burn?ref=${pkgver}")
 sha256sums=("SKIP")
 
