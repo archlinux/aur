@@ -7,8 +7,8 @@
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
-major='21.10'
-minor='1247438'
+major='21.20'
+minor='1271047'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
@@ -27,10 +27,10 @@ conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver')
 optdepends=('clinfo')
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-10 -N %u'
+DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-20 -N %u'
 
 source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
-sha256sums=('2d63e6709909559b35f0d37504bd194b8a5cba8069b80aa849ec085d05bba1e2')
+sha256sums=('8ea051de8c9c6814eb45ce18d102e639bb6edb5786e948b50c5105e3e21978f9')
 
 package() {
 	mkdir -p "${srcdir}/opencl"
@@ -49,7 +49,7 @@ package() {
 	tar xJf data.tar.xz
 
 	# comgr
-	ar x "${srcdir}/$tarname/comgr-amdgpu-pro_2.0.0-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/comgr-amdgpu-pro_2.1.0-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 
 	# orca
@@ -72,8 +72,8 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib
 	# roc*
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2.0.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.0.21154-" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2.1.0" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.1.21233-" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
 	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1.3.0" "${pkgdir}/usr/lib"
