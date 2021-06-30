@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-nocsd
 pkgver=r5.5052c81c
-pkgrel=2
+pkgrel=3
 pkgdesc="Android image for running in Anbox, with no-csd patch and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
