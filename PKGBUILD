@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='parsexp'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='2'
+pkgver='0.14.1'
+pkgrel='1'
 pkgdesc='S-expression parsing library'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
@@ -12,7 +12,7 @@ depends=('ocaml>=4.04.2' 'ocaml-base>=0.14.0' 'ocaml-sexplib0>=0.14.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ede506ea367a96b2f128dbc676199d055f547adb4d96605bac624f10d62b256')
+sha256sums=('0460e64c88d13f0b84d74b6c2774a7e9d5ec8e29da7acb3b36c06edd3c560eb0')
 
 _sourcedirectory="$_projectname-$pkgver"
 

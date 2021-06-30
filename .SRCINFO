@@ -1,7 +1,7 @@
 pkgbase = ocaml-parsexp
 	pkgdesc = S-expression parsing library
-	pkgver = 0.14.0
-	pkgrel = 2
+	pkgver = 0.14.1
+	pkgrel = 1
 	url = https://github.com/janestreet/parsexp
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-parsexp
 	depends = ocaml-base>=0.14.0
 	depends = ocaml-sexplib0>=0.14.0
 	options = !strip
-	source = ocaml-parsexp-0.14.0-2.tar.gz::https://github.com/janestreet/parsexp/archive/v0.14.0.tar.gz
-	sha256sums = 6ede506ea367a96b2f128dbc676199d055f547adb4d96605bac624f10d62b256
+	source = ocaml-parsexp-0.14.1-1.tar.gz::https://github.com/janestreet/parsexp/archive/v0.14.1.tar.gz
+	sha256sums = 0460e64c88d13f0b84d74b6c2774a7e9d5ec8e29da7acb3b36c06edd3c560eb0
 
 pkgname = ocaml-parsexp
