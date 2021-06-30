@@ -1,4 +1,5 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: David (ReyJamonico) < david at rjamo dot dev >
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Konstantin Gizdov <arch@kge.pw>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -13,7 +14,7 @@ pkgver=7.5.0
 _pkgver=7
 _majorver=${pkgver:0:1}
 _islver=0.18
-pkgrel=2
+pkgrel=3
 pkgdesc='The GNU Compiler Collection (7.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -83,8 +84,15 @@ build() {
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
+  # -Werror=format-security causes compilation errors with GCC>10
+  # And protection flags leave libgcc unusable
+  banned_compile_options=("-pipe" "-Werror=format-security" "-fstack-clash-protection" "-fcf-protection")
+
+  for option in "${banned_compile_options[@]}"
+  do
+    CFLAGS=${CFLAGS/$option/}
+    CXXFLAGS=${CXXFLAGS/$option/}
+  done
 
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \

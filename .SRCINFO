@@ -1,7 +1,7 @@
 pkgbase = gcc7
 	pkgdesc = The GNU Compiler Collection (7.x.x)
 	pkgver = 7.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -26,7 +26,7 @@ pkgbase = gcc7
 
 pkgname = gcc7
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (7.x.x)
-	depends = gcc7-libs=7.5.0-2
+	depends = gcc7-libs=7.5.0-3
 	depends = binutils>=2.28
 	depends = libmpc
 	options = !emptydirs
@@ -40,6 +40,6 @@ pkgname = gcc7-libs
 
 pkgname = gcc7-fortran
 	pkgdesc = Fortran front-end for GCC (7.x.x)
-	depends = gcc7=7.5.0-2
+	depends = gcc7=7.5.0-3
 	options = !emptydirs
 
