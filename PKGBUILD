@@ -3,18 +3,22 @@
 _name=google-cloud-bigquery
 
 pkgname=python-google-cloud-bigquery
-pkgver=1.28.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://pypi.org/project/google-cloud-bigquery/"
 license=('APACHE')
 depends=(
-  'python>=3.5'
-  'python-google-api-core>=1.21.0'
+  'python>=3.6'
+  'python-google-api-core>=1.29.0'
   'python-google-cloud-core>=1.4.1'
   'python-google-resumable-media>=0.6.0'
-  'python-six>=1.13.0'
+  'python-grpcio'
+  'python-packaging>=14.3'
+  'python-proto-plus>=1.10.0'
+  'python-protobuf>=3.12.0'
+  'python-requests>=2.18.0'
 )
 makedepends=('python-setuptools')
 optdepends=(
@@ -30,7 +34,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '9784cff71d6a46ce202748169f9c7e38fc99d6babbb2f3cdc540475d11f572b9'
+  'ff728f9a4a64d6b4ec5beb7fd2f6ed550b49bfe2b8bb3755c00821716e0d1f91'
 )
 
 build() {
