@@ -4,7 +4,7 @@
 # Contributor: Martin Wimpress <code@flexion.org>
 #
 pkgname="caja-dropbox"
-pkgver="1.24.0"
+pkgver="1.25.0"
 pkgrel="1"
 pkgdesc="Dropbox extension for Caja file manager "
 arch=('i686' 'x86_64')
