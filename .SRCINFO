@@ -1,7 +1,7 @@
 pkgbase = crazydiskinfo-git
-	pkgdesc = Interactive TUI S.M.A.R.T viewer
+	pkgdesc = Interactive ncurses S.M.A.R.T. viewer
 	pkgver = 1.1.0.r0.g803a585
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/otakuto/crazydiskinfo
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,7 @@ pkgbase = crazydiskinfo-git
 	depends = libatasmart
 	provides = crazydiskinfo
 	conflicts = crazydiskinfo
-	source = git+https://github.com/otakuto/crazydiskinfo.git
+	source = crazydiskinfo-git::git+https://github.com/otakuto/crazydiskinfo.git
 	sha256sums = SKIP
 
 pkgname = crazydiskinfo-git
-
