@@ -8,13 +8,15 @@ url="http://qwt.sourceforge.net"
 depends=('mingw-w64-qt6-svg')
 makedepends=('mingw-w64-gcc' 'qt6-base')
 options=('staticlibs' '!strip' '!buildflags')
-source=("http://downloads.sourceforge.net/qwt/qwt-beta/6.2.0-rc1/qwt-6.2-rc1.tar.bz2")
-sha256sums=('2dc29d4bacae63e57732857eb4b18b8ac9a451c072817cbc1ee572ef4872f0ec')
+#source=("http://downloads.sourceforge.net/qwt/qwt-beta/6.2.0-rc2/qwt-6.2-rc2.tar.bz2")
+#sha256sums=('2dc29d4bacae63e57732857eb4b18b8ac9a451c072817cbc1ee572ef4872f0ec')
+source=("qwt-6.2-rc2::git+https://github.com/xantares/qwt-cmake.git")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd qwt-6.2-rc1
+  cd qwt-6.2-rc2
   # Build release only
   sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
   sed -i '/+= build_all/d' qwtbuild.pri
@@ -31,22 +33,26 @@ prepare() {
 }
 
 build() {
+  cd qwt-6.2-rc2
   for _arch in ${_architectures}; do
-    export QTDIR=/usr/${_arch}/lib/qt6
-    export PATH=${QTDIR}/bin:${PATH}
-    export QMAKESPEC=${QTDIR}/mkspecs/win32-g++
+    #export QTDIR=/usr/${_arch}/lib/qt6
+    #export PATH=${QTDIR}/bin:${PATH}
+    #export QMAKESPEC=${QTDIR}/mkspecs/win32-g++
 
-    mkdir -p "${srcdir}/qwt-build-${_arch}"
-    cd "${srcdir}"
-    rm -rf qwt-build-${_arch}
-    cp -r "qwt-6.2-rc1" qwt-build-${_arch}
-    cd qwt-build-${_arch}
+    #mkdir -p "${srcdir}/qwt-build-${_arch}"
+    #cd "${srcdir}"
+    #rm -rf qwt-build-${_arch}
+    #cp -r "qwt-6.2-rc2" qwt-build-${_arch}
+    #cd qwt-build-${_arch}
 
     # This is a mingw build, so Windows prefix is used. Let's change it:
-    sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
+    #sed -i "s|C:/Qwt-\$\$QWT_VERSION|/usr/${_arch}|" qwtconfig.pri
 
-    ${QTDIR}/bin/qmake qwt.pro
+    #${QTDIR}/bin/qmake qwt.pro
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-cmake -DUSE_QT6=ON ..
     make
+    popd
   done
 }
 
@@ -54,22 +60,23 @@ package() {
 
   for _target in ${_architectures}; do
 
-    cd "${srcdir}/qwt-build-${_target}/qwt-6.2-rc1"
+    #cd "${srcdir}/qwt-build-${_target}/qwt-6.2-rc2"
+    cd "${srcdir}/qwt-6.2-rc2/build-${_target}"
+    make install DESTDIR="${pkgdir}" 
+    #make INSTALL_ROOT=${pkgdir} QTDIR=/usr/${_target}/ install
 
-    make INSTALL_ROOT=${pkgdir} QTDIR=/usr/${_target}/ install
+    #install -m644 src/qwt_axis_id.h "$pkgdir"/usr/${_target}/include
 
-    install -m644 src/qwt_axis_id.h "$pkgdir"/usr/${_target}/include
-
-    cd "${pkgdir}/usr/${_target}"
+    #cd "${pkgdir}/usr/${_target}"
 
     # Move DLLs from lib to bin
-    mkdir -p bin
-    mv lib/*.dll bin/
+   # mkdir -p bin
+   # mv lib/*.dll bin/
     ${_target}-strip --strip-unneeded "$pkgdir"/usr/${_target}/bin/*.dll
     ${_target}-strip -g "$pkgdir"/usr/${_target}/lib/*.a
     # Move features to share/qt/mkspecs
-    rm -rf "$pkgdir"/usr/${_target}/share
-    mkdir -p lib/qt/mkspecs
-    mv features lib/qt/mkspecs
+    #rm -rf "$pkgdir"/usr/${_target}/share
+    #mkdir -p lib/qt/mkspecs
+    #mv features lib/qt/mkspecs
   done
 }
