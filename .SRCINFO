@@ -1,12 +1,11 @@
 pkgbase = dracula-gtk-theme
 	pkgdesc = This theme provides support for GTK-3 and GTK-2 based desktop environments like Gnome, Unity, Budgie, Pantheon, XFCE, Mate, etc. Also provides support for KDE plasma.
-	pkgver = 2021.05.25
+	pkgver = 2021.06.30
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/Dracula
 	arch = any
 	license = GPL
-	source = dracula-gtk-theme-2021.05.25.tar.gz::https://github.com/The-Repo-Club/Dracula/archive/2021.05.25.tar.gz
-	sha256sums = 6b4afc8502d05dc8da60fd4c48b3bf445883618d65fda27d3b5737d302383e95
+	source = dracula-gtk-theme-2021.06.30.tar.gz::https://github.com/The-Repo-Club/Dracula/archive/2021.06.30.tar.gz
+	sha256sums = 9b3613fc4f4557b5140baff174b64326ddb4329d7f0f62460e998087a542fc31
 
 pkgname = dracula-gtk-theme
-
