@@ -15,7 +15,7 @@ sha256sums=('cbfdfba9886099e8f10aa6048625eada5f25329a6ae9eee2081c2be33f130251'
 
 package() {
 	cd "$srcdir"
-	install -Dm644 "search-orphans-packages.hook" "$pkgdir/usr/share/libalpm/hooks/search-orphans-packages.hook"
+    install -Dm644 "search-orphans-packages.hook" "$pkgdir/usr/share/libalpm/hooks/search-orphans-packages.hook"
     install -Dm755 "search-orphans-packages.sh" "$pkgdir/usr/share/libalpm/scripts/search-orphans-packages.sh"
 }
 
