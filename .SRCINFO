@@ -1,0 +1,11 @@
+pkgbase = terpod-bin
+	pkgdesc = A terminal podcast manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/samhh/terpod/
+	arch = x86_64
+	license = AGPL
+	source = https://github.com/samhh/terpod//releases/download/0.3.0/terpod-linux-amd64
+	sha256sums = c282eb671316c5c0c5c72245cd0959da8441f5078e16b85af15883ebfe9238a7
+
+pkgname = terpod-bin
