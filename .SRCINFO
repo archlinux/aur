@@ -1,6 +1,6 @@
 pkgbase = anbox-git
 	pkgdesc = Running Android in a container
-	pkgver = r1292.7f1bfaf
+	pkgver = r1350.04ac697
 	pkgrel = 1
 	epoch = 1
 	url = http://anbox.io/

@@ -1,8 +1,11 @@
-# Maintainer: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Christoph Schmidpeter <john.doe@example.com>
+# Co-Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# Contributor: Iwan Timmer <irtimmer@gmail.com>
+# pkg: git
 
 pkgname=anbox-git
 _pkgname=anbox
-pkgver=r1292.7f1bfaf
+pkgver=r1350.04ac697
 pkgrel=1
 epoch=1
 arch=('x86_64')
