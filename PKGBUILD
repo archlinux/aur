@@ -1,7 +1,7 @@
 # Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 
 pkgname=python-mautrix
-pkgver=0.9.6
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="A Python 3 asyncio Matrix framework."
 url="https://github.com/tulir/mautrix-python"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MPL')
 arch=('any')
 source=("https://github.com/tulir/mautrix-python/archive/v${pkgver/_rc/-rc}.tar.gz")
-sha256sums=('43214654de9b57b8c555f52dec6a6f562aa311f015996158ade1890a9a4a24bf')
+sha256sums=('69e9b0cc5cccc1fca758c548160dc1d5e4ca6bac7a5bf34d953947fecb43e0db')
 
 prepare() {
     cd mautrix-python-${pkgver/_rc/-rc}
