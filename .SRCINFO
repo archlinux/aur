@@ -1,15 +1,13 @@
 pkgbase = aaxtomp3
 	pkgdesc = Convert Audible's .aax filetype to MP3, FLAC, M4A, or OPUS
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://github.com/KrumpetPirate/AAXtoMP3
 	arch = any
-	license = custom
-	makedepends = git
+	license = custom:WTFPL
 	depends = ffmpeg
 	depends = lame
-	source = aaxtomp3::git+https://github.com/KrumpetPirate/AAXtoMP3.git#tag=v1.1
-	sha256sums = SKIP
+	source = aaxtomp3-1.2.tar.gz::https://github.com/KrumpetPirate/AAXtoMP3/archive/v1.2.tar.gz
+	sha256sums = b2d6853f634fa63880f172a646da42556fb964c7921011cd1074055dd6a5da7e
 
 pkgname = aaxtomp3
-
