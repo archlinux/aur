@@ -85,9 +85,14 @@ prepare()
 build() {
 	cd "WordNet-${_debver}"
 
-	# Note: `./autogen.sh' passes arguments on to `./configure'.
+	# See also `./autogen.sh'.
 	libtoolize
-	./autogen.sh
+	aclocal
+	autoheader
+	automake --add-missing
+	autoconf
+
+	./configure
 
 
 	# The make structure does not facilitate building parts only.
