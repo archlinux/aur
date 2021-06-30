@@ -1,19 +1,19 @@
 pkgbase = visual-paradigm-community
 	pkgdesc = UML design application
 	pkgver = 16.3
-	pkgrel = 20210420
+	pkgrel = 20210701
 	url = http://www.visual-paradigm.com/download/community.jsp
 	install = visual-paradigm-community.install
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
-	source = https://eu6.visual-paradigm.com/visual-paradigm/vpce16.3/20210420/Visual_Paradigm_CE_16_3_20210420_Linux64_InstallFree.tar.gz
+	source = https://eu6.visual-paradigm.com/visual-paradigm/vpce16.3/20210701/Visual_Paradigm_CE_16_3_20210701_Linux64_InstallFree.tar.gz
 	source = visual-paradigm-community.install
 	source = visual-paradigm.desktop
 	source = visual-paradigm.png
 	source = LICENSE.txt
 	source = x-visual-paradigm.xml
-	sha256sums = 5cc5afa8ea204c64e7d1902f36ee8ba49611789d5283890595dc405880ae4800
+	sha256sums = a0b00f590516b3cbc0281b7387775379dabda642652a6267d4b84db012570968
 	sha256sums = 52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806
 	sha256sums = 5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1
 	sha256sums = 41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15
@@ -21,4 +21,3 @@ pkgbase = visual-paradigm-community
 	sha256sums = a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c
 
 pkgname = visual-paradigm-community
-
