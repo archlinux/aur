@@ -12,7 +12,6 @@ pkgbase = libretro-pcsx2-git
 	makedepends = ccache
 	makedepends = cmake
 	makedepends = git
-	makedepends = libpng
 	makedepends = systemd
 	makedepends = vim
 	depends = fmt
