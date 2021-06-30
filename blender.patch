@@ -10,77 +10,6 @@ diff -x .git -ur usd.orig/cmake/defaults/Packages.cmake external_usd/cmake/defau
  add_definitions(${TBB_DEFINITIONS})
  
  # --math
-diff -x .git -ur usd.orig/pxr/base/plug/initConfig.cpp external_usd/pxr/base/plug/initConfig.cpp
---- usd.orig/pxr/base/plug/initConfig.cpp.orig	2020-06-12 17:20:07.478199779 +0200
-+++ external_usd/pxr/base/plug/initConfig.cpp	2020-06-12 17:25:28.648588552 +0200
-@@ -69,10 +69,40 @@
-
- ARCH_CONSTRUCTOR(Plug_InitConfig, 2, void)
- {
-+    /* The contents of this constructor have been moved to usd_initialise_plugin_path(...) */
-+}
-+
-+}; // end of anonymous namespace
-+
-+/**
-+ * The contents of this function used to be in the static constructor Plug_InitConfig.
-+ * This static constructor made it impossible for Blender to pass a path to the USD
-+ * library at runtime, as the constructor would run before Blender's main() function.
-+ *
-+ * This function is wrapped in a C function of the same name (defined below),
-+ * so that it can be called from Blender's main() function.
-+ *
-+ * The datafiles_usd_path path is used to point to the USD plugin path when Blender
-+ * has been installed. The fallback_usd_path path should point to the build-time
-+ * location of the USD plugin files so that Blender can be run on a development machine
-+ * without requiring an installation step.
-+ */
-+void
-+usd_initialise_plugin_path(const char *datafiles_usd_path)
-+{
-     std::vector<std::string> result;
-
-     std::vector<std::string> debugMessages;
-
-+    // Add Blender-specific paths. They MUST end in a slash, or symlinks will not be treated as directory.
-+    if (datafiles_usd_path != NULL && datafiles_usd_path[0] != '\0') {
-+        std::string datafiles_usd_path_str(datafiles_usd_path);
-+        if (datafiles_usd_path_str.back() != '/') {
-+            datafiles_usd_path_str += "/";
-+        }
-+        result.push_back(datafiles_usd_path_str);
-+    }
-+
-     // Determine the absolute path to the Plug shared library.  Any relative
-     // paths specified in the plugin search path will be anchored to this
-     // directory, to allow for relocatability.  Note that this can fail when pxr
-@@ -114,9 +144,24 @@
-     _AppendPathList(&result, installLocation, binaryPath);
- #endif // PXR_INSTALL_LOCATION
-
--    Plug_SetPaths(result, debugMessages);
--}
-+    if (!TfGetenv("PXR_PATH_DEBUG").empty()) {
-+        printf("USD Plugin paths: (%zu in total):\n", result.size());
-+        for(const std::string &path : result) {
-+            printf("    %s\n", path.c_str());
-+        }
-+    }
-
-+    Plug_SetPaths(result, debugMessages);
- }
-
- PXR_NAMESPACE_CLOSE_SCOPE
-+
-+/* Workaround to make it possible to pass a path at runtime to USD. */
-+extern "C" {
-+void
-+usd_initialise_plugin_path(
-+    const char *datafiles_usd_path)
-+{
-+    PXR_NS::usd_initialise_plugin_path(datafiles_usd_path);
-+}
-+}
 diff -Naur external_usd_base/cmake/macros/Public.cmake external_usd/cmake/macros/Public.cmake
 --- external_usd_base/cmake/macros/Public.cmake	2019-10-24 14:39:53 -0600
 +++ external_usd/cmake/macros/Public.cmake	2020-01-11 13:33:29 -0700
@@ -97,36 +26,174 @@ diff -Naur external_usd_base/cmake/macros/Public.cmake external_usd/cmake/macros
      endforeach()
      foreach(lib ${PXR_OBJECT_LIBS})
          set(objects "${objects};\$<TARGET_OBJECTS:${lib}>")
+diff -ru USD-20.11/pxr/base/tf/pxrLZ4/lz4.cpp external_usd/pxr/base/tf/pxrLZ4/lz4.cpp
+--- USD-20.11/pxr/base/tf/pxrLZ4/lz4.cpp        2020-10-14 19:25:19.000000000 +0100
++++ external_usd/pxr/base/tf/pxrLZ4/lz4.cpp     2021-02-09 09:28:51.496190085 +0000
+@@ -614,6 +614,15 @@
+ /*-************************************
+ *  Internal Definitions used in Tests
+ **************************************/
++
++/*******************************************************************
++ * Disabled in Blender. The BLOSC library also exposes these
++ * functions, and this causes 'duplicate symbol' linker errors.
++ *
++ * This problem has been reported upstream at
++ * https://github.com/PixarAnimationStudios/USD/issues/1447
++ *
++ *******************************************************************
+ #if defined (__cplusplus)
+ extern "C" {
+ #endif
+@@ -627,6 +636,7 @@
+ #if defined (__cplusplus)
+ }
+ #endif
++********************************************************************/
+ 
+ /*-******************************
+ *  Compression functions
 
-diff --git a/pxr/base/arch/align.h b/pxr/base/arch/align.h
-index f3cabf4..ebc8a69 100644
---- a/pxr/base/arch/align.h
-+++ b/pxr/base/arch/align.h
-@@ -77,7 +77,11 @@ ArchAlignMemory(void *base)
- /// The size of a CPU cache line on the current processor architecture in bytes.
- ///
- /// \hideinitializer
-+#if defined(ARCH_OS_DARWIN) && defined(ARCH_CPU_ARM)
-+#define ARCH_CACHE_LINE_SIZE 128
+From 442d087962f762deeb8b6e49a0955753fcf9aeb9 Mon Sep 17 00:00:00 2001
+From: Tsahi Zidenberg <tsahee@amazon.com>
+Date: Sun, 15 Nov 2020 15:18:24 +0000
+Subject: [PATCH 1/2] stackTrace: support aarch64/linux
+
+stacktrace calls syscall directly via assembler. Create compatible
+aarch64 code.
+---
+ pxr/base/arch/stackTrace.cpp | 30 ++++++++++++++++++++++++------
+ 1 file changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/pxr/base/arch/stackTrace.cpp b/pxr/base/arch/stackTrace.cpp
+index dcc1dfd46..c11aabeb1 100644
+--- a/pxr/base/arch/stackTrace.cpp
++++ b/pxr/base/arch/stackTrace.cpp
+@@ -583,7 +583,6 @@ nonLockingLinux__execve (const char *file,
+                          char *const argv[],
+                          char *const envp[])
+ {
+-#if defined(ARCH_BITS_64)
+     /*
+      * We make a direct system call here, because we can't find an
+      * execve which corresponds with the non-locking fork we call
+@@ -594,7 +593,27 @@ nonLockingLinux__execve (const char *file,
+      * hangs in a threaded app.  (We use the non-locking fork to get
+      * around problems with forking when we have had memory
+      * corruption.)  whew.
+-     *
++     */
++
++    unsigned long result;
++
++#if defined (__aarch64__)
++    {
++        register long __file_result asm ("x0") = (long)file;
++        register char* const* __argv asm ("x1") = argv;
++        register char* const* __envp asm ("x2") = envp;
++        register long __num_execve asm ("x8") = 221;
++        __asm__ __volatile__ (
++            "svc 0"
++            : "=r" (__file_result)
++            : "r"(__num_execve), "r" (__file_result), "r" (__argv), "r" (__envp)
++            : "memory"
++        );
++        result = __file_result;
++    }
++#elif defined(ARCH_CPU_INTEL) && defined(ARCH_BITS_64)
++
++    /*
+      * %rdi, %rsi, %rdx, %rcx, %r8, %r9 are args 0-5
+      * syscall clobbers %rcx and %r11
+      *
+@@ -603,7 +622,6 @@ nonLockingLinux__execve (const char *file,
+      * constraints to gcc.
+      */
+ 
+-    unsigned long result;
+     __asm__ __volatile__ (
+         "mov    %0, %%rdi    \n\t"
+         "mov    %%rcx, %%rsi \n\t"
+@@ -614,6 +632,9 @@ nonLockingLinux__execve (const char *file,
+         : "0" (file), "c" (argv), "d" (envp)
+         : "memory", "cc", "r11"
+     );
 +#else
- #define ARCH_CACHE_LINE_SIZE 64
++#error Unknown architecture
 +#endif
  
- ///@}
+     if (result >= 0xfffffffffffff000) {
+         errno = -result;
+@@ -621,9 +642,6 @@ nonLockingLinux__execve (const char *file,
+     }
  
-diff --git a/pxr/base/arch/math.h b/pxr/base/arch/math.h
-index 3e66c37..64a052c 100644
---- a/pxr/base/arch/math.h
-+++ b/pxr/base/arch/math.h
-@@ -42,7 +42,7 @@ PXR_NAMESPACE_OPEN_SCOPE
- /// \addtogroup group_arch_Math
+     return result;
+-#else
+-#error Unknown architecture
+-#endif
+ }
+ 
+ #endif
+
+From a1dffe02519bb3c6ccbbe8c6c58304da5db98995 Mon Sep 17 00:00:00 2001
+From: Tsahi Zidenberg <tsahee@amazon.com>
+Date: Sun, 15 Nov 2020 15:22:52 +0000
+Subject: [PATCH 2/2] timing: support aarch64/linux
+
+The aarch64 arch-timer is directly accessible to userspace via two
+registers:
+CNTVCT_EL0 - holds the current counter value
+CNTFRQ_EL0 - holds the counter frequency (in Hz)
+---
+ pxr/base/arch/timing.cpp | 6 ++++++
+ pxr/base/arch/timing.h   | 6 +++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/pxr/base/arch/timing.cpp b/pxr/base/arch/timing.cpp
+index 27ad58fed..9022950c1 100644
+--- a/pxr/base/arch/timing.cpp
++++ b/pxr/base/arch/timing.cpp
+@@ -59,6 +59,11 @@ ARCH_HIDDEN
+ void
+ Arch_InitTickTimer()
+ {
++#ifdef __aarch64__
++    uint64_t counter_hz;
++    __asm __volatile("mrs	%0, CNTFRQ_EL0" : "=&r" (counter_hz));
++    Arch_NanosecondsPerTick = double(1e9) / double(counter_hz);
++#else
+     // NOTE: Normally ifstream would be cleaner, but it causes crashes when
+     //       used in conjunction with DSOs and the Intel Compiler.
+     FILE *in;
+@@ -135,6 +140,7 @@ Arch_InitTickTimer()
+     }
+ 
+     Arch_NanosecondsPerTick = double(1e9) / double(cpuHz);
++#endif
+ }
+ #elif defined(ARCH_OS_WINDOWS)
+ 
+diff --git a/pxr/base/arch/timing.h b/pxr/base/arch/timing.h
+index 67ec0d15f..6dc3e85a0 100644
+--- a/pxr/base/arch/timing.h
++++ b/pxr/base/arch/timing.h
+@@ -36,7 +36,7 @@
+ /// \addtogroup group_arch_SystemFunctions
  ///@{
  
--#if defined (ARCH_CPU_INTEL) || defined(doxygen)
-+#if defined (ARCH_CPU_INTEL) || defined(ARCH_CPU_ARM) || defined(doxygen)
- 
- /// This is the smallest value e such that 1+e^2 == 1, using floats.
- /// True for all IEEE754 chipsets.
-
-
-
+-#if defined(ARCH_OS_LINUX)
++#if defined(ARCH_OS_LINUX) && defined(ARCH_CPU_INTEL)
+ #include <x86intrin.h>
+ #elif defined(ARCH_OS_DARWIN)
+ #include <mach/mach_time.h>
+@@ -69,6 +69,10 @@ ArchGetTickTime()
+ #elif defined(ARCH_CPU_INTEL)
+     // On Intel we'll use the rdtsc instruction.
+     return __rdtsc();
++#elif defined (__aarch64__)
++    uint64_t result;
++    __asm __volatile("mrs	%0, CNTVCT_EL0" : "=&r" (result));
++    return result;
+ #else
+ #error Unknown architecture.
+ #endif

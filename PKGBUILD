@@ -5,7 +5,7 @@
 [[ -v TRAVIS ]] && DISABLE_PYTHON=1
 
 # Configuration.
-_ver="v20.05" #switch to last blender supported version, latest is "v20.08"
+_ver="v21.02" #switch to last blender supported version, latest is "v21.02"
 _fragment="#tag=$_ver"
 if ((DISABLE_PYTHON)); then
   _CMAKE_FLAGS+=( "-DPXR_ENABLE_PYTHON_SUPPORT:BOOL=OFF" )
@@ -16,7 +16,7 @@ else
   eval "makedepends+=( python2-{jinja,pyside-tools} )"
 fi
 
-pkgname=usd-qfix
+pkgname=usd21
 pkgver=${_ver#v}
 pkgrel=1
 pkgdesc="3D VFX pipeline interchange file format."
@@ -30,14 +30,16 @@ conflicts=("usd")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
         "blender.patch"
-        "std.patch")
+        "gcc11.patch"
+        "demangle-fix.patch")
 sha256sums=('SKIP'
             '2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e'
-            '95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a'
-            '5e9dfc3daa97271b959e78737079335907a3536bb8af2d74ef9b8f7529f2f8e5')
+            '0a3f545fdf1b515bdcfad9d606e53293b6d0df47e954b0064370a97b54b8d377'
+            '663352c8932a0b48230087284f4f5c540876f6a5adab3d4d1a7ee7b3a4ad6462'
+            '99ea5fba92842d0215e5188662a066e0cc714ed4dea9c8663cb6239f6c1afbd0')
 
 prepare() {
-  git -C USD apply -v "${srcdir}"/{boost_python2,blender,std}.patch
+  git -C USD apply -v "${srcdir}"/{demangle-fix,gcc11}.patch
 }
 
 #pkgver() {
@@ -47,15 +49,15 @@ prepare() {
 build() {
   _CMAKE_FLAGS+=(
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
-    -DPXR_BUILD_TESTS:BOOL=OFF
-    -DPXR_BUILD_MONOLITHIC:BOOL=ON          # Required by blender-2.83
+    -DPXR_BUILD_TESTS=OFF
+    -DPXR_BUILD_MONOLITHIC=ON               # Required by blender-2.83
     -DBoost_NO_BOOST_CMAKE=ON               # Fix boost overwriting boost_python27 with boost_python
     -DPXR_SET_INTERNAL_NAMESPACE=usdBlender
     -DBUILD_SHARED_LIBS=ON
-    -DCMAKE_DEBUG_POSTFIX=_d
   )
+  export CXXFLAGS+=" -DBOOST_BIND_GLOBAL_PLACEHOLDERS"
   cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
-# shellcheck disable=SC2046
+# shellcheck disable=SC2086
   ninja -C build ${MAKEFLAGS:--j1}
 }
 

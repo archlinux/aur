@@ -1,0 +1,18 @@
+--- USD-21.02/pxr/base/arch/demangle.cpp.orig   2021-01-20 09:13:57.000000000 +0900
++++ USD-21.02/pxr/base/arch/demangle.cpp        2021-02-05 16:37:27.154126908 +0900
+@@ -36,6 +36,7 @@ using std::string;
+ #if (ARCH_COMPILER_GCC_MAJOR == 3 && ARCH_COMPILER_GCC_MINOR >= 1) || \
+     ARCH_COMPILER_GCC_MAJOR > 3 || defined(ARCH_COMPILER_CLANG)
+ #define _AT_LEAST_GCC_THREE_ONE_OR_CLANG
++#include <cxxabi.h>
+ #endif
+ 
+ PXR_NAMESPACE_OPEN_SCOPE
+@@ -138,7 +139,6 @@ _StripPxrInternalNamespace(string* name)
+ #endif
+ 
+ #if defined(_AT_LEAST_GCC_THREE_ONE_OR_CLANG)
+-#include <cxxabi.h>
+ 
+ /*
+  * This routine doesn't work when you get to gcc3.4.
