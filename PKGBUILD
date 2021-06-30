@@ -1,4 +1,4 @@
-# Maintainer: Morten Linderud <morten@linderud.pw>
+# Maintainer: gr m21 <grm21@protonmail.com>
 _npmname=how-2
 pkgname=nodejs-how2
 pkgver=1.8.2
