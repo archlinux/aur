@@ -1,0 +1,14 @@
+pkgbase = nerdfetch-cozette
+	pkgdesc = A POSIX fetch using NerdFonts meant for Cozette
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://github.com/ThatOneCalculator/NerdFetch/tree/cozette
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bc
+	depends = cozette-otb
+	source = git+https://github.com/ThatOneCalculator/NerdFetch/tree/cozette
+	md5sums = SKIP
+
+pkgname = nerdfetch-cozette
