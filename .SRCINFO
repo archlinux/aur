@@ -1,7 +1,7 @@
 pkgbase = v2ray-exporter
 	pkgdesc = An exporter that collect V2Ray metrics over its Stats API and export them to Prometheus
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wi1dcard/v2ray-exporter
 	arch = x86_64
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = v2ray-exporter
 	sha512sums = 4784a869cc63998c2c0fcc0df9d6c826c6b94eee2ba9f58e5c79655a6eb9ce23e439c31855fae0b06a84151b454fe639cc3a6d3f3f2e7d229b4b09485a33fa2f
 
 pkgname = v2ray-exporter
-
