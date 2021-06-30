@@ -1,8 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
-
+# pkg: git
 pkgname=mpv-libunity-git
 pkgver=r6.ef1c45c
-pkgrel=1
+pkgrel=2
 pkgdesc="MPV progress bar on your panel/dock using libunity specification. (GIT version)"
 arch=('x86_64')
 depends=('mpv'
