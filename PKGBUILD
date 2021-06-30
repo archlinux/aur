@@ -1,7 +1,7 @@
-# Maintainer: unknowndev <unknowndev at archlinux.info>
+# Maintainer: unknowndev <unknowndevQwQ@protonmail.com>
 
 pkgname=fp-multiuser
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A frp server plugin to support multiple users for frp"
 arch=('x86_64')
@@ -11,47 +11,20 @@ depends=('glibc')
 optdepends=('frps: provide frp server')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('d5dac6759d8a7a4e2ed531471f526e4e6e7134eb09571b48c9369b92dbe9960f032622a5fa3378e4ed0b72c6b92b76330b50819422731a491825735299ebc3b3')
+sha512sums=('7eb5556134aaec3246d5849af76408195a8037e5ca382fedeaf19a94e049a45e560d396ae63cfb9e96b9088a6f83bb7c34d0214233013e41a0fd378f04cfae29')
 
-__USE_BUILD__='upstream+opt'
+
 
 build() {
     cd "${pkgname}-${pkgver}"
 
-    case "${__USE_BUILD__}" in
-    'upstream')
-        make fp-multiuser
-    ;;
-    'upstream+opt')
 #        export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
         export GOFLAGS="-buildmode=pie -trimpath -modcacherw" # -mod=readonly Lead to build failure
         export CGO_ENABLED=0 # build full static binary
         export CGO_CFLAGS="${CFLAGS}"
         export CGO_CPPFLAGS="${CPPFLAGS}"
         export CGO_LDFLAGS="${LDFLAGS}"
-        make fp-multiuser
-    ;;
-    'my')
-        #        export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-        export GOFLAGS="-buildmode=pie -trimpath -modcacherw" # -mod=readonly Lead to build failure
-        export GO111MODULE=on
-        export CGO_ENABLED=0 # build full static binary
-        export CGO_CFLAGS="${CFLAGS}"
-        export CGO_CPPFLAGS="${CPPFLAGS}"
-        export CGO_LDFLAGS="${LDFLAGS}"
-        go build -o "fp-multiuser" "./cmd/fp-multiuser"
-    ;;
-    *)
-        echo "${__USE_BUILD__}"? WTF? >&2
-        return 1
-    ;;
-    esac
-}
-
-__check() {
-    cd "${pkgname}-${pkgver}"
-    echo Unable to test at this time
-#    go test -v --cover ./cmd/...
+        make
 }
 
 package() {
@@ -61,17 +34,6 @@ package() {
 #    install -Dm644 "fp-multiuser.service" -t          "$pkgdir/usr/lib/systemd/system"
 #    install -Dm644 "fp-multiuser@.service" -t         "$pkgdir/usr/lib/systemd/system"
 
-    case "${__USE_BUILD__}" in
-    'upstream'|'upstream+opt')
-        install -Dm755 "bin/fp-multiuser" -t          "${pkgdir}/usr/bin"
-    ;;
-    'my')
-        install -Dm755 "fp-multiuser" -t              "${pkgdir}/usr/bin"
-    ;;
-    *)
-        echo "${__USE_BUILD__}"? WTF? >&2
-        return 1
-    ;;
-    esac
-    
+    install -Dm755 "LICENSE" -t                        "${pkgdir}/usr/share/licenses/fp-multiuser"    
+    install -Dm755 "bin/fp-multiuser" -t               "${pkgdir}/usr/bin"    
 }

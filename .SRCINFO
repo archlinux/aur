@@ -1,6 +1,6 @@
 pkgbase = fp-multiuser
 	pkgdesc = A frp server plugin to support multiple users for frp
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/gofrp/fp-multiuser
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = fp-multiuser
 	makedepends = git
 	depends = glibc
 	optdepends = frps: provide frp server
-	source = fp-multiuser-0.0.1.tar.gz::https://github.com/gofrp/fp-multiuser/archive/v0.0.1.tar.gz
-	sha512sums = d5dac6759d8a7a4e2ed531471f526e4e6e7134eb09571b48c9369b92dbe9960f032622a5fa3378e4ed0b72c6b92b76330b50819422731a491825735299ebc3b3
+	source = fp-multiuser-0.0.2.tar.gz::https://github.com/gofrp/fp-multiuser/archive/v0.0.2.tar.gz
+	sha512sums = 7eb5556134aaec3246d5849af76408195a8037e5ca382fedeaf19a94e049a45e560d396ae63cfb9e96b9088a6f83bb7c34d0214233013e41a0fd378f04cfae29
 
 pkgname = fp-multiuser
-
