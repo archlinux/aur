@@ -1,16 +1,15 @@
 pkgbase = syrinscape-online-player
 	pkgdesc = Soundscape creator and sound design app for online games
-	pkgver = 1.4.10_p0
+	pkgver = 1.4.11_p9
 	pkgrel = 3
 	url = https://www.syrinscape.com
 	arch = x86_64
 	license = Proprietary
 	makedepends = recode
 	options = !strip
-	source = syrinscape-1.4.10-p0-linux-online.tar.gz::https://www.syrinscape.com/online/
+	source = syrinscape-1.4.11-p9-linux-online.tar.gz::https://www.syrinscape.com/online/
 	source = local://syrinscape-online-player.desktop
-	sha256sums = 2cb55b12b5916d87ba510d11e311f2badc0e2a4ce957e623c45569b93816fe84
+	sha256sums = 98d2b21787f452e7bd5f00832b97a769cc978418c94b889174c3733da8315f9a
 	sha256sums = SKIP
 
 pkgname = syrinscape-online-player
-
