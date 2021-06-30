@@ -3,8 +3,8 @@
 pkgname="cursor-theme-macos-big-sur"
 _gitname="apple_cursor"
 _cursor_name="macOSBigSur"
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Big Sur cursors theme for linux desktops."
 arch=("any")
 depdends=('libx11' 'libxcursor' 'libpng')
@@ -12,7 +12,7 @@ makedepends=('git')
 url="https://github.com/ful1e5/${_gitname}"
 license=("GPL3")
 source=("https://github.com/ful1e5/${_gitname}/releases/download/v${pkgver}/${_cursor_name}.tar.gz")
-sha1sums=("9d88c50ad5b2aaa4d76a1b1a15df2429f4d0661f")
+sha1sums=("1144e9c8ebf2dc57aeea907b6352c80621d87a83")
 
 pkgver() {
   echo $pkgver;
