@@ -1,0 +1,13 @@
+pkgbase = openscad-round-anything
+	pkgdesc = A set of OpenSCAD utilities for adding radii and fillets.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/Irev-Dev/Round-Anything
+	arch = any
+	license = MIT
+	depends = openscad
+	source = https://github.com/Irev-Dev/Round-Anything/archive/refs/tags/1.0.4.tar.gz
+	sha1sums = 79b808b8d4624a642808821ca26501ecf49c6722
+
+pkgname = openscad-round-anything
+
