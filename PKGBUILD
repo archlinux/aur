@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/brainfuck/-/archive/master/brainfuck-master.tar.gz")
 noextract=()
-sha256sums=("e13e1a831275929d227e0e46e174eee09688bd2f0e5eb8ca30f0e69ebec1d65a")
+sha256sums=("2d6685fa12105de62249bb69d419a4f6b7946524d60688c7acf0711b7b9bd57d")
 validpgpkeys=()
 
 build() {
