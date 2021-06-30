@@ -1,6 +1,6 @@
 pkgbase = python-investpy
 	pkgdesc = Financial Data Extraction from Investing.com with Python
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/alvarobartt/investpy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-investpy
 	depends = python-unidecode
 	depends = python-lxml
 	depends = python-requests
-	source = python-investpy-1.0.6.tar.gz::https://github.com/alvarobartt/investpy/archive/refs/tags/1.0.6.tar.gz
-	sha256sums = 3ad6dd6a08f2a0177a76c93cf39dce6cbbf8d9ce16ede344f4d27808b2706ac0
+	source = python-investpy-1.0.7.tar.gz::https://github.com/alvarobartt/investpy/archive/refs/tags/1.0.7.tar.gz
+	sha256sums = 7e8146d2308a8474cf494782bc14e08e536d4da51153b8907a396b6cfb73a167
 
 pkgname = python-investpy
