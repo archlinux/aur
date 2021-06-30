@@ -3,7 +3,7 @@ pkgdesc="ROS - The robot_localization package provides nonlinear state estimatio
 url='https://wiki.ros.org/robot_localization'
 
 pkgname='ros-noetic-robot-localization'
-pkgver='2.7.1'
+pkgver='2.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -53,7 +53,7 @@ depends=(${ros_depends[@]}
 _dir="robot_localization-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz"
         "624.patch"::"https://github.com/cra-ros-pkg/robot_localization/pull/624.patch")
-sha256sums=('67d566a1d2af92699f1a6d93c3b1672f2fc305ce651a47825cc2584c3fe5a78f'
+sha256sums=('aa940144f87d3787aba59123c7d220b27c76ce707747f41bbb5720dfab2d5075'
             'SKIP')
 
 prepare() {
