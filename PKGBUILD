@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='spot'
 pkgname="$_projectname-client"
-pkgver='0.1.14'
-pkgrel='2'
+pkgver='0.1.15'
+pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xou816/$_projectname"
@@ -12,7 +12,7 @@ optdepends=('org.freedesktop.secrets')
 makedepends=('cargo' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e568a3b11fdb3b68082a934ca82b68f05390136bd567ba8ec3c84768721b68bd')
+sha256sums=('55fa29d3627b8e6218b6a0f927391887fbb1a496b597a74a3af70b75207f4121')
 
 _sourcedirectory="$_projectname-$pkgver"
 _builddirectory='build'
