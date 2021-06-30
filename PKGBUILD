@@ -10,7 +10,7 @@ arch=("any")
 conflicts=("python-mkdocs-redirects-git")
 replaces=("python-mkdocs-redirects-git")
 depends=("mkdocs")
-makedepends=("python-setuptools" "git")
+makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=("db413e1d1ef5e88d8427c0a259d72ae85e74a2b51f6cd7605c2a8db358fe340f")
 

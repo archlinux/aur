@@ -6,7 +6,6 @@ pkgbase = mkdocs-redirects
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = git
 	depends = mkdocs
 	conflicts = python-mkdocs-redirects-git
 	replaces = python-mkdocs-redirects-git
