@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=thrive
-pkgver=0.5.3.1
+pkgver=0.5.4.0
 pkgrel=1
 pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 source=("https://github.com/Revolutionary-Games/Thrive/releases/download/v${pkgver%.0}/Thrive_${pkgver}_linux_x11.7z"
         "Thrive.desktop"
         "Thrive.png")
-sha256sums=('8b9046830c62a1c5d353a877018d335c985490415ed78b91981e7eb8b9148d34'
+sha256sums=('2942bcaaf3904551446024049b9ef8213175750f774325c454795643697de6ee'
             'fa23cf5b202ea838626f904614c53a797257ca66cdce221c2a331be357a37118'
             '275e1044877c71f5cc49ccc047330993da1e0e78558177b90f6b5a18d0d7f884')
 
