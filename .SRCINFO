@@ -1,12 +1,12 @@
 pkgbase = betacraft-launcher-git
 	pkgdesc = A Minecraft launcher aims to provide easy access to old versions and improve the overall game experience in those versions.
-	pkgver = 1.09_13.pre3.r3.c467528
+	pkgver = 1.09_13.r1.a0fa742
 	pkgrel = 1
 	url = https://github.com/Moresteck/BetaCraft-Launcher-Java
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = java-environment=8
+	makedepends = java-environment=16
 	depends = java-runtime=8
 	depends = java8-openjfx
 	provides = betacraft-launcher
@@ -19,4 +19,3 @@ pkgbase = betacraft-launcher-git
 	sha256sums = 260020b2dcb68c46ec4d13112289d21fdff962df8345918a612d3b3fb0359551
 
 pkgname = betacraft-launcher-git
-

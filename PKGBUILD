@@ -1,20 +1,20 @@
 # Maintainer: js6pak <kubastaron@hotmail.com>
 
 pkgname=betacraft-launcher-git
-pkgver=1.09_13.pre3.r3.c467528
+pkgver=1.09_13.r1.a0fa742
 pkgrel=1
 pkgdesc="A Minecraft launcher aims to provide easy access to old versions and improve the overall game experience in those versions."
 arch=('x86_64')
 url="https://github.com/Moresteck/BetaCraft-Launcher-Java"
 license=('GPL3')
 depends=('java-runtime=8' 'java8-openjfx')
-makedepends=('git' 'java-environment=8')
+makedepends=('git' 'java-environment=16')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 source=('git+https://github.com/Moresteck/BetaCraft-Launcher-Java.git'
-		'betacraft-launcher'
-		'betacraft-launcher.desktop')
+	'betacraft-launcher'
+	'betacraft-launcher.desktop')
 sha256sums=('SKIP'
             '31bded76e46fd1538fb131fad774d402685b341df861b3f538379d926e5d4d6a'
             '260020b2dcb68c46ec4d13112289d21fdff962df8345918a612d3b3fb0359551')
