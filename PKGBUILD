@@ -1,11 +1,12 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # Contributor: William Luc Ritchie <luc dot ritchie at gmail dot com>
 # Contributor: Borja Ruiz <borja [at] libcrack [dot] so>
+# pkg: git
 
 _pkgname=apkstudio
 pkgname=$_pkgname-git
 pkgver=r299.71ca9b5
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='An IDE for decompiling/editing & then recompiling of android application binaries.'
 arch=('i686' 'x86_64')

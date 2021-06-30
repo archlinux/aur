@@ -1,7 +1,7 @@
 pkgbase = apkstudio-git
 	pkgdesc = An IDE for decompiling/editing & then recompiling of android application binaries.
 	pkgver = r299.71ca9b5
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = http://www.vaibhavpandey.com/apkstudio/
 	install = apkstudio.install
@@ -24,4 +24,3 @@ pkgbase = apkstudio-git
 	sha256sums = SKIP
 
 pkgname = apkstudio-git
-
