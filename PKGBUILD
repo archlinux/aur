@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev')
 makedepends=('python-setuptools')
 conflicts=("${pkgname}-git")
-source=("https://github.com/Ryochan7/sc-controller/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/sc-controller/archive/v${pkgver}.tar.gz")
 sha256sums=('9391e8b58a9750507acd4d59f33da062229d311a9a8fe6427f92272bb5930186')
 
 build() {
