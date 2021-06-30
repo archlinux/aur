@@ -12,7 +12,7 @@ url="https://github.com/friday/Ulauncher-Revived"
 license=('GPL3')
 depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkit2gtk' 'libnotify'
          'gdk-pixbuf2' 'python-dbus' 'python-levenshtein' 'python-pyinotify'
-         'python-websocket-client' 'python-xdg' 'python-gobject' 'python-cairo')
+         'python-websocket-client' 'python-pyxdg' 'python-gobject' 'python-cairo')
 makedepends=('git' 'yarn' 'python-setuptools' 'python-distutils-extra')
 checkdepends=('desktop-file-utils')
 optdepends=('libappindicator-gtk3: tray icon' 'wmctrl: fix window focus on Wayland')
