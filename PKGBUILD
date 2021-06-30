@@ -5,8 +5,8 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-git
-pkgver=6.0.0.r0.g75eb3f4c
-pkgrel=3
+pkgver=6.0.0.r5.g542910d6
+pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -22,7 +22,7 @@ conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('emptydirs' 'strip' 'debug')
-source=("git+https://git.archlinux.org/pacman.git"
+source=("git+https://gitlab.archlinux.org/pacman/pacman.git"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
