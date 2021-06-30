@@ -1,6 +1,6 @@
 pkgbase = tuxpaint-config
 	pkgdesc = Tux Paint configuration tool
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = http://www.tuxpaint.org/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = tuxpaint-config
 	depends = libxft
 	depends = libxext
 	options = !makeflags
-	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-config-0.0.16.tar.gz
-	sha256sums = e52428deb7d51923971dac7cf496dedf1a8ca7dba82b4202c8accf0a8fbd85ee
+	source = https://downloads.sourceforge.net/sourceforge/tuxpaint/tuxpaint-config-0.0.17.tar.gz
+	sha256sums = 8d5068bf8d8d952d5099857e78ae162af64704abfc8b18fc362b950a50e1acae
 
 pkgname = tuxpaint-config
-
