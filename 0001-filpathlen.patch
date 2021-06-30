@@ -1,0 +1,13 @@
+diff --color --unified --recursive --text --color a/rig/rigcontrol.cpp b/rig/rigcontrol.cpp
+--- a/rig/rigcontrol.cpp	2020-12-25 18:11:20.000000000 +0100
++++ b/rig/rigcontrol.cpp	2021-07-01 01:17:34.910938277 +0200
+@@ -33,6 +33,9 @@
+ 
+ 
+ #define MAXCONFLEN 128
++#ifndef FILPATHLEN
++#define FILPATHLEN HAMLIB_FILPATHLEN
++#endif
+ 
+ 
+ QList<const rig_caps *> capsList;
