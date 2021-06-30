@@ -5,19 +5,33 @@ pkgbase=wordnet
 pkgname=(wordnet-common wordnet-tk wordnet-cli)
 pkgver=3.1
 _srcver=3.0
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
-url="http://wordnet.princeton.edu/"
+url="https://wordnet.princeton.edu/"
 license=("custom")
 makedepends=('tk')
-source=("http://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
-        "http://wordnetcode.princeton.edu/wn${pkgver}.dict.tar.gz"
+source=("https://wordnetcode.princeton.edu/${_srcver}/WordNet-${_srcver}.tar.bz2"
+        "https://wordnetcode.princeton.edu/wn${pkgver}.dict.tar.gz"
+        "https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-2149.patch"
+        "https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-3908-pt1.patch"
+        "https://git.savannah.gnu.org/cgit/guix.git/plain/gnu/packages/patches/wordnet-CVE-2008-3908-pt2.patch"
         wordnet.desktop
         wordnet.png)
 sha256sums=('6c492d0c7b4a40e7674d088191d3aa11f373bb1da60762e098b8ee2dda96ef22'
             '3f7d8be8ef6ecc7167d39b10d66954ec734280b5bdcd57f7d9eafe429d11c22a'
+            '668c60fcb8260bfe81cd9eea47c1ab6f62194d121c99ad18f985be8b31966020'
+            '77dc51d27fb686443ce93f5adefb69d829f367776ad9fcb3413549883fad3048'
+            '70874a9f77d12293990e988d44ab22fec77522cc11c2c6ebb420c7d0ac1a692f'
             '10a4011b3d9705b2b0a1f496b33d926d4be21439c63f039b871d93f2d143ed0c'
             '9ab9f761a3fabd278fd05d755fec8a403874f899d7e40347f1da48bf93a67e97')
+
+
+prepare() {
+  cd "$srcdir/WordNet-$_srcver"
+  patch -Np1 -i ../wordnet-CVE-2008-2149.patch
+  patch -Np1 -i ../wordnet-CVE-2008-3908-pt1.patch
+  patch -Np1 -i ../wordnet-CVE-2008-3908-pt2.patch
+}
 
 build() {
   cd "$srcdir/WordNet-$_srcver"
