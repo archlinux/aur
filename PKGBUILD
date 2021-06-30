@@ -5,7 +5,7 @@
 
 pkgname=anbox-image-nocsd-gapps
 pkgver=r60.6fcf46c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
