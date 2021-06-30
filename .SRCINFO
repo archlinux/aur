@@ -1,0 +1,16 @@
+pkgbase = mkdocs-cinder
+	pkgdesc = A clean, responsive MkDocs theme
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://sourcefoundry.org/cinder/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = mkdocs
+	provides = mkdocs-cinder
+	conflicts = python-mkdocs-cinder
+	replaces = python-mkdocs-cinder
+	source = mkdocs-cinder-1.2.0.tar.gz::https://github.com/chrissimpkins/cinder/archive/v1.2.0.tar.gz
+	sha256sums = 4f20061069650cbea144859989c22743e1d9b00aa1e59aed65471488182a7b8d
+
+pkgname = mkdocs-cinder
