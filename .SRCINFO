@@ -1,0 +1,9 @@
+pkgbase = wesh-la-mif
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/torvald/kernel.git
+
+pkgname = wesh-la-mif
