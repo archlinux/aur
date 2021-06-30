@@ -2,7 +2,7 @@
 
 pkgname=saml2aws-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 pkgdesc='CLI tool to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz")
-sha256sums=(fad3c2302c3396f609ade0d343d297fb7a672b8609bb359d441d2b4258c41794)
+b2sums=(8daf1c43a4bd1ca3af09fc46e57e91bc30f70b105b4e94679374dfd322caee91b0c8954e1b82623bd1d8c61e7504fc54662b3812413c7c24315b70ef6b9db09a)
 
 package() {
 	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
