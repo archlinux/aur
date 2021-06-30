@@ -9,7 +9,7 @@ url="https://www.dingtalk.com/"
 depends=('alsa-lib' 'gconf' 'glibc' 'gtk2' 'libxss' 'libxtst' 'nss')
 license=('custom')
 source=(
-    "http://okapps.oukan.online/lroapps/deb-amd64/dingtalk_3.5.5-Beta.0_amd64.deb"
+    "https://archive.kylinos.cn/kylin/partner/pool/dingtalk_3.5.5-Beta.0_amd64.deb"
     "https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/16/Everything/x86_64/os/Packages/pango-1.29.4-1.fc16.x86_64.rpm"
 )
 sha512sums=('df56f0179e384e9876e6d322fe27ea9cb86b20c82cfc20b06c2493a8f9c9a24c38fbd9d3967a28b61a5290ba3c7d9014418a0213142f602f41d088bf98fa40a9'
