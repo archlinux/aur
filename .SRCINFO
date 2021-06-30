@@ -1,15 +1,13 @@
 pkgbase = python2-monotonic
-	pkgdesc = An implementation of time.monotonic() for Python 2 & < 3.3
-	pkgver = 0.3
+	pkgdesc = An implementation of time.monotonic() for Python - python2 version
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/monotonic
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/m/monotonic/monotonic-0.3.tar.gz
-	md5sums = 4d055924b13474f5ac65385b937124fe
+	source = python2-monotonic-1.6-1.tar.gz::https://github.com/atdt/monotonic/archive/1.6.tar.gz
+	sha256sums = 9609c249aed584fd714811014870650d08d6f6414402b5a190663c49bf83b221
 
 pkgname = python2-monotonic
-
