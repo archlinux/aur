@@ -1,0 +1,15 @@
+pkgbase = footloose
+	pkgdesc = Containers that look like Virtual Machines
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/weaveworks/footloose
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	optdepends = ignite: for ignite runtime backend
+	optdepends = docker: for docker runtime backend
+	source = footloose-0.6.4.tar.gz::https://github.com/weaveworks/footloose/archive/0.6.4.tar.gz
+	b2sums = 304722e3f09a231edd06db1bc76c554cb7adb18bb8d746908e2089e93d8af9a90264fcf2d7219afb67ff1494efbf9cdba533a875ec0d7d5383ef872a6f55b58d
+
+pkgname = footloose
