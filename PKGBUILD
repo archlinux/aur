@@ -9,7 +9,7 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.10
+pkgver=3.7.11
 pkgrel=1
 _pybasever=${pkgver%.*}
 _pymajver=3
@@ -28,12 +28,11 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         0002-smaller-pgo-test-suite.patch
         0003-enable-building-with-libmpdec.patch
         )
-sha512sums=('5cb61739acbd29f526d25073443398b2ca0eef30d01d134e8236c8bbc7ab0586c44ec00689f5a75e6aedc0170acf4551721ada5e967e4b99a146cfcaad949128'
+sha512sums=('b8d8c6958444ee9bdd59f0804f7e61d9657c0805c7c58c3352d1c1efb33ba2be8d3485cd2656a2b2b99618a439879687a918f57dfdd125e989af637043600a59'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
-            '991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17'
-             )
+            '991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
 prepare() {
