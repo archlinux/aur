@@ -19,7 +19,7 @@
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
 pkgver='10.0.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')

@@ -1,7 +1,7 @@
 pkgbase = tor-browser-behind-tor
 	pkgdesc = Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)
 	pkgver = 10.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.torproject.org/projects/torbrowser.html
 	install = tor-browser.install
 	arch = i686
