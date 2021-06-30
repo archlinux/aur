@@ -6,7 +6,7 @@
 pkgname=anbox-git
 _pkgname=anbox
 pkgver=r1350.04ac697
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
