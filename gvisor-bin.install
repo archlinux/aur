@@ -1,15 +1,15 @@
 post_install() {
-	runsc install
+	pacman --query docker &> /dev/null && runsc install
 }
 
 pre_upgrade() {
-	runsc uninstall
+	pacman --query docker &> /dev/null && runsc uninstall
 }
 
 post_upgrade() {
-	runsc install
+	pacman --query docker &> /dev/null && runsc install
 }
 
 pre_remove() {
-	runsc uninstall
+	pacman --query docker &> /dev/null && runsc uninstall
 }

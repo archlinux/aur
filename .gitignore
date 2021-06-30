@@ -1,4 +1,3 @@
-*.tar.*
-gvisor-bin-*
+gvisor*
 pkg/
 src/
