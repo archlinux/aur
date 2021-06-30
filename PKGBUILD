@@ -14,7 +14,6 @@ url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
-options=('!makeflags')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
 sha256sums=('c171663351fadef1759aef1dd5220ff69ccd76affb6d0aa719f90c63509b6aa8')
 
