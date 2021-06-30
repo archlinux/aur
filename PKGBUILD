@@ -13,7 +13,6 @@ url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
-options=('!makeflags')
 source=(
     https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
     mpdecimal-2.5.1.patch
