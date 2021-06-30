@@ -1,8 +1,8 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=detect-it-easy-git
-pkgver=3.02.r33.f952de0
-pkgrel=1
+pkgver=3.02.r42.657afee
+pkgrel=2
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
 url='https://horsicq.github.io'
@@ -15,7 +15,6 @@ conflicts=(
 )
 depends=(
   'freetype2'
-  'git'
   'glib2'
   'glibc'
   'graphite'
@@ -27,6 +26,8 @@ depends=(
   'systemd-libs'
 )
 makedepends=(
+  'coreutils'
+  'git'
   'imagemagick'
   'qt5-tools'
 )
@@ -153,7 +154,7 @@ package() {
   ln -s /opt/"${_pkgname}"/diec "$pkgdir"/usr/bin/diec
 
   echo -e "${_prefix}Setting up desktop icon"
-  convert icons/main.ico[0] "$pkgdir"/usr/share/pixmaps/"${_pkgname}".png
+  convert icons/main.ico[4] "$pkgdir"/usr/share/pixmaps/"${_pkgname}".png
 
   echo -e "${_prefix}Setting up desktop shortcuts"
   install -Dm 644 ../"${_pkgname}".desktop -t "$pkgdir"/usr/share/applications
