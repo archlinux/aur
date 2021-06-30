@@ -1,9 +1,10 @@
+# Maintainer: u0_a266 <cagf2emv@anonaddy.me>
 pkgname=search-orphans-pkgs-pacman-hook
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Check orphans packages in pacman"
 arch=("any")
-url="https://github.com/u0a266/config"
+url=
 license=('custom')
 depends=("pacman" "ncurses")
 source=("search-orphans-packages.hook"
