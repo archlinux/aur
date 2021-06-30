@@ -1,0 +1,18 @@
+pkgbase = pynetdicom-git
+	pkgdesc = A Python implementation of the DICOM networking protocol
+	pkgver = v1.5.0.r111.g9e8a86d70
+	pkgrel = 1
+	url = https://github.com/pydicom/pynetdicom
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pydicom
+	depends = python
+	provides = pynetdicom
+	conflicts = pynetdicom
+	source = pynetdicom::git+https://github.com/pydicom/pynetdicom.git
+	sha256sums = SKIP
+
+pkgname = pynetdicom-git
