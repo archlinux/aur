@@ -7,25 +7,28 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2021.3
+pkgver=2021.4
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'python' 'nvm')
+makedepends=('git' 'go' 'rust' 'nodejs>=12' 'npm>=6.12' 'nvm')
 install="$pkgname.install"
-_commit='2063422c167c874eceab10692d4385a0c40b3f47'
+_commit=3a236d50fd1ffb67cd3d29fbfc31393cdf03a224
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "$pkgname.sh")
+#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed" # unverified commit by mvd-ows
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
+        "$pkgname.sh"
+       )
 sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
+             )
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 _ensure_local_nvm() {
@@ -71,7 +74,7 @@ build() {
 	local RUSTC_VERSION=$(rustc --version)
 	local PRODUCT_VERSION=$(node -p "require('./gui/package.json').version" | \
 		sed -Ee 's/\.0//g')
-	source env.sh
+	source env.sh ""
 
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
@@ -80,14 +83,14 @@ build() {
 
 	echo "Building wireguard-go..."
 	pushd wireguard/libwg
-	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
+	mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
 	export GOPATH="$srcdir/gopath"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
+	go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
 	popd
 
 	# Clean mod cache for makepkg -C
@@ -154,8 +157,9 @@ package() {
 	install -d "$pkgdir/opt/Mullvad VPN"
 	cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
 
-	# Install daemon service
-	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
+	# Symlink daemon service to correct directory
+	install -d "$pkgdir/usr/lib/systemd/system"
+	ln -s "/opt/Mullvad VPN/resources/mullvad-daemon.service" \
 		"$pkgdir/usr/lib/systemd/system"
 
 	# Install binaries
