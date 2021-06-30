@@ -1,6 +1,6 @@
 # Maintainer: riey <creeper844@gmail.com>
 pkgname=kime-bin
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -22,8 +22,8 @@ source=(
     ${pkgname}-${pkgver}.tar.gz::"https://github.com/Riey/kime/archive/refs/tags/v${pkgver}.tar.gz"
     ${pkgname}-${pkgver}-bin.tar.zst::"https://github.com/Riey/kime/releases/download/v${pkgver}/kime-v${pkgver}.tar.zst"
 )
-md5sums=('2a333b9cfc1bb03762a15ecba8a9efcc'
-         '9de1a37fd8fe56fe4c5d8182a12a836e')
+md5sums=('d0a21223a3fd594f14a630f558e73cf8'
+         '8f077b4d960c00ab965c097ff5f98c77')
  
 build() {
     cd "kime-${pkgver}"
