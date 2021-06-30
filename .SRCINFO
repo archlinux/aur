@@ -1,0 +1,13 @@
+pkgbase = python2-soupsieve
+	pkgdesc = A CSS4 selector implementation for Beautiful Soup - python2 version
+	pkgver = 1.9.6
+	pkgrel = 3
+	url = https://github.com/facelessuser/soupsieve
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-backports.functools_lru_cache
+	source = python2-soupsieve-1.9.6-3.tar.gz::https://github.com/facelessuser/soupsieve/archive/1.9.6.tar.gz
+	sha256sums = 3fc0bf362090cfafb0b592b120c289d72b11ddab3717015a7a327e30e23e7f65
+
+pkgname = python2-soupsieve
