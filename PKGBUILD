@@ -5,7 +5,7 @@
 
 pkgname=soci-git
 pkgname_=soci
-pkgver=4.0.1.r0.g334cc55d
+pkgver=4.0.2.r0.g99e2d567
 pkgrel=1
 pkgdesc="Database access library for C++"
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname_}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {

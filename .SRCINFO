@@ -1,6 +1,6 @@
 pkgbase = soci-git
 	pkgdesc = Database access library for C++
-	pkgver = 4.0.1.r0.g334cc55d
+	pkgver = 4.0.2.r0.g99e2d567
 	pkgrel = 1
 	url = http://soci.sf.net
 	arch = x86_64
@@ -14,10 +14,9 @@ pkgbase = soci-git
 	optdepends = postgresql-libs: support for postgresql databases
 	optdepends = sqlite3: support for sqlite databases
 	optdepends = unixodbc: support for ODBC databases
-	provides = soci=4.0.1.r0.g334cc55d
+	provides = soci=4.0.2.r0.g99e2d567
 	conflicts = soci
 	source = git+https://github.com/SOCI/soci.git#branch=release/4.0
 	sha1sums = SKIP
 
 pkgname = soci-git
-
