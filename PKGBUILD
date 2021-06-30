@@ -2,23 +2,23 @@
 
 _pipname=plum
 pkgname=python-${_pipname,,}
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Pack/Unpack Memory'
-arch=('any')
+arch=(any)
 url="https://$_pipname-py.readthedocs.io/en/latest/"
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
 source=("https://gitlab.com/dangass/$_pipname/-/archive/$pkgver/$_pipname-$pkgver.tar.bz2")
-sha256sums=('1a21067b45929e6ff738c294d108ade94877920e88180bc6814cc0807fb8655e')
+sha256sums=('ad3302aaddd76dba09a96c4006db1c899937c6c5b3ffbf495b69b1bb3bcc7701')
 
 build() {
-    cd "$_pipname-$pkgver"
-    python setup.py build
+	cd "$_pipname-$pkgver"
+	python setup.py build
 }
 
 package() {
-    cd "$_pipname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_pipname-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
