@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=svls
-pkgver=0.1.25
+pkgver=0.1.28
 pkgrel=1
 epoch=
 pkgdesc="SystemVerilog language server"
@@ -16,7 +16,14 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b0056d55c5fad6eb2ea0d73de563a185ea1f4f8b853ac0df8bf4850c0c760312')
+sha256sums=('44cb324d8a38542941e67e8bf279cad9d1c594ed2a88525d860e6605e0b7caba')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	# https://github.com/rust-lang/rust/issues/81654
+	cargo update --package lexical-core
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

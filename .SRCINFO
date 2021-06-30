@@ -1,14 +1,13 @@
 pkgbase = svls
 	pkgdesc = SystemVerilog language server
-	pkgver = 0.1.25
+	pkgver = 0.1.28
 	pkgrel = 1
 	url = https://github.com/dalance/svls
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = svls-0.1.25.tar.gz::https://github.com/dalance/svls/archive/v0.1.25.tar.gz
-	sha256sums = b0056d55c5fad6eb2ea0d73de563a185ea1f4f8b853ac0df8bf4850c0c760312
+	source = svls-0.1.28.tar.gz::https://github.com/dalance/svls/archive/v0.1.28.tar.gz
+	sha256sums = 44cb324d8a38542941e67e8bf279cad9d1c594ed2a88525d860e6605e0b7caba
 
 pkgname = svls
-
