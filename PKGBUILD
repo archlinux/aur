@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: github openresty/lua-resty-lrucache
 pkgname=lua-resty-lrucache
-pkgver=0.11rc1
+pkgver=0.11
 pkgrel=1
 
 pkgdesc='Lua lrucache for nginx lua module'
@@ -12,7 +12,7 @@ license=('BSD')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openresty/$pkgname/archive/v$pkgver.tar.gz")
 
-sha256sums=('b4f9a5e7bc76e6c430bac6b8d24cdcea69f1d106b773bf9ecdf020a1f2cd81a2')
+sha256sums=('e810ed124fe788b8e4aac2c8960dda1b9a6f8d0ca94ce162f28d3f4d877df8af')
 
 build() {
 	cd "$pkgname-$pkgver"
