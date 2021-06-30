@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-geodesy
 	pkgdesc = ROS - Python and C++ interfaces for manipulating geodetic coordinates.
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = http://wiki.ros.org/geodesy
 	arch = any
@@ -23,8 +23,7 @@ pkgbase = ros-noetic-geodesy
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-geographic-msgs
 	depends = python-pyproj
-	source = ros-noetic-geodesy-0.5.5-0.tar.gz::https://github.com/ros-geographic-info/geographic_info-release/archive/release/noetic/geodesy/0.5.5-0.tar.gz
-	sha256sums = SKIP
+	source = ros-noetic-geodesy-0.5.6-0.tar.gz::https://github.com/ros-geographic-info/geographic_info-release/archive/release/noetic/geodesy/0.5.6-0.tar.gz
+	sha256sums = 0e0e30544c26aba82e9436650848b1442ac5cb4a51157c5acbfdc348d6aadaae
 
 pkgname = ros-noetic-geodesy
-

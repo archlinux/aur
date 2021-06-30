@@ -4,7 +4,7 @@ pkgdesc="ROS - Python and C++ interfaces for manipulating geodetic coordinates."
 url='http://wiki.ros.org/geodesy'
 
 pkgname='ros-noetic-geodesy'
-pkgver='0.5.5'
+pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,12 +35,12 @@ depends=(${ros_depends[@]}
 # _tag=release/noetic/geodesy/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-geographic-info/geographic_info-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+# sha256sums=('0e0e30544c26aba82e9436650848b1442ac5cb4a51157c5acbfdc348d6aadaae')
 
 # Tarball version (faster download)
 _dir="geographic_info-release-release-noetic-geodesy"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/noetic/geodesy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0e0e30544c26aba82e9436650848b1442ac5cb4a51157c5acbfdc348d6aadaae')
 
 build() {
   # Use ROS environment variables
