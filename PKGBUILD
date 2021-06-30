@@ -2,13 +2,13 @@
 pkgname=python2-duckduckgo2
 _realname=duckduckgo2
 pkgver=0.242
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for querying the DuckDuckGo API"
 arch=("any")
 url="http://pypi.python.org/pypi/duckduckgo2"
 license=('BSD')
 depends=('python2')
-source=("http://pypi.python.org/packages/source/d/$_realname/$_realname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_realname::1}/$_realname/$_realname-$pkgver.tar.gz")
 md5sums=('d9668a03c41a34d7a43275303172cc3e')
 
 package() {
