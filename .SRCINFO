@@ -1,0 +1,15 @@
+pkgbase = mkdocs-git-authors-plugin
+	pkgdesc = MkDocs plugin to display git authors of a page
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://timvink.github.io/mkdocs-git-authors-plugin/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = mkdocs
+	conflicts = python-mkdocs-git-authors-plugin-git
+	replaces = python-mkdocs-git-authors-plugin-git
+	source = mkdocs-git-authors-plugin-0.3.3.tar.gz::https://github.com/timvink/mkdocs-git-authors-plugin/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 4a5408639384c34ce3f8ff43eaf77ce354f556aef913b7cad35f3545f2488834
+
+pkgname = mkdocs-git-authors-plugin
