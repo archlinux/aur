@@ -1,0 +1,16 @@
+pkgbase = mkdocs-mermaid2-plugin
+	pkgdesc = A Mermaid graphs plugin for MkDocs
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/fralau/mkdocs-mermaid2-plugin
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = mkdocs
+	depends = python-jsbeautifier
+	conflicts = python-mkdocs-mermaid2-plugin-git
+	replaces = python-mkdocs-mermaid2-plugin-git
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs-mermaid2-plugin/mkdocs-mermaid2-plugin-0.5.1.tar.gz
+	sha256sums = a267b77d0e80336ca12a72851209e90a07ba86b3551fa5422f3cd2ee1886f38a
+
+pkgname = mkdocs-mermaid2-plugin
