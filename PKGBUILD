@@ -2,13 +2,14 @@
 # Contributor: akaessens
 
 pkgname=google-calendar-nativefier
-pkgver=2021.04.26
-pkgrel=3
+pkgver=2021.06.30
+pkgrel=1
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-depends=('electron')
+_electronv=12 # See todoist-nativefier for rationale
+depends=("electron${_electronv}")
 makedepends=(
   'gendesk'
   'nodejs-nativefier'
@@ -22,7 +23,7 @@ _name='Google Calendar'
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron /usr/share/${pkgname} "\$@"
+exec electron${_electronv} /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
