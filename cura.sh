@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # For easier maintainability
-CURA_VERSION="4.9.1"
+CURA_VERSION="4.10.0"
 CURA_BIN_PATH="/opt/Ultimaker_Cura/Ultimaker_Cura-$CURA_VERSION.AppImage"
 
 # Get full path to avoid Error Message in cura 
