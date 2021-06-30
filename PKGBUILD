@@ -2,10 +2,10 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=4.12.1
+_npmver=4.12.2
 pkgname=cloudron-cli
 pkgver=$_npmver
-pkgrel=2
+pkgrel=1
 pkgdesc="Cloudron Commandline Tool"
 arch=('any')
 url="https://git.cloudron.io/cloudron/cloudron-cli"
@@ -15,7 +15,7 @@ makedepends=('npm' 'jq')
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('0ac6bfab2a8336763c5a9ca6e5e2220815ee32bedad1959f240e6ee308f3dd0a')
+sha256sums=('ffecc653e1c5e33ed77d9a5554d881922bd7d17a8c67d885a711d7a3259ae0fd')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
@@ -24,7 +24,7 @@ package() {
 	chown -R root:root "$pkgdir"
 	install -Dm644 "$_npmdir/LICENSE" "$pkgdir/usr/share/licenses/$_npmname/LICENSE"
 	rm -rf "$_npmdir/LICENSE"
-	
+
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
