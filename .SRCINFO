@@ -1,0 +1,15 @@
+pkgbase = python2-hypothesis
+	pkgdesc = Advanced Quickcheck style testing library for Python (4.x is the last version supporting Python2)
+	pkgver = 4.57.1
+	pkgrel = 1
+	url = https://hypothesis.readthedocs.org
+	arch = any
+	license = MPL
+	makedepends = python2-setuptools
+	depends = python2-attrs
+	depends = python2-sortedcontainers
+	source = python2-hypothesis-4.57.1.tar.gz::https://github.com/HypothesisWorks/hypothesis/archive/hypothesis-python-4.57.1.tar.gz
+	sha512sums = 28622ce8a1d89d09df65f3fbf7e92a1ad98dac140ab646fe11fcb15e6aa9a9672eb51d459f984384d92b819f902de911b06cec2542582d529dd556d2f99ed952
+
+pkgname = python2-hypothesis
+
