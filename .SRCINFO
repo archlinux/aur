@@ -1,18 +1,17 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = New fork of DOSBox built for RetroArch/Libretro aiming for simplicity and ease of use
-	pkgver = 0.9.r1.g44eb98b
+	pkgver = 0.13.r8.gb97c9a6
 	pkgrel = 1
 	url = https://github.com/schellingb/dosbox-pure
 	arch = x86_64
 	groups = libretro
 	license = GPL2
 	makedepends = git
-	depends = libretro-core-info
 	depends = gcc-libs
+	depends = libretro-core-info
 	provides = libretro-dosbox-pure
 	conflicts = libretro-dosbox-pure
 	source = libretro-dosbox-pure::git+https://github.com/schellingb/dosbox-pure.git
 	md5sums = SKIP
 
 pkgname = libretro-dosbox-pure-git
-
