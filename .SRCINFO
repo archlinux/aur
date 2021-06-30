@@ -1,21 +1,19 @@
 pkgbase = remarshal
-	pkgdesc = Convert between TOML, YAML and JSON
+	pkgdesc = Convert between CBOR, JSON, MessagePack, TOML, and YAML
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbohdan/remarshal
 	arch = any
 	license = MIT
-	makedepends = python-poetry
-	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
 	depends = python-cbor2
 	depends = python-dateutil
-	depends = python-pytoml
-	depends = python-yaml
+	depends = python-tomlkit
 	depends = python-u-msgpack
-	depends = python-setuptools
+	depends = python-yaml
 	options = !emptydirs
-	source = remarshal-0.14.0.tar.gz::https://github.com/dbohdan/remarshal/archive/v0.14.0.tar.gz
-	sha256sums = 25567516f4b1befdd6603b7aaa2a98cd5e6a429bb6138b485cc1c4a0ee6c7dc7
+	source = https://files.pythonhosted.org/packages/source/r/remarshal/remarshal-0.14.0.tar.gz
+	sha256sums = 16425aa1575a271dd3705d812b06276eeedc3ac557e7fd28e06822ad14cd0667
 
 pkgname = remarshal
-
