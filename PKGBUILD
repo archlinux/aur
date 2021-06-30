@@ -6,11 +6,11 @@ pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
-url="https://github.com/benwaffle/vala-language-server"
+url="https://github.com/prince781/vala-language-server"
 license=('LGPL-2.1')
 depends=('libgee' 'jsonrpc-glib' 'vala' 'meson')
 makedepends=('scdoc')
-source=("https://github.com/benwaffle/vala-language-server/archive/$_pkgver.tar.gz")
+source=("https://github.com/prince781/vala-language-server/archive/$_pkgver.tar.gz")
 sha256sums=('c2c04771bf635a77eb82f27629b9af453f937ecf95709fc9161db785b163fbb7')
  
 #prepare() {
