@@ -5,9 +5,9 @@
 
 pkgname=st
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
 depends=(libxft)
 url=https://st.suckless.org
@@ -50,7 +50,7 @@ prepare() {
     msg+='that was just placed into the package directory to config.h and '
     msg+='modify it to change the configuration. Or just leave it alone to '
     msg+='continue to use default values.'
-    warning "$msg"
+    echo "$msg"
   fi
   cp "$_sourcedir/config.def.h" "$BUILDDIR"
 }

@@ -1,11 +1,12 @@
 pkgbase = st
 	pkgdesc = A simple virtual terminal emulator for X.
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://st.suckless.org
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	depends = libxft
 	source = https://dl.suckless.org/st/st-0.8.4.tar.gz
@@ -16,4 +17,3 @@ pkgbase = st
 	sha256sums = 0ebcbba881832adf9c98ce9fe7667c851d3cc3345077cb8ebe32702698665be2
 
 pkgname = st
-
