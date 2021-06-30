@@ -6,9 +6,9 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2021.4
-_channel=beta
-pkgver=${_pkgver}.${_channel}1
-pkgrel=3
+_channel=stable
+pkgver=${_pkgver}.${_channel}
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -19,17 +19,20 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit=3a236d50fd1ffb67cd3d29fbfc31393cdf03a224
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed" # beta
-#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
+source=(
+#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed" # beta
+        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
 #        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed" # unverified commit by mvd-ows
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
-        "${pkgname%-beta}.sh")
+        "${pkgname%-beta}.sh"
+       )
 sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus@mullvad.net>
-#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+#              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984'
+             )
               # David Lönnhager (code signing) <david.l@mullvad.net>
 
 _ensure_local_nvm() {
