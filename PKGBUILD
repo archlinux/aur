@@ -17,7 +17,7 @@ optdepends=('alsa-lib: ALSA audio driver'
 conflicts=('sdl2')
 provides=('sdl2')
 source=("https://www.libsdl.org/release/SDL2-${pkgver}.tar.gz")
-sha512sums=('f49b869362699b3282f6e82920e59c7fac581bcbf955f18a81cc126293c08093a90df7fcb39517cc8bc32708d2213fe645a42b655d6d811c1386efebb3d3c798')
+sha512sums=('ebc482585bd565bf3003fbcedd91058b2183e333b9ea566d2f386da0298ff970645d9d25c1aa4459c7c96e9ea839fd1c5f2da0242a56892865b2e456cdd027ee')
 
 prepare() {
   cd SDL2-${pkgver}
