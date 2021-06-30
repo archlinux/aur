@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.0
+pkgver=3.9.6
 pkgrel=1
 _pybasever=3.9
 _pymajver=3
@@ -18,7 +18,7 @@ source=(
     mpdecimal-2.5.1.patch
 )
 sha256sums=(
-    '9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854'
+    '397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a'
     '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
 )
 
