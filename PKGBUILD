@@ -4,7 +4,7 @@ pkgdesc="ROS - position_controllers."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-noetic-position-controllers'
-pkgver='0.18.1'
+pkgver='0.19.0'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/position_controllers"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('0c9938678c20d00192645df16f8106c6f5a5c0cff7453bb3daa5ee4c5d8ba459')
+sha256sums=('ce96e156344d628b655eb9d2394c19dd50b77324da12df674d220fa4afea6e68')
 
 build() {
 	# Use ROS environment variables.
