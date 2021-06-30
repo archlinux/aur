@@ -1,13 +1,14 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2021.04.26
-pkgrel=3
+pkgver=2021.06.30
+pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
-depends=('electron')
+_electronv=12 # See todoist-nativefier for rationale
+depends=("electron${_electronv}")
 makedepends=(
   'curl'
   'gendesk'
@@ -19,7 +20,7 @@ _name=Notion
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron /usr/share/${pkgname} "\$@"
+exec electron${_electronv} /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
