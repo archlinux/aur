@@ -1,15 +1,14 @@
 pkgbase = symfony-cli
 	pkgdesc = The Symfony client helps developers create and manage Symfony applications.
-	pkgver = 4.25.2
+	pkgver = 4.25.4
 	pkgrel = 4
 	url = https://symfony.com/
 	install = symfony-cli.install
 	arch = x86_64
 	license = custom
-	source = symfony-cli-4.25.2.gz::https://github.com/symfony/cli/releases/download/v4.25.2/symfony_linux_amd64.gz
+	source = symfony-cli-4.25.4.gz::https://github.com/symfony/cli/releases/download/v4.25.4/symfony_linux_amd64.gz
 	source = eula.txt
-	sha256sums = 8bfa53c1479883e9b48d2e4e5d3f6f7a511df73d65fe5c7b07a4890ee2c75c7e
+	sha256sums = 94ade97d79e6949022ac45e4f8f9c025a9e3efa54a1a891a086a24eb9a9765a7
 	sha256sums = 46711d74e64aa4a26ae257063b795c432113b56fb80d1a69ffaa7b0b079dcf11
 
 pkgname = symfony-cli
-
