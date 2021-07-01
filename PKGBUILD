@@ -14,8 +14,8 @@ noextract=('ASF-linux-x64.zip')
 options=("!strip" "staticlibs")
 
 source=(
-	"https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-x64.zip"
-	"https://raw.githubusercontent.com/JustArchiNET/ArchiSteamFarm/${pkgver}/LICENSE-2.0.txt"
+	"${pkgname}-${pkgver}.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-x64.zip"
+	"LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/JustArchiNET/ArchiSteamFarm/${pkgver}/LICENSE-2.0.txt"
 	"ArchiSteamFarm-bin.desktop"
 )
 
@@ -24,11 +24,13 @@ sha512sums=('d805ae0c2395877dc8ba8bec94f274d8d844294b52c5b891ef60ed816cabdfc3f62
             '32aaead4aacc02c9c60afef74e04cb3a30afc4d76f5e6836a05e672344c7db66cf099849cb2bc9a04454a026f99c9f60d3d7186f4a496d4626fe1a3d40d4ecf6')
 
 prepare() {
-	unzip ASF-linux-x64.zip -d "ASF"
+	unzip "${pkgname}-${pkgver}.zip" -d "ASF"
 }
 
 package() {
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE-2.0.txt"
+	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+	cp "LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-2.0.txt"
+
 	install -Dm644 -t "${pkgdir}/usr/share/applications" "ArchiSteamFarm-bin.desktop"
 
 	install -d "${pkgdir}/opt/ArchiSteamFarm-bin"
