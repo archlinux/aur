@@ -1,14 +1,18 @@
 pkgbase = freedict-tools-svn
 	pkgdesc = Tools to compile the Freedict dictionaries
-	pkgver = r358
-	pkgrel = 1
+	pkgver = r443
+	pkgrel = 2
 	epoch = 1
 	url = https://freedict.org/
 	arch = any
 	license = GPL
 	license = GPL3
 	license = CC-BY-SA
+	license = AGPL3
 	makedepends = subversion
+	makedepends = ghc
+	makedepends = alex
+	makedepends = happy
 	depends = make
 	depends = libxslt
 	depends = tar
@@ -21,10 +25,14 @@ pkgbase = freedict-tools-svn
 	depends = perl-xml-libxslt
 	depends = iso-codes
 	depends = which
+	depends = haskell-base
+	depends = haskell-containers
+	depends = haskell-transformers
+	depends = haskell-pretty
+	depends = haskell-xml
 	provides = freedict-tools
 	conflicts = freedict-tools
 	source = svn+https://github.com/freedict/tools/trunk
 	sha512sums = SKIP
 
 pkgname = freedict-tools-svn
-
