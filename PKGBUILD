@@ -1,5 +1,5 @@
 pkgname=datasette
-pkgver=0.56
+pkgver=0.57.1
 pkgrel=1
 pkgdesc="An open source multi-tool for exploring and publishing data"
 arch=("any")
@@ -11,10 +11,11 @@ depends=("python-asgiref" "python-click" "python-click-default-group" "python-ji
 makedepends=("python-setuptools")
 conflicts=("datasette")
 source=("https://pypi.io/packages/source/d/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("66b3988a2f17c8ecff0f3cd593ed60236841af5c804399c25f553584f705acf3")
+sha256sums=("f6186329bcbaa89bfd25a99034303fbac57f6248d077ec62ed21782b80622045")
 
 build() {
     cd "${pkgname}-${pkgver}"
+    sed -i 's/asgiref>=3.2.10,<3.4.0/asgiref>=3.2.10,<3.5.0/' setup.py
     python setup.py build
 }
 
