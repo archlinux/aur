@@ -1,0 +1,12 @@
+pkgbase = cargo-supply-chain
+	pkgdesc = Gather author, contributor and publisher data on crates in your dependency graph
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rust-secure-code/cargo-supply-chain
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = cargo-supply-chain-0.2.0.tar.gz::https://static.crates.io/crates/cargo-supply-chain/cargo-supply-chain-0.2.0.crate
+	b2sums = 2c86aae43203422095f195ebeae2f7d5c7fcf259a26b8366988cfc3b7fe827813178959b5f158c11babfef35c40dfaf6d9248054cc3f624639100d4b514b9504
+
+pkgname = cargo-supply-chain
