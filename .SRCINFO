@@ -1,0 +1,23 @@
+pkgbase = jakym
+	pkgdesc = Algorithms to compute the inverse Radon transform (e.g. SART, backprojection, Fourier interpolation).
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/themayankjha/JAKYM
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-pip
+	depends = ffmpeg
+	depends = youtube-dl
+	depends = python-pyfiglet
+	depends = python-pydub
+	depends = python-termcolor
+	depends = python-beautifulsoup4
+	depends = python-colorama
+	depends = python-lxml
+	depends = python-simpleaudio
+	source = https://github.com/themayankjha/JAKYM/archive/0.4.0.tar.gz
+	sha256sums = 186bc3cdc4af275b53e9253ea5626b9f863760b3ec4dca02a418e23eb6524a0c
+
+pkgname = jakym
