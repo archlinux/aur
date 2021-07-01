@@ -1,7 +1,7 @@
 pkgname=sqlite-utils
 pkgver=3.12
 pkgrel=1
-pkgdesc="An open source multi-tool for exploring and publishing data"
+pkgdesc="CLI tool and Python utility functions for manipulating SQLite databases"
 arch=("any")
 url="https://sqlite-utils.datasette.io/"
 license=("Apache")
