@@ -1,5 +1,5 @@
 pkgbase = freedict-tools-svn
-	pkgdesc = Tools to compile the Freedict dictionaries
+	pkgdesc = Tools to compile the FreeDict dictionaries
 	pkgver = r443
 	pkgrel = 2
 	epoch = 1
@@ -32,7 +32,7 @@ pkgbase = freedict-tools-svn
 	depends = haskell-xml
 	provides = freedict-tools
 	conflicts = freedict-tools
-	source = svn+https://github.com/freedict/tools/trunk
+	source = freedict-tools-svn::svn+https://github.com/freedict/tools/trunk
 	sha512sums = SKIP
 
 pkgname = freedict-tools-svn
