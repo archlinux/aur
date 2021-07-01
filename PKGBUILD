@@ -14,6 +14,7 @@ optdepends=('geoipupdate: GeoIP2 databases')
 conflicts=('python-sphinx' 'suricata-nfqueue') # Issue with doc generation at compile time - https://github.com/OISF/suricata/pull/6123
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
+        'etc/suricata/local.yaml'
         'etc/suricata/classification.config'
         'etc/suricata/reference.config'
         'etc/suricata/threshold.config')
