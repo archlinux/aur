@@ -1,16 +1,18 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=suricata-nfqueue
 _pkgname=suricata
-pkgver=6.0.2
-pkgrel=1
-pkgdesc="An open source mature, fast and robust network IDS and IPS"
+pkgver=6.0.3
+pkgrel=2
+pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
-url="https://suricata-ids.org/"
+url="https://suricata.io/"
 license=('GPL2')
 provides=('suricata')
 conflicts=('suricata')
-makedepends=('rust')
-depends=('file' 'jansson' 'libcap-ng' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'lz4' 'nss' 'pcre' 'python' 'python-yaml')
+replaces=('suricata')
+makedepends=('rustup')
+depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libnetfilter_queue' 'libpcap' 'libyaml' 'lua' 'lz4' 'nss' 'pcre' 'python-yaml')
+optdepends=('geoipupdate: GeoIP2 databases')
 install=suricata.install
 backup=('etc/suricata/suricata.yaml'
         'etc/suricata/local.yaml'
@@ -20,14 +22,16 @@ backup=('etc/suricata/suricata.yaml'
 source=(https://www.openinfosecfoundation.org/download/${_pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
-sha256sums=('5e4647a07cb31b5d6d0049972a45375c137de908a964a44e2d6d231fa3ad4b52'
+sha256sums=('daf134bb2d7c980035e9ae60f7aaf313323a809340009f26e48110ccde81f602'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
 
 build() {
+  export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nfqueue
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nfqueue \
+	      --disable-gccmarch-native --enable-lua --enable-geoip
   make
 }
 
