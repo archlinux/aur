@@ -1,6 +1,6 @@
 pkgbase = ttf-ubuntu-mono-ligaturized-git
 	pkgdesc = Ubuntu Mono font with programming ligatures
-	pkgver = 2.0.0.r1.gc9416cd
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/datavis-tech/ubuntu-mono-ligaturized
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = ttf-ubuntu-mono-ligaturized-git
 	makedepends = git
 	provides = ttf-ubuntu-mono-ligaturized
 	conflicts = ttf-ubuntu-mono-ligaturized
-	source = git+https://github.com/datavis-tech/ubuntu-mono-ligaturized.git
+	source = git+https://github.com/datavis-tech/ubuntu-mono-ligaturized.git#commit=0539771f148c14e7ea59198efbf80d5214fd7fa7
 	sha256sums = SKIP
 
 pkgname = ttf-ubuntu-mono-ligaturized-git
-
