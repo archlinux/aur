@@ -1,6 +1,6 @@
 pkgbase = tal-noisemaker-vst3
 	pkgdesc = A Free Soft Synth By TAL Software (VST3)
-	pkgver = 4.7.0
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://tal-software.com
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = tal-noisemaker-vst3
 	depends = libcurl-gnutls
 	depends = glibc
 	source = https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip
-	md5sums = 643cab9748368a453659bd50722ab437
+	md5sums = e276964d2a133e547c090a9f6155d843
 
 pkgname = tal-noisemaker-vst3
