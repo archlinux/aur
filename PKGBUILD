@@ -12,7 +12,7 @@
 
 pkgname=splitter
 pkgrel=1
-pkgver=614
+pkgver=615
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'
 license=(GPL)
