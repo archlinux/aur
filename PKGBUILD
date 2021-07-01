@@ -2,9 +2,9 @@
 
 pkgname=redeemer
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="3d shooting game"
-url=('http://hippo.nipax.cz/download.cz.php?id=65')
+url='http://hippo.nipax.cz/download.cz.php?id=65'
 arch=('i686' 'x86_64')
 license=("GPL-2")
 depends=('glu' 'sdl_image')
