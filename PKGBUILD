@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.14.0.r36.gf3cbbc6
-pkgrel=4
+pkgver=1.14.0.r92.g47b5b24
+pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -40,7 +40,7 @@ _ensure_local_nvm() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	export npm_config_cache="$srcdir/npm_cache"
-	local nodeversion='12.22.1'
+	local nodeversion='12.22.2'
 	local npm_prefix=$(npm config get prefix)
 	npm config delete prefix
 	_ensure_local_nvm
