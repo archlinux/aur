@@ -1,7 +1,7 @@
 pkgbase = opencv-cuda
 	pkgdesc = Open Source Computer Vision Library with CUDA support
 	pkgver = 4.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
 	license = BSD
@@ -12,7 +12,6 @@ pkgbase = opencv-cuda
 	makedepends = ninja
 	makedepends = eigen
 	makedepends = hdf5
-	makedepends = lapacke
 	makedepends = gtk3
 	makedepends = nvidia-sdk
 	depends = intel-tbb
@@ -20,7 +19,6 @@ pkgbase = opencv-cuda
 	depends = gst-plugins-base
 	depends = libdc1394
 	depends = cblas
-	depends = lapack
 	depends = libgphoto2
 	depends = jasper
 	depends = cuda
@@ -41,4 +39,3 @@ pkgbase = opencv-cuda
 	sha256sums = 9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a
 
 pkgname = opencv-cuda
-

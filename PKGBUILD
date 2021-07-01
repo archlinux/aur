@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=4.5.2
-pkgrel=1
+pkgrel=2
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -12,8 +12,8 @@ arch=(x86_64)
 license=(BSD)
 url="http://opencv.org/"
 options=(staticlibs)
-depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda)
-makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 lapacke gtk3 nvidia-sdk)
+depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas libgphoto2 jasper cuda)
+makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 gtk3 nvidia-sdk)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
             'hdf5: support for HDF5 format'
@@ -30,8 +30,8 @@ prepare() {
   sed -i 's|nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
 
   # See https://github.com/opencv/opencv/issues/19846
-  msg2 "Patching sources for lapack 3.9.1"
-  find "opencv-$pkgver" -name '*.cpp' -exec sed -i s/dgels_/LAPACK_dgels/g {} \;
+#  msg2 "Patching sources for lapack 3.9.1"
+#  find "opencv-$pkgver" -name '*.cpp' -exec sed -i 's/dgels_/LAPACK_dgels/g; s/sgels_/LAPACK_sgels/g; s/dgesdd_/LAPACK_dgesdd/g; s/sgesdd_/LAPACK_sgesdd/g' {} \;
 
   mkdir -p build
 }
@@ -66,10 +66,11 @@ build() {
     -DOPENCV_SKIP_PYTHON_LOADER=ON \
     -DEIGEN_INCLUDE_PATH=/usr/include/eigen3 \
     -DOPENCV_PYTHON3_INSTALL_PATH=$_pythonpath \
-    -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
-    -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
-    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
-    -DOPENCV_GENERATE_PKGCONFIG=ON
+    -DOPENCV_GENERATE_PKGCONFIG=ON \
+    -DWITH_LAPACK=OFF
+    #-DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
+    #-DLAPACK_CBLAS_H="/usr/include/cblas.h" \
+    #-DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
   ninja
 }
 
