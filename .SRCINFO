@@ -1,6 +1,6 @@
 pkgbase = trueconf-client
 	pkgdesc = Video conference client with a range of rich collaborative tools and an easy-to-use interface
-	pkgver = 7.5.3.739
+	pkgver = 7.5.3.746
 	pkgrel = 1
 	url = https://trueconf.com
 	install = trueconf-client.install
@@ -38,7 +38,7 @@ pkgbase = trueconf-client
 	depends = systemd
 	optdepends = pulseaudio: audio support with pulseaudio
 	source = https://trueconf.com/download/trueconf_client_arch_x86_64.pkg.tar.xz
-	sha256sums = 3dac2123902476010aab80c3382fddfc25c26d40202152bdccd268cdbf1a9a1b
+	sha256sums = e856fb171244c81e2488425a4755009fdfd98912dfcb5408400730793444f740
 
 pkgname = trueconf
 
