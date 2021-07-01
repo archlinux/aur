@@ -1,4 +1,5 @@
 # Maintainer: Alex Wicks <alex@awicks.io>
+# Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 _repo=aerial-sddm-theme
 _pkgname=sddm-theme-aerial
