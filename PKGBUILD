@@ -1,5 +1,5 @@
 pkgname=sgpp
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A numerical library for adaptive Sparse Grids"
@@ -8,14 +8,14 @@ license=('BSD')
 depends=('armadillo' 'python' 'gsl' 'gmm' 'suitesparse')
 makedepends=('scons' 'swig' 'eigen')
 source=("https://github.com/SGpp/SGpp/archive/v${pkgver}.tar.gz")
-sha256sums=('ca4d5b79f315b425ce69b04940c141451a76848bf1bd7b96067217304c68e2d4')
+sha256sums=('450d4002850b0a48c561abe221b634261ca44eee111ca605c3e80797182f40b3')
 
 prepare() {
   cd "$srcdir/SGpp-${pkgver}"
   # tweak umfpack include dir
   sed -i "s|suitesparse/umfpack.h|umfpack.h|g" base/SConscript base/src/sgpp/base/tools/sle/solver/UMFPACK.cpp
 
-  # error: ‘n’ not specified in enclosing ‘parallel’
+  # error: 'n' not specified in enclosing 'parallel'
   sed -i "s|shared(system, A, nnz, rowsDone)|shared(system, A, nnz, rowsDone, n)|g" base/src/sgpp/base/tools/sle/solver/Armadillo.cpp base/src/sgpp/base/tools/sle/solver/Eigen.cpp base/src/sgpp/base/tools/sle/solver/Gmmpp.cpp
   sed -i "s|shared(system, Ti, Tj, Tx, nnz, rowsDone)|shared(system, Ti, Tj, Tx, nnz, rowsDone, n)|g" base/src/sgpp/base/tools/sle/solver/UMFPACK.cpp
 }
