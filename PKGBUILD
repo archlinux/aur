@@ -4,7 +4,7 @@
 pkgname=suricata
 pkgver=6.0.3
 pkgrel=1
-pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
+pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
 license=('GPL2')
