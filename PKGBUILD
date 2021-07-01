@@ -14,8 +14,8 @@ _merge_requests_to_use=()
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=40.1
-pkgrel=2
+pkgver=40.2+2+g8e5e7821a
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -34,7 +34,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=8e644ec39b5ac5b3fd22ceff3a7c0f8d897aa1da  # tags/40.1^0
+_commit=8e5e7821a6da1e4c73f19880889f2c7e7dd557ba # tags/40.2^2
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -74,10 +74,6 @@ pick_mr() {
 
 prepare() {
   cd $_pkgname
-
-  # https://bugs.archlinux.org/task/70851
-  # https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1850
-  git cherry-pick -n d9239e2cee27cad582544e769ad794ca571f35fb
 
   ### Adding and fetching remotes providing the selected merge-requests
   ### Only needed when there is no MR opened
