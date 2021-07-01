@@ -6,6 +6,7 @@ pkgbase = python-plotly
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python
 	depends = jupyterlab
 	depends = python-matplotlib

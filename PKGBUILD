@@ -12,7 +12,8 @@ python-numpy
 python-six
 python-retrying)
 optdepends=('ipython' 'python-ipywidgets')
-makedepends=('python-setuptools')
+makedepends=(python-setuptools
+npm)
 license=('MIT')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
