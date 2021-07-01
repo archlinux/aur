@@ -2,8 +2,8 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
-pkgver=0.0.16
-pkgrel=3
+pkgver=0.0.17
+pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=(x86_64)
 url=https://rpcs3.net
@@ -28,9 +28,17 @@ source=(
     git+https://github.com/wolfSSL/wolfssl.git
     git+https://github.com/tcbrindle/span.git
     git+https://github.com/zeux/pugixml.git
+    git+https://github.com/madler/zlib.git
+    git+https://github.com/curl/curl.git
+    git+https://github.com/glennrp/libpng.git
+    git+https://github.com/RPCS3/ffmpeg-core.git
 )
 
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -50,6 +58,7 @@ md5sums=('SKIP'
 prepare() {
     cd "$pkgname"
     git submodule init
+    git config submodule."rpcs3-ffmpeg".url ../ffmpeg-core
     git config submodule."3rdparty/cereal".url ../rpcs3-cereal
     git config submodule."3rdparty/hidapi".url ../rpcs3-hidapi
     git config submodule."llvm".url ../rpcs3-llvm
@@ -57,14 +66,17 @@ prepare() {
     git config submodule."3rdparty/xxHash".url ../xxHash
     git config submodule."3rdparty/FAudio".url ../FAudio
     git config submodule."3rdparty/flatbuffers".url ../flatbuffers
-    git config submodule."Vulkan/glslang".url ../glslang
-    git config submodule."Vulkan/spirv-headers".url ../SPIRV-Headers
-    git config submodule."Vulkan/spirv-tools".url ../SPIRV-Tools
+    git config submodule."3rdparty/glslang".url ../glslang
+    git config submodule."3rdparty/SPIRV-Headers".url ../SPIRV-Headers
+    git config submodule."3rdparty/SPIRV-Tools".url ../SPIRV-Tools
     git config submodule."asmjit".url ../asmjit
     git config submodule."3rdparty/libusb".url ../libusb
     git config submodule."3rdparty/wolfssl".url ../wolfssl
     git config submodule."3rdparty/span".url ../span
     git config submodule."3rdparty/pugixml".url ../pugixml
+    git config submodule."3rdparty/zlib".url ../zlib
+    git config submodule."3rdparty/curl".url ../curl
+    git config submodule."3rdparty/libpng".url ../libpng
     git submodule update
 }
 
