@@ -1,0 +1,20 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index b12eb5ad..592084f8 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -90,15 +90,6 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+   register_definitions(-DOPENMVG_STD_UNORDERED_MAP)
+ endif()
+ 
+-# ==============================================================================
+-# Check that submodule have been initialized and updated
+-# ==============================================================================
+-if (NOT EXISTS ${PROJECT_SOURCE_DIR}/dependencies/cereal/include)
+-  message(FATAL_ERROR
+-    "\n submodule(s) are missing, please update your repository:\n"
+-    "  > git submodule update -i\n")
+-endif()
+-
+ # ==============================================================================
+ # Additional cmake find modules
+ # ==============================================================================
