@@ -1,0 +1,14 @@
+pkgbase = archbuilder-git
+	pkgdesc = makepkg wrapper that uses buildah
+	pkgver = v0.9.4.r1.g29f32e4
+	pkgrel = 1
+	url = https://github.com/mfulz/archbuilder
+	arch = any
+	depends = buildah
+	provides = archbuilder=v0.9.4
+	conflicts = archbuilder
+	backup = etc/archbuilder/archbuilder.env
+	source = git+https://github.com/mfulz/archbuilder
+	sha256sums = SKIP
+
+pkgname = archbuilder-git
