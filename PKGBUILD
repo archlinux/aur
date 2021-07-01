@@ -1,9 +1,10 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.0.2.r299.ge6e81399f
+pkgver=3.0.2.r317.g3ebd8d401
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
@@ -18,12 +19,20 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
 conflicts=(audacity)
-source=("git+https://github.com/audacity/audacity.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/audacity/audacity.git"
+  "audacity.patch"
+)
+sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
 
 pkgver() {
   cd audacity
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
+}
+
+prepare() {
+  cd audacity
+  patch --forward --strip=1 --input="${srcdir}/audacity.patch"
 }
 
 build() {
