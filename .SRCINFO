@@ -23,7 +23,7 @@ pkgbase = blender-fracture_modifier-git
 	depends = freetype2
 	depends = libxi
 	depends = openimageio
-	depends = opencolorio
+	depends = opencolorio1
 	depends = openvdb
 	depends = opencollada
 	depends = opensubdiv
@@ -54,6 +54,7 @@ pkgbase = blender-fracture_modifier-git
 	source = openvdb7.patch
 	source = openvdb8.patch
 	source = openexr3.patch
+	source = opencolorio1.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -75,6 +76,6 @@ pkgbase = blender-fracture_modifier-git
 	sha256sums = c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9
 	sha256sums = edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75
 	sha256sums = 8e28b28679c67ce589558468d5d912321b345dbbe46c80b359a1a38417ba2ed2
+	sha256sums = b998efa375b868e3beeba54fe070fa73256663f23a86668a04f34ceb626c65ac
 
 pkgname = blender-fracture_modifier-git
-
