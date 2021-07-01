@@ -1,7 +1,7 @@
 # Maintainer: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname="cloud-nuke-bin"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A tool for cleaning up your cloud accounts by nuking (deleting) all resources within it."
 url="https://github.com/gruntwork-io/cloud-nuke"
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('cloud-nuke')
 source_x86_64=("$pkgname::$url/releases/download/v${pkgver}/${pkgname/-bin/}_linux_amd64")
 source_i386=("$pkgname::$url/releases/download/v${pkgver}/${pkgname/-bin/}_linux_386")
-sha256sums_x86_64=(d2a952a95dffc5fc6b070e2d78be2ee0cc3767fbf858daeefc1d7e3ca962dc25)
-sha256sums_i386=(7816961ad75539ed0e6aa0066ba6876f3b81e60c4cadd33fba9d5a6253951572)
+sha256sums_x86_64=(9c2e21c0dfd7528318db4bc03db595f74e4817868d68465068e24cafa3feca3d)
+sha256sums_i386=(ce8fd17dea9c320fe6f7550c27ce490370e1e8d555836a5d88fd334d1e01314e)
 
 package() {
   install -Dm755 cloud-nuke-bin "$pkgdir/usr/bin/cloud-nuke"
