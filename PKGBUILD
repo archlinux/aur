@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.12.13.arch1
-pkgrel=2
+pkgver=5.12.14.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
@@ -30,7 +30,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'c8f26962e51fb2ef7628cb90c93f93d53ff5a8874d16322783152cf89007887c'
+            '828d90d788ad44ba1480486081afb3ec730de5b48dfe344662043940a0b42cdf'
             # -- covolunablu-gaming patches --
             '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
             'cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7'
@@ -125,13 +125,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
