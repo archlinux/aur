@@ -2,7 +2,7 @@
 # Contributor: Cheng Fei Phung <feiphung@hotmail.com>
 
 pkgname=xyce-serial
-pkgver=7.2.0
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="The Xyce Parallel Electronic Simulator is a SPICE-compatible circuit simulator"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('gcc-fortran' 'cmake')
 provides=('xyce')
 conflicts=('xyce')
 source=("https://github.com/Xyce/Xyce/archive/Release-"$pkgver".tar.gz")
-sha256sums=('cf49705278ecda46373784bb24925cb97f9017b6adff49e4416de146bdd6a4b5')
+sha256sums=('43869a70967f573ff6f00451db3f4642684834bdad1fd3926380e3789016b446')
 
 build() {
 	cd Xyce-Release-"$pkgver"
