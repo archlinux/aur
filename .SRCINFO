@@ -1,7 +1,7 @@
 pkgbase = initramfs-l14kbdlight
 	pkgdesc = initramfs hook that turns Librem 14 keyboard on
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 3
 	arch = any
 	license = MIT
 	depends = mkinitcpio

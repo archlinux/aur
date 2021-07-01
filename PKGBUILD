@@ -3,7 +3,7 @@
 pkgname=initramfs-l14kbdlight
 pkgdesc="initramfs hook that turns Librem 14 keyboard on"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 license=(MIT)
 arch=(any)
 depends=(mkinitcpio)
