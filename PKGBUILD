@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=bennugd-modules
-pkgver=348
+pkgver=353
 pkgrel=1
 pkgdesc="a programming language to create games (Fenix successor) - modules"
 arch=('i686' 'x86_64')
