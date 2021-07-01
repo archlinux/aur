@@ -1,4 +1,4 @@
-# Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
+# Maintainer: Alex Wicks <alex@awicks.io>
 
 _repo=aerial-sddm-theme
 _pkgname=sddm-theme-aerial
@@ -32,5 +32,5 @@ build() {
 package() {
   mkdir -p "$pkgdir/usr/share/sddm/themes/aerial/" 
   mv ${srcdir}/$_repo/* "$pkgdir/usr/share/sddm/themes/aerial/" 
-  chmod 644 "$pkgdir/usr/share/sddm/themes/aerial/"
+  chmod 755 "$pkgdir/usr/share/sddm/themes/aerial/"
 }
