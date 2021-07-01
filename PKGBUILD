@@ -22,7 +22,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         'b167f5bf37cad01957c0720ab4dc2a79'
+         'aca0c5da32944e7a9dd519304a362bc6'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
          '1dde0e422484895d3509f4ee9bb8d980'
