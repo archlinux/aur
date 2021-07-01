@@ -1,7 +1,7 @@
 pkgbase = mycorrhiza-bin
 	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/bouncepaw/mycorrhiza
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = mycorrhiza-bin
 	depends = git
 	provides = mycorrhiza
 	conflicts = mycorrhiza
-	source_x86_64 = mycorrhiza-bin-1.1.0.tar.gz::https://github.com/bouncepaw/mycorrhiza/releases/download/v1.1.0/mycorrhiza-v1.1.0-linux-amd64.tar.gz
-	md5sums_x86_64 = aa62f1c71f082332df4f67d40c8dcdbd
-	source_i686 = mycorrhiza-bin-1.1.0.tar.gz::https://github.com/bouncepaw/mycorrhiza/releases/download/v1.1.0/mycorrhiza-v1.1.0-linux-868.tar.gz
-	md5sums_i686 = aa62f1c71f082332df4f67d40c8dcdbd
+	source_x86_64 = mycorrhiza-bin-1.2.0.tar.gz::https://github.com/bouncepaw/mycorrhiza/releases/download/v1.2.0/mycorrhiza-v1.2.0-linux-amd64.tar.gz
+	md5sums_x86_64 = 2eaa47c9da986512cc7617b8cb300536
+	source_i686 = mycorrhiza-bin-1.2.0.tar.gz::https://github.com/bouncepaw/mycorrhiza/releases/download/v1.2.0/mycorrhiza-v1.2.0-linux-868.tar.gz
+	md5sums_i686 = 42124e6e861d5f9b3e093b4893f86c59
 
 pkgname = mycorrhiza-bin
 
