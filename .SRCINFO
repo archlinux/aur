@@ -46,6 +46,7 @@ pkgbase = blender-2.7
 	source = openvdb7.patch
 	source = openvdb8.patch
 	source = cycles.patch
+	source = openexr3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -60,6 +61,6 @@ pkgbase = blender-2.7
 	sha256sums = c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9
 	sha256sums = edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75
 	sha256sums = d245f02d73bd5b767ffa49d369383d7cd6ae5e57b89c2975a78c1015e1884864
+	sha256sums = e7d75a5ef5cb6452b45f6e1e80b6fe69e2630878b1f4f6d53bf0e36ced237712
 
 pkgname = blender-2.7
-
