@@ -1,6 +1,6 @@
 pkgbase = ablavema-bin
 	pkgdesc = A Blender launcher and version manager
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/AlexChaplinBraz/Ablavema
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ablavema-bin
 	optdepends = kdialog: graphical dialog
 	conflicts = ablavema
 	conflicts = ablavema-git
-	source_x86_64 = https://github.com/AlexChaplinBraz/Ablavema/releases/download/0.2.1/ablavema-0.2.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fbbc605ef73bde6dd4d23ee5684868c026c8c3ba12c71e16dada4d3027bc02c9
+	source_x86_64 = https://github.com/AlexChaplinBraz/Ablavema/releases/download/0.3.0/ablavema-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b76140dd177ec5ee4e60464d52988505f44a3d75c8c111c7591a5eb8a7c864d7
 
 pkgname = ablavema-bin
