@@ -1,0 +1,7 @@
+*.pkg.tar
+katago-cpu
+weights-b20.bin.gz
+weights-b30.bin.gz
+weights-b40.bin.gz
+g*.bin.gz
+src/
