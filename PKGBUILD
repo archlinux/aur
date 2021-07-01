@@ -1,7 +1,9 @@
+# Maintainer: Primalmotion <primalmation at pm dot me>
+
 pkgname=initramfs-l14kbdlight
 pkgdesc="initramfs hook that turns Librem 14 keyboard on"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 license=(MIT)
 arch=(any)
 depends=(mkinitcpio)
