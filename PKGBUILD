@@ -22,7 +22,7 @@ options=('!libtool')
 
 _gitname='gstreamer'
 
-source=('git+git://anongit.freedesktop.org/gstreamer/gstreamer')
+source=('git+https://gitlab.freedesktop.org/gstreamer/gstreamer')
 md5sums=('SKIP')
 
 pkgver() {
