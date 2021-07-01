@@ -67,13 +67,13 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=35
-_rtpatchver=39
-_clr=${_major}.35-75
+_minor=41
+_rtpatchver=42
+_clr=${_major}.${_minor}-76
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
@@ -261,13 +261,16 @@ _package-headers() {
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
     install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
+    # https://bugs.archlinux.org/task/13146
     install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
+    # https://bugs.archlinux.org/task/20402
     install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    # https://bugs.archlinux.org/task/71392
+    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -317,9 +320,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('ac37a19d45b77a87e58e3aae8b127a6e7eb85ed7467fc8e58474b387bfd498fd'
+sha256sums=('f604759de80767c4f8bdc500eec730dc161bc914a48bd366b748c176701a6771'
             'SKIP'
-            '3e1d3531173d5bb276935eaec016ef3c3c0f8f4fcc1fc418d192cc10824ff80d'
+            '03a1be966680c3fc8853d8b1d08fca3dd1303961e471d5bb41e44d57b07e12fd'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
