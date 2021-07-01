@@ -1,13 +1,13 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-git
-pkgver=0.14.0.r11.g7cbcc65a
+pkgver=0.14.0.r15.g1db976ce
 pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version)'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
-provides=("libwlroots.so=${pkgver%%.r*}")
+provides=("libwlroots.so=${pkgver%%.r*}" "wlroots")
 conflicts=(wlroots)
 options=(debug)
 depends=(
