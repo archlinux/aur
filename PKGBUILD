@@ -1,8 +1,9 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
+# Maintainer: Shi Liang <shiliang2008@msn.com>
 
 pkgname=layan-gtk-theme-git
 _reponame='Layan-gtk-theme'
-pkgver=r56.31a7ef4
+pkgver=20210630
 pkgrel=1
 pkgdesc='An Flat Gtk+ theme based on Material Design'
 arch=("any")
@@ -23,7 +24,7 @@ pkgver(){
     if [ $(git tag|wc -l) == 0 ]; then
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     else
-        git describe --tags | sed 's/-/.r/; s/-g/./'
+        git describe --tags | sed 's/-//g'
     fi
 }
 
