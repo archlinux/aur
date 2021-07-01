@@ -1,4 +1,4 @@
-# Maintainer: Johann Rohwer <j.m.rohwer@gmail.com>
+# Maintainer: Johann Rohwer <j.m.rohwer at gmail dot com>
 
 _lang=afr-deu
 _pkgname=dict-freedict-${_lang}
