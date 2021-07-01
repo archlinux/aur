@@ -1,14 +1,13 @@
 pkgbase = nextcloud-app-u2f
 	pkgdesc = Two factor U2F provider for Nextcloud
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
-	url = https://github.com/nextcloud/twofactor_u2f
+	url = https://github.com/nextcloud-releases/twofactor_u2f
 	arch = any
 	license = AGPL
 	depends = nextcloud>=20.0
 	options = !strip
-	source = twofactor_u2f-6.1.0.tar.gz::https://github.com/nextcloud/twofactor_u2f/releases/download/v6.1.0/twofactor_u2f.tar.gz
-	sha256sums = 40bd5ccd3560358b0fc8d5ad0e541bc7f7b9229abbc4c55457dc3e9bf2c7c062
+	source = twofactor_u2f-6.2.0.tar.gz::https://github.com/nextcloud-releases/twofactor_u2f/releases/download/v6.2.0/twofactor_u2f.tar.gz
+	sha256sums = c8e3519c4a7639fd229ceb0dc32acccc64ffb6facb6fad946e02afce49023e67
 
 pkgname = nextcloud-app-u2f
-
