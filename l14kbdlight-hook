@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+run_hook() {
+    echo 255 > "/sys/class/leds/librem_ec:kbd_backlight/brightness"
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

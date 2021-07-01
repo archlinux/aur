@@ -1,0 +1,15 @@
+#!/bin/bash
+
+build() {
+    add_module librem_ec_acpi
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+Turns on Librem 14 keyboard backlight.
+
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
