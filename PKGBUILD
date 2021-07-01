@@ -11,6 +11,7 @@
 _NUMAdisable=y
 # Enable fsync
 _fsync=y
+#_futex2=y
 ### Set performance governor as default
 _per_gov=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
@@ -42,7 +43,7 @@ _use_current=
 
 pkgbase=linux-cacule-rt
 _major=5.10
-_minor=45
+_minor=47
 _srcname=linux-${_major}.${_minor}
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -71,7 +72,7 @@ source=(
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
 # ${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
   "${_patchsource}/futex-dev-patches/0001-futex-dev-patches.patch"
-# "${_patchsource}/futex2-trunk-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+ # "${_patchsource}/futex2/futex2-5.10.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -143,7 +144,10 @@ prepare() {
           scripts/config --enable CONFIG_FUTEX
           scripts/config --enable CONFIG_FUTEX_PI
         fi
-
+        if [ -n "$_futex2" ]; then
+          echo "Enable Futex2 support"
+          scripts/config --enable CONFIG_FUTEX2
+        fi
     ### Set performance governor
         if [ -n "$_per_gov" ]; then
           echo "Setting performance governor..."
@@ -318,12 +322,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('08f4760c72a0971d92990bb8015ef56b7a58390ef88d72d0b38c73e52ea474ca6890140fb2d102e3f8ed0af5903d9ba4f606bc500bb96d53dac311a268e8126e'
-            'f03ee73b667c09ad558dc2bb795c5ce6cb7bd07cda584b2691b210dce1835d3332d557297f5c54d4d9dd67b1fbb92c49d00dc61cceed2b9a95f179d83a698809'
-            'bd82dfd2efea454c42951650b7d454d74d8197262dd8bbabe4cf25b46972fb669e6098c2ad4947f739407369cfb9806d3b95249a258b73221d66a5e7b17093f3'
-            '1ecbd7a28489ce68939a78eeeafd0a4b0064b26dd68cd8df661effa3729fa9c087211c1758db98289d3ec6f9f9071fea0f815ed57fa6188ef5fcca3f85ef6e9d'
-            'cc33f1db2b449e1e277100fd87e099a4addbfef69e8ba77f92f30b5e2273aee31d04a09c26a3175ad1d2b269764df57934107d55cc615f121529ed0a42c34524'
-            'f649ffc0c4ecdc0168aaa852751336209f4166976470a47f912550e64bbe0e0c128fc3ab7dc23d6f0fcdce56bcc2562d1e11826c5be866811eb58f5b15a5c1fd'
-            '61dddce21ae29042b952f145698f47ca6dce8a6d36e1a1a60efe01bb78d6defaaa9ba3cd69314519363d6e853a9de0ef8af5154c0b3af95789dbe6f0706bfc21'
-            '40b2139abe3f946c550e2b4c5e3d7360db8fecc9837defca13b445503c7a3eb05bd746dc4a11d516f575cfacb266548627feec1d29b8c21182871c20cf2f8b6e'
-            '164f33f8d7e9a55acd82c789d7204f41f0a32c9aaea2b77c8ce9d6aa0eac883c77d992fa72254fad7f53177d2240dccc0d3c8a999f94aa1eaef34ab3d410240a')
+md5sums=('cb6a98b89db3357997318c6a8fc58032'
+         '7d8c2aaaed142867c014f44b439f8694'
+         'ed0111102cdd24540985bece74c5be3d'
+         '45704a71e1cb971e337700c52da739f0'
+         '1ddeca3dfe8d2dfbf722a6e19ab500cd'
+         'e32edb4d49288ccb2417a2030f90d41f'
+         'db72f9fe09be3f11db7e1e268a5ac3eb'
+         '0575ffbb96ab5e5b1b2e378667e276ca'
+         '596b80bb280533a8d7dbab246f179d4f')
