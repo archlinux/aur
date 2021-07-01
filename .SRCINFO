@@ -1,5 +1,5 @@
 pkgbase = kodi-matrix-git
-	pkgver = r57313.40360ae2cea
+	pkgver = r57323.ee96ef349b6
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -127,7 +127,7 @@ pkgname = kodi-matrix-git-common
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r57313.40360ae2cea
+	provides = kodi-common=r57323.ee96ef349b6
 	conflicts = kodi-common
 	replaces = kodi-common
 
@@ -135,7 +135,7 @@ pkgname = kodi-matrix-git-x11
 	pkgdesc = x11 kodi binary
 	depends = kodi-matrix-git-common
 	depends = libxrandr
-	provides = kodi=r57313.40360ae2cea
+	provides = kodi=r57323.ee96ef349b6
 	replaces = kodi
 
 pkgname = kodi-matrix-git-wayland
@@ -143,7 +143,7 @@ pkgname = kodi-matrix-git-wayland
 	depends = kodi-matrix-git-common
 	depends = libxkbcommon
 	depends = waylandpp
-	provides = kodi=r57313.40360ae2cea
+	provides = kodi=r57323.ee96ef349b6
 	conflicts = kodi-wayland
 	replaces = kodi
 
@@ -152,7 +152,7 @@ pkgname = kodi-matrix-git-gbm
 	depends = kodi-matrix-git-common
 	depends = libxkbcommon
 	depends = libinput
-	provides = kodi=r57313.40360ae2cea
+	provides = kodi=r57323.ee96ef349b6
 	conflicts = kodi-gbm
 	replaces = kodi
 
@@ -160,7 +160,7 @@ pkgname = kodi-matrix-git-eventclients
 	pkgdesc = Kodi Event Clients (Matrix branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r57313.40360ae2cea
+	provides = kodi-eventclients=r57323.ee96ef349b6
 	conflicts = kodi-eventclients
 
 pkgname = kodi-matrix-git-tools-texturepacker
@@ -169,11 +169,11 @@ pkgname = kodi-matrix-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r57313.40360ae2cea
+	provides = kodi-tools-texturepacker=r57323.ee96ef349b6
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-matrix-git-dev
 	pkgdesc = Kodi dev files (Matrix branch)
 	depends = kodi-matrix-git-common
-	provides = kodi-dev=r57313.40360ae2cea
+	provides = kodi-dev=r57323.ee96ef349b6
 	conflicts = kodi-dev

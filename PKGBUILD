@@ -25,7 +25,7 @@ pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57313.40360ae2cea
+pkgver=r57323.ee96ef349b6
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -128,8 +128,10 @@ prepare() {
 
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
 
+  # [swig] fix illegal access warnings/errors with Java >= 9 #19891
+  git cherry-pick --no-commit -n bfb08a4a32e31349f7578efd2de78a8e394a2946
+
   if [[ -n "$_clangbuild" ]]; then
-    git cherry-pick --no-commit -n bfb08a4a32e31349f7578efd2de78a8e394a2946
     git cherry-pick --no-commit -n f5512d575dfc872d51632c9bf79d58e39be60cfb
     git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
     git cherry-pick --no-commit -n e32eeb6a4897ea6ff7ac461b848e60f7794037c2
