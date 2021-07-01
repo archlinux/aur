@@ -1,7 +1,7 @@
 pkgbase = trackma-git
 	pkgdesc = A lightweight and simple program for updating and using lists on several media tracking websites.
 	pkgver = 0.8.4.r35.g981bdac
-	pkgrel = 1
+	pkgrel = 2
 	url = http://z411.github.io/trackma/
 	arch = any
 	license = GPL3
@@ -10,7 +10,8 @@ pkgbase = trackma-git
 	makedepends = git
 	depends = python
 	depends = python-pyinotify
-	optdepends = python-gobject: GTK frontend
+	optdepends = python-dbus: MPRIS tracker
+	optdepends = python-gobject: GTK frontend/MPRIS tracker
 	optdepends = python-cairo: GTK frontend
 	optdepends = python-pillow: thumbnail images for GUI frontends
 	optdepends = python-pyqt5: Qt frontend
@@ -32,4 +33,3 @@ pkgbase = trackma-git
 	sha256sums = 988f4c4422577f0657e9ff8a9695ef44796ee6a9c43e07ee7a81369f25c2761f
 
 pkgname = trackma-git
-

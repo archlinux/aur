@@ -5,7 +5,7 @@
 
 pkgname=trackma-git
 pkgver=0.8.4.r35.g981bdac
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -16,7 +16,8 @@ depends=('python'
 makedepends=('python-setuptools'
     'desktop-file-utils'
     'git')
-optdepends=('python-gobject: GTK frontend'
+optdepends=('python-dbus: MPRIS tracker'
+    'python-gobject: GTK frontend/MPRIS tracker'
     'python-cairo:   GTK frontend'
     'python-pillow:  thumbnail images for GUI frontends'
     'python-pyqt5:   Qt frontend'
@@ -45,7 +46,7 @@ pkgver() {
   (
     set -o pipefail
     git describe --tags --long 2>/dev/null | sed \
-    	's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+      's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
