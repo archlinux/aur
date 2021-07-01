@@ -1,0 +1,15 @@
+[Unit]
+Description=Solarmeter
+After=syslog.target
+
+[Service]
+ExecStart=/usr/bin/solarmeter -c /etc/solarmeter.conf
+User=solarmeter
+Group=solarmeter
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
