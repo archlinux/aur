@@ -64,7 +64,8 @@ Patches="
         "
 for arch_patch in $Patches
 do
-  source+=("${arch_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patch}?h=packages/chromium&id=${arch_revision}")
+  #source+=("${arch_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patch}?h=packages/chromium&id=${arch_revision}")
+  source+=("${arch_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${arch_revision}/trunk/${arch_patch}")
 done
 
 sha256sums=('SKIP'

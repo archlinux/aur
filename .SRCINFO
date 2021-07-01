@@ -38,11 +38,11 @@ pkgbase = brave
 	source = chromium-launcher-7.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
 	source = chromium-no-history.patch
-	source = fix-crash-in-ThemeService.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-crash-in-ThemeService.patch?h=packages/chromium&id=b4f8953e87de4278ce28d685ac1917744b901a92
-	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/unbundle-use-char16_t-as-UCHAR_TYPE.patch?h=packages/chromium&id=b4f8953e87de4278ce28d685ac1917744b901a92
-	source = make-dom-distiller-protoc-plugin-call-py2.7.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/make-dom-distiller-protoc-plugin-call-py2.7.patch?h=packages/chromium&id=b4f8953e87de4278ce28d685ac1917744b901a92
-	source = extend-enable-accelerated-video-decode-flag.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/extend-enable-accelerated-video-decode-flag.patch?h=packages/chromium&id=b4f8953e87de4278ce28d685ac1917744b901a92
-	source = sql-make-VirtualCursor-standard-layout-type.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sql-make-VirtualCursor-standard-layout-type.patch?h=packages/chromium&id=b4f8953e87de4278ce28d685ac1917744b901a92
+	source = fix-crash-in-ThemeService.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/fix-crash-in-ThemeService.patch
+	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/unbundle-use-char16_t-as-UCHAR_TYPE.patch
+	source = make-dom-distiller-protoc-plugin-call-py2.7.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/make-dom-distiller-protoc-plugin-call-py2.7.patch
+	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/extend-enable-accelerated-video-decode-flag.patch
+	source = sql-make-VirtualCursor-standard-layout-type.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/sql-make-VirtualCursor-standard-layout-type.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
