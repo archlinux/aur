@@ -1,6 +1,6 @@
 pkgbase = pyslam
 	pkgdesc = Python implementation of Source Live Audio Mixer
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 0
 	url = https://gitlab.com/aw1cks/pyslam
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = pyslam
 	depends = python-pyxdg
 	depends = youtube-dl
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/P/PySLAM/PySLAM-1.2.0.tar.gz
-	sha256sums = 590939b51b106c3b1a916da030d677491eb546a4a331e1c5208b44bc83756f18
+	source = https://files.pythonhosted.org/packages/source/P/PySLAM/PySLAM-1.2.1.tar.gz
+	sha256sums = fa645ada76b68fc6ac62fb31d4ebcb561a7afe0ef23301557f6205341355dfea
 
 pkgname = pyslam
