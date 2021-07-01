@@ -1,12 +1,13 @@
+# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Dwight Schauer <dschauer@gmail.com>
 # Contributor: Valere Monseur <valere_monseur@hotmail.com>
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
-_pkgname=Regina
-_pkgsuffix=REXX
+
+_pkgname=regina
+_pkgsuffix=rexx
 
 pkgname=regina-rexx-das
-pkgver=3.9.1
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="An implementation of a Rexx interpreter, compliant with the ANSI Standard for Rexx (1996)"
 arch=(i686 x86_64)
@@ -18,7 +19,7 @@ options=('!makeflags')
 source=(rc.d_rxstack http://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuffix-$pkgver.tar.gz)
 
 sha256sums=('b7a9e429646ae23746e84c9ebcd63328f34f714835c1c82228b69c6d821e4813'
-            '5d13df26987e27f25e7779a2efa87a5775213beeda449a9efac59b57a5d5f3ee')
+            '1712aabee5978fdf57aeac82cd5a1a112b8980db8c5d7d045523f6a8b74b0531')
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgsuffix-$pkgver"
