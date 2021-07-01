@@ -2,21 +2,21 @@
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
-pkgver=2.0.3
-pkgrel=3
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
 url="http://www.grisbi.org"
 license=('GPL')
-depends=('gtk3')
+depends=('gtk3' 'libgsf')
 optdepends=('libofx: for OFX support')
-makedepends=('git' 'intltool' 'imagemagick')
+makedepends=('intltool' 'imagemagick')
 provides=('grisbi')
 conflicts=('grisbi-git')
 replaces=('grisbi')
 options=(!libtool)
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('5bb984625f49fdf14e4fd72a2665eec44ef0b40358e422e8a0bf2c3b8421126e')
+sha256sums=('e32906df5d077b5685694368e5f0a568cdd05850732844468a161fa9ac51d55a')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
