@@ -1,14 +1,13 @@
 pkgbase = prmon
 	pkgdesc = Standalone monitor for process resource consumption
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/HSF/prmon
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = nlohmann-json
-	source = prmon-2.2.0.tar.gz::https://github.com/HSF/prmon/archive/refs/tags/v2.2.0.tar.gz
-	md5sums = 3c84aa76eddfa31e2d8dddeda2baf076
+	source = prmon-2.2.1.tar.gz::https://github.com/HSF/prmon/archive/refs/tags/v2.2.1.tar.gz
+	md5sums = ac7f3fef14a7fa73c27df601ed8bd024
 
 pkgname = prmon
-
