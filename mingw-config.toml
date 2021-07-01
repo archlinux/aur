@@ -112,6 +112,7 @@ link-jobs = 1
 
 # When invoking `llvm-config` this configures whether the `--shared` argument is
 # passed to prefer linking to shared libraries.
+# NOTE: `thin-lto = true` requires this to be `true` and will give an error otherwise.
 link-shared = false
 
 # When building llvm, this configures what is being appended to the version.
@@ -120,13 +121,14 @@ link-shared = false
 #version-suffix = "-rust-dev"
 
 # On MSVC you can compile LLVM with clang-cl, but the test suite doesn't pass
-# with clang-cl, so this is special in that it only compiles LLVM with clang-cl
-#clang-cl = '/path/to/clang-cl.exe'
+# with clang-cl, so this is special in that it only compiles LLVM with clang-cl.
+# Note that this takes a /path/to/clang-cl, not a boolean.
+#clang-cl = cc
 
 # Pass extra compiler and linker flags to the LLVM CMake build.
-#cflags = "-fextra-flag"
-#cxxflags = "-fextra-flag"
-#ldflags = "-Wl,extra-flag"
+#cflags = ""
+#cxxflags = ""
+#ldflags = ""
 
 # Use libc++ when building LLVM instead of libstdc++. This is the default on
 # platforms already use libc++ as the default C++ library, but this option
@@ -135,7 +137,7 @@ link-shared = false
 use-libcxx = false
 
 # The value specified here will be passed as `-DLLVM_USE_LINKER` to CMake.
-#use-linker = "lld"
+#use-linker = <none> (path)
 
 # Whether or not to specify `-DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=YES`
 allow-old-toolchain = false
@@ -147,6 +149,9 @@ polly = false
 # General build configuration options
 # =============================================================================
 [build]
+# The default stage to use for the `check` subcommand
+#check-stage = 0
+
 # The default stage to use for the `doc` subcommand
 doc-stage = 0
 
@@ -170,13 +175,13 @@ bench-stage = 2
 # binaries of this build triple and the nightly will be used to bootstrap the
 # first compiler.
 #
-# Defaults to host platform
+# Defaults to platform where `x.py` is run.
 build = "x86_64-unknown-linux-gnu"
 
 # Which triples to produce a compiler toolchain for. Each of these triples will
 # be bootstrapped from the build triple themselves.
 #
-# Defaults to just the build triple
+# Defaults to just the build triple.
 host = ["x86_64-unknown-linux-gnu"]
 
 # Which triples to build libraries (core/alloc/std/test/proc_macro) for. Each of
@@ -193,15 +198,15 @@ target = ["x86_64-unknown-linux-gnu", "i686-pc-windows-gnu", "x86_64-pc-windows-
 
 # Instead of downloading the src/stage0.txt version of Cargo specified, use
 # this Cargo binary instead to build all Rust code
-#cargo = "/path/to/bin/cargo"
+#cargo = "/path/to/cargo"
 
 # Instead of downloading the src/stage0.txt version of the compiler
 # specified, use this rustc binary instead as the stage0 snapshot compiler.
-#rustc = "/path/to/bin/rustc"
+#rustc = "/path/to/rustc"
 
 # Instead of download the src/stage0.txt version of rustfmt specified,
 # use this rustfmt binary instead as the stage0 snapshot rustfmt.
-#rustfmt = "/path/to/bin/rustfmt"
+#rustfmt = "/path/to/rustfmt"
 
 # Flag to specify whether any documentation is built. If false, rustdoc and
 # friends will still be compiled but they will not be used to generate any
@@ -259,9 +264,10 @@ full-bootstrap = false
 # be built if `extended = true`.
 extended = true
 
-# Installs chosen set of extended tools if `extended = true`. By default builds all.
-# If chosen tool failed to build the installation fails. If `extended = false`, this
-# option is ignored.
+# Installs chosen set of extended tools if `extended = true`. By default builds
+# all extended tools except `rust-demangler`, unless the target is also being
+# built with `profiler = true`. If chosen tool failed to build the installation
+# fails. If `extended = false`, this option is ignored.
 tools = ["cargo"]
 
 # Verbosity level: 0 == not verbose, 1 == verbose, 2 == very verbose
@@ -325,15 +331,8 @@ libdir = "lib"
 # Where to install man pages in `prefix` above
 mandir = "share/man"
 
-# Where to install data in `prefix` above (currently unused)
+# Where to install data in `prefix` above
 datadir = "share"
-
-# Where to install additional info in `prefix` above (currently unused)
-infodir = "share/info"
-
-# Where to install local state (currently unused)
-# If this is a relative path, it will get installed in `prefix` above
-localstatedir = "/var/lib"
 
 # =============================================================================
 # Options for compiling Rust code itself
@@ -372,7 +371,9 @@ debug = false
 # Whether to download the stage 1 and 2 compilers from CI.
 # This is mostly useful for tools; if you have changes to `compiler/` they will be ignored.
 #
-# FIXME: currently, this also uses the downloaded compiler for stage0, but that causes unnecessary rebuilds.
+# You can set this to "if-unchanged" to only download if `compiler/` has not been modified.
+#
+# FIXME(#82739): currently, this also uses the downloaded compiler for stage0, but that causes unnecessary rebuilds.
 #download-rustc = false
 
 # Number of codegen units to use for each compiler invocation. A value of 0
@@ -384,6 +385,8 @@ codegen-units = 0
 
 # Sets the number of codegen units to build the standard library with,
 # regardless of what the codegen-unit setting for the rest of the compiler is.
+# NOTE: building with anything other than 1 is known to occasionally have bugs.
+# See https://github.com/rust-lang/rust/issues/83600.
 codegen-units-std = 1
 
 # Whether or not debug assertions are enabled for the compiler and standard
@@ -427,18 +430,12 @@ debug-logging = false
 debuginfo-level = 0
 
 # Debuginfo level for the compiler.
-#
-# Defaults to rust.debuginfo-level value
 debuginfo-level-rustc = 0
 
 # Debuginfo level for the standard library.
-#
-# Defaults to rust.debuginfo-level value
 debuginfo-level-std = 0
 
 # Debuginfo level for the tools.
-#
-# Defaults to rust.debuginfo-level value
 debuginfo-level-tools = 0
 
 # Debuginfo level for the test suites run with compiletest.
@@ -466,6 +463,8 @@ parallel-compiler = false
 # The default linker that will be hard-coded into the generated compiler for
 # targets that don't specify linker explicitly in their target specifications.
 # Note that this is not the linker used to link said compiler.
+#
+# See https://doc.rust-lang.org/rustc/codegen-options/index.html#linker for more information.
 default-linker = "cc"
 
 # The "channel" for the Rust build to produce. The stable/beta channels only
@@ -476,10 +475,15 @@ channel = "stable"
 # A descriptive string to be appended to `rustc --version` output, which is
 # also used in places like debuginfo `DW_AT_producer`. This may be useful for
 # supplementary build information, like distro-specific package versions.
-#description = ""
+#description = <none> (string)
 
-# The root location of the musl installation directory.
-#musl-root = "..."
+# The root location of the musl installation directory. The library directory
+# will also need to contain libunwind.a for an unwinding implementation. Note
+# that this option only makes sense for musl targets that produce statically
+# linked binaries.
+#
+# Defaults to /usr on musl hosts. Has no default otherwise.
+#musl-root = <platform specific> (path)
 
 # By default the `rustc` executable is built with `-Wl,-rpath` flags on Unix
 # platforms to ensure that the compiler is usable by default from the build
@@ -509,7 +513,7 @@ dist-src = false
 
 # After building or testing extended tools (e.g. clippy and rustfmt), append the
 # result (broken, compiling, testing) into this JSON file.
-#save-toolstates = "/path/to/toolstates.json"
+#save-toolstates = <none> (path)
 
 # This is an array of the codegen backends that will be compiled for the rustc
 # that's being compiled. The default is to only build the LLVM codegen backend,
@@ -545,9 +549,7 @@ verify-llvm-ir = false
 # Compile the compiler with a non-default ThinLTO import limit. This import
 # limit controls the maximum size of functions imported by ThinLTO. Decreasing
 # will make code compile faster at the expense of lower runtime performance.
-# If `incremental` is set to true above, the import limit will default to 10
-# instead of LLVM's default of 100.
-#thin-lto-import-instr-limit = 100
+#thin-lto-import-instr-limit = if incremental { 10 } else { LLVM default (currently 100) }
 
 # Map debuginfo paths to `/rust/$sha/...`, generally only set for releases
 remap-debuginfo = false
@@ -581,13 +583,15 @@ new-symbol-mangling = false
 # =============================================================================
 [target.x86_64-unknown-linux-gnu]
 
-# C compiler to be used to compiler C code. Note that the
+# C compiler to be used to compile C code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
+# See `src/bootstrap/cc_detect.rs` for details.
 cc = "cc"
 
-# C++ compiler to be used to compiler C++ code (e.g. LLVM and our LLVM shims).
+# C++ compiler to be used to compile C++ code (e.g. LLVM and our LLVM shims).
 # This is only used for host targets.
+# See `src/bootstrap/cc_detect.rs` for details.
 cxx = "c++"
 
 # Archiver to be used to assemble static libraries compiled from C/C++ code.
@@ -598,7 +602,7 @@ ar = "ar"
 # Note: an absolute path should be used, otherwise LLVM build will break.
 ranlib = "ranlib"
 
-# Linker to be used to link Rust code. Note that the
+# Linker to be used to bootstrap Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
 # Setting this will override the `use-lld` option for Rust code when targeting MSVC.
@@ -607,37 +611,38 @@ linker = "cc"
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
 # against. Note that if this is specified we don't compile LLVM at all for this
 # target.
-#llvm-config = "../path/to/llvm/root/bin/llvm-config"
+#llvm-config = <none> (path)
 
 # Normally the build system can find LLVM's FileCheck utility, but if
 # not, you can specify an explicit file name for it.
-#llvm-filecheck = "/path/to/FileCheck"
+#llvm-filecheck = "/path/to/llvm-version/bin/FileCheck"
 
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
-#android-ndk = "/path/to/ndk"
+# See `src/bootstrap/cc_detect.rs` for details.
+#android-ndk = <none> (path)
 
 # Build the sanitizer runtimes for this target.
 # This option will override the same option under [build] section.
-#sanitizers = false
+#sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
 # on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
 # This option will override the same option under [build] section.
-#profiler = false
+#profiler = build.profiler (bool)
 
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
 # compiler itself. This is useful for building rustc on targets that normally
 # only use static libraries. If unset, the target's default linkage is used.
-crt-static = false
+#crt-static = <platform-specific> (bool)
 
 # The root location of the musl installation directory. The library directory
 # will also need to contain libunwind.a for an unwinding implementation. Note
 # that this option only makes sense for musl targets that produce statically
-# linked binaries
-#musl-root = "..."
+# linked binaries.
+#musl-root = build.musl-root (path)
 
 # The full path to the musl libdir.
 #musl-libdir = musl-root/lib
@@ -645,21 +650,23 @@ crt-static = false
 # The root location of the `wasm32-wasi` sysroot. Only used for the
 # `wasm32-wasi` target. If you are building wasm32-wasi target, make sure to
 # create a `[target.wasm32-wasi]` section and move this field there.
-#wasi-root = "..."
+#wasi-root = <none> (path)
 
 # Used in testing for configuring where the QEMU images are located, you
 # probably don't want to use this.
-#qemu-rootfs = "..."
+#qemu-rootfs = <none> (path)
 
 [target.i686-pc-windows-gnu]
 
-# C compiler to be used to compiler C code. Note that the
+# C compiler to be used to compile C code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
+# See `src/bootstrap/cc_detect.rs` for details.
 cc = "i686-w64-mingw32-cc"
 
-# C++ compiler to be used to compiler C++ code (e.g. LLVM and our LLVM shims).
+# C++ compiler to be used to compile C++ code (e.g. LLVM and our LLVM shims).
 # This is only used for host targets.
+# See `src/bootstrap/cc_detect.rs` for details.
 cxx = "i686-w64-mingw32-c++"
 
 # Archiver to be used to assemble static libraries compiled from C/C++ code.
@@ -670,7 +677,7 @@ ar = "i686-w64-mingw32-ar"
 # Note: an absolute path should be used, otherwise LLVM build will break.
 ranlib = "i686-w64-mingw32-ranlib"
 
-# Linker to be used to link Rust code. Note that the
+# Linker to be used to bootstrap Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
 # Setting this will override the `use-lld` option for Rust code when targeting MSVC.
@@ -679,25 +686,26 @@ linker = "i686-w64-mingw32-cc"
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
 # against. Note that if this is specified we don't compile LLVM at all for this
 # target.
-#llvm-config = "../path/to/llvm/root/bin/llvm-config"
+#llvm-config = <none> (path)
 
 # Normally the build system can find LLVM's FileCheck utility, but if
 # not, you can specify an explicit file name for it.
-#llvm-filecheck = "/path/to/FileCheck"
+#llvm-filecheck = "/path/to/llvm-version/bin/FileCheck"
 
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
-#android-ndk = "/path/to/ndk"
+# See `src/bootstrap/cc_detect.rs` for details.
+#android-ndk = <none> (path)
 
 # Build the sanitizer runtimes for this target.
 # This option will override the same option under [build] section.
-#sanitizers = false
+#sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
 # on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
 # This option will override the same option under [build] section.
-#profiler = false
+#profiler = build.profiler (bool)
 
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
@@ -708,8 +716,8 @@ crt-static = true
 # The root location of the musl installation directory. The library directory
 # will also need to contain libunwind.a for an unwinding implementation. Note
 # that this option only makes sense for musl targets that produce statically
-# linked binaries
-#musl-root = "..."
+# linked binaries.
+#musl-root = build.musl-root (path)
 
 # The full path to the musl libdir.
 #musl-libdir = musl-root/lib
@@ -717,21 +725,23 @@ crt-static = true
 # The root location of the `wasm32-wasi` sysroot. Only used for the
 # `wasm32-wasi` target. If you are building wasm32-wasi target, make sure to
 # create a `[target.wasm32-wasi]` section and move this field there.
-#wasi-root = "..."
+#wasi-root = <none> (path)
 
 # Used in testing for configuring where the QEMU images are located, you
 # probably don't want to use this.
-#qemu-rootfs = "..."
+#qemu-rootfs = <none> (path)
 
 [target.x86_64-pc-windows-gnu]
 
-# C compiler to be used to compiler C code. Note that the
+# C compiler to be used to compile C code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
+# See `src/bootstrap/cc_detect.rs` for details.
 cc = "x86_64-w64-mingw32-cc"
 
-# C++ compiler to be used to compiler C++ code (e.g. LLVM and our LLVM shims).
+# C++ compiler to be used to compile C++ code (e.g. LLVM and our LLVM shims).
 # This is only used for host targets.
+# See `src/bootstrap/cc_detect.rs` for details.
 cxx = "x86_64-w64-mingw32-c++"
 
 # Archiver to be used to assemble static libraries compiled from C/C++ code.
@@ -742,7 +752,7 @@ ar = "x86_64-w64-mingw32-ar"
 # Note: an absolute path should be used, otherwise LLVM build will break.
 ranlib = "x86_64-w64-mingw32-ranlib"
 
-# Linker to be used to link Rust code. Note that the
+# Linker to be used to bootstrap Rust code. Note that the
 # default value is platform specific, and if not specified it may also depend on
 # what platform is crossing to what platform.
 # Setting this will override the `use-lld` option for Rust code when targeting MSVC.
@@ -751,25 +761,26 @@ linker = "x86_64-w64-mingw32-cc"
 # Path to the `llvm-config` binary of the installation of a custom LLVM to link
 # against. Note that if this is specified we don't compile LLVM at all for this
 # target.
-#llvm-config = "../path/to/llvm/root/bin/llvm-config"
+#llvm-config = <none> (path)
 
 # Normally the build system can find LLVM's FileCheck utility, but if
 # not, you can specify an explicit file name for it.
-#llvm-filecheck = "/path/to/FileCheck"
+#llvm-filecheck = "/path/to/llvm-version/bin/FileCheck"
 
 # If this target is for Android, this option will be required to specify where
 # the NDK for the target lives. This is used to find the C compiler to link and
 # build native code.
-#android-ndk = "/path/to/ndk"
+# See `src/bootstrap/cc_detect.rs` for details.
+#android-ndk = <none> (path)
 
 # Build the sanitizer runtimes for this target.
 # This option will override the same option under [build] section.
-#sanitizers = false
+#sanitizers = build.sanitizers (bool)
 
 # Build the profiler runtime for this target(required when compiling with options that depend
 # on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
 # This option will override the same option under [build] section.
-#profiler = false
+#profiler = build.profiler (bool)
 
 # Force static or dynamic linkage of the standard library for this target. If
 # this target is a host for rustc, this will also affect the linkage of the
@@ -780,8 +791,8 @@ crt-static = true
 # The root location of the musl installation directory. The library directory
 # will also need to contain libunwind.a for an unwinding implementation. Note
 # that this option only makes sense for musl targets that produce statically
-# linked binaries
-#musl-root = "..."
+# linked binaries.
+#musl-root = build.musl-root (path)
 
 # The full path to the musl libdir.
 #musl-libdir = musl-root/lib
@@ -789,11 +800,11 @@ crt-static = true
 # The root location of the `wasm32-wasi` sysroot. Only used for the
 # `wasm32-wasi` target. If you are building wasm32-wasi target, make sure to
 # create a `[target.wasm32-wasi]` section and move this field there.
-#wasi-root = "..."
+#wasi-root = <none> (path)
 
 # Used in testing for configuring where the QEMU images are located, you
 # probably don't want to use this.
-#qemu-rootfs = "..."
+#qemu-rootfs = <none> (path)
 
 # =============================================================================
 # Distribution options
@@ -810,12 +821,7 @@ crt-static = true
 #
 # This folder should be populated ahead of time before the build system is
 # invoked.
-#sign-folder = "path/to/folder/to/sign"
-
-# This is a file which contains the password of the default gpg key. This will
-# be passed to `gpg` down the road when signing all files in `sign-folder`
-# above. This should be stored in plaintext.
-#gpg-password-file = "path/to/gpg/password"
+#sign-folder = <none> (path)
 
 # The remote address that all artifacts will eventually be uploaded to. The
 # build system generates manifests which will point to these urls, and for the
@@ -823,18 +829,19 @@ crt-static = true
 #
 # Note that this address should not contain a trailing slash as file names will
 # be appended to it.
-#upload-addr = "https://example.com/folder"
+#upload-addr = <none> (URL)
 
 # Whether to build a plain source tarball to upload
 # We disable that on Windows not to override the one already uploaded on S3
 # as the one built on Windows will contain backslashes in paths causing problems
 # on linux
 #src-tarball = true
-#
 
 # Whether to allow failures when building tools
 #missing-tools = false
 
 # List of compression formats to use when generating dist tarballs. The list of
 # formats is provided to rust-installer, which must support all of them.
+#
+# This list must be non-empty.
 compression-formats = ["gz"]
