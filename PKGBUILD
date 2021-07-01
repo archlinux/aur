@@ -1,7 +1,7 @@
 # Maintainer: Jonas Gierer <jonas@gierer.xyz>
 
 pkgname=adwaita-shell-theme
-pkgver=40.1
+pkgver=40.2
 pkgrel=1
 pkgdesc="GNOME's default shell theme, without any third-party tweaks"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://gitlab.gnome.org/GNOME/gnome-shell/tree/master/data/theme"
 license=(GPL)
 makedepends=('sassc')
 source=("https://gitlab.gnome.org/GNOME/gnome-shell/-/archive/$pkgver/gnome-shell-$pkgver.tar.gz")
-sha256sums=('f2554a795b4c2e22328dbb5d8de9dc3b4c46189911c90a7ede5501fc3d1254f8')
+sha256sums=('1040c398d7fdba02e7ff0dfdfef32cbb337930eea70311f18b2ba9619230a03d')
 
 build() {
   cd gnome-shell-$pkgver/data/theme
