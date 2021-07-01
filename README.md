@@ -1,5 +1,5 @@
 # Lokalise AUR Package
-[![Build Status](https://travis-ci.com/famoser/lokalise-aur.svg?branch=master)](https://travis-ci.com/famoser/lokalise-aur)
+[![Build Status](https://travis-ci.com/famoser/lokalise2-aur.svg?branch=master)](https://travis-ci.com/famoser/lokalise2-aur)
 
 ## Update package
 
