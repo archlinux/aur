@@ -14,8 +14,8 @@ _merge_requests_to_use=()
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=40.1
-pkgrel=2
+pkgver=40.2.1+1+g7231879e5
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=faf4240c74024d04f88986f95f65364ca8121ba4  # tags/40.1^0
+_commit=7231879e5fccafcfca05b5275d2cb51654184887  # tags/40.2.1^1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -69,11 +69,6 @@ pick_mr() {
 
 prepare() {
   cd $pkgname
-
-  # https://bugs.archlinux.org/task/71027
-  git cherry-pick -n f954ff84b8e98be7017bd0ac0521f568d93f62e2
-  ### Adding and fetching remotes providing the selected merge-requests
-  ### Only needed when there is no MR opened
 
   git reset --hard
   git cherry-pick --abort || true
