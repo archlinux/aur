@@ -3,7 +3,7 @@
 _pkgname=thoptv
 
 pkgname="${_pkgname}"-appimage
-pkgver=46.2.0
+pkgver=46.3.0
 pkgrel=1
 pkgdesc="Thoptv  is the best source to enjoy Ultimate Movies,  sports Matches, IPL and Latest Shows, radio and many much more thing’s.it’s totally free of cost you don’t need to pay any single to use this application it has a premium plan."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("${_appimage}::https://github.com/kkdops/thoptv/releases/download
                "https://raw.githubusercontent.com/kkdops/thoptv/${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('a0066f7b0a845f7802f09afd668d77d3c68ec17c7ec69954ea946006078e4e93'
+sha256sums_x86_64=('7e7ffd178c0242caae2b90e488d04dcadb3eb31af2ab2875c46411fe661085f1'
                    '6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e')
 
 prepare() {
