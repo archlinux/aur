@@ -15,7 +15,7 @@ pkgbase = bottles
 	depends = python-gobject
 	depends = wine
 	source = bottles-2021.7.1-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.1-treviso.tar.gz
-	sha256sums = ba8858931e4969525aea66d30f796f52bca7c43cafee59b6a60646c31a84c0b2
+	sha256sums = 75834816bc047ac75261bb1d151889c6fb97ae83408538f1bdff1d6519fd7a5d
 
 pkgname = bottles
 
