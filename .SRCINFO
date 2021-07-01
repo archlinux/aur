@@ -1,6 +1,6 @@
 pkgbase = alephone-git
 	pkgdesc = A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)
-	pkgver = 1.4.r5423.c7793c30
+	pkgver = 1.4.r5469.7082c45c
 	pkgrel = 1
 	url = https://alephone.lhowon.org/
 	arch = i686
@@ -29,4 +29,3 @@ pkgbase = alephone-git
 	md5sums = SKIP
 
 pkgname = alephone-git
-
