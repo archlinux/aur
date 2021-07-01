@@ -1,41 +1,40 @@
-diff --unified --recursive --text Emulator/v5.0.0/AppManager.sh "Emulator (copy)/v5.0.0/AppManager.sh"
---- Emulator/v5.0.0/AppManager.sh	2020-02-11 15:09:50.000000000 +0000
-+++ "Emulator (copy)/v5.0.0/AppManager.sh"	2020-05-20 21:54:03.378154488 +0100
+diff --unified --recursive --text Emulator/v6.0.0/AppManager.sh "Emulator (copy)/v6.0.0/AppManager.sh"
+--- Emulator/v6.0.0/AppManager.sh	2020-02-11 15:09:50.000000000 +0000
++++ "Emulator (copy)/v6.0.0/AppManager.sh"	2020-05-20 21:54:03.378154488 +0100
 @@ -1 +1,4 @@
--"$LG_WEBOS_TV_SDK_HOME/Resources/Jre/bin/java" -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v5.0.0/AppManager-1.0.jar" 9e8b9f29-44b9-4a6e-3053-2053a70341cb 
+-"$LG_WEBOS_TV_SDK_HOME/Resources/Jre/bin/java" -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v6.0.0/AppManager-1.0.jar" 9e8b9f29-44b2-4b6e-3053-2058a70342cb 
 +#!/bin/bash
 +export LG_WEBOS_TV_SDK_HOME=/usr/share/webOS_TV_SDK
 +export WEBOS_CLI_TV=/usr/share/webOS_TV_SDK/CLI/bin
-+java -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v5.0.0/AppManager-1.0.jar" 9e8b9f29-44b9-4a6e-3053-2053a70341cb
-diff --unified --recursive --text Emulator/v5.0.0/LG_webOS_TV_Emulator.sh "Emulator (copy)/v5.0.0/LG_webOS_TV_Emulator.sh"
---- Emulator/v5.0.0/LG_webOS_TV_Emulator.sh	2020-02-11 15:09:50.000000000 +0000
-+++ "Emulator (copy)/v5.0.0/LG_webOS_TV_Emulator.sh"	2020-05-20 21:53:32.861986893 +0100
++java -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v6.0.0/AppManager-1.0.jar" 9e8b9f29-44b2-4b6e-3053-2058a70342cb 
+diff --unified --recursive --text Emulator/v6.0.0/LG_webOS_TV_Emulator.sh "Emulator (copy)/v6.0.0/LG_webOS_TV_Emulator.sh"
+--- Emulator/v6.0.0/LG_webOS_TV_Emulator.sh	2020-02-11 15:09:50.000000000 +0000
++++ "Emulator (copy)/v6.0.0/LG_webOS_TV_Emulator.sh"	2020-05-20 21:53:32.861986893 +0100
 @@ -1 +1,4 @@
--"$LG_WEBOS_TV_SDK_HOME/Resources/Jre/bin/java" -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v5.0.0/LG_webOS_TV_Emulator_linux.jar" 9e8b9f29-44b9-4a6e-3053-2053a70341cb
+-"$LG_WEBOS_TV_SDK_HOME/Resources/Jre/bin/java" -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v6.0.0/LG_webOS_TV_Emulator_linux.jar" 9e8b9f29-44b2-4b6e-3053-2058a70342cb
 +#!/bin/bash
 +export LG_WEBOS_TV_SDK_HOME=/usr/share/webOS_TV_SDK
 +export WEBOS_CLI_TV=/usr/share/webOS_TV_SDK/CLI/bin
-+java -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v5.0.0/LG_webOS_TV_Emulator_linux.jar" 9e8b9f29-44b9-4a6e-3053-2053a70341cb
-\ No newline at end of file
-diff --unified --recursive --text Emulator/v5.0.0/vm_register.sh "Emulator (copy)/v5.0.0/vm_register.sh"
---- Emulator/v5.0.0/vm_register.sh	2020-02-11 15:09:50.000000000 +0000
-+++ "Emulator (copy)/v5.0.0/vm_register.sh"	2020-05-20 21:56:28.742383887 +0100
++java -jar "$LG_WEBOS_TV_SDK_HOME/Emulator/v6.0.0/LG_webOS_TV_Emulator_linux.jar" 9e8b9f29-44b2-4b6e-3053-2058a70342cb
+diff --unified --recursive --text Emulator/v6.0.0/vm_register.sh "Emulator (copy)/v5.0.0/vm_register.sh"
+--- Emulator/v6.0.0/vm_register.sh	2020-02-11 15:09:50.000000000 +0000
++++ "Emulator (copy)/v6.0.0/vm_register.sh"	2020-05-20 21:56:28.742383887 +0100
 @@ -3,6 +3,7 @@
  #LG_WEBOS_SDK_HOME=$1
  
  # register emulator
 +export LG_WEBOS_TV_SDK_HOME=/usr/share/webOS_TV_SDK
- vboxmanage registervm "$LG_WEBOS_TV_SDK_HOME/Emulator/v5.0.0/LG_webOS_TV_Emulator.vbox"
- vboxmanage sharedfolder add "LG webOS TV Emulator 5.0.0" --name "shared" --hostpath $HOME/webOS_SDK/EmulWorkspace
+ vboxmanage registervm "$LG_WEBOS_TV_SDK_HOME/Emulator/v6.0.0/LG_webOS_TV_Emulator.vbox"
+ vboxmanage sharedfolder add "LG webOS TV Emulator 6.0.0" --name "shared" --hostpath $HOME/webOS_SDK/EmulWorkspace
  
-diff --unified --recursive --text Emulator/v5.0.0/vm_remove.sh "Emulator (copy)/v5.0.0/vm_remove.sh"
---- Emulator/v5.0.0/vm_remove.sh	2020-02-11 15:09:50.000000000 +0000
-+++ "Emulator (copy)/v5.0.0/vm_remove.sh"	2020-05-20 21:56:42.192153998 +0100
+diff --unified --recursive --text Emulator/v6.0.0/vm_remove.sh "Emulator (copy)/v6.0.0/vm_remove.sh"
+--- Emulator/v6.0.0/vm_remove.sh	2020-02-11 15:09:50.000000000 +0000
++++ "Emulator (copy)/v6.0.0/vm_remove.sh"	2020-05-20 21:56:42.192153998 +0100
 @@ -1,6 +1,7 @@
  #!/bin/bash
  
  # remove emulator
 +export LG_WEBOS_TV_SDK_HOME=/usr/share/webOS_TV_SDK
- vboxmanage controlvm 9e8b9f29-44b9-4a6e-3053-2053a70341cb pause
- vboxmanage controlvm 9e8b9f29-44b9-4a6e-3053-2053a70341cb poweroff
+ vboxmanage controlvm 9e8b9f29-44b2-4b6e-3053-2058a70342cb pause
+ vboxmanage controlvm 9e8b9f29-44b2-4b6e-3053-2058a70342cb poweroff
  sleep 3
