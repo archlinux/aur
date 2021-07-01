@@ -1,5 +1,5 @@
 pkgbase = freedict-tools
-	pkgdesc = Tools to compile the Freedict dictionaries
+	pkgdesc = Tools to compile the FreeDict dictionaries
 	pkgver = 0.5.0
 	pkgrel = 1
 	epoch = 1
