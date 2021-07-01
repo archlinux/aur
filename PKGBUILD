@@ -1,53 +1,55 @@
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.8.4
+pkgver=1.8.7
 pkgrel=1
-pkgdesc='A GTK+ audio player for GNU/Linux.'
-arch=('x86_64')
-url='http://deadbeef.sourceforge.net'
-license=('GPL2')
-depends=('alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'jansson')
-makedepends=('libvorbis' 'libmad' 'flac' 'curl' 'imlib2' 'wavpack' 'libsndfile' 'libcdio' 'libcddb'
-             'libx11' 'faad2' 'zlib' 'intltool' 'pkgconfig' 'libpulse' 'libzip' 'libsamplerate'
-             'yasm' 'ffmpeg' 'gtk2' 'gtk3')
-optdepends=('gtk2: for the GTK2 interface'
-            'gtk3: for the GTK3 interface'
-            'libsamplerate: for Resampler plugin'
-            'libvorbis: for Ogg Vorbis playback'
-            'libmad: for MP1/MP2/MP3 playback'
-            'mpg123: for MP1/MP2/MP3 playback'
-            'flac: for FLAC playback'
-            'curl: for Last.fm scrobbler, SHOUTcast, Icecast, Podcast support'
+pkgdesc="Modular GTK audio player for GNU/Linux"
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+url="https://deadbeef.sourceforge.io/"
+license=(GPL2 LGPL2.1 ZLIB)
+depends=(gtk3 alsa-lib jansson libblocksruntime libdispatch)
+makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
+             libx11 faad2 zlib intltool pkgconfig libpulse libzip libsamplerate
+             yasm ffmpeg clang)
+optdepends=('alsa-oss: for OSS output plugin'
+            'cdparanoia: for cd audio plugin'
+            'curl: for last.fm, vfs_curl (shoutcast/icecast), artwork plugins'
+            'dbus: for notification daemon support (OSD current song notifications)'
+            'faad2: for AAC plugin'
+            'ffmpeg: for ffmpeg plugin'
+            'flac: for flac plugin'
             'imlib2: for artwork plugin'
-            'wavpack: for WavPack playback'
-            'libsndfile: for Wave playback'
-            'libcdio: audio cd plugin'
-            'libcddb: audio cd plugin'
-            'faad2: for AAC/MP4 support'
-            'dbus: for OSD notifications support'
-            'pulseaudio: for PulseAudio output plugin'
+            'libcddb: for cd audio plugin'
+            'libcdio: for cd audio plugin'
+            'libice: optional dependency for gtkui session client support'
+            'libmad: for mp3 plugin (mpeg1,2 layers1,2,3)'
+            'libogg: for ogg vorbis plugin'
+            'libsamplerate: for dsp_libsrc plugin (resampler)'
+            'libsidplay: for SID player plugin'
+            'libsm: optional dependency for gtkui session client support'
+            'libsndfile: for sndfile plugin'
+            'libvorbis: for ogg vorbis plugin'
             'libx11: for global hotkeys plugin'
-            'zlib: for Audio Overload plugin'
             'libzip: for vfs_zip plugin'
-            'ffmpeg: for ffmpeg plugin')
-source=("https://github.com/DeaDBeeF-Player/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('18c54ae2c7931419ea06f3eb581cc8e704fa6eb87d330fc09f7295f4a8ef6e88b6f8c314223c34c321cd2a54f14cb6911add41602250c39c1b1c1edbf64d63b7')
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	
-	./autogen.sh 
-	./configure --prefix=/usr
-}
+            'mpg123: for MP1/MP2/MP3 playback'
+            'opusfile: for opus plugin'
+            'pulseaudio: for PulseAudio output plugin'
+            'wavpack: for wavpack plugin'
+            'yasm: required to build assembly portions of ffap plugin'
+            'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
+source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/1.8.7/deadbeef-${pkgver}.tar.bz2")
+sha512sums=('49a9610f8aa8d9853cd4f9a38d103f9a902993a5ae1990937a3ac5a14a4f8533f4233002893875aedf45f737d1a95c7cea189c61d6387bd8be7f3535d60c96eb')
 
 build () {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export CC=clang CXX=clang++
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
