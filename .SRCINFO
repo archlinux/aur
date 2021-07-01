@@ -1,0 +1,14 @@
+pkgbase = sparse-fio-git
+	pkgdesc = Tool to work with sparse files like hard disk images
+	pkgver = r34.7710f44
+	pkgrel = 1
+	url = https://github.com/anyc/sparse-fio
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = util-linux-libs
+	source = sparse-fio-git::git+https://github.com/anyc/sparse-fio.git
+	sha256sums = SKIP
+
+pkgname = sparse-fio-git
