@@ -18,7 +18,6 @@ package() {
   mkdir -p "$_npmdir"
   cd "$_npmdir"
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
-  install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Fix NPM racecondition, also known as derp
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
