@@ -1,0 +1,23 @@
+pkgbase = neovim-tokyonight-git
+	pkgdesc = Dark and light theme ported from VSCode's TokyoNight
+	pkgver = r102.0ead86a
+	pkgrel = 1
+	url = https://github.com/folke/tokyonight.nvim
+	install = neovim-tokyonight-git.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-tokyonight
+	provides = neovim-airline-tokyonight
+	provides = neovim-lightline-tokyonight
+	provides = neovim-lualine-tokyonight
+	conflicts = neovim-tokyonight
+	conflicts = neovim-airline-tokyonight
+	conflicts = neovim-lightline-tokyonight
+	conflicts = neovim-lualine-tokyonight
+	source = neovim-tokyonight-git::git+https://github.com/folke/tokyonight.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-tokyonight-git
