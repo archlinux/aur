@@ -1,16 +1,13 @@
- premake5.lua | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git i/premake5.lua w/premake5.lua
-index 531f92ea..b6c1d3a1 100644
---- i/premake5.lua
-+++ w/premake5.lua
-@@ -342,7 +342,7 @@ project "reVC"
+diff --git a/premake5.lua b/premake5.lua
+index 7fc21907..74a90813 100644
+--- a/premake5.lua
++++ b/premake5.lua
+@@ -359,7 +359,7 @@ project "re3"
  		libdirs { "vendor/openal-soft/libs/Win64" }
  
  	filter "platforms:linux*oal"
 -		links { "openal", "mpg123", "sndfile", "pthread", "X11" }
 +		links { "openal", "mpg123", "pthread", "X11" }
- 		
+ 
  	filter "platforms:bsd*oal"
  		links { "openal", "mpg123", "sndfile", "pthread", "X11" }
