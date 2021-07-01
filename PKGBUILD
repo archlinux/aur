@@ -3,7 +3,7 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.84.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -32,7 +32,7 @@ prepare() {
 	# Use Node.js 14 per upstream
 	export npm_config_cache="$srcdir/npm-cache"
 	local npm_prefix=$(npm config get prefix)
-	local nodeversion='14.17.1'
+	local nodeversion='14.17.2'
 	npm config delete prefix
 	_ensure_local_nvm
 	nvm install "$nodeversion" && nvm use "$nodeversion"
