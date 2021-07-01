@@ -3,26 +3,31 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.18.0a2.dev44+gb0f08e0
+pkgver=0.18.1.dev33+g21db254
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
 license=("BSD")
-depends=("python-click-log>=0.2.0"
-         "python-click-threading>=0.2"
-         "python-requests-toolbelt>=0.4.0"
-         "python-atomicwrites>=0.1.7"
-         "python-requests-oauthlib")
+depends=(
+  "python-click<9.0"
+  "python-click-log<0.4.0"
+  "python-requests-toolbelt"
+  "python-atomicwrites"
+  "python-aiohttp<4.0.0"
+  "python-aiostream<0.5.0"
+)
 makedepends=("git"
              "python-setuptools-scm"
              "python-sphinx"
              "python-sphinx_rtd_theme")
-checkdepends=("python-hypothesis>=3.1"
-              "python-pytest"
-              "python-pytest-localserver"
-              "python-pytest-subtesthack"
-              "python-pytest-cov")
+checkdepends=(
+  "python-hypothesis<7.0.0"
+  "python-pytest-httpserver"
+  "python-trustme"
+  "python-pytest-asyncio"
+  "python-aioresponses"
+)
 source=("git+https://github.com/pimutils/${_pkgname}.git")
 sha256sums=("SKIP")
 conflicts=("vdirsyncer")
