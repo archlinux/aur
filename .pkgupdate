@@ -1,7 +1,0 @@
-checksumupdate=0
-update_pkgver=""
-pwd=$PWD
-cd $SRCDEST/$_gitname
-git fetch --all -p
-update_pkgver=$(echo $(git log -1 --format="%ci" | sed 's/.*\([0-9]\{4\}\)-\([0-9]\{2\}\)-\([0-9]\{2\}\).*/\1\2\3/').$(git rev-parse --short HEAD))
-cd $pwd
