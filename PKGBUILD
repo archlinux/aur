@@ -48,7 +48,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=46
+_minor=47
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
@@ -70,7 +70,7 @@ source=(
   "${_caculepatches}/v5.10/cacule-5.10.patch"
   "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
   "${_patchsource}/futex-trunk-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2-trunk-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/futex2/futex2-5.10.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v4/0001-lqx-patches.patch"
  # "${_patchsource}/fixes-miscellaneous-v11/0001-fixes-miscellaneous.patch"
@@ -319,15 +319,6 @@ prepare() {
       scripts/config --disable CONFIG_EARLY_PRINTK
       scripts/config --disable CONFIG_DOUBLEFAULT
 
-    # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
-                   --undefine RT_GROUP_SCHED
-
-    # Power management and ACPI options
-    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                   --enable ACPI_TABLE_UPGRADE
-
 
 
     ### Optionally use running kernel's config
@@ -482,21 +473,21 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
-            'cf1da5dd2bff7c06735cce261b792151bca9f866bea6bae71ddafaee950a834a'
-            '88adf490e0873089316a33e3d21ead7397bb73341d07a5f85161763523d363ad'
-            '9ec9ac50a8bdd645c456feab4a0ca9b7ffe6dcd0933a89ba96112f8bdedbf0ae'
-            '628349c0da28c58dd4526c43aa959682d81b2f1733a755e78453b3d471b6e819'
-            '152e251586eec29990fa4cc30c561b7e49acb765434b70634501b398e4c1fe2e'
-            '239307e0018ab2405b9afaa7d315ee3352b83819a3c75b65951749b52a3247d2'
-            '5822e657656278e3bd223f0036e35b4b3d04785874473b60955a03a3c46d757b'
-            'cc510600a1d0a9a47337973247aefb824434a9477436975330165167445653a6'
-            '9657bca3947ee6ab31a1921d26859f83250d278c42908544b0c6816b2c338086'
-            '167d1732e57601dece7eec95d22bcbc43b1b2815fd73182933c1757abe7189b7'
-            '1d909c6a13e85f5aca33ebc70988428fcc7954cfcfdc2f60c71b741e9d52bbcf'
-            '5dcbaf27074975eedd1ba93edaee9ffe59fdbd8af5cd3d848fd5c3873d451462'
-            'd68ed98e7bc5a8f9ebc48c16cd0be47be948578621a70b13fcbb13e280469056'
-            '5e5276141e525d01ec23f3299584aad9bdb8462cb1101834df6160cb153bcf7f'
-            '137811c7d916c608f9ebb7e4d82ec93ea7592d99fe6394cf908c0e12e9881a7d'
-            '0ff3494d86d2d2beabacc82acbe6b2e2383e13678861e936be30e07068270fdd'
-            '8bbd844f8ac7a7a687c172f93cc427432370f1a71ced3209572222f779431d93')
+md5sums=('753adc474bf799d569dec4f165ed92c3'
+         '439c28ef40f6eb6846cc5f44218aaa75'
+         '7d8c2aaaed142867c014f44b439f8694'
+         '74798df2eba8d58326c73606b03786b7'
+         '2239bc24251cb3810f0785ad5e907285'
+         '1ddeca3dfe8d2dfbf722a6e19ab500cd'
+         '6c1ebf661101e7cecb82b93ea09725ce'
+         '96391d559184627f238c477e84be2121'
+         '33d41d27d87a9cd6f4c93052d5b9bff3'
+         'db72f9fe09be3f11db7e1e268a5ac3eb'
+         '45704a71e1cb971e337700c52da739f0'
+         'f2ffcac0e7673f862c98c6c258ddd3ca'
+         'f912dd337230972d950afd420bbc2c69'
+         '7aeb2c86091b9432d1fc9172d418d486'
+         '3c3909f11d89c35d4109c5e9f88aa5e5'
+         '0575ffbb96ab5e5b1b2e378667e276ca'
+         '3ad540c659e5653032cf33beca21ab0b'
+         '54aaa8d59dafa118d82652f31bdba605')
