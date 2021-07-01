@@ -217,7 +217,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 and uksm patchesset featuring MuQSS CPU scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
