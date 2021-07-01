@@ -1,9 +1,10 @@
 # Maintainer: DrRac27 <drrac27 at riseup dot net>
+
 pkgname=guzuta-git
 pkgver=v0.4.0.r10.48561de
 pkgrel=1
 pkgdesc="Custom repository manager for ArchLinux pacman"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/eagletmt/guzuta"
 license=("MIT")
 provides=("guzuta")

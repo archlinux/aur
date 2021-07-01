@@ -3,7 +3,8 @@ pkgbase = guzuta-git
 	pkgver = v0.4.0.r10.48561de
 	pkgrel = 1
 	url = https://github.com/eagletmt/guzuta
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
@@ -13,4 +14,3 @@ pkgbase = guzuta-git
 	sha1sums = SKIP
 
 pkgname = guzuta-git
-
