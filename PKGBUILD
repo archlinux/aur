@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc='Terminfo files for the foot terminal emulator'
 pkgname=foot-terminfo-git
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 conflicts=('foot-terminfo')
 provides=('foot-terminfo')
