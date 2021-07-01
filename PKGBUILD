@@ -3,7 +3,7 @@
 _pkgbase=linux-elbin  # for mkinitcpio hook
 pkgname=linux-el-bin
 _basever=4.18.0
-_rhver=305
+_rhver=305.3.1
 pkgver=$_rhver.kabi.$_basever
 epoch=8
 pkgrel=1
@@ -34,7 +34,7 @@ install=linux-el.install
 
 _rocky_mirror="https://download.rockylinux.org/pub/rocky"
 _rocky_ver="8.4"
-_rpmver=$_basever-$_rhver.el8
+_rpmver=$_basever-$_rhver.el8_4
 source=(
 	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-core-$_rpmver.x86_64.rpm"
 	"$_rocky_mirror/$_rocky_ver/BaseOS/x86_64/os/Packages/kernel-modules-$_rpmver.x86_64.rpm"
@@ -43,10 +43,10 @@ source=(
 	"$_pkgbase.preset"
 )
 noextract=(kernel-doc-$_rpmver.noarch.rpm)  # bsdtar cannot extract it
-sha256sums=('14ec8e247a61d7fcd11db21f02911f5677cddd32d46db7781cdecca6d3e3672b'
-            '3edaf2301a8d86ea9a0cce0a29d5bc15175e5c9885bf91ba2d6bb6de979be437'
-            '59e3fb9f43502f5f8b525c35b0194dc2513a54f5bd6f90c284e1ec2f426a93d7'
-            'c27aa2be1cdeb4e17ceabead83812f62c611b335e1211aeddf1fba4866cccade'
+sha256sums=('0cbeffcc970b8ef1bd96fc87b129f1efc98af2629ca9b693fd18bf13351545dc'
+            '128eecfd6cad28b7621b7aaa70443cbb79c44b897de59b359c1160463b45be58'
+            '018bdde319a2633fae3db77ba200d015742255ad455bcae6acd4aa6ae2b53f9b'
+            '40afba5d2cb0428ae6b3f81711b55c31e059cefb45c6b49530ad027e8f1908a2'
             'dcb7f4f352395287152bb6a3469171d9199b1e000bab9f244e17db893cff70d9')
 
 _rpm2cpio() {
