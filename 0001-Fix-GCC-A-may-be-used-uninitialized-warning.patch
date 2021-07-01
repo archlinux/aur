@@ -1,0 +1,25 @@
+From 4b84fee81f47cd2ae7c1a64b96a2f967a6545dcd Mon Sep 17 00:00:00 2001
+From: Shuyuan Liu <>
+Date: Thu, 1 Jul 2021 09:53:07 +0800
+Subject: [PATCH] Fix GCC 'A' may be used uninitialized warning
+
+---
+ src/libs/reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libs/reg.c b/src/libs/reg.c
+index 975993f..5881074 100644
+--- a/src/libs/reg.c
++++ b/src/libs/reg.c
+@@ -20,7 +20,7 @@ static void FactPiv(int N, double A[DMAX][DMAX], double B[], double Cf[]);
+ 
+ void polyreg(const int M, const int N, const double X[], const double Y[], double C[]) {
+ 	int R, K, J;			/* Loop counters */
+-	double A[DMAX][DMAX];	/* A */
++	double A[DMAX][DMAX] = { 0 };	/* A */
+ 	double B[DMAX];
+ 	double P[2 * DMAX + 1];
+ 	double x, y;
+-- 
+2.32.0
+

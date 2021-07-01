@@ -11,13 +11,20 @@ depends=('libsndfile' 'libpng')
 makedepends=('git' 'cmake')
 provides=('aptdec')
 conflicts=('aptdec')
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '129dbf2c66891cb179482a6e2539676f')
 
-source=('git+https://github.com/Xerbo/aptdec')
+source=('git+https://github.com/Xerbo/aptdec'
+        '0001-Fix-GCC-A-may-be-used-uninitialized-warning.patch')
 
 pkgver() {
 	cd aptdec
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd aptdec
+    patch --forward --strip=1 --input="$srcdir/0001-Fix-GCC-A-may-be-used-uninitialized-warning.patch"
 }
 
 build() {
