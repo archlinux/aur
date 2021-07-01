@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.8.1](#1-8-1)
 * [1.8.0](#1-8-0)
 * [1.7.2](#1-7-2)
 * [1.7.1](#1-7-1)
@@ -24,6 +25,37 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.8.1
+
+### Added
+
+* `--log-level=none` command-line option.
+* `Tc`, `setrgbf` and `setrgbb` capabilities in `foot` and `foot-direct`
+  terminfo entries. This should make 24-bit RGB colors work in tmux and
+  neovim, without the need for config hacks or detection heuristics
+  (https://codeberg.org/dnkl/foot/issues/615).
+
+
+### Changed
+
+* Grapheme cluster width is now limited to two cells by default. This
+  may cause cursor synchronization issues with many applications. You
+  can set `[tweak].grapheme-width-method=wcswidth` to revert to the
+  behavior from foot-1.8.0.
+
+
+### Fixed
+
+* Grapheme cluster state being reset between codepoints.
+* Regression: custom URL key bindings not working
+  (https://codeberg.org/dnkl/foot/issues/614).
+
+
+### Contributors
+
+* [craigbarnes](https://codeberg.org/craigbarnes)
 
 
 ## 1.8.0

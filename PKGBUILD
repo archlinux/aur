@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
-pkgver=1.8.0  # Don’t forget to update CHANGELOG.md
+pkgver=1.8.1  # Don’t forget to update CHANGELOG.md
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
@@ -14,7 +14,7 @@ optdepends=('libnotify: desktop notifications'
             'xdg-utils: URI launching'
             'bash-completion: bash completions for foot itself')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('9269acfbef40cb284590de3bf70fc67997ffb6361dec4b4dddae7cdbf4ad6490')
+sha256sums=('53df83617f7fbdd0f8f4c7a06e6e1716da61dbdcfb16aa65383ed31f4996195d')
 
 build() {
   cd foot
