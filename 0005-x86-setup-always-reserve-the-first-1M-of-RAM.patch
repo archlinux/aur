@@ -1,4 +1,4 @@
-From 3ffe8ae29143ee20e01b0bc4a63774182b59daf9 Mon Sep 17 00:00:00 2001
+From dc0b7cf80e9d746072f1e0f6184e178b4de42952 Mon Sep 17 00:00:00 2001
 From: Mike Rapoport <rppt@linux.ibm.com>
 Date: Tue, 1 Jun 2021 10:53:52 +0300
 Subject: [PATCH 5/8] x86/setup: always reserve the first 1M of RAM
