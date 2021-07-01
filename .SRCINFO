@@ -55,4 +55,3 @@ pkgname = obs-plugin-looking-glass-git
 	depends = obs-studio
 	provides = obs-plugin-looking-glass
 	conflicts = obs-plugin-looking-glass
-
