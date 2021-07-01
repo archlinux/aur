@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r57892.4ae5bbfd67b
+	pkgver = r57905.58ab4c85acc
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -127,7 +127,7 @@ pkgname = kodi-git-common
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi-common=r57892.4ae5bbfd67b
+	provides = kodi-common=r57905.58ab4c85acc
 	conflicts = kodi-common
 	replaces = kodi-common
 
@@ -135,7 +135,7 @@ pkgname = kodi-git-x11
 	pkgdesc = x11 kodi binary
 	depends = kodi-git-common
 	depends = libxrandr
-	provides = kodi=r57892.4ae5bbfd67b
+	provides = kodi=r57905.58ab4c85acc
 	replaces = kodi
 
 pkgname = kodi-git-wayland
@@ -143,7 +143,7 @@ pkgname = kodi-git-wayland
 	depends = kodi-git-common
 	depends = libxkbcommon
 	depends = waylandpp
-	provides = kodi=r57892.4ae5bbfd67b
+	provides = kodi=r57905.58ab4c85acc
 	conflicts = kodi-wayland
 	replaces = kodi
 
@@ -152,7 +152,7 @@ pkgname = kodi-git-gbm
 	depends = kodi-git-common
 	depends = libxkbcommon
 	depends = libinput
-	provides = kodi=r57892.4ae5bbfd67b
+	provides = kodi=r57905.58ab4c85acc
 	conflicts = kodi-gbm
 	replaces = kodi
 
@@ -160,7 +160,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r57892.4ae5bbfd67b
+	provides = kodi-eventclients=r57905.58ab4c85acc
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -169,11 +169,11 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r57892.4ae5bbfd67b
+	provides = kodi-tools-texturepacker=r57905.58ab4c85acc
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git-common
-	provides = kodi-dev=r57892.4ae5bbfd67b
+	provides = kodi-dev=r57905.58ab4c85acc
 	conflicts = kodi-dev

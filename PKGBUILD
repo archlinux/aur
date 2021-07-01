@@ -25,7 +25,7 @@ pkgname=(
   "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r57892.4ae5bbfd67b
+pkgver=r57905.58ab4c85acc
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -127,9 +127,11 @@ prepare() {
 
   patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
 
+  # [swig] fix illegal access warnings/errors with Java >= 9 #19891
+  git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
+
   if [[ -n "$_clangbuild" ]]; then
     git cherry-pick --no-commit -n f5512d575dfc872d51632c9bf79d58e39be60cfb
-    git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
     git cherry-pick --no-commit -n e32eeb6a4897ea6ff7ac461b848e60f7794037c2
     msg "Building with clang"
     export CC=clang CXX=clang++
