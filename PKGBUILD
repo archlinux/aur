@@ -68,7 +68,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.13
+pkgver=5.12.14
 pkgrel=1
 _ckpatchversion=1
 _ckpatch="patch-5.12-ck${_ckpatchversion}"
@@ -101,7 +101,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('3a959a1779a8c19f59346e4b5cb6f9af84fdca993b248b2ea7c9fac6cd4c1f73d7a268a0f287143bdd4924711cf54223669a4e706327a40776ad0b9683b505de'
+b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318d5e9848996989d5e421ab6c2128cdb51a3724adc95222f96a859486a1'
         'SKIP'
         'SKIP'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -213,7 +213,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all
+  make -j40 all
 }
 
 _package() {
