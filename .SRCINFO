@@ -1,6 +1,6 @@
 pkgbase = nowater
 	pkgdesc = A CLI tool that helps you set wallpaper or live wallpaper easily.
-	pkgver = 21.06
+	pkgver = 21.07
 	pkgrel = 1
 	url = https://github.com/justanoobcoder/nowater
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = nowater
 	depends = wget
 	depends = jq
 	depends = ffmpeg
-	source = nowater-21.06.tar.gz::https://github.com/justanoobcoder/nowater/archive/v21.06.tar.gz
+	source = nowater-21.07.tar.gz::https://github.com/justanoobcoder/nowater/archive/v21.07.tar.gz
 	md5sums = SKIP
 
 pkgname = nowater

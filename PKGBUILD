@@ -2,7 +2,7 @@
 # Github: https://github/justanoobcoder
 
 pkgname=nowater
-pkgver=21.06
+pkgver=21.07
 pkgrel=1
 pkgdesc="A CLI tool that helps you set wallpaper or live wallpaper easily."
 arch=(any)
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname-$pkgver"
-    printf "%s" "$(awk -F '"' '/^version/ {print $2}' $pkgname)"
+    printf "%s" "$(awk -F '"' '/^_version/ {print $2}' $pkgname)"
 }
 
 build() {
@@ -25,5 +25,4 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
