@@ -22,7 +22,7 @@ pkgdesc="Maintnance version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio1'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=('blender-2.7')
@@ -47,6 +47,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         openvdb8.patch # ::${_commit_url}/37889011070ff2ec52159690f652238d2b325185
         cycles.patch
         openexr3.patch
+        opencolorio1.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -62,7 +63,8 @@ sha256sums=('SKIP'
             'c4079c4c142516d9cd476f5a3cafddf4068f0950c3c11ea4da9cf999c5ccc1f9'
             'edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75'
             'd245f02d73bd5b767ffa49d369383d7cd6ae5e57b89c2975a78c1015e1884864'
-            'e7d75a5ef5cb6452b45f6e1e80b6fe69e2630878b1f4f6d53bf0e36ced237712')
+            'e7d75a5ef5cb6452b45f6e1e80b6fe69e2630878b1f4f6d53bf0e36ced237712'
+            'b3fa6ef21383287d0f8e7c3b848f3cf02186f9e3a0e8f194f3ca1323935e5e0e')
 
 pkgver() {
 # shellcheck disable=SC2164
@@ -76,7 +78,7 @@ prepare() {
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{python3.7,stl_export_iter,python3.{8,9,9_2},openvdb{7,8},cycles,openexr3}.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/{python3.7,stl_export_iter,python3.{8,9,9_2},openvdb{7,8},cycles,open{exr3,colorio1}}.patch
 }
 
 build() {
