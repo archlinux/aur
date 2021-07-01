@@ -1,4 +1,4 @@
-From e63cb4a867fe803dc90376af8b268ba1549ec36e Mon Sep 17 00:00:00 2001
+From c9af5920c79bd8dd521bd6ae0c004be2737ca615 Mon Sep 17 00:00:00 2001
 From: Mike Rapoport <rppt@linux.ibm.com>
 Date: Tue, 2 Mar 2021 12:04:06 +0200
 Subject: [PATCH 3/8] x86/setup: Merge several reservations of start of memory
