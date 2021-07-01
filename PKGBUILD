@@ -2,8 +2,8 @@
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
-pkgver=6.0.2
-pkgrel=3
+pkgver=6.0.3
+pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('i686' 'x86_64')
 url="http://suricata-ids.org/"
@@ -19,7 +19,7 @@ backup=('etc/suricata/suricata.yaml'
 source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
-sha256sums=('5e4647a07cb31b5d6d0049972a45375c137de908a964a44e2d6d231fa3ad4b52'
+sha256sums=('daf134bb2d7c980035e9ae60f7aaf313323a809340009f26e48110ccde81f602'
             'SKIP'
             '57505c464d30623c9d6611ca4b5d08a580c0116b20a4280f39c3720a3f369a92'
             '330c93e72a02f4f80972ab1641ee550b32cfdc2f40c78331294bcc009af06d71')
