@@ -1,7 +1,7 @@
 pkgbase = com.pvz.spark
 	pkgdesc = pvz from spark store
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.ea.com/ea-studios/popcap/plants-vs-zombies
 	install = pvz.install
 	arch = i686
@@ -9,11 +9,16 @@ pkgbase = com.pvz.spark
 	license = 
 	depends = deepin-wine5
 	depends = deepin-wine5-i386
+	depends = p7zip
+	depends = deepin-wine-helper
 	provides = spark
 	conflicts = spark
 	replaces = spark
-	source = http://dcstore.spark-app.store/store/games/plantsvszombies/plantsvszombies_deepin.deb
+	source = https://store.deepinos.org.cn/store/games/plantsvszombies/plantsvszombies_deepin.deb
+	source = run.sh
+	source = plantvszombies.desktop
 	md5sums = 10d8727eb8f7686d928a20f27781fbac
+	md5sums = 7e963f6aa426391b8abfb02326b2a4ed
+	md5sums = 326d45fc44a2b308713ac90ccc6ccb4c
 
 pkgname = com.pvz.spark
-

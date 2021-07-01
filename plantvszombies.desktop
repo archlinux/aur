@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Categories=Game;
+Icon=pvz
+Exec="/opt/apps/com.pvz.spark/files/run.sh" -u %u
+Name=pvz
+Name[zh_CN]=pvz
+Comment=pvz on Deepin Wine
+StartupWMClass=PlantsVsZombies.exe
+MimeType=
+X-Deepin-CreatedBy=com.deepin.dde.daemon.Launcher
+X-Deepin-AppID=plantsvszombies
+
