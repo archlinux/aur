@@ -25,7 +25,7 @@ prepare()
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr \
+  CXXFLAGS="$CXXFLAGS --std=c++14" ./configure --prefix=/usr \
     --with-hts-engine-header-path=/usr/include \
     --with-hts-engine-library-path=/usr/lib
   make
