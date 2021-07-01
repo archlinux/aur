@@ -1,0 +1,16 @@
+pkgbase = dict-freedict-eng-afr-bin
+	pkgdesc = English -> Afrikaans dictionary for dictd et al. from Freedict.org
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://freedict.org/
+	install = dict-freedict-eng-afr-bin.install
+	arch = any
+	license = GPL
+	optdepends = dictd: dict client and server
+	provides = dict-freedict-eng-afr
+	conflicts = dict-freedict-eng-afr
+	source = https://download.freedict.org/dictionaries/eng-afr/0.1.3/freedict-eng-afr-0.1.3.dictd.tar.xz
+	sha512sums = 9ae4d6f3d0ae6b36ab5c0e78c3cf94f650fb2b6a6a645aab4e9f5ee8de96762c4a1329deeff46e3cdc3349979eb3310dfd5cb4a8a59fbc1740c77063ad7bb809
+
+pkgname = dict-freedict-eng-afr-bin
+
