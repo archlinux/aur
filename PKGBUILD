@@ -1,4 +1,4 @@
-# Maintainer: LiveLM <livelm at hotmail dot com>
+# Maintainer: LiveLM <livelm at hotmail dot com> ghactions test
 pkgname=emusak-bin
 pkgver=1.0.72
 pkgrel=1
