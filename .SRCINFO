@@ -1,6 +1,6 @@
 pkgbase = libliftoff-git
 	pkgdesc = Lightweight KMS plane library
-	pkgver = r126.2b02f50
+	pkgver = v0.1.0.r0.ga58b638736ad5efe
 	pkgrel = 1
 	url = https://github.com/emersion/libliftoff
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = libliftoff-git
 	depends = libdrm
 	provides = libliftoff
 	conflicts = libliftoff
-	source = git+https://github.com/emersion/libliftoff.git
+	source = libliftoff-git::git+https://github.com/emersion/libliftoff.git
 	sha512sums = SKIP
 
 pkgname = libliftoff-git
-

@@ -1,8 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgname=libliftoff
-pkgname=${_pkgname}-git
-pkgver=r126.2b02f50
+pkgname=libliftoff-git
+pkgver=v0.1.0.r0.ga58b638736ad5efe
 pkgrel=1
 pkgdesc="Lightweight KMS plane library"
 arch=(x86_64)
@@ -10,21 +9,21 @@ url="https://github.com/emersion/libliftoff"
 license=("custom:MIT")
 depends=("libdrm")
 makedepends=("git" "meson" "ninja")
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("git+https://github.com/emersion/libliftoff.git")
+provides=("libliftoff")
+conflicts=("libliftoff")
+source=("$pkgname::git+https://github.com/emersion/libliftoff.git")
 sha512sums=('SKIP')
 
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "$pkgname"
 
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
 
-    meson --prefix /usr --buildtype=release "$srcdir/$_pkgname" build
+    meson --prefix /usr --buildtype=release "$pkgname" build
     ninja -C build
 }
 
@@ -36,8 +35,8 @@ check() {
 package() {
     DESTDIR="$pkgdir" ninja -C build install
     
-    cd "$srcdir/$_pkgname"
+    cd "$srcdir/$pkgname"
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
