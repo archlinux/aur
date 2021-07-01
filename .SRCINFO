@@ -1,0 +1,23 @@
+pkgbase = bricscad-fr_fr
+	pkgdesc = Logiciel de CAO DWG
+	pkgver = 21.2.02
+	pkgrel = 1
+	url = https://www.bricsys.com
+	arch = x86_64
+	license = Custom:bricscad
+	makedepends = python-requests
+	makedepends = python-beautifulsoup4
+	depends = lib32-glibc
+	depends = cairo
+	depends = lib32-fontconfig
+	depends = libcups
+	depends = lib32-freetype2
+	depends = lib32-gtk2
+	provides = bricscad
+	source = dlagent.py
+	source = BricsCAD-V21.2.02-1-fr_FR.x86_64.rpm::https://www.bricsys.com/BricsCAD-V21.2.02-1-fr_FR.x86_64.rpm
+	md5sums = 8252c41b4e228c18898e34c52e8e14a3
+	md5sums = 1c3e4fee634bf5de6655c00157c3b9bb
+
+pkgname = bricscad-fr_fr
+
