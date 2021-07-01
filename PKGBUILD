@@ -1,14 +1,14 @@
 # Maintainer: Matthias Fulz <mfulz at olznet dot de>
 pkgname=archbuilder
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc='makepkg wrapper that uses buildah'
-url='https://gitea.olznet.de/mfulz/archbuilder'
+url='https://github.com/mfulz/archbuilder'
 arch=('any')
 source=(
-        "https://gitea.olznet.de/mfulz/$pkgname/archive/v$pkgver.tar.gz"
+        "https://github.com/mfulz/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
        )
-sha256sums=('b9994a902fba433bca7b277bdf0a29af134622ee4424c66f0a2968779b27a97c')
+sha256sums=('3c97db12e42b7442ac08deef265f3fd446b7934a99e9361df61b5b825946c1aa')
 depends=('buildah')
 
 build() {
