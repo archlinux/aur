@@ -9,7 +9,7 @@ pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
 license=(GPL)
-depends=(qt5-declarative xorg-xauth xorg-server)
+depends=(qt5-declarative xorg-xauth xorg-server ttf-font)
 makedepends=(extra-cmake-modules python-docutils qt5-tools)
 backup=('usr/share/sddm/scripts/Xsetup'
         'usr/share/sddm/scripts/Xstop'
