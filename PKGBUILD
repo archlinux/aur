@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.15.1
+pkgver=2.2.16.0
 pkgrel=1
 pkgdesc="A library for reading and writing images, including classes, utilities, and applications (mingw-w64)"
 url="http://www.openimageio.org/"
@@ -19,7 +19,7 @@ depends=(
 	"mingw-w64-pugixml"
 	"mingw-w64-fmt"
 	"mingw-w64-freetype2"
-	"mingw-w64-opencolorio1"
+	"mingw-w64-opencolorio"
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
@@ -32,11 +32,11 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=(
-	"https://github.com/OpenImageIO/oiio/archive/Release-${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/Release-${pkgver}.tar.gz"
 	"mingw-dependency-fix.patch"
 )
 sha256sums=(
-	'f222c6b51a40aabbc80ddf4055535be9af1ffa907452fa6d1ffa7674854aab17'
+	'd1a59f32dbba3ba71ad2e62e107034d1c5287bca1b0696474e927d504cd05ef4'
 	'9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352'
 )
 
