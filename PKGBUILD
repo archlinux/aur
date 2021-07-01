@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20210625.r0.g8702f95941c2
+pkgver=20210701.r0.gfb0ca446157a
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -223,13 +223,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -304,4 +307,4 @@ done
 
 sha512sums=('SKIP'
             '88f9f1e6ea206068fd029566e4610c16b7c3007f10363c7db37cd922fe75646437d2e4814317bc292d06eff7e9ebd29d8cd1ee82c8abf45ddd1843c1ff55f5c7'
-            '0f26e2232d03d386a6b0d9c9fd2f2fe8a91b20c06479d3f3d88087a8fef339f35188311404d25afafc34cd179720c0cd14f1ab7422da353e3fa01feba7e4e8d7')
+            '87300bba1da0969251986aa73532f2dc325d0cf491d30004c5b0dcdf99002e89481d9a0561c6f8ae9ca524512a9dcbeb560c791476ba785c23b51af18a1dd4c2')
