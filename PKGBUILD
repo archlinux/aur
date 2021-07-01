@@ -3,7 +3,7 @@
 _pkgname=AppleWin
 _name=applewin
 pkgname="${_name}-git"
-pkgver=v1.25.0.4.r1932.gdcae60de
+pkgver=v1.25.0.4.r1954.gdb8997d6
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'minizip'  'libslirp' 'sdl2_image' 'qt5-gamepad' 'qt5-mult
 makedepends=('git' 'cmake' 'boost')
 source=("git+https://github.com/audetto/AppleWin.git"
         "git+https://github.com/Dax89/QHexView.git#commit=4d06da8"
-        "git+https://github.com/ocornut/imgui.git#commit=a640d8a"
+        "git+https://github.com/ocornut/imgui.git#commit=4ddb6b4"
         "git+https://github.com/ocornut/imgui_club.git#commit=02e679b"
         applewin-sdl2.desktop
         applewin-qt.desktop

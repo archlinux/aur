@@ -1,6 +1,6 @@
 pkgbase = applewin-git
 	pkgdesc = AppleWin Linux port by Audetto - GIT version
-	pkgver = v1.25.0.4.r1932.gdcae60de
+	pkgver = v1.25.0.4.r1954.gdb8997d6
 	pkgrel = 1
 	url = https://github.com/audetto/AppleWin.git
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = applewin-git
 	depends = libyaml
 	source = git+https://github.com/audetto/AppleWin.git
 	source = git+https://github.com/Dax89/QHexView.git#commit=4d06da8
-	source = git+https://github.com/ocornut/imgui.git#commit=a640d8a
+	source = git+https://github.com/ocornut/imgui.git#commit=4ddb6b4
 	source = git+https://github.com/ocornut/imgui_club.git#commit=02e679b
 	source = applewin-sdl2.desktop
 	source = applewin-qt.desktop
