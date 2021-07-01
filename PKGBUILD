@@ -4,7 +4,7 @@
 _name=qutip
 _pkgname=qutip
 pkgname=python-qutip
-pkgver=4.6.0
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="QuTiP is open-source software for simulating the dynamics of open quantum systems"
 arch=("x86_64")
@@ -23,7 +23,7 @@ optdepends=(
 )
 
 source=("https://github.com/qutip/qutip/archive/v$pkgver.tar.gz")
-md5sums=('7f13eeee9db60f270dcca95ce7d90051')
+md5sums=('10f5d8864024f228015c8566a672422e')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
