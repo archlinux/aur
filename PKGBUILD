@@ -1,4 +1,5 @@
 # Maintainer: gr m21 <grm21@protonmail.com>
+# Contributor: Morten Linderud <morten@linderud.pw>
 _npmname=how-2
 pkgname=nodejs-how2
 pkgver=1.8.2
@@ -9,7 +10,7 @@ url="https://github.com/santinic/how2"
 license=(MIT)
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-noextract=($_npmname-$pkgver.tgz)
+noextract=("$_npmname-$pkgver.tgz")
 sha256sums=('17798d4e0642eb275f9aa83f83e577f0f3872f6250d88ab747846d875119e350')
 
 
