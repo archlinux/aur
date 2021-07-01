@@ -1,11 +1,11 @@
 pkgbase = archbuilder
 	pkgdesc = makepkg wrapper that uses buildah
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mfulz/archbuilder
 	arch = any
 	depends = buildah
 	source = https://github.com/mfulz/archbuilder/archive/refs/tags/v0.9.3.tar.gz
-	sha256sums = 3c97db12e42b7442ac08deef265f3fd446b7934a99e9361df61b5b825946c1aa
+	sha256sums = dc4bc4bb2863f07925cf23444a78714030b37cc984e364b33bf2918c609b0e79
 
 pkgname = archbuilder
