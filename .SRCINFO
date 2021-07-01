@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-spectra09
+	pkgdesc = A header-only C++ library for large scale eigenvalue problems (mingw-w64)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://spectralib.org/
+	arch = any
+	license = MPL2
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-eigen
+	provides = mingw-w64-spectra=0.9.0
+	conflicts = mingw-w64-spectra
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/yixuan/spectra/archive/v0.9.0.tar.gz
+	sha256sums = 2966757d432e8fba5958c2a05ad5674ce34eaae3718dd546c1ba8760b80b7a3d
+
+pkgname = mingw-w64-spectra09
