@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-model-zoo-git
-pkgver=0.0.0a30.r182
+pkgver=0.0.0a30.r190
 pkgrel=1
 pkgdesc='Manage pretrained models created by ESPnet toolkit'
 arch=('any')
