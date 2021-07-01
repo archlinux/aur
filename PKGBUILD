@@ -6,7 +6,7 @@ pkgver=6.0.3
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('i686' 'x86_64')
-url="http://suricata-ids.org/"
+url="https://suricata.io/"
 license=('GPL2')
 depends=('libcap-ng' 'libnet' 'jansson' 'libpcap' 'libyaml' 'pcre' 'rustup' 'geoip' 'lua')
 optdepends=('hyperscan: build with hyperscan support' 'geoipupdate: geoip2 support')
@@ -16,7 +16,7 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/classification.config'
         'etc/suricata/reference.config'
         'etc/suricata/threshold.config')
-source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
+source=(https://www.openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 sha256sums=('daf134bb2d7c980035e9ae60f7aaf313323a809340009f26e48110ccde81f602'
