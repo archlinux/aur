@@ -65,7 +65,7 @@ package_webos-emulator() {
   depends=('virtualbox' 'webos-cli' 'java-runtime')
 
   install -dm 755 "${pkgdir}"/usr/share/{webOS_TV_SDK/Emulator/v"${pkgver}",applications,pixmaps}
-  install -dm 777 "${pkgdir}"/usr/share/webOS_TV_SDK/Emulator/Logs # For virtualbox
+  install -dm 777 "${pkgdir}"/usr/share/webOS_TV_SDK/Emulator/v"${pkgver}"/Logs # For virtualbox
   unzip -o webOS_SDK/Emulator_tv_v"${pkgver}".zip
   cd Emulator
   patch --strip=1 --input="../emulator.patch"
