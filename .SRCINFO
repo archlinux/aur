@@ -1,7 +1,7 @@
 pkgbase = archbuilder
 	pkgdesc = makepkg wrapper that uses buildah
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mfulz/archbuilder
 	arch = any
 	depends = buildah
