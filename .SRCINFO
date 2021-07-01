@@ -1,0 +1,23 @@
+pkgbase = powershell-empire
+    pkgver = 3.8.2
+    pkgrel = 0
+    pkgdesc = Empire is a PowerShell and Python 3.x post-exploitation framework
+    url = https://github.com/BC-SECURITY/Empire
+    arch = any
+    depends = python
+    depends = powershell
+    depends = jdk-openjdk
+    depends = xar
+    depends = bomutils
+    depends = libxml2
+    depends = swig
+    depends = zlib
+    depends = python-virtualenv
+    license = BSD-3-Clause
+    install = powershell-empire.install
+    source = http://http.kali.org/pool/main/p/powershell-empire/powershell-empire_3.8.2-0kali1_all.deb
+    source = git+https://github.com/peek1e/powershell-empire-AUR
+    sha256sums = fb01b9a0138dbafeb418350ace8e10dc6b1a0e3c83864a1a2ce4eef78863d36d
+    sha256sums = SKIP
+
+pkgname = powershell-empire

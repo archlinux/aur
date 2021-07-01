@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /usr/share/powershell-empire
+source env/bin/activate
+python3 empire "$@"
