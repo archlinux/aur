@@ -1,6 +1,6 @@
 pkgbase = gstreamer-git
 	pkgdesc = GStreamer Multimedia Framework (Git version)
-	pkgver = 1.18.0.r27.g220ce9c3f
+	pkgver = 1.19.1.r11.gba294415d
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -21,11 +21,10 @@ pkgbase = gstreamer-git
 	depends = bash-completion
 	depends = python
 	optdepends = sh: feedback script
-	provides = gstreamer=1.18.0.r27.g220ce9c3f
+	provides = gstreamer=1.19.1.r11.gba294415d
 	conflicts = gstreamer
 	options = !libtool
 	source = git+git://anongit.freedesktop.org/gstreamer/gstreamer
 	md5sums = SKIP
 
 pkgname = gstreamer-git
-
