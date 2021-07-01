@@ -3,7 +3,7 @@
 _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
-pkgver=1.90.1.r5.ge34de1d
+pkgver=1.90.1.r6.g2978dc0
 pkgrel=2
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ optdepends=(
 )
 groups=(fprint-git)
 provides=(libfprint libfprint-2.so=2-64 libfprint-vfs009x libfprint-vfs0090 libfprint-vfs0097)
-conflicts=(libfprint)
+conflicts=(libfprint 'fprintd>=1.92.0')
 replaces=(libfprint libfprint-vfs009x libfprint-vfs0090 libfprint-vfs0097)
 source=(
   "git+https://github.com/3v1n0/libfprint.git#branch=vfs0090"
