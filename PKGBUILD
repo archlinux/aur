@@ -26,13 +26,4 @@ package() {
 
 	## Install EULA
 	install -Dm644 "$srcdir/Harrison_AVA/EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
-
-	## Where To Put License Files
-	for _license in bf ds legacyq mc me sc df vf; do
-		if [ -f `xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt ]; then
-			install -Dm644 "`xdg-user-dir DOWNLOAD`/license_key_harrison_ava_${_license}.txt" "$pkgdir/usr/local/share/license_key_harrison_ava_${_license}.txt"
-		else
-			echo "Please put license_key_harrison_ava_${_license}.txt in the `xdg-user-dir DOWNLOAD` directory in order to activate AVA ${_license^^} plugin."
-		fi
-	done
 }
