@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.13.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -32,7 +32,7 @@ _ensure_local_nvm() {
 prepare() {
 	cd "$pkgname-$pkgver"
 	export npm_config_cache="$srcdir/npm_cache"
-	local nodeversion='12.22.1'
+	local nodeversion='12.22.2'
 	local npm_prefix=$(npm config get prefix)
 	npm config delete prefix
 	_ensure_local_nvm
