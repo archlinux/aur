@@ -1,9 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.12.13.arch2
-_tagver=5.12.13.arch1
-pkgrel=4
+pkgver=5.12.14.arch1
+_tagver=5.12.14.arch1
+pkgrel=1
 pkgdesc='Linux'
 #_srctag=v${pkgver%.*}-${pkgver##*.}
 _srctag=v${_tagver%.*}-${_tagver##*.}
@@ -36,8 +36,8 @@ source=(
 	#"sys-kernel_arch-sources-g14_files-0013-acpi-2of2-turn-off-unconditionally.patch"::"https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=7e4fdeafa61f2b653fcf9678f09935e55756aed2"
 	"sys-kernel_arch-sources-g14_files-0014-acpi_unused-v2.patch"
 	
-	"sys-kernel_arch-sources-g14_files-0015-revert-4cbbe34807938e6e494e535a68d5ff64edac3f20.patch"
-	"sys-kernel_arch-sources-g14_files-0016-revert-1c0b0efd148d5b24c4932ddb3fa03c8edd6097b3.patch"
+	#"sys-kernel_arch-sources-g14_files-0015-revert-4cbbe34807938e6e494e535a68d5ff64edac3f20.patch"
+	#"sys-kernel_arch-sources-g14_files-0016-revert-1c0b0efd148d5b24c4932ddb3fa03c8edd6097b3.patch"
 	
 	"sys-kernel_arch-sources-g14_files-0017-5.14-ACPI-processor-idle-Fix-up-C-state-latency-if-not-ordered.patch"
 	"sys-kernel_arch-sources-g14_files-0018-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.patch"
@@ -66,17 +66,15 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2'
+            '761427cf8dbeed10fd3149023bc83d0a2319e70a5cbfdcdda50e7a49e8d2b198'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            'b53609a5072a821db11b5510a1cfedc9e7d85af2eb42620e0368c93d730599c1'
+            '05f47255831028b9e3a49e335323169d0156201d5e9b2bf8e09093440ab9e56e'
             '4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
             'b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3'
             'f94b12f56e99ebfc87014f9570a987bca7b50400c412ddbbb7035d73c5d8c668'
             '5af4796400245fec2e84d6e3f847b8896600558aa85f5e9c4706dd50994a9802'
             '4c1e9ec4402161ac93bb88595840ea5c5ac0c2cb75d06b01170a3ee4fc1f8907'
-            'e03b26bbfd6d7a3fffa290346f96e6f4376e09ac3a76bc658eaab0cd8b486ddd'
-            '3cff17ff6953eef7c17d066d56e510713f2692efac90c61b748d9d38b318f5c8'
             'b4a563ef30f86b9af0932c00bb3422b95eedbda1ff40a1a725c22a0ae9ab7084'
             'dab4db308ede1aa35166f31671572eeccf0e7637b3218ce3ae519c2705934f79'
             '9e83c46bed9059ba78df6c17a2f7c80a1cdb6efbdf64ec643f68573ede891b95'

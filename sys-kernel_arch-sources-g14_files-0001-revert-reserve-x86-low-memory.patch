@@ -14,19 +14,6 @@ index 479cc44cc4e2..835f810f2f26 100644
  	reset_devices	[KNL] Force drivers to reset the underlying device
  			during initialization.
  
-diff --git a/Makefile b/Makefile
-index 30e69fd83264..d2fe36db78ae 100644
---- a/Makefile
-+++ b/Makefile
-@@ -2,7 +2,7 @@
- VERSION = 5
- PATCHLEVEL = 12
- SUBLEVEL = 13
--EXTRAVERSION = -arch1
-+EXTRAVERSION =
- NAME = Frozen Wasteland
- 
- # *DOCUMENTATION*
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
 index fc91be3b1bd1..861b1b794697 100644
 --- a/arch/x86/Kconfig

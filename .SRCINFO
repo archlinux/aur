@@ -1,7 +1,7 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.12.13.arch2
-	pkgrel = 4
+	pkgver = 5.12.14.arch1
+	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-g14
 	makedepends = git
 	makedepends = gcc>=11.0
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.12.13-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.12.14-arch1
 	source = config
 	source = choose-gcc-optimization.sh
 	source = sys-kernel_arch-sources-g14_files-0001-revert-reserve-x86-low-memory.patch
@@ -26,8 +26,6 @@ pkgbase = linux-g14
 	source = https://gitlab.com/asus-linux/fedora-kernel/-/archive/91f97d88231152006764d3c50cc52ddbb508529f/fedora-kernel-91f97d88231152006764d3c50cc52ddbb508529f.zip
 	source = sys-kernel_arch-sources-g14_files-0012-acpi-1of2-turn-off-unused.patch::https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=4b9ee772eaa82188b0eb8e05bdd1707c2a992004
 	source = sys-kernel_arch-sources-g14_files-0014-acpi_unused-v2.patch
-	source = sys-kernel_arch-sources-g14_files-0015-revert-4cbbe34807938e6e494e535a68d5ff64edac3f20.patch
-	source = sys-kernel_arch-sources-g14_files-0016-revert-1c0b0efd148d5b24c4932ddb3fa03c8edd6097b3.patch
 	source = sys-kernel_arch-sources-g14_files-0017-5.14-ACPI-processor-idle-Fix-up-C-state-latency-if-not-ordered.patch
 	source = sys-kernel_arch-sources-g14_files-0018-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.patch
 	source = sys-kernel_arch-sources-g14_files-0019-5.14-nvme-pci-look-for-StorageD3Enable-on-companion-ACPI-device.patch
@@ -49,16 +47,15 @@ pkgbase = linux-g14
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 1c48dc71e8dabd48e538b2284ab3b9e2a768e7d80c2c74e552dc1d93239370e2
+	sha256sums = 761427cf8dbeed10fd3149023bc83d0a2319e70a5cbfdcdda50e7a49e8d2b198
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
+	sha256sums = 05f47255831028b9e3a49e335323169d0156201d5e9b2bf8e09093440ab9e56e
 	sha256sums = 4a9e44dfbc7e9574ae86cf53a896b6c67f03b224e90e18982dfb0e4ba02a6c1b
 	sha256sums = fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0
 	sha256sums = b9e4b11f6ca413fa7fcd1d810215bf3a36e69eedc4570f4209f7c1957083b2f3
 	sha256sums = f94b12f56e99ebfc87014f9570a987bca7b50400c412ddbbb7035d73c5d8c668
 	sha256sums = 5af4796400245fec2e84d6e3f847b8896600558aa85f5e9c4706dd50994a9802
 	sha256sums = 4c1e9ec4402161ac93bb88595840ea5c5ac0c2cb75d06b01170a3ee4fc1f8907
-	sha256sums = e03b26bbfd6d7a3fffa290346f96e6f4376e09ac3a76bc658eaab0cd8b486ddd
-	sha256sums = 3cff17ff6953eef7c17d066d56e510713f2692efac90c61b748d9d38b318f5c8
 	sha256sums = b4a563ef30f86b9af0932c00bb3422b95eedbda1ff40a1a725c22a0ae9ab7084
 	sha256sums = dab4db308ede1aa35166f31671572eeccf0e7637b3218ce3ae519c2705934f79
 	sha256sums = 9e83c46bed9059ba78df6c17a2f7c80a1cdb6efbdf64ec643f68573ede891b95
