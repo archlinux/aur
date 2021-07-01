@@ -85,25 +85,36 @@ makedepends=(
 )
 options=('!strip')
 
-_reponame="linux-bcachefs"
-_repo_url="https://github.com/koverstreet/bcachefs"
+_reponame_bcachefs="linux-bcachefs"
+_repo_url_bcachefs="https://github.com/koverstreet/bcachefs.git"
+
+_reponame_arch="linux-archlinux"
+_repo_url_arch="https://github.com/archlinux/linux.git"
+
+_reponame_upstream="linux"
+_repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
-_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}"
+_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
 _kernel_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "${_reponame}::git+${_repo_url}#branch=master"
+    "${_reponame_bcachefs}::git+${_repo_url_bcachefs}#branch=master"
+    "${_reponame_arch}::git+${_repo_url_arch}"
+    #arch_patches.patch
+    #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
+    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens ~ heftig
 )
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             '10deb2ce58d84b408c112d2c46f2ddb41e1d79e65fe2efbd5d1727b026bb4a3ae1cb7dd6c1361dc79cf308006383a1fc706dba59d5b277e87468a391c039eb55')
 
@@ -112,7 +123,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-    cd "$srcdir/$_reponame"
+    cd "$srcdir/$_reponame_bcachefs"
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -120,12 +131,12 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "https://github.com/archlinux/linux.git" || true
+    git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
     git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
 
     #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    #git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
     #git fetch upstream_stable ${_srcver_tag//.arch*/}
     #git merge --no-edit --no-commit FETCH_HEAD
 
@@ -173,12 +184,12 @@ prepare() {
 }
 
 pkgver() {
-    cd "$srcdir/$_reponame"
+    cd "$srcdir/$_reponame_bcachefs"
     printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd $_reponame
+    cd $_reponame_bcachefs
     make all
     make htmldocs
 }
@@ -204,7 +215,7 @@ _package() {
         wireguard-arch
     )
 
-    cd $_reponame
+    cd $_reponame_bcachefs
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -227,7 +238,7 @@ _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel $_pkgdesc_extra"
     depends=(pahole)
 
-    cd $_reponame
+    cd $_reponame_bcachefs
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
     msg2 "Installing build files..."
