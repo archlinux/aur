@@ -57,7 +57,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 #pkgver=${_major}.${_minor}
 pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -89,6 +89,10 @@ source=(
   "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
   "${_patchsource}/lru-patches/0001-lru-patches.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
+  "${_patchsource}/security-2/hardened-patches.patch"
+  "${_patchsource}/security-2/lrng-v41.patch"
+  "${_patchsource}/misc/nohzfull.patch"
+  "${_patchsource}/security-patches/0001-security-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
@@ -500,7 +504,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'b102915fcd613be6598260eaa33bd7a4'
+         '2ec080047599485c19b50300c9d07aa8'
          '9bb46b8ce45259c238c5233b8394d70b'
          '8fab6f0acf86d138a283c4dd044198ed'
          'efb4f07f10058ec12933ba3ea12aa983'
@@ -519,6 +523,10 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'ed551763bd8112d087bcd21782d68325'
          '3f302dbaceea020abd40f6e9f23b75df'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
+         '8b756f75c5600b1ea7df5e11ac738df5'
+         '20e92e9d958ca8fec6ff441bb97aa9f1'
+         'c68e4fd9b4a55ee730a34bb39ae325ad'
+         '9977ba0e159416108217a45438ebebb4'
          '9e5114dba6da65e8d444aa225b109a21'
          'c360b8c17d778f98a54fa7cddf348566'
          'ce9beff503ee9e6ce6fd983c1bbbdd9e'
