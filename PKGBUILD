@@ -3,7 +3,7 @@
 _stdname=MeiliSearch
 pkgname=meilisearch-latest
 _pkgname=meilisearch
-pkgver=0.21.0rc0
+pkgver=0.21.0rc1
 pkgrel=1
 pkgdesc="Lightning Fast, Ultra Relevant, and Typo-Tolerant Search Engine. Release Candidate."
 arch=(x86_64)
