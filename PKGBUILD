@@ -1,6 +1,7 @@
-# Maintainer: Hunter Wittenborn <git@hunterwittenborn.me>
-# Past Maintainer: Alfin Bakhtiar Ilhami <alfin at nuclea dot id>
-# Past Maintainer: Jan-Tarek Butt <tarek at ring0 dot de>
+# Maintainer: chn <g897331845@gmail.com>
+# Contributor: Hunter Wittenborn <git@hunterwittenborn.me>
+# Contributor: Alfin Bakhtiar Ilhami <alfin at nuclea dot id>
+# Contributor: Jan-Tarek Butt <tarek at ring0 dot de>
 
 pkgname=bootstrap-studio
 pkgver=5.7.1
