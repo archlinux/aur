@@ -1,15 +1,19 @@
 # Maintainer: Matthias Fulz <mfulz at olznet dot de>
 pkgname=archbuilder
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.4
+pkgrel=1
 pkgdesc='makepkg wrapper that uses buildah'
 url='https://github.com/mfulz/archbuilder'
 arch=('any')
 source=(
         "https://github.com/mfulz/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
        )
-sha256sums=('dc4bc4bb2863f07925cf23444a78714030b37cc984e364b33bf2918c609b0e79')
+sha256sums=('d6a36a91af0eadd048177ceec6b643a8ba6a10d793e4652fc833445a121993e1')
 depends=('buildah')
+
+backup=(
+        'etc/archbuilder/archbuilder.env'        
+       )
 
 build() {
     cd "$pkgname-$pkgver"
