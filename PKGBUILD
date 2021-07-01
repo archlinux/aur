@@ -16,7 +16,7 @@ arch=('any')
 url="https://freedict.org/"
 license=('GPL' 'AGPL3')
 optdepends=('dictd: dict client and server')
-makedepends=('freedict-tools-svn>=1:r440')
+makedepends=('freedict-tools-svn>=1:r443-2')
 install=${pkgname}.install
 source=("https://ftp.tu-chemnitz.de/pub/Local/urz/ding/old-releases/ding-${_dingver}.tar.gz")
 sha512sums=('7d1b459d40e26482c3c16a79565cb897a492fa5807f44c5c3ed1022bcf65ba90bec9cb503cc67970742c2beeb34bd653c684e56ef5492f536254bf475d3f70a4')
