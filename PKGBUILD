@@ -2,7 +2,7 @@
 # Contributors: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=terraform-ls-bin
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Terraform Language Server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MPL2')
 makedepends=('unzip')
 
 source=("terraform-ls-linux-amd64-${pkgver}::${url}/releases/download/v${pkgver}/terraform-ls_${pkgver}_linux_amd64.zip")
-sha512sums=('08aa1aeb083a420b85155967a4ca991086a97cfdd7fc607cb58c49e7bdceb6b76c4e0f58f1842430f10d0758b8fb6d218bb291a961564862efbc135570d9efdf')
+sha512sums=('88bfcf600e7ed65f5b9a9129b01c4ecc40ff97e4e8c62e46aea024d1120d819b9f6a5e9ec640ddc8c29a89e6c240ed048b0aed68f9d2ba700e7d28dd810852d6')
 
 package() {
 	install -D -g root -m 0755 -o root "$srcdir/terraform-ls" "$pkgdir/usr/bin/terraform-ls"
