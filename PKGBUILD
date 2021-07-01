@@ -1,7 +1,7 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb-beta
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Create Debian archives from PKGBUILDs (beta release)"
 arch=('any')
