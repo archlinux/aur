@@ -8,6 +8,7 @@ arch=('x86_64')
 license=('GPL2')
 source=("$pkgname::git+https://github.com/PeeK1e/$pkgname")
 makedepends=()
+provides=('bomutils')
 conflicts=('bomutils-git')
 md5sums=('SKIP')
 

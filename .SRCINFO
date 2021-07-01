@@ -7,6 +7,7 @@ pkgbase = bomutils
     license = GPL2
     source = bomutils::git+https://github.com/peek1e/bomutils
     md5sums = skip
+    provides = bomutils
     conflicts = bomutils-git
 
 pkgname = bomutils
