@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-git
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 conflicts=('foot')
 provides=('foot')
