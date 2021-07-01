@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://suricata.io/"
 license=('GPL2')
 makedepends=('rustup')
-depends=('hyperscan' 'jansson' 'libcap-ng' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
+depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
 conflicts=('python-sphinx' 'suricata-nfqueue') # Issue with doc generation at compile time - https://github.com/OISF/suricata/pull/6123
 install=suricata.install
@@ -18,7 +18,7 @@ backup=('etc/suricata/suricata.yaml'
         'etc/suricata/classification.config'
         'etc/suricata/reference.config'
         'etc/suricata/threshold.config')
-source=(https://www.openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz{,.sig}
+source=(https://www.openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz{,.sig}
         suricata-update.{service,timer})
 validpgpkeys=('B36FDAF2607E10E8FFA89E5E2BA9C98CCDF1E93A') # Open Information Security Foundation
 sha256sums=('daf134bb2d7c980035e9ae60f7aaf313323a809340009f26e48110ccde81f602'
@@ -28,12 +28,11 @@ sha256sums=('daf134bb2d7c980035e9ae60f7aaf313323a809340009f26e48110ccde81f602'
 
 build() {
   export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	      --enable-lua --enable-geoip
   make
 }
-
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
