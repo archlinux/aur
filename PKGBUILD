@@ -1,7 +1,7 @@
 # Maintainer: flovo <flovo-git-commit at f-voegele dot de>
 
 pkgname=katago-cpu
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Baduk engine with no human-provided knowledge. This package is compiles katago with CPU and AVX2 support."
 arch=('x86_64')
