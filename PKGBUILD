@@ -5,7 +5,7 @@
 
 pkgname=trackma-git
 pkgver=0.8.4.r35.g981bdac
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -16,7 +16,7 @@ depends=('python'
 makedepends=('python-setuptools'
     'desktop-file-utils'
     'git')
-optdepends=('python-dbus: MPRIS tracker'
+optdepends=('dbus-python: MPRIS tracker'
     'python-gobject: GTK frontend/MPRIS tracker'
     'python-cairo:   GTK frontend'
     'python-pillow:  thumbnail images for GUI frontends'
