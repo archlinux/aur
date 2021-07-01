@@ -2,9 +2,9 @@
 
 pkgname=emacs-org-roam
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Org-roam is a plain-text knowledge management system."
-url="https://github.com/emacs-helm/helm"
+url="https://github.com/org-roam/org-roam"
 arch=('any')
 license=('GPL3')
 depends=('emacs' 'emacs-org-mode' 'emacs-f' 'emacs-emacsql-sqlite3')

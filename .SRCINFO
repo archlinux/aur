@@ -1,8 +1,8 @@
 pkgbase = emacs-org-roam
 	pkgdesc = Org-roam is a plain-text knowledge management system.
 	pkgver = 1.2.4
-	pkgrel = 1
-	url = https://github.com/emacs-helm/helm
+	pkgrel = 2
+	url = https://github.com/org-roam/org-roam
 	arch = any
 	license = GPL3
 	depends = emacs
