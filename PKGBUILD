@@ -1,14 +1,14 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc="Terminfo files for the foot terminal emulator"
 pkgname=foot-terminfo
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 arch=('any')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('ncurses')
 source=(foot-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('9269acfbef40cb284590de3bf70fc67997ffb6361dec4b4dddae7cdbf4ad6490')
+sha256sums=('53df83617f7fbdd0f8f4c7a06e6e1716da61dbdcfb16aa65383ed31f4996195d')
 
 build() {
   cd foot
