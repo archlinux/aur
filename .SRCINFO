@@ -1,0 +1,12 @@
+pkgbase = python-sqlite-fts4
+	pkgdesc = Python functions for working with SQLite FTS4 search
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/simonw/sqlite-fts4
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	source = https://pypi.io/packages/source/s/sqlite-fts4/sqlite-fts4-1.0.1.tar.gz
+	sha256sums = b2d4f536a28181dc4ced293b602282dd982cc04f506cf3fc491d18b824c2f613
+
+pkgname = python-sqlite-fts4
