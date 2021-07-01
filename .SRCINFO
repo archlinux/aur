@@ -1,5 +1,5 @@
 pkgbase = obs-studio-ftl
-	pkgdesc = Free, open source software for live streaming and recording
+	pkgdesc = Free, open source software for live streaming and recording (with FTL protocol support)
 	pkgver = 27.0.1
 	pkgrel = 1
 	url = https://obsproject.com
