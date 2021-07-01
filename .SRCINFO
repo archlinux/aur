@@ -1,7 +1,7 @@
 pkgbase = vmd
-	pkgdesc = Visual Molecular Dynamics
+	pkgdesc = Visual Molecular Dynamics (official binary build)
 	pkgver = 1.9.4a51
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	install = vmd.install
 	arch = x86_64

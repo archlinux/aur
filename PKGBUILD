@@ -4,8 +4,8 @@
 
 pkgname=vmd
 pkgver=1.9.4a51
-pkgrel=1
-pkgdesc="Visual Molecular Dynamics"
+pkgrel=2
+pkgdesc="Visual Molecular Dynamics (official binary build)"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
 arch=('x86_64')
