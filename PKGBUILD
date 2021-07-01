@@ -2,7 +2,7 @@
 
 pkgname=audacity-wxgtk2
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Record and edit audio files"
 arch=('x86_64')
 url="https://audacityteam.org"
@@ -21,9 +21,12 @@ sha512sums=('1ea5b84b3938a448c4ab3b6a97432e4fb59f62d14f65f277047258c473501952ed5
 prepare() {
   mv -v "audacity-Audacity-${pkgver}" "${pkgname}-${pkgver}"
   cd "${pkgname}-${pkgver}"
+  sed -i -e 's:--recurse-submodules:--recurse-submodules --branch v3.1.3.1-audacity:' cmake-proxies/wxWidgets/CMakeLists.txt
+  sed -i -e '/#include <algorithm>/i #include <limits>' include/audacity/Types.h
   mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Daudacity_use_ffmpeg=loaded -Daudacity_use_wxwidgets=local ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Daudacity_use_ffmpeg=loaded \
+        -Daudacity_use_wxwidgets=local -Daudacity_use_sqlite=local  ..
 }
 
 build() {
