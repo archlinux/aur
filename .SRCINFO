@@ -1,0 +1,15 @@
+pkgbase = spectra09
+	pkgdesc = A header-only C++ library for large scale eigenvalue problems
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://spectralib.org/
+	arch = any
+	license = MPL2
+	makedepends = cmake
+	depends = eigen
+	provides = spectra=0.9.0
+	conflicts = spectra
+	source = https://github.com/yixuan/spectra/archive/v0.9.0.tar.gz
+	sha256sums = 2966757d432e8fba5958c2a05ad5674ce34eaae3718dd546c1ba8760b80b7a3d
+
+pkgname = spectra09
