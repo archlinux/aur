@@ -1,0 +1,15 @@
+pkgbase = libliftoff
+	pkgdesc = Lightweight KMS plane library
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/emersion/libliftoff
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libdrm
+	source = libliftoff::git+https://github.com/emersion/libliftoff.git#tag=v0.1.0
+	sha512sums = SKIP
+
+pkgname = libliftoff
