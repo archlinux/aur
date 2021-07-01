@@ -51,7 +51,7 @@ _major=5.12
 _minor=14
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -235,13 +235,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -325,7 +328,7 @@ sha512sums=('189bdb55fd874ba860833626a4142920c853f886562e52a6f182a9f63f1c9989a3d
             'd60e24ef65402bcc9c10e424eeae5fe033f08c4a12d98299e885109e9e9cadbf726fc083bb3dcd0b5d821e7ee84aa1feb97695c7905f202bc0bbe4f3e5104fee'
             '9d8dc471c35c868794dbed30df0ba95e856707d48bc53d0f15b6dcb6659faf389a56ef4177f3961a45c864bfd224add4e126640f9283898e4d836c3180935450'
             'fb84fc91e6be7b696aaf98177a124c321673c5e43c80daad8590faea13500624f5e759dac44a0eb6b6003ccccb793ca34ce27c65ccc96fb7253b0b3038df68cf'
-            'b71b72c275d654f019befb5df73a28185c2b2590c79147340d460c5a92531a9614ea6cad4e1ae4430b46a7c1d9d113a03f88c4dac5788a895f86aeedbbcc1147')
+            '4cfbba279a37156f17752168d9477b39945e4a9a1e3eb76fbc3c784a422992a7275efc89ce9d5305324afcb056f2bd18f5c2f91c546f51a826d3e2acb246b50b')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
