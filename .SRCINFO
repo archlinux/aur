@@ -1,20 +1,19 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 5.4
+	pkgver = 5.4.2
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
 	license = apache
 	makedepends = patchelf
-	makedepends = rpmextract
 	depends = libutil-linux
 	depends = libxml2
 	depends = python36
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source = https://swift.org/builds/swift-5.4-release/centos8/swift-5.4-RELEASE/swift-5.4-RELEASE-centos8.tar.gz
-	sha256sums = f282aec33e1d2c74f1b5804eb437688c39406ad21511b8ee93cec5262c921cfe
+	source = https://swift.org/builds/swift-5.4.2-release/centos8/swift-5.4.2-RELEASE/swift-5.4.2-RELEASE-centos8.tar.gz
+	sha256sums = 48997efc0d3b5a87082609b2d2bab21e421e711427386def6b6e761e5491167f
 
 pkgname = swift-bin
 
