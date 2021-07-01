@@ -1,0 +1,14 @@
+[Unit]
+Description=NaiveProxy Server Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/naiveproxy /etc/naiveproxy/%i.json
+
+[Install]
+WantedBy=default.target
+

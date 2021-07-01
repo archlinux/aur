@@ -1,32 +1,43 @@
-# Maintainer: navigaid <navigaid@gmail.com>
+# Maintainer: bgme <i@bgme.me>
+# Contributor: navigaid <navigaid@gmail.com>
 
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=83.0.4103.61
-pkgrel=2
-arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
+pkgver=91.0.4472.77
+pkgrel=1
+arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
 makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
 source=(
-  "build.sh"
-  "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz"
+  "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${pkgver}-${pkgrel}.tar.gz"
+  "naiveproxy.service"
+  "naiveproxy@.service"
 )
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('3aa2fe322a99a603b4afb27980a77472'
-         '45c2a33e747b179a49e8a085a77b2dcf')
+sha256sums=(
+  "01c660efd162859a2cabdf336cf889c191449fbd63883fc5a7b1be1348005fe1"
+  "ec7e686edd39068acd3122bbae4f4e83ba8540ffdb9fe30790679e72c7318d33"
+  "723979ea8245a297fac101ff71e1e9f97f138e0bfb0e84176ef5ca70cc96bf8e"
+)
 provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
 build(){
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src
-  ../../build.sh
+  ./get-clang.sh
+  ./build.sh
   popd
 }
 
 package(){
+  pushd ${srcdir}
+  install -Dm644 naiveproxy.service ${pkgdir}/usr/lib/systemd/system/naiveproxy.service
+  install -Dm644 naiveproxy@.service ${pkgdir}/usr/lib/systemd/system/naiveproxy@.service
+  popd
+
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}
   install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
