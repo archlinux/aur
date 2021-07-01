@@ -1,0 +1,21 @@
+pkgbase = sofia-sip-git
+	pkgdesc = An open-source SIP User-Agent library
+	pkgver = 1.13.4.r3.gf121ce4
+	pkgrel = 1
+	url = http://sofia-sip.sourceforge.net
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = git
+	depends = glib2
+	depends = openssl
+	depends = gawk
+	provides = sofia-sip=1.13.4-1
+	conflicts = sofia-sip
+	options = !libtool
+	options = !strip
+	options = debug
+	source = sofia-sip-git::git+https://github.com/freeswitch/sofia-sip
+	md5sums = SKIP
+
+pkgname = sofia-sip-git
