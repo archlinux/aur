@@ -60,11 +60,11 @@ post_install()
 	
 	echo "Installing the default app associations..."
 	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop' /usr/share/applications/defaults.list)" ]; then
-		echo "application/x-resolveproj=com.blackmagicdesign.resolve.desktop" /usr/share/applications/defaults.list
+		echo "application/x-resolveproj=com.blackmagicdesign.resolve.desktop" >> /usr/share/applications/defaults.list
 	fi
 
 	if [ ! "$(grep -ir 'application/x-resolveproj=com.blackmagicdesign.resolve.desktop;' /usr/share/applications/mimeinfo.cache)" ]; then
-		echo "/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d" /usr/share/applications/mimeinfo.cache
+		echo "/application\/x-resolveproj=com.blackmagicdesign.resolve.desktop;/d" >> /usr/share/applications/mimeinfo.cache
 	fi
 
 	# reload the udev rules
@@ -93,8 +93,8 @@ post_remove()
 	fi
 
 	# Remove udev rules
-	for rules in /usr/lib/udev/rules.d/75-davincipanel.rules /usr/lib/udev/rules.d/75-sdx.rules
+	for rule in /usr/lib/udev/rules.d/75-davincipanel.rules /usr/lib/udev/rules.d/75-sdx.rules
 	do
-		[[ -f $rules ]] && rm -rf $rules
+		[[ -f $rule ]] && rm -rf $rule
 	done
 }
