@@ -1,7 +1,7 @@
 # Maintainer: Alex Gu <gualse.mail@yandex.com>
 pkgname=mycorrhiza
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Filesystem and git-based wiki engine written in Go using mycomarkup."
 arch=('any')
 url="https://github.com/bouncepaw/mycorrhiza"
