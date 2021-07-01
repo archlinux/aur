@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=plow
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A high-performance HTTP benchmarking tool with real-time web UI & terminal displaying"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0cf769e1700248120683f3dc731c489805494d11418e13b7a6c3f5362bb09507')
+sha256sums=('aa579bfa7fee552d84723b6f49d7851759bfd2ff15c9a5d0f216c11a838472a8')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
