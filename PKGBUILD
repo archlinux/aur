@@ -12,7 +12,7 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/meilisearch/MeiliSearch/archive/v${pkgver}.tar.gz)
-sha256sums=('8abb0bb0c8cd055f62ab120c9496c9ddd106f7ca75d67022028ca67916ac2eb1')
+sha256sums=('f602780dd2039530683187c863213c3a35e0f6325ef789e5888dbf945c3a2ad2')
 
 validpgpkeys=()
 
