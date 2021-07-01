@@ -6,12 +6,12 @@
 
 pkgname=gerrit
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based code review tool built on top of the Git version control system"
 arch=('any')
 url="https://www.gerritcodereview.com/"
 license=('Apache')
-depends=('java-runtime' 'libcups')
+depends=('java-runtime<13' 'libcups')
 optdepends=('bcprov: Java cryptography APIs (Bouncy Castle)')
 backup=(etc/default/gerritcodereview)
 install=gerrit.install

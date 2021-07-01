@@ -1,12 +1,12 @@
 pkgbase = gerrit
 	pkgdesc = A web-based code review tool built on top of the Git version control system
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gerritcodereview.com/
 	install = gerrit.install
 	arch = any
 	license = Apache
-	depends = java-runtime
+	depends = java-runtime<13
 	depends = libcups
 	optdepends = bcprov: Java cryptography APIs (Bouncy Castle)
 	noextract = gerrit.war
