@@ -5,7 +5,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.6.r19.g5e98d504
+pkgver=1.6.r20.g8b0bc84f
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -32,8 +32,7 @@ b2sums=('SKIP'
         '688cd6f2ce02448bd75001c509b68f9265496abf0c6b00a46c373e3a6c337f5e24d4d6d3ce8cec3801fd823a076f1de68733edb0ae0283920aea16889c4299e1')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${srcdir}/${_gitname}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -44,16 +43,25 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"
-  mkdir -p openmvg_build
-  cd openmvg_build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DOpenMVG_BUILD_SHARED=ON -DOpenMVG_BUILD_EXAMPLES=ON  -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON -DOpenMVG_USE_OPENMP=ON -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon -DCERES_DIR_HINTS=/usr/include/ceres -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann ../openMVG/src/
-  make
+  cmake -S "${srcdir}/${_gitname}"/src -B build \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=RELEASE \
+        -DOpenMVG_BUILD_SHARED=ON \
+        -DOpenMVG_BUILD_EXAMPLES=ON \
+         -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON \
+        -DOpenMVG_USE_OPENMP=ON \
+        -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
+        -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
+        -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
+        -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
+        -DCERES_DIR_HINTS=/usr/include/ceres \
+        -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 \
+        -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/openmvg_build"
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
