@@ -20,11 +20,11 @@ _majorver=11
 _ver=11.0.11
 _hgver=11_0_11
 _updatever=9
-_jbver1=1481
-_jbver2=1
+_jbver1=1504
+_jbver2=5
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
-_hg_tag=jb${_hgver}-b${_jbver2}
+_hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
@@ -37,7 +37,7 @@ source=(https://github.com/JetBrains/JetBrainsRuntime/archive/${_hg_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('dea32c8ab047c123df5bc35fd09d36f3423b74ab243a7bd9a43acf945cbae37b'
+sha256sums=('df5c8a73ee2050fac0e882868b86ac65de1e842c276bc66cffa10acba286ea8b'
             'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
