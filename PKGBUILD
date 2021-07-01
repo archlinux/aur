@@ -60,11 +60,11 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.12.10.arch1
+pkgver=5.12.13.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srcver_tag"
+url="https://github.com/archlinux/linux/commits/$_srcver_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -86,7 +86,7 @@ makedepends=(
 options=('!strip')
 
 _reponame="linux-archlinux"
-_repo_url="https://git.archlinux.org/linux"
+_repo_url="https://github.com/archlinux/linux"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}"
@@ -108,8 +108,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'e6e757615656bf724c6794e33632a83651e0c7d41ef4e4f2ca7b0ab6a34f1cabfbce95cbc517dc3a9de11cd8519f1d359dcbdc83c6c698b99dccabd1daf0fd05'
-            '3500160e35ffb16771f9ae556f0c8260e616833898f05b3c03e6197b47b20fe3a25f717117ca8257852734c1764e407fbfe70aac077c482e9f9fca97cdd938ee'
+            '37af58839bdba96b5937abd8501a007116acf336e8a8ffb6ec809bac280ba133bd06ab701cf26c50c0d8fd733e03cab3bcb2b65bfa71c68f3fc3b04037b76f98'
+            'be1c86baa2dd5f10314817100d908763ef23d6e1bcf9869a79ecd3250fefe0f3c662d72a3b9237e3e965c72042c791570957c12257d3031ba8a439cb1b22561f'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
