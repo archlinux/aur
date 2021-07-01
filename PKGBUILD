@@ -3,7 +3,7 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.todesk.com/"
@@ -65,6 +65,8 @@ package() {
   install -Dm644 etc/systemd/system/${_pkgname}d.service -t ${pkgdir}/usr/lib/systemd/system 
 
   # icon
-  install -Dm644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
+  # install -Dm644 usr/share/pixmaps/${_pkgname}.png -t ${pkgdir}/usr/share/pixmaps
+  find usr/share/icons -type f -exec install -Dm644 {} ${pkgdir}/{} \;
+
 }
 # vim: set sw=2 ts=2 et:

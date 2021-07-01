@@ -1,7 +1,7 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.todesk.com/
 	install = todesk.install
 	arch = x86_64
