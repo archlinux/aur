@@ -1,13 +1,13 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.14.0.r15.g1db976ce
-pkgrel=2
+pkgver=0.14.0.r28.ga38baec1
+pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
-provides=("libwlroots.so=${pkgver%%.r*}" "wlroots")
+provides=("libwlroots.so" "wlroots=${pkgver%%.r*}")
 conflicts=(wlroots wlroots-git)
 options=(debug)
 depends=(
