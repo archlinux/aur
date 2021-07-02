@@ -14,7 +14,7 @@ provides=('htop')
 conflicts=('htop')
 replaces=('htop')
 source=(https://gitlab.com/thelinuxguy9/htim/-/archive/master/htim-master.tar.bz2)
-md5sums=('92981bd1e7b2586dcf49e083d550d87c')
+md5sums=('666c257e47d0231e4d76a52e37cc7ebf')
 validpgpkeys=()
 
 prepare() {
