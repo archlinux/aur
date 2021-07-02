@@ -2,7 +2,7 @@
 
 pkgname=gawk-select
 _project=gawkextlib
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="GAWK extension - supports I/O multiplexing and signal trapping"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
 depends=('gawkextlib')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
-md5sums=('cf4e495d5c620fb826d3d843353fb2a9')
-sha256sums=('7bf276a971dce008306d5df5b61eaa7b5204c0e534673d3bff3a1e8579e17904')
+md5sums=('1d352f739e3be9ca7010d7b2c7b90bcc')
+sha256sums=('2a2e9dbb34f45086df86c60ab002814ad297a32a9caabef700f583a9ff8d661f')
 
 build() {
 	cd "$pkgname-$pkgver"
