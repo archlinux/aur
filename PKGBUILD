@@ -2,16 +2,16 @@
 # Contributer: David Mazieres (http://www.scs.stanford.edu/~dm/addr/)
 
 pkgname="droidcam-obs-plugin"
-pkgver=1.2.1
-pkgrel=1
+pkgver="1.2.1"
+pkgrel="2"
 pkgdesc="plugin for droidcam obs"
 arch=("x86_64" "i686")
 url="https://dev47apps.com/obs/"
 srcurl="https://github.com/dev47apps/droidcam-obs-plugin.git"
 license=('GPL')
 groups=()
-depends=(obs-studio)
-makedepends=('libjpeg-turbo' 'libusbmuxd')
+depends=("obs-studio" 'libusbmuxd')
+makedepends=('libjpeg-turbo')
 optdepends=()
 conflicts=("${pkgname}-git")
 replaces=()
