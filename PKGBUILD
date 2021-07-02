@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -35,13 +35,10 @@ optdepends=(
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('1ad04845dad6824220ad7750d666e7186f6b9186fb99294aae7d0e35f8e75018')
+sha256sums=('a5fcaeb405fc9e6ddf084d55d202f72c919e974dac736d0426a8b569f7022e4a')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
-
-  # https://github.com/ray-project/ray/pull/12613
-  sed -i "s/8)/8), (3, 9)/g" python/setup.py
 
   # https://aur.archlinux.org/packages/py-spy#comment-781521
   sed -i "/py-spy/d" python/setup.py
