@@ -31,6 +31,7 @@ depends=('avahi'
          'libxrender')
 provides=('cajviewer')
 conflicts=('cajviewer' 'cajviewer-appimage' 'cajviewer-app-image')
+install=${pkgname}.install
 source=("https://download.cnki.net/net.cnki.cajviewer_${pkgver}_amd64.deb")
 sha256sums=('7f23605532a6e0efbe48eb98c05a76e1f768f871a5af34b7d1fe9e6b2ad7aa5b')
 
