@@ -1,10 +1,8 @@
-# Maintainer: Klexx <klexx@mailbox.bz> 
-
 pkgname=("pivx-daemon" "pivx-cli" "pivx-qt" "pivx-sapling-params")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.2.0.1
+pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="https://pivx.org/"
 #depends=("boost-libs")
@@ -14,10 +12,10 @@ source=("https://github.com/PIVX-Project/PIVX/archive/v$pkgver.tar.gz")
 source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-i686-linux-gnu.tar.gz")
 source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-x86_64-linux-gnu.tar.gz")
 source_armv7h=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-arm-linux-gnueabihf.tar.gz")
-sha256sums=("b3bf1a086187836c671363bebae72dfa58ebb20cd470d13188be737c1aab4d58")
-sha256sums_i686=("a81dcec8103a2cfbe3b0a71aea6234b51f38a78dac9b3875d1de10949beabf2e")
-sha256sums_x86_64=("bf2585b658f9272973d273f4682ad5090b8606705c0a8755d4094ae6f79e81ad")
-sha256sums_armv7h=("08e56c36fa45d07edcb1cc851c6fe3d72fd84d3898e25d7f9d4d9d69b800918a")
+sha256sums=("4bcc2147fe8a72df9a50afb3b5becb4066b8e46b3a48ad51971eabf85a8b656b")
+sha256sums_i686=("0e279c9f36af355fffc6d37fdea635927dae12a70075f9a7f82e0b250b5aafa2")
+sha256sums_x86_64=("45e1ca4b9637f0d4834619c09cb5dc8c81ab49d688e69f4d2f36e2d8211f58a5")
+sha256sums_armv7h=("c7c92ede72b008c10e6e2d65e08112c8a48a37d24e803dd4d74d39999292b361")
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
@@ -65,10 +63,10 @@ package_pivx-qt() {
 
 package_pivx-sapling-params() {
   pkgdesc+="(sapling parameters)"
-    
+
   cd "${srcdir}/${pkgbase}-${pkgver}"
   install -Dm644 "share/pivx/sapling-spend.params"	"${pkgdir}/usr/local/share/sapling-spend.params"
-  install -Dm644 "share/pivx/sapling-output.params"	"${pkgdir}/usr/local/share/sapling-output.params"  
+  install -Dm644 "share/pivx/sapling-output.params"	"${pkgdir}/usr/local/share/sapling-output.params"
 }
 
 
