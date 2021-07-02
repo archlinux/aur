@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=time-warp-scan
 pkgname=obs-$_pluginname
-pkgver=0.1.5
+pkgver=0.1.6
 _obsver=27.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Time Warp Scan filter for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/time-warp-scan.1167/"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-time-warp-scan#commit=68e53869d26538c2a1ac3267dd96d2fea982a526"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-time-warp-scan#commit=630637ea3a5768e99dd43c772fb0e6766406717b"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
