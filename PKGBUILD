@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper-git
-pkgver=1.1.0.r4.g7662913
+pkgver=1.1.1.r2.gfdc8a1d
 pkgrel=1
 pkgdesc="Deepin Desktop Environment dynamic wallpaper/ DDE 动态壁纸"
 arch=('x86_64')
