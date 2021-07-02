@@ -1,0 +1,12 @@
+pkgbase = smock
+	pkgdesc = Instantly transform your screenshots to beautiful mockups.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/fcjr/smock/
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	source = https://github.com/fcjr/smock/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 6610e220cafa7ba8c84602c33ad0bd7cd21686c9dd5e5183475118bd44a66a51
+
+pkgname = smock
