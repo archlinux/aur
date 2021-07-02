@@ -1,0 +1,15 @@
+pkgbase = hyphen-af
+	pkgdesc = Afrikaans hyphenation rules
+	pkgver = 2020.02.14
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries
+	arch = any
+	license = LGPL
+	optdepends = hyphen: offers hyphenation library functions
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/master/af_ZA/hyph_af_ZA.dic
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/master/af_ZA/README_af_ZA.txt
+	sha512sums = eb15678d0faa89b16e9a47eebbad6a8533e3255677e09760e1fca38170f85ee387b4d9fb7a3ae143121212bf257c3166677a7a00ec11fd4c439012fa407f80be
+	sha512sums = 5c4a50d90139f78475691fe8c7b1524126e8ddedfbb5671f182afed0359eb94fcf79bc5e7e579b5025a47e814829d33ce9b1ae20d261ffc696d2f59fba6beb40
+
+pkgname = hyphen-af
+
