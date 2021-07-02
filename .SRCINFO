@@ -1,6 +1,6 @@
 pkgbase = cloudfoundry6-cli
 	pkgdesc = The official command line client for Cloud Foundry (stuck to version 6)
-	pkgver = 6.51.0
+	pkgver = 6.52.0
 	pkgrel = 1
 	url = https://github.com/cloudfoundry/cli
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = cloudfoundry6-cli
 	conflicts = cloudfoundry-cli
 	options = !emptydirs
 	options = !strip
-	source = cf-cli-6.51.0-amd64.tar.gz::https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.51.0&source=github-rel
-	source = cf-cli-6.51.0-completion::https://raw.githubusercontent.com/cloudfoundry/cli/v6.51.0/ci/installers/completion/cf
-	sha256sums = cf49127bf52c139e608d76424c77aa0123291897ac6d121a432bdad4ba7a4b58
+	source = cf-cli-6.52.0-amd64.tar.gz::https://packages.cloudfoundry.org/stable?release=linux64-binary&version=6.52.0&source=github-rel
+	source = cf-cli-completion::https://raw.githubusercontent.com/cloudfoundry/cli-ci/master/ci/installers/completion/cf
+	sha256sums = 8438c082bee652aa5e21cdc3e92348aac4751af2ea8afff37f402f2780efef60
 	sha256sums = f3f05a2414075c00b101b05f73cf260b9eec9966659adf2957c1b2937bd4c48e
 
 pkgname = cloudfoundry6-cli
-
