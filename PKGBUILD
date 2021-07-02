@@ -1,7 +1,7 @@
 
 pkgname=python2-automat
 pkgver=20.2.0
-pkgrel=6
+pkgrel=7
 arch=('any')
 license=('MIT')
 pkgdesc="Self-service finite-state machines for the programmer on the go."
@@ -14,15 +14,15 @@ sha512sums=('ccba3e82f589fedb1f83dfb37a6a42b51a78d8c3e6fea22c9518135ff194f5f70e2
             'af1a9474784f12571fddaf89d5e1d227a31722d76a70852dd6086080ed4e583084124d22dd9373b9673686d0c90c5f657bdd1caf92e89f79858a997e039578a3')
 
 prepare() {
-  # Set version for setuptools_scm
-  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-
   # This patch is part of upstream/master but 20.2.0 is still broken. Remove at the next update.
   cd automat-$pkgver
   patch --forward --strip=1 --input="${srcdir}/backport_Fix_test_visualize.py_twisted_import_errors.patch"
 }
 
 build() {
+  # Set version for setuptools_scm
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+
   cd automat-$pkgver
   python2 setup.py build
 }

@@ -1,7 +1,7 @@
 pkgbase = python2-automat
 	pkgdesc = Self-service finite-state machines for the programmer on the go.
 	pkgver = 20.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/glyph/automat
 	arch = any
 	license = MIT
