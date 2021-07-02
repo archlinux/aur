@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-lualine-git
-pkgver=r212.0411f1c
+pkgver=r214.9726824
 pkgrel=2
 pkgdesc="A blazing fast and easy to configure neovim statusline plugin"
 arch=('any')
 url="https://github.com/hoob3rt/lualine.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 # checkdepends=('luacheck')
 provides=("${pkgname%-git}")
