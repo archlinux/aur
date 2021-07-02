@@ -1,6 +1,6 @@
 pkgbase = neovim-lualine-git
 	pkgdesc = A blazing fast and easy to configure neovim statusline plugin
-	pkgver = r212.0411f1c
+	pkgver = r214.9726824
 	pkgrel = 2
 	url = https://github.com/hoob3rt/lualine.nvim
 	install = neovim-lualine-git.install
