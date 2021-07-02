@@ -19,18 +19,11 @@ pkgver() {
 
 build() {
     cd "chad_launcher"
-    sudo pip install .
+    python setup.py build
+
 }
 
 package() {
-    mkdir -p "$HOME/Games"
-    mkdir -p "$HOME/.local/share/games"
-    mkdir -p "$HOME/.config/chad_launcher/"
-    cat > "$HOME/.config/chad_launcher/config.yaml" <<EOF
-paths:
-    - $HOME/Games
-    - $HOME/.local/share/games
-#proxy: https://localhost:8080
-EOF
-    echo "Created a default config.yaml file in $HOME/.config/chad_launcher"
+    cd "$srcdir/chad_launcher"
+    python "setup.py" install --root="$pkgdir" --optimize=1 --skip-build
 }
