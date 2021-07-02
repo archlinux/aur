@@ -3,8 +3,8 @@
 
 _hkgname=vector-sized
 pkgname=haskell-vector-sized
-pkgver=1.4.3.1
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="Newtype tagging the vectors from the vector package"
 url="https://hackage.haskell.org/package/vector-sized"
 license=('custom:BSD3')
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'haskell-finite-typelits' 'haskell-vector' 'haskell-adjuncti
          'haskell-distributive' 'haskell-hashable' 'haskell-indexed-list-literals')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('994e54c0324c7c213dbf50cb01781224dff33311d01b72910099bc61d7e6a66e')
+sha256sums=('2d6cd33c8325c789122ae820255889de91ec00922fca88b93dafe7df59e79f66')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
