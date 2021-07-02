@@ -2,7 +2,7 @@
 
 pkgname=weechat-vimode-git
 pkgver=r173.1da5a2e
-pkgrel=1
+pkgrel=2
 pkgdesc='A WeeChat script that adds vi-like modes, commands and keybindings'
 url='https://github.com/GermainZ/weechat-vimode'
 arch=('any')
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
   cd "${_gitname}"
-  install -Dm644 "vimode.py" "${pkgdir}/usr/lib/weechat/python/vimode.py"
+  install -Dm644 "vimode.py" "${pkgdir}/usr/share/weechat/python/vimode.py"
 }
