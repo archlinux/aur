@@ -1,0 +1,15 @@
+pkgbase = grutil
+	pkgdesc = GraphQL CLI utility, works with GraphCMS
+	pkgver = 0.4.0.r91.40d3ba7
+	pkgrel = 1
+	url = https://github.com/arroyo/grutil.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = grutil
+	source = grutil::git+https://github.com/arroyo/grutil.git
+	sha512sums = SKIP
+
+pkgname = grutil
