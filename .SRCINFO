@@ -7,12 +7,11 @@ pkgbase = otf-apple-ny
 	license = custom:apple-restricted-font
 	makedepends = texlive-bin
 	makedepends = p7zip
-	source = https://devimages-cdn.apple.com/design/resources/download/NY-Font.dmg
+	source = https://devimages-cdn.apple.com/design/resources/download/NY.dmg
 	source = license.awk
 	source = version.awk
-	sha256sums = 58058b5dbddb77eec84a0c0b10b41fc544bc7cd50c6cb49874da4197f91afde5
+	sha256sums = e44afa02ec75ac6800a50e916446f8c5a3ed042fa3cd846ae5860c99b537f3b2
 	sha256sums = cd45a6edaa3829837b090a5a18d3c906816931e7a779b33b6ada23b49b5a5889
 	sha256sums = 55a4e9e108e50b07481044fad445636e502f2d95d7e8964e1d4cda3e9618b198
 
 pkgname = otf-apple-ny
-
