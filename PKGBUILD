@@ -2,7 +2,7 @@
 
 pkgname='otf-apple-sf-pro'
 pkgver=17.0d9e1
-pkgrel=1
+pkgrel=2
 pkgdesc='Apples San Francisco typeface family. System font.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
@@ -36,6 +36,8 @@ pkgver() {
 package() {
     install -Dm655 "${srcdir}"/Library/Fonts/*.otf \
         -t "${pkgdir}/usr/share/fonts/OTF/"
+    install -Dm655 "${srcdir}"/Library/Fonts/*.ttf \
+        -t "${pkgdir}/usr/share/fonts/TTF/"
     install -Dm644 LICENSE \
         "${pkgdir}"/usr/share/licenses/${pkgname}/AppleFontLicense
 }

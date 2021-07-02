@@ -1,7 +1,7 @@
 pkgbase = otf-apple-sf-pro
 	pkgdesc = Apples San Francisco typeface family. System font.
 	pkgver = 17.0d9e1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
