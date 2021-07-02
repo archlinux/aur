@@ -1,7 +1,7 @@
-# Maintainer: Bryce Hoehn <17hoehbr@gmail.com>
+# Maintainer: GiantDwarf <17hoehbr@gmail.com>
 pkgname=apple-music-electron
 _pkgname=Apple-Music-Electron
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Electron wrapper for Apple Music"
 arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -36,5 +36,5 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-sha256sums=('bbbdddd292fd590eb1278b9c5a608eb27fc65649cdf8c1981b3f955f312585ad'
-            '5ee6328384f5afe500211dcfbe6a429ce29235439469c6d58c2ce65610c09ece')
+sha256sums=('3a86cfb39ee26f6cce893f4b9c3ad84743099736b2ce775e5c38a17a2d0fe9c0'
+            '27c22a9c93cca671e5abf6467c21e192560f0100634399105d89ccee42a682df')
