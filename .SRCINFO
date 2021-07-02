@@ -1,0 +1,11 @@
+pkgbase = mint-backgrounds-uma
+	pkgdesc = The backgrounds included in Linux Mint 20.2 Uma
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-uma
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-uma/mint-backgrounds-uma_1.2.tar.gz
+	sha256sums = adccbda9ab4eb661b7797464ba3a57c2eeed18d62b50c12e0d3cd85687ee0b45
+
+pkgname = mint-backgrounds-uma
