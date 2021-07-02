@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r367.409b1f2
+pkgver=r399.1717b51
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -19,9 +19,9 @@ makedepends=(
 )
 optdepends=(
   "pciutils: GPU output"
-  "libx11: Resolution output"
-  "libxrandr: Refresh rate in Resolution output"
-  "wayland: Better resolution performance + support for monitors with different refresh rates in wayland sessions"
+  "libx11: Basic resolution output"
+  "libxrandr: Multi monitor and refresh rate support for resolution output"
+  "wayland: Native wayland support for resolution output"
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
   "xfconf: XFWM theme + xfce-terminal font"
