@@ -2,7 +2,7 @@
 
 _pkgname=meld
 pkgname=$_pkgname-git
-pkgver=3.21.0.109.gfff5bc5d
+pkgver=3.21.0.125.ga96e5cc0
 pkgrel=1
 _realver=3.21.0
 pkgdesc='Visual diff and merge tool'
@@ -10,7 +10,9 @@ arch=('any')
 url='http://meldmerge.org/'
 license=('GPL')
 depends=('dconf'
+         'glib2'
          'gsettings-desktop-schemas'
+         'gtk3'
          'gtksourceview4'
          'python-cairo'
          'python-gobject')
@@ -36,7 +38,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    arch-meson build -D docs=true -D byte-compile=false
+    arch-meson build -D byte-compile=false
     ninja -C build
 }
 
