@@ -1,13 +1,13 @@
 pkgbase = neovim-tree-lua-git
 	pkgdesc = A file tree explorer for Neovim
-	pkgver = r388.bfeaf4c
-	pkgrel = 1
+	pkgver = r410.589c36e
+	pkgrel = 2
 	url = https://github.com/kyazdani42/nvim-tree.lua
 	arch = any
 	groups = neovim-plugins
 	license = GPL3
 	makedepends = git
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	provides = neovim-tree-lua
 	provides = vim-nerdtree
 	conflicts = neovim-tree-lua
