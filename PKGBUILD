@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=source-record
 pkgname=obs-$_pluginname
-pkgver=0.2.0
+pkgver=0.2.1
 _obsver=27.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a filter that allows you to record a source"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-record.1285/"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-record#commit=8af3bf6f9d79e40f66e47611d7a44abd0e430486"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-record#commit=a04018bc983a1c90eb4508a2f167937b460b50f6"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
