@@ -15,7 +15,7 @@ optdepends=(
 	"mpv: a free, open source, and cross-platform media player"
 	"imv: Image viewer for Wayland and X11"
 )
-source=("${_pkgname}::git+https://git.sr.ht/~ghost08/photon.git")
+source=("${_pkgname}::git+https://git.sr.ht/~ghost08/photon")
 sha256sums=("SKIP")
 
 prepare(){

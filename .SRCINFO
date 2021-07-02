@@ -16,7 +16,7 @@ pkgbase = photon-rss-x11-git
 	optdepends = youtube-dl: A command-line program to download videos from YouTube.com and a few more sites
 	optdepends = mpv: a free, open source, and cross-platform media player
 	optdepends = imv: Image viewer for Wayland and X11
-	source = photon::git+https://git.sr.ht/~ghost08/photon.git
+	source = photon::git+https://git.sr.ht/~ghost08/photon
 	sha256sums = SKIP
 
 pkgname = photon-rss-x11-git
