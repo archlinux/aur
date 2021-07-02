@@ -1,13 +1,13 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=liblms7002m-xtrx-git
 _gitname="liblms7002m"
-pkgver=r9.bfd5418098f1
-pkgrel=3
+pkgver=r10.b07761b73861
+pkgrel=1
 pkgdesc="A Compact LMS7002 library suitable for MCU. Use by the xtrx sdr."
 arch=('armv7h' 'i686' 'x86_64')
 url="https://github.com/xtrx-sdr/liblms7002m"
 license=('LGPL')
-depends=('python2-cheetah')
+depends=('python-cheetah3')
 makedepends=('git' 'cmake')
 source=("git+$url")
 md5sums=('SKIP')

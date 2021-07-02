@@ -1,7 +1,7 @@
 pkgbase = liblms7002m-xtrx-git
 	pkgdesc = A Compact LMS7002 library suitable for MCU. Use by the xtrx sdr.
-	pkgver = r9.bfd5418098f1
-	pkgrel = 3
+	pkgver = r10.b07761b73861
+	pkgrel = 1
 	url = https://github.com/xtrx-sdr/liblms7002m
 	arch = armv7h
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = liblms7002m-xtrx-git
 	license = LGPL
 	makedepends = git
 	makedepends = cmake
-	depends = python2-cheetah
+	depends = python-cheetah3
 	provides = liblms7002m-xtrx
 	source = git+https://github.com/xtrx-sdr/liblms7002m
 	md5sums = SKIP
 
 pkgname = liblms7002m-xtrx-git
-
