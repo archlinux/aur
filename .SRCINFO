@@ -1,22 +1,18 @@
 pkgbase = pijul
-	pkgdesc = The sound distributed version control system
+	pkgdesc = A sound and fast distributed version control system
 	pkgver = 1.0.0_alpha.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pijul.org
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = cargo
 	makedepends = clang
 	makedepends = libsodium
 	makedepends = gcc-libs
-	makedepends = pkgconf
-	makedepends = diffutils
-	makedepends = make
-	makedepends = xxhash
 	depends = zstd
 	depends = openssl
 	depends = xxhash
+	source = pijul-1.0.0_alpha.48.tar.gz::https://static.crates.io/crates/pijul/pijul-1.0.0-alpha.48.crate
+	b2sums = 9effd70ecb826b17329328de423f6a59b97108511e11ac821086850f1dc856e8b17cf31e8167598c6567bc95159e0672dd4e0834faea65244344be122725960a
 
 pkgname = pijul
-
