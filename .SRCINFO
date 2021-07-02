@@ -2,7 +2,7 @@ pkgbase = contour-git
 	pkgdesc = Modern C++ Terminal Emulator
 	pkgver = 0.2.0.r1720.af98fad
 	pkgrel = 1
-	url = https://github.com/christianparpart/contour
+	url = https://github.com/contour-terminal/contour
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
@@ -16,7 +16,7 @@ pkgbase = contour-git
 	provides = contour
 	conflicts = contour
 	options = !strip
-	source = contour-git::git+https://github.com/christianparpart/contour.git
+	source = contour-git::git+https://github.com/contour-terminal/contour.git
 	sha512sums = SKIP
 
 pkgname = contour-git
