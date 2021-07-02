@@ -1,0 +1,15 @@
+## arg 1:  the new package version
+post_install() {
+  holo apply
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  holo apply
+}
+
+## arg 1:  the old package version
+post_remove() {
+  holo apply
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+# stdin: original signal-desktop.desktop file
+# stdout: .desktop file with modified "Exec=..." entry
+
+sed 's|^Exec=signal-desktop|Exec=signal-desktop --use-tray-icon --start-in-tray|'

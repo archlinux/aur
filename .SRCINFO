@@ -1,0 +1,17 @@
+pkgbase = signal-desktop-minimized
+	pkgdesc = Signal Private Messenger for Linux (starts minimized in system-tray)
+	pkgver = 0.0.1
+	pkgrel = 1
+	install = .install
+	arch = any
+	license = MIT
+	depends = signal-desktop
+	depends = holo
+	depends = git
+	depends = base
+	source = signal-desktop.desktop.holoscript
+	source = .install
+	sha256sums = 156c8db07afbcb84e95a4bc9bd0862abc955297c290b88536fdd95dc117119af
+	sha256sums = df26ac8f56901970239fb165601eb61ec5444d710fbf2145092bab70758810fc
+
+pkgname = signal-desktop-minimized
