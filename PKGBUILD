@@ -1,7 +1,7 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=pg_cron
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Run periodic jobs in PostgreSQL'
 arch=('x86_64' 'armv5h' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/citusdata/pg_cron/'
 depends=('postgresql-libs')
 makedepends=('postgresql' 'clang' 'llvm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/citusdata/pg_cron/archive/v${pkgver}.tar.gz")
-sha512sums=('fe11fc42fa8d3de4ff08440f96bcc5c228408ae01f7c1cf676d8dbab6ebef9aa0496aa3d5e785ec850eee3b484dc7ec0bf930a9c09e4267d10375adb9027f0b1')
+sha512sums=('e9758e1c3dfa12be05a9a24060d46a90299a821e0067690f07ea3356faade5fb3c157259aa553bbdb0fdb5582baedc8e51fb119ea0e78a5c88fb8bd3e6d047a6')
 
 build()
 {
