@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Marchioro <marciozgaming@gmail.com>
 pkgname=apple-fonts
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Apple San Francisco, New York fonts, directly from Apple official source"
 arch=(x86_64)
@@ -13,16 +13,16 @@ provides=()
 package() {
     mkdir $pkgdir/fontfiles/
 
-    curl -O https://devimages-cdn.apple.com/design/resources/download/SF-Font-Pro.dmg
-    7z x SF-Font-Pro.dmg
+    curl -O https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg
+    7z x SF-Pro.dmg
     cd SanFranciscoPro
     7z x 'San Francisco Pro.pkg'
     7z x 'Payload~'
     mv Library/Fonts/* $pkgdir/fontfiles
     cd ..
 
-    curl -O https://devimages-cdn.apple.com/design/resources/download/SF-Font-Compact.dmg
-    7z x SF-Font-Compact.dmg
+    curl -O https://devimages-cdn.apple.com/design/resources/download/SF-Compact.dmg
+    7z x SF-Compact.dmg
     cd SanFranciscoCompact
     7z x 'San Francisco Compact.pkg'
     7z x 'Payload~'
@@ -37,8 +37,8 @@ package() {
     mv Library/Fonts/* $pkgdir/fontfiles
     cd ..
 
-    curl -O https://devimages-cdn.apple.com/design/resources/download/NY-Font.dmg
-    7z x NY-Font.dmg
+    curl -O https://devimages-cdn.apple.com/design/resources/download/NY.dmg
+    7z x NY.dmg
     cd NYFonts
     7z x 'NY Fonts.pkg'
     7z x 'Payload~'

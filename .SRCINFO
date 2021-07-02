@@ -1,6 +1,6 @@
 pkgbase = apple-fonts
 	pkgdesc = Apple San Francisco, New York fonts, directly from Apple official source
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://developer.apple.com/fonts/
 	arch = x86_64
@@ -8,4 +8,3 @@ pkgbase = apple-fonts
 	makedepends = p7zip
 
 pkgname = apple-fonts
-
