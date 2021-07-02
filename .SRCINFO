@@ -12,6 +12,6 @@ pkgbase = htim
 	conflicts = htop
 	replaces = htop
 	source = https://gitlab.com/thelinuxguy9/htim/-/archive/master/htim-master.tar.bz2
-	md5sums = 3b0b1063647dc157302ae464242f6ad4
+	md5sums = 3675c2227f4bd4a229e89a6fb7b3eaef
 
 pkgname = htim
