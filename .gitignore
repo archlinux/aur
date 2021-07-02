@@ -2,3 +2,5 @@
 /makehuman-*.tar.gz
 /makehuman-assets
 /makehuman-*.patch
+/pkg
+/src

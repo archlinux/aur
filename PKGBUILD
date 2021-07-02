@@ -6,12 +6,16 @@ _assets_repo='https://github.com/makehumancommunity/makehuman-assets.git'
 
 pkgname=makehuman
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parametrical modeling program for creating human bodies"
 arch=('any')
 url="http://www.makehumancommunity.org/"
 license=('AGPL3' 'custom:CC0')
-depends=('python-numpy' 'python-pyqt5' 'python-opengl' 'hicolor-icon-theme')
+depends=('python-numpy'
+         'python-pyqt5'
+         'python-opengl'
+         'qt5-svg'
+         'hicolor-icon-theme')
 makedepends=('git' 'git-lfs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/makehumancommunity/makehuman/archive/refs/tags/v$pkgver.tar.gz"
         "git+${_assets_repo}#commit=$_assets_commit"
