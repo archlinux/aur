@@ -2,12 +2,12 @@
 
 pkgname=zsh-theme-powerlevel10k-git
 pkgver=r3896.4bcc519
-pkgrel=4
+pkgrel=5
 pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/romkatv/powerlevel10k"
 license=('MIT')
-depends=('zsh')
+depends=('glibc' 'zsh')
 makedepends=('git' 'cmake' 'wget')
 optdepends=(
   'ttf-meslo-nerd-font-powerlevel10k: terminal font recommended by powerlevel10k'
