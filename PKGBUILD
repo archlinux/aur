@@ -24,5 +24,7 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
+	install -Dm755 ${pkgname} /usr/local/bin/${pkgname}
+	install -Dm644 images/* -t /usr/local/share/${pkgname}/images
+	install -Dm644 LICENSE /usr/share/licenses/${pkgname}/LICENSE
 }
