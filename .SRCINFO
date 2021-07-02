@@ -1,7 +1,7 @@
 pkgbase = weechat-emoji-git
 	pkgdesc = Weechat plugin to replace emoji in the "colon" format with unicode equivalents!
 	pkgver = r5.b6c25b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kattrali/weemoji
 	arch = any
 	license = BSD2
@@ -11,4 +11,3 @@ pkgbase = weechat-emoji-git
 	sha512sums = SKIP
 
 pkgname = weechat-emoji-git
-

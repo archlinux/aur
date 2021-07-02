@@ -2,7 +2,7 @@
 
 pkgname=weechat-emoji-git
 pkgver=r5.b6c25b2
-pkgrel=1
+pkgrel=2
 pkgdesc='Weechat plugin to replace emoji in the "colon" format with unicode equivalents!'
 url='https://github.com/kattrali/weemoji'
 arch=('any')
@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "${_gitname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 weemoji.py "${pkgdir}/usr/lib/weechat/python/weemoji.py"
+  install -Dm644 weemoji.py "${pkgdir}/usr/share/weechat/python/weemoji.py"
 }
