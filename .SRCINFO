@@ -1,6 +1,6 @@
 pkgbase = norminette
 	pkgdesc = Open source norminette
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/42School/norminette
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = norminette
 	makedepends = python-setuptools
 	depends = python-argparse
 	conflicts = python-norminette-git
-	source = 3.3.0.tar.gz::https://github.com/42School/norminette/archive/refs/tags/3.3.0.tar.gz
-	sha512sums = bea0bfb7099a5b513d1fb98eaed50589de0936f31715ae2f9419480c9242489699d6bd3a77377d79dcbaccb0c3ddb02ee2d6c167f5d558737f3715cfa7caad3e
+	source = 3.3.1.tar.gz::https://github.com/42School/norminette/archive/refs/tags/3.3.1.tar.gz
+	sha512sums = 059eb48988dbfd789ae8e6797383ad9a5cf19102651ec9f9ac6b3d26da230a6446f08ffaa1f5b71b8115384b6824ef4634a5a602d2f3eea7f80ce302374b0b32
 
 pkgname = norminette
-
