@@ -38,6 +38,7 @@ build() {
     -DCMAKE_C_FLAGS="$CFLAGS -fPIC -ffile-prefix-map=$PWD= -w" \
     -DLIBEDIT_LIBRARIES=/usr/lib/libedit.so.0 \
     -DLIBEDIT_INCLUDE_DIR=/usr/include \
+    -DUSE_TCMALLOC=OFF \
     -G Ninja
   #../swipl-$pkgver/scripts/pgo-compile.sh
   ninja
