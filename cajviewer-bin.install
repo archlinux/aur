@@ -1,1 +1,1 @@
-cp -f /usr/share/applications/cajviewer.desktop $HOME/Desktop
+cp -f /usr/share/applications/cajviewer.desktop /home/*/Desktop
