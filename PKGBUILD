@@ -1,6 +1,6 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=3.30.0
+_version=3.30.1
 _patch=01
 
 pkgname=nexus-oss
@@ -28,7 +28,7 @@ source=(
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=('6b186ec3514dbadf89a92d560b1c9098fd3caa1d2d5e7f5402fcf61a3d6418fb'
+sha256sums=('527c5ba75ffeb4400d553cb1e9885ae3c914ff2642724c8752f75bdf79cfe411'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
             'f03a4a2a454ab15bbe7b6d479ec4b6a86055a4ffb77704dc44fe11a19382278b'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
