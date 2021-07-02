@@ -1,0 +1,4 @@
+pkg/
+src/
+gattlib-*.tar.gz
+python-gattlib-*.pkg.tar.xz
