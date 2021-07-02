@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 2021.7.1
+	pkgver = 2021.7.2
 	pkgrel = treviso
 	url = https://usebottles.com
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = bottles
 	depends = gtk3
 	depends = python-gobject
 	depends = wine
-	source = bottles-2021.7.1-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.1-treviso.tar.gz
-	sha256sums = 75834816bc047ac75261bb1d151889c6fb97ae83408538f1bdff1d6519fd7a5d
+	source = bottles-2021.7.2-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.2-treviso.tar.gz
+	sha256sums = 828c75fdf143db5027543de4a16e61576762bc11fe3bfaec2607eac9b15326cb
 
 pkgname = bottles
 
