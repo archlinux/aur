@@ -20,7 +20,6 @@ pkgver() {
 build() {
     cd "chad_launcher"
     python setup.py build
-
 }
 
 package() {
