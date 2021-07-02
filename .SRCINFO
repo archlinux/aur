@@ -1,16 +1,17 @@
 pkgbase = circuslinux
 	pkgdesc = Clone of the Atari 2600 game Circus Atari
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.newbreedsoftware.com/circus-linux/
-	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gendesk
+	depends = sdl
 	depends = sdl_image
 	depends = sdl_mixer
+	depends = hicolor-icon-theme
 	source = ftp://ftp.tuxpaint.org/unix/x/circus-linux/src/circuslinux-1.0.3.tar.gz
-	sha256sums = bf9550ebd598a9e7d93a20d80ff466475122f8b023314bb1e07c31e8c608ce8a
+	source = circuslinux.desktop
+	sha512sums = 292bcaad39342ad69862f1add36b11505ca5f2601637a8db6fad438c5a4b32d7801bc7e6c08b903b0fb8bf68dcb3ec8d968fb913cde65941b9b9ac64b5a5266f
+	sha512sums = fa87b7d0e771d4ff04623e9962fe978dbf49e2af8457daeb39ee95d2706b414a2d6a26c8cf018d260b2c1f347a71afdfb4e42a71eb74fd6e2231b938996c5b16
 
 pkgname = circuslinux
-

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Circus Linux!
+Exec=circuslinux -f
+Icon=circuslinux
+Comment=A game where you pop balloons by bouncing clowns on a teeter-totter
+Categories=Application;Game;ArcadeGame;
