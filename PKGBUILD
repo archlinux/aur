@@ -60,8 +60,8 @@ pkgbase=linux-xanmod-cacule
 _major=5.13
 pkgver=${_major}.0
 _branch=5.x
-xanmod=1
-pkgrel=2
+xanmod=2
+pkgrel=3
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -94,7 +94,7 @@ done
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '41c128f1dda625549972a58f198cbc01ca4d41bfc0b1c0973224e4ddcce4cecd'
+            '418aafd8e664fae1f4ec77245271747058eeb9ba190009ec0587b9016aa0e690'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
