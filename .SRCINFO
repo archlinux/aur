@@ -1,0 +1,14 @@
+pkgbase = bthandler
+	pkgdesc = A shell script to interact with bluetooth devices via dmenu
+	pkgver = r86.cf12d60
+	pkgrel = 1
+	url = https://github.com/AlexBocken/bthandler
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = bluez-utils
+	optdepends = dmenu: display menu
+	source = bthandler::git+https://github.com/AlexBocken/bthandler.git
+	md5sums = SKIP
+
+pkgname = bthandler
