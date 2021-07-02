@@ -2,7 +2,7 @@
 
 pkgname=weechat-autosort
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A WeeChat plugin: Automatically keep your buffers sorted.'
 url='https://github.com/de-vri-es/weechat-autosort'
 arch=('any')

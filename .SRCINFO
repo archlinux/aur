@@ -1,7 +1,7 @@
 pkgbase = weechat-autosort
 	pkgdesc = A WeeChat plugin: Automatically keep your buffers sorted.
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/de-vri-es/weechat-autosort
 	arch = any
 	license = MIT
