@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openexr
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
@@ -16,7 +16,7 @@ source=(
 	"keycode.patch"
 )
 sha256sums=(
-	'64daae95d406fe3f59ee11ad8586d03fe7df2552b9630eac1a4f9152b8015fb9'
+	'7aa6645da70e9a0cce8215d25030cfd4f4b17b4abf1ceec314f7eae15674e8e4'
 	'499b6a59993a362fdbed46d8328f7aa2e6b81e153d2844b27ada67e109b63f63'
 )
 
