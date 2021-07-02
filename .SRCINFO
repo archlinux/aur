@@ -1,0 +1,17 @@
+pkgbase = hunspell-af
+	pkgdesc = Afrikaans dictionary for Hunspell
+	pkgver = 2020.02.14
+	pkgrel = 1
+	url = https://github.com/LibreOffice/dictionaries
+	arch = any
+	license = LGPL
+	optdepends = hunspell: the spell checking libraries and apps
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/master/af_ZA/af_ZA.aff
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/master/af_ZA/af_ZA.dic
+	source = https://raw.githubusercontent.com/LibreOffice/dictionaries/master/af_ZA/README_af_ZA.txt
+	sha512sums = 55183d82cdcfea24c5a2c5ebf2acbf6ee8954f4a220f65e3bfcbd63c348a8d5fe2eb17608ae794005a36e8c12b5587c960dd3cb23ffaf449ff2a1bfcff350b66
+	sha512sums = 3ed02cad12f799899ca900bc59231c32179e040b4339e99f38c131db2777007dad3e3105a72ad499eeffa176bc52c519b1a71698a6f3518693a4e60aace7cde2
+	sha512sums = 5c4a50d90139f78475691fe8c7b1524126e8ddedfbb5671f182afed0359eb94fcf79bc5e7e579b5025a47e814829d33ce9b1ae20d261ffc696d2f59fba6beb40
+
+pkgname = hunspell-af
+
