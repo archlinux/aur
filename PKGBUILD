@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-browser
 pkgver=27.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -57,8 +57,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DBUILD_BROWSER=ON \
         -DCEF_ROOT_DIR="/opt/cef" \
-        -DOBS_VERSION_OVERRIDE=$pkgver \
-        -DENABLE_PIPEWIRE=ON ..
+        -DOBS_VERSION_OVERRIDE=$pkgver ..
 
     make
 }
