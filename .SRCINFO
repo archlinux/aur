@@ -1,7 +1,7 @@
 pkgbase = otf-apple-ny
 	pkgdesc = Apples New York typeface family. For usage alongside SF.
 	pkgver = 16.0d2e2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom:apple-restricted-font
