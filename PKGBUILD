@@ -17,7 +17,7 @@ conflicts=('lens')
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${_pkgdate}.${arch}.AppImage"
         "${_pkgname}.desktop")
 sha256sums=('679ee43f2a0a2043bf520e25faa8bfb84db16e45e2dfb0cb4d5bf12a9fe06c31'
-            '3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02')
+            '7acac010857d0afc5717e87e651bd875dab9771685648e3908da538709de2346')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}.${arch}.AppImage"
@@ -32,7 +32,7 @@ package() {
 
   # icon
   install -Dm 644 "${pkgdir}"/usr/share/${_pkgname}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png \
-    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/kontena-${_pkgname}.png
+    "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/open-${_pkgname}.png
 
   # desktop file
   install -Dm 644 "${srcdir}"/${_pkgname}.desktop \
@@ -41,11 +41,12 @@ package() {
   # symlink binary
   mkdir -p "${pkgdir}"/usr/bin
   ln -sf /usr/share/${_pkgname}/lens \
-    "${pkgdir}"/usr/bin/kontena-lens
+    "${pkgdir}"/usr/bin/open-lens
 
   # clean and fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} \;
   chmod -x "${pkgdir}"/usr/share/${_pkgname}/*.so
-  rm -rf "${pkgdir}"/usr/share/${_pkgname}/lens.png
+  rm -rf "${pkgdir}"/usr/share/${_pkgname}/AppRun
+  rm -rf "${pkgdir}"/usr/share/${_pkgname}/lens.{desktop,png}
   rm -rf "${pkgdir}"/usr/share/${_pkgname}/usr
 }

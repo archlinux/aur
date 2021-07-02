@@ -15,6 +15,6 @@ pkgbase = lens-bin
 	source = lens-5.0.0.x86_64.AppImage::https://api.k8slens.dev/binaries/Lens-5.0.0-latest.20210629.3.x86_64.AppImage
 	source = lens.desktop
 	sha256sums = 679ee43f2a0a2043bf520e25faa8bfb84db16e45e2dfb0cb4d5bf12a9fe06c31
-	sha256sums = 3db5b267cededcc73b3e35b89b46fca419e82832b85fa633e4326156cf648d02
+	sha256sums = 7acac010857d0afc5717e87e651bd875dab9771685648e3908da538709de2346
 
 pkgname = lens-bin
