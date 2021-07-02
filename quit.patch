@@ -1,26 +1,13 @@
 diff --git a/build/main.js b/build/main.js
-index 823a767..3e67094 100644
+index 5066eef..46b04c5 100644
 --- a/build/main.js
 +++ b/build/main.js
-@@ -1650,7 +1650,7 @@
-         };
-       }
-       getQuitOptions() {
--        return { label: i18n_t("menu_quit-deezer_label"), role: "quit" };
-+        return { label: i18n_t("menu_quit-deezer_label"), click: () => { external_electron_namespaceObject.app.isQuiting = true; external_electron_namespaceObject.app.quit(); } };
-       }
-       getReloadOptions() {
-         return {
-@@ -3075,6 +3075,12 @@
-             this.isFrameless && this._adjustViewToContentSize(),
-               this.windowState.save();
-           }),
-+          this.window.on('close', function(event) {
-+            if(!external_electron_namespaceObject.app.isQuiting){
-+              event.preventDefault();
-+              this.hide();
-+            }
-+          }),
-           this.window.once("ready-to-show", () => {
-             if (windowState.isMaximized) this.window.maximize();
-             else if (isPlatform(PLATFORM.WINDOWS)) {
+@@ -3079,7 +3080,7 @@
+             this._adjustViewToContentSize(),
+             mainView.setAutoResize({ width: !0, height: !0 });
+         } else this.appService.setWindow(this.window, void 0);
+-        if ((this.appService.setUserAgent(), isPlatform(PLATFORM.DARWIN))) {
++        if ((this.appService.setUserAgent(), isPlatform(PLATFORM.LINUX))) {
+           let isQuitting = !1;
+           external_electron_namespaceObject.app.on(
+             "before-quit",

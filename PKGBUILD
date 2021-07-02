@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=5.20.0
+pkgver=5.30.0
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -13,15 +13,11 @@ makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm' 'nodejs')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
     "$pkgname.desktop"
     deezer
-    systray.patch
-    menu-bar.patch
     quit.patch)
-sha256sums=('67f9b5bc55703b6bb1e1f0420c3b2c7f6a398bb0e6057e0b9e67a148f97ffbdc'
+sha256sums=('1c00d286f209de69ff5fee811a5662b8d7114046a9c74348c31ce955352b5856'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             '8717ba2de9cabc5c0a35780315871329c15bde5ff46c4f0bf859a87e42aa96f5'
-            '82fa9d6dbfea95dec625675fa6af0bbaa95b1d41b68728302260373a2d659b3f'
-            '191c139553332e624463a31ef6cb435bcd83ab343c6cdc5bcab3152386c0a3e6'
-            'a3476917a031dc2b989b12008e6ecf564acf9fcfe6cfde4eb4f912711da74662')
+            'd3f96ae6019abb60aa097919b22b1873f83061ed7453cd251e43b3afe5d54919')
 
 prepare() {
     # Extract app from installer
@@ -36,11 +32,10 @@ prepare() {
     asar extract app.asar app
 
     cd "$srcdir/resources/app"
+	mkdir -p resources/linux/
+    install -Dm644 "$srcdir/resources/win/systray.png" resources/linux/
+
     prettier --write "build/*.js"
-    # Ugly systray icon fix
-    patch -p1 <"$srcdir/systray.patch"
-    # Disable menu bar
-    patch -p1 <"$srcdir/menu-bar.patch"
     # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
     patch -p1 <"$srcdir/quit.patch"
 
