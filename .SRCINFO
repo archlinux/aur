@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-p11-kit
 	pkgdesc = Provides a way to load and enumerate PKCS#11 modules (mingw-w64)
-	pkgver = 0.23.22
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://p11-glue.freedesktop.org
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = mingw-w64-p11-kit
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://github.com/p11-glue/p11-kit?#commit=bd97afbfe28d5fbbde95ce36ff7a8834fc0291ee
+	source = git+https://github.com/p11-glue/p11-kit?#commit=34826623f58399b24c21f1788e2cdaea34521b7b
 	sha256sums = SKIP
 
 pkgname = mingw-w64-p11-kit
-

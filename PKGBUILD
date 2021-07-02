@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: xantares < xantares09 at hotmail dot com >
 
-_commit=bd97afbfe28d5fbbde95ce36ff7a8834fc0291ee  # 0.23.22
+_commit=34826623f58399b24c21f1788e2cdaea34521b7b  # 0.24.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.23.22
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
@@ -39,6 +39,7 @@ build() {
       -D 'gtk_doc=false' \
       -D 'trust_module=disabled' \
       ..
+    sed -i 's|-Wl,--end-group|-lintl -Wl,--end-group|g' build.ninja
     ninja
     popd
   done
