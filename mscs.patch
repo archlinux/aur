@@ -1,7 +1,7 @@
 diff -u -r -a mscs.orig/Makefile mscs.new/Makefile
---- mscs.orig/Makefile	2019-06-20 17:38:19.418922318 -0300
-+++ mscs.new/Makefile	2019-06-20 18:24:57.362084707 -0300
-@@ -1,42 +1,12 @@
+--- mscs.orig/Makefile	2020-10-12 13:11:46.000000000 -0400
++++ mscs.new/Makefile	2021-07-02 11:13:41.265602506 -0400
+@@ -1,44 +1,12 @@
 -MSCS_USER := minecraft
 -MSCS_HOME := /opt/mscs
 -
@@ -13,16 +13,18 @@ diff -u -r -a mscs.orig/Makefile mscs.new/Makefile
 -
 -UPDATE_D := $(wildcard update.d/*)
 -
--.PHONY: install update clean
+-.PHONY: install adduser update clean
 -
--install: update
--	useradd --system --user-group --create-home -K UMASK=0022 --home $(MSCS_HOME) $(MSCS_USER)
+-install: adduser update
 -	if which systemctl; then \
 -		systemctl -f enable mscs.service; \
 -	else \
 -		ln -s $(MSCS) $(MSCS_INIT_D); \
 -		update-rc.d mscs defaults; \
 -	fi
+-	
+-adduser:
+-	useradd --system --user-group --create-home -K UMASK=0022 --home $(MSCS_HOME) $(MSCS_USER)
 -
 -update:
 -	install -m 0755 msctl $(MSCTL)
@@ -57,8 +59,8 @@ diff -u -r -a mscs.orig/Makefile mscs.new/Makefile
 +	install -D -m 0644 mscs.service $(MSCS_SERVICE)
 +	install -D -m 0644 LICENSE $(MSCS_LICENSE)
 diff -u -r -a mscs.orig/mscs mscs.new/mscs
---- mscs.orig/mscs	2019-06-20 17:38:19.418922318 -0300
-+++ mscs.new/mscs	2019-06-20 18:24:06.225421165 -0300
+--- mscs.orig/mscs	2020-10-12 13:11:46.000000000 -0400
++++ mscs.new/mscs	2021-07-02 11:14:00.479137361 -0400
 @@ -16,7 +16,7 @@
  PROG=$(basename $0)
  

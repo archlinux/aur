@@ -1,6 +1,6 @@
 pkgbase = mscs
 	pkgdesc = Powerful command-line control for UNIX and Linux powered Minecraft servers
-	pkgver = 19.05.01.r0.ga4b7379
+	pkgver = 20.09.01
 	pkgrel = 1
 	url = https://github.com/MinecraftServerControl/mscs
 	install = mscs.install
@@ -11,18 +11,18 @@ pkgbase = mscs
 	depends = screen
 	depends = perl-json
 	depends = perl-lwp-protocol-https
-	depends = jre8-openjdk
+	depends = java-runtime
 	depends = rdiff-backup
 	depends = rsync
 	depends = socat
 	optdepends = python: Overviewer mapping tool
 	optdepends = iptables: Recommended firewall
-	source = mscs::git+https://github.com/MinecraftServerControl/mscs.git
+	source = mscs-v.20.09.01.tar.gz::https://github.com/MinecraftServerControl/mscs/archive/refs/tags/v.20.09.01.tar.gz
 	source = mscs.install
 	source = mscs.patch
-	md5sums = SKIP
+	md5sums = c6570eea198f62cdaf178bd6baa5855b
 	md5sums = 197c788a097a5c2d087935c69db67fa1
-	md5sums = 815626b124df3779188ebb56427c7976
+	md5sums = 8e275fb7b81308361f44cc1d2ca7e7bb
 
 pkgname = mscs
 
