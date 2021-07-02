@@ -1,0 +1,18 @@
+pkgbase = csvs-to-sqlite
+	pkgdesc = An open source multi-tool for exploring and publishing data
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/simonw/csvs-to-sqlite
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-dateparser
+	depends = python-pandas
+	depends = python-py-lru-cache
+	depends = python-six
+	conflicts = csvs-to-sqlite
+	source = https://pypi.io/packages/source/c/csvs-to-sqlite/csvs_to_sqlite-1.2.tar.gz
+	sha256sums = 0d47d2a006ad58204bcb40ea511e59b62f1aacb6546bcd4f9096253910e053cd
+
+pkgname = csvs-to-sqlite
