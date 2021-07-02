@@ -1,15 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-gitsigns-git
-pkgver=0.1.r2.gf4a4fbe
-pkgrel=1
+pkgver=0.1.r37.g521e935
+pkgrel=2
 pkgdesc="Git signs written in pure Lua"
 arch=('any')
 url="https://github.com/lewis6991/gitsigns.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim-git' 'neovim-plenary')
-makedepends=('git')
+depends=('git' 'neovim>=0.5.0' 'neovim-plenary')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="$pkgname.install"
