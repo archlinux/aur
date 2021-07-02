@@ -1,0 +1,16 @@
+pkgbase = snippy
+	pkgdesc = Rapid haploid variant calling and core genome alignment.
+	pkgver = 4.6.0
+	pkgrel = 1
+	url = https://github.com/tseemann/snippy
+	arch = x86_64
+	license = GPL
+	depends = perl
+	depends = perl-bioperl
+	provides = snippy
+	conflicts = snippy-git
+	conflicts = snippy-bin
+	source = https://github.com/tseemann/snippy/archive/refs/tags/v4.6.0.tar.gz
+	b2sums = 0649c0cb5cefe63e9a0c2bb220b0046f315fe8696636be0b9b6585c644b1196d9275af91ae2c9e0360c061e4ff1f9b0462fcb0358b28b0cb63415f9c072cc475
+
+pkgname = snippy
