@@ -1,5 +1,4 @@
-# Maintainer Seva Alekseyev <sevaa@yarxi.ru>
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer Adrian Woźniak <adrian.wozniak@ita-prog.pl>
 
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
