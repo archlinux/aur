@@ -2,9 +2,9 @@ pkgdesc="ROS - Provides teleoperation using keyboard for Turtlebot3."
 url='https://wiki.ros.org/turtlebot3_teleop'
 
 pkgname='ros-noetic-turtlebot3-teleop'
-pkgver='1.2.2'
+pkgver='1.2.5'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Apache-2.0')
 
 ros_makedepends=(
@@ -27,15 +27,8 @@ depends=(
 )
 
 _dir="turtlebot3-${pkgver}/turtlebot3_teleop"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3/archive/${pkgver}.tar.gz"
-	"python-compatibility.patch"::"https://github.com/ROBOTIS-GIT/turtlebot3/commit/ddca617172a3549a3077682cd2cf7dc377616e01.diff")
-sha256sums=('c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d'
-            '67678a5af67a9cc2753235fbc78cc2cb57841b63884b5b35599ea32f382fcc89')
-
-prepare() {
-	cd ${srcdir}/turtlebot3-${pkgver}
-	patch -p1 --input="${srcdir}/python-compatibility.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3/archive/${pkgver}.tar.gz")
+sha256sums=('cee1be2249f18084075e4604b70463eb40a96d6f5c2e63efc7f2c501399dee3d')
 
 build() {
 	# Use ROS environment variables.
