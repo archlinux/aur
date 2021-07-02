@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
-pkgver=4.2.5
+pkgver=4.2.6
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others"
 arch=(x86_64)
@@ -17,13 +17,10 @@ source=(
 	"$pkgname-$pkgver-LICENSE::${url/github/raw.githubusercontent}/v$pkgver/LICENSE"
 )
 
-b2sums=('11f3a91cde5d4624e7b22925bd3f705d8bd09e96fe25db76f545652c0396b9cb54115a1f99b99447eba98bc7c70ac37da79a9738fdf51e548d6e048b995edfdd'
+b2sums=('31a65c57a5eb6848511588480827d8c24d51009e90b103efcf1de538172b944203b15714265622892a2adb9199c5cc87d1ed410bce47cc4d2297dac1f91119a3'
         '9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f')
 
 package() {
 	bsdtar -xf data.tar.xz --directory="$pkgdir"
 	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	# Move icon to the right directory
-	mv "$pkgdir/usr/share/icons/hicolor/0x0" "$pkgdir/usr/share/icons/hicolor/256x256"
 }
