@@ -2,14 +2,14 @@
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
 pkgname=gitstatus-git
-pkgver=r1363.ea398d9
+pkgver=r1371.0440e38
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'cmake' 'file' 'make' 'gawk' 'gcc' 'zsh' 'wget')
+makedepends=('git' 'cmake' 'wget' 'zsh')
 install=gitstatus.install
 provides=("gitstatus")
 conflicts=("gitstatus")
@@ -24,14 +24,10 @@ pkgver() {
 build() {
   cd "$srcdir/gitstatus"
   ./build -w
-  rm ./deps/libgit2-*.tar.gz
-  for file in *.zsh install; do
-    zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
-  done
 }
 
 package() {
   cd "$srcdir"
-  find gitstatus -path gitstatus/.git -prune \
-    -o '(' -type f -exec install -D '{}' "$pkgdir/usr/share/{}" ';' ')'
+  find gitstatus -type f -exec install -D '{}' "$pkgdir/usr/share/{}" ';'
+  make -C "$pkgdir"/usr/share/gitstatus zwc minify
 }
