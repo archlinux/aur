@@ -6,7 +6,7 @@
 
 pkgname=obs-studio-browser
 pkgver=27.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -16,7 +16,7 @@ depends=("ffmpeg" "jack" "jansson" "libxinerama" "libxkbcommon-x11"
          "pipewire" "libxcomposite")
 makedepends=("cmake" "git" "libfdk-aac" "x264"
              "vlc-luajit" "swig" "luajit" "python" "cef-minimal>=87.0.0"
-             "wayland" "qt5-wayland")
+             "wayland" "qt5-wayland" "sndio")
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libva-intel-driver: Hardware encoding"
             "libva-mesa-driver: Hardware encoding"
@@ -24,6 +24,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "luajit: Lua scripting"
             "xdg-desktop-portal: Pipewire capture"
             "python: Python scripting"
+            "sndio: Sndio input client"
             "v4l2loopback-dkms: Virtual camera output")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio" "obs-linuxbrowser")
