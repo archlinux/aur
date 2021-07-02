@@ -1,7 +1,7 @@
 pkgbase = htim
 	pkgdesc = Htop improved, htop with vim key bindings
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 5
 	url = https://gitlab.com/thelinuxguy9/htim
 	arch = x86_64
 	arch = i686

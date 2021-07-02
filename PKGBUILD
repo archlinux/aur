@@ -2,7 +2,7 @@
 
 pkgname=htim
 pkgver=3.0.6
-pkgrel=1
+pkgrel=5
 pkgdesc="Htop improved, htop with vim key bindings"
 arch=('x86_64' 'i686')
 url="https://gitlab.com/thelinuxguy9/htim"
