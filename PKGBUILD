@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-lsp-signature-git
-pkgver=r106.3c80042
-pkgrel=1
+pkgver=r120.ef20fad
+pkgrel=2
 pkgdesc="Neovim plugin for showing LSP signature hints"
 arch=('any')
 url="https://github.com/ray-x/lsp_signature.nvim"
 license=('Apache')
 groups=('neovim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
