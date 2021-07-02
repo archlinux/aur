@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-tree-sitter-git
-pkgver=r1408.8e26997
+pkgver=r1469.8eb29ef
 pkgrel=2
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
 url="https://github.com/nvim-treesitter/nvim-treesitter"
 license=('Apache')
 groups=('neovim-plugins')
-depends=('neovim-git' 'tree-sitter')
+depends=('neovim>=0.5.0' 'tree-sitter')
 makedepends=('git')
 optdepends=('tree-sitter-bash: Bash shell grammar'
             'tree-sitter-bibtex: BibTeX grammar'

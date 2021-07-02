@@ -1,6 +1,6 @@
 pkgbase = neovim-tree-sitter-git
 	pkgdesc = Neovim tree-sitter configurations and abstraction layer
-	pkgver = r1408.8e26997
+	pkgver = r1469.8eb29ef
 	pkgrel = 2
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 	install = neovim-tree-sitter-git.install
@@ -8,7 +8,7 @@ pkgbase = neovim-tree-sitter-git
 	groups = neovim-plugins
 	license = Apache
 	makedepends = git
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	depends = tree-sitter
 	optdepends = tree-sitter-bash: Bash shell grammar
 	optdepends = tree-sitter-bibtex: BibTeX grammar
