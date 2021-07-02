@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-truezen-git
-pkgver=r766.305d2bc
-pkgrel=1
+pkgver=r1030.9a0567c
+pkgrel=2
 pkgdesc="Clean and elegant distraction-free writing for Neovim"
 arch=('any')
 url="https://github.com/pocco81/truezen.nvim"
 license=('GPL3')
 groups=('neovim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'vim-goyo')
