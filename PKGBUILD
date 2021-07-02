@@ -8,7 +8,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -60,8 +60,8 @@ pkgbase=linux-xanmod
 _major=5.13
 pkgver=${_major}.0
 _branch=5.x
-xanmod=1
-pkgrel=2
+xanmod=2
+pkgrel=3
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -95,7 +95,7 @@ done
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            'e829aa290b5f00812d9f496e4e3397621f9184e0c07db05d328ba83e69d1b34f'
+            '42cb550e7b9900820bdc9f528eb60c726f19294417065bf3a0b94be06388aeb1'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
