@@ -1,6 +1,6 @@
 pkgbase = mibandpreview-git
 	pkgdesc = Simple preview tool for Mi Band 4-6 watchfaces
-	pkgver = 0.7.3
+	pkgver = 0.7.3.1
 	pkgrel = 1
 	url = https://melianmiko.ru/mibandpreview
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mibandpreview-git
 	depends = python-pillow
 	depends = python
 	depends = python-pyqt5
-	source = mibandpreview-git-0.7.3::git+https://gitlab.com/melianmiko/mibandpreview.git#tag=v0.7.3
+	source = mibandpreview-git-0.7.3.1::git+https://gitlab.com/melianmiko/mibandpreview.git#tag=v0.7.3.1
 	md5sums = SKIP
 
 pkgname = mibandpreview-git
