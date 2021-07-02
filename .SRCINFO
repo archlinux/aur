@@ -1,0 +1,14 @@
+pkgbase = telebot-git
+	pkgdesc = Telegram Bot API in C
+	pkgver = r130.470994b
+	pkgrel = 1
+	url = https://elmurod.net/telebot/
+	arch = any
+	license = Apache
+	makedepends = cmake
+	depends = json-c
+	depends = curl
+	source = git+https://github.com/smartnode/telebot
+	b2sums = SKIP
+
+pkgname = telebot-git
