@@ -1,13 +1,13 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=zsh-theme-powerlevel10k-bin-git
-pkgver=r3884.c003c25
+pkgver=r3896.4bcc519
 pkgrel=1
 pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/romkatv/powerlevel10k"
 license=('MIT')
-depends=('zsh')
+depends=('glibc' 'zsh')
 makedepends=('git')
 optdepends=(
   'ttf-meslo-nerd-font-powerlevel10k: terminal font recommended by powerlevel10k'
@@ -31,6 +31,6 @@ build() {
 
 package() {
   cd "$srcdir"
-  find powerlevel10k -path powerlevel10k/.git -prune \
-    -o '(' -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-{}" ';' ')'
+  find powerlevel10k -type f -exec install -D '{}' "$pkgdir/usr/share/zsh-theme-{}" ';'
+  make -C "$pkgdir"/usr/share/zsh-theme-powerlevel10k zwc minify
 }
