@@ -1,7 +1,7 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrxdsp-git
 _gitname=libxtrxdsp
-pkgver=r10.614f52694ac0
+pkgver=r11.eec28640c0eb
 pkgrel=4
 pkgdesc="DSP specific function for SDR in general and XTRX in specific"
 arch=('armv7h' 'i686' 'x86_64')
