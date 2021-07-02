@@ -2,7 +2,7 @@
 
 pkgname=xstarfish
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 _debver=1.1
 _debrel=11.1
 pkgdesc="X wallpaper generator"
@@ -10,8 +10,9 @@ arch=('x86_64' 'i686')
 url="https://launchpad.net/ubuntu/+source/xstarfish/"
 #url="http://www.redplanetsw.com/starfish/"
 license=('GPL-2')
-depends=('glibc' 'libpng' 'libx11')
-makedepends=('quilt')
+# For Hyperbola, add xenocara- before [xbitmaps] in build dependency.
+depends=('libpng' 'libx11' 'xbitmaps')
+makedepends=('glibc' 'quilt')
 source=("https://deb.debian.org/debian/pool/main/x/${pkgname}/${pkgname}_${_debver}.orig.tar.gz"
 	"https://deb.debian.org/debian/pool/main/x/${pkgname}/${pkgname}_${_debver}-${_debrel}.debian.tar.xz")
 sha512sums=('8f398ddc1b0c6fbf33721b48c5859d9cabbbb9dddf298daa92e3658bac69e0544516294e8ef47b948d123115d0258d1d2502bce6e51a24a8b3e99331af3047a1'
