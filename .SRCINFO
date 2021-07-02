@@ -1,6 +1,6 @@
 pkgbase = ubus-git
 	pkgdesc = OpenWrt ubus library - system bus
-	pkgver = r325.d1d9ddf
+	pkgver = r330.4fc532c
 	pkgrel = 1
 	url = https://git.openwrt.org/project/ubus.git
 	arch = i686
@@ -25,4 +25,3 @@ pkgbase = ubus-git
 	md5sums = SKIP
 
 pkgname = ubus-git
-
