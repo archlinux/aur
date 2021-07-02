@@ -1,4 +1,5 @@
 # Maintainer: June <zanthed@riseup.net>
+# Submitter: Viste <viste02@gmail.com>
 
 ## Put in any extra CMake arguments here.
 ## See https://www.azerothcore.org/wiki/cmake-options
