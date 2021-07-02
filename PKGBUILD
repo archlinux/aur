@@ -6,6 +6,8 @@ pkgrel=1
 pkgdesc='Platform and API toolkit to transfer existing content into the FBX format.'
 arch=('i686' 'x86_64')
 url='http://www.autodesk.com/products/fbx/overview'
+depends=(gcc-libs)
+makedepends=(patchelf)
 license=('custom')
 install='fbx-sdk.install'
 source=("https://damassets.autodesk.net/content/dam/autodesk/www/adn/fbx/${pkgver//./-}/fbx${pkgver//./}_fbxsdk_linux.tar.gz")
@@ -30,5 +32,12 @@ package() {
   cp -r samples "$pkgdir/usr/share/doc/$pkgname"
   install -D "FBX_SDK_Online_Documentation.html" "$pkgdir/usr/share/doc/$pkgname/FBX_SDK_Online_Documentation.html"
   install -D "License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # fix 600 mode
+  find "$pkgdir"/usr/{include,share} -type f -exec chmod 644 {} \+
+  find "$pkgdir"/usr/{include,share} -type d -exec chmod 755 {} \+
+
+  # strip rpath
+  patchelf --remove-rpath "$pkgdir"/usr/lib/libfbxsdk.so
 }
 

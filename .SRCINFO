@@ -7,8 +7,9 @@ pkgbase = fbx-sdk
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = patchelf
+	depends = gcc-libs
 	source = https://damassets.autodesk.net/content/dam/autodesk/www/adn/fbx/2020-1-1/fbx202011_fbxsdk_linux.tar.gz
 	sha256sums = 681065ce68f8acc07f30216ebc24e69814d852733efa9926c1b816e1309144c8
 
 pkgname = fbx-sdk
-
