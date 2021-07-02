@@ -1,0 +1,20 @@
+pkgbase = kool
+	pkgdesc = Kool makes using Docker for local development easier, simpler, faster, and better
+	pkgver = 1.12.1
+	pkgrel = 1
+	url = https://kool.dev
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	provides = kool
+	options = !emptydirs
+	options = !strip
+	source = kool-1.12.1-x86_64::https://github.com/kool-dev/kool/releases/download/1.12.1/kool-linux-amd64
+	sha256sums = 5f7ded49a6fde4121725dbfb03c2e080cce3fb19a79e19ba8ed4829c25e4b841
+	source_armv6h = kool-1.12.1-armv6h::https://github.com/kool-dev/kool/releases/download/1.12.1/kool-linux-arm6
+	sha256sums_armv6h = 531b4dc5ff4223e4555fed9eb717462b82b3d08f628fcc70d8379be8ddbb15f8
+	source_armv7h = kool-1.12.1-armv7h::https://github.com/kool-dev/kool/releases/download/1.12.1/kool-linux-arm7
+	sha256sums_armv7h = 36b0bb0f76997cf11f90c797d52348988a359e6d141459eafb338de95e17db6d
+
+pkgname = kool
