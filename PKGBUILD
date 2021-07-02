@@ -21,7 +21,7 @@ depends=(
 )
 options=('emptydirs')
 source=("https://cdn.localwp.com/releases-stable/$pkgver+$pkgrel/local-$pkgver-linux.rpm")
-sha1sums=('6a7b4ea93095acf62a6a041812d68ba752c76432')
+sha1sums=('c6c5e99281d14b9f93861d3fd4bcd1a9cbd765f5')
 
 package() {
   rpmextract.sh ../local-$pkgver-linux.rpm
