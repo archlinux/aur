@@ -1,6 +1,33 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.3...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.4...HEAD)
+
+
+<a name="3.1.4"></a>
+## [3.1.4](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.3) (2021-07-02)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.3...3.1.4)
+
+### Bug Fixes
+- tone mapping persistence issue [#374](https://gitlab.com/langurmonkey/gaiasky/issues/374) 
+- unify internal delta time across all modules 
+- regression in getObjectPosition() since `3.1.0` [#372](https://gitlab.com/langurmonkey/gaiasky/issues/372) 
+- camera direction precision issue in focus mode 
+
+### Build System
+- update AUR JRE dependency 
+- use externally built JDK for appimage [#361](https://gitlab.com/langurmonkey/gaiasky/issues/361) 
+- remove jsamp, add as dependency 
+- remove gson dependency 
+- update dependency versions 
+- fix CI jdk dependency 
+
+### Documentation
+- update JDK requirement in readme from 11 to 15 
+
+### Features
+- non-blocking task-based search suggestions 
+- allow spaceships of multiple sizes 
+- add multiple spaceships to spacecraft mode 
 
 
 <a name="3.1.3"></a>
@@ -21,7 +48,6 @@
 ### Performance Improvements
 - performance improvements in arbitrary precision vector distance method 
 
-
 <a name="3.1.2"></a>
 ## [3.1.2](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.1) (2021-06-16)
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/3.1.1...3.1.2)
@@ -29,14 +55,13 @@
 ### Bug Fixes
 - broken visibility of datasets (star/particle groups) [#369](https://gitlab.com/langurmonkey/gaiasky/issues/369) 
 - enable more than one light glow effect at a time 
-- set logging level of STIL and jsamp to WARN [#367](https://gitlab.com/langurmonkey/gaiasky/issues/367) 
+- set logging level of STIL and JSAMP to WARN [#367](https://gitlab.com/langurmonkey/gaiasky/issues/367) 
 
 ### Build System
 - fix git-chglog configuration so that merge requests are correctly captured 
 
 ### Features
 - add apparent magnitude from camera [#368](https://gitlab.com/langurmonkey/gaiasky/issues/368) 
-
 
 <a name="3.1.1"></a>
 ## [3.1.1](https://gitlab.com/langurmonkey/gaiasky/tree/3.1.0) (2021-06-11)
@@ -46,7 +71,7 @@
 - crash when window is minimized (Windows) [#366](https://gitlab.com/langurmonkey/gaiasky/issues/366) 
 
 ### Build System
-- change developer_name to be consistent with flathub metadata (max 60 chars) 
+- change developer_name to be consistent with FlatHub metadata (max 60 chars) 
 
 <a name="3.1.0"></a>
 ## [3.1.0](https://gitlab.com/langurmonkey/gaiasky/tree/3.0.3) (2021-06-10)
@@ -58,16 +83,16 @@
 - improve logging in shader loader
 - increase font size of dataset name in catalog selection and data manager windows
 - multiple directional lights in per-pixel-lighting shader
-- do not render -Z in cubemap mode if mode is planetarium and aperture > 180
+- do not render -Z in cube map mode if mode is planetarium and aperture > 180
 - add dynamic resolution flag to configuration file - for testing purposes only!
 - spacecraft GUI is now a table with a background
-- expose backbuffer scale factor to configuration
-- add new logo to README file
-- separate max num of billboards, labels and velocity vectors in config
-- new mwsc description
+- expose back buffer scale factor to configuration
+- add new logo to `README.md` file
+- separate max nummber of billboards, labels and velocity vectors in configuration
+- new MWSC description
 - improve error dialog, saner default properties
-- bump source and config version numbers
-- replace BigDecimal with faster Apfloat
+- bump source and configuration version numbers
+- replace `BigDecimal` with faster `Apfloat`
 - add arbitrary precision floating point vector
 - add RGB color channels to filter attributes, add XOR operation
 - condense date/time in control panel into a single line
@@ -76,7 +101,7 @@
 - add support for versioning in metadata binary files
 - max octree depth set to 19
 - add per-object visibility API calls
-- add per-object vis to focus info panel
+- add per-object visibility to focus info panel
 - add per-object visibility controls
 - move visibility property from fade nodes to scene graph nodes
 
@@ -84,19 +109,19 @@
 - Bulgarian translation, contributed by [Georgi Georgiev](https://gitlab.com/RacerBG)
 
 ### Bug Fixes
-- update list of JRE modules for appimage
+- update list of JRE modules for Appimage
 - untranslatable strings, fixes [#356](https://gitlab.com/langurmonkey/gaiasky/issues/356) [#356](https://gitlab.com/langurmonkey/gaiasky/issues/356)
-- music module omited if initialization fails, fixes [#360](https://gitlab.com/langurmonkey/gaiasky/issues/360), [#362](https://gitlab.com/langurmonkey/gaiasky/issues/362) [#360](https://gitlab.com/langurmonkey/gaiasky/issues/360)
-- appimage not using bundled JRE. Fixes [#361](https://gitlab.com/langurmonkey/gaiasky/issues/361) [#361](https://gitlab.com/langurmonkey/gaiasky/issues/361)
-- readme docs URL
+- music module omitted if initialization fails, fixes [#360](https://gitlab.com/langurmonkey/gaiasky/issues/360), [#362](https://gitlab.com/langurmonkey/gaiasky/issues/362) [#360](https://gitlab.com/langurmonkey/gaiasky/issues/360)
+- Appimage not using bundled JRE. Fixes [#361](https://gitlab.com/langurmonkey/gaiasky/issues/361) [#361](https://gitlab.com/langurmonkey/gaiasky/issues/361)
+- README docs URL
 - attitude navigator ball UI scaling
 - free camera stops when very close to stars
 - particle passing parent translation to children instead of its own
-- minimap crash due to shader version not found on some macOS systems
+- mini-map crash due to shader version not found on some macOS systems
 - free mode coordinate command gets doubles instead of floats
 - float/double errors and little bugs
-- reformulate plx/plx_e > crti
-- pad catalog num in launch script
+- reformulate `plx/plx_e > crti`
+- pad catalog number in launch script
 - fix metadata binary version 1 with long children ids
 - wee typos and fixes
 - keyframes arrow caps, leftover focus when exiting keyframe mode
@@ -108,21 +133,21 @@
 - typo 'camrecorder' -> 'camcorder'
 
 ### Build System
-- upgrade to install4j 9.0.3
-- use jlink instead of manual method to build packaged JRE (appimage)
-- remove vamdc repo, add jsoup target version
-- add metadata to appimage
-- switch to local jsmap library, as vamdc repo looks down
-- upgrade libgdx to 1.10.0, bump gs version in build script
+- upgrade to Install4j 9.0.3
+- use Jlink instead of manual method to build packaged JRE (appimage)
+- remove VAMDC repository, add JSOUP target version
+- add metadata to Appimage
+- switch to local JSMAP library, as VAMDC repository looks down
+- upgrade Libgdx to 1.10.0, bump gs version in build script
 - upgrade build system to gradle 7.0
-- jsamp maven is down, adding jar to lib
+- JSAMP maven is down, adding jar to lib
 
 ### Documentation
 - clean up javadoc comments
-- add missing acknowledgements and contributors
+- add missing acknowledgments and contributors
 
 ### Style
-- migrate missing strings to i18n system, move all I18n.bundle to new I18n.txt
+- migrate missing strings to I18n system, move all `I18n.bundle()` to new `I18n.txt()`
 - rename some variables and format some files
 - clean up and refactor render code, organize imports in whole project
 - some shader formatting
@@ -138,9 +163,9 @@
 
 ### Bug Fixes
 - controller image fetch crash 
-- getDistanceTo() with star group object, goToObject() with no angle 
-- setSimulationTime() crash 
-- move wikiname to celestial body, remove unused parameters, prepare star to be loaded directly 
+- `getDistanceTo()` with star group object, `goToObject()` with no angle 
+- `setSimulationTime()` crash 
+- move `wikiname` to celestial body, remove unused parameters, prepare star to be loaded directly 
 - use proper values for depth test 
 - post-process bugs (sorting, etc.) 
 - check the wrong catalog type 'catalog-lod' 
@@ -154,7 +179,7 @@
 ### Build System
 - exclude appimage files from install media 
 - remove branding from installer strings 
-- move to gdx-controllers 2.1.00, macos tests pending 
+- move to gdx-controllers 2.1.0, macos tests pending 
 - genearte md5 and sha256 of appimage package 
 - add appimage build 
 - update docs repository pointer 
