@@ -9,8 +9,10 @@ url='https://gitlab.com/Gnurur/chad_launcher'
 license=('GPL3')
 depends=(python python-gobject gtk3)
 makedepends=(pkgconf git)
-source=('git+https://gitlab.com/Gnurur/chad_launcher.git')
-md5sums=('SKIP')
+source=('chad_launcher.desktop'
+    'git+https://gitlab.com/Gnurur/chad_launcher.git')
+md5sums=('9eec2ab6826db351825ab1c8f1919b53'
+    'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -25,4 +27,5 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     python "setup.py" install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 "$srcdir/chad_launcher.desktop" "$pkgdir/usr/share/applications/chad_launcher.desktop"
 }
