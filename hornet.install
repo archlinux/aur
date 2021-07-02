@@ -10,9 +10,12 @@ pre_upgrade() {
 		echo "> hornet$    - /var/lib/hornet/config.json.pacnew"
 		echo "> hornet$ 2. The old database files are incompatible."
 		echo "> hornet$    Restart Hornet with an empty database folder."
-	fi
-	if (( $(vercmp $2 1.0.1) == 0 )); then
-		echo "> hornet$ Config files changes"
+	elif (( $(vercmp $2 1.0.1) == 0 )); then
+		echo "> hornet$ Config files changes:"
 		echo "> hornet$ https://github.com/gohornet/hornet/releases/tag/v1.0.2"
+	elif (( $(vercmp $2 1.0.3) < 0 )); then
+		echo "> hornet$ Node operators should update their Hornet configurations"
+		echo "> hornet$ and restart Hornet for an immediate mitigation."
+		echo "> hornet$ https://status.iota.org/"
 	fi
 }
