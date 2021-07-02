@@ -1,15 +1,16 @@
-# Maintainer: Kujiu <kujiu+arch@kujiu.org>
+# Maintainer:  kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Kujiu <kujiu+arch@kujiu.org>
 
 pkgname=rolisteam
 _pkgname=rolisteam
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players."
 arch=('i686' 'x86_64')
 url="http://www.rolisteam.org"
 license=(GPL)
-depends=('qt5-base' 'qt5-multimedia' 'zlib' 'qt5-webengine')
-makedepends=('qt5-tools' 'gcc' 'git')
+depends=('qt5-svg' 'qt5-base' 'qt5-multimedia' 'zlib' 'qt5-webengine')
+makedepends=('qt5-tools' 'git')
 source=("git+https://github.com/Rolisteam/rolisteam.git#tag=v${pkgver}"
         "rolisteam.desktop")
 sha256sums=('SKIP' 'ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660')

@@ -1,18 +1,21 @@
 pkgbase = rolisteam
 	pkgdesc = Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players.
-	pkgver = 1.9.1
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = http://www.rolisteam.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc
-	makedepends = git
 	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-svg
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = zlib
-	source = git+https://github.com/Rolisteam/rolisteam.git#tag=v1.9.1
-	sha256sums = 'SKIP'
+	depends = qt5-webengine
+	source = git+https://github.com/Rolisteam/rolisteam.git#tag=v1.9.3
+	source = rolisteam.desktop
+	sha256sums = SKIP
+	sha256sums = ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660
 
 pkgname = rolisteam
