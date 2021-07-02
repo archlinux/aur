@@ -1,4 +1,5 @@
-# Maintainer: LiveLM <livelm at hotmail dot com> ghactions test
+# Maintainer: LiveLM <livelm at hotmail dot com> 
+# Maintainer: CptSparrow < discordbotdupont at protonmail dot com >
 pkgname=emusak-bin
 pkgver=1.0.72
 pkgrel=1
