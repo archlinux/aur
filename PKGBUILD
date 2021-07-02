@@ -5,7 +5,7 @@ _pkgname=chataigne
 _Pkgname=Chataigne
 
 pkgname="${_pkgname}"-stable-bin
-pkgver=1.7.6
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Artist-friendly Modular Machine for Art and Technology."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${_Pkgname}-linux-x64-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://benjamin.kuperberg.fr/chataigne/user/data/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('1a28928a004fe3311060cfa5a392301b9c4ca1ec9fc041b1d29531a4f7679398')
+sha256sums_x86_64=('78cc41553d1de52c8ff8f0e30e4dfc0e3d8586b39ad6de5a666e89b10f69f56a')
 
 prepare() {
     chmod +x "${_appimage}"
