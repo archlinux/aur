@@ -1,7 +1,7 @@
 pkgbase = vim-code-minimap-git
 	pkgdesc = Blazing fast minimap for Vim, powered by code-minimap
-	pkgver = r116.408db1f
-	pkgrel = 1
+	pkgver = r122.8ff6541
+	pkgrel = 2
 	url = https://github.com/wfxr/minimap.vim
 	arch = any
 	groups = vim-plugins
@@ -21,9 +21,8 @@ pkgname = vim-code-minimap-git
 
 pkgname = neovim-code-minimap-git
 	depends = code-minimap
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	provides = neovim-code-minimap
 	provides = vim-minimap
 	conflicts = neovim-code-minimap
 	conflicts = vim-minimap
-

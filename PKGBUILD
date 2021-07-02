@@ -2,8 +2,8 @@
 
 pkgbase=vim-code-minimap-git
 pkgname=('vim-code-minimap-git' 'neovim-code-minimap-git')
-pkgver=r116.408db1f
-pkgrel=1
+pkgver=r122.8ff6541
+pkgrel=2
 pkgdesc="Blazing fast minimap for Vim, powered by code-minimap"
 arch=('any')
 url="https://github.com/wfxr/minimap.vim"
@@ -33,7 +33,7 @@ package_vim-code-minimap-git()  {
 }
 
 package_neovim-code-minimap-git()  {
-	depends+=('neovim-git')
+	depends+=('neovim>=0.5.0')
 	provides=("${pkgname%-git}" 'vim-minimap')
 	conflicts=("${pkgname%-git}" 'vim-minimap')
 
