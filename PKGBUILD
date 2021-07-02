@@ -1,7 +1,7 @@
 # Maintainer: Groctel <aur@taxorubio.com>
 pkgname=python-cloup
 _name=cloup
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Cloup (= Click + groups) contains a set of Click extensions for multiple purposes."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(
 )
 provides=()
 source=("https://github.com/janLuke/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('85f494af0cbea8791bd23edcc69f6a152ebffbac8ba2a51568714e052c03b748fc09a263aaf73146b290e5d4ecc247accd8ebff6a1c707b916c2bf8bff12928b')
+sha512sums=('9da24666b61c11626010fa95d8b69945bcb59aff73cc98d8636cd748f102e218c940ab0936ab677d0ca1cab823eb69ea521f8c1f70984a8e20489b0179e803f8')
 
 build() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
