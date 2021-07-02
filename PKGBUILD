@@ -3,11 +3,12 @@
 
 pkgname="mkdocs-material-extensions-git"
 pkgver=1.0.1.r2.ge2a379b
-pkgrel=1
+pkgrel=2
 pkgdesc="Markdown extension resources for MkDocs Material"
 url="https://github.com/facelessuser/mkdocs-material-extensions"
 license=("MIT")
 arch=("any")
+provides=("mkdocs-material-extensions")
 conflicts=("python-mkdocs-material-extensions-git")
 replaces=("python-mkdocs-material-extensions-git")
 depends=("mkdocs" "pymdown-extensions")
