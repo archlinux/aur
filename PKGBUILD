@@ -2,7 +2,7 @@
 
 pkgname=neovim-trouble-git
 pkgver=r77.7de8bc4
-pkgrel=1
+pkgrel=2
 pkgdesc="A pretty diagnostics list for Neovim powered by LSP"
 arch=('any')
 url="https://github.com/folke/trouble.nvim"
