@@ -1,20 +1,23 @@
 # Maintainer: Andres Rodriguez <andresx7@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=gpu-trace
-pkgver=v2.4
-pkgrel=1
+pkgver=2.4
+pkgrel=2
 pkgdesc="GPU Trace capture tool"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/lostgoat/gpu-trace"
 license=('MIT')
-depends=('trace-cmd')
-provides=('gpu-trace' 'amdgpu-trace')
-conflicts=('gpu-trace' 'amdgpu-trace')
-source=("git+$url#tag=$pkgver")
-sha256sums=("SKIP")
+depends=('python3' 'trace-cmd')
+provides=('amdgpu-trace')
+conflicts=('amdgpu-trace')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('2cd18ae743bc85db83dd4e762818cdc0162c7ead5f21daa7410143897ff18927')
 
 package() {
-    cd "${srcdir}/gpu-trace"
+    cd "$pkgname-$pkgver"
     install -dm755 "$pkgdir/usr/bin/"
     make INSTALL_ROOT="$pkgdir" INSTALL_PREFIX="/usr/" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
