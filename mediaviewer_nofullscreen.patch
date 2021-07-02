@@ -3,16 +3,16 @@ See 3251b8bf6e740e55777e85d63065a61e43df54fe
 Credits: novie
 
 diff --git a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
-index 604449dd3..799e1de14 100644
+index ab523514a..2b6ae1b2c 100644
 --- a/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
 +++ b/Telegram/SourceFiles/media/view/media_view_overlay_widget.cpp
-@@ -463,9 +463,6 @@ void OverlayWidget::moveToScreen() {
+@@ -501,9 +501,6 @@ void OverlayWidget::moveToScreen() {
  }
  
  void OverlayWidget::updateGeometry() {
 -	if (Platform::IsWayland()) {
 -		return;
 -	}
- 	const auto screen = windowHandle() && windowHandle()->screen()
- 		? windowHandle()->screen()
+ 	const auto screen = window()->screen()
+ 		? window()->screen()
  		: QApplication::primaryScreen();

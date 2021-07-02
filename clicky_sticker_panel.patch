@@ -2,7 +2,7 @@ Description: open the sticker panel by clicking rather than hovering, disable pe
 Credits: JuanPotato, novie
 
 diff --git a/Telegram/SourceFiles/chat_helpers/tabbed_panel.cpp b/Telegram/SourceFiles/chat_helpers/tabbed_panel.cpp
-index 8fba46c57..c7e9450fd 100644
+index 189c8ec18..d7c7f982a 100644
 --- a/Telegram/SourceFiles/chat_helpers/tabbed_panel.cpp
 +++ b/Telegram/SourceFiles/chat_helpers/tabbed_panel.cpp
 @@ -232,10 +232,12 @@ void TabbedPanel::leaveEventHook(QEvent *e) {
@@ -19,10 +19,10 @@ index 8fba46c57..c7e9450fd 100644
  		return;
  	}
 diff --git a/Telegram/SourceFiles/history/history_widget.cpp b/Telegram/SourceFiles/history/history_widget.cpp
-index a36a76b37..7321ecf9b 100644
+index 91833a8f4..9ce28008a 100644
 --- a/Telegram/SourceFiles/history/history_widget.cpp
 +++ b/Telegram/SourceFiles/history/history_widget.cpp
-@@ -3924,6 +3924,7 @@ void HistoryWidget::onModerateKeyActivate(int index, bool *outHandled) {
+@@ -4029,6 +4029,7 @@ void HistoryWidget::showMembersDropdown() {
  bool HistoryWidget::pushTabbedSelectorToThirdSection(
  		not_null<PeerData*> peer,
  		const Window::SectionShow &params) {
@@ -30,12 +30,13 @@ index a36a76b37..7321ecf9b 100644
  	if (!_tabbedPanel) {
  		return true;
  	} else if (!peer->canWrite()) {
-@@ -3969,19 +3970,7 @@ void HistoryWidget::toggleTabbedSelectorMode() {
+@@ -4082,20 +4083,7 @@ void HistoryWidget::toggleTabbedSelectorMode() {
  	if (!_peer) {
  		return;
  	}
 -	if (_tabbedPanel) {
--		if (controller()->canShowThirdSection() && !Adaptive::OneColumn()) {
+-		if (controller()->canShowThirdSection()
+-			&& !controller()->adaptive().isOneColumn()) {
 -			Core::App().settings().setTabbedSelectorSectionEnabled(true);
 -			Core::App().saveSettingsDelayed();
 -			pushTabbedSelectorToThirdSection(
@@ -52,10 +53,10 @@ index a36a76b37..7321ecf9b 100644
  
  void HistoryWidget::recountChatWidth() {
 diff --git a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
-index 7edb1a78e..f93b4deb6 100644
+index 01809184b..b7581bb8e 100644
 --- a/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
 +++ b/Telegram/SourceFiles/history/view/controls/history_view_compose_controls.cpp
-@@ -784,6 +784,7 @@ void ComposeControls::escape() {
+@@ -1869,6 +1869,7 @@ void ComposeControls::escape() {
  bool ComposeControls::pushTabbedSelectorToThirdSection(
  		not_null<PeerData*> peer,
  		const Window::SectionShow &params) {
@@ -63,12 +64,13 @@ index 7edb1a78e..f93b4deb6 100644
  	if (!_tabbedPanel) {
  		return true;
  	//} else if (!_canSendMessages) {
-@@ -834,19 +835,7 @@ void ComposeControls::toggleTabbedSelectorMode() {
+@@ -1919,20 +1920,7 @@ void ComposeControls::toggleTabbedSelectorMode() {
  	if (!_history) {
  		return;
  	}
 -	if (_tabbedPanel) {
--		if (_window->canShowThirdSection() && !Adaptive::OneColumn()) {
+-		if (_window->canShowThirdSection()
+-				&& !_window->adaptive().isOneColumn()) {
 -			Core::App().settings().setTabbedSelectorSectionEnabled(true);
 -			Core::App().saveSettingsDelayed();
 -			pushTabbedSelectorToThirdSection(
