@@ -1,0 +1,24 @@
+pkgbase = yt-dlg-git
+	pkgdesc = A cross platform front-end GUI of the popular youtube-dl written in wxPython
+	pkgver = v1.2.0.r121.gea358e0
+	pkgrel = 1
+	url = https://github.com/MrS0m30n3/youtube-dl-gui
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = git
+	depends = gtk-update-icon-cache
+	depends = python-pypubsub
+	depends = python-wxpython
+	depends = libtiff
+	depends = libjpeg-turbo
+	optdepends = ffmpeg: convert video files to audio-only files
+	optdepends = youtube-dl: alternative to the youtube-dl program downloaded by yt-dlg
+	provides = yt-dlg
+	conflicts = yt-dlg
+	conflicts = youtube-dl-gui
+	source = yt-dlg-git::git+https://github.com/yt-dlg/yt-dlg.git
+	source = yt-dlg.desktop
+	sha256sums = SKIP
+	sha256sums = c0b27a97791951beafdc98fc7fc4580092a318aa49aef56bd338ed490cc7b574
+
+pkgname = yt-dlg-git
