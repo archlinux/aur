@@ -33,6 +33,6 @@ package() {
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/resources/app/Messages.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/$_pkgname.desktop"
+        "$pkgdir/usr/share/applications/Messages.desktop"
+    sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/Messages.desktop"
 }
