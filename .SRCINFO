@@ -1,10 +1,11 @@
 pkgbase = gnurobbo
 	pkgdesc = A reimplementation of Janusz Pelc's Robbo, originally for the Atari XE/XL
 	pkgver = 0.68
-	pkgrel = 3
+	pkgrel = 4
 	url = http://gnurobbo.sourceforge.net/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL2,
 	license = Custom
 	depends = sdl_ttf
@@ -16,4 +17,3 @@ pkgbase = gnurobbo
 	md5sums = e520a3c136854383627d1d960a41f8b2
 
 pkgname = gnurobbo
-
