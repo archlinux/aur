@@ -1,14 +1,13 @@
 pkgbase = vmware-auto-unlocker
 	pkgdesc = Unlocker for VMWare macOS
-	pkgver = 1.1
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/paolo-projects/auto-unlocker/
 	arch = x86_64
 	license = GPL3
 	depends = curl
 	depends = libarchive
-	source = https://github.com/paolo-projects/auto-unlocker/releases/download/v1.1/autounlocker_1.1.0_amd64.deb
-	sha512sums = a42c12b63774f5b8317dd1ac350b1c1f3ae9f8b3b11e1238db41725a595a8ca29b54886dce8db98e8a4bd15798d0fec280fe44221b05430f7e733d2663c6a364
+	source = git+https://github.com/paolo-projects/auto-unlocker.git#tag=v1.1.3
+	sha512sums = SKIP
 
 pkgname = vmware-auto-unlocker
-
