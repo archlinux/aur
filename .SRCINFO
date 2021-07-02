@@ -3,6 +3,7 @@ pkgbase = cajviewer-bin
 	pkgver = 1.0.3.0
 	pkgrel = 1
 	url = http://cajviewer.cnki.net
+	install = cajviewer-bin.install
 	arch = x86_64
 	license = custom
 	depends = avahi
