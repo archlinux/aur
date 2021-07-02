@@ -1,7 +1,7 @@
 pkgbase = snippy
 	pkgdesc = Rapid haploid variant calling and core genome alignment.
 	pkgver = 4.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tseemann/snippy
 	arch = x86_64
 	license = GPL
