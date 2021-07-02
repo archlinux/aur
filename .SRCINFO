@@ -1,6 +1,6 @@
 pkgbase = dwrandomizer
 	pkgdesc = A Randomizer for Dragon Warrior for NES
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = http://dwrandomizer.com
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = dwrandomizer
 	arch = aarch64
 	license = MIT
 	depends = qt5-base
-	source = dwrandomizer-2.2.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/2.2.tar.gz
-	sha256sums = 949d2126a3478f0e9a0bfc84cc21942cbb330b694a3424a909f48d84a938091e
+	source = dwrandomizer-2.2.1.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/2.2.1.tar.gz
+	sha256sums = 6152a17b8110246c4375c084243e5aaf843953c7cae417f2cb9ee79f653b7feb
 
 pkgname = dwrandomizer
-
