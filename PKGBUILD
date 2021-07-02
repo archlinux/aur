@@ -77,17 +77,17 @@ validpgpkeys=(
 )
 
 # Archlinux patches
-_commit="be7d4710850020de55bce930c83fa80347c02fc3"
-_patches=("sphinx-workaround.patch")
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
 for _patch in ${_patches[@]}; do
-    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
 sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
             'SKIP'
             '0872bff9cdaf3924c7e6ad7a47cd822fd5239408a315286ea62cc10f6153a02a'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -95,13 +95,6 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}
-
-  # hacky work around for xz not getting extracted
-  # https://bbs.archlinux.org/viewtopic.php?id=265115
-  if [[ ! -f "$srcdir/patch-${pkgver}-rt${_rt}-xanmod${xanmod}" ]]; then
-    unlink "$srcdir/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz"
-    xz -dc "$startdir/patch-${pkgver}-rt${_rt}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-rt${_rt}-xanmod${xanmod}"
-  fi
 
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-rt${_rt}-xanmod${xanmod}
@@ -147,8 +140,8 @@ prepare() {
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
   # If we detect partial file with scripts/config commands, we execute as a script
   # If not, it's a full config, will be replaced
-  for _myconfig in "${startdir}/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
-    if [ -f "${_myconfig}" ]; then
+  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+    if [ -f "${_myconfig}" ] && [ "$(wc -l <"${_myconfig}")" -gt "0" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
         # myconfig is a partial file. Executing as a script
         msg2 "Applying myconfig..."

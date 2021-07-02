@@ -16,14 +16,12 @@ pkgbase = linux-xanmod-rt
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.sign
 	source = https://github.com/xanmod/linux/releases/download/5.11.12-rt11-xanmod1/patch-5.11.12-rt11-xanmod1.xz
 	source = choose-gcc-optimization.sh
-	source = sphinx-workaround.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sphinx-workaround.patch?h=packages/linux&id=be7d4710850020de55bce930c83fa80347c02fc3
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4
 	sha256sums = SKIP
 	sha256sums = 0872bff9cdaf3924c7e6ad7a47cd822fd5239408a315286ea62cc10f6153a02a
 	sha256sums = 03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134
-	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
 
 pkgname = linux-xanmod-rt
 	pkgdesc = The Linux kernel and modules with Xanmod patches
@@ -36,4 +34,3 @@ pkgname = linux-xanmod-rt
 pkgname = linux-xanmod-rt-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod real-time version kernel
 	depends = pahole
-
