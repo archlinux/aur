@@ -1,6 +1,6 @@
 pkgbase = healthchecks
 	pkgdesc = A cron monitoring service with a web-based dashboard, API, and notification integrations.
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/healthchecks/healthchecks
 	install = healthchecks.install
@@ -20,7 +20,7 @@ pkgbase = healthchecks
 	optdepends = python-apprise: Add support for the Apprise integration.
 	backup = var/lib/healthchecks/local_settings.py
 	backup = etc/uwsgi/healthchecks.ini
-	source = https://github.com/healthchecks/healthchecks/archive/refs/tags/v1.20.0.tar.gz
+	source = https://github.com/healthchecks/healthchecks/archive/refs/tags/v1.21.0.tar.gz
 	source = hc-clean-db
 	source = hc-manage
 	source = healthchecks-clean-db.service
@@ -31,7 +31,7 @@ pkgbase = healthchecks
 	source = healthchecks.sysusers
 	source = healthchecks.tmpfiles
 	source = local_settings.py
-	sha256sums = c4bc7a1a3b09bbfaaf63eae9df8144052174cb424169e4d12e77a51b88491a9b
+	sha256sums = a7db3b85a258ce508751dcbcb4bcf08656c9756ce48b1649404b1c6332c6b76a
 	sha256sums = a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde
 	sha256sums = 355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc
 	sha256sums = 9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7
@@ -44,4 +44,3 @@ pkgbase = healthchecks
 	sha256sums = 1b398980c2dacc1a39d8f8d363815e0a5c07ea3b3ca0a7f6431c8d7d79ff212f
 
 pkgname = healthchecks
-
