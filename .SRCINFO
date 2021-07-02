@@ -1,7 +1,7 @@
 pkgbase = weechat-edit-git
 	pkgdesc = Compose weechat messages in your $EDITOR
 	pkgver = r8.6aface4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keith/edit-weechat
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = weechat-edit-git
 	sha512sums = SKIP
 
 pkgname = weechat-edit-git
-

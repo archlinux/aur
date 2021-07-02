@@ -2,7 +2,7 @@
 
 pkgname=weechat-edit-git
 pkgver=r8.6aface4
-pkgrel=1
+pkgrel=2
 pkgdesc='Compose weechat messages in your $EDITOR'
 url='https://github.com/keith/edit-weechat'
 arch=('any')
@@ -22,5 +22,5 @@ pkgver() {
 package() {
   cd "${_gitname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 edit.py "${pkgdir}/usr/lib/weechat/python/edit.py"
+  install -Dm644 edit.py "${pkgdir}/usr/share/weechat/python/edit.py"
 }
