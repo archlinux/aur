@@ -1,6 +1,6 @@
 pkgbase = activity-relay
 	pkgdesc = Yet another powerful customizable ActivityPub relay server written in Go.
-	pkgver = 0.2.9
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/yukimochi/Activity-Relay
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = activity-relay
 	depends = go
 	provides = activity-relay
 	conflicts = activity-relay-git
-	source = activity-relay-0.2.9.tar.gz::https://github.com/yukimochi/Activity-Relay/archive/refs/tags/v0.2.9.tar.gz
+	source = activity-relay-1.0.0.tar.gz::https://github.com/yukimochi/Activity-Relay/archive/refs/tags/v1.0.0.tar.gz
 	source = https://raw.githubusercontent.com/yukimochi/Activity-Relay/master/LICENCE
-	sha512sums = 9cbdb3c9bbee3dc65b4e85c62f6ee850a541c610558b5a65e565b75d9c90cf7200b00833aca6dff7cad16c9a3b65c8fd50afdaa77f91a0df5ccbfdab59388087
+	sha512sums = 73483c7e90ff2699dc41e9ec8e4ac823b0afaa71e49dafb01e2723e78bdb296801e206490d1450ed0743dfe24c5927d005141d7e688f09d6429d99b891e98b23
 	sha512sums = 6e90d46be391aa645bcf4dfaa67f452cb15a73749f1895633789c7763b43cc0b65d391e5e95652c9a9a2063c956e0e8099a4e1ce4b70b0636629f9eac39c1080
 
 pkgname = activity-relay
