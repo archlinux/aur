@@ -1,6 +1,6 @@
 pkgbase = libxtrx-git
 	pkgdesc = High level API for the xtrx SDR
-	pkgver = r53.9af1c458b567
+	pkgver = r77.acb0b1cf7ab9
 	pkgrel = 2
 	url = https://github.com/xtrx-sdr/libxtrx
 	arch = any
@@ -18,4 +18,3 @@ pkgbase = libxtrx-git
 	md5sums = SKIP
 
 pkgname = libxtrx-git
-

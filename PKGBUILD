@@ -1,6 +1,6 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrx-git
-pkgver=r53.9af1c458b567
+pkgver=r77.acb0b1cf7ab9
 pkgrel=2
 pkgdesc="High level API for the xtrx SDR"
 _gitname=libxtrx
