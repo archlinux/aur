@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-utils
-pkgver=2.0.5
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
@@ -14,11 +14,11 @@ optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('3a17498d704ebf4c5d7231660f6fb44ae07a1545519f567452a4270851a86ec9'
+sha256sums=('60bddcb630284c771dcf5a1109ca9329d16523a3a40a374019955cfbf97bf34f'
             'SKIP'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
-b2sums=('4505c43a3b9a6c2b925383d00bbd9f17505290ded83f9bd3f08211769fa39254742340bdda65efd53f87f1708138517f91f8a43c01f3ce4191de200c84c77754'
+b2sums=('f7cc1cde711c255bacb000207b8e9a594105d18601a503d75a2a3055ed29ca941e148492fe52809f81a250848cfb5868b3d1c42860464a3d7d744a416db08929'
         'SKIP'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
         'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
@@ -27,9 +27,6 @@ validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key
 
 prepare() {
     cd "${srcdir}"/zfs-${pkgver}
-
-    # fix non-portable use of "which", removed in git master
-    sed -i 's/which grep/command -v grep/' contrib/dracut/90zfs/module-setup.sh.in
 
     # pyzfs is not built, but build system tries to check for python anyway
     ln -sf /bin/true python3-fake
