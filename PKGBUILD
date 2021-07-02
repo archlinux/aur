@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-telescope-git
-pkgver=r583.2697bcf
+pkgver=r598.c5a6ed1
 pkgrel=2
 pkgdesc="A highly extensible fuzzy finder for lists"
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim-git' 'neovim-plenary' 'neovim-popup')
+depends=('neovim>=0.5.0' 'neovim-plenary' 'neovim-popup')
 optdepends=('bat: for inline previews'
             'fd'
             'ripgrep'
