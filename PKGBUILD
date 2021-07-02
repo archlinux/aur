@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=encrypted-dns
-pkgver=0.3.23
-pkgrel=4
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A modern encrypted DNS server (DNSCrypt v2, Anonymized DNSCrypt, DoH)"
 url="https://github.com/jedisct1/encrypted-dns-server"
 license=(MIT)
@@ -11,7 +11,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jedisct1/encrypted-dns-s
 		encrypted-dns.service)
 backup=(etc/encrypted-dns/encrypted-dns.toml)
 makedepends=(rust cargo)
-sha256sums=('c40c32906ee07e9fce6c6f34a95862e363a45baaaf6fb84a5ffc71fcbc302a6d'
+sha256sums=('8b25b568e8b583bd04cdd0b5f4e2a684675877d1155cc44423baec4696c09511'
             'bcd4ba7e55288ee2209ba358c3ede64044c1ee93b0f6223a10dc3ca4bba7aa5b')
 
 prepare() {
