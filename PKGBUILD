@@ -4,7 +4,7 @@ _pkgsrcname=spinner.el
 _pkgmaintainer=Malabarba
 _pkgdestdirname=spinner
 _versionprefix=
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="Emacs mode-line spinner for operations in progress"
 pkgname=emacs-${_pkgdestdirname}
@@ -13,7 +13,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-sha256sums=('90613a146a5b4eacf3b7db63f35961c14b2a87b71165ffb26f800d80f1912662')
+sha256sums=('69c1c18f350ccb8bb50b9dab27df7b8bbfed4b1447a171ae24c868eea717793c')
 
 build() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}"
