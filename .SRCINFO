@@ -1,21 +1,15 @@
 pkgbase = virtio-win
-	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests and floppy images for Windows XP
-	pkgver = 0.1.190.1
+	pkgdesc = virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests
+	pkgver = 0.1.196.1
 	pkgrel = 1
 	url = https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
 	changelog = virtio-win.changelog
 	arch = any
 	license = BSD-3-Clause
 	optdepends = qemu
-	noextract = virtio-win-0.1.190-1.iso
-	noextract = virtio-win-0.1.190-1_amd64.vfd
-	noextract = virtio-win-0.1.190-1_x86.vfd
-	source = virtio-win-0.1.190-1.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.190-1/virtio-win.iso
-	source = virtio-win-0.1.190-1_amd64.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.190-1/virtio-win_amd64.vfd
-	source = virtio-win-0.1.190-1_x86.vfd::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.190-1/virtio-win_x86.vfd
-	sha256sums = dc6044e02fa6739881246843287481919ebcd4484f4bf23247741100489e9930
-	sha256sums = 947e01fc437351384a263bfccbcc4835e72d2273ed8ba76b2fd830575b565164
-	sha256sums = 99e6b03afa88287f77d607a9c7e0cdd8c950d73e4dabe0a2a0353b1f213d34da
+	noextract = virtio-win-0.1.196-1.iso
+	source = virtio-win-0.1.196-1.iso::https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.196-1/virtio-win.iso
+	sha256sums = 7d978331324ade642306f3b965ee3f2879bc83897f963daa31fa3ebf7c1f45fe
 
 pkgname = virtio-win
 
