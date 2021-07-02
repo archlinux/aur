@@ -2,7 +2,7 @@
 # Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
 _org=pmem
 pkgname=pmdk
-pkgver=1.10
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
@@ -30,7 +30,7 @@ provides=(
 backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_org/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('3e57cc417194aa5524fb2d42c9b96753f23ee22c')
+sha1sums=('080f3d7260ae2d306ef9f9e02ed1cbfbe3eb8c31')
 
 prepare() {
 
