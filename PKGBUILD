@@ -14,5 +14,5 @@ sha512sums=('7cfb4108657aae8c2cb30c8c20a30393c0679cea1ea451ec6d1f5cc4b6594c15bbb
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 autosort.py "${pkgdir}/usr/lib/weechat/python/autosort.py"
+  install -Dm644 autosort.py "${pkgdir}/usr/share/weechat/python/autosort.py"
 }

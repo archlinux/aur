@@ -11,4 +11,3 @@ pkgbase = weechat-autosort
 	sha512sums = 7cfb4108657aae8c2cb30c8c20a30393c0679cea1ea451ec6d1f5cc4b6594c15bbb5eda243a726c745a1f2c488c3343048fc1b7297e9107d3270db7e3aba03a0
 
 pkgname = weechat-autosort
-
