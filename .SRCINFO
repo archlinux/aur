@@ -1,5 +1,5 @@
 pkgbase = csvs-to-sqlite
-	pkgdesc = An open source multi-tool for exploring and publishing data
+	pkgdesc = Convert CSV files into a SQLite database
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/simonw/csvs-to-sqlite
