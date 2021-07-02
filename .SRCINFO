@@ -1,7 +1,7 @@
 pkgbase = obs-studio-browser
 	pkgdesc = Free and open source software for video recording and live streaming. Built with browser, vst plugins.
 	pkgver = 27.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = obs-studio-browser
 	depends = qt5-x11extras
 	depends = curl
 	depends = gtk-update-icon-cache
+	depends = mbedtls
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
 	optdepends = libva-intel-driver: Hardware encoding
