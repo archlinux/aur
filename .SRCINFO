@@ -1,0 +1,24 @@
+pkgbase = octasine
+	pkgdesc = VST2 frequency modulation synthesizer written in Rust
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/greatest-ape/OctaSine
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = GPL3
+	makedepends = rust
+	depends = fontconfig
+	depends = freetype2
+	depends = xcb-util-wm
+	depends = libxcb
+	depends = expat
+	depends = libpng
+	depends = harfbuzz
+	depends = graphite
+	depends = glib2
+	depends = pcre
+	source = https://github.com/greatest-ape/OctaSine/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 4a671705e8889a2bdf75902c3ca785c242c848f900f713939b91d37b89683b48
+
+pkgname = octasine
