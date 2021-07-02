@@ -5,7 +5,7 @@ pkgname=nheko-git
 pkgver=0.8.2.r169.g5b016cbc
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "aarch64")
 
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
