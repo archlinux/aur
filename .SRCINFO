@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-rc
-	pkgver = 2.1.0_rc8_5.12.13.arch1.2
+	pkgver = 2.1.0_rc8_5.12.14.arch1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.12.13.arch1-2
+	makedepends = linux-headers=5.12.14.arch1-1
 	depends = kmod
 	depends = zfs-utils-rc=2.1.0_rc8
-	depends = linux=5.12.13.arch1-2
+	depends = linux=5.12.14.arch1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0-rc8/zfs-2.1.0-rc8.tar.gz
 	sha256sums = 8627702ac841d38d5211001c76937e4097719c268b110e8836c0da195618fad2
 
