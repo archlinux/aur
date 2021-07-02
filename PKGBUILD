@@ -1,23 +1,26 @@
-# Maintainer: Fabien Devaux <fdev31@gmail.com>
-pkgname=blender-plugin-manuelbastionilab
-pkgver=1.6.0
+#!/bin/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Fabien Devaux <fdev31@gmail.com>
+
+_name="manuelbastionilab"
+pkgname="blender-plugin-${_name}"
+pkgver=1.7.8.5
+_dir="MB-Lab-${pkgver}"
 pkgrel=1
 pkgdesc="powerful 3d humanoids creator"
-url="http://www.manuelbastioni.com"
-license=("AGPL")
 arch=('any')
-depends=('blender')
-groups=('blender')
-makedepends=('unzip')
-_zip="manuelbastionilab_160.zip"
-source=("http://download.tuxfamily.org/manuellab/$_zip")
-sha256sums=('8d3aebe3c70a069a8d7c349791cb6a547279483139d6ab52c0b48572662d80b9')
+url="https://mb-lab-community.github.io"
+license=('GPL')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/animate1978/MB-Lab/archive/refs/tags/${pkgver//_/.}.tar.gz")
+sha256sums=('3e392ce1b04a97f627e22d4ebac19e0f32232ed7908a0777b80d69656b30721d')
 
 package() {
-    addons="$pkgdir/usr/share/blender/$(blender -v | head -n1 | cut -f2 -d ' ')/scripts/addons/"
-    if [ ! -d "$addons" ]; then
-        mkdir -p "$addons"
-    fi
-    unzip $_zip -d "$addons"
+  depends=('blender')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  cd ${_dir}
+  addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
+  install -dm755 "${addons}/${_name}"
+  cp -a -t "${addons}/${_name}" ./*
 }
 
+# vim:set ts=2 sw=2 et:
