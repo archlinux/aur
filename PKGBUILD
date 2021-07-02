@@ -6,12 +6,12 @@
 
 pkgname=nginx-mainline-boringssl
 pkgver=1.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'geoip' 'mailcap')
+depends=('pcre' 'zlib' 'geoip' 'mailcap' 'libxcrypt')
 makedepends=('cmake' 'git' 'go')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
@@ -70,8 +70,8 @@ _mainline_flags=(
 )
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-  export CFLAGS="$CFLAGS -fPIC"
+  export CXXFLAGS="$CXXFLAGS -Wno-array-bounds -Wno-stringop-overflow -Wno-array-parameter"
+  export CFLAGS="$CFLAGS -Wno-array-bounds -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl
   mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make && cd ${srcdir}/boringssl
