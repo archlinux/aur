@@ -1,0 +1,17 @@
+pkgbase = pilon
+	pkgdesc = Pilon is an automated genome assembly improvement and variant detection tool.
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://github.com/broadinstitute/pilon
+	arch = any
+	license = GPL2
+	makedepends = sbt
+	makedepends = sh
+	depends = java-runtime
+	provides = pilon
+	conflicts = pilon-bin
+	conflicts = pilon-git
+	source = https://github.com/broadinstitute/pilon/archive/refs/tags/v1.24.tar.gz
+	b2sums = f715aa70f29d00a470cdafefcae857627fd9e857466f2cebd1f842714f09b09022871db9ea6c75dc7e7b25fc4b4a5838dad3349740c3e5d330e402bd6c1410c1
+
+pkgname = pilon
