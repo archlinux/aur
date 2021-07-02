@@ -2,13 +2,13 @@
 
 pkgname=neovim-popup-git
 pkgver=r15.5e3bece
-pkgrel=1
+pkgrel=2
 pkgdesc="A WIP implementation of the Popup API from Vim in Neovim"
 arch=('any')
 url="https://github.com/nvim-lua/popup.nvim"
 license=('unknown')
 groups=('neovim-plugins')
-depends=('neovim-git' 'neovim-plenary')
+depends=('neovim>=0.5.0' 'neovim-plenary')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
