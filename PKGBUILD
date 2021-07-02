@@ -3,7 +3,7 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 arch=('any')
@@ -35,6 +35,7 @@ depends=(
 	'python-moderngl-git'
 	'python-moderngl-window'
 	'python-pydub'
+	'python-screeninfo'
 )
 makedepends=(
 	'python-setuptools'
@@ -45,7 +46,7 @@ optdepends=(
 conflicts=('python-manimlib')
 provides=()
 source=("https://github.com/ManimCommunity/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('2c9c939c8771b3f48583295d63e230f7db89f8a4f6b5d97d3afec8eb295df7e9b5035be6b2e0c1bf0db9f9a14257f0ad86d48c25ab3d24e6600437f708c4641f')
+sha512sums=('2857afc0c9acd04bf0c5088f939edef744b5aef5455d48f22036baebb64d8e82482376281e06bb24fc7980eca13946779a9d7e9dcaa145fda5650235a1d1c05e')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
