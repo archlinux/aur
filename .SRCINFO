@@ -1,6 +1,6 @@
 pkgbase = menyoki-bin
 	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/orhun/menyoki
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = menyoki-bin
 	provides = menyoki
 	conflicts = menyoki
 	validpgpkeys = 9965F7E78C54A004D475D6FA53F218C35C1DC8B1
-	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v1.4.1/menyoki-1.4.1-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v1.4.1/menyoki-1.4.1-x86_64-unknown-linux-gnu.tar.gz.sig
-	sha512sums_x86_64 = 88310bfef85bb74216f4a7935265ff3702f6991003513af723d4edc38fb86091193e79715bd56d17ce6b7d9b890164ae7cc67d60eb5e43ce321bbc8316f5fdcd
+	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v1.4.2/menyoki-1.4.2-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/menyoki/releases/download/v1.4.2/menyoki-1.4.2-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = d2fd2262f07b59f0429ea63f40bbacc005bf21b2958b19c3b6760afe2e3a48a82f4a05be73f6a2efa6d998abfbf956f78d23f06719bc7d9ce1152d9031ac2249
 	sha512sums_x86_64 = SKIP
 
 pkgname = menyoki-bin
