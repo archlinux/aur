@@ -1,4 +1,6 @@
-#Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+#!/bin/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+#Contributor : Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='fbx-sdk'
 pkgver=2020.1.1
