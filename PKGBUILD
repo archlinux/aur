@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-lspfuzzy-git
-pkgver=r56.76e215d
-pkgrel=1
+pkgver=r58.2f172ab
+pkgrel=2
 pkgdesc="A Neovim plugin to make the LSP client use fzf"
 arch=('any')
 url="https://github.com/ojroques/nvim-lspfuzzy"
 license=('BSD')
 groups=('neovim-plugins')
-depends=('neovim-git' 'fzf')
+depends=('neovim>=0.5.0' 'fzf')
 optdepends=('vim-fzf: for inline previews')
 makedepends=('git')
 provides=("${pkgname%-git}")

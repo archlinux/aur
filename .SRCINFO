@@ -1,14 +1,14 @@
 pkgbase = neovim-lspfuzzy-git
 	pkgdesc = A Neovim plugin to make the LSP client use fzf
-	pkgver = r56.76e215d
-	pkgrel = 1
+	pkgver = r58.2f172ab
+	pkgrel = 2
 	url = https://github.com/ojroques/nvim-lspfuzzy
 	install = neovim-lspfuzzy-git.install
 	arch = any
 	groups = neovim-plugins
 	license = BSD
 	makedepends = git
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	depends = fzf
 	optdepends = vim-fzf: for inline previews
 	provides = neovim-lspfuzzy
