@@ -8,7 +8,7 @@ REENABLE_DRAGDROP=0
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -35,6 +35,7 @@ depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
 # But to make people unable to install VLC official package with obs-studio-tytan652.
 # I decided to make vlc-luajit a dependency of OBS rather than an optional one.
 makedepends=("cmake" "git" "libfdk-aac" "swig" "luajit" "python"
+             "sndio"
              # AUR Packages
              "cef-minimal-obs=87.1.14")
 optdepends=(
@@ -44,6 +45,7 @@ optdepends=(
             "swig: Scripting"
             "luajit: Lua scripting"
             "python: Python scripting"
+            "sndio: Sndio input client"
             "v4l2loopback-dkms: Virtual camera output"
 )
 provides=("obs-studio=$pkgver")
