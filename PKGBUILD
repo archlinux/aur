@@ -61,7 +61,7 @@ _major=5.10
 pkgver=${_major}.47
 _branch=5.x
 xanmod=1
-pkgrel=${xanmod}
+pkgrel=2
 pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -85,10 +85,11 @@ validpgpkeys=(
 )
 
 # Archlinux patches
-_commit=""
-_patches=("")
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
 for _patch in ${_patches[@]}; do
-    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'

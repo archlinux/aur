@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-lts
 	pkgdesc = Linux Xanmod LTS
 	pkgver = 5.10.47
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
