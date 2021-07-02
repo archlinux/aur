@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.4.beta3.r0.ga60179ab6b
+pkgver=9.4.beta4.r0.g473cd41f19
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -41,14 +41,12 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-lrcalc2.patch
-        sagemath-eclib-20210310.patch)
+        sagemath-lrcalc2.patch)
 sha256sums=('SKIP'
             'c100a61c8dfade43bebc622a363abcb3d935a2f40958371ad87a9eb00689f8b0'
             '88e944f23c3b2391dc2e9f9be8e1131152d837dc8c829dfc714663869a272e81'
             'af984186f852d2847d770a18fb6822296c50a652dbf55a1ed59d27517c3d3ee4'
-            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
-            'e7b31f5e7ea88681c6eda41e5a74a2859a12dd128e75c00db3cfbd1d8ddf080d')
+            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9')
 
 pkgver() {
   cd sage
@@ -61,8 +59,6 @@ prepare(){
 # Upstream patches
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
   patch -p1 -i ../sagemath-lrcalc2.patch
-# Fix build with eclib 20210310 https://trac.sagemath.org/ticket/31443
-  patch -p1 -i ../sagemath-eclib-20210310.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
