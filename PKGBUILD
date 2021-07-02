@@ -1,14 +1,14 @@
 # Maintainer: Yamada Hayao <hayao@fascode.net>
 
 # Change this value if you want to lower the version.
-_pkgver="17"
+_pkgver="18"
 #_pkgver="13"
 
 _extname='desktop-icons-ng'
 pkgname="gnome-shell-extension-${_extname}"
 _uuid="ding@rastersoft.com"
 pkgver="0.${_pkgver}.0"
-_latest="17"
+_latest="18"
 pkgrel=1
 pkgdesc="A fork from the official desktop icons project, with several enhancements like Drag'n'Drop."
 arch=('x86_64' 'i686')
@@ -27,15 +27,15 @@ if [[ "${pkgver}" = "0.13.0" ]]; then
 elif [[ "${_pkgver}" = "${_latest}" ]]; then
 	source+=(
 		"${_extname}-${pkgver}.tar.gz::https://gitlab.com/rastersoft/${_extname}/-/archive/${pkgver}/${_extname}-${pkgver}.tar.gz"
-		#${_extname}-${pkgver}.tar.gz::"https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/0.14.0/desktop-icons-ng-0.15.0.tar.gz"
+		#${_extname}-${pkgver}.tar.gz::"https://gitlab.com/rastersoft/desktop-icons-ng/-/archive/0.18.0/desktop-icons-ng-0.18.0.tar.gz"
 	)
 	sha256sums+=(
-		# desktop-icons-ng-0.17.0.tar.gz
-		'f557703d61bf87d166d0587a52416faad523df16a4be3c3e386afc445a33cb6e'
+		# desktop-icons-ng-0.18.0.tar.gz
+		'da97d0b8127563f76a7a28743c1bab91a5a2f7da3b385eaf6b909ea5dfc7acb1'
 	)
 	sha512sums+=(
-		# desktop-icons-ng-0.17.0.tar.gz
-		'7445c3f688cc37950906fbff018026623342918344f05aac96c34ea1c7fbe78731f90b98070ebbe53b9ef1b47f6ad5c91a7afdde764396d3b220e3186fb05583'
+		# desktop-icons-ng-0.18.0.tar.gz
+		'4f694f1deff30c12daf9a55f0dbdeec38ca5af62740fa2c6f11e4c36543053114d60000ed0017a6877d0847ad35ca7a386214d8777e90dd8c9dd39cb33e3bb1e'
 	)
 else
 	source+=(
