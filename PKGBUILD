@@ -2,7 +2,7 @@
 
 pkgname=neovim-telescope-git
 pkgver=r598.c5a6ed1
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly extensible fuzzy finder for lists"
 arch=('any')
 url="https://github.com/nvim-telescope/telescope.nvim"
@@ -12,7 +12,7 @@ depends=('neovim>=0.5.0' 'neovim-plenary' 'neovim-popup')
 optdepends=('bat: for inline previews'
             'fd'
             'ripgrep'
-            'neovim-treesitter'
+            'neovim-tree-sitter'
             'vim-devicons')
 makedepends=('git')
 provides=("${pkgname%-git}")
