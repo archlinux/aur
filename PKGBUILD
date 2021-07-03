@@ -1,6 +1,6 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=hadolint
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Dockerfile linter, validate inline bash, written in Haskell'
 url='https://github.com/hadolint/hadolint/'
@@ -10,7 +10,7 @@ depends=('gmp')
 makedepends=('stack')
 conflicts=('hadolint-bin' 'hadolint-git')
 source=("https://github.com/hadolint/hadolint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0de36f1fa8f86183d51722cda142dd41039aab557b4e8d0bfc6f5fe265bf9fa1')
+sha256sums=('4001fa296cccf8366af773b33edb5d8131d375096c6bf593890164818dbc3e2d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
