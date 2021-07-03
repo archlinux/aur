@@ -1,0 +1,14 @@
+pkgbase = csky-tool-gx6605s
+	pkgdesc = C-Sky Tool gx6605s / 诛仙剑串口烧录 4MB SPI-FLASH 方法
+	pkgver = 832f4cc
+	pkgrel = 1
+	url = https://github.com/c-sky/tools/tree/master/gx6605s
+	arch = x86_64
+	license = unknow
+	makedepends = git
+	depends = bash
+	options = !strip
+	source = csky-tool-gx6605s::git+https://github.com/c-sky/tools.git
+	sha256sums = SKIP
+
+pkgname = csky-tool-gx6605s
