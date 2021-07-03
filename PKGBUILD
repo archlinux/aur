@@ -30,8 +30,8 @@ prepare() {
 
 package() {
 	cd "${srcdir}"
-    gunzip --force clash-linux-amd64-2021.05.08.gz
-	install -Dm 755 clash-linux-amd64-2021.05.08 "${pkgdir}"/usr/bin/clash
+    gunzip --force clash-linux-amd64-2021.07.03.gz
+	install -Dm 755 clash-linux-amd64-2021.07.03 "${pkgdir}"/usr/bin/clash
     install -Dm 644 ../config.yaml "${pkgdir}"/etc/clash/config.yaml
 	cd "${srcdir}"/clash-premium-installer/scripts
     install -Dm 644 clash-default "${pkgdir}"/etc/default/clash
