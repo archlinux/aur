@@ -2,7 +2,7 @@
 
 pkgname=amdgpud
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
@@ -28,6 +28,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 "target/release/amdfand" -t "$pkgdir/usr/bin/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 amdfand.service -t "$pkgdir/usr/lib/systemd/system/"
 	install -Dm644 "$srcdir/config.toml" -t "$pkgdir/etc/$pkgname/"
 }
