@@ -13,11 +13,11 @@ url="https://choam.eu/altgr-intl/#weur"
 license=('custom')
 depends=('xkeyboard-config' 'perl')
 install=${pkgname}.install
-source=("https://choam.eu/altgr-intl/${_pkgname}"
+source=("https://altgr-weur.eu/${_pkgname}"
         "${pkgname}.hook"
         "${pkgname}"
         )
-md5sums=('88583bd46333be954972888e042000fd'
+md5sums=('3d042fc8ffd894ebd698523b08fd93bf'
         '68322ffd940f7bec47dae3e4e392eb68'
         '480870a007350c6265fc4941614d14ce')
 
