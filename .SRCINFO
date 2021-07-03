@@ -1,13 +1,12 @@
 pkgbase = dwm-gnome
-	pkgdesc = Starts suckless dwm wrapped in a gnome session.
-	pkgver = 6.0
+	pkgdesc = Starts suckless DWM wrapped in a GNOME session.
+	pkgver = 7.2
 	pkgrel = 1
 	url = https://github.com/palopezv/dwm-gnome/
 	arch = any
 	license = MIT
 	depends = dwm
-	source = dwm-gnome-6.0.tar.gz::https://github.com/palopezv/dwm-gnome/archive/6.0.tar.gz
-	sha384sums = ff347c6f608b952229eb627976073fe973086af9346d913f35f2f68ccdc18ad10d4cd5cea441a61780f648fa7b99636e
+	source = dwm-gnome-7.2.tar.gz::https://github.com/palopezv/dwm-gnome/archive/7.2.tar.gz
+	b2sums = 5d63958879e1ead22b8feb5b8ea33fc02a7b2457533969f33c9d011a194cfe6b512c31b496accfa03f35e17bbca6060a7e9d3b215116867ae16f39e695efa96b
 
 pkgname = dwm-gnome
-
