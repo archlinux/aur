@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Game engine for building and playing online adaptations of board games and card games.
+Terminal=false
+Name=Vassal
+Exec=/usr/bin/vassal
+Type=Application
+Icon=/usr/share/java/vassal/images/VASSAL-256x256.png
