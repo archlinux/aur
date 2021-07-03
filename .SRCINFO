@@ -1,10 +1,11 @@
 pkgbase = amdgpud-bin
 	pkgdesc = Fan control service for AMD GPUs
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eraden/amdgpud
 	arch = x86_64
-	license = unknown
+	license = Apache
+	license = MIT
 	depends = gcc-libs
 	provides = amdgpud
 	conflicts = amdgpud

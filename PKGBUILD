@@ -3,11 +3,11 @@
 pkgname=amdgpud-bin
 _name=${pkgname%-bin}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
-license=('unknown')
+license=('Apache' 'MIT')
 depends=('gcc-libs')
 provides=("$_name")
 conflicts=("$_name")
@@ -23,6 +23,7 @@ sha256sums=('13ce8fccef964641f7285a13fdc77ef343ca1683930de9ffd7beac829c4c64c3'
 
 package() {
 	install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/amdfand"
+	# install -Dm644 LICENSE.APACHE2.md LICENSE.MIT.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "$pkgname-$pkgver.service" "$pkgdir/usr/lib/systemd/system/amdfand.service"
 	install -Dm644 config.toml -t "$pkgdir/etc/$_name/"
