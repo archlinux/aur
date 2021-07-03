@@ -2,13 +2,13 @@
 
 pkgname=neovim-lightbulb-git
 pkgver=r22.388cc8c
-pkgrel=1
+pkgrel=2
 pkgdesc="VSCode bulb for neovim's built-in LSP"
 arch=('any')
 url="https://github.com/kosayoda/nvim-lightbulb"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

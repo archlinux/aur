@@ -1,14 +1,14 @@
 pkgbase = neovim-lightbulb-git
 	pkgdesc = VSCode bulb for neovim's built-in LSP
 	pkgver = r22.388cc8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kosayoda/nvim-lightbulb
 	install = neovim-lightbulb-git.install
 	arch = any
 	groups = neovim-plugins
 	license = MIT
 	makedepends = git
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	provides = neovim-lightbulb
 	conflicts = neovim-lightbulb
 	source = neovim-lightbulb-git::git+https://github.com/kosayoda/nvim-lightbulb
