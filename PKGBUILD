@@ -2,8 +2,8 @@
 
 pkgname=python-mypy-ls
 _name=${pkgname#python-}
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Mypy plugin for the Python LSP Server.'
 url='https://github.com/Richardk2n/mypy-ls'
 arch=('any')
@@ -25,5 +25,5 @@ package() {
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('b1071dd451d44d4fdcbc6112689d5b7c5e5d6804370a2a7b5e2e67cc0fa5affb'
+sha256sums=('e3f1b5d76efc1136440c10dc61fe601f75f753525632898d0ca35fdea1388f76'
             '91617fa80085a3c75ffc9070b831012595be53fd9b11f381b4c1ab9d91584149')
