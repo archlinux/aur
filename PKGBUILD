@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=onefetch-git
-pkgver=2.9.1.r36.g01a5ee9
+pkgver=2.10.2.r0.g0064edc
 pkgrel=1
 pkgdesc="Git repository summary on your terminal (git)"
 arch=('x86_64')
