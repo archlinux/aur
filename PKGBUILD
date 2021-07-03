@@ -95,6 +95,7 @@ source=(
   0007-x86-crash-remove-crash_reserve_low_1M.patch
   "0008-UKSM.patch::${_patchsource}/0008-UKSM.patch"
   "0009-CJKTTY.patch::${_patchsource}/0009-CJKTTY.patch"
+  "0010-fixes-miscellaneous.patch::${_patchsource}/0010-fixes-miscellaneous.patch"
   "0010-bbr2.patch::${_patchsource}/0010-bbr2-5.12-introduce-BBRv2.patch"
   "0011-bfq.patch::${_patchsource}/0011-bfq-patches.patch"
   "0012-block.patch::${_patchsource}/0012-block-patches.patch"
@@ -120,6 +121,7 @@ b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318
         'ed1dc0f7e4f97969185de71b8f26c321359e06855d3c3b2ac3fccf2d1cdae121feb70fc5a6546c63d2ca0ce3ef21d510a40e4077262715d53165a1b236119788'
         '62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429'
         '1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4'
+        'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
         'a98463b538629f58c1207f56df595ddc92417ed09ea1192f6258acab8ae6f0e16e34af4d430bf9f1c7b030466952223c393bdd027139385f22b046583dbabf1c'
         '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
