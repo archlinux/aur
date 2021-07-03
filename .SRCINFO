@@ -20,6 +20,6 @@ pkgbase = bfetch
 	optdepends = xorg-xprop: Desktop Environment and Window Manager
 	optdepends = xorg-xrandr: Resolution detection [Multi Monitor + Refresh rates]
 	source = bfetch-2021.07.03.tar.gz::https://github.com/The-Repo-Club/bfetch/archive/2021.07.03.tar.gz
-	sha256sums = 00c8c5c437a287b3e7fecfccaba7ce5102b37af455afe55c40a7ce7b37909880
+	sha256sums = bbb6d5fcf5588e8bc56a6ea351d3a2efe5fde17844d78c90b4aa0bd9ef1cbd74
 
 pkgname = bfetch

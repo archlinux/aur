@@ -25,7 +25,7 @@ optdepends=(
   'xorg-xrandr: Resolution detection [Multi Monitor + Refresh rates]'
 )
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('00c8c5c437a287b3e7fecfccaba7ce5102b37af455afe55c40a7ce7b37909880')
+sha256sums=('bbb6d5fcf5588e8bc56a6ea351d3a2efe5fde17844d78c90b4aa0bd9ef1cbd74')
 
 package() {
   cd "$pkgname-$pkgver"
