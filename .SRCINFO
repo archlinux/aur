@@ -1,16 +1,16 @@
 pkgbase = libexosip2
 	pkgdesc = A library that hides the complexity of using SIP for multimedia session establishement
-	pkgver = 5.1.0
+	pkgver = 5.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://savannah.nongnu.org/projects/exosip/
 	arch = x86_64
 	arch = i686
 	license = GPL
-	depends = libosip2>=5.1.0
+	depends = libosip2>=5.2.1
 	depends = openssl
-	source = https://download.savannah.gnu.org/releases/exosip/libexosip2-5.1.0.tar.gz
-	sha256sums = 41107e5bd6dca50899b7381f7f68bfd9ae8df584c534c8a4c9ca668b66a88a4b
+	source = https://download.savannah.gnu.org/releases/exosip/libexosip2-5.2.1.tar.gz
+	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
+	sha256sums = 87256b45a406f3c038e1e75e31372d526820366527c2af3bb89329bafd87ec42
 
 pkgname = libexosip2
-
