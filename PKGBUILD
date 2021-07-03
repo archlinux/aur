@@ -1,8 +1,8 @@
-# Maintainer: 0x715C <https://www.t.me/hex715C>
+# Maintainer: 0x715C
 
 pkgname=alda-bin
 _pkgname=alda
-pkgver=1.4.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
@@ -11,12 +11,17 @@ license=('EPL')
 provides=('alda')
 conflicts=('alda')
 options=('!strip')
-source=("https://github.com/$_pkgname-lang/$_pkgname/releases/download/$pkgver/$_pkgname")
-sha256sums=('cc8abc7284a1e01f551ab8b19107e1c922bbaa19451b6a7b3b4b2ebdb89270a6')
-noextract=('alda')
+source=("https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/client/linux-amd64/${_pkgname}"
+        "https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/player/non-windows/${_pkgname}-player")
+sha256sums=('550d3608372278a34864f7c4ed97d063d06393ea93d3f183bd86a528c873b563'
+            '904fad363f79b84d84b2046737b2c2cc8fe53877ea07e28cdb7afa8d08273d52')
+noextract=('alda'
+           'alda-player')
 
 package() {
   cd "$srcdir"
   install -Dm755 alda \
     "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 alda-player \
+    "${pkgdir}/usr/bin/${_pkgname}-player"
 }
