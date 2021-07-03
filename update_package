@@ -1,0 +1,23 @@
+#!/bin/sh
+
+current=`cat current_version`
+echo ":: Getting latest version..." >/dev/stderr
+latest=`basename $(curl -Ls -o /dev/null -w %{url_effective} https://github.com/neovim/neovim/releases/latest) | cut -c2-`
+
+if [ "$current" = "$latest" ] && [ "$1" != "-f" ]; then
+  echo ":: Current v$current is Latest, no update required" >/dev/stderr
+  exit 1
+fi
+
+echo ":: Update required from v$current to v$latest"
+echo ":: Downloading latest nvim archive..."
+curl "https://github.com/neovim/neovim/releases/download/v$latest/nvim-linux64.tar.gz" -Lo neovim-bin-v$latest.tar.gz
+
+echo ":: Writing current version and sha512sum..."
+echo "$latest" > current_version
+sha512sum "neovim-bin-v$latest.tar.gz" | cut -d' ' -f1 > nvim_sha512sum
+
+echo ":: Writing .SRCINFO file..."
+makepkg --printsrcinfo > .SRCINFO
+
+echo ":: Done"

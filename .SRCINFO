@@ -1,0 +1,22 @@
+pkgbase = neovim-bin
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs - Latest Stable Release.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://neovim.io
+	install = neovim.install
+	arch = x86_64
+	license = custom:neovim
+	optdepends = python2-neovim: for Python 2 plugin support, see :help python
+	optdepends = python-neovim: for Python 3 plugin support, see :help python
+	optdepends = xclip: for clipboard support, see :help clipboard
+	optdepends = xsel: for clipboard support, see :help clipboard
+	provides = neovim=0.5.0
+	provides = vim-plugin-runtime
+	conflicts = neovim
+	conflicts = neovim-git
+	conflicts = neovim-nightly-bin
+	backup = etc/xdg/nvim/sysinit.vim
+	source = neovim-bin-v0.5.0.tar.gz::https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
+	sha512sums = d8b8b85a7fa042239838123b141cb1ce4148b8eb9e053763beae6b83e39e39ed807f536344ae79458fc146b221c3d83089c341b67b804f26e1ac5bd78d3cd82e
+
+pkgname = neovim-bin
