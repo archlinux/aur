@@ -1,16 +1,15 @@
 pkgbase = python-bullet
 	pkgdesc = Extensive support for Python list prompts formatting and colors.
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://pypi.org/project/bullet
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/bullet/bullet-2.1.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/bullet/bullet-2.2.0.tar.gz
 	source = https://raw.githubusercontent.com/Mckinsey666/bullet/master/LICENSE
-	md5sums = 1e00a4b2ad82cd9fab651c56764706fc
-	md5sums = SKIP
+	sha512sums = 03782766ec7e70a32c43f337dca7964cdadc40da4442cdd2522354f9427763ef55cc3ceb4b3cb5a0cc18d5befab946eb7bddc05c3585773a13753afb3bdd7430
+	sha512sums = SKIP
 
 pkgname = python-bullet
-
