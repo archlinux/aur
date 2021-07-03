@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=chad_launcher
+Icon=chad_launcher
+Terminal=false
+Categories=Game;Application;
+Name=Chad Launcher
+Comment=GNU/LINUX GAMING UNLEASHED!
+StartupNotify=true
