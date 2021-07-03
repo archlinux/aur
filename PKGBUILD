@@ -1,7 +1,7 @@
 # Maintainer: WeepingDogel <sydghbsdfyghsdy456@gmail.com>
 
 pkgname=titlegetter
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A little tool to get the title of the websites and format the title and the links to markdown or html.'
 url='https://github.com/WeepingDogel/TitleGetter'
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('python>=3.6' 'python-requests' 'python-lxml' 'python-beautifulsoup4' 'python-toml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('e757701d5d57a563f2ee56dbfd68c9772fc1d81481467872cb98ec25a7dcfa576f4e7e335dd311cafe4e377dc09f3ef5963c5ee6e713dba3fb868bc3dddcf98c')
+sha512sums=('ad3aa998a4c48bd0f313e0eedaeefaffa46f6b4db2241eeec82b287bcc310dea4ef04bbed86ecab1841ec6af460da595c7acfaf3d11ef1bac34a4a4f8a4ef5ce')
 package(){
     cd TitleGetter-$pkgver
     install -Dm755 "titlegetter.py" -t "$pkgdir/usr/bin"
