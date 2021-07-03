@@ -116,7 +116,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '10deb2ce58d84b408c112d2c46f2ddb41e1d79e65fe2efbd5d1727b026bb4a3ae1cb7dd6c1361dc79cf308006383a1fc706dba59d5b277e87468a391c039eb55')
+            '5f370e28b9348b30021949a895e8bcf723cefc40d26c9095e5d818f826532394360ed00d4af33f66d0aa84ad48eccaac2942739a848d13bc1a0bbd774d93e6de')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
