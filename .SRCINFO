@@ -6,11 +6,9 @@ pkgbase = librewolf-extension-xdm-browser-monitor
 	arch = any
 	groups = librewolf-addons
 	license = GPLV3
-	depends = librewolf
 	depends = xdman
 	noextract = extension.xpi
 	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3710348/xdm_browser_monitor-2.2-fx.xpi
 	sha512sums = SKIP
 
 pkgname = librewolf-extension-xdm-browser-monitor
-
