@@ -12,7 +12,7 @@ install=nuclear-player-bin.install
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' )
 source=(
-    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-${pkgver}.deb
+    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-v${pkgver}.deb
     nuclear.desktop
 )
 md5sums=('bfdeba5302075264af4bfd485be8867b'
