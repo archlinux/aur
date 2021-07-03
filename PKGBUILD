@@ -1,13 +1,13 @@
-# Maintainer: Sam Mulvey <archlinux at sammulvey.com>
+# Maintainer: Christopher Arndt <aur -at- chrisarndt -dot de>
+# Contributor: Sam Mulvey <archlinux at sammulvey.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Ganjolinux aka Basalari David <ganjolinux@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: B3l3tte <ouack23 at yahoo.fr>
-# Contributor: Christopher Arndt <aur -at- chrisarndt -dot de>
 
 pkgname=darkice
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Live audio streamer. Reads from audio interface, encodes, sends to streaming server."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.darkice.org/"
@@ -22,6 +22,7 @@ sha256sums=('e6a8ec2b447cf5b4ffaf9b62700502b6bdacebf00b476f4e9bf9f9fe1e3dd817'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  export CXXFLAGS="$CXXFLAGS -std=c++11"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

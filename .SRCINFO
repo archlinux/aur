@@ -1,7 +1,7 @@
 pkgbase = darkice
 	pkgdesc = Live audio streamer. Reads from audio interface, encodes, sends to streaming server.
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.darkice.org/
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = darkice
 	sha256sums = c5d05b1c3c352eda9591064f041fcd502d3b0a4cfcc6319dc4ae9b6d71136e4b
 
 pkgname = darkice
-
