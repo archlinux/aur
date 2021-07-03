@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-editor-sandsmark-git
 	pkgdesc = Editor for VapourSynth scripts, sandsmark's fork with vim support and other niceties
-	pkgver = r19.60.g503820d
+	pkgver = r19.74.g4e3f161
 	pkgrel = 1
 	url = https://github.com/sandsmark/vapoursynth-editor
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = vapoursynth-editor-sandsmark-git
 	sha256sums = bc6443a2dfa48ee1e2156039be2195074dfd4a02f5f1696f8406c715a1b19ccf
 
 pkgname = vapoursynth-editor-sandsmark-git
-

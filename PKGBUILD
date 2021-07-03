@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-sandsmark-git
-pkgver=r19.60.g503820d
+pkgver=r19.74.g4e3f161
 pkgrel=1
 pkgdesc="Editor for VapourSynth scripts, sandsmark's fork with vim support and other niceties"
 arch=('x86_64')
@@ -48,5 +48,5 @@ package() {
   cd ../vapoursynth-editor
   install -Dm644 resources/vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README "${pkgdir}/usr/share/doc/vsedit/README"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vsedit/README"
 }
