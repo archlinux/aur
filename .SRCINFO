@@ -1,6 +1,6 @@
 pkgbase = megapixels
-	pkgdesc = GTK3 camera application that knows how to deal with the media request api
-	pkgver = 1.0.1
+	pkgdesc = GTK4 camera application that knows how to deal with the media request api
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://git.sr.ht/~martijnbraam/megapixels
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = megapixels
 	makedepends = meson
 	depends = gtk4
 	depends = zbar
-	source = megapixels-1.0.1::https://git.sr.ht/~martijnbraam/megapixels/archive/1.0.1.tar.gz
-	sha256sums = 4d0dcbce3a80ab800ca79524e814156fe1ceeb8196262c312861f208b9ca802f
+	source = megapixels-1.1.0::https://git.sr.ht/~martijnbraam/megapixels/archive/1.1.0.tar.gz
+	source = file://0000-patch-build-gschemas.patch
+	sha256sums = 1434d03663d2a5c5214ae9bb121a89299e582ea0410c8897805ea136345bfaf1
+	sha256sums = 1357a3218c7aa739eb2a1583fec09065cc0783cde59edff77aa4d3f57ba2f24b
 
 pkgname = megapixels
-
