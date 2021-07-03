@@ -1,14 +1,14 @@
 pkgbase = neovim-moonlight-git
 	pkgdesc = A Lua port of VSCode's Moonlight colorscheme with builtin support for other plugins
 	pkgver = r164.e24e421
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shaunsingh/moonlight.nvim
 	install = neovim-moonlight-git.install
 	arch = any
 	groups = neovim-plugins
 	license = GPL
 	makedepends = git
-	depends = neovim-git
+	depends = neovim>=0.5.0
 	provides = neovim-moonlight
 	provides = neovim-lualine-moonlight
 	conflicts = neovim-moonlight

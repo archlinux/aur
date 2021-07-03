@@ -2,13 +2,13 @@
 
 pkgname=neovim-moonlight-git
 pkgver=r164.e24e421
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lua port of VSCode's Moonlight colorscheme with builtin support for other plugins"
 arch=('any')
 url="https://github.com/shaunsingh/moonlight.nvim"
 license=('GPL')
 groups=('neovim-plugins')
-depends=('neovim-git')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}" 'neovim-lualine-moonlight')
 conflicts=("${pkgname%-git}" 'neovim-lualine-moonlight')
