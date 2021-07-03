@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-stack-bin
-pkgver=2021.1.3
+pkgver=2021.2.3
 pkgrel=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=intel-media-stack-bin.install
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${pkgver:2}/MediaStack.tar.gz"
         '010-intel-media-stack-bin-fix-install.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a99197dcc57cbbc34863141ace5aaa5bf6da604bbe41176a0582ac834cf6e585'
+sha256sums=('230ce1418677c4bf9162d98c434aca3cf802d2ad4eb6a2a549488b3353d99a0d'
             '500c2236c71812ca816dbc0752fa5038b41fc73a71c8d1d6684ea770f8918f74')
 
 prepare() {

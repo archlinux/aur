@@ -1,6 +1,6 @@
 pkgbase = intel-media-stack-bin
 	pkgdesc = Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)
-	pkgver = 2021.1.3
+	pkgver = 2021.2.3
 	pkgrel = 1
 	url = https://github.com/Intel-Media-SDK/MediaSDK/
 	install = intel-media-stack-bin.install
@@ -25,13 +25,12 @@ pkgbase = intel-media-stack-bin
 	provides = intel-media-driver
 	provides = libva
 	provides = libva-utils
-	noextract = intel-media-stack-bin-2021.1.3.tar.gz
+	noextract = intel-media-stack-bin-2021.2.3.tar.gz
 	options = !strip
 	options = !emptydirs
-	source = intel-media-stack-bin-2021.1.3.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-21.1.3/MediaStack.tar.gz
+	source = intel-media-stack-bin-2021.2.3.tar.gz::https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-21.2.3/MediaStack.tar.gz
 	source = 010-intel-media-stack-bin-fix-install.patch
-	sha256sums = a99197dcc57cbbc34863141ace5aaa5bf6da604bbe41176a0582ac834cf6e585
+	sha256sums = 230ce1418677c4bf9162d98c434aca3cf802d2ad4eb6a2a549488b3353d99a0d
 	sha256sums = 500c2236c71812ca816dbc0752fa5038b41fc73a71c8d1d6684ea770f8918f74
 
 pkgname = intel-media-stack-bin
-
