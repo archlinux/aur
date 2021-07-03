@@ -1,0 +1,22 @@
+pkgbase = skesa
+	pkgdesc = A de-novo sequence read assembler and a de Bruijn graph based target enriched de-novo assembler.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/ncbi/SKESA
+	arch = x86_64
+	license = custom
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = boost
+	makedepends = make
+	makedepends = sed
+	makedepends = gcc-libs
+	makedepends = zlib
+	provides = skesa=2.4.0
+	provides = saute=1.3.0
+	provides = gfa_connector=1.1.0
+	provides = kmercounter=2.2.0
+	source = https://github.com/ncbi/SKESA/archive/refs/tags/skesa.2.4.0_saute.1.3.0_1.tar.gz
+	b2sums = 08b0477670a3e7751f598e903eb227e766bce91ba2e44cca1b8accbc7abff7191b3f9117e639d48f4d99c86bee3773385c25767bd755dae14d4186e8cfc264bf
+
+pkgname = skesa
