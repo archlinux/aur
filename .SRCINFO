@@ -1,6 +1,6 @@
 pkgbase = ncmpvc-git
 	pkgdesc = Ncurses IPC client for mpv written in Rust
-	pkgver = 0.0.1.r7.766df40
+	pkgver = 0.0.1.r26.35bab73
 	pkgrel = 1
 	url = https://gitlab.com/mpv-ipc/ncmpvc
 	install = ncmpvc-git.install

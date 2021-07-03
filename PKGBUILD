@@ -2,7 +2,7 @@
 # Contributor: Jonas Frei <freijon@gmail.com>
 
 pkgname=ncmpvc-git
-pkgver=0.0.1.r7.766df40
+pkgver=0.0.1.r26.35bab73
 pkgrel=1
 pkgdesc="Ncurses IPC client for mpv written in Rust"
 arch=('x86_64')
@@ -10,14 +10,15 @@ url="https://gitlab.com/mpv-ipc/ncmpvc"
 license=('MIT')
 depends=('mpv' 'ncurses')
 makedepends=('cargo')
-provides=("${pkgname%-git}")                                                                                                                                                                                         
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  printf "%s.r%s.%s" "$(sed -n 's/^version = "\(.*\)"/\1/p' $pkgname/Cargo.toml)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname
+  printf "%s.r%s.%s" "$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
