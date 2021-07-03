@@ -1,15 +1,15 @@
 # Contributor: Médéric Boquien <mboquien@free.fr>
 
 pkgname=python-pyregion
-pkgver=2.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="A python module to parse ds9 and ciao region files"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pyregion"
 license=("MIT")
 depends=('python' 'python-numpy>=1.3')
 source=("https://files.pythonhosted.org/packages/source/p/pyregion/pyregion-${pkgver}.tar.gz")
-sha512sums=('5fce3ae7f461c5b73cf847bbe7576054e39d7dd8cbff9ff5fda9b389becd49478ed7287cd03d40fec41b19b2888a7992ebd09e3d7560a392ad30bec0f4eb00d4')
+sha512sums=('ae62218f3059c46bda2d168843004025a39af6f335be5ffb618a9eecfa27430eba185d619e988bfdb95bdddf84f4de07a45bd83e641a1f2792e36c039d165a58')
 
 build() {
   cd ${srcdir}/pyregion-${pkgver}
