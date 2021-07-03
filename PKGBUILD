@@ -99,9 +99,7 @@ source=(
   "0010-bbr2.patch::${_patchsource}/0010-bbr2-5.12-introduce-BBRv2.patch"
   "0011-bfq.patch::${_patchsource}/0011-bfq-patches.patch"
   "0012-block.patch::${_patchsource}/0012-block-patches.patch"
-  "0013-futex-resync-from-gitlab.collabora.com.patch::${_patchsource}/0013-futex-resync-from-gitlab.collabora.com.patch"
-  "0014-futex2-resync-from-gitlab.collabora.com.patch::${_patchsource}/0014-futex2-resync-from-gitlab.collabora.com.patch"
-  "0015-lru-patches.patch::${_patchsource}/00015-lru-patches.patch"
+  "0013-lru-patches.patch::${_patchsource}/0013-lru-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -125,8 +123,6 @@ b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318
         '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
         'a98463b538629f58c1207f56df595ddc92417ed09ea1192f6258acab8ae6f0e16e34af4d430bf9f1c7b030466952223c393bdd027139385f22b046583dbabf1c'
         '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
-        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
-        '098f2c30c7610d777455f1771d458e5c716260eab4c201814ca10e888f116ff2c8570d01d5bc767acb01f695769e1ff2fd8758d3e90dbfaa828381c180a89962'
         '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9')
 
 export KBUILD_BUILD_HOST=archlinux
