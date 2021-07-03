@@ -1,13 +1,13 @@
 # Maintainer: lmartinez-mirror
 pkgname=neovim-neoscroll-git
-pkgver=r54.da41993
-pkgrel=1
+pkgver=r91.efc7159
+pkgrel=2
 pkgdesc="Smooth scrolling neovim plugin written in Lua"
 arch=('any')
 url="https://github.com/karb94/neoscroll.nvim"
 license=('MIT')
-groups=('vim-plugins')
-depends=('neovim-git')
+groups=('neovim-plugins')
+depends=('neovim>=0.5.0')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
