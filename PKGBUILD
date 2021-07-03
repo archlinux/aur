@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r331.gaedcfcdf'
+pkgver='5.6.0.beta.5.r353.g20525927'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -25,8 +25,8 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '36c9e0f631f3164f192cfcef294b9411509d8536a8b7e5fdb31b6d118a7b433e'
-            '20be35a9fcc5feeaaa5497f8381958b11d4bf94f3e98b44f39743c1ad7adfa93')
+            '401899b572e6d91e9407c8ee28b2c3fe26d8becc0cde46e034eef50b5c3325db'
+            '70b34d0efd910d3641fb7a28a5ad30685a9b40bf9d32bb56596c8f283e9b03d9')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -61,8 +61,7 @@ prepare() {
 	# Set system nodejs version for compatibility
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
 
-	# Set node-sass and gulp-sass versions for node 16 compatibility
-	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
+	# Set gulp-sass version for node 16 compatibility
 	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode

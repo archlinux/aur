@@ -1,5 +1,5 @@
 diff --git a/gulpfile.babel.js b/gulpfile.babel.js
-index 9a04732b..dc085128 100644
+index 9a04732b..79671516 100644
 --- a/gulpfile.babel.js
 +++ b/gulpfile.babel.js
 @@ -2,7 +2,8 @@
@@ -8,7 +8,7 @@ index 9a04732b..dc085128 100644
  import babel from 'gulp-babel';
 -import sass from 'gulp-sass';
 +import gulpSass from 'gulp-sass';
-+import nodeSass from 'node-sass';
++import dartSass from 'sass';
  import csso from 'gulp-csso';
  import terser from 'terser';
  import composer from 'gulp-uglify/composer';
@@ -16,7 +16,7 @@ index 9a04732b..dc085128 100644
  
  dotenv.config();
  
-+const sass = gulpSass(nodeSass);
++const sass = gulpSass(dartSass);
 +
  const uglify = composer(terser, console);
  
