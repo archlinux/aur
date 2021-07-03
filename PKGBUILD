@@ -16,4 +16,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
-cksums=('655427593')
+sha256sums=('86b2dfd20578233293f59a82ed53ddec7dbaa3cef611ecfd2d158b40a5d991d3')
