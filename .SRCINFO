@@ -1,6 +1,6 @@
 pkgbase = pianoteq-standard-trial-bin
 	pkgdesc = Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STANDARD trial version
-	pkgver = 7.3.0
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = https://www.modartt.com/pianoteq
 	arch = x86_64
@@ -17,10 +17,9 @@ pkgbase = pianoteq-standard-trial-bin
 	provides = pianoteq-standard-trial
 	conflicts = pianoteq-standard-trial
 	conflicts = pianoteq-standard-bin
-	source = local://pianoteq_linux_trial_v730.7z
+	source = local://pianoteq_linux_trial_v740.7z
 	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
-	sha256sums = cde4671cd1957a45c9892513d70d732997744d7462dc21dd347ef85161215013
+	sha256sums = 15cdaf00fd271a7c83ef7ef784960098bc3c6abf72a82d830b956e81738f651a
 	sha256sums = 94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3
 
 pkgname = pianoteq-standard-trial-bin
-
