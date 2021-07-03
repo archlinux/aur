@@ -1,14 +1,14 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r866.496f714
+pkgver=r867.611d22b
 pkgrel=1
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, soundcloud, nyaa.si, 4chan, matrix, saucenao and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
 makedepends=('sibs')
-depends=('sfml' 'libx11' 'jsoncpp' 'tidy' 'curl' 'mpv' 'imagemagick' 'libglvnd' 'libxrandr' 'noto-fonts')
+depends=('sfml' 'libx11' 'jsoncpp' 'curl' 'mpv' 'imagemagick' 'libglvnd' 'libxrandr' 'noto-fonts')
 optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
@@ -20,8 +20,8 @@ optdepends=(
 )
 provides=('quickmedia')
 conflicts=('quickmedia')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r866.496f714.tar.gz")
-sha512sums=('6e90bee1a5ed309bfe853e7d0c837186bfca9cac290d459ebc27223848b020fd25258af88e1fd705a15fab4d7c525fd901a31ea86efe1c15e20915c0c1ade3e4')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r867.611d22b.tar.gz")
+sha512sums=('206519f73ac5e7279c977d909d0a97c070def146f7011b75ba3231f8691fd324a7e7f42b4d60e59d0bffeb9f144ef899cb143c7d9f60c168a65e33020063fb90')
 
 build() {
   cd "$srcdir"
