@@ -1,6 +1,6 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-qurancomplex-fonts
-pkgver=20210408
+pkgver=20210608
 pkgrel=1
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
@@ -9,6 +9,7 @@ license=('custom')
 source=(https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2018/10/Basmalah-Ver01.zip
 	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2018/n-06/HafsNastaleeq%20Ver10.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/03/KFGQPC_AnLight.zip
+	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/06/KFGQPC_AnRegular.zip
 	https://fonts.qurancomplex.gov.sa/wp-content/uploads/2014/07/KFGQPC-Dot-Font.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/03/KSAExtra.zip
 	https://fonts.qurancomplex.gov.sa/wp02/wp-content/uploads/2021/04/KSAHeading.zip
@@ -31,6 +32,7 @@ sha256sums=(
 	'e696b4e60ba24e921954ad15d7209d0322641f0e52d956b3e8606ea5b3501c77'
 	'56543ae78f1792b6b8911ba57dd70fb542a311ac0339b1f85563ff446d021442'
 	'f3b1edf90a55d8224b689f08d9870e3099079bb5be2a6d7dd66d0234a2509e5c'
+	'6011e43b56bf3eff45d6bc6bfe8f17b6049ffe639225a635ded818856c3c8558'
 	'7c54efa8de84c31c4a561f19148965b72624a1d87e74eb922220acc8ea5e9f7a'
 	'1d9ac6523cfc641ed7b1107036ad2739717a974facd36b2324fe57797cc0b266'
 	'10b7368779a7d5b0e16bfd4545fe39277bf3c8f84d890180fe3e5191e14df1f6'
