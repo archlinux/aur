@@ -1,11 +1,11 @@
 pkgname=nullfs-dkms-git
-pkgver=0.6.r0.gdb73ba4
+pkgver=0.8.r0.g8b4e32e
 pkgrel=1
 pkgdesc='A virtual black hole file system that behaves like /dev/null (DKMS)'
 arch=('x86_64')
 url='https://github.com/abbbi/nullfsvfs'
 license=('GPL2')
-depends=('dkms' 'linux-headers')
+depends=('dkms')
 makedepends=('git')
 conflicts=('nullfs-dkms')
 provides=('nullfs')
