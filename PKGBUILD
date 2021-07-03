@@ -2,7 +2,7 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
-pkgver=v1.2.0.r124.g8dbf054
+pkgver=1.2.0.r124.g8dbf054
 pkgrel=3
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
@@ -23,13 +23,7 @@ sha256sums=('SKIP'
             'c0b27a97791951beafdc98fc7fc4580092a318aa49aef56bd338ed490cc7b574')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-  cd $pkgname
-  python setup.py build_trans
+  git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -37,6 +31,6 @@ package() {
 
   cd $pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py build_trans install --root="$pkgdir" --optimize=1
 }
 
