@@ -2,19 +2,17 @@
 
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="AMDGPU Fan control service"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 _source=(
-  "https://github.com/Eraden/amdgpud/releases/download/${pkgver}/amdfand"
-  "https://raw.githubusercontent.com/Eraden/amdgpud/main/amdfand.service"
+  "https://github.com/Eraden/amdgpud/releases/download/${pkgver}/build.tar.gz"
 )
 arch=('x86_64')
 _md5sums=(
-    '40faa72356d0df3d03553340fc0fc36e'
-    '65cb5fbf83422943ab421e36ebd96345'
+    'bc36142d52d8132e31a94a5ee3833976'
 )
 depends=(
 )
@@ -31,7 +29,7 @@ prepare() {
         source_filename=${source_url##*/}
         if [ ! -f "$source_filename" ]; then
             echo "Downloading next source - $source_filename ..."
-            curl -A DUMMY -O "$source_url";
+            curl -O -L "$source_url";
         else
             echo "Found already downloaded source - $source_filename"
         fi
@@ -52,6 +50,7 @@ prepare() {
 
 build() {
     cd $srcdir/
+    tar -xvf $srcdir/build.tar.gz
 }
 
 package() {
