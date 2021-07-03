@@ -1,8 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=typescript-language-server-git
-pkgver=0.5.1.r0.g3a8ea0f
-pkgrel=3
+pkgver=0.5.4.r2.gf2da98f
+pkgrel=1
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
 arch=('any')
@@ -42,7 +42,7 @@ package() {
   mv package.json{.bak,}
 
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
-  ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/$pkgname
+  ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/${pkgname%-git}
   chmod +x server/lib/cli.js
   cp -r server/lib node_modules package.json \
     "$pkgdir"/usr/lib/node_modules/$pkgname
