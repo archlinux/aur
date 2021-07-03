@@ -233,6 +233,7 @@ int main(int argc, char **argv){
 				draw();
 				char confirm_complete = getch();
 				sprintf(statusbar, "%s", statusbar_backup);
+				free(statusbar_backup);
 				draw();
 				if(confirm_complete != 'y')
 					break;
@@ -257,6 +258,7 @@ int main(int argc, char **argv){
 				draw();
 				char confirm_quit = getch();
 				sprintf(statusbar, "%s", statusbar_backup);
+				free(statusbar_backup);
 				draw();
 				if(confirm_quit != 'y')
 					break;
