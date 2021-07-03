@@ -2,13 +2,13 @@
 
 pkgname=kool
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kool makes using Docker for local development easier, simpler, faster, and better"
 arch=(x86_64 armv6h armv7h)
 url=https://kool.dev
 license=('MIT')
 provides=(kool)
-require=(docker-compose)
+depends=(docker-compose)
 options=('!emptydirs' '!strip')
 
 source=("kool-$pkgver-x86_64::https://github.com/kool-dev/kool/releases/download/$pkgver/kool-linux-amd64")
@@ -23,4 +23,10 @@ package() {
 	cd $srcdir
 
 	install -Dm755 kool-$pkgver-$arch $pkgdir/usr/bin/kool
+
+	install -dm755 $pkgdir/usr/share/bash-completion/completions
+	$pkgdir/usr/bin/kool completion bash >$pkgdir/usr/share/bash-completion/completions/kool
+
+	install -dm755 $pkgdir/usr/share/zsh/site-functions
+	$pkgdir/usr/bin/kool completion zsh >$pkgdir/usr/share/zsh/site-functions/_kool
 }
