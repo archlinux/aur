@@ -4,9 +4,9 @@
 
 pkgname=python-simpleaudio
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple audio playback Python extension'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/hamiltron/py-simple-audio/'
 license=('MIT')
 depends=('alsa-lib' 'python')
@@ -29,3 +29,4 @@ package() {
     PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --optimize='1' --skip-build
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+# vim:set ts=2 sw=2 et:
