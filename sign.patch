@@ -1,0 +1,14 @@
+diff --unified --recursive --text specter-desktop-1.4.6/src/cryptoadvance/specter/templates/wallet/send/sign/wallet_send_sign_psbt.jinja specter-desktop-1.4.6/src/cryptoadvance/specter/templates/wallet/send/sign/wallet_send_sign_psbt.jinja
+--- specter-desktop-1.4.6/src/cryptoadvance/specter/templates/wallet/send/sign/wallet_send_sign_psbt.jinja	2021-07-03 07:27:07.353228457 -0500
++++ specter-desktop-1.4.6/src/cryptoadvance/specter/templates/wallet/send/sign/wallet_send_sign_psbt.jinja	2021-07-03 07:30:20.773507680 -0500
+@@ -208,8 +208,8 @@
+ 		<div id="signing_container" class="signing_container flex-column {% if psbt['raw'] %}hidden{% endif %}" style="text-align: center;">
+ 			<p style="margin-bottom: 15px; margin-top: 0px;">Sign transaction with your:</p>
+ 			{% for device in wallet.devices %}
+-				<button type="button" class="btn signing-column-btn" id="{{ device.alias }}_tx_sign_btn" {{ 'disabled style=background-color:#303c49;' if device.alias in psbt["devices_signed"] else '' }}>
+-					{{ device.name }} {% if device.alias in psbt['devices_signed'] %} (&#10004;) {% endif %}
++				<button type="button" class="btn signing-column-btn" id="{{ device.alias }}_tx_sign_btn" {{ 'disabled style=background-color:#303c49;' if psbt.get("devices_signed") and device.alias in psbt.get("devices_signed") else '' }}>
++					{{ device.name }} {% if psbt.get("devices_signed") and device.alias in psbt.get("devices_signed") %} (&#10004;) {% endif %}
+ 				</button>
+ 			{% endfor %}
+ 		</div>
