@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-beta'
 _edition=' Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.27.0-beta.9'
+_pkgver='1.27.0-beta.10'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
@@ -19,7 +19,7 @@ optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('020aa3d56083c78b42e66418fd36867b5be06f4efb28a2bac5331a580e89f63f')
+sha256sums=('dc932104e8f0e757712368d04d33cba13ce70c45b6fbf8ba848d16ca9aab2c5e')
 
 package() {
 	cd "$srcdir/"
