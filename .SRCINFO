@@ -1,6 +1,6 @@
 pkgbase = kalu-kde
 	pkgdesc = Upgrade notifier w/ AUR support, watched (AUR) packages, news; supports autohide in KDE Plasma's panel
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/Thulinma/kalu
 	install = kalu.install
@@ -20,9 +20,7 @@ pkgbase = kalu-kde
 	depends = statusnotifier
 	provides = kalu
 	conflicts = kalu
-	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.4.0.tar.gz
-	source = statusnotifier.patch
-	sha256sums = b5731a1e39b6f47d45ba363ae35cb29490b579ba528cb0809c1c89547b89edfd
-	sha256sums = 8352d4e97d78576c57cae840a1b51086fd43da1a2d743258ec76470996b8c156
+	source = https://github.com/Thulinma/kalu/archive/refs/tags/4.4.1.tar.gz
+	sha256sums = d6135599ebc184e109e03c587ecb024e0c0c561d180e9593292fc7e1099794bb
 
 pkgname = kalu-kde
