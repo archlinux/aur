@@ -6,8 +6,8 @@
 
 _npmname=mocha
 pkgname=nodejs-mocha
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.2
+pkgrel=1
 pkgdesc="Simple, flexible, fun JavaScript test framework for Node.js & The Browser"
 arch=(any)
 url="https://mochajs.org"
@@ -16,7 +16,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('a28e7f2f2e98c54b4ac567f800e98d29075e803072d312840a29e21335193572')
+sha256sums=('f92dc00df960b82f99682dd55f4d11b1c6d487b45336004cdd39db8634e00dab')
 
 package() {
     cd "$srcdir"
