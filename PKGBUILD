@@ -70,9 +70,9 @@ _subarch=36
 pkgbase=linux-ck-uksm
 pkgver=5.12.14
 pkgrel=1
-_ckpatchversion=1
-_ckpatch="patch-5.12-ck${_ckpatchversion}"
 _major=5.12
+_ckpatchversion=1
+_ckpatch="patch-${_major}-ck${_ckpatchversion}"
 _gcc_more_v=20210610
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -82,10 +82,10 @@ makedepends=(
 )
 options=('!strip')
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
   config         # the main kernel config file
-  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.12/5.12-ck${_ckpatchversion}/$_ckpatch.xz"
+  "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
+  "http://ck.kolivas.org/patches/5.0/${_major}/${_major}-ck${_ckpatchversion}/${_ckpatch}.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-x86-setup-Consolidate-early-memory-reservations.patch
   0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
@@ -213,7 +213,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j40 all
+  make all
 }
 
 _package() {
