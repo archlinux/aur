@@ -1,12 +1,11 @@
 pkgbase = lnav-git
 	pkgdesc = A curses-based tool for viewing and analyzing log files
-	pkgver = 0.10.0.beta1.r6.g872b9411
+	pkgver = 0.10.0.beta1.r9.g4a11b737
 	pkgrel = 1
 	url = http://lnav.org/
 	arch = x86_64
 	license = custom:BSD
 	makedepends = git
-	depends = ncurses
 	depends = curl
 	depends = pcre
 	depends = sqlite3
