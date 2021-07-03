@@ -69,8 +69,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.14
-pkgrel=1
-_major=5.12
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -81,6 +80,7 @@ makedepends=(
 options=('!strip')
 _ckpatch="patch-5.12-ck${_ckpatchversion}"
 _gcc_more_v=20210610
+_patchsource="https://raw.githubusercontent.com/RiverOnVenus/linux-ck-uksm-cjktty/master/patches/5.12"
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -93,8 +93,14 @@ source=(
   0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
   0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
   0007-x86-crash-remove-crash_reserve_low_1M.patch
-  "0008-UKSM.patch::https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-${_major}.patch"
-  "0009-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch"
+  "0008-UKSM.patch::${_patchsource}/0008-UKSM.patch"
+  "0009-CJKTTY.patch::${_patchsource}/0009-CJKTTY.patch"
+  "0010-bbr2.patch::${_patchsource}/0010-bbr2-5.12-introduce-BBRv2.patch"
+  "0011-bfq.patch::${_patchsource}/0011-bfq-patches.patch"
+  "0012-block.patch::${_patchsource}/0012-block-patches.patch"
+  "0013-futex-resync-from-gitlab.collabora.com.patch::${_patchsource}/0013-futex-resync-from-gitlab.collabora.com.patch"
+  "0014-futex2-resync-from-gitlab.collabora.com.patch::${_patchsource}/0014-futex2-resync-from-gitlab.collabora.com.patch"
+  "00015-lru-patches.patch::${_patchsource}/00015-lru-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -113,7 +119,13 @@ b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318
         'abe1754b1c16e2e6a6c369f6497a6679f5e846ad9652d2d019425bfe5fa1186c1e75f46790ba15a227982abc61469e7423b3eee30e3dc56a631a5d36e3ecbffa'
         'ed1dc0f7e4f97969185de71b8f26c321359e06855d3c3b2ac3fccf2d1cdae121feb70fc5a6546c63d2ca0ce3ef21d510a40e4077262715d53165a1b236119788'
         '62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429'
-        '1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4')
+        '1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4'
+        '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
+        'a98463b538629f58c1207f56df595ddc92417ed09ea1192f6258acab8ae6f0e16e34af4d430bf9f1c7b030466952223c393bdd027139385f22b046583dbabf1c'
+        '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
+        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
+        '098f2c30c7610d777455f1771d458e5c716260eab4c201814ca10e888f116ff2c8570d01d5bc767acb01f695769e1ff2fd8758d3e90dbfaa828381c180a89962'
+        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -164,10 +176,10 @@ prepare() {
     echo "Disabling TCP_CONG_CUBIC..."
     scripts/config --module CONFIG_TCP_CONG_CUBIC
     scripts/config --disable CONFIG_DEFAULT_CUBIC
-    echo "Enabling TCP_CONG_BBR..."
-    scripts/config --enable CONFIG_TCP_CONG_BBR
-    scripts/config --enable CONFIG_DEFAULT_BBR
-    scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr
+    echo "Enabling TCP_CONG_BBR2..."
+    scripts/config --enable CONFIG_TCP_CONG_BBR2
+    scripts/config --enable CONFIG_DEFAULT_BBR2
+    scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
@@ -223,7 +235,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset and uksm patch and cjktty patch featuring MuQSS CPU scheduler and default bbr"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset and uksm patch and cjktty patch featuring MuQSS CPU scheduler and default bbr2"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
