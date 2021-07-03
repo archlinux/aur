@@ -26,5 +26,5 @@ package() {
     cd "$srcdir/$_pkgname"
     python "setup.py" install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 ./chad_launcher.desktop "$pkgdir/usr/share/applications/chad_launcher.desktop"
-    install -Dm644 ./chad_launcher/data/assets/icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm644 ./chad_launcher/data/assets/icon.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
 }
