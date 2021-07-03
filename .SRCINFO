@@ -1,6 +1,6 @@
 pkgbase = nanovna-saver
 	pkgdesc = PC control for the NanoVNA.
-	pkgver = 0.3.7
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/mihtjel/nanovna-saver
 	arch = any
@@ -11,10 +11,9 @@ pkgbase = nanovna-saver
 	depends = python-numpy
 	depends = python-pyserial
 	depends = qt5-base
-	source = nanovna-saver-0.3.7.tar.gz::https://github.com/mihtjel/nanovna-saver/archive/v0.3.7.tar.gz
+	source = nanovna-saver-0.3.9.tar.gz::https://github.com/mihtjel/nanovna-saver/archive/v0.3.9.tar.gz
 	source = nanovna-saver.desktop
-	md5sums = 4f0adbb3a7b8d94a87a5da023a0f5f31
+	md5sums = 4e07e7a09f6b536cd257fcdce33c9863
 	md5sums = 7905a0edb1bfa830d677aa79a6133229
 
 pkgname = nanovna-saver
-

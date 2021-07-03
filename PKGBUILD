@@ -1,6 +1,6 @@
 # Maintainer: Antony Jordan <antony.r.jorda at gmail dot com>
 pkgname=nanovna-saver
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="PC control for the NanoVNA."
 arch=(any)
@@ -13,17 +13,17 @@ source=(
   "$pkgname.desktop"
 )
 
-md5sums=('4f0adbb3a7b8d94a87a5da023a0f5f31'
+md5sums=('4e07e7a09f6b536cd257fcdce33c9863'
          '7905a0edb1bfa830d677aa79a6133229')
 
 
 build() {
-	cd "$pkgname-$pkgver"
-	python ./setup.py build
+    cd "$pkgname-$pkgver"
+    python ./setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     python ./setup.py install --prefix=/usr --root="$pkgdir"
     mkdir -p "$pkgdir/usr/share/pixmaps"
     cp icon_48x48.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
