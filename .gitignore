@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!ubuntu_to_arch.patch

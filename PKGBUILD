@@ -1,80 +1,62 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
-
+# Maintainer:
+# Contributor: Muflone http://www.muflone.com/contacts/english/
 pkgname=cpu-g-git
-_pkgname=${pkgname%-*}
-pkgver=0.16.2.1ubuntu0.r44.25478f0
+pkgver=0.16.3.1ubuntu1.r59.78fd9ec
 pkgrel=1
-pkgdesc="An application that shows useful information about your CPU, Motherboard and some general information about your system."
+pkgdesc="Shows useful information about your computer"
+arch=('any')
 url="https://github.com/atareao/cpu-g"
 license=('GPL3')
-arch=('any')
-depends=('gtk3' 'gobject-introspection' 'mesa-demos' 'pciutils' 'procps-ng' 'wmctrl'
-         'python-gobject' 'python-matplotlib' 'python-cairo' 'python-psutil' 'python-dbus'
-         'gtk-update-icon-cache')
-makedepends=('git')
-provides=('cpu-g')
-conflicts=('cpu-g' 'cpu-g-bzr')
-source=("git+https://github.com/atareao/${_pkgname}.git"
-        "${_pkgname}_changelog"::"https://raw.githubusercontent.com/atareao/${_pkgname}/master/debian/changelog"
+depends=('gtk3' 'mesa-demos' 'pciutils' 'procps-ng' 'python-dbus' 'python-cairocffi'
+         'python-gobject' 'python-matplotlib' 'python-psutil' 'wmctrl')
+makedepends=('dpkg' 'git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/atareao/cpu-g.git"
         'ubuntu_to_arch.patch')
 sha256sums=('SKIP'
-            'fd191111fe62f57f5b502ed66475000981c641940ca761718bbead3601824c0f'
             '45d106456f21b28a7d206aa78f00876b27d544e584098691da2c01944fe2b01e')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "%s.r%s.%s" "$(head -n 1 "${srcdir}/cpu-g_changelog" | cut -d'(' -f 2 | cut -d')' -f 1 | sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "%s.r%s.%s" "$(dpkg-parsechangelog --show-field Version | sed 's/-/./')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "$srcdir/${pkgname%-git}"
   patch -p1 -i "${srcdir}/ubuntu_to_arch.patch"
 }
 
 build() {
-  cd "${_pkgname}"
-  # Compile translations
-  pushd "po"
-  for _file in *.po
-  do
+  cd "$srcdir/${pkgname%-git}"
+  for _file in po/*.po; do
     msgfmt "${_file//.po}" -o "${_file//.po}.mo"
   done
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm755 "bin/${pkgname%-git}" -t "$pkgdir/usr/share/${pkgname%-git}"
+  install -Dm644 src/*.py -t "$pkgdir/usr/share/${pkgname%-git}/src"
+  install -Dm644 debian/changelog -t "$pkgdir/usr/share/${pkgname%-git}"
+  install -Dm644 "data/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "data/icons/${pkgname%-git}.png" -t "$pkgdir/usr/share/${pkgname%-git}/data/icons"
+  install -Dm644 data/logos/*.png -t "$pkgdir/usr/share/${pkgname%-git}/data/logos"
+  install -Dm644 data/distros/*.png -t "$pkgdir/usr/share/${pkgname%-git}/data/distros"
+  install -Dm644 data/graphic_card/*.png -t "$pkgdir/usr/share/${pkgname%-git}/data/graphic_card"
 
-  # Copying files
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}"
-  install -m 755 -t "${pkgdir}/usr/share/${_pkgname}" "bin/${_pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}" "debian/changelog"
-
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}/src"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}/src" src/*.py
-
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}/data/distros"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}/data/distros" data/distros/*.png
-
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}/data/graphic_card"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}/data/graphic_card" data/graphic_card/*.png
-
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}/data/icons"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}/data/icons" "data/icons/${_pkgname}.png"
-
-  install -m 755 -d "${pkgdir}/usr/share/${_pkgname}/data/logos"
-  install -m 644 -t "${pkgdir}/usr/share/${_pkgname}/data/logos" data/logos/*.png
-
-  install -m 755 -d "${pkgdir}/usr/share/applications"
-  install -m 755 -t "${pkgdir}/usr/share/applications" "data/${_pkgname}.desktop"
-
-  # Copying icons
-  for _size in 14 64 192
-  do
-    install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps"
-    install -m 644 "data/icons/${_pkgname}_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/cpu-g.png"
+  for _size in 14 64 192; do
+    install -Dm644 "data/icons/${pkgname%-git}_${_size}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname%-git}.png"
   done
 
-  # Install executable
-  install -m 755 -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -d "$pkgdir/usr/bin"
+  ln -s "/usr/share/${pkgname%-git}/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+
+  cd po
+  for _file in *.mo; do
+    install -Dm644 "${_file}" \
+      "$pkgdir/usr/share/locale/${_file//.mo}/LC_MESSAGES/${pkgname%-git}.mo"
+  done
 }
