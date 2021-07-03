@@ -17,8 +17,6 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-#	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
-#		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	printf "%s.r%s.%s" "$(dpkg-parsechangelog --show-field Version | sed 's/-/./')" \
 		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
