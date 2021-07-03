@@ -2,31 +2,24 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.26.1'
+_pkgver='1.27.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=('electron6-bin' 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'python' 'unzip')
+makedepends=('git' 'npm' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('7ceaa20c68ef927ba74db9d46fef2baece4635ea50f524377fc24c6931aaaf30'
-            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
+sha256sums=('5258b63652b30e90636916977e2acc76282d3cab8e84d6590fa7bff0e1a6e06a'
+            '62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104')
 
-if [[ $_target =~ .*-beta ]]; then
-	_sourcedirectory="compass-$_pkgver/packages/compass"
-	makedepends+=('npm')
-else
-	_sourcedirectory="compass-$_pkgver"
-	makedepends+=('npm6')
-fi
-
+_sourcedirectory="compass-$_pkgver/packages/compass"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 prepare() {
