@@ -3,8 +3,8 @@
 
 pkgname=python-conda-package-handling
 _name=${pkgname#python-}
-pkgver=1.7.2
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc="Create and extract conda package of various formats"
 arch=('any')
 url="https://github.com/conda/conda-package-handling"
@@ -23,7 +23,7 @@ makedepends=(
 options=(!emptydirs)
 install=
 source=($_name-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('cfa8f49c9345ba803068086ec37d21e7b7e366007e48ca79942f39bb667740ac94a8ee0d4a00a0664723090c108135d7dc5cbc84cf8dd6807461a544443eda3f')
+sha512sums=('86ce78b1a3bcaacc59d751cec09a55fa3b539a7adad3edfc6aa10665c868d14977fb045f858590f04f2f54ee9d255556494e294d23c3f61b50af34c902f7aa0c')
 
 build() {
   cd "$srcdir/${_name}-$pkgver"
