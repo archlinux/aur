@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.12.13.arch1
+pkgver=5.12.14.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -86,10 +86,10 @@ makedepends=(
 options=('!strip')
 
 _reponame="linux-archlinux"
-_repo_url="https://github.com/archlinux/linux"
+_repo_url="https://github.com/archlinux/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
-_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}"
+_repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
 _kernel_patch_name="more-uarches-for-kernel-5.8+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'e03836b64b2ccb90f6f04344c1250b283500413f312efbff4b30a62e2cecd8771d44ca7e430993959fa07ca4ff398bd69d7220e3b96a0d22fea1f67f0ef8c2a8'
+            '66576cf87160794b6f88f4e52d6f3bf647dedffdd151623875ad217a1e0234ddf5bef4c5dbe8110c7b09e117f72a30b786e9358fc35f32b3a1039b75a43474f1'
             'be1c86baa2dd5f10314817100d908763ef23d6e1bcf9869a79ecd3250fefe0f3c662d72a3b9237e3e965c72042c791570957c12257d3031ba8a439cb1b22561f'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
@@ -246,13 +246,16 @@ _package-headers() {
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
     install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
+    # https://bugs.archlinux.org/task/13146
     install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
+    # https://bugs.archlinux.org/task/20402
     install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    # https://bugs.archlinux.org/task/71392
+    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
     msg2 "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
