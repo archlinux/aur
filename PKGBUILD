@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.27.0-beta.9'
+_pkgver='1.27.0-beta.10'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -10,23 +10,16 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=('electron6-bin' 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'python' 'unzip')
+makedepends=('git' 'npm' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build.diff'
 )
-sha256sums=('46593d5bceb0c0dbd026cf2424160b4f69b26fc10d41bd09da1bba08d28fb111'
-            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
+sha256sums=('821ef6b52ed861c1d98c3a403a89724d5bb06da7ae1dc5a5323c1ae373676023'
+            '62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104')
 
-if [[ $_target =~ .*-beta ]]; then
-	_sourcedirectory="compass-$_pkgver/packages/compass"
-	makedepends+=('npm')
-else
-	_sourcedirectory="compass-$_pkgver"
-	makedepends+=('npm6')
-fi
-
+_sourcedirectory="compass-$_pkgver/packages/compass"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
 
 prepare() {
