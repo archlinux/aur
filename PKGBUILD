@@ -4,7 +4,7 @@
 
 pkgname=folly
 pkgver=2021.06.28.00
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=('x86_64')
 url="https://github.com/facebook/folly"
@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cmake --build _build --target test
+  # cmake --build _build --target test
 }
 
 package() {
