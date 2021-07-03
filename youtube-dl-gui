@@ -1,0 +1,5 @@
+#!/bin/sh
+
+source /usr/share/youtube-dl-gui/venv/bin/activate
+yt-dlg
+
