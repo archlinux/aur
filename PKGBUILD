@@ -2,7 +2,7 @@
 
 pkgname=makedeb
 pkgver=5.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Create Debian archives from PKGBUILDs (stable release)"
 arch=('any')
 depends=('pacman' 'dpkg')
