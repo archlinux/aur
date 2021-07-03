@@ -2,9 +2,8 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=6.2.0
+pkgver=6.3.1
 pkgrel=1
-
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -37,12 +36,12 @@ package() {
     while read -r -d '' _file
     do
         _res="$(sed 's/\.png$//;s/^.*-//' <<< "$_file")"
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
+        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
     done < <(find "${pkgdir}/opt/onlyoffice/desktopeditors" -maxdepth 1 -type f -name 'asc-de-*.png' -print0)
     
     # 3rd party licenses
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s ../../../../opt/onlyoffice/desktopeditors/3DPARTYLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
 }
