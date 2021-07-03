@@ -43,7 +43,7 @@ _pkgbase=opencv
 pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
 pkgver=2.4.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version)"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -97,22 +97,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgbase-$pkgver"
-  mkdir -p build
-  cd build
-
-  cmake ${_cmakeopts[@]} ..
-
-  make
+  export CXXFLAGS+=" -std=c++14"
+  cmake -S "$srcdir/$_pkgbase-$pkgver" -B build ${_cmakeopts[@]}
+  make -C build
 }
 
 package_opencv2() {
   options=('staticlibs')
   conflicts=('opencv')
 
-  cd "$srcdir/$_pkgbase-$pkgver/build"
-
-  make DESTDIR="$pkgdir" install
+  make -C build DESTDIR="$pkgdir" install
 
   # install license file
   install -Dm644 "$srcdir/$_pkgbase-$pkgver/LICENSE" \
@@ -135,7 +129,7 @@ package_opencv2-samples() {
   unset optdepends
   conflicts=('opencv-samples')
 
-  mkdir -p "$pkgdir/usr/share/$_pkgbase"
+  install -dm755 "$pkgdir/usr/share/$_pkgbase"
   cp -r "$srcdir/opencv-samples" "$pkgdir/usr/share/opencv/samples"
 
   # install license file

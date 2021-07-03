@@ -1,7 +1,7 @@
 pkgbase = opencv2
 	pkgdesc = Open Source Computer Vision Library (Legacy Version)
 	pkgver = 2.4.13.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = i686
 	arch = x86_64
@@ -30,4 +30,3 @@ pkgname = opencv2-samples
 	pkgdesc = Open Source Computer Vision Library (Legacy Version) (samples)
 	depends = opencv2=2.4.13.6
 	conflicts = opencv-samples
-
