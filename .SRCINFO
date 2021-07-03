@@ -1,6 +1,6 @@
 pkgbase = python-tensorboardx
 	pkgdesc = Tensorboard for PyTorch
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/lanpa/tensorboardX
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-tensorboardx
 	optdepends = python-crc32c: speed up
 	optdepends = python-soundfile: 200x speed up the add_audio() function
 	conflicts = python-tensorboard-git
-	source = https://files.pythonhosted.org/packages/source/t/tensorboardX/tensorboardX-2.3.tar.gz
-	sha256sums = 26d439f430e03f389201314f73f3bc443c877d88ed00e3db79c7dc8b2b12be8f
+	source = https://files.pythonhosted.org/packages/source/t/tensorboardX/tensorboardX-2.4.tar.gz
+	sha256sums = e56331ee79b7656c6f0974ab2e918045d5e9393701f83cac8884de4b5b360130
 
 pkgname = python-tensorboardx
