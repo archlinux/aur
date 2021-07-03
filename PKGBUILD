@@ -100,7 +100,7 @@ source=(
   "0012-block.patch::${_patchsource}/0012-block-patches.patch"
   "0013-futex-resync-from-gitlab.collabora.com.patch::${_patchsource}/0013-futex-resync-from-gitlab.collabora.com.patch"
   "0014-futex2-resync-from-gitlab.collabora.com.patch::${_patchsource}/0014-futex2-resync-from-gitlab.collabora.com.patch"
-  "00015-lru-patches.patch::${_patchsource}/00015-lru-patches.patch"
+  "0015-lru-patches.patch::${_patchsource}/00015-lru-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
