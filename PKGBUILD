@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=bthandler
 pkgver=r87.4ed78ac
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell script to interact with bluetooth devices via dmenu"
 arch=(any)
 depends=('bluez-utils')
@@ -25,6 +25,9 @@ package() {
 	touch /home/${USER}/.config/bt/alias
 	touch /home/${USER}/.config/bt/paired
 
-	install -Dm755 bt $pkgdir/usr/bin/bt
+	#remove wrong older install location
+	rm -f $pkgdir/usr/bin/bt
+
+	install -Dm755 bt $pkgdir/usr/local/bin/bt
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
