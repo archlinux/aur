@@ -8,7 +8,6 @@ pkgbase = ncmpvc-git
 	license = MIT
 	makedepends = cargo
 	depends = mpv
-	depends = ncurses
 	provides = ncmpvc
 	conflicts = ncmpvc
 	source = ncmpvc-git::git+https://gitlab.com/mpv-ipc/ncmpvc.git
