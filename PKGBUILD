@@ -3,7 +3,7 @@
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
 pkgver=1.2.0.r124.g8dbf054
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/oleksis/youtube-dl-gui"
@@ -11,6 +11,7 @@ license=('custom:UNLICENSE')
 depends=(
   'python-pypubsub'
   'python-wxpython'
+  'xdg-utils'
 )
 optdepends=('ffmpeg: convert video files to audio-only files'
             'youtube-dl: alternative to the youtube-dl program downloaded by yt-dlg')
