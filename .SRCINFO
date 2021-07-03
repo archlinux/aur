@@ -1,7 +1,7 @@
 pkgbase = deemix-gui-git
 	pkgdesc = A gui electron app for the deemix lib
-	pkgver = r109.9b157c42bc
-	pkgrel = 1
+	pkgver = r113.46980af0b6
+	pkgrel = 2
 	url = https://gitlab.com/RemixDev/deemix-gui
 	arch = x86_64
 	license = gpl3
