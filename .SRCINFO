@@ -1,6 +1,6 @@
 pkgbase = rhvoice-git
 	pkgdesc = Free and open source speech synthesizer for Russian and other languages. (development version)
-	pkgver = 1.2.3.r67.af4a529
+	pkgver = 1.2.4.r57.d1fb840
 	pkgrel = 1
 	url = https://github.com/RHVoice/RHVoice
 	arch = x86_64
@@ -20,12 +20,15 @@ pkgbase = rhvoice-git
 	backup = etc/RHVoice/RHVoice.conf
 	source = rhvoice::git+https://github.com/RHVoice/RHVoice.git
 	source = git+https://github.com/RHVoice/victoria-ru.git
-	source = git+https://github.com/RHVoice/evgeniy-eng.git
 	source = git+https://github.com/RHVoice/evgeniy-rus.git
+	source = git+https://github.com/RHVoice/evgeniy-eng.git
+	source = git+https://github.com/rhvoice/aleksandr-hq-rus.git
+	source = git+https://github.com/rhvoice/yuriy-rus.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = rhvoice-git
-
