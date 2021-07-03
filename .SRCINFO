@@ -1,0 +1,11 @@
+pkgbase = ttf-indieflower
+	pkgdesc = Handwriting sans-serif font with bubbly and rounded edges from Google Fonts.
+	pkgver = 65602
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Indie+Flower
+	arch = any
+	license = OFL
+	source = ttf-indieflower-65602.zip::https://fonts.google.com/download?family=Indie%20Flower
+	b2sums = a5775199e73d62c04f02f046d51219b190fcf85fcc4499fd31e10b17bace68cc4f71e080254af52ba938f5cbccbfc830dd7c9a92c925ee47fdcd4aab6ee18e78
+
+pkgname = ttf-indieflower
