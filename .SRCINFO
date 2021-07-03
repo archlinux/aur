@@ -1,17 +1,16 @@
 pkgbase = opensph
 	pkgdesc = Smoothed particle hydrodynamics library and visualization tools.
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sevecekp/sph
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = gcc>=7.0.0
-	makedepends = qt5-base
+	makedepends = cmake
 	depends = wxgtk2
 	depends = intel-tbb
 	depends = eigen
-	depends = hdf5
 	depends = chaiscript
 	source = git+https://gitlab.com/sevecekp/sph.git
 	md5sums = SKIP

@@ -3,7 +3,7 @@
 
 pkgname=opensph
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Smoothed particle hydrodynamics library and visualization tools."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/sevecekp/sph"
@@ -11,10 +11,9 @@ license=('MIT')
 depends=('wxgtk2' 
          'intel-tbb'
          'eigen'
-         'hdf5'
          'chaiscript')
 makedepends=('gcc>=7.0.0' 
-             'qt5-base')
+             'cmake')
 source=("git+https://gitlab.com/sevecekp/sph.git")
 md5sums=('SKIP')
 
@@ -26,13 +25,11 @@ prepare() {
 build() {
     mkdir -p build
     cd build
-    qmake CONFIG+=release \
-          CONFIG+=use_tbb \
-          CONFIG+=use_eigen \
-          CONFIG+=use_hdf5 \
-          CONFIG+=use_chaiscript \
-          DEFINES+="SPH_VERSION=${pkgver}-${pkgrel}" \
-          -spec linux-g++ ${srcdir}/sph/sph.pro
+    cmake -DCMAKE_BUILD_TYPE=Release \
+          -DWITH_TBB=ON \
+          -DWITH_EIGEN=ON \
+          -DWITH_CHAISCRIPT=ON \
+          ${srcdir}/sph
     make
 }
 
