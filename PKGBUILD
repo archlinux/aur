@@ -4,18 +4,18 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('jed-snapshot' 'rgrep')
-_pkgver=0.99.20-150
+_pkgver=0.99.20-151
 pkgver=${_pkgver//-/.}
 _pkgname=${pkgname/-snapshot/}
-pkgrel=2
-pkgdesc="A freely available text editor - Latest development version"
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/snapshots/"
 license=('GPL')
 depends=('gpm' 'slang' 'libxft')
 makedepends=('libxext' 'libxt')
 source=("http://www.jedsoft.org/snapshots/jed-pre${_pkgver}.tar.gz")
-sha256sums=('8ce450197da987fe881d650d17acc9eccb553f774428209740f20deb4db5d44f')
+sha256sums=('780e2e42e5d6e2a126b8fcfccc16b54f9da805e6800bde2774ee13fcbd73c5e2')
+
 install="$pkgname.install"
 
 prepare() {
@@ -33,6 +33,7 @@ build() {
 }
 
 package_jed-snapshot() {
+  pkgdesc="A freely available text editor - Latest development version"
   provides=('jed')
   conflicts=('jed')
   cd ${_pkgname}-pre${_pkgver}
@@ -40,5 +41,6 @@ package_jed-snapshot() {
 }
 
 package_rgrep() {
+  pkgdesc="Recursive grep"
   install -Dm755 ${_pkgname}-pre${_pkgver}/src/objs/rgrep "$pkgdir"/usr/bin/rgrep
 }
