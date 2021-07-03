@@ -1,11 +1,12 @@
 pkgbase = touchpad-indicator-git
 	pkgdesc = An indicator for the touchpad
-	pkgver = 2.2.2.0extras19.04.1.r108.8fc5078
-	pkgrel = 3
+	pkgver = 2.2.3.ubuntu20.04.0.r126.0fdca1a
+	pkgrel = 1
 	url = https://github.com/atareao/Touchpad-Indicator
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = dpkg
 	depends = gdk-pixbuf2
 	depends = libappindicator-gtk3
 	depends = libnotify
@@ -22,4 +23,3 @@ pkgbase = touchpad-indicator-git
 	sha256sums = SKIP
 
 pkgname = touchpad-indicator-git
-

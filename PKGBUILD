@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Ted Alff <twa022 at gmail dot com>
 pkgname=touchpad-indicator-git
-pkgver=2.2.2.0extras19.04.1.r108.8fc5078
-pkgrel=3
+pkgver=2.2.3.ubuntu20.04.0.r126.0fdca1a
+pkgrel=1
 pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
 license=('GPL3')
 depends=('gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'librsvg'
          'python-xlib' 'python-pyudev' 'python-dbus' 'python-evdev' 'xorg-xinput')
-makedepends=('git')
+makedepends=('git' 'dpkg')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/atareao/Touchpad-Indicator.git")
@@ -17,8 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
-		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
+#		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(dpkg-parsechangelog --show-field Version | sed 's/-/./')" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
