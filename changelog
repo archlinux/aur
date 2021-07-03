@@ -1,3 +1,14 @@
+2021-07-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.1.1-1:
+    Added Steam Summer Sale 2021 with ID of 1658760 to SalesBlacklist.
+    Added several /Api/Storage endpoints for third-party usage (#2337).
+    Rewritten functionality responsible for sending Steam messages in regards to new rate-limits (#2335, and it wasn't easy clap).
+    Improved support for ASF running on FreeBSD operating system.
+    Our STD plugin will now refuse to run upon any config parsing error, as an extra safety measure.
+    Reduced amount of I/O writes for ASF configs and databases by avoiding I/O write of the same content as that already written.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.0.9-1:
     Fixed advanced config for STD plugin not being parsed correctly.
