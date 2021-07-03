@@ -1,0 +1,21 @@
+pkgbase = rutilt-bin
+	pkgdesc = a Gtk+ program designed to set up any wireless network interface, find and connect to networks in range and get some information such as the quality of association etc that is primally written for Ralink devices
+	pkgver = 0.18.0
+	pkgrel = 1
+	arch = x86_64
+	arch = i386
+	license = GPL
+	provides = rutilt-bin
+	conflicts = rutilt-bin
+	options = !strip
+	source_x86_64 = http://cz.archive.ubuntu.com/ubuntu/pool/universe/r/rutilt/rutilt_0.18-0ubuntu7_amd64.deb
+	source_x86_64 = rutilt.desktop
+	sha256sums_x86_64 = 3ea81728d1d5412adba7cdbdbe7a1dfc6214f7ee25c36cb87b2e1e0d478db781
+	sha256sums_x86_64 = SKIP
+	source_i386 = http://cz.archive.ubuntu.com/ubuntu/pool/universe/r/rutilt/rutilt_0.18-0ubuntu7_i386.deb
+	source_i386 = rutilt.desktop
+	sha256sums_i386 = SKIP
+	sha256sums_i386 = SKIP
+
+pkgname = rutilt-bin
+

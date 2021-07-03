@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=RutilT WLAN Manager
+Name[fr]=Utilitaire de Configuration Wifi RutilT
+Name[it]=Strumento di Configurazione WiFi RutilT
+GenericName=WLAN Manager
+GenericName[fr]=Utilitaire de Configuration Wifi
+GenericName[it]=Strumento di Configurazione WiFi
+Comment=Manage your wireless network interfaces
+Comment[fr]=Configurer vos cartes Wifi
+Comment[it]=Configura le tue schede WiFi
+Terminal=false
+Type=Application
+Categories=GTK;System;Settings;Network;
+Version=1.0
+StartupNotify=false
+Icon=rutilt
+Exec= env GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc $@ /usr/bin/rutilt
