@@ -1,7 +1,7 @@
 pkgbase = python-pytest-mpl
 	pkgdesc = Pytest plugin to help with testing figures output from Matplotlib
-	pkgver = 0.12
-	pkgrel = 2
+	pkgver = 0.13
+	pkgrel = 1
 	url = https://github.com/matplotlib/pytest-mpl
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,7 @@ pkgbase = python-pytest-mpl
 	makedepends = python-setuptools
 	depends = python-pytest
 	depends = python-matplotlib
-	depends = python-pillow
-	depends = python-nose
-	source = https://files.pythonhosted.org/packages/source/p/pytest-mpl/pytest-mpl-0.12.tar.gz
-	md5sums = ed0042c46024c4569064dfe9c6a3eae9
+	source = https://files.pythonhosted.org/packages/source/p/pytest-mpl/pytest-mpl-0.13.tar.gz
+	md5sums = a7515d8ba2a275385c07eec3bd9193f3
 
 pkgname = python-pytest-mpl
-
