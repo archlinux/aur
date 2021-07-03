@@ -1,6 +1,6 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
 pkgname=buttermanager
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 epoch=
 pkgdesc="Graphical tool to create BTRFS snapshots, balance filesystems and upgrade the system safetly"
@@ -37,9 +37,6 @@ package() {
         # Installing ButterManager using python-setuptools
         echo -e "\n Installing ButterManager. Please wait..."
         python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-        # Copying bm_main.py
-        install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname/bm_main.py" "${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/$pkgname/bm_main.py"
 
         # Copying .desktop file and icon
         echo -e "\n Creating desktop icon. Finishing the installation"
