@@ -3,7 +3,7 @@
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
 pkgver=v1.2.0.r124.g8dbf054
-pkgrel=1
+pkgrel=3
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/oleksis/youtube-dl-gui"
@@ -27,7 +27,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-+build() {
+build() {
   cd $pkgname
   python setup.py build_trans
 }
