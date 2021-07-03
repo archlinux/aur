@@ -18,6 +18,7 @@ pkgbase = bluez-alsa-git
 	depends = sbc
 	depends = bluez-libs
 	depends = libfdk-aac
+	backup = etc/default/bluealsa
 	source = bluez-alsa-git::git+https://github.com/Arkq/bluez-alsa.git
 	source = https://github.com/Arkq/bluez-alsa/wiki/files/Systemd-integration/bluealsa.service
 	source = bluealsa.conf
@@ -26,4 +27,3 @@ pkgbase = bluez-alsa-git
 	md5sums = 2413afa4e59dfdb288955d0436d6d22d
 
 pkgname = bluez-alsa-git
-

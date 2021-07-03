@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=3.1.0.r0.gb09f373
+pkgver=3.1.0.r22.gdab0fad
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64' 'armv6h')
@@ -23,6 +23,7 @@ source=("$pkgname::git+https://github.com/Arkq/bluez-alsa.git"
 md5sums=('SKIP'
          'e9f0e82a8a8a4893ad26bc7013b18b2e'
          '2413afa4e59dfdb288955d0436d6d22d')
+backup=('etc/default/bluealsa')
 install=bluealsa.install
 
 pkgver() {
