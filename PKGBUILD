@@ -4,8 +4,8 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=2.8.3
-gitname="release-$pkgver-linux1"
+pkgver=2.9.0
+gitname="release-$pkgver-linux2"
 pkgrel=1
 pkgdesc='GUI for managing Git and GitHub'
 arch=('x86_64')
