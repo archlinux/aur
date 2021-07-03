@@ -2,7 +2,7 @@
 
 pkgname=titlegetter
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A little tool to get the title of the websites and format the title and the links to markdown or html.'
 url='https://github.com/WeepingDogel/TitleGetter'
 arch=('any')

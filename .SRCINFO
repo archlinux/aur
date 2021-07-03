@@ -1,7 +1,7 @@
 pkgbase = titlegetter
 	pkgdesc = A little tool to get the title of the websites and format the title and the links to markdown or html.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WeepingDogel/TitleGetter
 	arch = any
 	license = MIT
