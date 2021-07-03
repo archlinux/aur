@@ -120,7 +120,7 @@ if ($cmd eq "install") {
 
     # Remove existing backup file if any
     if (-f "$XKB/symbols/us.$VARIANT.bak") {
-        unlink("$XKB/symbols/us.qwerty-fr");
+        unlink("$XKB/symbols/us.$VARIANT.bak");
     }
 
     # Make a backup of "us" file
