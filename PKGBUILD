@@ -8,8 +8,9 @@ pkgdesc="Practical Music Search is a highly configurable, ncurses-based client f
 arch=('x86_64')
 url="https://ambientsound.github.io/pms"
 license=('GPL')
-makedepends=('cmake' 'git' 'pandoc')
-depends=('libmpdclient' 'ncurses')
+# Optional makedepend: 'pandoc: build man page'
+makedepends=('cmake' 'git')
+depends=('libmpdclient')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/ambientsound/pms.git#branch=0.42.x)

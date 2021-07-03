@@ -7,9 +7,7 @@ pkgbase = pmus-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	makedepends = pandoc
 	depends = libmpdclient
-	depends = ncurses
 	provides = pmus
 	conflicts = pmus
 	source = pmus-git::git+https://github.com/ambientsound/pms.git#branch=0.42.x
