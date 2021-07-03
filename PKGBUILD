@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
 license=('unknown')
 depends=('gcc-libs')
+provides=("$_name")
+conflicts=("$_name")
 backup=("etc/$_name/config.toml")
 source=("$pkgname-$pkgver::$url/releases/download/$pkgver/amdfand"
         "README-$pkgver.md::https://raw.githubusercontent.com/eraden/amdgpud/$pkgver/README.md"
