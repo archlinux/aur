@@ -2,8 +2,8 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
-pkgver=v1.2.0.r121.gea358e0
-pkgrel=2
+pkgver=v1.2.0.r124.g8dbf054
+pkgrel=1
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/MrS0m30n3/youtube-dl-gui"
