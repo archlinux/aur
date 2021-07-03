@@ -19,7 +19,7 @@ source=("https://choam.eu/altgr-intl/${_pkgname}"
         )
 md5sums=('88583bd46333be954972888e042000fd'
         '68322ffd940f7bec47dae3e4e392eb68'
-        'a8fed725a256ce48f99068b5ce00e375')
+        '480870a007350c6265fc4941614d14ce')
 
 package() {
     cd "${srcdir}"
