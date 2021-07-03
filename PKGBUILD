@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 
 pkgname=chromium-ublock-origin
-pkgver=1.35.2
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='An efficient blocker for Chromium'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install="${pkgname}.install"
 source=("https://github.com/gorhill/uBlock/releases/download/${pkgver}/uBlock0_${pkgver}.chromium.zip")
-md5sums=('0d1f617e9e982f8cde7f175bf6be16bb')
+md5sums=('24f0515ce0358dfde54f3ecf3c03f664')
 
 package() {
    mkdir -p "${pkgdir}/usr/share/${pkgname}"
