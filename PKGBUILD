@@ -108,57 +108,57 @@ prepare() {
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
-ac_add_options --prefix=/usr
-ac_add_options --enable-release
-ac_add_options --enable-hardening
-ac_add_options --enable-rust-simd
-ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --enable-hardening
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --prefix=/usr
+ac_add_options --with-ccache
 export CC='clang'
 export CXX='clang++'
 
 # Branding
+ac_add_options --allow-addon-sideload
 ac_add_options --enable-update-channel=nightly
-ac_add_options --with-app-name=${__pkgname}
 ac_add_options --with-app-basename='${_pkgname}'
+ac_add_options --with-app-name=${__pkgname}
 ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
-ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${__pkgname//-/}
-
+export MOZ_REQUIRE_SIGNING=1
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
 # System libraries
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
 
 # Features
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
-ac_add_options --disable-warnings-as-errors
+ac_add_options --disable-bootstrap
 ac_add_options --disable-crashreporter
-ac_add_options --disable-tests
 ac_add_options --disable-debug
-ac_add_options --disable-updater
-ac_add_options --enable-strip
-ac_add_options --disable-gpsd
-ac_add_options --disable-synth-speechd
-ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
-ac_add_options --disable-trace-logging
-ac_add_options --disable-rust-tests
+ac_add_options --disable-debug-symbols
+ac_add_options --disable-gpsd
 ac_add_options --disable-ipdl-tests
 ac_add_options --disable-necko-wifi
+ac_add_options --disable-rust-tests
+ac_add_options --disable-synth-speechd
+ac_add_options --disable-tests
+ac_add_options --disable-trace-logging
+ac_add_options --disable-updater
+ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
+ac_add_options --enable-alsa
+ac_add_options --enable-jack
+ac_add_options --enable-pulseaudio
+ac_add_options --enable-strip
 
 # Disables crash reporting, telemetry and other data gathering tools
 mk_add_options MOZ_CRASHREPORTER=0
