@@ -1,0 +1,56 @@
+diff --unified --recursive --text package.orig/frontend/saned.c package.new/frontend/saned.c
+--- package.orig/frontend/saned.c	2021-07-03 17:12:37.663948370 +0200
++++ package.new/frontend/saned.c	2021-07-03 17:13:12.937282768 +0200
+@@ -1849,7 +1849,7 @@
+ 
+ 	reply.status =
+ 	  sane_get_devices ((const SANE_Device ***) &reply.device_list,
+-			    SANE_TRUE);
++			    SANE_FALSE);
+ 	sanei_w_reply (w, (WireCodecFunc) sanei_w_get_devices_reply, &reply);
+       }
+       break;
+diff --unified --recursive --text package.orig/sanei/sanei_tcp.c package.new/sanei/sanei_tcp.c
+--- package.orig/sanei/sanei_tcp.c	2021-07-03 17:12:37.667281705 +0200
++++ package.new/sanei/sanei_tcp.c	2021-07-03 17:16:14.340621593 +0200
+@@ -44,6 +44,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <limits.h>
++#include <time.h>
+ 
+ #ifndef SSIZE_MAX
+ #define SSIZE_MAX LONG_MAX
+@@ -128,6 +129,7 @@
+ {
+ 	size_t bytes_recv = 0;
+ 	ssize_t rc = 1;
++	int retry = 5;
+ 
+ 	if (count > SSIZE_MAX) {
+ 		errno = EINVAL;
+@@ -137,9 +139,22 @@
+ 	while (bytes_recv < count && rc > 0)
+ 	{
+ 		rc = recv(fd, buf+bytes_recv, count-bytes_recv, 0);
+-		if (rc > 0)
+-		  bytes_recv += rc;
++		DBG(1, "%s: bytes received %d\n", __FUNCTION__, rc);
+ 
++		if (rc > 0) {
++			bytes_recv += rc;
++		} else {
++			if ( errno == EAGAIN && retry-- ) {
++				DBG(1, "%s: waiting  %d\n", __FUNCTION__, retry);
++				/* wait for max 1s */
++				struct timespec req;
++				struct timespec rem;
++				req.tv_sec = 0;
++				req.tv_nsec= 100000000;
++				nanosleep(&req, &rem);
++				rc = 1;
++			}
++		}
+ 	}
+ 	return bytes_recv;
+ }
