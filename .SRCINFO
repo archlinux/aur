@@ -1,7 +1,7 @@
 pkgbase = librewolf-extension-noscript
 	pkgdesc = Extension for Librewolf which disables javascript
 	pkgver = 11.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://noscript.net/
 	arch = any
 	groups = librewolf-addons

@@ -4,7 +4,7 @@
 
 pkgname=librewolf-extension-noscript
 pkgver=11.2.9
-pkgrel=1
+pkgrel=2
 _file=3750385
 pkgdesc="Extension for Librewolf which disables javascript"
 arch=('any')
