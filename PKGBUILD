@@ -4,7 +4,7 @@
 
 pkgname=libosip2
 epoch=1
-pkgver=5.1.2
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="an implementation of SIP"
 arch=('x86_64' 'i686')
@@ -14,11 +14,13 @@ depends=(glibc)
 options=(!emptydirs)
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 source=(https://ftp.gnu.org/gnu/osip/libosip2-${pkgver/_/-}.tar.gz)
-sha256sums=('2bc0400f21a64cf4f2cbc9827bf8bdbb05a9b52ecc8e791b4ec0f1f9410c1291')
+sha256sums=('ee3784bc8e7774f56ecd0e2ca6e3e11d38b373435115baf1f1aa0ca0bfd02bf2')
 
 build() {
   cd "$srcdir"/libosip2-${pkgver/_/-}/
   ./configure --prefix=/usr --disable-semaphore --enable-sysv
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
 }
 

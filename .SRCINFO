@@ -1,6 +1,6 @@
 pkgbase = libosip2
 	pkgdesc = an implementation of SIP
-	pkgver = 5.1.2
+	pkgver = 5.2.1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/osip/
@@ -9,9 +9,8 @@ pkgbase = libosip2
 	license = LGPL
 	depends = glibc
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/osip/libosip2-5.1.2.tar.gz
+	source = https://ftp.gnu.org/gnu/osip/libosip2-5.2.1.tar.gz
 	validpgpkeys = 34C3985D068879312FE23C8BB5902A3AD90A5421
-	sha256sums = 2bc0400f21a64cf4f2cbc9827bf8bdbb05a9b52ecc8e791b4ec0f1f9410c1291
+	sha256sums = ee3784bc8e7774f56ecd0e2ca6e3e11d38b373435115baf1f1aa0ca0bfd02bf2
 
 pkgname = libosip2
-
