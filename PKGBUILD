@@ -3,7 +3,7 @@
 
 _pkgbase="sddm"
 pkgname="$_pkgbase-wayland-git"
-pkgver=0.19.0.33.g73e68df
+pkgver=0.19.0.36.ge1c7202
 pkgrel=1
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
@@ -18,7 +18,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-source=("git://github.com/sddm/sddm.git#branch=wayland-rebased"
+source=("git://github.com/sddm/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles
 pam-faillock.patch)
 sha256sums=('SKIP'
