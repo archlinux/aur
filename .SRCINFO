@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-readonly-git
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - git version
-	pkgver = r13588.g5fd88d794
+	pkgver = r13639.ga1d52e9af
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -23,6 +23,6 @@ pkgbase = mongodb-compass-readonly-git
 	source = mongodb-compass-readonly-git::git+https://github.com/mongodb-js/compass
 	source = hadron-build.diff
 	sha256sums = SKIP
-	sha256sums = 559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657
+	sha256sums = 62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104
 
 pkgname = mongodb-compass-readonly-git
