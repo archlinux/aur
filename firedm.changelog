@@ -1,3 +1,15 @@
+2021.7.1:
+- [critical] fix application crash sometimes when using gtk file chooser, issue #257.
+- [critical] fix application refuse to quit when gui restarted (if theme changed), issue #257.
+- add "download later" feature.
+- add progress bars for media files to show processing progress, issue #258.
+- improve file segmentation to enhance watch while downloading feature.
+- fix filename extraction from url.
+- enable/disable ibus-workaround from settings option, (disabled by default), issue #256.
+- ability to change gui font from settings.
+- add option to change scrollbar width in settings.
+- prevent auto switching to d_tab when resume pending items.
+
 2021.6.18:
 - add options to disable popup windows, issue #231.
 - Add AppIndicator to systray, which fix systray under Gnome, issues(#96, #180, and #232).
