@@ -2,7 +2,7 @@
 # Contributor: sparklespdx <josh.farwell@gmail.com>
 
 pkgname="gpu-burn-git"
-pkgver="1e9a84f4bec3b0835c00daace45d79ed6c488edb"
+pkgver="r50.1e9a84f"
 pkgrel=1
 pkgdesc="Multi-GPU CUDA stress test"
 arch=("x86_64")
@@ -13,8 +13,16 @@ depends=("nvidia" "opencl-nvidia" "cuda")
 provides=("gpu-burn")
 conflicts=("gpu_burn-git" "gpu-burn")
 replaces=("gpu_burn-git")
-source=("${pkgname}::git+https://github.com/wilicc/gpu-burn?ref=${pkgver}")
+source=("${pkgname}::git+https://github.com/wilicc/gpu-burn.git")
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "${pkgname}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 prepare () {
   sed -i "s|CUDAPATH ?= /usr/local/cuda|CUDAPATH ?= /opt/cuda|g" "${pkgname}"/Makefile
