@@ -1,0 +1,55 @@
+diff --git a/fsrcnn.cpp b/fsrcnn.cpp
+index 77686df..019b612 100644
+--- a/fsrcnn.cpp
++++ b/fsrcnn.cpp
+@@ -24,10 +24,18 @@
+ #include "fsrcnn.h"
+ 
+ ncnn::Net fsrcnn;
++#ifndef min
++#define min(a,b) ((a) <= (b) ? (a) : (b))
++#endif
++#ifndef max
++#define max(a,b) ((a) >= (b) ? (a) : (b))
++#endif
+ 
+ void fsrcnn_process(cv::Mat&, cv::Mat&, int, int);
++static ncnn::PoolAllocator *pa;
+ 
+ void init_ncnn() {
++	pa = new ncnn::PoolAllocator;
+        ncnn::create_gpu_instance();
+        fsrcnn.set_vulkan_device(0);
+        fsrcnn.opt.use_vulkan_compute = true;
+@@ -36,6 +44,8 @@ void init_ncnn() {
+ }
+ 
+ void destroy_ncnn() {
++	delete pa;
++	pa = nullptr;
+        fsrcnn.clear();
+        ncnn::destroy_gpu_instance();
+ }
+@@ -140,12 +150,15 @@ void new_to_gray(const ncnn::Mat& m, float* gray)
+ }
+ 
+ void fsrcnn_process(cv::Mat& img_y, cv::Mat& out_y, int w, int h) {
++	ncnn::VkAllocator* blob_vkallocator = fsrcnn.vulkan_device()->acquire_blob_allocator();
+        ncnn::VkMat in_gpu;
++	in_gpu.allocator = blob_vkallocator;
+        ncnn::VkMat out_gpu;
++	out_gpu.allocator = blob_vkallocator;
+        ncnn::Mat inimage = in_gpu.mapped();
+        ncnn::Mat outimage = out_gpu.mapped();
+ 
+-       new_from_gray((float *)img_y.data, w, h, inimage, (ncnn::Allocator*)0);
++       new_from_gray((float *)img_y.data, w, h, inimage, pa);
+ 
+        {
+                ncnn::Extractor ex = fsrcnn.create_extractor();
+@@ -155,4 +168,5 @@ void fsrcnn_process(cv::Mat& img_y, cv::Mat& out_y, int w, int h) {
+        }
+ 
+        new_to_gray(outimage, (float*)out_y.data);
++	fsrcnn.vulkan_device()->reclaim_blob_allocator(blob_vkallocator);
+ }

@@ -25,7 +25,7 @@ source=("${_plug}::git+https://github.com/Sg4Dylan/vapoursynth-${_plug}.git"
         )
 sha256sums=('SKIP'
 #             'e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9'
-            "SKIP"
+            'f966efbae46f821beae06b3641c15c1ef113f9344ca21b543ba68362541fb5f3'
             )
 
 pkgver() {
@@ -52,7 +52,7 @@ prepare() {
       -e 's|vsscript|vapoursynth-script|g' \
       -i "${_plug}/CMakeLists.txt"
 
-  patch --binary --ignore-whitespace -d "${_plug}" -p1 -i "${srcdir}/esee.patch"
+  patch -d "${_plug}" -p1 -i "${srcdir}/esee.patch"
 
 }
 
