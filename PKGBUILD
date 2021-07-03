@@ -3,7 +3,7 @@
 pkgname=kali-themes
 pkgver=2021.2.4
 pkgrel=1
-pkgdesc="GTK and Qt themes included with Kali Linux"
+pkgdesc="GTK theme included with Kali Linux"
 arch=('any')
 url="https://gitlab.com/kalilinux/packages/kali-themes"
 license=('GPL3')

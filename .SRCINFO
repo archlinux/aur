@@ -1,5 +1,5 @@
 pkgbase = kali-themes
-	pkgdesc = GTK and Qt themes included with Kali Linux
+	pkgdesc = GTK theme included with Kali Linux
 	pkgver = 2021.2.4
 	pkgrel = 1
 	url = https://gitlab.com/kalilinux/packages/kali-themes
