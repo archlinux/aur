@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r13588.g5fd88d794'
+pkgver='r13639.ga1d52e9af'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -20,9 +20,9 @@ source=(
 	'hadron-build.diff'
 )
 sha256sums=('SKIP'
-            '559564c32e2b499d09b9c5b3badcaf64c88d89786d4542bb11bb36a26b5ca657')
+            '62eea772fce3eb086b59fc5509b8afab6346da9c4c65f28880bb334104c02104')
 
-_sourcedirectory="$pkgname"
+_sourcedirectory="$pkgname/packages/compass"
 _homedirectory="$pkgname-home"
 
 prepare() {
@@ -42,7 +42,7 @@ prepare() {
 	HOME="$srcdir/$_homedirectory" npm install
 
 	# Apply hadron-build fixes
-	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build.diff'
+	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
 }
 
 pkgver() {
