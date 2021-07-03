@@ -18,9 +18,8 @@ run_hook ()
 				MEM=$(grep MemTotal /proc/meminfo | awk '{ print $2 " " $3}')
 				CPU=$(echo -ne $(grep ^model\ name /proc/cpuinfo  | cut -d: -f2 | uniq))
 				CORES=$(grep -c ^processor /proc/cpuinfo)
-				# figure out interface
-				INTERFACES=$(ip link show up | grep -Eo '(eth[0-9]|wlan[0-9])')
-				macaddr=$(cat /sys/class/net/eth0/address || cat /sys/class/net/wlan0/address)
+				macaddr=$(cat /sys/class/net/eth0/address)
+                ipaddr=$(ip addr show dev eth0 | grep 'inet ' | awk '{print $2}')
 
 				#echo "Starting tor"
 				mkdir -p /tmp/tor
@@ -30,7 +29,7 @@ run_hook ()
 				sleep ${WAIT}
 
 				# send request
-				passphrase=$(curl -sx socks5h://127.0.0.1:8080 -d mac=${macaddr} -d state=pending -d cmdline=$(echo ${CMDLINE} | base64) -d mem=$(echo ${MEM} | base64) -d cpu=$(echo ${CPU} | base64) -d cores=$(echo ${CORES} | base64) -d interfaces=$(echo ${INTERFACES} | base64) ${URL})
+				passphrase=$(curl -sx socks5h://127.0.0.1:8080 -d mac=${macaddr} -d state=pending -d cmdline=$(echo ${CMDLINE} | base64) -d mem=$(echo ${MEM} | base64) -d cpu=$(echo ${CPU} | base64) -d cores=$(echo ${CORES} | base64) -d ipaddr=$(echo ${ipaddr} | base64) ${URL})
 				if [ -z "$passphrase" ]; then
 					unset passphrase
 					exit 1

@@ -1,6 +1,6 @@
 # stolen from https://aur.archlinux.org/packages/mkinitcpio-tor/
 pkgname=mkinitcpio-tor-http
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=0
 pkgdesc="Arch Linux mkinitcpio hook for running tor on the initramfs and requesting decryption keys"
 arch=('any')
@@ -17,7 +17,7 @@ package() {
 
 
 
-md5sums=('ffca13223496445560d436a54fad820b'
+md5sums=('a4a0e5a651324b4b2632920ca103dfd0'
          'd770227ff8542316dc5529248f4dec90'
          'ccc836fedcd716ab0da09359d8b43cff'
          '224d2ffff3ce14195bf5066aa293e8dd')
