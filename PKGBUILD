@@ -1,7 +1,7 @@
 # Maintainer: David Wu <xdavidwuph@gmail.com>
 
 pkgname=lightspark
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc='An open source flash player implementation'
 url='https://github.com/lightspark/lightspark'
@@ -11,7 +11,7 @@ depends=('libgl' 'curl' 'ffmpeg' 'zlib' 'glew' 'pcre' 'rtmpdump' 'cairo' 'sdl2' 
 makedepends=('cmake' 'nasm' 'ninja')
 conflicts=('pepper-flash')
 source=("https://github.com/lightspark/lightspark/archive/${pkgver}.tar.gz")
-sha512sums=('a69a73b6e0c5227bb63e94c15ffaa83df6ed18d400c50fd6f845b455d2b49a1acdc45f1f75c14894492ba5db9e38d1fbbac315359d4b73434832c05873b22091')
+sha512sums=('79e78925f9132b2c6044e4abf326d768c8d45509f85d9123e3dd172b2769772567223676fa7c8ea4d08bc541e9aa7a2b2d5a1062ff9f3a6274234af8798ee11b')
 
 build() {
 	cd "${pkgname}-${pkgver}"
