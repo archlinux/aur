@@ -1,7 +1,7 @@
 pkgbase = xmonad-recompile-hook-git
-	pkgdesc = This hook recompiles xmonad when necessary, to prevent errors after restarting
+	pkgdesc = Recompile xmonad after package updates
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NathanKolpa/xmonad-recompile-hook.git
 	arch = any
 	license = GPL

@@ -1,8 +1,8 @@
 # Maintainer: Nathan Kolpa <nathan@kolpa.me>
 pkgname=xmonad-recompile-hook-git
 pkgver=1.2
-pkgrel=1
-pkgdesc="This hook recompiles xmonad when necessary, to prevent errors after restarting"
+pkgrel=2
+pkgdesc="Recompile xmonad after package updates"
 arch=('any')
 url="https://github.com/NathanKolpa/xmonad-recompile-hook.git"
 license=('GPL')
