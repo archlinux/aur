@@ -28,6 +28,8 @@ package() {
 
   if [ ${CARCH} == "armv6h" -o ${CARCH} == "armv7h" ]; then
      ARCH="arm"
+  elif [ ${CARCH} == "aarch64" ]; then
+     ARCH="arm64"
   else
      ARCH=${CARCH}
   fi
