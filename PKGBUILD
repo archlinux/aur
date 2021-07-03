@@ -2,8 +2,8 @@
 
 pkgname=jakym
 pkgver=0.4.0
-pkgrel=1
-pkgdesc="Algorithms to compute the inverse Radon transform (e.g. SART, backprojection, Fourier interpolation)."
+pkgrel=2
+pkgdesc="JAKYM, Just Another Konsole YouTube-Music. A command line based Youtube music player written in Python with both Spotify and Youtube playlist support and easy on memory."
 arch=('any')
 url="https://github.com/themayankjha/JAKYM"
 license=('GPL3')
