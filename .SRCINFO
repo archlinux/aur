@@ -14,4 +14,3 @@ pkgbase = rust-script
 	md5sums = 5da80e9a405a3e37364248a33715cf8a
 
 pkgname = rust-script
-
