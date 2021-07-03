@@ -1,16 +1,16 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-pytest-doctestplus
 _pyname=${pkgname#python-}
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Pytest plugin that provides advanced features for testing example code in documentation"
 arch=('i686' 'x86_64')
 url="https://github.com/astropy/pytest-doctestplus"
 license=('BSD')
-depends=('python-pytest>=4.6' 'python-setuptools>=30.3.0')
+depends=('python-pytest>=4.6' 'python-setuptools>=30.3.0' 'python-packaging>=17.0')
 makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('90806e2a49a818a0eb09db3ff20fa004')
+md5sums=('e02263d3213e78573c21de7e69652ddb')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
