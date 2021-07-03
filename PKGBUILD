@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-bigint-gmp'
-pkgver='1.6007'
+pkgver='1.6008'
 pkgrel='1'
 pkgdesc="Math::BigInt::GMP - backend library for Math::BigInt etc. based on GMP"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('gmp>=6.1.2' 'perl>=5.6.1' 'perl-math-bigint>=1.999817')
+depends=('gmp>=6.1.2' 'perl>=5.6.1' 'perl-math-bigint>=1.999819')
 makedepends=()
 url='https://metacpan.org/release/Math-BigInt-GMP'
 source=("https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-$pkgver.tar.gz")
-md5sums=('abc713279a17091a8043a7a6806ce8d4')
-sha512sums=('cdeaeec1e450e95d761cefc63c5262c0b43cf5fc5865e62d0463e34821541c2b83d156979c1e7a8157c9747ccf5e3cefa80ac52489a7ce3186425bc27c176512')
+md5sums=('6beb73d7880a3dbc3ded60090b54c6f2')
+sha512sums=('12c312a978f603bfa12e94809778e9a65b9c725b60e4d9c449af679a911ec3f72e51a9735af4f5b1c779d49f334284aa9e4adc320dbef97b09c5159bef5781ac')
 _distdir="Math-BigInt-GMP-$pkgver"
 
 build() {
