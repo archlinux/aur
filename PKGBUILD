@@ -3,7 +3,7 @@
 
 _pkgname=altgr-weur
 pkgname=xkb-altgr-weur
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Keyboard layout based on letter frequencies for 11 Western European
 languages (English, Danish, Dutch, Finnish, French, German, Italian, Norwegian,
