@@ -1,0 +1,18 @@
+pkgbase = germanium-bin
+	pkgdesc = Generate image from source code
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/matsuyoshi30/germanium
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = germanium
+	source_x86_64 = germanium-bin-1.2.0.tar.gz::https://github.com/matsuyoshi30/germanium/releases/download/v1.2.0/germanium_1.2.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 08c9fd242960997b82a3d5d13685e4794aed4cf723216f3e31296e0cc1fc43c7
+	source_i686 = germanium-bin-1.2.0.tar.gz::https://github.com/matsuyoshi30/germanium/releases/download/v1.2.0/germanium_1.2.0_linux_386.tar.gz
+	sha256sums_i686 = a2bdb2041cb81c0db21754f4098549fac147b664911ceab3a85d10ad22859736
+	source_aarch64 = germanium-bin-1.2.0.tar.gz::https://github.com/matsuyoshi30/germanium/releases/download/v1.2.0/germanium_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 98f86954539239283392ca64417156b5c753507d69161a6452f8a3e8f0cbeee1
+
+pkgname = germanium-bin
