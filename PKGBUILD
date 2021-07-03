@@ -1,18 +1,18 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 pkgname=siji
-pkgver=2021.01.01
+pkgver=2021.07.03
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
 url="https://github.com/The-Repo-Club/siji"
-license=('CC BY-NC-SA 4.0')
+license=('GPLv2')
 depends=('fontconfig' 'xorg-mkfontscale' 'xorg-xset')
 optdepends=('xorg-xfd: use view.sh script to view glyphs')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 install=$pkgname.install
-sha256sums=('532950e73806b3e3096f74fef8da928753c3164226721e6e07d7a3389f548605')
+sha256sums=('30bea6300124e7289f5a67bb73901c8ef7d644ee346887e2675b8877928efa57')
 
 package() {
   cd "${srcdir}/${pkgname}-$pkgver"
