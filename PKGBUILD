@@ -6,8 +6,8 @@ pkgname=(
     "ibus-openbangla-git"
     "fcitx5-openbangla-git"
 )
-pkgver=2.0.0.r30.gddeebe5
-pkgrel=2
+pkgver=2.0.0.r31.g112425a
+pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
