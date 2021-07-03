@@ -9,12 +9,13 @@ arch=('x86_64')
 url='https://github.com/Sg4Dylan/vapoursynth-fsrcnn-ncnn-vulkan'
 license=('MIT')
 depends=('vapoursynth'
+         'opencv-cuda'
          'vulkan-icd-loader'
          )
 makedepends=('git'
              'cmake'
              'ncnn-git'
-             'opencv-cuda'
+             'vulkan-headers'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -44,7 +45,7 @@ prepare() {
       -e 's|Lib|lib|g' \
       -e 's|lib64|lib|g' \
       -e 's|x64/vc15/||g' \
-      -e 's|vulkan-1|vulkan|g' \
+      -e 's|vulkan-1|vulkan glslang SPIRV|g' \
       -e 's|opencv_world412|opencv_core opencv_imgproc opencv_highgui|g' \
       -e 's|vsscript|vapoursynth-script|g' \
       -i "${_plug}/CMakeLists.txt"
@@ -61,7 +62,7 @@ prepare() {
 build() {
   cd build
   cmake "../${_plug}" \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   LC_ALL=C make

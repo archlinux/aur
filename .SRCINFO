@@ -8,8 +8,9 @@ pkgbase = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ncnn-git
-	makedepends = opencv-cuda
+	makedepends = vulkan-headers
 	depends = vapoursynth
+	depends = opencv-cuda
 	depends = vulkan-icd-loader
 	provides = vapoursynth-plugin-fsrcnn-ncnn-vulkan
 	conflicts = vapoursynth-plugin-fsrcnn-ncnn-vulkan
@@ -17,4 +18,3 @@ pkgbase = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
-
