@@ -1,4 +1,4 @@
-# Maintainer: Dmytro Meleshko <dmytro dot meleshko at gmail dot com>
+# Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 # Based on <https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=powder-toy&id=fc44d52bc281452d6b2ad0c697eeae639408234d>
 # and <https://aur.archlinux.org/cgit/aur.git/commit/PKGBUILD?h=powder-toy-git&id=65c5f88eb2df75df77c4da139859232d7d94f2c0>
 
@@ -8,7 +8,7 @@ _lua=luajit
 
 _pkgname=powder-toy
 pkgname="${_pkgname}-snapshot"
-pkgver=217
+pkgver=218
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::http://github.com/ThePowderToy/The-Powder-
         "${pkgname}.desktop"
         "${pkgname}-open.desktop"
         "${pkgname}-ptsave.desktop")
-sha256sums=('999390643cdebc116f4cf2314cb0ad5852c11ad04c91e5466703edda99719ec2'
+sha256sums=('5ed06abffbc63440d4509ad2864ec236028fece06a2b5224c732b6ddfa8431f2'
             '2b3a51ed0f41be065da71c6f9b48d4b8e75111dd8ea6028b5ad069817c31b7bf'
             'b5d181c3141715b7dced8813cae6d07d2adc03bca2a7efe527592740de2d45e2'
             '265f530be7597fcc7bbaf2690fd517fe4f8f18372c808a90ddef49a604c8d455'
