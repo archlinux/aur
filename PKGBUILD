@@ -57,12 +57,12 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-_major=5.13
-pkgver=${_major}.0
+_major=5.12
+pkgver=${_major}.14
 _branch=5.x
-xanmod=2
-pkgrel=3
-pkgdesc='Linux Xanmod with ashmem and binder enabled for Anbox'
+xanmod=1
+pkgrel=${xanmod}
+pkgdesc='Linux Xanmod with ashmem and binder enabled for Anbox - Current Stable (STABLE)'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
@@ -93,9 +93,9 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '42cb550e7b9900820bdc9f528eb60c726f19294417065bf3a0b94be06388aeb1'
+            '0006a71592950f37ecfa7f8e2560699731b92712ddfb7639922bc260ccd1552b'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
