@@ -9,7 +9,7 @@ pkgdesc="Keyboard layout based on letter frequencies for 11 Western European
 languages (English, Danish, Dutch, Finnish, French, German, Italian, Norwegian,
 Portugese, Spanish and Swedish)"
 arch=('any')
-url="https://choam.eu/altgr-intl/#weur"
+url="https://altgr-weur.eu/"
 license=('custom')
 depends=('xkeyboard-config' 'perl')
 install=${pkgname}.install
