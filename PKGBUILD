@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-glow-git
-pkgver=r28.d7f5eb0
-pkgrel=1
+pkgver=r29.c5cf6ca
+pkgrel=2
 pkgdesc="A Neovim plugin that leverages Glow for markdown previews"
 arch=('any')
 url="https://github.com/npxbr/glow.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim-git' 'glow')
+depends=('neovim>=0.5.0' 'glow')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
