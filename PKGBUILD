@@ -21,9 +21,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Sg4Dylan/vapoursynth-${_plug}.git"
 #         'https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan/releases/download/r0.1/models.7z'
+        "esee.patch"
         )
 sha256sums=('SKIP'
 #             'e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9'
+            "SKIP"
             )
 
 pkgver() {
@@ -50,12 +52,7 @@ prepare() {
       -e 's|vsscript|vapoursynth-script|g' \
       -i "${_plug}/CMakeLists.txt"
 
-  sed -e "26a#ifndef min\\
-\#define min(a,b) ((a) <= (b) ? (a) : (b))\\
-\#endif\\
-\#ifndef max\\
-\#define max(a,b) ((a) >= (b) ? (a) : (b))\\
-\#endif" -i "${_plug}/fsrcnn.cpp"
+  patch --binary --ignore-whitespace -d "${_plug}" -p1 -i "${srcdir}/esee.patch"
 
 }
 
