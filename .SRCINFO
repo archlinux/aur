@@ -1,7 +1,7 @@
 pkgbase = opencv3-opt
 	pkgdesc = Open Source Computer Vision Library (Legacy Version & /opt directory version)
 	pkgver = 3.4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencv.org/
 	arch = x86_64
 	license = BSD
@@ -33,10 +33,10 @@ pkgbase = opencv3-opt
 	optdepends = python-numpy: Python interface
 	source = opencv-3.4.14.tar.gz::https://github.com/opencv/opencv/archive/3.4.14.zip
 	source = opencv_contrib-3.4.14.tar.gz::https://github.com/opencv/opencv_contrib/archive/3.4.14.tar.gz
-	source = opencv-lapack-3.9.1.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/opencv/trunk/opencv-lapack-3.9.1.patch
+	source = opencv-lapack.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/ea851b9f93224a4c19cc3ddeafa7b733f3f138b6/opencv/repos/extra-x86_64/opencv-lapack-3.10.patch
 	sha256sums = 302d3fe23b09d608d14b10212ed25649d9b6c7a2f817ccb1c8005172a479dedb
 	sha256sums = f8394bc68b70c57e54fc7706a4d2b7ef33e514c385f338c4cb470fe37d0dc243
-	sha256sums = 5233d9b4b8e3f4600e3f4ebef2b0ad5621faf25efbdfee96ee720a83cc81d0cc
+	sha256sums = SKIP
 
 pkgname = opencv3-opt
 	provides = opencv3

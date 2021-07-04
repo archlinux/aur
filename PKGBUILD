@@ -1,11 +1,11 @@
-# Maintainer: michaelchou <michaeljchou at the hotmail domain which is .com>
+# Contributor: michaelchou <michaeljchou at the hotmail domain which is .com>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=opencv3-opt
 pkgname=($pkgbase $pkgbase-samples)
 pkgver=3.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version & /opt directory version)"
 arch=(x86_64)
 license=(BSD)
@@ -21,14 +21,15 @@ optdepends=('opencv-samples: samples'
 source=(
 "opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
 "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
-"opencv-lapack-3.9.1.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/opencv/trunk/opencv-lapack-3.9.1.patch"
+"opencv-lapack.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/ea851b9f93224a4c19cc3ddeafa7b733f3f138b6/opencv/repos/extra-x86_64/opencv-lapack-3.10.patch"
 )
 sha256sums=('302d3fe23b09d608d14b10212ed25649d9b6c7a2f817ccb1c8005172a479dedb'
             'f8394bc68b70c57e54fc7706a4d2b7ef33e514c385f338c4cb470fe37d0dc243'
-            '5233d9b4b8e3f4600e3f4ebef2b0ad5621faf25efbdfee96ee720a83cc81d0cc')
+            'SKIP'
+)
 
 prepare() {
-  patch -d opencv-$pkgver -p1 < opencv-lapack-3.9.1.patch # Fix build with LAPACK 3.9.1
+  patch -d opencv-$pkgver -p1 < opencv-lapack.patch # Fix build with LAPACK
   mkdir -p build
 }
 
