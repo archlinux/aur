@@ -12,7 +12,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuredoro/cptest/archive/v${pkgver}.tar.gz")
-sha256sums=('cbd39cf0df66845550b569a163bde71fee88ff0f5277fed72d6c625839a4a108')
+sha256sums=('3ccce7cdc498dbceacb0909841f90eb776ffd73c38da64696bd458fc87a9b054')
 
 # With pacman 6 arriving a rebuild of yay will be necessary, if you upgrade pacman without upgrading yay at the same time, yay will not run after.
 # I'm bumping the pkgrel so it shows up on the upgrade list (and will do so when pacman transitions from staging->core)

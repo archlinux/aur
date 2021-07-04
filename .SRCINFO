@@ -8,6 +8,6 @@ pkgbase = cptest
 	makedepends = git
 	makedepends = go
 	source = cptest-2.0.0.tar.gz::https://github.com/kuredoro/cptest/archive/v2.0.0.tar.gz
-	sha256sums = cbd39cf0df66845550b569a163bde71fee88ff0f5277fed72d6c625839a4a108
+	sha256sums = 3ccce7cdc498dbceacb0909841f90eb776ffd73c38da64696bd458fc87a9b054
 
 pkgname = cptest
