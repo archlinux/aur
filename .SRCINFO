@@ -1,8 +1,9 @@
 pkgbase = openhab3
 	pkgdesc = openhab3 open source home automation software
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openhab.org/
+	install = openhab3.install
 	arch = any
 	license = EPL
 	depends = java-runtime-headless=11

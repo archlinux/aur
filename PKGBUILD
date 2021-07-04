@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab3
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
@@ -17,6 +17,7 @@ backup=("etc/${pkgname}/services/addons.cfg"
         "var/lib/${pkgname}/etc/keystore"
         "var/lib/${pkgname}/etc/users.properties"
         "var/lib/${pkgname}/etc/keys.properties")
+install="${pkgname}.install"
 
 source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab/${pkgver}/openhab-${pkgver}.tar.gz"
         "${pkgname}.service"
@@ -41,8 +42,8 @@ package() {
     mkdir -p "${pkgdir}/etc/${pkgname}"
     cp -r ${srcdir}/conf/* "${pkgdir}/etc/${pkgname}"
 
-    mkdir -p "${pkgdir}/var/lib/${pkgname}"
-    cp -r ${srcdir}/userdata/* "${pkgdir}/var/lib/${pkgname}"
+    mkdir -p "${pkgdir}/var/lib/${pkgname}/etc"
+    cp -r ${srcdir}/userdata/etc/* "${pkgdir}/var/lib/${pkgname}/etc"
 
     mkdir -p "${pkgdir}/usr/share/${pkgname}"
     cp -r "${srcdir}/runtime" "${pkgdir}/usr/share/${pkgname}"
