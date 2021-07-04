@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-data-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_12_13
+pkgver=2021_7_2
 _year="$(cut -d_ -f1 <<< "${pkgver}")"
 pkgrel=1
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
@@ -21,8 +21,8 @@ depends=(
          # ### If the source of this package does not contain train time table, this package also does not depend on the common data.
          "idos-timetable-data-trains-common"
          # ### If the source of this package does not contain train time table, have this package depend on the train timetable packages.
-         # "idos-timetable-data-chaps-trains-cz-latest"
-         # "idos-timetable-data-chaps-trains-europe-latest"
+         # "idos-timetable-data-chaps-trains-cz"
+         # "idos-timetable-data-chaps-trains-europe"
         )
 
 makedepends=(
