@@ -1,6 +1,6 @@
 pkgbase = hypseus-singe-git
 	pkgdesc = A drop-in replacement for daphne.
-	pkgver = 298.592e913
+	pkgver = 299.8164aab
 	pkgrel = 1
 	url = https://github.com/DirtBagXon/hypseus-singe
 	arch = x86_64
