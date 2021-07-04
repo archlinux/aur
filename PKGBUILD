@@ -25,7 +25,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-#  patch -Np1 -i "$srcdir/tmpfixgcsegfault3.patch"
 }
 
 build() {
