@@ -1,7 +1,7 @@
 pkgbase = devc
 	pkgdesc = A CLI tool to manage your devcontainers
 	pkgver = 1.0.0.alpha.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~nka/devc
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,8 @@ pkgbase = devc
 	makedepends = go
 	depends = docker
 	optdepends = docker-compose
+	provides = devc
+	conflicts = devc
 	source = devc-v1.0.0.alpha.3.tar.gz::https://git.sr.ht/~nka/devc/archive/v1.0.0-alpha.3.tar.gz
 	sha256sums = 94cec2138684124385fabfbafda0f5aea33c4e6ba84522e7b7a855dc78764193
 

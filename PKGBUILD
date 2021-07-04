@@ -3,7 +3,7 @@
 pkgname=devc
 _pkgver=1.0.0-alpha.3
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to manage your devcontainers"
 arch=('x86_64')
 url="https://git.sr.ht/~nka/devc"
@@ -14,6 +14,9 @@ makedepends=(
 	'make'
 	'go'
 )
+provides=('devc')
+conflicts=('devc')
+
 source=("$pkgname-v$pkgver.tar.gz::https://git.sr.ht/~nka/$pkgname/archive/v$_pkgver.tar.gz")
 sha256sums=("94cec2138684124385fabfbafda0f5aea33c4e6ba84522e7b7a855dc78764193")
 
