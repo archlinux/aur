@@ -1,0 +1,14 @@
+pkgbase = groovyserv-bin
+	pkgdesc = Quick startup for Groovy programs by using a JVM process running in the background
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://kobo.github.io/groovyserv/index.html
+	arch = x86_64
+	license = APACHE
+	depends = groovy
+	provides = groovyserv
+	conflicts = groovyserv
+	source = https://bitbucket.org/kobo/groovyserv-mirror/downloads/groovyserv-1.2.0-bin.zip
+	sha256sums = 88a93e07ce18b7ea33f98dd75ce21550b3a25820dd6eb00ab790f16573317e93
+
+pkgname = groovyserv-bin
