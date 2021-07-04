@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _pkgbase=openhab3
 pkgname=${_pkgbase}-snapshot-addons
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="addons for openhab3 open source home automation software"
 arch=("any")
