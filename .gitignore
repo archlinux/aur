@@ -3,3 +3,4 @@ pkg
 src
 Notion*.exe
 notion-app-enhanced*.pkg.tar.zst
+notion-app-enhanced*.pacman
