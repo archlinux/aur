@@ -1,13 +1,16 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2019-05-25.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
+
+_year='21'
+_prevyear="$(( ${_year} - 1 ))"
 
 _pkgname=idos-timetable-browser-license-installer
 pkgname="${_pkgname}-latest"
 epoch=1
-_pkgver=2019_2020
+_pkgver="20${_prevyear}_20${_year}"
 pkgver="${_pkgver}"
-pkgrel=4
+pkgrel=1
 pkgdesc="If you purchased IDOS for Windows by CHAPS, then this installs the license. You need to enter your ZIP-extraction-code and your setup-code during installation. Runs an interactive GUI software via wine during installation."
 arch=('i686' 'x86_64')
 url="http://www.chaps.cz/eng/order"
@@ -57,16 +60,6 @@ sha256sums=(
   "1cdffacf6b199b9a16bb6fedd9a4e08f7e3f897bebb5d891b27601f400f5dffb"
   "f692f387815e7980b418e6e6b2c2965d79f7f9dfe0fc962f6ed3bbfe5f99570a"
 )
-
-pkgver() {
-  ### We do not get the version of the installer, since we only use the license file.
-  ### We use as the version the timetable year.
-  
-  echo "${_pkgver}"
-  
-  # wget -nv -O- "http://www.chaps.cz/eng/download/idos-install/zip" | grep 'Update date\:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
-}
-
 
 build() {
   cd "${srcdir}"
