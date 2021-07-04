@@ -1,6 +1,6 @@
 pkgbase = vala-language-server
 	pkgdesc = Language Server for Vala
-	pkgver = 0.48.2
+	pkgver = 0.48.3
 	pkgrel = 1
 	url = https://github.com/prince781/vala-language-server
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = vala-language-server
 	depends = jsonrpc-glib
 	depends = vala
 	depends = meson
-	source = https://github.com/prince781/vala-language-server/archive/0.48.2.tar.gz
-	sha256sums = c2c04771bf635a77eb82f27629b9af453f937ecf95709fc9161db785b163fbb7
+	source = https://github.com/prince781/vala-language-server/archive/0.48.3.tar.gz
+	sha256sums = 1a752515efda561aec535d088a6f52888b13ad2d52f2d27770ddf6a519f0028b
 
 pkgname = vala-language-server
