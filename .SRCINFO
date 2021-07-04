@@ -1,0 +1,14 @@
+pkgbase = idos-timetable-data-zsr-sk
+	pkgdesc = Metapackage designed to depend on the latest idos-timetable-data-zsr-sk data package.
+	pkgver = 2021
+	pkgrel = 1
+	epoch = 0
+	url = https://www.inprop.eu/Home/Downloads
+	arch = any
+	groups = idos-timetable
+	license = custom: public domain
+	depends = idos-timetable-data-zsr-sk-2021
+	source = license-metapackage-pd.txt
+	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
+
+pkgname = idos-timetable-data-zsr-sk
