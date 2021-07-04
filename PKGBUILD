@@ -11,7 +11,7 @@
 
 _android_arch=aarch64
 pkgname=android-aarch64-qt6-base
-_qtver=6.1.1
+_qtver=6.1.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -34,15 +34,17 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0004-Fix-transitive-dependencies-of-static-libraries.patch'
         '0005-Fix-libjpeg-workaround-for-conflict-with-rpcndr.h.patch'
         '0006-Support-finding-static-MariaDB-client-library.patch'
-        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch')
-sha256sums=('21a8aa9f07170e047270c668c8b037536f40226db7adbc529a0b41c3a3cb3ff2'
-            '1b699b33d303275a21f15eeabf7929eb4bb6c0ffc50dc04b818125be9c459f13'
-            '97ffcc7197b74e3cc5492531249c442cdbf02d231dc55af8f10fb688e383105c'
-            '9ad76422d221510074241ccabf3880c19c493aaa1f99a222e34ecade0b64a254'
-            'ea567893e43a23143ec31ff2206a1f221c24588733d55f1d918e9d1dd6746a47'
-            'a42c48bceb8c80eaa870e362cdf5f92634ca8b54cbbf1f58ed3a72d8be8517f7'
-            '5361c88bdf85a54b7438c3aea9a12f9d94822b9cd396da2d15741de8acae5a3a'
-            'dce66f9a271586a46be73689ff64f0d668dfe3f526a3558b3e8ca1169aa711f8')
+        '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
+        '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
+sha256sums=('b9c4061c1c7999c42c315fc5b0f4f654067b4186066dd729bbcf1bdce8d781c8'
+            'cca54459fe66dffd009883dd6855469e7dac2e37b6b71c08c619d52c19e9c465'
+            'fea7df661412a8d05d19b777f0465d521ac52a6208121a3c6a46bef00174d521'
+            '08fcc3bed6eaf88f3621a70f828e3d6f7e29b58e3a65cb649adebd059f2cd867'
+            '8876accd3aad0eb67ad16b01717451244c9f908255326f4313383cb534e9b211'
+            '3a28ceaa6f55c180dc7484df7b1ce4df5f9b7bee1817f50dedd23d2ec66a5b09'
+            '2ebe2848c7a086f2586cd26575d1731ca23fe64c607588c4c5ff877e4d8175ab'
+            '6b8b01d90548957d0a6ce2557363ea5ad476b4f9272172ee193957e01aaefb7f'
+            'b79bce29e48b1c8a26a4300079ac02c77d6bc22450bceee6fec049e5cec81650')
 
 prepare () {
   cd $_pkgfqn
