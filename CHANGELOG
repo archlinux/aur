@@ -1,4 +1,38 @@
-0.9.0
+0.9.2 2021-07-02
+
+Small changes are introduced regarding copy, search and sort.
+
+Changed (small ones):
+
+- The search is now smartcase like in vim.
+- The list is sorted case-insensitively.
+- Searching is now considering the pattern to be space separated keywords. The
+  search result requires all keywords are in the password name, naturally.
+- Copy will copy only the right hand side of colon ":" if exists.
+
+Fixed:
+
+- Check if pass directory exists.
+- Colors of focused items in light color schemes now have correct reverse effects.
+- Do not move cursor after inserting a new item if the path is absolute.
+- Prevent focus change when in editbox.
+
+0.9.1 2021-06-28
+
+Bugs fix release.
+
+Fixed:
+
+- Preview not updating due to name duplicates, e.g., when switching between a
+  folder item and a file item with the same name.
+- Folder's count not updating after the item within are added/removed.
+- Git commit messages flashing by after editing password. Now it has been
+  worked around.
+- When creating multi-level filename, e.g. "foo/bar", instead of using that
+  whole name as a single file, now shows directory hierarchy correctly.
+- Fix new item not showing if a dir with the same name exists.
+
+0.9.0 2021-06-25
 
 Added:
 
@@ -35,7 +69,7 @@ Fixed:
 
 Changed:
 
-- Renamed the excutable to `cpass`, the extension was removed. This breaks
+- Renamed the executable to `cpass`, the extension was removed. This breaks
   compatibility in a way, but I did not start a new major version, since I have
   not promoted cpass to anyone yet so the impact is nearly zero. Nobody cares.
 
