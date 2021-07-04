@@ -2,23 +2,43 @@
 
 pkgname=ruby-jsonpath
 _gemname=jsonpath
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='Ruby implementation of http://goessner.net/articles/JsonPath'
+pkgdesc='JSONPath implementation in Ruby'
 arch=('any')
 url='https://github.com/joshbuddy/jsonpath'
 license=('MIT')
-depends=('ruby-multi_json')
+depends=('ruby' 'ruby-multi_json')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.gem::https://rubygems.org/downloads/$_gemname-$pkgver.gem"
-        'LICENSE::https://github.com/joshbuddy/jsonpath/raw/master/LICENSE.md')
-noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('185d657cb4533a4fad4b6407a7b10eba0d2f654f699b9d9f714a65de4e988faf'
-            'f8d08617b73c9c304c8543b9b87e354e02468bd02982ae4406283e7a6e29ec02')
+source=("$_gemname-$pkgver.gem::https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$pkgname-$pkgver.gem")
+b2sums=('1238376fad69a29b1975adcfef01569d7db9d4f1520360718ae4a6acbab06a70f9a2a2f7749e09125ad587442f0e9e7ce6c73ef40853a6ec90bdc8ace10df55f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" ${pkgname}-${pkgver}.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -rf cache
+
+  # delete unnecessary files & folders
+  cd "gems/$_gemname-$pkgver"
+  find . -type f -name ".*" -delete
+  rm -rf test
+
+  # documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -v README.md "$pkgdir/usr/share/doc/$pkgname"
+
+  # license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -v LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
 }

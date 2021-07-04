@@ -1,17 +1,15 @@
 pkgbase = ruby-jsonpath
-	pkgdesc = Ruby implementation of http://goessner.net/articles/JsonPath
-	pkgver = 1.0.5
+	pkgdesc = JSONPath implementation in Ruby
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/joshbuddy/jsonpath
 	arch = any
 	license = MIT
+	depends = ruby
 	depends = ruby-multi_json
-	noextract = ruby-jsonpath-1.0.5.gem
+	noextract = ruby-jsonpath-1.1.0.gem
 	options = !emptydirs
-	source = ruby-jsonpath-1.0.5.gem::https://rubygems.org/downloads/jsonpath-1.0.5.gem
-	source = LICENSE::https://github.com/joshbuddy/jsonpath/raw/master/LICENSE.md
-	sha256sums = 185d657cb4533a4fad4b6407a7b10eba0d2f654f699b9d9f714a65de4e988faf
-	sha256sums = f8d08617b73c9c304c8543b9b87e354e02468bd02982ae4406283e7a6e29ec02
+	source = jsonpath-1.1.0.gem::https://rubygems.org/downloads/jsonpath-1.1.0.gem
+	b2sums = 1238376fad69a29b1975adcfef01569d7db9d4f1520360718ae4a6acbab06a70f9a2a2f7749e09125ad587442f0e9e7ce6c73ef40853a6ec90bdc8ace10df55f
 
 pkgname = ruby-jsonpath
-
