@@ -2,7 +2,7 @@
 # Contributor: quomoow <quomoow@gmail.com>
 
 pkgname=python-pg8000
-pkgver=1.19.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Pure-Python PostgreSQL database driver, DB-API compatible"
 arch=(any)
@@ -13,19 +13,11 @@ checkdepends=(python-pytest python-pytest-mock python-pytest-benchmark
               python-pytz postgresql)
 depends=(python python-scramp)
 source=("https://files.pythonhosted.org/packages/source/p/pg8000/pg8000-$pkgver.tar.gz"{,.asc})
-sha256sums=('dcb9afb9cb87acc79388ae633c45cf7f806aabe3bb5d8cf154572b699393f937'
+sha256sums=('490ec22a92601f0454b3ed4c8d4ecddc30f66c0e3f783f0ecc581037749a8c55'
             'SKIP')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
-
-prepare() {
-  cd pg8000-$pkgver
-
-  # Remove upper bounds of dependencies
-  sed --in-place=.orig -r 's#,?<[0-9.]+,?##;s#==([0-9.]+)#>=\1#' setup.py
-  diff -u setup.py{.orig,} || true
-}
 
 build() {
   cd pg8000-$pkgver
