@@ -1,6 +1,6 @@
 pkgbase = sidewinderd
 	pkgdesc = Support for Microsoft SideWinder X4 / X6 and Logitech G103 / G105 / G710+.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/tolga9009/sidewinderd
 	install = sidewinderd.install
@@ -11,8 +11,7 @@ pkgbase = sidewinderd
 	depends = systemd
 	depends = tinyxml2
 	backup = etc/sidewinderd.conf
-	source = sidewinderd-0.4.3.tar.gz::https://github.com/tolga9009/sidewinderd/archive/0.4.3.tar.gz
-	sha256sums = a8d5dea8d9fb66ba963a453c5760a866fb1c202411da0f80cc8ef4ca427f9215
+	source = sidewinderd-0.4.4.tar.gz::https://github.com/tolga9009/sidewinderd/archive/0.4.4.tar.gz
+	sha256sums = 6637f3c8296b0f99522275f7ebfd9ca379c5ebe0897bb4543693e5ba3ad0989d
 
 pkgname = sidewinderd
-
