@@ -1,0 +1,15 @@
+pkgbase = ruby-markaby
+	pkgdesc = _why's markaby templating language
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://rubygems.org/gems/markaby
+	arch = any
+	license = MIT
+	makedepends = ruby-builder
+	depends = ruby
+	noextract = markaby-0.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/markaby-0.9.0.gem
+	b2sums = 72cc3665c0397a5ed931d884e01537755460cb89deba17ed87362f08742d23715ece8e957cb41ed6d0599e3a7b684f96c0f58a9f7a9cd89aca1277e8615eab2b
+
+pkgname = ruby-markaby
