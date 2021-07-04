@@ -1,8 +1,8 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _pkgbase=openhab3
 pkgname=${_pkgbase}-snapshot
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
@@ -18,6 +18,8 @@ backup=("etc/${_pkgbase}/services/addons.cfg"
         "var/lib/${_pkgbase}/etc/keystore"
         "var/lib/${_pkgbase}/etc/users.properties"
         "var/lib/${_pkgbase}/etc/keys.properties")
+
+install="${_pkgbase}.install"
 
 source=("openhab-${pkgver}-SNAPSHOT.tar.gz::https://ci.openhab.org/job/openHAB3-Distribution/lastSuccessfulBuild/artifact/distributions/openhab/target/openhab-${pkgver}-SNAPSHOT.tar.gz"
         "${_pkgbase}.service"
@@ -42,8 +44,8 @@ package() {
     mkdir -p "${pkgdir}/etc/${_pkgbase}"
     cp -r ${srcdir}/conf/* "${pkgdir}/etc/${_pkgbase}"
 
-    mkdir -p "${pkgdir}/var/lib/${_pkgbase}"
-    cp -r ${srcdir}/userdata/* "${pkgdir}/var/lib/${_pkgbase}"
+    mkdir -p "${pkgdir}/var/lib/${_pkgbase}/etc"
+    cp -r ${srcdir}/userdata/etc/* "${pkgdir}/var/lib/${_pkgbase}/etc"
 
     mkdir -p "${pkgdir}/usr/share/${_pkgbase}"
     cp -r "${srcdir}/runtime" "${pkgdir}/usr/share/${_pkgbase}"
