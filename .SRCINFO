@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-browser-latest
 	pkgdesc = Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)
-	pkgver = 1.30_lib2.9.0.0
+	pkgver = 1.30_lib2.9.0.2
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvaprg
@@ -15,10 +15,10 @@ pkgbase = idos-timetable-browser-latest
 	optdepends = idos-timetable-lang-de: For German translation.
 	optdepends = idos-timetable-lang-en: For English translation.
 	optdepends = idos-timetable-browser-license: For the license in order to use restricted data like Czech/ Slovak bus, flight, Czech public transport.
-	provides = idos-timetable-browser=1.30_lib2.9.0.0
-	provides = idos-timetable-lang-cz=1.30_lib2.9.0.0
+	provides = idos-timetable-browser=1.30_lib2.9.0.2
+	provides = idos-timetable-lang-cz=1.30_lib2.9.0.2
 	conflicts = idos-timetable-browser
-	replaces = idos-timetable-browser<=1.30_lib2.9.0.0
+	replaces = idos-timetable-browser<=1.30_lib2.9.0.2
 	source = ttakt.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP
 	source = idos-timetable-browser.sh
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
@@ -37,4 +37,3 @@ pkgbase = idos-timetable-browser-latest
 	sha256sums = 297e0326240e7d61b9c9f5a8f8313ce18fde2a14af9ad1f8c1ec03b67729ab57
 
 pkgname = idos-timetable-browser-latest
-

@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-21.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=1.30_lib2.9.0.0
+pkgver=1.30_lib2.9.0.2
 pkgrel=1
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
