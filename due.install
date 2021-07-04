@@ -1,0 +1,9 @@
+post_install() {
+	echo ':: This package requires manual activation.'
+	echo ':: Consult upstream documentation for instructions.'
+	echo ':: A copy of the README was installed into /usr/share/doc/neovim-due-git/'
+}
+
+post_remove() {
+	echo ":: Don't forget to remove all references to this plugin from your init scripts!"
+}

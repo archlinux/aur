@@ -1,0 +1,17 @@
+pkgbase = neovim-due-git
+	pkgdesc = Neovim plugin for displaying due dates
+	pkgver = r22.212e862
+	pkgrel = 1
+	url = https://github.com/nfrid/due.nvim
+	install = due.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim>=0.4.4
+	provides = neovim-due
+	conflicts = neovim-due
+	source = neovim-due-git::git+https://github.com/nfrid/due.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-due-git
