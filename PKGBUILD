@@ -1,6 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: ZaZam <zazaamm ät gmail döt com>
 # Contributor: Yegorius <yegorius@domic.us>
+# Contributor: yannleretaille
 # Contributor: pika02 <pikakolendo02 ät gmail döt com>
 
 pkgname=pulseaudio-dlna-python3
@@ -46,4 +47,3 @@ package() {
                   install --root="${pkgdir}" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
