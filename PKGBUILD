@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-virtualkeyboard
-_qtver=6.1.1
+_qtver=6.1.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,8 +17,20 @@ makedepends=('android-cmake' 'qt6-declarative' 'ninja' 'java-environment-openjdk
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('246d1acdcd953819b09b1da22bd359335d145d8a3550d9e827dc1fd27b6bd3ff')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Fix-linking-against-imm32-with-mingw-w64.patch')
+sha256sums=('25cbdf595f5c82d8bc8aea4c95c5adfc08555d540451afac4a1bc0194db3eae0'
+            '8d643061931023d8f307b09d4522eb3aea18c7f5964373cde6dbf6e499d93eed')
+
+prepare () {
+  cd $_pkgfqn
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -p1 -i "$patch"
+  done
+}
 
 build() {
   source android-env ${_android_arch}
