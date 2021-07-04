@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-lottie
-_qtver=6.1.1
+_qtver=6.1.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtlottie-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('df8ee26ea3aa4524f82703f602449d990724ca232cb98498746e8f49e23037ed')
+sha256sums=('5b1b8a8a6c2ffd587937f84a8201b6e485cb58462d4d6aa9c00aea2f6b40071b')
 
 build() {
   source android-env ${_android_arch}
