@@ -2,10 +2,10 @@
 
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
-_upstreamver='v2.13.0'
+_upstreamver='v2.14.0'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
-_repo='nextcloud/files_texteditor'
+_repo='nextcloud-releases/files_texteditor'
 
 
 pkgdesc='The original text editor app for Nextcloud, based on Ace'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("files_texteditor-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('9d2037e4b972beb3cf6fc10de21d582f98ccca128fd0e560f45810fb64de125a3fcf5489dad0340f60ab878470f3e7bd11a5bfd918d25a240d44640386a2c18a')
+sha512sums=('ba2dad5f541df894ea422cfc66dd6e2daefe99739cfda41cb081409b7dbc5238ef49bff560c28c2e149af25ddfb0084ead248b87156e185f3b14913a824ca5ca')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
