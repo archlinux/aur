@@ -1,13 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2019-12-10.
-
-_year=19
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-data-chaps-flights
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_12_11
+pkgver=2021_6_30
 pkgrel=1
 pkgdesc="Flight timetable data from Galileo to be used with IDOS timetable browser"
 arch=(any)
