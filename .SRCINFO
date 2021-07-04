@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreet-git
 	pkgdesc = A console UI greeter for greetd
-	pkgver = 0.5.0.r84.2dc86f7
+	pkgver = 0.6.0.r92.93a6456
 	pkgrel = 1
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
