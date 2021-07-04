@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-charis-sil
-pkgver=6.000
+pkgver=6.001
 pkgrel=1
 pkgdesc='Font family supporting Latin and Cyrillic scripts. Designed for legibility and publishing.'
 arch=('any')
 url='https://software.sil.org/charis/'
 license=('OFL')
 source=("https://software.sil.org/downloads/r/charis/CharisSIL-${pkgver}.zip")
-sha256sums=('9920fc3bfd07a9b43a3472aed9af41309f3b80a4186766ceff480c35275ef897')
+sha256sums=('850df14e9024790e061a406715693ff39489dd071ea583b3258bdeba8384ebe8')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
