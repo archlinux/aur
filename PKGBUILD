@@ -1,7 +1,7 @@
 # Maintainer: Sakamoto Shizue <supremeep at yandex dot ru>
 pkgname=cptest
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=3
 pkgdesc="A tool for competitve programming. Feed programs fixed inputs, compare their outputs against expected ones."
 arch=('x86_64')
 url="https://github.com/kuredoro/cptest"
@@ -12,7 +12,7 @@ makedepends=(
   'go'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kuredoro/cptest/archive/v${pkgver}.tar.gz")
-sha256sums=('3ccce7cdc498dbceacb0909841f90eb776ffd73c38da64696bd458fc87a9b054')
+sha256sums=('544d3e0d3ec3a49f14414af0a4e6ac2e9f86d9a2ed94e44d3fbc1095286d5b66')
 
 # With pacman 6 arriving a rebuild of yay will be necessary, if you upgrade pacman without upgrading yay at the same time, yay will not run after.
 # I'm bumping the pkgrel so it shows up on the upgrade list (and will do so when pacman transitions from staging->core)
