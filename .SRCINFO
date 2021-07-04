@@ -1,0 +1,14 @@
+pkgbase = vim-ack-git
+	pkgdesc = Vim plugin for the Perl module ack
+	pkgver = 1.0.9.r19.g36e40f9
+	pkgrel = 1
+	url = https://github.com/mileszs/ack.vim
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim-plugin-runtime
+	depends = ack
+	source = vim-ack-git::git+https://github.com/mileszs/ack.vim
+	sha256sums = SKIP
+
+pkgname = vim-ack-git
