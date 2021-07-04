@@ -25,7 +25,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  sed -i "s/env python/env python2/g" libraries/source/cxxtest-4.4/bin/cxxtestgen
 #  patch -Np1 -i "$srcdir/tmpfixgcsegfault3.patch"
 }
 
