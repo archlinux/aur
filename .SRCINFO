@@ -1,6 +1,6 @@
 pkgbase = bthandler
 	pkgdesc = A shell script to interact with bluetooth devices via dmenu
-	pkgver = r89.2fb4303
+	pkgver = r90.11b95a1
 	pkgrel = 1
 	url = https://github.com/AlexBocken/bthandler
 	arch = any

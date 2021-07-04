@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=bthandler
-pkgver=r89.2fb4303
+pkgver=r90.11b95a1
 pkgrel=1
 pkgdesc="A shell script to interact with bluetooth devices via dmenu"
 arch=(any)
@@ -20,13 +20,21 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 	mkdir -p /home/${USER}/.config/bt
-	cp config /home/${USER}/.config/bt/config
 	touch /home/${USER}/.config/bt/blacklist
 	touch /home/${USER}/.config/bt/alias
 	touch /home/${USER}/.config/bt/paired
 
 	#remove wrong older install location
 	rm -f $pkgdir/usr/bin/bt
+	#force override for older config setups
+	if grep -q '\#set to anything non-empty to enable' /home/${USER}/.config/bt/config
+	then
+		echo "config syntax has changed. overwritten old config."
+		echo "Please adjust manually again."
+		rm -f /home/${USER}/.config/bt/config
+	fi
+
+	cp config /home/${USER}/.config/bt/config
 
 	install -Dm755 bt $pkgdir/usr/local/bin/bt
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
