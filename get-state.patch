@@ -1,0 +1,13 @@
+diff --unified --recursive --text chkservice.orig/src/chk-systemd.cpp chkservice/src/chk-systemd.cpp
+--- chkservice.orig/src/chk-systemd.cpp	2019-11-01 20:50:21.000000000 +0100
++++ chkservice/src/chk-systemd.cpp	2021-07-04 16:49:24.069844808 +0200
+@@ -117,9 +117,6 @@
+   finish:
+     sd_bus_error_free(&error);
+     sd_bus_message_unref(busMessage);
+-    if (state < 0) {
+-      throw std::string(errorMessage);
+-    }
+ 
+   return status < 0 ? NULL : strdup(state);
+ }
