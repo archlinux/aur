@@ -61,6 +61,7 @@ pkgbase = quine-relay
 	depends = spl
 	depends = swi-prolog
 	depends = tcl
+	depends = tcc
 	depends = thue
 	depends = ucblogo
 	depends = vala
@@ -73,6 +74,6 @@ pkgbase = quine-relay
 	source = quine-relay::git://github.com/mame/quine-relay.git#branch=50
 	source = quine-relay.sh
 	b2sums = SKIP
-	b2sums = 143a883a909cfd01b5b22dc6b9478841ab9ade06d6907482cc2ab4244e5c5876d63befd83186613e69ea0d774541d4962748940195bfdea6ea9f2d531b8baedb
+	b2sums = 4ecea359a8253f4aacc885b5d7f6705bb94cd8bcf2e902ddce477c79982201c6da6966902968faa665748182d83fdecfa815889e380e8821a4ed009a694aab06
 
 pkgname = quine-relay
