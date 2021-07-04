@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-tariff-chaps-trains-cz+sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_12_12
+pkgver=2021_7_1
 pkgrel=1
 pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains."
 arch=(any)
