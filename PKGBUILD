@@ -27,20 +27,21 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/ar
 sha256sums=('497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  mv "pulseaudio-dlna-${pkgver}" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   sed -i '/dbus-python/d' setup.py
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   make manpage
   python setup.py build --build-lib=build/python \
-                  install --root="$pkgdir" --optimize=1
+                  install --root="${pkgdir}" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
