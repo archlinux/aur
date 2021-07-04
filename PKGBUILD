@@ -7,8 +7,8 @@ pkgdesc='Free music streaming client for Deezer based on the Deezloader/Deemix "
 arch=('x86_64')
 url="https://git.freezer.life/exttex/freezerpc"
 license=('GPL3')
-depends=()
-makedepends=('npm' 'git' 'sed' 'nss')
+depends=('nss')
+makedepends=('npm' 'git' 'sed')
 source=("${pkgname}::git+https://git.freezer.life/exttex/freezerpc.git"
 	"freezer.desktop")
 sha512sums=("SKIP"
