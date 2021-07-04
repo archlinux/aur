@@ -1,7 +1,7 @@
 # Maintainer: Sakamoto Shizue <supremeep at yandex dot ru>
 pkgname=cptest
-pkgver=1.1.0
-pkgrel=1
+pkgver=2.0.0
+pkgrel=2
 pkgdesc="A tool for competitve programming. Feed programs fixed inputs, compare their outputs against expected ones."
 arch=('x86_64')
 url="https://github.com/kuredoro/cptest"
