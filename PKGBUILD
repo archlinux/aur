@@ -1,7 +1,7 @@
 # Maintainer: Lyr <lyr-7d1h@pm.me>
 
 pkgname="sworkstyle"
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Swayest Workstyle - This tool will rename workspaces to the icons configured. Mainly meant for Sway WM" 
 arch=("x86_64")
