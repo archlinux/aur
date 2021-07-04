@@ -1,0 +1,17 @@
+pkgbase = pax-mc-git
+	pkgdesc = The MC modpack manager for professionals. VSC version.
+	pkgver = 1.6.0.r0.g42bdf30
+	pkgrel = 1
+	url = https://github.com/froehlicha/pax
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nim
+	makedepends = nimble
+	provides = pax-mc
+	conflicts = pax-mc-bin
+	conflicts = pax-mc
+	source = git+https://github.com/froehlichA/pax.git
+	sha256sums = SKIP
+
+pkgname = pax-mc-git
