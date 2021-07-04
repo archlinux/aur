@@ -2,12 +2,12 @@
 
 # PKGBUILD last time manually edited: At least on 2019-12-10.
 
-_year=19
+_year=21
 
 _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_12_12
+pkgver=2021_7_2
 pkgrel=1
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
