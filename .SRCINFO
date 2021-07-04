@@ -1,14 +1,19 @@
 pkgbase = solitude
 	pkgdesc = Tomes of Solitude, a game
 	pkgver = 1
-	pkgrel = 1
-	url = http://softwarebakery.com/maato/tos.html
+	pkgrel = 2
+	url = https://ludumdata.openfu.com/game/31869
 	install = solitude.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = unknown
+	makedepends = cmake
+	makedepends = glu
 	depends = sdl
-	source = http://softwarebakery.com/maato/files/ludumdare/tomes_of_solitude_1.tar.gz
+	depends = sdl_image
+	depends = sdl_mixer
+	source = https://github.com/bl00dy1837/Tomes-of-Solitude/raw/master/tomes_of_solitude_1.tar.gz
 	source = solitude.sh
 	source = solitude.png
 	source = solitude.desktop
@@ -18,4 +23,3 @@ pkgbase = solitude
 	sha256sums = d57be66a8d25618b31a0e12e41fb8debee52f2be87a0e8d2ad6ad0391a29e2a1
 
 pkgname = solitude
-
