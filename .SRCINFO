@@ -1,21 +1,22 @@
 pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	pkgdesc = Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP.
-	pkgver = 2019_12_12
+	pkgver = 2021_7_2
 	pkgrel = 1
 	epoch = 0
 	url = https://www.inprop.eu/Home/Downloads
 	arch = any
 	groups = idos-timetable
 	license = custom
+	makedepends = p7zip
 	makedepends = wget
 	depends = idos-timetable-browser
 	optdepends = idos-timetable-tariff-mhd: For showing prices.
 	optdepends = idos-timetable-maps-mhd: For displaying routes.
-	provides = idos-timetable-data-inprop-mhd-sk-all=2019_12_12
-	provides = idos-timetable-data=2019_12_12
-	provides = idos-timetable-data-mhd=2019_12_12
-	provides = idos-timetable-data-mhd-sk=2019_12_12
-	provides = idos-timetable-data-mhd-sk-all=2019_12_12
+	provides = idos-timetable-data-inprop-mhd-sk-all=2021_7_2
+	provides = idos-timetable-data=2021_7_2
+	provides = idos-timetable-data-mhd=2021_7_2
+	provides = idos-timetable-data-mhd-sk=2021_7_2
+	provides = idos-timetable-data-mhd-sk-all=2021_7_2
 	conflicts = idos-timetable-data-inprop-mhd-sk-all
 	conflicts = idos-timetable-data-mhd-banskabystrica
 	conflicts = idos-timetable-data-mhd-bratislava
@@ -35,7 +36,7 @@ pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	source = 22.exe::https://www.inprop.eu/Home/DownloadFile/22
 	source = 23.exe::https://www.inprop.eu/Home/DownloadFile/23
 	source = 24.exe::https://www.inprop.eu/Home/DownloadFile/24
-	source = 25.exe::https://www.inprop.eu/Home/DownloadFile/25
+	source = 77.exe::https://www.inprop.eu/Home/DownloadFile/77
 	source = 28.exe::https://www.inprop.eu/Home/DownloadFile/28
 	source = 26.exe::https://www.inprop.eu/Home/DownloadFile/26
 	source = 27.exe::https://www.inprop.eu/Home/DownloadFile/27
@@ -56,6 +57,7 @@ pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	source = 44.exe::https://www.inprop.eu/Home/DownloadFile/44
 	source = 43.exe::https://www.inprop.eu/Home/DownloadFile/43
 	source = 45.exe::https://www.inprop.eu/Home/DownloadFile/45
+	source = 70.exe::https://www.inprop.eu/Home/DownloadFile/70
 	source = 46.exe::https://www.inprop.eu/Home/DownloadFile/46
 	source = 48.exe::https://www.inprop.eu/Home/DownloadFile/48
 	source = 50.exe::https://www.inprop.eu/Home/DownloadFile/50
@@ -125,7 +127,7 @@ pkgbase = idos-timetable-data-inprop-mhd-sk-all-latest
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
 
 pkgname = idos-timetable-data-inprop-mhd-sk-all-latest
-

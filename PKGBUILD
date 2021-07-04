@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-16.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-data-inprop-mhd-sk-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_12_12
+pkgver=2021_7_2
 pkgrel=1
 pkgdesc="Public transport data of many Slovak cities for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
@@ -21,6 +21,7 @@ depends=(
         )
 
 makedepends=(
+  "p7zip"
   "wget"
 )
 
@@ -35,7 +36,7 @@ provides=(
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-mhd=${pkgver}"
   "idos-timetable-data-mhd-sk=${pkgver}"
-  
+
   "idos-timetable-data-mhd-sk-all=${pkgver}"
 )
 
@@ -79,6 +80,21 @@ pkgver() {
   wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed -E -e 's|<tr>|\n|g' -e 's|</tr>|\n|g' | grep -E '<span.*>MHD' | sed -E 's|^.*Updated:.*<span>([0-9]+/[0-9]+/[0-9]+).*$|\1|g' | awk -F/ '{print $3"_"$1"_"$2}' | sort -Vr | head -n1
 }
 
+prepare() {
+  cd "${srcdir}"
+  mkdir -p "unzip"
+  cd "unzip"
+  msg2 "Extracting .exe source files ..."
+  for _source in "${source[@]}"; do
+    _archive="$(sed 's|::.*$||' <<<"${_source}")"
+    case "${_archive}" in
+      *.exe)
+        printf "Extracting ${_archive}" ...
+        7z x "${srcdir}/${_archive}"
+      ;;
+    esac
+  done
+}
 
 package() {
   _instdirbase='/opt/idos-timetable'
@@ -86,7 +102,7 @@ package() {
 
   install -d -m755 "${_instdir}"
 
-  cp -av "${srcdir}"/Data* "${_instdir}"/
+  cp -av "${srcdir}"/unzip/Data* "${_instdir}"/
 
   chmod 755 "${_instdir}"/Data*
   chmod 644 "${_instdir}"/Data*/*
