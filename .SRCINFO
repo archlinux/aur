@@ -1,14 +1,13 @@
 pkgbase = nextcloud-app-breezedark
 	pkgdesc = Breeze Dark Theme for Nextcloud based on the Breeze Dark theme made by the KDE Project
-	pkgver = 21.0.7
+	pkgver = 21.0.9
 	pkgrel = 1
 	url = https://github.com/mwalbeck/nextcloud-breeze-dark
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = breezedark-v21.0.7.tar.gz::https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v21.0.7/breezedark.tar.gz
-	sha512sums = fb5581bd049a579ef50aa67aa74df9efee8f3fe28dae792e72c931a21f1b2af7adef6d937897c6b167aeccdccc0431506129b03646c94b7abb2904f56f020843
+	source = breezedark-v21.0.9.tar.gz::https://github.com/mwalbeck/nextcloud-breeze-dark/releases/download/v21.0.9/breezedark.tar.gz
+	sha512sums = 4e22954bcff33ed1da3c909783b758b9f17c4d220c1ca5a61c26c4ab7c77485bbaf87a8479749ff93874ddd8b8165c49ffd81f526c7f5cbe5afd08f55513f9b2
 
 pkgname = nextcloud-app-breezedark
-
