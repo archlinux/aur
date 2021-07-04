@@ -1,0 +1,13 @@
+post_install() {
+  ln -sf '/opt/Notion/notion-app' '/usr/bin/notion-app'
+
+  # SUID chrome-sandbox for Electron 5+
+  chmod 4755 '/opt/Notion/chrome-sandbox' || true
+
+  update-mime-database /usr/share/mime || true
+  update-desktop-database /usr/share/applications || true
+}
+
+post_remove() {
+  rm -f '/usr/bin/notion-app'
+}

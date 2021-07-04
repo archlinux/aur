@@ -1,81 +1,57 @@
 # Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app
-pkgver=2.0.16
-pkgrel=12
-epoch=2
+pkgver="2.0.16"
+pkgrel=13
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
-url="https://www.notion.so/desktop"
+url="https://github.com/notion-enhancer/notion-repackaged"
 license=('MIT')
-depends=('re2' 'gtk3' 'xdg-utils')
-makedepends=('imagemagick' 'p7zip' 'npm' 'nvm' 'python2' 'git' 'jq')
-source=("Notion-"${pkgver}".exe::https://desktop-release.notion-static.com/Notion%20Setup%20${pkgver}.exe" 
-        'notion-app.desktop')
-md5sums=('9f72284086cda3977f7f569dff3974d5'
-         '257f3106e5d9364ef2df557a656cd8e7')
 
-print_info() {
-    echo -e "\033[1;33m==> $@\033[0m"
-}
+depends=(
+  'c-ares'
+  'ffmpeg'
+  'gtk3'
+  'http-parser'
+  'libevent'
+  'libvpx'
+  'libxslt'
+  'libxss'
+  'minizip'
+  'nss'
+  're2'
+  'snappy'
+  'libnotify'
+  'libappindicator-gtk3'
+)
+makedepends=()
+provides=('notion-app')
+conflicts=('notion-app')
 
-_ensure_local_nvm() {
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="${srcdir}/.nvm"
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+notion_repackaged_ver="2.0.16-1"
+source=("https://github.com/notion-enhancer/notion-repackaged/releases/download/v${notion_repackaged_ver}/notion-app-${notion_repackaged_ver}.pacman")
+md5sums=('425831ab1296ff7e47f66d2cf3e1dd48')
 
-prepare() {
-  _ensure_local_nvm
-  nvm install 14.16.1
-}
-
-build() {
-  _ensure_local_nvm
-
-  print_info "Extracting app from Windows build..."
-  7z x -y "${srcdir}/Notion-"${pkgver}".exe" -o"${srcdir}/extracted-exe" >/dev/null
-  7z x -y "${srcdir}/extracted-exe/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/extracted-app" >/dev/null
-  
-  rm -rf "${srcdir}/package-rebuild"
-  mkdir -p "${srcdir}/package-rebuild"
-
-  print_info "Copying original app resources..."
-  cp -r "${srcdir}/extracted-app/resources/app/"* "${srcdir}/package-rebuild"
-
-  cd "${srcdir}/package-rebuild"
-  
-  print_info "Patching original sources for fixes..."
-  sed -i 's|process.platform === "win32"|process.platform !== "darwin"|g' main/main.js
-
-  print_info "Recreating package node_modules..."
-  rm -r node_modules
-  PATCHED_PACKAGE_JSON=$(jq '.dependencies.cld="2.7.0"' package.json)
-  echo "${PATCHED_PACKAGE_JSON}" > package.json
-
-  npm install --cache "${srcdir}/npm-cache"
-  node_modules/.bin/patch-package
-
-  print_info "Converting app icon..."
-  convert "icon.ico[0]" "icon.png" >/dev/null
-
-  print_info "Building electron package..."
-  npm install electron@11 electron-builder --save-dev --cache "${srcdir}/npm-cache"
-  node_modules/.bin/electron-builder --linux dir
-
-  cd "${srcdir}"
-}
+install=${pkgname}.install
 
 package() {
+  product_name="Notion"
+  package_name="notion-app"  
+
   install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/pixmaps"
-  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/opt/${product_name}"
 
-  cp -r "${srcdir}/package-rebuild/dist/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
-  cp "${srcdir}/package-rebuild/icon.png" "${pkgdir}/opt/${pkgname}/icon.png"
-  install -Dm644 "${srcdir}/package-rebuild/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-  ln -s "/opt/${pkgname}/notion" "${pkgdir}/usr/bin/${pkgname}"
+  cp -r "${srcdir}/opt/${product_name}" "${pkgdir}/opt/"
+
+  icons_dir_path="usr/share/icons/hicolor"
+  desktop_file_path="usr/share/applications/${package_name}.desktop"
+
+  for icon_size_name in $(ls ${srcdir}/${icons_dir_path}); do
+    icon_size_path="${icons_dir_path}/${icon_size_name}/apps"
+    install -d "${pkgdir}/${icon_size_path}"
+    install -m644 "${srcdir}/${icon_size_path}/${package_name}.png" \
+                  "${pkgdir}/${icon_size_path}/${package_name}.png"
+  done
+
+  install -Dm644 "${srcdir}/${desktop_file_path}" "${pkgdir}/${desktop_file_path}"
 }
-
