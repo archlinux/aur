@@ -31,8 +31,7 @@ build() {
     -DPROC_TARGET_NUMBER=2 \
 	-DWITH_LTO="ON"
 
-  NPROC=$(getconf _NPROCESSORS_ONLN)
-  make -j${NPROC} 
+  make
 }
 
 package() {
