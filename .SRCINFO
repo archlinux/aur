@@ -1,7 +1,7 @@
 pkgbase = djv
 	pkgdesc = Professional media review software for VFX, animation, and film production
 	pkgver = 2.0.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://djv.sourceforge.net/
 	arch = x86_64
 	license = CUSTOM
@@ -13,8 +13,8 @@ pkgbase = djv
 	depends = libjpeg
 	depends = libpng
 	depends = libtiff
-	depends = opencolorio
-	depends = openexr
+	depends = opencolorio1
+	depends = openexr>=3.0.0
 	depends = python
 	depends = rtaudio
 	depends = zlib
@@ -25,6 +25,8 @@ pkgbase = djv
 	source = drop-third-party.patch
 	source = rtaudio-hint.patch
 	source = ffmpeg-install.patch
+	source = OCIO.patch
+	source = OpenEXR.patch
 	sha256sums = bee18559d8a04b361376741900f21f69c637b51306d2b504b67f125dd14fd427
 	sha256sums = ca440bc9c1713e9edb17ed5adc0456441e69af25f803c834427f23a6991e2eca
 	sha256sums = e2bb0b7ebccd1e645d9a62f0c6dadafb94705766c787a2ea38b91b1da4e95cf7
@@ -32,6 +34,7 @@ pkgbase = djv
 	sha256sums = f002c2586bed5c97f78a329379a85988c270751fc46cd6e9dd05103a52728618
 	sha256sums = 50474a248f3259b6cf0a1439dc9fd4e34f211113e5f64116cb6df95bee8271f0
 	sha256sums = e923d4abd6d2233ac6464773ff771ea7115cba8ed3fc2d1955b2129ff014272e
+	sha256sums = b145f3e57adda6e2216d936d4f6e5466a28eb9300d049f259af5bffef23dfbde
+	sha256sums = 86d64d8390c0fdc4f944ca9b55d7d7803c7f018d1f0e12098ffebc44ccbb2b00
 
 pkgname = djv
-

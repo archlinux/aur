@@ -1,0 +1,107 @@
+diff --color -ruN DJV-2.0.8/CMakeLists.txt DJV-2.0.8_patched/CMakeLists.txt
+--- DJV-2.0.8/CMakeLists.txt	2021-07-04 12:54:25.048818457 +0200
++++ DJV-2.0.8_patched/CMakeLists.txt	2021-07-04 12:35:49.288831515 +0200
+@@ -142,7 +142,7 @@
+     PicoJSON
+     #OpenAL
+     RtAudio
+-    IlmBase
++    Imath
+     PNG
+     OCIO
+     #OTIO
+@@ -179,7 +179,6 @@
+ set(JPEG_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(TIFF_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(PNG_SHARED_LIBS ${BUILD_SHARED_LIBS})
+-set(ILMBASE_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(OPENEXR_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(OCIO_SHARED_LIBS ${BUILD_SHARED_LIBS})
+ set(OTIO_SHARED_LIBS ${BUILD_SHARED_LIBS})
+diff --color -ruN DJV-2.0.8/lib/djvAV/CMakeLists.txt DJV-2.0.8_patched/lib/djvAV/CMakeLists.txt
+--- DJV-2.0.8/lib/djvAV/CMakeLists.txt	2020-06-12 04:11:18.000000000 +0200
++++ DJV-2.0.8_patched/lib/djvAV/CMakeLists.txt	2021-07-04 12:42:12.658827028 +0200
+@@ -167,8 +167,6 @@
+     glad
+     GLFW
+     FreeType
+-    IlmBase::Imath
+-    IlmBase::IlmThread
+     OCIO
+     #OpenAL
+     RtAudio
+@@ -184,7 +182,7 @@
+     set(LIBRARIES ${LIBRARIES} PNG)
+ endif()
+ if(OpenEXR_FOUND)
+-    set(LIBRARIES ${LIBRARIES} OpenEXR::IlmImf)
++    set(LIBRARIES ${LIBRARIES} OpenEXR::OpenEXR)
+     target_compile_definitions(djvAV PUBLIC OpenEXR_FOUND)
+ endif()
+ if(TIFF_FOUND)
+diff --color -ruN DJV-2.0.8/lib/djvAV/Color.cpp DJV-2.0.8_patched/lib/djvAV/Color.cpp
+--- DJV-2.0.8/lib/djvAV/Color.cpp	2020-06-12 04:11:18.000000000 +0200
++++ DJV-2.0.8_patched/lib/djvAV/Color.cpp	2021-07-04 12:43:54.798825833 +0200
+@@ -373,7 +373,9 @@
+                 for (size_t i = 0; i < channelCount; ++i)
+                 {
+                     AV::Image::F16_T tmp = 0.F;
+-                    is >> tmp;
++                    float workaroud;
++                    is >> workaroud;
++                    tmp = half(workaroud);
+                     value.setF16(tmp, i);
+                 }
+                 break;
+diff --color -ruN DJV-2.0.8/lib/djvAV/OpenEXR.h DJV-2.0.8_patched/lib/djvAV/OpenEXR.h
+--- DJV-2.0.8/lib/djvAV/OpenEXR.h	2020-06-12 04:11:18.000000000 +0200
++++ DJV-2.0.8_patched/lib/djvAV/OpenEXR.h	2021-07-04 12:37:45.808830151 +0200
+@@ -142,8 +142,8 @@
+                     bool isMemoryMapped() const override;
+                     char* readMemoryMapped(int n) override;
+                     bool read(char c[], int n) override;
+-                    Imf::Int64 tellg() override;
+-                    void seekg(Imf::Int64 pos) override;
++                    uint64_t tellg() override;
++                    void seekg(uint64_t pos) override;
+ 
+                 private:
+                     DJV_PRIVATE();
+diff --color -ruN DJV-2.0.8/lib/djvAV/OpenEXRRead.cpp DJV-2.0.8_patched/lib/djvAV/OpenEXRRead.cpp
+--- DJV-2.0.8/lib/djvAV/OpenEXRRead.cpp	2020-06-12 04:11:18.000000000 +0200
++++ DJV-2.0.8_patched/lib/djvAV/OpenEXRRead.cpp	2021-07-04 12:39:58.008828604 +0200
+@@ -13,6 +13,7 @@
+ #include <ImfHeader.h>
+ #include <ImfInputFile.h>
+ #include <ImfRgbaYca.h>
++#include <ImfFrameBuffer.h>
+ 
+ using namespace djv::Core;
+ 
+@@ -75,12 +76,12 @@
+                     return p.pos < p.size;
+                 }
+ 
+-                Imf::Int64 MemoryMappedIStream::tellg()
++                uint64_t MemoryMappedIStream::tellg()
+                 {
+                     return _p->pos;
+                 }
+ 
+-                void MemoryMappedIStream::seekg(Imf::Int64 pos)
++                void MemoryMappedIStream::seekg(int64_t pos)
+                 {
+                     _p->pos = pos;
+                 }
+diff --color -ruN DJV-2.0.8/lib/djvAV/Pixel.h DJV-2.0.8_patched/lib/djvAV/Pixel.h
+--- DJV-2.0.8/lib/djvAV/Pixel.h	2020-06-12 04:11:18.000000000 +0200
++++ DJV-2.0.8_patched/lib/djvAV/Pixel.h	2021-07-04 13:01:01.748813814 +0200
+@@ -10,7 +10,7 @@
+ #include <djvCore/PicoJSON.h>
+ #include <djvCore/Range.h>
+ 
+-#include <OpenEXR/half.h>
++#include <Imath/half.h>
+ 
+ #include <limits>
+ 

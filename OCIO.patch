@@ -1,0 +1,17 @@
+--- FindOCIO.cmake	2020-06-12 04:11:18.000000000 +0200
++++ FindOCIO.cmake.patched	2021-07-04 12:25:14.498838944 +0200
+@@ -17,12 +17,12 @@
+ 
+ find_path(OCIO_INCLUDE_DIR
+     NAMES OpenColorIO.h
+-    PATH_SUFFIXES OpenColorIO)
++    PATH_SUFFIXES OpenColorIO1)
+ set(OCIO_INCLUDE_DIRS
+     ${OCIO_INCLUDE_DIR})
+ 
+ find_library(
+-	OCIO_LIBRARY NAMES OpenColorIO
++	OCIO_LIBRARY NAMES OpenColorIO1
+ 	PATH_SUFFIXES static)
+ set(OCIO_LIBRARIES
+     ${OCIO_LIBRARY})
