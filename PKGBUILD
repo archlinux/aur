@@ -2,7 +2,7 @@
 # Contributor : Elvin L <elvin@eelviny.me>
 
 pkgname=rocrail
-pkgver=1559
+pkgver=1621
 pkgrel=2.1
 pkgdesc="Rocrail - Innovative Model Railroad Control System"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Proprietary')
 depends=('wxgtk2' 'libusb' 'wxgtk-common')
 makedepends=()
 source=("https://launchpad.net/rocrail/trunk/2.1/+download/Rocrail-$pkgver-archlinux-$arch.zip")
-md5sums=('a0a898e81cb65e4cb2b4b06be04f96bc')
+md5sums=('dc8ebea1d8ee3a8b9d9e92a7db55760a')
 
 package() {
   msg "Installing..."
