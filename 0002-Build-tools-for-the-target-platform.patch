@@ -1,4 +1,4 @@
-From d254521e709f26b0a77c4d0f98f45dcf716dbf06 Mon Sep 17 00:00:00 2001
+From 9fe23372cb7fd6b8b0e2a9000a0156501dd3136d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
 Subject: [PATCH 2/2] Build tools for the target platform
