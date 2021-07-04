@@ -1,13 +1,13 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2016-12-11.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-additionalinfo-chaps-all
 pkgname="${_pkgname}"
 epoch=0
 _pkgver=1.0
-pkgver=1.0
-pkgrel=4
+pkgver="${_pkgver}"
+pkgrel=5
 pkgdesc="Metapackage depending on all the idos-timetable-additionalinfo-chaps-* additional information packages."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
@@ -18,19 +18,16 @@ groups=(
        )
 
 depends=(
-         "idos-timetable-additionalinfo-chaps-trains-latest"
-         "idos-timetable-additionalinfo-chaps-bus-latest"
-         "idos-timetable-additionalinfo-chaps-mhd-idsjmk-latest"
-         "idos-timetable-additionalinfo-chaps-mhd-odis-latest"
-         "idos-timetable-additionalinfo-chaps-mhd-pid-latest"
+         "idos-timetable-additionalinfo-chaps-trains"
+         "idos-timetable-additionalinfo-chaps-bus"
+         "idos-timetable-additionalinfo-chaps-mhd-idsjmk"
+         "idos-timetable-additionalinfo-chaps-mhd-odis"
+         "idos-timetable-additionalinfo-chaps-mhd-pid"
         )
 
 makedepends=()
-
 optdepends=()
-
 provides=()
-
 conflicts=()
 
 source=("copying.txt")

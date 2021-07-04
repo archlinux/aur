@@ -1,19 +1,18 @@
 pkgbase = idos-timetable-additionalinfo-chaps-all
 	pkgdesc = Metapackage depending on all the idos-timetable-additionalinfo-chaps-* additional information packages.
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
 	groups = idos-timetable
 	license = custom
-	depends = idos-timetable-additionalinfo-chaps-trains-latest
-	depends = idos-timetable-additionalinfo-chaps-bus-latest
-	depends = idos-timetable-additionalinfo-chaps-mhd-idsjmk-latest
-	depends = idos-timetable-additionalinfo-chaps-mhd-odis-latest
-	depends = idos-timetable-additionalinfo-chaps-mhd-pid-latest
+	depends = idos-timetable-additionalinfo-chaps-trains
+	depends = idos-timetable-additionalinfo-chaps-bus
+	depends = idos-timetable-additionalinfo-chaps-mhd-idsjmk
+	depends = idos-timetable-additionalinfo-chaps-mhd-odis
+	depends = idos-timetable-additionalinfo-chaps-mhd-pid
 	source = copying.txt
 	sha256sums = 7faf4c60d0975bd4892b41f0e70888880fb56abe3e7c0dac16f765aefbc32dd3
 
 pkgname = idos-timetable-additionalinfo-chaps-all
-
