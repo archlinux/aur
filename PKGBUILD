@@ -1,6 +1,6 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=bthandler
-pkgver=r88.1223574
+pkgver=r89.2fb4303
 pkgrel=1
 pkgdesc="A shell script to interact with bluetooth devices via dmenu"
 arch=(any)
