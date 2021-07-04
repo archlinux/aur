@@ -1,0 +1,7 @@
+
+post_install() {
+  echo "==> Copy the configuration files to your home directory."
+  echo ""
+  echo "    $ cp -r /usr/share/winbar/winbar ~/.config/winbar"
+  echo ""
+}

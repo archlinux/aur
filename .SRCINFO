@@ -1,0 +1,26 @@
+pkgbase = winbar-git
+	pkgdesc = A familiar X11 panel/dock to ease new linux users transition
+	pkgver = r144.g6f3069f
+	pkgrel = 1
+	url = https://github.com/jmanc3/winbar
+	install = winbar.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = unzip
+	depends = libconfig
+	depends = libpulse
+	depends = librsvg
+	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
+	depends = xcb-util-wm
+	optdepends = papirus-icon-theme
+	optdepends = pavucontrol: volume settings
+	optdepends = wpa_supplicant_gui: gui wireless settings
+	provides = winbar
+	conflicts = winbar
+	source = winbar::git+https://github.com/jmanc3/winbar.git
+	sha256sums = SKIP
+
+pkgname = winbar-git
