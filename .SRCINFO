@@ -1,0 +1,16 @@
+pkgbase = easy-copy
+	pkgdesc = easy-copy (1) - easier file handling
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/scrouthtv/easy-copy
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = go
+	conflicts = easycopy-git
+	source = easy-copy-0.4.5.tar.gz::https://github.com/scrouthtv/easy-copy/archive/refs/tags/v0.4.5-beta.tar.gz
+	sha512sums = dfdf6f1827c217aa0bac20b0664a0c9f38fe2f7dd8608a59cc89224a2a312e36a3fe764e9f6bd0eedfed5044af08832832f52ff4ec472b82ef665264c5304f65
+
+pkgname = easy-copy
