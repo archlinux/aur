@@ -1,0 +1,15 @@
+pkgbase = fishnet-git
+	pkgdesc = Distributed Stockfish analysis for lichess.org
+	pkgver = 2.3.4.dev_r1413.g2bae165
+	pkgrel = 1
+	url = https://github.com/niklasf/fishnet
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rust
+	provides = fishnet
+	conflicts = fishnet
+	source = git+https://github.com/niklasf/fishnet.git
+	sha256sums = SKIP
+
+pkgname = fishnet-git
