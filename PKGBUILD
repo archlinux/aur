@@ -14,7 +14,7 @@ makedepends=('gcc' 'make' 'cmake' 'qt5-tools')
 conflicts=('openambit-git')
 options=('!strip' '!emptydirs')
  
-source=("$pkgname::git+https://github.com/openambitproject/${pkgname}.git#tag=${pkgver}")
+source=("$pkgname::git+https://github.com/openambitproject/${pkgname}.git#branch=master")
  
 sha512sums=('SKIP')
  

@@ -15,7 +15,7 @@ pkgbase = openambit
 	conflicts = openambit-git
 	options = !strip
 	options = !emptydirs
-	source = openambit::git+https://github.com/openambitproject/openambit.git#tag=0.5
+	source = openambit::git+https://github.com/openambitproject/openambit.git#branch=master
 	sha512sums = SKIP
 
 pkgname = openambit
