@@ -1,7 +1,7 @@
 pkgbase = libjxl
 	pkgdesc = JPEG XL image format reference implementation
 	pkgver = 0.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = Apache
@@ -59,12 +59,13 @@ pkgname = libjxl
 	optdepends = openexr: for CLI tools
 	provides = libjpeg-xl
 	provides = libjxl.so
+	provides = libjxl_threads.so
 	conflicts = libjpeg-xl
 	replaces = libjpeg-xl
 
 pkgname = libjxl-doc
 	pkgdesc = JPEG XL image format reference implementation (documentation)
 	arch = any
-	provides = libjeg-xl-doc
+	provides = libjpeg-xl-doc
 	conflicts = libjpeg-xl-doc
 	replaces = libjpeg-xl-doc

@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -91,18 +91,18 @@ package_libjxl() {
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
-    provides=('libjpeg-xl' 'libjxl.so')
+    provides=('libjpeg-xl' 'libjxl.so' 'libjxl_threads.so')
     conflicts=('libjpeg-xl')
     replaces=('libjpeg-xl')
     
     make -C build DESTDIR="$pkgdir" install
-    rm -rf "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
+    rm -r "${pkgdir}/usr"/{include/{contrib,hwy},lib/{pkgconfig/,}libhwy*}
 }
 
 package_libjxl-doc() {
     pkgdesc+=' (documentation)'
     arch=('any')
-    provides=('libjeg-xl-doc')
+    provides=('libjpeg-xl-doc')
     conflicts=('libjpeg-xl-doc')
     replaces=('libjpeg-xl-doc')
     
