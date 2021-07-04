@@ -1,7 +1,7 @@
 pkgbase = easy-copy
-	pkgdesc = modern alternative to coreutils' file handling
+	pkgdesc = modern alternative to coreutils' file handling - beta version
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scrouthtv/easy-copy
 	arch = i686
 	arch = x86_64

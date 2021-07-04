@@ -1,8 +1,8 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=easy-copy
 pkgver=0.4.5
-pkgrel=2
-pkgdesc="modern alternative to coreutils' file handling"
+pkgrel=3
+pkgdesc="modern alternative to coreutils' file handling - beta version"
 license=('GPL3')
 url="https://github.com/scrouthtv/easy-copy"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -48,6 +48,9 @@ package() {
 }
 
 post_install() {
+	echo "WARNING: easy-copy is still in development"
+	echo "Be sure to back up any important files before copying them"
+	echo "with easy-copy."
 	echo "For more configuration, copy the default config"
 	echo "file at /usr/share/easycopy/ec.conf to ~/.config/ec.conf"
 	echo "and edit it."
