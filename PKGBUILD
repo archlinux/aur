@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-tree-sitter-git
-pkgver=r1469.8eb29ef
+pkgver=r1488.be8f656
 pkgrel=2
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
@@ -55,7 +55,7 @@ install="$pkgname.install"
 source=("$pkgname::git+$url"
         'no_install.patch')
 sha256sums=('SKIP'
-            '5531574b77217a2766626ef2c05dac307e650dc830a613bada297e17abcb3e3c')
+            '797053e726692b6017f5c121f433213feb717bdb718798abaf7c73d9818ae941')
 
 pkgver() {
 	cd "$pkgname"

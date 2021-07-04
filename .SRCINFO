@@ -1,6 +1,6 @@
 pkgbase = neovim-tree-sitter-git
 	pkgdesc = Neovim tree-sitter configurations and abstraction layer
-	pkgver = r1469.8eb29ef
+	pkgver = r1488.be8f656
 	pkgrel = 2
 	url = https://github.com/nvim-treesitter/nvim-treesitter
 	install = neovim-tree-sitter-git.install
@@ -54,6 +54,6 @@ pkgbase = neovim-tree-sitter-git
 	source = neovim-tree-sitter-git::git+https://github.com/nvim-treesitter/nvim-treesitter
 	source = no_install.patch
 	sha256sums = SKIP
-	sha256sums = 5531574b77217a2766626ef2c05dac307e650dc830a613bada297e17abcb3e3c
+	sha256sums = 797053e726692b6017f5c121f433213feb717bdb718798abaf7c73d9818ae941
 
 pkgname = neovim-tree-sitter-git
