@@ -1,7 +1,7 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc-git
 pkgver=1.6.0.r0.g42bdf30
-pkgrel=1
+pkgrel=2
 pkgdesc="The MC modpack manager for professionals. VSC version."
 arch=('x86_64')
 url="https://github.com/froehlicha/pax"
@@ -15,7 +15,7 @@ source=("git+https://github.com/froehlichA/pax.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "pax"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
