@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta
 	pkgdesc = Standalone mail and news reader from mozilla.org — Beta version
-	pkgver = 90.0b1
+	pkgver = 90.0b3
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird/
 	arch = x86_64
@@ -77,19 +77,19 @@ pkgbase = thunderbird-beta
 	depends = gnupg
 	optdepends = libcanberra: sound support
 	optdepends = libotr: OTR support for active one-to-one chats
-	provides = thunderbird=90.0b1
+	provides = thunderbird=90.0b3
 	conflicts = thunderbird
 	conflicts = thunderbird-beta-bin
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/90.0b1/source/thunderbird-90.0b1.source.tar.xz
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/90.0b1/source/thunderbird-90.0b1.source.tar.xz.asc
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/90.0b3/source/thunderbird-90.0b3.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/90.0b3/source/thunderbird-90.0b3.source.tar.xz.asc
 	source = thunderbird-beta.desktop
 	source = vendor-prefs.js
 	source = distribution.ini
 	source = mozconfig.cfg
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 10f577c43663f72aa5d270f810d081c88b7edd9784e37cb61e877979809c8637
+	sha256sums = bac200348470e50f58ea4e170db90c6749bb1227137869f6758be04f8892005e
 	sha256sums = SKIP
 	sha256sums = 4c8cc465953be36639a2bff7544c42cc45cc56c460a1a350d0656b43cc7b2eea
 	sha256sums = fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85
