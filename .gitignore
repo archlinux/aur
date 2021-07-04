@@ -5,3 +5,4 @@ src/*
 *.zip
 *.zst
 /EmuConfigurator/
+/emuflight-configurator/

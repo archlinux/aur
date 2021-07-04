@@ -2,7 +2,7 @@
 
 pkgname=emuflight-configurator
 _realname=EmuConfigurator
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Emuflight flight control system"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/emuflight/EmuConfigurator"
 license=('GPL3')
 depends=('nwjs-bin')
 makedepends=('yarn' 'npm' 'git')
-source=("git+https://github.com/emuflight/EmuConfigurator.git#tag=$pkgver"
+source=("${pkgname}::git+https://github.com/emuflight/EmuConfigurator.git#tag=$pkgver"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha512sums=('SKIP'

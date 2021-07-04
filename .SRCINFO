@@ -1,6 +1,6 @@
 pkgbase = emuflight-configurator
 	pkgdesc = Crossplatform configuration tool for the Emuflight flight control system
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/emuflight/EmuConfigurator
 	install = emuflight-configurator.install
@@ -11,7 +11,7 @@ pkgbase = emuflight-configurator
 	makedepends = git
 	depends = nwjs-bin
 	options = !strip
-	source = git+https://github.com/emuflight/EmuConfigurator.git#tag=0.3.5
+	source = emuflight-configurator::git+https://github.com/emuflight/EmuConfigurator.git#tag=0.3.6
 	source = emuflight-configurator.sh
 	source = emuflight-configurator.desktop
 	sha512sums = SKIP
@@ -19,4 +19,3 @@ pkgbase = emuflight-configurator
 	sha512sums = f2e696ae34403f2b44f4546e24948809dad1e17b563ab556e834473ee95ea934275da538825dd65afaa43882dac4d28aae8acdfbf0960f44bbad72da461eb30f
 
 pkgname = emuflight-configurator
-
