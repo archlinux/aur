@@ -1,7 +1,7 @@
 # Maintainer: scrouthtv <scrouthtv 0x40 gmail 0x2e com>
 pkgname=easy-copy
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="modern alternative to coreutils' file handling"
 license=('GPL3')
 url="https://github.com/scrouthtv/easy-copy"
@@ -15,7 +15,14 @@ sha512sums=("dfdf6f1827c217aa0bac20b0664a0c9f38fe2f7dd8608a59cc89224a2a312e36a3f
 
 build() {
   cd "$pkgname-$pkgver-beta"
-  go build -trimpath -buildmode=pie -mod=readonly .
+
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  go build .
 
 	gzip doc/easycopy.1
 	gzip doc/ec.conf.5
