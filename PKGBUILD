@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 pkgname=bthandler
-pkgver=r87.4ed78ac
-pkgrel=2
+pkgver=r88.1223574
+pkgrel=1
 pkgdesc="A shell script to interact with bluetooth devices via dmenu"
 arch=(any)
 depends=('bluez-utils')
