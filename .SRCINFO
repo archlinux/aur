@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-iptvsimple
 	pkgdesc = IPTV Simple PVR client addon for Kodi
-	pkgver = 7.6.5
+	pkgver = 7.6.6
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = armv6h
@@ -14,10 +14,9 @@ pkgbase = kodi-addon-pvr-iptvsimple
 	makedepends = git
 	depends = kodi
 	conflicts = kodi-addon-pvr-iptvsimple-git
-	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/7.6.5-Matrix.tar.gz
+	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/7.6.6-Matrix.tar.gz
 	source = https://github.com/xbmc/xbmc/archive/19.1-Matrix.tar.gz
-	sha256sums = 2b46ab509e26fb4a60759e78f9f13808f5bb2c67a03a62c58ebcadb31c26e6e1
+	sha256sums = 03014900663b0ba323b651169b2da1ff4e909622618ee09100ce3b63cc93e79c
 	sha256sums = 195a916a32057e259e6f42b49ba8f07cc6253460018851a52deb058ae938c58c
 
 pkgname = kodi-addon-pvr-iptvsimple
-
