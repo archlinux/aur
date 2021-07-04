@@ -1,0 +1,6 @@
+src/
+pkg/
+python-aiohttp-session-*.pkg.tar.*
+python-aiohttp-session-*.log
+aiohttp-session-*.tar.gz
+*-namcap.log
