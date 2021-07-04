@@ -1,0 +1,24 @@
+pkgbase = citramanik-qt-git
+	pkgdesc = Your next way to export your Inkscape work for all purpose quickly
+	pkgver = 1.1.0.r9.1f8cde8
+	pkgrel = 1
+	url = https://citramanik.dev-is.my.id
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-appdirs
+	depends = python-lxml
+	depends = python-pillow
+	depends = inkscape
+	depends = ghostscript
+	provides = citramanik-qt-git
+	conflicts = citramanik-qt-git
+	conflicts = citramanik-qt-bin
+	replaces = citramanik-qt-git
+	replaces = citramanik-qt-bin
+	source = citramanik-qt-git::git+https://github.com/devlovers-id/citramanik-qt
+	md5sums = SKIP
+
+pkgname = citramanik-qt-git
