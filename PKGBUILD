@@ -9,7 +9,7 @@ _lua=luajit
 _pkgname=powder-toy
 pkgname="${_pkgname}-snapshot"
 pkgver=218
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
 provides=("$_pkgname")
@@ -18,23 +18,16 @@ depends=('glibc' 'libx11' 'sdl2' "$_lua" 'fftw' 'zlib' 'curl' 'hicolor-icon-them
 makedepends=('meson' 'ninja' 'libicns')
 url="https://powdertoy.co.uk/"
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ThePowderToy/The-Powder-Toy/archive/refs/tags/snapshot-${pkgver}.tar.gz"
-        "${pkgname}.patch"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The-Powder-Toy/The-Powder-Toy/archive/refs/tags/snapshot-${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}-open.desktop"
         "${pkgname}-ptsave.desktop")
 sha256sums=('5ed06abffbc63440d4509ad2864ec236028fece06a2b5224c732b6ddfa8431f2'
-            '2b3a51ed0f41be065da71c6f9b48d4b8e75111dd8ea6028b5ad069817c31b7bf'
             'b5d181c3141715b7dced8813cae6d07d2adc03bca2a7efe527592740de2d45e2'
             '265f530be7597fcc7bbaf2690fd517fe4f8f18372c808a90ddef49a604c8d455'
             '398f6d068dd37e12989f4132ea5966886b14036bac07a589991b283d242b4ca5'
             'fcbf035d286d805dced55f147d649aa0bc74d3be873d5430de92d175d9f59431')
-
-prepare() {
-  cd "The-Powder-Toy-snapshot-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/${pkgname}.patch"
-}
 
 build() {
   cd "The-Powder-Toy-snapshot-${pkgver}"
@@ -88,6 +81,7 @@ package() {
   install -Dm755 "build/powder" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
   install -Dm644 "resources/powdertoy-save.xml" "${pkgdir}/usr/share/mime/packages/${_pkgname}-save.xml"
   install -Dm644 "resources/powder.appdata.xml" "${pkgdir}/usr/share/metainfo/${_pkgname}.appdata.xml"
+  install -Dm644 "resources/powder.man" "${pkgdir}/usr/share/man/man6/${_pkgname}.6"
 
   local icon_size
   for icon_size in 16 24 32 48 128 256; do
