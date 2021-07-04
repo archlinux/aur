@@ -3,7 +3,7 @@
 
 _pkgname='klavaro'
 pkgname="${_pkgname}-svn"
-pkgver=3.12.r134
+pkgver=3.12.r135
 pkgrel=1
 pkgdesc='Flexible touch typing tutor that supports customizable keyboard layouts'
 arch=('x86_64')
