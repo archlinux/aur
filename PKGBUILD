@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full-git
 pkgname=('imagemagick-full-git' 'imagemagick-full-doc-git')
-pkgver=7.0.11.1.r2.g1e7d30de2
+pkgver=7.1.0.2.r11.g81e4de318
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -30,7 +30,7 @@ makedepends=(
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
         'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
-        'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjpeg-xl' 'libumem-git'
+        'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjxl' 'libumem-git'
 )
 source=('git+https://github.com/ImageMagick/ImageMagick.git#branch=main'
         'arch-fonts.diff')
@@ -130,7 +130,7 @@ package_imagemagick-full-git() {
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
             'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
         # AUR:
-            'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjpeg-xl' 'libumem-git'
+            'autotrace-nomagick' 'dmalloc' 'flif' 'libfpx' 'libjxl' 'libumem-git'
     )
     optdepends=('imagemagick-full-doc-git: manual and API docs')
     backup=("etc/ImageMagick-${pkgver%%.*}"/{colors,delegates,log,mime,policy,quantization-table,thresholds,type{,-dejavu,-ghostscript}}.xml)
