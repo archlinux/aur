@@ -4,7 +4,7 @@
 
 pkgname=opencv-cuda
 pkgver=4.5.2
-pkgrel=2
+pkgrel=3
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -12,8 +12,8 @@ arch=(x86_64)
 license=(BSD)
 url="http://opencv.org/"
 options=(staticlibs)
-depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas libgphoto2 jasper cuda)
-makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 gtk3 nvidia-sdk)
+depends=(intel-tbb openexr gst-plugins-base libdc1394 cblas lapack libgphoto2 jasper cuda)
+makedepends=(cmake python-numpy python2-numpy mesa ninja eigen hdf5 lapacke gtk3 nvidia-sdk)
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module'
             'hdf5: support for HDF5 format'
@@ -21,17 +21,19 @@ optdepends=('opencv-samples: samples'
             'python-numpy: Python 3 interface'
             'python2-numpy: Python 2 interface')
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
-        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
+	"https://raw.githubusercontent.com/archlinux/svntogit-packages/29adf974618f75894f9b03e1519281a5e0c8824e/trunk/opencv-lapack-3.10.patch")
 sha256sums=('be976b9ef14f1deaa282fb6e30d75aa8016a2d5c1f08e85795c235148940d753'
-            '9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a')
+            '9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a'
+            'f83c64f2731a39910d0d4a48898dd04e4aca5c22f746b7b0ead003992ae11199')
 
 prepare() {
   msg2 "Patching sources for CUDA v10"
   sed -i 's|nvcuvid.h|nvidia-sdk/nvcuvid.h|' opencv_contrib-$pkgver/modules/cud*/src/*.hpp
 
   # See https://github.com/opencv/opencv/issues/19846
-#  msg2 "Patching sources for lapack 3.9.1"
-#  find "opencv-$pkgver" -name '*.cpp' -exec sed -i 's/dgels_/LAPACK_dgels/g; s/sgels_/LAPACK_sgels/g; s/dgesdd_/LAPACK_dgesdd/g; s/sgesdd_/LAPACK_sgesdd/g' {} \;
+  msg2 "Patching sources for lapack 3.10.0"
+  patch -d opencv-$pkgver -p1 < opencv-lapack-3.10.patch
 
   mkdir -p build
 }
@@ -66,11 +68,10 @@ build() {
     -DOPENCV_SKIP_PYTHON_LOADER=ON \
     -DEIGEN_INCLUDE_PATH=/usr/include/eigen3 \
     -DOPENCV_PYTHON3_INSTALL_PATH=$_pythonpath \
-    -DOPENCV_GENERATE_PKGCONFIG=ON \
-    -DWITH_LAPACK=OFF
-    #-DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
-    #-DLAPACK_CBLAS_H="/usr/include/cblas.h" \
-    #-DLAPACK_LAPACKE_H="/usr/include/lapacke.h"
+    -DLAPACK_LIBRARIES="/usr/lib/liblapack.so;/usr/lib/libblas.so;/usr/lib/libcblas.so" \
+    -DLAPACK_CBLAS_H="/usr/include/cblas.h" \
+    -DLAPACK_LAPACKE_H="/usr/include/lapacke.h" \
+    -DOPENCV_GENERATE_PKGCONFIG=ON
   ninja
 }
 
