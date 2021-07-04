@@ -7,7 +7,7 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=11.6.0
+pkgver=11.7.0
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
-sha256sums=('75a3ded4d3e2e047f0f3745301fe6972bf0a6ce41629a5c82f914c37a9febec5')
+sha256sums=('c3ede937e6a2130c191329df0e4080452070575b232a2d45291f429e0462a407')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
