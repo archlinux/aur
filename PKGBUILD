@@ -2,7 +2,7 @@
 
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.6.0.r1111.8324615
+pkgver=2.8.0.r1136.468d841
 pkgrel=1
 pkgdesc="A free software percussion synthesizer (git version)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://gitlab.com/iurie-sw/geonkick"
 license=('GPL3')
 groups=('pro-audio' 'lv2-plugins')
 depends=('cairo' 'hicolor-icon-theme' 'libsndfile')
-makedepends=('cmake' 'jack' 'lv2' 'rapidjson' 'redkite>=1.3.0' 'sord')
+makedepends=('cmake' 'jack' 'lv2' 'rapidjson' 'sord')
 optdepends=('jack: for stand-alone application')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -30,8 +30,7 @@ build() {
   cd build
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DGKICK_REDKITE_SDK_PATH=/usr \
+    -DCMAKE_INSTALL_PREFIX=/usr
     ..
   make
 }

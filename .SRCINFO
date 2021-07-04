@@ -1,6 +1,6 @@
 pkgbase = geonkick-git
 	pkgdesc = A free software percussion synthesizer (git version)
-	pkgver = 2.6.0.r1111.8324615
+	pkgver = 2.8.0.r1136.468d841
 	pkgrel = 1
 	url = https://gitlab.com/iurie-sw/geonkick
 	arch = x86_64
