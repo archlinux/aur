@@ -1,7 +1,7 @@
 pkgbase = affenspiel
 	pkgdesc = It's a puzzle type game for X11.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.artsoft.org/affenspiel/
 	arch = any
 	license = GPL

@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=affenspiel
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="It's a puzzle type game for X11."
 arch=('any')
 url="https://www.artsoft.org/affenspiel/"
@@ -26,10 +26,12 @@ build() {
 
 package() {
 	cd "${srcdir}"/"${pkgname}"
-	mkdir -p "${pkgdir}"/usr/bin
-	mkdir -p "${pkgdir}"/usr/share/doc/${pkgname}
-  mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
+	mkdir -p "${pkgdir}/usr/bin"
+	mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/64x64/apps/"
+  mkdir -p "${pkgdir}/usr/share/applications/"
 	install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin
 	install -Dm644 README "${pkgdir}"/usr/share/doc/${pkgname} 
   install -Dm644 "${startdir}/${pkgname}.png" ${pkgdir}/usr/share/icons/hicolor/72x72/apps/${pkgname}.png
+  install -Dm644 "${startdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
