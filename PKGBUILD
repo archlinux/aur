@@ -1,22 +1,22 @@
 # Maintainer: 1400Blank <1400blank@gmail.com>
 
 pkgbase=linux-fix_navi_reset
-pkgver=5.12.8.arch1
+pkgver=5.12.14.arch1
 pkgrel=1
 pkgdesc='experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
+url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole
+  bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   navi_reset.patch
 )
@@ -27,8 +27,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '4725968648c12546cbd19f71ab2e37507484316d8f85270ff2741ba8def60da1')
+            '3d8899948333e2aab96150a9ff6e9d944b1bae8a59acde78aa88bb385224c855')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -97,6 +96,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -201,6 +201,3 @@ for _p in "${pkgname[@]}"; do
 done
 
 # vim:set ts=8 sts=2 sw=2 et:
-sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '4725968648c12546cbd19f71ab2e37507484316d8f85270ff2741ba8def60da1')
