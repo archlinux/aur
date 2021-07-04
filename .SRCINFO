@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-rt510
 	pkgdesc = Linux Xanmod real-time version
-	pkgver = 5.10.41
+	pkgver = 5.10.47
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-xanmod-rt510
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.10.41-rt42-xanmod1/patch-5.10.41-rt42-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.10.47-rt45-xanmod1/patch-5.10.47-rt45-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
 	sha256sums = SKIP
-	sha256sums = 25d81d8f7211712ff3028a4089c3034a99b11904999e40e3992aeb36a972deb2
+	sha256sums = 7a9654b046ee7f7582622c09ad6135cc40e09ac7ef8226ef071751fbcd1fb9fa
 	sha256sums = 51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39
 
 pkgname = linux-xanmod-rt510
