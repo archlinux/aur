@@ -1,42 +1,34 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 7.2.3.4
-	pkgrel = 2
-	url = https://github.com/NVIDIA/TensorRT/
+	pkgver = 8.0.1.6
+	pkgrel = 1
+	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
 	license = custom:NVIDIA-SLA
 	license = Apache
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = poppler
-	makedepends = cuda=11.1
+	makedepends = cuda
 	makedepends = cudnn
-	makedepends = pybind11
 	makedepends = python
 	makedepends = python-onnx
-	makedepends = python-wheel
-	makedepends = absl-py
-	makedepends = python-scipy
-	makedepends = python-prettytable
-	makedepends = python-pyaml
-	makedepends = python-pytorch-cuda
 	makedepends = python-pip
-	makedepends = zlib
-	noextract = protobuf-cpp-3.12.4.tar.gz
-	source = local://TensorRT-7.2.3.4.Ubuntu-18.04.x86_64-gnu.cuda-11.1.cudnn8.1.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=21.03
+	makedepends = python-wheel
+	noextract = protobuf-cpp-3.17.3.tar.gz
+	source = local://TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-11.3.cudnn8.2.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=8.0.1
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
 	source = git+https://github.com/onnx/onnx.git
 	source = git+https://github.com/pybind/pybind11.git
 	source = git+https://github.com/google/benchmark.git
-	source = https://github.com/google/protobuf/releases/download/v3.12.4/protobuf-cpp-3.12.4.tar.gz
+	source = https://github.com/google/protobuf/releases/download/v3.17.3/protobuf-cpp-3.17.3.tar.gz
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-cub-deprecation-huge-warnings.patch
 	source = 030-tensorrt-fix-python.patch
-	sha256sums = d3a1f478e304b48878604fac70ce7920fece71f9cac62f925c9c59c197f5d087
+	sha256sums = def6a5ee50bed25a68a9c9e22ec671a8f29ee5414bde47c5767bd279e5596f88
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -44,31 +36,27 @@ pkgbase = tensorrt
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b
+	sha256sums = 51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb
 	sha256sums = ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac
-	sha256sums = e6153bf43c248fb3ed843e41f6b722ff8c3507ad48fe105bfa129b8641741ecf
-	sha256sums = dd7f4c0ef01baab251886ba01ae59c54b24c7d2fbd7076c50ed3339bf81275a5
+	sha256sums = ecde4147042e67a5162082806f15691781bd307f93f7f8a742ac44bf44db7342
+	sha256sums = c12d9148b7d6fc436387e7eb7b16a0066358f69e32bbee8cc9ac066b1faa902a
 
 pkgname = tensorrt
-	depends = cuda=11.1
+	depends = cuda
 	depends = cudnn
 
 pkgname = python-tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (python bindings and tools)
 	depends = python
+	depends = python-numpy
+	depends = python-pycuda
 	depends = tensorrt
-	optdepends = absl-py: for pytorch_quantization python module
-	optdepends = python-numpy: for graphsurgeon, onnx_graphsurgeon, polygraphy, pytorch_quantization and uff python modules
 	optdepends = python-onnx: for onnx_graphsurgeon python module
-	optdepends = python-prettytable: for uff python module and convert-to-uff tool
-	optdepends = python-pyaml: for pytorch_quantization python module
-	optdepends = python-pytorch-cuda: for pytorch_quantization python module
-	optdepends = python-scipy: for pytorch_quantization python module
-	optdepends = python-sphinx-glpi-theme: for pytorch_quantization python module
-	optdepends = python-tensorflow-cuda: for graphsurgeon and uff python modules and convert-to-uff tool
+	optdepends = python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules
+	optdepends = python-protobuf: for polygraphy and uff python modules
+	optdepends = python-tensorflow-cuda: for graphsurgeon, polygraphy and uff python modules and convert-to-uff tool
 
 pkgname = tensorrt-doc
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (documentation)
 	arch = any
 	license = custom:NVIDIA-SLA
-

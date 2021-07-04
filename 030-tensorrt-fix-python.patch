@@ -1,15 +1,15 @@
 --- a/python/CMakeLists.txt
 +++ b/python/CMakeLists.txt
-@@ -81,7 +81,7 @@ include_directories(${TENSORRT_ROOT}/include
- )
+@@ -58,7 +58,7 @@ find_path(PY_CONFIG_INCLUDE pyconfig.h HINTS ${PY_INCLUDE} PATH_SUFFIXES ${PY_TA
+ # -------- GLOBAL COMPILE OPTIONS --------
  
- # And lib directories.
+ include_directories(${TENSORRT_ROOT}/include ${PROJECT_SOURCE_DIR}/include ${CUDA_INCLUDE_DIRS} ${PROJECT_SOURCE_DIR}/docstrings ${ONNX_INC_DIR} ${PYBIND11_DIR}/include)
 -link_directories(${TENSORRT_BUILD})
 +link_directories(${TENSORRT_BUILD} $ENV{TRT_NONOSS_ROOT}/lib)
- # Enable link-time optimizations
- set(CMAKE_CXX_FLAGS "-fvisibility=hidden -std=c++11 -flto -fno-fat-lto-objects -Wno-deprecated-declarations")
+ set(CMAKE_CXX_FLAGS "-fvisibility=hidden -std=c++${CPP_STANDARD} -Wno-deprecated-declarations")
  
-@@ -102,6 +102,9 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
+ # -------- START BUILD PROCESS --------
+@@ -78,6 +78,9 @@ message(STATUS "PY_CONFIG_INCLUDE: ${PY_CONFIG_INCLUDE}")
  if (${CMAKE_BUILD_TYPE} STREQUAL Release)
      message(STATUS "Building in Release mode")
      set(TRT_LIBS nvinfer nvonnxparser nvparsers nvinfer_plugin)
@@ -27,7 +27,7 @@
  echo $(ls ${ROOT_PATH}/python/include)
 -cmake .. -DCMAKE_BUILD_TYPE=Release \
 +cmake .. -DCMAKE_BUILD_TYPE=None \
-          -DTARGET_ARCHITECTURE=${TARGET_ARCHITECTURE} \
+          -DTARGET=${TARGET} \
           -DPYTHON_MAJOR_VERSION=${PYTHON_MAJOR_VERSION} \
           -DPYTHON_MINOR_VERSION=${PYTHON_MINOR_VERSION} \
 -         -DEXT_PATH=${EXT_PATH} \
