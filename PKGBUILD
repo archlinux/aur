@@ -2,7 +2,7 @@
 
 pkgname=kepubify
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
 arch=('x86_64')
 url='https://pgaskin.net/kepubify/'
@@ -21,6 +21,7 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
+    -tags zip117 \
     -o $pkgname \
     github.com/pgaskin/kepubify/v4/cmd/kepubify/
 
