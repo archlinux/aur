@@ -1,9 +1,9 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Maintainer: Sam Burgos < sam dot burgos1089 at gmail dot com >
 # Many options will remain here as leftovers in case the packaging in Github resumes once again
 
 pkgname=mintlocale
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Language and locale selection tool"
 arch=('any')
@@ -25,7 +25,7 @@ depends=('accountsservice'
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
         "install_remove_apt_check.patch")
-sha256sums=('39d4c14408048e5f5225ca3effc67a2f38c8bd0fa34e8574397a9f609ca6f061'
+sha256sums=('50baecb9e5e4758a54c50caa301eeb027fb54e6ecac2fb1ac5cc3d487b6caa1f'
             '21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b'
             '4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996')
 
