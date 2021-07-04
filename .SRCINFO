@@ -13,7 +13,7 @@ pkgbase = t-twitter-cli
 	source = http-ruby27.patch::https://github.com/httprb/http/commit/2d9921b45e1afcd1adac5eafe97be521a54d464f.patch
 	source = twitter-procnew.patch::https://github.com/sferik/twitter/commit/adb918178295de0eaf022241f71d0544123b83ab.patch
 	sha512sums = SKIP
-	sha512sums = 2690acf489cc699f71e768abbdd05d86ba362163e85095c2c614bf4d2815f4966cf481e714a53a09e166d5fa6e2b1dff5a15694881e266c54acf071f75bc2a4d
+	sha512sums = 04f26b59753276e91f3a9065210cd18b95f5a61272d9022d04a0beae495c824ec6f359d6af321deff3dbc7fab0197e8c3a57ebdcdd64559a72ec8b17e6cc6d43
 	sha512sums = 2e0149268600a0895f7846045dd6354e67c5d8689ac8438a9458fe5fadc4dee143d95dcb6b34a953df2fe9fff690441cb56dd0c60762001ad073de4504adbcbc
 	sha512sums = 5041bfb1426c594abce7f9790632257a44fd538fa87b7d5a96818b1a337f74cc21bc1d86974f5e83468803f647bf87352c3e9e8da67c1a297c6008118b4fed4e
 
