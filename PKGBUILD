@@ -27,8 +27,7 @@ build() {
     #-DENABLE_TCMALLOC="ON" \
     #-DTCMALLOC_LIB_DIR=/usr/lib
 
-  NPROC=$(getconf _NPROCESSORS_ONLN)
-  make -j${NPROC} 
+  make
 }
 
 package() {
