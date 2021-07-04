@@ -1,6 +1,6 @@
 --- a/contrib/i2pd.conf
 +++ b/contrib/i2pd.conf
-@@ -8,15 +8,17 @@
+@@ -8,19 +8,22 @@
  
  ## Tunnels config file
  ## Default: ~/.i2pd/tunnels.conf or /var/lib/i2pd/tunnels.conf
@@ -13,13 +13,18 @@
 +## Note: /var/lib/i2pd/tunnels.d is a symlink to /etc/i2pd/tunnels.d (use the latter)
  # tunnelsdir = /var/lib/i2pd/tunnels.d
  
+ ## Path to certificates used for verifying .su3, families
+ ## Default: ~/.i2pd/certificates or /var/lib/i2pd/certificates
++## Note: /var/lib/i2pd/certificates is a symlink to /usr/share/i2pd/certificates (use the latter)
+ # certsdir = /var/lib/i2pd/certificates
+ 
  ## Where to write pidfile (default: i2pd.pid, not used in Windows)
 -# pidfile = /run/i2pd.pid
 +# pidfile = /run/i2pd/i2pd.pid
  
  ## Logging configuration section
  ## By default logs go to stdout with level 'info' and higher
-@@ -28,7 +30,7 @@
+@@ -32,7 +35,7 @@
  ##  * syslog - use syslog, see man 3 syslog
  # log = file
  ## Path to logfile (default - autodetect)
