@@ -17,6 +17,8 @@ depends=('binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm' 'git')
 source=("git+https://github.com/0ad/0ad.git")
 md5sums=('SKIP')
+# keep debug symbols, it shouldn't have a signicant binary size impact
+options=(!strip)
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
