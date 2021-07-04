@@ -1,0 +1,16 @@
+pkgbase = vim-deus-git
+	pkgdesc = A better color scheme for the late night coder
+	pkgver = r109.1be965e
+	pkgrel = 1
+	url = https://github.com/ajmwagar/vim-deus
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-deus
+	conflicts = vim-deus
+	source = vim-deus-git::git+https://github.com/ajmwagar/vim-deus
+	sha256sums = SKIP
+
+pkgname = vim-deus-git
