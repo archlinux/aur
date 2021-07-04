@@ -1,6 +1,6 @@
 pkgbase = remove-orphaned-kernels
 	pkgdesc = pacman -Rs orphaned kernel and driver packages, excluding currently-running.
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/remove-orphaned-kernels/
 	arch = any
@@ -8,6 +8,6 @@ pkgbase = remove-orphaned-kernels
 	depends = python
 	depends = sudo
 	source = remove-orphaned-kernels
-	sha256sums = a6939f973aa8013944354db38d4b42e0bcf69673fbabbc804af9842d27101649
+	sha256sums = d041487cf36a813ca2cf8abe023bdc6ec13921574580c3fbbbc4eb73f4c0f0fb
 
 pkgname = remove-orphaned-kernels

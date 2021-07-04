@@ -46,12 +46,19 @@ def is_directly_required(pkg):
             return True
     return False
 
+def is_explicitly_installed(pkg):
+    pkginfo = get_output('pacman', '-Qi', pkg)
+    reason = pkginfo.split('Install Reason')[1].split(':')[1].rsplit('\n', 1)[0].strip()
+    return reason == 'Explicitly installed'
+
+def is_orphan(pkg):
+    return not (is_explicitly_installed(pkg) or is_directly_required(pkg))
 
 running_kernel = get_output('uname', '-r')
 running_pkgs = get_output('pacman', '-Qoq', f'{MODULES}/{running_kernel}')
 all_kernels = [f'{MODULES}/{k}' for k in os.listdir(MODULES)]
 all_pkgs = get_output('pacman', '-Qoq', *all_kernels).split()
-orphaned_packages = [pkg for pkg in all_pkgs if not is_directly_required(pkg)]
+orphaned_packages = [pkg for pkg in all_pkgs if is_orphan(pkg)]
 
 non_orphaned = []
 orphaned_not_running = []
