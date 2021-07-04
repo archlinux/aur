@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 1d6807f..9dfd510 100644
+index 9f2e63d..f350fc8 100644
 --- a/package.json
 +++ b/package.json
 @@ -27,35 +27,6 @@
@@ -38,7 +38,7 @@ index 1d6807f..9dfd510 100644
      "linux": {
        "artifactName": "jitsi-meet-${arch}.${ext}",
        "category": "VideoConference;AudioVideo;Audio;Video;Network",
-@@ -63,24 +34,7 @@
+@@ -63,34 +34,7 @@
        "executableName": "jitsi-meet",
        "target": [
          {
@@ -49,6 +49,16 @@ index 1d6807f..9dfd510 100644
 -          "arch": "x64",
 -          "target": "deb"
 -        }
+-      ]
+-    },
+-    "deb": {
+-      "depends": [
+-        "libgtk-3-0",
+-        "libnss3",
+-        "libxtst6",
+-        "xdg-utils",
+-        "libatspi2.0-0",
+-        "libuuid1"
 -      ]
 -    },
 -    "win": {

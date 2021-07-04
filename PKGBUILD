@@ -3,8 +3,8 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.8.7
-pkgrel=2
+pkgver=2.8.8
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -27,12 +27,12 @@ makedepends=('coreutils'
 
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
-        'pipewire_wayland.patch::https://github.com/jitsi/jitsi-meet-electron/commit/0e0483cbc52a9cad1fef51ed5abb846bd6445b11.patch'
+        'pipewire_wayland.patch'
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('32da999ed1ac2c60a3498639633fcfc84b21e09e447d55adb9da7159cba79017'
-            '7c6198c5bd1cb7bb4b082d5da31ef9b21582d77453f9677c24e13e20e1ee337e'
-            '4074fd3e629d1997d2bd080bef8050727b3a446acf388f71c8ed26ed6a8c0390'
+sha256sums=('bdabecda7a3dd741734a973405682e13d40b3df026ab76f5f9d6d0f041098531'
+            '39d54520962f8665e858748335594cca6b504884462b80d79a0d8aa6141129c4'
+            'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 case "$CARCH" in
@@ -65,7 +65,7 @@ prepare() {
   # broke jitsi-meet-electron for me on when running on sway with full wayland support via flags
   # If you you want to use that feature flag (--WebRTCPipeWireCapturer), I'd recommend putting it in
   # ~/.config/electron12-flags.conf manually instead of having it applied by default
-  patch -Rp1 -i ${srcdir}/pipewire_wayland.patch
+  patch -Np1 -i ${srcdir}/pipewire_wayland.patch
 
   npm install
   # npm audit fix
