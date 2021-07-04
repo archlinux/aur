@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=affenspiel
+Comment=It's a puzzle type game for X11.
+Exec=affenspiel
+Icon=affenspiel
+Terminal=false
+StartupNotify=false
+Categories=Game;
