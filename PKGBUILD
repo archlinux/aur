@@ -11,7 +11,7 @@
 # against Tectonic if the settings in this file need changing.
 
 pkgname=tectonic
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
@@ -20,7 +20,7 @@ license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('b4af21028e91b9ce4a9ba4d0680b8920f6d67b0a2a16e2e806e27cc67997550dc05fbba444723e5458e2fe5a5c2e207e734c591b36b92ee5936b922a49d6164d')
+sha512sums=('ffd09ea7fc0f2e4914883134d018d5b6f6b4769a899b29f4942ba01c144e93d9b1f2a192fe05668322331050bcafc8593c4559d819284239f70b7d6f3b59fb0f')
 
 build() {
 	cd $pkgname-$pkgver
