@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur(AT)tinkershell.eu>
 pkgname=cage-git
 _pkgname=cage
-pkgver=0.1.3.r1.gefaf76e
+pkgver=0.1.4.r0.g646b3e8
 pkgrel=1
 epoch=1
 license=("MIT")
