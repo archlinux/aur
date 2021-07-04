@@ -1,0 +1,21 @@
+pkgbase = lpcscrypt-bin
+	pkgdesc = LPCScrypt is the recommended tool for programming the latest versions of CMSIS-DAP and J-Link firmware onto boards with Link2/LPC-Link2 debug probes.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://www.nxp.com/design/microcontrollers-developer-resources/lpcscrypt-v2-1-2:LPCSCRYPT
+	arch = x86_64
+	license = Commercial
+	license = Apache-2.0
+	license = BSD-4-clause
+	license = BSD-3-clause
+	license = LGPLV2.1
+	license = GPLV2
+	license = Zlib
+	makedepends = imagemagick
+	depends = jlink-software-and-documentation
+	noextract = lpcscrypt-2.1.2_57.x86_64.deb.bin
+	options = !strip
+	source = local://lpcscrypt-2.1.2_57.x86_64.deb.bin
+	sha256sums = 379c63b788a72e64571af870d760ad6b3be32e4c863d29ca58276f750e416750
+
+pkgname = lpcscrypt-bin
