@@ -1,5 +1,5 @@
 pkgname=identity
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
@@ -17,7 +17,7 @@ makedepends=(
 	rust
 )
 source=(https://gitlab.gnome.org/YaLTeR/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-sha256sums=('e971333572bd16fc231c88730c709e71e46915b2c3231454d3eee8db3eb02ff9')
+sha256sums=('48718c939864da8c793072eb2eb481f6e66eabb454efb7d9331f5381ff1785b8')
 
 prepare() {
 	cd ${pkgname}-v${pkgver}
