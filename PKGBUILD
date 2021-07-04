@@ -4,7 +4,7 @@ url='https://wiki.ros.org/cv_bridge'
 pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=7
+pkgrel=12
 license=('BSD')
 
 ros_makedepends=(

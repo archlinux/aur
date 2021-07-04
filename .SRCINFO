@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-cv-bridge
 	pkgdesc = ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images.
 	pkgver = 1.13.0
-	pkgrel = 7
+	pkgrel = 12
 	url = https://wiki.ros.org/cv_bridge
 	arch = i686
 	arch = x86_64
