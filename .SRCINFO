@@ -1,0 +1,30 @@
+pkgbase = idos-timetable-data-chaps-trains-cz-2021-latest
+	pkgdesc = 2020/2021 Timetable data for the timetable search engines by CHAPS: Czech trains.
+	pkgver = 2021_7_2
+	pkgrel = 1
+	epoch = 0
+	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	arch = any
+	groups = idos-timetable
+	license = custom
+	makedepends = wget
+	depends = idos-timetable-data-trains-common
+	optdepends = idos-timetable-tariff-trains-cz: For showing prices.
+	optdepends = idos-timetable-maps-trains-cz: For displaying routes on maps.
+	optdepends = idos-timetable-additionalinfo-trains-cz: For (links to) additional information about train composition and stations.
+	provides = idos-timetable-data-chaps-trains-cz-2021=2021_7_2
+	provides = idos-timetable-data=2021_7_2
+	provides = idos-timetable-data-trains=2021_7_2
+	provides = idos-timetable-data-trains-cz=2021_7_2
+	provides = idos-timetable-data-trains-cz-2021=2021_7_2
+	conflicts = idos-timetable-data-chaps-trains-cz-2021
+	replaces = idos-timetable-data-chaps-trains-cz-latest
+	replaces = idos-timetable-data-chaps-trains-cz-2021<=2021_7_2
+	source = vlak21c.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK21C.ZIP
+	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
+	source = license-dummy.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
+
+pkgname = idos-timetable-data-chaps-trains-cz-2021-latest
