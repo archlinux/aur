@@ -1,0 +1,15 @@
+pkgbase = ruby-song_pro
+	pkgdesc = Provides classes for creating, parsing and rendering SongPro files
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://songpro.org
+	arch = any
+	license = MIT
+	makedepends = ruby-markaby
+	depends = ruby
+	noextract = song_pro-0.1.10.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/song_pro-0.1.10.gem
+	b2sums = 52cec1ad6809e55891117ccf68d783c98bfa8a5308b6c5f2950712b208731bcaaff83f02f00e5b776fb421f903eea73ae3191e52da040660cf82476c67cb7131
+
+pkgname = ruby-song_pro
