@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -14,7 +14,7 @@ makedepends=(rust)
 
 source=("${url}/archive/${pkgver}.tar.gz"
         'tuigreet.conf')
-sha256sums=('bf140b45ed372cc53044750bd953b4322a95d210b51c7e2e7b7907bac06e4896'
+sha256sums=('421c285b38223f5dc10ee6fdf628eae02c3bb124042b9d910c1420769ae9eb95'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 build() {
