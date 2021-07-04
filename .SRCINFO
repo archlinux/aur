@@ -1,0 +1,34 @@
+pkgbase = idos-timetable-data-zsr-europe+sk-2021-latest
+	pkgdesc = 2020/2021 Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by Inprop (Slovakia).
+	pkgver = 2021_7_2
+	pkgrel = 1
+	epoch = 1
+	url = https://www.inprop.eu/Home/Downloads
+	arch = any
+	groups = idos-timetable
+	license = custom
+	makedepends = p7zip
+	makedepends = wget
+	depends = idos-timetable-data-trains-common
+	optdepends = idos-timetable-tariff-trains-europe: For showing prices.
+	optdepends = idos-timetable-tariff-trains-cz: For showing prices (Czech republic only).
+	optdepends = idos-timetable-tariff-trains-sk: For showing prices (Slovakia only).
+	optdepends = idos-timetable-maps-trains-europe: For displaying routes.
+	optdepends = idos-timetable-maps-trains-cz: For displaying routes (Czech republic only).
+	optdepends = idos-timetable-maps-trains-sk: For displaying routes (Slovakia only).
+	provides = idos-timetable-data-zsr-europe+sk-2021=2021_7_2
+	provides = idos-timetable-data=2021_7_2
+	provides = idos-timetable-data-trains=2021_7_2
+	provides = idos-timetable-data-trains-sk=2021_7_2
+	provides = idos-timetable-data-trains-sk-2021=2021_7_2
+	provides = idos-timetable-data-trains-europe=2021_7_2
+	provides = idos-timetable-data-trains-europe-2021=2021_7_2
+	conflicts = idos-timetable-data-zsr-europe+sk-2021
+	replaces = idos-timetable-data-zsr-europe+sk-latest
+	replaces = idos-timetable-data-zsr-europe+sk-2021<=2021_7_2
+	source = 76.exe::https://www.inprop.eu/Home/DownloadFile/76
+	source = license-dummy.txt
+	sha256sums = SKIP
+	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
+
+pkgname = idos-timetable-data-zsr-europe+sk-2021-latest
