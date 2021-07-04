@@ -10,19 +10,19 @@ pkgname=(
 	#"rust-mailchecker"
 )
 _pkgname="mailchecker"
-pkgver="4.0.8"
-pkgrel="2"
+pkgver="4.0.10"
+pkgrel="1"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='https://github.com/FGRibreau/mailchecker/'
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a23b2d67be49a7bb50eb1ee026412634189150b01051550a6de382489da24590')
+sha256sums=('a94c612335dabbcf85147a600b564097deb5dd9e13c286f13e8a8ff9aa6c5316')
 makedepends=(
 'python-distribute'
 'nodejs'
 'npm'
-'rubygems'
+#'rubygems'
 )
 
 
@@ -36,10 +36,10 @@ build() {
   sed -E -i "s/version[[:space:]]*=(.*)/version = '${pkgver}',/g" setup.py
   python setup.py build
 
-  msg "Building Ruby Gem"
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  sed -E -i "s/spec.version[[:space:]]*=(.*)/spec.version = '${pkgver}'/g" *.gemspec
-  gem build *.gemspec
+  #msg "Building Ruby Gem"
+  #cd "$srcdir/${_pkgname}-${pkgver}"
+  #sed -E -i "s/spec.version[[:space:]]*=(.*)/spec.version = '${pkgver}'/g" *.gemspec
+  #gem build *.gemspec
 }
 
 
