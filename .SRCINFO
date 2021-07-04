@@ -1,0 +1,19 @@
+pkgbase = dm-zoned-tools
+	pkgdesc = User space utility for managing zoned block devices used with the dm-zoned device mapper
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/westerndigitalcorporation/dm-zoned-tools
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = autoconf-archive
+	depends = glibc
+	depends = util-linux-libs
+	depends = kmod
+	depends = device-mapper
+	source = dm-zoned-tools-2.1.3.tar.gz::https://github.com/westerndigitalcorporation/dm-zoned-tools/archive/refs/tags/v2.1.3.tar.gz
+	md5sums = d836ee377d17235710c06b07fc747da3
+
+pkgname = dm-zoned-tools
