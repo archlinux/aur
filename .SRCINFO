@@ -1,7 +1,7 @@
 pkgbase = lib32-mjpegtools
 	pkgdesc = Set of tools that can do recording of videos and playback, simple cut-and-paste editing and the MPEG compression of audio and video. 32bit libraries
-	pkgver = 2.1.0
-	pkgrel = 5
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://mjpeg.sourceforge.net/
 	arch = x86_64
 	license = GPL
@@ -13,12 +13,7 @@ pkgbase = lib32-mjpegtools
 	depends = lib32-sdl
 	depends = gcc-libs-multilib
 	depends = lib32-libdv
-	source = http://downloads.sourceforge.net/sourceforge/mjpeg/mjpegtools-2.1.0.tar.gz
-	source = v4l.patch
-	source = avoid_fno_pic.patch
-	md5sums = 57bf5dd78976ca9bac972a6511b236f3
-	md5sums = SKIP
-	md5sums = SKIP
+	source = http://downloads.sourceforge.net/sourceforge/mjpeg/mjpegtools-2.2.0.tar.bz2
+	sha256sums = a84349839471052db1ef691134aacf905b314dfce8762d47e10edcc9ab5f97d8
 
 pkgname = lib32-mjpegtools
-
