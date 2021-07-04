@@ -1,12 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-odis
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2015_10_20
-pkgrel=7
+pkgver=2021_1_11
+pkgrel=1
 pkgdesc="Links with information on the changes, fare, point of sale, etc. for public transport within the ODIS (Ostrava region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvainf"
