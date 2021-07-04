@@ -1,20 +1,20 @@
 pkgbase = yakuake-git
-	pkgdesc = A drop-down terminal emulator based on KDE konsole technology
-	pkgver = 20.04.2.r40.g946ecc7
+	pkgdesc = A drop-down terminal emulator based on KDE konsole-git technology
+	pkgver = 21.07.70_r722.g0eb3a30
 	pkgrel = 1
-	url = https://kde.org/applications/system/org.kde.yakuake
+	url = https://apps.kde.org/yakuake/
 	arch = x86_64
-	groups = kde-applications
-	groups = kde-utilities
-	license = GPL2
-	makedepends = extra-cmake-modules
+	groups = kde-applications-git
+	groups = kde-utilities-git
+	license = GPL
 	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = konsole-git
+	depends = kwayland-git
 	depends = hicolor-icon-theme
-	depends = konsole
-	depends = kwayland
 	provides = yakuake
-	source = git+https://invent.kde.org/utilities/yakuake.git
+	conflicts = yakuake
+	source = git+https://github.com/KDE/yakuake.git
 	sha256sums = SKIP
 
 pkgname = yakuake-git
-

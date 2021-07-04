@@ -1,33 +1,37 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Merged with official ABS yakuake PKGBUILD by João, 2021/07/04 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-_pkgname=yakuake
-pkgname=${_pkgname}-git
-pkgver=20.04.2.r40.g946ecc7
+pkgname=yakuake-git
+pkgver=21.07.70_r722.g0eb3a30
 pkgrel=1
-pkgdesc='A drop-down terminal emulator based on KDE konsole technology'
-arch=('x86_64')
-url='https://kde.org/applications/system/org.kde.yakuake'
-license=('GPL2')
-groups=('kde-applications' 'kde-utilities')
-depends=('hicolor-icon-theme' 'konsole' 'kwayland')
-makedepends=('extra-cmake-modules' 'git')
-provides=("${_pkgname}")
-source=("git+https://invent.kde.org/utilities/${_pkgname}.git")
+pkgdesc='A drop-down terminal emulator based on KDE konsole-git technology'
+arch=($CARCH)
+url='https://apps.kde.org/yakuake/'
+license=(GPL)
+depends=(konsole-git kwayland-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kde-applications-git kde-utilities-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cmake -B build -S "${_pkgname}" \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
 }
-
-# vim: ts=2 sw=2 et:
