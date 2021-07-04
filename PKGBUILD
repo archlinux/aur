@@ -10,14 +10,14 @@ _lua=luajit
 
 pkgname=powder-toy
 pkgver=95.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(x86_64 i686)
 depends=('glibc' 'libx11' 'sdl2' $_lua 'fftw' 'bzip2' 'zlib' 'hicolor-icon-theme')
 makedepends=('scons' 'libicns')
-url="http://powdertoy.co.uk/"
+url="https://powdertoy.co.uk/"
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::http://github.com/ThePowderToy/The-Powder-Toy/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ThePowderToy/The-Powder-Toy/archive/v${pkgver}.tar.gz"
         "${pkgname}.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop"
