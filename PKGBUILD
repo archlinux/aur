@@ -18,6 +18,10 @@ sha1sums=('725455d6324baa808259b56a42199237327e0638')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+# linking 64-bit shared libraries fails for me for an unknown reason, and I'm not sure if the problem is with compiler or my environment
+# uncomment the following line to skip building it, if needed
+# _skip_shared_64bit=aye
+
 build() {
   local _build_flags="\
         --with-msw \
@@ -41,10 +45,12 @@ build() {
   cd "${srcdir}/wxWidgets-${pkgver}"
   for _arch in ${_architectures}; do
     # shared build
-    mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
-    ${_arch}-configure --disable-option-checking ${_build_flags} --enable-shared --enable-monolithic
-    make
-    popd
+    if [[ -z "$_skip_shared_64bit" || ! ( $_arch =~ "x86_64" ) ]]; then
+      mkdir -p build-shared-${_arch} && pushd build-shared-${_arch}
+      ${_arch}-configure --disable-option-checking ${_build_flags} --enable-shared --enable-monolithic
+      make
+      popd
+    fi
 
     # static build
     mkdir -p build-static-${_arch} && pushd build-static-${_arch}
@@ -58,8 +64,10 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   for _arch in ${_architectures}; do
     for _build in "shared" "static"; do
-      cd "${srcdir}/wxWidgets-${pkgver}/build-${_build}-${_arch}"
-      make DESTDIR="${pkgdir}" install
+      if [[ -z "$_skip_shared_64bit" || $_build == "static" || ! ( $_arch =~ "x86_64" ) ]]; then
+        cd "${srcdir}/wxWidgets-${pkgver}/build-${_build}-${_arch}"
+        make DESTDIR="${pkgdir}" install
+      fi
     done
 
     # mv "${pkgdir}/usr/${_arch}/lib/"*.dll "${pkgdir}/usr/${_arch}/bin" # appears to already be in the correct location
