@@ -2,8 +2,8 @@
 
 _npmname=typescript-language-server
 pkgname=typescript-language-server-bin
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="Language server implementation for JavaScript / TypeScript"
 arch=('any')
 url="https://www.npmjs.com/package/typescript-language-server"
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('nodejs' 'npm' 'typescript')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha1sums=('266e8d85e58bae4b752ebb10b030404050928204')
+sha1sums=('9feeb4854a2c4b9a5e4debcf6cdcf8fd894a17ea')
 
 package() {
     cd "${srcdir}"
