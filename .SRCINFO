@@ -1,5 +1,5 @@
 pkgbase = 0ad-git
-	pkgver = 21551
+	pkgver = 26504
 	pkgrel = 1
 	url = http://play0ad.com/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = 0ad-git
 	depends = libxml2
 	depends = openal
 	depends = sdl2
-	depends = wxgtk
+	depends = wxgtk2
 	depends = zlib
 	depends = libgl
 	depends = glu
@@ -31,6 +31,7 @@ pkgbase = 0ad-git
 	depends = miniupnpc
 	depends = icu
 	depends = nspr
+	options = !strip
 	source = git+https://github.com/0ad/0ad.git
 	md5sums = SKIP
 
@@ -45,4 +46,3 @@ pkgname = 0ad-data-git
 	depends = 0ad-git
 	provides = 0ad-data
 	conflicts = 0ad-data
-
