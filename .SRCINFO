@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 2.8.3
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = telegram-desktop-dev
 	depends = libxrandr
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v2.8.3
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v2.8.4
 	source = Catch::git+https://github.com/philsquared/Catch
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
 	source = codegen::git+https://github.com/desktop-app/codegen.git
@@ -63,13 +63,12 @@ pkgbase = telegram-desktop-dev
 	source = mallocng::git+https://github.com/desktop-app/mallocng.git
 	source = nimf::git+https://github.com/hamonikr/nimf.git
 	source = QR::git+https://github.com/nayuki/QR-Code-generator
-	source = qt5ct::git+https://github.com/desktop-app/qt5ct.git
 	source = range-v3::git+https://github.com/ericniebler/range-v3.git
 	source = rlottie::git+https://github.com/desktop-app/rlottie.git
 	source = tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
 	source = https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-gcc11-assert.patch
-	sha512sums = SKIP
+	source = fix-freeze-after-file-dialog.patch::https://github.com/telegramdesktop/tdesktop/commit/1261c775d4ca6fb78277ec213794da7c15e304e2.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -104,5 +103,6 @@ pkgbase = telegram-desktop-dev
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = d94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f
+	sha512sums = 2a5c8f5ca5a3a34872567ac98032717c40689baab2926d9fa8960404c6630925732f028dc7fdcf28bef11dd247a78779c3f5ca631f8b75abf23e23dab8d0f24c
 
 pkgname = telegram-desktop-dev

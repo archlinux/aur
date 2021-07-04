@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -56,12 +56,12 @@ source=(
     "mallocng::git+https://github.com/desktop-app/mallocng.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
     "QR::git+https://github.com/nayuki/QR-Code-generator"
-    "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-    https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-gcc11-assert.patch
+    "https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-gcc11-assert.patch"
+    "fix-freeze-after-file-dialog.patch::https://github.com/telegramdesktop/tdesktop/commit/1261c775d4ca6fb78277ec213794da7c15e304e2.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -96,8 +96,8 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f')
+            'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f'
+            '2a5c8f5ca5a3a34872567ac98032717c40689baab2926d9fa8960404c6630925732f028dc7fdcf28bef11dd247a78779c3f5ca631f8b75abf23e23dab8d0f24c')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -133,7 +133,6 @@ prepare() {
     git config submodule.Telegram/ThirdParty/mallocng.url "$srcdir/mallocng"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
-    git config submodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
     git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
@@ -159,6 +158,8 @@ prepare() {
 
     cd ..
     patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
+    # backport file dialog patch
+    patch -Np1 -i ${srcdir}/fix-freeze-after-file-dialog.patch
 }
 
 build() {
