@@ -5,7 +5,7 @@
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -57,11 +57,9 @@ prepare() {
   echo "--> Electron package version: $electron_version"
   sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
 
-  # Prevent franz from being launched in dev mode
-  sed "s|export const isDevMode = .*|export const isDevMode = false;|g" \
-      -i src/environment.js
-  sed "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" \
-      -i src/index.js
+  # Prevent Franz from being launched in development mode
+  # This changes all the occurences where 'isDevMode' is set to a value.
+  grep -lr 'isDevMode =' src | xargs sed -E 's|^(.*isDevMode =) .*$|\1 false|' -i
 
   # Setup nvm
   _ensure_nvm_setup
