@@ -23,7 +23,7 @@ optdepends=('faac: AAC transcoding support'
             'opus-tools: OPUS transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
-source=('${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/${pkgver}.tar.gz')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/${pkgver}.tar.gz")
 sha256sums=('497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d')
 
 prepare() {
