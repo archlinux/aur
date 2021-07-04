@@ -9,7 +9,7 @@
 -  else()
 -    find_package(Boost REQUIRED python3)
 -  endif()
-+  find_package(Boost REQUIRED python)
++  find_package(Boost REQUIRED python3)
  else()
  find_package(Boost REQUIRED)
  endif()

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-cv-bridge
 	pkgdesc = ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images.
 	pkgver = 1.13.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.ros.org/cv_bridge
 	arch = i686
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = ros-melodic-cv-bridge
 	makedepends = ros-melodic-sensor-msgs
 	makedepends = ros-melodic-rosconsole
 	makedepends = ros-melodic-catkin
-	makedepends = boost
+	makedepends = boost1.69
 	makedepends = python
 	makedepends = python-numpy
 	makedepends = opencv3-opt
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rosconsole
-	depends = boost
+	depends = boost1.69
 	depends = python
 	depends = python-numpy
 	depends = opencv3-opt
@@ -29,7 +29,6 @@ pkgbase = ros-melodic-cv-bridge
 	source = boost-fix.patch
 	sha256sums = c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59
 	sha256sums = bc06dbe12f26015c6bce73b2c95123851415d5662c17ef87267737dd433bb22b
-	sha256sums = 50658e5e213df03fa68c51bb399f541699cd022dac4ca68cfcdc19561bcea087
+	sha256sums = 4427fd8c4e29c881ae2247b0661d798d6d1af88f17717766475a1d3f85067966
 
 pkgname = ros-melodic-cv-bridge
-

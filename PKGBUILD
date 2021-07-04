@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url='https://wiki.ros.org/cv_bridge'
 
 pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(
@@ -19,7 +17,7 @@ makedepends=(
 	'cmake'
 	'ros-build-tools'
 	${ros_makedepends[@]}
-	boost
+	boost1.69
 	python
 	python-numpy
 	opencv3-opt
@@ -32,7 +30,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	boost
+	boost1.69
 	python
 	python-numpy
 	opencv3-opt
@@ -44,7 +42,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/vision
   "boost-fix.patch")
 sha256sums=('c8db35dbb6b470cdedb45195f725bc2cfda7f0dc3155e16a5a37e4b48e29fa59'
   'bc06dbe12f26015c6bce73b2c95123851415d5662c17ef87267737dd433bb22b'
-  '50658e5e213df03fa68c51bb399f541699cd022dac4ca68cfcdc19561bcea087')
+  '4427fd8c4e29c881ae2247b0661d798d6d1af88f17717766475a1d3f85067966')
 
 prepare() {
   cd "${srcdir}/${_dir}"
@@ -70,7 +68,9 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
+		-DSETUPTOOLS_DEB_LAYOUT=OFF \
+		-DBOOST_ROOT=/opt/boost1.69 \
+		 -DBoost_NO_SYSTEM_PATHS=TRUE
 	make
 }
 
