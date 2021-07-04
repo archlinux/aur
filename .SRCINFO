@@ -9,6 +9,8 @@ pkgbase = telebot-git
 	depends = json-c
 	depends = curl
 	source = git+https://github.com/smartnode/telebot
+	source = patch
 	b2sums = SKIP
+	b2sums = 334d61c9233b80e3f861d1500420beaaf924a80a8c8dae025fc65d6ee9ddcced553add389c6c863d76262b6c5f4b108b7e102699b083384cb504bda069c0f707
 
 pkgname = telebot-git

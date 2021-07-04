@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d781dfe..07aace3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,7 +29,7 @@ SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_LIB_CFLAGS} -Werror -Wall -Wno-unuse
+ 
+ # libtelebot
+ ADD_LIBRARY(${PROJECT_NAME} SHARED ${SRCS})
+-ADD_LIBRARY(${PROJECT_NAME}_static STATIC ${SRCS})
++# ADD_LIBRARY(${PROJECT_NAME}_static STATIC ${SRCS})
+ TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${PKGS_LDFLAGS})
+ SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES VERSION ${VERSION})
+ 
+@@ -37,7 +37,7 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES VERSION ${VERSION})
+ CONFIGURE_FILE(telebot.pc.in telebot.pc @ONLY)
+ 
+ # echobot (test)
+-ADD_SUBDIRECTORY(test)
++# ADD_SUBDIRECTORY(test)
+ 
+ # CMake Policy (CMP0002)
+ # The logical name of executable and library targets
