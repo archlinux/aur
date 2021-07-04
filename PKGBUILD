@@ -21,8 +21,7 @@ source=('swap_pybind.patch'
         'git+https://github.com/mitsuba-renderer/enoki.git'
         'git+https://github.com/mitsuba-renderer/tinyformat.git'
         'git+https://github.com/mitsuba-renderer/mitsuba-data.git'
-        'git+https://github.com/mitsuba-renderer/openexr.git'
-        'sphinx_351.patch')
+        'git+https://github.com/mitsuba-renderer/openexr.git')
 md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          '617bd32eecbebd8c7036f738b8275e5f'
          '3d896789646b5de546668d9f158697d1'
@@ -32,8 +31,7 @@ md5sums=('e40fe4bf313d60b1eb7c3da60fb6d434'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '24fbc6bf556cfc5a67a759abfec3c8c7')
+         'SKIP')
 
 pkgver() {
 	git -C "$srcdir/${pkgname%-git}" describe --long --tags --always | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -70,9 +68,6 @@ prepare() {
 		| jq '.["enabled"] = ["scalar_rgb"]' \
 		| jq '.["default"] = "scalar_rgb"' \
 		> "$srcdir/${pkgname%-git}"/mitsuba.conf
-
-	# fix sphinx:3.5.1 build
-	git apply -v "$srcdir"/sphinx_351.patch
 }
 
 build() {

@@ -34,7 +34,6 @@ pkgbase = mitsuba2-git
 	source = git+https://github.com/mitsuba-renderer/tinyformat.git
 	source = git+https://github.com/mitsuba-renderer/mitsuba-data.git
 	source = git+https://github.com/mitsuba-renderer/openexr.git
-	source = sphinx_351.patch
 	md5sums = e40fe4bf313d60b1eb7c3da60fb6d434
 	md5sums = 617bd32eecbebd8c7036f738b8275e5f
 	md5sums = 3d896789646b5de546668d9f158697d1
@@ -45,7 +44,5 @@ pkgbase = mitsuba2-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 24fbc6bf556cfc5a67a759abfec3c8c7
 
 pkgname = mitsuba2-git
-
