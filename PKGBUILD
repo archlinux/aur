@@ -2,13 +2,14 @@
 
 pkgname=canaries-form-420
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper program for filling out Modelo 420 of Agencia Tributaria Canaria'
 arch=('x86_64')
 url=http://www.gobiernodecanarias.org/tributos/portal/jsf/publico/asistenciaContribuyente/modelos/listado.jsp?tributo=IGIC
 license=('custom')
+_java=11 # Latest working supported version (11 is LTS, broken in 16)
 depends=(
-  'java-runtime'
+  "java-runtime=${_java}"
   'ttf-ms-fonts'
 )
 makedepends=(
@@ -17,7 +18,7 @@ makedepends=(
   'imagemagick'
 )
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.zip::http://www.gobiernodecanarias.org/tributos/portal/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/M420V820E21.zip")
+source=("${pkgname}-${pkgver}.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/M420V820E21.zip")
 sha256sums=('8a24f1fcef85f9d05f848b2a828c9976e7273e17055f5e4aaf3cb5417bb62d74')
 
 _innerdir=I.G.I.C.-Modelo420-\(2021\)
@@ -25,9 +26,11 @@ _srcjar="${_innerdir}/pa-mod420.jar"
 _pkgjar="/usr/share/java/${pkgname}/${pkgname}.jar"
 
 prepare() {
+  # Borrowed from https://aur.archlinux.org/cgit/aur.git/tree/pdfsam?h=pdfsam
   cat > "${pkgname}" <<EOF
 #!/bin/sh
-exec java -jar "${_pkgjar}" "\$@"
+_x="\`archlinux-java status | grep "${_java}" | awk '{ print \$1 }' | head -1\`"
+exec "/usr/lib/jvm/\${_x%/*}/bin/java" -jar "${_pkgjar}" "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
