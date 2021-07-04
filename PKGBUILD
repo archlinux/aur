@@ -72,6 +72,6 @@ prepare() {
 package() {
 	cd "$pkgname"
 	find after autoload doc ftdetect lua parser-info parser plugin queries \
-	  -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	  -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
