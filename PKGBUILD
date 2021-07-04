@@ -2,14 +2,14 @@
 _pluginname=SceneSwitcher
 _pluginname2=advanced-scene-switcher
 pkgname=obs-$_pluginname2
-pkgver=1.13
+pkgver=1.14
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=("GPL2")
-depends=("obs-studio>=$_obsver" "libxss")
+depends=("obs-studio>=$_obsver" "libxss" "libxtst")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
   "$pkgname-$pkgver"::"git+https://github.com/WarmUpTill/$_pluginname.git#tag=$pkgver"
