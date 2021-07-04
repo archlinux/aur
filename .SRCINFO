@@ -1,0 +1,14 @@
+pkgbase = python-bronzebeard
+	pkgdesc = Minimal ecosystem for bare-metal RISC-V development
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/theandrew168/bronzebeard
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/bronzebeard/bronzebeard-0.1.10.tar.gz
+	sha256sums = e6cdaf2841f3f223e7de5530ceaf2602694fe3d9bf6ecdf975803e30a589c059
+
+pkgname = python-bronzebeard
+	depends = python
