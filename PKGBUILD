@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-maps-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_11_6
+pkgver=2021_3_30
 pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway."
 arch=(any)
