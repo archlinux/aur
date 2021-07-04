@@ -1,7 +1,7 @@
 pkgbase = odin2-synthesizer
 	pkgdesc = 24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2)
 	pkgver = 2.2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.thewavewarden.com/odin2
 	arch = x86_64
 	license = GPL3
@@ -28,6 +28,8 @@ pkgbase = odin2-synthesizer
 	depends = ttf-font
 	optdepends = ttf-dejavu: One of these may be needed for fonts to render correctly
 	optdepends = ttf-liberation: One of these may be needed for fonts to render correctly
+	provides = odin2
+	conflicts = odin2-synthesizer-bin
 	backup = opt/odin2/odin2.conf
 	backup = opt/odin2/Soundbanks/User Patches
 	source = /odin2::git+https://github.com/TheWaveWarden/odin2.git
@@ -40,4 +42,3 @@ pkgbase = odin2-synthesizer
 	sha256sums = SKIP
 
 pkgname = odin2-synthesizer
-

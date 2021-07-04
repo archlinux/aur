@@ -3,12 +3,13 @@
 
 pkgname=odin2-synthesizer
 pkgver=2.2.4
-pkgrel=4
+pkgrel=5
 pkgdesc='24 voice polyphonic synthesizer, with modulation and FX. (Standalone, VST3, LV2)'
 license=('GPL3')
 arch=('x86_64')
 url='https://www.thewavewarden.com/odin2'
-#conflicts=('odin2-synthesizer-bin')
+provides=('odin2')
+conflicts=('odin2-synthesizer-bin')
 
 depends=(ttf-font)
 makedepends=('atk'
@@ -39,9 +40,7 @@ source=("${srcdir}/${pkgname%-synthesizer}::git+https://github.com/TheWaveWarden
         'AppConfig.patch'
         'Makefile.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-
 backup=('opt/odin2/odin2.conf' 'opt/odin2/Soundbanks/User Patches')
-
 
 prepare() {
     # Checkout the 6.0.1 branch of JUCE, and build Projucer
@@ -78,7 +77,7 @@ check() {
 }
 
 package() {
-    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2.vst3/Contents/x86_64-linux/Odin2.so" "${pkgdir}/usr/lib/vst3/Odin2.vst3/Odin2.so"
+    install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2.vst3/Contents/x86_64-linux/Odin2.so" "${pkgdir}/usr/lib/vst3/Odin2.vst3/Contents/x86_64-linux/Odin2.so"
 
     install -Dm 755 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.so" "${pkgdir}/usr/lib/lv2/Odin2.lv2/Odin2_.so"
     install -Dm 644 "${srcdir}/odin2/Builds/LinuxMakefile/build/Odin2_.lv2/Odin2_.ttl" "${pkgdir}/usr/lib/lv2/Odin2.lv2/Odin2_.ttl"
