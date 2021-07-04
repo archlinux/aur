@@ -50,17 +50,16 @@ build() {
 	njobs=$(grep -Po -- '-j\s?[0-9]+'<<<"${MAKEFLAGS}") ||
 	njobs=$(grep -c ^processor /proc/cpuinfo)
 	
-	msg2 'Building third-party'
+	echo 'Building third-party'
 	cmake -S "${pkgname^^}-${pkgver}/third-party" -B ${pkgname^^}-third-party \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="$DJV_BUILD/${pkgname^^}-install"
 	cmake --build ${pkgname^^}-third-party -j "${njobs}"
 	cmake --build ${pkgname^^}-third-party -j "${njobs}" --target install
-	msg2 'Finish building third-party'
+	echo 'Finish building third-party'
 	
-	msg2 'Building DJV'
+	echo 'Building DJV'
 	cmake -S "${pkgname^^}-${pkgver}" -B ${pkgname^^}-Release \
-		-DJV_PYTHON=ON \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="$DJV_BUILD/${pkgname^^}-install" \
 		-DCMAKE_PREFIX_PATH="$DJV_BUILD/${pkgname^^}-install" \
@@ -68,7 +67,7 @@ build() {
 
 	cmake --build ${pkgname^^}-Release -j "${njobs}"
 	cmake --build ${pkgname^^}-Release -j "${njobs}" --target install
-	msg2 'Finish building DJV'
+	echo 'Finished building DJV'
 }
 
 package() {
