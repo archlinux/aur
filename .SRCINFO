@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-python3
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio, Python 3 edition
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cygn/pulseaudio-dlna/
 	arch = x86_64
 	license = GPL3
@@ -31,6 +31,8 @@ pkgbase = pulseaudio-dlna-python3
 	optdepends = opus-tools: OPUS transcoding support
 	optdepends = sox: WAV transcoding support
 	optdepends = vorbis-tools: OGG transcoding support
+	provides = pulseaudio-dlna
+	conflicts = pulseaudio-dlna
 	source = pulseaudio-dlna-python3-0.6.1.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/0.6.1.tar.gz
 	sha256sums = 497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d
 

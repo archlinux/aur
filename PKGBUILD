@@ -5,11 +5,13 @@
 
 pkgname=pulseaudio-dlna-python3
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Python 3 edition'
 arch=('x86_64')
 url=https://github.com/Cygn/pulseaudio-dlna/
 license=('GPL3')
+conflicts=('pulseaudio-dlna')
+provides=('pulseaudio-dlna')
 depends=('python-chardet' 'python-dbus' 'python-docopt' 'python-gobject'
          'python-lxml' 'python-netifaces' 'python-notify2' 'python-psutil'
          'python-pychromecast' 'python-pyroute2' 'python-requests'
