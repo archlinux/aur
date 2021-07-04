@@ -11,9 +11,9 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.1.1
+_qtver=6.1.2
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
@@ -39,15 +39,15 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
         '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
-sha256sums=('21a8aa9f07170e047270c668c8b037536f40226db7adbc529a0b41c3a3cb3ff2'
-            '0668320d4275eea2d7d772dbb55df4eca37520d931d093dcbd80450aa8d72b25'
-            '8b261eccf904561520f51b3e5a290336e014410d1e147def8aa8f21a097feed5'
-            '6b5837037e08da87c70c618ce5f33c3e7031c7593efd10fcb160e41d36e63d6c'
-            'cb920842d1fc89b181acefab20db5b83ae3f39617ce7b507d9f691768900ae6d'
-            '5995785ef5837532cafdacf82e639a74f907c49dd344338584d6c3b4d7bb626d'
-            '1f2b8ef96fb8d3e3c24fc8e0b6e388f1cb6effd2e73d9e6b3d50c8896b055760'
-            '9d0ea0a2621aea3a1ae8066680a7d41ffda1cc9c9b93ebb3f2219c3b613ab061'
-            '272950cba900aa0b11b1c7722eed8ce1ff8c8625de97d9815a8d252ddb6ee947')
+sha256sums=('b9c4061c1c7999c42c315fc5b0f4f654067b4186066dd729bbcf1bdce8d781c8'
+            'cca54459fe66dffd009883dd6855469e7dac2e37b6b71c08c619d52c19e9c465'
+            'fea7df661412a8d05d19b777f0465d521ac52a6208121a3c6a46bef00174d521'
+            '08fcc3bed6eaf88f3621a70f828e3d6f7e29b58e3a65cb649adebd059f2cd867'
+            '8876accd3aad0eb67ad16b01717451244c9f908255326f4313383cb534e9b211'
+            '3a28ceaa6f55c180dc7484df7b1ce4df5f9b7bee1817f50dedd23d2ec66a5b09'
+            '2ebe2848c7a086f2586cd26575d1731ca23fe64c607588c4c5ff877e4d8175ab'
+            '6b8b01d90548957d0a6ce2557363ea5ad476b4f9272172ee193957e01aaefb7f'
+            'b79bce29e48b1c8a26a4300079ac02c77d6bc22450bceee6fec049e5cec81650')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
