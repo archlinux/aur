@@ -3,16 +3,17 @@
 _pkgname=flask-security
 pkgname=python-flask-security
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Quick and simple security for Flask applications'
 url='https://github.com/mattupstate/flask-security'
 arch=('any')
 license=('MIT')
 depends=('python' 'python-flask' 'python-flask-login' 'python-flask-mail' 'python-flask-principal'
-         'python-flask-wtf' 'python-flask-babelex' 'python-itsdangerous' 'python-passlib')
+         'python-flask-wtf' 'python-flask-babelex' 'python-itsdangerous' 'python-passlib'
+         'python-email-validator')
 makedepends=('python-flask' 'python-flask-login' 'python-flask-mail' 'python-flask-principal'
              'python-flask-wtf' 'python-flask-babelex' 'python-itsdangerous' 'python-passlib'
-             'python-sphinx' 'python-setuptools')
+             'python-sphinx' 'python-setuptools' 'python-pytest-runner')
 #checkdepends=('python-pytest' 'python-pytest-runner' 'python-pytest-cov' 'python-pytest-cache'
               #'python-mock' 'python-sqlalchemy' 'python-flask-sqlalchemy' 'python-bcrypt' 'python-pony')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mattupstate/flask-security/archive/${pkgver}.tar.gz)
