@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=grimshot
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A helper for screenshots within sway."
 arch=("x86_64")
