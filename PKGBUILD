@@ -5,7 +5,7 @@
 
 pkgname=anbox-git
 pkgver=r1350.04ac697
-pkgrel=2
+pkgrel=5
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
@@ -67,7 +67,6 @@ build() {
   cmake -B build -S "${pkgname%*-git}" \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-Wno-error=implicit-fallthrough -Wno-error=missing-field-initializers" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_INSTALL_RPATH=YES \
     -DCMAKE_SKIP_RPATH=YES \
