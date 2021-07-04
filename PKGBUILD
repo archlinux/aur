@@ -42,9 +42,19 @@ build() {
 
   cd "$srcdir/${_pkgname}/libraries/source/fcollada/src"
   make -j9
+  # OPTIONAL: uncomment for a debug build, it's a 2nd executable name
+  # `pyrogenesis_dbg` It's a small increase of build time.
+  # It's independent from the debug symbols and not as important as them.
+  # https://trac.wildfiregames.com/wiki/Debugging#CallstackonLinuxmacOS
+  # make config=debug -j9
 
   cd "$srcdir/${_pkgname}/build/workspaces/gcc"
   make -j9
+  # OPTIONAL: uncomment for a debug build, it's a 2nd executable name
+  # `pyrogenesis_dbg` It's a small increase of build time.
+  # It's independent from the debug symbols and not as important as them.
+  # https://trac.wildfiregames.com/wiki/Debugging#CallstackonLinuxmacOS
+  # make config=debug -j9
 }
 
 package_0ad-git() {
@@ -57,6 +67,8 @@ package_0ad-git() {
   cd "$srcdir/${_pkgname}"
 
   install -Dm755 binaries/system/pyrogenesis "${pkgdir}/usr/bin"
+  # OPTIONAL: uncomment debug build. See the comments around the `make` calls
+  # install -Dm755 binaries/system/pyrogenesis_dbg "${pkgdir}/usr/bin"
   install -Dm755 binaries/system/*.so "${pkgdir}/usr/lib/${_pkgname}"
   install -Dm755 build/resources/${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 build/resources/${_pkgname}.desktop \
