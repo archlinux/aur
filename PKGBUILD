@@ -1,17 +1,18 @@
 # $Id$
-# Maintainer:  Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: tuxayo <victor (replace by @) tuxayo DOT net>
+# Contributor:  Brenton Horne <brentonhorne77 at gmail dot com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: t3ddy  <t3ddy1988 "at" gmail {dot} com>
 # Contributor: AdriÃ¡n Chaves FernÃ¡ndez (Gallaecio) <adriyetichaves@gmail.com>
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
-pkgver=21551
+pkgver=26504
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://play0ad.com/"
 license=('GPL2' 'CCPL')
 depends=('binutils' 'boost-libs' 'curl' 'enet' 'libogg' 'libpng' 'libvorbis'
-         'libxml2' 'openal' 'sdl2' 'wxgtk' 'zlib' 'libgl' 'glu'
+         'libxml2' 'openal' 'sdl2' 'wxgtk2' 'zlib' 'libgl' 'glu'
          'gloox' 'miniupnpc' 'icu' 'nspr')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm' 'git')
 source=("git+https://github.com/0ad/0ad.git")
