@@ -4,9 +4,9 @@
 # Contributor: Danny Su        <contact@dannysu.com>
 
 pkgname=duplicati2-beta
-pkgver=2.0.6.1
+pkgver=2.0.6.3
 pkgrel=1
-_date=2021-05-03
+_date=2021-06-17
 _branch=beta
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
@@ -18,7 +18,7 @@ source=(https://github.com/duplicati/duplicati/releases/download/v${pkgver}-${pk
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('15ca4f0257beeb50fb9a4a5461bcc8205c5fb6949835a1eceb9b59112505267f'
+sha256sums=('85a45ce43e0f8050324854f64f130e8967d881c73c3e120cf81028c1f110cb50'
             '0a4f2a0a6ee8f38166e4d4490db867fa60dddb01ed209ff6a4fe4d5ab79ffa94'
             '46acdb205b9ec152b6028b15a0b4754ff34ac835d49ce765b8ef47a038dbb6e6'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'

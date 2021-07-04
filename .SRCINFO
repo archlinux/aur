@@ -1,6 +1,6 @@
 pkgbase = duplicati2-beta
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
-	pkgver = 2.0.6.1
+	pkgver = 2.0.6.3
 	pkgrel = 1
 	url = http://duplicati.com
 	install = duplicati.install
@@ -10,16 +10,15 @@ pkgbase = duplicati2-beta
 	depends = gtk-sharp-2
 	depends = mono
 	conflicts = duplicati-latest
-	source = https://github.com/duplicati/duplicati/releases/download/v2.0.6.1-2.0.6.1_beta_2021-05-03/duplicati-2.0.6.1_beta_2021-05-03.zip
+	source = https://github.com/duplicati/duplicati/releases/download/v2.0.6.3-2.0.6.3_beta_2021-06-17/duplicati-2.0.6.3_beta_2021-06-17.zip
 	source = duplicati-user.service
 	source = duplicati.service
 	source = duplicati.sysusers
 	source = duplicati-cli
-	sha256sums = 15ca4f0257beeb50fb9a4a5461bcc8205c5fb6949835a1eceb9b59112505267f
+	sha256sums = 85a45ce43e0f8050324854f64f130e8967d881c73c3e120cf81028c1f110cb50
 	sha256sums = 0a4f2a0a6ee8f38166e4d4490db867fa60dddb01ed209ff6a4fe4d5ab79ffa94
 	sha256sums = 46acdb205b9ec152b6028b15a0b4754ff34ac835d49ce765b8ef47a038dbb6e6
 	sha256sums = b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959
 	sha256sums = f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5
 
 pkgname = duplicati2-beta
-
