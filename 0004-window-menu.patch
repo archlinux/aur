@@ -1,0 +1,44 @@
+diff --git a/data/windowmenu b/data/windowmenu
+index d867b64..972e8e7 100644
+--- a/data/windowmenu
++++ b/data/windowmenu
+@@ -1,15 +1,33 @@
+ [begin]
+-  [shade]
+-  [stick]
+   [maximize]
+   [iconify]
+-  [raise]
+-  [lower]
+   [settitledialog]
+   [sendto]
+   [layer]
+-  [alpha]
+-  [extramenus]
+   [separator]
+   [close]
++  [separator]
++  [submenu] (Opzioni avanzate)
++      [shade]
++      [stick]
++      [raise]
++      [lower]
++      [alpha]
++      [extramenus]
++  [end]
++  [separator]
++  [submenu] (Fluxbox menu)
++      [config] (Configure)
++      [submenu] (System Styles) {Choose a style...}
++          [stylesdir] (/usr/share/fluxbox/styles)
++      [end]
++      [submenu] (User Styles) {Choose a style...}
++          [stylesdir] (~/.fluxbox/styles)
++      [end]
++      [workspaces] (Workspace List)
++      [commanddialog] (Fluxbox Command)
++      [reconfig] (Reload config)
++      [restart] (Restart)
++  [end]
+ [end]
++
