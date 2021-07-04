@@ -9,16 +9,16 @@ _lua=luajit
 _pkgname=powder-toy
 pkgname="${_pkgname}-snapshot"
 pkgver=218
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch"
 arch=(x86_64 i686)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('glibc' 'libx11' 'sdl2' "$_lua" 'fftw' 'zlib' 'curl' 'hicolor-icon-theme')
 makedepends=('meson' 'ninja' 'libicns')
-url="http://powdertoy.co.uk/"
+url="https://powdertoy.co.uk/"
 license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::http://github.com/ThePowderToy/The-Powder-Toy/archive/refs/tags/snapshot-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ThePowderToy/The-Powder-Toy/archive/refs/tags/snapshot-${pkgver}.tar.gz"
         "${pkgname}.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop"
