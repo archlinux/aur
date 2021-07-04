@@ -1,0 +1,14 @@
+pkgbase = font8x8-git
+	pkgdesc = 8x8 monochrome bitmap fonts for rendering in c
+	pkgver = r7.8e279d2
+	pkgrel = 1
+	url = https://github.com/dhepper/font8x8
+	arch = any
+	license = Custom:CC0
+	makedepends = git
+	provides = font8x8
+	conflicts = font8x8
+	source = git+https://github.com/dhepper/font8x8.git
+	md5sums = SKIP
+
+pkgname = font8x8-git
