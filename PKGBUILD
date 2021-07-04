@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2017-12-17.
+# PKGBUILD last time manually edited: At least on 2021-07-04.
 
 _pkgname=idos-timetable-additionalinfo-chaps-mhd-pid
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2019_11_26
+pkgver=2021_5_5
 pkgrel=1
 pkgdesc="Photographs of some stops within the PID (Praha region) public transport area, to be used with the timetable search engines by CHAPS."
 arch=('any')
