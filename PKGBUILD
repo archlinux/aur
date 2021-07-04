@@ -25,6 +25,10 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p build
   go build -o build/cptest ./cmd/cptest
+
+  # Clean up modules that all have read only permissions because of go.
+  go clean -modcache
+  rm -rf $GOPATH
 }
 
 package() {
