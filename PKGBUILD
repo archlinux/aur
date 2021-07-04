@@ -9,7 +9,7 @@ url="https://gitlab.com/kalilinux/packages/kali-themes"
 license=('GPL3')
 optdepends=('')
 options=('!strip' '!buildflags' '!makeflags')
-makedepends=('optipng')
+makedepends=('optipng' 'librsvg')
 source=("https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2021.2.4/kali-themes-kali-2021.2.4.tar.gz")
 sha512sums=('30640cdcb66ad608e1e7a91b7c87dd3220ad11029a88855be7e17b7298216d8bc30f29d1d451f9a5016a246d16b7732471737215b4f8e1930e7ca76ad7d56239')
 
