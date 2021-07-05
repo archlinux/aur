@@ -1,35 +1,38 @@
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-trackpy
-pkgver=0.4.2
+_name="${pkgname#python-}"
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Tools for particle tracking"
+pkgdesc="Python particle tracking tool"
 url="https://github.com/soft-matter/trackpy"
-arch=(any)
+arch=('any')
 license=('BSD')
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas' 'python-six' 'python-yaml')
+depends=('python>=3.6' 'python-numpy>=1.14' 'python-scipy>=1.1' 'python-matplotlib' 'python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 optdepends=("python-pims: simplifies image-reading"
             "python-pytables: saving results in an HDF5 file"
             "python-numba: for accelerated feature-finding and linking"
             "python-pillow: for some display routines")
-source=(trackpy-"$pkgver".tar.gz::https://github.com/soft-matter/trackpy/archive/v$pkgver.tar.gz)
-md5sums=('bb166d6d93c7b8f9a3330a9d758808eb')
-
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('b5e8a40491a4cdc1c8c5f15e75e468b9ee51f677018d330622f9277468d0f297')
 
 build() {
-    cd trackpy-"$pkgver"
-    python setup.py build
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
-check() {
-    cd trackpy-"$pkgver"
-    nosetests3
-}
+# check() {
+#     cd trackpy-"$pkgver"
+#     nosetests3
+# }
 
 package() {
-    cd trackpy-"$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd "$_name-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
