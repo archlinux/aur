@@ -2,7 +2,7 @@
 
 pkgname=spfft
 _pkgname=SpFFT
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=('cuda: GPU support')
 provides=('spfft')
 conflicts=('spfft-cuda-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b74ee66f766580d613bbcae91301cad545711e32c0a3e46860e0200b70915399')
+sha256sums=('7f04c0cff7dad825ec666c3a42b27583e65b6bcb8592245ecf06f96cc5a4938e')
 
 prepare() {
   mkdir "$srcdir/build"
