@@ -5,15 +5,15 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-prboom
 pkgname=$_pkgname-git
-pkgver=r630.9cbbebe
+pkgver=r666.2ab3b4a
 pkgrel=1
 epoch=1
-pkgdesc="Port of prboom to libretro - plays Doom, Doom II, Final Doom and other Doom IWAD mods"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+pkgdesc="PrBoom (Doom/Doom II/Final Doom) core"
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/libretro-prboom"
 license=('GPL2')
 groups=('libretro')
-depends=('libretro-core-info' 'glibc')
+depends=('glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
