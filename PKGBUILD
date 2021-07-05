@@ -20,7 +20,7 @@ prepare() {
 
 build() {
   cd src/github.com/wallix/awless
-  env GOPATH="${srcdir}" go build
+  env GOPATH="${srcdir}" GO111MODULE=off go build
 }
 
 # check() {
