@@ -1,13 +1,13 @@
 # Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=rbw-git
 _name=${pkgname%-*}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 makedepends=('rust' 'cargo' 'git')
 depends=('pinentry' 'openssl')
 conflicts=('rbw' 'rbw-bin')
 provides=('rbw')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://git.tozt.net/${_name}"
 source=(git+https://git.tozt.net/${_name})
 sha256sums=('SKIP')
