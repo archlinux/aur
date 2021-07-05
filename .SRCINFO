@@ -1,0 +1,15 @@
+pkgbase = python-errorhandler
+	pkgdesc = A logging framework handler that tracks when messages above a certain level have been logged.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://pypi.org/project/errorhandler/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-errorhandler
+	source = https://files.pythonhosted.org/packages/ee/f4/6efa866dfb5b72d468666eb69adc19142e3956af8e6a95f3109d29685038/errorhandler-2.0.1.tar.gz
+	sha256sums = dd9120a4ab7b8128cba9b6b120d8b5560d566a3cd0f828cced3d3fd60a42ec40
+
+pkgname = python-errorhandler
