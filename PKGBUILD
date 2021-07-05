@@ -2,7 +2,7 @@
 
 pkgname=swarm-bee
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Swarm client implemented in Go, basic building block for Swarm Network'
 arch=('x86_64')
 url='https://swarm.ethereum.org/'
@@ -11,7 +11,6 @@ depends=('bash')
 optdepends=('swarm-bee-clef: external signer for bee')
 makedepends=('go' 'git')
 options=('!strip' '!buildflags' '!makeflags')
-conflicts=('swarm-bee-bin')
 backup=('etc/bee/bee.yaml')
 source=("git+https://github.com/ethersphere/bee.git#tag=v${pkgver}")
 sha512sums=('SKIP')
