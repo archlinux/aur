@@ -2,7 +2,7 @@
 
 pkgname=freezer-bin
 _pkgname_=freezer
-pkgver=1.1.20
+pkgver=1.1.21
 pkgrel=1
 pkgdesc="Free HQ music streaming app (Official)"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"$_pkgname_.sh"
 	https://git.freezer.life/exttex/freezerpc/raw/branch/master/app/assets/icon.png
 )
-source_x86_64=("https://files.freezer.life/0:/PC/1.1.20/freezer_1.1.20_amd64.deb")
+source_x86_64=("https://files.freezer.life/0:/PC/1.1.21/freezer_1.1.21_amd64.deb")
 
 build() {
 	
@@ -39,8 +39,7 @@ package() {
 	install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/freezer.png"
 	install -Dm644 "$srcdir/$_pkgname_.desktop" "$pkgdir/usr/share/applications/$_pkgname_.desktop"
 }
-
-sha256sums=('536e0dee147596a399f58c7a3faf1cd8eb4f1b4e5f4f0f760201270f324ca15d'
+sha256sums=('67c923a3f2037cfbd2088cdf058dd71785bd04b1da610dff14ddd43bb0e25fd7'
             '780e71d3423d5d1838f144a1954216324f833673d8b48365535ad8e31da1ea98'
             '5431bc4b525071e0d53c971eff9fa7c3a906bfe1823a7598f82df79bbfe981d7')
-sha256sums_x86_64=('2fc5ad6ecc4e339508ff21082c91553cc06a5c3e453ffc92659af8e0b75b1b24')
+sha256sums_x86_64=('0310ed4c51585a7b700839465804c7c98194a2480f608876f5b26ed548bdd00d')
