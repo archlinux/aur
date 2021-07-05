@@ -1,7 +1,7 @@
 pkgbase = swarm-bee-clef
 	pkgdesc = Go Ethereum's external signer packaged for bee
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swarm.ethereum.org/
 	install = swarm-bee-clef.install
 	arch = x86_64
