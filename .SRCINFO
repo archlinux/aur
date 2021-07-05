@@ -1,6 +1,6 @@
 pkgbase = apnotes
 	pkgdesc = Interface for Linux to View, Edit, Create and Sync Notes written on apple devices
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/findus/apnotes
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = apnotes
 	makedepends = rust
 	depends = sqlite
 	depends = openssl
-	source = https://github.com/findus/apple-notes-bridge/archive/0.3.7/apnotes-0.3.7.tar.gz
+	depends = dbus
+	source = https://github.com/findus/apple-notes-bridge/archive/0.3.8/apnotes-0.3.8.tar.gz
 	validpgpkeys = 01938725ABC3812F5DBC219C6E19B9E46E818A5F
-	sha256sums = a9732901aba8536526073a247ad28f2c86e50b869e8cb87fe39d204d1a6c8355
-	sha512sums = 06072f8013ac4c71d139b9ccb3df6ca18cd4f7c551bc1f8d1dfe94fa022c901dc0be19409af6ea5c7945a5eaeee33d83cca7346fd4e3c254263901179b38cd6e
+	sha256sums = 1e0151a8ec7e70f29e56b26ad6b17638919cb895583141a08db036b7039c54b2
+	sha512sums = a603c54183c2a0ab5b38a4ed3115aad3cb7aefe8b6be92957a3a7fdd04873c6a288767a88a13c3b01dfc0a66773e0fd9985ff4d8c5727f1e6430cc69ee9033a6
 
 pkgname = apnotes
