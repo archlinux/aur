@@ -1,6 +1,6 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.1.1
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = qt6-base-headless
 	provides = qt6-base
 	conflicts = qt6-base
 	options = !lto
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.1/submodules/qtbase-everywhere-src-6.1.1.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.1/6.1.2/submodules/qtbase-everywhere-src-6.1.2.tar.xz
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
-	sha256sums = 21a8aa9f07170e047270c668c8b037536f40226db7adbc529a0b41c3a3cb3ff2
+	sha256sums = b9c4061c1c7999c42c315fc5b0f4f654067b4186066dd729bbcf1bdce8d781c8
 	sha256sums = cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
