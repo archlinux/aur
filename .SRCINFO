@@ -1,6 +1,6 @@
 pkgbase = lyrics-in-terminal
 	pkgdesc = Shows lyrics of songs from your favourite music player in terminal
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/Jugran/lyrics-in-terminal
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = lyrics-in-terminal
 	depends = python>=3.6
 	depends = dbus-python
 	depends = ncurses
-	source = https://github.com/Jugran/lyrics-in-terminal/archive/1.4.1/lyrics-in-terminal-1.4.1.tar.gz
-	md5sums = d18c9f5f2173aa8b891d0e3a53ca7bd7
+	source = https://github.com/Jugran/lyrics-in-terminal/archive/1.4.2/lyrics-in-terminal-1.4.2.tar.gz
+	md5sums = 73e1fde148bb34fcca229a0367ed90f2
 
 pkgname = lyrics-in-terminal
-
