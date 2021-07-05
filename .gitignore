@@ -1,0 +1,7 @@
+# Packge Sources
+pkg/
+src/
+ambuild-git/
+
+# Built package files
+*.tar.*

@@ -1,0 +1,20 @@
+pkgbase = ambuild-git
+	pkgdesc = Allied Modders build system for sourcepawn and sourcemode extensions.
+	pkgver = 2.2.r8.g6ad11a1
+	pkgrel = 2.2
+	url = https://github.com/freylint/ambuild-aur
+	arch = i386
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python3
+	depends = gcc
+	depends = clang
+	provides = ambuild
+	provides = ambuild2
+	replaces = ambuild
+	replaces = ambuild2
+	source = ambuild-git::git+https://github.com/alliedmodders/ambuild.git
+	sha256sums = SKIP
+
+pkgname = ambuild-git
