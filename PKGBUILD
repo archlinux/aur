@@ -7,7 +7,7 @@
 pkgname=audiocity-git
 _gitname=audiocity
 pkgver=3.0.2.r53.g8b90a1596
-pkgrel=1
+pkgrel=2
 pkgdesc="Audacity fork without any non-free software or telemetry, as all GPL software should (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/Binaergewitter/audiocity"
@@ -18,8 +18,8 @@ depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile libvorbis
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg jack nasm conan)
 optdepends=('ffmpeg: additional import/export capabilities')
-provides=(audacity)
-conflicts=(audacity)
+provides=(audacity audacity-git audiocity)
+conflicts=(audacity audacity-git audiocity)
 source=(
   "git+https://github.com/Binaergewitter/${_gitname}.git"
   "audacity.patch"
