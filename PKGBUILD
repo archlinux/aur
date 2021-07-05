@@ -1,6 +1,6 @@
 pkgname=python-pynndescent
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Simple fast approximate nearest neighbor search"
 arch=('any')
 url="http://github.com/lmcinnes/pynndescent"
@@ -8,7 +8,7 @@ license=('BSD')
 depends=('python-joblib' 'python-numba' 'python-scikit-learn' 'python-scipy')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/p/pynndescent/pynndescent-${pkgver}.tar.gz")
-sha256sums=('d9fd22210b8d64368376ff392e876fb72fe3cda282396cfa6a59440ab6600771')
+sha256sums=('1d5c4dfb560a1c866b2df5608b80773f58ecb6823432ef0e87909fda0e1333e9')
 
 package() {
   cd "$srcdir/pynndescent-$pkgver"
