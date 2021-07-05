@@ -4,7 +4,7 @@
 
 pkgname=ruby-kramdown-rfc2629
 _name="${pkgname#ruby-}"
-pkgver=1.4.17
+pkgver=1.4.19
 pkgrel=1
 pkgdesc="An RFC2629 (XML2RFC) generating backend for Thomas Leitner's kramdown markdown parser"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby-kramdown' 'ruby-certified')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_name}-${pkgver}.gem")
 noextract=("${_name}-${pkgver}.gem")
-sha256sums=(0f40c60d183804a4194e0b834b9a13474efdc6f3328cf47b5ca78729a148b0c6)
+sha256sums=(66b5a7abbefa2aedec8d5e5b9aba7b01a3e1769ea4a18f2ca2c7f34feab817f3)
 
 package() {
   local _gemdir
