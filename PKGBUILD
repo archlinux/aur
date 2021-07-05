@@ -3,7 +3,7 @@
 
 pkgname=awless
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line interface for Amazon Web Services (AWS)'
 arch=('i686' 'x86_64')
 url='https://github.com/wallix/awless'
