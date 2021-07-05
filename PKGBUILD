@@ -2,7 +2,7 @@
 
 _basename=gupnp
 pkgname=lib32-gupnp
-pkgver=1.2.4
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="An object-oriented UPNP framework (32-bit)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://wiki.gnome.org/Projects/GUPnP"
 license=(LGPL)
 depends=(lib32-gssdp gupnp)
 makedepends=(git gobject-introspection meson vala)
-_commit=a066f3d70d7712976311c906afc3ca57be8a694d  # tags/gupnp-1.2.4^0
+_commit=91f5c741ac9ff026df16111833719ce2e07ef11a  # tags/gupnp-1.2.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -39,7 +39,7 @@ check() {
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 
     rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
