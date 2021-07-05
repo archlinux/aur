@@ -1,8 +1,7 @@
-# Maintainer: Pedro Portales <pedro.portales {at} protonmail {dot} com>
 # Maintainer: Redson dos Santos Silva <redsonbr81 {at} protonmail {dot} com>
 pkgname=easy-legendary-git
 _pkgname=easy-legendary
-pkgver=1.0.
+pkgver=1.0
 pkgrel=1
 pkgdesc="Script writen in BASH by Franklin Souza to make legendary be easy."
 arch=('any')
@@ -17,11 +16,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  printf "1.0%s.%s" 
+  printf "1.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   cd $_pkgname
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 epicgames "$pkgdir/usr/bin/$_pkgname"
+  install -D -m755 easy-legendary.sh "$pkgdir/usr/bin/$_pkgname"
 }
