@@ -3,19 +3,24 @@
 # Contributor: Shane Stone <shanewstone at gmail>
 
 pkgname=proselint
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='A linter for prose'
 arch=('any')
 url="https://github.com/amperser/proselint"
 license=('BSD')
 depends=('python-click' 'python-future' 'python-six')
-makedepends=('python-setuptools')
+makedepends=("python-setuptools" "python-dephell")
 checkdepends=('python-mock' 'python-nose' 'python-pytest')
 conflicts=('python-proselint')
 replaces=('python-proselint')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('cfa12551e4c4ce6d34c0f3487cedc4ddcfb76bfa86a3ee01b1f63ef59354c8e4879bdb843ecadc2e9953d7a11cbbc65716ff5d195c670d7a80c586d31247617d')
+sha512sums=('3cd5ee147cef90e0b4ba282814cfb32a2287df6bb83fbacb36c1cace3414580db1b1601476b5323f07cb9ab00f63ff8c2a2f5c98a8e79a22ea796946a2368448')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
   cd $pkgname-$pkgver
