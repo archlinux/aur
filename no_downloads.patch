@@ -1,41 +1,15 @@
---- build.xml.orig	2020-06-13 00:09:40.000000000 +0200
-+++ build.xml	2020-06-17 12:46:43.682413239 +0200
-@@ -1009,7 +1009,7 @@
+--- build.xml.orig	2021-06-24 22:24:41.619863591 +0200
++++ build.xml	2021-06-24 22:33:17.284859743 +0200
+@@ -938,7 +938,7 @@
      </if>
    </target>
  
--  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jdk-download, jfx-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
+-  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jdk-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
 +  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
      <mkdir dir="linux/work" />
  
      <copy todir="linux/work" preservelastmodified="true">
-@@ -1049,25 +1049,6 @@
-       <fileset refid="runtime.jars" />
-     </copy>
- 
--    <preparejfx />
--
--    <!-- Pull in OpenJFX (separated from mainline Java in JDK 11). -->
--    <if>
--      <equals arg1="${jfx.available}" arg2="true" />
--      <then>
--        <copy todir="linux/work/core/library" overwrite="true">
--          <fileset dir="${jfx.path.lib}" includes="*.jar"/>
--          <fileset dir="${jfx.path.lib}" includes="*.so"/>
--        </copy>
--
--        <mkdir dir="linux/work/core/java/legal/openjfx" />
--
--        <copy todir="linux/work/core/java/legal/openjfx" overwrite="true">
--          <fileset dir="${jfx.path.dist}/legal" includes="**"/>
--        </copy>
--      </then>
--    </if>
--
-     <copy file="linux/processing" todir="linux/work" />
-     <chmod perm="ugo+x" file="linux/work/processing" />
- 
-@@ -1094,57 +1075,6 @@
+@@ -1025,54 +1025,6 @@
      <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
      <copy file="linux/appdata.xml" todir="linux/work/lib" />
      <copy file="linux/desktop.template" todir="linux/work/lib" />
@@ -73,10 +47,6 @@
 -
 -    <!-- Remove unused JRE bloat. -->
 -    <delete failonerror="true">
--      <!--
--      <fileset refid="javafx-basics" />
--      <fileset refid="javafx-linux-${jdk.data.model}" />
--      -->
 -      <fileset refid="jdk-optional-linux" />
 -    </delete>
 -
@@ -85,11 +55,12 @@
 -      <arg line="linux/jdk-${jdk.esoteric}+${jdk.build}"/>
 -    </exec>
 -
+-    <!--
 -    <exec executable="rm">
 -      <arg value="-r"/>
 -      <arg line="${jfx.path.dist}"/>
 -    </exec>
--
+-    -->
    </target>
  
    <target name="linux-run" depends="linux-build"

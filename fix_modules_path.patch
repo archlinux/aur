@@ -1,0 +1,9 @@
+--- processing.orig	2021-06-24 19:30:03.000000000 +0200
++++ processing	2021-07-05 23:11:53.693278463 +0200
+@@ -113,5 +113,5 @@
+   fi
+   cd "$APPDIR"
+ 
+-  java -splash:lib/about-1x.png -Djna.nosys=true -Djava.library.path=lib:modes/java/libraries/javafx/library/linux64 --module-path=modes/java/libraries/javafx/library/linux64 --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing -Xmx512m processing.app.Base "$SKETCH" &
++  java -splash:lib/about-1x.png -Djna.nosys=true -Djava.library.path=lib:modes/java/libraries/javafx/library/linux64 --module-path=modes/java/libraries/javafx/library/linux64/modules --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing -Xmx512m processing.app.Base "$SKETCH" &
+ fi

@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4
-pkgver=4.0a4
+pkgver=4.0a5
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -17,16 +17,18 @@ source=("https://github.com/processing/processing4/archive/processing-$((1269+${
         change_cmd_name.patch
         derive_jdk_from_path.patch
         disable_update_check.patch
+        fix_modules_path.patch
         no_downloads.patch
         use_system_libraries.patch)
-sha256sums=('e3f51f9d755ea8a95d8539af54a029f10e216780af6c18b6a41158aca65e8de9'
+sha256sums=('2b3fe1f5202e00a17afaf9ed0275efaedaa8b26ee74f2f1611e7d466ac951648'
             'fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
             'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            'a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263'
-            'fbcbb318db352d10ecc03df9a07b199818bb87c9ebdebccdb4a2bbe21a12a370')
+            'b7c2684fd3fa75d1b6b67457c0e5dd4f86fd9a25e104cdbd5961154e00c9fd72'
+            '532484ea829d6d9f8f13b2197f6b5bc90162bc0068235463b571ddcaa18f2b82'
+            'ba6d4ae099bcaee3cc23d0af56b9a11d203afaf3c5bf22d3fd935d752c9a32f3')
 
 prepare() {
   # Create .desktop file
@@ -41,6 +43,9 @@ prepare() {
 
   # Create missing directories
   mkdir -p $pkgname/build/linux/work/java
+  
+  # Set correct --module-path in start script (#215)
+  patch $pkgname/build/linux/processing < fix_modules_path.patch
 
   # Don't download any files during Ant's build process
   patch $pkgname/build/build.xml < no_downloads.patch

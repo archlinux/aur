@@ -1,27 +1,20 @@
---- build_core.xml.orig	2020-06-13 00:09:40.000000000 +0200
-+++ build_core.xml	2020-06-17 15:54:22.945551353 +0200
-@@ -60,15 +60,15 @@
+--- src/processing4/core/build.xml.orig	2021-06-24 22:34:34.389209941 +0200
++++ src/processing4/core/build.xml	2021-06-24 22:38:51.515410408 +0200
+@@ -64,17 +64,6 @@
    <path id="classpath.base">
      <pathelement location="library/jogl-all.jar" />
      <pathelement location="library/gluegen-rt.jar" />
--    <pathelement location="library/javafx-swt.jar" />
+-
+-    <!-- <pathelement location="library/javafx-swt.jar" /> -->
 -    <pathelement location="library/javafx.base.jar" />
 -    <pathelement location="library/javafx.controls.jar" />
 -    <pathelement location="library/javafx.fxml.jar" />
 -    <pathelement location="library/javafx.graphics.jar" />
 -    <pathelement location="library/javafx.media.jar" />
+-    <!-- error? it's not a .jar, but is this how config is handled? [fry 210619] -->
 -    <pathelement location="library/javafx.properties" />
 -    <pathelement location="library/javafx.swing.jar" />
--    <pathelement location="library/javafx.web.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx-swt.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.base.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.controls.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.fxml.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.graphics.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.media.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.properties" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.swing.jar" />
-+    <pathelement location="/usr/lib/jvm/java-11-openjfx/lib/javafx.web.jar" />
+-    <!-- <pathelement location="library/javafx.web.jar" /> -->
    </path>
  
    <path id="classpath.test">
