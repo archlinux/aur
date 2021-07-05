@@ -15,4 +15,3 @@ pkgname = plasma-theme-moe-git
 
 pkgname = kvantum-theme-moe-git
 	depends = kvantum-qt5
-
