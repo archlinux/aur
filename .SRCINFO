@@ -1,24 +1,23 @@
 pkgbase = libretro-fbneo-git
-	pkgdesc = libretro FBNeo NEW implementation of Final Burn Alpha
-	pkgver = 11245.7bf9a958a
+	pkgdesc = FinalBurn Neo multi-arcade core
+	pkgver = 1.0.0.02.r427.g8f6331c71
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/libretro/FBNeo
-	arch = i686
-	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = i686
+	arch = x86_64
 	groups = libretro
-	license = custom:Non-commercial
+	license = custom
 	makedepends = git
-	depends = zlib
-	depends = glibc
+	depends = gcc-libs
 	depends = libretro-core-info
 	provides = libretro-fbneo
 	conflicts = libretro-fbneo
 	replaces = libretro-fbalpha-git
-	source = git+https://github.com/libretro/FBNeo.git
-	sha256sums = SKIP
+	source = libretro-fbneo::git+https://github.com/libretro/FBNeo.git
+	md5sums = SKIP
 
 pkgname = libretro-fbneo-git
-
