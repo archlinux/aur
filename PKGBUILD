@@ -3,17 +3,18 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=r4174.0f29d7e1
+pkgver=r4457.8e4fa54e
 pkgrel=1
-pkgdesc='A multi-platform Sega Dreamcast emulator'
-arch=('x86_64' 'i686')
+pkgdesc='Sega Dreamcast core'
+arch=('i686' 'x86_64')
 url="https://github.com/libretro/flycast"
 license=('GPL2')
 groups=('libretro')
-depends=('libretro-core-info' 'libgl' 'libzip' 'xxhash' 'zlib')
+depends=('libgl' 'libretro-core-info' 'libzip' 'xxhash' 'zlib')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!lto')
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
@@ -24,12 +25,16 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	sed -E 's/^((LDFLAGS|CFLAGS|CXXFLAGS)\s*):=/\1?=/' -i Makefile
+	sed -E 's/^(\s*(CFLAGS|CXXFLAGS|LDFLAGS)\s*):=/\1+=/' -i Makefile
 }
 
 build() {
 	cd $_pkgname
-	make HAVE_OIT=1 SYSTEM_LIBZIP=1 SYSTEM_XXHASH=1 SYSTEM_ZLIB=1
+	make \
+		HAVE_OIT=1 \
+		SYSTEM_LIBZIP=1 \
+		SYSTEM_XXHASH=1 \
+		SYSTEM_ZLIB=1
 }
 
 package() {
