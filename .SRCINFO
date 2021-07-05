@@ -10,7 +10,7 @@ pkgbase = kyocera-cups
 	conflicts = kyocera-ecosys-m2035dn
 	conflicts = kyocera-ecosys-p6035cdn
 	options = !strip
-	source = https://la.kyoceradocumentsolutions.com/content/dam/kdc/kdag/downloads/technical/executables/drivers/kyoceradocumentsolutions/lad/en/Kyocera_Linux_PPD_Ver_8.1601.tar.gz
+	source = Kyocera_Linux_PPD_Ver_8.1601.tar.gz::https://www.kyoceradocumentsolutions.us/content/download-center-americas/us/drivers/drivers/Kyocera_Linux_PPD_Ver_8_1601_tar_gz.download.gz
 	source = repack.sh
 	md5sums = 23228956c4f4df8a57dca10c9d783b59
 	md5sums = d3e7d0fe76377b0b058a9fb497cdfafa
@@ -20,4 +20,3 @@ pkgbase = kyocera-cups
 	sha256sums = c0ca7dba26542a9b75b51300da289e753cfaa0f43b09c9230041ab5c728b49a4
 
 pkgname = kyocera-cups
-
