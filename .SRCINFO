@@ -1,6 +1,6 @@
 pkgbase = swt
 	pkgdesc = An open source widget toolkit for Java
-	pkgver = 4.20M1
+	pkgver = 4.20
 	pkgrel = 1
 	url = https://www.eclipse.org/swt/
 	arch = x86_64
@@ -9,18 +9,17 @@ pkgbase = swt
 	makedepends = glu
 	makedepends = unzip
 	makedepends = pkgconfig
-	makedepends = gtk2
 	makedepends = gtk3
+	makedepends = gtk4
 	makedepends = ant
-	depends = java-runtime>=7
+	depends = java-runtime>=8
 	depends = libxtst
 	optdepends = glu
-	optdepends = gtk2
 	optdepends = gtk3
-	source = https://download.eclipse.org/eclipse/downloads/drops4/S-4.20M1-202104071800/swt-4.20M1-gtk-linux-x86_64.zip
+	optdepends = gtk4
+	source = https://download.eclipse.org/eclipse/downloads/drops4/R-4.20-202106111600/swt-4.20-gtk-linux-x86_64.zip
 	source = build-swt.xml
-	sha256sums = df2a21425659bef510e99a26e212ce4782a85f507f5a304d838d31ae35a8be8a
-	sha256sums = 3d30fbde25a6a6d260d04cb1782b7618c2a0a926440935a9eea516146eb0e1e1
+	sha256sums = 0d1ab552b95aab6df6c0499c934fd82864100dc638c43b6c1e793e740bb534c2
+	sha256sums = e1a7d5763912e52e94fcaffc778e55dbf822ffba5eb0d7f5d5018e79d8bd79d4
 
 pkgname = swt
-
