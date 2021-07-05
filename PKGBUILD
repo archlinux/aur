@@ -1,7 +1,7 @@
 # Maintainer: u0_a266 <cagf2emv@anonaddy.me>
 pkgname=fzpac-git
 _pkgname=fzpac
-pkgver=r122.0a6f017
+pkgver=r123.00aded7
 pkgrel=1
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
@@ -13,6 +13,7 @@ optdepends=('bash-completion: completion support for bash'
 source=("git+$url")
 sha256sums=('SKIP')
 install=$pkgname.install
+provides=('fzpac')
 
 pkgver() {
 	cd "$_pkgname"
