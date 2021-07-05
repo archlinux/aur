@@ -2,34 +2,31 @@
 # Contributor: Alireza Ayinmehr <alireza.darksun@gmail.com>
 # Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="program to use secretservice to keep Docker credentials safe"
 arch=(x86_64)
 url="https://github.com/docker/docker-credential-helpers"
 license=('MIT')
 depends=('libsecret')
 makedepends=('go')
-_gourl="github.com/docker/docker-credential-helpers"
-source=("docker-credential-helpers-$pkgver.tar.gz::https://$_gourl/archive/v$pkgver.tar.gz")
-sha512sums=('2d15be8df134bff08eef9461348f07cd57c70c15a0ab044de2e69296c400b8c0e16198c90fd064d5ce83037d0bad57520e7524b0832b7a00e69397203dc90d10')
-noextract=("docker-credential-helpers-$pkgver.tar.gz")
+source=("docker-credential-helpers-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
+sha512sums=('4e8c97c529e18e700aef77ba0ebfb1d432ca8f96bd0efddc0336e9fca5a5f8e98cb058dfaaee289dc4515dcf48d26d54df86120ce94648a8d87b291a14bae0d5')
 install=$pkgname.install
 
-prepare() {
-  mkdir -p "$srcdir/src/$_gourl"
-  tar -x --strip-components=1 -C "$srcdir/src/$_gourl" -f "$srcdir/docker-credential-helpers-$pkgver.tar.gz"
-}
-
 build() {
-  cd "$srcdir/src/$_gourl"
-  # XXX: remove GO111MODULE on the next release and/or go 1.17
-  GO111MODULE=off GOPATH="$srcdir" go install -v -x ./credentials
-  GO111MODULE=off GOPATH="$srcdir" make secretservice
+  cd "$srcdir/docker-credential-helpers-${pkgver}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS="-v -buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="$srcdir"
+  GOPATH="$srcdir" make secretservice
 }
 
 package() {
-  cd "$srcdir/src/$_gourl"
+  cd "$srcdir/docker-credential-helpers-${pkgver}"
   install -D -m 0755 bin/docker-credential-secretservice "$pkgdir/usr/bin/docker-credential-secretservice"
   install -D -m 0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
