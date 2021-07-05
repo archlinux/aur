@@ -2,9 +2,9 @@
 pkgname=rbw-git
 _name=${pkgname%-*}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo' 'git')
-depends=('pinentry' 'openssl')
+depends=('pinentry')
 conflicts=('rbw' 'rbw-bin')
 provides=('rbw')
 arch=('i686' 'x86_64' 'aarch64')
