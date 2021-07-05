@@ -1,4 +1,5 @@
-# Maintainer: Alfredo Ramos <alfredo dot ramos at yandex dot com>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: lucke <lucke at o2 dot pl>
@@ -9,62 +10,46 @@
 # Contributor: tigrmesh <tigrmesh at aol dot com>
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
-_pkgname=weechat
-pkgname=${_pkgname}-git
-pkgver=2.7.125.gc29b45a0f
-pkgrel=2
+pkgname=weechat-git
+pkgver=3.2.r89.g6052c1a5c
+pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url='https://www.weechat.org/'
-license=('GPL')
+arch=(i686 x86_64 armv7h aarch64)
+url=https://weechat.org
+license=(GPL)
+depends=(gnutls curl libgcrypt)
+makedepends=(asciidoctor cmake aspell guile lua perl python ruby tcl git)
+optdepends=('aspell: spellchecker support'
+	        'guile: support for guile scripts'
+	        'lua: support for lua scripts'
+	        'perl: support for perl scripts'
+	        'python: support for python scripts'
+	        'ruby: support for ruby scripts'
+	        'tcl: support for tcl scripts')
+provides=("${pkgname%-git}=${pkgver}")
+conflicts=("${pkgname%-git}")
 
-depends=('gnutls' 'ncurses' 'curl' 'zlib' 'libgcrypt' 'hicolor-icon-theme')
-makedepends=(
-	'git' 'source-highlight' 'cmake' 'pkg-config' 'asciidoctor'
-	'perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile'
-	#'php' 'v8'
-)
-optdepends=(
-	'perl' 'python' 'lua' 'tcl' 'ruby'
-	'aspell' 'guile'
-	#'php' 'v8'
-)
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-
-source=("git+https://github.com/${_pkgname}/${_pkgname}.git")
+source=("git+https://github.com/${pkgname%-git}/${pkgname%-git}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}"/${_pkgname}
-	git describe --long --tags 2>/dev/null | sed -r 's/^v//;s/-/./g'
+	git -C ${pkgname%-git} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	mkdir -p "${srcdir}"/build
-}
+# cmake does not correctly handle CPPFLAGS, so kludge it in anyway:
+# https://gitlab.kitware.com/cmake/cmake/-/issues/12928
+CFLAGS+=" ${CPPFLAGS}"
 
 build() {
-	cd "${srcdir}"/build
-	cmake -Wno-dev ../${_pkgname} \
+	cmake -B build -S "${pkgname%-git}" -Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DENABLE_MAN=ON \
 		-DENABLE_DOC=ON \
 		-DENABLE_JAVASCRIPT=OFF \
-		-DENABLE_PHP=OFF #\
-		#-DENABLE_EXEC=OFF \
-		#-DENABLE_FIFO=OFF \
-		#-DENABLE_GUILE=OFF \
-		#-DENABLE_LUA=OFF \
-		#-DENABLE_PERL=OFF \
-		#-DENABLE_PYTHON=OFF \
-		#-DENABLE_RUBY=OFF \
-		#-DENABLE_TCL=OFF \
-		#-DENABLE_XFER=OFF
-	make
+		-DENABLE_PHP=OFF
+	make -C build
 }
 
 package() {
-	cd "${srcdir}"/build
-	make DESTDIR="${pkgdir}" install
+	make -C build DESTDIR="${pkgdir}" install
 }
