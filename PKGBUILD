@@ -1,4 +1,4 @@
-pkgname=tess-git
+pkgname=tess-nightly
 pkgver=1.2r242.ebbbb6e
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"

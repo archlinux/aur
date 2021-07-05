@@ -1,4 +1,4 @@
-pkgbase = tess-git
+pkgbase = tess-nightly
 	pkgdesc = Tess hackable, simple, rapid and beautiful terminal for the new era
 	pkgver = 1.2r242.ebbbb6e
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = tess-git
 	source = git+https://github.com/SquitchYT/Tess.git
 	md5sums = SKIP
 
-pkgname = tess-git
+pkgname = tess-nightly
