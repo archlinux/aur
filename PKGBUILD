@@ -1,7 +1,7 @@
 # Maintainer: johncena141 <johncena141@protonmail.com>
 pkgname='chad_launcher-git'
 _pkgname='chad_launcher'
-pkgver='r110.8e474e0'
+pkgver='r120.60e4de7'
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
