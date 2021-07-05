@@ -1,8 +1,9 @@
+# Maintainer: Daurnimator <daurnimator@archlinux.org>
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.22.4
-pkgrel=2
+pkgver=0.23.0
+pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -11,7 +12,7 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'asciidoctor')
 optdepends=('librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('51e13bee147e08440492c356c2b7cb7d46caeeae27448f4d72eda69d15e6aa55')
+sha256sums=('9fba4fe06f8970a70ca75666f8245181583a6ba5fb11536ae7e572f74c9d1f4c')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
