@@ -9,7 +9,7 @@
 _name=backends
 pkgname=sane-networking
 pkgver=1.0.32
-pkgrel=4
+pkgrel=5
 pkgdesc="Scanner Access Now Easy (with networking patches)"
 url="http://www.sane-project.org/"
 arch=('x86_64')
@@ -60,6 +60,7 @@ build() {
   ./configure --prefix=/usr \
     --disable-locking \
     --disable-rpath \
+    --disable-ipv6 \
     --docdir="/usr/share/doc/sane" \
     --enable-pthread \
     --localstatedir=/var \

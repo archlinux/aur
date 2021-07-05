@@ -1,7 +1,7 @@
 pkgbase = sane-networking
 	pkgdesc = Scanner Access Now Easy (with networking patches)
 	pkgver = 1.0.32
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.sane-project.org/
 	arch = x86_64
 	license = GPL2
