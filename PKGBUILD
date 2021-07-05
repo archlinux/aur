@@ -2,18 +2,18 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=cli
-_cranver=2.5.0
+_cranver=3.0.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Helpers for Developing Command Line Interfaces"
-arch=(any)
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=('r>=2.10' r-glue)
-optdepends=(r-callr r-covr r-htmlwidgets r-knitr r-mockery r-ps r-rmarkdown r-rstudioapi r-prettycode r-testthat r-withr)
+optdepends=(r-callr r-covr r-htmlwidgets r-knitr r-mockery r-prettycode r-processx r--ps r-rlang r-rmarkdown r-rstudioapi r-shiny r-testthat r-tibble r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('5067dfbe056a4b2a57142520f4895ec0b018d3065a910ff4ca41444019b58d9c')
+sha256sums=('a4f173dd98769b1e6ca3e7c14deb81a06eb5262b2c1f8dfd19290e00c0754d39')
 
 build() {
   cd "${srcdir}"
