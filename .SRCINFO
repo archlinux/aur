@@ -1,8 +1,8 @@
 pkgbase = lib32-sbc
 	pkgdesc = Bluetooth Subband Codec (SBC) library (32-bit)
 	pkgver = 1.5
-	pkgrel = 1
-	url = http://www.bluez.org/
+	pkgrel = 2
+	url = https://git.kernel.org/pub/scm/bluetooth/sbc.git
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -14,4 +14,3 @@ pkgbase = lib32-sbc
 	sha512sums = SKIP
 
 pkgname = lib32-sbc
-
