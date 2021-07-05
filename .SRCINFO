@@ -1,6 +1,6 @@
 pkgbase = riscv64-unknown-elf-picolibc
 	pkgdesc = Fork of newlib with stdio bits from avrlibc
-	pkgver = 1.6.2
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/picolibc/picolibc
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = riscv64-unknown-elf-picolibc
 	conflicts = riscv64-unknown-elf-newlib
 	options = !strip
 	options = !buildflags
-	source = picolibc-1.6.2.tar.gz::https://github.com/picolibc/picolibc/archive/1.6.2.tar.gz
-	sha256sums = 1b84256a66c71507382e2dc28e0d9990e96c810520c565959ea24e747477bc5d
+	source = picolibc-1.7.tar.gz::https://github.com/picolibc/picolibc/archive/1.7.tar.gz
+	sha256sums = 5d4e43e954fc0823380ddf3a6397a8ba71e6710fdf58f3fa46401f3f3485818c
 
 pkgname = riscv64-unknown-elf-picolibc
