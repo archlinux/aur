@@ -9,7 +9,7 @@ license=('BSD2-patent')
 _pydeps=(
   'errorhandler'
   'isbnlib'
-  'jinja2'
+  'jinja'
   'jsonschema'
   'panflute'
   'pybase62'
