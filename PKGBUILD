@@ -2,7 +2,7 @@
 
 _pkgname=pynvml
 pkgname=python-pynvml
-pkgver=8.0.4
+pkgver=11.0.0
 pkgrel=1
 epoch=
 pkgdesc="Python Bindings for the NVIDIA Management Library"
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('nvidia-utils' 'python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c8d4eadc648c7e12a3c9182a9750afd8481b76412f83747bcc01e2aa829cde5d')
+sha256sums=('d5fc4a22d355b40c341d6ba0aa888a2d4d2253177d243900f8401b7e6cacb1bb')
 
 # prepare() {
 # 	cd "$pkgname-$pkgver"
