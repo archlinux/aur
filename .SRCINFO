@@ -1,6 +1,6 @@
 pkgbase = flexbv-unstable-bin
 	pkgdesc = FlexBV Professional Boardview (unstable version)
-	pkgver = R1199
+	pkgver = R1328
 	pkgrel = 1
 	url = https://pldaniels.com/flexbv/
 	arch = x86_64
@@ -14,10 +14,9 @@ pkgbase = flexbv-unstable-bin
 	provides = flexbv-bin
 	conflicts = flexbv-bin
 	conflicts = flexbv-unstable-bin
-	source = https://pldaniels.com/flexbv/alpha/FlexBV-R1199-linux.tar.gz
+	source = https://pldaniels.com/flexbv/alpha/FlexBV-R1328-linux.tar.gz
 	source = flexbv.sh
-	md5sums = 29d59ac4ab8d46cde7eff1701d86330b
+	md5sums = cc404307eb17d1cf13d1cd8bdb3e8563
 	md5sums = 1487cbd7315654d30f9133b210d2d55b
 
 pkgname = flexbv-unstable-bin
-
