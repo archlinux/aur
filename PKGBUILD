@@ -1,9 +1,9 @@
 # Maintainer: Jesse Luehrs <archlinux@tozt.net>
 pkgname=rbw
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
-depends=('pinentry' 'openssl')
+depends=('pinentry')
 conflicts=('rbw-git' 'rbw-bin')
 provides=('rbw')
 arch=('i686' 'x86_64' 'aarch64')
