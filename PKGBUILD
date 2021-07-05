@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=lib32-libplacebo-git
-pkgver=v3.104.0.rc1.65.ge48a162
+pkgver=v3.120.1.168.gbe32ca6
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -13,6 +13,10 @@ depends=('lib32-vulkan-icd-loader'
          'lib32-shaderc'
          'lib32-glslang'
          'lib32-libepoxy'
+         'lib32-glfw'
+         'libavcodec.so'
+         'libavutil.so'
+         'libavformat.so'
          )
 makedepends=('git'
              'meson'
@@ -47,14 +51,16 @@ build() {
     -D vulkan=enabled \
     -D glslang=enabled \
     -D shaderc=enabled \
-    -D lcms=enabled
+    -D lcms=enabled \
+    -D d3d11=disabled \
+    -D tests=true
 
   ninja -v
 }
 
-check() {
-  ninja -C build test
-}
+# check() {
+#   ninja -C build test
+# }
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
