@@ -3,7 +3,7 @@
 
 pkgname="python-cachelib"
 _name=${pkgname#python-}
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A collection of cache libraries in the same API interface. Extracted from werkzeug"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('47e95a67d68c729cbad63285a790a06f0e0d27d71624c6e44c1ec3456bb4476f')
+sha256sums=('dcb5fafe6b6b544aaa8d0cacb12d70bbf9bbf72c041f17fcad1618db7bedeada')
 
 build() {
     cd ${_name}-${pkgver}
@@ -22,5 +22,5 @@ build() {
 package() {
     cd ${_name}-${pkgver}
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
