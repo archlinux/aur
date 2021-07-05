@@ -2,13 +2,13 @@
 # Contributor: Anselmo L. S. Melo <anselmolsm@gmail.com>
 
 pkgname="python-plotly-git"
-pkgver=5.0.0.r3.g24cda54b2
+pkgver=5.1.0.r6.g17b7c27f9
 pkgrel=1
-pkgdesc=="An open-source, interactive graphing library"
+pkgdesc="An open-source, interactive graphing library"
 arch=("any")
 url="https://plot.ly/python/"
 license=("MIT")
-makedepends=("git" "npm" "python-jupyter_core" "jupyterlab" "python-setuptools")
+makedepends=("git" "npm" "python-jupyter_core" "jupyterlab" "python-setuptools" "python-tornado>=6.1.0")
 provides=("python-plotly")
 conflicts=("python-plotly")
 depends=("python>=3.6" "python-matplotlib" "python-numpy" "python-six" "python-retrying" "python-tenacity")

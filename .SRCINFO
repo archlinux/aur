@@ -1,6 +1,6 @@
 pkgbase = python-plotly-git
-	pkgdesc = =An open-source, interactive graphing library
-	pkgver = 5.0.0.r3.g24cda54b2
+	pkgdesc = An open-source, interactive graphing library
+	pkgver = 5.1.0.r6.g17b7c27f9
 	pkgrel = 1
 	url = https://plot.ly/python/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-plotly-git
 	makedepends = python-jupyter_core
 	makedepends = jupyterlab
 	makedepends = python-setuptools
+	makedepends = python-tornado>=6.1.0
 	depends = python>=3.6
 	depends = python-matplotlib
 	depends = python-numpy
