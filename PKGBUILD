@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 pkgname=age-git
-pkgver=1.0.0.beta2.r35.gc9a35c0
+pkgver=1.0.0.rc.3.r1.g4ea591b
 pkgrel=1
 pkgdesc="A simple, modern and secure file encryption tool"
 url="https://github.com/FiloSottile/age"
@@ -25,12 +25,13 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./cmd/...
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"$LDFLAGS\"" \
+    -o build ./...
 }
 
 check() {
@@ -42,4 +43,6 @@ package() {
   install -Dm755 "${pkgname%-git}/build/age" "$pkgdir/usr/bin/age"
   install -Dm755 "${pkgname%-git}/build/age-keygen" "$pkgdir/usr/bin/age-keygen"
   install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+  install -Dm644 "${pkgname%-git}/doc/age.1" "$pkgdir/usr/share/man/man1/age.1"
+  install -Dm644 "${pkgname%-git}/doc/age-keygen.1" "$pkgdir/usr/share/man/man1/age-keygen.1"
 }
