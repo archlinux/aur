@@ -1,12 +1,11 @@
 pkgbase = rbw-bin
 	pkgdesc = unofficial bitwarden cli
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.tozt.net/rbw
 	arch = x86_64
 	license = MIT
 	depends = pinentry
-	depends = openssl
 	provides = rbw
 	conflicts = rbw-git
 	conflicts = rbw

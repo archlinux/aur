@@ -2,8 +2,8 @@
 pkgname=rbw-bin
 _name=${pkgname%-*}
 pkgver=1.3.0
-pkgrel=1
-depends=('pinentry' 'openssl')
+pkgrel=2
+depends=('pinentry')
 conflicts=('rbw-git' 'rbw')
 provides=('rbw')
 arch=('x86_64')
