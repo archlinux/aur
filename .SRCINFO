@@ -1,7 +1,7 @@
 pkgbase = grapejuice-git
 	pkgdesc = Simple Wine+Roblox management tool
 	pkgver = 3.40.14.61f9cb3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/brinkervii/grapejuice.git
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = grapejuice-git
 	depends = python-gobject
 	depends = python-psutil
 	depends = python-packaging
-	depends = python-dbus
 	depends = python-requests
 	depends = python-setuptools
 	depends = cairo
