@@ -1,7 +1,7 @@
 # Maintainer: Redson dos Santos Silva <redsonbr81 {at} protonmail {dot} com>
 pkgname=easy-legendary-git
 _pkgname=easy-legendary
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Script writen in BASH by Franklin Souza to make legendary be easy."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+${url}.git")
-depends=('wine-staging' 'giflib' 'lib32-giflib' 'libpng' 'gnutls' 'mpg123' 'openal' 'v4l-utils' 'libpulse' 'libgpg-error' 'alsa-plugins' 'alsa-lib' 'libjpeg-turbo' 'sqlite' 'libxcomposite' 'libxinerama' 'libgcrypt' 'ncurses' 'opencl-icd-loader' 'libxslt' 'libva' 'gtk3' 'gst-plugins-base-libs' 'vulkan-icd-loader' 'legendary')
+depends=('wine' 'giflib' 'lib32-giflib' 'libpng' 'gnutls' 'mpg123' 'openal' 'v4l-utils' 'libpulse' 'libgpg-error' 'alsa-plugins' 'alsa-lib' 'libjpeg-turbo' 'sqlite' 'libxcomposite' 'libxinerama' 'libgcrypt' 'ncurses' 'opencl-icd-loader' 'libxslt' 'libva' 'gtk3' 'gst-plugins-base-libs' 'vulkan-icd-loader' 'legendary')
 makedepends=('git')
 md5sums=('SKIP')
 
