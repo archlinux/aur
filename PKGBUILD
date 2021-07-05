@@ -8,7 +8,7 @@ pkgbase=epsxe
 pkgname=('epsxe' 'bin32-epsxe')
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=26
+pkgrel=27
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -76,6 +76,7 @@ package_epsxe()
 package_bin32-epsxe()
 {
   conflicts=(epsxe)
+  provides=(epsxe)
 
   cd "$srcdir"
   install -d "$pkgdir"/{usr/share/doc/$pkgbase,/opt/$pkgbase/shaders}
