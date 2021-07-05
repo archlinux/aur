@@ -1,6 +1,7 @@
 pkgbase = planarally-bin
+	pkgdesc = A companion tool for when you travel into the planes.
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.planarally.io
 	arch = x86_64
 	license = MIT

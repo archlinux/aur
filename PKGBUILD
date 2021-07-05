@@ -1,8 +1,8 @@
 # Maintainer: Ben 'silentnoodle' Lönnqvist <lonnqvistben at gmail dot com>
 pkgname=planarally-bin
 pkgver=0.27.0
-pkgrel=1
-pkgdesc=''
+pkgrel=2
+pkgdesc='A companion tool for when you travel into the planes.'
 arch=('x86_64')
 url='https://www.planarally.io'
 license=('MIT')
@@ -36,6 +36,6 @@ package() {
   install -dm655 "$pkgdir/usr/bin"
   install -dm655 "$pkgdir/opt/planarally"
   cp -r server "$pkgdir/opt/planarally/"
-  ln -s "$pkgdir/opt/planarally/server/planarserver.py" "$pkgdir/usr/bin/planarally"
+  ln -s "/opt/planarally/server/planarserver.py" "$pkgdir/usr/bin/planarally"
 }
 
