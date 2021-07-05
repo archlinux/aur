@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=wike
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Wikipedia Reader for the GNOME Desktop"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libhandy' 'python-gobject' 'python-requests' 'webkit2gtk')
 makedepends=('meson')
 #checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f0fa36a665296528e2b4aaecf1d9e99e8b423df84f5e0a8f63ae284e5fc9f2ec')
+sha256sums=('ba6b869fac02159c124548355832a20996212af21d96b363f1256d69cc6344dd')
 
 build() {
 	arch-meson Wike-$pkgver build
