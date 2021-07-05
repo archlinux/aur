@@ -2,13 +2,13 @@
 
 pkgname=sopel
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy-to-use and highly extensible IRC Bot framework (Formerly Willie)"
 arch=('any')
 license=('custom:EFL')
 url='https://sopel.chat'
 depends=('python-setuptools' 'sqlite' 'python-xmltodict' 'python-pytz' 'python-praw'
-         'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy')
+         'python-geoip2' 'python-requests' 'python-dnspython' 'python-sqlalchemy1.3')
 makedepends=('python-sphinx' 'python-sphinxcontrib-autoprogram')
 checkdepends=('python-pytest-runner' 'python-requests-mock')
 backup=('etc/sopel.cfg')
