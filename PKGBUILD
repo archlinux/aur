@@ -58,14 +58,16 @@ build() {
   ninja -v
 }
 
-# check() {
-#   ninja -C build test
-# }
+check() {
+  ninja -C build test
+}
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
 
   rm -rf "${pkgdir}/usr/include"
+
+  mv "${pkgdir}/usr/bin/plplay"  "${pkgdir}/usr/bin/plplay-32"
 
   install -Dm644 libplacebo/README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
