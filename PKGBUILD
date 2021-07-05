@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.0.0.rc1.r315.gdc303dcf5b
+pkgver=2.1.99.r311.gafa7b34845
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
