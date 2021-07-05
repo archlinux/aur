@@ -14,7 +14,6 @@ pkgbase = epsxe
 	depends = sdl_ttf
 	depends = ncurses
 	depends = openssl-1.0
-	replaces = bin32-epsxe
 	noextract = shaders.zip
 	options = !strip
 	source = epsxe.desktop
@@ -27,8 +26,19 @@ pkgbase = epsxe
 	md5sums = 8d47875ba4f51943cdb6e09c2f25e4b5
 	md5sums = a863740899adb064b8a28c3fa47d5280
 	md5sums = 79fefeb4bff26bf1d374befb35b390df
-	depends_x86_64 = libxt
-	depends_x86_64 = libcanberra
 
 pkgname = epsxe
+	arch = x86_64
+	depends = bash
+	depends = libcurl-compat
+	depends = gtk3
+	depends = sdl_ttf
+	depends = ncurses
+	depends = openssl-1.0
+	depends = libxt
+	depends = libcanberra
+	conflicts = bin32-epsxe
+
+pkgname = bin32-epsxe
+	conflicts = epsxe
 
