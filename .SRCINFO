@@ -1,0 +1,21 @@
+pkgbase = planarally-bin
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://www.planarally.io
+	arch = x86_64
+	license = MIT
+	depends = nodejs
+	depends = python
+	depends = python-aiohttp-jinja2
+	depends = python-aiohttp-security
+	depends = python-aiohttp-session
+	depends = python-jinja
+	depends = python-cryptography
+	depends = python-bcrypt
+	depends = python-socketio
+	depends = python-peewee
+	depends = python-typing_extensions
+	source = https://github.com/Kruptein/PlanarAlly/releases/download/0.27.0/planarally-bin-0.27.0.tar.gz
+	sha256sums = 9f88ffda587f4b02cfb19839b8aea602f02c6069ce055334371fb40b3a2884b9
+
+pkgname = planarally-bin
