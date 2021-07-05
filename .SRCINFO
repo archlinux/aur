@@ -1,0 +1,18 @@
+pkgbase = dracula-gtk-theme-git
+	pkgdesc = Dark theme for GTK
+	pkgver = r158.dcd159f
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = gtk-engine-murrine: GTK2 theme support
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	provides = dracula-gtk-theme
+	conflicts = dracula-gtk-theme
+	source = dracula-gtk-theme::git+https://github.com/dracula/gtk.git#branch=master
+	sha256sums = SKIP
+
+pkgname = dracula-gtk-theme-git
