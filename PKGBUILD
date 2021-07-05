@@ -3,7 +3,7 @@
 _pkgbase=linux-elbin  # for mkinitcpio hook
 pkgname=linux-el-bin
 _basever=4.18.0
-_rhver=305.3.1
+_rhver=305.7.1
 pkgver=$_rhver.kabi.$_basever
 epoch=8
 pkgrel=1
@@ -43,10 +43,10 @@ source=(
 	"$_pkgbase.preset"
 )
 noextract=(kernel-doc-$_rpmver.noarch.rpm)  # bsdtar cannot extract it
-sha256sums=('0cbeffcc970b8ef1bd96fc87b129f1efc98af2629ca9b693fd18bf13351545dc'
-            '128eecfd6cad28b7621b7aaa70443cbb79c44b897de59b359c1160463b45be58'
-            '018bdde319a2633fae3db77ba200d015742255ad455bcae6acd4aa6ae2b53f9b'
-            '40afba5d2cb0428ae6b3f81711b55c31e059cefb45c6b49530ad027e8f1908a2'
+sha256sums=('54a5455e07dbdeb7887048286945f2451273461f1dca124f06c44a36f2f79731'
+            'b1d64e32184edf230171046c64dbd28c18f4fb560f9d46dea7068225bd88e73a'
+            '8bbe8ba7b654bf7d629702f7c4a95d98a45d5b20360b546381878b1c24e95d5d'
+            '238df13cf74ccc9baa28a03989d9f8a3e804d703c89594395a9b4dc657a233b3'
             'dcb7f4f352395287152bb6a3469171d9199b1e000bab9f244e17db893cff70d9')
 
 _rpm2cpio() {
