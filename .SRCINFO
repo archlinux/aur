@@ -1,0 +1,16 @@
+pkgbase = rofi-jack-git
+	pkgdesc = Scripts for controlling jack using rofi
+	pkgver = r37.f47a3b1
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/rofi-jack
+	arch = any
+	groups = pro-audio
+	license = GPL
+	makedepends = git
+	depends = rofi
+	optdepends = jack2
+	optdepends = jack
+	source = rofi-jack-git-r37.f47a3b1::git+https://github.com/madskjeldgaard/rofi-jack.git
+	md5sums = SKIP
+
+pkgname = rofi-jack-git
