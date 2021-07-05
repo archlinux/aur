@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r353.g20525927'
+pkgver='5.6.0.beta.5.r357.g9298a120'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '401899b572e6d91e9407c8ee28b2c3fe26d8becc0cde46e034eef50b5c3325db'
+            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce'
             '70b34d0efd910d3641fb7a28a5ad30685a9b40bf9d32bb56596c8f283e9b03d9')
 
 _sourcedirectory="$pkgname"
@@ -58,15 +58,11 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
-	# Set system nodejs version for compatibility
+	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
 
 	# Set gulp-sass version for node 16 compatibility
 	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
-
-	# Prevent Ferdi from being launched in dev mode
-	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
-	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
@@ -117,7 +113,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron '/usr/lib/$_pkgname/app.asar' "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=0 exec electron '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
