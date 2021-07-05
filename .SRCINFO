@@ -1,6 +1,6 @@
 pkgbase = lib32-aom
 	pkgdesc = Alliance for Open Media video codec (32-bit)
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = lib32-aom
 	makedepends = yasm
 	depends = lib32-glibc
 	depends = aom
-	source = git+https://aomedia.googlesource.com/aom#commit=307ce06ed82d93885ee8ed53e152c9268ac0d98d
+	source = git+https://aomedia.googlesource.com/aom#commit=7fadc0e77130efb05f52979b0deaba9b6a1bba6d
 	b2sums = SKIP
 
 pkgname = lib32-aom
-
