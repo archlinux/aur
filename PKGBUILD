@@ -6,7 +6,7 @@
 pkgname=ace-of-penguins
 _pkgname=ace
 pkgver=1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of Unix/X solitaire games."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.delorie.com/store/ace/"
@@ -15,7 +15,7 @@ depends=('libx11' 'libxpm' 'libpng' 'zlib')
 optdepends=('xorg-fonts-100dpi: help support')
 source=("https://www.delorie.com/store/ace/$_pkgname-$pkgver.tar.gz"
         "ace14_fixes.patch"
-	      "canfield.desktop" 
+        "canfield.desktop" 
         "freecell.desktop" 
         "golf.desktop"
         "mastermind.desktop"
@@ -30,7 +30,7 @@ source=("https://www.delorie.com/store/ace/$_pkgname-$pkgver.tar.gz"
         "thornq.desktop"
 )
 md5sums=('b80169fa59d69758bb9686f31a84ad2b'
-         '0175e6cb3e51b71e4ad242aaf9d97086'
+         '9a95690a7f04cce7009373c06c898812'
          '10589ed7a16e62f128daf627aed08800'
          '05f94f8737b2b5993c3d7b4acaea94a0'
          '1cea6b83041c42061145776507aea602'

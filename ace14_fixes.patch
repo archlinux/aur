@@ -65,3 +65,16 @@
 
  Display *display=0;
  int screen=0;
+--- ace-1.4/config.guess	2012-03-24 19:00:49.000000000 +0100
++++ ace14/config.guess	2021-07-05 11:02:16.685843793 +0200
+@@ -882,6 +882,9 @@
+ 	    echo ${UNAME_MACHINE}-unknown-linux-gnueabi
+ 	fi
+ 	exit ;;
++    aarch64*:Linux:*:*)
++	echo ${UNAME_MACHINE}-unknown-linux-gnu
++	exit ;;
+     avr32*:Linux:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-linux-gnu
+ 	exit ;;
+
