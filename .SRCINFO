@@ -1,5 +1,5 @@
 pkgbase = libretro-stella-git
-	pkgdesc = A multi-platform Atari 2600 VCS emulator
+	pkgdesc = Atari 2600 VCS core
 	pkgver = 6.5.3.r78.gf8c52ec24
 	pkgrel = 1
 	epoch = 1
