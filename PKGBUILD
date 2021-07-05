@@ -7,13 +7,13 @@
 
 pkgname=lib32-rtmpdump
 pkgver=2.4.r96.fa8646d
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='Tool to download rtmp streams (32 bit)'
 arch=(x86_64)
 url='http://rtmpdump.mplayerhq.hu/'
 license=(GPL2 LGPL2.1)
-depends=(lib32-gnutls rtmpdump)
+depends=(lib32-gnutls lib32-zlib rtmpdump)
 makedepends=(git)
 options=(!makeflags)
 _commit='fa8646d'
