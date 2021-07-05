@@ -1,9 +1,8 @@
 # Maintainer: Kwrazi < kwrazi at gmail dot com >
 
 pkgname=emuflight-configurator
-_realname=EmuConfigurator
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform configuration tool for the Emuflight flight control system"
 arch=('x86_64')
 url="https://github.com/emuflight/EmuConfigurator"
@@ -20,21 +19,21 @@ options=(!strip)
 install=$pkgname.install
 
 prepare() {
-  cd $_realname
+  cd ${pkgname}
 
   # Allow higher node version
   sed 's#"node": "#&>=#' -i package.json
 }
 
 build() {
-  cd $_realname
+  cd ${pkgname}
 
   yarn install
   ./node_modules/.bin/gulp dist --linux64
 }
 
 package() {
-  cd $_realname
+  cd ${pkgname}
   install -d "$pkgdir/usr/share/$pkgname/"
   cp -r dist/* "$pkgdir/usr/share/$pkgname/"
   install -Dm644 "assets/linux/icon/emu_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
