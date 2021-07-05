@@ -1,6 +1,6 @@
 pkgbase = openbangla-keyboard-git
 	pkgdesc = An OpenSource, Unicode compliant Bengali Input Method
-	pkgver = 2.0.0.r32.gb6035c2
+	pkgver = 2.0.0.r33.g6624431
 	pkgrel = 1
 	url = https://openbangla.github.io
 	arch = x86_64
@@ -20,24 +20,24 @@ pkgbase = openbangla-keyboard-git
 
 pkgname = openbangla-keyboard-git
 	depends = qt5-base
-	depends = openbangla-im=2.0.0.r32.gb6035c2
+	depends = openbangla-im=2.0.0.r33.g6624431
 	depends = hicolor-icon-theme
-	provides = openbangla-keyboard=2.0.0.r32.gb6035c2
+	provides = openbangla-keyboard=2.0.0.r33.g6624431
 	conflicts = openbangla-keyboard
 
 pkgname = ibus-openbangla-git
 	install = ibus-openbangla.install
 	depends = ibus
 	depends = qt5-base
-	depends = openbangla-keyboard-git=2.0.0.r32.gb6035c2
-	provides = ibus-openbangla=2.0.0.r32.gb6035c2
-	provides = openbangla-im=2.0.0.r32.gb6035c2
+	depends = openbangla-keyboard-git=2.0.0.r33.g6624431
+	provides = ibus-openbangla=2.0.0.r33.g6624431
+	provides = openbangla-im=2.0.0.r33.g6624431
 	conflicts = ibus-openbangla
 
 pkgname = fcitx5-openbangla-git
 	install = fcitx5-openbangla.install
 	depends = fcitx5
-	depends = openbangla-keyboard-git=2.0.0.r32.gb6035c2
-	provides = fcitx5-openbangla=2.0.0.r32.gb6035c2
-	provides = openbangla-im=2.0.0.r32.gb6035c2
+	depends = openbangla-keyboard-git=2.0.0.r33.g6624431
+	provides = fcitx5-openbangla=2.0.0.r33.g6624431
+	provides = openbangla-im=2.0.0.r33.g6624431
 	conflicts = fcitx5-openbangla
