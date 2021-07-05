@@ -7,7 +7,7 @@ Type=simple
 User=hockeypuck
 WorkingDirectory=/var/lib/hockeypuck
 ExecStart=/usr/bin/hockeypuck -config /etc/hockeypuck/hockeypuck.conf
-TimeoutSec=15
+TimeoutSec=120
 Restart=always
 
 [Install]
