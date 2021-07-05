@@ -1,12 +1,13 @@
 pkgbase = simplicity-sddm-theme-git
 	pkgdesc = Simple SDDM Theme
-	pkgver = r69
-	pkgrel = 4
+	pkgver = r80
+	pkgrel = 1
 	url = https://gitlab.com/isseigx/simplicity-sddm-theme
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = sddm
+	depends = qt5-quickcontrols2
 	provides = simplicity-sddm-theme
 	conflicts = simplicity-sddm-theme
 	source = git+https://gitlab.com/isseigx/simplicity-sddm-theme.git

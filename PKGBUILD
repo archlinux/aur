@@ -3,14 +3,14 @@ _theme='simplicity'
 _repo='simplicity-sddm-theme'
 
 pkgname=simplicity-sddm-theme-git
-pkgver=r69
-pkgrel=4
+pkgver=r80
+pkgrel=1
 pkgdesc="Simple SDDM Theme"
 arch=('any')
 url="https://gitlab.com/isseigx/simplicity-sddm-theme"
 license=('GPL')
 
-depends=('sddm')
+depends=('sddm' 'qt5-quickcontrols2')
 makedepends=('git')
 provides=("${_repo}")
 conflicts=("${_repo}")
