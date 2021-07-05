@@ -10,9 +10,14 @@ license=('GPL3')
 provides=('emacs')
 conflicts=('emacs')
 depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'libtiff' 'giflib' 'libpng' 'gtk3' 'harfbuzz' 'libxcb' 'libxml2' 'gpm' 'libotf' 'm17n-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'gnutls' 'cairo' 'zlib')
-makedepends=('clang' 'rustup')
+makedepends=('clang' 'rustup' 'python')
 source=("https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d922ee5c5a0feff8ee22a3995b36be40bd150683b47c0766b7d236f240e3af54')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    rustup install "$(cat rust-toolchain)"
+}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

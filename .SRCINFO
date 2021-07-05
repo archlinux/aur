@@ -7,6 +7,7 @@ pkgbase = emacs-ng
 	license = GPL3
 	makedepends = clang
 	makedepends = rustup
+	makedepends = python
 	depends = jansson
 	depends = ncurses
 	depends = libgccjit
