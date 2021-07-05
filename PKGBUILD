@@ -1,7 +1,7 @@
 # Maintainer: Rain Clark <rain AT melonbread DOT dev>
 
 pkgname=imgbrd-grabber-appimage
-pkgver=7.5.1
+pkgver=7.6.0
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
@@ -17,7 +17,7 @@ noextract=('$_pkgname')
 options=('!strip')
 
 source=(https://github.com/Bionus/imgbrd-grabber/releases/download/v${pkgver}/${_pkgname})
-sha256sums=('fd5349ea09125ed08751e880c7f979e461f5bac02d73747da1b1b899984bb8ca')
+sha256sums=('f73b0756c5705a5afee1b1ee191050287f45edd715b77ba68d9dec7f8c78df4f')
 
 prepare() {
     cd "${srcdir}"
