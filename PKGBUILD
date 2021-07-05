@@ -71,7 +71,7 @@ makedepends=(
   xmlto kmod inetutils bc libelf cpio
 )
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm)
+  makedepends+=(clang llvm lld python)
 fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
