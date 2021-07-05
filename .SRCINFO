@@ -31,7 +31,8 @@ pkgbase = obs-studio-tytan652
 	depends = vlc-luajit
 	depends = ftl-sdk
 	optdepends = libfdk-aac: FDK AAC codec support
-	optdepends = libva-intel-driver: Hardware encoding
+	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
+	optdepends = libva-intel-driver: Hardware encoding (<= Haswell)
 	optdepends = libva-mesa-driver: Hardware encoding
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting

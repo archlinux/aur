@@ -40,7 +40,8 @@ makedepends=("cmake" "git" "libfdk-aac" "swig" "luajit" "python"
              "cef-minimal-obs=87.1.14")
 optdepends=(
             "libfdk-aac: FDK AAC codec support"
-            "libva-intel-driver: Hardware encoding"
+            "intel-media-driver: Hardware encoding (>= Broadwell)"
+            "libva-intel-driver: Hardware encoding (<= Haswell)"
             "libva-mesa-driver: Hardware encoding"
             "swig: Scripting"
             "luajit: Lua scripting"
