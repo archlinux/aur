@@ -10,7 +10,6 @@ license=('GPLv3')
 depends=('bash')
 makedepends=('go' 'git')
 options=('!strip' '!buildflags' '!makeflags')
-conflicts=('bee-clef-bin')
 backup=(
     'etc/bee-clef/4byte.json'
     'etc/bee-clef/rules.js'

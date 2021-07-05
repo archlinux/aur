@@ -9,7 +9,6 @@ pkgbase = swarm-bee-clef
 	makedepends = go
 	makedepends = git
 	depends = bash
-	conflicts = bee-clef-bin
 	options = !strip
 	options = !buildflags
 	options = !makeflags
