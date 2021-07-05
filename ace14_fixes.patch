@@ -55,3 +55,13 @@
  BUILD_CC = @BUILD_CC@
  AR = @AR@
 
+--- ace-1.4/lib/xwin.c  2020-10-07 02:07:59.000000000 +0300
++++ ace14/lib/xwin.c    2020-10-07 02:15:05.941784967 +0300
+@@ -55,7 +55,6 @@
+   { "-visual", OPTION_INTEGER, &visual_id },
+   { 0, 0, 0 }
+ };
+-OptionDesc *xwin_options = xwin_options_list;
+
+ Display *display=0;
+ int screen=0;
