@@ -2,7 +2,7 @@
 
 _extname='nautilus-metadata-editor'
 pkgname="${_extname}-git"
-pkgver='3.28.1'
+pkgver='r52.5caa1f2'
 pkgrel=1
 pkgdesc='Nautilus extension with simple Metadata Editor'
 arch=('i686' 'x86_64')
@@ -14,6 +14,11 @@ conflicts=("${_extname}" "${_extname}-bin")
 source=("git+https://gitlab.com/nvlgit/${_extname}-extension.git")
 install="${_extname}.install"
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${_extname}-extension"
+	printf "'r%s.%s'" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "${srcdir}/${_extname}-extension"

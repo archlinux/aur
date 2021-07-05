@@ -1,6 +1,6 @@
 pkgbase = nautilus-metadata-editor-git
 	pkgdesc = Nautilus extension with simple Metadata Editor
-	pkgver = 3.28.1
+	pkgver = r52.5caa1f2
 	pkgrel = 1
 	url = https://gitlab.com/nvlgit/nautilus-metadata-editor-extension
 	install = nautilus-metadata-editor.install
