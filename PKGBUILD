@@ -6,7 +6,7 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.6.0rc6.r56.g10623a702
+pkgver=0.9.0.r48.g970a0b414
 pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
@@ -65,8 +65,8 @@ package() {
 
 	# set IPFS_PATH if not set by upstream already
 	sed -i  '/StateDirectory=ipfs/,/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/c StateDirectory=ipfs\nEnvironment=IPFS_PATH=\~\nExecStart=\/usr\/bin\/ipfs daemon --init --migrate' "$pkgdir/usr/lib/systemd/system/ipfs.service"
-	# remove --init (handled by install file) and avoid migrations on bootup (see #7269)
-	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
+	# remove --init (handled by install file)
+	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon --init/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# enable gc and pubsub by default (sane defaults)
 	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon/ExecStart=\/usr\/bin\/ipfs daemon --enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# increase timeouts (see #7283)
@@ -75,7 +75,8 @@ package() {
 
 
 	install -Dm 644 "misc/systemd/ipfs-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/ipfs.conf"
-	install -Dm 644 misc/completion/ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
+	./cmd/ipfs/ipfs commands completion bash > ipfs-completion.bash
+	install -Dm 644 ipfs-completion.bash "$pkgdir/usr/share/bash-completion/completions/ipfs"
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MIT" LICENSE-MIT
 	install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
 	install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
