@@ -1,7 +1,7 @@
 # Maintainer: Rafael Silva <silvagracarafael@gmail.com>
 
 pkgname=vizex
-pkgver=1.9.9
+pkgver=2.0.3
 pkgrel=2
 pkgdesc="vizex is the terminal program for the UNIX/Linux systems which helps the user to visualize the disk space usage for every partition and media on the user's machine."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-click' 'python-colored' 'python-pandas' 'python-psutil'
          'python-magic' 'python-tabulate')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bexxmodd/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e809d47bcff585beb76d75f134b1b1c4f46ea49f31b349e1f0f0818991ee5077')
+sha256sums=('f88d4c99e591dcb6e14a921d9fca4105091568567c19db71cb032421f603a261')
 
 prepare() {
     cd "$pkgname-$pkgver"

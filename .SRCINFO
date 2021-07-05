@@ -1,6 +1,6 @@
 pkgbase = vizex
 	pkgdesc = vizex is the terminal program for the UNIX/Linux systems which helps the user to visualize the disk space usage for every partition and media on the user's machine.
-	pkgver = 1.9.9
+	pkgver = 2.0.3
 	pkgrel = 2
 	url = https://github.com/bexxmodd/vizex
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vizex
 	depends = python-psutil
 	depends = python-magic
 	depends = python-tabulate
-	source = vizex-1.9.9.tar.gz::https://github.com/bexxmodd/vizex/archive/v1.9.9.tar.gz
-	sha256sums = e809d47bcff585beb76d75f134b1b1c4f46ea49f31b349e1f0f0818991ee5077
+	source = vizex-2.0.3.tar.gz::https://github.com/bexxmodd/vizex/archive/v2.0.3.tar.gz
+	sha256sums = f88d4c99e591dcb6e14a921d9fca4105091568567c19db71cb032421f603a261
 
 pkgname = vizex
