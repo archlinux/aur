@@ -1,6 +1,6 @@
 pkgbase = srs
 	pkgdesc = High performance RTMP Server
-	pkgver = 3.0_r6
+	pkgver = 3.0_r7
 	pkgrel = 1
 	url = https://github.com/ossrs/srs
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = srs
 	depends = srs-state-threads
 	options = docs
 	backup = etc/srs/srs.conf
-	source = git+https://github.com/ossrs/srs/#commit=2be8589a8a723300faf45284b4d4801ce2fa66c3
+	source = git+https://github.com/ossrs/srs/#commit=d72d05294df1dc4da956370a3df756af96a02eb0
 	source = archlinux.patch
 	sha256sums = SKIP
 	sha256sums = 01af4fc5b393fe4c590215a8449ab10e7aefe1e377962ca35405baaa2ed43a90
