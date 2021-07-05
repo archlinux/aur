@@ -8,7 +8,7 @@ REENABLE_DRAGDROP=0
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -56,6 +56,7 @@ source=(
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "update_desktop_entries.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
+        "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -64,6 +65,7 @@ sha256sums=(
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731"
+        "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
         "SKIP"
         "SKIP"
 )
@@ -96,6 +98,9 @@ prepare() {
   echo -e "\n[Desktop Action new-wayland-window]" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
   echo "Name=New Wayland Instance" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
   echo "Exec=obs -platform wayland" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+
+  ## linux-v4l2: Save device by path (https://github.com/obsproject/obs-studio/pull/3437)
+  patch -Np1 < "$srcdir/v4l2_by-path.patch"
 }
 
 build() {
