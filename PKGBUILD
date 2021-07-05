@@ -1,4 +1,5 @@
-# Maintainer: zhullyb <zhullyb@outlook.com>
+# Maintainer : antman666 <945360554@qq.com>
+# Contributor: zhullyb <zhullyb@outlook.com>
 # Contributor: Yeqin Su <hougelangley1987@gmail.com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -8,7 +9,7 @@
 # Contributor: Joan Figueras <ffigue at gmail dot com>
 
 ##
-## 这个包默认就会安装内核头文件和内核了，不需要纠结
+## This package include headers by default
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
@@ -17,7 +18,7 @@
 ## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 42 => native
-## 我个人的恶趣味，就是选择 native，自动优化，当然各位根据自己的实际情况做出选择也是可以的
+## I choose native to let it optimization itself, you can change it by yourself
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -26,7 +27,7 @@ fi
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
-## 这里保持默认就好，我没有发现有什么独特的地方
+## Here keep default is ok
 if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
@@ -35,7 +36,7 @@ fi
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
-## 我觉得默认关掉会好些，个人观点
+## I think close this is better
 if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
@@ -48,23 +49,20 @@ fi
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-# 不知道大家是否了解 module_db 它类似会检测你的系统平时经常用的模块，这样将来可以给出建议到 .config
-# 编译极简化的内核。
 if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
 
 # Tweak kernel options prior to a build via nconfig
-# 我觉得还是选上，这样给大家微调的空间
 #_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.12.3
-_major=5.12
+pkgver=5.13.0
+_major=5.13
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 url="http://www.xanmod.org/"
@@ -77,13 +75,14 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar."{xz,sign}
+        #config
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        'sphinx-workaround.patch'
-        '0002-UKSM.patch'
-        "0003-CJKTTY.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v5.x/cjktty-${_major}.patch"
-        '0004-DISABLEAUDIT.patch')
+        sphinx-workaround.patch
+        "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
+        "0002-UKSM.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.13/uksm-patches/0001-UKSM-for-5.13.patch"
+        "0003-btrfs.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.13/btrfs-patches/0001-btrfs-patches.patch")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -95,23 +94,25 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-            '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
-            'SKIP'
-            'e840e41f0f91108f63fd6e085c93b02daa78729268bc31be7be7fb355203e38a'
-            '74339b8ad0ad99f08606c5de0dd3c38f502e29e5c6a78d6efbe656662edb8d73'
-            'f00a84fd382d63cd0d47d6fd8ef6c8608b1c83ff9d6dbdd32cb985898afbbf58'
-            'a29a24e9ceaf0d18f56c826331e2ce993b621a90c3ad18f449c44efd5b2e84d1'
-            '2264a33da476a51a844d09fa3bb13a41e8cf9f924258caffddf62a5a3857bba9')
+b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
+        'SKIP'
+        #'SKIP'
+        'b5342310408354006a2e637a08bee0beb5e653e771f2124197cf403b9ece56d96dfb0b0732311e2b6010df7933561fdf31b980f25d27b2e8326382a2428ed96d'
+        '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
+        '6dd7c1b3a6246c2892316cd07d0bcc5e5528955b841e900a88e48c0a6b79861034fbe66bea1d5ee610668919f5d10f688ec68aa6f4edb98d30c7f9f6241b989d'
+        '5897022ff8b7a4f2eabb9788569e5a1b034ccad15a632ea9bfe1618714a02072dbca9e7467fe51337c5dbc46b218453e358461ceb110d385953622490f520a75'
+        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
+        '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
+
   cd linux-${_major}
 
-  # Apply Xanmod patch
+  msg2 "Apply Xanmod patch"
   xz -d < ../patch-${pkgver}-xanmod${xanmod}-cacule.xz | patch -Np1
 
   msg2 "Setting version..."
