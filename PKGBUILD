@@ -1,12 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=neovim-due-git
-pkgver=r22.212e862
-pkgrel=1
+pkgver=r23.86b08fc
+pkgrel=2
 pkgdesc="Neovim plugin for displaying due dates"
 arch=('any')
 url="https://github.com/nfrid/due.nvim"
-license=('unknown')
+license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim>=0.4.4')
 makedepends=('git')
@@ -24,5 +24,6 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	install -Dm644 lua/due_nvim.lua -t "$pkgdir/usr/share/nvim/runtime/lua/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
