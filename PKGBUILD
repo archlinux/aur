@@ -1,17 +1,17 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-git
-pkgver=8.00.r0.gf6483786
+pkgver=8.00.r18.g8358e386
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems (development version)"
-url="http://www.yamagi.org/quake2/"
+url="https://www.yamagi.org/quake2/"
 arch=('i686' 'x86_64' 'aarch64')
 license=('custom: Info-ZIP' 'GPL2')
 depends=('sdl2')
 optdepends=('quake2-demo: shareware data files'
             'openal: alternative audio backend'
             'curl: http download support')
-makedepends=('cmake' 'ninja' 'openal' 'mesa' 'curl')
+makedepends=('openal' 'mesa' 'curl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -26,43 +26,35 @@ pkgver() {
 }
 
 build() {
-  rm -rf build
-  cmake ${pkgname%-*} -Bbuild \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DSYSTEMWIDE_SUPPORT=ON \
-    -GNinja
-  cmake --build build
+  make -C ${pkgname%-*} WITH_RPATH=no WITH_SYSTEMWIDE=yes
 }
 
 package() {
-  cd build
+  local pkg=${pkgname%-*}
 
-  # client + server binaries
-  install -Dm755 release/quake2 "$pkgdir"/usr/lib/${pkgname%-*}/quake2
-  install -m755 release/q2ded "$pkgdir"/usr/lib/${pkgname%-*}
+  cd $pkg
+
+  # client + server binaries, renderer libraries
+  install -Dm755 -t "$pkgdir"/usr/lib/$pkg release/{quake2,q2ded,*.so}
 
   # symlinks to make the commands available
   install -d "$pkgdir"/usr/bin
-  ln -s /usr/lib/${pkgname%-*}/quake2 "$pkgdir"/usr/bin/${pkgname%-*}
-  ln -s /usr/lib/${pkgname%-*}/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
+  ln -s /usr/lib/$pkg/quake2 "$pkgdir"/usr/bin/$pkg
+  ln -s /usr/lib/$pkg/q2ded "$pkgdir"/usr/bin/yamagi-q2ded
 
-  # game libraries
-  install -m644 release/*.so "$pkgdir"/usr/lib/${pkgname%-*}
-  install -Dm644 release/baseq2/game.so "$pkgdir"/usr/lib/${pkgname%-*}/baseq2/game.so
+  # game library
+  install -Dm644 -t "$pkgdir"/usr/lib/$pkg/baseq2 release/baseq2/game.so
 
   # shared game directory
   install -d "$pkgdir"/usr/share/games/quake2
   echo "You can put Quake 2 game files here." > "$pkgdir"/usr/share/games/quake2/README
 
-  cd ../${pkgname%-*}
-
   # doc
-  install -Dm644 stuff/yq2.cfg "$pkgdir"/usr/share/doc/${pkgname%-*}/yq2.cfg
-  install -m644 doc/*.md "$pkgdir"/usr/share/doc/${pkgname%-*}
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkg stuff/yq2.cfg doc/*.md
 
   # desktop entry
-  install -Dm644 ../${pkgname%-*}.desktop "$pkgdir"/usr/share/applications/${pkgname%-*}.desktop
-  install -Dm644 stuff/icon/Quake2.png "$pkgdir"/usr/share/pixmaps/${pkgname%-*}.png
+  install -Dm644 -t "$pkgdir"/usr/share/applications ../$pkg.desktop
+  install -Dm644 stuff/icon/Quake2.png "$pkgdir"/usr/share/pixmaps/$pkg.png
 
   # licenses
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
