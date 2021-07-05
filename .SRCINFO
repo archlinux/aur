@@ -1,34 +1,24 @@
 pkgbase = processing4-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = r1.fd0244a
-	pkgrel = 3
+	pkgver = r1.16863c8
+	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
 	license = GPL
 	license = LGPL
 	makedepends = ant
+	makedepends = jdk11-openjdk
 	makedepends = gendesk
-	makedepends = java11-openjfx
 	makedepends = unzip
-	depends = jdk11-openjdk
 	depends = libgl
 	provides = processing4
 	conflicts = processing4
 	options = !strip
 	source = https://download.processing.org/reference.zip
-	source = always_use_java-11-openjdk.patch
 	source = change_cmd_name.patch
-	source = derive_jdk_from_path.patch
 	source = disable_update_check.patch
-	source = no_downloads.patch
-	source = use_system_libraries.patch
 	sha256sums = fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f
-	sha256sums = 66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323
 	sha256sums = 7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119
-	sha256sums = fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
-	sha256sums = a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263
-	sha256sums = fbcbb318db352d10ecc03df9a07b199818bb87c9ebdebccdb4a2bbe21a12a370
 
 pkgname = processing4-git
-

@@ -1,32 +1,23 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=r1.fd0244a
-pkgrel=3
+pkgver=r1.16863c8
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 provides=('processing4')
 conflicts=('processing4')
-depends=('jdk11-openjdk' 'libgl')
-# TODO add jogl as make-dependency once a package for version 2.4.0 exists
-makedepends=('ant' 'gendesk' 'java11-openjfx' 'unzip')
+depends=('libgl')
+makedepends=('ant' 'jdk11-openjdk' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
-        always_use_java-11-openjdk.patch
         change_cmd_name.patch
-        derive_jdk_from_path.patch
-        disable_update_check.patch
-        no_downloads.patch
-        use_system_libraries.patch)
+        disable_update_check.patch)
 sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
-            '66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
-            'fcd5c5ea558ceadde3f840522a5c1cb11e26569aec651e8154194cca39026611'
-            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            'a07184b87d3d2ccd35525a0721df787973f92487bae367a0668abd3f64134263'
-            'fbcbb318db352d10ecc03df9a07b199818bb87c9ebdebccdb4a2bbe21a12a370')
+            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -48,20 +39,8 @@ prepare() {
   # Create missing directories
   mkdir -p $pkgname/build/linux/work/java
 
-  # Don't download any files during Ant's build process
-  patch $pkgname/build/build.xml < no_downloads.patch
-
-  # Use system libraries instead of the ones included in the processing4 repo
-  patch $pkgname/core/build.xml < use_system_libraries.patch
-
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
-
-  # Derive JDK location from java binary found in PATH
-  patch $pkgname/build/linux/processing < derive_jdk_from_path.patch
-
-  # Always use OpenJDK 11 to run processing
-  patch $pkgname/build/linux/processing < always_use_java-11-openjdk.patch
 
   # Change command name to 'processing4'
   patch $pkgname/build/linux/processing < change_cmd_name.patch
@@ -88,10 +67,4 @@ package() {
   # Symbolic links in /usr/bin
   ln -s "/usr/share/processing4/processing" "$pkgdir/usr/bin/processing4"
   ln -s "/usr/share/processing4/processing-java" "$pkgdir/usr/bin/processing4-java"
-
-  # Ensure that processing uses the Java version selected by PATH
-  rmdir "$pkgdir/usr/share/processing4/java"
-  mkdir -p "$pkgdir/usr/share/processing4/java/bin/"
-  echo -e '#!/bin/sh\n`which java` "$@"' > "$pkgdir/usr/share/processing4/java/bin/java"
-  chmod a+x "$pkgdir/usr/share/processing4/java/bin/java"
 }
