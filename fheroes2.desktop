@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Free Heroes 2
-Comment=Free remake of Heroes of Might and Magic II game engine
-TryExec=fheroes2
-Exec=fheroes2
-Icon=fheroes2
-Terminal=false
-Categories=Application;Game
