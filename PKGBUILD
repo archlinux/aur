@@ -1,5 +1,3 @@
-# Maintainer: José Rebelo <joserebelo at outlook dot com>
-
 pkgname=snowflake
 pkgver=1.0.4
 pkgrel=1
