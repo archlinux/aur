@@ -3,20 +3,34 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-x265
-pkgver=3.3
-pkgrel=2
+pkgver=3.5
+pkgrel=1
 arch=('any')
 pkgdesc='Open Source H265/HEVC video encoder (android)'
 license=('GPL')
-url='https://github.com/videolan/x265'
+url='https://bitbucket.org/multicoreware/x265_git'
 depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake' 'nasm')
-source=("https://github.com/videolan/x265/archive/${pkgver}.tar.gz")
-sha256sums=('ca25a38772fc6b49e5f1aa88733bc1dc92da7dc18f02a85cc3e99d76ba85b0a9')
+source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz"
+        "0001-Disable-neon.patch")
+md5sums=('deb5df5cb2ec17bdbae6ac6bbc3b1eef'
+         'fffb730725e5848d6f1fd87e50530452')
+
+prepare() {
+    cd "${srcdir}"/x265_${pkgver}
+
+    case "$_android_arch" in
+        aarch64)
+            patch -Np1 -i "../0001-Disable-neon.patch"
+            ;;
+        *)
+            ;;
+    esac
+}
 
 build() {
-    cd "${srcdir}"/x265-${pkgver}
+    cd "${srcdir}"/x265_${pkgver}
     source android-env ${_android_arch}
     unset LDFLAGS CPPFLAGS
 
@@ -75,7 +89,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/x265-${pkgver}/build-8
+    cd "${srcdir}"/x265_${pkgver}/build-8
     source android-env ${_android_arch}
 
     make DESTDIR="$pkgdir" install
