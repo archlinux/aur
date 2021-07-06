@@ -1,13 +1,13 @@
 # Maintainer: johncena141 <johncena141@protonmail.com>
 pkgname='chad_launcher-git'
 _pkgname='chad_launcher'
-pkgver='r120.60e4de7'
+pkgver='r123.16e3fd0'
 pkgrel=1
 pkgdesc='GNU/LINUX GAMING UNLEASHED!'
 arch=('x86_64')
 url='https://gitlab.com/Gnurur/chad_launcher'
 license=('GPL3')
-depends=(python python-gobject python-yaml python-bs4 python-lxml python-requests python-typer python gtk3)
+depends=(python python-fuzzywuzzy python-levenshtein python-gobject python-yaml python-bs4 python-lxml python-requests python-typer python gtk3)
 makedepends=(pkgconf git)
 source=('git+https://gitlab.com/Gnurur/chad_launcher.git')
 md5sums=('SKIP')

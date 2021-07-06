@@ -1,6 +1,6 @@
 pkgbase = chad_launcher-git
 	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = r120.60e4de7
+	pkgver = r123.16e3fd0
 	pkgrel = 1
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = chad_launcher-git
 	makedepends = pkgconf
 	makedepends = git
 	depends = python
+	depends = python-fuzzywuzzy
+	depends = python-levenshtein
 	depends = python-gobject
 	depends = python-yaml
 	depends = python-bs4
