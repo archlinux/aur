@@ -1,6 +1,6 @@
 pkgbase = gmssl-git
 	pkgdesc = Chinese national cryptographic algorithms and protocols
-	pkgver = 2.0.r28.g25d4ff1
+	pkgver = r705.gf0dc2dce
 	pkgrel = 1
 	url = http://gmssl.org/
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = gmssl-git
 	conflicts = openssl
 	options = staticlibs
 	source = git+https://github.com/guanzhi/GmSSL.git
-	source = ca-dir.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ca-dir.patch?h=packages/openssl
+	source = ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gmssl-git
-
