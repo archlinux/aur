@@ -13,9 +13,9 @@ provides=('tftp-hpa')
 conflicts=('tftp-hpa')
 backup=('etc/conf.d/tftpd')
 source=("git+https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git"
-        "tftpd.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.conf?h=packages/tftp-hpa"
-        "tftpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.service?h=packages/tftp-hpa"
-        "tftpd.socket::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.socket?h=packages/tftp-hpa")
+        "tftpd.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.conf"
+        "tftpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.service"
+        "tftpd.socket::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.socket")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -32,6 +32,7 @@ build() {
   cd "tftp-hpa"
 
   ./autogen.sh
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin"

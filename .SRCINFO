@@ -13,13 +13,12 @@ pkgbase = tftp-hpa-git
 	conflicts = tftp-hpa
 	backup = etc/conf.d/tftpd
 	source = git+https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git
-	source = tftpd.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.conf?h=packages/tftp-hpa
-	source = tftpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.service?h=packages/tftp-hpa
-	source = tftpd.socket::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.socket?h=packages/tftp-hpa
+	source = tftpd.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.conf
+	source = tftpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.service
+	source = tftpd.socket::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/tftp-hpa/trunk/tftpd.socket
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tftp-hpa-git
-
