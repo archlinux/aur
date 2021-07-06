@@ -1,22 +1,25 @@
-# Maintainer: alex19EP <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=3.37.90.r106.gfd15dd414
+pkgver=40.0.r65.g989596c9b
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
-arch=('any')
-license=('LGPL')
 url="https://wiki.gnome.org/Projects/Orca"
-depends=('gtk3' 'at-spi2-atk' 'python-atspi' 'python-dbus' 'python-xdg'
-         'speech-dispatcher' 'liblouis' 'brltty' 'xorg-xmodmap' 'gst-plugins-base'
-         'gst-plugins-good')
-makedepends=('git' 'yelp-tools' 'itstool' 'intltool')
-provides=('orca')
-conflicts=('orca')
-source=(${pkgname%-git}::'git+https://gitlab.gnome.org/GNOME/orca.git')
-md5sums=('SKIP')
+arch=(any)
+license=(LGPL)
+depends=(gtk3 at-spi2-atk python-atspi python-dbus python-pyxdg speech-dispatcher liblouis brltty
+         xorg-xmodmap gsettings-desktop-schemas
+         gst-plugins-base # playbin, audiotestsrc, basic decoders
+         gst-plugins-good # pulsesink, more decoders
+)
+makedepends=(itstool intltool git yelp-tools)
+groups=(gnome)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-git}"
@@ -26,7 +29,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
-	./autogen.sh
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {

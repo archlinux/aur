@@ -1,29 +1,30 @@
 pkgbase = orca-git
 	pkgdesc = Screen reader for individuals who are blind or visually impaired (development version)
-	pkgver = 3.37.90.r106.gfd15dd414
+	pkgver = 40.0.r65.g989596c9b
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Orca
 	arch = any
+	groups = gnome
 	license = LGPL
-	makedepends = git
-	makedepends = yelp-tools
 	makedepends = itstool
 	makedepends = intltool
+	makedepends = git
+	makedepends = yelp-tools
 	depends = gtk3
 	depends = at-spi2-atk
 	depends = python-atspi
 	depends = python-dbus
-	depends = python-xdg
+	depends = python-pyxdg
 	depends = speech-dispatcher
 	depends = liblouis
 	depends = brltty
 	depends = xorg-xmodmap
+	depends = gsettings-desktop-schemas
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	provides = orca
 	conflicts = orca
 	source = orca::git+https://gitlab.gnome.org/GNOME/orca.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = orca-git
-
