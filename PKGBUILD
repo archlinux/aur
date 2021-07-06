@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=1.0.r667
+pkgver=1.1.r670
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
