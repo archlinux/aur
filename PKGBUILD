@@ -2,7 +2,7 @@
 pkgname=connective-https
 pkgver=1.0.0
 
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTPS support module for connective servers (requires a keystore.jks file and keystore.jks.password text file in /etc/connective-http)"
 arch=( 'any' )
 url=""
@@ -33,5 +33,5 @@ package() {
     cd ConnectiveHTTPS
     
     mkdir -p "$pkgdir/usr/lib/connective-https"    
-    cp build/libs/ConnectiveHTTPS-*.jar "$pkgdir/usr/lib/connective-https/ConnectiveHTTPS.jar"
+    mv build/libs/ConnectiveHTTPS-*.jar "$pkgdir/usr/lib/connective-https/ConnectiveHTTPS.jar"
 }
