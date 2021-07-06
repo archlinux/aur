@@ -4,15 +4,15 @@
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
-license=('custom' 'custom:bounce' 'APACHE')
+license=('custom' 'APACHE')
 depends=('java-runtime>=8' 'hicolor-icon-theme')
 source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}_amd64.tar.gz)
-md5sums=('fd008881a859837a686fb595e5903143')
+md5sums=('e57e65bb75a66929db331d30016bb3ac')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -40,8 +40,8 @@ package() {
   install -D -m644 ${srcdir}/${pkgname}/icon/128x128/apps/charles-proxy.png \
     ${pkgdir}/usr/share/icons/charles128.png
 
-  install -D -m644 ${srcdir}/${pkgname}/doc/licenses/bounce-license.txt \
-    ${pkgdir}/usr/share/licenses/${pkgname}/bounce-license.txt
+  install -D -m644 ${srcdir}/${pkgname}/doc/licenses/jakarta-oro-license.txt \
+    ${pkgdir}/usr/share/licenses/${pkgname}/jakarta-oro-license.txt
   install -D -m644 ${srcdir}/${pkgname}/etc/charles-proxy.desktop \
     ${pkgdir}/usr/share/applications/charles-proxy.desktop
 
