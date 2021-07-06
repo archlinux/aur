@@ -1,22 +1,37 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=promscale_extension
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="PostgreSQL extension for Promscale"
 arch=('x86_64')
 url="https://github.com/timescale/promscale_extension"
 license=('Apache' 'custom:Timescale')
-depends=(postgresql)
-makedepends=(rust clang llvm)
-_tslver=2.1.1 # latest version of Timescale - used to pin license version
+depends=('postgresql')
+makedepends=('rust' 'clang' 'llvm')
+_tslver=2.3.0 # latest version of Timescale - used to pin license version
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "LICENSE-TIMESCALE-$_tslver::https://raw.githubusercontent.com/timescale/timescaledb/$_tslver/tsl/LICENSE-TIMESCALE")
-b2sums=('162a41816505cfe89bed2e2553a0763b4056ca2ea14dd9bf944e49dd4d5f3c18ac2839008fac3bed9d9771f1ff133158155faa72d5d8236a688aa7daa880e9f2'
-        '32bf2e976bf68df573329b3e83fe0060557f1c09859dc12f1c1070e6c2ecb29ee9699e981900e39b3a3ccd41384d28ab7a81bcc953e0d34f00d0048d0f1ea028')
+b2sums=('be01d7835ba13efd104fed3c9380d928580d05763d4e482bb404cba1086de21ce65d01be50af8223d313a153632095fbe0636055e9c3c72ae72c2fe6e94f61d9'
+        '9ae11a930e930953b16f7d6d1d3fbf0ebb6c4d8687cac1475560603442ed8edd452200468f7fe9c82af651d40ccad192c036940bfe57ef093e7c30cce93383f0')
 
 build() {
   cd "$pkgname-$pkgver"
+  # upstream uses their own fork of the pgx library (ref: README.md)
+  # additionally, a different branch/commit is present in Cargo.lock
+  # so this is probably the cleanest method of building
+  local PGX_REPO='https://github.com/JLockerman/pgx.git'
+  local PGX_BRANCH='timescale'
+  local PGX_COMMIT='87e0460e6e88d6ffa9b9eb37dce4b71e4336e31e'
+  cargo install \
+    --git "$PGX_REPO" \
+    --branch "$PGX_BRANCH" \
+    --rev  "$PGX_COMMIT" \
+    cargo-pgx
+  # path to pg_config is provided to avoid downloading postgresql libs
+  cargo pgx init --pg13=/usr/bin/pg_config
+
+  # now we can compile
   make
 }
 
@@ -26,5 +41,6 @@ package() {
 
   # licenses
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_tslver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-TIMESCALE"
+  install -Dm644 "$srcdir/LICENSE-TIMESCALE-$_tslver" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE-TIMESCALE"
 }
