@@ -11,6 +11,7 @@ post_install() {
     fi
 
     mkdir "$serverDir/modules" -p
+    chown connective:connective "$serverDir/modules" -R
     cp "/usr/lib/connective-php/ConnectivePHP.jar" "$serverDir/modules/ConnectivePHP.jar" -f
     chown connective "$serverDir/modules/ConnectivePHP.jar"
        

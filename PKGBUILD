@@ -2,7 +2,7 @@
 pkgname=connective-php
 pkgver=1.0.0
 
-pkgrel=1
+pkgrel=2
 pkgdesc="ConnectivePHP -- PHP support module for ConnectiveHTTP"
 arch=( 'any' )
 url=""
