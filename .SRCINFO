@@ -1,6 +1,6 @@
 pkgbase = openssl-git
 	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
-	pkgver = 3.0.0.alpha6.r483.g6600baa9bb
+	pkgver = 3.0.0.beta1.r187.gef1e0242a9
 	pkgrel = 1
 	url = https://www.openssl.org/
 	arch = i686
@@ -15,9 +15,8 @@ pkgbase = openssl-git
 	options = staticlibs
 	backup = etc/ssl/openssl.cnf
 	source = git+https://github.com/openssl/openssl.git
-	source = ca-dir.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ca-dir.patch?h=packages/openssl
+	source = ca-dir.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/openssl/trunk/ca-dir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openssl-git
-
