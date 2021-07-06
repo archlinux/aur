@@ -9,7 +9,7 @@ arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('jdk-openjdk')
-makedepends=('jdk15-adoptopenjdk')
+makedepends=('jdk11-openjdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
 	"https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq-${pkgver}.tar.gz.asc"
 	"bisq.desktop")
@@ -25,7 +25,7 @@ provides=("bisq")
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
   msg2 "Building bisq..."
-  ./gradlew clean :desktop:build -Dorg.gradle.java.home=/usr/lib/jvm/java-15-adoptopenjdk -x test
+  ./gradlew clean :desktop:build -Dorg.gradle.java.home=/usr/lib/jvm/java-11-openjdk -x test
 }
 
 package() {
