@@ -5,7 +5,7 @@
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=1.30_lib2.9.0.2
+pkgver=1.30_lib2.9.0.2_date2021_3_1
 pkgrel=1
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
@@ -42,10 +42,11 @@ conflicts=("${_pkgname}")
 
 replaces=("${_pkgname}<=${pkgver}")
 
+_zipfile="TTAKT.ZIP"
 _target="ttakt.zip"
 
 source=(
-  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
+  "${_target}::http://ttakt.chaps.cz/TTAktual/Win/Zip/${_zipfile}"
   "idos-timetable-browser.sh"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
@@ -68,7 +69,9 @@ sha256sums=(
 
 
 pkgver() {
-  wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g'
+  _ver="$(wget -nv -O- "${url}" | grep 'Timetable browser, version' | head -n 1 | sed -r 's|^.*Timetable browser, version ([0-9\.]+),.*library version ([0-9\.]+).*$|\1_lib\2|g')"
+  _date="$(wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File '"${_zipfile}"'\(.*\)Zip/'"${_zipfile}"'.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+')"
+  printf '%s\n' "${_ver}_date${_date}"
 }
 
 
