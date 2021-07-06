@@ -1,14 +1,14 @@
 pkgname=infinitywallet
-pkgver=1.0.73beta
-pkgrel=7
+pkgver=1.0.76beta
+pkgrel=8
 pkgdesc="Digital asset wallet"
 arch=('x86_64')
 url="https://infinitywallet.io"
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/InfinityWallet/Releases/releases/download/v1.0.73-beta/InfinityWallet_1.0.73-beta_amd64.deb")
-sha512sums_x86_64=('449713910b789d2e3a37af53ea9bf2dc29241506a7efd1b53a35e9a51083550fb0c9ed76b1bc62ae98e3fa820a9620ac47277fe26e5d59085f48550c3526d3dd')
+source_x86_64=("https://github.com/InfinityWallet/Releases/releases/download/v1.0.76-beta/InfinityWallet_1.0.76-beta_amd64.deb")
+sha512sums_x86_64=('f559c0398b9dcb92de091729fac96d392bf64996c0e2e340f32432d92444243a0030043b3bf714b776ea5e7f71ca11df7d0c28d006aec18f8bb4aa1bb052c449')
 
 package(){
 
