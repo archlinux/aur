@@ -2,7 +2,7 @@
 # Maintainer: Xyne
 
 pkgname=abinit
-pkgver=9.2.1
+pkgver=9.4.2
 pkgrel=1
 pkgdesc="Full-featured atomic-scale first-principles simulation software."
 arch=('i686' 'x86_64')
@@ -20,13 +20,15 @@ build() {
   ../configure \
     FC=gfortran-8 \
     CC=cc-8 \
-    --with-libxc='yes' \
-    --with-hdf5='yes' \
-    --with-netcdf='yes' \
-    --with-netcdf-fortran='yes' \
+    --with-libxc \
+    --with-hdf5 \
+    --with-netcdf \
+    --with-netcdf-fortran \
+    --enable-openmp \
+    --without-mpi \
     --prefix=/usr \
     #--disable-all-plugins
-  make -j $(($(nproc) + 1))
+  make
 }
 
 package() {
@@ -34,4 +36,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('31405d3c29526ef4022b5299b94eb729ef0996717e391c865ec1e53dd9c45c688c4c70fbbdbb72c036665cbd153eff141b2eeb5b5bc455e0a24fac350e7cca5d')
+sha512sums=('35417e8bff9b0ff06471b994625e43b8d6e35bb32771a38b60c0f4f07946853e9e6a1189b36b548011a93d54008a4ebbdcabf318a654e46ee6e6e2664be7f4cb')
