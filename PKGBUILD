@@ -1,20 +1,20 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=iminuit
 pkgname=python-${_pyname}-doc
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Documentation for Python iminuit module"
 arch=(any)
 url="http://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow')
+makedepends=("python-${_pyname}=${pkgver}" 'python-nbsphinx>=0.8.6' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc')
 source=("https://github.com/iminuit/iminuit/archive/v${pkgver}.tar.gz")
-md5sums=('52e4deba2ff182af0e72e42db6cfce44')
+md5sums=('0d5e85edcc3b5e75c8c39bde78988a5f')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
 
-    sed -i '/^from/s/iminuit_version/version/' conf.py
+    sed -i "/\"nbsphinx\"/a \    \'IPython\.sphinxext\.ipython_console_highlighting\',"  conf.py
 }
 
 build() {
