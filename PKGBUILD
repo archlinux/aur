@@ -5,6 +5,8 @@ pkgname=teamredminer
 pkgver=0.8.3
 pkgrel=0
 pkgdesc="Optimized miner for AMD GPUs"
+conflicts=teamredminer-bin
+
 arch=("x86_64")
 url="https://github.com/todxx/teamredminer"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/todxx/teamredminer/releases/download/v${pkgver}/teamredminer-v${pkgver}-linux.tgz")
