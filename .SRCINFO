@@ -1,8 +1,8 @@
 pkgbase = android-armv7a-eabi-x265
 	pkgdesc = Open Source H265/HEVC video encoder (android)
-	pkgver = 3.3
-	pkgrel = 2
-	url = https://github.com/videolan/x265
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://bitbucket.org/multicoreware/x265_git
 	arch = any
 	license = GPL
 	makedepends = android-cmake
@@ -12,8 +12,9 @@ pkgbase = android-armv7a-eabi-x265
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/videolan/x265/archive/3.3.tar.gz
-	sha256sums = ca25a38772fc6b49e5f1aa88733bc1dc92da7dc18f02a85cc3e99d76ba85b0a9
+	source = https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.5.tar.gz
+	source = 0001-Disable-neon.patch
+	md5sums = deb5df5cb2ec17bdbae6ac6bbc3b1eef
+	md5sums = fffb730725e5848d6f1fd87e50530452
 
 pkgname = android-armv7a-eabi-x265
-

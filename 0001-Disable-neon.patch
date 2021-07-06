@@ -1,0 +1,19 @@
+--- a/source/CMakeLists.txt	2021-03-16 09:53:00.000000000 -0300
++++ b/source/CMakeLists.txt	2021-07-06 19:13:30.236573538 -0300
+@@ -248,7 +248,6 @@
+     elseif(ARM)
+         if(ARM64)
+             set(ARM_ARGS -fPIC)
+-            add_definitions(-DHAVE_NEON)
+         else()
+             find_package(Neon)
+             if(CPU_HAS_NEON)
+@@ -351,7 +350,7 @@
+
+ find_package(Nasm)
+ if(ARM OR CROSS_COMPILE_ARM)
+-    option(ENABLE_ASSEMBLY "Enable use of assembly coded primitives" ON)
++    option(ENABLE_ASSEMBLY "Enable use of assembly coded primitives" OFF)
+ elseif(NASM_FOUND AND X86)
+     if (NASM_VERSION_STRING VERSION_LESS "2.13.0")
+         message(STATUS "Nasm version ${NASM_VERSION_STRING} is too old. 2.13.0 or later required")
