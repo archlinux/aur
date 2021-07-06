@@ -9,7 +9,7 @@ arch=('any')
 url=https://github.com/cadadr/pomodorino
 license=('GPL')
 depends=('python-gobject' 'python-notify2' 'dbus-python'
-    'libindicator-gtk3')
+    'libindicator-gtk3' 'libappindicator-gtk3')
 makedepends=('python-setuptools' 'pandoc' 'gettext')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cadadr/pomodorino/archive/refs/tags/v${pkgver}.tar.gz")
