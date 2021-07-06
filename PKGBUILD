@@ -1,27 +1,31 @@
 # Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=libcamera-clang-git
-pkgver=r2627.459b3bc6
+pkgver=r2742.143b2524
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS (built with clang)'
 arch=('x86_64' 'i686')
 url='https://libcamera.org/'
-provides=('libcamera' 'libcamera-clang' 'libcamera-git')
+provides=('libcamera' 'libcamera-clang' 'libcamera-git' 'qcam')
 conflicts=('libcamera')
 makedepends=(
-  "meson>=0.55" "python-yaml" 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git'
+  'python-yaml' 'python-ply' 'python-jinja' 'pkgconf' 'gnutls' 'openssl' 'git' 'gtest'
   'udev'        # for device hotplug enumeration
   'gstreamer'   # for gstreamer support
-  'qt5-tools'   # for 'qcam' tool
+  'qt5-tools'   # for 'qcam'
+  'libevent'    # for 'cam'
+  'meson>=0.55'
   'clang>=5.0'
 )
 depends=(
-  'libc++' 'libevent'
+  #'libc++'
   'gst-plugins-base-libs'   # for gstreamer support
   #'lttng-ust'              # for tracing with LTTng
 )
 optdepends=(
-  'qt5-base: for qcam' 
+  'qt5-base: for qcam test application'
+  'libevent: for test commands'
+  'gtest: for lc-compliance test command'
 )
 license=('LGPL' 'GPL' 'Apache' 'BSD' 'MIT' 'custom')
 options=('!docs')
@@ -47,7 +51,6 @@ build() {
         -Dpipelines=ipu3,uvcvideo,vimc \
         -Ddocumentation=disabled \
         -Dtracing=disabled  # comment this line to enable LTTng support
-        # --prefix /usr --libexecdir lib \
     ninja -C build
 }
 
