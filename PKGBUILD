@@ -3,7 +3,7 @@
 libyaml_version=0.2.5
 
 pkgname=zigmod
-pkgver=45
+pkgver=46
 pkgrel=1
 pkgdesc="A package manager for the Zig programming language"
 url="https://github.com/nektro/zigmod"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/yaml/libyaml/releases/download/${libyaml_version}/yaml-${libyaml_version}.tar.gz"
 )
 sha256sums=(
-  '2e5525a566a90883dd869fd769290efd4de0e932498e34d5cd02cde40e9fb5a3'
+  '892767de10593ca56604fdbaa9ad770409e46f4133e778d401005e20a5f5fca3'
   'c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4'
 )
 
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  zig build
+  zig build -Dtag=v${pkgver}
 }
 
 package() {
