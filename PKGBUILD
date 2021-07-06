@@ -26,6 +26,7 @@ prepare() {
 	sed -i "s/srv/etc/g" clash.service
 	sed -i "s/lib/share/g" clash.service
 	sed -i "s/lib/share/g" 99-clash.rules
+	sed -i "/bash/,+38 s/tcp, udp/tcp, udp, icmp/g" setup-tun.sh
 }
 
 package() {
