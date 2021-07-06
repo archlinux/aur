@@ -11,7 +11,7 @@ depends=('xfce4-panel' 'dxreminders>=1.20.0')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(https://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('91f813f5377b0548b5513aab52b99102')
+md5sums=('4b3f30e152a7a9726caff360cb44d555')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
