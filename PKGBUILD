@@ -3,9 +3,9 @@
 # Contributor: zer0def <zer0def@github>
 
 _pkgname=lens
-_pkgdate=20210629.3
+_pkgdate=20210705.2
 pkgname=lens-bin
-pkgver=5.0.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('lens')
 conflicts=('lens')
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${_pkgdate}.${arch}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('679ee43f2a0a2043bf520e25faa8bfb84db16e45e2dfb0cb4d5bf12a9fe06c31'
+sha256sums=('72639a6a6bd721e5f149fe28bac486cf16c6b19de65b03447c694cccbdd8322d'
             '7acac010857d0afc5717e87e651bd875dab9771685648e3908da538709de2346')
 
 prepare() {
