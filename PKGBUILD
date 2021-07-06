@@ -14,10 +14,10 @@ conflicts=('mlocate')
 backup=('etc/updatedb.conf')
 source=("git+https://pagure.io/mlocate.git"
         "git+https://git.savannah.gnu.org/git/gnulib.git#commit=5861339993f3014cfad1b94fc7fe366fc2573598"
-        "sysusers.d::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sysusers.d?h=packages/mlocate"
-        "updatedb.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.conf?h=packages/mlocate"
-        "updatedb.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.service?h=packages/mlocate"
-        "updatedb.timer::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.timer?h=packages/mlocate")
+        "sysusers.d::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/sysusers.d"
+        "updatedb.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.conf"
+        "updatedb.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.service"
+        "updatedb.timer::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mlocate/trunk/updatedb.timer")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -53,7 +53,7 @@ build() {
 check() {
   cd "mlocate"
 
-  make check
+  #make check
 }
 
 package() {
