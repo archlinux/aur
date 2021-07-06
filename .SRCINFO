@@ -1,0 +1,14 @@
+pkgbase = siproxd
+	pkgdesc = A masquerading SIP proxy server
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = http://siproxd.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	depends = libosip2
+	source = http://downloads.sourceforge.net/siproxd/siproxd-0.8.3.tar.gz
+	md5sums = 9a9d2c89e5f0c59fdde9444a66d8372c
+	sha256sums = 9a6d7a6bb6fff162775b1e1fb7018de9c69642cbf8626185dc6ffceeeba07736
+
+pkgname = siproxd
