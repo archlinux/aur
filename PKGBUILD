@@ -20,11 +20,11 @@ package() {
   install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   npm install --cache ../cache -g --production --prefix "${pkgdir}/usr" "../v${pkgver}.tar.gz"
 
-  # npm makes some directories world writable
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-
-  # https://old.reddit.com/r/archlinux/comments/o3y03g/i_adopted_10_nodejs_aur_packages_that_conflict/
-  chown -R root:root "${pkgdir}"
+  # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_npm
+    # npm makes some directories world writable
+    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+    # https://old.reddit.com/r/archlinux/comments/o3y03g/i_adopted_10_nodejs_aur_packages_that_conflict/
+    chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
