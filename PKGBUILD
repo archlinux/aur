@@ -1,6 +1,6 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 epoch=1
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
@@ -23,7 +23,7 @@ build() {
 
 package() {
   cd $pkgname/target/release
-  install -Dm755 leftwm leftwm-worker leftwm-state leftwm-check -t "$pkgdir"/usr/bin
+  install -Dm755 leftwm leftwm-worker leftwm-state leftwm-check leftwm-command -t "$pkgdir"/usr/bin
 
   install -d "$pkgdir"/usr/share/leftwm
   cp -R "$srcdir"/$pkgname/themes "$pkgdir"/usr/share/leftwm
