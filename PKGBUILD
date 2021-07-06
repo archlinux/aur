@@ -99,10 +99,12 @@ source=(
   "0011-block.patch::${_patches_url}/block-patches-v6/0001-block-patches.patch"
   "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
 )
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
+
 b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318d5e9848996989d5e421ab6c2128cdb51a3724adc95222f96a859486a1'
         'SKIP'
         'SKIP'
