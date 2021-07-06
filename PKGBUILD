@@ -7,7 +7,7 @@ pkgdesc="HTTPS support module for connective servers (requires a keystore.jks fi
 arch=( 'any' )
 url=""
 license=('GPL')
-groups=()
+groups=( "connective-server" )
 depends=( 'java-environment' 'connective-http' )
 makedepends=( 'gradle>=6.7' 'cq' )
 optdepends=()
