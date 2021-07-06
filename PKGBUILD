@@ -57,7 +57,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 #pkgver=${_major}.${_minor}
 pkgver=${_major}
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -86,11 +86,13 @@ source=(
   "${_patchsource}/bbr2-patches/0001-bbr2-5.13-introduce-BBRv2.patch"
   "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v2/0001-pf-patches.patch"
+  "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
   "${_patchsource}/lru-patches/0001-lru-patches.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
   "${_patchsource}/security-2/hardened-patches.patch"
   "${_patchsource}/security-2/lrng-v41.patch"
+  "${_patchsource}/misc/1000-tune-vm-mm-and-vfs-settings.patch"
+  "${_patchsource}/misc/rcu-fixes-next.patch"
   "${_patchsource}/misc/nohzfull.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
@@ -510,7 +512,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'efb4f07f10058ec12933ba3ea12aa983'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
-         '004c2b38dfc71a279e625a7daeb4fa84'
+         '2c0375b3cc9690a0f0f3d3e49df54d10'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '09a9e83b7b828fae46fd1a4f4cc23c28'
@@ -520,11 +522,13 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '12cdc30bc3e2a17825b23b63bd6a5e7a'
          '63078800040b2a9a9f19c59c4ebf5b23'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         'ed551763bd8112d087bcd21782d68325'
+         'ed46a39e062f07693f52981fbd7350b7'
          '3f302dbaceea020abd40f6e9f23b75df'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
          '8b756f75c5600b1ea7df5e11ac738df5'
          '20e92e9d958ca8fec6ff441bb97aa9f1'
+         '0632f49f076c90b6d6098cad7b5a88ac'
+         'eff4bb43a8defb7ed08b9c1e403291ea'
          'c68e4fd9b4a55ee730a34bb39ae325ad'
          '9977ba0e159416108217a45438ebebb4'
          '9e5114dba6da65e8d444aa225b109a21'
