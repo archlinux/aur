@@ -3,7 +3,7 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.84.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -19,7 +19,7 @@ sha256sums=('b7a1e1652addb94c4b41f3868989fcea39c72851c03a8be4a4f708f8ad5ec6b3'
 
 build() {
 	cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
-	npm install
+	npm install --cache "$srcdir/npm-cache"
 	node dist -l --custom-desktop-release --unpacked
 }
 
