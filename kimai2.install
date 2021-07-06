@@ -1,0 +1,18 @@
+function _kimai2_install() {
+    echo -e "##### run the following commands to finalize the update ####"
+	echo -e 'cd /usr/share/webapps/kimai2'
+	echo -e 'sudo -u http bash'
+    echo -e 'export PHP_INI_SCAN_DIR=$(pwd)'
+	echo -e 'composer update'
+    echo -e 'bin/console cache:clear'
+    echo -e 'exit'
+    echo -e "############################################################"
+}
+
+post_install() {
+    _kimai2_install
+}
+
+post_upgrade() {
+    _kimai2_install
+}
