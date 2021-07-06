@@ -1,0 +1,8 @@
+*.deb
+*.log
+*.tar.gz
+*.tar.xz
+*.zst
+packetcrypt*
+pkg/
+src/

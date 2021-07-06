@@ -1,0 +1,13 @@
+pkgbase = packetcrypt
+	pkgdesc = PacketCrypt implementation in Rust (Github binary release)
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://pkt.cash
+	arch = x86_64
+	license = LGPL
+	provides = packetcrypt
+	conflicts = packetcrypt
+	source = https://github.com/cjdelisle/packetcrypt_rs/releases/download/packetcrypt-v0.4.3/packetcrypt-v0.4.3-linux_amd64
+	sha256sums = a7dfcf8e081e25ff6cfdb4d8bf0ddb686cc00979a313d80cb9acbe1b40ec1881
+
+pkgname = packetcrypt
