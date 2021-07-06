@@ -1,6 +1,6 @@
 pkgbase = python-yacl
 	pkgdesc = Yet another color logger for Python.
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/yacl
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-yacl
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pygments
-	source = https://github.com/IngoMeyer441/yacl/archive/v0.4.1.tar.gz
-	sha256sums = c77c52acc144ede4e9410562ccf30d8596000a60ec6b198d243594d3e3f6fcec
+	source = https://github.com/IngoMeyer441/yacl/archive/v0.4.2.tar.gz
+	sha256sums = 4589c9b53e9ad5d63df3342f1eabef524a411ace0d9155ab0b067e217e84f8a6
 
 pkgname = python-yacl
-
