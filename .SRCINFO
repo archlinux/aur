@@ -1,11 +1,11 @@
 pkgbase = mtk
 	pkgdesc = MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	license = LGPL
 	depends = java-environment
-	source = https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/1.0.0.A14/CyanLoader-Sources-1.0.0.A14-full.zip
-	md5sums = 11c0b71dfe23a153ec95ff2d548886d1
+	source = git+https://aerialworks.ddns.net/ASF/Cyan.git
+	md5sums = SKIP
 
 pkgname = mtk
