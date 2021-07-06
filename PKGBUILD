@@ -3,7 +3,7 @@
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('any')
@@ -22,12 +22,12 @@ build() {
   cd "$srcdir/${_pkgname}"
   git config submodule.kaldi.url "$srcdir/kaldi"
   git submodule update third_party/kaldi/submodule
-  python setup.py build
+  BUILD_SOX=1 python setup.py build
 }
 
 package() {
   cd "$srcdir/${_pkgname}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  BUILD_SOX=1 python setup.py install --root="$pkgdir"/ --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
