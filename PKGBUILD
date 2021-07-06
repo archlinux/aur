@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ufw-git
-pkgver=r1765.g1e5cc76
+pkgver=r1862.g97af0c9
 pkgrel=1
 pkgdesc="Uncomplicated firewall"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/default/ufw'
         'etc/ufw/user.rules'
         'etc/ufw/user6.rules')
 source=("git+https://git.launchpad.net/ufw"
-        "ufw.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/service?h=packages/ufw")
+        "ufw.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/ufw/trunk/service")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -32,11 +32,11 @@ prepare() {
 
   # FS#28769 - move from /lib to /usr/lib
   sed -i -e 's|/lib|/usr/lib|' \
-         -e 's|sbin|bin|g' setup.py
+         -e 's|sbin|bin|g' "setup.py"
 
   # FS#35458, FS#54110 - correct iptables location
-  sed -i -e 's|sbin|bin|g' setup.py
-  sed -i -e 's|sbin|bin|g' src/util.py
+  sed -i -e 's|sbin|bin|g' "setup.py"
+  sed -i -e 's|sbin|bin|g' "src/util.py"
 }
 
 pkgver() {
@@ -54,5 +54,5 @@ package() {
     --optimize 1 \
     --root "$pkgdir"
 
-  install -Dm644 "$srcdir/ufw.service" "$pkgdir/usr/lib/systemd/system/ufw.service"
+  install -Dm644 "$srcdir/ufw.service" -t "$pkgdir/usr/lib/systemd/system"
 }

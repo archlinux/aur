@@ -1,6 +1,6 @@
 pkgbase = ufw-git
 	pkgdesc = Uncomplicated firewall
-	pkgver = r1765.g1e5cc76
+	pkgver = r1862.g97af0c9
 	pkgrel = 1
 	url = https://launchpad.net/ufw
 	arch = any
@@ -21,9 +21,8 @@ pkgbase = ufw-git
 	backup = etc/ufw/user.rules
 	backup = etc/ufw/user6.rules
 	source = git+https://git.launchpad.net/ufw
-	source = ufw.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/service?h=packages/ufw
+	source = ufw.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/ufw/trunk/service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ufw-git
-
