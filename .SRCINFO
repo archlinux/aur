@@ -1,0 +1,22 @@
+pkgbase = htim-git
+	pkgdesc = Htop improved, htop with vim key bindings
+	pkgver = 3.0.6
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/thelinuxguy9/htim
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = ncurses
+	depends = libnl
+	optdepends = lsof: list open files for running process
+	optdepends = strace: attach to running process
+	provides = htop
+	conflicts = htop
+	options = !emptydirs
+	source = git+https://gitlab.com/thelinuxguy9/htim
+	sha256sums = SKIP
+
+pkgname = htim-git
