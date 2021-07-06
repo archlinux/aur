@@ -2,7 +2,7 @@
 
 pkgname=dendron
 _npmname="dendron-cli"
-_npmver="0.48.0"
+_npmver="0.49.0"
 pkgver=${_npmver//-/.}
 pkgrel=1
 pkgdesc="CLI tool for Dendron, the hierarchical note taking tool that grows as you do!"
@@ -21,4 +21,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha512sums=('328bcd1ef3f7201f1dbbbc334a111e4c3a6215698584c03111c4513e03993220f0a6bfddbf9c2d6a52c46ba521d2f6cb86689082c59b9b3e156d74f3231bf591')
+sha512sums=('c3bbefbb1c98275053752286ece9f6730ae5c53da9b7137dfc2ef35f5e5bf8fce152ff8d4df5ae9ca88b67f9830421aa6de2b5d3bfd91a74cabae0373ad47e6c')
