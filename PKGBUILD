@@ -1,8 +1,8 @@
 # Maintainer: Andrew Lin <andrewlin16 at gmail dot com>
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
-pkgver=1.29.10.00
-pkgrel=2
+pkgver=1.29.11.00
+pkgrel=1
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
 url="https://openmpt.org/"
@@ -15,8 +15,8 @@ optdepends=(
 )
 source_i686=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable.zip")
 source_x86_64=("https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x64.zip")
-sha256sums_i686=('97fbb02e380aee9486d3f28416b6f2752b761a9521fa79d4f508f6958e57ef7f')
-sha256sums_x86_64=('af34714cd98690884c578e795018f20ac6c7a8c89ced601c12208bb945dd0e8b')
+sha256sums_i686=('0c6ad8c985651a11bd09b3e833b6787d8e28b62aeb324101116c4955316b3f1e')
+sha256sums_x86_64=('74f2c52954b5f139c814d4a0da5d5a393ab57c3b3b23260fa7ed71ddab8c01dd')
 
 prepare(){
   convert "$srcdir/OpenMPT-$pkgver/mpt.ico" "$srcdir/icon.png"
