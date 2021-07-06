@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dropbear-hg
-pkgver=r1749.32307118bc26
+pkgver=r1818.587c76726b5f
 pkgrel=1
 pkgdesc="Small SSH server and client"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('mercurial')
 provides=('dropbear')
 conflicts=('dropbear')
 source=("hg+https://hg.ucc.asn.au/dropbear/"
-        "dropbear.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/dropbear.service?h=packages/dropbear"
-        "localoptions.h::https://git.archlinux.org/svntogit/community.git/plain/trunk/localoptions.h?h=packages/dropbear")
+        "dropbear.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/dropbear.service"
+        "localoptions.h::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/dropbear/trunk/localoptions.h")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
