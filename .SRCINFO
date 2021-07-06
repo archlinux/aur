@@ -1,7 +1,7 @@
 pkgbase = gcc34-g77-bin
 	pkgdesc = Fortran 77 support for compatibility compiler.
 	pkgver = 3.4.6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/repoview/compat-gcc-34-g77.html
 	arch = x86_64
 	license = GPL2
