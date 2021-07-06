@@ -4,9 +4,9 @@ pkgdesc="ROS package for real-time 6DOF SLAM using a 3D LIDAR"
 url='https://github.com/koide3/hdl_graph_slam'
 
 pkgname='ros-noetic-hdl-graph-slam-git'
-pkgver=r158.31ed9d6
+pkgver=r167.3a12a13
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD 2-Clause License')
 
 ros_makedepends=(ros-noetic-catkin)
@@ -37,17 +37,10 @@ depends=(
 
 source=(
     $pkgname::git://github.com/koide3/hdl_graph_slam.git
-    https://github.com/koide3/hdl_graph_slam/pull/192.patch
 )
 sha256sums=(
     'SKIP'
-    'SKIP'
 )
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/192.patch"
-}
 
 pkgver() {
   cd "$pkgname"
