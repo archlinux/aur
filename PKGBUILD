@@ -2,10 +2,10 @@
 pkgname=cq
 pkgver=1.0.0
 
-_ccfgversion=1.0.0.A17
+_ccfgversion=1.0.0.A19
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=19
+pkgrel=20
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
@@ -27,6 +27,7 @@ md5sums=('SKIP'
          'c725e9bee57d6a63ce27b829cfa1a03e')
 
 build() {
+    cd Cyan
     cd CCFG
     echo "rootProject.name = 'CCFG';" > settings.gradle
     gradle jar
@@ -35,7 +36,7 @@ build() {
 package() {
     mkdir "$pkgdir/usr/lib/ccfg-cq-libs" -p
     cp aosutil-service-SLIB-UTIL-$_aosutilverion.jar "$pkgdir/usr/lib/ccfg-cq-libs/aosutil-slib-util.jar"
-    cd build/CCFG/Jars
+    cd Cyan/build/CCFG/Jars
     cp CCFG-$_ccfgversion.jar "$pkgdir/usr/lib/ccfg-cq-libs/CCFG.jar"
     cd ../../../CCFG/cq-script
     mkdir -p "$pkgdir/usr/bin"
