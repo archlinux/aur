@@ -3,15 +3,15 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=dhewm3
 pkgname=$_pkgname-git
-pkgver=1.5.1.r47.g1aedbe7
+pkgver=1.5.1.r70.g61a49a2
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 source port"
-arch=('x86_64' 'i686')
+arch=('i686' 'x86_64')
 url="https://dhewm3.org/"
 license=('GPL3')
-depends=('libbacktrace' 'openal' 'sdl2')
-makedepends=('cmake' 'curl' 'git')
+depends=('openal' 'sdl2')
+makedepends=('cmake' 'curl' 'git' 'libbacktrace')
 optdepends=('doom3-data: for game data and icon')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	depends+=('libcurl.so')
+	depends+=('libbacktrace.so' 'libcurl.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/applications $_pkgname.desktop
