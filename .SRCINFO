@@ -1,6 +1,6 @@
 pkgbase = neovim-matchup-opt-git
 	pkgdesc = A modern, drop-in replacement for matchit.vim and matchparen.
-	pkgver = 299.afbf309
+	pkgver = 355.bae99f0
 	pkgrel = 1
 	url = https://github.com/andymass/vim-matchup
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = neovim-matchup-opt-git
 	sha256sums = SKIP
 
 pkgname = neovim-matchup-opt-git
-

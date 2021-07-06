@@ -1,6 +1,6 @@
 pkgname=neovim-matchup-opt-git
 _pkgname=matchup
-pkgver=355.bae99f0
+pkgver=492.05f4962
 pkgrel=1
 pkgdesc='A modern, drop-in replacement for matchit.vim and matchparen.'
 arch=('any')
@@ -28,7 +28,7 @@ package() {
 
     install -dvm755 "${pkgdir}/${_installpath}"
 
-    cp -rvt "${pkgdir}/${_installpath}" after autoload doc plugin 
+    cp -rvt "${pkgdir}/${_installpath}" after autoload doc lua plugin 
   
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
