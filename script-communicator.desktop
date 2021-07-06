@@ -5,7 +5,6 @@ Name=ScriptCommunicator
 Comment=Scriptable terminal with Serial/TCP/UDP/SPI/CAN support
 Exec=script-communicator
 Icon=script-communicator
-Path=/usr/bin
 Terminal=false
 StartupNotify=false
 Categories=Development
