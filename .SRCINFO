@@ -1,6 +1,6 @@
 pkgbase = zigbee2mqtt
 	pkgdesc = A Zigbee to MQTT bridge
-	pkgver = 1.12.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://www.zigbee2mqtt.io
 	install = zigbee2mqtt.install
@@ -18,7 +18,7 @@ pkgbase = zigbee2mqtt
 	conflicts = zigbee2mqtt
 	options = !strip
 	backup = etc/zigbee2mqtt/configuration.yaml
-	source = https://github.com/Koenkk/zigbee2mqtt/archive/1.12.0.tar.gz
+	source = https://github.com/Koenkk/zigbee2mqtt/archive/1.20.0.tar.gz
 	source = zigbee2mqtt.service
 	source = zigbee2mqtt.sysusers
 	source = zigbee2mqtt.tmpfiles

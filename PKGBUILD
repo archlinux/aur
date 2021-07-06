@@ -1,7 +1,7 @@
 # Maintainer: buckket <felix@buckket.org>
 
 pkgname=zigbee2mqtt
-pkgver=1.12.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='A Zigbee to MQTT bridge'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
