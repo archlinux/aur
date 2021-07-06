@@ -1,39 +1,34 @@
-# Maintainer: yuki-san <yuki.from.akita@gmail.com>
+# Maintainer: Takuro Onoue <kusanaginoturugi at gmail.com>
+# Contributor: yuki-san <yuki.from.akita@gmail.com>
 
 # nethack Maintainer : schuay <jakob.gruber@gmail.com>
 # nethack Contributor : kevin <kevin@archlinux.org>
 # nethack Contributor : Christian Schmidt <mucknert@gmx.net>
 # nethack Contributor : Markus Meissner <markus@meissna.de>
 # nethack Contributor : Nick Erdmann <erdmann@date.upb.de>
-
 pkgname=jnethack
-pkgver=3.6.0_0.9
+pkgver=3.6.6_0.2
 _nethackver=${pkgver/_*/}
+_srcver=366
 pkgrel=1
 pkgdesc='Japanized Nethack, A single player dungeon exploration game'
 arch=('i686' 'x86_64')
 url="http://jnethack.osdn.jp/"
 license=('custom')
 depends=('ncurses' 'gzip')
-# optdepends=('cocot: UTF-8 tty support' )
 makedepends=('bzip2' 'nkf' )
 install=jnethack.install
 options=(!makeflags)
-source=("http://www.nethack.org/download/${_nethackver}/${pkgname#j}-${_nethackver//./}-src.tgz"
-        ${pkgname}-${pkgver//_/-}.diff.gz::"https://osdn.net/frs/redir.php?f=jnethack%2F69482%2F${pkgname}-${pkgver//_/-}.diff.gz"
-        "https://github.com/tung/nethack360-statuscolors/compare/master...statuscolors2.diff")
-md5sums=('d42147b26e5fb4746fb72536ce145984'
-         '72e72019564fc76138bd46d28618853b'
-         'bb1ac938bcdc0eb4ab572e1ea8c3f000')
+source=("https://osdn.net/dl/jnethack/${pkgname#j}-${_srcver}-src.tgz"
+        "https://osdn.net/projects/jnethack/downloads/74756/${pkgname}-${_nethackver}-0.2.diff.gz")
+md5sums=('6c9a75f556d24c66801d74d8727a602e'
+         '1f6e19b44a4cee04a7ebda275b1ea90a')
 
 prepare() {
-  cd "$srcdir/${pkgname#j}-${_nethackver}/"
-
-  # Apply statuscolor2
-  patch -p1 < "$srcdir"/master...statuscolors2.diff
+  cd "$srcdir/NetHack-NetHack-${_nethackver}_Released"
 
   # Apply jnethack patch
-  zcat "$srcdir"/${pkgname}-${pkgver//_/-}.diff.gz | patch -p1
+  patch -p1 < ../${pkgname}-${_nethackver}-0.2.diff
 
   sed -e 's|^/\* \(#define LINUX\) \*/|\1|' \
       -e 's|^/\* \(#define TIMED_DELAY\) \*/|\1|' -i include/unixconf.h
@@ -61,15 +56,15 @@ prepare() {
 }
 
 build(){
-  cd "$srcdir/${pkgname#j}-${_nethackver}"/sys/unix
+  cd "$srcdir/NetHack-NetHack-${_nethackver}_Released"/sys/unix
   sh setup.sh hints/linux
 
-  cd "$srcdir/${pkgname#j}-${_nethackver}/"
+  cd "$srcdir/NetHack-NetHack-${_nethackver}_Released"
   make
 }
-  
+
 package() {
-  cd "$srcdir/${pkgname#j}-${_nethackver}/"
+  cd "$srcdir/NetHack-NetHack-${_nethackver}_Released"
 
   install -dm755 $pkgdir/usr/share/{man/man6,doc/jnethack}
   install -dm775 $pkgdir/var/games/
@@ -89,4 +84,3 @@ package() {
   install -Dm644 doc/Guidebook.txt $pkgdir/usr/share/doc/$pkgname/Guidebook.txt
   install -Dm644 dat/license $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
