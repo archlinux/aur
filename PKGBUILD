@@ -40,6 +40,7 @@ package() {
     
     cp -rf "$srcdir/ConnectiveStandalone/build/Installations/"*.jar "$pkgdir/usr/lib/connective-http"
     cp -rf "$srcdir/ConnectiveStandalone/build/Installations/libs" "$pkgdir/usr/lib/connective-http"
+    rm -rf "$srcdir/ConnectiveStandalone/build"
     
     chmod 775 "$pkgdir/etc/connective-http"
     chmod 770 "$pkgdir/etc/connective-http/credentials"
