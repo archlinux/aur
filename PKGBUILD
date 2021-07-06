@@ -43,7 +43,7 @@ _pkgbase=opencv
 pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
 pkgver=2.4.13.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Computer Vision Library (Legacy Version)"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -54,7 +54,7 @@ optdepends=('opencv-samples'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
-provides=("opencv=$pkgver")
+options=('staticlibs')
 source=("$pkgver.zip::https://codeload.github.com/opencv/opencv/zip/$pkgver")
 sha256sums=('8fbe6005d2266e4a725a5ef7a27365d763ce4ad5a7f38045288a3cad8a18d759')
 
@@ -103,7 +103,7 @@ build() {
 }
 
 package_opencv2() {
-  options=('staticlibs')
+  provides=("opencv=$pkgver")
   conflicts=('opencv')
 
   make -C build DESTDIR="$pkgdir" install

@@ -1,7 +1,7 @@
 pkgbase = opencv2
 	pkgdesc = Open Source Computer Vision Library (Legacy Version)
 	pkgver = 2.4.13.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opencv.org/
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = opencv2
 	optdepends = eigen2
 	optdepends = libcl: For coding with OpenCL
 	optdepends = python2-numpy: Python 2.x interface
-	provides = opencv=2.4.13.6
+	options = staticlibs
 	source = 2.4.13.6.zip::https://codeload.github.com/opencv/opencv/zip/2.4.13.6
 	sha256sums = 8fbe6005d2266e4a725a5ef7a27365d763ce4ad5a7f38045288a3cad8a18d759
 
 pkgname = opencv2
+	provides = opencv=2.4.13.6
 	conflicts = opencv
-	options = staticlibs
 
 pkgname = opencv2-samples
 	pkgdesc = Open Source Computer Vision Library (Legacy Version) (samples)
