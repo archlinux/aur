@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=icecast-git
-pkgver=2.5.0.beta.2.r438.gde3a075
-pkgrel=2
+pkgver=2.5.0.beta.2.r644.g2ef043de
+pkgrel=1
 pkgdesc="A streaming media (audio/video) server"
 arch=('i686' 'x86_64')
 url="https://www.icecast.org/"
@@ -14,9 +14,13 @@ conflicts=('icecast')
 backup=('etc/icecast.xml'
         'etc/logrotate.d/icecast')
 source=("git+https://gitlab.xiph.org/xiph/icecast-server.git"
-        "icecast.logrotate::https://git.archlinux.org/svntogit/community.git/plain/trunk/icecast.logrotate?h=packages/icecast"
-        "icecast.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/icecast.service?h=packages/icecast")
+        "icecast.logrotate::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.logrotate"
+        "icecast.service::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.service"
+        "icecast.sysusers::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.sysusers"
+        "icecast.tmpfiles::https://github.com/archlinux/svntogit-community/raw/packages/icecast/trunk/icecast.tmpfiles")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -53,5 +57,6 @@ package() {
 
   install -Dm644 "$srcdir/icecast.logrotate" "$pkgdir/etc/logrotate.d/icecast"
   install -Dm644 "$srcdir/icecast.service" -t "$pkgdir/usr/lib/systemd/system"
-  install -d -g99 -o99 "$pkgdir/var/log/icecast"
+  install -Dm644 "$srcdir/icecast.sysusers" "$pkgdir/usr/lib/sysusers.d/icecast.conf"
+  install -Dm644 "$srcdir/icecast.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/icecast.conf"
 }
