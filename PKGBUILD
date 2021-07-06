@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=typescript-language-server-git
-pkgver=0.5.4.r2.gf2da98f
+pkgver=0.5.4.r7.gaea14ef
 pkgrel=1
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
@@ -18,6 +18,12 @@ b2sums=('SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+# Fails to run with commander>=5
+prepare() {
+  cd ${pkgname%-git}/server
+  yarn add --ignore-scripts commander@4
 }
 
 build() {
