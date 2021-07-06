@@ -33,7 +33,6 @@ check() {
 
 package() {
   cd ${pkgname%-git}
-
   # Emulate `npm prune --production` for server workspace deps
   mv package.json{,.bak}
   cp server/package.json .
@@ -41,11 +40,12 @@ package() {
     package.json)
   mv package.json{.bak,}
 
-  install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
-  ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/${pkgname%-git}
+  install -d "$pkgdir"/usr/{bin,lib/node_modules/${pkgname%-git}}
+  ln -s ../lib/node_modules/${pkgname%-git}/lib/cli.js \
+    "$pkgdir"/usr/bin/${pkgname%-git}
   chmod +x server/lib/cli.js
   cp -r server/lib node_modules package.json \
-    "$pkgdir"/usr/lib/node_modules/$pkgname
+    "$pkgdir"/usr/lib/node_modules/${pkgname%-git}
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
 }
 
