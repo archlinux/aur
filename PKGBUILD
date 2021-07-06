@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc-git
-pkgver=2.0.0dev.r6204.gfcd93aa12
+pkgver=2.0.0dev.r6467.g1285cbfce
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -94,6 +94,14 @@ build() {
 	#CFLAGS=${DEBUG_CFLAGS/-pipe/}
 	#CXXFLAGS=${DEBUG_CXXFLAGS/-pipe/}
 
+	# 2021-07-06 Fix proposed in AUR comment by runecaster
+	# Using -Werror=format-security causes compilation failures : -Wformat -Werror=format-security
+	CFLAGS=${CFLAGS/-Wformat -Werror=format-security/}
+	CXXFLAGS=${CXXFLAGS/-Wformat -Werror=format-security/}
+
+	msg "Using CFLAGS .... $CFLAGS"
+	msg "Using CXXFLAGS .. $CXXFLAGS"
+
 	"${srcdir}"/gcc-${_gccver}/configure \
 		--prefix=/usr \
 		--libdir=/usr/lib \
@@ -174,4 +182,7 @@ package() {
 		ln -s "$_gso" "${pkgdir}/usr/lib/libghdl.so"
 	fi
 
+	# GTKWave has always installed binary ghwdump, now ghdl does it too
+	# While awaiting for the two projects to agree, you can prevent install of ghwdump here
+	#rm -f "${pkgdir}/usr/bin/ghwdump"
 }
