@@ -1,6 +1,6 @@
 pkgbase = tinyssh-git
 	pkgdesc = Minimalistic SSH server
-	pkgver = 20190101.r14.g7e2b402
+	pkgver = 20210601.r0.gba38215
 	pkgrel = 1
 	url = https://tinyssh.org/
 	arch = i686
@@ -11,13 +11,12 @@ pkgbase = tinyssh-git
 	provides = tinyssh
 	conflicts = tinyssh
 	source = git+https://github.com/janmojzis/tinyssh.git
-	source = tinyssh@.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinyssh@.service?h=packages/tinyssh
-	source = tinyssh@.socket::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinyssh@.socket?h=packages/tinyssh
-	source = tinysshgenkeys.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/tinysshgenkeys.service?h=packages/tinyssh
+	source = tinyssh@.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyssh/trunk/tinyssh@.service
+	source = tinyssh@.socket::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyssh/trunk/tinyssh@.socket
+	source = tinysshgenkeys.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyssh/trunk/tinysshgenkeys.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = tinyssh-git
-
