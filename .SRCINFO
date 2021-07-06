@@ -1,6 +1,6 @@
 pkgbase = arptables-git
 	pkgdesc = ARP filtering utility
-	pkgver = 0.0.4.r17.g28b22d5
+	pkgver = 0.0.5.r0.gefae894
 	pkgrel = 1
 	url = https://ebtables.netfilter.org/
 	arch = i686
@@ -13,11 +13,8 @@ pkgbase = arptables-git
 	conflicts = arptables
 	backup = etc/arptables.conf
 	source = git://git.netfilter.org/arptables
-	source = arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/arptables
-	source = arptables.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.systemd?h=packages/arptables
-	sha256sums = SKIP
+	source = arptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/arptables.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = arptables-git
-

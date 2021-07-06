@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=arptables-git
-pkgver=0.0.4.r17.g28b22d5
+pkgver=0.0.5.r0.gefae894
 pkgrel=1
 pkgdesc="ARP filtering utility"
 arch=('i686' 'x86_64')
@@ -13,10 +13,8 @@ provides=('arptables')
 conflicts=('arptables')
 backup=('etc/arptables.conf')
 source=("git://git.netfilter.org/arptables"
-        "arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/arptables"
-        "arptables.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.systemd?h=packages/arptables")
+        "arptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/arptables.service")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 
@@ -43,8 +41,6 @@ package() {
     MANDIR="/usr/share/man" \
     install
 
-  install -Dm755 "$srcdir/arptables.systemd" \
-    "$pkgdir/usr/lib/systemd/scripts/arptables"
   install -Dm644 "$srcdir/arptables.service" \
     "$pkgdir/usr/lib/systemd/system/arptables.service"
 
