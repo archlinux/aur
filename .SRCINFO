@@ -1,14 +1,14 @@
 pkgbase = syphon-bin
 	pkgdesc = Privacy-centric Matrix client
-	pkgver = 0.1.5
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/syphon-org/syphon
 	arch = x86_64
-	license = AGPL
+	license = AGPL3
 	depends = gtk3
+	depends = libsecret
 	provides = syphon
-	source = https://github.com/syphon-org/syphon/releases/download/0.1.5/syphon.linux.x86_64.tar.gz
-	md5sums = 35cb1e482a7c16677769ea14629ca6e2
+	source = https://github.com/syphon-org/syphon/releases/download/0.1.10/syphon.linux.x64.tar.gz
+	sha256sums = ff35294d21cbae817835c81596a759e99457197776091e85a74ef3bed437e581
 
 pkgname = syphon-bin
-
