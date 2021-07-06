@@ -3,7 +3,7 @@ pkgbase = soundux-git
 	pkgver = r1076.aa9e89a
 	pkgrel = 1
 	epoch = 1
-	url = https://github.com/Soundux/Soundux
+	url = https://soundux.rocks
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -24,4 +24,3 @@ pkgbase = soundux-git
 	sha256sums = SKIP
 
 pkgname = soundux-git
-

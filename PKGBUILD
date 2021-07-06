@@ -5,7 +5,7 @@ pkgrel=1
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
 arch=('any')
-url="https://github.com/Soundux/Soundux"
+url="https://soundux.rocks"
 license=('GPL3')
 depends=('pulseaudio' 'webkit2gtk' 'libwnck3' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend')
@@ -37,7 +37,7 @@ package() {
   # install binary symlink
   mkdir -p "${pkgdir}/usr/bin/"
   ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
-  
+
   # install doc
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/Soundux/README.md"
   # install license
