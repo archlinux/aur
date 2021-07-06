@@ -1,14 +1,13 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=yamagi-quake2-rogue-git
-pkgver=2.05.r0.geaaf6c4
+pkgver=2.08.r1.gab882a1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2 (development version)"
-url="http://www.yamagi.org/quake2/"
+url="https://www.yamagi.org/quake2/"
 license=('GPL' 'custom')
 depends=('sh' 'yamagi-quake2')
-makedepends=('cmake' 'ninja')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname%-*}.install
@@ -25,27 +24,25 @@ pkgver() {
 }
 
 build() {
-  rm -rf build
-  cmake ${pkgname%-*} -Bbuild \
-    -DCMAKE_BUILD_TYPE=Release \
-    -GNinja
-  cmake --build build
+  make -C ${pkgname%-*}
 }
 
 package() {
-  # game library
-  install -Dm644 build/Release/game.so "$pkgdir"/usr/lib/yamagi-quake2/rogue/game.so
+  local pkg=${pkgname%-*}
 
-  cd ${pkgname%-*}
+  cd $pkg
+
+  # game library
+  install -Dm644 -t "$pkgdir"/usr/lib/yamagi-quake2/rogue release/game.so
 
   # game launcher
-  install -Dm755 ../${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}
+  install -Dm755 ../$pkg.sh "$pkgdir"/usr/bin/$pkg
 
   # doc
-  install -Dm644 README "$pkgdir"/usr/share/doc/${pkgname%-*}/README
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkg README
 
   # desktop entry
-  install -Dm644 ../${pkgname%-*}.desktop "$pkgdir"/usr/share/applications/${pkgname%-*}.desktop
+  install -Dm644 -t "$pkgdir"/usr/share/applications ../$pkg.desktop
 
   # license
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
