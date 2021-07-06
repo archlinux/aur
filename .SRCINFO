@@ -1,16 +1,38 @@
 pkgbase = samhain
-	pkgdesc = file integrity / intrusion detection system
-	pkgver = 4.4.2
+	pkgdesc = Host Integrity Monitoring System
+	pkgver = 4.4.5
 	pkgrel = 1
-	url = http://www.la-samhna.de/
+	url = https://www.la-samhna.de/samhain/index.html
 	install = samhain.install
 	arch = x86_64
 	license = GPL
-	source = http://www.la-samhna.de/samhain/samhain-current.tar.gz
-	source = samhain.service
-	validpgpkeys = EF6CEF54701A0AFDB86AF4C31AAD26C80F571F6C
-	sha256sums = 2bb2750b32646be32517d0b2259402559c72b96979800f6c33774fcdea327fff
-	sha256sums = 7e53bee6bb9ba15db6e741ed3520491c747e57bb58ffc0da6c5d7e235ac720c9
+	depends = audit
+	depends = acl
+	depends = zlib
+	depends = systemd
+	depends = procps-ng
+	source = https://www.la-samhna.de/archive/samhain_signed-4.4.5.tar.gz
+	source = client-sysusers.conf
+	source = client-tmpfiles.conf
+	source = server-sysusers.conf
+	source = server-tmpfiles.conf
+	b2sums = 3b44cdcafb2bb1b0bad8b8748f030fb4a0689346f616b176cf0ddee6514b1596c89e6da8c1f185da8d1ac556726aa922bed0144d125af2b237b710b5706bd1ea
+	b2sums = d326dc086b296ec7c18ce186da608b11109e03d9e9e7b475485b3c8eb06e4f7be36d9e716449cdca90e324631600e100aed57dca35626c126eb9caa3a5a36a4b
+	b2sums = 35e2cdc7e3adee3f7453dd0e831c9f45221682ebe1c5ec3b29a5312622908bdc66e1b2efa0921a3e573c54f79c9862b81fa5c715962452b4c34efe6ffcf2254a
+	b2sums = 21abdadbda821db8b071904b6a3f0a2ff552ea8c0c3d038d6e9af101fce055b2194d733d3b9aa6879880cf11dc590911741dcfa21ec46e83c1ca28641865cefc
+	b2sums = 230651be72bb86979ce3a02d75e4e10025e90b0e20fd1f37df0005e0c2a559fedbb7afcb1e34728de9ce1a29b29c46e8f0b89d9e5bf3accc3b3e0fd639219b97
 
-pkgname = samhain
+pkgname = samhain-standalone
+	pkgdesc = Host Integrity Monitoring System (standalone)
+	conflicts = samhain-client
+	backup = etc/samhainrc
 
+pkgname = samhain-client
+	pkgdesc = Host Integrity Monitoring System (client)
+	conflicts = samhain-standalone
+	backup = etc/samhainrc
+
+pkgname = samhain-server
+	pkgdesc = Host Integrity Monitoring System (server)
+	optdepends = perl: for signing scripts
+	backup = etc/yulerc

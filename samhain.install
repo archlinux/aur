@@ -1,6 +1,9 @@
 post_install() {
-  echo "NOTE: samhain works by comparing the present state of the filesystem agains a"
-  echo "baseline database. If this is the first time that you are using samhain you"
-  echo "will need to perform the initialization (i.e. create the baseline database)"
-  echo "type the following command: samhain -t init"
+  cat <<EOF
+
+Samhain requires extensive setup before it can operate properly.
+
+Reference: https://www.la-samhna.de/samhain/manual/
+
+EOF
 }
