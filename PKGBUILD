@@ -1,19 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
-_pkgname=pdfstudioviewer2020
-pkgver=2020.4.0
+_pkgname=pdfstudioviewer2021
+pkgver=2021.0.1
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64')
 url="https://www.qoppa.com/pdfstudioviewer"
 license=('custom')
-depends=('java-runtime=8' 'sane')
+depends=('java-runtime' 'sane')
 source=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb"
-        "$pkgname.desktop"
-        "$pkgname.sh")
-sha256sums=('a9339a3b5383bc413b2e53b4a0e1f17404a3f894685fa5d78a0b3153c7b83e00'
-            '531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
-            'eb17f775395167664d3bb22dc0f0ba54a6ba9fa975c2a1076716090a8e9a39aa')
+        "$pkgname.desktop")
+sha256sums=('8dbf2528b0c6db103da21828bc697288bdc3af31756ff550385baf5ebff2587a'
+            '6220630a14643d9052da65fb67bf8e841790e7c6e25e79dd4c297556d2c478b3')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"
@@ -35,5 +33,7 @@ package() {
 		"$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 resources/license.html -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+
+	install -d "$pkgdir/usr/bin"
+	ln -s "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
 }
