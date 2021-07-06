@@ -3,7 +3,7 @@ pkgname=connective-https
 pkgver=1.0.0
 
 pkgrel=1
-pkgdesc="HTTPS support for connective servers (requires a keystore.jks file in /etc/connective-http)"
+pkgdesc="HTTPS support module for connective servers (requires a keystore.jks file and keystore.jks.password text file in /etc/connective-http)"
 arch=( 'any' )
 url=""
 license=('GPL')
