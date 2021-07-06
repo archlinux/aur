@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ipset-git
-pkgver=7.1.r3.g8eaaf16
+pkgver=7.11.r10.g578462f
 pkgrel=1
 pkgdesc="Administration tool for IP sets"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('ipset')
 backup=('etc/ipset.conf')
 options=('staticlibs')
 source=("git://git.netfilter.org/ipset"
-        "ipset.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipset.service?h=packages/ipset")
+        "ipset.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ipset/trunk/ipset.service")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -41,6 +41,7 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/ipset.service" "$pkgdir/usr/lib/systemd/system/ipset.service"
+  install -Dm644 "$srcdir/ipset.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 /dev/null "$pkgdir/etc/ipset.conf"
+  install -Dm644 "utils/ipset_bash_completion/ipset" -t "$pkgdir/usr/share/bash-completion/completions"
 }
