@@ -3,12 +3,15 @@
 
 pkgname=brother-mfc-l3770cdw
 pkgver=1.0.2
-pkgrel=0
+pkgrel=1
 pkgdesc='LPR and CUPS drivers for the Brother MFC-L3770CDW'
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en/index.html'
 license=('custom:brother' 'GPL')
 depends=('cups')
+if [[ $CARCH = x86_64 ]]; then
+    depends+=('lib32-expat' 'lib32-gcc-libs')
+fi
 makedepends=('perl' 'tar')
 install='brother-mfc-l3770cdw.install'
 source=('https://download.brother.com/welcome/dlf103935/mfcl3770cdwpdrv-1.0.2-0.i386.deb')
