@@ -1,7 +1,7 @@
 pkgbase = mtk
 	pkgdesc = MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	license = LGPL
 	depends = java-environment

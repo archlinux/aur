@@ -2,7 +2,7 @@
 pkgname=mtk
 pkgver=1.0.0
 
-pkgrel=5
+pkgrel=6
 pkgdesc="MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit
 (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)"
 arch=( 'any' )
@@ -40,5 +40,8 @@ package() {
     mv mtk "$pkgdir/usr/bin"
     mv rift "$pkgdir/usr/bin"
     mv pseudocode "$pkgdir/usr/bin"
+    chmod +x "$pkgdir/usr/bin/mtk"
+    chmod +x "$pkgdir/usr/bin/rift"
+    chmod +x "$pkgdir/usr/bin/pseudocode"
     cp -rf . "$pkgdir/usr/lib/mtk-libs"
 }
