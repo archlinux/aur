@@ -7,7 +7,7 @@ pkgdesc="ConnectivePHP -- PHP support module for ConnectiveHTTP"
 arch=( 'any' )
 url=""
 license=('GPL')
-groups=()
+groups=( "connective-server" )
 depends=( 'java-environment' 'connective-http' 'php-cgi' )
 makedepends=( 'gradle>=6.7' 'cq' )
 optdepends=()
