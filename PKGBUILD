@@ -3,7 +3,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libogg
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Ogg bitstream and framing library (android)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.xiph.org/releases/ogg/libogg-${pkgver}.tar.gz")
-sha256sums=('fe5670640bd49e828d64d2879c31cb4dde9758681bb664f9bdbf159a01b0c76e')
+md5sums=('3267127fe8d7ba77d3e00cb9d7ad578d')
 
 prepare() {
     source android-env ${_android_arch}
