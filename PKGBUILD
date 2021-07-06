@@ -8,7 +8,7 @@ url="https://github.com/Soundux/Soundux"
 license=('GPL3')
 depends=('pulseaudio' 'webkit2gtk' 'libwnck3' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend')
-makedepends=('git' 'cmake' 'ninja' 'pipewire')
+makedepends=('cmake' 'ninja' 'pipewire')
 source=("https://github.com/Soundux/Soundux/releases/download/$pkgver/soundux-$pkgver.tar.gz")
 sha256sums=('017003fc96f49df30575975f3904c0d8a500e325a9d2bca8c3dc69fed0cab0a7')
 
@@ -26,7 +26,7 @@ package() {
   # install binary symlink
   mkdir -p "${pkgdir}/usr/bin/"
   ln -sf /opt/soundux/soundux "${pkgdir}/usr/bin/soundux"
-  
+
   # install doc
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/Soundux/README.md"
   # install license

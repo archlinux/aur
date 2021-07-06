@@ -5,7 +5,6 @@ pkgbase = soundux
 	url = https://github.com/Soundux/Soundux
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pipewire
