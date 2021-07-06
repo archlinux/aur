@@ -2,9 +2,7 @@
 pkgname=ctc
 pkgver=1.0.0
 
-_cyanversion=1.0.0.A14 # Needed to find the right version ZIP
-
-pkgrel=5
+pkgrel=6
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -20,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://aerialworks.ddns.net/maven/org/asf/cyan/CyanLoader-Sources/$_cyanversion/CyanLoader-Sources-$_cyanversion-full.zip")
+source=("git+https://aerialworks.ddns.net/ASF/Cyan.git")
 noextract=()
-md5sums=('11c0b71dfe23a153ec95ff2d548886d1')
+md5sums=('SKIP')
 
 build() {
     rm settings.lite.gradle
@@ -34,7 +32,6 @@ include('CyanCore')
 include('CyanUtil')
 include('MTK')
 include('Fluid')
-include('Cornflower')
 include('MtkCLI')
 include('ClassTrust')
 include('TrustExplorer')
