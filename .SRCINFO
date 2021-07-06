@@ -1,6 +1,6 @@
 pkgbase = duplicity-git
 	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.
-	pkgver = 0.8.19.dev85
+	pkgver = 0.8.21.dev6
 	pkgrel = 1
 	url = https://www.nongnu.org/duplicity/
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = duplicity-git
 	md5sums = SKIP
 
 pkgname = duplicity-git
-

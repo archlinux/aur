@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=duplicity-git
-pkgver=0.8.19.dev85
+pkgver=0.8.21.dev6
 pkgrel=1
 pkgdesc='A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.'
 arch=('x86_64')
