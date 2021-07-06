@@ -1,0 +1,17 @@
+pkgbase = xfce4-dxreminders-plugin
+	pkgdesc = Reminders, date and time plugin for the Xfce4 panel
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dxreminders.dxsolutions.org/plugin/
+	install = xfce4-dxreminders-plugin.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = xfce4-panel
+	depends = dxreminders>=1.20.0
+	source = https://files.dxsolutions.org/xfce4-dxreminders-plugin-1.0.0.tar.gz
+	md5sums = 91f813f5377b0548b5513aab52b99102
+
+pkgname = xfce4-dxreminders-plugin
+
