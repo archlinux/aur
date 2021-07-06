@@ -2,21 +2,16 @@
 
 
 pkgname=getmail6-git
-_pkgname="${pkgname%-git}"
+_name="${pkgname%-git}"
 
 epoch=1
-pkgver() {
-  cd "$_pkgname"
-  printf '%s.r%s.%s' \
-    "$(git tag -l | sed -r 's/v?([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-pkgver=6.17.r504.78375eb
+pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/-/.r/;s/-g/./'; }
+pkgver=6.18.r1.9d15886
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
 arch=('any')
-url="https://$_pkgname.org"
+url="https://$_name.org"
 license=('GPL2')
 
 provides=("getmail=$pkgver" "${pkgname%-git}")
@@ -28,18 +23,18 @@ optdepends=('python-keyring: secure password store'
             'python-keyrings-alt: alternative backends')
 
 changelog=CHANGELOG
-source=("git+https://github.com/$_pkgname/$_pkgname.git")
+source=("git+https://github.com/$_name/$_name.git")
 b2sums=('SKIP')
 
 
 build() {
-  cd "$_pkgname"
+  cd "$_name"
   python setup.py build
 }
 
 package() {
-  cd "$_pkgname"
-  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  cd "$_name"
+  PYTHONHASHSEED=0 python setup.py install --skip-build --optimize=1 --root="$pkgdir"
 }
 
 
