@@ -1,15 +1,14 @@
 pkgbase = advent
 	pkgdesc = WELCOME TO ADVENTURE!!
 	pkgver = 0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.russotto.net/~mrussotto/ADVENT/
-	arch = i686
+	arch = i386
 	arch = x86_64
 	license = none
-	optdepends = bsd-games: for crowther and woods' adventure
-	source_i686 = https://archive.org/download/adv-0/advent-i686.tar.gz
-	md5sums_i686 = 66e3565d19c67be525ff32affbd104af
-	source_x86_64 = https://archive.org/download/adv-0/advent-x86_64.tar.gz
-	md5sums_x86_64 = 24fe4965f8c8fa57ed3d95e14815d6e5
+	makedepends = g77
+	depends = libf2c
+	source = https://www.ifarchive.org/if-archive/games/source/adv_crowther.zip
+	md5sums = 705272719b0ddf0248385ec492ddbe51
 
 pkgname = advent

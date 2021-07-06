@@ -3,27 +3,34 @@
 
 pkgname=advent
 pkgver=0
-pkgrel=4
+pkgrel=5
 pkgdesc="WELCOME TO ADVENTURE!!"
-arch=('i686' 'x86_64')
+arch=('i386' 'x86_64')
 url='http://www.russotto.net/~mrussotto/ADVENT/'
 license=('none')
-optdepends=("bsd-games: for crowther and woods' adventure")
-source_i686=("https://archive.org/download/adv-0/advent-i686.tar.gz")
-source_x86_64=("https://archive.org/download/adv-0/advent-x86_64.tar.gz")
-md5sums_i686=('66e3565d19c67be525ff32affbd104af')
-md5sums_x86_64=('24fe4965f8c8fa57ed3d95e14815d6e5')
+depends=('libf2c')
+makedepends=('g77')
+
+source=("https://www.ifarchive.org/if-archive/games/source/adv_crowther.zip")
+md5sums=('705272719b0ddf0248385ec492ddbe51')
+
+build() {
+  cd "${srcdir}"/f77
+  g77 -o advf4-11 -finit-local-zero advf4-11.f advsup.f
+  g77 -o advf4-31 -finit-local-zero advf4-31.f advsup.f
+}
 
 package() {
-  cd "$srcdir/advent"
+  cd "${srcdir}"/f77
+  install -Dm755 advf4-11 "${pkgdir}/usr/share/${pkgname}/advf4-11"
+  install -Dm644 advdat11.dat "${pkgdir}/usr/share/${pkgname}/advdat11.dat"
 
-  install -Dm644 adv.dat $pkgdir/usr/share/$pkgname/adv.dat
-  install -Dm755 advent $pkgdir/usr/share/$pkgname/$pkgname
-  install -Dm755 libg2c.so.0 $pkgdir/usr/lib/libg2c.so.0
+  install -Dm755 advf4-31 "${pkgdir}/usr/share/${pkgname}/advf4-31"
+  install -Dm644 advdat31.dat "${pkgdir}/usr/share/${pkgname}/advdat31.dat"
 
-  cd $srcdir
-  echo '#!/bin/sh' > $pkgname.sh
-  echo 'cd /usr/share/advent' >> $pkgname.sh
-  echo './advent' >> $pkgname.sh
-  install -Dm755 $pkgname.sh $pkgdir/usr/bin/$pkgname
+  cd "${srcdir}"
+  echo '#!/bin/sh' > "${pkgname}".sh
+  echo 'cd /usr/share/advent' >> "${pkgname}".sh
+  echo './advf4-11' >> "${pkgname}".sh
+  install -Dm755 "${pkgname}".sh "${pkgdir}/usr/bin/${pkgname}"
 }
