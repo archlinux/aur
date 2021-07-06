@@ -1,14 +1,14 @@
 # Maintainer: Stefan Eekhof <stefaneekhof@gmail.com>
-pkgname=saltedauth
+pkgname=connective-php
 pkgver=1.0.0
 
-pkgrel=2
-pkgdesc="SaltedAuth -- More secure credential manager for Connective http servers."
+pkgrel=1
+pkgdesc="ConnectivePHP -- PHP support module for ConnectiveHTTP"
 arch=( 'any' )
 url=""
 license=('GPL')
 groups=()
-depends=( 'java-environment' 'connective-http' )
+depends=( 'java-environment' 'connective-http' 'php-cgi' )
 makedepends=( 'gradle>=6.7' 'cq' )
 optdepends=()
 provides=()
@@ -18,23 +18,20 @@ backup=()
 options=()
 install=main.install
 changelog=
-source=("git+https://aerialworks.ddns.net/ASF/SaltedAuth.git")
+source=("git+https://aerialworks.ddns.net/ASF/ConnectivePHP.git")
 noextract=()
 md5sums=('SKIP')
 
 build() {
-    cd SaltedAuth
+    cd ConnectivePHP
     chmod +x gradlew createlocalserver.sh
     ./createlocalserver.sh
     gradle build
 }
 
 package() {
-    cd SaltedAuth
+    cd ConnectivePHP
     
-    mkdir -p "$pkgdir/usr/lib/salted"
-    echo org.asf.connective.auth.SaltedAuthCredTool > "$pkgdir/usr/lib/salted/.credtool.target"
-    echo /usr/lib/salted/SaltedAuth.jar >> "$pkgdir/usr/lib/salted/.credtool.target"
-    
-    cp build/libs/SaltedAuth-*.jar "$pkgdir/usr/lib/salted/SaltedAuth.jar"
+    mkdir -p "$pkgdir/usr/lib/connective-php"    
+    cp build/libs/ConnectivePHP-*.jar "$pkgdir/usr/lib/connective-php/ConnectivePHP.jar"
 }
