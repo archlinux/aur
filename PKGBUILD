@@ -25,7 +25,9 @@ package() {
     tar xf data.tar.xz -C "${pkgdir}"
     install -d "${pkgdir}/opt/${_pkgname}"
     mv "${pkgdir}/usr/lib/github-desktop" "${pkgdir}/opt/"
+
     rm "${pkgdir}/usr/share/applications/github-desktop.desktop"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    printf "#!/bin/sh\n\n/opt/${_pkgname}/github-desktop \"\$@\"\n" | install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}"
+
+    ln -sf "/opt/$_pkgname/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
