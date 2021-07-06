@@ -54,7 +54,7 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-#_makenconfig=y
+_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -65,6 +65,7 @@ _branch=5.x
 xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
+_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
@@ -75,14 +76,16 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${pkgver}.tar."{xz,sign}
-        #config
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+        config
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
         sphinx-workaround.patch
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
-        "0002-UKSM.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.13/uksm-patches/0001-UKSM-for-5.13.patch"
-        "0003-btrfs.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.13/btrfs-patches/0001-btrfs-patches.patch")
+        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0003-btrfs.patch::${_patches_url}/btrfs-patches/0001-btrfs-patches.patch"
+        "0005-bfq.patch::${_patches_url}/bfq-patches/0001-bfq-patches.patch"
+        )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -96,13 +99,14 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        #'SKIP'
+        'SKIP'
         'b5342310408354006a2e637a08bee0beb5e653e771f2124197cf403b9ece56d96dfb0b0732311e2b6010df7933561fdf31b980f25d27b2e8326382a2428ed96d'
         '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
         '6dd7c1b3a6246c2892316cd07d0bcc5e5528955b841e900a88e48c0a6b79861034fbe66bea1d5ee610668919f5d10f688ec68aa6f4edb98d30c7f9f6241b989d'
         '5897022ff8b7a4f2eabb9788569e5a1b034ccad15a632ea9bfe1618714a02072dbca9e7467fe51337c5dbc46b218453e358461ceb110d385953622490f520a75'
-        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
-        '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416')
+        '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
+        '915d36601cb7a1f3d342a29f54435c406304a13725e86788129039276ddbbfa0cf2d8331cdad7f451c9ce4646bee7f45f191ead971b56353ee01d6afd1d5d2e2'
+        '0daf3c7756631a784973c9aace087169aeada85e254c66ea5218a9c555020c47df0fa99b67fea270cd01acab4bcb069d54ce07786dd210020d393ca4a2e5ed8e')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -156,25 +160,7 @@ prepare() {
   # Put the file "myconfig" at the package folder to use this feature
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
-  if [ -f "${startdir}/myconfig" ]; then
-    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
-      # myconfig is a full config file. Replacing default .config
-      msg2 "Using user CUSTOM config..."
-      cp -f "${startdir}"/myconfig .config
-    else
-      # myconfig is a partial file. Applying every line
-      msg2 "Applying configs..."
-      cat "${startdir}"/myconfig | while read -r _linec ; do
-        if echo "$_linec" | grep "scripts/config" ; then
-          set -- $_linec
-          "$@"
-        else
-          warning "Line format incorrect, ignoring..."
-        fi
-      done
-    fi
-    echo
-  fi
+  cp ../config .config
 
   make olddefconfig
 
@@ -201,7 +187,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make all
+  make -j40 all
 }
 
 _package() {
