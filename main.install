@@ -11,6 +11,7 @@ post_install() {
     fi
 
     mkdir "$serverDir/coremodules" -p
+    chown connective:connective "$serverDir/coremodules" -R
     cp "/usr/lib/connective-https/ConnectiveHTTPS.jar" "$serverDir/coremodules/ConnectiveHTTPS.jar" -f
     chown connective "$serverDir/coremodules/ConnectiveHTTPS.jar"
 }
