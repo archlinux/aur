@@ -74,6 +74,7 @@ _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
 _gcc_more_v=20210610
+_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -93,9 +94,9 @@ source=(
   0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
   0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
   0007-x86-crash-remove-crash_reserve_low_1M.patch
-  0008-UKSM.patch
-  0009-bbr2.patch
-  0010-btrfs.patch
+  "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-5.12.patch"
+  "0009-bbr2.patch::${_patches_url}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
+  "0010-btrfs.patch::${_patches_url}/btrfs-patches-v13/0001-btrfs-patches.patch"
   "0011-block.patch::${_patches_url}/block-patches-v6/0001-block-patches.patch"
   "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
 )
