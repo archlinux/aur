@@ -1,19 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iperf-git
-pkgver=r368.g51239ca
+pkgver=r2057.g029d09f
 pkgrel=1
 pkgdesc="A tool to measure maximum TCP bandwidth"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/iperf2/"
 license=('custom')
-depends=('glibc')
+depends=('gcc-libs')
 makedepends=('git')
 provides=('iperf')
 conflicts=('iperf')
 source=("git+https://git.code.sf.net/p/iperf2/code"
-        "iperf-tcp.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/iperf-tcp.service?h=packages/iperf"
-        "iperf-udp.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/iperf-udp.service?h=packages/iperf")
+        "iperf-tcp.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/iperf/trunk/iperf-tcp.service"
+        "iperf-udp.service::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/iperf/trunk/iperf-udp.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -31,7 +31,9 @@ build() {
   cd "code"
 
   autoreconf -fi
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr" \
+    --enable-fastsampling
   make
 }
 
@@ -39,8 +41,7 @@ package() {
   cd "code"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/iperf/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/iperf"
 
-  install -Dm644 "$srcdir/iperf-tcp.service" "$pkgdir/usr/lib/systemd/system/iperf-tcp.service"
-  install -Dm644 "$srcdir/iperf-udp.service" "$pkgdir/usr/lib/systemd/system/iperf-udp.service"
+  install -Dm644 "$srcdir"/iperf-{tcp,udp}.service -t "$pkgdir/usr/lib/systemd/system"
 }
