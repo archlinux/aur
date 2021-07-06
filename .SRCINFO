@@ -44,10 +44,10 @@ pkgbase = apache-git
 	backup = etc/httpd/conf/magic
 	backup = etc/logrotate.d/httpd
 	source = git+https://github.com/apache/httpd.git
-	source = apache.tmpfiles.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/apache.tmpfiles.conf?h=packages/apache
-	source = arch.layout::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arch.layout?h=packages/apache
-	source = httpd.logrotate::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.logrotate?h=packages/apache
-	source = httpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.service?h=packages/apache
+	source = apache.tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/apache.tmpfiles.conf
+	source = arch.layout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/arch.layout
+	source = httpd.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.logrotate
+	source = httpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -55,4 +55,3 @@ pkgbase = apache-git
 	sha256sums = SKIP
 
 pkgname = apache-git
-

@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apache-git
-pkgver=2.5.0.alpha.r1107.gbdff1daffc
-pkgrel=2
+pkgver=2.5.0.alpha.r2255.g2d34278612
+pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
 url="https://httpd.apache.org/"
@@ -15,6 +15,7 @@ optdepends=('brotli: for mod_brotli module'
             'libxml2: for mod_proxy_html, mod_xml2enc modules'
             'lua: for mod_lua module'
             'lynx: apachectl status'
+            'perl: for apxs and dbmmanage'
             'uwsgi: for mod_proxy_uwsgi module')
 provides=('apache')
 conflicts=('apache')
@@ -24,10 +25,10 @@ backup=('etc/httpd/conf/httpd.conf'
         'etc/httpd/conf'/{mime.types,magic}
         'etc/logrotate.d/httpd')
 source=("git+https://github.com/apache/httpd.git"
-        "apache.tmpfiles.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/apache.tmpfiles.conf?h=packages/apache"
-        "arch.layout::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arch.layout?h=packages/apache"
-        "httpd.logrotate::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.logrotate?h=packages/apache"
-        "httpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/httpd.service?h=packages/apache")
+        "apache.tmpfiles.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/apache.tmpfiles.conf"
+        "arch.layout::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/arch.layout"
+        "httpd.logrotate::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.logrotate"
+        "httpd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/apache/trunk/httpd.service")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -58,7 +59,8 @@ pkgver() {
 build() {
   cd "httpd"
 
-  ./buildconf --with-apr=apr-1-config
+  ./buildconf \
+    --with-apr=apr-1-config
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \
