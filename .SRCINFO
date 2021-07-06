@@ -1,7 +1,7 @@
 pkgbase = vim-rhubarb-git
 	pkgdesc = Github extension for vim-fugitive
-	pkgver = r74.5130596
-	pkgrel = 2
+	pkgver = r85.2590324
+	pkgrel = 1
 	url = https://github.com/tpope/vim-rhubarb
 	install = vimdoc.install
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = vim-rhubarb-git
 	sha256sums = SKIP
 
 pkgname = vim-rhubarb-git
-
