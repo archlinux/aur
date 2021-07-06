@@ -1,6 +1,6 @@
 pkgbase = lain-git
 	pkgdesc = Layouts, asynchronous widgets and utilities for Awesome WM
-	pkgver = 1741.6b3bdca
+	pkgver = 1765.f55ba48
 	pkgrel = 1
 	url = https://github.com/lcpz/lain
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = lain-git
 	optdepends = curl: for IMAP, MPD and weather widgets
 	provides = lain
 	conflicts = lain
-	source = lain-1741.6b3bdca.zip::https://github.com/lcpz/lain/archive/6b3bdca.zip
+	source = lain-1765.f55ba48.zip::https://github.com/lcpz/lain/archive/f55ba48.zip
 	sha256sums = SKIP
 
 pkgname = lain-git
-
