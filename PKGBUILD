@@ -1,13 +1,13 @@
 # Maintainer: Edvin Alvarado <ealvarado301 g-mail>
 pkgname=nanominer
-pkgver=3.3.5
+pkgver=3.3.6
 pkgrel=1
 pkgdesc="nanopool mining software"
 arch=('any')
 license=('custom:nanopool')
 install=$pkgname.install
 url='https://github.com/nanopool/nanominer/releases'
-sha256sums=("dff2c008b0571e28db46ff63ff4bf057401737c2332a31bae41e7e7bf6ab56b2"
+sha256sums=("df4342a8e5a4ab813a3c6941e6f286be698fe14751f36c8fc1170ca68c88971c"
 			"SKIP")
 
 prepare() {
@@ -34,7 +34,7 @@ prepare() {
 	done
 }
 
-source=("https://github.com/nanopool/$pkgname/releases/download/$pkgver/$pkgname-linux-$pkgver.tar.gz"
+source=("https://github.com/nanopool/$pkgname/releases/download/v$pkgver/$pkgname-linux-$pkgver.tar.gz"
 		"https://github.com/nanopool/$pkgname/raw/master/Terms%20of%20Use%20Nanominer.pdf")
 
 package() {
