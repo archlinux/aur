@@ -39,8 +39,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Dsneedacity_use_wxwidgets=local \
-    sneedacity_use_ffmpeg:STRING=loaded \
+    -Daudacity_use_wxwidgets=local \
+    audacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
   make .
