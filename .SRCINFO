@@ -1,13 +1,13 @@
 pkgbase = makedeb
 	pkgdesc = Create Debian archives from PKGBUILDs (stable release)
-	pkgver = 5.3.2
-	pkgrel = 2
+	pkgver = 5.8.3
+	pkgrel = 1
 	url = https://github.com/hwittenborn/makedeb
 	arch = any
 	license = GPL3
 	depends = pacman
 	depends = dpkg
-	source = https://proget.hunterwittenborn.com/debian-feeds/makedeb/main/makedeb/all/makedeb_all_5.3.2-2.deb
+	source = https://proget.hunterwittenborn.com/debian-feeds/makedeb/main/makedeb/all/makedeb_all_5.8.3-1.deb
 	sha256sums = SKIP
 
 pkgname = makedeb
