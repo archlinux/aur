@@ -1,7 +1,7 @@
 pkgbase = borg-bin
 	pkgdesc = Borg backup - prebuilt standalone binary
 	pkgver = 1.1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary
 	arch = x86_64
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = borg-bin
 	sha256sums_x86_64 = fe1caaeee9354ead27379b8235a92eb1885d7948126d2edd49e60a2b85d4bcee
 
 pkgname = borg-bin
-

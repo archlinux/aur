@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=borg-bin
 pkgver=1.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Borg backup - prebuilt standalone binary"
 url="https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary"
 license=("BSD")
