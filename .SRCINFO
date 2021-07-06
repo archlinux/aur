@@ -1,14 +1,16 @@
 pkgbase = clpm
 	pkgdesc = Common Lisp Package Manager
-	pkgver = 0.3.4
+	pkgver = 0.4.0_alpha.3
 	pkgrel = 1
 	url = https://gitlab.common-lisp.net/clpm/clpm
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	depends = sbcl
 	provides = clpm
-	source = clpm::git+https://gitlab.common-lisp.net/clpm/clpm.git#tag=v0.3.4
-	md5sums = SKIP
+	source_x86_64 = https://files.clpm.dev/clpm/clpm-0.4.0-alpha.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 80b1b0412547d73ecad101720dcba0ec73ee276a2c76f2415e132658e5eecca7
+	source_aarch64 = https://files.clpm.dev/clpm/clpm-0.4.0-alpha.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7bd99d55c83dcc926d74aea23b64a541ac7d9ed86656d64e75fd8314dd450ece
 
 pkgname = clpm
-
