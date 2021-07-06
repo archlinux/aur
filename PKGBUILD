@@ -69,7 +69,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.14
-pkgrel=2
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -178,6 +178,22 @@ prepare() {
     scripts/config --enable CONFIG_TCP_CONG_BBR2
     scripts/config --enable CONFIG_DEFAULT_BBR2
     scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+
+    echo "Disabling Deadline I/O scheduler and Kyber I/O scheduler"
+    scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+
+    echo "Enable zram zstd"
+    scripts/config --enable  CONFIG_ZRAM_DEF_COMP_ZSTD
+    scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
+
+    echo "Enabling multigenerational LRU..."
+    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+    scripts/config --enable CONFIG_LRU_GEN
+    scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --enable CONFIG_LRU_GEN_ENABLED
+    scripts/config --disable CONFIG_LRU_GEN_STATS
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"

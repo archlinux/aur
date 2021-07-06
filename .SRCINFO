@@ -1,6 +1,6 @@
 pkgbase = linux-ck-uksm-cjktty
 	pkgver = 5.12.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
