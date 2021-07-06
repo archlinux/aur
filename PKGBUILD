@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -9,25 +9,27 @@ url="https://sentry.io/for/python"
 license=('BSD')
 depends=('python-urllib3' 'python-certifi')
 makedepends=('python-setuptools')
-optdepends=('python-flask: adds support for the Flask Web Framework'
-            'python-blinker'
-            'python-bottle: adds support for the Bottle Web Framework'
-            'python-falcon: adds support for the Falcon Web Framework'
-            'python-django: adds support for the Django Web Framework'
-            'python-sanic: adds support for the Sanic Web Framework'
-            'python-celery: adds support for the Celery Task Queue System'
+optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
+            'python-asgiref: adds support for ASGI'
             'python-apache-beam: experimental BeamIntegration'
-            'python-rq: adds support for the RQ Job Queue System'
-            'python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
-            'python-tornado: adds support for the Tornado Web Framework'
-            'python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs'
+            'python-bottle: adds support for the Bottle Web Framework'
+            'python-celery: adds support for the Celery Task Queue System'
+            'python-chalice: for the Chalice web framework for AWS Lambda'\
+            'python-django: adds support for the Django Web Framework'
+            'python-falcon: adds support for the Falcon Web Framework'
+            'python-flask: adds support for the Flask Web Framework'
+            'python-httpx: Httpx integration'
+            'python-pyramid: adds support for the Pyramid Web Framework'
             'python-pyspark: adds support for the Python API for Apache Spark'
+            'python-rq: adds support for the RQ Job Queue System'
+            'python-sanic: adds support for the Sanic Web Framework'
+            'python-tornado: adds support for the Tornado Web Framework'
+            'python-trytond: adds support for the Tryton Framework Server'
+            'python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs'
             'python-pure_eval: for richer stacktraces & additional variables'
-            'python-executing: for richer stacktraces & better function names'
-            'python-asttokens'
-            'python-chalice: for the Chalice web framework for AWS Lambda')
+            'python-executing: for richer stacktraces & better function names')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c1227d38dca315ba35182373f129c3e2722e8ed999e52584e6aca7d287870739')
+sha256sums=('9907adbdd30a55b818914512cc143e6beae0bb3ba78b2649f4b079752eb0e424')
 
 build() {
 	cd "$_name-$pkgver"
