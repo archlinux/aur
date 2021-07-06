@@ -1,7 +1,7 @@
 pkgbase = syncthing-discosrv
 	pkgdesc = Discover server for the syncthing P2P synchronization utility
-	pkgver = 1.17.0
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	epoch = 1
 	url = http://syncthing.net
 	install = syncthing-discosrv.install
@@ -14,10 +14,10 @@ pkgbase = syncthing-discosrv
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = https://github.com/syncthing/syncthing/archive/v1.17.0.tar.gz
+	source = https://github.com/syncthing/syncthing/archive/v1.18.0.tar.gz
 	source = syncthing-discosrv.service
 	source = syncthing-discosrv.tmpfiles.conf
-	sha512sums = 6ccc43bf21ce20543031e070b14e5383a1bee6a0c6df5a0e1a914d2fae51f04d7776f715e4874c2b854798cc89236028955be6a462574bdafb6bc9dd56bce854
+	sha512sums = d8b3de5b4511c5e5a979abb5ca3ba8880e3fd3dd490123d80135d65067bcc3bd16513d2584b1f2427d761923de34289ba68731caef3923190ce0945177dd484f
 	sha512sums = f67a6051a1bbe9d3b562caaaecfc4829afa25cfddc5d5dd70dc8170bddc9d938fd85ab89b1c198f074f323d8e385d9fa8bc3a9bfe53594629dbfbf984c2e7015
 	sha512sums = 28b0bb6a6f2fa536ec8cb887cfebf4706be25af5e29da39e2e3776daeeeb48f75fb5be255472920355948d8905830342866e89299facd626ddf8a658d84faf27
 
