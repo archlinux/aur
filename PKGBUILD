@@ -2,7 +2,7 @@
 pkgname=saltedauth
 pkgver=1.0.0
 
-pkgrel=3
+pkgrel=4
 pkgdesc="SaltedAuth -- More secure credential manager for Connective http servers."
 arch=( 'any' )
 url=""
@@ -36,5 +36,5 @@ package() {
     echo org.asf.connective.auth.SaltedAuthCredTool > "$pkgdir/usr/lib/salted/.credtool.target"
     echo /usr/lib/salted/SaltedAuth.jar >> "$pkgdir/usr/lib/salted/.credtool.target"
     
-    cp build/libs/SaltedAuth-*.jar "$pkgdir/usr/lib/salted/SaltedAuth.jar"
+    mv build/libs/SaltedAuth-*.jar "$pkgdir/usr/lib/salted/SaltedAuth.jar"
 }
