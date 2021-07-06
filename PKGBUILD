@@ -26,12 +26,12 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
 license=('GPL')
-depends=('qtutilities-qt6' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
+depends=('qtutilities-qt6' 'boost-libs' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == none ]] && depends+=('qt6-base')
 [[ $_webview_provider == webkit ]] && depends+=('qt6-webkit')
 [[ $_webview_provider == webengine ]] && depends+=('qt6-webengine')
@@ -39,13 +39,13 @@ depends=('qtutilities-qt6' 'qt6-svg' 'openssl' 'desktop-file-utils' 'xdg-utils')
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('bd540efd58c3760db8953c230ab9558746700272da59dc9075a66b05b0a50c50')
+sha256sums=('82a3ca453dd74bd2d73b49a5288eb52683ce26fbc7d4a2f6445aa57df6dc2f35')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
