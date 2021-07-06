@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 
 _name="luxcorerender"
 pkgname=${_name}-git
-pkgver=2.5.r111.gad8e42783
+pkgver=2.5.r177.gd8163ffda
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
@@ -60,6 +60,10 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}/${_name}" apply -v "${srcdir}"/*.patch
+  #fix gcc:11 missing header
+  grep -lRE "is(nan|inf)" "${srcdir}/${_name}"/{include,src}|xargs sed -E 's/is(nan|inf)/std::&/g' -i
+  #fix fmt::format_system_error string -> const char *
+  sed '/format_system_error/s/msg/msg.c_str()/' -i "${srcdir}/${_name}"/deps/spdlog-1.8.0/include/spdlog/common-inl.h
 }
 
 build() {
