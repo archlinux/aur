@@ -1,6 +1,6 @@
 pkgbase = clasp-cl-git
 	pkgdesc = Bringing Common Lisp and C++ Together
-	pkgver = 0.4.2.r4358.g19fef908c
+	pkgver = 0.4.2.r4453.gee36ba131
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
@@ -23,9 +23,18 @@ pkgbase = clasp-cl-git
 	provides = common-lisp
 	provides = clasp-cl
 	provides = cando
+	options = !strip
 	source = git://github.com/clasp-developers/clasp.git
+	source = git://github.com/clasp-developers/seqan-clasp.git
+	source = git://github.com/cando-developers/cando.git
+	source = https://github.com/quicklisp/quicklisp-client/archive/refs/tags/version-2021-02-13.tar.gz
 	source = wscript.config
+	source = clasp.sh
 	sha512sums = SKIP
-	sha512sums = d58f230bdd46e814d807fccb8cfc84c742b77f08bad219159d2dc70a6b867d90ff0d33fcb9d4bfbbfed58a4aaef77d815e9274f12d55b1ff041910dc788b28a0
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 8efec9d46f0008c9f2fab387837f5a02d60ebb9f4a83106142ae954bc322b99bd48f9e91e2107dda188d679e27ddb5f48e444adfa98e6c15cf454923dfccadd5
+	sha512sums = 1924197ff79d93f4683f3a818f1b5f7f9f26c107dbe6b6ea74a810608e38570bba50852fc0636753bedfee1e0dff2abbfe2394c721014de7d66350ca14aacdec
+	sha512sums = 1624ca5ba9502afbcfe8c603590c884c3081162a94f86eded74ec8f1e2a1a2ca03694e2bef4190473b6c34230a478b2e95a87b5c458ff60028ca9b740cc173cd
 
 pkgname = clasp-cl-git
