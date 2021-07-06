@@ -2,7 +2,7 @@
 pkgname=connective-http
 pkgver=1.0.0
 
-pkgrel=15
+pkgrel=16
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
@@ -20,7 +20,7 @@ install=main.install
 changelog=
 source=("git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git" "scripts-and-configs.tar.gz")
 noextract=()
-md5sums=('SKIP' '19cb4daffe13ce6251261c11006704e5')
+md5sums=('SKIP' 'ae6c8a62f6b863a86b7981883351f0dd')
 
 build() {
     cd ConnectiveStandalone
