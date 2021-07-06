@@ -1,19 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=logrotate-git
-pkgver=3.14.0.r18.g829ebc8
+pkgver=3.18.1.r20.gdcb05f6
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
 url="https://github.com/logrotate/logrotate"
 license=('GPL2')
-depends=('glibc' 'acl' 'popt' 'gzip')
+depends=('glibc' 'acl' 'gzip' 'popt')
 makedepends=('git')
 provides=('logrotate')
 conflicts=('logrotate')
 backup=('etc/logrotate.conf')
 source=("git+https://github.com/logrotate/logrotate.git"
-        "logrotate.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/logrotate.conf?h=packages/logrotate")
+        "logrotate.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/logrotate/trunk/logrotate.conf")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -28,7 +28,9 @@ build() {
   cd "logrotate"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --sbindir="/usr/bin" \
+  ./configure \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
     --with-compress-command="/usr/bin/gzip" \
     --with-uncompress-command="/usr/bin/gunzip" \
     --with-default-mail-command="/usr/bin/mail"
@@ -46,11 +48,11 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir/logrotate.conf" "$pkgdir/etc/logrotate.conf"
+  install -Dm644 "$srcdir/logrotate.conf" -t "$pkgdir/etc"
   install -dm755 "$pkgdir/etc/logrotate.d"
 
-  install -Dm644 "examples/logrotate.timer" "$pkgdir/usr/lib/systemd/system/logrotate.timer"
-  install -Dm644 "examples/logrotate.service" "$pkgdir/usr/lib/systemd/system/logrotate.service"
+  install -Dm644 "examples/logrotate.timer" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "examples/logrotate.service" -t "$pkgdir/usr/lib/systemd/system"
 
   install -dm755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
   ln -s ../logrotate.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/logrotate.timer"
