@@ -2,7 +2,7 @@
 # Former maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=binaryen-git
-pkgver=r5262.gfe56186c4
+pkgver=r6565.gcdf9ee0fd
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ url="https://github.com/WebAssembly/binaryen"
 license=('apache')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
-#checkdepends=('python2')
+#checkdepends=('python')
 provides=('binaryen')
 conflicts=('binaryen')
 source=("git+https://github.com/WebAssembly/binaryen.git"
-        "binaryen.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/binaryen.sh?h=packages/binaryen")
+        "binaryen.sh::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/binaryen/trunk/binaryen.sh")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -42,7 +42,7 @@ build() {
 check() {
   cd "binaryen/_build"
 
-  #python2 ../check.py
+  #python ../check.py
 }
 
 package() {
