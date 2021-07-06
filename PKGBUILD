@@ -1,7 +1,7 @@
 # Maintainer: Neil Shepperd <nshepperd at gmail dot com>
 pkgname=cabal-static
-pkgver=3.2.0.0
-pkgrel=2
+pkgver=3.4.0.0
+pkgrel=1
 pkgdesc="The command-line interface for Cabal and Hackage. Statically linked."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://hackage.haskell.org/package/cabal-install"
@@ -11,9 +11,13 @@ makedepends=('ghc' 'ghc-static')
 provides=(cabal-install)
 conflicts=(cabal-install)
 source=("https://hackage.haskell.org/package/cabal-install-${pkgver}/cabal-install-${pkgver}.tar.gz"
-		ghc_8_10.patch)
-md5sums=('cc807bc0114eae46ccc90a4ad3bea877'
-         'c12e2b80fb4c8ae898c0f2e635f6c14a')
+		"https://raw.githubusercontent.com/haskell/cabal/f0d0594bae4f8e3e1ae1bdacef6217a4fc4e136d/bootstrap/bootstrap.py"
+		"arch-8.10.4.json"
+		"arch-8.10.5.json")
+sha256sums=('1980ef3fb30001ca8cf830c4cae1356f6065f4fea787c7786c7200754ba73e97'
+            '7e7bebde030eeadc07e3f622fe34e49dfa4e6bafd5f9edabe2bd50f190b2508e'
+            '00223c3b2d85c9817651e8139f1d99abeaf25fb0f2d97654bd281bb40c4ee4c0'
+            '41c665984a2173feba915f1fcf3a7750151b79ecacc4547e8c5a3fb6176bbdb9')
 
 # Transitive dependencies of cabal-install
 makeconflicts=(haskell-async
@@ -33,12 +37,7 @@ makeconflicts=(haskell-async
 			   haskell-zlib)
 
 prepare() {
-  cd "${srcdir}/cabal-install-$pkgver"
-  patch -Np1 -i "${srcdir}/ghc_8_10.patch" || exit 1
-}
-
-build() {
-  cd "${srcdir}/cabal-install-$pkgver"
+  cd "${srcdir}"
 
   # Detect conflicting globally installed haskell packages.
   conflicts_present=()
@@ -54,46 +53,39 @@ build() {
 	  exit 1
   fi
 
-  # Detect global environment file and move it out of the way.
-  ENV_FILE=$(echo 'main = return ()' | runghc 2>&1 | grep 'Loaded package environment from .*' | grep -o '/.*' || true)
-  if [ -f "$ENV_FILE" ]; then
-	echo "Warning: Environment file detected at ${ENV_FILE}."
-	echo "This is likely to break the build."
-	echo -n "Would you like it to be temporarily renamed for the duration? [y/n] "
-	read MOVE_ENV_FILE
-	if [ "${MOVE_ENV_FILE}" != "y" ]; then
-	  echo "Cancelled."
-	  exit 1
-	fi
-	mv -vb "${ENV_FILE}" "${ENV_FILE}.bak"
-  fi
+  test -a cabal-install || ln -s "cabal-install-$pkgver" cabal-install
+}
 
-  EXTRA_CONFIGURE_OPTS="" ./bootstrap.sh --sandbox || FAIL=true
+build() {
+  cd "${srcdir}"
 
-  # Restore default environment if we moved it.
-  if [ "${MOVE_ENV_FILE}" == "y" ]; then
-	mv -vb "${ENV_FILE}.bak" "${ENV_FILE}"
-  fi
+  GHC=$(which ghc)
 
-  # Exit with failure status if the build failed.
-  if [ "$FAIL" == "true" ]; then
+  ghcver=$($GHC -V | egrep -o 'version [0-9.]*' | egrep -o '[0-9.]*')
+
+  if ! test -a "${srcdir}"/arch-${ghcver}.json ; then
+	echo "I have not yet generated a build plan for ghc-${ghcver}."
+	echo "You could try generating one by following the instructions at <https://github.com/haskell/cabal/tree/master/bootstrap>, or leave a comment on the aur page for cabal-static."
 	exit 1
   fi
+
+  python "${srcdir}"/bootstrap.py -d "${srcdir}"/arch-${ghcver}.json -w $GHC
 }
 
 package() {
-  cd "${srcdir}/cabal-install-$pkgver"
+  cd "${srcdir}"
 
-  install -Dm755 .cabal-sandbox/bin/cabal \
-          "${pkgdir}/usr/bin/cabal"
-  gzip -c .cabal-sandbox/share/man/man1/cabal.1 \
-       > .cabal-sandbox/share/man/man1/cabal.1.gz
-  install -Dm644 .cabal-sandbox/share/man/man1/cabal.1.gz \
-          "${pkgdir}/usr/share/man/man1/cabal.1.gz"
+  install -Dm755 "${srcdir}/_build/bin/cabal" "${pkgdir}/usr/bin/cabal"
 
-  install -Dm644 LICENSE \
+  # Man pages aren't in the sdist any more?
+  # gzip -c .cabal-sandbox/share/man/man1/cabal.1 \
+  #      > .cabal-sandbox/share/man/man1/cabal.1.gz
+  # install -Dm644 .cabal-sandbox/share/man/man1/cabal.1.gz \
+  #         "${pkgdir}/usr/share/man/man1/cabal.1.gz"
+
+  install -Dm644 "${srcdir}/cabal-install-$pkgver/LICENSE" \
           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 bash-completion/cabal \
+  install -Dm644 "${srcdir}/cabal-install-$pkgver/bash-completion/cabal" \
           "${pkgdir}/usr/share/bash-completion/completions/cabal"
 }

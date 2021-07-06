@@ -1,7 +1,7 @@
 pkgbase = cabal-static
 	pkgdesc = The command-line interface for Cabal and Hackage. Statically linked.
-	pkgver = 3.2.0.0
-	pkgrel = 2
+	pkgver = 3.4.0.0
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/cabal-install
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,13 @@ pkgbase = cabal-static
 	depends = libffi
 	provides = cabal-install
 	conflicts = cabal-install
-	source = https://hackage.haskell.org/package/cabal-install-3.2.0.0/cabal-install-3.2.0.0.tar.gz
-	source = ghc_8_10.patch
-	md5sums = cc807bc0114eae46ccc90a4ad3bea877
-	md5sums = c12e2b80fb4c8ae898c0f2e635f6c14a
+	source = https://hackage.haskell.org/package/cabal-install-3.4.0.0/cabal-install-3.4.0.0.tar.gz
+	source = https://raw.githubusercontent.com/haskell/cabal/f0d0594bae4f8e3e1ae1bdacef6217a4fc4e136d/bootstrap/bootstrap.py
+	source = arch-8.10.4.json
+	source = arch-8.10.5.json
+	sha256sums = 1980ef3fb30001ca8cf830c4cae1356f6065f4fea787c7786c7200754ba73e97
+	sha256sums = 7e7bebde030eeadc07e3f622fe34e49dfa4e6bafd5f9edabe2bd50f190b2508e
+	sha256sums = 00223c3b2d85c9817651e8139f1d99abeaf25fb0f2d97654bd281bb40c4ee4c0
+	sha256sums = 41c665984a2173feba915f1fcf3a7750151b79ecacc4547e8c5a3fb6176bbdb9
 
 pkgname = cabal-static
-
