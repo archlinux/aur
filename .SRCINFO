@@ -1,9 +1,9 @@
 pkgbase = f1viewer
 	pkgdesc = TUI client for F1TV
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SoMuchForSubtlety/f1viewer
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = go
 	optdepends = mpv: play videos using mpv
@@ -14,4 +14,3 @@ pkgbase = f1viewer
 	sha256sums = 59354ef3b1ec29e28b845709558270b745ef473a086e550f09598572fb2efa62
 
 pkgname = f1viewer
-

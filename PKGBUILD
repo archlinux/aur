@@ -1,9 +1,9 @@
 # Maintainer: SoMuchForSubtlety <s0muchfrsubtlety@gmail.com>
 pkgname=f1viewer
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI client for F1TV"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/SoMuchForSubtlety/f1viewer"
 license=('GPL3')
 optdepends=('mpv: play videos using mpv'
