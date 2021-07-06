@@ -5,7 +5,8 @@ pkgbase = tutanota-desktop
 	url = https://tutanota.com
 	arch = x86_64
 	license = GPL3
-	makedepends = npm
+	makedepends = nodejs>=16
+	makedepends = npm>=7
 	depends = nss
 	depends = libappindicator-gtk3
 	depends = libnotify

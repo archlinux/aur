@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
-makedepends=('npm')
+makedepends=('nodejs>=16' 'npm>=7')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
