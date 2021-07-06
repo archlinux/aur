@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~tsdh/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ff06a0904ac0ee2367e5c54ffdc44c8323b678f411eb003b156248aba061635b')
+sha256sums=('e1cf96ae843a3f9ea7ad467fc3ae77fa981c381b324c5e5e6aebf1d69ac14d41')
 
 build() {
    cd $pkgname-v$pkgver
