@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@setuid0.dev>
 
 pkgname=phpstan
-pkgver=0.12.90
+pkgver=0.12.91
 pkgrel=1
 pkgdesc="PHP Static Analysis Tool"
 url="https://phpstan.org/"
