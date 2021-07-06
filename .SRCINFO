@@ -1,6 +1,6 @@
 pkgbase = mercurial-hg
 	pkgdesc = Distributed source control management tool
-	pkgver = r46486.d7685105e504
+	pkgver = r47463.5fa083a5ff04
 	pkgrel = 1
 	url = https://www.mercurial-scm.org/
 	arch = i686
@@ -16,9 +16,8 @@ pkgbase = mercurial-hg
 	conflicts = mercurial
 	backup = etc/mercurial/hgrc
 	source = hg+https://www.mercurial-scm.org/repo/hg
-	source = mercurial.profile::https://git.archlinux.org/svntogit/packages.git/plain/trunk/mercurial.profile?h=packages/mercurial
+	source = mercurial.profile::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mercurial/trunk/mercurial.profile
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mercurial-hg
-

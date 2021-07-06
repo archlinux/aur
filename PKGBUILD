@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mercurial-hg
-pkgver=r46486.d7685105e504
+pkgver=r47463.5fa083a5ff04
 pkgrel=1
 pkgdesc="Distributed source control management tool"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('mercurial')
 conflicts=('mercurial')
 backup=('etc/mercurial/hgrc')
 source=("hg+https://www.mercurial-scm.org/repo/hg"
-        "mercurial.profile::https://git.archlinux.org/svntogit/packages.git/plain/trunk/mercurial.profile?h=packages/mercurial")
+        "mercurial.profile::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/mercurial/trunk/mercurial.profile")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -28,7 +28,10 @@ pkgver() {
 build() {
   cd "hg"
 
-  make PURE="--rust" all
+  export PYTHONHASHSEED=0
+  make \
+    PURE="--rust" \
+    all
   make -C "contrib/chg"
 }
 
@@ -41,8 +44,16 @@ check() {
 package() {
   cd "hg"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" PURE="--rust" install
-  make DESTDIR="$pkgdir" PREFIX="/usr" -C "contrib/chg" install
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    PURE="--rust" \
+    install
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    -C "contrib/chg" \
+    install
 
   install -Dm755 contrib/{hgk,hg-ssh} -t "$pkgdir/usr/bin"
   install -Dm644 "contrib/bash_completion" "$pkgdir/usr/share/bash-completion/completions/hg"
