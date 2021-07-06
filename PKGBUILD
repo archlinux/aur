@@ -139,9 +139,8 @@ prepare() {
   # Manjaro patches
   rm ../linux510-$__commit/0103-futex.patch              # remove conflicting patches
 
-
   local _patch
-  for _patch in ../linux54-$__commit/*; do
+  for _patch in ../linux510-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
       patch -Np1 < "../linux510-$__commit/$_patch"
