@@ -3,7 +3,7 @@
 pkgbase=berry
 _pkgname=berry
 pkgname=berry-git
-_pkgver=3dc0a02
+_pkgver=fdfd800
 pkgver=git+$_pkgver
 pkgrel=1
 pkgdesc="A healthy, bite-sized window manager written over the XLib Library"
@@ -40,7 +40,7 @@ package() {
 	EXAMPLEPREFIX="/etc/xdg/berry/"
 	
 	# Set the variables and install the files.
-	make DESTDIR="${pkgdir}/" PREFIX=$PREFIX MANPREFIX=$MANPREFIX install
+	make DESTDIR="${pkgdir}/" PREFIX=$PREFIX mandir=$MANPREFIX install
 	
 	# Install the examples (sample configuration files)
 	mkdir -p "${pkgdir}/${EXAMPLEPREFIX}"
