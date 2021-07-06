@@ -1,0 +1,39 @@
+post_install() {
+    serverDir=/etc/connective-http
+    classPathFolders=( "libs/" )
+    mainType=org.asf.connective.standalone.main.ConnectiveStandalone
+    credtoolLibs=()
+    credtoolTarget=""
+    jvmArguments="-Djava.net.preferIPv4Stack=true"
+
+    if [ -f "/etc/connective-http/config.props" ]; then
+        source "/etc/connective-http/config.props"
+    fi
+
+    cp "/usr/lib/salted/.credtool.target" "$serverDir" -f
+    chown connective "$serverDir/.credtool.target"
+    
+    mkdir "$serverDir/modules" -p
+    cp "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar" -f
+    chown connective "$serverDir/modules/SaltedAuth.jar"
+       
+    cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg .modules.UserManager &>/dev/null && cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg . -s modules.UserManager.authentication-backend salted --ccfg-output --output "$serverDir"/server.ccfg
+}
+
+post_remove() {
+    serverDir=/etc/connective-http
+    classPathFolders=( "libs/" )
+    mainType=org.asf.connective.standalone.main.ConnectiveStandalone
+    credtoolLibs=()
+    credtoolTarget=""
+    jvmArguments="-Djava.net.preferIPv4Stack=true"
+
+    if [ -f "/etc/connective-http/config.props" ]; then
+        source "/etc/connective-http/config.props"
+    fi
+
+    rm -f "$serverDir/.credtool.target"
+    rm -f "$serverDir/modules/SaltedAuth.jar"
+    
+    cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg .modules.UserManager &>/dev/null && cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg . -s modules.UserManager.authentication-backend credtool --ccfg-output --output "$serverDir"/server.ccfg
+}
