@@ -5,7 +5,7 @@ pkgbase = saltedauth
 	install = main.install
 	arch = any
 	groups = connective-server
-	license = GPL
+	license = LGPL
 	makedepends = gradle>=6.7
 	makedepends = cq
 	depends = java-environment
