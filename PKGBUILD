@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wpa_supplicant-git
-pkgver=2.7.r604.g3d5cfa0f6
+pkgver=2.9.r2264.g311091eb4
 pkgrel=1
 pkgdesc="A daemon program controlling the wireless connection"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('wpa_supplicant')
 conflicts=('wpa_supplicant')
 source=("git://w1.fi/hostap.git"
-        "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/wpa_supplicant")
+        "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wpa_supplicant/trunk/config")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "$srcdir"
 
-  echo "CONFIG_OWE=y" >> "$srcdir/config"
+  cp "config" "hostap/wpa_supplicant/.config"
 }
 
 pkgver() {
@@ -33,30 +33,31 @@ pkgver() {
 build() {
   cd "hostap/wpa_supplicant"
 
-  cp "$srcdir/config" ".config"
-
   export CFLAGS="$CPPFLAGS $CFLAGS"
-  make LIBDIR="/usr/lib" BINDIR="/usr/bin"
-  make LIBDIR="/usr/lib" BINDIR="/usr/bin" eapol_test
+  make \
+    LIBDIR="/usr/lib" \
+    BINDIR="/usr/bin"
+  make \
+    LIBDIR="/usr/lib" \
+    BINDIR="/usr/bin" \
+    eapol_test
 }
 
 package() {
   cd "hostap/wpa_supplicant"
 
-  make LIBDIR="/usr/lib" BINDIR="/usr/bin" DESTDIR="$pkgdir" install
+  make \
+    LIBDIR="/usr/lib" \
+    BINDIR="/usr/bin" \
+    DESTDIR="$pkgdir" \
+    install
 
-  install -Dm755 "eapol_test" "$pkgdir/usr/bin/eapol_test"
-
-  install -d -m755 "$pkgdir/etc/wpa_supplicant"
-  install -Dm644 "wpa_supplicant.conf" "$pkgdir/usr/share/doc/wpa_supplicant/wpa_supplicant.conf"
-
-  install -Dm644 "dbus/fi.w1.wpa_supplicant1.service" "$pkgdir/usr/share/dbus-1/system-services/fi.w1.wpa_supplicant1.service"
-
+  install -Dm755 "eapol_test" -t "$pkgdir/usr/bin"
+  install -Dm644 "wpa_supplicant.conf" -t "$pkgdir/usr/share/doc/wpa_supplicant"
+  install -Dm644 "dbus/fi.w1.wpa_supplicant1.service" -t "$pkgdir/usr/share/dbus-1/system-services"
   install -Dm644 "dbus/dbus-wpa_supplicant.conf" "$pkgdir/etc/dbus-1/system.d/wpa_supplicant.conf"
-
-  install -d -m755 "$pkgdir/usr/lib/systemd/system"
-  install -m644 systemd/*.service "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "systemd"/*.service -t "$pkgdir/usr/lib/systemd/system"
 
   sed -n '/This software may/,/OF SUCH DAMAGE./p' "README" > "COPYING"
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/wpa_supplicant/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/wpa_supplicant"
 }
