@@ -3,7 +3,7 @@
 pkgname=sneedacity-git
 pkgver=3.0.2.r344.gd5a54f152
 pkgrel=1
-pkgdesc="A program that lets you manipulate digital audio waveforms"
+pkgdesc="Audacity fork without any telemetry (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/Sneeds-Feed-and-Seed/sneedacity"
 license=(GPL2 CCPL)
