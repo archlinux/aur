@@ -2,8 +2,8 @@
 
 pkgname=gcc34-bin
 pkgver=3.4.6.4.1
-_rpmver=3.4.6-4.1
-pkgrel=1
+_rpmver="3.4.6-4.1"
+pkgrel=2
 pkgdesc="Compatibility GNU Compiler Collection."
 arch=('x86_64')
 url="https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/repoview/compat-gcc-34.html"
@@ -12,13 +12,13 @@ options=(!strip)
 provides=('gcc34')
 depends=('libf2c')
 makedepends=('rpmextract')
-source=("https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/compat-gcc-34-${_rpmver}.x86_64.rpm")
+source=("https://linuxsoft.cern.ch/cern/slc5X/${arch}/yum/updates/compat-gcc-34-${_rpmver}.${arch}.rpm")
 md5sums=('39584eda9be14f39194f8961482cf25c')
-noextract=("https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/compat-gcc-34-${_rpmver}.x86_64.rpm")
+noextract=("https://linuxsoft.cern.ch/cern/slc5X/${arch}/yum/updates/compat-gcc-34-${_rpmver}.${arch}.rpm")
 
 prepare() {
   cd "${srcdir}"
-  rpmextract.sh compat-gcc-34-3.4.6-4.1.x86_64.rpm
+  rpmextract.sh "compat-gcc-34-${_rpmver}.${arch}.rpm"
 }
 
 package() {
