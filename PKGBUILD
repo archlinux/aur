@@ -7,7 +7,7 @@ pkgdesc="Documentation for Python iminuit module"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
 license=('GPL')
-makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc' 'python-pillow' 'python-nbsphinx' 'pandoc' 'wget' 'python-jinja<3.0.0')
+makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc' 'python-pillow' 'python-nbsphinx>=0.8.6' 'pandoc' 'wget')
 source=("https://github.com/healpy/healpy/archive/${pkgver}.tar.gz"
         'fix_doc_warning.patch')
 md5sums=('b7e683e33e23cc6640d8a1327af3b55f'

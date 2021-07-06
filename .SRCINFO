@@ -9,10 +9,9 @@ pkgbase = python-healpy-doc
 	makedepends = python-healpy=1.15.0
 	makedepends = python-numpydoc
 	makedepends = python-pillow
-	makedepends = python-nbsphinx
+	makedepends = python-nbsphinx>=0.8.6
 	makedepends = pandoc
 	makedepends = wget
-	makedepends = python-jinja<3.0.0
 	source = https://github.com/healpy/healpy/archive/1.15.0.tar.gz
 	source = fix_doc_warning.patch
 	md5sums = b7e683e33e23cc6640d8a1327af3b55f
