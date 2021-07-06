@@ -2,7 +2,7 @@
 pkgname=ctc
 pkgver=1.0.0
 
-pkgrel=6
+pkgrel=7
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -23,6 +23,7 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
+    cd Cyan
     rm settings.lite.gradle
     echo "rootProject.name = 'LiteCyan'
 
@@ -52,6 +53,8 @@ gradle.allprojects {
 }
 
 package() {
+    cd Cyan
+    
     mkdir "$pkgdir/usr/lib/ctc-libs/" -p
     cd build/CyanComponents/Jars
     cp CyanComponents-*.jar "$pkgdir/usr/lib/ctc-libs/CyanComponents.jar"
