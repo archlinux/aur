@@ -1,5 +1,6 @@
 src/
 pkg/
 gnome-shell-extension-improvedosk-git/
+improved-osk-gnome-ext/
 *.log
 *.tar*

@@ -1,8 +1,9 @@
 pkgbase = gnome-shell-extension-improvedosk-git
 	pkgdesc = Makes GNOME's onscreen keyboard more useable.
-	pkgver = 5+6+gcdb9936
+	pkgver = r41.4989e9c
 	pkgrel = 1
-	url = https://github.com/SamLukeYes/improved-osk-gnome-ext
+	epoch = 1
+	url = https://github.com/nick-shmyrev/improved-osk-gnome-ext
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +11,7 @@ pkgbase = gnome-shell-extension-improvedosk-git
 	optdepends = ttf-symbola: Recommended font for symbols
 	provides = gnome-shell-extension-improvedosk
 	conflicts = gnome-shell-extension-improvedosk
-	source = gnome-shell-extension-improvedosk-git::git+https://github.com/SamLukeYes/improved-osk-gnome-ext.git
+	source = git+https://github.com/nick-shmyrev/improved-osk-gnome-ext.git
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-improvedosk-git
