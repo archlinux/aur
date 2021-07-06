@@ -2,7 +2,7 @@
 pkgname=ctc
 pkgver=1.0.0
 
-pkgrel=7
+pkgrel=8
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
@@ -77,4 +77,5 @@ package() {
     
     mkdir -p "$pkgdir/usr/bin"
     cp ctc "$pkgdir/usr/bin"
+    chmod +x "$pkgdir/usr/bin/ctc"
 }
