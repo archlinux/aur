@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.4.9.r23.g5191399
+pkgver=2.4.9.r45.g93fd8a0
 pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
@@ -13,15 +13,15 @@ provides=('ppp')
 conflicts=('ppp')
 backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh,,options,pap-secrets})
 source=("git+https://github.com/paulusmack/ppp.git"
-        "ip-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down?h=packages/ppp"
-        "ip-down.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-down.d.dns.sh?h=packages/ppp"
-        "ip-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up?h=packages/ppp"
-        "ip-up.d.dns.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip-up.d.dns.sh?h=packages/ppp"
-        "ipv6-down::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-down?h=packages/ppp"
-        "ipv6-up::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up?h=packages/ppp"
-        "ipv6-up.d.iface-config.sh::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ipv6-up.d.iface-config.sh?h=packages/ppp"
-        "options::https://git.archlinux.org/svntogit/packages.git/plain/trunk/options?h=packages/ppp"
-        "ppp.systemd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ppp.systemd?h=packages/ppp")
+        "ip-down::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down"
+        "ip-down.d.dns.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-down.d.dns.sh"
+        "ip-up::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-up"
+        "ip-up.d.dns.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ip-up.d.dns.sh"
+        "ipv6-down::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-down"
+        "ipv6-up::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-up"
+        "ipv6-up.d.iface-config.sh::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ipv6-up.d.iface-config.sh"
+        "options::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/options"
+        "ppp.systemd::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/ppp/trunk/ppp.systemd")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -43,21 +43,23 @@ pkgver() {
 build() {
   cd "ppp"
 
-  ./configure
+  ./configure \
+    --prefix="/usr"
   sed -i 's:^#FILTER=y:FILTER=y:' "pppd/Makefile"  # enable active filter
   sed -i 's:^#HAVE_INET6=y:HAVE_INET6=y:' "pppd/Makefile"  # enable ipv6 support
   sed -i 's:^#CBCP=y:CBCP=y:' "pppd/Makefile"  # enable Microsoft proprietary CallBack Control Protocol
   sed -i 's:^#USE_PAM=y:USE_PAM=y:' "pppd/Makefile"
   sed -i 's:^#SYSTEMD=y:SYSTEMD=y:' "pppd/Makefile"
-
   make
 }
 
 package() {
   cd "ppp"
 
-  make DESTDIR="$pkgdir/usr" install
-  mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
+  make \
+    BINDIR="$pkgdir/usr/bin" \
+    INSTROOT="$pkgdir" \
+    install
 
   install -Dm644 "$srcdir/options" -t "$pkgdir/etc/ppp"
   install -Dm755 "$srcdir"/{ip,ipv6}-{down,up} -t "$pkgdir/etc/ppp"
