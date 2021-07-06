@@ -1,0 +1,13 @@
+pkgbase = hexcat-bin
+	pkgdesc = A hex display with Unicode symboles for specials.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/TylerMackJ/Hexcat
+	arch = x86_64
+	license = GPL-3.0
+	provides = hexcat
+	conflicts = hexcat
+	source = https://github.com/TylerMackJ/Hexcat/releases/download/v2.1.2/hexcat-2.1.2-x86_64.tar.gz
+	sha256sums = 14dc6e1773501cf9f9a9573ee299488429433e2660c566b6d2a7b8080368d9ee
+
+pkgname = hexcat-bin
