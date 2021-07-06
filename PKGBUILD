@@ -3,7 +3,7 @@
 # Maintainer: Göktuğ Kayaalp <self at gkayaalp dot com>
 pkgname=pomodorino
 pkgver=0.2.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc="a lightweight, simple Pomodoro timer system tray app"
 arch=('any')
 url=https://github.com/cadadr/pomodorino
