@@ -1,7 +1,7 @@
 pkgbase = redo-jdebp
 	pkgdesc = An implementation of Bernstein's redo proposal
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jdebp.eu/Softwares/redo
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = redo-jdebp
 	makedepends = perl
 	provides = redo
 	conflicts = redo
-	source = https://jdebp.eu/Repository/freebsd/redo-1.4.tar.gz
+	source = http://jdebp.info/Repository/freebsd/redo-1.4.tar.gz
 	sha256sums = 5b9289f1228eee2f22ab96f7dd4f9b43e3a6d24f75c1f9d1e18eec7360c90fb1
 
 pkgname = redo-jdebp
-
