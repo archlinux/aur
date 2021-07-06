@@ -1,20 +1,20 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-_product="${pkgname%-electron}"
-pkgver=4.14.0
+_name="${pkgname%-electron}"
+pkgver=4.17.0
 pkgrel=1
-pkgdesc="Slack Desktop (Beta) for Linux, modified to use the system 'electron' package instead of its own"
+pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=('x86_64')
 url="https://slack.com/downloads"
-license=('custom: Slack')
+license=('custom:proprietary')
 depends=('electron')
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
-provides=("${_product}" "${_product}-desktop")
-conflicts=("${_product}-desktop")
+provides=("${_name}" "${_name}-desktop")
+conflicts=("${_name}-desktop")
 source=("https://downloads.slack-edge.com/linux_releases/slack-desktop-$pkgver-amd64.deb"
         'slack.sh')
-sha256sums=('cfa500b6c5109724d5fc123477d5e4c9740e332a56397a1413462da9358ac977'
+sha256sums=('b1e7123f9e51d292b647fecd42236f2de3b3f863c631e8278d47e08b8aae8c1d'
             '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd')
 
 prepare() {
@@ -24,16 +24,16 @@ prepare() {
   sed -ri \
 	-e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
 	-e 's/^Icon=.+slack\.png/Icon=slack/' \
-	"usr/share/applications/${_product}.desktop"
+	"usr/share/applications/${_name}.desktop"
 }
 
 package() {
-  install -Dm755 "${_product}.sh" "$pkgdir/usr/bin/${_product}"
+  install -Dm755 "${_name}.sh" "$pkgdir/usr/bin/${_name}"
 
-  install -dm755 "$pkgdir/usr/lib/${_product}/"
-  cp -dr --no-preserve=ownership usr/lib/${_product}/resources/* "$pkgdir/usr/lib/${_product}/"
+  install -dm755 "$pkgdir/usr/lib/${_name}/"
+  cp -dr --no-preserve=ownership usr/lib/${_name}/resources/* "$pkgdir/usr/lib/${_name}/"
 
-  install -Dm644 "usr/share/applications/${_product}.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "usr/share/pixmaps/${_product}.png" -t "$pkgdir/usr/share/pixmaps"
-  install -Dm644 "usr/lib/${_product}/LICENSE" "$pkgdir/usr/share/licenses/${_product}/LICENSE"
+  install -Dm644 "usr/share/applications/${_name}.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "usr/share/pixmaps/${_name}.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm644 "usr/lib/${_name}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
