@@ -1,0 +1,13 @@
+pkgbase = python-astpretty
+	pkgdesc = Pretty print the output of python stdlib 'ast.parse'.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/asottile/astpretty
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/astpretty/astpretty-2.1.0.tar.gz
+	b2sums = 9e96eb963eee5b68d609bea6b4db231f3bf9589674520ad880868a105e80bf40837ad7b24c81d1a1c0c451e75cbcae5fd4b9a76ec7f1e2087600de67e42d666d
+
+pkgname = python-astpretty
