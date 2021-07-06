@@ -1,14 +1,13 @@
 pkgbase = flavours
 	pkgdesc = A simple and easy cli to build and use base16 schemes
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Misterio77/flavours
 	arch = any
 	license = MIT
 	makedepends = rust
 	depends = git
-	source = flavours-0.4.0.tar.gz::https://github.com/misterio77/flavours/archive/v0.4.0.tar.gz
-	sha256sums = cfd063f4c05a98f1429058dba41f771922e1711f459324605cc73e846d7e16c8
+	source = flavours-0.5.0.tar.gz::https://github.com/misterio77/flavours/archive/v0.5.0.tar.gz
+	sha256sums = 4ef006701896da563bd43537c05533b93e556e080cce73871e39352e62bc2641
 
 pkgname = flavours
-
