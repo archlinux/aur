@@ -1,0 +1,16 @@
+pkgbase = connective-usermanager
+	pkgdesc = UserManager Module -- Authentication backend for Connective servers
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = main.install
+	arch = any
+	groups = connective-server
+	license = LGPL3
+	makedepends = gradle>=6.7
+	makedepends = cq
+	depends = java-environment
+	depends = connective-http
+	source = git+https://aerialworks.ddns.net/ASF/UserManager.git
+	md5sums = SKIP
+
+pkgname = connective-usermanager
