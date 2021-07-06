@@ -1,7 +1,7 @@
 pkgbase = racer
 	pkgdesc = 2D car racing game
 	pkgver = 1.1.64
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hippo.nipax.cz/download.cz.php?id=64
 	install = racer.install
 	arch = i686
@@ -10,6 +10,6 @@ pkgbase = racer
 	depends = allegro4
 	depends = libjpeg
 	source = http://hippo.nipax.cz/src/racer-1.1.64.tar.gz
-	md5sums = 695cdd15b231f96418674b198fb93986
+	md5sums = 063e87c43071e6dcb112807abc422bd7
 
 pkgname = racer
