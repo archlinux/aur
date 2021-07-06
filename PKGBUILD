@@ -19,7 +19,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -70,7 +70,7 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod-lts
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.10
-pkgver=${_major}.46
+pkgver=${_major}.47
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -78,16 +78,18 @@ pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="096187d78c58496b5415b9f27eae682b96a458b1" # 5.10.46-1
+__commit="3b33bae0f7d302f74fcc49afb160f00eb8550dda" # 5.10.47-2
 
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
+
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm)
+  makedepends+=(clang llvm lld python)
 fi
+
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}-lts"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
@@ -96,19 +98,20 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "https://gitlab.manjaro.org/packages/core/linux510/-/archive/${__commit}/linux510-${__commit}.tar.gz")
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43' # linux-5.4.tar.xz
             'SKIP'                                                             #            .sign
-            '0e4ab372f141747455b232e60053e9eb39c134570f5807f693b9ee4f6a167e83' # xanmod
+            'ef68fa318954215cd8b5ff070f04982d37670da55bb98d1c7e407a42ebc22675' # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee' # choose-gcc-optimization.sh
-            '929babf42951bdb925ab6df8717e6335dd64a6f7908bd7108522e8258ed4d24e') # manjaro
+            '25a0e6669952c37f32ef290fb4fb269287b705b162a0ad6de787674117723a39') # manjaro
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
 # Archlinux patches
-_commit=""
-_patches=("")
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
 for _patch in ${_patches[@]}; do
-    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -138,6 +141,7 @@ prepare() {
   
   # Manjaro patches
   rm ../linux510-$__commit/0103-futex.patch              # remove conflicting patches
+  rm ../linux510-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
 
   local _patch
   for _patch in ../linux510-$__commit/*; do
