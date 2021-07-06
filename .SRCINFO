@@ -1,0 +1,17 @@
+pkgbase = gcc34-bin
+	pkgdesc = Compatibility GNU Compiler Collection.
+	pkgver = 3.4.6.4.1
+	pkgrel = 1
+	url = https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/repoview/compat-gcc-34.html
+	arch = x86_64
+	license = GPL2
+	license = LGPL
+	makedepends = rpmextract
+	depends = libf2c
+	provides = gcc34
+	noextract = https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/compat-gcc-34-3.4.6-4.1.x86_64.rpm
+	options = !strip
+	source = https://linuxsoft.cern.ch/cern/slc5X/x86_64/yum/updates/compat-gcc-34-3.4.6-4.1.x86_64.rpm
+	md5sums = 39584eda9be14f39194f8961482cf25c
+
+pkgname = gcc34-bin
