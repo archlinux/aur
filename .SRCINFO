@@ -1,6 +1,6 @@
 pkgbase = iputils-git
 	pkgdesc = Network monitoring tools, including ping
-	pkgver = 20210202.r10.gc9beb98
+	pkgver = 20210202.r18.g4f3ec1d
 	pkgrel = 1
 	url = https://github.com/iputils/iputils
 	install = iputils.install
@@ -21,9 +21,6 @@ pkgbase = iputils-git
 	conflicts = iputils
 	backup = etc/xinetd.d/tftp
 	source = git+https://github.com/iputils/iputils.git
-	source = tftp.xinetd::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftp.xinetd?h=packages/iputils
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = iputils-git
-
