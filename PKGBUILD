@@ -5,7 +5,7 @@ pkgver=1.1.1.r2.gfdc8a1d
 pkgrel=1
 pkgdesc="Deepin Desktop Environment dynamic wallpaper/ DDE 动态壁纸"
 arch=('x86_64')
-url="https://github.com/dependon/fantascene-dynamic-wallpaper"
+url="https://github.com/dependon/fantascene-archLinux-DDE"
 license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
@@ -18,10 +18,10 @@ options=('!strip')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+#pkgver() {
+ #   cd "${srcdir}/${pkgname%-git}"
+ #   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+#}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"

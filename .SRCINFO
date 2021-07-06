@@ -2,7 +2,7 @@ pkgbase = fantascene-dynamic-wallpaper-git
 	pkgdesc = Deepin Desktop Environment dynamic wallpaper/ DDE 动态壁纸
 	pkgver = 1.1.1.r2.gfdc8a1d
 	pkgrel = 1
-	url = https://github.com/dependon/fantascene-dynamic-wallpaper
+	url = https://github.com/dependon/fantascene-archLinux-DDE
 	arch = x86_64
 	license = GPLv3
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = fantascene-dynamic-wallpaper-git
 	conflicts = fantascene-dynamic-wallpaper-git
 	conflicts = fantascene-dynamic-wallpaper
 	options = !strip
-	source = fantascene-dynamic-wallpaper::git+https://github.com/dependon/fantascene-dynamic-wallpaper.git
+	source = fantascene-dynamic-wallpaper::git+https://github.com/dependon/fantascene-archLinux-DDE.git
 	sha256sums = SKIP
 
 pkgname = fantascene-dynamic-wallpaper-git
