@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=QSS
+Keywords=quake;quakespasm
+Icon=quakespasm-spiked
+Exec=quakespasm-spiked
+Categories=Game;Shooter;
+Comment=Quake (Quakespasm-spiked engine)
+Terminal=false
+StartupNotify=true
