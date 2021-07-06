@@ -2,24 +2,26 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.12.2
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
 url="http://cxc.cfa.harvard.edu/contrib/sherpa/"
 license=('GPL')
-makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx_rtd_theme' 'python-sphinx-astropy' 'graphviz' 'python-nbsphinx' 'pandoc')
+makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sphinx_rtd_theme' 'python-sphinx-astropy' 'graphviz' 'python-nbsphinx>=0.8.6' 'pandoc')
 #'gcc-fortran')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('752b19ed99da486c84313b53d159f178'
+md5sums=('cdd0a6677e2100e6a98a14355fee9249'
          'd1823cc7683442d92450fadff7aed362')
-_pyver=$(python -V | cut -c 8-10)
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/sherpa_local_fftw.patch"
+    sed -e '/'\'nbsphinx\''/a \    '\'IPython\.sphinxext\.ipython_console_highlighting\','' \
+        -e '/'\'nbsphinx\''/s/$/,/' -i docs/conf.py
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
