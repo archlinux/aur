@@ -1,7 +1,7 @@
 # Maintainer: Thomas Girod <tgirod@altu.fr>
 # Co-Maintainer: Daniel Appelt <daniel.appelt@gmail.com>
 pkgname=open-stage-control
-pkgver=1.9.10
+pkgver=1.9.11
 pkgrel=1
 pkgdesc='A libre desktop OSC bi-directional control surface application'
 arch=(i686 x86_64 armv7h aarch64)
@@ -24,4 +24,4 @@ package() {
   ln -s "/opt/${pkgname}/open-stage-control"
 }
 
-sha256sums=('603f88690c28d94aebc5e2b66c9e6abbb432d9622ba372bb2e39f7aab95799bf')
+sha256sums=('a13c1002905c86892ed1a743277f94dc8d7903d9ad9a9e9122cc2746b475d36a')
