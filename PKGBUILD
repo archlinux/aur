@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iptables-git
-pkgver=1.8.4.r38.g200bc399
+pkgver=1.8.7.r37.g9e1fffdf
 pkgrel=1
 pkgdesc="Userspace command line program used to configure the packet filtering ruleset"
 arch=('i686' 'x86_64')
@@ -14,19 +14,19 @@ conflicts=('arptables' 'ebtables' 'iptables' 'iptables-nft')
 backup=('etc/ethertypes'
         etc/iptables/{ip,ip6}tables.rules)
 source=("git://git.netfilter.org/iptables"
-        "arptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/arptables.service?h=packages/iptables"
-        "ebtables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ebtables.service?h=packages/iptables"
-        "empty-filter.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-filter.rules?h=packages/iptables"
-        "empty-mangle.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-mangle.rules?h=packages/iptables"
-        "empty-nat.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-nat.rules?h=packages/iptables"
-        "empty-raw.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-raw.rules?h=packages/iptables"
-        "empty-security.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty-security.rules?h=packages/iptables"
-        "empty.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty.rules?h=packages/iptables"
-        "ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables"
-        "iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables"
-        "iptables-nft-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-nft-flush?h=packages/iptables"
-        "iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables"
-        "simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables")
+        "arptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/arptables.service"
+        "ebtables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/ebtables.service"
+        "empty-filter.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-filter.rules"
+        "empty-mangle.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-mangle.rules"
+        "empty-nat.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-nat.rules"
+        "empty-raw.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-raw.rules"
+        "empty-security.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty-security.rules"
+        "empty.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/empty.rules"
+        "ip6tables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/ip6tables.service"
+        "iptables-legacy-flush::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables-legacy-flush"
+        "iptables-nft-flush::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables-nft-flush"
+        "iptables.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/iptables.service"
+        "simple_firewall.rules::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/iptables/trunk/simple_firewall.rules")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -42,6 +42,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+
+prepare() {
+  cd "iptables"
+
+  # use system one
+  rm "include/linux/types.h"
+}
 
 pkgver() {
   cd "iptables"
@@ -74,12 +81,8 @@ package() {
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/iptables.rules"
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/ip6tables.rules"
   install -Dm644 "simple_firewall.rules" -t "$pkgdir/etc/iptables"
+  install -Dm644 *.rules -t "$pkgdir/usr/share/iptables"
 
-  install -d "$pkgdir/var/lib"/{iptables,ip6tables}
-  install -m644 empty-{filter,mangle,nat,raw,security}.rules "$pkgdir/var/lib/iptables"
-  install -m644 empty-{filter,mangle,nat,raw,security}.rules "$pkgdir/var/lib/ip6tables"
-
-  install -d "$pkgdir/usr/lib/systemd/system"
-  install -m644 {arp,eb,ip,ip6}tables.service "$pkgdir/usr/lib/systemd/system"
-  install -Dm755 iptables-{legacy,nft}-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
+  install -Dm644 {arp,eb,ip,ip6}tables.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm755 iptables-{legacy,nft}-flush -t "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
 }
