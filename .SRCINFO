@@ -1,0 +1,13 @@
+pkgbase = covid
+	pkgdesc = Archlinux now has COVID
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitweb.dragonflybsd.org/dragonfly.git/tree/HEAD:/usr.bin/covid
+	arch = any
+	license = BSD
+	source = https://gitweb.dragonflybsd.org/dragonfly.git/blob_plain/1975d09eeb449df1192c97c0419380768b658a20:/usr.bin/covid/covid.1
+	source = https://gitweb.dragonflybsd.org/dragonfly.git/blob_plain/1975d09eeb449df1192c97c0419380768b658a20:/usr.bin/covid/covid.c
+	md5sums = 938bf94e0a1198042a935f950a27144c
+	md5sums = 5c200c80ad18092cd5a2c603439a5c61
+
+pkgname = covid

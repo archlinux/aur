@@ -1,0 +1,6 @@
+covid.1
+covid.c
+pkg/
+src/
+*.pkg.tar
+*.pkg.tar.*
