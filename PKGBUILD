@@ -11,8 +11,8 @@ license=('custom')
 install=${pkgname}.install
 depends=('glibc' 'clash-geoip' 'iptables' 'nftables' 'systemd' 'iproute2')
 makedepends=('git' 'gzip')
-provides=('clash' 'clash-dev' 'clash-dev-git')
-conflicts=('clash' 'clash-dev' 'clash-dev-git')
+provides=('clash' 'clash-dev' 'clash-dev-git' 'clash-premium-bin')
+conflicts=('clash' 'clash-dev' 'clash-dev-git' 'clash-premium-bin')
 backup=("etc/clash/config.yaml")
 source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951"
         "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.07.03.gz"
