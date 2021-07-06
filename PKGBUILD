@@ -1,8 +1,8 @@
-# Maintainer: Tim Schumacher <timschumi@gmx.de>
+# Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
 
 pkgname=python-pytube
-pkgver=10.8.5
+pkgver=10.9.0
 pkgrel=1
 pkgdesc="A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/pytube/pytube"
 license=('MIT')
 depends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pytube/pytube/archive/v$pkgver.tar.gz")
-sha256sums=('93b2289f4e447f8fc39364caf87931e207a20d58e670a868ef2676b0bf1a90c1')
+sha256sums=('38c3b00c856d0a74aa8420d7ae61c50b17c7772e0b26c031c62495c19a60459a')
 
 build() {
 	cd pytube-$pkgver
