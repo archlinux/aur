@@ -1,0 +1,24 @@
+pkgbase = frame-eth
+	pkgdesc = System-wide Web3
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://frame.sh
+	install = frame-eth.install
+	arch = x86_64
+	license = GPL3
+	makedepends = nodejs>=14.8.0
+	makedepends = libusb
+	makedepends = python3
+	makedepends = git
+	makedepends = node-gyp
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = frame
+	source = git+https://github.com/floating/frame.git#tag=v0.4.4
+	source = frame-eth.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = frame-eth
+
