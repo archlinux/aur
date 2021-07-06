@@ -1,6 +1,6 @@
 pkgbase = rng-tools-git
 	pkgdesc = Random number generator daemon
-	pkgver = 6.11.r0.g2ea1347
+	pkgver = 6.13.r13.gd207e0b
 	pkgrel = 1
 	url = https://github.com/nhorman/rng-tools
 	arch = i686
@@ -19,9 +19,8 @@ pkgbase = rng-tools-git
 	conflicts = rng-tools
 	backup = etc/conf.d/rngd
 	source = git+https://github.com/nhorman/rng-tools.git
-	source = rngd.conf::https://git.archlinux.org/svntogit/community.git/plain/trunk/rngd.conf?h=packages/rng-tools
+	source = rngd.conf::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/rng-tools/trunk/rngd.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rng-tools-git
-
