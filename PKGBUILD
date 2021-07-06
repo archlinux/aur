@@ -2,7 +2,7 @@
 pkgname=connective-php
 pkgver=1.0.0
 
-pkgrel=2
+pkgrel=3
 pkgdesc="ConnectivePHP -- PHP support module for ConnectiveHTTP"
 arch=( 'any' )
 url=""
@@ -33,5 +33,5 @@ package() {
     cd ConnectivePHP
     
     mkdir -p "$pkgdir/usr/lib/connective-php"    
-    cp build/libs/ConnectivePHP-*.jar "$pkgdir/usr/lib/connective-php/ConnectivePHP.jar"
+    mv build/libs/ConnectivePHP-*.jar "$pkgdir/usr/lib/connective-php/ConnectivePHP.jar"
 }
