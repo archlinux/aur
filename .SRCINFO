@@ -1,0 +1,17 @@
+pkgbase = skyr-url
+	pkgdesc = A C++ library that implements the URL WhatWG specification
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/cpp-netlib/url
+	arch = i686
+	arch = x86_64
+	license = Boost
+	makedepends = cmake>=3.16.0
+	makedepends = git
+	depends = tl-expected
+	depends = range-v3
+	depends = nlohmann-json
+	source = https://github.com/cpp-netlib/url/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = 0c9e594f09a9abda5815b07b548ac520b2fc1044fc74b589fc4c5bd18ea4330c
+
+pkgname = skyr-url
