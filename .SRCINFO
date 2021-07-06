@@ -1,15 +1,15 @@
 pkgbase = amdgpu-pro-installer
-	pkgver = 21.10_1247438
+	pkgver = 21.20_1271047
 	pkgrel = 1
-	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-10
+	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-20
 	arch = x86_64
 	groups = Radeon_Software_for_Linux
 	license = custom: multiple
 	makedepends = wget
-	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-21.10-1247438-ubuntu-20.04.tar.xz
+	source = https://drivers.amd.com/drivers/linux/amdgpu-pro-21.20-1271047-ubuntu-20.04.tar.xz
 	source = progl
 	source = progl.bash-completion
-	sha256sums = 2d63e6709909559b35f0d37504bd194b8a5cba8069b80aa849ec085d05bba1e2
+	sha256sums = 8ea051de8c9c6814eb45ce18d102e639bb6edb5786e948b50c5105e3e21978f9
 	sha256sums = feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
 	sha256sums = e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
 
@@ -17,8 +17,8 @@ pkgname = amf-amdgpu-pro
 	pkgdesc = AMDGPU Pro Advanced Multimedia Framework
 	license = custom: AMDGPU-PRO EULA
 	depends = libglvnd
-	depends = libx11
-	depends = vulkan-amdgpu-pro=21.10_1247438-1
+	depends = nx-x11
+	depends = vulkan-amdgpu-pro=21.20_1271047-1
 
 pkgname = amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver
@@ -30,14 +30,14 @@ pkgname = amdgpu-pro-libgl
 	depends = libxext
 	depends = libxfixes
 	depends = libxxf86vm
-	depends = wayland
+	depends = nx-x11
 	provides = libgl
 	backup = etc/amd/amdapfxx.blb
 
 pkgname = lib32-amdgpu-pro-libgl
 	pkgdesc = AMDGPU Pro OpenGL driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-libgl=21.10_1247438-1
+	depends = amdgpu-pro-libgl=21.20_1271047-1
 	depends = lib32-libdrm
 	depends = lib32-libx11
 	depends = lib32-libxcb
@@ -45,7 +45,7 @@ pkgname = lib32-amdgpu-pro-libgl
 	depends = lib32-libxext
 	depends = lib32-libxfixes
 	depends = lib32-libxxf86vm
-	depends = lib32-wayland
+	depends = lib32-nx-x11
 	provides = lib32-libgl
 	backup = etc/amd/amdrc
 	backup = etc/ld.so.conf.d/10-amdgpu-pro-i386.conf
@@ -53,12 +53,11 @@ pkgname = lib32-amdgpu-pro-libgl
 pkgname = vulkan-amdgpu-pro
 	pkgdesc = AMDGPU Pro Vulkan driver
 	license = custom: AMDGPU-PRO EULA
-	depends = wayland
+	depends = 
 	provides = vulkan-driver
 
 pkgname = lib32-vulkan-amdgpu-pro
 	pkgdesc = AMDGPU Pro Vulkan driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = lib32-wayland
+	depends = 
 	provides = lib32-vulkan-driver
-
