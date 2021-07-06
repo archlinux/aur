@@ -1,15 +1,13 @@
 pkgbase = yamagi-quake2-xatrix-git
 	pkgdesc = Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2 (development version)
-	pkgver = 2.06.r0.g1d6e3f6
+	pkgver = 2.09.r1.g15791dc
 	pkgrel = 1
-	url = http://www.yamagi.org/quake2/
+	url = https://www.yamagi.org/quake2/
 	install = yamagi-quake2-xatrix.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	license = custom
-	makedepends = cmake
-	makedepends = ninja
 	depends = sh
 	depends = yamagi-quake2
 	provides = yamagi-quake2-xatrix
@@ -22,4 +20,3 @@ pkgbase = yamagi-quake2-xatrix-git
 	sha256sums = e65add2561c7dc4a14061e17a24436f768b69968fbc6fa06022acf9e17d80854
 
 pkgname = yamagi-quake2-xatrix-git
-
