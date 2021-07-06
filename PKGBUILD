@@ -2,19 +2,19 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq
-pkgver=1.6.5
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
 depends=('jdk-openjdk')
-makedepends=('jdk-openjdk')
+makedepends=('jdk15-adoptopenjdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
 	"https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq-${pkgver}.tar.gz.asc"
 	"bisq.desktop")
-sha256sums=('6be6b40557843feae4954d5d0cb9de5b8651179bca2f947ec3995738e60dcb9a'
-            'bd2a24f9463474d1ec294f30d55a3b3d6563841c9a2efffd92c0739ffaace608'
+sha256sums=('26d0b127ecd77109920a595ef5a0e4577fb04227949f80a5dedbde15fd98ba6c'
+            'd39838d93d4b0b3bd266493425370902c020b377cd1a27f0d71e176c10d9d310'
             '20d24db040983a6139e3300db7824b08b3e106150cb155480409b1ab7de68d17')
 validpgpkeys=('CB36D7D2EBB2E35D9B75500BCD5DC1C529CDFD3B') # Christoph Atteneder
 
@@ -25,7 +25,7 @@ provides=("bisq")
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || exit
   msg2 "Building bisq..."
-  ./gradlew clean :desktop:build -x test
+  ./gradlew clean :desktop:build -Dorg.gradle.java.home=/usr/lib/jvm/java-15-adoptopenjdk -x test
 }
 
 package() {
