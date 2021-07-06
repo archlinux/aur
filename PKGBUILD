@@ -2,7 +2,7 @@
 
 pkgname=peerflix
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client for node.js"
 arch=('any')
 url="https://github.com/mafintosh/peerflix"
@@ -17,7 +17,13 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  npm install --cache ../cache --user root -g --prefix "${pkgdir}/usr" ../*.tar.gz
+  npm install --cache ../cache -g --prefix "${pkgdir}/usr" ../*.tar.gz
+
+  # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_npm
+    # npm makes some directories world writable
+    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+    # https://old.reddit.com/r/archlinux/comments/o3y03g/i_adopted_10_nodejs_aur_packages_that_conflict/
+    chown -R root:root "${pkgdir}"
 }
 
 # vim:set ts=2 sw=2 et:
