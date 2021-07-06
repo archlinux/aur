@@ -1,10 +1,11 @@
 # Maintainer: Mikhail felixoid Shiryaev mr<dot>felixoid<at>gmail<dot>com
+# Maintainer: Luiz Amaral <aur at luiz dot eng dot br>
 
 _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}"
 conflicts=("python-${_name}-git")
-pkgver=3.3.1
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
@@ -19,7 +20,7 @@ source=(
   'adminapi-only.patch'
 )
 sha256sums=(
-  '45945bdd53914a4fc61feeb8563cc349f6ed83778efc79e3c199eafbe135b3e2'
+  '8312e8d5c51fb631cdfd9d083f5af54df72e865c04b5b66666e05fd70fd277c5'
   '086a0f7a7b935b27e1ece35d99202b4db10f6b5a4406dd45affba2bfaf89a08e'
 )
 
