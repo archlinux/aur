@@ -18,7 +18,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=99 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -70,7 +70,7 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.12
-pkgver=${_major}.13
+pkgver=${_major}.14
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -78,7 +78,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="058db47a791a706d4c3b343f928cd7753eeabddd" # 5.12.13-1
+__commit="24ccef4db1a108955c6aaa5c70b26b3a08d415f5" # 5.12.14-2
 
 license=(GPL2)
 makedepends=(
@@ -86,10 +86,11 @@ makedepends=(
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm)
+  makedepends+=(clang llvm lld python)
 fi
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
+
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
@@ -97,18 +98,19 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
-_commit="be7d4710850020de55bce930c83fa80347c02fc3"
-_patches=("sphinx-workaround.patch")
+_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
+_patches=()
 for _patch in ${_patches[@]}; do
-    source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
+    source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'd92f080fffa287fbdbc0a9c58dec0031d1368d94401d5ebeb9fce56a34ea35d3'  # xanmod
+            '0006a71592950f37ecfa7f8e2560699731b92712ddfb7639922bc260ccd1552b'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '4073bbe2cc4eeeaebdff93fe62b20f51db8f7ab19d34671da41e577b3aa61a75'  # manjaro
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            'baf98f2f51876fd9f93f4026ee5426cebcea88c46fec644da2555d9f872c45c1') # manjaro
+
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -120,13 +122,6 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 prepare() {
   cd linux-${_major}  
-  
-  # hacky work around for xz not getting extracted
-  # https://bbs.archlinux.org/viewtopic.php?id=265115
-  if [[ ! -f "$srcdir/patch-${pkgver}-xanmod${xanmod}" ]]; then
-    #unlink "$srcdir/patch-${pkgver}-xanmod${xanmod}.xz"
-    xz -dc "$SRCDEST/patch-${pkgver}-xanmod${xanmod}.xz" > "$srcdir/patch-${pkgver}-xanmod${xanmod}"
-  fi
   
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
@@ -156,7 +151,7 @@ prepare() {
       patch -Np1 < "../linux512-$__commit/$_patch"
   done 
   git apply -p1 < "../linux512-$__commit/0513-bootsplash.gitpatch"
-  scripts/config --enable CONFIG_BOOTSPLASH
+  
   
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
@@ -166,6 +161,8 @@ prepare() {
     scripts/config --enable LTO_CLANG_THIN
     _LLVM=1
   fi
+  
+  scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
@@ -248,11 +245,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  if [ "${_compiler}" = "clang" ]; then
-    make LLVM=1 LLVM_IAS=1 all
-  else
-    make all
-  fi
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
@@ -276,7 +269,6 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "manjaro-xanmod" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
-  # echo "${_major}-${CARCH}" | install -Dm644 /dev/stdin "$modulesdir/kernelbase"
  
   # add kernel version
   echo "${pkgver}-${pkgrel}-Manjaro-Xanmod x64" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
