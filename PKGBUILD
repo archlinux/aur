@@ -9,10 +9,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.2.2')
+provides=('gdal=3.3.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -34,7 +34,7 @@ changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal
 )
-sha256sums=('a7e1e414e5c405af48982bf4724a3da64a05770254f2ce8affb5f58a7604ca57'
+sha256sums=('190c8f4b56afc767f43836b2a5cd53cc52ee7fdc25eb78c6079c5a244e28efa7'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
 )
 
@@ -98,7 +98,7 @@ package_python-gdal-ecw () {
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
   python3 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
+  #install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
 
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
