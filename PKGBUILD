@@ -1,44 +1,50 @@
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-git
-pkgver=0.1.0.r23.ge506733
+pkgver=15.4.r7.9f973e4
 pkgrel=1
-epoch=1
-pkgdesc='wedge this HTTP proxy between your browser and Tor'
-arch=('i686' 'x86_64')
-url='https://github.com/nmathewson/shim/'
-license=('unknown')
-depends=('libevent')
-optdepends=('tor')
+pkgdesc='UEFI shim loader'
+arch=('x86_64')
+url='https://github.com/rhboot/shim'
+license=('BSD')
 makedepends=('git')
-backup=('etc/conf.d/shim')
-source=('git://github.com/nmathewson/shim.git'
-        'shim.conf'
-        'shim.service')
-sha256sums=('SKIP'
-            'd4a0af79f6e1494bf8630c09654d15b9791ef10d7337141a969962ecf5041e67'
-            '054d6c62ec97debe7cb282601a4db47f18e0fffb2dc63a14c5b80bdb130b350c')
-
-_gitname='shim'
+checkdepends=('xxd')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=('shim-efi-git')
+options=('!buildflags')
+source=("git+$url.git#branch=main"
+        'rhboot-gnu-efi::git+https://github.com/rhboot/gnu-efi.git')
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  printf "%s.r%s.g%s" "$(grep AC_INIT configure.in | sed -E 's/.*\[([0-9.]+)\].*/\1/g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd shim
+	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd shim
+	git submodule init
+	git config submodule.gnu-efi.url "$srcdir/rhboot-gnu-efi"
+	git submodule update
+
+	sed -e 's/-Werror //g' -i Makefile Make.defaults
 }
 
 build() {
-  cd "$srcdir/$_gitname"
+	cd shim
+	make
+}
 
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+check() {
+	cd shim
+	make test
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
-  mkdir -p "$pkgdir/etc/conf.d"
-  mkdir -p "$pkgdir/usr/lib/systemd/system"
-  install -m 644 "$srcdir/shim.conf" "$pkgdir/etc/conf.d/shim"
-  install -m 644 "$srcdir/shim.service" "$pkgdir/usr/lib/systemd/system/"
+	cd shim
+	make DESTDIR="$pkgdir" install-as-data
+	install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
