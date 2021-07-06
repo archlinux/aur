@@ -5,7 +5,7 @@ pkgver=1.0.0
 _ccfgversion=1.0.0.A19
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=20
+pkgrel=21
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""
@@ -41,4 +41,5 @@ package() {
     cd ../../../CCFG/cq-script
     mkdir -p "$pkgdir/usr/bin"
     cp cq "$pkgdir/usr/bin"
+    chmod +x "$pkgdir/usr/bin/cq"
 }
