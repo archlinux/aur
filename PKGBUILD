@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.4.r9.g7cde5a222c
+pkgver=0.5.4.r21.gf03015e20e
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=('sdl2')
 makedepends=('git' 'glib2' 'glu' 'gtk3' 'libepoxy' 'libpcap' 'libsamplerate' 'libslirp' 'meson' 'ninja' 'openssl' 'pixman' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=('lto')
 install=$_pkgname.install
 source=(
 	'git+https://github.com/Cyan4973/xxHash.git'
