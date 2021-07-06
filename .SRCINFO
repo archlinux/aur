@@ -1,6 +1,6 @@
 pkgbase = sudo-hg
 	pkgdesc = Run commands as root or another user
-	pkgver = r11370.d568dc923c7d
+	pkgver = r13307.c7839328e21f
 	pkgrel = 1
 	url = https://www.sudo.ws/sudo.html
 	arch = i686
@@ -11,14 +11,18 @@ pkgbase = sudo-hg
 	depends = libgcrypt
 	depends = libldap
 	depends = pam
+	depends = zlib
 	provides = sudo
 	conflicts = sudo
-	backup = etc/sudoers
 	backup = etc/pam.d/sudo
+	backup = etc/sudo.conf
+	backup = etc/sudo_logsrvd.conf
+	backup = etc/sudoers
 	source = hg+https://www.sudo.ws/repos/sudo/
-	source = sudo.pam::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sudo.pam?h=packages/sudo
+	source = sudo.pam::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sudo/trunk/sudo.pam
+	source = sudo_logsrvd.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/sudo/trunk/sudo_logsrvd.service
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sudo-hg
-
