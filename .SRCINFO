@@ -1,7 +1,7 @@
 pkgbase = polipo-git
 	pkgdesc = A caching web proxy
 	pkgver = 1.1.1.r41.g4d42ca1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.irif.fr/~jch/software/polipo/
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,12 @@ pkgbase = polipo-git
 	provides = polipo
 	conflicts = polipo
 	source = git+https://github.com/jech/polipo.git
-	source = polipo.service::https://git.archlinux.org/svntogit/community.git/plain/trunk/polipo.service?h=packages/polipo
-	source = polipo.sysusers::https://git.archlinux.org/svntogit/community.git/plain/trunk/polipo.sysusers?h=packages/polipo
-	source = polipo.tmpfiles::https://git.archlinux.org/svntogit/community.git/plain/trunk/polipo.tmpfiles?h=packages/polipo
+	source = polipo.service::https://aur.archlinux.org/cgit/aur.git/plain/polipo.service?h=polipo
+	source = polipo.sysusers::https://aur.archlinux.org/cgit/aur.git/plain/polipo.sysusers?h=polipo
+	source = polipo.tmpfiles::https://aur.archlinux.org/cgit/aur.git/plain/polipo.tmpfiles?h=polipo
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = polipo-git
-
