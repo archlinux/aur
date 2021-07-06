@@ -6,7 +6,7 @@ pkgrel=15
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
-license=('GPL')
+license=('GPL2')
 groups=( "connective-server" )
 depends=( 'java-environment>=15.0' 'authbind' )
 makedepends=( 'gradle>=6.7' )

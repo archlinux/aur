@@ -5,7 +5,7 @@ pkgbase = connective-http
 	install = main.install
 	arch = any
 	groups = connective-server
-	license = GPL
+	license = GPL2
 	makedepends = gradle>=6.7
 	depends = java-environment>=15.0
 	depends = authbind
