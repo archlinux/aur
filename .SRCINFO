@@ -4,6 +4,7 @@ pkgbase = teamredminer
 	pkgrel = 0
 	url = https://github.com/todxx/teamredminer
 	arch = x86_64
+	conflicts = teamredminer-bin
 	options = !strip
 	source = teamredminer-0.8.3.tgz::https://github.com/todxx/teamredminer/releases/download/v0.8.3/teamredminer-v0.8.3-linux.tgz
 	sha256sums = 7e5404e6214eedab906abe7971e40de56c2d05dfcb1ddf6dacb434c10cbc1039
