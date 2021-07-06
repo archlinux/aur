@@ -1,19 +1,21 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pinentry-git
-pkgver=1.1.1.r5.g19a18ba
+pkgver=1.2.base.r11.g7f7fd8b
 pkgrel=1
 pkgdesc="A small collection of dialog programs that allow GnuPG to read passphrases and PIN numbers in a secure manner"
 arch=('i686' 'x86_64')
 url="https://gnupg.org/software/pinentry/index.html"
 license=('GPL2')
-depends=('glibc' 'libassuan' 'libcap' 'libsecret' 'ncurses')
+depends=('glibc' 'glib2' 'libassuan' 'libcap' 'libsecret' 'ncurses')
 makedepends=('git' 'efl' 'gcr' 'gtk2' 'qt5-base')
 provides=('pinentry')
 conflicts=('pinentry')
 source=("git+https://dev.gnupg.org/source/pinentry.git"
-        "pinentry.bin::https://git.archlinux.org/svntogit/packages.git/plain/trunk/pinentry?h=packages/pinentry")
+        "pinentry.bin::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/pinentry/trunk/pinentry"
+        "preexec::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/pinentry/trunk/preexec")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 
@@ -47,4 +49,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
   install -Dm755 "$srcdir/pinentry.bin" "$pkgdir/usr/bin/pinentry"
+  install -Dm755 "$srcdir/preexec" -t "$pkgdir/etc/pinentry"
 }
