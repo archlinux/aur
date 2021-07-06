@@ -1,7 +1,8 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper-git
-pkgver=1.1.1.r2.gfdc8a1d
+srcname=fantascene-archLinux-DDE-git
+pkgver=1.1.1.r0.g39b3ec3
 pkgrel=1
 pkgdesc="Deepin Desktop Environment dynamic wallpaper/ DDE 动态壁纸"
 arch=('x86_64')
@@ -18,10 +19,10 @@ options=('!strip')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
-#pkgver() {
- #   cd "${srcdir}/${pkgname%-git}"
- #   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+   cd "${srcdir}/${pkgname%-git}"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
