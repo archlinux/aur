@@ -1,6 +1,6 @@
 pkgbase = seatd-git
 	pkgdesc = Seat management daemon and library
-	pkgver = r187.753c5276cf
+	pkgver = r195.2204db5531
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/seatd
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = seatd-git
 	sha256sums = SKIP
 
 pkgname = seatd-git
-

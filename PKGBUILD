@@ -1,7 +1,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=seatd-git
-pkgver=r187.753c5276cf
+pkgver=r195.2204db5531
 pkgrel=1
 pkgdesc="Seat management daemon and library"
 arch=(x86_64)
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   mkdir -p build
-  arch-meson seatd build -Dlogind=systemd
+  arch-meson seatd build -Dlibseat-logind=systemd
   ninja -C build
 }
 
