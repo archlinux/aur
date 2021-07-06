@@ -1,20 +1,19 @@
 pkgbase = libretro-beetle-saturn-git
-	pkgdesc = Standalone port of Mednafen Saturn to the libretro API
-	pkgver = r499.1fee984
+	pkgdesc = Sega Saturn core
+	pkgver = r590.ee5b214
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/beetle-saturn-libretro
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	groups = libretro
 	license = GPL2
 	makedepends = git
-	depends = libretro-core-info
 	depends = gcc-libs
+	depends = libretro-core-info
 	provides = libretro-beetle-saturn
 	conflicts = libretro-beetle-saturn
 	source = libretro-beetle-saturn::git+https://github.com/libretro/beetle-saturn-libretro.git
 	md5sums = SKIP
 
 pkgname = libretro-beetle-saturn-git
-
