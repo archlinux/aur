@@ -12,7 +12,7 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-pandas'
              'python-beautifulsoup4'
              'python-plotly>=4.0.0'
-             'python-nbsphinx'
+             'python-nbsphinx>=0.8.6'
              'python-numba'
              'python-sphinx_rtd_theme'
              'python-sphinx-notfound-page'
@@ -22,7 +22,6 @@ makedepends=("python-${_pyname}=${pkgver}"
              'python-astroquery'
              'python-myst-parser'
              'python-jupytext'
-             'python-jinja<3.0.0'
              'graphviz')
 source=("https://github.com/poliastro/poliastro/archive/v${pkgver}.tar.gz"
         'fix_nbsphinx_errors.patch')

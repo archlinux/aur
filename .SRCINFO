@@ -11,7 +11,7 @@ pkgbase = python-poliastro-doc
 	makedepends = python-pandas
 	makedepends = python-beautifulsoup4
 	makedepends = python-plotly>=4.0.0
-	makedepends = python-nbsphinx
+	makedepends = python-nbsphinx>=0.8.6
 	makedepends = python-numba
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-notfound-page
@@ -21,7 +21,6 @@ pkgbase = python-poliastro-doc
 	makedepends = python-astroquery
 	makedepends = python-myst-parser
 	makedepends = python-jupytext
-	makedepends = python-jinja<3.0.0
 	makedepends = graphviz
 	source = https://github.com/poliastro/poliastro/archive/v0.15.2.tar.gz
 	source = fix_nbsphinx_errors.patch
