@@ -1,3 +1,24 @@
+=== Morgen 2.1.8
+Ouch! We have been reported a crash occurring when trying to edit calendar shortcuts. Morgen 2.1.8 fixes this issue. Since we were at it, we also fixed a problem causing an error when editing some events created with Fastmail.
+
+
+=== Morgen 2.1.7
+- Fixed a memory leak causing memory usage to grow over time; this should also fix performance degradation over time
+- Fixed an issue where certain CalDAV accounts could not be connected because of a failed service discovery (was actually not fixed in 2.1.6)
+- Fixed an issue causing some recurrence rules not to be updated correctly
+- Fixed an issue where tasks could not be dropped to the all-day section
+- Fixed an issue causing the first occurrence of an event series not to be displayed in some timezones
+- Fixed an issue causing some events to overlap entirely in the Month view
+
+⭐ Improvements
+- The major new feature landed in 2.1.7 is Account Synchronization.
+- Morgen now clears outdated notifications
+- Morgen does not send notifications for events that belong to an inactive calendar anymore
+- The Morgen icon is used for task switcher on Linux as well
+
+
+
+
 === Morgen 2.1.6
 
 * Bug Fixes
