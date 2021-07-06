@@ -2,9 +2,7 @@
 pkgname=mtk
 pkgver=1.0.0
 
-_cyanversion=1.0.0.A14 # Needed to find the right version ZIP
-
-pkgrel=4
+pkgrel=5
 pkgdesc="MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit
 (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)"
 arch=( 'any' )
@@ -26,14 +24,14 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
-    cd MtkCLI
+    cd Cyan/MtkCLI
     chmod +x ../gradlew
     ../gradlew -c ../settings.lite.gradle installation
 }
 
 package() {
     mkdir "$pkgdir/usr/lib/mtk-libs/" -p
-    cd build/MTK-CLI/Installations
+    cd Cyan/build/MTK-CLI/Installations
     
     rm *-portable
     rm *.bat
