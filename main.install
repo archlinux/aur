@@ -14,6 +14,7 @@ post_install() {
     chown connective "$serverDir/.credtool.target"
     
     mkdir "$serverDir/modules" -p
+    chown connective:connective "$serverDir/modules" -R
     cp "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar" -f
     chown connective "$serverDir/modules/SaltedAuth.jar"
        
