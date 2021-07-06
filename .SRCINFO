@@ -1,0 +1,17 @@
+pkgbase = vim-winresizer-git
+	pkgdesc = Easily resize your vim windows
+	pkgver = 1.1.1.r23.9dc9899
+	pkgrel = 1
+	url = https://github.com/simeji/winresizer
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-winresizer
+	conflicts = vim-winresizer
+	source = git+https://github.com/simeji/winresizer.git
+	sha256sums = SKIP
+
+pkgname = vim-winresizer-git
