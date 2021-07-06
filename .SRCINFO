@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-syncthingtray
 	pkgdesc = Tray application for Syncthing (mingw-w64)
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = any
@@ -22,15 +22,16 @@ pkgbase = mingw-w64-syncthingtray
 	depends = mingw-w64-qt5-svg
 	depends = mingw-w64-qtutilities
 	depends = mingw-w64-openssl
+	depends = mingw-w64-boost
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-qt5-declarative
 	options = !buildflags
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = syncthingtray-1.1.7.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.7.tar.gz
+	source = syncthingtray-1.1.8.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.8.tar.gz
 	source = syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest
-	sha256sums = bd540efd58c3760db8953c230ab9558746700272da59dc9075a66b05b0a50c50
+	sha256sums = 82a3ca453dd74bd2d73b49a5288eb52683ce26fbc7d4a2f6445aa57df6dc2f35
 	sha256sums = SKIP
 
 pkgname = mingw-w64-syncthingtray
