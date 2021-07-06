@@ -2,8 +2,8 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='opendrop'
-pkgver='0.11.0'
-pkgrel='2'
+pkgver='0.13.0'
+pkgrel='1'
 pkgdesc='An open Apple AirDrop implementation'
 arch=('any')
 url="https://github.com/seemoo-lab/${pkgname}"
@@ -15,7 +15,7 @@ depends=('python-requests' 'python-fleep' 'python-ifaddr'
 	 'python-zeroconf' 'owlink')
 makedepends=('python' 'python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('014b62768d3e0b65051ddf45bc0394b664b0acefae1032a7719ac09716c79e68')
+sha256sums=('1684ee1497615b6d9c410d73f0712ebc2b6b5c706075e75fb6799175264e4de5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
