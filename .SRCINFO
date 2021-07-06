@@ -1,13 +1,13 @@
 pkgbase = dosbox-staging
 	pkgdesc = DOS/x86 emulator focusing on ease of use. Based on DOSBox
-	pkgver = 0.76.0
-	pkgrel = 3
+	pkgver = 0.77.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dosbox-staging/dosbox-staging
 	arch = any
 	license = GPL2
-	makedepends = autoconf
-	makedepends = automake
+	makedepends = meson
+	makedepends = ninja
 	makedepends = gcc
 	makedepends = gzip
 	depends = sdl2
@@ -15,12 +15,12 @@ pkgbase = dosbox-staging
 	depends = opusfile
 	depends = alsa-lib
 	depends = fluidsynth
+	depends = munt
 	optdepends = libpng
 	optdepends = ncurses
 	provides = dosbox
 	conflicts = dosbox
-	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.76.0.tar.gz
-	sha256sums = 7df53c22f7ce78c70afb60b26b06742b90193b56c510219979bf12e0bb2dc6c7
+	source = https://github.com/dosbox-staging/dosbox-staging/archive/v0.77.0.tar.gz
+	sha256sums = 85e1739f5dfd7d96b752b2b0e12aad6f95c7770b47fcdaf978d4128d7890d986
 
 pkgname = dosbox-staging
-
