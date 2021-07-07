@@ -1,0 +1,18 @@
+pkgbase = jacques-ctf-git
+	pkgdesc = Jacques CTF is an interactive CTF trace inspection tool with a terminal user interface
+	pkgver = r199.4d68935
+	pkgrel = 1
+	url = https://github.com/eepp/jacques-ctf
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = yactfr
+	depends = ncurses
+	depends = boost-libs
+	provides = jacques-ctf
+	conflicts = jacques-ctf
+	source = jacques-ctf-git::git+https://github.com/eepp/jacques-ctf
+	md5sums = SKIP
+
+pkgname = jacques-ctf-git
