@@ -1,10 +1,11 @@
 # Maintainer: encadyma <encadyma.hi at gmail dot com>
+# Maintainer: Amy <amy at fluff dot tech>
 
 _pkgexec=usc-game
 pkgname=unnamed-sdvx-clone
-_pkgnum='0.4'
+_pkgnum='0.5.0'
 pkgver="v$_pkgnum"
-pkgrel=3
+pkgrel=1
 
 pkgdesc='A game based on K-Shoot MANIA and Sound Voltex'
 arch=('x86_64')
@@ -30,9 +31,7 @@ source=(
 	"$pkgname::git+https://github.com/Drewol/unnamed-sdvx-clone.git#tag=$pkgver"
 )
 
-sha256sums=(
-	"SKIP"
-)
+sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
