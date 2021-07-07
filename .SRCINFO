@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 5.13.v.0
+	pkgver = 5.13.v.1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-amd
 	makedepends = lzop
 	makedepends = gcc>=10.3
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13.1
 	source = config.x86_64
 	source = linux-amd.preset
 	source = linux.install
 	source = 5010_enable-cpu-optimizations-universal.patch
 	sha256sums = SKIP
-	sha256sums = 777b3699a9c306c8190fc3874e8c0219717671a499827e3ffd1f11e099428df8
+	sha256sums = 759e5a9b663e645c05bb9830dec580449bcfe475e15174eb8f3b6335ef6249eb
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 9083b94bf9f547cceeed9fe2f37fb201e42d5b00734a86e4ea528447a59d4b9a
