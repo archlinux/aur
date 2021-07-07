@@ -28,7 +28,7 @@ sha256sums=(
 )
 
 package() {
-	tar xf data.tar.* -C "${pkgdir}"
+	tar xf data.tar* -C "${pkgdir}"
     install -d "${pkgdir}/usr/bin"
 
     cp kicad-nightly.env "$pkgdir/usr/share/kicad-nightly/kicad-nightly.env"
