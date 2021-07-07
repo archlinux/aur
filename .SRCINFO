@@ -1,13 +1,13 @@
 pkgbase = gimp-plugin-dcamnoise2
 	pkgdesc = Removes noise from images
 	pkgver = 0.64
-	pkgrel = 6
-	url = http://example.org/
+	pkgrel = 7
+	url = https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/src/master/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gimp
-	source = https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/raw/tip/dcamnoise2-0.64.cpp
+	source = https://bitbucket.org/stativ/gimp-plugin-dcamnoise2/raw/a1de7f38cdce2fd65169f40db47704cb1885a831/dcamnoise2-0.64.cpp
 	md5sums = ace7859517a7d161abe47b6f0eb4281a
 
 pkgname = gimp-plugin-dcamnoise2
