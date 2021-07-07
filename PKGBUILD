@@ -8,7 +8,7 @@ _svt_vp9_ver='abd5c59c06d686eae57ef4e6f899c601f791d055'
 
 pkgname=ffmpeg-amd-full
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -17,9 +17,9 @@ depends=(
     # official repositories:
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
         'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-        'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
-        'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
-        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
+        'libcdio-paranoia' 'chromaprint' 'codec2' 'dav1d' 'libdc1394' 'libavc1394'
+        'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme'
+        'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
         'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
         'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
         'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
@@ -29,7 +29,7 @@ depends=(
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib'
         'libomxil-bellagio' 'libdrm' 'libva' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 
         'pocketsphinx' 'lensfun-git'
 )
