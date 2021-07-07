@@ -1,7 +1,7 @@
 # Maintainer: Christian Brassat <christian.brassat@gmail.com>
 
 pkgname=gnome-shell-extension-arc-menu
-pkgver=v7
+pkgver=v10
 pkgrel=1
 pkgdesc="Application Menu Extension for GNOME"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 )
 conflicts=('gnome-shell-extension-arc-menu-git')
 source=("https://gitlab.com/arcmenu/ArcMenu/-/archive/${pkgver}/ArcMenu-${pkgver}.zip")
-md5sums=('ffa3851b42320c3454c8bbe25b3ea4d5')
+md5sums=('95e32af67a570eabc7b557487ee4bce8')
 
 package() {
 	cd "ArcMenu-${pkgver}"
