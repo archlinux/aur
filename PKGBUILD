@@ -17,7 +17,7 @@ package_python-base45() {
   depends+=('python')
 
   cd "${srcdir}/${_name}-${pkgver}"
-  python -m trace -t setup.py install --root="${pkgdir}" > Test.txt 2>&1
+  python setup.py install --root="${pkgdir}"
 }
 
 
