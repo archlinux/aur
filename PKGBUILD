@@ -110,7 +110,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
+  #echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
