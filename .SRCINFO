@@ -1,12 +1,13 @@
 pkgbase = ares-emu-git
 	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)
 	pkgver = v121a.r1.g77110f15a
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ares.dev/
 	arch = x86_64
 	arch = i686
 	license = ISC
 	makedepends = mesa
+	makedepends = git
 	depends = gtk3
 	depends = gtksourceview3
 	depends = libao

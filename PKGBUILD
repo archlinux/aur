@@ -2,13 +2,13 @@
 
 pkgname=ares-emu-git
 pkgver=v121a.r1.g77110f15a
-pkgrel=4
+pkgrel=5
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares.dev/"
 license=("ISC")
 depends=(gtk3 gtksourceview3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
-makedepends=(mesa)
+makedepends=(mesa git)
 provides=(ares-emu)
 conflicts=(ares-emu)
 source=("git+https://github.com/higan-emu/ares.git"
