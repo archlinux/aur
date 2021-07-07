@@ -1,0 +1,18 @@
+pkgbase = audd-cli-git
+	pkgdesc = CLI music recognition using the AudD API.
+	pkgver = r8.ea1d0c8
+	pkgrel = 1
+	url = https://github.com/loiccoyle/audd-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = jq
+	depends = ffmpeg
+	depends = libnotify
+	optdepends = dunstify: recognition results in interactive notification.
+	provides = audd-cli
+	source = audd-cli::git+https://github.com/loiccoyle/audd-cli.git
+	md5sums = SKIP
+
+pkgname = audd-cli-git
