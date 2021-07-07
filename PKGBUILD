@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=duckstation-git
-pkgver=r4442.d3fea7b5
+pkgver=r4913.24b4be51
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -38,8 +38,8 @@ package() {
     ln -svt "${pkgdir}/usr/bin" /opt/"${pkgname%-git}"/"${pkgname%-git}"-{qt,nogui}
 
     # Desktop file
-    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-git}"/dist/duckstation-{qt,nogui}.desktop
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "${pkgname%-git}"/extras/linux-desktop-files/duckstation-{qt,nogui}.desktop
     sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
     sed -e 's/Icon=duckstation-qt/Icon=duckstation/' -i "${pkgdir}/usr/share/applications/duckstation-nogui.desktop"
-    install -Dm644 "${pkgname%-git}"/dist/icon-64px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
+    install -Dm644 "${pkgname%-git}"/extras/icons/icon-256px.png "${pkgdir}/usr/share/pixmaps/duckstation.png"
 }
