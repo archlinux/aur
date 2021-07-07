@@ -1,28 +1,32 @@
 pkgbase = pjproject-git
 	pkgdesc = Open source SIP stack and media stack
-	pkgver = 2.10.r38.g98f70c2
-	pkgrel = 3
+	pkgver = 2.11.r43.g8ef2a3c
+	pkgrel = 1
 	url = https://www.pjsip.org/
 	arch = x86_64
+	arch = aarch64
 	arch = armv7h
 	arch = i686
 	license = GPL
 	makedepends = alsa-lib
-	makedepends = e2fsprogs
 	makedepends = ffmpeg
 	makedepends = libsamplerate
 	makedepends = libsrtp
 	makedepends = openssl
 	makedepends = opus
 	makedepends = portaudio
+	makedepends = speex
+	makedepends = util-linux
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = speex
+	makedepends = e2fsprogs
+	makedepends = git
 	makedepends = swig
-	makedepends = util-linux
 	source = pjproject-git::git+https://github.com/pjsip/pjproject.git
+	source = 0001-Don-t-build-Java-bindings.patch
 	source = config_site.h
 	sha256sums = SKIP
+	sha256sums = c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4
 	sha256sums = 61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472
 
 pkgname = pjproject-git
@@ -37,12 +41,11 @@ pkgname = pjproject-git
 	depends = util-linux
 	optdepends = e2fsprogs
 	optdepends = python-pjproject: Python bindings
-	provides = pjproject
+	provides = pjproject=2.11.r43.g8ef2a3c
 	conflicts = pjproject
 
 pkgname = python-pjproject-git
-	depends = pjproject
 	depends = python
-	provides = python-pjproject
+	depends = python-setuptools
+	provides = python-pjproject=2.11.r43.g8ef2a3c
 	conflicts = python-pjproject
-
