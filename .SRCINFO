@@ -1,14 +1,13 @@
 pkgbase = python-pyroaring
 	pkgdesc = Fast and lightweight set for unsigned 32 bits integers
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://pypi.org/pypi/pyroaring
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/p/pyroaring/pyroaring-0.3.0.tar.gz
-	sha256sums = 685b6beb5eecf25cc66bcfe45926cb38a18722a294079a4e90c62e2c80a10408
+	source = https://pypi.org/packages/source/p/pyroaring/pyroaring-0.3.2.tar.gz
+	sha256sums = b5fb283efe71db7234177134062550b6cd9542cef3467d36988c4f69f303a9c8
 
 pkgname = python-pyroaring
-
