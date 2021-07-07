@@ -1,0 +1,14 @@
+pkgbase = python-base45
+	pkgdesc = A Python module to encode/decode binary data using Base45 as described in draft-faltstrom-base45-06 (https://datatracker.ietf.org/doc/draft-faltstrom-base45/).
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/base45/#files
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/b/base45/base45-0.3.1.tar.gz
+	sha256sums = 2a086154572c5f644e82024004a09f6a391f3ce564067e1bf35919d3aee242ba
+
+pkgname = python-base45
+	depends = python
