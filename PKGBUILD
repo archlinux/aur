@@ -1,6 +1,6 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=fcft
-pkgver=2.4.1  # Don’t forget to update CHANGELOG.md
+pkgver=2.4.2  # Don’t forget to update CHANGELOG.md
 pkgrel=1
 pkgdesc="Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('meson' 'ninja' 'scdoc' 'tllist')
 checkdepends=('check' 'ttf-dejavu')
 changelog=CHANGELOG.md
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('7041892d79ca18cfc0c800169caf02cfe6aefd4822cf2d89b2e610108e95a63c')
+sha256sums=('2fd05bde524aff59b6f3742471415316bffc18670eba2e743abf723ec45e7dfd')
 
 build() {
   cd ${pkgname}
