@@ -3,10 +3,10 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=suckit-git
-pkgver=0.1.1.r8.g94bbc99
+pkgver=0.1.2.r0.g7c05a18
 pkgrel=1
 pkgdesc="Recursively visit and download a website's content to your disk (git)"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Skallwar/suckit"
 license=('Apache')
 depends=('openssl' 'gcc-libs')

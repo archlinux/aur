@@ -1,9 +1,9 @@
 pkgbase = suckit-git
 	pkgdesc = Recursively visit and download a website's content to your disk (git)
-	pkgver = 0.1.1.r8.g94bbc99
+	pkgver = 0.1.2.r0.g7c05a18
 	pkgrel = 1
 	url = https://github.com/Skallwar/suckit
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = rust
 	makedepends = git
