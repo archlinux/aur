@@ -1,0 +1,13 @@
+pkgbase = rn-bin
+	pkgdesc = Rename files and directories.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thled/rn
+	arch = x86_64
+	license = MIT
+	provides = rn
+	conflicts = rn
+	source = https://github.com/thled/rn/releases/download/v0.1.0/rn_amd64
+	sha256sums = fe8811e82142248110822a305fb8ee40337a6bf5bb09e9650c07ae414c38ec71
+
+pkgname = rn-bin
