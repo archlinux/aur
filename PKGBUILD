@@ -13,20 +13,30 @@
 #
 #
 
-_pkgname=codelite
-_pkgver=15.0.3
+#
+_pkg_name=codelite
+_pkg_ver=15.0.5-1
 _commit=c4971afd07a893b42a8aaf1d855fb54de895cc5f
 
-pkg_ident="${_pkgver//_/-}"
-pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
-
-#pkg_ident="${_commit}"
-#pkg_name_ver="${_pkgname}-${_commit}"
-
-
-pkgname=${_pkgname}-unstable
-pkgver=${_pkgver}
+# pkg
+pkgname=${_pkg_name}-unstable
+#pkgver=${_pkg_ver}
+#pkgver="${_pkg_ver//_/-}"
+pkgver="${_pkg_ver/-*/}"
 pkgrel=1
+
+
+# version
+_pkg_ident="${_pkg_ver}"
+_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
+#_pkg_name_ver="${_pkg_name}-${_pkg_ver//_/-}"
+
+# commit
+#pkg_ident="${_commit}"
+#pkg_name_ver="${_pkg_name}-${_commit}"
+
+
+#
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
@@ -53,11 +63,11 @@ conflicts=('codelite')
 
 
 source=(
-    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkg_ident}.tar.gz"
+    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('be122dccf1d61bb4233a912312b64c80'
+md5sums=('ceee929981744f82535356b2cd9763d6'
          '20f3428eb831c3ff2539a7228afaa3b4')
 
 noextract=('wxgui.zip')
@@ -82,7 +92,7 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  cd "${srcdir}/${pkg_name_ver}"
+  cd "${srcdir}/${_pkg_name_ver}"
   #patch -p0 < "${startdir}/CMakeLists.txt.patch"
 }
 
@@ -92,7 +102,7 @@ prepare()
 #
 build()
 {
-cd "${srcdir}/${pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ver}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
@@ -116,10 +126,10 @@ make -C "${BUILD_DIR}"
 #
 package()
 {
-cd "${srcdir}/${pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ver}"
 
 make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
-install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
 #install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
 }
