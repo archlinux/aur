@@ -17,7 +17,7 @@ pkgname=(
 	$_basename-server-git
 	$_basename-unixd-clients-git
 )
-pkgver=v1.1.0.alpha.4.r57.ge1f4a57
+pkgver=v1.1.0.alpha.5.r0.g4be329e
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
