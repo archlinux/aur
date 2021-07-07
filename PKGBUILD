@@ -57,7 +57,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -83,7 +83,7 @@ source=(
   "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
   "${_patchsource}/block-patches/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/bbr2-patches/0001-bbr2-5.13-introduce-BBRv2.patch"
+  "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
   "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
@@ -99,7 +99,6 @@ source=(
   "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
-#  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -110,8 +109,8 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-#    echo "Add upstream patches"
-#    patch -Np1 -i ../patch-${pkgver}
+    echo "Add upstream patches"
+    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
     echo "Setting version..."
@@ -520,7 +519,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'e16eb528e701193bc8cb1facc6b27231'
          '396c84c4a6557db27f9c3bbfa656ac3e'
          '9bbbd88f0303ccd59064648eaaf80edd'
-         '12cdc30bc3e2a17825b23b63bd6a5e7a'
+         '1bd37d8e71b2a7aae8ebd2853a08f445'
          '63078800040b2a9a9f19c59c4ebf5b23'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'ed46a39e062f07693f52981fbd7350b7'
