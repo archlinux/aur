@@ -1,23 +1,20 @@
 pkgbase = polipo
-	pkgdesc = A small and fast caching web proxy.
+	pkgdesc = Small and fast caching web proxy
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.pps.jussieu.fr/~jch/software/polipo/
 	arch = x86_64
-	license = GPL
-	makedepends = texinfo
-	depends = bash
+	license = MIT
 	source = http://www.pps.univ-paris-diderot.fr/~jch/software/files/polipo/polipo-1.1.1.tar.gz
 	source = http://www.pps.univ-paris-diderot.fr/~jch/software/files/polipo/polipo-1.1.1.tar.gz.asc
 	source = polipo.sysusers
 	source = polipo.tmpfiles
 	source = polipo.service
 	validpgpkeys = F8E70AAD74D32CAC27B9AFD62652C881EADB5526
-	md5sums = 86939e331e656f638271f578b6e3f893
-	md5sums = SKIP
-	md5sums = 3287e00f0e103a0e52c625efdabe5a37
-	md5sums = 6cc953fb59920f4448d8cac53ac3fbc1
-	md5sums = 3861a067f6cdd2b8afcee1de97678902
+	sha256sums = a259750793ab79c491d05fcee5a917faf7d9030fb5d15e05b3704e9c9e4ee015
+	sha256sums = SKIP
+	sha256sums = 7cca508a1a43c9162cf76fc782a3c7f4736189daa757a4e5432d5c2d073214c8
+	sha256sums = 9229d9adbce9dd3630cea01f80f8bf262d733bc58f2a1cff2567692f836bec66
+	sha256sums = fc62ed3ebe6e0b58276b0f164a3f307d1903cf1600bb1813cf0515fda7429d13
 
 pkgname = polipo
-
