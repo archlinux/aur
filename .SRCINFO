@@ -1,0 +1,14 @@
+pkgbase = python-flynn
+	pkgdesc = Flynn is a Python library providing CBOR [RFC7049] encoding and decoding with a traditional buffered and a streaming interface.
+	pkgver = 1.0.0b2
+	pkgrel = 1
+	url = https://pypi.org/project/flynn/#files
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/f/flynn/flynn-1.0.0b2.tar.gz
+	sha256sums = bb0004e3f6924b3148e3b537988356875c669fb502696fb2f5e366d7297b02d2
+
+pkgname = python-flynn
+	depends = python
