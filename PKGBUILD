@@ -1,18 +1,18 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=libpcanbasic
-pkgver=4.3.2
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='API for the development of applications with PEAK CAN connection for Linux '
 arch=('x86_64')
 url='https://www.peak-system.com/PCAN-USB.199.0.html'
 license=('LGPL')
-depends=('peak-linux-headers')
+#depends=('peak-linux-headers')
 source=(
     "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "5e37d48c7f21094b16a12d9cd6d2bac988ecfe3ed34e449a43058fb25903e336"
+    "b44d76964cbfb60b98b5d3676ef49eaa6d0c70bd10afc8b45a1d28a57968177f"
 )
 
 prepare() {
