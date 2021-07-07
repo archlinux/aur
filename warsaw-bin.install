@@ -17,27 +17,21 @@ post_install() {
     fi
 }
 
+post_upgrade() {
+    if systemctl is-active warsaw.service 1>/dev/null; then
+        systemctl daemon-reload
+        systemctl restart warsaw.service
+    fi
+}
+
 pre_remove() {
-    if command -v systemctl > /dev/null 2>&1; then
-      systemctl stop warsaw.service
-    fi
-
-    if command -v warsaw > /dev/null 2>&1; then
-      warsaw stop
-    fi
-
-    if command -v systemctl > /dev/null 2>&1; then
-      systemctl disable warsaw.service
-      systemctl daemon-reload
+    if systemctl is-enabled warsaw.service 1>/dev/null; then
+        systemctl disable --now warsaw.service
     fi
 }
 
 post_remove() {
-    if command -v rm > /dev/null 2>&1; then
-      rm -rf /usr/local/etc/warsaw
-    fi
-
-    if command -v pkill > /dev/null 2>&1; then
-      pkill wsatspi
+    if [ -e "/usr/local/etc/warsaw" ]; then
+        rm -rf /usr/local/etc/warsaw
     fi
 }

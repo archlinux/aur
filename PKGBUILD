@@ -3,7 +3,7 @@
 
 pkgname=warsaw-bin
 pkgver=2.20.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://diagnostico.gasantifraud.com"
