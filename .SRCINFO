@@ -1,0 +1,19 @@
+pkgbase = cilium-cli-bin
+	pkgdesc = CLI to install, manage & troubleshoot Kubernetes clusters running Cilium
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://cilium.io/
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	provides = cilium-cli=0.8.4
+	conflicts = cilium
+	conflicts = cilium-bin
+	conflicts = cilium-git
+	options = !strip
+	source_x86_64 = cilium-0.8.4-amd64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.8.4/cilium-linux-amd64.tar.gz
+	sha256sums_x86_64 = f638a4fd7582c985a893b8f61bd25bfcc47f28f590256aa301ee167f86a5f232
+	source_aarch64 = cilium-0.8.4-arm64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.8.4/cilium-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3f444d626c9ae0fefaaf019da099f820c5bb5ee65f02e40533811371b6715ec5
+
+pkgname = cilium-cli-bin
