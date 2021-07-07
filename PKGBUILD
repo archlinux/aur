@@ -2,7 +2,7 @@
 
 pkgname=ares-emu-git
 pkgver=v121a.r1.g77110f15a
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -25,26 +25,32 @@ pkgver() {
 }
 
 prepare() {
+  # Patch Ares so that it can look for its files that are installed system-wide here
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
 build() {
-  cd "${srcdir}/ares/lucia"
-  make hiro=gtk3
+  # Download first parallel-rdp from github, otherwise N64 emulation won't work.
+  make -C "${srcdir}/ares-${pkgver}/ares/n64/vulkan" sync-upstream
+  make -C "${srcdir}/ares-${pkgver}/lucia" hiro=gtk3
 }
 
 package() {
-  # Install the license
+  # Install Ares' license in /usr/share/licenses
   install -Dm 644 "${srcdir}/ares/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # Lucia is the simple user interface for Ares
   install -Dm 755 "${srcdir}/ares/lucia/out/lucia" -t "${pkgdir}/usr/bin/"
   install -Dm 644 "${srcdir}/ares/lucia/resource/lucia.png" -t "${pkgdir}/usr/share/icons/"
   
+  # It's commonly known as Ares, less so as Lucia, so specify that in .desktop file
   sed -i "s/Name=lucia/Name=Ares (Lucia)/" "${srcdir}/ares/lucia/resource/lucia.desktop"
+
+  # Force XWayland if running on Wayland, because Ares currently isn't compatible with it.
+  sed -i "s/Exec=lucia/Exec=env GDK_BACKEND=x11 lucia/" "${srcdir}/ares-${pkgver}/lucia/resource/lucia.desktop"
   install -Dm 644 "${srcdir}/ares/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"
 
-  # Also install the shaders for Ares
+  # Also install the shaders in Ares' shared directory
   install -dm 755 "${pkgdir}/usr/share/lucia"
   cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/lucia/Shaders/"
 }
