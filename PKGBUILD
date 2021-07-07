@@ -1,10 +1,10 @@
-pkgname=1password
+pkgname=1password-beta
 
 _tarver=8.1.2-2.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
 pkgrel=2
-conflicts=('1password-beta' '1password-beta-bin')
+conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
 url='https://1password.com'
