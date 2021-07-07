@@ -42,8 +42,8 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -D target/release/firefoxpwa-connector "$pkgdir/usr/lib/firefoxpwa/firefoxpwa-connector"
     install -D manifests/linux.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/firefoxpwa.json"
-    sudo mkdir -p /usr/share/firefoxpwa/userchrome/
-    sudo cp -R userchrome/* /usr/share/firefoxpwa/userchrome/
+    sudo mkdir -p "$pkgdir/usr/share/firefoxpwa/userchrome/"
+    sudo cp -R userchrome/* "$pkgdir/usr/share/firefoxpwa/userchrome/"
     sudo mkdir -p /usr/share/firefoxpwa/runtime/
     chmod 777 /usr/share/firefoxpwa/runtime/
     echo WARNING: For FirefoxPWA to work run '"firefoxpwa runtime install"' after the installation!
