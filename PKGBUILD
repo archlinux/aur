@@ -4,7 +4,8 @@
 _projectname=electron
 _major=12
 _pkgname=${_projectname}${_major}
-pkgver=${_major}.0.12
+_pkgver=${_major}.0.14
+pkgver="${_pkgver/-/.}"
 pkgname=${_pkgname}-bin
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - version ${_major} - binary version"
@@ -19,31 +20,31 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${pkgver}"
+_releaseurl="https://github.com/${_projectname}/${_projectname}/releases/download/v${_pkgver}"
 source_x86_64=(
-	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-x64.zip"
-	"${pkgname}-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-x64.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-x64.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-x86_64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-x64.zip"
 )
 source_i686=(
-	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-ia32.zip"
-	"${pkgname}-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-ia32.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-ia32.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-i686.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-ia32.zip"
 )
 source_armv7h=(
-	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-armv7l.zip"
-	"${pkgname}-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-armv7l.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-armv7l.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-armv7h.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-armv7l.zip"
 )
 source_aarch64=(
-	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${pkgver}-linux-arm64.zip"
-	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${pkgver}-linux-arm64.zip"
+	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
+	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('ddfcddbffe8247d17878073933243d587b14870d3cee357fe430fe935a1eadc8'
-                   '98e7cc5dd3f161c37cbbd9aef90d55c51531a4bad8221a9d1f92e78014758054')
-sha256sums_i686=('b7dda7c31b00bb130f912b9e8a3766508f6880a8813223ebe12e2adcb598a5ca'
-                 '2a06936fa13929342ebb7521d2e3e8b4a7a08ac1d757c0521a047b4cf0a979fc')
-sha256sums_armv7h=('8bd9ddc1d578614adeef509aa6f3e4d07e87a3ebb853087bd8818f963fe360fc'
-                   'c0a2c13d99a1152aa6252fd8237207a6f395b70d0890eba5b7209a03beb9a6ec')
-sha256sums_aarch64=('b9ffca207573a2edee6003c2b1a60ba64b53322105339020199db6e6b30d9b89'
-                    'a92e2eaebab75b93eda0bc523ba9262a32db95c7546c095fee93d39a304521a0')
+sha256sums_x86_64=('a0f93d477af7b37567de775c77c169aa629a423738c509921c17087c2d34d580'
+                   'a75886b5aad27c64232ec0ec47d8c3c1d696ab968007cd8bfa5db87b33e8a5e7')
+sha256sums_i686=('cd2588d8d98af1f44743d19dd5726028dfb013073cb4563b2d3521e4a48da0e3'
+                 '0bb86208173da28250f261b162657c3614b859fb561df54cbd25b566d619c75c')
+sha256sums_armv7h=('3f7b67eb081f4e9e0a16b2bcec030313b1bcfe3f2d3034aa0459f75352f9e419'
+                   'bd743c6eec434aedb80e7e5eef58dfe9f133bc48015d263dc12a119dd1276e32')
+sha256sums_aarch64=('22359c043a31dd0fe5fb68ebaef0eb2ddc0d4bcfb150a8c8a11e5ad3d3f35835'
+                    '1f287496cc61c67db25339f8f79d09ace952edeaca47ea664766425ceaebc2a3')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
