@@ -9,7 +9,7 @@
 
 pkgname=tp_smapi-lts
 pkgver=0.43
-pkgrel=162
+pkgrel=163
 pkgdesc="Modules for ThinkPad's SMAPI functionality"
 arch=('x86_64')
 url='https://github.com/evgeni/tp_smapi'
