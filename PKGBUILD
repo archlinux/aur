@@ -2,7 +2,7 @@
 
 pkgname=ares-emu-git
 pkgver=v121a.r1.g77110f15a
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -47,7 +47,7 @@ package() {
   sed -i "s/Name=lucia/Name=Ares (Lucia)/" "${srcdir}/ares/lucia/resource/lucia.desktop"
 
   # Force XWayland if running on Wayland, because Ares currently isn't compatible with it.
-  sed -i "s/Exec=lucia/Exec=env GDK_BACKEND=x11 lucia/" "${srcdir}/ares-${pkgver}/lucia/resource/lucia.desktop"
+  sed -i "s/Exec=lucia/Exec=env GDK_BACKEND=x11 lucia/" "${srcdir}/ares/lucia/resource/lucia.desktop"
   install -Dm 644 "${srcdir}/ares/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Also install the shaders in Ares' shared directory
