@@ -1,10 +1,11 @@
 pkgbase = libdrm-proptest
 	pkgdesc = A test suit for libdrm that can be used to set RGB settings in wayland
 	pkgver = 2.4.106
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dri.freedesktop.org/
 	arch = x86_64
 	license = custom
+	makedepends = meson
 	depends = libdrm
 	source = https://dri.freedesktop.org/libdrm/libdrm-2.4.106.tar.xz
 	source = COPYING
