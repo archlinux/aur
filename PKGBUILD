@@ -1,8 +1,9 @@
+# maintainer: libele <libele@disroot.org>
 # http://rec.arts.int-fiction.narkive.com/pM8Kgfbw/confusion-just-enough-mdl
 
 pkgname=confusion
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A MDL interpreter"
 arch=('x86_64')
 provides=('confusion')
