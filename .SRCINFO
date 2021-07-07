@@ -36,7 +36,7 @@ pkgbase = easyeffects-git
 	optdepends = yelp: in-app help
 	provides = easyeffects
 	conflicts = easyeffects
-	source = easyeffects::git+https://github.com/wwmm/pulseeffects.git
+	source = easyeffects::git+https://github.com/wwmm/easyeffects
 	sha512sums = SKIP
 
 pkgname = easyeffects-git

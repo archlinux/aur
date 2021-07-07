@@ -19,7 +19,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'yelp: in-app help')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+https://github.com/wwmm/pulseeffects.git")
+source=("${pkgname%%-git}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
