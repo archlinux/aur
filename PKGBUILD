@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.hdfgroup.org/ftp/lib-external/szip/${pkgver}/src/szip-${pkgver}.tar.gz")
-sha256sums=('897dda94e1d4bf88c91adeaad88c07b468b18eaf2d6125c47acac57e540904a9')
+sha256sums=('21ee958b4f2d4be2c9cabfa5e1a94877043609ce86fde5f286f105f7ff84d412')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
