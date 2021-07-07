@@ -1,6 +1,6 @@
 pkgbase = gpg-tui-git
 	pkgdesc = A terminal user interface for GnuPG (git)
-	pkgver = 0.6.2.r0.gb61c740
+	pkgver = 0.7.0.r0.g94d6fb7
 	pkgrel = 1
 	url = https://github.com/orhun/gpg-tui
 	arch = x86_64
