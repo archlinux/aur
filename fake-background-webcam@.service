@@ -1,7 +1,6 @@
 [Unit]
 Description =Fake Background Webcam - frame-source /dev/video%i -> /dev/video2%i
-BindsTo=fake-background-bodypix.service
-After=fake-background-bodypix.service
+Requires=dbus.socket
 
 
 [Service]
