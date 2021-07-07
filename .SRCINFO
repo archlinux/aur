@@ -1,0 +1,21 @@
+pkgbase = ifbabel
+	pkgdesc = Treaty of Babel software suite.
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://babel.ifarchive.org/program.html
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = CC-BY-4.0
+	makedepends = dos2unix
+	makedepends = unzip
+	depends = curl
+	depends = glibc
+	noextract = babel-0.5.zip
+	source = https://babel.ifarchive.org/downloads/babel-0.5.zip
+	md5sums = 3176366462c9001e6cb266b3b4989515
+
+pkgname = ifbabel
