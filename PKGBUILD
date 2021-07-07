@@ -1,4 +1,5 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
+# Contributors: Janne Heß <jannehess at gmail dot com>
 pkgname=anki-sync-server-git
 pkgver=r379.44ab07f
 pkgrel=1
