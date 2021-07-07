@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -72,5 +72,5 @@ package() {
 			"$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
 	install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/$pkgname"
 	install -Dm644 "$srcdir/cheatsheets-$pkgver-LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname"
+		"$pkgdir/usr/share/licenses/$pkgname/cheatsheets-LICENSE"
 }
