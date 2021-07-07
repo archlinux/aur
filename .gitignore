@@ -1,5 +1,4 @@
 src/
 pkg/
-*.tar.xz
-mint-*.*.*
-LICENSE
+*.tar.gz
+*.tar.zst

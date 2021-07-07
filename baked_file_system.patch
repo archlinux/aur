@@ -1,0 +1,11 @@
+--- a/lib/baked_file_system/lib/baked_file_system/src/loader/loader.cr	2021-07-07 10:19:46.117712439 +0200
++++ b/lib/baked_file_system/lib/baked_file_system/src/loader/loader.cr	2021-07-07 11:01:11.637399119 +0200
+@@ -22,7 +22,7 @@
+
+       files = Dir.glob(File.join(root_path, "**", "*"))
+                  # Reject hidden entities and directories
+-                 .reject { |path| File.directory?(path) || !(path =~ /(\/\..+)/).nil? }
++                 .reject { |path| File.directory?(path) }
+
+       files.each do |path|
+         io << "bake_file BakedFileSystem::BakedFile.new(\n"
