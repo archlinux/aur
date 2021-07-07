@@ -8,6 +8,7 @@ arch=('any')
 license=('MIT')
 makedepends=('git' 'cmake' 'boost' 'doxygen')
 url='https://github.com/eepp/yactfr'
+provides=('yactfr')
 conflicts=('yactfr')
 source=("$pkgname::git+https://github.com/eepp/yactfr"
         'add-missing-assert-include.patch'
@@ -36,7 +37,7 @@ build() {
           -DCMAKE_BUILD_TYPE=release \
           -DOPT_BUILD_DOC=YES \
           -DCMAKE_INSTALL_PREFIX="/usr"
-    make -C build
+    make -C build -j$(nproc)
 }
 
 package() {

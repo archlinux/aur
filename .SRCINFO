@@ -9,6 +9,7 @@ pkgbase = yactfr-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = doxygen
+	provides = yactfr
 	conflicts = yactfr
 	source = yactfr-git::git+https://github.com/eepp/yactfr
 	source = add-missing-assert-include.patch
