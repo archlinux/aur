@@ -1,13 +1,12 @@
 pkgbase = libpcanbasic-jni
 	pkgdesc = PEAK CAN basic Java native interface
-	pkgver = 4.2.2
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://www.peak-system.com/PCAN-USB.199.0.html
 	arch = x86_64
 	license = LGPL
 	depends = libpcanbasic
-	source = https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN_Basic_Linux-4.2.2.tar.gz
-	sha256sums = 95b1916a28f9dd02d2840da8369558a7e5a3a977b9e9f1046ff67616dcc8977b
+	source = https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-4.4.2.tar.gz
+	sha256sums = b44d76964cbfb60b98b5d3676ef49eaa6d0c70bd10afc8b45a1d28a57968177f
 
 pkgname = libpcanbasic-jni
-

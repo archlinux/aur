@@ -1,7 +1,7 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=libpcanbasic-jni
-pkgver=4.2.2
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='PEAK CAN basic Java native interface '
 arch=('x86_64')
@@ -9,15 +9,14 @@ url='https://www.peak-system.com/PCAN-USB.199.0.html'
 license=('LGPL')
 depends=('libpcanbasic')
 source=(
-    "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN_Basic_Linux-${pkgver}.tar.gz"
+    "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "95b1916a28f9dd02d2840da8369558a7e5a3a977b9e9f1046ff67616dcc8977b"
+    "b44d76964cbfb60b98b5d3676ef49eaa6d0c70bd10afc8b45a1d28a57968177f"
 )
 
 prepare() {
-    # go into source directory 
-    cd "PCAN_Basic_Linux-${pkgver}/pcanjni"
+    cd "PCAN-Basic_Linux-${pkgver}/pcanbasic_java/libpcanbasic_jni"
 
     # add new install target into the makefile
     echo -e ''                                                               >> 'Makefile'
@@ -28,21 +27,15 @@ prepare() {
 }
 
 build() {
-    # go into source directory 
-    cd "PCAN_Basic_Linux-${pkgver}/pcanjni"
+    cd "PCAN-Basic_Linux-${pkgver}/pcanbasic_java/libpcanbasic_jni"
 
-    # build libpcanbasic
     make clean
     make JAVA_HOME="/usr/lib/jvm/default"
 }
 
 package() {
-    # go into source directory 
-    cd "PCAN_Basic_Linux-${pkgver}/pcanjni"
+    cd "PCAN-Basic_Linux-${pkgver}/pcanbasic_java/libpcanbasic_jni"
 
-    # create directories
     install -d "${pkgdir}/usr/lib"
-
-    # install files
     make LIBPATH="usr/lib" DESTDIR="${pkgdir}" install-archlinux
 }
