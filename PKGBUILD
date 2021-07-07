@@ -4,10 +4,8 @@
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
-_commit=bc111a2e67e16d4e6d4f3196ab86c22c1e278c45 # server-1.20-branch 2020-12-01 = 1.20.10
-
-pkgver=1.20.10
-pkgrel=3
+pkgver=1.20.11
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -19,8 +17,7 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git'
              'wayland-protocols' 'egl-wayland')
-source=(#https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
-        "git+https://gitlab.freedesktop.org/xorg/xserver#commit=${_commit}" #?signed"
+source=(https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         xserver-autobind-hotplug.patch
         0001-v2-FS-58644.patch
         0002-fix-libshadow-2.patch
@@ -30,9 +27,9 @@ source=(#https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
-              ''
               '3BB639E56F861FA2E86505690FDD682D974CA72A')
-sha256sums=('SKIP'
+sha256sums=('914c796e3ffabe1af48071d40ccc85e92117c97a9082ed1df29e4d64e3c34c49'
+            'SKIP'
             'cae1b7f296c18177de38f9b1215a4f916da2288b85f1fcb9e80373a42e2892b8'
             '6253fb5cf06cf650539be585d6ca13cfa00217b51ca9825476c8fd55c09341a4'
             'd07b2fe55828dad61517a80c77f6f183113916f5e1fce30ff43041550d58bd6e'
@@ -40,14 +37,8 @@ sha256sums=('SKIP'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '460615227a7e42d124639d4ae02e55d1b2a250c7bdf539e018b46de71230364f')
 
-pkgver() {
-  cd xserver
-  git describe --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-  #cd "xorg-server-${pkgver}"
-  cd xserver
+  cd "xorg-server-${pkgver}"
 
   # patch from Fedora, not yet merged
   patch -Np1 -i ../xserver-autobind-hotplug.patch
@@ -71,9 +62,8 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-fno-plt}
   export LDFLAGS=${LDFLAGS/,-z,now}
 
-  #arch-meson xorg-server-$pkgver build \
-  arch-meson xserver build \
-    -D os_vendor="Arch Linux" \
+  arch-meson xorg-server-$pkgver build \
+    -D os_vendor="Archlinux" \
     -D ipv6=true \
     -D xvfb=true \
     -D xnest=true \
@@ -131,6 +121,5 @@ package_xorg-server-bug865() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  #install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server-${pkgver}"/COPYING
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "xorg-server-${pkgver}"/COPYING
 }
