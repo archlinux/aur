@@ -1,7 +1,7 @@
 # Maintainer: TheFool <rn6l05d28@relay.firefox.com>
 pkgname=firefoxpwa-git
 pkgver=0.3.1.r.
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a patched build of the FirefoxPWA from filips123's git"
 arch=(x86_64)
@@ -44,7 +44,7 @@ package() {
     install -D manifests/linux.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/firefoxpwa.json"
     sudo mkdir -p /usr/share/firefoxpwa/runtime/
     chmod 777 /usr/share/firefoxpwa/runtime/
-    echo WARNING: For FirefoxPWA to work run '"firefoxpwa runtime install]"' after the installation!
+    echo WARNING: For FirefoxPWA to work run '"firefoxpwa runtime install"' after the installation!
 }
 
 
