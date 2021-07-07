@@ -1,27 +1,38 @@
 pkgbase = kanidm
 	pkgdesc = A identity management service and clients.
-	pkgver = 1.1.0_alpha.4
+	pkgver = 1.1.0_alpha.5
 	pkgrel = 1
 	url = https://github.com/kanidm/kanidm
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
 	makedepends = cargo
-	makedepends = git
-	source = kanidm-1.1.0_alpha.4.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.1.0-alpha.4.tar.gz
-	sha256sums = 998be8d0f4b94d7a4fa5e2e61d9ab55bee954508fed9138ca86dfa6981125c0e
+	source = kanidm-1.1.0_alpha.5.tar.gz::https://github.com/kanidm/kanidm/archive/refs/tags/v1.1.0-alpha.5.tar.gz
+	sha256sums = 3988b148e78d46119ea868e5092f9375cef3bb03957829661ea733e68ee8c860
+
+pkgname = kanidm
+	depends = kanidm-server=1.1.0_alpha.5
+	depends = kanidm-clients=1.1.0_alpha.5
+	depends = kanidm-unixd-clients=1.1.0_alpha.5
+	conflicts = kanidm-git
 
 pkgname = kanidm-clients
 	pkgdesc = kanidm client to interact with kanidm identity management server.
 	provides = kanidm-clients
-	conflicts = kanidm-clients
+	conflicts = kanidm-clients-git
+	backup = etc/kanidm/config
 
 pkgname = kanidm-server
 	pkgdesc = kanidm server for idendity management, supports RADIUS, ssh key management.
 	provides = kanidm-server
-	conflicts = kanidm-server
+	conflicts = kanidm-server-git
+	backup = etc/kanidm/server.toml
+	backup = usr/lib/systemd/system/kanidmd.service
 
 pkgname = kanidm-unixd-clients
 	pkgdesc = kanidm localhost resolver to resolve posix identities to a kanidm instance.
 	provides = kanidm-unixd-clients
-	conflicts = kanidm-unixd-clients
+	conflicts = kanidm-unixd-clients-git
+	backup = etc/kanidm/unixd
+	backup = usr/lib/systemd/system/kanidm-unixd.service
+	backup = usr/lib/systemd/system/kanidm-unixd-tasks.service
