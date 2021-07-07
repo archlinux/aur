@@ -36,7 +36,7 @@ depends=(
 makedepends=(
   'coreutils'
   'git'
-  'python'
+  'python-setuptools'
   'sed'
 )
 optdepends=(
@@ -75,7 +75,7 @@ build() {
 
   # copying sample user scripts
   echo -e "${prefix}${prefix}Copying sample user scripts"
-  cp -r lib/autokey/configmanager/predefined_user_scripts build/lib/autokey/configmanager/
+  [ -d lib/autokey/configmanager/predefined_user_scripts ] && cp -r lib/autokey/configmanager/predefined_user_scripts build/lib/autokey/configmanager/
 
   # [FIXME - is this still necessary? ] remove shebang from python libraries
   #for lib in $(find lib/autokey/ -name "*.py"); do
