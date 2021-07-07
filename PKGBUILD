@@ -10,9 +10,7 @@ arch=(x86_64)
 replaces=('electronic-wechat' 'electronic-wechat-git')
 conflicts=('electronic-wechat' 'electronic-wechat-git')
 depends=('nss' 'gtk3' 'libxss')
-license=(MIT)
-
-
+license=('MIT')
 md5sums=('656b524fd83451553a800e993e6acc0e'
          '5067d2ecdfa58d16affc950102cd36bd'
          'ffc9bdbcce89519b59f78d4bb50ea315')
@@ -23,23 +21,24 @@ if [[ $CARCH = i686 ]];then
 else
   _arch=x64
 fi
-source=("https://github.com/kooritea/electronic-wechat/releases/download/v$pkgver/electronic-wechat-linux-$_arch-$pkgver.zip"
+source=("https://github.com/kooritea/electronic-wechat/releases/download/v${pkgver}/electronic-wechat-linux-${_arch}-${pkgver}.zip"
 "https://github.com/kooritea/electronic-wechat/raw/master/assets/icon.png"
 "electronic-wechat.desktop")
 
 
 package() {
-    mkdir -p "${pkgdir}/opt/$pkgname"
-    cp icon.png "${pkgdir}/opt/$pkgname/"
+    mkdir -p "${pkgdir}/opt/${pkgname}"
+    cp icon.png "${pkgdir}/opt/${pkgname}"
 
-    install -dm755 "$pkgdir"/usr/share/applications
-    cp electronic-wechat.desktop "$pkgdir"/usr/share/applications
+    install -dm755 "${pkgdir}"/usr/share/applications
+    cp electronic-wechat.desktop "${pkgdir}"/usr/share/applications
 
-    cd electronic-wechat-linux-$_arch
-    install -dm755 "$pkgdir/opt/$pkgname/"
-    mv * "$pkgdir/opt/$pkgname/"
+    cd electronic-wechat-linux-${_arch}
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    mv * "${pkgdir}/opt/${pkgname}"
 
-    install -dm755 "$pkgdir"/usr/bin
-    ln -s /opt/"$pkgname"/electronic-wechat "$pkgdir/usr/bin/electronic-wechat"
+    install -dm755 "${pkgdir}"/usr/bin
+    ln -s /opt/"${pkgname}"/electronic-wechat "${pkgdir}/usr/bin/electronic-wechat"
 
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgdir}/opt/${pkgname}/LICENSE"
 }
