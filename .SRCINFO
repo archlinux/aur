@@ -1,17 +1,17 @@
 pkgbase = hotspot-appimage
 	pkgdesc = The Linux perf GUI for performance analysis.
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
 	license = GPL
 	depends = perf
 	depends = fuse
 	provides = hotspot
-	noextract = hotspot-appimage-1.2.0.AppImage
+	conflicts = hotspot
+	noextract = hotspot-appimage-1.3.0.AppImage
 	options = !strip
-	source_x86_64 = hotspot-appimage-1.2.0.AppImage::https://github.com/KDAB/hotspot/releases/download/v1.2.0/hotspot-v1.2.0-x86_64.AppImage
-	md5sums_x86_64 = c2054e28bff59894927d555d1d70beb9
+	source = hotspot-appimage-1.3.0.AppImage::https://github.com/KDAB/hotspot/releases/download/v1.3.0/hotspot-v1.3.0-x86_64.AppImage
+	sha256sums = 7d933e4e8dfe3894c244a74979eb1ad94bda109380398c532fb9ca7ef958c0eb
 
 pkgname = hotspot-appimage
-
