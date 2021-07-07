@@ -1,6 +1,6 @@
 pkgbase = fake-background-webcam-git
 	pkgdesc = Virtual background-replacing camera
-	pkgver = r145.b423e09
+	pkgver = r193.5e29493
 	pkgrel = 1
 	url = https://github.com/fangfufu/Linux-Fake-Background-Webcam
 	install = fake-background-webcam.install
@@ -8,34 +8,27 @@ pkgbase = fake-background-webcam-git
 	license = GPL
 	makedepends = git
 	makedepends = npm
-	source = fake-background-webcam-git::git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
-	source = fake-background-bodypix.service
-	source = fake-background-webcam@.service
-	source = readme.md
-	source = fake-background-webcam.install
-	sha256sums = SKIP
-	sha256sums = 24827ce9ae57cc11472c26ef4dc8edfa3218250a4ff6bba424f24bfe0eed3cb2
-	sha256sums = 9e8b5fb7fece0b1d2809b5dcb880419e85035f80f8fcaefc9cf9fe56017bf4d9
-	sha256sums = d36d981513560e1c906390b8cf2644319f019a4741517f725198605956458209
-	sha256sums = b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f
-
-pkgname = fake-background-webcam-git
 	depends = v4l2loopback-dkms
 	depends = python
-	depends = python-opencv
+	depends = python-opencv>=4.4.0.46
 	depends = akvcam-dkms
 	depends = opencv
 	depends = python-numpy>=1.18.2
 	depends = python-requests>=2.23.0
 	depends = python-requests-unixsocket
 	depends = python-aiohttp>=3.6.2
+	depends = python-inotify-simple>=1.2
 	depends = python-pyfakewebcam
-	depends = fake-background-bodypix
+	depends = python-mediapipe
 	provides = fake-background-webcam
 	conflicts = fake-background-webcam
+	source = fake-background-webcam-git::git+https://github.com/fangfufu/Linux-Fake-Background-Webcam.git
+	source = fake-background-webcam@.service
+	source = readme.md
+	source = fake-background-webcam.install
+	sha256sums = SKIP
+	sha256sums = 848d8ff2700ae616b5c1bb69d99d2fc54427a43ca23b54638aeff99833ac59eb
+	sha256sums = f6b37aff68926eb16c510db56df665ec2a3f8aa7348c0e8ddf247bcaa770a955
+	sha256sums = b57c70f3b498d646d8834d770d806219b306251c908cc8591b0d711e3638916f
 
-pkgname = fake-background-bodypix-git
-	depends = nodejs>=12
-	provides = fake-background-bodypix
-	conflicts = fake-background-bodypix
-
+pkgname = fake-background-webcam-git
