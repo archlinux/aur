@@ -4,11 +4,11 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=5.0.1.r567.g626190b3
+pkgver=6.0.0.r0.g2ee3f0b7
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url='https://github.com/wwmm/pulseeffects'
+url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=('gtkmm-4.0' 'glibmm-2.68' 'pipewire' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json')
@@ -19,7 +19,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'yelp: in-app help')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+https://github.com/wwmm/pulseeffects.git#branch=gtk4")
+source=("${pkgname%%-git}::git+https://github.com/wwmm/pulseeffects.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -35,4 +35,3 @@ build() {
 package() {
   DESTDIR="${pkgdir}" meson install -C build
 }
-
