@@ -1,7 +1,7 @@
 pkgbase = ares-emu
 	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support
 	pkgver = 121a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ares.dev/
 	arch = x86_64
 	arch = i686
