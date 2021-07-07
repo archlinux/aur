@@ -1,3 +1,4 @@
+# Submitter: Zhiwei Chen <condy0919@gmail.com>
 # Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 _pkgname=hotspot
