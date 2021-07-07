@@ -1,3 +1,18 @@
+Proton-6.12-GE-1 Released
+
+-Necromunda "glowing" fixed
+-Cyberpunk 2077 inventory crash fixed
+-Guilty Gear Strive video playback fixed
+-Forza Horizon 4 appears playable on Nvidia now (so far from my testing it seems to run now without issue)
+-Battlefield 4 multiplayer ping issue fixed -- new ping patch from upstream added https://source.winehq.org/patches/data/207990
+-Civilization VI now playable
+-RDR2 working again (turns out it worked before, it just needed -fullscreen option otherwise it refused to launch. added in protonfixes now)
+-fixed issue where directx and/or other prefix preinstall steps would hang/fail
+-added fixes for star wars galactic battlegrounds saga
+-dxvk updated to git
+-vkd3d updated to git and pending 2.4 pull requests added
+-faudio updated
+
 Proton-6.10-GE-1 Released
 
 -Added UE4 preinstall workaround for Necrumunda
@@ -7,7 +22,8 @@ Proton-6.10-GE-1 Released
 -Added FarCry regression hotfix
 -Origin seems to be much more stable/reliable now in regards to installation and launching
 -Added staging bcrypt patches rebased on top of proton rdr2 patches (allows Steep online mode to work again)
--Added proton nvapi updates-Added proton QPC performance patches (should help with fps regression)
+-Added proton nvapi updates
+-Added proton QPC performance patches (should help with fps regression)
 -Added proton LFH performance patches (should help with frame times)
 -dxvk updated with proton latency fixes
 -vkd3d updated with proton latency fixes
