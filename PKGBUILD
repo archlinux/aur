@@ -27,9 +27,9 @@ build() {
 
 package() {
   cd "$srcdir/$_sourcedirectory/"
-  install -Dm644 'wfs-extract/wfs-extract' "$pkgdir/usr/bin/wfs-extract"
-  install -Dm644 'wfs-file-injector/wfs-file-injector' "$pkgdir/usr/bin/wfs-file-injector"
-  install -Dm644 'wfs-fuse/wfs-fuse' "$pkgdir/usr/bin/wfs-fuse"
+  install -D 'wfs-extract/wfs-extract' "$pkgdir/usr/bin/wfs-extract"
+  install -D 'wfs-file-injector/wfs-file-injector' "$pkgdir/usr/bin/wfs-file-injector"
+  install -D 'wfs-fuse/wfs-fuse' "$pkgdir/usr/bin/wfs-fuse"
 
   # license
   install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
