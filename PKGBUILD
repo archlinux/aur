@@ -2,7 +2,7 @@
 
 pkgname=ares-emu-git
 pkgver=v121a.r1.g77110f15a
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -31,8 +31,8 @@ prepare() {
 
 build() {
   # Download first parallel-rdp from github, otherwise N64 emulation won't work.
-  make -C "${srcdir}/ares-${pkgver}/ares/n64/vulkan" sync-upstream
-  make -C "${srcdir}/ares-${pkgver}/lucia" hiro=gtk3
+  make -C "${srcdir}/ares/ares/n64/vulkan" sync-upstream
+  make -C "${srcdir}/ares/lucia" hiro=gtk3
 }
 
 package() {
