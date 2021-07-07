@@ -1,6 +1,6 @@
 pkgbase = bettercrewlink-bin
 	pkgdesc = Free, open, Among Us Proximity Chat
-	pkgver = 2.6.4
+	pkgver = 2.7.5
 	pkgrel = 1
 	url = https://github.com/OhMyGuus/BetterCrewLink
 	install = bettercrewlink.install
