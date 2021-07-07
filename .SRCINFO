@@ -1,13 +1,12 @@
 pkgbase = ttf-sil-doulos
 	pkgdesc = complete support for the International Phonetic Alphabet
-	pkgver = 5.000
-	pkgrel = 4
+	pkgver = 6.001
+	pkgrel = 1
 	url = https://software.sil.org/doulos
 	arch = any
 	license = OFL
 	conflicts = ttf-sil-fonts<=6
-	source = http://software.sil.org/downloads/r/doulos/DoulosSIL-5.000.zip
-	sha256sums = 0b309c3db813a98ce884c0bd25c7f5c0bd96bbffd076459e39298812ca22472e
+	source = http://software.sil.org/downloads/r/doulos/DoulosSIL-6.001.zip
+	sha256sums = b212d6df691766996c36883dd8e2fc1497cdc4e66a7b52de2d5446d3e763c518
 
 pkgname = ttf-sil-doulos
-
