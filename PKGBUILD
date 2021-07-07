@@ -2,13 +2,13 @@
 pkgname=jre-jetbrains
 _major=11
 _minor=0
-_patch=10
-_build=1428.2
+_patch=11
+_build=1504.8
 pkgver=${_major}.${_minor}.${_patch}b${_build}
 pkgrel=1
 pkgdesc="OpenJDK Java $_major runtime with some fixes and enhancements by JetBrains"
 arch=('x86_64')
-url="https://bintray.com/jetbrains/intellij-jdk"
+url="https://github.com/JetBrains/JetBrainsRuntime"
 license=('GPL2')
 depends=('java-runtime-common' 'ca-certificates-java' 'java-environment-common')
 replaces=(jetbrains-jre)
@@ -17,8 +17,8 @@ provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-environme
     "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major" "jetbrains-jre")
 _zipname="jbr_jcef-${_major}_${_minor}_${_patch}-linux-x64-b${_build}.tar.gz"
 install=$pkgname.install
-source=("https://dl.bintray.com/jetbrains/intellij-jbr/${_zipname}")
-sha256sums=('523da4fc4266fbf421a1b401a18977d3032097e8c2081f009a80b91bd8a02fcd')
+source=("https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
+b2sums=('45fd7dc49932f68f3fda4ad932898edd60e3ccc798582d8aa5ad88a807e3fc439480a28deba4b8bcc72ac7c6355027d3b1b5e88f066ec87661ff33c7bf5e1afc')
 
 package() {
     rm "$srcdir/$_zipname"
