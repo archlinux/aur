@@ -2,7 +2,7 @@
 # Contributor: Jeremy MountainJohnson <jskier@gmail.com>
 
 pkgname=xfce-classiclooks
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
@@ -11,7 +11,7 @@ license=(GPLv2)
 depends=(gtk-engine-murrine)
 optdepends=(lib32-gtk-engine-murrine qt5-styleplugins noto-fonts elementary-xfce-icons nemo)
 source=(https://downloads.sourceforge.net/project/classiclooks/classiclooks-${pkgver}.zip)
-sha512sums=('d6197197561fae05995197b16ae2d65f2b5bf2ed6617b017ea25d2a4212bcc2c440a318494f2908dfbe7a74c497e3f012438bff49b8a79ad7e767f1d2a48b54d')
+sha512sums=('dbbb128f539ccb7534c3ae62e2ed46be6214c4cea22dd55588d0bbc574e058acdb88da26ea3d76a12e0f64c8d4b79bc61aef9c36c7ec426c03a58cb9b3761d90')
 conflicts=('xfce-evolution-themes')
 
 package() {
