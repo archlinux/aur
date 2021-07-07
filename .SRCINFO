@@ -1,0 +1,13 @@
+pkgbase = hexcat
+	pkgdesc = A hex display with Unicode symboles for specials.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/TylerMackJ/Hexcat
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = hexcat-2.2.0.tar.gz::https://github.com/TylerMackJ/Hexcat/archive/v2.2.0.tar.gz
+	sha256sums = 925589b7ea94727e09ab76159ccb48092864dbbbc772056b493d25d88e8d6594
+
+pkgname = hexcat
