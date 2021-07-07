@@ -1,8 +1,8 @@
 ## Kernel Series
-_kernser=5.12
+_kernser=5.13
 
 pkgbase=linux-studio
-pkgver=5.12.13
+pkgver=5.13
 pkgrel=1
 pkgdesc='Linux Studio Optimized'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -26,7 +26,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('af485fcde5635981e6713b547cc8904a7f6e74e5ffb784cc08781fa5999dd255'
+
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -47,17 +48,25 @@ prepare() {
   msg2 "Apply The 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
 
+  ## Apply the 0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
+  msg2 "Apply The 0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch"
+
   ## Apply the Clear Linux patch
   msg2 "Apply The Clear Linux Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0002-clear-patches.patch"
+
+  ## Apply the 0002-mm-Support-soft-dirty-flag-read-with-reset.patch
+  msg2 "Apply The 0002-mm-Support-soft-dirty-flag-read-with-reset.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch"
 
   ## Apply the CacULE scheduler patch
   msg2 "Apply The CacULE Scheduler Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-cacule-${_kernser}.patch"
 
-  ## Apply Fsync patch
-  msg2 "Apply Fsync Patch..."
-  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0007-v${_kernser}-fsync.patch"
+  ## Apply the 0003-glitched-base.patch
+  msg2 "Apply The 0003-glitched-base.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-base.patch"
 
   ## Apply Futex2 Loader patch
   msg2 "Apply Futex2 Loader Patch..."
@@ -66,6 +75,14 @@ prepare() {
   ## Apply Wine Esync patch
   msg2 "Apply Wine Esync Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0007-v${_kernser}-winesync.patch"
+
+  ## Apply the 0009-glitched-bmq.patch
+  msg2 "Apply The 0009-glitched-bmq.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0009-glitched-bmq.patch"
+
+  ## Apply the 0009-glitched-ondemand-bmq.patch
+  msg2 "Apply The 0009-glitched-ondemand-bmq.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0009-glitched-ondemand-bmq.patch"
 
   ## Apply TKG misc additions patch
   msg2 "Apply TKG misc additions patch"
@@ -83,7 +100,7 @@ prepare() {
   cp kernconfig .config
   make olddefconfig
 
-  ## Customize Kernel Settings
+  ## Customize Kernel Settings, COMMENT OUT IF NOT UNNEEDED!
   make nconfig
 
   make -s kernelrelease > version

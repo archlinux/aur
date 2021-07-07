@@ -1,8 +1,8 @@
 pkgbase = linux-studio
 	pkgdesc = Linux Studio Optimized
-	pkgver = 5.12.13
+	pkgver = 5.13
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.12-13
+	url = https://git.archlinux.org/linux.git/log/?h=v5-13
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,14 +20,14 @@ pkgbase = linux-studio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.13.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.12.13.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.tar.sign
 	source = git+https://github.com/Frogging-Family/linux-tkg.git
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	sha256sums = af485fcde5635981e6713b547cc8904a7f6e74e5ffb784cc08781fa5999dd255
+	sha256sums = 3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
