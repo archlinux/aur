@@ -1,0 +1,13 @@
+pkgbase = firefox-extension-amber
+	pkgdesc = Bring the Unix philosophy to the browser.
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/paysonwallach/amber-web-extension/
+	arch = x86_64
+	license = GPL
+	noextract = amber-1.21.xpi
+	source = https://paysonwallach.com/amber/amber-1.21.xpi
+	sha256sums = 6a05282b2a7b71edc0cc8f3f6e7eb9af2b7cd29a0639e57812c6eadaf8b43330
+
+pkgname = firefox-extension-amber
+	depends = firefox
