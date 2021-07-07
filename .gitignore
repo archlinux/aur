@@ -1,0 +1,4 @@
+hubble-*.tar.gz
+hubble-*.pkg.tar.zst
+pkg/
+src/
