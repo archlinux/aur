@@ -14,14 +14,12 @@ source_aarch64=(https://files.clpm.dev/clpm/clpm-${_pkgver}-linux-arm64.tar.gz)
 sha256sums_x86_64=('80b1b0412547d73ecad101720dcba0ec73ee276a2c76f2415e132658e5eecca7')
 sha256sums_aarch64=('7bd99d55c83dcc926d74aea23b64a541ac7d9ed86656d64e75fd8314dd450ece')
 
-package_x86_64() {
-  cd "clpm-${_pkgver}-linux-amd64"
+package() {
+  if [ $CARCH == 'x86_64' ]; then
+    cd "clpm-${_pkgver}-linux-amd64"
+  else
+    cd "clpm-${_pkgver}-linux-arm64"
+  fi
   INSTALL_ROOT=$pkgdir/usr/ sh install.sh
 }
-
-package_aarch64() {
-  cd "clpm-${_pkgver}-linux-arm64"
-  INSTALL_ROOT=$pkgdir/usr/ sh install.sh
-}
-
 
