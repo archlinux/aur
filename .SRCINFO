@@ -1,0 +1,20 @@
+pkgbase = yactfr-git
+	pkgdesc = yactfr is yet another common trace format (CTF) reader
+	pkgver = r75.a6b5f32
+	pkgrel = 1
+	url = https://github.com/eepp/yactfr
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = doxygen
+	conflicts = yactfr
+	source = yactfr-git::git+https://github.com/eepp/yactfr
+	source = add-missing-assert-include.patch
+	source = use-c++17.patch
+	md5sums = SKIP
+	md5sums = fa3eff08a0d0fe7b68e28310ce9870ee
+	md5sums = 60e4e2f9bb00eee6ce5eafe95a3ddcae
+
+pkgname = yactfr-git

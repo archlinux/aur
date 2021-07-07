@@ -1,0 +1,24 @@
+diff --git a/yactfr/metadata/metadata.cpp b/yactfr/metadata/metadata.cpp
+index cfea35a..b5c8692 100644
+--- a/yactfr/metadata/metadata.cpp
++++ b/yactfr/metadata/metadata.cpp
+@@ -7,6 +7,7 @@
+  * of the MIT license. See the LICENSE file for details.
+  */
+ 
++#include <cassert>
+ #include <istream>
+ #include <memory>
+ #include <sstream>
+diff --git a/yactfr/metadata/trace-type-impl.cpp b/yactfr/metadata/trace-type-impl.cpp
+index 23acf4e..31e17c4 100644
+--- a/yactfr/metadata/trace-type-impl.cpp
++++ b/yactfr/metadata/trace-type-impl.cpp
+@@ -12,6 +12,7 @@
+ #include <string>
+ #include <sstream>
+ #include <functional>
++#include <cassert>
+ 
+ #include <yactfr/metadata/enum-type.hpp>
+ #include <yactfr/metadata/int-type.hpp>

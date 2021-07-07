@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 587e9fe..f9556b9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,7 @@ add_custom_target (
+ 
+ # configure compiler globally for C++14
+ set (CMAKE_CXX_EXTENSIONS OFF)
+-set (CMAKE_CXX_STANDARD 14)
++set (CMAKE_CXX_STANDARD 17)
+ set (CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ # current Git hash
