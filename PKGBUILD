@@ -1,16 +1,19 @@
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 # Contributor: Ron B.S <ronthecookie0101 on gmail --OR-- me AT ronthecookie DOT me >
 
 pkgname=python-pytube
-pkgver=10.9.0
+pkgver=10.9.1
 pkgrel=1
-pkgdesc="A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos."
+pkgdesc="A lightweight, dependency-free Python library (and command-line utility) for downloading YouTube Videos"
 arch=('any')
 url="https://github.com/pytube/pytube"
-license=('MIT')
-depends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pytube/pytube/archive/v$pkgver.tar.gz")
-sha256sums=('38c3b00c856d0a74aa8420d7ae61c50b17c7772e0b26c031c62495c19a60459a')
+license=('Unlicense')
+depends=('python')
+makedepends=('python-setuptools')
+_name=${pkgname#python-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('5366f42a99b3734d036dfd21be325fa3c6d03e155b62b39dfeef130bcb498b04')
 
 build() {
 	cd pytube-$pkgver
@@ -19,6 +22,5 @@ build() {
 
 package() {
 	cd pytube-$pkgver
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
