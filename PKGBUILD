@@ -3,7 +3,7 @@
 pkgbase=linux-g14
 pkgver=5.12.14.arch1
 _tagver=5.12.14.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 #_srctag=v${pkgver%.*}-${pkgver##*.}
 _srctag=v${_tagver%.*}-${_tagver##*.}
@@ -27,7 +27,7 @@ source=(
 	#"sys-kernel_arch-sources-g14_files-0000-revert-arch1-to-upstream-arch0.patch"
 	"sys-kernel_arch-sources-g14_files-0001-revert-reserve-x86-low-memory.patch"
 	"sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch"
-	"sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch"
+	"sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
 	"sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
   
 	"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
@@ -57,6 +57,7 @@ source=(
 	"sys-kernel_arch-sources-g14_files-0031-platform-x86-amd-pmc-Add-support-for-s0ix-counters.patch"
 	"sys-kernel_arch-sources-g14_files-0032-platform-x86-amd-pmc-Add-support-for-ACPI-ID-AMDI0006.patch"
 	"sys-kernel_arch-sources-g14_files-0033-platform-x86-amd-pmc-Add-new-acpi-for-future-PMC.patch"
+	"sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
 )
 
 validpgpkeys=(
@@ -91,7 +92,8 @@ sha256sums=('SKIP'
             'ad9f485bb262bb1156da57698ccab5a6b8d8ca34b6ae8a185dcd014a34c69557'
             '3e8c51aff84b6f12e6bc61057982befd82415626fe379e83271ddeb1a9628734'
             'bd975ab32d6490a4231d6ce4fab0343698b28407799bdaec133671e9fd778eb5'
-            'ae66bbed96b5946b5a20d902bc0282c7dd172650812114b24429f40d5ba225bb')
+            'ae66bbed96b5946b5a20d902bc0282c7dd172650812114b24429f40d5ba225bb'
+            'f4185ae572190227161d6f0e7d502138f2aaa60130d8d99b2c44edaefd5e91af')
 
 # notable microarch levels:
 #
@@ -201,10 +203,11 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
 
-  # let user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
-
   make olddefconfig
+
+  # let user choose microarchitecture optimization in GCC
+  # this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"

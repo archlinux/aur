@@ -1,7 +1,7 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
 	pkgver = 5.12.14.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-g14
 	source = choose-gcc-optimization.sh
 	source = sys-kernel_arch-sources-g14_files-0001-revert-reserve-x86-low-memory.patch
 	source = sys-kernel_arch-sources-g14_files-0003-flow-x13-sound.patch
-	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch
+	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch
 	source = sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch
 	source = https://gitlab.com/asus-linux/fedora-kernel/-/archive/91f97d88231152006764d3c50cc52ddbb508529f/fedora-kernel-91f97d88231152006764d3c50cc52ddbb508529f.zip
 	source = sys-kernel_arch-sources-g14_files-0012-acpi-1of2-turn-off-unused.patch::https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/patch/?id=4b9ee772eaa82188b0eb8e05bdd1707c2a992004
@@ -43,6 +43,7 @@ pkgbase = linux-g14
 	source = sys-kernel_arch-sources-g14_files-0031-platform-x86-amd-pmc-Add-support-for-s0ix-counters.patch
 	source = sys-kernel_arch-sources-g14_files-0032-platform-x86-amd-pmc-Add-support-for-ACPI-ID-AMDI0006.patch
 	source = sys-kernel_arch-sources-g14_files-0033-platform-x86-amd-pmc-Add-new-acpi-for-future-PMC.patch
+	source = sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
@@ -73,6 +74,7 @@ pkgbase = linux-g14
 	sha256sums = 3e8c51aff84b6f12e6bc61057982befd82415626fe379e83271ddeb1a9628734
 	sha256sums = bd975ab32d6490a4231d6ce4fab0343698b28407799bdaec133671e9fd778eb5
 	sha256sums = ae66bbed96b5946b5a20d902bc0282c7dd172650812114b24429f40d5ba225bb
+	sha256sums = f4185ae572190227161d6f0e7d502138f2aaa60130d8d99b2c44edaefd5e91af
 
 pkgname = linux-g14
 	pkgdesc = The Linux kernel and modules
