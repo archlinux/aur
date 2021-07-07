@@ -1,7 +1,7 @@
 # Maintainer: Toadtoad
 
 pkgname=joindesktop-bin
-pkgver=0.5.2
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='An official desktop app for Join by Joaoapps built in Electron.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('joindesktop')
 conflicts=('joindesktop')
 url='https://joaoapps.com/join/desktop'
 source=("https://github.com/joaomgcd/JoinDesktop/releases/download/v${pkgver}/com.joaomgcd.join_${pkgver}_amd64.deb")
-sha512sums=('3dbd2d3717cc80a8a9ff8fe46395f34451f95b049e9d81e644bbf464be9f394dd271d9993d0f010f42e70095456f8c4402d4df944dfeeb81bddce03aa8080d34')
+sha512sums=('f98ab6ee18ba0b0bb5721a24a5dcc33aacd7e9676e551557b7a312ded1c06b390c8426ec9b2d5bf04f844336bc84716effb5acf64cb05da064d4b377a3a5c312')
 
 package() {
   cd "${srcdir}"
