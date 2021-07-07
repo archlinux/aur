@@ -55,6 +55,9 @@ def install_stubs_dir(stubs_dir: Path, install_dir: Path) -> None:
     copytree(stubs_dir, package_dir_path)
 
 
+skip_names = ('METADATA.toml', 'README.md')
+
+
 def install_typeshed(typeshed_dir: Path, install_dir: Path) -> None:
     typeshed_stubs_dir = typeshed_dir / 'stubs'
 
@@ -62,7 +65,11 @@ def install_typeshed(typeshed_dir: Path, install_dir: Path) -> None:
         raise ValueError('Could not find typeshed stubs dir under'
                          f" {typeshed_stubs_dir}")
 
-    site_package_dir = Path(get_path('purelib'))
+    pure_lib_path_str = get_path('purelib')
+    if pure_lib_path_str is None:
+        raise ValueError('Could not get purelib folder')
+
+    site_package_dir = Path(pure_lib_path_str)
     install_package_dir = install_dir / site_package_dir.relative_to('/')
     install_package_dir.mkdir(0o755, parents=True)
 
@@ -71,7 +78,7 @@ def install_typeshed(typeshed_dir: Path, install_dir: Path) -> None:
         for something_inside_stub_dir in stub_dir.iterdir():
             if something_inside_stub_dir.name.startswith('@'):
                 continue
-            elif something_inside_stub_dir.name == 'METADATA.toml':
+            elif something_inside_stub_dir.name in skip_names:
                 continue
             else:
                 paths_to_install.append(something_inside_stub_dir)
