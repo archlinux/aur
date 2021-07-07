@@ -1,3 +1,11 @@
+=== Morgen 2.1.9
+- Fixed an issue causing huge output logs on some systems
+- Fixed a problem delivering notifications and event alerts
+- Fixed an issue preventing the compaction of the database, which could become very large
+- One-off events from a recurrent series are now correctly displayed# 
+
+
+
 === Morgen 2.1.8
 Ouch! We have been reported a crash occurring when trying to edit calendar shortcuts. Morgen 2.1.8 fixes this issue. Since we were at it, we also fixed a problem causing an error when editing some events created with Fastmail.
 
