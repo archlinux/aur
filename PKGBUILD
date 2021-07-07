@@ -2,7 +2,7 @@
 
 pkgname=mint
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
@@ -10,7 +10,7 @@ license=('BSD')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "baked_file_system.patch")
 sha256sums=('2ccfa50812b8d9f53ea2e66fb427d42730a8b22ce2831c208f5421fc8c4baf28'
-            'b1ac390bed113437ba3eb1345bfa8730eb5474dc99133052a74ea137f1f246a5')
+            '99c3ce7d50c7b6f002a84590cb05d1fc4237dda806796ce79c7c5dddbbb87ebc')
 
 build() {
   cd "${pkgname}-${pkgver}"
