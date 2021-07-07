@@ -1,7 +1,7 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=('autokey-git')
-pkgver=0.95.10.r18.4b87b32
+pkgver=0.96.0.beta.5.r0.30e0f9a
 pkgrel=1
 pkgdesc='A desktop automation utility for Linux and X11 - GTK & Qt frontends'
 arch=('x86_64')
@@ -18,27 +18,34 @@ conflicts=(
   'autokey-qt'
 )
 depends=(
+  'dbus-python'
   'gtksourceview3'
-  'kdialog'
+  'gvfs'
   'libappindicator-gtk3'
   'libnotify'
-  'python'
+  'python-cairo'
   'python-gobject'
-  'python-pyqt5'
+  'python-pyhamcrest'
+  'python-pyinotify'
   'python-qscintilla-qt5'
-  'qt5-svg'
-  'zenity'
+  'python-xlib'
+  'qt5ct'
+  'xapp'
+  'xfconf'
 )
 makedepends=(
-  'python-pyqt5'
-  'python-setuptools'
+  'coreutils'
+  'git'
+  'python'
+  'sed'
 )
 optdepends=(
-  'python-atspi'
-  'qt-at-spi'
+  'gnome-themes-extra'
+  'gtk-engine-murrine'
+  'nvidia-utils'
 )
 source=(
-  "git+https://github.com/autokey/autokey"
+  'git+https://github.com/autokey/autokey.git#branch=beta'
 )
 sha512sums=(
   'SKIP'
@@ -65,12 +72,17 @@ build() {
   echo -e "${prefix}Building AutoKey"
 
   python setup.py build
-  # remove shebang from python libraries
-  for lib in $(find lib/autokey/ -name "*.py"); do
-    sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
-    touch -r $lib $lib.new &&
-    mv $lib.new $lib
-  done
+
+  # copying sample user scripts
+  echo -e "${prefix}${prefix}Copying sample user scripts"
+  cp -r lib/autokey/configmanager/predefined_user_scripts build/lib/autokey/configmanager/
+
+  # [FIXME - is this still necessary? ] remove shebang from python libraries
+  #for lib in $(find lib/autokey/ -name "*.py"); do
+  #  sed '/\/usr\/bin\/env/d' $lib > $lib.new &&
+  #  touch -r $lib $lib.new &&
+  #  mv $lib.new $lib
+  #done
 }
 
 package() {
