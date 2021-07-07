@@ -1,0 +1,9 @@
+post_install() {
+	echo ':: This plugin requires manual setup.'
+	echo ':: Please consult upstream documentation for information on how.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-octo-git/README.md for your reference.'
+}
+
+post_remove() {
+	echo ":: Don't forget to remove all references to this plugin in your init scripts!"
+}

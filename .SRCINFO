@@ -1,0 +1,20 @@
+pkgbase = neovim-octo-git
+	pkgdesc = Neovim plugin for editing and reviewing GitHub issues and pull requests
+	pkgver = r480.7f21187
+	pkgrel = 1
+	url = https://github.com/pwntester/octo.nvim
+	install = neovim-octo-git.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	depends = github-cli
+	depends = neovim-telescope
+	depends = neovim-web-devicons
+	provides = neovim-octo
+	conflicts = neovim-octo
+	source = neovim-octo-git::git+https://github.com/pwntester/octo.nvim
+	sha256sums = SKIP
+
+pkgname = neovim-octo-git
