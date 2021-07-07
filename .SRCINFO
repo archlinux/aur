@@ -1,10 +1,11 @@
 pkgbase = mint-bin
 	pkgdesc = A refreshing language for the front-end web
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mint-lang/mint
 	arch = x86_64
 	license = BSD
+	conflicts = mint
 	noextract = mint-0.14.0-linux
 	noextract = LICENSE
 	source = https://github.com/mint-lang/mint/releases/download/0.14.0/mint-0.14.0-linux

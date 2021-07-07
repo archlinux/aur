@@ -3,7 +3,7 @@
 
 pkgname=mint-bin
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
@@ -14,6 +14,7 @@ sha256sums=('3f40f3666b013fef6d42be0e50ed733ba72dac486ab3ccf1fd7b44b26cbc3ebe'
             '6b4ecb1a9202a35540d0405ddd88439bb4644a127afc02ee26428ca5d5c0bd9f')
 noextract=("mint-${pkgver}-linux"
            "LICENSE")
+conflicts=('mint')
 
 package() {
   install -Dm755 "mint-${pkgver}-linux" "${pkgdir}/usr/bin/mint"
