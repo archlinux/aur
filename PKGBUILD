@@ -21,7 +21,7 @@ b2sums_armv7h=('e32f5b50495d669b595be1f74354c771f5c3cce5ec8b4869cd93ff532a890986
 b2sums_aarch64=('e32f5b50495d669b595be1f74354c771f5c3cce5ec8b4869cd93ff532a890986222e3f26f4137dd459e07891637152df532f0139b787dd42be3805c4ad7c33a2')
 
 package() {
-	cd "zet-$pkgver-"*
+	cd "${pkgname%-bin}-$pkgver-"*
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
 	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 'README.md' -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
