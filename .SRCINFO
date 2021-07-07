@@ -2,7 +2,7 @@ pkgbase = plastex
 	pkgdesc = Python-based LaTeX document processing framework.
 	pkgver = 2.1
 	pkgrel = 1
-	url = http://tiarno.github.io/plastex/
+	url = https://github.com/plastex/plastex
 	arch = any
 	license = custom
 	depends = python
@@ -11,4 +11,3 @@ pkgbase = plastex
 	sha256sums = dbad0d692f5c026d66e9b203a3e35ce0a04b8b82b747ee7649075342d9a072b5
 
 pkgname = plastex
-
