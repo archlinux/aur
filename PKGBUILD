@@ -1,14 +1,16 @@
-# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
+# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="rmw (ReMove to Waste) is a safe-remove utility for the command line."
-arch=('any')
+pkgrel=2
+pkgdesc="safe-remove utility for the command line"
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="https://remove-to-waste.info"
 license=('GPL3')
 depends=('ncurses')
-makedepends=('meson' 'ninja' 'valgrind')
+makedepends=('meson' 'ninja')
+checkdepends=('valgrind')
 optdepends=('gettext')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theimpossibleastronaut/rmw/archive/refs/tags/v${pkgver}.tar.gz")
