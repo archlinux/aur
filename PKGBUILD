@@ -1,5 +1,5 @@
 pkgname=libksane-git
-pkgver=r410.de6110a
+pkgver=r547.08ea3fb
 pkgrel=1
 pkgdesc='An image scanning library'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libksane')
 provides=('libksane')
 groups=('digikamsc-git')
-source=('libksane::git+git://anongit.kde.org/libksane')
+source=('libksane::git+https://invent.kde.org/graphics/libksane.git/')
 md5sums=('SKIP')
 
 pkgver() {

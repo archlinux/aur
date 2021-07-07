@@ -1,6 +1,6 @@
 pkgbase = libksane-git
 	pkgdesc = An image scanning library
-	pkgver = r410.de6110a
+	pkgver = r547.08ea3fb
 	pkgrel = 1
 	url = http://www.kde.org
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = libksane-git
 	depends = kwallet
 	provides = libksane
 	conflicts = libksane
-	source = libksane::git+git://anongit.kde.org/libksane
+	source = libksane::git+https://invent.kde.org/graphics/libksane.git/
 	md5sums = SKIP
 
 pkgname = libksane-git
-
