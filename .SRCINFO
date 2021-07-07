@@ -1,0 +1,22 @@
+pkgbase = cutelyst2-qt5
+	pkgdesc = A Web Framework built on top of Qt, using the simple approach of Catalyst (Perl) framework.
+	pkgver = 2.14.2
+	pkgrel = 1
+	url = http://cutelyst.org
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = pkgconf
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	depends = qt5-base
+	depends = grantlee
+	depends = uwsgi
+	source = https://github.com/cutelyst/cutelyst/archive/v2.14.2.tar.gz
+	sha512sums = 3e192bb9d1925896e05488d7867bd36845d2fb0276fa4725ac841526095628994a339b1b92b6a9615d71788f01bb68af92ae131a55ce3aa6774f840fc80540ee
+
+pkgname = cutelyst2-qt5
+
+pkgname = cutelyst2-docs
+	pkgdesc = Doxygen HTML API Documentation
