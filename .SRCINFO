@@ -1,0 +1,17 @@
+pkgbase = python-typeshed-git
+	pkgdesc = Python typing stubs
+	pkgver = r4608.9d5046ee7
+	pkgrel = 1
+	url = https://github.com/python/typeshed/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	provides = python-typeshed
+	conflicts = python-typeshed
+	source = python-typeshed-git::git+https://github.com/python/typeshed.git
+	source = install_typeshed.py
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-typeshed-git
