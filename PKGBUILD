@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.13
-pkgver=5.13.v.0
+gitver=v5.13.1
+pkgver=5.13.v.1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '8540445c710a9e9a3d02ff18a1f2855392e581536e2ca198d3d8034e58551fbf'
+            'f7f5fe0ac832d7a0d74f04f868232a01393d0e6e01aff96588d0daef37516244'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
