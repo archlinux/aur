@@ -4,7 +4,7 @@
 _gemname=pleaserun
 pkgname=ruby-$_gemname
 pkgver=0.0.32
-pkgrel=2
+pkgrel=3
 pkgdesc="pleaserun"
 arch=('any')
 depends=('ruby' 'ruby-cabin' 'ruby-clamp' 'ruby-dotenv'
@@ -13,7 +13,7 @@ makedepends=('ruby-bundler')
 url="https://rubygems.org/gems/${_gemname}"
 license=('Apache')
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha256sums=('6c6cb726fdfee6eae62fa270268f75fc4180a0e56ea9a736c14753d79a652c33')
+sha256sums=('4dd8db18b81b48e2a875ec0c7fff3869454d1f93a9f5e2e6c4eb88812870d3ab')
 
 prepare() {
   cd "$srcdir"
