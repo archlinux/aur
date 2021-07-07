@@ -1,6 +1,6 @@
 pkgbase = ansible-lint-git
 	pkgdesc = Checks playbooks for practices and behaviour that could potentially be improved.
-	pkgver = 5.1.0a1.r3.g040ae19
+	pkgver = 5.1.0a1.r4.g57a6d5b
 	pkgrel = 1
 	url = https://github.com/ansible-community/ansible-lint
 	arch = any
