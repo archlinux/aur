@@ -2,39 +2,33 @@
 # Contributor: Rax Garfield <admin@dvizho.ks.ua>
 # Contributor: skydrome <irc.freenode.net>
 
-_pkgname=enki-editor
-pkgname=$_pkgname-git
-pkgver=18.08.0.r3.g7ac303fc
+pkgname=enki-editor-git
+pkgver=20.03.1.r5.gaafee43a
 pkgrel=1
 pkgdesc="Text editor for programmers. Live preview in Markdown, reStructuredText and HTML"
 arch=('any')
-url="http://enki-editor.org/"
-license=('GPL')
+url="http://enki-editor.org"
+license=('GPL2')
 makedepends=('git' 'python')
-#         'python-code-chat'
-#         'qutepart'
-depends=('flake8'
-         'python-code-chat-git'
-         'python-markdown'
-         'python-pyparsing' 
+#'python-pyparsing'
+depends=('python-pyqt5-webengine'
          'python-qtconsole'
-         'python-regex'
-         'python-sphinx'
-         'qutepart-git')
-#            'python-pygments: Scheme preview'
-optdepends=('ctags: navigation in file'
+         'qutepart')
+optdepends=('ctags: file navigation'
+            'flake8: Python code lint '
             'python-code-chat: source code to HTML translation (literate programming)'
             'python-docutils: reStructuredText preview'
             'python-markdown: Markdown preview'
-            'tre: preview synchronization')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/hlamer/enki.git)
-md5sums=('SKIP')
+            'python-regex: synchronization preview '
+            'python-sphinx: Sphinx documentation'
+            'tre: synchronization preview')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+https://github.com/andreikop/enki.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
