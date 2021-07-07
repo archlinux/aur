@@ -2,15 +2,15 @@
 pkgname=bookstack
 _camelname=BookStack
 pkgver=21.05.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, self-hosted, easy-to-use platform for organising and storing information'
 arch=('any')
 url="https://github.com/BookStackApp/BookStack"
 license=('MIT')
 depends=(
-    'php7>=7.3.0'
-    'php7-gd>=7.3.0'
-    'php7-fpm>=7.3.0'
+    'php'
+    'php-gd'
+    'php-fpm'
 )
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BookStackApp/BookStack/archive/v${pkgver}.tar.gz")
