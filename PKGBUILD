@@ -4,8 +4,8 @@
 
 pkgname=find-cursor-git
 _pkgname=find-cursor
-pkgver=1.6
-pkgrel=9
+pkgver=1.7
+pkgrel=1
 pkgdesc="Simple XLib program to highlight the cursor position."
 arch=('any')
 url="https://github.com/arp242/find-cursor"

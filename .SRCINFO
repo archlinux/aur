@@ -1,7 +1,7 @@
 pkgbase = find-cursor-git
 	pkgdesc = Simple XLib program to highlight the cursor position.
-	pkgver = 1.6
-	pkgrel = 9
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/arp242/find-cursor
 	arch = any
 	groups = system
@@ -19,4 +19,3 @@ pkgbase = find-cursor-git
 	md5sums = SKIP
 
 pkgname = find-cursor-git
-
