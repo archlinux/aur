@@ -1,0 +1,18 @@
+pkgbase = wfslib-git
+	pkgdesc = WFS (WiiU File System) Library and Tools
+	pkgver = wfslib.v0.6.46.r14.gf025625
+	pkgrel = 1
+	url = https://github.com/koolkdev/wfslib
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	depends = fuse2
+	depends = crypto++
+	depends = boost-libs
+	provides = wfslib
+	conflicts = wfslib
+	source = wfslib::git+https://github.com/koolkdev/wfslib
+	md5sums = SKIP
+
+pkgname = wfslib-git
