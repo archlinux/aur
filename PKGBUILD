@@ -2,7 +2,7 @@
 
 pkgname=alif
 pkgver=3.0.32
-pkgrel=0
+pkgrel=1
 pkgdesc="The Alif Arabic Programming Language - لغة البرمجة العربية ألف"
 arch=('x86_64')
 url="https://www.aliflang.org/"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
-    git reset 95baa639c47522426521f22d611d649106a9d695
+    git reset a483c1ba39658a9bba47d8378b096d4fd78b40a0
 }
 
 build() {
