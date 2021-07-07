@@ -7,7 +7,7 @@ pkgdesc='API for the development of applications with PEAK CAN connection for Li
 arch=('x86_64')
 url='https://www.peak-system.com/PCAN-USB.199.0.html'
 license=('LGPL')
-#depends=('peak-linux-headers')
+depends=('peak-linux-headers')
 source=(
     "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-${pkgver}.tar.gz"
 )
