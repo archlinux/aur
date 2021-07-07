@@ -7,21 +7,27 @@
 # https://github.com/michaellass/AUR
 
 pkgname=jabref
-pkgver=5.2
-pkgrel=2
+pkgver=5.3
+pkgrel=1
 pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) databases"
 arch=(any)
 url="https://www.jabref.org/"
 license=(MIT)
-depends=('archlinux-java-run>=7' 'java-runtime=15')
-makedepends=('java-environment=15')
+depends=('archlinux-java-run>=7' 'java-runtime>=14')
+makedepends=('gradle' 'java-environment>=14')
 options=(!strip !emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v${pkgver}.tar.gz
         jabref.sh
         jabref.desktop)
-sha256sums=('26aa9d02e628e8d38f9db6afbeb11cbf0ab228d8c11fb34a3d3953b1d8f8d484'
-            '8ff6b0eb6cf4cea8859bdde5e31a2f448dda4ad0d396db29ff7d9130fa07f8ca'
+sha256sums=('a75f471304d39bc2a8eb6fa99b4d249b6d71d9243b453e3baa60fde71cf93705'
+            '4b2744dce0640db52891cbd55e2548650a79a88bf9770c2ae460f9ed577fddcd'
             'c6c95fc980630bc72bd4adcc93c710702fe4fced3fcb26c3067eea0f3aad5c68')
+
+# Note on supported Java versions:
+# The file build.gradle contains the version of Java that is required and tested.
+# Newer versions typically work as well. However, if using the supplied gradle
+# wrapper, it may use an old version of gradle that limits support for newer Java
+# versions.
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -29,10 +35,11 @@ build() {
   mkdir -p "${srcdir}"/gradle
   export GRADLE_USER_HOME=${srcdir}/gradle
 
-  export JAVA_HOME=$(archlinux-java-run -a 15 -b 15 -f jdk -j)
+  export JAVA_HOME=$(archlinux-java-run -a 14 -f jdk -j)
   echo "Using JDK from $JAVA_HOME to build JabRef."
 
-  ./gradlew \
+  # ./gradlew \
+  /usr/bin/gradle \
     --no-daemon \
     -PprojVersion="${pkgver}" \
     -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" \
@@ -57,5 +64,4 @@ package() {
   cd build
   cp -r resources "${pkgdir}"/usr/share/java/${pkgname}
   tar xf distributions/JabRef-${pkgver}.tar -C "${pkgdir}"/usr/share/java/${pkgname} JabRef-${pkgver}/lib --strip-components=1
-  rm "${pkgdir}"/usr/share/java/${pkgname}/lib/*-mac.*
 }

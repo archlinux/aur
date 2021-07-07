@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # This script has been created based on the instructions at
-# https://devdocs.jabref.org/getting-into-the-code/guidelines-for-setting-up-a-local-workspace
-# and the output of `./gradlew -d run`.
+# https://devdocs.jabref.org/getting-into-the-code/guidelines-for-setting-up-a-local-workspace,
+# the output of `./gradlew -d run` and the contents of build/scripts/JabRef in the build
+# directory.
 
 ROOT=/usr/share/java/jabref
 
-/usr/bin/archlinux-java-run --min 15 --max 15 -- \
+/usr/bin/archlinux-java-run -a 14 -- \
 --add-modules javafx.controls,javafx.fxml,javafx.swing,javafx.web \
 --add-exports javafx.controls/com.sun.javafx.scene.control=org.controlsfx.controls \
 --add-exports org.controlsfx.controls/impl.org.controlsfx.skin=org.jabref \
