@@ -1,0 +1,4 @@
+cilium-cli-*.tar.gz
+cilium-cli-*.pkg.tar.zst
+pkg/
+src/
