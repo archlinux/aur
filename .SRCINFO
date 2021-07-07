@@ -1,0 +1,19 @@
+pkgbase = python-gitlab-multi-group-runner
+	pkgdesc = A helper to assign a GitLab runner to multiple groups and projects.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/sciapp/gitlab-multi-group-runner
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cerberus
+	depends = python-gitlab
+	depends = python-pygments
+	depends = python-yacl
+	depends = python-yaml
+	source = https://github.com/sciapp/gitlab-multi-group-runner/archive/v0.0.0.tar.gz
+	sha256sums = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+pkgname = python-gitlab-multi-group-runner
+
