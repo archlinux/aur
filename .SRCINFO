@@ -1,7 +1,7 @@
 pkgbase = python-cleo-pypi
 	pkgdesc = create beautiful and testable command-line interfaces
 	pkgver = 0.8.1
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/sdispater/cleo
 	arch = any
 	license = MIT

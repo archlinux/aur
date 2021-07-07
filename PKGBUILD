@@ -5,7 +5,7 @@
 _name=cleo
 pkgname=python-$_name-pypi
 pkgver=0.8.1
-pkgrel=4
+pkgrel=6
 pkgdesc='create beautiful and testable command-line interfaces'
 provides=("python-cleo=$pkgver")
 conflicts=("python-cleo")
