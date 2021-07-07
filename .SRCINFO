@@ -1,0 +1,17 @@
+pkgbase = firefoxpwa-git
+	pkgdesc = This is a patched build of the FirefoxPWA from filips123's git
+	pkgver = 0.3.1.r.
+	pkgrel = 1
+	url = https://github.com/filips123/FirefoxPWA.git
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = rust
+	provides = firefoxpwa
+	source = git+https://github.com/filips123/FirefoxPWA.git
+	source = firefoxpwa-git.patch
+	sha256sums = SKIP
+	sha256sums = 4cf5c3edb1d87095c759affb803ea2bef13358aa63d047364ed5e7d5835f3177
+
+pkgname = firefoxpwa-git
+
