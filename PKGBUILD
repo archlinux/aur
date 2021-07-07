@@ -1,4 +1,5 @@
-#Maintainer:xgdgsc<xgdgsc@gmail.com>
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Maintainer: xgdgsc <xgdgsc at gmail dot com>
 
 pkgname=electronic-wechat-bin
 pkgver=2.3.1
