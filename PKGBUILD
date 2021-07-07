@@ -1,5 +1,5 @@
 pkgname=mingw-w64-glslang
-pkgver=11.4.0
+pkgver=11.5.0
 pkgrel=2
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
@@ -12,7 +12,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz wine-glslangValidator.sh
         git+https://github.com/KhronosGroup/SPIRV-Tools#commit=dc72924cb31cd9f3dbc3eb47e9d926cf641e3a07
         git+https://github.com/KhronosGroup/SPIRV-Headers#commit=dafead1765f6c1a5f9f8a76387dcb2abe4e54acd)
-sha256sums=('9bae79c2b640b60474f8944a5ab4aff3af990074636ea2a0a3c97cb86be61dfa' SKIP SKIP SKIP)
+sha256sums=('fd0b5e3bda591bb08bd3049655a99a0a55f0de4059b9c8f7b397e4b19cf5d51f' SKIP SKIP SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +21,6 @@ prepare() {
   cp -r SPIRV-Headers glslang-${pkgver}/External/spirv-tools/external/spirv-headers
 
   cd glslang-$pkgver
-  curl -L https://github.com/KhronosGroup/glslang/pull/2634.patch | patch -p1
 }
 
 build() {
