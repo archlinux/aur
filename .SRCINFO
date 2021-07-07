@@ -1,6 +1,6 @@
 pkgbase = mpv-amd-full-git
 	pkgdesc = A free, open source, and cross-platform media player (git version with all possible libs)
-	pkgver = 0.33.0.r70.gf60725263c
+	pkgver = 0.33.1.r211.gb3fccf0803
 	pkgrel = 1
 	url = https://mpv.io/
 	arch = x86_64
@@ -40,7 +40,7 @@ pkgbase = mpv-amd-full-git
 	depends = shaderc
 	depends = libplacebo
 	depends = zimg
-	depends = ffmpeg-git
+	depends = ffmpeg
 	depends = spirv-cross
 	depends = libsixel
 	optdepends = youtube-dl: for video-sharing websites playback
@@ -52,4 +52,3 @@ pkgbase = mpv-amd-full-git
 	sha256sums = SKIP
 
 pkgname = mpv-amd-full-git
-
