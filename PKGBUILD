@@ -5,7 +5,7 @@
 
 pkgbase=pjproject-git
 pkgname=("$pkgbase" "python-$pkgbase")
-pkgver=2.11.r43.g8ef2a3c
+pkgver=2.11.r44.g70074ed
 pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
@@ -15,17 +15,18 @@ _pkgdepends=(alsa-lib
              ffmpeg
              libsamplerate
              libsrtp
+             libyuv
              openssl
              opus
              portaudio
              speex
              util-linux)
-_libdepends=(python
-             python-setuptools)
+_libdepends=(python)
 makedepends=("${_pkgdepends[@]}"
              "${_libdepends[@]}"
              e2fsprogs
              git
+             python-setuptools
              swig)
 source=("$pkgbase::git+https://github.com/pjsip/${pkgbase/-/.}"
         '0001-Don-t-build-Java-bindings.patch'
@@ -41,36 +42,37 @@ pkgver() {
 }
 
 prepare() {
-    cd "$pkgbase"
-    patch -Np1 < "../${source[1]}"
-    install -Dm644 -t "pjlib/include/pj/" "../${source[2]}"
+	cd "$pkgbase"
+	patch -Np1 < "../${source[1]}"
+	install -Dm644 -t "pjlib/include/pj/" "../${source[2]}"
 }
 
 build() {
-    cd "$pkgbase"
-    export CXXFLAGS="$CXXFLAGS -fPIC"
-    if [ "$CARCH" = 'aarch64' ]; then
-        arch_opts=(--disable-libwebrtc)
-    fi
-    if [ "$CARCH" = "i686" ]; then
-        export CXXFLAGS="$CXXFLAGS -march=i686"
-        arch_opts=(--disable-libwebrtc)
-    fi
-    export CFLAGS="$CFLAGS -fPIC -DNDEBUG"
-    ./configure \
-        --prefix=/usr \
-        --with-external-speex \
-        --with-external-srtp \
-        --with-external-pa \
-        --with-external-gsm \
-        --enable-shared \
-        --disable-opencore-amr \
-        "${arch_opts[@]}"
-    make -j1 dep
-    make -j1
-    make -j1 -C pjsip-apps/src/swig
+	cd "$pkgbase"
+	export CXXFLAGS="$CXXFLAGS -fPIC"
+	if [ "$CARCH" = 'aarch64' ]; then
+		arch_opts=(--disable-libwebrtc)
+	fi
+	if [ "$CARCH" = "i686" ]; then
+		export CXXFLAGS="$CXXFLAGS -march=i686"
+		arch_opts=(--disable-libwebrtc)
+	fi
+	export CFLAGS="$CFLAGS -fPIC -DNDEBUG"
+	./configure \
+		--prefix=/usr \
+		--with-external-speex \
+		--with-external-srtp \
+		--with-external-pa \
+		--with-external-gsm \
+		--with-external-yuv \
+		--enable-shared \
+		--disable-opencore-amr \
+		"${arch_opts[@]}"
+	make dep
+	make
+	make -C pjsip-apps/src/swig
 	pushd 'pjsip-apps/src/swig/python'
-    python setup.py build
+	python setup.py build
 }
 
 package_pjproject-git() {
