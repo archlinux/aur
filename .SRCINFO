@@ -1,6 +1,6 @@
 pkgbase = trex-bin
 	pkgdesc = Cryptocurrency miner for NVIDIA hardware, supporting a variety of algorithms
-	pkgver = 0.20.4
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://bitcointalk.org/index.php?topic=4432704.0
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = trex-bin
 	provides = trex
 	conflicts = trex
 	options = !strip
-	source = t-rex_0.20.4.tar.gz::https://trex-miner.com/download/t-rex-0.20.4-linux.tar.gz
-	sha1sums = 710d6864a8ae7e30096f75ef3219d5e2908e0456
+	source = t-rex_0.21.2.tar.gz::https://trex-miner.com/download/t-rex-0.21.2-linux.tar.gz
+	sha1sums = 2511be28e9691b90ad07ef362e4c135d69a7447b
 
 pkgname = trex-bin
-
