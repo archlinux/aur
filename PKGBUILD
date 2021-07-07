@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=zsa-wally-cli-git
-pkgver=2.0.0.r12.75e7585
+pkgver=2.0.1.r0.e488ddd
 pkgrel=1
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
