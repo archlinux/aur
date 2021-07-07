@@ -1,16 +1,16 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=iauto
-pkgver=3.3.9
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Flowchart diagrams drawer"
 arch=('x86_64')
 url="http://www.iautodraw.com"
 license=('unknown')
-depends=(electron3)
+depends=(electron)
 makedepends=(p7zip gendesk)
 source=("${pkgname}-${pkgver}.exe::https://www.iautodraw.com/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
-sha512sums=('1a9f68957d094f714ed0bbd7d19c96642e90de6a44b34a7c12bd7674906d90e2517a3044e4d9ddc193f508bb2c1373fef0091d6513795c954ffb3d4162f986ab')
+sha512sums=('e4c4160e8f66c614e80983e82d3e5c7c5a08ea6472a399b536b20cc9db0011c7edd1807686c4a91a3ae26d716c3525b3ff725a69f98862b36513c4f15c5cc890')
 
     prepare() {
     cd $srcdir
@@ -42,7 +42,7 @@ package() {
     # link executable
     mkdir -p ${pkgdir}/usr/bin/
     echo """#!/usr/bin/bash
-electron3 /usr/share/${pkgname}/${pkgname}.asar
+electron /usr/share/${pkgname}/${pkgname}.asar
 """> ${pkgdir}/usr/bin/${pkgname}
     chmod a+x ${pkgdir}/usr/bin/${pkgname}
 
