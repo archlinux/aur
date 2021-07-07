@@ -2,7 +2,7 @@
 
 pkgname=zsa-wally-cli
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally-cli"
@@ -29,8 +29,8 @@ build() {
 }
 
 package() {
-    cd "wally-cli-$pkgver-linux"
+    install -Dm755 "$srcdir/wally-cli-$pkgver-linux/wally-cli" "$pkgdir/usr/bin/wally-cli"
+    install -Dm644 "$srcdir/wally-cli-$pkgver-linux/license.md" "$pkgdir/usr/share/licenses/$pkgname/license.md"
 
-    install -Dm755 wally-cli "$pkgdir/usr/bin/wally-cli"
-    install -Dm644 license.md "$pkgdir/usr/share/licenses/$pkgname/license.md"
+    install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" "$srcdir/50-wally-cli.rules"
 }
