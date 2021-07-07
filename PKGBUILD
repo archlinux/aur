@@ -1,8 +1,8 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 
 pkgname=webui
-pkgver=1.0.13
-pkgrel=2
+pkgver=1.0.20
+pkgrel=0
 pkgdesc="Open source project to use web browsers as UI."
 arch=('x86_64')
 url="https://github.com/alifcommunity/webui/"
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname-$pkgver
-    git reset 35ad7009388eb6c13a852f96538f040a6237369f
+    git reset db0a6b62de77913a9bb1e1137c557d46a1850a43
 }
 
 build() {
