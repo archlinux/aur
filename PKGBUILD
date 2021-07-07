@@ -1,23 +1,30 @@
-# Maintainer: jose <jose1711 [at] gmail (dot) com>
+# Maintainer: LordofNoob <leginee [at] gmail (dot) com>
+# Contributor: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=epm
 arch=('i686' 'x86_64')
-pkgver=4.2
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="ESP Package manager is a UNIX software and file packaging program"
-license=('GPL-2')
-url="http://www.epmhome.org"
-source=("http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-md5sums=('3805b1377f910699c4914ef96b273943')
-depends=('libxft' 'gcc-libs')
+pkgdesc="EPM Package manager generates software and patch distributions Packages in various formats from a list of files."
+license=('Apache')
+url="https://jimjag.github.io/epm/"
+source=("https://github.com/jimjag/epm/archive/v5.0.0.tar.gz")
+md5sums=('8ce02a315807bd406b5de85ccf63e7fb')
+depends=('fltk-mod' 'gcc-libs')
 
 build() {
-cd $srcdir/${pkgname}-$pkgver
-./configure --prefix=/usr
-make
+  cd $srcdir/${pkgname}-$pkgver
+  ./configure --prefix=$pkgdir/usr
+  make
 }
 
+#check() {
+#  cd $srcdir/${pkgname}-$pkgver
+#  make test
+#}
+
 package(){
-cd $srcdir/${pkgname}-$pkgver
-make exec_prefix=$pkgdir libdir=$pkgdir/usr/lib mandir=$pkgdir/usr/share/man docdir=$pkgdir/usr/share/doc install
+  cd $srcdir/${pkgname}-$pkgver
+  make -i install
+
 }
