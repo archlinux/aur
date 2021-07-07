@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.12
-_minor=14
+_minor=15
 _srcname=linux-${_major}
-_clr=${_major}.13-1050
+_clr=${_major}.14-1051
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -293,13 +293,16 @@ _package-headers() {
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
     install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-    # http://bugs.archlinux.org/task/13146
+    # https://bugs.archlinux.org/task/13146
     install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-    # http://bugs.archlinux.org/task/20402
+    # https://bugs.archlinux.org/task/20402
     install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+    # https://bugs.archlinux.org/task/71392
+    install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
     echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -351,7 +354,7 @@ done
 
 sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
             'SKIP'
-            '8e192e06d4e4fd28f54f270e70602d95332e43864f7d4a3e0ecf4255ac0c2e6d'
+            '7bbcf85a485de022418c71dd909dcb7abc4fcabfe0b76c184e28203b4cf1d29e'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
