@@ -1,31 +1,32 @@
-# Maintainer: Aaron Bishop < erroneous at gmail >
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Aaron Bishop < erroneous at gmail >
 
 pkgname=qdecoder
-pkgver=12.0.7
-pkgrel=1
-pkgdesc="qDecoder is a CGI library for C/C++ programming language which has been developed since 1996."
+pkgver=12.0.8
+pkgrel=2
+pkgdesc="A simple and powerful CGI library for C/C++ programming language."
 arch=('x86_64')
 url="https://wolkykim.github.io/qdecoder/"
-license=('CUSTOM')
+license=('custom')
 depends=()
-makedepends=('fcgi')
-source=("https://github.com/wolkykim/qdecoder/archive/v${pkgver}.tar.gz")
-sha256sums=('01d4852b9343757abe98bbdb9d4bf0dc142ccb602ec921906ddde32c16164376')
-
+source=("https://github.com/wolkykim/qdecoder/archive/v${pkgver}.tar.gz"
+        "https://github.com/wolkykim/qdecoder/commit/50a674da1cb34c5a086a3e9b88282da6b1782b36.diff")
+sha256sums=('3911576ad8766697a9c8c767458edc953ae686eb53cd31d21e38edd7831ed9aa'
+            '110a80d8390ecf6789e1f6533a2b118b0f8d04812d17ebea359aceb8508933cf')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    ./configure --enable-fastcgi=/usr/include --prefix="/usr"
+    patch -p1 < ../50a674da1cb34c5a086a3e9b88282da6b1782b36.diff
 }
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    ./configure --prefix=/usr
     make
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}" "$pkgdir/usr/include" "$pkgdir/usr/lib"
-    make DESTDIR="$pkgdir" install
-    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/${pkgname}/COPYING
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
