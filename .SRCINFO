@@ -1,7 +1,7 @@
 pkgbase = hubble-bin
 	pkgdesc = Network, Service & Security Observability for Kubernetes using eBPF
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cilium.io/
 	arch = x86_64
 	arch = aarch64

@@ -2,7 +2,7 @@
 
 pkgname=hubble-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Network, Service & Security Observability for Kubernetes using eBPF'
 arch=('x86_64' 'aarch64')
 url='https://cilium.io/'
