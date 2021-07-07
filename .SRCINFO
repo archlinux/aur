@@ -1,13 +1,13 @@
 pkgbase = virtlyst
 	pkgdesc = Web interface to manage virtual machines with libvirt
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cutelyst/Virtlyst
 	arch = x86_64
 	license = AGPL3
 	makedepends = cmake
 	makedepends = pkg-config
-	depends = cutelyst>=2.6.0
+	depends = cutelyst2-qt5>=2.14.0
 	depends = libvirt
 	optdepends = nginx
 	backup = etc/uwsgi/virtlyst.ini
@@ -25,4 +25,3 @@ pkgbase = virtlyst
 	sha256sums = fb13f116e9b8268b642082ab8aac40fe2104dbb33e98ab925ab3633986c5fdca
 
 pkgname = virtlyst
-
