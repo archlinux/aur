@@ -1,6 +1,6 @@
 pkgbase = fish-xsession
 	pkgdesc = fish -l as xsession from your display manager
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = fish-xsession
 	md5sums = 389c598be068a4b4a998e30d7ef44c84
 
 pkgname = fish-xsession
-
