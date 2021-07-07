@@ -1,7 +1,7 @@
 pkgbase = zet-bin
 	pkgdesc = CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yarrow/zet
 	arch = x86_64
 	arch = armv6h
@@ -9,7 +9,7 @@ pkgbase = zet-bin
 	arch = aarch64
 	license = APACHE
 	license = MIT
-	depends = glibc
+	depends = gcc-libs
 	provides = zet
 	conflicts = zet
 	source_x86_64 = zet-bin-0.2.0-x86_64.tar.gz::https://github.com/yarrow/zet/releases/download/0.2.0/zet-0.2.0-x86_64-unknown-linux-musl.tar.gz

@@ -1,15 +1,15 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=zet-bin
 pkgver=0.2.0
-pkgrel=1
-pkgdesc="CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines"
-arch=(x86_64 armv6h armv7h aarch64)
+pkgrel=2
+pkgdesc='CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines'
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/yarrow/${pkgname%-bin}"
 license=('APACHE' 'MIT')
-# The arm version links to glibc
-depends=('glibc')
-provides=(${pkgname%-bin})
-conflicts=(${pkgname%-bin})
+# The arm version is dynamically linked
+depends=('gcc-libs')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$pkgname-$pkgver-armhf.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
 source_armv6h=("$pkgname-$pkgver-armhf.tar.gz::$url/releases/download/$pkgver/${pkgname%-bin}-${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
