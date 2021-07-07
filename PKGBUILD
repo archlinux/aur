@@ -3,7 +3,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=lua-language-server
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'

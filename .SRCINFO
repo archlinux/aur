@@ -1,6 +1,6 @@
 pkgbase = lua-language-server
 	pkgdesc = Lua Language Server coded by Lua
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/sumneko/lua-language-server
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lua-language-server
 	makedepends = ninja
 	makedepends = git
 	depends = lua
-	source = lua-language-server::git+https://github.com/sumneko/lua-language-server.git#tag=2.0.1
+	source = lua-language-server::git+https://github.com/sumneko/lua-language-server.git#tag=2.0.3
 	source = wrapper
 	cksums = SKIP
 	cksums = 1766996792
