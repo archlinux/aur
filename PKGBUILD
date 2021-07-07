@@ -52,12 +52,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-#_minor=0
+_minor=1
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
-#pkgver=${_major}.${_minor}
-pkgver=${_major}
-pkgrel=4
+pkgver=${_major}.${_minor}
+#pkgver=${_major}
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -69,7 +69,7 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
-#  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "config"
   "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
   "${_caculepatches}/v5.13/cacule-5.13.patch"
@@ -506,6 +506,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
+         'e1d6115db8aa6afc106494e940c5cdc0'
          '2ec080047599485c19b50300c9d07aa8'
          '9bb46b8ce45259c238c5233b8394d70b'
          '8fab6f0acf86d138a283c4dd044198ed'
