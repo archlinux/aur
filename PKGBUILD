@@ -3,17 +3,17 @@
 
 _gemname=pgdexter
 pkgname=ruby-$_gemname
-pkgver=0.3.5
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='The automatic indexer for Postgres'
 arch=(any)
 url='https://github.com/ankane/dexter'
 license=()
-depends=(ruby ruby-slop ruby-pg ruby-pg_query)
+depends=(ruby ruby-slop ruby-pg ruby-pg-query)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('6fa4f7eb6a64647ad1351ff96d556caf31720c33f35aba4bcf683bfd51d9db55')
+sha256sums=('3acab7dc4e6af7087e78f2b986b69288437198a86fce85a74e0eb152886e70ef')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
