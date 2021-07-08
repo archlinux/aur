@@ -3,7 +3,7 @@ pkgbase=python-galpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.6.0.post0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
@@ -15,12 +15,13 @@ makedepends=('python-setuptools' 'python2-setuptools' 'gsl')
 #              'python-matplotlib'
 ##             'python2-matplotlib'
 #              'python-future'
-#              python-scipy)
+#              'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7a8f977098dbb1c7450c39d4b4d23ebb')
+md5sums=('e57fa62ff8cd6356e522d06eae9aafd9')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
@@ -37,12 +38,12 @@ build() {
 }
 
 #check() {
-#   cd ${srcdir}/${_pyname}-${pkgver}
-#   python setup.py test
-#   pytest
-
-#   cd ${srcdir}/${_pyname}-${pkgver}-py2
-#   python2 setup.py test
+#    cd ${srcdir}/${_pyname}-${pkgver}
+##   python setup.py test
+#    pytest "build/lib.linux-${CARCH}-${_pyver}"
+#
+##   cd ${srcdir}/${_pyname}-${pkgver}-py2
+##   python2 setup.py test
 #}
 
 package_python2-galpy() {
