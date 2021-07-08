@@ -1,4 +1,8 @@
 /src
 /pkg
-/seed
+/Base
+/Build
+/Corepops
+/Docs
+/Seed
 *.pkg.tar

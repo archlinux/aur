@@ -1,7 +1,7 @@
 pkgbase = poplog-git
 	pkgdesc = poplog development system
-	pkgver = r152.80628bd
-	pkgrel = 1
+	pkgver = r7.8532fd8
+	pkgrel = 2
 	url = http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,15 @@ pkgbase = poplog-git
 	depends = libxp
 	depends = ncurses5-compat-libs
 	optdepends = espeak: for run-speaking-eliza demo
-	source = seed::git+https://github.com/GetPoplog/Seed.git
+	source = git+https://github.com/GetPoplog/Seed
+	source = git+https://github.com/GetPoplog/Docs
+	source = git+https://github.com/GetPoplog/Base
+	source = git+https://github.com/GetPoplog/Corepops
+	source = git+https://github.com/GetPoplog/Build
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = poplog-git
