@@ -1,6 +1,6 @@
 pkgbase = hck
 	pkgdesc = A sharp cut(1) clone
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/sstadick/hck
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hck
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = hck-0.3.1.tar.gz::https://static.crates.io/crates/hck/hck-0.3.1.crate
-	b2sums = 881a79bc161e15279637bac3d6e44685fe8c2bdcf84525a48c0cb90b8919adb7dbaba31c44bb4d458a6e161520b4be6c1872a85f0ed66d195e7beb04c0d3c459
+	source = hck-0.3.2.tar.gz::https://static.crates.io/crates/hck/hck-0.3.2.crate
+	b2sums = 5bcdf3b1132abeeb4c3882564b9be66ae73eda808a43d0b5e1eca585c4077928ed3385ca711755ff3cd64e0011f6f96516ed85ceb1af5a5671daaea4513dc789
 
 pkgname = hck
