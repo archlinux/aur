@@ -1,9 +1,9 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
-# Contributor: Marc Straube <email@marcstraube.de>
+# Maintainer: Marc Straube <email@marcstraube.de>
 
 pkgname=mercure
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Server-sent live updates: protocol and reference implementation'
 arch=('x86_64')
 url='https://mercure.rocks'
@@ -25,6 +25,6 @@ package(){
   install -Dm 755 mercure.service "${pkgdir}"/usr/lib/systemd/system/mercure.service
   install -Dm 644 mercure.sysusers "${pkgdir}"/usr/lib/sysusers.d/mercure.conf
   install -Dm 644 mercure.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/mercure.conf
-  install -Dm 644 Caddyfile "${pkgdir}"/etc/mercure/Caddyfile
-  install -Dm 644 Caddyfile.dev "${pkgdir}"/etc/mercure/Caddyfile.dev
+  install -Dm 644 ../Caddyfile "${pkgdir}"/etc/mercure/Caddyfile
+  install -Dm 644 ../Caddyfile.dev "${pkgdir}"/etc/mercure/Caddyfile.dev
 }
