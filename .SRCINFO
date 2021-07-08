@@ -1,0 +1,19 @@
+pkgbase = input-veikk-dkms-git
+	pkgdesc = Linux driver providing pressure sensitivity for VEIKK drawing tablets (S640, A50, A30)
+	pkgver = r78.bb938f0
+	pkgrel = 1
+	url = https://github.com/jlam55555/veikk-s640-driver
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = git
+	optdepends = input-veikk-config
+	source = input-veikk::git+https://github.com/jlam55555/veikk-s640-driver.git
+	source = veikk.conf
+	source = dkms.conf
+	sha1sums = SKIP
+	sha1sums = 58ea5a020380c922d62b43c6403b4310a18967b4
+	sha1sums = 35423db037910181d6fcada916180b09c28ff8ad
+
+pkgname = input-veikk-dkms-git
