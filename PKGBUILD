@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/alexdelorenzo/cast_control"
 license=('AGPL3')
 depends=('python-aiopath>=0.5.8' 'python-appdirs' 'python-click' 'python-daemons=1.3.2'
-         'python-gobject' 'python-mpris_server>=0.4.0' 'python-mpris_server>=0.4.0'
+         'python-gobject' 'python-mpris_server>=0.4.0' 'python-mpris_server<0.5.0'
          'python-pychromecast=9.2.0' 'python-pydbus' 'python-typing_extensions')
 makedepends=('python-setuptools')
 optdepends=('playerctl: Get the D-Bus name for your device'
