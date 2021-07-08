@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=carapace
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='multi-shell multi-command argument completer'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/rsteube/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_Linux_${arch}.tar.gz")
-sha256sums=('e2591a82a8db0a6f3e9820db05910dfc1108a66b4ee1b36e511b58d2f2aa5ade')
+sha256sums=('00b2478cf40045cdb3d30ddc70c5c576116439d7b31b1137a7ee0df6df2617ad')
 
 package() {
     tar -xzvf carapace-bin_${pkgver}_Linux_${arch}.tar.gz
