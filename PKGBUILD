@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname="python-pystray"
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -12,7 +12,7 @@ depends=('python-six' 'python-pillow' 'python-xlib>=0.17' 'libappindicator-gtk3'
 makedepends=('python>=3.4' 'python-setuptools' 'python-pip' 'python-wheel')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moses-palmer/pystray/archive/v${pkgver}.tar.gz")
-sha512sums=('01f09e20aa9fff689932c332369ad3ecad2887215c5ccf2ff75881b29cdae41a3a811267879bfc2c6c0dc4c3220b4c263382341bebc6504dd2047486fca71260')
+b2sums=('2be8d038afb35c0ecc6a0879a41bf898ef8ecf1f5e6d8e9c6d23a157714b866ec7a19d2e5205e95d5c16d0f401e360fb3fa4cdef1f4ed7779436be3e1a4fd37f')
 
 build() {
   cd "pystray-$pkgver"
