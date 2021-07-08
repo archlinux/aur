@@ -6,6 +6,7 @@ pkgdesc="Linux driver providing pressure sensitivity for VEIKK drawing tablets (
 arch=('i686' 'x86_64')
 url="https://github.com/jlam55555/veikk-s640-driver"
 license=('GPL')
+provides=('input-veikk-dkms')
 depends=('dkms' 'git')
 optdepends=('input-veikk-config')
 source=(${_pkgname}::git+${url}.git

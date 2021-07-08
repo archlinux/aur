@@ -9,6 +9,7 @@ pkgbase = input-veikk-dkms-git
 	depends = dkms
 	depends = git
 	optdepends = input-veikk-config
+	provides = input-veikk-dkms
 	source = input-veikk::git+https://github.com/jlam55555/veikk-s640-driver.git
 	source = veikk.conf
 	source = dkms.conf
