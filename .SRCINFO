@@ -1,7 +1,7 @@
 pkgbase = perl-webservice-nfsn
 	pkgdesc = Client for the NearlyFreeSpeech.NET API
 	pkgver = 1.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/WebService::NFSN
 	arch = any
 	license = PerlArtistic

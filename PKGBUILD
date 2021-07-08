@@ -2,7 +2,7 @@
 
 pkgname=perl-webservice-nfsn
 pkgver=1.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for the NearlyFreeSpeech.NET API"
 arch=('any')
 url="https://metacpan.org/pod/WebService::NFSN"
@@ -25,7 +25,7 @@ build() {
     _dir=$(find $srcdir -maxdepth 2 -type f -name 'Build.PL')
     if [ ! -z "$_dir" ]; then
       cd $(dirname "$_dir")
-      export PERL5LIB="$srcdir/WebService-NFSN-$pkgver"
+      export PERL5LIB="$srcdir/WebService-NFSN-$pkgver" # we need this because they have a custom package, inc::My_Build, needed for compilation.
       PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor
       ./Build
 
