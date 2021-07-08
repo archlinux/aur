@@ -1,6 +1,6 @@
 pkgbase = firefoxpwa-git
 	pkgdesc = This is a patched build of the FirefoxPWA from filips123's git
-	pkgver = 0.4.0.r.
+	pkgver = 0.4.0
 	pkgrel = 3
 	url = https://github.com/filips123/FirefoxPWA.git
 	arch = x86_64

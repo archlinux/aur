@@ -1,6 +1,6 @@
 # Maintainer: TheFool <rn6l05d28@relay.firefox.com>
 pkgname=firefoxpwa-git
-pkgver=0.4.0.r.
+pkgver=0.4.0
 pkgrel=3
 epoch=
 pkgdesc="This is a patched build of the FirefoxPWA from filips123's git"
@@ -23,11 +23,6 @@ source=("git+$url")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
-
-pkgver () {
-cd "${_pkgname}"
-printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
     cd FirefoxPWA/native
