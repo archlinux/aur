@@ -9,7 +9,7 @@
 pkgname=polipo
 pkgver=1.1.1
 pkgrel=5
-pkgdesc="Small and fast caching web proxy"
+pkgdesc="Small and fast caching web proxy (from 2014)"
 arch=('x86_64')
 url="http://www.pps.jussieu.fr/~jch/software/polipo/"
 license=('MIT')

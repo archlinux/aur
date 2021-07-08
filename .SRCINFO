@@ -1,5 +1,5 @@
 pkgbase = polipo
-	pkgdesc = Small and fast caching web proxy
+	pkgdesc = Small and fast caching web proxy (from 2014)
 	pkgver = 1.1.1
 	pkgrel = 5
 	url = http://www.pps.jussieu.fr/~jch/software/polipo/
