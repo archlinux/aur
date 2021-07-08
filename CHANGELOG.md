@@ -1,5 +1,73 @@
 # Changelog
 
+## [0.4.1-1] - 2021-07-05
+
+### Added
+
+- Support for `perl` code execution.
+
+### Fixed
+
+- Custom themes now work (thanks to [@itmecho](https://github.com/itmecho))
+- Slides will not crash with small slides (`<= 1`)
+
+## [0.4.0-1] - 2021-06-27
+
+### Added
+
+#### Pre-processing
+
+`slides` now has the ability to have commands run and executed before
+presenting slides (pre-processing).
+
+To use this feature, you must:
+
+  - Use a file for your slides (no `stdin`, for security reasons)
+  - `chmod +x file.md`, change file permissions to be able to execute code on
+    slides (for security reasons)
+
+In your `slides.md`, you can write a code block with this structure (use tildes
+`~`). When you go to present slides (that are executable,
+`chmod +x slides.md`), `slides` will parse the code block and run the
+`command to run` and pass in the text inside the code block as `stdin` to the
+command. The entire code block will then be replace by the `stdout` of the
+command you want to run.
+
+```
+~~~command to run
+stdin
+~~~
+```
+
+This allows you to:
+
+  - Import text from other files with
+
+```
+~~~xargs cat
+examples/import.md
+~~~
+```
+
+  - Render GraphViz graphs with `graph-easy`
+
+```
+~~~graph-easy --as=boxart
+[ A ] -> [ B ]
+~~~
+```
+
+  - A lot more...
+
+### Changed
+
+- slides added to nixpkgs-unstable @ v0.3.0
+- Added support for javascript code execution (using node)
+- Added support for elixir code execution (thanks to @suzaku)
+- hand Breaking: Removed ~~~ as a slide delimiter (for pre-processing), use --- always instead.
+- Code block execution results are no longer rendered as Markdown. (thanks to @suzaku)
+- Fix bug to be able to parse code blocks without trailing new lines. (thanks to @suzaku)
+
 ## [0.3.0-1] - 2021-06-21
 
 ### Added
