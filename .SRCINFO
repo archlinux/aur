@@ -1,0 +1,19 @@
+pkgbase = breathing-git
+	pkgdesc = Exercise your breathing
+	pkgver = v0.1.0.r38.gc80c095
+	pkgrel = 1
+	url = https://github.com/SeaDve/Breathing
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gstreamer
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	provides = breathing
+	conflicts = breathing
+	source = git+https://github.com/SeaDve/Breathing.git
+	md5sums = SKIP
+
+pkgname = breathing-git
