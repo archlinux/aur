@@ -11,7 +11,6 @@ depends=('glibc')
 makedepends=('meson' 'ninja')
 provides=('canfigger' 'libcanfigger.so')
 options=('staticlibs')
-checkdepends=('valgrind')
 
 source=("https://github.com/andy5995/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('e497111b96d8c66f105cdec9382a48fe73f9c87d7e653b29a7e5c8658ef239e7')

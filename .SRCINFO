@@ -9,7 +9,6 @@ pkgbase = canfigger
 	arch = armv7h
 	arch = ppc64le
 	license = GPL3
-	checkdepends = valgrind
 	makedepends = meson
 	makedepends = ninja
 	depends = glibc
