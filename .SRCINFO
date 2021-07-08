@@ -1,6 +1,6 @@
 pkgbase = qcoro-git
 	pkgdesc = C++ Coroutine library for Qt
-	pkgver = r82.3147d44
+	pkgver = r100.a29ded2
 	pkgrel = 1
 	url = https://qcoro.dvratil.cz/
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = qcoro-git
 	sha256sums = SKIP
 
 pkgname = qcoro-git
-

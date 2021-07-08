@@ -1,7 +1,7 @@
 # Maintainer: Hannah Kiekens <hannahkiekens@gmail.com>
  
 pkgname=qcoro-git
-pkgver=r82.3147d44
+pkgver=r100.a29ded2
 pkgrel=1
 pkgdesc='C++ Coroutine library for Qt'
 arch=(x86_64 armv6h armv7h aarch64)
@@ -22,6 +22,7 @@ pkgver() {
 build() {
   cd "${pkgname%-git}"
   cmake . \
+    -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
