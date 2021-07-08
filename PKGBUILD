@@ -7,7 +7,7 @@ pkgdesc="Qt multimedia plugins implemented on top of libmdk"
 arch=('i686' 'x86_64')
 url="https://github.com/wang-bin/qtmultimedia-plugins-mdk"
 license=('MIT')
-depends=('qt5-multimedia')
+depends=('qt5-multimedia' 'libc++')
 makedepends=('sed')
 source=(https://github.com/wang-bin/qtmultimedia-plugins-mdk/archive/master.zip
         https://netactuate.dl.sourceforge.net/project/mdk-sdk/nightly/mdk-sdk-linux.tar.xz)

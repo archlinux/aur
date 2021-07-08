@@ -8,6 +8,7 @@ pkgbase = qt5-multimedia-mdk-plugin
 	license = MIT
 	makedepends = sed
 	depends = qt5-multimedia
+	depends = libc++
 	source = https://github.com/wang-bin/qtmultimedia-plugins-mdk/archive/master.zip
 	source = https://netactuate.dl.sourceforge.net/project/mdk-sdk/nightly/mdk-sdk-linux.tar.xz
 	md5sums = SKIP
