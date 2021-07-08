@@ -1,6 +1,6 @@
 pkgbase = tomb-git
 	pkgdesc = simple tool to manage encrypted storage
-	pkgver = 2.6.r7.g6f2ce59
+	pkgver = 2.9.r11.g2a744fe
 	pkgrel = 1
 	url = https://www.dyne.org/software/tomb/
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = tomb-git
 pkgname = tomb-git
 	depends = cryptsetup
 	depends = gnupg
+	depends = inetutils
 	depends = sudo
 	depends = zsh
 	depends = e2fsprogs
@@ -33,4 +34,3 @@ pkgname = tomb-kdf-git
 	depends = libgcrypt
 	provides = tomb-kdf
 	conflicts = tomb-kdf
-
