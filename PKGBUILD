@@ -1,6 +1,6 @@
 # Maintainer: osch <oliver at luced de>
 pkgname=lua53-lanes
-pkgver=3.15.0
+pkgver=3.15.1
 pkgrel=1
 epoch=
 pkgdesc="A solution for running Lua multithreaded"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LuaLanes/lanes/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('a43c78da84f255379f532f5812fb17fe')
+md5sums=('ad240ec8b55cecadf9e028c1a748824a')
 validpgpkeys=()
 
 prepare() {
