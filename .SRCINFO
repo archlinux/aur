@@ -1,0 +1,19 @@
+pkgbase = modemu2k
+	pkgdesc = adds telnet capability to a comm program
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/theimpossibleastronaut/modemu2k
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = ppc64le
+	license = GPL3
+	makedepends = flex
+	optdepends = gettext
+	optdepends = minicom
+	source = https://github.com/theimpossibleastronaut/modemu2k/releases/download/v0.0.6/modemu2k-0.0.6.tar.gz
+	sha256sums = b09381628538996d4c22772f7955b42a63e482d1054508833524e36dbf27b7c2
+
+pkgname = modemu2k
+
