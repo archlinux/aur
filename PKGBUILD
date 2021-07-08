@@ -1,21 +1,21 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=zecwallet-lite
-pkgver=1.6.3
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Z-Addr first, Sapling compatible lightwallet client for Zcash"
 arch=('any')
 url="https://github.com/adityapk00/zecwallet-lite"
 license=('MIT')
 depends=('electron')
-makedepends=('rust' 'nodejs-lts-fermium' 'yarn' 'npm')
+makedepends=('rust' 'nodejs' 'yarn' 'npm')
 provides=('zcash-wallet')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/adityapk00/zecwallet-lite/archive/v${pkgver}.tar.gz"
 	"zecwallet-icons.tar.xz"
 	"${pkgname}.desktop"
 	)
-sha256sums=('a0c944491e5ee1b09c849d220eabe4b6467c06382230c1b4baefb134707c27cb'
+sha256sums=('5ca5682de47ad0f669d01799b0caa828278aca66840172ac6df92f694b79231c'
             '19d8b4acee2c6ff062e86ecbb2365123d0471f2991192323780b53630104574d'
             'a53083250c61d1e43cf3b5c371222bb5740e2befcdc4d9b7ea003a1f4ac30ef4')
             
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  yarn package-linux
+  yarn dist:linux
 }
 
 package() {
@@ -36,7 +36,7 @@ package() {
   
   cd "${pkgname}-${pkgver}"
   install -d "${pkgdir}/opt/${pkgname}/"
-  cp -ra release/linux-unpacked/* "${pkgdir}/opt/${pkgname}/"
+  cp -ra dist/linux-unpacked/* "${pkgdir}/opt/${pkgname}/"
   cd ..
   
   # Icons
