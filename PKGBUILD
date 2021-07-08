@@ -2,7 +2,7 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-bin
-pkgver=0.16.0
+pkgver=0.17.1
 pkgrel=0
 pkgdesc='Flexible, reusable and concise configuration for Kubernetes using Jsonnet'
 arch=('x86_64')
@@ -14,6 +14,8 @@ source=("tk-$pkgver::https://github.com/grafana/tanka/releases/download/v${pkgve
 depends=('diffutils' 'kubectl')
 optdepends=(
   'jsonnet-bundler-bin: jsonnet package manager'
+  'helm: optional helm integration'
+  'kustomize: optional kustomize integration'
 )
 
 provides=(tanka)
@@ -23,4 +25,4 @@ package() {
   install -Dm 755 "$srcdir/tk-$pkgver" "$pkgdir/usr/bin/tk"
 }
 
-sha256sums=('f02a2c30cb17f5db6d6df6f4f246d5b763c5176f537b03765783ed0bfdadcfd1')
+sha256sums=('c87f9eb9bd2e0d9280032efe8844badbc8b4c608affc9102d3054a40cc9755e3')
