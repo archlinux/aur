@@ -1,0 +1,10 @@
+# build and package directories
+src/
+pkg/
+
+# source and package archives
+sponsorblock-chromium-git-*
+sponsorblock-chromium/
+
+# lazy script to update package sums and .SRCINFO
+update.sh

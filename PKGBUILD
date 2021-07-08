@@ -1,7 +1,7 @@
-# Maintainer: Kian Kasad <kian at kasad.com>
+# Maintainer: Amy <amy at fluff dot tech>
 
 pkgname=sponsorblock-chromium-git
-pkgver=2.0.7.r38.4dc4160
+pkgver=2.1.2.r6.1b96e210
 pkgrel=1
 pkgdesc="SponsorBlock extension for chromium-based browsers"
 arch=(any)
