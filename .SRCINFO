@@ -1,7 +1,7 @@
 pkgbase = lxc-nosystemd-git
 	pkgdesc = Linux Containers git version. Without systemd dependencies.
 	pkgver = 4.0.0.r1729.g78598e2b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linuxcontainers.org
 	arch = x86_64
 	arch = armv6h
@@ -25,11 +25,11 @@ pkgbase = lxc-nosystemd-git
 	optdepends = lua-alt-getopt: lxc-top
 	provides = lxc=4.0.0.r1729.g78598e2b3
 	provides = lxc-git=4.0.0.r1729.g78598e2b3
-	provides = lxc+nosystemd=4.0.0.r1729.g78598e2b3
+	provides = lxc-nosystemd=4.0.0.r1729.g78598e2b3
 	provides = lxc-sysvinit=4.0.0.r1729.g78598e2b3
 	conflicts = lxc
 	conflicts = lxc-git
-	conflicts = lxc+nosystemd
+	conflicts = lxc-nosystemd
 	conflicts = anbox-launchers-git
 	options = emptydirs
 	backup = etc/lxc/default.conf

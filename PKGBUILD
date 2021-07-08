@@ -10,7 +10,7 @@ _pkgname=lxc
 _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 pkgver=4.0.0.r1729.g78598e2b3
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Containers git version. Without systemd dependencies."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://linuxcontainers.org"
@@ -28,13 +28,13 @@ backup=('etc/lxc/default.conf'
 provides=(
   "${_pkgname}=${pkgver}"
   "${_pkgname}-git=${pkgver}"
-  "${_pkgname}+${_pkgvariant}=${pkgver}"
+  "${_pkgname}-${_pkgvariant}=${pkgver}"
   "${_pkgname}-sysvinit=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
   "${_pkgname}-git"
-  "${_pkgname}+${_pkgvariant}"
+  "${_pkgname}-${_pkgvariant}"
   'anbox-launchers-git'
 )
 source=(
