@@ -2,7 +2,7 @@
 
 pkgname=alusus
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="ALUSUS PROGRAMMING LANGUAGE - لغة الأسس البرمجية"
 arch=('x86_64')
 url="https://alusus.org/"
@@ -10,6 +10,11 @@ license=('custom')
 makedepends=('python' 'python-pip' 'cmake' 'git')
 md5sums=('SKIP')
 source=("$pkgname"::"git+https://github.com/Alusus/Alusus.git")
+
+prepare() {
+    cd $srcdir/$pkgname
+    git checkout v$pkgver
+}
 
 build() {
   cd "$srcdir/$pkgname"
