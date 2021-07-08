@@ -1,9 +1,9 @@
 # Maintainer: Peter Olsson <dataapa at gmail dot com>
 pkgname=brumbrumrally
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D racing game"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://dataapa.net/brumbrumrally/"
 license=('GPL3')
 depends=('sdl_image' 'sdl_net')
