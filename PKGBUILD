@@ -3,11 +3,11 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 # Based on clearlooks-phenix-gtk-theme, also in the AUR
 
-_pkgdir="clearlooks-phenix-darkpurpy-theme-7.0.1-1daca69e3ca1c50898dda81ba70ab09a1d45dfcf"
+_pkgdir="clearlooks-phenix-darkpurpy-theme"
 
 pkgname=clearlooks-phenix-darkpurpy-gtk-theme
-pkgver=7.0.1
-pkgrel=2
+pkgver=7.0.2
+pkgrel=1
 pkgdesc="Default GTK3 theme for Devuan Linux"
 arch=('any')
 url="https://git.devuan.org/devuan-packages/clearlooks-phenix-darkpurpy-theme/tree/7.0.1"
@@ -15,12 +15,8 @@ license=('GPL3')
 depends=('gtk-engines')
 optdepends=('mist-icon-theme: a visually compatible icon theme')
 makedepends=('inkscape')
-source=("${pkgname}.tar.gz::https://git.devuan.org/devuan-packages/clearlooks-phenix-darkpurpy-theme/repository/archive.tar.gz?ref=7.0.1")
-sha256sums=('b57b806a947c7a50f0be1ce4a7ca98544c11f26010741527da89a9e252a91f6d')
-
-prepare() {
-  cd "${_pkgdir}"
-}
+source=("${pkgname}.tar.gz::https://git.devuan.org/devuan/clearlooks-phenix-darkpurpy-theme/archive/${pkgver}.tar.gz")
+sha256sums=('c53f961fa6d2e5ed7201d7da5365a45b34959514d80285af494aef5b149f4e18')
 
 build() {
   cd "${_pkgdir}"
