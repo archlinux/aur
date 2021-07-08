@@ -38,7 +38,12 @@ fi
 ##                                y to enable  (stock default)
 ## I think close this is better
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=n
+  use_tracers=y
+fi
+
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
 fi
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
@@ -63,7 +68,7 @@ pkgver=5.13.0
 _major=5.13
 _branch=5.x
 xanmod=2
-pkgrel=${xanmod}
+pkgrel=3
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 url="http://www.xanmod.org/"
@@ -73,18 +78,22 @@ license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
 )
+
+if [ "${_compiler}" = "clang" ]; then
+  makedepends+=(clang llvm)
+fi
+
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        config
+        #config
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
         sphinx-workaround.patch
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        "0003-btrfs.patch::${_patches_url}/btrfs-patches/0001-btrfs-patches.patch"
-        "0005-bfq.patch::${_patches_url}/bfq-patches/0001-bfq-patches.patch"
+        "0003-bfq.patch::${_patches_url}/bfq-patches/0001-bfq-patches.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -99,13 +108,12 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        'SKIP'
+        #'SKIP'
         'b5342310408354006a2e637a08bee0beb5e653e771f2124197cf403b9ece56d96dfb0b0732311e2b6010df7933561fdf31b980f25d27b2e8326382a2428ed96d'
         '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
         '6dd7c1b3a6246c2892316cd07d0bcc5e5528955b841e900a88e48c0a6b79861034fbe66bea1d5ee610668919f5d10f688ec68aa6f4edb98d30c7f9f6241b989d'
         '5897022ff8b7a4f2eabb9788569e5a1b034ccad15a632ea9bfe1618714a02072dbca9e7467fe51337c5dbc46b218453e358461ceb110d385953622490f520a75'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
-        '915d36601cb7a1f3d342a29f54435c406304a13725e86788129039276ddbbfa0cf2d8331cdad7f451c9ce4646bee7f45f191ead971b56353ee01d6afd1d5d2e2'
         '0daf3c7756631a784973c9aace087169aeada85e254c66ea5218a9c555020c47df0fa99b67fea270cd01acab4bcb069d54ce07786dd210020d393ca4a2e5ed8e')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -122,7 +130,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod}" > localversion
 
   # Archlinux patches
   local src
@@ -133,6 +141,9 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
@@ -160,21 +171,35 @@ prepare() {
   # Put the file "myconfig" at the package folder to use this feature
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
-  cp ../config .config
-
-  make olddefconfig
+  for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
+    if [ -f "${_myconfig}" ] && [ "$(wc -l <"${_myconfig}")" -gt "0" ]; then
+      if grep -q 'scripts/config' "${_myconfig}"; then
+        # myconfig is a partial file. Executing as a script
+        msg2 "Applying myconfig..."
+        bash -x "${_myconfig}"
+      else
+        # myconfig is a full config file. Replacing default .config
+        msg2 "Using user CUSTOM config..."
+        cp -f "${_myconfig}" .config
+      fi
+      echo
+      break
+    fi
+  done
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make LSMOD=$HOME/.config/modprobed.db LLVM=$_LLVM LLVM_IAS=$_LLVM localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit
     fi
   fi
+  
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
@@ -187,7 +212,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make -j40 all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
