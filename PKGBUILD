@@ -4,7 +4,7 @@
 
 pkgname=osh
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Oil Shell - A bash-compatible UNIX shell written in Python."
 arch=('any')
 url="https://www.oilshell.org/"
@@ -12,7 +12,7 @@ license=("Apache")
 options=(!strip)
 optdepends=("readline: interactive features")
 source=("https://www.oilshell.org/download/oil-$pkgver.tar.xz")
-sha512sums=('c09599ef2ab00defd054bcdbb52f7f0a220a41f19f70748b8493e9324975be892a09931e5489ad2e9556b4fa6481bff038338c580e2c070136b978cdebeb13de')
+sha256sums=('33c25d32bbb60c370f59aeea42af66d4d4308c8ee45641ef2b92385b95355cf5')
 
 prepare() {
   mkdir -p tmp
