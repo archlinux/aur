@@ -1,15 +1,14 @@
 pkgbase = suxpanel
 	pkgdesc = A lightweight X11 desktop panel
 	pkgver = 0.4b
-	pkgrel = 3
-	url = http://suxpanel.berlios.de/
+	pkgrel = 4
+	url = https://sourceforge.net/projects/suxpanel.berlios
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = gtk2
 	depends = libwnck
-	source = http://download.berlios.de/suxpanel/suxpanel-0.4b.tar.gz
+	source = https://downloads.sf.net/suxpanel.berlios/suxpanel-0.4b.tar.gz
 	md5sums = a89d1b4fde46db553d326ca69c392441
 
 pkgname = suxpanel
-
