@@ -1,5 +1,7 @@
+# Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
+
 pkgname=geforcenow-electron
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Linux desktop client for GeForce NOW, using Electron"
 arch=("armv7l" "i686" "x86_64")
@@ -8,7 +10,7 @@ license=('CCPL')
 depends=('libva')
 source=("https://github.com/hmlendea/${pkgname}/releases/download/v${pkgver}/geforcenow_${pkgver}_linux.zip"
         "https://raw.githubusercontent.com/hmlendea/geforcenow-electron/master/icon.png")
-sha256sums=("749db26b8841299627d93e99609ab6702143380cdc57734bcf8194709f520eae"
+sha256sums=("37129cbfe19408df8c48371c130d5be9d477be5f335f3e6929176e181b7e2fcc"
             "582ad4bb073926e51d8acaa0ab81aa70a1dbe4736eda0cf130b6ae689982b7a0")
 
 build() {
