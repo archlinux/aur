@@ -4,14 +4,14 @@
 pkgname=orfeo-toolbox
 pkgver=7.3.0
 _pkgver=7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
 depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost'
-		'hdf5'  'itk4' 'ossim' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git')
+		'hdf5'  'insight-toolkit4' 'ossim' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git')
 makedepends=('git' 'swig' 'cmake' 'qt5-base')
 optdepends=()
 provides=()
@@ -73,6 +73,8 @@ build() {
   -DOTB_USE_GLUT=ON \
   -DOTB_USE_SPTW=ON \
   -DOTB_USE_SHARK=ON \
+  -DITK_DIR=/opt/insight-toolkit4 \
+  -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
   -DCMAKE_CXX_STANDARD=14
          
   make

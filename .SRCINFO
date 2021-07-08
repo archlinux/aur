@@ -22,7 +22,7 @@ pkgbase = orfeo-toolbox
 	depends = openthreads
 	depends = boost
 	depends = hdf5
-	depends = itk4
+	depends = insight-toolkit4
 	depends = ossim
 	depends = libsvm
 	depends = qwt
@@ -36,4 +36,3 @@ pkgbase = orfeo-toolbox
 	md5sums = SKIP
 
 pkgname = orfeo-toolbox
-
