@@ -1,15 +1,15 @@
 pkgbase = fcp-bin
 	pkgdesc = A significantly faster alternative to the classic Unix cp(1) command.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/svetlitski/fcp/
 	arch = x86_64
 	license = BSD
 	provides = fcp
 	conflicts = fcp
-	source = https://github.com/svetlitski/fcp//releases/download/v0.1.0/fcp-0.1.0-x86_64-unknown-linux-gnu.zip
-	source = https://github.com/svetlitski/fcp//archive/v0.1.0.tar.gz
-	sha256sums = ae7d257c679efaac2ad07dc4fec0efa0afe6bc1654456c4f8e91659f7cf72b54
-	sha256sums = 7e4e69bdb7f1f831dc52cd517afdd5722313d3dece3afd7dad418d224d4badd1
+	source = https://github.com/svetlitski/fcp//releases/download/v0.2.0/fcp-0.2.0-x86_64-unknown-linux-gnu.zip
+	source = https://github.com/svetlitski/fcp//archive/v0.2.0.tar.gz
+	sha256sums = b6975edea3b9abea4fa3409ad7bd69bdb5cd210b2f268f61d1d8ea8ff8b4ddcc
+	sha256sums = a90158d049b5021f60d31eb029daf74a72f933b73bf867b5f6b344be83d69fdc
 
 pkgname = fcp-bin

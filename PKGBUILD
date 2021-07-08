@@ -1,8 +1,8 @@
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 
 pkgname=fcp-bin
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A significantly faster alternative to the classic Unix cp(1) command."
 url="https://github.com/svetlitski/fcp/"
 provides=('fcp')
@@ -14,8 +14,8 @@ source=(
     "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'ae7d257c679efaac2ad07dc4fec0efa0afe6bc1654456c4f8e91659f7cf72b54'
-    '7e4e69bdb7f1f831dc52cd517afdd5722313d3dece3afd7dad418d224d4badd1'
+    'b6975edea3b9abea4fa3409ad7bd69bdb5cd210b2f268f61d1d8ea8ff8b4ddcc'
+    'a90158d049b5021f60d31eb029daf74a72f933b73bf867b5f6b344be83d69fdc'
 )
 
 package() {
