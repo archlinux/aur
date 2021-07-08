@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/christgau/wsdd"
 license=('MIT')
 
-depends=('samba')
+depends=('python>=3.7' 'samba')
 
 backup=('etc/conf.d/wsdd')
 

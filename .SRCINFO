@@ -5,6 +5,7 @@ pkgbase = wsdd
 	url = https://github.com/christgau/wsdd
 	arch = any
 	license = MIT
+	depends = python>=3.7
 	depends = samba
 	backup = etc/conf.d/wsdd
 	source = wsdd-0.6.4.tar.gz::https://github.com/christgau/wsdd/archive/v0.6.4.tar.gz
