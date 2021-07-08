@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire-git
-pkgver=0.8.7.r29.g1c2972ec
+pkgver=0.8.8.r0.g5f229d90
 pkgrel=1
 pkgdesc='An I2P file sharing program (git version)'
 arch=('any')
 url='https://muwire.com/'
 license=('GPL3')
-depends=('sh' 'java-runtime>=11' 'java-runtime<=15' 'hicolor-icon-theme')
+depends=('sh' 'java-runtime=11' 'hicolor-icon-theme')
 makedepends=('git' 'gradle')
 provides=('muwire')
 conflicts=('muwire')
