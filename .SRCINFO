@@ -1,6 +1,6 @@
 pkgbase = cpod-git
 	pkgdesc = A simple, beautiful podcast app
-	pkgver = 1.27.1.r56.g581cd25
+	pkgver = 1.27.1.r72.g5600080
 	pkgrel = 1
 	url = https://github.com/z-------------/CPod
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = cpod-git
 	sha256sums = SKIP
 
 pkgname = cpod-git
-

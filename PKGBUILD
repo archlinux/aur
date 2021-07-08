@@ -1,8 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=cpod
-pkgname=$_pkgname-git
-pkgver=1.27.1.r56.g581cd25
+pkgname=cpod-git
+pkgver=1.27.1.r72.g5600080
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app"
 arch=('x86_64')
@@ -10,20 +9,18 @@ url="https://github.com/z-------------/CPod"
 license=('Apache')
 depends=('gconf')
 makedepends=('git' 'gulp' 'nvm' 'yarn')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 replaces=('cumulonimbus')
-source=($pkgname::git+https://github.com/z-------------/CPod.git)
+source=($pkgname::git+$url.git)
 sha256sums=('SKIP')
 
-# For the Node.js version used by CPod, see: .travis.yml (dist: and node_js:)
-# For a list of all Node.js versions, run: source /usr/share/nvm/init-nvm.sh ; nvm ls-remote
-#_nodejsver=0.10.25
-_nodejsver=8.16.0
+# For the Node.js version used by CPod, see file .travis.yml ("dist:" and "node_js:")
+# For a list of all Node.js versions, run in Bash: source /usr/share/nvm/init-nvm.sh ; nvm ls-remote
+_nodejsver=8.17.0
 
 pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -39,7 +36,6 @@ build() {
   nvm use $_nodejsver
 
   yarn
-
   gulp
 }
 
@@ -51,7 +47,6 @@ package() {
   cd dist
   bsdtar xf CPod_*.deb data.tar.xz
   bsdtar xf data.tar.xz --directory "$pkgdir"
-
   install -dm755 "$pkgdir/usr/bin"
   ln -sf /opt/CPod/cpod "$pkgdir/usr/bin/cpod"
 }
