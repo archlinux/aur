@@ -1,0 +1,16 @@
+pkgbase = qt5-multimedia-mdk-plugin
+	pkgdesc = Qt multimedia plugins implemented on top of libmdk
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://znotes.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = qt5-multimedia
+	source = https://github.com/wang-bin/qtmultimedia-plugins-mdk/archive/master.zip
+	source = https://netactuate.dl.sourceforge.net/project/mdk-sdk/nightly/mdk-sdk-linux.tar.xz
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = qt5-multimedia-mdk-plugin
+
