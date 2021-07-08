@@ -2,7 +2,7 @@
 
 pkgname='python-inform'
 _pkgname=${pkgname#python-}
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Print and logging utilities for communicating with user"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-pip' 'python-setuptools')
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c68e2153b88bef303577dc3df884efa39ce3acbbd98299bed014cb4df7b95554')
+sha256sums=('960d1ddcc5f37dc0db957ee9e1a34850badd984a463cc2103066249ec6b2bfaf')
 
 build() {
   cd $_pkgname-$pkgver
