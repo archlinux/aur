@@ -16,7 +16,7 @@ build() {
    cd $srcdir/qtmultimedia-plugin-ffmpeg-main
    lrelease-qt5 ffmpeg-plugin.pro
    sed -i 's/INCLUDEPATH += ffmpeg/CONFIG += link_pkgconfig PKGCONFIG += libavcodec libavformat libavutil libavdevice libswscale libswresample LIBS += -lavcodec -lavformat -lavutil -lswscale -lswresample/g' ffmpeg/ffmpeg.pri
-   qmake-qt5 MDK_SDK="$$PWD/../mdk-sdk" QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" PREFIX=/usr
+   qmake-qt5 QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" PREFIX=/usr
    make
 }
 
