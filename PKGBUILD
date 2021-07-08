@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=go-yq
-pkgver=4.9.6
+pkgver=4.9.8
 pkgrel=1
 pkgdesc="portable command-line YAML processor"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 conflicts=(yq)
 source=(https://github.com/mikefarah/yq/archive/v${pkgver}/yq-${pkgver}.tar.gz)
-sha256sums=('40f549d801826b4a7bdad0b2a924f10b354da1d518759b2974e82dda7563f7ee')
+sha256sums=('a7b68382ea04da47c1ef0486140f093ee4578525a89f33c3ba457d424e316cc2')
 
 prepare() {
   cd yq-$pkgver
@@ -48,3 +48,5 @@ package() {
   ./yq shell-completion fish | install -Dm0644 /dev/stdin \
     "$pkgdir/usr/share/fish/vendor_completions.d/yq.fish"
 }
+
+# vim: set ts=2 sw=2 et:
