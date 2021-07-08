@@ -1,42 +1,47 @@
-# Maintainer: Rod Kay <rodakay5 at gmail dot com>
+# Maintainer: Rod Kay <charlie5 on #ada at irc.libera.chat>
 
 pkgname=libvss
-pkgver=r383.9ff8f49
+epoch=1
+pkgver=21.0.0
 pkgrel=1
-pkgdesc='High level string and text processing library for Ada'
-url='https://github.com/AdaCore/VSS'
-arch=('x86_64')
+
+pkgdesc="A high level string and text processing library for Ada."
+url="https://github.com/AdaCore/VSS"
+
+arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
-makedepends=('git' 'gcc-ada' 'gprbuild')
-source=('git+https://github.com/AdaCore/VSS.git#commit=9ff8f49b9f1c801b9ff66cb538fbbf447bc1244e')
-sha1sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/VSS"
-    printf "r%s.%s"                        \
-           "$(git rev-list  --count HEAD)" \
-           "$(git rev-parse --short HEAD)"
+makedepends=('gprbuild')
+         
+_version=2021-20210701-198AA-src
+_hash=b3b6db7b27ef26dc9006e062dd1bf7adbe47566b
+
+source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$pkgname-$_version.tar.gz&rand=669")
+sha1sums=($_hash)
+
+_name=vss
+
+build()
+{
+   cd "$srcdir/$_name-$_version"
+   make all
 }
 
-build() {
-    cd "$srcdir/VSS"
-    make BUILD_MODE=prod
-}
+package()
+{
+   cd "$srcdir/$_name-$_version"
 
-package() {
-    cd "$srcdir/VSS"
+   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_json.gpr
+   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_text.gpr
+   gprinstall -p --prefix="$pkgdir/usr" gnat/vss_gnat.gpr
 
-    gprinstall -p -P gnat/vss_gnat.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
-    gprinstall -p -P gnat/vss_text.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
-    gprinstall -p -P gnat/vss_json.gpr -XBUILD_MODE=prod --prefix="$pkgdir/usr"
+   # Install the license.
+   install -D -m644     \
+      "COPYING3"        \
+      "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
 
-    # Install the license.
-    install -D -m644     \
-       "COPYING3"        \
-       "$pkgdir/usr/share/licenses/libvss/COPYING3"
-
-    # Install the custom license.
-    install -D -m644     \
-       "COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/libvss/COPYING.RUNTIME"
+   # Install the custom license.
+   install -D -m644     \
+      "COPYING.RUNTIME" \
+      "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 }
