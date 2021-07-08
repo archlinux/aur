@@ -1,14 +1,13 @@
 pkgbase = buf-bin
 	pkgdesc = A new way of working with Protocol Buffers.
-	pkgver = 0.43.2
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://buf.build
 	arch = x86_64
 	license = Apache
 	provides = buf
 	conflicts = buf
-	source = https://github.com/bufbuild/buf/releases/download/v0.43.2/buf-Linux-x86_64.tar.gz
-	sha256sums = 3926352002eecb434e7382aa4e4b9ebf1594b9d27ac9d3f455ac86204ae1668d
+	source = https://github.com/bufbuild/buf/releases/download/v0.44.0/buf-Linux-x86_64.tar.gz
+	sha256sums = 6cbe0ca42fb09834ca9f1f287347918ebfde8932b0655dfc2342d21bad22383f
 
 pkgname = buf-bin
-
