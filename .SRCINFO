@@ -6,6 +6,7 @@ pkgbase = qt5-multimedia-mdk-plugin
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = sed
 	depends = qt5-multimedia
 	source = https://github.com/wang-bin/qtmultimedia-plugins-mdk/archive/master.zip
 	source = https://netactuate.dl.sourceforge.net/project/mdk-sdk/nightly/mdk-sdk-linux.tar.xz

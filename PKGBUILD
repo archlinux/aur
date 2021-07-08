@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/wang-bin/qtmultimedia-plugins-mdk"
 license=('MIT')
 depends=('qt5-multimedia')
+makedepends=('sed')
 source=(https://github.com/wang-bin/qtmultimedia-plugins-mdk/archive/master.zip
         https://netactuate.dl.sourceforge.net/project/mdk-sdk/nightly/mdk-sdk-linux.tar.xz)
 md5sums=('SKIP' 'SKIP')
@@ -17,7 +18,6 @@ build() {
    cd $srcdir/qtmultimedia-plugins-mdk-master
    lrelease-qt5 mdkmediaservice.pro
    sed -i 's/MDK_SDK = $$PWD\/mdk-sdk/MDK_SDK = $$PWD\/..\/mdk-sdk/g' mdkmediaservice.pro
-   cat mdkmediaservice.pro
    qmake-qt5 MDK_SDK="$$PWD/../mdk-sdk" QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" PREFIX=/usr
    make
 }
