@@ -1,0 +1,16 @@
+pkgbase = unzip_all
+	pkgdesc = A tool to unzip all the .zip files in the current working directory.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/saivishnu725/unzip_all
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	depends = unzip
+	depends = bash
+	depends = bzip2
+	source = https://github.com/saivishnu725/unzip_all/archive/refs/heads/master.zip
+	md5sums = SKIP
+
+pkgname = unzip_all
