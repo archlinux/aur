@@ -6,11 +6,11 @@
 
 
 pkgbase=linux-hardened-cacule
-pkgver=5.12.14.hardened1
+pkgver=5.12.15.hardened1
 pkgrel=1
 pkgdesc='Security-Hardened Linux with the cacule scheduler'
 url='https://github.com/anthraxx/linux-hardened'
-arch=(x86_64)
+arch=(x86_64 x86_64_v3 )
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -26,8 +26,8 @@ source=(
   cpu-patches.patch
   config         # the main kernel config file
 )
-sha256sums=('90ca3b98088f5d9af097067e04b195ecf0d4fe167bcfaca8a97b142bccb27dac'
-            '5b88d78aca0f73936bf9a4cfbf8406db923c8bc3a1296ec0c950ae220788bf30'
+sha256sums=('47fcea996c0c01e58ac5f852fc296d77a3496c550f3034152fee77e83ae38fda'
+            '1de12e52ce751bbcee3deed3fc08b444332a850712b2591f8ba998e48ff901b5'
             '912786eae40b7993ca04ef3eb86e6f03c95d60749819cb2c75260b63c978989c'
             '4f22a6e4e5fe6f3bb39ca39073fa812eb9c0dbb3ac9cec64ed0a90d06b54d32a'
             'e283e40e436ab48ae5a1d9def8460dd46da30d5844b81c7d5e2d660c2d2a31d9')
