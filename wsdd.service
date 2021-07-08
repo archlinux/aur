@@ -7,8 +7,7 @@ Wants=network-online.target
 ;Wants=smb.service
 
 [Service]
-User=wsdd
-Group=wsdd
+DynamicUser=yes
 Type=simple
 ExecStart=/usr/bin/wsdd --shortlog --workgroup WORKGROUP
 

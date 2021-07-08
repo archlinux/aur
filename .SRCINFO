@@ -8,10 +8,8 @@ pkgbase = wsdd
 	depends = samba
 	source = wsdd-0.6.4.tar.gz::https://github.com/christgau/wsdd/archive/v0.6.4.tar.gz
 	source = wsdd.service
-	source = wsdd.sysusers
 	sha256sums = bb8bc6411b70be68369c53bf75827ac77f16a5bf5606de6536dd7e6d6ce4c2be
-	sha256sums = d61e01d12624d03d1528417c001d7576dffda2a5eef5dcb0a5e859923e4c07cc
-	sha256sums = b3d70334300cbd6c8ad3c0c9c910d09ba8bf98ff01b274bcda82d4973e4e1ac6
+	sha256sums = 5408872bb509fc130de00099407c7eef6c68b7913b54649970e8e3a2f54f4316
 
 pkgname = wsdd
 
