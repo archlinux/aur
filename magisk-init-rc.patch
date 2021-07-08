@@ -1,0 +1,16 @@
+--- a/squashfs-root/init.rc
++++ b/squashfs-root/init.rc
+@@ -668,3 +668,12 @@
+ service flash_recovery /system/bin/install-recovery.sh
+     class main
+     oneshot
++
++on property:dev.bootcomplete=1
++    start magisk
++
++service magisk /system/bin/init-magisk.sh
++    class main
++    user root
++    group root
++    oneshot
+\ No newline at end of file

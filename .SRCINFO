@@ -1,0 +1,43 @@
+pkgbase = anbox-image-houdini-magisk-xposed
+	pkgdesc = Android image for running in Anbox, with Houdini, Xposed Framework and Magisk (Bootless)
+	pkgver = 2018.07.19
+	pkgrel = 1
+	url = https://anbox.io
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	makedepends = lzip
+	makedepends = squashfs-tools
+	makedepends = unzip
+	optdepends = anbox: To make use of the image.
+	provides = anbox-image=2018.07.19
+	conflicts = anbox-image
+	noextract = XposedInstaller_3.1.5.apk
+	source = https://build.anbox.io/android-images/2018/07/19/android_amd64.img
+	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_y.sfs
+	source = https://github.com/redchenjs/aur-packages/releases/download/anbox-image/houdini_z.sfs
+	source = https://github.com/topjohnwu/Magisk/releases/download/v20.4/Magisk-v20.4.zip
+	source = https://github.com/youling257/XposedTools/files/1931996/xposed-x86_64.zip
+	source = XposedInstaller_3.1.5.apk::http://web.archive.org/web/20190807034045if_/https://dl.xda-developers.com/4/3/9/3/0/8/2/XposedInstaller_3.1.5.apk?key=vp4YYV_q9R9UXFJdEqPa6w&ts=1565149304
+	source = magisk-init-rc.patch
+	source = init-magisk.sh
+	source = https://xnopyt.info/busybox
+	source = media_codecs.xml
+	source = media_codecs_google_video.xml
+	source = media_codecs_google_audio.xml
+	source = media_codecs_google_telephony.xml
+	md5sums = 26874452a6521ec2e37400670d438e33
+	md5sums = 7ebf618b1af94a02322d9f2d2610090b
+	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
+	md5sums = 9503fc692e03d60cb8897ff2753c193f
+	md5sums = 86ffee229b724a8019cc78c5e221c24f
+	md5sums = 315362d994986e6584203fca282f4472
+	md5sums = 52959db8bc730ee3b7ab2cff7d41b299
+	md5sums = 4720f9c1a7df7cf05cbbeecdd43797e4
+	md5sums = bc3143a5e334402261bf0c703db5deac
+	md5sums = a638728bc2413d908f5eb44a9f09e947
+	md5sums = 599598e70060eb74c119cf7dac0ce466
+	md5sums = 43193761081a04ca18a28d4a6e039950
+	md5sums = 91f5f3e5c31f8e221ae8f318527dcb83
+
+pkgname = anbox-image-houdini-magisk-xposed
