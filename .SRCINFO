@@ -1,7 +1,7 @@
 pkgbase = networkmanager-l2tp-git
 	pkgdesc = L2TP support for NetworkManager
 	pkgver = 1.8.6.r17.g3ce3ca3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nm-l2tp/NetworkManager-l2tp
 	arch = x86_64
 	license = GPL2

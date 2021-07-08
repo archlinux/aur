@@ -9,7 +9,7 @@
 pkgname=networkmanager-l2tp-git
 pkgver=1.8.6.r17.g3ce3ca3
 _pppver=2.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='L2TP support for NetworkManager'
 arch=(x86_64)
 url='https://github.com/nm-l2tp/NetworkManager-l2tp'
@@ -24,20 +24,19 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 prepare() {
-  ln -sf NetworkManager-l2tp $pkgname
-  cd $pkgname
+  cd NetworkManager-l2tp
   NOCONFIGURE=1 ./autogen.sh
 }
 
 pkgver() {
-  cd $pkgname
+  cd NetworkManager-l2tp
   ( set -o pipefail
     git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
   )
 }
 
 build() {
-  cd $pkgname
+  cd NetworkManager-l2tp
   ./configure \
     --localstatedir=/var \
     --libexecdir=/usr/lib/NetworkManager \
@@ -49,6 +48,7 @@ build() {
 }
 
 package() {
-  make -C $pkgname DESTDIR="$pkgdir" install
-  install -Dm644 $pkgname/NEWS "$pkgdir/usr/share/doc/$pkgname/NEWS"
+  cd NetworkManager-l2tp
+  make DESTDIR="$pkgdir" install
+  install -Dm644 NEWS -t "$pkgdir/usr/share/doc/$pkgname"
 }
