@@ -1,7 +1,7 @@
 pkgbase = wsdd
 	pkgdesc = A Web Service Discovery (WSD) host daemon for SMB/Samba.
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/christgau/wsdd
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=wsdd
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Web Service Discovery (WSD) host daemon for SMB/Samba."
 arch=('any')
 url="https://github.com/christgau/wsdd"
