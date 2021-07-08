@@ -1,7 +1,7 @@
 # Maintainer: TheFool <rn6l05d28@relay.firefox.com>
 pkgname=firefoxpwa-git
-pkgver=0.3.1.r.
-pkgrel=3
+pkgver=0.4.0.r.
+pkgrel=1
 epoch=
 pkgdesc="This is a patched build of the FirefoxPWA from filips123's git"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/filips123/FirefoxPWA.git"
 license=('MPL-2.0')
 groups=()
 depends=()
-makedepends=(git rust)
+makedepends=(git cargo rust)
 checkdepends=()
 optdepends=()
 provides=(firefoxpwa)
