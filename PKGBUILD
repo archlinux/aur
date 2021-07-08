@@ -23,6 +23,7 @@ sha256sums=('bb8bc6411b70be68369c53bf75827ac77f16a5bf5606de6536dd7e6d6ce4c2be'
 
 package() {
   install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/src/wsdd.py" "${pkgdir}/usr/bin/wsdd"
+  install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/man/wsdd.1" "${pkgdir}/usr/share/man/man1/wsdd.1"
   install -D -m 644 "${srcdir}/wsdd.conf" "${pkgdir}/etc/conf.d/wsdd"
   install -D -m 644 "${srcdir}/wsdd.service" "${pkgdir}/usr/lib/systemd/system/wsdd.service"
 }
