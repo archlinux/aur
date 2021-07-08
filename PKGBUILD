@@ -10,7 +10,6 @@ url="https://remove-to-waste.info"
 license=('GPL3')
 depends=('ncurses')
 makedepends=('meson' 'ninja')
-checkdepends=('valgrind')
 optdepends=('gettext')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theimpossibleastronaut/rmw/archive/refs/tags/v${pkgver}.tar.gz")

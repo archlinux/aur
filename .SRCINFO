@@ -1,7 +1,7 @@
 pkgbase = rmw
 	pkgdesc = safe-remove utility for the command line
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://remove-to-waste.info
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = rmw
 	arch = armv7h
 	arch = ppc64le
 	license = GPL3
-	checkdepends = valgrind
 	makedepends = meson
 	makedepends = ninja
 	depends = ncurses
