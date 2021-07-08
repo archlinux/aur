@@ -7,6 +7,7 @@ pkgdesc="Unicast DNS resolver for ZeroTier networks"
 url="https://github.com/zerotier/zeronsd"
 license=("BSD-3-Clause")
 arch=("any")
+depends=("zerotier-one")
 makedepends=("cargo" "git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zerotier/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 https://github.com/zerotier/$pkgname/archive/refs/tags/v$pkgver.tar.gz

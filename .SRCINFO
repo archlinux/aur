@@ -7,6 +7,7 @@ pkgbase = zeronsd
 	license = BSD-3-Clause
 	makedepends = cargo
 	makedepends = git
+	depends = zerotier-one
 	source = zeronsd-0.2.2.tar.gz::https://github.com/zerotier/zeronsd/archive/refs/tags/v0.2.2.tar.gz
 	sha256sums = 4425d9bbe3a6d62b5bf3e34102c08834e9e339e0656fc69f6b6a42986d370748
 
