@@ -3,11 +3,11 @@
 
 _pkgname=spacy
 pkgname=python-${_pkgname}
-pkgver=3.0.6
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="Free open-source library for Natural Language Processing in Python"
+pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=(x86_64 aarch64)
-url="https://spacy.io/"
+url='https://spacy.io/'
 license=(MIT)
 depends=(
 	python-catalogue
@@ -33,8 +33,7 @@ makedepends=(
 	cython
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5628ab89f1f568099c880b12a9c37f4ece29ab89260660cfdf728c02711879c5')
-
+sha256sums=('e3705da42f99e63f02cee244364ad3ad4ace3fac5cf1151b72592755f8ffe3cc')
 
 build() {
 	cd "spacy-${pkgver}"
