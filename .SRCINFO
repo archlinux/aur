@@ -1,7 +1,7 @@
 pkgbase = autokey-git
 	pkgdesc = A desktop automation utility for Linux and X11 - GTK & Qt frontends
 	pkgver = 0.96.0.beta.5.r0.30e0f9a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autokey/autokey
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = autokey-git
 	depends = dbus-python
 	depends = gtksourceview3
 	depends = gvfs
+	depends = kdialog
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = python-cairo

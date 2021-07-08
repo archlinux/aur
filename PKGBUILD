@@ -2,7 +2,7 @@
 
 pkgname=('autokey-git')
 pkgver=0.96.0.beta.5.r0.30e0f9a
-pkgrel=1
+pkgrel=2
 pkgdesc='A desktop automation utility for Linux and X11 - GTK & Qt frontends'
 arch=('x86_64')
 url='https://github.com/autokey/autokey'
@@ -21,6 +21,7 @@ depends=(
   'dbus-python'
   'gtksourceview3'
   'gvfs'
+  'kdialog'
   'libappindicator-gtk3'
   'libnotify'
   'python-cairo'
