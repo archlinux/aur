@@ -1,6 +1,6 @@
 pkgbase = dosbox-x-git
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 13107.9810e34da
+	pkgver = 14577.1570b85d8
 	pkgrel = 1
 	url = http://dosbox.sourceforge.net
 	install = dosbox-x.install
@@ -9,18 +9,16 @@ pkgbase = dosbox-x-git
 	license = GPL
 	makedepends = git
 	makedepends = glu
+	makedepends = libpcap
+	makedepends = libslirp
 	depends = fluidsynth
 	depends = libxkbfile
 	depends = libpng
 	depends = libxrandr
 	depends = mesa
 	depends = ffmpeg
+	depends = physfs
 	source = dosbox-x::git://github.com/joncampbell123/dosbox-x.git
-	source = dosbox-x.png
-	source = dosbox-x.desktop
 	md5sums = SKIP
-	md5sums = 3dcfe45c5ed0433316eaea51e3620b36
-	md5sums = 615228a51b52d4788c73940602f1dc97
 
 pkgname = dosbox-x-git
-
