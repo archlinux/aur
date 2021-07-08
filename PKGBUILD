@@ -1,11 +1,11 @@
 pkgname=curtail-git
-pkgver=1.1.0+2+g6918486
+pkgver=1.2.1+1+g826f28c
 pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/Curtail"
 license=('GPL3')
-depends=('gtk3' 'python-gobject' 'jpegoptim' 'optipng' 'pngquant')
+depends=('gtk3' 'jpegoptim' 'libwebp' 'optipng' 'pngquant' 'python-gobject')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 provides=('curtail')
