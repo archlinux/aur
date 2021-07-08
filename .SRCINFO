@@ -1,0 +1,20 @@
+pkgbase = tunasync
+	pkgdesc = Mirror job management tool.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/tuna/tunasync
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = make
+	depends = glibc
+	provides = tunasync
+	provides = tunasynctl
+	conflicts = tunasync-git
+	conflicts = tunasync-bin
+	replaces = tunasync-git
+	replaces = tunasync-bin
+	source = https://github.com/tuna/tunasync/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = bbf30ab4f241bdb68d2c090d15feeeeb5aa2146d0ed2823bcd910f1650bc5146
+
+pkgname = tunasync
