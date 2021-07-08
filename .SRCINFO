@@ -1,0 +1,15 @@
+pkgbase = qt5-multimedia-plugin-ffmpeg
+	pkgdesc = A Qt Multimedia Plugin to get ffmpeg video/audio playback in the Qt Multimedia framework.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/hdijkema/qtmultimedia-plugin-ffmpeg
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	depends = qt5-multimedia
+	depends = ffmpeg
+	source = https://github.com/hdijkema/qtmultimedia-plugin-ffmpeg/archive/main.zip
+	md5sums = SKIP
+
+pkgname = qt5-multimedia-plugin-ffmpeg
+
