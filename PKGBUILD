@@ -2,7 +2,7 @@
 # Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-git
-pkgver=v0.16.0.r0.g774c664
+pkgver=v0.17.1.r0.g3bc0931
 pkgrel=1
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
