@@ -1,6 +1,6 @@
 pkgbase = tenacity-git
 	pkgdesc = FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!
-	pkgver = r19.g8733f591a
+	pkgver = r23.g098a0225e
 	pkgrel = 1
 	url = https://github.com/tenacityteam/tenacity
 	arch = i686

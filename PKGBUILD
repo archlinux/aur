@@ -1,11 +1,12 @@
-# Maintainer: Luke 'Darkpelz' Huckman <lukeh@outlook.my>
-# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Luke Huckman (Darkpelz) <lukeh@outlook.my>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: fossdd <fossdd@tutanota.com>
 # Contributor: Ong Yong Xin <ongyongxin2020+github AT gmail DOT com>
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r19.g8733f591a
+pkgver=r23.g098a0225e
 pkgrel=1
 pkgdesc="FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!"
 arch=(i686 x86_64)
@@ -34,7 +35,6 @@ pkgver() {
 prepare() {
   cd tenacity
   patch --forward --strip=1 --input="${srcdir}/tenacity.patch"
-  touch ${srcdir}/tenacity/README.txt # missing file in upstream
 }
 
 build() {
