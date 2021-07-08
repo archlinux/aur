@@ -27,11 +27,11 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-    rm -rf tests
 	python setup.py build
 }
 
 package() {
 	cd "$srcdir/$pkgname"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
 }
