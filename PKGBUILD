@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11
-pkgver=3.01
+pkgver=3.02
 pkgrel=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64')
