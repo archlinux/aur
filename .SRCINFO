@@ -1,0 +1,18 @@
+pkgbase = ki-shell-git
+	pkgdesc = Kotlin Language Interactive Shell
+	pkgver = 0.3.3.r14.g0cc592d
+	pkgrel = 1
+	url = https://github.com/Kotlin/kotlin-interactive-shell
+	arch = any
+	license = Apache
+	makedepends = maven
+	makedepends = awk
+	makedepends = kotlin>=1.4.32
+	depends = sh
+	depends = java-runtime>=8
+	provides = ki-shell
+	conflicts = ki-shell
+	source = kotlin-interactive-shell::git+https://github.com/Kotlin/kotlin-interactive-shell.git
+	sha256sums = SKIP
+
+pkgname = ki-shell-git

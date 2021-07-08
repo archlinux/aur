@@ -1,0 +1,7 @@
+kotlin-interactive-shell/
+pkg/
+src/
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
