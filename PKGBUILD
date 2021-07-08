@@ -2,7 +2,7 @@
 
 pkgname=fantascene-dynamic-wallpaper
 srcname=fantascene-archLinux-DDE
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="动态壁纸"
 arch=('x86_64')
@@ -11,13 +11,13 @@ license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
-depends=( 'qt5-tools' 'qt5-webengine' 'dtkwidget' 'dtkgui' 'mpv')
+depends=( 'qt5-tools' 'qt5-webengine' 'dtkwidget' 'dtkgui' 'mpv' 'fakeroot' 'gcc' )
 makedepends=('qconf')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
 source=("${srcname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('17cc41350a6f5669cd3c8126d9760858fa00aa213621c67573df323e72f55f53')
+sha256sums=('0aac054e4a278a403258d92ea933f3fc4e82e53ed087c717596c14a77ae52adb')
 
 build() {
     cd "${srcdir}/${srcname}-${pkgver}"

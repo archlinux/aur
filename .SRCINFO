@@ -1,6 +1,6 @@
 pkgbase = fantascene-dynamic-wallpaper
 	pkgdesc = 动态壁纸
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/dependon/fantascene-archLinux-DDE
 	arch = x86_64
@@ -11,12 +11,14 @@ pkgbase = fantascene-dynamic-wallpaper
 	depends = dtkwidget
 	depends = dtkgui
 	depends = mpv
+	depends = fakeroot
+	depends = gcc
 	provides = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper-git
 	options = !strip
-	source = fantascene-archLinux-DDE-1.1.1.tar.gz::https://github.com/dependon/fantascene-archLinux-DDE/archive/refs/tags/1.1.1.tar.gz
-	sha256sums = 17cc41350a6f5669cd3c8126d9760858fa00aa213621c67573df323e72f55f53
+	source = fantascene-archLinux-DDE-1.1.2.tar.gz::https://github.com/dependon/fantascene-archLinux-DDE/archive/refs/tags/1.1.2.tar.gz
+	sha256sums = 0aac054e4a278a403258d92ea933f3fc4e82e53ed087c717596c14a77ae52adb
 
 pkgname = fantascene-dynamic-wallpaper
 
