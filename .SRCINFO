@@ -1,0 +1,23 @@
+pkgbase = canfigger
+	pkgdesc = simple configuration file parser library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/andy5995/canfigger
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = ppc64le
+	license = GPL3
+	checkdepends = valgrind
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	provides = canfigger
+	provides = libcanfigger.so
+	options = staticlibs
+	source = https://github.com/andy5995/canfigger/releases/download/v0.1.1/canfigger-0.1.1.tar.xz
+	sha256sums = e497111b96d8c66f105cdec9382a48fe73f9c87d7e653b29a7e5c8658ef239e7
+
+pkgname = canfigger
+
