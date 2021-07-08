@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-galpy-doc
-pkgver=1.6.0.post0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Documentation for galpy"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://www.galpy.org"
 license=('BSD')
 makedepends=("python-galpy=${pkgver}" 'python-sphinx' 'python-future' 'gsl')
 source=("https://github.com/jobovy/galpy/archive/v${pkgver}.tar.gz")
-md5sums=('5ecad599bc324912ae2be8dffe11a357')
+md5sums=('4e6206d4beeb55c4b2bc70bc0031020f')
 
 build() {
     cd ${srcdir}/galpy-${pkgver}/doc
