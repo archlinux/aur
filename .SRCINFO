@@ -1,6 +1,6 @@
 pkgbase = webex-bin
 	pkgdesc = Webex for Linux
-	pkgver = 41.6.1.19162
+	pkgver = 41.7.0.19440
 	pkgrel = 1
 	url = https://www.webex.com/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = webex-bin
 	depends = xcb-util-wm
 	depends = xdg-utils
 	options = !strip
-	source = webex-bin-41.6.1.19162.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb
+	source = webex-bin-41.7.0.19440.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Official-Package/Webex.deb
 	source = webex.xml
-	sha256sums = 7fae1e99764ad58d68b13b2d39ff1ba3c80beaa6b6d0567ac49b109c456832ba
+	sha256sums = 5b15f4f71024685baa3675e2e1f33d0572cb75943b618ccf67673b04c70904cc
 	sha256sums = 0d0b2664ac4aeb9a4a4b9f530dee4a14c13875735b87a3d96bf81f43eeec00ab
 
 pkgname = webex-bin
