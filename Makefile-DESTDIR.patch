@@ -1,0 +1,14 @@
+21,22d20
+< PREFIX = /usr/local
+< 
+75c73
+< HELPDIR = $(PREFIX)/man/man1
+---
+> HELPDIR = $(DESTDIR)/share/man/man1
+109,111c107,108
+< 	install -c -s mm $(PREFIX)/bin
+< 	install -c -m 644 mm.1 $(HELPDIR)
+< 	$(RM) $(HELPDIR)/mmail.1
+---
+> 	install -D -s mm -t $(DESTDIR)/bin
+> 	install -D -m 644 mm.1 -t $(HELPDIR)
