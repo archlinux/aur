@@ -1,6 +1,6 @@
 pkgbase = linux-zen-git
 	pkgdesc = Featureful kernel including various new features, code and optimizations to better suit desktops
-	pkgver = 5.12.4+999599+g3ee5ae166d7c
+	pkgver = 5.12.15+1001147+g2b3c8788f547
 	pkgrel = 1
 	url = https://github.com/damentz/zen-kernel
 	arch = x86_64
@@ -31,4 +31,3 @@ pkgname = linux-zen-git
 	backup = etc/mkinitcpio.d/linux-zen.conf
 
 pkgname = linux-zen-git-headers
-
