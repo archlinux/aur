@@ -1,0 +1,15 @@
+pkgbase = python-configize
+	pkgdesc = Load YAML configuration respecting XDG
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = https://gitlab.com/aw1cks/python-configize
+	arch = any
+	license = AGPL3
+	depends = python>=3.6
+	depends = python-xdg
+	depends = python-yaml
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/C/Configize/Configize-1.0.1.tar.gz
+	sha256sums = 80e0961540153c6ac76b3e56f18e6955882ac5b7296f69e0c76bc2e0289b8317
+
+pkgname = python-configize
