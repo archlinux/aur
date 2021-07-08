@@ -3,7 +3,7 @@
 
 pkgname=advent
 pkgver=0
-pkgrel=5
+pkgrel=6
 pkgdesc="WELCOME TO ADVENTURE!!"
 arch=('i386' 'x86_64')
 url='http://www.russotto.net/~mrussotto/ADVENT/'
@@ -31,6 +31,6 @@ package() {
   cd "${srcdir}"
   echo '#!/bin/sh' > "${pkgname}".sh
   echo 'cd /usr/share/advent' >> "${pkgname}".sh
-  echo './advf4-11' >> "${pkgname}".sh
+  echo './advf4-31' >> "${pkgname}".sh
   install -Dm755 "${pkgname}".sh "${pkgdir}/usr/bin/${pkgname}"
 }

@@ -1,7 +1,7 @@
 pkgbase = advent
 	pkgdesc = WELCOME TO ADVENTURE!!
 	pkgver = 0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.russotto.net/~mrussotto/ADVENT/
 	arch = i386
 	arch = x86_64
