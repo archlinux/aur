@@ -1,0 +1,4 @@
+/jep-*.tar.gz
+/python-jep-*.pkg.tar.zst
+/pkg/
+/src/
