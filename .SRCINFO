@@ -1,15 +1,18 @@
 pkgbase = libf2c
 	pkgdesc = A library which is needed to run Fortran 77 dynamically linked programs built by g77 3.4.x (CentOS 7).
 	pkgver = 34.3.4.6.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://centos.pkgs.org/7/centos-x86_64/compat-libf2c-34-3.4.6-32.el7.x86_64.rpm.html
+	arch = i386
 	arch = x86_64
 	license = LGPL
 	license = GPL2
 	makedepends = rpmextract
-	noextract = compat-libf2c-34-3.4.6-32.el7.x86_64.rpm
+	noextract = compat-libf2c-*.rpm
 	options = !strip
-	source = http://mirror.centos.org/centos/7/os/x86_64/Packages/compat-libf2c-34-3.4.6-32.el7.x86_64.rpm
-	md5sums = 98ff125a18fd917949bbe556b05f72a7
+	source_i386 = https://linuxsoft.cern.ch/cern/slc5X/i386/yum/updates/compat-libf2c-34-3.4.6-4.1.i386.rpm
+	md5sums_i386 = 78c4d30176d0e17aece5015cb47eb80f
+	source_x86_64 = http://mirror.centos.org/centos/7/os/x86_64/Packages/compat-libf2c-34-3.4.6-32.el7.x86_64.rpm
+	md5sums_x86_64 = 98ff125a18fd917949bbe556b05f72a7
 
 pkgname = libf2c
