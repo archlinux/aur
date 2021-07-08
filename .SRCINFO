@@ -1,15 +1,14 @@
 pkgbase = rn
 	pkgdesc = Rename files and directories.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thled/rn
+	changelog = CHANGELOG.md
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = git
-	provides = rn
-	conflicts = rn
-	source = git+https://github.com/thled/rn.git
-	sha256sums = SKIP
+	depends = gcc-libs
+	source = rn-0.1.0.tar.gz::https://github.com/thled/rn/archive/v0.1.0.tar.gz
+	sha256sums = d853e33480f05af2b7a396acc979b575b342856ccfd2ffc2d22f5f03ed991e78
 
 pkgname = rn
