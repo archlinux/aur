@@ -1,7 +1,7 @@
 pkgname=arduino-ide
 pkgver=2.0.0
-pkgrel=7
-_betaver=beta.7
+pkgrel=8
+_betaver=beta.8
 pkgdesc="Arduino IDE 2.0"
 arch=('x86_64')
 options=("!strip")
@@ -15,7 +15,7 @@ source=(
        "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png"
 )
 sha256sums=(
-       'a820118ac692ea119016c779ed421cb719c4fccb22e434c39a9ea869131f2dd1'
+       '0b573a1e1693a82b39293ef20a97d171b86d8bc704fcefb851b081faed2cfe51'
        'd0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c'
 )
 
