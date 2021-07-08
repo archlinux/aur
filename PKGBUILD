@@ -1,16 +1,16 @@
 # Author: Emil Lundberg <lundberg.emil@gmail.com> <https://keybase.io/emlun>
 
 pkgname=gradle-autowrap
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Alternative Gradle front-end that redirects to Gradle wrapper if available"
 arch=('any')
 license=('custom:unlicense')
-depends=('zsh')
+depends=('bash')
 source=("git+https://github.com/emlun/gradle-autowrap#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm 555 "${srcdir}/${pkgname}"/gradle-autowrap.zsh "${pkgdir}"/usr/local/bin/gradle
+  install -Dm 555 "${srcdir}/${pkgname}"/gradle-autowrap.sh "${pkgdir}"/usr/local/bin/gradle
   install -Dm 444 "${srcdir}/${pkgname}"/UNLICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/UNLICENSE
 }
