@@ -7,19 +7,22 @@
 
 pkgname=mathics
 _pkgname=Mathics3
-pkgver=2.2.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
 url="https://mathics.org/"
 license=('GPL3')
 depends=('mathics-scanner' 'python-sympy' 'python-mpmath' 'python-numpy'
-         'python-palettable' 'python-pint' 'python-dateutil' 'python-psutil'
-         'python-llvmlite' 'python-requests' 'cython' 'python-scikit-image'
-         'python-wordcloud' 'python-lxml')
+         'python-palettable' 'python-pint' 'python-dateutil' 'python-llvmlite'
+         'python-requests' 'cython')
 makedepends=('python-setuptools')
+optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
+             'python-scikit-image: FindMinimum can use this'
+             'python-lxml: for HTML parsing used in builtin/fileformats/html'
+             'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('5d84244bbfbcc4c6cc3ac2678ef1af8f3f51167d2bf050f67c8b2475ac4c6ee4')
+sha256sums=('dd01edc2eb5d6718db0cc35d428907277289501a37688ab60a645036723e6309')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

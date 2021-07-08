@@ -1,6 +1,6 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 2.2.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
@@ -13,15 +13,14 @@ pkgbase = mathics
 	depends = python-palettable
 	depends = python-pint
 	depends = python-dateutil
-	depends = python-psutil
 	depends = python-llvmlite
 	depends = python-requests
 	depends = cython
-	depends = python-scikit-image
-	depends = python-wordcloud
-	depends = python-lxml
-	source = mathics-2.2.0.tar.gz::https://github.com/mathics/Mathics/releases/download/2.2.0/Mathics3-2.2.0.tar.gz
-	sha256sums = 5d84244bbfbcc4c6cc3ac2678ef1af8f3f51167d2bf050f67c8b2475ac4c6ee4
+	optdepends = python-psutil: SystemMemory and MemoryAvailable
+	optdepends = python-scikit-image: FindMinimum can use this
+	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
+	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
+	source = mathics-3.1.0.tar.gz::https://github.com/mathics/Mathics/releases/download/3.1.0/Mathics3-3.1.0.tar.gz
+	sha256sums = dd01edc2eb5d6718db0cc35d428907277289501a37688ab60a645036723e6309
 
 pkgname = mathics
-
