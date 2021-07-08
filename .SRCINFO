@@ -6,6 +6,7 @@ pkgbase = breathing-git
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = git
 	makedepends = meson
 	depends = gstreamer
 	depends = gtk4
