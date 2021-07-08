@@ -1,25 +1,21 @@
 pkgbase = crun-git
 	pkgdesc = A fast and lightweight fully featured OCI runtime and C library for running containers
-	pkgver = 0.9.1.r35.g423bc44
+	pkgver = 0.20.1.r17.g0b0b288
 	pkgrel = 1
-	url = https://github.com/containers/crun
-	arch = x86_64
-	license = GPL3
+	url = https://github.com/containers/crun.git
+	arch = any
+	license = GPL2
 	makedepends = libtool
 	makedepends = python3
 	makedepends = go-md2man
+	makedepends = git
 	depends = yajl
 	depends = systemd-libs
 	depends = libcap
 	depends = libseccomp
-	source = crun-git::git+https://github.com/containers/crun.git
-	source = libocispec::git+https://github.com/containers/libocispec.git
-	source = runtime-spec::git+https://github.com/opencontainers/runtime-spec.git
-	source = image-spec::git+https://github.com/opencontainers/image-spec.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	provides = crun
+	conflicts = crun
+	source = git+https://github.com/containers/crun.git
 	sha256sums = SKIP
 
 pkgname = crun-git
-

@@ -1,53 +1,43 @@
-# Maintainer: Nazar Mishturak <nazarmx@gmail.com"
+# Maintainer: samarthj <dev@samarthj.com>
+# Contributor: Nazar Mishturak <nazarmx@gmail.com"
 # Contributor: hexchian <i at hexchain dot org>
 
+# shellcheck disable=2034,2154
+
 pkgname=crun-git
-pkgver=0.9.1.r35.g423bc44
+_pkgname=crun
+pkgver=0.20.1.r17.g0b0b288
 pkgrel=1
 pkgdesc="A fast and lightweight fully featured OCI runtime and C library for running containers"
 url="https://github.com/containers/crun"
-license=('GPL3')
-arch=('x86_64')
+arch=('any')
 depends=('yajl' 'systemd-libs' 'libcap' 'libseccomp')
-makedepends=('libtool' 'python3' 'go-md2man')
-source=(
-  "$pkgname::git+https://github.com/containers/crun.git"
-  "libocispec::git+https://github.com/containers/libocispec.git"
-  "runtime-spec::git+https://github.com/opencontainers/runtime-spec.git"
-  "image-spec::git+https://github.com/opencontainers/image-spec.git"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
+makedepends=('libtool' 'python3' 'go-md2man' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+url="https://github.com/containers/$_pkgname.git"
+license=('GPL2')
+source=("git+$url")
+sha256sums=('SKIP')
 
 prepare() {
-  cd $srcdir/libocispec
-  git submodule init
-  git config submodule.runtime-spec.url $srcdir/runtime-spec
-  git config submodule.image-spec.url $srcdir/image-spec
-  git submodule update
-  cd $srcdir/$pkgname
-  git submodule init
-  git config submodule.libocispec.url $srcdir/libocispec
-  git submodule update
+  cd "$srcdir/$_pkgname" || exit 1
+  git submodule update --recursive
 }
 
 pkgver() {
-  cd $pkgname
+  cd "$srcdir/$_pkgname" || exit 1
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd $pkgname
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
+  cd "$srcdir/$_pkgname" || exit 1
+  ./autogen.sh
+  ./configure --prefix=/usr --enable-dynamic
+  make
 }
 
 package() {
-    cd $pkgname
-    make DESTDIR="$pkgdir" install
+  cd "$srcdir/$_pkgname" || exit 1
+  make DESTDIR="$pkgdir" install
 }
