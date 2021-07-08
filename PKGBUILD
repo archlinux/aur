@@ -93,16 +93,16 @@ source=(
   0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
   0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
   0007-x86-crash-remove-crash_reserve_low_1M.patch
-  "0008-UKSM.patch::${_patchsource}/0008-UKSM.patch"
-  "0009-CJKTTY.patch::${_patchsource}/0009-CJKTTY.patch"
-  "0010-bbr2.patch::${_patchsource}/0010-bbr2-5.12-introduce-BBRv2.patch"
-  "0011-bfq.patch::${_patchsource}/0011-bfq-patches.patch"
-  "0012-block.patch::${_patchsource}/0012-block-patches.patch"
-  "0013-lru-patches.patch::${_patchsource}/0013-lru-patches.patch"
-  "0014-btrfs-patches.patch::${_patchsource}/0014-btrfs-patches.patch"
-  "0015-futex-resync-from-gitlab.collabora.com.patch::${_patchsource}/0015-futex-resync-from-gitlab.collabora.com.patch"
-  "0016-fixes-miscellaneous.patch::${_patchsource}/0016-fixes-miscellaneous.patch"
-  "0017-futex2-resync-from-gitlab.collabora.com.patch::${_patchsource}/0017-futex2-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/uksm-patches/0001-UKSM-for-5.12.patch"
+  "${_patchsource}/cjktty-patches/0001-cjktty-5.12-initial-import-from-https-github.com-zhm.patch"
+  "${_patchsource}/bbr2-patches-v3/0001-bbr2-patches.patch"
+  "${_patchsource}/bfq-patches-v15/0001-bfq-patches.patch"
+  "${_patchsource}/block-patches-v6/0001-block-patches.patch"
+  "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
+  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+  "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
+  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -120,16 +120,16 @@ b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318
         '14d6df3f80495d7c63f191a4cc2e42ab7fd27b1368f18c71e1d0f5230c9bfa0958c73c940bacf7f5073ed4288bbb846e1c2903b441e4171c8ea8171ce5d56e45'
         'abe1754b1c16e2e6a6c369f6497a6679f5e846ad9652d2d019425bfe5fa1186c1e75f46790ba15a227982abc61469e7423b3eee30e3dc56a631a5d36e3ecbffa'
         'ed1dc0f7e4f97969185de71b8f26c321359e06855d3c3b2ac3fccf2d1cdae121feb70fc5a6546c63d2ca0ce3ef21d510a40e4077262715d53165a1b236119788'
-        '62147c71b76b9986b60df333267882f089c89997cef430c8864e521536d76a6d7679733cbbea163c31341a48ad589c11b98231f71aafe0eaf87f0a3a84add429'
-        '1f140c293d1ffdb13a38af1f636cf591ee1034702c9e3825ef7a12fff3ead79c6b9da1e2e099497c68b23cc7c690ce14bafb26d03c75648e27ab22b347f474a4'
-        '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
-        'a98463b538629f58c1207f56df595ddc92417ed09ea1192f6258acab8ae6f0e16e34af4d430bf9f1c7b030466952223c393bdd027139385f22b046583dbabf1c'
+        '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
+        '9dfcc6b39c73945f2ba2071039a7ebf40bcfb23ab2f1cb8fe5050d86b73b34333882ea577f3b648ffeb3b76d7c0ff8d20e35b46e82726cd6970b441d266bdda1'
+        'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
+        '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
         '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
-        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
         '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
-        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
-        '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707')
+        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
+        '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
+        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
