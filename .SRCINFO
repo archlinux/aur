@@ -1,16 +1,15 @@
 pkgbase = python-spacy-de_core_news_sm
 	pkgdesc = German pipeline optimized for CPU. Components: tok2vec, tagger, morphologizer, parser, senter, ner, attribute_ruler, lemmatizer.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://spacy.io/models/de#de_core_news_sm
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.0.0/de_core_news_sm-3.0.0.tar.gz
+	source = https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.1.0/de_core_news_sm-3.1.0.tar.gz
 	source = https://raw.githubusercontent.com/explosion/spaCy/master/LICENSE
-	sha256sums = 03e008d52ccfb8358010f99146c4ad40a212e732769a98a2bedd5a3bbfc3aaf0
+	sha256sums = fbc37695977556240208ad4416c8c1a3f0d674805c26e3f9fe3cf4b23dc40269
 	sha256sums = b90775797175e7aa165a5508c8132da463b8ae029b419f4fc52450276d9f2872
 
 pkgname = python-spacy-de_core_news_sm
-
