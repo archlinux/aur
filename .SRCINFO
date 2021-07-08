@@ -13,6 +13,7 @@ pkgbase = joycond-cemuhook-git
 	depends = python-dbus-common
 	depends = python-argparse
 	depends = python-pyudev
+	depends = upower
 	optdepends = nintendo-udev: Udev rules for switch controllers,
 	optdepends = hid-nintendo-dkms: Kernel module with switch controller support.
 	conflicts = joycond-cemuhook
@@ -22,4 +23,3 @@ pkgbase = joycond-cemuhook-git
 	sha512sums = 492b633a637764f52e8750e1d9e3a32c7dd39f36db379f22392dfa21a9618b254f165771a03307886dbd69287bd353e249b9d53a738f805dd117aaf436b9c0cc
 
 pkgname = joycond-cemuhook-git
-
