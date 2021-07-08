@@ -1,5 +1,5 @@
 pkgbase = tangram-bin
-	pkgdesc = Tangram is an automated machine learning framework designed for programmers.
+	pkgdesc = Tangram is an all-in-one automated machine learning framework.
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://www.tangram.xyz
