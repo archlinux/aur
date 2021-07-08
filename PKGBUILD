@@ -1,6 +1,6 @@
 # Maintainer: Nick Boughton <nicholasboughton@gmail.com>
 pkgname=yapa
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Yet another podcast app. Terminal podcast app for listening to podcasts in date order."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nboughton/yapa/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1be69b6acdf62f890b4a870d97a3799f2271f93459ec58f4dd7ea7b80dc0802f')
+sha256sums=('45846bccd32849586e614840706a12912f236196e7ff1a31b7ceeec537e326e8')
 
 prepare(){
   cd "$pkgname-$pkgver"
