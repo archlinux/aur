@@ -1,7 +1,7 @@
 pkgbase = zigbee2mqtt
 	pkgdesc = A Zigbee to MQTT bridge
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zigbee2mqtt.io
 	install = zigbee2mqtt.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = zigbee2mqtt
 	source = zigbee2mqtt.service
 	source = zigbee2mqtt.sysusers
 	source = zigbee2mqtt.tmpfiles
-	sha256sums = fb00981ba26d8559588f77f1f921fc50ee62317edf8c681cf8624d7980d90f73
+	sha256sums = 0f210f36d59b1a1fd1f2d014c831e45472d0d61f3c86a0ccfd7b1bed7fc06d7a
 	sha256sums = 36fdca9c274fc143a85cc57d70a36e0ec9455cf86b85d0690ccf0090ee8d682d
 	sha256sums = 3a86716e9036e97d885e9b5f37c7f87d9c2872435e4acf9fc4c9157264cf387b
 	sha256sums = 8f0fbe06c8d6e8fdf37feb31f244930025d76785451f9049fd90fe6e23c259f6
