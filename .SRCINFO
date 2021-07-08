@@ -1,7 +1,7 @@
 pkgbase = touche
 	pkgdesc = The desktop application to configure Touchégg
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoseExposito/touche
 	arch = x86_64
 	license = GPL3
