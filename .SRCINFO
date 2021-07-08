@@ -1,6 +1,6 @@
 pkgbase = dvc-bin
 	pkgdesc = Open-source version control system for data science projects as a binary
-	pkgver = 2.5.0
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/iterative/dvc
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dvc-bin
 	optdepends = zsh-completions
 	optdepends = bash-completion
 	conflicts = dvc
-	source = https://github.com/iterative/dvc/releases/download/2.5.0/dvc-2.5.0-1.x86_64.rpm
-	sha256sums = 7e745868b88489a996296d133fef2393e8b4531ba602c62fe438e4862399d02e
+	source = https://github.com/iterative/dvc/releases/download/2.5.3/dvc-2.5.3-1.x86_64.rpm
+	sha256sums = 5c7112d6199fa46b0c4dc58cbcb4b93ca490bef265b07dcecec5593c5073377e
 
 pkgname = dvc-bin

@@ -2,7 +2,7 @@
 
 _name=dvc
 pkgname=$_name-bin
-pkgver=2.5.0
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects as a binary"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'bash-completion'
 )
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-1.x86_64.rpm")
-sha256sums=('7e745868b88489a996296d133fef2393e8b4531ba602c62fe438e4862399d02e')
+sha256sums=('5c7112d6199fa46b0c4dc58cbcb4b93ca490bef265b07dcecec5593c5073377e')
 
 package() {
 	cd $srcdir
