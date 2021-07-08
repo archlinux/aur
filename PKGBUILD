@@ -9,8 +9,8 @@ pkgname=('yaru-sound-theme'
          'yaru-metacity-theme'
          'yaru-icon-theme'
          'yaru-session')
-pkgver=21.04.1
-pkgrel=5
+pkgver=21.10.1
+pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -19,15 +19,11 @@ license=('GPL3')
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
-_commit=d0c123036b0cd855102e1df3c24a946c223c1672
-_shorthash=${_commit:0:7}
-source=("https://github.com/ubuntu/yaru/archive/${_commit}.tar.gz")
-sha256sums=('89528b139a97987d8189d36d8a84d6b85d38c4b2432e09ca9c4451cee88983ea')
+source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
+sha256sums=('8a79e37efed926ddad91532bfa95f9a833e4b843dfb7c100b70cc628b6b8edd3')
 
 build() {
-  # Avoid very long filename that eCryptfs might choke on:
-  mv $pkgbase-$_commit $pkgbase-$_shorthash
-  arch-meson $pkgbase-$_shorthash build
+  arch-meson $pkgbase-$pkgver build
   meson configure build -Dubuntu-unity=true
   ninja -C build
 }
@@ -37,7 +33,7 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/sounds
     fi
     if [[ "$1" != "gtk-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light,-dark}/{gtk-*,index.theme}
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/{gtk-*,index.theme}
     fi
     if [[ "$1" != "gtksourceview-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
@@ -50,7 +46,7 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
     fi
     if [[ "$1" != "metacity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-light,-dark}/metacity-1
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/metacity-1
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons

@@ -1,7 +1,7 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 21.04.1
-	pkgrel = 5
+	pkgver = 21.10.1
+	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ubuntu/yaru/archive/d0c123036b0cd855102e1df3c24a946c223c1672.tar.gz
-	sha256sums = 89528b139a97987d8189d36d8a84d6b85d38c4b2432e09ca9c4451cee88983ea
+	source = https://github.com/ubuntu/yaru/archive/21.10.1.tar.gz
+	sha256sums = 8a79e37efed926ddad91532bfa95f9a833e4b843dfb7c100b70cc628b6b8edd3
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme
@@ -49,4 +49,3 @@ pkgname = yaru-session
 	pkgdesc = Yaru session
 	depends = gnome-shell
 	depends = yaru-gnome-shell-theme
-
