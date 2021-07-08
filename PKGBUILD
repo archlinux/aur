@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r357.g9298a120'
+pkgver='5.6.0.beta.5.r380.gaf194dcc'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -20,13 +20,11 @@ source=(
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	'fix-autostart-path.diff'
-	'gulp-sass-update.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce'
-            '70b34d0efd910d3641fb7a28a5ad30685a9b40bf9d32bb56596c8f283e9b03d9')
+            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -61,14 +59,8 @@ prepare() {
 	# Loosen node version restriction
 	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
 
-	# Set gulp-sass version for node 16 compatibility
-	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
-
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
-
-	# Set a compiler for gulp-sass explicitly
-	patch --forward -p1 < '../gulp-sass-update.diff'
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
