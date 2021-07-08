@@ -1,0 +1,14 @@
+pkgbase = pts-tiny-7z-sfx
+	pkgdesc = pts-tiny-7z-sfx is a tiny 7-Zip (.7z archive) extractor and self-extractor(SFX) written in standard C. It's Unix-only, actively tested on Linux.
+	pkgver = 9.22_pts6
+	pkgrel = 1
+	url = https://github.com/pts/pts-tiny-7z-sfx
+	arch = any
+	license = GPL v2
+	makedepends = gcc
+	depends = gcc
+	options = !strip
+	source = pts-tiny-7z-sfx-9.22-pts6.tar.gz::https://github.com/pts/pts-tiny-7z-sfx/archive/refs/tags/v9.22+pts6.tar.gz
+	sha256sums = 32867aca5b8095567834734c0406acb6309667c6765a9636c886516363e153a5
+
+pkgname = pts-tiny-7z-sfx
