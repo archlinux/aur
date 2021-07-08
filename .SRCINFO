@@ -1,0 +1,13 @@
+pkgbase = health
+	pkgdesc = A health tracking app for the GNOME desktop
+	pkgver = 0.92.6
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Cogitri/Health
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = cargo
+	source = health-0.92.6.tar.gz::https://gitlab.gnome.org/Cogitri/Health/-/archive/0.92.6/Health-0.92.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = health
