@@ -1,7 +1,7 @@
 # Maintainer: Premysl Srubar <premysl.srubar at gmail com>
 pkgname=python-mediapipe-git
 pkgver=v0.8.6.r0.g374f5e2e
-pkgrel=1
+pkgrel=2
 pkgdesc="MediaPipe offers cross-platform, customizable ML solutions for live and streaming media."
 arch=('any')
 url="https://github.com/google/mediapipe"
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 
 source=("${pkgname}::git+${url}.git" 
         "BUILD-opencvStatic.patch")
-        
+
 sha256sums=('SKIP'
             'e78d6ab853a78ce47d16346856b3a46562023c205ccd57927203e046cd431841')
 
@@ -31,20 +31,20 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/${pkgname}"
-		# 3.7.0 currently, 4.0.0 seems to build with latest bazael just fine
-    echo '4.0.0' >.bazelversion
+    # upstream requires 3.7.0 currently. But using 4.0.0 seems to build just fine. Use whatever bazel version is installed
+    bazel --version | sed 's/bazel //' >.bazelversion
     #Patch old abseil lib?: https://github.com/grpc/grpc/issues/25114  (seems ok with gcc10)
 
     # Remove  'x86_64-linux-gnu' folder for opencv and ffmpeg
     #https://google.github.io/mediapipe/getting_started/install.html
-    sed -i "s!/x86_64-linux-gnu!!g" third_party/ffmpeg_linux.BUILD           
+    sed -i "s!/x86_64-linux-gnu!!g" third_party/ffmpeg_linux.BUILD
     patch --forward --strip=1 --input="${srcdir}/BUILD-opencvStatic.patch"
-    python setup.py gen_protos #Without this the cleanup after the build would fail on non-existing files    
+    python setup.py gen_protos #Without this the cleanup after the build would fail on non-existing files
 }
 
-build() { 
-  
-  #gcc11 doesn't compile: https://github.com/grpc/grpc/issues/25114   
+build() {
+
+  #gcc11 doesn't compile: https://github.com/grpc/grpc/issues/25114
   cd "$srcdir/${pkgname}"
   #CC=gcc-10 CXX=g++-10 bazel build --compilation_mode=opt --copt=-DNDEBUG --define=MEDIAPIPE_DISABLE_GPU=1 --action_env=PYTHON_BIN_PATH=/bin/python mediapipe/modules/face_detection/face_detection_short_range_cpu --define=OPENCV=source
   #CC=gcc-10 CXX=g++-10 bazel build --compilation_mode=opt --copt=-DNDEBUG --define=MEDIAPIPE_DISABLE_GPU=1 --action_env=PYTHON_BIN_PATH=/bin/python //mediapipe/python:_framework_bindings.so --define=OPENCV=source
@@ -59,10 +59,10 @@ check() {
   CC=gcc-10 CXX=g++-10 bazel run --define MEDIAPIPE_DISABLE_GPU=1 mediapipe/examples/desktop/hello_world:hello_world
 }
 
-package() {    
-    cd "$srcdir/${pkgname}"    
-    python setup.py gen_protos #Without this the cleanup after the install would fail on non-existing files    
+package() {
+    cd "$srcdir/${pkgname}"
+    python setup.py gen_protos #Without this the cleanup after the install would fail on non-existing files
     CC=gcc-10 CXX=g++-10 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build --link-opencv
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
