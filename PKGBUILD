@@ -29,7 +29,7 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	find data doc lua plugin -not \( -path lua/tests -prune \) \
-	  -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	  -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
