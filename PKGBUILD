@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -52,6 +52,7 @@ build() {
 
   echo ${CONFOPTS}
   python ./configure \
+    --with-mpi-f90module-visibility=0 \
     --prefix=${_install_dir} \
     --PETSC_ARCH=${_petsc_arch} \
     ${CONFOPTS}
