@@ -3,26 +3,26 @@
 pkgname=langkit
 pkgver=20210518
 pkgrel=1
-pkgdesc='Compiler for syntactic and semantic language analysis libraries'
+pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 
 url='https://github.com/AdaCore/langkit/'
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-depends=('gnatcoll-iconv' 'autopep8'
-         'python-psutil'  'python-sphinx'  'python-yaml' 'python-docutils'
-         'python-e3-core' 'python-funcy'   'python-mako' 'yapf')
-makedepends=('gprbuild' 'texlive-bin')
+depends=('gnatcoll-iconv' 'python')
+makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'python-e3-core' 'python-funcy' 'python-mako')
 
 _extract_dir="$pkgname-2021-$pkgver-19B8E-src"
-source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/709e5ffa66fd8181655951e0ec8ed04e1d2977e2?filename=$_extract_dir.tar.gz&rand=398")
-sha1sums=('709e5ffa66fd8181655951e0ec8ed04e1d2977e2')
+_hash=709e5ffa66fd8181655951e0ec8ed04e1d2977e2
+
+source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$_extract_dir.tar.gz&rand=280")
+sha1sums=("$_hash")
 
 build()
 {
     cd "$srcdir/$_extract_dir"
 
-    # Make the Langkit Python package tree available for import
+    # Make the Langkit Python package tree available for import.
     export PYTHONPATH="$srcdir/$_extract_dir"
 
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
