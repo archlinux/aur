@@ -3,7 +3,7 @@
 pkgname=jriver-media-center
 _debpkgver=28.0.35
 pkgver=28.0.35
-pkgrel=1
+pkgrel=2
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64')
 url="http://www.jriver.com/"
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' '
 optdepends=('mesa-libgl: nouveau video support' 'nvidia-libgl: nvidia video support' 'vorbis-tools' 'musepack-tools')
 conflicts=('jriver-media-center26' 'jriver-media-center25' 'jriver-media-center24')
 source=("http://files.jriver.com/mediacenter/channels/v28/latest/MediaCenter-$_debpkgver-amd64.deb" 'License.txt')
-sha256sums=('46877f506edd5f5bd77900b54fe5086e9201897d89006cbdb722b437c20f1e37' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
+sha256sums=('6398b4c2660f01e190508e03eb37d5388f18fc81f4d74e32e410d06b9beab2cb' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
 
 package() {
   cd "$srcdir"
