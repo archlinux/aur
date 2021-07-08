@@ -1,0 +1,14 @@
+pkgbase = scryer-prolog
+	pkgdesc = An open source industrial strength production environment that is also a testbed for bleeding edge research in logic and constraint programming
+	pkgver = 0.8.128
+	pkgrel = 1
+	url = https://github.com/mthom/scryer-prolog
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = openssl
+	source = scryer-prolog::git+https://github.com/mthom/scryer-prolog
+	sha1sums = SKIP
+
+pkgname = scryer-prolog
