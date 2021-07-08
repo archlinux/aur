@@ -1,15 +1,15 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=icon-library-git
-pkgver=0.0.8.r1.gdfc2e1c
+pkgver=0.0.8.r64.g022a372
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/design/icon-library'
 license=(GPL3)
 depends=(
-	gtksourceview4
-	libhandy
+	gtksourceview5
+	libadwaita
 )
 makedepends=(
 	cmake
