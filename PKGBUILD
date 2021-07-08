@@ -1,6 +1,6 @@
 # Maintainer: MF Akane <aur at sorairo dot pictures>
 pkgname=mackerel-agent-plugins-git
-pkgver=0.64.1
+pkgver=0.65.0
 pkgrel=1
 pkgdesc="Plugins for mackerel-agent"
 arch=('i686' 'x86_64' 'armv7h')
