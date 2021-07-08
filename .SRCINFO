@@ -1,0 +1,23 @@
+pkgbase = networkmanager-l2tp-git
+	pkgdesc = L2TP support for NetworkManager
+	pkgver = 1.8.6.r17.g3ce3ca3
+	pkgrel = 1
+	url = https://github.com/nm-l2tp/NetworkManager-l2tp
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = python
+	makedepends = git
+	depends = libnma
+	depends = libsecret
+	depends = openssl
+	depends = ppp=2.4.9
+	depends = xl2tpd
+	optdepends = libreswan: IPSec support (recommended)
+	optdepends = strongswan: IPSec support
+	provides = networkmanager-l2tp=1.8.6.r17.g3ce3ca3
+	conflicts = networkmanager-l2tp
+	source = git+https://github.com/nm-l2tp/NetworkManager-l2tp
+	sha256sums = SKIP
+
+pkgname = networkmanager-l2tp-git
