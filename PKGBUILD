@@ -8,14 +8,14 @@ arch=('i686' 'x86_64')
 url="https://github.com/hdijkema/qtmultimedia-plugin-ffmpeg"
 license=('LGPLv3')
 depends=('qt5-multimedia' 'ffmpeg' 'sdl2')
-# makedepends=('sed')
+makedepends=('sed')
 source=(https://github.com/hdijkema/qtmultimedia-plugin-ffmpeg/archive/main.zip)
 md5sums=('SKIP')
 
 build() {
    cd $srcdir/qtmultimedia-plugin-ffmpeg-main
    lrelease-qt5 ffmpeg-plugin.pro
-   sed -i 's/INCLUDEPATH += ffmpeg/CONFIG += link_pkgconfig PKGCONFIG += libavcodec libavformat libavutil libavdevice libswscale libswresample LIBS += -lavcodec -lavformat -lavutil -lswscale -lswresample/g' ffmpeg/ffmpeg.pri
+   sed -i 's/INCLUDEPATH += ffmpeg/INCLUDEPATH += ffmpeg\nCONFIG += link_pkgconfig\nPKGCONFIG += libavcodec libavformat libavutil libavdevice libswscale libswresample\nLIBS += -lavcodec -lavformat -lavutil -lswscale -lswresample/g' ffmpeg/ffmpeg.pri
    qmake-qt5 QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" QMAKE_LFLAGS_RELEASE="$LDFLAGS" PREFIX=/usr
    make
 }
