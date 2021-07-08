@@ -2,7 +2,7 @@
 pkgbase=python-pysynphot
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Python Synthetic Photometry Utilities"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools-scm' 'python-astropy' 'python-sphinx' 'python-sphinx_rtd_theme' 'graphviz' 'python-beautifulsoup4')
 #checkdepends=('python-pytest-astropy-header')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a6d28b9f448fa8ceca2603f11000c029')
+md5sums=('7001d298e310c17aa3f5bfe638ed9cf4')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -21,11 +21,11 @@ build() {
     python setup.py build_sphinx
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    pytest || warning "Tests failed"
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    pytest || warning "Tests failed"
+#}
 
 package_python-pysynphot() {
     depends=('python-numpy>=1.9' 'python-astropy>=1.1')

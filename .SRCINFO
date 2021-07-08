@@ -1,6 +1,6 @@
 pkgbase = python-pysynphot
 	pkgdesc = Python Synthetic Photometry Utilities
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://pysynphot.readthedocs.io
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-pysynphot
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/source/p/pysynphot/pysynphot-1.0.0.tar.gz
-	md5sums = a6d28b9f448fa8ceca2603f11000c029
+	source = https://files.pythonhosted.org/packages/source/p/pysynphot/pysynphot-1.0.1.tar.gz
+	md5sums = 7001d298e310c17aa3f5bfe638ed9cf4
 
 pkgname = python-pysynphot
 	depends = python-numpy>=1.9
@@ -23,4 +23,3 @@ pkgname = python-pysynphot
 
 pkgname = python-pysynphot-doc
 	pkgdesc = Documentation for pysynphot
-
