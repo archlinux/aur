@@ -1,7 +1,7 @@
 pkgbase = arduino-ide
 	pkgdesc = Arduino IDE 2.0
 	pkgver = 2.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/arduino/arduino-ide
 	install = arduino-ide.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = arduino-ide
 	depends = libxss
 	depends = nss
 	options = !strip
-	source = https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0-beta.8_Linux_64bit.zip
+	source = https://downloads.arduino.cc/arduino-ide/arduino-ide_2.0.0-beta.9_Linux_64bit.zip
 	source = https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png
-	sha256sums = 0b573a1e1693a82b39293ef20a97d171b86d8bc704fcefb851b081faed2cfe51
+	sha256sums = 7f060aaecd3419a671c12054f3f6421df59c3892ffc16f8ee02bbac95d41bba6
 	sha256sums = d0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c
 
 pkgname = arduino-ide
