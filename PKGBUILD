@@ -1,31 +1,26 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
+
 pkgname=emacspeak
-pkgver=53.0
+pkgver=54.0
 pkgrel=1
 pkgdesc="Emacs extension that provides spoken output"
 arch=('x86_64' 'aarch64')
 url="http://emacspeak.sf.net/"
 license=('GPL' 'LGPL' 'APACHE')
-depends=(emacs
-	 'tcl>=8.6'
-	 'tclx'
-	 'espeak')
-optdepends=('python: Google client, and wrapper for Emacspeak speech servers.'
-	 'openmotif')
-source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/tvraman/emacspeak/archive/${pkgver}.tar.gz")
-sha512sums=('6575b3d16a69d0189270597357c61b38151696cd22d001f7a0e092457ba16fd6d0c837c0df5b5330f3fc04ddf393d3d4cecdd045cc1376c5d9170b08843cd278')
+depends=('emacs' 'tcl' 'tclx' 'espeak-ng')
+source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/emacspeak-${pkgver}.tar.bz2")
+sha512sums=('088b8d08258202e5cc12ad1e2a56eabe27e626157201f4b665da78f7f4f03ea858746131d5c27a261049283a35eeb0fd5bb47aa054acac8a9b65a32da39a2f35')
 
 prepare() {
-  export DTK_PROGRAM="espeak"
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i -e 's|/etc/info-dir|$(DESTDIR)/etc/info-dir|g' info/Makefile
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make config -j1
+  export DTK_PROGRAM="espeak"
+  make config
   make
   # Espeak isn't compiled by default, but lots of folks use it.
   make espeak
