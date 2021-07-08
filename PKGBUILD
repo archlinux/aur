@@ -2,7 +2,7 @@
 
 pkgname=archivy
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
 url="https://github.com/archivy/archivy"
