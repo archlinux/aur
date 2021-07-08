@@ -7,13 +7,11 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
+# Only compile select modules to reduce the number of modules built
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD reads the database kept if it exists
-#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
@@ -65,9 +63,8 @@ _localmodcfg=
 _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
-
 pkgbase=linux-ck
-pkgver=5.12.14
+pkgver=5.12.15
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -96,7 +93,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318d5e9848996989d5e421ab6c2128cdb51a3724adc95222f96a859486a1'
+b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07be08b2360cc1d0a6fe11bd8f18add68c893d92bb52e10bb0f61ff4eb76'
         'SKIP'
         'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
