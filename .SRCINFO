@@ -1,7 +1,7 @@
 pkgbase = pax-mc-git
 	pkgdesc = The MC modpack manager for professionals. VSC version.
-	pkgver = 1.6.0.r0.g42bdf30
-	pkgrel = 3
+	pkgver = 1.7.0.r1.ga6f1b3b
+	pkgrel = 1
 	url = https://github.com/froehlicha/pax
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc-git
-pkgver=1.6.0.r0.g42bdf30
-pkgrel=3
+pkgver=1.7.0.r1.ga6f1b3b
+pkgrel=1
 pkgdesc="The MC modpack manager for professionals. VSC version."
 arch=('x86_64')
 url="https://github.com/froehlicha/pax"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/pax"
-    echo "y" | nimble build --nimbleDir:"${srcdir}/nimble" -d:ssl -d:release
+    echo "y" | nimble buildProd --nimbleDir:"${srcdir}/nimble"
 }
 
 package() {
