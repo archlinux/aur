@@ -9,7 +9,9 @@ Wants=network-online.target
 [Service]
 DynamicUser=yes
 Type=simple
-ExecStart=/usr/bin/wsdd --shortlog --workgroup WORKGROUP
+; Daemon parameters (including e.g. workgroup) are now set via config file:
+EnvironmentFile=/etc/conf.d/wsdd
+ExecStart=/usr/bin/wsdd $PARAMS
 
 [Install]
 WantedBy=multi-user.target

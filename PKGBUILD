@@ -11,13 +11,18 @@ license=('MIT')
 
 depends=('samba')
 
+backup=('etc/conf.d/wsdd')
+
 source=("wsdd-${pkgver}.tar.gz::https://github.com/christgau/wsdd/archive/v${pkgver}.tar.gz"
-        'wsdd.service')
+        'wsdd.service'
+        'wsdd.conf')
 
 sha256sums=('bb8bc6411b70be68369c53bf75827ac77f16a5bf5606de6536dd7e6d6ce4c2be'
-            '5408872bb509fc130de00099407c7eef6c68b7913b54649970e8e3a2f54f4316')
+            '8f4326841b5ba899752ba30554fcc5ea4b2353dadb951535fd62e234fb1f5009'
+            '7330cfb5cabbc7f3116781baa0f92c8bb4ac86a20f22edef5c5d98997f253c08')
 
 package() {
   install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/src/wsdd.py" "${pkgdir}/usr/bin/wsdd"
+  install -D -m 644 "${srcdir}/wsdd.conf" "${pkgdir}/etc/conf.d/wsdd"
   install -D -m 644 "${srcdir}/wsdd.service" "${pkgdir}/usr/lib/systemd/system/wsdd.service"
 }
