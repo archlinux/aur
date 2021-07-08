@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=1.0.0.511
-_rls_tag=1.0.0-rc2
+pkgver=1.0.0.512
+_rls_tag=1.0.0
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_r
         "web-eid-libpcsc-mock::git+https://github.com/web-eid/libpcsc-mock.git")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP")
 validpgpkeys=(
-    '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa
+    '1282B0F8809D0DC632C85A3F86B611CE24492160'  # Mart Somermaa https://github.com/mrts.gpg
 )
 
 prepare() {
