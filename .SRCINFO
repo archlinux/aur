@@ -1,7 +1,7 @@
 pkgbase = archivy-git
 	pkgdesc = A self-hosted knowledge repository, to preserve useful content to your knowledge bank.
 	pkgver = v1.3.1.r3.gd16df87
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archivy/archivy
 	arch = any
 	license = MIT

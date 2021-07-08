@@ -2,7 +2,7 @@
 
 pkgname=archivy-git
 pkgver=v1.3.1.r3.gd16df87
-pkgrel=2
+pkgrel=3
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
 url="https://github.com/archivy/archivy"
@@ -30,11 +30,11 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    rm -rf tests
 	python setup.py build
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    rm -rf "${pkgdir}/$(python -c 'import site; print(site.getsitepackages()[0])')/tests/"
 }
