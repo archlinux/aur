@@ -2,7 +2,7 @@
 # Contributor: Feufochmar <feufochmar.gd@gmail.com>
 pkgname=brickshooter
 pkgver=0.04
-pkgrel=3
+pkgrel=4
 pkgdesc="A small puzzle game where you'll have to clear the central area from blocks."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://linux.softpedia.com/get/GAMES-ENTERTAINMENT/Puzzle/brickshooter-37619.shtml"
@@ -21,7 +21,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -d "${pkgdir}/usr/share/${pkgname}/"{gfx,levels,snd}
-  install -d "${pkgdir}/usr/bin" "{$pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
+  install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
   install -m 755 ${pkgname} "${pkgdir}/usr/share/${pkgname}"
   install -m 644 gfx/* ${pkgdir}/usr/share/${pkgname}"/gfx"
   install -m 644 levels/* "${pkgdir}/usr/share/${pkgname}/levels"

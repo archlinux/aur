@@ -1,7 +1,7 @@
 pkgbase = brickshooter
 	pkgdesc = A small puzzle game where you'll have to clear the central area from blocks.
 	pkgver = 0.04
-	pkgrel = 3
+	pkgrel = 4
 	url = https://linux.softpedia.com/get/GAMES-ENTERTAINMENT/Puzzle/brickshooter-37619.shtml
 	arch = i686
 	arch = x86_64
