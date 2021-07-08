@@ -8,7 +8,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
@@ -32,6 +32,11 @@ fi
 ##                                y to enable  (stock default)
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
+fi
+
+## GCC is the unique compiler supported
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
 fi
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
@@ -113,6 +118,9 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
