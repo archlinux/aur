@@ -1,0 +1,13 @@
+pkgbase = libsystemd-provides
+	pkgdesc = Metapackage depending on 'systemd-libs' and providing the 'libsystemd'-dependency. Can be used on Artix systems.
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 0
+	arch = any
+	license = custom: public domain
+	depends = systemd-libs
+	provides = libsystemd=0.1
+	source = license-metapackage-pd.txt
+	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
+
+pkgname = libsystemd-provides
