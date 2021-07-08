@@ -1,0 +1,15 @@
+pkgbase = alif-git
+	pkgdesc = The Alif Arabic Programming Language - لغة البرمجة العربية ألف
+	pkgver = r66.a483c1b
+	pkgrel = 0
+	url = https://www.aliflang.org/
+	arch = x86_64
+	license = GPL3
+	depends = boost
+	optdepends = webui: to use web browsers as UI
+	provides = alif
+	conflicts = alif
+	source = alif-git::git+https://github.com/alifcommunity/compiler.git
+	md5sums = SKIP
+
+pkgname = alif-git
