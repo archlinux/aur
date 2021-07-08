@@ -1,0 +1,17 @@
+pkgbase = libcpufeatures-git
+	pkgdesc = A cross-platform C library to retrieve CPU features (such as available instructions) at runtime. By google.
+	pkgver = 0.6.0.19.r218.d20210707.628c50e
+	pkgrel = 1
+	url = https://github.com/google/cpu_features
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	provides = libcpufeatures=0.6.0.19.r218.d20210707.628c50e
+	conflicts = libcpufeatures
+	source = libcpufeatures::git+git://github.com/google/cpu_features.git
+	sha256sums = SKIP
+
+pkgname = libcpufeatures-git
