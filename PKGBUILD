@@ -25,7 +25,7 @@ depends=('mono')
 _verwatch=('http://www.netresec.com/?page=NetworkMiner' '\s\+<[nt][a-z]\+>NetworkMiner\s\([0-9][^<]\+\)</[a-z]\+>.*' 'f')
 _srcname="NetworkMiner_${pkgver//\./-}-${pkgrel}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('34d81e42eec33183b79191de165ae506933fa3bb5b1fd836e70ef81468c9c65b')
+sha256sums=('df4057eb0256dab23dee9c248d60db11d46b20d344d8769ca0e5768afd76dd3f')
 
 package() {
   set -u
