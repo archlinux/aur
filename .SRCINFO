@@ -1,17 +1,16 @@
 pkgbase = muwire
 	pkgdesc = An I2P file sharing program
-	pkgver = 0.8.7
-	pkgrel = 2
+	pkgver = 0.8.8
+	pkgrel = 1
 	url = https://muwire.com/
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = gradle
 	depends = sh
-	depends = java-runtime>=11
-	depends = java-runtime<=15
+	depends = java-runtime=11
 	depends = hicolor-icon-theme
-	source = git+https://github.com/zlatinb/muwire.git#tag=muwire-0.8.7?signed
+	source = git+https://github.com/zlatinb/muwire.git#tag=muwire-0.8.8?signed
 	source = muwire.desktop
 	source = muwire.sh
 	validpgpkeys = 471B9FD45517A5ED101FC57DA72832072D525E41
