@@ -1,0 +1,13 @@
+pkgbase = ttf-roadgeek
+	pkgdesc = Michael Adams' Roadgeek Fonts - 2014 Edition
+	pkgver = 3.10
+	pkgrel = 1
+	url = https://github.com/sammdot/roadgeek-fonts
+	arch = any
+	license = MIT
+	source = RG2014-3.10.zip::https://github.com/sammdot/roadgeek-fonts/releases/download/3.1/RG2014-3.10.zip
+	source = LICENSE.TXT::https://raw.githubusercontent.com/sammdot/roadgeek-fonts/master/LICENSE
+	sha512sums = 40dfa8843cfeee256b0d3efb0d607543986e1721e13c3fa852eda191d336010596b0af75331c21609d717ed0fcf1c3370761bf2a252866d8ec940a66bce5b051
+	sha512sums = d2f9764ec52c431190f6537657adfdf00f3390f11be53183990d3c2da6eeeeea4b922110ecf434c3726cc0e0afa89a6227221001d35e9817cd11b04efa748980
+
+pkgname = ttf-roadgeek
