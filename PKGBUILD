@@ -1,7 +1,7 @@
 # Maintainer: TheFool <rn6l05d28@relay.firefox.com>
 pkgname=firefoxpwa-git
 pkgver=0.4.0.r.
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a patched build of the FirefoxPWA from filips123's git"
 arch=(x86_64)
@@ -22,17 +22,17 @@ changelog=
 source=("git+$url"
         "firefoxpwa-git.patch")
 noextract=()
-sha256sums=('SKIP'
-            '4cf5c3edb1d87095c759affb803ea2bef13358aa63d047364ed5e7d5835f3177')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 pkgver () {
 cd "${_pkgname}"
-printf "0.3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    patch -p1 -i firefoxpwa-git.patch
+    sed -i -e "s/^version = .*$/version = \"$pkgver\"/" Cargo.toml
+    sed -i 's\"path": "/usr/libexec/firefoxpwa-connector",\"path": "/usr/lib/firefoxpwa/firefoxpwa-connector",\g'  manifests/linux.json 
 }
 
 package() {
