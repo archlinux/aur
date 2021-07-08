@@ -1,6 +1,6 @@
 pkgbase = firefox-pwa
 	pkgdesc = A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox. (native component)
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/filips123/FirefoxPWA
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = firefox-pwa
 	makedepends = rust
 	makedepends = cargo
 	depends = firefox
-	source = firefox-pwa-0.3.1.tar.gz::https://github.com/filips123/FirefoxPWA/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = be58235831f287435a98f22095cbe37bd6dea671bc9c6a224b301270e4534f2a
+	source = firefox-pwa-0.4.0.tar.gz::https://github.com/filips123/FirefoxPWA/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 66150de536d167201addf3df5bd3a485eecc9ff2baeeee37ef39fa9cc5953655
 
 pkgname = firefox-pwa
