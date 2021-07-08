@@ -1,6 +1,6 @@
 pkgbase = slides
 	pkgdesc = Terminal based presentation tool
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/maaslalani/slides
 	changelog = CHANGELOG.md
@@ -11,7 +11,7 @@ pkgbase = slides
 	depends = glibc
 	conflicts = slides-git
 	conflicts = slides-bin
-	source = slides::git+https://github.com/maaslalani/slides.git#tag=v0.3.0
+	source = slides::git+https://github.com/maaslalani/slides.git#tag=v0.4.1
 	sha256sums = SKIP
 
 pkgname = slides

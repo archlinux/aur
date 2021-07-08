@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -20,6 +20,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    go clean -testcache ./...
     go build -buildmode=pie -trimpath -ldflags "-linkmode external -X main.Version=${pkgver} -s -w"
 }
 
