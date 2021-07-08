@@ -1,5 +1,5 @@
 pkgbase = raven-reader-bin
-	pkgdesc = Simple RSS Reader app made using electron and vue.js
+	pkgdesc = Electron-based RSS reader -- All your articles in one place. Beautiful.
 	pkgver = 1.0.63
 	pkgrel = 1
 	url = https://github.com/hello-efficiency-inc/raven-reader/releases
