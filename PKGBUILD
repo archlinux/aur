@@ -3,16 +3,18 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.4.0.rc.1.r2.148526e
-pkgrel=1
+pkgver=1.4.0.rc.2.r27.8580281
+pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
-makedepends=('git' 'go' 'python-setuptools' 'python-grpcio-tools')
+makedepends=('git' 'go' 'python-setuptools'
+             'python-grpcio-tools' 'qt5-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-slugify' 'python-pyqt5')
-optdepends=('logrotate: for logfile rotation support')
+optdepends=('logrotate: for logfile rotation support'
+            'opensnitch-ebpf-module-git: eBPF process monitor method (non-hardened kernel only)')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}d/default-config.json")
@@ -45,7 +47,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=mod"
   export PATH=${PATH}:${GOPATH}/bin
   go get github.com/golang/protobuf/protoc-gen-go
-  # make ../daemon/ui/protocol/ui.pb.go
   make
   popd
 
@@ -53,13 +54,19 @@ build() {
   make
   popd
 
-  # Clean mod cache for makepkg -C
-  go clean -modcache
-
   pushd ui
   pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
   python setup.py build
+  sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
   popd
+  go clean -modcache
+
+  # do not use ebpf proc method by default as the module is provided as an optdepend
+  # NOTE: does not seem to be required, the default-config.json should use proc unless
+  # changed in the settings / in the file
+  # cp "daemon/${pkgname%-git}d.service" "daemon/${pkgname%-git}d-ebpf.service"
+  # sed  -i 's/\(ExecStart=.*\)/\1 -process-monitor-method ebpf/' "daemon/${pkgname%-git}d-ebpf.service"
+  # sed  -i 's/\(ExecStart=.*\)/\1 -process-monitor-method proc/' "daemon/${pkgname%-git}d.service"
 }
 
 package() {
@@ -73,6 +80,8 @@ package() {
   install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
   install -Dm644 "daemon/${pkgname%-git}d.service" -t \
     "$pkgdir/usr/lib/systemd/system"
+  # install -Dm644 "daemon/${pkgname%-git}d-ebpf.service" -t \
+    # "$pkgdir/usr/lib/systemd/system"
   install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 "debian/${pkgname%-git}.logrotate" \
