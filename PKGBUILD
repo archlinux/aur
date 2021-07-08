@@ -4,7 +4,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
 pkgver=1.4.0.rc.2.r27.8580281
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -56,8 +56,8 @@ build() {
 
   pushd ui
   pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
-  python setup.py build
   sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
+  python setup.py build
   popd
   go clean -modcache
 
