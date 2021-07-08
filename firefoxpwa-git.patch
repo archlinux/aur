@@ -6,7 +6,7 @@ diff -ru old/FirefoxPWA/native/Cargo.toml new/FirefoxPWA/native/Cargo.toml
  
  # Version will be set by CI from the Git tag when building and releasing
 -version = "0.0.0"
-+version = "0.3.1"
++version = "0.4.0"
  
  [profile.release]
  codegen-units = 8
