@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
 pkgname=albert-git
-pkgver=v0.17.2.r2.g447f957c
+pkgver=v0.17.2.r8.gcfed0d37
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
