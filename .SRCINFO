@@ -1,9 +1,10 @@
 pkgbase = linux-cacule-rdb
 	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
+	arch = x86_64_v3
 	license = GPL2
 	makedepends = kmod
 	makedepends = bc
