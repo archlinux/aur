@@ -1,6 +1,6 @@
 pkgbase = helium-wallet
 	pkgdesc = Helium Wallet
-	pkgver = 1.5.2
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/helium/helium-wallet-rs
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = helium-wallet
 	depends = rust
 	depends = cargo
 	depends = openssl
-	source = https://github.com/helium/helium-wallet-rs/archive/refs/tags/v1.5.2.tar.gz
-	sha512sums = 1897a335aac68c5488e23c786eed5849f22f0293d117cc3cadb6b4de49d782452bec72fcd3f7e1a71355329bff61f2157bb22a1f877faf8fcdea43850ac2420c
+	source = https://github.com/helium/helium-wallet-rs/archive/refs/tags/v1.6.4.tar.gz
+	source = https://github.com/helium/helium-wallet-rs/pull/172/commits/818f1648f6f532ee529db3354579b1219d2b2a52.patch
+	sha512sums = dddb5867e5238681658c9cc0d50a3a5fc7f48734cc21a2d3e6fedf508c0410f0b5b5be48935b6a8c2b475a8fc29d3452630d3eeb234c92ccc89ef3b80ff485dd
+	sha512sums = 2868cdbba25b76fca5fc3570f6a6b41348710179a15a36afd0c53580eb0cad8b42aa0c5c0ace17382c3dfa7ee9b0b7f371e3fcf7bd42ddac0698a3b7191ed14e
 
 pkgname = helium-wallet
-
