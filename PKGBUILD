@@ -2,8 +2,8 @@
 # Maintainer: Marc Straube <email@marcstraube.de>
 
 pkgname=mercure
-pkgver=0.11.1
-pkgrel=4
+pkgver=0.11.3
+pkgrel=1
 pkgdesc='Server-sent live updates: protocol and reference implementation'
 arch=('x86_64')
 url='https://mercure.rocks'
@@ -18,7 +18,7 @@ sha512sums=('cdfcab53d5ae52395b10afe6fe9a2dbb6a1dddb6535773dde94c7f29aa05e316e71
             '68236e714ba954332f4ee2a9f558795cfcdfd32d2162fa5f369a1d0f38d8524c23199f1b14df39670d001a769bb460f1431caa84dec108f37129ead5d3d04391'
             'f0a2e107a2d3977e037862a6b5a964c5051452040ae64ab997a3948b80e67c191672dca04703c83dfc4a866d782ecb83ae334dfe44553bc134553975fbd8dc8b'
             '66d5f99fe323ef91058d73d083ef6201b2129720dda36709b6a04789f4f0d08c8e959e27113668d09e07f012eb324cb5ec9a79724923329a8ca007800ab677e5')
-sha512sums_x86_64=('0c90082124fed1ac6906a2b7f9e3c2dd527efc9f62c580aff9a9d52b5b7cd859cf4edd90ae2ddc312c7bf52b51b513fef9eb869cafa469045c59414e9ba0a11d')
+sha512sums_x86_64=('3231d5ff36d99f5e9137b255e4901e91881bac24d0c38552321ef7ba3c25e20cbce273d51eb31caf4df51d122cb37b091cd476d5c43df2920c4cbaf511462bfe')
 
 package(){
   install -Dm 755 mercure "${pkgdir}"/usr/bin/mercure
