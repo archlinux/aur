@@ -1,4 +1,5 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Justin Gottula <justin@jgottula.com>
 
 pkgname=wsdd
 pkgver=0.6.4
