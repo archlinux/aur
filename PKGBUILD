@@ -4,7 +4,7 @@ pkgname=firefox-pwa
 _pkgname="FirefoxPWA"
 pkgdesc='A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox. (native component)'
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/filips123/FirefoxPWA"
 license=('MPL2')
@@ -17,6 +17,8 @@ prepare() {
   cd $srcdir/$_pkgname-$pkgver/native
   sed -i -e "s/^version = .*$/version = \"$pkgver\"/" Cargo.toml
   sed -i -e "s/static DISTRIBUTION_VERSION = .*;/static DISTRIBUTION_VERSION = '$pkgver';/" userchrome/profile/chrome/pwa/chrome.jsm
+  # Patch to move runtime install directory inside ~/.local/share
+  sed -i -e "s@let directory = .*\$@let directory = PathBuf::from(std::env::var(\"HOME\").unwrap()).join(\".local/share/firefoxpwa/runtime\");@" src/components/runtime.rs
 }
 
 build() {
@@ -32,6 +34,4 @@ package() {
   mkdir -p $pkgdir/usr/share/firefoxpwa
   cp -r native/userchrome $pkgdir/usr/share/firefoxpwa/
   chmod -R 755 $pkgdir/usr/share/firefoxpwa
-  mkdir -p $pkgdir/usr/share/firefoxpwa/runtime
-  chmod 777 $pkgdir/usr/share/firefoxpwa/runtime
 }
