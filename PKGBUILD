@@ -3,7 +3,7 @@
 # Contributor sumt <sumt at sci dot fi>
 
 pkgname=yle-dl
-pkgver=20210502
+pkgver=20210704
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -18,7 +18,7 @@ depends=('ffmpeg'
 optdepends=('wget: for some rare streams')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aajanki/yle-dl/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('172c6b3f819dc9d6df340f9bf55ffbeee8763f49d5a275f38835582be0b8299a')
+sha256sums=('775b6a6650d684f63cee1326e1952fcfa02a683ea656fde00d3ffa8038e8af06')
 
 
 build() {
