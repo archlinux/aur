@@ -26,6 +26,7 @@ pkgbase = rezound-git
 	provides = rezound=0.13.2beta.r0.g61285e5
 	conflicts = rezound
 	replaces = rezound<=0.13.2beta.r0.g61285e5
+	replaces = rezound-svn
 	source = git+https://github.com/Sound-Linux-More/rezound.git
 	source = rezound.png
 	source = rezound.install
@@ -40,4 +41,3 @@ pkgbase = rezound-git
 	sha256sums = f5e97e9ae55241a0b060f2e0162a9189700f37a1de8e8bb731dfc6ece5d03f88
 
 pkgname = rezound-git
-
