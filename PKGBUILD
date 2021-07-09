@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.12.14.arch1.r999174.56c86f90b122
+pkgver=v5.12.14.arch1.r1016369.3693b2ca83ff
 _srcver_tag=v5.12.14.arch1
 pkgrel=1
 pkgdesc="Linux"
@@ -116,7 +116,7 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '83029f1cb3b2a209f6996a6ed521ae5b0f13688ba847c86c12ee6358b61ce016884a511807f670cf324f77b6a9b66eebaaa90af5606c505a1521cc951e8cfb7d')
+            '3f84d2dda8d8ec85e54b8a50f7013599066fb85ef356563a333eabf1946171c1fbe46cff765b12d3abdd9bc30e3eb99f62b2eb674ea9d05212d32c65c3c2aaf1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -130,10 +130,10 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
-    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
-    git merge --no-edit --no-commit FETCH_HEAD
+    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    #git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
+    #git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
+    #git merge --no-edit --no-commit FETCH_HEAD
 
     #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
     #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
