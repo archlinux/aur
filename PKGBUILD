@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=BiocParallel
-_bcver=1.26.0
+_bcver=1.26.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=(r r-futile.logger r-snow r-bh)
 optdepends=(r-biocgenerics r-foreach r-batchjobs r-bbmisc r-doparallel r-rmpi r-genomicranges r-rnaseqdata.hnrnpc.bam.chr14 r-txdb.hsapiens.ucsc.hg19.knowngene r-variantannotation r-rsamtools r-genomicalignments r-shortread r-codetools r-runit r-biocstyle r-knitr r-batchtools r-data.table)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('401297f6ea653be0272a8b3d6b656110b7bef269e132cfe373baf62e557b849f')
+sha256sums=('703d223f14ee1eed2bddb0af9fb97495dd4efec713bddc9ae39e187d48e5a1cb')
 
 build() {
   cd "${srcdir}"
