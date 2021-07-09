@@ -18,10 +18,10 @@ _fragment=${FRAGMENT:-#branch=blender-v${_ver}-release}
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=(optix{\>=7.0,\<=7.2}); }
 
 pkgname=blender-${_ver}-git
-pkgver=2.93.r105607.g57301121747
+pkgver=2.93.r105643.g9e64fd461ac
 pkgrel=1
 pkgdesc="Maintenance version of Blender v${_ver} branch"
 changelog=blender.changelog
