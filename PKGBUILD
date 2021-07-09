@@ -2,7 +2,7 @@
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>, Alexander F. Rødseth <xyproto@archlinux.org>, and Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=openttd-jgrpp
-pkgver=0.42.0
+pkgver=0.42.1
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'sed' 'tar')
 depends=('fluidsynth' 'fontconfig' 'freetype2' 'hicolor-icon-theme' 'icu' 'libpng' 'sdl2')
 optdepends=('lzo: (de)compressing of old (pre OpenTTD 0.3.0) savegames')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
-sha256sums=('2ee611bc5a9760c020acddc98e7f040151c3d411ef087010d0437517ba19715b')
+sha256sums=('256f7b5fd5cc94d97eca9752485d632517cbe1c1e38929e51ed83a7215824ffd')
 
 _dirname=OpenTTD-patches-jgrpp
 
