@@ -17,5 +17,5 @@ sha512sums=('43bcf7185d6790b2c066fc0c68c1ae717d2ec76c0ed6cb5c0c12215e53a1cd2f5ed
 package() {
   cd "$pkgname-$_commit"
 
-  install -Dm644 jyutgaan.schema.yaml -t "$pkgdir/usr/share/rime-data/jyutgaan.schema.yaml"
+  install -Dm644 jyutgaan.schema.yaml "$pkgdir/usr/share/rime-data/jyutgaan.schema.yaml"
 }
