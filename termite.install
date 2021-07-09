@@ -1,0 +1,7 @@
+post_install() {
+  echo "termite is now obsolete, see https://github.com/thestinger/termite#termite-is-obsoleted-by-alacritty"
+}
+
+post_upgrade() {
+  echo "termite is now obsolete, see https://github.com/thestinger/termite#termite-is-obsoleted-by-alacritty"
+}
