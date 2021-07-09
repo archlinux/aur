@@ -1,14 +1,16 @@
 pkgbase = folderkit-git
 	pkgdesc = An OSC sampler useable with orca
-	pkgver = 1
+	pkgver = r177.ee71f3f
 	pkgrel = 1
 	url = https://codeberg.org/nonmateria/folderkit
 	arch = any
 	groups = pro-audio
-	license = GPL
+	license = MIT
 	makedepends = git
-	depends = liblo-git
-	source = folderkit-git-1::git+https://codeberg.org/nonmateria/folderkit.git
+	depends = liblo
+	depends = jack2
+	depends = fftw
+	source = folderkit-git-r177.ee71f3f::git+https://codeberg.org/nonmateria/folderkit.git
 	md5sums = SKIP
 
 pkgname = folderkit-git
