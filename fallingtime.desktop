@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Name=Falling Time
+Comment=Arcade game inspired by Fall Down.
+Exec=fallingtime
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=games;
