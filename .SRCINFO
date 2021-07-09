@@ -1,6 +1,6 @@
 pkgbase = subsurface
 	pkgdesc = Divelog program
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://subsurface-divelog.org/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = subsurface
 	depends = qt5-connectivity
 	depends = qt5-webkit
 	depends = sqlite
-	source = https://subsurface-divelog.org//downloads/Subsurface-5.0.1.tgz
-	sha512sums = 29db006cb25366b4344c231e5c32d08539f557ae306e43a84ec4c316bdc3d57b66010906a85c30817153a98b29e29e33fa128c4844a78addc3c6a0aeb9bfc6c1
-	b2sums = 8b4d3079b672ae8830637a595aaf43ffe1a6ca7aee657c554ff8316b592f1e3fabe94f79786c0428419d50b5a5be4811138945dfb42d419277464875c79da98e
+	source = https://subsurface-divelog.org//downloads/Subsurface-5.0.2.tgz
+	sha512sums = c76ea45487a6935a10290e96a5d73c0ff8f73c896025a2b81e2dffb09edc7418937baef88acaac655c80848a30af4ce8c2ed710b01111edfbff89736c203d587
+	b2sums = 089c4fd147babdbec2b84d5b007d474487a27150e1dda2ea1b02c2f26c334a8631c4a75f4459ecfcf516886b7372de58f6c11ffb55f58070eb3525c45c0e57d8
 
 pkgname = subsurface
 	depends = googlemaps
@@ -40,4 +40,3 @@ pkgname = subsurface
 	depends = qt5-webkit
 	depends = sqlite
 	depends = libgit2.so
-
