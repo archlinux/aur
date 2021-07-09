@@ -4,7 +4,7 @@
 _pkgname=libretro-database
 pkgname=$_pkgname-git
 pkgver=1.9.5.r3.g658a2c29
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
 arch=('any')
@@ -25,6 +25,8 @@ pkgver() {
 }
 
 package() {
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	make -C $_pkgname DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
 }
