@@ -1,4 +1,4 @@
-From 726fe83fac7f451bac14fae80de272bc0d00dabe Mon Sep 17 00:00:00 2001
+From 805f73e5ec34de70bd2a853bbf9aafb855621e09 Mon Sep 17 00:00:00 2001
 From: Cody P Schafer <dev@codyps.com>
 Date: Mon, 22 Jun 2020 01:52:25 -0400
 Subject: [PATCH] patch service
@@ -9,7 +9,7 @@ Subject: [PATCH] patch service
  2 files changed, 21 insertions(+), 8 deletions(-)
 
 diff --git a/docs/systemd/etc/systemd/system/cowrie.service b/docs/systemd/etc/systemd/system/cowrie.service
-index b8b2fd4..934e77d 100644
+index b8b2fd4..06ff19a 100644
 --- a/docs/systemd/etc/systemd/system/cowrie.service
 +++ b/docs/systemd/etc/systemd/system/cowrie.service
 @@ -1,24 +1,37 @@
@@ -57,7 +57,7 @@ index b8b2fd4..934e77d 100644
  [Install]
  WantedBy=multi-user.target
 diff --git a/etc/cowrie.cfg.dist b/etc/cowrie.cfg.dist
-index 7139aa1..f044c47 100644
+index c25e17f..c2cee50 100644
 --- a/etc/cowrie.cfg.dist
 +++ b/etc/cowrie.cfg.dist
 @@ -590,7 +590,7 @@ compression = zlib@openssh.com,zlib,none
@@ -79,5 +79,5 @@ index 7139aa1..f044c47 100644
  
  # Source Port to report in logs (useful if you use iptables to forward ports to Cowrie)
 -- 
-2.27.0
+2.32.0
 

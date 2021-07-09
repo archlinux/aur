@@ -2,7 +2,7 @@
 
 pkgname=cowrie
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
@@ -25,25 +25,28 @@ depends=(
   'python-twisted'
   )
 
+_gitrev="c5e9a6b21c8908e892c2169b33f560ccd1fd98ff"
+_pkgdir="${pkgname}-${_gitrev}"
 backup=('etc/cowrie/cowrie.cfg')
 install=cowrie.install
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz
+#source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz)
+source=(${pkgname}-${_gitrev}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/${_gitrev}.tar.gz
   '0001-patch-service.patch')
-sha512sums=('c65259353bf3b7eceda5c3937671343cc534154a1046c67427022eb133a344e70c56251d096e6fbe448b8f30986990c3327ead53385d7602f1af817cb8a68054'
-            'b8684f4bdd1f3b9808b58d7950ed88778a72a84b3b7572aedf60481b0f9330425e08c368ac3091794e93dec035f79cac3765472b385d22b2464e8b532292f050')
+sha512sums=('8b65b90cc8667408b2aa32b46c3c8f351e8061ae00e78cc05e35ece4539cc6ffdeb641bd6a1818c98cbf44d921c9ac378fd1b07b13e9b3ec2336eca0897277fe'
+            'a79904d764829b246fce7691f90d1de7a478985217eb458d441a2fad0aed4558d70eb2d38208d2bfb393bc42f662dba129678fc14765392959d1316c0d1a8dd1')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd "${_pkgdir}"
   patch -p1 -Ni '../0001-patch-service.patch'
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${_pkgdir}"
   python setup.py build
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${_pkgdir}"
 
   mkdir -p "${pkgdir}/etc/cowrie"
   install -Dm 644 etc/cowrie.cfg.dist "${pkgdir}/etc/cowrie/cowrie.cfg"
