@@ -1,4 +1,4 @@
-# Maintainer: WeepingDogel <sydghbsdfyghsdy456@gmail.com>
+# Maintainer: WeepingDogel <weepingdogel@gmail.com>
 
 pkgname=titlegetter
 pkgver=2.2.1
