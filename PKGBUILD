@@ -46,6 +46,7 @@ provides=(
          )
 replaces=(
           "${_pkgname}<=${pkgver}"
+          "rezound-svn"
          )
 conflicts=(
            "$_pkgname"
