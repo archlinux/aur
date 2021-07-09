@@ -27,8 +27,7 @@ pkgver() {
 }
 
 build() {
-	cd $_pkgname
-	make \
+	make -C $_pkgname \
 		HAVE_PARALLEL_RDP=1 \
 		HAVE_PARALLEL_RSP=1 \
 		HAVE_THR_AL=1 \
@@ -40,7 +39,6 @@ build() {
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro mupen64plus_next_libretro.so
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/mupen64plus_next_libretro.so
 }
