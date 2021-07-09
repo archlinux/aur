@@ -1,0 +1,24 @@
+diff --unified --recursive --text lib_webview/webview/webview_embed.cpp lib_webview.new/webview/webview_embed.cpp
+--- lib_webview/webview/webview_embed.cpp	2021-04-26 23:56:15.503592000 +0800
++++ lib_webview.new/webview/webview_embed.cpp	2021-07-09 10:53:33.174391865 +0800
+@@ -125,7 +125,7 @@
+ 	_messageHandler = std::move(handler);
+ }
+ 
+-void Window::setMessageHandler(Fn<void(QJsonDocument)> handler) {
++void Window::setMessageHandler(Fn<void(const QJsonDocument&)> handler) {
+ 	if (!handler) {
+ 		setMessageHandler(Fn<void(std::string)>());
+ 		return;
+diff --unified --recursive --text lib_webview/webview/webview_embed.h lib_webview.new/webview/webview_embed.h
+--- lib_webview/webview/webview_embed.h	2021-04-26 23:56:15.503592000 +0800
++++ lib_webview.new/webview/webview_embed.h	2021-07-09 10:54:05.049390350 +0800
+@@ -36,7 +36,7 @@
+ 
+ 	void navigate(const QString &url);
+ 	void setMessageHandler(Fn<void(std::string)> handler);
+-	void setMessageHandler(Fn<void(QJsonDocument)> handler);
++	void setMessageHandler(Fn<void(const QJsonDocument&)> handler);
+ 	void setNavigationStartHandler(Fn<bool(QString)> handler);
+ 	void setNavigationDoneHandler(Fn<void(bool)> handler);
+ 	void init(const QByteArray &js);

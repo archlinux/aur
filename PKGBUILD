@@ -1,31 +1,35 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=2.7.1.2
+pkgver=2.8.1.1
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libtg_owt')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
+         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
+             'libtg_owt' 'extra-cmake-modules')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("64gram-desktop")
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "fix-tgcalls-gcc10.patch")
-sha512sums=('b9f4e540d2d5e6b80a2934dbd2857743a28ca12135ca1a5d5acc9e365f35b2debff0f13e18d261eeda866082a7843776da31c874961909a5399ed66d23b30012'
-            '05e3dcc3d090087525287bb9254a4440b44faa7443fa0f9f942e94c5e5ea3bad41b1df2e6f10594e173a1d41188a75e918118228f5715e537f3c3ac65346cb80')
+        "fix-gcc11-assert.patch")
+sha512sums=('8b51aa32ff31e61fc8ef8afaef2c961f4a60df3ea8dba72a12ca173ce4e5dcfdba0f5b0beae5f27c66262e19cd114212acc6440e525219687fe033cd620b1a71'
+            '29f4ddf6eba62e14dac1a00aa3ba96f9f6767b82f2c85c98931d9be967fb4398a1337b9716e2d423ecfe56e672bfa15d81898e87ce8b85cd8a3be976336fd682')
 
 prepare() {
     cd $_pkgname-$pkgver-full/cmake
-    # force webrtc link to libjpeg
+    # force webrtc link to libjpeg and X11 libs
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-    
-    cd ../Telegram/ThirdParty/tgcalls
-    patch -Np1 -i "$srcdir"/fix-tgcalls-gcc10.patch
+    echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
+    echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
+
+    cd ..
+    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
 }
 
 build() {
