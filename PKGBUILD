@@ -18,13 +18,6 @@ makedepends=('boost' 'cmake' 'mesa' 'zip' 'python2' 'libsm' 'git')
 source=("git+https://github.com/0ad/0ad.git")
 md5sums=('SKIP')
 
-options=(!strip)
-# Keep debug symbols, it shouldn't have a signicant binary size impact.
-# To use them, run with a debugger the actual 0ad executable.
-# Example with gdb:
-# - standard build: `gdb pyrogenesis`
-# - debug build: `gdb pyrogenesis_dbg` (keep reading to learn about the debug build)
-
 pkgver() {
   cd ${srcdir}/${_pkgname}
   git rev-list --count HEAD
