@@ -4,7 +4,7 @@
 _pkgname=libretro-fbneo
 pkgname=$_pkgname-git
 pkgver=1.0.0.02.r448.g57c1fc5ed
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="FinalBurn Neo multi-arcade core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
 	cd $_pkgname/src/burner/libretro
 	make generate-files
 	if [[ $CARCH == x86_64 ]]; then
-		CXX=g++-10 make USE_X64_DRC=1
+		CC=gcc-10 CXX=g++-10 make USE_X64_DRC=1
 	else
 		make
 	fi

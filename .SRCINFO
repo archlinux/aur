@@ -1,7 +1,7 @@
 pkgbase = libretro-fbneo-git
 	pkgdesc = FinalBurn Neo multi-arcade core
 	pkgver = 1.0.0.02.r448.g57c1fc5ed
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/libretro/FBNeo
 	arch = arm
