@@ -1,9 +1,9 @@
-# Maintainer: rany <rany at i2pmail dot org>
+# Maintainer: rany <ranygh at riseup dot net>
 
 pkgname=popura
 _pkgname="popura"
-pkgver=0.3.16+popura1 
-_commit=6b52234bca43b8d2c5940e6b46baeb29c231f303
+pkgver=0.4.0+popura1
+_commit=0270fecff2972c3229545accc9e52ae59eba176a
 pkgrel=1
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
