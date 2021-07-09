@@ -1,6 +1,6 @@
 pkgbase = ruby-parser
 	pkgdesc = A Ruby parser written in pure Ruby
-	pkgver = 3.0.1.1
+	pkgver = 3.0.2.0
 	pkgrel = 1
 	url = https://github.com/whitequark/parser
 	arch = any
@@ -14,12 +14,11 @@ pkgbase = ruby-parser
 	makedepends = ruby-bundler
 	depends = ruby
 	depends = ruby-ast
-	noextract = parser-3.0.1.1.gem
+	noextract = parser-3.0.2.0.gem
 	options = !emptydirs
-	source = https://github.com/whitequark/parser/archive/v3.0.1.1/parser-3.0.1.1.tar.gz
-	source = https://rubygems.org/downloads/parser-3.0.1.1.gem
-	sha256sums = 04332df9bb3151d2eacc6c0d86f56289f5de8054a4854f5d8beac920f645316b
-	sha256sums = d2ded2eab569bb7bee861790a54a81e71ce4b4a25bf908bfeb06945f6288badf
+	source = https://github.com/whitequark/parser/archive/v3.0.2.0/parser-3.0.2.0.tar.gz
+	source = https://rubygems.org/downloads/parser-3.0.2.0.gem
+	sha256sums = 34654473ac443f6fdff71082fc6e6a26effd2eb45a15c0a52937b7eedf37bb33
+	sha256sums = 05766daec0e44fe986067d948e2ed8d23656ad072442f213b314c17b1037aa1a
 
 pkgname = ruby-parser
-
