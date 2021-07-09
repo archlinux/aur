@@ -28,27 +28,3 @@ index cf267b8f..05d41fb3 100644
  
  #define MAX_RECENT_FILES 10
  
-diff --git a/YUViewLib/src/statistics/statisticHandler.cpp b/YUViewLib/src/statistics/statisticHandler.cpp
-index a62efa42..1e9d5915 100644
---- a/YUViewLib/src/statistics/statisticHandler.cpp
-+++ b/YUViewLib/src/statistics/statisticHandler.cpp
-@@ -35,6 +35,7 @@
- #include <cmath>
- #include <QPainter>
- #include <QtMath>
-+#include <QPainterPath>
- 
- #include "common/functions.h"
- 
-diff --git a/YUViewLib/src/ui/views/splitViewWidget.cpp b/YUViewLib/src/ui/views/splitViewWidget.cpp
-index ff5723ba..4a29d723 100644
---- a/YUViewLib/src/ui/views/splitViewWidget.cpp
-+++ b/YUViewLib/src/ui/views/splitViewWidget.cpp
-@@ -38,6 +38,7 @@
- #include <QInputDialog>
- #include <QMessageBox>
- #include <QPainter>
-+#include <QPainterPath>
- #include <QSettings>
- #include <QTextDocument>
- 
