@@ -1,6 +1,6 @@
 # Maintainer: Mathieu Tortuyaux <mathieu.tortuyaux@gmail.com>
 pkgname=inframap
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 epoch=0
 pkgdesc="Read your tfstate or HCL to generate a graph specific for each provider, showing only the resources that are most important/relevant"
@@ -9,8 +9,8 @@ url="https://github.com/cycloidio/$pkgname"
 license=('MIT')
 source_x86_64=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-amd64.tar.gz")
 source_i386=("https://github.com/cycloidio/$pkgname/releases/download/v$pkgver/$pkgname-linux-386.tar.gz")
-sha256sums_i386=('cf1bab0ffc01c21be59c2a4634898581ce5c5bf0208db2a62e3ca3e20ca38e27')
-sha256sums_x86_64=('2295c44503c53737f77fa2b75edd02100ee1b9d98276edaec4b218bde3f30561')
+sha256sums_i386=('6aa5f996ae487fd58cd72a1ee2adef0805d146edaabe9ada62c07a1f5c543471')
+sha256sums_x86_64=('ef711fda530fe49cd89967ea43fac593b57be3a65e9dca77df973727f1dec3de')
 
 package() {
 	case $CARCH in
