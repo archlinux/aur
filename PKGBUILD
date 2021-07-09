@@ -3,7 +3,7 @@
 pkgname=qqmusic-bin
 _pkgname=qqmusic
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -23,7 +23,7 @@ package(){
     mkdir -p "${pkgdir}"/usr/bin
     ln -s /opt/qqmusic/qqmusic "${pkgdir}"/usr/bin/qqmusic
     cd $pkgdir/usr/share/applications/
-    sed -i '3c Exec=qqmusic %U'       qqmusic.desktop 
+    sed -i '3c Exec=sh -c "qqmusic %U && killall dbus-monitor"'       qqmusic.desktop 
 #     sed -i '7c StartupWMClass=qqmusic'  qqmusic.desktop
     sed -i 's|QQmusic|qqmusic|g'        qqmusic.desktop 
     sed -i 'N;2aName[zh_CN]=QQ音乐'      qqmusic.desktop 
