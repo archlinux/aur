@@ -1,7 +1,7 @@
 pkgbase = lemminx
 	pkgdesc = Eclipse XML language server
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse/lemminx
 	arch = any
 	license = EPL

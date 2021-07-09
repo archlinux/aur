@@ -5,7 +5,7 @@
 pkgname=lemminx
 pkgver=0.17.1
 _jarname="${pkgname}-${pkgver}.jar"
-pkgrel=1
+pkgrel=2
 pkgdesc='Eclipse XML language server'
 arch=('any')
 url='https://github.com/eclipse/lemminx'
