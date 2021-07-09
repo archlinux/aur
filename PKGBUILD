@@ -3,15 +3,17 @@
 _pkgname=ativayeban
 pkgname=${_pkgname}-git
 pkgver=r7.b85db68
-pkgrel=1
+pkgrel=2
 pkgdesc="Fall through a labyrinth. Avoid getting crushed!"
 arch=('any')
 url="https://github.com/Nebuleon/ativayeban"
 license=('GPL2')
 makedepends=('git')
 depends=('sdl' 'sdl_image')
-source=("git+https://github.com/Nebuleon/ativayeban.git")
-sha1sums=('SKIP')
+source=("git+https://github.com/Nebuleon/ativayeban.git"
+        "${_pkgname}.sh")
+sha256sums=('SKIP'
+            'addf504723793e02312c3fab83a720e54f30ad1f5e58657b31cf42aab54d4a0f')
 
 pkgver() {
 	cd "${_pkgname}"
