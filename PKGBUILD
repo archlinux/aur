@@ -3,8 +3,8 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux-git
-pkgver=1.0.8.r0.g315ca04
-pkgrel=1
+pkgver=1.0.8.r1.ge3dc87d
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams client for Linux using Electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname%-git}"
@@ -12,13 +12,13 @@ license=("GPL3")
 conflicts=("teams-for-linux")
 provides=("teams-for-linux")
 depends=("gtk3" "libxss" "nss")
-makedepends=("git" "nodejs<15" "node-gyp" "python2" "yarn")
+makedepends=("git" "nodejs>=14" "nodejs<15" "node-gyp" "python2" "yarn")
 source=(
   "${pkgname%-git}::git+https://github.com/IsmaelMartinez/${pkgname%-git}#branch=develop"
   "${pkgname%-git}.desktop"
 )
 sha256sums=('SKIP'
-            'f33ab4997c329567bbe172fe77ee6cbced5c5d4354e12ef52a89dd702422fded')
+            '9e9ea701b445953383b70133cb52ac6a6ec2872bba419b079a7d0ca13e50dac2')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
