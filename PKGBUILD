@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -68,8 +68,8 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.14
-pkgrel=2
+pkgver=5.12.15
+pkgrel=1
 _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
@@ -82,30 +82,29 @@ makedepends=(
   bc kmod libelf cpio perl tar xz
 )
 options=('!strip')
-source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
-  config         # the main kernel config file
-  "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/${_major}/${_major}-ck${_ckpatchversion}/${_ckpatch}.xz"
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-x86-setup-Consolidate-early-memory-reservations.patch
-  0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
-  0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
-  0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
-  0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
-  0007-x86-crash-remove-crash_reserve_low_1M.patch
-  "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-5.12.patch"
-  "0009-bbr2.patch::${_patches_url}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
-  "0010-btrfs.patch::${_patches_url}/btrfs-patches-v13/0001-btrfs-patches.patch"
-  "0011-block.patch::${_patches_url}/block-patches-v6/0001-block-patches.patch"
-  "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
-  "0013-futex2.patch::${_patches_url}/futex2-stable-patches-v7/0001-futex2-resync-from-gitlab.collabora.com.patch"
+source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
+        config         # the main kernel config file
+        "more-uarches-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_gcc_more_v}.tar.gz"
+        "http://ck.kolivas.org/patches/5.0/${_major}/${_major}-ck${_ckpatchversion}/${_ckpatch}.xz"
+        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+        0002-x86-setup-Consolidate-early-memory-reservations.patch
+        0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
+        0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
+        0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
+        0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
+        0007-x86-crash-remove-crash_reserve_low_1M.patch
+        "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-5.12.patch"
+        "0009-bbr2.patch::${_patches_url}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
+        "0010-btrfs.patch::${_patches_url}/btrfs-patches-v13/0001-btrfs-patches.patch"
+        "0011-block.patch::${_patches_url}/block-patches-v6/0001-block-patches.patch"
+        "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
+        "0013-futex2.patch::${_patches_url}/futex2-stable-patches-v7/0001-futex2-resync-from-gitlab.collabora.com.patch"
 )
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+              'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+              '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('3bc213b432d61c358f85b932dec8bd44a1ef73442f20424ad5ce374b6982a6909c5b318d5e9848996989d5e421ab6c2128cdb51a3724adc95222f96a859486a1'
+b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07be08b2360cc1d0a6fe11bd8f18add68c893d92bb52e10bb0f61ff4eb76'
         'SKIP'
         'SKIP'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -130,7 +129,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${pkgver}
 
-  echo "Setting version..."
+  msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -140,11 +139,11 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = 0*.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  echo "Setting config..."
+  msg2 "Setting config..."
   cp ../config .config
 
   # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
@@ -173,7 +172,7 @@ prepare() {
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
   # ck patchset itself
-  echo "Patching with ck patchset..."
+  msg2 "Patching with ck patchset..."
   patch -Np1 -i ../"${_ckpatch}"
 
   # non-interactively apply ck1 default options
@@ -182,7 +181,7 @@ prepare() {
 
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
-  echo "Patching to enable GCC optimization for other uarchs..."
+  msg2 "Patching to enable GCC optimization for other uarchs..."
   patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.8+.patch"
 
   if [ -n "$_subarch" ]; then
@@ -206,7 +205,7 @@ prepare() {
     fi
 
   make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  msg2 "Prepared $pkgbase version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
