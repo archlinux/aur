@@ -1,6 +1,6 @@
 pkgbase = podman-git
 	pkgdesc = Tool and library for running OCI-based containers in pods (git)
-	pkgver = 3.3.0_dev.r12119.g510509baf
+	pkgver = 3.3.0_dev.r12212.g31c3b952e
 	pkgrel = 1
 	url = https://github.com/containers/podman.git
 	arch = any
@@ -40,7 +40,6 @@ pkgname = podman-git
 	optdepends = btrfs-progs: support btrfs backend devices
 	optdepends = catatonit: --init flag support
 	optdepends = crun: support for unified cgroupsv2
-	backup = etc/cni/net.d/87-podman-bridge.conflist
 
 pkgname = podman-docker-git
 	pkgdesc = Emulate Docker CLI using podman

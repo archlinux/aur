@@ -6,7 +6,7 @@ pkgbase=podman-git
 pkgname=(podman-git podman-docker-git)
 _pkgname=podman
 _pkgname_docker=podman-docker
-pkgver=3.3.0_dev.r12119.g510509baf
+pkgver=3.3.0_dev.r12212.g31c3b952e
 pkgrel=1
 pkgdesc="Tool and library for running OCI-based containers in pods (git)"
 arch=('any')
@@ -46,7 +46,6 @@ package_podman-git() {
     'btrfs-progs: support btrfs backend devices'
     'catatonit: --init flag support'
     'crun: support for unified cgroupsv2')
-  backup+=('etc/cni/net.d/87-podman-bridge.conflist')
 
   cd $_pkgname || exit 1
   make install install.completions DESTDIR="$pkgdir" PREFIX=/usr
