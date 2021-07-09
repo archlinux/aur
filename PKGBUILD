@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
 url="http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468"
 license=('unknow')
 provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname%-wine})
+conflicts=(${pkgname} ${pkgname%-wine} 'h7toolpc-bin')
 replaces=(h7toolpc-bin)
 depends=('wine' 'wqy-zenhei')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('13a02cb749bc6e5c69986ee231e0647ed829c5d5247bd77d4509a91093f7e121'
+sha256sums=('6c14fe23a41f5c95d7ed44ff1ea58ada1bf58d5701bf8e408fa1ce06bc827ed6'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
 noextract=("${pkgname/pc-wine/PC_release}.zip"
@@ -112,7 +112,7 @@ EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-wine}" << EOF
 #!/bin/bash
-export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
 
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
@@ -131,18 +131,18 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     ln -s -T /${armfly}/${pkgname%-wine}/Help "$HOME"/.${pkgname%-wine}/Help || exit 1
     ln -s -T /${armfly}/${pkgname%-wine}/USBBus "$HOME"/.${pkgname%-wine}/USBBus || exit 1
     ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
-fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/patchok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/patchok || exit 1
     regedit "$HOME"/.${pkgname%-wine}/wine/regpatch.reg
-    winetricks -q hid
+#     winetricks -q hid
+#     winetricks -q comctl32
+#     winetricks -q comctl32ocx
+#     winetricks -q comdlg32ocx
     wine "$HOME"/.${pkgname%-wine}/Driver/stm32_vcp/VCP_V1.5.0_Setup_W7_x86_32bits.exe /S
     wine "$HOME"/.${pkgname%-wine}/Driver/WinUSB/zadig-2.5.exe
     wineserver -k
 fi
 
-wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "$@"
+wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} -opengl "\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname%-wine}.desktop" << EOF
@@ -161,7 +161,7 @@ EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname/-wine/-old}" << EOF
 #!/bin/bash
-export WINEARCH=win32 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
+export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
 
 if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
@@ -180,14 +180,11 @@ if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
     ln -s -T /${armfly}/${pkgname%-wine}/Help "$HOME"/.${pkgname%-wine}/Help || exit 1
     ln -s -T /${armfly}/${pkgname%-wine}/USBBus "$HOME"/.${pkgname%-wine}/USBBus || exit 1
     ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
-fi
 
-if [ ! -f "$HOME"/.${pkgname%-wine}/patchok ] ; then
-    touch "$HOME"/.${pkgname%-wine}/patchok || exit 1
     cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
 fi
 
-    wine "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-old} -opengl"$@"
+    wine "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-old} -opengl"\$@"
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname/-wine/-old}.desktop" << EOF
