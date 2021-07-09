@@ -2,9 +2,9 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
-pkgver=r11708.090599df8
+pkgver=r11710.1c0004153
 pkgrel=1
-pkgdesc="PlayStation 2 core"
+pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
 url="https://github.com/libretro/pcsx2"
 license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
