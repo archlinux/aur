@@ -1,7 +1,7 @@
 pkgbase = cowrie
 	pkgdesc = Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/micheloosterhof/cowrie
 	install = cowrie.install
 	arch = any
