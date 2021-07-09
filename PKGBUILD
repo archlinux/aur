@@ -4,8 +4,8 @@
 # Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
 
 pkgname=nextcloud-app-tasks-git
-pkgver=0.9.5.r3303.gbb3e9181
-pkgrel=2
+pkgver=0.13.6.r612.g977efa0b
+pkgrel=1
 pkgdesc="Enhanced task app for NextCloud"
 arch=('any')
 url="https://github.com/nextcloud/tasks"
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/tasks"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
