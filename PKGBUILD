@@ -2,13 +2,15 @@
 
 pkgname=jellex-git
 pkgver=0.2.3.r0.gc2bb101
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI to filter JSON data with Python syntax"
 arch=('any')
 url="https://github.com/kellyjonbrazil/jellex"
 license=('MIT')
 depends=('jello' 'python-pygments' 'python-prompt_toolkit')
 makedepends=('git')
+provides=('jellex')
+conflicts=('jellex')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
