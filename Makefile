@@ -8,6 +8,8 @@ update:
 	./checkupdate.sh
 	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
+	git add ./PKGBUILD ./.SRCINFO
+	git commit -m "Bump version"
 
 check:
 	./checkupdate.sh --dry-run
