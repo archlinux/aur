@@ -22,17 +22,14 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-	sed -E 's/^(\s*(CFLAGS|LDFLAGS)\s*):=/\1+=/;s/-Wno-format//' -i Makefile
+	sed -E 's/^(\s*(CFLAGS|LDFLAGS)\s*):=/\1+=/;s/-Wno-format//' -i $_pkgname/Makefile
 }
 
 build() {
-	cd $_pkgname
-	make
+	make -C $_pkgname
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro dosbox_pure_libretro.so
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/dosbox_pure_libretro.so
 }
