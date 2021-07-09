@@ -2,14 +2,14 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-genesis-plus-gx-wide
 pkgname=$_pkgname-git
-pkgver=r1530.fbbac38
+pkgver=r1539.73c298b
 pkgrel=1
-pkgdesc="Widescreen modification of Genesis Plus GX"
+pkgdesc="Sega CD/Game Gear/Master System/Mega Drive/SG-1000 core"
 arch=('x86_64')
 url="https://github.com/libretro/Genesis-Plus-GX-Wide"
 license=('custom')
 groups=('libretro')
-depends=('libretro-core-info' 'glibc')
+depends=('glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,8 +22,7 @@ pkgver() {
 }
 
 build() {
-	cd $_pkgname
-	make -f Makefile.libretro
+	make -C $_pkgname -f Makefile.libretro
 }
 
 package() {
