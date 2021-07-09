@@ -1,6 +1,6 @@
 pkgname=libcamera-git
 _pkgname=libcamera
-pkgver=r2566.99feb66d
+pkgver=r2747.fb970d9c
 pkgrel=1
 pkgdesc='A complex camera support library for Linux, Android, and ChromeOS'
 arch=('x86_64' 'i686')
@@ -10,23 +10,24 @@ makedepends=(
     "gcc"
     "git"
     "gnutls"
-    "openssl"
-    "meson"
-    "python-yaml"
-    "python-ply"
-    "python-jinja"
+    "gtest"
     "lttng-ust"
+    "meson"
+    "openssl"
+    "python-jinja"
+    "python-ply"
+    "python-yaml"
 )
 optdepends=(
-    "udev"
-    "python-sphinx"
     "doxygen"
     "graphviz"
     "gstreamer"
     "libevent"
+    "libtiff"
+    "python-sphinx"
     "qt5-base"
     "qt5-tools"
-    "libtiff"
+    "udev"
 )
 license=('LGPL2.1')
 options=('!buildflags')
