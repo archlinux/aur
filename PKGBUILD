@@ -4,7 +4,7 @@ pkgbase=python-astlib
 _paname=${pkgbase#python-}
 _pyname=astLib
 pkgname=("python-${_paname}" "python-${_paname}-doc")
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=1
 pkgdesc="A set of Python modules that provides some tools for research astronomers"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('LGPL')
 makedepends=('python-setuptools' 'wcstools-all' 'swig' 'python-sphinx-epytext' 'python-readthedocs-sphinx-ext' 'python-sphinx_rtd_theme' 'python-astropy' 'python-scipy' 'python-matplotlib')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'use_system_wcstools.patch')
-sha256sums=('f4ea75cdb85a03a5add9e74fcd08382293cf3e637979692d76ad29cb0f32e6a2'
+sha256sums=('d6a9ab522a93c706810ad4d099026ddb2e492af661df5daf0e2dd45d9d31bc1f'
             'cb8e9bfabc91992c49daae7d5bc6a476caedd5c3b5c60f26f32bcbb216daf6cd')
 
 prepare() {
