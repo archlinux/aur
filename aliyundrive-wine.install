@@ -1,0 +1,19 @@
+# aliyundrive-wine.post_install
+
+info() {
+    echo -e "Wine 阿里云盘"
+    echo -e "请选择 C:\Program Files 进行安装"
+    echo -e "Please select C:\ Program Files to install"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+    echo "deleting the aliyundrive bottle..."
+    find /home -maxdepth 2 -name ".aliyundrive" -exec rm -rf {} \;
+}
+pre_remove() {
+    echo "deleting the aliyundrive bottle..."
+    find /home -maxdepth 2 -name ".aliyundrive" -exec rm -rf {} \;
+}
