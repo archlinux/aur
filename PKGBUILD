@@ -9,15 +9,14 @@
 
 pkgbase=intel-media-sdk-git
 pkgname=('intel-media-sdk-git' 'libmfx-git')
-pkgver=2020.3.pre6.r61.ge7b13633
+pkgver=2021.2.2.r20.gdcdffa3b
 pkgrel=1
 pkgdesc='API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)'
 arch=('x86_64')
 url='https://software.intel.com/en-us/media-sdk/'
 license=('MIT')
 makedepends=('libdrm' 'libva-git' 'wayland' 'intel-media-driver'
-             'git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'python'
-             'opencl-headers' 'opencl-clhpp' 'ocl-icd' 'intel-compute-runtime')
+             'git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'python')
 source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git')
 sha256sums=('SKIP')
 
@@ -39,9 +38,10 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_ITT:BOOL='OFF' \
-        -DENABLE_OPENCL:BOOL='ON' \
+        -DENABLE_OPENCL:BOOL='OFF' \
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
+        -DMFX_APPS_DIR='/usr/lib/mfx' \
         -Wno-dev
     make -C build
 }
@@ -52,13 +52,11 @@ check() {
 
 package_intel-media-sdk-git() {
     depends=('libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
-    optdepends=('ocl-icd: for rotate_opencl plugin'
-                'intel-compute-runtime: for rotate_opencl plugin')
-    provides=('intel-media-sdk')
+    provides=('intel-media-sdk' 'onevpl-runtime')
     conflicts=('intel-media-sdk')
     
     make -C build DESTDIR="$pkgdir" install
-    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
+    ln -s mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
     install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # remove core component libmfx
