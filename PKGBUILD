@@ -27,12 +27,10 @@ pkgver() {
 }
 
 build() {
-	cd $_pkgname
-	make
+	make -C $_pkgname
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	make DESTDIR="$pkgdir" install
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
