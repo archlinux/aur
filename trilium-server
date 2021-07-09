@@ -2,4 +2,4 @@
 PWD=$(pwd)
 cd /opt/trilium-server
 ./trilium.sh
-cd /home/lada/my_pkgs/trilium-server-bin/src
+cd ${PWD}
