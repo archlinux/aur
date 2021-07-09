@@ -5,7 +5,7 @@ pkgname=firefox-pwa
 _pkgname="FirefoxPWA"
 pkgdesc='A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox. (native component)'
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/filips123/FirefoxPWA"
 license=('MPL2')
@@ -13,6 +13,7 @@ provides=('firefoxpwa')
 conflicts=('firefoxpwa')
 depends=('firefox')
 makedepends=('rust' 'cargo')
+install=firefox-pwa.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/filips123/FirefoxPWA/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('66150de536d167201addf3df5bd3a485eecc9ff2baeeee37ef39fa9cc5953655')
 
