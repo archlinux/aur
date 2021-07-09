@@ -52,7 +52,7 @@ index b8b2fd4..934e77d 100644
 -StandardOutput=syslog
 -StandardError=syslog
 -SyslogIdentifier=cowrie
-+ExecStart=/usr/bin/twistd3 --umask 0022 --nodaemon --pidfile= -l - cowrie
++ExecStart=/usr/bin/twistd --umask 0022 --nodaemon --pidfile= -l - cowrie
  
  [Install]
  WantedBy=multi-user.target
