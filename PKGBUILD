@@ -3,20 +3,19 @@
 # Contributor: Valeriy Lyasotskiy <onestep@ukr.net>
 
 pkgname=g15daemon
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD"
 arch=('x86_64')
 url="https://gitlab.com/menelkir/g15daemon"
 license=('GPL')
 depends=('libg15render>=3.0')
 source=(https://gitlab.com/menelkir/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-sha512sums=('f610aa43379831f40e6873f5655aab40e600c48b904f617eecf87558db70fa92aa68c2cd9c9cfc4b68baa047b7ecc5e6fb1b8f8dce64b887fba19f9280689522')
+sha512sums=('a2b8e14fce82355f5f14b7fe0adee06f0e73a4444055fd2d5a0afbb72d5bdde9612d2bef1162606d0f20c5bfcc2965a85c64eaea651da8dc752af6a1182dd504')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
-  ./configure --prefix=/usr --sbindir=/usr/bin --disable-static
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
