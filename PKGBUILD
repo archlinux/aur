@@ -1,31 +1,33 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
-
-pkgname=libretro-virtualjaguar-git
-pkgver=257.7889df9
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Oliver Jaksch <arch-aur@com-in.de>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-virtualjaguar
+pkgname=$_pkgname-git
+pkgver=r264.2069160
 pkgrel=1
-pkgdesc="libretro implementation of Virtual Jaguar. (Atari Jaguar)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+epoch=1
+pkgdesc="Atari Jaguar core"
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/virtualjaguar-libretro"
 license=('GPL3')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
+depends=('glibc' 'libretro-core-info')
 makedepends=('git')
-
-_libname=virtualjaguar_libretro
-_gitname=virtualjaguar-libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make
+	make -C $_pkgname
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/virtualjaguar_libretro.so
 }
