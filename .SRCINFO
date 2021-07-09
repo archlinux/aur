@@ -1,20 +1,26 @@
 pkgbase = sdbus-cpp-git
 	pkgdesc = sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++
-	pkgver = r256.118faa5
+	pkgver = 0.8.3.33.r261.d20210622.e16ffb1
 	pkgrel = 1
+	epoch = 2
 	url = https://github.com/Kistler-Group/sdbus-cpp
 	arch = i686
 	arch = x86_64
-	license = LGPLv2.1
+	license = LGPL2.1
 	license = custom:sdbus-c++ LGPL Exception 1.0
+	makedepends = systemd
 	makedepends = git
 	makedepends = cmake
 	makedepends = doxygen
 	depends = systemd-libs
-	provides = sdbus-cpp
+	depends = expat
+	provides = sdbus-cpp=0.8.3.33.r261.d20210622.e16ffb1
+	provides = sdbus-cpp-git=0.8.3.33.r261.d20210622.e16ffb1
+	provides = sdbus-cpp-=0.8.3.33.r261.d20210622.e16ffb1
 	conflicts = sdbus-cpp
+	conflicts = sdbus-cpp-git
+	conflicts = sdbus-cpp-
 	source = sdbus-cpp-git::git+https://github.com/Kistler-Group/sdbus-cpp.git
 	sha256sums = SKIP
 
 pkgname = sdbus-cpp-git
-
