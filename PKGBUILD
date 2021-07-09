@@ -6,7 +6,7 @@ pkgver=r590.ee5b214
 pkgrel=1
 epoch=1
 pkgdesc="Sega Saturn core"
-arch=('i686' 'x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/beetle-saturn-libretro"
 license=('GPL2')
 groups=('libretro')
@@ -23,12 +23,10 @@ pkgver() {
 }
 
 build() {
-	cd $_pkgname
-	make
+	make -C $_pkgname
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	make DESTDIR="$pkgdir" install
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
