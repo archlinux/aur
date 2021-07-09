@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
-	pkgver = 12.0.0
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = mingw-w64-llvm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-12.0.0.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-12.0.0.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/llvm-12.0.1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.1/llvm-12.0.1.src.tar.xz.sig
 	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
-	sha256sums = 49dc47c8697a1a0abd4ee51629a696d7bfe803662f2a7252a3b16fc75f3a8b50
+	sha256sums = 7d9a8405f557cefc5a21bf5672af73903b64749d9bc3a50322239f56f34ffddf
 	sha256sums = SKIP
 
 pkgname = mingw-w64-llvm
