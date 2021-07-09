@@ -4,7 +4,7 @@
 
 pkgname=dockd
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lenovo ThinkPad Dock Management Daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/dockd"
@@ -26,4 +26,6 @@ build() {
 package() {
     install -Dm755 -d etc "$pkgdir/etc/$pkgname"
     make DESTDIR=$pkgdir install
+    chmod +x "$pkgdir/etc/$pkgname/dock.hook"
+    chmod +x "$pkgdir/etc/$pkgname/undock.hook"
 }
