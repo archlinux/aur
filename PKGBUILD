@@ -24,13 +24,11 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-	sed -E 's/^(\s*(CFLAGS|CXXFLAGS|LDFLAGS)\s*):=/\1+=/' -i Makefile
+	sed -E 's/^(\s*(CFLAGS|CXXFLAGS|LDFLAGS)\s*):=/\1+=/' -i $_pkgname/Makefile
 }
 
 build() {
-	cd $_pkgname
-	make \
+	make -C $_pkgname \
 		HAVE_OIT=1 \
 		SYSTEM_LIBZIP=1 \
 		SYSTEM_XXHASH=1 \
@@ -38,7 +36,6 @@ build() {
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro flycast_libretro.so
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/flycast_libretro.so
 }
