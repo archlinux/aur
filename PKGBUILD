@@ -2,11 +2,11 @@
 
 pkgname=sdbus-cpp
 pkgver=0.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
-license=('LGPLv2.1')
+license=('LGPL2.1')
 depends=('systemd-libs')
 makedepends=('git' 'cmake' 'doxygen' 'systemd')
 conflicts=('sdbus-cpp-git')
