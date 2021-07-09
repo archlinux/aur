@@ -1,21 +1,22 @@
 pkgbase = libretro-cap32-git
-	pkgdesc = libretro implementation of Caprice32 (Amstrad CPC)
-	pkgver = 287.fe54cbb
+	pkgdesc = Amstrad CPC core
+	pkgver = r291.408da09
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/libretro/libretro-cap32
-	arch = i686
-	arch = x86_64
 	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = i686
+	arch = x86_64
 	groups = libretro
-	license = GPL
+	license = GPL2
 	makedepends = git
-	depends = zlib
 	depends = glibc
 	depends = libretro-core-info
-	source = git+https://github.com/libretro/libretro-cap32.git
-	sha256sums = SKIP
+	provides = libretro-cap32
+	conflicts = libretro-cap32
+	source = libretro-cap32::git+https://github.com/libretro/libretro-cap32.git
+	md5sums = SKIP
 
 pkgname = libretro-cap32-git
-

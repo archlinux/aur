@@ -1,32 +1,33 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
-
-pkgname=libretro-cap32-git
-pkgver=287.fe54cbb
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Oliver Jaksch <arch-aur@com-in.de>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-cap32
+pkgname=$_pkgname-git
+pkgver=r291.408da09
 pkgrel=1
-pkgdesc="libretro implementation of Caprice32 (Amstrad CPC)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+epoch=1
+pkgdesc="Amstrad CPC core"
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/libretro-cap32"
-license=('GPL')
+license=('GPL2')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
+depends=('glibc' 'libretro-core-info')
 makedepends=('git')
-
-_libname=cap32_libretro
-_gitname=libretro-cap32
-
-source=("git+https://github.com/libretro/libretro-cap32.git")
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make -f Makefile
+	make -C $_pkgname
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/cap32_libretro.so
 }
