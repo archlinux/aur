@@ -1,0 +1,13 @@
+pkgbase = qtcreator-src-git
+	pkgdesc = Source code of Qt Creator IDE needed to build plugins
+	pkgver = v5.0.0.beta1.r31.g58d00f37d4
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	license = LGPL
+	conflicts = qtcreator-src
+	options = !strip
+	source = git+https://code.qt.io/qt-creator/qt-creator.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-src-git
