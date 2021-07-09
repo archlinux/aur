@@ -1,0 +1,529 @@
+x.y.z
+=====
+
+New features:
+
+Bug fixes:
+
+Other:
+
+2.6.0
+=====
+
+New features:
+
+* Add support for .ALZ drag'n'drop
+
+Other:
+
+* Build Windows build with CMake
+
+2.5.0
+=====
+
+New features:
+
+* Middle-button support for selection rects
+
+* Fix GitHub Issue #151: Default custom colors
+  - Harmonizes color picker dialog between platforms
+
+Other:
+
+* Fix GitHub Issue #154: Do not deselect nodes on screen click
+  - A modifier key (Shift, Ctrl) is now required to clear the selected group
+
+2.4.0
+=====
+
+New features:
+
+* Fix GitHub Issue #78: Add optional autosave
+  - Autosave can be enabled in the settings menu
+
+Bug fixes:
+
+* Fix GitHub Issue #150: Ghost handles crash
+* Fix GitHub Issue #148: Instant node creation not aligned with the grid
+
+Other:
+
+* Refactor dialogs to use more standard components
+* Move settings menu action to file menu and remove settings menu
+
+2.3.0
+=====
+
+New features:
+
+* Fix GitHub Issue #140: Double-click to create a new node
+* Add setting to select node group by intersection
+
+Bug fixes:
+
+* Fix GitHub Issue #143: Inexact node selection
+  - Make connecting nodes by dragging easier
+  - Render node handles as separate scene objects
+
+Other:
+
+* Fix GitHub Issue #125: Add support for Qt 6
+
+2.2.0
+=====
+
+New features:
+
+* Fix GitHub Issue #126: Extending limit of the canvas/background
+  - The drawing area is now unlimited
+
+* Fix GitHub Issue #128: Make it possible to connect selected nodes
+  - Nodes can be connected in the selection order via Edit menu
+
+* Fix GitHub Issue #133: Make it possible to disconnect selected nodes
+  - Selected nodes can be disconnected via Edit menu
+
+Bug fixes:
+
+* Fix the way a node is selected on right-click
+
+* Fix copy paste from background context menu
+
+* Disable optimization buttons when optimization in progress
+
+* Don't create Text element if edge text is empty
+
+* Don't create Text element if node text is empty
+
+Other:
+
+* Make a distinction between general colors and node colors
+
+* Make zooming nonlinear and increase range
+
+* Make pasting of big group of nodes much faster
+
+* Clear selected nodes when a handle of unselected node is clicked
+
+2.1.0
+=====
+
+Other:
+
+* Updated Dutch translations
+
+2.0.0
+=====
+
+New features:
+
+* Fix GitHub Issue #115: Missing Hotkey for Fullscreen: F11
+
+* Fix GitHub Issue #119: Implement group actions
+  - Make it possible to move group by move handle
+  - Make it possible to set text color for a node group
+  - Make it possible to set color for a node group
+  - Make it possible to set attached image for a node group
+  - Allow group action when setting colors via node handle
+  - Allow deletion of multiple nodes
+
+* Fix GitHub Issue #117: Make it possible to set default arrow direction
+
+* Fix GitHub Issue #118: Make it possible to delete nodes with Delete key
+
+* Fix GitHub Issue #121: Implement group copy and paste 
+
+* Fix GitHub Issue #122: Make it possible to select node groups also with Shift key
+
+Bug fixes:
+
+* Fix GitHub Issue #120: Crash when connecting to the initial node
+
+* Fix corner case issues with layout optimizer
+
+Other:
+
+* Prevent the system context menu on node text edit
+
+* Open node context menu also when right-clicking on text edit
+
+* Don't immediately hide handles on move because it's annoying
+
+1.21.0
+======
+
+New features:
+
+* Fix GitHub Issue #111: Optimizer: Save optimizer settings to file
+* Fix GitHub Issue #109: Make default direction of arrows configurable
+
+1.20.0
+======
+
+New features:
+
+* Fix GitHub Issue #38: Add display grid option
+
+Bug fixes:
+
+* Fix Github Issue #106: Memory leak when changing Edge width, Text size and corner radius
+
+Other:
+
+* Fix GitHub Issue #98: Program doesn't remember the window being maximized
+
+1.19.0
+======
+
+New features:
+
+* Fix GitHub Issue #77: Ctrl+S on new map should directly open 'save as' dialog
+* Fix GitHub Issue #85: Export SVG
+* Fix GitHub Issue #100: Use a better initial directory when saving a new file
+* Add Dutch translations
+
+Bug fixes:
+
+* Fix GitHub Issue #87: Group move doesn't work with the move handle
+* Fix GitHub Issue #97: Redo does stuff when redo shouldn't be possible
+* Fix GitHub Issue #96: Saving sometimes doesn't work after loading an existing file
+
+Other:
+
+* Fix GitHub Issue #99: Program doesn't remember grid size
+* Fix GitHub Issue #101: Windows portable
+
+1.18.0
+======
+
+New features:
+
+* Add a shortcut Ctrl+Shift+F to create new floating nodes
+
+Bug fixes:
+
+* Make layout optimizer honor the active grid setting
+
+Other:
+
+* Usability improvement: Move create node action to top
+* Usability improvement: Set optimize button as the default
+
+1.17.0
+======
+
+New features:
+
+* Fix GitHub Issue #50: Autoarrange Nodes
+  - Implements a layout optimizer based on combinatorial optimization
+  - Adds a new menu entry 'Edit => Optimize layout'
+
+Bug fixes:
+
+* Fix GitHub Issue #88: Crash when opening a new file in a certain scenario
+* Fix GitHub Issue #89: Default Right-to-Left Text 
+
+1.16.0
+======
+
+New features:
+
+* Fix GitHub Issue #83: Add option to copy-drag nodes
+  - By checking "Copy on drag" checkbox on the toolbar
+    one can copy a node just by dragging a new connected node
+
+* Add Ctrl+0 as shortcut for zoom to fit
+
+Bug fixes:
+
+* Fix GitHub Issue #70: Edge tries to reposition while moving a group
+
+Other:
+
+* Make the Full Screen menu action checkable to avoid confusion
+
+* General code refactoring
+
+* Upgraded to C++14
+
+1.15.1
+======
+
+Other:
+
+* Update Italian translations
+* Use Argengine as the CLI argument parser
+
+1.15.0
+======
+
+New features:
+
+* Fix Github Issue #9: Show list of recent files
+  
+Bug fixes:
+
+* Fix Github Issue #79: What's new view is editable 
+
+1.14.0
+======
+
+New features:
+
+* Add What's New dialog
+  - Help => What's New
+* Fix Github Issue #41: Allow nodes to be resized horizontally
+  - Nodes will now automatically scale also horizontally by the text width
+
+1.13.1
+======
+
+Bug fixes:
+
+* Fix GitHub Issue #75: Unpredictable crash on delete node via context menu
+
+1.13.0
+======
+
+Bug fixes:
+
+* Fix GitHub Issue #72: UTF-8 saving not working (on Windows)
+* Fix GitHub Issue #73: Extra newlines on Windows 
+
+Other:
+
+* Add --debug and turn some info logs into debug logs
+
+1.12.0
+======
+
+New features:
+
+* Fix GitHub Issue #67: Button to drag cards
+
+* Fix GitHub Issue #66: Add fullscreen option
+  * There's now View => Full Screen
+
+* Fix GitHub Issue #51: Insert Images Into Nodes
+  * Node context menu now includes "Attach image" and "Remove attached image"
+  * The attached image will be set as the background image of the node
+  * The image data is embedded in the .ALZ-file
+
+Other:
+
+* Fix GitHub Issue #68: Build .qm-files as part of the build process
+
+1.11.0
+======
+
+New features:
+
+* Fix GitHub Issue #59: Enable text entry in newly created nodes
+* Fix GitHub Issue #61: System dialogs are not localized
+* Fix GitHub Issue #55: Ability to copy the node without connection
+
+1.10.0 - "Summer Serafina"
+==========================
+
+New features:
+
+* Fix GitHub Issue #58: Add selection rectangle for nodes
+  * With Ctrl pressed one can now draw a selection rectangle
+* Add Italian translations
+
+1.9.0 - "Arrow Amalgam"
+=======================
+
+New features:
+
+* Fix GitHub Issue #53: Add option to set corner radius
+* Fix GitHub Issue #32: Add mechanism to set arrow direction
+  * Right-click on edge shows a context menu with options to set single arrow, double arrow, hide arrows, and reverse the direction
+* Fix GitHub Issue #25: Add a way to delete edges
+  * Right-click on edge opens context menu with a delete option
+
+Bug fixes:
+
+* Fix GitHub Issue #54: Moving a non-selected node moves selection group
+
+Other:
+
+* Snap: Fix desktop-qt5 not working as a remote part anymore
+* Snap: Fix mouse cursor theme
+
+1.8.0 - "Mighty Move"
+=====================
+
+New features:
+
+* Fix GitHub Issue #26: Multi-selection for nodes
+  * Ctrl + Left click selects/deselects nodes
+  * Ctrl + Left click on background clears selection
+
+Bug fixes:
+
+* Tests
+  * Fix edge-specific undo tests
+  * Fix node-specific undo tests
+
+Other:
+
+* Tests
+  * Add redo tests
+
+1.7.0 - "Merry Misc"
+====================
+
+New features:
+
+* French translations
+* Fix GitHub Issue #18: Setting for edge colors
+
+Bug fixes:
+
+* Fix GitHub Issue #47: Cannot open context menu if design is empty
+* Fix GitHub Issue #46: Zoom to fit is broken on certain aspect ratios
+
+Other:
+
+* Disable zoom to fit if no nodes
+* Disable export if no nodes
+
+1.6.0 - "Grid Grudge"
+=====================
+
+New features:
+
+* Fix GitHub Issue #39: Add snap to grid option
+  * By selecting grid size > 0 will automatically snap nodes to grid
+
+Other:
+
+* Update Finnish translations
+
+1.5.0 - "Edge Enhancement"
+==========================
+
+New features:
+
+* Allow deletion of any node
+* Fix GitHub Issue #5: Way to connect existing node to another node
+  * Nodes can be connected together by dragging the (+) handle
+
+Bug fixes:
+
+* Remove animation glitches when node deleted during dot animations
+* Fix GitHub Issue #10: Zoom level changes on undo/redo
+* Fix GitHub Issue #34: Program crashes unsaved
+* Clear undo stack on new design
+
+Other:
+
+* Tighter fit when exporting
+* Adjust fit on dense layouts
+* Disable animations of dummy drag edge
+* Fix grammar in log messages
+* Increase default edge width to 2.0
+* Fix MUI_BRANDINGTEXT
+* Snap: Use core18
+
+1.4.0 - "Text Teaser"
+=====================
+
+New features:
+
+* Fix GitHub Issue #28: Setting for font size
+
+Bug fixes:
+
+* Fix GitHub Issue #31: White text when using dark theme
+* Fix a warning about missing Q_INTERFACES
+
+Other:
+
+* Fix unittest output paths
+
+1.3.0 - "Colored Cream"
+=======================
+
+New features:
+
+* Add transparency to node handles
+* Add more contrast to the 'add' handle
+* Add timeouts to node handles
+* Don't show handles while dragging
+* Fix GitHub Issue #7: Setting for text color
+* Make node handles a bit smaller
+* Take width into account when drawing edges
+
+Bug Fixes:
+
+* Fix GitHub Issue #30: Node handles are missing anti-aliasing and appear ugly
+
+Other:
+
+* Disable debug logging also if QT_NO_DEBUG defined
+* Switch to SimpleLogger
+* Update examples
+
+1.2.0 - "Polished Puppy"
+========================
+
+New features:
+
+* Add background color setting also to edit menu
+* Add separators to the file menu
+* Fix GitHub Issue #23: Setting for edge thickness
+* Update icon (not sure if better)
+
+Bug Fixes:
+
+* Fix GitHub Issue #29: Errors when exporting to PNG not handled
+* Fix GitHub Issue #22: Floating nodes cannot be deleted
+* Automatically add file extension if filename manually entered
+
+Other:
+
+* Code refactorings
+
+1.1.1 - "Bugfix Night"
+======================
+
+Bug fixes:
+
+* Fix GitHub Issue #19: Save on close doesn't work
+* Fix launcher icon of the Snap package
+
+1.1.0 - "PNG Man"
+=================
+
+New features:
+
+* Fix GitHub Issue #3: Export to PNG
+* Fix GitHub Issue #6: Way to create floating nodes
+
+Bug fixes:
+
+* Fix windows icon resource name
+* Fix GitHub Issue #12: Undoing the background color doesn't update the background immediately
+
+Other:
+
+* CMake: add fallback for C++11 standard setting if CMake version < 3.1
+
+1.0.0 - "Bare Bones"
+====================
+
+Basic features for mind map editing.
+
+New features:
+
+* Easy-to-use UI
+* Zoom with mouse wheel
+* Nice animations
+* Save/load in XML-based .ALZ-files
+* Full undo/redo
+* Zoom in/out/fit
+* Quickly add node text and edge labels
+* Node color and background color settings
+
