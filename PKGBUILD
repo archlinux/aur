@@ -1,11 +1,12 @@
+# Maintainer: Gert Boers <gert.boers at gmail dot com>
 pkgname=flabc
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=2
 pkgdesc="ABC notation editor"
 groups=(abc)
 source=(http://www.lautengesellschaft.de/cdmm/${pkgname}-${pkgver}.tar.gz)
 url="http://www.lautengesellschaft.de/cdmm/"
-sha256sums=('9eaec5202ac7b07b19c209d21d5c56ac3fb2d182c988bd59eaca78e524d47db3')
+sha256sums=('5e7f292921f08d22a36683c916690a99f1e177a87fd7c9d5c05bfcce323a76b8')
 arch=('i686' 'x86_64')
 depends=('fltk')
 optdepends=('abcm2ps')
