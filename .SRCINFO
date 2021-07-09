@@ -8,8 +8,7 @@ pkgbase = albion-sr-gog
 	license = GPL
 	license = custom
 	makedepends = innoextract
-	makedepends = bchunk
-	makedepends = p7zip
+	makedepends = poweriso
 	makedepends = icoutils
 	depends = lib32-glibc
 	depends = lib32-sdl2_mixer
@@ -21,9 +20,8 @@ pkgbase = albion-sr-gog
 	source = setup_albion.exe::gog://setup_albion.exe
 	source = albion-sr-gog-1.7.1.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v1.7.1/Albion-Linux-x86-v1.7.1-sdl2.tar.gz
 	source = albion.desktop
-	sha1sums = SKIP
+	sha1sums = e716ed57e7957808ff66ad9da1c914f9cf6bfee8
 	sha1sums = 6ebfc6f8895eb2685698a24430495b585f09b2a3
 	sha1sums = b307af4b606f2510e1664ce96765cdc7f652bb06
 
 pkgname = albion-sr-gog
-

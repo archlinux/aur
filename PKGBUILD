@@ -8,25 +8,25 @@
 pkgname=albion-sr-gog
 _pkgname=Albion-Linux
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux port of the role-playing game Albion using the GOG version"
 arch=("x86_64")
 url="https://github.com/M-HT/SR"
 license=("GPL" "custom")
 depends=("lib32-glibc" "lib32-sdl2_mixer" "lib32-sdl2" "lib32-libpulse")
-makedepends=("innoextract" "bchunk" "p7zip" "icoutils")
+makedepends=("innoextract" "poweriso" "icoutils")
 backup=("opt/ALBION/Albion.cfg")
 install="albion-sr-gog.install"
 source=("setup_albion.exe::gog://setup_albion.exe"
         "${pkgname}-${pkgver}.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v${pkgver}/${_pkgname}-x86-v${pkgver}-sdl2.tar.gz"
         "albion.desktop")
+sha1sums=('e716ed57e7957808ff66ad9da1c914f9cf6bfee8'
+          '6ebfc6f8895eb2685698a24430495b585f09b2a3'
+          'b307af4b606f2510e1664ce96765cdc7f652bb06')
 noextract=("${pkgname}-${pkgver}.tar.gz"
            "setup_albion.exe")
 # don't download anything automatically to accomodate different language versions
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha1sums=(SKIP
-          '6ebfc6f8895eb2685698a24430495b585f09b2a3'
-          'b307af4b606f2510e1664ce96765cdc7f652bb06')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -37,8 +37,7 @@ prepare() {
 
     # get stuff from the bin image
     mkdir -p $srcdir/gog-cd
-    bchunk $srcdir/gog-src/game.gog $srcdir/gog-src/game.ins game
-    7z x -ogog-cd game*iso
+    poweriso extract $srcdir/gog-src/game.ins / -od $srcdir/gog-cd
 
     # get icons
     mkdir -p $srcdir/gog-icon
