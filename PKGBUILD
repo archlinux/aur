@@ -1,8 +1,8 @@
-# Maintainer: SZanko <szanko at protonmail dot org>
+# Maintainer: SZanko <szanko at protonmail dot com>
 
 _name=dvc
 pkgname=$_name-bin
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects as a binary"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'bash-completion'
 )
 source=("${url}/releases/download/${pkgver}/${_name}-${pkgver}-1.x86_64.rpm")
-sha256sums=('5c7112d6199fa46b0c4dc58cbcb4b93ca490bef265b07dcecec5593c5073377e')
+sha256sums=('33bfb72ff393e14139fc5e0a472319c500dd23d842810b56abf09ad9c4b8754d')
 
 package() {
 	cd $srcdir
