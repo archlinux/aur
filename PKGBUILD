@@ -1,4 +1,4 @@
-# Maintainer: <peter at typeblog dot net>
+# Maintainer: Peter Cai <peter at typeblog dot net>
 # Contributor: TheFool <rn6l05d28@relay.firefox.com>
 
 pkgname=firefox-pwa
