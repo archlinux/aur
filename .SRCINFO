@@ -1,6 +1,6 @@
 pkgbase = supercollider-vstplugin
 	pkgdesc = The IEM vstplugin plugin for SuperCollider
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 2
 	url = https://git.iem.at/pd/vstplugin
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = supercollider-vstplugin
 	groups = supercollider-plugins
 	license = GPL
 	depends = supercollider
-	source = pkgname-0.5.0-2.zip::https://git.iem.at/pd/vstplugin/uploads/d68f9e435590ae7f2d9e83aab8d08038/VSTPlugin_v0.5.0_Linux.zip
-	md5sums = dfa36b1a9a00af124fc61b08537589b3
+	source = pkgname-0.5.1-2.zip::https://git.iem.at/pd/vstplugin/uploads/4d85c8a57c2ea7e247b019f351797a66/VSTPlugin_v0.5.1_Linux.zip
+	md5sums = 9fdd979e461335820f446f168da19cba
 
 pkgname = supercollider-vstplugin
-
