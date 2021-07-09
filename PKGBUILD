@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=r339.07b73973
+pkgver=r376.8d114dd5
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
@@ -23,7 +23,6 @@ pkgver() {
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	make DESTDIR="$pkgdir" install
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
