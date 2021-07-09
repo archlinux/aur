@@ -1,5 +1,9 @@
 jellex changelog
 
+20210708 v0.2.3
+- Add item number and size to status window
+- Print null values
+
 20210708 v0.2.2
 - Enhance jello query string on exit
 
