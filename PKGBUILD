@@ -28,7 +28,7 @@ _CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-${_suffix}-git
-pkgver=3.0.r107131.g767d501e285
+pkgver=3.0.r107815.gf60367b4c1d
 _blenver=${pkgver%.r*}
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
@@ -65,7 +65,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            'ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f'
+            '906e177edf5b1fc589657c704db225966de9a900a4e89c058e0f340a2f157834'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f'
             '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
@@ -93,6 +93,7 @@ prepare() {
 }
 
 build() {
+  export CCACHE_BASEDIR="$srcdir"
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 

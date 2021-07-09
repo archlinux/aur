@@ -8,7 +8,7 @@ index 8fd6aee28da..99d61882451 100644
    if (static_path) {
 -    static string system_path = string(static_path) + "/blender/" + versionstr;
 +    static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_suffix@@";
-     return (GHOST_TUns8 *)system_path.c_str();
+     return system_path.c_str();
    }
  
 @@ -77,7 +77,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
