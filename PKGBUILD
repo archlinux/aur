@@ -1,6 +1,8 @@
-# Maintainer: Yuan Zhou <xyyqzy@hotmail.com>
+#!/bin/hint/bash
+# Maintainer  : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor : Yuan Zhou <xyyqzy@hotmail.com>
 
-pkgname=optix
+pkgname=optix72
 pkgver=7.2.0
 pkgrel=1
 pkgdesc="A software development kit for achieving high performance ray tracing on the GPU."
@@ -8,6 +10,7 @@ arch=('x86_64')
 url="https://developer.nvidia.com/optix"
 license=('custom:NVIDIA')
 depends=('cuda')
+provides=("${pkgname%72}=${pkgver%.0}")
 options=(!strip)
 _script="NVIDIA-OptiX-SDK-$pkgver-linux64-x86_64.sh"
 source=("file://$_script"
@@ -24,7 +27,7 @@ package() {
     mkdir -p "$pkgdir/opt/optix"
     sh "$srcdir/$_script" --prefix="$pkgdir/opt/optix" --exclude-subdir --skip-license
     patch "$pkgdir/opt/optix/SDK/CMake/FindOptiX.cmake" "$srcdir/cmake.patch"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s /opt/optix/doc/OptiX_EndUserLicense.pdf "$pkgdir/usr/share/licenses/$pkgname/OptiX_EndUserLicense.pdf"
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    ln -s /opt/optix/doc/OptiX_EndUserLicense.pdf "$pkgdir/usr/share/licenses/${pkgname}/OptiX_EndUserLicense.pdf"
 }
 
