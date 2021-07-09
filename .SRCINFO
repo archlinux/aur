@@ -1,7 +1,7 @@
 pkgbase = ativayeban-git
 	pkgdesc = Fall through a labyrinth. Avoid getting crushed!
 	pkgver = r7.b85db68
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/Nebuleon/ativayeban
 	arch = any
 	license = GPL2
@@ -10,7 +10,9 @@ pkgbase = ativayeban-git
 	depends = sdl_image
 	source = git+https://github.com/Nebuleon/ativayeban.git
 	source = ativayeban.sh
+	source = ativayeban.desktop
 	sha256sums = SKIP
 	sha256sums = addf504723793e02312c3fab83a720e54f30ad1f5e58657b31cf42aab54d4a0f
+	sha256sums = 3bd1be11fc2db97307de4870b27e81e6c5b894f782b079ab9884b7c94995469f
 
 pkgname = ativayeban-git
