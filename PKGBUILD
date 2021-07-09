@@ -4,7 +4,7 @@
 pkgname=mygnuhealth
 _name=MyGNUHealth
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNU Health Personal Health Record (PHR)"
 arch=('any')
 url="https://www.gnuhealth.org"
@@ -17,9 +17,13 @@ sha256sums=('1a77c087572a9c1e24d3b63d64ecca19f74b58aecc9ea2555c73d168e14be9b0')
 build() {
   cd "$_name-$pkgver"
   python setup.py build
+  # root installing the package via setup.py gives the wrong permissions to variants.db
+  # we use this workaround until a definitive fix is found
+  chmod 444 build/lib/mygnuhealth/data/variants.db
 }
 
 package() {
   cd "$_name-$pkgver"
+  # install the actual package with the right permissions
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

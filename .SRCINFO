@@ -1,7 +1,7 @@
 pkgbase = mygnuhealth
 	pkgdesc = The GNU Health Personal Health Record (PHR)
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnuhealth.org
 	arch = any
 	license = GPL3
