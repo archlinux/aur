@@ -1,6 +1,6 @@
 pkgbase = perl-devel-camelcadedb
 	pkgdesc = Perl side of the Perl debugger for IntelliJ IDEA and other JetBrains IDE
-	pkgver = 2021.1
+	pkgver = 2021.2
 	pkgrel = 1
 	url = https://metacpan.org/release/Devel-Camelcadedb
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = perl-devel-camelcadedb
 	depends = perl>=5.008
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/H/HU/HURRICUP/Devel-Camelcadedb-v2021.1.tar.gz
-	sha256sums = fb2f923d6ab7572cafeea99cefb86414adf1c863ff7fa6d177a8bea4337a1ff0
+	source = https://cpan.metacpan.org/authors/id/H/HU/HURRICUP/Devel-Camelcadedb-v2021.2.tar.gz
+	sha256sums = 88a1d9e95d398ffe4d4114861e21c36f7c22315b3d03e7f764ccbce018ab3e47
 
 pkgname = perl-devel-camelcadedb
-
