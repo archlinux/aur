@@ -5,8 +5,8 @@ _imgui_wrap_ver=1
 
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz"
 	"imgui-$_imgui_ver.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v$_imgui_ver.tar.gz"
 	"imgui-$_imgui_ver-$_imgui_wrap_ver-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/imgui/$_imgui_ver/$_imgui_wrap_ver/get_zip")
-sha256sums=('1619027f274d25a285395d98f333e8563a7b4bd8c10c932cccef11a9a12df9e3'
+sha256sums=('5e5490407a64275e04dae7b3068cbfcbb522f02c632c872a212b95025a316f72'
             'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
             '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f')
 
