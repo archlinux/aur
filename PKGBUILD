@@ -2,7 +2,7 @@
 
 pkgname=cowrie
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Medium interaction SSH honeypot designed to log brute force attacks and entire shell interaction'
 url='https://github.com/micheloosterhof/cowrie'
 arch=('any')
@@ -30,7 +30,7 @@ install=cowrie.install
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/micheloosterhof/${pkgname}/archive/v${pkgver}.tar.gz
   '0001-patch-service.patch')
 sha512sums=('c65259353bf3b7eceda5c3937671343cc534154a1046c67427022eb133a344e70c56251d096e6fbe448b8f30986990c3327ead53385d7602f1af817cb8a68054'
-            '76bfbd8cdf78e7365e95fb017e241ec23015b56f7ac292370d90cfabbd0086e7c199278f6956aabfc9e658fdbaacb16ac22699c39d042d6973a5963add0812ee')
+            'b8684f4bdd1f3b9808b58d7950ed88778a72a84b3b7572aedf60481b0f9330425e08c368ac3091794e93dec035f79cac3765472b385d22b2464e8b532292f050')
 
 prepare() {
   cd ${pkgname}-${pkgver}
