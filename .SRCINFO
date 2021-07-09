@@ -1,0 +1,17 @@
+pkgbase = nbnhhsh-cli-git
+	pkgdesc = CLI script for nbnhhsh (能不能好好说话)
+	pkgver = r9.3c8241d
+	pkgrel = 1
+	url = https://github.com/yihong0618/nbnhhsh-cli
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	makedepends = git
+	depends = python>=3.6
+	depends = python-requests
+	depends = python-rich
+	provides = nbnhhsh-cli
+	source = git+https://github.com/yihong0618/nbnhhsh-cli
+	sha256sums = SKIP
+
+pkgname = nbnhhsh-cli-git
