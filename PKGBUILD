@@ -7,7 +7,7 @@
 _pkgname=retroarch
 pkgname=retroarch-rbp4
 pkgver=1.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi 4)'
 arch=(armv7h)
 url=http://www.libretro.com/
