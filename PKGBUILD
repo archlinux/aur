@@ -1,26 +1,21 @@
-# Maintainer: nous(at)artixlinux.org
+# Maintainer: fathoni(dot)id(at)gmail(dot)com
 
 pkgname=input-veikk-dkms
-_pkgname=input-veikk
-pkgver=r42.0359cc1
-pkgrel=2
+pkgver=2.0
+_pkgname="veikk-linux-driver-${pkgver}"
+pkgrel=1
 pkgdesc="Linux driver providing pressure sensitivity for VEIKK drawing tablets (S640, A50, A30)"
 arch=('i686' 'x86_64')
 url="https://github.com/jlam55555/veikk-s640-driver"
 license=('GPL')
 depends=('dkms' 'git')
 optdepends=('input-veikk-config')
-source=(${_pkgname}::git+${url}.git
+source=("https://github.com/jlam55555/veikk-linux-driver/archive/refs/tags/v${pkgver}.tar.gz"
         'veikk.conf'
         'dkms.conf')
-sha1sums=('SKIP'
-          '58ea5a020380c922d62b43c6403b4310a18967b4'
-          '35423db037910181d6fcada916180b09c28ff8ad')
-
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+sha256sums=('a8c1dbd393f94c210a17c7ba2f71c0ceffa371a4c591f379e384c1fff59e8436'
+            '0756ecb5963f925653b56343ea6d40c589773499fe80d0993ec696a842efa5a1'
+            'fca1624365efab225c8be9069aef92059945677faacc6002bcca2a0eda2f917f')
 
 package() {
   # Installation directory
@@ -39,5 +34,4 @@ package() {
   done
   # Load the module at boot
   install -Dm644 ${srcdir}/veikk.conf ${pkgdir}/etc/modules-load.d/veikk.conf
-
 } 
