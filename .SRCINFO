@@ -1,15 +1,15 @@
 pkgbase = xp-pen-tablet
 	pkgdesc = XP-Pen (Official) Linux utility (New UI driver)
-	pkgver = 20210605
+	pkgver = 20210623
 	pkgrel = 1
 	url = https://www.xp-pen.com/download/index.html
 	arch = x86_64
 	license = GPL
 	conflicts = xp-pen
-	source = https://download01.xp-pen.com/file/2021/06/XP-PEN-pentablet-3.1.4.210605-1.x86_64.tar.gz
+	source = https://download01.xp-pen.com/file/2021/07/XP-PEN-pentablet-3.1.4.210623-1.x86_64.tar.gz
 	source = install.sh.patch
-	sha256sums = ed37236f6a0e51cae3f893e6318231afed71ec487b046cbcdfad72598d12777c
-	sha256sums = 113da219c9ce05a2663ffb5ebb8a48277f9b4dd3ec13431e95290893b395a403
+	sha256sums = 1f7583b461565c6b94600f0aa2d92ae03c51f532e9041beeb91eaa354063861e
+	sha256sums = 447f49e7d5136418bbbc210a555833a6e4909e26d6ce3564d27775eab1039d25
 
 pkgname = xp-pen-tablet
 
