@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gobuster-git
-pkgver=v3.1.0.r24.g0b1cdc3
+pkgver=v3.1.0.r27.gf7bc132
 pkgrel=1
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
