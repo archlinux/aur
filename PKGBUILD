@@ -7,7 +7,7 @@
 
 _pkgname=isync
 pkgname=$_pkgname-git
-pkgver=904.f7cec30
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="IMAP and MailDir mailbox synchronizer"
 url="http://isync.sourceforge.net/"
@@ -16,8 +16,8 @@ license=('GPL2')
 depends=('libsasl' 'openssl')
 makedepends=('git')
 conflicts=('isync')
-replaces=('isync')
-source=('git+https://git.code.sf.net/p/isync/isync#branch=1.3')
+provides=('isync')
+source=('git+https://git.code.sf.net/p/isync/isync')
 sha256sums=('SKIP')
 
 pkgver() {
