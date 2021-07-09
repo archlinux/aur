@@ -64,11 +64,11 @@ _makenconfig=y
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-pkgver=5.13.0
+pkgver=5.13.1
 _major=5.13
 _branch=5.x
-xanmod=2
-pkgrel=3
+xanmod=1
+pkgrel=1
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 url="http://www.xanmod.org/"
@@ -87,11 +87,9 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        #config
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        sphinx-workaround.patch
-        "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
+        "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
         "0003-bfq.patch::${_patches_url}/bfq-patches/0001-bfq-patches.patch"
         )
@@ -108,11 +106,9 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        #'SKIP'
-        'b5342310408354006a2e637a08bee0beb5e653e771f2124197cf403b9ece56d96dfb0b0732311e2b6010df7933561fdf31b980f25d27b2e8326382a2428ed96d'
+        'dfe6af628db994e3e2c691b4e270953257027084f649bb7bb338db999104a9fde7e92263cfeaa933bce8e7bbcd0b37fb11e411e16d6fedb9236645f7f3741780'
         '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
-        '6dd7c1b3a6246c2892316cd07d0bcc5e5528955b841e900a88e48c0a6b79861034fbe66bea1d5ee610668919f5d10f688ec68aa6f4edb98d30c7f9f6241b989d'
-        '5897022ff8b7a4f2eabb9788569e5a1b034ccad15a632ea9bfe1618714a02072dbca9e7467fe51337c5dbc46b218453e358461ceb110d385953622490f520a75'
+        'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
         '0daf3c7756631a784973c9aace087169aeada85e254c66ea5218a9c555020c47df0fa99b67fea270cd01acab4bcb069d54ce07786dd210020d393ca4a2e5ed8e')
 
