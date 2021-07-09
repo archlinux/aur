@@ -1,6 +1,6 @@
 pkgbase = liveusb-builder-git
 	pkgdesc = A script suite to create multiboot USB stick for GNU/Linux distributions
-	pkgver = 2021.04
+	pkgver = 2021.04.3.gcc427a7
 	pkgrel = 1
 	url = https://github.com/mytbk/liveusb-builder
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = liveusb-builder-git
 	depends = udevil
 	depends = wget
 	depends = syslinux
+	depends = mtools
 	depends = grub
 	source = git+https://git.wehack.space/liveusb-builder
 	source = buildlive
@@ -17,4 +18,3 @@ pkgbase = liveusb-builder-git
 	sha256sums = 97d01c8a6d88bc12be9f391f605bbf8e1fdf8e1063ea338aa3fb97b68b0db1d2
 
 pkgname = liveusb-builder-git
-
