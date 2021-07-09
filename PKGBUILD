@@ -26,7 +26,7 @@ _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+_mm_protect=
 ### Enable multigenerational LRU
 _lru_enable=y
 # Tweak kernel options prior to a build via nconfig
@@ -57,7 +57,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -87,7 +87,8 @@ source=(
   "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
-  "${_patchsource}/lru-patches/0001-lru-patches.patch"
+  "${_patchsource}/lru-patches/lru_5.13.patch"
+  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
   "${_patchsource}/security-2/hardened-patches.patch"
   "${_patchsource}/security-2/lrng-v41.patch"
@@ -524,6 +525,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'ed46a39e062f07693f52981fbd7350b7'
          '3f302dbaceea020abd40f6e9f23b75df'
+         '7aeb2c86091b9432d1fc9172d418d486'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
          '8b756f75c5600b1ea7df5e11ac738df5'
          '20e92e9d958ca8fec6ff441bb97aa9f1'
