@@ -1,0 +1,17 @@
+pkgbase = ciao-lang
+	pkgdesc = Ciao is a general purpose, multi-paradigm programming language in the Prolog family
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/ciao-lang/ciao
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = gcc
+	makedepends = make
+	makedepends = which
+	makedepends = rlwrap
+	depends = rlwrap
+	source = https://github.com/ciao-lang/ciao/archive/v1.20.0.tar.gz
+	sha256sums = 7b2f4e5824ab7cd02e9889faa797d78ee40b92468df900a0d15c3044e032e908
+
+pkgname = ciao-lang
