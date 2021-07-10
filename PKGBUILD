@@ -1,10 +1,9 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-pkgbase=spyder-git
-pkgname=spyder3-git
-pkgver=5.0.0a1.r2.g36ff0882c
+pkgname=spyder-git
+pkgver=5.0.5.r360.gd829e6db6
 pkgrel=1
-pkgdesc="The Scientific Python Development Environment (Python 3 version)"
+pkgdesc="The Scientific Python Development Environment"
 arch=('any')
 url="https://www.spyder-ide.org/"
 license=('MIT')
@@ -58,14 +57,15 @@ optdepends=('cython: run Cython files'
 
             'python-h5py: HDF5 support')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'spyder3-git')
+replaces=('spyder3-git')
 source=($pkgname::git+https://github.com/spyder-ide/spyder.git)
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-} 
+}
 
 prepare() {
   find $pkgname -type f -iname \*.py -exec sed -i -e 's|"pep8"|"pycodestyle"|g' -e "s|'pep8'|'pycodestyle'|g" '{}' \;
@@ -81,7 +81,7 @@ package() {
 
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.txt"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   # Install a scalable icon for the spyder3.desktop file
   install -Dm644 spyder/images/spyder.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/spyder3.svg"
 

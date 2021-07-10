@@ -1,6 +1,6 @@
 pkgbase = spyder-git
-	pkgdesc = The Scientific Python Development Environment (Python 3 version)
-	pkgver = 5.0.0a1.r2.g36ff0882c
+	pkgdesc = The Scientific Python Development Environment
+	pkgver = 5.0.5.r360.gd829e6db6
 	pkgrel = 1
 	url = https://www.spyder-ide.org/
 	arch = any
@@ -52,10 +52,11 @@ pkgbase = spyder-git
 	optdepends = python-scipy: signal/image processing
 	optdepends = python-sympy: symbolic mathematics
 	optdepends = python-h5py: HDF5 support
-	provides = spyder3
-	conflicts = spyder3
-	source = spyder3-git::git+https://github.com/spyder-ide/spyder.git
+	provides = spyder
+	conflicts = spyder
+	conflicts = spyder3-git
+	replaces = spyder3-git
+	source = spyder-git::git+https://github.com/spyder-ide/spyder.git
 	md5sums = SKIP
 
-pkgname = spyder3-git
-
+pkgname = spyder-git
