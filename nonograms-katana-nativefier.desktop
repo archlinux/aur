@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Nonograms Katana
+Comment=A nodejs nativefier client for Nonograms Katana, a logic puzzle game developed and published by ucdevs.
+Exec=nonograms-katana-nativefier
+Icon=nonograms-katana-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Game;

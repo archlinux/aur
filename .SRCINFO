@@ -1,0 +1,21 @@
+pkgbase = nonograms-katana-nativefier
+	pkgdesc = A nodejs nativefier client for Nonograms Katana, a logic puzzle game developed and published by ucdevs.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://nonograms-katana.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = nonograms-katana-nativefier.desktop
+	source = nonograms-katana-nativefier.png
+	sha256sums = 6e11cabccb2210b63668eb910de5b8d548b16447dfa264141ac4ff161354f3ef
+	sha256sums = 7ec69738a9d936b536a87c408a4324f0f24d6e61445fd430d6bfb4d2897e3052
+
+pkgname = nonograms-katana-nativefier
+
