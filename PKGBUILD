@@ -19,7 +19,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	npm install
 
-	if [ "$XDG_CURRENT_DESKTOP" = "Pantheon" ]; then
+	if [[ "$XDG_CURRENT_DESKTOP" == "Pantheon" ]]; then
 		arch-meson . build -Dtarget-de=elementary
 	else
 		arch-meson . build -Dtarget-de=gnome
