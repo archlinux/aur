@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-loki-git
 	pkgdesc = A free and open-source connection manager. loki branch
-	pkgver = 6.3.2.r34.g5b37dd8
+	pkgver = 6.3.2.r38.g2291405
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = asbru-cm-loki-git
 	depends = perl-socket6
 	depends = perl-expect
 	depends = perl-yaml
-	depends = perl-crypt-cbc<3
+	depends = perl-crypt-cbc
 	depends = perl-crypt-blowfish
 	depends = perl-gtk3
 	depends = perl-net-arp
