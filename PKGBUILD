@@ -2,11 +2,10 @@
 _kernser=5.13
 
 pkgbase=linux-studio
-pkgver=5.13
+pkgver=5.13.1
 pkgrel=1
 pkgdesc='Linux Studio Optimized'
-_srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
+url="https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -15,7 +14,7 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-$pkgver
+_srcname=linux-${pkgver}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "git+https://github.com/Frogging-Family/linux-tkg.git"
@@ -26,8 +25,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-
-sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
+# https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
+sha256sums=('72aaf6464185526068ef51a1535a18844f36bee98f5b5b09b2312bfa9f4d0a90'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -60,13 +59,21 @@ prepare() {
   msg2 "Apply The 0002-mm-Support-soft-dirty-flag-read-with-reset.patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch"
 
-  ## Apply the CacULE scheduler patch
-  msg2 "Apply The CacULE Scheduler Patch..."
-  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-cacule-${_kernser}.patch"
-
   ## Apply the 0003-glitched-base.patch
   msg2 "Apply The 0003-glitched-base.patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-base.patch"
+
+  ## Apply the TKG glitched CFS scheduler patch
+  msg2 "Apply The TKG Glitched CFS Scheduler Patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-cfs.patch"
+
+  ## Apply the TKG glitched CFS scheduler additions patch
+  msg2 "Apply The TKG Glitched CFS Scheduler Additions Patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-cfs-additions.patch"
+
+  ## Apply the 0006-add-acs-overrides_iommu.patch
+  msg2 "Apply The 0006-add-acs-overrides_iommu.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0006-add-acs-overrides_iommu.patch"
 
   ## Apply Futex2 Loader patch
   msg2 "Apply Futex2 Loader Patch..."
@@ -76,14 +83,6 @@ prepare() {
   msg2 "Apply Wine Esync Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0007-v${_kernser}-winesync.patch"
 
-  ## Apply the 0009-glitched-bmq.patch
-  msg2 "Apply The 0009-glitched-bmq.patch..."
-  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0009-glitched-bmq.patch"
-
-  ## Apply the 0009-glitched-ondemand-bmq.patch
-  msg2 "Apply The 0009-glitched-ondemand-bmq.patch..."
-  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0009-glitched-ondemand-bmq.patch"
-
   ## Apply TKG misc additions patch
   msg2 "Apply TKG misc additions patch"
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0012-misc-additions.patch"
@@ -92,12 +91,12 @@ prepare() {
   msg2 "Apply GCC kernel optimizations patch"
   patch -Np1 < "${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8+.patch"
 
-  ## Obtain the running system's kernel config
-  zcat /proc/config.gz > kernconfig
+  ## Use TKG Kernel Config
+  cp "${srcdir}/linux-tkg/linux-tkg-config/${_kernser}/config.x86_64" "${srcdir}/${_srcname}/config.x86_64"
 
   ## Creating New Config
   msg2 "Setting config..."
-  cp kernconfig .config
+  cp config.x86_64 .config
   make olddefconfig
 
   ## Customize Kernel Settings, COMMENT OUT IF NOT UNNEEDED!
