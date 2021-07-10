@@ -1,10 +1,9 @@
 # $Id$
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
-# Contributor: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 
 pkgname=numix-themes-blue-git
-pkgver=2.6.6.r18.f25d7e0
-pkgrel=2
+pkgver=2.6.6.r44.430d6be
+pkgrel=1
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
