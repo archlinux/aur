@@ -1,7 +1,7 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
-	pkgver = 7.2.1
-	pkgrel = 2
+	pkgver = 7.3.0
+	pkgrel = 1
 	url = https://git.cromer.cl/cromer/pamac-classic
 	install = pamac-classic.install
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = pamac-classic
 	depends = curl
 	depends = libsoup
 	depends = polkit
-	depends = pacman>=5.2.0
-	depends = pacman<6.0.0
+	depends = pacman>=6.0.0
 	depends = libnotify
 	depends = vte3
 	optdepends = polkit-gnome: needed for authentication in Cinnamon, Gnome
@@ -24,7 +23,7 @@ pkgbase = pamac-classic
 	provides = pamac-aur
 	conflicts = pamac
 	conflicts = pamac-aur
-	source = pamac-classic-7.2.1.tar.gz::https://git.cromer.cl/cromer/pamac-classic/archive/v7.2.1.tar.gz
-	sha256sums = b9aca395a697613a534848fe975f9d0244572341cbc115fc07d6dfa9c9db6241
+	source = pamac-classic-7.3.0.tar.gz::https://git.cromer.cl/cromer/pamac-classic/archive/v7.3.0.tar.gz
+	sha256sums = 53673497e6f2a6cf44c8152b682bd32e07702a9fc469f280f5f2a286c1e8e770
 
 pkgname = pamac-classic
