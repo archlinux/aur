@@ -67,7 +67,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.15
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -101,6 +101,7 @@ source=(
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
   "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
+  "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -127,7 +128,8 @@ b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07b
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
-        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9')
+        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
+        '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -191,7 +193,12 @@ prepare() {
     scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
     scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
 
-    echo "Enable zram zstd"
+    echo "Set module compression to ZSTD"
+    scripts/config --enable CONFIG_MODULE_COMPRESS
+    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+
+    echo "Enable zram compression to ZSTD"
     scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
     scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
     scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
