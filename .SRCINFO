@@ -1,13 +1,13 @@
 pkgbase = yapa
 	pkgdesc = Yet another podcast app. Terminal podcast app for listening to podcasts in date order.
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/nboughton/yapa
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = mpv
-	source = yapa-0.9.0.tar.gz::https://github.com/nboughton/yapa/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = fc077f0e0822b491517856acd9377585d60285ccc2ac69190593ee54f265d24d
+	source = yapa-0.9.1.tar.gz::https://github.com/nboughton/yapa/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 041c7fa2e5613a434e5447c9929c18321c1be5b6d18c87e92fee9d246d1fd3d3
 
 pkgname = yapa
