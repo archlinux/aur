@@ -10,7 +10,6 @@ pkgbase = python-pyrr
 	depends = python-numpy
 	depends = python-multipledispatch
 	source = https://github.com/adamlwgriffiths/Pyrr/archive/0.10.3.tar.gz
-	md5sums = 3e2c2ff64fdfc1f38980a7afe72128ad
+	sha512sums = f3f045604e28f4a944ea0528363c233a75413a6039bd11b90eeeafadcaaf0ef44bc1303581f2e78adcfb9a365f719be64a24adf1cec8c5ef1abf5642dea58df4
 
 pkgname = python-pyrr
-
