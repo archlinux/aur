@@ -4,16 +4,16 @@
 
 pkgname=phlipple-svn
 pkgver=0.8.6.r15
-pkgrel=1
+pkgrel=2
 pkgdesc="A puzzle game which goal is to reduce a 3D shape to a single square. Elimination of squares is done by flipping edges around just like in a cardboard box."
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "aarch64")
 url="http://sourceforge.net/projects/phlipple/"
 license=('GPL')
 depends=('mesa' 'sdl' 'sdl_mixer' 'sdl_image' 'glew')
 makedepends=('subversion')
 provides=("phlipple")
 conflicts=("phlipple")
-source=("phlipple::svn://svn.code.sf.net/p/phlipple/code/trunk phlipple-code"
+source=("phlipple::svn://svn.code.sf.net/p/phlipple/code/trunk"
         'engine.h.patch')
 sha256sums=('SKIP'
             'a103d6f139bd246c45f2b62e8f5689eceea3af49521071e1a4f1167053a42a52')
