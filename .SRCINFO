@@ -1,0 +1,19 @@
+pkgbase = via-appimage
+	pkgdesc = Your keyboard's best friend.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://caniusevia.com/
+	arch = x86_64
+	license = Proprietary
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = fuse2
+	depends = fuse3
+	depends = fuse-common
+	depends = libsecret
+	noextract = via-1.3.1-linux.AppImage
+	options = !strip
+	source_x86_64 = via-1.3.1-linux.AppImage::https://github.com/the-via/releases/releases/download/v1.3.1/via-1.3.1-linux.AppImage/
+	sha256sums_x86_64 = d2cd73d280a265149fedb24161ec7c575523596c4d30898ad6b5875e09b3f34a
+
+pkgname = via-appimage
