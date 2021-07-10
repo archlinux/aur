@@ -1,6 +1,6 @@
 pkgbase = v2ray-rules-dat-git
 	pkgdesc = Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go.
-	pkgver = r202107082209
+	pkgver = r202107092209
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	install = v2ray-rules-dat-git.install
@@ -12,14 +12,16 @@ pkgbase = v2ray-rules-dat-git
 	conflicts = v2ray-domain-list-community
 	conflicts = v2ray-geoip
 	source = v2ray-rules-dat-git::git+https://github.com/Loyalsoldier/v2ray-rules-dat.git
+	source = v2ray-rules-dat-updater
 	source = v2ray-rules-dat-updater.sysusers
 	source = v2ray-rules-dat-updater.tmpfiles
 	source = v2ray-rules-dat-updater.service
 	source = v2ray-rules-dat-updater.timer
 	sha256sums = SKIP
+	sha256sums = 7c14177a4ec4e62393674c665f5f2328ca6b5e193caaca4b462826cce22d3273
 	sha256sums = 694e646c418c0a37480762826c9b52fc83b2bfbc02f10b4d71d8152ef7227a6a
 	sha256sums = 2383bc838fdce1d6ec0af138e587c9e5d79a9fdf70f28ec565835bef5cd087cd
-	sha256sums = b813fa35957b0facba124d51541b562a3e6f18bcad9f6ca7dcf1c64af236a8a0
+	sha256sums = 57c1e5c2e25ef9a16ba11d751d44d50e371298a0f644327c84956a309642a10b
 	sha256sums = 5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c
 
 pkgname = v2ray-rules-dat-git

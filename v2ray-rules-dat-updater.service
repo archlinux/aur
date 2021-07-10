@@ -8,11 +8,4 @@ User = v2ray-rules-dat
 Group = v2ray-rules-dat
 
 WorkingDirectory = /var/lib/v2ray-rules-dat
-
-ExecStart = "/usr/bin/curl" "-LO" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat"
-ExecStart = "/usr/bin/curl" "-LO" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geoip.dat.sha256sum"
-ExecStart = "/usr/bin/sha256sum" "--check" "geoip.dat.sha256sum"
-
-ExecStart = "/usr/bin/curl" "-LO" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat"
-ExecStart = "/usr/bin/curl" "-LO" "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/geosite.dat.sha256sum"
-ExecStart = "/usr/bin/sha256sum" "--check" "geosite.dat.sha256sum"
+ExecStart = /usr/bin/v2ray-rules-dat-updater github
