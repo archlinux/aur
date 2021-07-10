@@ -1,4 +1,4 @@
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 pkgname=python-telethon-git
 pkgver=1.6.2.r44.g34a8140f
 pkgrel=1
