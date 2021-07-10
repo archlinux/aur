@@ -16,11 +16,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/socos"
-  sed -i requirements.txt -e "s/soco==0.11.1/soco>=0.11.1/"
-}
-
 package() {
   cd "$srcdir/socos"
   python setup.py install --root="$pkgdir/" --optimize=1
