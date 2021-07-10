@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touche
 pkgver=1.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
@@ -24,6 +24,8 @@ build() {
 	else
 		arch-meson . build -Dtarget-de=gnome
 	fi
+
+	meson compile -C build
 }
 
 check() {
