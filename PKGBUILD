@@ -1,20 +1,22 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Eric Forgeot < http://esclinux.tk >
 
 pkgname=phlipple-svn
-pkgver=0.8.6.r10
+pkgver=0.8.6.r15
 pkgrel=1
 pkgdesc="A puzzle game which goal is to reduce a 3D shape to a single square. Elimination of squares is done by flipping edges around just like in a cardboard box."
 arch=("i686" "x86_64")
 url="http://sourceforge.net/projects/phlipple/"
 license=('GPL')
-depends=('mesa' 'sdl_mixer' 'sdl_image' 'glew')
+depends=('mesa' 'sdl' 'sdl_mixer' 'sdl_image' 'glew')
+makedepends=('subversion')
 provides=("phlipple")
 conflicts=("phlipple")
-source=("phlipple::svn://svn.code.sf.net/p/phlipple/code/trunk"
-        'libm.patch')
-md5sums=('SKIP'
-         '3bc553faf4501f016ab0dd03307c4547')
+source=("phlipple::svn://svn.code.sf.net/p/phlipple/code/trunk phlipple-code"
+        'engine.h.patch')
+sha256sums=('SKIP'
+            'a103d6f139bd246c45f2b62e8f5689eceea3af49521071e1a4f1167053a42a52')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-*}"
@@ -25,7 +27,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-*}"
-	patch -Np1 -i "${srcdir}/libm.patch"
+	patch -Np1 -i "${srcdir}/engine.h.patch"
 }
 
 build() {
