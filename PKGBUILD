@@ -1,4 +1,4 @@
-# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 
 pkgname=libmpsse-python3-git
 pkgver=r22.e9ca7d8
