@@ -50,7 +50,7 @@ makedepends=('python-setuptools')
 optdepends=(
 	'jupyterlab: Jupyter something'
 	'python-grpcio-tools: WebGL renderer'
-	'texlive-most: LaTeX support'
+	'texlive-core: LaTeX support'
 )
 
 prepare ()
