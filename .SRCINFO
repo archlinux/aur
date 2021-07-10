@@ -12,4 +12,3 @@ pkgbase = python-glcontext
 	sha512sums = 9ab412a03e82b82d86ee8939074c311ef777d6fed718601860cf4dc08e57e0bff553d9731948f2df784e611cbba1d829b9887d76c0a306950c51e1f86df60340
 
 pkgname = python-glcontext
-
