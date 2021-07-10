@@ -1,7 +1,7 @@
 # Maintainer: Alexander Couzens <lynxis@fe80.eu>
 pkgname=libxtrxll-git
 _gitname=libxtrxll
-pkgver=r33.50176aff00ae
+pkgver=r42.1b6eddfbedc7
 pkgrel=2
 pkgdesc="Low level XTRX hardware abstraction library"
 arch=('armv7h' 'i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/$_gitname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=12 HEAD)"
 }
 
 build() {
