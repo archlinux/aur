@@ -1,4 +1,5 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=qtchess
 pkgver=2021.03.15
@@ -14,17 +15,18 @@ source=(qtchess-${pkgver}.tar.gz::"https://github.com/textbrowser/qtchess/archiv
 sha256sums=('b67e182beca7d203dd07b995a6d4cae752dc42ed76439694e1befe5d6bd5f2be')
 
 
-build()
-{
+prepare () {
     cd "$srcdir/qtchess-${pkgver}"
-    qmake-qt5 -o Makefile qtchess.pro
-    make
-    sed -i s_'-Werror'__g Makefile # stack protector is not proctecting small arrays
+    sed '/-Werror/d' < qtchess.pro > qtchess.pro.fixed
+}
+
+build () {
+    cd "$srcdir/qtchess-${pkgver}"
+    qmake-qt5 -o Makefile qtchess.pro.fixed
     make
 }
 
-package()
-{
+package () {
     cd "$srcdir/qtchess-${pkgver}"
     mkdir -p -- "${pkgdir}/usr/bin/"
     cp -- QtChess "${pkgdir}/usr/bin/qtchess"
