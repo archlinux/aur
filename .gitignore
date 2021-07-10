@@ -9,5 +9,6 @@
 !anbox.desktop
 !anbox-desktop-dir.patch
 !anbox-session-manager.service
+!dev-binderfs.mount
 !.gitignore
 !lxc.patch

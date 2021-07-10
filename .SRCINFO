@@ -1,7 +1,7 @@
 pkgbase = anbox-git
 	pkgdesc = Running Android in a container
 	pkgver = r1350.04ac697
-	pkgrel = 8
+	pkgrel = 9
 	epoch = 1
 	url = http://anbox.io/
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = anbox-git
 	source = 99-anbox.rules
 	source = anbox.conf
 	source = anbox.desktop
+	source = dev-binderfs.mount
 	source = anbox-bridge.network
 	source = anbox-bridge.netdev
 	sha256sums = SKIP
@@ -44,6 +45,7 @@ pkgbase = anbox-git
 	sha256sums = 210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475
 	sha256sums = 3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff
 	sha256sums = 7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6
+	sha256sums = f044b6490c415235b7dd40a810db330df1a88b4692d92d83e4bf71ffaadc0394
 	sha256sums = 44899328725667041e6e84912da81c1d0147b708006eb2c2bb6503f271629ff0
 	sha256sums = 559190df4d6d595480b30d8b13b862081fc4aac52790e33eb24cf7fbcb8003b8
 

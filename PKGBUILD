@@ -5,7 +5,7 @@
 
 pkgname=anbox-git
 pkgver=r1350.04ac697
-pkgrel=8
+pkgrel=9
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
@@ -25,6 +25,7 @@ source=("git+https://github.com/anbox/anbox.git"
 	'99-anbox.rules'
 	'anbox.conf'
 	'anbox.desktop'
+	'dev-binderfs.mount'
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
@@ -37,6 +38,7 @@ sha256sums=('SKIP'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'
             '7332d09865be553a259a53819cebddd21f661c7a251d78c2f46acd75c66676b6'
+            'f044b6490c415235b7dd40a810db330df1a88b4692d92d83e4bf71ffaadc0394'
             '44899328725667041e6e84912da81c1d0147b708006eb2c2bb6503f271629ff0'
             '559190df4d6d595480b30d8b13b862081fc4aac52790e33eb24cf7fbcb8003b8')
 
@@ -78,13 +80,13 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir" install
 
-  install -Dm 644 -t $pkgdir/usr/lib/systemd/system $srcdir/anbox-container-manager.service
-  install -Dm 644 -t $pkgdir/usr/lib/systemd/user   $srcdir/anbox-session-manager.service
-  install -Dm 644    $srcdir/anbox-bridge.network   $pkgdir/usr/lib/systemd/network/80-anbox-bridge.network
-  install -Dm 644    $srcdir/anbox-bridge.netdev    $pkgdir/usr/lib/systemd/network/80-anbox-bridge.netdev
-  install -Dm 644 -t $pkgdir/usr/lib/udev/rules.d   $srcdir/99-anbox.rules
-  install -Dm 644 -t $pkgdir/usr/share/applications $srcdir/anbox.desktop
-  install -Dm 644    ${pkgname%*-git}/snap/gui/icon.png        $pkgdir/usr/share/pixmaps/anbox.png
-  install -Dm 644 -t $pkgdir/usr/share/desktop-directories     ${pkgname%*-git}/data/desktop/anbox-android.directory
-  install -Dm 644 -t $pkgdir/etc/xdg/menus/applications-merged ${pkgname%*-git}/data/desktop/anbox-android.menu
+  install -Dm 644 -t "$pkgdir/usr/lib/systemd/system" anbox-container-manager.service dev-binderfs.mount
+  install -Dm 644 -t "$pkgdir/usr/lib/systemd/user"   anbox-session-manager.service
+  install -Dm 644    "$srcdir/anbox-bridge.network"   "$pkgdir/usr/lib/systemd/network/80-anbox-bridge.network"
+  install -Dm 644    "$srcdir/anbox-bridge.netdev"    "$pkgdir/usr/lib/systemd/network/80-anbox-bridge.netdev"
+  install -Dm 644 -t "$pkgdir/usr/lib/udev/rules.d"   99-anbox.rules
+  install -Dm 644 -t "$pkgdir/usr/share/applications" anbox.desktop
+  install -Dm 644    "${pkgname%*-git}/snap/gui/icon.png"        "$pkgdir/usr/share/pixmaps/anbox.png"
+  install -Dm 644 -t "$pkgdir/usr/share/desktop-directories"     "${pkgname%*-git}/data/desktop/anbox-android.directory"
+  install -Dm 644 -t "$pkgdir/etc/xdg/menus/applications-merged" "${pkgname%*-git}/data/desktop/anbox-android.menu"
 }

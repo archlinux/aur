@@ -1,0 +1,5 @@
+[Mount]
+Where=/dev/binderfs
+What=binder
+Type=binder
+Options=nofail
