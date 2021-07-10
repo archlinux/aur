@@ -2,7 +2,7 @@
 
 pkgname=dosbox-staging
 pkgver=0.77.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  meson setup --prefix /usr -Dbuildtype=release build
+  meson setup --prefix /usr -Dbuildtype=release -Ddefault_library=static build
 }
 
 build() {
