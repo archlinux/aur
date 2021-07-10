@@ -7,7 +7,7 @@
 pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
-pkgver=4.15
+pkgver=4.16
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.t
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('5178a918d59c9412a0af4af4c1abfce469e1a76497913bc316bf602895a2b265'
+sha256sums=('f9e0bf2805ac6384b24fc8bd8f0a55b920d385cfaf659b9a485e23ddeb5649b5'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
@@ -48,6 +48,7 @@ build() {
   cd "${GOPATH}/src/${_lxd}"
   export GOFLAGS="-buildmode=pie -trimpath"
   export GO111MODULE=off
+  export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
   mkdir -p bin
 	go build -v -tags "netgo" -o bin/ ./lxd-p2c/...
