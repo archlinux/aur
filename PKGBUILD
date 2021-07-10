@@ -2,12 +2,12 @@
 
 pkgname=pamac-classic
 pkgver=7.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
 url="https://git.cromer.cl/cromer/pamac-classic"
 license=('GPL3')
-depends=('curl' 'libsoup' 'polkit' 'pacman>=6.0.0' 'libnotify' 'vte3')
+depends=('curl' 'libsoup' 'polkit' 'pacman>=6.0.0' 'pacman<7.0.0' 'libnotify' 'vte3')
 makedepends=('vala' 'meson' 'gettext' 'gobject-introspection')
 optdepends=('polkit-gnome: needed for authentication in Cinnamon, Gnome'
             'mate-polkit: needed for authentication in MATE'
