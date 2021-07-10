@@ -1,0 +1,19 @@
+pkgbase = c0-bin
+	pkgdesc = A small safe subset of the C programming language, augmented with contracts
+	pkgver = 0.771
+	pkgrel = 1
+	url = http://c0.cs.cmu.edu
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = libpng>=1.2
+	depends = zlib>=1.2
+	depends = gcc>=5.1
+	depends = ncurses5-compat-libs>=6.0
+	provides = cc0
+	source = c0-bin::https://c0.cs.cmu.edu/downloads/aux/cc0-r771.tgz
+	source = fno-common.patch
+	md5sums = e03e3c90b07603d899acedfc445faaf4
+	md5sums = 41a1d89191c6420779cf05a1f55339ab
+
+pkgname = c0-bin

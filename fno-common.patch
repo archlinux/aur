@@ -1,0 +1,14 @@
+diff '--color=auto' --unified --recursive --text cc0.r771/lib/cc0main.c cc0.r771.new/lib/cc0main.c
+--- cc0.r771/lib/cc0main.c	2021-01-12 12:20:49.000000000 -0500
++++ cc0.r771.new/lib/cc0main.c	2021-07-01 19:56:59.398515215 -0400
+@@ -16,8 +16,8 @@
+ char **c0_argv;
+ 
+ // Defined externally by CC0
+-long map_length;
+-const char* source_map[0];
++extern long map_length;
++extern const char* source_map[0];
+ 
+ FILE *really_fopen(const char *filename, const char *mode,
+                    char *error)
