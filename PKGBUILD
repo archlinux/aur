@@ -10,7 +10,7 @@
 # shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
-pkgver=4.5.1.0
+pkgver=4.5.3.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
