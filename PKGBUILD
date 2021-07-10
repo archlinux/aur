@@ -69,7 +69,7 @@ _subarch=36
 
 pkgbase=linux-ck-uksm
 pkgver=5.12.15
-pkgrel=1
+pkgrel=2
 _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
@@ -94,11 +94,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,s
         0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
         0007-x86-crash-remove-crash_reserve_low_1M.patch
         "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-5.12.patch"
-        "0009-bbr2.patch::${_patches_url}/bbr2-patches-v2/0001-bbr2-5.12-introduce-BBRv2.patch"
+        "0009-bbr2.patch::${_patches_url}/bbr2-patches-v3/0001-bbr2-patches.patch"
         "0010-btrfs.patch::${_patches_url}/btrfs-patches-v13/0001-btrfs-patches.patch"
         "0011-block.patch::${_patches_url}/block-patches-v6/0001-block-patches.patch"
         "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
         "0013-futex2.patch::${_patches_url}/futex2-stable-patches-v7/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "0014-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
+        "0015-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
 )
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -117,11 +119,13 @@ b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07b
         '4e7cb958f95d99bba9810e675d4f1b0b3c171f78e9fe96ff9d265f792f4ceb1367f2f4d238f36b5ca1c395e14abdabbf0f8ce2dc07c4fe567d822a8b629dfa05'
         '2251f8bf84e141b4661f84cc2ce7b21783ac0a349b2651477dfcbc5383b796b2e588d85ee411398b15c820cb3672256be8ed281c8bccfad252c9dd5b0e1e0cd5'
         '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
-        '0c5f2e21e27aee6c8d8eaa07daa111ff2687756413f8a909cf03acc8f836367c6b27050966f9b7bf1521ad11b84fe94fb42d70c33693c80a674ef223cf2cfc00'
+        'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
         '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
         '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
         '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
-        '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707')
+        '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
+        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
+        '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
