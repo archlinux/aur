@@ -13,6 +13,7 @@ pkgbase = clocker
 	makedepends = npm
 	depends = nodejs
 	noextract = clocker-1.20.4.tgz
+	options = !emptydirs
 	source = https://registry.npmjs.org/clocker/-/clocker-1.20.4.tgz
 	sha256sums = bbf0df9fa665fec4afbe610a6e7122a1310f2e7a99f7c35c469b68de76b67c12
 
