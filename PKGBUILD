@@ -1,8 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=btrfsmaintenance
-pkgname=$_pkgname-git
-pkgver=0.4.r8.gbcb4c94
+pkgname=btrfsmaintenance-git
+pkgver=0.5.r0.gbe42cb6
 pkgrel=1
 pkgdesc="Btrfs maintenance scripts"
 arch=('any')
@@ -10,31 +9,26 @@ url="https://github.com/kdave/btrfsmaintenance"
 license=('GPL')
 depends=('btrfs-progs')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 backup=('etc/default/btrfsmaintenance')
-source=($pkgname::git+https://github.com/kdave/btrfsmaintenance.git)
+source=($pkgname::git+$url.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 #prepare() {
-#  cd $pkgname
-#  sed -i 's| /usr/share| "'$pkgdir'"/usr/share|g' dist-install.sh
+#  sed -i 's| /usr/share| "'$pkgdir'"/usr/share|g' $pkgname/dist-install.sh
 #}
 
 package() {
   cd $pkgname
-
   install -Dm644 sysconfig.btrfsmaintenance "$pkgdir/etc/default/btrfsmaintenance"
-
-  install -dm755 "$pkgdir/"{usr/lib/systemd/system,usr/share/btrfsmaintenance}
-  install -Dm755 btrfs-*.sh btrfsmaintenance-{functions,refresh-cron.sh,refresh.path} README.md "$pkgdir/usr/share/btrfsmaintenance"
-  install -Dm644 *.service *.timer "$pkgdir/usr/lib/systemd/system"
-
+  install -Dm755 btrfs-*.sh btrfsmaintenance-refresh-cron.sh -t "$pkgdir/usr/share/btrfsmaintenance"
+  install -Dm644 btrfsmaintenance-{functions,refresh.path} README.md -t "$pkgdir/usr/share/btrfsmaintenance"
+  install -Dm644 ./*.service ./*.timer -t "$pkgdir/usr/lib/systemd/system"
   #./dist-install.sh "$pkgdir/etc/default"
 }
 
