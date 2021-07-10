@@ -1,6 +1,6 @@
 pkgbase = loloswitcher
 	pkgdesc = The low level keyboard language switcher for X11
-	pkgver = 0.30
+	pkgver = 0.39
 	pkgrel = 1
 	url = https://github.com/xintrea/LoLoSwitcher
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = loloswitcher
 	makedepends = cmake
 	depends = libx11
 	depends = pcre
-	source = loloswitcher-0.30.tar.xz::https://github.com/xintrea/LoLoSwitcher/archive/v.0.30.tar.gz
-	sha256sums = 068bc0efd3d39d38f5d4abb2a4858fa132f14482f81b8e940ae6781285dd1d76
+	source = loloswitcher-0.39.tar.xz::https://github.com/xintrea/LoLoSwitcher/archive/v.0.39.tar.gz
+	sha256sums = 8fd6219e4cd5b084d86e15a5cf92d650d54ab8ab0c9a0a9ca2189c534fc4959a
 
 pkgname = loloswitcher
 
