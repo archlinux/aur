@@ -1,0 +1,18 @@
+pkgbase = intel-metee
+	pkgdesc = Cross-platform access library for Intel CSME HECI interface
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/intel/metee/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	source = https://github.com/intel/metee/archive/3.1.0/intel-metee-3.1.0.tar.gz
+	sha256sums = 38a490e00207cf5c725f65041fe649c445c16df616adcbfbdcb80f7ce6286722
+
+pkgname = intel-metee
+	depends = glibc
+
+pkgname = intel-metee-doc
+	pkgdesc = Cross-platform access library for Intel CSME HECI interface (documentation)
+	arch = any
