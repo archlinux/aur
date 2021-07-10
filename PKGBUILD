@@ -8,12 +8,12 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=99 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 99 => native
+## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -34,6 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## Choose between GCC and CLANG config (default is GCC)
+if [ -z ${_compiler+x} ]; then
+  _compiler=gcc
+fi
+
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
@@ -52,19 +57,23 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rt
-_major=5.11
-pkgver=${_major}.12
+_major=5.13
+pkgver=${_major}.1
 _branch=5.x
-_rt=11
+_rt=1
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
 arch=(x86_64)
+
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
 )
+if [ "${_compiler}" = "clang" ]; then
+  makedepends+=(clang llvm lld python)
+fi
 options=('!strip')
 _srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
 
@@ -84,10 +93,10 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('04f07b54f0d40adfab02ee6cbd2a942c96728d87c1ef9e120d0cb9ba3fe067b4'
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '0872bff9cdaf3924c7e6ad7a47cd822fd5239408a315286ea62cc10f6153a02a'
-            '03bb8b234a67b877a34a8212936ba69d8700c54c7877686cbd9742a536c87134')
+            '5b8a5dceb10f17f2f8324cdee6a2aa23707ca9384e5046f8c7fbe1d4aa9d2442'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -114,6 +123,15 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  # Applying configuration
+  cp -vf CONFIGS/xanmod/${_compiler}/config .config
+  # enable LTO_CLANG_THIN
+  if [ "${_compiler}" = "clang" ]; then
+    scripts/config --disable LTO_CLANG_FULL
+    scripts/config --enable LTO_CLANG_THIN
+    _LLVM=1
+  fi
+
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
 
@@ -123,9 +141,11 @@ prepare() {
 
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
-    scripts/config --disable CONFIG_FUNCTION_TRACER \
-                   --disable CONFIG_STACK_TRACER
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+    if [ "${_compiler}" = "gcc" ]; then
+      scripts/config --disable CONFIG_FUNCTION_TRACER \
+                     --disable CONFIG_STACK_TRACER
+    fi
   fi
 
   if [ "$use_numa" = "n" ]; then
@@ -152,35 +172,36 @@ prepare() {
         cp -f "${_myconfig}" .config
       fi
       echo
+      break
     fi
   done
-
-  make olddefconfig
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit
     fi
   fi
 
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
   cd linux-${_major}
-  make all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
