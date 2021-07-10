@@ -1,12 +1,19 @@
 # Maintainer: Groctel <aur@taxorubio.com>
-pkgname=python-moderngl-window
+
 _name=moderngl-window
+
+pkgname=python-moderngl-window
 pkgver=2.4.0
 pkgrel=1
 pkgdesc="A utility library for ModernGL making window creation and resource loading simple."
+
 arch=('any')
-url="https://github.com/moderngl/moderngl-window"
 license=('MIT')
+url="https://github.com/moderngl/moderngl-window"
+
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('5774db4a52aed7b7dbce56cdfb06bafed04bec8234c84f1cd424cffe8458f0344826d8e52cb53c537d83c83cb4d949ff7f22aded65e0fedae908179e118931a9')
+
 depends=(
 	'python-numpy'
 	'python-pillow'
@@ -15,19 +22,16 @@ depends=(
 	'python-moderngl-git'
 	'python-pyrr'
 )
-makedepends=(
-	'python-setuptools'
-)
-provides=()
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('5774db4a52aed7b7dbce56cdfb06bafed04bec8234c84f1cd424cffe8458f0344826d8e52cb53c537d83c83cb4d949ff7f22aded65e0fedae908179e118931a9')
+makedepends=('python-setuptools')
 
-build() {
+build ()
+{
 	cd "$srcdir/$_name-$pkgver"
 	python setup.py build
 }
 
-package() {
+package ()
+{
 	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
