@@ -1,7 +1,7 @@
 pkgbase = ttf-cherrybomb
-	pkgdesc = Bubbly title font
+	pkgdesc = A bubbly display font supports Latin and partial Japanese script.
 	pkgver = 3.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satsuyako/CherryBomb/
 	arch = any
 	license = OFL-1.1
