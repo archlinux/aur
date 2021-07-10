@@ -1,7 +1,7 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.15.1
-	pkgrel = 2
+	pkgver = 3.15.2
+	pkgrel = 1
 	url = https://www.mcs.anl.gov/petsc
 	install = petsc.install
 	arch = i686
@@ -27,9 +27,9 @@ pkgbase = petsc
 	optdepends = triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator
 	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.15.1.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.15.2.tar.gz
 	source = test_optdepends.sh
-	sha256sums = c0ac6566e69d1d70b431e07e7598e9de95e84891c2452db1367c846b75109deb
+	sha256sums = 3b10c19c69fc42e01a38132668724a01f1da56f5c353105cd28f1120cc9041d8
 	sha256sums = f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623
 
 pkgname = petsc

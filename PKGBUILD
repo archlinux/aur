@@ -3,8 +3,8 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
-pkgver=3.15.1
-pkgrel=2
+pkgver=3.15.2
+pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -30,9 +30,9 @@ optdepends=('trilinos: support for trilinos'
   'suitesparse: support for the suitesparse sparse matrix libraries'
   )
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-lite-${pkgver/_/-}.tar.gz
+source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('c0ac6566e69d1d70b431e07e7598e9de95e84891c2452db1367c846b75109deb'
+sha256sums=('3b10c19c69fc42e01a38132668724a01f1da56f5c353105cd28f1120cc9041d8'
             'f67901cec213c346481b6c9a56080dee9ee00a3852e46da9f35e933a11870623')
 
 _install_dir=/opt/petsc/${_config}
