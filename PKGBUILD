@@ -1,8 +1,8 @@
 # Maintainer: Nathaniel Maia <natemaia10@gmail.com>
 
 pkgname=baph
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Basic AUR Package Helper"
 arch=('any')
 url="https://bitbucket.org/natemaia/baph"

@@ -1,7 +1,7 @@
 pkgbase = baph
 	pkgdesc = Basic AUR Package Helper
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://bitbucket.org/natemaia/baph
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = baph
 	depends = sudo
 	depends = coreutils
 	optdepends = git: download AUR packages via git
-	source = git+https://bitbucket.org/natemaia/baph.git#tag=v1.1
+	source = git+https://bitbucket.org/natemaia/baph.git#tag=v1.2
 	md5sums = SKIP
 
 pkgname = baph
