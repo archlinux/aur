@@ -4,7 +4,7 @@ pkgname=v2ray-rules-dat-git
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go."
 pkgver=r202107092209
-pkgrel=1
+pkgrel=2
 arch=( 'any' )
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=( 'GPL3' )
@@ -26,7 +26,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '7c14177a4ec4e62393674c665f5f2328ca6b5e193caaca4b462826cce22d3273'
+  '9917898396b8b9548148e3bd48d8daaf6dbe55aeaa73f06014859a349d3c4286'
   '694e646c418c0a37480762826c9b52fc83b2bfbc02f10b4d71d8152ef7227a6a'
   '2383bc838fdce1d6ec0af138e587c9e5d79a9fdf70f28ec565835bef5cd087cd'
   '57c1e5c2e25ef9a16ba11d751d44d50e371298a0f644327c84956a309642a10b'

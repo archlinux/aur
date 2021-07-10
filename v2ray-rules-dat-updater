@@ -2,7 +2,7 @@
 
 set -e
 
-FastGit="https://raw.fastgit.org/Loyalsoldier/v2ray-rules-dat/release/"
+FastGit="https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/download/"
 GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/"
 JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
 
