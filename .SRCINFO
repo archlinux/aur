@@ -1,0 +1,18 @@
+pkgbase = minipro-logictest-git
+	pkgdesc = Open source programming utility for autoelectric.cn Minipro TL866
+	pkgver = 0.5.r23.g68e8723
+	pkgrel = 1
+	url = https://gitlab.com/DavidGriffith/minipro
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libusb
+	depends = srecord
+	provides = minipro
+	conflicts = minipro
+	conflicts = minipro-git
+	source = minipro-logictest-git::git+https://gitlab.com/DavidGriffith/minipro.git#branch=logic-test
+	md5sums = SKIP
+
+pkgname = minipro-logictest-git
