@@ -1,7 +1,7 @@
 pkgbase = htop-vim
 	pkgdesc = Interactive process viewer with a Vim keybindings patch
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://htop.dev/
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = htop-vim
 	optdepends = lm_sensors: show cpu temperatures
 	optdepends = lsof: show files opened by a process
 	optdepends = strace: attach to a running process
+	provides = htop
 	conflicts = htop
 	options = !emptydirs
 	source = https://github.com/htop-dev/htop/archive/3.0.5/htop-vim-3.0.5.tar.gz
