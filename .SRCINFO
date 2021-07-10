@@ -1,6 +1,6 @@
 pkgbase = python-ursina
 	pkgdesc = An easy to use game engine/framework for python.
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://pokepetter.github.io/ursina
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-ursina
 	depends = python-pillow
 	depends = python-screeninfo
 	depends = python-pyperclip
-	source = python-ursina-3.5.0.tar.gz::https://files.pythonhosted.org/packages/3a/14/a67d34588effb47c8045eaf9a4c807ca0b6afd62b6db9ea4ad723c39327a/ursina-3.5.0.tar.gz
-	sha256sums = 9b940962bbbc9ec90bbe10a63f798d18079320f53a52fa87d110641e9f23e1db
+	source = python-ursina-3.6.0.tar.gz::https://files.pythonhosted.org/packages/2f/60/57e2c4a2a064fcc4a1f4060991fb17c0bb17c63191d52de6dc2ea82ac8a0/ursina-3.6.0.tar.gz
+	sha256sums = f542b067d85719d6fe375bed09bda7cc7195c39d526e2be3f6368bbf9558813c
 
 pkgname = python-ursina
 
