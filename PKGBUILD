@@ -4,8 +4,8 @@
 # Contributor: David Moore <davidm@sjsoft.com>
 
 pkgname=python2-simplejson
-pkgver=3.17.2
-pkgrel=4
+pkgver=3.17.3
+pkgrel=1
 pkgdesc='Simple, fast, extensible JSON encoder/decoder for python2'
 license=('MIT')
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('python2')
 makedepends=('python2-setuptools')
 checkdepends=('python2-pytest-runner')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('59428640d43fdc6927db752a36196f48d00818a87d924358deab7e498709515423ecdd34dece31364c5e8d64b63d99112fd4a4b8a03b9f9c6533268afc38e314')
+sha512sums=('eb8bae7cb14b9f3cdcc0fe8ce7fc9edde09099c054d6335d0afc26cfaa16657d580b095fd8879bb48856be82050824015e9636942dafe95c888ee2db43adfb97')
 
 build() {
     cd "${srcdir}"/simplejson-${pkgver}
