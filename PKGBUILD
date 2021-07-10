@@ -5,14 +5,15 @@
 
 pkgname=anbox-git
 pkgver=r1350.04ac697
-pkgrel=5
+pkgrel=6
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
 pkgdesc="Running Android in a container"
 depends=('lxc-git' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs' 'sdbus-cpp')
-conflicts=('anbox-launchers-git')
+replaces=('anbox-launchers')
+conflicts=('anbox-launchers')
 makedepends=('cmake' 'git' 'glm' 'lxc' 'boost' 'properties-cpp' 'gtest' 'python')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/google/cpu_features.git"
