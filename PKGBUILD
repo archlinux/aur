@@ -1,7 +1,7 @@
-# Maintainer: Parham < parham at tuta dot io >
+# Maintainer: Joe Baker < JoeBlakeB at protonmail dot com >
 
 pkgname=ttf-twemoji
-pkgver=13.0.2
+pkgver=13.1.0
 pkgrel=1
 _fedrel=1.fc35
 pkgdesc="Twitter Emoji for everyone."
@@ -13,14 +13,13 @@ provides=('emoji-font')
 install="$pkgname.install"
 source=("https://kojipkgs.fedoraproject.org/packages/twitter-twemoji-fonts/${pkgver}/${_fedrel}/noarch/twitter-twemoji-fonts-${pkgver}-${_fedrel}.noarch.rpm"
         "75-twemoji.conf")
-sha256sums=('0163cd461f058029a345d125160b1c07e6011986e9a7a88e927fde4342d4a4a4'
+sha256sums=('2730d76b7939be467571dd0f10d4f5b1f8396e96743173750e27d45ac7ab2f07'
             'a77a7775557efc1c17781c0fc35a0f7ec5ccd58f233573f8875032fb8575680e')
 
 package() {
     install -Dm644 usr/share/fonts/twemoji/Twemoji.ttf \
       "${pkgdir}/usr/share/fonts/twemoji/twemoji.ttf"
-    install -Dm644 -t "$pkgdir/etc/fonts/conf.avail" 75-twemoji.conf
+    install -Dm644 -t "$pkgdir/usr/share/fontconfig/conf.avail" 75-twemoji.conf
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
       usr/share/licenses/twitter-twemoji-fonts/LICENSE{,-{BUILD,GRAPHICS}}
 }
-# vim:set ts=4 sw=4 et:

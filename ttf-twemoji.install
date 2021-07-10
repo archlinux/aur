@@ -3,7 +3,7 @@ post_install() {
     echo "  To prevent conflicts with other emoji fonts, 75-twemoji.conf is not being automatically installed in /etc/fonts/conf.d/"
     echo
     echo "  If you don't use other emoji fonts, simply make a symlink:"
-    echo "  sudo ln -sf ../conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
+    echo "  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
     echo
     echo "  If you do use other emoji fonts, copy 75-twemoji.conf to /etc/fonts/conf.d/ and remove corresponding aliases."
     echo
@@ -12,5 +12,13 @@ post_install() {
 post_remove() {
     echo
     echo "  Make sure to remove /etc/fonts/conf.d/75-twemoji.conf if you created it earlier."
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo "  75-twemoji.conf has been moved from /etc/fonts/conf.avail to /usr/share/fontconfig/conf.avail"
+    echo "  if you have a symlink you will need to update it with:"
+    echo "  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
     echo
 }
