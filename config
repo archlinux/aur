@@ -7986,7 +7986,7 @@ CONFIG_VIDEO_IPU3_IMGU=m
 #
 # Android
 #
-# CONFIG_ASHMEM is not set
+CONFIG_ASHMEM=y
 # end of Android
 
 CONFIG_LTE_GDM724X=m
