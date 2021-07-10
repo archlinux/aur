@@ -1,8 +1,8 @@
 pkgbase = qtchess
 	pkgdesc = Online chess game client written in Qt
-	pkgver = 3.20
+	pkgver = 2021.03.15
 	pkgrel = 1
-	url = http://qtchess.sourceforge.net/
+	url = https://textbrowser.github.io/qtchess/
 	arch = i686
 	arch = x86_64
 	license = custom:3-clause BSD
@@ -11,8 +11,7 @@ pkgbase = qtchess
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = libgl
-	source = http://downloads.sourceforge.net/project/qtchess/Version%203.20/QtChess.d.tar.gz
-	sha256sums = 9ac063d68dc880363ebedc64f12a01ec2032cebd9c969ed711c0ec8db95db254
+	source = qtchess-2021.03.15.tar.gz::https://github.com/textbrowser/qtchess/archive/refs/tags/2021.03.15.tar.gz
+	sha256sums = b67e182beca7d203dd07b995a6d4cae752dc42ed76439694e1befe5d6bd5f2be
 
 pkgname = qtchess
-
