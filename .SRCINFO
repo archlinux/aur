@@ -7,6 +7,7 @@ pkgbase = blang-git
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
+	depends = libevent
 	provides = blang
 	source = git+https://github.com/blang-pl/blang.git
 	md5sums = SKIP
