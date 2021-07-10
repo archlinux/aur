@@ -1,4 +1,4 @@
-# Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 
 _pkgname=hacksaw
 pkgname=${_pkgname}-git
