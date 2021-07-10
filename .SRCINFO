@@ -1,6 +1,6 @@
 pkgbase = weylus-bin
 	pkgdesc = Weylus - Use your tablet as graphic tablet/touch screen on your computer.
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/H-M-H/Weylus
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = weylus-bin
 	depends = libva
 	depends = gst-plugins-base-libs
 	depends = dbus
-	source = weylus-bin-0.11.1.zip::https://github.com/H-M-H/Weylus/releases/download/v0.11.1/linux.zip
-	sha256sums = a54c02041a3632e508457f73fbd81de77d1610f1639cd15b308944e0b5dc53c6
+	source = weylus-bin-0.11.2.zip::https://github.com/H-M-H/Weylus/releases/download/v0.11.2/linux.zip
+	sha256sums = 3dcd93c8a320c5b93ebaa01dcda5385ea54d4c5d5132288082bd93c9ad9eb9ba
 
 pkgname = weylus-bin
-
