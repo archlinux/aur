@@ -1,0 +1,289 @@
+diff --git a/Action.c b/Action.c
+index 88ccf6d..76008e3 100644
+--- a/Action.c
++++ b/Action.c
+@@ -433,7 +433,7 @@ static const struct {
+    const char* key;
+    const char* info;
+ } helpLeft[] = {
+-   { .key = " Arrows: ", .info = "scroll process list" },
++   { .key = "   hjkl: ", .info = "scroll process list" },
+    { .key = " Digits: ", .info = "incremental PID search" },
+    { .key = "   F3 /: ", .info = "incremental name search" },
+    { .key = "   F4 \\: ",.info = "incremental name filtering" },
+@@ -459,7 +459,7 @@ static const struct {
+    { .key = "  Space: ", .info = "tag process" },
+    { .key = "      c: ", .info = "tag process and its children" },
+    { .key = "      U: ", .info = "untag all processes" },
+-   { .key = "   F9 k: ", .info = "kill process/tagged processes" },
++   { .key = "   F9 x: ", .info = "kill process/tagged processes" },
+    { .key = "   F7 ]: ", .info = "higher priority (root only)" },
+    { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
+ #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
+@@ -467,12 +467,12 @@ static const struct {
+ #endif
+    { .key = "      e: ", .info = "show process environment" },
+    { .key = "      i: ", .info = "set IO priority" },
+-   { .key = "      l: ", .info = "list open files with lsof" },
+-   { .key = "      x: ", .info = "list file locks of process" },
++   { .key = "      L: ", .info = "list open files with lsof" },
++   { .key = "      X: ", .info = "list file locks of process" },
+    { .key = "      s: ", .info = "trace syscalls with strace" },
+    { .key = "      w: ", .info = "wrap process command in multiple lines" },
+    { .key = " F2 C S: ", .info = "setup" },
+-   { .key = "   F1 h: ", .info = "show this help screen" },
++   { .key = "   F1 ?: ", .info = "show this help screen" },
+    { .key = "  F10 q: ", .info = "quit" },
+    { .key = NULL, .info = NULL }
+ };
+@@ -638,12 +638,14 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['H'] = actionToggleUserlandThreads;
+    keys['I'] = actionInvertSortOrder;
+    keys['K'] = actionToggleKernelThreads;
++   keys['L'] = actionLsof;
+    keys['M'] = actionSortByMemory;
+    keys['N'] = actionSortByPID;
+    keys['P'] = actionSortByCPU;
+    keys['S'] = actionSetup;
+    keys['T'] = actionSortByTime;
+    keys['U'] = actionUntagAll;
++   keys['X'] = actionShowLocks;
+    keys['Z'] = actionTogglePauseProcessUpdate;
+    keys['['] = actionLowerPriority;
+    keys['\014'] = actionRedraw; // Ctrl+L
+@@ -653,17 +655,15 @@ void Action_setBindings(Htop_Action* keys) {
+    keys['a'] = actionSetAffinity;
+    keys['c'] = actionTagAllChildren;
+    keys['e'] = actionShowEnvScreen;
+-   keys['h'] = actionHelp;
+-   keys['k'] = actionKill;
+-   keys['l'] = actionLsof;
+    keys['m'] = actionToggleMergedCommand;
++   keys['o'] = actionExpandCollapseOrSortColumn;
+    keys['p'] = actionToggleProgramPath;
+    keys['q'] = actionQuit;
+    keys['s'] = actionStrace;
+    keys['t'] = actionToggleTreeView;
+    keys['u'] = actionFilterByUser;
+    keys['w'] = actionShowCommandScreen;
+-   keys['x'] = actionShowLocks;
++   keys['x'] = actionKill;
+    keys[KEY_F(1)] = actionHelp;
+    keys[KEY_F(2)] = actionSetup;
+    keys[KEY_F(3)] = actionIncSearch;
+diff --git a/CategoriesPanel.c b/CategoriesPanel.c
+index 4ee1ad4..51968c2 100644
+--- a/CategoriesPanel.c
++++ b/CategoriesPanel.c
+@@ -67,6 +67,12 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+    HandlerResult result = IGNORED;
+ 
+    int selected = Panel_getSelectedIndex(super);
++   switch (ch) {
++      case 'k': ch = KEY_UP; break;
++      case 'j': ch = KEY_DOWN; break;
++      case 'h': ch = KEY_LEFT; break;
++      case 'l': ch = KEY_RIGHT; break;
++   }
+    switch (ch) {
+       case EVENT_SET_SELECTED:
+          result = HANDLED;
+diff --git a/MainPanel.c b/MainPanel.c
+index 859c513..8dfd13a 100644
+--- a/MainPanel.c
++++ b/MainPanel.c
+@@ -49,7 +49,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
+    return Process_getCommand(p);
+ }
+ 
+-static HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
++HandlerResult MainPanel_eventHandler(Panel* super, int ch) {
+    MainPanel* this = (MainPanel*) super;
+ 
+    HandlerResult result = IGNORED;
+diff --git a/MainPanel.h b/MainPanel.h
+index 2427ca3..6354744 100644
+--- a/MainPanel.h
++++ b/MainPanel.h
+@@ -48,4 +48,6 @@ void MainPanel_setState(MainPanel* this, State* state);
+ 
+ void MainPanel_delete(Object* object);
+ 
++HandlerResult MainPanel_eventHandler(Panel* super, int ch);
++
+ #endif
+diff --git a/Panel.c b/Panel.c
+index 5d10375..76242b3 100644
+--- a/Panel.c
++++ b/Panel.c
+@@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
+ 
+    switch (key) {
+    case KEY_DOWN:
++   case 'j':
+    case KEY_CTRL('N'):
+    #ifdef KEY_C_DOWN
+    case KEY_C_DOWN:
+@@ -359,6 +360,7 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+ 
+    case KEY_UP:
++   case 'k':
+    case KEY_CTRL('P'):
+    #ifdef KEY_C_UP
+    case KEY_C_UP:
+@@ -367,7 +369,7 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+ 
+    case KEY_LEFT:
+-   case KEY_CTRL('B'):
++   case 'h':
+       if (this->scrollH > 0) {
+          this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
+          this->needsRedraw = true;
+@@ -375,16 +377,27 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+ 
+    case KEY_RIGHT:
+-   case KEY_CTRL('F'):
++   case 'l':
+       this->scrollH += CRT_scrollHAmount;
+       this->needsRedraw = true;
+       break;
+ 
++   case KEY_CTRL('U'):
++      this->selected -= (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
++   case KEY_CTRL('D'):
++      this->selected += (this->h - 1) / 2;
++      this->needsRedraw = true;
++      break;
++
+    case KEY_PPAGE:
++   case KEY_CTRL('B'):
+       PANEL_SCROLL(-(this->h - Panel_headerHeight(this)));
+       break;
+ 
+    case KEY_NPAGE:
++   case KEY_CTRL('F'):
+       PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
+       break;
+ 
+@@ -397,10 +410,12 @@ bool Panel_onKey(Panel* this, int key) {
+       break;
+ 
+    case KEY_HOME:
++   case 'g':
+       this->selected = 0;
+       break;
+ 
+    case KEY_END:
++   case 'G':
+       this->selected = size - 1;
+       break;
+ 
+diff --git a/README b/README
+index 880597d..ffea919 100644
+--- a/README
++++ b/README
+@@ -19,6 +19,46 @@ The information displayed is configurable through a graphical setup and can be s
+ 
+ Tasks related to processes (e.g. killing and renicing) can be done without entering their PIDs.
+ 
++## Vim keybindings
++
++These are the keybindings added in this fork of htop:
++
++```
++    g        to the top (gg in vim)
++
++  <C-b>      up 1 page
++
++  <C-u>      up 1/2 page
++
++    k
++
++h       l    one character
++
++    j
++
++  <C-d>      down 1/2 page
++
++  <C-f>      down 1 page
++
++    G        to the end
++
++--------------------------------------------------
++
++    o        Expand/collapse (like in NERDTree)
++```
++
++In order to accomodate these keybindings, the following changes
++were made to the original keybindings:
++
++- `Ctrl+F` and `Ctrt+B` can no longer be used to navigate horizontally
++- `h` can no longer be used to access the help, leaving `Ctrl+F1` & `?`
++- `k` can no longer be used to kill processes, being replaced with `x`
++- `l` can no longer be used to list open files, being replaced with `L`
++- `x` can no longer be used to list file locks, being replaced with `X`
++
++
++## Comparison between `htop` and classic `top`
++
+ Running `htop` requires `ncurses` libraries (typically named libncursesw*).
+ 
+ For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
+diff --git a/ScreenManager.c b/ScreenManager.c
+index 0ab5231..06d0a79 100644
+--- a/ScreenManager.c
++++ b/ScreenManager.c
+@@ -14,6 +14,7 @@ in the source distribution for its full text.
+ 
+ #include "CRT.h"
+ #include "FunctionBar.h"
++#include "MainPanel.h"
+ #include "Object.h"
+ #include "ProcessList.h"
+ #include "ProvideCurses.h"
+@@ -214,14 +215,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          redraw = false;
+          continue;
+       }
+-      switch (ch) {
+-         case KEY_ALT('H'): ch = KEY_LEFT; break;
+-         case KEY_ALT('J'): ch = KEY_DOWN; break;
+-         case KEY_ALT('K'): ch = KEY_UP; break;
+-         case KEY_ALT('L'): ch = KEY_RIGHT; break;
+-      }
+       redraw = true;
+       if (Panel_eventHandlerFn(panelFocus)) {
++         if (Panel_eventHandlerFn(panelFocus) != MainPanel_eventHandler) {
++            switch (ch) {
++               case 'h': case KEY_ALT('H'): ch = KEY_LEFT; break;
++               case 'j': case KEY_ALT('J'): ch = KEY_DOWN; break;
++               case 'k': case KEY_ALT('K'): ch = KEY_UP; break;
++               case 'l': case KEY_ALT('L'): ch = KEY_RIGHT; break;
++            }
++         }
+          result = Panel_eventHandler(panelFocus, ch);
+       }
+       if (result & SYNTH_KEY) {
+@@ -251,7 +254,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+          continue;
+       }
+       case KEY_LEFT:
+-      case KEY_CTRL('B'):
++      case 'h':
+          if (this->panelCount < 2) {
+             goto defaultHandler;
+          }
+@@ -272,7 +275,7 @@ tryLeft:
+ 
+          break;
+       case KEY_RIGHT:
+-      case KEY_CTRL('F'):
++      case 'l':
+       case 9:
+          if (this->panelCount < 2) {
+             goto defaultHandler;
