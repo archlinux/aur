@@ -1,4 +1,4 @@
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 pkgname=sfs-select
 pkgver=0.5.0
 pkgrel=2
