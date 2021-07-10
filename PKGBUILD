@@ -9,36 +9,36 @@ pkgdesc="Screen reader for individuals who are blind or visually impaired (devel
 url="https://wiki.gnome.org/Projects/Orca"
 arch=(any)
 license=(LGPL)
-depends=(gtk3 at-spi2-atk python-atspi python-dbus python-pyxdg speech-dispatcher liblouis brltty
-         xorg-xmodmap gsettings-desktop-schemas
-         gst-plugins-base # playbin, audiotestsrc, basic decoders
-         gst-plugins-good # pulsesink, more decoders
+groups=('gnome')
+depends=('gtk3' 'at-spi2-atk' 'python-atspi' 'python-dbus' 'python-pyxdg' 'speech-dispatcher' 'liblouis' 'brltty'
+         'xorg-xmodmap' 'gsettings-desktop-schemas'
+         'gst-plugins-base' # playbin, audiotestsrc, basic decoders
+         'gst-plugins-good' # pulsesink, more decoders
 )
-makedepends=(itstool intltool git yelp-tools)
-groups=(gnome)
+makedepends=('itstool' 'intltool' 'git' 'yelp-tools')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	# cutting off 'ORCA_' prefix that presents in the git tag
 	git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/_/-/g;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	make DESTDIR="${pkgdir}" install
 }
