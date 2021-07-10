@@ -1,14 +1,13 @@
 pkgbase = xmonad-recompile-hook-git
 	pkgdesc = Recompile xmonad after package updates
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/NathanKolpa/xmonad-recompile-hook.git
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = xmonad
-	source = git+https://github.com/NathanKolpa/xmonad-recompile-hook.git
-	md5sums = SKIP
+	source = xmonad-recompile-hook::git+https://github.com/NathanKolpa/xmonad-recompile-hook.git
 	sha256sums = SKIP
 
 pkgname = xmonad-recompile-hook-git
