@@ -1,12 +1,22 @@
 # Maintainer: Groctel <aur@taxorubio.com>
-pkgname=python-networkx-git
+
 _name=networkx
-pkgver=2.6rc1.r1.gc444024a5
+
+pkgname=python-networkx-git
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
+
 arch=('any')
-url="https://github.com/networkx/networkx"
 license=('BSD')
+url="https://github.com/networkx/networkx"
+
+source=("git+$url#branch=main")
+sha512sums=('SKIP')
+
+conflicts=('python-networkx')
+provides=("python-networkx=$pkgver")
+
 depends=(
 	'python-decorator'
 	'python-matplotlib'
@@ -15,22 +25,21 @@ depends=(
 	'python-scipy'
 )
 makedepends=('git')
-conflicts=('python-networkx')
-provides=("python-networkx=$pkgver")
-source=("git+$url#branch=main")
-sha512sums=('SKIP')
 
-pkgver() {
+pkgver ()
+{
 	cd "$srcdir/$_name"
 	git describe --long | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+build ()
+{
 	cd "$srcdir/$_name"
 	python setup.py build
 }
 
-package() {
+package ()
+{
 	cd "$srcdir/$_name"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
