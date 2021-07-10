@@ -7,21 +7,25 @@ arch=('x86_64')
 url="https://github.com/ern126/qtext"
 license=('GPL')
 depends=('qt5-base')
-makedepends=('make')
+makedepends=('cmake' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ern126/qtext/archive/v$pkgver.tar.gz")
-md5sums=('915a2e174dadeb0e1f91f016eb522ec3')
+md5sums=('9c97b86b703d8ec05dc93d426cc1aa05')
 
 build() {
 	cd "$pkgname-$pkgver"
-	qmake
+	mkdir build
+	cd build
+	cmake ..
 	make
 }
 
 package() {
 	cd "$pkgname-$pkgver"
+	cd build
 	install -Dm755 qtext  "${pkgdir}/usr/bin/qtext"
+	cd ..
 	install -Dm644 assets/applications/qtext.desktop "${pkgdir}/usr/share/applications/qtext.desktop"
-	install -Dm644 assets/docs/README.md "${pkgdir}/usr/share/doc/qtext/README.md"
-	install -Dm644 assets/docs/LICENSE "${pkgdir}/usr/share/doc/qtext/LICENSE"
-	install -Dm644 assets/docs/CONTRIBUTING.md "${pkgdir}/usr/share/doc/qtext/CONTRIBUTING.md"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/qtext/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/doc/qtext/LICENSE"
+	install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/qtext/CONTRIBUTING.md"
 }
