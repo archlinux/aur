@@ -1,7 +1,7 @@
 pkgbase = qtchess
 	pkgdesc = Online chess game client written in Qt
 	pkgver = 2021.03.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://textbrowser.github.io/qtchess/
 	arch = i686
 	arch = x86_64

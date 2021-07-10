@@ -3,7 +3,7 @@
 
 pkgname=qtchess
 pkgver=2021.03.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Online chess game client written in Qt'
 url='https://textbrowser.github.io/qtchess/'
 arch=('i686' 'x86_64')
