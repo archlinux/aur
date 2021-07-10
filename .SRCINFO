@@ -1,0 +1,12 @@
+pkgbase = ttf-cherrybomb
+	pkgdesc = Bubbly title font
+	pkgver = 3.00
+	pkgrel = 1
+	url = https://github.com/satsuyako/CherryBomb/
+	arch = any
+	license = OFL-1.1
+	source = https://deb.debian.org/debian/pool/main/f/fonts-cherrybomb/fonts-cherrybomb_3.00+dfsg.orig.tar.xz
+	sha512sums = 5f6720cfff9dd299971aaad909f19ad3dd3c757bc175b652496ec2426fb96b34a6c939e3633673715774ab28644269280fb73d4d3898f3fb00a2f9bd84cbf79a
+
+pkgname = ttf-cherrybomb
+
