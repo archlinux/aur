@@ -1,4 +1,4 @@
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: novenary <streetwalrus@codewalr.us>
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
