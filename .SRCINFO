@@ -1,0 +1,19 @@
+pkgbase = perl-mail-gpg
+	pkgdesc = Handling of GnuPG encrypted / signed mails
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://metacpan.org/pod/Mail::GPG
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-gnupg-interface
+	depends = perl-encode-locale
+	depends = perl-mime-tools
+	depends = perl-mailtools
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JR/JRED/Mail-GPG-1.0.12.tar.gz
+	md5sums = 4e18ab540a57750b1dbcbf41579a5787
+	sha256sums = a7877c9a4d61d86017606f8b25864f4df48d4c494ab343a3e712a6e9da23e6ec
+
+pkgname = perl-mail-gpg
