@@ -2,17 +2,18 @@
 # Contributor: Alexandros Theodotou <alex@zrythm.org>
 _pkgname=zrythm
 pkgname=$_pkgname-git
-pkgver=1.0.0.alpha.16.1.1.r.gd35c6dd55
+pkgver=1.0.0.alpha.19.0.1.r.gd60687b8e
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
 depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
-         'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter')
+         'suil' 'breeze-icons' 'lv2' 'rubberband' 'python-sphinx-furo' 'python-sphinx-copybutton' 'python-sphinxcontrib-svg2pdfconverter'
+         'xxhash')
 makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
              'meson' 'ninja' 'help2man' 'python-sphinx'
-             'ladspa' 'lv2' 'gtksourceview3')
+             'ladspa' 'lv2' 'gtksourceview3' 'cmake')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=("$_pkgname")
