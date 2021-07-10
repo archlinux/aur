@@ -1,7 +1,7 @@
 # Maintainer: Nathan Kolpa <nathan@kolpa.me>
 pkgname=xmonad-recompile-hook-git
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Recompile xmonad after package updates"
 arch=('any')
 url="https://github.com/NathanKolpa/xmonad-recompile-hook.git"
@@ -9,9 +9,9 @@ license=('GPL')
 depends=(xmonad)
 makedepends=(git)
 options=()
-source=("git+$url")
-md5sums=('SKIP')
+source=("xmonad-recompile-hook::git+$url")
 sha256sums=('SKIP')
+
 
 package() {
 	cd "xmonad-recompile-hook"
