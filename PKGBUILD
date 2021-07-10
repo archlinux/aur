@@ -3,13 +3,14 @@
 
 pkgname=clocker
 pkgver=1.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracks project hours'
 arch=('x86_64' 'i686' 'arm' 'armv6' 'armv7h' 'aarch64')
 url="https://github.com/substack/clocker"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
+replaces=('nodejs-clocker')
 options=('!emptydirs')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
