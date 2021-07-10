@@ -26,6 +26,6 @@ pkgbase = mingw-w64-tageditor
 	options = !strip
 	options = !emptydirs
 	source = tageditor-3.4.1.tar.gz::https://github.com/Martchus/tageditor/archive/v3.4.1.tar.gz
-	sha256sums = 8623057c2b1bf38eaab7d8de87e259ce639afcac35253145d102e91751015835
+	sha256sums = 4d3218531fae449ffa76098fbe9a4693e43f2f93d0d38bb4163d6a9ce864d6c7
 
 pkgname = mingw-w64-tageditor
