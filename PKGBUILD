@@ -2,7 +2,7 @@
 
 pkgname=git-ignore
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and easily list and fetch .gitignore templates from gitignore.io"
 arch=('x86_64')
 url="https://github.com/sondr3/git-ignore"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-validpgpkeys=('0EC3FA89EFBAB421F82E40B025676BCBFFAD76B1')
+validpgpkeys=('9CBF84633C7DDB10')
 sha256sums=('4cc4476b77418dae96f43a7ae80cf58dd5e740bc83d3f6004c6c035df7ad61e3')
 
 build() {
