@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
 pkgver=2.8.4
-pkgrel=1
+pkgrel=3
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -17,6 +17,8 @@ provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         "fix-gcc11-assert._patch::https://raw.githubusercontent.com/archlinux/svntogit-community/fcf886c3eae607f9827627957016cdfe1b81be33/trunk/fix-gcc11-assert.patch"
+        "fix-freeze-after-file-dialog._patch::https://github.com/telegramdesktop/tdesktop/commit/1261c775d4ca6fb78277ec213794da7c15e304e2.patch"
+        "revert-qmenubar-fix-global-menu._patch::https://github.com/telegramdesktop/tdesktop/commit/6f031a715e5f9db1f75ec230cf06538d77d5b4ec.patch"
 
         "always_delete_for_everyone.patch"
         "always_pin_without_notify.patch"
@@ -29,6 +31,8 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "mediaviewer_nofullscreen.patch")
 sha512sums=('b0e78aa9bffa1707425f058737b0d0a0db26e8fba14e1413e465eefcbbc95dc0eaee642d1ebc4a82c8239188a3eed677c5c3eb748203348a14ba2ace61afd779'
             'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f'
+            '2a5c8f5ca5a3a34872567ac98032717c40689baab2926d9fa8960404c6630925732f028dc7fdcf28bef11dd247a78779c3f5ca631f8b75abf23e23dab8d0f24c'
+            '9a49f7e074f8e5c2ecad0092146af2647f7afd5e7b7904d3634013fcba7fb81eaff7ccca35c955ee55010431172b2c1bcdbe7f01d3d5a391d950b278b491fb54'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             'dc5ffda130496c44bfe52792e856dac811b1a8e48b463529dd54396ad1b45915f8b6d9fcb6cb254f9350b3440d7b94a67d1c19660962f0350015061b021af6f1'
             '4da055da633b40b6133d14fd13d1aa9d933b3ba4b19370bc0edbccc02d4e31a9291191f7dc3a2aca9225da8dabca6ed33f90ab757435bebd034b6fed28ac8092'
@@ -59,6 +63,9 @@ prepare() {
 
     cd ..
     patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert._patch
+    # backport file dialog patch
+    patch -Np1 -i ${srcdir}/fix-freeze-after-file-dialog._patch
+    patch -Np1 -i ${srcdir}/revert-qmenubar-fix-global-menu._patch
 }
 
 build() {
