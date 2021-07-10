@@ -2,7 +2,7 @@
 
 pkgname=ruby2.6-bundler
 _gemname=${pkgname#ruby2.6-}
-pkgver=2.2.21
+pkgver=2.2.23
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby2.6')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('3c8dc5e0cf66d385a9b33751e54986290d42023c5e1bba2b5df094917b6e234a')
+sha256sums=('ae71a19f1231d320a1f934243e6a4e3518cf63f97e2c0954b5fea3f46ed070ac')
 
 package() {
   cd "$srcdir"
