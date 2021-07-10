@@ -1,0 +1,23 @@
+pkgbase = kdiff3-dockable-treeview-git
+	pkgdesc = A KDE file comparator/merge tool - Version with the directory merge info window dockable
+	pkgver = 1.9.70.r1831.5762c54
+	pkgrel = 1
+	url = https://invent.kde.org/lhauchecorne/kdiff3/-/commits/work/hl037/dockable
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = boost
+	depends = kparts
+	depends = hicolor-icon-theme
+	provides = kdiff3
+	conflicts = kdiff3
+	conflicts = kdiff3-kf5-git
+	conflicts = kdiff3-qt
+	source = git+https://invent.kde.org/lhauchecorne/kdiff3.git#branch=work/hl037/dockable
+	sha512sums = SKIP
+
+pkgname = kdiff3-dockable-treeview-git
