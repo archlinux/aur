@@ -5,8 +5,7 @@ update: .SRCINFO
 
 updatePKGBUILD:
 	sed -i "s/pkgver=.*/pkgver=$${VERSION:?Which version?}/" PKGBUILD
-	checksums=$$(makepkg --noprogressbar -g | grep -E '^sha.*sums') && \
-		sed -Ei "s/^sha.*sums.*/$${checksums}/" PKGBUILD
+	updpkgsums
 .PHONY: updatePKGBUILD
 
 .SRCINFO: updatePKGBUILD
