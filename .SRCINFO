@@ -1,0 +1,12 @@
+pkgbase = ttf-oxanium
+	pkgdesc = A futuristic-looking geometric sans-serif font family
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://github.com/sevmeyer/oxanium/
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/sevmeyer/oxanium/releases/download/2.000/oxanium-2.000.zip
+	sha512sums = 5dc763fd82c0323a2dbc655dec04532a3e710befff3f6514b1b2e609e67b52810bccf3ee6da75e218876b0dd7aa2b81aad237f9eab27d9f894d44d648fe01fc4
+
+pkgname = ttf-oxanium
+
