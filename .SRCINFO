@@ -1,15 +1,14 @@
 pkgbase = fkill
 	pkgdesc = Fabulously kill processes. Cross-platform.
-	pkgver = 6.1.0
-	pkgrel = 3
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://github.com/sindresorhus/fkill-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	source = https://registry.npmjs.org/fkill-cli/-/fkill-cli-6.1.0.tgz
-	sha256sums = 4df84f692413dfa2720f20d9cb5feecca1cf8bf4ff59b4d5c6e17f3587104ef3
+	source = https://registry.npmjs.org/fkill-cli/-/fkill-cli-6.2.0.tgz
+	sha256sums = 0ae9bc4335e68fd9d7c0bc74814f64adad5a00b2ac1d776c659fd62718827880
 
 pkgname = fkill
-

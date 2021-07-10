@@ -2,8 +2,8 @@
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=fkill
 _npmname=fkill-cli
-pkgver=6.1.0
-pkgrel=3
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="Fabulously kill processes. Cross-platform."
 arch=('any')
 url="https://github.com/sindresorhus/fkill-cli"
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 #noextract=("$_npmname-$pkgver.tgz")
-sha256sums=('4df84f692413dfa2720f20d9cb5feecca1cf8bf4ff59b4d5c6e17f3587104ef3')
+sha256sums=('0ae9bc4335e68fd9d7c0bc74814f64adad5a00b2ac1d776c659fd62718827880')
 
 package() {
 	npm install \
