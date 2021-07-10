@@ -1,7 +1,7 @@
 pkgbase = proselint
 	pkgdesc = A linter for prose
 	pkgver = 0.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amperser/proselint
 	arch = any
 	license = BSD

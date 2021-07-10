@@ -4,7 +4,7 @@
 
 pkgname=proselint
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A linter for prose'
 arch=('any')
 url="https://github.com/amperser/proselint"
@@ -18,8 +18,9 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('5e349e8deb08af9cf82122510e0e25b939f2a1000a2fd8f6607e15c36d30555e5060d9a1cb271ac13e5f2c20a69b43ab7ba3726c5ca91679992a56eded7185f8')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    dephell deps convert --from pyproject.toml --to setup.py
+  cd "$pkgname-$pkgver"
+
+  dephell deps convert --from pyproject.toml --to setup.py
 }
 
 build() {
@@ -40,4 +41,5 @@ package() {
   export PYTHONHASHSEED=0
   python setup.py install --skip-build --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 proselint/.proselintrc "$pkgdir/usr/lib/python3.9/site-packages/proselint/.proselintrc"
 }
