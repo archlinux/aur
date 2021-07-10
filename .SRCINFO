@@ -1,7 +1,7 @@
 pkgbase = trilinos
 	pkgdesc = algorithms for the solution of large-scale scientific problems
 	pkgver = 13.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://trilinos.org
 	arch = x86_64
 	license = LGPL3
@@ -10,10 +10,8 @@ pkgbase = trilinos
 	makedepends = perl
 	makedepends = blas
 	makedepends = cmake
-	makedepends = doxygen
 	makedepends = bc
 	makedepends = python-numpy
-	makedepends = swig
 	depends = python
 	depends = lapack
 	depends = boost
@@ -27,4 +25,3 @@ pkgbase = trilinos
 	sha256sums = 9920ddf718ff04a14d1263623dfd98791404b1db0a73d95ba48d87215e8409eb
 
 pkgname = trilinos
-

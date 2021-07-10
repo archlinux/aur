@@ -6,13 +6,13 @@
 pkgname=trilinos
 pkgver=13.0.1
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=3
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc' 'python-numpy' 'swig')
+makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'bc' 'python-numpy')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
         'python-mpi-version.patch')
@@ -30,6 +30,7 @@ build() {
 
     cmake .. -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES:BOOL=ON \
              -DTrilinos_ENABLE_ALL_PACKAGES:BOOL=ON \
+             -DTrilinos_ENABLE_PyTrilinos:BOOL=OFF \
              -DTrilinos_ENABLE_Gtest:BOOL=OFF \
              -DTrilinos_ENABLE_TESTS=OFF \
              -DTPL_ENABLE_gtest:BOOL=OFF \
