@@ -1,33 +1,26 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=wg++
-pkgver=3.1.7.2_r2393.326fc38
-_pkgver=3.1.7.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='WebGrab+Plus is a freeware (license via donation) multi-site incremental XMLTV EPG grabber.'
 arch=('any')
 url='http://webgrabplus.com/'
 license=('custom')
 depends=('mono')
-makedepends=('git' 'unzip')
+makedepends=('git')
 provides=('wg++')
-source=("http://webgrabplus.com/sites/default/files/download/SW/V3.1.0/WebGrabPlus_V3.1_install.tar.gz"
+source=("http://webgrabplus.com/sites/default/files/download/SW/V3.2.0/WebGrabPlus_V3.2_install.tar.gz"
         "git+https://github.com/SilentButeo2/webgrabplus-siteinipack.git"
         "wg++")
 
-md5sums=('1f1ee11bb0c7db9068a6833788079d1b'
+md5sums=('8c99a00f2bb86e673ab848f823db8270'
          'SKIP'
          '96ddf77a84554bb457dab4fd63e82ae6')
-
-pkgver() {
-  cd "webgrabplus-siteinipack"
-  printf "${_pkgver}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
 	# Install application files
 	mkdir -p "${pkgdir}/opt/wg++"
-  unzip -oq "${srcdir}/webgrabplus-siteinipack/evaluation-builds/V${_pkgver}.zip" -d "${srcdir}/.wg++/bin"
 	cp -R "${srcdir}/.wg++/bin" "${pkgdir}/opt/wg++/"
 	cp -R "${srcdir}/.wg++/doc" "${pkgdir}/opt/wg++/"
   cp -R "${srcdir}/webgrabplus-siteinipack/siteini.pack" "${pkgdir}/opt/wg++/"
