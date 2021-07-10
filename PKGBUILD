@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touche
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
@@ -19,8 +19,11 @@ build() {
 	cd "$pkgname-$pkgver"
 	npm install
 
-	arch-meson -Dtarget-de=gnome . build
-	meson compile -C build
+	if [ "$XDG_CURRENT_DESKTOP" = "Pantheon" ]; then
+		arch-meson . build -Dtarget-de=elementary
+	else
+		arch-meson . build -Dtarget-de=gnome
+	fi
 }
 
 check() {
