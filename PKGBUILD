@@ -1,8 +1,8 @@
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=detect-it-easy-git
-pkgver=3.02.r42.657afee
-pkgrel=2
+pkgver=3.03b.r2.3466353
+pkgrel=1
 pkgdesc='Detect It Easy, or abbreviated "DIE" is a program for determining types of files'
 arch=('x86_64')
 url='https://horsicq.github.io'
@@ -44,6 +44,7 @@ source=(
   "${_srcname}/StaticScan::git+https://github.com/horsicq/StaticScan.git"
   "${_srcname}/XArchive::git+https://github.com/horsicq/XArchive.git"
   "${_srcname}/XCapstone::git+https://github.com/horsicq/XCapstone.git"
+  "${_srcname}/XCppfilt::git+https://github.com/horsicq/XCppfilt.git"
   "${_srcname}/XDEX::git+https://github.com/horsicq/XDEX.git"
   "${_srcname}/XDemangle::git+https://github.com/horsicq/XDemangle.git"
   "${_srcname}/XDemangleWidget::git+https://github.com/horsicq/XDemangleWidget.git"
@@ -75,7 +76,7 @@ source=(
 sha512sums=(
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP'
   '65f33f3c5f3d01e771d3f9c5b1d59b4cedc2441cf002f762239580592b2d98820173427d6385ac1fd339a8ae105a89705caa8540e20b3c65640f80ba4711f446'
 )
 _pkgname="${pkgname/-git/}"
@@ -94,7 +95,7 @@ pkgver() {
 prepare() {
   #cd "$_srcname" || return
   echo -e "${_prefix}Linking the git submodule sources into the main source folder"
-  _subdirs="Controls Detect-It-Easy FormatDialogs FormatWidgets Formats QHexView SpecAbstract StaticScan XArchive XCapstone \
+  _subdirs="Controls Detect-It-Easy FormatDialogs FormatWidgets Formats QHexView SpecAbstract StaticScan XArchive XCapstone XCppfilt \
 XDEX XDemangle XDemangleWidget XDisasm XDisasmView XEntropyWidget XGithub XHashWidget XHexEdit XHexView XLLVMDemangler XMIME \
 XMIMEWidget XMemoryMapWidget XOptions XQwt XShortcuts XSingleApplication XStyles XTranslation archive_widget build_tools \
 die_script die_widget nfd_widget signatures"
