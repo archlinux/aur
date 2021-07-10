@@ -1,14 +1,14 @@
-# Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
+# Maintainer: novenary <streetwalkermc@gmail.com>
 
 pkgname=metalfan-git
 pkgver=r3.cf19af1
 pkgrel=1
 pkgdesc="Fan control script"
 arch=('any')
-url="https://github.com/Streetwalrus/metalfan"
+url="https://github.com/9ary/metalfan"
 license=('MIT')
 depends=('python' 'python-attrs' 'python-toml')
-source=("git+https://github.com/Streetwalrus/metalfan.git")
+source=("git+https://github.com/9ary/metalfan.git")
 sha256sums=('SKIP')
 backup=('etc/metalfan.toml')
 
