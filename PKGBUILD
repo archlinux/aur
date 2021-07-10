@@ -1,14 +1,21 @@
 # Maintainer: Groctel <aur@taxorubio.com>
-# Maintainer: Naveen M K <naveen@syrusdark.website>
+# Maintainer: Naveen M K <naveen521kk@gmail.com>
 
 pkgbase=manimce
 pkgname=manim
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Animation engine for explanatory math videos (community edition)."
+
 arch=('any')
-url="https://www.manim.community/"
 license=('MIT' 'custom')
+url="https://www.manim.community/"
+
+source=("https://github.com/ManimCommunity/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('2857afc0c9acd04bf0c5088f939edef744b5aef5455d48f22036baebb64d8e82482376281e06bb24fc7980eca13946779a9d7e9dcaa145fda5650235a1d1c05e')
+
+conflicts=('python-manimlib')
+
 depends=(
 	'ffmpeg'
 	'python'
@@ -17,6 +24,8 @@ depends=(
 	'python-click-default-group'
 	'python-colour'
 	'python-decorator'
+	'python-google-api-core'
+	'python-importlib-metadata'
 	'python-numpy'
 	'python-pillow'
 	'python-pygments'
@@ -37,34 +46,29 @@ depends=(
 	'python-pydub'
 	'python-screeninfo'
 )
-makedepends=(
-	'python-setuptools'
-)
+makedepends=('python-setuptools')
 optdepends=(
-	'texlive-most: latex support'
+	'jupyterlab: Jupyter something'
+	'python-grpcio-tools: WebGL renderer'
+	'texlive-most: LaTeX support'
 )
-conflicts=('python-manimlib')
-provides=()
-source=("https://github.com/ManimCommunity/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('2857afc0c9acd04bf0c5088f939edef744b5aef5455d48f22036baebb64d8e82482376281e06bb24fc7980eca13946779a9d7e9dcaa145fda5650235a1d1c05e')
 
-prepare() {
+prepare ()
+{
 	cd "$srcdir/$pkgname-$pkgver"
-	sed -i 's/rich>=6.0,<7.0/rich/' setup.py
-	sed -i 's/decorator<5.0.0/decorator/' setup.py
-	sed -i 's/click>=7.1,<8.0/click/' setup.py
-	sed -i 's/cloup>=0.7.0,<0.8.0/cloup>=0.8.0/' setup.py
+	sed -i 's/cloup>=0.7.0,<0.8.0/cloup/g' setup.py
 }
 
-build() {
+build ()
+{
 	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py build
 }
 
-package() {
+package ()
+{
 	cd "$srcdir/$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 LICENSE.community "$pkgdir/usr/share/licenses/$pkgname/LICENSE.community"
 }
-
