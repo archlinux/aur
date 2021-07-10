@@ -1,14 +1,14 @@
 pkgbase = drone
 	pkgdesc = Drone is a Continuous Delivery platform built on Docker, written in Go - OSS variant
-	pkgver = 1.10.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://drone.io
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = drone-1.10.1.tar.gz::https://github.com/drone/drone/archive/v1.10.1.tar.gz
-	sha256sums = 22e934f1d8da385082d6704781c4a89e6a8594fbd0292ea9a5bcb472cafce22e
+	source = drone-2.0.3.tar.gz::https://github.com/drone/drone/archive/v2.0.3.tar.gz
+	sha256sums = 354b60a8616dfa17ebe3f82026f0865619e55f0725a60d850ce81c50733debcb
 
 pkgname = drone
 
