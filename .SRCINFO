@@ -1,6 +1,6 @@
 pkgbase = litestream
 	pkgdesc = Streaming S3 replication for SQLite.
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/benbjohnson/litestream
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = litestream
 	makedepends = go
 	depends = glibc
 	optdepends = sqlite
-	source = https://github.com/benbjohnson/litestream/archive/v0.3.4.tar.gz
-	sha256sums = fbbfccc70f2627fd71bd2f01eb343d887bd834141ee2d48847f6121fae8964a6
+	source = https://github.com/benbjohnson/litestream/archive/v0.3.5.tar.gz
+	sha256sums = 53b4c100acd6e5c69457ea251dd3276c6786aa2d1a7e18a2f9518557f66fd209
 
 pkgname = litestream
-
