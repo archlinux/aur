@@ -1,7 +1,7 @@
 pkgbase = pomodorino
 	pkgdesc = a lightweight, simple Pomodoro timer system tray app
 	pkgver = 0.2.0a1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cadadr/pomodorino
 	arch = any
 	license = GPL
@@ -13,6 +13,7 @@ pkgbase = pomodorino
 	depends = dbus-python
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
+	optdepends = gnome-shell-extension-appindicator: show tray icon on Gnome
 	source = pomodorino-0.2.0a1.tar.gz::https://github.com/cadadr/pomodorino/archive/refs/tags/v0.2.0a1.tar.gz
 	sha256sums = fb3ace34b005c1427bf6577ae70606121af1cc8c75bf6b6244b3a71a4d6ed512
 
