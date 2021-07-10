@@ -2,18 +2,19 @@
 _kernser=5.10
 
 pkgbase=linux-studio-lts
-pkgver=5.10.46
+pkgver=5.10.48
 pkgrel=1
 pkgdesc='Linux Studio Optimized (LTS)'
-url="https://www.kernel.org/"
+url="https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
-_srcname=linux-$pkgver
+_srcname=linux-${pkgver}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   "git+https://github.com/Frogging-Family/linux-tkg.git"
@@ -24,7 +25,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('569122a39c6b325befb9ac1c07da0c53e6363b3baacd82081d131b06c1dc1415'
+sha256sums=('dbd1193480e1b85928d8dcdd7507365381aafe09810ce3d28677d6f4e722c25e'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -49,9 +50,21 @@ prepare() {
   msg2 "Apply The Clear Linux Patch..."
   patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0002-clear-patches.patch"
 
-  ## Apply the CacULE scheduler patch
-  msg2 "Apply The CacULE Scheduler Patch..."
-  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-cacule-${_kernser}.patch"
+  ## Apply the 0003-glitched-base.patch
+  msg2 "Apply The 0003-glitched-base.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-base.patch"
+
+  ## Apply the TKG glitched CFS scheduler patch
+  msg2 "Apply The TKG Glitched CFS Scheduler Patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-cfs.patch"
+
+  ## Apply the TKG glitched CFS scheduler additions patch
+  msg2 "Apply The TKG Glitched CFS Scheduler Additions Patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0003-glitched-cfs-additions.patch"
+
+  ## Apply the 0006-add-acs-overrides_iommu.patch
+  msg2 "Apply The 0006-add-acs-overrides_iommu.patch..."
+  patch -Np1 < "${srcdir}/linux-tkg/linux-tkg-patches/${_kernser}/0006-add-acs-overrides_iommu.patch"
 
   ## Apply Fsync patch
   msg2 "Apply Fsync Patch..."
@@ -69,12 +82,12 @@ prepare() {
   msg2 "Apply GCC kernel optimizations patch"
   patch -Np1 < "${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8+.patch"
 
-  ## Obtain the running system's kernel config
-  zcat /proc/config.gz > kernconfig
+  ## Use TKG Kernel Config
+  cp "${srcdir}/linux-tkg/linux-tkg-config/${_kernser}/config.x86_64" "${srcdir}/${_srcname}/config.x86_64"
 
   ## Creating New Config
   msg2 "Setting config..."
-  cp kernconfig .config
+  cp config.x86_64 .config
   make olddefconfig
 
   ## Customize Kernel Settings
