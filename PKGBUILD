@@ -1,30 +1,36 @@
-# Maintainer: Daniel Menelkir <menelkir@itroll.org>
-# Old Maintainer: Tomasz Paś <kierek93@gmail.com>
-
-pkgname=libretro-melonds-git
-_gitname=melonds
-pkgver=1801.3831662
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Daniel Menelkir <menelkir@itroll.org>
+# Contributor: Tomasz Paś <kierek93@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-melonds
+pkgname=$_pkgname-git
+pkgver=r1802.657c729
 pkgrel=1
-pkgdesc="libretro port of MelonDS, new Nintendo DS emulator"
-arch=('i686' 'x86_64')
+epoch=1
+pkgdesc='Nintendo DS core'
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/melonDS"
-license=('GPLv2')
-makedepends=('git')
-source=("${_gitname}::git://github.com/libretro/${_gitname}.git")
+license=('GPL3')
 groups=('libretro')
-
+depends=('libgl' 'libretro-core-info')
+makedepends=('gcc10' 'git' 'libglvnd')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${_gitname}"
-  make
+	# https://github.com/Arisotura/melonDS/issues/1103
+	# https://github.com/libretro/melonDS/issues/110
+	CFLAGS="$CFLAGS -Wa,--noexecstack" CC=gcc-10 CXX=g++-10 make -C $_pkgname
 }
 
 package() {
-  install -Dm644 "${_gitname}/melonds_libretro.so" "${pkgdir}/usr/lib/libretro/melonds_libretro.so"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/melonds_libretro.so
 }
