@@ -2,3 +2,6 @@
 OpenTabletDriver*.tar.gz
 OpenTabletDriver/
 OpenTabletDriver-udev/
+
+pkg/
+src/
