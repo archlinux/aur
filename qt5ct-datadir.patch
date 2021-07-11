@@ -1,0 +1,14 @@
+diff -ru qt5ct-1.2/CMakeLists.txt qt5ct-1.2.orig/CMakeLists.txt
+--- qt5ct-1.2.orig/CMakeLists.txt	2021-04-20 21:29:54.000000000 +0200
++++ qt5ct-1.2/CMakeLists.txt	2021-04-20 21:53:46.049860142 +0200
+@@ -54,8 +54,8 @@
+ add_subdirectory(src/qt5ct-qtplugin)
+ add_subdirectory(src/qt5ct-style)
+ 
+-install(DIRECTORY qss DESTINATION ${CMAKE_INSTALL_DATADIR})
+-install(DIRECTORY colors DESTINATION ${CMAKE_INSTALL_DATADIR})
++install(DIRECTORY qss DESTINATION ${CMAKE_INSTALL_DATADIR}/qt5ct)
++install(DIRECTORY colors DESTINATION ${CMAKE_INSTALL_DATADIR}/qt5ct)
+ 
+ if(UNIX)
+     add_custom_target(distclean @echo cleaning for source distribution)
