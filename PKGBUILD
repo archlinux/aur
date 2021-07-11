@@ -6,15 +6,15 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="0.15.8"
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('any')
 url="https://github.com/PQCraft/clibasic"
 license=('GPLv3')
 groups=('base-devel')
-depends=('glibc' 'readline' 'lib32-readline')
-makedepends=('readline' 'lib32-readline')
+depends=('readline' 'lib32-readline')
+makedepends=('glibc' 'make' 'readline' 'lib32-readline')
 checkdepends=()
 optdepends=()
 provides=()

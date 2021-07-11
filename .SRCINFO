@@ -1,14 +1,15 @@
 pkgbase = clibasic
 	pkgdesc = A BASIC interpreter for the terminal written in C
 	pkgver = 0.15.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/PQCraft/clibasic
 	arch = any
 	groups = base-devel
 	license = GPLv3
+	makedepends = glibc
+	makedepends = make
 	makedepends = readline
 	makedepends = lib32-readline
-	depends = glibc
 	depends = readline
 	depends = lib32-readline
 	source = Makefile
