@@ -1,0 +1,12 @@
+post_install() {
+    echo "Kolossus will be installed in ~/.local/share when launched."
+}
+
+post_upgrade() {
+    echo "It is possible that Kolossus-Launcher will re-download IFSCL."
+}
+
+post_remove() {
+    echo "The game is copied to ~/.local/share/Kolossus-Launcher"
+    echo "Delete this folder for some free space if you want."
+}
