@@ -1,0 +1,14 @@
+pkgbase = app-manager
+	pkgdesc = Manage Android application in Linux (CLI)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ASHWIN990/app-manager
+	arch = any
+	license = GPL3
+	depends = android-tools
+	provides = app-manager
+	source = git+https://github.com/ASHWIN990/app-manager.git
+	md5sums = SKIP
+
+pkgname = app-manager
+
