@@ -1,43 +1,55 @@
 # Maintainer: Kyle <kyle@gmx.ca>
-pkgname=espeak-ng-git
-_gitname=espeak-ng
-pkgver=0.0 # determined from git origin
+# contributor: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+
+pkgname=('espeak-ng-git' 'espeak-ng-espeak-git')
+pkgbase=espeak-ng-git
+pkgver=1.50.r410.g49930f48
 pkgrel=1
-pkgdesc="Next generation open source speech synthesizer based on Espeak (git version)"
+pkgdesc="Multi-lingual software speech synthesizer (development version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/espeak-ng/espeak-ng"
 license=('GPL3')
-depends=(gcc-libs pcaudiolib)
-optdepends=()
-makedepends=('git' 'ruby-ronn')
-provides=("espeak-ng=${pkgver}")
-conflicts=(espeak espeak-test)
-source=('git+https://github.com/espeak-ng/espeak-ng.git')
+makedepends=('pcaudiolib' 'git' 'ruby-ronn-ng')
+source=(${pkgname%-git}::'git+https://github.com/espeak-ng/espeak-ng.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  # Use the tag of the last commit
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  ./autogen.sh
 }
 
 build() {
-  # Espeak-ng doesn't yet support multi-threaded builds. Overriding MAKEFLAGS fixes this here for now.
-  MAKEFLAGS="-j 1"
-  cd $_gitname
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  cd ${pkgname%-git}
+  ./configure --prefix=/usr --with-extdict-{ru,cmn,yue}
+  make src/espeak-ng src/speak-ng
+  make -j1
 }
 
-package() {
-  cd $_gitname
-  make DESTDIR="$pkgdir/" install
-  cd $pkgdir/usr/bin
-  cd ../lib
-    for f in libespeak-ng.so*; do
-    ln -s "$f" $(echo $f|sed 's|-ng||')
-  done
+package_espeak-ng-git() {
+  depends=('pcaudiolib')
+  optdepends=('espeak-ng-espeak-git: for *speak symlinks')
+  provides=('espeak-ng')
+  conflicts=('espeak-ng')
+  cd ${pkgname%-git}
+  make DESTDIR="$pkgdir" install
+  mv "$pkgdir"/usr/share/vim/{addons,vimfiles}
+  rm -r "$pkgdir"/usr/{bin/*speak,include/espeak,share/vim/registry}
 }
 
-# vim:set ts=2 sw=2 et:
+package_espeak-ng-espeak-git() {
+  pkgdesc+=' (*speak symlinks)'
+  depends=('espeak-ng-git')
+  provides=('espeak-ng-espeak' 'espeak')
+  conflicts=('espeak-ng-espeak' 'espeak')
+  install -d "$pkgdir"/usr/{bin,include/espeak,share/man/man1}
+  ln -s /usr/bin/espeak-ng "$pkgdir"/usr/bin/espeak
+  ln -s /usr/bin/speak-ng "$pkgdir"/usr/bin/speak
+  ln -s /usr/include/espeak-ng/speak_lib.h "$pkgdir"/usr/include/espeak/speak_lib.h
+  ln -s /usr/share/man/man1/espeak-ng.1.gz "$pkgdir"/usr/share/man/man1/espeak.1.gz
+  ln -s /usr/share/man/man1/speak-ng.1.gz "$pkgdir"/usr/share/man/man1/speak.1.gz
+}
