@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=sad
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Space Age seD"
 arch=("x86_64")
 url="https://github.com/ms-jpq/sad"
@@ -10,7 +10,7 @@ makedepends=('rust')
 depends=('gcc-libs')
 optdepends=('fzf: for tui usage'
             'diff-so-fancy: diff colourizer'
-            'git-delta-git: diff colourizer')
+            'git-delta: diff colourizer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ms-jpq/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('b242359e9983e98c371e4bf9115437f746344edd45f6bae376b197e05a15b995')
 
