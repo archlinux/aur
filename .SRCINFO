@@ -1,14 +1,13 @@
 pkgbase = sportstracker
 	pkgdesc = Application for people who want to track their sporting activities
-	pkgver = 7.7.0
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = http://www.saring.de/sportstracker/
-	arch = any
+	arch = x86_64
 	license = GPL
-	source = sportstracker-7.7.0.deb::https://sourceforge.net/projects/sportstracker/files/SportsTracker/SportsTracker%207.7.0/Ubuntu/sportstracker-7.7.0.deb/download
+	source = sportstracker-7.8.0.deb::https://github.com/ssaring/sportstracker/releases/download/SportsTracker-7.8.0/sportstracker_7.8.0-1_amd64.deb
 	source = SportsTracker.sh
-	sha1sums = 3d441e4e6f131560d0727463b660f3d73ec68dd8
-	sha1sums = a4a76ec5366656463489fb37f0725a0692b6c2d5
+	sha1sums = e5543d1f0edc22a0389092096c9da8d13d17c1d8
+	sha1sums = 5005f98b1b207676881f05e016f771988bc1da6d
 
 pkgname = sportstracker
-
