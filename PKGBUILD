@@ -1,48 +1,29 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: PQCraft <0456523@gmail.com>
-pkgname="clibasic"
-pkgver="git"
-pkgrel=3
+
+pkgname=clibasic
+pkgver=0.15.8
+pkgrel=1
 pkgdesc="A BASIC interpreter for the terminal written in C"
-arch=('i686' 'x86_64' 'arm' 'aarch64')
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/PQCraft/clibasic"
-license=('GPLv3')
+license=(GPL3)
 depends=('glibc' 'readline')
 makedepends=('make' 'glibc' 'readline')
-source=("Makefile::https://raw.githubusercontent.com/PQCraft/clibasic/master/Makefile"
-        "clibasic.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/clibasic.c"
-        "commands.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/commands.c"
-        "functions.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/functions.c"
-        "logic.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/logic.c")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-prepare() {
-    cd "${srcdir}"
-    make clean
-}
+source=("clibasic.tar.gz::https://github.com/PQCraft/clibasic/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgname}-${pkgver}/"
     make build
 }
 
 check() {
-    cd "${srcdir}"
+    cd "${srcdir}/${pkgname}-${pkgver}/"
     [ -f ./clibasic ]
 }
 
 package() {
-    cd "${pkgdir}"
-    mkdir -p ./usr/bin/
-    mv "${srcdir}/clibasic" "${pkgdir}/usr/bin/"
-    chmod +x "${pkgdir}/usr/bin/clibasic"
+    cd "${srcdir}/${pkgname}-${pkgver}/"
+    install -Dm755 clibasic -t "${pkgdir}/usr/bin/"
 }
 
