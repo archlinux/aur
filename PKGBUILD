@@ -68,8 +68,8 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.15
-pkgrel=2
+pkgver=5.12.16
+pkgrel=1
 _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
@@ -106,7 +106,7 @@ validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07be08b2360cc1d0a6fe11bd8f18add68c893d92bb52e10bb0f61ff4eb76'
+b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984df457242d8d9595cee4aedc4d3b5b59ae3566a2e824a2294e5111956d'
         'SKIP'
         'SKIP'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -181,6 +181,7 @@ prepare() {
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
+  msg2 "Applying config..."
   make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
