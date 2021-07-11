@@ -1,6 +1,6 @@
-# Maintainer: Spacingbat3 (https://github.com/spacingbat3)
+# Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
-pkgver=1.4.2.r7.9cf51d0
+pkgver=1.5.0.r6.f1bffa3
 pkgrel=2
 pkgdesc="A Discord client based on the Electron engine."
 arch=("any")
@@ -10,9 +10,8 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-makedepends=('npm' 'git' 'librsvg' 'imagemagick' 'typescript')
+makedepends=('npm' 'git' 'imagemagick' 'typescript')
 depends=('electron')
-optdepends=('papirus-icon-theme: extra icons')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
@@ -38,8 +37,7 @@ _make_sources_ready() {
         printf "\r%-${1}s" "${2}"
     }
 
-    _icons=("${srcdir}/${pkgname%-git}/icons/app.png"
-            "${srcdir}/extra/iconThemes/Papirus/webcord.svg")
+    _icons=("${srcdir}/${pkgname%-git}/sources/assets/icons/app.png")
     _terminal() {
         printf "#!/bin/bash\nelectron /usr/lib/${pkgname%-git}.asar\nexit \$?">"$1"
     }
@@ -49,8 +47,8 @@ _make_sources_ready() {
 
     _echo_times "Clean-up workspace..."
 
-    _PACKAGE_IGNORE=("../${pkgname%-git}.asar" "../iconThemes" "icons/app.ico"
-                    "icons/app.icns" "src/js/configForge.js" "src/ts/configForge.ts"
+    _PACKAGE_IGNORE=("../${pkgname%-git}.asar" "../iconThemes" "sources/assets/icons/app.ico"
+                    "sources/assets/icons/app.icns" "sources/app/configForge.js" "sources/code/configForge.ts"
                     ".gitignore" ".eslintrc.json" "../docs" "build" ".github" "../extra")
 
     for _target in "${_PACKAGE_IGNORE[@]}"; do
@@ -61,10 +59,9 @@ _make_sources_ready() {
         fi
     done
 
-    # Move documentation files, license and 'extra' files outside sources
+    # Move documentation files, and license outside sources
     [[ -f LICENSE ]] && mv LICENSE ../COPYING
     [[ -d docs ]] && mv docs ../docs
-    [[ -d extra ]] && mv extra ../extra
 
     # Temporarily move '.git' outside the sources (if exists)
     [[ -d .git ]] && mv .git ../git-data
@@ -90,16 +87,12 @@ _make_sources_ready() {
 
     mkdir "../iconThemes"
     cd "../iconThemes"
-    _sizes_2=(128 96 64 48 32 24 22 18 16 8) # Papirus supported sizes
-    _sizes_1=(512 256 ${_sizes_2[@]})
+    _sizes=(512 256 128 96 64 48 32 24 22 18 16 8)
     _i=1
     mkdir "themeId-${_i}"
-    _echo_times "Generating icon themes..."
+    _echo_times "Generating icons in different sizes..."
     for _file in "${_icons[@]}"; do
-        _sizes="_sizes_${_i}"
-        _sizes=($(eval echo -n \"\${$_sizes[@]}\"))
         [[ $(file "${_file}") =~ "PNG" ]] && _ext="png"
-        [[ $(file "${_file}") =~ "SVG" ]] && _ext="svg"
         for _size in "${_sizes[@]}"; do
             [[ ! -z "${_msg}" ]] && _old_msg="${#_msg}" || _old_msg=0
             _msg="Generating images: F=`basename "${_file}"`; S=${_size}x${_size}"
@@ -108,8 +101,6 @@ _make_sources_ready() {
             mkdir -p "$(dirname "$_out")"
             if [[ "${_ext}" == "png" ]]; then
                 convert "$_file" -size "${_size}x${_size}" "$_out"
-            elif [[ "${_ext}" == "svg" ]]; then
-                rsvg-convert -w "${_size}" -h "${_size}" -o "${_out}" "${_file}"
             else
                 echo -e "\nERROR: Unknown image type!"
                 exit 3
@@ -146,13 +137,10 @@ package() {
     install -Dm755 "${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname%-git}/COPYING"
 
-    # Application icons – Default + Papirus (extra)
+    # Application icons
 
     install -dm755 "${pkgdir}/usr/share/icons"
     cp -R "iconThemes/themeId-1/" "${pkgdir}/usr/share/icons/hicolor"
-    cp -R "iconThemes/themeId-2/" "${pkgdir}/usr/share/icons/Papirus"
-    cp -R "iconThemes/themeId-2/" "${pkgdir}/usr/share/icons/Papirus-Dark"
-    cp -R "iconThemes/themeId-2/" "${pkgdir}/usr/share/icons/ePapirus"
     chmod 0644 "${pkgdir}/usr/share/icons"/*/*/*/"${pkgname%-git}."*
 
     # Documentation
