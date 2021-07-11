@@ -57,7 +57,8 @@ package() {
 
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
-  for file in README README.FRONTEND README.PROTOCOL; do
+  pandoc --from=markdown --to html --standalone --metadata title="Galène" README > "${doc}/README.html"
+  for file in README.FRONTEND README.PROTOCOL; do
     pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
   done
 
