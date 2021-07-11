@@ -1,0 +1,18 @@
+pkgbase = c51asm
+	pkgdesc = Advanced C51 macro assembler developed by Atmel
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/C51ASM
+	arch = x86_64
+	arch = i686
+	license = custom
+	source = c51asm.csh
+	source = c51asm.sh
+	source = https://ww1.microchip.com/downloads/en/DeviceDoc/c51asm_linux_1-2.zip
+	sha512sums = e870ce1b8dc963ece768a49dae58d0e92288ab26a84f98ca734a3067e1de9f8a6719d6c6546d722b5677d94d9690d89ed710ebeb5b57c917c057d85f12a01b72
+	sha512sums = 5cc9bf0e6cb853f13f6a6f9f09ba8098191c35950dd32202a944fcedab7e45f2971e3c838f610d3f359cfedbc606a6c08aaf3552a0d8f76d81ea20f405689654
+	sha512sums = 22be1a9b87e91ca8c8e4218386aebd10e82595768a9b45ef7784148d3b2982bdf0bf2b29fe8171e358266a68b689b6b76e4c0cd7390df3b9c629114034423744
+	depends_x86_64 = lib32-glibc
+	depends_i686 = glibc
+
+pkgname = c51asm
