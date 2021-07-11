@@ -9,7 +9,7 @@ pkgbase = lib32-shaderc
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-headers
-	depends = shaderc
+	depends = shaderc>=2021.1
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-glslang>=8.13.3559
