@@ -1,7 +1,7 @@
 pkgbase = pipewire-dummy
 	pkgdesc = dummy pipewire package for pulseeffects
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = custom
 	provides = pipewire
@@ -9,6 +9,6 @@ pkgbase = pipewire-dummy
 	provides = pipewire-alsa
 	provides = pipewire-jack
 	provides = gst-plugin-pipewire
+	provides = libpipewire-0.3.so=0-64
 
 pkgname = pipewire-dummy
-
