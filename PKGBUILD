@@ -1,7 +1,7 @@
 # Mantainer: Kozec (kozec2 <at> kozec <dot> com)
 
 pkgname=google2srt
-pkgver=0.7.5
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Google2SRT allows you to convert subtitles from Google Video and YouTube to SubRip (.srt) format."
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ package() {
 	done
 }
 
-md5sums=('d61bc76a18631a09e085393e634fa493'
+md5sums=('91962b9ca09050681cbfd277b436ee28'
          '51010acfab296d7998a6885a0b30dee7'
          '06c19e48725df1476945d73cb28744ce'
          '7878c439c81412767874bfbf6c6683ad')
