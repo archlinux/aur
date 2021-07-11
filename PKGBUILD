@@ -6,7 +6,7 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="latest"
-pkgrel=1
+pkgrel=2
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/PQCraft/clibasic"
@@ -18,7 +18,6 @@ source=("Makefile::https://raw.githubusercontent.com/PQCraft/clibasic/master/Mak
         "commands.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/commands.c"
         "functions.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/functions.c"
         "logic.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/logic.c")
-noextract=()
 sha256sums=('a00c4b01eb8d9838e8cdd6473309f1f98aa250740fce62e2664f1c8c384f622e'
             '1a3c80a96d7444df8c75d3c84d6fe2ce06e8a74beec64446026337d8a91c0d3c'
             '6e71e76b8943e5f7fcba9a30b56e6c52f307f034260390037b50885c7d62e119'
@@ -57,3 +56,4 @@ package() {
     mkdir -p ./usr/bin/
     mv ${srcdir}/clibasic ${pkgdir}/usr/bin/
 }
+

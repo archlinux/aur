@@ -1,7 +1,7 @@
 pkgbase = clibasic
 	pkgdesc = A BASIC interpreter for the terminal written in C
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PQCraft/clibasic
 	arch = i686
 	arch = x86_64
