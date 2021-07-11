@@ -1,36 +1,42 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
-pkgname=nginx-mainline-mod-nchan
+_modname=nchan
+pkgname=nginx-mainline-mod-$_modname
 pkgver=1.2.8
-pkgrel=3
-
-_nginxver=1.21.1
+pkgrel=4
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
-depends=("nginx-mainline=${_nginxver}")
+depends=("nginx-mainline")
+makedepends=('nginx-mainline-src')
 url="https://nchan.io/"
 license=('MIT')
 
 source=(
-    https://github.com/slact/nchan/archive/v${pkgver}.tar.gz
-    http://nginx.org/download/nginx-$_nginxver.tar.gz
+	https://github.com/slact/$_modname/archive/v${pkgver}.tar.gz
 )
 
-build() {
-    _module_dir="$srcdir"/nchan-$pkgver
+prepare() {
+	mkdir -p build
+	cd build
+	ln -sf /usr/src/nginx/auto
+	ln -sf /usr/src/nginx/src
+}
 
-    cd "$srcdir"/nginx-$_nginxver
-    ./configure --with-compat --add-dynamic-module=${_module_dir}
-    make modules
+build() {
+	cd build
+	/usr/src/nginx/configure --with-compat --add-dynamic-module=../$_modname-$pkgver
+	make modules
 }
 
 package() {
-    cd "$srcdir"/nginx-$_nginxver/objs
-    for _mod in ngx_nchan_module.so; do
-        install -Dm755 $_mod "$pkgdir"/usr/lib/nginx/modules/$_mod
-    done
+	install -Dm644 "$srcdir"/$_modname-$pkgver/LICENCE \
+	               "$pkgdir"/usr/share/licenses/$pkgname/LICENCE
+
+	cd build/objs
+	for mod in ngx_*.so; do
+		install -Dm755 $mod "$pkgdir"/usr/lib/nginx/modules/$mod
+	done
 }
 
-sha256sums=('de42e8d4fef6aef9e4c7303a7480adfe9545992470a7f6be008de7a4bb64cc98'
-            '68ba0311342115163a0354cad34f90c05a7e8bf689dc498abf07899eda155560')
+sha256sums=('de42e8d4fef6aef9e4c7303a7480adfe9545992470a7f6be008de7a4bb64cc98')
