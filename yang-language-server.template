@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
+
+exec "YANG_LANGUAGE_SERVER"
