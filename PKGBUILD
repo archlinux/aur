@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-stella
 pkgname=$_pkgname-git
-pkgver=6.5.3.r78.gf8c52ec24
+pkgver=6.5.3.r81.g7ade95c03
 pkgrel=1
 epoch=1
 pkgdesc="Atari 2600 VCS core"
@@ -24,12 +24,11 @@ pkgver() {
 }
 
 build() {
-	cd stella-emu
-	make -C src/libretro LTO=
+	# https://github.com/stella-emu/stella/issues/806
+	CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS" make -C stella-emu/src/libretro LTO=
 }
 
 package() {
-	cd stella-emu
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/libretro src/libretro/stella_libretro.so
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro stella-emu/src/libretro/stella_libretro.so
 }
