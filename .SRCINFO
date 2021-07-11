@@ -1,7 +1,7 @@
 pkgbase = sad
 	pkgdesc = Space Age seD
 	pkgver = 0.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ms-jpq/sad
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = sad
 	depends = gcc-libs
 	optdepends = fzf: for tui usage
 	optdepends = diff-so-fancy: diff colourizer
-	optdepends = git-delta-git: diff colourizer
+	optdepends = git-delta: diff colourizer
 	source = sad-0.4.8.tar.gz::https://github.com/ms-jpq/sad/archive/0.4.8.tar.gz
 	sha256sums = b242359e9983e98c371e4bf9115437f746344edd45f6bae376b197e05a15b995
 
