@@ -2,7 +2,7 @@
 
 pkgname=nzb-monkey
 _pkgname=nzbmonkey
-pkgver=v0.2.6
+pkgver=v0.2.7
 pkgrel=1
 pkgdesc="A Reference implementation of how to handle a NZBLNK-URI, with support for SABnzbd, NZBGet and Synology Download Station"
 url="https://nzblnk.info/nzb-monkey/"
@@ -11,10 +11,8 @@ license=("MIT")
 depends=("python" "python-pyperclip" "python-requests" "python-configobj"
         "python-colorama" "python-cryptography" "xdg-utils")
 install="${pkgname}.install"
-source=("https://github.com/nzblnk/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tbz2"
-        'konsole.patch')
-sha256sums=('ef8f6d60b061fb9a6ce6af60dc4a37e107a5283c3a1ab130c9540a0a8e5f64e1'
-            '27c46e273704071aa0cf744b3d83fcc3194308f61b16eafbca9f62f0c565a4c3')
+source=("https://github.com/nzblnk/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux.tbz2")
+sha256sums=('e49389c00403678e90813705c66a94459b9084519aae69ad8d0ac249e0ee487e')
 
 prepare() {
   # change to global folder instead of homepath
@@ -23,8 +21,6 @@ prepare() {
 
   # dont open cfg file automatically
   sed -i "s+Popen(\['xdg-open', cfg.filename\])+pass+g" "${srcdir}/${_pkgname}-${pkgver}-linux/nzblnkconfig.py"
-
-  patch "${srcdir}/${_pkgname}-${pkgver}-linux/nzblnkconfig.py" "${srcdir}"/konsole.patch
 }
 
 package() {
