@@ -18,4 +18,6 @@ sha512sums=('c553ecaaaea5944f54a7581786d1bf8668019423b74aab2f2b47475be4bc917110b
 
 package() {
   install -Dm0755 godaddy "$pkgdir"/usr/bin/godaddy
+  install -Dm0755 godaddy-certbot-dns01-auth-hook "$pkgdir"/usr/bin/godaddy-certbot-dns01-auth-hook
+  install -Dm0755 godaddy-certbot-dns01-cleanup-hook "$pkgdir"/usr/bin/godaddy-certbot-dns01-cleanup-hook
 }
