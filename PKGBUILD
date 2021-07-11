@@ -6,7 +6,7 @@ _obsver=27.0.0
 pkgrel=2
 pkgdesc="Plugin for OBS Studio allowing you to create a Dock for a source, which lets you interact, see audio levels, change volume and control media"
 arch=("i686" "x86_64" "aarch64")
-url="https://obsproject.com/forum/resources/media-controls.1032/"
+url="https://obsproject.com/forum/resources/source-dock.1317/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
