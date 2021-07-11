@@ -1,7 +1,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.3.r130.g58497b388
+pkgver=6.3.r412.gf23bc3295
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=('x86_64')
@@ -26,30 +26,30 @@ optdepends=('at-spi2-core: X11/GNOME Apps accessibility'
             'ocaml: OCaml support'
             'python: Python support'
             'speech-dispatcher: speech-dispatcher driver')
-conflicts=('brltty')
 provides=('brltty' 'libbrlapi.so')
+conflicts=('brltty')
 backup=(etc/brltty.conf)
 options=('!emptydirs')
 install=${pkgname}.install
 source=(${pkgname%-git}::'git+https://github.com/brltty/brltty.git'
-          ${pkgname%-git}-systemd.patch)
+        "${pkgname%-git}-6.2-systemd_sysusers_groups.patch")
 sha512sums=('SKIP'
-            'eab819248b5bbf8251e1bedc5009aec1ebd8fa8b8a09e2eef116d582f31d7d13d9837e06bd09a3910159cc97406d73e98bb0e9e99102fcb35e667a12153e4aa2')
+            '32ba91271e2247b4a330cd213ed75b591268cb99a79c2efd9ae675804faee027c6b2f782768cb2329a65fc914ca2400b2901f35ce1fc2522c6691b343799eb02')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	# cutting off 'BRLTTY.' prefix that presents in the git tag
 	git describe --long | sed 's/^BRLTTY.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname%-git}"
-	patch -p1 -i "$srcdir/${pkgname%-git}-systemd.patch"
+	cd "${pkgname%-git}"
+	patch -Np1 -i ../"${pkgname%-git}-6.2-systemd_sysusers_groups.patch"
 	./autogen
 }
 
 build() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	          --mandir=/usr/share/man \
 	          --with-tables-directory=/usr/share/brltty \
@@ -64,7 +64,7 @@ package() {
 	depends+=('libasound.so' 'libdbus-1.so' 'libgio-2.0.so' 'libglib-2.0.so'
 	          'libgobject-2.0.so' 'libicuuc.so' 'libgpm.so' 'libncursesw.so'
 	          'libsystemd.so')
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	make INSTALL_ROOT="${pkgdir}" install
 	make INSTALL_ROOT="${pkgdir}" install-systemd
 	make INSTALL_ROOT="${pkgdir}" install-udev

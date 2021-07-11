@@ -1,0 +1,46 @@
+diff -ruN a/Autostart/Systemd/brltty@.service.in b/Autostart/Systemd/brltty@.service.in
+--- a/Autostart/Systemd/brltty@.service.in	2020-12-11 23:51:58.000000000 +0100
++++ b/Autostart/Systemd/brltty@.service.in	2021-01-20 23:57:46.159394660 +0100
+@@ -83,8 +83,8 @@
+ 
+ # for serial I/O (/dev/ttyS<n>)
+ # probably only one of these should be uncommented
+-SupplementaryGroups=dialout
+-#SupplementaryGroups=uucp
++# SupplementaryGroups=dialout
++SupplementaryGroups=uucp
+ 
+ # for USB I/o via USBFS (/dev/bus/usb/*/*)
+ SupplementaryGroups=root
+@@ -93,7 +93,7 @@
+ SupplementaryGroups=audio
+ 
+ # for playing sound via the Pulse Audio daemon
+-SupplementaryGroups=pulse-access
++# SupplementaryGroups=pulse-access
+ 
+ # for monitoring keyboard input (/dev/input/*)
+ SupplementaryGroups=input
+diff -ruN a/Autostart/Systemd/sysusers b/Autostart/Systemd/sysusers
+--- a/Autostart/Systemd/sysusers	2020-11-29 13:35:32.000000000 +0100
++++ b/Autostart/Systemd/sysusers	2021-01-20 23:58:58.186157113 +0100
+@@ -30,8 +30,8 @@
+ 
+ # for serial I/O (/dev/ttyS<n>)
+ # probably only one of these should be uncommented
+-m brltty dialout
+-#m brltty uucp
++# m brltty dialout
++m brltty uucp
+ 
+ # for USB I/o (/dev/bus/usb/*/*)
+ m brltty root
+@@ -40,7 +40,7 @@
+ m brltty audio
+ 
+ # for playing sound via the Pulse Audio daemon
+-m brltty pulse-access
++# m brltty pulse-access
+ 
+ # for monitoring keyboard input (/dev/input/*)
+ m brltty input
