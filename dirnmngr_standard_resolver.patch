@@ -1,33 +1,3 @@
-diff --git a/lib/schleuder/gpgme/ctx.rb b/lib/schleuder/gpgme/ctx.rb
-index 295f4de..0011112 100644
---- a/lib/schleuder/gpgme/ctx.rb
-+++ b/lib/schleuder/gpgme/ctx.rb
-@@ -211,7 +211,7 @@ module GPGME
-       errors = []
-       output = []
-       base_cmd = gpg_engine.file_name
--      base_args = '--no-greeting --no-permission-warning --quiet --armor --trust-model always --no-tty --command-fd 0 --status-fd 1'
-+      base_args = '--no-greeting --quiet --armor --trust-model always --no-tty --command-fd 0 --status-fd 1'
-       cmd = [base_cmd, base_args, args].flatten.join(' ')
-       Open3.popen3(cmd) do |stdin, stdout, stderr, thread|
-         if block_given?
-@@ -224,6 +224,16 @@ module GPGME
-         exitcode = thread.value.exitstatus
-       end
- 
-+      # Don't treat warnings as errors but log them.
-+      errors = errors.map do |line|
-+        if line.match?(/gpg: WARNING: (unsafe permissions on homedir|using insecure memory)/i)
-+          Schleuder.logger.warn(line)
-+          nil
-+        else
-+          line
-+        end
-+      end.compact
-+
-       [errors, output, exitcode]
-     rescue Errno::ENOENT
-       raise 'Need gpg in $PATH or in $GPGBIN'
 diff --git a/spec/schleuder/integration/cli_spec.rb b/spec/schleuder/integration/cli_spec.rb
 index 9dccf8e..e0fd441 100644
 --- a/spec/schleuder/integration/cli_spec.rb
@@ -214,15 +184,3 @@ index 69792c2..7e8c312 100644
        with_sks_mock(list.listdir) do
          output = list.fetch_keys('87E65ED2081AE3D16BE4F0A5EBDBE899251F2412')
        end
-diff --git a/spec/sks-mock.rb b/spec/sks-mock.rb
-index 3260e7f..4c30143 100755
---- a/spec/sks-mock.rb
-+++ b/spec/sks-mock.rb
-@@ -5,7 +5,6 @@ require 'sinatra/base'
- class SksMock < Sinatra::Base
-   set :environment, :production
-   set :port, 9999
--  set :bind, 'localhost'
- 
-   get '/status' do
-     'ok'
