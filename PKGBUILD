@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r380.gaf194dcc'
+pkgver='5.6.0.beta.5.r392.g86c3ed64'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -20,11 +20,13 @@ source=(
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	'fix-autostart-path.diff'
+	'remove-meetfranz-unpack.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce')
+            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce'
+            'aa06840b98231a7fa3ece7239ba721459f5c6ecd4148d7e0ec4deb716c61ab48')
 
 _sourcedirectory="$pkgname"
 _homedirectory="$pkgname-home"
@@ -61,6 +63,9 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+
+	# Remove asarUnpack rule for @meetfranz packages
+	patch --forward -p1 < '../remove-meetfranz-unpack.diff'
 
 	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
