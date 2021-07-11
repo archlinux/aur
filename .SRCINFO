@@ -1,6 +1,6 @@
 pkgbase = coda
 	pkgdesc = A distributed file system with disconnected operation.
-	pkgver = 7.1.1
+	pkgver = 8.1.3
 	pkgrel = 1
 	url = http://coda.cs.cmu.edu/
 	arch = i686
@@ -9,8 +9,10 @@ pkgbase = coda
 	license = GPL
 	depends = bash
 	depends = perl
-	source = http://coda.cs.cmu.edu/coda/source/coda-7.1.1.tar.xz
-	sha512sums = ad7ae62f586b4a459c185b1def8b7ba6300a9b3e110c28879815fb4d6168b30823b808efa2c559e78790063d0580ca7e9ddeb72c83a3467e1397755dc57ed156
+	depends = python
+	depends = python-attrs
+	depends = python-setuptools
+	source = http://coda.cs.cmu.edu/coda/source/coda-8.1.3.tar.xz
+	sha512sums = 04bae335d4a85e0b0ba5a5577a4c4b424e7ceb0b5f1a7d9346bbae6876b12ebdb53408eeee43d520051df74bc6187c91f1906d569172e60a6e83b6ae16eefde2
 
 pkgname = coda
-

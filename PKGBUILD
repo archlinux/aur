@@ -1,24 +1,19 @@
 # Maintainer Brian Bidulock <bidulock@openss7.org>
 
 pkgname=coda
-pkgver=7.1.1
+pkgver=8.1.3
 pkgrel=1
 pkgdesc="A distributed file system with disconnected operation."
-depends=('bash' 'perl')
+depends=('bash' 'perl' 'python' 'python-attrs' 'python-setuptools')
 arch=(i686 x86_64 armv7h)
 url="http://coda.cs.cmu.edu/"
 source=("http://coda.cs.cmu.edu/coda/source/$pkgname-$pkgver.tar.xz")
-sha512sums=('ad7ae62f586b4a459c185b1def8b7ba6300a9b3e110c28879815fb4d6168b30823b808efa2c559e78790063d0580ca7e9ddeb72c83a3467e1397755dc57ed156')
+sha512sums=('04bae335d4a85e0b0ba5a5577a4c4b424e7ceb0b5f1a7d9346bbae6876b12ebdb53408eeee43d520051df74bc6187c91f1906d569172e60a6e83b6ae16eefde2')
 license=("GPL")
 
 prepare() {
   cd $pkgname-$pkgver
-  for f in al/pdbtool.c al/pdbtool.8 al/pdb.h al/Makefile.am auth2/passwd.coda.5 scripts/vice-setup-user.in ; do
-    sed -i -e 's,pdbtool,cpdbtool,g' coda-src/$f
-    sed -i -e 's,PDBTOOL,CPDBTOOL,g' coda-src/$f
-  done
-  mv coda-src/al/pdbtool.c coda-src/al/cpdbtool.c
-  mv coda-src/al/pdbtool.8 coda-src/al/cpdbtool.8
+  sed -i -e 's,^LDFLAGS=,,' lib-src/rpc2/rp2gen/Makefile.am
   ./bootstrap.sh
 }
 
@@ -33,7 +28,7 @@ build() {
     --includedir=/usr/include \
     --enable-client \
     --enable-server
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed,-pie\0/g' libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--sort-common,--as-needed,-pie,-z,relro,-z,now \0/g' libtool
   make V=1
 }
 
