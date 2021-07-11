@@ -1,7 +1,7 @@
 pkgbase = pop-session-bin
 	pkgdesc = System76 Pop Session
 	pkgver = 5.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pop-os/session
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = pop-session-bin
 	depends = gnome-shell
 	provides = pop-session
 	conflicts = pop-session
-	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-session/pop-session_5.0.0~1622747214~21.04~8ec571a_all.deb
-	sha256sums = 388721f7d857cf1ec52509ed2a2a7c28156abae9f32d7a6a538734e2d3154c61
+	source = http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-session/pop-session_5.0.0~1624974371~21.04~9888dc1_all.deb
+	sha256sums = af75260c8c105138ee5286c42202ef32c288d9b6d80bf12f0eb6c335002eec18
 
 pkgname = pop-session-bin
