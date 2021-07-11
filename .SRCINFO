@@ -1,0 +1,15 @@
+pkgbase = xearth
+	pkgdesc = Xearth sets the X root window to an image of the Earth
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://xearth.org/
+	arch = x86_64
+	arch = aarch64
+	license = CUSTOM
+	makedepends = libx11
+	makedepends = libxt
+	provides = xearth
+	source = https://xearth.org/xearth-1.1.tar.gz
+	sha256sums = bcb1407cc35b3f6dd3606b2c6072273b6a912cbd9ed1ae22fb2d26694541309c
+
+pkgname = xearth
