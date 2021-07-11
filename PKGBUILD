@@ -9,7 +9,7 @@ license=('GPL')
 depends=('qt5-base')
 makedepends=('cmake' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ern126/qtext/archive/v$pkgver.tar.gz")
-md5sums=('9c97b86b703d8ec05dc93d426cc1aa05')
+md5sums=('d0899b777a8a83e9e63975dbc7d29edc')
 
 build() {
 	cd "$pkgname-$pkgver"
