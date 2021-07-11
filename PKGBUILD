@@ -2,7 +2,7 @@
 
 pkgname=subvars
 pkgver=0.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Substitute environment variables from command line for template driven configuration files."
 url='https://subvars.lmno.pk'
 arch=("i686" "x86_64" "aarch64")
