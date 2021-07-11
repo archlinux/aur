@@ -6,7 +6,7 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="latest"
-pkgrel=4
+pkgrel=5
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/PQCraft/clibasic"
@@ -25,23 +25,23 @@ sha256sums=('a00c4b01eb8d9838e8cdd6473309f1f98aa250740fce62e2664f1c8c384f622e'
             '9832e6065abebac396632ffdd6f5fcb34bc94045276c4661bdfd212a51fce64f')
 
 prepare() {
-    cd ${srcdir}
+    cd "${srcdir}"
     make clean
 }
 
 build() {
-    cd ${srcdir}
+    cd "${srcdir}"
     make build
 }
 
 check() {
-    cd ${srcdir}
+    cd "${srcdir}"
     [ -f ./clibasic ]
 }
 
 package() {
-    cd ${pkgdir}
+    cd "${pkgdir}"
     mkdir -p ./usr/bin/
-    mv ${srcdir}/clibasic ${pkgdir}/usr/bin/
+    mv "${srcdir}/clibasic" "${pkgdir}/usr/bin/"
 }
 
