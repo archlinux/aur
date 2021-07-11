@@ -10,7 +10,7 @@ __pkgname=uutils-coreutils
 pkgver=8.32_0.0.7
 _pkgver=8.32
 __pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
 license=('GPL3' 'MIT')
@@ -54,4 +54,6 @@ package() {
   # Clean conflicts, Arch ships these in other apps
   cd $pkgdir/usr/bin
   rm groups hostname kill more uptime
+
+  rm $pkgdir/usr/share/bash-completion/completions/*
 }
