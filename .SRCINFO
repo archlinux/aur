@@ -1,6 +1,6 @@
 pkgbase = vuescan-bin
 	pkgdesc = A powerful proprietary scanning tool developed by Hamrick Software
-	pkgver = 9.7.57
+	pkgver = 9.7.59
 	pkgrel = 1
 	url = https://www.hamrick.com/
 	arch = i686
@@ -14,14 +14,14 @@ pkgbase = vuescan-bin
 	options = !strip
 	source = vuescan-LICENSE.txt
 	sha256sums = 6dbe377ee83561ef0b12fec64dadb5c81beb1f9ee274284c09184366bad1a6d6
-	source_i686 = vuescan-x32-2021-06-27-14.rpm::https://www.hamrick.com/files/vuex3297.rpm
-	sha256sums_i686 = 929da1782f7176d8168b872736c1304c61b710a4965b04332fffda6d08641531
-	source_x86_64 = vuescan-x64-2021-06-27-14.rpm::https://www.hamrick.com/files/vuex6497.rpm
-	sha256sums_x86_64 = 2d05a0c97dfeae6b285db8584b86d0a31988b64cc4393e05a205987647981d94
-	source_armv6h = vuescan-arm32-2021-06-27-14.rpm::https://www.hamrick.com/files/vuea3297.rpm
-	sha256sums_armv6h = a13ca5e75d194a249f21c4b77a351a36c101728500c786686c10a5ed5ac326d9
-	source_aarch64 = vuescan-arm64-2021-06-27-14.rpm::https://www.hamrick.com/files/vuea6497.rpm
-	sha256sums_aarch64 = 3f2c6a597c737b93b7b9c15385a5c266b02954a6a5d8b40a3f23fd2f8352ed9d
+	source_i686 = vuescan-x32-2021-07-11-22.rpm::https://www.hamrick.com/files/vuex3297.rpm
+	sha256sums_i686 = 26b59676e492438b87e5d5cb5f9efa333c5c83329accb1d1545c235a2bc0340e
+	source_x86_64 = vuescan-x64-2021-07-11-22.rpm::https://www.hamrick.com/files/vuex6497.rpm
+	sha256sums_x86_64 = 442819746b4e4f921a10b2218f25db607266a3be5f7977fc5fe46b3681d5ed15
+	source_armv6h = vuescan-arm32-2021-07-11-22.rpm::https://www.hamrick.com/files/vuea3297.rpm
+	sha256sums_armv6h = 8abf7c9c7469d50f35262633848a18d552d0c1e11fbbac2f1a58f2024ed1f2a5
+	source_aarch64 = vuescan-arm64-2021-07-11-22.rpm::https://www.hamrick.com/files/vuea6497.rpm
+	sha256sums_aarch64 = 0a7166bb1b0644319aef548b631d88271da30462cb5c50150d6be0af119c73ce
 
 pkgname = vuescan-bin
 
