@@ -1,0 +1,8 @@
+post_install() {
+  sed -i 's/<username>/simple-torrent/g' '/etc/simple-torrent.conf'
+
+  PASSWD=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 20)
+  sed -i "s/<password>/${PASSWD}/g" '/etc/simple-torrent.conf'
+
+  printf $(tput bold)"The auto-generated default password had been written to /etc/simple-torrent.conf"$(tput sgr0)"\n"
+}

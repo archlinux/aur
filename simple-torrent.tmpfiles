@@ -1,0 +1,2 @@
+d /data/torrent 0755 simple-torrent simple-torrent
+Z /data/torrent - simple-torrent simple-torrent

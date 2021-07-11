@@ -1,0 +1,22 @@
+pkgbase = simple-torrent-bin
+	pkgdesc = Simple Torrent: a self-hosted remote torrent client (rebranded from Cloud Torrent)
+	pkgver = 1.2.23
+	pkgrel = 1
+	url = https://github.com/boypt/simple-torrent
+	install = simple-torrent.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	backup = etc/simple-torrent.conf
+	source = simple-torrent.gz::https://github.com/boypt/simple-torrent/releases/download/1.2.23/cloud-torrent_linux_amd64_static.gz
+	source = simple-torrent.sysusers
+	source = simple-torrent.tmpfiles
+	source = simple-torrent.service
+	source = simple-torrent.env
+	sha256sums = 4df4987bf027d6f72b8e54062eda35b34c9af15ea73cbde0c4940aa843a7e280
+	sha256sums = e2660e2d20550154bab3b4bbc3bc857516a059346f8217773b6cb00d12511eb4
+	sha256sums = e1a6099ca9693e2004d3a67ab875c771ec1101f8539f44246f935e663492bd33
+	sha256sums = 8ae649da3a4622be3bbd4f413c2cea3bea5c492efadb3682ee55e2265193924a
+	sha256sums = 7132ed3c257b2c912fe7e707eb60f9dc6f34435ef7521ce33a4a192addeafc3d
+
+pkgname = simple-torrent-bin

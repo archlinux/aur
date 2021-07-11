@@ -1,0 +1,21 @@
+[Unit]
+Description = simple-torrent service
+After = network.target
+
+[Service]
+Type = simple
+User = simple-torrent
+Group = simple-torrent
+
+Restart = always
+RestartSec = 5
+RestartPreventExitStatus = 42
+
+EnvironmentFile = /etc/simple-torrent.conf
+WorkingDirectory = /data/torrent
+ExecStart = /usr/bin/simple-torrent $OPTIONS
+
+LimitNOFILE = 50000
+
+[Install]
+WantedBy = multi-user.target
