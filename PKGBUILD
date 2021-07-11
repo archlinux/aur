@@ -2,7 +2,7 @@
 
 _pkgname=rofi-cuff
 pkgname="${_pkgname}-git"
-pkgver=r19.80a0d84
+pkgver=r24.882f081
 pkgrel=1
 pkgdesc='Rofi wrapper for cuff, Use the Jackett search API to find torrents.'
 arch=('any')
