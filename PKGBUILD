@@ -5,8 +5,8 @@
 
 # Maintainer: Thomas Hartmann <thomas@th-ht.de>
 pkgname=htcondor
-pkgver=9.0.1
-pkgrel=2
+pkgver=9.0.2	
+pkgrel=1
 epoch=
 pkgdesc="Distributed workload management system"
 arch=("x86_64")
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/htcondor/htcondor/archive/V${pkgver//./_}.tar.gz")
 noextract=()
-md5sums=('21873629a5fb21c513a6c6271b996f1c')
+md5sums=('5ed45b593e3a51b785c0f6ade1c5b1ae')
 validpgpkeys=()
 
 build() {
