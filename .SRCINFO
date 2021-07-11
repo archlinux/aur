@@ -1,7 +1,7 @@
 pkgbase = opensph
 	pkgdesc = Smoothed particle hydrodynamics library and visualization tools.
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://gitlab.com/sevecekp/sph
 	arch = i686
 	arch = x86_64
