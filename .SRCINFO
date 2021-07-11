@@ -1,6 +1,6 @@
 pkgbase = galene-git
 	pkgdesc = A videoconferencing server
-	pkgver = 0.3.2.r0.g3bf0f9e
+	pkgver = 0.3.4.r70.g3398e92
 	pkgrel = 1
 	url = https://galene.org
 	install = galene.install
@@ -21,4 +21,3 @@ pkgbase = galene-git
 	sha256sums = 85680da8ab202280b92b6dd32e920906570fb8070db06b2ef0275462d0f5a16d
 
 pkgname = galene-git
-
