@@ -1,4 +1,4 @@
-# Maintainer: Kyle <kyle@gmx.ca>
+# Maintainer: Kyle <kyle@free2.ml>
 # contributor: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=('espeak-ng-git' 'espeak-ng-espeak-git')
