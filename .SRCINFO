@@ -11,6 +11,7 @@ pkgbase = kalendar-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = qt5-svg
+	makedepends = boost
 	depends = ki18n
 	depends = kirigami2
 	depends = kcalendarcore
