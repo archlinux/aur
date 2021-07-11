@@ -1,4 +1,4 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3@garudalinux.org>
+# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
@@ -7,9 +7,9 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=8.32_0.0.6
+pkgver=8.32_0.0.7
 _pkgver=8.32
-__pkgver=0.0.6
+__pkgver=0.0.7
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"{,.sig}
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha512sums=('1c8f3584efd61b4b02e7ac5db8e103b63cfb2063432caaf1e64cb2dcc56d8c657d1133bbf10bd41468d6a1f31142e6caa81d16ae68fa3e6e84075c253613a145'
             'SKIP'
-            'e96121d3e5535f3c83abc001d8178fd4fd367b9309aed7be28ad4ba965e1fc02fa7f070338cd34b508fcfe99e78a53195e8f313500ba50c1ac7a825ba746c8d8')
+            '7e91ffdc1a3a560b6778bf7ec78e6c95bb915dafd983476375a9596a6ea18f758409c9ca3cad2840ac8eed1f549ffcb8b1c9aaef18a5d1645a2b6e539375c39f')
 
 build() {
   # Build GNU coreutils without the stable uutils programs counterparts leaving out: stat, touch, realpath (genfstab broken), ln (no -s option)
