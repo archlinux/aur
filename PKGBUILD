@@ -49,6 +49,9 @@ build() {
 package() {
     install -Dm644 "$_pkgname/assets/sunshine.conf" "$pkgdir/usr/share/$_pkgname/sunshine.conf"
     install -Dm644 "$_pkgname/assets/apps_linux.json" "$pkgdir/usr/share/$_pkgname/apps_linux.json"
+
+    install -Dm755 -t "$pkgdir/usr/share/$_pkgname/web" "$_pkgname/assets/web"
+    install -Dm755 -t "$pkgdir/usr/share/$_pkgname/shaders/opengl" "$_pkgname/assets/shaders/opengl"
  
     install -Dm755 build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
