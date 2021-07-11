@@ -2,7 +2,7 @@
 # Contributor: leonekmi <me+git@leonekmi.fr>
 pkgname=kolossus-launcher
 pkgver="155_48"
-pkgrel=3
+pkgrel=4
 pkgdesc="Kolossus Launcher, to download the latest version of the IFSCL."
 arch=(x86_64)
 url="https://en.codelyoko.fr/ifscl/"
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
 	mkdir -p "$pkgdir/opt" "$pkgdir/usr/share/applications"
-	install -d -m755 "$pkgname-$pkgver" "$pkgdir/opt/Kolossus-Launcher"
+	cp -r "$pkgname-$pkgver" "$pkgdir/opt/Kolossus-Launcher"
 	install -m755 "$srcdir/install.sh" "$pkgdir/opt/Kolossus-Launcher"
 	install "$srcdir/Kolossus-Launcher.desktop" "$pkgdir/usr/share/applications/"
 }
