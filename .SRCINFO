@@ -1,15 +1,20 @@
 pkgbase = clibasic-bin
 	pkgdesc = A BASIC interpreter for the terminal written in C
-	pkgver = git
-	pkgrel = 3
+	pkgver = 0.15.8
+	pkgrel = 1
 	url = https://github.com/PQCraft/clibasic
-	arch = i686
 	arch = x86_64
-	license = GPLv3
+	arch = i686
+	license = GPL3
 	depends = glibc
 	depends = unzip
 	depends = wget
 	depends = readline
 	provides = clibasic
+	conflicts = clibasic
+	source_x86_64 = clibasic-bin-0.15.8-x64.zip::https://github.com/PQCraft/clibasic/releases/download/0.15.8/clibasic-linux-x64.zip
+	sha256sums_x86_64 = SKIP
+	source_i686 = clibasic-bin-0.15.8-x86.zip::https://github.com/PQCraft/clibasic/releases/download/0.15.8/clibasic-linux-x86.zip
+	sha256sums_i686 = SKIP
 
 pkgname = clibasic-bin
