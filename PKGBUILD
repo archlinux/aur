@@ -31,7 +31,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm 755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm 755 resources/$pkgname-launcher.sh "$pkgdir"/usr/bin/$pkgname-launcher.sh
+  install -Dm 755 $pkgname-launcher "$pkgdir"/usr/bin/$pkgname-launcher
 
   install -Dm 644 "resources/onedriver@.service" "$pkgdir"/usr/lib/systemd/user/onedriver@.service
   install -Dm 644 resources/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
