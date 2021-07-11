@@ -11,10 +11,6 @@ depends=("glibc")
 makedepends=('go>=1.16')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/kha7iq/subvars/archive/v${pkgver}.tar.gz"
-)
-sha256sums=(
-  96e182efa8287d0e9ad9b7cab121c52e712bfa578bd76a7a1937e4476db71234
-)
 
 build() {
   cd "${pkgname}-${pkgver}"
