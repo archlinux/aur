@@ -3,7 +3,7 @@
 
 pkgname=jtbl
 pkgver=1.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple cli tool to print JSON and JSON Lines data as a table in the terminal'
 arch=("any")
 url="https://github.com/kellyjonbrazil/jtbl"
