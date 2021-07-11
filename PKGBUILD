@@ -6,7 +6,7 @@
 # Maintainer: pqcraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="0.15.8"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('any')
@@ -43,8 +43,6 @@ prepare() {
     #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
     make clean
-    cd ${pkgdir}
-    rm -rf *
 }
 
 build() {
@@ -52,7 +50,7 @@ build() {
     #echo "srcdir: ${srcdir}"
     #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
-	make build
+    make build
 }
 
 check() {
@@ -60,7 +58,7 @@ check() {
     #echo "srcdir: ${srcdir}"
     #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
-	[ -f ./clibasic ]
+    [ -f ./clibasic ]
 }
 
 package() {
@@ -69,6 +67,6 @@ package() {
     #echo "pkgdir: ${pkgdir}"
     cd ${pkgdir}
     mkdir -p ./usr/bin/
-	mv ${srcdir}/clibasic ${pkgdir}/usr/bin/
+    mv ${srcdir}/clibasic ${pkgdir}/usr/bin/
 }
 
