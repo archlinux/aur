@@ -1,0 +1,6 @@
+post_install() {
+  chown -R scanservjs /usr/share/webapps/scanservjs/data   
+  chown -R scanservjs /usr/share/webapps/scanservjs/config
+  chown -R scanservjs /etc/webapps/scanservjs/
+  chown -R scanservjs /var/lib/webapps/scanservjs/ 
+}

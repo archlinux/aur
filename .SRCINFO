@@ -1,0 +1,24 @@
+pkgbase = scanservjs
+	pkgdesc = SANE scanner nodejs web ui
+	pkgver = 2.16.1
+	pkgrel = 1
+	url = https://github.com/sbs20/scanservjs
+	install = scanservjs.install
+	arch = any
+	license = GPL
+	makedepends = npm
+	depends = sane
+	depends = imagemagick
+	depends = curl
+	depends = nodejs
+	depends = tesseract
+	backup = etc/webapps/scanservjs
+	backup = var/lib/webapps/scanservjs
+	source = https://github.com/sbs20/scanservjs/archive/refs/tags/v2.16.1.tar.gz
+	source = scanservjs.sysusersd
+	source = removeFiberDependency.patch
+	sha512sums = 18d42d560b33bb4604858fb0b13ac03b8098b61f5649f3691e5ce954f369293ac43fe72e7f1d4c122ebe4b437971e208a86a08b9a6e7588d94b9f921da194feb
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = scanservjs
