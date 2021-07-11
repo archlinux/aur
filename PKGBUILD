@@ -1,4 +1,4 @@
-## Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
@@ -10,18 +10,28 @@
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 # Enable fsync
-_fsync=y
-#_futex2=y
+_fsync=
+#enable futex2
+_futex2=y
+#enable winesync
+_winesync=y
 ### Set performance governor as default
 _per_gov=y
+### Disable Deadline I/O scheduler
+_deadline_disable=y
+### Disable Kyber I/O scheduler
+_kyber_disable=y
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+_mm_protect=
+### Enable multigenerational LRU
+_lru_enable=y
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
+
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
 #
@@ -41,48 +51,60 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
+_major=5.13
+_minor=1
+_srcname=linux-${_major}
 pkgbase=linux-cacule-rdb-rt
-_major=5.10
-_minor=47
-_srcname=linux-${_major}.${_minor}
 pkgver=${_major}.${_minor}
+#pkgver=${_major}
 pkgrel=1
-pkgdesc='Linux-Cacule-RDB-RT'
-arch=('x86_64')
+pkgdesc='Linux-CacULE-RT Kernel by Hamad Marri and with some other patchsets'
+arch=('x86_64' 'x86_64_v3')
+url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
-makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
-  )
+makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 options=('!strip')
-_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.10"
+_patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-  "config"         # the main kernel config file
-  "${_caculepatches}/v5.10/cacule-5.10-rt.patch"
-  "${_caculepatches}/v5.10/rdb-5.10-rt.patch"
-  "${_patchsource}/bbr2-patches-v3/0001-bbr2-5.10-introduce-BBRv2.patch"
-# ${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
-# "${_patchsource}/block-patches-v3/0001-block-patches.patch"
-  "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
-# "${_patchsource}/fixes-miscellaneous-v11/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/mm-patches-v4/0001-mm-patches.patch"
-  "${_patchsource}/lqx-patches-v4/0001-lqx-patches.patch"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  "config"
+  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+  "${_caculepatches}/v5.13/cacule-5.13-rt.patch"
+  "${_caculepatches}/v5.13/rdb-5.13-rt.patch"
+  "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+  "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
+  "${_patchsource}/winesync/5.13-winesync.patch"
+  "${_patchsource}/zen-patches/0001-zen-patches.patch"
+  "${_patchsource}/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
+  "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+  "${_patchsource}/block-patches/0001-block-patches.patch"
+  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+  "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
+  "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
+  "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
+  "${_patchsource}/lru-patches/lru_5.13.patch"
+  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
+  "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
+  "${_patchsource}/misc/nohzfull.patch"
+  "${_patchsource}/misc/1000-tune-vm-mm-and-vfs-settings.patch"
+  "${_patchsource}/misc/rcu-fixes-next.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-# ${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
-  "${_patchsource}/futex-dev-patches/0001-futex-dev-patches.patch"
-# "${_patchsource}/futex2-trunk-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
-#  "${_patchsource}/futex2/futex2-5.10.patch"
+  "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
+  "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
-
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
     cd ${_srcname}
+
+    ### Add upstream patches
+    echo "Add upstream patches"
+    patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
     echo "Setting version..."
@@ -105,7 +127,7 @@ prepare() {
       make olddefconfig
     ### CPU_ARCH SCRIPT ##
       source "${startdir}"/configure
-      cacule_config
+
       cpu_arch
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
@@ -143,9 +165,15 @@ prepare() {
           scripts/config --enable CONFIG_FUTEX
           scripts/config --enable CONFIG_FUTEX_PI
         fi
+
         if [ -n "$_futex2" ]; then
           echo "Enable Futex2 support"
           scripts/config --enable CONFIG_FUTEX2
+        fi
+
+        if [ -n "$_winesync" ]; then
+          echo "Enable winesync support"
+          scripts/config --module CONFIG_WINESYNC
         fi
 
     ### Set performance governor
@@ -160,6 +188,17 @@ prepare() {
     		  scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
         fi
 
+    ### Disable Deadline I/O scheduler
+    	   if [ -n "$_deadline_disable" ]; then
+    		   echo "Disabling Deadline I/O scheduler..."
+    		   scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+    	   fi
+
+    ### Disable Kyber I/O scheduler
+    	   if [ -n "$_kyber_disable" ]; then
+    		    echo "Disabling Kyber I/O scheduler..."
+    		    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+    	    fi
 
 
       ### Enable protect file mappings under memory pressure
@@ -169,6 +208,133 @@ prepare() {
           	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
           	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
           fi
+
+              ### Enable multigenerational LRU
+          if [ -n "$_lru_enable" ]; then
+          	echo "Enabling multigenerational LRU..."
+          	scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
+          	scripts/config --enable CONFIG_LRU_GEN
+          	scripts/config --set-val CONFIG_NR_LRU_GENS 7
+          	scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+          	scripts/config --enable CONFIG_LRU_GEN_ENABLED
+          	scripts/config --disable CONFIG_LRU_GEN_STATS
+          fi
+
+    ### Enabling ZSTD COMPRESSION ##
+          echo "Set module compression to ZSTD"
+         scripts/config --enable CONFIG_MODULE_COMPRESS
+          scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+          scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+    #      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+    #      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+
+      ### Enabling Cacule-Config ##
+          echo "Enable CacULE CPU scheduler..."
+          scripts/config --enable CONFIG_CACULE_SCHED
+          scripts/config --enable CONFIG_FAIR_GROUP_SCHED
+          scripts/config --enable CONFIG_SCHED_AUTOGROUP
+          scripts/config --disable CONFIG_EXPERT
+          scripts/config --disable CONFIG_SCHED_DEBUG
+          scripts/config --disable CONFIG_SCHED_INFO
+          scripts/config --disable CONFIG_SCHEDSTATS
+          scripts/config --disable CONFIG_DEBUG_KERNEL
+          scripts/config --enable CONFIG_RT_GROUP_SCHED
+          echo "Enabling Full Tickless"
+          scripts/config --disable CONFIG_HZ_PERIODIC
+          scripts/config --disable CONFIG_NO_HZ_IDLE
+          scripts/config --enable CONFIG_NO_HZ_FULL
+          scripts/config --enable CONFIG_NO_HZ
+          scripts/config --enable CONFIG_NO_HZ_COMMON
+          scripts/config --enable CONFIG_CONTEXT_TRACKING
+          scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
+          echo "Enabling KBUILD_CFLAGS -O3..."
+          scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+          scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+          echo "Enable PREEMPT"
+          scripts/config --disable CONFIG_PREEMPT_NONE
+          scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
+          scripts/config --enable CONFIG_PREEMPT
+          scripts/config --enable CONFIG_PREEMPT_COUNT
+          scripts/config --enable CONFIG_PREEMPTION
+          scripts/config --enable CONFIG_PREEMPT_DYNAMIC
+          echo "Enable NTFS3"
+          scripts/config --module CONFIG_NTFS_FS
+          scripts/config --enable CONFIG_NTFS_RW
+          scripts/config --enable CONFIG_NTFS_DEBUG
+          scripts/config --module CONFIG_NTFS3_FS
+          scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
+          scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
+          scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
+          echo "Disabling TCP_CONG_CUBIC..."
+          scripts/config --module CONFIG_TCP_CONG_CUBIC
+          scripts/config --disable CONFIG_DEFAULT_CUBIC
+          echo "Enabling TCP_CONG_BBR2..."
+          scripts/config --enable CONFIG_TCP_CONG_BBR2
+          scripts/config --enable CONFIG_DEFAULT_BBR2
+          scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+          echo "Enable VHBA-Module"
+          scripts/config --module CONFIG_VHBA
+          scripts/config --disable CONFIG_GCC_PLUGINS
+          # General Setup
+          scripts/config --disable CONFIG_BSD_PROCESS_ACCT
+          scripts/config --disable CONFIG_TASK_XACCT
+          scripts/config --enable CONFIG_PSI
+          scripts/config --disable CONFIG_MEMCG
+          scripts/config --enable CONFIG_CGROUP_CPUACCT
+          scripts/config --disable CONFIG_CGROUP_DEBUG
+          scripts/config --disable CONFIG_CHECKPOINT_RESTORE
+          scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
+          scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
+          scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
+          scripts/config --disable CONFIG_PROFILING
+
+          # Processor type and features
+          scripts/config --disable CONFIG_X86_5LEVEL
+          scripts/config --disable CONFIG_KEXEC
+          scripts/config --disable CONFIG_KEXEC_FILE
+          scripts/config --disable CONFIG_CRASH_DUMPs
+          scripts/config --disable CONFIG_KPROBES
+          # Kernel hacking
+          scripts/config --disable CONFIG_FTRACE
+          scripts/config --disable CONFIG_DEBUG_KERNEL
+          scripts/config --disable CONFIG_PAGE_EXTENSION
+          scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
+          scripts/config --disable CONFIG_PRINTK_TIME
+          scripts/config --disable CONFIG_DEBUG_INFO
+          scripts/config --disable CONFIG_ENABLE_MUST_CHECK
+          scripts/config --disable CONFIG_STRIP_ASM_SYMS
+          scripts/config --disable CONFIG_UNUSED_SYMBOLS
+          scripts/config --disable CONFIG_DEBUG_FS
+          scripts/config --disable CONFIG_OPTIMIZE_INLINING
+          scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
+          scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
+          scripts/config --disable CONFIG_STACK_VALIDATION
+          scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
+          scripts/config --disable CONFIG_MAGIC_SYSRQ
+          scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
+          scripts/config --disable CONFIG_PAGE_EXTENSION
+          scripts/config --disable CONFIG_DEBUG_PAGEALLOC
+          scripts/config --disable CONFIG_PAGE_OWNER
+          scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
+          scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
+          scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
+          scripts/config --disable CONFIG_DETECT_HUNG_TASK
+          scripts/config --disable CONFIG_WQ_WATCHDOG
+          scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
+          scripts/config --disable CONFIG_SCHEDSTATS
+          scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
+          scripts/config --disable CONFIG_STACKTRACE
+          scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
+          scripts/config --disable CONFIG_RCU_TRACE
+          scripts/config --disable CONFIG_FAULT_INJECTION
+          scripts/config --disable CONFIG_LATENCYTOP
+          scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
+          scripts/config --disable RUNTIME_TESTING_MENU
+          scripts/config --disable CONFIG_MEMTEST
+          scripts/config --disable CONFIG_KGDB
+          scripts/config --disable CONFIG_EARLY_PRINTK
+          scripts/config --disable CONFIG_DOUBLEFAULT
+
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -322,13 +488,29 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-md5sums=('cb6a98b89db3357997318c6a8fc58032'
-         '7d8c2aaaed142867c014f44b439f8694'
-         'ed0111102cdd24540985bece74c5be3d'
-         '29011f244618474caa17060e21234a89'
-         '45704a71e1cb971e337700c52da739f0'
-         '1ddeca3dfe8d2dfbf722a6e19ab500cd'
-         'e32edb4d49288ccb2417a2030f90d41f'
-         'db72f9fe09be3f11db7e1e268a5ac3eb'
-         '0575ffbb96ab5e5b1b2e378667e276ca'
-         '596b80bb280533a8d7dbab246f179d4f')
+md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
+         'e1d6115db8aa6afc106494e940c5cdc0'
+         '9fc6628d79cc6441934f49da93ccb37c'
+         '9bb46b8ce45259c238c5233b8394d70b'
+         '26e9b72135ebafdf269c8b90014d87e1'
+         'd14f958ac0f362c796edd33889624d4e'
+         '7640a753a7803248543675a6edc75e08'
+         '2c0375b3cc9690a0f0f3d3e49df54d10'
+         '9573b92353399343db8a691c9b208300'
+         '1217799f33d6ba822152a0e2fb6f2e34'
+         '09a9e83b7b828fae46fd1a4f4cc23c28'
+         'e16eb528e701193bc8cb1facc6b27231'
+         '396c84c4a6557db27f9c3bbfa656ac3e'
+         '9bbbd88f0303ccd59064648eaaf80edd'
+         '1bd37d8e71b2a7aae8ebd2853a08f445'
+         '63078800040b2a9a9f19c59c4ebf5b23'
+         '81b228546bcd56ff04e7f388a37e11a9'
+         '3f302dbaceea020abd40f6e9f23b75df'
+         '7aeb2c86091b9432d1fc9172d418d486'
+         '86825a0c5716a1d9c6a39f9d3886b1bf'
+         'c68e4fd9b4a55ee730a34bb39ae325ad'
+         '0632f49f076c90b6d6098cad7b5a88ac'
+         'eff4bb43a8defb7ed08b9c1e403291ea'
+         '9e5114dba6da65e8d444aa225b109a21'
+         'c360b8c17d778f98a54fa7cddf348566'
+         'ef7748efcae55f7db8961227cbae3677')
