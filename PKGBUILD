@@ -5,13 +5,15 @@
 pkgname=qt5ct-kde
 _pkgname=qt5ct
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5 Configuration Utility, patched to work correctly with KDE applications"
 arch=(x86_64)
 url="https://qt5ct.sourceforge.io/"
 license=(BSD)
 depends=(qqc2-desktop-style)
 makedepends=(cmake qt5-tools)
+conflicts=(qt5ct)
+provides=(qt5ct)
 source=(https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver.tar.bz2
         qt5ct-datadir.patch
         qt5ct-shenanigans.patch)

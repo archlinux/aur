@@ -1,13 +1,15 @@
 pkgbase = qt5ct-kde
 	pkgdesc = Qt5 Configuration Utility, patched to work correctly with KDE applications
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qt5ct.sourceforge.io/
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qqc2-desktop-style
+	provides = qt5ct
+	conflicts = qt5ct
 	source = https://downloads.sourceforge.net/project/qt5ct/qt5ct-1.2.tar.bz2
 	source = qt5ct-datadir.patch
 	source = qt5ct-shenanigans.patch
