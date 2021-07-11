@@ -1,0 +1,19 @@
+pkgbase = vivado-lab-edition
+	pkgdesc = FPGA/CPLD Lab Tools for Xilinx devices
+	pkgver = 2021.1
+	pkgrel = 1
+	url = https://www.xilinx.com/products/design-tools/vivado.html
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	optdepends = fxload
+	optdepends = digilent.adept.runtime
+	optdepends = digilent.adept.utilities
+	conflicts = vivado
+	options = !strip
+	source = file:///Xilinx_Vivado_Lab_Lin_2021.1_0610_2318.tar.gz
+	source = spoof_homedir.c
+	md5sums = 2548424763ce4358dcb89258e89e5824
+	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
+
+pkgname = vivado-lab-edition
