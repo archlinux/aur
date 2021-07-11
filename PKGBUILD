@@ -2,7 +2,7 @@
 
 pkgname=clibasic
 pkgver=0.15.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/PQCraft/clibasic"
