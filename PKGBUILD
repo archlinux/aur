@@ -6,13 +6,13 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="latest"
-pkgrel=3
+pkgrel=4
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/PQCraft/clibasic"
 license=('GPLv3')
-depends=('readline' 'lib32-readline')
-makedepends=('glibc' 'make' 'readline' 'lib32-readline')
+depends=('glibc' 'readline' 'lib32-readline')
+makedepends=('make' 'glibc' 'readline' 'lib32-readline')
 source=("Makefile::https://raw.githubusercontent.com/PQCraft/clibasic/master/Makefile"
         "clibasic.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/clibasic.c"
         "commands.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/commands.c"
@@ -25,33 +25,21 @@ sha256sums=('a00c4b01eb8d9838e8cdd6473309f1f98aa250740fce62e2664f1c8c384f622e'
             '9832e6065abebac396632ffdd6f5fcb34bc94045276c4661bdfd212a51fce64f')
 
 prepare() {
-    #echo "prepare()"
-    #echo "srcdir: ${srcdir}"
-    #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
     make clean
 }
 
 build() {
-    #echo "build()"
-    #echo "srcdir: ${srcdir}"
-    #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
     make build
 }
 
 check() {
-    #echo "check()"
-    #echo "srcdir: ${srcdir}"
-    #echo "pkgdir: ${pkgdir}"
     cd ${srcdir}
     [ -f ./clibasic ]
 }
 
 package() {
-    #echo "package()"
-    #echo "srcdir: ${srcdir}"
-    #echo "pkgdir: ${pkgdir}"
     cd ${pkgdir}
     mkdir -p ./usr/bin/
     mv ${srcdir}/clibasic ${pkgdir}/usr/bin/
