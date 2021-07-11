@@ -57,7 +57,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -503,7 +503,7 @@ done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'e1d6115db8aa6afc106494e940c5cdc0'
-         '2ec080047599485c19b50300c9d07aa8'
+         '4c363050800064ca6cee602da9b0ce06'
          '9bb46b8ce45259c238c5233b8394d70b'
          '8fab6f0acf86d138a283c4dd044198ed'
          '7640a753a7803248543675a6edc75e08'
@@ -518,7 +518,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
          '63078800040b2a9a9f19c59c4ebf5b23'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         'ed46a39e062f07693f52981fbd7350b7'
+         '81b228546bcd56ff04e7f388a37e11a9'
          '3f302dbaceea020abd40f6e9f23b75df'
          '7aeb2c86091b9432d1fc9172d418d486'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
