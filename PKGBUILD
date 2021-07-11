@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideodownloader
-pkgver=4.16.0.4250
+pkgver=4.16.4.4300
 pkgrel=1
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.png"
         "fix_symlink_path.patch")
-sha256sums=('120a4378b6158e8a706f8f6a445fb47950afba6d49d501ffc082b1b6a4fac77e'
+sha256sums=('69f84158f060ff234fefd5dccfe6a0c79a1f19ff6236525520ec8e4ec14e1a54'
             '8df6a293816854216a35b53e3ec01a2dc6d8cfb416806d49fc5d83f04ecb958f'
             '56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be'
             '2b5a9c262ff7b832eafbfb0e027b676a8be44f9c527b99ac00bd8379fc709668')
@@ -60,6 +60,12 @@ package() {
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Widgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5XcbQpa.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Xml.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "QtWebEngineProcess"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" "icudtl.dat"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" "qtwebengine_devtools_resources.pak"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" "qtwebengine_resources.pak"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" "qtwebengine_resources_100p.pak"
+  install -m 644 -t "${pkgdir}/usr/lib/${pkgname}" "qtwebengine_resources_200p.pak"
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/platforms"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}/platforms" platforms/*
   install -m 755 -d "${pkgdir}/usr/lib/${pkgname}/xcbglintegrations"
