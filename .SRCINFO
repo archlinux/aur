@@ -1,7 +1,7 @@
 pkgbase = openkj-git
 	pkgdesc = Open KJ - Cross-platform open source karaoke hosting software
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openkj.org/
 	install = openkj.install
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = openkj-git
 	md5sums = SKIP
 
 pkgname = openkj-git
-

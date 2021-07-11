@@ -3,7 +3,7 @@
 pkgname=openkj-git
 _pkgname=openkj
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Open KJ - Cross-platform open source karaoke hosting software"
 arch=('i686' 'x86_64')
 url="https://openkj.org/"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 build() {
   cd "${srcdir}/OpenKJ"
-  cmake CMakeLists.txt
+  cmake -DCMAKE_INSTALL_PREFIX='/usr' CMakeLists.txt
   make
 }
 
