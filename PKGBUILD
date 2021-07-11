@@ -6,13 +6,13 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="git"
-pkgrel=2
+pkgrel=3
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/PQCraft/clibasic"
 license=('GPLv3')
-depends=('glibc' 'readline' 'lib32-readline')
-makedepends=('make' 'glibc' 'readline' 'lib32-readline')
+depends=('glibc' 'readline')
+makedepends=('make' 'glibc' 'readline')
 source=("Makefile::https://raw.githubusercontent.com/PQCraft/clibasic/master/Makefile"
         "clibasic.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/clibasic.c"
         "commands.c::https://raw.githubusercontent.com/PQCraft/clibasic/master/commands.c"
