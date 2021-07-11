@@ -1,6 +1,6 @@
 # Maintainer: Nick Haghiri (n s dot hag hiri at G mail dot com)
 pkgname=obinskit
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="ObinsKit for Anne Pro and Anne Pro 2"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://s2.hexcore.xyz/occ/linux/tar/ObinsKit_${pkgver}_x64.tar.gz"
 "deb_extra_files_obins.tar.gz")
-sha256sums_x86_64=('649a1b40281db9f9124815b3d878a7ccd6ee55b7d171db117ea21e92bfcf69f7'
+sha256sums_x86_64=('572c88a495fe50c55c53d491a3c7b744dfbae0a509538a211d4c228eb87b1a9e'
 '137296d606b8127dfda7626421fd17fbee06712678b7ae25793e51d78221fab5')
 
 
