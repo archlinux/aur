@@ -3,10 +3,10 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: pqcraft <0456523@gmail.com>
+# Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
 pkgver="0.15.8"
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('any')
