@@ -1,7 +1,7 @@
  
 _realname=fluidsynth
 pkgname=mingw-w64-fluidsynth
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications (mingw-w64)"
 url="http://www.fluidsynth.org/"
@@ -16,7 +16,7 @@ makedepends=('mingw-w64-cmake'
   'mingw-w64-make')
 options=('staticlibs' '!buildflags' '!strip')
 source=("${_realname}-${pkgver}.tar.gz::https://github.com/FluidSynth/${_realname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1c56660f23f6c406b36646cc619fc2d2a5265d1d3290e79bcef4505bcd985fdd')
+sha256sums=('695aedbfd53160fef7a9a1f66cd6d5cc8a5da0fd472eee458d82b848b6065f9a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
