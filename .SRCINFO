@@ -1,0 +1,15 @@
+pkgbase = python-firecfg-git
+	pkgdesc = An improved firecfg written in python.
+	pkgver = v0.0.5.r0.gaa324e1
+	pkgrel = 1
+	url = https://github.com/rusty-snake/firecfg.py
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = firejail
+	source = python-firecfg-git::git+https://github.com/rusty-snake/firecfg.py.git#branch=master
+	b2sums = SKIP
+
+pkgname = python-firecfg-git
