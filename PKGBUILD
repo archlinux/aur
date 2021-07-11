@@ -14,7 +14,5 @@ md5sums=('SKIP')
 
 package() {
 	cd "$srcdir/${pkgname}"
-	ls
-	sleep 5s
 	install -Dm775 app-manager -t ${pkgdir}/usr/bin/
 }
