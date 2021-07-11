@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=12.2.0
+pkgver=12.3.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('x86_64')
@@ -71,7 +71,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('259a0b9688fa1829924497ef355816de')
+md5sums=('e59534fde7df298cccbc0855b53f3514')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -128,7 +128,7 @@ package() {
     mkdir -p ${srcdir}/WolframScript
     mkdir -p ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
-    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.5.0+2020121053_amd64.deb data.tar.xz
+    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.6.0+20210504145_amd64.deb data.tar.xz
     tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
 
 
@@ -140,7 +140,7 @@ package() {
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
     desktopFile='wolfram-mathematica12.desktop'
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
-    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
+    sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica --name M-12.3 %F|g' $desktopFile
     printf 'Categories=Science;Math;NumericalAnalysis;DataVisualization;\n' >> $desktopFile
     printf 'StartupWMClass=Mathematica;\n' >> $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/
@@ -161,6 +161,10 @@ package() {
     mkdir -p ${pkgdir}/usr/share/man/man1
     cd ${pkgdir}/opt/Mathematica/SystemFiles/SystemDocumentation/Unix
     cp *.1 ${pkgdir}/usr/share/man/man1
+
+    msg2 "Copying license"
+    mkdir -p ${pkgdir}/usr/share/license/Mathematica/
+    cp ${pkgdir}/opt/Mathematica/LICENSE.txt ${pkgdir}/usr/share/license/Mathematica/license.txt
 
     msg2 "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*
