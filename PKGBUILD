@@ -9,6 +9,7 @@ url='https://subvars.lmno.pk'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kha7iq/subvars/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('96e182efa8287d0e9ad9b7cab121c52e712bfa578bd76a7a1937e4476db71234')
 
 build() {
     export GOFLAGS="-trimpath"
