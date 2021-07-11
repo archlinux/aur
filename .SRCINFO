@@ -1,8 +1,9 @@
 pkgbase = powder-toy-snapshot
 	pkgdesc = Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Bleeding edge (snapshot) branch
 	pkgver = 218
-	pkgrel = 3
+	pkgrel = 4
 	url = https://powdertoy.co.uk/
+	install = powder-toy-snapshot.install
 	arch = x86_64
 	arch = i686
 	license = GPL3

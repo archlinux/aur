@@ -1,0 +1,10 @@
+post_upgrade() {
+  local new_pkgver="$1" old_pkgver="$2"
+  if [ "$(vercmp "$old_pkgver" 218)" -lt 0 ] && [ "$(vercmp "$new_pkgver" 218)" -ge 0 ]; then
+    cat <<EOF
+The saves directory has been changed from \`~/.local/share/powder-toy\` to
+\`~/.local/share/The Powder Toy\` in the version 218, please, move
+your saves accordingly.
+EOF
+  fi
+}
