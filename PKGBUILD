@@ -1,8 +1,8 @@
 # Maintainer Alfred Jophy alfredjophy@protonmail.com
 pkgname=motivate
 pkgdesc="Gives you a motivational quote"
-pkgver=1.3.1
-pkgrel=1
+pkgver=1.3.0
+pkgrel=2
 url="https://github.com/AlfredEVOL/motivate"
 arch=('x86_64')
 license=('MIT')
