@@ -1,8 +1,8 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
-# Contributor: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=s3cmd-git
-pkgver=2.1.0.75.5834228
+pkgver=2.1.0.r88.g27d8fb0
 pkgrel=1
 pkgdesc="A command line client for Amazon S3 (development version)"
 arch=('any')
@@ -12,17 +12,23 @@ depends=('python' 'python-dateutil')
 makedepends=('git' 'python-setuptools')
 optdepends=('gnupg: encrypted file storage'
             'python-magic: determine mimetype based on contents')
-provides=('s3cmd')
-conflicts=('s3cmd')
-source=("git+${url}.git")
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=(${pkgname%-git}::"git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/-/./g;s/[grv]//g')"
+	cd "${pkgname%-git}"
+	# cutting off 'v' prefix that presents in the git tag
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/_/-/g;s/-/./g'
+}
+
+build() {
+	cd "${pkgname%-git}"
+	python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
-	python setup.py install --root="$pkgdir"
+	cd "${pkgname%-git}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
