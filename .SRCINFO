@@ -1,12 +1,10 @@
 pkgbase = quiterss-backup
 	pkgdesc = Simple script, which provides more convenient backup options for QuiteRSS
 	pkgver = 0.7.0
-	pkgrel = 1
-	url = https://joren.ga
+	pkgrel = 2
 	arch = any
 	license = MIT
 	source = quiterss-backup::https://github.com/Jorengarenar/quiterss-backup/archive/0.7.0.tar.gz
-	sha512sums = SKIP
+	sha512sums = 5e7e1e7901f4d69820fee3ed641ce2f355c839f3fd50220fc7f140a1635ea809ea074a343d5e6963ff465c9227a21c1f82b4056b287460b86fb6e29e8727ebb8
 
 pkgname = quiterss-backup
-
