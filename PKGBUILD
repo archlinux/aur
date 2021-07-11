@@ -4,14 +4,15 @@
 # then please put 'unknown'.
 
 # Maintainer: PQCraft <0456523@gmail.com>
-pkgname="clibasic-bin-official"
+pkgname="clibasic-bin"
 pkgver="git"
-pkgrel=1
+pkgrel=2
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64')
 url="https://github.com/PQCraft/clibasic"
 license=('GPLv3')
 depends=('glibc' 'unzip' 'wget' 'readline' 'lib32-readline')
+provides=('clibasic')
 
 prepare() {
     rm -rf clibasic*
