@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=zigmod-bin
-pkgver=49
+pkgver=51
 pkgrel=1
 pkgdesc="A package manager for the Zig programming language"
 url="https://github.com/nektro/zigmod"
@@ -13,7 +13,7 @@ source=(
   "${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/zigmod-x86_64-linux"
 )
 sha256sums=(
-  'd711e4fbf66d9b7301bb46bb790af8f6350e0f37285e5c47c6f3d5eb2490448d'
+  '9878d891d7d3ab47580b08f31bf6fbdb0382ba3f4edb7d413bf83ce51f548ec4'
 )
 
 package() {

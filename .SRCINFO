@@ -1,13 +1,13 @@
 pkgbase = zigmod-bin
 	pkgdesc = A package manager for the Zig programming language
-	pkgver = 49
+	pkgver = 51
 	pkgrel = 1
 	url = https://github.com/nektro/zigmod
 	arch = x86_64
 	license = MIT
 	provides = zigmod
 	conflicts = zigmod
-	source = zigmod-bin-49::https://github.com/nektro/zigmod/releases/download/v49/zigmod-x86_64-linux
-	sha256sums = d711e4fbf66d9b7301bb46bb790af8f6350e0f37285e5c47c6f3d5eb2490448d
+	source = zigmod-bin-51::https://github.com/nektro/zigmod/releases/download/v51/zigmod-x86_64-linux
+	sha256sums = 9878d891d7d3ab47580b08f31bf6fbdb0382ba3f4edb7d413bf83ce51f548ec4
 
 pkgname = zigmod-bin
