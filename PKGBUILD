@@ -19,7 +19,7 @@ sha256sums=(
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_LDFLAGS="$LDFLAGS"
-  go build -ldflags "-linkmode=external -X github.com/kha7iq/subvars/main.version=v${pkgver}" -o ${pkgname} .
+  go build -ldflags "-linkmode=external -X github.com/kha7iq/subvars/cmd.version=${pkgver}" -o ${pkgname} .
 }
 
 package() {
