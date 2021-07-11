@@ -4,7 +4,7 @@ pkgname='pingme-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.3
 pkgrel=1
-pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email. (Offical binary)"
+pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email. (official binary)"
 url='https://pingme.lmno.pk'
 arch=("i686" "x86_64" "aarch64")
 license=("MIT")
@@ -15,7 +15,7 @@ depends=()
 makedepends=()
 optdepends=('nfpm: deb and rpm packager')
 
-_basedownloadurl="https://github.com/kha7iq/${_pkgname}/releases/download/${pkgver}"
+_basedownloadurl="https://github.com/kha7iq/${_pkgname}/releases/download/v${pkgver}"
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_x86_64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_x86_64.tar.gz")
 sha256sums_x86_64=(0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
