@@ -1,11 +1,12 @@
 pkgbase = sfeed
 	pkgdesc = RSS and Atom parser
-	pkgver = 0.9.24
+	pkgver = 0.9.25
 	pkgrel = 1
 	url = https://codemadness.org/sfeed-simple-feed-parser.html
 	arch = any
 	license = ISC
-	source = https://codemadness.org/releases/sfeed/sfeed-0.9.24.tar.gz
-	sha256sums = 0d45e2fc62c5bc29b6cfe08eb7f2f08b50039ce38b0bdc3028fb85ff63681060
+	depends = sh
+	source = https://codemadness.org/releases/sfeed/sfeed-0.9.25.tar.gz
+	sha256sums = a3d4a95bd660b6df4b7adaaecc7438fdb8ddd390b5d7e13fd14c2aeae1e2220a
 
 pkgname = sfeed
