@@ -1,4 +1,4 @@
-pkgbase = clibasic-bin
+pkgbase = clibasic-bin-official
 	pkgdesc = A BASIC interpreter for the terminal written in C
 	pkgver = git
 	pkgrel = 2
@@ -13,4 +13,4 @@ pkgbase = clibasic-bin
 	depends = lib32-readline
 	provides = clibasic
 
-pkgname = clibasic-bin
+pkgname = clibasic-bin-official

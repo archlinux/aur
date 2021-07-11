@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: PQCraft <0456523@gmail.com>
-pkgname="clibasic-bin"
+pkgname="clibasic-bin-official"
 pkgver="git"
 pkgrel=2
 pkgdesc="A BASIC interpreter for the terminal written in C"
