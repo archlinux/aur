@@ -1,5 +1,5 @@
 pkgname=shibboleth-sp
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Shibboleth SAML2 Service Provider (including Apache mod_shib)"
 url="https://wiki.shibboleth.net/confluence/display/SP3/Home"
@@ -36,7 +36,7 @@ source=("https://shibboleth.net/downloads/service-provider/$pkgver/$pkgname-$pkg
         "shibboleth-sp.sysusers"
         "shibboleth-sp.tmpfiles"
         "shibd.service")
-sha256sums=('79d304b5bd00f84b04ea87add59c7c2916d4d7d0af725f4b188a67cae6f8a9ec'
+sha256sums=('c4044735bd330ec3ae47ab94be5d9539de096d63fc2c44fa22da3ac554d6f04c'
             'SKIP'
             'e33bf34a6d629125b79e93da5b7fff6489f6b385bfd6abf04145b438a0446060'
             '8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db'
@@ -65,6 +65,7 @@ backup=(etc/shibboleth/attrChecker.html
 
 build() {
   cd "$pkgname-$pkgver"
+  export CXXFLAGS+=" -std=gnu++14"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

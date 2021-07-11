@@ -1,6 +1,6 @@
 pkgbase = shibboleth-sp
 	pkgdesc = Shibboleth SAML2 Service Provider (including Apache mod_shib)
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://wiki.shibboleth.net/confluence/display/SP3/Home
 	install = shibboleth-sp.install
@@ -42,14 +42,14 @@ pkgbase = shibboleth-sp
 	backup = etc/shibboleth/shibboleth2.xml
 	backup = etc/shibboleth/shibd.logger
 	backup = etc/shibboleth/sslError.html
-	source = https://shibboleth.net/downloads/service-provider/3.2.2/shibboleth-sp-3.2.2.tar.gz
-	source = https://shibboleth.net/downloads/service-provider/3.2.2/shibboleth-sp-3.2.2.tar.gz.asc
+	source = https://shibboleth.net/downloads/service-provider/3.2.3/shibboleth-sp-3.2.3.tar.gz
+	source = https://shibboleth.net/downloads/service-provider/3.2.3/shibboleth-sp-3.2.3.tar.gz.asc
 	source = apache.conf
 	source = shibboleth-sp.sysusers
 	source = shibboleth-sp.tmpfiles
 	source = shibd.service
 	validpgpkeys = DCAA15007BED9DE690CD9523378B845402277962
-	sha256sums = 79d304b5bd00f84b04ea87add59c7c2916d4d7d0af725f4b188a67cae6f8a9ec
+	sha256sums = c4044735bd330ec3ae47ab94be5d9539de096d63fc2c44fa22da3ac554d6f04c
 	sha256sums = SKIP
 	sha256sums = e33bf34a6d629125b79e93da5b7fff6489f6b385bfd6abf04145b438a0446060
 	sha256sums = 8df312358f8341b246f08bc8b8691f49b00dd3fe639061aa24f60a5ddb9551db
@@ -57,4 +57,3 @@ pkgbase = shibboleth-sp
 	sha256sums = 9f2d48c1cd3b80108c1a567ed6778272880c53e8c647b16f18084d681c3b8671
 
 pkgname = shibboleth-sp
-
