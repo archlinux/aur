@@ -1,7 +1,7 @@
 pkgbase = anbox-support
 	pkgdesc = Metapkg with for Anbox & needed configs
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/anbox-support
 	install = anbox-support.install
 	arch = any
