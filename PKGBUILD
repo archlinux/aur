@@ -5,8 +5,8 @@
 
 # Maintainer: PQCraft <0456523@gmail.com>
 pkgname="clibasic"
-pkgver="latest"
-pkgrel=6
+pkgver="git"
+pkgrel=1
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/PQCraft/clibasic"
