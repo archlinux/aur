@@ -1,0 +1,11 @@
+pkgbase = etsh
+	pkgdesc = An enhanced, backward-compatible port of the V6 UNIX <-> V6 Thompson shell.
+	pkgver = 5.4.0
+	pkgrel = 1
+	url = https://etsh.nl/
+	arch = x86_64
+	license = GPL
+	source = https://etsh.nl/src/etsh_5.4.0/etsh-5.4.0.tar.xz
+	sha512sums = 7360da1e9bc6a7ed8c38e95eb1e2159bd2803ffa1a032235380d5901a1a6e0399d418b532917e8578bdab53fb43f99d35affc7753da0ec5612bbb8d47715970a
+
+pkgname = etsh
