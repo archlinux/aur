@@ -2,7 +2,7 @@
 pkgname=motivate
 pkgdesc="Gives you a motivational quote"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=1
 url="https://github.com/AlfredEVOL/motivate"
 arch=('x86_64')
 license=('MIT')
