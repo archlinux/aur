@@ -6,10 +6,10 @@ pkgbase = haskell-godaddy
 	arch = any
 	license = GPL3
 	source = https://github.com/ibizaman/haskell-godaddy/releases/download/0.0.0.5/godaddy.zip
-	source = https://github.com/ibizaman/haskell-godaddy/blob/0.0.0.5/bin/godaddy-certbot-dns01-auth-hook
-	source = https://github.com/ibizaman/haskell-godaddy/blob/0.0.0.5/bin/godaddy-certbot-dns01-cleanup-hook
+	source = https://raw.githubusercontent.com/ibizaman/haskell-godaddy/0.0.0.5/bin/godaddy-certbot-dns01-auth-hook
+	source = https://raw.githubusercontent.com/ibizaman/haskell-godaddy/0.0.0.5/bin/godaddy-certbot-dns01-cleanup-hook
 	sha512sums = c553ecaaaea5944f54a7581786d1bf8668019423b74aab2f2b47475be4bc917110b80bc0e07a23f506498ef12e3612007e17fac9a245d8c64535547afb8dc35d
-	sha512sums = f316a44966add4717d49a1d1c0b46889bfe47b8c08e6090d715b0aa7b5a4cc89fd4e3e97879f7bf70c9e2800b054670bd3b134aab99312f2b418253d4706d8b5
-	sha512sums = db0d1be8f9e369845a90bd7985dce6759d10056d7048cc3b896050d5de503c1a5b0515ac2483724f16a6830c42f14d9e658517c20dda755246d3de9123494ad9
+	sha512sums = 5a07f6ca526ee01e9e242da02710fa1e357f47edeb826d87f099a258e681c3f8d3e27cefe89e5ea104b8e36bd69fe3bb0f1b036f16715387e9078a56d860a952
+	sha512sums = e65071ac1645f6b84b00ea7a50f659efe6f08dbe619e6784901da825a7798c0d1c69c890a93682f3f79884387cd32d4da0ed02f16d68fc8d30ce989921ce06c5
 
 pkgname = haskell-godaddy
