@@ -6,7 +6,7 @@ pkgrel=3
 pkgdesc="Substitute environment variables from command line for template driven configuration files."
 url='https://subvars.lmno.pk'
 arch=("i686" "x86_64" "aarch64")
-license=("APACHE")
+license=("MIT")
 depends=("glibc")
 makedepends=('go>=1.16')
 source=(
