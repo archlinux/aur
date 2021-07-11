@@ -8,13 +8,13 @@ pkgbase = pingme-bin
 	arch = aarch64
 	license = MIT
 	optdepends = nfpm: deb and rpm packager
-	provides = 
+	provides = 0.2.3
 	conflicts = 
 
 	source_x86_64 = _0.2.3_linux_x86_64.tar.gz::https://github.com/kha7iq//releases/download/v${pkgver}/_linux_x86_64.tar.gz")
 	sha256sums_x86_64 = (0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
 
-	source_i686 = _0.2.3_linux_i386.tar.gz::https://github.com/kha7iq//releases/download/v${pkgver}{BIN_NAME}_linux_i386.tar.gz")
+	source_i686 = _0.2.3_linux_i386.tar.gz::https://github.com/kha7iq//releases/download/v${pkgver}{BINNAME}_linux_i386.tar.gz")
 	sha256sums_i686 = (0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
 
 	source_aarch64 = _0.2.3_linux_arm64.tar.gz::https://github.com/kha7iq//releases/download/v${pkgver}/_linux_arm64.tar.gz")
