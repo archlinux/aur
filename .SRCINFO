@@ -1,12 +1,11 @@
 pkgbase = pacapt
-	pkgdesc = An interpreted language with a focus on expressiveness and type safety
-	pkgver = 2.4.3
+	pkgdesc = A pacman-like shell wrapper for many package managers
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/icy/pacapt
 	arch = any
 	license = custom
-	source = pacapt-2.4.3.tar.gz::https://github.com/icy/pacapt/archive/v2.4.3.tar.gz
-	b2sums = ce1ceba4304603030a34348da5eb968b97777c27dc2d1b7cf47237c260f0b8a20991a84c6427a0082724a4239e9f26fae2cd136e1d18a883f9f3d6f204f0fba0
+	source = pacapt-3.0.2.tar.gz::https://github.com/icy/pacapt/archive/v3.0.2.tar.gz
+	b2sums = 365d1e8cae5393fa3a89185b54715d3a64a3f81b723e1721c7e5bfc79f007209f0f9f3fb7701a4d77582e7ddf5227142f0843e94f2358921b6c8910a21644000
 
 pkgname = pacapt
-
