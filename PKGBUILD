@@ -2,21 +2,22 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 #
 # Based on template. Changes made here will be overwritten each release.
-# See: https://gitlab.com/timvisee/prs
+# See: https://gitlab.com/timvisee/prs/-/tree/master/pkg/aur/prs-git
 
 pkgname=prs-git
-pkgver=0.2.11.r0.gb7141e6
+pkgver=0.2.13.r5.gb3886d7
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync (git)"
 arch=('any')
 url="https://gitlab.com/timvisee/prs"
 license=('GPL3')
-depends=('gpgme' 'dbus' 'libxcb')
+depends=('gpgme' 'dbus' 'libxcb' 'libxkbcommon' 'skim' 'tomb')
 makedepends=('rust' 'python' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+_prs_cli_features=alias,clipboard,notify,backend-gpgme,select-skim-bin,tomb
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -25,12 +26,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --package prs-cli --release --locked
+  cargo build --package prs-cli --no-default-features --features $_prs_cli_features --release --locked
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --package prs-cli --release --locked
+  cargo test --package prs-cli --no-default-features --features $_prs_cli_features --release --locked
 }
 
 package() {
