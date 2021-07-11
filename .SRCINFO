@@ -14,6 +14,7 @@ pkgbase = fuse-nx-git
 	makedepends = git
 	makedepends = meson
 	makedepends = libgcrypt
+	makedepends = fuse
 	provides = fuse-nx
 	source = git+https://github.com/averne/Fuse-Nx.git
 	md5sums = SKIP
