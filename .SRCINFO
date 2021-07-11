@@ -1,7 +1,7 @@
 pkgbase = fileviewer-git
 	pkgdesc = TUI file viewer in C for Unix systems
-	pkgver = r34.d767792
-	pkgrel = 1
+	pkgver = r36.d484cad
+	pkgrel = 2
 	url = https://github.com/velorek1/fw
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = fileviewer-git
 	conflicts = fileviewer
 	conflicts = fw
 	source = fileviewer-git::git+https://github.com/velorek1/fw
+	validpgpkeys = 4AEE18F83AFDEB23
 	sha256sums = SKIP
 
 pkgname = fileviewer-git
-
