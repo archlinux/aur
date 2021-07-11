@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 _pkgname=galene
 pkgname=$_pkgname-git
-pkgver=0.3.2.r0.g3bf0f9e
+pkgver=0.3.4.r70.g3398e92
 pkgrel=1
 pkgdesc="A videoconferencing server"
 arch=('x86_64' 'i686')
@@ -67,7 +67,8 @@ package() {
 
   local doc="$pkgdir/usr/share/doc/galene"
   install -dm755 "$doc"
-  for file in README README.FRONTEND README.PROTOCOL; do
+  pandoc --from=markdown --to html --standalone --metadata title="Galène" README > "${doc}/README.html"
+  for file in README.FRONTEND README.PROTOCOL; do
     pandoc --from=markdown --to html --standalone --shift-heading-level-by=-1 "$file" > "${doc}/${file}.html"
   done
 
