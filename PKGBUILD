@@ -12,7 +12,7 @@ package() {
         
         mkdir -p $pkgdir/usr/share/$pkgname
         mkdir -p $pkgdir/usr/bin
-        cp motivate "$pkgdir/usr/bin/"
-        cp data/quotes.map $pkgdir/usr/share/$pkgname
-        cp data/quotes.txt  $pkgdir/usr/share/$pkgname
+        cp build/motivate "$pkgdir/usr/bin/"
+        cp build/data/quotes.map $pkgdir/usr/share/$pkgname
+        cp build/data/quotes.txt  $pkgdir/usr/share/$pkgname
 }
