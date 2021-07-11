@@ -11,6 +11,7 @@ arch=('any')
 depends=('bash' 'diffutils') 
 provides=('customizepkg')
 conflicts=('customizepkg' 'customizepkg-ald' 'customizepkg-patching' 'customizepkg-scripting')
+makedepends=('git')
 optdepends=(
 	'vim: for vimdiff'
 	'colordiff: for colored diff output'
