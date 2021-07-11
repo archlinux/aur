@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('fuse2' 'webkit2gtk')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('8fb9d12dbcdaa96774d03458fcac7e64ba9fa0938c1a1615937587fe93e1352606a42acdd2062e3f492c7b290e61fbbbb167c6dbc68e93d282c95ae780152ec2')
+sha512sums=('da320b386dd0cefedda616d69be5e9222348d9801cab7e54a73e13f8957120d7fe241bd54a107ad549c5d3c9fe1b6088a7882252b1d37ca01623a0be0a4f05b4')
 
 build() {
   cd "$pkgname-$pkgver"
