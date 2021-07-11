@@ -5,6 +5,7 @@ pkgbase = haskell-godaddy
 	url = https://github.com/ibizaman/haskell-godaddy
 	arch = any
 	license = GPL3
+	depends = numactl
 	source = https://github.com/ibizaman/haskell-godaddy/releases/download/0.0.0.5/godaddy.zip
 	source = https://raw.githubusercontent.com/ibizaman/haskell-godaddy/0.0.0.5/bin/godaddy-certbot-dns01-auth-hook
 	source = https://raw.githubusercontent.com/ibizaman/haskell-godaddy/0.0.0.5/bin/godaddy-certbot-dns01-cleanup-hook

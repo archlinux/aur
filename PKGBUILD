@@ -2,11 +2,12 @@
 
 pkgname='haskell-godaddy'
 pkgver=0.0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line interface to configure a domain managed by Godaddy.'
 arch=('any')
 url='https://github.com/ibizaman/haskell-godaddy'
 license=('GPL3')
+depends=('numactl')
 source=(
     https://github.com/ibizaman/haskell-godaddy/releases/download/${pkgver}/godaddy.zip
 	https://raw.githubusercontent.com/ibizaman/haskell-godaddy/${pkgver}/bin/godaddy-certbot-dns01-auth-hook
