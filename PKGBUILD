@@ -4,7 +4,7 @@
 # Contributor: j1simon
 pkgname=buttercup-desktop
 _pkgexename=buttercup
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 	badge.svg
 	buttercup-desktop.desktop)
 sha512sums=(
-	'4430c872cc778a8edb069a6d26c279eafaaf7d15a28b07cd8b148e25fee8976551a18c0f6b76ce9f52897f9cb55d70b63cf658859c130010c9d2cb5b7dc561d2'
+	'543eac581028902167fc1f87b3a7a12387ec0d78358dc9141603d075f32cbc0d23783efe72754491004a5f2fdd9a18f140b5234b7bccf2e9fa25e9363d654cb1'
 	SKIP
 	SKIP)
 prepare() {
