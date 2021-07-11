@@ -1,6 +1,6 @@
 # Maintainer: averne <averne381@gmail.com>
 pkgname=fuse-nx-git
-pkgver=1.1.0
+pkgver=v1.1.r12.gd2c2f14
 pkgrel=1
 pkgdesc="Mount Nintendo Switch archives through FUSE"
 arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
