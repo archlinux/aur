@@ -1,7 +1,7 @@
 # Maintainer: bitcoinlizard <bitcoinlizard@fastmail.com>
 
 pkgname=python-embit
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A minimal bitcoin library for MicroPython and Python3 with a focus on embedded systems."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('python-embit-git')
 optdepends=('libsecp256k1')
 provides=('python-embit')
 source=("https://github.com/diybitcoinhardware/embit/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('74687fb3ca8c05b2c14fbb43418573b085caa8d36c7fb45432eca86a1a5647c3')
+sha256sums=('db5500c9b0daa29eda4f050ca0f0b26f445aa087cdb451e817ac92fe3a0728b5')
 
 prepare() {
   cd "embit-${pkgver}"
