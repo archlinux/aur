@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=12.3.0
+pkgver=12.3.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('x86_64')
@@ -71,7 +71,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('e59534fde7df298cccbc0855b53f3514')
+md5sums=('b2b2ce9741ac5debf0516fb9d256a8e0')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -128,7 +128,7 @@ package() {
     mkdir -p ${srcdir}/WolframScript
     mkdir -p ${pkgdir}/usr/share/
     cd ${srcdir}/WolframScript
-    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.6.0+20210504145_amd64.deb data.tar.xz
+    bsdtar -xf ${pkgdir}/opt/Mathematica/SystemFiles/Installation/wolframscript_1.6.0+20210619210_amd64.deb data.tar.xz
     tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
 
 
