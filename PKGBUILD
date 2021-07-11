@@ -25,6 +25,8 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+
+  make $pkgname-launcher
 }
 
 package() {
