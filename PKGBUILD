@@ -6,7 +6,7 @@ pkgrel=1
 url="https://github.com/AlfredEVOL/motivate"
 arch=('x86_64')
 license=('MIT')
-source=("https://github.com/AlfredEVOL/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/AlfredEVOL/$pkgname/releases/download/$pkgver/$pkgname.tar.gz")
 md5sums=('SKIP')
 package() {
         
