@@ -8,7 +8,7 @@ pkgdesc="OpenTTD with JGR's patch pack."
 arch=('i686' 'x86_64')
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
 license=('GPL')
-makedepends=('cmake' 'sed' 'tar')
+makedepends=('cmake')
 depends=('fluidsynth' 'fontconfig' 'freetype2' 'hicolor-icon-theme' 'icu' 'libpng' 'sdl2')
 optdepends=('lzo: (de)compressing of old (pre OpenTTD 0.3.0) savegames')
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-${pkgver}.tar.gz")
