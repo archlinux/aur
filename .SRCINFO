@@ -1,13 +1,12 @@
 pkgbase = swnt
 	pkgdesc = Command line GM tools for Stars Without Number
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/nboughton/swnt
 	arch = x86_64
 	license = MIT
 	optdepends = hugo: export sectors as hugo sites
-	source = swnt-0.8.1.tar.gz::https://github.com/nboughton/swnt/releases/download/v0.8.1/swnt.tar.gz
-	sha1sums = d4c7564783bce5725f42f40f8ca8191e6a113610
+	source = swnt-0.8.2.tar.gz::https://github.com/nboughton/swnt/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = c6f28f6822b699994aed9ac1309aa5c95ae3ca8e5cc6b87ce0fa06e0e390fce6
 
 pkgname = swnt
-
