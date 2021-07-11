@@ -22,6 +22,8 @@ sha256sums=('SKIP'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
 install=sunshine.install
 
+_assets_path=/usr/share/$_pkgname
+
 pkgver() {
     cd "$_pkgname"
     printf "%s.%s.%s" "$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -40,20 +42,20 @@ build() {
         -S "$_pkgname" \
         -B build \
         -Wno-dev \
-        -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/$_pkgname \
-        -D SUNSHINE_ASSETS_DIR=/usr/share/$_pkgname \
+        -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
+        -D SUNSHINE_ASSETS_DIR="$_assets_path"
 
     make -C build
 }
 
 package() {
-    install -Dm644 "$_pkgname/assets/sunshine.conf" "$pkgdir/usr/share/$_pkgname/sunshine.conf"
-    install -Dm644 "$_pkgname/assets/apps_linux.json" "$pkgdir/usr/share/$_pkgname/apps_linux.json"
+    install -Dm644 "$_pkgname/assets/sunshine.conf" "$pkgdir/$_assets_path/sunshine.conf"
+    install -Dm644 "$_pkgname/assets/apps_linux.json" "$pkgdir/$_assets_path/apps_linux.json"
 
-    install -Dm755 -t "$pkgdir/usr/share/$_pkgname/web" "$_pkgname/assets/web"
-    install -Dm755 -t "$pkgdir/usr/share/$_pkgname/shaders/opengl" "$_pkgname/assets/shaders/opengl"
+    install -Dm755 -t "$pkgdir/$_assets_path/web" "$_pkgname/assets/web"
+    install -Dm755 -t "$pkgdir/$_assets_path/shaders/opengl" "$_pkgname/assets/shaders/opengl"
  
-    install -Dm755 build/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 build/sunshine "$pkgdir/usr/bin/sunshine"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
 
     install -Dm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname.rules"
