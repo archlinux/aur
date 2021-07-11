@@ -21,7 +21,6 @@ sha512sums=(
 'SKIP'
 )
 
-# TODO backup and symlink for config, data; sysuser
 build() {
     cd scanservjs-${pkgver}
 
