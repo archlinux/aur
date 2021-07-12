@@ -1,6 +1,6 @@
 pkgbase = obsidian
 	pkgdesc = Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
-	pkgver = 0.12.5
+	pkgver = 0.12.10
 	pkgrel = 1
 	url = https://obsidian.md/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = obsidian
 	options = !strip
 	source = obsidian
 	source = obsidian.desktop
-	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.5/obsidian-0.12.5.tar.gz
+	source = https://github.com/obsidianmd/obsidian-releases/releases/download/v0.12.10/obsidian-0.12.10.tar.gz
 	sha256sums = d6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7
 	sha256sums = 345946f1883d547410e34b85b7daa9d38fb5d1869212653530e87676149fe921
-	sha256sums = 14799530d6f7c62e47922c465ed392e7cd5f3ed82d45060a14d1530e03f8d068
+	sha256sums = 961f0db9984a7e72cab086177ba79db423f5500c5588c9f0c9117c86ad8f9fb2
 
 pkgname = obsidian
