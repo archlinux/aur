@@ -2,7 +2,7 @@
 
 pkgname=jstar
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Lightweight Embeddable Scripting Language"
 arch=('i686' 'x86_64')
 url="https://github.com/bamless/jstar"
