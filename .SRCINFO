@@ -1,7 +1,7 @@
 pkgbase = kubernetes-helm2
 	pkgdesc = A tool to manage Kubernetes charts
 	pkgver = 2.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helm/helm
 	install = kubernetes-helm2.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = kubernetes-helm2
 	arch = aarch64
 	license = Apache
 	makedepends = git
-	makedepends = glide
+	makedepends = glide-bin
 	makedepends = go
 	depends = kubectl
 	depends = socat
@@ -18,4 +18,3 @@ pkgbase = kubernetes-helm2
 	md5sums = SKIP
 
 pkgname = kubernetes-helm2
-
