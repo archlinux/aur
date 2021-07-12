@@ -1,7 +1,7 @@
 pkgbase = resistor-decoder
 	pkgdesc = Qt GUI tool for through-hole resistors and SMD parts.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VoxelCubes/ResistorDecoder
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = resistor-decoder
 	depends = python>=3.6.0
 	depends = qt6-svg
 	source = ResistorDecoder-1.0.tar.gz::https://github.com/VoxelCubes/ResistorDecoder/releases/download/1.0/ResistorDecoder-1.0.tar.gz
-	sha256sums = e884c6f63aef7fe8bd062e439b687d725f87c48d137c0a2837cf2ac5065a8e16
+	sha256sums = 7e4fe49df381cb0aea11125cd6e72a395653c51da58e1d52711e0c6aa9f4255b
 
 pkgname = resistor-decoder
 

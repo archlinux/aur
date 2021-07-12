@@ -1,7 +1,7 @@
 # Maintainer: Voxel <voxel.aur@gmail.com>
 pkgname=resistor-decoder
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt GUI tool for through-hole resistors and SMD parts."
 arch=("any")
 url="https://github.com/VoxelCubes/ResistorDecoder"
@@ -10,7 +10,7 @@ depends=("pyside6" "python>=3.6.0" "qt6-svg")
 makedepends=("python-setuptools")
 realpkgname=ResistorDecoder
 source=("${realpkgname}-$pkgver.tar.gz::${url}/releases/download/${pkgver}/${realpkgname}-$pkgver.tar.gz")
-sha256sums=("e884c6f63aef7fe8bd062e439b687d725f87c48d137c0a2837cf2ac5065a8e16")
+sha256sums=("7e4fe49df381cb0aea11125cd6e72a395653c51da58e1d52711e0c6aa9f4255b")
 
 
 package() {
