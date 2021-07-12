@@ -1,8 +1,8 @@
 # Maintainer: Pierre Penninckx <ibizapeanut@gmail.com>
 
 pkgname='haskell-godaddy'
-pkgver=0.0.0.5
-pkgrel=3
+pkgver=0.0.0.6
+pkgrel=1
 pkgdesc='Command-line interface to configure a domain managed by Godaddy.'
 arch=('any')
 url='https://github.com/ibizaman/haskell-godaddy'
@@ -13,9 +13,9 @@ source=(
 	https://raw.githubusercontent.com/ibizaman/haskell-godaddy/${pkgver}/bin/godaddy-certbot-dns01-auth-hook
 	https://raw.githubusercontent.com/ibizaman/haskell-godaddy/${pkgver}/bin/godaddy-certbot-dns01-cleanup-hook
 )
-sha512sums=('c553ecaaaea5944f54a7581786d1bf8668019423b74aab2f2b47475be4bc917110b80bc0e07a23f506498ef12e3612007e17fac9a245d8c64535547afb8dc35d'
-            '5a07f6ca526ee01e9e242da02710fa1e357f47edeb826d87f099a258e681c3f8d3e27cefe89e5ea104b8e36bd69fe3bb0f1b036f16715387e9078a56d860a952'
-            'e65071ac1645f6b84b00ea7a50f659efe6f08dbe619e6784901da825a7798c0d1c69c890a93682f3f79884387cd32d4da0ed02f16d68fc8d30ce989921ce06c5')
+sha512sums=('815ee1ad521d3142683d0597f36f0cab12d7760acacb84fdd808589a18e9b54af4f5fdda556407cd68286aae94f3e99230fbff5ebd9db2b638fcafad7909244c'
+            '99fe6663ba57e41bdfd9f7f79086984e95cc9dae383c96eeb18a1702bbe67e5ba24ac2246903a570f13035cb6f1cd8b0ddfe4b6d17ece044da80748e1c9ad247'
+            'ebfc4517a10f140f31a65b83a708d9feedef6ed49c4f09bd1a7ea07cfc733b1cfcedbe2a8dc120260ee04fea4095a6d4e83e98e87f7e02015f591002284cd79b')
 
 package() {
   install -Dm0755 godaddy "$pkgdir"/usr/bin/godaddy
