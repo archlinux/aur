@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.5.r177.gd8163ffda
+	pkgver = 2.5.r182.gc7d4e677f
 	pkgrel = 1
 	epoch = 2
 	url = https://www.luxcorerender.org/
