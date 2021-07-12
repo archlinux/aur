@@ -1,0 +1,20 @@
+pkgbase = pid_children-git
+	pkgdesc = A simple program outputs descendant process ids for each pid given on the command line
+	pkgver = r10.749d59c
+	pkgrel = 1
+	url = https://github.com/lilydjwg/pid_children
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = pid_children=r10.749d59c
+	conflicts = pid_children
+	source = git+https://github.com/lilydjwg/pid_children.git
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = e6b1c3f74d24fd83bf1c806680c3b990c2c74a11a8e4d7d632a2240e87ef1c2c
+	sha256sums = b7ba7779754e601a15df07caa0ea43e669d05d20f42bd98e997a089d4b5a7d83
+
+pkgname = pid_children-git
