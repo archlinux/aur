@@ -1,6 +1,6 @@
 pkgbase = opentoonz-git
 	pkgdesc = 2D Animation software.
-	pkgver = 1.1.3.1250
+	pkgver = 1.5.2982
 	pkgrel = 1
 	url = https://github.com/opentoonz/opentoonz
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = opentoonz-git
 	depends = qt5-script
 	depends = qt5-tools
 	depends = qt5-multimedia
+	depends = qt5-serialport
 	depends = lz4
 	depends = libusb
 	depends = lzo
@@ -29,8 +30,8 @@ pkgbase = opentoonz-git
 	depends = cblas
 	depends = superlu
 	depends = libmypaint
+	depends = opencv
 	source = git+https://github.com/opentoonz/opentoonz.git
 	md5sums = SKIP
 
 pkgname = opentoonz-git
-
