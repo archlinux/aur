@@ -8,7 +8,7 @@ pkgdesc="a collection of Sound Icons for speech-dispatcher"
 arch=('any')
 url="http://www.freebsoft.org/"
 license=('GPL2')
-source=(http://www.freebsoft.org/pub/projects/sound-icons/sound-icons-0.1.tar.gz)
+source=("http://www.freebsoft.org/pub/projects/sound-icons/sound-icons-${pkgver}.tar.gz")
 sha512sums=('f0ba9e1e84ace325671c7f323f01d647aa0e1a318e9adc2a6d8af4e0d795e478b2ea66007670f9c7ced9ef7310fdbccb5168b0f404579f5dff8712fe12ad93a0')
 
 package() {
