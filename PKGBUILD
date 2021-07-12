@@ -1,11 +1,12 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=inyokaedit
 pkgver=0.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Editor for Inyoka based portals'
 arch=('i686' 'x86_64')
 url='https://github.com/inyokaproject/inyokaedit/'
 license=('GPL3')
+makedepends=('qt5-tools')
 depends=('qt5-webkit' 'hicolor-icon-theme')
 optdepends=('inyokaedit-plugins: Plugins for InyokaEdit'
             'inyokaedit-data-ubuntuusersde: ubuntuusers.de community files')

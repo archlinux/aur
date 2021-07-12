@@ -1,11 +1,12 @@
 pkgbase = inyokaedit
 	pkgdesc = Editor for Inyoka based portals
 	pkgver = 0.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inyokaproject/inyokaedit/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = qt5-tools
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
 	optdepends = inyokaedit-plugins: Plugins for InyokaEdit
