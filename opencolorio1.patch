@@ -1,0 +1,76 @@
+diff -Naur appleseed-2.1.0-beta/cmake/modules/FindOpenColorIO.cmake appleseed-2.1.0-beta.new/cmake/modules/FindOpenColorIO.cmake
+--- appleseed-2.1.0-beta/cmake/modules/FindOpenColorIO.cmake	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/cmake/modules/FindOpenColorIO.cmake	2021-07-12 16:36:39.238864505 +0200
+@@ -35,10 +35,10 @@
+ #  OPENCOLORIO_FOUND        - True if OpenColorIO found.
+ 
+ # Look for the header file.
+-find_path (OPENCOLORIO_INCLUDE_DIR NAMES OpenColorIO/OpenColorIO.h)
++find_path (OPENCOLORIO_INCLUDE_DIR NAMES OpenColorIO1/OpenColorIO.h)
+ 
+ # Look for the library.
+-find_library (OPENCOLORIO_LIBRARY NAMES OpenColorIO)
++find_library (OPENCOLORIO_LIBRARY NAMES OpenColorIO1)
+ 
+ # handle the QUIETLY and REQUIRED arguments and set OPENCOLORIO_FOUND to TRUE if all listed variables are TRUE
+ include (FindPackageHandleStandardArgs)
+diff -Naur appleseed-2.1.0-beta/src/appleseed/foundation/core/thirdparties.cpp appleseed-2.1.0-beta.new/src/appleseed/foundation/core/thirdparties.cpp
+--- appleseed-2.1.0-beta/src/appleseed/foundation/core/thirdparties.cpp	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/src/appleseed/foundation/core/thirdparties.cpp	2021-07-12 16:35:36.282710230 +0200
+@@ -49,7 +49,7 @@
+ #include <lz4.h>
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorABI.h>
++#include <OpenColorIO1/OpenColorABI.h>
+ 
+ // OpenEXR headers.
+ #include "foundation/platform/_beginexrheaders.h"
+diff -Naur appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/mainwindow.h appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/mainwindow.h
+--- appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/mainwindow.h	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/mainwindow.h	2021-07-12 16:35:41.269336290 +0200
+@@ -49,7 +49,7 @@
+ #include <QObject>
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Standard headers.
+diff -Naur appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/rendertab.cpp appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/rendertab.cpp
+--- appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/rendertab.cpp	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/rendertab.cpp	2021-07-12 16:35:46.219295996 +0200
+@@ -44,7 +44,7 @@
+ #include "foundation/image/image.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ 
+ // Qt headers.
+ #include <QComboBox>
+diff -Naur appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/rendertab.h appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/rendertab.h
+--- appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/rendertab.h	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/rendertab.h	2021-07-12 16:35:53.395904233 +0200
+@@ -42,7 +42,7 @@
+ #include "utility/widgetzoomhandler.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Qt headers.
+diff -Naur appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/renderwidget.h appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/renderwidget.h
+--- appleseed-2.1.0-beta/src/appleseed.studio/mainwindow/rendering/renderwidget.h	2019-08-31 17:49:01.000000000 +0200
++++ appleseed-2.1.0-beta.new/src/appleseed.studio/mainwindow/rendering/renderwidget.h	2021-07-12 16:35:58.052532997 +0200
+@@ -38,7 +38,7 @@
+ #include "foundation/math/vector.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Qt headers.
