@@ -1,6 +1,6 @@
 pkgbase = vim-tmux-navigator-git
 	pkgdesc = Seamless navigation between tmux panes and vim splits
-	pkgver = r67.44ba6fb
+	pkgver = r71.0cabb1e
 	pkgrel = 1
 	url = https://github.com/christoomey/vim-tmux-navigator
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = vim-tmux-navigator-git
 	md5sums = SKIP
 
 pkgname = vim-tmux-navigator-git
-
