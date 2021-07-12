@@ -1,14 +1,11 @@
-# Maintainer: Sandy Carter <bwrsandman@gmail.com>
-# PKGBUILD source: https://github.com/bwrsandman/pkgbuild/tree/master/openmw-git
-
 pkgname=openmw-git
-pkgver=0.46.0.r1477.gdc82cb61f
+pkgver=0.46.0.r2803.gcd9fb2ada
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs')
+depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost')
 conflicts=("${pkgname%-git}")
