@@ -7,13 +7,13 @@
 pkgname=digikam
 _pkgver=7.3.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
 url='https://www.digikam.org/'
 depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qtav marble-common threadweaver kcalendarcore
-         qt5-xmlpatterns imagemagick jasper glu)
+         qt5-xmlpatterns imagemagick jasper glu perl-image-exiftool)
 makedepends=(extra-cmake-modules doxygen eigen boost kdoctools)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'rawtherapee: RAW import' 'darktable: RAW import'
