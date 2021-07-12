@@ -67,7 +67,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.16
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -97,6 +97,7 @@ source=(
   "${_patchsource}/bfq-patches-v15/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v6/0001-block-patches.patch"
   "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
+  "${_patchsource}/le9db_patches/0001-le9db1-5.10.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
@@ -125,6 +126,7 @@ b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984
         '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
         '67067d624711d663c1be1d35c5e59cb588faba1769b27443a3a13b44dbe9e627edd054a4fd122d04d587e21b25be5520fffb61cfc7538aee77c33a1a8cb1b97a'
         '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
+        'f836917eac6506690ae897a2b338fedadc0814713bf4796ad90809d1de4bbc92e3dd38ab1299b96cf9bc763f0fff56137f6d43a98ef7aa4c1b6b72d6c094c3ce'
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
