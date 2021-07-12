@@ -1,6 +1,6 @@
 pkgbase = netlify-application
 	pkgdesc = Unofficial Netlify desktop application
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/netlify-desktop/application
 	arch = any
