@@ -1,9 +1,11 @@
 pkgbase = facecam2d
 	pkgdesc = 2D avatar facecam software
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
+	makedepends = base-devel
+	makedepends = cmake
 	makedepends = glm
 	depends = libzip
 	depends = fmt
