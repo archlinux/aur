@@ -1,7 +1,7 @@
 pkgbase = motionbox-bin
 	pkgdesc = MotionBox is a Video Browser for Motion Freedom
 	pkgver = 1.7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://omega.gg/MotionBox/
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = motionbox-bin
 	source = https://s3-eu-west-1.amazonaws.com/omega.gg/get/MotionBox/MotionBox-1.7.0-1-linux64.tar.gz
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
 	source = https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
-	sha256sums = 8a2adef9ce92efd5577097e7613449502f873bcbac71abd0e02d607644460c74
+	sha256sums = SKIP
 	sha256sums = c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7
 	sha256sums = 7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72
 
