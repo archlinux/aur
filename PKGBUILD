@@ -1,6 +1,6 @@
 # Maintainer: pingplug <aur at pingplug dot me>
 pkgname=vnote3-git
-pkgver=r1553.1d4e2b14
+pkgver=3.4.0.r4.c13d1803
 pkgrel=1
 pkgdesc="A Vim-inspired note-taking application, especially for Markdown."
 arch=('x86_64')
@@ -26,7 +26,8 @@ _gitname="vnote"
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    TAG=$(git tag --list | tail -n 1 | sed 's/^v//')
+    printf "${TAG}.r%s.%s" "$(git rev-list --count v${TAG}..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
