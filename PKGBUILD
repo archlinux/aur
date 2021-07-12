@@ -27,14 +27,7 @@ prepare() {
 
 build() {
 	cd Bibata_Extra_Cursor-$pkgver/builder
-	_themes='DarkRed DodgerBlue Pink Turquoise'
-	_sizes='22 24 28 32 40 48 56 64 72 80 88 96'
-
-	set -- ${_sizes}
-	for t in ${_themes}; do
-		python build.py unix -p "../bitmaps/Bibata-Modern-$t" --xsizes ${_sizes[@]}
-		python build.py unix -p "../bitmaps/Bibata-Original-$t" --xsizes ${_sizes[@]}
-	done
+	make build_unix
 }
 
 package() {
