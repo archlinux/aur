@@ -1,7 +1,7 @@
 # Maintainer: Luna Nieves <aicaya@posteo.net>
 
 pkgname=q5go
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="SGF editor and IGS client for Go players"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-multimedia' 'qt5-svg')
 optdepends=('pandoc: make dependency, add README to menu options')
 source=("https://github.com/bernds/q5Go/archive/q5go-$pkgver.tar.gz"
         "q5go.desktop")
-sha256sums=('85a3a31a2de96c81a07afa59ea68f6420cfafbcefcd7d7ffd4e8eb8d6b24eeda'
+sha256sums=('00a685eed2bb4318ce148e916248def63ac484dda6eb8b3cda501a526e215d67'
             '11c3490e0dd8613465672f4b74b19ee2329944618f566e908d0b0936064f8a69')
 
 build() {
