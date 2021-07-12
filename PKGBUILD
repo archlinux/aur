@@ -11,7 +11,7 @@ install=${pkgname}.install
 license=('custom')
 depends=('ncurses' 'lvm2' 'fuse' 'mlocate')
 source=( "$url/rpm/el/8/x86_64/veeam-$pkgver-1.el8.x86_64.rpm" )
-sha256sums=('6c4cdf522868e376050ce7969194451d9d2c73f48419928aeceff58b3d8e827e')
+sha256sums=('876c046f9e8ad37a02cfd5dfd0272326cdd3dec9655b23cbd2469df2f87646b8')
 noextract=("$pkgname-$pkgver-1.el8.x86_64.rpm")
 backup=('etc/veeam/veeam.ini' 'usr/share/veeam/lpb_scheme.sql' 'usr/share/veeam/db_upgrade.sql' 'usr/share/veeam/db_scheme.sql' 'var/lib/veeam/veeam_db.sqlite' 'var/lib/veeam/veeam_db.sqlite-shm' 'var/lib/veeam/veeam_db.sqlite-wal')
 
