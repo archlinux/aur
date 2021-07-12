@@ -4,7 +4,7 @@ _commit=219670218b78acf4e4a96da70d36eeb9fc7f96ca
 _pkgname=SOEM
 
 pkgname=soem
-pkgver=v1.4.0+45+g2196702
+pkgver=1.4.0.r45.g2196702
 pkgrel=1
 pkgdesc="Simple Open EtherCAT Master Library"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
