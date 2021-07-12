@@ -73,6 +73,7 @@ pkgbase = ffmpeg-vulkan
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = vulkan-icd-loader: Vulkan support
+	provides = ffmpeg
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -81,6 +82,7 @@ pkgbase = ffmpeg-vulkan
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
+	conflicts = ffmpeg
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
 	source = vmaf-model-path.patch
 	sha256sums = SKIP

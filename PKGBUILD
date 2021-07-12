@@ -86,7 +86,9 @@ optdepends=(
   'nvidia-utils: Nvidia NVDEC/NVENC support'
   'vulkan-icd-loader: Vulkan support'
 )
+conflicts=(ffmpeg)
 provides=(
+  ffmpeg
   libavcodec.so
   libavdevice.so
   libavfilter.so
