@@ -4,21 +4,26 @@
 
 pkgname=emacspeak
 pkgver=54.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs extension that provides spoken output"
 arch=('x86_64' 'aarch64')
 url="http://emacspeak.sf.net/"
 license=('GPL' 'LGPL' 'APACHE')
 depends=('emacs' 'tcl' 'tclx' 'espeak-ng')
-source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/emacspeak-${pkgver}.tar.bz2")
-sha512sums=('088b8d08258202e5cc12ad1e2a56eabe27e626157201f4b665da78f7f4f03ea858746131d5c27a261049283a35eeb0fd5bb47aa054acac8a9b65a32da39a2f35')
+source=("https://github.com/tvraman/emacspeak/releases/download/${pkgver}/emacspeak-${pkgver}.tar.bz2"
+        "54.0-directorys.patch"
+        "emacspeak.sh")
+sha512sums=('088b8d08258202e5cc12ad1e2a56eabe27e626157201f4b665da78f7f4f03ea858746131d5c27a261049283a35eeb0fd5bb47aa054acac8a9b65a32da39a2f35'
+            'f2471451f097be389f1a041ea139f441c1d68ed529c8bf7ec4a511358b975272cd78f3a1e13cd66c1dbf724cc82feb3780bd4d425f8cb1540740d4a8c6f2e637'
+            '3624a1205e70cceb43953d39925e1c9a351635a909100a050b036640df65cc104546939eb3be017b116dbc4f910a018b6a5e2eb39c66c9e01e9c91dde6fdf5d9')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/54.0-directorys.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   export DTK_PROGRAM="espeak"
   make config
   make
@@ -27,15 +32,36 @@ build() {
 }
 
 package() {
-  local d=$pkgdir/usr/share/emacs/site-lisp/emacspeak
-  install -d -- "$d"
-  cp -a "$srcdir/$pkgname-$pkgver/."  "$d"
-  find "$d" \( -type d -or \( -type f -executable \) \) -execdir chmod 755 {} +
-  find "$d" -type f -not -executable -execdir chmod 644 {} +
+  cd "$pkgname-$pkgver"
+  # clean unneeded files
+  find . -name Makefile -delete
+  rm -vr info/auto
+  rm -vr sounds/3d/src
 
+  install -vDm 644 etc/forms/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/etc/forms"
+  install -vDm 644 etc/pickup-c/pickup -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/etc/pickup-c"
+  install -vDm 644 etc/tables/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/etc/tables"
+  rm -vr etc/forms/
+  rm -vr etc/pickup-c/
+  rm -vr etc/tables/
+  install -vDm 644 etc/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/etc"
+  install -vDm 644 info/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/info"
+  install -vDm 644 lisp/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/lisp"
+  install -vDm 644 xsl/* -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/xsl"
+  install -vDm 644 README -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}"
+
+  install -vDm 644 sounds/3d/* -t "${pkgdir}/usr/share/sounds/${pkgname}/3d"
+  install -vDm 644 sounds/classic/* -t "${pkgdir}/usr/share/sounds/${pkgname}/classic"
+  install -vDm 644 sounds/pan-chimes/* -t "${pkgdir}/usr/share/sounds/${pkgname}/pan-chimes"
+  install -vDm 644 sounds/prompts/* -t "${pkgdir}/usr/share/sounds/${pkgname}/prompts"
+  install -vDm 644 sounds/system/* -t "${pkgdir}/usr/share/sounds/${pkgname}/system"
+  install -vDm 644 sounds/{emacspea
+  k.mp3,highbells.au} -t "${pkgdir}/usr/share/sounds/${pkgname}"
+
+  # speech server
+  install -vDm 755 servers/tts-lib.tcl -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/servers"
+  install -vDm 755 servers/{espeak,log-espeak} -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/servers"
+  install -vDm 755 servers/native-espeak/tclespeak.so -t "${pkgdir}/usr/lib/${pkgname}"
   # Add convenient wrapper to keep your configs unmodified
-  local s=$pkgdir/usr/bin/emacspeak
-  install -d -- "${s%/*}"
-  printf '#!/bin/sh\nemacs -l '"'%s'"' "$@"\n' "${d#$pkgdir}/lisp/emacspeak-setup.elc" >"$s"
-  chmod 755 "$s"
+  install -vDm 755 "${srcdir}/emacspeak.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
