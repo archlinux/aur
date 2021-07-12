@@ -2,13 +2,13 @@
 # Contributor: wowario <wowario[at]protonmail[dot]com>
 
 pkgname='monero-feather-git'
-pkgver=0.7.0.be8a4d1841
+pkgver=0.8.0.281f49f923
 pkgrel=1
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
 arch=('x86_64')
 url="https://featherwallet.org"
-depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor')
+depends=('libzip' 'boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'miniupnpc' 'libgcrypt' 'qrencode' 'libsodium' 'libpgm' 'expat' 'qt5-base' 'qt5-websockets' 'qt5-svg' 'tor' 'zbar')
 makedepends=('git' 'cmake' 'boost')
 
 source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather")
