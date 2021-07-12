@@ -1,4 +1,4 @@
-# Maintainer Jerry Y. Chen <jynych3n@gmail.com>
+# Maintainer Jerry Y. Chen <chen@jyny.dev>
 
 pkgname=outliner
 pkgver=0.2.2
