@@ -1,6 +1,6 @@
 pkgbase = vimix-gtk-themes
 	pkgdesc = A flat Material Design theme for GTK 3, GTK 2, GNOME Shell, etc.
-	pkgver = 2021.04.25
+	pkgver = 2021.07.12
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-vimix.html
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = vimix-gtk-themes
 	optdepends = tela-icon-theme: Recommended icon theme
 	conflicts = vimix-gtk-themes-git
 	options = !strip
-	source = vimix-gtk-themes-2021.04.25.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2021-04-25.tar.gz
-	sha256sums = 709cff4100fd0ddc762ae7ece648a45b49281c607876db77121a67a3a8fecb56
+	source = vimix-gtk-themes-2021.07.12.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2021-07-12.tar.gz
+	sha256sums = e7a58c69203576a0ac261c52bb36b388cdac195000bc23d253e32b6cf2a1497b
 
 pkgname = vimix-gtk-themes
-
