@@ -1,0 +1,19 @@
+pkgbase = facecam2d
+	pkgdesc = 2D avatar facecam software
+	pkgver = 0.2.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = glm
+	depends = libzip
+	depends = fmt
+	depends = libwebp
+	depends = opencv
+	depends = glew
+	depends = freeglut
+	depends = wxgtk3
+	depends = libglvnd
+	source = https://epicalert.xyz/software/tarballs/facecam2d-0.2.1.tar.gz
+	sha256sums = 4a24c0f99246c68bf9950eadcbcd99f53977c6b2e87d5b9ebe98184ec8989e29
+
+pkgname = facecam2d
