@@ -1,0 +1,22 @@
+pkgbase = bazel40-bin
+	pkgdesc = Build and test software of any size, quickly and reliably.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://bazel.build
+	arch = x86_64
+	license = Apache
+	depends = java-environment=11
+	provides = bazel40
+	provides = bazel=4.0.0
+	conflicts = bazel
+	conflicts = bazel3-bin
+	conflicts = bazel2
+	conflicts = bazel024
+	conflicts = bazel024-bin
+	conflicts = bazel-git
+	noextract = bazel_nojdk-4.0.0-linux-x86_64
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/4.0.0/bazel-4.0.0-linux-x86_64
+	sha256sums = 7bee349a626281fc8b8d04a7a0b0358492712377400ab12533aeb39c2eb2b901
+
+pkgname = bazel40-bin
