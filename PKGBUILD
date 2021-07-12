@@ -9,7 +9,7 @@ url="https://sonobus.net"
 license=('GPL3')
 depends=('bash')
 makedepends=('bash')
-source=("git+https://github.com/IamDH4/sonobus-aooserver-bin")
+source=("git+https://github.com/BannedPatriot/sonobus-aooserver-bin")
 sha512sums=('SKIP')
 
 package() {

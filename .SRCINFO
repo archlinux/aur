@@ -8,7 +8,7 @@ pkgbase = sonobus-aooserver-bin
 	license = GPL3
 	makedepends = bash
 	depends = bash
-	source = git+https://github.com/IamDH4/sonobus-aooserver-bin
+	source = git+https://github.com/BannedPatriot/sonobus-aooserver-bin
 	sha512sums = SKIP
 
 pkgname = sonobus-aooserver-bin
