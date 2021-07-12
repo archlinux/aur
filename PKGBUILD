@@ -4,9 +4,9 @@
 pkgname=obsidian-insider
 _pkgname=obsidian
 # Insider release (lacks app.asar)
-pkgver=0.12.5
+pkgver=0.12.10
 # Full public release
-_pkgver=0.12.4
+_pkgver=0.12.10
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 provides=("${_pkgname}")
@@ -26,8 +26,8 @@ source=(
 sha256sums=(
     'd6b6ea6749b343787a2ab8379f0396c3ea48796717773ad5447afecc10e042e7'
     'b58f58a58278dc5eaddd0e935d973b69eb671d971db678c077892c7369a0f6e4'
-    'd21a24cb7daed57736689ae05ee47dfa8d330b687d32e1eddda197ef3293bfbf'
-    '8508edd0135b8e843da53bfbdd0711f0eaaeb7c937b8378d7bfe86bc4eaf020d'
+    '961f0db9984a7e72cab086177ba79db423f5500c5588c9f0c9117c86ad8f9fb2'
+    'b6f9d70a99d170b9b157f560564b6092e7b5712c48887ba6308870f392b89d3c'
 )
 
 prepare() {
