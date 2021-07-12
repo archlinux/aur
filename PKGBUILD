@@ -10,16 +10,16 @@ url="http://vina.scripps.edu/"
 depends=('boost-libs')
 makedepends=('boost')
 source=("http://vina.scripps.edu/download/autodock_vina_$_pkgver.tgz")
-md5sums=('b467b71ee77dd155b65b1c5364e4220f')
+sha256sums=('b86412d316960b1e4e319401719daf57ff009229d91654d623c3cf09339f6776')
 
 build() {
   cd "$srcdir/autodock_vina_$_pkgver"
   find src -name "*.cpp" -exec sed -i \
     "s/.native_file_string()/.string()/g;s/, boost::filesystem::native//" {} \;
   sed -i 's:${BOOST_LIB_VERSION}::g' build/makefile_common
-   
+
   cd "build/linux/release"
-  sed -i "s:/local::g;s:-static::g" Makefile
+  sed -i "s:/local::g;s:-static::g;s:C_OPTIONS=:& -std=gnu++11:g" Makefile
   make
 }
 
