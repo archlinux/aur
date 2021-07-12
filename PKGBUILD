@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.4.rc2.r702.ga0fbcf381
+pkgver=1.5rc.r16.g2f643141b
 pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "roundcubemail"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/-\(alpha\|beta\|rc\)/\1/g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -40,7 +40,7 @@ prepare() {
 
 build(){
   cd "$srcdir"/roundcubemail
-  php -d extension=gd.so /usr/bin/composer install --no-dev --ignore-platform-req=ext-gd
+  php -d extension=gd.so /usr/bin/composer install --no-dev --ignore-platform-req=ext-gd --ignore-platform-req=ext-iconv
   bin/install-jsdeps.sh
   bin/jsshrink.sh
 
