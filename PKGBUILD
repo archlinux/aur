@@ -3,7 +3,7 @@
 _pkgname=roam-research
 pkgname=roam-research
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A note-taking tool for networked thought"
 arch=('any')
 url="https://roamresearch.com/"
