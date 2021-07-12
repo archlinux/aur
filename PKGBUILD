@@ -1,7 +1,7 @@
 # Maintainer: olddog <jeff@impcode.com>
 
 pkgname=vim-gutentags-git
-pkgver=r244.4814b67
+pkgver=r266.50705e8
 pkgrel=1
 pkgdesc='A Vim plugin that manages your tag files'
 arch=('any')

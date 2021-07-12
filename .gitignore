@@ -1,6 +1,6 @@
 pkg/
 src/
 *.vim
-*.pkg.tar.xz
+*.pkg.tar.zst
 tags
 vim-gutentags

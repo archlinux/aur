@@ -1,6 +1,6 @@
 pkgbase = vim-gutentags-git
 	pkgdesc = A Vim plugin that manages your tag files
-	pkgver = r244.4814b67
+	pkgver = r266.50705e8
 	pkgrel = 1
 	url = https://bolt80.com/gutentags/
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = vim-gutentags-git
 	md5sums = SKIP
 
 pkgname = vim-gutentags-git
-
