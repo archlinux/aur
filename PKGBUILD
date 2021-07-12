@@ -2,7 +2,7 @@
 
 pkgname=cuberite
 _pkgver=1.12.2
-_commit=4e48464
+_commit=094cd61
 pkgver="${_pkgver}c0_${_commit}"
 pkgrel=1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
