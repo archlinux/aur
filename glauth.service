@@ -1,0 +1,22 @@
+[Unit]
+Description=Glauth LDAP Server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/glauth -c /etc/glauth/glauth.cfg
+User=glauth
+Group=glauth
+
+StandardOutput=journal
+StandardError=journal
+
+ProtectSystem=true
+NoNewPrivileges=true
+ProtectHome=tmpfs
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
