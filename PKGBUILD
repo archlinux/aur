@@ -2,7 +2,7 @@
 
 pkgname=anki-release-source
 pkgver=2.1.44
-pkgrel=2
+pkgrel=3
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -37,7 +37,7 @@ makedepends=(
     'rsync'
     'git'
 
-    'bazel'
+    'bazel40-bin'
     'clang'
 
     'maturin'

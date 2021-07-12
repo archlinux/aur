@@ -1,13 +1,13 @@
 pkgbase = anki-release-source
 	pkgdesc = The latest release building from source locally
 	pkgver = 2.1.44
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
 	makedepends = rsync
 	makedepends = git
-	makedepends = bazel
+	makedepends = bazel40-bin
 	makedepends = clang
 	makedepends = maturin
 	makedepends = rust
@@ -44,4 +44,3 @@ pkgbase = anki-release-source
 	sha256sums = c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5
 
 pkgname = anki-release-source
-
