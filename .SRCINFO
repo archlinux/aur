@@ -1,0 +1,13 @@
+pkgbase = python-pymetaclasses
+	pkgdesc = A collection of MetaClasses for Python
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Paebbels/pyMetaClasses
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	source = python-pymetaclasses-1.2.1.tar.gz::https://github.com/Paebbels/pyMetaClasses/archive/v1.2.1.tar.gz
+	sha256sums = 34644093c43858b95fdae79f6d5611aa3fb28bb745ef1fef26feaf7ef71db61f
+
+pkgname = python-pymetaclasses
