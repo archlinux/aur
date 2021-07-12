@@ -1,17 +1,17 @@
-# Maintainer: Jerry Y. Chen <jynych3n@gmail.com>
 # Maintainer Christian Rebischke <chris.rebischke@archlinux.org>
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 # Maintainer: Maxim Baz <${reponame} at maximbaz dot com>
 # Contributor: Stefan Cocora <stefan dot cocora at gmail dot com>
+# Maintainer: Jerry Y. Chen <chen@jyny.dev>
 
 pkgname=skaffold-git
-pkgver=1.23.0
-pkgrel=1
-pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
-arch=("x86_64")
 reponame=skaffold
 provides=('skaffold')
 conflicts=('skaffold')
+pkgver=1.27.0
+pkgrel=1
+pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
+arch=("x86_64")
 url="https://github.com/GoogleContainerTools/${reponame}"
 license=("Apache")
 depends=("docker")
@@ -23,15 +23,12 @@ optdepends=(
 )
 source=(
   "${reponame}-${pkgver}.tar.gz::https://github.com/GoogleContainerTools/${reponame}/archive/v${pkgver}.tar.gz"
-  "build_info.patch"
 )
-sha256sums=('1877bd2e52471e77f03b3b78c4740fb4880f462a3c345f006f9416bfe0f041c9'
-            'c382f4c48e81d0a66cd679bc9d7e76942d1f07718f9ecf134a107bb355cdf193')
-_commit="e8f3c652112c338e75e03497bc8ab09b9081142d"
+sha256sums=('c82a842d138f75dbab5cbc64f0dda3cce6bfb0c7bba5a6ecfaed0c9799b556b1')
+_commit="1f46f249c832bb2a99e3285ad327647c95ff4bb9"
 
 prepare() {
   cd "${srcdir}/${reponame}-${pkgver}"
-  patch -Np1 -i "${srcdir}/build_info.patch"
 
   rm -rf "${srcdir}/gopath"
   mkdir -p "${srcdir}/gopath/bin"
