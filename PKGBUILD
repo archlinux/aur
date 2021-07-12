@@ -23,7 +23,7 @@ conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
 source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
-sha256sums=('246dc3a6eac6f6d609e68b3b349855961b7eb29413a2264abb658a2cb4755d2a')
+sha256sums=('63949ad4b44188501915a0465f32d3ca066698c58f86c46cf3196f9d601f6900')
 
 prepare() {
   cd "Mnemosyne-${pkgver}/"
