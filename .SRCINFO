@@ -21,6 +21,7 @@ pkgbase = sunshine
 	depends = libxfixes
 	depends = libevdev
 	depends = libxcb
+	depends = libxranr
 	depends = udev
 	source = sunshine::git+https://github.com/loki-47-6F-64/sunshine.git#tag=v0.8.0
 	source = udev.rules
