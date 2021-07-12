@@ -1,7 +1,7 @@
 pkgbase = magic-wormhole-transit-relay
 	pkgdesc = transit Relay server for Magic-Wormhole
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/magic-wormhole/magic-wormhole-transit-relay
 	arch = any
 	license = MIT

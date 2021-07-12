@@ -2,7 +2,7 @@
 
 pkgname=magic-wormhole-transit-relay
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="transit Relay server for Magic-Wormhole"
 arch=('any')
 url="https://github.com/magic-wormhole/magic-wormhole-transit-relay"
@@ -27,5 +27,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	python setup.py install --root="${pkgdir}/" --optimize=1
+	install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
 }
