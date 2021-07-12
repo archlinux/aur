@@ -1,13 +1,12 @@
 pkgbase = pdk
 	pkgdesc = Puppet Development Kit bundles tools and helpers to create high quality puppet modules
-	pkgver = 2.1.0.0
+	pkgver = 2.1.1.0
 	pkgrel = 1
 	url = https://github.com/puppetlabs/pdk
 	arch = x86_64
 	options = staticlibs
 	options = !strip
-	source = http://apt.puppetlabs.com/pool/bionic/puppet6/p/pdk/pdk_2.1.0.0-1bionic_amd64.deb
-	sha512sums = 833f5aa501c3039f5cb3765b10f7839963394542435c944fbb96edbc5c9ec3f57d51526edffd7790b7f350b11281db076a6fab0bbccad9e5731b597db36719dc
+	source = http://apt.puppetlabs.com/pool/bionic/puppet7/p/pdk/pdk_2.1.1.0-1bionic_amd64.deb
+	sha512sums = 1630b050299944a87418d7b00369028a0f6e1e0a7e737dc996a8cc0de53f866ad385abaecb655e6ca299b56da7238efdeb6a03390d7aab13417a1bdb6b885887
 
 pkgname = pdk
-
