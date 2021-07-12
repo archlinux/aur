@@ -1,0 +1,13 @@
+pkgbase = python-sphinxextensions
+	pkgdesc = Extensions for the Sphinx documentation tool
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Paebbels/SphinxExtensions
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pyattributes
+	source = python-sphinxextensions-0.2.0.tar.gz::https://github.com/Paebbels/SphinxExtensions/archive/v0.2.0.tar.gz
+	sha256sums = 6a0e92eaca61872ac09037609852378d4903b0df3373e845e7d1ef2540f3f2ea
+
+pkgname = python-sphinxextensions
