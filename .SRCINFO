@@ -1,0 +1,14 @@
+pkgbase = keytool-bash-autocomplete
+	pkgdesc = Bash autocompletion for java keytool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/codingtim/keytool-bash-autocomplete
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = bash-completion
+	source = https://github.com/codingtim/keytool-bash-autocomplete/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 993f2c5c31b034908fb699250b0df9af58d91f4c9814529af48e629f1d2aa751
+
+pkgname = keytool-bash-autocomplete
+
