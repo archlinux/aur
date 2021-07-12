@@ -4,7 +4,7 @@
 #_fragment="#branch=2.0.5-beta-maintenance"
 
 pkgname=appleseed-git
-pkgver=2.1.0.beta.r281.g00c304dbd
+pkgver=2.1.0.beta.r282.g1ba62025b
 pkgrel=1
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
