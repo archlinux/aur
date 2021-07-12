@@ -2,8 +2,8 @@
 
 _gemname=http_parser.rb
 pkgname=ruby-$_gemname
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Ruby bindings to https://github.com/ry/http-parser and https://github.com/a2800276/http-parser.java"
 arch=(i686 x86_64)
 url='http://github.com/tmm1/http_parser.rb'
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('f11d0aec50ef26a7d1f991e627ac88acdb5979282aeba7a5c3be6ce0636ed196')
+sha256sums=('176ab661633ed25a11a415a745cd82957eaa6eed414aec3327809ae848300af6')
 
 package() {
   cd "$srcdir"
