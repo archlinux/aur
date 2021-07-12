@@ -8,6 +8,7 @@ packages:
   - python-docopt
   - python-requests
   - python-jinja
+  - python-distro
 tasks:
   - build: |
       cd protonvpn-cli-ng

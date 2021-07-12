@@ -1,18 +1,20 @@
-# Maintainer: Nate Ijams ~ exprez135 <exprezdev at pm dot me>
+# Maintainer: Nate Ijams ~ exprez135 <sbk at sbk dot sh> 
 
 pkgname=protonvpn-cli-ng
-pkgver=2.2.6
-pkgrel=2
-pkgdesc="A Linux CLI for ProtonVPN."
+pkgver=2.2.11
+pkgrel=1
+pkgdesc="A Community Linux CLI for ProtonVPN."
 arch=("any")
 url="https://github.com/ProtonVPN/linux-cli-community"
 license=("GPLv3")
-depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests" "python-jinja")
-replaces=("protonvpn-cli")
-source=("https://github.com/ProtonVPN/linux-cli-community/archive/v2.2.6.tar.gz")
-sha256sums=('eb7e334ea55f510fdcda44541714ee4c03b7d00a23228ee5e18d37863b243d72')
+depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools"
+	"python-docopt" "python-requests" "python-jinja" "python-distro")
+conflicts=("protonvpn-cli")
+source=("https://github.com/ProtonVPN/linux-cli-community/archive/v${pkgver}.tar.gz")
+source=("linux-cli-community-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('2fc643762e9156928b706c31a7826427a7ca12c7ae4cdfb656746cd2de3af66b')
 
-_protonvpn_src_dir="linux-cli-community-2.2.6"
+_protonvpn_src_dir="linux-cli-community-${pkgver}"
 
 package() {
     # Define paths
