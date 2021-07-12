@@ -1,7 +1,7 @@
 # Maintainer: u0_a266 <cagf2emv@anonaddy.me>
 pkgname=fzpac-git
 _pkgname=fzpac
-pkgver=r123.00aded7
+pkgver=r133.7259980
 pkgrel=1
 pkgdesc="Arch Linux (pacman) package finder with fzf "
 arch=("any")
