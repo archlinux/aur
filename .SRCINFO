@@ -13,9 +13,11 @@ pkgbase = bottles
 	depends = libhandy
 	depends = gtk3
 	depends = python-gobject
+	depends = python-requests
 	depends = python-yaml
 	depends = samba
 	depends = wine
+	depends = cabextract
 	source = bottles-2021.7.3-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.3-treviso.tar.gz
 	sha256sums = 08b4f5f0028320d866fc2a99ff49e80db0770ea91f093ed6cc584e08be3fe475
 
