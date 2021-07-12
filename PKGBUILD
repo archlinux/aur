@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: David Pugnasse <david.pugnasse@gmail.com>
 pkgname=pmd
-pkgver=6.35.0
+pkgver=6.36.0
 pkgrel=1
 pkgdesc="An extensible cross-language static code analyzer."
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=("pmd-bin")
 replaces=("pmd-bin")
 source=("https://github.com/$pkgname/$pkgname/releases/download/${pkgname}_releases/$pkgver/$pkgname-bin-$pkgver.zip"
         pmdapp)
-sha256sums=('2beee89f0c6cb7044962d825b788ce0f856f6a5beba66b0d6f2ab0e6d36e5412'
+sha256sums=('a3aa27cfa8f72ca56aaaa1f56468ea1decfb1b0d1b57005b4f3c386cb80be7fe'
             'b1a73343ba0435801ce18c7fc18e14b7fed6a9be7b0a5907b67730471c176fc8')
 
 package() {
