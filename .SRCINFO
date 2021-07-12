@@ -1,13 +1,13 @@
 pkgbase = python-svdtools
 	pkgdesc = Python package to handle vendor-supplied, often buggy SVD files.
-	pkgver = 0.1.12
-	pkgrel = 1
+	pkgver = 0.1.14
+	pkgrel = 2
 	url = https://github.com/stm32-rs/svdtools
 	arch = any
 	license = MIT,
 	license = APACHE
 	makedepends = python
 	makedepends = python-pip
+	depends = python-lxml
 
 pkgname = python-svdtools
-
