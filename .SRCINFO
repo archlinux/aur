@@ -13,8 +13,7 @@ pkgbase = python-slixmpp-omemo
 	depends = python-setuptools
 	provides = python-slixmpp-omemo
 	conflicts = python-slixmpp-omemo
-	source = slixmpp-omemo::git+https://lab.louiz.org/poezio/slixmpp-omemo#tag=v0.4.0
+	source = slixmpp-omemo::git+https://lab.louiz.org/poezio/slixmpp-omemo#tag=v0.5.0
 	md5sums = SKIP
 
 pkgname = python-slixmpp-omemo
-

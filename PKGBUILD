@@ -2,7 +2,7 @@
 
 pkgname=python-slixmpp-omemo
 _pkgbase=slixmpp-omemo
-_tag=v0.4.0
+_tag=v0.5.0
 pkgver=v0.4.0.r0.g266684b
 pkgrel=1
 pkgdesc="Slixmpp OMEMO plugin"
