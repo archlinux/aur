@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Cuphead
+Comment=Contra-esque action game with retro cartoon visuals.
+Exec=cuphead
+Icon=gog-cuphead
+Type=Application
+Terminal=false
+StartupNotify=true
+StartupWMClass=cuphead.exe
+Categories=Game;
+Encoding=UTF-8
