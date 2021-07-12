@@ -1,7 +1,7 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
@@ -23,4 +23,3 @@ pkgbase = craftos-pc
 	sha256sums = 079a4f6d8595b4f313925558376dd72f2902e6cec6d15d118bd9a19b7021bbe0
 
 pkgname = craftos-pc
-
