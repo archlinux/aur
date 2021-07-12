@@ -1,11 +1,11 @@
-pkgbase = vintage-basic
+pkgbase = vintage-basic-bin
 	pkgdesc = Vintage BASIC Interpreter
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://vintage-basic.net
 	arch = x86_64
 	license = BSD
 	source = http://vintage-basic.net/downloads/vintage-basic-1.0.3-linux-x86_64.tar.gz
 	sha512sums = c654209689c25098f6321fb47c2a46a2cc562358b12c746d71b5e6c2e52cb86cb8887233d3684ed355dbddb585d9eca571b220536a90c60e00e83d25ad1bd39c
 
-pkgname = vintage-basic
+pkgname = vintage-basic-bin

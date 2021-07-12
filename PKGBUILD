@@ -1,8 +1,8 @@
 # Maintainer: Jorengarenar
 
-pkgname=vintage-basic
+pkgname=vintage-basic-bin
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Vintage BASIC Interpreter'
 arch=('x86_64')
 url='http://vintage-basic.net'
