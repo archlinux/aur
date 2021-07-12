@@ -1,6 +1,6 @@
 pkgbase = xorgproto-git
-	pkgdesc = Combined X.Org X11 Protocol headers (git version)
-	pkgver = 2021.3.0.r2686.g5d37740
+	pkgdesc = combined X.Org X11 Protocol headers (git version)
+	pkgver = 2021.4.99.2.1.r2708.ga0ed054
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = xorgproto-git
 	sha512sums = SKIP
 
 pkgname = xorgproto-git
-

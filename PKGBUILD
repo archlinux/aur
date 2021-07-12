@@ -3,9 +3,9 @@
 
 _pkgname=xorgproto
 pkgname=$_pkgname-git
-pkgver=2021.3.0.r2686.g5d37740
+pkgver=2021.4.99.2.1.r2708.ga0ed054
 pkgrel=1
-pkgdesc="Combined X.Org X11 Protocol headers (git version)"
+pkgdesc='combined X.Org X11 Protocol headers (git version)'
 arch=('any')
 url="https://xorg.freedesktop.org/"
 license=('custom')
@@ -43,19 +43,17 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   # missing docs
-  install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m644 "$pkgname"/*.txt "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -m644 "$pkgname"/PM_spec "${pkgdir}/usr/share/doc/${pkgname}/"
-  rm "${pkgdir}"/usr/share/doc/${pkgname}/meson_options.txt
+  install -m755 -d "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -m644 "$pkgname"/PM_spec "${pkgdir}/usr/share/doc/${_pkgname}/"
 
   # licenses
-  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${pkgname}"/COPYING* "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -m755 -d "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m644 "$pkgname"/COPYING* "${pkgdir}/usr/share/licenses/${_pkgname}/"
   # remove licences of legacy stuff we don't ship anymore
-  rm -f "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING-{evieproto,fontcacheproto,lg3dproto,printproto,xcalibrateproto,xf86rushproto}
+  rm -f "${pkgdir}"/usr/share/licenses/${_pkgname}/COPYING-{evieproto,fontcacheproto,lg3dproto,printproto,xcalibrateproto,xf86rushproto}
 
   # cleanup
   rm -f "${pkgdir}"/usr/include/X11/extensions/apple*
-  rm -f "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING-{apple,windows}wmproto
+  rm -f "${pkgdir}"/usr/share/licenses/${_pkgname}/COPYING-{apple,windows}wmproto
   rm -f "${pkgdir}"/usr/share/pkgconfig/applewmproto.pc
 }
