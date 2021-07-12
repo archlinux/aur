@@ -1,33 +1,52 @@
 # Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 pkgname=i8086emu-git
 pkgver=0.9.2.r35.1143f09
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="cross-platform emulator for the Intel 8086 microprocessor"
 arch=($CARCH)
-url=http://"${pkgname%-*}".sourceforge.net/
+url=http://${pkgname%-*}.sourceforge.net/
 license=(GPL2)
 depends=(gtk2 beep) # shared-mime-info # namcap: W: unneeded dependency on a package run when needed by hooks.
 makedepends=(cmake desktop-file-utils git nasm)
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
 
 # (A)
 # source=(file:///dev/null)
 # md5sums=(SKIP)
 
 # (B)
-source=("${pkgname%-*}"::git+https://git.code.sf.net/p/i8086emu/git
-        http://"${pkgname%-*}".sourceforge.net/dl/i8086.pdf
-        extern.patch
-        "${pkgname%-*}".xml
-        net.sourceforge."${pkgname%-*}"."${pkgname%emu*}"{gui,text}.desktop)
-sha1sums=(SKIP
-          11d730bde4fc248fb2ae37785af564e884c62b66
-          a5c1091422a1f9454a6fa161107781854f387896
-          d3667ed6dc769ba4d7054a5eb4736f118c02bcc2
-          cb75fe18ded8ed3f86ef159d08309b62e8739a11
-          48d414d51f66852c70e37d3c69d9613bb88eacac)
+source=(
+
+  # 503 Service Unavailable
+  # https://downforeveryoneorjustme.com/i8086emu.sourceforge.net?proto=http
+  # https://www.isitdownrightnow.com/i8086emu.sourceforge.net.html
+  # http://${pkgname%-*}.sourceforge.net/dl/i8086.pdf
+
+  ${pkgname%-*}::git+https://git.code.sf.net/p/i8086emu/git
+  # https://sourceforge.net/p/i8086emu/patches/9/
+  https://sourceforge.net/p/${pkgname%-*}/patches/9/attachment/extern.patch
+  # https://developer.gnome.org/gtk2/stable/GtkMessageDialog.html#gtk-message-dialog-new
+  # https://sourceforge.net/p/i8086emu/patches/10/
+  https://sourceforge.net/p/${pkgname%-*}/patches/_discuss/thread/5e30f26d55/b83c/attachment/fmt.patch
+
+  ${pkgname%-*}.xml
+  net.sourceforge.${pkgname%-*}."${pkgname%emu*}"{gui,text}.desktop
+
+)
+sha1sums=(
+
+  # 11d730bde4fc248fb2ae37785af564e884c62b66
+
+  SKIP
+  a5c1091422a1f9454a6fa161107781854f387896
+  d6781a90dcfcec1e9164a3c7223253a556fa858e
+
+  d3667ed6dc769ba4d7054a5eb4736f118c02bcc2
+  cb75fe18ded8ed3f86ef159d08309b62e8739a11 48d414d51f66852c70e37d3c69d9613bb88eacac
+
+)
 
 prepare() {
 
@@ -35,9 +54,12 @@ prepare() {
   # cp -a ~/i8086emu.git/ ./
 
   # (B)
-  patch --directory="${pkgname%-*}" --input=- --strip=1 --verbose <extern.patch # --dry-run
+  # patch -d ${pkgname%-*} -i - -p1 --verbose <extern.patch # --dry-run
+  # git -C ${pkgname%-*} apply --verbose ./extern.patch # error: can't open patch './extern.patch': No such file or directory
+  git -C ${pkgname%-*} apply --verbose - <./extern.patch
+  git -C ${pkgname%-*} apply --verbose - <./fmt.patch
 
-  cd "${pkgname%-*}"/"${pkgname%-*}"/src
+  # cd ${pkgname%-*}/${pkgname%-*}/src
 
   # https://unix.stackexchange.com/a/450857
   # Insert text blob w/ sed in case any whitespace get messed up
@@ -54,7 +76,7 @@ prepare() {
 }
 
 pkgver() {
-  cd "${pkgname%-*}"
+  cd ${pkgname%-*}
   # cutting off 'v' prefix that presents in the git tag
   printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
@@ -76,7 +98,7 @@ build() {
     --exec-prefix=/usr \
     \
     --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/"${pkgname%-*}" \
+    --libexecdir=/usr/lib/${pkgname%-*} \
     --sysconfdir=/etc \
     --localstatedir=/var \
     --infodir=/usr/share/doc \
@@ -95,7 +117,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_VERBOSE_MAKEFILE=ON
   # ccmake -B cmake_build_gui -S .; echo; pwd; echo; return 1
-  make -C cmake_build_gui\
+  make -C cmake_build_gui
+  # make -C cmake_build_gui -j1 VERBOSE=1
 
 }
 
@@ -125,6 +148,6 @@ package() {
   cd "$srcdir"
   [ -z "$(desktop-file-validate *.desktop 2>&1)" ]
   install -vdm755 "$pkgdir/usr/share/applications/"; install -vDm644 *.desktop "$_/"
-  install -vDm644 {,"$pkgdir/usr/share/mime/packages/"}"${pkgname%-*}".xml
+  install -vDm644 {,"$pkgdir/usr/share/mime/packages/"}${pkgname%-*}.xml
 
 }
