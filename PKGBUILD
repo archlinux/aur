@@ -2,7 +2,7 @@
 # Contributer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=clojure-lsp-bin
-pkgver=2021.07.05_20.31.12
+pkgver=2021.07.12_12.30.59
 pkgrel=1
 epoch=1
 pkgdesc="Language Server (LSP) for Clojure"
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("${pkgname}-${pkgver}-native-linux-amd64.zip::${url}/releases/download/${pkgver//_/-}/clojure-lsp-native-linux-amd64.zip")
 
-sha256sums_x86_64=('f6d2402ce2737652eeccb3dcc3a49f848b7c386ac609382a9faf991c2d38edd9')
+sha256sums_x86_64=('55a9b92e62ba18f17475cff16105f4a25ef0696fa8261d7bdfe16a4c6086bee1')
 
 package() {
     install -Dm755 ${srcdir}/clojure-lsp "${pkgdir}/usr/bin/clojure-lsp"
