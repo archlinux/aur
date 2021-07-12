@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-cursor-theme-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Material Based Cursor Theme"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 source=("${pkgname%-bin}-$pkgver.tar.gz::$url/releases/download/v$pkgver/Bibata.tar.gz")
-sha256sums=('01c5f7d182f81d2ab39664e20b43084ad356b96965910aa335b9114d0929bb5f')
+sha256sums=('6f6736a5a48198d6750cd578264d913b3f1547894bfc25dbc853e0f934b91bbc')
 
 package() {
 	install -d "$pkgdir/usr/share/icons"
