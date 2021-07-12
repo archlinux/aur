@@ -21,11 +21,12 @@ package() {
 
   sed -i "s/\/opt\/Roam Research/\/opt\/$_pkgname/" usr/share/applications/roam-research.desktop
 
-  install -d "$pkgdir"/{opt/$_pkgname,usr/share}
+  install -d "$pkgdir"/{opt/$_pkgname,usr/share,usr/bin}
   cp -r opt/Roam\ Research/* -t "$pkgdir"/opt/$_pkgname
   cp -r usr/share/* -t "$pkgdir"/usr/share
   install -d "$pkgdir"/usr/share/icons/hicolor/1024x1024
   cp -r usr/share/icons/hicolor/0x0/* -t "$pkgdir"/usr/share/icons/hicolor/1024x1024
   install -d "$pkgdir"/usr/share/pixmaps
   install -D usr/share/icons/hicolor/0x0/apps/roam-research.png -t "$pkgdir"/usr/share/pixmaps
+  ln -s /opt/${_pkgname}/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
 }
