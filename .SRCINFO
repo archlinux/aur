@@ -1,12 +1,11 @@
 pkgbase = yam
 	pkgdesc = Game manager for F95zone
-	pkgver = 2.5.7
+	pkgver = 2.5.8
 	pkgrel = 1
 	url = https://github.com/MillenniumEarl/YAM
 	arch = x86_64
 	license = MIT
-	source = https://github.com/MillenniumEarl/YAM/releases/download/v2.5.7/YAM-2.5.7.AppImage
-	sha256sums = a718e8c3dc036b777dd3e05cc0cee2693a4893e86161619aee922dff1d13707b
+	source = https://github.com/MillenniumEarl/YAM/releases/download/v2.5.8/YAM-2.5.8.AppImage
+	sha256sums = ec60981d349b0dbf1b4446d53ae71b760fde8c1ac77d09ee3603efa2ba5f4937
 
 pkgname = yam
-
