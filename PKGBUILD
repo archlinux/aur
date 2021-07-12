@@ -52,9 +52,9 @@ package() {
     install -Dm644 "$_pkgname/assets/sunshine.conf" "$pkgdir/$_assets_path/sunshine.conf"
     install -Dm644 "$_pkgname/assets/apps_linux.json" "$pkgdir/$_assets_path/apps_linux.json"
 
-    install -Dm755 -t "$pkgdir/$_assets_path/web" "$_pkgname/assets/web"
-    install -Dm755 -t "$pkgdir/$_assets_path/shaders/opengl" "$_pkgname/assets/shaders/opengl"
- 
+    find "$_pkgname/assets/web" -type f -print0 | xargs -0 -I {} install -Dm644 {} "$pkgdir/$_assets_path/web/{}"
+    find "$_pkgname/assets/shaders/opengl" -type f -print0 | xargs -0 -I {} install -Dm644 {} "$pkgdir/$_assets_path/shaders/opengl/{}" \;
+
     install -Dm755 build/sunshine "$pkgdir/usr/bin/sunshine"
     install -Dm755 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
 
