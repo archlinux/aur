@@ -3,7 +3,7 @@ pkgbase=python-sphinx-hoverxref
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.5b1
+pkgver=0.7b1
 pkgrel=1
 pkgdesc="Sphinx extension to embed content in a tooltip on xref hover"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/readthedocs/sphinx-hoverxref/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('339d7a47251b61593f415c29ca4c5abd')
+md5sums=('2ff5b21cb6353e28f8932afc5bed066c')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
