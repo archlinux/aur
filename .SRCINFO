@@ -1,22 +1,21 @@
 pkgbase = chia-git
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure.
-	pkgver = 1.1.5.r41.g1c808b6c3
+	pkgver = 1.2.1.r0.gefd401ee
 	pkgrel = 1
 	url = https://www.chia.net/
 	install = chia-git.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	makedepends = cmake
 	depends = python
 	depends = python-pip
-	depends = python-websockets
-	depends = python-wheel
+	depends = git
 	provides = chia
 	conflicts = chia
 	options = !strip
 	source = git+https://github.com/Chia-Network/chia-blockchain.git
+	source = git+https://github.com/Chia-Network/mozilla-ca#commit=6e8c42b3ef7d4ded22a994f9886e63f0060020bd
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = chia-git
-
