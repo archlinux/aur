@@ -1,7 +1,7 @@
 pkgbase = yt-dlg-git
 	pkgdesc = A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)
-	pkgver = 1.2.0.r124.g8dbf054
-	pkgrel = 4
+	pkgver = 1.2.0.r127.g9789d97
+	pkgrel = 1
 	url = https://github.com/oleksis/youtube-dl-gui
 	arch = any
 	license = custom:UNLICENSE
@@ -15,8 +15,6 @@ pkgbase = yt-dlg-git
 	conflicts = yt-dlg
 	conflicts = youtube-dl-gui
 	source = yt-dlg-git::git+https://github.com/yt-dlg/yt-dlg.git
-	source = yt-dlg.desktop
 	sha256sums = SKIP
-	sha256sums = c0b27a97791951beafdc98fc7fc4580092a318aa49aef56bd338ed490cc7b574
 
 pkgname = yt-dlg-git

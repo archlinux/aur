@@ -2,8 +2,8 @@
 
 _pkgname=yt-dlg
 pkgname=$_pkgname-git
-pkgver=1.2.0.r124.g8dbf054
-pkgrel=4
+pkgver=1.2.0.r127.g9789d97
+pkgrel=1
 pkgdesc="A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)"
 arch=('any')
 url="https://github.com/oleksis/youtube-dl-gui"
@@ -18,19 +18,17 @@ optdepends=('ffmpeg: convert video files to audio-only files'
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname youtube-dl-gui)
-source=($pkgname::git+https://github.com/yt-dlg/yt-dlg.git
-        yt-dlg.desktop)
-sha256sums=('SKIP'
-            'c0b27a97791951beafdc98fc7fc4580092a318aa49aef56bd338ed490cc7b574')
+source=($pkgname::git+https://github.com/yt-dlg/yt-dlg.git)
+sha256sums=('SKIP')
 
 pkgver() {
   git -C $pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
+  cd $pkgname
   install -Dm644 yt-dlg.desktop "$pkgdir/usr/share/applications/yt-dlg.desktop"
 
-  cd $pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python setup.py build_trans install --root="$pkgdir" --optimize=1
 }
