@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-ccemux
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs."
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -45,5 +45,5 @@ check() {
 package() {
 	cd "craftos2-$pkgver"
 	install -D -m 0755 ccemux.so "$pkgdir/usr/share/craftos/plugins/ccemux.so"
-	patchelf --replace-needed liblua.so libcraftos2-lua.so "$pkgdir/usr/share/craftos/plugins/ccemux.so"
+	patchelf --replace-needed craftos2-lua/src/liblua.so libcraftos2-lua.so "$pkgdir/usr/share/craftos/plugins/ccemux.so"
 }
