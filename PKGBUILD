@@ -20,7 +20,8 @@ build() {
 
 check(){
   cd "$_pkgname-$pkgver"
-  #pytest
+  touch tests/__init__.py
+  pytest --override-ini 'python_files=*' tests/
 }
 
 package() {
