@@ -1,7 +1,7 @@
 pkgbase = libglade
 	pkgdesc = Allows you to load glade interface files in a program at runtime
 	pkgver = 2.6.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.gnome.org
 	install = glade.install
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = libglade
 	depends = gtk2>=2.16.0
 	depends = libxml2>=2.7.3
 	optdepends = python2: libglade-convert script
+	options = !lto
 	source = https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.bz2
 	source = libglade-2.0.1-nowarning.patch
 	sha256sums = 64361e7647839d36ed8336d992fd210d3e8139882269bed47dc4674980165dec
 	sha256sums = 423c12af1c73442caa851a0b8db33b00fa4b778b1b422a4e8ac33d121d043008
 
 pkgname = libglade
-
