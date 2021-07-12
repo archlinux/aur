@@ -2,7 +2,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=cozette-ttf
-pkgver=1.11.1
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
@@ -16,4 +16,4 @@ package() {
     install -vDm 644 "CozetteVector.ttf" -t "${pkgdir}/usr/share/fonts/TTF/"
     install -vDm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-sha1sums=('a2ccf6814f78c40cccecc08f2dfa1d3c9a1a54cb')
+sha1sums=('968a72b571e68658c240a1e10734a353db915125')
