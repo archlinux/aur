@@ -282,7 +282,7 @@ server_status() {
 		# Calculating memory usage
 		for p in $(${SUDO_CMD} pgrep -f "${MAIN_EXECUTABLE}"); do
 			ps -p"${p}" -O rss | tail -n 1;
-		done | gawk '{ count ++; sum += $2 }; END {count --; print "Number of processes =", count, "(tmux, bash,", count-1, "x server)"; print "Total memory usage =", sum/1024, "MB" ;};'
+		done | gawk '{ count ++; sum += $2 }; END {count --; print "Number of processes =", count, "(tmux,", count-1, "x server)"; print "Total memory usage =", sum/1024, "MB" ;};'
 	else
 		echo -e "Status:\e[39;1m stopped\e[0m"
 	fi
