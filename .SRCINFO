@@ -1,6 +1,6 @@
 pkgbase = bigen
 	pkgdesc = A Password Generator And Controller
-	pkgver = r2.544cb74
+	pkgver = r3.1483cff
 	pkgrel = 1
 	url = https://github.com/GNVageesh/bigen
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = bigen
 	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	depends = cmake
-	source = bigen::git://github.com/GNVageesh/bigen.git
+	source = bigen::git://github.com/GNVageesh/bigen
 	md5sums = SKIP
 
 pkgname = bigen

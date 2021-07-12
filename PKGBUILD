@@ -1,12 +1,12 @@
 # Maintainer: GN Vageesh <vageeshgn2005@gmail.com>
 pkgname=bigen
-pkgver=r2.544cb74
+pkgver=r3.1483cff
 pkgrel=1
 pkgdesc="A Password Generator And Controller"
 arch=('x86_64')
 url="https://github.com/GNVageesh/bigen"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'cmake')
+depends=('glibc' 'gcc-libs')
 makedepends=('git')
 source=("bigen::git://github.com/GNVageesh/bigen")
 md5sums=('SKIP')
@@ -18,10 +18,7 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	mkdir build
-	cd build
-	cmake ..
-	sudo make install
+	make install
 }
 
 package() {
