@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=gmid
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://git.omarpolo.com/gmid'
 license=('ISC')
 depends=('libressl')
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('1eaf2f6da2dd77cb3cda306036a5524abfd27bcdfa9d9b0cc364bf989aef8277')
+sha256sums=('cf06e1f838e4e35eb4679c9ef5747cbc96326124e27ad874ad78743ce791c2d9')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
