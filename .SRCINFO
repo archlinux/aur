@@ -1,7 +1,7 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
-	pkgver = 2.5.5
-	pkgrel = 4
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
@@ -9,6 +9,7 @@ pkgbase = craftos-pc
 	arch = aarch64
 	license = MIT
 	makedepends = unzip
+	makedepends = patchelf
 	depends = craftos-pc-data>=2.5
 	depends = sdl2>=2.0.8
 	depends = sdl2_mixer
@@ -16,10 +17,10 @@ pkgbase = craftos-pc
 	optdepends = libharu: PDF output support
 	optdepends = png++: PNG screenshot support
 	optdepends = ncurses: CLI mode support
-	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.5.5.tar.gz
-	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.5.5.tar.gz
-	sha256sums = ae44bb467bdfbcc277f3454feaa9d3a3e4573c5e56ced55801bf256b1e35fba0
-	sha256sums = c3ae7d92eca5972fc280f789ecbc20ba271c686fcffdbefc749198c3906b26c7
+	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.6.tar.gz
+	source = craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.6.tar.gz
+	sha256sums = 8e46e62894bf5ac7e990ffc83f3a357c0a24e817dc039a32bc3493179dfc949f
+	sha256sums = 079a4f6d8595b4f313925558376dd72f2902e6cec6d15d118bd9a19b7021bbe0
 
 pkgname = craftos-pc
 
