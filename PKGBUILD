@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.24.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -18,6 +18,7 @@ depends=(
   'git'
   'go'
   'gliderlabs-sigil'
+  'inetutils'
   'herokuish'
   'jq'
   'man-db'
@@ -35,9 +36,11 @@ depends=(
 )
 source=("https://github.com/dokku/dokku/archive/v$pkgver.zip"
         "$pkgname.install"
+        "crontab_calls.patch"
         "LICENSE")
 sha256sums=('bed55e2f3d0b037a62599a528dace16083e528428277d8ab03a25041d8a7a2eb'
-            '3e58b518ce747483f01371a903cc66ea346076c87512cff52da0bd7932760538'
+            'dd7ca19339e18f8434ca74faeb994ae8446cb3ccf020e558eaa340ad1f72effe'
+            '88fae4d0578b9badaa91d1d4771952b4c7560ba2f56f4eda990034078a44431e'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="$pkgname.install"
 
@@ -50,6 +53,9 @@ build() {
   export GOPATH="$srcdir/gopath"
 
   cd "$pkgname-$pkgver"
+
+  # Fix issue on crontab calls with arch linux cron implementation
+  patch -p1 -i "${srcdir}/crontab_calls.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do
@@ -72,6 +78,6 @@ package() {
   mkdir -p "$pkgdir/var/lib/dokku/core-plugins/available"
   cp -R "$srcdir/$pkgname-$pkgver/plugins/." "$pkgdir/var/lib/dokku/core-plugins/available"
 
-    # Version
+  # Version
   echo $pkgver > "$pkgdir/var/lib/dokku/VERSION"
 }
