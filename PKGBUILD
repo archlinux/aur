@@ -1,4 +1,4 @@
-# Maintainer: DH4 <teodh4@gmail.com>
+# Maintainer: BannedPatriot <realbannedpatriot@protonmail.com>
 
 pkgname=sonobus-aooserver-bin
 pkgver=1
