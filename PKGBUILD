@@ -1,9 +1,9 @@
 # Maintainer: Banned Patriot <bannedpatriot@protonmail.com>
 pkgname=rtl8822bu-dkms
 _pkgbase=rtl8822bu
-pkgver=20201121
+pkgver=5.8.7.4
 pkgrel=1
-pkgdesc="Kernel module for Edimax EW7822ULC USB3, Asus AC53 Nano USB 802.11ac and TP-Link Archer T4U adapter. Updated for linux kernel 5.10."
+pkgdesc="Kernel module for Edimax EW7822ULC USB3, Asus AC53 Nano USB 802.11ac and TP-Link Archer T4U adapter. Patched for Linux v5.12."
 url="https://github.com/BannedPatriot/rtl8822bu"
 license=("GPL")
 arch=('armv7h' 'x86_64')

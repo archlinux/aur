@@ -1,6 +1,6 @@
 pkgbase = rtl8822bu-dkms
-	pkgdesc = Kernel module for Edimax EW7822ULC USB3, Asus AC53 Nano USB 802.11ac and TP-Link Archer T4U adapter. Updated for linux kernel 5.10.
-	pkgver = 20201121
+	pkgdesc = Kernel module for Edimax EW7822ULC USB3, Asus AC53 Nano USB 802.11ac and TP-Link Archer T4U adapter. Patched for Linux v5.12.
+	pkgver = 5.8.7.4
 	pkgrel = 1
 	url = https://github.com/BannedPatriot/rtl8822bu
 	install = rtl8822bu-dkms.install
