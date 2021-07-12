@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=3.9
-pkgrel=2
+pkgver=3.10.1
+pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -14,9 +14,9 @@ optdepends=('python-pygments: syntax highlighting'
             'python-pyinotify: for inotify support'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
-checkdepends=('python-pytest' 'python-mock' 'desktop-file-utils' 'appstream-glib')
+checkdepends=('python-pytest-flake8' 'python-mock' 'desktop-file-utils' 'appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('66b62f479ad141322351d62aff76e4882719d08f8f29b35f97d30f355391a54e')
+sha256sums=('1d7a9be54e66fcaa49585cda3ec89b6b2448f6e38c6f41047e55ecaff2d809d3')
 
 build() {
 	cd "$pkgname-$pkgver"

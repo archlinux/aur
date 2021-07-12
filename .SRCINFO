@@ -1,11 +1,11 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
-	pkgver = 3.9
-	pkgrel = 2
+	pkgver = 3.10.1
+	pkgrel = 1
 	url = https://git-cola.github.io
 	arch = any
 	license = GPL2
-	checkdepends = python-pytest
+	checkdepends = python-pytest-flake8
 	checkdepends = python-mock
 	checkdepends = desktop-file-utils
 	checkdepends = appstream-glib
@@ -22,8 +22,7 @@ pkgbase = git-cola
 	optdepends = python-pyinotify: for inotify support
 	optdepends = python-send2trash: enables "Send to Trash" functionality.
 	optdepends = tcl: to use the built-in ssh-askpass handler
-	source = git-cola-3.9.tar.gz::https://github.com/git-cola/git-cola/archive/v3.9.tar.gz
-	sha256sums = 66b62f479ad141322351d62aff76e4882719d08f8f29b35f97d30f355391a54e
+	source = git-cola-3.10.1.tar.gz::https://github.com/git-cola/git-cola/archive/v3.10.1.tar.gz
+	sha256sums = 1d7a9be54e66fcaa49585cda3ec89b6b2448f6e38c6f41047e55ecaff2d809d3
 
 pkgname = git-cola
-
