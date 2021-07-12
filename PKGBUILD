@@ -4,7 +4,7 @@
 pkgname=appleseed
 pkgver=2.1.0
 _pkgver=${pkgver}-beta
-pkgrel=2
+pkgrel=3
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects."
 arch=(i686 x86_64)
 url="https://appleseedhq.net"
