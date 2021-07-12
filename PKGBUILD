@@ -13,7 +13,7 @@ url="https://appleseedhq.net"
 license=('MIT')
 provides=('appleseed')
 conflicts=('appleseed')
-depends=(python2 python embree qt5-base boost{,-python2}-libs openexr opencolorio openimageio openshadinglanguage xerces-c zlib)
+depends=(python2 python embree qt5-base boost{,-python2}-libs openexr opencolorio1 openimageio openshadinglanguage xerces-c zlib)
 makedepends=(boost{,-python2} cmake git ninja)
 options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
@@ -21,24 +21,27 @@ source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment
         "cmake.extra.install.dirs.remove.patch"
         osl_1.11.8.patch::"https://github.com/appleseedhq/appleseed/pull/2900.patch"
         "oiio_cxx_std_14.patch"
+        "opencolorio1.patch"
         )
 sha256sums=('SKIP'
             '8e7d453ced2a58b162b6e8e2ace09916755b70821837b2c7502a3417f03a25a3'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301'
             '0171eaa9ec499ecf74ac8878dbacfb28f81094e9a7bed46819314613e6ae7133'
-            '194902d8c32f23155dddd4205ce3744852e0b86fc22e74739ce5ab7bf97924a7')
+            '194902d8c32f23155dddd4205ce3744852e0b86fc22e74739ce5ab7bf97924a7'
+            '881b53983e24ade13480d2be2cfe10990890286cd9910c14e83284da427a1713')
 b2sums=('SKIP'
         '8461888dc541113700f377379b0e688bdbc6a5b79bfda4c1b061c2e3811a03c43583272862d6b084f092c6bb372c15b31d2a25849b9e2d89d1e3ed657f680846'
         '85d278ea12672e44657fbfe8695744508db88cea54dbc93410632b05175c94a5e29e28dfb739ba88ec10a2449ff499484854ba177db03f5e41b24d2b8e6b9328'
         'cc21c08931d4e5060bbf9b8d2732e68eb28edc923e952db09665e2f63a0918e24f6d35f39a2ea2048a6b5ad67833df08bc9a5e1fea065e1df975ca5e40d414f0'
-        'e999b4aaf4efcb3671de7f197d9ab92fd90cee34aaf879d30f959c88cea55416b0715ce85ce0452203484e4b336aed453ecff9166e12b9da9170101a3118138c')
+        'e999b4aaf4efcb3671de7f197d9ab92fd90cee34aaf879d30f959c88cea55416b0715ce85ce0452203484e4b336aed453ecff9166e12b9da9170101a3118138c'
+        '6a92e81297d3bdc8c8b77034d9dac1864dd59b106503b6c711fbdd04122ef8374b908054844ec2999ba6a845363afebf566b2769cf306843c8bc017453e54de1')
 
 pkgver() {
   git -C "${srcdir}/${pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14}.patch
+  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14,opencolorio1}.patch
   sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 

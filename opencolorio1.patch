@@ -1,0 +1,82 @@
+diff --git a/cmake/modules/FindOpenColorIO.cmake b/cmake/modules/FindOpenColorIO.cmake
+index b83972220..e40bf65aa 100644
+--- a/cmake/modules/FindOpenColorIO.cmake
++++ b/cmake/modules/FindOpenColorIO.cmake
+@@ -35,10 +35,10 @@
+ #  OPENCOLORIO_FOUND        - True if OpenColorIO found.
+ 
+ # Look for the header file.
+-find_path (OPENCOLORIO_INCLUDE_DIR NAMES OpenColorIO/OpenColorIO.h)
++find_path (OPENCOLORIO_INCLUDE_DIR NAMES OpenColorIO1/OpenColorIO.h)
+ 
+ # Look for the library.
+-find_library (OPENCOLORIO_LIBRARY NAMES OpenColorIO)
++find_library (OPENCOLORIO_LIBRARY NAMES OpenColorIO1)
+ 
+ # handle the QUIETLY and REQUIRED arguments and set OPENCOLORIO_FOUND to TRUE if all listed variables are TRUE
+ include (FindPackageHandleStandardArgs)
+diff --git a/src/appleseed.bench/mainwindow/mainwindow.h b/src/appleseed.bench/mainwindow/mainwindow.h
+index b7827d927..453b86f24 100644
+--- a/src/appleseed.bench/mainwindow/mainwindow.h
++++ b/src/appleseed.bench/mainwindow/mainwindow.h
+@@ -57,7 +57,7 @@
+ #include <QtGlobal>
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Boost headers.
+diff --git a/src/appleseed.qtcommon/widgets/renderwidget.h b/src/appleseed.qtcommon/widgets/renderwidget.h
+index e4020b438..745df88d3 100644
+--- a/src/appleseed.qtcommon/widgets/renderwidget.h
++++ b/src/appleseed.qtcommon/widgets/renderwidget.h
+@@ -38,7 +38,7 @@
+ #include "foundation/math/vector.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Qt headers.
+diff --git a/src/appleseed.studio/mainwindow/mainwindow.h b/src/appleseed.studio/mainwindow/mainwindow.h
+index ba6b8c20c..ec2bbbd78 100644
+--- a/src/appleseed.studio/mainwindow/mainwindow.h
++++ b/src/appleseed.studio/mainwindow/mainwindow.h
+@@ -51,7 +51,7 @@
+ #include <QObject>
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Standard headers.
+diff --git a/src/appleseed.studio/mainwindow/rendering/rendertab.cpp b/src/appleseed.studio/mainwindow/rendering/rendertab.cpp
+index 3cbb684bf..1a786aaff 100644
+--- a/src/appleseed.studio/mainwindow/rendering/rendertab.cpp
++++ b/src/appleseed.studio/mainwindow/rendering/rendertab.cpp
+@@ -46,7 +46,7 @@
+ #include "foundation/image/image.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ 
+ // Qt headers.
+ #include <QComboBox>
+diff --git a/src/appleseed.studio/mainwindow/rendering/rendertab.h b/src/appleseed.studio/mainwindow/rendering/rendertab.h
+index eeb76edaa..2de9e6a6a 100644
+--- a/src/appleseed.studio/mainwindow/rendering/rendertab.h
++++ b/src/appleseed.studio/mainwindow/rendering/rendertab.h
+@@ -44,7 +44,7 @@
+ #include "widgets/widgetzoomhandler.h"
+ 
+ // OpenColorIO headers.
+-#include <OpenColorIO/OpenColorIO.h>
++#include <OpenColorIO1/OpenColorIO.h>
+ namespace OCIO = OCIO_NAMESPACE;
+ 
+ // Qt headers.
