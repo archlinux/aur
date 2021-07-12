@@ -1,15 +1,22 @@
 pkgbase = abstouch-nux
-	pkgdesc = An absolute touchpad input client for GNU/Linux.
-	pkgver = 1.3.0
+	pkgdesc = Makes your touchpad work like a graphics tablet on GNU/Linux.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/acedron/abstouch-nux
-	arch = any
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL3
-	license = LGPL3
-	makedepends = rust
+	makedepends = cmake>=3.9.0
 	makedepends = gcc
-	source = abstouch-nux-1.3.0.tar.xz::https://github.com/acedron/abstouch-nux/releases/download/v1.3.0/abstouch-nux-1.3.0.tar.xz
-	md5sums = SKIP
+	depends = libxi
+	depends = libx11
+	depends = xf86-input-libinput
+	source = abstouch-nux-1.0.0.tar.gz::https://github.com/acedron/abstouch-nux/archive/v1.0.0.tar.gz
+	sha256sums = 0722f777d735b816889a29e79e300aabbc31986f191f1e3e081c7a38464c7dbc
 
 pkgname = abstouch-nux
-
