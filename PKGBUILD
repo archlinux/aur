@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.10.48
+_pkgver=5.10.49
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('ce6487083d3da03fbbb577273d2d230817e91afc145a21363f314d3a78f78208'
-            '4a3db90c0d6ea699b18a497c7abc9d2c9f618a370fcdc78fbd333674f7f9ea43'
-            '8252140735891d23eeeffa882d0018ec86540e4ddd8f0b451d6cf266981c48dc')
+sha256sums=('5287a83c9d17b0b30532a131ea4795c84c5d234ce891167891a0113ecc664ab8'
+            '69ddce59199f0eed1570af7040080885c4a98c11c4596f5d00d5a11a2bae28ab'
+            '2a059d722a51d2b4192a682eac87ac71eda3f47ffa348afa7b9df8c0a173581b')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.10.48-1-lts-bin() {
+package_linux5.10.49-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -78,7 +78,7 @@ package_linux5.10.48-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.10.48-1-lts-headers-bin() {
+package_linux5.10.49-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -86,7 +86,7 @@ package_linux5.10.48-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.10.48-1-lts-docs-bin() {
+package_linux5.10.49-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
