@@ -1,5 +1,5 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
-# Contributor:
+# Contributor: Joonas Henriksson <joonas.henriksson at gmail com>
 
 pkgname=gog-cuphead
 pkgver=20170929.15295
@@ -8,7 +8,7 @@ pkgdesc='Contra-esque action game with retro cartoon visuals. GOG version, uses 
 arch=('x86_64')
 url='https://www.gog.com/game/cuphead'
 license=('custom')
-depends=('wine' 'wine-mono' 'wine_gecko')
+depends=('wine' 'wine-mono' 'wine-gecko')
 makedepends=('innoextract' 'lgogdownloader')
 options=('libtool' 'staticlibs' '!strip')
 install="${pkgname}.install"
