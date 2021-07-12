@@ -9,7 +9,7 @@ license=("unknown")
 arch=('armv7h' 'x86_64')
 makedepends=('git')
 depends=('dkms')
-source=('git+https://github.com/BannedPatriot/rtl8822bu.git'  
+source=('git+https://github.com/BannedPatriot/rtl8822bu.git#tag=5.8.7.4'  
         'dkms.conf'
         )
 sha256sums=('SKIP'
