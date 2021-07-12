@@ -23,7 +23,5 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 	PREFIX=$pkgdir/usr make install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENCE"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
 
