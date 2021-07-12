@@ -8,8 +8,25 @@ pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'dconf' 'python' 'libhandy' 'gtk3' 'python-gobject' 'python-requests' 'python-yaml' 'samba' 'wine' 'cabextract')
-optdepends=('gvfs' 'vkd3d' 'lib32-vkd3d' 'lib32-vulkan-icd-loader' 'vulkan-icd-loader')
+depends=(
+  'hicolor-icon-theme' 
+  'dconf' 
+  'python' 
+  'libhandy' 
+  'gtk3' 
+  'python-gobject' 
+  'python-requests' 
+  'python-yaml' 
+  'samba' 
+  'wine' 
+  'cabextract')
+optdepends=(
+  'gvfs' 
+  'vkd3d' 
+  'lib32-vkd3d' 
+  'lib32-vulkan-icd-loader' 
+  'vulkan-icd-loader'
+  'gamemode')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso.tar.gz")
 sha256sums=('08b4f5f0028320d866fc2a99ff49e80db0770ea91f093ed6cc584e08be3fe475')
