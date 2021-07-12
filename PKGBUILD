@@ -3,7 +3,7 @@
 # PRs/Issues: https://github.com/bbrks/aur-portainer-bin
 
 pkgname=portainer-bin
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 epoch=
 pkgdesc="A lightweight docker management UI"
@@ -24,8 +24,8 @@ source=("portainer.service"
 sha256sums=('08603677ac3c01235fcd740892bfae9277bd163b908f62b22e6e7edfdb61976c'
             '8cb50d80f1463cef0a907b7f26ec6387b792182959f51f8cd19dcb6f955b886e'
             '82f7fca2af76e52147397c3b7b07091b72c1be7c82da6bc47e53001306759635'
-            '302bfc803c8825200d84f287275ec035009e38a160652e52ce4b777fb3f5b483'
-            'eeb7cbb69ba9940a10c88ae48389321966b67e5a6564fd74aef4518a3fd4ad32')
+            'a2765be1d023ab98d1026fcca5fb7d1589e326ed9e4d1c9c5434ad1c2cfef305'
+            '7e3c518cc3956ae34b3ce7c181c53e557aab50e3d3debf4e1aa96fc2b7995d7f')
 
 package() {
   install -Dm644 "${srcdir}/portainer-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
