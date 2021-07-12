@@ -1,6 +1,6 @@
 pkgbase = wayback
 	pkgdesc = A toolkit for snapshot webpage to Internet Archive, archive.today, IPFS and beyond
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/wabarc/wayback
 	arch = x86_64
