@@ -1,7 +1,7 @@
 # Maintainer: André Kugland <kugland@gmail.com>
 
 pkgname=pingme
-pkgver=0.1.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://pingme.lmno.pk'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kha7iq/pingme/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('57eea904eebaeac355ee7a6324d977678325945730269b4689eac992fb52699e')
+sha256sums=('9c66e8e397c87b8f8a5098ca6a64ee79620d9f16e9287799b0fa77ae3990d4f7')
 
 build() {
     export GOFLAGS="-trimpath"
