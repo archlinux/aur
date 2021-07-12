@@ -10,7 +10,7 @@ echo >&2 "Initializing"
 export WINEARCH='win64'
 export WINEPREFIX=~/".local/share/${PKGNAME}/wine"
 
-APPDIR_SOURCE="/opt/${PKGNAME}/app"
+APPDIR_SOURCE="/opt/${PKGNAME}"
 APPDIR_PARENT="${WINEPREFIX}/drive_c/GOG Games"
 
 USER_APPDATADIR_SOURCE=~/".config/${PKGNAME}/userappdata"
