@@ -2,7 +2,7 @@
 
 pkgname=outliner
 pkgver=0.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI tool for Auto setup and deploy Outline VPN"
 url="https://github.com/Jyny/outliner"
 license=('MIT')
