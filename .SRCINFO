@@ -1,6 +1,6 @@
 pkgbase = d1x-rebirth
 	pkgdesc = An enhanced engine to play with Descent1 data.
-	pkgver = 20210326
+	pkgver = 20210623
 	pkgrel = 1
 	url = https://www.dxx-rebirth.com/
 	install = d1x-rebirth.install
@@ -17,12 +17,11 @@ pkgbase = d1x-rebirth
 	depends = sdl_image
 	noextract = d1xr-hires.dxa
 	noextract = d1xr-sc55-music.dxa
-	source = https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_20210326-src.tar.xz
+	source = https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_20210623-src.tar.xz
 	source = https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa
 	source = https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa
-	md5sums = aac65b5e5ca5779407f309671e169597
+	md5sums = 6f19b43a2e80113a9de0eaae9f893543
 	md5sums = 7d978ce3875995e54cbf426167e88b94
 	md5sums = bf54b45a648052b2531bbb95c001403b
 
 pkgname = d1x-rebirth
-
