@@ -1,7 +1,7 @@
 # Maintainer: mnabila nblid48[at]gmail[dot]com
 
 pkgname=stylua-git
-pkgver=0.9.3.r2.g7c2234e
+pkgver=0.10.0.r0.gd93a4cc
 pkgrel=1
 pkgdesc='An opinionated code formatter for Lua 5.1 and Luau, built using full-moon.'
 url='https://github.com/JohnnyMorganz/StyLua'
