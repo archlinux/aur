@@ -1,18 +1,79 @@
-diff -rpu --color old/usr/bin/ice new/usr/bin/ice
---- old/usr/bin/ice	2021-05-10 15:47:34.278040167 +0200
-+++ new/usr/bin/ice	2021-05-10 15:48:35.098265219 +0200
-@@ -44,8 +44,8 @@ _EPIPHANY_PROFILES_DIR = "{0}/epiphany".
+Contributor: Kevin Veldman (taconomix) - Thanks !
+
+diff -ru old/usr/bin/ice new/usr/bin/ice
+--- old/usr/bin/ice	2021-07-12 21:31:01.690964712 +0200
++++ new/usr/bin/ice	2021-07-12 21:32:57.990445554 +0200
+@@ -43,9 +43,9 @@
+ _EPIPHANY_PROFILES_DIR = "{0}/epiphany".format(_ICE_DIR)
  _ICE_ICON = "/usr/share/pixmaps/ice.png"
  _ICON_DIR = "{0}/icons".format(_ICE_DIR)
- _BRAVE_BIN = "/usr/bin/brave-browser"
+-_BRAVE_BIN = "/usr/bin/brave-browser"
 -_CHROME_BIN = "/usr/bin/google-chrome"
 -_CHROMIUM_BIN = "/usr/bin/chromium-browser"
++_BRAVE_BIN = "/usr/bin/brave"
 +_CHROME_BIN = "/usr/bin/google-chrome-stable"
 +_CHROMIUM_BIN = "/usr/bin/chromium"
  _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
  _FIREFOX_BIN = "/usr/bin/firefox"
  _EPIPHANY_BIN = "/usr/bin/epiphany"
-@@ -699,7 +699,7 @@ class Ice(Gtk.Window):
+@@ -255,39 +255,39 @@
+         self.isolate_button.add(self.isolate_lab)
+         self.isolate_button.connect("toggled", self.isolate_clicked)
+ 
+-        self.firefox = Gtk.RadioButton.new_with_label_from_widget(None,
+-                                                                  "Firefox")
++        self.brave = Gtk.RadioButton.new_with_label_from_widget(None,
++                                                                  "Brave")
+ 
+-        if not os.path.exists(_FIREFOX_BIN):
+-            self.firefox.set_sensitive(False)
++        if not os.path.exists(_BRAVE_BIN):
++            self.brave.set_sensitive(False)
+ 
+         if not os.path.exists(_CHROMIUM_BIN) and not \
+                 os.path.exists(_CHROME_BIN) and not \
+-                os.path.exists(_BRAVE_BIN) and not \
++                os.path.exists(_FIREFOX_BIN) and not \
+                 os.path.exists(_EPIPHANY_BIN) and not \
+                 os.path.exists(_VIVALDI_BIN) and \
+-                os.path.exists(_FIREFOX_BIN):
+-            self.firefox.set_active(True)
++                os.path.exists(_BRAVE_BIN):
++            self.brave.set_active(True)
+ 
+-        self.firefox.connect("clicked", self.browser_button)
++        self.brave.connect("clicked", self.browser_button)
+ 
+-        self.brave = Gtk.RadioButton.new_from_widget(self.firefox)
+-        self.brave.set_label("Brave")
++        self.firefox = Gtk.RadioButton.new_from_widget(self.brave)
++        self.firefox.set_label("Firefox")
+ 
+-        if not os.path.exists(_BRAVE_BIN):
+-            self.brave.set_sensitive(False)
++        if not os.path.exists(_FIREFOX_BIN):
++            self.firefox.set_sensitive(False)
+ 
+         if not os.path.exists(_CHROMIUM_BIN) and not \
+-                os.path.exists(_FIREFOX_BIN) and not \
++                os.path.exists(_BRAVE_BIN) and not \
+                 os.path.exists(_CHROME_BIN) and not \
+                 os.path.exists(_EPIPHANY_BIN) and not \
+                 os.path.exists(_VIVALDI_BIN) and \
+-                os.path.exists(_BRAVE_BIN):
+-            self.brave.set_active(True)
++                os.path.exists(_FIREFOX_BIN):
++            self.firefox.set_active(True)
+ 
+-        self.brave.connect("clicked", self.browser_button)
++        self.firefox.connect("clicked", self.browser_button)
+ 
+-        self.chrome = Gtk.RadioButton.new_from_widget(self.brave)
++        self.chrome = Gtk.RadioButton.new_from_widget(self.firefox)
+         self.chrome.set_label("Chrome")
+ 
+         if not os.path.exists(_CHROME_BIN):
+@@ -699,7 +699,7 @@
          if self.chrome.get_active() is True:
              self.browser = "google-chrome"
          elif self.chromium.get_active() is True:

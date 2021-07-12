@@ -1,7 +1,7 @@
 pkgbase = ice-ssb-git
 	pkgdesc = Desktop integration for webapps
 	pkgver = 6.0.8.r30.5ddfc8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peppermintos/ice
 	arch = any
 	license = GPL2
@@ -22,7 +22,6 @@ pkgbase = ice-ssb-git
 	source = git+https://github.com/peppermintos/ice.git
 	source = ice.patch
 	sha256sums = SKIP
-	sha256sums = 1b3ba9c290faa8a9f2c8caf6c754378ac7ae82cf1117318a115e075b800c10d3
+	sha256sums = f5c36986ee2f96860108ae3537fdf9ebb41c4478aa13a9fe3578b18ebd518eb4
 
 pkgname = ice-ssb-git
-
