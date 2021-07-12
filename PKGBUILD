@@ -3,7 +3,7 @@
 
 pkgname=sportstracker
 pkgver=7.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for people who want to track their sporting activities"
 arch=('x86_64')
 url="http://www.saring.de/sportstracker/"

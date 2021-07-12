@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /opt/SportsTracker
+cd /opt/sportstracker/bin
 ./SportsTracker
