@@ -12,10 +12,10 @@ makedepends=('scons' 'portaudio' 'libao')
 optdepends=('portaudio: for portaudio backend'
             'libao: for ao backend')
 backup=('etc/RHVoice/RHVoice.conf')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/RHVoice/RHVoice/archive/$pkgver.tar.gz
-        voice-victoria.tar.gz::https://github.com/RHVoice/victoria-rus/archive/refs/tags/4.0.tar.gz
-        voice-evgeniy-rus.tar.gz::https://github.com/RHVoice/evgeniy-rus/archive/refs/tags/4.0.tar.gz
-        voice-evgeniy-eng.tar.gz::https://github.com/RHVoice/evgeniy-eng/archive/refs/tags/4.0.tar.gz
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/RHVoice/RHVoice/archive/$pkgver.tar.gz"
+        voice-victoria.tar.gz::"https://github.com/RHVoice/victoria-rus/archive/refs/tags/4.0.tar.gz"
+        voice-evgeniy-rus.tar.gz::"https://github.com/RHVoice/evgeniy-rus/archive/refs/tags/4.0.tar.gz"
+        voice-evgeniy-eng.tar.gz::"https://github.com/RHVoice/evgeniy-eng/archive/refs/tags/4.0.tar.gz"
 )
 sha512sums=('747985a8a0fe27fd1dc15e434dc41bbdca169747ae5cb3695df89ceced9131fc9d196916af08f3caacd21c34cfc022989e3753e21dbc2c0095ba7e991dc58bb8'
             '03b95f76bbd0b213fac867705acd3229f2d62448cdb863968b6ff02cc06f162d07a6154418e3ceee63d8d5352a00c1fed57b635d59424234b6cae3b1914da1cb'
