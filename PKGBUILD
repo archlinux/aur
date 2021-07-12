@@ -2,7 +2,7 @@
 
 pkgname=aur-update
 _pkgname=aur-update
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=2
 pkgdesc="automatically update PKGBUILD files for the AUR"
 arch=("any")
@@ -12,8 +12,8 @@ license=("MIT")
 depends=("curl")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-source=('https://github.com/getchoo/aur-update/archive/v0.1.1.tar.gz')
-md5sums=('7ee460a5bdab2355689b4170341ca89e')
+source=('https://github.com/getchoo/aur-update/archive/refs/tags/v0.1.2.tar.gz')
+md5sums=('1dc324301585aafa58d2b73553bde087')
 
 package() {
 	cd "$pkgname-$pkgver"
