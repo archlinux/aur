@@ -5,7 +5,7 @@
 # Contributor: Piotr Balcerowski <piotr@balcerowski.org>
 
 pkgname=libcurl-openssl-1.0
-pkgver=7.76.1
+pkgver=7.77.0
 pkgrel=1
 pkgdesc="An URL retrieval library (without versioned symbols, built against openssl-1.0)"
 arch=('aarch64' 'x86_64')
@@ -16,7 +16,7 @@ depends=('curl' 'glibc' 'krb5' 'libssh2' 'openssl-1.0' 'libpsl' 'zlib'
 provides=('libcurl-openssl-1.0.so')
 options=('strip')
 source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc})
-sha512sums=('43edacadbb823eb43008dd7d3b3851097cc40bc06ed6c701d7af2605a461ec556a9a15d1d71a8703cb2e0180aa3183995a67a072f4043ecc3a3972f25619722b'
+sha512sums=('cacd85eb9b2ad90f59595b497035f4660b6c5cff2d653da939c9ceac6dd8dd4bc7bdcb2dfd251862af0c29b9299312bf7271ed0249734fca979c9588799635d6'
             'SKIP')
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
@@ -35,6 +35,7 @@ build() {
     --enable-threaded-resolver \
     --with-gssapi \
     --with-libssh2 \
+    --with-openssl \
     --with-random='/dev/urandom' \
     --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
 
@@ -53,8 +54,8 @@ package() {
     ln -s libcurl-openssl-1.0.so.4.7.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0.so.${version}
   done
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s curl "${pkgdir}"/usr/share/licenses/${pkgname}
+  # license
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
 
 # vim: ts=2 sw=2 et:
