@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
@@ -23,7 +23,7 @@ optdepends=("acpi: Battery and temperature status"
             "breezy: Show Bazaar repository status"
             "fossil: Show Fossil repository status")
 source=(https://github.com/nojhan/liquidprompt/archive/v$pkgver.tar.gz)
-sha256sums=('4dc66ebb0e74cf020cc9e18495b92db52848609519444f3243b46f266a47e9e2')
+sha256sums=('3b734c8d920ca94a24aa2ea5ff65218856b3a0c580bf45c2ec4b45918a18875b')
 
 package() {
 	cd "$pkgname-$pkgver"
