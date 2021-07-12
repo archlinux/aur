@@ -7,8 +7,8 @@ pkgver=40.0.r65.g989596c9b
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 url="https://wiki.gnome.org/Projects/Orca"
-arch=(any)
-license=(LGPL)
+arch=('any')
+license=('LGPL')
 groups=('gnome')
 depends=('gtk3' 'at-spi2-atk' 'python-atspi' 'python-dbus' 'python-pyxdg' 'speech-dispatcher' 'liblouis' 'brltty'
          'xorg-xmodmap' 'gsettings-desktop-schemas'
@@ -16,8 +16,8 @@ depends=('gtk3' 'at-spi2-atk' 'python-atspi' 'python-dbus' 'python-pyxdg' 'speec
          'gst-plugins-good' # pulsesink, more decoders
 )
 makedepends=('itstool' 'intltool' 'git' 'yelp-tools')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
