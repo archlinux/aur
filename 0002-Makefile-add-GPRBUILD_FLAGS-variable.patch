@@ -1,0 +1,60 @@
+From e29b65259c26215749b13f1c44d3d840a6731f25 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Tue, 13 Jul 2021 15:04:14 +0200
+Subject: [PATCH 2/3] Makefile: add GPRBUILD_FLAGS variable
+
+---
+ Makefile | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 68f738f2..5e75e50c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,6 +5,7 @@ BUILD_MODE ?= dev
+ LIBRARY_TYPE ?= static
+ LALTOOLS_SET ?= all
+ PROCESSORS ?= 0
++GPRBUILD_FLAGS ?=
+ 
+ ALL_LIBRARY_TYPES = static static-pic relocatable
+ 
+@@ -37,7 +38,7 @@ lib:
+ 	    gprbuild -v -k \
+ 	      -XLIBRARY_TYPE=$$kind \
+ 	      -XBUILD_MODE=$(BUILD_MODE) \
+-	      -P $$proj -p -j$(PROCESSORS) ; \
++	      -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
+ 	  done ; \
+ 	done
+ 
+@@ -51,7 +52,7 @@ bin:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) ; \
++	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ .PHONY: testsuite_drivers
+@@ -64,7 +65,7 @@ testsuite_drivers:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) ; \
++	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ .PHONY: all
+@@ -77,7 +78,7 @@ all:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) ; \
++	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ 
+-- 
+2.32.0
+

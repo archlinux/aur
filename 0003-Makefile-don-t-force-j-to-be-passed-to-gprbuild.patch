@@ -1,0 +1,60 @@
+From 7f35a68f9d72fa266ed1b5ffa93037c96ed5fe77 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Tue, 13 Jul 2021 15:21:19 +0200
+Subject: [PATCH 3/3] Makefile: don't force -j to be passed to gprbuild
+
+---
+ Makefile | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 5e75e50c..66604550 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,6 @@
+ BUILD_MODE ?= dev
+ LIBRARY_TYPE ?= static
+ LALTOOLS_SET ?= all
+-PROCESSORS ?= 0
+ GPRBUILD_FLAGS ?=
+ 
+ ALL_LIBRARY_TYPES = static static-pic relocatable
+@@ -38,7 +37,7 @@ lib:
+ 	    gprbuild -v -k \
+ 	      -XLIBRARY_TYPE=$$kind \
+ 	      -XBUILD_MODE=$(BUILD_MODE) \
+-	      -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
++	      -P $$proj -p $(GPRBUILD_FLAGS) ; \
+ 	  done ; \
+ 	done
+ 
+@@ -52,7 +51,7 @@ bin:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
++	   -P $$proj -p $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ .PHONY: testsuite_drivers
+@@ -65,7 +64,7 @@ testsuite_drivers:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
++	   -P $$proj -p $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ .PHONY: all
+@@ -78,7 +77,7 @@ all:
+ 	   -XXMLADA_BUILD=$(LIBRARY_TYPE) \
+ 	   -XBUILD_MODE=$(BUILD_MODE) \
+ 	   -XLALTOOLS_SET=$(LALTOOLS_SET) \
+-	   -P $$proj -p -j$(PROCESSORS) $(GPRBUILD_FLAGS) ; \
++	   -P $$proj -p $(GPRBUILD_FLAGS) ; \
+         done
+ 
+ 
+-- 
+2.32.0
+

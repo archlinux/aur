@@ -1,7 +1,7 @@
 pkgbase = libadalang-tools
 	pkgdesc = Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub
 	pkgver = 2021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/libadalang-tools
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,12 @@ pkgbase = libadalang-tools
 	makedepends = gprbuild
 	depends = libadalang
 	source = libadalang-tools-2021-20210519-19A69-src.tar.gz::https://community.download.adacore.com/v1/21b42a7e6ced5c227fa001eff9c9d39c75d3d58f?filename=libadalang-tools-2021-20210519-19A69-src.tar.gz
-	source = pp-actions.adb-patch
+	source = 0001-pp-actions.adb-patch-for-compatibility-with-release-.patch
+	source = 0002-Makefile-add-GPRBUILD_FLAGS-variable.patch
+	source = 0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch
 	sha1sums = 21b42a7e6ced5c227fa001eff9c9d39c75d3d58f
-	sha1sums = 9f0aa925c1af47340dd4b2e86899ec1fb74dde92
+	sha1sums = ef13af536f419fb8181810b17a5feebff1b98342
+	sha1sums = 31bc3f4b157782e95dc7cdbc3185e4f74f7fc576
+	sha1sums = af4b98efc227ac64c02f5dde4b20e39c8c967470
 
 pkgname = libadalang-tools
