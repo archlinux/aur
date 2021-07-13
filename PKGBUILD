@@ -17,15 +17,15 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils python-setuptools yasm mesa imake inetutils
-             autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python-psutil python-zstandard cbindgen nasm libpipewire02 lld)
+makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             python-setuptools python-psutil python-zstandard lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'xdg-desktop-portal: Required for screen sharing'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
@@ -75,6 +75,7 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 ac_add_options --disable-tests
 ac_add_options --enable-lto
 export MOZ_PGO=1
