@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Badlion Client
+Comment=Badlion Client
+Exec="/opt/BadlionClient/AppRun" --no-sandbox %U
+Icon=BadlionClient
+Terminal=false
+Categories=Game;
