@@ -3,8 +3,8 @@
 _pkgname=prusa-slicer
 
 pkgname=${_pkgname}-git
-pkgver=2.3.0.r24.gd06aa6069
-pkgrel=2
+pkgver=2.4.0.alpha0.r725.g47f265f77
+pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
@@ -18,7 +18,7 @@ depends=(
     'nlopt'
     'openvdb'
     'wxgtk3'
-    # 'qhull'
+    'qhull>=2020.2-4'
 )
 makedepends=(
     'cmake'
@@ -31,12 +31,12 @@ makedepends=(
 source=(
     "git+${url}"
     'prusa-slicer.desktop'
-    'qhull.patch'
+    'https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch'
 )
 sha256sums=(
     'SKIP'
     '26b66701cb2512f0d524add44689e2478c0b875f73103034e74544a9574782c5'
-    '877a4de66a714e4fae22e507dba8ddf117e6310165128fb0d46dc239a4e1aeb5'
+    '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b'
 )
 conflicts=('prusa-slicer')
 
@@ -47,7 +47,7 @@ pkgver() {
 
 prepare() {
     cd "PrusaSlicer"
-    patch --forward --strip=1 --input="${srcdir}/qhull.patch"
+    patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
 }
 
 build() {
