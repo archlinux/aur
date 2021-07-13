@@ -1,7 +1,7 @@
 pkgbase = cool-retro-term-git
 	pkgdesc = A good looking terminal emulator which mimics the old cathode display - git version
-	pkgver = 1.1.0.r84.gdac2b4f
-	pkgrel = 2
+	pkgver = 1.1.0.r94.g9d06f10
+	pkgrel = 1
 	url = https://github.com/Swordfish90/cool-retro-term
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,9 @@ pkgbase = cool-retro-term-git
 	makedepends = qmltermwidget
 	depends = hicolor-icon-theme
 	depends = qt5-declarative
-	provides = cool-retro-term=1.1.0.r84.gdac2b4f
+	provides = cool-retro-term=1.1.0.r94.g9d06f10
 	conflicts = cool-retro-term
 	source = git://github.com/Swordfish90/cool-retro-term.git
 	sha256sums = SKIP
 
 pkgname = cool-retro-term-git
-
