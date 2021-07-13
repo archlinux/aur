@@ -27,6 +27,7 @@ source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
 provides=('swi-prolog')
 conflicts=('swi-prolog')
 
+md5sums=('a7c50c94b0ba9b3cac09d2dab8d2fbaf')
 
 
 build() {
