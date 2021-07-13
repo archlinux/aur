@@ -1,6 +1,6 @@
 pkgbase = osc-sdk-python
 	pkgdesc = Outscale Python 3 SDK
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/outscale/osc-sdk-python
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = osc-sdk-python
 	depends = python-requests
 
 pkgname = osc-sdk-python
-
