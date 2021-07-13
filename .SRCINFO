@@ -1,15 +1,14 @@
 pkgbase = unix-privesc-check
 	pkgdesc = Find misconfigurations on UNIX(-like) systems that allow privilege escalation
 	pkgver = 1.5
-	pkgrel = 1
-	url = http://pentestmonkey.net/tools/audit/unix-privesc-check
+	pkgrel = 2
+	url = https://pentestmonkey.net/tools/audit/unix-privesc-check
 	changelog = CHANGELOG
 	arch = any
 	license = GPL2
 	license = custom
-	provides = unix-privesc-check
-	source = https://github.com/pentestmonkey/unix-privesc-check/archive/r1_5.tar.gz
+	depends = bash
+	source = unix-privesc-check-r1_5.tgz::https://github.com/pentestmonkey/unix-privesc-check/archive/r1_5.tar.gz
 	sha256sums = 1435121f4087cc74304498a23f57698fc7eddfca80ca98f032aa009a67c10464
 
 pkgname = unix-privesc-check
-

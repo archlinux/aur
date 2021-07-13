@@ -1,21 +1,32 @@
-# Maintainer: Kr1ss <kr1ss.x@yandex.com>
+# Maintainer :  Kr1ss $(sed s/\+/./g\;s/\-/@/ <<<\<kr1ss+x-yandex+com\>)
+
 
 pkgname=unix-privesc-check
+
 pkgver=1.5
-_pkgver=r1_5
-pkgrel=1
+_ver=r1_5
+pkgrel=2
+
 pkgdesc='Find misconfigurations on UNIX(-like) systems that allow privilege escalation'
 arch=('any')
-url='http://pentestmonkey.net/tools/audit/unix-privesc-check'
+url="https://pentestmonkey.net/tools/audit/$pkgname"
 license=('GPL2' 'custom')
-provides=("$pkgname")
-changelog='CHANGELOG'
-source=("https://github.com/pentestmonkey/unix-privesc-check/archive/$_pkgver.tar.gz")
+
+depends=('bash')
+
+changelog=CHANGELOG
+source=("$pkgname-$_ver.tgz::https://github.com/pentestmonkey/unix-privesc-check/archive/$_ver.tar.gz")
 sha256sums=('1435121f4087cc74304498a23f57698fc7eddfca80ca98f032aa009a67c10464')
 
+
+prepare() { sed -i '/if \[ .* \]/s/==/=/' "$pkgname-$_ver/$pkgname"; }
+
 package() {
-	cd "$pkgname-$_pkgver"
-    install -Dm644 COPYING.UNIX-PRIVESC-CHECK "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$pkgname-$_ver"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 CHANGELOG "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
+  install -Dm644 COPYING.UNIX-PRIVESC-CHECK "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
