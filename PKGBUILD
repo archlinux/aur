@@ -4,7 +4,7 @@ pkgname=cuberite
 _pkgver=1.12.2
 _commit=094cd61
 pkgver="${_pkgver}c0_${_commit}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
@@ -64,7 +64,7 @@ sha512sums=('SKIP'
             '0e82acfe3e907f3976e96aebb146d12f076a26e4478f3330d4f0ded44956624094abc35e56402f6a994fb5852fbc7e901e4e2b8f1ae31f3e82224e6bc15eba0b'
             '09047f4df9591b2d61885c842cbd9abde590b0069945f2e10fd402ad93f0f0abd3c2557e61200388038708960f5d82e22d332efe83cf1acf0895f56dd2e5d5d0'
             '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
-            'ee9c0fdcae1b104688ba90eb3173968be548240067b22272ccb1da0512c3773fde33ee23d5cb4cb27e08b21638a4d3007c26c0878d3d0c35fb2daf4b5e1dd79b')
+            '2c2a2603340f06e88afbc180495b8a14e263caaec61d8899da98b61f47acdb35869c5aa9cfb23d2a1fe3ad17ab6854889011bae44c71cff970cfdceb006a312f')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
