@@ -1,17 +1,17 @@
 pkgbase = ttf-lxgw-wenkai
 	pkgdesc = An open-source Chinese font derived from Fontworks' Klee One.
-	pkgver = 0.351
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenKai
 	arch = any
 	license = custom:OFL
-	source = ttf-lxgw-wenkai-0.351-1-LICENSE::https://github.com/lxgw/LxgwWenKai/raw/v0.351/SIL_Open_Font_License_1.1.txt
-	source = ttf-lxgw-wenkai-0.351-1-LXGWWenKai-Bold.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.351/LXGWWenKai-Bold.ttf
-	source = ttf-lxgw-wenkai-0.351-1-LXGWWenKai-Light.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.351/LXGWWenKai-Light.ttf
-	source = ttf-lxgw-wenkai-0.351-1-LXGWWenKai-Regular.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v0.351/LXGWWenKai-Regular.ttf
+	source = ttf-lxgw-wenkai-1.0-1-LICENSE::https://github.com/lxgw/LxgwWenKai/raw/v1.0/SIL_Open_Font_License_1.1.txt
+	source = ttf-lxgw-wenkai-1.0-1-LXGWWenKai-Bold.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v1.0/LXGWWenKai-Bold.ttf
+	source = ttf-lxgw-wenkai-1.0-1-LXGWWenKai-Light.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v1.0/LXGWWenKai-Light.ttf
+	source = ttf-lxgw-wenkai-1.0-1-LXGWWenKai-Regular.ttf::https://github.com/lxgw/LxgwWenKai/releases/download/v1.0/LXGWWenKai-Regular.ttf
 	sha256sums = e564f06d018e7b95bc3594c96a17f1d41865af4038c375e7aa974dd69df38602
-	sha256sums = 317507a9bd79cd605728d77edd879ded376283edcaafce907d92973aa0dcc640
-	sha256sums = 40d741914ee034bbb1e68bce2bc499ef0a1f9c8f0fd3e4aac25784cf16f9fde0
-	sha256sums = db45829e7ab0c629d9c999708daea9ddac47a3d884e70be0004d4221e0dd5402
+	sha256sums = 015d5e8376200714c98d46d08f7bab5911b51cb77d4fdbcad0d66a888da8aa8f
+	sha256sums = 86d2c53d92cf8949c03f92f9f9aac750e80f2d7cfae80d49eae562c0cff5e53a
+	sha256sums = 1a60e8c2dc7392448acbb2b7827db4662605cd45da0ad63337cce75ce347e251
 
 pkgname = ttf-lxgw-wenkai
