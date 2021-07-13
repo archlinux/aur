@@ -1,7 +1,7 @@
 # Maintainer: Miepee <janbidler00 at tutanota dot com>
 pkgname=am2rlauncher-git
 pkgver=2.1.0.r2.e97d335
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for installing the latest Community Updates, APKs and Mods for AM2R."
 arch=(x86_64)
 url="https://github.com/AM2R-Community-Developers/AM2RLauncher"
