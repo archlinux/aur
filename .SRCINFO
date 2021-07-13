@@ -1,13 +1,13 @@
 pkgbase = mekhq-git
 	pkgdesc = MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek.
-	pkgver = 0.47.10.r99.g0f95e22d1
-	pkgrel = 2
+	pkgver = 0.49.2.r75.g89903d36e
+	pkgrel = 1
 	url = https://github.com/MegaMek/mekhq
 	arch = x86_64
 	license = GPL
 	makedepends = gradle
 	makedepends = git
-	depends = jdk-openjdk
+	depends = jdk11-openjdk
 	provides = megamek
 	provides = mekhq
 	conflicts = megamek
@@ -28,4 +28,3 @@ pkgbase = mekhq-git
 	sha256sums = 9ad4d0251ecfe02140c46dfeb67a4ce2b0fe9f123b04a3911139b8e255ff2beb
 
 pkgname = mekhq-git
-
