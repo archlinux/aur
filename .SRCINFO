@@ -1,6 +1,6 @@
 pkgbase = ncparticleeditor-git
 	pkgdesc = A particle editor made with the nCine
-	pkgver = r28.44e7e7a
+	pkgver = r77.03c08b6
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = ncparticleeditor-git
 	md5sums = SKIP
 
 pkgname = ncparticleeditor-git
-
