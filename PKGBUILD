@@ -1,7 +1,7 @@
 # Maintainer: Miepee <janbidler00 at tutanota dot com>
 pkgname=am2rlauncher-git
 pkgver=2.1.0.r4.137c25b
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for installing the latest Community Updates, APKs and Mods for AM2R."
 arch=(x86_64)
 url="https://github.com/AM2R-Community-Developers/AM2RLauncher"
@@ -42,6 +42,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/applications/"
     echo "[Desktop Entry]
 Type=Application
+Categories=Game
 Encoding=UTF-8
 Name=AM2RLauncher
 Comment=A front-end application that simplifies installing the latest AM2R-Community-Updates, creating APKs for Android use, as well as Mods for AM2R.
