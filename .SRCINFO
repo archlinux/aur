@@ -1,11 +1,10 @@
 pkgbase = lemminx
 	pkgdesc = Eclipse XML language server
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/eclipse/lemminx
 	arch = any
 	license = EPL
-	depends = bash
 	depends = java-runtime
 	source = lemminx-0.17.1.jar::https://download.eclipse.org/lemminx/releases/0.17.1/org.eclipse.lemminx-uber.jar
 	source = launcher.sh
