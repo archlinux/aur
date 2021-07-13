@@ -1,7 +1,7 @@
 pkgbase = secret-service-bin
 	pkgdesc = Service to keep secrets of applications. Implements FreeDesktop Secret Service API
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yousefvand/secret-service
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 _name=secret-service
 pkgname=$_name-bin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Service to keep secrets of applications. Implements  FreeDesktop Secret Service API"
 arch=('x86_64')
 url="https://github.com/yousefvand/secret-service"
@@ -16,7 +16,7 @@ source=("https://github.com/yousefvand/$_name/files/6727911/secretserviced-v$pkg
 sha256sums=('29da13c091427ff64e04a52b10664fc9c4788c6eef4b4a06c1ad7ec8f71a1038')
 
 package() {
-	mkdir -p "${pkgdir}/usr/bin/secretserviced"
+	mkdir -p "${pkgdir}/usr/bin"
 	chmod 755 secretserviced
 	cp secretserviced "${pkgdir}/usr/bin/secretserviced"
 }
