@@ -1,11 +1,11 @@
 pkgbase = yang-lsp
 	pkgdesc = A language server for YANG
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theia-ide/yang-lsp
 	arch = any
 	license = Apache
-	depends = jre11-openjdk
+	depends = jdk11-openjdk
 	source = yang-lsp-0.4.1.tar.gz::https://github.com/theia-ide/yang-lsp/archive/refs/tags/v0.4.1.tar.gz
 	source = yang-language-server.template
 	sha256sums = 4bd1c16361a0218ca5ef3c4cae36ed447d0f08da39737af03e8768d5344d8afd

@@ -1,7 +1,7 @@
 # Maintainer: Tomas Sandven <tomas@sandven.email>
 pkgname=yang-lsp
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A language server for YANG"
 arch=('any')
 url="https://github.com/theia-ide/yang-lsp"
