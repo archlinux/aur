@@ -2,7 +2,7 @@
 
 _extname=ast
 pkgname=php-$_extname
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='Extension exposing PHP 7 abstract syntax tree'
 arch=('x86_64')
@@ -12,9 +12,7 @@ depends=('php>=7.0')
 source=(
 	"http://pecl.php.net/get/$_extname-$pkgver.tgz"
 )
-sha256sums=(
-	'3d8c069a824e2b79194b2a57f222e48eabeea7d9a889ae698f53659f50ea8ed5'
-)
+sha256sums=('78ca87d3e1ea7c8a9d8fdf5923cffd704cc9e9faff7e3d2a21ac92e29f31d0c5')
 
 prepare() {
 	cd $srcdir/$_extname-$pkgver
