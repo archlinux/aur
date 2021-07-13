@@ -21,11 +21,8 @@
 _clangbuild=
 
 pkgbase=kodi-git
-pkgname=(
-  "$pkgbase-common" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
-  "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
-)
-pkgver=r57905.58ab4c85acc
+pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
+pkgver=r57958.4de42246c02
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -47,6 +44,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
+_codename=master
 _sse_workaround=1
 
 # Found on their respective github release pages. One can check them against
@@ -72,19 +70,18 @@ _flatbuffers_version="1.12.0"
 _libudfread_version="1.1.0"
 
 source=(
-  "git://github.com/xbmc/xbmc.git#branch=master"
+  "git://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
   "ffmpeg-$_ffmpeg_version.tar.gz::https://github.com/xbmc/FFmpeg/archive/$_ffmpeg_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fmt-$_fmt_version.tar.gz"
+  "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/crossguid-$_crossguid_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
-  "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   'cheat-sse-build.patch'
-  '0001-allow-separate-windowing-binaries-being-launched-fro.patch'
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -104,13 +101,12 @@ b2sums=('SKIP'
         '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
         '2c45778e36167a8740f8f724dc8a66ea2491d8343b1f2546027c4dd1a711aa7a8b830defc439006402e141f264532cbc623758dd066b45fc8a09f67ffdc0f9b8'
         '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
+        'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
         'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6'
-        'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        '9745854bab7e7ddf1cb816e536f303513d8792b5431c62d042894e6d2e702939bc1f9a965e7c59207cca832a297cc3c187c9435fc6e3029a3ddc0b13d11c7451')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
 
 pkgver() {
   cd "$_gitname"
@@ -125,14 +121,7 @@ prepare() {
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
 
-  patch -p1 -i "$srcdir/0001-allow-separate-windowing-binaries-being-launched-fro.patch"
-
-  # [swig] fix illegal access warnings/errors with Java >= 9 #19891
-  git cherry-pick --no-commit -n 94a934227b234bfbbe1e3cdfdb71dc7d39ac0e7a
-
   if [[ -n "$_clangbuild" ]]; then
-    git cherry-pick --no-commit -n f5512d575dfc872d51632c9bf79d58e39be60cfb
-    git cherry-pick --no-commit -n e32eeb6a4897ea6ff7ac461b848e60f7794037c2
     msg "Building with clang"
     export CC=clang CXX=clang++
   fi
@@ -146,12 +135,33 @@ build() {
   # export CXXFLAGS="${CFLAGS}"
 
   _args=(
+    -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
     -DUSE_LTO=$(nproc)
     -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
+    -DENABLE_AIRTUNES=ON
+    -DENABLE_ALSA=ON
+    -DENABLE_AVAHI=ON
+    -DENABLE_BLURAY=ON
+    -DENABLE_CEC=ON
+    -DENABLE_DBUS=ON
+    -DENABLE_DVDCSS=ON
+    -DENABLE_EGL=ON
     -DENABLE_EVENTCLIENTS=ON
+    -DENABLE_MICROHTTPD=ON
+    -DENABLE_MYSQLCLIENT=ON
+    -DENABLE_NFS=ON
+    -DENABLE_OPTICAL=ON
+    -DENABLE_PULSEAUDIO=ON
+    -DENABLE_SMBCLIENT=ON
+    -DENABLE_UDEV=ON
+    -DENABLE_UPNP=ON
+    -DENABLE_VAAPI=ON
+    -DENABLE_VDPAU=ON
+    -DENABLE_XSLT=ON
+    -DENABLE_LIRCCLIENT=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
     -DENABLE_INTERNAL_SPDLOG=ON
@@ -159,7 +169,6 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
-    -DENABLE_MYSQLCLIENT=ON
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
@@ -171,32 +180,25 @@ build() {
     -DFLATBUFFERS_URL="$srcdir/flatbuffers-$_flatbuffers_version.tar.gz"
     -DUDFREAD_URL="$srcdir/libudfread-$_libudfread_version.tar.gz"
     -DAPP_RENDER_SYSTEM=gl
+    -DCORE_PLATFORM_NAME="x11 wayland gbm"
   )
 
-  echo "building kodi-wayland"
-  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=wayland ../"$_gitname"
-  make
-
-  echo "building kodi-gbm"
-  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=gbm ../"$_gitname"
-  make
-
-  # build x11 version last that will make it fallback in the launcher script
-  echo "building kodi-x11"
-  cmake "${_args[@]}" -DCORE_PLATFORM_NAME=x11 ../"$_gitname"
+  echo "building kodi"
+  cmake "${_args[@]}" ../"$_gitname"
   make
 }
 
 # kodi
 # components: kodi
-package_kodi-git-common() {
+package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'bluez-libs' 'curl' 'dav1d' 'desktop-file-utils' 'hicolor-icon-theme'
     'lcms2' 'libass' 'libbluray' 'libcdio' 'libcec' 'libmicrohttpd' 'libnfs'
-    'libplist' 'libpulse' 'libva' 'libxslt' 'lirc' 'mariadb-libs' 'mesa'
-    'python-pillow' 'python-pycryptodomex' 'python-simplejson'
+    'libplist' 'libpulse' 'libva' 'libvdpau' 'libxslt' 'lirc' 'mariadb-libs'
+    'mesa' 'python-pillow' 'python-pycryptodomex' 'python-simplejson'
     'shairplay' 'smbclient' 'sqlite' 'taglib' 'tinyxml'
+    'libxrandr' 'libxkbcommon' 'waylandpp' 'libinput'
   )
   [[ -n "$_clangbuild" ]] && depends+=('glu')
 
@@ -207,9 +209,9 @@ package_kodi-git-common() {
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
-  provides=("kodi-common=${pkgver}")
-  conflicts=('kodi-common')
-  replaces=('kodi-common')
+  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  replaces=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
@@ -222,54 +224,6 @@ package_kodi-git-common() {
     -DCMAKE_INSTALL_COMPONENT="$_cmp" \
      -P cmake_install.cmake
   done
-
-  # remove windowing specific binaries
-  rm -f "$pkgdir/usr/lib/kodi/"{kodi-x11,kodi-xrandr,kodi-wayland,kodi-gbm}
-}
-
-# kodi-x11
-# components: kodi-bin
-package_kodi-git-x11() {
-  pkgdesc="x11 kodi binary"
-  provides=("kodi=${pkgver}")
-  replaces=('kodi')
-  depends=(
-    'kodi-git-common' 'libxrandr'
-  )
-
-  cd kodi-build
-  install -Dm755 kodi-x11 "$pkgdir/usr/lib/kodi/kodi-x11"
-  install -Dm755 kodi-xrandr "$pkgdir/usr/lib/kodi/kodi-xrandr"
-}
-
-# kodi-wayland
-# components: kodi-bin
-package_kodi-git-wayland() {
-  pkgdesc="wayland kodi binary"
-  provides=("kodi=${pkgver}")
-  conflicts=('kodi-wayland')
-  replaces=('kodi')
-  depends=(
-    'kodi-git-common' 'libxkbcommon' 'waylandpp'
-  )
-
-  cd kodi-build
-  install -Dm755 kodi-wayland "$pkgdir/usr/lib/kodi/kodi-wayland"
-}
-
-# kodi-gbm
-# components: kodi-bin
-package_kodi-git-gbm() {
-  pkgdesc="gbm kodi binary"
-  provides=("kodi=${pkgver}")
-  conflicts=('kodi-gbm')
-  replaces=('kodi')
-  depends=(
-    'kodi-git-common' 'libxkbcommon' 'libinput'
-  )
-
-  cd kodi-build
-  install -Dm755 kodi-gbm "$pkgdir/usr/lib/kodi/kodi-gbm"
 }
 
 # kodi-eventclients
