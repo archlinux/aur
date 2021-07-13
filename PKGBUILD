@@ -1,30 +1,32 @@
-# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
-_gitname=Mesen
-
-pkgname=libretro-mesen-git
-pkgver=0.9.7.r227.gefe55a91
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-mesen
+pkgname=$_pkgname-git
+pkgver=0.9.9.r127.gcec4911d
 pkgrel=1
-pkgdesc='Libretro core for high accuracy Mesen NES/Famicom emulator written in C++.'
-arch=('x86_64')
+pkgdesc="Nintendo Entertainment System core"
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://www.mesen.ca/"
 license=('GPL3')
 groups=('libretro')
-depends=('libretro-core-info')
+depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
-source=("git+https://github.com/SourMesen/$_gitname.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/libretro/Mesen.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd $_pkgname
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname/Libretro"
-  make
+	make -C $_pkgname/Libretro
 }
 
 package() {
-  cd "$srcdir/$_gitname/Libretro"
-  install -Dm644 "$srcdir/$_gitname/Libretro/mesen_libretro.so" "$pkgdir/usr/lib/libretro/mesen_libretro.so"
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro $_pkgname/Libretro/mesen_libretro.so
 }
