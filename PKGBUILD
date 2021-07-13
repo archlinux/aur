@@ -2,8 +2,8 @@
 
 _gemname=gtk3
 pkgname=ruby-$_gemname
-pkgver=3.4.3
-pkgrel=2
+pkgver=3.4.5
+pkgrel=1
 pkgdesc='Ruby/GTK3 is a Ruby binding of GTK+-3.x.'
 arch=(x86_64)
 url=https://ruby-gnome2.osdn.jp/
@@ -13,7 +13,7 @@ makedepends=(ruby-native-package-installer ruby-glib2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('3a2bdc8fab43d46ddb4dc1c3183e4873d1a61200')
+sha1sums=('70b155822a783fdc5e39a1826d77a7920adfc674')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
