@@ -6,8 +6,8 @@ pkgdesc="Application for installing the latest Community Updates, APKs and Mods 
 arch=(x86_64)
 url="https://github.com/AM2R-Community-Developers/AM2RLauncher"
 license=('GPL3')
-depends=('dotnet-runtime' 'gtk3' 'libappindicator-gtk3' 'webkit2gtk' 'openssl' 'icu' 'xdelta3' 'fuse2')
-makedepends=('git' 'dotnet-runtime>=5' 'dotnet-sdk>=5')
+depends=('dotnet-runtime>=5' 'gtk3' 'libappindicator-gtk3' 'webkit2gtk' 'openssl' 'icu' 'xdelta3' 'fuse2' 'lib32-libpulse' 'lib32-openal')
+makedepends=('git' 'dotnet-sdk>=5')
 optdepends=('jre-openjdk: Creating APKs')
 conflicts=('am2rlauncher')
 source=("git+$url")
