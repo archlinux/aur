@@ -1,0 +1,16 @@
+pkgbase = openrevolution-git
+	pkgdesc = C/C++ BRSTM and other format tools
+	pkgver = v2.7.0.r16.g54281d7
+	pkgrel = 1
+	url = https://github.com/ic-scm/openrevolution
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = rtaudio
+	optdepends = ffmpeg
+	provides = openrevolution
+	conflicts = openrevolution
+	source = openrevolution::git+https://github.com/ic-scm/openrevolution
+	md5sums = SKIP
+
+pkgname = openrevolution-git
