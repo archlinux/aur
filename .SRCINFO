@@ -1,7 +1,7 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
 	pkgver = 21.0.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild/
 	arch = i686
@@ -14,10 +14,12 @@ pkgbase = gprbuild
 	source = gprconfig_kb-21.0.0.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v21.0.0.tar.gz
 	source = relocatable-build.patch
 	source = always-use-host-gprinstall.patch
+	source = 0001-Use-ld-as-Library_Partial_Linker.patch
 	sha256sums = 54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2
 	sha256sums = 2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557
 	sha256sums = d6479e03e6b6cfb09c133d94e3c47ea5d5e5e756b95554ab3106a679c3d57de4
 	sha256sums = 3fe0fd1df3156c9a8488d98ee6e7e822ae904ce410838661c8fc14c29abe2620
+	sha256sums = 1749c8cdecf42bec9103fd9d1b7f79556eeb37de5a51c115eda8368dba3cc7c0
 
 pkgname = libgpr
 	pkgdesc = Ada library to handle Gnat project files
