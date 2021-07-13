@@ -2,7 +2,7 @@
 
 pkgname=python-lsassy
 _pypiname=lsassy
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Python library to remotely extract credentials on a set of hosts"
 url="https://github.com/Hackndo/lsassy"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'impacket' 'python-netaddr' 'python-pypykatz')
 makedepends=('python-setuptools')
 source=(${_pypiname}-${pkgver}.tar.gz::"https://github.com/Hackndo/lsassy/archive/v${pkgver}.tar.gz")
-sha256sums=('83e0e7224e73ec5d0d63d2c61dcb2eeda2b9a326ae90d8ac56dfea2babb637ef')
+sha256sums=('a144321cbf8b56e4dcb701ab0a57c929240659aff6418a2f00002527b2264eb3')
 
 package() {
   cd ${_pypiname}-${pkgver}
