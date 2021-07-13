@@ -1,0 +1,21 @@
+pkgbase = flashfocus
+	pkgdesc = Simple Xorg window focus animations for tiling window managers
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://www.github.com/fennerm/flashfocus
+	changelog = CHANGELOG.md
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python-xcffib
+	depends = python-click
+	depends = python-xpybutil
+	depends = python-marshmallow
+	depends = python-yaml
+	depends = python-i3ipc
+	source = flashfocus-2.2.2.tar.gz::https://www.github.com/fennerm/flashfocus/archive/v2.2.2.tar.gz
+	sha256sums = 6be9cfb11370212078f6ddc81222220f2b0ae73dff3b1aaf11410536f0ef27c3
+
+pkgname = flashfocus
