@@ -2,7 +2,7 @@
 
 pkgname=alda-bin
 _pkgname=alda
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
@@ -10,11 +10,12 @@ url='https://github.com/alda-lang/alda'
 license=('EPL')
 provides=('alda')
 conflicts=('alda')
+depends=('java-environment>=8')
 options=('!strip')
 source=("https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/client/linux-amd64/${_pkgname}"
         "https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/player/non-windows/${_pkgname}-player")
-sha256sums=('550d3608372278a34864f7c4ed97d063d06393ea93d3f183bd86a528c873b563'
-            '904fad363f79b84d84b2046737b2c2cc8fe53877ea07e28cdb7afa8d08273d52')
+sha256sums=('3f70bb81ce8cb253ed4d69cd20b1a83b78c0912228e6a1b7de6aec15754128ba'
+            '77fb95c46dbdefef5433060bff0803a556a2dc27dd841ed27ca73e14447fe68b')
 noextract=('alda'
            'alda-player')
 
