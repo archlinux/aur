@@ -1,7 +1,7 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
-pkgname=go-tip
-pkgver=1.17beta1
+pkgname=go-dev
+pkgver=1.17rc1
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64)
@@ -13,7 +13,7 @@ conflicts=(go go-pie)
 options=(!strip staticlibs)
 source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz{,.asc})
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')
-sha256sums=('02b8973725f9bc545955865576e8c8f6ca672312f69fd9e5549c25b0ce1d75f0'
+sha256sums=('0d63be0f3abc79d35efcb60dfce4445e64bb1ea194edcfd9783a76316b7e85e2'
             'SKIP')
 
 build() {
@@ -21,10 +21,10 @@ build() {
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
   export GOPATH="$srcdir/"
-  export GOROOT="$srcdir/${pkgname%-tip}"
+  export GOROOT="$srcdir/${pkgname%-dev}"
   export GOBIN="$GOROOT/bin"
 
-  cd "${pkgname%-tip}/src"
+  cd "${pkgname%-dev}/src"
   ./make.bash --no-clean -v
 
   PATH="$GOBIN:$PATH" go install -v -race std
@@ -35,12 +35,12 @@ check() {
   export GOARCH=amd64
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
-  export GOROOT="$srcdir/${pkgname%-tip}"
+  export GOROOT="$srcdir/${pkgname%-dev}"
   export GOBIN="$GOROOT/bin"
-  export PATH="$srcdir/${pkgname%-tip}/bin:$PATH"
+  export PATH="$srcdir/${pkgname%-dev}/bin:$PATH"
   export GO_TEST_TIMEOUT_SCALE=2
 
-  cd "${pkgname%-tip}/src"
+  cd "${pkgname%-dev}/src"
   # rm os/signal/signal_cgo_test.go  # TODO: There is a bug somewhere.
   #                                  # Should only affect containers
   #                                  # so lets just say No.
@@ -48,7 +48,7 @@ check() {
 }
 
 package() {
-  cd "${pkgname%-tip}"
+  cd "${pkgname%-dev}"
 
   install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go"
   cp -a bin pkg src lib misc api test "$pkgdir/usr/lib/go"
@@ -65,7 +65,7 @@ package() {
   # TODO: Figure out if really needed
   rm -rf "$pkgdir"/usr/lib/go/pkg/obj/go-build/*
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-tip}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-dev}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et
