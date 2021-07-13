@@ -1,20 +1,18 @@
 pkgbase = python-kiwi
-	pkgdesc = KIWI—Appliance Builder Next Generation
-	pkgver = 8.20.22
+	pkgver = 9.23.43
 	pkgrel = 1
-	url = https://github.com/SUSE/kiwi
+	url = https://github.com/OSInside/kiwi
 	arch = any
-	license = MIT
+	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-sphinx
-	makedepends = python-sphinxcontrib-spelling
-	makedepends = python-sphinxcontrib-programoutput
-	depends = python-future
+	makedepends = python-sphinx_rtd_theme
+	depends = python-requests
+	depends = python-yaml
 	depends = python-xattr
 	depends = python-lxml
 	depends = python-docopt
-	source = kiwi-8.20.22.tar.gz::https://github.com/SUSE/kiwi/archive/v8.20.22.tar.gz
-	sha256sums = e6152a71086827b67a2ed80a4363ee6d8d33448a02585479c2d4e69d4099fc30
+	source = kiwi-9.23.43.tar.gz::https://github.com/OSInside/kiwi/archive/refs/tags/v9.23.43.tar.gz
+	sha256sums = bf6e2d20459ebb8a0d0659469dc4f20f7327becbf4691b3a8cc27e70d5f681b2
 
 pkgname = python-kiwi
-
