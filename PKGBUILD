@@ -8,6 +8,7 @@ pkgdesc="A command-line interface for Reddit written in POSIX sh"
 arch=('any')
 url="https://gitlab.com/aaronNG/reddio"
 license=('MIT')
+conflicts=('reddio-git')
 depends=('curl' 'jq') 
 optdepends=('gnu-netcat: for authentication'
             'openbsd-netcat: for authentication'

@@ -12,6 +12,7 @@ pkgbase = reddio
 	optdepends = bash: POSIX compliant shell
 	optdepends = dash: POSIX compliant shell
 	optdepends = ksh: POSIX compliant shell
+	conflicts = reddio-git
 	source = https://gitlab.com/aaronNG/reddio/-/archive/v0.45/reddio-v0.45.tar.gz
 	source = lib_dir.patch
 	sha512sums = 6e4af6d6d1cdf7059af5a2bf3e151ca99115402e9e8a0b5beacdeb6c1a6e9897feebc078a1ddb1320f356c91af4f2593fb40f8a16a219f496796fc36df0bab84
