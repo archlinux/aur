@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "DepotDownloader/DepotDownloader"
 
-  dotnet publish -r linux-x64 -c Release -p:PublishSingleFile=true --no-self-contained
+  dotnet publish -r linux-x64 -c Release -p:PublishSingleFile=true --no-self-contained -p:IncludeAllContentForSelfExtract=true
 }
 
 package() {
