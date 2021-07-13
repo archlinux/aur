@@ -1,8 +1,8 @@
-# Maintainer: 0x715C <https://www.t.me/hex715C>
+# Maintainer: 0x715C
 
 pkgname=alda-git
 _pkgname=alda
-pkgver=1.2.0.r17.g2203edf
+pkgver=2.0.1.r4.g2b1cb38
 pkgrel=1
 pkgdesc='A music programming language for musicians. 🎶'
 arch=('x86_64')
@@ -10,31 +10,38 @@ url='https://github.com/alda-lang/alda'
 license=('EPL')
 provides=('alda')
 conflicts=('alda')
-#depends=('boot')
-makedepends=('boot' 'launch4j')
-#optdepends=()
-options=('docs' '!strip' 'debug')
-source=('git://github.com/alda-lang/alda')
-sha1sums=('SKIP')
+depends=('java-environment>=8')
+makedepends=('fakeroot' 'binutils' 'git' 'go' 'java-environment>=8')
+source=('git+https://github.com/alda-lang/alda')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  mkdir -p bin
-  sed -e 's/(exe :file file :output-dir output-dir)//g' -i build.boot
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/release.//'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  boot build -o bin/
+  #Build alda client
+  cd "$srcdir/$_pkgname/client"
+  go generate
+  go build -trimpath -o ../bin/alda alda.io/client
+  cd ..
+
+  #Build alda-player
+  fat_jar="build/libs/alda-player-fat.jar"
+  jvm_opts="-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xmx1024m -Xms256m -DlogPath=tmplog"
+  cd "player"
+  ./gradlew -q -g . build
+  cat \
+    <(echo -e "#!/bin/sh\n\nexec java $jvm_opts -jar \$0 \"\$@\"\n\n\n") \
+    "$fat_jar" \
+    > ../bin/alda-player
 }
 
 package() {
   cd "$srcdir/$_pkgname/bin"
   install -Dm755 alda \
     "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 alda-player \
+    "${pkgdir}/usr/bin/${_pkgname}-player"
 }
