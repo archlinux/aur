@@ -1,10 +1,10 @@
-# Maintainer:
+# Maintainer: lilydjwg <lilydjwg@gmail.com>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Gerhard Brauer <gerhard.brauer@web.de>
 
 pkgname=collectd
 pkgver=5.12.0
-pkgrel=3
+pkgrel=6
 pkgdesc='Daemon which collects system performance statistics periodically'
 url='https://collectd.org/'
 arch=('x86_64')
@@ -45,7 +45,7 @@ depends=('libltdl' 'iptables' 'libnsl')
 source=("https://storage.googleapis.com/collectd-tarballs/${pkgname}-${pkgver}.tar.bz2"
         'service')
 sha256sums=('5bae043042c19c31f77eb8464e56a01a5454e0b39fa07cf7ad0f1bfc9c3a09d6'
-            'e45e261146563b0bf6967c669dff7ac2400f066f0eb4c022ac3fdb0ccadca2f9')
+            '83957b0b2cc7fa05a4d5f22e6c913ae2b0a4d7821f7b4e2d2e763054cc8c6c21')
 
 backup=('etc/collectd.conf')
 
