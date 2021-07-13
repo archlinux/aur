@@ -3,7 +3,7 @@ pkgname=libucw-git
 pkgver=v6.5.12.r0.03c6ca57
 pkgrel=1
 pkgdesc='General purpose library for the C language'
-arch=('x86_64')
+arch=('any')
 url="http://www.ucw.cz/libucw/"
 license=('LGPL')
 depends=(perl bash pkg-config)
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure PREFIX=/usr CONFIG_DIR=/etc LOPT=-Wl,-z,relro,-z,now
+	./configure LOPT=-Wl,-z,relro,-z,now
 	make
 }
 
