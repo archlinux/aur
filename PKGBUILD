@@ -1,37 +1,45 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com> 
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=magic-wormhole-git
-_pkgname=${pkgname%-*}
-pkgver=0.11.2.r82.995d3f5
-pkgrel=3
-pkgdesc="Securely transfer data between computers"
+pkgver=0.12.0.r19.679434a
+pkgrel=1
+pkgdesc='Securely transfer data between computers (development version)'
 arch=('any')
-url="https://github.com/warner/${_pkgname}"
+url='https://github.com/magic-wormhole/magic-wormhole'
 license=('MIT')
-depends=('python' 'python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity' 'python-txtorcon' 'python-pyhamcrest')
-makedepends=('python-setuptools')
-source=("git+${url}.git" "magic-wormhole-git.patch")
-conflicts=("wormhole" "wormhole-server")
-provides=("wormhole" "wormhole-server")
-sha512sums=('SKIP'
-            'b93a25d041c6cded94eed8951d448bf84373516e49498289275e080cba487ea6905128b83c1f7ccb635f1f8045bcdefa0bce6ef9d493060c85b177d65011bbf2')
+depends=('python-click' 'python-cffi' 'python-autobahn' 'python-tqdm'
+         'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize'
+         'python-idna' 'python-service-identity' 'python-txtorcon'
+         'python-pyopenssl')
+makedepends=('python-setuptools' 'git')
+checkdepends=('python-mock' 'python-magic-wormhole-transit-relay'
+              'python-magic-wormhole-mailbox-server')
+provides=('magic-wormhole' 'wormhole' 'wormhole-server' 'python-wormhole')
+conflicts=('magic-wormhole' 'wormhole' 'wormhole-server' 'python-wormhole')
+replaces=('wormhole' 'wormhole-server' 'python-wormhole')
+source=(${pkgname%-git}::'git+https://github.com/magic-wormhole/magic-wormhole.git')
+sha512sums=('SKIP')
 
-pkgver()
-{
-  cd "${srcdir}/${_pkgname}"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-	patch < "magic-wormhole-git.patch" "$srcdir/$_pkgname/setup.py"
+pkgver() {
+	cd "${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py build
+	cd "${pkgname%-git}"
+	python setup.py build
+}
+
+check() {
+	cd "${pkgname%-git}"
+	python setup.py test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+	cd "${pkgname%-git}"
+	python setup.py install --root="${pkgdir}/" --optimize=1
+	install -vDm 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
+	install -vDm 644 docs/wormhole.1 -t "${pkgdir}/usr/share/man/man1"
 }
