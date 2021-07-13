@@ -2,7 +2,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.8.6
+pkgver=3.8.16
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64') # 'aarch64'
@@ -13,7 +13,7 @@ depends=('electron')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
 _nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=9d258ffcee1559cb71f796e51d5b3a3e98f7f39a"
+        "git://github.com/standardnotes/web.git#commit=bd65ca08152bc4197054dd7f3b31c9dfd95289be"
         "git://github.com/sn-extensions/extensions-manager.git#commit=c8a614bf093a3d6ab95ea8eb5e7507b152ed49e2"
         'webpack.patch'
         'standardnotes-desktop.desktop'
@@ -27,6 +27,10 @@ sha256sums=('SKIP'
 
 prepare() {
   cd $_pkgname
+  export npm_config_cache="${srcdir}/npm_cache"
+  _ensure_local_nvm
+  nvm install ${_nodeversion}
+
   git checkout v$pkgver
   git submodule init
   git config submodule.web.url $srcdir/web
@@ -41,26 +45,36 @@ prepare() {
   # workaround for TS compilation failing due to a "might be null" error.
   # this might be an ugly thing to just ignore, but, well, uh...
   patch -Np1 -i ${srcdir}/webpack.patch
-}
-
-build() {
-  cd $srcdir/$_pkgname/
-  export npm_config_cache="${srcdir}/npm_cache"
-  source /usr/share/nvm/init-nvm.sh
-  nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   yarn --cwd ./web install
   yarn --cwd ./web run bundle:desktop
   yarn --cwd ./app install
   yarn install
   yarn run webpack --config webpack.prod.js
+}
 
-  yarn run electron-builder --linux -c.linux.target=dir --publish=never
+build() {
+  cd $srcdir/$_pkgname/
+  export npm_config_cache="${srcdir}/npm_cache"
+  _ensure_local_nvm
+  nvm use ${_nodeversion}
+
+  _electron_dist=/usr/lib/electron
+  _electron_ver=$(cat ${_electron_dist}/version)
+  case "$CARCH" in
+          aarch64)
+                  _electronbuilderarch='arm64'
+          ;;
+          *)
+                  _electronbuilderarch='x64'
+          ;;
+  esac
+
+  yarn run electron-builder --linux --${_electronbuilderrarch} --dir --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver} --config.linux.target=dir --publish=never
 }
 
 
 package() {
-
   function remove_srcdir_ref {
     local tmppackage="$(mktemp)"
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$1" > "$tmppackage"
@@ -79,4 +93,16 @@ package() {
   install -D -m644 $pkgname.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 $srcdir/$_pkgname/build/icon/Icon-512x512.png "${pkgdir}/usr/share/icons/standard-notes.png"
   install -D -m655 $pkgname.js "${pkgdir}/usr/bin/${pkgname}"
+}
+
+# https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
+_ensure_local_nvm() {
+    # let's be sure we are starting clean
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+
+    # The init script returns 3 if version specified
+    # in ./.nvrc is not (yet) installed in $NVM_DIR
+    # but nvm itself still gets loaded ok
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
