@@ -1,7 +1,7 @@
 pkgbase = r-gargle
 	pkgdesc = Utilities for Working with Google APIs
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=gargle
 	arch = any
 	license = GPL3
@@ -16,7 +16,8 @@ pkgbase = r-gargle
 	depends = r-rstudioapi
 	depends = r-withr
 	optdepends = r-aws.ec2metadata
-	optdepends = r-aws.signaturer-covr
+	optdepends = r-aws.signature
+	optdepends = r-covr
 	optdepends = r-httpuv
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
