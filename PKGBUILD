@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594 [at] gmail [dot] com>
 pkgname=fastocr
 _reponame=FastOCR
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pyqt5' 'python-qasync' 'python-aiohttp' 'python-dbus' 'python-c
 makedepends=('python-setuptools')
 provides=('fastocr')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/BruceZhang1993/FastOCR/archive/$pkgver.tar.gz")
-sha256sums=('951dc04b3c16d617b0e226ad8e61363de7d75f623f7af678d9b4b1467ef5c860')
+sha256sums=('fff31f3db52bb688e3555e0bec6b77cd9b86fc8ad41923a41b3f3d3caa231a3d')
 
 build() {
 	cd "$srcdir/$_reponame-$pkgver"
