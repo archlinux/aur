@@ -1,3 +1,4 @@
+# Maintainer: Typology <mohammedkaabi64@gmail.com>
 # Maintainer: Fredrick Brennan <copypaste@kittens.ph>
 # Maintainer: Andrew Bueide <abueide@protonmail.com>
 # Maintainer: rouhannb <rouhannb@gmail.com>
@@ -7,15 +8,15 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.18
+pkgver=1.2.28
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url='http://www.aseprite.org/'
 license=('custom')
-depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
+depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'zlib' 'libpng' 'tinyxml' 'pixman' 'freetype2'
          'fontconfig' 'libxcursor' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'freeglut' 'harfbuzz-icu' 'nettle' 'libxi')
+makedepends=('cmake' 'libglvnd' 'ninja' 'freeglut' 'harfbuzz-icu' 'nettle' 'libxi')
 provides=('aseprite')
 conflicts=('aseprite-git' 'aseprite-gpl' 'skia-git' 'aseprite')
 source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Aseprite-v${pkgver}\
@@ -24,7 +25,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Asepr
 'aseprite.desktop'
 )
 noextract=('Skia-Linux-Release-x64.zip')
-sha256sums=('8ac253a002b14a9064d0ebcb99ad5fc715fd021c64ae9c9faa5f0facf1beb998'
+sha256sums=('dc26ae62d569f7f493ecb92a73b81a3687279edab62e2f9ac1c63b3deaafd36b'
             '37cb146efbffb0571a541c48acd7926ed6571cd3aa50be67f8a9b97901e26769'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25')
 
@@ -39,25 +40,35 @@ build() {
   mkdir --parents --verbose build && cd build
 
   cmake \
-    -DWITH_WEBP_SUPPORT=ON \
+    -DUSE_SHARED_CMARK=ON \
     -DUSE_SHARED_CURL=ON \
+    -DUSE_SHARED_JPEGLIB=ON \
     -DUSE_SHARED_GIFLIB=ON \
-    -DUSE_SHARED_HARFBUZZ=ON \
     -DUSE_SHARED_ZLIB=ON \
     -DUSE_SHARED_LIBPNG=ON \
     -DUSE_SHARED_TINYXML=ON \
-    -DUSE_SHARED_CMARK=ON \
-    -DENABLE_UPDATER=OFF \
+    -DUSE_SHARED_PIXMAN=ON \
     -DUSE_SHARED_FREETYPE=ON \
+    -DUSE_SHARED_HARFBUZZ=ON \
+    -DENABLE_UPDATER=OFF \
+    -DWITH_WEBP_SUPPORT=ON \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
     -DLAF_BACKEND=skia \
     -DSKIA_DIR="${srcdir}/skia" \
     -DSKIA_LIBRARY_DIR="${srcdir}/skia/out/Release-x64" \
+    -DSKIA_LIBRARY="${srcdir}/skia/out/Release-x64/libskia.a" \
+    -DLAF_WITH_TESTS=OFF \
+    -DLAF_WITH_EXAMPLES=OFF \
     -G Ninja \
     ..
 
-  ninja aseprite
+  # Workaround for the multiple definition error (https://github.com/aseprite/aseprite/issues/2387#issuecomment-697334354)
+  var=$(ninja aseprite | tee /dev/tty)
+  var=$(echo $var | grep -o -P '(?<=&&).*(?=&&)')
+  var=${var/"lib/libwebp.a"}
+  $var
+
 }
 
 package() {
