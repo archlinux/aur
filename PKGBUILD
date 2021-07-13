@@ -1,6 +1,6 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
-_cranver=0.4-25
+_cranver=0.4-26
 pkgname=r-proxy
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,7 +10,7 @@ url='https://cran.r-project.org/web/packages/proxy'
 license=('GPL')
 depends=('r')
 source=("https://cran.r-project.org/src/contrib/proxy_"$_cranver".tar.gz")
-sha512sums=('c9bd65fb0901892b4bf405a301cc5ce9abcee0000afd1fbbb9bf310d3e9f0cc5a5a711b1c430f4c4c34c98e5b08be0405dc4545ec063f1655715eb365d49bce7')
+sha512sums=('227a284e3d44be6246adad0212136b716cf4ef1769f470c7e1521f4a5cdf5427edbc5875e9b01f1635a8ee4ede76676f6dd4bbbfdeb478a429a41bf068947a4b')
 
 build(){
     R CMD INSTALL proxy_"$_cranver".tar.gz -l "$srcdir"
