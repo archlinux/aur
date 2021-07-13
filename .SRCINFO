@@ -6,6 +6,7 @@ pkgbase = gargoyle
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	arch = aarch64
 	license = GPL
 	makedepends = ftjam
@@ -29,4 +30,3 @@ pkgbase = gargoyle
 	sha512sums = c9924abc48b6dc5025fb83c040a3bdd2a324302d67683645a4fd1d1f3bcfe92c58a9db71c1e41a26afe8a3144e1cdafbc060df2261d93ddac29a9144ae22db71
 
 pkgname = gargoyle
-
