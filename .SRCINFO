@@ -1,7 +1,7 @@
 pkgbase = r-googledrive
 	pkgdesc = Manage Google Drive files from R
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=googledrive
 	arch = any
 	license = GPL3
@@ -23,7 +23,8 @@ pkgbase = r-googledrive
 	optdepends = r-curl
 	optdepends = r-downlit
 	optdepends = r-dplyr>=1.0.0
-	optdepends = r-knitrr-mockr
+	optdepends = r-knitr
+	optdepends = r-mockr
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-sodium
