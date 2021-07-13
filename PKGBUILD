@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-tools-iran-bin"
-pkgver="100.3.1"
+pkgver="100.4.0"
 basever="4.4"
 basedist="focal"
 pkgrel="1"
@@ -16,8 +16,8 @@ optdepends=("mongodb-compass: The MongoDB GUI")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://downloads.tuxfamily.org/molaeiorg/mongo-mirror/mongodb-database-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://downloads.tuxfamily.org/molaeiorg/mongo-mirror/mongodb-database-tools_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=("21872a9ac42d7575d4ff5c764bccada525b8715cf2b159194cff3ccc45453728")
-sha256sums_aarch64=("595fbdb4e7049b1361e76594f74c83544e3afea21565ae40fb60858761210bcf")
+sha256sums_x86_64=("665394a7afbd0400205013ac5e0a031bfdc7fc8fe4dd460fb6b2d3035fd95de7")
+sha256sums_aarch64=("a88775f540c67288531d3dd24f932e3c14b8c3b08b4ee7be63963a1af0d5d59b")
 
 prepare() {
   cd "${srcdir}"
