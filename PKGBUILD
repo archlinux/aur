@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=nctracer-git
-pkgver=r29.804e689
+pkgver=r30.e85ca8e
 pkgrel=1
 pkgdesc="An ImGui front-end to the pmTracer library made with the nCine"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/ncTracer"
   ( set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -47,9 +47,9 @@ build() {
         -DCMAKE_BUILD_TYPE=Release\
         -DnCine_DIR=$PWD/../nCine-build\
         -DPMTRACER_ROOT=$PWD/../pmTracer\
-        -DPACKAGE_BUILD_ANDROID=OFF\
-        -DPACKAGE_STRIP_BINARIES=ON\
-        -DPACKAGE_DEFAULT_DATA_DIR=/usr/share/nctracer/data\
+        -DNCPROJECT_BUILD_ANDROID=OFF\
+        -DNCPROJECT_STRIP_BINARIES=ON\
+        -DNCPROJECT_DEFAULT_DATA_DIR=/usr/share/nctracer/data\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
