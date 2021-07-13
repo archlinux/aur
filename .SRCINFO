@@ -1,7 +1,7 @@
 pkgbase = apache-git
 	pkgdesc = Provides useful functions commonly found on BSD systems
-	pkgver = 2.5.0.alpha.r1107.gbdff1daffc
-	pkgrel = 2
+	pkgver = 2.5.0.alpha.r2263.g939538607c
+	pkgrel = 1
 	url = https://httpd.apache.org/
 	arch = i686
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = apache-git
 	optdepends = libxml2: for mod_proxy_html, mod_xml2enc modules
 	optdepends = lua: for mod_lua module
 	optdepends = lynx: apachectl status
+	optdepends = perl: for apxs and dbmmanage
 	optdepends = uwsgi: for mod_proxy_uwsgi module
 	provides = apache
 	conflicts = apache

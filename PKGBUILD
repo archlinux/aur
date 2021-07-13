@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apache-git
-pkgver=2.5.0.alpha.r2255.g2d34278612
+pkgver=2.5.0.alpha.r2263.g939538607c
 pkgrel=1
 pkgdesc="Provides useful functions commonly found on BSD systems"
 arch=('i686' 'x86_64')
