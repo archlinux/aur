@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=2021.5.3
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -74,6 +74,7 @@ prepare() {
 
 build() {
   cd home-assistant
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
