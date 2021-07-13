@@ -1,7 +1,9 @@
+# Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=('python-kiwi')
 _pkgname='kiwi'
 pkgver=9.23.43
 pkgrel=1
+pkgdesc="KIWI—Appliance Builder Next Generation"
 license=('GPL3')
 arch=('any')
 url=https://github.com/OSInside/$_pkgname
