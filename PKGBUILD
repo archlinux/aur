@@ -6,7 +6,7 @@ pkgdesc="A language server for YANG"
 arch=('any')
 url="https://github.com/theia-ide/yang-lsp"
 license=('Apache')
-depends=("jre11-openjdk-headless")
+depends=("jdk11-openjdk")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/theia-ide/yang-lsp/archive/refs/tags/v$pkgver.tar.gz"
         'yang-language-server.template')
 sha256sums=('4bd1c16361a0218ca5ef3c4cae36ed447d0f08da39737af03e8768d5344d8afd'
