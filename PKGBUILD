@@ -1,30 +1,34 @@
-# Maintainer: Charlotte Ausel <TheSheepGuy1@gmail.com>
+# Maintainer: Charlotte Ausel <ettolrach@disroot.org>
 
 _pkgname=vgmtrans
 pkgname=$_pkgname-git
-pkgver=20170225.r389.gab59327
+# Use the latest commit's date and then the number of revisions using the same command as on line 19.
+pkgver=20210708.r966.156e8ae
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
 url="https://github.com/vgmtrans/vgmtrans"
 license=('ZLIB')
-depends=("qt5-base" "fluidsynth")
+depends=("qt5-base" "fluidsynth" "qt5-svg" "minizip")
 makedepends=("qt5-tools" "cmake" "git")
-source=("$_pkgname::git+git://github.com/vgmtrans/vgmtrans.git#branch=refactor")
+source=("$_pkgname::git+git://github.com/vgmtrans/vgmtrans.git")
 sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --long --tags | sed "s/^interim-//;s/\([^-]*-g\)/r\1/;s/-/./g"
+	printf "%s.r%s.%s" "$(git show -s --format="%cd" --date=short HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" | sed 's/-//g'
 }
 
 build() {
-	cmake -B build $_pkgname
-	make -C build
+    cd "$srcdir/$_pkgname"
+	cmake -B build
+	cmake --build build --target vgmtrans --parallel $(nproc)
 }
 
 package() {
-	install -Dm755 "build/src/vgmtrans-qt/vgmtrans" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 "$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -Dm755 "$_pkgname/data/vgmtrans.desktop" "$pkgdir/usr/share/applications/vgmtrans.desktop"
+    cd "$srcdir/$_pkgname"
+	install -Dm755 "build/bin/vgmtrans" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 "src/ui/qt/resources/VGMTrans.desktop" "$pkgdir/usr/share/applications/VGMTrans.desktop"
+	install -Dm644 "src/ui/qt/resources/vgmtrans.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/vgmtrans.png"
 }
