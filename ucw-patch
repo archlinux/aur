@@ -11,19 +11,6 @@ index 730b5145..2c5dfd25 100644
  
  # Extra libraries
  Set("LIBS" => "");
-diff --git a/ucw/perl/UCW/Configure/Paths.pm b/ucw/perl/UCW/Configure/Paths.pm
-index d03c90d6..e90b0b5d 100644
---- a/ucw/perl/UCW/Configure/Paths.pm
-+++ b/ucw/perl/UCW/Configure/Paths.pm
-@@ -36,7 +36,7 @@ if (IsSet("CONFIG_LOCAL")) {
- }
- 
- Set('CONFIG_DIR', 'etc') unless IsSet('CONFIG_DIR');
--Set('INSTALL_CONFIG_DIR', Get('INSTALL_PREFIX') . Get('CONFIG_DIR'));
-+Set('INSTALL_CONFIG_DIR', Get('CONFIG_DIR'));
- Set('INSTALL_BIN_DIR', Get('INSTALL_USR_PREFIX') . 'bin');
- Set('INSTALL_SBIN_DIR', Get('INSTALL_USR_PREFIX') . 'sbin');
- Set('INSTALL_LIB_DIR', Get('INSTALL_USR_PREFIX') . 'lib');
 diff --git a/ucw/threads.c b/ucw/threads.c
 index d9100119..2a907682 100644
 --- a/ucw/threads.c

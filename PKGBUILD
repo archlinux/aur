@@ -11,7 +11,7 @@ makedepends=(perl gcc git pkg-config curl make bash asciidoc)
 provides=(libucw)
 source=('libucw::git+git://git.ucw.cz/libucw.git#tag=v6.5.12' 'ucw-patch')
 md5sums=('SKIP'
-         'ef8bd4a7a041c20320d59db468241f44')
+         '48ff678e48d8f4f9b5bd5dfaa878434c')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
