@@ -20,6 +20,11 @@ build() {
     cargo build --release
 }
 
+check() {
+    cd "${srcdir}/${pkgname}-v${pkgver}"
+    cargo test --release
+}
+
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
     cargo install --path . --root "${pkgdir}/usr" --bins
