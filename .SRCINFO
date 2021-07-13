@@ -1,6 +1,6 @@
 pkgbase = susbernate-git
 	pkgdesc = Script to suspend the system, then hibernate after a while
-	pkgver = r8.4990933
+	pkgver = r10.26028d7
 	pkgrel = 1
 	url = https://github.com/soystemd/susbernate
 	arch = x86_64
