@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BOOM
+Comment=A game inspired by Factor Software's BOOM. Bomberman meets DOOM.
+Exec=boom
+Icon=boom
+Terminal=false
+StartupNotify=false
+Categories=Game;
