@@ -1,12 +1,12 @@
-# Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=hidpi-daemon
 pkgver=18.04.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon to manage HiDPI and LoDPI monitors on X"
 arch=('any')
 url="https://github.com/pop-os/hidpi-daemon"
-license=('GPL')
+license=('GPL2')
 depends=(
   'acpid'
   'python>=3.6'
@@ -14,19 +14,15 @@ depends=(
   'python-gobject'
   'python-xlib'
   'libnotify')
-makepdepends=(
-  'python-pyflakes')
-conflicts=('system76-driver<17.10.32')
-source=(
-  "https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=(
-  'f7e33263acb34b624b80c6e680ac491f722738d0')
+source=("https://github.com/pop-os/hidpi-daemon/archive/${pkgver}.tar.gz")
+sha256sums=('ecb6135128c84dd37499c642d017ee663d7e91479806b8d67d1452fb1769c370')
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
   # Build and install base package
-  python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
+  export PYTHONHASHSEED=0
+  python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 
   # Install daemons and executables
   install -m755 -D hidpi-daemon ${pkgdir}/usr/lib/${pkgname}/hidpi-daemon
@@ -40,8 +36,5 @@ package() {
   install -m644 -D com.system76.hidpi.gschema.xml ${pkgdir}/usr/share/glib-2.0/schemas/com.system76.hidpi.gschema.xml
 
   # Create empty /var/lib package directory
-  mkdir -p ${pkgdir}/var/lib/${pkgname}
-
-  # Clean up
-  rm -rf ${pkgdir}/usr/lib/python*/site-packages/hidpidaemon/{__pycache__,tests}
+  install -d ${pkgdir}/var/lib/${pkgname}
 }
