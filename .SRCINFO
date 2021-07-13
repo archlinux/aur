@@ -1,0 +1,23 @@
+pkgbase = icingaweb2-latest
+	pkgdesc = Icinga Web 2 Interface
+	pkgver = 2.9.0
+	pkgrel = 1
+	url = http://www.icinga.org
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = composer
+	depends = php
+	optdepends = php-gd: export data to PDF
+	optdepends = php-intl: support for internationalization
+	optdepends = php-pgsql: for PostgreSQL backend
+	provides = icingaweb2
+	conflicts = icingaweb2
+	source = git+https://github.com/Icinga/icingaweb2/#tag=v2.9.0
+	source = git+https://github.com/Icinga/icinga-php-library/#tag=v0.6.0
+	source = git+https://github.com/Icinga/icinga-php-thirdparty/#tag=v0.10.0
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = icingaweb2-latest
