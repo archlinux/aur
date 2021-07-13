@@ -1,6 +1,6 @@
 pkgbase = yabridge-git
 	pkgdesc = A modern and transparent way to use Windows VST2 and VST3 plugins on Linux
-	pkgver = 3.3.1.r64.g3b06634
+	pkgver = 3.3.1.r196.g591b2b9c
 	pkgrel = 1
 	url = https://github.com/robbert-vdh/yabridge
 	install = yabridge.install
