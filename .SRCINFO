@@ -15,7 +15,7 @@ pkgbase = ciel
 	optdepends = libgit2: git vcs support
 	optdepends = xz: xzip archive support
 	conflicts = ciel-git
-	source = ciel-3.0.9.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.0.9.tar.gz
-	sha256sums = 4155ab4c54530d1a9b19b244798485e7843554221f42b4171e17e2dc4db97ac1
+	source = ciel-3.0.9.tar.gz::https://github.com/AOSC-Dev/ciel-rs/archive/v3.0.0.tar.gz
+	sha256sums = 4e8236a200e4acd9f3be76e02206a685a1f6ad00f4f632cabd358832e0514108
 
 pkgname = ciel

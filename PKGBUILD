@@ -1,6 +1,7 @@
 # Maintainer: Jack Wu <origincode@aosc.io>
 pkgname=ciel
 _pkgname=${pkgname}-rs
+_pkgver=3.0.0
 pkgver=3.0.9
 pkgrel=1
 pkgdesc="A tool for controlling multi-layer file systems and containers."
@@ -11,18 +12,18 @@ depends=('systemd' 'dbus' 'openssl')
 makedepends=('rust' 'make' 'gcc')
 optdepends=('libgit2: git vcs support'
             'xz: xzip archive support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AOSC-Dev/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4155ab4c54530d1a9b19b244798485e7843554221f42b4171e17e2dc4db97ac1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AOSC-Dev/${_pkgname}/archive/v${_pkgver}.tar.gz")
+sha256sums=('4e8236a200e4acd9f3be76e02206a685a1f6ad00f4f632cabd358832e0514108')
 conflicts=('ciel-git')
 
 build() {
-    cd ${_pkgname}-${pkgver}
+    cd ${_pkgname}-${_pkgver}
     cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
-    install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin"
+    cd ${_pkgname}-${_pkgver}
+    install -Dm755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
 
     # Rename the binary
     mv -v "${pkgdir}/usr/bin/ciel-rs" "${pkgdir}/usr/bin/ciel"
@@ -31,5 +32,5 @@ package() {
     PREFIX="${pkgdir}/usr/" ./install-assets.sh
 
     # Install the license
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 }
