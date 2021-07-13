@@ -3,12 +3,14 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=1.21.2.r1.g4647fad6
+pkgver=2.2.3.r1.g28d67699
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
 url='https://github.com/sumneko/lua-language-server'
 arch=('x86_64')
+provides=('lua-language-server')
+conflicts=('lua-language-server')
 depends=('lua')
 makedepends=('ninja' 'git')
 source=(
