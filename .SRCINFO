@@ -1,7 +1,7 @@
 pkgbase = fakturama
 	pkgdesc = Creates invoices with ZUGFeRD / XRechnung support
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fakturama.info
 	install = fakturama.install
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fakturama
 	source = fakturama-2.1.2.tar.gz::https://files.fakturama.info/release/v2.1.2/Installer_Fakturama_linux_x64_2.1.2.tar.gz
 	source = fakturama2.desktop
 	source = fakturama2-clean.desktop
-	sha256sums = b1bfcd1aa2cc44dda530b32ffb902c2f54837bec39fb4e46af9e2a744ad10d40
+	sha256sums = a1755e1c4697d4482850d14e07cdf50149a19e2d674d5c25340cea8c17536f7f
 	sha256sums = 550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c
 	sha256sums = 96ac2d3815e37f993ea92c0598c5b4350d69e57f0c415bde7dafbecfe1e4e407
 

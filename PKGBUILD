@@ -2,7 +2,7 @@
 
 pkgname=fakturama
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates invoices with ZUGFeRD / XRechnung support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -29,7 +29,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-	"b1bfcd1aa2cc44dda530b32ffb902c2f54837bec39fb4e46af9e2a744ad10d40"
+	"a1755e1c4697d4482850d14e07cdf50149a19e2d674d5c25340cea8c17536f7f"
 	"550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c"
 	"96ac2d3815e37f993ea92c0598c5b4350d69e57f0c415bde7dafbecfe1e4e407"
 )
