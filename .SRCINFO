@@ -1,6 +1,6 @@
 pkgbase = ncinvaders-git
 	pkgdesc = A simplified version of Space Invaders made with the nCine
-	pkgver = r2.9c3d273
+	pkgver = r34.7b9c639
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = ncinvaders-git
 	md5sums = SKIP
 
 pkgname = ncinvaders-git
-
