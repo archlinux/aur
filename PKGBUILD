@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang <zttt183525594 [at] gmail [dot] com>
 pkgname=fastocr-git
-pkgver=0.2.0.r0.5b396a2
-pkgrel=2
+pkgver=0.3.1.r2.0059954
+pkgrel=1
 pkgdesc='FastOCR is a desktop application for OCR API.'
 arch=('any')
 url='https://github.com/BruceZhang1993/FastOCR'
