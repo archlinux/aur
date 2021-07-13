@@ -1,7 +1,7 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
 	pkgver = 1.17.1+b131
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.spigotmc.org/
 	install = spigot.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = spigot
 	makedepends = java-environment>=16
 	makedepends = git
 	depends = java-runtime-headless>=16
-	depends = screen
+	depends = tmux
 	depends = sudo
 	depends = fontconfig
 	depends = bash

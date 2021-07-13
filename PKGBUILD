@@ -5,12 +5,12 @@ pkgname=spigot
 _pkgver=1.17.1
 _build=131
 pkgver="${_pkgver}+b${_build}"
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance Minecraft server implementation"
 arch=('any')
 url="https://www.spigotmc.org/"
 license=("LGPL")
-depends=("java-runtime-headless>=16" 'screen' 'sudo' 'fontconfig' 'bash' 'awk' 'sed')
+depends=("java-runtime-headless>=16" 'tmux' 'sudo' 'fontconfig' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 makedepends=("java-environment>=16" 'git')
