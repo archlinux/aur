@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.38
+pkgver=20.04.39
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -13,8 +13,10 @@ depends=(
   'dmidecode'
   'ethtool'
   'grub'
+  'gtk3'
   'lm_sensors'
   'pciutils'
+  'polkit'
   'python>=3.6'
   'python-cffi'
   'python-dbus'
@@ -30,10 +32,9 @@ depends=(
 makepdepends=(
   'python-pyflakes')
 optdepends=(
-  'firmware-manager: Manage System76 firmware updates'
-  'gtk3: To launch System76 driver and firmware GUI'
+  'firmware-manager: Manage System76 firmware updates via standalone application'
+  'gnome-control-center-system76: Manage System76 firmware updates via Settings'
   'pm-utils: For power management features'
-  'polkit: Run System76 Driver GUI from application menu'
   'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
   'system76-acpi-dkms: Provides the system76_acpi in-tree driver'
@@ -48,7 +49,7 @@ source=(
   'cli.patch'
   'wayland.patch'
   'actions.patch')
-sha256sums=('40554af41877cff50e826f9a848c1015921068f14f9eea2f760d3fcbb1a68dae'
+sha256sums=('cfcd80706647e068112fed1ae10f81d854dd755ee69a96f77d6c8f723357ea9e'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3'
             '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
@@ -99,7 +100,7 @@ package() {
   install -Dm644 system76-user-daemon.desktop -t "$pkgdir/etc/xdg/autostart"
 
   # Create /var/lib/system76-driver directory for brightness settings saving
-  install -dm755 "$pkgdir/var/lib/$pkgname"
+  install -d "$pkgdir/var/lib/$pkgname"
 
   # Remove tests
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
