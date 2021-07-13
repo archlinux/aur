@@ -8,7 +8,7 @@
 
 pkgname=swi-prolog-devel
 pkgver=8.3.27
-pkgrel=2
+pkgrel=4
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
 url='https://www.swi-prolog.org/'
@@ -27,7 +27,7 @@ source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
 provides=('swi-prolog')
 conflicts=('swi-prolog')
 
-md5sums=('a7c50c94b0ba9b3cac09d2dab8d2fbaf')
+sha256sums=('96ae66f9295b54d30c01a753dbc78c5c6fc6f34263b962a1442f58547e1253c2')
 
 
 build() {
