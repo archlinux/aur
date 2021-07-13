@@ -1,6 +1,6 @@
 pkgbase = icingaweb2-module-director-git
 	pkgdesc = Manage Icinga 2 configuration from Icinga Web 2
-	pkgver = 1.8.0.r56.bf32380
+	pkgver = v1.8.0.r64.44ca889
 	pkgrel = 1
 	url = https://www.icinga.org
 	arch = any
