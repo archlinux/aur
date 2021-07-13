@@ -1,6 +1,6 @@
 pkgbase = ffbtools-git
 	pkgdesc = Set of tools for FFB testing and debugging on GNU/Linux
-	pkgver = r58.8e03880
+	pkgver = r63.414c38a
 	pkgrel = 1
 	url = https://github.com/berarma/ffbtools
 	arch = x86_64
@@ -10,11 +10,8 @@ pkgbase = ffbtools-git
 	provides = ffbtools
 	conflicts = ffbtools
 	source = ffbtools::git+https://github.com/berarma/ffbtools.git#branch=master
-	source = 0001-makefile-clean-up-anti-patterns.patch
 	source = 0002-ffbwrap-Use-global-install-paths-for-arch.patch
 	sha512sums = SKIP
-	sha512sums = c61f52b12398d1063bdab25452d70210de990cc65e92159596d6e35a13f395d42914a9c666101d18c34c499a6be1cd25e7046bd04c2cd8fc6f951b6aeef0a6a1
 	sha512sums = c440104013dc21bf1a23b18b4e35c907902ed21e40ae4e3ca07e9b5b132680d273496822ffdde0935bda2f88bc0ef3b7bc1654e76f7dbff730d5aecce2151ff7
 
 pkgname = ffbtools-git
-
