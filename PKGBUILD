@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.12
-_major=5.12
+_srcname=linux-5.13
+_major=5.13
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=15
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,29 +30,17 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-x86-setup-Consolidate-early-memory-reservations.patch
-  0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch
-  0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch
-  0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch
-  0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch
-  0007-x86-crash-remove-crash_reserve_low_1M.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('c3c32c9c4bbb5028dfbe4ada9118463693fa905502366cc72962a1b7e49aa36e4127144bb0d00e80abcd31016e6705757dce2d76c299bda13acc84a320380415'
+b2sums=('82df277421534fa42393b73cb3781d323ef491a53747981d3d1d315c3638c14c1cd3004fda8c897732f3c8dd925e3bafe5ccb75ae6cd301106d90bf4d83fca61'
         'SKIP'
-        '2d94859080bba686786b690733d6df4a17f6183c690854545b87d784d16fbc5050fc07be08b2360cc1d0a6fe11bd8f18add68c893d92bb52e10bb0f61ff4eb76'
+        'dc08c82affae0cd7ceac841d568b796fad9b325da0aad046000a08df911b38732da89263f9d2835be8463469e884fff31f1742f7223c602d3e01db826660c7bf'
         'SKIP'
-        'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
-        'dda152592dec643bce44754bf5d2d43a5897cc57f8dc258b87857055a45abf903d619aba1de389228cb086a17fedea5458f8fe2c0993fa20213bb7c5bca331c8'
-        '13330cf57b5c6b928ea73bd30479010688cf8d2003107b041a7fdad33c1ac225c8c905bef235cd762d6ea76be754b5db6be769526bacf7333298f72d6afff535'
-        '381e0f177faa3090d1abf4d11a97db535712840870265dea167d7692dee7733a226d09c103d01705d5c0809fa66c7a23efea9da2473da672644b06e31db77083'
-        'cd9da0dee048fc52a3032343f122c2055081eeedfc8a3e5227218f0f63fc7618e8fe744c8caa7e3a2ca844f4aaf7314b57a306d0d3b1849e97b24687b8c5a501'
-        '1810832172e1b006a5471d8e317573343884feed9abc9e7380a32d83c958b0e6aa68adf9a647c9b7b714783997591f5d80e754c6e7357279661eee998f22864c'
-        '4e7cb958f95d99bba9810e675d4f1b0b3c171f78e9fe96ff9d265f792f4ceb1367f2f4d238f36b5ca1c395e14abdabbf0f8ce2dc07c4fe567d822a8b629dfa05'
-        '2251f8bf84e141b4661f84cc2ce7b21783ac0a349b2651477dfcbc5383b796b2e588d85ee411398b15c820cb3672256be8ed281c8bccfad252c9dd5b0e1e0cd5')
+        'a8dd07fdf11ca3367e70cddc67f6a56df5ec825874650d5ed1d818789a95680d6ded12c12490baedd432f8cc0f749fe69f355628d3b5011a8e7a7028f9ac8886'
+        '87175031fe8d6e2afb71d43624a21c789e6fd44072ae9f191170ae04e392b32fc114b3ccd0f4c80e4b87168c52da35c78cadadc5f8ca0238eafbf93b8ffa50ed')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -180,13 +168,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
