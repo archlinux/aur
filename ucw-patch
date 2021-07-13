@@ -1,16 +1,3 @@
-diff --git a/ucw/perl/UCW/Configure/C.pm b/ucw/perl/UCW/Configure/C.pm
-index 730b5145..2c5dfd25 100644
---- a/ucw/perl/UCW/Configure/C.pm
-+++ b/ucw/perl/UCW/Configure/C.pm
-@@ -128,7 +128,7 @@ Set("CWARNS" => '-Wall -W -Wno-parentheses -Wstrict-prototypes -Wmissing-prototy
- Set("CWARNS_OFF" => '');
- 
- # Linker flags
--Set("LOPT" => "");
-+Set("LOPT" => "") unless IsSet("LOPT");
- 
- # Extra libraries
- Set("LIBS" => "");
 diff --git a/ucw/threads.c b/ucw/threads.c
 index d9100119..2a907682 100644
 --- a/ucw/threads.c

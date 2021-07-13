@@ -20,6 +20,6 @@ pkgbase = libucw-git
 	source = libucw::git+git://git.ucw.cz/libucw.git#tag=v6.5.12
 	source = ucw-patch
 	md5sums = SKIP
-	md5sums = 48ff678e48d8f4f9b5bd5dfaa878434c
+	md5sums = 622cbf9eb33825170d620adf394502fd
 
 pkgname = libucw-git

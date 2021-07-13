@@ -11,7 +11,7 @@ makedepends=(perl gcc git pkg-config curl make bash asciidoc)
 provides=(libucw)
 source=('libucw::git+git://git.ucw.cz/libucw.git#tag=v6.5.12' 'ucw-patch')
 md5sums=('SKIP'
-         '48ff678e48d8f4f9b5bd5dfaa878434c')
+         '622cbf9eb33825170d620adf394502fd')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,11 +25,18 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure LOPT=-Wl,-z,relro,-z,now
+	./configure
 	make
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
+
+	# inform dynamic linker and pkg-config that there are libraries in `/usr/local/lib/`
+	mkdir -p $pkgdir/etc/ld.so.conf.d/
+	mkdir -p $pkgdir/etc/profile.d/
+	echo "/usr/local/lib/" > $pkgdir/etc/ld.so.conf.d/ucw
+	echo 'export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"' > $pkgdir/etc/profile.d/ucw
 }
+
