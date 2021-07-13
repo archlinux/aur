@@ -1,13 +1,13 @@
 pkgbase = papermc
 	pkgdesc = Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance
 	pkgver = 1.17.1+b100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://papermc.io/
 	install = papermc.install
 	arch = any
 	license = custom
 	depends = java-runtime-headless>=8
-	depends = screen
+	depends = tmux
 	depends = sudo
 	depends = bash
 	depends = awk

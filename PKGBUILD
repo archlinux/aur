@@ -5,12 +5,12 @@ _pkgver=1.17.1
 _build=100
 _license_commit=40b3461
 pkgver="${_pkgver}+b${_build}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
 arch=('any')
 url="https://papermc.io/"
 license=('custom')
-depends=('java-runtime-headless>=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless>=8' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('papermc-git')
