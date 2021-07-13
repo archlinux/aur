@@ -1,6 +1,6 @@
 pkgbase = ruby-install
 	pkgdesc = Installs Ruby, JRuby, Rubinius, MRuby or TruffleRuby.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/postmodern/ruby-install
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = ruby-install
 	makedepends = gnupg
 	depends = bash
 	optdepends = zsh
-	source = https://github.com/postmodern/ruby-install/archive/v0.8.1.tar.gz
-	sha256sums = d96fce7a4df70ca7a367400fbe035ff5b518408fc55924966743abf66ead7771
+	source = https://github.com/postmodern/ruby-install/archive/v0.8.2.tar.gz
+	sha256sums = 72a998b76f787c32a1575f10494594ec2d963f5ad5748004292841b33f8013e7
 
 pkgname = ruby-install
-
