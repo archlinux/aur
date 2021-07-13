@@ -1,0 +1,23 @@
+pkgbase = beaker-appimage
+	pkgdesc = An experimental peer-to-peer Web browser
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/beakerbrowser/beaker
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = beaker
+	conflicts = beaker
+	conflicts = beaker-git
+	conflicts = beaker-browser-bin
+	conflicts = beaker-browser-git
+	noextract = beaker-appimage-1.1.0.AppImage
+	options = !strip
+	source = beaker-appimage-1.1.0.AppImage::https://github.com/beakerbrowser/beaker/releases/download/1.1.0/Beaker.Browser-1.1.0.AppImage
+	source = https://raw.githubusercontent.com/beakerbrowser/beaker/1.1.0/LICENSE
+	sha256sums = 77b6707ac32b5fe3fcc38f0f86159bb2f8eda42c1b88c077dea846bf4df60c1e
+	sha256sums = 161de6e06ddccad672765bc824b75990f554a9cb1d23f6193b63bc514399179c
+
+pkgname = beaker-appimage
