@@ -23,7 +23,7 @@ build() {
 
 	mkdir -p build-Release
 	cd build-Release
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" . -G "$generator"
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .. -G "$generator"
 	cmake --build . --config Release
 }
 
