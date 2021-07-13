@@ -1,13 +1,13 @@
 # Maintainer: suliman altassan <suliman.p2019@gmail.com>
 
 pkgname=webui-git
-pkgver=r18.db0a6b6
-pkgrel=0
+pkgver=r20.594a909
+pkgrel=1
 pkgdesc="Open source project to use web browsers as UI."
 arch=('x86_64')
 url="https://github.com/alifcommunity/webui/"
 license=('LGPL3')
-depends=('boost')
+makedepends=('boost' 'cmake' 'git')
 conflicts=('webui')
 provides=('webui')
 source=("$pkgname"::"git+https://github.com/alifcommunity/webui.git")
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd $srcdir/$pkgname
-    cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
+    cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr
     make
 }
 
