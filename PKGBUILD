@@ -47,7 +47,12 @@ build() {
     cd "$srcdir/$pkgbase-$pkgver"
 
     export OS=UNIX
-    GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+
+    ADA_FLAGS="$CFLAGS"
+    ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+    ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+
+    GPRBUILD_OPTIONS="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
     make BUILD=production setup
 
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" libgpr.build
