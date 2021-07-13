@@ -1,4 +1,5 @@
-# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Jose Riha <jose1711 gmail com>
+# Maintainer: Gileri <e + aur2419 at linuxw dot info>
 
 pkgname=mapillary_tools-git
 _pkgname=mapillary_tools
