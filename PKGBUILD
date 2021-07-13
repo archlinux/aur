@@ -7,12 +7,12 @@ _build_i686=268
 _build_x86_64=258
 _build_armv7h=258
 pkgver="${_pkgver}b${_build_x86_64}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
 license=('Apache')
-depends=('lua' 'screen' 'sudo' 'bash' 'awk' 'sed')
+depends=('lua' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("minecraft-server=${_pkgver%_*}" "spigot=${_pkgver%_*}" "cuberite=${_pkgver}")
