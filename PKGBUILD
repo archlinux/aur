@@ -1,30 +1,24 @@
 # Maintainer: js6pak <kubastaron@hotmail.com>
 
 pkgname=depotdownloader-git
-pkgver=2.4.0.r12.gcb5c6c8a
+pkgver=2.4.3.r4.g913c85a4
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library"
 arch=('x86_64')
 url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL2')
-depends=('dotnet-runtime>=3.1')
-makedepends=('git' 'dotnet-sdk>=3.1')
+depends=('dotnet-runtime>=5')
+makedepends=('git' 'dotnet-sdk>=5')
 provides=("${pkgname%-git}")
 
 options=("!strip")
-source=("git+${url}.git" 'DepotDownloader.csproj.patch')
-sha256sums=('SKIP' '792094891d26a81208982a4e773915aae300b203ea2acd183476d9f593523541')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "DepotDownloader"
 
   git describe --long --tags | sed -e 's/^DepotDownloader_//g' -e 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "DepotDownloader/DepotDownloader"
-
-  patch --input="${srcdir}/DepotDownloader.csproj.patch"
 }
 
 build() {
@@ -36,5 +30,5 @@ build() {
 package() {
   cd "DepotDownloader/DepotDownloader"
 
-  install -D -m755 "bin/Release/netcoreapp3.1/linux-x64/publish/DepotDownloader" "$pkgdir/usr/bin/depotdownloader"
+  install -D -m755 "bin/Release/net5.0/linux-x64/publish/DepotDownloader" "$pkgdir/usr/bin/depotdownloader"
 }
