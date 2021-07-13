@@ -1,6 +1,6 @@
 pkgbase = ncpong-git
 	pkgdesc = An example game made with the nCine
-	pkgver = r37.42a14b6
+	pkgver = r71.b798c6e
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = ncpong-git
 	md5sums = SKIP
 
 pkgname = ncpong-git
-
