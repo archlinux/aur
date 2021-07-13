@@ -5,7 +5,7 @@
 pkgname=minecraft-server
 pkgver=1.17.1
 _nonce=a16d67e5807f57fc4e550299cf20226194497dc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="https://minecraft.net/"

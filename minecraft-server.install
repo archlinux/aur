@@ -5,8 +5,8 @@ _server_root="/srv/minecraft"
 post_upgrade() {
 	echo "The management script switched from GNU screen to tmux."
 	echo "Manual intervention is needed to close the previous GNU screen sessions:"
-	echo "Use \`sudo -u minecraft screen -S minecraft -rx\` to attach to the minecraft session and stop it."
-	echo "Do the same for the \`idle_server_minecraft\` session if one is running."
+	echo "Use \`sudo -u ${_user} screen -S ${_game} -rx\` to attach to the ${_game} session and stop it."
+	echo "Do the same for the \`idle_server_${_game}\` session if one is running."
 }
 
 post_install() {

@@ -1,7 +1,7 @@
 pkgbase = minecraft-server
 	pkgdesc = Minecraft server unit files, script, and jar
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://minecraft.net/
 	arch = any
 	license = custom
