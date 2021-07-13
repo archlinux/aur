@@ -1,0 +1,14 @@
+pkgbase = vsmartcard
+	pkgdesc = Virtual Smart Card emulates a smart card.
+	pkgver = 0
+	pkgrel = 8
+	url = https://frankmorgner.github.io/vsmartcard/virtualsmartcard/README.html
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	depends = libtool
+	depends = pkg-config
+	source = https://github.com/frankmorgner/vsmartcard/releases/download/virtualsmartcard-0.8/virtualsmartcard-0.8.tar.gz
+	sha256sums = bf195a4c4b40d16bbd3114a0319f1bec154f44c6b1620f2c6a568b8eafcfee37
+
+pkgname = vsmartcard
