@@ -1,7 +1,7 @@
 # Maintainer: Miepee <janbidler00 at tutanota dot com>
 pkgname=am2rlauncher-git
-pkgver=2.1.0.r2.e97d335
-pkgrel=2
+pkgver=2.1.0.r4.137c25b
+pkgrel=1
 pkgdesc="Application for installing the latest Community Updates, APKs and Mods for AM2R."
 arch=(x86_64)
 url="https://github.com/AM2R-Community-Developers/AM2RLauncher"
@@ -22,14 +22,13 @@ pkgver() {
 
 build() {
     cd "AM2RLauncher/AM2RLauncher/"
-    dotnet publish AM2RLauncher.Gtk -p:PublishSingleFile=true -c release -r ubuntu.18.04-x64 --no-self-contained
+    dotnet publish AM2RLauncher.Gtk -p:PublishSingleFile=true -p:DebugType=embedded -c release -r ubuntu.18.04-x64 --no-self-contained
 }
 
 package() {
 
-    # remame files properly
+    # remame file properly
     mv -f AM2RLauncher/AM2RLauncher/AM2RLauncher.Gtk/bin/release/net5.0/ubuntu.18.04-x64/publish/AM2RLauncher.Gtk AM2RLauncher/AM2RLauncher/AM2RLauncher.Gtk/bin/release/net5.0/ubuntu.18.04-x64/publish/AM2RLauncher
-    mv -f AM2RLauncher/AM2RLauncher/AM2RLauncher.Gtk/bin/release/net5.0/ubuntu.18.04-x64/publish/AM2RLauncher.Gtk.pdb AM2RLauncher/AM2RLauncher/AM2RLauncher.Gtk/bin/release/net5.0/ubuntu.18.04-x64/publish/AM2RLauncher.pdb
 
     mkdir -p "$pkgdir/usr/bin/"
     mkdir -p "$pkgdir/opt/am2rlauncher/"
