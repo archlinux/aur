@@ -18,16 +18,17 @@ source=("http://cade.datamax.bg/vfu/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('f675abdeb6e1b933db956ef6a78c0a1abd0f87166981158fef3146f17a256c37')
 
 build() {
-  cd "$srcdir/vfu-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make CCDEF="$CFLAGS -D_FILE_OFFSET_BITS=64"
   ./build.docs
 }
 
 package() {
-  cd "$srcdir/vfu-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 vfu/vfu -t "$pkgdir/usr/bin"
-  install -Dm644 vfu.1 -t "$pkgdir/usr/share/man/man1"
+  gzip vfu.1
+  install -Dm644 vfu.1.gz -t "$pkgdir/usr/share/man/man1"
   install -Dm644 vfu.conf -t "$pkgdir/etc"
   install rx/rx_* "$pkgdir/usr/bin/"
 }
