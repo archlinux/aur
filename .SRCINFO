@@ -1,7 +1,7 @@
 pkgbase = katrain
 	pkgdesc = A tool for analyzing and playing go with AI feedback from KataGo.
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanderland/katrain
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = katrain
 	depends = python-pygments
 	depends = python-requests
 	depends = python-urllib3
+	depends = libzip
 	source = https://github.com/sanderland/katrain/archive/1.9.2.tar.gz
 	sha256sums = c685a16d65819e19ca9dc73ff81fbdf0c95698306f699a1539fb941a279678c6
 
