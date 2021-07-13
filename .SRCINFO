@@ -1,7 +1,7 @@
 pkgbase = mynotex
 	pkgdesc = A free note-taking, document file and activity manager for GNU/Linux
 	pkgver = 1.4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sites.google.com/site/mynotex
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,5 @@ pkgbase = mynotex
 	depends = sqlite3
 	depends = gtk2
 	optdepends = gnupg: for notes encryption
-	source_i686 = https://sites.google.com/site/mynotex/files/mynotex_1.4.1.0_i386.deb
-	sha256sums_i686 = 7a2b049d166609bec364e34ddf9899ff218c2fea410014f0af78472ee0fb4b90
-	source_x86_64 = https://sites.google.com/site/mynotex/files/mynotex_1.4.1.0_amd64.deb
-	sha256sums_x86_64 = 0026f7182fd0f9c38b6c220a3ea82642d93241f78ba33360f0d66270bf9f8673
 
 pkgname = mynotex
-
