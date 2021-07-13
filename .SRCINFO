@@ -1,6 +1,6 @@
 pkgbase = spookyghost-git
 	pkgdesc = A procedural sprite animation tool made with the nCine
-	pkgver = r58.afb50fd
+	pkgver = r61.9dbecea
 	pkgrel = 1
 	url = https://encelo.itch.io/spookyghost
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = spookyghost-git
 	md5sums = SKIP
 
 pkgname = spookyghost-git
-

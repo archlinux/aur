@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=spookyghost-git
-pkgver=r58.afb50fd
+pkgver=r61.9dbecea
 pkgrel=1
 pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/SpookyGhost"
   ( set -o pipefail
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
@@ -46,11 +46,11 @@ build() {
   cmake ../SpookyGhost\
         -DCMAKE_BUILD_TYPE=Release\
         -DnCine_DIR=$PWD/../nCine-build\
-        -DPACKAGE_BUILD_ANDROID=OFF\
-        -DPACKAGE_STRIP_BINARIES=ON\
-        -DPACKAGE_DEFAULT_DATA_DIR=/usr/share/spookyghost/data\
+        -DNCPROJECT_BUILD_ANDROID=OFF\
+        -DNCPROJECT_STRIP_BINARIES=ON\
+        -DNCPROJECT_DEFAULT_DATA_DIR=/usr/share/spookyghost/data\
         -DCMAKE_INSTALL_PREFIX=/usr\
-		-DCUSTOM_ITCHIO_BUILD=OFF
+        -DCUSTOM_ITCHIO_BUILD=OFF
   make
 }
 
