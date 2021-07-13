@@ -1,0 +1,14 @@
+pkgbase = plasma5-wallpapers-wallpaper-engine-git
+	pkgdesc = A simple kde wallpaper plugin integrating wallpaper engine
+	pkgver = r238.8a53a6a
+	pkgrel = 1
+	url = https://github.com/catsout/wallpaper-engine-kde-plugin
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	depends = mpv
+	depends = qt5-declarative
+	source = plasma5-wallpapers-wallpaper-engine-git::git+https://github.com/catsout/wallpaper-engine-kde-plugin.git
+	md5sums = SKIP
+
+pkgname = plasma5-wallpapers-wallpaper-engine-git
