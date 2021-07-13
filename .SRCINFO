@@ -1,0 +1,15 @@
+pkgbase = backdown-git
+	pkgdesc = A deduplicator
+	pkgver = r12.52507b8
+	pkgrel = 1
+	url = https://github.com/Canop/backdown
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	options = !lto
+	source = backdown-git::git+https://github.com/Canop/backdown.git
+	sha512sums = SKIP
+
+pkgname = backdown-git
