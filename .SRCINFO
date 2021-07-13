@@ -1,7 +1,7 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
 	pkgver = 6.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sensu.io
 	install = sensu-agent.install
 	arch = x86_64
