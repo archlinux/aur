@@ -1,6 +1,6 @@
 pkgbase = vice-sdl2-svn
 	pkgdesc = The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version
-	pkgver = r40336
+	pkgver = r40346
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
@@ -16,6 +16,8 @@ pkgbase = vice-sdl2-svn
 	makedepends = xorg-bdftopcf
 	makedepends = xorg-mkfontdir
 	makedepends = python
+	makedepends = clang
+	makedepends = llvm
 	depends = alsa-lib
 	depends = libpulse
 	depends = sdl2_image
