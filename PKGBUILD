@@ -1,33 +1,30 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Ninni <soelder@hotmail.com.com>
 pkgname=humble-lumpia-git
 pkgver=1.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="A script for managing installations of Glorious Eggroll's custom proton build "
-arch=('any')
+arch=("any")
 url="https://github.com/chuck-flowers/humble-lumpia"
-license=('GPL3')
-groups=()
-depends=("sh")
+license=("GPL3")
+depends=("sh" "curl" "jq" "python" "vulkan-icd-loader")
 makedepends=("git" "make")
-checkdepends=()
-optdepends=()
-provides=()
+optdepends=("kdialog: KDE splash dialog support"
+            "zenity: GNOME splash dialog support"
+            "python-kivy: splash dialog support (big picture mode)"
+            "steam: use proton with steam like intended"
+            "lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes"
+            "vulkan-driver: actually have a vulkan driver installed"
+            "linux-fsync: a kernel with futex-wait-multiple support"
+            "linux-zen: a kernel with futex-wait-multiple support"
+            "linux-pf: a kernel with futex-wait-multiple support"
+            "winetricks: protonfixes backend - highly recommended"
+            "wine: support for 32bit prefixes"
+            "xboxdrv: gamepad driver service"
+            "python-cef: generic splash dialog support")
 conflicts=("humble-lumpia")
 replaces=("humble-lumpia")
-backup=()
-options=()
-install=
-changelog=
 source=("git+https://github.com/chuck-flowers/humble-lumpia.git")
-noextract=()
 md5sums=("SKIP")
-validpgpkeys=()
 
 package() {
 	cd "humble-lumpia"
