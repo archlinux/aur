@@ -55,8 +55,7 @@ package() {
   install -vDm 644 sounds/pan-chimes/* -t "${pkgdir}/usr/share/sounds/${pkgname}/pan-chimes"
   install -vDm 644 sounds/prompts/* -t "${pkgdir}/usr/share/sounds/${pkgname}/prompts"
   install -vDm 644 sounds/system/* -t "${pkgdir}/usr/share/sounds/${pkgname}/system"
-  install -vDm 644 sounds/{emacspea
-  k.mp3,highbells.au} -t "${pkgdir}/usr/share/sounds/${pkgname}"
+  install -vDm 644 sounds/{emacspeak.mp3,highbells.au} -t "${pkgdir}/usr/share/sounds/${pkgname}"
 
   # speech server
   install -vDm 755 servers/tts-lib.tcl -t "${pkgdir}/usr/share/emacs/site-lisp/${pkgname}/servers"
