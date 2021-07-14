@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2034
 pkgname='pacmc'
-pkgver='0.2.1'
+pkgver='0.2.2'
 pkgrel=1
 pkgdesc='An easy to use package manager for Fabric Minecraft mods.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('java-runtime=11')
 optdepends=('minecraft-launcher: The game launcher, managing the .minecraft folder')
 source=("https://github.com/bluefireoly/pacmc/releases/download/${pkgver}/pacmc-${pkgver}.tar")
-sha256sums=('f63fc515e132c12f1c5f7919bc480c9c7726b42ba6da98c88c9ede64d2afa51e')
+sha256sums=('8ba2e51682e2e76962235c390d80858fef78b91ce775f83a4a4bf1a805d7bd58')
 
 build() {
   # shellcheck disable=SC2154
