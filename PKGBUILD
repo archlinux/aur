@@ -71,5 +71,5 @@ package() {
 		install -Dm644 ui/icons/xemu_${size}x${size}.png "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/$_pkgname.png
 	done
 	install -Dm644 ui/icons/xemu.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg
-	install -Dm644 XEMU_LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE.txt
+	install -Dm644 XEMU_LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
