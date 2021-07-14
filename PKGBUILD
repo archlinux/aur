@@ -18,8 +18,8 @@ _gamepkg="arx_demo_english.zip"
 
 source=("https://downloads.ag.ru/demos/5122/$_gamepkg"
         "https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data")
-sha512sums=('0cbf0d6da1a373ed29edc49c65ed431117c868ec7bcab04166abd59f5d799460faec506baf191c83fa7c61372888009abb260d8a50e28507a5ec8ab7913a9ad7'
-            'c3b8c2571d204f6a99b053aea3fc6b1db05d89429a40d45bad173b72fa303f64b85d73ef1730f4d229138fb0c9b75c85203c4bebc4b145ec847e9de83a82cbaf')
+sha1sums=('16a78e498475eefb46c0db28efc4f211f198cf79'
+          '0474a514b9c650ea1b09c2dc7e424988d9a2c188')
 
 package() {
     chmod +x arx-install-data
