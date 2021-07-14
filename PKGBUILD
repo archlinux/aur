@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=python-dbutils
-pkgver=1.3
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Suite of Python modules allowing to connect in a safe and efficient way between a threaded Python application and a database"
 url="https://cito.github.io/w4py/"
@@ -10,7 +10,7 @@ depends=('python')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/D/DBUtils/DBUtils-$pkgver.tar.gz"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/Cito/DBUtils/Release-1_2/LICENSE")
-sha256sums=('0f7348ac0ea6c6830976628209dd3de3d76ac3e7f770c9225920866b50a70422'
+sha256sums=('4edbdb2fc17e5d5df8f6b1a29a4286145eed77705230e36d72ff2a4a9aff88b1'
             '09281f86418aa02de8683d9a2b82ec3cdf8d6ff182b612ee874a003c683b6ee1')
 
 prepare() {
