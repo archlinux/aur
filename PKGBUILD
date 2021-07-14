@@ -17,7 +17,7 @@ stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/
 license=('MIT')
 
 # Version of NodeJS that will be used to create the build. Sinds 1.58.0, Codium requires a version >=14 and <=17.
-_nodejs='14.17.3'
+_nodejs='14.16.0'
 
 depends=(
     'fontconfig'
