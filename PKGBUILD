@@ -98,7 +98,6 @@ source=(
   "${_patchsource}/bfq-patches-v16/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v7/0001-block-patches.patch"
   "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
-  "${_patchsource}/le9db_patches/0001-le9db1-5.10.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
@@ -128,7 +127,6 @@ b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984
         '7a8d7564b2aa17bbdbc9aa00d73287c353f6f1370f3670f511a4876674704aab692f84618bd324a92ebab7e4a70ce91c2905dedc8ccb8ed7050bd04f531340da'
         'f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc'
         '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
-        'f836917eac6506690ae897a2b338fedadc0814713bf4796ad90809d1de4bbc92e3dd38ab1299b96cf9bc763f0fff56137f6d43a98ef7aa4c1b6b72d6c094c3ce'
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
@@ -192,6 +190,14 @@ prepare() {
     scripts/config --enable CONFIG_TCP_CONG_BBR2
     scripts/config --enable CONFIG_DEFAULT_BBR2
     scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+
+    echo "Enable Anbox"
+    scripts/config --module  CONFIG_ASHMEM
+    scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
+    scripts/config --enable  CONFIG_ANDROID
+    scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
+    scripts/config --enable  CONFIG_ANDROID_BINDERFS
+    scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
 
     echo "Disabling Deadline I/O scheduler and Kyber I/O scheduler"
     scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
