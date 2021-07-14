@@ -38,7 +38,7 @@ check() {
 
 package() {
 	cd "${pkgname%-git}"
-	python setup.py install --root="${pkgdir}/" --optimize=1
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 	install -vDm 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 	install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
 	install -vDm 644 docs/wormhole.1 -t "${pkgdir}/usr/share/man/man1"
