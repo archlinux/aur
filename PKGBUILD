@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=retroarch-joypad-autoconfig
 pkgname=$_pkgname-git
 pkgver=1.9.1.r2.g9c27a99
@@ -25,5 +24,5 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }

@@ -14,4 +14,3 @@ pkgbase = retroarch-joypad-autoconfig-git
 	md5sums = SKIP
 
 pkgname = retroarch-joypad-autoconfig-git
-
