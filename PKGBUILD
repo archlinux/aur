@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/lukesmithxyz/$pkgname"
 license=('GPL3')
 
-depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl')
+depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl' 'libnotify' 'perl')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
