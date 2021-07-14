@@ -1,0 +1,30 @@
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+_pkgname=xbyak
+pkgname=$_pkgname-git
+pkgver=5.993.r2.g2fb843c
+pkgrel=1
+pkgdesc="C++ header-only JIT assembler library"
+arch=('any')
+url="https://github.com/herumi/xbyak"
+license=('BSD')
+makedepends=('cmake' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
+
+pkgver() {
+	cd $_pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cmake -S $_pkgname -B build -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
+}
+
+package() {
+	# shellcheck disable=SC2154
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/COPYRIGHT
+}
