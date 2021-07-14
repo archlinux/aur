@@ -1,6 +1,6 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 pkgname=dnsjit
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -12,14 +12,14 @@ depends=(
     'lmdb'
     'gnutls'
     'libck'
-    'libuv'
-    'libnghttp2'
+    'lz4'
+    'zstd'
     )
 makedepends=(
     'autoconf'
 )
 source=("https://github.com/DNS-OARC/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4cd59e3034da484f23392e701e01255175bcd119a6f61b52be3a3950e34d9705')
+sha256sums=('ecac17974d104c17d1df775c2b548109ad7e53d05fbc2acd823fa43fce330d51')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
