@@ -14,7 +14,7 @@ depends=(
     'python-matplotlib'
     )
 optdepends=(
-    'tshark: needed by some PCAP pre-processing scripts'
+    'wireshark-cli: needed by some PCAP pre-processing scripts'
 )
 makedepends=(
     'autoconf'
