@@ -1,23 +1,18 @@
-From 59db769ad69e080c512b3890e1d27d6120f4a1a4 Mon Sep 17 00:00:00 2001
+From 4af44fbc97bc51eb742f0d6555bde23cf580d4e3 Mon Sep 17 00:00:00 2001
 From: graysky <graysky@archlinux.us>
-Date: Mon, 12 Apr 2021 07:09:27 -0400
+Date: Sun, 6 Jun 2021 09:41:36 -0400
 Subject: [PATCH] more uarches for kernel 5.8+
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-
-WARNING
-This patch works with all gcc versions 9.0+ and with kernel version 5.8+ and should
-NOT be applied when compiling on older versions of gcc due to key name changes
-of the march flags introduced with the version 4.9 release of gcc.[1]
 
 FEATURES
 This patch adds additional CPU options to the Linux kernel accessible under:
  Processor type and features  --->
   Processor family --->
 
-With the release of gcc 11.0, several generic 64-bit levels are offered which
-are good for supported Intel or AMD CPUs:
+With the release of gcc 11.1 and clang 12.0, several generic 64-bit levels are
+offered which are good for supported Intel or AMD CPUs:
 • x86-64-v2
 • x86-64-v3
 • x86-64-v4
@@ -26,7 +21,7 @@ Users of glibc 2.33 and above can see which level is supported by current
 hardware by running:
   /lib/ld-linux-x86-64.so.2 --help | grep supported
 
-Alternatively, compare the flags from /proc/cpuinfo to this list.[2]
+Alternatively, compare the flags from /proc/cpuinfo to this list.[1]
 
 CPU-specific microarchitectures include:
 • AMD Improved K8-family
@@ -62,13 +57,15 @@ CPU-specific microarchitectures include:
 • Intel 12th Gen i3/i5/i7/i9-family (Alder Lake)‡
 
 Notes: If not otherwise noted, gcc >=9.1 is required for support.
-       *Requires gcc >=10.1  †Required gcc >=10.3  ‡Required gcc >=11.0
+       *Requires gcc >=10.1 or clang >=10.0
+       †Required gcc >=10.3 or clang >=12.0
+       ‡Required gcc >=11.1 or clang >=12.0
 
 It also offers to compile passing the 'native' option which, "selects the CPU
 to generate code for at compilation time by determining the processor type of
 the compiling machine. Using -march=native enables all instruction subsets
 supported by the local machine and will produce code optimized for the local
-machine under the constraints of the selected instruction set."[3]
+machine under the constraints of the selected instruction set."[2]
 
 Users of Intel CPUs should select the 'Intel-Native' option and users of AMD
 CPUs should select the 'AMD-Native' option.
@@ -76,9 +73,9 @@ CPUs should select the 'AMD-Native' option.
 MINOR NOTES RELATING TO INTEL ATOM PROCESSORS
 This patch also changes -march=atom to -march=bonnell in accordance with the
 gcc v4.9 changes. Upstream is using the deprecated -match=atom flags when I
-believe it should use the newer -march=bonnell flag for atom processors.[4]
+believe it should use the newer -march=bonnell flag for atom processors.[3]
 
-It is not recommended to compile on Atom-CPUs with the 'native' option.[5] The
+It is not recommended to compile on Atom-CPUs with the 'native' option.[4] The
 recommendation is to use the 'atom' option instead.
 
 BENEFITS
@@ -90,18 +87,19 @@ https://github.com/graysky2/kernel_gcc_patch
 
 REQUIREMENTS
 linux version >=5.8
-gcc version >=9.0
+gcc version >=9.0 or clang version >=9.0
 
 ACKNOWLEDGMENTS
-This patch builds on the seminal work by Jeroen.[6]
+This patch builds on the seminal work by Jeroen.[5]
 
 REFERENCES
-1.  https://gcc.gnu.org/gcc-4.9/changes.html
-2.  https://gitlab.com/x86-psABIs/x86-64-ABI/-/commit/77566eb03bc6a326811cb7e9
-3.  https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html#index-x86-Options
-4.  https://bugzilla.kernel.org/show_bug.cgi?id=77461
-5.  https://github.com/graysky2/kernel_gcc_patch/issues/15
-6.  http://www.linuxforge.net/docs/linux/linux-gcc.php
+1.  https://gitlab.com/x86-psABIs/x86-64-ABI/-/commit/77566eb03bc6a326811cb7e9
+2.  https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html#index-x86-Options
+3.  https://bugzilla.kernel.org/show_bug.cgi?id=77461
+4.  https://github.com/graysky2/kernel_gcc_patch/issues/15
+5.  http://www.linuxforge.net/docs/linux/linux-gcc.php
+
+Signed-off-by: graysky <graysky@archlinux.us>
 ---
  arch/x86/Kconfig.cpu            | 332 ++++++++++++++++++++++++++++++--
  arch/x86/Makefile               |  47 ++++-
@@ -109,7 +107,7 @@ REFERENCES
  3 files changed, 428 insertions(+), 17 deletions(-)
 
 diff --git a/arch/x86/Kconfig.cpu b/arch/x86/Kconfig.cpu
-index 814fe0d349b0..872b9cf598e3 100644
+index 814fe0d349b0..8acf6519d279 100644
 --- a/arch/x86/Kconfig.cpu
 +++ b/arch/x86/Kconfig.cpu
 @@ -157,7 +157,7 @@ config MPENTIUM4
@@ -221,7 +219,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MZEN3
 +	bool "AMD Zen 3"
-+	depends on GCC_VERSION > 100300
++	depends on ( CC_IS_GCC && GCC_VERSION >= 100300 ) || ( CC_IS_CLANG && CLANG_VERSION >= 120000 )
 +	help
 +	  Select this for AMD Family 19h Zen 3 processors.
 +
@@ -380,7 +378,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MCOOPERLAKE
 +	bool "Intel Cooper Lake"
-+	depends on GCC_VERSION > 100100
++	depends on ( CC_IS_GCC && GCC_VERSION > 100100 ) || ( CC_IS_CLANG && CLANG_VERSION >= 100000 )
 +	select X86_P6_NOP
 +	help
 +
@@ -390,7 +388,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MTIGERLAKE
 +	bool "Intel Tiger Lake"
-+	depends on GCC_VERSION > 100100
++	depends on  ( CC_IS_GCC && GCC_VERSION > 100100 ) || ( CC_IS_CLANG && CLANG_VERSION >= 100000 )
 +	select X86_P6_NOP
 +	help
 +
@@ -400,7 +398,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MSAPPHIRERAPIDS
 +	bool "Intel Sapphire Rapids"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && CLANG_VERSION >= 120000 )
 +	select X86_P6_NOP
 +	help
 +
@@ -410,7 +408,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MROCKETLAKE
 +	bool "Intel Rocket Lake"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && CLANG_VERSION >= 120000 )
 +	select X86_P6_NOP
 +	help
 +
@@ -420,7 +418,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config MALDERLAKE
 +	bool "Intel Alder Lake"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && CLANG_VERSION >= 120000 )
 +	select X86_P6_NOP
 +	help
 +
@@ -437,7 +435,7 @@ index 814fe0d349b0..872b9cf598e3 100644
  
 +config GENERIC_CPU2
 +	bool "Generic-x86-64-v2"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && LANG_VERSION >= 120000 )
 +	depends on X86_64
 +	help
 +	  Generic x86-64 CPU.
@@ -445,7 +443,7 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config GENERIC_CPU3
 +	bool "Generic-x86-64-v3"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && LANG_VERSION >= 120000 )
 +	depends on X86_64
 +	help
 +	  Generic x86-64-v3 CPU with v3 instructions.
@@ -453,27 +451,27 @@ index 814fe0d349b0..872b9cf598e3 100644
 +
 +config GENERIC_CPU4
 +	bool "Generic-x86-64-v4"
-+	depends on GCC_VERSION > 110000
++	depends on ( CC_IS_GCC && GCC_VERSION > 110000 ) || ( CC_IS_CLANG && LANG_VERSION >= 120000 )
 +	depends on X86_64
 +	help
 +	  Generic x86-64 CPU with v4 instructions.
 +	  Run equally well on all x86-64 CPUs with min support of x86-64-v4.
 +
 +config MNATIVE_INTEL
-+	bool "Intel-Native optimizations autodetected by GCC"
++	bool "Intel-Native optimizations autodetected by the compiler"
 +	help
 +
-+	  GCC 4.2 and above support -march=native, which automatically detects
++	  Clang 3.8, GCC 4.2 and above support -march=native, which automatically detects
 +	  the optimum settings to use based on your processor. Do NOT use this
 +	  for AMD CPUs.  Intel Only!
 +
 +	  Enables -march=native
 +
 +config MNATIVE_AMD
-+	bool "AMD-Native optimizations autodetected by GCC"
++	bool "AMD-Native optimizations autodetected by the compiler"
 +	help
 +
-+	  GCC 4.2 and above support -march=native, which automatically detects
++	  Clang 3.8, GCC 4.2 and above support -march=native, which automatically detects
 +	  the optimum settings to use based on your processor. Do NOT use this
 +	  for Intel CPUs.  AMD Only!
 +
@@ -538,10 +536,10 @@ index 814fe0d349b0..872b9cf598e3 100644
  	default "4"
  
 diff --git a/arch/x86/Makefile b/arch/x86/Makefile
-index 9a85eae37b17..facf9a278fe3 100644
+index 78faf9c7e3ae..ee0cd507af8b 100644
 --- a/arch/x86/Makefile
 +++ b/arch/x86/Makefile
-@@ -113,11 +113,48 @@ else
+@@ -114,11 +114,48 @@ else
          # FIXME - should be integrated in Makefile.cpu (Makefile_32.cpu)
          cflags-$(CONFIG_MK8) += $(call cc-option,-march=k8)
          cflags-$(CONFIG_MPSC) += $(call cc-option,-march=nocona)
