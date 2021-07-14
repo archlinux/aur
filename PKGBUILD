@@ -1,7 +1,8 @@
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=whatsappqt
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Unofficial WhatsApp Web desktop client'
 arch=('x86_64')
@@ -9,7 +10,7 @@ url='https://gitlab.com/bit3/whatsappqt'
 license=('MIT')
 depends=('qt5-webengine')
 source=("https://gitlab.com/bit3/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('67b108bbdf00b2d4120575a570ce31cc8e03b628c8986bd5f033b90edea089be')
+sha256sums=('272dc5bc67252ebfe0fae2fbd09b10afd9045c10922c3c81580480160c72f3cd')
 
 build() {
   cd $pkgname-v$pkgver
