@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.0.354.0"
+pkgver="9.1.355.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('d27c0365c2c78d39a7d48b0ece78c2cd')
+md5sums=('340d4ddb870403fa0cc6a208f3ba1f22')
 
 prepare()
 {
@@ -48,6 +48,7 @@ package()
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
  install -Dm644 "$srcdir/FID_PPWorkerX64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFX.ProcessPool.Worker.x64.exe"
+ install -Dm644 "$srcdir/FID_AzureRMS64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/AzureRMS.pvp"
  install -Dm644 "$srcdir/FID_Bookmarks64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/Bookmarks.pvp"
  install -Dm644 "$srcdir/FID_Box64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/BoxFileSys.pvp"
  install -Dm644 "$srcdir/FID_Color64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/ColorConvert.pvp"
@@ -60,6 +61,10 @@ package()
  install -Dm644 "$srcdir/FID_KeybHook64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FowpKbd64.dll"
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
  install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MarkdownPlugin.pvp"
+ install -Dm644 "$srcdir/FID_ClientTelemetry64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_ClientTelemetry.dll"
+ install -Dm644 "$srcdir/FID_MipCore64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_core.dll"
+ install -Dm644 "$srcdir/FID_ProtectionSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_protection_sdk.dll"
+ install -Dm644 "$srcdir/FID_UpeSDK64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/mip_upe_sdk.dll"
  install -Dm644 "$srcdir/FID_OCR64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OCRPlugin.pvp"
  install -Dm644 "$srcdir/FID_OD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/OneDrive.pvp"
  install -Dm644 "$srcdir/FID_PDFA64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/PDFAPlugin.pvp"
@@ -71,7 +76,6 @@ package()
  install -Dm644 "$srcdir/FID_U3D64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/U3DPlugin.pvp"
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/${_programname}/Resources.dat"
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/ENU/DynamicDate.pdf"
- install -Dm644 "$srcdir/FID_TwainDSM64" "$pkgdir${_installdir}/$pkgname/${_programname}/x64/twaindsm.dll"
  install -Dm644 "$srcdir/FID_SD_OXT_cs" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-cs.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_de" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-de.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_en" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-en.oxt"
