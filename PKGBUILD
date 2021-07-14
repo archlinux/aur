@@ -1,7 +1,7 @@
 # Maintainer: shimunn <shimun@shimun.net>
 pkgname=fido2luks
 pkgver=0.2.19
-pkgrel=2
+pkgrel=1
 makedepends=('rust' 'cargo' 'cryptsetup' 'clang')
 depends=('cryptsetup')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
