@@ -2,7 +2,6 @@
 # Contributor: prettyvanilla <prettyvanilla@posteo.at>
 # Contributor: Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor: almostalive <almostalive2003 at gmail dot com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-prboom
 pkgname=$_pkgname-git
 pkgver=r666.2ab3b4a
