@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-mesen
 pkgname=$_pkgname-git
 pkgver=0.9.9.r127.gcec4911d
