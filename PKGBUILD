@@ -2,7 +2,7 @@
 
 pkgname=sunshine
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/loki-47-6F-64/sunshine"
 arch=('x86_64' 'i686')
@@ -42,8 +42,7 @@ package() {
     install -Dvm644 "$pkgname/assets/sunshine.conf" "$pkgdir/$_assets_path/sunshine.conf"
     install -Dvm644 "$pkgname/assets/apps_linux.json" "$pkgdir/$_assets_path/apps_linux.json"
 
-    find "$pkgname/assets/web" -type f -print0 | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/web/{}"
-    find "$pkgname/assets/shaders/opengl" -type f -print0 | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/shaders/opengl/{}"
+    (cd "$_pkgname/assets" ; find web shaders/opengl -type f -print0) | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/{}"
 
     install -Dvm755 build/sunshine "$pkgdir/usr/bin/sunshine"
     install -Dvm644 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
