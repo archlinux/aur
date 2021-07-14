@@ -18,7 +18,7 @@ CHANGELOG=$(xq -r '.changelog.ul[0].li' <(cat <<< "<changelog>`jq -r 'first(.cha
 
 # Insert latest version into PKGBUILD
 sed -i \
-	-e "s/^_pkgver_major=.*/pkgver=${VER%%.*}/" \
+	-e "s/^_pkgver_major=.*/_pkgver_major=${VER%%.*}/" \
 	-e "s/^pkgver=.*/pkgver=${VER}/" \
 	-e 's/^pkgrel=.*/pkgrel=1/' \
 	-e "s/^_bundle_file=.*/_bundle_file=${bundle}/" \
