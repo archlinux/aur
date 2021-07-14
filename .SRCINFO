@@ -28,6 +28,6 @@ pkgbase = clash-premium-tun
 	source = config.yaml
 	sha256sums = SKIP
 	sha256sums = 2f6d81b350048c71fc142ea743ee4463663170638286e49d71e1c7b930c2d5b4
-	sha256sums = 267f63b7b35ff59c0a183449d5a4c1bc5e5d3637f9a92389e60cd098bfeb5d32
+	sha256sums = 1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0
 
 pkgname = clash-premium-tun
