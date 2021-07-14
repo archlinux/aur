@@ -1,7 +1,7 @@
 pkgbase = sniprun
 	pkgdesc = A neovim plugin to independently run snippets of code
 	pkgver = 0.5.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/michaelb/sniprun
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,7 @@ pkgbase = sniprun
 pkgname = sniprun
 	pkgdesc = Compiled binary core for neovim-sniprun
 	depends = gcc-libs
+	replaces = sniprun-legacy
 
 pkgname = neovim-sniprun
 	install = neovim-sniprun.install
@@ -35,3 +36,4 @@ pkgname = neovim-sniprun
 	optdepends = ruby: Ruby snippets support
 	optdepends = rust: Rust snippets support
 	optdepends = scala: Scala snippets support
+	replaces = neovim-sniprun-legacy

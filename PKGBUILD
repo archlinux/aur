@@ -3,7 +3,7 @@
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
 pkgver=0.5.9
-pkgrel=3
+pkgrel=4
 pkgdesc='A neovim plugin to independently run snippets of code'
 arch=('x86_64')
 url="https://github.com/michaelb/sniprun"
@@ -26,6 +26,7 @@ build() {
 package_sniprun() {
   pkgdesc='Compiled binary core for neovim-sniprun'
   depends=('gcc-libs')
+  replaces=('sniprun-legacy')
 
   cd "$pkgbase-$pkgver"
   install -Dm 755 target/release/sniprun -t "$pkgdir/usr/bin/"
@@ -36,6 +37,7 @@ package_sniprun() {
 package_neovim-sniprun()  {
   arch=('any')
   depends=('neovim>=0.5.0' "sniprun=$pkgver")
+  replaces=('neovim-sniprun-legacy')
   optdepends=('bash: Bash snippets support'
               'coffeescript: CoffeeScript snippets support'
               'gcc: C/C++ snippets support'
