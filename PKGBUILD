@@ -1,12 +1,13 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Charles L <charliehogger31@gmail.com>
+# Contributor: Ariadna Vigo
 
 pkgname=minitimer
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64' 'aarch64')
-url='https://git.sr.ht/~emvigo/minitimer'
+url='https://sr.ht/~arivigo/minitimer'
 license=('APACHE')
 depends=('glibc')
 source=("https://git.sr.ht/~arivigo/minitimer/archive/${pkgver}.tar.gz")

@@ -1,8 +1,8 @@
 pkgbase = minitimer
 	pkgdesc = Mini Timer - A timer in your terminal
 	pkgver = 4.1.0
-	pkgrel = 1
-	url = https://git.sr.ht/~emvigo/minitimer
+	pkgrel = 2
+	url = https://sr.ht/~arivigo/minitimer
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
