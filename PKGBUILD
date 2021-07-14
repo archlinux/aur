@@ -1,9 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-genesis-plus-gx-wide
 pkgname=$_pkgname-git
 pkgver=r1539.73c298b
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega CD/Game Gear/Master System/Mega Drive/SG-1000 core"
 arch=('x86_64')
 url="https://github.com/libretro/Genesis-Plus-GX-Wide"
@@ -29,5 +28,5 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro genesis_plus_gx_wide_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname LICENSE.txt
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE.txt
 }

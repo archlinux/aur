@@ -1,7 +1,7 @@
 pkgbase = libretro-genesis-plus-gx-wide-git
 	pkgdesc = Sega CD/Game Gear/Master System/Mega Drive/SG-1000 core
 	pkgver = r1539.73c298b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libretro/Genesis-Plus-GX-Wide
 	arch = x86_64
 	groups = libretro
