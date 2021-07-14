@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-dosbox-pure
 pkgname=$_pkgname-git
 pkgver=0.13.r8.gb97c9a6
