@@ -1,11 +1,10 @@
 pkgbase = diodon-git
 	pkgdesc = GTK+ clipboard manager
-	pkgver = 1.10.0.r0.g3dde466
+	pkgver = 1.11.0.r3.g42f0c80
 	pkgrel = 1
 	url = https://launchpad.net/diodon
 	arch = x86_64
 	license = GPL2
-	makedepends = cmake
 	makedepends = git
 	makedepends = meson
 	makedepends = vala
@@ -17,7 +16,6 @@ pkgbase = diodon-git
 	provides = diodon
 	conflicts = diodon
 	source = diodon-git::git+https://github.com/diodon-dev/diodon.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = diodon-git
-
