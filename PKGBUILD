@@ -3,7 +3,7 @@
 
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.58.0
+pkgver=1.58.1
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,7 +14,7 @@ microsofturl='https://github.com/microsoft/vscode.git'
 license=('MIT')
 
 # Version of NodeJS that will be used to create the build. Sinds 1.58.0, Codium requires a version >=14 and <=17.
-_nodejs='14.17.3'
+_nodejs='14.16.0'
 
 depends=(
     'fontconfig'
