@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-stella
 pkgname=$_pkgname-git
 pkgver=6.5.3.r81.g7ade95c03
