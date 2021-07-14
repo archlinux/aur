@@ -3,8 +3,8 @@
 
 pkgname=mygnuhealth
 _name=MyGNUHealth
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="The GNU Health Personal Health Record (PHR)"
 arch=('any')
 url="https://www.gnuhealth.org"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python' 'python-matplotlib' 'python-requests' 'python-tinydb' 'python-bcrypt' 'pyside2' 'kirigami2')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1a77c087572a9c1e24d3b63d64ecca19f74b58aecc9ea2555c73d168e14be9b0')
+sha256sums=('28da81349f5d33fd7e9d18295ee4e9d5143ef3356a20211958dae5ac2a43877f')
 
 build() {
   cd "$_name-$pkgver"
