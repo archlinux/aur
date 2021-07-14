@@ -5,7 +5,7 @@
 
 pkgname=wolfssl
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)'
 arch=(i686 x86_64)
 license=(GPL)
@@ -61,7 +61,7 @@ build() {
 }
 
 package() {
-  make -C build install DESTDIR="$pkgdir"
+  make -C build-$pkgver install DESTDIR="$pkgdir"
   cd $pkgname-$pkgver-stable
   make install DESTDIR="$pkgdir"
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
