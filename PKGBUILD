@@ -1,6 +1,6 @@
 # Maintainer: Banned Patriot <realbannedpatriot@protonmail.com>
 # Based on the PKGBUILD created by Yannick Inizan <inizan[dot]yannick[at]gmail[dot]com>, derived from Ivan Agarkov <ivan[dot]agarkov[at]gmail[dot]com>
-
+basename=mt7610u_wifi_sta
 pkgname=mt7610u_wifi_sta-git
 pkgver=1
 pkgrel=1
@@ -18,7 +18,7 @@ source=("git+https://github.com/BannedPatriot/mt7610u_wifi_sta.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$basename"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
