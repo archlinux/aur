@@ -2,10 +2,9 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=meshroom
-#fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 fragment="#branch=develop"
 pkgname=${name}-git
-pkgver=2021.1.0.r11.ga781044c
+pkgver=2021.1.0.r93.gd312d635
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
