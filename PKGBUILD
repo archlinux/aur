@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-virtualjaguar
 pkgname=$_pkgname-git
 pkgver=r264.2069160
@@ -16,7 +15,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname

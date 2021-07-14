@@ -17,6 +17,6 @@ pkgbase = libretro-virtualjaguar-git
 	provides = libretro-virtualjaguar
 	conflicts = libretro-virtualjaguar
 	source = libretro-virtualjaguar::git+https://github.com/libretro/virtualjaguar-libretro.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = libretro-virtualjaguar-git
