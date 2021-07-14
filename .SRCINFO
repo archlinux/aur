@@ -1,0 +1,17 @@
+pkgbase = vivi-preview
+	pkgdesc = Beta client for Vivi, a wireless screen sharing solution
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://vivi.io
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = glib2
+	depends = libpulse
+	depends = libx11
+	source = vivi-preview-3.0.0.deb::https://downloads.vivi.io/test/app/3.0.0-beta7/vivi-preview.deb
+	md5sums = c3a7b4fbf881064a7ae67f61a40c5375
+
+pkgname = vivi-preview
