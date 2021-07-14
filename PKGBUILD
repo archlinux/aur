@@ -2,8 +2,6 @@
 
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
-### BUILD OPTIONS
-# Set these variables to ANYTHING that is not null to enable them
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
@@ -26,9 +24,17 @@ _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
-_mm_protect=
+_mm_protect=y
 ### Enable multigenerational LRU
 _lru_enable=y
+### Enable Linux Random Number Generator
+_lrng_enable=y
+### Enable SECURITY_FORK_BRUTE
+# WARNING Not recommended.
+# An experimental solution, still in testing phase.
+# Possible compilation and installation errors.
+# Leave it unselected.
+_fork_brute=
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -52,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=1
+_minor=2
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -79,27 +85,31 @@ source=(
   "${_patchsource}/winesync/5.13-winesync.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
-  "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
-  "${_patchsource}/block-patches/0001-block-patches.patch"
+  "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+  "${_patchsource}/block-patches-v2/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
-  "${_patchsource}/btrfs-patches/0001-btrfs-patches.patch"
+  "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
-  "${_patchsource}/lru-patches/lru_5.13.patch"
-  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
+  "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
+  "${_patchsource}/lru-patches-v2/0001-lru-patches.patch"
+#  "${_patchsource}/lru-patches/lru_5.13.patch"
+#  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
-  "${_patchsource}/security-2/hardened-patches.patch"
-  "${_patchsource}/security-2/lrng-v41.patch"
+#  "${_patchsource}/security-2/hardened-patches.patch"
+  "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
   "${_patchsource}/misc/nohzfull.patch"
   "${_patchsource}/misc/1000-tune-vm-mm-and-vfs-settings.patch"
+  "${_patchsource}/misc/0001-rcu-boost.patch"
   "${_patchsource}/misc/rcu-fixes-next.patch"
+  "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -213,6 +223,9 @@ prepare() {
           	scripts/config --enable CONFIG_UNEVICTABLE_FILE
           	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
           	scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+            scripts/config --enable CONFIG_UNEVICTABLE_ANON
+            scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+            scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
           fi
 
               ### Enable multigenerational LRU
@@ -225,6 +238,33 @@ prepare() {
           	scripts/config --enable CONFIG_LRU_GEN_ENABLED
           	scripts/config --disable CONFIG_LRU_GEN_STATS
           fi
+
+        ### Enable Linux Random Number Generator
+        if [ -n "$_lrng_enable" ]; then
+            echo "Enabling Linux Random Number Generator ..."
+            scripts/config --enable CONFIG_LRNG
+            scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+            scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+            scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+            scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+            scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+            scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+            scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+            scripts/config --disable CONFIG_LRNG_JENT
+            scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+            scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+            scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+            scripts/config --disable CONFIG_LRNG_DRBG
+            scripts/config --disable CONFIG_LRNG_TESTING_MENU
+            scripts/config --disable CONFIG_LRNG_SELFTEST
+        fi
+
+            ### Enable SECURITY_FORK_BRUTE
+        if [ -n "$_fork_brute" ]; then
+            echo "Enabling SECURITY_FORK_BRUTE..."
+            scripts/config --enable CONFIG_SECURITY_FORK_BRUTE
+            scripts/config --set-str CONFIG_LSM lockdown,yama,brute
+        fi
 
     ### Enabling ZSTD COMPRESSION ##
           echo "Set module compression to ZSTD"
@@ -244,7 +284,7 @@ prepare() {
           scripts/config --disable CONFIG_SCHED_INFO
           scripts/config --disable CONFIG_SCHEDSTATS
           scripts/config --disable CONFIG_DEBUG_KERNEL
-          scripts/config --enable CONFIG_RT_GROUP_SCHED
+          #scripts/config --enable CONFIG_RT_GROUP_SCHED
           echo "Enabling Full Tickless"
           scripts/config --disable CONFIG_HZ_PERIODIC
           scripts/config --disable CONFIG_NO_HZ_IDLE
@@ -502,7 +542,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'e1d6115db8aa6afc106494e940c5cdc0'
+         '4f36a8f2c69b725c74f137d3f183e358'
          '4c363050800064ca6cee602da9b0ce06'
          '9bb46b8ce45259c238c5233b8394d70b'
          '8fab6f0acf86d138a283c4dd044198ed'
@@ -512,22 +552,22 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '09a9e83b7b828fae46fd1a4f4cc23c28'
-         'e16eb528e701193bc8cb1facc6b27231'
-         '396c84c4a6557db27f9c3bbfa656ac3e'
+         'daeacee8fcde31908f90b89dc4b54126'
+         '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
-         '63078800040b2a9a9f19c59c4ebf5b23'
+         '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         '81b228546bcd56ff04e7f388a37e11a9'
-         '3f302dbaceea020abd40f6e9f23b75df'
-         '7aeb2c86091b9432d1fc9172d418d486'
+         '5de99ca45528a4a7869249e54eb35b6b'
+         '9c0260e17db69e024a4838c4617c9f10'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
-         '8b756f75c5600b1ea7df5e11ac738df5'
-         '20e92e9d958ca8fec6ff441bb97aa9f1'
+         'a1869abc4d1a6ec1901f34302cd09b7e'
          '9977ba0e159416108217a45438ebebb4'
          'c68e4fd9b4a55ee730a34bb39ae325ad'
          '0632f49f076c90b6d6098cad7b5a88ac'
+         '8fb9f2b248004031700a17faf1e20f10'
          'eff4bb43a8defb7ed08b9c1e403291ea'
+         '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
          'c360b8c17d778f98a54fa7cddf348566'
          'ce9beff503ee9e6ce6fd983c1bbbdd9e'
