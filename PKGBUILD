@@ -1,6 +1,6 @@
 # Maintainer: throwbly
 pkgname='cft'
-pkgver=0.0.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Quickly copy text from a file to the clipboard without opening unnecessary programs"
 arch=("any")
