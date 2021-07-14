@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=xemu
 pkgname=$_pkgname-git
 pkgver=0.5.4.r21.gf03015e20e
@@ -22,7 +21,7 @@ source=(
 	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
 	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
 )
-md5sums=(
+b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -39,8 +38,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	./scripts/gen-license.py > XEMU_LICENSE
-	git submodule init hw/xbox/nv2a/xxHash tests/fp/berkeley-softfloat-3 tests/fp/berkeley-testfloat-3 ui/imgui ui/implot ui/keycodemapdb
+	git submodule init hw/xbox/nv2a/xxHash tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
 	git config submodule.hw/xbox/nv2a/xxHash.url ../xxHash
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
@@ -48,6 +46,7 @@ prepare() {
 	git config submodule.ui/implot.url ../implot
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git submodule update
+	python scripts/gen-license.py > XEMU_LICENSE
 }
 
 build() {
