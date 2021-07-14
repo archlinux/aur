@@ -4,17 +4,17 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
-# This is the last release supporting Pulseaudio. The following PulseEffects
+# This is the last release supporting Pulseaudio. The following EasyEffects
 # releases will be based on the new Pipewire multimedia server and only fixes
 # to critical bugs will be backported to the legacy pulseaudio branch
 
 pkgname=('pulseeffects-legacy-git' 'gst-plugins-pulseeffects-legacy-git')
 pkgbase=pulseeffects-legacy-git
 pkgver=4.8.5.r1.g4ec1f83b
-pkgrel=1
+pkgrel=2
 pkgdesc='Audio Effects for Pulseaudio applications'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/wwmm/pulseeffects"
+url="https://github.com/wwmm/easyeffects"
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio' 'gstreamer' 'gst-plugin-gtk'
          'gst-plugins-bad' 'lilv' 'boost-libs' 'libsigc++' 'libsndfile'
@@ -22,16 +22,16 @@ depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio' 'gstreamer' 'gst-plugin-gtk'
 makedepends=('git' 'meson' 'boost' 'itstool' 'zam-plugins'
              'rubberband' 'rnnoise')
 checkdepends=('appstream-glib')
-source=('git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy')
+source=('git+https://github.com/wwmm/easyeffects.git#branch=pulseaudio-legacy')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/pulseeffects"
+	cd "$srcdir/easyeffects"
 	printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-	arch-meson pulseeffects build
+	arch-meson easyeffects build
 	meson compile -C build
 }
 

@@ -1,8 +1,8 @@
 pkgbase = pulseeffects-legacy-git
 	pkgdesc = Audio Effects for Pulseaudio applications
 	pkgver = 4.8.5.r1.g4ec1f83b
-	pkgrel = 1
-	url = https://github.com/wwmm/pulseeffects
+	pkgrel = 2
+	url = https://github.com/wwmm/easyeffects
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -32,7 +32,7 @@ pkgbase = pulseeffects-legacy-git
 	depends = libsamplerate
 	depends = zita-convolver
 	depends = libebur128
-	source = git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy
+	source = git+https://github.com/wwmm/easyeffects.git#branch=pulseaudio-legacy
 	sha256sums = SKIP
 
 pkgname = pulseeffects-legacy-git
