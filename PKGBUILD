@@ -1,7 +1,7 @@
 # Maintainer: Shaodong Wang <unclejimbo@qq.com>
 pkgname=cgal-headers
 _pkgname=CGAL
-pkgver=5.2.1
+pkgver=5.3
 pkgrel=1
 pkgdesc="The Computational Geometry Algorithms Library."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL')
 depends=('mpfr' 'gmp' 'boost')
 makedepends=('cmake')
 source=("https://github.com/CGAL/cgal/releases/download/v${pkgver}/${_pkgname}-${pkgver}-library.tar.xz")
-sha512sums=('93c73ca43589b24607c07458559891cbe9112f8f5020754f7b77d6bac5d7df497c474d1188fe742584bc9fa49890b4db470514a57e32b8098e88de6db500ee08')
+sha512sums=('c78d544f4a7dcad4154dd5196528352a0248fc55aa4437d53fa00a57e03c605645028926d13e64a86e589b48bd788e79be78f2263800567bb7f888d709e59d7e')
 provides=('cgal')
 conflicts=('cgal')
 
