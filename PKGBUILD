@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
   # Patch version check
-  sed -i "s/\(appindicator_dep = dependency.*\)ayatana-appindicator\(.*\)/\1appindicator\2/" $pkgname/meson.build
+  sed -i "s/\(appindicator_dep = dependency.*\)ayatana-appindicator\(.*\)',.*/\1appindicator\2', version: '>=0.0.0')/" $pkgname/meson.build
 }
 
 build() {
