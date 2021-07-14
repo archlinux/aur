@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=dhewm3
 pkgname=$_pkgname-git
 pkgver=1.5.1.r70.g61a49a2
