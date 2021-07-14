@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Moebius
+Comment=download songs from deezer
+Exec=moebius %U
+Terminal=false
+Type=Application
+Categories=Graphics;
+StartupWMClass=Moebius
