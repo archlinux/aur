@@ -15,7 +15,6 @@ pkgbase = arx-fatalis-data-gog
 	source = gog://setup_arx_fatalis_2.0.0.7.exe
 	source = https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data
 	md5sums = 5be0898e71632e46ca430d7a32d0179a
-	md5sums = 2efe17e19aafb303f71d051d46ae2b3e
+	md5sums = 95d7cd918a414e020f937a6a31c8e1ae
 
 pkgname = arx-fatalis-data-gog
-
