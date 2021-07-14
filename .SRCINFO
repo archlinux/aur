@@ -1,6 +1,6 @@
 pkgbase = mutt-wizard-git
 	pkgdesc = Simple interface to auto-configure neomutt and isync with safe passwords
-	pkgver = 3.2.1.r52.gb0452a3
+	pkgver = 3.2.1.r55.gc8bbef5
 	pkgrel = 1
 	url = https://github.com/lukesmithxyz/mutt-wizard
 	install = mutt-wizard.install
@@ -13,6 +13,8 @@ pkgbase = mutt-wizard-git
 	depends = notmuch-runtime
 	depends = pass
 	depends = curl
+	depends = libnotify
+	depends = perl
 	optdepends = imagemagick: view images inside of the neomutt TUI
 	optdepends = w3m: view HTML email and images inside of the neomutt TUI
 	optdepends = lynx: view HTML email inside of the neomutt TUI

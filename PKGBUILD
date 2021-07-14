@@ -4,7 +4,7 @@
 
 pkgname=mutt-wizard-git
 pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgver=3.2.1.r52.gb0452a3
+pkgver=3.2.1.r55.gc8bbef5
 pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
@@ -16,7 +16,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
 makedepends=('git')
-depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl')
+depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl' 'libnotify' 'perl')
 optdepends=('imagemagick: view images inside of the neomutt TUI'
             'w3m: view HTML email and images inside of the neomutt TUI'
             'lynx: view HTML email inside of the neomutt TUI'
