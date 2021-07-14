@@ -28,10 +28,9 @@ pkgbase = meshroom-git
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
 	source = git+https://github.com/alicevision/QtOIIO.git
 	source = git+https://github.com/alicevision/qmlAlembic.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = meshroom-git
-
