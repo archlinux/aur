@@ -4,11 +4,12 @@
 
 pkgname=gti
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A silly git launcher"
 arch=('x86_64')
 url="https://r-wos.org/hacks/gti"
 license=('custom')
+depends=('git')
 source=("https://github.com/rwos/gti/archive/v$pkgver.tar.gz")
 sha512sums=('7a176a36dfa73f2da1ba624bc7a721445112d7c87cf3442ba38e051c32d4d983f462f61feb797db25c575af4fde0daa402e2ebc78df81336b09c2904cdb0ca8a')
 
