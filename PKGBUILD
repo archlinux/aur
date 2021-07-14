@@ -1,10 +1,9 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-database
 pkgname=$_pkgname-git
 pkgver=1.9.5.r3.g658a2c29
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
 arch=('any')
@@ -28,5 +27,5 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }

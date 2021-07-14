@@ -1,7 +1,7 @@
 pkgbase = libretro-database-git
 	pkgdesc = RetroArch's cheatcode files, content data files, etc.
 	pkgver = 1.9.5.r3.g658a2c29
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/libretro/libretro-database
 	arch = any
