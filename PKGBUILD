@@ -1,6 +1,6 @@
 pkgname=rdo
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple doas/sudo alternative."
 arch=('x86_64')
 url=https://codeberg.org/sw1tchbl4d3/rdo
@@ -28,8 +28,5 @@ package() {
 	chmod 755 $pkgdir/usr/bin/rdo
 	chmod u+s $pkgdir/usr/bin/rdo
 	cp rdo_sample.conf $pkgdir/etc/rdo.conf
-}
-
-post_install() {
-	echo "Edit /etc/rdo.conf and add your own username to use rdo!"
+	sed "s/sw1tchbl4d3/$USER/g" $pkgdir/etc/rdo.conf
 }

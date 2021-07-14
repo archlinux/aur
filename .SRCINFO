@@ -1,7 +1,7 @@
 pkgbase = rdo
 	pkgdesc = A simple doas/sudo alternative.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sw1tchbl4d3/rdo
 	arch = x86_64
 	license = GPL3
