@@ -10,10 +10,13 @@ url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl2' 'openal' 'libepoxy')
-optdepends=('qt5-base: enable built-in crash handler (Qt5 version; recompile needed)'
+optdepends=('arx-fatalis-data-demo: game data from official freeware demo'
+            'arx-fatalis-data-gog: game data from GOG.com installer'
+            'arx-fatalis-data-copy: game data from existing Windows/Wine installation'
+            'qt5-base: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'curl: enable built-in crash handler'
-            'gdb: generate detailed crash reports'
+            'gdb: generate more detailed crash reports'
             'blender: Blender plugin to import/export Arx model files')
 makedepends=('boost' 'cmake' 'glm' 'cppunit')
 provides=('arx')
@@ -24,17 +27,12 @@ install='arx-libertatis.install'
 
 build() {
   cd $pkgname-$pkgver
-
-#  patch < "$srcdir"/arx-libertatis-1.1.2-cmake-3.5.patch
-#  patch < "$srcdir"/arx-libertatis-1.1.2-build.patch
   
   local _cmakeargs=(
           -DCMAKE_INSTALL_PREFIX=/usr
           -DCMAKE_INSTALL_LIBEXECDIR=lib/arx
           -DRUNTIME_DATADIR=""
-          -DICONDIR=/usr/share/icons/hicolor/128x128/apps
           -DCMAKE_BUILD_TYPE=Release
-          -DDEBUG=OFF
           -DUNITY_BUILD=ON
           -DINSTALL_SCRIPTS=ON
           -DBUILD_TOOLS=ON
@@ -62,8 +60,6 @@ build() {
   #   can be changed to CMAKE_BUILD_TYPE=Debug to get a debug build,
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
-  #
-  # -DUSE_X11=ON / -DUSE_WAYLAND=ON
 
 
   cmake . "${_cmakeargs[@]}"
