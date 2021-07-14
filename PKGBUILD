@@ -1,8 +1,8 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=archivy-git
-pkgver=v1.3.1.r3.gd16df87
-pkgrel=3
+pkgver=v1.3.1.r6.g6bfab4a
+pkgrel=1
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
 url="https://github.com/archivy/archivy"
@@ -15,7 +15,7 @@ depends=('python-flask' 'python-flask-wtf' 'python-wtforms'
          'python-tinydb' 'python-validators' 'python-flask-login' 'python-brotli'
          'python-click-plugins' 'python-html2text' 'python-flask-compress')
 optdepends=('elasticsearch')
-source=("git+https://github.com/archivy/archivy.git#commit=d16df878a988122213ce8b8fea1d64d9219a370c"
+source=("git+https://github.com/archivy/archivy.git#commit=6bfab4a37751be178cb09bfa76319626cbc396a8"
         "00-do-not-pin-requirements.patch")
 sha256sums=('SKIP'
             '538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4')
