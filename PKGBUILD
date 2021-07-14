@@ -1,7 +1,7 @@
 # Maintainer: second2050 <dilan.neusa [plus] aur [at] gmail [dot] com>
 
 pkgname='ttf-delugia-code'
-pkgver=2105.24.2
+pkgver=2106.17
 pkgrel=1
 pkgdesc="Cascadia Code + Nerd Fonts, with some small differences."
 arch=('any')
@@ -13,11 +13,11 @@ source=("https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugi
         "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-mono-powerline.zip"
         "https://github.com/adam7/delugia-code/releases/download/v$pkgver/delugia-powerline.zip"
         "https://raw.githubusercontent.com/adam7/delugia-code/master/LICENSE")
-sha512sums=('af822bcaeeb7158ef10fc5592218a6afd07626ddc35a3585ed204375332a2286ac09f71fbdc4633f2801dcc5f07577d2ad187ed1aea45fe7806ed8be192d536a'
-            'bf717e286528918cf95b34755ab6748ba40002661cdf6a83f6667d73079b104b229ce86fa5db92bf6a54a760d7a72c86f43cc690e528b8f896024c681b668b36'
-            '7c32ca15fdd5faa7355e03dd585404de694354809e7033d72ea73f70af51d51c287d9b40f386206c2a2eac1378d0bf3a38d1a9e085ec1d701eea11b00b4526e8'
-            '81127e64bb70ef52f5e3411a6dbb8ec05e53f653f8b624941b1f77d5a201e431008fc88d5287a77c770464bec78ca482a959e273d6e70a6dd3bfa5587f3bc6b4'
-            'e56ee0d7a536454038b1a5a25bd199d51815030a004523571cc0bbc5234ddb0ac4e2269d5dad212d9254cfc14cdc2c899a902961abea00b32e214b1b4dc51361'
+sha512sums=('1ed0db062d8de8d43256684c0b56328dd731247e956a09fad2e514d3dab37fb6e26642e933d3bac5da4fe869389bfbeea8ef2d9ec2f70044597802234b56ab95'
+            '299a7e870cb3d58a50c8f7aa6757b4fcc7f1b8505444d9453bd1d226bee9d889101c15a49111a1613169f6f5db298c0b79872476d791c50d653ef5fba9921b4d'
+            '3f1ac8d4e1a4ee06d3112c4f8e167f93b8f4c96e5402b5ea20ecc49c3b31c5ba8fb7ca36d9431920e4a1541250f898f077e284b6a2516decf2859d4e4f0def47'
+            'b58d1daef1743478915bd86a60ab214ac5582886d161296eaf255e6c42dae0726adddf85e4d6cf9d53c05193a852f3d6e066c072d3375a3f8db310702b9fe5e1'
+            'ad0c6bf188e04facc06d12a701be4bf120274e8046ff68e3374376ffd8cd55869d9ae4160a14aa335ac3b417b30702d1c3b2dbc5df72a631f4f0696051081516'
             'e8bd6f5cbf2e0c7684b41ad75a6df681fb8db4482592cae334f48efb45f70f091ebd9243df7872e60aaa0f1c7b0afce9a640879e930d71d836b7b3490ca7a7aa')
 
 package() {
