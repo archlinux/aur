@@ -1,14 +1,14 @@
 # Maintainer: Parola Marco <mark.prl.97@gmail.com>
 pkgname=xorinator
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility for simple one-time pad encryption over multiple keys"
 arch=('any')
 url="https://github.com/Sonotsugipaa/xorinator"
 license=('MIT')
-makedepends=('gcc>=11' 'cmake>=3.19')
+makedepends=('gcc>=11' 'cmake>=3.19' 'make' 'bash')
 source=("https://github.com/Sonotsugipaa/xorinator/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('3799fbb714b9c45856856073a1988474ea34ca7bcfca2b21ff4470cb305bdbe5fb2681d53802088690831321f5410da0a76759c0e28150ab67cb3f655c65f68d')
+sha512sums=('3cb1188dd6f272f1f707fe2f27b58596721c6b526174e43d991ad0fbad183821423626c39f43a7f6d8823166024b305f4cd5b645c053826f98df23f75724848e')
 
 # prepare() {
 #
@@ -21,10 +21,7 @@ build() {
 		&& echo 'Ninja' \
 		|| echo 'GNU Makefiles' )
 
-	mkdir -p build-Release
-	cd build-Release
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" .. -G "$generator"
-	cmake --build . --config Release
+	installpath="$pkgdir/usr" ./build.sh Release
 }
 
 check() {
