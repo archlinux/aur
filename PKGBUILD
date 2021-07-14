@@ -5,9 +5,9 @@
 
 _pkgname=eea
 pkgname="${_pkgname}-dkms"
-_pkgver_major=7
-pkgver=7.1.9.0
-pkgrel=7
+_pkgver_major=8
+pkgver=8.1.3.0
+pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux (DKMS)'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
@@ -32,13 +32,11 @@ _deb=${_pkgname}-${pkgver}-${_distro}.${arch}.deb
 source=("${_bundle_url}/${_bundle_file}"
   "dkms.conf"
   "dkms_postinst"
-  "linux-5.10.patch"
 )
 
-sha256sums=('59e6ad38eb3809997e2d5eb91a0195a3c321656f5e8e8c64e61a02a9ac8c922e'
+sha256sums=('932d6cef253d4c7d4d5484911889f19a51fe268201ef8a50e40ddb7f4b3741ed'
             '0ff7dd79c8811afbc95b121f322bbec4839d7ce7334e5825fa447e3f3ad129e7'
-            '29108ffcfd83fc9e1b5cdfd6b7a06143f213466a7bfa0222b07490d04900e641'
-            'fb0ce96e2586ff6d41e2d707c8738d3ecc14a5b1072bd8973c7a11af647c2f4d')
+            '29108ffcfd83fc9e1b5cdfd6b7a06143f213466a7bfa0222b07490d04900e641')
 
 _kernel_module_dir=/var/opt/eset/${_pkgname}/eventd
 

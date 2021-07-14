@@ -2,15 +2,33 @@ pre_install() {
 
 	# Script to be run before package is installed / upgraded
 
-	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
 		if [ -n "$SYSTEMD_CAT" ]; then
-			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
 		else
 			echo "$errorstr" 1>&2
 		fi
 	}
+
+	# Check for UTF-8 support
+	if ! localectl list-locales | grep -i "UTF-8\|UTF8" 1>/dev/null ; then
+		print_error 'UTF-8 support is not installed in the system. Please install a UTF-8 locale first. Aborting installation.'
+		exit 1
+	fi
+
+	# Check noexec flag for /var/opt /tmp and MODMAPDIR
+	if findmnt -n --target /var/opt | grep "noexec" 1>/dev/null && \
+		findmnt -n --target /tmp | grep "noexec" 1>/dev/null ; then
+		if [ -z "$MODMAPDIR" ] ; then
+			print_error '"/var/opt" and "/tmp" are both mounted as NOEXEC. Please disable NOEXEC flag for one of them or set variable MODMAPIDR according to documentation.'
+			exit 1
+		elif findmnt -n --target "$MODMAPDIR" | grep "noexec" 1>/dev/null ; then
+			print_error '"/var/opt", "/tmp" and directory specified in MODMAPDIR are all mounted as NOEXEC. Please disable NOEXEC flag for one of them or set variable MODMAPIDR according to documentation.'
+			exit 1
+		fi
+	fi
 
 	# Check for previous product
 	if [ -d "/opt/eset/esets/" ] || [ -f "/opt/eset/efs/etc/pkgid" ] || [ -f "/etc/opt/eset/esets/info/pkgid" ] || [ -f "/etc/opt/eset/esets/esets.cfg" ]; then
@@ -24,15 +42,33 @@ pre_upgrade() {
 
 	# Script to be run before package is installed / upgraded
 
-	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
 		if [ -n "$SYSTEMD_CAT" ]; then
-			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
 		else
 			echo "$errorstr" 1>&2
 		fi
 	}
+
+	# Check for UTF-8 support
+	if ! localectl list-locales | grep -i "UTF-8\|UTF8" 1>/dev/null ; then
+		print_error 'UTF-8 support is not installed in the system. Please install a UTF-8 locale first. Aborting installation.'
+		exit 1
+	fi
+
+	# Check noexec flag for /var/opt /tmp and MODMAPDIR
+	if findmnt -n --target /var/opt | grep "noexec" 1>/dev/null && \
+		findmnt -n --target /tmp | grep "noexec" 1>/dev/null ; then
+		if [ -z "$MODMAPDIR" ] ; then
+			print_error '"/var/opt" and "/tmp" are both mounted as NOEXEC. Please disable NOEXEC flag for one of them or set variable MODMAPIDR according to documentation.'
+			exit 1
+		elif findmnt -n --target "$MODMAPDIR" | grep "noexec" 1>/dev/null ; then
+			print_error '"/var/opt", "/tmp" and directory specified in MODMAPDIR are all mounted as NOEXEC. Please disable NOEXEC flag for one of them or set variable MODMAPIDR according to documentation.'
+			exit 1
+		fi
+	fi
 
 	# Check for previous product
 	if [ -d "/opt/eset/esets/" ] || [ -f "/opt/eset/efs/etc/pkgid" ] || [ -f "/etc/opt/eset/esets/info/pkgid" ] || [ -f "/etc/opt/eset/esets/esets.cfg" ]; then
@@ -43,10 +79,28 @@ pre_upgrade() {
 	#################################### Upgrade ####################################
 	if true; then
 		# stop and unregister old product
-		/opt/eset/eea/lib/install_scripts/unregister_service.sh
+		'/opt/eset/eea/lib/install_scripts/unregister_service.sh'
+
 		# export configuration from old product to xml
 		# this path must be into old product
-		/opt/eset/eea/lib/cfg-upgrade --export-xml /var/opt/eset/eea/confd/exported.xml
+		if [ -f '/var/opt/eset/eea/confd/settings.json' ]; then
+			confd_ug='eset-eea-confd:eset-eea-daemons'
+			sudo -u ${confd_ug%:*} -- '/opt/eset/eea/lib/cfg-upgrade' --export-xml '/var/opt/eset/eea/confd/exported.xml'
+		fi
+
+		# convert product license file name to newer format
+		if [ -f /var/opt/eset/eea/licensed/license.lf ]; then
+			mv /var/opt/eset/eea/licensed/license.lf /var/opt/eset/eea/licensed/license_113.lf
+		fi
+		if [ -f /var/opt/eset/eea/licensed/license_cfg.json ]; then
+			mv /var/opt/eset/eea/licensed/license_cfg.json /var/opt/eset/eea/licensed/license_cfg_113.json
+		fi
+
+		# remove potential upgrade package already prepared in product, as we are upgrading first
+		# because /var/opt/eset is left intact during upgrade, prepared upgrade
+		# package can be present there, which would cause "pcu update when product starts" during this
+		# upgrade
+		rm -f '/var/opt/eset/eea/updated/app/eea.bin'
 	fi
 }
 
@@ -54,17 +108,26 @@ post_install() {
 
 	# Script to be run after package is installed
 
+	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
+	print_error() {
+		errorstr="ESET Endpoint Antivirus error: $1"
+		if [ -n "$SYSTEMD_CAT" ]; then
+			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+		else
+			echo "$errorstr" 1>&2
+		fi
+	}
 
 	# import config engine configuration from old product
 	import_configuration() {
 		# import only if we have exported xml from old product
-		if [ -f /var/opt/eset/eea/confd/exported.xml ]; then
+		if [ -f '/var/opt/eset/eea/confd/exported.xml' ]; then
 			# we don't want to leave old settings.json, all information is
 			# in exported xml
-			rm -f /var/opt/eset/eea/confd/settings.json
+			rm -f '/var/opt/eset/eea/confd/settings.json'
 			confd_ug='eset-eea-confd:eset-eea-daemons'
-			sudo -u ${confd_ug%:*} /opt/eset/eea/lib/cfg-upgrade --import-xml /var/opt/eset/eea/confd/exported.xml
-			rm /var/opt/eset/eea/confd/exported.xml
+			sudo -u ${confd_ug%:*} -- '/opt/eset/eea/lib/cfg-upgrade' --import-xml '/var/opt/eset/eea/confd/exported.xml'
+			rm -f '/var/opt/eset/eea/confd/exported.xml'
 		fi
 	}
 
@@ -78,7 +141,7 @@ post_install() {
 				groupadd -r $g
 			done
 
-			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+			for ug in eset-eea-scand:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-logd:eset-eea-daemons; do
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			done
 		fi
@@ -93,8 +156,9 @@ post_install() {
 	chown -R ${logd_ug%:*} '/var/log/eset/eea'
 	chmod -R 700 '/var/log/eset/eea'
 	mkdir -p '/var/opt/eset/eea/cache/data/Logs'
+	mkdir -p '/var/opt/eset/eea/cache/data/Diagnostics'
 
-	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice'
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice' '/var/opt/eset/eea/dumps'
 	for dir in /var/opt/eset/eea/cache /var/opt/eset/eea/cache/data; do
 		chmod -R 770 "$dir"
 		chmod 1770 "$dir"
@@ -105,9 +169,12 @@ post_install() {
 	chown -R ${scand_ug%:*} /var/opt/eset/eea/cache
 
 	# extract modules from tar
-	tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
+	tar -xf /var/opt/eset/eea/lib/modules_eea.tar -C /var/opt/eset/eea/lib
 	# compile modules
-	/opt/eset/eea/bin/upd --compile-nups
+	if ! /opt/eset/eea/bin/upd --compile-nups ; then
+		print_error 'Module compilation failed.'
+	fi
+
 	# set correct user to compiled modules
 	updated_ug='eset-eea-updated:eset-eea-daemons'
 	chown -R ${updated_ug} /var/opt/eset/eea/lib
@@ -123,24 +190,38 @@ post_install() {
 	fi
 
 	# register and start service
-	/opt/eset/eea/lib/install_scripts/register_service.sh
+	'/opt/eset/eea/lib/install_scripts/register_service.sh'
+
+	# add current eula info into CE path AcceptedEulas
+	# esmc may have already modified this by policy, in that case it is locked, so
+	# ignore error here and leave esmc to manage this setting
+	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-BUS-STANDARD" --eula-version "2020.1" > /dev/null || true
 }
 
 post_upgrade() {
 
 	# Script to be run after package is installed
 
+	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
+	print_error() {
+		errorstr="ESET Endpoint Antivirus error: $1"
+		if [ -n "$SYSTEMD_CAT" ]; then
+			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+		else
+			echo "$errorstr" 1>&2
+		fi
+	}
 
 	# import config engine configuration from old product
 	import_configuration() {
 		# import only if we have exported xml from old product
-		if [ -f /var/opt/eset/eea/confd/exported.xml ]; then
+		if [ -f '/var/opt/eset/eea/confd/exported.xml' ]; then
 			# we don't want to leave old settings.json, all information is
 			# in exported xml
-			rm -f /var/opt/eset/eea/confd/settings.json
+			rm -f '/var/opt/eset/eea/confd/settings.json'
 			confd_ug='eset-eea-confd:eset-eea-daemons'
-			sudo -u ${confd_ug%:*} /opt/eset/eea/lib/cfg-upgrade --import-xml /var/opt/eset/eea/confd/exported.xml
-			rm /var/opt/eset/eea/confd/exported.xml
+			sudo -u ${confd_ug%:*} -- '/opt/eset/eea/lib/cfg-upgrade' --import-xml '/var/opt/eset/eea/confd/exported.xml'
+			rm -f '/var/opt/eset/eea/confd/exported.xml'
 		fi
 	}
 
@@ -154,7 +235,7 @@ post_upgrade() {
 				groupadd -r $g
 			done
 
-			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+			for ug in eset-eea-scand:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-logd:eset-eea-daemons; do
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			done
 		fi
@@ -169,8 +250,9 @@ post_upgrade() {
 	chown -R ${logd_ug%:*} '/var/log/eset/eea'
 	chmod -R 700 '/var/log/eset/eea'
 	mkdir -p '/var/opt/eset/eea/cache/data/Logs'
+	mkdir -p '/var/opt/eset/eea/cache/data/Diagnostics'
 
-	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice'
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice' '/var/opt/eset/eea/dumps'
 	for dir in /var/opt/eset/eea/cache /var/opt/eset/eea/cache/data; do
 		chmod -R 770 "$dir"
 		chmod 1770 "$dir"
@@ -181,9 +263,12 @@ post_upgrade() {
 	chown -R ${scand_ug%:*} /var/opt/eset/eea/cache
 
 	# extract modules from tar
-	tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
+	tar -xf /var/opt/eset/eea/lib/modules_eea.tar -C /var/opt/eset/eea/lib
 	# compile modules
-	/opt/eset/eea/bin/upd --compile-nups
+	if ! /opt/eset/eea/bin/upd --compile-nups ; then
+		print_error 'Module compilation failed.'
+	fi
+
 	# set correct user to compiled modules
 	updated_ug='eset-eea-updated:eset-eea-daemons'
 	chown -R ${updated_ug} /var/opt/eset/eea/lib
@@ -199,18 +284,23 @@ post_upgrade() {
 	fi
 
 	# register and start service
-	/opt/eset/eea/lib/install_scripts/register_service.sh
+	'/opt/eset/eea/lib/install_scripts/register_service.sh'
+
+	# add current eula info into CE path AcceptedEulas
+	# esmc may have already modified this by policy, in that case it is locked, so
+	# ignore error here and leave esmc to manage this setting
+	'/opt/eset/eea/lib/cfg' --eula-tag "EULA-BUS-STANDARD" --eula-version "2020.1" > /dev/null || true
 }
 
 pre_remove() {
 
 	# Script to be run before package is uninstalled
 
-	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
 		if [ -n "$SYSTEMD_CAT" ]; then
-			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
 		else
 			echo "$errorstr" 1>&2
 		fi
@@ -261,7 +351,7 @@ post_remove() {
 
 	#################################### Uninstall ####################################
 	# remove users and groups
-	for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+	for ug in eset-eea-scand:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-logd:eset-eea-daemons; do
 		usr=${ug%:*}
 		userdel $usr 2>/dev/null || true
 	done
