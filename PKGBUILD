@@ -3,7 +3,7 @@
 pkgname='python-taichi'
 _name=${pkgname#python-}
 _py='cp39'
-pkgver=0.7.24
+pkgver=0.7.26
 pkgrel=1
 pkgdesc="Productive & portable programming language for high-performance, sparse & differentiable computing on CPUs & GPUs"
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=('python'
   'python-pillow'
   'python-dill'
   'ncurses5-compat-libs'
+  'libx11'
 )
 optdepends=('python-autograd'
   'python-sourceinspect'
@@ -28,7 +29,7 @@ makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl")
 
-b2sums=('6f0f99ced428b080ab140bcb71d87340c917e30cfb5df916e2b0502850cc29cecdc766e618d01d7e5232995ff147d22c575a8315c7226a86f87ef0e02a7e8654')
+b2sums=('a0efba9e913013cbae8b0d8e7bac1dfe5a91abfee12be961e69cfabea614e0fbc1b124694264a561d7ecd3863964a42dc58938198420ebdbf1be3913169a4193')
 
 package() {
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-warn-script-location --no-deps ${_name//-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl
