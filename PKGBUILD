@@ -3,7 +3,7 @@
 
 pkgname=reddio
 pkgver=0.45
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line interface for Reddit written in POSIX sh"
 arch=('any')
 url="https://gitlab.com/aaronNG/reddio"
@@ -28,4 +28,6 @@ prepare() {
 package() {
 	cd "$pkgname-v$pkgver"
 	PREFIX="$pkgdir"/usr make install
+
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
