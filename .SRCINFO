@@ -1,6 +1,6 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Nintendo Switch emulator - mainline branch
-	pkgver = 0.686
+	pkgver = 0.687
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu-mainline
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = yuzu-mainline-bin
 	conflicts = yuzu-git
 	conflicts = yuzu-canary-git
 	conflicts = yuzu-mainline-git
-	source = https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-686/yuzu-linux-20210713-48bf837d2.tar.xz
+	source = https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-687/yuzu-linux-20210714-31679dc53.tar.xz
 	source = yuzu.svg
 	source = yuzu.desktop
-	sha512sums = 546f0cc5a869d7d21564d7974bd6b2013b0199bb502560dd140c1a8c125e2d051a98c755ac6046f2d0bb624366c4f57c9c3998fe1b37f830db4bcfe67a70b8b1
+	sha512sums = b5cdd2969fa3e3134da96b7c7e59af379eb9e69006f33004f677c09498f43e553ed5322c7217206308dfe156bcfd91ca7d1143315f9ceff1c94eb0f1829e7ce3
 	sha512sums = 8e9f442436bd5f89a99c902960b51a3dd124ba17119422cca1ae792da0bcf3c757862bc88cb3d229b1f6a3b8b36c73f47f2c7266a11f91ebb38265777a2ba6b3
 	sha512sums = 0b2383b87abbb80a26a7926b5b64121ec0399832aee474ebfdb9f2b001fee6cf4b90d0a8625028f05273e95e2c94f692291a98d769fac5a1f2ad598e168811a1
 
