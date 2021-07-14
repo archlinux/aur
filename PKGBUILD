@@ -1,13 +1,13 @@
 # Maintainer: Daniel Playfair Cal <Daniel.playfair.cal@gmail.com>
 # Contributor: Brad Fanella <cesura@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
+# Contributor: Davide Depau <davide@depau.eu>
 
 pkgname=mate-panel-git
 _pkgname=mate-panel
 sha256sums=('SKIP')
-sha256sums=('SKIP')
 provides=(mate-panel)
-pkgver=v1.23.1.r13.g950caf8a
+pkgver=v1.25.3.r0.gb7f96b10
 pkgrel=1
 pkgdesc="The MATE Panel"
 url="https://mate-desktop.org"
@@ -17,12 +17,12 @@ depends=('dbus-glib' 'libwnck3' 'libcanberra' 'libmateweather' 'libsm' 'mate-men
 makedepends=('mate-common' 'yelp-tools' 'intltool' 'itstool' 'gobject-introspection' 'gtk-layer-shell')
 source=("git+https://github.com/mate-desktop/mate-panel")
 groups=('mate')
-conflicts=('mate-panel-gtk3')
-replaces=('mate-panel-gtk3')
-sha256sums=('SKIP')
+conflicts=('mate-panel-gtk3' 'mate-panel')
+provides=('mate-panel-gtk3' 'mate-panel')
 
 prepare() {
-  cd "$srcdir"
+  cd "$srcdir/$_pkgname"
+  git submodule update --init --recursive
 }
 
 pkgver() {
