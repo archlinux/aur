@@ -12,7 +12,6 @@ pkgbase = arx-fatalis-data-copy
 	conflicts = arx-fatalis-data-gog
 	conflicts = arx-fatalis-data-demo
 	source = https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data
-	sha512sums = c3b8c2571d204f6a99b053aea3fc6b1db05d89429a40d45bad173b72fa303f64b85d73ef1730f4d229138fb0c9b75c85203c4bebc4b145ec847e9de83a82cbaf
+	sha1sums = 0474a514b9c650ea1b09c2dc7e424988d9a2c188
 
 pkgname = arx-fatalis-data-copy
-

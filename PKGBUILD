@@ -1,5 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: Sam S. <smls75@gmail.com>
+# Maintainer: Sam S. <smls75@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=arx-fatalis-data-copy
 pkgver=1.21
@@ -13,7 +13,7 @@ conflicts=('arx-fatalis-data-gog' 'arx-fatalis-data-demo')
 depends=('inkscape')
 optdepends=('arx-libertatis: native Linux game executable')
 source=("https://raw.githubusercontent.com/arx/ArxLibertatis/master/scripts/arx-install-data")
-sha512sums=('c3b8c2571d204f6a99b053aea3fc6b1db05d89429a40d45bad173b72fa303f64b85d73ef1730f4d229138fb0c9b75c85203c4bebc4b145ec847e9de83a82cbaf')
+sha1sums=('0474a514b9c650ea1b09c2dc7e424988d9a2c188')
 _gamefolder="Arx Fatalis"
 
 package() {
