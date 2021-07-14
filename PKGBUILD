@@ -15,7 +15,7 @@ depends=('caja' 'glib2' 'libnotify' 'polkit' 'procps' 'pygtk' 'xdg-utils')
 optdepends=('dropbox: Dropbox support')
 makedepends=('mate-common' 'python-docutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f76c9effccf7f36650cda9e82ad1c581a4535d7b9da05dd99e767699c46dc311')
+sha256sums=('c7e6356d794770923d338725846e3523676f2250ba99442a8afdc0f7ac24f9ac')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
