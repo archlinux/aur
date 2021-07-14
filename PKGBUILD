@@ -19,15 +19,17 @@ source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
         "config.yaml")
 sha256sums=('SKIP'
             '2f6d81b350048c71fc142ea743ee4463663170638286e49d71e1c7b930c2d5b4'
-            '267f63b7b35ff59c0a183449d5a4c1bc5e5d3637f9a92389e60cd098bfeb5d32')
+            '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 prepare() {
 	cd "${srcdir}"/clash-premium-installer/scripts
 	sed -i "s/srv/etc/g" clash.service
 	sed -i "s/lib/share/g" clash.service
+	sed -i "s/bin\/bypass/share\/clash\/bypass/g" clash.service
 	sed -i "s/lib/share/g" 99-clash.rules
 	sed -i "/bash/,+38 s/tcp, udp/tcp, udp, icmp/g" setup-tun.sh
 	sed -i "s/1.0.0.1/198.18.0.2/g" clash-default
+	sed -i "s/bypass/\/usr\/share\/clash\/bypass/g" bypass-proxy
 }
 
 package() {
@@ -37,8 +39,8 @@ package() {
     install -Dm 644 ../config.yaml "${pkgdir}"/etc/clash/config.yaml
 	cd "${srcdir}"/clash-premium-installer/scripts
     install -Dm 644 clash-default "${pkgdir}"/etc/default/clash
-    install -Dm 755 bypass-proxy-pid "${pkgdir}"/usr/bin/bypass-proxy-pid
-    install -Dm 755 bypass-proxy "${pkgdir}"/usr/bin/bypass-proxy
+    install -Dm 755 bypass-proxy-pid "${pkgdir}"/usr/share/clash/bypass-proxy-pid
+    install -Dm 755 bypass-proxy "${pkgdir}"/usr/share/clash/bypass-proxy
     install -Dm 700 clean-tun.sh "${pkgdir}"/usr/share/clash/clean-tun.sh
     install -Dm 700 setup-tun.sh "${pkgdir}"/usr/share/clash/setup-tun.sh
     install -Dm 700 setup-cgroup.sh "${pkgdir}"/usr/share/clash/setup-cgroup.sh
