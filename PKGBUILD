@@ -37,8 +37,14 @@ prepare() {
   msg2 "Hardcode camera_database and voctree default value"
   sed -i   "s:'ALICEVISION_VOCTREE', '':'ALICEVISION_VOCTREE', '/usr/share/${name}/vlfeat_K80L3.SIFT.tree':g" meshroom/nodes/aliceVision/*.py
   sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/sensor_width_camera_database.txt':g" meshroom/nodes/aliceVision/*.py
-  sed -i '1 i\#include <cmath>' ${srcdir}/QtOIIO/src/jetColorMap.hpp
-  sed -i 's|imageformats|plugins/imageformats|' ${srcdir}/QtOIIO/src/imageIOHandler/CMakeLists.txt
+
+  sed -i '1 i\#include <cmath>' "${srcdir}"/QtOIIO/src/jetColorMap.hpp
+  sed -i 's|imageformats|plugins/imageformats|' "${srcdir}"/QtOIIO/src/imageIOHandler/CMakeLists.txt
+  sed -i 's|OPENIMAGEIO_FOUND|OpenImageIO_FOUND|' "${srcdir}"/QtOIIO/CMakeLists.txt
+  rm -rf "${srcdir}"/QtOIIO/cmake/
+  sed -i '/find_package(IlmBase REQUIRED)/d' "${srcdir}"/qmlAlembic/CMakeLists.txt
+  sed -i 's|ILMBASE_INCLUDE_DIR||' "${srcdir}"/qmlAlembic/src/CMakeLists.txt
+  rm -rf "${srcdir}"/qmlAlembic/cmake/
 }
 
 build() {
