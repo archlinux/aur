@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("kelpdot")
 options=("strip")
 source=("https://github.com/Woomy4680-exe/kelp/releases/download/$pkgver/kelpdot-aur.tar.gz")
-sha256sums=("e46cc921c36b8f7275a7533f58cd8f84df7bd9e7d9d086a18424d8973c17ed68")
+sha256sums=("849d410ac7f44cafe0f1b45f83b7e3f423a99d4da511bf118a3e73cef3b1586e")
 
 package() {
     install -Dm755 kelpdot -t "$pkgdir/usr/bin/"
