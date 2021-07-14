@@ -1,5 +1,5 @@
 pkgbase = ttf-delugia-code
-	pkgdesc = Cascadia Code + Nerd Fonts
+	pkgdesc = Cascadia Code + Nerd Fonts, with some small differences.
 	pkgver = 2105.24.2
 	pkgrel = 1
 	url = https://github.com/adam7/delugia-code
