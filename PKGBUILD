@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -463,7 +463,6 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-    depends=('linux-cacule' 'pahole')
 
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
