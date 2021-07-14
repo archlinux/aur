@@ -26,7 +26,7 @@ check() {
 
 package() {
 	cd "${pkgname#python-}-${pkgver}"
-	python setup.py install --root="${pkgdir}/" --optimize=1
+	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 	install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
 }
