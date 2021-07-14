@@ -2,7 +2,7 @@
 _pkgname=ki-shell
 _srcdir=kotlin-interactive-shell
 pkgname=ki-shell-git
-pkgver=0.3.3.r14.g0cc592d
+pkgver=0.3.3.r14.g0cc592d.kotlin1.5.21
 pkgrel=1
 pkgdesc="Kotlin Language Interactive Shell"
 arch=('any')
@@ -27,7 +27,8 @@ java -jar /usr/lib/${_pkgname}/${_pkgname}.jar" > ki
 
 pkgver() {
   cd "${_srcdir}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  version=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')
+  echo "$version.kotlin$_kotlin_version" | tr ' :/-' .
 }
 
 package() {
