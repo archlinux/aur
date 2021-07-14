@@ -1,7 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Menelkir <menelkir@itroll.org>
 # Contributor: Tomasz Paś <kierek93@gmail.com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-melonds
 pkgname=$_pkgname-git
 pkgver=r1802.657c729
