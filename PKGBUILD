@@ -3,7 +3,7 @@
 
 pkgname=icingaweb2-module-director-git
 _pkgname=icingaweb2-module-director
-pkgver=v1.8.0.r64.g44ca8890
+pkgver=v1.8.1.r67.087ce05
 pkgrel=1
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
