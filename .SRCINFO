@@ -1,7 +1,7 @@
 pkgbase = neix
 	pkgdesc = RSS/Atom feed reader for your terminal
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomschwarz/neix
 	arch = x86_64
 	license = GPL3

@@ -3,7 +3,7 @@
 
 pkgname=neix
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='RSS/Atom feed reader for your terminal'
 arch=('x86_64')
 url="https://github.com/tomschwarz/neix"
@@ -30,4 +30,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"/build
 	DESTDIR="$pkgdir" make install
+
+	install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
