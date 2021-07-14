@@ -1,15 +1,24 @@
 pkgbase = python-requests-cache-git
-	pkgdesc = Persistent cache for requests library(git version)
-	pkgver = 0.1
+	pkgdesc = Transparent persistent cache for http://python-requests.org library (git version)
+	pkgver = r619.5e2abd0
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
-	license = BSD
+	license = custom:BSD-2-clause
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
-	source = python-requests-cache-git::git+https://github.com/reclosedev/requests-cache
-	md5sums = SKIP
+	makedepends = python-dephell
+	depends = python-attrs
+	depends = python-itsdangerous
+	depends = python-requests
+	depends = python-url-normalize
+	depends = python-cattrs
+	depends = python-boto3
+	depends = python-redis
+	depends = python-pymongo
+	provides = python-requests-cache
+	conflicts = python-requests-cache
+	source = python-requests-cache::git+https://github.com/reclosedev/requests-cache
+	sha512sums = SKIP
 
 pkgname = python-requests-cache-git
-
