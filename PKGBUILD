@@ -3,7 +3,7 @@
 
 pkgname=teamredminer
 pkgver=0.8.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Optimized miner for AMD GPUs"
 conflicts=("teamredminer-bin")
 

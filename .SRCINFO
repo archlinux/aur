@@ -1,7 +1,7 @@
 pkgbase = teamredminer
 	pkgdesc = Optimized miner for AMD GPUs
 	pkgver = 0.8.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/todxx/teamredminer
 	arch = x86_64
 	conflicts = teamredminer-bin
