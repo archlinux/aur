@@ -1,9 +1,9 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=flux
-pkgver=0.118.1
+pkgver=0.122.0
 pkgrel=1
-pkgdesc='Lightweight scripting language for querying databases (like InfluxDB) and working with data'
+pkgdesc='Lightweight scripting language for querying databases and working with data'
 arch=('i686' 'x86_64' 'arm64')
 url='https://github.com/influxdata/flux'
 license=('MIT')
@@ -36,6 +36,6 @@ package() {
     cd flux
 
     install -Dm775 libflux.so -t "$pkgdir/usr/lib"
-    install -Dm775 flux fluxdoc -t "$pkgdir/usr/bin"
+    install -Dm775 flux -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/flux"
 }
