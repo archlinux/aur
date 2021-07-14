@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
 pkgver=r4457.8e4fa54e
