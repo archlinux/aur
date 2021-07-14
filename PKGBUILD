@@ -3,7 +3,7 @@
 pkgname=icinga-php-thirdparty
 pkgver=0.10.0
 pkgrel=1
-pkgdesc="Bundle for all Icinga PHP libraries"
+pkgdesc="Bundle for all 3rd party PHP libraries used by Icinga Web products"
 arch=(any)
 url="https://github.com/Icinga/icinga-php-thirdparty"
 license=('MIT')

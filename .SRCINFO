@@ -1,5 +1,5 @@
 pkgbase = icinga-php-thirdparty
-	pkgdesc = Bundle for all Icinga PHP libraries
+	pkgdesc = Bundle for all 3rd party PHP libraries used by Icinga Web products
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/Icinga/icinga-php-thirdparty
