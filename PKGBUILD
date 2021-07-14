@@ -1,11 +1,11 @@
 # Maintainer: Manuel Hüsers <aur@huesers.de>
 
 pkgname=sublime-text-4
-pkgver=4.4107
+pkgver=4.4113
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - stable build"
 arch=('x86_64' 'aarch64')
-url="http://www.sublimetext.com/"
+url="https://www.sublimetext.com/download"
 license=('custom')
 depends=('libpng' 'gtk3')
 optdepends=('gksu: sudo-save support')
@@ -18,8 +18,8 @@ source_x86_64=("https://download.sublimetext.com/sublime_text_build_${pkgver:2}_
 source_aarch64=("https://download.sublimetext.com/sublime_text_build_${pkgver:2}_arm64.tar.xz")
 
 sha256sums=('e991aac5207655dadf69c6f74c194c80009fb9767d7710337f586908969aa9cf')
-sha256sums_x86_64=('c7d9e7520ea91c2db6c026d1f48e9067457d55158393be042100a1161a3e5915')
-sha256sums_aarch64=('e0ccf0859d7b73a718b65c0f03e48189ecba1a256bb800d738b24078994cae03')
+sha256sums_x86_64=('900ef90fc6453efc4c2b36132a5f16a4db67a226fa9732e4d3c1bf586d4dc78c')
+sha256sums_aarch64=('63d536e4c1ff8ca13bbf19fdfacbdeedd6af783f759824500faa4216d978e641')
 
 package() {
   cd "${srcdir}"
