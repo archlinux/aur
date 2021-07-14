@@ -1,15 +1,15 @@
 pkgbase = leanshot
 	pkgdesc = Screen capture for Linux.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://git.mzhang.io/michael/leanshot
 	arch = any
 	license = MIT
+	makedepends = python3
 	depends = rust
-	depends = python3
 	depends = libxcb
 	depends = xcb-util-image
-	source = https://git.mzhang.io/michael/leanshot/archive/v0.4.1.tar.gz
-	sha256sums = d0bb027e2205d36c827fdc30ac3ca7a833526773a735f63c94f5ab6af716c587
+	source = leanshot-v0.5.0.tar.gz::https://git.mzhang.io/michael/leanshot/archive/v0.5.0.tar.gz
+	sha256sums = 9883649c13e61ac93b45daf29227bda959566c004fd4f65aef8139e7d6050986
 
 pkgname = leanshot
