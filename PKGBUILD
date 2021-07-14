@@ -1,15 +1,16 @@
 # Maintainer: Michael Zhang <mail@mzhang.io>
 
 pkgname=leanshot
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Screen capture for Linux.'
 url='https://git.mzhang.io/michael/leanshot'
 arch=('any')
 license=('MIT')
-depends=('rust' 'python3' 'libxcb' 'xcb-util-image')
-source=("https://git.mzhang.io/michael/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d0bb027e2205d36c827fdc30ac3ca7a833526773a735f63c94f5ab6af716c587')
+makedepends=('python3')
+depends=('rust' 'libxcb' 'xcb-util-image')
+source=("leanshot-v${pkgver}.tar.gz::https://git.mzhang.io/michael/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('9883649c13e61ac93b45daf29227bda959566c004fd4f65aef8139e7d6050986')
 
 build() {
     cd "${pkgname}"
