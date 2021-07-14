@@ -1,15 +1,16 @@
 pkgbase = python-respx
 	pkgdesc = Mock HTTPX with awesome request patterns and response side effects
-	pkgver = 0.17.0
-	pkgrel = 2
+	pkgver = 0.17.1
+	pkgrel = 1
 	url = https://github.com/lundberg/respx
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	checkdepends = mypy
+	checkdepends = python-starlette
 	makedepends = python-setuptools
 	depends = python-httpx
-	source = python-respx-0.17.0.tar.gz::https://github.com/lundberg/respx/archive/refs/tags/0.17.0.tar.gz
-	sha512sums = 2f5fd27c81a62cc3da45a1c9a40c95a9e480511567f9613e0ecac8991234f0d9e4e2ecfba0b3e294090d9a0f34c66ceaf32a779856c3106411057946e1adefbc
+	source = python-respx-0.17.1.tar.gz::https://github.com/lundberg/respx/archive/refs/tags/0.17.1.tar.gz
+	sha512sums = 3b5d2ab05eb75ee7aaeecf20435aea0f900b47d9864358c8ba14b8d575282558f802ba82078fd9be5b01987e60879eb5566ddc1f20d92f99da8a60ccb0a6826d
 
 pkgname = python-respx
