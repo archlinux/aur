@@ -2,15 +2,15 @@
 pkgname=cgal-headers
 _pkgname=CGAL
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Computational Geometry Algorithms Library."
 arch=('any')
 url='https://www.cgal.org/'
 license=('GPL' 'LGPL')
 depends=('mpfr' 'gmp' 'boost')
 makedepends=('cmake')
-source=("https://github.com/CGAL/cgal/releases/download/v${pkgver}/${_pkgname}-${pkgver}-library.tar.xz")
-sha512sums=('c78d544f4a7dcad4154dd5196528352a0248fc55aa4437d53fa00a57e03c605645028926d13e64a86e589b48bd788e79be78f2263800567bb7f888d709e59d7e')
+source=("https://github.com/CGAL/cgal/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz")
+sha512sums=('7490408ee2b2b0949999a835a7988ba1ec5bd87185adf4c3e72141ccc689a982b32a59206dba91e73fbcf571d9d41c3e607c68939bf44fdb5abfebde3452c26f')
 provides=('cgal')
 conflicts=('cgal')
 
@@ -21,11 +21,8 @@ prepare () {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
   cmake ../ \
-  -DCGAL_HEADER_ONLY=ON \
-  -DWITH_CGAL_Core=OFF \
-  -DWITH_CGAL_ImageIO=OFF \
-  -DWITH_CGAL_Qt5=OFF \
-  -DBUILD_SHARED_LIBS=OFF \
+  -DWITH_demos=False \
+  -DWITH_examples=False \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr
 }

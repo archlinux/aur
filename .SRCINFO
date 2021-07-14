@@ -1,7 +1,7 @@
 pkgbase = cgal-headers
 	pkgdesc = The Computational Geometry Algorithms Library.
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cgal.org/
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = cgal-headers
 	depends = boost
 	provides = cgal
 	conflicts = cgal
-	source = https://github.com/CGAL/cgal/releases/download/v5.3/CGAL-5.3-library.tar.xz
-	sha512sums = c78d544f4a7dcad4154dd5196528352a0248fc55aa4437d53fa00a57e03c605645028926d13e64a86e589b48bd788e79be78f2263800567bb7f888d709e59d7e
+	source = https://github.com/CGAL/cgal/releases/download/v5.3/CGAL-5.3.tar.xz
+	sha512sums = 7490408ee2b2b0949999a835a7988ba1ec5bd87185adf4c3e72141ccc689a982b32a59206dba91e73fbcf571d9d41c3e607c68939bf44fdb5abfebde3452c26f
 
 pkgname = cgal-headers
