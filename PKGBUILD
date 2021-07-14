@@ -4,21 +4,23 @@
 
 pkgname=minitimer
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64' 'aarch64')
-url='https://sr.ht/~arivigo/minitimer'
-license=('APACHE')
+url="https://sr.ht/~arivigo/${pkgname}"
+license=('MIT')
 depends=('glibc')
-source=("https://git.sr.ht/~arivigo/minitimer/archive/${pkgver}.tar.gz")
+source=("https://git.sr.ht/~arivigo/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('3ed359e733aa2a9afa31c33cb5db90157fd2d6e8e67e2448f390a21ee4fc0ff1')
+conflicts=("${pkgname}-git")
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname}-${pkgver}"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX='/usr' install
+	cd "${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" PREFIX='/usr' install
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
