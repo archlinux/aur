@@ -1,6 +1,6 @@
 pkgbase = gord-bin
 	pkgdesc = Discord TUI client - Fork of cordless
-	pkgver = 2021_06_17
+	pkgver = 2021_07_14
 	pkgrel = 1
 	url = https://github.com/cainy-a/gord/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gord-bin
 	depends = glibc
 	provides = gord
 	conflicts = gord-git
-	source = https://github.com/yellowsink/gord/releases/download/2021-06-17/gord_2021-06-17_linux_amd64.tar.gz
-	md5sums = 054519bc51ee0811e2e6a48706a9fb3a
+	source = https://github.com/yellowsink/gord/releases/download/2021-07-14/gord_2021-07-14_linux_amd64.tar.gz
+	md5sums = 3c67b6bef294c4de46c474e5891e9fc5
 
 pkgname = gord-bin
