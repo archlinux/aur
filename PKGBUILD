@@ -1,7 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Claire Charron <claire@undeterminant.net>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-git
 pkgver=2020.09.16.unicode13_1.r0.gaac7ccaa
@@ -23,17 +22,16 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-	make clean
+	make -C $_pkgname clean
 }
 
 build() {
-	cd $_pkgname
-	make VIRTUAL_ENV=dummy BYPASS_SEQUENCE_CHECK=1
+	make -C $_pkgname \
+		BYPASS_SEQUENCE_CHECK=1 \
+		VIRTUAL_ENV=dummy
 }
 
 package() {
-	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/share/fonts/noto NotoColorEmoji.ttf
+	install -Dm644 -t "$pkgdir"/usr/share/fonts/noto $_pkgname/NotoColorEmoji.ttf
 }
