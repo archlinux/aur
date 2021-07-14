@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 248.3
-	pkgrel = 2
+	pkgver = 249
+	pkgrel = 3
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	arch = aarch64
@@ -24,6 +24,7 @@ pkgbase = systemd-selinux
 	makedepends = libxslt
 	makedepends = util-linux
 	makedepends = linux-api-headers
+	makedepends = python-jinja
 	makedepends = python-lxml
 	makedepends = quota-tools
 	makedepends = shadow-selinux
@@ -43,8 +44,8 @@ pkgbase = systemd-selinux
 	makedepends = rsync
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=fd9ad7d3bc35a3633b99edac14ff2a4fb10599b7?signed
-	source = git+https://github.com/systemd/systemd#tag=v248?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=b134c9cc4b02eddca2ea098324369018123fdf15?signed
+	source = git+https://github.com/systemd/systemd#tag=v249?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch
 	source = initcpio-hook-udev
@@ -65,10 +66,11 @@ pkgbase = systemd-selinux
 	source = 30-systemd-udev-reload.hook
 	source = 30-systemd-update.hook
 	validpgpkeys = 63CDA1E5D3FC22B998D20DD6327F26951A015CC4
+	validpgpkeys = A9EA9081724FFAE0484C35A1A81CEA22BC8C7E2E
 	validpgpkeys = 5C251B5FC54EB2F80F407AAAC54CA336CFEB557E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 882e486b6d88c8bafc50088845e41a49686e98981967f72ca1fb4ef07a01767400632f4b648fd31857d2a2a24a8fd65bcc2a8983284dd4fff2380732741d4c41
+	sha512sums = 10f3b477527ec263cc6465c84d94416e356435930edc9e26844a0fd4f71e87a27fa0f91ce24b43a22cacdd2ead5e760e9d607369bc537a8da8d34021302a89a1
 	sha512sums = 34541f1967536524329867f9f341f8d9250d9d771c60dc3e6a22ccb82fc01f103cfd3f9903329777591ccbecd2446622a5d6b3804fa0411482b85c70593ee8ad
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
 	sha512sums = f599e1a35cba2c4e83e37c2299fac23ae128d8f68081283e71e1729384975dee1c4b677787f31a17890aeb98c8d2fc90405a202644290708ef9c027315022b17
@@ -134,9 +136,9 @@ pkgname = systemd-selinux
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=248.3
-	provides = udev=248.3
-	provides = systemd=248.3-2
+	provides = systemd-tools=249
+	provides = udev=249
+	provides = systemd=249-3
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -174,7 +176,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=248.3-2
+	provides = systemd-libs=249-3
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -186,16 +188,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=248.3-2
+	provides = systemd-resolvconf=249-3
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=248.3-2
+	conflicts = systemd-resolvconf=249-3
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=248.3-2
-	provides = selinux-systemd-sysvcompat=248.3-2
+	provides = systemd-sysvcompat=249-3
+	provides = selinux-systemd-sysvcompat=249-3
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
