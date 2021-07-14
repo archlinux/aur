@@ -1,6 +1,6 @@
 pkgbase = cft
 	pkgdesc = Quickly copy text from a file to the clipboard without opening unnecessary programs
-	pkgver = 0.0.1
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/throwbly/cft
 	arch = any
