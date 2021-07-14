@@ -1,7 +1,7 @@
 # Contributor: Pedro Martinez-Julia (pedromj@um.es)
 
 pkgname=python-bitarray
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Efficient arrays of booleans for Python"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('PSF')
 depends=('python')
 makedepends=('python-distribute')
 source=(https://files.pythonhosted.org/packages/source/b/bitarray/bitarray-$pkgver.tar.gz)
-sha256sums=('97224a19325ecee49a3bf4df3ee0531d3af9cf288b67d089a7ef44a3c4ea3839')
+sha256sums=('31b40d716a1f0642ea9e2741c29b756299075db2e1d1ebe750e3e2c1469f589d')
 
 package() {
   cd "$srcdir"/bitarray-$pkgver
