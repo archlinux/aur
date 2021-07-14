@@ -18,7 +18,7 @@ pkgbase = caffeine-ng
 	depends = python-setuptools
 	depends = python-wheel
 	depends = python-pulsectl
-	optdepends = libappindicator-gtk3: AppIndictor support (eg: Plasma, Unity).
+	optdepends = libappindicator-gtk3: AppIndicator support (eg: Plasma, Unity).
 	provides = caffeine
 	provides = caffeine-bzr
 	provides = caffeine-oneclick
@@ -33,4 +33,3 @@ pkgbase = caffeine-ng
 	md5sums = c56988059680bcd25525480f8688f81e
 
 pkgname = caffeine-ng
-
