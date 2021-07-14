@@ -2,7 +2,6 @@
 # Contributor: Kristian Buchman <kribuchman@gmail.com>
 # Contributor: Tomasz Paś <kierek93@gmail.com>
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
 pkgver=r374.b4024d75
