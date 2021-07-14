@@ -1,4 +1,5 @@
-# Maintainer: LavaDesu <me@lava.moe>
+# Maintainer: Sebastian 'gonX' Jensen <gonx@gonx.dk>
+# Contributor: LavaDesu <me@lava.moe>
 pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
