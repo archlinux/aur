@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034
 pkgname=mn88472-firmware
 pkgver=191226
 pkgrel=1
