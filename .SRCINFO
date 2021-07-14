@@ -1,5 +1,5 @@
 pkgbase = bazel40-bin
-	pkgdesc = Build and test software of any size, quickly and reliably.
+	pkgdesc = Correct, reproducible, and fast builds for everyone
 	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://bazel.build

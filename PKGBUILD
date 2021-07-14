@@ -2,7 +2,7 @@
 pkgname=bazel40-bin
 pkgver=4.0.0
 pkgrel=1
-pkgdesc='Build and test software of any size, quickly and reliably.'
+pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch=('x86_64')
 url='https://bazel.build'
 license=('Apache')
