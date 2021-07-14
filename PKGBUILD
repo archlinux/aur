@@ -70,7 +70,7 @@ pkgver=5.12.16
 pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
-url="https://wiki.archlinux.org/index.php/Linux-ck"
+url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
 license=(GPL2)
 makedepends=(
   bc kmod libelf        cpio perl tar xz

@@ -1,7 +1,7 @@
 pkgbase = linux-ck-uksm-cjktty
 	pkgver = 5.12.16
 	pkgrel = 3
-	url = https://wiki.archlinux.org/index.php/Linux-ck
+	url = https://github.com/RiverOnVenus/linux-ck-uksm-cjktty
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
