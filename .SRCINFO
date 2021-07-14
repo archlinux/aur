@@ -6,10 +6,7 @@ pkgbase = python-backoff
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/b/backoff/backoff-1.11.0.tar.gz
 	sha512sums = fca6aa8e1c77b0c9f668b9303bf1b70eb86c86da64081bab755e38c0426f65476f4f54f0e12759fa7a00bf7d9e5dc55f651489c03a16f5473389e3fb4d1b9bd0
 
 pkgname = python-backoff
-
-pkgname = python2-backoff
