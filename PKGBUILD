@@ -2,8 +2,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=condution-bin
-pkgver=1.0.3
-_pkgver=1.0.3
+pkgver=1.1.1
+_pkgver=1.1.1
 pkgrel=0
 pkgdesc="A personal project management system that makes sense and will not burn your pockets out"
 arch=('x86_64')
