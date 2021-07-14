@@ -1,7 +1,7 @@
 # Maintainer: Banned Patriot <realbannedpatriot@protonmail.com>
 # Based on the PKGBUILD created by Yannick Inizan <inizan[dot]yannick[at]gmail[dot]com>, derived from Ivan Agarkov <ivan[dot]agarkov[at]gmail[dot]com>
 
-pkgname=mt7610u_wifi_sta-alt
+pkgname=mt7610u_wifi_sta-git
 pkgver=1
 pkgrel=1
 # To get an overview of witch WiFi dongle has this chipset refer to https://wikidevi.com/wiki/MediaTek_MT7610U
