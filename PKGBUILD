@@ -3,7 +3,6 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 # Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-gambatte
 pkgname=$_pkgname-git
 pkgver=r912.ff1ae4a
