@@ -1,6 +1,6 @@
 pkgname=rdo
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple doas/sudo alternative."
 arch=('x86_64')
 url=https://codeberg.org/sw1tchbl4d3/rdo
