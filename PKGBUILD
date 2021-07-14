@@ -1,5 +1,6 @@
-# Maintainer: MoeLava <me@lava.moe>
-# Maintainer: InfinityGhost <infinityghostgit@gmail.com>
+# Maintainer: Sebastian 'gonX' Jensen <gonx@gonx.dk>
+# Contibutor: MoeLava <me@lava.moe>
+# Contibutor: InfinityGhost <infinityghostgit@gmail.com>
 pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
