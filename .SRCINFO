@@ -1,14 +1,13 @@
 pkgbase = pacolog
 	pkgdesc = List recent commits for Arch Linux packages
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://gitlab.com/protist/pacolog
 	arch = any
 	license = GPL3
 	depends = w3m
 	conflicts = paclog
-	source = https://gitlab.com/protist/pacolog/-/archive/v1.2.0/pacolog-v1.2.0.tar.gz
-	sha256sums = 555eb46914a7ff5bf74e6a9c1939a3adcfe3dc9008c1aab56f5265077d0298de
+	source = https://gitlab.com/protist/pacolog/-/archive/v2.0.0/pacolog-v2.0.0.tar.gz
+	sha256sums = 3df298e1410a156be21d5aca24e20f2fdbb3f6bda3203f76b84f9856a50482d2
 
 pkgname = pacolog
-
