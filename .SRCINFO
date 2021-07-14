@@ -1,0 +1,16 @@
+pkgbase = vim-apl-git
+	pkgdesc = vim package for APL syntax and autocompletion
+	pkgver = r96.49142e9
+	pkgrel = 1
+	url = https://codeberg.org/ngn/vim-apl
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	provides = vim-apl
+	conflicts = vim-apl
+	options = !emptydirs
+	source = vim-apl::git+https://codeberg.org/ngn/vim-apl.git
+	md5sums = SKIP
+
+pkgname = vim-apl-git
