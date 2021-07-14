@@ -1,6 +1,5 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-cap32
 pkgname=$_pkgname-git
 pkgver=r291.408da09
