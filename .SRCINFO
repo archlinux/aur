@@ -1,6 +1,6 @@
 pkgbase = libretro-core-info-git
 	pkgdesc = Libretro core info files
-	pkgver = 1.9.1.r0.gbaf1c40
+	pkgver = 1.9.6.r0.gd07e3cb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/libretro-core-info
@@ -14,4 +14,3 @@ pkgbase = libretro-core-info-git
 	md5sums = SKIP
 
 pkgname = libretro-core-info-git
-

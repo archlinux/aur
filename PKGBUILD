@@ -1,9 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-core-info
 pkgname=$_pkgname-git
-pkgver=1.9.1.r0.gbaf1c40
+pkgver=1.9.6.r0.gd07e3cb
 pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
@@ -26,5 +25,5 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make DESTDIR="$pkgdir" install
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname COPYING
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname COPYING
 }
