@@ -2,7 +2,7 @@
 
 pkgbase='navidrome-bin'
 pkgname=(navidrome-bin)
-pkgver='0.44.0'
+pkgver='0.44.1'
 pkgrel=1
 pkgdesc='Music Server and Streamer compatible with Subsonic/Airsonic'
 url='https://www.navidrome.org/'
@@ -12,42 +12,42 @@ provides=('navidrome')
 conflicts=('navidrome' 'navidrome-systemd')
 backup=('var/lib/navidrome/navidrome.toml')
 depends=('glibc' 'ffmpeg')
-source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_x86_64.tar.gz'
+source_x86_64=('https://github.com/navidrome/navidrome/releases/download/v0.44.1/navidrome_0.44.1_Linux_x86_64.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_armv6.tar.gz'
+source_armv6h=('https://github.com/navidrome/navidrome/releases/download/v0.44.1/navidrome_0.44.1_Linux_armv6.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_armv7.tar.gz'
+source_armv7h=('https://github.com/navidrome/navidrome/releases/download/v0.44.1/navidrome_0.44.1_Linux_armv7.tar.gz'
                'navidrome.service'
                'navidrome.toml'
                'navidrome.sysusers'
               )
-source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v0.44.0/navidrome_0.44.0_Linux_arm64.tar.gz'
+source_aarch64=('https://github.com/navidrome/navidrome/releases/download/v0.44.1/navidrome_0.44.1_Linux_arm64.tar.gz'
                 'navidrome.service'
                 'navidrome.toml'
                'navidrome.sysusers'
               )
-md5sums_x86_64=('484f915a9d60b9673e6ea6655331a873'
-                '7e4600096f11dec326b2340c8c61baab'
-                '620404012c5d9982aafc5630f2d37582'
-                '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_armv6h=('436b8213709e40fdd35a72f3eaf59e23'
-                '7e4600096f11dec326b2340c8c61baab'
-                '620404012c5d9982aafc5630f2d37582'
-                '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_armv7h=('5df25288e7b333ce5f9204b829d8cdfd'
-                '7e4600096f11dec326b2340c8c61baab'
-                '620404012c5d9982aafc5630f2d37582'
-                '12bbcd378a346418cf26e4a4598a84a9')
-md5sums_aarch64=('b8b519474a761b957a010e3efd18ebbc'
-                 '7e4600096f11dec326b2340c8c61baab'
-                 '620404012c5d9982aafc5630f2d37582'
-                 '12bbcd378a346418cf26e4a4598a84a9')
+sha256sums_x86_64=('da59e3e9a34b3de2f0c60c9151014e4090ec39232ef416a77b3f1130c42cef86'
+                   'b875b79c99c4dd8e9447463f00896f9d155c3afa8972a2291f8e0771ea1a1280'
+                   '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4'
+                   'bc907165c4e63ac22d757c2d2321a7343cf0bf63d6f3b8790b04b53a4d24a666')
+sha256sums_armv6h=('cc5011017d3e9479564a4be3008196333f5a76466ca63e42e99040a065bd973d'
+                   'b875b79c99c4dd8e9447463f00896f9d155c3afa8972a2291f8e0771ea1a1280'
+                   '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4'
+                   'bc907165c4e63ac22d757c2d2321a7343cf0bf63d6f3b8790b04b53a4d24a666')
+sha256sums_armv7h=('af54bbfaf8f3cc572c7b1b2eb1204a3e76d3cdcf4a7b2bf89d79b2d6844d3085'
+                   'b875b79c99c4dd8e9447463f00896f9d155c3afa8972a2291f8e0771ea1a1280'
+                   '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4'
+                   'bc907165c4e63ac22d757c2d2321a7343cf0bf63d6f3b8790b04b53a4d24a666')
+sha256sums_aarch64=('4506f60cbb9f2205f7e3ef850570e8b3a2c9346983a6bfdec632b13586970f9c'
+                    'b875b79c99c4dd8e9447463f00896f9d155c3afa8972a2291f8e0771ea1a1280'
+                    '5ac4183b961438c8f838d82d8772b856d97ea7aeed2ab4ac4d5fc69559da43d4'
+                    'bc907165c4e63ac22d757c2d2321a7343cf0bf63d6f3b8790b04b53a4d24a666')
 
 package() {
   install -d -o navidrome -g navidrome "${pkgdir}/var/lib/navidrome"
