@@ -1,7 +1,7 @@
 pkgbase = speech-dispatcher-git
 	pkgdesc = High-level device independent layer for speech synthesis interface (development version)
 	pkgver = 0.11.0.rc2.r3.gd8accf2b
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freebsoft.org/speechd
 	arch = x86_64
 	license = GPL2
@@ -15,12 +15,12 @@ pkgbase = speech-dispatcher-git
 	makedepends = libpulse
 	makedepends = libao
 	makedepends = git
-	options = !emptydirs
+	makedepends = svox-pico-bin
 	source = speech-dispatcher::git+https://github.com/brailcom/speechd.git
 	sha512sums = SKIP
 
 pkgname = speech-dispatcher-git
-	depends = libspeechd-git=0.11.0.rc2.r3.gd8accf2b-1
+	depends = libspeechd-git=0.11.0.rc2.r3.gd8accf2b-2
 	depends = glib2
 	depends = libtool
 	depends = python-pyxdg
@@ -29,6 +29,7 @@ pkgname = speech-dispatcher-git
 	depends = libao
 	optdepends = festival: Speech output using Festival
 	optdepends = espeak-ng: Speech output using ESpeak-ng
+	optdepends = svox-pico-bin: Speech output using pico
 	optdepends = pulseaudio: PulseAudio support
 	provides = speech-dispatcher
 	conflicts = speech-dispatcher

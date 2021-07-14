@@ -10,14 +10,13 @@
 pkgbase=speech-dispatcher-git
 pkgname=(speech-dispatcher-git libspeechd-git)
 pkgver=0.11.0.rc2.r3.gd8accf2b
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level device independent layer for speech synthesis interface (development version)"
 arch=('x86_64')
 url='http://www.freebsoft.org/speechd'
 license=('GPL2' 'FDL')
 makedepends=('glib2' 'intltool' 'espeak-ng' 'libtool' 'python-pyxdg' 'dotconf'
-             'libpulse' 'libao' 'git')
-options=('!emptydirs')
+             'libpulse' 'libao' 'git' 'svox-pico-bin')
 source=(${pkgname%-git}::'git+https://github.com/brailcom/speechd.git')
 sha512sums=('SKIP')
 
@@ -33,14 +32,13 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	./configure --prefix=/usr \
-	            --sysconfdir=/etc \
+	./configure --prefix=/usr --sysconfdir=/etc \
 	            --localedir=/usr/share/speech-dispatcher/locale \
 	            --libexecdir=/usr/lib/speech-dispatcher/ \
 	            --localstatedir=/var \
 	            --with-systemdsystemunitdir=/usr/lib/systemd/system \
-	            --enable-shared \
-	            --with-espeak-ng
+	            --with-espeak-ng \
+	            --with-pico
 	make
 }
 
@@ -48,6 +46,7 @@ package_speech-dispatcher-git() {
 	depends=("libspeechd-git=$pkgver-$pkgrel" 'glib2' 'libtool' 'python-pyxdg' 'dotconf' 'libpulse' 'libao')
 	optdepends=('festival: Speech output using Festival'
 	            'espeak-ng: Speech output using ESpeak-ng'
+	            'svox-pico-bin: Speech output using pico'
 	            'pulseaudio: PulseAudio support')
 	conflicts=("speech-dispatcher")
 	provides=("speech-dispatcher")
