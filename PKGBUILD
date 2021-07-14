@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
 pkgver=r11710.1c0004153
