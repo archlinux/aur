@@ -2,7 +2,7 @@
 
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
-pkgver=1.50.0
+pkgver=1.50.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -19,10 +19,10 @@ source_aarch64=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artif
 
 noextract=("$pkgname-$pkgver-$pkgrel.jfrog")
 
-sha512sums_x86_64=('37ef405f1668f621373e0bf87ec0d0b76ae56016770372ac0e1ce43975f84a36fe147137fd5685fff54c1b1e4e05e32e3622b985d5d03d07a37e3d432984475d')
-sha512sums_i868=('eec36aa89f375f91c94ccf92d165be99f74f2edf712eeaf0be1d712cc7fc58f688fe8911e773b6e9e746977de442bf990986a0036973efe45708d884e0224d29')
-sha512sums_armv7h=('fe89042e9237193a8d3a509fa18e785760145bf48ceedff2925ed4ec579422f3a19a172f0634ba73eca2a9cd3a70fafa16a480344605cc5806c641db8453f1af')
-sha512sums_aarch64=('644194f83748e0b01b7a63bdec54db78ce0e2aea63881aafe8b69df3732fa055c725ad1ff0a6f8a7405ba768bd8e39a16c0cf9911ef48ba4a57eccb26608b8c3')
+sha512sums_x86_64=('23fd1b711141fbf04ed8529c2b949b05add2274dbefab9367af44c7f7655ffcef33440de87cb8be3b5613f55180209ea8c08c234b10baa2a0a5424190c9e205e')
+sha512sums_i868=('6f3c383bd255bff66a64d5fcefa0fc1dfaa8c3cf689892be65bd4cb5e2663c94a07c116657ccf61a912c9653543cc5bbef31acb8098a949e2da50f5041fc3c99')
+sha512sums_armv7h=('6fcaf33609c90f86ac26320531a39dd93aa281c2633059e74e081b283c1a1508c057db2bc1411d59b807166978d62d4c6d96a01d5e5d3b5370cf238e95bdf06c')
+sha512sums_aarch64=('be2fabeb8d6902c106bce2c646da61cc44596d2a60903931c9ed476124c6f36a994c78cdf301304a559564cc785a9202afd5fd203afa8af7d8042b9f4e7d5ba7')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$pkgrel.jfrog" "$pkgdir/usr/bin/jfrog"
