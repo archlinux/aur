@@ -1,9 +1,9 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
-_tag=1.0.0-beta
+_tag=1.0.0-hotfix
 pkgname=betterdiscord-installer
-pkgver=1.0.0.beta
-pkgrel=2
+pkgver=1.0.0.hotfix
+pkgrel=1
 pkgdesc='Installer for BetterDiscord'
 arch=('x86_64')
 url='https://github.com/BetterDiscord/Installer'
@@ -28,5 +28,5 @@ package() {
     install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     cp --preserve=mode -r dist/linux-unpacked "$pkgdir"/opt/BetterDiscord
-    ln -s /opt/BetterDiscord/betterdiscord "$pkgdir"/usr/bin/betterdiscord
+    ln -s /opt/BetterDiscord/betterdiscord-installer "$pkgdir"/usr/bin
 }
