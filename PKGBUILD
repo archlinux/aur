@@ -3,7 +3,7 @@
 _tag=1.0.0-hotfix
 pkgname=betterdiscord-installer
 pkgver=1.0.0.hotfix
-pkgrel=1
+pkgrel=2
 pkgdesc='Installer for BetterDiscord'
 arch=('x86_64')
 url='https://github.com/BetterDiscord/Installer'
@@ -11,7 +11,7 @@ license=('MIT')
 replaces=('betterdiscord')
 makedepends=('nodejs' 'yarn')
 source=("$pkgname-$_tag.tar.gz::$url/archive/v${_tag}.tar.gz")
-sha256sums=('7af763dc0e73b84690a953bf412135a079d954010e845ad422283be185959bcc')
+sha256sums=('c06a30f8c77dc41dfff2e88b5f9f02e8ece2240f7abe7fb51dfa9e6238836a95')
 
 pkgver() {
     printf '%s' "${_tag/-/.}"
