@@ -3,7 +3,7 @@
 
 pkgname=dmidiplayer
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MIDI file player based on Drumstick"
 arch=('x86_64')
 url="https://sourceforge.net/projects/dmidiplayer/"
@@ -29,4 +29,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"/build
 	DESTDIR="$pkgdir" make install
+
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
