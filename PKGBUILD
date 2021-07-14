@@ -1,14 +1,14 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at m2x.dev>
 
 pkgname=pacapt
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='A pacman-like shell wrapper for many package managers'
 arch=('any')
 url=https://github.com/icy/pacapt
 license=(custom)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-b2sums=('365d1e8cae5393fa3a89185b54715d3a64a3f81b723e1721c7e5bfc79f007209f0f9f3fb7701a4d77582e7ddf5227142f0843e94f2358921b6c8910a21644000')
+b2sums=('52dc3bb495350b98992ab2fd13d8bf12fdfc9165f390479e046127f13efa86886a320965cad9b520a44361d7c2720a1514bddc5772ee6cee1bc0b15e737e1790')
 
 build() {
 	make -C $pkgname-$pkgver VERSION=$pkgver pacapt
