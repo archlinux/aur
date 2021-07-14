@@ -1,8 +1,7 @@
 # Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-_pkgname=sunshine
-pkgname=${_pkgname}-git
+pkgname=sunshine-git
 pkgver=0.9.0.541.5ff5942
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
@@ -16,21 +15,21 @@ makedepends=('git' 'cmake' 'boost' 'make')
 provides=('sunshine')
 conflicts=("sunshine")
 
-source=("$_pkgname::git+https://github.com/loki-47-6F-64/sunshine.git"
+source=("$pkgname::git+https://github.com/loki-47-6F-64/sunshine.git"
         "udev.rules")
 sha256sums=('SKIP'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
 install=sunshine.install
 
-_assets_path=/usr/share/$_pkgname
+_assets_path=/usr/share/sunshine
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
     printf "%s.%s.%s" "$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd "$pkgname"
     git submodule update --recursive --init
 }
 
@@ -39,7 +38,7 @@ build() {
     export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
 
     cmake \
-        -S "$_pkgname" \
+        -S "$pkgname" \
         -B build \
         -Wno-dev \
         -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
@@ -49,15 +48,19 @@ build() {
 }
 
 package() {
-    install -Dvm644 "$_pkgname/assets/sunshine.conf" "$pkgdir/$_assets_path/sunshine.conf"
-    install -Dvm644 "$_pkgname/assets/apps_linux.json" "$pkgdir/$_assets_path/apps_linux.json"
+    pushd "$pkgname/assets"
+        install -Dvm644 sunshine.conf "$pkgdir/$_assets_path/sunshine.conf"
+        install -Dvm644 apps_linux.json "$pkgdir/$_assets_path/apps_linux.json"
 
-    (cd "$_pkgname/assets" ; find web shaders/opengl -type f -print0) | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/{}"
+        find web shaders/opengl -type f -print0 | xargs -0 -I {} install -Dvm644 {} "$pkgdir/$_assets_path/{}"
+    popd
 
-    install -Dvm755 build/sunshine "$pkgdir/usr/bin/sunshine"
-    install -Dvm644 build/sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
+    pushd build
+        install -Dvm755 sunshine "$pkgdir/usr/bin/sunshine"
+        install -Dvm644 sunshine.service "$pkgdir/usr/lib/systemd/user/sunshine.service"
+    popd
 
-    install -Dvm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-$_pkgname.rules"
+    install -Dvm644 udev.rules "$pkgdir/usr/lib/udev/rules.d/85-sunshine.rules"
 }
 
 # vim: ts=2 sw=2 et:
