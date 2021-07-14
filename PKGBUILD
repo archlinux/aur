@@ -1,8 +1,8 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=system76-power
-pkgver=1.1.16
-pkgrel=5
+pkgver=1.1.17
+pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
@@ -26,8 +26,8 @@ source=(
 'makefile.patch'
 )
 sha256sums=(
-'56b33e6d41dd07892b73aca8d1da32a552bf644e986c657abbddd83e2071ea79'
-'6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891'
+'d817e22047e41110ce2520f792ee5eae55220ba6d5fc4138a73040ebeb06e9b5'
+'2ead269c71919c220a7880b0036c6d62aadeae3d6cde769029784d3565686539'
 '97deb1f9cf6a312e8378bb96a4a83dae2498a4936c130e2ef5b125d13b92bb65'
 )
 
