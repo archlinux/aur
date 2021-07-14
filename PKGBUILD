@@ -4,13 +4,15 @@ _pkgname=orca
 
 pkgname=plotly-"${_pkgname}"-appimage
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line application for generating static images of interactive plotly charts"
 arch=('x86_64')
 url="https://github.com/plotly/orca"
 license=('MIT')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
+optdepends=('python-plotly: python interface'
+            'python-tenacity: allow small delay in orca response to python-plotly')
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=(
   ${url}/releases/download/v${pkgver}/${_appimage}
