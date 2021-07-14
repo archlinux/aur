@@ -1,0 +1,15 @@
+post_install() {
+	echo -e "\e[34;1m==>\e[39;1m Running depmod... \e[0m"
+	depmod
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Module name is mt7650u_sta \e[0m"
+}
+
+post_upgrade() {
+	echo -e "\e[34;1m==>\e[39;1m Running depmod... \e[0m"
+	depmod
+}
+
+post_remove() {
+	echo -e "\e[34;1m==>\e[39;1m Running depmod... \e[0m"
+	depmod
+}
