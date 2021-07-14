@@ -1,3 +1,10 @@
+4.7.7 (2021-06-09 17:58:39)
+
+    Faster drawing which improves scrolling in bug documents,
+    Improves the creation of pointer differences tables,
+    Fixes a crash at launch on macOS 12 beta 1,
+    Fixes a crash for some Windows binaries.
+
 4.7.6 (2021-05-10 16:16:58)
 
     Fixes an infinite loop on some Windows executables,
