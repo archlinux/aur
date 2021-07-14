@@ -1,42 +1,46 @@
-# Maintainer: Mathias Walters <waltersm@protonmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Mathias Walters <waltersm@protonmail.com>
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.7.0
+pkgver=1.9.3
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
-makedepends=('git' 'dpkg' 'jdk10')
+depends=('jre-openjdk')
+makedepends=('git' 'dpkg' 'jdk-openjdk' 'gradle' 'xdg-utils' 'rpm-tools')
 optdepends=('gvfs: access virtual filesystem')
-provides=('maptool')
-conflicts=('maptool')
-source=("git+https://github.com/RPTools/maptool.git#tag=${pkgver}")
+source=("git+https://github.com/RPTools/${pkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
+install='maptool.install'
 
 build() {
+	cd "${pkgname}"
+	gradle --parallel jpackage
+}
 
-    ORIG_JAVA="$(archlinux-java get)"
-    sudo archlinux-java set java-10-jdk
-
-    cd ${pkgname}
-    ./gradlew deploy
-
-    if [ -n "$ORIG_JAVA" ]; then
-        sudo archlinux-java set $ORIG_JAVA
-    else
-        sudo archlinux-java unset
-    fi
+check() {
+	cd "${pkgname}"
+	gradle --parallel check
 }
 
 package() {
-
-    cd "${srcdir}/${pkgname}/releases/release-${pkgver}"
-    ar vx "${pkgname}-${pkgver}.deb"
-    tar -C "${pkgdir}" -xf data.tar.xz
-
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.AFFERO" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/app/COPYING.LESSER" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 "${pkgdir}/opt/${_pkgname}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	cd "${pkgdir}"
+	
+	dpkg-deb -x "${srcdir}/${pkgname}/releases/${pkgname}_${pkgver}-${pkgrel}_amd64.deb" .
+	mkdir -p "usr/share/licenses/${pkgname}"
+	mv "opt/${pkgname}/share/doc/copyright" "usr/share/licenses/${pkgname}/"
+	rm -rf "opt/${pkgname}/share"
+	
+	#rpmextract.sh "${srcdir}/${pkgname}/releases/${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm"
+	#mv "usr/share/licenses/maptool-${pkgver}" "usr/share/licenses/${pkgname}"
+	
+	install -Dm644 "opt/${pkgname}/lib/${pkgname}-${_pkgname}.desktop" -t "usr/share/applications/"
+	
+	install -dm755 'usr/bin'
+	echo "#!/bin/bash" > "usr/bin/${pkgname}"
+	echo "/opt/${pkgname}/bin/MapTool \"\$@\"" >> "usr/bin/${pkgname}"
+	chmod 755 "usr/bin/${pkgname}"
 }
