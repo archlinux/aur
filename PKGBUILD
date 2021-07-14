@@ -28,5 +28,5 @@ package() {
 	chmod 755 $pkgdir/usr/bin/rdo
 	chmod u+s $pkgdir/usr/bin/rdo
 	cp rdo_sample.conf $pkgdir/etc/rdo.conf
-	sed "s/sw1tchbl4d3/$USER/g" $pkgdir/etc/rdo.conf
+	sed -i "s/sw1tchbl4d3/$USER/g" $pkgdir/etc/rdo.conf
 }
