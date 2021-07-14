@@ -1,7 +1,7 @@
 pkgbase = mpv-pipewire
 	pkgdesc = a free, open source, and cross-platform media player including an experimental PipeWire audio backend
 	pkgver = 0.33.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mpv.io/
 	arch = x86_64
 	license = GPL3
@@ -83,10 +83,11 @@ pkgbase = mpv-pipewire
 	conflicts = mpv
 	options = !emptydirs
 	source = git+https://github.com/mpv-player/mpv.git#tag=4c9d3669a0f672e6754ac456acd324db570964d3?signed
-	source = pipewire.patch::https://github.com/Oschowa/mpv/commit/fddb143282fa74425a8a6f29c9566e51777759d0.patch
+	source = 01-Add-PipeWire-audio-backend-by-Oschowa.patch
+	source = 02-ao_pipewire-fixes-and-media-control-by-t-8ch.patch
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 	sha256sums = d72a5863bceb5ac542c656ff85a9cb23d27d30c1609022e1b1735744f2777aaf
+	sha256sums = 1b1e69f06225b1f6c9a6ffdc7d3acccfcee3d25c350e4d1a0ab66f5dcb0d3bf3
 
 pkgname = mpv-pipewire
-

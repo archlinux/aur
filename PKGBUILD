@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=${_pkgname}-pipewire
 _tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
 pkgver=0.33.1
-pkgrel=4
+pkgrel=5
 pkgdesc='a free, open source, and cross-platform media player including an experimental PipeWire audio backend'
 arch=('x86_64')
 # We link against libraries that are licensed GPLv3 explicitly, so our
@@ -33,9 +33,11 @@ conflicts=('mpv')
 options=('!emptydirs')
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed"
-        "pipewire.patch::https://github.com/Oschowa/mpv/commit/fddb143282fa74425a8a6f29c9566e51777759d0.patch")
+        "01-Add-PipeWire-audio-backend-by-Oschowa.patch"
+        "02-ao_pipewire-fixes-and-media-control-by-t-8ch.patch")
 sha256sums=('SKIP'
-            'd72a5863bceb5ac542c656ff85a9cb23d27d30c1609022e1b1735744f2777aaf')
+            'd72a5863bceb5ac542c656ff85a9cb23d27d30c1609022e1b1735744f2777aaf'
+            '1b1e69f06225b1f6c9a6ffdc7d3acccfcee3d25c350e4d1a0ab66f5dcb0d3bf3')
 
 prepare() {
   cd ${_pkgname}
@@ -44,7 +46,11 @@ prepare() {
   git cherry-pick -n 7c4465cefb27d4e0d07535d368febdf77b579566
   
   # patch mpv with the PipeWire audio backend
-  patch -Np1 -i ../pipewire.patch
+  #https://github.com/Oschowa/mpv/commit/fddb143282fa74425a8a6f29c9566e51777759d0
+  patch -Np1 -i ../01-Add-PipeWire-audio-backend-by-Oschowa.patch
+  # add ao_pipewire fixes and media control
+  # https://github.com/Oschowa/mpv/pull/1
+  patch -Np1 -i ../02-ao_pipewire-fixes-and-media-control-by-t-8ch.patch
 }
 
 build() {
