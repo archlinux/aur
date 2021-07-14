@@ -14,7 +14,7 @@ replaces=('mt7610u_wifi_sta')
 depends=('linux')
 makedepends=('git' 'linux-headers')
 install="depmod.install"
-source=("mt7610u_wifi_sta-alt"::"git+https://github.com/BannedPatriot/mt7610u_wifi_sta.git")
+source=("git+https://github.com/BannedPatriot/mt7610u_wifi_sta.git")
 md5sums=('SKIP')
 
 pkgver() {
