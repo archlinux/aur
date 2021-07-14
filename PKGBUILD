@@ -1,10 +1,9 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-fbneo
 pkgname=$_pkgname-git
 pkgver=1.0.0.02.r448.g57c1fc5ed
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="FinalBurn Neo multi-arcade core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -39,5 +38,5 @@ package() {
 	cd $_pkgname/src
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro burner/libretro/fbneo_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname license.txt
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname license.txt
 }
