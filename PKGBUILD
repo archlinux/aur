@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-service-bin
 _pkgname=mkl-service
-_pkgver=2.3.0
-_build=py39h27cfd23_1
+_pkgver=2.4.0
+_build=py39h7f8727e_0
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
 epoch=1
@@ -14,7 +14,7 @@ provides=('python-mkl-service')
 conflicts=('python-mkl-service')
 depends=('python' 'intel-mkl')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('7dedbd5b9db676aa6e1dbba36563146e0824ffc905931c83edd4badc72d56bb6')
+sha256sums=('5394f5efd53afb2c1b0abf571ce3d9cb684b6c7e255f140ba2acaa703d6113be')
 
 package() {
   mkdir "${pkgdir}/usr"
