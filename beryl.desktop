@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Beryl
+Exec=beryl %f
+Icon=beryl.png
+Type=Application
+Categories=Utility;
+Terminal=false
+MimeType=application/x-beryl-profile
+MimeType=application/x-beryl-plugin-archive
