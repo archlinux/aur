@@ -1,0 +1,13 @@
+diff --git a/externals/sirit/CMakeLists.txt b/externals/sirit/CMakeLists.txt
+index 3b0574f..311f4b7 100644
+--- a/externals/sirit/CMakeLists.txt
++++ b/externals/sirit/CMakeLists.txt
+@@ -81,7 +81,7 @@ endif()
+ enable_testing(true)
+ 
+ # SPIR-V headers
+-add_subdirectory(externals/SPIRV-Headers EXCLUDE_FROM_ALL)
++find_package(SPIRV-Headers REQUIRED)
+ 
+ # Sirit project files
+ add_subdirectory(src)

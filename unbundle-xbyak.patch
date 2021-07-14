@@ -1,0 +1,15 @@
+diff --git a/externals/CMakeLists.txt b/externals/CMakeLists.txt
+index fd427a9..94f59f8 100644
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -6,9 +6,7 @@ include(DownloadExternals)
+ 
+ # xbyak
+ if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
+-    add_library(xbyak INTERFACE)
+-    target_include_directories(xbyak SYSTEM INTERFACE ./xbyak/xbyak)
+-    target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
++    find_package(xbyak REQUIRED)
+ endif()
+ 
+ # Catch

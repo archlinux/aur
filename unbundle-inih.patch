@@ -1,0 +1,39 @@
+diff --git a/externals/CMakeLists.txt b/externals/CMakeLists.txt
+index fd427a9..75ec83e 100644
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -31,7 +31,7 @@ endif()
+ add_subdirectory(glad)
+ 
+ # inih
+-add_subdirectory(inih)
++pkg_check_modules(inih REQUIRED IMPORTED_TARGET GLOBAL INIReader)
+ 
+ # mbedtls
+ add_subdirectory(mbedtls EXCLUDE_FROM_ALL)
+diff --git a/src/yuzu_cmd/CMakeLists.txt b/src/yuzu_cmd/CMakeLists.txt
+index 4bf2572..5c1141d 100644
+--- a/src/yuzu_cmd/CMakeLists.txt
++++ b/src/yuzu_cmd/CMakeLists.txt
+@@ -27,7 +27,7 @@ add_executable(yuzu-cmd
+ create_target_directory_groups(yuzu-cmd)
+ 
+ target_link_libraries(yuzu-cmd PRIVATE common core input_common)
+-target_link_libraries(yuzu-cmd PRIVATE inih glad)
++target_link_libraries(yuzu-cmd PRIVATE PkgConfig::inih glad)
+ if (MSVC)
+     target_link_libraries(yuzu-cmd PRIVATE getopt)
+ endif()
+diff --git a/src/yuzu_cmd/config.cpp b/src/yuzu_cmd/config.cpp
+index 325584a..a8c25c7 100644
+--- a/src/yuzu_cmd/config.cpp
++++ b/src/yuzu_cmd/config.cpp
+@@ -15,7 +15,7 @@
+ #pragma clang diagnostic pop
+ #endif
+ 
+-#include <inih/cpp/INIReader.h>
++#include <INIReader.h>
+ #include "common/fs/file.h"
+ #include "common/fs/fs.h"
+ #include "common/fs/path_util.h"

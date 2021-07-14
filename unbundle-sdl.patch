@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 716256c..7e88bae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -389,7 +389,7 @@ if (ENABLE_SDL2)
+         target_include_directories(SDL2 INTERFACE "${SDL2_INCLUDE_DIR}")
+     else()
+         if (YUZU_ALLOW_SYSTEM_SDL2)
+-            find_package(SDL2 2.0.15 QUIET)
++            find_package(SDL2 2.0.14 REQUIRED)
+ 
+             if (SDL2_FOUND)
+                 # Some installations don't set SDL2_LIBRARIES
+diff --git a/src/input_common/sdl/sdl_impl.cpp b/src/input_common/sdl/sdl_impl.cpp
+index 68672a9..b2c2bfe 100644
+--- a/src/input_common/sdl/sdl_impl.cpp
++++ b/src/input_common/sdl/sdl_impl.cpp
+@@ -823,7 +823,6 @@ SDLState::SDLState() {
+ 
+     // Enable HIDAPI rumble. This prevents SDL from disabling motion on PS4 and PS5 controllers
+     SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE, "1");
+-    SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS5_RUMBLE, "1");
+ 
+     // Tell SDL2 to use the hidapi driver. This will allow joycons to be detected as a
+     // GameController and not a generic one
