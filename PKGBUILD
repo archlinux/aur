@@ -3,16 +3,16 @@
 
 pkgbase=unfog-cli
 pkgname=${pkgbase}-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A simple task & time manager written in Haskell"
 arch=('any')
-url="https://github.com/soywod/unfog"
+url="https://github.com/soywod/unfog.cli"
 license=('BSD')
 depends=()
 makedepends=()
 source=("$pkgbase-$pkgver.tar.gz::$url/releases/download/v$pkgver/unfog-linux.tar.gz")
-sha256sums=('f1f1990bf1e4298c96da933605085f95fdeb7dac3dcca820f26d4661329bc58d')
+sha256sums=('49e9d5f4078b8c9fd38c5a254ff6fcfa62fa980808110684040cf66479112ac9')
 
 package() {
     cd "$srcdir"
