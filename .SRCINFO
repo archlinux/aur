@@ -1,0 +1,14 @@
+pkgbase = heliocron
+	pkgdesc = Execute tasks relative to sunset, sunrise and other such solar events
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/mfreeborn/heliocron
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = heliocron-0.5.0.tar.gz::https://crates.io/api/v1/crates/heliocron/0.5.0/download
+	b2sums = 93d5b0a0b2ad6141bbb8d893bff3f894382c77a0e79e35adaa09607dddc6eb155720c4f1003e994784e5249557339855c00ed84339c058d7dd79e94a16dd6e09
+
+pkgname = heliocron
