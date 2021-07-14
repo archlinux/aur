@@ -1,30 +1,33 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='neix'
-pkgver=0.1.3
+pkgname=neix
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='RSS/Atom feed reader for your terminal'
 arch=('x86_64')
-url='https://github.com/tomschwarz/neix'
+url="https://github.com/tomschwarz/neix"
 license=('GPL3')
+conflicts=('neix-git')
 depends=('ncurses')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('56515164cec7ec51fff4181f7b5e95ada80dab493305c7cf192e8b4aae924f41')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha512sums=('85db547eba97b112895abd998f7f597a425aff5e37e917052c7c4fff3d7a8b14bf3c5704abc60ac6b3a9f6d7c25d0d690c64c06407927015036c2b733d18d7db')
+
+prepare() {
+	mkdir -p "$pkgname-$pkgver"/build
+}
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
-  cmake -B 'build' -S "${pkgname}-${pkgver}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -Wno-dev
-  make -C 'build'
+	cd "$pkgname-$pkgver"/build
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_INSTALL_PREFIX="/usr" \
+	      -DCMAKE_INSTALL_LIBDIR="lib" \
+	      ..
+	make
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX='/usr' -C 'build' install
-  install -Dvm644 "${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+	cd "$pkgname-$pkgver"/build
+	DESTDIR="$pkgdir" make install
 }
-
-# vim: ts=2 sw=2 et:
