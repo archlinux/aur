@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.13.1 Kernel Configuration
+# Linux/x86 5.13.2 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -2450,7 +2450,13 @@ CONFIG_USB_CATC=m
 # CONFIG_WLAN is not set
 # CONFIG_WAN is not set
 # CONFIG_IEEE802154_DRIVERS is not set
+
+#
+# Wireless WAN
+#
 # CONFIG_WWAN is not set
+# end of Wireless WAN
+
 # CONFIG_VMXNET3 is not set
 # CONFIG_FUJITSU_ES is not set
 # CONFIG_NETDEVSIM is not set
@@ -4677,7 +4683,6 @@ CONFIG_EDAC_AMD64=m
 # CONFIG_EDAC_I5000 is not set
 # CONFIG_EDAC_I5100 is not set
 # CONFIG_EDAC_I7300 is not set
-# CONFIG_EDAC_IGEN6 is not set
 CONFIG_RTC_LIB=y
 CONFIG_RTC_MC146818_LIB=y
 CONFIG_RTC_CLASS=y
@@ -5822,7 +5827,6 @@ CONFIG_PSTORE_COMPRESS_DEFAULT="zstd"
 # CONFIG_PSTORE_PMSG is not set
 # CONFIG_PSTORE_FTRACE is not set
 # CONFIG_PSTORE_RAM is not set
-# CONFIG_PSTORE_BLK is not set
 # CONFIG_SYSV_FS is not set
 # CONFIG_UFS_FS is not set
 # CONFIG_EROFS_FS is not set
