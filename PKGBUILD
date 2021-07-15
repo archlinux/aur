@@ -2,13 +2,13 @@
 _pkgname=python-ads
 pkgname=$_pkgname-git
 pkgver=r312.63e1e53
-pkgrel=3
+pkgrel=1
 pkgdesc="Python tool for ADS "
 arch=('any')
 url="https://github.com/andycasey/ads"
 license=('MIT')
 groups=()
-depends=()
+depends=('python-werkzeug')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
