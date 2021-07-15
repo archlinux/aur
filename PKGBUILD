@@ -1,16 +1,20 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-orange-widget-base
-pkgver=4.12.0
+pkgver=4.13.1
 pkgrel=1
 pkgdesc="Base widget and workflow definitions for Orange."
 arch=('i686' 'x86_64')
 url="http://orange.biolab.si/"
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python-chardet' 'python-docutils' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib' 'python-scikit-learn' 'python-psycopg2' 'python-joblib' 'python-keyrings-alt' 'python-bottleneck' 'python-anyqt' 'qt5-svg' 'python-pip' 'python-serverfiles' 'python-louvain' 'python-xlsxwriter' 'python-opentsne' 'python-networkx' 'python-requests' 'python-pandas')
-source=("https://github.com/biolab/orange-widget-base/archive/${pkgver}.tar.gz")
-sha256sums=('bcdc78a36cfb8760b677b879ca4de1d8e57ea02109df8a47910e39a66a7ef985')
+depends=('python-matplotlib'
+         'python-pyqtgraph'
+         'python-anyqt'
+         'python-typing_extensions'
+         'python-orange-canvas-core')
+source=("https://files.pythonhosted.org/packages/source/o/${pkgname/python-}/${pkgname/python-}-${pkgver}.tar.gz")
+sha256sums=('48d34904345b1779e757e525b0aa38d99cad25c0eb3aa3b0182a37bb14b110d7')
 
 build() {
   cd "${srcdir}/orange-widget-base-$pkgver"
