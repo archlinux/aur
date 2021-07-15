@@ -1,6 +1,6 @@
 pkgbase = python-zulip-term-git
 	pkgdesc = An interactive terminal interface for Zulip
-	pkgver = 0.6.0.r23.501fac4bbe
+	pkgver = 0.6.0.r284.b7434b57d7
 	pkgrel = 1
 	url = https://github.com/zulip/zulip-terminal
 	arch = any
@@ -21,4 +21,3 @@ pkgbase = python-zulip-term-git
 	sha512sums = SKIP
 
 pkgname = python-zulip-term-git
-
