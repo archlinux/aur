@@ -84,7 +84,7 @@ build() {
 	cmake -S yuzu-mainline -B build -G Ninja \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/_0_/-} \
-		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDISPLAY_VERSION=${pkgver##*_} \
 		-DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
