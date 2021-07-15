@@ -1,8 +1,8 @@
 pkgbase = okular-backend-mupdf-git
 	pkgdesc = MuPDF-based backend for Okular (git version)
-	pkgver = r78.7b2858a
-	pkgrel = 2
-	url = https://invent.kde.org/sandsmark/okular-mupdf-backend
+	pkgver = r81.1ba0160
+	pkgrel = 1
+	url = https://github.com/gustawho/okular-backend-mupdf
 	arch = x86_64
 	license = AGPL
 	makedepends = extra-cmake-modules
@@ -13,10 +13,7 @@ pkgbase = okular-backend-mupdf-git
 	depends = mujs
 	provides = okular-backend-mupdf
 	conflicts = okular-backend-mupdf
-	source = git+https://invent.kde.org/sandsmark/okular-mupdf-backend.git
-	source = FindGumboParser.patch
+	source = git+https://github.com/gustawho/okular-backend-mupdf.git
 	sha1sums = SKIP
-	sha1sums = 3f69e002e89e1c2a5cf7bc5dda03e2cfd1aa0180
 
 pkgname = okular-backend-mupdf-git
-
