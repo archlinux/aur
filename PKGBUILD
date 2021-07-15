@@ -1,16 +1,16 @@
 # Maintainer: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=5.24.0
+pkgver=5.25.0
 pkgrel=1
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 url="http://map.project-osrm.org/"
-depends=("expat" "boost-libs" "lua52" "intel-tbb")
+depends=("expat" "boost-libs" "lua" "intel-tbb")
 makedepends=("cmake" "boost")
 arch=('x86_64')
 license=('BSD')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v$pkgver.tar.gz")
-sha256sums=("a66b20e7ffe83e5e5fe12324980320e12a6ec2b05f2befd157de5c60c665613c")
+sha256sums=("6da276d609a54600bb37007fd98d14c2a48639f51dda0d962b5801dd0118dfbb")
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -24,7 +24,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=ON
+        -DBUILD_SHARED_LIBS=ON \
+        -DLUA_INCLUDE_DIR=/usr/include
     make VERBOSE=1
 }
 
