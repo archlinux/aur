@@ -3,31 +3,21 @@
 
 pkgname=authpass-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Keepass compatible password manager based on Flutter'
 arch=('x86_64')
 url='https://authpass.app'
 license=('GPL3')
 depends=('gtk3' 'libsecret')
-makedepends=('gendesk')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/authpass/authpass/releases/download/v$pkgver/$_pkgname-linux-${pkgver}_1710.tar.gz"
-        "$_pkgname-$pkgver.svg::https://raw.githubusercontent.com/authpass/authpass/v$pkgver/_docs/authpass-logo.svg")
-sha256sums=('c8741ec35b565151d514013d7578e17cf1c77d1fb4d15286e70728401755d2f6'
-            '1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b')
-
-prepare() {
-  gendesk -f -n \
-    --pkgname="$_pkgname" \
-    --pkgdesc="$pkgdesc" \
-    --name="AuthPass" \
-    --comment="$pkgdesc" \
-    --exec="$_pkgname" \
-    --icon="$_pkgname" \
-    --categories='Utility'
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/authpass/authpass/releases/download/v$pkgver/$_pkgname-linux-${pkgver}_1717.tar.gz"
+        "$_pkgname-$pkgver.svg::https://raw.githubusercontent.com/authpass/authpass/v$pkgver/_docs/authpass-logo.svg"
+        "${_pkgname}.desktop")
+sha256sums=('e93290b407fc5268da821f99e5858f405ee51ffe6901a43a36b5ae0203d22dc5'
+            '1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b'
+            '8260ede1bb38264aa92227dee1b3edd0d66b1f963872d4254549c08c7ca409dd')
 
 package() {
   install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
