@@ -1,14 +1,14 @@
 pkgbase = cin-appimage
 	pkgdesc = Cinelerra GG Infinity (AppImage) is a free and open source video editing software for Linux.
-	pkgver = 20210531
+	pkgver = 20210630
 	pkgrel = 0
 	arch = x86_64
 	license = GPL
 	provides = cinelerra-gg
 	conflicts = cinelerra-gg-git cin
 	options = !strip
-	source = https://cinelerra-gg.org/download/images/CinGG-20210531-x86_64.AppImage
-	md5sums = 5dd029603a2d4a9384ab5f21135069bc
+	source = https://cinelerra-gg.org/download/images/CinGG-20210630-x86_64.AppImage
+	md5sums = fbfbb574cba3b5d6e1d3f05a4f025873
 
 pkgname = cin-appimage
 
