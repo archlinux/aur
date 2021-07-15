@@ -25,6 +25,11 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	# use makepkg.conf optimization flag
+	sed -i 's/-O3//g' $_pkgname/Makefile
+}
+
 build() {
 	make -C $_pkgname \
 		HAVE_PARALLEL_RDP=1 \
