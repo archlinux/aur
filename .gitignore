@@ -1,0 +1,6 @@
+/src
+/pkg
+*.tar
+*.tar.*
+
+/rr-zen-workaround

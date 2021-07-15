@@ -1,0 +1,8 @@
+PACKAGE_NAME="rr-zen-workaround"
+PACKAGE_VERSION="@PACKAGE_VERSION@"
+BUILT_MODULE_NAME[0]="zen_workaround"
+DEST_MODULE_NAME[0]="rr_zen_workaround"
+BUILT_MODULE_LOCATION[0]=""
+DEST_MODULE_LOCATION[0]="/kernel/drivers/misc"
+AUTOINSTALL="yes"
+BUILD_EXCLUSIVE_ARCH="(x86|i.86|x86_64|amd64)"
