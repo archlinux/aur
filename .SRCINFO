@@ -27,12 +27,10 @@ pkgbase = waterfox-classic-kpe
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
-	depends = nss>=3.44.4
 	depends = sqlite>=3.33
 	depends = ttf-font
 	depends = icu
 	depends = kwaterfoxhelper
-	depends = nspr>=4.21.1
 	depends = hicolor-icon-theme
 	depends = jemalloc
 	depends = libevent

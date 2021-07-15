@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss>=3.44.4' 'sqlite>=3.33' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.21.1' 'hicolor-icon-theme' 'jemalloc' 'libevent')
+         'sqlite>=3.33' 'ttf-font' 'icu' 'kwaterfoxhelper' 'hicolor-icon-theme' 'jemalloc' 'libevent')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'git' 'nasm')
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -95,8 +95,9 @@ ac_add_options --enable-chrome-format=omni
 ac_add_options --x-libraries=/usr/lib
 
 # System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+#Building with system NSS and NSPR can cause issues
+#ac_add_options --with-system-nspr
+#ac_add_options --with-system-nss
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
