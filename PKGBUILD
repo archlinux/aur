@@ -14,10 +14,12 @@ depends=('glibc' 'gcc-libs-multilib' 'bzip2' 'zlib' 'openssl-1.0')
 makedepends=('git' 'yasm')
 source=("git+https://github.com/moinakg/${_pkgname}.git"
         "http://wavpack.com/wavpack-${_wavpack_ver}.tar.bz2"
-        "https://github.com/moinakg/pcompress/pull/55.patch")
+        "openssl.patch::https://github.com/moinakg/pcompress/pull/55.patch"
+        "gcc11.patch::https://github.com/moinakg/pcompress/pull/56.patch")
 md5sums=('SKIP'
          '4c0186ef0dc8367ce5cd7cc0f398b714'
-         '22f1a4e1bf373c6f6b86c49f70ee3be3')
+         '22f1a4e1bf373c6f6b86c49f70ee3be3'
+         '2ba6de31e06aded3b5478c41804a2441')
 
 pkgver() {
   cd "$_pkgname"
@@ -26,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git apply -v ${srcdir}/55.patch
+  git apply -v ${srcdir}/{openssl,gcc11}.patch
 }
 
 build() {
