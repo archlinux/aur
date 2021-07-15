@@ -1,7 +1,7 @@
 pkgbase = pulseeffects-legacy
 	pkgdesc = Audio Effects for Pulseaudio Applications, without pipewire
 	pkgver = 4.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
 	license = GPL3
@@ -35,10 +35,9 @@ pkgbase = pulseeffects-legacy
 	optdepends = yelp: help documentation
 	provides = pulseeffects
 	conflicts = pulseeffects
-	source = pulseeffects-4.8.5.tar.gz::https://github.com/wwmm/pulseeffects/archive/v4.8.5.tar.gz
+	source = https://github.com/wwmm/pulseeffects/archive/v4.8.5.tar.gz
 	source = https://raw.githubusercontent.com/wwmm/pulseeffects/7c570c6e1354adedf01f7ba1e8fbe063cfc15ff2/data/pulseeffects.svg
-	sha256sums = df1c4c4a9811c62a549822dacde3a9e36233ba3ec58817ae52a236f6181a507c
+	sha256sums = ff04fc3c768c2da9c1a06546b42f6fa7da5b2501b356fd733895b9e12fda7557
 	sha256sums = f9167f96246879eecd907a504b0a70050dc4d90fa520c556c813336974754350
 
 pkgname = pulseeffects-legacy
-
