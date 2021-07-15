@@ -1,26 +1,36 @@
-# maintainer Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Storm Dragon <stormdragon2976@gmail.com>
+# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
-pkgname='python-txtorcon'
-_pkgname='txtorcon'
+pkgname=python-txtorcon
 pkgver=20.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Twisted-based Python asynchronous controller library for Tor'
 arch=('any')
 url='https://txtorcon.readthedocs.org/'
 license=('MIT')
-depends=('python-geoip' 'python-twisted')
+depends=('python-automat' 'python-twisted')
 makedepends=('python-setuptools')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/meejah/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('8a685140f69d993a2a7808c862059bcaceee74d413ab380c13cfdade7d5749d0a8db5a3c10267050102d75a7bd66c62e327b9300d5b34e2cdc4649a2c60cc9af')
+checkdepends=('python-mock' 'python-cryptography' 'python-pyopenssl' 'lsof')
+source=("${pkgname#python-}-${pkgver}.tar.gz::https://github.com/meejah/txtorcon/releases/download/v${pkgver}/txtorcon-${pkgver}.tar.gz"
+        "${pkgname#python-}-${pkgver}.tar.gz.asc::https://github.com/meejah/txtorcon/releases/download/v${pkgver}/txtorcon-${pkgver}.tar.gz.asc")
+sha512sums=('4856c86b3eac432b8e2dddec4d4ef3172452d084a5685f90335d366e918e2e80a223a7a31ff78ddb6dff1ddbbfc1e26f6d0ae9fb99bd47d6894cc6dd29365da8'
+            'SKIP')
+validpgpkeys=('9D5A2BD5688ECB889DEBCD3FC2602803128069A7')
 
 build() {
-  cd "$srcdir"/${_pkgname}-${pkgver}
+  cd "${pkgname#python-}-${pkgver}"
   python setup.py build
 }
- 
+
+check() {
+  cd "${pkgname#python-}-${pkgver}"
+  PYTHONPATH=. trial test
+}
+
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname#python-}-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  rm -r "${pkgdir}/usr/share/txtorcon"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
