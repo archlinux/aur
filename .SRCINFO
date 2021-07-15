@@ -32,7 +32,7 @@ pkgbase = yuzu
 	depends = cubeb
 	depends = qt5-webengine>=5.12
 	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-686
-	source = git+https://github.com/discordapp/discord-rpc.git
+	source = git+https://github.com/discord/discord-rpc.git
 	source = git+https://github.com/MerryMage/dynarmic.git
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
 	source = git+https://github.com/ReinUsesLisp/sirit.git

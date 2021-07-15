@@ -35,7 +35,7 @@ makedepends=(
 )
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//_/-}"
-	'git+https://github.com/discordapp/discord-rpc.git'
+	'git+https://github.com/discord/discord-rpc.git'
 	'git+https://github.com/MerryMage/dynarmic.git'
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
