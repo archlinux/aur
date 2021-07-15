@@ -1,6 +1,6 @@
 pkgbase = python-mkl-random-bin
 	pkgdesc = Sampling probability distributions using Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 1.2.1.anaconda2
+	pkgver = 1.2.2.anaconda0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/IntelPython/mkl_random
@@ -10,8 +10,7 @@ pkgbase = python-mkl-random-bin
 	depends = python-numpy
 	provides = python-mkl-random
 	conflicts = python-mkl-random
-	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl_random-1.2.1-py39ha9443f7_2.tar.bz2
-	sha256sums = dd9a5a5ab99730ab3f08ffc14295ef76a96c8dc506bcd32877f9838d1aa8a386
+	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl_random-1.2.2-py39h51133e4_0.tar.bz2
+	sha256sums = f81f426f8ef306d636664bc49e7cdd70e2b4306d7c6bcb9c75fe35a45ab2087a
 
 pkgname = python-mkl-random-bin
-

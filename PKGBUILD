@@ -1,8 +1,8 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-random-bin
 _pkgname=mkl_random
-_pkgver=1.2.1
-_build=py39ha9443f7_2
+_pkgver=1.2.2
+_build=py39h51133e4_0
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
 epoch=1
@@ -14,12 +14,12 @@ provides=('python-mkl-random')
 conflicts=('python-mkl-random')
 depends=('python-mkl-service' 'python-numpy')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('dd9a5a5ab99730ab3f08ffc14295ef76a96c8dc506bcd32877f9838d1aa8a386')
+sha256sums=('f81f426f8ef306d636664bc49e7cdd70e2b4306d7c6bcb9c75fe35a45ab2087a')
 
 package() {
   mkdir "${pkgdir}/usr"
   cp -drp --no-preserve=ownership "${srcdir}/lib" "${pkgdir}/usr/lib"
-  install -D -m 644 "${srcdir}/info/licenses/${_pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 "${srcdir}/info/licenses/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Prefix replacement:
   find "${pkgdir}" -type f -exec sed -i -e s:/opt/anaconda1anaconda2anaconda3:/usr:g {} +
