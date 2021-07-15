@@ -23,7 +23,7 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=09f457ca504da27a1b32a2c05aea27a0249b978e
+_filesrev=2a0b88ee80b2ec6bbd4642290402392185570f52
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -37,10 +37,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
         "dont-statically-link-libstdc++.patch::$_filesurl/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "classic-kde.patch::$_filesurl/patches/classic-kde.patch"
-        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch"
-        "Bug1436242.patch::$_filesurl/patches/Bug1436242.patch")
+        "classic-kde-xul.patch::$_filesurl/patches/classic-kde-xul.patch")
 sha256sums=('SKIP'
-            'f915278f7015356d83ecd718a406b605edba85ba7bbf22901228687dfd475c39'
+            '65601b7b75dc1a5b622201b02f9bd95005ca258b53f1e3d47ffe160dce6a16f3'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             '7aaf95e46c50a2f0e1df097c9cb867e73f82d0d7fdd8aa75153c1bdafbaebb20'
@@ -49,8 +48,7 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a'
-            '368cc219b010b232218cd8d86f174b3e8d95e84c7628cdf939eb5124a1be7e31')
+            'b06289812def0ddd289ab2c06b3ea2ee909bf984af7742f9fb930c8a44e1423a')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -70,8 +68,6 @@ prepare() {
   patch -Np1 -i ../classic-kde.patch
   patch -Np1 -i ../classic-kde-xul.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
-
-  patch -Np1 -i ../Bug1436242.patch
 
   cat >.mozconfig <<END
 export CC=clang
