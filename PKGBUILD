@@ -2,14 +2,14 @@
 _target="sh-elf"
 pkgname=${_target}-binutils-casio
 pkgver=2.36.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU binary utilities for the Casio calculators SuperH processors."
 arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=('binutils' 'flex' 'zlib')
 makedepends=('gcc')
-options=('!buildflags' '!emptydirs' '!libtool')
+options=('!emptydirs' '!libtool')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2")
 sha256sums=('5b4bd2e79e30ce8db0abd76dd2c2eae14a94ce212cfc59d3c37d23e24bc6d7a3')
 
@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+  export CPPFLAGS=""
   cd "${srcdir}/binutils-${pkgver}/binutils-build"
   ../configure \
     --prefix=/usr \
