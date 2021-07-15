@@ -5,7 +5,7 @@ pkgbase = pkg
 	url = https://github.com/zeit/pkg
 	arch = x86_64
 	license = MIT
-    dependsd = nodejs
+    depends = nodejs
 	makedepends = npm
 
 pkgname = pkg
