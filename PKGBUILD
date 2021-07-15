@@ -13,6 +13,9 @@ python-six
 python-retrying)
 optdepends=('ipython' 'python-ipywidgets')
 makedepends=(python-setuptools
+python-jupyter_core
+python-tornado
+jupyterlab
 npm)
 license=('MIT')
 arch=('x86_64')
