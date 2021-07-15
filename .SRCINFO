@@ -8,6 +8,7 @@ pkgbase = libretro-flycast-git
 	groups = libretro
 	license = GPL2
 	makedepends = git
+	makedepends = libglvnd
 	depends = libgl
 	depends = libretro-core-info
 	depends = libzip
