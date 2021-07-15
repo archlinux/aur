@@ -1,9 +1,10 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 _pkgname=neovim
-_pkgver=0.5.0
+_pkgver=0.6.0
 pkgname=neovim-nightly-bin
-pkgver=0.5.0+dev+1385+g93f15db5d
+# only to show a version
+pkgver=0.6.0+dev+43+g02bf251bb 
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
