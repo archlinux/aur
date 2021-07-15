@@ -1,6 +1,6 @@
 pkgname=rdo
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="A simple doas/sudo alternative."
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/sw1tchbl4d3/rdo
@@ -12,7 +12,7 @@ source=(
 )
 
 sha512sums=(
-"25084a61bfa2df5e42ba71cc8244f362c16eff77c0f6b00e799fbf85661f8fb5f7b181d3027ff9f3becd899178cebb6635eb403057cae6717b1887d8c2841bdf"
+"110c42a67510f165a7c5736ce9505f45538d6fc4860b5bb0f2b35d3e98ec47395c50e981e8ce0cdfb949ea84a72b72fc18c29be7986d5b881598b7da48d9c898"
 )
 
 build() {
@@ -28,6 +28,7 @@ package() {
 	chown root:root $pkgdir/usr/bin/rdo
 	chmod 755 $pkgdir/usr/bin/rdo
 	chmod u+s $pkgdir/usr/bin/rdo
+	
 	cp rdo_sample.conf $pkgdir/etc/rdo.conf
 	sed -i "s/sw1tchbl4d3/$USER/g" $pkgdir/etc/rdo.conf
 }
