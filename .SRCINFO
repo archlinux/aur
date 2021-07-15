@@ -1,8 +1,9 @@
 pkgbase = beryl
 	pkgdesc = Extendable timer using electron.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BrenekH/beryl
+	install = beryl.install
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
