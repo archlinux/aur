@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Brahma Sharma <brahmasharma@protonmail.com>
-pkgname=emeraldpl-git
+pkgname=blang-git
 pkgver=trunk
 pkgrel=1
 epoch=
