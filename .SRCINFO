@@ -1,19 +1,19 @@
 pkgbase = nuxhash-git
 	pkgdesc = A NiceHash cryptocurrency mining client for Linux.
 	pkgver = v1.0.0b2.r33.g33e9a09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YoRyan/nuxhash
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = python-pip
 	depends = python
 	depends = curl
 	depends = nvidia
 	depends = opencl-nvidia
 	optdepends = python-wxpython: GUI support
 	source = git+https://github.com/YoRyan/nuxhash.git
+	source = nuxhash-gui.desktop
 	sha256sums = SKIP
+	sha256sums = 779c28c990c97b6c6fb2b2ad1cf84ff99dcdf5c1b72f034750994fdc8a645055
 
 pkgname = nuxhash-git
-
