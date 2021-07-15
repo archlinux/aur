@@ -1,24 +1,26 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=cursewords
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Terminal-based crossword puzzle solver"
 arch=('any')
 url="https://github.com/thisisparker/cursewords"
 license=('AGPL3')
-depends=('python' 'python-blessed' 'python-puzpy')
-source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('45975dd4af34e8f50d8fd51d6d1b1890e0b8bf9edd9213589f6d64ba79c4b9e7b9ac8d41602e8b6d1f014e4b793224ff0b266885da14b3c6ad5531495a89a98b')
+depends=('python3'
+         'python-blessed'
+         'python-puzpy')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/c/cursewords/cursewords-$pkgver.tar.gz")
+sha512sums=('dc2b41d44aa6e6e941ee0e7d170cabeebd1091aca45f794a349f37037a7bd0f16e314be860ca8121a5a8f3ea882ca942dd3850fbf7b78eaa4ffe768cf156398c')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-
-  python setup.py build
+	cd "$pkgname-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
-  python setup.py install --prefix=/usr --root="$pkgdir"
+	cd "$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
