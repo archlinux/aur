@@ -1,20 +1,20 @@
 # Maintainer: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
-pkgver=3.5
-pkgrel=3
+pkgver=3.5.6.1
+pkgrel=1
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://pronova.com.br/download-tokens"
 license=('custom:copyright')
-depends=('pcsclite' 'gdbm183' 'wxgtk2' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
+depends=('pcsclite' 'wxgtk2' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
 optdepends=('acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
-source_x86_64=("http://www.pronova-usa.com/downloads/aet/SafeSign_3_5_Ubuntu_1604LTS_x86_x64.zip")
-sha512sums_x86_64=('d56bb7f8918a9d488597389e95f032181cb9e356e245406a672fe8fc899153f664bc6ec620b0d166c2340ff2c5a7259c837e0ce762c6a615da6e253e7f461fe0')
+source_x86_64=("https://www.uziregister.nl/binaries/uziregister/documenten/publicaties/2020/09/02/safesign-version-$pkgver-for-linux/SafeSign+IC+Standard+Linux+$pkgver-AET.000+ub1804+$arch.deb.zip")
+sha256sums_x86_64=('3c0c4b40d6026a110e7c4dd91ecd0aca4b44fda0576908e1b93f01ef7fb275d8')
 
 prepare() {
-  ar x SafeSign_IC_Standard_Linux_3.5.0.0_Ubuntu_1604LTS_x86_64.deb
+  ar x 'SafeSign IC Standard Linux 3.5.6.1-AET.000 ub1804 x86_64.deb'
   tar xvf data.tar.xz
 }
 
