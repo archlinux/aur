@@ -1,13 +1,14 @@
 pkgbase = beam-wallet-bin
 	pkgdesc = Beam Desktop GUI Wallet
-	pkgver = 5.3.10410.3657
+	pkgver = 6.0.11647.433
 	pkgrel = 1
 	url = https://beam.mw
 	arch = x86_64
 	license = Apache
-	conflicts = beamwallet-bin
-	source = https://builds.beam.mw/mainnet/2021.02.25/Release/linux/Beam-Wallet-5.3.10410.3657.deb
-	sha256sums = b4f9b07657b9980321c508f61045be9b6b967b4d6037896f1b1b100cd07601ab
+	source = beam-wallet-bin-6.0.11647.433.tar::https://github.com/BeamMW/beam-ui/releases/download/beam-6.0.11647.4336/Beam-Wallet-6.0.11647.433.tar
+	source = beam-wallet-bin-6.0.11647.433.tar.asc::https://github.com/BeamMW/beam-ui/releases/download/beam-6.0.11647.4336/Beam-Wallet-6.0.11647.433.tar.asc
+	validpgpkeys = 9FEC539DB8E4EA8B
+	sha256sums = ebeac2f165f8ec723cfe1cfc4c3e0a902c3f75f6cfc46ab804938868acd6c3eb
+	sha256sums = SKIP
 
 pkgname = beam-wallet-bin
-
