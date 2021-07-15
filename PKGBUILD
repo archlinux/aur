@@ -20,6 +20,12 @@ makedepends=(
   python-pip
   python-poetry
 )
+optdepends=(
+  'python-boto3: Amazon Simple Queue Service message queue support'
+  'python-redis: redis broker support'
+  'python-psutil: resource usage limit support'
+  'python-pymongo: MongoDB as a message broker support'
+)
 _tag=4a8ef8f388b842b916f2ac713383192eec87b8d8
 source=(git+https://github.com/Koed00/django-q.git#tag=${_tag})
 sha256sums=(SKIP)
