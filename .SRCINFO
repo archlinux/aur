@@ -1,6 +1,6 @@
 pkgbase = boolector
 	pkgdesc = Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays.
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = http://boolector.github.io/
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = boolector
 	makedepends = cmake
 	makedepends = git
 	conflicts = boolector-git
-	source = https://github.com/Boolector/boolector/archive/3.2.1.tar.gz
+	source = https://github.com/Boolector/boolector/archive/3.2.2.tar.gz
 	sha256sums = SKIP
 	sha512sums = SKIP
 
 pkgname = boolector
-
