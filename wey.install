@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: This package is not actively maintained upstream.'
+	echo ':: For a more actively maintained fork, consider switching to lounge-lizard.'
+}
