@@ -1,4 +1,5 @@
-# Maintainer: Nicola Corna <nicola@corna.info>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Nicola Corna <nicola@corna.info>
 
 _pkgname=python-pyghdl
 pkgname=$_pkgname-git
