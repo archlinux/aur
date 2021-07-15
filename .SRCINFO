@@ -1,0 +1,15 @@
+pkgbase = emeraldpl-git
+	pkgdesc = An AUR port for the Emerald programming language.
+	pkgver = trunk
+	pkgrel = 1
+	url = https://github.com/emerald-pl/emerald.git
+	arch = any
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	depends = libevent
+	provides = emerald
+	source = git+https://github.com/emerald-pl/emerald.git
+	md5sums = SKIP
+
+pkgname = emeraldpl-git
