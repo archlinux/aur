@@ -5,8 +5,9 @@ pkgbase = adol-c
 	url = https://github.com/coin-or/ADOL-C
 	arch = x86_64
 	license = EPL
+	depends = boost
+	depends = colpack
 	source = adol-c-2.7.2.tar.gz::https://github.com/coin-or/ADOL-C/archive/releases/2.7.2.tar.gz
 	sha256sums = 701e0856baae91b98397960d5e0a87a549988de9d4002d0e9a56fa08f5455f6e
 
 pkgname = adol-c
-
