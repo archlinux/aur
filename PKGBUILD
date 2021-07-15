@@ -67,7 +67,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.16
-pkgrel=3
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
@@ -95,7 +95,7 @@ source=(
   "${_patchsource}/cjktty-patches/0001-cjktty-5.12-initial-import-from-https-github.com-zhm.patch"
   "${_patchsource}/bbr2-patches-v3/0001-bbr2-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/bfq-patches-v16/0001-bfq-patches.patch"
+  "${_patchsource}/bfq-patches-v15/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v7/0001-block-patches.patch"
   "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
@@ -124,7 +124,7 @@ b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984
         '9dfcc6b39c73945f2ba2071039a7ebf40bcfb23ab2f1cb8fe5050d86b73b34333882ea577f3b648ffeb3b76d7c0ff8d20e35b46e82726cd6970b441d266bdda1'
         'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
         '7f7421abd36991ed0c8453bc54e1b7ed787f90b0a434d8f8db7bc979723e8ed3249a99e61e4b160cde44ebc2cec4b489a24bd37bc58ddaa73f1156e65c05dfc0'
-        '7a8d7564b2aa17bbdbc9aa00d73287c353f6f1370f3670f511a4876674704aab692f84618bd324a92ebab7e4a70ce91c2905dedc8ccb8ed7050bd04f531340da'
+        '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
         'f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc'
         '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
