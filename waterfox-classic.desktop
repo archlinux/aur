@@ -210,7 +210,7 @@ Name[vi]=Mở thẻ mới
 Name[xh]=Vula ithebhu entsha
 Name[zh_CN]=打开新标签页
 Name[zh_TW]=開啟新分頁
-Exec=waterfox-classic -new-tab about:newtab
+Exec=waterfox-classic --new-tab about:newtab
 
 [Desktop Action NewWindow]
 Name=Open a New Window
@@ -318,7 +318,7 @@ Name[wo]=Palanteer bu bees
 Name[xh]=Ifestile entsha
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=waterfox-classic -new-window
+Exec=waterfox-classic --new-window
 
 [Desktop Action NewPrivateWindow]
 Name=Open a New Private Window
@@ -426,7 +426,7 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh_CN]=新建隐私浏览窗口
 Name[zh_TW]=新增隱私視窗
-Exec=waterfox-classic -private-window
+Exec=waterfox-classic --private-window
 
 [Desktop Action ProfileManagerWindow]
 Name=Open the Profile Manager
