@@ -1,7 +1,7 @@
 pkgbase = python-pyghdl-git
 	pkgdesc = Python binding for GHDL and high-level APIs
 	pkgver = 1.0.0.r495.cfa7ec61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghdl/ghdl
 	arch = any
 	license = GPL2

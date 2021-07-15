@@ -4,7 +4,7 @@
 _pkgname=python-pyghdl
 pkgname=$_pkgname-git
 pkgver=1.0.0.r495.cfa7ec61
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding for GHDL and high-level APIs'
 arch=('any')
 url='https://github.com/ghdl/ghdl'
