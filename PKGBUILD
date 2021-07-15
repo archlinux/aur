@@ -3,8 +3,8 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=90.0
-_beta=3
+_pkgver=91.0
+_beta=1
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
@@ -66,6 +66,7 @@ build() {
   if [[ -n "${SOURCE_DATE_EPOCH}" ]]; then
     export MOZ_BUILD_DATE=$(date --date "@${SOURCE_DATE_EPOCH}" "+%Y%m%d%H%M%S")
   fi
+
   ./mach create-mach-environment
   ./mach configure
   ./mach build
@@ -104,9 +105,9 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
-sha256sums=('bac200348470e50f58ea4e170db90c6749bb1227137869f6758be04f8892005e'
+sha256sums=('15809ad49feadfd34ffee70c3af0277e30288bb26bc1b5b5e2492323f0a14416'
             'SKIP'
             '4c8cc465953be36639a2bff7544c42cc45cc56c460a1a350d0656b43cc7b2eea'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
             'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
-            '81fcdc2417b6d5d028cba664758ced262bbabbe252825aeb1fa3905d42fcb0ad')
+            '86874c98733a532e4956482ec3f9dfa5bdff2d06771e09e73be1ade712c07bd0')
