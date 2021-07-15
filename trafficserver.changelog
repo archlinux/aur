@@ -1,3 +1,13 @@
+2021-07-15 Galen Sampson <youremail@domain.com>
+
+        * 9.0.2-1 :
+        Apache Traffic Server 9.0.2.
+
+        Use `python-sphinx` (python3) instead of `python2-sphinx` which used to
+        be required by the doc build in prior versions.
+
+
+
 2020-05-07 Galen Sampson <youremail@domain.com>
 
         * 8.0.7-1 :

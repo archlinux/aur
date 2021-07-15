@@ -26,10 +26,10 @@ pre_install() {
 
 post_upgrade() {
     # There are configuration changes required when upgrading to major
-    # version 8.
+    # version 9.
     if [[ "${2%%.*}" -lt 8 ]]; then
-        echo 'Please review your configuration when upgrading to v8:'
-        echo ' https://cwiki.apache.org/confluence/display/TS/Upgrading+to+v8.0'
+        echo 'Please review your configuration when upgrading to v9:'
+        echo ' https://docs.trafficserver.apache.org/en/9.0.x/release-notes/upgrading.en.html'
     fi
 }
 

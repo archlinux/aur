@@ -1,0 +1,17 @@
+diff -Naur src/tscore/unit_tests.orig/test_ts_file.cc src/tscore/unit_tests/test_ts_file.cc
+--- src/tscore/unit_tests.orig/test_ts_file.cc	2021-07-14 23:08:36.384215600 -0700
++++ src/tscore/unit_tests/test_ts_file.cc	2021-07-14 23:06:36.825609074 -0700
+@@ -48,7 +48,7 @@
+ 
+ TEST_CASE("ts_file_io", "[libts][ts_file_io]")
+ {
+-  path file("/etc/hosts");
++  path file("unit_tests/test_ts_file_load_positive.txt");
+   std::error_code ec;
+   std::string content = ts::file::load(file, ec);
+   REQUIRE(ec.value() == 0);
+diff -Naur src/tscore/unit_tests.orig/test_ts_file_load_positive.txt src/tscore/unit_tests/test_ts_file_load_positive.txt
+--- src/tscore/unit_tests.orig/test_ts_file_load_positive.txt	1969-12-31 16:00:00.000000000 -0800
++++ src/tscore/unit_tests/test_ts_file_load_positive.txt	2021-07-14 23:07:00.719328899 -0700
+@@ -0,0 +1 @@
++localhost

@@ -2,27 +2,29 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=8.0.7
+pkgver=9.0.2
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
 arch=('i686' 'x86_64')
-depends=('tcl' 'hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit')
-makedepends=('flex' 'python2-sphinx')
+depends=('hwloc' 'curl' 'libunwind' 'pcre' 'geoip' 'luajit' 'perl' 'brotli')
+makedepends=('flex' 'python-sphinx')
 
 source=(
     http://archive.apache.org/dist/"${pkgname}"/"${pkgname}"-"${pkgver}".tar.bz2
     trafficserver.tmpfiles
     trafficserver.sysusers
     trafficserver.service.in.patch
-    trafficserver.lib_perl_Makefile.in.patch)
+    trafficserver.lib_perl_Makefile.in.patch
+    trafficserver.src_tscore_unit_tests.patch)
 
-md5sums=('1a2c1ee629785580b4da6b58c04e0411'
-         '5234ec78048900590edbf6d6e3be1af9'
-         'a89c31b7753e8a9a0f83e7e0a79f5e87'
-         '89465888eb48237b68a3b1bd61eded53'
-         '719a9364900017cc05256042a51d0dc9')
+sha256sums=('ff475367aeef27eadefed1290d07241464edb27bccaea86d2a024b6b2b8e0564'
+            '8c9dbabfe7a8e0ecf9f3edb3673d1ff0cd63bf79551389047a723479b8d21fac'
+            'a4e6a00dea61aa3f98413f092711afb90795ef35676f6a8e3970f4163d360202'
+            'fc0b437ef9f9c56ceaaa99eea7075abe15200ff540cfc505e42b0a8f762128b1'
+            '6fb98a044637d6a6d7365b5e49e4a481f556b26d143898ab430e8e8dd7004277'
+            'cc56ee24659be4f81f0d70d3e4b0df0954e51647e77599baee4598d4c0339020')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
@@ -58,10 +60,11 @@ backup=(
     'etc/trafficserver/trafficserver-release'
     'etc/trafficserver/splitdns.config'
     'etc/trafficserver/storage.config'
-    'etc/trafficserver/ssl_server_name.yaml'
+    'etc/trafficserver/sni.yaml'
     'etc/trafficserver/volume.config'
     'etc/trafficserver/remap.config'
     'etc/trafficserver/ssl_multicert.config'
+    'etc/trafficserver/strategies.yaml'
     'etc/trafficserver/cache.config'
     'etc/trafficserver/body_factory/default/access#ssl_forbidden'
     'etc/trafficserver/body_factory/default/transcoding#unsupported'
@@ -84,6 +87,7 @@ backup=(
     'etc/trafficserver/body_factory/default/request#no_content_length'
     'etc/trafficserver/body_factory/default/request#cycle_detected'
     'etc/trafficserver/body_factory/default/access#proxy_auth_required'
+    'etc/trafficserver/body_factory/default/request#uri_len_too_long'
     'etc/trafficserver/body_factory/default/.body_factory_info'
     'etc/trafficserver/body_factory/default/urlrouting#no_mapping'
     'etc/trafficserver/body_factory/default/request#no_host'
@@ -91,13 +95,14 @@ backup=(
     'etc/trafficserver/body_factory/default/request#invalid_content_length'
     'etc/trafficserver/plugin.config'
     'etc/trafficserver/logging.yaml'
-    'etc/trafficserver/ip_allow.config'
+    'etc/trafficserver/ip_allow.yaml'
 )
 
 prepare() {
     cd "${srcdir}"/"${pkgname}-${pkgver}"
     patch -Np0 -u -i ../trafficserver.service.in.patch
     patch -Np0 -u -i ../trafficserver.lib_perl_Makefile.in.patch
+    patch -Np0 -u -i ../trafficserver.src_tscore_unit_tests.patch
 }
 
 build() {
@@ -110,7 +115,7 @@ build() {
 
     cd "${srcdir}"/"${pkgname}-${pkgver}"
 
-    ./configure PYTHON=python2 SPHINXBUILD=sphinx-build2 \
+    ./configure SPHINXBUILD=sphinx-build \
         --with-user=trafficserver \
         --with-group=trafficserver \
         --enable-layout=Arch
