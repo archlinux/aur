@@ -1,0 +1,15 @@
+pkgbase = ru-tts-git
+	pkgdesc = Compact and portable Russian speech synthesizer
+	pkgver = r1.e2732e9
+	pkgrel = 1
+	url = https://github.com/poretsky/ru_tts
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = rulex
+	provides = ru-tts
+	conflicts = ru-tts
+	source = ru-tts::git+https://github.com/poretsky/ru_tts.git
+	md5sums = SKIP
+
+pkgname = ru-tts-git
