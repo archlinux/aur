@@ -1,15 +1,15 @@
 pkgbase = python-spake2
-	pkgdesc = This library implements the SPAKE2 password-authenticated key exchange
+	pkgdesc = Pure-python implementation of the SPAKE2 Password-Authenticated Key
 	pkgver = 0.8
-	pkgrel = 6
-	url = https://pypi.python.org/packages/10/7d/spake2-0.8
+	pkgrel = 7
+	url = https://github.com/warner/python-spake2
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
 	depends = python-hkdf
-	source = https://files.pythonhosted.org/packages/source/s/spake2/spake2-0.8.tar.gz
-	md5sums = 0155bad518bb49c39994fe0b7d9fb32c
+	source = python-spake2-0.8.tar.gz::https://github.com/warner/python-spake2/archive/refs/tags/v0.8.tar.gz
+	sha512sums = 908c377c831f4a11551973ca917b113d51a66c533d35fd19b2692fdb7e575ed2a5045d9b632bc55c37b68ad092f01dff5da191e9dfbfb5599b72844788438d68
 
 pkgname = python-spake2
-
