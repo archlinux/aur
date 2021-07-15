@@ -1,0 +1,12 @@
+pkgbase = cpc-calc
+	pkgdesc = Text calculator with support for units and conversion
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/probablykasper/cpc
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/probablykasper/cpc/archive/refs/tags/v1.7.0.tar.gz
+	sha512sums = 864cbcfb60f80163e000f056b100ff5ffd59d9b5e0d7b3111817590fe47ede969af16a03705b27316c74d9504d03caa82bc0c1964705f75332400337d5474e0c
+
+pkgname = cpc-calc
