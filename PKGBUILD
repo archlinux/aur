@@ -4,7 +4,7 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r374.b4024d75
+pkgver=r402.86dc2b78
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = libretro-mupen64plus-next-git
 	pkgdesc = Nintendo 64 core
-	pkgver = r374.b4024d75
+	pkgver = r402.86dc2b78
 	pkgrel = 1
 	url = https://github.com/libretro/mupen64plus-libretro-nx
 	arch = arm
