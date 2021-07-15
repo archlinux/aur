@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline_0_686
+pkgver=mainline.0.686
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=(
 	'zstd>=1.5'
 )
 source=(
-	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//_/-}"
+	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'git+https://github.com/discord/discord-rpc.git'
 	'git+https://github.com/MerryMage/dynarmic.git'
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
@@ -83,10 +83,10 @@ prepare() {
 build() {
 	cmake -S yuzu-mainline -B build -G Ninja \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
-		-DBUILD_TAG=${pkgver/_0_/-} \
+		-DBUILD_TAG=${pkgver/.0./-} \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDISPLAY_VERSION=${pkgver##*_} \
+		-DDISPLAY_VERSION=${pkgver##*.} \
 		-DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DTITLE_BAR_FORMAT_IDLE="yuzu {}" \

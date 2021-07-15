@@ -1,6 +1,6 @@
 pkgbase = yuzu
 	pkgdesc = Nintendo Switch emulator
-	pkgver = mainline_0_686
+	pkgver = mainline.0.686
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = x86_64
