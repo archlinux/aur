@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.02.28.r1.gb2c1845
-pkgrel=2
+pkgver=2021.06.25.r26.g7112681
+pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
@@ -20,31 +20,31 @@ source=("${pkgname%-git}::git+https://github.com/vinceliuice/Orchis-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir/usr/share/themes"
-	./install.sh -t all -d "$pkgdir/usr/share/themes"
+  cd "$srcdir/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
-	# Remove unnecessary files:
-	rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
+  # Remove unnecessary files:
+  rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
 
-	# Plank theme
-	install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Orchis"
+  # Plank theme
+  install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Orchis"
 
-	# Wallpapers
-	install -Dm644 src/wallpaper/*.jpg -t \
-		"$pkgdir/usr/share/backgrounds/${pkgname%-git}"
+  # Wallpapers
+  install -Dm644 src/wallpaper/*.jpg -t \
+    "$pkgdir/usr/share/backgrounds/${pkgname%-git}"
 
-	# Firefox theme
-	install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
-	cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}"
+  # Firefox theme
+  install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-	# Fix for Dash to panel
-	install -d "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
-	cp -r src/gnome-shell/extensions/dash-to-panel \
-		"$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
+  # Fix for Dash to panel
+  install -d "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
+  cp -r src/gnome-shell/extensions/dash-to-panel \
+    "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
 }
