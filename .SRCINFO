@@ -1,8 +1,8 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.13.rc6.r51.g34d4f037cf69
+	pkgver = 5.14.rc1.r39.ga91f2d4c90c2
 	pkgrel = 1
-	url = https://gitlab.com/post-factum/pf-kernel/-/wikis/README
+	url = https://pf.natalenko.name/
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,10 +20,10 @@ pkgbase = linux-pf-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.13
+	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.14
 	source = config
 	sha256sums = SKIP
-	sha256sums = eead3bcabfca90b9c9a06439e1f347d142f600dc142ed502aa62da2ce74aaae7
+	sha256sums = 1c88f8fb2827faa40258528cc337ad7b467a4c0e8d6587ed41b9734b66c7a5ac
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules

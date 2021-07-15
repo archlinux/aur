@@ -1,15 +1,15 @@
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# based on testing/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.13.rc6.r51.g34d4f037cf69
-_kernel_rel=5.13
+pkgver=5.14.rc1.r39.ga91f2d4c90c2
+_kernel_rel=5.14
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
-url=https://gitlab.com/post-factum/pf-kernel/-/wikis/README
+url=https://pf.natalenko.name/
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'eead3bcabfca90b9c9a06439e1f347d142f600dc142ed502aa62da2ce74aaae7')
+            '1c88f8fb2827faa40258528cc337ad7b467a4c0e8d6587ed41b9734b66c7a5ac')
 
 pkgver() {
   cd "${_srcname}"
@@ -90,7 +90,7 @@ _package() {
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
-  rm -f "$modulesdir"/{source,build}
+  rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
@@ -121,13 +121,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
