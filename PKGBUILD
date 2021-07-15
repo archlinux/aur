@@ -2,11 +2,11 @@
 
 pkgname=rtl88x2bu-dkms-git
 _pkgbase=rtl88x2bu
-pkgver=5.8.7.1.r93.f915368
-_pkgver=5.8.7.1
+pkgver=5.8.7.4.r123.26679bf
+_pkgver=5.8.7.4
 pkgrel=1
 pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/RinCat/RTL88x2BU-Linux-Driver"
 license=('GPL2')
 depends=('dkms' 'bc')
@@ -26,3 +26,4 @@ package() {
     install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
     sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 }
+
