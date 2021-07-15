@@ -2,16 +2,14 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=pkg
-pkgver=4.4.9
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Package your Node.js project into an executable"
 arch=('x86_64')
 url="https://github.com/zeit/pkg"
 license=('MIT')
+depends=('nodejs')
 makedepends=('npm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeit/pkg/archive/${pkgver}.tar.gz")
-sha512sums=('9b20e22abd4a64f8d17100ab6757d750a37db744a9cb0d40e0c93812d7045bf51cfe43176825015b0c2846fdbfc694f0d31ba556ff538567e1387ac4608dfd32')
-noextract=("${pkgname}-${pkgver}.tar.gz")
 
 #build() {
 #  cd "${srcdir}/${pkgname}-${pkgver}"
