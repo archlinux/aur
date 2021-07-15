@@ -2,7 +2,7 @@
 # Maintainer: Tyler Johnson <TylerMackJ@gmail.com>
 
 pkgname=hexcat
-pkgver=2.3.3
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A hex display with Unicode symboles for specials."
 url="https://github.com/TylerMackJ/Hexcat"
@@ -11,7 +11,7 @@ arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d86f19f02e0f99bed2140c5fe025036c6a207146993a36df843dc8e0bb99aa39')
+sha256sums=('fcafee507d839c65e9b8d83d49c915ca796ed2fa9e2dada613b2728c4b66b001')
 
 build() {
 	cd "${pkgname^}-$pkgver"
