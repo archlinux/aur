@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4
-pkgver=4.0a5
+pkgver=4.0a6
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -13,13 +13,11 @@ options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$((1269+${pkgver##4.0a}))-$pkgver.tar.gz"
         'https://download.processing.org/reference.zip'
         change_cmd_name.patch
-        disable_update_check.patch
-        fix_modules_path.patch)
-sha256sums=('2b3fe1f5202e00a17afaf9ed0275efaedaa8b26ee74f2f1611e7d466ac951648'
+        disable_update_check.patch)
+sha256sums=('da2ce94aaa462a7a59176223382978ec78de5375de8478f450845c7785a9a395'
             'fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
-            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            'b7c2684fd3fa75d1b6b67457c0e5dd4f86fd9a25e104cdbd5961154e00c9fd72')
+            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30')
 
 prepare() {
   # Create .desktop file
@@ -34,9 +32,6 @@ prepare() {
 
   # Create missing directories
   mkdir -p $pkgname/build/linux/work/java
-  
-  # Set correct --module-path in start script (#215)
-  patch $pkgname/build/linux/processing < fix_modules_path.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
