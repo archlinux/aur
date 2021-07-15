@@ -1,0 +1,21 @@
+pkgbase = wifiassist
+	pkgdesc = The easy way to use Wifi through PC.
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/lzjqsdd/WifiAssist
+	arch = any
+	license = BSD
+	makedepends = qconf
+	depends = qt5-tools
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-webkit
+	depends = sqlite
+	provides = wifiassist
+	conflicts = wifiassist
+	conflicts = wifiassist-git
+	options = !strip
+	source = WifiAssist-0.8.tar.gz::https://github.com/lzjqsdd/WifiAssist/archive/refs/tags/0.8.tar.gz
+	sha256sums = 0284688369ef17af12db1f283c43de9316b9609feef10488c786d96770e5250b
+
+pkgname = wifiassist
