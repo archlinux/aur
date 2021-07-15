@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.12.16
+pkgver=5.12.17
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -93,7 +93,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984df457242d8d9595cee4aedc4d3b5b59ae3566a2e824a2294e5111956d'
+b2sums=('0eede859861f88a8d6384517982472580aeb6c38eeb037188571d58b6b83d4fbe7130917b7ae2ccd9f9b2f6f23f7a542d7a396f73adb9adb642a79b3e1f4e95d'
         'SKIP'
         'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
