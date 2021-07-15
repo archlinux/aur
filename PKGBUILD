@@ -1,7 +1,7 @@
 # Maintainer: Erik Moldtmann <erik@moldtmann.de>
 pkgname=expresslrs-configurator
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Cross platform configuration & build tool for the ExpressLRS radio link"
 arch=('x86_64')
@@ -37,4 +37,7 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
 
+
+    install -d "${pkgdir}/usr/bin/"
+    install -Dm 755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
