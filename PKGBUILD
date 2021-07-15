@@ -1,6 +1,6 @@
 # Maintainer: YuutaW <trumeetc@trumeet.com>
 pkgname='telegram-bot-api-git'
-pkgver=r3.551103b
+pkgver=r98.81f2983
 pkgrel=1
 pkgdesc="Provides an HTTP API for creating Telegram Bots."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/tdlib/telegram-bot-api"
 license=('custom')
 groups=()
 depends=('openssl' 'zlib')
-makedepends=('git' 'zlib' 'gperf')
+makedepends=('git' 'zlib' 'gperf' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
