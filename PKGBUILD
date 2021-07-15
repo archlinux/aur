@@ -11,7 +11,7 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
 pkgver=1.32.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -157,7 +157,8 @@ package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
   license=(LGPL)
   depends=(glib2 nss util-linux-libs jansson systemd-libs)
-  provides=(libnm.so)
+  provides=(libnm libnm.so)
+  conflicts=(libnm)
 
   mv libnm/* "$pkgdir"
 }
