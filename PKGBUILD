@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57958.4de42246c02
+pkgver=r57962.93c9f399b4d
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -209,9 +209,9 @@ package_kodi-git() {
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
-  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  replaces=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
@@ -275,7 +275,7 @@ package_kodi-git-tools-texturepacker() {
 # components: kodi-addon-dev kodi-eventclients-dev
 package_kodi-git-dev() {
   pkgdesc="Kodi dev files (master branch)"
-  depends=('kodi-git-common')
+  depends=('kodi-git')
   provides=("kodi-dev=${pkgver}")
   conflicts=('kodi-dev')
 
