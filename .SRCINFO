@@ -11,6 +11,7 @@ pkgbase = libretro-mupen64plus-next-git
 	groups = libretro
 	license = GPL2
 	makedepends = git
+	makedepends = libglvnd
 	makedepends = nasm
 	depends = libgl
 	depends = libpng
