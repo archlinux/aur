@@ -1,6 +1,6 @@
 pkgbase = waterfox-g3-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -44,20 +44,20 @@ pkgbase = waterfox-g3-kpe
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G3.2.3
-	source = waterfox-g3.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/waterfox-g3.desktop
-	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/distribution.ini
-	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/vendor.js
-	source = waterfox-g3.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/waterfox-g3.1
-	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/syspref.js
-	source = g3-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/g3-kde.patch
-	source = mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/mozilla-nongnome-proxies.patch
-	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/mozilla-ntlm-full-path.patch
-	source = Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/Use-remoting-name-for-GDK-application-names.patch
-	source = sandbox-fips.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/sandbox-fips.patch
-	source = remoting-name.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/5f0d17e742be7f8675cb5f8092403ee7679f3855/waterfox-g3-kpe/patches/remoting-name.patch
+	source = git+https://github.com/MrAlex94/Waterfox.git#tag=G3.2.4
+	source = waterfox-g3.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/waterfox-g3.desktop
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/distribution.ini
+	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/vendor.js
+	source = waterfox-g3.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/waterfox-g3.1
+	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/syspref.js
+	source = g3-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/g3-kde.patch
+	source = mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/mozilla-nongnome-proxies.patch
+	source = mozilla-ntlm-full-path.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/mozilla-ntlm-full-path.patch
+	source = Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/Use-remoting-name-for-GDK-application-names.patch
+	source = sandbox-fips.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/sandbox-fips.patch
+	source = remoting-name.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-g3-kpe/patches/remoting-name.patch
 	sha256sums = SKIP
-	sha256sums = 6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6
+	sha256sums = 6e86d11bd147e6ea29118c6f5e4d1cd7376ffb61feca25979d6996731b6b663d
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
 	sha256sums = b9458af82a1e67497f1a42b69cb69b7a86a87727c35004a4089d207d10c7c2b4
 	sha256sums = e48f932041ac826be48567d090a246bd897744262acca4dc07915abdc9a3e6b9
@@ -76,5 +76,5 @@ pkgname = waterfox-g3-kpe
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-g3=2.3
+	provides = waterfox-g3=2.4
 

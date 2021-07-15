@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=2.3
+pkgver=2.4
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=5f0d17e742be7f8675cb5f8092403ee7679f3855
+_filesrev=2a0b88ee80b2ec6bbd4642290402392185570f52
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -31,7 +31,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G3.$pkgver"
         "remoting-name.patch::$_filesurl/patches/remoting-name.patch"
         )
 sha256sums=('SKIP'
-            '6d37d08ee522173057918de8ad8394ba62b61a38c102cb03439d257a93e4b4a6'
+            '6e86d11bd147e6ea29118c6f5e4d1cd7376ffb61feca25979d6996731b6b663d'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             'b9458af82a1e67497f1a42b69cb69b7a86a87727c35004a4089d207d10c7c2b4'
             'e48f932041ac826be48567d090a246bd897744262acca4dc07915abdc9a3e6b9'
