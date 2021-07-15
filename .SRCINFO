@@ -1,8 +1,9 @@
 pkgbase = python-hupper
 	pkgdesc = Integrated process monitor for developing servers
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Pylons/hupper
+	changelog = CHANGES.rst
 	arch = any
 	license = MIT
 	checkdepends = python-watchdog
