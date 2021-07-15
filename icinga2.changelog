@@ -1,3 +1,10 @@
+2.12.5-1
+  - New upstream version 2.12.5
+  - Security: PKI ticket salt exposed via API, potentially allowing privilege
+    escalation for authenticated API users (CVE-2021-32739)
+  - Security: Passwords used to access external services inadvertently exposed
+    through API (CVE-2021-32743)
+
 2.12.4-1
   - New upstream version 2.12.4
 
