@@ -14,13 +14,13 @@ sha256sums=('3c938c748fbef4cdd72e638b26aa35f3e2da8045a0c5490ede8b6ef5603f1b2c'
             '6909e255521af089883f18740fc91c7743897c99d4ece0784b969cea5bc480ae')
 
 build() {
-	if [ `uname -m` = "x86_64" ]; then
+	if [ "$CARCH" = "x86_64" ]; then
 	    _NFARCH='x64'
-	elif [ `uname -m` = "i686" ] || [ `uname -m` = "pentium4" ]; then
+	elif [ "$CARCH" = "i686" ] || [ "$CARCH" = "pentium4" ]; then
 	    _NFARCH='ia32'
-	elif [ `uname -m` = "aarch64" ]; then
+	elif [ "$CARCH" = "aarch64" ]; then
 	    _NFARCH='arm64'
-	elif [ `uname -m` = "armv7l" ]; then
+	elif [ "$CARCH" = "armv7h" ]; then
 	    _NFARCH='armv7l'
 	else
 	    echo "Unsupported architecture. Aborting"

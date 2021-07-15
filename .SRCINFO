@@ -16,4 +16,3 @@ pkgbase = google-messages
 	sha256sums = 6909e255521af089883f18740fc91c7743897c99d4ece0784b969cea5bc480ae
 
 pkgname = google-messages
-
