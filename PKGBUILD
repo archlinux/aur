@@ -2,20 +2,20 @@
 # Contributor: Sergey Mastykov <smastykov at gmail dot com>
 
 pkgname=python-pyramid
-pkgver=1.10.5
+pkgver=2.0
 pkgrel=1
 pkgdesc='A very general open source Python web framework.'
 arch=('any')
 url='https://github.com/Pylons/pyramid'
 license=('custom')
-depends=('python-hupper'
+depends=('python-hupper>=1.5'
          'python-plaster'
          'python-plaster-pastedeploy'
-         'python-translationstring'
-         'python-venusian'
-         'python-webob'
-         'python-zope-deprecation'
-         'python-zope-interface')
+         'python-translationstring>=0.4'
+         'python-venusian>=1.0'
+         'python-webob>=1.8.3'
+         'python-zope-deprecation>=3.5.0'
+         'python-zope-interface>=3.8.0')
 makedepends=('python-webtest'
              'python-zope-component'
              'python-nose'
@@ -27,8 +27,8 @@ optdepends=('python-pyramid-debugtoolbar: development mode'
             'python-chameleon: pserve/pcreate'
             'python-waitress: pserve/pcreate')
 
-source=($url/archive/${pkgver}.tar.gz)
-sha256sums=('ad3f8d4ca1342e4b8c4a28a08144fea4cbc31457a78604ae3d0ac9f30e62dd07')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('352f4a2b112084dccaafe6d5189ebc43616a4de04d03e2465b31dc22f8666439')
 
 build() {
   cd pyramid-$pkgver
@@ -38,7 +38,7 @@ build() {
 check() {
   cd pyramid-$pkgver
   # this fails because testing can be done only once pyramid is installed...
-  # nosetests 
+  # nosetests
 }
 
 package() {
