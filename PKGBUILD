@@ -35,6 +35,6 @@ build() {
 }
 
 package() {
-	cd blang
+	cd emerald
 	sudo make install
 }
