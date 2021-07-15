@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=libdigidocpp
-pkgver=3.14.6.1410
-_rls_tag=v3.14.6
+pkgver=3.14.7.1412
+_rls_tag=v3.14.7
 pkgrel=1
 pkgdesc="Library for creating, signing and verification of digitally signed documents, according to XAdES and XML-DSIG standards"
 arch=('x86_64' 'i686')
@@ -36,7 +36,6 @@ build() {
              -DCMAKE_INSTALL_LIBDIR="lib" \
              -DCMAKE_INSTALL_SYSCONFDIR="/etc" \
              -DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=TRUE \
-             -DCMAKE_DISABLE_FIND_PACKAGE_LibDigiDoc=TRUE \
              -DCMAKE_DISABLE_FIND_PACKAGE_PoDoFo=TRUE \
              -DCMAKE_DISABLE_FIND_PACKAGE_SWIG=TRUE \
              -DCMAKE_DISABLE_FIND_PACKAGE_Boost=TRUE \
