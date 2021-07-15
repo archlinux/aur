@@ -1,6 +1,6 @@
 pkgbase = linux-amd-git
 	pkgdesc = Linux kernel with AMDGPU WIP patches
-	pkgver = 5.14.r999849.ae30d41eb54e
+	pkgver = 5.14.r1017101.93c5bcd4eaaa
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/amd
 	arch = x86_64
@@ -22,10 +22,8 @@ pkgbase = linux-amd-git
 	options = !strip
 	source = linux-agd5f::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=drm-next-5.14
 	source = config
-	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = bd644e14f3e885bfdda17d5da2f9112070c7126362864664234df2033d17d8ca
-	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
+	sha256sums = 6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84
 
 pkgname = linux-amd-git
 	pkgdesc = The Linux kernel with AMDGPU WIP patches kernel and modules
@@ -45,4 +43,3 @@ pkgname = linux-amd-headers-git
 
 pkgname = linux-amd-docs-git
 	pkgdesc = Documentation for the Linux kernel with AMDGPU WIP patches kernel
-

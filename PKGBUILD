@@ -3,7 +3,7 @@
 
 pkgbase=linux-amd-git
 pkgdesc='Linux kernel with AMDGPU WIP patches'
-pkgver=5.14.r999849.ae30d41eb54e
+pkgver=5.14.r1017101.93c5bcd4eaaa
 _product="${pkgbase%-git}"
 _kernel_rel=5.14
 _branch=drm-next-${_kernel_rel}
@@ -20,12 +20,10 @@ options=('!strip')
 _srcname=linux-agd5f
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
-  config                  # the main kernel config file
-  sphinx-workaround.patch # Sphinx 3.5 broke the build again
+  config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            'bd644e14f3e885bfdda17d5da2f9112070c7126362864664234df2033d17d8ca'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb')
+            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84')
 
 pkgver() {
   cd "${_srcname}"
@@ -123,13 +121,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
