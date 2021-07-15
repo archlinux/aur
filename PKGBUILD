@@ -1,45 +1,49 @@
-# Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=trezord-go
-pkgver=2.0.30
+pkgver=2.0.31
 pkgrel=1
 pkgdesc="TREZOR Communication Daemon aka TREZOR Bridge (written in Go)"
 arch=('x86_64' 'i686')
 url="https://github.com/trezor/trezord-go"
-license=('MIT')
-makedepends=('go')
+license=('LGPL3')
+depends=('glibc')
+makedepends=('go>=1.12')
 conflicts=('trezord-git' 'trezor-bridge-bin' 'trezord')
-options=('!strip' '!emptydirs')
-_gourl=github.com/trezor/trezord-go
-
-install="${pkgname}.install"
+options=('!emptydirs')
+install=trezord-go.install
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+       'sysusers.d.conf')
+sha256sums=('fd834a5bf04417cc50ed4a418d40de4c257cbc86edca01b07aa01a9cf818e60e'
+            'a9a6c343814b94e9ad3665c971cc33825794e8a8e46e1076819b63c548c89abf')
 
 build() {
-    export GOPATH="$srcdir"
-    go get -d -fix -v -x ${_gourl}
-    cd $srcdir/src/github.com/trezor/trezord-go
-    git checkout v$pkgver
-    go build ./trezord.go
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	cd "$pkgname-$pkgver"
+	go build -o trezord
 }
 
 check() {
-    GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	cd "$pkgname-$pkgver"
+	go test ./...
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    install -p -m755 "$srcdir/src/github.com/trezor/trezord-go/trezord" "$pkgdir/usr/bin/trezord"
-
-    mkdir -p "$pkgdir/usr/lib/systemd/system"
-    install -p -m644 "$srcdir/src/github.com/trezor/trezord-go/release/linux/trezord.service" \
-        "$pkgdir/usr/lib/systemd/system/trezord.service"
-
-    mkdir -p "$pkgdir/etc/udev/rules.d"
-    install -p -m644 "$srcdir/src/github.com/trezor/trezord-go/release/linux/trezor.rules" \
-        "$pkgdir/etc/udev/rules.d"
+	cd "$pkgname-$pkgver"
+	install -Dm 755 trezord -t "$pkgdir/usr/bin/"
+	install -Dm 644 release/linux/trezord.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dm 644 release/linux/trezor.rules -t "$pkgdir/etc/udev/rules.d/"
+	install -Dm 644 "$srcdir/sysusers.d.conf" "$pkgdir/usr/lib/sysusers.d/trezord.conf"
 }
-
-
-
-
-
