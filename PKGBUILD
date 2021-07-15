@@ -12,6 +12,7 @@ makedepends=(
 	'catch2>=2.13'
 	'cmake>=3.15'
 	'cpp-httplib'
+	'discord-rpc'
 	'ffmpeg'
 	'fmt>=8.0'
 	'git'
@@ -25,9 +26,8 @@ makedepends=(
 	'openssl>=1.1'
 	'opus>=1.3'
 	'qt5-tools>=5.12'
-	'rapidjson>=1.1' # for discord-rpc
 	'sdl2>=2.0.14'
-	'spirv-headers'  # for sirit
+	'spirv-headers' # for sirit
 	'vulkan-headers'
 	'xbyak'
 	'zlib>=1.2'
@@ -35,12 +35,12 @@ makedepends=(
 )
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
-	'git+https://github.com/discord/discord-rpc.git'
 	'git+https://github.com/MerryMage/dynarmic.git'
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'unbundle-cubeb.patch'
+	'unbundle-discord-rpc.patch'
 	'unbundle-inih.patch'
 	'unbundle-sdl.patch'
 	'unbundle-spirv-headers.patch'
@@ -53,8 +53,8 @@ md5sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
 	'2ffaa5563dd3e97e9c0bf623561f5ee8'
+	'8cfe277266cc2f31bef7b9bc94266649'
 	'd710c3b4366e73276b2466101bb4aac1'
 	'63fe5690931ab15c788acef299658176'
 	'58933c558489f6b66adfc50ba6d78dbc'
@@ -64,14 +64,14 @@ md5sums=(
 
 prepare() {
 	cd yuzu-mainline
-	git submodule init externals/{discord-rpc,dynarmic,mbedtls,sirit,soundtouch}
-	git config submodule.discord-rpc.url ../discord-rpc
+	git submodule init externals/{dynarmic,mbedtls,sirit,soundtouch}
 	git config submodule.dynarmic.url ../dynarmic
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.sirit.url ../sirit
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
 	patch -Np1 < ../unbundle-cubeb.patch
+	patch -Np1 < ../unbundle-discord-rpc.patch
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-sdl.patch
 	patch -Np1 < ../unbundle-spirv-headers.patch
@@ -113,6 +113,7 @@ package() {
 		'libavcodec.so'
 		'libavutil.so'
 		'libboost_context.so'
+		'libdiscord-rpc.so'
 		'libfmt.so'
 		'libINIReader.so'
 		'libswscale.so'
