@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=chrome-token-signing
-pkgver=1.1.4.543
-_rls_tag=v1.1.4
-pkgrel=2
+pkgver=1.1.5.547
+_rls_tag=v1.1.5
+pkgrel=1
 epoch=1
 pkgdesc="Chrome and Firefox extension for signing with your eID on the web"
 arch=('x86_64' 'i686')

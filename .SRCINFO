@@ -1,7 +1,7 @@
 pkgbase = chrome-token-signing
 	pkgdesc = Chrome and Firefox extension for signing with your eID on the web
-	pkgver = 1.1.4.543
-	pkgrel = 2
+	pkgver = 1.1.5.547
+	pkgrel = 1
 	epoch = 1
 	url = http://www.id.ee/
 	arch = x86_64
@@ -12,9 +12,8 @@ pkgbase = chrome-token-signing
 	depends = qt5-base>=5.15.1
 	depends = pcsclite
 	depends = ccid
-	source = chrome-token-signing-1.1.4.543::git+https://github.com/open-eid/chrome-token-signing.git?signed#tag=v1.1.4
+	source = chrome-token-signing-1.1.5.547::git+https://github.com/open-eid/chrome-token-signing.git?signed#tag=v1.1.5
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
 	sha256sums = SKIP
 
 pkgname = chrome-token-signing
-
