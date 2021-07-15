@@ -13,7 +13,7 @@ depends=('libgl' 'libretro-core-info' 'libzip' 'xxhash' 'zlib')
 makedepends=('git' 'libglvnd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=('!lto')
+options=('!lto') # https://github.com/libretro/flycast/issues/892
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
