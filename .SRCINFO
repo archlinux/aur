@@ -1,7 +1,8 @@
 pkgbase = audacium-git
 	pkgdesc = telemetry free version of audacity
-	pkgver = 78c701d.r1.gd032c3102
-	pkgrel = 1
+	pkgver = 2.4.1.r1696.ge44c8911b
+	pkgrel = 2
+	epoch = 1
 	url = https://github.com/SartoxOnlyGNU/audacium
 	arch = x86_64
 	license = GPL2
@@ -15,6 +16,7 @@ pkgbase = audacium-git
 	makedepends = jack
 	makedepends = nasm
 	makedepends = conan
+	makedepends = gtk2
 	depends = alsa-lib
 	depends = libx11
 	depends = gtk3
@@ -40,4 +42,3 @@ pkgbase = audacium-git
 	md5sums = SKIP
 
 pkgname = audacium-git
-
