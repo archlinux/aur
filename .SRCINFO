@@ -1,4 +1,4 @@
-pkgbase = emeraldpl-git
+pkgbase = blang-git
 	pkgdesc = An AUR port for the Emerald programming language.
 	pkgver = trunk
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = emeraldpl-git
 	source = git+https://github.com/emerald-pl/emerald.git
 	md5sums = SKIP
 
-pkgname = emeraldpl-git
+pkgname = blang-git
