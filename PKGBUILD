@@ -1,40 +1,35 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Timofonic <timofonic at gmail.com>
-# Contributor: Boohbah <boohbah at gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor: Jonathan Chan <jyc@fastmail.fm>
-# Contributor: misc <tastky@gmail.com>
-# Contributor: NextHendrix <cjones12 at sheffield.ac.uk>
+# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-tip-git
-_srcname=${pkgbase}
-_branch=drm-tip
-_product=linux-drm-tip
-pkgver=5.8.915938.279672c3e071
+pkgdesc='Linux kernel with bleeding-edge GPU drivers'
+pkgver=5.14.r1029802.5e0ea887acd4
+_product="${pkgbase%-git}"
+_branch="${_product#linux-}"
 pkgrel=1
 arch=(x86_64)
-url='https://cgit.freedesktop.org/drm-tip/'
+url=https://cgit.freedesktop.org/drm-tip
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
-  xmlto python-sphinx-2 python-sphinx_rtd_theme graphviz imagemagick
+  bc kmod libelf pahole cpio perl tar xz
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
-source=("${_srcname}::git://anongit.freedesktop.org/drm-tip#branch=${_branch}"
+_srcname="${pkgbase}"
+source=(
+  "$_srcname::git://anongit.freedesktop.org/drm-tip#branch=${_branch}"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6ac452e2124f92747a57c5a50e11ca2f1e8112669845b4431311545c7fd2a36c')
+            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84')
 
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
   local patch="$(grep \^PATCHLEVEL Makefile|cut -d"=" -f2|cut -d" " -f2)"
-  patch=$(( $patch + 1 ))
 
-  echo $version.$patch.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -72,7 +67,7 @@ build() {
   make htmldocs
 }
 
-_package-git() {
+_package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -93,14 +88,15 @@ _package-git() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 }
 
-_package-headers-git() {
+_package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -126,13 +122,16 @@ _package-headers-git() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -169,12 +168,15 @@ _package-headers-git() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs-git() {
+_package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
@@ -193,10 +195,12 @@ _package-docs-git() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$_product}")
-    _package${_p#$_product}
-  }"
+pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+for _package in "${pkgname[@]}"; do
+  local _package_no_git="${_package%-git}"
+  local _package_stripped="${_package_no_git#$_product}"
+  eval "package_${_package}() {
+  $(declare -f "_package${_package_stripped}")
+  _package${_package_stripped}
+}"
 done
