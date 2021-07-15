@@ -16,7 +16,7 @@ makedepends=('git' 'libglvnd' 'nasm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=('libretro-mupen64plus-nx-git')
-options=('!lto')
+options=('!lto') # https://github.com/libretro/mupen64plus-libretro-nx/issues/359
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
