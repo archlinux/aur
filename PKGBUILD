@@ -1,7 +1,7 @@
 # Maintainer: Eric Biggers <ebiggers3@gmail.com>
 
 pkgname=libdeflate-git
-pkgver=1.4.r0.g91e972e
+pkgver=1.8.r0.g047aa84
 pkgrel=1
 pkgdesc="Heavily optimized library for DEFLATE/zlib/gzip compression and decompression"
 arch=('i686' 'x86_64')
@@ -34,6 +34,6 @@ package() {
   cd libdeflate
 
   make install PREFIX=/usr DESTDIR="$pkgdir"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README* NEWS
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README* NEWS*
   install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
