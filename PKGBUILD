@@ -5,7 +5,7 @@
 
 pkgname=toybox
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-one Linux command line'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://landley.net/toybox'
@@ -24,7 +24,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  PREFIX="${pkgdir}/usr/${pkgname}" make install
+  PREFIX="${pkgdir}/opt/${pkgname}" make install
   install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/usr/bin/${pkgname}" "${pkgdir}/opt/${pkgname}/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
