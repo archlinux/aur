@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 249.r50.g0de0ba573b
+	pkgver = 249.r108.g6c39b39aa8
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -66,7 +66,7 @@ pkgbase = systemd-git
 	sha512sums = 10f3b477527ec263cc6465c84d94416e356435930edc9e26844a0fd4f71e87a27fa0f91ce24b43a22cacdd2ead5e760e9d607369bc537a8da8d34021302a89a1
 	sha512sums = 34541f1967536524329867f9f341f8d9250d9d771c60dc3e6a22ccb82fc01f103cfd3f9903329777591ccbecd2446622a5d6b3804fa0411482b85c70593ee8ad
 	sha512sums = f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73
-	sha512sums = 8e76f8334b95ce7fee9190f4a1016b16109f3a75b68635fc227b2b4791cf8179ef09b532b66b4ed885ddf98ed76befed3106f3c3088f1819ed8cdf4c13e0805a
+	sha512sums = f599e1a35cba2c4e83e37c2299fac23ae128d8f68081283e71e1729384975dee1c4b677787f31a17890aeb98c8d2fc90405a202644290708ef9c027315022b17
 	sha512sums = a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a
 	sha512sums = 61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648
 	sha512sums = c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5
@@ -128,10 +128,10 @@ pkgname = systemd-git
 	optdepends = curl: machinectl pull-tar and pull-raw
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
-	provides = systemd=249.r50.g0de0ba573b
+	provides = systemd=249.r108.g6c39b39aa8
 	provides = nss-myhostname
-	provides = systemd-tools=249.r50.g0de0ba573b
-	provides = udev=249.r50.g0de0ba573b
+	provides = systemd-tools=249.r108.g6c39b39aa8
+	provides = udev=249.r108.g6c39b39aa8
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -166,7 +166,7 @@ pkgname = systemd-libs-git
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs=249.r50.g0de0ba573b
+	provides = systemd-libs=249.r108.g6c39b39aa8
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
@@ -178,7 +178,7 @@ pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf=249.r50.g0de0ba573b
+	provides = systemd-resolvconf=249.r108.g6c39b39aa8
 	provides = openresolv
 	provides = resolvconf
 	conflicts = systemd-resolvconf
@@ -188,6 +188,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=249.r50.g0de0ba573b
+	provides = systemd-sysvcompat=249.r108.g6c39b39aa8
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit
