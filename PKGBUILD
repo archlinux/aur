@@ -22,8 +22,8 @@ _clangbuild=
 
 pkgbase=kodi-matrix-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57330.df99069c252
-pkgrel=2
+pkgver=r57336.e569cac854c
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -209,9 +209,9 @@ package_kodi-matrix-git() {
     'pulseaudio: PulseAudio support'
     'upower: Display battery level'
   )
-  provides=("kodi-common=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  replaces=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
-  conflicts=('kodi-common' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  provides=("kodi=${pkgver}" 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  replaces=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
+  conflicts=('kodi' 'kodi-x11' 'kodi-wayland' 'kodi-gbm')
 
   _components=(
     'kodi'
@@ -275,7 +275,7 @@ package_kodi-matrix-git-tools-texturepacker() {
 # components: kodi-addon-dev kodi-eventclients-dev
 package_kodi-matrix-git-dev() {
   pkgdesc="Kodi dev files (Matrix branch)"
-  depends=('kodi-matrix-git-common')
+  depends=('kodi-matrix-git')
   provides=("kodi-dev=${pkgver}")
   conflicts=('kodi-dev')
 
