@@ -1,0 +1,12 @@
+pkgbase = astartectl
+	pkgdesc = Astarte command line client utility
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://github.com/astarte-platform/astartectl
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://codeload.github.com/astarte-platform/astartectl/tar.gz/refs/tags/v0.11.3
+	sha256sums = cca087ddf3c29f7ee3a02463ca09f4e6197d52916d44da1e483a6b4f65ed29db
+
+pkgname = astartectl
