@@ -1,7 +1,7 @@
 # Maintainer: Salvaje <keystroke33@gmail.com>
 pkgname=redpaper-git
 pkgver=0.2.1.r14.166fbee
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper downloader and setter that fetches from Reddit"
 arch=('any')
 url="https://github.com/keystroke3/redpaper"
