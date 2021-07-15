@@ -4,7 +4,7 @@ pkgname=stumpwm-ql
 _stumpver=20.11
 _qlver=2021_06_30
 pkgver="${_stumpver}_${_qlver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Stumpwm tiling window manager built with dependencies from quicklisp'
 arch=('x86_64')
 url='https://stumpwm.github.io'
@@ -13,15 +13,20 @@ makedepends=('quicklisp-bootstrap' 'sbcl')
 provides=('stumpwm')
 conflicts=('stumpwm' 'stumpwm-git')
 source=("$pkgname-$_stumpver.tar.gz::https://github.com/stumpwm/stumpwm/archive/refs/tags/$_stumpver.tar.gz"
-        stumpwm.desktop)
+        stumpwm.desktop load-ql-systems.patch)
 sha256sums=('8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c'
-            'a297e9ded7854f06131b2440f46b5d903933e81aeabd31cb834e01672c6b2ac4')
+            'a297e9ded7854f06131b2440f46b5d903933e81aeabd31cb834e01672c6b2ac4'
+            '5105db78328aed70e8d071ff02f35d10caa745803df8e71074a444cb7c6afefc')
 options=('!strip' '!makeflags')
+
+prepare() {
+  patch stumpwm-$_stumpver/load-stumpwm.lisp.in load-ql-systems.patch
+}
 
 build() {
   # Vars
   disturl="http://beta.quicklisp.org/dist/quicklisp/${_qlver//_/-}/distinfo.txt"
-  qlpath="$(pwd)/quicklisp"
+  qlpath=quicklisp
 
   # Clear quicklisp directory if it exists
   if [ -d "$qlpath" ]; then
@@ -37,15 +42,11 @@ build() {
        --eval '(ql:quickload "alexandria")' \
        --quit
 
-  # Init file to load quicklisp
-  echo "(load \"${qlpath}/setup.lisp\")" > quicklisp/.sbclrc
-
   # Make
   cd stumpwm-$_stumpver
   ./autogen.sh
   ./configure --prefix=/usr --with-module-dir=/usr/share/stumpwm/contrib
-  # Trick SBCL into loading quicklisp
-  HOME="${qlpath}" make
+  make
 }
 
 package() {

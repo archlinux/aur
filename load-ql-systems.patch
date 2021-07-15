@@ -1,0 +1,14 @@
+9c9
+<  '(:source-registry
+---
+>  `(:source-registry
+11c11,13
+<    :inherit-configuration))
+---
+>    ;; Let asdf find the quicklisp systems that we installed
+>    (:tree ,(merge-pathnames "../quicklisp/dists/quicklisp/software/"))
+>    :ignore-inherited-configuration))
+13a16,18
+> 
+> ;; Remove all source pathnames from the registry after load
+> (asdf:clear-source-registry)
