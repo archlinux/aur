@@ -1,7 +1,7 @@
 # Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
 pkgname=argonone-c-git
 pkgver=r61.b7f7f20
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement daemon for Argon One Raspberry Pi cases, written in C."
 
 _gitauthor=DarkElvenAngel
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('linux' 'dtc')
 optdepends=('bash-completion: CLI command completion in the BASH shell'
 			'systemd: Run daemon at system boot'
+			'bash-completion: Argonone CLI command completion'
 			#'openrc: Run daemon at start (update-rc)' #todo
 			'logrotate')
 install=install
@@ -52,6 +53,7 @@ package() {
 	install -Dm755 "${srcdir}/${_BIN_DIR}/argonone-shutdown" "${pkgdir}/usr/lib/systemd/system-shutdown/argonone-shutdown"
 	install -Dm644 "${srcdir}/${_COMMON_DIR}/argononed.service" "${pkgdir}/etc/systemd/system/argononed.service"
 	install -Dm644 "${srcdir}/${_COMMON_DIR}/argononed.logrotate" "${pkgdir}/etc/logrotate.d/argononed"
+	install -Dm644 "${srcdir}/${_COMMON_DIR}/argonone-cli-complete.bash" "${pkgdir}/argonone-cli"
 	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 	install -Dm644 "${srcdir}/${_BIN_DIR}/argonone.dtbo" "${pkgdir}/boot/overlays/argonone.dtbo"
 }
