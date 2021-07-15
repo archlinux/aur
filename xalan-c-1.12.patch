@@ -1,0 +1,344 @@
+diff -Nurd xml-security-c-2.0.2.orig/xsec/canon/XSECC14n20010315.cpp xml-security-c-2.0.2/xsec/canon/XSECC14n20010315.cpp
+--- xml-security-c-2.0.2.orig/xsec/canon/XSECC14n20010315.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/canon/XSECC14n20010315.cpp	2021-07-15 14:54:05.001076587 +0300
+@@ -56,18 +56,18 @@
+ #include <xalanc/XPath/NodeRefList.hpp>
+ 
+ // Namespace definitions
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XercesDOMSupport)
+-XALAN_USING_XALAN(XercesParserLiaison)
+-XALAN_USING_XALAN(XalanDocument)
+-XALAN_USING_XALAN(XalanNode)
+-XALAN_USING_XALAN(XalanElement)
+-XALAN_USING_XALAN(XalanDOMString)
+-XALAN_USING_XALAN(XalanDOMChar)
+-XALAN_USING_XALAN(NodeRefList)
+-XALAN_USING_XALAN(XercesDocumentWrapper)
+-XALAN_USING_XALAN(XercesWrapperNavigator)
+-XALAN_USING_XALAN(c_wstr)
++using xalanc::XPathEvaluator;
++using xalanc::XercesDOMSupport;
++using xalanc::XercesParserLiaison;
++using xalanc::XalanDocument;
++using xalanc::XalanNode;
++using xalanc::XalanElement;
++using xalanc::XalanDOMString;
++using xalanc::XalanDOMChar;
++using xalanc::NodeRefList;
++using xalanc::XercesDocumentWrapper;
++using xalanc::XercesWrapperNavigator;
++using xalanc::c_wstr;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/dsig/DSIGXPathHere.cpp xml-security-c-2.0.2/xsec/dsig/DSIGXPathHere.cpp
+--- xml-security-c-2.0.2.orig/xsec/dsig/DSIGXPathHere.cpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/dsig/DSIGXPathHere.cpp	2021-07-15 14:54:05.004076593 +0300
+@@ -30,7 +30,7 @@
+ 
+ #ifdef XSEC_HAVE_XPATH
+ 
+-XALAN_USING_XALAN(XalanCopyConstruct);
++using xalanc::XalanCopyConstruct;;
+ 
+ DSIGXPathHere::DSIGXPathHere() {
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/dsig/DSIGXPathHere.hpp xml-security-c-2.0.2/xsec/dsig/DSIGXPathHere.hpp
+--- xml-security-c-2.0.2.orig/xsec/dsig/DSIGXPathHere.hpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/dsig/DSIGXPathHere.hpp	2021-07-15 14:54:05.022076627 +0300
+@@ -56,12 +56,12 @@
+ 
+ // Namespace usage
+ 
+-XALAN_USING_XALAN(Function);
+-XALAN_USING_XALAN(XalanNode);
+-XALAN_USING_XALAN(XPathExecutionContext);
+-XALAN_USING_XALAN(XalanDOMString);
+-XALAN_USING_XALAN(XObjectPtr);
+-XALAN_USING_XALAN(MemoryManagerType);
++using xalanc::Function;;
++using xalanc::XalanNode;;
++using xalanc::XPathExecutionContext;;
++using xalanc::XalanDOMString;;
++using xalanc::XObjectPtr;;
++using xalanc::MemoryManagerType;;
+ 
+ XSEC_USING_XERCES(Locator);
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/samples/simpleDecrypt.cpp xml-security-c-2.0.2/xsec/samples/simpleDecrypt.cpp
+--- xml-security-c-2.0.2.orig/xsec/samples/simpleDecrypt.cpp	2018-06-22 22:22:03.000000000 +0300
++++ xml-security-c-2.0.2/xsec/samples/simpleDecrypt.cpp	2021-07-15 14:54:05.009076602 +0300
+@@ -54,7 +54,7 @@
+ 
+ #ifdef XSEC_HAVE_XALAN
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XalanTransformer;
+ #endif
+ 
+ // OpenSSL
+diff -Nurd xml-security-c-2.0.2.orig/xsec/samples/simpleEncrypt.cpp xml-security-c-2.0.2/xsec/samples/simpleEncrypt.cpp
+--- xml-security-c-2.0.2.orig/xsec/samples/simpleEncrypt.cpp	2018-06-22 22:22:03.000000000 +0300
++++ xml-security-c-2.0.2/xsec/samples/simpleEncrypt.cpp	2021-07-15 14:54:05.009076602 +0300
+@@ -48,7 +48,7 @@
+ 
+ #ifdef XSEC_HAVE_XALAN
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XalanTransformer;
+ #endif
+ 
+ XERCES_CPP_NAMESPACE_USE
+diff -Nurd xml-security-c-2.0.2.orig/xsec/samples/simpleHMAC.cpp xml-security-c-2.0.2/xsec/samples/simpleHMAC.cpp
+--- xml-security-c-2.0.2.orig/xsec/samples/simpleHMAC.cpp	2018-06-22 21:47:16.000000000 +0300
++++ xml-security-c-2.0.2/xsec/samples/simpleHMAC.cpp	2021-07-15 14:54:05.009076602 +0300
+@@ -49,7 +49,7 @@
+ 
+ #ifdef XSEC_HAVE_XALAN
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XalanTransformer;
+ #endif
+ 
+ XERCES_CPP_NAMESPACE_USE
+diff -Nurd xml-security-c-2.0.2.orig/xsec/samples/simpleValidate.cpp xml-security-c-2.0.2/xsec/samples/simpleValidate.cpp
+--- xml-security-c-2.0.2.orig/xsec/samples/simpleValidate.cpp	2018-06-22 21:57:51.000000000 +0300
++++ xml-security-c-2.0.2/xsec/samples/simpleValidate.cpp	2021-07-15 14:54:05.009076602 +0300
+@@ -52,7 +52,7 @@
+ 
+ #ifdef XSEC_HAVE_XALAN
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XalanTransformer;
+ #endif
+ 
+ char docToValidate [4096] = "\
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/checksig/checksig.cpp xml-security-c-2.0.2/xsec/tools/checksig/checksig.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/checksig/checksig.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/checksig/checksig.cpp	2021-07-15 14:54:05.009076602 +0300
+@@ -83,8 +83,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/cipher/cipher.cpp xml-security-c-2.0.2/xsec/tools/cipher/cipher.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/cipher/cipher.cpp	2018-06-22 22:22:03.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/cipher/cipher.cpp	2021-07-15 14:54:05.010076604 +0300
+@@ -93,8 +93,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/siginf/siginf.cpp xml-security-c-2.0.2/xsec/tools/siginf/siginf.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/siginf/siginf.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/siginf/siginf.cpp	2021-07-15 14:54:05.010076604 +0300
+@@ -86,8 +86,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #else
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/templatesign/templatesign.cpp xml-security-c-2.0.2/xsec/tools/templatesign/templatesign.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/templatesign/templatesign.cpp	2018-06-22 22:22:03.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/templatesign/templatesign.cpp	2021-07-15 14:54:05.010076604 +0300
+@@ -95,8 +95,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/txfmout/txfmout.cpp xml-security-c-2.0.2/xsec/tools/txfmout/txfmout.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/txfmout/txfmout.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/txfmout/txfmout.cpp	2021-07-15 14:54:05.010076604 +0300
+@@ -84,8 +84,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #else
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/xklient/xklient.cpp xml-security-c-2.0.2/xsec/tools/xklient/xklient.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/xklient/xklient.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/xklient/xklient.cpp	2021-07-15 14:54:05.011076606 +0300
+@@ -122,8 +122,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/tools/xtest/xtest.cpp xml-security-c-2.0.2/xsec/tools/xtest/xtest.cpp
+--- xml-security-c-2.0.2.orig/xsec/tools/xtest/xtest.cpp	2018-06-18 17:48:28.000000000 +0300
++++ xml-security-c-2.0.2/xsec/tools/xtest/xtest.cpp	2021-07-15 14:54:05.012076608 +0300
+@@ -63,8 +63,8 @@
+ #include <xalanc/XPath/XPathEvaluator.hpp>
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XPathEvaluator;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/transformers/TXFMXPath.cpp xml-security-c-2.0.2/xsec/transformers/TXFMXPath.cpp
+--- xml-security-c-2.0.2.orig/xsec/transformers/TXFMXPath.cpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/transformers/TXFMXPath.cpp	2021-07-15 14:54:05.013076610 +0300
+@@ -48,25 +48,25 @@
+ #endif
+ 
+ // Xalan namespace usage
+-XALAN_USING_XALAN(XPathProcessorImpl)
+-XALAN_USING_XALAN(XercesDOMSupport)
+-XALAN_USING_XALAN(XercesParserLiaison)
+-XALAN_USING_XALAN(XercesDocumentWrapper)
+-XALAN_USING_XALAN(XercesWrapperNavigator)
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XPathFactoryDefault)
+-XALAN_USING_XALAN(XPathConstructionContextDefault)
+-XALAN_USING_XALAN(XalanDocument)
+-XALAN_USING_XALAN(XalanNode)
+-XALAN_USING_XALAN(XalanDOMChar)
+-XALAN_USING_XALAN(XPathEnvSupportDefault)
+-XALAN_USING_XALAN(XObjectFactoryDefault)
+-XALAN_USING_XALAN(XPathExecutionContextDefault)
+-XALAN_USING_XALAN(ElementPrefixResolverProxy)
+-XALAN_USING_XALAN(XPath)
+-XALAN_USING_XALAN(NodeRefListBase)
+-XALAN_USING_XALAN(XSLTResultTarget)
+-XALAN_USING_XALAN(XSLException)
++using xalanc::XPathProcessorImpl;
++using xalanc::XercesDOMSupport;
++using xalanc::XercesParserLiaison;
++using xalanc::XercesDocumentWrapper;
++using xalanc::XercesWrapperNavigator;
++using xalanc::XPathEvaluator;
++using xalanc::XPathFactoryDefault;
++using xalanc::XPathConstructionContextDefault;
++using xalanc::XalanDocument;
++using xalanc::XalanNode;
++using xalanc::XalanDOMChar;
++using xalanc::XPathEnvSupportDefault;
++using xalanc::XObjectFactoryDefault;
++using xalanc::XPathExecutionContextDefault;
++using xalanc::ElementPrefixResolverProxy;
++using xalanc::XPath;
++using xalanc::NodeRefListBase;
++using xalanc::XSLTResultTarget;
++using xalanc::XSLException;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/transformers/TXFMXPathFilter.cpp xml-security-c-2.0.2/xsec/transformers/TXFMXPathFilter.cpp
+--- xml-security-c-2.0.2.orig/xsec/transformers/TXFMXPathFilter.cpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/transformers/TXFMXPathFilter.cpp	2021-07-15 14:54:05.013076610 +0300
+@@ -67,27 +67,27 @@
+ #endif
+ 
+ // Xalan namespace usage
+-XALAN_USING_XALAN(XPathProcessorImpl)
+-XALAN_USING_XALAN(XalanDOMString)
+-XALAN_USING_XALAN(XercesDOMSupport)
+-XALAN_USING_XALAN(XercesParserLiaison)
+-XALAN_USING_XALAN(XercesDocumentWrapper)
+-XALAN_USING_XALAN(XercesWrapperNavigator)
+-XALAN_USING_XALAN(XPathEvaluator)
+-XALAN_USING_XALAN(XPathFactoryDefault)
+-XALAN_USING_XALAN(XPathConstructionContextDefault)
+-XALAN_USING_XALAN(XalanDocument)
+-XALAN_USING_XALAN(XalanNode)
+-XALAN_USING_XALAN(XalanDOMChar)
+-XALAN_USING_XALAN(XPathEnvSupportDefault)
+-XALAN_USING_XALAN(XObjectFactoryDefault)
+-XALAN_USING_XALAN(XObjectPtr)
+-XALAN_USING_XALAN(XPathExecutionContextDefault)
+-XALAN_USING_XALAN(ElementPrefixResolverProxy)
+-XALAN_USING_XALAN(XPath)
+-XALAN_USING_XALAN(NodeRefListBase)
+-XALAN_USING_XALAN(XSLTResultTarget)
+-XALAN_USING_XALAN(XSLException)
++using xalanc::XPathProcessorImpl;
++using xalanc::XalanDOMString;
++using xalanc::XercesDOMSupport;
++using xalanc::XercesParserLiaison;
++using xalanc::XercesDocumentWrapper;
++using xalanc::XercesWrapperNavigator;
++using xalanc::XPathEvaluator;
++using xalanc::XPathFactoryDefault;
++using xalanc::XPathConstructionContextDefault;
++using xalanc::XalanDocument;
++using xalanc::XalanNode;
++using xalanc::XalanDOMChar;
++using xalanc::XPathEnvSupportDefault;
++using xalanc::XObjectFactoryDefault;
++using xalanc::XObjectPtr;
++using xalanc::XPathExecutionContextDefault;
++using xalanc::ElementPrefixResolverProxy;
++using xalanc::XPath;
++using xalanc::NodeRefListBase;
++using xalanc::XSLTResultTarget;
++using xalanc::XSLException;
+ 
+ #endif
+ 
+diff -Nurd xml-security-c-2.0.2.orig/xsec/transformers/TXFMXSL.cpp xml-security-c-2.0.2/xsec/transformers/TXFMXSL.cpp
+--- xml-security-c-2.0.2.orig/xsec/transformers/TXFMXSL.cpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/transformers/TXFMXSL.cpp	2021-07-15 14:54:05.014076612 +0300
+@@ -46,7 +46,7 @@
+ #include <strstream>
+ #include <fstream>
+ 
+-XALAN_USING_XALAN(XSLTResultTarget)
++using xalanc::XSLTResultTarget;
+ 
+ // Function used to output data to a safeBuffer
+ extern "C" {
+diff -Nurd xml-security-c-2.0.2.orig/xsec/transformers/TXFMXSL.hpp xml-security-c-2.0.2/xsec/transformers/TXFMXSL.hpp
+--- xml-security-c-2.0.2.orig/xsec/transformers/TXFMXSL.hpp	2018-06-18 17:48:29.000000000 +0300
++++ xml-security-c-2.0.2/xsec/transformers/TXFMXSL.hpp	2021-07-15 14:54:05.026076635 +0300
+@@ -44,10 +44,10 @@
+ #include <xalanc/XalanTransformer/XalanTransformer.hpp>
+ 
+ // Xalan Namespace usage
+-XALAN_USING_XALAN(XercesDOMSupport)
+-XALAN_USING_XALAN(XercesParserLiaison)
+-XALAN_USING_XALAN(XalanDocument)
+-XALAN_USING_XALAN(XalanTransformer)
++using xalanc::XercesDOMSupport;
++using xalanc::XercesParserLiaison;
++using xalanc::XalanDocument;
++using xalanc::XalanTransformer;
+ 
+ #endif
+ 
