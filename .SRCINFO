@@ -1,14 +1,12 @@
 pkgbase = pkg
 	pkgdesc = Package your Node.js project into an executable
-	pkgver = 4.4.9
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/zeit/pkg
 	arch = x86_64
 	license = MIT
+    dependsd = nodejs
 	makedepends = npm
-	noextract = pkg-4.4.9.tar.gz
-	source = pkg-4.4.9.tar.gz::https://github.com/zeit/pkg/archive/4.4.9.tar.gz
-	sha512sums = 9b20e22abd4a64f8d17100ab6757d750a37db744a9cb0d40e0c93812d7045bf51cfe43176825015b0c2846fdbfc694f0d31ba556ff538567e1387ac4608dfd32
 
 pkgname = pkg
 
