@@ -4,20 +4,20 @@
 # then please put 'unknown'.
 
 # Maintainer: Brahma Sharma <brahmasharma@protonmail.com>
-pkgname=blang-git
+pkgname=emeraldpl-git
 pkgver=trunk
 pkgrel=1
 epoch=
-pkgdesc="An AUR port for the blang programming language."
+pkgdesc="An AUR port for the Emerald programming language."
 arch=("any")
-url="https://github.com/blang-pl/blang.git"
+url="https://github.com/emerald-pl/emerald.git"
 license=('MIT')
 groups=()
 depends=(libevent)
 makedepends=(crystal shards)
 checkdepends=()
 optdepends=()
-provides=(blang)
+provides=(emerald)
 conflicts=()
 replaces=()
 backup=()
@@ -30,7 +30,7 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 build() {
-	cd blang
+	cd emerald
 	make
 }
 
