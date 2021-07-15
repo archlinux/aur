@@ -6,6 +6,8 @@ pkgbase = expresslrs-configurator
 	arch = x86_64
 	license = GPL
 	source = https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v0.5.6/expresslrs-configurator-0.5.6.pacman
+	source = expresslrs-configurator.sh
 	md5sums = 6ecb35adbd1c344a22db8e76f8f8e672
+	md5sums = 9e4858b8d0af2e23309ffb6c1b75b077
 
 pkgname = expresslrs-configurator

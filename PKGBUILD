@@ -19,8 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman")
-md5sums=('6ecb35adbd1c344a22db8e76f8f8e672')
+source=(
+    "https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman"
+    "${pkgname}.sh"
+)
+md5sums=('6ecb35adbd1c344a22db8e76f8f8e672'
+         '9e4858b8d0af2e23309ffb6c1b75b077')
 noextract=()
 
 package() {
