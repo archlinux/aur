@@ -1,6 +1,6 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 5.14.1013452.6efb943b8616
+	pkgver = 5.14.r1029334.e73f0f0ee754
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -22,10 +22,8 @@ pkgbase = linux-drm-next-git
 	options = !strip
 	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
 	source = config
-	source = sphinx-workaround.patch
 	sha256sums = SKIP
-	sha256sums = 0d0691aa0f80fea0d9d204c05a845416dd443f3bb629cbb68e098e4d19cc841d
-	sha256sums = 52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb
+	sha256sums = 6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84
 
 pkgname = linux-drm-next-git
 	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules
@@ -41,7 +39,7 @@ pkgname = linux-drm-next-git
 
 pkgname = linux-drm-next-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux kernel with bleeding-edge GPU drivers kernel
+	depends = pahole
 
 pkgname = linux-drm-next-docs-git
 	pkgdesc = Documentation for the Linux kernel with bleeding-edge GPU drivers kernel
-
