@@ -48,7 +48,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=47
+_minor=50
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
@@ -474,7 +474,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('753adc474bf799d569dec4f165ed92c3'
-         '439c28ef40f6eb6846cc5f44218aaa75'
+         'ae52d0c5a79d57bdc0f40ff9c60ff1f7'
          '7d8c2aaaed142867c014f44b439f8694'
          '74798df2eba8d58326c73606b03786b7'
          '2239bc24251cb3810f0785ad5e907285'
