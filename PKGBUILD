@@ -1,26 +1,32 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
 
 pkgname=python2-hupper
-_pkgname=hupper
-pkgver=1.9.1
+pkgver=1.10.3
 pkgrel=1
-pkgdesc="Integrated process monitor for developing servers."
+pkgdesc="Integrated process monitor for developing servers"
 arch=('any')
 url="https://github.com/Pylons/hupper/"
-license=('MTI')
+license=('MIT')
 depends=('python2')
-makedepends=('python2-distribute')
-source=(https://files.pythonhosted.org/packages/09/3a/4f215659f31eeffe364a984dba486bfa3907bfcc54b7013bdfe825cebb5f/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('3b1c2222ec7b8159e7ad059e4493c6cc634c86184af0bf2ce5aba6edd241cf5f')
+makedepends=('python2-setuptools')
+# checkdepends=('python2-watchdog' 'python2-pytest-cov' 'python2-pytest-runner')
+changelog=CHANGES.rst
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/hupper/hupper-$pkgver.tar.gz")
+sha256sums=('cd6f51b72c7587bc9bce8a65ecd025a1e95f1b03284519bfe91284d010316cd9')
 
-build(){
-cd ${srcdir}/${_pkgname}-${pkgver}
-python2 setup.py build
+build() {
+	cd "hupper-$pkgver"
+	python2 setup.py build
 }
+
+# check() {
+# 	cd "hupper-$pkgver"
+# 	python2 setup.py pytest -v
+# }
 
 package() {
-cd ${srcdir}/${_pkgname}-${pkgver}
-python2 setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
+	cd "hupper-$pkgver"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
