@@ -29,7 +29,7 @@ build() {
         eval $(rustc --print cfg | grep target)
         echo $target_arch-$target_vendor-$target_os-$target_env
     )
-    mv libflux/target/$target/release/{libflux.so,fluxdoc} .
+    mv libflux/target/$target/release/libflux.so .
 }
 
 package() {
