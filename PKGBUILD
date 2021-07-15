@@ -1,6 +1,7 @@
 # Maintainer: Nicola Corna <nicola@corna.info>
 
-pkgname=pyghdl-git
+_pkgname=python-pyghdl
+pkgname=$_pkgname-git
 pkgver=1.0.0.r495.cfa7ec61
 pkgrel=1
 pkgdesc='Python binding for GHDL and high-level APIs'
@@ -8,8 +9,9 @@ arch=('any')
 url='https://github.com/ghdl/ghdl'
 license=('GPL2')
 
-provides=("python-pyghdl=$pkgver")
-conflicts=('python-pyghdl')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+replaces=('pyghdl-git')
 depends=('ghdl-git' 'python' 'python-pyattributes' 'python-pymetaclasses' 'python-pyterminalui' 'python-pydecor' 'python-pyvhdlmodel')
 makedepends=('python-setuptools' 'git')
 checkdepends=('python-pytest')

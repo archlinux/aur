@@ -1,4 +1,4 @@
-pkgbase = pyghdl-git
+pkgbase = python-pyghdl-git
 	pkgdesc = Python binding for GHDL and high-level APIs
 	pkgver = 1.0.0.r495.cfa7ec61
 	pkgrel = 1
@@ -17,7 +17,8 @@ pkgbase = pyghdl-git
 	depends = python-pyvhdlmodel
 	provides = python-pyghdl=1.0.0.r495.cfa7ec61
 	conflicts = python-pyghdl
+	replaces = pyghdl-git
 	source = ghdl::git+https://github.com/ghdl/ghdl.git
 	sha256sums = SKIP
 
-pkgname = pyghdl-git
+pkgname = python-pyghdl-git
