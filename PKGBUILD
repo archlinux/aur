@@ -4,11 +4,11 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r207
+pkgver=5.15.2+kde+r210
 pkgrel=1
-_commit=6ee419d6597fb297c2f35d5be63c4eb16ae9b12c
+_commit=663d240a18f5acac82fd2bd0fd4a33c4f47b260a
 arch=('x86_64')
-url='https://www.qt.io/'
+url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build, no QtGui or QtWidgets'
 groups=('qt' 'qt5')
@@ -25,10 +25,12 @@ options=(!lto)
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-base-cflags.patch
-        qt5-base-nostrip.patch)
+        qt5-base-nostrip.patch
+        qt5-base-mariadb-10.6.patch)
 sha256sums=('SKIP'
             'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
+            'dde1c2c7300a6e05b12145f0c0b180991aa5929a4bf13c026eef6511593f357b')
 
 pkgver() {
   cd $_pkgfqn
@@ -39,6 +41,8 @@ prepare() {
   cd ${_pkgfqn}
 
   git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
+  patch -p1 < ../qt5-base-mariadb-10.6.patch # Fix broken mysql version detection with mariadb 10.6
+
   patch -p1 < ../qt5-base-cflags.patch # Use system CFLAGS in qmake
   patch -p1 < ../qt5-base-nostrip.patch # Don't strip binaries with qmake
 }
