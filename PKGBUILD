@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-gitlab-multi-group-runner"
-pkgver="0.1.1"
+pkgver="0.1.2"
 pkgrel="1"
 pkgdesc="A helper to assign a GitLab runner to multiple groups and projects."
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python" "python-cerberus" "python-gitlab" "python-pygments"
          "python-yacl" "python-yaml")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/gitlab-multi-group-runner/archive/v${pkgver}.tar.gz")
-sha256sums=("3d04fa619d93cd356d93028cb63fe593f98c64d9fd1546a761606412eb5ddf78")
+sha256sums=("7dbd9b0079ceb9d25a4d9729fdb1acb39a9dc247f51e3fd17acf5c0e5ad624c7")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return
