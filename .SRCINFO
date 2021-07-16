@@ -1,20 +1,18 @@
 pkgbase = kmon-bin
 	pkgdesc = Linux kernel manager and activity monitor
-	pkgver = 1.4.0
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/orhun/kmon
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
+	depends = gcc-libs
 	depends = libxcb
+	provides = kmon
 	conflicts = kmon
-	conflicts = kmon-git
-	options = zipman
-	source = https://github.com/orhun/kmon/releases/download/v1.4.0/kmon-1.4.0.tar.gz
-	source = https://github.com/orhun/kmon/releases/download/v1.4.0/kmon-1.4.0.tar.gz.sig
 	validpgpkeys = C4B2D24CF87CD188C79D00BB485B7C52E9EC0DC6
-	sha512sums = 1dc841640c4d2291de5c45c7a7e115c39bdc00ad3d4950e1b17e71998195d0d88fd5ffbf4cfb5756aee5ff689386986e5c30bd2590ef674025af0915a4ed9153
-	sha512sums = SKIP
+	source_x86_64 = https://github.com/orhun/kmon/releases/download/v1.5.4/kmon-1.5.4-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/kmon/releases/download/v1.5.4/kmon-1.5.4-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = 6407f328140ae1858e5cf7183b31b0f67ea84b7aab7a2e98b07279b875ef542003430c6862fb73af26efead0bbad59398b7c41cc0dd8473c820ec5c41b64eacd
+	sha512sums_x86_64 = SKIP
 
 pkgname = kmon-bin
-
