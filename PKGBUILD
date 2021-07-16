@@ -32,6 +32,7 @@ build()
         --build-mode=prod                  \
         --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
+    python setup.py build
     make -C doc html
 }
 
@@ -39,7 +40,7 @@ package()
 {
     cd "$srcdir/$_extract_dir"
 
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     python manage.py install-langkit-support \
         --library-types=static,static-pic,relocatable \
@@ -57,9 +58,10 @@ package()
        "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
 
     # Install the documentation.
-    cd doc/_build/html
-    
+    pushd doc/_build/html
     for file in $(find . -type f); do
-        install -m 644 -D ${file} "$pkgdir/usr/share/doc/$pkgname"/${file#source/}
+        install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
     done
+    popd
 }
+# vim: set et ts=4:
