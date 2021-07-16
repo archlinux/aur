@@ -1,0 +1,13 @@
+pkgbase = hid-tmff2-dkms
+	pkgdesc = Linux kernel module for Thrustmaster T300RS (DKMS)
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/Kimplul/hid-tmff2
+	arch = x86_64
+	license = GPL-3.0
+	depends = dkms
+	conflicts = hid-tmff2
+	source = git+https://github.com/Kimplul/hid-tmff2
+	md5sums = SKIP
+
+pkgname = hid-tmff2-dkms
