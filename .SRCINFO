@@ -1,0 +1,21 @@
+pkgbase = pdf-over
+	pkgdesc = Graphical tool for creating PAdES conforming PDF signatures
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://technology.a-sit.at/en/pdf-over/
+	arch = x86_64
+	license = custom:EUPL-1.1
+	makedepends = jre11-openjdk-headless
+	depends = java-runtime
+	depends = bash
+	noextract = pdf-over-4.3.1.jar
+	source = LICENSE
+	source = pdf-over
+	source = pdf-over.desktop
+	source = pdf-over-4.3.1.jar::https://technology.a-sit.at/downloads/4232
+	sha256sums = 0dc4b0a3362f197e250604567a6b4eb16bbc34c186425401e2201a193a82549f
+	sha256sums = ba7ef05d1368d3c3235b2306047424e37a2707ef215203822f15b85b8c11cf8f
+	sha256sums = 022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd
+	sha256sums = dfd991e51bfb93456d6593c9d1a647439fa39eb06d417c7518fd919f1a2db507
+
+pkgname = pdf-over

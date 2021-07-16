@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PDF-Over
+Comment=Create PAdES conforming PDF signatures
+Exec=pdf-over
+Icon=pdf-over
+Terminal=false
+StartupNotify=false
+Categories=Office
