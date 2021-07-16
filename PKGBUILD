@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r74318.228dc61c43
+pkgver=r78688.917fc1a2bd9
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -11,8 +11,8 @@ makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'ming
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("git+https://gitlab.kitware.com/vtk/vtk.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.kitware.com/vtk/vtk.git" ram_usage.patch)
+sha256sums=('SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,6 +23,7 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  patch -p1 -i "${srcdir}/ram_usage.patch"
 }
 
 build() {
