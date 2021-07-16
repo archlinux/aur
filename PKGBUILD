@@ -4,7 +4,7 @@
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2021.05.r202.g1d9b9c9d0
+pkgver=2021.05.r315.ga941ca30d
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -29,6 +29,8 @@ sha256sums=('SKIP'
 
 prepare() {
   prepare_submodule
+  #fix gcc:11 headers regression
+  sed -i '1 i\#include <limits>' -i "${srcdir}"/${_name}/src/external/e57/src/E57XmlParser.cpp
 }
 
 pkgver() {
