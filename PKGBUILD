@@ -2,12 +2,12 @@
 
 pkgname=quickmedia-git
 pkgver=r884.b09d1e7
-pkgrel=1
+pkgrel=2
 pkgdesc='A dmenu-inspired native client for web services. Supports youtube, soundcloud, nyaa.si, 4chan, matrix, saucenao and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
-makedepends=('sibs')
+makedepends=('sibs' 'git')
 depends=('sfml' 'libx11' 'jsoncpp' 'curl' 'mpv' 'libglvnd' 'libxrandr' 'noto-fonts')
 optdepends=(
     'libnotify: For showing notifications'
