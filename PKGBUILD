@@ -17,8 +17,6 @@ makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy'
 
 _checksum=7a191b8dd41b28a9b93424a5aedac3c5ec76b046
 source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
-
-#source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$_extract_dir.tar.gz&rand=280")
 sha1sums=("$_checksum")
 
 build()
