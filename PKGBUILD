@@ -13,7 +13,7 @@ source=("https://registry.npmjs.org/truffle/-/truffle-${pkgver}.tgz")
 noextract=("truffle-${pkgver}.tgz")
 makedepends=('npm')
 depends=('nodejs')
-sha256sums=('8ccf0a988758ab308f7c71f82211dd517852504d4cc4319915d0dc364abf073b')
+sha256sums=('b00866f5b331aae5430907db5e828d9017bdb52926effe5873e8b323c30940ac')
 
 package() {
     npm install -g --production --prefix "$pkgdir/usr" "truffle-${pkgver}.tgz"
