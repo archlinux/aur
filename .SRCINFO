@@ -1,0 +1,14 @@
+pkgbase = vscode-langservers-extracted
+	pkgdesc = vscode-langservers bin collection.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/hrsh7th/vscode-langservers-extracted
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = vscode-langservers-extracted-2.4.0.tgz
+	source = https://registry.npmjs.org/vscode-langservers-extracted/-/vscode-langservers-extracted-2.4.0.tgz
+	sha256sums = 7b2033734f26ba7abb017d31bc3208d2f446b5d324fd5663e716ba7ce82ba3c3
+
+pkgname = vscode-langservers-extracted
