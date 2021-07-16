@@ -2,41 +2,44 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=libadalang
-epoch=1
-pkgver=21.0.0
-pkgrel=4
-pkgdesc="A high performance semantic engine for the Ada programming language."
+_upstream_ver=2021-20210518-199BE
+pkgver=2021
+pkgrel=1
 
-arch=('i686' 'x86_64')
+pkgdesc="A high performance semantic engine for the Ada programming language."
 url="https://github.com/AdaCore/libadalang"
+arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-depends=("gnatcoll-iconv" "gnatcoll-gmp")
-makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 'python-e3-core' 'python-docutils' 'python-sphinx')
+depends=("gnatcoll-gmp" "langkit")
+makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 
+             'python-e3-core' 'python-docutils' 'python-sphinx')
 
-source=("libadalang-$pkgver.tar.gz::https://github.com/AdaCore/libadalang/archive/v$pkgver.tar.gz"
-        "langkit-$pkgver.tar.gz::https://github.com/AdaCore/langkit/archive/v$pkgver.tar.gz")
+_checksum=7a191b8dd41b28a9b93424a5aedac3c5ec76b046
+source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
 
-noextract=()
-sha256sums=('afc4b54619d5ee003ba2828969071fa38ced4f68319cc5aeee4736981258b935'
-            '534d1e56f03961a6f28d248956b040b31429e602640c07f1b5ff89f76e9fcf5f')
+#source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$_extract_dir.tar.gz&rand=280")
+sha1sums=("$_checksum")
 
 build()
 {
-  cd "$srcdir/libadalang-$pkgver"
+  cd "$srcdir/$pkgname-$_upstream_ver-src"
 
-  export PYTHONPATH="$srcdir/langkit-$pkgver:$PYTHONPATH"
-  python ada/manage.py generate
-  python ada/manage.py build --build-mode=prod --gargs="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
+  ADA_FLAGS="$CFLAGS"
+  ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+  ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+
+  python manage.py generate
+  python manage.py build --build-mode=prod --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
   make -C dev_manual html
 }
 
 package()
 {
-  cd "$srcdir/libadalang-$pkgver"
+  cd "$srcdir/$pkgname-$_upstream_ver-src"
 
-  python ada/manage.py install --build-mode=prod "$pkgdir/usr"
+  python manage.py install --build-mode=prod "$pkgdir/usr"
 
   # Install the developers manual
   cd dev_manual/_build/html
@@ -45,7 +48,7 @@ package()
     install -m 644 -D ${file} "$pkgdir/usr/share/doc/$pkgname"/${file#source/}
   done
 
-  cd "$srcdir/libadalang-$pkgver"
+  cd "$srcdir/$pkgname-$_upstream_ver-src"
 
   # Install the license.
   install -D -m644     \
