@@ -2,11 +2,11 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-markad
-pkgver=2.6.7
+pkgver=3.0.6
 _logover=ea2e182ec798375f3830f8b794e7408576f139ad
 epoch=1
 _vdrapi=2.4.7
-pkgrel=2
+pkgrel=1
 pkgdesc="Plugin to mark advertisemets in recordings and optionally auto-cut"
 url="https://github.com/kfb77/vdr-plugin-markad"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/kfb77/vdr-plugin-markad/arc
         "$pkgname-logos-1.tar.bz2::https://projects.vdr-developer.org/git/vdr-plugin-markad.git/snapshot/vdr-plugin-markad-$_logover.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('6fd0942f458fd0050e9e6eb123def99e07e5bd298a408ce4f58fcfdce2812896'
+sha256sums=('f36a069628aa53a080aeae4b47d445f7f6c94b8f0577cebc92671021278f0267'
             'c5316bd48ebdb58ecad8bf8de29b2b92337aa8350a4d3340e8383301d4f7719f'
             '5b4f76d1ff31fc2aee847a070954bad1dbf00446c2e99269d9bf8331beb95e24')
 
