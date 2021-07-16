@@ -1,17 +1,15 @@
 pkgbase = lib32-gdbm
 	pkgdesc = GNU database library (32-bit)
-	pkgver = 1.19
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = gcc-multilib
 	makedepends = lib32-gcc-libs
 	depends = gdbm
 	depends = lib32-glibc
-	options = !makeflags
-	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.19.tar.gz
-	sha256sums = 37ed12214122b972e18a0d94995039e57748191939ef74115b1d41d8811364bc
+	source = ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.20.tar.gz
+	sha256sums = 3aeac05648b3482a10a2da986b9f3a380a29ad650be80b9817a435fb8114a292
 
 pkgname = lib32-gdbm
-
