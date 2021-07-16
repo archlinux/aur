@@ -2,7 +2,7 @@
 # Former maintainer: Anton Kudryavtsev <boblobl4@gmail.com>
 
 pkgname=mbedtls-git
-pkgver=2.26.0.r95.g2aff17b8c
+pkgver=3.0.0.r18.gac6cc9fbc
 pkgrel=1
 pkgdesc="An open source, portable, easy to use, readable and flexible SSL library"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ prepare() {
   cd "mbedtls"
 
   # enable flags for non-embedded systems
-  sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' "include/mbedtls/config.h"
-  sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' "include/mbedtls/config.h"
+  sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' "include/mbedtls/mbedtls_config.h"
+  sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' "include/mbedtls/mbedtls_config.h"
 }
 
 pkgver() {
