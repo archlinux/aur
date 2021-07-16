@@ -1,6 +1,6 @@
 # Maintainer: Eric Lay <ericlaytm@gmail.com>
 pkgname=fuzzy-pkg-finder
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Simple cli command for using fzf to search and install packages"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,4 +17,5 @@ md5sums=('SKIP')
 package() {
 	cd "$srcdir/$pkgname"
 	install -Dm755 fpf -t "$pkgdir/usr/bin"
+    install -Dm755 fpff -t "$pkgdir/usr/bin"
 }
