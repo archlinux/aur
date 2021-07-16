@@ -17,7 +17,7 @@ optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity sneedacity)
 conflicts=(audacity sneedacity)
 source=(
-  "git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git#conan_removal"
+  "git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git#branch=conan_removal"
 )
 md5sums=('SKIP')
 

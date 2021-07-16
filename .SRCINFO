@@ -40,7 +40,7 @@ pkgbase = sneedacity-git
 	provides = sneedacity
 	conflicts = audacity
 	conflicts = sneedacity
-	source = git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git#conan_removal
+	source = git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git#branch=conan_removal
 	md5sums = SKIP
 
 pkgname = sneedacity-git
