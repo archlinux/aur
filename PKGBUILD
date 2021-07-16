@@ -3,12 +3,11 @@
 pkgname=apalache
 pkgver=0.15.11
 pkgrel=1
-epoch=1
 pkgdesc="Apalache: symbolic model checker for TLA+"
 arch=('any')
 url="https://$pkgname.informal.systems/"
 license=('Apache')
-depends=('jre-openjdk' 'glibc')
+depends=('jre-openjdk' 'glibc=2.33')
 makedepends=(patch)
 source=(
 	"https://github.com/informalsystems/$pkgname/releases/download/v$pkgver/$pkgname.tgz"

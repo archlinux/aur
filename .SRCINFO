@@ -2,13 +2,12 @@ pkgbase = apalache
 	pkgdesc = Apalache: symbolic model checker for TLA+
 	pkgver = 0.15.11
 	pkgrel = 1
-	epoch = 1
 	url = https://apalache.informal.systems/
 	arch = any
 	license = Apache
 	makedepends = patch
 	depends = jre-openjdk
-	depends = glibc
+	depends = glibc=2.33
 	source = https://github.com/informalsystems/apalache/releases/download/v0.15.11/apalache.tgz
 	source = https://raw.githubusercontent.com/informalsystems/apalache/unstable/LICENSE
 	source = sys-install.patch
