@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=0.32.0.r3.gcb84e823
+pkgver=0.34.0.r4.g7cf877c1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -49,6 +49,7 @@ package() {
   mv build/web ${pkgdir}/usr/share/webapps/${_pkgname}
   install -Dm644 config.sample.json ${pkgdir}/etc/webapps/${_pkgname}/config.json
   ln -s /etc/webapps/${_pkgname}/config.json ${pkgdir}/usr/share/webapps/${_pkgname}
+  sed -i '/base href=/d' ${pkgdir}/usr/share/webapps/${_pkgname}/index.html
 }
 
 # vim: set sw=2 ts=2 et:
