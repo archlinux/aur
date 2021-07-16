@@ -1,7 +1,7 @@
 pkgbase = meshroom
 	pkgdesc = Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework.
 	pkgver = 2021.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://alicevision.github.io/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = meshroom
 	makedepends = python-setuptools
 	makedepends = patchelf
 	depends = alice-vision
-	depends = alembic-qfix
+	depends = alembic
 	depends = openimageio
 	depends = python
 	depends = python-psutil
@@ -38,4 +38,3 @@ pkgbase = meshroom
 	sha256sums = e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc
 
 pkgname = meshroom
-
