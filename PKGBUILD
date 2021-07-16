@@ -4,12 +4,12 @@
 
 pkgname=todoist
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
 url="https://github.com/sachaos/todoist"
 license=('MIT')
-makedepends=('go' 'git' 'dep')
+makedepends=('go' 'git')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
