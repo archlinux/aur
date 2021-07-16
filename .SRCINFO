@@ -1,7 +1,7 @@
 pkgbase = sad
 	pkgdesc = Space Age seD
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ms-jpq/sad
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=sad
 pkgver=0.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Space Age seD"
 arch=("x86_64")
 url="https://github.com/ms-jpq/sad"
@@ -16,12 +16,17 @@ sha256sums=('b242359e9983e98c371e4bf9115437f746344edd45f6bae376b197e05a15b995')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --all-features
+  RUSTUP_TOOLCHAIN=stable cargo build \
+    --release  \
+    --all-features \
+    --target-dir=target
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release  --all-features
+  RUSTUP_TOOLCHAIN=stable cargo test \
+    --all-features \
+    --target-dir=target
 
 }
 
