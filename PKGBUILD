@@ -3,7 +3,7 @@
 pkgname=sneedacity-git
 pkgver=3.0.2.r344.gd5a54f152
 pkgrel=1
-pkgdesc="Audacity fork without any telemetry (git-version)"
+pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
 url="https://github.com/Sneeds-Feed-and-Seed/sneedacity"
 license=(GPL2 CCPL)
@@ -39,8 +39,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Daudacity_use_wxwidgets=local \
-    audacity_use_ffmpeg:STRING=loaded \
+    -Dsneedacity_use_wxwidgets=local \
+    sneedacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
   make .
