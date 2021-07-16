@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb’s SILE publishing toolkit
-	pkgver = 0.5.1.r1.gacc5cbc
+	pkgver = 0.6.0.r0.g766a95c
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = casile-git
 	depends = epubcheck
 	depends = ghostscript
 	depends = git
+	depends = git-warp-time
 	depends = imagemagick
 	depends = inetutils
 	depends = inkscape
@@ -64,4 +65,3 @@ pkgbase = casile-git
 	sha256sums = SKIP
 
 pkgname = casile-git
-
