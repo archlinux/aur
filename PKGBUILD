@@ -3,7 +3,7 @@
 
 pkgname=telescope
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
 url='https://telescope.omarpolo.com'
@@ -25,4 +25,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+	rm -f "$pkgdir/usr/share/doc/$pkgname/LICENSE"
 }

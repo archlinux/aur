@@ -1,7 +1,7 @@
 pkgbase = telescope
 	pkgdesc = w3m-like browser for Gemini.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://telescope.omarpolo.com
 	arch = x86_64
 	license = ISC
