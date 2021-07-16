@@ -2,7 +2,7 @@
 
 pkgname=wordbook
 _author=fushinari
-_gitname=wordbook
+_gitname=Wordbook
 pkgver=0.3.1
 pkgrel=1
 pkgdesc='An offline dictionary app for GNOME'

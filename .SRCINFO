@@ -13,7 +13,7 @@ pkgbase = wordbook
 	depends = python
 	depends = python-gobject
 	depends = python-wn
-	source = wordbook-v0.3.1.tar.gz::https://github.com/fushinari/wordbook/archive/0.3.1.tar.gz
+	source = Wordbook-v0.3.1.tar.gz::https://github.com/fushinari/Wordbook/archive/0.3.1.tar.gz
 	sha256sums = 0fe8ae1c518a852dc58f0e551a9e93d836fd2089e6f42740814f9c8d18108836
 
 pkgname = wordbook
