@@ -22,13 +22,7 @@ build() {
 	cd $srcdir/$pkgname
 	mkdir build
 	cd build
-	cmake \
-            -DCMAKE_BUILD_TYPE="Release" \
-            -DCMAKE_INSTALL_PREFIX="/usr" \
-            -Wno-dev \
-			--target all \
-			-- \
-            ..
+	cmake -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr" -Wno-dev --target all ..
 	make
 }
 
