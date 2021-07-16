@@ -2,7 +2,7 @@
 
 pkgname=clibasic-bin
 pkgver=0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=(x86_64 i686)
 url="https://github.com/PQCraft/clibasic"
@@ -16,7 +16,10 @@ sha256sums_x86_64=('2fd6a0e1a6ce89bab4f2d314343c0ccd6165ccb867cca2ebbd574199a1e7
 sha256sums_i686=('c46ccb7df4d614087119fea6266483e044b9165bd21fef2b6dc909382064c568')
 
 package() {
+    olddir="$(pwd)"
     cd "${srcdir}"
     install -Dm755 clibasic -t "${pkgdir}/usr/bin/"
+    cd "$olddir"
+    rm -f "${pkgname}-${pkgver}-x64.zip" "${pkgname}-${pkgver}-x86.zip"
 }
 
