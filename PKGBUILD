@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-vitals-git
-pkgver=34.r271.gf5f18e8
+pkgver=34.r415.gc007301
 pkgrel=1
 pkgdesc="Displays system vitals in a GNOME Shell top bar pop-down."
 arch=('any')
@@ -38,7 +38,6 @@ package() {
   find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
   cp -r --no-preserve=ownership,mode helpers "${_destdir}"
   install -Dm644 schemas/gschemas.compiled "${_destdir}/schemas/gschemas.compiled"
-  install -Dm644 schemas/prefs.ui "${_destdir}/schemas/prefs.ui"
   cd locale
   for locale in */
     do
