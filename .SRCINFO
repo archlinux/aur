@@ -1,0 +1,15 @@
+pkgbase = concordium-node-bin
+	pkgdesc = Node for the Concordium blockchain
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Concordium/concordium-node
+	install = concordium-node-bin.install
+	arch = x86_64
+	license = AGPL3
+	depends = postgresql-libs
+	depends = openssl
+	depends = unbound
+	source = https://distribution.mainnet.concordium.software/deb/concordium-node_1.0.1-mainnet_amd64.deb
+	sha256sums = dcb76543e4fb0346242df1d8873bbdf89af6ccbd49ea6b4d315bd1dc4c14a135
+
+pkgname = concordium-node-bin

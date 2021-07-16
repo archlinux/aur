@@ -1,0 +1,18 @@
+post_install() {
+  # Only update the node name if the override configuration does not already exist.
+  # This is not perfect, since we don't know whether the override contains
+  # COLLECTOR_NODE_NAME, but it is good enough for now.
+  override_path=/etc/systemd/system/concordium-node-collector.service.d/override.conf
+  if [[ ! -f $override_path ]]; then
+    echo "Writing default node name ($(hostname)) to '${override_path}'."
+    echo "Please update the file with a node name of your choosing."
+    mkdir -p /etc/systemd/system/concordium-node-collector.service.d/
+    cat > /etc/systemd/system/concordium-node-collector.service.d/override.conf <<EOF
+[Service]
+Environment='COLLECTOR_NODE_NAME=`systemd-escape "$(hostname)"`'
+EOF
+  else
+    echo "Node collector override file '${override_path}' already exists."
+    echo "To update settings edit the file."
+  fi
+}
