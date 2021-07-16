@@ -2,10 +2,10 @@
 # Contributor: Geyslan G. Bem <geyslan@gmail.com>
 pkgname=safesignidentityclient
 pkgver=3.5.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
-url="https://pronova.com.br/download-tokens"
+url="https://www.uziregister.nl/uzi-pas/documenten/publicaties/2020/09/02/safesign-version-3.5.6.1-for-linux"
 license=('custom:copyright')
 depends=('pcsclite' 'wxgtk2' 'openssl-1.0' 'xdg-utils' 'libmspack' 'ccid')
 optdepends=('acsccid: ACS CCID PC/SC driver',
