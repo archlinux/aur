@@ -1,0 +1,27 @@
+pkgbase = bxdecay0
+	pkgdesc = C++ port of the legacy Decay0 FORTRAN library
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/BxCppDev/bxdecay0
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	depends = gsl
+	provides = libBxDecay0.so
+	provides = bxdecay0-config
+	provides = bxdecay0-run
+	source = https://github.com/BxCppDev/bxdecay0/archive/refs/tags/1.0.10.tar.gz
+	md5sums = 7bf4a0e184ea87d6cc0fad5cc8afeddc
+
+pkgname = bxdecay0
+	conflicts = bxdecay0-geant4
+
+pkgname = bxdecay0-geant4
+	depends = gsl
+	depends = geant4
+	provides = libBxDecay0.so
+	provides = bxdecay0-config
+	provides = bxdecay0-run
+	provides = libBxDecay0_Geant4.so
+	conflicts = bxdecay0
