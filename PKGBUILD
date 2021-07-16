@@ -1,13 +1,15 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=deepin-mail-bin
+_pkgname=deepin-mail
 pkgver=5.1.0.45
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin mail"
 arch=("x86_64" "i386")
 url="https://www.deepin.com/"
 license=("GPL3")
 depends=( 'qt5-webengine'  'liblockfile'  'dtkwidget')
+provides=("${_pkgname}")
 source_x86_64=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_amd64.deb")
 source_i386=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_i386.deb")
 sha512sums_x86_64=(
@@ -20,4 +22,5 @@ sha512sums_i386=(
 package(){
     cd ${srcdir}
     tar -xJvf data.tar.xz -C "${pkgdir}"
+    sed -i "4c Exec=deepin-mail %U" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 }
