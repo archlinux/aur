@@ -1,44 +1,36 @@
-# Maintainer: Oliver Jaksch <arch-aur at com-in dot de>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=romvault
-pkgver=3.2.5
+pkgver=3.3.0
 pkgrel=1
-pkgdesc="RomVault is a tool for managing your ROMs and DATs for emulators, like libretro"
+pkgdesc="A tool for managing your ROMs and DATs for emulators"
 arch=('i686' 'x86_64')
-url="http://www.romvault.com/"
+url="https://www.romvault.com"
 license=('custom')
 depends=('mono')
-
-source=(${url}/download/ROMVault_V${pkgver}.zip
-	'LICENSE'
-	'romvault.desktop'
-	'romvault.png')
-
-sha256sums=('3c577f1aec6f01ae099525125df124946715384287c628f427b9a000753df1b7'
-	    '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
-	    '5d188d524030b25059db5002df184aed9b21667710876a87f3b7d5a8cb281154'
-	    'd368d14e844f2dd6f5b2d04b31d9a70f0af6f3ec72669f5b6d98b161a8bec1d6')
+install=$pkgname.install
+source=("$pkgname-$pkgver.zip::$url/download/ROMVault_V$pkgver.zip"
+        'LICENSE'
+        "$pkgname.sh"
+        'chdman.sh'
+        "$pkgname.desktop"
+        "$pkgname.png"
+        'tmpfiles.d.conf')
+sha256sums=('d593c1069e2725810aaea0666b691f3ca546bf88406e2378cdd8983a14349399'
+            '996bf0d32dc11506ea2635d64474c24399fab25933463f27d70cfa1d50431a16'
+            'fab2a40272370226000afbd5dffb9502a664d1b93896b15583f1f3705250e5f4'
+            '7970f3966dee1f9aa7d5b311753dbeaa7a7878e9fa7cb14e6be886900706a41d'
+            '5d188d524030b25059db5002df184aed9b21667710876a87f3b7d5a8cb281154'
+            'd368d14e844f2dd6f5b2d04b31d9a70f0af6f3ec72669f5b6d98b161a8bec1d6'
+            '4b5f470a64d44efea12d979340eba31225121100158b8c4409e1eca46c1cebd1')
 
 package() {
-    mkdir -p -m775 "${pkgdir}/opt/${pkgname}"
-    cd "${pkgdir}/opt/${pkgname}"
-    bsdtar -xf "${srcdir}/ROMVault_V${pkgver}.zip"
-
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
-    install -D -m 644 ${srcdir}/romvault.desktop ${pkgdir}/usr/share/applications/romvault.desktop
-    install -D -m 644 ${srcdir}/romvault.png ${pkgdir}/usr/share/pixmaps/romvault.png
-    # chmod 644 *.exe
-    # chmod -R 775 "DATRoot" "ROMRoot" "ToSort"
-    # chown -R root:games "${pkgdir}/opt/${pkgname}"
-
-    msg2 "Please create some subdirectorys ie. somewhere in your HOME and set"
-    msg2 "these as your working area in programs settings."
-    msg2 "---"
-    msg2 "A documentation and some subsets of DAT files can be found at"
-    msg2 "<https://github.com/mist-devel/mist-board/tree/master/rom_manager>"
-    msg2 "and a video that shows a quick HowTo can be found at"
-    msg2 "<http://www.youtube.com/embed/yUOIYYbZuAg>"
-    msg2 "---"
-    msg2 "You'll find more information about RomVault on it's home at <${url}> and"
-    msg2 "at MiST's home at <https://github.com/mist-devel/mist-board/wiki/RomManagement>"
+	install -Dm 755 ROMVault3.exe chdman.exe -t "$pkgdir/opt/$pkgname/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm 755 chdman.sh "$pkgdir/usr/bin/chdman"
+	install -Dm 644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+	install -Dm 644 "$pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm 644 tmpfiles.d.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }

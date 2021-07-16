@@ -1,0 +1,4 @@
+post_remove() {
+	echo ':: There are leftover directories in /opt/romvault/'
+	echo ':: You can clean them up with sudo rm -rf /opt/romvault/'
+}
