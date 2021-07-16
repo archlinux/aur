@@ -3,7 +3,7 @@
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.3.r127.gdb1e7fc
+pkgver=0.3.r134.g59ae0cd
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
@@ -32,5 +32,4 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-	rm -f "$pkgdir/usr/share/doc/$_pkgname/LICENSE"
 }
