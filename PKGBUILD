@@ -1,13 +1,13 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscryptctl-git
-pkgver=1.0.0.r0.g56b898c
+pkgver=1.0.0.r2.ge863642
 pkgrel=1
 pkgdesc='Small C tool for Linux filesystem encryption'
 arch=('x86_64')
 url='https://github.com/google/fscryptctl'
 license=('Apache')
-makedepends=('git')
+makedepends=('git' 'pandoc')
 conflicts=('fscryptctl')
 provides=('fscryptctl')
 source=('git+https://github.com/google/fscryptctl.git')
