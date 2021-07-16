@@ -3,10 +3,10 @@
 pkgname=deepin-ocr
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='Deepin OCR Reader'
+pkgdesc='Deepin OCR Tool'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-ocr"
-provides=('deepin-ocr')
+#provides=('deepin-ocr')
 license=('GPL3')
 depends=('glibc' 'dtkcore' 'dtkgui' 'dtkwidget' 'libexif' 'freeimage' 
 	 'gio-qt' 'libglvnd' 'glib2' 'glibmm' 'lcms2' 'libpulse' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 
@@ -16,7 +16,7 @@ depends=('glibc' 'dtkcore' 'dtkgui' 'dtkwidget' 'libexif' 'freeimage'
 	 'python-xcffib')
 makedepends=('qt5-tools' 'gcc-libs' 'fontconfig' 'freeimage' 'freetype2' 'mtdev' 'sqlite' 'systemd-libs' 'xcb-util' 'libxrender' 'pkgconfig' 'xorgproto')
 #optdepends=()
-groups=('deepin-extras')
+groups=('deepin-extra')
 source=("$pkgname-$pkgver.tar.xz::http://dropbox.com/s/sodgwycn3sbbun1/deepin-ocr_${pkgver}_src.tar.xz?dl=1")
 sha256sums=('4923d0db3d24deda904543b3ac74d2360f3ad58013cfc121fb4bf0108c6edd98')
 

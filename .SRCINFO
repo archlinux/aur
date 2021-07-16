@@ -1,10 +1,10 @@
 pkgbase = deepin-ocr
-	pkgdesc = Deepin OCR Reader
+	pkgdesc = Deepin OCR Tool
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-ocr
 	arch = x86_64
-	groups = deepin-extras
+	groups = deepin-extra
 	license = GPL3
 	makedepends = qt5-tools
 	makedepends = gcc-libs
@@ -53,7 +53,6 @@ pkgbase = deepin-ocr
 	depends = xsel
 	depends = python-xmltodict
 	depends = python-xcffib
-	provides = deepin-ocr
 	source = deepin-ocr-1.0.0.tar.xz::http://dropbox.com/s/sodgwycn3sbbun1/deepin-ocr_1.0.0_src.tar.xz?dl=1
 	sha256sums = 4923d0db3d24deda904543b3ac74d2360f3ad58013cfc121fb4bf0108c6edd98
 
