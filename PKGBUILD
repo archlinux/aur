@@ -1,7 +1,7 @@
 # Maintainer: Tigermouthbear tigermouthbear@tigr.dev
 # Contributor: x4e
 pkgname="tigercapture"
-pkgver="0.2"
+pkgver="0.3"
 pkgrel=0
 url="https://github.com/tigermouthbear/tigercapture"
 license=("GPLv3")
