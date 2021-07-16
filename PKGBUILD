@@ -2,8 +2,8 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=jdtextedit
-pkgver=8.3
-pkgrel=3
+pkgver=9.0
+pkgrel=1
 pkgdesc="An advanced text editor"
 arch=("any")
 url="https://gitlab.com/JakobDev/jdTextEdit"
@@ -21,7 +21,7 @@ depends=("python"
     "python-setuptools")
 makedepends=("python-setuptools" "python-sphinx" "gendesk" "gzip")
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/${pkgver}/jdTextEdit-${pkgver}.tar.gz" "distribution.json")
-sha256sums=("2eaf2a1f13105f6f450b010ee468694597bd409d6fa32dd578d7a21fde0ebb75" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
+sha256sums=("943d0c277e25fd3adb262479fc4a0d1b6f88917ec23b51aaaf7bcae1d57ddcbc" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
 
 build() {
     cd "jdTextEdit-${pkgver}/doc"
