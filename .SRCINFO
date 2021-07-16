@@ -1,6 +1,6 @@
 pkgbase = wannier90
 	pkgdesc = Compute maximally-localised Wannier functions (MLWFs).
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://www.wannier.org
 	arch = i686
@@ -10,8 +10,7 @@ pkgbase = wannier90
 	depends = lapack
 	depends = blas
 	options = staticlibs
-	source = https://github.com/wannier-developers/wannier90/archive/v3.0.0.tar.gz
-	sha256sums = f196e441dcd7b67159a1d09d2d7de2893b011a9f03aab6b30c4703ecbf20fe5b
+	source = https://github.com/wannier-developers/wannier90/archive/v3.1.0.tar.gz
+	sha256sums = 40651a9832eb93dec20a8360dd535262c261c34e13c41b6755fa6915c936b254
 
 pkgname = wannier90
-
