@@ -1,6 +1,6 @@
 pkgbase = cocogitto-bin
 	pkgdesc = A set of cli tools for the conventional commit and semver specifications
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/oknozor/cocogitto
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = cocogitto-bin
 	arch = aarch64
 	license = MIT
 	provides = cocogitto
-	source_x86_64 = https://github.com/oknozor/cocogitto/releases/download/2.0.0/cocogitto-2.0.0-x86_64-unknown-linux-musl.tar.gz
-	md5sums_x86_64 = 93f7061ac6d2fbc3348fd561b8c9620e
-	source_armv7h = https://github.com/oknozor/cocogitto/releases/download/2.0.0/cocogitto-2.0.0-armv7-unknown-linux-musleabihf.tar.gz
-	md5sums_armv7h = d28cbce506c900f11d5fd7d7d2a527f7
-	source_aarch64 = https://github.com/oknozor/cocogitto/releases/download/2.0.0/cocogitto-2.0.0-aarch64-linux-android.tar.gz
-	md5sums_aarch64 = a37732c3f42b4ecce6d74c4fb7ac838d
+	source_x86_64 = https://github.com/oknozor/cocogitto/releases/download/2.1.0/cocogitto-2.1.0-x86_64-unknown-linux-musl.tar.gz
+	md5sums_x86_64 = 1720d220ca6b0d094f9f541b04f9eb02
+	source_armv7h = https://github.com/oknozor/cocogitto/releases/download/2.1.0/cocogitto-2.1.0-armv7-unknown-linux-musleabihf.tar.gz
+	md5sums_armv7h = 57639e9013efc549452f1a7a11257912
+	source_aarch64 = https://github.com/oknozor/cocogitto/releases/download/2.1.0/cocogitto-2.1.0-aarch64-linux-android.tar.gz
+	md5sums_aarch64 = 720c01cfd03c941e4300ebd6da6fe2ec
 
 pkgname = cocogitto-bin
-
