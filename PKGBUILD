@@ -60,9 +60,9 @@ pkgbase=linux-xanmod-rt510
 _major=5.10
 pkgver=${_major}.47
 _branch=5.x
-_rt=45
+_rt=46
 xanmod=1
-pkgrel=${xanmod}
+pkgrel=${xanmod}.${_rt}
 pkgdesc='Linux Xanmod real-time version'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -91,7 +91,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '7a9654b046ee7f7582622c09ad6135cc40e09ac7ef8226ef071751fbcd1fb9fa'
+            '69f74589e6715af1b6406a00d82606fe4788be8da5273f2c2eb331a00f334298'
             '51742dee57cd15bece152d6527f48af87cb7930f0f6a356d5282f778e7c35b39')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -107,7 +107,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
+  #echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
