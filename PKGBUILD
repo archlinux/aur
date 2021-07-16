@@ -1,13 +1,13 @@
 # Maintainer: Christoph Haag <haagch+aur@frickel.club>
 pkgname='vkmark-git'
 pkgdesc='Vulkan benchmark'
-pkgver=r106.868726e
+pkgver=r127.53abc4f
 pkgrel=1
 url='https://github.com/vkmark/vkmark'
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('vulkan-icd-loader' 'libpng' 'mesa')
-makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'assimp' 'vulkan-hpp')
+depends=('vulkan-icd-loader' 'libpng' 'mesa' 'assimp' 'xcb-util-wm')
+makedepends=('git' 'vulkan-headers' 'meson' 'ninja' 'glm' 'vulkan-hpp')
 source=('git+https://github.com/vkmark/vkmark.git')
 sha1sums=('SKIP')
 
