@@ -1,7 +1,7 @@
 # Maintainer: Erik Moldtmann <erik@moldtmann.de>
 pkgname=expresslrs-configurator
-pkgver=0.5.6
-pkgrel=3
+pkgver=0.5.8
+pkgrel=1
 epoch=
 pkgdesc="Cross platform configuration & build tool for the ExpressLRS radio link"
 arch=('x86_64')
@@ -22,7 +22,7 @@ changelog=
 source=(
     "https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman"
 )
-md5sums=('6ecb35adbd1c344a22db8e76f8f8e672')
+md5sums=('193ae2008fb1ea65478604991d92ff13')
 noextract=()
 
 package() {
