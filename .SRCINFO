@@ -6,7 +6,7 @@ pkgbase = apalache
 	arch = any
 	license = Apache
 	makedepends = patch
-	depends = jre-openjdk
+	depends = java-runtime>=11
 	depends = glibc=2.33
 	source = https://github.com/informalsystems/apalache/releases/download/v0.15.11/apalache.tgz
 	source = https://raw.githubusercontent.com/informalsystems/apalache/unstable/LICENSE
