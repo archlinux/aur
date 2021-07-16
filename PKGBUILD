@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=capistrano
-pkgver=3.15.0
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="A remote server automation and deployment tool written in Ruby"
 arch=(any)
