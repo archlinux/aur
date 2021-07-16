@@ -3,7 +3,7 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
 pkgver=0.34.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -30,7 +30,7 @@ package() {
   tar xzf "fluffychat-web-${pkgver}.tar.gz" -C ${pkgdir}/usr/share/webapps/${_pkgname}
   install -Dm644 config.sample.json ${pkgdir}/etc/webapps/${_pkgname}/config.json
   ln -s /etc/webapps/${_pkgname}/config.json ${pkgdir}/usr/share/webapps/${_pkgname}
-  #sed -i '/base href=/d' ${pkgdir}/usr/share/webapps/${_pkgname}/index.html
+  sed -i '/base href=/d' ${pkgdir}/usr/share/webapps/${_pkgname}/index.html
 }
 
 # vim: set sw=2 ts=2 et:
