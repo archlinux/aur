@@ -22,9 +22,6 @@ build()
 {
     cd "$srcdir/$_extract_dir"
 
-    # Make the Langkit Python package tree available for import.
-    export PYTHONPATH="$srcdir/$_extract_dir"
-
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
     python manage.py build-langkit-support \
         --library-types=relocatable        \
