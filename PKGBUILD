@@ -3,6 +3,7 @@
 
 pkgname=gnatcoll-core
 _upstream_ver=2021-20210518-19ADF
+epoch=1
 pkgver=2021
 pkgrel=1
 
