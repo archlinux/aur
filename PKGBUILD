@@ -2,7 +2,7 @@
 # Contributor:  Devin Cofer <ranguvar[at]ranguvar[dot]io>
 # Contributor: Francisco Giordano <frangio.1@gmail.com>
 pkgname=truffle
-pkgver=5.2.4
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='A development framework for Ethereum smart contracts'
 url='https://github.com/trufflesuite/truffle'
