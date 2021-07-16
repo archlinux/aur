@@ -1,21 +1,16 @@
 # Maintainer: James Spencer <james.s.spencer@gmail.com>
 
 pkgname=libxc
-pkgver=4.3.4
-pkgrel=4
+pkgver=5.1.5
+pkgrel=1
 pkgdesc="A library of exchange-correlation functionals for density-functional theory"
 arch=('i686' 'x86_64')
 url="https://www.tddft.org/programs/libxc"
 license=('MPL2')
 makedepends=('gcc' 'gcc-fortran')
 source=(http://www.tddft.org/programs/$pkgname/down.php?file=$pkgver/$pkgname-$pkgver.tar.gz)
-sha1sums=('8c8a8fe01ee1d2ff9868657a17f751c80534829d')
+sha256sums=('02e4615a22dc3ec87a23efbd3d9be5bfad2445337140bad1720699571c45c3f9')
 options=(staticlibs)
-
-prepare() {
-  # Add missing file. Fixed upstream (see https://gitlab.com/libxc/libxc/commit/3f4bad352779a803020de89e271a175a72b03f85).
-  sed -i "/func_info.c/ a func_reference.c" $srcdir/$pkgname-$pkgver/CMakeLists.txt
-}
 
 build() {
   mkdir "$srcdir/build"

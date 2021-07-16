@@ -1,7 +1,7 @@
 pkgbase = libxc
 	pkgdesc = A library of exchange-correlation functionals for density-functional theory
-	pkgver = 4.3.4
-	pkgrel = 4
+	pkgver = 5.1.5
+	pkgrel = 1
 	url = https://www.tddft.org/programs/libxc
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = libxc
 	makedepends = gcc
 	makedepends = gcc-fortran
 	options = staticlibs
-	source = http://www.tddft.org/programs/libxc/down.php?file=4.3.4/libxc-4.3.4.tar.gz
-	sha1sums = 8c8a8fe01ee1d2ff9868657a17f751c80534829d
+	source = http://www.tddft.org/programs/libxc/down.php?file=5.1.5/libxc-5.1.5.tar.gz
+	sha256sums = 02e4615a22dc3ec87a23efbd3d9be5bfad2445337140bad1720699571c45c3f9
 
 pkgname = libxc
-
