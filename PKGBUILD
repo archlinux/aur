@@ -4,7 +4,7 @@
 _npmname=vscode-css-languageserver-bin
 pkgname=vscode-css-languageserver-bin
 pkgver=1.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Binary version published on npm of vscode-css-languageserver extracted from VSCode tree'
 arch=('any')
 url='https://github.com/vscode-langservers/vscode-css-languageserver-bin'
@@ -16,11 +16,11 @@ sha256sums=('daa006f74a6baa265e743811bf224003048144c805bc3a9dd3f8175d4815bced')
 noextract=("${_npmname}-${pkgver}.tgz")
 
 package() {
-    cd "${srcdir}"
-    local _npmdir="${pkgdir}/usr/lib/node_modules/"
-    mkdir -p "${_npmdir}"
-    cd "${_npmdir}"
-    npm install -g --prefix "${pkgdir}/usr" "${_npmname}@${_npmver}"
+    cd "$srcdir"
+    local _npmdir="$pkgdir/usr/lib/node_modules/"
+    mkdir -p "$_npmdir"
+    cd "$_npmdir"
+    npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     install -Dm644 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     chown -R root:root "${pkgdir}"
 }
