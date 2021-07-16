@@ -1,25 +1,29 @@
 pkgbase = mathicsscript
 	pkgdesc = A more advanced command-line interface to Mathics.
-	pkgver = 3.0.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/Mathics3/mathicsscript
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
-	depends = mathics>=2.2.0
-	depends = mathics<2.3.0
+	depends = mathics>=3.1.0
+	depends = mathics<3.2.0
 	depends = mathics-pygments>=1.0.2
+	depends = mathics-scanner>=1.2.2
 	depends = readline
 	depends = python-click
 	depends = python-colorama
 	depends = python-pygments
 	depends = python-columnize
 	depends = python-networkx
-	depends = python-prompt_toolkit
-	depends = python-pygments
+	depends = python-prompt_toolkit>=3.0.18
+	depends = python-pygments>=2.9.0
 	depends = python-term-background>=1.0.1
-	source = mathicsscript-3.0.0.tar.gz::https://github.com/Mathics3/mathicsscript/archive/refs/tags/3.0.0.tar.gz
-	sha256sums = 6211e9b6ecdf77b8de9e6c023a89acf620fc0cadcf67aa478775865322c75672
+	optdepends = python-matplotlib: For rending plots and graphs
+	optdepends = python-cariosvg: For rendering plots and graphs as SVGs via matplotlib
+	optdepends = python-pyqt5: For interactive display of graphs via matplotlib
+	optdepends = asymptote: 3D Graphics
+	source = mathicsscript-3.3.1.tar.gz::https://github.com/Mathics3/mathicsscript/archive/refs/tags/3.3.1.tar.gz
+	sha256sums = 570b2c27a8869253b87cefbea7d41cc58d98d400cb1a61b3d0ce0997777b295c
 
 pkgname = mathicsscript
-
