@@ -58,36 +58,36 @@ options=('staticlibs')
 source=("$pkgver.zip::https://codeload.github.com/opencv/opencv/zip/$pkgver")
 sha256sums=('8fbe6005d2266e4a725a5ef7a27365d763ce4ad5a7f38045288a3cad8a18d759')
 
-_cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
-            '-D WITH_OPENCL=ON'
-            '-D WITH_OPENGL=ON'
-            '-D WITH_TBB=ON'
-            '-D WITH_XINE=ON'
-            '-D WITH_GSTREAMER=OFF'
-            '-D BUILD_WITH_DEBUG_INFO=OFF'
-            '-D BUILD_TESTS=OFF'
-            '-D BUILD_PERF_TESTS=OFF'
-            '-D BUILD_EXAMPLES=ON'
-            '-D INSTALL_C_EXAMPLES=ON'
-            '-D INSTALL_PYTHON_EXAMPLES=ON'
-            '-D CMAKE_BUILD_TYPE=Release'
-            '-D CMAKE_INSTALL_PREFIX=/usr'
-            '-D CMAKE_SKIP_RPATH=ON')
+_cmakeopts=('-DWITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
+            '-DWITH_OPENCL=ON'
+            '-DWITH_OPENGL=ON'
+            '-DWITH_TBB=ON'
+            '-DWITH_XINE=ON'
+            '-DWITH_GSTREAMER=OFF'
+            '-DBUILD_WITH_DEBUG_INFO=OFF'
+            '-DUILD_TESTS=OFF'
+            '-DBUILD_PERF_TESTS=OFF'
+            '-DBUILD_EXAMPLES=ON'
+            '-DINSTALL_C_EXAMPLES=ON'
+            '-DINSTALL_PYTHON_EXAMPLES=ON'
+            '-DCMAKE_BUILD_TYPE=Release'
+            '-DCMAKE_INSTALL_PREFIX=/usr'
+            '-DCMAKE_SKIP_RPATH=ON')
 
 # SSE only available from Pentium 3 onwards (i686 is way older)
 [[ "$CARCH" = 'i686' ]] && \
-  _cmakeopts+=("-D ENABLE_SSE=$_FORCE_SSE"
-               "-D ENABLE_SSE2=$_FORCE_SSE2"
-               "-D ENABLE_SSE3=$_FORCE_SSE3")
+  _cmakeopts+=("-DENABLE_SSE=$_FORCE_SSE"
+               "-DENABLE_SSE2=$_FORCE_SSE2"
+               "-DENABLE_SSE3=$_FORCE_SSE3")
 
 # all x64 CPUs support SSE2 but not SSE3
 [[ "$CARCH" = 'x86_64' ]] && \
-  _cmakeopts+=("-D ENABLE_SSE3=$_FORCE_SSE3"
-               "-D ENABLE_SSSE4=$_FORCE_SSSE3" #(sic!)
-               "-D ENABLE_SSE41=$_FORCE_SSE41"
-               "-D ENABLE_SSE42=$_FORCE_SSE42"
-               "-D ENABLE_AVX=$_FORCE_AVX"
-               "-D ENABLE_AVX2=$_FORCE_AVX2")
+  _cmakeopts+=("-DENABLE_SSE3=$_FORCE_SSE3"
+               "-DENABLE_SSSE4=$_FORCE_SSSE3" #(sic!)
+               "-DENABLE_SSE41=$_FORCE_SSE41"
+               "-DENABLE_SSE42=$_FORCE_SSE42"
+               "-DENABLE_AVX=$_FORCE_AVX"
+               "-DENABLE_AVX2=$_FORCE_AVX2")
 prepare() {
   cd "$_pkgbase-$pkgver/"
   # https://stackoverflow.com/questions/46884682/error-in-building-opencv-with-ffmpeg
@@ -98,7 +98,7 @@ prepare() {
 
 build() {
   export CXXFLAGS+=" -std=c++14"
-  cmake -S "$srcdir/$_pkgbase-$pkgver" -B build ${_cmakeopts[@]}
+  cmake -S "$srcdir/$_pkgbase-$pkgver" -B build "${_cmakeopts[@]}"
   make -C build
 }
 
