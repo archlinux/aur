@@ -3,17 +3,19 @@
 
 
 pkgname=mutt-wizard-git
-pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
-pkgver=3.2.1.r55.gc8bbef5
-pkgrel=1
+_name="${pkgname%-git}"
 
-pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
+pkgver() { git -C "$_name" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
+pkgver=3.2.1.r55.gc8bbef5
+pkgrel=2
+
+pkgdesc='Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)'
 arch=('any')
-url="https://github.com/lukesmithxyz/${pkgname%-git}"
+url="https://github.com/lukesmithxyz/$_name"
 license=('GPL3')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_name")
+conflicts=("$_name")
 
 makedepends=('git')
 depends=('neomutt' 'isync' 'msmtp' 'notmuch-runtime' 'pass' 'curl' 'libnotify' 'perl')
@@ -31,15 +33,15 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 
 options=('zipman')
 
-install="${pkgname%-git}.install"
+install="$_name.install"
 source=("git+$url")
 sha256sums=('SKIP')
 
 
 package() {
-  cd "${pkgname%-git}"
+  cd "$_name"
   make PREFIX=/usr DESTDIR="$pkgdir" -s install
-  install -Dm644 README.md -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/$_name/"
 }
 
 
