@@ -95,10 +95,11 @@ prepare() {
   sed "1i\#define AVFMT_RAWPICTURE 0x0020" -i modules/highgui/src/cap_ffmpeg_impl.hpp
   sed "1i\#define CODEC_FLAG_GLOBAL_HEADER AV_CODEC_FLAG_GLOBAL_HEADER" -i modules/highgui/src/cap_ffmpeg_impl.hpp
   sed "1i\#define AV_CODEC_FLAG_GLOBAL_HEADER (1 << 22)" -i modules/highgui/src/cap_ffmpeg_impl.hpp
+  sed "/prototypes/d" -i cmake/OpenCVCompilerOptions.cmake
 }
 
 build() {
-  export CXXFLAGS+=" -std=c++14"
+  export CXXFLAGS+=" -std=c++14 -DTBB_SUPPRESS_DEPRECATED_MESSAGES"
   cmake -S "$srcdir/$_pkgbase-$pkgver" -B build "${_cmakeopts[@]}"
   make -C build
 }
