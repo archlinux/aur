@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 
 pkgname=sneedacity-git
-pkgver=3.0.2.r146.ged6e58c13
+pkgver=3.0.2.r18.g9e6196510
 pkgrel=1
 pkgdesc="Audacity fork without any telemetry (git-version)"
 arch=(i686 x86_64)
@@ -11,13 +11,13 @@ groups=(sneed-suite)
 depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
          libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
 makedepends=(git cmake sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg jack nasm)
+             ffmpeg jack nasm conan)
 # can't find system lame portmidi
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity sneedacity)
 conflicts=(audacity sneedacity)
 source=(
-  "git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git#branch=conan_removal"
+  "git+https://github.com/Sneeds-Feed-and-Seed/sneedacity.git"
 )
 md5sums=('SKIP')
 
