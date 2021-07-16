@@ -3,7 +3,7 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
 pkgver=0.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
@@ -20,7 +20,7 @@ noextract=(
     "fluffychat-web-${pkgver}.tar.gz"
 )
 sha256sums=('e8336057991cbe07ac6ccdd802fd4f1c52f996f1c13aeffdbd15a6f11317990a'
-            '8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e')
+            'b209756f1dc8aeca0bfe840fe4c7bf46b66520e59c726ea201cc05af7e045fc2')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
