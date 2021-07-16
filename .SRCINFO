@@ -1,7 +1,7 @@
 pkgbase = wordbook
 	pkgdesc = An offline dictionary app for GNOME
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fushinari/Wordbook
 	arch = any
 	license = GPL3
