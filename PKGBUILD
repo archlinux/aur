@@ -5,13 +5,13 @@
 
 _pkgname=todoist
 pkgname=${_pkgname}-git
-pkgver=r281.8633222
+pkgver=r324.2a9f649
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
 url="https://github.com/sachaos/todoist"
 license=('MIT')
-makedepends=('go' 'git' 'dep')
+makedepends=('go' 'git')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("${pkgname}::git://github.com/sachaos/todoist.git")
