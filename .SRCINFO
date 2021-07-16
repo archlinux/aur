@@ -1,0 +1,19 @@
+pkgbase = smbbrowse
+	pkgdesc = Samba share browser and mounter written in Python. Supports SMBv2 and SMBv3
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/cyberjunkie1970/smbbrowse
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = smbclient
+	depends = gvfs-smb
+	depends = python
+	depends = python-pillow
+	depends = tk
+	depends = xdg-utils
+	provides = SMBbrowse.py
+	source = git+https://github.com/cyberjunkie1970/smbbrowse.git
+	md5sums = SKIP
+
+pkgname = smbbrowse
