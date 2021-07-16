@@ -3,6 +3,7 @@
 
 pkgname=libadalang
 _upstream_ver=2021-20210518-199BE
+epoch=1
 pkgver=2021
 pkgrel=1
 
