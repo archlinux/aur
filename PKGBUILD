@@ -6,7 +6,7 @@ pkgname=mutt-wizard
 pkgver=3.2.1
 pkgrel=2
 
-pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
+pkgdesc='Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)'
 arch=('any')
 url="https://github.com/lukesmithxyz/$pkgname"
 license=('GPL3')

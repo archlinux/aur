@@ -1,5 +1,5 @@
 pkgbase = mutt-wizard
-	pkgdesc = Simple interface to auto-configure neomutt and isync with safe passwords
+	pkgdesc = Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)
 	pkgver = 3.2.1
 	pkgrel = 2
 	url = https://github.com/lukesmithxyz/mutt-wizard
