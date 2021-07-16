@@ -1,13 +1,13 @@
 diff --git a/gtk/gtkimcontextsimple.c b/gtk/gtkimcontextsimple.c
-index cfbaecf3f6..ff3a03d64c 100644
+index a7ac95e47c..237ddc0e72 100644
 --- a/gtk/gtkimcontextsimple.c
 +++ b/gtk/gtkimcontextsimple.c
-@@ -954,7 +954,7 @@ gtk_im_context_simple_get_preedit_string (GtkIMContext   *context,
+@@ -1115,7 +1115,7 @@ gtk_im_context_simple_get_preedit_string (GtkIMContext   *context,
                    gunichar ch;
                    gboolean need_space;
- 
--                  if (GDK_KEY_dead_grave <= priv->compose_buffer[i] && priv->compose_buffer[i] <= GDK_KEY_dead_greek)
-+                  if (FALSE && GDK_KEY_dead_grave <= priv->compose_buffer[i] && priv->compose_buffer[i] <= GDK_KEY_dead_greek)
+
+-                  if (is_dead_key (priv->compose_buffer[i]))
++                  if (FALSE && is_dead_key (priv->compose_buffer[i]))
                      {
-                       /* Sadly, not all the dead keysyms have spacing mark equivalents
-                        * in Unicode. For those that don't, we use space + the non-spacing
+                       ch = dead_key_to_unicode (priv->compose_buffer[i], &need_space);
+                       if (ch)
