@@ -66,8 +66,8 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.16
-pkgrel=4
+pkgver=5.12.17
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
@@ -94,13 +94,15 @@ source=(
   "${_patchsource}/uksm-patches/0001-UKSM-for-5.12.patch"
   "${_patchsource}/cjktty-patches/0001-cjktty-5.12-initial-import-from-https-github.com-zhm.patch"
   "${_patchsource}/bbr2-patches-v3/0001-bbr2-patches.patch"
+  "${_patchsource}/bfq-lucjan/5.12-bfq-lucjan-r2K210619.patch"
+  "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
+  "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/bfq-patches-v15/0001-bfq-patches.patch"
-  "${_patchsource}/block-patches-v7/0001-block-patches.patch"
-  "${_patchsource}/btrfs-patches-v13/0001-btrfs-patches.patch"
+  "${_patchsource}/btrfs-patches-v14/0001-btrfs-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
+  "${_patchsource}/le9db_patches/0001-le9db1-5.10.patch"
   "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
   "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
 )
@@ -108,7 +110,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984df457242d8d9595cee4aedc4d3b5b59ae3566a2e824a2294e5111956d'
+b2sums=('0eede859861f88a8d6384517982472580aeb6c38eeb037188571d58b6b83d4fbe7130917b7ae2ccd9f9b2f6f23f7a542d7a396f73adb9adb642a79b3e1f4e95d'
         'SKIP'
         'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -123,13 +125,15 @@ b2sums=('6585efa7db0e0f42ba8c1e64a5452a547c9f4d073756047d6ac8453d752c022f414b984
         '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
         '9dfcc6b39c73945f2ba2071039a7ebf40bcfb23ab2f1cb8fe5050d86b73b34333882ea577f3b648ffeb3b76d7c0ff8d20e35b46e82726cd6970b441d266bdda1'
         'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
+        'e5a2e914400cdb578467d61b2d7f7514e8bfcc331ae7a28d3d245d8e83f8ed609c2bb2a8a1ea601c2fac611ee8b50194de562395ab7272bde78324bdc2182de2'
+        '33798afdc3cc12d3a1536e611390eb05817f805c8c666a5c7dbf05ba154d87cd7ab646a45cc2b1b89e5c1322bb46edf8c36f08e6e039d31134b5c9ce6dd93127'
+        'a2c863e5b161a7646078b697819ef6d734c5f945fbbf4f26ff12e73b987f6044e2cab7ab72de6fac6e3e270f42c450c34e41c8a5a1149d671471404dfbb4fece'
         '7f7421abd36991ed0c8453bc54e1b7ed787f90b0a434d8f8db7bc979723e8ed3249a99e61e4b160cde44ebc2cec4b489a24bd37bc58ddaa73f1156e65c05dfc0'
-        '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
-        'f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc'
-        '705a8f2037eef3afdd0f2a7648cc8d00bfc03112385b44a8907182812b6aed075519a9236909c0e3ba09df887381dd76cb01c601e0df05119136f7318587a416'
+        '5cb420d8889ed8d254b811a5a85f1267476cd8b18cff686fc68feb08fcb656475ed622977938cba98b32779610ab9d145dcaf59ce1b726bbd5644cba3d01e36a'
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
+        'f836917eac6506690ae897a2b338fedadc0814713bf4796ad90809d1de4bbc92e3dd38ab1299b96cf9bc763f0fff56137f6d43a98ef7aa4c1b6b72d6c094c3ce'
         '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
         '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1')
 
@@ -199,10 +203,6 @@ prepare() {
     scripts/config --enable  CONFIG_ANDROID_BINDERFS
     scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
 
-    echo "Disabling Deadline I/O scheduler and Kyber I/O scheduler"
-    scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
-    scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
-
     echo "Set module compression to ZSTD"
     scripts/config --enable CONFIG_MODULE_COMPRESS
     scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
@@ -214,10 +214,8 @@ prepare() {
     scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
 
     echo "Enabling multigenerational LRU..."
-    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
     scripts/config --enable CONFIG_LRU_GEN
     scripts/config --set-val CONFIG_NR_LRU_GENS 7
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
     scripts/config --enable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
 
