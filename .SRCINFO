@@ -1,4 +1,4 @@
-pkgbase = lord-almightys-modern-bible
+pkgbase = lord-almightys-modern-bible-git
 	pkgdesc = Mobile version of the Bible
 	pkgver = 1.6
 	pkgrel = 1
@@ -17,5 +17,5 @@ pkgbase = lord-almightys-modern-bible
 	source = git+https://gitlab.com/The3DmaN/lord-almightys-modern-bible.git
 	md5sums = SKIP
 
-pkgname = lord-almightys-modern-bible
+pkgname = lord-almightys-modern-bible-git
 

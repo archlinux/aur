@@ -1,6 +1,6 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
-pkgname=lord-almightys-modern-bible
+pkgname=lord-almightys-modern-bible-git
 pkgver=1.6
 pkgrel=1
 pkgdesc="Mobile version of the Bible"
