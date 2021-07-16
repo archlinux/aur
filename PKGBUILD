@@ -3,7 +3,7 @@ pkgname=libresprite-appimage
 pkgdesc="fork of last GPL version of aseprite - appimage version"
 pkgver="1.0.dev"
 pkgrel=1
-_commit=8a77f5a55213202a346e70088c4548b07afd5ed6
+_commit="4fc8d5370db0ed7ecad70182b97171a717de7817"
 arch=('x86_64')
 url="https://github.com/LibreSprite/LibreSprite"
 license=('GPL2')
@@ -21,7 +21,7 @@ source=(
 )
 noextract=('libresprite')
 sha256sums_x86_64=(
-'7e677e0b3a4148e158b2b518af8ca5e6b636450d0c2ff1a688981c6f2142689f'
+'3dabef5da5c2ef4477730803774e802f1b0b3d8922b31d8d4d12595655276117'
 )
 sha256sums=(
 'b444bf24719ecf0af475856a742ccdacd1ed13181c7a589d882ae881579e0f28'
