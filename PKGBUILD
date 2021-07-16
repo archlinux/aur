@@ -1,7 +1,7 @@
 # Maintainer: Vasile Vilvoiu <vasi.vilvoiu@gmail.com>
 pkgname=specgram
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Small program that computes and plots spectrograms, either in a live window or to disk, with support for stdin input."
 arch=('x86_64')
 url="https://github.com/rimio/specgram"
@@ -10,7 +10,7 @@ depends=('sfml' 'spdlog' 'fftw')
 makedepends=('cmake' 'gcc')
 conflicts=('specgram-git')
 source=("https://github.com/rimio/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=("087db9205c755d7b73fdc10abcb9e226")
+md5sums=("05159ad91984f75e3656d0082bb6330a")
 
 build() {
 	cd "$pkgname-$pkgver"
