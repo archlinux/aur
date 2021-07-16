@@ -22,11 +22,15 @@ build()
 {
     cd "$srcdir/$_extract_dir"
 
+    ADA_FLAGS="$CFLAGS"
+    ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+    ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
     python manage.py build-langkit-support \
         --library-types=relocatable        \
         --build-mode=prod                  \
-        --gargs="-R"
+        --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
     make -C doc html
 }
