@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.84.11
+pkgver=3.85.3
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -13,30 +13,30 @@ makedepends=('nodejs>=16' 'npm>=7')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('7136936f0ea04cc64bb87a0e2f31aecea1489853d4e42eecb2cdbf44119283ff'
+sha256sums=('69bc4f2dc503370dc7b6ae4bc4cb75e6f05a1c36f9b39a57d49d6b558d503706'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             'a2e2b932eb0bc2ad2413b7f39eb9fbdb517f5670367413f76d718d5d270996f7')
 
 build() {
-	cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
-	npm install --cache "$srcdir/npm-cache"
-	node dist -l --custom-desktop-release --unpacked
+  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  npm install --cache "$srcdir/npm-cache"
+  node dist -l --custom-desktop-release --unpacked
 }
 
 package() {
-	cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
-	install -d "$pkgdir/opt/$pkgname"
-	cp -r build/desktop/linux-unpacked/* \
-		"$pkgdir/opt/$pkgname"
+  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  install -d "$pkgdir/opt/$pkgname"
+  cp -r build/desktop/linux-unpacked/* \
+    "$pkgdir/opt/$pkgname"
 
-	install -Dm755 "$srcdir/$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 "$srcdir/$pkgname" -t "$pkgdir/usr/bin"
 
-	for icon_size in 64 512; do
-		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -Dm644 resources/desktop-icons/icon/${icon_size}.png \
-			$pkgdir$icons_dir/$pkgname.png
-	done
+  for icon_size in 64 512; do
+    icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+    install -Dm644 resources/desktop-icons/icon/${icon_size}.png \
+      $pkgdir$icons_dir/$pkgname.png
+  done
 
-	install -Dm644 "$srcdir/$pkgname.desktop" -t \
-		"$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t \
+    "$pkgdir/usr/share/applications"
 }
