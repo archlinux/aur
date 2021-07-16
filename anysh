@@ -29,6 +29,7 @@ class Main(object):
                 print(process.stdout.decode())
 
             prompt = args.prompt_text if args.prompt_text else " ".join(args.command) + ": "
+            print()
             print(prompt, end="")
 
             try:
