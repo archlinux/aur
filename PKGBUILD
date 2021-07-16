@@ -1,10 +1,10 @@
 # Maintainer: danieltetraquark
 
 pkgname=grocy
-pkgver=3.0.1
-pkgrel=4
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
-depends=('php7' 'php7-sqlite' 'php7-gd')
+depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
 makedepends=('composer' 'yarn')
 license=('MIT')
 arch=('any')
@@ -12,7 +12,7 @@ url="https://grocy.info/"
 source=(
 https://github.com/grocy/grocy/archive/v${pkgver}.zip
 )
-sha512sums=('6585fa973b1539822df57c390c17c7f400e8bd2dbc0629b0a29ecbaf21bf0cf37759b460c1700a349fce4a948403d6b995287acb33b15419016100c7797affa6')
+sha512sums=('78dd6b3b38117395142989c781671e9017a4ae5beecd0eaa9d06cc7d73c5060b6cc5d50eb1008881ec4d383842d768e170eaa9fe0bc025fcefa9ce2dcdd90389')
 
 backup=('etc/webapps/grocy/config.php')
 
@@ -21,8 +21,8 @@ build() {
 
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
     # note: you may need to adjust your php open_basedir setting, so that php can run!
-    php7 -n -dextension=gd.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
-    php7 /usr/bin/composer clear-cache
+    php -n -dextension=gd.so -dextension=intl.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
+    php /usr/bin/composer clear-cache
 
     yarn install --modules-folder public/node_modules --production
     yarn cache clean
