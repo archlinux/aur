@@ -1,8 +1,10 @@
-# Maintainer: Nicholas Schlabach <Techcable@techcable.net>
+# Contributor: Nicholas Schlabach <Techcable@techcable.net>
+# Maintainer:  Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
+
 pkgname=rr-bin
 pkgver=5.4.0
-pkgrel=1
-pkgdesc="Binary record and Replay framework: lightweight recording and deterministic debugging"
+pkgrel=2
+pkgdesc="Binary record and replay framework: lightweight recording and deterministic debugging"
 arch=('x86_64')
 url='http://rr-project.org/'
 license=('custom')
@@ -20,4 +22,6 @@ package() {
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload.so" "$pkgdir/usr/lib/rr/librrpreload.so"
 	install -Dm755 "rr-$pkgver-Linux-x86_64/lib/rr/librrpreload_32.so" "$pkgdir/usr/lib/rr/librrpreload_32.so"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/rr/LICENSE"
+	# Added on request of duongdominhchau, 16-Jul-2021: share files are needed
+	cp -R  "rr-$pkgver-Linux-x86_64/share/" "$pkgdir/usr/"
 }
