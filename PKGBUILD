@@ -12,29 +12,25 @@ provides=('libBxDecay0.so' 'bxdecay0-config' 'bxdecay0-run')
 source=("https://github.com/BxCppDev/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=("7bf4a0e184ea87d6cc0fad5cc8afeddc")
 
-_build() {
+_package() {
 
-    [[ "$1" == "w-geant4" ]] && opt=ON || opt=OFF
+    [[ "$1" == "geant4-ext" ]] && opt=ON || opt=OFF
+    [[ "$1" == "geant4-ext" ]] && builddir=build-g4 || builddir=build
 
-    cmake -B build -S "${pkgname}-${pkgver}" \
+    cmake -B ${builddir} -S "${pkgname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBXDECAY0_WITH_GEANT4_EXTENSION=${opt} \
         -Wno-dev
 
-    make -C build
-}
-
-_check() {
-    make -C build test
+    make -C ${builddir}
+    make -C ${builddir} test
 }
 
 package_bxdecay0() {
     conflicts=('bxdecay0-geant4')
 
-    _build
-    _check
-    make -C build DESTDIR="${pkgdir}" install
+    _package
 }
 
 package_bxdecay0-geant4() {
@@ -42,7 +38,5 @@ package_bxdecay0-geant4() {
     conflicts=('bxdecay0')
     provides+=('libBxDecay0_Geant4.so')
 
-    _build w-geant4
-    _check
-    make -C build DESTDIR="${pkgdir}" install
+    _package geant4-ext
 }
