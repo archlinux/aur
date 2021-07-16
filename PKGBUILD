@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=netscripts-atzlinux-git
-pkgver=9d3542c
-pkgrel=2
+pkgver=1.0.5.r1.g1634b9f
+pkgrel=1
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
 groups=()
@@ -11,7 +11,7 @@ makedepends=()
 optdepends=()
 conflicts=()
 url="https://www.atzlinux.com"
-license=('GPL3')
+license=('GPLv3')
 options=(!strip)
 install=${pkgname}.install
 source=("git+https://gitee.com/atzlinux/netscripts-atzlinux.git"
@@ -21,12 +21,12 @@ sha256sums=('SKIP'
 
 pkgver()
 {
-    cd "${srcdir}/netscripts-atzlinux/"
-    git describe --always | sed 's|-|.|g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long --tags | sed 's|atzlinux/||g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    install -Dm644 "${srcdir}/netscripts-atzlinux/debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/netscripts-atzlinux/debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     cp -r "${srcdir}/netscripts-atzlinux/usr/bin" "${pkgdir}/usr"
     install -Dm755 "${srcdir}/netscripts-atzlinux/usr/sbin/iftopgw" "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/netscripts-atzlinux/usr/sbin/iftopbluetooth" "${pkgdir}/usr/bin"
