@@ -3,16 +3,16 @@
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.3.r126.ga1e5a81
+pkgver=0.3.r127.gdb1e7fc
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
-url='https://git.omarpolo.com/telescope'
+url='https://telescope.omarpolo.com/'
 license=('ISC')
 provides=('telescope')
 conflicts=('telescope')
 depends=('libretls')
-source=("git+$url")
+source=("git+https://git.omarpolo.com/telescope")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,4 +32,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+	rm -f "$pkgdir/usr/share/doc/$_pkgname/LICENSE"
 }
