@@ -3,7 +3,7 @@
 
 _pkgname=dufte
 pkgname=python-dufte
-pkgver=0.2.20
+pkgver=0.2.21
 pkgrel=1
 pkgdesc='Creates clean and beautiful plots that work on light and dark backgrounds.'
 arch=(any)
