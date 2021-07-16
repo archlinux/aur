@@ -1,0 +1,12 @@
+pkgbase = python-gpiod
+	pkgdesc = gpiod pure Python library with almost the same usage as libgpiodcxx
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/hhk7734/python3-gpiod
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/g/gpiod/gpiod-1.5.0.tar.gz
+	sha512sums = cdda2e8316278f7a0c257351aeb682bc90d27ff8c45bd3fbb0c37859f7075f48334d60d9fbb7bd064f87f5b4b911fd0f14ea4f7dc2198cf845da5d2baebab9c4
+
+pkgname = python-gpiod
