@@ -1,6 +1,5 @@
 pkgbase=bxdecay0
 pkgname=('bxdecay0' 'bxdecay0-geant4')
-_pkgname=BxDecay0
 pkgver=1.0.10
 pkgrel=1
 pkgdesc='C++ port of the legacy Decay0 FORTRAN library'
@@ -10,15 +9,14 @@ arch=('x86_64')
 depends=('gsl')
 makedepends=('gcc' 'cmake')
 provides=('libBxDecay0.so' 'bxdecay0-config' 'bxdecay0-run')
-source=("https://github.com/BxCppDev/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+source=("https://github.com/BxCppDev/${pkgbase}/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=("7bf4a0e184ea87d6cc0fad5cc8afeddc")
 
 _build() {
 
-    opt=OFF
-    [[ "$1" == "w-geant4" ]] && opt=ON
+    [[ "$1" == "w-geant4" ]] && opt=ON || opt=OFF
 
-    cmake -B build -S "${pkgbase}-${pkgver}" \
+    cmake -B build -S "${pkgname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBXDECAY0_WITH_GEANT4_EXTENSION=${opt} \
