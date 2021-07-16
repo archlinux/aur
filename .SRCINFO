@@ -9,7 +9,7 @@ pkgbase = anysh
 	source = anysh
 	source = LICENSE
 	md5sums = edd450dfdd2ad5c8b2408aef843ea9d3
-	md5sums = 39434026f2c8c06a6faeb6ab0c1cf6d0
+	md5sums = 9455829e87574d644ee021084534734d
 
 pkgname = anysh
 

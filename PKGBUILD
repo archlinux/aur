@@ -10,7 +10,7 @@ arch=(any)
 license=(Apache)
 depends=("python")
 source=(anysh LICENSE)
-md5sums=(edd450dfdd2ad5c8b2408aef843ea9d3 39434026f2c8c06a6faeb6ab0c1cf6d0)
+md5sums=(edd450dfdd2ad5c8b2408aef843ea9d3 9455829e87574d644ee021084534734d)
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
