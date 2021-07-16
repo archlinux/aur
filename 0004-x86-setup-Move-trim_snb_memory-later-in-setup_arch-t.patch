@@ -1,4 +1,4 @@
-From c4b5e4bc8317ccb0a822429d87288d9f90453a04 Mon Sep 17 00:00:00 2001
+From 0eeb496ee17167a8d2c714c121fa518991d2ceb4 Mon Sep 17 00:00:00 2001
 From: Mike Rapoport <rppt@linux.ibm.com>
 Date: Tue, 13 Apr 2021 21:08:39 +0300
 Subject: [PATCH 4/8] x86/setup: Move trim_snb_memory() later in setup_arch()

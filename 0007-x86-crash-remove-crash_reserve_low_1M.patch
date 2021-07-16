@@ -1,4 +1,4 @@
-From bb4c1200fdfd6c17fff64e159e625c3678342b87 Mon Sep 17 00:00:00 2001
+From 9071d83661e7446ce0f3291b06f1f96cd43e75d7 Mon Sep 17 00:00:00 2001
 From: Mike Rapoport <rppt@linux.ibm.com>
 Date: Tue, 1 Jun 2021 10:53:54 +0300
 Subject: [PATCH 7/8] x86/crash: remove crash_reserve_low_1M()
