@@ -1,6 +1,6 @@
 pkgbase = ccextractor
 	pkgdesc = A fast closed captions extractor for MPEG files.
-	pkgver = 0.89
+	pkgver = 0.90
 	pkgrel = 1
 	url = https://www.ccextractor.org
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ccextractor
 	depends = tesseract
 	depends = leptonica
 	depends = ffmpeg
-	source = https://github.com/CCExtractor/ccextractor/archive/v0.89.tar.gz
-	sha512sums = bb9442905f3c5d095b9b34eb318dc445a0ba484c22c4f061071cc2a1159ec9304b8aab5ea9e95348679e8c5ed378d4b2e471d6f7f933b7fa968f3443f1d5380f
+	source = https://github.com/CCExtractor/ccextractor/archive/v0.90.tar.gz
+	sha512sums = 0e333671b9f010a1b8a3f2bb69e3a903f168f6b8555a4415124418940f7d02b2bbf148b9a3b1bf956ba438fcc6c80b47f74a93c22d92c98e7a20ed4d4a6b114e
 
 pkgname = ccextractor
