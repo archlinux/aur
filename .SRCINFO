@@ -22,6 +22,7 @@ pkgbase = meshlab-git
 	depends = qt5-declarative
 	depends = qt5-script
 	depends = qt5-xmlpatterns
+	depends = xerces-c
 	optdepends = u3d: for U3D and IDTF file support
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
 	optdepends = levmar: for isoparametrization and mutualcorrs plugins
