@@ -5,7 +5,7 @@ pkgname="${_name}-dev"
 _ver=3.0.0-alpha.27
 pkgver="${_ver//-/_}"
 _namever="${_name}-${_ver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Nifty Gmail desktop app for macOS, Linux & Windows'
 arch=('x86_64')
 url='https://github.com/timche/gmail-desktop/tree/develop'
@@ -21,11 +21,11 @@ conflicts=('gmail-desktop')
 source=(
   "${_namever}.tar.gz::https://github.com/timche/gmail-desktop/archive/refs/tags/v${_ver}.tar.gz"
   "${_namever}-menu.patch::https://github.com/alecmev/gmail-desktop/commit/fix-auto-hide-menu.patch"
-  "${_namever}-mailto-2.patch::https://github.com/alecmev/gmail-desktop/commit/handle-mailto-in-argv.patch"
+  "${_namever}-mailto-3.patch::https://github.com/alecmev/gmail-desktop/commit/handle-mailto-in-argv.patch"
 )
 sha256sums=('36224d2b745697157a96dd68d85568c3c7ee4178061c05dc97e9d107718f5ac0'
             'b7a1be78ccbe43f22d98d16942ef850bb99d1e40162752874606cdcca71042dc'
-            '321bbf8966b0b48c2680b940b4ef803a36c72c1038024f2fd6c038edca536e78')
+            'a2c39764446033e501dccb19a5ef38bc84e7f1ffda8396b0e8321479160a6c40')
 
 prepare() {
   cd "${_namever}"
@@ -46,7 +46,7 @@ EOF
     -n \
     -f
   patch --strip=1 --input="${srcdir}/${_namever}-menu.patch"
-  patch --strip=1 --input="${srcdir}/${_namever}-mailto-2.patch"
+  patch --strip=1 --input="${srcdir}/${_namever}-mailto-3.patch"
 }
 
 build() {
