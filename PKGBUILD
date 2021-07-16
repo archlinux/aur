@@ -72,7 +72,8 @@ _cmakeopts=('-DWITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc 
             '-DINSTALL_PYTHON_EXAMPLES=ON'
             '-DCMAKE_BUILD_TYPE=Release'
             '-DCMAKE_INSTALL_PREFIX=/usr'
-            '-DCMAKE_SKIP_RPATH=ON')
+            '-DCMAKE_SKIP_RPATH=ON'
+            '-DBUILD_JASPER=ON')
 
 # SSE only available from Pentium 3 onwards (i686 is way older)
 [[ "$CARCH" = 'i686' ]] && \
