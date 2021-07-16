@@ -1,61 +1,60 @@
-CC          = gcc
-CXX         = g++
-CPP         = 
-FC          = mpifort
-LD          = mpifort
+CC       = gcc
+CXX      = g++
+CPP      = 
+FC       = mpifort
+LD       = mpifort
 
-NVCC        = nvcc
-GPUVER      = $(_gpuver)
+NVCC     = nvcc
+GPUVER   = $(_gpuver)
 
-AR          = ar -r
+AR       = ar -r
 
-DFLAGS      = -D__FFTW3                                         \
-              -D__LIBINT                                        \
-              -D__parallel -D__SCALAPACK                        \
-              -D__ELPA                                          \
-              -D__LIBXSMM                                       \
-              -D__LIBXC                                         \
-              -D__SPGLIB                                        \
-              -D__SIRIUS                                        \
-              -D__ACC -D__DBCSR_ACC -D__PW_CUDA  -D__GRID_CUDA  \
-              -D__PLUMED2
+DFLAGS   = -D__FFTW3                                          \
+           -D__LIBINT                                         \
+           -D__parallel -D__ELPA -D__COSMA -D__SCALAPACK      \
+           -D__LIBXSMM                                        \
+           -D__LIBXC                                          \
+           -D__SPGLIB                                         \
+           -D__DBCSR_ACC -D__PW_CUDA  -D__GRID_CUDA           \
+           -D__PLUMED2
 
-INCS        = -I/usr/include                                    \
-              -I/usr/include/elpa_openmp-$(_elpaver)/elpa       \
-              -I/usr/include/elpa_openmp-$(_elpaver)/modules    \
-              -I/opt/cuda/include
+INCS     = -I/usr/include                                     \
+           -I/usr/include/elpa_openmp-$(_elpaver)/elpa        \
+           -I/usr/include/elpa_openmp-$(_elpaver)/modules     \
+           -I/opt/cuda/include                                
 
-OPTFLAGS    = -O3 -march=native -fopenmp
+OPTFLAGS = -O3 -march=native -fopenmp
 
-CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
-CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
-CPPFLAGS    = 
-FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS)                     \
-              -ffree-form -ffree-line-length-none               \
-              -fallow-argument-mismatch
-NVFLAGS     = $(DFLAGS) -O3 -Xcompiler="-fopenmp"               \
-              -gencode arch=compute_35,code=sm_35               \
-              -gencode arch=compute_37,code=sm_37               \
-              -gencode arch=compute_50,code=sm_50               \
-              -gencode arch=compute_52,code=sm_52               \
-              -gencode arch=compute_60,code=sm_60               \
-              -gencode arch=compute_61,code=sm_61               \
-              -gencode arch=compute_70,code=sm_70               \
-              -gencode arch=compute_75,code=sm_75               \
-              -gencode arch=compute_80,code=sm_80               \
-              -gencode arch=compute_86,code=sm_86               \
-              -Wno-deprecated-gpu-targets
-LDFLAGS     = $(FCFLAGS)
+CFLAGS   = $(DFLAGS) $(INCS) $(OPTFLAGS)
+CXXFLAGS = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
+CPPFLAGS = 
+FCFLAGS  = $(DFLAGS) $(INCS) $(OPTFLAGS)                      \
+           -ffree-form -ffree-line-length-none                \
+           -fallow-argument-mismatch
+NVFLAGS  = $(DFLAGS) -O3 -Xcompiler="-fopenmp"                \
+           -gencode arch=compute_35,code=sm_35                \
+           -gencode arch=compute_37,code=sm_37                \
+           -gencode arch=compute_50,code=sm_50                \
+           -gencode arch=compute_52,code=sm_52                \
+           -gencode arch=compute_60,code=sm_60                \
+           -gencode arch=compute_61,code=sm_61                \
+           -gencode arch=compute_70,code=sm_70                \
+           -gencode arch=compute_75,code=sm_75                \
+           -gencode arch=compute_80,code=sm_80                \
+           -gencode arch=compute_86,code=sm_86                \
+           -Wno-deprecated-gpu-targets
+LDFLAGS  = $(FCFLAGS)
 
-LIBS        = -L/opt/cuda/lib64 -lcudart -lcuda                 \
-              -lcublas -lcufft -lrt -lnvrtc                     \
-              -lxsmmf -lxsmm                                    \
-              -lelpa_openmp -lcosma -lscalapack -lblas -llapack \
-              -lfftw3 -lfftw3_threads                           \
-              /usr/lib/libint2.a                                \
-              -lxcf03 -lxc                                      \
-              -lsymspg                                          \
-              -l$(_plumed)                                      \
-              -lstdc++ -lpthread -lm -ldl -lz
+LIBS     = -L/opt/cuda/lib64 -lcudart -lcuda                  \
+           -lcublas -lcufft -lrt -lnvrtc                      \
+           -lxsmmf -lxsmm -lelpa_openmp                       \
+           -lcosma_prefixed_pxgemm -lcosma -lcosta -lTiled-MM \
+           -lscalapack -lblas -llapack                        \
+           -lfftw3 -lfftw3_threads                            \
+           /usr/lib/libint2.a                                 \
+           -lxcf03 -lxc                                       \
+           -lsymspg                                           \
+           -l$(_plumed)                                       \
+           -lstdc++ -lpthread -lm -ldl -lz
 
 include /usr/lib/$(_plumed)/src/lib/Plumed.inc

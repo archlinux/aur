@@ -1,37 +1,37 @@
-CC          = gcc
-CXX         = g++
-CPP         = 
-FC          = mpifort
-LD          = mpifort
+CC       = gcc
+CXX      = g++
+CPP      = 
+FC       = mpifort
+LD       = mpifort
 
-AR          = ar -r
+AR       = ar -r
 
-DFLAGS      = -D__FFTW3                                         \
-              -D__LIBINT                                        \
-              -D__parallel -D__SCALAPACK                        \
-              -D__ELPA                                          \
-              -D__LIBXSMM                                       \
-              -D__LIBXC                                         \
-              -D__SPGLIB
+DFLAGS   = -D__FFTW3                                          \
+           -D__LIBINT                                         \
+           -D__parallel -D__ELPA -D__COSMA -D__SCALAPACK      \
+           -D__LIBXSMM                                        \
+           -D__LIBXC                                          \
+           -D__SPGLIB
 
-INCS        = -I/usr/include                                    \
-              -I/usr/include/elpa_openmp-$(_elpaver)/elpa       \
-              -I/usr/include/elpa_openmp-$(_elpaver)/modules
+INCS     = -I/usr/include                                     \
+           -I/usr/include/elpa_openmp-$(_elpaver)/elpa        \
+           -I/usr/include/elpa_openmp-$(_elpaver)/modules
 
-OPTFLAGS    = -O3 -march=native -fopenmp
+OPTFLAGS = -O3 -march=native -fopenmp
 
-CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
-CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
-CPPFLAGS    = 
-FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS)                     \
-              -ffree-form -ffree-line-length-none               \
-              -fallow-argument-mismatch
-LDFLAGS     = $(FCFLAGS)
+CFLAGS   = $(DFLAGS) $(INCS) $(OPTFLAGS)
+CXXFLAGS = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
+CPPFLAGS = 
+FCFLAGS  = $(DFLAGS) $(INCS) $(OPTFLAGS)                      \
+           -ffree-form -ffree-line-length-none                \
+           -fallow-argument-mismatch
+LDFLAGS  = $(FCFLAGS)
 
-LIBS        = -lxsmmf -lxsmm                                    \
-              -lelpa_openmp -lcosma -lscalapack -lblas -llapack \
-              -lfftw3 -lfftw3_threads                           \
-              /usr/lib/libint2.a                                \
-              -lxcf03 -lxc                                      \
-              -lsymspg                                          \
-              -lstdc++ -lpthread -lm -ldl -lz
+LIBS     = -lxsmmf -lxsmm -lelpa_openmp                       \
+           -lcosma_prefixed_pxgemm -lcosma -lcosta            \
+           -lscalapack -lblas -llapack                        \
+           -lfftw3 -lfftw3_threads                            \
+           /usr/lib/libint2.a                                 \
+           -lxcf03 -lxc                                       \
+           -lsymspg                                           \
+           -lstdc++ -lpthread -lm -ldl -lz

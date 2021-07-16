@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
-	pkgver = 8.1.0
-	pkgrel = 3
+	pkgver = 8.2.0
+	pkgrel = 1
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,7 @@ pkgbase = cp2k
 	makedepends = libint2
 	depends = fftw
 	depends = elpa
-	depends = libxc<5.0
+	depends = libxc>=5.0.0
 	depends = libxsmm
 	depends = spglib
 	depends = cosma
@@ -22,18 +22,17 @@ pkgbase = cp2k
 	conflicts = cp2k-bin
 	conflicts = cp2k-git
 	conflicts = cp2k-data
-	source = cp2k-8.1.0.tar.gz::https://github.com/cp2k/cp2k/archive/v8.1.0.tar.gz
+	source = cp2k-8.2.0.tar.gz::https://github.com/cp2k/cp2k/archive/v8.2.0.tar.gz
 	source = git+https://github.com/cp2k/dbcsr.git#tag=v2.1.0
 	source = basic.psmp
 	source = cuda_plumed.psmp
 	source = cuda.psmp
 	source = plumed.psmp
-	sha256sums = 1e25a865cad0a3958bc3e9e345bb771302015929fa22b299d1eb8f2e07f52756
+	sha256sums = d82c554e764dc16f94c1f671d0cf6523be58360bf9a2d2cbabbad0e73fbcffb2
 	sha256sums = SKIP
-	sha256sums = 8b6c791a0b7c98ee2c593e3962465de07912e5ff2c611ba2bd1c6703d62ce1ec
-	sha256sums = e37f65b984f7ff374349dc3662b42fea15a6ae11b7843184b2a0c89d9d077c96
-	sha256sums = 0c7eb8b6f6b724d28b7248e112c20dd9de70bdba06b2774bd1f23c87f03d6e7c
-	sha256sums = 6f27bcdff18336fd3499c1a82c47f3a0858fb6133f388500f3f21102cf6526e0
+	sha256sums = 9f573a24af68a89676cdc51dfdc8edfd55ed87ab189f4ebf632b2ca4552bfb1b
+	sha256sums = b54c9f1eb1cf968aa672e771f9f56770acc40d5a26ba0f1e58b20d6ab1797eb1
+	sha256sums = 504df2b2ab5415ac56807933ae499f2ed0cfdbac9eb8f0a2440387f1f2411911
+	sha256sums = ea915cb5d50a4aa86695679ccd46d7aa56f8ff8c81a862403b3e1a89ca2b4a90
 
 pkgname = cp2k
-

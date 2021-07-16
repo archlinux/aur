@@ -2,9 +2,9 @@
 # Maintainer: Anton Kudelin <kudelin [at] protonmail [dot] com>
 
 pkgname=cp2k
-pkgver=8.1.0
+pkgver=8.2.0
 _dbcsrver=2.1.0
-pkgrel=3
+pkgrel=1
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -13,7 +13,7 @@ pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('fftw' 'elpa' 'libxc<5.0' 'libxsmm' 'spglib' 'cosma')
+depends=('fftw' 'elpa' 'libxc>=5.0.0' 'libxsmm' 'spglib' 'cosma')
 makedepends=('gcc-fortran' 'python' 'git' 'libint2')
 checkdepends=('numactl')
 optdepends=('cuda: GPU calculations support'
@@ -26,12 +26,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cp2k/cp2k/archive/v$pkgver.
         "cuda_plumed.psmp"
         "cuda.psmp"
         "plumed.psmp")
-sha256sums=('1e25a865cad0a3958bc3e9e345bb771302015929fa22b299d1eb8f2e07f52756'
+sha256sums=('d82c554e764dc16f94c1f671d0cf6523be58360bf9a2d2cbabbad0e73fbcffb2'
             'SKIP'
-            '8b6c791a0b7c98ee2c593e3962465de07912e5ff2c611ba2bd1c6703d62ce1ec'
-            'e37f65b984f7ff374349dc3662b42fea15a6ae11b7843184b2a0c89d9d077c96'
-            '0c7eb8b6f6b724d28b7248e112c20dd9de70bdba06b2774bd1f23c87f03d6e7c'
-            '6f27bcdff18336fd3499c1a82c47f3a0858fb6133f388500f3f21102cf6526e0')
+            '9f573a24af68a89676cdc51dfdc8edfd55ed87ab189f4ebf632b2ca4552bfb1b'
+            'b54c9f1eb1cf968aa672e771f9f56770acc40d5a26ba0f1e58b20d6ab1797eb1'
+            '504df2b2ab5415ac56807933ae499f2ed0cfdbac9eb8f0a2440387f1f2411911'
+            'ea915cb5d50a4aa86695679ccd46d7aa56f8ff8c81a862403b3e1a89ca2b4a90')
 
 prepare() {
   # Set up the default build environment
@@ -111,14 +111,12 @@ check() {
 
   # In the case of a test failure you must examine it carefully
   # because it can lead to an unpredictable error during a production run.
-  # We skip regtest-xastdp due to https://github.com/cp2k/cp2k/issues/1243
   ./do_regtest \
                 -cp2kdir ../.. \
                 -version psmp \
                 -arch $_arch \
                 -nobuild \
                 -maxtasks $_corenumber \
-                -skipdir QS/regtest-xastdp \
                 -jobmaxtime 1000
 }
 
