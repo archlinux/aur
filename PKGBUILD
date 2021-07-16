@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dnsmasq-git
-pkgver=2.86test4.r18.g96f6444
+pkgver=2.86test5.r1.g767d9cb
 pkgrel=1
 pkgdesc="Lightweight, easy to configure DNS forwarder and DHCP server"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('glibc' 'gmp' 'libidn2' 'libdbus' 'libnetfilter_conntrack' 'nettle')
 makedepends=('git')
 provides=('dnsmasq')
 conflicts=('dnsmasq')
+backup=('etc/dnsmasq.conf')
 source=("git://thekelleys.org.uk/dnsmasq.git"
         "dnsmasq-sysusers.conf::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq-sysusers.conf"
         "dnsmasq.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/dnsmasq/trunk/dnsmasq.service")
