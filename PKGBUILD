@@ -8,7 +8,7 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=6.0.0.r2173.g67e25eed97
+pkgver=6.0.0.r2790.gbd306cfeee
 pkgrel=1
 epoch=13
 arch=(i686 x86_64)
@@ -58,7 +58,7 @@ build() {
 
 _build() (
   cd ${srcdir}/${_gitname}/build-$1
-
+  
   ../configure \
     --prefix=/usr \
     --sysconfdir=/etc \
