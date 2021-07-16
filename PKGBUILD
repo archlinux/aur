@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
 url='https://source.puri.sm/Librem5/phoc'
