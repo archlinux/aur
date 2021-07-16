@@ -1,0 +1,14 @@
+pkgbase = cmuscoverssdl-git
+	pkgdesc = Simple cover art viewer for cmus using SDL2 and SDL2_Image
+	pkgver = r26.df0040b
+	pkgrel = 1
+	url = https://github.com/MyLegGuy/cmusCoversSDL
+	arch = any
+	license = custom:Creative Commons Legal Code
+	makedepends = git
+	depends = sdl2_image
+	provides = cmusCoverViewer
+	source = cmuscoverssdl-git::git+https://github.com/MyLegGuy/cmusCoversSDL.git
+	md5sums = SKIP
+
+pkgname = cmuscoverssdl-git
