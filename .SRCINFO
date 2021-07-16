@@ -7,7 +7,6 @@ pkgbase = luxcorerender-git
 	arch = x86_64
 	license = Apache
 	makedepends = opencl-headers
-	makedepends = cuda
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
