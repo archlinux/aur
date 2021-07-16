@@ -25,6 +25,7 @@ _package() {
 
     make -C ${builddir}
     make -C ${builddir} test
+    make -C ${builddir} DESTDIR="$pkgdir/" install
 }
 
 package_bxdecay0() {
