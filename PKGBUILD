@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-bin
-pkgver=0.33.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 noextract=(
     "fluffychat-web-${pkgver}.tar.gz"
 )
-sha256sums=('f1a7f0aee98bec23cf3e7c21d1b989b056863c2fca6df0a1b5acda898e780a30'
+sha256sums=('e8336057991cbe07ac6ccdd802fd4f1c52f996f1c13aeffdbd15a6f11317990a'
             '8540064556b3a952c898023e48afb29e3c560964d66e51bbc422a0061318bd5e')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
@@ -30,6 +30,7 @@ package() {
   tar xzf "fluffychat-web-${pkgver}.tar.gz" -C ${pkgdir}/usr/share/webapps/${_pkgname}
   install -Dm644 config.sample.json ${pkgdir}/etc/webapps/${_pkgname}/config.json
   ln -s /etc/webapps/${_pkgname}/config.json ${pkgdir}/usr/share/webapps/${_pkgname}
+  sed -i '/base href=/d' ${pkgdir}/usr/share/webapps/${_pkgname}/index.html
 }
 
 # vim: set sw=2 ts=2 et:
