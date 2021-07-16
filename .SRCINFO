@@ -1,6 +1,6 @@
 pkgbase = flrig
 	pkgdesc = Amateur (Ham) Radio Transceiver Control Program
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://www.w1hkj.com/flrig-help/index.html
 	arch = armv7h
@@ -9,12 +9,13 @@ pkgbase = flrig
 	license = GPL
 	depends = fltk
 	depends = flxmlrpc
+	depends = systemd-libs
 	optdepends = hamradio-menus: XDG compliant menuing
 	optdepends = fldigi: for digital mode interface
 	provides = flrig
 	conflicts = flrig-git
-	source = http://downloads.sourceforge.net/project/fldigi/flrig/flrig-1.4.0.tar.gz
-	md5sums = befcdf177a919b71676cff18438b1b66
-	sha256sums = 0ab20393a719941fa8b4ef425851fb7483ba4b7454ba12cb39c6fe8648860b07
+	source = http://downloads.sourceforge.net/project/fldigi/flrig/flrig-1.4.1.tar.gz
+	md5sums = bf39fc52ba948ce713e6df60679a53a1
+	sha256sums = 7828806763239ae394684195656816eb72208d02ec4c44a76b7230fc45b09065
 
 pkgname = flrig
