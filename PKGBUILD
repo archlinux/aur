@@ -8,6 +8,7 @@
 # CANON PIXMA E3340
 # CANON PIXMA G5040
 # CANON PIXMA G5050
+# CANON PIXMA G5070
 # CANON PIXMA G6040
 # CANON PIXMA G6050
 # CANON PIXMA GM2050
@@ -36,7 +37,7 @@ pkgname='canon-pixma-g6000-complete'
 pkgver='5.90'
 _pkgversg='3.90'
 pkgrel='1'
-pkgdesc='Print Scan for Canon PIXMA series E3340 G5040 G5050 G6040 G6050 GM2050 TS3340 TS3350 TS3351 TS3352 TS3355 TS5340 TS5350 TS5351 TS5352 TS5353 TS6340 TS6350 TS6351 TS8340 TS8350 TS8351 TS8352'
+pkgdesc='Print Scan for Canon PIXMA series E3340 G5040 G5050 G5070 G6040 G6050 GM2050 TS3340 TS3350 TS3351 TS3352 TS3355 TS5340 TS5350 TS5351 TS5352 TS5353 TS6340 TS6350 TS6351 TS8340 TS8350 TS8351 TS8352'
 arch=('i686' 'x86_64')
 url='https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_g_series/pixma-g6050.html?type=drivers'
 license=('custom')

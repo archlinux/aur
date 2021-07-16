@@ -1,5 +1,5 @@
 pkgbase = canon-pixma-g6000-complete
-	pkgdesc = Print Scan for Canon PIXMA series E3340 G5040 G5050 G6040 G6050 GM2050 TS3340 TS3350 TS3351 TS3352 TS3355 TS5340 TS5350 TS5351 TS5352 TS5353 TS6340 TS6350 TS6351 TS8340 TS8350 TS8351 TS8352
+	pkgdesc = Print Scan for Canon PIXMA series E3340 G5040 G5050 G5070 G6040 G6050 GM2050 TS3340 TS3350 TS3351 TS3352 TS3355 TS5340 TS5350 TS5351 TS5352 TS5353 TS6340 TS6350 TS6351 TS8340 TS8350 TS8351 TS8352
 	pkgver = 5.90
 	pkgrel = 1
 	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_g_series/pixma-g6050.html?type=drivers
