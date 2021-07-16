@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=('any')
 url="https://github.com/sile-typesetter/$pkgname"
@@ -13,6 +13,7 @@ depends=('bc'
          'epubcheck'
          'ghostscript'
          'git'
+         'git-warp-time'
          'imagemagick'
          'inetutils'
          'inkscape'
