@@ -6,9 +6,9 @@
 pkgname=mailwizard
 
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 
-pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
+pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords (POP3/SMTP)'
 arch=('x86_64')
 url="https://github.com/rpuntaie/$pkgname"
 license=('GPL3')
