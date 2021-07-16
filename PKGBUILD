@@ -2,13 +2,13 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kmon-git
-pkgver=1.5.3.r0.g57bf544
+pkgver=1.5.4.r0.g606f2f4
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('x86_64')
 url="https://github.com/orhun/kmon"
 license=('GPL3')
-depends=('libx11')
+depends=('gcc-libs' 'libxcb')
 makedepends=('rust' 'python' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
