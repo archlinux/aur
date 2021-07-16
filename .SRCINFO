@@ -1,13 +1,12 @@
 pkgbase = gabedit
 	pkgdesc = A graphical user interface to computational chemistry packages
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gabedit.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = Custom
-	depends = gtkglext
-	depends = gtk2
+	depends = gtkglext-pangox
 	source = http://prdownloads.sourceforge.net/gabedit/GabeditSrc250.tar.gz
 	source = gabedit.desktop
 	sha512sums = c1caf916da81c68fb95f4477e69135ed52738a40427c825be33a4d024f809628fd40bbe153b02a95b01b16d2b3c8b45c8ac470c648003648ff24165af4390943
