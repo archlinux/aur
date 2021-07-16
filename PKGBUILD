@@ -3,6 +3,7 @@
 pkgname=apalache
 pkgver=0.15.11
 pkgrel=1
+epoch=1
 pkgdesc="Apalache: symbolic model checker for TLA+"
 arch=('any')
 url="https://$pkgname.informal.systems/"
