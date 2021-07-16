@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=python-blspy
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Python BLS Signatures implementation'
 url='https://github.com/Chia-Network/bls-signatures'
