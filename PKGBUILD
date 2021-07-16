@@ -4,7 +4,7 @@
 
 pkgname=wakatime
 pkgver=13.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -23,6 +23,7 @@ prepare () {
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
