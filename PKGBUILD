@@ -5,8 +5,8 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-quic
-pkgver=1.21.0
-pkgrel=3
+pkgver=1.21.1
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -25,8 +25,8 @@ backup=('etc/nginx/fastcgi.conf'
 install=nginx.install
 provides=('nginx')
 conflicts=('nginx')
-source=("hg+https://hg.nginx.org/nginx-quic#revision=1fec68e322d0"
-        "git+https://boringssl.googlesource.com/boringssl#commit=c3b373bf4f4b2e2fba2578d1d5b5fe04e410f7cb"
+source=("hg+https://hg.nginx.org/nginx-quic#revision=6674a50cbb6c"
+        "git+https://boringssl.googlesource.com/boringssl#commit=62d6ed60dc192433d05fcc786a8dc0df23e80c96"
         "service"
         "logrotate")
 sha256sums=('SKIP'
@@ -78,6 +78,7 @@ build() {
   export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
 
   export CXXFLAGS="$CXXFLAGS -fPIC"
+  # Disable some warnings that make Boringssl fail to compile due to a forced -Werror in CMakeLists.txt
   export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl
