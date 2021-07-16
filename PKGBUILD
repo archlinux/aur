@@ -7,7 +7,7 @@ pkgdesc="Apalache: symbolic model checker for TLA+"
 arch=('any')
 url="https://$pkgname.informal.systems/"
 license=('Apache')
-depends=('java-runtime-common')
+depends=('jre-openjdk' 'glibc')
 makedepends=(patch)
 source=(
 	"https://github.com/informalsystems/$pkgname/releases/download/v$pkgver/$pkgname.tgz"
