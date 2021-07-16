@@ -17,7 +17,7 @@ _package() {
     [[ "$1" == "geant4-ext" ]] && opt=ON || opt=OFF
     [[ "$1" == "geant4-ext" ]] && builddir=build-g4 || builddir=build
 
-    cmake -B ${builddir} -S "${pkgname}-${pkgver}" \
+    cmake -B ${builddir} -S "${pkgbase}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBXDECAY0_WITH_GEANT4_EXTENSION=${opt} \
