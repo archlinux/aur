@@ -1,0 +1,11 @@
+pkgbase = helmup-bin
+	pkgdesc = Check your helm chart dependencies for updates and apply them with an interactive selection.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/rubengees/helmup
+	arch = x86_64
+	license = MIT
+	source = https://github.com/rubengees/helmup/releases/download/0.1.1/helmup-0.1.1-linux-amd64
+	md5sums = e4b7d601489a34feddf345cf128f2978
+
+pkgname = helmup-bin
