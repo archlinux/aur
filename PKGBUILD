@@ -4,21 +4,19 @@
 
 
 pkgname=mailwizard-git
+_name="${pkgname%-git}"
 
-pkgver() {
-  cd "${pkgname%-git}"
-  git describe --long "$(git rev-list -1 HEAD .)" | sed 's/^v//;s/-/.r/;s/-/./'
-}
-pkgver=2.0.5.r0.ga2142eb
-pkgrel=1
+pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/-/.r/;s/-/./'; }
+pkgver=2.0.5.r3.gdc66cf4
+pkgrel=2
 
-pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
+pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords (POP3/SMTP)'
 arch=('x86_64')
-url="https://github.com/rpuntaie/${pkgname%-git}"
+url="https://github.com/rpuntaie/$_name"
 license=('GPL3')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'mutt-wizard')
+provides=("$_name")
+conflicts=("$_name" 'mutt-wizard')
 
 makedepends=('git')
 depends=('neomutt' 'isync' 'getmail6' 'msmtp' 'notmuch-runtime' 'pass' 'urlscan')
@@ -46,15 +44,15 @@ sha256sums=('SKIP'
 
 
 #check() {
-#  cd "${pkgname%-git}"
+#  cd "$_name"
 #  ./dotests
 #}
 
 package() {
-  cd "${pkgname%-git}"
+  cd "$_name"
   make DESTDIR="$pkgdir" -s install
-  install -m755 ../migrationhelper -t"$pkgdir/usr/share/${pkgname%-git}/"
-  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+  install -m755 ../migrationhelper -t"$pkgdir/usr/share/$_name/"
+  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/$_name/"
 }
 
 

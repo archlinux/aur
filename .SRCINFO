@@ -1,7 +1,7 @@
 pkgbase = mailwizard-git
-	pkgdesc = Configure neomutt, isync, getmail and msmtp with pass for passwords
-	pkgver = 2.0.5.r0.ga2142eb
-	pkgrel = 1
+	pkgdesc = Configure neomutt, isync, getmail and msmtp with pass for passwords (POP3/SMTP)
+	pkgver = 2.0.5.r3.gdc66cf4
+	pkgrel = 2
 	url = https://github.com/rpuntaie/mailwizard
 	install = wizard.install
 	changelog = changelog.txt
@@ -36,4 +36,3 @@ pkgbase = mailwizard-git
 	sha256sums = 96471dc5a53af342cf14f5ec119df81509617f960c707d732781a24d9e2ed3c6
 
 pkgname = mailwizard-git
-
