@@ -28,7 +28,7 @@ build()
 
     # Build the Langkit_Support library, used by all Langkit-generated libraries.
     python manage.py build-langkit-support \
-        --library-types=relocatable        \
+        --library-types=static,static-pic,relocatable \
         --build-mode=prod                  \
         --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
@@ -42,7 +42,7 @@ package()
     python setup.py install --root="$pkgdir"
 
     python manage.py install-langkit-support \
-        --library-types=relocatable          \
+        --library-types=static,static-pic,relocatable \
         --build-mode=prod                    \
         "$pkgdir/usr"
 
