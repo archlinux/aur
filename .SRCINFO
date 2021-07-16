@@ -1,6 +1,6 @@
 pkgbase = freezer-bin
 	pkgdesc = Free HQ music streaming app (Official)
-	pkgver = 1.1.21
+	pkgver = 1.1.22
 	pkgrel = 1
 	url = https://git.rip/freezer/freezerpc/
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = freezer-bin
 	source = freezer.desktop
 	source = freezer.sh
 	source = https://git.freezer.life/exttex/freezerpc/raw/branch/master/app/assets/icon.png
-	sha256sums = 67c923a3f2037cfbd2088cdf058dd71785bd04b1da610dff14ddd43bb0e25fd7
+	sha256sums = 8afebea319b8699f2cede44d17a9db910f63be981d263ca1f9766bd9c74e1178
 	sha256sums = 780e71d3423d5d1838f144a1954216324f833673d8b48365535ad8e31da1ea98
 	sha256sums = 5431bc4b525071e0d53c971eff9fa7c3a906bfe1823a7598f82df79bbfe981d7
-	source_x86_64 = https://files.freezer.life/0:/PC/1.1.21/freezer_1.1.21_amd64.deb
-	sha256sums_x86_64 = 0310ed4c51585a7b700839465804c7c98194a2480f608876f5b26ed548bdd00d
+	source_x86_64 = https://files.freezer.life/0:/PC/1.1.22/freezer_1.1.22_amd64.deb
+	sha256sums_x86_64 = a899381e71dd9fd533a4b775a7b46f3f2f13a48b092ca486d4ef3fb38e68099c
 
 pkgname = freezer-bin
