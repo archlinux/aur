@@ -3,20 +3,22 @@
 
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=v2.3.4.r15.g0f2c3017
+pkgver=v2.3.5.r38.ga7eca60d
 pkgrel=2
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('r' 'vtk' 'perl' 'insight-toolkit>=5')
+depends=('r' 'vtk' 'perl' 'gdcm')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}"'::git+https://github.com/stnava/ANTs.git')
-sha256sums=("SKIP")
+source=("${pkgname}"'::git+https://github.com/stnava/ANTs.git'
+        '0001-fix-for-GDCM-build-isssue-with-superbuilding-on-Arch.patch')
+sha256sums=('SKIP'
+            'f28f9a2edf0e14e7ecdba68fccf78a2226538c268529b16bc66b9a484490b9b0')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -25,6 +27,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  patch -Np1 -i "${srcdir}"/0001-fix-for-GDCM-build-isssue-with-superbuilding-on-Arch.patch
   mkdir -p antsBuild
 }
 
@@ -50,7 +53,7 @@ build() {
       -DUSE_SYSTEM_VTK=ON \
       -DUSE_VTK=ON \
       ..
-  make
+  make -j1
 }
 
 package() {
