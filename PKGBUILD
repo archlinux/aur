@@ -3,14 +3,14 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgbase=vdr-git
 pkgname=(vdr-git vdr-examples-git)
-pkgver=2.4.4.r0.g16fb796
-_vdrapi=2.4.3
+pkgver=2.5.6.r0.g0d50ec5
+_vdrapi=2.4.7
 pkgrel=1
 url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
-_vdrrepo="https://raw.githubusercontent.com/VDR4Arch/vdr4arch/87d77e000f8067e73e1c2da4d4ba4ace653e766c/vdr"
+_vdrrepo="https://raw.githubusercontent.com/VDR4Arch/vdr4arch/c71d217dd54c21d97bed2c3806e0453787f8598a/vdr"
 source=("$pkgbase::git+http://git.tvdr.de/vdr.git"
         "$_vdrrepo/vdr-MainMenuHooks.patch"
         "$_vdrrepo/00-vdr.conf"
@@ -22,21 +22,21 @@ source=("$pkgbase::git+http://git.tvdr.de/vdr.git"
         "$_vdrrepo/shutdown-wrapper.c"
         "$_vdrrepo/vdr.service"
         "$_vdrrepo/vdr.sysuser")
-md5sums=('SKIP'
-         '292e065582d97ed1ae4977a2a7b6091d'
-         'de3dcdea1a4282211c6dac370019548b'
-         'fc450f75037b8712673db4969a1dd758'
-         'f00583e3f5507b0ff935b4d5919e7df2'
-         '23d6e1ca0a36cfdbd35d3b1a61f0a105'
-         '3565ca5ad9be5c75f66478f0796b120d'
-         'dd20f932b846b5f50ac455b65e9432ad'
-         '7cad811b4ac5ee6c0b5496d006f1e0ee'
-         '6c021358f299dca9ef7bbeb163312690'
-         '59ce04d1d01bf92bf6cfc0b74223191c')
+sha256sums=('SKIP'
+            '4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b'
+            '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
+            '423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50'
+            '39f4c2886328dc947dbef70dbc37d42504dc5c9d6a2ad81bf0c41d26fa3a5d6a'
+            '1d914d6308a2b79ede34b7670788e5dfd3a8fab24156353555a66c9ef0bb41d7'
+            '54a901d735d200ba3e2df4d9f45e1e537832a868c6ae5ae42ed3ff1a4c2c3f05'
+            '7313a8db29693fa84d19be7b715b3ab04fd77eddcb52682588cc0a094764b6ba'
+            '17b82fd995e9a39ad8d73d46b586d6c1934a6747c2859bd6d6df22ed254b5c4b'
+            'f33f42a77bd93f00e7aa18f22667f0097468de76a0269c6e35fdc0fd2e30f6e6'
+            '7ca24fe1df90ffc20ae7fc6578193874b21ef8f303d7aac421d394a6106eef2a')
 
 pkgver() {
-  cd "${srcdir}/${pkgbase}"
-  git describe --long --tags | sed -r 's/^V(.)(..)(..)/\1.\2.\3/;s/\.0/./g;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
