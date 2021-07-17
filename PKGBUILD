@@ -16,7 +16,7 @@ _gcc_patchset=5
 _pkgname=$(echo $pkgname | cut -d\- -f1-2)
 _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
-_uc_ver=91.0.4472.114-1
+_uc_ver=$pkgver-1
 _uc_usr=Eloston
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -59,7 +59,7 @@ source=(${source[@]}
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
             '318b890f0d422c573f285a33b6f74ce8446c7aa16677a2236250827defca66e5'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
+            'aebc3eaa0b4c96a2e6453cb8a9f123ac253254775b8928e2317777caa3867205'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
