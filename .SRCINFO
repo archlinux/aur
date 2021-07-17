@@ -1,16 +1,14 @@
 pkgbase = ruby-chunky_png
 	pkgdesc = Read/write access to PNG images in pure Ruby
-	pkgver = 1.3.11
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://wiki.github.com/wvanbergen/chunky_png
 	arch = any
 	license = MIT
 	makedepends = rubygems
-	makedepends = ruby-rdoc
-	noextract = chunky_png-1.3.11.gem
+	noextract = chunky_png-1.4.0.gem
 	options = !strip
-	source = http://rubygems.org/downloads/chunky_png-1.3.11.gem
-	sha512sums = 5935bc7672ef4eb271abe0e2d4b83c2628ecb9d4fc1bb095d28d0f7fd5e13443492bc91b2c9c1de59d8bb669c185cddaeef62d03d3b0df88ecfaaa3c7a2a0ba6
+	source = http://rubygems.org/downloads/chunky_png-1.4.0.gem
+	sha512sums = 1276ba527723af973ca00535baab0dd3be8185cfaa77efb28c3b1ef1e949312710a616ca55711923875e54cb9c92b38de71062d2ba68b2314c7b9ce7a9b50b11
 
 pkgname = ruby-chunky_png
-
