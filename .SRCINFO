@@ -1,22 +1,20 @@
 pkgbase = eclipse-java-bin
 	pkgdesc = Highly extensible IDE
-	pkgver = 4.19
+	pkgver = 4.20
 	pkgrel = 1
-	url = https://www.eclipse.org
+	url = https://www.eclipse.org/
 	arch = x86_64
 	license = EPL
-	makedepends = tar
 	depends = java-environment>=11
-	depends = python
 	depends = libsecret
+	depends = python
 	provides = eclipse-java
 	conflicts = eclipse-java
-	source = https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-03/R/eclipse-java-2021-03-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse-java-bin-4.20.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	source = eclipse.png
-	sha512sums = 93d04fe9a69120b15d192d2574db4d67f4fc331edcbd1b3f90a5f5bb7434879e0c79cabf9a22976bddf0af2f28206ae838d4f3ec5123e52e278633ccd3489bf1
-	sha512sums = eb3e245f27a0eb328bdf3dcc1258013d55cf24d4ec3864cdc0ad9c68995bfc1af44f05a5973368f115e9957359c9e50b4cefa2fa7014c36e499447c48769f505
-	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
+	sha256sums = 3a2355fa605019920a9c35eb0770d8fb9c5fd123069bc05149a847b1965a9b2b
+	sha256sums = 4f98016c9e66066fd6e70e9103860bf92800097ea93e7525916ed20061c7dbff
+	sha256sums = 6321b708362bfee07386753d83a13ad1f4a087332cdcdf0f77c003e29bdd0a2b
 
 pkgname = eclipse-java-bin
-
