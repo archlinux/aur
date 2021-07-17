@@ -1,7 +1,7 @@
 pkgbase = lib32-libtas
 	pkgdesc = Tool-assisted speedrunning utility for Linux-native binaries (32-bit support)
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://github.com/clementgallet/libTAS
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,7 @@ pkgbase = lib32-libtas
 	depends = lib32-sdl2
 	depends = libtas
 	depends = lib32-zlib
-	source = https://github.com/clementgallet/libTAS/archive/v1.4.1.tar.gz
-	b2sums = ebfb53b25dcb4665926354bc9f465ae9ec027a8ff59cca0776f41bcdd0fe561d293bab3af915d8b68882dfbea539991b0cd5f035586a01b99bff092da335238a
+	source = https://github.com/clementgallet/libTAS/archive/v1.4.2.tar.gz
+	b2sums = f006f2f3c41daae68dd1802ba7ff0ebe25500cb08a96a6c222ca5322c55c5a5e551be73ea5c8a190bdd3fd122ba03e9873b5afbd228b117d170053880c6d123a
 
 pkgname = lib32-libtas
-
