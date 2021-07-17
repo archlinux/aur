@@ -1,17 +1,20 @@
 pkgbase = kore
-	pkgdesc = An easy to use web platform for writing scalable web APIs in C.
+	pkgdesc = An easy to use web platform for writing scalable, concurrent APIs in C or Python.
 	pkgver = 4.1.0
-	pkgrel = 1
-	url = https://kore.io/
-	arch = i686
+	pkgrel = 2
+	url = https://kore.io
 	arch = x86_64
-	license = ISC
+	license = custom:ISC
+	makedepends = minisign
+	depends = openssl>=1.1.0
+	depends = bash-bats
 	depends = curl
-	depends = openssl
 	depends = postgresql-libs
-	provides = kore
+	depends = python3
+	depends = yajl
 	source = https://kore.io/releases/kore-4.1.0.tar.gz
+	source = https://kore.io/releases/kore-4.1.0.tar.gz.minisig
 	sha256sums = b7d73b005fde0ea01c356a54e4bbd8a209a4dff9cf315802a127ce7267efbe61
+	sha256sums = d5d85cd1819f0c35db4bbf3fde30ad52fe31f021715eec437e7c2cf44c153760
 
 pkgname = kore
-
