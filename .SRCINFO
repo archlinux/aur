@@ -1,7 +1,7 @@
 pkgbase = apvlv
 	pkgdesc = PDF/DJVU/TXT viewer which behaves like vi
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://naihe2010.github.com/apvlv/
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,7 @@ pkgbase = apvlv
 	depends = webkit2gtk
 	depends = ebook-tools
 	backup = etc/apvlvrc
-	source = apvlv-0.2.0::https://github.com/naihe2010/apvlv/archive/v0.2.0.tar.gz
-	sha256sums = a4a2f42a7e42715a21d2356def3ed93c180c6ae41128580addee42835e5374c2
+	source = apvlv-0.2.1::https://github.com/naihe2010/apvlv/archive/v0.2.1.tar.gz
+	sha256sums = ea1e4f4d76c52ee702b7c41f1c766f65d392a80982ffc7b906b928cb2b2bc829
 
 pkgname = apvlv
-
