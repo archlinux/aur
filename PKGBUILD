@@ -16,16 +16,22 @@ sha256sums=('bd1b8243315a37da9fb6e75d3081e21c0deba6c3436aa17d8e20a4d4a03c1263'
 prepare() {
     unzip -j "${srcdir}/RobotKarol.jar" "icons/Karol.ico" 
     convert "${srcdir}/Karol.ico" "${srcdir}/${pkgname}.png"
-    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 }
 
 package() {
     install -D -m644 "${srcdir}/RobotKarol.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
+    install -D -m644 "${srcdir}/tipps.txt" "${pkgdir}/usr/share/java/${pkgname}/tipps.txt"
+    install -D -m644 "${srcdir}/karol.prop" "${pkgdir}/usr/share/java/${pkgname}/karol.prop"
     install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/Dokumentation/Karol30Handbuch.pdf" "${pkgdir}/usr/share/doc/${pkgname}/Karol30Handbuch.pdf"
+    mkdir -p -m755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
+    cp ${srcdir}/Beispiele/* "${pkgdir}/usr/share/doc/${pkgname}/examples"
     install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	mkdir -p -m755 "${pkgdir}/usr/bin/"
 	printf "#!/bin/sh
+cd /usr/share/java/${pkgname}
 archlinux-java-run --min 8 -- -jar /usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar
 " >> "${pkgdir}/usr/bin/${pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${pkgname}"
