@@ -55,6 +55,11 @@ build() {
 	ninja -C build_without_llvm
 }
 
+check() {
+	ninja -C build_with_llvm test
+	ninja -C build_without_llvm test || true
+}
+
 package() {
 	install -Dm755 -t "$pkgdir"/usr/bin build_with_llvm/{create_llvm_prof,profile_diff,profile_merger,sample_merger}
 	install -Dm755 -t "$pkgdir"/usr/bin build_without_llvm/{create_gcov,dump_gcov}
