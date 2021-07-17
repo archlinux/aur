@@ -1,6 +1,6 @@
 pkgbase = check-nwc-health
 	pkgdesc = Monitoring check for various network equipment
-	pkgver = 7.12
+	pkgver = 8.4
 	pkgrel = 1
 	url = https://labs.consol.de/nagios/check_nwc_health/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = check-nwc-health
 	optdepends = perl-xml-libxml: checks based on UPnP
 	optdepends = perl-xml-treebuilder: FritzBox checks
 	optdepends = perl-json: FritzBox checks
-	source = https://labs.consol.de/assets/downloads/nagios/check_nwc_health-7.12.tar.gz
-	sha256sums = 58338733d8ca7ddff0affc3abd52eb805d9e642fcd5e9d606fa143bf34f92cdd
+	source = https://labs.consol.de/assets/downloads/nagios/check_nwc_health-8.4.tar.gz
+	sha256sums = 8ed9dc659705003cf2663a0c7a6870729a297555f7df81cf96b7ff2e51886a2d
 
 pkgname = check-nwc-health
-
