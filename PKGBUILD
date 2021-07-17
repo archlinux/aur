@@ -54,8 +54,9 @@ prepare() {
 	# Buildfix for newer protobuf versions
 	patch -d sysbox/sysbox-ipc -Np1 -i "$srcdir/sysbox-ipc-fix-build-on-protobuf-1.5.0-plus.patch"
 
-	# Use locally built sysbox-libs/formatter instead of downloading it like the official build does
-	# (otherwise build fails, not sure how the official build works, since the dep. is not even listed for sysbox-runc)
+	# Use locally built sysbox-libs/formatter instead of downloading it like the official build does,
+	# this is necessary to fix the build due to '-mod=readonly' GOFLAGS (also default in Go 1.16+)
+	# The official Dockerized build appears to depend on the import lookup feature to resolve it
 	patch -d sysbox/sysbox-fs -Np1 -i "$srcdir/sysbox-fs-use-local-sysbox-libs-formatter.patch"
 	patch -d sysbox/sysbox-runc -Np1 -i "$srcdir/sysbox-runc-use-local-sysbox-libs-formatter.patch"
 
