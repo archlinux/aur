@@ -1,11 +1,7 @@
 post_upgrade() {
   if (( $(vercmp $2 1.16.0-3) < 0 )); then
     post_install
-	echo
   fi
-  
-  echo ":: This package may work better with other X stack Git
-   components (e.g. xf86-input-*-git, xf86-video-*-git)."
 }
 
 post_install() {
