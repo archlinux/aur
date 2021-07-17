@@ -4,9 +4,9 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 
-pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer})
+pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=v14.99.2.r14.gd6dc500b7
+pkgver=14.99.2+14+gd6dc500b7
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd pulseaudio
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {

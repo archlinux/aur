@@ -120,3 +120,7 @@ pkgname = pulseaudio-airplay-equalizer
 	depends = fftw
 	provides = pulseaudio-equalizer
 	conflicts = pulseaudio-equalizer
+
+pkgname = pulseaudio-airplay-rtp
+	pkgdesc = RTP and RAOP support for PulseAudio
+	depends = pulseaudio=v14.99.2.r14.gd6dc500b7-1
