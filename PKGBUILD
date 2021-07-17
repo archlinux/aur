@@ -2,7 +2,7 @@
 
 pkgname=lib32-libtas-git
 pkgdesc="Tool-assisted speedrunning utility for Linux-native binaries (32-bit support)"
-pkgver=1.4.1.r9.ac432d4
+pkgver=1.4.2.r0.2ae7dd59
 pkgrel=1
 epoch=1
 arch=('x86_64')
