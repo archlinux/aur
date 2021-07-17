@@ -1,13 +1,13 @@
 pkgbase = vysor-bin
 	pkgdesc = Mirror and control your Android device
-	pkgver = 4.1.61
+	pkgver = 4.1.62
 	pkgrel = 1
 	url = https://vysor.io
 	arch = x86_64
 	license = custom
 	provides = vysor
 	conflicts = vysor
-	source = https://github.com/koush/vysor.io/releases/download/v4.1.61/Vysor-linux-4.1.61.deb
-	sha256sums = 425b8bcf774dbdf8f7817ca9f2e15c5b40ebaa800f3ae134692a6fc42be02cb8
+	source = https://github.com/koush/vysor.io/releases/download/v4.1.62/Vysor-linux-4.1.62.deb
+	sha256sums = 88564a3a0ebff4dea9f40ee7ab24a0aabbff5ac7a291c343d7908fe6d9fcb754
 
 pkgname = vysor-bin
