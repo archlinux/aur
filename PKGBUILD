@@ -5,6 +5,7 @@ pkgver=2.5.0
 pkgrel=1
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
+provides=('armcord')
 url="https://github.com/smartfrigde/armcord"
 license=('MIT')
 options=(!strip)
