@@ -9,10 +9,13 @@ pkgdesc='Enhanced wiki and issue tracking system for software development projec
 arch=('any')
 url="http://trac.edgewall.org/"
 license=('BSD')
-depends=(python2 python2-jinja python2-babel python2-setuptools)
+depends=(python2 python2-jinja python2-setuptools)
+makedepends=(python2-babel)
 optdepends=('python2-psycopg2: PostgreSQL database support'
             'python2-pygments: Syntax highlighting'
-            'python2-docutils: reStructuredText support')
+            'python2-docutils: reStructuredText support'
+            'python2-babel: localization support'
+            'python2-pytz: complete list of time zones')
 install=trac.install
 source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz
         tracd.service)
