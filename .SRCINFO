@@ -1,0 +1,11 @@
+pkgbase = concordium-client-bin
+	pkgdesc = A command-line client to interact with a Concordium node
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Concordium/concordium-client
+	arch = x86_64
+	license = APACHE
+	source = https://distribution.concordium.software/tools/linux/concordium-client_1.0.1
+	sha256sums = bae20cf3bc93dbafc58a7b1eae462375ef3cfba2cc4905bf872735aa8233d98c
+
+pkgname = concordium-client-bin
