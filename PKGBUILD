@@ -1,7 +1,7 @@
 # Maintainer: Light Ning <lightning1141@gmail.com>
 
 pkgname=svgbob
-_pkgver=0.5.0-alpha.6
+_pkgver=0.5.2
 pkgver=$(echo $_pkgver | sed -e "s/\-/\./")
 pkgrel=1
 pkgdesc='Convert your ascii diagram scribbles into happy little SVG'
