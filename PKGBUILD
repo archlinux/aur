@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}/wg-manager-frontend"
-    npm install --unsafe-perm # needed because of wonky dependencies.. see https://github.com/perara/wg-manager/blob/main/docs/install.md
+    npm install
     npm install @angular/cli
     node_modules/@angular/cli/bin/ng build --configuration="production"
 }
