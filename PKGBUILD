@@ -5,7 +5,7 @@
 pkgname=trac
 pkgver=1.4.2
 pkgrel=1
-pkgdesc="Trac Integrated SCM & Project Management using Apache & Subversion."
+pkgdesc='Enhanced wiki and issue tracking system for software development projects'
 arch=('any')
 url="http://trac.edgewall.org/"
 license=('BSD')

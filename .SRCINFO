@@ -1,5 +1,5 @@
 pkgbase = trac
-	pkgdesc = Trac Integrated SCM & Project Management using Apache & Subversion.
+	pkgdesc = Enhanced wiki and issue tracking system for software development projects
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = http://trac.edgewall.org/
@@ -21,4 +21,3 @@ pkgbase = trac
 	sha256sums = 3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42
 
 pkgname = trac
-
