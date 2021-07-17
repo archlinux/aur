@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.06.25.r26.g7112681
+pkgver=2021.06.25.r32.g7fa1fcc
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
 url="https://www.pling.com/p/1357889"
 license=('GPL2')
-depends=('gnome-themes-extra')
-makedepends=('git')
+depends=('gtk3' 'gnome-themes-extra')
+makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'kvantum-theme-orchis: Matching Kvantum theme'
             'tela-circle-icon-theme: Recommended icon theme'
@@ -27,7 +27,10 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all -d "$pkgdir/usr/share/themes"
+
+  for theme in default purple pink red orange yellow green grey; do
+    ./install.sh -t "$theme" -d "$pkgdir/usr/share/themes"
+  done
 
   # Remove unnecessary files:
   rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
