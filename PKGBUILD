@@ -28,14 +28,14 @@ pkgver()
 package() {
     install -Dm644 "${srcdir}/netscripts-atzlinux/debian/copyright" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
     cp -r "${srcdir}/netscripts-atzlinux/usr/bin" "${pkgdir}/usr"
-    install -Dm755 "${srcdir}/netscripts-atzlinux/usr/sbin/iftopgw" "${pkgdir}/usr/bin"
-    install -Dm755 "${srcdir}/netscripts-atzlinux/usr/sbin/iftopbluetooth" "${pkgdir}/usr/bin"
+    cp -r "${srcdir}/netscripts-atzlinux/usr/sbin/." "${pkgdir}/usr/bin"
 
     ln -sf "/usr/bin/localip" "${pkgdir}/usr/bin/lip"
     ln -sf "/usr/bin/localip" "${pkgdir}/usr/bin/lanip"
     ln -sf "/usr/bin//wanip" "${pkgdir}/usr/bin/wip"
     ln -sf "/usr/bin/iftopgw" "${pkgdir}/usr/bin/iftopg"
     ln -sf "/usr/bin/iftopbluetooth" "${pkgdir}/usr/bin/iftopb"
+
 }
 
 #
