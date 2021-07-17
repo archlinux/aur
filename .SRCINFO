@@ -1,0 +1,16 @@
+pkgbase = mariadb-connector-cpp-git
+	pkgdesc = MariaDB Connector for C++ .
+	pkgver = 20210717
+	pkgrel = 1
+	url = https://github.com/mariadb-corporation/mariadb-connector-cpp
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	depends = mariadb-libs
+	provides = mariadb-connector-cpp
+	source = mariadb-connector-cpp-git::git+https://github.com/mariadb-corporation/mariadb-connector-cpp
+	sha512sums = SKIP
+
+pkgname = mariadb-connector-cpp-git
