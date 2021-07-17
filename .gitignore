@@ -1,3 +1,5 @@
-*.zip
-*.txt
-*.pkg.tar.zst
+!.gitignore
+!PKGBUILD
+!*.install
+!.SRCINFO
+*
