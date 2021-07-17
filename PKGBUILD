@@ -8,7 +8,22 @@ arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
 depends=('sdl2')
-makedepends=('git' 'glib2' 'glu' 'gtk3' 'libepoxy' 'libpcap' 'libsamplerate' 'libslirp' 'meson' 'ninja' 'openssl' 'pixman' 'python' 'xxhash')
+makedepends=(
+	'git'
+	'glib2'
+	'glu'
+	'gtk3'
+	'libepoxy'
+	'libpcap'
+	'libsamplerate'
+	'libslirp'
+	'meson'
+	'ninja'
+	'openssl'
+	'pixman'
+	'python'
+	'xxhash'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
@@ -61,7 +76,16 @@ build() {
 }
 
 package() {
-	depends+=('libgdk-3.so' 'libglib-2.0.so' 'libgobject-2.0.so' 'libgtk-3.so' 'libpcap.so' 'libpixman-1.so' 'libsamplerate.so' 'libslirp.so')
+	depends+=(
+		'libgdk-3.so'
+		'libglib-2.0.so'
+		'libgobject-2.0.so'
+		'libgtk-3.so'
+		'libpcap.so'
+		'libpixman-1.so'
+		'libsamplerate.so'
+		'libslirp.so'
+	)
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -Dm755 build/qemu-system-i386 "$pkgdir"/usr/bin/$_pkgname
