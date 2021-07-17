@@ -8,18 +8,18 @@ arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL2')
 depends=('sdl2')
-makedepends=('git' 'glib2' 'glu' 'gtk3' 'libepoxy' 'libpcap' 'libsamplerate' 'libslirp' 'meson' 'ninja' 'openssl' 'pixman' 'python')
+makedepends=('git' 'glib2' 'glu' 'gtk3' 'libepoxy' 'libpcap' 'libsamplerate' 'libslirp' 'meson' 'ninja' 'openssl' 'pixman' 'python' 'xxhash')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 source=(
-	'git+https://github.com/Cyan4973/xxHash.git'
 	'git+https://github.com/epezent/implot.git'
 	'git+https://github.com/mborgerson/xemu.git'
 	'git+https://github.com/ocornut/imgui.git'
 	'git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
 	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
+	'unbundle-xxhash.patch'
 )
 b2sums=(
 	'SKIP'
@@ -28,7 +28,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
+	'61cd11e6d3a50df9f885155a5847dc4c9b4e8c3a2fd3fb6cd2c207374554a849e49cda3cf80ac700c32d4638925fb715895238ac5d9963a4e9ff67999e54f713'
 )
 
 pkgver() {
@@ -38,14 +38,14 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init hw/xbox/nv2a/xxHash tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
-	git config submodule.hw/xbox/nv2a/xxHash.url ../xxHash
+	git submodule init tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/imgui.url ../imgui
 	git config submodule.ui/implot.url ../implot
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git submodule update
+	patch -Np1 < ../unbundle-xxhash.patch
 	python scripts/gen-license.py > XEMU_LICENSE
 }
 
