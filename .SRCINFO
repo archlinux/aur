@@ -1,6 +1,6 @@
 pkgbase = trac
 	pkgdesc = Enhanced wiki and issue tracking system for software development projects
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://trac.edgewall.org/
 	install = trac.install
@@ -15,9 +15,9 @@ pkgbase = trac
 	optdepends = python2-docutils: reStructuredText support
 	optdepends = python2-babel: localization support
 	optdepends = python2-pytz: complete list of time zones
-	source = https://download.edgewall.org/trac/Trac-1.4.2.tar.gz
+	source = https://download.edgewall.org/trac/Trac-1.4.3.tar.gz
 	source = tracd.service
-	sha256sums = 42372fcd9f2ac46264656287fe6edb8230f59b44e991ee098b399f1bb475ae8f
+	sha256sums = c93ceed9abee6e3c7789f469862e82a3b9bf3405be73aae3221b5c259e062d21
 	sha256sums = 3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42
 
 pkgname = trac

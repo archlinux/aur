@@ -3,7 +3,7 @@
 # Contributor: Rubin Simons <rubin@xs4all.nl>
 
 pkgname=trac
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc='Enhanced wiki and issue tracking system for software development projects'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('python2-psycopg2: PostgreSQL database support'
 install=trac.install
 source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz
         tracd.service)
-sha256sums=('42372fcd9f2ac46264656287fe6edb8230f59b44e991ee098b399f1bb475ae8f'
+sha256sums=('c93ceed9abee6e3c7789f469862e82a3b9bf3405be73aae3221b5c259e062d21'
             '3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42')
 
 prepare() {
