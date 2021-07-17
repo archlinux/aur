@@ -2,7 +2,7 @@
 _pkgname=obs-rtspserver
 pkgname=${_pkgname}-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RTSP server plugin for obs-studio"
 arch=("x86_64")
 url="https://github.com/iamscottxu/obs-rtspserver"
@@ -23,5 +23,5 @@ package() {
 	
 	install -Dm755 ./bin/64bit/* ${pkgdir}/usr/lib/obs-plugins/
 	install -Dm755 data/locale/* ${pkgdir}/usr/share/obs/obs-plugins/obs-rtspserver/locale/
-	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/{$pkgname}/LICENSE"
+	install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
