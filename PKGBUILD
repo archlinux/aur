@@ -2,7 +2,7 @@
 
 _gemname=rqrcode
 pkgname=ruby-${_gemname}
-pkgver=1.1.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='library for encoding QR Codes'
 arch=('any')
@@ -10,13 +10,13 @@ url='https://github.com/whomwah/rqrcode'
 license=("MIT")
 depends=(
 	'ruby-chunky_png>=1.0'
-	'ruby-rqrcode_core>=0.1'
+	'ruby-rqrcode_core>=1.0'
 	)
 makedepends=("rubygems")
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
 options=(!strip)
-sha512sums=('a1c7de526cf90cdd1dc6a00bd875d6f598128e2a079528553b09a911434357eb5a55508aca0cc49ebe3a69d409b758dd9a427587ea07827a3583b7fc7eb1ba4d')
+sha512sums=('7dcb132e4aed126eb0abdc6c95d16a304887ad7484ee00b0444506c6af43a54bf6ad43d7753d32c23f0d64d74228c1e9d01c1f2865d7181ff72a1c2de7f2fbcf')
 
 package() {
 	local _gemdir="$(gem env gemdir)"
