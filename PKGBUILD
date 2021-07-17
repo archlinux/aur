@@ -18,7 +18,7 @@ source=("cryptomator-${pkgver}-${pkgrel}-x86_64.AppImage::https://github.com/cry
         'org.cryptomator.Cryptomator.png'
         'org.cryptomator.Cryptomator.svg'
         'cryptomator-vault.xml')
-sha256sums=('cdaa5221fc166fed76fe4a894939d335559e8840d8c354e3e1c8fd2135dfccd5'
+sha256sums=('SKIP'
             'SKIP'
             '53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             'd299636d78d093117fa7a26563f22e01cdb75b1fcc6cc279bc88627574c968bd'
