@@ -1,13 +1,13 @@
 pkgbase = python-detect-direct-checkins
 	pkgdesc = A utility which detects direct checkins on specific branches.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/detect-direct-checkins
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/IngoMeyer441/detect-direct-checkins/archive/v0.1.1.tar.gz
-	sha256sums = 052a8f371989136bba257721dae232d00d1a9ad7678d4126eacd3abf266b6fca
+	source = https://github.com/IngoMeyer441/detect-direct-checkins/archive/v0.1.2.tar.gz
+	sha256sums = bb2ba618e4eb5369a54959fbc3fa761a532f2b5fe93885ec9a87ae29d545d085
 
 pkgname = python-detect-direct-checkins
