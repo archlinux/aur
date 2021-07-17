@@ -1,0 +1,1 @@
+OPTIONS="-api.insecure-cert -api.password admin -api.url https://localhost/ovirt-engine/api/ -api.username user@internal"

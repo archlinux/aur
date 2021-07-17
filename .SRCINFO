@@ -1,0 +1,20 @@
+pkgbase = ovirt_exporter
+	pkgdesc = Exporter for oVirt engine metrics
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/czerwonk/ovirt_exporter
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	backup = etc/conf.d/ovirt_exporter
+	source = https://github.com/czerwonk/ovirt_exporter/archive/0.9.1.tar.gz
+	source = ovirt_exporter
+	source = ovirt_exporter.service
+	source = ovirt_exporter.sysusers
+	sha256sums = ac7c4b5e470fcb2ea9c31c3e4098bb4402c492b20264bc3d7943a664c3fb4742
+	sha256sums = dddb55bc9a696c56814ce4d34f6254469bf215c59629b3225546775f680a13c3
+	sha256sums = fbe1800ff7dc0ce36292f4abe88141099ae0b8c245903f76a8f41ff2c6a81c0b
+	sha256sums = 2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f
+
+pkgname = ovirt_exporter

@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus oVirt exporter
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/ovirt_exporter
+ExecStart=/usr/bin/ovirt_exporter $OPTIONS
+User=prometheus
+Group=prometheus
+
+[Install]
+WantedBy=multi-user.target
