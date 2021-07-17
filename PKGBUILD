@@ -3,18 +3,18 @@
 # Contributor: Claire Charron <claire@undeterminant.net>
 _pkgname=noto-fonts-emoji
 pkgname=$_pkgname-git
-pkgver=2020.09.16.unicode13_1.r0.gaac7ccaa
+pkgver=2.028.r0.gc05b4b47c
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Google Noto emoji fonts"
 arch=('any')
 url="https://github.com/googlefonts/noto-emoji"
 license=('Apache')
-makedepends=('git' 'zopfli' 'python-fonttools' 'python-nototools' 'pngquant' 'cairo' 'imagemagick')
+makedepends=('cairo' 'git' 'imagemagick' 'pngquant' 'python-nototools' 'zopfli')
 provides=("$_pkgname" 'emoji-font')
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -26,9 +26,7 @@ prepare() {
 }
 
 build() {
-	make -C $_pkgname \
-		BYPASS_SEQUENCE_CHECK=1 \
-		VIRTUAL_ENV=dummy
+	make -C $_pkgname BYPASS_SEQUENCE_CHECK=1 VIRTUAL_ENV=1
 }
 
 package() {
