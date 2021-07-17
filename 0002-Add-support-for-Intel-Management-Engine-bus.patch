@@ -1,4 +1,4 @@
-From 08eb08f64150fd93b178069d1109116cf90720de Mon Sep 17 00:00:00 2001
+From caf3690c0258119900c91d9595ad7c71896a580c Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/11] Add support for Intel Management Engine bus
@@ -7,26 +7,13 @@ Add support for devices connected via the Intel Management Engine (MEI).
 This is required to support IPTS based devices, such as (among others)
 the Microsoft Surface Books, Surface Pro 5 and 6, and Surface Laptops.
 ---
- data/test_data_files.py      | 2 +-
  libwacom/libwacom-database.c | 4 ++++
  libwacom/libwacom.c          | 5 +++++
  libwacom/libwacom.h          | 1 +
  test/test-tablet-validity.c  | 1 +
+ test/test_data_files.py      | 2 +-
  5 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/data/test_data_files.py b/data/test_data_files.py
-index 26d274f..bc92658 100755
---- a/data/test_data_files.py
-+++ b/data/test_data_files.py
-@@ -34,7 +34,7 @@ def test_device_match(tabletfile):
-             continue
- 
-         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
--        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
-+        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt', 'mei'], f'{tabletfile}: unknown bus type'
-         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
-         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
- 
 diff --git a/libwacom/libwacom-database.c b/libwacom/libwacom-database.c
 index 3c7d0de..28c0ac5 100644
 --- a/libwacom/libwacom-database.c
@@ -96,6 +83,19 @@ index da5fe07..6b45597 100644
  			g_assert_cmpint(vid, >, 0);
  			g_assert_cmpint(pid, >, 0);
  			break;
+diff --git a/test/test_data_files.py b/test/test_data_files.py
+index 734463f..c9c6312 100755
+--- a/test/test_data_files.py
++++ b/test/test_data_files.py
+@@ -41,7 +41,7 @@ def test_device_match(tabletfile):
+             continue
+ 
+         bus, vid, pid = match.split(':')[:3]  # skip the name part of the match
+-        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt'], f'{tabletfile}: unknown bus type'
++        assert bus in ['usb', 'bluetooth', 'i2c', 'serial', 'virt', 'mei'], f'{tabletfile}: unknown bus type'
+         assert re.match('[0-9a-f]{4}', vid), f'{tabletfile}: {vid} must be lowercase hex'
+         assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
+ 
 -- 
-2.31.1
+2.32.0
 
