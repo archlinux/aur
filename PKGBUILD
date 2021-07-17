@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=r1.16863c8
+pkgver=4.0a6.r2.ga1122aa67
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -20,14 +20,16 @@ sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+
+  git describe --long | sed 's/^processing-[^-]\+-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   # The size of a full clone is more than 1GB, so we just make a shallow clone
+  # Fetching 1000 commits is hopefully enough to find the latest version tag
   rm -rf $pkgname
-  git clone --depth 1 https://github.com/processing/processing4.git $pkgname
+  git clone --depth 1000 https://github.com/processing/processing4.git $pkgname
 
   # Create .desktop file
   gendesk -f -n --pkgname=processing4 --pkgdesc="$pkgdesc" --name="Processing 4"

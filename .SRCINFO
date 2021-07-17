@@ -1,6 +1,6 @@
 pkgbase = processing4-git
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = r1.16863c8
+	pkgver = 4.0a6.r2.ga1122aa67
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
