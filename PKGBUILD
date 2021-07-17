@@ -3,7 +3,7 @@
 pkgname=wps-office-mui-fr
 pkgver=11.2.0.9255
 pkgrel=1
-pkgdesc="Traduction française de l'interface graphique pour WPS Office"
+pkgdesc="French mui traduction for WPS Office"
 arch=(any)
 url="https://github.com/wachin/wps-office-all-mui-win-language"
 license=(GPL3)
