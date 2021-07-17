@@ -2,15 +2,17 @@ pkgbase = tf5
 	pkgdesc = a flexible, screen-oriented MUD client, for use with any type of MUD
 	pkgver = 5.0b8
 	pkgrel = 1
-	url = http://tinyfugue.sourceforge.net/
+	url = https://github.com/tinyfugue/tinyfugue
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
-	makedepends = git
-	depends = pcre
 	depends = openssl
-	source = git+https://github.com/strongsecio/tinyfugue.git#tag=v5.0b8-1
-	sha256sums = SKIP
+	depends = pcre
+	source = tf5-5.0b8.tar.gz::https://sourceforge.net/projects/tinyfugue/files/tinyfugue/5.0%20beta%208/tf-50b8.tar.gz/download
+	sha1sums = 37bb70bfb7b44d36c28606c6bd45e435502fb4b4
+	b2sums = 3218878cdc4a2049fd7f2a8e0426ec589bf304e0bb24ad557e5bea39cbaba76e6a1c52f064860e499623abb51bc9f14a0c8388b927fd15a66a7945fe5eaccf84
 
 pkgname = tf5
-

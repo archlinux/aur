@@ -1,0 +1,42 @@
+diff --git a/src/macro.c b/src/macro.c
+index ac28fc9..9744ebe 100644
+--- a/src/macro.c
++++ b/src/macro.c
+@@ -893,7 +893,9 @@ static int complete_macro(Macro *spec, unsigned int hash, int num,
+     }
+     spec->attr &= ~F_NONE;
+     if (spec->nsubattr) {
+-	int n = pcre_info(spec->trig.ri->re, NULL, NULL);
++	//int n = pcre_info(spec->trig.ri->re, NULL, NULL);
++	int n = 0;
++	pcre_fullinfo(spec->trig.ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
+ 	for (i = 0; i < spec->nsubattr; i++) {
+ 	    spec->subattr[i].attr &= ~F_NONE;
+ 	    if (spec->subattr[i].subexp > n) {
+diff --git a/src/pattern.c b/src/pattern.c
+index 047a44a..b243d9c 100644
+--- a/src/pattern.c
++++ b/src/pattern.c
+@@ -151,7 +151,8 @@ static RegInfo *tf_reg_compile_fl(const char *pattern, int optimize,
+ 	    emsg ? emsg : "unknown error");
+ 	goto tf_reg_compile_error;
+     }
+-    n = pcre_info(ri->re, NULL, NULL);
++    pcre_fullinfo(ri->re, NULL, PCRE_INFO_CAPTURECOUNT, &n);
++    //n = pcre_info(ri->re, NULL, NULL);
+     if (n < 0) goto tf_reg_compile_error;
+     ri->ovecsize = 3 * (n + 1);
+     ri->ovector = dmalloc(NULL, sizeof(int) * ri->ovecsize, file, line);
+diff --git a/src/pattern.h b/src/pattern.h
+index 1eec0f9..cbe9af9 100644
+--- a/src/pattern.h
++++ b/src/pattern.h
+@@ -10,7 +10,7 @@
+ #ifndef PATTERN_H
+ #define PATTERN_H
+ 
+-#include "pcre-2.08/pcre.h"
++#include <pcre.h>
+ 
+ typedef struct RegInfo {
+     pcre *re;

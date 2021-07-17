@@ -1,32 +1,45 @@
-# Maintainer: J. Coffman <jcoffman@strongsec.io>
+# Maintainer: Justin Coffman <jcoffman@itsecu.red>
 
 pkgname=tf5
 pkgver=5.0b8
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
-url="http://tinyfugue.sourceforge.net/"
+url="https://github.com/tinyfugue/tinyfugue"
 license=('GPL3')
-makedepends=('git')
-depends=('pcre' 'openssl')
-source=("git+https://github.com/strongsecio/tinyfugue.git#tag=v$pkgver-$pkgrel")
-sha256sums=('SKIP')
 
-# build function
-build() {
-  cd "$srcdir/tinyfugue"
+depends=('openssl' 'pcre')
 
-  ./configure --prefix=/usr
-  make
+source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/tinyfugue/files/tinyfugue/5.0%20beta%208/tf-50b8.tar.gz/download")
+
+sha1sums=('37bb70bfb7b44d36c28606c6bd45e435502fb4b4')
+b2sums=('3218878cdc4a2049fd7f2a8e0426ec589bf304e0bb24ad557e5bea39cbaba76e6a1c52f064860e499623abb51bc9f14a0c8388b927fd15a66a7945fe5eaccf84')
+
+prepare() {
+    mv "tf-50b8" "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
+    for pf in "$startdir"/*.patch; do
+        patch -V none -tp1 < "$pf"
+    done
 }
 
-# package function
+build() {
+    export PATH="$(echo $PATH | sed -e 's:(:\\\(:g' -e 's:):\\\):g' -e 's: :\\\ :g')"
+    cd "$pkgname-$pkgver"
+    ./configure \
+        --prefix=/usr \
+        --enable-core \
+        --enable-inet6 \
+        --enable-ssl \
+        --with-libdirs=pcre-2.08
+    make
+}
+
 package() {
-  cd "$srcdir/tinyfugue"
+    #export PATH="$(echo $PATH | sed -e 's:(:\\\(:g' -e 's:):\\\):g' -e 's: :\\\ :g')"
+    cd "$pkgname-$pkgver"
+    mkdir "$pkgdir/usr"
+    make prefix="$pkgdir/usr" -j1 install
 
-  mkdir "$pkgdir/usr"
-  make prefix="$pkgdir/usr" -j1 install
-
-  install -d "$pkgdir/usr/share/man/man1"
-  install -m 644 src/tf.1.nroffman "$pkgdir/usr/share/man/man1/tf.1"
+    install -D -p -m 644 src/tf.1.nroffman "$pkgdir/usr/share/man/man1/tf.1"
 }
