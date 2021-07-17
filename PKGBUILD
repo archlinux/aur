@@ -18,7 +18,7 @@ arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://gitlab.freedesktop.org/xorg/xserver.git"
-makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
+makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'xtrans'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
@@ -199,7 +199,7 @@ package_xorg-server-devel-git() {
   provides=('xorg-server-devel')
   conflicts=('xorg-server-devel')
   pkgdesc="Development files for the X.Org X server (git version)"
-  depends=('xorgproto' 'mesa' 'libpciaccess'
+  depends=('xorgproto-git' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
            'xorg-util-macros')
 
