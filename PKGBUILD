@@ -32,7 +32,7 @@ source=($_srcurl
 sha512sums=('SKIP'
             '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
-
+ 
 pkgver() {
   cd "${_pkgbase}"
   # cutting off 'xorg.server.' prefix that presents in the git tag
