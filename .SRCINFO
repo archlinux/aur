@@ -1,5 +1,5 @@
 pkgbase = abstouch-nux
-	pkgdesc = Makes your touchpad work like a graphics tablet on GNU/Linux.
+	pkgdesc = An absolute touchpad input client for GNU/Linux.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/acedron/abstouch-nux
@@ -17,6 +17,6 @@ pkgbase = abstouch-nux
 	depends = libx11
 	depends = xf86-input-libinput
 	source = abstouch-nux-1.0.0.tar.gz::https://github.com/acedron/abstouch-nux/archive/v1.0.0.tar.gz
-	sha256sums = 0722f777d735b816889a29e79e300aabbc31986f191f1e3e081c7a38464c7dbc
+	sha256sums = 0d4534293ba44b07de68875a071882f5229533e59b568d7ce6b37eba6d173f96
 
 pkgname = abstouch-nux

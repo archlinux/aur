@@ -2,7 +2,7 @@
 pkgname=abstouch-nux
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Makes your touchpad work like a graphics tablet on GNU/Linux."
+pkgdesc="An absolute touchpad input client for GNU/Linux."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/acedron/abstouch-nux"
 license=('GPL3')
@@ -16,7 +16,7 @@ makedepends=(
     'gcc'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/acedron/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0722f777d735b816889a29e79e300aabbc31986f191f1e3e081c7a38464c7dbc')
+sha256sums=('0d4534293ba44b07de68875a071882f5229533e59b568d7ce6b37eba6d173f96')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
