@@ -6,7 +6,7 @@
 
 pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer})
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=13.99.1+104+gcc93eb360
+pkgver=v14.99.2.r14.gd6dc500b7
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -14,16 +14,14 @@ license=(GPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
-             xmltoman gst-plugins-base-libs)
-_commit=cc93eb360afeafb9bc8ac72c0511894aaa647769  # tags/v13.99.1
-source=("git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=$_commit"
-        0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
-sha256sums=('SKIP'
-            '4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d')
+             xmltoman valgrind doxygen)
+_commit=d6dc500b78e7d537bd65b2244ee54c3eeb42d3ea  # tags/v14.99.2
+source=("git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd pulseaudio
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -31,17 +29,20 @@ prepare() {
 
   # Freeze version before patching
   ./git-version-gen doesnt-exist >.tarball-version
-
-  # https://bugs.archlinux.org/task/63755
-  git apply -3 ../0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch
 }
 
 build() {
-  arch-meson pulseaudio build \
-    -D gcov=false \
-    -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
+  local meson_options=(
+    -D stream-restore-clear-old-devices=true
+    -D pulsedsp-location='/usr/\$LIB/pulseaudio'
     -D udevrulesdir=/usr/lib/udev/rules.d
-  ninja -C build
+    -D bluez5-gstreamer=disabled
+    -D elogind=disabled
+    -D tcpwrap=disabled
+  )
+
+  arch-meson pulseaudio build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
@@ -63,8 +64,14 @@ package_pulseaudio-airplay() {
   provides=(pulseaudio)
   conflicts=(pulseaudio)
   depends=("libpulse-airplay=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
-           webrtc-audio-processing)
-  optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
+           webrtc-audio-processing libxtst)
+  optdepends=('pulseaudio-alsa: ALSA configuration (recommended)'
+              'pulseaudio-zeroconf: Zeroconf support'
+              'pulseaudio-lirc: IR (lirc) support'
+              'pulseaudio-jack: Jack support'
+              'pulseaudio-bluetooth: Bluetooth support'
+              'pulseaudio-equalizer: Graphical equalizer'
+              'pulseaudio-rtp: RTP and RAOP support')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
   install=pulseaudio.install
   replaces=('pulseaudio-xen<=9.0' 'pulseaudio-gconf<=11.1')
@@ -75,17 +82,9 @@ package_pulseaudio-airplay() {
   done
   pulsever=${pulsever%%-*}
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   cd "$pkgdir"
-
-  # Assumes that any volume adjustment is intended by the user, who can control
-  # each app's volume. Misbehaving clients can trigger earsplitting volume
-  # jumps. App volumes can diverge wildly and cause apps without their own
-  # volume control to fall below sink volume; a sink-only volume control will
-  # suddenly be unable to make such an app loud enough.
-  sed -e '/flat-volumes/iflat-volumes = no' \
-      -i etc/pulse/daemon.conf
 
   # Superseded by socket activation
   sed -e '/autospawn/iautospawn = no' \
@@ -102,7 +101,7 @@ package_pulseaudio-airplay() {
 
   rm -r etc/dbus-1
 
-### Split libpulse
+  # Split packages
   _pick libpulse etc/pulse/client.conf
   _pick libpulse usr/bin/pa{cat,ctl,dsp,mon,play,rec,record}
   _pick libpulse usr/lib/libpulse{,-simple,-mainloop-glib}.so*
@@ -111,9 +110,11 @@ package_pulseaudio-airplay() {
   _pick libpulse usr/include
   _pick libpulse usr/share/man/man1/pa{cat,ctl,dsp,mon,play,rec,record}.1
   _pick libpulse usr/share/man/man5/pulse-client.conf.5
+  _pick libpulse usr/share/bash-completion/completions/pa{cat,ctl,dsp,play,rec,record}
+  _pick libpulse usr/share/bash-completion/completions/pulseaudio
   _pick libpulse usr/share/vala
+  _pick libpulse usr/share/zsh
 
-### Split modules
   local moddir=usr/lib/pulse-$pulsever/modules
 
   _pick zeroconf $moddir/libavahi-wrap.so
@@ -131,13 +132,19 @@ package_pulseaudio-airplay() {
 
   _pick equalizer $moddir/module-equalizer-sink.so
   _pick equalizer usr/bin/qpaeq
+
+  _pick rtp $moddir/lib{rtp,raop}.so
+  _pick rtp $moddir/module-rtp-{send,recv}.so
+  _pick rtp $moddir/module-raop-sink.so
 }
 
 package_libpulse-airplay() {
+  provides=(libpulse)
   conflicts=(libpulse)
   pkgdesc="$pkgdesc (client library)"
-  depends=(dbus libasyncns libcap libxtst libsm libsndfile systemd)
-  provides=(libpulse libpulse{,-simple,-mainloop-glib}.so)
+  depends=(dbus libasyncns libcap libxcb libsm libsndfile systemd)
+  optdepends=('glib2: mainloop integration')
+  provides=(libpulse{,-simple,-mainloop-glib}.so)
   license=(LGPL)
   backup=(etc/pulse/client.conf)
 
@@ -187,6 +194,13 @@ package_pulseaudio-airplay-equalizer(){
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" python-{pyqt5,dbus,sip} fftw)
 
   mv equalizer/* "$pkgdir"
+}
+
+package_pulseaudio-airplay-rtp() {
+  pkgdesc="RTP and RAOP support for PulseAudio"
+  depends=("pulseaudio=$pkgver-$pkgrel")
+
+  mv rtp/* "$pkgdir"
 }
 
 # vim:set sw=2 et:
