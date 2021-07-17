@@ -31,7 +31,9 @@ build() {
         --enable-core \
         --enable-inet6 \
         --enable-ssl \
-        --with-libdirs=pcre-2.08
+        --enable-atcp \
+        --enable-gmcp \
+        --enable-option102
     make
 }
 
