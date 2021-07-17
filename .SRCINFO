@@ -1,6 +1,6 @@
 pkgbase = wg-manager-git
 	pkgdesc = A easy to use WireGuard dashboard and management tool
-	pkgver = r171.0aec91c
+	pkgver = r216.e70ba4b
 	pkgrel = 1
 	url = https://github.com/perara/wg-manager
 	arch = any
