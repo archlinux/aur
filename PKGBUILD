@@ -58,8 +58,8 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '318b890f0d422c573f285a33b6f74ce8446c7aa16677a2236250827defca66e5'
             'aebc3eaa0b4c96a2e6453cb8a9f123ac253254775b8928e2317777caa3867205'
+            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
