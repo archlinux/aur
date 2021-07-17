@@ -2,7 +2,7 @@
 
 pkgname=jdftx
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for joint density functional theory"
 arch=('x86_64')
 url="http://jdftx.org"
@@ -36,10 +36,13 @@ build() {
         -DEnableScaLAPACK=ON \
         -DEnableHDF5=ON \
         -DEnableLibXC=ON \
+        -DEnableMKL=OFF \
+        -DForceFFTW=ON \
         -DCompileNative=ON \
         -DLinkTimeOptimization=ON \
         -DEnableCUDA=$ACC \
         -DEnableCuSolver=$ACC \
+        -DCudaAwareMPI=$ACC \
         -DCUDA_NVCC_FLAGS="-O3 -ccbin /opt/cuda/bin"
   make
 }

@@ -1,7 +1,7 @@
 pkgbase = jdftx
 	pkgdesc = Software for joint density functional theory
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jdftx.org
 	arch = x86_64
 	license = GPL
@@ -17,4 +17,3 @@ pkgbase = jdftx
 	sha256sums = 5f65a09235927fe18b547734d3de5f623561ddef795321df088e224a737ea817
 
 pkgname = jdftx
-
