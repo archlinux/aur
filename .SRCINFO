@@ -1,6 +1,6 @@
 pkgbase = hashbrown-gui
 	pkgdesc = A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes
-	pkgver = 1.2.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/GeopJr/Hashbrown
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hashbrown-gui
 	depends = gtk3
 	provides = hashbrown-gui-git
 	conflicts = hashbrown-gui-git
-	source = hashbrown-gui-1.2.0.tar.gz::https://github.com/GeopJr/Hashbrown/archive/v1.2.0.tar.gz
+	source = hashbrown-gui-1.3.2.tar.gz::https://github.com/GeopJr/Hashbrown/archive/v1.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = hashbrown-gui

@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Contributor: GeopJr <evan@geopjr.dev>
+# Contributor: Evangelos Paterakis <evan@geopjr.dev>
 
 pkgname=hashbrown-gui
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
@@ -17,6 +17,7 @@ _source=Hashbrown
 sha256sums=('SKIP')
 
 check() {
+  cd "$_source-$pkgver"
   crystal spec
 }
 
@@ -26,9 +27,7 @@ build() {
 }
 
 package() {
-
-  install -Dm755 "$_source/bin/hashbrown" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "$_source/extra/Hashbrown.desktop" "$pkgdir/share/applications/dev.geopjr.Hashbrown.desktop"
-  install -Dm644 "$_source/extra/icons/logo.svg" "$pkgdir/share/icons/hicolor/scalable/apps/dev.geopjr.Hashbrown.svg"
-  gtk-update-icon-cache /usr/share/icons/hicolor
+  install -Dm755 "$_source-$pkgver/bin/hashbrown" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$_source-$pkgver/extra/Hashbrown.desktop" "$pkgdir/usr/share/applications/dev.geopjr.Hashbrown.desktop"
+  install -Dm644 "$_source-$pkgver/extra/icons/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.geopjr.Hashbrown.svg"
 }
