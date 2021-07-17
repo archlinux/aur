@@ -3,19 +3,17 @@
 
 _pkgname=libsamplerate
 pkgname=mingw-w64-libsamplerate
-pkgver=0.1.9
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Secret Rabbit Code - aka Sample Rate Converter for audio (mingw-w64)"
 arch=('any')
-url="http://www.mega-nerd.com/SRC/index.html"
+url="https://libsndfile.github.io/libsamplerate/index.html"
 license=('BSD')
-depends=('mingw-w64-libsndfile')
-makedepends=('mingw-w64-configure')
+depends=('mingw-w64-libsndfile' 'mingw-w64-opus')
+makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' '!staticlibs')
-source=(http://www.mega-nerd.com/SRC/libsamplerate-${pkgver}.tar.gz
-        no-examples-or-tests.patch)
-sha256sums=('0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1'
-            '6a0936d24874b5f7b0afdacf192a443c81a6bd9a94155deba6c7a4e844d8a41a')
+source=("https://github.com/libsndfile/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.tar.bz2")
+b2sums=('83540f3e75cfa79cbd166f075d22cab6a63e0e057b90ac6a3760c07196cac962df7d1ca26620a9033de046e0528bee3ded2b482e8629b1ae316844b5b31f3074')
 validpgpkeys=('73571E85C19F4281D8C97AA86CA41A7743B8D6C8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -30,15 +28,13 @@ prepare() {
       patch -p1 -i "$patch"
     fi
   done
-
-  autoreconf -fi
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
   for _arch in ${_architectures}; do
     mkdir build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    ${_arch}-cmake ..
     make
     popd
   done
