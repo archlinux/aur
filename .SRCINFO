@@ -10,6 +10,6 @@ pkgbase = xbyak-git
 	provides = xbyak
 	conflicts = xbyak
 	source = xbyak::git+https://github.com/herumi/xbyak.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = xbyak-git

@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -19,7 +19,9 @@ pkgver() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -S $_pkgname -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
 	cmake --build build
 }
 
