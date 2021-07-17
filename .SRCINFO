@@ -1,4 +1,4 @@
-pkgbase = brother-mfc-j5330dw-cups-bin
+pkgbase = brother-mfcj5330dw-cups-bin
 	pkgdesc = CUPS wrapper for Brother HL-L9200CDW(T) printer
 	pkgver = 1.0.1
 	pkgrel = 0
@@ -10,4 +10,4 @@ pkgbase = brother-mfc-j5330dw-cups-bin
 	source = https://download.brother.com/welcome/dlf103039/mfcj5330dwcupswrapper-1.0.1-0.i386.deb
 	sha256sums = 0afd6a86d97b552ba3a27e1db10752e2220d9d9c93063ba9439414c520a89ff8
 
-pkgname = brother-mfc-j5330dw-cups-bin
+pkgname = brother-mfcj5330dw-cups-bin
