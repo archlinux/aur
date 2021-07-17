@@ -1,7 +1,7 @@
 pkgbase = sirius
 	pkgdesc = Domain specific library for electronic structure calculations
 	pkgver = 7.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electronic-structure/SIRIUS
 	arch = x86_64
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = sirius
 	depends = spglib
 	depends = elpa
 	depends = spfft
+	depends = spla
 	depends = gsl
 	depends = hdf5
 	optdepends = magma: Linear algebra on GPU
