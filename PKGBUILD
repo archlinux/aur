@@ -15,6 +15,7 @@ python
 python-ocp
 python-ezdxf
 python-typing_extensions
+nlopt
 )
 checkdepends=(
 python-pytest

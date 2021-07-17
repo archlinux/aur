@@ -12,6 +12,7 @@ pkgbase = python-cadquery-git
 	depends = python-ocp
 	depends = python-ezdxf
 	depends = python-typing_extensions
+	depends = nlopt
 	provides = python-cadquery
 	conflicts = python-cadquery
 	source = git+https://github.com/CadQuery/cadquery.git
