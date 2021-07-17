@@ -2,7 +2,7 @@
 pkgname=zmninja
 pkgver=1.6.9
 _pkgver=1.6.009
-pkgrel=2
+pkgrel=1
 pkgdesc="High performance, cross platform ionic app for Home/Commerical Security Surveillance using ZoneMinder or other NVRs"
 arch=(x86_64)
 options=(!strip)
