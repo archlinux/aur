@@ -1,10 +1,11 @@
 pkgbase = cutecom
 	pkgdesc = A graphical serial terminal
 	pkgver = 0.51.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/cutecom/cutecom
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	depends = qt5-base
@@ -15,4 +16,3 @@ pkgbase = cutecom
 	sha256sums = 9ac6861c60b7e68cc0daa58ff745fffbf5a99214b584d00e54574db41e4e7eca
 
 pkgname = cutecom
-

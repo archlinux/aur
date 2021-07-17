@@ -3,9 +3,9 @@
 
 pkgname=cutecom
 pkgver=0.51.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical serial terminal"
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 url="https://gitlab.com/cutecom/cutecom"
 license=(GPL3)
 depends=(qt5-base qt5-serialport)
