@@ -2,7 +2,7 @@
 # Contributor: Hugo Lobo
 
 pkgname=binkplayer-bin
-pkgver=2021.05
+pkgver=2021.07
 pkgrel=1
 pkgdesc="Bink Video Player"
 url="http://www.radgametools.com/bnkmain.htm"
@@ -12,7 +12,7 @@ depends=('libgl' 'openal')
 source=("BinkLinuxPlayer-$pkgver.7z::http://www.radgametools.com/down/Bink/BinkLinuxPlayer.7z"
         "x-binkvideo.xml"
         "binkplayer.desktop")
-sha256sums=('19683c11b07fa6c1d70779d152ac1c78c1f3788c129465e65647c340220b9cde'
+sha256sums=('bb9397c9b8d03e8a53621bad7295d73a919938c19cd519712c6aec527abf1762'
             '880fcb3a4435750a2990af7b38dc26d81170487ae3f8ecb526aad5a17673a454'
             '1e3ac358afeff5d0f87ae4430d4d5ec21b2d45f9ac6ae6340d14b1e4280c18e6')
 # License is unobtainable from their website - only custom contracts/license
