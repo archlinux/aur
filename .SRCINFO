@@ -1,7 +1,7 @@
 pkgbase = motogt
 	pkgdesc = 2D top-viewed game where you drive a MotoGP bike
 	pkgver = 20110505
-	pkgrel = 4
+	pkgrel = 5
 	url = http://motogt.sourceforge.net/
 	arch = i686
 	arch = x86_64

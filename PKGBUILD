@@ -3,7 +3,7 @@
 
 pkgname=motogt
 pkgver=20110505
-pkgrel=4
+pkgrel=5
 pkgdesc="2D top-viewed game where you drive a MotoGP bike"
 arch=('i686' 'x86_64')
 url="http://motogt.sourceforge.net/"
@@ -24,7 +24,7 @@ md5sums=('5fa3a8ba52ea75bc46f011906ddc6747'
 build() {
   cd $srcdir
 
-  gunzip -c ../cumulative.patch.gz | patch -p1
+  gunzip -c cumulative.patch.gz | patch -p1
 
   # Few more patches (Add glut, OpenGL and use sfml1.6 libraries in Makefile.lnx)
   cd MotoGT
