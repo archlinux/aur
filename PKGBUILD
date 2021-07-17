@@ -4,7 +4,7 @@
 _pkgname=xorgproto
 pkgname=$_pkgname-git
 pkgver=2021.4.99.2.1.r2708.ga0ed054
-pkgrel=1
+pkgrel=2
 pkgdesc='combined X.Org X11 Protocol headers (git version)'
 arch=('any')
 url="https://xorg.freedesktop.org/"
@@ -16,8 +16,8 @@ makedepends=(
 )
 checkdepends=('python-libevdev')
 provides=('xorgproto')
-conflicts=(${provides[@]})
-source=("$pkgname::git://anongit.freedesktop.org/xorg/proto/$_pkgname")
+conflicts=('xorgproto')
+source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/proto/xorgproto.git")
 sha512sums=('SKIP')
 
 pkgver() {
