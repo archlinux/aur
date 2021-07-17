@@ -76,7 +76,7 @@ build() {
   cd "${_srcname}"
 
   #Force zenv2 architecture optimisation.
-  export CFLAGS="-march=znver3 -mtune=znver2 -O2 -pipe -fstack-protector-strong"
+  export CFLAGS="-march=znver3 -mtune=znver3 -O2 -pipe -fstack-protector-strong"
   export CXXFLAGS="${CFLAGS}"
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
