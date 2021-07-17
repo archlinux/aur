@@ -1,7 +1,7 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icingaweb2-module-grafana
-pkgver=1.3.6
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Grafana module for Icinga Web 2 (supports InfluxDB & Graphite)'
 license=('GPL')
@@ -9,8 +9,16 @@ arch=('any')
 depends=('icingaweb2')
 optdepends=('grafana: rendering of graphs')
 url='https://github.com/Mikesch-mp/icingaweb2-module-grafana'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Mikesch-mp/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('41bcedc6ee2b5b83695e7e16260ad7b4b633a38f181ab985ac4ab580531e9103')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Mikesch-mp/$pkgname/archive/v$pkgver.tar.gz"
+        'https://github.com/Mikesch-mp/icingaweb2-module-grafana/commit/d59432b3a414b01df54b5dfa22b1c158afd73424.patch')
+sha256sums=('f153c10d71ceeb64144fde3162921524ffb20678018290e01682e4c0a3e10a25'
+            '3d7c73e7eb4962e0926162c43c995672addda795f2f3e203ab5e4830733c05eb')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	patch -p1 -i "$srcdir/d59432b3a414b01df54b5dfa22b1c158afd73424.patch"
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
