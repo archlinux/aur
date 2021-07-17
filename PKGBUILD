@@ -2,7 +2,7 @@
 # Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=plugin-autenticacao-gov-pt
-pkgver=2.0.60
+pkgver=2.0.63
 pkgrel=1
 pkgdesc="O plugin Autenticação.Gov (anteriormente designado por aplicação Autenticação.gov.pt) permite realizar o procedimento de autenticação com o Cartão de Cidadão sem necessidade de efetuar a instalação de qualquer componente no navegador"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime' 'pcsclite' 'pcsc-tools' 'ccid')
 source=("plugin-autenticacao-gov-pt.install" "https://aplicacoes.autenticacao.gov.pt/plugin/plugin-autenticacao-gov.deb")
 
 sha512sums=('b9e94b93c02bb483495438e085140743e918144de5d9b295dedc699e3e5c2603c78a3d8ff0437fc68be5013c99cc8b0e7436ade2bd077a5af1279b6ed0bf8374'
-            'ab33e15c7440d97d71869ff96896258038ea1167e6fb31dda3a34f1f5208befd3965d2a0983362c4a3f84c34fd181c1e8016889fc6fe040450a67cc4b5b953e0')
+            'e36124b870bd1308454b65ac205067a24415c4295b8e2899a37f59556115026e14ac456956c914384e31be10db5cc8814c661bbc15b9bb99bc390397f1411d94')
 
 install='plugin-autenticacao-gov-pt.install'
 
