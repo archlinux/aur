@@ -2,7 +2,7 @@
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
-pkgver=1.24.6.r355.gd5e9de2b
+pkgver=1.24.6.r357.g9201730f
 pkgrel=1
 pkgdesc='A secure and free password manager for all of your devices. (development version)'
 arch=('x86_64')
@@ -35,7 +35,7 @@ prepare() {
 	git submodule update
 	patch -p1 package.json "${srcdir}/package.json.patch"
 	# Patch build to make it work with system electron
-	SYSTEM_ELECTRON_VERSION=$(pacman -Q electron11 | cut -d' ' -f2 | cut -d'-' -f1)
+	SYSTEM_ELECTRON_VERSION=$(electron11 -v | sed 's/v//g')
 	jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION \
 	   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron11"' \
 	   > package.json.patched

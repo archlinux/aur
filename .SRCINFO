@@ -1,6 +1,6 @@
 pkgbase = bitwarden-git
 	pkgdesc = A secure and free password manager for all of your devices. (development version)
-	pkgver = 1.24.6.r355.gd5e9de2b
+	pkgver = 1.24.6.r357.g9201730f
 	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
