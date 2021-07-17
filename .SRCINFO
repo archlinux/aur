@@ -1,0 +1,12 @@
+pkgbase = base16-alacritty-git
+	pkgdesc = Base16 templates for the alacritty terminal emulator
+	pkgver = r19.914727e
+	pkgrel = 1
+	url = https://github.com/aarowill/base16-alacritty
+	arch = any
+	license = MIT
+	makedepends = git
+	source = base16-alacritty-git::git+https://github.com/aarowill/base16-alacritty
+	md5sums = SKIP
+
+pkgname = base16-alacritty-git
