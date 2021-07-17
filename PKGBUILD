@@ -25,9 +25,9 @@ build() {
     _arch=armv7
   elif [[ "$CARCH" == "i686" ]]; then
     _arch=x86-32
-  elif grep -q bmi2 /proc/cpuinfo; then
+  elif grep -wq bmi2 /proc/cpuinfo; then
     _arch=x86-64-bmi2
-  elif grep -q popcnt /proc/cpuinfo; then
+  elif grep -w popcnt /proc/cpuinfo | grep -wqv cr8_legacy; then
     _arch=x86-64-modern
   else
     _arch=x86-64
