@@ -1,5 +1,6 @@
-fzpac/
-*.pkg.tar.zst
-.BUILDINFO
-.MTREE
-.PKGINFO
+!.gitignore
+!PKGBUILD
+!*.install
+!.SRCINFO
+!*.pkg.tar.zst
+*
