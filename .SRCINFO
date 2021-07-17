@@ -1,0 +1,13 @@
+pkgbase = qtcreator-template-dtk
+	pkgdesc = QtCreator Template for DTK
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/qtcreator-template-dtk
+	arch = x86_64
+	license = GPL3
+	depends = qtcreator
+	depends = dtkwidget
+	source = https://github.com/linuxdeepin/qtcreator-template-dtk/archive/1.1.0.tar.gz
+	sha512sums = e79745ac57dc7290c3aed53c9925124be1d60619b18629d6e52d67a5ebf2b89937275f36225de3aa6c20f8fc82ef84a4c81ef24650ea36d5a2a1bd882508847c
+
+pkgname = qtcreator-template-dtk
