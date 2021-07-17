@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=hck
-pkgver=0.4.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='A sharp cut(1) clone'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Unlicense' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('6e4ebb72e3ce5c09abf2422a9c32fa2b60b4542611f609a6797d6de3142a517332d49af2756791cf346a5b5e017e9c4994171ae5ebc912cef399409fe458ad25')
+b2sums=('4fced3fd99f2eca6226bfdb21eb90e29f57e0b21c7fbf40b55a83f40e37275cbfad92021e07074ad15ccd993a3d2b696cd785bfadd7b61769694a0892bbcd0cd')
 
 build() {
 	cd "$pkgname-$pkgver"
