@@ -9,7 +9,7 @@
 
 pkgname=aseprite-skia-bin
 pkgver=1.2.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url='http://www.aseprite.org/'
@@ -40,7 +40,6 @@ build() {
   mkdir --parents --verbose build && cd build
 
   cmake \
-    -DUSE_SHARED_CMARK=ON \
     -DUSE_SHARED_CURL=ON \
     -DUSE_SHARED_JPEGLIB=ON \
     -DUSE_SHARED_GIFLIB=ON \
