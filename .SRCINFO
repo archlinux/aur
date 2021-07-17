@@ -14,10 +14,8 @@ pkgbase = trac
 	optdepends = python2-pygments: Syntax highlighting
 	optdepends = python2-docutils: reStructuredText support
 	source = https://download.edgewall.org/trac/Trac-1.4.2.tar.gz
-	source = license.txt
 	source = tracd.service
 	sha256sums = 42372fcd9f2ac46264656287fe6edb8230f59b44e991ee098b399f1bb475ae8f
-	sha256sums = a0936aa2fab3714eb6a3e8ff64b730576d8a5f81340a0601f006c847761607c4
 	sha256sums = 3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42
 
 pkgname = trac

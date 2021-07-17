@@ -15,10 +15,8 @@ optdepends=('python2-psycopg2: PostgreSQL database support'
             'python2-docutils: reStructuredText support')
 install=trac.install
 source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz
-        license.txt
         tracd.service)
 sha256sums=('42372fcd9f2ac46264656287fe6edb8230f59b44e991ee098b399f1bb475ae8f'
-            'a0936aa2fab3714eb6a3e8ff64b730576d8a5f81340a0601f006c847761607c4'
             '3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42')
 
 prepare() {
@@ -34,6 +32,6 @@ prepare() {
 package() {
   cd "$srcdir"/Trac-$pkgver
   python2 setup.py install --prefix=/usr --root="$pkgdir"
-  install -D -m644 "$srcdir"/license.txt "$pkgdir"/usr/share/licenses/trac/license.txt
+  install -D -m644 COPYING "$pkgdir"/usr/share/licenses/trac/COPYING
   install -Dm0644 "$srcdir"/tracd.service "$pkgdir"/usr/lib/systemd/system/tracd.service
 }
