@@ -1,0 +1,13 @@
+pkgbase = brother-mfcj5330dw-lpr-bin
+	pkgdesc = LPR driver for Brother MFC-J5330DW printer
+	pkgver = 1.0.1
+	pkgrel = 0
+	url = https://support.brother.com/g/b/downloadend.aspx?c=fr&lang=fr&prod=mfcj5330dw_us_eu_as&os=128&dlid=dlf103015_000&flang=4&type3=559
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103015/mfcj5330dwlpr-1.0.1-0.i386.deb
+	sha256sums = 59bd7f5721228c09d58dadef912d8edb821d3cd836cd98ced23ea56f1377b4c4
+
+pkgname = brother-mfcj5330dw-lpr-bin
