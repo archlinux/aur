@@ -8,7 +8,6 @@ pkgbase = gnome-obfuscate-git
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
-	makedepends = cmake
 	makedepends = rust
 	depends = libadwaita
 	provides = gnome-obfuscate
