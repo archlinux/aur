@@ -1,0 +1,13 @@
+pkgbase = daze
+	pkgdesc = A declarative langauge for building websites.
+	pkgver = v0.1.1a
+	pkgrel = 2
+	url = https://github.com/JTechnologies/Daze/
+	arch = any
+	license = MIT
+	depends = python>3
+	noextract = daze
+	source = daze
+	md5sums = 7d5c63405b44505f17ac7a676fc67b38
+
+pkgname = daze
