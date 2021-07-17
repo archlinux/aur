@@ -8,7 +8,7 @@
 
 _pack=control
 pkgname=octave-$_pack
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based on the proven SLICOT Library"
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('7ed3dc0873c6b1e6ab5b827036ed3dd2bee6058e011c8ea31e5fe017a98b7afa')
+sha256sums=('7c472dff5fe558cc32bfe93968f6245a85f1fc7ceb94af69fb6e93d1e35fcd6e')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
