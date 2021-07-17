@@ -1,4 +1,4 @@
-# Maintainer:  Al S < tei8ho.aur.al@ila5.info>
+# Maintainer:  Al S <tei8ho.aur.al@ila5.info>
 pkgname=imdone-bin
 _pkgname=imdone
 pkgver=1.17.6
@@ -16,7 +16,7 @@ options=()
 source=("https://imdone.io/downloads/${_pkgname}-${pkgver}.deb"
         'https://imdone.io/eula')
 sha512sums=('2d336846f8d9f98f8420af61e60030b1d30eabbbbbe9fe44d57b04e41760d7b36dba46d79ece59b9108debe7c4f4caa651a06b2eec6a056740a8ea11973fc42d'
-            'SKIP')
+            'e38a16c3d87dfdc3bdf2b09071a85d6e9cde53e5b1a7ef5ac7a9127c38164c5f3dd473bae7596cdb08a6566db36b6297a3d404118110303e5da3c4d6d8e1467b')
 package() {
   install -Dm644 eula "${pkgdir}/usr/share/licenses/${_pkgname}/eula.html"
   bsdtar -xf data.tar.xz -C "$pkgdir/"
