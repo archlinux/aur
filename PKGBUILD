@@ -2,7 +2,7 @@
 
 pkgname=choria-io
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Go based server to host Choria agents, networks, federations and discovery'
 arch=('x86_64')
 url='https://choria.io'
@@ -44,7 +44,7 @@ build() {
 
   go generate -v
 
-  go build -o "binary/${pkgname}-${pkgver}" -ldflags "-X 'github.com/choria-io/go-choria/build.Version=${pkgver}' -X 'github.com/choria-io/go-choria/build.SHA=02bdef23185b843931d9c92e054de8dc534d157a' -X 'github.com/choria-io/go-choria/build.BuildDate=$(date '+%F %T %z')' -X 'github.com/choria-io/go-choria/build.ProvisionJWTFile=/etc/choria/provisioning.jwt'"
+  go build -o "binary/${pkgname}-${pkgver}" -ldflags "-X 'github.com/choria-io/go-choria/build.Version=${pkgver}' -X 'github.com/choria-io/go-choria/build.SHA=02bdef23185b843931d9c92e054de8dc534d157a' -X 'github.com/choria-io/go-choria/build.BuildDate=$(date -u '+%F %T %z' -d @$SOURCE_DATE_EPOCH)' -X 'github.com/choria-io/go-choria/build.ProvisionJWTFile=/etc/choria/provisioning.jwt' -s -w -buildid="
 }
 
 check() {
