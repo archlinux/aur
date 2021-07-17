@@ -11,6 +11,7 @@ pkgbase = tf5
 	license = GPL3
 	depends = openssl
 	depends = pcre
+	replaces = tinyfugue
 	source = tf5-5.0b8.tar.gz::https://sourceforge.net/projects/tinyfugue/files/tinyfugue/5.0%20beta%208/tf-50b8.tar.gz/download
 	sha1sums = 37bb70bfb7b44d36c28606c6bd45e435502fb4b4
 	b2sums = 3218878cdc4a2049fd7f2a8e0426ec589bf304e0bb24ad557e5bea39cbaba76e6a1c52f064860e499623abb51bc9f14a0c8388b927fd15a66a7945fe5eaccf84

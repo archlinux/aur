@@ -10,6 +10,8 @@ license=('GPL3')
 
 depends=('openssl' 'pcre')
 
+replaces=('tinyfugue')
+
 source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/tinyfugue/files/tinyfugue/5.0%20beta%208/tf-50b8.tar.gz/download")
 
 sha1sums=('37bb70bfb7b44d36c28606c6bd45e435502fb4b4')
