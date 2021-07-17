@@ -1,9 +1,9 @@
 # Maintainer: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-beta-bin
-pkgver=10.17.6
+pkgver=10.7.6
 buildver=2330
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
 url="https://evernote.com/earlyaccess"
