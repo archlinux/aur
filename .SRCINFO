@@ -1,12 +1,11 @@
 pkgbase = ttf-gentium-basic
 	pkgdesc = Fonts based on the original Gentium design with additional weights
-	pkgver = 1.1
-	pkgrel = 5
-	url = https://scripts.sil.org/Gentium_basic
+	pkgver = 1.102
+	pkgrel = 1
+	url = https://software.sil.org/gentium/download/previous-versions/
 	arch = any
 	license = OFL
-	source = ttf-gentium-basic-1.1.zip::https://scripts.sil.org/cms/scripts/render_download.php?site_id=nrsi&format=file&media_id=GentiumBasic_110&filename=GentiumBasic_110.zip
-	sha256sums = 7f03ab68349253e520a3e716069bd8d628381f7b8001b3d984e85ac4da75a035
+	source = https://software.sil.org/downloads/r/gentium/GentiumBasic_1102.zip
+	sha256sums = 2f1a2c5491d7305dffd3520c6375d2f3e14931ee35c6d8ae1e8f098bf1a7b3cc
 
 pkgname = ttf-gentium-basic
-

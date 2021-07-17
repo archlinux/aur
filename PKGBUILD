@@ -1,19 +1,19 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
-_pkgname=gentium-basic
-pkgname=ttf-$_pkgname
-pkgver=1.1
-_pkgver=110
-pkgrel=5
+pkgname=ttf-gentium-basic
+pkgver=1.102
+pkgrel=1
 pkgdesc='Fonts based on the original Gentium design with additional weights'
-arch=('any')
-url="https://scripts.sil.org/Gentium_basic"
-license=('OFL')
-source=("${pkgname}-${pkgver}.zip::https://scripts.sil.org/cms/scripts/render_download.php?site_id=nrsi&format=file&media_id=GentiumBasic_${_pkgver}&filename=GentiumBasic_${_pkgver}.zip")
-sha256sums=('7f03ab68349253e520a3e716069bd8d628381f7b8001b3d984e85ac4da75a035')
+arch=(any)
+url="https://software.sil.org/gentium/download/previous-versions/"
+license=(OFL)
+_distdir="GentiumBasic_${pkgver/./}"
+source=("https://software.sil.org/downloads/r/gentium/$_distdir.zip")
+sha256sums=('2f1a2c5491d7305dffd3520c6375d2f3e14931ee35c6d8ae1e8f098bf1a7b3cc')
+
 package() {
-  cd "Gentium Basic $pkgver"
+  cd "$_distdir"
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
