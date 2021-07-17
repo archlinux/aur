@@ -4,7 +4,7 @@
 
 pkgname=arx-libertatis
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
@@ -62,6 +62,10 @@ build() {
   #   checks and generates better crash reports.
 
 
+  # Fixes a crash (fixed upstream in https://arx.vg/9805464 for the next release).
+  CFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+  CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
+  
   cmake . "${_cmakeargs[@]}"
   make
 }
