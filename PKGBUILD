@@ -5,23 +5,36 @@
 
 pkgname=github-desktop
 pkgver=2.9.0
-gitname="release-$pkgver-linux2"
-pkgrel=1
+_gitname="release-$pkgver-linux3"
+pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
-arch=('x86_64')
+arch=(x86_64)
 url='https://desktop.github.com'
-license=('MIT')
-depends=('curl' 'gconf' 'git' 'gnome-keyring' 'libsecret' 'libxss' 'nspr' 'nss' 'unzip')
-optdepends=('github-cli: CLI interface for GitHub' 'hub: CLI interface for GitHub')
-makedepends=('nodejs>=10.16.0' 'npm' 'python2' 'unzip' 'yarn' 'xorg-server-xvfb')
-DLAGENTS=("http::/usr/bin/git clone --branch $gitname --single-branch %u")
-source=("git+https://github.com/shiftkey/desktop.git#tag=$gitname"
+license=(MIT)
+depends=(curl
+         gconf
+         git
+         gnome-keyring
+         libsecret
+         libxss
+         nspr
+         nss
+         unzip)
+optdepends=('github-cli: CLI interface for GitHub'
+            'hub: CLI interface for GitHub')
+makedepends=('nodejs>=10.16.0'
+             npm
+             python2
+             xorg-server-xvfb
+             yarn)
+DLAGENTS=("http::/usr/bin/git clone --branch $_gitname --single-branch %u")
+source=("$pkgname::git+https://github.com/shiftkey/desktop.git#tag=$_gitname"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
 
 build() {
-    cd desktop
+    cd "$pkgname"
     export DISPLAY=':99.0'
     Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
     yarn install
@@ -29,7 +42,7 @@ build() {
 }
 
 package() {
-    cd desktop
+    cd "$pkgname"
     install -d "$pkgdir/opt/$pkgname"
     cp -r --preserve=mode dist/github-desktop-linux-x64/* "$pkgdir/opt/$pkgname/"
     install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
