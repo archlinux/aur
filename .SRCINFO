@@ -1,6 +1,6 @@
 pkgbase = autofdo-git
 	pkgdesc = a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM
-	pkgver = v0.1.r88.492384d
+	pkgver = 0.1.r168.gd8a2738
 	pkgrel = 1
 	url = https://github.com/google/autofdo
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = autofdo-git
 	depends = libelf
 	depends = openssl
 	optdepends = llvm: for LLVM support
-	provides = autofdo
+	provides = autofdo=0.1
 	conflicts = autofdo
 	source = autofdo::git+https://github.com/google/autofdo
 	source = abseil-cpp::git+https://github.com/abseil/abseil-cpp

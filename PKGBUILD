@@ -4,7 +4,7 @@
 
 _pkgname=autofdo
 pkgname=$_pkgname-git
-pkgver=v0.1.r88.492384d
+pkgver=0.1.r168.gd8a2738
 pkgrel=1
 pkgdesc="a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('google-glog' 'protobuf') # common dependencies
 depends+=('libelf' 'openssl')      # required by GCC variant
 makedepends=('cmake' 'ninja' 'git' 'llvm' 'clang')
 optdepends=('llvm: for LLVM support')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 source=("$_pkgname::git+$url"
         "abseil-cpp::git+https://github.com/abseil/abseil-cpp"
@@ -37,8 +37,7 @@ prepare() {
 }
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git -C "$srcdir/${_pkgname}" describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
