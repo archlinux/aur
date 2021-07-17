@@ -1,7 +1,7 @@
 # Maintainer: Paul Delafosse <paul.delafosse@protonmail.com>
 pkgname=cocogitto-bin
 _pkgname=cocogitto
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='A set of cli tools for the conventional commit and semver specifications'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -18,6 +18,6 @@ package() {
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-md5sums_x86_64=('1720d220ca6b0d094f9f541b04f9eb02')
-md5sums_armv7h=('57639e9013efc549452f1a7a11257912')
-md5sums_aarch64=('720c01cfd03c941e4300ebd6da6fe2ec')
+md5sums_x86_64=('8e291dfaefdbee9e1155dc763ef2d271')
+md5sums_armv7h=('0227118624c06778b03e66e18b6a6be3')
+md5sums_aarch64=('fab9951beace0112cea33dbea5b8d361')
