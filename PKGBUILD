@@ -2,14 +2,14 @@
 
 _pkgname="vopono"
 pkgname="vopono-git"
-pkgver=r111.e3ed55a
+pkgver=r190.66bdbf4
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
-arch=('x86_64')
+arch=('any')
 url='https://github.com/jamesmcm/vopono'
 license=('GPL3')
 makedepends=('git' 'rust')
-optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard connections' 'shadowsocks-libev: for Shadowsocks support (Mullvad)')
+optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard connections' 'shadowsocks-libev: for Shadowsocks support (Mullvad)' 'openfortivpn: for FortiClient VPN connections')
 source=("git+https://github.com/jamesmcm/${_pkgname}")
 provides=('vopono')
 conflicts=('vopono')
