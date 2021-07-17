@@ -1,6 +1,6 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
-	pkgver = 20210512
+	pkgver = 20210627
 	pkgrel = 1
 	url = http://www.geeqie.org/
 	arch = x86_64
@@ -30,8 +30,7 @@ pkgbase = geeqie-git
 	optdepends = imagemagick: command-line tools for various (plugin) operations
 	provides = geeqie
 	conflicts = geeqie
-	source = git+git://www.geeqie.org/geeqie.git
+	source = git+git://git.geeqie.org/geeqie.git
 	sha256sums = SKIP
 
 pkgname = geeqie-git
-
