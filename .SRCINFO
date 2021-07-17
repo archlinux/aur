@@ -1,6 +1,6 @@
 pkgbase = audiotube-git
 	pkgdesc = Client for YouTube Music
-	pkgver = v0.1.r56.g0420a69
+	pkgver = v0.1.r79.g068a5b7
 	pkgrel = 1
 	url = https://invent.kde.org/jbbgameich/audiotube
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = audiotube-git
 	depends = youtube-dl
 	depends = gst-plugins-good
 	depends = qt5-imageformats
+	depends = kcrash
 	provides = audiotube
 	conflicts = audiotube
 	source = git+https://invent.kde.org/jbbgameich/audiotube.git
