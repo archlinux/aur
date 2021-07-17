@@ -6,6 +6,7 @@ pkgbase = armcord-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	provides = armcord
 	options = !strip
 	sha256sums = 022c6944ee1111e657b8d9899a2c7fd92f6dc42a34e6f08e4aa54a0f844a7c6f
 	source_x86_64 = https://github.com/smartfrigde/armcord/releases/download/v2.5.0/ArmCord-2.5.0.tar.gz
