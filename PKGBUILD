@@ -1,3 +1,4 @@
+#!/bin/bash
 # Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
 # Maintainer: Maël Kerbiriou <m431.kerbiriou@gmail.com>
 
