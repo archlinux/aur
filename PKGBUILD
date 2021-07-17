@@ -1,12 +1,12 @@
 # Maintainer: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-beta-bin
-pkgver=10.7.6
+pkgver=10.17.6
 buildver=2330
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
-url="https://evernote.com/intl/ar/b1433t1422"
+url="https://evernote.com/earlyaccess"
 license=('custom')
 provides=('evernote')
 depends=(
@@ -14,7 +14,7 @@ depends=(
     'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret'
 )
 optdepends=()
-conflicts=()
+conflicts=('evernote-for-linux-bin')
 replaces=()
 install=$pkgname.install
 source=(
