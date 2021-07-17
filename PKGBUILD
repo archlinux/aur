@@ -69,7 +69,7 @@ _subarch=36
 
 pkgbase=linux-ck-uksm
 pkgver=5.12.17
-pkgrel=1
+pkgrel=2
 _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
@@ -99,10 +99,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,s
         "0010-btrfs.patch::${_patches_url}/btrfs-patches-v14/0001-btrfs-patches.patch"
         "0011-block.patch::${_patches_url}/block-patches-v7/0001-block-patches.patch"
         "0012-bfq.patch::${_patches_url}/bfq-patches-v15/0001-bfq-patches.patch"
-        "0013-futex2.patch::${_patches_url}/futex2-stable-patches-v7/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "0014-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
-        "0015-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
-        "0016-initramfs.patch::${_patches_url}/initramfs-patches/0001-initramfs-patches.patch"
+        "0013-futex.patch::${_patches_url}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
+        "0014-futex2.patch::${_patches_url}/futex2-stable-patches-v7/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "0015-lru.patch::${_patches_url}/lru-patches-v4/0001-lru-patches.patch"
+        "0016-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
+        "0017-initramfs.patch::${_patches_url}/initramfs-patches/0001-initramfs-patches.patch"
 )
 
 validpgpkeys=(
@@ -127,6 +128,7 @@ b2sums=('0eede859861f88a8d6384517982472580aeb6c38eeb037188571d58b6b83d4fbe713091
         '5cb420d8889ed8d254b811a5a85f1267476cd8b18cff686fc68feb08fcb656475ed622977938cba98b32779610ab9d145dcaf59ce1b726bbd5644cba3d01e36a'
         'f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc'
         '9aba508592818a4b4f000fc1bd471ec74687c8f0f972f330e851bd2364eaf30cff4d5012f843625ca025bc2478a2c76e0d082d43f33358ab18ce829fab4f0c2b'
+        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
         '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
         '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1'
@@ -229,7 +231,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j40 all
+  make all
 }
 
 _package() {
