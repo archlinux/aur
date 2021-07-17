@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DEADASCEND
+Comment=A 2D point'n'click-like adventure game written in Qt/QML and Javascript
+Exec=deadascend
+Icon=deadascend
+Terminal=false
+StartupNotify=false
+Categories=Game;
