@@ -7,6 +7,7 @@ pkgbase = cmuscoverssdl-git
 	license = custom:Creative Commons Legal Code
 	makedepends = git
 	depends = sdl2_image
+	depends = ffmpeg
 	provides = cmusCoverViewer
 	source = cmuscoverssdl-git::git+https://github.com/MyLegGuy/cmusCoversSDL.git
 	md5sums = SKIP
