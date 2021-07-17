@@ -31,7 +31,7 @@ source=($_srcurl
 sha256sums=('SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
- 
+
 pkgver() {
   cd "${_pkgbase}"
   # cutting off 'xorg.server.' prefix that presents in the git tag
@@ -211,5 +211,5 @@ package_xorg-server-devel-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  find fakeinstall -depth -print0 | xargs -0 rmdir
+  #find fakeinstall -depth -print0 | xargs -0 rmdir
 }
