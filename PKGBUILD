@@ -10,7 +10,7 @@ url=https://github.com/OSInside/$_pkgname
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("bf6e2d20459ebb8a0d0659469dc4f20f7327becbf4691b3a8cc27e70d5f681b2")
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
-depends=('python-requests' 'python-yaml' 'python-xattr' 'python-lxml' 'python-docopt')
+depends=('python-requests' 'python-yaml' 'python-pyxattr' 'python-lxml' 'python-docopt')
 
 build(){
   cd "$srcdir/$_pkgname-$pkgver"

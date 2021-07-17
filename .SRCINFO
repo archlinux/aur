@@ -1,4 +1,5 @@
 pkgbase = python-kiwi
+	pkgdesc = KIWI—Appliance Builder Next Generation
 	pkgver = 9.23.43
 	pkgrel = 1
 	url = https://github.com/OSInside/kiwi
@@ -9,7 +10,7 @@ pkgbase = python-kiwi
 	makedepends = python-sphinx_rtd_theme
 	depends = python-requests
 	depends = python-yaml
-	depends = python-xattr
+	depends = python-pyxattr
 	depends = python-lxml
 	depends = python-docopt
 	source = kiwi-9.23.43.tar.gz::https://github.com/OSInside/kiwi/archive/refs/tags/v9.23.43.tar.gz
