@@ -3,19 +3,19 @@
 
 pkgname=icingaweb2-git
 _pkgname=icingaweb2
-pkgver=2.8.0.r23.ge5af1684a
+pkgver=2.8.0.r497.g22bd9e501
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
 arch=('any')
-depends=('php')
+depends=('php' 'icinga-php-library>=0.6.0' 'icinga-php-thirdparty>=0.10.0')
 makedepends=('git')
 optdepends=('php-gd: export data to PDF'
             'php-intl: support for internationalization'
             'php-pgsql: for PostgreSQL backend')
 provides=('icingaweb2')
 conflicts=('icingaweb2')
-url="http://www.icinga.org"
+url="http://www.icinga.com"
 source=("git+https://github.com/Icinga/icingaweb2.git")
 install='icingaweb2-git.install'
 sha256sums=('SKIP')
@@ -34,7 +34,8 @@ package() {
   mkdir -p "$pkgdir/usr/share/webapps/icingaweb2"
   mkdir -p "$pkgdir/var/log/icingaweb2"
 
-  cp -r application doc library modules public bin "$pkgdir/usr/share/webapps/icingaweb2"
+  cp -r application bin doc library modules public "$pkgdir/usr/share/webapps/icingaweb2"
+  cp -r --parents etc/schema "$pkgdir/usr/share/webapps/icingaweb2"
   ln -s /usr/share/webapps/icingaweb2/bin/icingacli "$pkgdir/usr/bin/icingacli"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/icingaweb2/LICENSE"
