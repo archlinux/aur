@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.26.74
+	pkgver = 1.26.77
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -28,27 +28,27 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = sccache: For faster builds
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.26.74
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.26.77
 	source = chromium::git+https://github.com/chromium/chromium.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://github.com/brave/brave-core.git#tag=v1.26.74
+	source = git+https://github.com/brave/brave-core.git#tag=v1.26.77
 	source = git+https://github.com/brave/adblock-rust.git
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-7.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
 	source = chromium-no-history.patch
-	source = fix-crash-in-ThemeService.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/fix-crash-in-ThemeService.patch
-	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/unbundle-use-char16_t-as-UCHAR_TYPE.patch
-	source = make-dom-distiller-protoc-plugin-call-py2.7.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/make-dom-distiller-protoc-plugin-call-py2.7.patch
-	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/extend-enable-accelerated-video-decode-flag.patch
-	source = sql-make-VirtualCursor-standard-layout-type.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/b4f8953e87de4278ce28d685ac1917744b901a92/trunk/sql-make-VirtualCursor-standard-layout-type.patch
+	source = fix-crash-in-ThemeService.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/fix-crash-in-ThemeService.patch
+	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/unbundle-use-char16_t-as-UCHAR_TYPE.patch
+	source = make-dom-distiller-protoc-plugin-call-py2.7.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/make-dom-distiller-protoc-plugin-call-py2.7.patch
+	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/extend-enable-accelerated-video-decode-flag.patch
+	source = sql-make-VirtualCursor-standard-layout-type.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/sql-make-VirtualCursor-standard-layout-type.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca
+	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = 171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a

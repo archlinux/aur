@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.26.74
+pkgver=1.26.77
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch")
-arch_revision=b4f8953e87de4278ce28d685ac1917744b901a92
+arch_revision=3cd421c2e8ea04eacf49253ea8b40957ef5d3524
 Patches="
         fix-crash-in-ThemeService.patch
         unbundle-use-char16_t-as-UCHAR_TYPE.patch
@@ -64,8 +64,7 @@ Patches="
         "
 for arch_patch in $Patches
 do
-  #source+=("${arch_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${arch_patch}?h=packages/chromium&id=${arch_revision}")
-  source+=("${arch_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${arch_revision}/trunk/${arch_patch}")
+  source+=("${arch_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${arch_revision}/chromium/trunk/${arch_patch}")
 done
 
 sha256sums=('SKIP'
@@ -73,7 +72,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
+            '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
