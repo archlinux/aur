@@ -1,6 +1,6 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
@@ -8,19 +8,23 @@ arch=('x86_64')
 license=('Apache')
 source=("https://github.com/nestybox/sysbox/releases/download/v${pkgver}/sysbox-ce_${pkgver}-0.debian-buster_amd64.deb"
         "sysbox-ipc-fix-build-on-protobuf-1.5.0-plus.patch"
+        "sysbox-fs-use-local-sysbox-libs-formatter.patch"
+        "sysbox-runc-use-local-sysbox-libs-formatter.patch"
         "git://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
-        "git://github.com/nestybox/dockerfiles.git#commit=4bb4b114a7776cd687e2f873ae92c933f908988e"
-        "git://github.com/nestybox/sysbox-fs.git#commit=bb001b7fe2a0a234fe86ab20045677470239e248"
+        "git://github.com/nestybox/dockerfiles.git#commit=4036dce15537570b20a9595487b13a1aeffaf28a"
+        "git://github.com/nestybox/sysbox-fs.git#commit=394d51110fe23bd64b7be8fb9b217dc9cff16032"
         "git://github.com/nestybox/fuse.git#commit=76fedf6163b9a7411d029805a23729ffc07f7df1"
-        "git://github.com/nestybox/sysbox-ipc.git#commit=28165ef823eebcd85c7827dc32542294fbdca920"
-        "git://github.com/nestybox/sysbox-libs.git#commit=8eeb72b735540aaa166f99ddd57c8e42fc782048"
-        "git://github.com/nestybox/libseccomp.git#commit=bb94b24efc970fc91a239785900c89b3d28ea4b5"
+        "git://github.com/nestybox/sysbox-ipc.git#commit=fec26526a49d31bd0080c9b51a6b59f3e683c387"
+        "git://github.com/nestybox/sysbox-libs.git#commit=1ea69f2f6dbb43872e58723b923d8a57a30f206c"
+        "git://github.com/nestybox/libseccomp.git#commit=605460263e5b9d15a2f62fb9a76d6c8f7e3ed486"
         "git://github.com/nestybox/libseccomp-golang.git#commit=bcff2d4628f0faab6798c1499f8a45da7aeb2150"
-        "git://github.com/nestybox/sysbox-mgr.git#commit=6ae5668e797ee1bb88fd5f5ae663873a87541ecb"
-        "git://github.com/nestybox/sysbox-runc.git#commit=df952e5276cb6e705e0be331e9a9fe88f372eab8")
-sha256sums=('02aa4b3ab3e823d91e01c742875a4ece9d6415c9915c5f08df918725361b928e'
+        "git://github.com/nestybox/sysbox-mgr.git#commit=8b13c261d1eb3a7a0c632b7f13c3cd19a447d14b"
+        "git://github.com/nestybox/sysbox-runc.git#commit=9e55c35e249f753c7d31e987c21d4ca4a2ddacfb")
+sha256sums=('1b21cb19544a8e594a49ddce35f914035445a55e55f1cd4ba398a42e08ff86aa'
             '6606edfb1e693d6f506bd914f6c4bbac26c8079466adfbb917fda9e4a79ba69d'
+            'ffc50d14b00a807bba5b3553fb554830823fdde7034db7efdf4b6ab6b47c1dcd'
+            'ab0a41dc162b4bbae4b2302a88f66e32a020f8afe280480c9c75a4f9a6ea4345'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 depends=('rsync' 'fuse2')
@@ -50,18 +54,14 @@ prepare() {
 	# Buildfix for newer protobuf versions
 	patch -d sysbox/sysbox-ipc -Np1 -i "$srcdir/sysbox-ipc-fix-build-on-protobuf-1.5.0-plus.patch"
 
-	# Yet-unreleased Arch Linux fixes
-	git -C sysbox/sysbox-libs cherry-pick -n 16033800cb3d18b361928376da196322cad8e055
-	git -C sysbox/sysbox-mgr cherry-pick -n 2f343c4728e53d3ebeabbe15c9953d422ddf0168 \
-	                                        eff741183ef9865580d7ae256e57a37859523815 \
-	                                        eb797f6166b2725c4d507632737739b2a92a486f
+	# Use locally built sysbox-libs/formatter instead of downloading it like the official build does
+	# (otherwise build fails, not sure how the official build works, since the dep. is not even listed for sysbox-runc)
+	patch -d sysbox/sysbox-fs -Np1 -i "$srcdir/sysbox-fs-use-local-sysbox-libs-formatter.patch"
+	patch -d sysbox/sysbox-runc -Np1 -i "$srcdir/sysbox-runc-use-local-sysbox-libs-formatter.patch"
 
 	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
 	mkdir -p data
 	tar xf data.tar.xz -C data
-	cd data
-
-	find lib/systemd -type f -exec sed -i 's|/usr/local/sbin|/usr/bin|g' {} +
 }
 
 build() {
@@ -78,7 +78,7 @@ package() {
 	make -C sysbox DESTDIR="${pkgdir}/usr/bin" install
 
 	cd "data"
-	(cd etc/modules-load.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/etc/modules-load.d/{}" \; )
+	(cd usr/lib/modules-load.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/modules-load.d/{}" \; )
 	(cd lib/sysctl.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/sysctl.d/{}" \; )
 	(cd lib/systemd && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/systemd/{}" \; )
 	(cd usr/share/doc && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/{}" \; )

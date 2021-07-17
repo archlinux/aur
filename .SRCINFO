@@ -1,6 +1,6 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
@@ -13,20 +13,24 @@ pkgbase = sysbox-ce
 	depends = rsync
 	depends = fuse2
 	optdepends = shiftfs: Operation without userns-remap
-	source = https://github.com/nestybox/sysbox/releases/download/v0.3.0/sysbox-ce_0.3.0-0.debian-buster_amd64.deb
+	source = https://github.com/nestybox/sysbox/releases/download/v0.4.0/sysbox-ce_0.4.0-0.debian-buster_amd64.deb
 	source = sysbox-ipc-fix-build-on-protobuf-1.5.0-plus.patch
-	source = git://github.com/nestybox/sysbox.git#tag=v0.3.0
-	source = git://github.com/nestybox/dockerfiles.git#commit=4bb4b114a7776cd687e2f873ae92c933f908988e
-	source = git://github.com/nestybox/sysbox-fs.git#commit=bb001b7fe2a0a234fe86ab20045677470239e248
+	source = sysbox-fs-use-local-sysbox-libs-formatter.patch
+	source = sysbox-runc-use-local-sysbox-libs-formatter.patch
+	source = git://github.com/nestybox/sysbox.git#tag=v0.4.0
+	source = git://github.com/nestybox/dockerfiles.git#commit=4036dce15537570b20a9595487b13a1aeffaf28a
+	source = git://github.com/nestybox/sysbox-fs.git#commit=394d51110fe23bd64b7be8fb9b217dc9cff16032
 	source = git://github.com/nestybox/fuse.git#commit=76fedf6163b9a7411d029805a23729ffc07f7df1
-	source = git://github.com/nestybox/sysbox-ipc.git#commit=28165ef823eebcd85c7827dc32542294fbdca920
-	source = git://github.com/nestybox/sysbox-libs.git#commit=8eeb72b735540aaa166f99ddd57c8e42fc782048
-	source = git://github.com/nestybox/libseccomp.git#commit=bb94b24efc970fc91a239785900c89b3d28ea4b5
+	source = git://github.com/nestybox/sysbox-ipc.git#commit=fec26526a49d31bd0080c9b51a6b59f3e683c387
+	source = git://github.com/nestybox/sysbox-libs.git#commit=1ea69f2f6dbb43872e58723b923d8a57a30f206c
+	source = git://github.com/nestybox/libseccomp.git#commit=605460263e5b9d15a2f62fb9a76d6c8f7e3ed486
 	source = git://github.com/nestybox/libseccomp-golang.git#commit=bcff2d4628f0faab6798c1499f8a45da7aeb2150
-	source = git://github.com/nestybox/sysbox-mgr.git#commit=6ae5668e797ee1bb88fd5f5ae663873a87541ecb
-	source = git://github.com/nestybox/sysbox-runc.git#commit=df952e5276cb6e705e0be331e9a9fe88f372eab8
-	sha256sums = 02aa4b3ab3e823d91e01c742875a4ece9d6415c9915c5f08df918725361b928e
+	source = git://github.com/nestybox/sysbox-mgr.git#commit=8b13c261d1eb3a7a0c632b7f13c3cd19a447d14b
+	source = git://github.com/nestybox/sysbox-runc.git#commit=9e55c35e249f753c7d31e987c21d4ca4a2ddacfb
+	sha256sums = 1b21cb19544a8e594a49ddce35f914035445a55e55f1cd4ba398a42e08ff86aa
 	sha256sums = 6606edfb1e693d6f506bd914f6c4bbac26c8079466adfbb917fda9e4a79ba69d
+	sha256sums = ffc50d14b00a807bba5b3553fb554830823fdde7034db7efdf4b6ab6b47c1dcd
+	sha256sums = ab0a41dc162b4bbae4b2302a88f66e32a020f8afe280480c9c75a4f9a6ea4345
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -39,4 +43,3 @@ pkgbase = sysbox-ce
 	sha256sums = SKIP
 
 pkgname = sysbox-ce
-
