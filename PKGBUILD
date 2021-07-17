@@ -2,7 +2,7 @@
 # Contributor: x4e
 pkgname="tigercapture"
 pkgver="0.3"
-pkgrel=0
+pkgrel=3
 url="https://github.com/tigermouthbear/tigercapture"
 license=("GPLv3")
 pkgdesc="A screen capturing and uploading util"
