@@ -1,30 +1,17 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
-
+# Maintainer: nezbednik <nezbedniklmao@gmail.com>
 pkgname=tiny
-pkgver=20130219
-pkgrel=2
-pkgdesc="Experiments in creating very small Linux ELF executables."
-arch=('i686' 'x86_64')
-url="http://www.muppetlabs.com/~breadbox/software/tiny/"
-license=('GPL')
-makedepends=('nasm')
-options=(!strip)
-source=(http://www.muppetlabs.com/~breadbox/pub/software/${pkgname}.tar.gz
-        tiny.sh)
-md5sums=('e535400bd35f3606ae2f5d067989e521'
-         'e393c72f9529e5a1bae15bbd449b4637')
-
-build() {
-  cd "$srcdir/$pkgname"
-  make clean && make
-}
+pkgver=1.0
+pkgrel=1
+pkgdesc="An eentsy-teensy turing-complete programming language that isn't a brainfuck to code in ;)"
+arch=("any")
+url="https://github.com/YaBoiMason/tiny"
+license=("MIT")
+depends=("python3")
+source=("https://github.com/YaBoiMason/tiny/archive/refs/tags/v1.0.zip")
+sha256sums=("233c07eece46577d5c1f22cb892745f4e772eeecd59912674fa3de4bcf85c0ff")
 
 package() {
-  cd "$srcdir/$pkgname"
-  rm Makefile *.asm
-  mkdir -p -m755 "$pkgdir/opt/$pkgname" "$pkgdir/etc/profile.d"
-  cp -a * "$pkgdir/opt/$pkgname"
-  install -D -m755 "$srcdir/tiny.sh" "$pkgdir/etc/profile.d"
+	cd tiny-$pkgver
+	mkdir -p $pkgdir/usr/bin
+	install -m775 tiny.py $pkgdir/usr/bin/tiny
 }
-
-# vim:set ts=2 sw=2 et:
