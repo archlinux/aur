@@ -1,51 +1,33 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
-
-pkgname="robot-karol"
-pkgver="2.3"
-pkgrel="5"
-pkgdesc="A programming environment for introducing children to programming and algorithm design."
-url='https://www.mebis.bayern.de/infoportal/faecher/mint/inf/robot-karol/'
+pkgname='robot-karol'
+pkgver='3.0.4'
+pkgrel='1'
+pkgdesc='A programming environment for introducing children to programming and algorithm design.'
+url='https://www.mebis.bayern.de/infoportal/empfehlung/robot-karol/'
 arch=('any')
 license=('custom')
-depends=('wine')
-makedepends=('innoextract' 'icoutils' 'imagemagick')
-source=('https://www.mebis.bayern.de/wp-content/uploads/sites/2/2015/05/Robot_Karol_setup.zip')
-md5sums=('91149127108be600bd5dd084d67444b3')
+depends=('java-runtime-headless=8' 'archlinux-java-run')
+makedepends=('gendesk' 'imagemagick' 'unzip')
+source=('https://www.mebis.bayern.de/wp-content/uploads/sites/2/2019/10/RobotKarol30_other.zip'
+        'LICENSE')
+sha256sums=('bd1b8243315a37da9fb6e75d3081e21c0deba6c3436aa17d8e20a4d4a03c1263'
+            'fdeab93675448f2dc577c6507c65ad65715025fb0ae005637ff4db6e3b1eeecc')
 
-
-build() {
-    innoextract -d "${srcdir}" "${srcdir}/setupd.exe"
-    wrestool -x -t 14 "${srcdir}/app/karol.exe" > "${srcdir}/${pkgname}.ico"
-    convert "${srcdir}/${pkgname}.ico" "${srcdir}/${pkgname}.png"
+prepare() {
+    unzip -j "${srcdir}/RobotKarol.jar" "icons/Karol.ico" 
+    convert "${srcdir}/Karol.ico" "${srcdir}/${pkgname}.png"
+    gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 }
 
 package() {
-	mkdir -p -m755 "${pkgdir}/opt/${pkgname}" 
-    cp -ar "$srcdir/app/"* "${pkgdir}/opt/${pkgname}"
-
-    install -D -m644 "${pkgdir}/opt/${pkgname}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+    install -D -m644 "${srcdir}/RobotKarol.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar"
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-
-    mkdir -p -m755 "${pkgdir}/usr/bin/" 
-
-	printf "#!${SHELL}
-wine /opt/${pkgname}/karol.exe /IC:\\
-" >> "${pkgdir}/usr/bin/${pkgname}" 
-
+    install -D -m644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	mkdir -p -m755 "${pkgdir}/usr/bin/"
+	printf "#!/bin/sh
+archlinux-java-run --min 8 -- -jar /usr/share/java/${pkgname}/${pkgname}-${pkgver}.jar
+" >> "${pkgdir}/usr/bin/${pkgname}"
 	chmod +x "${pkgdir}/usr/bin/${pkgname}"
 
-	mkdir -p -m755 "${pkgdir}/usr/share/applications/" 
-
-	printf "[Desktop Entry]
-Version=${pkgver}
-Type=Application
-Name=Robot Karol
-Comment=$pkgdesc
-Exec=${pkgname}
-Icon=${pkgname}
-Categories=Education
-Terminal=false
-StartupNotify=true
-" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
