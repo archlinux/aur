@@ -1,6 +1,6 @@
 pkgbase = imdone-bin
 	pkgdesc = Simple and powerful kanban board that works on top of a local folder of plain text markdown files or code.
-	pkgver = 1.17.6
+	pkgver = 1.19.3
 	pkgrel = 1
 	url = https://imdone.io/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = imdone-bin
 	depends = gtk3
 	depends = nss
 	provides = imdone
-	source = https://imdone.io/downloads/imdone-1.17.6.deb
+	source = https://imdone.io/downloads/imdone-1.19.3.deb
 	source = https://imdone.io/eula
-	sha512sums = 2d336846f8d9f98f8420af61e60030b1d30eabbbbbe9fe44d57b04e41760d7b36dba46d79ece59b9108debe7c4f4caa651a06b2eec6a056740a8ea11973fc42d
-	sha512sums = SKIP
+	sha512sums = 69dd5bda8d8cc5bc2fff5932698d8bd0992932b6ebeac48dd42ad0a11580151d967cf3133d38f6bb83bdf74612dccbb99cccc0d6f1f4ede163c6070da24e6a97
+	sha512sums = 6fde80e28b87d6fb0f4c370f7dacd8bf1cffdbdd2a5c379a97e872b78575917a267b4caa4a63527a4351751784db56b926dcdb01eab8f83e00d79192f678ebea
 
 pkgname = imdone-bin
-

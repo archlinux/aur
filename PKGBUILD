@@ -1,7 +1,7 @@
 # Maintainer:  Al S <tei8ho.aur.al@ila5.info>
 pkgname=imdone-bin
 _pkgname=imdone
-pkgver=1.17.6
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="Simple and powerful kanban board that works on top of a local folder of plain text markdown files or code."
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ backup=()
 options=()
 source=("https://imdone.io/downloads/${_pkgname}-${pkgver}.deb"
         'https://imdone.io/eula')
-sha512sums=('2d336846f8d9f98f8420af61e60030b1d30eabbbbbe9fe44d57b04e41760d7b36dba46d79ece59b9108debe7c4f4caa651a06b2eec6a056740a8ea11973fc42d'
-            'e38a16c3d87dfdc3bdf2b09071a85d6e9cde53e5b1a7ef5ac7a9127c38164c5f3dd473bae7596cdb08a6566db36b6297a3d404118110303e5da3c4d6d8e1467b')
+sha512sums=('69dd5bda8d8cc5bc2fff5932698d8bd0992932b6ebeac48dd42ad0a11580151d967cf3133d38f6bb83bdf74612dccbb99cccc0d6f1f4ede163c6070da24e6a97'
+            '6fde80e28b87d6fb0f4c370f7dacd8bf1cffdbdd2a5c379a97e872b78575917a267b4caa4a63527a4351751784db56b926dcdb01eab8f83e00d79192f678ebea')
 package() {
   install -Dm644 eula "${pkgdir}/usr/share/licenses/${_pkgname}/eula.html"
   bsdtar -xf data.tar.xz -C "$pkgdir/"
