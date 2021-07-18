@@ -10,6 +10,7 @@ url='https://github.com/pyroscope/rtorrent-ps'
 license=('GPL')
 arch=('any')
 depends=('curl' 'libtorrent-ps' 'ncurses' 'xmlrpc-c')
+makedepends=('clang')
 provides=('rtorrent')
 conflicts=('rtorrent')
 source=("https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
@@ -110,6 +111,10 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$_pkgver"
+
+  # Workaround for GCC compilation issues
+  export CC=/usr/bin/clang
+  export CXX=/usr/bin/clang++
 
   ./configure \
     --prefix=/usr \

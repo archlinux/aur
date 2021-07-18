@@ -5,6 +5,7 @@ pkgbase = rtorrent-ps
 	url = https://github.com/pyroscope/rtorrent-ps
 	arch = any
 	license = GPL
+	makedepends = clang
 	depends = curl
 	depends = libtorrent-ps
 	depends = ncurses
@@ -73,4 +74,3 @@ pkgbase = rtorrent-ps
 	md5sums = 0a2bbaf74c7160ba33876dcc2f050f14
 
 pkgname = rtorrent-ps
-
