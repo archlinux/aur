@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.8.2](#1-8-2)
 * [1.8.1](#1-8-1)
 * [1.8.0](#1-8-0)
 * [1.7.2](#1-7-2)
@@ -27,6 +28,57 @@
 * [1.2.0](#1-2-0)
 
 
+## 1.8.2
+
+### Added
+
+* `locked-title=no|yes` to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/386).
+* `tweak.overflowing-glyphs` option, which can be enabled to fix rendering
+  issues with glyphs of any width that appear cut-off
+  (https://codeberg.org/dnkl/foot/issues/592).
+
+
+### Changed
+
+* Non-empty lines are now considered to have a hard linebreak,
+  _unless_ an actual word-wrap is inserted.
+* Setting `DECSDM` now _disables_ sixel scrolling, while resetting it
+  _enables_ scrolling (https://codeberg.org/dnkl/foot/issues/631).
+
+
+### Removed
+
+* The `tweak.allow-overflowing-double-width-glyphs` and
+  `tweak.pua-double-width` options (which have been superseded by
+  `tweak.overflowing-glyphs`).
+
+
+### Fixed
+
+* FD exhaustion when repeatedly entering/exiting URL mode with many
+  URLs.
+* Double free of URL while removing duplicated and/or overlapping URLs
+  in URL mode (https://codeberg.org/dnkl/foot/issues/627).
+* Crash when an unclosed OSC-8 URL ran into un-allocated scrollback
+  rows.
+* Some box-drawing characters were rendered incorrectly on big-endian
+  architectures.
+* Crash when resizing the window to the smallest possible size while
+  scrollback search is active.
+* Scrollback indicator being incorrectly rendered when window size is
+  very small.
+* Reduced memory usage in URL mode.
+* Crash when the `E3` escape (`\E[3J`) was executed, and there was a
+  selection, or sixel image, in the scrollback
+  (https://codeberg.org/dnkl/foot/issues/633).
+
+
+### Contributors
+
+* [clktmr](https://codeberg.org/clktmr)
+
+
 ## 1.8.1
 
 ### Added
@@ -43,7 +95,7 @@
 * Grapheme cluster width is now limited to two cells by default. This
   may cause cursor synchronization issues with many applications. You
   can set `[tweak].grapheme-width-method=wcswidth` to revert to the
-  behavior from foot-1.8.0.
+  behavior in foot-1.8.0.
 
 
 ### Fixed
