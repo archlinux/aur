@@ -4,12 +4,12 @@
 
 _py_name=agate
 pkgname=python-$_py_name
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='A data analysis library that is optimized for humans instead of machines'
-arch=('any')
+arch=(any)
 url='https://agate.readthedocs.org/'
-license=('MIT')
+license=(MIT)
 _py_deps=(babel
          isodate
          leather
@@ -24,7 +24,7 @@ makedepends=(python-setuptools python-sphinx)
 checkdepends=(python-cssselect)
 _pkgdir="$_py_name-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_py_name::1}/$_py_name/$_pkgdir.tar.gz")
-sha256sums=('8dbd4a57a2cffecfa2d8109ef5993ec4be12a8a7c81fbc0c8c79d96d4c4399ed')
+sha256sums=('e0f2f813f7e12311a4cdccc97d6ba0a6781e9c1aa8eca0ab00d5931c0113a308')
 
 build() {
 	cd "$_pkgdir"
