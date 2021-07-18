@@ -1,21 +1,26 @@
 # Maintainer: Jovial Joe Jayarson <jovial7joe@hotmail.com>
 
 pkgname=plymouth-theme-aregression
-pkgver='1.0'
+_themename=aregression
+pkgver=1.1
 pkgrel=1
-pkgdesc="A sleek boot up progress bar plymouth animation for Arch Linux"
-arch=('any')
+pkgdesc="A sleek boot up plymouth progress bar"
+arch=("any")
 url="https://github.com/joe733/plymouth-theme-aregression"
-license=('MIT')
-depends=('plymouth')
-makedepends=('git')
-source=('git+https://github.com/joe733/plymouth-theme-aregression.git')
-md5sums=('SKIP')
-
+license=("MIT")
+depends=("plymouth-git")
+makedepends=("git")
+source=("git+https://github.com/joe733/plymouth-theme-aregression.git")
+md5sums=("SKIP")
 package() {
-    install -dm 755 "$pkgdir"/usr/share/plymouth/themes/aregression/
+  cd "${srcdir}/${pkgname}"
+  _themedir="${pkgdir}/usr/share/plymouth/themes/$_themename"
 
-    cp -r --no-preserve=ownership * "$pkgdir"/usr/share/plymouth/themes/aregression/
+  for N in "${_themename}.plymouth" assets/*.png "assets/${_themename}.script"; do
+    install -Dm644 $N "${_themedir}/$N"
+  done
 
-    # install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
+
 }
