@@ -16,7 +16,7 @@ _pkgname=(
 pkgname=(${_pkgname[@]})
 _reponame="fascode-live-tools"
 pkgver="1.8.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Scripts required for live environment"
 arch=('any')
 url="https://github.com/FascodeNet/${_reponame}"
@@ -63,6 +63,8 @@ package_fascode-gtk-bookmarks() {
 package_alterlinux-gtk-bookmarks(){
     pkgdesc="Simple script to automatically generate GTK bookmarks"
     depends=("fascode-gtk-bookmarks")
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "/usr/bin/fascode-gtk-bookmarks" "${pkgdir}/usr/bin/alterlinux-gtk-bookmarks"
 }
 
 # alterlinux-welcome-page
