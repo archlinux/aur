@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=89.0.2
+pkgver=90.0
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
@@ -44,7 +44,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('3225f583c5e36bdf52ad16f71a2c359deb0c765c38205acdeb6b7b6520ac5494'
+sha256sums=('43a943e7d7660c6d7f5b41c95b344b7fd6a4a88ad0bb45dbd844b372ea60d58b'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -105,8 +105,12 @@ prepare() {
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
 
+  # Allow overriding the color scheme light/dark preference with RFP
+  patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch  
+
   # Remove Internal Plugin Certificates
-  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+  # => breaks profiled builds since 90.0, it seems
+  # patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
 
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
@@ -140,7 +144,6 @@ ac_add_options --with-branding=browser/branding/firedragon
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=0
 
 export STRIP_FLAGS="--strip-debug --strip-unneeded"
 
