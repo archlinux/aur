@@ -1,0 +1,11 @@
+[Unit]
+Description=weekly backup of nextcloud databases
+After=mariadb.service
+
+[Timer]
+OnCalendar=monday 03:00
+Persistent=true
+Unit=calcardbackup.service
+
+[Install]
+WantedBy=timers.target

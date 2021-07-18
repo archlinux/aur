@@ -1,0 +1,8 @@
+[Unit]
+Description=weekly backup of nextcloud databases
+
+[Service]
+ExecStart=/usr/bin/calcardbackup -c /etc/calcardbackup/calcardbackup.conf
+Type=oneshot
+ProtectSystem=full
+ProtectHome=true
