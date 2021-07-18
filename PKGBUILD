@@ -2,8 +2,8 @@
 # Contributor: Michael Ivko <ivko.mv@gmail.com>
 
 pkgname=ntk-git
-_gitname=fltk
-pkgver=0.r151.5719b00
+_gitname=ntk
+pkgver=0.r166.720d8d3
 pkgrel=1
 pkgdesc="Fork of FLTK 1.3.0 with additional functionality."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('libxft' 'cairo' 'libjpeg')
 makedepends=('git' 'python')
 provides=('ntk')
 conflicts=('ntk')
-source=('git://git.tuxfamily.org/gitroot/non/fltk.git')
+source=('git+https://github.com/linuxaudio/ntk.git')
 md5sums=('SKIP')
 
 pkgver() {
