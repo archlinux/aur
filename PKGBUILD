@@ -9,6 +9,7 @@ license=("MIT")
 depends=(
     "wireguard-tools" "uvicorn" "nodejs" "npm"
     "python" "python-pydantic" "python-fastapi" "python-aiofiles" "python-aiosqlite" "python-sqlalchemy" "python-databases" "python-pyjwt" "python-passlib" "python-bcrypt" "python-python-multipart" "python-jinja" "python-sqlalchemy-utils" "python-sqlalchemy-migrate" "python-requests" "python-uvloop" "python-httptools"
+    "python-uvicorn-loguru-integration"
 )
 makedepends=("angular-cli")
 provides=($_pkgname)
