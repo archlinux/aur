@@ -7,14 +7,14 @@
 pkgbase=kate-root
 _pkgbase=kate
 pkgname=(kwrite-root kate-root)
-pkgver=21.04.1
+pkgver=21.04.3
 pkgrel=1
 arch=(x86_64 i686 armv7h)
 license=(GPL LGPL FDL)
 makedepends=(extra-cmake-modules kdoctools plasma-framework knewstuff kitemmodels ktexteditor kactivities kuserfeedback)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgbase-$pkgver.tar.xz{,.sig}
         0001-Defuse-root-block.patch)
-sha256sums=('6264b6c9775caf2e9f7dabdbd7e60d641629e0e8c0ef5abb04dd8bb31ef5a255'
+sha256sums=('b44ea77cf77d579e9ade0af98f9a27a02292bc1b7edff387a386ab7e9e84f7eb'
             'SKIP'
             '2fbd6b482fcb4a56050f393ceb292e9bf72f796aeaba37ed4cadfb37c4fc90f1')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
@@ -59,7 +59,8 @@ package_kate-root() {
               'clang: C and C++ LSP support'
               'python-language-server: Python LSP support'
               'texlab: LaTeX LSP support'
-              'rust: Rust LSP support')
+              'rust: Rust LSP support'
+              'git: git-blame plugin')
   provides=('kate')
   conflicts=('kate')
 
