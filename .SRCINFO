@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qwt
 	pkgdesc = Qt Widgets for Technical Applications (mingw-w64)
-	pkgver = 6.1.6
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = http://qwt.sourceforge.net
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-qwt
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://downloads.sourceforge.net/qwt/qwt-6.1.6.tar.bz2
-	sha256sums = 99460d31c115ee4117b0175d885f47c2c590d784206f09815dc058fbe5ede1f6
+	source = http://downloads.sourceforge.net/qwt/qwt-6.2.0.tar.bz2
+	sha256sums = 9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530
 
 pkgname = mingw-w64-qwt
-

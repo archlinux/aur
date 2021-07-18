@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qwt
-pkgver=6.1.6
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Qt Widgets for Technical Applications (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-qt5-svg')
 makedepends=('mingw-w64-gcc')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://downloads.sourceforge.net/qwt/qwt-${pkgver}.tar.bz2")
-sha256sums=('99460d31c115ee4117b0175d885f47c2c590d784206f09815dc058fbe5ede1f6')
+sha256sums=('9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,6 +28,9 @@ prepare() {
 
   # No need for docs:
   sed -i "s|= target doc|= target|" src/src.pro
+
+  # splinetest fails to link
+  sed -i "/splinetest/d" tests/tests.pro
 }
 
 build() {
