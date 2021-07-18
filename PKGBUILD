@@ -22,9 +22,14 @@ prepare() {
     patch -p1 -i ../install.patch
 }
 
+build() {
+    cd "${_pkgname}-${pkgver}"
+    python setup.py build
+}
+
 package() {
     cd "${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
