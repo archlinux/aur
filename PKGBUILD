@@ -2,7 +2,7 @@
 
 pkgname=python-vegasflow
 _name=vegasflow
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Monte Carlo integration library written in Python and based on the TensorFlow framework'
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=("python-pytest")
 provides=("vegasflow")
 changelog=
 source=("https://github.com/N3PDF/vegasflow/archive/v${pkgver}.tar.gz")
-md5sums=("ab606b13fa0bdad5e8ac5e660373699d")
+md5sums=("e6bc40e4842871ab76bd50e584759f1a")
 
 prepare() {
 	cd "$_name-$pkgver"
