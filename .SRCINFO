@@ -1,0 +1,12 @@
+pkgbase = xcursor-plan9
+	pkgdesc = Xorg cursor theme inspired and based on plan9 cursors
+	pkgver = 0.2
+	pkgrel = 1
+	url = π.duncano.de
+	arch = any
+	license = unknown
+	depends = libxcursor
+	source = https://π.duncano.de/files/xcursor-plan9-0.2.tar.xz
+	md5sums = 79b0c5dea253bfba2dd32124454224b2
+
+pkgname = xcursor-plan9
