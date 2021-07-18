@@ -1,0 +1,15 @@
+pkgbase = python-loguru-logging-intercept-git
+	pkgdesc = Code to integrate uvicorn.run with Loguru logging
+	pkgver = r4.fa3a0fa
+	pkgrel = 1
+	url = https://github.com/MatthewScholefield/loguru-logging-intercept
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-loguru
+	provides = python-loguru-logging-intercept
+	conflicts = python-loguru-logging-intercept
+	source = git+https://github.com/MatthewScholefield/loguru-logging-intercept.git
+	md5sums = SKIP
+
+pkgname = python-loguru-logging-intercept-git
