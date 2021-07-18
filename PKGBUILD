@@ -14,9 +14,11 @@ checkdepends=('python' 'fakechroot' 'gtest')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git"
-        "abseil-fix.patch::https://github.com/inglor/auracle/commit/9075aabcd3eac5a058d97b871e786e9fb65bfbce.patch")
-sha256sums=('SKIP'
-            'ca65cb7f95c3427a5abc5e95eb69b34da6ccfc8200b0c800c42971b901e88bd4')
+        "abseil-fix.patch::https://github.com/inglor/auracle/commit/9075aabcd3eac5a058d97b871e786e9fb65bfbce.patch"
+        "static-fmt.patch::https://github.com/inglor/auracle/commit/18ab2549a8a656a670bdc17233abd5a7708c50ee.patch")
+b2sums=('SKIP'
+        '077bd9e13c7dd2ab08ea23aabc958bdba8f8cc1dd1570b358264b8f5eda3eb54c8195456fc7d2f659899a856daf90ebf084e33355d7844b722143b680fb900ff'
+        'f735c89485d8682b9dee25c1b96152d44005b8bf78f683015c65dd93cc3802177fbf8a4fa94587958157ec175260417da101a1436f7e1c4106bc2e4c21974a70')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,6 +30,7 @@ prepare(){
   cd "$_pkgname"
 
   patch -Np1 < "$srcdir/abseil-fix.patch"
+  patch -Np1 < "$srcdir/static-fmt.patch"
 }
 
 build() {
