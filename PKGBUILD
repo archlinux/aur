@@ -2,7 +2,7 @@
 
 pkgname=m64p-git
 pkgver=20210711.r3.gdbd4a6b
-pkgrel=1
+pkgrel=2
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
@@ -71,5 +71,6 @@ package() {
     
     # other plugins and components
     install -D -m644 m64p/mupen64plus/libdiscord_game_sdk.so -t "${pkgdir}/usr/lib"
+    install -D -m644 m64p/mupen64plus-input-qt/vosk/libvosk.so -t "${pkgdir}/usr/lib/mupen64plus"
     install -D -m644 m64p/mupen64plus/mupen64plus-{input-qt,{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
 }
