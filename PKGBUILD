@@ -12,8 +12,15 @@ makedepends=('python-setuptools')
 optdepends=('python-compreffor')
 license=('MIT')
 arch=('any')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('8387241b9a36ed906a0b99afc80d58cee72ea5266ec0016f17456f765be73300')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip"
+    "install.patch")
+sha256sums=('8387241b9a36ed906a0b99afc80d58cee72ea5266ec0016f17456f765be73300'
+            'a98918585cbee73d9c04fc70c7629c2de1a47b491c000e7c9432f9c3e4bbbfb5')
+
+prepare() {
+    cd "${_pkgname}-${pkgver}"
+    patch -p1 -i ../install.patch
+}
 
 package() {
     cd "${_pkgname}-${pkgver}"
