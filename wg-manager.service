@@ -1,0 +1,15 @@
+[Unit]
+Description=WireGuard Manager
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+Environment=ADMIN_USERNAME=admin
+Environment=ADMIN_PASSWORD=password
+WorkingDirectory=/opt/wg-manager
+ExecStart=uvicorn main:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

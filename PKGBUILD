@@ -32,4 +32,6 @@ package() {
     mkdir -p "${pkgdir}/opt/"
     mv wg-manager-backend "${pkgdir}/opt/wg-manager"
     mv wg-manager-frontend/dist "${pkgdir}/opt/wg-manager/build"
+    mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+    mv "${srcdir}/wg-manager.service" "${pkgdir}/usr/lib/systemd/system/"
 }
