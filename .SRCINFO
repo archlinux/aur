@@ -1,7 +1,7 @@
 pkgbase = mybrowse
 	pkgdesc = A simple WebKit browser written in Python3 and using GTK3
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KaiserBarbarossa/MyBrowse
 	arch = any
 	license = GPL3
