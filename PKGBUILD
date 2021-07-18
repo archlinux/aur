@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.16.0.r2881.ab974c40
+pkgver=1.17.0.r2906.3a1a59f1
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -10,10 +10,10 @@ url="https://janet-lang.org/"
 license=('MIT')
 depends=()
 makedepends=('git')
-provides=('janet')
+provides=('janet' 'jpm')
 conflicts=('janet-lang')
-source=("git+https://github.com/janet-lang/janet.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/janet-lang/janet.git" "git+https://github.com/janet-lang/jpm")
+sha256sums=('SKIP' 'SKIP')
 options=('staticlibs')
 
 pkgver() {
@@ -34,7 +34,7 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dt       "${pkgdir}"/usr/bin build/janet jpm
+    install -Dt       "${pkgdir}"/usr/bin build/janet
     install -Dm644 -t "${pkgdir}"/usr/include/janet build/janet.h
 
     install -Dm644 -t "${pkgdir}"/usr/lib build/libjanet.a build/libjanet.so
@@ -42,11 +42,18 @@ package() {
 
     install -Dm644 "build/janet.pc" "${pkgdir}"/usr/lib/pkgconfig/janet.pc
 
-    install -Dm644 -t "${pkgdir}"/usr/share/man janet.1 jpm.1
+    install -Dm644 -t "${pkgdir}"/usr/share/man janet.1
 
     install -dm755 "${pkgdir}"/usr/share/janet
     cp -a examples "${pkgdir}"/usr/share/janet
 
     install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
     install -Dm644 -t "${pkgdir}"/usr/lib/janet tools/.keep
+
+    cd ../..
+    cd "${srcdir}/jpm"
+
+    install -Dt       "${pkgdir}"/usr/bin jpm
+    install -Dm644 -t "${pkgdir}"/usr/lib/janet *.janet
+    install -Dm644 -t "${pkgdir}"/usr/share/man jpm.1
 }
