@@ -1,15 +1,19 @@
 pkgbase = safe-rm
-	pkgdesc = A tool intended to prevent the accidental deletion of important files.
-	pkgver = 0.12
+	pkgdesc = A tool intended to prevent the accidental deletion of important files
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://launchpad.net/safe-rm
 	arch = any
 	license = GPL3
-	depends = perl
-	depends = coreutils
-	options = !emptydirs
-	source = https://launchpad.net/safe-rm/trunk/0.12/+download/safe-rm-0.12.tar.gz
-	md5sums = dd8cba1c03f8bc1c25453dfc07555d0d
+	makedepends = cargo
+	backup = etc/safe-rm.conf
+	source = https://launchpad.net/safe-rm/trunk/1.1.0/+download/safe-rm-1.1.0.tar.gz
+	source = https://launchpad.net/safe-rm/trunk/1.1.0/+download/safe-rm-1.1.0.tar.gz.asc
+	source = safe-rm.conf
+	source = safe-rm.sh
+	sha256sums = a1c916894c5b70e02a6ec6c33abbb2c3b3827464cffd4baffd47ffb69a56a1e0
+	sha256sums = SKIP
+	sha256sums = d016ccf8e5dcd517bacaae1bb71509932bae813b451da33850347aba7e481739
+	sha256sums = 0b1965eb2a722dd67a112ad90118a446f396b0aa2d2faf36d3ed89abbe9bafe2
 
 pkgname = safe-rm
-
