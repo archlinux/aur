@@ -1,14 +1,13 @@
 pkgbase = sheldon-bin
 	pkgdesc = A fast, configurable, shell plugin manager
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/rossmacarthur/sheldon
 	arch = x86_64
 	license = MIT
 	provides = sheldon
 	conflicts = sheldon
-	source = sheldon-v0.6.3.tar.gz::https://github.com/rossmacarthur/sheldon/releases/download/0.6.3/sheldon-0.6.3-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 37409330e000a962b663034e9adee1dd71738ebffe2af374259668629879faa8
+	source = sheldon-v0.6.4.tar.gz::https://github.com/rossmacarthur/sheldon/releases/download/0.6.4/sheldon-0.6.4-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 754f7782066bbc6f37aa00e368fa2bc3599188cdbbb4acc2dbcfd3567c4f4fd0
 
 pkgname = sheldon-bin
-
