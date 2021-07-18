@@ -3,7 +3,7 @@ _base=scipyx
 pkgname=python-${_base}
 pkgdesc="SciPy fixes and extensions"
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(BSD)
@@ -27,5 +27,6 @@ package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
   python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1
+  rm -r "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base}/__pycache__"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
