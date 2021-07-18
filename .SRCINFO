@@ -1,7 +1,7 @@
 pkgbase = chia-git
 	pkgdesc = A new blockchain and smart transaction platform that is easier to use, more efficient, and secure.
-	pkgver = 1.2.1.r20.gf708500f
-	pkgrel = 2
+	pkgver = 1.2.1.r0.gefd401ee
+	pkgrel = 3
 	url = https://www.chia.net/
 	install = chia-git.install
 	arch = x86_64
