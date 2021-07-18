@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=serialportassistant
+Name[zh_CN]=串口助手
+Comment=A SerialPort Assistant written in qt
+Exec=/usr/bin/SerialPortAssistant
+Icon=serialportassistant
+Terminal=false
+StartupNotify=false
+Categories=Development;
