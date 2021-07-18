@@ -1,0 +1,40 @@
+
+
+pkgbase = geant4-debug
+	pkgdesc = A simulation toolkit for particle physics interactions (compiled with debugging info).
+	pkgver = 10.7.2
+	pkgrel = 1
+	url = http://geant4.cern.ch/
+	install = geant4.install
+	arch = x86_64
+	license = custom: http://geant4.cern.ch/license/
+	depends = cmake>=3.8
+	depends = xerces-c>=3
+	depends = qt5-base
+	depends = glu
+	depends = openmotif
+	depends = soqt
+	depends = zlib
+	optdepends = java-environment: for histogram visualizations and analysis
+	optdepends = tcsh: for C Shell support
+	optdepends = python: for G4Python support
+	optdepends = geant4-abladata: Data files for nuclear shell effects in INCL/ABLA hadronic mode
+	optdepends = geant4-ensdfstatedata: Nuclei properties from the Evaluated Nuclear Structure Data Files
+	optdepends = geant4-incldata: Data files for proton and neutron density profiles
+	optdepends = geant4-ledata: Data files for low energy electromagnetic processes
+	optdepends = geant4-levelgammadata: Data files for photon evaporation
+	optdepends = geant4-neutronhpdata: Neutron data files with thermal cross sections
+	optdepends = geant4-particlexsdata: Data files for evaluated p, d, t, He3, He4 and gamma cross sections, replaces geant4-neutronxsdata
+	optdepends = geant4-piidata: Data files for shell ionisation cross sections
+	optdepends = geant4-radioactivedata: Data files for radioactive decay hadronic processes
+	optdepends = geant4-realsurfacedata: Data files for measured optical surface reflectance
+	optdepends = geant4-saiddata: Data files from evaluated cross-sections in SAID data-base
+	conflicts = geant4
+	options = !emptydirs
+	options = !strip
+	source = http://cern.ch/geant4-data/releases/geant4.10.07.p02.tar.gz
+	source = geant4.install
+	sha256sums = ee4ae9f103546e92aa3762b253fd1d95d1f2792299951d59c94e7b673eb86b32
+	sha256sums = 0eae153900d995603b0b465c9f17225ba76dd8118377507916fc709360482058
+
+pkgname = geant4-debug
