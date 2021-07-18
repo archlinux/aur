@@ -1,7 +1,7 @@
 # Maintainer: Georgy Kibardin <georgy at kibardin.name>
 
 pkgname=isync-utf8-mailboxes
-pkgver=1.3.3
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="IMAP and MailDir mailbox synchronizer"
 arch=('x86_64')
