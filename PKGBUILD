@@ -1,7 +1,7 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=11
+pkgrel=12
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 changelog=$pkgname.changelog
 arch=(x86_64)
@@ -119,15 +119,15 @@ package() {
         tar czf ${pkgdir}/opt/${pkgname}/lib/evelauncher-${pkgver}.tar.gz evelauncher/
 }
 
-sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
+sha256sums=('3faf7c07b571a80f05b46b44b832e1986bf45d2a84c2cba0fceda4d38a5a9259'
             '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
             '77b8a8d1cde800956dadf8abf35287c34b3c844c40dfa8f89ed01ca2cde345fb'
-            '168478fca0bc7be5be3ed2a44e3b64732d2b0ef0758f7d9bd51ec56b7e0713eb'
-            'a7e044defcc95bcd86e4721f888fd1dee234b718dd58eff862697d164dc342b9'
-            'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
+            '008ea3e1c1b8faaf61f0ddf9a53599058c7a97ebe6e719803d002f0eb6042602'
+            '03e5eb09f931935cab02b3f30cfc9f9356f92558b3c1d691cbf60e1360a571c7'
+            'ac6ead162ec27c3ab9481f1a7907dc906b1a1be121820a6aed2ad1d8312a72d6'
             '94679e947e7ecaa5f2b1da96b53d92e74aa45c19aab1f6d2fc7d28d3fea3ac1d'
-            '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
-            'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
+            'c86790a014cb765577d269e98595c1e41f988fbb805a521e7a0083cf4b16b8ad'
+            'e485a1ab084a7c59bd97064e5d616f621e2e40a0e95008ce0891cc06e06792f4'
             '68a0f72b795a062b118745ae29f377863111e893f6536cd1a6cc7e633f3a1b29'
             '30b6440b842c19df64892cc560c274a7cc4f5de910a9f81e12dd0d76da561474'
             'ebdeaa2a143b8d247d94b4a57a45065c299253c074f5d741870a78dd384c29f0'

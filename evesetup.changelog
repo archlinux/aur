@@ -1,2 +1,4 @@
-Update DXVK to version 1.9
+In function check_elv terminate hanging evelauncher processes added
+Minor changes in evelaucher.sh.real
+Categories in desktop launcher files changed
 

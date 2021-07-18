@@ -6,6 +6,6 @@ Icon=evewinecfg
 Comment=Wine Configuration for EVE
 Exec=evewinecfg
 NoDisplay=false
-Categories=Utility;Wine;
+Categories=Wine;
 StartupNotify=false
 Terminal=false

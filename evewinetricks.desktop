@@ -6,6 +6,6 @@ Icon=winetricks
 Comment=Winetricks for EVE
 Exec=evewinetricks
 NoDisplay=false
-Categories=Utility;Wine;
+Categories=Wine;
 StartupNotify=false
 Terminal=false

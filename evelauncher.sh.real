@@ -15,11 +15,9 @@ export LD_LIBRARY_PATH
 "$dirname/$appname" "$@" &
 
 if [ -x "$(which lsof)" ] ;then
-	sleep 10
-	until [ "$(lsof -t -u $(whoami) -a -c /evelauncher$/ -- \
-			$HOME/.local/share/CCP/EVE/QtWebEngine/Default/IndexedDB/https_launcher.eveonline.com_0.indexeddb.leveldb/LOCK)" = "" ]
-	do
-		sleep 10
-	done
-	kill $(lsof -t -u $(whoami) -a -c /evelauncher$/)
+sleep 10
+until [ "$(lsof -t -u $(whoami) -a -c /evelauncher$/ -- \
+ $HOME/.local/share/CCP/EVE/QtWebEngine/Default/IndexedDB/https_launcher.eveonline.com_0.indexeddb.leveldb/LOCK)" = "" ]
+do sleep 10 ;done
+/usr/bin/kill -s TERM evelauncher
 fi

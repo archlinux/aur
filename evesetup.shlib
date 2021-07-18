@@ -5,6 +5,7 @@ EVECONF="$CONFDIR/EVE.conf"
 SHAREDIR="$HOME/.eve"
 
 check_elv() {
+	/usr/bin/kill -s TERM evelauncher 2>/dev/null || true
 	ELBIN=$(getdate $LAUNCHER/evelauncher)
 	ELARC=$(getdate $SETUPDIR/lib/evelauncher-$ELVER.tar.?z)
 	if [ "$ELBIN" -lt "$ELARC" ] ;then
@@ -37,6 +38,7 @@ SharedCacheFolder=$EVEDIR/SharedCache/
 UseCustomWine=true
 CustomWinePath=$WINEPATH/wine
 LauncherRunClientsWithDx9=false
+LauncherShouldMinimizeToTray=false
 EOF
 		mkdir -p $EVEDIR/SharedCache
 		if [ -d "$SHAREDIR/ResFiles/" ] ;then

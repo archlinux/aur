@@ -6,6 +6,6 @@ Icon=everegedit
 Comment=Wine Registry Editor for EVE
 Exec=everegedit
 NoDisplay=false
-Categories=Utility;Wine;
+Categories=Wine;
 StartupNotify=false
 Terminal=false
