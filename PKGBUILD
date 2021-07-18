@@ -8,24 +8,25 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.3.3.r12.gf84dfca16
-pkgrel=2
+pkgver=1.4.0.r0.gcbe7e4428
+pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
 license=(GPL)
-source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.3.x"
-        'https://download.handbrake.fr/handbrake/contrib/AMF-1.4.9.tar.gz'
-        'https://download.handbrake.fr/handbrake/contrib/dav1d-0.5.1.tar.bz2'
-        'https://download.handbrake.fr/handbrake/contrib/fdk-aac-2.0.1.tar.gz'
-        'https://download.handbrake.fr/handbrake/contrib/ffmpeg-4.2.2.tar.bz2'
-    	'https://download.handbrake.fr/handbrake/contrib/libbluray-1.1.2.tar.bz2'
-	    'https://download.handbrake.fr/handbrake/contrib/libdvdnav-6.0.1.tar.bz2'
-	    'https://download.handbrake.fr/handbrake/contrib/libdvdread-6.0.2.tar.bz2'
-	    'https://download.handbrake.fr/handbrake/contrib/libvpx-1.7.0.tar.gz'
-	    'https://download.handbrake.fr/handbrake/contrib/mfx_dispatch-c200d83.tar.gz'
-	    'https://download.handbrake.fr/handbrake/contrib/nv-codec-headers-9.0.18.1.tar.gz'
-	    'https://download.handbrake.fr/handbrake/contrib/x265_3.2.1.tar.gz')
+source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.4.x"
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/AMF-1.4.18.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/dav1d-0.9.0.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/fdk-aac-2.0.1.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/ffmpeg-4.4.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.0.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdnav-6.1.1.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.1.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libvpx-1.7.0.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/mfx_dispatch-1.35.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/nv-codec-headers-11.0.10.1.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265_3.5.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.1.tar.gz')
 _commondeps=(libxml2 libass libvorbis opus speex libtheora lame
              x264 jansson libvpx libva numactl)
 _guideps=(gst-plugins-base gtk3 librsvg libgudev)
@@ -35,30 +36,32 @@ optdepends=('libdvdcss: for decoding encrypted DVDs'
             'intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc')
 sha256sums=('SKIP'
-            'd10f75612da5bcbc26325adecc5d398dcddf216c0dae3406d9a29b9d0b44b112'
-            '0214d201a338e8418f805b68f9ad277e33d79c18594dee6eaf6dcd74db2674a9'
+            '4f21ee07c8bb9b73ff48dbce7cb0917cdcd4d81d33333da391d97ce7f00642fe'
+            'e0cb645f170e7a087bc76e501324177be51a8db21df22ad37b43d289d7d1f7b5'
             'a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6'
-            'b620d187c26f76ca19e74210a0336c3b8380b97730df5cdf45f3e69e89000e5c'
-            'a3dd452239b100dc9da0d01b30e1692693e2a332a7d29917bf84bb10ea7c0b42'
-            'e566a396f1950017088bfd760395b0565db44234195ada5413366c9d23926733'
-            'f91401af213b219cdde24b46c50a57f29301feb7f965678f1d7ed4632cc6feb0'
+            '42093549751b582cf0f338a21a3664f52e0a9fbe0d238d3c992005e493607d0e'
+            'e2dbaf99e84e0a9725f4985bcb85d41e52c2261cc651d8884b1b790b5ef016f9'
+            'c191a7475947d323ff7680cf92c0fb1be8237701885f37656c64d04e98d18d48'
+            '3e357309a17c5be3731385b9eabda6b7e3fa010f46022a06f104553bf8e21796'
             '1fec931eb5c94279ad219a5b6e0202358e94a93a90cfb1603578c326abfc1238'
-            'ec1da009e7c77fcc3e45ff665b30c9390437cd920f2951ccabf3d79e8d5703a9'
-            '6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745'
-            'fb9badcf92364fd3567f8b5aa0e5e952aeea7a39a2b864387cec31e3b58cbbcc')
+            '0790ff82158837124150ab4034db37433a92caac0f145f249d2f194d8ccba3ca'
+            '97e37b85922f1167b2f0bf0bb804c3d7266cc679e78814fe820cf8912a0e1291'
+            'e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8'
+            'c50a0922f4adac4efad77427d13520ed89b8366eef0ef2fa379572951afcc73f')
 
 noextract=(
-    'AMF-1.4.9.tar.gz'
-    'dav1d-0.5.1.tar.bz2'
+    'AMF-1.4.18.tar.gz'
+    'dav1d-0.9.0.tar.bz2'
     'fdk-aac-2.0.1.tar.gz'
-    'ffmpeg-4.2.2.tar.bz2'
-    'libbluray-1.1.2.tar.bz2'
-    'libdvdnav-6.0.1.tar.bz2'
-    'libdvdread-6.0.2.tar.bz2'
+    'ffmpeg-4.4.tar.bz2'
+    'libbluray-1.3.0.tar.bz2'
+    'libdvdnav-6.1.1.tar.bz2'
+    'libdvdread-6.1.1.tar.bz2'
     'libvpx-1.7.0.tar.gz'
-    'mfx_dispatch-c200d83.tar.gz'
-    'nv-codec-headers-9.0.18.1.tar.gz'
-    'x265_3.2.1.tar.gz'
+    'mfx_dispatch-1.35.tar.gz'
+    'nv-codec-headers-11.0.10.1.tar.gz'
+    'x265_3.5.tar.gz'
+    'zimg-3.0.1.tar.gz'
     )
 
 pkgver() {
