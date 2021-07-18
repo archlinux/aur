@@ -23,7 +23,7 @@ makedepends=(
 	'lz4>=1.8'
 	'ninja'
 	'nlohmann-json>=3.8'
-	'openssl>=1.1'
+	'openssl>=1.1' # for cpp-httplib
 	'opus>=1.3'
 	'qt5-tools>=5.12'
 	'sdl2>=2.0.14'
