@@ -31,6 +31,8 @@ pkgbase = wg-manager-git
 	provides = wg-manager
 	conflicts = wg-manager
 	source = git+https://github.com/perara/wg-manager.git
+	source = wg-manager.service
 	md5sums = SKIP
+	md5sums = 1aeba283c71d79defdd4075dfdc3772f
 
 pkgname = wg-manager-git

@@ -14,8 +14,9 @@ depends=(
 makedepends=("angular-cli")
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("git+$url.git")
-md5sums=("SKIP")
+source=("git+$url.git" "wg-manager.service")
+md5sums=('SKIP'
+         '1aeba283c71d79defdd4075dfdc3772f')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
