@@ -10,7 +10,7 @@
 _lua=luajit
 
 pkgname=powder-toy
-pkgver=96.0.348
+pkgver=96.1.349
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(x86_64 i686)
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The-Powder-Toy/The-Powd
         "${pkgname}.desktop"
         "${pkgname}-open.desktop"
         "${pkgname}-ptsave.desktop")
-sha256sums=('25e405e547961485a498672ddb27adc87abe906f6b8f49516c28bdf751e66334'
+sha256sums=('2a9b5849fafd02a23a1c92233dd9a84c2a4f46d1a890c3a70e3d444c05753c3e'
             'b5d181c3141715b7dced8813cae6d07d2adc03bca2a7efe527592740de2d45e2'
             '265f530be7597fcc7bbaf2690fd517fe4f8f18372c808a90ddef49a604c8d455'
             '398f6d068dd37e12989f4132ea5966886b14036bac07a589991b283d242b4ca5'
