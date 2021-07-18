@@ -1,7 +1,7 @@
 pkgbase = quantum-espresso
 	pkgdesc = A suite of codes for electronic-structure calculations and modeling
-	pkgver = 6.6
-	pkgrel = 2
+	pkgver = 6.7
+	pkgrel = 1
 	url = https://www.quantum-espresso.org/
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,8 @@ pkgbase = quantum-espresso
 	depends = libxc
 	depends = elpa
 	depends = fftw
-	source = https://gitlab.com/QEF/q-e/-/archive/qe-6.6/q-e-qe-6.6.tar.bz2
-	sha256sums = 20384d86e963950c446e7f5b4703f84db755a8e630a7ad6a53b567b74f324b02
+	options = !buildflags
+	source = https://gitlab.com/QEF/q-e/-/archive/qe-6.7MaX-Release/q-e-qe-6.7MaX-Release.tar.bz2
+	sha256sums = c67429353d49142b675ba6deefbde9594159518bf331aac187ee45a46d02734d
 
 pkgname = quantum-espresso
-
