@@ -1,7 +1,7 @@
 # Maintainer: ccat3z <c0ldcat3z@gmail.com>
 
 pkgname=miktex-git
-pkgver=21.6.r0.1dd0ae58d
+pkgver=21.7.r0.a28d7dd21
 pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('apr' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'libjpeg' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
          'poppler' 'popt' 'potrace' 'uriparser' 'zziplib' 'poppler-qt5' 'qt5-script')
 makedepends=('git' 'cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools')
-source=('miktex::git+https://github.com/MiKTeX/miktex.git')
+source=('miktex::git+https://github.com/MiKTeX/miktex.git#tag=21.7')
 md5sums=('SKIP')
 
 pkgver() {
