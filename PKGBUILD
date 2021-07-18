@@ -3,7 +3,7 @@
 _pkgname=AppleWin
 _name=applewin
 pkgname="${_name}-git"
-pkgver=v1.25.0.4.r1954.gdb8997d6
+pkgver=v1.25.0.4.r1962.gb31d1342
 pkgrel=1
 pkgdesc="AppleWin Linux port by Audetto - GIT version"
 arch=('x86_64')
