@@ -1,5 +1,3 @@
-diff --git a/externals/CMakeLists.txt b/externals/CMakeLists.txt
-index fd427a9..0d9a30d 100644
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
 @@ -31,7 +31,8 @@ endif()
@@ -12,8 +10,6 @@ index fd427a9..0d9a30d 100644
  
  # mbedtls
  add_subdirectory(mbedtls EXCLUDE_FROM_ALL)
-diff --git a/src/yuzu_cmd/config.cpp b/src/yuzu_cmd/config.cpp
-index 325584a..a8c25c7 100644
 --- a/src/yuzu_cmd/config.cpp
 +++ b/src/yuzu_cmd/config.cpp
 @@ -15,7 +15,7 @@
