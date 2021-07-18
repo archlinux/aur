@@ -2,9 +2,9 @@
 
 pkgname=gomi
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An rm alternative written in Go"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 url="https://github.com/b4b4r07/gomi"
 license=('MIT')
 depends=('glibc')
