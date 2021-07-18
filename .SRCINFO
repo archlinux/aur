@@ -1,7 +1,7 @@
 pkgbase = immudb
 	pkgdesc = immudb - world’s fastest immutable database
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.codenotary.com/technologies/immudb/
 	arch = x86_64
 	license = Apache-2.0

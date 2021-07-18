@@ -2,7 +2,7 @@
 
 pkgname="immudb"
 pkgver="1.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="immudb - world’s fastest immutable database"
 arch=('x86_64')
 url="https://www.codenotary.com/technologies/immudb/"
