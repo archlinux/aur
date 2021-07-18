@@ -198,7 +198,7 @@ package_pulseaudio-airplay-equalizer(){
 
 package_pulseaudio-airplay-rtp() {
   pkgdesc="RTP and RAOP support for PulseAudio"
-  depends=("pulseaudio=$pkgver-$pkgrel")
+  depends=("pulseaudio-airplay=$pkgver-$pkgrel")
 
   mv rtp/* "$pkgdir"
 }
