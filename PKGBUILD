@@ -10,12 +10,13 @@ _pkgname=(
     "alterlinux-plasma-bookmarks"
     "alterlinux-desktop-file"
     "alterlinux-live-info"
+    "alterlinux-gtk-bookmarks"
 )
 
 pkgname=(${_pkgname[@]})
 _reponame="fascode-live-tools"
 pkgver="1.8.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Scripts required for live environment"
 arch=('any')
 url="https://github.com/FascodeNet/${_reponame}"
@@ -46,7 +47,7 @@ install_license() {
 # alterlinux-live-tools
 package_alterlinux-live-tools() {
     pkgdesc="Scripts required for live environment (meta package)"
-    depends+=(${_pkgname[@]})
+    depends+=("${_pkgname[@]}")
     install_license
 }
 
@@ -57,6 +58,11 @@ package_fascode-gtk-bookmarks() {
     provides+=("alterlinux-gtk-bookmarks")
     install_files
     install_license
+}
+
+package_alterlinux-gtk-bookmarks(){
+    pkgdesc="Simple script to automatically generate GTK bookmarks"
+    depends=("fascode-gtk-bookmarks")
 }
 
 # alterlinux-welcome-page
