@@ -1,0 +1,16 @@
+pkgbase = python-uvicorn-loguru-integration-git
+	pkgdesc = Code to integrate uvicorn.run with Loguru logging
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/MatthewScholefield/uvicorn-loguru-integration
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = uvicorn
+	depends = python-loguru
+	provides = python-uvicorn-loguru-integration
+	conflicts = python-uvicorn-loguru-integration
+	source = git+https://github.com/MatthewScholefield/uvicorn-loguru-integration.git
+	md5sums = SKIP
+
+pkgname = python-uvicorn-loguru-integration-git
