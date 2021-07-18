@@ -1,4 +1,6 @@
 /src
 /pkg
 /*.tar.xz
+/*tar.zst
 /bd-git
+/bd

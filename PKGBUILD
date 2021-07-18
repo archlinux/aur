@@ -1,32 +1,33 @@
-# Maintainer: Allen Li <darkfeline@felesatra.moe>
+# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
+# Contributor: Allen Li <darkfeline@felesatra.moe>
 # Contributor: Fortunato Ventre (voRia) <vorione AT gmail DOT com>
 
 pkgname=bd-git
-_gitname=bd
-pkgver=r41.8b04657
+_pkgname=bd
+pkgver=v1.02.r7.ge379330
 pkgrel=1
-pkgdesc="Jump back to a specific directory, without doing `cd ../../..`"
+pkgdesc='Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly'
+url='https://github.com/vigneshwaranr/bd'
 arch=('any')
-url="https://github.com/vigneshwaranr/bd"
 license=('MIT')
 makedepends=('git')
 depends=('bash')
 optdepends=('bash-completion')
-source=($pkgname'::git+git://github.com/vigneshwaranr/bd.git')
+source=("${_pkgname}::git+git://github.com/vigneshwaranr/bd.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${_pkgname}"
 
   install -D -m 755 bd "$pkgdir/usr/bin/bd"
   install -D -m 644 bash_completion.d/bd "$pkgdir/usr/share/bash-completion/completions/bd"
   install -D -m 644 README.md "$pkgdir/usr/share/doc/bd/README.md"
   install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+pkgver() {
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # vim:set ts=2 sw=2 et:
