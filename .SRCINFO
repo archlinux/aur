@@ -123,4 +123,4 @@ pkgname = pulseaudio-airplay-equalizer
 
 pkgname = pulseaudio-airplay-rtp
 	pkgdesc = RTP and RAOP support for PulseAudio
-	depends = pulseaudio=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
