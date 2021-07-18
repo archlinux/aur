@@ -36,6 +36,9 @@ build()
     --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
   make -C dev_manual html
+
+  cd build/python
+  python setup.py build
 }
 
 package()
@@ -69,7 +72,7 @@ package()
 
   # Install the Python binding
   cd build/python
-  python setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   rm -fr "$pkgdir/usr/python"
 
