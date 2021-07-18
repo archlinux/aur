@@ -11,7 +11,6 @@ pkgbase = python-regli
 	source = https://files.pythonhosted.org/packages/source/r/regli/regli-2019.920.0.tar.gz
 	source = https://raw.githubusercontent.com/hypergravity/regli/master/LICENSE
 	md5sums = c02ad2bee0979a9defef38e7dea75a93
-	md5sums = 4138b8245bda677d8910e00d4338e70b
+	md5sums = SKIP
 
 pkgname = python-regli
-

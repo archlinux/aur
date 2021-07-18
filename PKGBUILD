@@ -13,7 +13,7 @@ depends=('python-astroslam')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/hypergravity/regli/master/LICENSE")
 md5sums=('c02ad2bee0979a9defef38e7dea75a93'
-         '4138b8245bda677d8910e00d4338e70b')
+         'SKIP')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
