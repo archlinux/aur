@@ -3,7 +3,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=2.8.3
+pkgver=2.8.11
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -13,13 +13,13 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
-         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
+         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
              'libtg_owt' 'extra-cmake-modules')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        "fix-gcc11-assert.patch")
-sha512sums=('75ef88440aa3337594d16b8517c5604ee627ade91cdde5de357132a8a827c909c392e30f4f2ac5b9facc3968bdfeb32d7f5370fea9cec2b341325aa979962356'
-            'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f')
+        "fix-webview-extern-C-linkage.patch::https://patch-diff.githubusercontent.com/raw/desktop-app/lib_webview/pull/9.patch")
+sha512sums=('a553313b04fbb562745be2381a84117657172952e46e280980a73c9fcfe2a7cf29c0e012e4b1259816d1e6652418e7a1ddfc4e394544fcc3aeb33704cbe80860'
+            '6f405d48457f8839c9759ec1024db20251f0d42a3ec0026d1334d56511877f830213ac4b3c2396319dc8811e330324a4d62a0973221e280063aa69c18fd09a0e')
 
 prepare() {
     cd tdesktop-$pkgver-full
@@ -36,8 +36,13 @@ prepare() {
     echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
     echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
 
+    # cp libjemalloc from jemalloc package
+    mkdir -p external/jemalloc/jemalloc-prefix/src/jemalloc/lib/
+    cp /usr/lib/libjemalloc_pic.a external/jemalloc/jemalloc-prefix/src/jemalloc/lib/libjemalloc.a
+    # fix webview extern "C" linkage error
     cd ..
-    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
+    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-webview-extern-C-linkage.patch
+
 }
 
 build() {
