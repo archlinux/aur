@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-trayicon
 	pkgdesc = Perl interface to the EggTrayIcon library
 	pkgver = 0.07
-	pkgrel = 0
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Gtk2-TrayIcon/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,3 @@ pkgbase = perl-gtk2-trayicon
 	md5sums = c3db5edd7c39ca52625d664b0fb988a5
 
 pkgname = perl-gtk2-trayicon
-	depends = gtk2-perl
-	depends = perl>=
-	depends = perl<
