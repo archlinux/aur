@@ -1,0 +1,11 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Remove
+Target = usr/share/fontconfig/conf.default/*
+
+[Action]
+Description = Updating fontconfig configuration...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/40-fontconfig-config /etc/fonts/conf.d
+NeedsTargets

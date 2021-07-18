@@ -7,13 +7,11 @@
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 # http://getemoji.com/
 
-# documentation currently fails to build
-#pkgbase=fontconfig-ubuntu
-#pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
-pkgname=fontconfig-ubuntu
+pkgbase=fontconfig-ubuntu
+pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
 pkgver=2.13.1
-_ubuver=4.2ubuntu2
-pkgrel=2
+_ubuver=4.2ubuntu3
+pkgrel=3
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
 arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
@@ -23,10 +21,14 @@ makedepends=('autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docbook-util
 checkdepends=('unzip')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}.orig.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}-${_ubuver}.debian.tar.xz"
-        'fontconfig-ubuntu.hook')
+        'fontconfig-ubuntu.hook'
+        '40-fontconfig-config.hook'
+        '40-fontconfig-config.script')
 sha256sums=('f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741'
-            'c882c12b8d66d7e1ae7a880ebcc1fe1716e70b3502b5cd7ac88859d7a70eff50'
-            '8883f7e6e9d574ed52b89256507a6224507925715ddc85b3dfab9683df2f1e25')
+            'e8b52131c91b086d4af3adac4b7ba63ed5539592e694f15f809a13c492dc1c00'
+            'fd7b6ce8ce178107f2e0b52462ebf186b6051c6eec945770107fda57048c9f34'
+            '44f12491c9fd7eff825853846a2b3b8df2b96fc6520be5cb31ce7f37a160ff02'
+            '7a9d50bccc709eb15db6ba8e13f69bc9d79b0bf354f1d17c1a5b2748edff3c33')
 
 prepare() {
     # apply Ubuntu patches
@@ -43,12 +45,11 @@ build() {
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
-        --with-templatedir='/etc/fonts/conf.avail' \
+        --with-templatedir='/usr/share/fontconfig/conf.avail' \
         --localstatedir='/var' \
         --disable-static \
         --with-default-fonts='/usr/share/fonts' \
-        --with-add-fonts='/usr/local/share/fonts' \
-        --disable-docs
+        --with-add-fonts='/usr/local/share/fonts'
     make
 }
 
@@ -65,21 +66,32 @@ package_fontconfig-ubuntu() {
     install=fontconfig-ubuntu.install
     
     make -C "fontconfig-${pkgver}" DESTDIR="$pkgdir" install
-    install -D -m644 "${pkgname}.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
-    install -D -m644 debian/changelog  -t "${pkgdir}/usr/share/doc/${pkgname}"
+    
+    # handle conf.d using the hook to avoid overwriting the symlinks on upgrade
+    local _file
+    install -d -m755 "${pkgdir}/usr/share/fontconfig/conf.default"
+    for _file in "${pkgdir}/etc/fonts/conf.d"/*.conf
+    do
+        ln -sr "${pkgdir}/usr/share/fontconfig"/conf.{avail,default}/"${_file##*/}"
+        rm "$_file"
+    done
+    
+    install -D -m644 *.hook -t "${pkgdir}/usr/share/libalpm/hooks"
+    install -D -m755 40-fontconfig-config.script "${pkgdir}/usr/share/libalpm/scripts/40-fontconfig-config"
+    install -D -m644 debian/changelog -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # split docs
-    #[ -d 'docs' ] && rm -rf docs
-    #mkdir -p docs/share/man
-    #mv "${pkgdir}/usr/share/doc" docs/share
-    #mv "${pkgdir}/usr/share/man/man3" docs/share/man
+    [ -d 'docs' ] && rm -rf docs
+    mkdir -p docs/share/man
+    mv "${pkgdir}/usr/share/doc" docs/share
+    mv "${pkgdir}/usr/share/man/man3" docs/share/man
 }
 
-#package_fontconfig-ubuntu-docs() {
-#    pkgdesc+=' (documentation)'
-#    arch=('any')
-#    
-#    mv docs "${pkgdir}/usr"
-#    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-#}
+package_fontconfig-ubuntu-docs() {
+    pkgdesc+=' (documentation)'
+    arch=('any')
+    
+    mv docs "${pkgdir}/usr"
+    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
