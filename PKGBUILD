@@ -1,7 +1,7 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 
 pkgname=makedeb
-pkgver=5.8.5
+pkgver=5.9.1
 pkgrel=1
 pkgdesc="Create Debian archives from PKGBUILDs (stable release)"
 arch=('any')
