@@ -4,7 +4,7 @@
 
 pkgbase="cups"
 pkgname=('libcups' 'cups')
-pkgver=2.3rc1.r29.g664789488
+pkgver=2.3.3.r28.gab83aeec8
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
              'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb' 'dbus'
              'avahi'  'hicolor-icon-theme' 'systemd' 'inetutils' 'libpaper' 'valgrind')
 _srcdir='cups'
-source=(git://github.com/apple/cups.git
+source=(git+https://github.com/apple/cups.git
         cups.logrotate
         cups.pam
         cups.sysusers
@@ -24,7 +24,7 @@ source=(git://github.com/apple/cups.git
         # bugfixes
         cups-systemd-socket.patch
         guid.patch
-	samsung-printer-workaround.patch)
+        samsung-printer-workaround.patch)
 sha256sums=('SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -193,9 +193,9 @@ conflicts=('cups')
   chgrp -R 209 ${pkgdir}/etc/cups
 
   # fix dbus policy location - --with-dbusdir doens't work
-  install -dm755 ${pkgdir}/usr/share/dbus-1/system.d
-  mv ${pkgdir}/etc/dbus-1/system.d/cups.conf ${pkgdir}/usr/share/dbus-1/system.d
-  rm -rf ${pkgdir}/etc/dbus-1
+  #install -dm755 ${pkgdir}/usr/share/dbus-1/system.d
+  #mv ${pkgdir}/etc/dbus-1/system.d/cups.conf ${pkgdir}/usr/share/dbus-1/system.d
+  #rm -rf ${pkgdir}/etc/dbus-1
 
   # fix .desktop file
   sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' ${pkgdir}/usr/share/applications/cups.desktop
