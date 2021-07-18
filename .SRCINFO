@@ -1,7 +1,7 @@
 pkgbase = mtodo
 	pkgdesc = Simple Todo Software for GNU/Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mortymacs/mtodo
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = mtodo
 	sha256sums = b617f14339fcf7a69f2f063f87825095704a0ea69e4216ca89c93f1a9f8bac0b
 
 pkgname = mtodo
-

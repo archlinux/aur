@@ -3,7 +3,7 @@
 
 pkgname=mtodo
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple Todo Software for GNU/Linux'
 arch=('i686' 'x86_64')
 url='https://github.com/mortymacs/mtodo'
