@@ -29,7 +29,11 @@ build()
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
   python manage.py generate
-  python manage.py build --build-mode=prod --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
+  python manage.py \
+    build \
+    --library-types=static,static-pic,relocatable \
+    --build-mode=prod \
+    --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
   make -C dev_manual html
 }
@@ -38,7 +42,11 @@ package()
 {
   cd "$srcdir/$pkgname-$_upstream_ver-src"
 
-  python manage.py install --build-mode=prod "$pkgdir/usr"
+  python manage.py \
+    install \
+    --library-types=static,static-pic,relocatable \
+    --build-mode=prod \
+    "$pkgdir/usr"
 
   # Install the developers manual
   cd dev_manual/_build/html
@@ -69,3 +77,4 @@ package()
   mkdir -p "$pkgdir/usr/lib/ocaml/"
   mv "$pkgdir/usr/ocaml" "$pkgdir/usr/lib/ocaml/libadalang"
 }
+# vim: set et ts=2:
