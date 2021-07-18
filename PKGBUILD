@@ -52,13 +52,11 @@ package()
     "$pkgdir/usr"
 
   # Install the developers manual
-  cd dev_manual/_build/html
-    
+  pushd dev_manual/_build/html
   for file in $(find . -type f); do
-    install -m 644 -D ${file} "$pkgdir/usr/share/doc/$pkgname"/${file#source/}
+    install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
   done
-
-  cd "$srcdir/$pkgname-$_upstream_ver-src"
+  popd
 
   # Install the license.
   install -D -m644     \
