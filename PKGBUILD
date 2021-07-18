@@ -1,7 +1,7 @@
 # Maintainer: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A cross-platform graphical process/system monitor with a customizable interface and a multitude of features."
 provides=('bottom')
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/ClementTsang/bottom"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClementTsang/bottom/archive/$pkgver.tar.gz")
 license=('MIT')
-sha512sums=('c5bf95bfa6e5f20997b15f6a9ab977652bf144269b6984f6594893eb406e174992d1654f2bd1bfa62f7f4acae23d9d09fead42acd291108d24c5049cf401cfb5')
+sha512sums=('1c27a3b2cc264879b669517ab6e67748b7ce6db5d07850aea829ae4c6be86bfce1ca718d6af0cd556d5d9196643b4df98186515212571f72f043ac91b2211780')
 
 build() {
     cd $pkgname-$pkgver
