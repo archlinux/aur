@@ -2,7 +2,7 @@
 
 pkgname=dns-lexicon
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
 url="https://github.com/AnalogJ/lexicon"
@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd lexicon-$pkgver
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
