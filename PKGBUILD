@@ -14,5 +14,5 @@ sha256sums=('20195b0e61c484c68cc124c66b352305d60a9d779a772dcba95adc9ad43bbe02')
 package() {
 	cd "MyBrowse-$pkgver"
 	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
