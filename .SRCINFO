@@ -1,6 +1,6 @@
 pkgbase = python-berliner-git
 	pkgdesc = Tools for stellar tracks & isochrones
-	pkgver = 1.2019.0926.0.r15.g9e24b73
+	pkgver = 2020.1221.0.r4.g7c85bb9
 	pkgrel = 1
 	url = https://github.com/hypergravity/berliner
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = python-berliner-git
 	md5sums = SKIP
 
 pkgname = python-berliner-git
-
