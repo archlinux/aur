@@ -1,36 +1,35 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 # Contributor: Michal Kaliszka <desmont@gmail.com>
 # Contributor: Zsolt Varadi <sysop_xxl@fibermail.hu>
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea
-pkgver=47.1.0
-pkgrel=4
-pkgdesc="A Qt-based text editor for Linux and *BSD. With an ultimate small size TEA provides you hundreds of functions."
-arch=('x86_64')
-url="http://semiletov.org/tea/"
-license=('GPL')
-depends=('qt5-base' 'qt5-declarative' 'gcc-libs' 'aspell' 'hunspell')
-install=tea.install
-DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source=(http://semiletov.org/tea/dloads/tea-$pkgver.tar.bz2)
-sha256sums=('5fda8dc7b96ad0dcada1625e681b4d7b5794984e9736be394e17419470937e56')
-sha512sums=('7787b2abd1355169519b16d78f3d479a2aea777400d113805c4151e3ce734d73b3d330c0b96512ccf8a9cd482b44fa22e61856491fa05daad1ce057abb89a332')
+pkgver=60.4.0
+pkgrel=1
+pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS"
+arch=(x86_64)
+url="https://tea.ourproject.org/"
+license=(GPL3)
+depends=(qt6-base qt6-5compat hunspell)
+makedepends=(cmake)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/psemiletov/tea-qt/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('d5903675c72280d502d79ee9c7da7e8861b66f486fe0abbfe4aad243be1bc9f1df6d3be83d618fc4b84519b16257b8e44ce5b0a13b3bbb48908e496c721d99a3')
+
+prepare() {
+  mkdir -p "${srcdir}/tea-qt-${pkgver}/build"
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
-  qmake-qt5
+  cd "${srcdir}/tea-qt-${pkgver}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  export LANG="en_US.UTF-8"
-  export LC_ALL="en_US.UTF-8"
-  make INSTALL_ROOT="${pkgdir}" install
+  cd "${srcdir}/tea-qt-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 }
+
