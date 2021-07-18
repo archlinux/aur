@@ -6,7 +6,7 @@ pkgver='2.21.0'
 pkgrel=1
 pkgdesc="A bridge from UFOs to FontTools objects."
 url="https://github.com/googlefonts/ufo2ft"
-checkdepends=('python-pytest' 'python-skia-pathops')
+checkdepends=('python-compreffor' 'python-pytest' 'python-skia-pathops')
 depends=('python-booleanoperations' 'python-cffsubr' 'python-cu2qu' 'python-defcon' 'python-fonttools>=4.21.1')
 makedepends=('python-setuptools')
 optdepends=('python-compreffor')
@@ -23,5 +23,5 @@ package() {
 
 check() {
     cd "$_pkgname-$pkgver"
-    python setup.py test
+    PYTHONPATH=Lib pytest tests
 }
