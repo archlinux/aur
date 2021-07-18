@@ -1,0 +1,15 @@
+pkgbase = python-blacktex
+	pkgdesc = Cleans up your LaTeX files
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/nschloe/blacktex
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	depends = python
+	provides = blacktex
+	source = python-blacktex-0.5.1.tar.gz::https://github.com/nschloe/blacktex/archive/v0.5.1.tar.gz
+	sha512sums = ac1422ef403665a57240f74b1aa4c583a8bcd3ea6ebaf87ff62074517e4182c2e8a06e29001b621619253c356b10daa7516dd4db59fb40765eb5bdfa371eb5d9
+
+pkgname = python-blacktex
