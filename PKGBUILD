@@ -12,12 +12,12 @@ sha512sums=('db1c7ac70d41014a34ac156eb073db0589928aabfb872455ee84e660f89a0d79623
 
 build() {
 	cd "$pkgname-$pkgver"
-	local generator=$(\
+	local _generator="$(\
 		pacman -Qq ninja 1>/dev/null 2>/dev/null \
 		&& echo 'Ninja' \
-		|| echo 'GNU Makefiles' )
+		|| echo 'Unix Makefiles' )"
 
-	installpath="$pkgdir/usr" ./build.sh Release
+	installpath="$pkgdir/usr" generator="$_generator" ./build.sh Release
 }
 
 check() {
