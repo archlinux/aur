@@ -1,15 +1,16 @@
 pkgbase = qmpdclient
-	pkgdesc = A Qt4 client for MPD
-	pkgver = 1.2.2
-	pkgrel = 7
-	url = https://bitcheese.net/wiki/QMPDClient
-	changelog = qmpdclient.changelog
+	pkgdesc = Qt5 client for MPD
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/ChaoticEnigma/qmpdclient
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = cmake
-	depends = qt4
-	source = https://dump.bitcheese.net/files/qmpdclient-1.2.2.tar.bz2
-	sha256sums = ed65705eaae8fb10fdce34ce20e010757a87423c2874479e1466e4368a866289
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5-xmlpatterns
+	source = qmpdclient-2.0.1.tar.gz::https://github.com/ChaoticEnigma/qmpdclient/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 3b09622dcf2c7b31c25ca9caf6db4a701ba79e7786d8b4d76908239df8655e15
 
 pkgname = qmpdclient
-
