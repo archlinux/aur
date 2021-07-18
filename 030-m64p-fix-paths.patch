@@ -21,9 +21,9 @@
 -        settings->setValue("configDirPath", "$CONFIG_PATH$");
 +        settings->setValue("configDirPath", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/mupen64plus");
  
-     updatePlugins();
- 
-@@ -428,7 +429,7 @@ void MainWindow::updateApp()
+ #ifdef CORE_LIBRARY_PATH
+     settings->setValue("coreLibPath", CORE_LIBRARY_PATH);
+@@ -438,7 +439,7 @@ void MainWindow::updateApp()
  
  void MainWindow::setupDiscord()
  {
