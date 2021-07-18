@@ -1,12 +1,13 @@
 pkgbase = terri-fried-git
 	pkgdesc = A multi-platform C++ game made for Ludum Dare 46
 	pkgver = r34.463aa1e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/polymarsdev/terri-fried
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = raylib
+	makedepends = gcc
 	depends = raylib
 	depends = pulseaudio
 	source = terri-fried-git::git+https://github.com/polymarsdev/terri-fried
