@@ -27,6 +27,7 @@ pkgbase = wg-manager-git
 	depends = python-requests
 	depends = python-uvloop
 	depends = python-httptools
+	depends = python-uvicorn-loguru-integration
 	provides = wg-manager
 	conflicts = wg-manager
 	source = git+https://github.com/perara/wg-manager.git
