@@ -7,8 +7,8 @@ pkgdesc="A SerialPort Assistant written in qt"
 url="https://github.com/duapple/serialport"
 arch=('x86_64')
 license=("Custom")
-depends=('qt5-serialport')
-makedepend=('imagemagick')
+depends=('qt5-serialport' 'hicolor-icon-theme')
+makedepends=(imagemagick)
 provides=('bash2048')
 source=("https://github.com/duapple/serialport/releases/download/28686cc/serialPortAssistant"
         "https://raw.githubusercontent.com/duapple/serialport/master/image/icon1.ico"
