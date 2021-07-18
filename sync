@@ -31,8 +31,8 @@ makepkg --printsrcinfo > .SRCINFO
 makepkg
 
 # Commit and push changes.
-#git commit -m "Upgrade to version ${version}" PKGBUILD .SRCINFO
-#git push
+git commit -m "Upgrade to version ${version}" PKGBUILD .SRCINFO
+git push
 
 # Logging final result.
 echo "Update ${pkgname} from ${pkgver} to ${version} version in AUR"
