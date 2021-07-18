@@ -3,7 +3,7 @@
 
 _pkgname=dufte
 pkgname=python-dufte
-pkgver=0.2.21
+pkgver=0.2.22
 pkgrel=1
 pkgdesc='Creates clean and beautiful plots that work on light and dark backgrounds.'
 arch=(any)
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(python-matplotlib python-numpy)
 makedepends=(python-pytest python-setuptools python-build python-install python-wheel)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/$_pkgname/archive/v$pkgver.tar.gz")
-b2sums=('131896389112dbc5e8aee1844ee2576bc90fcf52d9c57f4663f354cefecefa1e82977ab392d5584362ab0c7abc477346264a1db1f174d0ef0a7dc7e970e87629')
+b2sums=('8982616d6665f11fe14a0f06841c66cd8c334a369b99279e9ea7065793891c7ecd1799154f2cfceedd9b4d04102c3bb72b2a24cd04fae9711419928c2f453415')
 
 build() {
   cd $_pkgname-$pkgver
