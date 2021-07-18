@@ -1,8 +1,8 @@
 pkgbase = python-dufte
 	pkgdesc = Creates clean and beautiful plots that work on light and dark backgrounds.
 	pkgver = 0.2.22
-	pkgrel = 1
-	url = https://github.com/nschloe/duf
+	pkgrel = 2
+	url = https://github.com/nschloe/dufte
 	arch = any
 	license = GPL3
 	makedepends = python-pytest
@@ -11,7 +11,6 @@ pkgbase = python-dufte
 	makedepends = python-install
 	makedepends = python-wheel
 	depends = python-matplotlib
-	depends = python-numpy
 	source = python-dufte-0.2.22.tar.gz::https://github.com/nschloe/dufte/archive/v0.2.22.tar.gz
 	b2sums = 8982616d6665f11fe14a0f06841c66cd8c334a369b99279e9ea7065793891c7ecd1799154f2cfceedd9b4d04102c3bb72b2a24cd04fae9711419928c2f453415
 
