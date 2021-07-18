@@ -3,7 +3,7 @@
 pkgname=typedb
 _pkgname=typedb-all
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TypeDB: a strongly-typed database"
 arch=('i686' 'x86_64')
 url="https://github.com/vaticle/${pkgname}"
