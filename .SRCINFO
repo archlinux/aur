@@ -1,15 +1,13 @@
 pkgbase = chromium-extension-https-everywhere
 	pkgdesc = An extension that encrypts your communications with websites that offer HTTPS
-	pkgver = 2021.4.15
+	pkgver = 2021.7.13
 	pkgrel = 1
 	url = https://www.eff.org/https-everywhere
 	changelog = chromium-extension-https-everywhere.changelog
 	arch = any
 	license = GPL2
-	depends = chromium
-	noextract = chromium-extension-https-everywhere-2021.4.15.crx
-	source = chromium-extension-https-everywhere-2021.4.15.crx::https://www.eff.org/files/https-everywhere-chrome-2021.4.15.crx
-	b2sums = c2f509ffcc4e4424700cb26d315dc1e03b65bcf585133f1bd3a91af9264f9e41f2e725c87299772e556783b7cc0eb4cf89548b036c0494da797b3dc02849ffcb
+	noextract = chromium-extension-https-everywhere-2021.7.13.crx
+	source = chromium-extension-https-everywhere-2021.7.13.crx::https://www.eff.org/files/https-everywhere-chrome-2021.7.13.crx
+	b2sums = fb9173113661791fab85fdfe150162334bd7401ff3bd45db53b7c6a77fc468fc3bb244db2aa8e92746bdd2cb95fdf2da979a862d2206b868b8a46e410db19853
 
 pkgname = chromium-extension-https-everywhere
-
