@@ -1,6 +1,6 @@
 pkgbase = python-sdbus-git
 	pkgdesc = Modern Python library for D-Bus
-	pkgver = r396.6e72fc4
+	pkgver = r469.14ba27e
 	pkgrel = 1
 	url = https://github.com/igo95862/python-sdbus
 	arch = x86_64
@@ -11,15 +11,24 @@ pkgbase = python-sdbus-git
 	depends = python
 	depends = systemd-libs
 	source = python-sdbus-git::git+https://github.com/igo95862/python-sdbus
+	source = python-sdbus-notifications::git+https://github.com/igo95862/python-sdbus-notifications
+	source = python-sdbus-networkmanager::git+https://github.com/igo95862/python-sdbus-networkmanager
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = python-sdbus-git
 	optdepends = python-jinja: Code generator for dbus XML introspection
 	optdepends = python-sphinx: Autodoc for dbus members
 	provides = python-sdbus
+	conflicts = python-sdbus
 
 pkgname = python-sdbus-notifications-git
 	pkgdesc = Freedesktop Notifications binds for python-sdbus
 	depends = python-sdbus
 	provides = python-sdbus-notifications
 
+pkgname = python-sdbus-networkmanager-git
+	pkgdesc = NetworkManager binds for python-sdbus
+	depends = python-sdbus
+	provides = python-sdbus-networkmanager
