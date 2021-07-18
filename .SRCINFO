@@ -1,0 +1,13 @@
+pkgbase = xkcd-gtk
+	pkgdesc = Comic Sticks (xkcd-gtk) is a simple xkcd comic viewer written in Go using GTK+3.
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/rkoesters/xkcd-gtk
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = gtk3
+	source = https://github.com/rkoesters/xkcd-gtk/archive/refs/tags/1.4.2.tar.gz
+	md5sums = SKIP
+
+pkgname = xkcd-gtk
