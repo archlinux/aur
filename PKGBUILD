@@ -2,7 +2,7 @@
 pkgbase=python-berliner
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.0.10
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Tools for stellar tracks & isochrones"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ optdepends=('python-astropy: For testing')
 #source=("https://files.pythonhosted.org/packages/py3/${_pyname:0:1}/${_pyname}/${_pyname/-/_}-${pkgver}-py3-none-any.whl")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/hypergravity/berliner/master/LICENSE")
-md5sums=('fbcd6ab92bac7250737bd234de408f73'
-         '4138b8245bda677d8910e00d4338e70b')
+md5sums=('6d5857c853e72c187c5c1800cd6b2396'
+         'SKIP')
 #_pyver=$(python -V | cut -c 8-10)
 
 build() {

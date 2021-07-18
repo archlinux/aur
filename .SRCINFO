@@ -1,6 +1,6 @@
 pkgbase = python-berliner
 	pkgdesc = Tools for stellar tracks & isochrones
-	pkgver = 0.0.10
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/hypergravity/berliner
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = python-berliner
 	depends = python-regli
 	depends = python-joblib
 	optdepends = python-astropy: For testing
-	source = https://files.pythonhosted.org/packages/source/b/berliner/berliner-0.0.10.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/berliner/berliner-0.1.0.tar.gz
 	source = https://raw.githubusercontent.com/hypergravity/berliner/master/LICENSE
-	md5sums = fbcd6ab92bac7250737bd234de408f73
-	md5sums = 4138b8245bda677d8910e00d4338e70b
+	md5sums = 6d5857c853e72c187c5c1800cd6b2396
+	md5sums = SKIP
 
 pkgname = python-berliner
-
