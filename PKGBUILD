@@ -3,26 +3,26 @@
 # Contributor: Brian Galey <bkgaley at gmail dot com>
 # Contributor: Pietro Zambelli <peter.zamb at gmail dot com>
 
-pkgname=libspatialite-devel
-_pkgname=libspatialite
-pkgver=r960.a02cd88
+pkgname=libfreexl-devel
+_pkgname=libfreexl
+pkgver=r52.2a0759e
 pkgrel=1
-pkgdesc="SQLite extension to support spatial data types and operations. Development version"
+pkgdesc="FreeXL is an open source library to extract valid data from within Spreadsheets. The following document formats are supported starting since version 2.0"
 arch=('x86_64')
-url="https://www.gaia-gis.it/fossil/libspatialite"
+url="https://www.gaia-gis.it/fossil/freexl"
 license=('MPL' 'GPL' 'LGPL')
-depends=('geos' 'libfreexl' 'libxml2' 'proj' 'sqlite' 'librttopo')
+depends=('glibc')
 makedepends=('fossil')
-conflicts=('libspatialite')
-provides=('libspatialite')
-replaces=('libspatialite')
+conflicts=('libfreexl')
+provides=('libfreexl')
+replaces=('libfreexl')
 
 prepare() {
   mkdir -p $_pkgname
   cd $_pkgname
 
-  fossil clone https://www.gaia-gis.it/fossil/libspatialite libspatialite.fossil
-  fossil open libspatialite.fossil
+  fossil clone https://www.gaia-gis.it/fossil/freexl freexl.fossil
+  fossil open -f freexl.fossil
 }
 
 pkgver() {
@@ -37,7 +37,7 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  ./configure --prefix=/usr --enable-libxml2 --enable-rttopo --enable-gcp
+  ./configure --prefix=/usr
   make
 }
 
