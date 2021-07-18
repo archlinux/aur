@@ -2,14 +2,15 @@
 
 pkgbase=vim-fern
 pkgname=('vim-fern' 'neovim-fern')
-pkgver=1.34.0
+pkgver=1.37.0
 pkgrel=1
 pkgdesc="A general purpose asynchronous tree viewer"
 arch=('any')
 url="https://github.com/lambdalisue/fern.vim"
 license=('MIT')
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1ea4aa7ab02a8727eadaec1c12478ee9a573797eb5e3b7280ee0427e8ce7a334')
+source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('9eb6ab14d8a57f95164cb237da27dd8363ebfd9abd2b03ede4c3b2f914bb63ce')
+validpgpkeys=('4AEE18F83AFDEB23')
 
 package_vim-fern() {
   depends=('vim>=8.1')
@@ -17,9 +18,9 @@ package_vim-fern() {
 
   cd "fern.vim-$pkgver"
   find autoload doc ftplugin plugin \
-    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
-  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_neovim-fern() {
@@ -28,7 +29,7 @@ package_neovim-fern() {
 
   cd "fern.vim-$pkgver"
   find autoload doc ftplugin plugin \
-    -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
