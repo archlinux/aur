@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 # Contributor Tavian Barnes <tavianator@tavianator.com>
 pkgname=mozillavpn
-pkgver=2.3.3
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ depends=('polkit'
 makedepends=('qt5-tools')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=(
-    "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/$pkgname/$pkgver-hirsute1/${pkgname}_${pkgver}.orig.tar.gz"
-    "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/$pkgname/$pkgver-hirsute1/${pkgname}_${pkgver}-hirsute1.debian.tar.xz")
-sha256sums=('4bcb5239d77fed42a7370649cb0b32a23cad723830494e54471fa70c2469097a'
+    "mozillavpn_2.2.0.orig.tar.gz::https://drive.google.com/uc?export=download&id=1YCR9rl7mGJMDkzOc__Hm1MM1TaiWA_F2"
+    "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.3.3-hirsute1/mozillavpn_2.3.3-hirsute1.debian.tar.xz")
+sha256sums=('58ff1148904c760c92b58b4503093def3e686a30d2b228fa9f9503b3f0420b6d'
             '7191e7dabea9251575030e175e879664f06a4e079e9306285191f2c0f008b30a')
 
 build() {
