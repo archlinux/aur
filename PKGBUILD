@@ -2,7 +2,7 @@
 
 pkgname="sqlfluff"
 pkgver="0.6.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="A SQL linter and auto-formatter for Humans"
 arch=("any")
 url="https://github.com/sqlfluff/${pkgname}"
