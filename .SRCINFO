@@ -1,7 +1,7 @@
 pkgbase = python-tidalapi-0.6.x-git
 	pkgdesc = Unofficial API for TIDAL music streaming service. 0.6.x Git branch for oAuth fix
 	pkgver = v0.6.8.r1.gd7a77f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tamland/python-tidal
 	arch = any
 	license = LGPL3
