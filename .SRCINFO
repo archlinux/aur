@@ -5,6 +5,7 @@ pkgbase = wg-manager-git
 	url = https://github.com/perara/wg-manager
 	arch = any
 	license = MIT
+	makedepends = angular-cli
 	depends = wireguard-tools
 	depends = uvicorn
 	depends = nodejs
