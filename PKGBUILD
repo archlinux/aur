@@ -1,9 +1,10 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: pikakolendo <pikakolendo02 at g-m-a-i-1 dot c0m>
 
 _pkgname='appimagetool'
 pkgname="${_pkgname}-bin"
-pkgver=12
-pkgrel=1
+pkgver=13
+pkgrel=0
 pkgdesc='Package desktop applications as AppImages'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/AppImage/AppImageKit'
@@ -21,11 +22,11 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${url}/releases/download/
 source_armv7h=("${_pkgname}-${pkgver}-armv7.appimage::${url}/releases/download/${pkgver}/${_pkgname}-armhf.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${url}/releases/download/${pkgver}/${_pkgname}-aarch64.AppImage")
 
-sha256sums=('e7396f995fed233e08063a5bec8f26c343d7f1038f0fca80c3cad26d74090255'
-            'b54da09f0d48f1c42a1b27035711ed41494551ed8a20b991746e669e6f944a94')
-sha256sums_x86_64=('d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13')
-sha256sums_armv7h=('8bca91ae4dac9a6505a4939f29ce5c75b74a8c8e80d56f738b17863fbd6d2770')
-sha256sums_aarch64=('c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a')
+sha256sums=('bf014bb030e26169da2129cb51e75ecc0c1a94cb2c970ee99050c65eaad16a09'
+            '9cb22a08334c3a108ec4da96c1d6aea7a17a732fa9f5ca3413a9b4ce651397d8')
+sha256sums_x86_64=('df3baf5ca5facbecfc2f3fa6713c29ab9cefa8fd8c1eac5d283b79cab33e4acb')
+sha256sums_armv7h=('36bb718f32002357375d77b082c264baba2a2dcf44ed1a27d51dbb528fbb60f6')
+sha256sums_aarch64=('334e77beb67fc1e71856c29d5f3f324ca77b0fde7a840fdd14bd3b88c25c341f')
 
 prepare() {
   chmod a+x "${_pkgname}-${pkgver}-${CARCH}.appimage"
@@ -39,4 +40,3 @@ package(){
   install -Dvm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-# vim: ts=2 sw=2 et:
