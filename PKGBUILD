@@ -1,6 +1,6 @@
 # Maintainer: LongChampion <ThePalazin@Gmail.com>
 pkgname=ibus-bamboo
-pkgver=0.7.5
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="A Vietnamese IME for IBus"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('ibus')
 makedepends=('go' 'libx11' 'libxtst')
 conflicts=('ibus-bamboo-git' 'bamboo-ibus-git')
 source=("ibus-bamboo-$pkgver.tar.gz::https://github.com/BambooEngine/ibus-bamboo/archive/v$pkgver.tar.gz")
-sha256sums=('1904326a60d25f0a1f597574f7fa43015f14f1ece5b78ef3286d13c3341ad3f2')
+sha256sums=('38b067d6406de128d32d9ae066a0747ad5f865583e15b4ae3508ccb8e8f13945')
 
 build() {
     cd "$pkgname-$pkgver"
