@@ -5,8 +5,8 @@ pkgname=social-engineer-toolkit-git
 _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=8.0.3.r71.59fe00810
-pkgrel=1
+pkgver=8.0.3.r74.ef19c0ca8
+pkgrel=2
 
 pkgdesc='The Social-Engineer Toolkit (SET) - Development Version'
 arch=('any')
@@ -32,15 +32,17 @@ prepare() { rm -r "$_name"/{seupdate,setup.py,requirements.txt,.git{hub,ignore}}
 build() { python -O -m compileall "$_name"; }
 
 package() {
-    install -Dm644 "$_name/src/core/config.baseline" "$pkgdir/etc/setoolkit/set.config"
-    install -dm755 "$pkgdir/usr/"{bin,share/{doc,licenses/setoolkit}}
-    cp -a --no-preserve=ownership "$_name" "$pkgdir/usr/share/setoolkit"
-    mv "$pkgdir/usr/share/setoolkit/readme" "$pkgdir/usr/share/doc/setoolkit"
-    mv "$pkgdir/usr/share/setoolkit/README.md" "$pkgdir/usr/share/doc/setoolkit/"
-    ln -s /usr/share/doc/setoolkit "$pkgdir/usr/share/setoolkit/readme"
-    ln -s /usr/share/doc/setoolkit/LICENSE "$pkgdir/usr/share/licenses/setoolkit/"
-    ln -s /usr/share/setoolkit/se{toolkit,proxy,automate} "$pkgdir/usr/bin/"
+  rm -r "$_name/.git"
+  install -Dm644 "$_name/src/core/config.baseline" "$pkgdir/etc/setoolkit/set.config"
+  install -dm755 "$pkgdir/usr/"{bin,share/{doc,licenses/setoolkit}}
+  cp -a --no-preserve=o "$_name" "$pkgdir/usr/share/setoolkit"
+  cd "$pkgdir/usr/share"
+  mv setoolkit/readme    doc/setoolkit
+  mv setoolkit/README.md doc/setoolkit/
+  ln -s /usr/share/doc/setoolkit         setoolkit/readme
+  ln -s /usr/share/doc/setoolkit/LICENSE licenses/setoolkit/
+  ln -s /usr/share/setoolkit/se{toolkit,proxy,automate} ../bin/
 }
 
 
-# vim: ts=4 sw=4 et ft=PKGBUILD:
+# vim: ts=2 sw=2 et ft=PKGBUILD:
