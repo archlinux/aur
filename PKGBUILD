@@ -2,7 +2,7 @@
 
 pkgname=google-cloud-cpp
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
 url="https://github.com/googleapis/google-cloud-cpp/"
