@@ -3,8 +3,8 @@
 pkgname=v2ray-rules-dat-git
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go."
-pkgver=r202107092209
-pkgrel=2
+pkgver=r202107172209
+pkgrel=1
 arch=( 'any' )
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=( 'GPL3' )
