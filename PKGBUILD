@@ -10,7 +10,7 @@ depends=(
     "wireguard-tools" "uvicorn" "nodejs" "npm"
     "python" "python-pydantic" "python-fastapi" "python-aiofiles" "python-aiosqlite" "python-sqlalchemy" "python-databases" "python-pyjwt" "python-passlib" "python-bcrypt" "python-python-multipart" "python-jinja" "python-sqlalchemy-utils" "python-sqlalchemy-migrate" "python-requests" "python-uvloop" "python-httptools"
 )
-makedepends=()
+makedepends=("angular-cli")
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+$url.git")
@@ -24,8 +24,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}/wg-manager-frontend"
     npm install
-    npm install @angular/cli
-    node_modules/@angular/cli/bin/ng build --configuration="production"
+    ng build --configuration="production"
 }
 
 package() {
