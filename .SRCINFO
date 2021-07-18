@@ -1,7 +1,7 @@
 pkgbase = typedb-server
 	pkgdesc = TypeDB: a strongly-typed database
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vaticle/typedb-server
 	arch = i686
 	arch = x86_64
