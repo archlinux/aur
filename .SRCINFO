@@ -1,7 +1,7 @@
 pkgbase = jolie
 	pkgdesc = The Jolie programming language
 	pkgver = 1.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jolie-lang.org/
 	arch = i686
 	arch = x86_64

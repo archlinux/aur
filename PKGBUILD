@@ -2,7 +2,7 @@
 
 pkgname="jolie"
 pkgver="1.10.5"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Jolie programming language"
 arch=('i686' 'x86_64')
 url="https://www.jolie-lang.org/"
