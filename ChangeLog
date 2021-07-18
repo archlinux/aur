@@ -1,9 +1,27 @@
+=== Morgen 2.1.10
+* Bug Fixes
+- Fixed an issue preventing events to be fetched on some CalDAV accounts (Hostgator)
+- The timezone of new events is now by default the timezone chosen in the Settings, rather than the system timezone
+- Fixed the symlink on Linux using the DEB installer
+- Fixed an issue causing sometimes an error when trying to RSVPs to single occurrences of a Google event series
+- Fixed an issue forcing you to click twice to create an event after closing the event panel with escape
+- Fixed an issue causing the wrong parsing of some videoconferencing links in the quick join buttons
+- Fixed a problem making it impossible to copy text from the description of a read-only event
+
+* Improvements
+- The style of the title bar on Windows has been adjusted to be more consistent with other platforms and avoid a white bar on black theme
+- Organizer and attendees are now retained when importing an event into a Caldav provider
+- Availability Sharing functionality now adds the timezone abbreviation next to the time
+- Prevent the use of some shortcuts when the Availability Sharing mode is enabled or when a dialog is open
+- Sanitize attendee email before trying to create a Google Calendar event to avoid errors hard to understand
+
+
 === Morgen 2.1.9
+* Bug Fixes
 - Fixed an issue causing huge output logs on some systems
 - Fixed a problem delivering notifications and event alerts
 - Fixed an issue preventing the compaction of the database, which could become very large
 - One-off events from a recurrent series are now correctly displayed# 
-
 
 
 === Morgen 2.1.8
@@ -11,6 +29,7 @@ Ouch! We have been reported a crash occurring when trying to edit calendar short
 
 
 === Morgen 2.1.7
+* Bug Fixes
 - Fixed a memory leak causing memory usage to grow over time; this should also fix performance degradation over time
 - Fixed an issue where certain CalDAV accounts could not be connected because of a failed service discovery (was actually not fixed in 2.1.6)
 - Fixed an issue causing some recurrence rules not to be updated correctly
