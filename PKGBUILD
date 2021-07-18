@@ -6,7 +6,7 @@ _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for building web application icons'
 arch=('any')
 url=https://quasar.dev/icongenie
@@ -36,7 +36,7 @@ package() {
   
   # print first line (the '{' symbol) and lines from the first non-underscored key to the end
   # (npm internal keys are underscored but we don't need these keys)
-  sed -i -n '1p;/  "[^_].*": {$/,$p' "$pkgdir"/usr/lib/node_modules/"$_npmid"/package.json
+  # sed -i -n '1p;/  "[^_].*": {$/,$p' "$pkgdir"/usr/lib/node_modules/"$_npmid"/package.json
 
   # Add license
   install -Dm644 "$pkgdir/usr/lib/node_modules/$_npmid/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
