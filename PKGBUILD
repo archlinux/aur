@@ -1,15 +1,15 @@
 # Maintainer: Tom Vincent <aur@tlvince.com>
 # Contributor: John Hamelink <me@johnhame.link>
 
-_gitname=python-tidal
+_gitname=python-tidalapi
 _gitbranch=0.6.x
-pkgname="${_gitname}api-${_gitbranch}-git"
+pkgname="${_gitname}-${_gitbranch}-git"
 pkgver=v0.6.8.r1.gd7a77f3
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial API for TIDAL music streaming service. 0.6.x Git branch for oAuth fix'
 url=https://github.com/tamland/python-tidal
 license=(LGPL3)
-source=("git://github.com/tamland/${_gitname}#branch=${_gitbranch}")
+source=("git://github.com/tamland/python-tidal#branch=${_gitbranch}")
 sha512sums=('SKIP')
 arch=('any')
 depends=('python' 'python-requests')
