@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-7tv-git
 _pkgname=chatterino7
-pkgver=r3189.eab1a248
+pkgver=r3277.452da6bd
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 arch=('any')
@@ -25,7 +25,7 @@ source=("git://github.com/SevenTV/chatterino7"
         "git://github.com/pajlada/serialize"
         "git://github.com/Tencent/rapidjson"
         "git://github.com/Chatterino/qtkeychain"
-        "git://github.com/ziocleto/websocketpp")
+        "git://github.com/zaphoyd/websocketpp")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
