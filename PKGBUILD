@@ -1,3 +1,4 @@
+# Maintainer: Luigi Pertoldi <gipert@pm.me>
 pkgbase=bxdecay0
 pkgname=('bxdecay0' 'bxdecay0-geant4')
 pkgver=1.0.10
