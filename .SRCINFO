@@ -11,7 +11,9 @@ pkgbase = mingw-w64-qwt-qt6
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = qwt-6.2-rc2::git+https://github.com/xantares/qwt-cmake.git
+	source = http://downloads.sourceforge.net/qwt/qwt-6.2.0.tar.bz2
+	source = qt6.patch
+	sha256sums = 9194f6513955d0fd7300f67158175064460197abab1a92fa127a67a4b0b71530
 	sha256sums = SKIP
 
 pkgname = mingw-w64-qwt-qt6
