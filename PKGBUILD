@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=21.27.20266
+pkgver=21.28.20343
 _gmmver=21.2.1
 _igcver=1.0.7862
 _lzver="1.1.${pkgver##*.}"
@@ -27,10 +27,10 @@ noextract=("intel-opencl_${pkgver}_amd64.deb"
            "intel-ocloc_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('68a07c1eb97bab9ec7f572c4f440ebc0a1d400b3e2b6eccd74181cbdc895401e'
-            '421a98306baa112aad9dbbe58bbaca2ac01359907e92fb1f88cfe91ce1dfe89c'
-            'f814b8e05c07eb88ada6b31369620d75b2db9ccf2f6862fcacda5e607546340a'
-            'ae661e8e5f55e17908dcb1fb4528cacfe4f6c11e84925fed8365ef180ee00c24'
+sha256sums=('ce18910fdd8db2c28513221588c4620cc33f21781029dfaea9a3f48780cba075'
+            'e772db2ac1322e86437644943a0eb887b88c4e543020e0416f3e58a4f55ba224'
+            '8a8b372d5ce2d7e8a4a6b66d4103e50d6e585447f08271946d87e9b8f1223491'
+            '22f5d140178ac94aa2e5d39a5b0f35204cb6a591849d16532ee3391398d5be60'
             '912cd86e4cb564b6fa549d69a28b72b9cdcb5a3eab9320955ed70ac37381fc2f'
             '73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172')
 
