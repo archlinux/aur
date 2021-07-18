@@ -3,7 +3,7 @@
 
 pkgname=peco
 pkgver=0.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplistic interactive filtering tool'
 arch=('i686' 'x86_64')
 url='https://github.com/peco/peco'
