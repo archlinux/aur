@@ -3,7 +3,7 @@
 
 pkgname=gonano
 pkgver=0.1.16
-pkgrel=1
+pkgrel=2
 _pkgdate=1622827223
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('x86_64')
@@ -46,7 +46,7 @@ build() {
     -ldflags="-linkmode=external -X main.version=$pkgver -X main.date=$_pkgdate" \
     -mod=readonly \
     -modcacherw \
-    "$pkgname-$pkgver"
+    .
 }
 
 package() {
