@@ -1,0 +1,34 @@
+From dc68e219d6fb3efa943cfa0adf0e615fac42b3ec Mon Sep 17 00:00:00 2001
+From: Gibeom Gwon <gb.gwon@stackframe.dev>
+Date: Mon, 21 Jun 2021 17:18:19 +0000
+Subject: [PATCH] Handle ConvPutAuthAbort as an authentication failure
+
+If an incorrect password is provided for a systemd-homed based user,
+kcheckpass sends ConvPutAuthAbort. Currently, ConvPutAuthAbort is
+handled like ConvPutReadyForAuthentication. This causes the problem
+of repeating authentication indefinitely. So, treating ConvPutAuthAbort
+as an authentication failure solves the problem.
+
+BUG: 438099
+---
+ greeter/authenticator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/greeter/authenticator.cpp b/greeter/authenticator.cpp
+index aa0c046..a3e3c92 100644
+--- a/greeter/authenticator.cpp
++++ b/greeter/authenticator.cpp
+@@ -285,9 +285,9 @@ void KCheckPass::handleVerify()
+             Q_EMIT failed();
+             return;
+         case ConvPutAuthError:
++        case ConvPutAuthAbort:
+             cantCheck();
+             return;
+-        case ConvPutAuthAbort:
+         case ConvPutReadyForAuthentication:
+             m_ready = true;
+             if (m_mode == AuthenticationMode::Direct) {
+-- 
+GitLab
+
