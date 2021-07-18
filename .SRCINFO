@@ -1,0 +1,16 @@
+pkgbase = gifsicle-git
+	pkgdesc = Command-line tool for creating, editing, and getting information about GIF images and animations (git version)
+	pkgver = 1.93.r0.g416518e
+	pkgrel = 1
+	url = https://www.lcdf.org/gifsicle/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = libx11
+	optdepends = libx11: for gifview tool
+	provides = gifsicle
+	conflicts = gifsicle
+	source = git+https://github.com/kohler/gifsicle.git
+	sha256sums = SKIP
+
+pkgname = gifsicle-git
