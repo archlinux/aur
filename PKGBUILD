@@ -12,15 +12,21 @@ pkgdesc="The popular and trusted web browser by Google (Stable Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
-depends=('alsa-lib' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
+depends=(
+	'alsa-lib'
+	'gtk3'
+	'libcups'
+	'libxss'
+	'libxtst'
+	'nss'
+	'ttf-liberation'
+	'xdg-utils'
+)
 optdepends=(
 	'pipewire: WebRTC desktop sharing under Wayland'
 	'kdialog: for file dialogs in KDE'
 	'gnome-keyring: for storing passwords in GNOME keyring'
 	'kwallet: for storing passwords in KWallet'
-	'libunity: for download progress on KDE'
-	'ttf-liberation: fix fonts for some PDFs - CRBug #369991'
-	'xdg-utils'
 )
 options=('!emptydirs' '!strip')
 install=$pkgname.install
