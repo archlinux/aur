@@ -2,12 +2,12 @@
 _pkgname=wofi-emoji
 pkgname=${_pkgname}-git
 pkgver=0.r6
-pkgrel=1
+pkgrel=2
 pkgdesc="Emoji picker for Wayland using wofi and wl-clipboard"
 arch=('any')
 url="https://github.com/dln/wofi-emoji"
 license=(MIT)
-depends=(wofi)
+depends=(wofi wl-clipboard)
 makedepends=(git)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
