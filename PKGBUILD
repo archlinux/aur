@@ -2,14 +2,14 @@
 pkgname=quakeinjector-git
 _name=quakeinjector
 _gitname=QuakeInjector
-pkgver=alpha02.r53.d65cfb3
+pkgver=alpha03.r36.b18b214
 pkgrel=1
 pkgdesc="Download, install and play quake singleplayer maps from the quaddicted.com archive"
 url="http://www.haukerehfeld.de/projects/quakeinjector/"
 arch=(any)
 license=(GPL)
 depends=(java-environment hicolor-icon-theme)
-makedepends=(git apache-ant)
+makedepends=(git gradle)
 provides=(quakeinjector)
 conflicts=(quakeinjector)
 replaces=(quakeinjector)
@@ -25,14 +25,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_gitname"
-    ant quakeinjector.jar
+    gradle assemble 
 }
 
 package() {
     for res in '16' '32' '48' '256'; do
-        install -Dm644 "$srcdir/$_gitname/res/Inject2_$res.png" "$pkgdir/usr/share/icons/hicolor/${res}x$res/apps/$_name.png"
+        install -Dm644 "$srcdir/$_gitname/build/resources/main/Inject2_$res.png" "$pkgdir/usr/share/icons/hicolor/${res}x$res/apps/$_name.png"
     done
     install -Dm644 "$srcdir/$_name.desktop" "$pkgdir/usr/share/applications/$_name.desktop"
-    install -Dm644 "$srcdir/$_gitname/dist/$_name.jar" "$pkgdir/usr/share/$_name/$_name.jar"
-    install -Dm644 "$srcdir/$_gitname/dist/$_name-res.jar" "$pkgdir/usr/share/$_name/$_name-res.jar"
+    install -Dm644 "$srcdir/$_gitname/build/libs/$_gitname-alpha04-gradle.jar" "$pkgdir/usr/share/$_name/$_name.jar"
 }
