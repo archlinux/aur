@@ -7,7 +7,7 @@
 
 pkgname=aksusbd
 pkgver=8.21
-pkgrel=1
+pkgrel=2
 _tarballname=Sentinel_LDK_RedHat_and_SuSE_RPM_Run-time_Installer
 _rpm_pkgrel=1
 _dl_hash=e4e1722f4c6a46e1ac2243f0c1e3ca5d
@@ -63,7 +63,7 @@ package() {
       ${pkgdir}/usr/lib/systemd/system/hasplmd.service
 
   # LICENSE and readme.html:
-  install -Dm644 ${srcdir}/${_tarballname}/readme.html \
+  install -Dm644 ${srcdir}/${_tarballname}/Readme.html \
       ${pkgdir}/usr/share/${pkgname}/readme.html
   install -Dm644 ${srcdir}/LICENSE \
       ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
