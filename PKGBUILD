@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=5.9.0beta1
+pkgver=5.10.0beta1
 pkgrel=1
 pkgdesc="Signal Private Messenger for Linux"
 license=('GPL3')
