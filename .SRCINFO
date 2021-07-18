@@ -1,14 +1,14 @@
 pkgbase = portmapper-git
 	pkgdesc = A tool to easily manage port mappings and port forwarding through UPnP
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.2.1_46_gbe0982a
+	pkgrel = 1
 	url = https://github.com/kaklakariada/portmapper
 	arch = i686
 	arch = x86_64
+	makedepends = gradle
 	depends = java-runtime>=11
 	depends = coreutils
 	source = git+https://github.com/kaklakariada/portmapper.git
 	md5sums = SKIP
 
 pkgname = portmapper-git
-
