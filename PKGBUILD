@@ -1,6 +1,6 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 pkgname=obs-audio-pan-filter
-pkgver=0.1.1
+pkgver=0.1.2
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="This is a simple plugin to control stereo pan of audio source in OBS Studio"
@@ -14,7 +14,7 @@ source=(
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
-  "74aa98d2848d60266b7c946259c49a76545ebb20f22f70f87612ea8c244fd09d"
+  "f4a93cf85ea98f13861181e93b4c4f60dffef8a8a1206b214bd3d6f3fdcade79"
   "c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e"
 )
 
