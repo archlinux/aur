@@ -1,16 +1,17 @@
 diff --git a/externals/CMakeLists.txt b/externals/CMakeLists.txt
-index fd427a9..e737741 100644
+index fd427a9..4458006 100644
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -83,8 +83,9 @@ endif()
- 
- # DiscordRPC
- if (USE_DISCORD_PRESENCE)
--    add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
--    target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
-+    find_library(DISCORD_LIBRARY discord-rpc REQUIRED)
-+    add_library(discord-rpc UNKNOWN IMPORTED GLOBAL)
-+    set_target_properties(discord-rpc PROPERTIES IMPORTED_LOCATION "${DISCORD_LIBRARY}")
+@@ -81,12 +81,6 @@ if(ENABLE_CUBEB)
+     add_subdirectory(cubeb EXCLUDE_FROM_ALL)
  endif()
  
+-# DiscordRPC
+-if (USE_DISCORD_PRESENCE)
+-    add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
+-    target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
+-endif()
+-
  # Sirit
+ add_subdirectory(sirit)
+ 
