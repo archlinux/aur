@@ -1,5 +1,5 @@
 pkgname=rdo
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple doas/sudo alternative."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source=(
 )
 
 sha512sums=(
-"110c42a67510f165a7c5736ce9505f45538d6fc4860b5bb0f2b35d3e98ec47395c50e981e8ce0cdfb949ea84a72b72fc18c29be7986d5b881598b7da48d9c898"
+"fb4c50b007dbca3c82b33607d3b10f1d841f325f709599325a2ce28721a977d6d0ebafed60a398d60eb09f056c69c39986170f883cd37e244e4eb2d5a106556c"
 )
 
 build() {
