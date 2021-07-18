@@ -1,0 +1,14 @@
+pkgbase = shipit
+	pkgdesc = Minimalistic ssh deployment
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/sapegin/shipit
+	arch = any
+	license = MIT
+	depends = bash
+	depends = openssh
+	provides = shipit
+	source = git+https://github.com/sapegin/shipit.git
+	md5sums = SKIP
+
+pkgname = shipit
