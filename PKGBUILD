@@ -164,7 +164,6 @@ ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 
 # Features
-ac_add_options --disable-cdp
 ac_add_options --disable-crashreporter
 ac_add_options --disable-debug
 ac_add_options --disable-debug-js-modules
