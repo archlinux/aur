@@ -1,7 +1,7 @@
 pkgbase = xscreensaver-arch-logo
 	pkgdesc = Screen saver and locker for the X Window System with Arch Linux branding
 	pkgver = 6.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jwz.org/xscreensaver/
 	arch = x86_64
 	license = BSD
@@ -33,4 +33,3 @@ pkgbase = xscreensaver-arch-logo
 	sha256sums = 8357f9e631b80ae373cb0fc8e27fa96fd032c3d5e3869bd04dde843b79260b19
 
 pkgname = xscreensaver-arch-logo
-
