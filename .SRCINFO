@@ -1,6 +1,6 @@
 pkgbase = android-google-apis-playstore-x86-system-image
 	pkgdesc = Android with Google APIs and Play Store x86 Atom System Image, latest API
-	pkgver = 30_r06
+	pkgver = 30_r09
 	pkgrel = 1
 	url = https://developer.android.com/studio/index.html
 	arch = any
@@ -11,10 +11,9 @@ pkgbase = android-google-apis-playstore-x86-system-image
 	provides = android-google-apis-playstore-x86-system-image-30
 	conflicts = android-google-apis-playstore-x86-system-image-30
 	options = !strip
-	source = android-google-apis-playstore-x86-system-image-30_r06.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86-30_r06-linux.zip
+	source = android-google-apis-playstore-x86-system-image-30_r09.zip::http://dl.google.com/android/repository/sys-img/google_apis_playstore/x86-30_r09-linux.zip
 	source = package.xml
-	sha256sums = aadcf38b8ce8b508af2b68bb5ba1712646f85dba8724e0d18ecdb332e3bd7f4c
+	sha256sums = 01725dc96a65f97281ca3931b395b3b7c9a95f430afd88d7d1df72529eabe798
 	sha256sums = c2c242fe911802433de165b558059a6a56980da776dc394e524bc1b31f6c8946
 
 pkgname = android-google-apis-playstore-x86-system-image
-
