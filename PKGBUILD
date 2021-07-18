@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}/wg-manager-frontend"
-    npm install
+    npm install --legacy-peer-deps # won't build without --legacy-peer-deps
     ng build --configuration="production"
 }
 
