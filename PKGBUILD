@@ -3,7 +3,7 @@
 # Contributor: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=pgcenter
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='Command-line admin tool for observing and troubleshooting Postgres'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/lesovsky/pgcenter'
 license=('custom:BSD3')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6994de87bcc6dec7b75b63cbf47d414fafa454f050296ec55c3b9739855e01b5')
+sha256sums=('4fb90da5f76cb88e2ea19b84bfaccdf65e808f40e244011b37297256e40c94c7')
 
 prepare() {
   cd ${pkgname}-${pkgver}
