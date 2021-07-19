@@ -1,7 +1,2 @@
-src
-pkg
-*.deb
-*.rpm
-*.AppImage
-*.pkg.tar.xz
-*.pkg.tar.zst
+*
+*.*
