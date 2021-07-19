@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.10-GE-1
-_commit=1768fb7b2c1bf09381929ce41deb87e3add0e0ce
+_srctag=6.12-GE-1
+_commit=b356ff201e26180e98c3dcc46f00dd3f6557aad4
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.2.0
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -30,6 +30,7 @@ depends=(
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
   lzo              lib32-lzo
+  libxkbcommon     lib32-libxkbcommon
   desktop-file-utils
   python
   steam-native-runtime
@@ -324,7 +325,7 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'f15d6a646b0bf141bd1b826dd4a273bbb6f8f1d592a2b65192281223e986ee15'
-            'de638d5b06a145d6b02afe92dd53353fede82c8b2740b2da571a840c69254ad6'
+            '0445989f503988ff85b2061c2be545adfac1b13ee6fc904bb6be5c9dbca6dca5'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
 )
