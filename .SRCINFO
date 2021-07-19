@@ -1,5 +1,5 @@
 pkgbase = oh-my-zsh-plugin-autosuggestions
-	pkgdesc = Fish-like autosuggestions for zsh
+	pkgdesc = Fish-like autosuggestions for oh-my-zsh
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/zsh-users/zsh-autosuggestions
