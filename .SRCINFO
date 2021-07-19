@@ -1,6 +1,6 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
-	pkgver = 4.0.2
+	pkgver = 4.1.4
 	pkgrel = 1
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
@@ -27,12 +27,15 @@ pkgbase = electrum-mona
 	depends = python-bitstring
 	depends = python-lyra2re_hash
 	depends = gettext
-	optdepends = python-matplotlib: for plot history
+	optdepends = python-btchip: BTChip hardware wallet support
+	optdepends = python-hidapi: Digital Bitbox hardware wallet support
+	optdepends = python-matplotlib: plot transaction history in graphical mode
+	optdepends = zbar: QR code reading support
+	optdepends = python-rpyc: send commands to Electrum Python console from an external script
+	optdepends = python-qdarkstyle: optional dark theme in graphical mode
 	optdepends = python-trezor: for Trezor hardware support
-	optdepends = python-btchip: for BTChip hardware support
 	optdepends = python-keepkey: for KeepKey hardware support
-	source = electrum-mona-4.0.2.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/4.0.2.tar.gz
-	sha512sums = c4d883317c0af0f86fcebca8124b1d5399bfdc34e3516ed6ad3ca6e3c9d5a5cd4620f1928e8ca0e3cde4bb7677fa1b7f719ee533f7bdf4ff27f2b6fb05158bad
+	source = electrum-mona-4.1.4.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/4.1.4.tar.gz
+	sha512sums = e66e5fdf68f54e0e16ece07746ab40c6ce0b49430f96fdc55a92cfaf0084d29fde0089bfda3c47c0262d941db40bc71792b70883b3655258af8d5437bff1508e
 
 pkgname = electrum-mona
-

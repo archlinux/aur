@@ -1,6 +1,6 @@
 # Maintainer: Musee "lae" Ullah <lae(at)idolactiviti(dot)es>
 pkgname=electrum-mona
-pkgver=4.0.2
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
@@ -11,13 +11,17 @@ depends=('python-pyaes' 'python-ecdsa' 'python-pbkdf2' 'python-requests' 'python
          'python-pyqt5' 'python-pycryptodomex' 'python-websocket-client' 'python-certifi'
          'python-aiorpcx' 'python-aiohttp' 'python-aiohttp-socks'
          'libsecp256k1' 'python-bitstring' 'python-lyra2re_hash' 'gettext')
-optdepends=('python-matplotlib: for plot history'
+optdepends=('python-btchip: BTChip hardware wallet support'
+            'python-hidapi: Digital Bitbox hardware wallet support'
+            'python-matplotlib: plot transaction history in graphical mode'
+            'zbar: QR code reading support'
+            'python-rpyc: send commands to Electrum Python console from an external script'
+            'python-qdarkstyle: optional dark theme in graphical mode'
             'python-trezor: for Trezor hardware support'
-            'python-btchip: for BTChip hardware support'
             'python-keepkey: for KeepKey hardware support')
 makedepends=('python-pycurl' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c4d883317c0af0f86fcebca8124b1d5399bfdc34e3516ed6ad3ca6e3c9d5a5cd4620f1928e8ca0e3cde4bb7677fa1b7f719ee533f7bdf4ff27f2b6fb05158bad')
+sha512sums=('e66e5fdf68f54e0e16ece07746ab40c6ce0b49430f96fdc55a92cfaf0084d29fde0089bfda3c47c0262d941db40bc71792b70883b3655258af8d5437bff1508e')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
@@ -25,14 +29,15 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}/
-  ./setup.py build
-  ./contrib/pull_locale
+  python setup.py build
+  python contrib/pull_locale
 }
 
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}/
 
-  ./setup.py install -O1 --root=${pkgdir}/
+  export PYTHONHASHSEED=0
+  python setup.py install -O1 --root=${pkgdir}/
 
   mv ${pkgdir}/usr/share/pixmaps/electrum{,-mona}.png
   install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/${pkgname}/LICENCE
