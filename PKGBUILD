@@ -28,13 +28,14 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 	git checkout master
-	sed -i "s/^version=[.0-9]*$/version=$pkgver/" setup.cfg
+	sed -r -i "s/^version=([.0-9]*)$/version=\1+$pkgver/" setup.cfg
+  _actual_version=$(grep -Po '(?<=^version=)(.*)$' setup.cfg)
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	python -m build
-  pip install --no-deps --target="keyring-minimal" "dist/keyring-minimal-$pkgver.tar.gz"
+  pip install --no-deps --target="keyring-minimal" "dist/keyring-minimal-${_actual_version}.tar.gz"
 }
 
 package() {
