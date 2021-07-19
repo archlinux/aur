@@ -1,6 +1,6 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=hjson-cpp
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Hjson for C++"
 url="https://github.com/hjson/hjson-cpp"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 provides=('hjson-cpp')
 makedepends=('cmake')
 source=("https://github.com/hjson/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('366fb20797eca54bb7b5b8724556cc8283616734aed822e5c6a7c870a2bf0ef1')
+sha256sums=('75fcd5ca9aee0584aec8c359acd20811072f23f65ac98988c93ee3b18d3fa345')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
