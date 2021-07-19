@@ -2,8 +2,8 @@
 # pkg: gitlab GNOME/gedit gitlab.gnome.org
 
 pkgname=gedit-menubar
-pkgver=40.1
-pkgrel=2
+pkgver=41.alpha
+pkgrel=1
 pkgdesc="GNOME Text Editor (Patched to show menubar)"
 url="https://wiki.gnome.org/Apps/Gedit"
 arch=(x86_64)
