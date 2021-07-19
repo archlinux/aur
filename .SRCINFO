@@ -1,5 +1,5 @@
 pkgbase = linux-amd-znver2
-	pkgver = 5.13.v.2
+	pkgver = 5.13.v.3
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = linux-amd-znver2
 	makedepends = lzop
 	makedepends = gcc>=9.1
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13.2
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.13.3
 	source = config.x86_64
 	source = linux-amd-znver2.preset
 	source = linux.install
 	source = 5010_enable-cpu-optimizations-universal.patch
 	sha256sums = SKIP
-	sha256sums = 29056238c0338c799c0abffa13f67e63a6b72cfb4336c4ac9897c9dac0a89b6a
+	sha256sums = 80835ddc28a7ea9625380b2a2213545875576d74d24b8db1e5073f7e6fcf7c08
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0

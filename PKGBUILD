@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-znver2
 _srcname=linux
-gitver=v5.13.2
-pkgver=5.13.v.2
+gitver=v5.13.3
+pkgver=5.13.v.3
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '29056238c0338c799c0abffa13f67e63a6b72cfb4336c4ac9897c9dac0a89b6a'
+            '80835ddc28a7ea9625380b2a2213545875576d74d24b8db1e5073f7e6fcf7c08'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
