@@ -1,7 +1,7 @@
 # Maintainer: Mathias Buhr <napcode@aparatus.de>
 
 pkgname=octasine
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='VST2 frequency modulation synthesizer written in Rust'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 
 source=(https://github.com/greatest-ape/OctaSine/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('4a671705e8889a2bdf75902c3ca785c242c848f900f713939b91d37b89683b48')
+sha256sums=('8f1e9d0f06ee5d23e37ad7bd5f39dace4f3f14f571c54bd2749f27d3b7e7edf9')
 
 build() {
   cd OctaSine-${pkgver}
