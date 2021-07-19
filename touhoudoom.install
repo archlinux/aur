@@ -1,0 +1,16 @@
+post_install() {
+	echo ":: If you want a better experice, make sure the wad file are avaliable"
+	echo ":: in one of the following folders:"
+	echo ":: /usr/share/games/doom; /usr/share/doom; ~/.config/gzdoom; ~/.config/touhoudoom"
+	echo ":: Support DOOM2.WAD, TNT.WAD, PLUTONIA.WAD."
+	echo ":: You may also install doom2-data-steam or final-doom-data-steam if you purchased"
+	echo ":: them on steam."
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+post_remove() {
+    echo ":: Note that your save are still at ~/.config/touhoudoom"
+}

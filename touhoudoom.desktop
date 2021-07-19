@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=Game
+Comment=A DOOM II Mod combines the blood of Doom and the cute girl of Touhou
+Exec=touhoudoom
+GenericName=
+Icon=doom
+MimeType=
+Name=Touhou Doom
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=

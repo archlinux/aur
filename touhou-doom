@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    XDG_CONFIG_HOME="$HOME/.config"
+fi
+
+if  [ ! -f "$XDG_CONFIG_HOME/touhoudoom/gzdoom.ini" ]; then
+    if [ ! -d "$XDG_CONFIG_HOME/touhoudoom" ]; then
+        mkdir "$XDG_CONFIG_HOME/touhoudoom"
+    fi
+    cp "/usr/share/games/doom/gzdoom-touhou.ini" "$XDG_CONFIG_HOME/touhoudoom/gzdoom.ini"
+fi
+
+for i in {'DOOM2.WAD','TNT.WAD','PLUTONIA.WAD'}
+do
+    if  [ -f "/usr/share/games/doom/$i" ] || [ -f "/usr/share/doom/$i" ] || [ -f "$XDG_CONFIG_HOME/gzdoom/$i" ] ||  [ -f "$XDG_CONFIG_HOME/touhoudoom/$i" ] ; then
+        iwad=$i
+        break
+    fi
+done
+
+if [ -z "$iwad" ] ; then
+    iwad="freedoom2.wad"
+fi
+
+gzdoom -config "$XDG_CONFIG_HOME/touhoudoom/gzdoom.ini" -iwad $iwad -file touhoudoom.pk3

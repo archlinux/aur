@@ -1,0 +1,26 @@
+pkgbase = touhoudoom
+	pkgdesc = A DOOM II Mod combines Doom and Touhou
+	pkgver = 1
+	pkgrel = 23
+	url = https://github.com/UntitledsTakenNOOOO/TouhouDoom
+	install = touhoudoom.install
+	arch = any
+	license = custom
+	makedepends = zip
+	makedepends = git
+	depends = gzdoom
+	depends = freedoom
+	optdepends = doom2-data-steam: for better preformance
+	optdepends = final-doom-data-steam: for better preformance
+	source = touhoudoom::git+https://github.com/UntitledsTakenNOOOO/TouhouDoom
+	source = touhoudoom.desktop
+	source = touhoudoom.install
+	source = touhou-doom
+	source = gzdoom-touhou.ini
+	md5sums = SKIP
+	md5sums = fd88abfc7918bbd52b4f4e1aaa59eba0
+	md5sums = 9ac83684418f2f2bb817c3305a1959af
+	md5sums = ca9e1a30d8e38d14297423396a119ce9
+	md5sums = c50cbdbd6fba0a6abb5cc9d5550e93e2
+
+pkgname = touhoudoom
