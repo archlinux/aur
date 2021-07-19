@@ -1,6 +1,6 @@
 pkgbase = akonadi-contacts-git
 	pkgdesc = Libraries and daemons to implement Contact Management in Akonadi
-	pkgver = 5.17.40_r3009.gc2b05057
+	pkgver = 5.18.40_r3027.g7dd573ce
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = akonadi-contacts-git
 	sha256sums = SKIP
 
 pkgname = akonadi-contacts-git
-
