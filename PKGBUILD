@@ -4,7 +4,7 @@ _pkgname=houseflow-server
 pkgname="${_pkgname}-git"
 workspace=server
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Home automation platform, written in Rust. Server only"
 arch=(
     'x86_64'
@@ -21,10 +21,18 @@ makedepends=(
     'rust'
     'cargo'
 )
-source=("${_pkgname}::git+https://github.com/gbaranski/houseflow")
+source=(
+	"${_pkgname}::git+https://github.com/gbaranski/houseflow"
+	houseflow-server.service
+	houseflow-server@.service
+)
+sha256sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}/${workspace}"
@@ -50,5 +58,7 @@ package() {
     cd "${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm 644 "$srcdir"/houseflow-server.service "$pkgdir/usr/lib/systemd/user/houseflow-server.service"
+    install -Dm 644 "$srcdir"/houseflow-server@.service "$pkgdir/usr/lib/systemd/system/houseflow-server.service"
 }
 
