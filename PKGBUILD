@@ -58,7 +58,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule
 _major=5.13
-pkgver=${_major}.2
+pkgver=${_major}.3
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -94,7 +94,7 @@ done
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '05f8f863a261ddf51633589b0c3db14b19b07dc2bdce59e8ea168ccc280bf9cd'
+            '7d275e8405cac346ae71d45effd2560504683bb68623da33eebb39363adadade'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
