@@ -1,14 +1,14 @@
 pkgbase = libusrsctp-git
 	pkgdesc = A portable SCTP userland stack
-	pkgver = 0.9.5.0.r37.gde7d903
-	pkgrel = 1
+	pkgver = 0.9.5.0.r41.g1ade45c
+	pkgrel = 2
 	url = https://github.com/sctplab/usrsctp
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	provides = libusrsctp=0.9.5.0.r37.gde7d903
+	provides = libusrsctp=0.9.5.0.r41.g1ade45c
 	provides = usrsctp-git
 	conflicts = libusrsctp
 	conflicts = usrsctp-git

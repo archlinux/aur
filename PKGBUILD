@@ -3,8 +3,8 @@
 # Contributor: FrozenCow <frozencow@gmail.com>
 
 pkgname=libusrsctp-git
-pkgver=0.9.5.0.r37.gde7d903
-pkgrel=1
+pkgver=0.9.5.0.r41.g1ade45c
+pkgrel=2
 pkgdesc='A portable SCTP userland stack'
 arch=(x86_64 i686)
 url='https://github.com/sctplab/usrsctp'
@@ -26,7 +26,9 @@ build() {
 	cd "$pkgname"
 	unset CPPFLAGS
 	export CFLAGS="$CFLAGS -fPIC"
-	cmake .
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		.
 	make
 }
 
