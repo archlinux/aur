@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.4.beta4.r0.g473cd41f19
+pkgver=9.4.beta5.r0.gf5efe4883f
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -41,12 +41,14 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
-        sagemath-lrcalc2.patch)
+        sagemath-lrcalc2.patch
+        sagemath-lcalc2.patch)
 sha256sums=('SKIP'
             'c100a61c8dfade43bebc622a363abcb3d935a2f40958371ad87a9eb00689f8b0'
             '88e944f23c3b2391dc2e9f9be8e1131152d837dc8c829dfc714663869a272e81'
             'af984186f852d2847d770a18fb6822296c50a652dbf55a1ed59d27517c3d3ee4'
-            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9')
+            '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
+            '0e019b77c0db815fdef04f66178a5fa74575fc98f485ad7ac1597c795b8a024e')
 
 pkgver() {
   cd sage
@@ -59,6 +61,8 @@ prepare(){
 # Upstream patches
 # Replace lrcalc.pyx with a wrapper over lrcalc's python bindings https://trac.sagemath.org/ticket/31355
   patch -p1 -i ../sagemath-lrcalc2.patch
+# Port to lcalc 2 https://trac.sagemath.org/ticket/32037
+  patch -p1 -i ../sagemath-lcalc2.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
@@ -73,14 +77,14 @@ prepare(){
 }
 
 build() {
-  cd sage/build/pkgs/sagelib/src
+  cd sage/pkgs/sagemath-standard
 
   export SAGE_NUM_THREADS=10
   python setup.py build
 }
 
 package() {
-  cd sage/build/pkgs/sagelib/src
+  cd sage/pkgs/sagemath-standard
 
   python setup.py install --root="$pkgdir" --optimize=1
 
@@ -93,4 +97,8 @@ package() {
     rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
     ln -s $_pythonpath/sage/ext_data/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
   done
+
+# adjust threejs version
+  rm "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
+  ln -s /usr/share/threejs-sage/version "$pkgdir"$_pythonpath/sage/ext_data/threejs/threejs-version.txt
 }
