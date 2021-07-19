@@ -5,8 +5,8 @@
 
 pkgname=github-desktop
 pkgver=2.9.0
-_gitname="release-$pkgver-linux3"
-pkgrel=2
+_gitname="release-$pkgver-linux4"
+pkgrel=3
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
