@@ -28,7 +28,7 @@ _mm_protect=y
 ### Enable multigenerational LRU
 _lru_enable=y
 ### Enable Linux Random Number Generator
-_lrng_enable=y
+_lrng_enable=
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -58,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=2
+_minor=3
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -106,7 +106,7 @@ source=(
   "${_patchsource}/misc/rcu-fixes-next.patch"
   "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-  "${_patchsource}/clearlinux-patches/0001-clearlinux-patches.patch"
+  "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
   "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
@@ -545,8 +545,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '4f36a8f2c69b725c74f137d3f183e358'
-         '0f005a8211eb4b45545ec5502a272675'
+         '013715dbd2007cf8310f14437933d780'
+         '754593f2f3bb88854fc31b89cd1e6cd2'
          '9bb46b8ce45259c238c5233b8394d70b'
          'fd078b2b7d5995b9d79e1a68ac0159a7'
          'efb4f07f10058ec12933ba3ea12aa983'
@@ -573,6 +573,6 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'eff4bb43a8defb7ed08b9c1e403291ea'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
-         'c360b8c17d778f98a54fa7cddf348566'
+         '7dd37a74d7926f4c5ae3b3f76d7172a2'
          'ce9beff503ee9e6ce6fd983c1bbbdd9e'
          'ef7748efcae55f7db8961227cbae3677')
