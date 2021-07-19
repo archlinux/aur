@@ -1,9 +1,10 @@
 [Unit]
-Description=Houseflow server service
-After=network.target
+Description=Houseflow server
+After=network.target network-online.target
 
 [Service]
 Type=simple
+Environment=HOUSEFLOW_SERVER_CONFIG=/etc/houseflow/server.toml
 ExecStart=/usr/bin/env houseflow-server
 Restart=on-failure
 RestartSec=1

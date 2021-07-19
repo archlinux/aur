@@ -16,9 +16,7 @@ pkgbase = houseflow-server-git
 	provides = houseflow-server
 	conflicts = houseflow-server
 	source = houseflow-server::git+https://github.com/gbaranski/houseflow
-	source = houseflow-server.service
-	source = houseflow-server@.service
-	sha256sums = SKIP
+	source = service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
