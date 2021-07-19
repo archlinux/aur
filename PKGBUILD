@@ -2,7 +2,7 @@
 
 pkgname='gstarcad-bin'
 _pkgname='gstarcad'
-pkgver=20210317
+pkgver=20210719
 pkgrel=1
 pkgdesc="浩辰 CAD"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,10 @@ url="https://www.gstarcad.com/cad_linux/"
 provides=(${_pkgname})
 depends=('qt5-svg' 'qt5-imageformats' 'hicolor-icon-theme')
 optdepends=('deepin-qt5integration: deepin DE integration')
-source=("${pkgname}-${pkgver}-${arch}.deb::https://hccad.gstarcad.cn/linux${pkgver:0:4}/GstarCAD${pkgver:0:4}_Linux_uos_amd64_v2.0_${pkgver}.deb")
-sha512sums=('67dae72b64a99a6bea93488a78a534bd56215546d0cac38035a708c4e8570193684a5080d7141fcbcceb580388157e8630ce82d71dc976654dc53688e8a97ed6')
+source_x86_64=("${pkgname}-${pkgver}-${arch}.deb::https://hccad.gstarcad.cn/linux${pkgver:0:4}/V2.1/com.gstarcad.cad_21sp-5_amd64_${pkgver:2:8}.deb")
+sha512sums_x86_64=('236ce39ce1f0f4f35e241d73f00628451b2cfa88deb212dc7e106cccf32a59432eed166ac6af372865b38b4b5fd12ef4cc1093dbb5dfce220d7f35cc8643291a')
+sha512sums_aarch64=('236ce39ce1f0f4f35e241d73f00628451b2cfa88deb212dc7e106cccf32a59432eed166ac6af372865b38b4b5fd12ef4cc1093dbb5dfce220d7f35cc8643291a')
+source_aarch64=("${pkgname}-${pkgver}-${arch}.deb::https://hccad.gstarcad.cn/linux${pkgver:0:4}/V2.1/com.gstarcad.cad_21sp-5_arm64_${pkgver:2:8}.deb")
 
 prepare(){
     cd $srcdir
@@ -25,7 +27,7 @@ package(){
     mv $srcdir/opt/apps/com.gstarcad.cad/entries ${pkgdir}/usr/share
     
     cd ${pkgdir}/usr/share
-    rmdir autostart plugins services
+    rmdir autostart 
     
     
     mkdir -p "$pkgdir"/opt/
