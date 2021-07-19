@@ -1,22 +1,21 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
-_gemname=rspec-puppet
-pkgname=ruby-$_gemname
-pkgver=2.2.0
+pkgname=ruby-rspec-puppet
+pkgver=2.9.0
 pkgrel=1
-pkgdesc="Spec tests for your Puppet manifests."
-arch=('i686' 'x86_64')
-url="http://rspec-puppet.com/"
+pkgdesc='RSpec tests for your Puppet manifests'
+arch=('x86_64')
+url='https://github.com/rodjek/rspec-puppet'
 license=('MIT')
 depends=('ruby')
-makedepends=('rubygems')
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('1e10cf0c9182470ce5f6db97e113767bc29d3426d6e964627eaea20b9d555d92')
+source=("https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
+noextract=("${pkgname#*-}-${pkgver}.gem")
+sha256sums=('f6da6af8834a0af7d64cbc2f15b83853be4e108db7b0ec72735d45fee0c22534')
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
+  gem install --ignore-dependencies --no-user-install -N -i "${pkgdir}"/${_gemdir} ${pkgname#*-}-${pkgver}.gem
+  find "${pkgdir}" -type f -name *.gem -delete
 }
