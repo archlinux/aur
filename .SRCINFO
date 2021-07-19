@@ -1,12 +1,12 @@
 pkgbase = mock-core-configs
 	pkgdesc = Mock core config files basic chroots
-	pkgver = 34.4
+	pkgver = 34.5
 	pkgrel = 1.1
 	url = https://github.com/rpm-software-management/mock
 	arch = any
 	license = GPL2
-	depends = distribution-gpg-keys>=1.54
-	source = https://github.com/rpm-software-management/mock/archive/mock-core-configs-34.4-1.tar.gz
-	sha256sums = 9f97b050935d1c4c7f641ccb3cfa94b4d4076bf6bba5b90379b6836eb9037087
+	depends = distribution-gpg-keys>=1.55
+	source = https://github.com/rpm-software-management/mock/archive/mock-core-configs-34.5-1.tar.gz
+	sha256sums = 929f54135bdc546e1d9bb92d103207dee9515b6f30e4c60bf38218f2498937a6
 
 pkgname = mock-core-configs
