@@ -1,7 +1,7 @@
 # Maintainer: Paul-Louis Ageneau <paul-louis at ageneau dot org>
 
 pkgname=violet
-pkgver=v0.3.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Lightweight STUN/TURN server"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'cmake')
 depends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=$pkgver")
+source=("git+https://github.com/paullouisageneau/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {
