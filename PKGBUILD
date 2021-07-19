@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.6.0'
 _recipescommit='ebb2cc3c68f74ce1d8b8a61d128078753d9a0398'
 _internalservercommit='2e15f753b79491df2cad5e436e00c8cf44faf5ca'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -65,13 +65,21 @@ prepare() {
 	# Remove asarUnpack rule for @meetfranz packages
 	patch --forward -p1 < '../remove-meetfranz-unpack.diff'
 
-	# Build recipe archives
 	cd "$srcdir/$_sourcedirectory/recipes/"
+
+	# Disable the prepare script as we don't want husky to run
+	sed -E -i 's|"prepare": "husky install"|"prepare": ""|' 'package.json'
+
+	# Build recipe archives
 	HOME="$srcdir/$_homedirectory" npm install
 	HOME="$srcdir/$_homedirectory" npm run package
 
-	# Prepare dependencies
 	cd "$srcdir/$_sourcedirectory/"
+
+	# Disable the prepare script as we don't want husky to run
+	sed -E -i 's|"prepare": "husky install"|"prepare": ""|' 'package.json'
+
+	# Prepare dependencies
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
 }
 
