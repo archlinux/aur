@@ -1,0 +1,16 @@
+pkgbase = python-pulsectl-git
+	pkgdesc = Python high-level interface and ctypes-based bindings for PulseAudio (libpulse) -- git version
+	pkgver = 20210522
+	pkgrel = 1
+	url = https://github.com/mk-fg/python-pulse-control
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pulsectl
+	conflicts = python-pulsectl
+	source = git+https://github.com/mk-fg/python-pulse-control.git
+	md5sums = SKIP
+
+pkgname = python-pulsectl-git
