@@ -1,0 +1,14 @@
+pkgbase = quit
+	pkgdesc = The most useless package on the AUR.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/thenxguy/quit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = bash
+	depends = bash
+	source = git+https://github.com/thenxguy/quit.git
+	md5sums = SKIP
+
+pkgname = quit
