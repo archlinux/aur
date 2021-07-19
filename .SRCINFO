@@ -1,0 +1,21 @@
+pkgbase = tea-qt-git
+	pkgdesc = Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS
+	pkgver = 60.4.0.r1
+	pkgrel = 1
+	url = http://tea.ourproject.org
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-5compat
+	depends = gcc-libs
+	depends = zlib
+	depends = hunspell
+	depends = desktop-file-utils
+	provides = tea
+	conflicts = tea
+	source = git+https://github.com/psemiletov/tea-qt.git
+	md5sums = SKIP
+
+pkgname = tea-qt-git
