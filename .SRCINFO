@@ -1,6 +1,6 @@
 pkgbase = 64gram-desktop
 	pkgdesc = Unofficial desktop version of Telegram messaging app
-	pkgver = 2.8.1.1
+	pkgver = 2.8.11.1
 	pkgrel = 1
 	url = https://github.com/TDesktop-x64/tdesktop
 	arch = x86_64
@@ -31,14 +31,15 @@ pkgbase = 64gram-desktop
 	depends = pipewire
 	depends = libxtst
 	depends = libxrandr
+	depends = jemalloc
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = 64gram-desktop
 	conflicts = telegram-desktop
 	conflicts = tdesktop-x64
 	replaces = tdesktop-x64
-	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v2.8.1.1/64Gram-2.8.1.1-full.tar.gz
-	source = fix-gcc11-assert.patch
-	sha512sums = 8b51aa32ff31e61fc8ef8afaef2c961f4a60df3ea8dba72a12ca173ce4e5dcfdba0f5b0beae5f27c66262e19cd114212acc6440e525219687fe033cd620b1a71
-	sha512sums = 29f4ddf6eba62e14dac1a00aa3ba96f9f6767b82f2c85c98931d9be967fb4398a1337b9716e2d423ecfe56e672bfa15d81898e87ce8b85cd8a3be976336fd682
+	source = https://github.com/TDesktop-x64/tdesktop/releases/download/v2.8.11.1/64Gram-2.8.11.1-full.tar.gz
+	source = fix-webview-extern-C-linkage.patch
+	sha512sums = c67107d58ecf6a240945c67b01c7449b2b9c32cf52f9f668fa8ccc9619e36d2149ed8286f628ad6cb0197cd30ef84c6528364fd96d6893595f8f9c67e468803e
+	sha512sums = 4150c4718d455a6d089e2c0c9c06956d24fdddae476c5790b62ee6a407ff4fb343ea4a4deca813252ed418142cc3791fa041b0771a994221e3be72b45a7b77ed
 
 pkgname = 64gram-desktop

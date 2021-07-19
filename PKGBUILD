@@ -1,7 +1,7 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=2.8.1.1
+pkgver=2.8.11.1
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/TDesktop-x64/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
-         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
+         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
              'libtg_owt' 'extra-cmake-modules')
 optdepends=('ttf-opensans: default Open Sans font family')
@@ -17,9 +17,9 @@ provides=("64gram-desktop")
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
-        "fix-gcc11-assert.patch")
-sha512sums=('8b51aa32ff31e61fc8ef8afaef2c961f4a60df3ea8dba72a12ca173ce4e5dcfdba0f5b0beae5f27c66262e19cd114212acc6440e525219687fe033cd620b1a71'
-            '29f4ddf6eba62e14dac1a00aa3ba96f9f6767b82f2c85c98931d9be967fb4398a1337b9716e2d423ecfe56e672bfa15d81898e87ce8b85cd8a3be976336fd682')
+        "fix-webview-extern-C-linkage.patch")
+sha512sums=('c67107d58ecf6a240945c67b01c7449b2b9c32cf52f9f668fa8ccc9619e36d2149ed8286f628ad6cb0197cd30ef84c6528364fd96d6893595f8f9c67e468803e'
+            '4150c4718d455a6d089e2c0c9c06956d24fdddae476c5790b62ee6a407ff4fb343ea4a4deca813252ed418142cc3791fa041b0771a994221e3be72b45a7b77ed')
 
 prepare() {
     cd $_pkgname-$pkgver-full/cmake
@@ -28,8 +28,12 @@ prepare() {
     echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
     echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
 
+    # cp libjemalloc from jemalloc package
+    mkdir -p external/jemalloc/jemalloc-prefix/src/jemalloc/lib/
+    cp /usr/lib/libjemalloc_pic.a external/jemalloc/jemalloc-prefix/src/jemalloc/lib/libjemalloc.a
+    # fix webview extern "C" linkage error
     cd ..
-    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
+    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-webview-extern-C-linkage.patch
 }
 
 build() {
