@@ -8,7 +8,7 @@ pkgbase = yuzu
 	makedepends = boost>=1.73
 	makedepends = catch2>=2.13
 	makedepends = cmake>=3.15
-	makedepends = cpp-httplib
+	makedepends = cpp-httplib-compiled>=0.9.1
 	makedepends = discord-rpc
 	makedepends = ffmpeg
 	makedepends = fmt>=8.0
@@ -20,7 +20,6 @@ pkgbase = yuzu
 	makedepends = lz4>=1.8
 	makedepends = ninja
 	makedepends = nlohmann-json>=3.8
-	makedepends = openssl>=1.1
 	makedepends = opus>=1.3
 	makedepends = qt5-tools>=5.12
 	makedepends = sdl2>=2.0.14
@@ -38,6 +37,7 @@ pkgbase = yuzu
 	source = citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git
 	source = unbundle-cubeb.patch
 	source = unbundle-discord-rpc.patch
+	source = unbundle-httplib.patch
 	source = unbundle-inih.patch
 	source = unbundle-sdl.patch
 	source = unbundle-spirv-headers.patch
@@ -50,6 +50,7 @@ pkgbase = yuzu
 	md5sums = SKIP
 	md5sums = 2f171292e625873decacf78582c17772
 	md5sums = ffc2b2204c7804e20f29de1a39f28236
+	md5sums = 445120f5c58d8fa19c4155f9742a827b
 	md5sums = 56f414ef28a7e880a16ea6b114cad35b
 	md5sums = c848f6d8dfe32829669984f8af54b4e5
 	md5sums = 374366419df7293779295a6c800b99b5
@@ -64,6 +65,7 @@ pkgname = yuzu
 	depends = libboost_context.so
 	depends = libdiscord-rpc.so
 	depends = libfmt.so
+	depends = libhttplib.so
 	depends = libINIReader.so
 	depends = libswscale.so
 	depends = libusb-1.0.so

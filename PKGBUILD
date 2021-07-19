@@ -11,7 +11,7 @@ makedepends=(
 	'boost>=1.73'
 	'catch2>=2.13'
 	'cmake>=3.15'
-	'cpp-httplib'
+	'cpp-httplib-compiled>=0.9.1'
 	'discord-rpc'
 	'ffmpeg'
 	'fmt>=8.0'
@@ -23,7 +23,6 @@ makedepends=(
 	'lz4>=1.8'
 	'ninja'
 	'nlohmann-json>=3.8'
-	'openssl>=1.1' # for cpp-httplib
 	'opus>=1.3'
 	'qt5-tools>=5.12'
 	'sdl2>=2.0.14'
@@ -41,6 +40,7 @@ source=(
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
+	'unbundle-httplib.patch'
 	'unbundle-inih.patch'
 	'unbundle-sdl.patch'
 	'unbundle-spirv-headers.patch'
@@ -55,6 +55,7 @@ md5sums=(
 	'SKIP'
 	'2f171292e625873decacf78582c17772'
 	'ffc2b2204c7804e20f29de1a39f28236'
+	'445120f5c58d8fa19c4155f9742a827b'
 	'56f414ef28a7e880a16ea6b114cad35b'
 	'c848f6d8dfe32829669984f8af54b4e5'
 	'374366419df7293779295a6c800b99b5'
@@ -72,6 +73,7 @@ prepare() {
 	git submodule update
 	patch -Np1 < ../unbundle-cubeb.patch
 	patch -Np1 < ../unbundle-discord-rpc.patch
+	patch -Np1 < ../unbundle-httplib.patch
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-sdl.patch
 	patch -Np1 < ../unbundle-spirv-headers.patch
@@ -115,6 +117,7 @@ package() {
 		'libboost_context.so'
 		'libdiscord-rpc.so'
 		'libfmt.so'
+		'libhttplib.so'
 		'libINIReader.so'
 		'libswscale.so'
 		'libusb-1.0.so'
