@@ -6,7 +6,7 @@ pkgbase = plymouth-theme-aregression
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = plymouth-git
+	depends = plymouth
 	source = git+https://github.com/joe733/plymouth-theme-aregression.git
 	md5sums = SKIP
 
