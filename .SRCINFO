@@ -13,4 +13,3 @@ pkgbase = octave-image
 	sha256sums = e7d58ced612bc6420d99bb06313250694e5f1d8dcc093293604c253c17c473b4
 
 pkgname = octave-image
-
