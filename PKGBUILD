@@ -5,7 +5,7 @@
 
 pkgname=non-daw-git
 _gitname=non
-pkgver=0.r1823.3946d39
+pkgver=0.r1937.cdad262
 pkgrel=1
 pkgdesc="A modular Digital Audio Workstation system - Git version."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('jack' 'liblo' 'libsigc++' 'liblrdf' 'hicolor-icon-theme' 'ntk-git')
 makedepends=('git' 'python' 'libxpm')
 provides=('non-timeline' 'non-mixer' 'non-session-manager' 'non-sequencer')
 conflicts=('non-daw' 'non-timeline' 'non-mixer' 'non-session-manager' 'non-sequencer')
-source=('git://git.tuxfamily.org/gitroot/non/non.git')
+source=('git://github.com/linuxaudio/non.git')
 md5sums=('SKIP')
 install=non.install
 
