@@ -1,15 +1,15 @@
 # Maintainer: danb (danb) <danb (at) hasi.it>
 
 pkgname=avizo
-pkgver=1.0
+pkgver=1.0+10+g7b3874e
 pkgrel=1
 pkgdesc="A neat notification daemon"
 url="https://github.com/misterdanb/avizo"
 arch=(x86_64)
 license=(GPL)
-depends=(gtk3 dbus light alsa-utils)
+depends=(gtk3 gtk-layer-shell dbus light alsa-utils)
 makedepends=(vala meson git)
-_commit=tags/1.0
+_commit=7b3874e5ee25c80800b3c61c8ea30612aaa6e8d1
 source=("git+https://github.com/misterdanb/avizo")
 sha256sums=('SKIP')
 
