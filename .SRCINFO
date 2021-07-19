@@ -1,14 +1,14 @@
 pkgbase = ivre
 	pkgdesc = Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...
 	pkgver = 0.9.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ivre.rocks/
 	arch = any
 	license = GPL3
 	makedepends = python
 	makedepends = python2
 	source = https://files.pythonhosted.org/packages/source/i/ivre/ivre-0.9.16.tar.gz
-	source = https://raw.githubusercontent.com/cea-sec/ivre/v0.9.16/pkg/apache/ivre.conf
+	source = https://raw.githubusercontent.com/ivre/ivre/v0.9.16/pkg/apache/ivre.conf
 	sha512sums = 0fc0c1bf614805ccbf656916c89f175fd2cf26d3acd89c3865615214360953f6a068796280154b5bab5c06bae4b33e1f572ebc0fbff2926cd1af47acc6c86ef2
 	sha512sums = 9db82963976ed0134c88ca779ab2d8ac92fdaf5eff8f6e6c47014b56f92cb78313acd6b6ddee8de13de6c3ae8a2988f216a659496f16b756836475a9b774b0c5
 
@@ -77,4 +77,3 @@ pkgname = python2-ivre
 	optdepends = python2-dbus: 3D traceroute graphs
 	optdepends = mongodb: database server
 	optdepends = postgresql: database server (experimental backend)
-
