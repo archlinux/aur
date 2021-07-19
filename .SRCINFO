@@ -1,0 +1,21 @@
+pkgbase = pim-sieve-editor-git
+	pkgdesc = Mail sieve editor
+	pkgver = 21.11.40_r1493.ge0cae80
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = libksieve-git
+	depends = kuserfeedback-git
+	provides = pim-sieve-editor
+	conflicts = pim-sieve-editor
+	source = git+https://github.com/KDE/pim-sieve-editor.git
+	sha256sums = SKIP
+
+pkgname = pim-sieve-editor-git
