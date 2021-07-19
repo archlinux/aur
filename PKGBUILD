@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmime-git
-pkgver=5.17.40_r1431.gcbbc2eb
+pkgver=5.18.40_r1441.gebb0fc1
 pkgrel=1
 pkgdesc="Library for handling mail messages and newsgroup articles"
 arch=($CARCH)
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(RELEASE_SERVICE_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver=${_ver:-"$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"}
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
