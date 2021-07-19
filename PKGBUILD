@@ -1,7 +1,7 @@
 # Maintainer: Alex Wicks <alex@awicks.io> (https://aur.archlinux.org/account/aw1cks)
 pkgname='csgo-handler'
 _name='csgo_handler'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc='Daemon to run a program when CS:GO starts and stops'
 arch=(any)
@@ -25,7 +25,7 @@ source=(
   "${url}/-/raw/${pkgver}/systemd/${pkgname}.unit"
 )
 sha256sums=(
-  '95fdf8c381b404669e82f6e946f25ed4f28959d1373ea1eff22a4096280b513f'
+  '95e1cad10b2433d76390b423d8b3b4a39c6f5931ca3b5b1b9d489ad076c4803a'
   'd4c5935b6ad83b4f172421de186677e3ecbc151acb3a090ae837300df5f74b1b'
 )
 

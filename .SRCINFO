@@ -1,6 +1,6 @@
 pkgbase = csgo-handler
 	pkgdesc = Daemon to run a program when CS:GO starts and stops
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 0
 	url = https://gitlab.com/aw1cks/csgo_handler
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = csgo-handler
 	depends = python-yaml
 	depends = python-inotify
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/c/csgo_handler/csgo_handler-1.1.1.tar.gz
-	source = https://gitlab.com/aw1cks/csgo_handler/-/raw/1.1.1/systemd/csgo-handler.unit
-	sha256sums = 95fdf8c381b404669e82f6e946f25ed4f28959d1373ea1eff22a4096280b513f
+	source = https://files.pythonhosted.org/packages/source/c/csgo_handler/csgo_handler-1.1.2.tar.gz
+	source = https://gitlab.com/aw1cks/csgo_handler/-/raw/1.1.2/systemd/csgo-handler.unit
+	sha256sums = 95e1cad10b2433d76390b423d8b3b4a39c6f5931ca3b5b1b9d489ad076c4803a
 	sha256sums = d4c5935b6ad83b4f172421de186677e3ecbc151acb3a090ae837300df5f74b1b
 
 pkgname = csgo-handler
