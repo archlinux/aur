@@ -4,7 +4,7 @@
 
 pkgname=safe-rm
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool intended to prevent the accidental deletion of important files"
 arch=(any)
 url='https://launchpad.net/safe-rm'
@@ -18,7 +18,7 @@ source=(https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.
 sha256sums=('a1c916894c5b70e02a6ec6c33abbb2c3b3827464cffd4baffd47ffb69a56a1e0'
             'SKIP'
             'd016ccf8e5dcd517bacaae1bb71509932bae813b451da33850347aba7e481739'
-            '0b1965eb2a722dd67a112ad90118a446f396b0aa2d2faf36d3ed89abbe9bafe2')
+            'b72582e5bb4ea8a98eb9e038021443e066a1b195585a4e9bb0dd9010da434836')
 validgpgkeys=(8C470B2A0B31568E110D432516281F2E007C98D1) # Francois Marier <fmarier@gmail.com>
 
 
@@ -38,6 +38,9 @@ package() {
   cd $pkgname-$pkgver
   install -Dm 755 target/release/$pkgname -t "$pkgdir/usr/bin"
   install -Dm 644 safe-rm.1 -t "$pkgdir/usr/share/man/man1"
+  #create symlink to take precedence over rm in PATH search
+  install -dm 755 "$pkgdir/usr/lib/safe-rm"
+  ln -sf /usr/bin/safe-rm "$pkgdir/usr/lib/safe-rm/rm"
 }
 
 check() {

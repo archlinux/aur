@@ -14,5 +14,5 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Ensure that safe-rm takes precedence over the real `rm` command
-PATH="/usr/share/safe-rm/bin:$PATH"
+PATH="/usr/lib/safe-rm:$PATH"
 export PATH
