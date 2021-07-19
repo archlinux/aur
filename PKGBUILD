@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}-git"
-pkgver=r509.f4968e2
+pkgver=r745.4738673
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
@@ -34,9 +34,9 @@ depends=(
 	"wayland-protocols" # gtk4 non-default runtime dep
 	"hicolor-icon-theme"
 	"gstreamer>=1.18.0" # gstreamer-1.0, gstreamer-base-1.0
-	"gst-plugins-base-libs>=1.18.0" # gstreamer-pbutils-1.0, gstreamer-audio-1.0, gstreamer-tag-1.0, gstreamer-video-1.0, gstreamer-gl-1.0, gstreamer-gl-prototypes-1.0, gstreamer-gl-x11-1.0, gstreamer-gl-wayland-1.0, gstreamer-gl-egl-1.0, 
+	"gst-plugins-base>=1.18.0"
 	"gst-plugins-good>=1.18.0"
-	"gst-plugins-bad-libs>=1.18.0"
+	"gst-plugins-bad>=1.18.0"
 )
 makedepends=(
 	"meson>=0.50"
@@ -46,6 +46,7 @@ makedepends=(
 optdepends=(
 	"gst-libav>=1.18.0: Popular video decoders"
 	"gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration"
+	"gst-plugins-ugly>=1.18.0: CD/DVD playback"
 )
 source=("${_basename}::git+https://github.com/Rafostar/${_basename}.git")
 provides=("${_basename}" "libgst${_basename}-1.0")
