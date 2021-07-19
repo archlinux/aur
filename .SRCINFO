@@ -1,6 +1,6 @@
 pkgbase = supysonic
 	pkgdesc = A Python implementation of the Subsonic server API.
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/spl0k/supysonic
 	install = supysonic.install
@@ -25,7 +25,7 @@ pkgbase = supysonic
 	optdepends = postgresql: PostgreSQL database
 	optdepends = python-psycopg2: PostgreSQL database support
 	backup = etc/supysonic
-	source = supysonic-0.6.1.tar.gz::https://github.com/spl0k/supysonic/archive/0.6.1.tar.gz
+	source = supysonic-0.6.3.tar.gz::https://github.com/spl0k/supysonic/archive/0.6.3.tar.gz
 	source = supysonic.ini
 	source = supysonic.sysusers
 	source = supysonic.tmpfiles
@@ -39,4 +39,3 @@ pkgbase = supysonic
 	sha256sums = 153b01e713b8520036d6d25b3e5cee36498772c0d696078324996570046a1a11
 
 pkgname = supysonic
-

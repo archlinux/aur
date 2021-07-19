@@ -1,7 +1,7 @@
 # Maintainer: Robert Sprunk <arch-aur@sprunk.me>
 # Contributor: Bryn Edwards <bryn.edwards@gmail.com>
 pkgname=supysonic
-pkgver=0.6.1
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A Python implementation of the Subsonic server API."
 arch=('any')
