@@ -2,7 +2,7 @@
 # Maintainer emeritus: R. van Elst <https://raymii.org>
 
 pkgname="simh-git"
-pkgver=4.0.Beta.1.2676.gfc5bda90
+pkgver=4.0.Beta.1.2715.g6728b3f4
 pkgrel=1
 pkgdesc="The Computer History Simulation Project"
 arch=('i686' 'x86_64')
