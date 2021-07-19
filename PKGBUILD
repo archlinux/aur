@@ -8,7 +8,8 @@ pkgdesc='Boolean operations on paths.'
 arch=('any')
 url='https://github.com/typemytype/booleanOperations'
 license=('MIT')
-checkdepends=('python-pytest' 'python-defcon' 'python-fontpens')
+#checkdepends=('python-pytest' 'python-defcon' 'python-fontpens')
+checkdepends=()
 depends=('python-pyclipper' 'python-fonttools')
 makedepends=('python-setuptools')
 options=(!emptydirs)
@@ -21,7 +22,8 @@ package() {
   install -D -m644  LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py test
-}
+# tests disabled to break circular dependency
+#check() {
+  #cd "${_pkgname}-${pkgver}"
+  #pytest
+#}
