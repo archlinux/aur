@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap-git
-pkgver=5.17.40_r1088.ga50c518
+pkgver=5.18.40_r1101.ge0538b4
 pkgrel=1
 pkgdesc="Job-based API for interacting with IMAP servers"
 arch=($CARCH)
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(RELEASE_SERVICE_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver=${_ver:-"$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"}
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 

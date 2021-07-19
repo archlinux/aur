@@ -1,6 +1,6 @@
 pkgbase = kimap-git
 	pkgdesc = Job-based API for interacting with IMAP servers
-	pkgver = 5.17.40_r1088.ga50c518
+	pkgver = 5.18.40_r1101.ge0538b4
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kimap-git
 	sha256sums = SKIP
 
 pkgname = kimap-git
-
