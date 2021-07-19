@@ -12,13 +12,14 @@ depends=('libpng' 'gtk2')
 replaces=('sublime-text-3-imfix')
 
 conflicts=('sublime-text-4-dev'
+           'sublime-text-4'
            'sublime-text-3-imfix'
            'sublime-text-imfix'
            'sublime-text-nightly'
            'sublime-text-dev'
            'sublime-text2')
 
-provides=('sublime-text' 'sublime')
+provides=('sublime-text')
 
 source=(
     "https://download.sublimetext.com/sublime_text_3_build_${pkgver:2}_x64.tar.bz2"
