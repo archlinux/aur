@@ -1,7 +1,7 @@
 pkgbase = cpmtools
 	pkgdesc = Tools to access CP/M disks
 	pkgver = 2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.moria.de/~michael/cpmtools/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = cpmtools
 	depends = ncurses
 	source = http://www.moria.de/~michael/cpmtools/files/cpmtools-2.22.tar.gz
 	source = ecsys.drives
+	source = prodos.drives
 	source = z80pack.drives
 	md5sums = efe8ead733e412b16436fd43910fb61d
 	md5sums = c54b18fbafcb867a014cc814ed2eb93e
+	md5sums = 499cdb1a19ed21c9b9e2dc93a12b4ba9
 	md5sums = 2eef83b5fbc21870743a6eb871fff4b5
 
 pkgname = cpmtools

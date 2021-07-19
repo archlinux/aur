@@ -1,0 +1,11 @@
+# SAM Coupe Pro-DOS
+diskdef prodos
+  seclen 512
+  tracks 160
+  sectrk 9
+  maxdir 256
+  blocksize 2048
+  boottrk 1
+  skew 0
+  os 2.2
+end
