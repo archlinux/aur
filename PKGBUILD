@@ -3,13 +3,14 @@
 
 pkgname=mbedtls-git
 pkgver=3.0.0.r18.gac6cc9fbc
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, portable, easy to use, readable and flexible SSL library"
 arch=('i686' 'x86_64')
 url="https://tls.mbed.org/"
 license=('apache')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'perl')
+checkdepends=('python')
 provides=('mbedtls' 'polarssl' 'libmbedcrypto.so' 'libmbedtls.so' 'libmbedx509.so')
 conflicts=('mbedtls' 'polarssl')
 options=('staticlibs')
