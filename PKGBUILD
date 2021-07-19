@@ -11,11 +11,11 @@
 # 5. Download the .deb.bin package and place it in the same directory as the PKGBUILD
 # 6. Build!
 #
-# No refunds for broken AUR helpers, just use make(chroot)pkg.
+# No refunds for broken AUR helpers, just use makepkg.
 #
 
 pkgname=mcuxpresso-ide
-pkgver=11.3.1_5262
+pkgver=11.4.0_6224
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -26,7 +26,7 @@ depends=('ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation' 'dfu
 
 source=("file://mcuxpressoide-${pkgver}.${arch}.deb.bin")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('295c977782324d6ec015105628ad1fc90fc2d499748d4f7f8769b5b95d3763df')
+sha256sums=('9b9a7a928a0bcc11edc149f2452a3fde79846ffa2a15c1e7f05fc67c683b5167')
 options=('!strip')
 
 prepare() {
