@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=platypus
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A modern multiple reverse shell sessions manager written in go"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("LGPL3")
 depends=("glibc")
 makedepends=("go" "yarn" "go-bindata" "python" "nodejs-lts-erbium")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf8f1dbaa1144c506316d80d230becf30130a2310c9ec363bcd896339d45d55f')
+sha256sums=('50080df26d599d5fbbe8aea31ffe3fe0f6c2cd6ca8f5c8dd9a2296a44e4d4067')
 
 build() {
   cd Platypus-${pkgver}
