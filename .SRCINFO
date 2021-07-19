@@ -1,5 +1,5 @@
 pkgbase = backintime-git
-	pkgver = 1.1.24
+	pkgver = 1.3.1.r1.ge1ae23dd
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = backintime-git
 	makedepends = systemd
 	makedepends = xorg-xdpyinfo
 	source = backintime::git+https://github.com/bit-team/backintime.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = backintime-git
 	pkgdesc = Simple backup/snapshot system inspired by Flyback and TimeVault. Qt5 GUI version.
@@ -40,4 +40,3 @@ pkgname = backintime-cli-git
 	optdepends = sshfs: remote filesystems
 	provides = backintime-cli
 	conflicts = backintime-cli
-
