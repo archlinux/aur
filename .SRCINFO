@@ -1,14 +1,13 @@
 pkgbase = collabtive
 	pkgdesc = cloud based groupware, easy and efficient for your projects
-	pkgver = 2.1.1
+	pkgver = 3.1
 	pkgrel = 1
 	url = http://collabtive.o-dyn.de/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = php
-	source = http://downloads.sourceforge.net/project/collabtive/collabtive/2.1.1/collabtive-211.zip
-	sha256sums = f92cb787e20542e335a9be0597f4df31ce05548959bad2deffc95421d6db53f9
+	source = http://downloads.sourceforge.net/project/collabtive/collabtive/3.1/collabtive-31.zip
+	sha256sums = f29e65713090c6591cde6980956a14962d7193994a0c4b2bbc779fda2aa1fc94
 
 pkgname = collabtive
-

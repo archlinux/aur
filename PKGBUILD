@@ -1,17 +1,17 @@
-# Maintainer: Robert Knauer <robert@privatdemail.net>
+# Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: realitygaps <realitygaps AT yahoo DOT com>
 
 pkgname=collabtive
-pkgver=2.1.1
+pkgver=3.1
 pkgrel=1
-pkgfilever=211
+pkgfilever=31
 pkgdesc="cloud based groupware, easy and efficient for your projects"
 arch=('i686' 'x86_64')
 url="http://collabtive.o-dyn.de/"
 license=('GPL')
 depends=('php')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgfilever}.zip")
-sha256sums=('f92cb787e20542e335a9be0597f4df31ce05548959bad2deffc95421d6db53f9')
+sha256sums=('f29e65713090c6591cde6980956a14962d7193994a0c4b2bbc779fda2aa1fc94')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/webapps/${pkgname}"
