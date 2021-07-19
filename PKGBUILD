@@ -1,29 +1,32 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=bdsync
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Fast block device synchronizing tool"
 arch=("i686" "x86_64")
-url="https://github.com/TargetHolding/bdsync"
+url="https://github.com/rolffokkens/bdsync"
 license=('GPL')
 depends=("openssl")
 makedepends=("pandoc")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TargetHolding/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('ee24781c9b063bd9da2c10a82b8c75dee1a813d0472d2dcce2b783a7dd9b55c7')
+source=("git+https://github.com/rolffokkens/$pkgname#tag=v${pkgver}")
+sha256sums=('SKIP')
+
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i -e 's/^CFLAGS=/#CFLAGS=/' Makefile
-  sed -i -e 's/\$(CRYPTO_LDFLAGS)$/$(CRYPTO_LDFLAGS) $(LDFLAGS)/' Makefile
+  cd "$pkgname"
+  sed -i -r 's|^CFLAGS=(.*)|CFLAGS:=\1 $(CFLAGS)|' Makefile
+  sed -i -r 's|$\(CRYPTO_LDFLAGS\)$|\0 $(LDFLAGS)|' Makefile
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname"
+
+  CFLAGS="${CFLAGS//-O2/-O3}"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname"
   install -D -m755 bdsync "$pkgdir/usr/bin/bdsync"
   install -D -m644 bdsync.1 "$pkgdir/usr/share/man/man1/bdsync.1"
 }
