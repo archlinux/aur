@@ -6,7 +6,7 @@ pkgver=4.21
 pkgrel=1
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
-url="http://cade.datamax.bg/vfu/"
+url="http://cade.noxrun.com/projects/vfu"
 license=('GPL')
 depends=('ncurses' 'pcre')
 optdepends=('perl: for the rx_* archiving utilities'
@@ -14,8 +14,8 @@ optdepends=('perl: for the rx_* archiving utilities'
             'unrar: for rx_rar'
             'unzip: for rx_zip')
 backup=('etc/vfu.conf' 'etc/vfu/vfu.conf')
-source=("http://cade.datamax.bg/vfu/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f675abdeb6e1b933db956ef6a78c0a1abd0f87166981158fef3146f17a256c37')
+source=("http://cade.noxrun.com/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7b54dc64a2b2cdc2ce2c061fefca22d4b31ffc7abee433184e72727b62489964')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
