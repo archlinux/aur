@@ -4,17 +4,17 @@
 
 _pkgname=defcon
 pkgname=python-$_pkgname-git
-pkgver=0.7.0.r3.g3c93da9
+pkgver=0.8.1.r10.gd7828f0
 epoch=1
 pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=('any')
 url="https://github.com/robotools/$_pkgname"
 license=('MIT')
-depends=('python' 'python-fonttools' 'python-fs' 'python-unicodedata2')
+depends=('python' 'python-fonttools' 'python-fs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools-scm')
 optdepends=('python-fontpens' 'python-lxml')
 source=("git+$url.git")
 sha256sums=('SKIP')
