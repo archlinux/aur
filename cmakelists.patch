@@ -1,16 +1,5 @@
 --- old/wsjtx/CMakeLists.txt	2020-06-02 02:59:27.000000000 +0200
 +++ new/wsjtx/CMakeLists.txt	2020-06-08 11:42:25.386177524 +0200
-@@ -852,10 +852,6 @@
- #
- # Boost
- #
--set (Boost_NO_SYSTEM_PATHS TRUE)
--if (Boost_NO_SYSTEM_PATHS)
--  set (BOOST_ROOT ${PROJECT_SOURCE_DIR}/boost)
--endif ()
- find_package (Boost 1.63 REQUIRED)
- 
- #
 @@ -921,7 +917,7 @@
  #
  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
