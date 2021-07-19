@@ -1,8 +1,8 @@
 # Maintainer: absrdspc <repom2@riseup.net>
 pkgname=arc_unpacker-git
 _pkgname=arc_unpacker
-pkgver=r2426.b9843a13
-pkgrel=2
+pkgver=r2427.9c2781fc
+pkgrel=1
 pkgdesc="CLI tool for extracting images and sounds from visual novels."
 arch=(x86_64)
 url="https://github.com/vn-tools/arc_unpacker"
