@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-aile-super
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/super-ttc-iosevka-aile-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('7a56e95243bc27217abf39d5ea7c63c71d474a8ff75ce021b0be925be77446ae'
+sha256sums=('f475f9e172898e40396755949740f6995b61c76b6ef32c25215486b82814e175'
             '72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80')
 
 package() {
