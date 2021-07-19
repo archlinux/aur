@@ -1,6 +1,6 @@
 pkgbase = pimcommon-git
 	pkgdesc = Common libraries for KDE PIM
-	pkgver = 5.17.40_r1051.g0e243ee
+	pkgver = 5.18.40_r1064.g6dfebc4
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -24,4 +24,3 @@ pkgbase = pimcommon-git
 	sha256sums = SKIP
 
 pkgname = pimcommon-git
-
