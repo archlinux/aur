@@ -1,6 +1,6 @@
 pkgbase = eventviews-git
 	pkgdesc = Library for creating events
-	pkgver = 5.17.40_r647.gc23f610
+	pkgver = 5.18.40_r670.g381f3ec
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = eventviews-git
 	sha256sums = SKIP
 
 pkgname = eventviews-git
-
