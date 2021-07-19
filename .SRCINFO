@@ -1,6 +1,6 @@
 pkgbase = mailcommon-git
 	pkgdesc = KDE PIM library providing support for mail applications
-	pkgver = 5.17.40_r1035.gdabdc14
+	pkgver = 5.18.40_r1057.gc8d5a1d
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = mailcommon-git
 	sha256sums = SKIP
 
 pkgname = mailcommon-git
-
