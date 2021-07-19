@@ -1,6 +1,6 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
-	pkgver = 0.0.20210227
+	pkgver = 0.0.20210719
 	pkgrel = 1
 	url = https://gitlab.com/zoli111/simp1e/
 	arch = any
@@ -9,12 +9,9 @@ pkgbase = xcursor-simp1e
 	makedepends = inkscape
 	makedepends = python2
 	makedepends = xorg-xcursorgen
-	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/?commit=1ec1162934606861cda71b4658a50df597fa52e1
+	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=995f50da41786263c89f10ddb72416a61462c973
+	source = builder_script::git+https://github.com/mxre/cursor
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = xcursor-simp1e
-
-pkgname = xcursor-simp1e-dark
-
-pkgname = xcursor-simp1e-breeze
-

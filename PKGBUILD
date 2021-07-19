@@ -1,38 +1,31 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgbase=xcursor-simp1e
-pkgname=(xcursor-simp1e{,-dark,-breeze})
+pkgname=xcursor-simp1e
 pkgdesc='An aesthetic cursor theme'
-pkgver=0.0.20210227
+pkgver=0.0.20210719
 pkgrel=1
 url=https://gitlab.com/zoli111/simp1e/
-_commit=1ec1162934606861cda71b4658a50df597fa52e1
+_commit=995f50da41786263c89f10ddb72416a61462c973
 arch=(any)
 makedepends=(git inkscape python2 xorg-xcursorgen)
 depends=()
 license=(GPL3)
-source=("${pkgname}::git+${url}?commit=${_commit}")
-sha512sums=(SKIP)
+source=("${pkgname}::git+${url}#commit=${_commit}"
+        "builder_script::git+https://github.com/mxre/cursor")
+sha512sums=(SKIP SKIP)
 
-_variants=(Simp1e Simp1e-dark Simp1e-breeze)
+prepare () {
+	cd "${pkgname}"
+	git submodule init
+	git config submodule.builder_script.url "${srcdir}/builder_script"
+	git submodule update
+}
 
 build () {
 	cd "${pkgname}"
-	yes | ./build.sh
+	./build.sh
 }
 
-_package () {
+package () {
 	install -dm755 "${pkgdir}/usr/share/icons"
-	cp -a "${pkgbase}/BuiltThemes/$1/$1" "${pkgdir}/usr/share/icons"
-}
-
-package_xcursor-simp1e () {
-	_package Simp1e
-}
-
-package_xcursor-simp1e-dark () {
-	_package Simp1e-dark
-}
-
-package_xcursor-simp1e-breeze () {
-	_package Simp1e-breeze
+	cp -a "${pkgbase}/built_themes/Simp1e" "${pkgdir}/usr/share/icons"
 }
