@@ -8,17 +8,16 @@ pkgbase = satdump-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = cmake
-	makedepends = libcorrect-git
-	makedepends = airspy-git
-	makedepends = rtl-sdr
-	makedepends = hackrf
 	depends = libvolk
 	depends = glfw
 	depends = glew
 	depends = fftw
 	depends = libcorrect-git
+	depends = airspy-git
+	depends = rtl-sdr
+	depends = hackrf
+	depends = nng
 	source = git+https://github.com/altillimity/SatDump
 	md5sums = SKIP
 
 pkgname = satdump-git
-
