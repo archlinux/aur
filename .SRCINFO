@@ -1,6 +1,6 @@
 pkgbase = libksieve-git
 	pkgdesc = KDE PIM library for managing sieves
-	pkgver = 5.17.40_r1526.g8e90710e
+	pkgver = 5.18.40_r1551.gfc1ed601
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = libksieve-git
 	sha256sums = SKIP
 
 pkgname = libksieve-git
-
