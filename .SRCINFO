@@ -1,6 +1,6 @@
 pkgbase = ruby-gollum-lib
 	pkgdesc = A simple, Git-powered wiki.
-	pkgver = 5.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = http://github.com/gollum/gollum-lib
 	arch = any
@@ -15,10 +15,9 @@ pkgbase = ruby-gollum-lib
 	depends = ruby-octicons
 	depends = ruby-rouge
 	depends = ruby-twitter-text=1.14.7
-	noextract = gollum-lib-5.1.gem
+	noextract = gollum-lib-5.1.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gollum-lib-5.1.gem
-	sha1sums = 989922f4d0fec7d03e0d59fb8c752e578d419ad2
+	source = https://rubygems.org/downloads/gollum-lib-5.1.2.gem
+	sha1sums = 592cb42166eb72e7e6be4274f7693bb9909abba1
 
 pkgname = ruby-gollum-lib
-
