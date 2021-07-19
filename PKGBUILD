@@ -38,7 +38,7 @@ depends=('ncurses5-compat-libs'
          'libpng12'
          'lib32-libpng12'
          'gtk2'
-         'xorg-xlsclient'
+         'xorg-xlsclients'
 )
 optdepends=('fxload'
             'digilent.adept.runtime'
