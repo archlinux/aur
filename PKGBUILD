@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=89.0.2
+pkgver=90.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -26,14 +26,14 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='1.1'
+_settings_tag='1.3'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('3225f583c5e36bdf52ad16f71a2c359deb0c765c38205acdeb6b7b6520ac5494'
+sha256sums=('43a943e7d7660c6d7f5b41c95b344b7fd6a4a88ad0bb45dbd844b372ea60d58b'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP')
@@ -68,7 +68,6 @@ ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZ_REQUIRE_SIGNING=0
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -138,7 +137,8 @@ fi
   patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+  # patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+  # => breaks profiled builds since 90.0, it seems
 
   # allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
@@ -160,6 +160,11 @@ fi
 
   # fix an URL in 'about' dialog
   patch -Np1 -i ${_patches_dir}/about-dialog.patch
+
+  # change some hardcoded directory strings that could lead to unnecessarily
+  # created directories
+
+  # patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
@@ -237,6 +242,7 @@ ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 END
 
 fi
