@@ -1,6 +1,6 @@
 pkgbase = kldap-git
 	pkgdesc = LDAP access API for KDE
-	pkgver = 5.17.40_r856.g212285f
+	pkgver = 5.18.40_r869.g4ae869e
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kldap-git
 	sha256sums = SKIP
 
 pkgname = kldap-git
-
