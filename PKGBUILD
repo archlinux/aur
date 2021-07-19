@@ -7,35 +7,44 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B3.r236.g118d9a0
+pkgver=B4.r63.gb8effaf4
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'git' 'fontconfig' 'spice-protocol' 'wayland-protocols'
-             'libgl' 'libegl' 'libxss' 'libxi' 'libxinerama' 'obs-studio')
+makedepends=('git' 'cmake' 'fontconfig' 'spice-protocol' 'wayland-protocols'
+             'libxss' 'libxi' 'obs-studio')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
-        "PureSpice::git+https://github.com/gnif/PureSpice.git")
+        "PureSpice::git+https://github.com/gnif/PureSpice.git"
+        "cimgui::git+https://github.com/cimgui/cimgui.git"
+        "imgui::git+https://github.com/ocornut/imgui.git")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 install="${pkgbase}.install"
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "${srcdir}/${_pkgname}"
 	local TAG=$(git describe --abbrev=0 --tags)
 	local SUFFIX=$(git describe --long --tags | sed 's/^'"${TAG}"'-\([^-]*-g\)/r\1/;s/-/./g')
 	printf "%s.%s" "${TAG//-/}" "${SUFFIX}"
 }
 
 prepare() {
-	cd "${_pkgname}"
-
+	cd "${srcdir}/${_pkgname}"
 	git submodule init
 	git config submodule.repos/LGMP.url "${srcdir}/LGMP"
 	git config submodule.repos/PureSpice.url "${srcdir}/PureSpice"
+	git config submodule.repos/cimgui.url "${srcdir}/cimgui"
+	git submodule update
+
+	cd "repos/cimgui"
+	git submodule init
+	git config submodule.imgui.url "${srcdir}/imgui"
 	git submodule update
 }
 
@@ -57,6 +66,10 @@ package_looking-glass-git() {
 
 	cd "${srcdir}/${_pkgname}/client"
 	make DESTDIR="${pkgdir}" install
+
+	# cimgui is build and linked as a static library.
+	# As such, it had no business getting installed. Delete it.
+	rm "${pkgdir}/usr/cimgui.a"
 }
 
 package_looking-glass-module-dkms-git() {
