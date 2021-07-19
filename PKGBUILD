@@ -35,7 +35,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/spl0k/$pkgname/archive/$pkg
         "$pkgname.tmpfiles"
         "$pkgname-daemon.service"
         "apache-wsgi.conf")
-sha256sums=('1de6d2d4945a984c854d51c55145f673f25acb58a0f5930348ecaa2723a8e361'
+sha256sums=('f4ca5814e491a406161f144ff8b7222fdbfbef77688bb1d593af835a9f9f5898'
             'e8a10b2be1c3b6757cee8928f2e585351da9e9b6eadfa68c8905913108a26b80'
             'b4b723d30fb45f86a15ec218910cd3935aac4546d5e2f9a1e1bc79cccfb98480'
             '430eba10de5381a425074b89d0a46fb770be5112b26e81ac6a2b55765675cb13'
