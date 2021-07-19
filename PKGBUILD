@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.11
+pkgver=2.12
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -33,7 +33,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('97ab1b0000593a87a35b9d880fff1fe93d57067656d4169c355db51753d796e2'
+sha256sums=('0eab1dded60332f9214bb67df2f98b73cda2fa0a739957327c9f3d3d02e294fc'
             'e32d7e96c6ea3c1fb06f20bca60d7e9bc92e70e0eab52e74b0070264c94cef9c'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             '7fd98f2d7700996041a835551a746cc8e6ab1048c7b297db9ac5c5534dd87d86')
