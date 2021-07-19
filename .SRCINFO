@@ -1,13 +1,13 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
 	pkgver = 0.0.20210719
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zoli111/simp1e/
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = inkscape
-	makedepends = python2
+	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
 	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=995f50da41786263c89f10ddb72416a61462c973
 	source = builder_script::git+https://github.com/mxre/cursor
