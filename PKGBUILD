@@ -3,7 +3,7 @@
 pkgname=etcd-bin
 _pkgname=etcd
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly-available key value store for shared configuration and service discovery - binary version'
 arch=('x86_64')
 url='https://github.com/coreos/etcd'
@@ -16,8 +16,8 @@ source=("https://github.com/coreos/${_pkgname}/releases/download/v${pkgver}/${_p
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/contrib/systemd/${_pkgname}.service"
         "https://github.com/coreos/${_pkgname}/raw/v${pkgver}/${_pkgname}.conf.yml.sample")
 sha256sums=('864baa0437f8368e0713d44b83afe21dce1fb4ee7dae4ca0f9dd5f0df22d01c4'
-            'e107490b80d96494b9276c7478e2e4d368ef9254b50a7996ae9f3456ccc68e81'
-            'd91862eedcd2d98523308dba0e4da4ce7a41554b74f52c62a9a69f175753da37')
+            '6b2921568bd96f5bb48ba61d2b9673f42e49eb90fda35a7003fbac469a226a13'
+            '1a532bf85dbb94fb370e1b69e4384e8bf5cd93b3cea778e9f9fc9dfe15009328')
 
 package() {
   cd ${srcdir}
