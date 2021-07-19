@@ -1,14 +1,13 @@
 pkgbase = vcluster-bin
 	pkgdesc = Create fully functional virtual Kubernetes clusters
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 0
 	url = https://vcluster.com
 	arch = x86_64
 	license = Apache
 	provides = vcluster
 	conflicts = vcluster
-	source = vcluster-0.2.0::https://github.com/loft-sh/vcluster/releases/download/v0.2.0/vcluster-linux-amd64
-	sha256sums = 0756f399b6b89a082cb89c87cb5b3b07cc29a1471bf8604fc202af921dd26144
+	source = vcluster-0.3.1::https://github.com/loft-sh/vcluster/releases/download/v0.3.1/vcluster-linux-amd64
+	sha256sums = 50b162168ed1baa97bba0c58ef389f340dee25d3c3da05daccda01c2ce4c5027
 
 pkgname = vcluster-bin
-
