@@ -26,13 +26,11 @@ build()  {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make
-
   # Clean mod cache for makepkg -C
   go clean -modcache
 }
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-
   ln -s "/usr/bin/com.github.rkoesters.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
