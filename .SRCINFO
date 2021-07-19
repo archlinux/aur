@@ -19,8 +19,8 @@ pkgbase = koko-git
 	depends = kconfig
 	depends = knotifications
 	depends = exiv2
+	depends = kquickimageeditor
 	source = git+https://invent.kde.org/graphics/koko.git
 	md5sums = SKIP
 
 pkgname = koko-git
-
