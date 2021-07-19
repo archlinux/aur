@@ -44,6 +44,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm 755 trezord -t "$pkgdir/usr/bin/"
 	install -Dm 644 release/linux/trezord.service -t "$pkgdir/usr/lib/systemd/system/"
-	install -Dm 644 release/linux/trezor.rules -t "$pkgdir/etc/udev/rules.d/"
+	install -Dm 644 release/linux/trezor.rules -t "$pkgdir/usr/lib/udev/rules.d/"
 	install -Dm 644 "$srcdir/sysusers.d.conf" "$pkgdir/usr/lib/sysusers.d/trezord.conf"
 }
