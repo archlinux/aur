@@ -1,6 +1,6 @@
 *
 
-# !suppress_color_from_help.patch
+!dbgcv.patch
 !uasm-nocolor
 !PKGBUILD
 !.SRCINFO

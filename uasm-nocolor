@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # https://superuser.com/a/380778
 /usr/bin/uasm $@ | sed 's/\x1b\[[0-9;]*m//g'

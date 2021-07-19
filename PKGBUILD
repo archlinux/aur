@@ -1,4 +1,5 @@
-# Maintainer: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+# Maintainer: Darren Ng  <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
+# Maintainer: Dan Bryant <$(base64 --decode <<<VanVzdGRhbjk2QGdtYWlsLmNvbQo=)>
 
 # https://github.com/Terraspace/UASM
 pkgname=uasm
@@ -6,11 +7,8 @@ url=http://www.terraspace.co.uk/uasm.html
 # http://www.terraspace.co.uk/uasm.html#p1
 pkgdesc="Continued evolution of JWasm"
 
-# Since v2.51
-# dbgcv.c:*:*: fatal error: direct.h: No such file or directory
-#    * | #include <direct.h>
-pkgver=2.50
-pkgrel=2
+pkgver=2.52
+pkgrel=1
 
 arch=($CARCH)
 license=(
@@ -18,8 +16,8 @@ license=(
   'custom:Sybase Open Watcom Public License'
 )
 
-# depends=()
-# makedepends=()
+depends=('sh')
+makedepends=('git')
 # checkdepends=()
 # optdepends=()
 # provides=()
@@ -32,11 +30,13 @@ source=(
   # https://man.archlinux.org/man/PKGBUILD.5#USING_VCS_SOURCES
   $pkgname.git::git+https://github.com/Terraspace/UASM.git#branch=v$pkgver
   uasm-nocolor
+  dbgcv.patch
 )
 
 sha1sums=(
   SKIP
-  9d695731016a160f108b23092504a81b339d9f2d
+  49f6a6ca16eba01fafce563e0f14cd145b512ff6
+  9489b5239bbb2b4c3c93ef04c61ec1797ec443dd
 )
 
 prepare() {
@@ -52,17 +52,24 @@ prepare() {
       *) return 1;;
   esac
   [ "$(git rev-parse HEAD)" = "$HEAD_SHA1" ]
-
+  
+  # Since v2.51
+  # dbgcv.c:*:*: fatal error: direct.h: No such file or directory
+  #    * | #include <direct.h>  
+  patch --input="${srcdir}/dbgcv.patch"
+  
+  # To fix #151
+  sed -i 's!#ifndef _TYPES_H_INCLUDED!#ifndef _TYPES_H_INCLUDED_!g' ./H/types.h
+  
+  # Enforce full RELRO
+  sed -i 's!-Wl,-Map,$(OUTD)/$(TARGET1).map$!-Wl,-Map,$(OUTD)/$(TARGET1).map -Wl,-z,now!g' gccLinux64.mak
+  
   # https://gcc.gnu.org/gcc-10/porting_to.html#common
-  sed -i "s,CC = gcc,CC = gcc -fcommon,g" gccLinux64.mak
-
+  sed -i "s!CC = gcc!CC = gcc -fcommon!g" gccLinux64.mak
 }
 
 build() {
   cd "$srcdir/$pkgname.git"
-  # echo "@$CFLAGS@"
-  # return 1
-  # export CFLAGS="$CFLAGS -fcommon"
   make -f gccLinux64.mak -j$(nproc)
 }
 
