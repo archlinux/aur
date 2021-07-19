@@ -15,7 +15,7 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-dir"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
-pkgver=9.6.7
+pkgver=11.0.5
 pkgrel=1
 arch=(x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
@@ -28,7 +28,7 @@ source=("https://downloads.sourceforge.net/sourceforge/${pkgbase}/${pkgbase}-${p
         'bacula-fd.service'
         'bacula-sd.service')
 
-sha256sums=('df0f8525ecdba380e74b537ca71adf3b7596593f02189b59ab0ebffc85ccc8de'
+sha256sums=('ef5b3b67810442201b80dc1d47ccef77b5ed378fe1285406f3a73401b6e8111a'
             'SKIP'
             'd1f06403b3460ad8cb7bd063ec31108d87c77dc58bb8a916229262d2bac4a565'
             '072a408b136f27251e9420f801d162e828218306ee74c0c5ba83b24f558e5e39'
