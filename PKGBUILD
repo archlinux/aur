@@ -4,28 +4,28 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
-pkgver='5.5.0'
-_recipescommit='3054fd4c362b5be81b5cdd48535a0e7078fcd0a6'
-_internalservercommit='95ae59926dbd88d55a5377be997558a9e112ab49'
-pkgrel='11'
+pkgver='5.6.0'
+_recipescommit='ebb2cc3c68f74ce1d8b8a61d128078753d9a0398'
+_internalservercommit='2e15f753b79491df2cad5e436e00c8cf44faf5ca'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
-depends=('electron8-bin' 'libxkbfile')
+depends=('electron' 'libxkbfile')
 makedepends=('git' 'nodejs' 'npm6' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.tar.gz"
 	'fix-autostart-path.diff'
-	'gulp-sass-update.diff'
+	'remove-meetfranz-unpack.diff'
 )
-sha256sums=('319b02b565e34720c8ccefdb08cfe37219304c002e469fdf1a15c8971b573fc3'
-            'b72d06155d20292d90c5b9fc05f83b318080abf858669ca2c1a2a539890c3427'
-            '70cb957413aec3941845d7d567f250f010e7bd2e8549b530ba16817e62864b55'
-            'b17dcbc621dba3b495bac99ce11f254e2fd086e7cf024fb0f8e89d9530e52227'
-            '840e7fb9191d464503c1a2745c509f6c66c9e95f4f5520aabf4c8660c4f622a8')
+sha256sums=('53f9cc07b267264b174ee5453a8cc5d0d6826838a4d9667f70036be62d45d6da'
+            'd503178a0b22f66c1a7adf703aa6e3f1bf58a7b1756430d848fab13741fe9924'
+            'dc5a0226597fc4e877bca492bfbd59537aed63e284e74a1fa932558c909fa03a'
+            '1b332afa1276449ca1bfd387ad8a9b28024269a4d66daa030b0944e874df24c1'
+            'aa06840b98231a7fa3ece7239ba721459f5c6ecd4148d7e0ec4deb716c61ab48')
 
 _sourcedirectory="$pkgname-$pkgver"
 _homedirectory="$pkgname-$pkgver-$pkgrel-home"
@@ -54,39 +54,32 @@ prepare() {
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron8/version')"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
-	# Set node-sass and gulp-sass versions for node 16 compatibility
-	sed -E -i 's|("node-sass": ").*"|\16.0.0"|' 'package.json'
-	sed -E -i 's|("gulp-sass": ").*"|\15.0.0"|' 'package.json'
-
-	# Set cld version for GCC11 compatibility
-	sed -E -i 's|("node-sass":.*)|\1\n    "cld": "2.7.0",|' 'package.json'
-
-	# Prevent Ferdi from being launched in dev mode
-	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
-	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
+	# Loosen node version restriction
+	sed -E -i 's|("node": ").*"|\1'"$(node --version | sed 's/^v//')"'"|' 'package.json'
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
 
-	# Set a compiler for gulp-sass explicitly
-	patch --forward -p1 < '../gulp-sass-update.diff'
+	# Remove asarUnpack rule for @meetfranz packages
+	patch --forward -p1 < '../remove-meetfranz-unpack.diff'
+
+	# Build recipe archives
+	cd "$srcdir/$_sourcedirectory/recipes/"
+	HOME="$srcdir/$_homedirectory" npm install
+	HOME="$srcdir/$_homedirectory" npm run package
 
 	# Prepare dependencies
+	cd "$srcdir/$_sourcedirectory/"
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
-
-	# Build node-sass manually for platforms where pre-compiled binaries are not available
-	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" != 'ia32' ]; then
-		HOME="$srcdir/$_homedirectory" npm rebuild node-sass
-	fi
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx gulp build
-	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron8' -c.electronVersion="$(cat '/usr/lib/electron8/version')"
+	NODE_ENV='production' HOME="$srcdir/$_homedirectory" npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
@@ -105,7 +98,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron8 '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=0 exec electron '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
