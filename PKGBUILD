@@ -1,5 +1,5 @@
 pkgname=pandoc-bin
-pkgver=2.14.0.3
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="https://pandoc.org"
@@ -15,9 +15,9 @@ source=("$pkgname-source-$pkgver.tar.gz::https://github.com/jgm/pandoc/archive/$
 source_x86_64=("$pkgname-bin-$pkgver.tar.gz::https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("$pkgname-bin-$pkgver.tar.gz::https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux-arm64.tar.gz")
 
-sha512sums=('cd00e83779da0022d911f48ae8434ee943a11d3bc98d23f6b4fc322a2bf6487ac4792842eb63fe381f14ac6efef699dd58260e6735962852ec3cb2ec3ff27e9e')
-sha512sums_x86_64=('77d906d31b1c2208783a871be49a4817188c94a6de23a3d22922462831b50d04f6793a7016616c4f030af54eed8dc1a4fd4dd53f07ea68bb8aa0f259ff7359b3')
-sha512sums_aarch64=('335a6a22bb3e95aaf0e12dbf473e8cf957f3a3a92ed249df74b9e9443294de5c23e13b5ffa77ff190d79b268a47f9b9bd21170d8a2c2a8f2b4a3d0c69a9782b6')
+sha512sums=('3f9c7272cce19da2118f117768eca1f2fd31b20b15a3aba6b7d901d4634c6374f1b7c11ab085b90dde2603b2e7df91be1724757e92d1ea9912de6603595acacc')
+sha512sums_x86_64=('72c41f41f582019cf53a792869e9c62abc8791420bbf7ed56e1b4e1538185d557b8b47e027ac7debffaf75a7ce485e15d6b07cf4340b7002761ac46c279831c4')
+sha512sums_aarch64=('d24a0d46425ff3923317e77e34c393cf60b02016955277b05246b2d04ba310435f662362dffea18ea43a472363c1b1c757a59cef73c9ae4238d3863b8d1420fb')
 
 package() {
   cd "${srcdir}/pandoc-${pkgver}"
