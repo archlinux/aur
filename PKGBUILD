@@ -5,8 +5,8 @@
 _LANG='en'
 
 pkgname=ecodms-client
-pkgver=21.06.2
-pkgrel=1
+pkgver=21.06.1
+pkgrel=2
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
