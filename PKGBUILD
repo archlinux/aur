@@ -4,29 +4,27 @@
 pkgname=python-skia-pathops
 _pkgname=${pkgname#python-}
 pkgver=0.6.0.post2
-pkgrel=1
-pkgdesc='Python bindings for the Skia library’s Path Ops'
+pkgrel=2
+pkgdesc='Python bindings for the Skia library’s Path Ops (wheel)'
 arch=('x86_64')
 url="https://github.com/fonttools/$_pkgname"
 license=('BSD')
 depends=('python')
-makedepends=('cython' 'python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-cython')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('5a103b5e28f1faa2d6a0d41990d822c621b7c5f34442f7abe96fc58817929ca2')
+makedepends=('python-pip')
+options=(!strip)
+_py=cp39
+_wheel="${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux2014_x86_64.whl"
+source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel")
+sha256sums=('dafcc11aa26e0060df01a6672bd3d32f1d00829c0bf255c6a3d9f440b339a543')
 
-build() {
-    cd "$_pkgname-$pkgver"
-    python setup.py build
-    python setup.py build_ext --inplace
-}
-
-check() {
-    cd "$_pkgname-$pkgver"
-    PYTHONPATH="src/python" pytest
-}
+# If anybody wants to muck around with the Chromium tree and figure out how to
+# build skia from source on Arch I'm open to patches, but even after mucking
+# around with ninja and Python2 and various patched bulid toolchains I have
+# come up short of a way to build this against Arch packages. Drop a comment on
+# the AUR page if you have ideas.
 
 package() {
-    cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	export PIP_CONFIG_FILE=/dev/null
+	pip install --isolated --root="$pkgdir" --ignore-installed --no-deps $_wheel
+	python -O -m compileall "$pkgdir"
 }

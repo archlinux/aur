@@ -1,17 +1,14 @@
 pkgbase = python-skia-pathops
-	pkgdesc = Python bindings for the Skia library’s Path Ops
+	pkgdesc = Python bindings for the Skia library’s Path Ops (wheel)
 	pkgver = 0.6.0.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fonttools/skia-pathops
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cython
-	makedepends = cython
-	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/skia-pathops/skia-pathops-0.6.0.post2.zip
-	sha256sums = 5a103b5e28f1faa2d6a0d41990d822c621b7c5f34442f7abe96fc58817929ca2
+	options = !strip
+	source = https://files.pythonhosted.org/packages/cp39/s/skia-pathops/skia_pathops-0.6.0.post2-cp39-cp39-manylinux2014_x86_64.whl
+	sha256sums = dafcc11aa26e0060df01a6672bd3d32f1d00829c0bf255c6a3d9f440b339a543
 
 pkgname = python-skia-pathops
-
