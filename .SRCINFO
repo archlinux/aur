@@ -1,6 +1,6 @@
 pkgbase = grantleetheme-git
 	pkgdesc = Library for Grantlee theming support
-	pkgver = 5.17.40_r322.gdc8e1c0
+	pkgver = 5.18.40_r332.gc2d1dd4
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = grantleetheme-git
 	sha256sums = SKIP
 
 pkgname = grantleetheme-git
-
