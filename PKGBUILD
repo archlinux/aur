@@ -5,21 +5,23 @@
 
 pkgname='astah-professional'
 _pkgname=${pkgname//-/_}
-pkgver='8.3.0'
+pkgver='8.4.0'
 _pkgver=${pkgver//./_}
 pkgrel=1
-_pkgrel=b9757d
-pkgdesc='Lightweight software design tool for creating UML, ERD, DFD, Flowchart...etc. and easy-to-use UML2.x modeler'
+_pkgrel=8fdff6
+pkgdesc='Full-Featured Software Modeling Tool for creating UML, ER Diagrams, DFD, Flowchart and more to create a clear understanding of your software design among teams.Easy-to-use UML2.x modeler'
 arch=('any')
-url="http://astah.net/editions/professional"
+url="http://astah.net/products/astah-professional"
 conflicts=('astah_community' 'astah-uml')
-license=('custom:none')
-depends=('java-runtime=8')
-source=("http://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
+license=('custom')
+depends=('jdk8-adoptopenjdk=8u292')
+source=("https://cdn.change-vision.com/files/astah-professional_${pkgver}.${_pkgrel}-0_all.deb"
+	"https://astah.net/wp-content/uploads/2020/11/AstahLicenseAgreement-16th.pdf"
 	"LICENSE"
 	"PRIVACY")
-md5sums=('099ed4d9149ab796f0b3eff8bd2b2f01'
-         '561f5c40b2575ae0f8a497e261e862ff'
+md5sums=('1abc30ad92ae563f998f7d7decfad580'
+         '08f9bb42a865cda8e00dcfa210c757e0'
+         '6b77c443f8468a61dc027a042599abee'
          'fc2db9678cbfbec17049f050743e7960')
 install="astah-professional.install"
 
@@ -28,13 +30,8 @@ package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf $srcdir/data.tar.gz -C "$pkgdir/"
 
-  rm -r ${pkgdir}/usr/share/doc
+#  rm -r ${pkgdir}/usr/share/doc
+  install -Dm644 $srcdir/AstahLicenseAgreement-16th.pdf ${pkgdir}/usr/share/licenses/${_pkgname}/AstahLicenseAgreement-16th.pdf || return 1
   install -Dm644 $srcdir/LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE || return 1
   install -Dm644 $srcdir/PRIVACY ${pkgdir}/usr/share/licenses/${_pkgname}/PRIVACY || return 1
-
-#  mv ${pkgdir}/usr/lib/astah_professional ${pkgdir}/usr/lib/astah-professional
-#  sed -i -r "s|^(ASTAH_HOME=).*|\1/usr/lib/$pkgname|" ${pkgdir}/usr/lib/astah-professional/astah-pro
-
-#  rm ${pkgdir}/usr/bin/astah-pro
-#  ln -s ${pkgdir}/usr/bin/astah-pro /usr/lib/astah-professional/astah-pro
 }
