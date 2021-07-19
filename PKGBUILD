@@ -23,9 +23,7 @@ options=('!strip')
 prepare() {
   # Disable a test that's known to fail. See
   # https://lists.gnu.org/archive/html/bug-guile/2021-01/msg00001.html
-	if [[ "$CARCH" == 'pentium4' || "$CARCH" == 'i686' ]]; then
-		patch -p1 -d "guile-$pkgver" < skip-testing-oom-conditions.patch
-	fi
+	patch -p1 -d "guile-$pkgver" < skip-testing-oom-conditions.patch
 }
 
 build() {
@@ -33,6 +31,8 @@ build() {
 
 	# Install guile as guile3 and info files to /usr/share/info/guile3 so we don't
 	# conflict with the official guile package.
+	export CFLAGS
+	export LDFLAGS
 	./configure \
 		--prefix=/usr \
 		--infodir=/usr/share/info/${pkgname} \
