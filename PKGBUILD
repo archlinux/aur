@@ -67,9 +67,10 @@ _powermizer_scheme=
 _override_max_perf=
 
 pkgbase=nvidia-dkms-performance
-pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
-pkgver=470.42.01
-pkgrel=4
+pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
+	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
+pkgver=470.57.02
+pkgrel=1
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -84,6 +85,15 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0003-nvidia-drm-modeset.patch'
         '0004-NVreg-Improvements.patch'
         '0005-nvidia-settings-paths.patch')
+sha256sums=('55d7ae104827faa79e975321fe2b60f9dd42fbff65642053443c0e56fdb4c47d'
+            'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
+            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
+            '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
+            '010e5ee27c6121b0c32e3298bd5cc6b86a8d428a724858f88db4b32c5d520935'
+            'ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce'
+            '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
+            '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
+            '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
 
 create_links() {
     # create soname links
@@ -114,14 +124,16 @@ prepare() {
     patch -Np1 < "../$src"
     done
 
-    if [ -n $_nvidia_patch ]; then
-	    # NVENC 
-	    sed -i 's/\xe8\xc5\x20\xff\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x20\xff\xff\x29\xc0\x41\x89\xc4/g' "${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
-	    # NvFBC
-	    sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' "${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
+    if [ ! -z $_nvidia_patch ]; then
+        # NVENC
+        sed -i 's/\xe8\xc5\x20\xff\xff\x85\xc0\x41\x89\xc4/\xe8\xc5\x20\xff\xff\x29\xc0\x41\x89\xc4/g' \
+		"${srcdir}/${_pkg}/libnvidia-encode.so.${pkgver}"
+        # NvFBC
+        sed -i 's/\x83\xfe\x01\x73\x08\x48/\x83\xfe\x00\x72\x08\x48/' \
+		"${srcdir}/${_pkg}/libnvidia-fbc.so.${pkgver}"
     fi
 
-    if [ -n $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
+    if [ ! -z $_powermizer_scheme ] && [ -z $_override_max_perf ]; then
         echo "You have chosen a PowerMizer scheme: $_powermizer_scheme"
         if [ "$_powermizer_scheme" = "1" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "PowerMizerEnable=0x1;PerfLevelSrc=0x3322;PowerMizerDefault0x3;PowerMizerDefaultAC=0x1"/' kernel/nvidia/nv-reg.h
@@ -142,7 +154,7 @@ prepare() {
         fi
     fi
 
-    if [ -n $_override_max_perf ] && [ -z $_powermizer_scheme ]; then
+    if [ ! -z $_override_max_perf ] && [ -z $_powermizer_scheme ]; then
         echo "You have chosen a Override Max Perf level: $_override_max_perf"
         if [ "$_override_max_perf" = "1" ]; then
             sed -i 's/__NV_REGISTRY_DWORDS, NULL/__NV_REGISTRY_DWORDS, "OverrideMaxPerf=0x1"/' kernel/nvidia/nv-reg.h
@@ -227,7 +239,7 @@ package_nvidia-utils-performance() {
     depends=('xorg-server' 'libglvnd')
     optdepends=('nvidia-settings-performance: configuration tool'
                 'xorg-server-devel: for nvidia-xconfig'
-		        'egl-wayland: for Wayland support'
+                'egl-wayland: for Wayland support'
                 'opencl-nvidia-performance: for OpenCL support')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
               "nvidia-libgl-performance=${pkgver}")
@@ -427,13 +439,3 @@ package_lib32-nvidia-utils-performance() {
     # LICENSE
     install -D -m644 "${srcdir}/${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-sha256sums=('cdf554eafd5ccea00cd0e961e26337b7e8337ac8a2ad57ef019cfb3d62b58913'
-            'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
-            'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            'c95963f2c1cac96f8a8becf819e28b7ac2cb67be7dce77b040c264ed91ae2c9a'
-            'ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce'
-            '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
-            '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
-            '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
