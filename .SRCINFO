@@ -1,6 +1,6 @@
 pkgbase = phc-intel
 	pkgdesc = Frequency driver for Intel CPUs with undervolting feature
-	pkgver = 0.3.2.12.38
+	pkgver = 0.3.2.12.39
 	pkgrel = 1
 	url = https://gitlab.com/linux-phc/phc-intel
 	arch = any
@@ -8,13 +8,13 @@ pkgbase = phc-intel
 	depends = dkms
 	provides = linux-phc
 	backup = etc/default/phc-intel
-	source = https://gitlab.com/linux-phc/phc-intel/-/archive/65527d773702876d7870e1c08696224e6a6761aa/phc-intel-65527d773702876d7870e1c08696224e6a6761aa.tar.gz
+	source = https://gitlab.com/linux-phc/phc-intel/-/archive/6d5024b878d01e37608203422092aab15689906d/phc-intel-6d5024b878d01e37608203422092aab15689906d.tar.gz
 	source = phc-intel.default
 	source = phc-intel.sh
 	source = phc-intel.sleep
 	source = phc-intel.system-sleep
 	source = dkms.conf
-	sha256sums = 2827a3b7e997b6f0e400769f1c4c3137be6bf603e4f8fc47e20d8e7aef0b6b38
+	sha256sums = d0a6f157ed9f1f11f3f5a6e326d60b801afec522dd32ca9334edfa16afd9ed38
 	sha256sums = ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3
 	sha256sums = b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f
 	sha256sums = 569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef
@@ -22,4 +22,3 @@ pkgbase = phc-intel
 	sha256sums = 7b44882a96eeb7c79dbb7fe5b1ff8cded68c2b6a374c95bdc5e08c414cfd3549
 
 pkgname = phc-intel
-
