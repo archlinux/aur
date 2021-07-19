@@ -36,7 +36,7 @@ package() {
 	# inform dynamic linker and pkg-config that there are libraries in `/usr/local/lib/`
 	mkdir -p $pkgdir/etc/ld.so.conf.d/
 	mkdir -p $pkgdir/etc/profile.d/
-	echo "/usr/local/lib/" > $pkgdir/etc/ld.so.conf.d/ucw
-	echo 'export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"' > $pkgdir/etc/profile.d/ucw
+	echo "/usr/local/lib/" > $pkgdir/etc/ld.so.conf.d/ucw.conf
+	echo 'export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"' > $pkgdir/etc/profile.d/ucw.sh
 }
 
