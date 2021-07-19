@@ -6,12 +6,13 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
 url="https://p11-glue.freedesktop.org"
 license=('BSD')
 depends=('mingw-w64-crt'
+         'mingw-w64-gettext'
          'mingw-w64-libtasn1'
          'mingw-w64-libffi')
 makedepends=('mingw-w64-meson'
