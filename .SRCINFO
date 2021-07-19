@@ -1,0 +1,19 @@
+pkgbase = mbox-importer-git
+	pkgdesc = Import mbox files to KMail
+	pkgver = 21.11.40_r502.gfe6e5f9
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	depends = mailcommon-git
+	provides = mbox-importer
+	conflicts = mbox-importer
+	source = git+https://github.com/KDE/mbox-importer.git
+	sha256sums = SKIP
+
+pkgname = mbox-importer-git
