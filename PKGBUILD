@@ -25,6 +25,7 @@ package() {
   bsdtar -xf data.tar.gz -C "$pkgdir"
   sed -i 's|\(Exec=\)x-www-browser|\1xdg-open|g;s|^\(Version=\).*|\11.0|' \
          "$pkgdir/usr/share/applications/$pkgname"{,_config}.desktop
+  sed -i '1s|bash|sh|' "$pkgdir/usr/bin/$pkgname"
   chmod g-w "$pkgdir"/usr{,/bin,/share{,/applications,"/$pkgname",/pixmaps}}
   install -Dm644 LICENSE.pdf -t"$pkgdir/usr/share/licenses/$pkgname/"
 }
