@@ -1,7 +1,7 @@
 pkgbase = libdatachannel
 	pkgdesc = C/C++ WebRTC Data Channels and Media Transport lightweight library
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paullouisageneau/libdatachannel
 	arch = x86_64
 	license = LGPL

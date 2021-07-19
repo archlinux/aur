@@ -3,7 +3,7 @@
 
 pkgname=libdatachannel
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ WebRTC Data Channels and Media Transport lightweight library"
 arch=('x86_64')
 url="https://github.com/paullouisageneau/$pkgname"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd $pkgname
-    git submodule update --init --recursive "$srcdir"/"$pkgname"/deps/{libsrtp,usrsctp,plog}
+    git submodule update --init --recursive "$srcdir"/"$pkgname"/deps/{usrsctp,plog}
 }
 
 build() {
