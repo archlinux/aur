@@ -1,8 +1,8 @@
 diff --git a/src/stores/AppStore.js b/src/stores/AppStore.js
-index bbcf78a4..9b963143 100644
+index bbb5e630..b1b35db2 100644
 --- a/src/stores/AppStore.js
 +++ b/src/stores/AppStore.js
-@@ -31,7 +31,7 @@ const mainWindow = getCurrentWindow();
+@@ -30,7 +30,7 @@ const mainWindow = getCurrentWindow();
  
  const defaultLocale = DEFAULT_APP_SETTINGS.locale;
  

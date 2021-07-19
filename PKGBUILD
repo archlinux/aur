@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.0.beta.5.r392.g86c3ed64'
+pkgver='5.6.0.r5.g1613fe66'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'e7b1441d47b2bc62bcca35ee111f1cf876285739bf6298740dfe513d383f47ce'
+            '1b332afa1276449ca1bfd387ad8a9b28024269a4d66daa030b0944e874df24c1'
             'aa06840b98231a7fa3ece7239ba721459f5c6ecd4148d7e0ec4deb716c61ab48')
 
 _sourcedirectory="$pkgname"
@@ -75,11 +75,6 @@ prepare() {
 	# Prepare dependencies
 	cd "$srcdir/$_sourcedirectory/"
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
-
-	# Build node-sass manually for platforms where pre-compiled binaries are not available
-	if [ "$_electronbuilderarch" != 'x64' ] && [ "$_electronbuilderarch" != 'ia32' ]; then
-		HOME="$srcdir/$_homedirectory" npm rebuild node-sass
-	fi
 }
 
 pkgver() {
