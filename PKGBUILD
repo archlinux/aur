@@ -11,7 +11,7 @@ license=('BSD')
 depends=("${_basename}")
 conflicts=('systemd-sysvcompat')
 source=("${_basename}.run")
-sha256sums=('4e17337aaa018bbd616ad74d1f32fd0063e32754ce92c2235e008d54f3f10d75')
+sha256sums=('d99da80e5bda25fd1ff14b64d835d231691fe5e9e491726d87332a6f83e8fc17')
 
 package() {
   install -Dm755 "$srcdir/${_basename}.run" "$pkgdir/etc/runit/sv/${_basename}/run"
