@@ -3,9 +3,9 @@
 _pkgname=houseflow-server
 pkgname="${_pkgname}-git"
 workspace=server
-pkgver=0.5.0.r234.gc0fb5f3b
-pkgrel=1
-pkgdesc="Home automation platform, written in Rust"
+pkgver=0.5.0
+pkgrel=2
+pkgdesc="Home automation platform, written in Rust. Server only"
 arch=(
     'x86_64'
     'arm'
