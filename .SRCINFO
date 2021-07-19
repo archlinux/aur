@@ -1,6 +1,6 @@
 pkgbase = cicada-shell
 	pkgdesc = A bash-like Unix shell written in Rust
-	pkgver = 0.9.19
+	pkgver = 0.9.21
 	pkgrel = 1
 	url = https://github.com/mitnk/cicada
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = cicada-shell
 	makedepends = rust
 	depends = gcc-libs
 	provides = cicada
-	source = cicada-0.9.19.tar.gz::https://github.com/mitnk/cicada/archive/v0.9.19.tar.gz
-	sha256sums = ccab3421b58886dc8ff69e1625435f9001a5c17c9253382bdf661221c56faff5
+	source = cicada-0.9.21.tar.gz::https://github.com/mitnk/cicada/archive/v0.9.21.tar.gz
+	sha256sums = ad1d3f9b954e73516fc8031c1b35cd28f14ce26fe3ee0468ec9c5eaace257fc3
 
 pkgname = cicada-shell
-
