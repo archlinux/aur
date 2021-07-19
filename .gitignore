@@ -1,0 +1,9 @@
+pkg/
+src/
+ot-commissioner-cli-git/
+
+*.swo
+*.swp
+*.tar.gz
+*.tgz
+*.zst
