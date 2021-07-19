@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-berliner-git
-pkgver=2020.1221.0.r4.g7c85bb9
+pkgver=2020.1221.0.r8.gbab6c91
 pkgrel=1
 pkgdesc="Tools for stellar tracks & isochrones"
 arch=('i686' 'x86_64')
