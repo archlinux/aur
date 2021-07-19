@@ -1,14 +1,14 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=mongotimer
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='A humongous timer or stopwatch for the terminal'
 arch=(any)
 url='https://github.com/maandree/mongotimer'
 license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=(feae7f899d579a3dc9479a431e14bca13b0ef815ed3c039e0d94a690d412e773)
+sha256sums=(79bc505393595c6eea47bb0d11adad39b8d7ff6d8dfab907b5411020477dcd94)
 
 build() {
     cd "$srcdir/mongotimer-$pkgver"
