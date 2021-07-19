@@ -1,7 +1,7 @@
 #!/bin/bash
 pkgname='runit-completion'
 pkgver=20200826
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash completion for Runit"
 arch=('any')
 license=('BSD')
