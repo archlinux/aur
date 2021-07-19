@@ -4,9 +4,8 @@
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
-
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.06.01.a.r333.ga53ab388bbb
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.07.15.a.r122.g60a195e9721
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -32,6 +31,7 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main'
     '0001-arch-aur-pachtes.patch'
+    '0002-asprintf-exists.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
@@ -42,6 +42,7 @@ source=(
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -77,6 +78,7 @@ options=(!strip)
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
+    ( cd swift-corelibs-foundation && patch -p1 -i "$srcdir/0002-asprintf-exists.patch" )
 }
 
 pkgver() {

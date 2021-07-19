@@ -1,6 +1,6 @@
 pkgbase = swift-language-git
 	pkgdesc = The Swift programming language, taken directly from the Apple repository
-	pkgver = swift.DEVELOPMENT.SNAPSHOT.2021.06.01.a.r333.ga53ab388bbb
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2021.07.15.a.r122.g60a195e9721
 	pkgrel = 1
 	url = https://swift.org/
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgbase = swift-language-git
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main
 	source = llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main
 	source = 0001-arch-aur-pachtes.patch
+	source = 0002-asprintf-exists.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#branch=main
 	source = yams::git+https://github.com/jpsim/Yams#commit=3.0.1
 	source = sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main
@@ -44,6 +45,7 @@ pkgbase = swift-language-git
 	source = swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main
 	source = swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main
 	source = tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
