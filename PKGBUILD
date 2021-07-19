@@ -3,7 +3,7 @@
 pkgname=simple-torrent-bin
 _pkgname=simple-torrent
 pkgdesc="Simple Torrent: a self-hosted remote torrent client (rebranded from Cloud Torrent)"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 arch=( 'x86_64' 'aarch64' )
 url='https://github.com/boypt/simple-torrent'
@@ -21,7 +21,7 @@ install="simple-torrent.install"
 backup=( 'etc/simple-torrent.conf' )
 
 sha256sums=(
-  'de6e9fd068639cfe25082bf642ac8d526351361722de6b27b70d0585c58e670d'
+  'f0bbae637193d9c690841fa686f50aff68081a000b8618cda0e2c195bfdda607'
   'e2660e2d20550154bab3b4bbc3bc857516a059346f8217773b6cb00d12511eb4'
   'e1a6099ca9693e2004d3a67ab875c771ec1101f8539f44246f935e663492bd33'
   '8ae649da3a4622be3bbd4f413c2cea3bea5c492efadb3682ee55e2265193924a'
