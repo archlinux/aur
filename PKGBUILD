@@ -1,8 +1,8 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=kodi-addon-pvr-mythtv
-pkgver=7.3.0
-_kodiminver=0
+pkgver=7.3.1
+_kodiminver=1
 _kodicname=Matrix
 pkgrel=1
 pkgdesc='MythTV PVR client addon for Kodi'
@@ -10,9 +10,9 @@ arch=('armv7h' 'i686' 'x86_64')
 url="http://janbar.github.io/pvr.mythtv/"
 license=('GPL')
 makedepends=('cmake' 'kodi-platform' 'kodi-dev')
-depends=("kodi-common>=19.0")
+depends=("kodi>=19.0")
 source=("https://github.com/janbar/pvr.mythtv/archive/${pkgver}-${_kodicname}.tar.gz")
-sha256sums=('fa741677fc2d58689111d18c8eb1114115f4c33bc99267bb761f225e82fdc588')
+sha256sums=('91cb98ea39fd41e9edcfd079e6ca39bfabeb4d6c247b1a540d86a7856e77c75e')
 
 prepare() {
   mkdir -p "${srcdir}/build"
