@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=python-imaplib2-git
-pkgver=r166.94218ec
+pkgver=r182.11dbeb0
 pkgrel=1
 pkgdesc="Threaded Python IMAP4 client"
 arch=("any")
@@ -28,7 +28,7 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     # install README
-    install -Dm644 "README" -t "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 
     # install LICENSE
     install -Dm644 "LICENCE" -t "$pkgdir/usr/share/licenses/$pkgname"

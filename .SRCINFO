@@ -1,6 +1,6 @@
 pkgbase = python-imaplib2-git
 	pkgdesc = Threaded Python IMAP4 client
-	pkgver = r166.94218ec
+	pkgver = r182.11dbeb0
 	pkgrel = 1
 	url = https://github.com/jazzband/imaplib2
 	arch = any
