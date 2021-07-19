@@ -5,6 +5,7 @@ pkgbase = python-fontmake
 	url = https://github.com/googlefonts/fontmake
 	arch = any
 	license = Apache
+	checkdepends = python-compreffor
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-cu2qu
@@ -19,4 +20,3 @@ pkgbase = python-fontmake
 	sha256sums = 2c14d12e56e7f8dee186c451239a82b55ddffec9931c0d1b09fdd6c1fb81ee23
 
 pkgname = python-fontmake
-
