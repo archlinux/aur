@@ -1,25 +1,27 @@
 # Maintainer: willemw <willemw12@gmail.com>
 # Contributor: Sphax <zecmerquise@gmail.com>
 
-_pkgname=edyuk
-pkgname=$_pkgname-svn
+pkgname=edyuk-svn
 pkgver=r1053
-pkgrel=4
+pkgrel=5
 pkgdesc="Fully-featured Qt4 IDE"
 arch=('x86_64')
 url="https://sourceforge.net/projects/edyuk/"
 license=('GPL3')
 depends=('qt4')
 makedepends=('subversion')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::svn+https://svn.code.sf.net/p/edyuk/code/trunk)
-md5sums=('SKIP')
+provides=("${pkgname%-svn}")
+conflicts=("${pkgname%-svn}")
+source=($pkgname::svn+https://svn.code.sf.net/p/edyuk/code/trunk
+        build.sh)
+sha256sums=('SKIP'
+            '7d448cbc365fe68535df15ac710973979be154a4177d664d2595ede406d36def')
 
 pkgver() {
   cd $pkgname
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  local version
+  version="$(svnversion)"
+  printf "r%s" "${version//[[:alpha:]]}"
 }
 
 prepare() {
@@ -30,21 +32,18 @@ prepare() {
 
 build() {
   cd $pkgname
-  qmake-qt4
-  make
 
-  # Second run of qmake, needed for lib directory to be installed correctly
-  qmake-qt4
+  # This script runs all the build steps, even if a build step fails
+  ../build.sh
 }
 
 package() {
   cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 
-  # All libs files are installed as binary, but only libedyuk.so.1.0.0
-  # is supposed to be a binary, the others are supposed to be symlinks
-  # Fix this now because of ldconfig reporting an error when installing
-  # with pacman
+  # All libs files are installed as binary, but only libedyuk.so.1.0.0 is supposed to be a binary,
+  # the others are supposed to be symlinks
+  # Fix this now because of ldconfig reporting an error when installing with pacman
   cd "$pkgdir/usr/lib"
   rm libedyuk.{so,so.1,so.1.1}
   ln -s libedyuk.so.1.1.0 libedyuk.so.1.1
@@ -52,7 +51,7 @@ package() {
   ln -s libedyuk.so.1.1.0 libedyuk.so
 
   # When 'update-mime-database /usr/share/mime' is called with mime file 'edyuk.xml' installed,
-  # it causes firefox and thunderbird (with kparts plugin) to crash when launched
+  # it causes firefox and Thunderbird (with kparts plugin) to crash when launched
   rm -r "$pkgdir/usr/share/mime/"
 
   #mv "$pkgdir/usr/share/icons/"{default.kde,oxygen}

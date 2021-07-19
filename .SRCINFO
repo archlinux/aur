@@ -1,7 +1,7 @@
 pkgbase = edyuk-svn
 	pkgdesc = Fully-featured Qt4 IDE
 	pkgver = r1053
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sourceforge.net/projects/edyuk/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,8 @@ pkgbase = edyuk-svn
 	provides = edyuk
 	conflicts = edyuk
 	source = edyuk-svn::svn+https://svn.code.sf.net/p/edyuk/code/trunk
-	md5sums = SKIP
+	source = build.sh
+	sha256sums = SKIP
+	sha256sums = 7d448cbc365fe68535df15ac710973979be154a4177d664d2595ede406d36def
 
 pkgname = edyuk-svn
-
