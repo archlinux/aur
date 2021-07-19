@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FlipFlip
+Comment=A glorified slideshow, with lots of bells and whistles
+Exec=/usr/bin/flipflip
+Icon=/usr/share/flipflip/resources/app/dist/src/renderer/icons/flipflip_logo.png
+Terminal=false
+Type=Application
+Categories=Graphics;Video;
