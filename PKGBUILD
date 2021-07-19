@@ -11,14 +11,16 @@ license=('GPL')
 depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 provides=('ugene')
 conflicts=('ugene')
-source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop")
+source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop" "ugene.svg")
 sha256sums=('f04fcfdf62703e9feba2fd6fd3b74b19cf676c65d312d0d3b08f5622dc2081cf'
-            'b8f623413b40fb793d1b3e3c6234c2fab2c7f69c23fdf09fa5df9b93f4e57217')
+            '58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896'
+            '5a159437635965cae796c968c7297fd098e7f86dcecbe6a97e62950e782641fc')
 
 package() {
-    cd "$srcdir/ugene-$pkgver"
     mkdir -p "${pkgdir}/usr/"{bin,share/{applications,icons,ugene}}
-    tar -xf icons.tar.gz -C $pkgdir/usr/share/icons
+    install -D -m 755 ugene.svg "${pkgdir}/usr/share/icons/ugene.svg"
+    cd "$srcdir/ugene-$pkgver"
+    chmod +x ugene
     mv * $pkgdir/usr/share/ugene
     ln -s /usr/share/ugene/ugene "$pkgdir"/usr/bin/ugene
     install -D -m 755 ${srcdir}/*.desktop "${pkgdir}/usr/share/applications"
