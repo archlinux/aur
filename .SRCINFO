@@ -1,0 +1,22 @@
+pkgbase = pim-data-exporter-git
+	pkgdesc = Import and export KDE PIM settings
+	pkgver = 21.11.40_r2421.gb2205fd4
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = calendarsupport-git
+	depends = mailcommon-git
+	depends = kuserfeedback-git
+	provides = pim-data-exporter
+	conflicts = pim-data-exporter
+	source = git+https://github.com/KDE/pim-data-exporter.git
+	sha256sums = SKIP
+
+pkgname = pim-data-exporter-git
