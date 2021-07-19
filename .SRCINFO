@@ -1,0 +1,18 @@
+pkgbase = axpbox-git
+	pkgdesc = AXPbox Alpha emulator
+	pkgver = 1.0.0.12.g35bdcd3
+	pkgrel = 1
+	url = https://github.com/lenticularis39/axpbox
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = cmake
+	depends = libpcap
+	depends = sdl2
+	depends = openbsd-netcat
+	provides = axpbox
+	conflicts = axpbox
+	source = git+https://github.com/lenticularis39/axpbox.git
+	sha512sums = SKIP
+
+pkgname = axpbox-git
