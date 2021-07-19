@@ -3,12 +3,11 @@ pkgname=beryl
 pkgver=0.0.4
 pkgrel=1
 pkgdesc="Extendable timer using electron."
-arch=('x86_64')
+arch=(any)
 url="https://github.com/BrenekH/beryl"
 license=('MIT')
 depends=('electron')
 makedepends=('nodejs' 'npm')
-install=beryl.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BrenekH/beryl/archive/refs/tags/v$pkgver.tar.gz" "beryl" "beryl.desktop" "bipa.xml" "berylprof.xml")
 sha256sums=('b58e96749c475b061b036240dccb37b84724d713e9d27368adb4f14d74ebcf35'
             '64ba0a65ff8fe1bfb2ae2eea4f821e245c00a694fa080956c243d3ab81bd1edb'
