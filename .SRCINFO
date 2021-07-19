@@ -1,13 +1,11 @@
 pkgbase = python-skia
-	pkgdesc = Python binding to Skia Graphics Library
+	pkgdesc = Python binding to Skia Graphics Library (wheel)
 	pkgver = 87.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyamagu/skia-python
 	arch = x86_64
 	license = BSD
-	makedepends = pybind11
 	makedepends = python-pip
-	makedepends = python-setuptools
 	depends = fontconfig
 	depends = opengl-driver
 	depends = python
