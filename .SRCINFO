@@ -1,6 +1,6 @@
 pkgbase = incidenceeditor-git
 	pkgdesc = KDE PIM incidence editor
-	pkgver = 5.17.40_r724.g5125eb6
+	pkgver = 5.18.40_r743.gf49fe33
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = incidenceeditor-git
 	sha256sums = SKIP
 
 pkgname = incidenceeditor-git
-

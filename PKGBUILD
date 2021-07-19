@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=incidenceeditor-git
-pkgver=5.17.40_r724.g5125eb6
+pkgver=5.18.40_r743.gf49fe33
 pkgrel=1
 pkgdesc="KDE PIM incidence editor"
 arch=($CARCH)
@@ -18,7 +18,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(RELEASE_SERVICE_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver=${_ver:-"$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"}
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
