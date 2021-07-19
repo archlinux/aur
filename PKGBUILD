@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kcalutils-git
-pkgver=5.17.40_r834.g9a96b023f
+pkgver=5.18.40_r855.g697195969
 pkgrel=1
 pkgdesc="The KDE calendar utility library"
 arch=($CARCH)
@@ -20,7 +20,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  _ver="$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver="$(grep -m1 'set(RELEASE_SERVICE_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
+  _ver=${_ver:-"$(grep -m1 'set(PIM_VERSION' CMakeLists.txt | cut -d '"' -f2 | tr - .)"}
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
