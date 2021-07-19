@@ -1,6 +1,6 @@
 pkgbase = yuzu-early-access
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger (mainline GIT version)
-	pkgver = 1890
+	pkgver = 1891
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = i686
@@ -39,9 +39,9 @@ pkgbase = yuzu-early-access
 	optdepends = qt5-wayland: for Wayland support
 	provides = yuzu
 	conflicts = yuzu
-	source = https://github.com/pineappleEA/pineapple-src/archive/EA-1890.tar.gz
+	source = https://github.com/pineappleEA/pineapple-src/archive/EA-1891.tar.gz
 	source = inject-git-info.patch
-	md5sums = c0749811c145ee684630f318b5e69ed7
+	md5sums = b2ca1fdc01819b09c692834bc51de9aa
 	md5sums = d45a4d68786e3c115142a55760398070
 
 pkgname = yuzu-early-access
