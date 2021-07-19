@@ -1,0 +1,17 @@
+pkgbase = python-pulsectl-asyncio-git
+	pkgdesc = Asyncio frontend for pulsectl, a Python bindings library for PulseAudio (libpulse) -- git version
+	pkgver = 20210613
+	pkgrel = 1
+	url = https://github.com/mhthies/pulsectl-asyncio
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-pulsectl>=1:21.5.18
+	provides = python-pulsectl-asyncio
+	conflicts = python-pulsectl-asyncio
+	source = git+https://github.com/mhthies/pulsectl-asyncio.git
+	md5sums = SKIP
+
+pkgname = python-pulsectl-asyncio-git
