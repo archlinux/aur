@@ -1,0 +1,25 @@
+pkgbase = kleopatra-git
+	pkgdesc = Certificate Manager and Unified Crypto GUI
+	pkgver = 21.11.40_r5913.gbb92dfd2
+	pkgrel = 1
+	url = https://www.kde.org/applications/utilities/kleopatra/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = hicolor-icon-theme
+	depends = libkleo-git
+	depends = kcmutils-git
+	depends = kmime-git
+	provides = kleopatra
+	conflicts = kleopatra
+	source = git+https://github.com/KDE/kleopatra.git
+	sha256sums = SKIP
+
+pkgname = kleopatra-git
