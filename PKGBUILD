@@ -76,11 +76,11 @@ package() {
     ln -s /usr/share/beast/bin/treeannotator ${pkgdir}/usr/bin/treeannotator_beast
     ln -s /usr/share/beast/bin/treestat ${pkgdir}/usr/bin/treestat_beast
     
-    cp ~/.cache/yay/beast/treestat.png ${pkgdir}/usr/share/beast/images/
+    cp treestat.png ${pkgdir}/usr/share/beast/images/
     
-    cp ~/.cache/yay/beast/beauti_beast.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/beast_beast.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/treestat_beast.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/logcombiner_beast.desktop ${pkgdir}/usr/share/applications
-    cp ~/.cache/yay/beast/treeannotator_beast.desktop ${pkgdir}/usr/share/applications
+    cp beauti_beast.desktop ${pkgdir}/usr/share/applications
+    cp beast_beast.desktop ${pkgdir}/usr/share/applications
+    cp treestat_beast.desktop ${pkgdir}/usr/share/applications
+    cp logcombiner_beast.desktop ${pkgdir}/usr/share/applications
+    cp treeannotator_beast.desktop ${pkgdir}/usr/share/applications
 }
