@@ -3,7 +3,7 @@
 
 pkgname=ttf-gentium-basic
 pkgver=1.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Fonts based on the original Gentium design with additional weights'
 arch=(any)
 url="https://software.sil.org/gentium/download/previous-versions/"

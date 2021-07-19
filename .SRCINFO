@@ -1,7 +1,7 @@
 pkgbase = ttf-gentium-basic
 	pkgdesc = Fonts based on the original Gentium design with additional weights
 	pkgver = 1.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/gentium/download/previous-versions/
 	arch = any
 	license = OFL
