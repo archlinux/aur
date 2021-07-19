@@ -1,6 +1,6 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="The MC modpack manager for professionals."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('pax-mc-bin' 'pax-mc-git')
 replaces=()
 changelog=
 source=("pax-${pkgver}.tar.gz::https://github.com/froehlichA/pax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c6603c8343940de0c1130bde6ce03486b9b7145f6958fbbe7d0f2927f655e56d')
+sha256sums=('4350168462262c6474c912d1b525f64aa73fa3d85406551b2fc5f98808efd9e6')
 
 build() {
     cd "${srcdir}/pax-${pkgver}"
