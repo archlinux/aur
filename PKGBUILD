@@ -2,11 +2,11 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.11.4.11.arch1
-pkgrel=2
+pkgver=5.13.0.1.realtime1
+pkgrel=1
 pkgdesc='Linux RT'
 arch=('x86_64')
-url="https://wiki.linuxfoundation.org/realtime/start"
+url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
 license=('GPL2')
 makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'pahole'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            '977ac2ff9c344619758aa30aeb1c9fd6ad2777c99774a5a2b6956cd85c38640a00a4f292a53195fca15e645e2cba3bb725a4d0ca043b3a03261d456504512824')
+            '51a29df70783d038720744c68bf4832f3e291a3dd5113f29b1f766af38906ed318947daa1ac81407a476c5f64b01cf338f65c68b3b3dbb5bdfef6a7ee887fff6')
 b2sums=('SKIP'
-        '56cd37f1ac075db2cd4b30a9bb2bedcb0a9c4648cc23e408a121a529d090b894c7e919b9ea996e30ca23f559fde6172594935af3083e69ce5e1c62719e3658fa')
+        '0941986bdc95cc3b0cf4f71d4e4a6f79f8f20120650568ef2b68e424a44611cd83481a05a7d58d36d32fc603f31f73cb74df7e3040c4ded1f4173c68cd4d736f')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
