@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='susbernate'
 pkgname="${_pkgname}-git"
-pkgver=r10.26028d7
+pkgver=r11.cbe368b
 pkgrel=1
 pkgdesc='Script to suspend the system, then hibernate after a while'
 arch=('x86_64')
