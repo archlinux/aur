@@ -3,14 +3,14 @@
 pkgbase=ivre-git
 _pkgname=ivre
 pkgname=('ivre-git' 'ivre-web-git' 'ivre-docs-git' 'python-ivre-git')
-pkgver=0.9.16.dev35
+pkgver=0.9.16.dev248
 pkgrel=1
 pkgdesc='Network recon framework based on Nmap, Masscan, Zeek (Bro), Argus, Netflow,...'
 arch=('any')
 url='https://ivre.rocks/'
 license=('GPL3')
 makedepends=('git' 'python')
-source=('git+https://github.com/cea-sec/ivre.git')
+source=('git+https://github.com/ivre/ivre.git')
 sha512sums=('SKIP')
 
 pkgver() {
