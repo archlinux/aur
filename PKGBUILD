@@ -1,8 +1,8 @@
 # Maintainer: Yurii <yu hrysh at posteo dot net>
 
 pkgname=chromium-extension-adnauseam
-pkgver=3.11.2_rc2
-_pkgver=3.11.2
+pkgver=3.11.3_rc3
+_pkgver=3.11.3
 pkgrel=1
 pkgdesc='An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers'
 arch=('any')
@@ -17,5 +17,5 @@ package() {
    mkdir -p "$pkgdir/usr/share/$pkgname"
    cp -dr --no-preserve=ownership "$srcdir/adnauseam.chromium"/* "$pkgdir/usr/share/$pkgname/"
 }
-sha256sums=('fa95596a3281869ce5df17064ed14d289443c21404eaf86c52111e31b3277a3b')
-b2sums=('0491cd4aacfd700187ee3e2422926bef4f711b7b0617b8a0c52ee6622afb513bdb9f8e1091d7ddd627a9e4b2580bb9ee0c30cd264d3b380676fd01e3a62037cd')
+sha256sums=('7fc8b66206a29eb3229a5279f91e673f0ee3278dccbbbe4f488c04237165688a')
+b2sums=('b97af3f248ce9af1ef0508f48ad439f740a5de419adc83a7c6902e4498d379c57258a85e90538ec01513d76a243d8331cb1138ebe55b2dddbdd9244b9e617573')
