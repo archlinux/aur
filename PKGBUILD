@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -17,7 +17,7 @@ conflicts=('v2raya')
 sha_service=ba580b203c1971780d2721a48fbc828d11467d5a
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-sha_web=486561dc9af4a1ebf72c2365b300be85ea93372e
+sha_web=854255a11994ad3153ec099cf19eefe6032fbc63
 
 source=(
     "v2raya.service"
@@ -50,19 +50,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '30b583776e401c660c41544c2b0bef43b7056f1f'
+    '91f52d7a38178f88f10840b47e6178a1c83174bc'
 )
 sha1sums_x86_64=(
-    '313cdcaec9c1b83e9a9835bc8ae6391d0825eacc'
+    '87a75350e437916233884961da7841a5810302ba'
 )
 sha1sums_aarch64=(
-    'e869bb472f03223ff16e296a78206ca4a64a199a'
+    '957fb61904306c300fc17cfda2629259ede61ff5'
 )
 sha1sums_armv6h=(
-    '10ea8d2e01ee6ba914c27a6c98a2b941e67dbedb'
+    '4d77b944dba7f96e2de5372cddbbc378c690b46a'
 )
 sha1sums_armv7h=(
-    '10ea8d2e01ee6ba914c27a6c98a2b941e67dbedb'
+    '4d77b944dba7f96e2de5372cddbbc378c690b46a'
 )
 
 package() {
