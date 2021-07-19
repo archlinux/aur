@@ -16,7 +16,7 @@ makedepends=('gprbuild')
 
 _git_hash=013b6f475704f6c75a1d38592b159e3af765391b
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_git_hash.tar.gz"
+source=("$pkgname-$_git_hash.tar.gz::$url/archive/$_git_hash.tar.gz"
         "Makefile.in-patch")
 md5sums=("385690daefa47a35c16a2f48bd5cfa4c"
          "fbf1d0e9adf74b03e85fb2d698fe7b85")
