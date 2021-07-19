@@ -1,4 +1,5 @@
-# Maintainer: Tomasz Gąsior <tomaszgasior.pl>
+# Maintainer: Xavier Laviron <xavier at norival dot dev>
+# Contributor: Tomasz Gąsior <tomaszgasior.pl>
 
 pkgname=symfony-console-autocomplete
 pkgver=1.3.5
