@@ -1,0 +1,21 @@
+pkgbase = scrt-sfx-opt-bin
+	pkgdesc = SecureCRT + SecureFX 9.0 Bundle
+	pkgver = 9.0.2
+	pkgrel = 2496
+	url = https://www.vandyke.com/
+	install = scrt-sfx-opt-bin-9.0.2-2496.install
+	arch = x86_64
+	license = custom:VanDyke
+	depends = glibc
+	depends = openssl
+	depends = qt5-base
+	depends = icu66
+	provides = SecureCRT
+	provides = SecureFX
+	source = scrt-sfx-opt-bin-9.0.2-2496.conf
+	source = scrt-sfx-opt-bin-9.0.2-2496.install
+	sha512sums = 62e3ec59da19c995c785ba839f6a26d96b848efcf251c4fe92976be6503271eff5082e16b78de3b6c8f9598990ed8efe2ec6ddb5ae200f15b4e1774d143b7ac4
+	sha512sums = acba6c070605e0317413a2c4f27416e3ddf85da26307299e97fffe1180e330fb25eddf4e113fbeb939e455950d029fe81974d59ab831aae0f4f6a72265e05afc
+	sha512sums = 032cc0b7471638f6fa89c95fcc23284f72f8774c1532d21cd830cc1b5e125b988216fdc85965b755fb8e0f62664d6b41af1453227e6c9a79644ea6a5bc9586cd
+
+pkgname = scrt-sfx-opt-bin
