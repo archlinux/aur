@@ -1,9 +1,10 @@
 pkgbase = guile3
 	pkgdesc = Portable, embeddable Scheme implementation written in C
-	pkgver = 3.0.5
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://www.gnu.org/software/guile/
 	arch = x86_64
+	arch = pentium4
 	license = GPL3
 	depends = gmp
 	depends = libltdl
@@ -14,13 +15,12 @@ pkgbase = guile3
 	depends = libffi
 	depends = readline
 	options = !strip
-	source = https://ftp.gnu.org/pub/gnu/guile/guile-3.0.5.tar.lz
-	source = https://ftp.gnu.org/pub/gnu/guile/guile-3.0.5.tar.lz.sig
+	source = https://ftp.gnu.org/pub/gnu/guile/guile-3.0.7.tar.lz
+	source = https://ftp.gnu.org/pub/gnu/guile/guile-3.0.7.tar.lz.sig
 	source = skip-testing-oom-conditions.patch
 	validpgpkeys = 4FD4D288D445934E0A14F9A5A8803732E4436885
-	sha256sums = a484eeffbd4d655b0c05b1382df8d40f1e561f7e71b963065762f6a6a497c675
+	sha256sums = f02166205ced31651d27bd037f947e199a442545ca73f913907c69469ddd7b54
 	sha256sums = SKIP
 	sha256sums = 2b053f0dafc5c68cc7f186c6252348e92e4b1e0f691e1e6eca7a5101c9b9f78a
 
 pkgname = guile3
-
