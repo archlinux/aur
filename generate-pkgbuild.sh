@@ -52,7 +52,7 @@ function foo {
         hashsum=$(jq -r '.body' < ${tmp_file} | rg -F linux-${arch_bin} | awk '{print $1}')
         echo ${hashsum} >> ${basedir}/_hashsum_${arch_pkg}
 
-        echo 'install -Dm 755 "${srcdir}/'"${tool}-${name}"'" "${pkgdir}/usr/bin/'${tool}'"' >> ${basedir}/_package
+        echo 'install -Dm 755 "${srcdir}/'"${tool}-${name}"'" "${pkgdir}/usr/bin/'${tool}'"' >> ${basedir}/_package_${arch_pkg}
     done
 
     cat <<EOF
@@ -62,14 +62,12 @@ $(cat ${basedir}/_source_${arch_pkg})
 sha256sums_${arch_pkg}=(
 $(cat ${basedir}/_hashsum_${arch_pkg})
 )
+package_${arch_pkg}() {
+$(cat ${basedir}/_package_${arch_pkg})
+}
 EOF
 }
 
 foo amd64 x86_64 "${tools_amd64[@]}"
 foo arm64 aarch64 "${tools_arm64[@]}"
 
-cat <<EOF
-package() {
-$(cat ${basedir}/_package)
-}
-EOF
