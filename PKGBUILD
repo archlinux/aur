@@ -8,7 +8,7 @@
 # Contributor: Ike Devolder <ike.devolder+gmail+com>
 
 pkgname=nvidia-390xx
-pkgver=390.143
+pkgver=390.144
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
@@ -45,3 +45,4 @@ package() {
     install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 \
         /usr/share/licenses/nvidia-390xx-dkms/LICENSE
 }
+
