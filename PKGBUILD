@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.8.4
+pkgver=2.8.11
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
          'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'libtg_owt' 'extra-cmake-modules')
+             'libtg_owt' 'extra-cmake-modules' 'jemalloc')
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 _commit="tag=v$pkgver"
@@ -60,8 +60,7 @@ source=(
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-    "https://github.com/archlinux/svntogit-community/raw/packages/telegram-desktop/trunk/fix-gcc11-assert.patch"
-    "fix-freeze-after-file-dialog.patch::https://github.com/telegramdesktop/tdesktop/commit/1261c775d4ca6fb78277ec213794da7c15e304e2.patch"
+    "fix-webview-extern-C-linkage.patch::https://patch-diff.githubusercontent.com/raw/desktop-app/lib_webview/pull/9.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -96,8 +95,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd94c21f45a14eea009f4dc099a0be7774aa9c64d6bdb2745eb866a505ad4d95e4e75e53e110bcdc2db553809d8aea485e3fa321feccc7660120c0f418f4d5e3f'
-            '2a5c8f5ca5a3a34872567ac98032717c40689baab2926d9fa8960404c6630925732f028dc7fdcf28bef11dd247a78779c3f5ca631f8b75abf23e23dab8d0f24c')
+            '6f405d48457f8839c9759ec1024db20251f0d42a3ec0026d1334d56511877f830213ac4b3c2396319dc8811e330324a4d62a0973221e280063aa69c18fd09a0e')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -155,11 +153,9 @@ prepare() {
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
     echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
     echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
-
+    # fix webview extern "C" linkage error
     cd ..
-    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-gcc11-assert.patch
-    # backport file dialog patch
-    patch -Np1 -i ${srcdir}/fix-freeze-after-file-dialog.patch
+    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-webview-extern-C-linkage.patch
 }
 
 build() {
