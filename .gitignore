@@ -1,1 +1,4 @@
 update.sh
+src/
+pkg/
+xkcd*
