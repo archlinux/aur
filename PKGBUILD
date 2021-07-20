@@ -2,7 +2,7 @@
 
 _pkgname='pyAttributes'
 pkgname=python-${_pkgname,,}
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Implementations of .NET-like attributes realized with Python decorators"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python-argcomplete')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab4b3cef5f4dc2d74ad935594c317300197fb462eab55710a7f1bbfc004396a7')
+sha256sums=('58403a1a8c9b2ccf5a70216b882e0f4224df872ba4399e30c230691270ab622b')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -21,8 +21,7 @@ build() {
 
 check(){
   cd "$_pkgname-$pkgver"
-  touch tests/__init__.py
-  pytest --override-ini 'python_files=*' tests/
+  pytest tests/
 }
 
 package() {
