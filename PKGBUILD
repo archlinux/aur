@@ -1,6 +1,6 @@
 # Maintainer: Cat2048 <xdotoolhelper@outlook.com>
 pkgname=xdotoolhelper-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A simple shell script to generate xdotool scripts."
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 package() {
   ls
   cd "xdotoolhelper"
-  cp -v xdotoolhelper.sh xdotoolhelper
-  chmod 755 xdotoolhelper
-  install -Dt "$pkgdir"/usr/bin xdotoolhelper
+  cp -v xdotoolhelper.sh "xdotoolhelper-$pkgver"
+  chmod 755 "xdotoolhelper-$pkgver"
+  install -Dt "$pkgdir"/usr/bin "xdotoolhelper-$pkgver"
 }
