@@ -5,7 +5,7 @@
 
 pkgname=libxml2
 pkgver=2.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
@@ -28,6 +28,15 @@ pkgver() {
 prepare() {
   mkdir build-py{2,3}
   cd $pkgname
+
+  # Work around lxml API abuse
+  git cherry-pick -n 85b1792e37b131e7a51af98a37f92472e8de5f3f
+  # Fix regression in xmlNodeDumpOutputInternal
+  git cherry-pick -n 13ad8736d294536da4cbcd70a96b0a2fbf47070c
+  # Fix XPath recursion limit
+  git cherry-pick -n 3e1aad4fe584747fd7d17cc7b2863a78e2d21a77
+  # Fix whitespace when serializing empty HTML documents
+  git cherry-pick -n 92d9ab4c28842a09ca2b76d3ff2f933e01b6cd6f
 
   # Take patches from https://src.fedoraproject.org/rpms/libxml2/tree/master
   local src
