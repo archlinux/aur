@@ -29,7 +29,6 @@ build()
 package()
 {
   	cd "$srcdir/${_pkgname}-$pkgver"
-	python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	python setup.py install --root="$pkgdir" --optimize=1
 }
 
