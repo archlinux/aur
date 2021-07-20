@@ -2,8 +2,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 # patches from Armbian and libreELEC
-https://github.com/LibreELEC/LibreELEC.tv/tree/master/projects/Allwinner/devices/H6/patches/linux
-https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
+# https://github.com/LibreELEC/LibreELEC.tv/tree/master/projects/Allwinner/devices/H6/patches/linux
+# https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
 _srcname=linux-5.11
@@ -244,6 +244,7 @@ _package-headers() {
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
+    $(declare -f "_package${_p#$pkgbase}")
     _package${_p#${pkgbase}}
   }"
 done

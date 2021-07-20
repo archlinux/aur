@@ -48,5 +48,20 @@ pkgbase = linux-tqc-a01
 	md5sums = afcc9a617c2b4e09c2da1411318a26da
 
 pkgname = linux-tqc-a01
+	pkgdesc = The Linux Kernel and modules - AArch64 kernel for TQC A01
+	install = linux-tqc-a01.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	provides = linux=5.11.4
+	provides = WIREGUARD-MODULE
+	conflicts = linux
+	replaces = linux-armv8
+	backup = etc/mkinitcpio.d/linux-tqc-a01.preset
 
 pkgname = linux-tqc-a01-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for TQC A01
+	provides = linux-headers=5.11.4
+	conflicts = linux-headers
