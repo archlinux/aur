@@ -1,0 +1,11 @@
+pkgbase = stm32wl-headers-git
+	pkgdesc = Headers for STM32WL devices
+	pkgver = r2.747d4e27df07
+	pkgrel = 1
+	url = https://github.com/STMicroelectronics
+	arch = any
+	license = apache
+	source = git://github.com/STMicroelectronics/STM32CubeWL.git
+	md5sums = SKIP
+
+pkgname = stm32wl-headers-git
