@@ -4,13 +4,13 @@
 
 pkgname=calligra-git
 pkgdesc="A set of applications for productivity and creative usage"
-pkgver=3.2.89_r101519.g961ce2d9ade
+pkgver=3.2.89_r101526.g785c52d202b
 pkgrel=1
 arch=($CARCH)
 url='https://www.calligra-suite.org/'
 license=(FDL1.2 GPL2 LGPL)
 depends=(kcmutils-git knotifyconfig-git kross-git kactivities-git kdiagram-git libspnav kdelibs4support-git
-         gsl openexr kcontacts-git qca-git poppler-qt5 libodfgen khtml-git cauchy)
+         gsl openexr kcontacts-git qca-qt5-git poppler-qt5 libodfgen khtml-git cauchy)
 makedepends=(git extra-cmake-modules-git kdoctools-git kdesignerplugin-git kinit-git libwpg okular-git eigen marble-common-git boost pstoedit libvisio libetonyek libwps vc libgit2 kcalendarcore-git akonadi-git)
 optdepends=('libwpg: Corel WordPerfect Graphics image importer'
             'libwps: Microsoft Works file word processor format import'
@@ -24,18 +24,13 @@ optdepends=('libwpg: Corel WordPerfect Graphics image importer'
             'qt5-webengine: for Calligra Gemini')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-source=("git+https://github.com/KDE/${pkgname%-git}.git" calligra-openexr3.patch)
-sha256sums=('SKIP'
-            '0dec106deff4cff342021da4ca4e9759f0bbe5707ea2d4ee8536eaf863409cec')
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   _ver="$(grep -m1 'set(CALLIGRA_VERSION_STRING' CMakeLists.txt | cut -d '"' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  patch -d ${pkgname%-git} -p1 < calligra-openexr3.patch # Fix build with OpenEXR 3
 }
 
 build() {
