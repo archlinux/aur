@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='python-numpy-docs'
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 pkgdesc='Set of HTML documentation for python-numpy'
 arch=('any')
@@ -12,7 +12,7 @@ options=('docs' '!strip')
 source=("$pkgname-$pkgver.zip::https://numpy.org/doc/$pkgver/numpy-html.zip")
 
 # Calculated by the PKGBUILD maintainer as upstream does not provide any
-sha256sums=('1aef600edb79e0632180aa89271293781b086a0116a024d854858776ea67f6d3')
+sha256sums=('ae51558c862a58ae75a94e1cdec47ce491a2024d1ff7a0767002b69443d85ad3')
 
 package() {
 	mkdir -p "$pkgdir/usr/share/doc/python-numpy/html/"
