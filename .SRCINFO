@@ -1,6 +1,6 @@
 pkgbase = lens-bin
 	pkgdesc = The Kubernetes IDE
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://k8slens.dev
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = lens-bin
 	depends = nss
 	provides = lens
 	conflicts = lens
-	source = lens-5.1.1.x86_64.AppImage::https://api.k8slens.dev/binaries/Lens-5.1.1-latest.20210716.1.x86_64.AppImage
+	source = lens-5.1.2.x86_64.AppImage::https://api.k8slens.dev/binaries/Lens-5.1.2-latest.20210719.1.x86_64.AppImage
 	source = lens.desktop
-	sha256sums = 2cd156b4432701bd820e28089176c39f64fe1c6243748fca1dbbc5254d9963d7
+	sha256sums = 86379867ecd2f071e8ddfff2ad2fd4bcb78606e83a58145f56f9e2335c7d4e40
 	sha256sums = 7acac010857d0afc5717e87e651bd875dab9771685648e3908da538709de2346
 
 pkgname = lens-bin
