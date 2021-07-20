@@ -8,7 +8,7 @@ pkgdesc="Personal CRM. Remember everything about your friends, family and busine
 url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
-depends=("php7>=7.4" "php-intl" "mariadb")
+depends=("php7>=7.4" "php7-intl" "mariadb")
 makedepends=("composer" "yarn" "git")
 optdepends=("apache: web server"
             "caddy: web server"

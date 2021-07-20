@@ -10,7 +10,7 @@ pkgbase = monica-git
 	makedepends = yarn
 	makedepends = git
 	depends = php7>=7.4
-	depends = php-intl
+	depends = php7-intl
 	depends = mariadb
 	optdepends = apache: web server
 	optdepends = caddy: web server
