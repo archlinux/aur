@@ -2,7 +2,7 @@
 
 _target=z80-elf
 pkgname=$_target-binutils
-pkgver=2.36.1
+pkgver=2.37
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the Z80 (bare-metal) target'
 arch=(x86_64)
@@ -11,8 +11,9 @@ license=(GPL)
 depends=(glibc zlib elfutils)
 makedepends=(elfutils)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=(e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0
-            a834ebae5d0cec46514c10834d8ba92f91643592bdfc5340ce0937dd1569f5b3)
+sha256sums=(820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
+            fe5d042afaa7b18bf972774f0b39a0fc24d08ae7b72799434ae3a05de9c90b8b)
+
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)  # Nick Clifton <nickc@redhat.com>
 
 prepare() {

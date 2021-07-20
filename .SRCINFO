@@ -1,6 +1,6 @@
 pkgbase = z80-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Z80 (bare-metal) target
-	pkgver = 2.36.1
+	pkgver = 2.37
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -9,11 +9,10 @@ pkgbase = z80-elf-binutils
 	depends = glibc
 	depends = zlib
 	depends = elfutils
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0
-	sha256sums = a834ebae5d0cec46514c10834d8ba92f91643592bdfc5340ce0937dd1569f5b3
+	sha256sums = 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
+	sha256sums = fe5d042afaa7b18bf972774f0b39a0fc24d08ae7b72799434ae3a05de9c90b8b
 
 pkgname = z80-elf-binutils
-
