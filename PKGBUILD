@@ -42,12 +42,6 @@ prepare() {
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/bazarr"
 
-  # Remove any .gitignore files
-  #find "${srcdir}/bazarr-${pkgver}/" -name '.gitignore' -delete
-
-  # Remove the empty data folder from the installation
-  #rm -rf "${srcdir}/bazarr-${pkgver}/data"
-
   cp -dpr --no-preserve=ownership "${srcdir}/bazarr-${pkgver}/"* "${pkgdir}/usr/lib/bazarr"
 
   install -D -m 644 "${srcdir}/bazarr.service" "${pkgdir}/usr/lib/systemd/system/bazarr.service"
