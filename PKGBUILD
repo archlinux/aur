@@ -21,7 +21,7 @@ package() {
 
   cat << 'EOF' > $pkgdir/usr/bin/flyway
 #!/bin/sh
-"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-7.10.0/lib/*:/opt/flyway/flyway-7.10.0/lib/community/*:/opt/flyway/flyway-7.10.0/drivers/* org.flywaydb.commandline.Main "$@"
+"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-7.11.1/lib/*:/opt/flyway/flyway-7.11.1/lib/community/*:/opt/flyway/flyway-7.11.1/drivers/* org.flywaydb.commandline.Main "$@"
 EOF
   chmod 755 $pkgdir/usr/bin/flyway
 }
