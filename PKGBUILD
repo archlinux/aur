@@ -7,9 +7,7 @@ pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
 url="https://github.com/caverym/Proton-Caller/"
 license=('GPL3')
-depends=(
-  'steam'
-)
+depends=()
 makedepends=('git' 'rust' 'gcc')
 provides=(proton-caller)
 conflicts=(proton-caller)
