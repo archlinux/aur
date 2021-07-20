@@ -1,31 +1,30 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=szyszka-bin
-_name="${pkgname%-bin}"
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="A simple but powerful batch file rename program"
 arch=('x86_64')
 url="https://github.com/qarmin/szyszka"
 license=('MIT')
 depends=('gtk3')
-provides=("$_name")
-conflicts=("$_name")
-source=("$pkgname-$pkgver::$url/releases/download/$pkgver/linux_$_name"
-        "$_name.desktop::https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/data/com.github.qarmin.szyszka.desktop"
-        "https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/data/icons/com.github.qarmin.szyszka.png"
-        "https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/LICENSE"
-        "https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/README.md")
-sha256sums=('b4928b75917dfb1eed7b0f1651e4bbd70168f1d640af44ab3af3c9ebc1a531aa'
+provides=('szyszka')
+conflicts=('szyszka')
+source=("$pkgname-$pkgver::$url/releases/download/$pkgver/linux_szyszka"
+        "szyszka-$pkgver.desktop::https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/data/com.github.qarmin.szyszka.desktop"
+        "szyszka-$pkgver.svg::https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/data/icons/com.github.qarmin.szyszka.svg"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/LICENSE"
+        "README-$pkgver.md::https://raw.githubusercontent.com/qarmin/szyszka/$pkgver/README.md")
+sha256sums=('a8bed96c4a8bd629c8e9d9ba88999089d0156bfd4462d31aeb86ce53db19cc2d'
             '05f63e5dcfdf6bd0bab81b5083bcb7221233f5f74665f7481160d1d028750a89'
-            '363ef90e47fd120a602db643661c2fe334490a3301d4033b9cf188b7182e0904'
+            '65ad756cc7b2a3274f982f5cbcff546808408eeaa5f9dbdc8e498c69e9fa006a'
             'c5613b61c143e5fc1fde6661b6808effc80e1eebf2bd954e17eb2382ef72400b'
-            '7421d0ef8abff98f650ed5e94713aad4fa176b7a627e0866177ed134e4469c7d')
+            'ddae8276d4831863d3b3164cc27fc27321c7d5d6e5f1ba7022d12b2d7192fbcf')
 
 package() {
-  install -Dvm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_name"
-  install -Dvm 644 "$_name.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dvm 644 "com.github.qarmin.$_name.png" -t "$pkgdir/usr/share/icons"
-  install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dvm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/szyszka"
+  install -Dvm 644 "szyszka-$pkgver.desktop" "$pkgdir/usr/share/applications/com.github.qarmin.szyszka.desktop "
+  install -Dvm 644 "szyszka-$pkgver.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.qarmin.szyszka.svg"
+  install -Dvm 644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dvm 644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

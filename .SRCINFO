@@ -1,23 +1,22 @@
 pkgbase = szyszka-bin
 	pkgdesc = A simple but powerful batch file rename program
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/qarmin/szyszka
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	provides = szyszka
 	conflicts = szyszka
-	source = szyszka-bin-1.0.0::https://github.com/qarmin/szyszka/releases/download/1.0.0/linux_szyszka
-	source = szyszka.desktop::https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/data/com.github.qarmin.szyszka.desktop
-	source = https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/data/icons/com.github.qarmin.szyszka.png
-	source = https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/LICENSE
-	source = https://raw.githubusercontent.com/qarmin/szyszka/1.0.0/README.md
-	sha256sums = b4928b75917dfb1eed7b0f1651e4bbd70168f1d640af44ab3af3c9ebc1a531aa
+	source = szyszka-bin-2.0.0::https://github.com/qarmin/szyszka/releases/download/2.0.0/linux_szyszka
+	source = szyszka-2.0.0.desktop::https://raw.githubusercontent.com/qarmin/szyszka/2.0.0/data/com.github.qarmin.szyszka.desktop
+	source = szyszka-2.0.0.svg::https://raw.githubusercontent.com/qarmin/szyszka/2.0.0/data/icons/com.github.qarmin.szyszka.svg
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/qarmin/szyszka/2.0.0/LICENSE
+	source = README-2.0.0.md::https://raw.githubusercontent.com/qarmin/szyszka/2.0.0/README.md
+	sha256sums = a8bed96c4a8bd629c8e9d9ba88999089d0156bfd4462d31aeb86ce53db19cc2d
 	sha256sums = 05f63e5dcfdf6bd0bab81b5083bcb7221233f5f74665f7481160d1d028750a89
-	sha256sums = 363ef90e47fd120a602db643661c2fe334490a3301d4033b9cf188b7182e0904
+	sha256sums = 65ad756cc7b2a3274f982f5cbcff546808408eeaa5f9dbdc8e498c69e9fa006a
 	sha256sums = c5613b61c143e5fc1fde6661b6808effc80e1eebf2bd954e17eb2382ef72400b
-	sha256sums = 7421d0ef8abff98f650ed5e94713aad4fa176b7a627e0866177ed134e4469c7d
+	sha256sums = ddae8276d4831863d3b3164cc27fc27321c7d5d6e5f1ba7022d12b2d7192fbcf
 
 pkgname = szyszka-bin
-
