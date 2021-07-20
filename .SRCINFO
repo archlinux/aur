@@ -1,0 +1,26 @@
+pkgbase = korganizer-git
+	pkgdesc = Calendar and scheduling Program
+	pkgver = 21.11.40_r11412.gd9f06fc83
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = qt5-tools
+	makedepends = boost
+	depends = kdepim-runtime-git
+	depends = kontactinterface-git
+	depends = incidenceeditor-git
+	depends = kuserfeedback-git
+	depends = phonon-qt5-git
+	optdepends = kdepim-addons-git: additional plugins
+	provides = korganizer
+	conflicts = korganizer
+	source = git+https://github.com/KDE/korganizer.git
+	sha256sums = SKIP
+
+pkgname = korganizer-git
