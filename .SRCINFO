@@ -1,0 +1,15 @@
+pkgbase = soryu-git
+	pkgdesc = Glitch an image in the terminal
+	pkgver = r8.e371d90
+	pkgrel = 1
+	url = https://github.com/enjuus/soryu
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = go
+	provides = soryu
+	conflicts = soryu
+	source = soryu::git+https://github.com/enjuus/soryu.git
+	sha256sums = SKIP
+
+pkgname = soryu-git
