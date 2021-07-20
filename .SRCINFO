@@ -1,0 +1,26 @@
+pkgbase = akregator-git
+	pkgdesc = A Feed Reader by KDE
+	pkgver = 21.11.40_r6188.g12c82b62
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = boost
+	makedepends = kdoctools-git
+	depends = kontactinterface-git
+	depends = messagelib-git
+	depends = knotifyconfig-git
+	depends = ktexteditor-git
+	depends = syndication-git
+	depends = kuserfeedback-git
+	optdepends = kdepim-addons-git: additional plugins
+	provides = akregator
+	conflicts = akregator
+	source = git+https://github.com/KDE/akregator.git
+	sha256sums = SKIP
+
+pkgname = akregator-git
