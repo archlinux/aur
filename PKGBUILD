@@ -7,7 +7,7 @@
 
 pkgname=python-flask1
 pkgver=1.1.4
-pkgrel=2
+pkgrel=1
 pkgdesc='Micro webdevelopment framework for Python(1.x Branch)'
 url='http://flask.pocoo.org/'
 arch=('any')
@@ -19,6 +19,7 @@ makedepends=('python-setuptools'  'python-werkzeug'
              'python-jinja' 'python-itsdangerous' 'python-click')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pallets/flask/archive/${pkgver}.tar.gz")
 sha512sums=('e7ca33d599c0f7b83542620e827c999124ffe30e31006815b49993a81f9cf0d61dd0433b73f57f922da5aeb76101beccfe63d9a7236e1850e326f838dc1f453f')
+
 
 build() {
   cd "flask-$pkgver"
