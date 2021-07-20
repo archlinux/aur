@@ -1,6 +1,6 @@
 pkgbase = xoscope
 	pkgdesc = A digital oscilloscope using input from a sound card. This package does not support COMEDI devices.
-	pkgver = 2.1
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://xoscope.sourceforge.net/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = xoscope
 	depends = fftw
 	depends = gtkdatabox
 	depends = alsa-lib
-	source = http://downloads.sourceforge.net/project/xoscope/xoscope/2.1/xoscope-2.1.tar.gz
-	md5sums = a8b792ebca861eddc5967b255936a6bc
+	source = https://downloads.sourceforge.net/project/xoscope/xoscope/2.3/xoscope-2.3.tar.gz
+	md5sums = 737504856797fb0eac6f9c768446a184
 
 pkgname = xoscope
 

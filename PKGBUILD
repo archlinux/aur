@@ -9,7 +9,7 @@ url="http://xoscope.sourceforge.net/"
 license=('GPL')
 depends=('fftw' 'gtkdatabox' 'alsa-lib')
 install=
-source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
+source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
