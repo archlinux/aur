@@ -1,0 +1,20 @@
+pkgbase = akonadi-calendar-tools-git
+	pkgdesc = CLI tools to manage akonadi calendars
+	pkgver = 5.18.40_r876.g6b18da3
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = calendarsupport-git
+	provides = akonadi-calendar-tools
+	conflicts = akonadi-calendar-tools
+	source = git+https://github.com/KDE/akonadi-calendar-tools.git
+	sha256sums = SKIP
+
+pkgname = akonadi-calendar-tools-git
