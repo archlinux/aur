@@ -1,0 +1,22 @@
+pkgbase = veracrypt-console-bin
+	pkgdesc = Disk encryption with strong security based on TrueCrypt. amd64 and armv7h headless versions only
+	pkgver = 1.24.update7
+	pkgrel = 1
+	url = https://www.veracrypt.fr/
+	install = veracrypt.install
+	arch = x86_64
+	arch = armv7h
+	license = custom:TrueCrypt
+	depends = fuse2>=2.8.0
+	depends = libsm
+	depends = device-mapper
+	optdepends = sudo: mounting encrypted volumes as nonroot users
+	provides = veracrypt
+	conflicts = veracrypt
+	conflicts = veracrypt-git
+	source_x86_64 = veracrypt-console-bin-1.24.update7.deb::https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Debian-10-amd64.deb
+	sha256sums_x86_64 = c76e1017c8c1d1a904be10a3594c7a8144acc4391977b1dce5d4481f596112da
+	source_armv7h = veracrypt-console-bin-1.24.update7.deb::https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-console-1.24-Update7-Debian-10-armhf.deb
+	sha256sums_armv7h = 99a3b5f170804aa0f80d9c5129db80e55da94976bf8fd3af7c68c14089fbc00a
+
+pkgname = veracrypt-console-bin

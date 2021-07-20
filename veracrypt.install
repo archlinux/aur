@@ -1,0 +1,6 @@
+pre_remove(){
+ if [[ "$(mount)" =~ "veracrypt_aux_mnt" ]]; then
+  echo "Error: All VeraCrypt volumes must be dismounted first."
+  exit 1
+ fi
+}
