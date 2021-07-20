@@ -1,8 +1,8 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _name=gp-saml-gui
 pkgname=$_name-git
-pkgver=r24.6133ffe
-pkgrel=2
+pkgver=r57.17b2ca6
+pkgrel=1
 pkgdesc='Interactively authenticate to GlobalProtect VPNs that require SAML'
 arch=(any)
 url="https://github.com/dlenski/$_name"
@@ -13,7 +13,7 @@ depends=('python' 'python-requests' 'webkit2gtk' 'python-gobject')
 makedepends=('git')
 source=("${_name}::git+${url}" 'gp-saml-gui.sh')
 b2sums=('SKIP'
-	'2db9e1cfee4c059fdd84c682ff3aeadb63cd6fddbb2963718f0d3c4520ee609dcc930eb4072096fa2ad651c00ac36e6d2ca4859fe9225aa9002d893b927b7878')
+        '5015928286f6a71327568ecaf92d2fc60360ca6eb3499a99ebc4613fc2655004ff9109b67174d3e63fc7adbf9e5f1a2d884edefc7b0fbe87689653f79f6ce6e5')
 
 pkgver() {
 	cd "${srcdir}/${_name}"
