@@ -10,6 +10,7 @@ url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
 depends=(
+  'sqlite'
   'python'
   'python-gevent'
   'python-gevent-websocket'
