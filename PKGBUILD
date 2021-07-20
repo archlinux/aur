@@ -13,7 +13,7 @@ depends=('nss'
 makedepends=('tar')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("${pkgname}-${pkgver}.deb::http://update.whale.naver.net/downloads/installers/naver-whale-stable_amd64.deb"
+source=("${pkgname}-${pkgver}.deb::https://installer-whale.pstatic.net/downloads/installers/naver-whale-stable_amd64.deb"
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP')
