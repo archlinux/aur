@@ -1,8 +1,8 @@
 # Maintainer: Cat2048 <xdotoolhelper@outlook.com>
 pkgname=xdotoolhelper-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="A simple shell script to generate xdotool scripts."
+pkgdesc="A simple bash script to generate xdotool scripts."
 arch=('any')
 url="https://github.com/gamingdoom/xdotoolhelper"
 license=('GPL3')
