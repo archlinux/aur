@@ -1,0 +1,27 @@
+pkgbase = kalarm-git
+	pkgdesc = Personal alarm scheduler
+	pkgver = 21.11.40_r6410.g503c8fd5
+	pkgrel = 1
+	url = https://apps.kde.org/kalarm/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	makedepends = mailcommon-git
+	depends = perl
+	depends = phonon-qt5-git
+	depends = kidletime-git
+	depends = knotifyconfig-git
+	depends = kalarmcal-git
+	depends = pimcommon-git
+	depends = kmailtransport-git
+	provides = kalarm
+	conflicts = kalarm
+	source = git+https://github.com/KDE/kalarm.git
+	sha256sums = SKIP
+
+pkgname = kalarm-git
