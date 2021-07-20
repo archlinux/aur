@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.12.17 Kernel Configuration
+# Linux/x86 5.12.18 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -45,7 +45,7 @@ CONFIG_KERNEL_ZSTD=y
 #
 # ZSTD compression options
 #
-CONFIG_KERNEL_ZSTD_LEVEL=19
+CONFIG_KERNEL_ZSTD_LEVEL=15
 CONFIG_KERNEL_ZSTD_LEVEL_ULTRA=y
 # end of ZSTD compression options
 

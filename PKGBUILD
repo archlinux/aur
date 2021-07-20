@@ -68,13 +68,14 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm
-pkgver=5.12.17
-pkgrel=2
+pkgver=5.12.18
+pkgrel=1
 _major=5.12
 _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
 _gcc_more_v=20210610
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_jobs=$(nproc)
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -111,7 +112,7 @@ validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 
-b2sums=('0eede859861f88a8d6384517982472580aeb6c38eeb037188571d58b6b83d4fbe7130917b7ae2ccd9f9b2f6f23f7a542d7a396f73adb9adb642a79b3e1f4e95d'
+b2sums=('2fdfb4fbb7de72790d9326a4135b58f6609366884a3bb4e736215eb9b378186e444a792053e2fb38f01a2999cb1e5dc9cba39b32c2632724ab8486d760c7e0ce'
         'SKIP'
         'SKIP'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -231,7 +232,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all
+  make -j${_jobs} all
 }
 
 _package() {
