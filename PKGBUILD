@@ -3,7 +3,7 @@
 _pkgname=Mark-Mind
 _gitpkgname=Mark.Mind
 pkgname=mark-mind
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Mark Mind — Next generation mind map editor"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/MarkMindLtd/${_pkgname}/releases/download/v${pkgver//_/-}/${_gitpkgname}-${pkgver}.AppImage"
     "io.github.markmindltd.mark_mind.desktop"
     "io.github.markmindltd.mark_mind.metainfo.xml")
-sha256sums=('643134298b54b7e7433415f1f4924a1aa07700f3abe822cc07a479075132d7d4'
+sha256sums=('4b831ea5b9eea1e9721fb7328c2c13a4d16452a9644ab3239b4b7ab8ab2c6d4b'
             'bc8c6db34688ad87879871a9ea28c088a1f44fcdfb7f4e4aef52a425283dde9f'
             'c0050afe68a3c62cc8f15508b1209a41eae4cbd7e358a0bf0ae20bc37178f35f')
 
