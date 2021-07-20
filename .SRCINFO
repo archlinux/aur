@@ -14,7 +14,6 @@ pkgbase = kaddressbook-git
 	depends = kontactinterface-git
 	depends = kdepim-runtime-git
 	depends = kuserfeedback-git
-	depends = kdepim-apps-libs-git
 	provides = kaddressbook
 	conflicts = kaddressbook
 	source = git+https://github.com/KDE/kaddressbook.git
