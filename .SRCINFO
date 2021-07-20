@@ -1,0 +1,15 @@
+pkgbase = python2-cairo
+	pkgdesc = Python bindings for the cairo graphics library
+	pkgver = 1.18.2
+	pkgrel = 4
+	url = https://pycairo.readthedocs.io/en/latest/
+	arch = x86_64
+	license = LGPL2.1
+	license = MPL
+	makedepends = git
+	depends = cairo
+	depends = python2
+	source = git+https://github.com/pygobject/pycairo/#commit=8643af4c10059827056e769c8c7a997bdc3d5a29
+	sha256sums = SKIP
+
+pkgname = python2-cairo
