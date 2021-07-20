@@ -1,11 +1,12 @@
 pkgbase = gonano
 	pkgdesc = Go language support for NANO — a digital currency
 	pkgver = 0.1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hectorchu/gonano
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = ocl-icd
 	provides = gonano
 	conflicts = gonano
 	source = gonano-0.1.16.tar.gz::https://github.com/hectorchu/gonano/archive/refs/tags/v0.1.16.tar.gz
