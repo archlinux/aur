@@ -3,8 +3,8 @@
 # Contributor: ribbons <aur dot ribbons at codefive dot co dot uk>
 
 pkgname=python-vispy
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='A high-performance interactive 2D/3D data visualization library.'
 arch=('any')
 url='http://vispy.org'
@@ -17,7 +17,7 @@ _pkgname=vispy
 _js_commit=2d8be774552f20add80860b2b7d0bfd600730595
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz"
         "vispy.js.tar.gz"::"https://github.com/vispy/vispy.js/archive/${_js_commit}.tar.gz")
-sha256sums=('43bf814111b1e33ee04ec0325099702d7ff035deb7c695f2a485ea957d6d79c4'
+sha256sums=('35d7f4780d1ede910fbfe4feef43d4304e946812205b51130570f72fe803f640'
             '2f10454096cb1ebfa14bd76109fa9ec729f3866307eb990bb66dad1012938c4f')
 
 prepare() {
