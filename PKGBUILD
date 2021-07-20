@@ -32,5 +32,5 @@ build()  {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  ln -s "/usr/bin/com.github.rkoesters.$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "$pkgdir/usr/bin/com.github.rkoesters.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
