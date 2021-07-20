@@ -1,6 +1,6 @@
 pkgbase = monica-git
 	pkgdesc = Personal CRM. Remember everything about your friends, family and business relationships
-	pkgver = 3.0.1.r93.gc4c63bc5c
+	pkgver = 3.1.3.r39.g06e7af41a
 	pkgrel = 1
 	url = https://www.monicahq.com/
 	install = monica.install
@@ -9,14 +9,14 @@ pkgbase = monica-git
 	makedepends = composer
 	makedepends = yarn
 	makedepends = git
-	depends = php>=7.4
+	depends = php7>=7.4
 	depends = php-intl
 	depends = mariadb
 	optdepends = apache: web server
 	optdepends = caddy: web server
 	optdepends = nginx: web server
 	optdepends = redis: cache and session driver
-	optdepends = php-redis: cache and session driver
+	optdepends = php7-redis: cache and session driver
 	options = !strip
 	backup = etc/webapps/monica/config.env
 	source = git+https://github.com/monicahq/monica.git

@@ -2,19 +2,19 @@
 # Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="monica-git"
-pkgver=3.0.1.r93.gc4c63bc5c
+pkgver=3.1.3.r39.g06e7af41a
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
 license=("AGPL3")
 arch=("any")
-depends=("php>=7.4" "php-intl" "mariadb")
+depends=("php7>=7.4" "php-intl" "mariadb")
 makedepends=("composer" "yarn" "git")
 optdepends=("apache: web server"
             "caddy: web server"
             "nginx: web server"
             "redis: cache and session driver"
-            "php-redis: cache and session driver")
+            "php7-redis: cache and session driver")
 source=("git+https://github.com/monicahq/monica.git"
         "monica-scheduler.service"
         "monica-scheduler.timer")
