@@ -1,0 +1,21 @@
+pkgbase = python2-gobject
+	pkgdesc = Python 2 Bindings for GLib/GObject/GIO/GTK+
+	pkgver = 3.36.1
+	pkgrel = 3
+	url = https://wiki.gnome.org/Projects/PyGObject
+	arch = x86_64
+	license = LGPL
+	checkdepends = python2-pytest
+	checkdepends = gtk3
+	checkdepends = xorg-server-xvfb
+	makedepends = python2-cairo
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = gobject-introspection-runtime
+	depends = python2
+	optdepends = cairo: Cairo bindings
+	source = git+https://gitlab.gnome.org/GNOME/pygobject.git#commit=5c6bee1c2a0d08cf367aa61784b5b967128e68b2
+	sha256sums = SKIP
+
+pkgname = python2-gobject
