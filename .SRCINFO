@@ -1,0 +1,22 @@
+pkgbase = kontact-git
+	pkgdesc = KDE Personal Information Manager
+	pkgver = 21.11.40_r5346.ged3f1b15
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = kontactinterface-git
+	depends = kmail-account-wizard-git
+	depends = grantleetheme-git
+	provides = kontact
+	conflicts = kontact
+	source = git+https://github.com/KDE/kontact.git
+	sha256sums = SKIP
+
+pkgname = kontact-git
