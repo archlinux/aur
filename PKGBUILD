@@ -66,7 +66,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.17
+pkgver=5.12.18
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -110,7 +110,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('0eede859861f88a8d6384517982472580aeb6c38eeb037188571d58b6b83d4fbe7130917b7ae2ccd9f9b2f6f23f7a542d7a396f73adb9adb642a79b3e1f4e95d'
+b2sums=('2fdfb4fbb7de72790d9326a4135b58f6609366884a3bb4e736215eb9b378186e444a792053e2fb38f01a2999cb1e5dc9cba39b32c2632724ab8486d760c7e0ce'
         'SKIP'
         'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -195,6 +195,9 @@ prepare() {
     scripts/config --enable CONFIG_DEFAULT_BBR2
     scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
 
+    echo "Disabling NUMA from kernel config..."
+    scripts/config --disable CONFIG_NUMA
+
     echo "Enable Anbox"
     scripts/config --module  CONFIG_ASHMEM
     scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -214,8 +217,10 @@ prepare() {
     scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
 
     echo "Enabling multigenerational LRU..."
+    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
     scripts/config --enable CONFIG_LRU_GEN
     scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
     scripts/config --enable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
 
