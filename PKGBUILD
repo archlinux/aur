@@ -3,13 +3,13 @@
 pkgname=svetovid-lib
 pkgver=0.5.0
 _commit=b7c003f8b277ed19be23b674c656b73b262e5769
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplement Library for Introductory Programming Courses'
 arch=(any)
 url='https://github.com/ivanpribela/svetovid-lib'
 license=('APACHE')
 depends=('java-runtime')
-makedepends=('ant')
+makedepends=('ant' 'inkscape')
 source=("git+https://github.com/ivanpribela/svetovid-lib#commit=${_commit}")
 sha512sums=('SKIP')
 
