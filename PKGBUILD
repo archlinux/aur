@@ -1,14 +1,13 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _extensionuuid=emoji-selector@maestroschan.fr
 pkgname=gnome-shell-extension-emoji-selector-git
-pkgver=15.r20.g723430a
+pkgver=20.r14.gfd72b6a
 pkgrel=1
 pkgdesc="Gnome shell emoji picker Extension."
 arch=(any)
 url="https://github.com/maoschanz/emoji-selector-for-gnome"
 license=('GPL3')
-depends=('gnome-shell>=3.26')
+depends=('gnome-shell>=3.32')
 makedepends=('git')
 optdepends=('ttf-joypixels: Emoji as a Service (formerly EmojiOne)'
 						'noto-fonts-emoji: Google Noto emoji fonts')

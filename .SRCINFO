@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-emoji-selector-git
 	pkgdesc = Gnome shell emoji picker Extension.
-	pkgver = 15.r20.g723430a
+	pkgver = 20.r14.gfd72b6a
 	pkgrel = 1
 	url = https://github.com/maoschanz/emoji-selector-for-gnome
 	install = gnome-shell-extension.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gnome-shell>=3.26
+	depends = gnome-shell>=3.32
 	optdepends = ttf-joypixels: Emoji as a Service (formerly EmojiOne)
 	optdepends = noto-fonts-emoji: Google Noto emoji fonts
 	provides = gnome-shell-extension-emoji-selector
@@ -16,4 +16,3 @@ pkgbase = gnome-shell-extension-emoji-selector-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-emoji-selector-git
-
