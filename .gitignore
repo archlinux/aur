@@ -1,0 +1,7 @@
+src
+pkg
+archlinux-linux
+*.tar.xz
+.vscode
+xanmod-rog-PKGBUILD
+linux

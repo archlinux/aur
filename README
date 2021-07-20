@@ -1,0 +1,4 @@
+5.8.14.arch1-1 - no audio patches
+5.8.14.arch1-2 - v1 audio patch
+5.8.14.arch1-3 - v2 audio patch
+Remeber to always make a full system shutdown with unplug power and all cables, then boot clean without connecting anything expect of power.
