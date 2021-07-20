@@ -2,11 +2,11 @@
 
 pkgname=ircd-ratbox
 pkgver=3.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced, stable and fast ircd'
 url='http://www.ratbox.org'
 license=('GPL')
-depends=('openssl' 'sqlite')
+depends=('openssl' 'sqlite' 'libtool')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 backup=("etc/$pkgname/ircd.motd")
 install=$pkgname.install
