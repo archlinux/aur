@@ -6,8 +6,8 @@
 
 pkgbase=virtualbox-bin
 pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
-pkgver=6.1.22
-_build=144080
+pkgver=6.1.24
+_build=145767
 _rev=88402
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
@@ -29,8 +29,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('389711a1bfae876e677452a4ce0030dedbcee0bd8bec26d61272dfac8a124fc4'
-            '15e0829259e2cb2a976da1957c69fabdfaf6e1d4b2a169ec7c243a6c757332b2'
+sha256sums=('e2f72ae03241ebe2fefc5f605439d84e5d771adcbec37e01c293291c5db5800f'
+            '040ec2612130908c484742ee0453c9135bc1fd8c9ccd87bffb055cd04e0a2912'
             '61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a'
             'bff06f916a9c02fce12d3aaf76572766e8f75d54c179fb26d2fda060a7473af1'
             '2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8'
@@ -80,7 +80,7 @@ package_virtualbox-bin() {
     local _installdir='opt/VirtualBox'
     
     # install bundled files
-    mkdir -p "${pkgdir}/opt"
+    install -d -m755 "${pkgdir}/opt"
     cp -Pr --no-preserve='ownership' "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
     # mark binaries suid root, and make sure the directory is only writable by the user
@@ -91,7 +91,7 @@ package_virtualbox-bin() {
     rm -r "${pkgdir}/${_installdir}"/{additions/VBoxGuestAdditions.iso,rdesktop-vrdp.tar.gz,sdk}
     
     # module sources
-    mkdir -p "${pkgdir}/usr/src"
+    install -d -m755 "${pkgdir}/usr/src"
     mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}_non_OSE"
     
     # module reloading shortcut (with a symlink with default helper)
@@ -123,7 +123,7 @@ package_virtualbox-bin() {
     # symlinks
     local _dir
     local _file
-    mkdir -p "${pkgdir}/usr/share"/{applications,{doc,licenses}/"$pkgname",mime/packages,pixmaps}
+    install -d -m755 "${pkgdir}/usr/share"/{applications,{doc,licenses}/"$pkgname",mime/packages,pixmaps}
     for _file in vboxwebsrv VirtualBox{,VM} VBox{Manage,SDL,VRDP,Headless,Autostart,BalloonCtrl,BugReport,DTrace}
     do
         ln -s "../../${_installdir}/VBox.sh" "${pkgdir}/usr/bin/${_file}"
@@ -148,7 +148,7 @@ package_virtualbox-bin() {
         else
             _dir="${_file%/*}/mimetypes"
         fi
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_dir}"
+        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_dir}"
         ln -s "../../../../../../${_installdir}/icons/${_dir%/*}/${_file##*/}" \
             "${pkgdir}/usr/share/icons/hicolor/${_dir}/${_file##*/}"
     done < <(find "${pkgdir}/${_installdir}/icons" -type f -print0 | sed -z "s|${pkgdir}/${_installdir}/icons/||")
@@ -181,7 +181,7 @@ package_virtualbox-bin-sdk() {
     local _installdir='opt/VirtualBox'
     export PYTHONHASHSEED='0'
     
-    mkdir -p "${pkgdir}/${_installdir}/sdk"
+    install -d -m755 "${pkgdir}/${_installdir}/sdk"
     while read -r -d '' _dir
     do
         cp -Pr --no-preserve='ownership' "$_dir" "${pkgdir}/${_installdir}/sdk"
