@@ -1,4 +1,4 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Kimlulz (kimlulz@naver.com)
 
 pkgname=whale-browser
 pkgver=stable
