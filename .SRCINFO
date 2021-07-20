@@ -1,6 +1,6 @@
 pkgbase = stackdriver-collectd
 	pkgdesc = Stackdriver's monitoring agent based on collectd
-	pkgver = 6.1.1
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://github.com/Stackdriver/collectd
 	arch = x86_64
@@ -22,14 +22,15 @@ pkgbase = stackdriver-collectd
 	provides = stackdriver-collectd
 	conflicts = collectd
 	backup = etc/collectd.conf
-	source = stackdriver-collectd-v6.1.1.tar.gz::https://github.com/Stackdriver/collectd/archive/6.1.1.tar.gz
+	source = stackdriver-collectd-v6.1.3.tar.gz::https://github.com/Stackdriver/collectd/archive/6.1.3.tar.gz
 	source = collectd.conf
 	source = stackdriver-collectd.service
 	source = stackdriver-collectd.sh
-	md5sums = 1ed478600f2843019dc239e2206bff86
+	source = Makefile.am.patch
+	md5sums = 7c21988e0de3c8e002ec43a34d8fab51
 	md5sums = 7a2c4528d4ff161d7ac665daedc5fb3c
 	md5sums = 251922321b6d566c8f1750402e4cfd21
 	md5sums = e4da9e61c35f6d74d3d76a02eb441ff2
+	md5sums = 79f4913634ec33585b7b741e7f2e7dcf
 
 pkgname = stackdriver-collectd
-

@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=stackdriver-collectd
-pkgver=6.1.1
+pkgver=6.1.3
 pkgrel=1
 
 pkgdesc="Stackdriver's monitoring agent based on collectd"
@@ -40,20 +40,25 @@ source=(
 	"collectd.conf"
 	"stackdriver-collectd.service"
 	"stackdriver-collectd.sh"
+	"Makefile.am.patch"
 )
-md5sums=('1ed478600f2843019dc239e2206bff86'
-         '7a2c4528d4ff161d7ac665daedc5fb3c'
-         '251922321b6d566c8f1750402e4cfd21'
-         'e4da9e61c35f6d74d3d76a02eb441ff2')
+md5sums=(
+	'7c21988e0de3c8e002ec43a34d8fab51'
+	'7a2c4528d4ff161d7ac665daedc5fb3c'
+	'251922321b6d566c8f1750402e4cfd21'
+	'e4da9e61c35f6d74d3d76a02eb441ff2'
+	'79f4913634ec33585b7b741e7f2e7dcf'
+)
 
 prepare() {
-    cd collectd-${pkgver}
-    ./build.sh
+	cd collectd-${pkgver}
+	patch --forward --strip=1 --input="${srcdir}/Makefile.am.patch"
+	./build.sh
 }
 
 build() {
     cd collectd-${pkgver}
-    ./configure
+    ./configure --disable-sensors
     make
 }
 
