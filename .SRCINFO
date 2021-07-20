@@ -1,7 +1,7 @@
 pkgbase = kaddressbook-git
 	pkgdesc = KDE contact manager
 	pkgver = 21.11.40_r6003.gdec73264
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kontact.kde.org
 	arch = x86_64
 	groups = kde-applications-git
@@ -14,7 +14,7 @@ pkgbase = kaddressbook-git
 	depends = kontactinterface-git
 	depends = kdepim-runtime-git
 	depends = kuserfeedback-git
-	depends = kdepim-apps-libs
+	depends = kdepim-apps-libs-git
 	provides = kaddressbook
 	conflicts = kaddressbook
 	source = git+https://github.com/KDE/kaddressbook.git

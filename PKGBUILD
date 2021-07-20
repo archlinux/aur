@@ -3,12 +3,12 @@
 
 pkgname=kaddressbook-git
 pkgver=21.11.40_r6003.gdec73264
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE contact manager"
 arch=($CARCH)
 url="https://kontact.kde.org"
 license=(GPL2)
-depends=(kontactinterface-git kdepim-runtime-git kuserfeedback-git kdepim-apps-libs)
+depends=(kontactinterface-git kdepim-runtime-git kuserfeedback-git kdepim-apps-libs-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git boost)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
