@@ -1,8 +1,8 @@
 pkgbase = airshipper-git
 	pkgdesc = The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG
-	pkgver = 0.4.2.r0.ff875aa
-	pkgrel = 3
-	url = https://www.songtronix.com/
+	pkgver = 0.5.0.r0.6b4cb59
+	pkgrel = 1
+	url = https://gitlab.com/veloren/airshipper
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = airshipper-git
 	conflicts = airshipper
 	noextract = airshipper.desktop
 	noextract = veloren.png
-	source = airshipper-git::git+https://github.com/songtronix/airshipper.git
+	source = airshipper-git::git+https://gitlab.com/veloren/airshipper.git
 	source = airshipper.desktop
 	source = veloren.png
 	sha512sums = SKIP
@@ -24,4 +24,3 @@ pkgbase = airshipper-git
 	sha512sums = b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94
 
 pkgname = airshipper-git
-
