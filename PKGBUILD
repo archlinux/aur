@@ -4,11 +4,12 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
 makedepends=(python)
+checkdepends=(openssh python-dbus rsync systemd)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/$pkgver.tar.gz")
 b2sums=('b5bea6aad750ffe133d650af9b957500f857fabc9ab14e7e02abe2e7cc3bad806c609f76c5f553e764435b3ab5b5096d21c7329bd7497814f8a4ab23cb58f49f')
 
