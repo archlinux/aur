@@ -1,14 +1,14 @@
 # Maintainer: Grant Moyer <grantmoyer@gmail.com>
 pkgname=foundryvtt
-pkgver=0.7.10
-pkgrel=2
+pkgver=0.8.8
+pkgrel=1
 pkgdesc="A self-hosted, modern, and developer-friendly roleplaying platform"
 arch=('x86_64')
 url="https://foundryvtt.com/"
 license=('custom')
 # FoundryVTT archive must be downloaded from https://foundryvtt.com/community/<usename>/licenses
 source=("foundryvtt-$pkgver.zip::local://foundryvtt-$pkgver.zip")
-sha256sums=('e756b4758a93d605ae790bdb3f99313f2b1610d8b832493b565f7f7e11643f57')
+sha256sums=('bd3958f32374e472857841669bcef4d65c6083eba4224f3fe67c167a067b7bb7')
 
 package() {
 	install -m755 -d "$pkgdir/opt/$pkgname"
