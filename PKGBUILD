@@ -3,10 +3,11 @@
 _gemname=cliver
 pkgname=ruby-${_gemname}
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for detecting and verifying command line dependencies"
 arch=(any)
 depends=(ruby)
+checkdepends=(ruby-rake ruby-rspec ruby-rspec-its)
 makedepends=(git rubygems ruby-rdoc)
 url=https://github.com/yaauie/cliver
 license=(MIT)
@@ -17,6 +18,11 @@ sha256sums=('SKIP')
 build() {
   cd ${_gemname}
   gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd ${_gemname}
+  rake spec
 }
 
 package() {
