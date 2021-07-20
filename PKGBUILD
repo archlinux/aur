@@ -1,7 +1,7 @@
 # Maintainer: Aditya Sirish <aditya@saky.in>
 
 pkgname=('grit-task-manager')
-srcname="grit"
+_srcname="grit"
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="A multitree-based personal task manager"
@@ -10,17 +10,17 @@ arch=('any')
 license=('MIT')
 url="https://github.com/climech/grit"
 source=("git+${url}.git#tag=v${pkgver}")
-makedepends=('go')
+makedepends=('go' 'git')
 
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcname}"
+    cd "${_srcname}"
     make
 }
 
 package() {
-    cd "${srcname}"
+    cd "${_srcname}"
     make
     install -Dm 755 -t "${pkgdir}/usr/bin" grit
 }
