@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=IntelliJ IDEA Ultimate
+Comment=Capable and Ergonomic IDE
+Exec=idea %f
+Icon=idea
+Terminal=false
+StartupWMClass=intellij-idea-ultimate
+Type=Application
+Categories=Development;IDE;
