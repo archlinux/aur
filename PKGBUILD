@@ -3,7 +3,7 @@
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
-pkgver=1.2.4.r66.87e2514
+pkgver=1.4.2.r1.8edead19
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages. (development version)"
 arch=('x86_64')
@@ -23,8 +23,10 @@ source=(${pkgname%-git}::'git+https://github.com/RHVoice/RHVoice.git'
           'git+https://github.com/RHVoice/evgeniy-rus.git'
           'git+https://github.com/RHVoice/evgeniy-eng.git'
           'git+https://github.com/rhvoice/aleksandr-hq-rus.git'
-          'git+https://github.com/rhvoice/yuriy-rus.git')
+          'git+https://github.com/rhvoice/yuriy-rus.git'
+          'git+https://github.com/rhvoice/volodymyr-ukr.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -32,18 +34,19 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	git submodule init
 	git config submodule.data/voices/victoria.url "$srcdir/victoria-ru"
 	git config submodule.data/voices/evgeniy-rus.url "$srcdir/evgeniy-rus"
 	git config submodule.data/voices/evgeniy-eng.url "$srcdir/evgeniy-eng"
 	git config submodule.data/voices/aleksandr-hq.url "$srcdir/aleksandr-hq-rus"
 	git config submodule.data/voices/yuriy.url "$srcdir/yuriy-rus"
+	git config submodule.data/voices/volodymyr.url "$srcdir/volodymyr-ukr"
 	git config submodule.external/libs/sonic.active false
 	git config submodule.src/third-party/cldr.active false
 	git config submodule.cmake/thirdparty/sanitizers.active false
@@ -51,14 +54,14 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	export SCONSFLAGS="$MAKEFLAGS"
 	scons prefix="/usr" sysconfdir="/etc" CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" \
 	      LINKFLAGS="$LDFLAGS"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${pkgname%-git}"
 	export SCONSFLAGS="$MAKEFLAGS"
 	scons install DESTDIR="${pkgdir}" prefix="/usr" sysconfdir="/etc" \
 	      CPPFLAGS="$CPPFLAGS" CCFLAGS="$CFLAGS" LINKFLAGS="$LDFLAGS"
