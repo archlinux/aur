@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Kunze <mail at sebastiankunze dot de>
 
 pkgname=tfswitch
-pkgver=0.12.1119
+pkgver=0.12.1168
 pkgrel=1
 pkgdesc='A command line tool to switch between different versions of terraform.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/warrensbox/terraform-switcher'
 license=('MIT')
 makedepends=('go')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('ff2183515380b2baf2d20b9845400f1b9c1c68f578fea68a4117c922a35632fc')
+sha256sums=('cee9c46389727fe64c1be987cc4db703933bd47b00d8da3b4daf128d2862b72d')
 
 build() {
   cd "terraform-switcher-$pkgver"
