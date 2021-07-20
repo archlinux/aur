@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='facerecognition'
-_upstreamver='v0.8.2'
+_upstreamver='v0.8.3'
 _upstreamver_regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='matiasdelellis/facerecognition'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud' 'php-pdlib')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('461b2ae04219c00414fd03d17b7f0708adb5c5a63eda6d1cd86eaa10aba06af5a20efaa258cb39fd9536f21cb7f07fc89495ad6b9a8c14a0420c57ee05df4f1d')
+sha512sums=('cc675bb386f92798a829cf1a5c1ecff6f4a47a905759863982f418d897f76a92dba341772225c3868700c551455c1656370bdaa41d2965e0cd409bc44ce284a4')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
