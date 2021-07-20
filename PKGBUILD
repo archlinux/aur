@@ -2,7 +2,7 @@
 
 _pkgname='pyMetaClasses'
 pkgname=python-${_pkgname,,}
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A collection of MetaClasses for Python"
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('34644093c43858b95fdae79f6d5611aa3fb28bb745ef1fef26feaf7ef71db61f')
+sha256sums=('eaec84f87644d2cf5fdedfbb14b570b6e483e385f42004262c462a6b2c135301')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -20,8 +20,7 @@ build() {
 
 check(){
   cd "$_pkgname-$pkgver"
-  touch tests/__init__.py
-  pytest --override-ini 'python_files=*' tests/
+  pytest tests/
 }
 
 package() {
