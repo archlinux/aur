@@ -1,8 +1,8 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Stunts <f.pinamartins@gmail.com>
 pkgname=staden-io_lib
 _pkgname=io_lib
-pkgver=1.14.13
+pkgver=1.14.14
 _pkgver=${pkgver//./-}
 pkgrel=1
 pkgdesc="DNA sequence assembly (Gap4) and editing and analysis tools (Spin)"
@@ -13,19 +13,19 @@ depends=('curl')
 conflicts=('htscodecs')
 provides=('htscodecs')
 source=($pkgname-$pkgver.tar.gz::$url/releases/download/io_lib-$_pkgver/io_lib-$pkgver.tar.gz)
-sha256sums=('5641c02f98342f689274ed9b71e57d26fbf8216730619bde3a663214ce2ae8b0')
+sha256sums=('a471c79b9aede1776a895cb46fcb81b5d163d6ca9c3e1e33096346fef46d3598')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver/htscodecs"
   aclocal --force
   autoreconf --force --install
-  automake --force
+  automake --force --add-missing
   ./configure --prefix=/usr
 
   cd "$srcdir/$_pkgname-$pkgver"
   aclocal --force
   autoreconf --force --install
-  automake --force
+  automake --force --add-missing
   ./configure --prefix=/usr
   make CFLAGS=-g
 }
