@@ -1,0 +1,13 @@
+pkgbase = communism
+	pkgdesc = Tool to control screen brightness on intel devices
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/keddad/communism
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = communism-0.1.0.tar.gz::https://github.com/keddad/communism/archive/v0.1.0.tar.gz
+	sha256sums = d00b3e63d95f2ace2527f5432bd0b956ab8fae2b638bf81464652bf44e09dfcb
+
+pkgname = communism
