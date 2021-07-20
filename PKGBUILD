@@ -9,7 +9,7 @@
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin-gnutls
 _pkgname="${pkgname%-gnutls}"
-pkgver=2.14.5
+pkgver=2.14.6
 pkgrel=1
 arch=('x86_64')
 url="https://pidgin.im/"
@@ -20,7 +20,7 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'gnutls' 'libsasl' 'libs
              'libgnt' 'libxcrypt')
 options=('!emptydirs')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc})
-sha256sums=('26db80d2a3c1e740952757bd53c15b8fc8dd780dc8819a74b53b2ef3bfaf041f'
+sha256sums=('bb45f7c032f9efd6922a5dbf2840995775e5584771b23992d04f6eff7dff5336'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
