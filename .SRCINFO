@@ -6,6 +6,7 @@ pkgbase = mark-mind
 	arch = any
 	license = MIT
 	makedepends = coreutils
+	depends = electron9
 	provides = mark-mind
 	conflicts = mark-mind
 	replaces = mark-mind
