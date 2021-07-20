@@ -36,5 +36,4 @@ package() {
   cd Proton-Caller
   install -Dm755 target/release/proton-call "$pkgdir"/usr/bin/proton-call
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 manual/proton-call.6 "$pkgdir"/usr/share/man/man6/proton-call.6
 }
