@@ -4,53 +4,60 @@
 pkgbase=gnatcoll-bindings
 pkgname=(gnatcoll-python2 gnatcoll-readline gnatcoll-iconv  gnatcoll-gmp 
          gnatcoll-lzma    gnatcoll-omp      gnatcoll-syslog gnatcoll-zlib)
+_upstream_ver=2021-20210518-19B15
 epoch=1
 pkgver=21.0.0
-pkgrel=5
+pkgrel=6
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-makedepends=('python2' 'gprbuild' 'gnatcoll-core' 'libiconv' 'syslog-ng')
+depends=('gnatcoll-core' 'libiconv' 'syslog-ng')
+makedepends=('python2' 'gprbuild')
 
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('53965f54647ea9c8b59856c7a00079ff5d5a473f549f2d4c9a517dffc6ee7c8f')
+_checksum=d93655ced17f15c5f376b6861825df3f9c183980
+source=("${pkgbase}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgbase}-${_upstream_ver}-src.tar.gz")
+sha1sums=("$_checksum")
 
 build()
 {
-    _gpr_opts="-R -cargs $CFLAGS -fPIC -largs $LDFLAGS"
+    ADA_FLAGS="$CFLAGS"
+    ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+    ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
-    cd "$srcdir/$pkgbase-$pkgver/python"
+   _gpr_opts="-R -cargs $ADA_FLAGS -fPIC -largs $LDFLAGS"
+
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
     # --gpr-opts reads all remaining arguments, so no quotes
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/readline"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/readline"
     python2 setup.py build --prefix=/usr --accept-gpl --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/iconv"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/iconv"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/gmp"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/gmp"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/lzma"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/lzma"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/omp"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/omp"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/syslog"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/syslog"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 
-    cd "$srcdir/$pkgbase-$pkgver/zlib"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/zlib"
     python2 setup.py build --prefix=/usr --gpr-opts $_gpr_opts
 }
 
-install_license()
+_install_license()
 {
-    cd "$srcdir/$pkgbase-$pkgver"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src"
 
     # Install the license.
     install -D -m644     \
@@ -70,10 +77,13 @@ package_gnatcoll-python2()
     provides=('gnatcoll-python')
     replaces=('gnatcoll-python')
 
-    cd "$srcdir/$pkgbase-$pkgver/python"
-    python2 setup.py install --prefix="$pkgdir/usr"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/python"
 
-    install_license    
+    GNATCOLL_VERSION=2021    \
+    LIBRARY_TYPE=relocatable \
+    gprinstall -P gnatcoll_python -p --prefix=$pkgdir/usr
+
+    _install_license    
 }
 
 package_gnatcoll-readline()
@@ -81,10 +91,10 @@ package_gnatcoll-readline()
     pkgdesc='GNAT Components Collection - Bindings to readline'
     depends=('readline' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/readline"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/readline"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-iconv()
@@ -92,10 +102,10 @@ package_gnatcoll-iconv()
     pkgdesc='GNAT Components Collection - Bindings to Libiconv'
     depends=('libiconv' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/iconv"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/iconv"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-gmp()
@@ -103,10 +113,10 @@ package_gnatcoll-gmp()
     pkgdesc='GNAT Components Collection - Bindings to GMP'
     depends=('gmp' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/gmp"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/gmp"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-lzma()
@@ -114,10 +124,10 @@ package_gnatcoll-lzma()
     pkgdesc='GNAT Components Collection - Bindings to LZMA'
     depends=('xz' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/lzma"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/lzma"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-omp()
@@ -125,10 +135,10 @@ package_gnatcoll-omp()
     pkgdesc='GNAT Components Collection - Bindings to OpenMP'
     depends=('gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/omp"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/omp"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-syslog()
@@ -136,10 +146,10 @@ package_gnatcoll-syslog()
     pkgdesc='GNAT Components Collection - Bindings to the Syslog the system logger on Unix systems.'
     depends=('syslog-ng' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/syslog"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/syslog"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }
 
 package_gnatcoll-zlib()
@@ -147,8 +157,8 @@ package_gnatcoll-zlib()
     pkgdesc='GNAT Components Collection - Bindings to Zlib.'
     depends=('zlib' 'gnatcoll-core')
 
-    cd "$srcdir/$pkgbase-$pkgver/zlib"
+    cd "$srcdir/$pkgbase-$_upstream_ver-src/zlib"
     python2 setup.py install --prefix="$pkgdir/usr"
 
-    install_license    
+    _install_license    
 }

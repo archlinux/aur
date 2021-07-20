@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-bindings
 	pkgdesc = GNAT Components Collection - Language and library bindings
 	pkgver = 21.0.0
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-bindings/
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = gnatcoll-bindings
 	license = custom
 	makedepends = python2
 	makedepends = gprbuild
-	makedepends = gnatcoll-core
-	makedepends = libiconv
-	makedepends = syslog-ng
-	source = gnatcoll-bindings-21.0.0.tar.gz::https://github.com/AdaCore/gnatcoll-bindings//archive/v21.0.0.tar.gz
-	sha256sums = 53965f54647ea9c8b59856c7a00079ff5d5a473f549f2d4c9a517dffc6ee7c8f
+	depends = gnatcoll-core
+	depends = libiconv
+	depends = syslog-ng
+	source = gnatcoll-bindings-2021-20210518-19B15-src.tar.gz::https://community.download.adacore.com/v1/d93655ced17f15c5f376b6861825df3f9c183980?filename=gnatcoll-bindings-2021-20210518-19B15-src.tar.gz
+	sha1sums = d93655ced17f15c5f376b6861825df3f9c183980
 
 pkgname = gnatcoll-python2
 	pkgdesc = GNAT Components Collection - Interface to the python 2 interpreter.
