@@ -6,7 +6,7 @@
 pkgname=fluent-bit
 
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -69,7 +69,7 @@ package() {
     # install license file and documentation
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 sha512sums=('9607aae924278130db374757bf0df0cddb329088a9f97da17ebca039a0d37f93a0664273c14729ccbd123d1a25c7bc9329cb58c9dd2cf7d2a5fd086e726c73c8')
