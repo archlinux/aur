@@ -27,6 +27,7 @@ checkdepends=(
   "python-trustme"
   "python-pytest-asyncio"
   "python-aioresponses"
+  "python-pytest-cov"
 )
 source=("git+https://github.com/pimutils/${_pkgname}.git")
 sha256sums=("SKIP")
@@ -64,7 +65,8 @@ check(){
     export LANG=$(locale -a | grep utf8 | head -n1)
   fi
 
-  make DETERMINISTIC_TESTS=true test
+  export DETERMINISTIC_TESTS=true
+  pytest --tb=short -c /dev/null
 }
 
 package() {

@@ -10,6 +10,7 @@ pkgbase = vdirsyncer-git
 	checkdepends = python-trustme
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-aioresponses
+	checkdepends = python-pytest-cov
 	makedepends = git
 	makedepends = python-setuptools-scm
 	makedepends = python-sphinx
