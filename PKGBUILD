@@ -2,8 +2,8 @@
 
 _pkgname=houseflow
 pkgname="${_pkgname}-git"
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.0.r245.g3ea8c393
+pkgrel=4
 pkgdesc="Home automation platform, written in Rust"
 arch=(
     'x86_64'
@@ -37,7 +37,7 @@ build() {
 
 check() {
     cd "${_pkgname}"
-    cargo test --release --workspace --locked
+    cargo test --release --locked
 }
 
 prepare() {
@@ -49,4 +49,8 @@ package() {
     cd "${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    "./target/release/${_pkgname}" completions fish >> completions.fish
+    "./target/release/${_pkgname}" completions bash >> completions.bash
+    install -Dm 644 completions.fish "${pkgdir}/usr/share/fish/vendor_completions.d/houseflow.fish"
+    install -Dm 644 completions.bash "${pkgdir}/usr/share/bash-completion/completions/houseflow"
 }
