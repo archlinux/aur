@@ -1,8 +1,8 @@
 # Maintainer: Babz <babz+aur@tfnux.org>
 
 pkgname=ricochet-irc
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 epoch=
 pkgdesc="Ricochet bridge for IRC"
 arch=('any')
@@ -21,23 +21,29 @@ options=()
 install=
 changelog=
 source=(
-	"https://github.com/adraenwan/ricochet-irc/archive/v${pkgver}/v${pkgver}.tar.gz"
-	"ricochet-irc.service")
+	"$pkgname-$pkgver::git+https://github.com/adraenwan/ricochet-irc#tag=$pkgver"
+	"ricochet-irc.service"
+)
 noextract=()
 sha256sums=(
-	'590f00977dfe26c8edfb1135173a87b3518378d5064455868b1a39c8032496fa'
-	'6140077bfbf75eae190d221c77f5c540d98fff188b0839a21919d29107763af7')
+	'SKIP'
+	'6140077bfbf75eae190d221c77f5c540d98fff188b0839a21919d29107763af7'
+)
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	git submodule update --init --recursive
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	qmake ricochet-irc.pro
-	make release
+	mkdir -p build
+	cd build
+
+	qmake PROTOBUFDIR=/usr/include/google/ ../src/
+	make
 }
 
 check() {
@@ -48,6 +54,5 @@ package() {
 	install -D -m 644 ricochet-irc.service ${pkgdir}/usr/lib/systemd/user/${pkgname}.service
 
 	cd "$pkgname-$pkgver"
-
-	install -D -m 755 ricochet-irc ${pkgdir}/usr/bin/${pkgname}
+	install -D -m 755 build/release/irc/ricochet-irc ${pkgdir}/usr/bin/${pkgname}
 }

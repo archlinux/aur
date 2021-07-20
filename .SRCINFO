@@ -1,7 +1,7 @@
 pkgbase = ricochet-irc
 	pkgdesc = Ricochet bridge for IRC
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/adraenwan/ricochet-irc
 	arch = any
 	license = BSD
@@ -10,10 +10,9 @@ pkgbase = ricochet-irc
 	depends = qt5-declarative
 	depends = protobuf
 	depends = tor
-	source = https://github.com/adraenwan/ricochet-irc/archive/v1.2.0/v1.2.0.tar.gz
+	source = ricochet-irc-1.3.0::git+https://github.com/adraenwan/ricochet-irc#tag=1.3.0
 	source = ricochet-irc.service
-	sha256sums = 590f00977dfe26c8edfb1135173a87b3518378d5064455868b1a39c8032496fa
+	sha256sums = SKIP
 	sha256sums = 6140077bfbf75eae190d221c77f5c540d98fff188b0839a21919d29107763af7
 
 pkgname = ricochet-irc
-
