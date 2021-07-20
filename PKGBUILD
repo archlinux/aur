@@ -57,9 +57,10 @@ prepare() {
 }
 
 build() {
-    cd collectd-${pkgver}
-    ./configure --disable-sensors
-    make
+	cd collectd-${pkgver}
+	./configure --prefix=/opt/collectd --exec-prefix=/opt/collectd \
+		--disable-sensors
+	make
 }
 
 package() {
