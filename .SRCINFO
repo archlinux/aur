@@ -6,9 +6,9 @@ pkgbase = grit-task-manager
 	arch = any
 	license = MIT
 	makedepends = go
+	makedepends = git
 	provides = grit
 	source = git+https://github.com/climech/grit.git#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = grit-task-manager
-
