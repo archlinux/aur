@@ -3,9 +3,8 @@ Description=Stackdriver collectd agent
 After=syslog.target network.target
 
 [Service]
-Type=forking
-ExecStart=/opt/collectd/sbin/collectd
-PIDFile=/opt/collectd/var/run/collectd.pid
+Type=simple
+ExecStart=/opt/collectd/sbin/collectd -f
 Restart=on-failure
 
 [Install]

@@ -29,7 +29,7 @@ pkgbase = stackdriver-collectd
 	source = Makefile.am.patch
 	md5sums = 7c21988e0de3c8e002ec43a34d8fab51
 	md5sums = 7a2c4528d4ff161d7ac665daedc5fb3c
-	md5sums = 251922321b6d566c8f1750402e4cfd21
+	md5sums = 8b5e44065504669e4ec0eff9fb1484f4
 	md5sums = e4da9e61c35f6d74d3d76a02eb441ff2
 	md5sums = 79f4913634ec33585b7b741e7f2e7dcf
 
