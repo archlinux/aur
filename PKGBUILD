@@ -1,4 +1,5 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: CodeZ <navintiwari08@gmail.com>
 # Contributor: Oskar Sveinsen
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
@@ -7,7 +8,7 @@
 
 pkgname=cegui
 pkgver=0.8.7
-pkgrel=14
+pkgrel=15
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
@@ -89,6 +90,10 @@ prepare() {
 build() {
   mkdir -p "${srcdir}/${pkgname}-${_pkgver}/build"
   cd "${srcdir}/${pkgname}-${_pkgver}/build"
+  sed -i '1iadd_definitions(-std=c++11)' ../application_templates/CMakeLists.txt
+  sed -i '1iadd_definitions(-std=c++11)' ../samples_framework/CMakeLists.txt
+  sed -i '1iadd_definitions(-std=c++11)' ../cegui/src/RendererModules/OpenGL/CMakeLists.txt
+  sed -i '1iadd_definitions(-std=c++11)' ../cegui/src/ScriptModules/Python/bindings/CMakeLists.txt
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
