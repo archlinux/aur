@@ -1,4 +1,4 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Thomas Dziedzic
 # Contributor: Mihai Militaru <mihai dot militaru at xmpp dot ro>
 pkgname=tklib
@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url="https://core.tcl-lang.org/tklib/home"
 license=('GPL')
 depends=('tk' 'tcllib')
-source=(https://github.com/tcltk/tklib/archive/$pkgname-$pkgver.tar.gz)
-sha256sums=('1afe81a09c5fad2d9758b88c0250a49fc24c0e337d6d773ad2d622919dafd206')
+source=(https://github.com/tcltk/tklib/archive/refs/tags/tklib-$pkgver.tar.gz)
+sha256sums=('93890db81a5b0cdb62c386265ec4fcdaab60824e8e6e882c7fecc69ff49afc66')
 
 build() {
   cd $pkgname-$pkgname-$pkgver
