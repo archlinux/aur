@@ -36,10 +36,10 @@ index d6d860b..877b270 100644
  [Preferences]
 -theme = "Nitter"
 -replaceTwitter = "nitter.net"
--replaceYouTube = "invidio.us"
+-replaceYouTube = "piped.kavin.rocks"
 +theme = "twitter_dark"  # Change this?
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
-+replaceYouTube = ""
++replaceYouTube = ""  # Default: piped.kavin.rocks
  replaceInstagram = ""
  proxyVideos = true
  hlsPlayback = false
