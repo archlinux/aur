@@ -2,7 +2,7 @@
 
 pkgname=skopeo-git
 _pkgname=skopeo
-pkgver=1.3.1_dev.r1814.g07c81c77
+pkgver=1.4.0_dev.r1838.gce2f64c9
 pkgrel=1
 pkgdesc="A command line utility for various operations on container images and image repositories (git)"
 arch=('any')
@@ -39,7 +39,7 @@ package() {
   depends+=('libdevmapper.so' 'libgpgme.so')
 
   cd $_pkgname || exit 1
-  make install DESTDIR="$pkgdir" PREFIX="$pkgdir"/usr
+  make install DESTDIR="$pkgdir" PREFIX=/usr
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # remove man pages provided by containers-common
   rm -rvf "${pkgdir}/usr/share/man/man5"
