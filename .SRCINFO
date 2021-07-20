@@ -1,7 +1,7 @@
 pkgbase = bash-git
 	pkgdesc = The GNU Bourne Again shell
 	pkgver = 5.1_r171.gce237286
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/bash/bash.html
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,8 @@ pkgbase = bash-git
 	depends = ncurses
 	optdepends = bash-completion: for tab completion
 	provides = sh
+	provides = bash
+	conflicts = bash
 	backup = etc/bash.bashrc
 	backup = etc/bash.bash_logout
 	backup = etc/skel/.bashrc

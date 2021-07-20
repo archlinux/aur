@@ -3,7 +3,7 @@
 
 pkgname=bash-git
 pkgver=5.1_r171.gce237286
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Bourne Again shell'
 arch=($CARCH)
 license=(GPL)
@@ -12,7 +12,8 @@ backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
 depends=(readline libreadline.so glibc ncurses)
 makedepends=(git)
 optdepends=('bash-completion: for tab completion')
-provides=('sh')
+conflicts=(${pkgname%-git})
+provides=(sh ${pkgname%-git})
 source=(git+https://git.savannah.gnu.org/git/bash.git
         dot.bashrc
         dot.bash_profile
