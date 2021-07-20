@@ -2,19 +2,21 @@
 
 pkgname=spiderfoot
 pkgver=3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target."
 arch=('any')
 url="http://www.spiderfoot.net/"
 license=('GPLv2')
-depends=( 'python' 'python-dnspython' 'python-exifread' 'python-cherrypy'
-	  'python-mako' 'python-beautifulsoup4' 'python-lxml' 'python-netaddr'
-	   'python-pysocks' 'python-requests' 'python-ipwhois'
-	   'python-ipaddress' 'python-phonenumbers' 'python-pypdf2'
-	   'python-stem' 'python-whois' 'python-future' 'python-pyopenssl'
-	   'python-docx' 'python-pptx' 'python-networkx' 'python-cryptography'
-	   'python-secure02' 'python-pygexf' 'python-adblockparser'
-	   'python-publicsuffixlist' 'python-cherrypy-cors')
+
+depends=( 'python' 'python-adblockparser' 'python-dnspython' 'python-exifread'
+          'python-cherrypy' 'python-cherrypy-cors' 'python-mako' 'python-lxml'
+          'python-beautifulsoup4' 'python-netaddr' 'python-pysocks'
+          'python-requests' 'python-ipwhois' 'python-ipaddress' 'python-pygexf'
+          'python-ipaddress' 'python-phonenumbers' 'python-pypdf2' 'python-docx'
+          'python-whois' 'python-secure' 'python-pyopenssl' 'python-pptx'
+          'python-networkx' 'python-cryptography' 'python-publicsuffixlist'
+)	   
+	
 makedepends=('python')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/smicallef/spiderfoot/archive/v${pkgver}.tar.gz"
