@@ -1,0 +1,21 @@
+pkgbase = akonadiconsole-git
+	pkgdesc = Akonadi management and debugging console
+	pkgver = 21.11.40_r1501.g7eef7f3
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = calendarsupport-git
+	depends = messagelib-git
+	provides = akonadiconsole
+	conflicts = akonadiconsole
+	source = git+https://github.com/KDE/akonadiconsole.git
+	sha256sums = SKIP
+
+pkgname = akonadiconsole-git
