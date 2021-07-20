@@ -4,7 +4,7 @@
 
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
@@ -29,10 +29,10 @@ makedepends=('xdotool'
              'icoutils')
 provides=("${pkgname}rammer")
 options=('!strip')
-_pkg_file_name="en.${pkgname//prog/prg}-lin_v${pkgver//./-}.zip"
+_pkg_file_name="en.${pkgname//prog/prg}-lin_v${pkgver//./-}_v${pkgver}.zip"
 source=("local://${_pkg_file_name}"
         "${pkgname}.xdotool")
-sha256sums=('f380a177829d5f3e71673c14d29ba494deb6671fad83fb5d32d9b96d5fd348b8'
+sha256sums=('c896a9e2cd6c43c9d98a7271c52934eb7151c22117afdf6e8175e7c6a83fdc40'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
       
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -55,7 +55,7 @@ echo ' '
 echo 'please wait for minutes ......'
 echo ' '
 
-./SetupSTM32CubeProgrammer-2.7.0.linux &
+./SetupSTM32CubeProgrammer-2.8.0.linux &
 xdotool stm32cubeprog.xdotool ${1}
 END
 
@@ -65,6 +65,7 @@ END
 build() {
   mkdir -p build
 
+  # use xvfb-run and xdotool to cheat the Installer
   xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 0 ./${pkgname}.xvfb ${srcdir}/build
 
   # convert ico to icon
