@@ -1,4 +1,4 @@
-.PHONY: all check gensign release
+.PHONY: all check geninteg release
 
 all:
 	makepkg -f
