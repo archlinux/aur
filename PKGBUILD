@@ -1,5 +1,9 @@
-# AArch64 kernel for TQC A01"
+# AArch64 kernel for TQC A01
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
+
+# patches from Armbian and libreELEC
+https://github.com/LibreELEC/LibreELEC.tv/tree/master/projects/Allwinner/devices/H6/patches/linux
+https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
 _srcname=linux-5.11
