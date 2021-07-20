@@ -1,6 +1,6 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
-	pkgver = 2103
+	pkgver = 2106
 	pkgrel = 1
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = vmware-horizon-client
 	makedepends = libxslt
 	makedepends = patchelf
 	makedepends = librsvg
-	source = vmware-horizon-client-2103-8.2.0-17742757-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/CART22FQ1/VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle
+	source = vmware-horizon-client-2106-8.3.0-18251983-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/CART22FQ2/VMware-Horizon-Client-2106-8.3.0-18251983.x64.bundle
 	source = https://sources.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass
 	source = vmware-horizon-usb
 	source = vmware-horizon-usb.service
 	source = vmware-horizon.svg
-	sha256sums = 6432308d7b7bd73d16bd51838e2f41998af9dd9b23970a75f61ea9741ec1ca8f
+	sha256sums = 3ea34d1f1251140fca59c258526cf3e17bf1627b2c8c4f61efafa895c5b0c469
 	sha256sums = d6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033
 	sha256sums = 008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f
 	sha256sums = a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226
@@ -92,4 +92,3 @@ pkgname = vmware-horizon-usb
 	install = vmware-horizon-usb.install
 	depends = vmware-horizon-client
 	depends = glib2
-
