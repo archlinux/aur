@@ -1,0 +1,23 @@
+pkgbase = knotes-git
+	pkgdesc = Popup notes
+	pkgver = 21.11.40_r3473.g1891433d
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = kdepim-runtime-git
+	depends = kdnssd-git
+	depends = kontactinterface-git
+	depends = grantleetheme-git
+	provides = knotes
+	conflicts = knotes
+	source = git+https://github.com/KDE/knotes.git
+	sha256sums = SKIP
+
+pkgname = knotes-git
