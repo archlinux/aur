@@ -25,7 +25,6 @@ pkgbase = librewolf-hg
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
-	makedepends = gtk2
 	makedepends = nodejs
 	makedepends = cbindgen
 	makedepends = nasm

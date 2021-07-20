@@ -20,7 +20,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
-             autoconf2.13 mercurial clang llvm jack gtk2 nodejs cbindgen nasm
+             autoconf2.13 mercurial clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -185,6 +185,11 @@ fi
 
   # fix an URL in 'about' dialog
   patch -Np1 -i ${_patches_dir}/about-dialog.patch
+
+  # change some hardcoded directory strings that could lead to unnecessarily
+  # created directories
+
+  # patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
   rm -f ${srcdir}/librewolf-common/source_files/mozconfig
   cp -r ${srcdir}/librewolf-common/source_files/* ./
