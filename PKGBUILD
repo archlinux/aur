@@ -20,7 +20,7 @@ package() {
     mkdir -p "${pkgdir}/usr/"{bin,share/{applications,icons,ugene}}
     install -D -m 755 ugene.svg "${pkgdir}/usr/share/icons/ugene.svg"
     cd "$srcdir/ugene-$pkgver"
-    chmod +x ugene
+    chmod +x *
     mv * $pkgdir/usr/share/ugene
     ln -s /usr/share/ugene/ugene "$pkgdir"/usr/bin/ugene
     install -D -m 755 ${srcdir}/*.desktop "${pkgdir}/usr/share/applications"
