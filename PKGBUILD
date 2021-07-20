@@ -3,10 +3,10 @@
 
 pkgname=gonano
 pkgver=0.1.16
-pkgrel=3
+pkgrel=4
 _pkgdate=1622827223
 pkgdesc='Go language support for NANO — a digital currency'
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url='https://github.com/hectorchu/gonano'
 license=('MIT')
 depends=('ocl-icd')
