@@ -1,5 +1,5 @@
 pkgname=website-stalker
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=("${pkgname}")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('ac91ef04b79d3e8466aecc550924940b443abb1de9ead22ed64f866e2cd81a03')
+sha256sums=('713701353c7cc14173e223e3e00c9b59fa9c3ccd35ab55ce2db3f5a2987c09cd')
 
 build() {
   cd $pkgname-$pkgver
