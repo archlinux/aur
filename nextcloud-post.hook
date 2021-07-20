@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = nextcloud
+
+[Action]
+Description = Upgrading nextcloud database and .htaccess
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/nextcloud-post.sh
