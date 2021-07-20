@@ -58,7 +58,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=3
+_minor=4
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
@@ -96,17 +96,12 @@ source=(
 #  "${_patchsource}/lru-patches/lru_5.13.patch"
 #  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
-#  "${_patchsource}/security-2/hardened-patches.patch"
   "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
   "${_patchsource}/misc/nohzfull.patch"
-  "${_patchsource}/misc/1000-tune-vm-mm-and-vfs-settings.patch"
-  "${_patchsource}/misc/0001-rcu-boost.patch"
-  "${_patchsource}/misc/rcu-fixes-next.patch"
   "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
-  "${_patchsource}/ksm-patches/0001-ksm-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
 
@@ -327,7 +322,6 @@ prepare() {
           scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
           echo "Enable VHBA-Module"
           scripts/config --module CONFIG_VHBA
-          scripts/config --disable CONFIG_GCC_PLUGINS
           # General Setup
           scripts/config --disable CONFIG_BSD_PROCESS_ACCT
           scripts/config --disable CONFIG_TASK_XACCT
@@ -542,8 +536,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '013715dbd2007cf8310f14437933d780'
-         '754593f2f3bb88854fc31b89cd1e6cd2'
+         '663870cbd6392bf34b84e2254ffd550a'
+         'd248a523e04b5cfe5db9a4e168851436'
          '9bb46b8ce45259c238c5233b8394d70b'
          'fd078b2b7d5995b9d79e1a68ac0159a7'
          '7640a753a7803248543675a6edc75e08'
@@ -564,11 +558,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'a1869abc4d1a6ec1901f34302cd09b7e'
          '9977ba0e159416108217a45438ebebb4'
          'c68e4fd9b4a55ee730a34bb39ae325ad'
-         '0632f49f076c90b6d6098cad7b5a88ac'
-         '8fb9f2b248004031700a17faf1e20f10'
-         'eff4bb43a8defb7ed08b9c1e403291ea'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
-         'ce9beff503ee9e6ce6fd983c1bbbdd9e'
          'ef7748efcae55f7db8961227cbae3677')
