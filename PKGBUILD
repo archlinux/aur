@@ -6,10 +6,10 @@
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64")
-license=("BSD" "custom:CeCILL")
+license=("GPL")
 url="https://www.scilab.org"
 # Standalone package
 depends=('ncurses5-compat-libs' 'jre8-openjdk')

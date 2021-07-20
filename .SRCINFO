@@ -1,11 +1,10 @@
 pkgbase = scilab-bin
 	pkgdesc = A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications.
 	pkgver = 6.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.scilab.org
 	arch = x86_64
-	license = BSD
-	license = custom:CeCILL
+	license = GPL
 	depends = ncurses5-compat-libs
 	depends = jre8-openjdk
 	conflicts = scilab
