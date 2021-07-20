@@ -14,11 +14,6 @@ pkgbase = lib32-libx11-git
 	provides = lib32-libx11
 	conflicts = lib32-libx11
 	source = git+https://gitlab.freedesktop.org/xorg/lib/libx11.git
-	validpgpkeys = SKIP
-	validpgpkeys = SKIP
-	validpgpkeys = SKIP
-	validpgpkeys = SKIP
 	sha512sums = SKIP
 
 pkgname = lib32-libx11-git
-

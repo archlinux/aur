@@ -15,10 +15,10 @@ conflicts=(lib32-libx11)
 license=('custom:XFREE86')
 source=("git+https://gitlab.freedesktop.org/xorg/lib/libx11.git")
 sha512sums=('SKIP')
-validpgpkeys=('SKIP') # Alan Coopersmith <alanc@freedesktop.org>
-validpgpkeys+=('SKIP') # Matthieu Herrb <matthieu.herrb@laas.fr>
-validpgpkeys+=('SKIP') # Matt Turner <mattst88@gmail.com>
-validpgpkeys+=('SKIP') # Adam Jackson <ajax@nwnk.net>
+#validpgpkeys=('SKIP') # Alan Coopersmith <alanc@freedesktop.org>
+#validpgpkeys+=('SKIP') # Matthieu Herrb <matthieu.herrb@laas.fr>
+#validpgpkeys+=('SKIP') # Matt Turner <mattst88@gmail.com>
+#validpgpkeys+=('SKIP') # Adam Jackson <ajax@nwnk.net>
 
 pkgver() {
   cd "libx11"
