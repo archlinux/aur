@@ -4,9 +4,9 @@ license=("MIT")
 pkgdesc="Tangram is an all-in-one automated machine learning framework."
 pkgname=tangram-bin
 pkgrel=1
-pkgver=0.5.0
+pkgver=0.6.0
 provides=("tangram")
-sha256sums_x86_64=("c31ccfd497ee3c97c82267afe67aeaa18d22aea97c2348a23834d04c80a7ab6a")
+sha256sums_x86_64=("14cfd651fbfa80fdb436e56d6fba27106d08a9d9765f8302f85c7105daa0ee78")
 source_x86_64=("https://github.com/tangramxyz/tangram/releases/download/v${pkgver}/tangram_cli_${pkgver}_x86_64-unknown-linux-gnu.tar.gz")
 url='https://www.tangram.xyz'
 
