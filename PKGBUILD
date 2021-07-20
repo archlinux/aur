@@ -17,7 +17,7 @@ install=plymouth-zfs.install
 source=("plymouth-zfs.initcpio.hook"
         "plymouth-zfs.initcpio.install"
         "plymouth-zfs.install")
-sha256sums=('4fc0eb84fbd8a62babbd1f85a5db7d467eb1c4178218a40a98853a62f1135176'
+sha256sums=('ae2de1378e0966a740bb4e7f24bd796d76e1e830b8f791f1e1d23a12886c60da'
             '44e940623bc0fbbfda5aa8f076850c9b1429874c144359b726e8c48c0ddb1a03'
             '0910896056921ebedc1eb910d38b64d8815790f042cb3e9bc07a1a49e31e3b2b')
             
