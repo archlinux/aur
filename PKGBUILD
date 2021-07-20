@@ -2,7 +2,7 @@
 # Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com> wsjtx-svn maintainer
 
 pkgname=wsjtx-git
-pkgver=r8835.68a3d410d
+pkgver=r8917.7eac85560
 pkgrel=1
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 # change _wsjtx_tag to other versions such as wsjtx-2.5.0-rc1
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
 license=('GPL-3')
 depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'hamlib-git')
-makedepends=('cmake' 'git' 'asciidoctor' 'asciidoc' 'qt5-tools' 'gcc-fortran')
+makedepends=('cmake' 'git' 'asciidoctor' 'asciidoc' 'qt5-tools' 'gcc-fortran' 'boost' 'portaudio')
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=$_wsjtx_tag")
