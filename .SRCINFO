@@ -1,0 +1,21 @@
+pkgbase = grantlee-editor-git
+	pkgdesc = Editor for Grantlee themes
+	pkgver = 21.11.40_r757.gd920171
+	pkgrel = 1
+	url = https://kontact.kde.org/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kdepim-git
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = boost
+	depends = messagelib-git
+	depends = ktexteditor-git
+	provides = grantlee-editor
+	conflicts = grantlee-editor
+	source = git+https://github.com/KDE/grantlee-editor.git
+	sha256sums = SKIP
+
+pkgname = grantlee-editor-git
