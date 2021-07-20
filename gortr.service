@@ -1,6 +1,7 @@
 [Unit]
 Description=GoRTR
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple
