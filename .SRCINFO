@@ -1,7 +1,7 @@
 pkgbase = qca-qt5-git
 	pkgdesc = Qt Cryptographic Architecture
 	pkgver = 2.3.3_r2427.g7ead0544
-	pkgrel = 1
+	pkgrel = 2
 	url = https://userbase.kde.org/QCA
 	arch = x86_64
 	license = LGPL
@@ -17,6 +17,7 @@ pkgbase = qca-qt5-git
 	optdepends = botan: botan plugin
 	provides = qca-qt5
 	provides = qca
+	provides = qca-git
 	conflicts = qca-qt5
 	conflicts = qca
 	conflicts = qca-git

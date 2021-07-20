@@ -5,7 +5,7 @@
 
 pkgname=qca-qt5-git
 pkgver=2.3.3_r2427.g7ead0544
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt Cryptographic Architecture'
 arch=($CARCH)
 url='https://userbase.kde.org/QCA'
@@ -14,7 +14,7 @@ depends=(qt5-base nss ca-certificates)
 optdepends=('pkcs11-helper: PKCS-11 plugin' 'botan: botan plugin')
 makedepends=(git cmake doxygen pkcs11-helper botan)
 conflicts=(${pkgname%-git} qca qca-git)
-provides=(${pkgname%-git} qca)
+provides=(${pkgname%-git} qca qca-git)
 replaces=(qca-git)
 source=("git+https://github.com/KDE/${pkgname%%-*}.git")
 sha256sums=('SKIP')
