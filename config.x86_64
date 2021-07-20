@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.13.3 Kernel Configuration
+# Linux/x86 5.13.4 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -8180,7 +8180,6 @@ CONFIG_MADERA_IRQ=m
 
 # CONFIG_IPACK_BUS is not set
 CONFIG_RESET_CONTROLLER=y
-# CONFIG_RESET_BRCMSTB_RESCAL is not set
 # CONFIG_RESET_TI_SYSCON is not set
 
 #
