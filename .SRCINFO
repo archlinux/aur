@@ -1,0 +1,22 @@
+pkgbase = python-intensity-normalization
+	pkgdesc = normalize the intensities of various MR image modalities
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/jcreinhold/intensity-normalization
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-nibabel
+	depends = python-numpy
+	depends = python-scikit-image
+	depends = python-scikit-fuzzy
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-statsmodels
+	depends = python-webcolors
+	source = intensity-normalization-1.4.5.tar.gz::https://github.com/jcreinhold/intensity-normalization//archive/refs/tags/v1.4.5.tar.gz
+	sha512sums = 2cacaeaad0912f0a9cdab35d319542723430503f642d4e4fcabef9156e7d1a200817b3c693bc755fd7d4ac025a65a982756a969e4576c3c96d3f40db890757a2
+
+pkgname = python-intensity-normalization
