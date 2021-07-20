@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.7.6.r0.g9a67219
+pkgver=0.8.2.r0.g273527b
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -12,9 +12,11 @@ depends=('diffutils'
          'font-v'
          'gftools'
          'git'
+         'jq'
          'libarchive'
          'libgit2'
          'make'
+         'psautohint'
          'python'
          'python-babelfont'
          'python-brotli' # fonttools optdepends
@@ -23,6 +25,7 @@ depends=('diffutils'
          'python-fonttools'
          'python-fs' # fonttools optdepends
          'python-lxml' # fonttools optdepends
+         'python-pcpp'
          'python-skia-pathops' # ufo2ft optdepends
          'python-ufo2ft>=2.19.1'
          'python-ufonormalizer'
@@ -35,7 +38,7 @@ depends=('diffutils'
          'ttfautohint'
          'woff2'
          'zsh')
-makedepends=('cargo' 'rust')
+makedepends=('autoconf-archive' 'cargo' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
 source=("git+$url.git")
