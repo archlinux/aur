@@ -1,6 +1,6 @@
 pkgbase = kubeflow-kfctl
 	pkgdesc = A tool to control and manage Kubeflow deployments
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kubeflow/kfctl
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = kubeflow-kfctl
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = kubeflow-kfctl-1.0.2.tar.gz::https://github.com/kubeflow/kfctl/archive/v1.0.2.tar.gz
-	sha256sums = 982a4c701463129944febeef91525a904eabe0ef03c37a38d3e549100266d17b
+	source = kubeflow-kfctl-1.2.0.tar.gz::https://github.com/kubeflow/kfctl/archive/v1.2.0.tar.gz
+	sha256sums = a40116608f75b0b7e1d7c4d51af39ade877d85587edb32fd0dac7b43ec286d76
 
 pkgname = kubeflow-kfctl
-
