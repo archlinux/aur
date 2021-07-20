@@ -1,21 +1,21 @@
 pkgname=clevis-extra-pins-git
-pkgver=r1.6cc22af
+pkgver=r26.04afb7c
 pkgrel=1
 pkgdesc='A set of additional pins for Clevis binding framework'
 arch=(any)
-url='https://github.com/anatol/clevis-extra-pins'
+url='https://github.com/anatol/clevis.go'
 license=(MIT)
 makedepends=(git)
-source=(git+https://github.com/anatol/clevis-extra-pins)
+source=(git+https://github.com/anatol/clevis.go)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd clevis-extra-pins
+  cd clevis.go
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd clevis-extra-pins
+  cd clevis.go
   mkdir -p $pkgdir/usr/bin
   install -m755 clevis-decrypt-yubikey clevis-encrypt-yubikey $pkgdir/usr/bin
 }

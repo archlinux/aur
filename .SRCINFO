@@ -1,12 +1,12 @@
 pkgbase = clevis-extra-pins-git
 	pkgdesc = A set of additional pins for Clevis binding framework
-	pkgver = r1.6cc22af
+	pkgver = r26.04afb7c
 	pkgrel = 1
-	url = https://github.com/anatol/clevis-extra-pins
+	url = https://github.com/anatol/clevis.go
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://github.com/anatol/clevis-extra-pins
+	source = git+https://github.com/anatol/clevis.go
 	sha512sums = SKIP
 
 pkgname = clevis-extra-pins-git
