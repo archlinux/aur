@@ -4,11 +4,14 @@ pkgbase = truffleruby-jdk11-bin
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
+	arch = aarch64
 	license = EPL
 	license = GPL2
 	license = LGPL2.1
 	depends = jdk11-graalvm-bin
-	source = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java11-linux-amd64-21.2.0.jar
-	sha256sums = a4d2bbaa6b1ad9393c2cb44833589a5de23948845d960efdef5be1594ffa5fcb
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java11-linux-amd64-21.2.0.jar
+	sha256sums_x86_64 = a4d2bbaa6b1ad9393c2cb44833589a5de23948845d960efdef5be1594ffa5fcb
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java11-linux-aarch64-21.2.0.jar
+	sha256sums_aarch64 = 8bdcac82a6c8e763e25e87d94390273d2cecd93791f009f9088633730871dbca
 
 pkgname = truffleruby-jdk11-bin
