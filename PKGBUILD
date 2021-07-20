@@ -4,10 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=91.0.4472.164
+pkgver=92.0.4515.107
 pkgrel=1
 _launcher_ver=7
-_gcc_patchset=5
+_gcc_patchset=7
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -24,19 +24,13 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        fix-crash-in-ThemeService.patch
-        unbundle-use-char16_t-as-UCHAR_TYPE.patch
-        make-dom-distiller-protoc-plugin-call-py2.7.patch
         extend-enable-accelerated-video-decode-flag.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('84e56fa2ad96d910cab429c513eeaca7bfa94096fef057bd024be826ce8426bd'
+sha256sums=('6e51ac6512a4e95018eefc9fef1d2e7597f28a1c45c763b3a8eb7dde5f557012'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
-            '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
-            '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c'
+            '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
@@ -98,9 +92,6 @@ prepare() {
   patch -Np1 -i ../chromium-glibc-2.33.patch
 
   # Upstream fixes
-  patch -Np1 -i ../fix-crash-in-ThemeService.patch
-  patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
-  patch -Np1 -i ../make-dom-distiller-protoc-plugin-call-py2.7.patch
   patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
@@ -225,6 +216,7 @@ package() {
     libGLESv2.so
 
     chromedriver
+    crashpad_handler
   )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
