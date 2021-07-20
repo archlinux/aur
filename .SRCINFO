@@ -1,0 +1,12 @@
+pkgbase = xdotoolhelper-bin
+	pkgdesc = A simple shell script to generate xdotool scripts.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gamingdoom/xdotoolhelper
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/gamingdoom/xdotoolhelper.git
+	sha256sums = SKIP
+
+pkgname = xdotoolhelper-bin
