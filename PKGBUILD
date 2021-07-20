@@ -1,6 +1,6 @@
 # Maintainer: Parola Marco <mark.prl.97@gmail.com>
 pkgname=xorinator
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A command line utility for simple one-time pad encryption over multiple keys"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Sonotsugipaa/xorinator"
 license=('MIT')
 makedepends=('gcc>=11' 'cmake>=3.19' 'make' 'bash')
 source=("https://github.com/Sonotsugipaa/xorinator/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('db1c7ac70d41014a34ac156eb073db0589928aabfb872455ee84e660f89a0d79623c1eaa4cde77d29bc97fb3b5ba42ef704be271a3fcae639429fa7718f7203c')
+sha512sums=('dd39ce7f9f0cb8905cf64570eb3b043df3bb6a13172ee1c46bf44aaf4c5ba7528640eb8f43b6786941ddf0f587add2ff7d4492400c9d6b106c67fd966d9511dc')
 
 build() {
 	cd "$pkgname-$pkgver"
