@@ -1,7 +1,7 @@
 pkgbase = gortr
 	pkgdesc = The RPKI-to-Router server used at Cloudflare
 	pkgver = 0.14.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/gortr
 	arch = x86_64
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = gortr
 	source = gortr-0.14.7.tar.gz::https://github.com/cloudflare/gortr/archive/v0.14.7.tar.gz
 	source = gortr.env
 	source = gortr.service
+	source = gortr.sysusers
 	sha512sums = 02cd38da2af1af11a3384578c81cc07098b6e0a5abdf17cd70dcc7256c7a0ec687a60d590e7ce7a133faa28d0a768ef206c7a59672a10998e52b8a2dc2752a44
 	sha512sums = 3b48c5aa6e4ee074df4e7087f664a114f9fd9b5d586f17cad9cc5af6a6bff788f46012dbec37b5c08e5b858bcbe7f59d7fc65e013104a57a5606e1c3d0b9ee61
-	sha512sums = a4c2c3032bd7add34844185553759631e7b3b390951bc8a8b94865be43eae5c876b8caafd40dc6690e2111a042086ddc766bdedefb3131680512b0437356ba44
+	sha512sums = c5a1bfb1957ef42d73811d087151c565beaec46b0d533dcd27661304e26e394040f0c4f3d75b1eedd6728e3c4a27c07db5a626cb8d8e8fe99bc6851f858df955
+	sha512sums = be46844e548f7eaf46c7f7b07db42b192c88f7c2cb980ab0dca952838ad0c80854f21414f12d47f62f51128ddd5d971e243a8846eece604228c2a4d13d64f1d7
 
 pkgname = gortr

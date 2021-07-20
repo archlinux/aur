@@ -4,7 +4,7 @@
 
 pkgname=gortr
 pkgver=0.14.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The RPKI-to-Router server used at Cloudflare"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://github.com/cloudflare/gortr"
