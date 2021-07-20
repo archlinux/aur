@@ -59,7 +59,7 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -110,7 +110,7 @@ b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0
         '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
-        'SKIP'
+        '676ea6c04f0e531c15b42e1548ebdba087f593d059947763cce879b23c759bd183234649ed3d2fc4255fea7a32a7605076fc0b65f5125e74abab735e0f331394'
       )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
