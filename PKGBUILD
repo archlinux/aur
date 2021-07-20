@@ -59,13 +59,13 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.13
-pkgver=${_major}.2
+pkgver=${_major}.3
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -91,6 +91,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         choose-gcc-optimization.sh
         "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
+        "0003-zstd.patch::${_patches_url}/zstd-patches-v4/0001-zstd-patches.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -105,10 +106,11 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        'adda04cb3521d8155498ebe6724a9b21a0b36c94d357372dea9b57062704d5410821a33d74afbd33ed035e59767103c4df8c145168d9eb4e811569db81507f98'
+        '7ac64accd42a94eaefd423fb8658757e3785b001547cbb1a95bc82061e7638c130b3745b3c7495586a2811ab8053989b853586e73602f616fbb380406c91f38b'
         '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
+        'SKIP'
       )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -158,6 +160,33 @@ prepare() {
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
   fi
+
+  scripts/config --disable CONFIG_KVM_WERROR
+  scripts/config --disable CONFIG_X86_X32
+  scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+  scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+  scripts/config --module CONFIG_EXT4_FS
+
+  msg2 "Enable LRU"
+  scripts/config --enable CONFIG_LRU_GEN
+  scripts/config --set-val CONFIG_NR_LRU_GENS 7
+  scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+  scripts/config --enable CONFIG_LRU_GEN_ENABLED
+  scripts/config --disable CONFIG_LRU_GEN_STATS
+
+  msg2 "Enable zram compression to ZSTD"
+  scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
+  scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
+  scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
+
+  scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
+  scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+  scripts/config --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT zstd
+
+  msg2 "Change module compression to ZSTD"
+  scripts/config --disable CONFIG_MODULE_COMPRESS_NONE
+  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
