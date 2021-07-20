@@ -1,7 +1,7 @@
 pkgbase = ki-shell-bin
 	pkgdesc = Kotlin Language Interactive Shell
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kotlin/kotlin-interactive-shell
 	arch = any
 	license = Apache
@@ -13,4 +13,3 @@ pkgbase = ki-shell-bin
 	md5sums = 3644c712f0ad0a1e3453f2507be39e1c
 
 pkgname = ki-shell-bin
-

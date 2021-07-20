@@ -2,7 +2,7 @@
 _pkgname=ki-shell
 pkgname=ki-shell-bin
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotlin Language Interactive Shell"
 arch=('any')
 url='https://github.com/Kotlin/kotlin-interactive-shell'
@@ -13,16 +13,13 @@ conflicts=("${_pkgname}")
 source=("https://repo1.maven.org/maven2/org/jetbrains/kotlinx/$_pkgname/$pkgver/$_pkgname-$pkgver-archive.zip")
 md5sums=('3644c712f0ad0a1e3453f2507be39e1c')
 
-build() {
+prepare() {
 	cd "ki"
-	cat << EOF > ki
-#!/bin/sh
-java -jar /usr/lib/${_pkgname}/${_pkgname}.jar
-EOF
+	sed -i "s|KI_SHELL=\$SCRIPT_DIR/../lib/ki-shell.jar|KI_SHELL=/usr/lib/${_pkgname}/${_pkgname}.jar|" bin/ki.sh
 }
 
 package() {
 	cd "ki"
 	install -Dm644 "lib/${_pkgname}.jar" -t "${pkgdir}/usr/lib/${_pkgname}"
-	install -Dm755 "ki" -t "${pkgdir}/usr/bin"
+	install -Dm755 "bin/ki.sh" -T "${pkgdir}/usr/bin/ki"
 }
