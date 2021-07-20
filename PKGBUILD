@@ -20,7 +20,7 @@ optdepends=(
  'xorg-xwayland: for kodi-wayland.service'
 ) 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('29b0ace7b1519f25cf616f6c7aab2534aee2b3af92e702bb4bcaca054d4a1bb606b27c6a030edc6006b05464350eb67ad29de2693a088d0aac4881049e0c33a7')
+b2sums=('78fbc357d7ee329040ca6b50825f5fedfa3cd22a39ab0e4cf5ff587b31a925f09a4c0e23093f9285384fc9f33f43c11b75ee6626206eff7bfc11c8ae8edf2bc5')
 
 package() {
   cd "$pkgname-$pkgver"
