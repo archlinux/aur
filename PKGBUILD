@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=zellij
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A terminal multiplexer."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'binaryen')
 provides=('zellij')
 conflicts=('zellij-git' 'zellij-bin')
 source=("https://github.com/zellij-org/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('ef84202c9f9d90c0dfbe08684096170f3885d6ab1ff95851435cb80f3433ab5e01bb0390ca4623a149194d1816f48e280cea506c9f6c97f0bd29b80364c798e2')
+sha512sums=('7ff9807ad781affbd65255231fa648782af7750b0267f3e5f99d176a80e0218a34bb812172ce2b5c4c9d7a91d1df12c84e8ededa60914d1330f1b733838b70d2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
