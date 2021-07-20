@@ -1,0 +1,11 @@
+pkgbase = rime-fraktur
+	pkgdesc = Fraktur input for RIME
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Dringsim/rime-fraktur
+	arch = any
+	license = CC0
+	source = fraktur.schema.yaml
+	md5sums = b369403009afa64c1aac75b06febf408
+
+pkgname = rime-fraktur
