@@ -10,7 +10,7 @@ _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=5.11.4
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -70,7 +70,7 @@ prepare() {
   cat "${srcdir}/config" > ./.config
 
   # dts for TQC-A01
-  target_dts="sun50i-h6-tqc-a01.dts"
+  target_dts="sun50i-h6-tqc-a01.dtb"
   echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
   cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/allwinner/${target_dts}"
 

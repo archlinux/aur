@@ -1,6 +1,6 @@
 pkgbase = linux-tqc-a01
 	pkgver = 5.11.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
