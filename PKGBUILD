@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=90.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -59,10 +59,10 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/arch/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # KDE patches (W. Rosenauer)
-  echo "---- Patching for KDE ----- currently broken"
-  #patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  #patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
-  #patch -Np1 -i ${_patches_dir}/kde/firefox-kde.patch
+  echo "---- Patching for KDE"
+  patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
+  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
+  #patch -Np1 -i ${_patches_dir}/kde/firefox-kde.patch Currently broken with PGO
   
   # Ubuntu patches
   echo "---- Misc patches"
