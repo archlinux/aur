@@ -1,6 +1,6 @@
 pkgbase = pspg
 	pkgdesc = Tabular data pager designed to be used with psql
-	pkgver = 5.1.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://github.com/okbob/pspg
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pspg
 	depends = readline
 	depends = postgresql-libs
 	conflicts = pspg-git
-	source = pspg-5.1.1.tar.gz::https://github.com/okbob/pspg/archive/5.1.1.tar.gz
-	sha256sums = 46bef6cdae6eb056d79b9fac6ece1134730834b2efb49665270121604b8403dd
+	source = pspg-5.1.2.tar.gz::https://github.com/okbob/pspg/archive/5.1.2.tar.gz
+	sha256sums = 3d2491ec3bf8fab3ec99ddef7b783688f76c274bc26395aa3cc7204b75c0870c
 
 pkgname = pspg
