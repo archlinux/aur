@@ -29,7 +29,7 @@ pkgname=vivado
 _srcname=Xilinx_Unified
 pkgver=2021.1
 _more_ver=0610_2318
-pkgrel=2
+pkgrel=3
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -39,6 +39,7 @@ depends=('ncurses5-compat-libs'
          'lib32-libpng12'
          'gtk2'
          'xorg-xlsclients'
+         'cpio'
 )
 optdepends=('fxload'
             'digilent.adept.runtime'

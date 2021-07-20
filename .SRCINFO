@@ -1,7 +1,7 @@
 pkgbase = vivado
 	pkgdesc = FPGA/CPLD design suite for Xilinx devices
 	pkgver = 2021.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
 	license = custom
@@ -10,6 +10,7 @@ pkgbase = vivado
 	depends = lib32-libpng12
 	depends = gtk2
 	depends = xorg-xlsclients
+	depends = cpio
 	optdepends = fxload
 	optdepends = digilent.adept.runtime
 	optdepends = digilent.adept.utilities
