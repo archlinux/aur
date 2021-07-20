@@ -6,6 +6,7 @@ pkgbase = xdotoolhelper-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = bash
 	source = git+https://github.com/gamingdoom/xdotoolhelper.git
 	sha256sums = SKIP
 
