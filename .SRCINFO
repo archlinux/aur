@@ -1,7 +1,7 @@
 pkgbase = plymouth-zfs
 	pkgdesc = initcpio hook to support native zfs encryption for plymouth
 	pkgver = 3
-	pkgrel = 1
+	pkgrel = 2
 	install = plymouth-zfs.install
 	arch = any
 	license = MIT
