@@ -1,4 +1,4 @@
-# Maintainer: Dringsim <ayaka@mail.shn.hk>
+# Maintainer: Dringsim <dringsim@qq.com>
 
 pkgname=rime-fraktur
 pkgver=0.1
