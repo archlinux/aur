@@ -7,15 +7,14 @@ pkgname=(gnatcoll-python2 gnatcoll-readline gnatcoll-iconv  gnatcoll-gmp
 _upstream_ver=2021-20210518-19B15
 epoch=1
 pkgver=21.0.0
-pkgrel=6
+pkgrel=7
 
 pkgdesc='GNAT Components Collection - Language and library bindings'
 url='https://github.com/AdaCore/gnatcoll-bindings/'
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-depends=('gnatcoll-core' 'libiconv' 'syslog-ng')
-makedepends=('python2' 'gprbuild')
+makedepends=('python2' 'gprbuild' 'gnatcoll-core' 'libiconv' 'syslog-ng')
 
 _checksum=d93655ced17f15c5f376b6861825df3f9c183980
 source=("${pkgbase}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgbase}-${_upstream_ver}-src.tar.gz")
