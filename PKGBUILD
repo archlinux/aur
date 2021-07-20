@@ -1,5 +1,5 @@
 pkgname=website-stalker-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -14,10 +14,10 @@ source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-a
 source_armv6h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
 source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('9d0b2c7641a8a7c223e94b209581c10377330002f693778455df910b8e5ce20d')
-sha256sums_aarch64=('74303ff81c9cba26f0057016761d032e0f65f1de6c35a47f9223cdc4d57e2b72')
-sha256sums_armv6h=('62e957d14b2a6844fe52ca349ac9dc83c9f74ccd0fca140b87c518d8e8e09d59')
-sha256sums_armv7h=('6943c476cfff47b02f39808787e9a0750a393d04cb0cde640fae73d2fd95dff1')
+sha256sums_x86_64=('68ec3bb9fc4d517274e4f2bf8170c65d301a7a8561880245bafc2c11459a7503')
+sha256sums_aarch64=('dc5409a8bad0cec3121aa717eca0f52da7f3525364a9822124545c38a0428b56')
+sha256sums_armv6h=('a079d42dd400e8b966a973c39a7986bf332873731c3dda29e660efea4359f485')
+sha256sums_armv7h=('77fb36e3d688e1a308a639df094d0f4f36f3f82cb2fd8618dfc4ae542c9e11af')
 
 package() {
   install -Dm755 "${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
