@@ -1,7 +1,7 @@
 # Maintainer: A. Husen <hello@husen.id>
 pkgname=code-minimap-bin
 _pkgname=code-minimap
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A high performance code minimap render."
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,9 +12,9 @@ conflicts=('code-minimap')
 source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v$pkgver/code-minimap-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_i686=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v$pkgver/code-minimap-v$pkgver-i686-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v$pkgver/code-minimap-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('3a03ba0c25c6304e4e8d871f583b5bc111e7bf6a52308e3e6615d2f088c052ce5ac4b27271fa514a97920f711a85ce9e410c3edf7c185d00e36d72d45883768d')
-sha512sums_i686=('9612c942bc5c099304ca80909ab3fe09c303f83e5d8324a112f6b4b657d59a41fb513f2a0e4edddb5c737e8aef3d7b417719c94c0585637534936f4e3671d5bb')
-sha512sums_aarch64=('2080bf268f8f15a96d8c255e32c024d4b2dc91bb8c2754bb483f442514e7f68e740acd4c6b6d92066cc352a2440c09345702e85e358aad02a6bc332c149f93a8')
+sha512sums_x86_64=('9181d9c4c041a3b6db306992c25d03c983951fb19e1994b55ec74f08217d0b47a8d8515024e69a20a69c12880684c9c332e97fbf0efd58d17a2609b942c66ecf')
+sha512sums_i686=('9181d9c4c041a3b6db306992c25d03c983951fb19e1994b55ec74f08217d0b47a8d8515024e69a20a69c12880684c9c332e97fbf0efd58d17a2609b942c66ecf')
+sha512sums_aarch64=('9181d9c4c041a3b6db306992c25d03c983951fb19e1994b55ec74f08217d0b47a8d8515024e69a20a69c12880684c9c332e97fbf0efd58d17a2609b942c66ecf')
 
 package() {
     cd "$srcdir/"${_pkgname}-"v"${pkgver}*
