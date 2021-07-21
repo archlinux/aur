@@ -5,9 +5,9 @@ pkgbase = python-defcon
 	url = https://github.com/robotools/defcon
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-unicodedata2
-	makedepends = python-setuptools-scm
+	makedepends = python-setuptools
 	depends = python-fonttools
 	depends = python-fs
 	optdepends = python-fontpens
@@ -16,4 +16,3 @@ pkgbase = python-defcon
 	sha256sums = 410adb6bd18996054ad82b0654aea2bc0a334a9ff7007fe983ec6f3f39f449ea
 
 pkgname = python-defcon
-

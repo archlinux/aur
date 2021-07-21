@@ -10,11 +10,15 @@ arch=('any')
 url="https://github.com/robotools/$_pkgname"
 license=('MIT')
 depends=('python-fonttools' 'python-fs')
-makedepends=('python-setuptools-scm') # use -scm until upstream bug fixed https://github.com/robotools/defcon/issues/354
-checkdepends=('python-pytest-runner' 'python-unicodedata2')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest' 'python-unicodedata2')
 optdepends=('python-fontpens' 'python-lxml')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.zip")
 sha256sums=('410adb6bd18996054ad82b0654aea2bc0a334a9ff7007fe983ec6f3f39f449ea')
+
+prepare() {
+    sed -i '/setup_requires/d' "$_pkgname-$pkgver"/setup.{py,cfg}
+}
 
 build() {
     cd "$_pkgname-$pkgver"
@@ -23,7 +27,7 @@ build() {
 
 check() {
     cd "$_pkgname-$pkgver"
-    python setup.py test
+    pytest Lib/defcon/test
 }
 
 package() {
