@@ -1,4 +1,4 @@
-# Maintainer: debendraolu <olidebendra(AT)gmail DOT com>
+# Maintainer: debendraoli <olidebendra at gmail dot com>
 pkgname=cage-wayland-git
 pkgver=0.1.4
 pkgrel=1
