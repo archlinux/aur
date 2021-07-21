@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-bonmin
 pkgver=1.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Bonmin"
@@ -19,7 +19,11 @@ prepare() {
   # see mingw-w64-coin-or-pkg-config
   sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Bonmin/configure
   sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Bonmin/configure
-  cd Bonmin && curl -L https://github.com/coin-or/Bonmin/pull/23.patch | patch -p1
+
+  curl -L https://github.com/coin-or/Bonmin/pull/23.patch | patch -p1 -d Bonmin
+  curl -L https://github.com/coin-or/Bonmin/pull/26.patch | patch -p1 -d Bonmin
+  curl -L https://github.com/coin-or/Bonmin/commit/fe6f493c1ac45373db1a6a29138d70c85a310a08.patch | patch -p1 -d Bonmin
+  curl -L https://github.com/coin-or/Bonmin/commit/3c51a306137f6f6f37825770987585b407919ff8.patch | patch -p1 -d Bonmin
 }
 
 build() {
