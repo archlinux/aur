@@ -1,6 +1,6 @@
 # Maintainer: Bradley Cicenas <bradley.cicenas@gmail.com>
 pkgname=slackcat
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=${PKGREL:-1}
 pkgdesc="Commandline utility for posting snippets to Slack"
 arch=('i686' 'x86_64')

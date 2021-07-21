@@ -1,6 +1,6 @@
 pkgbase = slackcat
 	pkgdesc = Commandline utility for posting snippets to Slack
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/bcicen/slackcat
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = slackcat
 	license = GPL
 	makedepends = go
 	makedepends = git
-	source = slackcat::git://github.com/vektorlab/slackcat.git#tag=1.7.1
+	source = slackcat::git://github.com/vektorlab/slackcat.git#tag=1.7.3
 	md5sums = SKIP
 
 pkgname = slackcat
-
