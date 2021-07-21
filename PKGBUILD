@@ -201,7 +201,7 @@ package() {
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  #ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
+  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
@@ -233,8 +233,8 @@ package() {
     libEGL.so
     libGLESv2.so
 
-    #chromedriver
-    #crashpad_handler
+    chromedriver
+    crashpad_handler
   )
 
   if [[ -z ${_system_libs[icu]+set} ]]; then
