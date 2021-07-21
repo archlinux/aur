@@ -29,10 +29,12 @@ backup=()
 options=('!emptydirs')
 source=(
   "${_pkgname}::git+http://github.com/VrayoSystems/${_pkgname}"
+  "0001-Fix-multiple-linker-symbols.patch"
   'howtos.url'
   'website.url'
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -42,6 +44,11 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
   cat version.h | sed -n -E 's|^[[:space:]]*#define[[:space:]]+VERSION[[:space:]]+([^[[:space:]]]*)|\1|p' | tr -d \"\' | tr '-' '_' | sed 's|^v||'
 }
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -Np1 -i ../0001-Fix-multiple-linker-symbols.patch 
+} 
 
 build() {
   cd "${srcdir}/${_pkgname}"

@@ -18,11 +18,12 @@ pkgbase = vtrunkd-git
 	conflicts = vtrunkd
 	options = !emptydirs
 	source = vtrunkd::git+http://github.com/VrayoSystems/vtrunkd
+	source = 0001-Fix-multiple-linker-symbols.patch
 	source = howtos.url
 	source = website.url
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = vtrunkd-git
-
