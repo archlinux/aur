@@ -1,8 +1,9 @@
 pkgbase = applewin-git
 	pkgdesc = AppleWin Linux port by Audetto - GIT version
-	pkgver = v1.25.0.4.r1962.gb31d1342
-	pkgrel = 2
+	pkgver = 1.25.0.4.r1962.gb31d1342
+	pkgrel = 3
 	url = https://github.com/audetto/AppleWin.git
+	install = applewin.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -15,14 +16,14 @@ pkgbase = applewin-git
 	depends = qt5-gamepad
 	depends = qt5-multimedia
 	depends = libyaml
-	source = git+https://github.com/audetto/AppleWin.git
-	source = git+https://github.com/Dax89/QHexView.git#commit=4d06da8
-	source = git+https://github.com/ocornut/imgui.git#commit=17ec4f1
-	source = git+https://github.com/ocornut/imgui_club.git#commit=02e679b
+	conflicts = applewin
+	source = applewin::git+https://github.com/audetto/AppleWin.git
+	source = git+https://github.com/Dax89/QHexView.git
+	source = git+https://github.com/ocornut/imgui.git
+	source = git+https://github.com/ocornut/imgui_club.git
 	source = applewin-sdl2.desktop
 	source = applewin-qt.desktop
 	source = apple-logo.svg
-	source = applewin-git.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -30,6 +31,5 @@ pkgbase = applewin-git
 	sha256sums = 0c12ec3a65b8fb832b5931e443686c01e64b1c56882fd564d04b467ba6cb8f1a
 	sha256sums = a1f2f65e1d381436a357455c96ee0fd586021847ba206e595ca416df91085157
 	sha256sums = e3bbf57d2ad105c6211b0853fbb88f1c20d874d0a34b6ae263e2cf8c74e1568d
-	sha256sums = dcd3c07931963c23dd96440ba08d7da61491498977f39541947a37a3f6261ac9
 
 pkgname = applewin-git
