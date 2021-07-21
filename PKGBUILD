@@ -1,3 +1,5 @@
+#Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgbase=pipewire-git
 pkgname=('pipewire-git'
          'pipewire-docs-git'
@@ -9,7 +11,7 @@ pkgname=('pipewire-git'
          'alsa-card-profiles-git'
          'pipewire-zeroconf-git'
          )
-pkgver=0.3.30.82.gb6559289f
+pkgver=0.3.32.8.ga33df863b
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -38,6 +40,7 @@ makedepends=('git'
              'vulkan-headers'
              'avahi'
              'webrtc-audio-processing'
+#              'roc-git'
              )
 checkdepends=('desktop-file-utils')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
@@ -61,6 +64,7 @@ build() {
     -D jack=disabled \
     -D gstreamer=disabled \
     -D gstreamer-device-provider=disabled \
+    -D roc=disabled \
     -D ffmpeg=enabled \
     -D jack-devel=enabled \
     -D libjack-path=/usr/lib
@@ -99,6 +103,7 @@ package_pipewire-git() {
            'libvulkan.so'
            'libcamera-git'
            'libwebrtc_audio_processing.so'
+           'libusb-1.0.so'
            )
   optdepends=('pipewire-docs-git: Documentation'
               'pipewire-jack-git: JACK support'
@@ -136,7 +141,10 @@ package_pipewire-git() {
   _pick jack usr/share/pipewire/{jack.conf,media-session.d/with-jack}
   _pick jack usr/share/man/man1/pw-jack.1
 
+  _pick pulse usr/bin/pipewire-pulse
+  _pick pulse "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-protocol-pulse.so"
   _pick pulse "usr/lib/pipewire-${pkgver:0:3}/libpipewire-module-pulse-tunnel.so"
+  _pick pulse usr/lib/systemd/user/pipewire-pulse.*
   _pick pulse usr/share/pipewire/media-session.d/with-pulseaudio
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg/libspa-ffmpeg.so
@@ -182,7 +190,10 @@ package_pipewire-jack-git() {
 package_pipewire-pulse-git() {
   pkgdesc+=" - PulseAudio replacement (GIT version)"
   depends=("pipewire-media-session-git=${pkgver}"
-           'libpulse'
+           "libpipewire-${pkgver:0:3}.so"
+           'libpulse.so'
+           'libavahi-client.so'
+           'libavahi-common.so'
            )
   provides=('pipewire-pulse'
             'pulseaudio'
@@ -192,7 +203,7 @@ package_pipewire-pulse-git() {
              'pulseaudio'
              'pulseaudio-bluetooth'
              )
-  arch=('any')
+  arch=('x86_64')
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
