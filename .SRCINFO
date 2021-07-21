@@ -1,12 +1,11 @@
 pkgbase = python-sphinx-astropy
 	pkgdesc = Sphinx extensions and configuration specific to the Astropy project
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/astropy/sphinx-astropy
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-sphinx>=1.7
 	depends = python-astropy-sphinx-theme
@@ -14,7 +13,8 @@ pkgbase = python-sphinx-astropy
 	depends = python-sphinx-gallery
 	depends = python-numpydoc
 	depends = python-pillow
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.4.tar.gz
-	md5sums = e2b919d5399c3c9fa0b0db43af5f4470
+	depends = python-pytest-doctestplus>=0.10.1
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.5.tar.gz
+	md5sums = 9e11a1dad7d96cd93390b635309adaa6
 
 pkgname = python-sphinx-astropy
