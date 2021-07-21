@@ -1,6 +1,6 @@
 pkgname=qolibri
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="A QT-based EPWING dictionary viewer"
 url="https://github.com/ludios/qolibri/"
 arch=('x86_64' 'i686')
