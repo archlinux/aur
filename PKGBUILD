@@ -3,13 +3,14 @@
 
 pkgname=blocky
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and lightweight DNS proxy as ad-blocker"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/0xERR0R/blocky"
 license=('Apache')
 depends=('glibc')
 makedepends=('go')
+backup=('etc/blocky.yml')
 install=blocky.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'blocky.service'
