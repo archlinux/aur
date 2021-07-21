@@ -3,7 +3,7 @@
 
 _pkgname=electrum
 pkgname="${_pkgname}"-appimage
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="Electrum Bitcoin wallet with bundled libraries"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://download.electrum.org/${pkgver}/${_appimage}"
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/spesmilo/${_pkgname}/${pkgver}/LICENCE"
         )
 
-b2sums=('e1d66e13b50780036e4a725def8f0a1d3798ca14da29302b7cdccee7d25cd3fbf507d7f2f3760b4961af0876d801f1a8bde6836cad2d1f075b2f71583d59e250' 
+b2sums=('efdd395a9d09563e697f68610384c60a9834748358848d0667bcfb3eb4bd18fce1d04ab963fa85d80c545e5a617b343d8b5a64f2487e950cf2bfa0798ed9b9a1' 
         'SKIP' 
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
@@ -43,14 +43,13 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
-    #install -Dm644 "${srcdir}/LICENCE" "${pkgdir}/opt/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-LICENCE" "${pkgdir}/usr/share/licenses/${_pkgname}-${pkgver}-LICENCE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Icon images
+    # Icon
     install -dm755 "${pkgdir}/usr/share/icons"
     cp "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/"
 
