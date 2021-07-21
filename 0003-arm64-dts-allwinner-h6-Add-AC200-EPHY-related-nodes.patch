@@ -1,13 +1,15 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From 1b08baab634bebd4ef94ca449b81d7550c91abf0 Mon Sep 17 00:00:00 2001
 From: Jernej Skrabec <jernej.skrabec@siol.net>
-Date: Fri, 16 Aug 2019 16:40:20 +0200
-Subject: [PATCH] arm64: dts: allwinner: h6: Add AC200 EPHY related nodes
+Date: Sun, 12 Jan 2020 12:09:12 +0100
+Subject: [PATCH 3/4] arm64: dts: allwinner: h6: Add AC200 EPHY related nodes
 
 Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 ---
- arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi | 56 ++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi | 63 ++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
+index 3329283e38ab..81caf1e96407 100644
 --- a/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
 +++ b/arch/arm64/boot/dts/allwinner/sun50i-h6.dtsi
 @@ -16,6 +16,16 @@
@@ -27,44 +29,45 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
  	cpus {
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -319,6 +329,10 @@
- 			cpu_speed_grade: cpu-speed-grade@1c {
- 				reg = <0x1c 0x4>;
+@@ -248,6 +258,10 @@
+ 			ths_calibration: thermal-sensor-calibration@14 {
+ 				reg = <0x14 0x8>;
  			};
 +
-+			ephy_calib: ephy_calib@2c {
++			ephy_calibration: ephy-calibration@2c {
 +				reg = <0x2c 0x2>;
 +			};
  		};
  
  		watchdog: watchdog@30090a0 {
-@@ -364,6 +378,13 @@
+@@ -291,6 +305,14 @@
+ 				function = "emac";
  				drive-strength = <40>;
  			};
- 
++			
++			/omit-if-no-ref/
 +			ext_rmii_pins: rmii_pins {
 +				pins = "PA0", "PA1", "PA2", "PA3", "PA4",
 +				       "PA5", "PA6", "PA7", "PA8", "PA9";
 +				function = "emac";
 +				drive-strength = <40>;
 +			};
-+
+ 
  			hdmi_pins: hdmi-pins {
  				pins = "PH8", "PH9", "PH10";
- 				function = "hdmi";
-@@ -384,6 +405,11 @@
+@@ -311,6 +333,11 @@
+ 				pins = "PD23", "PD24";
  				function = "i2c2";
  			};
- 
++			
 +			i2c3_pins: i2c3-pins {
 +				pins = "PB17", "PB18";
 +				function = "i2c3";
 +			};
-+
+ 
  			mmc0_pins: mmc0-pins {
  				pins = "PF0", "PF1", "PF2", "PF3",
- 				       "PF4", "PF5";
-@@ -410,6 +436,11 @@
+@@ -329,6 +356,11 @@
  				bias-pull-up;
  			};
  
@@ -73,15 +76,16 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 +				function = "pwm1";
 +			};
 +
- 			/omit-if-no-ref/
- 			spi0_pins: spi0-pins {
- 				pins = "PC0", "PC2", "PC3";
-@@ -640,6 +671,31 @@
+ 			mmc2_pins: mmc2-pins {
+ 				pins = "PC1", "PC4", "PC5", "PC6",
+ 				       "PC7", "PC8", "PC9", "PC10",
+@@ -504,6 +536,37 @@
  			#size-cells = <0>;
  		};
  
 +		i2c3: i2c@5002c00 {
-+			compatible = "allwinner,sun6i-a31-i2c";
++			compatible = "allwinner,sun50i-h6-i2c",
++				     "allwinner,sun6i-a31-i2c";
 +			reg = <0x05002c00 0x400>;
 +			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
 +			clocks = <&ccu CLK_BUS_I2C3>;
@@ -95,12 +99,17 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
 +			ac200: mfd@10 {
 +				compatible = "x-powers,ac200";
 +				reg = <0x10>;
-+				clocks = <&ac200_pwm_clk>;
++				interrupt-parent = <&pio>;
++				interrupts = <1 20 IRQ_TYPE_LEVEL_LOW>;
++				interrupt-controller;
++				#interrupt-cells = <1>;
 +
 +				ac200_ephy: phy {
 +					compatible = "x-powers,ac200-ephy";
-+					nvmem-cells = <&ephy_calib>;
-+					nvmem-cell-names = "ephy_calib";
++					clocks = <&ac200_pwm_clk>;
++					nvmem-cells = <&ephy_calibration>;
++					nvmem-cell-names = "calibration";
++					status = "disabled";
 +				};
 +			};
 +		};
@@ -108,3 +117,6 @@ Signed-off-by: Jernej Skrabec <jernej.skrabec@siol.net>
  		emac: ethernet@5020000 {
  			compatible = "allwinner,sun50i-h6-emac",
  				     "allwinner,sun50i-a64-emac";
+-- 
+2.20.1
+

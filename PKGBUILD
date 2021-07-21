@@ -10,7 +10,7 @@ _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=5.11.4
-pkgrel=4
+pkgrel=5
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,10 +23,10 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0002-net-phy-Add-support-for-AC200-EPHY.patch'
         '0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch'
         '0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch'
+        '0003-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch'
         '0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch'
         '0005-drm-gem-cma-Export-with-handle-allocator.patch'
         '0006-drm-sun4i-Add-GEM-allocator.patch'
-        '0007-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
         '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
         'fix-missing-H6-spi-pins.patch'
@@ -42,20 +42,20 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
-         '257beb93e91b190184f1a161f66d3206'
+         'f5de0dfcddc871280a60d99ea3284317'
          '17aa0c69176c68cd98b4522740a1b747'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
          'bc7904920675ba8d38f21d46ffac33b5'
          '94a69594f90309c50c83a5cc8579fb54'
          'e1868e41094baff9eceba481fc097c79'
+         '5a15e321aa56da359a8b0c62cda99013'
          '5d42a68276c8f9e8b3de040fa2579b84'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
-         '6fd2f4aaa791c975aef5968f32eecb4c'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
          'f27a8190e862a7edcf2b09cc27aef180'
          '11dfddadb815a896a2db65812e66e6fa'
-         '5e0c36c663ebe0721fb96b9f2bfef451'
+         'a81cb45032d0ce8b9d26a4585eeb75c5'
          '7f1a96e24f5150f790df94398e9525a3'
          '61c5ff73c136ed07a7aadbf58db3d96a'
          '584777ae88bce2c5659960151b64c7d8'
@@ -77,10 +77,10 @@ prepare() {
   patch -p1 < ../0002-net-phy-Add-support-for-AC200-EPHY.patch
   patch -p1 < ../0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch
   patch -p1 < ../0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch
+  patch -p1 < ../0003-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch
   patch -p1 < ../0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch
   patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
-  patch -p1 < ../0007-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
   patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
   patch -p1 < ../fix-missing-H6-spi-pins.patch
@@ -114,7 +114,7 @@ build() {
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
-  #cp ./.config ../${pkgbase}.config
+  cp ./.config ../${pkgbase}.config
 
   ####################
   # stop here
