@@ -1,0 +1,13 @@
+pkgbase = kaniko-git
+	pkgdesc = Build Container Images without Docker
+	pkgver = v1.6.0.r12.g682191f52
+	pkgrel = 1
+	url = https://github.com/GoogleContainerTools/kaniko
+	install = kaniko-git.install
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = kaniko-git-v1.6.0.r12.g682191f52.tar.gz::git+https://github.com/GoogleContainerTools/kaniko.git
+	sha256sums = SKIP
+
+pkgname = kaniko-git

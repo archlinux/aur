@@ -1,0 +1,20 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+	echo ""
+	note "The executor is called: 'kaniko'"
+	note "The warmer is called: 'kaniko-warmer'"
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
