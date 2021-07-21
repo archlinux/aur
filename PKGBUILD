@@ -1,5 +1,5 @@
 pkgname=nncp
-pkgver=7.3.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
@@ -9,7 +9,7 @@ makedepends=(go)
 #source=("git://git.cypherpunks.ru/nncp.git#commit=$_commit")
 source=("http://www.nncpgo.org/download/nncp-$pkgver.tar.xz"
         "http://www.nncpgo.org/download/nncp-$pkgver.tar.xz.sig")
-sha256sums=('cb34487a6d7ef50704d4b8f95a16ef16cc841d3d7f5423b1ebb7979d1062eb4e'
+sha256sums=('f7499fbfb0658054f2732722d54fe31ea0f105fd9970b5bb6413a9cc065cb0eb'
             'SKIP')
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
