@@ -1,8 +1,8 @@
 diff --git a/ide/bin/launcher.sh b/ide/bin/launcher.sh
-index 4df8ad9..900ad73 100644
+index 8701dcb..330f03e 100644
 --- a/ide/bin/launcher.sh
 +++ b/ide/bin/launcher.sh
-@@ -937,18 +937,6 @@ GetDefaultJDK()
+@@ -961,22 +961,6 @@ GetDefaultJDK()
    #
    if [ -f "$tmpvar" ]
    then
@@ -10,14 +10,18 @@ index 4df8ad9..900ad73 100644
 -    do
 -        EchoIfVerbose "Found symlinked JDK, following symlink: $tmpvar"
 -        tmpvar2=`ls -ls "$tmpvar"`
+-        EchoIfVerbose "The long listing of $tmpvar: '$tmpvar2'"
 -        tmpvar2=`expr "$tmpvar2" : '.*-> \(.*\)$'`
+-        EchoIfVerbose "If we still have a symlink, follow it again: '$tmpvar2'"
 -        if [ `expr "$tmpvar2" : "\.\/"` -gt 0 -o `expr "$tmpvar2" : "\.\.\/"` -gt 0 -o `expr "$tmpvar2" : ".*/.*"` -le 0 ]
 -        then
 -          tmpvar="`dirname "$tmpvar"`/$tmpvar2"
+-          EchoIfVerbose "Calling dirname on symlink and appending '/$tmpvar2' resulting in '$tmpvar'"
 -        else
 -          tmpvar="$tmpvar2"
+-          EchoIfVerbose "Using '$tmpvar2' as-is"
 -        fi
 -    done
+     EchoIfVerbose "If it exists, truncate /bin/java ending of '$tmpvar', otherwise path becomes empty"
      tmpvar=`expr "$tmpvar" : '\(.*\)\/bin\/[^\/]*$'`
-     SetJavaHome "$tmpvar"
-     EchoIfVerbose "Found existing default JDK $tmpvar"
+     EchoIfVerbose "Found javahome: '$tmpvar'"
