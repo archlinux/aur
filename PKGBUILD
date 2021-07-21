@@ -1,9 +1,9 @@
 # Maintainer: dsche-cyber  <dsche-cyber@protonmail.com>
 _pkgname=loop
 pkgname=${_pkgname}-bin
-pkgver=0.14.1_beta
+pkgver=0.14.2_beta
 _pkgver="${pkgver//_/-}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Lightning Loop is a non-custodial service offered by Lightning Labs that makes it easy to move bitcoin into and out of the Lightning Network."
 arch=('any')
 _arch=linux-amd64
@@ -18,9 +18,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-v${
 manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('2dea1c91d2b515822a9523576aa625a63f31cad51a1cc9241d59cb1b92835046'
+sha256sums=('2b2446c7193c8c18512fca1f5ce72cc7a4bcbec35dce6a9a3da6e5629fe2bcde'
             'SKIP'
-            '35dd3974b316eddb6349333a53055ea421c4cfce0a2dccf7a22de3782bb516bc')
+            '0630b134a1dbc19f41a71ea18f5882c340d109358005e3673650a1e3368c3779')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
