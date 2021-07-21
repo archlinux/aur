@@ -15,8 +15,9 @@ source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$p
 sha256sums=('eb8accf564c9c1f09e89d2d21b407bf2e58d26a3859651e35707db71cb218886')
 
 prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     rm -rf src/ufonormalizer.egg-info
+    sed -i '/setup_requires/d' setup.{py,cfg}
 }
 
 check() {
