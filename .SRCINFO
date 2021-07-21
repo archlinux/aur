@@ -1,6 +1,6 @@
 pkgbase = gkeybind
 	pkgdesc = Utility for rebinding G-keys on Logitech keyboards
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nickbclifford/gkeybind
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = gkeybind
 	depends = pcre
 	depends = gc
 	backup = etc/gkeybind.yml
-	source = gkeybind-0.1.3.tar.gz::https://github.com/nickbclifford/gkeybind/archive/0.1.3.tar.gz
-	md5sums = 71c9752539f96bf6f1730fc382aa72e9
+	source = gkeybind-0.2.0.tar.gz::https://github.com/nickbclifford/gkeybind/archive/0.2.0.tar.gz
+	sha256sums = 8cdf91b1be2b20b4c2af7f1ee69c8bb9bfcb37e542184e8751d1006af1fc0849
 
 pkgname = gkeybind
-
