@@ -1,4 +1,4 @@
-terraform-ls-linux-amd64*
+terraform-ls-linux-amd64*.zip
 terraform-ls-bin-*.pkg.tar.zst
 pkg/
 src/
