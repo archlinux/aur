@@ -30,7 +30,7 @@ url='https://www.vmware.com/go/viewclients'
 license=('custom')
 makedepends=('libxslt' 'patchelf' 'librsvg')
 source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
-        'https://sources.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass'
+        "vmware-bundle.eclass-${pkgver}::https://sources.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass"
         'vmware-horizon-usb'
         'vmware-horizon-usb.service'
         'vmware-horizon.svg')
@@ -52,7 +52,7 @@ prepare() {
 	# We need this variable for the Gentoo eclass...
 	export T="${srcdir}"
 
-	source "${srcdir}/vmware-bundle.eclass"
+	source "${srcdir}/vmware-bundle.eclass-${pkgver}"
 
 	for bundle in "${pkgname[@]}" "${_bundled_with_client[@]}" "${_unused_components[@]}"; do
 	        vmware-bundle_extract-bundle-component "${srcdir}/${pkgbase}-${pkgver}-${_build1}-${_build2}-${CARCH}.bundle" "${bundle}" "${srcdir}/extract/${bundle}"
