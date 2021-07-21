@@ -2,18 +2,18 @@
 
 pkgname=snappymail
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="modern PHP webmail client"
 arch=('any')
 license=('AGPL3')
-url="https://github.com/the-djmaze/snappymail"
+url="https://snappymail.eu"
 depends=('php-fpm')
 makedepends=('nodejs' 'yarn' 'gulp' 'php' 'brotli' 'rollup')
 optdepends=('mariadb: storage backend for contacts'
             'php-pgsql: storage backend for contacts'
             'php-sqlite: storage backend for contacts')
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/the-djmaze/snappymail/archive/v$pkgver.tar.gz"
   'sysusers.conf'
   'tmpfiles.conf'
 )
