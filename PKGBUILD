@@ -1,7 +1,7 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=2.8.11.1
+pkgver=2.8.11.2
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
         "fix-webview-extern-C-linkage.patch")
-sha512sums=('c67107d58ecf6a240945c67b01c7449b2b9c32cf52f9f668fa8ccc9619e36d2149ed8286f628ad6cb0197cd30ef84c6528364fd96d6893595f8f9c67e468803e'
+sha512sums=('2a7c3bfc966e2dd200c031a10eb8f6d42e716d8087fb84c54f5b8f2aeeeedee69d70c05cec2fcd1ec3317de9d027aab3994c3c7878e1b97ad299541fdd6a9223'
             '4150c4718d455a6d089e2c0c9c06956d24fdddae476c5790b62ee6a407ff4fb343ea4a4deca813252ed418142cc3791fa041b0771a994221e3be72b45a7b77ed')
 
 prepare() {
@@ -28,9 +28,6 @@ prepare() {
     echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
     echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
 
-    # cp libjemalloc from jemalloc package
-    mkdir -p external/jemalloc/jemalloc-prefix/src/jemalloc/lib/
-    cp /usr/lib/libjemalloc_pic.a external/jemalloc/jemalloc-prefix/src/jemalloc/lib/libjemalloc.a
     # fix webview extern "C" linkage error
     cd ..
     patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-webview-extern-C-linkage.patch
