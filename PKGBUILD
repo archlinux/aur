@@ -3,28 +3,28 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2021.04.27
+pkgver=2021.07.19
 pkgrel=1
-pkgdesc="Standalone web browser forked from mozilla.org"
+pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
 url="https://www.basilisk-browser.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
-makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
+makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13' 'gcc10')
 options=('!emptydirs')
-_UXP=20210427
+_UXP=20210719
 source=("https://repo.palemoon.org/MoonchildProductions/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/RELBASE_${_UXP}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/commit/7046794388319744751208a8d0e98e27861f67ce/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('68528585797a267d8481a97a829aa8e98ac3c07c22bf0be7ef8f5e3be3abee96'
-            '3aebd16add2adb3374be94e0b8c22a9363ac7d78f6567399759e746536c9eeb7'
+sha256sums=('df59dcb2226340dee546cfc52a99aa7b1a24a6273c9494117bf8fed57378b4ce'
+            'b3031967e1f5399a711fd3f744b8371e0d74656e91aca4c86f157d09b264e4ad'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
-  mv -T "$srcdir/uxp" platform
-  ln -s basilisk browser
+  [[ ! -d platform ]] && mv -T "$srcdir/uxp" platform
+  ln -sf basilisk browser
 
   cat > .mozconfig << EOF
 # Comment/uncomment build flags as needed
@@ -44,7 +44,7 @@ ac_add_options --enable-install-strip
 ac_add_options --enable-gold
 ac_add_options --enable-pie
 ac_add_options --enable-jemalloc
-ac_add_options --enable-replace-malloc
+#ac_add_options --enable-replace-malloc
 ac_add_options --with-pthreads
 ac_add_options --enable-optimize="-O2 -msse -msse2 -msse3 -mmmx -mfpmath=sse"
 ac_add_options --enable-default-toolkit=cairo-gtk3
@@ -97,11 +97,14 @@ EOF
 build() {
   cd "$srcdir/$pkgname"
 
+  export CC=gcc-10
   make -f client.mk build
 }
 
 package() {
   cd "$srcdir/$pkgname"
+
+  export CC=gcc-10
 
   make -f client.mk DESTDIR="$pkgdir" install
 
