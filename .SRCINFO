@@ -1,0 +1,15 @@
+pkgbase = ttf-babelstone-irk-bitig
+	pkgdesc = BabelStone Font for Old Turkic characters used in the Irk Bitig
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://www.babelstone.co.uk/Fonts/IrkBitig.html
+	arch = any
+	license = OFL
+	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneIrkBitig.ttf
+	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneIrkBitigColour.ttf
+	source = https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
+	md5sums = c2e425b4f41d2a5cb2ef91597fba17cc
+	md5sums = e7d2edfa83e6dde4381399c7cd74c01c
+	md5sums = f516c91719ef90db6c942f8ac6efde47
+
+pkgname = ttf-babelstone-irk-bitig
