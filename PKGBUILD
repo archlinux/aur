@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 pkgname=ttf-tangut-wenhai
-pkgver=9.001
+pkgver=1.002
 pkgrel=1
 pkgdesc="BabelStone Tangut Wenhai font"
 url="https://www.babelstone.co.uk/Fonts/Wenhai.html"
