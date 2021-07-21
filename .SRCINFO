@@ -1,0 +1,16 @@
+pkgbase = system-bridge-bin
+	pkgdesc = A bridge for your systems
+	pkgver = v2.2.1
+	pkgrel = 1
+	url = https://system-bridge.timmo.dev/
+	arch = any
+	license = MIT
+	provides = system-bridge
+	conflicts = system-bridge
+	conflicts = system-bridge-git
+	source = https://github.com/timmo001/system-bridge/releases/download/v2.2.1/linux-out.tar.gz
+	source = system-bridge.desktop
+	md5sums = edf1674ee7476cad173e07d16c0c5490
+	md5sums = 3f8b60172f0a2d5699767b1baac8e670
+
+pkgname = system-bridge-bin
