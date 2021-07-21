@@ -10,9 +10,10 @@ pkgbase = cage-no-xwayland
 	depends = wlroots
 	depends = wayland
 	depends = libxkbcommon
+    optdepends = libxfont2: font rendering support
 	options = debug
 	options = !strip
 	source = https://github.com/Hjdskes/cage/releases/download/v0.1.4/cage-0.1.4.tar.gz
-	sha1sums = SKIP
+	sha256sums = dfe27fb0c7d43db72d6c82f01e2736580a0791a23ba69d7b56285d08af98ad90
 
 pkgname = cage-no-xwayland
