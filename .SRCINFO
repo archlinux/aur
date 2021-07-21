@@ -1,14 +1,23 @@
 pkgbase = blocky
-	pkgdesc = DNS proxy as ad-blocker for local network
+	pkgdesc = Fast and lightweight DNS proxy as ad-blocker
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0xERR0R/blocky
+	install = blocky.install
 	arch = x86_64
-	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = go
 	depends = glibc
 	source = blocky-0.14.tar.gz::https://github.com/0xERR0R/blocky/archive/v0.14.tar.gz
+	source = blocky.service
+	source = blocky.sysusers
+	source = blocky.yml
 	sha256sums = aa1b1b2b48a1d6e199a87d919ee0f99f7f95f618adb9c280cb147c59f0a60242
+	sha256sums = 61b5efedf88a95fd2bde8f69fce8a3692bcff29cab4b218603b376a5509accc5
+	sha256sums = 8ef3cfa71ee8d2ad427dc5d83df7967a6b3e6e1dfafaec8cb4520e7269c2471b
+	sha256sums = 3fec7b35def7cdc5f9d296b3fc70b40f0c2af189b3b4d54ee5867a2dee007bdb
 
 pkgname = blocky
