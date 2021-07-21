@@ -1,0 +1,15 @@
+pkgbase = nodejs-jwt-cli
+	pkgdesc = An npm package for decoding JSON Web Tokens (JWT) in a cli
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/troyharvey/jwt-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = jwt-cli-1.2.3.tgz
+	source = http://registry.npmjs.org/jwt-cli/-/jwt-cli-1.2.3.tgz
+	sha256sums = 3f0bad8bae00467ee9d54b89b25d0a2a657e9dd713cda7129b95ab3fb6333498
+
+pkgname = nodejs-jwt-cli
