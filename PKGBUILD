@@ -8,6 +8,7 @@ url="https://github.com/bit-team/backintime"
 license=('GPL')
 arch=('any')
 makedepends=('git' 'openssh' 'python-dbus' 'python-keyring' 'rsync' 'systemd' 'xorg-xdpyinfo')
+checkdepends=('python-pyqt5')
 source=($_pkgname::git+$url.git)
 sha256sums=('SKIP')
 
@@ -26,6 +27,9 @@ build() {
 }
 
 check() {
+  #LC_ALL=en_US.UTF-8 make -C $_pkgname/common test
+
+  # Isolate some of the integration tests (~/.ssh/ files, ...)
   LC_ALL=en_US.UTF-8 HOME=tmp make -C $_pkgname/common test
   rm -rf $_pkgname/common/tmp
 }

@@ -4,6 +4,7 @@ pkgbase = backintime-git
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
+	checkdepends = python-pyqt5
 	makedepends = git
 	makedepends = openssh
 	makedepends = python-dbus
