@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-previewgenerator
 	pkgdesc = Nextcloud app that allows admins to pre-generate previews.
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rullzer/previewgenerator
 	arch = any
 	license = AGPL
@@ -11,4 +11,3 @@ pkgbase = nextcloud-app-previewgenerator
 	sha256sums = 6bf229799a4b431b3468d9f5bcc386832028d20b80a7dd898a197b3141fc962d
 
 pkgname = nextcloud-app-previewgenerator
-
