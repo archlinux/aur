@@ -8,6 +8,7 @@ pkgbase = awsvpnclient
 	license = custom
 	makedepends = xz
 	depends = xdg-utils
+	depends = lsof
 	options = !strip
 	options = staticlibs
 	source = https://d20adtppz83p9s.cloudfront.net/GTK/1.0.0/awsvpnclient_amd64.deb
