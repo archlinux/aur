@@ -1,15 +1,15 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=7-zip
-pkgver=21.02
+pkgver=21.03
 pkgrel=2
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64 i686 aarch64 armv7h)
 conflicts=(p7zip)
-source=(https://7-zip.org/a/7z2102-src.7z)
-sha256sums=('ee9755feaa034e7075712bc6b1fad25440bd0a8f21f106a16e37bc4b409f1122')
+source=(https://7-zip.org/a/7z2103-src.7z)
+sha256sums=('94a0c543092d50ca88b999c35027715181fcc9be40526ff363df6e38345222b3')
 
 prepare() {
 	sed -i 's|CFLAGS_WARN_WALL = -Wall -Werror -Wextra|CFLAGS_WARN_WALL = -Wall -Wextra|g' CPP/7zip/7zip_gcc.mak
