@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.12.10.zen1
+pkgver=5.13.1.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,9 +18,13 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=4a04665461614cd6e8a07d49397d75ef20fb12e3"
-  "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.12.patch"
-  "https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
+  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/dc03dd77c8d33f5a42e39fb893bb0cd26b924d4a/trunk/config"
+  "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
+
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0002-asus-wmi-Add-dgpu-disable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0003-asus-wmi-Add-egpu-enable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -28,9 +32,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '296a656e8a2b577252c5f9d72c7ec13e36963d82f9a17e413152924bfea0dfef'
-            '8b2e476ae108255ae5dc6da43cda57620021a8e68da0e3c568eb44afd3d3254a'
-            'd9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac')
+            'fbf172cbe6ef4e427037d7430719f52fbe5c9b1bf6d8fde9035850aed9737ac4'
+            'd38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086'
+            '5bb7edde1d260b84c3b8557718aa16ccede0ac95976c964a1678ce52f46e4b89'
+            '4f1f6b354b230fb3bf7569ac26104de3cdb188cbac79769d59669ff39e91faf8'
+            'ad1f9d0ab4f7f9bdea4d41e79504356c63120474d4cfad9915b583a44997af92'
+            'fd7d91d50abfe9aae86e40f9c0e5988ff812ac5178e1ff4903b74c7a50f41314')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -121,13 +128,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;

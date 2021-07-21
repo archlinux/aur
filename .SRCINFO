@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN with patches for Zephyrus G14
-	pkgver = 5.12.10.zen1
+	pkgver = 5.13.1.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.12.10-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.1-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,17 +16,23 @@ pkgbase = linux-zen-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.12.10-zen1
-	source = config-5.12.10.zen1::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=4a04665461614cd6e8a07d49397d75ef20fb12e3
-	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.12.patch
-	source = https://lab.retarded.farm/zappel/zGentoo/-/raw/master/sys-kernel/gentoo-sources-g14/files/0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.13.1-zen1
+	source = config-5.13.1.zen1::https://github.com/archlinux/svntogit-packages/raw/dc03dd77c8d33f5a42e39fb893bb0cd26b924d4a/trunk/config
+	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch
+	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0001-asus-wmi-Add-panel-overdrive-functionality.patch
+	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0002-asus-wmi-Add-dgpu-disable-method.patch
+	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0003-asus-wmi-Add-egpu-enable-method.patch
+	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 296a656e8a2b577252c5f9d72c7ec13e36963d82f9a17e413152924bfea0dfef
-	sha256sums = 8b2e476ae108255ae5dc6da43cda57620021a8e68da0e3c568eb44afd3d3254a
-	sha256sums = d9f5742fed4406396698897aa042d4d5fdbfd7c51add7483a777f9ab41901aac
+	sha256sums = fbf172cbe6ef4e427037d7430719f52fbe5c9b1bf6d8fde9035850aed9737ac4
+	sha256sums = d38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086
+	sha256sums = 5bb7edde1d260b84c3b8557718aa16ccede0ac95976c964a1678ce52f46e4b89
+	sha256sums = 4f1f6b354b230fb3bf7569ac26104de3cdb188cbac79769d59669ff39e91faf8
+	sha256sums = ad1f9d0ab4f7f9bdea4d41e79504356c63120474d4cfad9915b583a44997af92
+	sha256sums = fd7d91d50abfe9aae86e40f9c0e5988ff812ac5178e1ff4903b74c7a50f41314
 
 pkgname = linux-zen-g14
 	pkgdesc = The Linux ZEN with patches for Zephyrus G14 kernel and modules
