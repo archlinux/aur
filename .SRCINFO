@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 91.0.4472.164
+	pkgver = 92.0.4515.107
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -47,24 +47,18 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=91.0.4472.164
+	provides = chromium=92.0.4515.107
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-91.0.4472.164.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-92.0.4515.107.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
-	source = fix-crash-in-ThemeService.patch
-	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch
-	source = make-dom-distiller-protoc-plugin-call-py2.7.patch
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-92-patchset-5/chromium-92-patchset-5.tar.xz
 	source = extend-enable-accelerated-video-decode-flag.patch
 	source = sql-make-VirtualCursor-standard-layout-type.patch
 	source = chromium-glibc-2.33.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 84e56fa2ad96d910cab429c513eeaca7bfa94096fef057bd024be826ce8426bd
+	sha256sums = 6e51ac6512a4e95018eefc9fef1d2e7597f28a1c45c763b3a8eb7dde5f557012
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
-	sha256sums = 171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a
-	sha256sums = 3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8
-	sha256sums = 59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d
-	sha256sums = 76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c
+	sha256sums = 53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2
 	sha256sums = 66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22
 	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 	sha256sums = 2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b
