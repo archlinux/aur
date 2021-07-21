@@ -1,0 +1,40 @@
+_invoke() {
+    # arg1: --install | --update | --uninstall
+    # NX_INSTALL_DEBUG=1
+    NX_INSTALL_PREFIX=/usr/share /usr/share/NX/scripts/setup/nxclient "$1" arch
+}
+
+
+_check_remove_old_prefix()
+{
+    if [ -d /usr/NX ]; then
+        echo "Old installation (/usr) found, removing"
+
+        if [ -x /usr/NX/scripts/setup/nxclient ]; then
+            NX_INSTALL_PREFIX=/usr /usr/NX/scripts/setup/nxclient --uninstall fedora
+        fi
+
+        rm -rf /usr/NX
+    fi
+}
+
+post_install()
+{   
+    echo "Running NX post_install script ..."
+    _invoke --install
+}
+
+pre_remove()
+{
+    echo "Running NX pre_remove script ..."
+    _invoke --uninstall
+}
+
+
+post_upgrade()
+{
+    echo "Running NX post_upgrade script ..."
+    _check_remove_old_prefix
+    chmod +x /usr/share/NX/scripts/restricted/nxusb.sh || true
+    _invoke --update
+}
