@@ -4,7 +4,7 @@
 
 pkgname=gortr
 pkgver=0.14.7
-pkgrel=2
+pkgrel=3
 pkgdesc="The RPKI-to-Router server used at Cloudflare"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://github.com/cloudflare/gortr"
@@ -47,9 +47,9 @@ check() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/gortr-${pkgver}/build/gortr" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 "${srcdir}/gortr-${pkgver}/build/rtrdump" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm755 "${srcdir}/gortr-${pkgver}/build/rtrmon" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/gortr-${pkgver}/build/gortr" "${pkgdir}/usr/bin/gortr"
+	install -Dm755 "${srcdir}/gortr-${pkgver}/build/rtrdump" "${pkgdir}/usr/bin/rtrdump"
+	install -Dm755 "${srcdir}/gortr-${pkgver}/build/rtrmon" "${pkgdir}/usr/bin/rtrmon"
 	install -Dm644 "${srcdir}/gortr.env" "${pkgdir}/etc/conf.d/gortr"
 	install -Dm644 "${srcdir}/gortr.service" "${pkgdir}/usr/lib/systemd/system/gortr.service"
 	install -Dm644 "${srcdir}/gortr.sysusers" "${pkgdir}/usr/lib/sysusers.d/gortr.conf"
