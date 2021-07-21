@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=92.0.4515.107
-pkgrel=2
+pkgrel=3
 _launcher_ver=7
 _gcc_patchset=7
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -25,15 +25,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         extend-enable-accelerated-video-decode-flag.patch
+        linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
+        linux-sandbox-fix-fstatat-crash.patch
+        make-GetUsableSize-handle-nullptr-gracefully.patch
         sql-make-VirtualCursor-standard-layout-type.patch
-        chromium-glibc-2.33.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('6e51ac6512a4e95018eefc9fef1d2e7597f28a1c45c763b3a8eb7dde5f557012'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
+            '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
+            '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
+            '4489e5e7854a7dcd9464133eb4664250ce7149ac1714a0bf10ca0d82d8806568'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -88,11 +92,11 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # https://crbug.com/1164975
-  patch -Np1 -i ../chromium-glibc-2.33.patch
-
   # Upstream fixes
   patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
+  patch -Np1 -i ../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
+  patch -Np1 -i ../linux-sandbox-fix-fstatat-crash.patch
+  patch -Np1 -i ../make-GetUsableSize-handle-nullptr-gracefully.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -137,7 +141,6 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'use_allocator="none"' # https://crbug.com/1221442
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
