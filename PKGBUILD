@@ -2,8 +2,8 @@
 # Contributor: Brian Schubert <bewschubert@gmail.com>
 
 pkgname=ifm-git
-_pkgname=ifm
-pkgver=5.5
+_gitname=ifm
+pkgver=r1090.1f6eb78
 pkgrel=1
 pkgdesc="A language and a program for keeping track of your progress through an Interactive Fiction game."
 arch=('x86_64')
@@ -12,22 +12,28 @@ license=('GPL2')
 depends=('tk' 'perl')
 makedepends=('tk' 'help2man')
 conflicts=('ifm')
-source=(https://github.com/zocker-160/ifm/archive/v$pkgver.tar.gz)
-sha256sums=('eb7a038864fad62ccc4cfe8f5f12aac233f5602fdb3957e8070a27b937718b3e')
+source=('git://github.com/zocker-160/ifm.git')
+sha256sums=('SKIP')
 options=('docs')
 
+pkgver() {
+  cd $srcdir/$_gitname/
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/$_gitname/
 
     chmod +x ./autogen.sh
     ./autogen.sh
 
     export CPPFLAGS=-D_GNU_SOURCE
     ./configure --prefix=/usr --mandir=/usr/share/man
+    make || true # I need to run make twice, because for some stupid reason it fails on the first run
     make
 }
 
 package() {
-    cd $srcdir/$_pkgname-$pkgver
+    cd $srcdir/$_gitname/
     make DESTDIR=$pkgdir docdir=$pkgdir/usr/share/doc install
 }
