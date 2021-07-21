@@ -1,8 +1,8 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -11,15 +11,12 @@ depends=(boost-libs curl glew intel-tbb nlopt wxgtk3 qhull openvdb cgal)
 makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
-        prusa-slicer-gcc11.patch
         prusa-slicer-openexr3.patch)
-sha256sums=('c1315826d07f428dfe4b9aa6325727beb1257aa6f711d1659a2760f8e213cd51'
-            '1d394b12e0b8f597e5c19c3531621a7ccfd70216d997a77de24891c92a524170'
+sha256sums=('deda209505f740ac3d6f59cb2a960f4df908269ee09bd30cd4edb9fc472d29ac'
             '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver}
-  patch -p1 < ../prusa-slicer-gcc11.patch # Add missing include for GCC 11
   patch -p1 < ../prusa-slicer-openexr3.patch # Fix build with openEXR 3
 }
 
