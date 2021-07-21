@@ -66,7 +66,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-uksm-cjktty
-pkgver=5.12.18
+pkgver=5.12.19
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -102,7 +102,6 @@ source=(
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
-  "${_patchsource}/le9db_patches/0001-le9db1-5.10.patch"
   "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
   "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
 )
@@ -110,7 +109,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('2fdfb4fbb7de72790d9326a4135b58f6609366884a3bb4e736215eb9b378186e444a792053e2fb38f01a2999cb1e5dc9cba39b32c2632724ab8486d760c7e0ce'
+b2sums=('88e4c32cf196662a6a24e72b978019d6f8881a8523918029f4229a995c5fd957a5e01f42de9f53c7980df7e3de5ea6b069cc2c5f93852e615fe8fe78a1b131c6'
         'SKIP'
         'e7b85b8015414c2405c35f811cc3d201e10fb717e94f4c54c921d4a51dafcd61a2ac61695cf4ad5f51a2dcf5fda0558d99a896ec6478f47e7577c7207a4f7a94'
         '30d1df754608bb423cbc99c2097ad521baa091b9a3b39df4bd5c2d50c57eec54d8fa0e4a4a04b847c3d1b87ba682cadc8db45fabeefdc9ad7caaf8e77b96e41a'
@@ -133,7 +132,6 @@ b2sums=('2fdfb4fbb7de72790d9326a4135b58f6609366884a3bb4e736215eb9b378186e444a792
         'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
         '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
         '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
-        'f836917eac6506690ae897a2b338fedadc0814713bf4796ad90809d1de4bbc92e3dd38ab1299b96cf9bc763f0fff56137f6d43a98ef7aa4c1b6b72d6c094c3ce'
         '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
         '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1')
 
