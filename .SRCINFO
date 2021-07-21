@@ -1,6 +1,6 @@
 pkgbase = ifm-git
 	pkgdesc = A language and a program for keeping track of your progress through an Interactive Fiction game.
-	pkgver = 5.5
+	pkgver = r1090.1f6eb78
 	pkgrel = 1
 	url = https://ifm.readthedocs.io/en/latest/intro.html
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ifm-git
 	depends = perl
 	conflicts = ifm
 	options = docs
-	source = https://github.com/zocker-160/ifm/archive/v5.5.tar.gz
-	sha256sums = eb7a038864fad62ccc4cfe8f5f12aac233f5602fdb3957e8070a27b937718b3e
+	source = git://github.com/zocker-160/ifm.git
+	sha256sums = SKIP
 
 pkgname = ifm-git
