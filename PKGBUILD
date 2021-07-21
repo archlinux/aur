@@ -2,9 +2,9 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.4.1_alpha
+pkgver=0.5.0_alpha
 _pkgver="${pkgver//_/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
 
 arch=('any')
@@ -15,7 +15,8 @@ license=("MIT")
 optdepends=("frcli" "lncli" "lnd" "loop" "pool")
 provides=("${__pkgname}d")
 
-developer=guggero
+developer=roasbeef
+# developer=guggero
 source=(
 ${_pkgname}-${_arch}-v${_pkgver}.tar.gz::"${url}/releases/download/v${_pkgver}/${_pkgname}-${_arch}-v${_pkgver}.tar.gz"
 manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-${developer}-v${_pkgver}.sig"
@@ -23,9 +24,9 @@ manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkg
 )
 
 
-sha256sums=('10bd92cd0b2b5a0c0698b763085ded71fa2bb1106545a9ded86ee7f88a1db68e'
+sha256sums=('a6b88a46248ad1aae73cee9a863ddffbe16b207f2a42b8a76e621997c4c0c8a0'
             'SKIP'
-            'ee7dc2317a8c807cf5e9ba49a3104c0a1c968e4130f594ef3eac6275629019fc')
+            '0927a013c312214eb9ef482810428a8c32a3dfbf5cc2ca3d0be7c453d7aee23e')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
@@ -35,6 +36,7 @@ curl https://keybase.io/roasbeef/pgp_keys.asc | gpg --import
 # But of course don't trust this rando AUR comment - verify yourself that the keybase accounts really belong to the developers.
 validpgpkeys=(
     'F4FC70F07310028424EFC20A8E4256593F177720'
+    'E4D85299674B2D31FAA1892E372CBD7633C61696'
 )
 
 prepare() {
