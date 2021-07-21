@@ -1,6 +1,6 @@
 pkgbase = mips64-ultra-elf-gcc
 	pkgdesc = The GNU Compiler Collection (mips64-ultra-elf)
-	pkgver = 11.1.0_r144.128cbf0
+	pkgver = 11.1.0_r153.b5056b4
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcc/
 	arch = x86_64
