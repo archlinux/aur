@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=92.0.4515.107
-pkgrel=1
+pkgrel=2
 _launcher_ver=7
 _gcc_patchset=7
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -137,6 +137,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
+    'use_allocator="none"' # https://crbug.com/1221442
     'treat_warnings_as_errors=false'
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
