@@ -1,3 +1,2 @@
 #!/bin/sh
-# noOptimize: https://stackoverflow.com/a/50251510
-exec /usr/bin/java -Dcom.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize -cp '/usr/share/java/pdf-over/*' at.asit.pdfover.gui.Main "$@"
+exec /usr/bin/java -cp '/usr/share/java/pdf-over/*' at.asit.pdfover.gui.Main "$@"

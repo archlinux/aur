@@ -1,7 +1,7 @@
 # Maintainer: kfrx <kfrx at protonmail dot com>
 
 pkgname=pdf-over
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Graphical tool for creating PAdES conforming PDF signatures'
 arch=('x86_64')
@@ -12,12 +12,12 @@ makedepends=('jre11-openjdk-headless')
 source=("LICENSE"
         "${pkgname}"
         "${pkgname}.desktop"
-        "${pkgname}-${pkgver}.jar::https://technology.a-sit.at/downloads/4232")
+        "${pkgname}-${pkgver}.jar::https://technology.a-sit.at/downloads/4379")
 noextract=("${pkgname}-${pkgver}.jar")
 sha256sums=('0dc4b0a3362f197e250604567a6b4eb16bbc34c186425401e2201a193a82549f'
-            'ba7ef05d1368d3c3235b2306047424e37a2707ef215203822f15b85b8c11cf8f'
+            'b4a76a91b8184825b89274c1cfa0eb611655cc052b197ff4df6a32a0f17c9d59'
             '022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd'
-            'dfd991e51bfb93456d6593c9d1a647439fa39eb06d417c7518fd919f1a2db507')
+            '923464f7a9d11d7a4bceb7191617e15672a107986a13f0337ebba9cc39aee24e')
 
 package() {
   /usr/lib/jvm/java-11-openjdk/bin/java -jar "${pkgname}-${pkgver}.jar" -options <(echo "INSTALL_PATH=${srcdir}/extracted")
