@@ -1,13 +1,13 @@
 pkgbase = lib32-libusb-compat
 	pkgdesc = Library to enable user space application programs to communicate with USB devices (32 bit)
 	pkgver = 0.1.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://libusb.info/
 	arch = x86_64
 	license = LGPL
-	depends = lib32-libusb
+	makedepends = lib32-libusb
 	depends = libusb-compat
-	options = !libtool
+	depends = lib32-glibc
 	source = lib32-libusb-compat-0.1.7.tar.gz::https://github.com/libusb/libusb-compat-0.1/releases/download/v0.1.7/libusb-compat-0.1.7.tar.gz
 	sha256sums = 0679ce38aa02498c1eea9c13398a0d2356883d574632a59c1e25274ed4925cf8
 
