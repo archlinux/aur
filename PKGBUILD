@@ -3,8 +3,8 @@
 _jdkname=zulu-11
 pkgname="${_jdkname}-bin"
 _java_ver=11
-_zulu_build=11.48.21-ca
-pkgver=11.0.11
+_zulu_build=11.50.19-ca
+pkgver=11.0.12
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('x86_64')
@@ -26,7 +26,7 @@ provides=(
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_x64"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('172449e998afbb59a961598330a3438dbe9f188910cdeb14d0a6457421541134')
+sha256sums=('b8e8a63b79bc312aa90f3558edbea59e71495ef1a9c340e38900dd28a1c579f3')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
