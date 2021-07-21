@@ -1,6 +1,7 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+
 pkgname=vim-suda
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Vim plugin for writing out files with sudo"
 arch=('any')
@@ -8,8 +9,8 @@ url="https://github.com/lambdalisue/suda.vim"
 license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime' 'sudo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5954be80cb6d8240341a8a9303fc2f761d7b31c36ed63517d5abae4b1c703b4d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('559e85ebc012aed4c3a4758e8ab8828fa468638fa95c8b798ce69c508f77cc1b')
 
 package() {
   cd "suda.vim-$pkgver"
