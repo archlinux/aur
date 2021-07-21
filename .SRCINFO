@@ -1,6 +1,6 @@
 pkgbase = rclone-bin
 	pkgdesc = Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage.
-	pkgver = 1.55.1
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://rclone.org/
 	arch = i686
@@ -12,18 +12,17 @@ pkgbase = rclone-bin
 	depends = glibc
 	provides = rclone
 	conflicts = rclone
-	source = https://raw.githubusercontent.com/ncw/rclone/v1.55.1/COPYING
+	source = https://raw.githubusercontent.com/ncw/rclone/v1.56.0/COPYING
 	sha256sums = 8cd2e9e750b90a04b7d82dbbca3930c696ae0309d7c10464f90a44f45754cd04
-	source_i686 = https://github.com/ncw/rclone/releases/download/v1.55.1/rclone-v1.55.1-linux-386.zip
-	sha256sums_i686 = bb8b44e0fab088c4f5e40878b4213ce15fa474763f1355f597b0a6ad2aa96c6d
-	source_x86_64 = https://github.com/ncw/rclone/releases/download/v1.55.1/rclone-v1.55.1-linux-amd64.zip
-	sha256sums_x86_64 = d8e28bded459511fc27e300d88c4bee0fda36e7e6222d6d9b9a32e5986163881
-	source_armv6h = https://github.com/ncw/rclone/releases/download/v1.55.1/rclone-v1.55.1-linux-arm.zip
-	sha256sums_armv6h = 75a4733b689d72c6fe7133c5547952f2264ff63af1fdf8794c8a63fb98d9eed1
-	source_armv7h = https://github.com/ncw/rclone/releases/download/v1.55.1/rclone-v1.55.1-linux-arm.zip
-	sha256sums_armv7h = 75a4733b689d72c6fe7133c5547952f2264ff63af1fdf8794c8a63fb98d9eed1
-	source_aarch64 = https://github.com/ncw/rclone/releases/download/v1.55.1/rclone-v1.55.1-linux-arm64.zip
-	sha256sums_aarch64 = ea3907682992609adfc32f1ffb167494de4816e1d2d3dd8c5323c305105fb12a
+	source_i686 = https://github.com/ncw/rclone/releases/download/v1.56.0/rclone-v1.56.0-linux-386.zip
+	sha256sums_i686 = b1accc32bce8291fbbe929cac3e7e2663e4667e55aff1001257f627eda478fbc
+	source_x86_64 = https://github.com/ncw/rclone/releases/download/v1.56.0/rclone-v1.56.0-linux-amd64.zip
+	sha256sums_x86_64 = d23d0c1f295a7399114b9a07fa987e7dc216dbe989b5d88530eb01d3c87c9c1f
+	source_armv6h = https://github.com/ncw/rclone/releases/download/v1.56.0/rclone-v1.56.0-linux-arm.zip
+	sha256sums_armv6h = 955e8412ad58aa45ee195deaf5cd8cacbb9b823ad3b17e1817a03143034da878
+	source_armv7h = https://github.com/ncw/rclone/releases/download/v1.56.0/rclone-v1.56.0-linux-arm.zip
+	sha256sums_armv7h = 955e8412ad58aa45ee195deaf5cd8cacbb9b823ad3b17e1817a03143034da878
+	source_aarch64 = https://github.com/ncw/rclone/releases/download/v1.56.0/rclone-v1.56.0-linux-arm64.zip
+	sha256sums_aarch64 = 861fe019ac96ac55b5e0e97c8d6138773a11b64f8cbd3530f51f56eb6009326c
 
 pkgname = rclone-bin
-
