@@ -2,3 +2,4 @@
 /src
 /*.jar
 /*.pkg.tar.xz
+/*.pkg.tar.zst
