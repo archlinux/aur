@@ -21,12 +21,17 @@ prepare() {
 }
 
 check() {
-    cd "$srcdir/$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver"
     python setup.py test
 }
 
+build() {
+    cd "${_pkgname}-${pkgver}"
+    python setup.py build
+}
+
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd "${_pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
