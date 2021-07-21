@@ -20,9 +20,14 @@ prepare() {
     sed -i '/setuptools_scm/d' "$_pkgname-$pkgver"/setup.cfg
 }
 
+build() {
+  cd "$_pkgname-$pkgver"
+  python setup.py build
+}
+
 package() {
-  cd "${srcdir}/$_pkgname-$pkgver"
-  python setup.py install --root=$pkgdir ||return 1
+  cd "$_pkgname-$pkgver"
+  python setup.py install --root=$pkgdir --skip-build
   install -D -m644  LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
