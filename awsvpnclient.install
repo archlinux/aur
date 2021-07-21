@@ -1,20 +1,30 @@
+#!/bin/bash
 # https://gitlab.archlinux.org/pacman/pacman/raw/master/proto/proto.install
 service=awsvpnclient
+
+tput_reset="$(tput sgr0)"
+tput_bold="${all_off}$(tput bold)"
+tput_blue="${bold}$(tput setaf 4)"
+tput_yellow="${bold}$(tput setaf 3)"
+
+note() {
+  printf "${tput_blue}==>${tput_yellow} NOTE:${tput_bold} %s${tput_reset}\n" "$1"
+}
 
 # pre_install() {}
 
 post_install() {
   systemctl daemon-reload
-  echo "The AWS VPN Client requires the ${service}.service and systemd-resolved.service to be running!"
-  echo "Please enable ${service} with 'sudo systemctl enable ${service} && sudo systemctl start ${service}'"
+  note "The AWS VPN Client requires the ${service}.service and systemd-resolved.service to be running!"
+  note "Please enable ${service} with 'sudo systemctl enable ${service} && sudo systemctl start ${service}'"
 }
 
 # pre_upgrade() {}
 
 post_upgrade() {
   systemctl daemon-reload
-  echo "You may need to restart the ${service} service with 'sudo systemctl restart ${service}'"
-  echo "Restarting the service ${service} will interrupt your current connections!"
+  note "You may need to restart the ${service} service with 'sudo systemctl restart ${service}'"
+  note "Restarting the service ${service} will interrupt your current connections!"
 }
 
 pre_remove() {
