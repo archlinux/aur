@@ -10,10 +10,10 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='b134c9cc4b02eddca2ea098324369018123fdf15' # git rev-parse v${_tag_name}
-_tag_name=249
+_tag='cc502ca399aacb1c8a6bb8ac24b7c6b0007df275' # git rev-parse v${_tag_name}
+_tag_name=249.1
 pkgver="${_tag_name/-/}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -71,6 +71,11 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
+  # hwdb: 60-keyboard::remove hardcoded definition for  KEYBOARD_KEY_56 for MSI Prestige And  Modern
+  '30c9faff0d74ceb0cbafb8ecdd8573bc479984dc'
+
+  # network: also check addresses when determine a gateway address is reachable or not
+  '11046cea1414c70b5d7aab37ea88d5a839cbd209'
 )
 
 _reverts=(
