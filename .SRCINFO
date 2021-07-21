@@ -8,12 +8,12 @@ pkgbase = cage-wayland-git
 	license = MIT
 	makedepends = meson
 	makedepends = wayland-protocols
-	depends = wlroots-git
+	depends = wlroots
 	depends = wayland
 	depends = libxkbcommon
 	options = debug
 	options = !strip
-	source = https://github.com/Hjdskes/cage/releases/download/v$pkgver/cage-$pkgver.tar.gz
+	source = https://github.com/Hjdskes/cage/releases/download/v0.1.4/cage-0.1.4.tar.gz
 	sha1sums = SKIP
 
 pkgname = cage-wayland-git
