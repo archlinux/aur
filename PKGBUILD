@@ -5,7 +5,7 @@
 
 pkgname=(pulseaudio-nosystemd-minimal-git libpulse-nosystemd-minimal-git alsa-card-profiles-nosystemd-minimal-git)
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=14.2
+pkgver=14.99.2+15+gbea3fa7d2
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -39,7 +39,7 @@ build() {
     -D legacy-database-entry-format=false \
     -D asyncns=disabled \
     -D avahi=disabled \
-    -D bluez5=false \
+    -D bluez5=disabled \
     -D bluez5-gstreamer=disabled \
     -D bluez5-native-headset=false \
     -D bluez5-ofono-headset=false \
@@ -63,7 +63,8 @@ build() {
     -D webrtc-aec=disabled \
     -D tcpwrap=disabled \
     -D elogind=disabled \
-    -D database=simple
+    -D database=simple \
+    -D doxygen=false
   meson compile -C build
 }
 
