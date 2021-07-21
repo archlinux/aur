@@ -1,9 +1,9 @@
 # Maintainer: JinguTech <xiuluo.android at gmail dot com>
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.21.5
+pkgver=2.21.6
 pkgrel=1
-listen1_commit=8b8d1898f2e44e4af2e7c3eb61fd218fd679e9b2
+listen1_commit=f6c00fde3aa48cefdc2928ec81da2231e3da9957
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
 )
-sha256sums=('32bf7bedcc7e70038ff06c25e7826c168c5e0c97bab19d8eac3f50cc39fb14ef'
+sha256sums=('e76ba5ce2b23ba9f37591f2e6141965b92c940c0237ef5d9e07e87b64a26ba31'
             'SKIP')
 
 prepare() {
@@ -31,7 +31,6 @@ prepare() {
 build() {
 	cd "${pkgname/-/_}-$pkgver"
 	npm install
-	npm update
 	npm run dist:linux64 -- --dir
 }
 
@@ -55,7 +54,7 @@ Terminal=false
 Type=Application
 Icon=listen1
 StartupWMClass=Listen1
-X-AppImage-Version=2.1.5
+X-AppImage-Version=2.21.6
 Categories=Utility;
 X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p
 " > "$srcdir/listen1.desktop"
