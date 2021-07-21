@@ -4,9 +4,13 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
+# optionally modify to fit your specific hardware
+#export CFLAGS+=" -march=znver3 -mtune=znver3"
+#export CXXFLAGS="${CFLAGS}"
+
 pkgname=chromium-no-extras
 pkgver=92.0.4515.107
-pkgrel=2
+pkgrel=3
 _pkgname=chromium
 _launcher_ver=7
 _gcc_patchset=7
@@ -131,10 +135,6 @@ prepare() {
 }
 
 build() {
-  # optionally modify to fit your specific hardware
-  #export CFLAGS+=" -march=znver3 -mtune=znver3"
-  #export CXXFLAGS="${CFLAGS}"
-
   make -C chromium-launcher-$_launcher_ver
 
   cd "$srcdir/$_pkgname-$pkgver"
