@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=noto-fonts-lite
-pkgver=20201206
-_commit=20bc5918912503bc1537a407a694738c33c048aa
+pkgver=20210326
+_commit=7697007fcb3563290d73f41f56a70d5d559d828c
 pkgrel=1
 pkgdesc="Google Noto TTF fonts (lite version)"
 arch=(any)
@@ -20,36 +20,36 @@ source=("${_url}/hinted/ttf/NotoSans/NotoSans-"{Black,BlackItalic,Bold,BoldItali
         "noto-fonts-license::${_url}/LICENSE"
         66-noto-sans.conf 66-noto-serif.conf 66-noto-mono.conf
         46-noto-sans.conf 46-noto-serif.conf 46-noto-mono.conf)
-sha256sums=('725c6264b5482ff17b26570e6e908ad5b5f0a027d9c8f35c2f47be071372649c'
-            '5c97c15664b4d31b35698e27f9ef09b55a4af363dbbdb391dee5e486ebe53ed6'
-            'd62ff7c27ae901ae9b5c3ef0cae4a1f091e28a7ce62b9e0fed86a38185f84971'
-            '4a44bc45d89669b612d00483f01233b43caaef695f1998702126154a37093180'
-            'fd0142325f12c857b3443c2390f7f4a697b5c4017fbad4cfd16218cf33c4ddba'
-            'a819f22b573b8a5fea85414d9a2559f6e6704a5a33a0cc69085a2b40405fb022'
-            '825b639e2a2559e97e5c61941d722f69352998706f1d828be1fc9c1c78ff9905'
-            '256a9ee60e8294c5f152c17ebf4d87029241983281bfd4cdbc965b2a24f4c873'
-            'fa22b9666d51c2623d199b1d34b7297a61817985a2dc86b23dd8324d3db862de'
-            'dac8e68fe43fca59d522fa5f763322cfb4a919c28957656c58e7836d915307d0'
-            '451ae4a0d218590080f4dadfcb2b7ff380c27a14d4c6946f9571c52bd01ca817'
-            '160e355f434f795a2b82a00aa766694b8dd7665cf8a761444801a05c5fa7c35f'
-            'f372812d7ce0f91ad6f65f0f75062777ee609fc42fdb871ce7809d9eda887c04'
-            'c40ba0f3e59a1082daf1f59183e9638d3c554c448674df9637af0f61dd64865e'
-            '6b19d7a2ba3affafd54fa47934d772d8d0f48eb92bbe733772215b5b9e76c9b5'
-            '92ff55752aeba6df914c6187e0adfbbbf5d7b325f780f835b142542e2c49459f'
-            '620cf514ac4c6b91ef7bac5c658c2883995f7d310963ec569b5cdd9b43e9154a'
-            '3f19cd45c6ddee11185fec274c69212e461b7f95766a239bf6657c7daf88fb76'
-            '152502427af65288d77449d67cb2935f3468ec9f0576849228f79ece79f074b6'
-            '3934c4c5486f62d00111b7afbaaf799d537a4c5f29c050a9b322715f1717a0b0'
-            'cb70f8c03df3ea688a9d3aafccf4bfa32a75adee3730505227011f98edabf59f'
-            'f65406a370754bdabd9999e022179821381f9fbd45c45fd674138e8dcd652ba6'
-            '1a304adf60b705e29b48463ae303fc20fc7e8d041fc68e55efa5ee49137ca8bc'
-            '0dcf16eb78c666814fac36f60309b2c74ab6d306f678b98c8dfe37709808664f'
-            '55ae6f20dbcf0cb85fbb6460818988c1ec1edf921eef0805d10e800dccea887d'
-            'c731be97fea937135032ddd09c0c7328cc548e6d5aa737161e7e34539f169df3'
-            '8adf218acf5e30c5b2c96d3eff8f2747707f4c228321854726dcd8b799c63e14'
-            '978a488c634f845980ea43e22a6f57c63db819d22f3275f58b1fdd0b0938c576'
-            '6d29d1ea2aa5ab53a6508bd70d44b01d5abd4b7c189d576e6460ef99b74cee5f'
-            'fbd192b71b23a7aa2750469193cb7e8dbe9683021128d8456dce9c2a7085cb0d'
+sha256sums=('2059bc762f958866a4e58b7c202396af5c8557382a9e34dbbd82f978499a8b1b'
+            'fa3be6b4a77521d040ed94a13ae002229239d3fffcafc0aa2e5d90cbc4bc061b'
+            '4439dc44113d49beb0abfdc0def48719deda6f163f3337122ea509c90eed1d0d'
+            '83f5f027d9678405e3fa5769f32cc85d0c5c15e85e7c2428e3393389b43c17a6'
+            '156aa6fc822430fabe600b4f6515aafb35417cac9104d3004a5d77f1d480352b'
+            '193cf399bcc7105760398f727e41952bebe4a4f8e2a8ea49f3181ec0fb4a2368'
+            '1b2620d30e70bdd068e9bf6f70d61584042f1ba17d268f3764e654d238d6d6ae'
+            '30ca1a9e9caae1ea676ba5fe3aec1b852c5f57c5455bc61742fcf3ed3a75053e'
+            'a4846fb96fb83c21bd3fde31519f8c4154ca958a95613f4fad2b46f693655539'
+            '9cb49a54e520423033f9727be2e53e4805a60656deb09c219740d8e5f3e033ac'
+            '827da4cc7d7e7131fb4e674f828ca3b95fb721195a2bde6c0aacfba43754f364'
+            'a4b2eb960006d5fa69d96753d8c2382c5873e14286410dda8e15366f2793cad9'
+            '9156b21358155c81b686fdf44c98aecc40de6133ab4d5ede1d83328d6509b24a'
+            '7e792fb65447c8d795c2d8f4ef95c779079e8b4dc1fc506d831d98d8992e7796'
+            '6e04dad05b80683319b8bfa272815c18f49c29f446f3fcf0516585228a352ed4'
+            '756123f714fea75cd12fa9607296dc30cb0235fd0eed6295be7741f4d20986dc'
+            '3f5a1e36b94c53ec88894e1335e3a4b87417559d0b63cac5b3235bdd2e41f41f'
+            '6a248f0958c3605ed565c0cab2127c0f4604cdab52288e1c059a812f7279c64f'
+            'f5a0540073071ed1032014b9953fc010c2ec1171a4015acfed27570280b720ed'
+            'f0b0112006c42accffd01001ba6a58ece8fb97ee39413c211ceabfa504149e57'
+            '5835c48e68d809ec784c728e61c0949c18d5a6c6ec5a0ae809559fdaab21e3ab'
+            '3609c22b9bae99f384fe4e1db7b647a9af4e5bac479ee9571b2e81bc4a845101'
+            '2cb18340bec25ce4217aff7c355f07a10a268127a57c3ee9bbfd7287493cfecb'
+            'd77a2278496084ddd5d87cf71e137b2a239418f1f4e94ac9dea066a31c0f17a3'
+            'd920185223f498aead09ef7a130f58d9195362ac261518fb59b16290ba5b33e3'
+            '9bacecc19c24810f6e8759c71e61299164f23c366a134ea8322948a5ffeaed76'
+            '280aa961b093ac1dd94c8848bfcf9cd53ae82f84b18d378b2efaddd919436a84'
+            '6e89afb8b30132aa91b308045758a4793f5af3176b2823385cc66a8c2dd75774'
+            '85a591b0726722a2fcff5eb0d8d27ff9775654684904be8151d91c66289e0fb9'
+            'c91b97bc4414eb4440125242e6127f7e09324cca6fbcb77206b75cc68942bcd7'
             '0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb'
             '52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69'
             '4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a'
@@ -63,7 +63,7 @@ package() {
   install -Dm644 noto-fonts-license "$pkgdir"/usr/share/licenses/noto-fonts/LICENSE
 
   # Install fontconfig files
-  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/etc/fonts/conf.avail/
-  install -d "$pkgdir"/etc/fonts/conf.d
-  ln -rs "$pkgdir"/etc/fonts/conf.avail/* "$pkgdir"/etc/fonts/conf.d
+  install -Dm644 "$srcdir"/*.conf -t "$pkgdir"/usr/share/fontconfig/conf.avail/
+  install -d "$pkgdir"/usr/share/fontconfig/conf.default
+  ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir"/usr/share/fontconfig/conf.default
 }
