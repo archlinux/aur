@@ -2,7 +2,7 @@
 pkgname=sydbox-1
 pkgdesc='ptrace()-based sandbox utility'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://git.exherbo.org/sydbox-1.git/
 license=(custom:BSD)
@@ -31,5 +31,5 @@ check () {
 package () {
 	cd "${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYRIGHT
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
 }

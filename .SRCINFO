@@ -1,7 +1,7 @@
 pkgbase = sydbox-1
 	pkgdesc = ptrace()-based sandbox utility
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.exherbo.org/sydbox-1.git/
 	arch = x86_64
 	license = custom:BSD
