@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.9.0
 _pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -57,6 +57,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         fix-building-for-torchvision.patch
         benchmark-gcc11.patch
         xnnpack-gcc11.patch
+        https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -98,6 +99,7 @@ sha256sums=('SKIP'
             '689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738'
             '278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40'
             '64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a'
+            '3d5b9d3bbba3238d8f165e582039ec07798bccc1d1f44bd91e8b1892236cb70f'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
@@ -156,6 +158,9 @@ prepare() {
   patch -Np1 -d third_party/benchmark <../benchmark-gcc11.patch
   patch -Np1 -d third_party/XNNPACK <../xnnpack-gcc11.patch
 
+  # cuda 11.4 fix
+  patch -Np1 <../c74c0c571880df886474be297c556562e95c00e0.patch
+
   # remove local nccl
   rm -rf third_party/nccl/nccl
   # also remove path from nccl module, so it's not checked
@@ -197,7 +202,7 @@ prepare() {
   export CUDNN_LIB_DIR=/usr/lib
   export CUDNN_INCLUDE_DIR=/usr/include
   export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"  #include latest PTX for future compat
+  export TORCH_CUDA_ARCH_LIST="5.2;6.0;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
