@@ -1,0 +1,23 @@
+pkgbase = wake-mobile-git
+	pkgdesc = Proof-of-concept alarm app that uses systemd timers to wake up the system
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://gitlab.gnome.org/kailueke/wake-mobile
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = desktop-file-utils
+	depends = gobject-introspection-runtime
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libcanberra
+	depends = libpulse
+	depends = python-gobject
+	depends = python-psutil
+	provides = wake-mobile
+	conflicts = wake-mobile
+	source = git+https://gitlab.gnome.org/kailueke/wake-mobile.git#tag=1.7
+	md5sums = SKIP
+
+pkgname = wake-mobile-git
