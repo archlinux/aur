@@ -3,6 +3,8 @@ Description=Nym Mixnode for %I
 After=network-online.target nss-lookup.target
 Wants=network-online.target nss-lookup.target
 Documentation=https://nymtech.net/docs/run-nym-nodes/mixnodes/
+StartLimitIntervalSec=350
+StartLimitBurst=10
 
 [Service]
 User=nym
