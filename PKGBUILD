@@ -33,6 +33,7 @@ prepare(){
 
 build() {
 	cd "$pkgname-$pkgver"
+	export GOPATH="$srcdir"/go
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
