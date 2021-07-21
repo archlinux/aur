@@ -1,7 +1,7 @@
 # Maintainer: Antoine Viallon <antoine@lesviallon.fr>
 
 pkgname=ananicy-cpp
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
@@ -9,7 +9,7 @@ license=(GPLv3)
 source=(
 	"https://gitlab.com/ananicy-cpp/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
 	)
-md5sums=('eb80e1ce517de76dfdfff480c2694bfc')
+md5sums=('27b75e164a792a3591222a2d5389df66')
 arch=(x86_64 i386 armv7h)
 depends=(fmt spdlog nlohmann-json systemd)
 makedepends=(cmake git)
