@@ -1,0 +1,18 @@
+pkgbase = system-bridge-git
+	pkgdesc = A bridge for your systems
+	pkgver = v2.2.1.r4.g89f9466
+	pkgrel = 1
+	url = https://system-bridge.timmo.dev/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	provides = system-bridge
+	conflicts = system-bridge
+	conflicts = system-bridge-bin
+	source = git://github.com/timmo001/system-bridge
+	source = system-bridge.desktop
+	md5sums = SKIP
+	md5sums = 3f8b60172f0a2d5699767b1baac8e670
+
+pkgname = system-bridge-git
