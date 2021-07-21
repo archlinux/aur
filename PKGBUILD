@@ -15,7 +15,7 @@ md5sums=('8eb93929980a6419d888bec3aea2650c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DDX_WX_CONFIG=wx-config-gtk3
   make
 }
 
