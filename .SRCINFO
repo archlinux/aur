@@ -1,6 +1,6 @@
 pkgbase = dippi-git
 	pkgdesc = Calculate display info like DPI and aspect ratio
-	pkgver = 2.7.4.r3.gce76268
+	pkgver = 3.1.1.r0.g34bffad
 	pkgrel = 1
 	url = https://github.com/cassidyjames/dippi
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = dippi-git
 	makedepends = meson
 	makedepends = vala
 	depends = granite
+	depends = libhandy
 	provides = dippi
-	source = git+https://github.com/cassidyjames/dippi.git
+	conflicts = dippi
+	source = dippi-git::git+https://github.com/cassidyjames/dippi
 	sha256sums = SKIP
 
 pkgname = dippi-git
-
