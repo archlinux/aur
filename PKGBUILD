@@ -1,6 +1,6 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=2.9.0_06393
+pkgver=2.10.0_06571
 _pkgver=${pkgver/_/-}
 _pkgver=${_pkgver/.0/}
 pkgrel=1
@@ -16,7 +16,7 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('442969379445a42fdb3a9fa30cb82e77228b53a3967acd0880e9174dc49e97a0')
+sha256sums=('95115253c6c7e34f14612f07553cd41ef5e7940b801a36c26fd0534781d68952')
 
 prepare() {
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
@@ -34,7 +34,7 @@ package() {
 	rm $pkgdir/opt/piavpn/bin/pia-uninstall.sh
 
 	mkdir -p $pkgdir/usr/share/pixmaps
-	cp installfiles/app.png $pkgdir/usr/share/pixmaps/pia.png
+	cp installfiles/app-icon.png $pkgdir/usr/share/pixmaps/piavpn.png
 	mkdir -p $pkgdir/usr/share/icons/hicolor/1024x1024/apps/
 	ln -s /usr/share/pixmaps/pia.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/pia.png
 	mkdir -p $pkgdir/usr/share/applications
