@@ -3,10 +3,10 @@
 _gemname=racc
 pkgname=ruby-$_gemname
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc='LALR parser generator written in Ruby itself and generates ruby programs'
 arch=(x86_64)
-url='https://github.com/ruby/racc'
+url=https://github.com/ruby/racc
 license=(BSD)
 depends=(ruby)
 makedepends=(rubygems ruby-rake ruby-rdoc ruby-bundler ruby-rake-compiler)
@@ -18,6 +18,11 @@ build() {
   cd "$_gemname-$pkgver"
   rake compile
   rake build
+}
+
+check() {
+  cd "$_gemname-$pkgver"
+  rake test
 }
 
 package() {
@@ -32,7 +37,9 @@ package() {
     -i "$pkgdir/$_gemdir" \
     pkg/$_gemname-$pkgver.gem
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  rm -rf "$pkgdir/$_gemdir/cache"
 
   install -Dm0644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.rdoc "$pkgdir/usr/share/doc/$pkgname/README.rdoc"
+  install -Dm0644 ChangeLog "$pkgdir/usr/share/doc/$pkgname/CHANGELOG"
 }
