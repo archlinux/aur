@@ -1,0 +1,17 @@
+pkgbase = mubu
+	pkgdesc = 使用electron封装的幕布客户端
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = https://github.com/kudoxu/mubu
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = sed
+	makedepends = gcc
+	depends = electron
+	provides = mubu
+	source = https://github.com/kudoxu/mubu/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = 7401ab2891c1c29f47f1b00256a589fc43f82f7c97371a44336b58f33e0ab944
+
+pkgname = mubu
