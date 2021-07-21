@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 
 pkgname=prismatik-psieg
-pkgver=5.11.2.28
+pkgver=5.11.2.29
 pkgrel=1
 pkgdesc="A controller for usb driven LED backlights (an unofficial fork)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('lightpack' 'prismatik')
 conflicts=('lightpack' 'prismatik')
 install=prismatik.install
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('822616ab2d97f7108eff3a78117e7a9ae5f839751c26eee6b1e3f3012fdebbf6')
+sha256sums=('087fae2c17d03550b2707d8e2c83874cfa0770bdbbe2e1fdc6202e8d7ee262d6')
 
 build() {
 	cd "Lightpack-${pkgver}/Software"
