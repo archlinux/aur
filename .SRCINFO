@@ -26,4 +26,3 @@ pkgbase = lib32-libpulse-nosystemd-minimal-git
 	sha256sums = SKIP
 
 pkgname = lib32-libpulse-nosystemd-minimal-git
-

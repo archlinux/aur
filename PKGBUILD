@@ -40,7 +40,7 @@ build() {
     -D man=false \
     -D tests=false \
     -D avahi=disabled \
-    -D bluez5=false \
+    -D bluez5=disabled \
     -D gcov=false \
     -D systemd=disabled \
     -D legacy-database-entry-format=false \
@@ -71,7 +71,8 @@ build() {
     -D elogind=disabled \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D stream-restore-clear-old-devices=true \
-    -D udevrulesdir=/usr/lib/udev/rules.d
+    -D udevrulesdir=/usr/lib/udev/rules.d \
+    -D doxygen=false
   meson compile -C build
 
 # glib required for libpulse.so creation
