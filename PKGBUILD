@@ -6,7 +6,7 @@ pkgrel=1
 url="https://codeberg.org/unixsheikh/salahtime-go"
 pkgdesc="A small command line application written in Go that displays the Islamic prayer times for Europe/Copenhagen"
 arch=('any')
-license=('The Unlicense')
+license=('CC BY 4.0')
 depends=(
   'pacman>=5.1'
   'sudo'
