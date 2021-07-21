@@ -1,13 +1,13 @@
 pkgbase = trivy-bin
 	pkgdesc = A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI
-	pkgver = 0.19.1
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/aquasecurity/trivy
 	arch = x86_64
 	license = AGPL
 	provides = trivy
 	conflicts = trivy
-	source = https://github.com/aquasecurity/trivy/releases/download/v0.19.1/trivy_0.19.1_Linux-64bit.tar.gz
-	sha256sums = 400fe679491777ac32188cb3af4cac20047791b98a9c6eecd340f37c4a99c20a
+	source = https://github.com/aquasecurity/trivy/releases/download/v0.19.2/trivy_0.19.2_Linux-64bit.tar.gz
+	sha256sums = 4863d015071936e8f5d4610c99eb8149b368a24453b464fff41133d4609b88a8
 
 pkgname = trivy-bin
