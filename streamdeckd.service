@@ -6,6 +6,7 @@ ExecStart=/usr/bin/streamdeckd
 Environment="DISPLAY=:0.0"
 Environment="DEBUG=true"
 Restart=always
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
