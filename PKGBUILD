@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-imath
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)"
 url="https://github.com/AcademySoftwareFoundation/Imath"
 arch=(any)
@@ -13,11 +13,9 @@ checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz"
-	"intrinsics_include.patch::https://github.com/patlefort/Imath/commit/eabc884d079d26afcead5128f7b093978d239ada.patch"
 )
 sha256sums=(
-	'211c907ab26d10bd01e446da42f073ee7381e1913d8fa48084444bc4e1b4ef87'
-	'SKIP'
+	'a63fe91d8d0917acdc31b0c9344b1d7dbc74bf42de3e3ef5ec982386324b9ea4'
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -27,7 +25,6 @@ _srcdir="Imath-${pkgver}"
 prepare() {
 	cd "${_srcdir}"
 	sed -i -r 's/\$<TARGET_FILE:ImathTest>/\${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:ImathTest>/' 'src/ImathTest/CMakeLists.txt'
-	patch -u -p1 -i "${srcdir}/intrinsics_include.patch"
 }
 
 build() {
