@@ -1,0 +1,2 @@
+d /var/lib/consul   0755 consul consul
+x /var/lib/consul/*

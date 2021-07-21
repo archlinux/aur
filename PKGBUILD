@@ -1,7 +1,7 @@
 # Maintainer: Vasiliy Bukharev <bvp-yar@ya.ru>
 
 pkgname=consul-bin
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='A tool for service discovery, monitoring and configuration.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,10 @@ url="https://www.consul.io"
 license=('MPL')
 depends=('glibc')
 provides=('consul')
-source=('consul.service')
+source=('consul.service'
+        'consul.hcl'
+        'consul.sysusers'
+        'consul.tmpfiles')
 source_i686=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_386.zip")
 source_x86_64=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_amd64.zip")
 source_arm=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_armelv5.zip")
@@ -17,17 +20,23 @@ source_armv6h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}
 source_armv7h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_armhfv6.zip")
 source_aarch64=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm64.zip")
 
-sha256sums=('cace20b6db0643a4d10f6f14ab7ba23d047376aae48460b48fd265cb3eebc13c')
-sha256sums_i686=('c3276f6b87035691d7dee13e18c5e8e4aa2c9fa506a5182eaa1fb9dde547e3aa')
-sha256sums_x86_64=('7cd2e67ce2779c74ce18d880ccdfdc00a655eb71a6a7a956e6d3b71e7937ca0f')
-sha256sums_arm=('d924c3744107975cc982a2d6c7444b843156364e5069fe81929757a3a8d875a5')
-sha256sums_armv6h=('7790ac8514673d0a909ac8d6c50f342075b2dc8a69efd1148c012a13c6b03ed0')
-sha256sums_armv7h=('7790ac8514673d0a909ac8d6c50f342075b2dc8a69efd1148c012a13c6b03ed0')
-sha256sums_aarch64=('f35ebca5d8898b5117cc1f491509e8af46f87b93b5aeee8efdf4f30799efaaca')
+sha256sums=('8cc951f4b5a9926c86a4fa185e3963bffd6d8c3633a26cb68f7ab25b51e0ce30'
+            '31782ac6f397dfce957f6f3b2d5c6c4353aa0bc1f46edc403d7ae387b5ecee3a'
+            '857d0a0eae217a941045d10877b59d9bc8fbcbba8e7cbe396d160ffd5317fa2c'
+            '1838c60658eca84dfef148d179503b9df6c6e6b86ec6706d14d889829c51e532')
+sha256sums_i686=('8f4f0806562965bf86017f77d787b7077bc455d5fa3150ec85246f19daaf81dd')
+sha256sums_x86_64=('abd9a7696e2eeed66fdb28965c220a2ba45ee5cd79ff263557f5392291aab730')
+sha256sums_arm=('f0390897ea643a6692015ecc8a95536eff054538bdb64aeebbc595a2bd391c0c')
+sha256sums_armv6h=('25718d3b0d2ab8cea16ccfbd2a3e8162a12e7116c57b58414a8e358a527c3f88')
+sha256sums_armv7h=('25718d3b0d2ab8cea16ccfbd2a3e8162a12e7116c57b58414a8e358a527c3f88')
+sha256sums_aarch64=('ffdbeffcdb9865e0c84472c5098d5e1654c14d26e94f9e7e4bcefa6679a181a7')
 options=('!strip')
 
 package() {
   install -Dm755 consul "$pkgdir"/usr/bin/consul
   install -Dm644 consul.service "$pkgdir"/usr/lib/systemd/system/consul.service
   install -d "$pkgdir"/etc/consul.d
+  install -Dm644 "${srcdir}/consul.hcl" "${pkgdir}/etc/consul.d/consul.hcl"
+  install -Dm644 "${srcdir}/consul.sysusers" "${pkgdir}/usr/lib/sysusers.d/consul.conf"
+  install -Dm644 "${srcdir}/consul.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/consul.conf"
 }
