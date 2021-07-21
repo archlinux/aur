@@ -1,88 +1,79 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Maintainer:  xiretza            <xiretza+aur@gmail.com>
 # Maintainer:  Rod Kay            <charlie5 on #ada at freenode.net>
 # Contributor: Patrick Kelly      <kameo76890 at gmail dot com>
 # Contributor: Georgios Tsalikis  <aliverius somewhere near tsalikis and a net>
 
 pkgname=gnat-gps
-pkgver=2020
-pkgrel=8
+_upstream_ver=2021-20210701-19B6B
+pkgver=2021
+pkgrel=1
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gps"
 license=('GPL')
 
-depends=("clang" "libadalang"
-         "gnatcoll-xref" "gnatcoll-python2" "gnatcoll-db2ada"
-         "gnatcoll-gnatinspect" "gtkada"
-         "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-         "python2-gobject" "python2-gobject2")
+#depends=("clang" "ada_language_server"
+#         "gnatcoll-python2" "gnatcoll-db2ada"
+#         "gnatcoll-gnatinspect" "gtkada"
+#         "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
+#         "python2-gobject" "python2-gobject2")
+depends=("clang" "ada_language_server"
+         "gnatcoll-python2" "gnatcoll-xref"
+         "gtkada")
+
 optdepends=('python2-jedi')
-makedepends=('gprbuild' 'texlive-latexextra' 'graphviz' "python2-pip")
+makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
-_gps_version=21.0w-20200427-15496
-_gps_checksum=bfa68dd61a9288c79e9c08676878cac95e0fe628
-
-_als_ver=21.0w-20200427-156B6
-_als_checksum=05e31f6e36e2ff4313013d27f0551416de5a1b4e
-
-_laltools_ver=21.0w-20200425-15675
-_laltools_checksum=334dca036084a92552860451619321faee571797
-
-source=("gps-$_gps_version-src.tar.gz::https://community.download.adacore.com/v1/$_gps_checksum?filename="
-        "als-$_als_ver-src.tar.gz::https://community.download.adacore.com/v1/$_als_checksum?filename="
-        "libadalang-tools-$_laltools_ver-src.tar.gz::https://community.download.adacore.com/v1/$_laltools_checksum?filename="
-        0002-Ignore-absence-of-version-number-in-user_guide.patch
+_checksum=e940520a321c0aa8b624be178306147970c6b6f9
+source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz"
         0003-Honour-DESTDIR-in-installation-targets.patch
         0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
-        0005-Fix-recursive-make-in-docs.patch
+        patch-shared.gpr.in
+        patch-filter_panels.adb
+        patch-gtkada-search_entry.ads
+        patch-gtkada-search_entry.adb
+        patch-share-support-core-extensions-__init__.py
+        patch-share-support-core-modules.py
+        patch-share-support-core-tool_output.py
+        patch-share-support-ui-pygps-__init__.py
         gps.desktop)
 
-sha1sums=("$_gps_checksum"
-          "$_als_checksum"
-          "$_laltools_checksum"
-          '525f0b9d64fecb9c2e669cf64b60548b86c575d9'
+sha1sums=("$_checksum"
           '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
-          '26f6fac439ec973facccee5412dc4c86b7c6d8c7'
-          '6dd1f880f55c9612a2a67d41e6606df26cd829c6'
+          '4e6cb35c4e2e74d343d0917b926c7377a81b1aba'
+          'c71a4484b1e791ea8455a44e602b236dc7497c4d'
+          '7a928f86dad330590a8c9e9aff04291e458fd1c6'
+          '8815ffbf0077a50c4c2023637d214b1847be40f1'
+          '6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53'
+          '6c4ec35fcb80336d62960b3b59fbe82ea305f738'
+          '79da1943438f081e6a863011c82c80ccec280e03'
+          '0a03a65eda52b70c7197aef858e3c552a3fbda34'
+          '4492bad6e6a368526654e9c6ac6cc853d4b0fe48'
           'b399c7b3a1fe48152da18081def3dced2e74763b')
 
 prepare()
 {
-  # Ensure python2 sphinx is installed. 
-  if test -f "/usr/bin/sphinx-build2"; then
-      # Sphinx has already been installed via pacman.
-      mkdir -p "$srcdir/.local/bin"
-      ln -sfT /usr/bin/sphinx-build2 "$srcdir/.local/bin/sphinx-build"
-  else
-      # Install obsolete python2 packages that can no longer be auto-installed via makedepends.
-      # Note that exports made here are visible in build() and package() as well.
-      # Use a persistent but package-specific download cache.
-      export PYTHONUSERBASE="$srcdir/.local"
-      pip2 install --user --cache-dir "$startdir/.cache/pip2" sphinx
-  fi
-  export PATH="$srcdir/.local/bin:$PATH"
+  cd "$srcdir/gps-$_upstream_ver-src"
 
-  # Destination directory already populated by pip2 install.
-  ln -sfT /usr/bin/python2        "$srcdir/.local/bin/python"
-  ln -sfT /usr/bin/python2-config "$srcdir/.local/bin/python-config"
-  
-  cd "$srcdir/gps-$_gps_version-src"
+  patch -Np0 -i ../patch-shared.gpr.in
+  patch -Np1 -i ../patch-filter_panels.adb
+  patch -Np1 -i ../patch-gtkada-search_entry.ads
+  patch -Np1 -i ../patch-gtkada-search_entry.adb
 
-  patch -p1 < "$srcdir/0002-Ignore-absence-of-version-number-in-user_guide.patch"
+  patch -Np0 -i ../patch-share-support-core-extensions-__init__.py
+  patch -Np0 -i ../patch-share-support-core-modules.py
+  patch -Np0 -i ../patch-share-support-core-tool_output.py
+  patch -Np0 -i ../patch-share-support-ui-pygps-__init__.py
+
   patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
-  patch -p1 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
-  patch -p1 < "$srcdir/0005-Fix-recursive-make-in-docs.patch"
-
-  # Link libadalang-tools and ada_language_server into the GPS source tree.
-  ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version-src/laltools"
-  ln -sf "$srcdir/als-$_als_ver-src"                   "$srcdir/gps-$_gps_version-src/ada_language_server"
+  patch -p0 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
 }
 
 
 build() 
 {
-  cd "$srcdir/gps-$_gps_version-src"
+  cd "$srcdir/gps-$_upstream_ver-src"
 
   export OS=unix
 
@@ -92,21 +83,29 @@ build()
   make -C docs clean
   make -C gnatdoc/docs/users_guide clean
 
+  ADA_FLAGS="$CFLAGS"
+  ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+  ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+
   # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing.
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
-  make PROCESSORS=0 Build=Production GPRBUILD_FLAGS="-R -cargs $CFLAGS -fno-strict-aliasing -largs $LDFLAGS -gargs"
+
+  make -j1 OS=unix PROCESSORS=0 BUILD=Production LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.9 -gargs"
   make -C docs all
 }
 
-
 package() 
 {
-  cd "$srcdir/gps-$_gps_version-src"
+  cd "$srcdir/gps-$_upstream_ver-src"
 
   export OS=unix
-
   make DESTDIR="$pkgdir/" install
 
   # Add the desktop config.
   install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/gps.desktop"
+  
+  # Install the license.
+  install -D -m644     \
+     "COPYING3"        \
+     "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
 }

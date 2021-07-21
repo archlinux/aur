@@ -1,20 +1,7 @@
-From 1b9588773387109753218a6395c77014b56bd8ea Mon Sep 17 00:00:00 2001
-From: Xiretza <xiretza@xiretza.xyz>
-Date: Sun, 24 May 2020 11:23:55 +0200
-Subject: [PATCH 4/5] Honour GPRBUILD_FLAGS= in cli/Makefile
-
----
- cli/Makefile | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/cli/Makefile b/cli/Makefile
-index 3b0630d8ef..8c6218cf5a 100644
---- a/cli/Makefile
-+++ b/cli/Makefile
-@@ -1,8 +1,9 @@
- GPRBUILD=gprbuild
+--- cli/Makefile	2021-06-15 15:19:41.000000000 +1000
++++ cli/Makefile-new	2021-07-22 05:39:00.350093341 +1000
+@@ -2,7 +2,7 @@
  GPRCLEAN=gprclean
-+GPRBUILD_FLAGS=
  
  all default:
 -	$(GPRBUILD) -p -Pcli
@@ -23,6 +10,3 @@ index 3b0630d8ef..8c6218cf5a 100644
  clean:
 -	$(GPRCLEAN) -q -r -Pcli
 +	$(GPRCLEAN) $(GPRBUILD_FLAGS) -q -r -Pcli
--- 
-2.26.2
-

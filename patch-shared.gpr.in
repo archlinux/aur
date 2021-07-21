@@ -1,0 +1,11 @@
+--- shared.gpr.in	2021-07-02 15:15:23.763371000 +1000
++++ shared.gpr.in-new	2021-07-18 05:36:29.262718754 +1000
+@@ -82,7 +82,7 @@
+    package Linker is
+       --  ??? missing hack to force libiconv first (working around
+       --  a faulty libiconv in macports)
+-      for Switches ("Ada") use Clang_Libs & ("-lstdc++") & Python_shared_libs;
++      for Switches ("Ada") use Clang_Libs & ("-lstdc++", "-lpython2.7", "-lpython3.9") & Python_shared_libs;
+ 
+       case OS is
+          when "osx" =>
