@@ -9,7 +9,7 @@ pkgbase = guieditor-git
 	depends = qt5-base
 	depends = qt5-serialport
 	source = git+https://gitlab.com/labinformatica/guieditor.git
-	source = file://guiEditor.desktop
+	source = guiEditor.desktop
 	sha1sums = SKIP
 	sha1sums = f598e8c009442788bbbd62b925ebd74b84968e2c
 

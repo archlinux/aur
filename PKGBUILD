@@ -9,7 +9,7 @@ url='https://gitlab.com/labinformatica/guieditor'
 license=(GPL3)
 depends=(qt5-base qt5-serialport)
 source=(git+https://gitlab.com/labinformatica/guieditor.git 
-        file://guiEditor.desktop)
+        guiEditor.desktop)
 sha1sums=('SKIP'
           'f598e8c009442788bbbd62b925ebd74b84968e2c')
 
