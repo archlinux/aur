@@ -45,14 +45,9 @@
 		compatible = "gpio-leds";
 
 		power {
-			label = "orangepi:red:power";
+			label = "orangepi:blue:power";
 			gpios = <&r_pio 0 4 GPIO_ACTIVE_HIGH>; /* PL4 */
 			default-state = "on";
-		};
-
-		status {
-			label = "orangepi:green:status";
-			gpios = <&r_pio 0 7 GPIO_ACTIVE_HIGH>; /* PL7 */
 		};
 	};
 
@@ -63,6 +58,15 @@
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
 		regulator-always-on;
+	};
+
+	reg_gmac_2v5: gmac-2v5 {
+		compatible = "regulator-fixed";
+		regulator-name = "gmac-2v5";
+		regulator-min-microvolt = <2500000>;
+		regulator-max-microvolt = <2500000>;
+		enable-active-high;
+		gpio = <&pio 3 6 GPIO_ACTIVE_HIGH>; /* PD6 */
 	};
 
 	reg_vcc33_wifi: vcc33-wifi {
@@ -89,7 +93,7 @@
 		compatible = "mmc-pwrseq-simple";
 		clocks = <&rtc 1>;
 		clock-names = "ext_clock";
-		reset-gpios = <&r_pio 1 3 GPIO_ACTIVE_LOW>; /* PM3 */
+		reset-gpios = <&pio 0 8 GPIO_ACTIVE_LOW>; /* PL8 */
 		post-power-on-delay-ms = <200>;
 	};
 };
@@ -123,6 +127,9 @@
     pinctrl-0 = <&ext_rmii_pins>;
     phy-mode = "rmii";
     phy-handle = <&ext_rmii_phy>;
+    phy-supply = <&reg_aldo2>;
+    allwinner,rx-delay-ps = <1500>;
+    allwinner,tx-delay-ps = <700>;
     status = "okay";
 };
 
@@ -228,6 +235,8 @@
 			};
 
 			reg_aldo2: aldo2 {
+                regulator-always-on;
+                regulator-enable-ramp-delay = <0x186a0>;
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
 				regulator-name = "vcc33-audio-tv-ephy-mac";

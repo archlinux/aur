@@ -1,4 +1,5 @@
 src/
 pkg/
-linux-*.tar.xz
-patch-*.xz
+*.zst
+*.xz
+*.dtb
