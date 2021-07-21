@@ -5,8 +5,8 @@
 
 pkgname=fluent-bit
 
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 epoch=
 
 pkgdesc='Collect data/logs from different sources, unify and send them to multiple destinations.'
@@ -72,4 +72,4 @@ package() {
     install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('9607aae924278130db374757bf0df0cddb329088a9f97da17ebca039a0d37f93a0664273c14729ccbd123d1a25c7bc9329cb58c9dd2cf7d2a5fd086e726c73c8')
+sha512sums=('b0afec85620bca06104c33dbc5f32f0396f279c00a88693ea80eaaaa8d36fe8bc4bdf7c39ba7bb5934adb4c1eb7a73d8ffdbfde78ad72ed9dd16859a535bcda6')
