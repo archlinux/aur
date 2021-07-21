@@ -1,0 +1,13 @@
+pkgbase = ttf-babelstone-marchen
+	pkgdesc = BabelStone Font for sMar-chen script
+	pkgver = 9.001
+	pkgrel = 1
+	url = https://www.babelstone.co.uk/Fonts/IrkBitig.html
+	arch = any
+	license = OFL
+	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneMarchen.ttf
+	source = https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
+	md5sums = 5854acecdca7d787f968fa0b6563379f
+	md5sums = f516c91719ef90db6c942f8ac6efde47
+
+pkgname = ttf-babelstone-marchen
