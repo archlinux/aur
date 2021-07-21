@@ -1,7 +1,7 @@
 pkgbase = ossim
 	pkgdesc = OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data.
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ossim.org
 	install = ossim.install
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ossim
 	depends = libjpeg
 	depends = libtiff
 	depends = openthreads
-	depends = openjpeg
+	depends = openjpeg2
 	depends = doxygen
 	depends = hdf5-cpp-fortran
 	depends = minizip
@@ -34,4 +34,3 @@ pkgbase = ossim
 	md5sums = cb85c216a099b10f057cddeeae4a57fb
 
 pkgname = ossim
-

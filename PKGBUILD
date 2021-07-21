@@ -5,12 +5,12 @@
 pkgname=ossim
 _pkgname=ossim
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
 arch=('i686' 'x86_64')
-depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openthreads' 'openjpeg'  'doxygen' 
+depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openthreads' 'openjpeg2'  'doxygen' 
 'hdf5-cpp-fortran' 'minizip' 'expat' 'ffmpeg' 'qt5-base' 'podofo' 'bzip2' 'freetype2' 'pdal')
 makedepends=('cmake')
 optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
