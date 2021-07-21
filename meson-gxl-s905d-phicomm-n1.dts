@@ -6,6 +6,7 @@
 /dts-v1/;
 
 #include "meson-gxl-s905d-p230.dts"
+#include "dt-bindings/leds/common.h"
 
 / {
     compatible = "phicomm,n1", "amlogic,s905d", "amlogic,meson-gxl";
@@ -18,8 +19,10 @@
     leds {
         compatible = "gpio-leds";
 
-        status {
-            label = "n1:white:status";
+        led-1 {
+            // label = "n1:white:status";
+            function = LED_FUNCTION_STATUS;
+            color = <LED_COLOR_ID_WHITE>;
             gpios = <&gpio_ao GPIOAO_9 GPIO_ACTIVE_HIGH>;
             default-state = "on";
         };
@@ -28,7 +31,7 @@
     /delete-node/ sound;
     sound {
         compatible = "amlogic,gx-sound-card";
-        model = "PHCIOMM-N1";
+        model = "PHICOMM-N1";
         assigned-clocks = <&clkc CLKID_MPLL0>,
                           <&clkc CLKID_MPLL1>,
                           <&clkc CLKID_MPLL2>;
