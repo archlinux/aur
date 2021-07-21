@@ -1,0 +1,16 @@
+pkgbase = guieditor-git
+	pkgdesc = GUI editor for GNU Octave
+	pkgver = 2021.07.19.22db096
+	pkgrel = 1
+	url = https://gitlab.com/labinformatica/guieditor
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-serialport
+	source = git+https://gitlab.com/labinformatica/guieditor.git
+	source = file://guiEditor.desktop
+	sha1sums = SKIP
+	sha1sums = f598e8c009442788bbbd62b925ebd74b84968e2c
+
+pkgname = guieditor-git

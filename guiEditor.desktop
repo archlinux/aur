@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=guiEditor
+Comment=Graphical user interface for Octave
+Comment[sp]=Editor de interfaces gráficas para Octave
+Exec=/opt/guiEditor/guiEditor
+Icon=/usr/share/pixmaps/guieditor.png
+Terminal=false
+Type=Application
