@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
-	pkgver = 2020
-	pkgrel = 8
+	pkgver = 2021
+	pkgrel = 1
 	url = https://github.com/AdaCore/gps
 	arch = i686
 	arch = x86_64
@@ -9,36 +9,35 @@ pkgbase = gnat-gps
 	makedepends = gprbuild
 	makedepends = texlive-latexextra
 	makedepends = graphviz
-	makedepends = python2-pip
 	depends = clang
-	depends = libadalang
-	depends = gnatcoll-xref
+	depends = ada_language_server
 	depends = gnatcoll-python2
-	depends = gnatcoll-db2ada
-	depends = gnatcoll-gnatinspect
+	depends = gnatcoll-xref
 	depends = gtkada
-	depends = gnome-icon-theme
-	depends = gnome-icon-theme-extras
-	depends = gnome-icon-theme-symbolic
-	depends = python2-gobject
-	depends = python2-gobject2
 	optdepends = python2-jedi
-	source = gps-21.0w-20200427-15496-src.tar.gz::https://community.download.adacore.com/v1/bfa68dd61a9288c79e9c08676878cac95e0fe628?filename=
-	source = als-21.0w-20200427-156B6-src.tar.gz::https://community.download.adacore.com/v1/05e31f6e36e2ff4313013d27f0551416de5a1b4e?filename=
-	source = libadalang-tools-21.0w-20200425-15675-src.tar.gz::https://community.download.adacore.com/v1/334dca036084a92552860451619321faee571797?filename=
-	source = 0002-Ignore-absence-of-version-number-in-user_guide.patch
+	source = gnat-gps-2021-20210701-19B6B-src.tar.gz::https://community.download.adacore.com/v1/e940520a321c0aa8b624be178306147970c6b6f9?filename=gnat-gps-2021-20210701-19B6B-src.tar.gz
 	source = 0003-Honour-DESTDIR-in-installation-targets.patch
 	source = 0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
-	source = 0005-Fix-recursive-make-in-docs.patch
+	source = patch-shared.gpr.in
+	source = patch-filter_panels.adb
+	source = patch-gtkada-search_entry.ads
+	source = patch-gtkada-search_entry.adb
+	source = patch-share-support-core-extensions-__init__.py
+	source = patch-share-support-core-modules.py
+	source = patch-share-support-core-tool_output.py
+	source = patch-share-support-ui-pygps-__init__.py
 	source = gps.desktop
-	sha1sums = bfa68dd61a9288c79e9c08676878cac95e0fe628
-	sha1sums = 05e31f6e36e2ff4313013d27f0551416de5a1b4e
-	sha1sums = 334dca036084a92552860451619321faee571797
-	sha1sums = 525f0b9d64fecb9c2e669cf64b60548b86c575d9
+	sha1sums = e940520a321c0aa8b624be178306147970c6b6f9
 	sha1sums = 4c13859aa25c5142bd5d0fde7b645217ddeccb50
-	sha1sums = 26f6fac439ec973facccee5412dc4c86b7c6d8c7
-	sha1sums = 6dd1f880f55c9612a2a67d41e6606df26cd829c6
+	sha1sums = 4e6cb35c4e2e74d343d0917b926c7377a81b1aba
+	sha1sums = c71a4484b1e791ea8455a44e602b236dc7497c4d
+	sha1sums = 7a928f86dad330590a8c9e9aff04291e458fd1c6
+	sha1sums = 8815ffbf0077a50c4c2023637d214b1847be40f1
+	sha1sums = 6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53
+	sha1sums = 6c4ec35fcb80336d62960b3b59fbe82ea305f738
+	sha1sums = 79da1943438f081e6a863011c82c80ccec280e03
+	sha1sums = 0a03a65eda52b70c7197aef858e3c552a3fbda34
+	sha1sums = 4492bad6e6a368526654e9c6ac6cc853d4b0fe48
 	sha1sums = b399c7b3a1fe48152da18081def3dced2e74763b
 
 pkgname = gnat-gps
-
