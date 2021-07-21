@@ -1,7 +1,7 @@
 pkgbase = ruby-airbrussh
 	pkgdesc = Airbrussh pretties up your SSHKit and Capistrano output
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattbrictson/airbrussh
 	arch = any
 	license = MIT

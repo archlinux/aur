@@ -3,7 +3,7 @@
 _gemname=airbrussh
 pkgname=ruby-$_gemname
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Airbrussh pretties up your SSHKit and Capistrano output'
 arch=(any)
 url=https://github.com/mattbrictson/airbrussh
@@ -42,7 +42,7 @@ package() {
     -n "$pkgdir/usr/bin" \
     $_gemname-$pkgver.gem
 
-  rm "$pkgdir/$_gemdir/cache"
+  rm -rf "$pkgdir/$_gemdir/cache"
 
   install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
