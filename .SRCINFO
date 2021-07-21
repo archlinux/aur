@@ -1,0 +1,16 @@
+pkgbase = podman-dnsname-git
+	pkgdesc = name resolution for containers
+	pkgver = 1.2.0.r12.g11e8348
+	pkgrel = 1
+	url = https://github.com/containers/dnsname.git
+	arch = any
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = dnsmasq
+	provides = podman-dnsname
+	conflicts = podman-dnsname
+	source = git+https://github.com/containers/dnsname.git
+	sha256sums = SKIP
+
+pkgname = podman-dnsname-git
