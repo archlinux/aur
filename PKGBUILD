@@ -5,8 +5,9 @@
 
 _pkgname=scilab
 _fragment="${FRAGMENT:-#branch=master}"
+_ver_pop_commit="2797926fe5a3af91029ce4fc018ced0c286e6fe3"
 pkgname=${_pkgname}-git
-pkgver=6.1.0.r10.g8937019ec74
+pkgver=6.2.0.r216.g81a9cc04933
 pkgrel=1
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
@@ -48,8 +49,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}/${_pkgname}"
-
-  git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+# Tags are dragging behind
+# git describe --long --tags --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  scilab_ver=$(printf "%d.%d.%d" $(grep -Po '^SCILAB_VERSION_(MAJOR|MINOR|MAINTENANCE)=\K.*' configure.ac))
+  printf "%s.r%s.g%s" "$scilab_ver" "$(git rev-list --count $_ver_pop_commit..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){

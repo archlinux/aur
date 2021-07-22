@@ -1,6 +1,6 @@
 pkgbase = scilab-git
 	pkgdesc = A scientific software package for numerical computations.
-	pkgver = 6.1.0.r10.g8937019ec74
+	pkgver = 6.2.0.r216.g81a9cc04933
 	pkgrel = 1
 	url = https://www.scilab.org
 	arch = i686
