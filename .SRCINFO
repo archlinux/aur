@@ -1,0 +1,17 @@
+pkgbase = liteaur
+	pkgdesc = LiteAUR: The shell script light-weight AUR helper
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://gitlab.com/TechSour12/liteaur
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pacman
+	depends = git
+	optdepends = doas
+	optdepends = sudo
+	provides = liteaur
+	source = liteaur::git+https://gitlab.com/TechSour12/liteaur.git
+	md5sums = SKIP
+
+pkgname = liteaur
