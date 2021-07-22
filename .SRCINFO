@@ -1,7 +1,7 @@
 pkgbase = scilab
 	pkgdesc = A scientific software package for numerical computations.
-	pkgver = 6.1.0
-	pkgrel = 5
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://www.scilab.org
 	arch = i686
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = scilab
 	depends = apache-lucene>=7
 	depends = java-batik>=1.8
 	depends = java-xmlgraphics-commons>=2.0.1
-	source = https://www.scilab.org/download/6.1.0/scilab-6.1.0-src.tar.gz
+	source = https://www.scilab.org/download/6.1.1/scilab-6.1.1-src.tar.gz
 	source = scilab-jogl-2.3.2.patch
 	source = scilab-strict-jar.patch
 	source = scilab-LD_LIBRARY_PATH.patch
@@ -53,14 +53,13 @@ pkgbase = scilab
 	source = scilab-num.patch
 	source = libxml.patch
 	source = hdf5_18_api.patch
-	sha256sums = ae6befb0153fb823fd647f4eb36076f98fd20fed601f7dfa94d8c13e31044964
+	sha256sums = e51347638bd385c276c930785a1f9f079ae7eaa78c62a0eca1dc7e6142434207
 	sha256sums = 7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0
 	sha256sums = 38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd
 	sha256sums = a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db
 	sha256sums = 6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392
-	sha256sums = 31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed
+	sha256sums = 79c5f32bc2142f9861491787e8ee86d0b75f148141b176bae394ea360b8944d7
 	sha256sums = c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041
 	sha256sums = f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e
 
 pkgname = scilab
-
