@@ -39,9 +39,10 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
 options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
-install=firedragon.install
+install=$__pkgname.install
 source=("hg+$_repo#revision=autoland"
         $__pkgname.desktop
+        "git+https://gitlab.com/vnepogodin/librewolf-common.git"
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
@@ -52,7 +53,8 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd mozilla-unified
-  printf "92.0a1.r%s" "$(hg identify -n)" | sed 's/\+//g'
+  _pkgver=$(cat browser/config/version.txt)
+  printf "${_pkgver}.r%s.%s" "$(hg identify -n)" "$(hg identify -i)" | sed 's/\+//g'
 }
 
 prepare() {
@@ -61,28 +63,28 @@ prepare() {
   fi
   cd mozilla-unified
 
-  local _patches_dir="${srcdir}/common/patches-hg"
+  local _patches_dir="${srcdir}/librewolf-common/patches"
+  local __patches_dir="${srcdir}/common/patches-hg"
 
   # Gentoo patches
   echo "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${__patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${__patches_dir}/gentoo/0029-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
 
   # Use more system libs
   echo "---- Patching for system libs"
-  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
+  patch -Np1 -i ${__patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
+  patch -Np1 -i ${__patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
+  patch -Np1 -i ${__patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
 
   # Remove some pre-installed addons that might be questionable
-  echo "---- Librewolf patches"
-  patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
+  patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
-  # Remove Mozilla VPN ads
-  # patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
+  # Remove mozilla vpn ads
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
   patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
@@ -90,19 +92,27 @@ prepare() {
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
 
+  # Remove search extensions (experimental)
+  patch -Np1 -i ${_patches_dir}/search-config.patch
+
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   # Assorted patches
-  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/librewolf/browser-confvars.patch
-  patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
+  patch -Np1 -i ${_patches_dir}/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
+  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   # Allow overriding the color scheme light/dark preference with RFP
-  patch -Np1 -i ${_patches_dir}/librewolf/allow_dark_preference_with_rfp.patch
+  patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
 
   # Fix an URL in 'about' dialog
-  patch -Np1 -i ${_patches_dir}/librewolf/about-dialog.patch  
+  patch -Np1 -i ${_patches_dir}/about-dialog.patch
+
+  # Change some hardcoded directory strings that could lead to unnecessarily
+  # created directories
+
+  # patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
   
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser

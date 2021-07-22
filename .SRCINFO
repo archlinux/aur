@@ -74,6 +74,7 @@ pkgbase = firedragon-hg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = hg+https://hg.mozilla.org/mozilla-unified#revision=autoland
 	source = firedragon.desktop
+	source = git+https://gitlab.com/vnepogodin/librewolf-common.git
 	source = git+https://gitlab.com/dr460nf1r3/common.git
 	source = git+https://gitlab.com/dr460nf1r3/settings.git
 	sha512sums = SKIP
