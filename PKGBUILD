@@ -2,7 +2,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=0.7.0.r0.gba2f359
+pkgver=0.7.3.r0.g0b2f7ee
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=("git+https://gitlab.com/aviallon/ananicy-cpp.git")
@@ -29,7 +29,7 @@ prepare() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_EXTERNAL_SPDLOG=ON \
 		-DUSE_EXTERNAL_JSON=ON \
-		-DUSE_EXTERNAL_FMTLIB=OFF
+		-DUSE_EXTERNAL_FMTLIB=ON
 }
 
 build() {
