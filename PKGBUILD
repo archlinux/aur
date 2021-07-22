@@ -29,19 +29,19 @@ makedepends=('java-environment=8' 'ant>=1.9.0'
 provides=('scilab')
 conflicts=('scilab')
 source=("git://git.scilab.org/scilab${_fragment}"
-        "${_pkgname}-jogl-2.3.2.patch"
+        "jogl-2.3.2.patch::http://gitweb.scilab.org/?p=scilab.git;a=patch;h=0c977dd8e334bf393e61f81f5fd19c48efc538c9"
+        "ocaml-4.02.patch::http://gitweb.scilab.org/?p=scilab.git;a=patch;h=eb6b830cc812498a451f9d9b497b18bd4785eed5"
         "${_pkgname}-strict-jar.patch"
         "${_pkgname}-LD_LIBRARY_PATH.patch"
-        "${_pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch"
         "${_pkgname}-num.patch"
         "libxml.patch"
         "hdf5_18_api.patch"
          )
 sha256sums=('SKIP'
-            '7b7b5609ee36b6f8d801eeb3899cd62cc889c2038e0e1616b7640f9b8a0424b0'
+            '2348c8badad19974174eac99d18f4583c838dd406265d686fa46b6c8c4d04cce'
+            '2aec92a3a12e7c776856edcacbce5115cac784f4a946151d96bcf46d64f10e40'
             '38aa094951338fa1d267dc6f397552e175213b0f8ba7b35727c178607861f6dd'
             'a39277cb8cfc3d7929c73ce6d707dc24e3df4b8d8f2d587f075efebda79ff4db'
-            '6712c6db2f3ba365d150e1feb1c71bf691f8aa3b45d5a872b05a42f0daf23392'
             '31e757bdb2086e08e2477118fceddcdd50f3c2fcad5c86cf5de8ec06009f34ed'
             'c04114c4ef63d76bf898808e90c892de093fcc400a2371c7aa287b76c0c5d041'
             'f781c2919a0c14be5deed3a8b8866addd8de1171a06aacb96ef1e19535d0988e')
@@ -56,14 +56,14 @@ prepare(){
   cd "${srcdir}/${_pkgname}/${_pkgname}"
 
   # https://codereview.scilab.org/#/c/17530/
-  patch -p2 < "${srcdir}"/${_pkgname}-jogl-2.3.2.patch
-  # Linked to: https://codereview.scilab.org/#/c/18089/
-  patch < "${srcdir}"/${_pkgname}-strict-jar.patch
+  patch -p2 < "${srcdir}"/jogl-2.3.2.patch
+  # https://codereview.scilab.org/#/c/20161/
+  patch -p2 < "${srcdir}"/ocaml-4.02.patch
+  # https://codereview.scilab.org/#/c/18089/
+  patch -p0 < "${srcdir}"/${_pkgname}-strict-jar.patch
   # Fix path, to avoid the following error:
   # An error has been detected while loading /usr/share/scilab//modules/functions/.libs/libscifunctions.so: /usr/share/scilab//modules/functions/.libs/libscifunctions.so: cannot open shared object file: No such file or directory
   patch -p0 < "${srcdir}"/${_pkgname}-LD_LIBRARY_PATH.patch
-  # OCaml
-  patch -p0 < "${srcdir}"/${_pkgname}-0004-Fix-build-with-ocaml-4.0.4.patch
   patch -p0 < "${srcdir}"/${_pkgname}-num.patch
   # libxml
   patch -p1 < "${srcdir}"/libxml.patch
