@@ -2,7 +2,7 @@
 pkgname=liteaur-git
 _pkgname=liteaur
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="LiteAUR: The shell script light-weight AUR helper"
 arch=('any')
 url="https://gitlab.com/TechSour12/liteaur"
