@@ -13,9 +13,13 @@ makedepends=('git' 'npm')
 source=("git+https://github.com/htmlhint/HTMLHint.git#tag=v$pkgver")
 b2sums=('SKIP')
 
-build() {
+prepare() {
   cd $_name
   npm ci
+}
+
+build() {
+  cd $_name
   npm run build
 }
 
