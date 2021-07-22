@@ -49,6 +49,7 @@ source=("hg+$_repo#revision=autoland"
 sha512sums=('SKIP'
             '1688d8696f0a4451bc1211707362ca79d302ae0e8153be8326392b5617cb3944344e9d8fe17d0b1d5fe7df6d38fd44d4d33e3eb84e7b8763c37aeab4b2c26290'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
