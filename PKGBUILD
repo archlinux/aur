@@ -43,9 +43,7 @@ build() {
 }
 
 check() {
-	cd "$pkgname"-"$pkgver"-"$commit"
-
-	./photoprism --version
+	"$pkgname"-"$pkgver"-"$commit/photoprism" --version
 }
 
 package() {
