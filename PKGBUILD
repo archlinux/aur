@@ -6,15 +6,14 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r23.g098a0225e
+pkgver=3.0.2.r523.g79d7db6aa
 pkgrel=1
-pkgdesc="FLOSS Audacity Fork. No telemetry, crash reports and other shenanigans like that!"
+pkgdesc="An easy-to-use multi-track audio editor and recorder"
 arch=(i686 x86_64)
 url="https://github.com/tenacityteam/tenacity"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
-         libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
+depends=(gtk2 gtk3 qt5-base libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg jack nasm conan)
 # can't find system lame portmidi
