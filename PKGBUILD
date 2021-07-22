@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=5.30.10
+pkgver=5.30.20
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -13,10 +13,12 @@ makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm' 'nodejs')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
     "$pkgname.desktop"
     deezer
+    start-hidden-on-tray.patch
     quit.patch)
-sha256sums=('9741cd8538658a9dccd76167d51b4f93bb8d2b4b5e00f6f608a8b9bb3e17ddc8'
+sha256sums=('004c04be35ac76251abae916409e99993e1e34f9adda9eedd1f6a8c5840289fe'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             '8717ba2de9cabc5c0a35780315871329c15bde5ff46c4f0bf859a87e42aa96f5'
+            '2254632a03ca2cf7ae6b50a4109b0bec417cf0db6d669a8037125d13488e3b9f'
             'd3f96ae6019abb60aa097919b22b1873f83061ed7453cd251e43b3afe5d54919')
 
 prepare() {
@@ -37,7 +39,9 @@ prepare() {
 
     prettier --write "build/*.js"
     # Hide to tray (https://github.com/SibrenVasse/deezer/issues/4)
-    patch -p1 <"$srcdir/quit.patch"
+    patch --forward --strip=1 --input="$srcdir/quit.patch"
+    # Add start in tray cli option (https://github.com/SibrenVasse/deezer/pull/12)
+    patch --forward --strip=1 --input="$srcdir/start-hidden-on-tray.patch"
 
     cd "$srcdir/resources/"
     asar pack app app.asar
