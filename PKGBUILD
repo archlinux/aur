@@ -4,7 +4,7 @@ pkgname=python-fastai2
 _pkgname=fastai
 pkgver=2.4.1
 pkgrel=1
-pkgdesc='Deep learning library build on PyTorch (v2 master branch) with CPU'
+pkgdesc='Deep learning library build on PyTorch with CPU. Version 2 of fastai.'
 arch=('any')
 url='https://github.com/fastai/fastai'
 license=('Apache')
@@ -22,7 +22,7 @@ depends=(
   python-scikit-learn
   python-scipy
   python-spacy
-  python-torchvision
+  python-torchvision-cuda
 )
 makedepends=(
   python-setuptools
