@@ -22,20 +22,22 @@ prepare() {
   sed -i 's,/setup_python.py,/pythonx/clap/setup_python.py,' \
     autoload/clap/filter/sync/python.vim
   cargo fetch --locked
+  cd pythonx/clap/fuzzymatch-rs
+  cargo fetch --locked
 }
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release --locked
+  cargo build --release --locked --offline
   cd pythonx/clap/fuzzymatch-rs
-  cargo build --release --locked
+  cargo build --release --locked --offline
 }
 
 check() {
   cd $pkgname-$pkgver/crates
-  cargo test --release
+  cargo test --release --offline
   cd ../pythonx/clap/fuzzymatch-rs
-  cargo test --no-default-features --release --locked
+  cargo test --no-default-features --release --locked --offline
 }
 
 package() {
