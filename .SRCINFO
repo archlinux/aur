@@ -1,7 +1,7 @@
 pkgbase = lektor
 	pkgdesc = A static content management system.
 	pkgver = 3.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.getlektor.com
 	arch = any
 	license = BSD
@@ -27,4 +27,3 @@ pkgbase = lektor
 	sha256sums = 3eab4c2b94a6383d91038f87784b5d1c596656946e531e084b8b7a6ae34d6285
 
 pkgname = lektor
-
