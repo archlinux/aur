@@ -17,6 +17,6 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 package() {
-	cd "$_pkgname"
+	cd "$srcdir/$pkgname"
 	install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
