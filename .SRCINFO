@@ -39,7 +39,6 @@ pkgbase = scilab-git
 	depends = jgoodies-looks
 	depends = java-qdox
 	depends = java-skinlf
-	depends = java-testng
 	depends = xalan-java
 	depends = docbook-xsl
 	depends = jogl>=2.3.2
