@@ -1,6 +1,5 @@
-
 pkgname=newrelic-infra
-pkgver=1.16.3
+pkgver=1.19.2
 pkgrel=1
 license=('Apache')
 arch=('x86_64')
@@ -9,10 +8,8 @@ source=(
 	"https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_${pkgver}_amd64.deb"
 	"https://raw.githubusercontent.com/newrelic/infrastructure-agent/${pkgver}/assets/examples/infrastructure/newrelic-infra-template.yml.example"
 )
-sha256sums=(
-	'f627cb88746a6cf8034729b57b9418cd721d7e84c40d7d1538592247637b94f7'
-	'f4f5614c45e1afb9fbf11a5d948d5a80f1793ebfc2b0a073bfdd4264e396daa5'
-)
+sha256sums=('61a37dfe0d4506008d66591f08a90cc7de6fa70f9b2137157b2e45c6ce2cf5a0'
+            'f4f5614c45e1afb9fbf11a5d948d5a80f1793ebfc2b0a073bfdd4264e396daa5')
 
 package() {
 	for dir in usr/bin var/db etc/newrelic-infra var/log/newrelic-infra usr/lib/systemd/system; do
