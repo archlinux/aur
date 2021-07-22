@@ -1,0 +1,14 @@
+pkgbase = camv-rnd
+	pkgdesc = free/open source, small, flexible viewer for PCB-related CAM file formats
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.repo.hu/projects/camv-rnd/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = librnd3
+	depends = freetype2
+	source = http://www.repo.hu/projects/camv-rnd/releases/camv-rnd-1.0.0.tar.gz
+	sha256sums = edf86c4d7d94364abc2b20bbfb3a78501a899f0b324ce0ecda632efd867a1a15
+
+pkgname = camv-rnd
