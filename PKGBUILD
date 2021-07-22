@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=sqls
-pkgver=0.2.18
+pkgver=0.2.19
 pkgrel=1
 pkgdesc="Implementation of the Language Server Protocol for SQL"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 optdepends=('mysql' 'sqlite3' 'postgresql')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f78f3c21fc03995731d5c035edff5f6c508864b3280d8d1e9665f27d1cc973dc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('436296c598608add44f27d43a93a9a2435a70a2ffb9efd074c146d0b5110e871')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -37,7 +37,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dvm 755 sqls -t "$pkgdir/usr/bin/"
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm 755 sqls -t "$pkgdir/usr/bin/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
