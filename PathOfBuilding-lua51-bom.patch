@@ -1,0 +1,190 @@
+diff --git a/src/Data/Uniques/Special/New.lua b/src/Data/Uniques/Special/New.lua
+index 8074416d..3edbf83e 100644
+--- a/src/Data/Uniques/Special/New.lua
++++ b/src/Data/Uniques/Special/New.lua
+@@ -1,4 +1,4 @@
+-﻿--
++--
+ -- Upcoming uniques will live here until their mods/rolls are finalised
+ --
+ 
+diff --git a/src/Data/Uniques/amulet.lua b/src/Data/Uniques/amulet.lua
+index 5d46c578..0ccec2c9 100644
+--- a/src/Data/Uniques/amulet.lua
++++ b/src/Data/Uniques/amulet.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Amulet
+diff --git a/src/Data/Uniques/axe.lua b/src/Data/Uniques/axe.lua
+index 01a6c586..831b3608 100644
+--- a/src/Data/Uniques/axe.lua
++++ b/src/Data/Uniques/axe.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: One Handed Axe
+diff --git a/src/Data/Uniques/belt.lua b/src/Data/Uniques/belt.lua
+index 6435d772..4646d65b 100644
+--- a/src/Data/Uniques/belt.lua
++++ b/src/Data/Uniques/belt.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Belt
+diff --git a/src/Data/Uniques/body.lua b/src/Data/Uniques/body.lua
+index 1df0a7eb..e85709bb 100644
+--- a/src/Data/Uniques/body.lua
++++ b/src/Data/Uniques/body.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Body: Armour
+diff --git a/src/Data/Uniques/boots.lua b/src/Data/Uniques/boots.lua
+index 8327e7b7..1e057a2a 100644
+--- a/src/Data/Uniques/boots.lua
++++ b/src/Data/Uniques/boots.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Boots: Armour
+diff --git a/src/Data/Uniques/bow.lua b/src/Data/Uniques/bow.lua
+index 788b19ef..944136ad 100644
+--- a/src/Data/Uniques/bow.lua
++++ b/src/Data/Uniques/bow.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Bow
+diff --git a/src/Data/Uniques/claw.lua b/src/Data/Uniques/claw.lua
+index 978884e2..a7d8fc1c 100644
+--- a/src/Data/Uniques/claw.lua
++++ b/src/Data/Uniques/claw.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Claw
+diff --git a/src/Data/Uniques/dagger.lua b/src/Data/Uniques/dagger.lua
+index ab6a15ad..e876ec8b 100644
+--- a/src/Data/Uniques/dagger.lua
++++ b/src/Data/Uniques/dagger.lua
+@@ -1,4 +1,4 @@
+-﻿	-- Item data (c) Grinding Gear Games
++	-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Dagger
+diff --git a/src/Data/Uniques/fishing.lua b/src/Data/Uniques/fishing.lua
+index 23920e8d..708d46d9 100644
+--- a/src/Data/Uniques/fishing.lua
++++ b/src/Data/Uniques/fishing.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Fishing Rod
+diff --git a/src/Data/Uniques/flask.lua b/src/Data/Uniques/flask.lua
+index f51beee3..3feecaf6 100644
+--- a/src/Data/Uniques/flask.lua
++++ b/src/Data/Uniques/flask.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Flask: Life
+diff --git a/src/Data/Uniques/gloves.lua b/src/Data/Uniques/gloves.lua
+index 52dc9862..3e916b6b 100644
+--- a/src/Data/Uniques/gloves.lua
++++ b/src/Data/Uniques/gloves.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Gloves: Armour
+diff --git a/src/Data/Uniques/helmet.lua b/src/Data/Uniques/helmet.lua
+index 1e123521..737384d9 100644
+--- a/src/Data/Uniques/helmet.lua
++++ b/src/Data/Uniques/helmet.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ return {
+ -- Helmet: Armour
+ [[
+diff --git a/src/Data/Uniques/mace.lua b/src/Data/Uniques/mace.lua
+index aaa0a0b0..12e8b8f3 100644
+--- a/src/Data/Uniques/mace.lua
++++ b/src/Data/Uniques/mace.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: One Handed Mace
+diff --git a/src/Data/Uniques/quiver.lua b/src/Data/Uniques/quiver.lua
+index 6c35e00d..9b4f6c4d 100644
+--- a/src/Data/Uniques/quiver.lua
++++ b/src/Data/Uniques/quiver.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Quiver
+diff --git a/src/Data/Uniques/ring.lua b/src/Data/Uniques/ring.lua
+index 93a3514f..4da3560d 100644
+--- a/src/Data/Uniques/ring.lua
++++ b/src/Data/Uniques/ring.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Ring
+diff --git a/src/Data/Uniques/shield.lua b/src/Data/Uniques/shield.lua
+index 0fd00047..54861c3a 100644
+--- a/src/Data/Uniques/shield.lua
++++ b/src/Data/Uniques/shield.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Shield: Armour
+diff --git a/src/Data/Uniques/staff.lua b/src/Data/Uniques/staff.lua
+index c715a87b..b2560387 100644
+--- a/src/Data/Uniques/staff.lua
++++ b/src/Data/Uniques/staff.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Staff
+diff --git a/src/Data/Uniques/wand.lua b/src/Data/Uniques/wand.lua
+index abc1ecee..db47a675 100644
+--- a/src/Data/Uniques/wand.lua
++++ b/src/Data/Uniques/wand.lua
+@@ -1,4 +1,4 @@
+-﻿-- Item data (c) Grinding Gear Games
++-- Item data (c) Grinding Gear Games
+ 
+ return {
+ -- Weapon: Wand

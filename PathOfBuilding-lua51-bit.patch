@@ -1,0 +1,13 @@
+diff -ru a/src/Modules/Common.lua b/src/Modules/Common.lua
+--- a/src/Modules/Common.lua	2021-02-06 15:09:21.799784281 +0100
++++ b/src/Modules/Common.lua	2021-02-06 11:37:28.998539560 +0100
+@@ -3,6 +3,9 @@
+ -- Module: Common
+ -- Libraries, functions and classes used by various modules.
+ --
++
++bit = require("bit")
++
+ local pairs = pairs
+ local ipairs = ipairs
+ local type = type

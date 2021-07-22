@@ -5,7 +5,8 @@
 !PathOfBuilding-force-disable-devmode.patch
 !PathOfBuilding-logo.png
 !PathOfBuilding-logo.svg
-!PathOfBuilding-lua51.patch
+!PathOfBuilding-lua51-bit.patch
+!PathOfBuilding-lua51-bom.patch
 !PathOfBuilding.sh
 !PathOfBuildingCommunity.desktop
 !lzip-linux.patch
