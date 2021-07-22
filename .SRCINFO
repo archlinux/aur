@@ -1,0 +1,13 @@
+pkgbase = git-absorb-bin
+	pkgdesc = git commit --fixup, but automatic
+	pkgver = 0.6.6
+	pkgrel = 0
+	url = https://github.com/tummychow/git-absorb
+	arch = x86_64
+	license = BSD-3
+	provides = git-absorb
+	conflicts = git-absorb
+	source = https://github.com/tummychow/git-absorb/releases/download/0.6.6/git-absorb-linux-x86_64
+	sha256sums = e54bca912c7447c11e346f408e7032d46ed418a7fac62247e63a60254ac71959
+
+pkgname = git-absorb-bin
