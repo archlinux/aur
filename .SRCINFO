@@ -1,6 +1,6 @@
 pkgbase = kweathercore
 	pkgdesc = Library to facilitate retrieval of weather information including forecasts and alerts
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/kweathercore
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = kweathercore
 	makedepends = qt5-tools
 	depends = ki18n
 	depends = qt5-location
-	source = git+https://invent.kde.org/libraries/kweathercore.git#commit=4690eee9843f62b69b5225eaefac4b30417c161f
+	source = git+https://invent.kde.org/libraries/kweathercore.git#commit=d47574f8324d1f94f460ccea4c29faee863cd083
 	sha256sums = SKIP
 
 pkgname = kweathercore
