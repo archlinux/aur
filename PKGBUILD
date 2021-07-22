@@ -2,11 +2,11 @@
 
 pkgname=appimage-installer-bin
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AppImage install tool."
 arch=('x86_64')
-url="https://bbs.deepin.org/zh/post/220754"
-license=('unknow')
+url="https://gitee.com/deepin-opensource/appimage-installer"
+license=('GPLv3')
 _pkgname=${pkgname%-bin}
 provides=(${pkgname} ${_pkgname})
 conflicts=(${pkgname} ${_pkgname})
@@ -16,12 +16,8 @@ makedepends=()
 backup=()
 options=('!strip')
 # install=${pkgname}.install
-source=("${_pkgname}_${pkgver}-beta_amd64.deb.zip::https://storage.deepin.org/thread/202105241338219843_appimage-installer_2.0-beta_amd64.deb.zip")
-sha256sums=('b0632622a0cc042dc94a32e32fc71b4090dd2cd598863d1f8555b8ffa0034f96')
-
-prepare() {
-    bsdtar -xf "${srcdir}/${_pkgname}_${pkgver}-beta_amd64.deb" -C ${srcdir}
-}
+source=("${_pkgname}_${pkgver}-beta_amd64.deb::https://gitee.com/deepin-opensource/appimage-installer/attach_files/774786/download/appimage-installer_2.0-beta_amd64.deb")
+sha256sums=('155f4795c0489a662546884e1f91204622c90796165795bb83744f4152f0e0e7')
 
 package() {
     tar xf ${srcdir}/data.tar.xz -C ${pkgdir}
