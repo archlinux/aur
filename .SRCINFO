@@ -1,0 +1,20 @@
+pkgbase = appimage-installer-bin
+	pkgdesc = AppImage install tool.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://bbs.deepin.org/zh/post/220754
+	arch = x86_64
+	license = unknow
+	depends = dtkwidget
+	depends = dtkgui
+	depends = dtkcore
+	depends = dtkcommon
+	provides = appimage-installer-bin
+	provides = appimage-installer
+	conflicts = appimage-installer-bin
+	conflicts = appimage-installer
+	options = !strip
+	source = appimage-installer_2.0-beta_amd64.deb.zip::https://storage.deepin.org/thread/202105241338219843_appimage-installer_2.0-beta_amd64.deb.zip
+	sha256sums = b0632622a0cc042dc94a32e32fc71b4090dd2cd598863d1f8555b8ffa0034f96
+
+pkgname = appimage-installer-bin
