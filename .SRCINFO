@@ -1,0 +1,14 @@
+pkgbase = arch-kde-theme-git
+	pkgdesc = Elegant theme for KDE Plasma with dark and light mode
+	pkgver = r18.e75195b
+	pkgrel = 1
+	url = https://github.com/rkstrdee7/Arch
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum
+	source = git+https://github.com/rkstrdee7/Arch.git
+	sha256sums = SKIP
+
+pkgname = arch-kde-theme-git
