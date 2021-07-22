@@ -2,7 +2,7 @@
 
 pkgbase=goland-eap
 pkgname=(goland-eap goland-eap-jre)
-#rlsver=2021.1
+rlsver=2021.2
 pkgver=212.4746.57
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
