@@ -2,20 +2,20 @@
 # Co-Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=bisq
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
 url="https://bisq.network"
 license=('AGPL3')
-depends=('jdk-openjdk')
+depends=('jdk11-openjdk')
 makedepends=('jdk11-openjdk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
 	"https://github.com/bisq-network/bisq/releases/download/v${pkgver}/bisq-${pkgver}.tar.gz.asc"
 	"bisq.desktop")
-sha256sums=('26d0b127ecd77109920a595ef5a0e4577fb04227949f80a5dedbde15fd98ba6c'
-            'd39838d93d4b0b3bd266493425370902c020b377cd1a27f0d71e176c10d9d310'
-            '20d24db040983a6139e3300db7824b08b3e106150cb155480409b1ab7de68d17')
+sha256sums=('39b010d9212e41d5127e577c36a56f075709bab2bbeb9af0b987111518eb9915'
+            'SKIP'
+            '687d643fbe84660c3ebfe6270de98214f2e3ea791cb1d07d96d7ed889d61d406')
 validpgpkeys=('CB36D7D2EBB2E35D9B75500BCD5DC1C529CDFD3B') # Christoph Atteneder
 
 _binname=Bisq
