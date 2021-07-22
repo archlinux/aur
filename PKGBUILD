@@ -17,7 +17,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
-  _version=$(python setup.py -V)
+  _version=$(python setup.py -V 2>&-)
   ( set -o pipefail
   git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "%s.r%s.%s" "${_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
