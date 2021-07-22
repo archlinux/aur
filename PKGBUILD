@@ -2,7 +2,7 @@
 
 pkgname=spiderfoot
 pkgver=3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target."
 arch=('any')
 url="http://www.spiderfoot.net/"
@@ -13,7 +13,7 @@ depends=( 'python' 'python-adblockparser' 'python-dnspython' 'python-exifread'
           'python-beautifulsoup4' 'python-netaddr' 'python-pysocks'
           'python-requests' 'python-ipwhois' 'python-ipaddress' 'python-pygexf'
           'python-ipaddress' 'python-phonenumbers' 'python-pypdf2' 'python-docx'
-          'python-whois' 'python-secure' 'python-pyopenssl' 'python-pptx'
+          'python-whois' 'python-secure02' 'python-pyopenssl' 'python-pptx'
           'python-networkx' 'python-cryptography' 'python-publicsuffixlist'
 )	   
 	
