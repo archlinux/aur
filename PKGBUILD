@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.691
-pkgrel=2
+pkgver=mainline.0.695
+pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
 url="https://yuzu-emu.org/"
@@ -57,7 +57,7 @@ md5sums=(
 	'37258482c9b23e938c13c3716fb8f2b6'
 	'dd2afd63ac4448dffd380cfba6acc57c'
 	'56f414ef28a7e880a16ea6b114cad35b'
-	'c848f6d8dfe32829669984f8af54b4e5'
+	'd84ac7b61105c2a1ca667706516ba9b9'
 	'374366419df7293779295a6c800b99b5'
 	'5d83e211eb2ce207e5a4c739772a6b10'
 	'7654bb89d5febcdfcee9d3b88bdec4c3'
@@ -94,13 +94,13 @@ build() {
 		-DTITLE_BAR_FORMAT_IDLE="yuzu {}" \
 		-DTITLE_BAR_FORMAT_RUNNING="yuzu {} | {}" \
 		-DUSE_DISCORD_PRESENCE=ON \
-		-DYUZU_ALLOW_SYSTEM_SDL2=ON \
 		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 		-DYUZU_USE_BUNDLED_BOOST=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_BUNDLED_LIBUSB=OFF \
 		-DYUZU_USE_BUNDLED_QT=OFF \
 		-DYUZU_USE_BUNDLED_SDL2=OFF \
+		-DYUZU_USE_EXTERNAL_SDL2=OFF \
 		-DYUZU_USE_QT_WEB_ENGINE=ON \
 		-Wno-dev
 	cmake --build build

@@ -1,17 +1,17 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -395,7 +395,7 @@ if (ENABLE_SDL2)
-         target_include_directories(SDL2 INTERFACE "${SDL2_INCLUDE_DIR}")
+@@ -396,7 +396,7 @@ if (ENABLE_SDL2)
+     elseif (YUZU_USE_EXTERNAL_SDL2)
+         message(STATUS "Using SDL2 from externals.")
      else()
-         if (YUZU_ALLOW_SYSTEM_SDL2)
--            find_package(SDL2 2.0.15 QUIET)
-+            find_package(SDL2 2.0.14 REQUIRED)
+-        find_package(SDL2 2.0.15 REQUIRED)
++        find_package(SDL2 2.0.14 REQUIRED)
  
-             if (SDL2_FOUND)
-                 # Some installations don't set SDL2_LIBRARIES
+         # Some installations don't set SDL2_LIBRARIES
+         if("${SDL2_LIBRARIES}" STREQUAL "")
 --- a/src/input_common/sdl/sdl_impl.cpp
 +++ b/src/input_common/sdl/sdl_impl.cpp
-@@ -823,7 +823,6 @@ SDLState::SDLState() {
+@@ -870,7 +870,6 @@ SDLState::SDLState() {
  
      // Enable HIDAPI rumble. This prevents SDL from disabling motion on PS4 and PS5 controllers
      SDL_SetHint(SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE, "1");
