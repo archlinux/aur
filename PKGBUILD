@@ -42,7 +42,6 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         vendor-prefs.js
         distribution.ini
         mozconfig.cfg
-        thunderbird-78.5-rust-1.48.patch
         unity-menubar.patch)
 md5sums=('SKIP'
          'SKIP'
@@ -50,7 +49,6 @@ md5sums=('SKIP'
          '7c04ba88f1078b224c7c1483b5f0fa78'
          '1ef0f094e533a68399b96dc8080c6a6e'
          '2f911c142fc7eb0b76a6af1fad0438d6'
-         '791e650139aad8786ecae7c006c3e4b7'
          'e9e1d302d2be62192e96944610f2e14a')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>

@@ -87,7 +87,6 @@ pkgbase = thunderbird-appmenu
 	source = vendor-prefs.js
 	source = distribution.ini
 	source = mozconfig.cfg
-	source = thunderbird-78.5-rust-1.48.patch
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	md5sums = SKIP
@@ -96,7 +95,6 @@ pkgbase = thunderbird-appmenu
 	md5sums = 7c04ba88f1078b224c7c1483b5f0fa78
 	md5sums = 1ef0f094e533a68399b96dc8080c6a6e
 	md5sums = 2f911c142fc7eb0b76a6af1fad0438d6
-	md5sums = 791e650139aad8786ecae7c006c3e4b7
 	md5sums = e9e1d302d2be62192e96944610f2e14a
 
 pkgname = thunderbird-appmenu
