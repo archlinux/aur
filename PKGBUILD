@@ -18,7 +18,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         "${pkgbase}.preset"
         # linux package install directives for pacman
         'linux.install'
-	# patch from our graysky archlinux collegue
+	# patch from our graysky archlinux colleague
 	'https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch'
 )
 sha256sums=('SKIP'
