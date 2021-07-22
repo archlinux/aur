@@ -1,7 +1,7 @@
 pkgbase = qsstv
 	pkgdesc = Radio Slow-Scan TV for qt
-	pkgver = 9.5.4
-	pkgrel = 2
+	pkgver = 9.5.5
+	pkgrel = 1
 	url = http://users.telenet.be/on4qz/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = qsstv
 	depends = fftw
 	depends = openjpeg2
 	depends = alsa-lib
-	source = http://users.telenet.be/on4qz/qsstv/downloads/qsstv_9.5.4.tar.gz
+	source = http://users.telenet.be/on4qz/qsstv/downloads/qsstv_9.5.5.tar.gz
 	source = qsstv.desktop
-	sha512sums = ff6e8053dfe650df3612b05fbd0f75770397ce5584a7dde3ae7d8c7433487c8c11fe5e55dc97e3107427ea14e174c750f5c7b1103d3d59242513f8b07f0a0eb9
+	sha512sums = 04d66b28ae7f987b823bb150c399d36bd0eb9433d44a23d22436b0a40f451c7985ecf452003224e292da86130904b1153a37d683b9b6f2b0d46e67c7b2802129
 	sha512sums = 793be2e500824966d4288fff059fe5c869ec547ff5f4e32fbec02eeae1b12d6aa4e5ba34a9ce590bb166b73086291bfa3e0c2d76fb7c03187f656e8955acef4c
 
 pkgname = qsstv
