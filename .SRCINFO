@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-strace
 	pkgdesc = A diagnostic, debugging and instructional userspace tracer (Android, aarch64)
-	pkgver = 5.12
+	pkgver = 5.13
 	pkgrel = 2
 	url = https://strace.io/
 	arch = any
@@ -8,11 +8,12 @@ pkgbase = android-aarch64-strace
 	makedepends = android-ndk
 	options = !buildflags
 	options = !strip
-	source = https://github.com/strace/strace/releases/download/v5.12/strace-5.12.tar.xz
-	source = https://github.com/strace/strace/releases/download/v5.12/strace-5.12.tar.xz.asc
+	source = https://github.com/strace/strace/releases/download/v5.13/strace-5.13.tar.xz
+	source = https://github.com/strace/strace/releases/download/v5.13/strace-5.13.tar.xz.asc
+	source = issue189.patch
 	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
-	sha256sums = 29171edf9d252f89c988a4c340dfdec662f458cb8c63d85431d64bab5911e7c4
+	sha256sums = 5acc34888b9d510ad6ac915d4a8df08f51cf1ae920ea24649f6a4bb984d0b656
 	sha256sums = SKIP
+	sha256sums = 2faa94e2c4205b698740868d0de39a060f2e8389e37732a5731cd008edb08dd0
 
 pkgname = android-aarch64-strace
-
