@@ -1,0 +1,5 @@
+BCM43430A1_*.hcd
+brcmfmac43430-sdio_*.txt
+src
+pkg
+*.zst
