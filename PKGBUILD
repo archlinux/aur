@@ -4,7 +4,7 @@ pkgname=stumpwm-ql
 _stumpver=20.11
 _qlver=2021_06_30
 pkgver="${_stumpver}_${_qlver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Stumpwm tiling window manager built with dependencies from quicklisp'
 arch=('x86_64')
 url='https://stumpwm.github.io'
@@ -15,7 +15,7 @@ conflicts=('stumpwm' 'stumpwm-git')
 source=("$pkgname-$_stumpver.tar.gz::https://github.com/stumpwm/stumpwm/archive/refs/tags/$_stumpver.tar.gz"
         stumpwm.desktop load-ql-systems.patch)
 sha256sums=('8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c'
-            'a297e9ded7854f06131b2440f46b5d903933e81aeabd31cb834e01672c6b2ac4'
+            'bbcf4930a609e7073b1fec9332d1bf314b94ebd8315c227c75f8b818ecdc666d'
             '5105db78328aed70e8d071ff02f35d10caa745803df8e71074a444cb7c6afefc')
 options=('!strip' '!makeflags')
 

@@ -4,5 +4,4 @@ Encoding=UTF-8
 Type=XSession
 Exec=stumpwm
 TryExec=stumpwm
-Name=StumpWM
 Comment=Stump window manager
