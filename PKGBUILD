@@ -1,7 +1,7 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=eww-git
 _pkgname=eww
-pkgver=cddcea7_2021.02.10_
+pkgver=4f59424_2021.07.15_
 pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
@@ -10,7 +10,7 @@ url="https://github.com/elkowar/eww"
 license=('MIT')
 groups=()
 depends=("gtk3")
-makedepends=("cargo" "git")
+makedepends=("rustup" "git")
 checkdepends=()
 optdepends=()
 provides=("eww")
@@ -34,6 +34,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
+    rustup toolchain install nightly
     cargo +nightly build --release
 }
 
