@@ -1,15 +1,14 @@
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -81,12 +81,6 @@ if(ENABLE_CUBEB)
-     add_subdirectory(cubeb EXCLUDE_FROM_ALL)
- endif()
+@@ -83,8 +83,9 @@ endif()
  
--# DiscordRPC
--if (USE_DISCORD_PRESENCE)
+ # DiscordRPC
+ if (USE_DISCORD_PRESENCE)
 -    add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
 -    target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
--endif()
--
- # Sirit
- add_subdirectory(sirit)
++    find_library(DISCORD_RPC_LIBRARY discord-rpc REQUIRED)
++    add_library(discord-rpc SHARED IMPORTED GLOBAL)
++    set_property(TARGET discord-rpc PROPERTY IMPORTED_LOCATION "${DISCORD_RPC_LIBRARY}")
+ endif()
  
+ # Sirit
