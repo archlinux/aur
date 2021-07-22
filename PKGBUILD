@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.13.1.zen1
+pkgver=5.13.4.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/dc03dd77c8d33f5a42e39fb893bb0cd26b924d4a/trunk/config"
+  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/eeb8b055a79b6845bf06108bb4698e24ca6175b0/trunk/config"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
 
   "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
@@ -30,9 +30,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 sha256sums=('SKIP'
-            'fbf172cbe6ef4e427037d7430719f52fbe5c9b1bf6d8fde9035850aed9737ac4'
+            '14d04b843107ee08267cf34a2f276357683a2276b86750b8b020ec40f7f99daf'
             'd38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086'
             '5bb7edde1d260b84c3b8557718aa16ccede0ac95976c964a1678ce52f46e4b89'
             '4f1f6b354b230fb3bf7569ac26104de3cdb188cbac79769d59669ff39e91faf8'
