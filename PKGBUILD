@@ -22,7 +22,7 @@ depends=(
   python-scikit-learn
   python-scipy
   python-spacy
-  python-torchvision-cuda
+  python-torchvision
 )
 makedepends=(
   python-setuptools
