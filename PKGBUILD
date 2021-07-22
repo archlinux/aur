@@ -2,7 +2,7 @@
 # Contributor: Wyegu <bsdazs17 at gmail dot com>
 # Contributor: Firmicus <firmicus at gmx dot net>
 pkgname=ttf-sil-scheherazade
-pkgver=3.100
+pkgver=3.200
 pkgrel=1
 pkgdesc="An Arabic Naskh-style Unicode typeface"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://software.sil.org/scheherazade/"
 license=('OFL')
 conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/scheherazade/ScheherazadeNew-$pkgver.zip")
-sha256sums=('3a2adec63d337dd3a409479a6a8d71754d87754564c7abfbc6fa6228cf0ced23')
+sha256sums=('3512f3f95c818d09501e37c5973f498324346e2d1450d41aaa95d106d779b7ca')
 
 package() {
 	cd "$srcdir/ScheherazadeNew-$pkgver"
