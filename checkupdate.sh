@@ -1,15 +1,17 @@
 #!/bin/bash
-readarray -t DOPPLERTEXT <<<"$(doppler | head -2 | sed -r 's/[[:cntrl:]]\[[0-9]{1,3}m//g')"
-TO_CHECK="An update is available."
+read -r DOPPLERTEXT <<<"$(doppler --version | sed 's/v//g')"
+read -r GITHUBTEXT <<<"$(curl -s https://github.com/DopplerHQ/cli/releases/latest | grep -Eo '[0-9]{1,2}\.[0-9]{1,3}\.[0-9]{1,3}')"
+# yes we're relying on the redirect
 
-if [ "${DOPPLERTEXT[0]}" == "$TO_CHECK" ]; then
-    NEWVERSION="$(echo "${DOPPLERTEXT[1]}" | grep -Eo '[0-9]\.[0-9]{1,2,3}\.[0-9]{1,2,3}')"
-    if [[ $* == *--dry-run* ]]; then
-        echo "New version available: $NEWVERSION"
-    else
-        sed -i "s/pkgver=.*/pkgver=$NEWVERSION/g" PKGBUILD
-        echo "Updated version to $NEWVERSION"
-    fi
-else
-    echo "No update available"
+if [ "$DOPPLERTEXT" == "$GITHUBTEXT" ]; then
+	echo "No update available"
+	exit 0
 fi
+
+echo "New version available: $GITHUBTEXT"
+if [[ $* == *--dry-run* ]]; then
+	exit 0
+fi
+
+sed -i "s/pkgver=.*/pkgver=$GITHUBTEXT/g" PKGBUILD
+echo "Updated version to $GITHUBTEXT"
