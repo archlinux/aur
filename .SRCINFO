@@ -1,15 +1,15 @@
 pkgbase = liquibase
 	pkgdesc = VCS source control tailored for database management
-	pkgver = 4.4.1
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = http://www.liquibase.org/
 	arch = any
 	license = Apache
 	depends = java-environment
 	options = !strip
-	source = https://github.com/liquibase/liquibase/releases/download/v4.4.1/liquibase-4.4.1.tar.gz
+	source = https://github.com/liquibase/liquibase/releases/download/v4.4.2/liquibase-4.4.2.tar.gz
 	source = liquibase.profile
-	sha256sums = d98fde44892c92e93eec60bf6ebd7bf17cd64e73f88974857dae726cb8efa830
+	sha256sums = a8e28ccaa7f7297ee95a3b2556070f8869538b0bcc64bbe6ec389ab6648b7755
 	sha256sums = 7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0
 
 pkgname = liquibase
