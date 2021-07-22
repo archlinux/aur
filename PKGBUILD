@@ -8,7 +8,7 @@ pkgdesc='A new RAD tool for Gtk 4 and 3 with a clear MVC design and data model f
 url=https://gitlab.gnome.org/jpu/cambalache
 arch=(any)
 license=(GPL2)
-depends+=('python>=3' 'glib2' 'gtk3' 'python-lxml')
+depends+=('python-gobject' 'glib2' 'gtk3' 'python-lxml')
 makedepends+=(git 'meson>=0.50.0')
 conflicts=($_pkgname)
 provides=($_pkgname=$pkgver)
