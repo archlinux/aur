@@ -1,3 +1,8 @@
+4.8.0 (2021-07-21 17:36:28)
+
+    Initial support for the new DYLD shared cache of macOS Monterey,
+    Switch to Python 3.
+
 4.7.7 (2021-06-09 17:58:39)
 
     Faster drawing which improves scrolling in bug documents,
