@@ -1,6 +1,6 @@
 # Maintainer: Thomas P. <tpxp@live.fr>
 pkgname=tomboy-ng-bin
-pkgver=0.31
+pkgver=0.33
 _srcrel=0
 pkgrel=1
 pkgdesc="A complete rewriting of the Tomboy note taking app. GTK2 version"
@@ -14,7 +14,7 @@ source=(
 	"https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}-${_srcrel}_amd64.deb"
 )
 sha512sums=(
-	3301565a089e575d42936b506d77ab9e222d5d2d3d7ac417e70c72a6a86541fd08928fc8e41af13b1cc469e012f6eaccd90a552ad23ad8d17c4c7340fe14af8c
+	094b6937a15f8e94bb57b2b02c8980f29386eea9f2f64040fb2a0370448378288d489327ec4728da5d094ea739c0fc5f3dd61fe88c3546d0fa6b197cdf3817fa
 )
 
 package() {
