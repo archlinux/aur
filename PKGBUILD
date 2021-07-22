@@ -14,6 +14,7 @@ validpgpkeys=('DCAA15007BED9DE690CD9523378B845402277962')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CXXFLAGS+=" -std=gnu++14"
   ./configure \
     --prefix=/usr \
     --disable-static \
