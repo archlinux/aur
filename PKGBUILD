@@ -1,62 +1,51 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Merged with official ABS mariadb PKGBUILD by João, 2021/07/22 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgbase=mariadb-git
-_pkgbase=mariadb
-pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
-pkgdesc='Fast SQL database server, derived from MySQL (GIT version)'
-pkgver=10.4.2.r212.g4932aba9217
-pkgrel=2
-arch=('x86_64')
-license=('GPL')
+pkgname=(mariadb-libs-git mariadb-clients-git mariadb-git mytop-git)
+pkgdesc='Fast SQL database server, derived from MySQL'
+pkgver=10.7_r193391.gb857fde69ab
+pkgrel=1
+arch=($CARCH)
+license=(GPL)
 url='https://mariadb.org/'
-makedepends=('boost' 'bzip2' 'cmake' 'jemalloc' 'libaio' 'libxml2' 'lz4' 'lzo'
-                 'openssl' 'systemd' 'zlib' 'zstd' 'git')
-source=("$_pkgbase::git://github.com/MariaDB/server.git"        
-        '0001-arch-specific.patch'
-        '0002-systemd-sysusers-tmpfiles.patch'
-        '0004-do-not-break-main-configuration-with-instantiated-one.patch'
-        '0005-fix-galera_recovery-with-fs.protected_regular-enabled.patch')
+makedepends=(git boost bzip2 cmake jemalloc libaio libxcrypt libxml2 lz4 lzo openssl systemd zlib zstd curl krb5 cracklib)
+conflicts=(${pkgbase%-git})
+provides=(${pkgbase%-git})
+source=("git+https://github.com/MariaDB/server.git"
+		0001-arch-specific.patch)
 sha256sums=('SKIP'
-            '5a443a403821931ce35759e9583d23cd809b3b5a5df5b8293ac8e33b9c0cbc0f'
-            '1cd009b473d5965c7cbe6d48fff272030a2ccdd9c7e67b4f837d03252786a09a'
-            'd12806e4f90cc0fc081205dd4c0a5e0e7c455844f04276811b61b57fd24f5545'
-            '66e0acac7436fd8925710ef5cc66ba1a8f63a385ce374f01ae83096cc33d97a0')
+            '3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460')
+
+pkgver() {
+  cd server
+  _ver="$(grep -m1 '^Source:' debian/control | cut -d '-' -f2 | tr - .)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd $_pkgbase/
+  cd server/
 
   # Arch Linux specific patches:
   #  * enable PrivateTmp for a little bit more security
   #  * force preloading jemalloc for memory management
-  #  * fix path to our config
+  #  * make systemd-tmpfiles create MYSQL_DATADIR
   patch -Np1 < ../0001-arch-specific.patch
-
-  # MDEV-17028 Fix glitches with systemd sysusers and tmpfiles:
-  #  * Use descriptive file names for sysusers and tmpfiles configuration
-  #  * Make systemd-tmpfiles create MYSQL_DATADIR
-  # https://github.com/MariaDB/server/pull/530
-  patch -Np1 < ../0002-systemd-sysusers-tmpfiles.patch
-
-  # do not break main configuration with instantiated one
-  # https://github.com/MariaDB/server/pull/1095
-  patch -Np1 < ../0004-do-not-break-main-configuration-with-instantiated-one.patch
-
-  # fix galera_recovery with fs.protected_regular enabled
-  # https://github.com/MariaDB/server/pull/1137
-  patch -Np1 < ../0005-fix-galera_recovery-with-fs.protected_regular-enabled.patch
 }
 
 build() {
   local _cmake_options=(
     # build options
+    -DCOMPILATION_COMMENT="Arch Linux"
     -DCMAKE_BUILD_TYPE=RelWithDebInfo
     -Wno-dev
 
     # file paths
     # /etc
-    -DINSTALL_SYSCONFDIR=/etc/mysql
-    -DINSTALL_SYSCONF2DIR=/etc/mysql/my.cnf.d
+    -DINSTALL_SYSCONFDIR=/etc
+    -DINSTALL_SYSCONF2DIR=/etc/my.cnf.d
     # /run
     -DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock
     # /usr
@@ -103,7 +92,7 @@ build() {
   mkdir build
   cd build
 
-  cmake ../"$_pkgbase" "${_cmake_options[@]}"
+  cmake ../server "${_cmake_options[@]}"
 
   make
 }
@@ -116,11 +105,12 @@ check() {
 }
 
 package_mariadb-libs-git() {
-  pkgdesc='MariaDB libraries (GIT version)'
-  depends=('bzip2' 'libaio' 'lz4' 'lzo' 'openssl' 'xz' 'zlib' 'krb5')
-  conflicts=('libmysqlclient' 'libmariadbclient' 'mariadb-connector-c' 'mariadb-libs')
-  provides=('libmariadbclient' 'mariadb-connector-c' 'mariadb-libs')
-  replaces=('libmariadbclient')
+  pkgdesc='MariaDB libraries'
+  depends=(bzip2 libaio libxcrypt libcrypt.so lz4 lzo openssl xz zlib)
+  optdepends=('krb5: for gssapi authentication')
+  conflicts=(mariadb-libs libmysqlclient{,-git} libmariadbclient{,-git} mariadb-connector-c{,-git})
+  provides=(mariadb-libs libmariadbclient{,-git} mariadb-connector-c{,-git} libmariadb.so libmariadbd.so)
+  replaces=(libmariadbclient{,-git})
 
   cd build
 
@@ -128,24 +118,27 @@ package_mariadb-libs-git() {
     make -C "$dir" DESTDIR="$pkgdir" install
   done
 
+  ln -s mariadb_config "$pkgdir"/usr/bin/mariadb-config
   ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/"$_pkgbase"/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
+  install -D -m0644 "$srcdir"/server/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
 
   install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
-  install -D -m0644 "$srcdir"/"$_pkgbase"/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
+  install -D -m0644 "$srcdir"/server/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
 
   cd "$pkgdir"
 
   # remove static libraries
   rm usr/lib/*.a
-  rm usr/lib/mysql/plugin/client_ed25519.so
+
+  # remove man pages
+  rm -r usr/share/man
 }
 
 package_mariadb-clients-git() {
   pkgdesc='MariaDB client tools'
-  depends=('mariadb-libs-git' 'jemalloc')
-  conflicts=('mysql-clients' 'mariadb-clients')
-  provides=("mysql-clients=${pkgver}" 'mariadb-clients')
+  depends=(mariadb-libs=${pkgver} jemalloc)
+  conflicts=(mysql-clients{,-git})
+  provides=(mysql-clients=$pkgver)
 
   cd build
 
@@ -153,24 +146,30 @@ package_mariadb-clients-git() {
 
   # install man pages
   for man in mysql mysql_plugin mysql_upgrade mysqladmin mysqlbinlog mysqlcheck mysqldump mysqlimport mysqlshow mysqlslap mysqltest; do
-    install -D -m0644 "$srcdir"/"$_pkgbase"/man/"$man.1" "$pkgdir"/usr/share/man/man1/"$man.1"
+    install -D -m0644 "$srcdir"/server/man/"$man.1" "$pkgdir"/usr/share/man/man1/"$man.1"
   done
 }
 
 package_mariadb-git() {
   pkgdesc='Fast SQL database server, derived from MySQL'
-  backup=('etc/mysql/my.cnf'
-          'etc/mysql/my.cnf.d/client.cnf'
-          'etc/mysql/my.cnf.d/enable_encryption.preset'
-          'etc/mysql/my.cnf.d/mysql-clients.cnf'
-          'etc/mysql/my.cnf.d/server.cnf')
+  backup=('etc/my.cnf'
+          'etc/my.cnf.d/client.cnf'
+          'etc/my.cnf.d/enable_encryption.preset'
+          'etc/my.cnf.d/mysql-clients.cnf'
+          'etc/my.cnf.d/server.cnf'
+          'etc/my.cnf.d/s3.cnf'
+          'etc/my.cnf.d/spider.cnf'
+          'etc/security/user_map.conf')
   install=mariadb.install
-  depends=("mariadb-clients-git" 'inetutils' 'systemd-libs' 'libxml2' 'zstd' 'python')
-  optdepends=('galera: for MariaDB cluster with Galera WSREP'
-              'perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission')
-  conflicts=('mysql' 'mariadb')
-  provides=("mysql=$pkgver" 'mariadb')
-  options=('emptydirs')
+  depends=(mariadb-clients=${pkgver} systemd-libs libxml2 zstd)
+  optdepends=('cracklib: for cracklib plugin'
+              'curl: for ha_s3 plugin'
+              'galera: for MariaDB cluster with Galera WSREP'
+              'python-mysqlclient: for myrocks_hotbackup'
+              'perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission')
+  conflicts=(mysql{,-git})
+  provides=(mysql=$pkgver)
+  options=(emptydirs)
 
   cd build
 
@@ -179,13 +178,9 @@ package_mariadb-git() {
   cd "$pkgdir"
 
   # no SysV init, please!
-  rm -r etc/mysql/{init.d,logrotate.d}
+  rm -r etc/logrotate.d
   rm usr/bin/rcmysql
   rm usr/share/mysql/{binary-configure,mysql{,d_multi}.server}
-
-  # link service files with old name for compatibility
-  ln -s mariadb.service usr/lib/systemd/system/mysqld.service
-  ln -s mariadb@.service usr/lib/systemd/system/mysqld@.service
 
   # move to proper licenses directories
   install -d usr/share/licenses/mariadb
@@ -194,39 +189,40 @@ package_mariadb-git() {
   # move it where one might look for it
   mv usr/share/{groonga{,-normalizer-mysql},doc/mariadb/}
 
+  # move to pam directories
+  install -d {etc,usr/lib}/security
+  mv usr/share/user_map.conf etc/security/
+  mv usr/share/pam_user_map.so usr/lib/security/
+
   # already installed to real systemd unit directory or useless
   rm -r usr/share/mysql/systemd/
   rm -r usr/lib/systemd/system/mariadb@bootstrap.service.d
 
   # provided by mariadb-libs
-  rm usr/bin/mariadb_config
-  rm usr/bin/mysql_config
+  rm usr/bin/{mariadb{_,-},mysql_}config
   rm -r usr/include/
   rm usr/share/man/man1/mysql_config.1
-  rm -r usr/share/{aclocal,pkgconfig}
+  rm -r usr/share/aclocal
   rm usr/lib/lib*
-  rm usr/lib/mysql/plugin/{auth_gssapi_client,caching_sha2_password,dialog,mysql_clear_password,sha256_password}.so
-  rm -r usr/lib/pkgconfig/
+  rm -r usr/lib/pkgconfig
+  rm usr/lib/mysql/plugin/{auth_gssapi_client,caching_sha2_password,client_ed25519,dialog,mysql_clear_password,sha256_password}.so
 
   # provided by mariadb-clients
-  rm usr/bin/{mysql,mysql_plugin,mysql_upgrade,mysqladmin,mysqlbinlog,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap,mysqltest}
-  rm usr/share/man/man1/{mysql,mysql_plugin,mysql_upgrade,mysqladmin,mysqlbinlog,mysqlcheck,mysqldump,mysqlimport,mysqlshow,mysqlslap,mysqltest}.1
+  rm usr/bin/mysql{,_plugin,_upgrade,admin,binlog,check,dump,import,show,slap,test}
+  rm usr/bin/mariadb{,-{admin,binlog,check,conv,dump,import,plugin,show,slap,test,upgrade}}
+  rm usr/share/man/man1/mysql{,_plugin,_upgrade,admin,binlog,check,dump,import,show,slap,test}.1
 
   # provided by mytop
   rm usr/bin/mytop
 
   # not needed
-  rm -r usr/{data,mysql-test,sql-bench}
+  rm -r usr/{mysql-test,sql-bench}
   rm usr/share/man/man1/mysql-test-run.pl.1
 }
 
 package_mytop-git() {
   pkgdesc='Top clone for MariaDB'
-  depends=('perl' 'perl-dbd-mysql' 'perl-term-readkey')
-  provides=('mytop')
-  conflicts=('mytop')
+  depends=(perl perl-dbd-mariadb perl-term-readkey)
 
-  cd build
-
-  install -D -m0755 scripts/mytop "$pkgdir"/usr/bin/mytop
+  install -D -m0755 build/scripts/mytop "$pkgdir"/usr/bin/mytop
 }
