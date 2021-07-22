@@ -67,7 +67,7 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.13.1
+pkgver=5.13.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=89c24952adbfa645d9e1a6f12c572929f7e4e3c7
+_arch_config_commit=9d8a37b69aa6ccb0146a984cf76457ac3b9b5179
 _bmqversion=5.13-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v=20210616
@@ -85,18 +85,18 @@ source=(
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/a5b30f8875bb823de46bb8809e6a7932a567d357.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/20d20aa7075d5ca193770b6dbc1c37c09e47455f.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('dc08c82affae0cd7ceac841d568b796fad9b325da0aad046000a08df911b38732da89263f9d2835be8463469e884fff31f1742f7223c602d3e01db826660c7bf'
+b2sums=('325a64af66d0e4390e32c83e60b279745c66cff6f0bf1b0287b1456d7cf5e85444b7f90d19fd08924e3ea652f8743582d21377fa24a794b4b5cd099b68b76ce7'
         'SKIP'
-        'a8dd07fdf11ca3367e70cddc67f6a56df5ec825874650d5ed1d818789a95680d6ded12c12490baedd432f8cc0f749fe69f355628d3b5011a8e7a7028f9ac8886'
+        '135757fad4d5301d665bcda81118b3b2dd855b4732593841ff6f01d175d63632cfd98b215a3117b7c2363be9ebd3966e1ba3c66fdd326ff6a4c43fb56fa3af3b'
         '013be3c3e9b342268359ecbcc10c7b95c7fe3741d2b9058db87da59d40aa9b34db898d31f1f1a0dab80598cab313499d8083ccea141c5200b5593c9d44647de7'
         '8eed6c5ac182266a254ad111389f2236e6664341c56d8e4854e722d7323e526d2caa5e5119060fd3cbc119a0682a7ef47fb8a0000cf83acbdfe3a0d4a5446e5d'
-        'ce0055d3703bdd99d7be8715fc2fd72b708512525ad91f5b851d65179e7b6adce2410923711645e513de9749794b3fdf358149a5f268bbda440e73a944a5ab19')
+        '440f19ee249d5135c39b6a9fcd147275fd5ba14ec35f1ac1939ba6cb6893f782e5885ac5165d9d8df5e2950f009a0f4fe907c54bf4842854a68124e816cfbee4')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
