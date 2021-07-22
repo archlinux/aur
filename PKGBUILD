@@ -1,5 +1,3 @@
-# Maintainer: Steven De Bondt <egnappah at gmail dot com>
-
 pkgbase=linux-slim
 _srcname=linux
 gitver=v5.13.4
@@ -18,8 +16,8 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         "${pkgbase}.preset"
 	# linux package install directives for pacman
 	'linux.install'
-	# patch from our gentoo overlords
-	'5010_enable-cpu-optimizations-universal.patch'
+	# patch from our graysky archlinux colleague
+	'https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -28,7 +26,7 @@ sha256sums=('SKIP'
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
-            #gentoopatch file
+            #grayskypatch
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
            )
 
@@ -57,7 +55,7 @@ prepare() {
   msg2 "Implementing custom kernel patches"
   while read patch; do
    echo "Applying $patch"
-   git apply $patch || echo "ERROR: something went wrong with $patch. Advancing anyway."
+   git apply $patch || exit 2
   done <<< $(ls ../*.patch)
 
 
