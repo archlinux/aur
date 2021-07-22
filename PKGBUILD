@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=qqc2-breeze-style
-pkgver=5.22.2
+pkgver=5.22.3
 pkgrel=1
 pkgdesc="Breeze inspired QQC2 Style"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -9,7 +9,7 @@ url="https://invent.kde.org/plasma/qqc2-breeze-style"
 license=('GPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'kirigami2')
 makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
-source=("git+${url}.git#commit=64bf35d6421c5401e5d5b2a39b3955733f694720")
+source=("git+${url}.git#commit=eb9b7fc0582f5198e7a31b3fec22c05a85e8369e")
 md5sums=('SKIP')
 
 build() {
