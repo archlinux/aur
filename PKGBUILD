@@ -3,7 +3,7 @@
 
 pkgname=jdtextedit
 pkgver=9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced text editor"
 arch=("any")
 url="https://gitlab.com/JakobDev/jdTextEdit"
@@ -19,9 +19,9 @@ depends=("python"
     "python-jdtranslationhelper"
     "python-pyenchant"
     "python-setuptools")
-makedepends=("python-setuptools" "python-sphinx" "gendesk" "gzip")
+makedepends=("python-sphinx" "gendesk" "gzip")
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdTextEdit/-/archive/${pkgver}/jdTextEdit-${pkgver}.tar.gz" "distribution.json")
-sha256sums=("596a4b797877a1790a8e142967b306528ac1ca5c6fa2157da4aab33de939fab0" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
+sha256sums=("3f99bd69b3f2f9296409a08877d25ac6bb0aaa9ce9abc4dbf7bc050d76301b3e" "c0f33924bce00130cd94a64e65b633f2d633482e648388e91159eac33b712c13")
 
 build() {
     cd "jdTextEdit-${pkgver}/doc"
