@@ -1,13 +1,13 @@
-# Maintainer: Ninni <soelder@hotmail.com.com>
+# Maintainer: Ninni <soelder@hotmail.com>
 pkgname=humble-lumpia-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A script for managing installations of Glorious Eggroll's custom proton build "
 arch=("any")
 url="https://github.com/chuck-flowers/humble-lumpia"
 license=("GPL3")
 depends=("sh" "curl" "jq" "python" "vulkan-icd-loader")
-makedepends=("git" "make")
+makedepends=("git" "make" "gzip")
 optdepends=("kdialog: KDE splash dialog support"
             "zenity: GNOME splash dialog support"
             "python-kivy: splash dialog support (big picture mode)"
@@ -28,5 +28,5 @@ md5sums=("SKIP")
 
 package() {
 	cd "humble-lumpia"
-	make PREFIX="$pkgdir/usr" install
+	make DESTDIR="$pkgdir" install
 }
