@@ -13,6 +13,7 @@ pkgbase = river-tag-overlay-git
 	makedepends = pkgconf
 	makedepends = pixman
 	provides = river-tag-overlay
+	conflicts = river-tag-overlay
 	options = !strip
 	source = river-tag-overlay-git::git+https://git.sr.ht/~leon_plickat/river-tag-overlay
 	sha256sums = SKIP

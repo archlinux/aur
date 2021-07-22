@@ -11,6 +11,7 @@ makedepends=('make' 'git' 'pkgconf' 'pixman')
 source=("${pkgname}::git+https://git.sr.ht/~leon_plickat/river-tag-overlay")
 sha256sums=('SKIP')
 provides=("river-tag-overlay")
+conflicts=("river-tag-overlay")
 options=(!strip)
 
 pkgver() {
