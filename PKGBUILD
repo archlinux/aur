@@ -14,11 +14,11 @@ makedepends=('git')
 optdepends=()
 source=(git+https://github.com/roadrunner2/macbook12-spi-driver.git#branch=touchbar-driver-hid-driver
         dkms.conf
-        linux-5.9.patch::https://github.com/PatrickVerner/macbook12-spi-driver/commit/5328c33cf2fc40208811cd6e191890537db6aeb4.diff
-        linux-5.13.patch::https://github.com/PatrickVerner/macbook12-spi-driver/commit/cb139b1f725ef23063c787028bcb8287571cffae.diff)
+        linux-5.9.patch::https://github.com/PatrickVerner/macbook12-spi-driver/commit/5328c33cf2fc40208811cd6e191890537db6aeb4.patch
+        linux-5.13.patch::https://github.com/PatrickVerner/macbook12-spi-driver/commit/cb139b1f725ef23063c787028bcb8287571cffae.patch)
 sha256sums=('SKIP'
             'e42243352d015a78e5d13260361d3052d0b84c4105bcb89191a319f2249cc47b'
-            '79b1782aef96c03d399e3c76617ee80c9df26269e87b0a454f97830581a44539'
+            '119491f0b1e903b2fd7a6d8152d3f82f70d5a294e2740b6478904d7ba92b7c22'
             '78124048bb151f09486df4767ccb3f657a2c19415e642ad1486ee3f640d9fa79')
 
 pkgver() {
