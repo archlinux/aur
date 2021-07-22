@@ -1,5 +1,5 @@
 # Helper make file
-BINARY:=gk6x
+BINARY:=gk6x-bin
 
 all: uninstall install clean
 
