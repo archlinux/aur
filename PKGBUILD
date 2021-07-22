@@ -12,7 +12,7 @@ makedepends=('git' 'npm')
 source=("git+$url.git")
 b2sums=('SKIP')
 
-build() {
+prepare() {
   cd $pkgname
   npm ci
 }
