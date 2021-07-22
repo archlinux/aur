@@ -1,0 +1,13 @@
+pkgbase = genht
+	pkgdesc = a simple generic hash table implementation in C
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = http://www.repo.hu/projects/genht/
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	source = http://www.repo.hu/projects/genht/releases/genht-1.1.2.tar.gz
+	sha256sums = 8d65f72668b61f7444514c784b0c722c15fa34ec8bcba9d3bd0ab2bea5c1f0ed
+
+pkgname = genht
