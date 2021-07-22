@@ -1,75 +1,55 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-regions
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
+pkgver=0.5
 pkgrel=1
 pkgdesc="Astropy affilated package for region handling"
 arch=('i686' 'x86_64')
-url="http://astropy-regions.readthedocs.io/en/latest/"
+url="http://astropy-regions.readthedocs.io"
 license=('BSD')
-makedepends=('cython' 'cython2' 'python-astropy>=1.3' 'python2-astropy>=1.3' 'python-astropy-helpers' 'python2-astropy-helpers' 'python-sphinx-astropy' 'python-shapely')
-checkdepends=('python-pytest-astropy' 'python-astropy-healpix')
+makedepends=('cython' 'python-setuptools-scm' 'python-astropy' 'python-extension-helpers' 'python-sphinx-astropy' 'python-shapely')
+checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d1bb0818478d4eca71abefbdfa6373bc')
+md5sums=('10a6523b329b862bb5c4f8aa6b7b0f1b')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-    sed -i -e '/auto_use/s/True/False/' setup.cfg
-
-    cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
-    msg "Building Python2"
-    cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py build --use-system-libraries --offline
-
     msg "Building Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build --use-system-libraries --offline
+    python setup.py build
 
     msg "Building Docs"
-    python setup.py build_docs
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
 }
 
 check() {
-#   msg "Checking Python3"
-    cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
-
-#   msg "Checking Python2"
-#   cd ${srcdir}/${_pyname}-${pkgver}-py2
-#   python2 setup.py test
-}
-
-package_python2-regions() {
-    depends=('python2>=2.7' 'python2-numpy>=1.9' 'python2-astropy>=1.3')
-    optdepends=('python2-matplotlib>=1.5: Plotting support'
-                'python2-shapely: Managing geometric objects'
-                'python-regions-doc: Documentation for AstroPy Regions'
-                'python2-pytest<3.7: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    pytest "build/lib.linux-${CARCH}-${_pyver}"
 }
 
 package_python-regions() {
-    depends=('python>=3.4' 'python-numpy>=1.9' 'python-astropy>=1.3')
-    optdepends=('python-matplotlib>=1.5: Plotting support'
+    depends=('python>=3.6' 'python-numpy>=1.16' 'python-astropy>=3.2')
+    optdepends=('python-matplotlib>=2.0: Plotting support'
                 'python-shapely: Managing geometric objects'
-                'python-regions-doc: Documentation for AstroPy Regions'
-                'python-pytest-astropy: For testing'
-                'python-astropy<3.2: For testing')
+                'python-regions-doc: Documentation for AstroPy Regions')
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1 --use-system-libraries --offline
+    install -Dm644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
 package_python-regions-doc() {
     pkgdesc="Documentation for AstroPy Regions"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
