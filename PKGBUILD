@@ -4,7 +4,7 @@
 _pkgname=xone
 pkgname=xone-dkms
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 arch=('x86_64')
 url='https://github.com/medusalix/xone'
