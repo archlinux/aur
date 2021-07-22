@@ -4,7 +4,7 @@
 # Contributor : bartus <scilab-aur@bartus.33mail.com>
 
 _pkgname=scilab
-_fragment="#branch=master"
+_fragment="${FRAGMENT:-#branch=master}"
 pkgname=${_pkgname}-git
 pkgver=6.1.0.r10.g8937019ec74
 pkgrel=1
