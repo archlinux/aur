@@ -1,1 +1,2 @@
-u photoprism - "Photoprism Media Server" /var/lib/photoprism
+#Type Name          ID           GECOS                 Home directory       Shell
+u     photoprism    -            "Photoprism"
