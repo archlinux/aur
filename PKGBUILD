@@ -57,8 +57,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-_major=5.12
-pkgver=${_major}.19
+_major=5.13
+pkgver=${_major}.4
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -93,9 +93,9 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '93f98f1fbebd1169c471aa056a618a12710283aeaf630b5e347fb090d0e53a29'
+            '713a7b5b781d115d6579498fd9b3026cd128ba171272a23cece75b0cc0a05988'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
