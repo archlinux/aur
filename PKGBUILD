@@ -12,13 +12,13 @@ depends=('glibc') # not because of compiling, but because of /usr/share/i18n/cha
 makedepends=('git')
 source=("https://download.savannah.gnu.org/releases/m17n/${pkgname_basic}-${pkgver}.tar.gz")
 sha256sums=('657f23835b6655e7a63a362bac66260454ee356da4855eadb9366911d33fdc6d')
-url="http://github.com/sanskrit-coders/m17n-db-indic-aur"
+url="http://github.com/indic-transliteration/m17n-db-indic-aur"
 # license=('custom:OFL')
 arch=(any)
 
 build() {
   rm -rf "$srcdir/m17n-db-indic/"
-  git clone https://github.com/sanskrit-coders/m17n-db-indic.git
+  git clone https://github.com/indic-transliteration/m17n-db-indic.git
 
   cd ${pkgname_basic}-${pkgver}
   ./configure --prefix=/usr
