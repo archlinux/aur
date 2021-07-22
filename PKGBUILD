@@ -11,7 +11,7 @@ optdepends=('doas' 'sudo')
 provides=(liteaur)
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/TechSour12/liteaur/-/archive/v${pkgver}/liteaur-v${pkgver}.tar.gz")
 noextract=()
-md5sums=("d4c30803bc8e423b8185f2c3f717afcb")
+md5sums=("4700db3759d8f6e0f24c7c18dbd570e1")
 validpgpkeys=()
 
 package() {
