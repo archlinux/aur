@@ -2,7 +2,7 @@
 
 pkgname=gepetto-viewer
 pkgver=4.12.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
 url="https://github.com/gepetto/$pkgname"

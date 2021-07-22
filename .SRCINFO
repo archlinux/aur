@@ -1,7 +1,7 @@
 pkgbase = gepetto-viewer
 	pkgdesc = Graphical Interface for Pinocchio and HPP.
 	pkgver = 4.12.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/gepetto/gepetto-viewer
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = gepetto-viewer
 	sha256sums = SKIP
 
 pkgname = gepetto-viewer
-
