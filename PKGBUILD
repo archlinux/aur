@@ -3,8 +3,8 @@
 
 _pkgname=xone
 pkgname=xone-dkms-git
-pkgver=0.1.r0.g600bf62
-pkgrel=1
+pkgver=0.1.r2.g0c93691
+pkgrel=2
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 arch=('x86_64')
 url='https://github.com/medusalix/xone'
@@ -24,7 +24,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
-  echo 'ccflags-y += -DDEBUG' >> "$srcdir/Kbuild"
+  echo 'ccflags-y += -DDEBUG' >> "Kbuild"
 
   echo "* Copying module into /usr/src..."
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
