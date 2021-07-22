@@ -18,7 +18,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         "${pkgbase}.preset"
         # linux package install directives for pacman
         'linux.install'
-	# patch from our gentoo overlords
+	# patch from graysky (https://github.com/graysky2/kernel_compiler_patch/) hosted on gentoo
 	'5010_enable-cpu-optimizations-universal.patch'
 )
 sha256sums=('SKIP'
