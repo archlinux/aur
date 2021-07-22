@@ -1,7 +1,7 @@
 pkgbase = esphomeyaml
 	pkgdesc = Solution for your ESP8266/ESP32 projects with Home Assistant
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esphome/ESPHome
 	arch = any
 	license = MIT
@@ -19,6 +19,7 @@ pkgbase = esphomeyaml
 	depends = python-ecdsa
 	depends = platformio
 	depends = esptool
+	optdepends = python-esphome-dashboard: esphome dashboard addition
 	replaces = esphomeyaml
 	source = https://github.com/esphome/ESPHome/archive/v1.20.0.tar.gz
 	sha256sums = b87f62ca159af4f4d0b98421de827f43e57105281da76a40cb806933f47bff8d
