@@ -1,15 +1,16 @@
 pkgbase = viper4linux-gui-git
 	pkgdesc = Official UI for Viper4Linux
 	pkgver = 2.2.r12.g0851d8b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Audio4Linux/Viper4Linux-GUI
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = viper4linux-git
-	depends = qt5-svg
-	depends = qt5-multimedia
+	depends = gst-plugins-bad-libs
 	depends = mesa
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = viper4linux-git
 	optdepends = libappindicator-gtk3: tray icon support
 	provides = viper4linux-gui
 	conflicts = viper4linux-gui
@@ -19,4 +20,3 @@ pkgbase = viper4linux-gui-git
 	sha256sums = 05a46b8ad3508e9275388d9255247cda09977eb8087fa5dd96d04bc25c17a77c
 
 pkgname = viper4linux-gui-git
-
