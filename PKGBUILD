@@ -19,7 +19,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   find . -type f \( -name 'dkms.conf' -o -name '*.c' \) -exec sed -i "s/#VERSION#/$pkgver/" {} +
-  echo 'ccflags-y += -DDEBUG' >> "$srcdir/Kbuild"
+  echo 'ccflags-y += -DDEBUG' >> "Kbuild"
 
   echo "* Copying module into /usr/src..."
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
