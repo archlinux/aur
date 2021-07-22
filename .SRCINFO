@@ -1,0 +1,23 @@
+pkgbase = tensorflow115
+	pkgdesc = Tensorflow 1.15
+	pkgver = 1.15.2
+	pkgrel = 0
+	url = https://github.com/tensorflow/tensorflow
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gcc-libs
+	provides = tensorflow
+	provides = libtensorflow_framework
+	conflicts = tensorflow
+	conflicts = tensorflow-cuda
+	conflicts = tensorflow-opt
+	conflicts = tensorflow-opt-cuda
+	source = dummy
+	sha256sums = SKIP
+	source_x86_64 = https://dl.photoprism.org/tensorflow/linux/libtensorflow-linux-cpu-1.15.2.tar.gz
+	sha256sums_x86_64 = 6d9002dcf271a9c8ee18ce1170db7362d920dc50f74ab3b96de0ec3e829e9f37
+	source_aarch64 = https://dl.photoprism.org/tensorflow/arm64/libtensorflow-arm64-1.15.2.tar.gz
+	sha256sums_aarch64 = aa78f8be149682b93c4888f3207d7fe3068cc4cb31314bea75864f6926942519
+
+pkgname = tensorflow115
