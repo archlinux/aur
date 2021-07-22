@@ -1,7 +1,7 @@
 # Maintainer: Vojtech Kral ❬vojtech%kral.hk❭
 
 pkgname=bard
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Creates PDF and HTML songbooks out of easy-to-write Markdown sources."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 optdepends=('texlive-bin: TeX engine (generate PDFs) '
             'tectonic: Alternative TeX engine (generate PDFs) ')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vojtechkral/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f00fb5dd47b8493c75f63644a8928529fef9ea70c809f971e207a6e43dc9ac55')
+sha256sums=('184d26af07e5f968494810a3bff2823e0158028ea25d1c3178b851f38ef6a1d4')
 
 build() {
   cd "$pkgname-$pkgver"
