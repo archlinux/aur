@@ -25,7 +25,7 @@
 -    target_compile_definitions(httplib INTERFACE -DCPPHTTPLIB_OPENSSL_SUPPORT)
 -    target_link_libraries(httplib INTERFACE ${OPENSSL_LIBRARIES})
 +    find_package(httplib 0.9.1 REQUIRED)
-+    set_target_properties(httplib::httplib PROPERTIES IMPORTED_GLOBAL TRUE)
++    set_property(TARGET httplib::httplib PROPERTY IMPORTED_GLOBAL TRUE)
 +    add_library(httplib ALIAS httplib::httplib)
      if (WIN32)
          target_link_libraries(httplib INTERFACE crypt32 cryptui ws2_32)

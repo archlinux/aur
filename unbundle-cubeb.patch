@@ -1,15 +1,14 @@
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -75,12 +75,6 @@ endif()
- # SoundTouch
- add_subdirectory(soundtouch)
+@@ -77,8 +77,9 @@ add_subdirectory(soundtouch)
  
--# Cubeb
--if(ENABLE_CUBEB)
+ # Cubeb
+ if(ENABLE_CUBEB)
 -    set(BUILD_TESTS OFF CACHE BOOL "")
 -    add_subdirectory(cubeb EXCLUDE_FROM_ALL)
--endif()
--
++    find_package(cubeb REQUIRED)
++    set_property(TARGET cubeb::cubeb PROPERTY IMPORTED_GLOBAL TRUE)
++    add_library(cubeb ALIAS cubeb::cubeb)
+ endif()
+ 
  # DiscordRPC
- if (USE_DISCORD_PRESENCE)
-     add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)

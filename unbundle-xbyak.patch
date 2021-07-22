@@ -1,49 +1,15 @@
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -4,13 +4,6 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMakeModules")
- list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/externals/find-modules")
- include(DownloadExternals)
+@@ -6,9 +6,9 @@ include(DownloadExternals)
  
--# xbyak
--if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
+ # xbyak
+ if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
 -    add_library(xbyak INTERFACE)
 -    target_include_directories(xbyak SYSTEM INTERFACE ./xbyak/xbyak)
 -    target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
--endif()
--
++    find_path(XBYAK_INCLUDE_DIR xbyak.h PATH_SUFFIXES xbyak REQUIRED)
++    add_library(xbyak INTERFACE IMPORTED GLOBAL)
++    target_include_directories(xbyak SYSTEM INTERFACE "${XBYAK_INCLUDE_DIR}")
+ endif()
+ 
  # Catch
- add_library(catch-single-include INTERFACE)
- target_include_directories(catch-single-include INTERFACE catch/single_include)
---- a/src/common/x64/xbyak_abi.h
-+++ b/src/common/x64/xbyak_abi.h
-@@ -6,7 +6,7 @@
- 
- #include <bitset>
- #include <initializer_list>
--#include <xbyak.h>
-+#include <xbyak/xbyak.h>
- #include "common/assert.h"
- 
- namespace Common::X64 {
---- a/src/common/x64/xbyak_util.h
-+++ b/src/common/x64/xbyak_util.h
-@@ -5,7 +5,7 @@
- #pragma once
- 
- #include <type_traits>
--#include <xbyak.h>
-+#include <xbyak/xbyak.h>
- #include "common/x64/xbyak_abi.h"
- 
- namespace Common::X64 {
---- a/src/video_core/macro/macro_jit_x64.h
-+++ b/src/video_core/macro/macro_jit_x64.h
-@@ -6,7 +6,7 @@
- 
- #include <array>
- #include <bitset>
--#include <xbyak.h>
-+#include <xbyak/xbyak.h>
- #include "common/bit_field.h"
- #include "common/common_types.h"
- #include "common/x64/xbyak_abi.h"

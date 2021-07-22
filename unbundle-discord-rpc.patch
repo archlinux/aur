@@ -1,9 +1,15 @@
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -84,6 +83,0 @@ endif()
+@@ -81,12 +81,6 @@ if(ENABLE_CUBEB)
+     add_subdirectory(cubeb EXCLUDE_FROM_ALL)
+ endif()
+ 
 -# DiscordRPC
 -if (USE_DISCORD_PRESENCE)
 -    add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
 -    target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
 -endif()
 -
+ # Sirit
+ add_subdirectory(sirit)
+ 
