@@ -5,7 +5,7 @@
 pkgname=photoprism
 pkgver="210523"
 commit="b1856b9d"
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
@@ -35,7 +35,7 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname"-"$pkgver"-"$commit"
-	GOPATH="$srcdir" GOCACHE="/tmp/gocache" scripts/build.sh prod ./photoprism
+	scripts/build.sh prod ./photoprism
 
 	cd "frontend";
 	npm install
