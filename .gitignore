@@ -1,4 +1,4 @@
-/gitstatus-*.pkg.tar.xz
+/gitstatus-*.pkg.tar.zst
 /gitstatus-*.tar.gz
 /libgit2-*.tar.gz
 /pkg
