@@ -13,7 +13,7 @@ optdepends=('stylelint-config-standard: for the standard shareable config')
 source=("git+https://github.com/stylelint/stylelint.git#tag=$pkgver")
 b2sums=('SKIP')
 
-build() {
+prepare() {
   cd $pkgname
   npm ci
 }
