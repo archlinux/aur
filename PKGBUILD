@@ -1,3 +1,5 @@
+# Maintainer: Steven De Bondt <egnappah at gmail dot com>
+
 pkgbase=linux-slim
 _srcname=linux
 gitver=v5.13.4
