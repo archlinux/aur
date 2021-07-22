@@ -1,0 +1,14 @@
+pkgbase = python-pyls-flake8
+	pkgdesc = A Flake8 plugin for the Python LSP Server.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/emanspeaks/pyls-flake8/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = flake8
+	source = https://files.pythonhosted.org/packages/source/p/pyls-flake8/pyls-flake8-0.4.0.tar.gz
+	md5sums = b743cab255bda5d6b11dc67094493550
+
+pkgname = python-pyls-flake8
