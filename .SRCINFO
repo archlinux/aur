@@ -1,0 +1,16 @@
+pkgbase = firefox-user-autoconfig
+	pkgdesc = Make firefox use a source controllable autoconfig file in the user home
+	pkgver = 1
+	pkgrel = 1
+	url = https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig
+	arch = any
+	license = Unlicense
+	optdepends = firefox
+	backup = usr/lib/firefox/defaults/pref/autoconfig.js
+	backup = usr/lib/firefox/firefox.cfg
+	source = autoconfig.js
+	source = firefox.cfg
+	sha256sums = e46fd52157485b8567d486142e708ebd653823c29d839485821c950fdf614d36
+	sha256sums = 232e722832647cab17e3be69cc817edb90dadfd4a64ddc58fe5b8bf7224a7cf8
+
+pkgname = firefox-user-autoconfig
