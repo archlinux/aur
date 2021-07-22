@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=vim-clap
-pkgver=0.26
+pkgver=0.27
 pkgrel=1
 pkgdesc='Modern performant generic finder and dispatcher for Vim and NeoVim'
 arch=('x86_64')
@@ -14,13 +14,14 @@ optdepends=('ctags: for the proj_tags provider'
             'git: for the bcommits, commits, files, gfiles or git_files, and git_diff_files providers'
             'python: for the Python dynamic module'
             'ripgrep: for the files and grep providers')
-source=("$url/archive/v$pkgver/vim-clap-v$pkgver.tar.gz")
-b2sums=('17230a6515934608f4b5785c30981cee0a3f900c103c2597fbd8af2abb760ca4cec2a4c24672aa6dbc3cf669284563894a53fff6185a36fe8a3ec658a4a6d5c0')
+source=("$url/archive/v$pkgver/vim-clap-$pkgver.tar.gz")
+b2sums=('11357b28011b1632f044e6a2fbc3e9ddfca1a217169fb37768596b3a53ee3a1f2b34662525d2d66f7fd8d4eb93df4f6a80760c16c283f1bfe67a53a4ac3fcbff')
 
 prepare() {
   cd $pkgname-$pkgver
   sed -i 's,/setup_python.py,/pythonx/clap/setup_python.py,' \
     autoload/clap/filter/sync/python.vim
+  cargo fetch --locked
 }
 
 build() {
