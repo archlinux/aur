@@ -1,0 +1,18 @@
+pkgbase = screen-selector-git
+	pkgdesc = Unity plugin replacing the proprietary ScreenSelector.so, using GTK 4
+	pkgver = 0.1.1.r0.ga2f5263
+	pkgrel = 1
+	url = https://linkmauve.fr/dev/screen-selector/
+	install = screen-selector.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk4
+	provides = screen-selector
+	provides = ScreenSelector.so
+	conflicts = screen-selector
+	source = git+https://git.linkmauve.fr/screen-selector.git
+	sha256sums = SKIP
+
+pkgname = screen-selector-git

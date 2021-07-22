@@ -1,0 +1,4 @@
+post_install() {
+  echo 'You may now symlink /usr/lib/ScreenSelector.so into your games’'
+  echo '*_Data/Plugins/x86_64, to replace the existing ScreenSelector.so plugin.'
+}
