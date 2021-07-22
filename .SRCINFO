@@ -7,7 +7,7 @@ pkgbase = cambalache-git
 	license = GPL2
 	makedepends = git
 	makedepends = meson>=0.50.0
-	depends = python>=3
+	depends = python-gobject
 	depends = glib2
 	depends = gtk3
 	depends = python-lxml
