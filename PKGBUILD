@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r1050.3581.g8fd25a33
+pkgver=r1050.3828.g54f06ba6
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -75,19 +75,21 @@ celt_symbols=(
   unquant_fine_energy)
 
 build() {
-  celt_cflags="$CFLAGS -fPIC"
+  celt06_cflags="$CFLAGS -fPIC"
   for sym in ${celt_symbols[@]}; do
-    celt_cflags+=" -D$sym=$(sed 's/[^_]\+/&_0061/' <<< $sym)"
+    celt06_cflags+=" -D$sym=$(sed 's/[^_]\+/&_0061/' <<< $sym)"
   done
+  celt11_cflags="${celt06_cflags//_0061/_0110} -DCUSTOM_MODES=1"
 
-  cd "$srcdir/celt-0.6.1"
-  CFLAGS=$celt_cflags ./configure
-  make
-
-  cd "$srcdir/celt-0.11.0"
-  celt_cflags=${celt_cflags//_0061/_0110}
-  CFLAGS="$celt_cflags -DCUSTOM_MODES=1" ./configure
-  make
+  make -f /dev/stdin <<EOF
+all .PHONY: $srcdir/celt-0.6.1 $srcdir/celt-0.11.0
+$srcdir/celt-0.6.1:
+	cd "\$@" && CFLAGS="$celt06_cflags" ./configure
+	\$(MAKE) -C "\$@"
+$srcdir/celt-0.11.0:
+	cd "\$@" && CFLAGS="$celt11_cflags" ./configure
+	\$(MAKE) -C "\$@"
+EOF
 
   cd "$srcdir/$pkgname"
   ./bootstrap

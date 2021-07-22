@@ -1,6 +1,6 @@
 pkgbase = vgmstream-git
 	pkgdesc = Library for playback of various streamed audio formats used in video games
-	pkgver = r1050.3581.g8fd25a33
+	pkgver = r1050.3828.g54f06ba6
 	pkgrel = 1
 	url = https://github.com/vgmstream/vgmstream
 	arch = x86_64
@@ -28,4 +28,3 @@ pkgbase = vgmstream-git
 	sha256sums = e3e94769b6545e2c8c0b60ffda684b659bb8db06f3fb9d7645fd4a734d115bac
 
 pkgname = vgmstream-git
-
