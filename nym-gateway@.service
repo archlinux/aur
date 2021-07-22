@@ -1,14 +1,14 @@
 [Unit]
-Description=Nym Mixnode %I
+Description=Nym Gateway %I
 After=network-online.target nss-lookup.target
 Wants=network-online.target nss-lookup.target
-Documentation=https://nymtech.net/docs/run-nym-nodes/mixnodes/
+Documentation=https://nymtech.net/docs/run-nym-nodes/gateways/
 StartLimitIntervalSec=350
 StartLimitBurst=10
 
 [Service]
 User=nym
-ExecStart=/usr/bin/nym-mixnode run --id %i
+ExecStart=/usr/bin/nym-gateway run --id %i
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=30
