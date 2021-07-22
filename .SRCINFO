@@ -1,6 +1,6 @@
 pkgbase = chad_launcher-git
 	pkgdesc = GNU/LINUX GAMING UNLEASHED!
-	pkgver = r89.c2d8e2d
+	pkgver = r265.893d2a1
 	pkgrel = 1
 	url = https://gitlab.com/Gnurur/chad_launcher
 	arch = x86_64
