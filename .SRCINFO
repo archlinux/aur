@@ -1,0 +1,13 @@
+pkgbase = python-fastcore
+	pkgdesc = Python supercharged for the fastai library
+	pkgver = 1.3.20
+	pkgrel = 1
+	url = https://github.com/fastai/fastcore
+	arch = any
+	license = Apache
+	makedepends = python-packaging
+	makedepends = python-pip
+	source = fastcore-1.3.20.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/1.3.20.tar.gz
+	sha512sums = f74094d4b80229fbf1d1bff89530caf71845b85d0933b46777b5941d17d159f7911c3bd9aba8b3cf9a3da802cb31820226e230bac5541dac7ca39733f0cd0317
+
+pkgname = python-fastcore
