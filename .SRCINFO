@@ -1,0 +1,27 @@
+pkgbase = python-fastai2
+	pkgdesc = Deep learning library build on PyTorch (v2 master branch) with CPU
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/fastai/fastai
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python-fastcore
+	depends = python-fastprogress
+	depends = python-matplotlib
+	depends = python-packaging
+	depends = python-pandas
+	depends = python-pillow
+	depends = python-pip
+	depends = python-pytorch
+	depends = python-pyaml
+	depends = python-requests
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-spacy
+	depends = python-torchvision
+	source = fastai-2.4.1.tar.gz::https://github.com/fastai/fastai/archive/refs/tags/2.4.1.tar.gz
+	sha512sums = 0b2d20bd1c16a94fb9b7de06046836bfa24d5bb0d57e8095223b3e22a2b070cf56d8c24371f3b664cb5819cfa807f522c63b472bb2f441851838d39b175f1b22
+
+pkgname = python-fastai2
