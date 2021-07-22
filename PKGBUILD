@@ -4,8 +4,8 @@
 # whatever stable into the `stable-1.5` branch.
 # To get the `_count` number, I use `git describe | cut -f2 -d-` in a
 # local clone.
-_commit=779437feef8a89209b7d1005536a79be6d71941d
-_count=168
+_commit=b68abbfb04f4e66e89d6e57af18166bd523cdcec
+_count=209
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
 pkgver=1.5.r$_count
 pkgrel=1
@@ -15,7 +15,7 @@ license=('GPL2')
 makedepends=('linux-headers')
 source=("https://gitlab.com/etherlab.org/ethercat/-/archive/$_commit/ethercat-$_commit.tar.bz2"
 	"99-EtherCAT.rules")
-md5sums=('d8c3bf5888317b504937000c52376cd4'
+md5sums=('3ea4816d2fdbb54453595dfa34bd65ab'
          'bd1c6d039d8fd947a727c8db0548cee9')
 
 build() {
