@@ -1,0 +1,40 @@
+# Maintainer: Soc Virnyl S. Estela <renegan.ronin@gmail.com>
+
+_pkgname=rivercarro
+pkgname=$_pkgname-git
+pkgver=r9.62d158a
+pkgrel=1
+pkgdesc="A slightly modified version of rivertile layout generator for river."
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
+url="https://git.sr.ht/~leon_plickat/river-tag-overlay"
+makedepends=('zig')
+source=(
+    "${pkgname}::git+https://git.sr.ht/~novakane/rivercarro"
+    "git+https://github.com/ifreund/zig-wayland.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
+provides=("rivercarro")
+conflicts=("rivercarro")
+options=(!strip)
+
+prepare() {
+	cd "$pkgname"
+	git submodule init
+	git config "submodule.deps/zig-wayland.url" "$srcdir/zig-wayland"
+	git submodule update
+}
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+    cd "${pkgname}"
+    DESTDIR="$pkgdir" zig build install --prefix "/usr"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+}
