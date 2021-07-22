@@ -2,7 +2,7 @@
 
 pkgname='pingme-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email. (official binary)"
 url='https://pingme.lmno.pk'
