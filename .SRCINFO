@@ -1,0 +1,23 @@
+pkgbase = coro-cloudstorage-fuse
+	pkgdesc = Cloud Storage FUSE mount
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lemourin/coro-cloudstorage-fuse
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = make
+	depends = ffmpeg
+	depends = fmt
+	depends = crypto++
+	depends = fuse3
+	depends = curl
+	depends = libevent
+	depends = pugixml
+	depends = nlohmann-json
+
+pkgname = coro-cloudstorage-fuse
