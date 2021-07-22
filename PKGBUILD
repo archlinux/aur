@@ -3,12 +3,13 @@
 _gemname=racc
 pkgname=ruby-$_gemname
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc='LALR parser generator written in Ruby itself and generates ruby programs'
 arch=(x86_64)
 url=https://github.com/ruby/racc
 license=(BSD)
 depends=(ruby)
+checkdepends=(ruby-test-unit)
 makedepends=(rubygems ruby-rake ruby-rdoc ruby-bundler ruby-rake-compiler)
 options=(!emptydirs)
 source=(https://github.com/ruby/racc/archive/v${pkgver}.tar.gz)
