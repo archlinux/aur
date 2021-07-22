@@ -98,6 +98,10 @@
 	};
 };
 
+&ac200_ephy {
+    status = "okay";
+};
+
 &ac200_pwm_clk {
     status = "okay";
 };

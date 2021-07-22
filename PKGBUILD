@@ -10,7 +10,7 @@ _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=5.11.4
-pkgrel=3
+pkgrel=4
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -18,12 +18,18 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' '
 options=('!strip')
 source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'sun50i-h6-tqc-a01.dts'
+        '0001-mfd-Add-support-for-AC200.patch'
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
+        '0002-net-phy-Add-support-for-AC200-EPHY.patch'
         '0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch'
         '0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch'
         '0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch'
+        '0005-drm-gem-cma-Export-with-handle-allocator.patch'
+        '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0007-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch'
+        '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
         '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
+        'fix-missing-H6-spi-pins.patch'
         'config'
         'kernel.its'
         'kernel.keyblock'
@@ -36,13 +42,19 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
-         '3bf41e61be58e1cda848dd75983a0ea9'
+         '257beb93e91b190184f1a161f66d3206'
+         '17aa0c69176c68cd98b4522740a1b747'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
+         'bc7904920675ba8d38f21d46ffac33b5'
          '94a69594f90309c50c83a5cc8579fb54'
          'e1868e41094baff9eceba481fc097c79'
          '5d42a68276c8f9e8b3de040fa2579b84'
+         '335382823f6dc2aae2f6038b7aee339e'
+         'cb38b30491472097c3b9b475de39127f'
          '6fd2f4aaa791c975aef5968f32eecb4c'
+         'bc65c0b9e4d6fb2fe3a81b8358886885'
          'f27a8190e862a7edcf2b09cc27aef180'
+         '11dfddadb815a896a2db65812e66e6fa'
          '5e0c36c663ebe0721fb96b9f2bfef451'
          '7f1a96e24f5150f790df94398e9525a3'
          '61c5ff73c136ed07a7aadbf58db3d96a'
@@ -60,18 +72,24 @@ prepare() {
   patch -p1 < "../patch-${pkgver}"
 
   # patches for TQC A01
+  patch -p1 < ../0001-mfd-Add-support-for-AC200.patch
   patch -p1 < ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+  patch -p1 < ../0002-net-phy-Add-support-for-AC200-EPHY.patch
   patch -p1 < ../0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch
   patch -p1 < ../0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch
   patch -p1 < ../0004-net-stmmac-sun8i-Add-support-for-enabling-a-regulato.patch
+  patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
+  patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0007-arm64-dts-allwinner-h6-Add-AC200-EPHY-related-nodes.patch
+  patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
   patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
+  patch -p1 < ../fix-missing-H6-spi-pins.patch
 
   cat "${srcdir}/config" > ./.config
 
   # dts for TQC-A01
-  target_dts="sun50i-h6-tqc-a01.dtb"
-  echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
+  target_dts="sun50i-h6-tqc-a01.dts"
+  echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts//dts/dtb}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
   cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/allwinner/${target_dts}"
 
   # add pkgrel to extraversion
