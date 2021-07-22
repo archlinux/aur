@@ -3,6 +3,7 @@
 pkgbase=linux-amd
 _srcname=linux
 gitver=v5.13.4
+patchver=20210616
 pkgver=5.13.v.4
 pkgrel=1
 arch=('x86_64')
@@ -19,7 +20,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         # linux package install directives for pacman
         'linux.install'
 	# patch from our graysky archlinux colleague
-	'https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.8+.patch'
+	"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/$patchver/more-uarches-for-kernel-5.8+.patch"
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -39,7 +40,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_srcname}"
+cd "${_srcname}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
