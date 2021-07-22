@@ -3,7 +3,7 @@
 
 pkgname=authpass-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='Keepass compatible password manager based on Flutter'
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('GPL3')
 depends=('gtk3' 'libsecret')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/authpass/authpass/releases/download/v$pkgver/$_pkgname-linux-${pkgver}_1717.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/authpass/authpass/releases/download/v$pkgver/$_pkgname-linux-${pkgver}_1745.tar.gz"
         "$_pkgname-$pkgver.svg::https://raw.githubusercontent.com/authpass/authpass/v$pkgver/_docs/authpass-logo.svg"
         "${_pkgname}.desktop")
-sha256sums=('e93290b407fc5268da821f99e5858f405ee51ffe6901a43a36b5ae0203d22dc5'
+sha256sums=('9e4abad0f477badd7b836fe6a54ff1baac44b6e52f97f6525e8025a7c5b669a8'
             '1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b'
             '8260ede1bb38264aa92227dee1b3edd0d66b1f963872d4254549c08c7ca409dd')
 
