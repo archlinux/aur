@@ -3,10 +3,11 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 # Contributor: Bruno Pagani <archange at archlinux dot org>
+# Contributor: AUR[Severus]
 
 pkgname=mattermost-desktop
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mattermost Desktop application for Linux'
 arch=(x86_64 i686)
 url="https://github.com/${pkgname/-//}"
@@ -20,13 +21,14 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "${pkgname/-/.}")
 sha256sums=('f327d8560bebeb2075c7369898c3ed6c2d11be952a44853822a663ba42144055'
-            '0f18f87764465f1fc5a9fdfb6ef2834af4623c13bc95fce58da6cb0d8d39a75e'
+            '1c2bf48b6397d04a5a536c5c9f4960db53249c838c380f03f808c612b00ba4c6'
             'e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa')
 
 prepare() {
 	cd "desktop-$pkgver"
 
 	sed -i -e "s/git rev-parse --short HEAD/echo $pkgver/" webpack.config.base.js
+	sed -e "s/@ELECTRON@/$_electron/" "../$pkgname.sh" > "$pkgname.sh"
 
 	# Depending on the architecture, in order to accelerate the build process,
 	# removes the compilation of ia32 or x64 build.
@@ -92,6 +94,6 @@ package() {
 	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" release/linux*unpacked/resources/app.asar
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 	install -Dm0644 src/assets/linux/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-	install -Dm0755 "../$pkgname".sh "$pkgdir/usr/bin/$pkgname"
+	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "../${pkgname/-/.}"
 }
