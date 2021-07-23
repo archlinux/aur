@@ -8,7 +8,8 @@ arch=('any')
 url="https://github.com/cglindkamp/run-mailcap-rs"
 license=('ISC')
 provides=('run-mailcap')
-makedepends=('rust' 'git')
+conflicts=('run-mailcap')
+makedepends=('cargo' 'git')
 source=("$pkgname::git+https://github.com/cglindkamp/run-mailcap-rs"
 	'makefile-remove-bashism.patch')
 sha256sums=('SKIP'
