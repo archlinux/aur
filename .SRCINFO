@@ -1,8 +1,8 @@
 pkgbase = tcg
 	pkgdesc = cgroups for terminals
-	pkgver = 0.2.73
+	pkgver = 0.2.74
 	pkgrel = 1
-	url = https://github.com/zasdfgbnm/tcg/archive/dbfc2ada85bfd7f20d411d41adf3e23a73ca7716.zip
+	url = https://github.com/zasdfgbnm/tcg/archive/10b755361a79c17057e5b83ab2cce08d3e06b8db.zip
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,8 +12,7 @@ pkgbase = tcg
 	depends = fmt
 	depends = spdlog
 	depends = libseccomp
-	source = https://github.com/zasdfgbnm/tcg/archive/dbfc2ada85bfd7f20d411d41adf3e23a73ca7716.zip
-	sha256sums = 3c0a568d040a9450240bf9277ca91e64a574f19da4ac6384db651006c515f229
+	source = https://github.com/zasdfgbnm/tcg/archive/10b755361a79c17057e5b83ab2cce08d3e06b8db.zip
+	sha256sums = aab5352e3e0cbdaf1f73e8f6b6df9a576476e1cb1cc57ffcdb79fafb2db2653c
 
 pkgname = tcg
-
