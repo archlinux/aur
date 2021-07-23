@@ -6,7 +6,7 @@
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env USE_SCCACHE=1 COMPONENT=1 makepkg -sc
+##   Example: env USE_SCCACHE=1 COMPONENT=1 NOCONFIRM_MODE=1 makepkg -sc
 ##
 ## sccache for faster builds - https://github.com/brave/brave-browser/wiki/sccache-for-faster-builds
 ## Valid numbers between: 0 and 1
@@ -26,6 +26,12 @@ if [ -z ${COMPONENT+x} ]; then
   COMPONENT=1
 fi
 ##
+## noconfirm mode
+## Valid numbers between: 0 and 1
+## Default is: 1 => noconfirm mode
+if [ -z ${USE_NOCONFIRM+x} ]; then
+  NOCONFIRM_MODE=1
+fi
 
 pkgname=unbrave-git
 pkgver=r4725.af89df01
@@ -162,7 +168,11 @@ prepare() {
   if [ -d src/out/Release ]; then
     npm run sync -- --force
   else
-    npm run init
+    if [ "$NOCONFIRM_MODE" -eq "1" ]; then
+      yes | npm run init
+    else
+      npm run init
+    fi
   fi
 
   msg2 "Apply Chromium patches..."
