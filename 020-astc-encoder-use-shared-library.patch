@@ -1,0 +1,71 @@
+--- a/Source/cmake_core.cmake
++++ b/Source/cmake_core.cmake
+@@ -26,8 +26,8 @@ project(${ASTC_TARGET})
+ set(GNU_LIKE "GNU,Clang,AppleClang")
+ set(CLANG_LIKE "Clang,AppleClang")
+ 
+-add_library(${ASTC_TARGET}-static
+-    STATIC
++add_library(${ASTC_TARGET}
++    SHARED
+         astcenc_averages_and_directions.cpp
+         astcenc_block_sizes.cpp
+         astcenc_color_quantize.cpp
+@@ -52,13 +52,13 @@ add_library(${ASTC_TARGET}-static
+         astcenc_weight_align.cpp
+         astcenc_weight_quant_xfer_tables.cpp)
+ 
+-target_include_directories(${ASTC_TARGET}-static
++target_include_directories(${ASTC_TARGET}
+     PUBLIC
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+         $<INSTALL_INTERFACE:.>)
+ 
+ if(${CLI})
+-    add_executable(${ASTC_TARGET}
++    add_executable(${ASTC_TARGET}-bin
+         astcenccli_error_metrics.cpp
+         astcenccli_image.cpp
+         astcenccli_image_external.cpp
+@@ -67,9 +67,13 @@ if(${CLI})
+         astcenccli_toplevel.cpp
+         astcenccli_toplevel_help.cpp)
+ 
+-    target_link_libraries(${ASTC_TARGET}
++    target_link_libraries(${ASTC_TARGET}-bin
+         PRIVATE
+-            ${ASTC_TARGET}-static)
++            ${ASTC_TARGET})
++
++    set_target_properties(${ASTC_TARGET}-bin
++        PROPERTIES
++            OUTPUT_NAME ${ASTC_TARGET})
+ endif()
+ 
+ macro(astcenc_set_properties NAME)
+@@ -247,10 +251,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+             COMPILE_FLAGS ${EXTERNAL_CXX_FLAGS})
+ endif()
+ 
+-astcenc_set_properties(${ASTC_TARGET}-static)
++astcenc_set_properties(${ASTC_TARGET})
+ 
+ if(${CLI})
+-    astcenc_set_properties(${ASTC_TARGET})
++    astcenc_set_properties(${ASTC_TARGET}-bin)
+ 
+     string(TIMESTAMP astcencoder_YEAR "%Y")
+ 
+@@ -259,9 +263,10 @@ if(${CLI})
+         astcenccli_version.h
+         ESCAPE_QUOTES @ONLY)
+ 
+-    target_include_directories(${ASTC_TARGET}
++    target_include_directories(${ASTC_TARGET}-bin
+         PRIVATE
+             ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-    install(TARGETS ${ASTC_TARGET} DESTINATION ${PACKAGE_ROOT})
++    install(TARGETS ${ASTC_TARGET}-bin DESTINATION ${PACKAGE_ROOT})
++    install(TARGETS ${ASTC_TARGET} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
