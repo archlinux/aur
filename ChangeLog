@@ -1,3 +1,7 @@
+4.8.1 (2021-07-22 19:05:17)
+
+    Automatic selection of the best Python interpreter.
+
 4.8.0 (2021-07-21 17:36:28)
 
     Initial support for the new DYLD shared cache of macOS Monterey,
