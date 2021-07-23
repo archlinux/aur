@@ -2,17 +2,17 @@
 
 _pkgname='pyExceptions'
 pkgname=python-${_pkgname,,}
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An exception base-class to derive more powerful exceptions"
 arch=(any)
 url="https://github.com/Paebbels/pyExceptions"
 license=('Apache')
-depends=('python-sphinxextensions')
+depends=('python-sphinxextensions' 'python-pydecor')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7f573cd1b15e7f14bf25ac541f7dece6f8042c0bfd6c13b562818d7caeee3bf9')
+sha256sums=('9ba0e45c05e3afa2caf770648889266179c84c633ce08b96cb30bcfeedda5d5b')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -21,8 +21,7 @@ build() {
 
 check(){
   cd "$_pkgname-$pkgver"
-  touch tests/__init__.py
-  pytest --override-ini 'python_files=*' tests/
+  pytest tests/
 }
 
 package() {

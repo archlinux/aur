@@ -1,6 +1,6 @@
 pkgbase = python-pyexceptions
 	pkgdesc = An exception base-class to derive more powerful exceptions
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Paebbels/pyExceptions
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = python-pyexceptions
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-sphinxextensions
-	source = python-pyexceptions-1.0.1.tar.gz::https://github.com/Paebbels/pyExceptions/archive/v1.0.1.tar.gz
-	sha256sums = 7f573cd1b15e7f14bf25ac541f7dece6f8042c0bfd6c13b562818d7caeee3bf9
+	depends = python-pydecor
+	source = python-pyexceptions-1.1.1.tar.gz::https://github.com/Paebbels/pyExceptions/archive/v1.1.1.tar.gz
+	sha256sums = 9ba0e45c05e3afa2caf770648889266179c84c633ce08b96cb30bcfeedda5d5b
 
 pkgname = python-pyexceptions
