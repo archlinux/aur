@@ -1,7 +1,7 @@
 pkgbase = perl-class-errorhandler
 	pkgdesc = Base class for error handling
 	pkgver = 0.04
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Class-ErrorHandler
 	arch = any
 	license = PerlArtistic
@@ -13,4 +13,3 @@ pkgbase = perl-class-errorhandler
 	sha512sums = 9e235da1c2091f9422723af4528305b8ed2b50920a865e6fee76380a8c512fcd837d752f4ea5146df12c506c776e88c1075419ab3809be3296995387df759c83
 
 pkgname = perl-class-errorhandler
-
