@@ -1,10 +1,10 @@
 pkgname=kakoune-git
 pkgver=2020.09.01_r635_g15aa4fe13
 pkgrel=2
-pkgdesc='Multiple-selection, UNIX-flavored modal editor'
-arch=('x86_64' 'armv7h')
-url='https://github.com/mawww/kakoune'
-license=('custom:unlicense')
+pkgdesc="Multiple-selection, UNIX-flavored modal editor"
+arch=("x86_64" "armv7h")
+url="https://github.com/mawww/kakoune"
+license=("custom:unlicense")
 optdepends=(
     "aspell: spell check, correct text"
     "clang: error reporting and diagnostics, completion"
@@ -16,31 +16,31 @@ optdepends=(
     "xorg-xmessage: print detailed crash information in a separate window"
 )
 makedepends=(
-  'git'
+    "git"
 )
 provides=("kakoune=${pkgver}")
-conflicts=('kakoune')
+conflicts=("kakoune")
 source=("${pkgname}::git+https://github.com/mawww/kakoune.git")
-sha256sums=('SKIP')
-options=('!buildflags')
+sha256sums=("SKIP")
+options=("!buildflags")
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags | tr '-' '_' | sed 's/^v//; s/_/_r/'
+    cd "${srcdir}/${pkgname}"
+    git describe --tags | tr "-" "_" | sed "s/^v//; s/_/_r/"
 }
 
 check() {
-  cd "${srcdir}/${pkgname}/src"
-  make test
+    cd "${srcdir}/${pkgname}/src"
+    make test
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/src"
-  make
+    cd "${srcdir}/${pkgname}/src"
+    make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/src"
-  make install-strip DESTDIR="${pkgdir}" PREFIX=/usr
-  install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    cd "${srcdir}/${pkgname}/src"
+    make install-strip DESTDIR="${pkgdir}" PREFIX=/usr
+    install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
