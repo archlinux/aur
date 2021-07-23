@@ -1,0 +1,22 @@
+pkgbase = k8s-ldap-auth-bin
+	pkgdesc = Kubernetes webhook token authentication plugin implementation using ldap.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vbouchaud/k8s-ldap-auth
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = apache
+	provides = k8s-ldap-auth
+	conflicts = k8s-ldap-auth
+	source_x86_64 = k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v1.0.0/k8s-ldap-auth.linux.amd64
+	sha256sums_x86_64 = 730673f18d3b8fce33317f54c0eb7fbd21ee219994f3e0f30e8c1a1096ffef20
+	source_armv7l = k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v1.0.0/k8s-ldap-auth.linux.arm
+	sha256sums_armv7l = 743d589300041e64fd64496f38b60bd002840276d78d1295c2f0a93e150d61ab
+	source_armv7h = k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v1.0.0/k8s-ldap-auth.linux.arm
+	sha256sums_armv7h = 743d589300041e64fd64496f38b60bd002840276d78d1295c2f0a93e150d61ab
+	source_aarch64 = k8s-ldap-auth::https://github.com/vbouchaud/k8s-ldap-auth/releases/download/v1.0.0/k8s-ldap-auth.linux.arm64
+	sha256sums_aarch64 = 987410efa223063e09ce66c858ec42aad1e3da71f6f3da7599a7c6a562621e64
+
+pkgname = k8s-ldap-auth-bin
