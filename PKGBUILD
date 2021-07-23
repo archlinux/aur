@@ -1,6 +1,8 @@
-# Maintainer: Stephanie Wilde-Hobbs <git@stephanie.is>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
+# Merged with official ABS gnupg PKGBUILD by João, 2021/07/23 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Stephanie Wilde-Hobbs <git@stephanie.is>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: alphazo@gmail.com
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
@@ -9,67 +11,64 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 # Contributor: @holos
 
-_pkgname=gnupg
-pkgname=${_pkgname}-git
-pkgver=2.2.7+1227+gf9bbc7516
+pkgname=gnupg-git
+pkgver=2.3.2_r9343.g25ae80b8e
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
-license=('GPL')
-arch=('x86_64')
-conflicts=(${_pkgname})
-provides=(${_pkgname}=2.2)
-checkdepends=('openssh')
-makedepends=('libldap' 'libusb-compat' 'pcsclite' 'git' 'fig2dev' 'imagemagick' 'librsvg')
-depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
-         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
-         'sqlite' 'zlib' 'glibc')
+license=(GPL)
+arch=($CARCH)
+# checkdepends=(openssh fig2dev)
+makedepends=(git libldap libusb-compat pcsclite)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+depends=(npth libgpg-error libgcrypt libksba libassuan pinentry libbz2.so readline libreadline.so gnutls sqlite zlib)
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
-source=("git://git.gnupg.org/gnupg.git"
-        'drop-import-clean.patch')
+source=("git+https://github.com/gpg/${pkgname%-git}.git"
+		avoid-beta-warning.patch
+		drop-import-clean.patch)
 sha256sums=('SKIP'
-            '7ae777b0f4c6d3301768149f66f1d5b723841f3a4a2f0d4c601a0b2114bb7fe1')
+            '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
+            '498d482532d0039e505fe5854a734fcac05110a93890cb0d8ffa67fd13d2b7bd')
 install=gnupg-git.install
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git describe --tags | sed 's/gnupg-//;s/-/+/g'
+  cd ${pkgname%-git}
+  echo "$(cat VERSION)_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-	patch -p1 -i ../drop-import-clean.patch
+  cd ${pkgname%-git}
+  patch -p1 -i ../avoid-beta-warning.patch
+  patch -p1 -i ../drop-import-clean.patch
 
-	./autogen.sh
+  ./autogen.sh
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--sbindir=/usr/bin \
-		--libexecdir=/usr/lib/gnupg \
-		--enable-maintainer-mode \
-		--enable-symcryptrun \
+  cd ${pkgname%-git}
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/gnupg \
+    --enable-maintainer-mode \
 
-	make
+  make
 }
 
 # check() {
-# 	cd "${srcdir}/${_pkgname}"
-# 	make check
+#   cd ${pkgname%-git}
+#   make check
 # }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="${pkgdir}" install
-	ln -s gpg "${pkgdir}"/usr/bin/gpg2
-	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
+  cd ${pkgname%-git}
+  make DESTDIR="${pkgdir}" install
+  ln -s gpg "${pkgdir}"/usr/bin/gpg2
+  ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
-	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
+  install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
 }
-
-# vim: ts=2 sw=2 noet:
