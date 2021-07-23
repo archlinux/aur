@@ -4,7 +4,7 @@ pkgname="clpimg-git"
 _pkgname=${pkgname%-git}
 pkgver=r11.4db6f88
 pkgrel=1
-pkgdesc="copy images to clipboard on linux using qt backend"
+pkgdesc="copy images to clipboard using qt backend"
 
 arch=("any")
 license=("GPL")
