@@ -1,18 +1,18 @@
 pkgbase = freezer-appimage
 	pkgdesc = An unofficial client for Deezer (AppImage version)
-	pkgver = 1.1.21
+	pkgver = 1.1.23
 	pkgrel = 1
 	url = https://files.freezer.life
 	arch = x86_64
 	license = GPL
 	depends = zlib
 	depends = fuse2
-	noextract = Freezer-1.1.21.AppImage
+	noextract = Freezer-1.1.23.AppImage
 	options = !strip
-	source = Freezer-1.1.21.AppImage::https://files.freezer.life/0:/PC/1.1.21/Freezer-1.1.21.AppImage
+	source = Freezer-1.1.23.AppImage::https://files.freezer.life/0:/PC/1.1.23/Freezer-1.1.23.AppImage
 	source = freezer.desktop
 	source = https://i.imgur.com/ztam2vH.png
-	md5sums = 506eee242d31c5a6a0f96351833462da
+	md5sums = 71023520c9bb45b4ab6be5b512ed2470
 	md5sums = 59bc9ed8c52d157647c7f78f980ca49e
 	md5sums = 3a8057d8fe5a0aa93f04f45e3a77a352
 

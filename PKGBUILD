@@ -1,6 +1,7 @@
-# Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
+# Maintainer : Barfin
+# Pevious Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
 pkgname=freezer-appimage
-pkgver='1.1.21'
+pkgver='1.1.23'
 pkgrel=1
 pkgdesc="An unofficial client for Deezer (AppImage version)"
 arch=('x86_64')
@@ -20,7 +21,7 @@ install=
 changelog=
 source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop" "https://i.imgur.com/ztam2vH.png")
 noextract=("Freezer-$pkgver.AppImage")
-md5sums=('506eee242d31c5a6a0f96351833462da'
+md5sums=('71023520c9bb45b4ab6be5b512ed2470'
          '59bc9ed8c52d157647c7f78f980ca49e'
          '3a8057d8fe5a0aa93f04f45e3a77a352')
 
