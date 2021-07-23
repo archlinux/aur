@@ -1,6 +1,6 @@
 pkgbase = coro-cloudstorage-fuse
 	pkgdesc = Cloud Storage FUSE mount
-	pkgver = 1.0
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/lemourin/coro-cloudstorage-fuse
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = coro-cloudstorage-fuse
 	makedepends = clang
 	makedepends = git
 	makedepends = pkg-config
-	makedepends = make
 	depends = ffmpeg
 	depends = fmt
 	depends = crypto++

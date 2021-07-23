@@ -1,12 +1,12 @@
 # Maintainer Paweł Wegner <echo bGVtb3VyaW5AZ21haWwuY29tCg== | base64 -d>
 
 pkgname=coro-cloudstorage-fuse
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="Cloud Storage FUSE mount"
 url="https://github.com/lemourin/${pkgname}"
 license=('custom')
-_commit="341a23323d23e74b54319e55747dab93f64ed9f8"
+_commit="6baafd620d8cd9b357c0e78d76690f97a5a341b7"
 _git=${url}
 arch=('x86_64')
 makedepends=(
