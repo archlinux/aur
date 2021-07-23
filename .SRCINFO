@@ -1,0 +1,15 @@
+pkgbase = drun3
+	pkgdesc = A GTK3 run dialog (drun fork with GTK3 support)
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/MrcJkb/drun3
+	arch = any
+	license = GPL
+	depends = ruby-gtk3
+	depends = ruby-native-package-installer
+	depends = ruby-cairo-gobject
+	conflicts = drun
+	source = https://github.com/MrcJkb/drun3/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 7258b2c67218063a78fab0b2d132cf66d91c10935915b38ec89e70844360dd06
+
+pkgname = drun3
