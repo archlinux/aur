@@ -1,11 +1,13 @@
-diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
-index b94183d..b4672db 100644
---- a/tools/CMakeLists.txt
-+++ b/tools/CMakeLists.txt
-@@ -38,5 +38,5 @@ install(FILES ${SCRIPTS}
- 
- install(FILES commissioner_thci/commissionerd.service
-         PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
--        DESTINATION /etc/systemd/system
-+        DESTINATION ${SERVICE_PREFIX}/etc/systemd/system
- )
+diff --git a/tools/commissioner_thci/commissionerd.service b/tools/commissioner_thci/commissionerd.service
+index b87787f..4ad7f9a 100644
+--- a/tools/commissioner_thci/commissionerd.service
++++ b/tools/commissioner_thci/commissionerd.service
+@@ -3,7 +3,7 @@ Description=OT-commissioner daemon.
+
+ [Service]
+ Type=simple
+-ExecStart=/usr/bin/python2 -u /usr/bin/commissionerd.py -c /usr/bin/commissioner-cli
++ExecStart=/usr/bin/python -u /usr/bin/commissionerd.py -c /usr/bin/commissioner-cli
+
+ [Install]
+ WantedBy=multi-user.target

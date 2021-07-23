@@ -16,9 +16,7 @@ pkgbase = ot-commissioner-cli-git
 	provides = commissionerd
 	source = ot-commissioner-cli-git::git+https://github.com/openthread/ot-commissioner.git
 	source = 001-service.patch
-	source = 002-service.patch
 	sha512sums = SKIP
-	sha512sums = 917379265289b52d2275ee889103df75a56e82842ab7b02c5a2c92506b1da959f4bc35e4c550bd60b793cedd54e14ed492bdcde93d8fb0d90f6ef1999a6e2c41
 	sha512sums = 81a699577cb2e16f202e768627fa757f159bfb940595cb36c1064a289bb28a95d27d60a1285d5137aeb4553aceebdd9182efee984ab88348f4ba1075d5822b88
 
 pkgname = ot-commissioner-cli-git
