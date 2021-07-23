@@ -1,13 +1,13 @@
 # Maintainer: Chris Benedict <chrisbdaemon@gmail.com>
 
 pkgname='denarius-git'
-pkgver=1.0.0.0.r42.gb3cd0cf
+pkgver=v3.3.9.13.r9.g7164b78
 pkgrel=1
 pkgdesc="Denarius (DNR) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency."
 arch=('x86_64')
 url="https://denarius.io"
 license=('MIT')
-depends=('miniupnpc' 'libevent' 'openssl-1.0' 'boost-libs')
+depends=('miniupnpc' 'libevent' 'openssl-1.0' 'boost-libs' 'libcurl-compat')
 makedepends=('git' 'boost')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/src"
-	OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 make -f makefile.unix
+	OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 make "USE_NATIVETOR=-" -f makefile.unix
 }
 
 package() {
