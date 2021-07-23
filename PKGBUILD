@@ -1,6 +1,6 @@
 # Maintainer: Prokop Randáček <prokop@randacek.dev>
 pkgname=libucw-git
-pkgver=6.5.12.r4.g96295244
+pkgver=v6.5.12.r4.96295244
 pkgrel=1
 pkgdesc='General purpose library for the C language'
 arch=('any')
