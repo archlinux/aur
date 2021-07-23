@@ -1,3 +1,14 @@
+=== Morgen 2.1.11
+Improvements & Fixes
+- Fixed an issue when parsing Exchange events that caused some daily events to be displayed on a wrong day
+- Fixed a problem with the recognition of recurrence rules for Exchange events
+- Fixed a crash when opening the event details widget of some recurring all-day events
+- Certain Google event updates resulted in an “Invalid start time” error message when an event was moved to the day section. This is now solved.
+- Allow for long requests when pulling events on CalDAV accounts
+- Fixed an issue that prevented updating the recurrence rule of an event series in some cases
+- After closing Morgen on Windows, there was a problem that prevented it from being reopened. Fixed now.
+
+
 === Morgen 2.1.10
 * Bug Fixes
 - Fixed an issue preventing events to be fetched on some CalDAV accounts (Hostgator)
