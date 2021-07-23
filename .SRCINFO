@@ -36,6 +36,7 @@ pkgbase = python-onnxruntime
 	depends = python-onnx
 	depends = python-protobuf
 	depends = openmpi
+	options = !lto
 	source = git+https://github.com/microsoft/onnxruntime#tag=v1.8.1
 	source = git+https://gitlab.com/libeigen/eigen.git
 	source = git+https://github.com/onnx/onnx.git
