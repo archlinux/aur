@@ -15,7 +15,7 @@ sha256sums=('b3cb390394b573a69c55169637bf21c827984165b8965a6033ed9cfc5e148c0f'
 
 build() {
   cd "Viper4Linux-GUI-$pkgver"
-  qmake \
+  qmake V4L_Frontend.pro \
     QMAKE_CFLAGS="$CFLAGS" \
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS"
