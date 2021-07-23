@@ -1,6 +1,6 @@
-pkgbase = super_unko-git
+pkgbase = super_unko
 	pkgdesc = Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world.
-	pkgver = r387.9a67239
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/unkontributors/super_unko
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = super_unko-git
 	optdepends = bc: for unko.puzzle
 	optdepends = cowsay: for unko.think
 	provides = super_unko
-	source = super_unko::git+https://github.com/unkontributors/super_unko.git#branch=oshiri
+	source = https://github.com/unkontributors/super_unko/archive/refs/tags/1.0.5.zip
 	sha1sums = SKIP
 
-pkgname = super_unko-git
-
+pkgname = super_unko
