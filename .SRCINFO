@@ -1,13 +1,13 @@
 pkgbase = xbyak-git
 	pkgdesc = C++ header-only JIT assembler library
 	pkgver = 5.993.r2.g2fb843c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/herumi/xbyak
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	provides = xbyak
+	provides = xbyak=5.993.r2.g2fb843c
 	conflicts = xbyak
 	source = xbyak::git+https://github.com/herumi/xbyak.git
 	b2sums = SKIP

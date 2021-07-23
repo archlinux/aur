@@ -2,13 +2,13 @@
 _pkgname=xbyak
 pkgname=$_pkgname-git
 pkgver=5.993.r2.g2fb843c
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ header-only JIT assembler library"
 arch=('any')
 url="https://github.com/herumi/xbyak"
 license=('BSD')
 makedepends=('cmake' 'git')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
