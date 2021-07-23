@@ -15,7 +15,6 @@ makedepends=(
    clang
    git
    pkg-config
-   make
 )
 depends=(
    ffmpeg
