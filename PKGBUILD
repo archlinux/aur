@@ -26,7 +26,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 _commit=49d71c07b5b3ce59e035b785310cba4fcf903868  # tags/40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=c5ab6037f460406ac9799b1e5765de3ce0097a8b"
         "https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/f185f33fb200cc963c062c7a82920a085f696978/debian/patches/ubuntu/display-Allow-fractional-scaling-to-be-enabled.patch"
         "https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/f185f33fb200cc963c062c7a82920a085f696978/debian/patches/ubuntu/display-Support-UI-scaled-logical-monitor-mode.patch")
 sha256sums=('SKIP'
@@ -34,10 +34,10 @@ sha256sums=('SKIP'
             'a4ef01458df90b84d1bca34992a8317339d327cd7aebe9fdddbf9a88aa04517c'
             'a048a64afe1f258c64f22d170f494149dcdaeedfbfc8a39309c16acfa803951f')
 
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
-}
+#pkgver() {
+#  cd $_pkgname
+#  git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
+#}
 
 prepare() {
   cd $_pkgname
@@ -45,11 +45,11 @@ prepare() {
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
 
-  # Allow fractional scaling to be enabled (Robert Ancell)
-  patch -p1 -i ../display-Allow-fractional-scaling-to-be-enabled.patch
-
   # Support UI scaled logical monitor mode (Marco Trevisan)
   patch -p1 -i ../display-Support-UI-scaled-logical-monitor-mode.patch
+
+  # Allow fractional scaling to be enabled (Robert Ancell)
+  patch -p1 -i ../display-Allow-fractional-scaling-to-be-enabled.patch
 }
 
 

@@ -49,7 +49,7 @@ pkgbase = gnome-control-center-x11-scaling
 	provides = gnome-control-center
 	conflicts = gnome-control-center
 	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=49d71c07b5b3ce59e035b785310cba4fcf903868
-	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=c5ab6037f460406ac9799b1e5765de3ce0097a8b
 	source = https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/f185f33fb200cc963c062c7a82920a085f696978/debian/patches/ubuntu/display-Allow-fractional-scaling-to-be-enabled.patch
 	source = https://salsa.debian.org/gnome-team/gnome-control-center/-/raw/f185f33fb200cc963c062c7a82920a085f696978/debian/patches/ubuntu/display-Support-UI-scaled-logical-monitor-mode.patch
 	sha256sums = SKIP
