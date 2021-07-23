@@ -1,17 +1,17 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2900  # see ${srcdir}/Version.txt
-_gamepkg=RimWorld1-2-${_pkg_subver}Linux.zip
+_pkg_subver=3067  # see ${srcdir}/Version.txt
+_gamepkg=RimWorld1-3-${_pkg_subver}Linux.tar.gz
 
 pkgname=rimworld
-pkgver=1.2.${_pkg_subver}
+pkgver=1.3.${_pkg_subver}
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
 license=('custom: commercial')
 depends=('glu' 'libxcursor')
-makedepends=('unzip')
+makedepends=('tar')
 source=(rimworld.desktop
         rimworld.sh)
 sha256sums=('a360e7399d3b6b545cd7370013bafb6290d94e82e40f7df59655c806bd4164eb'
@@ -23,7 +23,7 @@ _pkgpaths_tries=("$startdir"
 build() {
   msg "You need a full copy of this game in order to install it"
 
-  # look for game zipfile
+  # look for game tarball
   for pkgpath_try in "${_pkgpaths_tries[@]}" ; do
     msg "Searching for ${_gamepkg} in dir: \"${pkgpath_try}\""
     if [[ -f "${pkgpath_try}/${_gamepkg}" ]]; then
@@ -32,7 +32,7 @@ build() {
     fi
   done
 
-  # not found: ask for path to game zipfile
+  # not found: ask for path to game tarball
   if [[ ! -f "${pkgpath}/${_gamepkg}" ]]; then
     error "Game package not found, please type absolute path to ${_gamepkg} (/home/joe):"
     read pkgpath
@@ -42,9 +42,9 @@ build() {
     fi
   fi
 
-  # unpack game zipfile
+  # unpack game tarball
   msg "Found game package, unpacking..."
-  unzip -UU -u "${pkgpath}/${_gamepkg}" -d "${srcdir}"
+  tar -xf "${pkgpath}/${_gamepkg}" -C "${srcdir}"
 }
 
 package() {
@@ -52,7 +52,7 @@ package() {
   install -Dm755 "rimworld.sh" "$pkgdir/usr/bin/rimworld"
   install -Dm644 "rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
 
-  cd "$srcdir/RimWorld1-2-${_pkg_subver}Linux"
+  cd "$srcdir/RimWorld1-3-${_pkg_subver}Linux"
   install -dm755 "$pkgdir/opt/rimworld"
   cp -r * "$pkgdir/opt/rimworld"
   chmod 755 "$pkgdir/opt/rimworld/RimWorldLinux"

@@ -1,12 +1,12 @@
 pkgbase = rimworld
 	pkgdesc = A sci-fi colony simulation game driven by an intelligent AI storyteller.
-	pkgver = 1.2.2900
+	pkgver = 1.3.3067
 	pkgrel = 1
 	url = http://rimworldgame.com/
 	arch = i686
 	arch = x86_64
 	license = custom: commercial
-	makedepends = unzip
+	makedepends = tar
 	depends = glu
 	depends = libxcursor
 	source = rimworld.desktop
