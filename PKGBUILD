@@ -3,7 +3,7 @@
 
 pkgname=perl-convert-pem
 pkgver=0.08
-pkgrel=3
+pkgrel=4
 pkgdesc="Read/write encrypted ASN.1 PEM files"
 _dist="Convert-PEM"
 arch=('any')
