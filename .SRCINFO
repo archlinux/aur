@@ -1,13 +1,12 @@
 pkgbase = kakoune-git
 	pkgdesc = Multiple-selection, UNIX-flavored modal editor
-	pkgver = 2020.09.01_r231_gce96c3f2
-	pkgrel = 1
+	pkgver = 2020.09.01_r635_g15aa4fe13
+	pkgrel = 2
 	url = https://github.com/mawww/kakoune
 	arch = x86_64
 	arch = armv7h
 	license = custom:unlicense
 	makedepends = git
-	depends = ncurses
 	optdepends = aspell: spell checking support
 	optdepends = clang: add command for C/CPP insert mode completion support
 	optdepends = ranger: provides file explorer functionality
@@ -22,4 +21,3 @@ pkgbase = kakoune-git
 	sha256sums = SKIP
 
 pkgname = kakoune-git
-

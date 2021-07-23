@@ -1,13 +1,10 @@
 pkgname=kakoune-git
-pkgver=2020.09.01_r231_gce96c3f2
-pkgrel=1
+pkgver=2020.09.01_r635_g15aa4fe13
+pkgrel=2
 pkgdesc='Multiple-selection, UNIX-flavored modal editor'
 arch=('x86_64' 'armv7h')
 url='https://github.com/mawww/kakoune'
 license=('custom:unlicense')
-depends=(
-  'ncurses'
-)
 optdepends=(
   'aspell: spell checking support'
   'clang: add command for C/CPP insert mode completion support'
