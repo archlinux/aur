@@ -1,7 +1,7 @@
 # Maintainer: Wesofer Raymond <wesetoferraymond@gmail.com>
 # Maintainer: Xuanwo <xuanwo@archlinuxcn.org>
 pkgname=logseq-desktop
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=("logseq-desktop")
 conflicts=("logseq-desktop-git" "logseq-desktop-bin")
 source=("https://github.com/logseq/logseq/releases/download/${pkgver}/logseq-linux-x64-${pkgver}.zip"
       "${pkgname}.desktop")
-sha256sums=('a891bdb2083c26105bd0e5703625bf268e79a0b6128669bed733a46d858af146'
+sha256sums=('f9e7b1aa4512b2d2b2be9acec178e0f6661871083ebaa1e78cbeb95b8be8caa2'
             '6e834466132551c721ba2ffe92fc0f81056b3151fe6b5f0f469ece937f9b7e84')
 
 package() {
