@@ -10,12 +10,11 @@ url="https://github.com/mooltipass/moolticute"
 license=('GPL3')
 
 depends=('libusb'
-         'mooltipass-udev'
+         'mooltipass-udev' ## AUR
          'qt5-base'
          'qt5-websockets'
          'hicolor-icon-theme')
-makedepends=('make'
-             'qt5-tools')
+makedepends=('qt5-tools')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('d284ffe26c78a4c519148b598f82657fb2f50b85e195468c336b49f26d813c17')
