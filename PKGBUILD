@@ -6,7 +6,7 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=2021.7.1
+pkgver=2021.7.2
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)"
 url="https://portswigger.net/burp/"
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         burpsuite.desktop
         icon64.png)
 install=burpsuite.install
-sha256sums=('e141bfcbfbe2902f892fed4ec9c1a5be6573934ee036f84870c400011a315919'
+sha256sums=('f1d51ec4d59a1f795b2e0623fba936ab46bc91d9ef7013a85cc55f63aba6be19'
             'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
             '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
             'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
