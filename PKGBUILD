@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Fetch the wallpaper from Bings, Unsplash..."
 arch=(x86_64)
 url="https://github.com/1995parham/gosimac"
-license=('GPL3')
+license=('GPL2')
 
 source=("https://github.com/1995parham/gosimac/releases/download/v${pkgver}/gosimac_${pkgver}_linux_amd64.tar.gz")
 
