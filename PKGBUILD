@@ -6,13 +6,13 @@ arch=('x86_64' 'armv7h')
 url='https://github.com/mawww/kakoune'
 license=('custom:unlicense')
 optdepends=(
-  'aspell: spell checking support'
-  'clang: add command for C/CPP insert mode completion support'
-  'ranger: provides file explorer functionality'
-  'tmux: tabbing support'
-  'ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition'
-  'xdotool: add support for kak windows switching (in grep, make... files)'
-  'xorg-xmessage: for nicer debugging messages'
+    "aspell: spell check, correct text"
+    "clang: error reporting and diagnostics, completion"
+    "ctags-git: complete and describe a symbol, jump to its definition"
+    "ranger: provides file explorer functionality"
+    "tmux: split windows, spawn tabs"
+    "xdotool: X11 window management"
+    "xorg-xmessage: print detailed crash information in a separate window"
 )
 makedepends=(
   'git'
