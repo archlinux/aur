@@ -1,47 +1,54 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
-# Maintainer: Ishaq Shaik  <sonuishaq67@gmail.com>
+# Maintainer: Vedant K <gamemaker0042 at gmail dot com>
+# Contributor: Fredy García <frealgagu at gmail dot com>
+# Contributor: Philip Goto <philip dot goto at gmail dot com>
+
+# Mostly copied from the `flutter` aur package
+
+_pkgname=flutter
+_pkgver=2.4.0-4.0.pre
+
 pkgname=flutter-dev
-pkgver=1.26.0_17.2.pre
+pkgver=2.4.0_4.0.pre
 pkgrel=1
-pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
-arch=("x86_64")
-url="https://${pkgname%-dev}.io"
+epoch=
+pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android"
+arch=("any")
+url="https://flutter.dev"
 license=("custom" "BSD" "CCPL")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
-optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python")
+optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "clang" "cmake" "gtk3" "ninja" "pkgconf")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-beta")
 makedepends=("python")
-provides=("${pkgname%-dev}")
-conflicts=("${pkgname%-dev}")
-backup=("opt/${pkgname%-dev}/packages/${pkgname%-dev}_test/pubspec.yaml" "opt/${pkgname%-dev}/packages/${pkgname%-dev}/pubspec.yaml")
+backup=("opt/${_pkgname}/packages/${_pkgname}_test/pubspec.yaml" "opt/${_pkgname}/packages/${_pkgname}/pubspec.yaml")
 options=("!emptydirs")
-install="${pkgname%-dev}.install"
-source=(
-  "${pkgname%-dev}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra/releases/dev/linux/${pkgname%-dev}_linux_${pkgver/_/-}-dev.tar.xz"
-  "${pkgname%-dev}.sh"
-  "${pkgname%-dev}.csh"
-)
-sha256sums=(
-  "32ab218a701f809af722ba1e30f9196832515da9284f4703e227b0b0ce6e3df0"
-  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
-)
+install="${_pkgname}.install"
+source=("${_pkgname}-${_pkgver}.tar.gz::https://storage.googleapis.com/flutter_infra_release/releases/dev/linux/flutter_linux_${_pkgver}-dev.tar.xz"
+				"${_pkgname}.sh"
+  			"${_pkgname}.csh")
+sha256sums=('9ab51abd5714e563d696363b8322b9caedea60479171310a1721b1f654ad0ea5'
+            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
+            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 build() {
-  cd "${srcdir}/${pkgname%-dev}"
-  "${srcdir}/${pkgname%-dev}/bin/${pkgname%-dev}" doctor
+  cd "${srcdir}/${_pkgname}"
+  "${srcdir}/${_pkgname}/bin/${_pkgname}" doctor
 }
 
 package() {
-  rm -rf "${srcdir}/${pkgname%-dev}/bin/cache" "${srcdir}/${pkgname%-dev}/.pub-cache"
-  install -Dm644 "${srcdir}/${pkgname%-dev}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "${srcdir}/${pkgname%-dev}.sh" "${pkgdir}/etc/profile.d/${pkgname%-dev}.sh"
-  install -Dm755 "${srcdir}/${pkgname%-dev}.csh" "${pkgdir}/etc/profile.d/${pkgname%-dev}.csh"
-  install -dm755 "${pkgdir}/opt/${pkgname%-dev}"
+  rm -rf "${srcdir}/${_pkgname}/bin/cache" "${srcdir}/${_pkgname}/.pub-cache"
+
+  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
+  install -Dm755 "${srcdir}/${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
+  
+  install -dm755 "${pkgdir}/opt/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  cp -ra "${srcdir}/${pkgname%-dev}" "${pkgdir}/opt/"
-  find "${pkgdir}/opt/${pkgname%-dev}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${pkgname%-dev}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname%-dev}/version"
-  chmod 755 "${pkgdir}/opt/${pkgname%-dev}/bin"
-  ln -s "/opt/${pkgname%-dev}/bin/${pkgname%-dev}" "${pkgdir}/usr/bin/${pkgname%-dev}"
+  
+  cp -ra "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
+  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
+  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod a+rw "${pkgdir}/opt/${_pkgname}/version"
+  ln -s "/opt/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
