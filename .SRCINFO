@@ -1,0 +1,15 @@
+pkgbase = mmsd-git
+	pkgdesc = Multimedia Messaging Service Daemon - The Next Generation
+	pkgver = 1.0.r0.gc43a464
+	pkgrel = 1
+	url = https://gitlab.com/kop316/mmsd
+	arch = x86_64 aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	provides = mmsd-tng
+	conflicts = mmsd-tng
+	source = mmsd-tng-git::https://gitlab.com/kop316/mmsd.git
+	sha256sums = SKIP
+pkgname = mmsd-git
+
