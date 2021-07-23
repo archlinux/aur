@@ -9,7 +9,6 @@ optdepends=(
     "aspell: spell check, correct text"
     "clang: error reporting and diagnostics, completion"
     "ctags-git: complete and describe a symbol, jump to its definition"
-    "ranger: provides file explorer functionality"
     "tmux: split windows, spawn tabs"
     "xdotool: X11 window management"
     "xorg-xmessage: print detailed crash information in a separate window"

@@ -10,7 +10,6 @@ pkgbase = kakoune-git
 	optdepends = aspell: spell check, correct text
 	optdepends = clang: error reporting and diagnostics, completion
 	optdepends = ctags-git: complete and describe a symbol, jump to its definition
-	optdepends = ranger: provides file explorer functionality
 	optdepends = tmux: split windows, spawn tabs
 	optdepends = xdotool: X11 window management
 	optdepends = xorg-xmessage: print detailed crash information in a separate window
