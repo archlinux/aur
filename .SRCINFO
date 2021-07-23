@@ -1,0 +1,15 @@
+pkgbase = python-iosbackup
+	pkgdesc = Library for reading and extracting files from password-encrypted iOS backups
+	pkgver = 0.9.912
+	pkgrel = 1
+	url = https://github.com/avibrazil/iOSbackup
+	arch = any
+	license = LGPL
+	makedepends = python-pip
+	depends = python
+	depends = python-biplist
+	depends = python-pycryptodome
+	source = https://files.pythonhosted.org/packages/source/i/iOSbackup/iOSbackup-0.9.912.tar.gz
+	sha512sums = 00793b3439d18466e6f8538b33a8660f11d99c2237a8d3879e10d7bb896bb230efb4c43076ae6e272b5cea4d970d69d2b088f3ce9d3cbe2a373f3cd7d22433c7
+
+pkgname = python-iosbackup
