@@ -1,0 +1,14 @@
+pkgbase = run-mailcap-rs-git
+	pkgdesc = run-mailcap replacement written in Rust
+	pkgver = r54.231621a
+	pkgrel = 1
+	url = https://github.com/cglindkamp/run-mailcap-rs
+	arch = any
+	license = ISC
+	makedepends = rust
+	makedepends = git
+	provides = run-mailcap
+	source = run-mailcap-rs-git::git+https://github.com/cglindkamp/run-mailcap-rs
+	sha256sums = SKIP
+
+pkgname = run-mailcap-rs-git
