@@ -9,7 +9,7 @@ url='https://github.com/fthx/babar'
 license=('GPL3')
 depends=('gnome-shell>=3.36')
 source=("https://extensions.gnome.org/extension-data/babarfthx.v${pkgver}.shell-extension.zip")
-md5sums=('18f5be7460818c37373bccb581ee0de2')
+md5sums=('d84036052d1fe69b6d7bdce457935d58')
 
 package() {
     local _uuid="babar@fthx"
