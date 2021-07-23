@@ -1,7 +1,7 @@
 pkgbase = wifiphisher-git
 	pkgdesc = Fast automated phishing attacks against WPA networks
 	pkgver = r787.f0be783
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sophron/wifiphisher
 	arch = any
 	license = MIT

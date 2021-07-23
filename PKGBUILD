@@ -4,7 +4,7 @@
 
 pkgname=wifiphisher-git
 pkgver=r787.f0be783
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast automated phishing attacks against WPA networks'
 arch=('any')
 url='https://github.com/sophron/wifiphisher'
@@ -41,6 +41,6 @@ build() {
 package() {
     cd wifiphisher
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
-    install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 -t "$pkgdir/usr/share/doc/wifiphisher/" *.md
+    install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/wifiphisher/LICENSE"
 }
