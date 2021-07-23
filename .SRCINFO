@@ -1,6 +1,6 @@
 pkgbase = libretro-pcsx2-git
 	pkgdesc = Sony PlayStation 2 core
-	pkgver = r11818.7de89581c
+	pkgver = r11822.70b76b999
 	pkgrel = 1
 	url = https://github.com/libretro/pcsx2
 	arch = x86_64
@@ -23,8 +23,6 @@ pkgbase = libretro-pcsx2-git
 	provides = libretro-pcsx2
 	conflicts = libretro-pcsx2
 	source = libretro-pcsx2::git+https://github.com/libretro/pcsx2.git
-	source = fix-linking.patch
 	b2sums = SKIP
-	b2sums = e014e39b50c031d28c271cfc36fef8c1f54f87771c5f1e4fbf7c680d432a76736b19043697d4789e2b72b7d9eea69f500dc405a38773fe13d667231a54ed519e
 
 pkgname = libretro-pcsx2-git
