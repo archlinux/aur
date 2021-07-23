@@ -7,13 +7,7 @@ After=network.target
 ProtectHome=true
 ProtectSystem=true
 SyslogIdentifier=denariusd
-ExecStartPre=/bin/sh -ec "if ! test -s /var/lib/denarius/denarius.conf; \
-                then umask 0077; \
-                /usr/bin/mkdir -p /var/lib/denarius ; \
-                /usr/bin/denariusd -port=0 -conf=/dev/null 2>&1 | grep -A 1 rpcuser > /var/lib/denarius/denarius.conf; \
-                echo 'WARNING: A new /var/lib/denarius/denarius.conf file has been generated.'; \
-            fi"
-ExecStart=/usr/bin/denariusd -datadir=/var/lib/denarius
+ExecStart=/usr/bin/denariusd
 
 [Install]
 WantedBy=multi-user.target
