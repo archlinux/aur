@@ -1,7 +1,7 @@
 pkgbase = python-fcl-git
 	pkgdesc = Python bindings for the Flexible Collision Library
-	pkgver = 0.0.12
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/BerkeleyAutomation/python-fcl
 	arch = x86_64
 	license = GPL
@@ -10,9 +10,6 @@ pkgbase = python-fcl-git
 	provides = python-fcl
 	conflicts = python-fcl
 	source = python-fcl-git::git+https://github.com/CyrilWaechter/python-fcl
-	source = patch
 	md5sums = SKIP
-	md5sums = 5917b8aa6bb6fa468173d3981f616e0a
 
 pkgname = python-fcl-git
-

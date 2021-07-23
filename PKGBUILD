@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-fcl-git
-pkgver=0.0.12
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Python bindings for the Flexible Collision Library"
 arch=('x86_64')
 url="https://github.com/BerkeleyAutomation/python-fcl"
@@ -17,18 +17,19 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}::git+https://github.com/CyrilWaechter/python-fcl" "patch")
+source=("${pkgname}::git+https://github.com/CyrilWaechter/python-fcl")
 noextract=()
-md5sums=('SKIP' '5917b8aa6bb6fa468173d3981f616e0a')
-
-prepare() {
-	cd $pkgname
-	patch --forward --strip=1 --input="${srcdir}/patch" setup.py
-}
+md5sums=('SKIP')
 
 build() {
 	cd $pkgname
     python setup.py build
+}
+
+check(){
+  cd $pkgname
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-${python_version}" pytest
 }
 
 package() {
