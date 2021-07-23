@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 0abf4ce..ff273a0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ install: $(BINARY)
+ 	for LINK in $(LINKS); do \
+ 		ln -sf $(PROJECT) $(BINDIR)/$$LINK""-rs; \
+ 	done
+-	if test $(COMPAT_LINKS) == 1; then \
++	if [ $(COMPAT_LINKS) -eq 1 ]; then \
+ 		for LINK in $(LINKS); do \
+ 			ln -sf $(PROJECT) $(BINDIR)/$$LINK; \
+ 		done; \
+@@ -27,7 +27,7 @@ uninstall:
+ 	for LINK in $(LINKS); do \
+ 		rm -f $(BINDIR)/$$LINK""-rs; \
+ 	done
+-	if test $(COMPAT_LINKS) == 1; then \
++	if [ $(COMPAT_LINKS) -eq 1 ]; then \
+ 		for LINK in $(LINKS); do \
+ 			rm -f $(BINDIR)/$$LINK; \
+ 		done; \
