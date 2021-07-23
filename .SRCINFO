@@ -1,0 +1,15 @@
+pkgbase = clpimg-git
+	pkgdesc = copy images to clipboard on linux using qt backend
+	pkgver = r11.4db6f88
+	pkgrel = 1
+	url = https://github.com/MahouShoujoMivutilde/clpimg
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-pyqt5
+	provides = clpimg
+	conflicts = clpimg
+	source = clpimg-git::git+https://github.com/MahouShoujoMivutilde/clpimg.git
+	md5sums = SKIP
+
+pkgname = clpimg-git
