@@ -1,11 +1,23 @@
 pkgbase = pygobject-git
 	pkgdesc = Python Bindings for GLib/GObject/GIO/GTK+
-	pkgver = 3.34.0+8+g15ae6328
-	pkgrel = 2
+	pkgver = 3.40.0+10+gb15e81fc
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/PyGObject
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = arm
+	arch = i386
+	arch = i686
+	arch = mips
+	arch = pentium4
+	arch = powerpc
+	arch = powerpc64
+	arch = riscv64
 	arch = x86_64
 	license = LGPL
 	makedepends = python-cairo
+	makedepends = python-setuptools
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = gnome-common
@@ -15,13 +27,12 @@ pkgbase = pygobject-git
 	sha256sums = SKIP
 
 pkgname = python-gobject-git
-	depends = pygobject-devel=3.34.0+8+g15ae6328
+	depends = pygobject-devel=3.40.0+10+gb15e81fc
 	depends = python
-	provides = python-gobject=3.34.0+8+g15ae6328
+	provides = python-gobject=3.40.0+10+gb15e81fc
 	conflicts = python-gobject
 
 pkgname = pygobject-devel-git
 	pkgdesc = Common development files for pygobject
-	provides = pygobject-devel=3.34.0+8+g15ae6328
+	provides = pygobject-devel=3.40.0+10+gb15e81fc
 	conflicts = pygobject-devel
-
