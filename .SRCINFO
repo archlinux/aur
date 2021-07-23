@@ -8,13 +8,12 @@ pkgbase = rivercarro-git
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
+	makedepends = git
 	makedepends = zig
 	provides = rivercarro
 	conflicts = rivercarro
 	options = !strip
 	source = rivercarro-git::git+https://git.sr.ht/~novakane/rivercarro
-	source = git+https://github.com/ifreund/zig-wayland.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rivercarro-git
