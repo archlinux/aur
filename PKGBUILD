@@ -40,7 +40,7 @@ package_lib32-agena-bin() {
 
 package_agena-bin() {
 	depends=('libxext' 'ncurses' 'readline')
-	arch=('i686' 'x86_64')
+	arch=('i686')
 	provides=('agena' 'agena-editor')
 	conflicts=('agena' 'agena-editor')
 

@@ -23,7 +23,6 @@ pkgname = lib32-agena-bin
 
 pkgname = agena-bin
 	arch = i686
-	arch = x86_64
 	depends = libxext
 	depends = ncurses
 	depends = readline
