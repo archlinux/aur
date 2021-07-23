@@ -7,5 +7,5 @@
 -set(CMAKE_VERBOSE_MAKEFILE ON)
 +set(CMAKE_VERBOSE_MAKEFILE OFF)
  
- set( MFX_ENABLE_USER_VPP OFF)
- set( MFX_ENABLE_USER_DECODE OFF)
+ function( make_runtime_name variant name )
+   if( CMAKE_SYSTEM_NAME MATCHES Windows)
