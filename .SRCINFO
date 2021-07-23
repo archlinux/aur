@@ -1,0 +1,16 @@
+pkgbase = ananicy-rules-git
+	pkgdesc = Rules for ananicy-cpp
+	pkgver = 2.2.1.r48.gb3b666a
+	pkgrel = 1
+	url = https://github.com/Nefelim4ag/Ananicy.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	conflicts = ananicy
+	conflicts = ananicy-git
+	backup = etc/ananicy.d/ananicy.conf
+	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#branch=master
+	md5sums = SKIP
+
+pkgname = ananicy-rules-git
