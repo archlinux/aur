@@ -1,10 +1,11 @@
 pkgbase = python-hamster-lib-git
 	pkgdesc = A library for common timetracking functionality
-	pkgver = 0.13.1.r20.gbc34c82
+	pkgver = 0.13.1.r32.gea3ec9a
 	pkgrel = 1
 	url = https://github.com/projecthamster/hamster-lib
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-appdirs
@@ -14,8 +15,7 @@ pkgbase = python-hamster-lib-git
 	depends = python-six
 	provides = python-hamster-lib
 	conflicts = python-hamster-lib
-	source = git://github.com/projecthamster/hamster-lib.git#branch=develop
+	source = hamster-lib::git+https://github.com/projecthamster/hamster-lib.git#branch=develop
 	sha256sums = SKIP
 
 pkgname = python-hamster-lib-git
-
