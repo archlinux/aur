@@ -1,7 +1,7 @@
 pkgbase = python-pancritic
 	pkgdesc = CriticMarkdup parser with optional pandoc backend
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ickc/pancritic
 	arch = any
 	license = GPL3
@@ -11,6 +11,9 @@ pkgbase = python-pancritic
 	checkdepends = python-panflute
 	checkdepends = python-pypandoc
 	makedepends = pandoc
+	makedepends = python-setuptools
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
 	depends = python
 	optdepends = python-markdown: Markdown backend for Markdown output
 	optdepends = python-markdown2: Markdown2 backend for Markdown output
@@ -20,4 +23,3 @@ pkgbase = python-pancritic
 	sha256sums = 670c0093924c11bb05a42ace4250166e076ad00f41e4208972613c07e3573515
 
 pkgname = python-pancritic
-
