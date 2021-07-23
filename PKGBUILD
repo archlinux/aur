@@ -1,27 +1,23 @@
-# Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
+# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+
 pkgname=ufetch-git
-_pkgname=ufetch
-pkgver=r153.9831ec2
+pkgver=v0.1.r26.21f22c2
 pkgrel=1
-epoch=1
-pkgdesc="Info script for minimal *nix systems."
-arch=('any')
-url="https://gitlab.com/jschx/${_pkgname}"
-license=('ISC')
-provides=($_pkgname)
-conflicts=($_pkgname)
-makedepends=('git')
-source=("git+https://gitlab.com/jschx/ufetch.git")
+pkgdesc='Tiny system info for Unix-like operating systems'
+arch=(any)
+url=https://gitlab.com/jschx/ufetch
+license=(ISC)
+makedepends=(git)
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-  cd $_pkgname
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/ufetch-git/LICENSE"
-  install -D -m755 ufetch-arch "$pkgdir/usr/bin/$_pkgname"
+	cd "${srcdir}/${pkgbase%-git}"
+	install -Dm755 "${pkgbase%-git}-arch" "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
-
