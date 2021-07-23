@@ -4,8 +4,8 @@
 
 pkgname=wifiphisher-git
 pkgver=r787.f0be783
-pkgrel=1
-pkgdesc='Fast automated phishing attacks against WPA networks.'
+pkgrel=2
+pkgdesc='Fast automated phishing attacks against WPA networks'
 arch=('any')
 url='https://github.com/sophron/wifiphisher'
 license=('MIT')
@@ -24,23 +24,23 @@ depends=('python'
          'python-roguehostapd-git')
 makedepends=('git' 'python-setuptools')
 provides=('wifiphisher')
-conflicts=('wifiphisher' 'wifiphisher-git')
+conflicts=('wifiphisher')
 source=('git+https://github.com/sophron/wifiphisher.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd wifiphisher
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname}"
-	python setup.py build
+    cd wifiphisher
+    python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd wifiphisher
+    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+    install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

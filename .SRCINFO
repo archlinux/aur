@@ -1,7 +1,7 @@
 pkgbase = wifiphisher-git
-	pkgdesc = Fast automated phishing attacks against WPA networks.
+	pkgdesc = Fast automated phishing attacks against WPA networks
 	pkgver = r787.f0be783
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sophron/wifiphisher
 	arch = any
 	license = MIT
@@ -22,9 +22,7 @@ pkgbase = wifiphisher-git
 	depends = python-roguehostapd-git
 	provides = wifiphisher
 	conflicts = wifiphisher
-	conflicts = wifiphisher-git
 	source = git+https://github.com/sophron/wifiphisher.git
 	sha512sums = SKIP
 
 pkgname = wifiphisher-git
-
