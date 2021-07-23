@@ -1,13 +1,9 @@
 pkgbase = libadwaita-git
 	pkgdesc = Library full of GTK widgets for mobile phones
-	pkgver = r1560.4f6e828
+	pkgver = 1.0.0+alpha.2+3+g959f434
 	pkgrel = 2
-	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/libadwaita
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
+	arch = any
 	license = LGPL
 	checkdepends = xorg-server-xvfb
 	makedepends = git
@@ -23,4 +19,3 @@ pkgbase = libadwaita-git
 	md5sums = SKIP
 
 pkgname = libadwaita-git
-

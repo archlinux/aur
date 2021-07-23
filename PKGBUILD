@@ -7,13 +7,12 @@
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
-pkgver=r1560.4f6e828
+pkgver=1.0.0+alpha.2+3+g959f434
 pkgrel=2
-epoch=1
 pkgdesc="Library full of GTK widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/$_pkgname"
 license=(LGPL)
-arch=(i686 x86_64 armv7h aarch64)
+arch=(any)
 depends=(gtk4)
 makedepends=(git gobject-introspection meson sassc vala wayland-protocols)
 checkdepends=(xorg-server-xvfb)
@@ -22,10 +21,10 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 md5sums=(SKIP)
 
-  pkgver() {
-    cd $_pkgname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  }
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 build() {
     arch-meson $_pkgname build -Dgtk_doc=false -Dexamples=true
