@@ -1,0 +1,38 @@
+pkgbase = nvidia-utils-keylase
+	pkgdesc = NVIDIA drivers utilities with NVENC and NvFBC patches made by Keylase
+	pkgver = 470.57.02
+	pkgrel = 1
+	url = https://github.com/keylase/nvidia-patch/
+	install = nvidia-utils.install
+	arch = x86_64
+	license = custom
+	depends = xorg-server
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-settings=470.57.02: configuration tool
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = opencl-nvidia=470.57.02: OpenCL support
+	provides = nvidia-utils=470.57.02
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = nvidia-libgl
+	conflicts = nvidia-libgl
+	conflicts = nvidia>470.57.02
+	conflicts = nvidia-dkms>470.57.02
+	conflicts = nvidia<470.57.02
+	conflicts = nvidia-dkms<470.57.02
+	conflicts = nvidia-vulkan
+	conflicts = nvidia-vulkan-dkms
+	conflicts = nvidia-beta
+	conflicts = nvidia-beta-dkms
+	conflicts = nvidia-dkms-performance
+	replaces = nvidia-libgl
+	options = !strip
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-utils.sysusers
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.57.02/NVIDIA-Linux-x86_64-470.57.02.run
+	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
+	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
+	sha512sums = 7123ee05aa0cc94c4cf1f0717daf85b116f0200b8f78f9322ea847db70e56386a065e0085959f27cbf0a8f9befe6fc7a0145d1bf2a28616df9bc8b5effd812f8
+
+pkgname = nvidia-utils-keylase
