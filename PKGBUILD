@@ -69,8 +69,8 @@ _makenconfig=
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.12
-pkgver=${_major}.16
+_major=5.13
+pkgver=${_major}.4
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -78,7 +78,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="9ba7052a46ee98d728b37413808893cf7bf340e3" # 5.12.16-1
+__commit="f1bd9b6ad461634994d89bc8cdcb742f11ac1789" # 5.13.4-1
 
 license=(GPL2)
 makedepends=(
@@ -94,7 +94,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux512/-/archive/${__commit}/linux512-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux513/-/archive/${__commit}/linux513-${__commit}.tar.gz")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
@@ -105,11 +105,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'  # kernel tar.xz
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'b51a8aeccbd7290188660873de0bd3e4c86859bc904379dd9b59699ceada78ed'  # xanmod
+            '713a7b5b781d115d6579498fd9b3026cd128ba171272a23cece75b0cc0a05988'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '05e1c987e8d7269209ce297ec227211ef77e83758e1f53980fbc760eedefbb0f') # manjaro
+            '8a6d39c6c617b2c9d0b380684050a01267a30830fc600084e1a71e11c6475364') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -142,15 +142,15 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux512-$__commit/0103-futex.patch  # remove conflicting ones
-  rm ../linux512-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux513-$__commit/0103-futex.patch  # remove conflicting ones
+  rm ../linux513-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   local _patch
-  for _patch in ../linux512-$__commit/*; do
+  for _patch in ../linux513-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux512-$__commit/$_patch"
+      patch -Np1 < "../linux513-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux512-$__commit/0513-bootsplash.gitpatch"
+  git apply -p1 < "../linux513-$__commit/0513-bootsplash.gitpatch"
   
   
   # Applying configuration
