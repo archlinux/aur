@@ -1,41 +1,139 @@
-pkgname="wolframengine"
-pkgver="12.2.0"
-pkgrel="0"
+# Maintainer:
+# Contributor: Samuel Bernard <samuel.bernard@gmail.com>
+# Based on https://aur.archlinux.org/packages/mathematica/
+pkgname=wolframengine
+pkgver=12.3.1
+pkgrel=1
 pkgdesc="Free Wolfram Engine(TM) for Developers"
-arch=("x86_64")
+arch=('x86_64')
+url="https://www.wolfram.com/engine/"
+license=('proprietary')
 provides=("wolframscript")
-license=("custom")
-source=("https://files.wolframcdn.com/WolframEngine/${pkgver}.${pkgrel}/WolframEngine_${pkgver}_LIN.sh")
-noextract=("WolframEngine_${pkgver}_LIN.sh")
-sha256sums=("a9e1cf60a1920f98d8e80c09356146444f4d454d2e7811b8fc55363600593dcb")
+source=(
+  "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX"
+)
+noextract=("WolframEngine_${pkgver}_LINUX.sh")
+sha256sums=("dbea88258ff3b56708948199192ab49e9dc7a8c83ebd29ae0052a456607728c5")
+# TODO: list based on namcap, all in opt but some are probably mandatory
+depends=( )
+optdepends=(
+  arb
+  assimp
+  bzip2
+  clucene
+  curl
+  espeak
+  ffmpeg
+  flite
+  gmime3
+  intel-mkl
+  java-environment
+  java-runtime
+  lib32-glibc
+  libarchive
+  libmad
+  libnet
+  libxinerama
+  libxtst
+  llvm11-libs
+  minizip
+  mongo-c-driver
+  mpfr
+  nss
+  nvidia-utils
+  opencascade
+  portaudio
+  primecount
+  primesieve
+  protobuf
+  qhull
+  qt5-quick3d
+  qt6-quick3d
+  r
+  ruby
+  tbb
+  tiled
+  tre
+)
+options=("!strip")
+
+prepare() {
+  if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
+    msg2 "ERROR: The WolframEngine installer doesn't support directory names with spaces."
+    msg2 "Current build directory: ${srcdir}"
+    exit 1
+  fi
+
+  chmod +x ${srcdir}/WolframEngine_${pkgver}_LINUX.sh
+}
 
 package() {
-	cd "${srcdir}"
+    msg2 "Running WolframEngine installer"
+    # https://support.wolfram.com/46072
+    sh ${srcdir}//WolframEngine_${pkgver}_LINUX.sh -- \
+      -execdir=${pkgdir}/usr/bin \
+      -targetdir=${pkgdir}/opt/WolframEngine \
+      -auto
+    msg2 "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during WolframEngine's installation."
+#
+    msg2 "Fixing symbolic links"
+#    cd ${pkgdir}/opt/WolframEngine/Executables
+#    rm wolframscript
+#    ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
+    cd ${pkgdir}/usr/bin
+    rm -f WolframKernel
+    ln -s /opt/WolframEngine/Executables/math
+    ln -s /opt/WolframEngine/Executables/MathKernel
+    ln -s /opt/WolframEngine/Executables/mcc
+    ln -s /opt/WolframEngine/Executables/wolfram
+    ln -s /opt/WolframEngine/Executables/WolframKernel
+    ln -s /opt/WolframEngine/Executables/wolframplayer
+    ln -s /opt/WolframEngine/Executables/WolframPlayer
+    ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/ELProver
+    ln -s /opt/WolframEngine/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript
 
-	# As of writing the PKGBUILD (12.2.0), the following additional files are created by the official installer:
-	# - .CreationID
-	# - .Revision
-	# - .VersionID
-	# - SystemFiles/Installtion/wolfram-mathematica12.desktop (dynamically generated, contains $pkgdir)
-	# - (sometimes) InstallErrors
-	# These files seem to be used by the installer to detect the version of an older installation.
-	# For the sake of convenience we omit them here.
-	# The WolframEngine installer uses Makeself, whose version unfortunately does not support the --noexec option.
-	# So we have to hard code the number of lines (388) here and extract the data manually.
+    msg2 "Setting up WolframScript"
+    mkdir -p ${srcdir}/WolframScript
+    mkdir -p ${pkgdir}/usr/share/
+    cd ${srcdir}/WolframScript
+    bsdtar -xf ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolframscript_*+*_amd64.deb data.tar.xz
+    tar -xf data.tar.xz -C ${pkgdir}/usr/share/ --strip=3 ./usr/share/
 
-	INSTDIR="/usr/lib/Wolfram/WolframEngine/12.2"
-	EXTDIR="${pkgdir}$INSTDIR"
-	tail +388 "WolframEngine_${pkgver}_LIN.sh" | tar xf -
-	mkdir -p "$EXTDIR"
-	tar xf "Unix/Files/Layout.M-LINUX-WolframEngine/contents.tar.xz" -C "$EXTDIR"
-	install -Dm 0644 "$EXTDIR/LICENSE.txt" -t "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
 
-	# Install binaries
-	ln -s "$INSTDIR/Executables/WolframKernel" "${pkgdir}"/usr/bin/WolframKernel
+    msg2 "Copying menu and mimetype information"
+    mkdir -p \
+      ${pkgdir}/usr/share/applications \
+      ${pkgdir}/usr/share/desktop-directories \
+      ${pkgdir}/usr/share/mime/packages
+    cd ${pkgdir}/opt/WolframEngine/SystemFiles/Installation
+    cp wolfram-all.directory ${pkgdir}/usr/share/desktop-directories/
+    cp *.xml ${pkgdir}/usr/share/mime/packages/
 
-	# Install wolframscript included in Wolfram Engine
-	bsdtar -x -f "$INSTDIR"/SystemFiles/Installation/wolframscript-*.rpm
-	install -Dm 0755 opt/Wolfram/WolframScript/bin/wolframscript -t "${pkgdir}"/usr/bin/
-	install -D opt/Wolfram/WolframScript/man/man1/wolframscript.1 -t "${pkgdir}"/usr/share/man/man1
-	cp -r usr/share/* "${pkgdir}"/usr/share/
+    msg2 "Copying icons"
+    mkdir -p ${pkgdir}/usr/share/icons/hicolor/{32x32,64x64,128x128}/{apps,mimetypes}
+    cd ${pkgdir}/opt/WolframEngine/SystemFiles/FrontEnd/SystemResources/X
+    for i in 32 64 128; do
+      cp App-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/wolfram-mathematica.png
+      for mimetype in $(ls vnd.* | cut -d '-' -f1 | uniq); do
+        cp ${mimetype}-${i}.png ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/mimetypes/application-${mimetype}.png
+      done
+    done
+
+    msg2 "Copying man pages"
+    mkdir -p ${pkgdir}/usr/share/man/man1
+    cd ${pkgdir}/opt/WolframEngine/SystemFiles/SystemDocumentation/Unix
+    cp *.1 ${pkgdir}/usr/share/man/man1
+
+    msg2 "Copying license"
+    mkdir -p ${pkgdir}/usr/share/license/WolframEngine/
+    cp ${pkgdir}/opt/WolframEngine/LICENSE.txt \
+      ${pkgdir}/usr/share/license/WolframEngine/license.txt
+
+    msg2 "Fixing file permissions"
+    chmod go-w -R ${pkgdir}/*
+
+    msg2 "Clean up"
+    rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolframscript*
+    rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolfram-mathematica12.desktop
+    rm -f ${pkgdir}/opt/WolframEngine/InstallErrors
 }
