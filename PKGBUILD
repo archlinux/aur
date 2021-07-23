@@ -1,4 +1,4 @@
-# Maintainer: Ranadeep B < ranadeep at informal dot systems >
+# Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=apalache
 pkgver=0.15.11
