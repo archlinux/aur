@@ -1,6 +1,6 @@
 pkgbase = python-detectron2
 	pkgdesc = FAIR's next-generation platform for object detection and segmentation
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/facebookresearch/detectron2
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = python-detectron2
 	depends = python-yacs
 	depends = tensorboard
 	optdepends = opencv
-	source = detectron2-0.4.tar.gz::https://github.com/facebookresearch/detectron2/archive/v0.4.tar.gz
-	sha256sums = 1294603f48ccb1d31b6c540233c724e392257643f378755fc688de0b57e823b3
+	source = detectron2-0.5.tar.gz::https://github.com/facebookresearch/detectron2/archive/v0.5.tar.gz
+	sha256sums = eb5a63dc89face5f0ba8b9cd66283817f79afa0445937614af8225712274787f
 
 pkgname = python-detectron2
 	depends = python-cloudpickle
@@ -58,6 +58,5 @@ pkgname = python-detectron2-cuda
 	depends = tensorboard
 	depends = cuda
 	depends = python-pytorch-cuda
-	provides = python-detectron2=0.4
+	provides = python-detectron2=0.5
 	conflicts = python-detectron2
-
