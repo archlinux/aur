@@ -1,0 +1,166 @@
+From 81cf256a501ba29d5307ee643f1e323c0e8fe9e9 Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Thu, 22 Jul 2021 22:13:20 -0300
+Subject: [PATCH] browser-panel: Manually unset XdndProxy
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The explanation for this issue, and the subsequent fix I hereby propose, is
+long, too long. For that, my apologies.
+
+When a browser panel is created on an X11 environment, it does so passing a
+CefWindowInfo set up through `windowInfo.SetAsChild(windowId, rect)`. CEF
+then creates an X11 Window that is child of this `windowId` to render into.
+In addition to that, when the CEF window is shown, it walks up the window
+tree, and sets the XdndProxy atom of the topmost window to its own render
+X11 window [1]. CEF does so to sneakily steal drag events from the toplevel.
+
+However, this behavior is problematic for OBS Studio.
+
+When OBS Studio has custom browser panels added and visible, and these panels
+are attached to the main window, the CEF widgetry is created and added to the
+main window. CEF then happily walks up the window tree, and sets the XdndProxy
+property of OBS Studio's main window.
+
+This behavior is innocuous when the browser panel is in a detached dock, since
+CEF will set the XdndProxy atom of the dock window instead of OBS Studio's main
+window. CEF is also not aware of the dock window being attached to the main
+window, and won't try and reset the XdndProxy atom when it happens.
+
+Having the XdndProxy atom set in the main window is the root of all evil we've
+seen so far. That's because when this atom is set, the `xdndProxy()` function
+in QXcbDrag [2] reads the proxy window from OBS Studio's main window, and
+returns it. This function normally returns 0.
+
+In particular, when `xdndProxy()` is called inside `QXcbDrag::move()` [3] and
+returns a non-zero value, the `if (!proxy_target)` condition right after it
+[4] isn't hit, making Qt use the CEF window as a drag proxy. The CEF window
+is then propagated to the `current_proxy_target` class member [5].
+
+Then, when releasing the dragged item, `QXcbDrag::drop()` is called, and tries
+to find its own internal representation of the `current_proxy_target` window [6],
+which at this point is set to CEF's window - which Qt5 knows nothing about, and
+thus returns nullptr. This ends up skipping calling `QXcbDrag::handleDrop()` for
+OBS Studio's main window, sending the dragged item into the void, never to be
+seen again. Sorry about this terrible fate, dragged item 😢
+
+Fix this whole mess by manually inspecting the toplevel window after setting up
+each CEF browser, and deleting the XdndProxy atom if it exists.
+
+Fixes https://github.com/obsproject/obs-studio/issues/4488
+
+[1] https://bitbucket.org/chromiumembedded/cef/src/1ffa5528b3e3640751e19cf47d8bcb615151907b/libcef/browser/native/window_x11.cc#lines-187:207
+[2] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n78
+[3] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n413
+[4] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n414
+[5] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n435
+[6] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n543
+---
+ panel/browser-panel-internal.hpp |  6 +++
+ panel/browser-panel.cpp          | 68 ++++++++++++++++++++++++++++++++
+ 2 files changed, 74 insertions(+)
+
+diff --git a/panel/browser-panel-internal.hpp b/panel/browser-panel-internal.hpp
+index 03279c2b..cc4514af 100644
+--- a/panel/browser-panel-internal.hpp
++++ b/panel/browser-panel-internal.hpp
+@@ -73,6 +73,12 @@ class QCefWidgetInternal : public QCefWidget {
+ 
+ 	void Resize();
+ 
++#ifdef __linux__
++private:
++	bool needsDeleteXdndProxy = true;
++	void unsetToplevelXdndProxy();
++#endif
++
+ public slots:
+ 	void Init();
+ };
+diff --git a/panel/browser-panel.cpp b/panel/browser-panel.cpp
+index 68912c3b..91d0588f 100644
+--- a/panel/browser-panel.cpp
++++ b/panel/browser-panel.cpp
+@@ -235,6 +235,70 @@ void QCefWidgetInternal::closeBrowser()
+ 	}
+ }
+ 
++#ifdef __linux__
++static bool XWindowHasAtom(Display *display, Window w, Atom a)
++{
++	Atom type;
++	int format;
++	unsigned long nItems;
++	unsigned long bytesAfter;
++	unsigned char *data = NULL;
++
++	if (XGetWindowProperty(display, w, a, 0, LONG_MAX, False,
++			       AnyPropertyType, &type, &format, &nItems,
++			       &bytesAfter, &data) != Success)
++		return false;
++
++	if (data)
++		XFree(data);
++
++	return type != None;
++}
++
++void QCefWidgetInternal::unsetToplevelXdndProxy()
++{
++	if (!cefBrowser)
++		return;
++
++	CefWindowHandle browserHandle =
++		cefBrowser->GetHost()->GetWindowHandle();
++	Display *xDisplay = cef_get_xdisplay();
++	Window toplevel, root, parent, *children;
++	unsigned int nChildren;
++	bool found = false;
++
++	toplevel = browserHandle;
++
++	// Find the toplevel
++	Atom netWmPidAtom = XInternAtom(xDisplay, "_NET_WM_PID", False);
++	do {
++		if (XQueryTree(xDisplay, toplevel, &root, &parent, &children,
++			       &nChildren) == 0)
++			return;
++		if (root == parent ||
++		    !XWindowHasAtom(xDisplay, parent, netWmPidAtom)) {
++			found = true;
++			break;
++		}
++		toplevel = parent;
++	} while (true);
++
++	if (!found)
++		return;
++
++	// Check if the XdndProxy property is set
++	Atom xDndProxyAtom = XInternAtom(xDisplay, "XdndProxy", False);
++	if (needsDeleteXdndProxy &&
++	    !XWindowHasAtom(xDisplay, toplevel, xDndProxyAtom)) {
++		QueueCEFTask([this]() { unsetToplevelXdndProxy(); });
++		return;
++	}
++
++	XDeleteProperty(xDisplay, toplevel, xDndProxyAtom);
++	needsDeleteXdndProxy = false;
++}
++#endif
++
+ void QCefWidgetInternal::Init()
+ {
+ #ifndef __APPLE__
+@@ -281,6 +345,10 @@ void QCefWidgetInternal::Init()
+ 				CefRefPtr<CefDictionaryValue>(),
+ #endif
+ 				rqc);
++
++#ifdef __linux__
++			QueueCEFTask([this]() { unsetToplevelXdndProxy(); });
++#endif
+ 		});
+ 
+ 	if (success) {
