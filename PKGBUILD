@@ -7,7 +7,7 @@
 
 pkgname=mattermost-desktop
 pkgver=4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mattermost Desktop application for Linux'
 arch=(x86_64 i686)
 url="https://github.com/${pkgname/-//}"
@@ -29,6 +29,7 @@ prepare() {
 
 	sed -i -e "s/git rev-parse --short HEAD/echo $pkgver/" webpack.config.base.js
 	sed -e "s/@ELECTRON@/$_electron/" "../$pkgname.sh" > "$pkgname.sh"
+	sed -i -e 's#resources/linux#src/assets/linux#' electron-builder.json
 
 	# Depending on the architecture, in order to accelerate the build process,
 	# removes the compilation of ia32 or x64 build.

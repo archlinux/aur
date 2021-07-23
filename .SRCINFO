@@ -1,7 +1,7 @@
 pkgbase = mattermost-desktop
 	pkgdesc = Mattermost Desktop application for Linux
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
 	arch = i686
