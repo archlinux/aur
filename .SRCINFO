@@ -1,10 +1,11 @@
 pkgbase = python-pysilfont-git
 	pkgdesc = Python-based font utilities collection and framework
-	pkgver = 1.5.0.r1.g03061ba
-	pkgrel = 3
+	pkgver = 1.5.0.r94.g0b48597
+	pkgrel = 1
 	url = https://github.com/silnrsi/pysilfont
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-booleanoperations
@@ -31,4 +32,3 @@ pkgbase = python-pysilfont-git
 	sha256sums = SKIP
 
 pkgname = python-pysilfont-git
-
