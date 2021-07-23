@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openexr
-pkgver=3.0.5
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
@@ -12,24 +12,22 @@ makedepends=('mingw-w64-cmake')
 checkdepends=('mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 source=(
-	"https://github.com/AcademySoftwareFoundation/openexr/archive/v${pkgver}.tar.gz"
-	"keycode.patch"
+	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/openexr/archive/v${pkgver}.tar.gz"
+	"mingw_patch.patch::https://github.com/AcademySoftwareFoundation/openexr/commit/b579b6a7a2d680d591aa15028402d3c42b0069ee.patch"
 )
 sha256sums=(
-	'7aa6645da70e9a0cce8215d25030cfd4f4b17b4abf1ceec314f7eae15674e8e4'
-	'499b6a59993a362fdbed46d8328f7aa2e6b81e153d2844b27ada67e109b63f63'
+	'8c2ff765368a28e8210af741ddf91506cef40f1ed0f1a08b6b73bb3a7faf8d93'
+	'a73250add0e690518e2312ea3c30cc3083dd66019fdd8a47b79418d3493d5de9'
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" 
-	-DOPENEXR_BUILD_UTILS=ON -DOPENEXR_INSTALL_EXAMPLES=OFF -DOPENEXR_INSTALL_TOOLS=ON )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -msse4.2" -DCMAKE_C_FLAGS_RELEASE="-O2 -DNDEBUG -msse4.2 -D__USE_MINGW_ANSI_STDIO=1 -Wno-error=format-security"
+	-DOPENEXR_INSTALL_EXAMPLES=OFF -DOPENEXR_INSTALL_TOOLS=ON )
 _srcdir="openexr-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
-	find . -name 'CMakeLists.txt' -print0 | xargs -0 sed -i -r 's/COMMAND \$<TARGET_FILE/COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE/'
-	cd 'src/lib/OpenEXR'
-	patch -N -i "${srcdir}/keycode.patch"
+	patch -N -p1 -i "${srcdir}/mingw_patch.patch"
 }
 
 build() {
