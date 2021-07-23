@@ -1,6 +1,6 @@
 pkgbase = darkplaces-git
 	pkgdesc = An advanced Quake 1 game engine (git-latest)
-	pkgver = r10232.1f7645e7
+	pkgver = r10267.bfd44193
 	pkgrel = 1
 	url = https://github.com/xonotic/darkplaces.git
 	install = darkplaces-git.install
