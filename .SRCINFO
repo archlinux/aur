@@ -1,0 +1,11 @@
+pkgbase = minecraft-free-bin
+	pkgdesc = This package lets you run Minecraft for free.
+	pkgver = 0.0.23a_01
+	pkgrel = 1
+	arch = x86_64
+	license = unknown
+	makedepends = wget
+	source = https://datahub.io/test/empty-txt/r/empty.txt
+	md5sums = SKIP
+
+pkgname = minecraft-free-bin
