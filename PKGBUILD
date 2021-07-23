@@ -2,16 +2,16 @@
 
 pkgname=appimage-installer
 pkgver=2.0beta2
-pkgrel=1
+pkgrel=2
 pkgdesc="AppImage install tool."
 arch=('x86_64')
 url="https://gitee.com/deepin-opensource/appimage-installer"
-license=('GPLv3')
+license=('GPL3')
 _pkgname=${pkgname}-bin
-provides=(${pkgname} ${_pkgname})
-conflicts=(${pkgname} ${_pkgname})
+provides=(${pkgname} ${_pkgname} ${pkgname}-git)
+conflicts=(${pkgname} ${_pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
-depends=('qt5-tools' 'qt5-webengine' 'dtkwidget' 'dtkgui')
+depends=('dtkwidget' 'dtkgui' 'hicolor-icon-theme')
 makedepends=('qconf' 'git')
 backup=()
 options=('!strip')
