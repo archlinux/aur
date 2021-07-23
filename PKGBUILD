@@ -2,8 +2,8 @@
 # Contributor: Dario Ostuni <another.code.996@gmail.com>
 
 pkgname=astc-encoder-git
-pkgver=3.0.r0.gd21d551
-pkgrel=2
+pkgver=3.1.r0.gc616ca4
+pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard (git version)'
 arch=('x86_64')
 url='https://github.com/ARM-software/astc-encoder/'
@@ -14,16 +14,19 @@ provides=('astc-encoder')
 conflicts=('astc-encoder')
 source=('git+https://github.com/ARM-software/astc-encoder.git#branch=main'
         'git+https://github.com/google/googletest.git'
-        '010-astc-encoder-fix-install.patch')
+        '010-astc-encoder-fix-install.patch'
+        '020-astc-encoder-use-shared-library.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '32cb972d67318166273e6ca508270630bf329f5e1855502f6a493cd803ab2447')
+            '9c29ba69d8e9e10683ba965d2e13cdd939e477dcbef6e8d7700dc13d50cc9974'
+            'df157a7b4041da008ca6ebeb7fbe7263ada7298e4e2190ba7f42b7871f881581')
 
 prepare() {
     git -C astc-encoder submodule init
     git -C astc-encoder config --local submodule.Source/GoogleTest.url "${srcdir}/googletest"
     git -C astc-encoder submodule update
     patch -d astc-encoder -Np1 -i "${srcdir}/010-astc-encoder-fix-install.patch"
+    patch -d astc-encoder -Np1 -i "${srcdir}/020-astc-encoder-use-shared-library.patch"
 }
 
 pkgver() {
@@ -48,5 +51,7 @@ check() {
 
 package() {
     make -C build DESTDIR="$pkgdir" install
+    install -D -m644 astc-encoder/Source/astcenc.h -t "${pkgdir}/usr/include"
     ln -s astcenc-sse2 "${pkgdir}/usr/bin/astcenc"
+    ln -s libastcenc-sse2.so "${pkgdir}/usr/lib/libastcenc.so"
 }
