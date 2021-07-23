@@ -1,0 +1,13 @@
+pkgbase = rofi-mint-themes
+	pkgdesc = Mint-Y based themes for Rofi
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ItzSelenux/rofi-mint-themes
+	arch = any
+	license = GPL3
+	depends = rofi
+	provides = rofi-mint-themes
+	source = rofi-mint-themes-1.0.tar.gz::https://github.com/ItzSelenux/rofi-mint-themes/archive/refs/tags/1.0.tar.gz
+	sha256sums = b7e6aaf6222709fdff22a2ae00cddc3f0cb6181942f8b9c88348476cb4bf1c75
+
+pkgname = rofi-mint-themes
