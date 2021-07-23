@@ -17,11 +17,6 @@ pkgver() {
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	git apply ../ucw-patch
-}
-
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./configure
