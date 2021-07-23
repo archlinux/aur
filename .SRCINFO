@@ -1,6 +1,6 @@
 pkgbase = libucw-git
 	pkgdesc = General purpose library for the C language
-	pkgver = v6.5.12.r0.03c6ca57
+	pkgver = 6.5.12.r4.g96295244
 	pkgrel = 1
 	url = http://www.ucw.cz/libucw/
 	arch = any
@@ -17,10 +17,7 @@ pkgbase = libucw-git
 	depends = bash
 	depends = pkg-config
 	provides = libucw
-	source = libucw::git+git://git.ucw.cz/libucw.git#tag=v6.5.12
-	source = ucw-patch
+	source = libucw::git+git://git.ucw.cz/libucw.git
 	md5sums = SKIP
-	md5sums = 622cbf9eb33825170d620adf394502fd
 
 pkgname = libucw-git
-
