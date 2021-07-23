@@ -3,8 +3,8 @@
 pkgorg='loco-3d'
 _pkgname='crocoddyl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -14,7 +14,10 @@ optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
 sha256sums=('SKIP' 'SKIP')
-validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
+validpgpkeys=(
+    '9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28'  # https://github.com/nim65s.gpg
+    'F182CC432A4752C7A3E4FE02001EB2069D785C81'  # https://github.com/proyan.gpg
+)
 
 build() {
     mkdir -p "$pkgbase-$pkgver/build"
@@ -24,10 +27,10 @@ build() {
     make
 }
 
-#check() {
-    #cd "$pkgbase-$pkgver/build"
-    #make test
-#}
+check() {
+    cd "$pkgbase-$pkgver/build"
+    make test
+}
 
 package_crocoddyl() {
     cd "$pkgbase-$pkgver/build"
