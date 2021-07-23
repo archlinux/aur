@@ -1,12 +1,13 @@
 pkgbase = python-pyattributes
 	pkgdesc = Implementations of .NET-like attributes realized with Python decorators
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paebbels/pyAttributes
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	depends = python
 	depends = python-argcomplete
 	depends = python-pydecor
 	source = python-pyattributes-2.2.1.tar.gz::https://github.com/Paebbels/pyAttributes/archive/v2.2.1.tar.gz

@@ -3,12 +3,12 @@
 _pkgname='pyAttributes'
 pkgname=python-${_pkgname,,}
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementations of .NET-like attributes realized with Python decorators"
 arch=(any)
 url="https://github.com/Paebbels/pyAttributes"
 license=('Apache')
-depends=('python-argcomplete' 'python-pydecor')
+depends=('python' 'python-argcomplete' 'python-pydecor')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
