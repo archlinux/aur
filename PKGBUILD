@@ -1,7 +1,8 @@
-# Maintainer: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
+# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Contributor: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.46.3
+pkgver=0.50.1
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64')
@@ -16,13 +17,13 @@ depends=('libusb'
 makedepends=('make'
              'qt5-tools')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mooltipass/moolticute/archive/v0.46.3.tar.gz")
-sha256sums=('d08ce670ad77a511f42b3d0143918ab519248d37608b494ebd7820d3590a5f22')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d284ffe26c78a4c519148b598f82657fb2f50b85e195468c336b49f26d813c17')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    sed -i "s/#define APP_VERSION \"git\"/#define APP_VERSION \"v${pkgver}\"/" ./src/version.h
+    sed -i "/#define APP_VERSION/s/git/v$pkgver/" src/version.h
 }
 
 build() {
