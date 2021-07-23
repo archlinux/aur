@@ -3,8 +3,8 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=pioneer
-pkgver=20210203
-pkgrel=2
+pkgver=20210723
+pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64') # 'i686' untested
 url="https://github.com/pioneerspacesim/pioneer"
@@ -25,9 +25,9 @@ depends=(
   'sdl2' # libsdl2-dev
   'sdl2_image' # libsdl2-image-dev
 )
-makedepends=(automake naturaldocs pkgconf cmake ninja)
+makedepends=(cmake naturaldocs ninja pkgconf)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
-sha256sums=('fcbc57374123b44161e9d15d97bd950255f654a222840894f50bfc2be716ea68')
+sha256sums=('5f5d794d3095079e629980a6a3285d83b95b97e6c9b6058c73531cd06f8d082d')
 
 build()
 {
