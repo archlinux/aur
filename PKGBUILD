@@ -2,8 +2,8 @@
 # Contributor: John FrostFox <john.frostfox at gmail dot com>
 
 pkgname=recapp
-pkgver=1.1.1.r0.gfc914aa
-pkgrel=1
+pkgver=1.1.1
+pkgrel=2
 pkgdesc="Simple screen recorder for Linux written in GTK, using only GStreamer."
 arch=('any')
 url="https://github.com/amikha1lov/RecApp"
@@ -14,11 +14,6 @@ optdepends=('gst-plugins-bad: for MP4 recording'
 makedepends=('meson' 'ninja' 'git' 'intltool' 'appstream-glib' 'desktop-file-utils' 'python')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 md5sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/rc.\.//'
-}
 
 build() {
     cd "${srcdir}/${pkgname}"

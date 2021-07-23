@@ -1,7 +1,7 @@
 pkgbase = recapp
 	pkgdesc = Simple screen recorder for Linux written in GTK, using only GStreamer.
-	pkgver = 1.1.1.r0.gfc914aa
-	pkgrel = 1
+	pkgver = 1.1.1
+	pkgrel = 2
 	url = https://github.com/amikha1lov/RecApp
 	arch = any
 	license = GPL3
@@ -21,8 +21,7 @@ pkgbase = recapp
 	depends = xdg-user-dirs
 	optdepends = gst-plugins-bad: for MP4 recording
 	optdepends = gst-plugins-ugly: for MP4 recording
-	source = recapp::git+https://github.com/amikha1lov/RecApp#tag=v1.1.1.r0.gfc914aa
+	source = recapp::git+https://github.com/amikha1lov/RecApp#tag=v1.1.1
 	md5sums = SKIP
 
 pkgname = recapp
-
