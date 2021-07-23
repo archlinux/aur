@@ -2,22 +2,20 @@
 
 pkgname=tshm-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parser and formatter for TypeScript declarations that outputs HM-style type signatures"
-url="https://github.com/samhh/tshm/"
+url="https://github.com/samhh/tshm"
 arch=("x86_64")
 license=("MIT")
 source=(
     "$url/releases/download/$pkgver/tshm-linux-amd64"
-    "$url/archive/$pkgver.tar.gz"
+    "LICENSE"
 )
-sha256sums=(
-    "ae8b310915be27b697cd64a2601b716007081b12d9538657c455d84a6f85d60e"
-    "a40b8e8babfa7a70cdd290f2049c15ee687c3627188b0d1b79aa24f8758d4a8d"
-)
+sha256sums=('ae8b310915be27b697cd64a2601b716007081b12d9538657c455d84a6f85d60e'
+            '3440871ff80806ee4369048b13f1557aa609ca9f655040c44a219d4b844425ba')
 
 package() {
     install -Dm755 "tshm-linux-amd64" "$pkgdir/usr/bin/tshm"
-    install -Dm644 "$srcdir/tshm-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/tshm/LICENSE"
+    install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/tshm/LICENSE"
 }
 

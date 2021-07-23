@@ -1,13 +1,13 @@
 pkgbase = tshm-bin
 	pkgdesc = Parser and formatter for TypeScript declarations that outputs HM-style type signatures
 	pkgver = 0.4.0
-	pkgrel = 1
-	url = https://github.com/samhh/tshm/
+	pkgrel = 2
+	url = https://github.com/samhh/tshm
 	arch = x86_64
 	license = MIT
-	source = https://github.com/samhh/tshm//releases/download/0.4.0/tshm-linux-amd64
-	source = https://github.com/samhh/tshm//archive/0.4.0.tar.gz
+	source = https://github.com/samhh/tshm/releases/download/0.4.0/tshm-linux-amd64
+	source = LICENSE
 	sha256sums = ae8b310915be27b697cd64a2601b716007081b12d9538657c455d84a6f85d60e
-	sha256sums = a40b8e8babfa7a70cdd290f2049c15ee687c3627188b0d1b79aa24f8758d4a8d
+	sha256sums = 3440871ff80806ee4369048b13f1557aa609ca9f655040c44a219d4b844425ba
 
 pkgname = tshm-bin
