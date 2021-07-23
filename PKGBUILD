@@ -7,7 +7,7 @@
 
 pkgname=mattermost-desktop
 pkgver=4.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Mattermost Desktop application for Linux'
 arch=(x86_64 i686)
 url="https://github.com/${pkgname/-//}"
@@ -16,7 +16,6 @@ _electron=electron12
 _builderVersion='^20.10.4'
 depends=($_electron)
 makedepends=(git jq moreutils npm)
-#optdepends=('hunspell: spell checking')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "${pkgname/-/.}")
@@ -63,30 +62,12 @@ prepare() {
 			package.json |
 		sponge package.json
 
-	# Mattermost Desktop is using simple-spellchecker which prevents to bind on
-	# the system Arch Linux hunspell dictionnaries. This is due to the fact
-	# simple-spellchecker comes with its own set of dictionnaries. They differ
-	# from the hunspell dictionnaries in the sense of, hunspell's dictionnaries
-	# have additional pieces of info attributed to each line.
-	# e.g. in /usr/share/hunspell/fr_FR.dic, "ordinateur" (computer in English)
-	# ordinateur/S*() po:nom is:mas
-	# simple-spellcheck expects a line with:
-	# ordinateur
-	# instead
-	#
-	# Asking upstream to switch to electron-spellchecker will fix the issue.
-	# https://github.com/electron-userland/electron-spellchecker
-
-	# Install dependencies should be in prepare(), that way we don't need an
-	# internet connection during build().
-	# We don't need to run "npm run build" because that target is run by "npm
-	# run package:linux" any way.
-	npm install --cache "$srcdir/npm-cache"
+	npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
 }
 
 build() {
 	cd "desktop-$pkgver"
-	npm run package:linux --cache "$srcdir/npm-cache"
+	npm run package:linux --cache "$srcdir/npm-cache" --offline
 }
 
 package() {
