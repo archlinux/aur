@@ -21,13 +21,14 @@ optdepends=(
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
-source_url32="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx86-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
-source_url64="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxx64-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
-source_urlarmhf="http:$(curl -L -silent 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | awk -F 'rel=\"' '/linuxarmhf-/ {print $2}'| awk -F'"' '{print $1}'| sed '/^$/d' |uniq)"
+_dl_urls="$(curl -sL 'https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html' | grep -F '.tar.gz?__gda__')"
+_source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
+_source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
+_sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
 source=('configmgr.desktop'  'conncenter.desktop'  'selfservice.desktop' 'wfica.desktop' 'wfica.sh' 'wfica_assoc.sh')
-source_x86_64=($pkgname-x64-$pkgver.tar.gz::$source_url64)
-source_i686=($pkgname-x86-$pkgver.tar.gz::$source_url32)
-source_armv7h=($pkgname-armhf-$pkgver.tar.gz::$source_urlarmhf)
+source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
+source_i686=("$pkgname-x86-$pkgver.tar.gz::$_source32")
+source_armv7h=("$pkgname-armhf-$pkgver.tar.gz::$_sourcearmhf")
 sha256sums=('38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637'
             'cf9aed0c471658665fdc8bc3b8e7583d78834ecb5066d1c287bbcf890d5d14b9'
             '2d84f8cb6f5dfd1a92024b2344cef0affac021327e5ff6ffe579395fffd1fdf4'
