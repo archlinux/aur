@@ -14,10 +14,9 @@ url='https://www.citrix.com/downloads/workspace-app/linux/'
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11')
 makedepends=('automake' 'autoconf' 'wget')
-optdepends=(
-  'xerces-c: gtk2 configuration manager'
-  'webkit2gtk: gtk2 selfservice/storefront ui'
-  'libc++: for HDXTeams')
+optdepends=('xerces-c: gtk2 configuration manager'
+            'webkit2gtk: gtk2 selfservice/storefront ui'
+            'libc++: for HDXTeams')
 conflicts=('bin32-citrix-client' 'citrix-client')
 options=(!strip)
 backup=("opt/Citrix/ICAClient/config/appsrv.ini" "opt/Citrix/ICAClient/config/wfclient.ini" "opt/Citrix/ICAClient/config/module.ini")
@@ -78,11 +77,11 @@ package() {
     cp -r ./usb/ "${pkgdir}$ICAROOT"
     cp -r ./util/ "${pkgdir}$ICAROOT"
 
-	rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
+    rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
 
     # Install License
     install -m644 -D nls/en.UTF-8/eula.txt \
-      "${pkgdir}$ICAROOT/eula.txt"
+            "${pkgdir}$ICAROOT/eula.txt"
 
     # Install Version
     install -m644 -D "${srcdir}/PkgId" "${pkgdir}$ICAROOT/pkginf/$PKGINF"
@@ -101,22 +100,22 @@ package() {
     # Install wrapper script
     install -m755 "${srcdir}/wfica.sh" "${pkgdir}$ICAROOT/wfica.sh"
 
-	ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
-	ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
-	#mkdir -p "${pkgdir}/usr/lib/gstreamer-1.0"
-	#ln -s "$ICAROOT/util/libgstflatstm1.0.so" "${pkgdir}/usr/lib/gstreamer-1.0/libgstflatstm.so"
+    ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
+    ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
+    #mkdir -p "${pkgdir}/usr/lib/gstreamer-1.0"
+    #ln -s "$ICAROOT/util/libgstflatstm1.0.so" "${pkgdir}/usr/lib/gstreamer-1.0/libgstflatstm.so"
     # Dirty Hack
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
     lang=${LANG%%_*}
     if [[ ! -d "${pkgdir}/$ICAROOT/nls/$lang" ]]; then
-      lang='en'
+        lang='en'
     fi
     cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
 
-	sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
+    sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
     cd "${srcdir}"
     # install freedesktop.org files
     install -Dm644 wfica.desktop "${pkgdir}/usr/share/applications/wfica.desktop"
@@ -126,15 +125,15 @@ package() {
     # install scripts
     install -Dm755 wfica.sh "${pkgdir}$ICAROOT"
     install -Dm755 wfica_assoc.sh "${pkgdir}$ICAROOT"
-	chmod +x "${pkgdir}$ICAROOT/util/HdxRtcEngine"
-	chmod +x "${pkgdir}$ICAROOT/util/ctx_app_bind"
-	chmod +x "${pkgdir}$ICAROOT/util/ctxlogd"
-	chmod +x "${pkgdir}$ICAROOT/util/icalicense.sh"
-	chmod +x "${pkgdir}$ICAROOT/util/setlog"
+    chmod +x "${pkgdir}$ICAROOT/util/HdxRtcEngine"
+    chmod +x "${pkgdir}$ICAROOT/util/ctx_app_bind"
+    chmod +x "${pkgdir}$ICAROOT/util/ctxlogd"
+    chmod +x "${pkgdir}$ICAROOT/util/icalicense.sh"
+    chmod +x "${pkgdir}$ICAROOT/util/setlog"
 
     # make certificates available
-	rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
-	ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
+    rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
+    ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
     #ln -s /usr/share/ca-certificates/trust-source/* "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
     #c_rehash "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts/"
 }
