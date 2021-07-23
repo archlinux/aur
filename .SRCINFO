@@ -1,5 +1,5 @@
 pkgbase = denarius-git
-	pkgdesc = Denarius (DNR) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency.
+	pkgdesc = Denarius (D) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency.
 	pkgver = v3.3.9.13.r9.g7164b78
 	pkgrel = 1
 	url = https://denarius.io

@@ -3,7 +3,7 @@
 pkgname='denarius-git'
 pkgver=v3.3.9.13.r9.g7164b78
 pkgrel=1
-pkgdesc="Denarius (DNR) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency."
+pkgdesc="Denarius (D) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency."
 arch=('x86_64')
 url="https://denarius.io"
 license=('MIT')
