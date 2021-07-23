@@ -1,0 +1,18 @@
+pkgbase = lib32-agena-bin
+	pkgdesc = An Algol-inspired procedural programming language designed for science, scripting, and other applications
+	pkgver = 2.22.1
+	pkgrel = 1
+	url = http://agena.sourceforge.net
+	arch = x86_64
+	license = GPL
+	depends = lib32-libext
+	depends = lib32-ncurses
+	depends = lib32-readline
+	provides = agena
+	provides = agena-editor
+	conflicts = agena
+	conflicts = agena-editor
+	source = lib32-agena-bin-2.22.1.deb::https://master.dl.sourceforge.net/project/agena/Binaries/Agena%202.22.1/agena-2.22.1-linux.i386.deb
+	sha256sums = bc4ca05db82ddbfaa5bf431ca92b38f68dd1864793741830a7983b1f80c40b58
+
+pkgname = lib32-agena-bin

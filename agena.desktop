@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=2.22.1
+Name=AgenaEdit
+Comment=An Algol-inspired procedural programming language designed for science, scripting, and other applications
+Exec=/usr/bin/agenaedit
+Icon=agena
+Terminal=false
+Categories=Education;Programming;IDE
