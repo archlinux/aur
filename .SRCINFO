@@ -1,6 +1,6 @@
 pkgbase = linux-ck-uksm
 	pkgver = 5.12.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -34,6 +34,8 @@ pkgbase = linux-ck-uksm
 	source = 0015-lru.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/lru-patches-v4/0001-lru-patches.patch
 	source = 0016-zstd.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/zstd-patches-v2/0001-zstd-patches.patch
 	source = 0017-initramfs.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/initramfs-patches/0001-initramfs-patches.patch
+	source = 0018-android.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch
+	source = 0019-compaction.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/compaction-patches/0001-compaction-patches.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 88e4c32cf196662a6a24e72b978019d6f8881a8523918029f4229a995c5fd957a5e01f42de9f53c7980df7e3de5ea6b069cc2c5f93852e615fe8fe78a1b131c6
@@ -58,6 +60,8 @@ pkgbase = linux-ck-uksm
 	b2sums = 195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9
 	b2sums = 79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1
 	b2sums = ea09f90db718788ee43cce862261c473fc9ad82627eaa851a22fc4307268f93fe4cd33f37b7ac47f5e9fb89284cea9753e455f1539f02bab6a7a484fa58bcd19
+	b2sums = 7f7421abd36991ed0c8453bc54e1b7ed787f90b0a434d8f8db7bc979723e8ed3249a99e61e4b160cde44ebc2cec4b489a24bd37bc58ddaa73f1156e65c05dfc0
+	b2sums = 1439844e0f64f7a4218abf1841b9cddc679ee3af0957b8d0ca962aaac43d5ebdb8582405bed4474b067bd48f5ec5f83fac04044470e9f2d7aead224975d6ecab
 
 pkgname = linux-ck-uksm
 	pkgdesc = The Linux-ck-uksm kernel and modules with the ck1 and uksm patchesset featuring MuQSS CPU scheduler
