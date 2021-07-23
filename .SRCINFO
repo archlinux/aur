@@ -1,6 +1,6 @@
 pkgbase = mattermost-desktop
 	pkgdesc = Mattermost Desktop application for Linux
-	pkgver = 4.6.2
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = mattermost-desktop
 	license = Apache
 	makedepends = git
 	makedepends = jq
+	makedepends = moreutils
 	makedepends = npm
-	depends = electron7
-	source = mattermost-desktop-4.6.2.tar.gz::https://github.com/mattermost/desktop/archive/v4.6.2.tar.gz
+	depends = electron12
+	source = mattermost-desktop-4.7.0.tar.gz::https://github.com/mattermost/desktop/archive/v4.7.0.tar.gz
 	source = mattermost-desktop.sh
 	source = mattermost.desktop
-	sha256sums = 620ff64ec2c04bfe1005c25988a5d4cb20e376bc9dca9e3ce3e11dbd59ad0b47
+	sha256sums = f327d8560bebeb2075c7369898c3ed6c2d11be952a44853822a663ba42144055
 	sha256sums = 0f18f87764465f1fc5a9fdfb6ef2834af4623c13bc95fce58da6cb0d8d39a75e
 	sha256sums = e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa
 
 pkgname = mattermost-desktop
-
