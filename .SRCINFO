@@ -1,7 +1,7 @@
 pkgbase = gnupg-git
 	pkgdesc = Complete and free implementation of the OpenPGP standard
 	pkgver = 2.3.2_r9343.g25ae80b8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnupg.org/
 	install = gnupg-git.install
 	arch = x86_64
@@ -28,10 +28,8 @@ pkgbase = gnupg-git
 	provides = gnupg
 	conflicts = gnupg
 	source = git+https://github.com/gpg/gnupg.git
-	source = avoid-beta-warning.patch
 	source = drop-import-clean.patch
 	sha256sums = SKIP
-	sha256sums = 22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d
-	sha256sums = 498d482532d0039e505fe5854a734fcac05110a93890cb0d8ffa67fd13d2b7bd
+	sha256sums = 5b76faf39092fe6324d9fc058d9b3a22c2a47cc1964de2afe98093c6d86e7de0
 
 pkgname = gnupg-git

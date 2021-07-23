@@ -13,7 +13,7 @@
 
 pkgname=gnupg-git
 pkgver=2.3.2_r9343.g25ae80b8e
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
 license=(GPL)
@@ -27,11 +27,9 @@ optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
 source=("git+https://github.com/gpg/${pkgname%-git}.git"
-		avoid-beta-warning.patch
 		drop-import-clean.patch)
 sha256sums=('SKIP'
-            '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
-            '498d482532d0039e505fe5854a734fcac05110a93890cb0d8ffa67fd13d2b7bd')
+            '5b76faf39092fe6324d9fc058d9b3a22c2a47cc1964de2afe98093c6d86e7de0')
 install=gnupg-git.install
 
 pkgver() {
@@ -41,7 +39,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname%-git}
-  patch -p1 -i ../avoid-beta-warning.patch
   patch -p1 -i ../drop-import-clean.patch
 
   ./autogen.sh
