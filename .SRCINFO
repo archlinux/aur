@@ -1,7 +1,7 @@
 pkgbase = lib32-agena-bin
 	pkgdesc = An Algol-inspired procedural programming language designed for science, scripting, and other applications
 	pkgver = 2.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://agena.sourceforge.net
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = lib32-agena-bin
 
 pkgname = lib32-agena-bin
 	arch = x86_64
-	depends = lib32-libext
+	depends = lib32-libxext
 	depends = lib32-ncurses
 	depends = lib32-readline
 	provides = agena
@@ -24,7 +24,7 @@ pkgname = lib32-agena-bin
 pkgname = agena-bin
 	arch = i686
 	arch = x86_64
-	depends = libext
+	depends = libxext
 	depends = ncurses
 	depends = readline
 	provides = agena

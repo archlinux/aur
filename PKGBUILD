@@ -3,7 +3,7 @@
 pkgbase=lib32-agena-bin
 pkgname=(lib32-agena-bin agena-bin)
 pkgver=2.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Algol-inspired procedural programming language designed for science, scripting, and other applications"
 arch=('x86_64' 'i686')
 url="http://agena.sourceforge.net"
@@ -18,7 +18,7 @@ prepare() {
 }
 
 package_lib32-agena-bin() {
-	depends=('lib32-libext' 'lib32-ncurses' 'lib32-readline')
+	depends=('lib32-libxext' 'lib32-ncurses' 'lib32-readline')
 	arch=('x86_64')
 	provides=('agena' 'agena-editor')
 	conflicts=('agena' 'agena-editor')
@@ -39,7 +39,7 @@ package_lib32-agena-bin() {
 }
 
 package_agena-bin() {
-	depends=('libext' 'ncurses' 'readline')
+	depends=('libxext' 'ncurses' 'readline')
 	arch=('i686' 'x86_64')
 	provides=('agena' 'agena-editor')
 	conflicts=('agena' 'agena-editor')
