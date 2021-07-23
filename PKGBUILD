@@ -1,17 +1,18 @@
-# Contributor: Michał Pałubicki <maln0ir@gmx.com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
-# Check function disabled because upstream testing requires python-datetime
-# < 2.5 which is older than Arch has packaged. Since the test suite is mostly
-# for upstream regressions not packaging we're skipping it.
+# The upstream test suite requires an outdated version of python-parsedatetime
+# no longer available on Arch. Since the test suite is mostly for upstream
+# regressions (not packaging), skipping it is in most users best interest.
+BUILDENV+=('!check')
 
 _pkgname=agate-sql
 pkgname=python-$_pkgname
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds SQL read/write support to agate'
 arch=(any)
-url='https://agate-sql.readthedocs.org/'
+url="https://$_pkgname.readthedocs.org/"
 license=(MIT)
 depends=(python
          'python-agate>=1.5.0'
@@ -19,10 +20,10 @@ depends=(python
          'python-sqlalchemy>=1.0.8')
 makedepends=(python-setuptools
              'python-sphinx>=1.2.2')
-# checkdepends=(python-crate
-#               python-geojson
-#               python-nose
-#               python-parsedatetime)
+checkdepends=(python-crate
+              python-geojson
+              python-nose
+              'python-parsedatetime<=2.5')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/wireservice/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('a324a4831b7b30d6a08237a79f873591b9353ebeb4255a9eca023d4a795dc634')
 
@@ -35,10 +36,10 @@ build() {
 	ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "build/sphinx/html/_static"
 }
 
-# check() {
-#     cd "$_pkgname-$pkgver"
-#     python setup.py test
-# }
+check() {
+	cd "$_pkgname-$pkgver"
+	python setup.py test
+}
 
 package() {
 	cd "$_pkgname-$pkgver"
