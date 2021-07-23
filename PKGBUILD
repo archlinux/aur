@@ -1,7 +1,7 @@
 # Maintainer: Matthieu Borde <starmatt at free dot fr>
 
 pkgname=gnome-shell-extension-babar
-pkgver=52
+pkgver=55
 pkgrel=1
 pkgdesc='GNOME shell extension that adds grid, favorites, workspaces & tasks in top panel'
 arch=(any)
