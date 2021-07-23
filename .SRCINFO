@@ -1,6 +1,6 @@
 pkgbase = onevpl-intel-gpu-git
 	pkgdesc = oneVPL runtime implementation for Intel GPU (TigerLake and later) (git version)
-	pkgver = 21.2.3.r85.gd20c85cd
+	pkgver = 21.3.0.r30.ge629271b
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = onevpl-intel-gpu-git
 	conflicts = onevpl-intel-gpu
 	source = git+https://github.com/oneapi-src/oneVPL-intel-gpu.git
 	source = 010-onevpl-intel-gpu-disable-verbose-makefile.patch
-	source = 020-onevpl-intel-gpu-fix-build.patch::https://github.com/oneapi-src/oneVPL-intel-gpu/pull/115.patch
 	sha256sums = SKIP
 	sha256sums = c4056b72a2c5dedb54ed19ad56cd0ff60d4dc6d8e991db3d71d18423aa19012e
-	sha256sums = c281cc5c819fb198040e87aec16b7f928e915c646157b0d2bc9052b23a19a5e5
 
 pkgname = onevpl-intel-gpu-git
