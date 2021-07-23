@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  qmake \
+  qmake V4L_Frontend.pro \
     QMAKE_CFLAGS="$CFLAGS" \
     QMAKE_CXXFLAGS="$CXXFLAGS" \
     QMAKE_LFLAGS="$LDFLAGS"
