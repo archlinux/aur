@@ -1,16 +1,23 @@
-# Maintainer: PumpkinCheshire <$(base64 --decode <<<'c29sbHlvbnpvdUBnbWFpbC5jb20=')>
+#!/bin/bash
+
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 
 pkgname=marp-cli
-pkgver=1.1.1
-pkgrel=2
-pkgdesc="A CLI interface for Marp and Marpit based converters"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='A CLI interface for Marp and Marpit based converters'
+url='https://github.com/marp-team/marp-cli'
 arch=('x86_64')
-url="https://github.com/marp-team/marp-cli"
 license=('MIT')
-makedepends=('npm' 'jq')
-optdepends=('chromium: PDF/PPTX/image conversion'
-    'google-chrome: PDF/PPTX/image conversion')
+makedepends=(
+    'npm'
+    'jq'
+)
+optdepends=(
+    'chromium: PDF/PPTX/image conversion'
+    'google-chrome: PDF/PPTX/image conversion'
+)
 depends=('nodejs')
 provides=('marp-cli')
 conflicts=('marp-cli-bin')
@@ -21,12 +28,12 @@ source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 # I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
-sha256sums=('62711d9298f96a9634020d31a05561ad076e59e06749b0be643a20ccb8533770')
+b2sums=('4d95ac62f1f092160d3f6ba050a3734c8fd888021981c1bdcabb58fc13f45fbb25fb1cf2cbbbdf0f9d50be83132e64406c4bb8abd27a46515ca5d552b776a548')
 
 package() {
-    npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
     #    chmod -R go-w "$pkgdir/usr"
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr" -type d -exec chmod 755 {} +
     chown -R root:root "$pkgdir/usr"
 
     # Remove references to $pkgdir
@@ -34,7 +41,10 @@ package() {
 
     # Remove references to $srcdir
     local tmppackage="$(mktemp)"
+    # local tmppackage
     local pkgjson="$pkgdir/usr/lib/node_modules/@marp-team/$pkgname/package.json"
+    # local pkgjson
+
     jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" >"$tmppackage"
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
