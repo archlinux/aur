@@ -4,12 +4,12 @@ pkgver=0.2.1
 pkgrel=1
 pkgdesc="IceWM Control Center, from Antix Linux project"
 url="https://github.com/ItzSelenux/antix-icewmcc"
-arch=('any')
+arch=('x86_64')
 license=('unknown')
 depends=('gtkdialog' 'yad' 'icewm')
 provides=('icewmcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cf34d05852f5d313a82ef23a415926ef4c9f4fa3673fdb71ba047d73597c0a9e')
+sha256sums=('37cb86d304a5d9689061e0c4bccbd84bd632922dcbe8db06ded6a2697f421c01')
  
 package() {
   cd "$pkgname-$pkgver/"
