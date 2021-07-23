@@ -1,3 +1,32 @@
+diff --git a/browser/brave_wallet/BUILD.gn b/browser/brave_wallet/BUILD.gn
+index 355a43e..b0f05ea 100644
+--- a/browser/brave_wallet/BUILD.gn
++++ b/browser/brave_wallet/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
+ import("//extensions/buildflags/buildflags.gni")
+
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+ source_set("brave_wallet") {
+   check_includes = false
+diff --git a/browser/ethereum_remote_client/BUILD.gn b/browser/ethereum_remote_client/BUILD.gn
+index 5684e60..218ec12 100644
+--- a/browser/ethereum_remote_client/BUILD.gn
++++ b/browser/ethereum_remote_client/BUILD.gn
+@@ -6,9 +6,9 @@ import("//build/config/features.gni")
+ import("//extensions/buildflags/buildflags.gni")
+
+ # ethereum_remote_client_enabled requires brave_wallet_enabled
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+-assert(ethereum_remote_client_enabled)
++#assert(ethereum_remote_client_enabled)
+
+ source_set("ethereum_remote_client") {
+   configs += [ ":infura_config" ]
 diff --git a/browser/ethereum_remote_client/buildflags/buildflags.gni b/browser/ethereum_remote_client/buildflags/buildflags.gni
 index 253a07e..a85a97d 100644
 --- a/browser/ethereum_remote_client/buildflags/buildflags.gni
@@ -7,6 +36,19 @@ index 253a07e..a85a97d 100644
 -  ethereum_remote_client_enabled = !is_ios && !is_android
 +  ethereum_remote_client_enabled = false
  }
+diff --git a/components/binance/browser/BUILD.gn b/components/binance/browser/BUILD.gn
+index b929992..0824ba4 100644
+--- a/components/binance/browser/BUILD.gn
++++ b/components/binance/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/binance/browser/buildflags/buildflags.gni")
+
+-assert(binance_enabled)
++#assert(binance_enabled)
+
+ declare_args() {
+   binance_client_id = ""
 diff --git a/components/binance/browser/buildflags/buildflags.gni b/components/binance/browser/buildflags/buildflags.gni
 index d4bc81a..7b26be8 100644
 --- a/components/binance/browser/buildflags/buildflags.gni
@@ -80,6 +122,19 @@ index e8cbfc9..cdf09ce 100644
 -  enable_brave_vpn = is_win || is_android || (is_mac && is_official_build)
 +  enable_brave_vpn = false
  }
+diff --git a/components/brave_wallet/browser/BUILD.gn b/components/brave_wallet/browser/BUILD.gn
+index 58fbaec..75d5c6a 100644
+--- a/components/brave_wallet/browser/BUILD.gn
++++ b/components/brave_wallet/browser/BUILD.gn
+@@ -3,7 +3,7 @@ import("//brave/components/brave_wallet/browser/config.gni")
+ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
+ import("//build/config/features.gni")
+
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+ static_library("browser") {
+   configs += [ ":infura_config" ]
 diff --git a/components/brave_wallet/common/buildflags/buildflags.gni b/components/brave_wallet/common/buildflags/buildflags.gni
 index 213b51c..a38ea6b 100644
 --- a/components/brave_wallet/common/buildflags/buildflags.gni
@@ -89,6 +144,19 @@ index 213b51c..a38ea6b 100644
 -  brave_wallet_enabled = true
 +  brave_wallet_enabled = false
  }
+diff --git a/components/crypto_dot_com/browser/BUILD.gn b/components/crypto_dot_com/browser/BUILD.gn
+index b3dfda4..c730727 100644
+--- a/components/crypto_dot_com/browser/BUILD.gn
++++ b/components/crypto_dot_com/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+
+-assert(crypto_dot_com_enabled)
++#assert(crypto_dot_com_enabled)
+
+ static_library("browser") {
+   public_deps = [ "buildflags" ]
 diff --git a/components/crypto_dot_com/browser/buildflags/buildflags.gni b/components/crypto_dot_com/browser/buildflags/buildflags.gni
 index e0ebbbf..b23ccdb 100644
 --- a/components/crypto_dot_com/browser/buildflags/buildflags.gni
@@ -98,6 +166,18 @@ index e0ebbbf..b23ccdb 100644
 -  crypto_dot_com_enabled = is_mac || is_linux || is_win
 +  crypto_dot_com_enabled = false
  }
+diff --git a/components/crypto_dot_com/common/BUILD.gn b/components/crypto_dot_com/common/BUILD.gn
+index 1a7abd9..a15c3f0 100644
+--- a/components/crypto_dot_com/common/BUILD.gn
++++ b/components/crypto_dot_com/common/BUILD.gn
+@@ -1,6 +1,6 @@
+ import("//brave/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+
+-assert(crypto_dot_com_enabled)
++#assert(crypto_dot_com_enabled)
+
+ source_set("common") {
+     sources = [
 diff --git a/components/p3a/buildflags.gni b/components/p3a/buildflags.gni
 index b8fca0c..d606873 100644
 --- a/components/p3a/buildflags.gni
@@ -107,3 +187,16 @@ index b8fca0c..d606873 100644
 -  brave_p3a_enabled = true
 +  brave_p3a_enabled = false
  }
+diff --git a/ios/browser/api/wallet/BUILD.gn b/ios/browser/api/wallet/BUILD.gn
+index d43223a..d2ad0e8 100644
+--- a/ios/browser/api/wallet/BUILD.gn
++++ b/ios/browser/api/wallet/BUILD.gn
+@@ -7,7 +7,7 @@ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
+ import("//build/config/ios/rules.gni")
+ import("//ios/build/config.gni")
+
+-assert(brave_wallet_enabled)
++#assert(brave_wallet_enabled)
+
+ source_set("wallet") {
+   configs += [ "//build/config/compiler:enable_arc" ]
