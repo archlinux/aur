@@ -1,7 +1,7 @@
 pkgbase = perl-apache-session
 	pkgdesc = A persistence framework for session data
 	pkgver = 1.94
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Apache-Session
 	arch = any
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = perl-apache-session
 	sha512sums = 796874e25dfc38a45998f8e13c3dabda779c9590c768ddc706a7bdae4b9e4b74ea457617c0079dd6d8168d97c19428d7609af00d5db218ad545f3c7dd0c0b825
 
 pkgname = perl-apache-session
-
