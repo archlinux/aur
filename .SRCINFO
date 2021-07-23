@@ -1,10 +1,11 @@
 pkgbase = libucw-git
 	pkgdesc = General purpose library for the C language
-	pkgver = 6.5.12.r4.g96295244
+	pkgver = v6.5.12.r0.03c6ca57
 	pkgrel = 1
 	url = http://www.ucw.cz/libucw/
 	arch = any
 	license = LGPL
+	makedepends = coreutils
 	makedepends = perl
 	makedepends = gcc
 	makedepends = git

@@ -1,26 +1,26 @@
 # Maintainer: Prokop Randáček <prokop@randacek.dev>
 pkgname=libucw-git
-pkgver=v6.5.12.r4.96295244
+pkgver=v6.5.12.r0.03c6ca57
 pkgrel=1
 pkgdesc='General purpose library for the C language'
 arch=('any')
 url='http://www.ucw.cz/libucw/'
 license=('LGPL')
 depends=(perl bash pkg-config)
-makedepends=(perl gcc git pkg-config curl make bash asciidoc)
+makedepends=(coreutils perl gcc git pkg-config curl make bash asciidoc)
 provides=(libucw)
 source=('libucw::git+git://git.ucw.cz/libucw.git')
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./configure
-	make
+	make -j$(nproc)
 }
 
 package() {
