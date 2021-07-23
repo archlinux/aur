@@ -21,6 +21,7 @@ sha256sums=('25f98dded418cebe2461af05a597754866efb774b294f4a146fe49fd08e302ae'
 build() {
   cd "${pkgname}-${pkgver}"
   make node_modules
+  yarn run npm:fix-build-version
   make build-extensions
   yarn dist:dir
 }
