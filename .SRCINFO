@@ -1,11 +1,11 @@
 pkgbase = internxt-drive-bin
 	pkgdesc = Internxt Drive client UI
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://internxt.com
 	arch = x86_64
 	license = AGPL3
-	source = internxt-drive-1.3.2_x86_64.AppImage::https://github.com/internxt/drive-desktop/releases/download/v1.3.2/internxt-drive-1.3.2_x86_64.AppImage
-	sha256sums = 5252e8a7e7ec30526bbe60e12f2d77e76421c6da7b88883df5c12e864bfc4859
+	source = internxt-drive-1.3.3_x86_64.AppImage::https://github.com/internxt/drive-desktop/releases/download/v1.3.3/internxt-drive-1.3.3_x86_64.AppImage
+	sha256sums = 54e474de28c6cc5b9d6c4147d6238c72b6e670ae5239ffed37854dec0fff1000
 
 pkgname = internxt-drive-bin
