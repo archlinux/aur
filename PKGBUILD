@@ -9,6 +9,7 @@ options=(!strip)
 url='https://www.jetbrains.com/idea/'
 license=('GPL3')
 depends=('java-environment>=11')
+optdepends=('jdk-jetbrains>=11' 'jre-jetbrains>=11')
 conflicts=('intellij-idea-ultimate-with-jbr' 'intellij-idea-ultimate-edition' 'intellij-idea-ultimate-edition-jre')
 
 source=(
