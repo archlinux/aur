@@ -8,9 +8,9 @@ arch=(x86_64)
 url="https://github.com/openshift/okd"
 license=('Apache')
 
-pkgdate="2021-07-03-190901"
+_pkgdate="2021-07-03-190901"
 
-source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}.okd-${pkgdate}/openshift-client-linux-${pkgver//_/-}.okd-${pkgdate}.tar.gz")
+source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}.okd-${_pkgdate}/openshift-client-linux-${pkgver//_/-}.okd-${_pkgdate}.tar.gz")
 
 sha256sums=('32a3c7ad793c673fdfdbb5ecbc4ef03bfcfd4a59ce3ceef87b05c4b0d31dc5ff')
 
