@@ -1,7 +1,7 @@
 pkgbase = okd-client-bin
 	pkgdesc = Client tools for OpenShift
-	pkgver = 4.7.0_0
-	pkgrel = 2
+	pkgver = 4.7.0_0.okd_2021_07_03_190901
+	pkgrel = 1
 	url = https://github.com/openshift/okd
 	arch = x86_64
 	license = Apache
