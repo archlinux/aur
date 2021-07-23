@@ -2,7 +2,7 @@
 
 pkgname=gpu-screen-recorder-git
 pkgver=r68.1f71584
-pkgrel=1
+pkgrel=2
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux.'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
@@ -22,5 +22,5 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm755 "sibs-build/$(sibs platform)/release/gpu-screen-recorder" "$pkgdir/usr/bin/gpu-screen-recorder"
-  echo "Optional: Install NVENC patch and NvFBC patch to be able to record displays/the entire screen"
+  echo "Optional: Install NVENC patch and NvFBC patch from https://github.com/keylase/nvidia-patch to be able to record displays/the entire screen"
 }
