@@ -6,6 +6,7 @@ pkgbase = python-iosbackup
 	arch = any
 	license = LGPL
 	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python
 	depends = python-biplist
 	depends = python-pycryptodome
