@@ -9,7 +9,7 @@ license=('unknown')
 depends=('gtkdialog' 'yad' 'icewm')
 provides=('icewmcc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ec704e47143f86ff8634249185e8dc2da006203064683f15d5a5e1cd3d4c3448')
+sha256sums=('cf34d05852f5d313a82ef23a415926ef4c9f4fa3673fdb71ba047d73597c0a9e')
  
 package() {
   cd "$pkgname-$pkgver/"
@@ -28,5 +28,6 @@ package() {
   install -Dm755 "icewmccwinlist.sh" -t "$pkgdir/usr/local/bin/icewmcc"
   install -Dm755 "icewmccwkspaces.pl" -t "$pkgdir/usr/local/bin/icewmcc"
   install -Dm755 "icewmccwkspaces.sh" -t "$pkgdir/usr/local/bin/icewmcc"
+  install -Dm755 "IceWMcc.desktop" -t "$pkgdir/usr/share/applications"
 
 }
