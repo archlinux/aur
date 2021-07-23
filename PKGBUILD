@@ -1,6 +1,6 @@
 # Maintainer: Alexander Goussas <agoussas@espol.edu.ec>`
 pkgname=st-aloussase-git
-pkgver=1.0.0
+pkgver=r1.f43da6e
 pkgrel=1
 epoch=
 pkgdesc="aloussase's build of suckless' Simple Terminal"
@@ -24,16 +24,16 @@ md5sums=("SKIP")
 validpgpkeys=()
 
 pkgver() {
-    cd "$pkgname"
+    cd st
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "st"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "st"
     make DESTDIR="$pkgdir/" install
 }
