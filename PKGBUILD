@@ -10,7 +10,7 @@ optdepends=(
   'clang: add command for C/CPP insert mode completion support'
   'ranger: provides file explorer functionality'
   'tmux: tabbing support'
-  'universal-ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition'
+  'ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition'
   'xdotool: add support for kak windows switching (in grep, make... files)'
   'xorg-xmessage: for nicer debugging messages'
 )
