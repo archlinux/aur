@@ -6,7 +6,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=3.0.2.r523.g79d7db6aa
+pkgver=3.0.2.r531.gc927f17ce
 pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder"
 arch=(i686 x86_64)
@@ -33,6 +33,7 @@ pkgver() {
 
 prepare() {
   cd tenacity
+  sed -i 's/Audacity/Tenacity/g' ${srcdir}/tenacity/src/tenacity.desktop.in
   patch --forward --strip=1 --input="${srcdir}/tenacity.patch"
 }
 

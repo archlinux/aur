@@ -1,6 +1,6 @@
 pkgbase = tenacity-git
 	pkgdesc = An easy-to-use multi-track audio editor and recorder
-	pkgver = 3.0.2.r523.g79d7db6aa
+	pkgver = 3.0.2.r531.gc927f17ce
 	pkgrel = 1
 	url = https://github.com/tenacityteam/tenacity
 	arch = i686
