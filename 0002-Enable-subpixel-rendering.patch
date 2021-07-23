@@ -8,10 +8,10 @@ Subject: [PATCH] Enable subpixel rendering
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index da4250b083..5669cf2496 100644
+index 4227fd376e..32da3fa039 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -124,7 +124,7 @@ FT_BEGIN_HEADER
+@@ -123,7 +123,7 @@ FT_BEGIN_HEADER
     * When this macro is not defined, FreeType offers alternative LCD
     * rendering technology that produces excellent output.
     */

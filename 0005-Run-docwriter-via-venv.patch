@@ -1,0 +1,54 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 23 Jul 2021 21:27:19 +0000
+Subject: [PATCH] Run docwriter via venv
+
+---
+ builds/meson/generate_reference_docs.py | 6 ++++--
+ meson.build                             | 2 +-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/builds/meson/generate_reference_docs.py b/builds/meson/generate_reference_docs.py
+index 15d9b06600..124c174ff5 100644
+--- a/builds/meson/generate_reference_docs.py
++++ b/builds/meson/generate_reference_docs.py
+@@ -65,22 +65,24 @@ def main():
+             "Not a directory: " + args.output_dir
+         )
+ 
++    executable = os.getenv("DOCWRITER_PYTHON")
++
+     cmds = [
+-        sys.executable,
++        executable,
+         "-m",
+         "docwriter",
+         "--prefix=ft2",
+         "--title=FreeType-" + args.version,
+         "--site=reference",
+         "--output=" + args.output_dir,
+     ] + all_headers
+ 
+     print("Running docwriter...")
+     subprocess.check_call(cmds)
+ 
+     print("Building static site...")
+     subprocess.check_call(
+-        [sys.executable, "-m", "mkdocs", "build"], cwd=args.output_dir
++        [executable, "-m", "mkdocs", "build"], cwd=args.output_dir
+     )
+     return 0
+ 
+diff --git a/meson.build b/meson.build
+index 0eb780bfd6..295a3853f8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -392,7 +392,7 @@ gen_docs = custom_target('freetype2 reference documentation',
+   command: [python_exe,
+     files('builds/meson/generate_reference_docs.py'),
+     '--version=' + meson.project_version(),
+-    '--input-dir=' + meson.source_root(),
++    '--input-dir=' + meson.current_source_dir(),
+     '--output-dir=@OUTPUT@'
+   ],
+ )

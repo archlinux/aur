@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 23 Jul 2021 21:12:45 +0000
+Subject: [PATCH] Use docwriter from PATH
+
+---
+ builds/meson/generate_reference_docs.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/builds/meson/generate_reference_docs.py b/builds/meson/generate_reference_docs.py
+index 15d9b06600..158c536a82 100644
+--- a/builds/meson/generate_reference_docs.py
++++ b/builds/meson/generate_reference_docs.py
+@@ -66,8 +66,6 @@ def main():
+         )
+ 
+     cmds = [
+-        sys.executable,
+-        "-m",
+         "docwriter",
+         "--prefix=ft2",
+         "--title=FreeType-" + args.version,
