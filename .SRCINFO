@@ -1,10 +1,13 @@
 pkgbase = alif-git
 	pkgdesc = The Alif Arabic Programming Language - لغة البرمجة العربية ألف
-	pkgver = r66.a483c1b
-	pkgrel = 0
+	pkgver = r94.5975e21
+	pkgrel = 1
 	url = https://www.aliflang.org/
 	arch = x86_64
 	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
 	depends = boost
 	optdepends = webui-git: to use web browsers as UI
 	provides = alif

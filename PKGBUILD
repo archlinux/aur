@@ -2,12 +2,13 @@
 
 pkgname=alif-git
 pkgdesc="The Alif Arabic Programming Language - لغة البرمجة العربية ألف"
-pkgver=r66.a483c1b
-pkgrel=0
+pkgver=r94.5975e21
+pkgrel=1
 arch=('x86_64')
 url="https://www.aliflang.org/"
 license=('GPL3')
 depends=('boost')
+makedepends=('boost' 'cmake' 'git')
 optdepends=('webui-git: to use web browsers as UI')
 conflicts=('alif')
 provides=('alif')
@@ -21,11 +22,14 @@ pkgver() {
 
 build() {
     cd $srcdir/$pkgname
-    cmake . . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
+    mkdir -p build 
+    cd build
+    cmake .. . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/local
     make
 }
 
 package() {
     cd $srcdir/$pkgname
+    cd build
     make install
 }
