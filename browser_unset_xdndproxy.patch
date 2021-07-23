@@ -1,4 +1,4 @@
-From 81cf256a501ba29d5307ee643f1e323c0e8fe9e9 Mon Sep 17 00:00:00 2001
+From 2e23319740c85fc1a4ed93756e4afc6854eb4dfe Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 22 Jul 2021 22:13:20 -0300
 Subject: [PATCH] browser-panel: Manually unset XdndProxy
@@ -58,8 +58,8 @@ Fixes https://github.com/obsproject/obs-studio/issues/4488
 [6] https://code.qt.io/cgit/qt/qtbase.git/tree/src/plugins/platforms/xcb/qxcbdrag.cpp?h=v5.15.2#n543
 ---
  panel/browser-panel-internal.hpp |  6 +++
- panel/browser-panel.cpp          | 68 ++++++++++++++++++++++++++++++++
- 2 files changed, 74 insertions(+)
+ panel/browser-panel.cpp          | 72 ++++++++++++++++++++++++++++++++
+ 2 files changed, 78 insertions(+)
 
 diff --git a/panel/browser-panel-internal.hpp b/panel/browser-panel-internal.hpp
 index 03279c2b..cc4514af 100644
@@ -79,10 +79,10 @@ index 03279c2b..cc4514af 100644
  	void Init();
  };
 diff --git a/panel/browser-panel.cpp b/panel/browser-panel.cpp
-index 68912c3b..91d0588f 100644
+index 68912c3b..aa07fb5b 100644
 --- a/panel/browser-panel.cpp
 +++ b/panel/browser-panel.cpp
-@@ -235,6 +235,70 @@ void QCefWidgetInternal::closeBrowser()
+@@ -235,6 +235,74 @@ void QCefWidgetInternal::closeBrowser()
  	}
  }
  
@@ -126,6 +126,10 @@ index 68912c3b..91d0588f 100644
 +		if (XQueryTree(xDisplay, toplevel, &root, &parent, &children,
 +			       &nChildren) == 0)
 +			return;
++
++		if (children)
++		    XFree(children);
++
 +		if (root == parent ||
 +		    !XWindowHasAtom(xDisplay, parent, netWmPidAtom)) {
 +			found = true;
@@ -153,7 +157,7 @@ index 68912c3b..91d0588f 100644
  void QCefWidgetInternal::Init()
  {
  #ifndef __APPLE__
-@@ -281,6 +345,10 @@ void QCefWidgetInternal::Init()
+@@ -281,6 +349,10 @@ void QCefWidgetInternal::Init()
  				CefRefPtr<CefDictionaryValue>(),
  #endif
  				rqc);

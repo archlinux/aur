@@ -2,14 +2,14 @@
 
 # Scene and source drag & drop was disabled due to this issue
 # (https://github.com/obsproject/obs-studio/issues/4488)
-# But a PR fixing this is out, give your feedback on the PR page
 # (https://github.com/obsproject/obs-browser/pull/304)
 # You can test it by changing the following variable to 1
+# But a PR fixing this is out, give your feedback on the PR page
 TEST_DRAGDROPFIX=0
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -68,7 +68,7 @@ sha256sums=(
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731"
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
-        "5771a40e9a136b24561644279c6986e15e987d8085031c32218b22945d0af44e"
+        "032dfbd47f402ad97f60c2dda1c0496798638a340acd61bcdb6c3b5a18ad132b"
         "SKIP"
         "SKIP"
 )
