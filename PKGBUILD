@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}/src"
-	OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 make "USE_NATIVETOR=-" -f makefile.unix -j7
+	OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 make "USE_NATIVETOR=-" -f makefile.unix
 }
 
 package() {
