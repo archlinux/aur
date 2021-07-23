@@ -1,28 +1,25 @@
 pkgbase = emacs-application-framework-git
 	pkgdesc = EAF extends GNU Emacs to an entire universe of powerful GUI applications.
-	pkgver = r1908.b21efed
+	pkgver = r2086.4b5d4294
 	pkgrel = 1
 	url = https://github.com/manateelazycat/emacs-application-framework
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs
-	depends = python-epc
+	makedepends = nodejs
+	makedepends = npm
 	depends = python-pyqt5
 	depends = python-pyqt5-sip
 	depends = python-pyqtwebengine
 	depends = wmctrl
-	depends = nodejs
-	optdepends = python-pymupdf: EAF PDF Viewer support
-	optdepends = python-qrcode: EAF File Sender/File Receiver/Airshare support
-	optdepends = libreoffice: EAF Doc Viewer support
-	optdepends = filebrowser-bin: EAF File Browser support
-	optdepends = python-qtconsole: EAF Jupyter support
-	optdepends = python-retrying: EAF Markdown Previewer support
+	depends = python-qrcode
+	depends = aria2
+	depends = python-qtconsole
+	depends = taglib
+	depends = filebrowser-bin
 	provides = emacs-eaf
 	conflicts = emacs-eaf
 	source = git+https://github.com/manateelazycat/emacs-application-framework
 	md5sums = SKIP
 
 pkgname = emacs-application-framework-git
-
