@@ -21,4 +21,3 @@ pkgbase = libucw-git
 	md5sums = SKIP
 
 pkgname = libucw-git
-
