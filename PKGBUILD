@@ -1,11 +1,11 @@
+# Maintainer: Pellegrino Prevete    pellegrinoprevete at gmail dot com
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 # Contributor: Jacob Alexander    haata at kiibohd dot com
-# Contributor: Pellegrino Prevete    pellegrinoprevete at gmail dot com
 
 pkgname=('python-apt' 'python2-apt')
 _pkgname=python-apt
 _pkgname2=python2-apt
-pkgver=2.1.3
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Python binding of libapt-pkg"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python2-setuptools' 'python-setuptools' 'python-distutils-extra' '
 conflicts=()
 options=(!emptydirs)
 source=(https://salsa.debian.org/apt-team/python-apt/-/archive/${pkgver}/python-apt-${pkgver}.tar.gz)
-sha512sums=('0917fcc7f8752d8b3b6e53fd7d6e8ae1ee2df00312b7a833d3744dc01b3ad4f9fbccea466e3e94673dd1a7ee1ea7c6a5b1c13edf3b1cfc58ef810c1769f725b4')
+sha512sums=('304b44db99298730191bbe3dbc56e21408b154208902ac1bf349069092462b062879d0b8a862149ef04c3a4eef712c992c912c133a6bec369db8eb19562b9177')
 
 package_python-apt() {
   depends+=('python')

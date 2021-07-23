@@ -1,6 +1,6 @@
 pkgbase = python-apt
 	pkgdesc = Python binding of libapt-pkg
-	pkgver = 2.1.3
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/python-apt
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-apt
 	makedepends = python2-distutils-extra
 	depends = apt>=2.1
 	options = !emptydirs
-	source = https://salsa.debian.org/apt-team/python-apt/-/archive/2.1.3/python-apt-2.1.3.tar.gz
-	sha512sums = 0917fcc7f8752d8b3b6e53fd7d6e8ae1ee2df00312b7a833d3744dc01b3ad4f9fbccea466e3e94673dd1a7ee1ea7c6a5b1c13edf3b1cfc58ef810c1769f725b4
+	source = https://salsa.debian.org/apt-team/python-apt/-/archive/2.2.1/python-apt-2.2.1.tar.gz
+	sha512sums = 304b44db99298730191bbe3dbc56e21408b154208902ac1bf349069092462b062879d0b8a862149ef04c3a4eef712c992c912c133a6bec369db8eb19562b9177
 
 pkgname = python-apt
 	depends = apt>=2.1
@@ -21,4 +21,3 @@ pkgname = python-apt
 pkgname = python2-apt
 	depends = apt>=2.1
 	depends = python2
-
