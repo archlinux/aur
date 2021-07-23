@@ -1,0 +1,14 @@
+pkgbase = python-scpreader
+	pkgdesc = Read the SCP wiki from the terminal
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/gaffclant/scp-reader
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	depends = python>=3.9
+	backup = etc/pacman.conf
+	source = https://files.pythonhosted.org/packages/source/s/scpreader/scpreader-0.2.5.tar.gz
+	md5sums = SKIP
+
+pkgname = python-scpreader
