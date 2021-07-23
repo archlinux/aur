@@ -1,0 +1,15 @@
+pkgbase = antix-icewmcc
+	pkgdesc = IceWM Control Center, from Antix Linux project
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/ItzSelenux/antix-icewmcc
+	arch = any
+	license = unknown
+	depends = gtkdialog
+	depends = yad
+	depends = icewm
+	provides = icewmcc
+	source = antix-icewmcc-0.2.1.tar.gz::https://github.com/ItzSelenux/antix-icewmcc/archive/refs/tags/0.2.1.tar.gz
+	sha256sums = ec704e47143f86ff8634249185e8dc2da006203064683f15d5a5e1cd3d4c3448
+
+pkgname = antix-icewmcc
