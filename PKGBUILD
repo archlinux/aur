@@ -34,7 +34,7 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
-pkgver=r4725.af89df01
+pkgver=r4728.66026232
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -64,10 +64,6 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git"
         "disable-brave-core-features.patch")
 arch_revision=3cd421c2e8ea04eacf49253ea8b40957ef5d3524
 Patches="
-        fix-crash-in-ThemeService.patch
-        unbundle-use-char16_t-as-UCHAR_TYPE.patch
-        make-dom-distiller-protoc-plugin-call-py2.7.patch
-        extend-enable-accelerated-video-decode-flag.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         "
 for arch_patch in $Patches
@@ -86,10 +82,6 @@ sha256sums=('SKIP'
             '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
             '356036b9065c7ada8b89bcf89d1b55010df360e49dc9c4ade702417a9c1badca'
-            '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
-            '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c'
-            '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -184,17 +176,8 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # Upstream fixes
-  patch -Np1 -i ../../fix-crash-in-ThemeService.patch
-  patch -Np1 -i ../../unbundle-use-char16_t-as-UCHAR_TYPE.patch
-  patch -Np1 -i ../../make-dom-distiller-protoc-plugin-call-py2.7.patch
-  patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
-
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
-
-  # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../../patches/chromium-90-ruy-include.patch
 
   # Hacky patching
   sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
