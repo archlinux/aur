@@ -1,5 +1,4 @@
-# Maintainer:
-# Contributor: Samuel Bernard <samuel.bernard@gmail.com>
+# Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
 pkgver=12.3.1
