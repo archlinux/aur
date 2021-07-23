@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -77,7 +77,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "config"
-  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+  "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
   "${_caculepatches}/v5.13/cacule-5.13.patch"
   "${_caculepatches}/v5.13/rdb-5.13.patch"
   "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
@@ -542,7 +542,7 @@ done
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '663870cbd6392bf34b84e2254ffd550a'
          'db27e837fe0e94c39ee8d0e663a33c3d'
-         '9bb46b8ce45259c238c5233b8394d70b'
+         '0c139073c9a3c742706d96a165bc8e95'
          'fd078b2b7d5995b9d79e1a68ac0159a7'
          '52b62d7960b48320b9a8562ca1dd00f7'
          '7640a753a7803248543675a6edc75e08'
