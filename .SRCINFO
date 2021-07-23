@@ -30,6 +30,6 @@ pkgbase = gnupg-git
 	source = git+https://github.com/gpg/gnupg.git
 	source = drop-import-clean.patch
 	sha256sums = SKIP
-	sha256sums = 5b76faf39092fe6324d9fc058d9b3a22c2a47cc1964de2afe98093c6d86e7de0
+	sha256sums = 2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a
 
 pkgname = gnupg-git

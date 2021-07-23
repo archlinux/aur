@@ -13,8 +13,9 @@ additional benefit IMPORT_CLEAN provides.  Furthermore, IMPORT_CLEAN
 means that receiving an OpenPGP certificate from a keyserver will
 potentially delete data that is otherwise held in the local keyring,
 which is surprising to users who expect retrieval from the keyservers
-to be purely additive.diff --git a/doc/gpg.texi b/doc/gpg.texi
+to be purely additive.
 
+diff --git a/doc/gpg.texi b/doc/gpg.texi
 index 36d500d..a1c04fa 100644
 --- a/doc/gpg.texi
 +++ b/doc/gpg.texi

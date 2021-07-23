@@ -29,7 +29,7 @@ optdepends=('libldap: gpg2keys_ldap'
 source=("git+https://github.com/gpg/${pkgname%-git}.git"
 		drop-import-clean.patch)
 sha256sums=('SKIP'
-            '5b76faf39092fe6324d9fc058d9b3a22c2a47cc1964de2afe98093c6d86e7de0')
+            '2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a')
 install=gnupg-git.install
 
 pkgver() {
