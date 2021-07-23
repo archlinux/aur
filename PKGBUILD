@@ -2,7 +2,7 @@
 pkgname=jazzcode
 pkgver=1.0.0
 
-pkgrel=4
+pkgrel=5
 pkgdesc="Java Advanced website Scripting Service (JazzCode) Module -- Java Web Development for Connective servers"
 arch=( 'any' )
 url=""
