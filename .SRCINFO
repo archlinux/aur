@@ -1,0 +1,27 @@
+pkgbase = wlvncc-git
+	pkgdesc = Wayland native VNC client
+	pkgver = r43.1ca82ce
+	pkgrel = 1
+	url = https://github.com/any1/wlvncc
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = custom:ISC
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = wayland-protocols
+	depends = aml-git
+	depends = libvncserver-git
+	depends = libxkbcommon
+	depends = pixman
+	depends = wayland
+	provides = wlvncc=r43.1ca82ce
+	conflicts = wlvncc
+	source = git+https://github.com/any1/wlvncc
+	sha512sums = SKIP
+
+pkgname = wlvncc-git
