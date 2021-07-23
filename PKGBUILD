@@ -7,8 +7,8 @@
 
 pkgname=tenacity-git
 pkgver=3.0.2.r531.gc927f17ce
-pkgrel=1
-pkgdesc="An easy-to-use multi-track audio editor and recorder"
+pkgrel=2
+pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://github.com/tenacityteam/tenacity"
 license=(GPL2 CCPL)
