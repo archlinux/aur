@@ -1,0 +1,9 @@
+post_install() {
+  echo ""
+  echo "Don't forget copy /usr/share/mpv-handler/mpv-handler.toml to \$HOME/.config/mpv/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}

@@ -3,13 +3,14 @@
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
 pkgver=0.2.2.r0.g23ab152
-pkgrel=1
+pkgrel=2
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
 depends=("mpv" "youtube-dl")
 makedepends=("cargo" "git")
 url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
+install=mpv-handler.install
 source=("git+https://github.com/akiirui/mpv-handler.git")
 b2sums=('SKIP')
 epoch=1
