@@ -13,11 +13,14 @@ checkdepends=()
 depends=('python-pyclipper' 'python-fonttools')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.zip")
-sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8')
+source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.zip"
+    'install.patch')
+sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8'
+            'db49ee64cf2799da96c600570c3557ef2fee2998223d2ff5c0ad4ce62bfd4be6')
 
 prepare() {
-    sed -i '/setuptools_scm/d' "$_pkgname-$pkgver"/setup.cfg
+    cd "$_pkgname-$pkgver"
+    patch -p1 -i ../install.patch
 }
 
 build() {

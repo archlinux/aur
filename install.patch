@@ -1,0 +1,13 @@
+diff -urN booleanOperations-0.9.0-orig/setup.cfg booleanOperations-0.9.0/setup.cfg
+--- booleanOperations-0.9.0-orig/setup.cfg	2021-07-23 08:19:06.148410072 -0400
++++ booleanOperations-0.9.0/setup.cfg	2021-07-23 08:19:20.288411176 -0400
+@@ -23,9 +23,6 @@
+ package_dir = =Lib
+ packages = find:
+ python_requires = >=3.6
+-setup_requires = 
+-	setuptools_scm
+-	wheel
+ install_requires = 
+ 	pyclipper >= 1.1.0.post1
+ 	fonttools >= 4.0.2
