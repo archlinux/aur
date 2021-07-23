@@ -1,26 +1,23 @@
 pkgbase = zulip-desktop-bin
 	pkgdesc = Real-time team chat based on the email threading model (bin)
-	pkgver = 5.7.0
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://zulipchat.com
 	arch = x86_64
 	license = Apache
-	makedepends = unzip
 	depends = libxkbfile
 	depends = gtk3
 	depends = libxss
 	depends = nss
 	provides = zulip-desktop
 	conflicts = zulip-desktop
-	noextract = zulip-desktop-bin-5.7.0.zip
-	source = zulip-desktop-bin-5.7.0.zip::https://github.com/zulip/zulip-desktop/releases/download/v5.7.0/Zulip-5.7.0-x64.zip
-	source = https://raw.githubusercontent.com/zulip/zulip-desktop/v5.7.0/LICENSE
+	source = zulip-desktop-bin-5.8.0.tar.xz::https://github.com/zulip/zulip-desktop/releases/download/v5.8.0/Zulip-5.8.0-x64.tar.xz
+	source = https://raw.githubusercontent.com/zulip/zulip-desktop/v5.8.0/LICENSE
 	source = zulip-desktop.desktop
-	source = https://raw.githubusercontent.com/zulip/zulip-desktop/v5.7.0/build/zulip.png
-	sha512sums = 84322ad4b0ac987ac54e01ce1aeceb5b83c5d5305a13c95221e6c0a3272d630aec54baa2ae7a52191c767640b6fe1195b02d764aa71382976aa2d2e39d5633bc
+	source = https://raw.githubusercontent.com/zulip/zulip-desktop/v5.8.0/build/zulip.png
+	sha512sums = 8fca307bbeeade338297933a7799e2b82b86479aaacadb87c848766330b9a76db082d53456f67a2f3dc13e55a293f34a9dc3a0ac6937134ff9839f742ed8764d
 	sha512sums = 389080b6132d3eaae780648d6998390d8cc71908561bce09578e27c542aa1a9f3122e01f640c5b01bee73004c23aa4e9f2066fe5ee0ca2072c2420578b28d71f
 	sha512sums = 7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5
 	sha512sums = 7dc054b1dae348312d4d11ef737a1224f2d3b08048c6971fd8a70821a58aa62287eead44a667881eb1618f562104d3214e786a39c98a595e1db7e1b5f3410820
 
 pkgname = zulip-desktop-bin
-
