@@ -1,12 +1,11 @@
 pkgbase = python-ufoprocessor
 	pkgdesc = library to process and generate UFO files based on fontTools.designSpaceLib
 	pkgver = 1.9.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LettError/ufoProcessor
 	arch = any
 	license = MIT
 	makedepends = python-setuptools-scm
-	makedepends = python-wheel
 	depends = python-mutatormath
 	depends = python-fontparts
 	source = https://pypi.org/packages/source/u/ufoProcessor/ufoProcessor-1.9.0.zip
