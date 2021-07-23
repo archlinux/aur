@@ -1,0 +1,17 @@
+pkgbase = beeref
+	pkgdesc = Reference Image Viewer
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://beeref.org/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = python-exif
+	depends = python-pyqt6
+	depends = python-rectangle-packer
+	depends = sqlite
+	source = beeref-0.1.1.tar.gz::https://github.com/rbreu/beeref/archive/refs/tags/v0.1.1.tar.gz
+	sha512sums = d4f601702f1e762ae66d3b1119e5630caab69ab4ba2eac7e2e1ef8671946a3800258ee079762de47c876d3cbfbce0edbe933d6260db0ca72084e21b9a5d8a163
+
+pkgname = beeref
