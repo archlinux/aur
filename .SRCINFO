@@ -1,0 +1,17 @@
+pkgbase = statusnotifier-introspection-dbus-menu
+	pkgdesc = Library to use KDE's StatusNotifierItem via GObject (Introspection/D-Bus menu enabled)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://jjacky.com/statusnotifier
+	arch = i686
+	arch = x86_64
+	license = GPL3+
+	depends = glib2
+	depends = gtk3
+	depends = gdk-pixbuf2
+	provides = statusnotifier
+	conflicts = statusnotifier
+	source = https://jjacky.com/statusnotifier/statusnotifier-1.0.0.tar.xz
+	sha256sums = d7f169355755e0da250a49919b3df2f4cb6a220606fcb6b1bd2e1e60afbcef9a
+
+pkgname = statusnotifier-introspection-dbus-menu
