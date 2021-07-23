@@ -12,7 +12,7 @@ depends=(fmt spdlog nlohmann-json systemd)
 makedepends=(cmake git gcc)
 conflicts=(ananicy-cpp)
 provides=(ananicy-cpp)
-optdepends=("ananicy: community rules")
+optdepends=("ananicy-rules-git: community rules")
 
 pkgver() {
   cd "$_pkgname"
