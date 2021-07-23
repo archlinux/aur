@@ -2,7 +2,7 @@
 
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
-pkgver=1.50.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,17 +12,17 @@ depends=('glibc')
 conflicts=('jfrog-cli' 'jfrog-cli-go')
 provides=('jfrog-cli')
 
-source_x86_64=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v1/$pkgver/$_pkgname-linux-amd64/jfrog")
-source_i686=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v1/$pkgver/$_pkgname-linux-386/jfrog")
-source_armv7h=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v1/$pkgver/$_pkgname-linux-arm/jfrog")
-source_aarch64=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v1/$pkgver/$_pkgname-linux-arm64/jfrog")
+source_x86_64=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v2/$pkgver/$_pkgname-linux-amd64/jfrog")
+source_i686=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v2/$pkgver/$_pkgname-linux-386/jfrog")
+source_armv7h=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v2/$pkgver/$_pkgname-linux-arm/jfrog")
+source_aarch64=("$pkgname-$pkgver-$pkgrel.jfrog::https://releases.jfrog.io/artifactory/$_pkgname/v2/$pkgver/$_pkgname-linux-arm64/jfrog")
 
 noextract=("$pkgname-$pkgver-$pkgrel.jfrog")
 
-sha512sums_x86_64=('23fd1b711141fbf04ed8529c2b949b05add2274dbefab9367af44c7f7655ffcef33440de87cb8be3b5613f55180209ea8c08c234b10baa2a0a5424190c9e205e')
-sha512sums_i868=('6f3c383bd255bff66a64d5fcefa0fc1dfaa8c3cf689892be65bd4cb5e2663c94a07c116657ccf61a912c9653543cc5bbef31acb8098a949e2da50f5041fc3c99')
-sha512sums_armv7h=('6fcaf33609c90f86ac26320531a39dd93aa281c2633059e74e081b283c1a1508c057db2bc1411d59b807166978d62d4c6d96a01d5e5d3b5370cf238e95bdf06c')
-sha512sums_aarch64=('be2fabeb8d6902c106bce2c646da61cc44596d2a60903931c9ed476124c6f36a994c78cdf301304a559564cc785a9202afd5fd203afa8af7d8042b9f4e7d5ba7')
+sha512sums_x86_64=('fd74e96236a77a7887f7adf5fdb555cde440d9c539d92f5e042237f50e17ce9851e41d6298918377cae4e1c8262243d87f5545ea49b64c1a22ec93546e73614a')
+sha512sums_i868=('ed2c2ce7426e27fa101bcd18da1c6fb47669f132ff43e280867e21d594a20f2547e835f850de7b2d98d51c1705b3b6b1944e186a89ce8ce2372daab349dc21a6')
+sha512sums_armv7h=('341cacb37f24f7230ba54c35b103a47b93b5d674b6f7845d96fa6a7fe939db0403931bbef1503ea2f42725011104e598fd6aef6632e8130b830a9c5f794d5a3a')
+sha512sums_aarch64=('bd7bc53e44c9271e2866e31eec32d9186848b5c8105b8a80cc825d125f183fbd860d6fac77fcfc99cda219ffa654e137dab31f69309335872ed65514bb9b2496')
 
 package() {
   install -Dm755 "$pkgname-$pkgver-$pkgrel.jfrog" "$pkgdir/usr/bin/jfrog"
