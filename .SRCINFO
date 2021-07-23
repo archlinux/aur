@@ -1,0 +1,15 @@
+pkgbase = st-aloussase-git
+	pkgdesc = aloussase's build of suckless' Simple Terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aloussase/st
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = harfbuzz
+	provides = st
+	conflicts = st
+	source = git+https://github.com/aloussase/st.git
+	md5sums = SKIP
+
+pkgname = st-aloussase-git
