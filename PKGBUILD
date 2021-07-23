@@ -17,7 +17,7 @@ makedepends=(
 	'fmt>=8.0'
 	'git'
 	'glslang'
-	'libinih'
+	'libinih>=52'
 	'libusb>=1.0.24'
 	'libzip>=1.5'
 	'lz4>=1.8'
@@ -26,9 +26,9 @@ makedepends=(
 	'opus>=1.3'
 	'qt5-tools>=5.12'
 	'sdl2>=2.0.14'
-	'spirv-headers' # for sirit
-	'vulkan-headers'
-	'xbyak'
+	'spirv-headers>=1.3.7' # for sirit
+	'vulkan-headers>=1.2.145'
+	'xbyak>=5.96'
 	'zlib>=1.2'
 	'zstd>=1.5'
 )

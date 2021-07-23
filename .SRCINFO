@@ -14,7 +14,7 @@ pkgbase = yuzu
 	makedepends = fmt>=8.0
 	makedepends = git
 	makedepends = glslang
-	makedepends = libinih
+	makedepends = libinih>=52
 	makedepends = libusb>=1.0.24
 	makedepends = libzip>=1.5
 	makedepends = lz4>=1.8
@@ -23,9 +23,9 @@ pkgbase = yuzu
 	makedepends = opus>=1.3
 	makedepends = qt5-tools>=5.12
 	makedepends = sdl2>=2.0.14
-	makedepends = spirv-headers
-	makedepends = vulkan-headers
-	makedepends = xbyak
+	makedepends = spirv-headers>=1.3.7
+	makedepends = vulkan-headers>=1.2.145
+	makedepends = xbyak>=5.96
 	makedepends = zlib>=1.2
 	makedepends = zstd>=1.5
 	depends = cubeb
