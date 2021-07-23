@@ -1,12 +1,12 @@
 pkgbase = python-fontaine-git
 	pkgdesc = Font analysis tool for determining character/glyph support
-	pkgver = 1.4.0.r1.g3f58a68
+	pkgver = 1.4.0.r9.g2fd2cac
 	pkgrel = 1
 	url = https://github.com/googlefonts/pyfontaine
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-setuptools_scm
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-fonttools
 	depends = python-lxml
@@ -19,4 +19,3 @@ pkgbase = python-fontaine-git
 	sha256sums = SKIP
 
 pkgname = python-fontaine-git
-
