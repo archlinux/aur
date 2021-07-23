@@ -5,7 +5,7 @@ _name=adminapi
 _srcname=serveradmin
 pkgname="python-${_name}"
 conflicts=("python-${_name}-git")
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   'adminapi-only.patch'
 )
 sha256sums=(
-  '8312e8d5c51fb631cdfd9d083f5af54df72e865c04b5b66666e05fd70fd277c5'
+  'f31912c70423f99274991eb82e88fc177aedd0c60395a04a12d4da0aa7822372'
   '086a0f7a7b935b27e1ece35d99202b4db10f6b5a4406dd45affba2bfaf89a08e'
 )
 
@@ -30,4 +30,5 @@ package() {
   patch < ../adminapi-only.patch
   python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
+  install -Dm755 zsh-completion/adminapi "${pkgdir}/usr/share/zsh/site-functions/_adminapi"
 }
