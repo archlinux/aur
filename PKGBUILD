@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-babar
 pkgver=55
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME shell extension that adds grid, favorites, workspaces & tasks in top panel'
 arch=(any)
 url='https://github.com/fthx/babar'
