@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname="python-ldns"
-pkgver=1.7.0
-_libver=2.0.0
+pkgver=1.7.1
+_libver=3.0.0
 pkgrel=1
 pkgdesc="Python bindings for the ldns library for DNS programming"
 url="https://www.nlnetlabs.nl/projects/ldns/"
@@ -10,8 +10,8 @@ license=('BSD')
 depends=("python" "ldns" "python-ipcalc")
 makedepends=("python-setuptools")
 source=("https://www.nlnetlabs.nl/downloads/ldns/ldns-${pkgver}.tar.gz" "setup.py")
-md5sums=('74b75c9ba69fb3af2a0c26244ecfd9f6'
-         '4a96c66b37f26b6d5231c6466cd6503f')
+sha256sums=('8ac84c16bdca60e710eea75782356f3ac3b55680d40e1530d7cea474ac208229'
+            '55669ca420b496e8d707e63cb15f5c5a2367ccd1a10a54aba0ac54a55b94d50f')
 
 build() {
     cd "${srcdir}/ldns-$pkgver"
