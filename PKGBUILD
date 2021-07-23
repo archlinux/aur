@@ -3,12 +3,12 @@
 _pkgname='pyExceptions'
 pkgname=python-${_pkgname,,}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An exception base-class to derive more powerful exceptions"
 arch=(any)
 url="https://github.com/Paebbels/pyExceptions"
 license=('Apache')
-depends=('python-sphinxextensions' 'python-pydecor')
+depends=('python' 'python-sphinxextensions' 'python-pydecor')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")

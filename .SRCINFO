@@ -1,12 +1,13 @@
 pkgbase = python-pyexceptions
 	pkgdesc = An exception base-class to derive more powerful exceptions
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Paebbels/pyExceptions
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	makedepends = python-setuptools
+	depends = python
 	depends = python-sphinxextensions
 	depends = python-pydecor
 	source = python-pyexceptions-1.1.1.tar.gz::https://github.com/Paebbels/pyExceptions/archive/v1.1.1.tar.gz
