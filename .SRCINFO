@@ -5,6 +5,7 @@ pkgbase = bazarr
 	url = https://github.com/morpheus65535/bazarr
 	arch = any
 	license = GPL3
+	makedepends = unzip
 	depends = sqlite
 	depends = python
 	depends = python-gevent

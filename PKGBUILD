@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/morpheus65535/bazarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
+makedepends=('unzip')
 depends=(
   'sqlite'
   'python'
