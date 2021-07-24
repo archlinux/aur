@@ -1,6 +1,6 @@
 pkgbase = astronciaiptv
 	pkgdesc = IPTV player
-	pkgver = 0.0.53
+	pkgver = 0.0.54
 	pkgrel = 1
 	url = https://gitlab.com/astroncia/iptv
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = astronciaiptv
 	depends = python-unidecode
 	depends = python-requests
 	depends = ffmpeg
-	source = astronciaiptv_0.0.53.deb::https://gitlab.com/astroncia/iptv-binaries/-/raw/master/normal/astronciaiptv-0.0.53.deb
+	source = astronciaiptv_0.0.54.deb::https://gitlab.com/astroncia/iptv-binaries/-/raw/master/normal/astronciaiptv-0.0.54.deb
 	sha512sums = SKIP
 
 pkgname = astronciaiptv
