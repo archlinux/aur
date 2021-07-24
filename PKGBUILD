@@ -17,7 +17,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # abgx360.net is somehow no longer working, so we'll switch to abgx360.xecuter.com for now
-  sed -i 's/abgx360.net\/Apps/hadzz.com\/abgx/g' src/abgx360.c
+  sed -i 's/abgx360\.net\/Apps/hadzz\.com\/abgx/g' src/abgx360.c
 }
 
 build() {
