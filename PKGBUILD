@@ -4,7 +4,7 @@
 
 
 pkgname=pianoteq
-pkgver=7.4.0
+pkgver=7.4.2
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=("${pkgname%-*}" "pianoteq-stage" "pianoteq-standard-trial-bin")
 # https://www.modartt.com/download?file=pianoteq_linux_v740.7z
 source=("local://pianoteq_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('24512b6d7ffc9cc5bf1ffbb81df474086e8fa5f3a89edb44de6cc656a727446e3c48dba66ef09d82d56576900a30f8e469e5eeda904bff4a1a0e1a25cc11fe56'
+b2sums=('c6ab9de19a07edcdb4b6aa6b450d7b8095a9ab1afd99d6d9c542e2c3142fadaaf6752c360781b1c843e8326a4bcc82d95e6bdeabf087ccdd05db8edefb0bfeda'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare(){
