@@ -22,7 +22,6 @@ _fragment="${FRAGMENT:-#branch=master}"
 ((GPU_DETECT)) && _cc_current=ON || _cc_current=OFF	# Detect local GPU arch
 ((THRUST_COPY_IF)) && _no_thrust=ON || _no_thrust=OFF	# Don't use thrust::copy_if() ( bug on cuda:7 with GTX 980/1080
 ((ENABLE_DOC)) && _build_doc=ON || _build_doc=OFF	# Build doc
-((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
 
 # Unused cmake flags.
 #option(CCTAG_NO_COUT "Disable output stream" ON)
@@ -42,6 +41,7 @@ makedepends=(boost cmake eigen ninja)
 # Configuration specific dependencis:
 ((DISABLE_CUDA)) || { makedepends+=(cuda); optdepends+=('cuda: for cuda detector'); }
 ((ENABLE_APPS)) && depends+=(devil2 opencv qt5-base)
+((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"fix_boost_math.patch::https://github.com/alicevision/CCTag/pull/166.diff")
 sha256sums=('0b40506506219cc839424496871e8d392311ed4ae0512f0740e8111a5da44796'
