@@ -1,0 +1,11 @@
+pkgbase = xtrlock-pam-fp-git
+	pkgdesc = xtrlock-pam patched with fprintd support (toggle to disable password waiting)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/alcubierre-drive/xtrlock-pam
+	arch = any
+	license = GPL
+	source = xtrlock-pam-fp-git::git+https://github.com/alcubierre-drive/xtrlock-pam
+	sha256sums = SKIP
+
+pkgname = xtrlock-pam-fp-git
