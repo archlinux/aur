@@ -1,13 +1,13 @@
 pkgbase = kindlegen
-	pkgdesc = A command line tool used to build eBooks that can be sold through Amazon's Kindle platform.
+	pkgdesc = cli tool to build eBooks that can be used on Amazon’s Kindle platform (binary)
 	pkgver = 2.9
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000765211
 	arch = i686
 	arch = x86_64
 	license = custom
-	source = https://archive.org/download/kindlegen/kindlegen
-	sha256sums = b8b0f0ab83e74070119066bf4f3c56267e5ee43d2c2bac7091bb447e9f461a69
+	source = https://archive.org/download/kindlegen2.9/kindlegen_linux_2.6_i386_v2_9.tar.gz
+	md5sums = 21aef3c8846946203e178c83a37beba1
+	sha256sums = 9828db5a2c8970d487ada2caa91a3b6403210d5d183a7e3849b1b206ff042296
 
 pkgname = kindlegen
-
