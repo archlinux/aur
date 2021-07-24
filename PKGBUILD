@@ -1,4 +1,4 @@
-# Maintainer: Jack Random <jack (at) random.to>
+# Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=abgx360
 pkgver=1.0.6
