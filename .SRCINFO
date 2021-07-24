@@ -1,6 +1,6 @@
 pkgbase = rakudo-bin
 	pkgdesc = Raku compiler for MoarVM
-	pkgver = 2021.06_01
+	pkgver = 2021.07_01
 	pkgrel = 1
 	url = https://rakudo.org/
 	install = rakudo-bin.install
@@ -18,10 +18,11 @@ pkgbase = rakudo-bin
 	conflicts = raku
 	conflicts = nqp
 	conflicts = moarvm
-	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.06-01-linux-x86_64-gcc.tar.gz
-	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.06-01-linux-x86_64-gcc.tar.gz.asc
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.07-01-linux-x86_64-gcc.tar.gz
+	source = https://rakudo.org/dl/rakudo/rakudo-moar-2021.07-01-linux-x86_64-gcc.tar.gz.asc
 	validpgpkeys = EF976EC69E7BB4634E99A56245BEAFAD5BCDBB01
-	sha256sums = c5be738041d27d747d7e6bc955ee37cd3be371787eb88bdb2610e1a135963db3
+	validpgpkeys = FE750D152426F3E50953176ADE8F8F5E97A8FCDE
+	sha256sums = 3168546428049a6613f76606de3a92447ccd4f016f68a4bb772b93e316049436
 	sha256sums = SKIP
 
 pkgname = rakudo-bin
