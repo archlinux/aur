@@ -13,14 +13,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gps"
 license=('GPL')
 
-#depends=("clang" "ada_language_server"
-#         "gnatcoll-python2" "gnatcoll-db2ada"
-#         "gnatcoll-gnatinspect" "gtkada"
-#         "gnome-icon-theme" "gnome-icon-theme-extras" "gnome-icon-theme-symbolic" 
-#         "python2-gobject" "python2-gobject2")
 depends=("clang" "ada_language_server"
-         "gnatcoll-python2" "gnatcoll-xref"
-         "gtkada")
+         "gnatcoll-python2" "gnatcoll-xref" "gtkada"
+         "python2-gobject" "python2-gobject2" "python2-cairo"
+         "python2-yaml")
 
 optdepends=('python2-jedi')
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
