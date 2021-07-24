@@ -1,8 +1,7 @@
 pkgbase = galaxybudsclient
 	pkgdesc = Galaxy Buds Client for Linux
-	pkgver = 4.2.r91.g10819d6
+	pkgver = %VERSION%
 	pkgrel = 1
-	epoch = 0
 	url = https://github.com/ThePBone/GalaxyBudsClient
 	arch = x86_64
 	arch = armv7h
@@ -13,9 +12,9 @@ pkgbase = galaxybudsclient
 	provides = galaxybudsclient
 	conflicts = galaxybudsclient
 	options = !strip
-	source = galaxybudsclient::git+https://github.com/ThePBone/GalaxyBudsClient
 	source = galaxybudsclient.desktop
-	sha256sums = SKIP
+	source = icon_white.png
 	sha256sums = d38eefc5491e2624de67bee39c553cee5e54ddb3d1e5cac6aad46446ce5b4947
+	sha256sums = SKIP
 
 pkgname = galaxybudsclient
