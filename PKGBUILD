@@ -1,5 +1,5 @@
 pkgname=sqlite-utils
-pkgver=3.12
+pkgver=3.13
 pkgrel=1
 pkgdesc="CLI tool and Python utility functions for manipulating SQLite databases"
 arch=("any")
@@ -8,8 +8,8 @@ license=("Apache")
 depends=("python-sqlite-fts4" "python-click" "python-click-default-group" "python-tabulate")
 makedepends=("python-setuptools")
 conflicts=("sqlite-utils")
-source=("https://pypi.io/packages/source/s/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("78ee06317b9b83ae96538f778a1e89f31c95cced446b5c5648462e2214539efe")
+source=("https://pypi.io/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=("8c9ae307ba647497b57e8442351b975a96a93e32c594e868c4d5f8402ea6b65e")
 
 build() {
     cd "${pkgname}-${pkgver}"
