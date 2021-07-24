@@ -1,3 +1,6 @@
 /pkg/
 /src/
 /naiveproxy-*
+/clang-*.tgz
+/chrome-*.profdata
+/gn-*.zip
