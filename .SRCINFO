@@ -1,17 +1,16 @@
 pkgbase = keyringer
 	pkgdesc = Encrypted and distributed secret sharing software
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://keyringer.pw
 	arch = any
 	license = GPL3
 	depends = gnupg
 	depends = git
-	source = https://keyringer.pw/releases/keyringer-0.5.5.tar.bz2
-	source = https://keyringer.pw/releases/keyringer-0.5.5.tar.bz2.asc
+	source = https://keyringer.pw/releases/keyringer-0.5.6.tar.bz2
+	source = https://keyringer.pw/releases/keyringer-0.5.6.tar.bz2.asc
 	validpgpkeys = 4FA73DE89ADE75998AC24E97B8C1D523FE7AAA84
-	sha256sums = 0569eeb38cd398e827cf4358f75f3ce0428072f759db17ae8da6c58a766c4182
+	sha256sums = 955b7ee1c5d60e624da56b4f7eb18e26e773107cee0f88d75195df65b28ac67a
 	sha256sums = SKIP
 
 pkgname = keyringer
-
