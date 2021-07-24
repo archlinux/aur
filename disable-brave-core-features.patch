@@ -58,18 +58,6 @@ index d4bc81a..7b26be8 100644
 -  binance_enabled = is_mac || is_linux || is_win || is_android
 +  binance_enabled = false
  }
-diff --git a/components/brave_ads/browser/buildflags/buildflags.gni b/components/brave_ads/browser/buildflags/buildflags.gni
-index 763a7d5..44a73d7 100644
---- a/components/brave_ads/browser/buildflags/buildflags.gni
-+++ b/components/brave_ads/browser/buildflags/buildflags.gni
-@@ -1,6 +1,5 @@
- import("//brave/components/brave_rewards/browser/buildflags/buildflags.gni")
-
- declare_args() {
--  brave_ads_enabled =
--      brave_rewards_enabled && (is_mac || is_linux || is_win || is_android)
-+  brave_ads_enabled = true
- }
 diff --git a/components/brave_referrals/buildflags/buildflags.gni b/components/brave_referrals/buildflags/buildflags.gni
 index 3848636..a500258 100755
 --- a/components/brave_referrals/buildflags/buildflags.gni

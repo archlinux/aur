@@ -81,7 +81,7 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '8618fa00cda4512cad15a2125e44733fc8c4baad7c76400548567d2629f4721a'
+            'cad4e099ae16b3f1a28bf7913b585c46828a84ed94af7a766b38aedf45b74d24'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -241,6 +241,7 @@ build() {
   fi
 
   echo 'brave_variations_server_url = https://variations.brave.com/seed' >> .npmrc
+  # https://github.com/brave/brave-browser/wiki/Brave%E2%80%99s-Capture-of-Usage-Data
   echo 'brave_stats_updater_url = https://laptop-updates.brave.com' >> .npmrc
   echo 'brave_stats_api_key = fe033168-0ff8-4af6-9a7f-95e2cbfc' >> .npmrc
   echo 'brave_sync_endpoint = https://sync-v2.brave.com/v2' >> .npmrc
