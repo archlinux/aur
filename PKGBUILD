@@ -1,32 +1,30 @@
-# Maintainer: Katie Wolfe <katie@dnaf.moe>
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: Katie Wolfe <katie@dnaf.moe>
+
 pkgname=tarlz
-pkgver=0.16
+pkgver=0.21
 pkgrel=1
-epoch=
-pkgdesc='Archiver with multimember lzip compression'
-arch=('x86_64')
-url='https://www.nongnu.org/lzip/tarlz.html'
+pkgdesc="Archiver with multimember lzip compression"
+arch=('i686' 'x86_64')
+url="https://www.nongnu.org/lzip/tarlz.html"
 license=('GPL2')
-depends=('lzlib' 'gcc-libs' 'glibc')
-makedepends=('make')
-source=("http://download.savannah.gnu.org/releases/lzip/tarlz/tarlz-${pkgver}.tar.lz")
-sha512sums=('619cb5807e58cbb267e0bd4780e578a069de2bd721c4ff84416b0d551d79c4172d453ee7e0c610b3c5da5a9f5068f5d134638c39ab67c05a5e853257abb2ff00')
+depends=('lzlib' 'gcc-libs')
+source=(https://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.lz)
+sha512sums=('1ad671da7ee115762163af57aad69ec754753e68a99ef8c4f38e880ecbb75a5b021f38794390eabcdbef4963cbc0c0e2abe36011da4135baf2c21dc22f020f4a')
+validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742')  # Antonio Diaz Diaz <antonio@gnu.org>
 
 build() {
-	cd "${srcdir}/tarlz-${pkgver}"
-
-	./configure --prefix=/usr
+	cd "$pkgname-$pkgver"
+	./configure --prefix=/usr CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS"
 	make
 }
 
 check() {
-	cd "${srcdir}/tarlz-${pkgver}"
-
+	cd "$pkgname-$pkgver"
 	make check
 }
 
 package() {
-	cd "${srcdir}/tarlz-${pkgver}"
-
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir" install
 }
