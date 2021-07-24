@@ -1,7 +1,7 @@
 pkgbase = tvlinker
 	pkgdesc = TV show link scraper + downloader for Scene-RLS.com w/ debrid link unrestricting and support for a number of download managers across all platforms + ShadowSocks & v2ray local proxies.
 	pkgver = 4.5.0
-	pkgrel = 8
+	pkgrel = 10
 	url = https://tvlinker.ozmartians.com
 	arch = any
 	license = GPL3
@@ -21,6 +21,6 @@ pkgbase = tvlinker
 	optdepends = pyload
 	optdepends = python-pysocks
 	source = git+https://github.com/ozmartian/tvlinker.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = tvlinker
