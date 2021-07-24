@@ -1,21 +1,41 @@
-# Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
+# Maintainer: Hunter Wittenborn: <hunter@hunterwittenborn.com>
+_release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=5.9.1
+pkgver=5.9.3
 pkgrel=1
-pkgdesc="Create Debian archives from PKGBUILDs (alpha release)"
+pkgdesc="Create Debian archives from PKGBUILDs (${_release_type} release)"
 arch=('any')
-depends=('pacman' 'dpkg')
 license=('GPL3')
-url="https://github.com/hwittenborn/makedeb"
+depends=('dpkg')
+url="https://github.com/makedeb/makedeb"
 
-source=("https://proget.hunterwittenborn.com/debian-feeds/makedeb/main/makedeb-alpha/all/makedeb-alpha_all_${pkgver}-${pkgrel}.deb")
+source=("${url}/archive/refs/tags/v${pkgver}-${_release_type}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  # Extract Debian package
-  tar -xf "${srcdir}"/data.tar.xz -C "${pkgdir}/"
+    # Create single file for makedeb
+    mkdir -p "${pkgdir}/usr/bin"
+    cd "makedeb-${_release_type}-v${pkgver}"
 
-  # Disable everything that uses APT
-  sed -i 's|target_os=.*|target_os="arch"|' "${pkgdir}/usr/bin/makedeb"
-  }
+    # Add bash shebang
+    echo '#!/usr/bin/env bash' > "${pkgdir}/usr/bin/makedeb"
+
+    # Copy functions
+    for i in $(find "src/functions/"); do
+        if ! [[ -d "${i}" ]]; then
+            cat "${i}" >> "${pkgdir}/usr/bin/makedeb"
+        fi
+    done
+    cat "src/makedeb.sh" >> "${pkgdir}/usr/bin/makedeb"
+
+    chmod 555 "${pkgdir}/usr/bin/makedeb"
+
+    # Set package version, release type, and target OS
+    sed -i "s|makedeb_package_version=.*|makedeb_package_version=${pkgver}|" "${pkgdir}/usr/bin/makedeb"
+	sed -i "s|makedeb_release_type=.*|makedeb_release_type=${_release_type}"
+	sed -i 's|target_os="debian"|target_os="arch"|' "${pkgdir}/usr/bin/makedeb"
+
+    # Remove testing commands
+    sed -i 's|.*# REMOVE AT PACKAGING||g' "${pkgdir}/usr/bin/makedeb"
+}
