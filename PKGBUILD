@@ -16,7 +16,7 @@ optdepends_x86_64=('lib32-libpulse: pulseaudio support')
 DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
 source=("gog://baldur_s_gate_enhanced_edition_en_$pkgver_dl.sh"
         "${pkgname}"
-	"$pkgname.desktop")
+        "$pkgname.desktop")
 PKGEXT=".pkg.tar"
 sha256sums=('80ad443563ce65382f1c7c9b8f4b488041449edd7f3bce017ff3eb7cd8250d65'
             '7b037776cb5a87c26a827ef29bd87957d0fee670570a6f9e0383ec2d90f26040'
