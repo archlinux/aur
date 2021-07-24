@@ -1,12 +1,23 @@
-diff -ura fatx-1.15.orig/fatx.cpp fatx-1.15.new/fatx.cpp
---- fatx-1.15.orig/fatx.cpp	2018-02-15 12:27:26.000000000 -0500
-+++ fatx-1.15.new/fatx.cpp	2018-11-16 19:52:12.000000000 -0500
+--- fatx-1.15/fatx.cpp	2018-02-15 12:27:26.000000000 -0500
++++ fatx-1.15/fatx.cpp	2021-05-09 12:16:25.971134000 -0500
 @@ -61,7 +61,7 @@
- 			}
- 			if(container.size() + vv.size() > capacity) {
- 				typename container_type::right_iterator b = container.right.begin();
+			}
+			if(container.size() + vv.size() > capacity) {
+				typename container_type::right_iterator b = container.right.begin();
 -				advance(b, container.size() + vv.size() - capacity);
-+                std::advance(b, container.size() + vv.size() - capacity);
- 				#if defined DEBUG && defined DBG_CACHE
- 					dbglog((format("Xx. fatbuf: reduce (%d)\n") % container.size()).str())
- 				#endif
++				std::advance(b, container.size() + vv.size() - capacity);
+				#if defined DEBUG && defined DBG_CACHE
+					dbglog((format("Xx. fatbuf: reduce (%d)\n") % container.size()).str())
+				#endif
+@@ -1969,8 +1969,8 @@
+
+							dskmap::		dskmap(const fatxpar& par) :
+	memnext(
+-		bind(&dskmap::real_read, this, _1, _2),
+-		bind(&dskmap::real_write, this, _1, _2),
++		bind(&dskmap::real_read, this, boost::placeholders::_1, boost::placeholders::_2),
++		bind(&dskmap::real_write, this, boost::placeholders::_1, boost::placeholders::_2),
+		#define CACHESIZE (par.clus_fat * par.chain_size / max_cache_div > par.clus_size ? par.clus_fat * par.chain_size / max_cache_div : par.clus_size)
+		CACHESIZE, 
+		(CACHESIZE / nb_cache_div > par.clus_size ? CACHESIZE / nb_cache_div : par.clus_size)
+

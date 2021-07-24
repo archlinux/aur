@@ -1,4 +1,4 @@
-# Maintainer: t3kk3n <corp [at] hush [dot] ai>
+# Maintainer: Bakasura <bakasura@protonmail.ch>
 
 pkgname=fatx
 pkgver=1.15
@@ -11,7 +11,7 @@ provides=($pkgname)
 depends=('fuse' 'boost' 'boost-libs')
 source=("http://downloads.sourceforge.net/project/fatx/${pkgname}-${pkgver}.tar.gz" "fatx.patch")
 sha256sums=('bcdd90d37ff16c83ae5350273cf000064de698e2ddde3ba7aa1da3e6cfc4c455'
-            'f7a9cf753c130654dd3d5de109b562dc2f9b188688d961f57023e29eb2f89470')
+            'a03197b4639cc019aca9e8cf784e2a41b0bd2d6a8e7bce1f624c079dd877f429')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
