@@ -4,7 +4,7 @@
 
 pkgname=flashpoint-launcher-git
 pkgver=e1b46166
-pkgrel=2
+pkgrel=3
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only."
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
