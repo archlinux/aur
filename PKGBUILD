@@ -30,9 +30,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url/repository/archive.tar.gz?ref=$pkgver")
+source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('c51884fea40822c6f8cd5e7c7c7378a5')
+sha256sums=('4db7f5fdce5d63af13fdae0892b91d865c6ba56a2e6b32e940780f32102559eb')
 validpgpkeys=()
 
 prepare() {

@@ -13,8 +13,7 @@ pkgbase = mmdebstrap
 	optdepends = qemu-user-static: foreign-architecture support
 	optdepends = binfmt-qemu-static-all-arch: foreign-architecture support
 	optdepends = arch-test: foreign-architecture support
-	source = https://gitlab.mister-muffin.de/josch/mmdebstrap/repository/archive.tar.gz?ref=0.7.5
-	md5sums = c51884fea40822c6f8cd5e7c7c7378a5
+	source = https://gitlab.mister-muffin.de/josch/mmdebstrap/archive/0.7.5.tar.gz
+	sha256sums = 4db7f5fdce5d63af13fdae0892b91d865c6ba56a2e6b32e940780f32102559eb
 
 pkgname = mmdebstrap
-
