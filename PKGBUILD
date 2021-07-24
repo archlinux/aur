@@ -1,6 +1,6 @@
 pkgname=tlstunnel-git
-pkgver=r67.abe91778bd4e
-pkgrel=1
+pkgver=r69.a154e708fcbb
+pkgrel=2
 pkgdesc='A TLS reverse proxy'
 arch=('x86_64')
 url="https://sr.ht/~emersion/tlstunnel"
@@ -15,7 +15,7 @@ source=(
 sha256sums=(
   'SKIP'
   'a298eb15cef1253c235c89e670a01f2ef9eb09276b0661c7b265cfd8bf43326a'
-  'a7666fb90c919d1698ae0e0d270be1e40a73b3f20d686bd3822ce46d46800a57'
+  '9adcd6deb6545fe4be05ab5c9c86322624800ce83d271eeb91a074cd657d94a1'
   '068caae43739c591b84ed36db6545e7c694e17443d86bfdbc6568e49cdde103f'
 )
 backup=('etc/tlstunnel/config')
