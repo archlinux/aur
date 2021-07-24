@@ -2,7 +2,7 @@
 
 pkgname=man-pages-pt_br-git
 _gitname=manpages-l10n
-pkgver=r14183.0b6e8a4562
+pkgver=r15463.11094f0a4b
 pkgrel=1
 pkgdesc="Brazilian Portuguese man pages (Git version)"
 arch=('any')
