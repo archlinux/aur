@@ -1,5 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
-# Maintainer: Radoslaw Mejer <radmen@radmen.info>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname=contentful-cli
 pkgver=1.8.21
