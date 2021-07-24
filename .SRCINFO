@@ -1,0 +1,14 @@
+pkgbase = shortcut-satan
+	pkgdesc = Global shortcut program like hkd, but better
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sandsmark/shortcut-satan
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gcc
+	depends = systemd-libs
+	source = https://github.com/sandsmark/shortcut-satan/archive/1.tar.gz
+	md5sums = 1a2cdfaf1ad4d616d94b8f041044c2ac
+
+pkgname = shortcut-satan
