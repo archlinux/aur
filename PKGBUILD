@@ -1,7 +1,7 @@
 # Maintainer: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 
 pkgname="postybirb"
-pkgver=2.3.33
+pkgver=2.3.34
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 url="https://www.postybirb.com"
@@ -13,7 +13,7 @@ source=("$pkgname-v$pkgver.tar.gz::https://github.com/mvdicarlo/postybirb//archi
         "${pkgname%}.desktop"
         "${pkgname%}.sh"
         "buildOptimizer.patch")
-sha512sums=('8b309242261bc14e30717a84ad66a47a0a2d557cb9a9983fce532a0a8f6e50d9d8691f70eb083dd76a40392454a4091dd23e15312f399e84c8859fd53c741ae0'
+sha512sums=('b36e250d0cc24f2975b3fd5df7280d4b77c91915c2bfb7ca69cf17509dbd59f7145e0afe1f3b5565d83ba04e72ac6373f9fe001277dddf438b1bc8dd4535c187'
             '313afe3d7f1ea7da37cfff24d3976fbc926739d76d03114dd7d237ff91221ccc5ab28fcb3d3ab14b31235bd0de20e07b39ba1f42caba7f22ae3a2278e75384fd'
             'a522c36c98a63a90d45bac44294f4efa6b420d0c6411de32177f35849ab416c2dfd1470c71441e017ecb514903f44cbb2e28b22ac75efa05141627836385057d'
             'b4d3f076bb676bd7ac874177d6b06bae54d647c1c540dc800d20c05e90dbb537f1f406ae299e0c682b305485c343a7149fbcfbac04d5b1425e5d3e1e13e175e6')
