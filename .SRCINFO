@@ -1,19 +1,20 @@
 pkgbase = ruby-mdl
-	pkgdesc = Markdown lint tool
-	pkgver = 0.9.0
+	pkgdesc = A lint tool to check markdown files and flag style issues
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = http://github.com/markdownlint/markdownlint
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
+	depends = ruby
 	depends = ruby-kramdown
-	depends = ruby-mixlib-config
-	depends = ruby-mixlib-cli
 	depends = ruby-kramdown-parser-gfm
-	noextract = mdl-0.9.0.gem
+	depends = ruby-mixlib-cli
+	depends = ruby-mixlib-config
+	depends = ruby-mixlib-shellout
+	noextract = mdl-0.11.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mdl-0.9.0.gem
-	sha256sums = 50162a2d4b158232256823e5abfa1be889246ebc5e5dd937152eddc3e450eecc
+	source = https://rubygems.org/downloads/mdl-0.11.0.gem
+	b2sums = b766757d86ece9dcb0f31cf28b5a8f8e6b6460fe94f14c0fef1c2cb803a159bb81034a9f0a86472859b4a695e91cacf59cb308daa14878ac9673bc873881b6df
 
 pkgname = ruby-mdl
-
