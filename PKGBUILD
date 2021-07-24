@@ -10,14 +10,14 @@ pkgname=(
 	#"rust-mailchecker"
 )
 _pkgname="mailchecker"
-pkgver="4.0.10"
+pkgver="4.0.11"
 pkgrel="1"
-pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
+pkgdesc='Cross-language email validation. Backed by a database of over 30 000 throwable email domains.'
 arch=('any')
 url='https://github.com/FGRibreau/mailchecker/'
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a94c612335dabbcf85147a600b564097deb5dd9e13c286f13e8a8ff9aa6c5316')
+sha256sums=('098f6a9c4ff875528c4d1a3c350ce8b5c9267889a4c75bad4fcfa28a0fd68930')
 makedepends=(
 'python-distribute'
 'nodejs'
