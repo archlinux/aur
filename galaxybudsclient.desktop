@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Galaxy Buds Manager
+GenericName=GalaxyBudsClient
+Comment=Unofficial client for the Galaxy Buds series
+Keywords=editor
+Categories=Utility;Audio;
+Exec=galaxybudsclient
+Icon=galaxybudsclient
+StartupNotify=false
+Terminal=false
+Type=Application
