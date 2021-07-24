@@ -3,7 +3,7 @@
 
 pkgname=abgx360gui
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A GTK frontend for abgx360"
 arch=('i686' 'x86_64')
 license=('unknown')

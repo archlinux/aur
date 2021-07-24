@@ -1,7 +1,7 @@
 pkgbase = abgx360gui
 	pkgdesc = A GTK frontend for abgx360
 	pkgver = 1.0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://bakasurarce.github.io/abgx360/
 	arch = i686
 	arch = x86_64
