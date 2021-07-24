@@ -1,0 +1,13 @@
+pkgbase = samclip
+	pkgdesc = Filter SAM file for soft and hard clipped alignments
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/tseemann/samclip
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	provides = samclip
+	source = https://github.com/tseemann/samclip/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = d789d8f88494a37ef42f8beb8e20e40438a5bcdf11c3809ca1d339e3c91fab689d996f40e1dcb5a29d8f82ce6a430e7ef634d0f24bc25a2ee371b7014d3952c3
+
+pkgname = samclip
