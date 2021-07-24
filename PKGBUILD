@@ -15,7 +15,7 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-5.12
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.12.15
+pkgver=5.12.19
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -38,14 +38,14 @@ source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('8c7420990de85f6754db287337da08b4'
          'e21d126e18d32bd49bca6a27efdece0e'
-         'b5c494212ef9c09cac5bcc68e2af7a14'
+         '89ae37dd0686ad22fc362301f40f53c4'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
          'e25f537f53ffe2850318ed541f0b3460'
          'a06bce5c657bf9e509e1126ef56bbaa3'
          '7a18066683f3351b2bbd2653db783f80'
-         '6d8c698eb12ba9f298c3886f5c33afea')
+         '56ba43c14999ec56324ada82863c5f67')
 
 prepare() {
   cd ${_srcname}
@@ -103,7 +103,7 @@ build() {
   # ... or manually edit .config
 
   # Copy back our configuration (use with new kernel version)
-  #cp ./.config ../${pkgbase}.config
+  cp ./.config ../${pkgbase}.config
 
   ####################
   # stop here

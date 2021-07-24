@@ -1,5 +1,5 @@
 pkgbase = linux-phicomm-n1
-	pkgver = 5.12.15
+	pkgver = 5.12.19
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = aarch64
@@ -24,17 +24,17 @@ pkgbase = linux-phicomm-n1
 	source = 01-aegis-crypto-gcc10.patch
 	source = 02-revert-TEXT_OFFSET-deletion.patch
 	source = 03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.15.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.12.19.xz
 	md5sums = 8c7420990de85f6754db287337da08b4
 	md5sums = e21d126e18d32bd49bca6a27efdece0e
-	md5sums = b5c494212ef9c09cac5bcc68e2af7a14
+	md5sums = 89ae37dd0686ad22fc362301f40f53c4
 	md5sums = 30130b4dcd8ad4364ddbfd56c3058d5e
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 0d0435888ecad675870ecda4045a9d45
 	md5sums = e25f537f53ffe2850318ed541f0b3460
 	md5sums = a06bce5c657bf9e509e1126ef56bbaa3
 	md5sums = 7a18066683f3351b2bbd2653db783f80
-	md5sums = 6d8c698eb12ba9f298c3886f5c33afea
+	md5sums = 56ba43c14999ec56324ada82863c5f67
 
 pkgname = linux-phicomm-n1
 	pkgdesc = The Linux kernel and modules - AArch64 kernel for Phicomm N1
@@ -44,7 +44,7 @@ pkgname = linux-phicomm-n1
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.12.15
+	provides = linux=5.12.19
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -52,5 +52,5 @@ pkgname = linux-phicomm-n1
 
 pkgname = linux-phicomm-n1-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Phicomm N1
-	provides = linux-headers=5.12.15
+	provides = linux-headers=5.12.19
 	conflicts = linux-headers
