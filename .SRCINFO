@@ -1,0 +1,25 @@
+pkgbase = denariusqt-git
+	pkgdesc = Denarius (D) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency.
+	pkgver = v3.3.9.13.r10.gddc48ef
+	pkgrel = 1
+	url = https://denarius.io
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = boost
+	depends = miniupnpc
+	depends = libevent
+	depends = openssl-1.0
+	depends = boost-libs
+	depends = libcurl-compat
+	depends = qt5-base
+	depends = qt5-tools
+	depends = protobuf
+	depends = qrencode
+	provides = denariusqt
+	conflicts = denariusqt
+	options = !buildflags
+	source = git+https://github.com/carsenk/denarius.git
+	sha512sums = SKIP
+
+pkgname = denariusqt-git
