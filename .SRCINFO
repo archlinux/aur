@@ -7,7 +7,7 @@ pkgbase = clpimg
 	license = GPL
 	depends = python-pyqt5
 	source = clpimg-master.tar.gz::https://github.com/MahouShoujoMivutilde/clpimg//archive/master.zip
-	md5sums = d9c1154faa94bdead7a4428613ba5aa9
+	md5sums = c06638e8e60c520ec99f89ffec136298
 
 pkgname = clpimg
 

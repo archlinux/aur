@@ -1,18 +1,21 @@
 # Maintainer: Anvar Umarov <arpanetus@protonmail.com>
 
 pkgname="clpimg"
-pkgver=master
-pkgrel=1
+pkgver=1.0
+pkgrel=2
 pkgdesc="copy images to clipboard on linux on qt backend"
 arch=('any')
 license=('GPL')
 url="https://github.com/MahouShoujoMivutilde/clpimg/"
-source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.zip")
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
 depends=('python-pyqt5')
+
+provides=("$pkgname")
+conflicts=("$pkgname")
 
 package() {
         cd "$pkgname-${pkgver}"
-        make DESTDIR="$pkgdir" install
+        make PREFIX=/usr DESTDIR="$pkgdir" install
 }
-md5sums=('d9c1154faa94bdead7a4428613ba5aa9')
-md5sums=('d9c1154faa94bdead7a4428613ba5aa9')
+
+md5sums=('91424f6872dbcd7eafe40f27360bcc18')
