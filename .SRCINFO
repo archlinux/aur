@@ -1,0 +1,14 @@
+pkgbase = konsole-launcher
+	pkgdesc = Opens new windows in Konsole as quickly as possible
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sandsmark/konsole-launcher
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gcc
+	depends = systemd-libs
+	source = https://github.com/sandsmark/konsole-launcher/archive/1.tar.gz
+	md5sums = 8fc0e1c398ed7eb103e0eb69ec496eb4
+
+pkgname = konsole-launcher
