@@ -1,8 +1,8 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 pkgname=liteaur-git
 _pkgname=liteaur
-pkgver=1.5
-pkgrel=5
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="LiteAUR: The shell script light-weight AUR helper"
 arch=('any')
 url="https://gitlab.com/TechSour12/liteaur"
