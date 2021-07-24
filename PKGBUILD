@@ -1,6 +1,5 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-options+=(debug !strip)
 
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
