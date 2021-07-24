@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=encodarr-runner
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Client software for encoding media files to a user-defined format."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MPL2")
 depends=("glibc" "ffmpeg")
 makedepends=("go")
 source=("encodarr-$pkgver.tar.gz"::"https://github.com/BrenekH/encodarr/archive/$pkgver.tar.gz")
-sha256sums=('8bb0a508b2d1745c8ad25380cecd86049fc7d82e04282204116db37bc451cf3f')
+sha256sums=('29832b628b27abe403025d940e2e5818e1952811a8e6748cfddb03df9b246ee1')
 
 build() {
 	cd "encodarr-$pkgver/runner"
@@ -19,6 +19,10 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 
+	# Store go caches in temp dirs (for those times when the home directory is locked down)
+	export GOMODCACHE="$(mktemp -d)"
+	export GOCACHE="$(mktemp -d)"
+
 	go build \
 	  -trimpath \
 	  -buildmode=pie \
@@ -26,14 +30,22 @@ build() {
 	  -modcacherw \
 	  -ldflags "-X 'github.com/BrenekH/encodarr/runner/options.Version=$pkgver' -linkmode external -extldflags \"${LDFLAGS}\"" \
 	  -o encodarr-runner cmd/EncodarrRunner/main.go
+
+	# Clean up Go caches
+	go clean -modcache
+	go clean -cache
 }
 
 check() {
 	cd "encodarr-$pkgver/runner"
 
+	export ENCODARR_CONFIG_DIR=$(mktemp -d)
+
 	go test ./...
 
 	./encodarr-runner --version
+
+	rm -rf "${ENCODARR_CONFIG_DIR}"
 }
 
 package() {
