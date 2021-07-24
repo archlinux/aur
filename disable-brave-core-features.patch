@@ -88,6 +88,15 @@ index 18ad294..1a031ad 100644
 -  brave_rewards_enabled = is_mac || is_linux || is_win || is_android
 +  brave_rewards_enabled = false
  }
+diff --git a/components/brave_rewards/common/buildflags/buildflags.gni b/components/brave_rewards/common/buildflags/buildflags.gni
+index 6757bf5..df05bee 100644
+--- a/components/brave_rewards/common/buildflags/buildflags.gni
++++ b/components/brave_rewards/common/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  enable_gemini_wallet = is_mac || is_linux || is_win
++  enable_gemini_wallet = false
+ }
 diff --git a/components/brave_sync/buildflags/buildflags.gni b/components/brave_sync/buildflags/buildflags.gni
 index debaffc..aa59fa8 100755
 --- a/components/brave_sync/buildflags/buildflags.gni

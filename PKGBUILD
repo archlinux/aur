@@ -81,7 +81,7 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            'cad4e099ae16b3f1a28bf7913b585c46828a84ed94af7a766b38aedf45b74d24'
+            '991badfeef34022cef226f156cb65b83c358674ec1cb15be2ed54c92d8316a3b'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
