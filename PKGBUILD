@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.8.11
+pkgver=2.8.13
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -60,7 +60,6 @@ source=(
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-    "fix-webview-extern-C-linkage.patch::https://patch-diff.githubusercontent.com/raw/desktop-app/lib_webview/pull/9.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -94,8 +93,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '6f405d48457f8839c9759ec1024db20251f0d42a3ec0026d1334d56511877f830213ac4b3c2396319dc8811e330324a4d62a0973221e280063aa69c18fd09a0e')
+            'SKIP')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -153,9 +151,6 @@ prepare() {
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
     echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
     echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
-    # fix webview extern "C" linkage error
-    cd ..
-    patch -b -d Telegram/lib_webview/ -Np1 -i ${srcdir}/fix-webview-extern-C-linkage.patch
 }
 
 build() {
