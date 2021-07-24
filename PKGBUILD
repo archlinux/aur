@@ -2,13 +2,14 @@
 
 pkgname=lbt
 _author=gardenappl
-pkgver=1.1.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Command-line tools for interacting with the LBRY network'
 arch=('any')
 url='https://gitlab.com/gardenappl/lbt'
 license=('GPL3')
-depends=('jq' 'curl' 'lbrynet')
+optdepends=('lbrynet: install this unless you connect to a LBRY daemon on a separate machine')
+depends=('jq' 'curl')
 source=("https://gitlab.com/$_author/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 
 package() {
@@ -17,4 +18,4 @@ package() {
    install -Dm755 "${srcdir}/$pkgname-v$pkgver"/lbt -t "${pkgdir}/usr/bin/"
    install -Dm644 "${srcdir}/$pkgname-v$pkgver"/lbt-open.desktop -t "${pkgdir}/usr/share/applications/"
 }
-b2sums=('1abdd71b19eacf2a50fa06ccb06dad688467993e4e5f228cc9dbe8b37a7f2965976ecb3a5994d46f79ae612d2540457710a6d89628bd17d6d25713e527913f97')
+b2sums=('ce4ea6c275528a17446f9495ea1e89fb30c1b6c723154d0c6fb12792f0f79bbacce5013ae53303a0069c8956e017c77466d2b557be646cf1f22fd3c991e083ae')

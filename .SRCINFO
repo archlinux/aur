@@ -1,15 +1,14 @@
 pkgbase = lbt
 	pkgdesc = Command-line tools for interacting with the LBRY network
-	pkgver = 1.1.3
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://gitlab.com/gardenappl/lbt
 	arch = any
 	license = GPL3
 	depends = jq
 	depends = curl
-	depends = lbrynet
-	source = https://gitlab.com/gardenappl/lbt/-/archive/v1.1.3/lbt-v1.1.3.tar.gz
-	b2sums = 1abdd71b19eacf2a50fa06ccb06dad688467993e4e5f228cc9dbe8b37a7f2965976ecb3a5994d46f79ae612d2540457710a6d89628bd17d6d25713e527913f97
+	optdepends = lbrynet: install this unless you connect to a LBRY daemon on a separate machine
+	source = https://gitlab.com/gardenappl/lbt/-/archive/v2.0.1/lbt-v2.0.1.tar.gz
+	b2sums = ce4ea6c275528a17446f9495ea1e89fb30c1b6c723154d0c6fb12792f0f79bbacce5013ae53303a0069c8956e017c77466d2b557be646cf1f22fd3c991e083ae
 
 pkgname = lbt
-
