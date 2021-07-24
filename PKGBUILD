@@ -1,4 +1,5 @@
 # Maintainer: Philippe Cherel <philippe dot cherel at mayenne dot org>
+# Maintainer: Christoph Schmidpeter <christoph dot schmidpeter at gmx dot de>
 pkgname=gog-baldurs-gate-enhanced-edition
 _pkgname=baldurs-gate-enhanced-edition
 _original="Baldurs Gate Enhanced Edition"
