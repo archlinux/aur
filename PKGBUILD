@@ -11,7 +11,7 @@ _pkgvermajmin=5.0
 _pkgver=${_pkgvermajmin}.0
 _verpostfix="beta1"
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=0
+pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -24,13 +24,12 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
-#depends=('python2-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm')
-depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'clang' 'llvm')
+depends=('python2-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm')
 install=qtcreator-prerelease.install
 optdepends=('qbs'
-            'qt5-doc: integrated Qt documentation'
-            'qt5-examples: welcome page examples'
-            'qt5-translations: for other languages'
+            'qt6-doc: integrated Qt documentation'
+            'qt6-examples: welcome page examples'
+            'qt6-translations: for other languages'
             'gdb: debugger'
             'cmake: cmake project support'
             'openssh-askpass: ssh support'
@@ -38,7 +37,7 @@ optdepends=('qbs'
             'mercurial: mercurial support'
             'bzr: bazaar support'
             'valgrind: analyze support')
-makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
+makedepends=('qbs' 'clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
 sha512sums=('d7199381cd1bfae460bbd396aa20027307638ed4b7d4c198d46401f4b2d877c3cfad12a9b18fc3b1be326a4d073c884736843457513cb877a4a2be8a5effaebf')
 
