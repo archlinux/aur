@@ -1,6 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
-pkgname=sointu-track-git
+pkgbase=sointu-track
+pkgname=$pkgbase-git
 pkgver=r471.60e4518
 pkgrel=1
 pkgdesc='4klang tracker'
@@ -17,11 +18,11 @@ pkgver() {
 }
 
 build() {
-  cd sointu/cmd/sointu-track
+  cd sointu/cmd/$pkgbase
   go build -v -buildmode=pie -trimpath -ldflags="-s -w -extldflags \"${LDFLAGS}\""
 }
 
 package() {
-  install -Dm755 sointu/cmd/sointu-track/sointu-track "$pkgdir/usr/bin/sointu-track"
+  install -Dm755 sointu/cmd/$pkgbase/$pkgbase "$pkgdir/usr/bin/$pkgbase"
   install -Dm644 sointu/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

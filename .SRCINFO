@@ -1,4 +1,4 @@
-pkgbase = sointu-track-git
+pkgbase = sointu-track
 	pkgdesc = 4klang tracker
 	pkgver = r471.60e4518
 	pkgrel = 1
