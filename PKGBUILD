@@ -54,9 +54,8 @@ prepare() {
 build() {
   cd ${srcdir}/${_filename}
 
-  qmake \
+  qmake6 \
     -r \
-    -spec linux-clang \
     DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
     ${srcdir}/${_filename}/qtcreator.pro
 
