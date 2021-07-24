@@ -1,6 +1,6 @@
 pkgbase = python-cbor2
 	pkgdesc = Pure Python CBOR (de)serializer with extensive tag support
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://github.com/agronholm/cbor2
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python-cbor2
 	makedepends = python-setuptools-scm
 	makedepends = git
 	depends = python
-	source = git+https://github.com/agronholm/cbor2#tag=5.4.0
+	source = git+https://github.com/agronholm/cbor2#tag=5.4.1
 	sha512sums = SKIP
 
 pkgname = python-cbor2

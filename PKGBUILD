@@ -2,7 +2,7 @@
 
 _pkgname=cbor2
 pkgname=python-cbor2
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='Pure Python CBOR (de)serializer with extensive tag support'
 url="https://github.com/agronholm/cbor2"
