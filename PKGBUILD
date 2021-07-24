@@ -9,7 +9,7 @@ pkgdesc="Rules for ananicy-cpp"
 arch=('any')
 url="https://github.com/Nefelim4ag/Ananicy.git"
 license=('GPL3')
-makedepends=('git' 'make')
+makedepends=('git')
 source=("$_pkgname"::'git+https://github.com/Nefelim4ag/Ananicy.git#branch=master')
 md5sums=('SKIP')
 conflicts=(ananicy ananicy-git)

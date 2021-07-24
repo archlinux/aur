@@ -6,7 +6,6 @@ pkgbase = ananicy-rules-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = make
 	conflicts = ananicy
 	conflicts = ananicy-git
 	backup = etc/ananicy.d/ananicy.conf
