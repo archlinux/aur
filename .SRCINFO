@@ -2,7 +2,7 @@ pkgbase = abgx360
 	pkgdesc = An app for checking Xbox 360 ISOs
 	pkgver = 1.0.6
 	pkgrel = 2
-	url = http://abgx360.xecuter.com/
+	url = https://bakasurarce.github.io/abgx360/
 	install = abgx360.install
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = abgx360
 	depends = zlib
 	depends = curl
 	optdepends = abgx360gui: a GUI for this tool
-	source = http://abgx360.xecuter.com/dl/abgx360-1.0.6.tar.gz
+	source = https://github.com/BakasuraRCE/abgx360/releases/download/v1.0.6-and-v1.0.2/linux_abgx360-1.0.6.tar.gz
 	md5sums = 04b0c9e0461faa92ca5f8fac78bafe57
 
 pkgname = abgx360
