@@ -1,0 +1,16 @@
+pkgbase = lighter
+	pkgdesc = Fast and memory-efficient sequencing error corrector
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/mourisl/Lighter
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	depends = zlib
+	provides = lighter
+	conflicts = lighter-git
+	source = https://github.com/mourisl/Lighter/archive/refs/tags/v1.1.2.tar.gz
+	b2sums = 6249e849d83e304969f010f0438f3e9252c92d5f53f8b228ca61465faa8182f5e4a4f3aac66ce9e234f51dc9fdd60518c37e042b08411e41a7b0591af4ae3bbc
+
+pkgname = lighter
