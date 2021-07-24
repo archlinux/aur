@@ -3,7 +3,7 @@
 
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=91.0.4472.77
+pkgver=92.0.4515.107
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -18,7 +18,7 @@ source=(
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
 sha256sums=(
-  "01c660efd162859a2cabdf336cf889c191449fbd63883fc5a7b1be1348005fe1"
+  "d44e6d6efe2fe6ee0da9dafef427ee5971d4a253d8156ad8d7acab053d055463"
   "ec7e686edd39068acd3122bbae4f4e83ba8540ffdb9fe30790679e72c7318d33"
   "723979ea8245a297fac101ff71e1e9f97f138e0bfb0e84176ef5ca70cc96bf8e"
 )
