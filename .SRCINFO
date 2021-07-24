@@ -1,7 +1,7 @@
 pkgbase = nvidia-340xx
 	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
 	pkgver = 340.108
-	pkgrel = 20
+	pkgrel = 21
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -23,7 +23,7 @@ pkgbase = nvidia-340xx
 	b2sums = b436095b89d6e294995651a3680ff18b5af5e91582c3f1ec9b7b63be9282497f54f9bf9be3997a5af30eec9b8548f25ec5235d969ac00a667a9cddece63d8896
 	b2sums = 947cb1f149b2db9c3c4f973f285d389790f73fc8c8a6865fc5b78d6a782f49513aa565de5c82a81c07515f1164e0e222d26c8212a14cf016e387bcc523e3fcb1
 	b2sums = 665bf0e1fa22119592e7c75ff40f265e919955f228a3e3e3ebd76e9dffa5226bece5eb032922eb2c009572b31b28e80cd89656f5d0a4ad592277edd98967e68f
-	b2sums = bbea70e129f5a51a06a0c341f731be360f39f6b31a88df39e97c2d8f2daa87dd6c4b3a8becc57f25ad2a26ad567c69208546d907e7334c320796c4140fc78a15
+	b2sums = 344cd3a9888a9a61941906c198d3a480ce230119c96c72c72a74b711d23face2a7b1e53b9b4639465809b84762cdc53f38210e740318866705241bc4216e4f35
 
 pkgname = nvidia-340xx
 	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
