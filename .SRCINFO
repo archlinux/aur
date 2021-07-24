@@ -1,18 +1,17 @@
 pkgbase = python-pika
 	pkgdesc = A pure-Python implementation of the AMQP 0-9-1 protocol
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://pika.readthedocs.org/
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/pika/pika/archive/1.1.0/pika-1.1.0.tar.gz
-	sha256sums = a0bd28351cc8a7437b8680a9d716d920f35cd5be307240d27644d5f15bc9a7dc
+	source = https://github.com/pika/pika/archive/1.2.0/pika-1.2.0.tar.gz
+	sha256sums = 490d6a92a9fd962ea706fbba84f8ddfa00014dae5ad896571c7254c041350ca6
 
 pkgname = python-pika
 	depends = python
 
 pkgname = python2-pika
 	depends = python2
-
