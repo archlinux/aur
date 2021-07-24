@@ -1,26 +1,32 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-roboto-slab
-pkgver=2.000
-pkgrel=3
+pkgver=2.001
+pkgrel=1
 epoch=3
 pkgdesc='Roboto Slab is a slab serif addition to the Roboto type family.'
 arch=('any')
 url='https://www.google.com/fonts/specimen/Roboto+Slab'
 license=('Apache')
 source=("${pkgname}-${epoch}:${pkgver}-${pkgrel}-LICENSE.txt::https://raw.github.com/googlefonts/robotoslab/master/LICENSE.txt"
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Black.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Bold.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Light.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Medium.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Regular.ttf'
-        'https://raw.github.com/googlefonts/robotoslab/master/fonts/static/RobotoSlab-Thin.ttf')
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Black.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Bold.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-ExtraBold.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-ExtraLight.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Light.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Medium.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Regular.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-SemiBold.ttf'
+        'https://raw.github.com/googlefonts/robotoslab/master/fonts/ttf/RobotoSlab-Thin.ttf')
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            '172898e1a22637d860677618081ec2ff4d9aa324f45e3d6e873e64656c9e1c07'
-            'a46eca66ae13b1774b25b23315900b3e30fa32efd6684fe46aff22d333f78ebb'
-            '02d9f4a0ea88810ba77ee624db42494348325980f7a5d1f50b66852e22920ca5'
-            'cb9cd096bd1981fc02fdb1dd639ca59184c0621c7fdccad038047c9fa9409e18'
-            'ace53f5b158b80dbf2539696b0f448975d95c1a48f8b30d494e2d45923e4ae23'
-            '8db8b4095e4a76b5368b51276802a4ba33664c4908526996d83c87ffa22da4b4')
+            '73d0a1630a398883b1237ad8e094ce58e2e88c576eb811bae734bb2fef29a6e0'
+            'e5b9453d5981ab0511d8910ffefb593b31f6a35b84d973602aa92af4e4618170'
+            '7432ea7ff5651b786002c72355422b6431f461079c1b7e9a3aafb044c43e02ed'
+            'b61961a015f7d1f3159f94af388cbbab53828a60ea4811003793f23a76cb21ca'
+            '81fe9e6fc750c2e560495a354850709803743f3e35c5816b1f6b4a12375faa5d'
+            'ad8b6b92531939bc7fd8ca0c7ad7c2e1f42f0d7eccbfcc5a6b7c6b179812c96e'
+            '1422fde7e0a715a1a8c62e25105d29683b288f23e6f5240df4c152a931f1e355'
+            '63ef8e344bf3393cdd833a1c9fff57a9f26de9ce5783bac6bb52e1992b1aaa6f'
+            '287a8849b02eafbc7e9a2703771a1114d2021dc00923a1bc2ab4a3a2efd7a60a')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
