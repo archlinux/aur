@@ -1,7 +1,7 @@
 pkgname=shortcut-satan
 pkgver=1
 pkgrel=1
-pkgdesc='Global shortcut program like hkd, but better'
+pkgdesc='Global shortcut program like hotkey daemon, but better'
 url='https://github.com/sandsmark/shortcut-satan'
 arch=('x86_64' 'i686')
 license=('GPL2')
