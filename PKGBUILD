@@ -4,7 +4,7 @@ pkgname=freechat-git
 _name=freechat
 url="https://github.com/eNkru/freechat"
 pkgrel=1
-pkgver=1.0.0.5164dd0
+pkgver=1.0.0.r68.3a8304e
 pkgdesc="致力于打造macOS和Linux桌面下最好用的微信（wechat）客户端。"
 arch=("any")
 license=("MIT")
@@ -17,7 +17,7 @@ options=(!strip)
  
 pkgver() {
     cd "${srcdir}"/freechat/
-    printf "%s.%s" "$(awk 'match($0, /"version": "(.*)"/, a) {print a[1]}' package.json)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(awk 'match($0, /"version": "(.*)"/, a) {print a[1]}' package.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
  
 build() {
