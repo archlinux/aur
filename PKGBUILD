@@ -6,7 +6,7 @@
 _gemname=opener
 pkgname=ruby-$_gemname
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for opening things in a cross-platform way"
 arch=('any')
 url="https://github.com/sunaku/opener"
@@ -16,11 +16,11 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 # last known Ruby version
 # used to pin licenses if they change in the future
-_rubyver=3.0.2
+_rubyver=3_0_2
 source=(
   "https://rubygems.org/downloads/$_gemname-$pkgver.gem"
-  "https://raw.githubusercontent.com/ruby/ruby/v${_rubyver/./_}/COPYING"
-  "https://raw.githubusercontent.com/ruby/ruby/v${_rubyver/./_}/BSDL"
+  "https://raw.githubusercontent.com/ruby/ruby/v$_rubyver/COPYING"
+  "https://raw.githubusercontent.com/ruby/ruby/v$_rubyver/BSDL"
 )
 noextract=("$_gemname-$pkgver.gem")
 b2sums=('cd6c5436d209b26b7cb4dbcfbce7f653b1025d0396fe4c2910ebcad0b494bf9b1f92e2e0f71c34a33a607511c07f3775e636f0509736c3317b50b55f1821de9f'
