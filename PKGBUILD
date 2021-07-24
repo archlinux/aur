@@ -3,7 +3,7 @@
 
 pkgname=dmidiplayer
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MIDI file player based on Drumstick"
 arch=('x86_64')
 url="https://sourceforge.net/projects/dmidiplayer/"
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release \
+	cmake -DCMAKE_BUILD_TYPE=None \
 	      -DCMAKE_INSTALL_PREFIX="/usr" \
 	      -DCMAKE_INSTALL_LIBDIR="lib" \
 	      ..

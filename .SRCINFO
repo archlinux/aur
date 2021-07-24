@@ -1,7 +1,7 @@
 pkgbase = dmidiplayer
 	pkgdesc = MIDI file player based on Drumstick
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/dmidiplayer/
 	arch = x86_64
 	license = GPL3
