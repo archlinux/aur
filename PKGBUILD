@@ -7,9 +7,9 @@ pkgrel=4
 pkgdesc="A GTK frontend for abgx360"
 arch=('i686' 'x86_64')
 license=('unknown')
-url="http://abgx360.xecuter.com/"
+url="https://bakasurarce.github.io/abgx360/"
 depends=('abgx360' 'wxgtk2.8' 'xterm')
-source=(http://abgx360.xecuter.com/dl/${pkgname}-${pkgver}.tar.gz
+source=(https://github.com/BakasuraRCE/abgx360/releases/download/v1.0.6-and-v1.0.2/linux_abgx360gui-1.0.2.tar.gz
         abgx360gui.desktop
         abgx360gui.png
         abgx360gui_TopBitmap_XPM.xpm.patch)
@@ -21,7 +21,7 @@ sha256sums=('949fdcb871d038b1c8aed658e3d3d0fe6c44c73fbea8defc46ce37b0abf91303'
 build() {
   patch "${srcdir}/${pkgname}-${pkgver}/src/Images/abgx360gui_TopBitmap_XPM.xpm" "${srcdir}/abgx360gui_TopBitmap_XPM.xpm.patch"
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's/http\:\/\/abgx360.net/http\:\/\/abgx360.xecuter.com/g' src/abgx360gui.cpp
+  sed -i 's/http\:\/\/abgx360.net/http\:\/\/hadzz.com\/abgx/g' src/abgx360gui.cpp
   ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.8
   make
 }
