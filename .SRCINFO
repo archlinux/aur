@@ -1,0 +1,13 @@
+pkgbase = python2-pyserial
+	pkgdesc = Multiplatform Serial Port Module for Python
+	pkgver = 3.5
+	pkgrel = 1
+	url = https://github.com/pyserial/pyserial
+	arch = any
+	license = custom:PYTHON
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-pyserial-3.5.tar.gz::https://github.com/pyserial/pyserial/archive/v3.5.tar.gz
+	sha256sums = 81cbbb8147f11cbaefea8bacece25adeffeb2b5503a571e686d4658863fdd6c6
+
+pkgname = python2-pyserial
