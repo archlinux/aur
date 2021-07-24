@@ -1,0 +1,13 @@
+pkgbase = dnd-5e-latex-template
+	pkgdesc = LaTeX template to typeset material for Dungeons and Dragons 5e
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/rpgtex/DND-5e-LaTeX-Template
+	arch = any
+	license = MIT
+	depends = texlive-core
+	depends = texlive-latexextra
+	source = dnd-5e-latex-template-0.8.0.tar.gz::https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = af3f89a5876b79a43c605fd48b2fd81e139323ab49f2543bf5a205d70ca7224b
+
+pkgname = dnd-5e-latex-template
