@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-arc-menu
 	pkgdesc = Application Menu Extension for GNOME
-	pkgver = v10
+	pkgver = v12
 	pkgrel = 1
 	url = https://gitlab.com/arcmenu/ArcMenu
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-arc-menu
 	depends = gnome-tweaks
 	depends = gnome-menus
 	conflicts = gnome-shell-extension-arc-menu-git
-	source = https://gitlab.com/arcmenu/ArcMenu/-/archive/v10/ArcMenu-v10.zip
-	md5sums = 95e32af67a570eabc7b557487ee4bce8
+	source = https://gitlab.com/arcmenu/ArcMenu/-/archive/v12/ArcMenu-v12.zip
+	md5sums = c1cc795d4e6919426aabe32331b58c04
 
 pkgname = gnome-shell-extension-arc-menu
