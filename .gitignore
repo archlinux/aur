@@ -1,0 +1,17 @@
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+*.AppImage
+anytype-appimage-*.pkg.tar.zst
+anytype-appimage-*.log

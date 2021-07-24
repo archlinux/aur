@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Anytype
+Comment=Operating environment for the new internet
+Exec=anytype
+Terminal=false
+Type=Application
+Icon=anytype
+StartupWMClass=Anytype
+X-AppImage-Version=1.1.3
+Categories=Internet;
