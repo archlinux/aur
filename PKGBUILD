@@ -3,7 +3,7 @@
 
 pkgname=scscp
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="C library for the Symbolic Computation Software Composibility Protocol"
 arch=('i686' 'x86_64')
 url="http://www.imcce.fr/Equipes/ASD/trip/scscp/"
@@ -13,7 +13,7 @@ source=(https://sourcesup.renater.fr/frs/download.php/file/4549/$pkgname-$pkgver
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
+  CXXFLAGS="-std=c++11" ./configure --prefix=/usr
   make
   #make check
 }

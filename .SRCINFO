@@ -1,7 +1,7 @@
 pkgbase = scscp
 	pkgdesc = C library for the Symbolic Computation Software Composibility Protocol
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.imcce.fr/Equipes/ASD/trip/scscp/
 	arch = i686
 	arch = x86_64
