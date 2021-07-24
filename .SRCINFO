@@ -1,6 +1,6 @@
 pkgbase = clpimg
 	pkgdesc = copy images to clipboard on linux on qt backend
-	pkgver = master
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/MahouShoujoMivutilde/clpimg/
 	arch = any
