@@ -1,7 +1,7 @@
 # Maintainer: Tobias Markus < tobias AT miglix DOT eu >
 
 pkgname=libacars
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A library for decoding various ACARS message payloads"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'libxml2')
 makedepends=('cmake' 'git')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/szpajder/libacars/archive/v$pkgver.tar.gz")
-sha256sums=('aa56a628fb879cf27be6d49eb0beb051d14b449924a9b84a4e155de017db165a')
+sha256sums=('d221629dd750d203e62813dcd55d58c46dce6b9b5e31ff438c661a99ba659ee4')
 
 build() {
   cd "$srcdir"
@@ -31,7 +31,7 @@ package() {
 
   make -C build install DESTDIR="$pkgdir"
 
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: ts=2:sw=2:expandtab
