@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=svu
-pkgver=1.4.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Semantic Version Util'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('b907057c044d317913fad5959999ba5e1639617449f4503378f9867d04e92d70')
+sha256sums=('42550ad599880a4cb027828b76485cfcd5a35202d87673820c9db99f8d04115a')
 
 build() {
   cd "$pkgname-$pkgver"
