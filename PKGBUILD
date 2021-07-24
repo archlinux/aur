@@ -1,14 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nanoemoji
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
 url="https://github.com/googlefonts/$_pkgname"
 license=(Apache)
 _py_deps=(cffsubr # optdepends of ufo2ft required for [cffsubr]
-          'fonttools>=4.22.0'
+          fonttools
           fs # optdepends of fonttols required for [ufo]
           lxml
           pillow
@@ -18,12 +18,12 @@ _py_deps=(cffsubr # optdepends of ufo2ft required for [cffsubr]
           ufolib2)
 depends=(absl-py
          ninja
-         'picosvg>=0.16.0'
+         picosvg
          python
          "${_py_deps[@]/#/python-}")
 makedepends=(python-setuptools-scm)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('48e8af403e2d63762c263fe3449665a04f08165d252e4a78eda8cd476bc3c51d')
+sha256sums=('dcde668ed4556587cd12f25dd6894be14228f03f1ea65e26e4dd72b2c2b536ee')
 
 build() {
 	cd "$pkgname-$pkgver"
