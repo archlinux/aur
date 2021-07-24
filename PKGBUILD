@@ -7,11 +7,11 @@
 #_qmake_args="CONFIG+=debug"
 _building=true
 pkgname=qtcreator-prerelease
-_pkgvermajmin=4.15
+_pkgvermajmin=5.0
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="rc1"
+_verpostfix="beta1"
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=3
+pkgrel=0
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -24,6 +24,7 @@ url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
 conflicts=('qtcreator')
+#depends=('python2-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm')
 depends=('python2-beautifulsoup4' 'qt5-tools' 'qt5-declarative' 'qt5-script' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'clang' 'llvm')
 install=qtcreator-prerelease.install
 optdepends=('qbs'
@@ -39,7 +40,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('6107f8893d57b0d38df5718180d3407940af09a8ac5968ae08df6ebaa90080c2')
+sha512sums=('d7199381cd1bfae460bbd396aa20027307638ed4b7d4c198d46401f4b2d877c3cfad12a9b18fc3b1be326a4d073c884736843457513cb877a4a2be8a5effaebf')
 
 prepare() {
   cd ${srcdir}/${_filename}
