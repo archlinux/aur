@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Open Syobon Action
+Categories=Game;
+Comment=A free version of the unforgiving Japanese parody of Super Mario Bros
+Comment[fa]=یک نسخه ی رایگان از پارودی نابخشودنی سوپر ماریو!
+Keywords=Cat, Mario, Catmario, Cat mario,
+Exec=syobon
+Icon=syobon
+Type=Application
+Terminal=false
