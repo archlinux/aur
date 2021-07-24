@@ -1,0 +1,13 @@
+pkgbase = sointu-track-git
+	pkgdesc = 4klang tracker
+	pkgver = r471.60e4518
+	pkgrel = 1
+	url = https://github.com/vsariola/sointu
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/vsariola/sointu
+	b2sums = SKIP
+
+pkgname = sointu-track-git
