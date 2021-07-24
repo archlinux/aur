@@ -1,7 +1,7 @@
 pkgbase = abgx360
 	pkgdesc = An app for checking Xbox 360 ISOs
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bakasurarce.github.io/abgx360/
 	install = abgx360.install
 	arch = x86_64
