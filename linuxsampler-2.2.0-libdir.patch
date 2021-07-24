@@ -1,0 +1,431 @@
+diff -ruN a/Artwork/Makefile.in b/Artwork/Makefile.in
+--- a/Artwork/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/Artwork/Makefile.in	2021-06-03 18:30:10.963664740 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/Documentation/Engines/Makefile.in b/Documentation/Engines/Makefile.in
+--- a/Documentation/Engines/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/Documentation/Engines/Makefile.in	2021-06-03 18:29:20.283645118 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/Documentation/Engines/gig/Makefile.in b/Documentation/Engines/gig/Makefile.in
+--- a/Documentation/Engines/gig/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/Documentation/Engines/gig/Makefile.in	2021-06-03 18:41:56.388041211 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/Documentation/Makefile.in b/Documentation/Makefile.in
+--- a/Documentation/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/Documentation/Makefile.in	2021-06-03 18:01:05.488845036 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/Makefile.in b/Makefile.in
+--- a/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/Makefile.in	2021-06-03 18:42:04.861392398 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/linuxsampler.pc.in b/linuxsampler.pc.in
+--- a/linuxsampler.pc.in	2007-05-30 01:59:36.000000000 +0200
++++ b/linuxsampler.pc.in	2021-06-03 18:01:30.448923989 +0200
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-libdir=@libdir@/linuxsampler
++libdir=@libdir@
+ includedir=@includedir@
+ plugindir=@libdir@/linuxsampler/plugins
+ 
+diff -ruN a/man/Makefile.in b/man/Makefile.in
+--- a/man/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/man/Makefile.in	2021-06-03 18:30:45.210350835 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/scripts/Makefile.in b/scripts/Makefile.in
+--- a/scripts/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/scripts/Makefile.in	2021-06-03 18:29:57.810325235 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/Makefile.in b/src/Makefile.in
+--- a/src/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/src/Makefile.in	2021-06-03 18:30:24.540338536 +0200
+@@ -74,8 +74,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/common/Makefile.in b/src/common/Makefile.in
+--- a/src/common/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/src/common/Makefile.in	2021-06-03 18:40:50.091237574 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/db/Makefile.in b/src/db/Makefile.in
+--- a/src/db/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/src/db/Makefile.in	2021-06-03 18:31:00.433694298 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/drivers/Makefile.in b/src/drivers/Makefile.in
+--- a/src/drivers/Makefile.in	2021-05-09 14:11:11.000000000 +0200
++++ b/src/drivers/Makefile.in	2021-06-03 18:38:09.900929911 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/drivers/audio/Makefile.in b/src/drivers/audio/Makefile.in
+--- a/src/drivers/audio/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/drivers/audio/Makefile.in	2021-06-03 18:39:27.331074101 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/drivers/midi/Makefile.in b/src/drivers/midi/Makefile.in
+--- a/src/drivers/midi/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/drivers/midi/Makefile.in	2021-06-03 18:40:22.244514915 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/effects/Makefile.in b/src/effects/Makefile.in
+--- a/src/effects/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/effects/Makefile.in	2021-06-03 18:37:55.930904906 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/engines/Makefile.in b/src/engines/Makefile.in
+--- a/src/engines/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/engines/Makefile.in	2021-06-03 18:31:36.570388507 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/engines/common/Makefile.in b/src/engines/common/Makefile.in
+--- a/src/engines/common/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/engines/common/Makefile.in	2021-06-03 18:31:59.410408324 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/engines/gig/Makefile.in b/src/engines/gig/Makefile.in
+--- a/src/engines/gig/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/engines/gig/Makefile.in	2021-06-03 18:37:07.690821150 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/engines/sf2/Makefile.in b/src/engines/sf2/Makefile.in
+--- a/src/engines/sf2/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/engines/sf2/Makefile.in	2021-06-03 18:36:50.820792859 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/engines/sfz/Makefile.in b/src/engines/sfz/Makefile.in
+--- a/src/engines/sfz/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/engines/sfz/Makefile.in	2021-06-03 18:32:23.620431259 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/hostplugins/Makefile.in b/src/hostplugins/Makefile.in
+--- a/src/hostplugins/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/hostplugins/Makefile.in	2021-06-03 18:38:31.964303391 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/hostplugins/au/Makefile.in b/src/hostplugins/au/Makefile.in
+--- a/src/hostplugins/au/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/hostplugins/au/Makefile.in	2021-06-03 18:39:47.204445865 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/hostplugins/dssi/Makefile.in b/src/hostplugins/dssi/Makefile.in
+--- a/src/hostplugins/dssi/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/hostplugins/dssi/Makefile.in	2021-06-03 18:40:00.301138149 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/hostplugins/lv2/Makefile.in b/src/hostplugins/lv2/Makefile.in
+--- a/src/hostplugins/lv2/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/hostplugins/lv2/Makefile.in	2021-06-03 18:38:45.100994326 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/hostplugins/vst/Makefile.in b/src/hostplugins/vst/Makefile.in
+--- a/src/hostplugins/vst/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/hostplugins/vst/Makefile.in	2021-06-03 18:39:08.147704203 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/network/Makefile.in b/src/network/Makefile.in
+--- a/src/network/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/network/Makefile.in	2021-06-03 18:37:35.890869613 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/plugins/Makefile.in b/src/plugins/Makefile.in
+--- a/src/plugins/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/plugins/Makefile.in	2021-06-03 18:37:20.050842214 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/scriptvm/Makefile.in b/src/scriptvm/Makefile.in
+--- a/src/scriptvm/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/scriptvm/Makefile.in	2021-06-03 18:31:20.187042091 +0200
+@@ -73,8 +73,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/scriptvm/editor/Makefile.in b/src/scriptvm/editor/Makefile.in
+--- a/src/scriptvm/editor/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/scriptvm/editor/Makefile.in	2021-06-03 18:41:09.957944762 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/shell/Makefile.in b/src/shell/Makefile.in
+--- a/src/shell/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/shell/Makefile.in	2021-06-03 18:40:34.181205467 +0200
+@@ -72,8 +72,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c
+diff -ruN a/src/testcases/Makefile.in b/src/testcases/Makefile.in
+--- a/src/testcases/Makefile.in	2021-05-09 14:11:12.000000000 +0200
++++ b/src/testcases/Makefile.in	2021-06-03 18:41:25.604643663 +0200
+@@ -71,8 +71,8 @@
+ am__make_keepgoing = (target_option=k; $(am__make_running_with_option))
+ pkgdatadir = $(datadir)/@PACKAGE@
+ pkgincludedir = $(includedir)/@PACKAGE@
+-pkglibdir = $(libdir)/@PACKAGE@
+-pkglibexecdir = $(libexecdir)/@PACKAGE@
++pkglibdir = $(libdir)/
++pkglibexecdir = $(libexecdir)/
+ am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
+ install_sh_DATA = $(install_sh) -c -m 644
+ install_sh_PROGRAM = $(install_sh) -c

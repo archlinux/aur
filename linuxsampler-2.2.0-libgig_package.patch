@@ -1,0 +1,12 @@
+diff -ruN a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2016-04-20 17:22:58.000000000 +0200
++++ b/Makefile.am	2021-06-02 23:21:56.230175969 +0200
+@@ -32,7 +32,7 @@
+ 	echo "*** LinuxSampler was compiled with instruments DB support and"; \
+ 	echo "*** $(DESTDIR)/var/lib/linuxsampler/instruments.db"; \
+ 	echo "*** doesn't exist yet, creating it now:"; \
+-	mkdir -p $(DESTDIR)/var/lib/linuxsampler && ./src/linuxsampler \
++	mkdir -p $(DESTDIR)/var/lib/linuxsampler && LD_LIBRARY_PATH="/usr/lib/libgig/:/usr/lib/" ./src/linuxsampler \
+ 	--create-instruments-db $(DESTDIR)/var/lib/linuxsampler/instruments.db ; \
+ 	fi
+ endif
