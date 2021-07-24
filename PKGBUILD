@@ -12,7 +12,7 @@ url="http://www.xfce.org/"
 license=('GPL2')
 depends=('startup-notification' 'xfconf' 'libglade' 'libsm' 'hicolor-icon-theme')
 makedepends=('intltool')
-source=("http://archive.xfce.org/src/xfce/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2"
+source=("http://archive.xfce.org/src/archive/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.bz2"
         'libxfcegui4-4.10.0-no-xfce_setenv.patch')
 sha256sums=('2b82f9979175d8856880c8f349e6eede491ca92fe6940c69c8958115418d4533'
             'd1f4603b5eeef92d5d256d8f766e516395947d72e16db68ce47e472130b94616')
