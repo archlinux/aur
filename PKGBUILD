@@ -1,24 +1,39 @@
-# Maintainer: Eric Berquist <eric dot berquist at gmail dot com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 _gemname=mixlib-config
-pkgname=ruby-${_gemname}
-pkgver=3.0.6
-pkgrel=2
+pkgname=ruby-$_gemname
+pkgver=3.0.9
+pkgrel=1
 pkgdesc="A class based configuration library"
-arch=("any")
-url="https://rubygems.org/gems/${_gemname}"
-license=("Apache")
-depends=("ruby-tomlrb")
-makedepends=("ruby-rdoc")
-options=(!emptydirs)
-source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha256sums=('5306c0cfe5a67de0a82f0a8897ebf6332b00b26cd367d016c4063d4e5e4b8b92')
-noextract=($_gemname-$pkgver.gem)
+arch=('any')
+url="https://github.com/chef/mixlib-config"
+license=('Apache')
+depends=('ruby-tomlrb')
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('562b7dba2745843fad64f2318eb8e08bf7a32c57ad4bb4e4e2add9ff67725328eb3d93f8a0232383eb368c5e8d84b9ed35777f0c6ce6150ec8fcd6b0049e5067')
 
 package() {
-	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" $_gemname-$pkgver.gem
-	rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-	install -D -m644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  # move license
+  cd "gems/$_gemname-$pkgver"
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE NOTICE
 }
