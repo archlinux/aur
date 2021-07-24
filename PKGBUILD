@@ -162,7 +162,7 @@ prepare() {
       make LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
-      exit
+      exit 1
     fi
   fi
 
