@@ -1,7 +1,7 @@
 pkgbase = tenacity-git
 	pkgdesc = An easy-to-use multi-track audio editor and recorder, forked from Audacity
-	pkgver = 3.0.2.r531.gc927f17ce
-	pkgrel = 2
+	pkgver = 3.0.2.r536.gfbf17c0fc
+	pkgrel = 1
 	url = https://github.com/tenacityteam/tenacity
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = tenacity-git
 	makedepends = jack
 	makedepends = nasm
 	makedepends = conan
+	makedepends = scdoc
 	depends = gtk2
 	depends = gtk3
 	depends = qt5-base
