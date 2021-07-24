@@ -1,0 +1,22 @@
+pkgbase = cctag
+	pkgdesc = Detection of CCTag markers made up of concentric circles.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alicevision/CCTag
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = boost
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = ninja
+	depends = boost-libs
+	depends = tbb
+	options = debug
+	options = !strip
+	source = cctag-1.0.0.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.0.tar.gz
+	source = fix_boost_math.patch::https://github.com/alicevision/CCTag/pull/166.diff
+	sha256sums = 0b40506506219cc839424496871e8d392311ed4ae0512f0740e8111a5da44796
+	sha256sums = 2ce981c55538849e667dab168d88c16f0006c9bb76846e18300495b95a853141
+
+pkgname = cctag
