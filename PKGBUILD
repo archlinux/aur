@@ -1,6 +1,6 @@
 # Maintainer: Fox archlinux@foxfromabyss.dev
 
-pkgname=${telegram-tdlib-git}
+pkgname=telegram-tdlib-git
 pkgver=v1.7.0.r1064.gc45535d6
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients'
@@ -21,7 +21,6 @@ pkgver() {
 build() {
   mkdir -p "td/build"
   cd "td/build"
-  echo $PWD
   cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release ..
   cmake --build .
 }
