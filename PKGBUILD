@@ -1,6 +1,6 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
-pkgver=0.2.349_9f6430d
+pkgver=0.2.392_g646a86f
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
@@ -13,13 +13,13 @@ makedepends=('dotnet-host' 'dotnet-sdk-3.1')
 optdepends=()
 provides=('fvim')
 conflicts=('fvim')
-source=("https://github.com/yatli/fvim/archive/v0.2.349+9f6430d.tar.gz")
+source=("https://github.com/yatli/fvim/archive/refs/tags/v0.2.392+g646a86f.tar.gz")
 md5sums=('SKIP')
 options=('staticlibs')
 
 build() {
     cd "${srcdir}/${pkgname}-${_pkgver}"
-    dotnet publish \
+    dotnet publish fvim.fsproj \
         -f netcoreapp3.1 \
         -c Release \
         -r linux-x64 \
