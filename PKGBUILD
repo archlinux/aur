@@ -1,16 +1,15 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgbase=vim-fern
 pkgname=('vim-fern' 'neovim-fern')
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="A general purpose asynchronous tree viewer"
 arch=('any')
 url="https://github.com/lambdalisue/fern.vim"
 license=('MIT')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9eb6ab14d8a57f95164cb237da27dd8363ebfd9abd2b03ede4c3b2f914bb63ce')
-validpgpkeys=('4AEE18F83AFDEB23')
+sha256sums=('8b214bbd44d31a9ab051318cda1c707d0c44fa64fa3234a7bf91720959a1c2c4')
 
 package_vim-fern() {
   depends=('vim>=8.1')
