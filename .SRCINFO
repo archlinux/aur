@@ -1,0 +1,20 @@
+pkgbase = dh-virtualenv
+	pkgdesc = python virtualenvs in Debian packages
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/spotify/dh-virtualenv
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-docutils
+	depends = python
+	depends = perl
+	options = !emptydirs
+	source = https://github.com/spotify/dh-virtualenv/archive/refs/tags/1.2.2.tar.gz
+	source = css.patch
+	sha512sums = f4b941f2074f5132fe592d9b7403a9e17494842ee4bc0f9fa90c04734c3327136062f770578e26ea6a20ebe2087bad52d1a43e6711d38a2e04e8525602071e6d
+	sha512sums = 74f623840b5b8746874f87cc823bd4fdcc3bc076f51971493bba8b1cbd1a8b9ec02880b53c5e1d8e691f9961333413826e99d2021c3cb768df56419c1b06137f
+
+pkgname = dh-virtualenv

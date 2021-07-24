@@ -1,0 +1,12 @@
+diff '--color=auto' -ru a/doc/conf.py b/doc/conf.py
+--- a/doc/conf.py	2021-07-24 17:12:08.891743446 -0400
++++ b/doc/conf.py	2021-07-24 17:12:38.231700640 -0400
+@@ -27,7 +27,7 @@
+ 
+ # https://docs.readthedocs.io/en/latest/guides/adding-custom-css.html
+ def setup(app):
+-    app.add_stylesheet('css/custom.css')
++    app.add_css_file('css/custom.css')
+     #app.add_javascript('js/custom.js')
+ 
+ 
