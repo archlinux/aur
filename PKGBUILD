@@ -10,7 +10,11 @@ arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
 license=('MIT')
 depends=('nss>=3.0'
-         'gtk3')
+         'php'
+         'gtk3'
+         'libxss'
+         'wine')
+optdepends=('flashplayer-standalone: native Flash support')
 makedepends=('npm')
 conflicts=('flashpoint-bin')
 source=("${pkgname}"::"git+https://github.com/FlashpointProject/launcher.git")
