@@ -1,11 +1,10 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Maintainer: amadejpapez
 
 pkgname=python-stegoveritas
 _pkgname=stegoVeritas
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
-pkgdesc='Yet another Stego Tool.'
+pkgdesc='General Steganography detection tool.'
 arch=('any')
 url="https://github.com/bannsec/$_pkgname"
 license=('GPL2')
@@ -16,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$_pkgname-$pkgver::$url/archive/$pkgver.tar.gz")
-sha256sums=('d002cb29b3e98e2860bbeff47dd93ebc04b21288dcd4a2473fd18f2900171033')
+sha256sums=('824ba80127ec296b3010e5cbd7091329e1650cbca7e4a890b17dc8510c3bddf8')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
