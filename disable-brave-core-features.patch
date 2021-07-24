@@ -178,6 +178,28 @@ index 1a7abd9..a15c3f0 100644
 
  source_set("common") {
      sources = [
+diff --git a/components/gemini/browser/BUILD.gn b/components/gemini/browser/BUILD.gn
+index 206bb42..9f50d93 100644
+--- a/components/gemini/browser/BUILD.gn
++++ b/components/gemini/browser/BUILD.gn
+@@ -1,7 +1,7 @@
+ import("//brave/build/config.gni")
+ import("//brave/components/gemini/browser/buildflags/buildflags.gni")
+
+-assert(gemini_enabled)
++#assert(gemini_enabled)
+
+ declare_args() {
+   gemini_client_id = ""
+diff --git a/components/gemini/browser/buildflags/buildflags.gni b/components/gemini/browser/buildflags/buildflags.gni
+index 891f918..49635f5 100644
+--- a/components/gemini/browser/buildflags/buildflags.gni
++++ b/components/gemini/browser/buildflags/buildflags.gni
+@@ -1,3 +1,3 @@
+ declare_args() {
+-  gemini_enabled = is_mac || is_linux || is_win
++  gemini_enabled = false
+ }
 diff --git a/components/p3a/buildflags.gni b/components/p3a/buildflags.gni
 index b8fca0c..d606873 100644
 --- a/components/p3a/buildflags.gni

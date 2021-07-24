@@ -34,7 +34,7 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
-pkgver=r4728.66026232
+pkgver=r4731.8bb6dd45
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -81,7 +81,7 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '3f0686af2e309795a67bc12de3224fc3a3b808799bce3e57375e2d331513fba1'
+            '8618fa00cda4512cad15a2125e44733fc8c4baad7c76400548567d2629f4721a'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -248,6 +248,10 @@ build() {
   echo "uphold_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
   echo "uphold_staging_client_id = 4c2b665ca060d912fec5c735c734859a06118cc8" >> .npmrc
   echo "uphold_staging_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
+  echo "gemini_api_url = https://api.gemini.com/v1" >> .npmrc
+  echo "gemini_oauth_url = https://exchange.gemini.com/auth" >> .npmrc
+  echo "gemini_wallet_client_id = ef94aecde56ca617ac4ce4990414d22944d2095a" >> .npmrc
+  echo "gemini_wallet_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
 
   npm_args=()
   if [ "$COMPONENT" = "4" ]; then

@@ -1,6 +1,6 @@
 pkgbase = unbrave-git
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = r4728.66026232
+	pkgver = r4731.8bb6dd45
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = unbrave-git
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = 60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72
 	sha256sums = ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e
-	sha256sums = 3f0686af2e309795a67bc12de3224fc3a3b808799bce3e57375e2d331513fba1
+	sha256sums = 8618fa00cda4512cad15a2125e44733fc8c4baad7c76400548567d2629f4721a
 	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 
 pkgname = unbrave-git
