@@ -21,7 +21,7 @@ sha256sums=('949fdcb871d038b1c8aed658e3d3d0fe6c44c73fbea8defc46ce37b0abf91303'
 build() {
   patch "${srcdir}/${pkgname}-${pkgver}/src/Images/abgx360gui_TopBitmap_XPM.xpm" "${srcdir}/abgx360gui_TopBitmap_XPM.xpm.patch"
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's/abgx360.net/hadzz.com\/abgx/g' src/abgx360gui.cpp
+  sed -i 's/abgx360\.net/hadzz\.com\/abgx/g' src/abgx360gui.cpp
   ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.8
   make
 }
