@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=minecraft-legacy-launcher
 pkgver=1.6.93.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft Legacy Java Launcher"
 arch=(x86_64)
 url="https://bugs.mojang.com/browse/MCL-11993"
@@ -15,10 +15,10 @@ https://launcher.mojang.com/download/minecraft-launcher.svg
 minecraft-legacy-launcher
 )
 conflicts=(minecraft-launcher)
-md5sums=('f2171107e6b1f8a3483c5e3ed5d1229e'
-         'cd561eab1fd1fddae58fb8205a00f54f'
-         '0b104e3049346908bf559cab602071e3'
-         '8e597d8b7aece38a9ee3bb7cf965a31d')
+sha256sums=('d98de795667f666652e4d0f453708c51292cc326860f387ae8fdfc7cbaf33ca1'
+            'b65cbb23d69037a2b7a7f7eb51bbc2bcf4b207035b1f726b4d8a59f6334cf20d'
+            '35c2bcaeb09fa4b8864e9422fd66bf60847706f8b4400ec4a66ba6436b101f71'
+            '71b1266dab9d0c3e14f1bb1b040a21d3cb09826b1f17aad444e81ce515f7337f')
 package() {
   cd "$pkgdir"
   mkdir -p "$pkgdir/usr"
