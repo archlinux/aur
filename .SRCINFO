@@ -1,0 +1,13 @@
+pkgbase = flip-bin
+	pkgdesc = Flip coins in your command line
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/dominicegginton/flip
+	arch = x86_64
+	license = MIT
+	provides = flip
+	conflicts = flip
+	source = https://github.com/dominicegginton/flip/releases/download/0.1.2/flip
+	sha256sums = SKIP
+
+pkgname = flip-bin
