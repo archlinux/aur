@@ -1,6 +1,6 @@
 pkgbase = galaxybudsclient
 	pkgdesc = Galaxy Buds Client for Linux
-	pkgver = %VERSION%
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/ThePBone/GalaxyBudsClient
 	arch = x86_64

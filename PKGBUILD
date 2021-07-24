@@ -1,6 +1,6 @@
 # Maintainer: Tim Schneeberger (ThePBone) <tim.schneeberger(at)gmail.com>
 pkgname=galaxybudsclient
-pkgver=%VERSION%
+pkgver=4.2
 pkgrel=1
 pkgdesc="Galaxy Buds Client for Linux"
 arch=('x86_64'
@@ -30,7 +30,7 @@ package() {
 		echo "ERROR: CPU architecture not supported"
 	fi
 
-	curl -s https://api.github.com/repos/thepbone/GalaxyBudsClient/releases/tags/%VERSION% | grep -E 'browser_download_url' | grep -i linux_${targetarch}_portable | cut -d '"' -f 4 | wget --progress=bar:force -i - -O "GalaxyBudsClient.bin"
+	curl -s https://api.github.com/repos/thepbone/GalaxyBudsClient/releases/tags/4.2 | grep -E 'browser_download_url' | grep -i linux_${targetarch}_portable | cut -d '"' -f 4 | wget --progress=bar:force -i - -O "GalaxyBudsClient.bin"
 
 	install -Dm755 GalaxyBudsClient.bin "$pkgdir/usr/bin/galaxybudsclient"
 	install -Dm644 "$srcdir/${pkgname}.desktop" -t "$pkgdir/usr/share/applications"
