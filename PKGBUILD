@@ -3,7 +3,7 @@
 pkgname="clpimg"
 pkgver=1.0
 pkgrel=2
-pkgdesc="copy images to clipboard on linux on qt backend"
+pkgdesc="copy images to clipboard on linux using qt backend"
 arch=('any')
 license=('GPL')
 url="https://github.com/MahouShoujoMivutilde/clpimg/"

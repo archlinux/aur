@@ -1,13 +1,15 @@
 pkgbase = clpimg
-	pkgdesc = copy images to clipboard on linux on qt backend
-	pkgver = master
-	pkgrel = 1
+	pkgdesc = copy images to clipboard on linux using qt backend
+	pkgver = 1.0
+	pkgrel = 2
 	url = https://github.com/MahouShoujoMivutilde/clpimg/
 	arch = any
 	license = GPL
 	depends = python-pyqt5
-	source = clpimg-master.tar.gz::https://github.com/MahouShoujoMivutilde/clpimg//archive/master.zip
-	md5sums = c06638e8e60c520ec99f89ffec136298
+	provides = clpimg
+	conflicts = clpimg
+	source = clpimg-1.0.tar.gz::https://github.com/MahouShoujoMivutilde/clpimg//archive/v1.0.tar.gz
+	md5sums = 91424f6872dbcd7eafe40f27360bcc18
 
 pkgname = clpimg
 
