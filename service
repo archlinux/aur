@@ -4,7 +4,8 @@ After=network.target network-online.target
 
 [Service]
 Type=simple
-Environment=HOUSEFLOW_SERVER_CONFIG=/etc/houseflow/server.toml
+Environment=HOUSEFLOW_SERVER_CONFIG=/etc/houseflow/server.yaml
+Environment=HOUSEFLOW_SERVER_HIDE_TIMESTAMP=yes
 ExecStart=/usr/bin/env houseflow-server
 Restart=on-failure
 RestartSec=1

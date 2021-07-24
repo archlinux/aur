@@ -1,7 +1,7 @@
 pkgbase = houseflow-server-git
 	pkgdesc = Home automation platform, written in Rust. Server only
 	pkgver = 0.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gbaranski/houseflow
 	arch = x86_64
 	arch = arm
