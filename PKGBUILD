@@ -3,9 +3,9 @@
 
 pkgname=neix
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='RSS/Atom feed reader for your terminal'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/tomschwarz/neix"
 license=('GPL3')
 conflicts=('neix-git')
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release \
+	cmake -DCMAKE_BUILD_TYPE=None \
 	      -DCMAKE_INSTALL_PREFIX="/usr" \
 	      -DCMAKE_INSTALL_LIBDIR="lib" \
 	      ..
