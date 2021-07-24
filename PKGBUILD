@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=waypoint
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A tool to build, deploy, and release any application on any platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('go' 'go-bindata')
 optdepends=('docker: for local development server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/waypoint/archive/v$pkgver.tar.gz")
-b2sums=('d5e96ec434d30ce2c91d446348b40809f2330554b29fb73800e76f156ce84ca914a7119296c034a6bfd1d9338f8d3cbc21548fb3f30e47b461f6cd517a372463')
+b2sums=('b4033c0c7b38b2a53af9706f63ca4beed3064a0aae0bbaa603f711659ac998b8599a0a67e6b283b9ac0f037e1ca6935401ed660fa1dca865bc09d171ce010872')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
