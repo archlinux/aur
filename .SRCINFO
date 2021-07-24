@@ -1,6 +1,6 @@
 pkgbase = python-transonic
 	pkgdesc = AOT / JIT compiler frontend for modern Python-Numpy code
-	pkgver = 0.4.7.post0
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://transonic.readthedocs.io
 	arch = any
@@ -19,8 +19,7 @@ pkgbase = python-transonic
 	optdepends = cython: compiler backend
 	optdepends = python-rich: colourful logs
 	provides = transonic
-	source = https://files.pythonhosted.org/packages/source/t/transonic/transonic-0.4.7.post0.tar.gz
-	sha256sums = 493b330616135e6bdb6575602694ecff092bbec6402a0b57cc8aedeea2b24c2a
+	source = https://files.pythonhosted.org/packages/source/t/transonic/transonic-0.4.10.tar.gz
+	sha256sums = 332ec89d8b18d96b1cbe004f6d3d5f6633fe1db5450eafd54e02896d6c0e07cd
 
 pkgname = python-transonic
-
