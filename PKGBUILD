@@ -6,12 +6,12 @@
 _gemname=mixlib-shellout
 pkgname=ruby-$_gemname
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Run external commands on Unix or Windows"
 arch=('any')
 url="https://github.com/chef/mixlib-shellout"
 license=('Apache')
-depends=('ruby')
+depends=('ruby' 'ruby-chef-utils')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")

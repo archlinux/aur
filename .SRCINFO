@@ -1,11 +1,12 @@
 pkgbase = ruby-mixlib-shellout
 	pkgdesc = Run external commands on Unix or Windows
 	pkgver = 3.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chef/mixlib-shellout
 	arch = any
 	license = Apache
 	depends = ruby
+	depends = ruby-chef-utils
 	noextract = mixlib-shellout-3.2.5.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/mixlib-shellout-3.2.5.gem
