@@ -4,8 +4,7 @@ Documentation=https://sr.ht/~emersion/tlstunnel
 After=network.target
 
 [Service]
-User=nobody
-Group=nobody
+User=tlstunnel
 ExecStart=/usr/bin/tlstunnel
 ExecReload=kill -HUP $MAINPID
 TimeoutStopSec=5s
