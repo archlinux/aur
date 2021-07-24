@@ -1,16 +1,16 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=timescaledb-tune
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="A tool for tuning TimescaleDB for better performance"
 arch=('x86_64')
 url="https://github.com/timescale/timescaledb-tune"
 license=('Apache')
-depends=('postgresql' 'glibc')
+depends=('postgresql')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('e3898ce8b30f833865ec7e11974c0f199389e21ad24d48885c395091342e10c1d249ecb8288c386208acffdd6c4847e2ef72192c145fc9cc080f40d01be0fda8')
+b2sums=('8b5b4a1b06281afe67ab326b3fddbdc86b89378e18eeae16b35f87f0839ce1c3b4ac1fedc251ea19be3db6a193c9df9b7f96660b9f96f7bc4ad97fad32a34bf8')
 
 prepare() {
   cd "$pkgname-$pkgver"
