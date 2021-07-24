@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Flashpoint
+Comment=Launcher for BlueMaxima's Flashpoint 
+Icon=/usr/share/pixmaps/flashpoint.png
+Exec=/opt/flashpoint/linux-unpacked/flashpoint-launcher
+Actions=
+Categories=Game

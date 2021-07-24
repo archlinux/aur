@@ -1,0 +1,20 @@
+pkgbase = flashpoint-launcher-bin
+	pkgdesc = Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/FlashpointProject/launcher
+	arch = x86_64
+	license = MIT
+	depends = nss>=3.0
+	depends = php
+	depends = gtk3
+	depends = libxss
+	depends = wine
+	optdepends = flashplayer-standalone: native Flash support
+	conflicts = flashpoint-bin
+	conflicts = flashpoint-launcher-git
+	source = flashpoint-launcher-bin-10.0.0.7z::https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-x64.7z
+	md5sums = cfdebf0c15b03c1a7a6910cc4af7df49
+	sha256sums = fbcb0403c856a5b738f9837c5dbfea8e5cdc6ff2160b5423d1fd7955d98e3c2a
+
+pkgname = flashpoint-launcher-bin
