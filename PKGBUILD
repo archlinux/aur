@@ -6,7 +6,7 @@
 pkgname=gnat-gps
 _upstream_ver=2021-20210701-19B6B
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -18,34 +18,29 @@ depends=("clang" "ada_language_server"
          "python2-gobject" "python2-gobject2" "python2-cairo"
          "python2-yaml")
 
-optdepends=('python2-jedi')
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
 _checksum=e940520a321c0aa8b624be178306147970c6b6f9
 source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz"
+        gnatstudio-support.zip::https://github.com/charlie5/archlinux-gnatstudio-support/archive/refs/heads/main.zip
         0003-Honour-DESTDIR-in-installation-targets.patch
         0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
         patch-shared.gpr.in
         patch-filter_panels.adb
         patch-gtkada-search_entry.ads
         patch-gtkada-search_entry.adb
-        patch-share-support-core-extensions-__init__.py
-        patch-share-support-core-modules.py
-        patch-share-support-core-tool_output.py
-        patch-share-support-ui-pygps-__init__.py
+        site-packages.tar.gz
         gps.desktop)
 
 sha1sums=("$_checksum"
+          '12fe188cc9ddcf06341d52af4dd086c9ded5afda'
           '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
           '4e6cb35c4e2e74d343d0917b926c7377a81b1aba'
           'c71a4484b1e791ea8455a44e602b236dc7497c4d'
           '7a928f86dad330590a8c9e9aff04291e458fd1c6'
           '8815ffbf0077a50c4c2023637d214b1847be40f1'
           '6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53'
-          '6c4ec35fcb80336d62960b3b59fbe82ea305f738'
-          '79da1943438f081e6a863011c82c80ccec280e03'
-          '0a03a65eda52b70c7197aef858e3c552a3fbda34'
-          '4492bad6e6a368526654e9c6ac6cc853d4b0fe48'
+          '3a7acd93e393a2cc29dc6f6be1a498b13ecc5dc1'
           'b399c7b3a1fe48152da18081def3dced2e74763b')
 
 prepare()
@@ -57,15 +52,9 @@ prepare()
   patch -Np1 -i ../patch-gtkada-search_entry.ads
   patch -Np1 -i ../patch-gtkada-search_entry.adb
 
-  patch -Np0 -i ../patch-share-support-core-extensions-__init__.py
-  patch -Np0 -i ../patch-share-support-core-modules.py
-  patch -Np0 -i ../patch-share-support-core-tool_output.py
-  patch -Np0 -i ../patch-share-support-ui-pygps-__init__.py
-
   patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
   patch -p0 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
 }
-
 
 build() 
 {
@@ -96,6 +85,28 @@ package()
 
   export OS=unix
   make DESTDIR="$pkgdir/" install
+
+  # Use the gnatstudio support from the binary Community Edition, since the 
+  # source distribution support is riddled with python inconsistencies.
+  #
+  rm -fr "$pkgdir/usr/share/gnatstudio"
+
+  pushd "$srcdir/archlinux-gnatstudio-support-main"
+  tar -xf "$srcdir/archlinux-gnatstudio-support-main/gnatstudio.tar.gz"
+  mv gnatstudio "$pkgdir/usr/share"
+  popd
+
+  # Add no longer available Python 2.7 packages.
+  #
+  mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
+
+  pushd "$srcdir/site-packages"
+
+  for file in $(find . -type f); do
+    install -m 644 -D ${file} "$pkgdir/usr/lib/python2.7/site-packages"/${file#source/}
+  done
+
+  popd
 
   # Add the desktop config.
   install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/gps.desktop"
