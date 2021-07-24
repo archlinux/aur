@@ -1,6 +1,6 @@
 # Maintainer: yantene <contact@yantene.net>
 pkgname=anyenv
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="All in one for **env"
 arch=('any')
@@ -10,7 +10,7 @@ depends=()
 conflicts=()
 install="anyenv.install"
 source=("https://github.com/anyenv/anyenv/archive/v${pkgver}.tar.gz")
-md5sums=('fedf83980f02c4aa99681fc7387e8278')
+md5sums=('4ba0ca8ac8a8f61c834faac76e8157bc')
 
 build() {
     cd $srcdir
