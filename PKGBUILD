@@ -1,26 +1,30 @@
 ## Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
-pkgver=1.5.3
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
 depends=(
-		python-feedparser
-		python-filetype
-		python-frozendict
-		python-future
-		python-markdown
-		python-netaddr
 		python-regex
-		python-rsa
-		python-tornado
-		python-unidecode
+		python-flask-login
+		python-pyserial
+		python-netaddr
+		python-netifaces
+		python-pkginfo
+		python-requests
+		python-psutil
+		python-future
+		python-websocket-client
 		python-wrapt
+		python-filetype
+		python-blinker
+
+		python-babel
 		)
-makedepends=('python-virtualenv')
+makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
 			'curaengine: fast and robust engine for processing 3D models'
 			'mjpg-streamer: stream images from webcam'
@@ -61,7 +65,7 @@ package() {
 	virtualenv --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
 
 	pushd $srcdir/$pkgname
-	$pkgdir/usr/lib/$pkgname/bin/pip install --install-option '--optimize=1' .
+	$pkgdir/usr/lib/$pkgname/bin/pip --no-cache-dir install --install-option '--optimize=1' .
 	popd
 
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;

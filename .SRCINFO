@@ -1,23 +1,27 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
-	pkgver = 1.5.3
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
 	license = AGPL3
 	makedepends = python-virtualenv
-	depends = python-feedparser
-	depends = python-filetype
-	depends = python-frozendict
-	depends = python-future
-	depends = python-markdown
-	depends = python-netaddr
+	makedepends = rust
 	depends = python-regex
-	depends = python-rsa
-	depends = python-tornado
-	depends = python-unidecode
+	depends = python-flask-login
+	depends = python-pyserial
+	depends = python-netaddr
+	depends = python-netifaces
+	depends = python-pkginfo
+	depends = python-requests
+	depends = python-psutil
+	depends = python-future
+	depends = python-websocket-client
 	depends = python-wrapt
+	depends = python-filetype
+	depends = python-blinker
+	depends = python-babel
 	optdepends = ffmpeg: timelapse support
 	optdepends = curaengine: fast and robust engine for processing 3D models
 	optdepends = mjpg-streamer: stream images from webcam
@@ -27,7 +31,7 @@ pkgbase = octoprint
 	options = !distcc
 	options = !ccache
 	backup = etc/conf.d/octoprint
-	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.5.3
+	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.6.1
 	source = octoprint.sysusers
 	source = octoprint.service
 	source = octoprint-serve
@@ -39,4 +43,3 @@ pkgbase = octoprint
 	sha256sums = 02be5d5a18febe215809882d96f068092c4474abb4e76d82e4450b860a4e9ef5
 
 pkgname = octoprint
-
