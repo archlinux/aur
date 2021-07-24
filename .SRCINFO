@@ -1,0 +1,15 @@
+pkgbase = avdl
+	pkgdesc = Abstract video-game development language compiler
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://darkdimension.org/
+	arch = x86_64
+	license = GPL3
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = freeglut
+	depends = glew
+	source = https://notabug.org/tomtsagk/avdl/archive/v0.0.0.tar.gz
+	md5sums = 04b7d79031597ad46108d984beb79353
+
+pkgname = avdl
