@@ -1,7 +1,7 @@
 pkgbase = anime4k
 	pkgdesc = A High-Quality Real Time Upscaler for Anime Video
 	pkgver = 3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bloc97/Anime4K#anime4k
 	arch = any
 	license = MIT
