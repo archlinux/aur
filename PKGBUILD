@@ -2,7 +2,7 @@
 
 pkgname=abgx360
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An app for checking Xbox 360 ISOs"
 url="https://bakasurarce.github.io/abgx360/"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # abgx360.net is somehow no longer working, so we'll switch to abgx360.xecuter.com for now
-  sed -i 's/abgx360.net/hadzz.com\/abgx/g' src/abgx360.c
+  sed -i 's/abgx360.net\/Apps/hadzz.com\/abgx/g' src/abgx360.c
 }
 
 build() {
