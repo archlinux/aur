@@ -3,8 +3,8 @@
 # Contributor: Colin Berry <colinb969@gmail.com>
 
 pkgname=flashpoint-launcher-git
-pkgver=e1b46166
-pkgrel=3
+pkgver=10.0.0.e1b46166
+pkgrel=2
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only."
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
@@ -17,11 +17,13 @@ depends=('nss>=3.0'
 optdepends=('flashplayer-standalone: native Flash support')
 makedepends=('npm')
 conflicts=('flashpoint-bin')
-source=("${pkgname}"::"git+https://github.com/FlashpointProject/launcher.git")
-sha256sums=('SKIP')
+source=("${pkgname}"::"git+https://github.com/FlashpointProject/launcher.git"
+            "flashpoint.desktop"::"https://aur.archlinux.org/cgit/aur.git/plain/flashpoint.desktop?h=flashpoint-launcher-git")
+sha256sums=('SKIP'
+                     '2d9bc6f82f37d32267dbdde2778a626839b9936f75b711cd07bb79c477ceb0b8')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo "$(git rev-parse --short HEAD)"
+	echo "10.0.0.$(git rev-parse --short HEAD)"
 }
 
 build(){
@@ -40,8 +42,8 @@ package(){
     # Symlink to binary (WIP)
     #ln -sf /opt/flashpoint/linux-unpacked/flashpoint-launcher $pkgdir/usr/bin/flashpoint-launcher
 
-    # Desktop Entry (WIP)
-    #install -Dm644 ./flashpoint.desktop "$pkgdir/usr/share/applications/flashpoint.desktop"
+    # Desktop Entry
+    install -Dm644 ${srcdir}/flashpoint.desktop "$pkgdir/usr/share/applications/flashpoint.desktop"
 
     # License
     install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

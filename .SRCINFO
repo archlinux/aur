@@ -1,7 +1,7 @@
 pkgbase = flashpoint-launcher-git
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only.
-	pkgver = e1b46166
-	pkgrel = 3
+	pkgver = 10.0.0.e1b46166
+	pkgrel = 2
 	url = https://github.com/FlashpointProject/launcher
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,8 @@ pkgbase = flashpoint-launcher-git
 	optdepends = flashplayer-standalone: native Flash support
 	conflicts = flashpoint-bin
 	source = flashpoint-launcher-git::git+https://github.com/FlashpointProject/launcher.git
+	source = flashpoint.desktop::https://aur.archlinux.org/cgit/aur.git/plain/flashpoint.desktop?h=flashpoint-launcher-git
 	sha256sums = SKIP
+	sha256sums = 2d9bc6f82f37d32267dbdde2778a626839b9936f75b711cd07bb79c477ceb0b8
 
 pkgname = flashpoint-launcher-git
