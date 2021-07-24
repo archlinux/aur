@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -12,7 +12,7 @@ license=(BSD custom:PATENTS)
 depends=(mingw-w64-crt)
 options=(!strip !buildflags staticlibs)
 makedepends=(mingw-w64-gcc mingw-w64-cmake git ninja yasm)
-_commit=7fadc0e77130efb05f52979b0deaba9b6a1bba6d  # tags/v3.1.1^0
+_commit=ae2be8030200925895fa6e98bd274ffdb595cbf6  # tags/v3.1.2^0
 source=("git+https://aomedia.googlesource.com/aom#commit=$_commit"
         "cmake.patch")
 b2sums=('SKIP'
