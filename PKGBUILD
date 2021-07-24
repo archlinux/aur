@@ -1,4 +1,4 @@
-# Maintainer: Wayne Hartmann <wayne@bitstorm.pw>
+# Maintainer: Bakasura <bakasura@protonmail.ch>
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=abgx360gui
