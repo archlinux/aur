@@ -2,15 +2,15 @@
 
 pkgbase=firecracker
 pkgname=('firecracker' 'firecracker-docs')
-pkgver=0.24.4
-pkgrel=2
+pkgver=0.24.5
+pkgrel=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 arch=('x86_64')
 url="https://firecracker-microvm.github.io"
 license=('Apache')
 makedepends=('cargo' 'rust-musl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/firecracker-microvm/firecracker/archive/v$pkgver.tar.gz")
-b2sums=('15b0555590df59e865c34f0fc8fa071827b7031f5cc9b01550a7c4d914818bebfaa5037945cfc696cc241961510836ec863463055d22632d50e803436473de96')
+b2sums=('cd69997a558ef8374c4ebb5c76fb8064b17444cf4a8b5162fe54f2e9ccfa542ff499210a8d362323d94e75abefd0187afb0ce29bbfe91dd8a66977313e1a63e9')
 
 build() {
   cd "$pkgbase-$pkgver"
