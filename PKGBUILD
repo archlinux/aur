@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=21.2.0_devel.141308.50233d0daa3
+pkgver=21.3.0_devel.142889.bd9550b026e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -27,18 +27,14 @@ url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
-                'llvm32.native'
-                'do-not-use-StackAlignmentOverride.patch'
-)
+                'llvm32.native')
 
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '6b4a19068a323d7f90a3d3cd315ed1f9'
-         '72a79be875f9b5cba273590b55922b0d')
+         '6b4a19068a323d7f90a3d3cd315ed1f9')
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
-            'f1f2d93967756509aba883e6cc7a58dfdb59423b5bac0d7363c8585542e6813aa097ce7f22dafb9d1b7d9ceb5f179f48181d7509b831e3d46d13786e96778584')
+            'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -55,11 +51,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    
-    # build fails due to a change in llvm 13. only x86 32-bit uses the option , removing it as temp workaround seems safe.
-    # https://gitlab.freedesktop.org/mesa/mesa/-/issues/4906
-    cd mesa
-    patch --forward --strip=1 --input="${srcdir}/do-not-use-StackAlignmentOverride.patch"
 }
 
 build () {
