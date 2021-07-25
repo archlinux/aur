@@ -2,7 +2,7 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Launcher for BlueMaxima's Flashpoint with script to install data files"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
@@ -11,7 +11,9 @@ depends=('nss>=3.0'
          'php'
          'gtk3'
          'libxss'
-         'wine')
+         'wine'
+         'wget'
+         'p7zip')
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
 source=("https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-amd64.deb"
