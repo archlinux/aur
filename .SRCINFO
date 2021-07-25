@@ -1,0 +1,21 @@
+pkgbase = sparrow-wallet
+	pkgdesc = Bitcoin Wallet that works with BitBox02
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://sparrowwallet.com/
+	arch = x86_64
+	arch = arm64
+	license = Apache
+	makedepends = p7zip
+	makedepends = gendesk
+	depends = libnet
+	depends = hicolor-icon-theme
+	depends = alsa-lib
+	depends = libxtst
+	depends = libxrender
+	depends = java-runtime
+	source = https://github.com/sparrowwallet/sparrow/releases/download/1.4.3/sparrow-1.4.3.tar.gz
+	validpgpkeys = D4D0D3202FC06849A257B38DE94618334C674B40
+	sha256sums = 77818bad5f7183696a4be01db1855971b43379fd049e1e3f76ee5919fcddc655
+
+pkgname = sparrow-wallet
