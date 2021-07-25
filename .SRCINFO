@@ -1,13 +1,12 @@
 pkgbase = r-readr
 	pkgdesc = Read Rectangular Text Data
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=readr
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = make
 	depends = r>=3.1
 	depends = r-cli
 	depends = r-clipr
@@ -16,9 +15,10 @@ pkgbase = r-readr
 	depends = r-rlang
 	depends = r-r6
 	depends = r-tibble
-	depends = r-lifecycle
-	depends = r-bh
+	depends = r-vroom>=1.5.2
+	depends = r-lifecycle>=0.2.0
 	depends = r-cpp11
+	depends = r-tzdb>=0.1.1
 	optdepends = r-covr
 	optdepends = r-curl
 	optdepends = r-dplyr
@@ -27,9 +27,9 @@ pkgbase = r-readr
 	optdepends = r-spelling
 	optdepends = r-stringi
 	optdepends = r-testthat
+	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/readr_1.4.0.tar.gz
-	sha256sums = 02b1188aab8b2bc3f3d2bba5b946bd299610e87f3f7660c88b60b444093c46b9
+	source = https://cran.r-project.org/src/contrib/readr_2.0.0.tar.gz
+	sha256sums = 19d11618aee0fa1883b3e3ad856da823e2db404ce16aa57f855957f018b3689c
 
 pkgname = r-readr
-
