@@ -74,8 +74,8 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.12
-_minor=15
+_major=5.13
+_minor=5
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -106,11 +106,12 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-  '7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
-  '39045607567d69f84424b224e4fa6bf8f97a21a06ac9d6396acab16a18c4bcd3'
-  '7bbcf85a485de022418c71dd909dcb7abc4fcabfe0b76c184e28203b4cf1d29e'
-  'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'
-  '828d90d788ad44ba1480486081afb3ec730de5b48dfe344662043940a0b42cdf')
+  '3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # linux-5.1x.tar.xz
+  '168b26fe2060901e6f46cc744d1e95bee3a8ea414b58372b1c134d71ac05c876'  # linux-5.1x.tar.sign
+  '113a47d893d324fdb9528b5c602eb7cba2439dcf271b7dcd522316d8af610b45'  # patch-5.1x.x.xz
+  'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'  # more-uarches-x.tar.gz
+  'fcfb29005032125010bcf18ce2f177af7c84c74cff729de8f0cc3e4a552a59a4'  # config
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
