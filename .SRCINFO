@@ -1,12 +1,13 @@
 pkgbase = edu-sync
 	pkgdesc = A command line application for synchronizing the contents of Moodle instances to your computer.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://edu-sync.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = dbus
+	options = !strip
 	source = edu-sync-0.1.1.tar.gz::https://github.com/edu-sync/edu-sync/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 132e8bf52db144b1fe60c9913c412ac0c3dc0152d1477d1602af62f5671476bd
 
