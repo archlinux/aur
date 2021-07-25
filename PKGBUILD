@@ -1,4 +1,5 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=kilo-git
 pkgver=r19.69c3ce6
 pkgrel=1
