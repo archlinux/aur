@@ -33,7 +33,7 @@ package() {
 
 	cd "$pkgdir$_gemdir"/gems/compass-$pkgver
 	cp "$srcdir"/Gemfile{,.lock} .
-	bundle install --deployment
+	bundle1 install --deployment
 	patch -p1 -i "$srcdir"/bundler.patch
 
 	rm "$pkgdir"/usr/bin/compass
