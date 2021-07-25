@@ -6,12 +6,6 @@ _fragment=${FRAGMENT:-#branch=master}
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
-# fix gcc:11 regression: https://bugs.archlinux.org/task/70930
-makedepends+=('gcc10')
-_CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10
-                -DCMAKE_CXX_COMPILER=g++-10
-)
-
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 ((DISABLE_USD)) && {
