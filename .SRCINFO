@@ -1,17 +1,14 @@
 pkgbase = perl-date-holidayparser
 	pkgdesc = Parser for .holiday-files
-	pkgver = 0.41
-	pkgrel = 3
-	url = http://search.cpan.org/dist/Date-HolidayParser/
-	arch = i686
+	pkgver = 0.43
+	pkgrel = 1
+	url = https://search.cpan.org/dist/Date-HolidayParser/
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-extutils-makemaker
-	depends = perl-any-moose
+	depends = perl-moo
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZERODOGG/Date-HolidayParser-0.41.tar.gz
-	sha256sums = ec38a54a4029ca3796d3e9a46a231603911f51133e3a8203c6b71588c527d17c
+	source = https://search.cpan.org/CPAN/authors/id/Z/ZE/ZERODOGG/Date-HolidayParser-0.43.tar.gz
+	sha256sums = d61f6850e669e41d221e598fd09d9ec2f29a8138d9679609f02a31bb817e0a6b
 
 pkgname = perl-date-holidayparser
-
