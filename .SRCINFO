@@ -1,0 +1,47 @@
+pkgbase = r-vroom
+	pkgdesc = Read and Write Rectangular Text Data Quickly
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=vroom
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = r>=3.1
+	depends = r-bit64
+	depends = r-crayon
+	depends = r-cli
+	depends = r-glue
+	depends = r-hms
+	depends = r-lifecycle
+	depends = r-rlang>=0.4.2
+	depends = r-tibble>=2.0.0
+	depends = r-tzdb>=0.1.1
+	depends = r-vctrs>=0.2.0
+	depends = r-tidyselect
+	depends = r-withr
+	depends = r-progress>=1.2.1
+	depends = r-cpp11>=0.2.0
+	optdepends = r-archive
+	optdepends = r-bench
+	optdepends = r-covr
+	optdepends = r-curl
+	optdepends = r-dplyr
+	optdepends = r-forcats
+	optdepends = r-fs
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-patchwork
+	optdepends = r-prettyunits
+	optdepends = r-purrr
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-scales
+	optdepends = r-spelling
+	optdepends = r-testthat
+	optdepends = r-tidyr
+	optdepends = r-waldo
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/vroom_1.5.3.tar.gz
+	sha256sums = 44f92478d4725869cad7fdbb166268aa149ad8f510c378d16047d5b03b4e4b42
+
+pkgname = r-vroom
