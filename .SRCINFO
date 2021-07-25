@@ -1,0 +1,18 @@
+pkgbase = spotifyd-avahi
+	pkgdesc = Lightweight spotify streaming daemon with spotify connect support (avahi build)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/lhaus/spotifyd-avahi
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = alsa-lib
+	depends = libogg
+	depends = libpulse
+	depends = dbus
+	provides = spotifyd
+	conflicts = spotifyd
+	source = https://github.com/lhaus/spotifyd-avahi/archive/v0.3.2-avahi/spotifyd-avahi-0.3.2.tar.gz
+	b2sums = 11a142d3275238e4c7c24f2364fff08c2715c935f5198c1d3afed7ebffbf13fc8b1be9507bc99526179126c6cd4d9d6a981edd25a63a02a477d3873ea659460e
+
+pkgname = spotifyd-avahi
