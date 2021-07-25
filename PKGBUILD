@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms); [ -n "$NVIDIA_340XX_DKMS_ONLY" ] && pkgname=(nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=21
+pkgrel=22
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -30,7 +30,6 @@ b2sums=('6538bbec53b10f8d20977f9b462052625742e9709ef06e24cf2e55de5d0c55f1620a4bb
         '947cb1f149b2db9c3c4f973f285d389790f73fc8c8a6865fc5b78d6a782f49513aa565de5c82a81c07515f1164e0e222d26c8212a14cf016e387bcc523e3fcb1'
         '665bf0e1fa22119592e7c75ff40f265e919955f228a3e3e3ebd76e9dffa5226bece5eb032922eb2c009572b31b28e80cd89656f5d0a4ad592277edd98967e68f'
         '344cd3a9888a9a61941906c198d3a480ce230119c96c72c72a74b711d23face2a7b1e53b9b4639465809b84762cdc53f38210e740318866705241bc4216e4f35')
-	'344cd3a9888a9a61941906c198d3a480ce230119c96c72c72a74b711d23face2a7b1e53b9b4639465809b84762cdc53f38210e740318866705241bc4216e4f35')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
