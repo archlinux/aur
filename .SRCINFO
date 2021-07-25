@@ -7,7 +7,6 @@ pkgbase = alice-vision-git
 	arch = x86_64
 	license = MPL2
 	license = MIT
-	makedepends = cuda
 	makedepends = ninja
 	makedepends = boost
 	makedepends = eigen
@@ -19,8 +18,6 @@ pkgbase = alice-vision-git
 	makedepends = coin-or-lemon
 	makedepends = git
 	makedepends = cmake
-	depends = popsift
-	depends = magma
 	depends = alembic
 	depends = boost-libs
 	depends = ceres-solver
@@ -32,13 +29,10 @@ pkgbase = alice-vision-git
 	depends = opengv
 	depends = glu
 	depends = glfw-x11
-	provides = uncertainty-framework
 	provides = alice-vision
 	provides = geogram
-	conflicts = uncertainty-framework
 	conflicts = alice-vision
 	conflicts = geogram
-	source = ute_lib::git+https://github.com/alicevision/uncertaintyTE.git
 	source = alice-vision-git::git+https://github.com/alicevision/AliceVision.git#branch=develop
 	source = geogram::git+https://github.com/alicevision/geogram.git
 	source = cmake_cxx_std_14.patch
@@ -56,4 +50,3 @@ pkgbase = alice-vision-git
 	sha256sums = SKIP
 
 pkgname = alice-vision-git
-
