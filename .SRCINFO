@@ -1,7 +1,7 @@
 pkgbase = routinator-git
 	pkgdesc = RPKI validator written in Rust
-	pkgver = 0.6.4.r79.g804c74e
-	pkgrel = 2
+	pkgver = 0.10.0.rc1.r1.g5ffd348
+	pkgrel = 1
 	url = https://nlnetlabs.nl/rpki
 	arch = i686
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = routinator-git
 	sha256sums = SKIP
 
 pkgname = routinator-git
-

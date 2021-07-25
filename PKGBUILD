@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=routinator-git
-pkgver=0.6.4.r79.g804c74e
-pkgrel=2
+pkgver=0.10.0.rc1.r1.g5ffd348
+pkgrel=1
 pkgdesc="RPKI validator written in Rust"
 arch=('i686' 'x86_64')
 url="https://nlnetlabs.nl/rpki"
@@ -20,7 +20,6 @@ pkgver() {
 
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 check() {
   cd "routinator"
