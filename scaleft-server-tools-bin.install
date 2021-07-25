@@ -1,12 +1,4 @@
 # 
-post_install() {
-  DISABLE_AUTOSTART="/etc/sftd/disable-autostart"
-  systemctl enable sftd
-  if [[ ! -e "${DISABLE_AUTOSTART}" ]]; then
-    systemctl restart --no-block sftd
-  fi
-}
-
 pre_remove() {
   systemctl --no-reload disable sftd
   systemctl stop sftd
