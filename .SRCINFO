@@ -1,16 +1,15 @@
 pkgbase = mpv-handler
 	pkgdesc = Play website videos and songs with mpv & youtube-dl.
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/akiirui/mpv-handler/
-	install = mpv-handler.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = mpv
 	depends = youtube-dl
-	source = mpv-handler-0.2.7.tar.gz::https://github.com/akiirui/mpv-handler/archive/v0.2.7.tar.gz
-	b2sums = 3366af0defb064d99504b79ea0e52410a6d45970bbfa362cc154c5d99c7b2bcd8696a77d6b1473aa0c52eff140398558de1c6ac4fe9f5783371e7fd9c3628997
+	source = mpv-handler-0.2.8.tar.gz::https://github.com/akiirui/mpv-handler/archive/v0.2.8.tar.gz
+	b2sums = 07dccd0bdf96a979fa370c17f599ec1ae2732c820c4ef1cf2f4867f024373b65e456a4f9b9e43c74a0a5f7510455add5c1de1b98f944fab0973d41c769b16f33
 
 pkgname = mpv-handler
