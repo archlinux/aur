@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-shuzhi-git
 _pkgname=shuzhi
-pkgver=3.38.r5.g7c01dcc
+pkgver=3.38.r14.ga21d848
 pkgrel=1
 pkgdesc="A wallpaper generation extension for gnome shell, inspired by Jizhi"
 arch=('any')
