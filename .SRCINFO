@@ -7,8 +7,7 @@ pkgbase = kiro
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = kiro-0.4.3.tar.gz::https://github.com/rhysd/kiro-editor/archive/refs/tags/v0.4.3.tar.gz
+	source = kiro-0.4.3.tar.gz::https://github.com/rhysd/kiro-editor/archive/v0.4.3.tar.gz
 	sha256sums = 47081ee06b0fde498905c2ad9a2b215eef397eebe2a046ff10c70f44b5db52a1
 
 pkgname = kiro
-
