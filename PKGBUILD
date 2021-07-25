@@ -1,4 +1,5 @@
-# Maintainer: Kaare Jenssen <kaare@jenssen.it>
+# Maintainer: Dario Klingenberg <dario.klingenberg@web.de>
+# Contributor: Kaare Jenssen <kaare@jenssen.it>
 # Contributor: Julian DeMille <julian.demille@demilletech.net>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Chris Dunder <cdunder@gmail.com>
@@ -11,14 +12,14 @@
 # Contributor: sidereus <francesco.serafin.3@gmail.com>
 
 pkgname=stumpwm
-pkgver=19.11
+pkgver=20.11
 pkgrel=2
 pkgdesc='Tiling, keyboard-driven window manager written in Common Lisp'
 arch=('x86_64')
 url='https://stumpwm.github.io/'
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('b21b0294d664371b404b061be10055289cab4a13e6d50ef0385d7d89b14bf3ef')
+sha256sums=('8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c')
 makedepends=('cl-asdf' 'cl-ppcre' 'clx-git' 'common-lisp' 'cl-alexandria-git')
 optdepends=('xorg-xprop: for stumpish, the StumpWM Interactive Shell'
             'rlwrap: command completion and history in stumpish'

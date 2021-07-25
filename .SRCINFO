@@ -1,6 +1,6 @@
 pkgbase = stumpwm
 	pkgdesc = Tiling, keyboard-driven window manager written in Common Lisp
-	pkgver = 19.11
+	pkgver = 20.11
 	pkgrel = 2
 	url = https://stumpwm.github.io/
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = stumpwm
 	optdepends = surfraw: surf the internet with surfraw.lisp
 	options = !strip
 	options = !makeflags
-	source = stumpwm-19.11.tar.gz::https://github.com/stumpwm/stumpwm/archive/19.11.tar.gz
-	sha256sums = b21b0294d664371b404b061be10055289cab4a13e6d50ef0385d7d89b14bf3ef
+	source = stumpwm-20.11.tar.gz::https://github.com/stumpwm/stumpwm/archive/20.11.tar.gz
+	sha256sums = 8c9aaab9ad7cbc35e705c085e8661b20d88b84e750f7b1859e65a8b2f1ad562c
 
 pkgname = stumpwm
-
