@@ -1,14 +1,14 @@
 pkgbase = com.alibabainc.dingtalk
 	pkgdesc = 钉钉
-	pkgver = 0.9.0.160
+	pkgver = 0.9.0.172
 	pkgrel = 1
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
 	provides = dingtalk
-	source = file://com.alibabainc.dingtalk_0.9.0.160_amd64.deb
+	source = file://com.alibabainc.dingtalk_0.9.0.172_amd64.deb
 	source = com.alibabainc.dingtalk.desktop
-	md5sums = 907c67ee90faedae45db258901e955cc
+	md5sums = 7c78e61cdc2fef4b5f8e4953c3229f28
 	md5sums = 141c17a74d15349583ce3f78034cacf8
 
 pkgname = com.alibabainc.dingtalk
