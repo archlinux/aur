@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=Rttf2pt1
-_cranver=1.3.8
+_cranver=1.3.9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,8 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(custom)
 depends=('r>=2.15')
-makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('cc3eb1db01975f72dd2d16c00276a61e')
+sha256sums=('8667e48ed639c80180b1c1b65eff6ca2031bc9633a4fe79b50772f92375e3e71')
 
 build() {
   cd "${srcdir}"
