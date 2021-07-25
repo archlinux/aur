@@ -3,7 +3,7 @@
 
 _realname=freesms
 pkgname=python-freesms
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Python interface to Free mobile SMS API."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python' 'python-sigtools' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/bfontaine/freesms/archive/$pkgver.tar.gz")
-md5sums=('ed3a58b728eec2bc5b994a552886a105')
+md5sums=('7222b3a39c2b6e141d391230d818e52b')
 
 package() {
   cd "$srcdir/$_realname-$pkgver"
