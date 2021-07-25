@@ -1,4 +1,4 @@
-pkgbase = dolphin-git
+pkgbase = dolvim
 	pkgdesc = KDE File Manager patched with vi like movement keys (hjkl)
 	pkgver = 21.11.70
 	pkgrel = 1
@@ -31,4 +31,4 @@ pkgbase = dolphin-git
 	source = git+https://invent.kde.org/system/dolphin.git
 	md5sums = SKIP
 
-pkgname = dolphin-git
+pkgname = dolvim
