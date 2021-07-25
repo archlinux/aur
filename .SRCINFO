@@ -1,19 +1,20 @@
 pkgbase = r-utf8
 	pkgdesc = Unicode Text Processing
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=utf8
 	arch = i686
 	arch = x86_64
 	license = Apache2.0
 	depends = r>=2.10
+	optdepends = r-cli
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/utf8_1.2.1.tar.gz
-	sha256sums = b3411900d43a6a63c068997909ee14b67e3027816ee590586b78de37acdc87fb
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/utf8_1.2.2.tar.gz
+	sha256sums = a71aee87d43a9bcf29249c7a5a2e9ca1d2a836e8d5ee3a264d3062f25378d8f4
 
 pkgname = r-utf8
-
