@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=4
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -543,8 +543,8 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '663870cbd6392bf34b84e2254ffd550a'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
-         'fd078b2b7d5995b9d79e1a68ac0159a7'
-         '52b62d7960b48320b9a8562ca1dd00f7'
+         '20a793c0a2e666b42bb466c8b8882b78'
+         '8c98528b8a0cb55fd0be00f22a9a89b2'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
          '2c0375b3cc9690a0f0f3d3e49df54d10'
