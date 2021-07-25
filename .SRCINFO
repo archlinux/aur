@@ -1,6 +1,6 @@
 pkgbase = rust-analyzer-nightly-bin
 	pkgdesc = An experimental Rust compiler front-end for IDEs (nightly)
-	pkgver = 20210608
+	pkgver = 20210725
 	pkgrel = 1
 	url = https://github.com/rust-analyzer/rust-analyzer
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = rust-analyzer-nightly-bin
 	sha256sums = SKIP
 
 pkgname = rust-analyzer-nightly-bin
-
