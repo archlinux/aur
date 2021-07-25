@@ -1,0 +1,96 @@
+diff --git a/src/kitemviews/kitemlistcontroller.cpp b/src/kitemviews/kitemlistcontroller.cpp
+index 8687872ee..50b57da8a 100644
+--- a/src/kitemviews/kitemlistcontroller.cpp
++++ b/src/kitemviews/kitemlistcontroller.cpp
+@@ -225,11 +225,11 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+ 
+     // Handle the expanding/collapsing of items
+     if (m_view->supportsItemExpanding() && m_model->isExpandable(index)) {
+-        if (key == Qt::Key_Right) {
++        if (key == Qt::Key_Right || key == Qt::Key_L) { 
+             if (m_model->setExpanded(index, true)) {
+                 return true;
+             }
+-        } else if (key == Qt::Key_Left) {
++        } else if (key == Qt::Key_Left || key == Qt::Key_H) {
+             if (m_model->setExpanded(index, false)) {
+                 return true;
+             }
+@@ -242,7 +242,10 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+     const bool navigationPressed = key == Qt::Key_Home || key == Qt::Key_End  ||
+                                    key == Qt::Key_PageUp || key == Qt::Key_PageDown ||
+                                    key == Qt::Key_Up || key == Qt::Key_Down ||
+-                                   key == Qt::Key_Left || key == Qt::Key_Right;
++                                   key == Qt::Key_Left || key == Qt::Key_Right || 
++                                   key == Qt::Key_K || key == Qt::Key_J ||
++                                   key == Qt::Key_H || key == Qt::Key_L || 
++                                   (key == Qt::Key_G && !controlPressed);
+ 
+     const int itemCount = m_model->count();
+ 
+@@ -254,6 +257,10 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+         case Qt::Key_Down:  key = Qt::Key_Right; break;
+         case Qt::Key_Left:  key = Qt::Key_Up; break;
+         case Qt::Key_Right: key = Qt::Key_Down; break;
++        case Qt::Key_K:     key = Qt::Key_Left; break;
++        case Qt::Key_J:     key = Qt::Key_Right; break;
++        case Qt::Key_H:     key = Qt::Key_Up; break;
++        case Qt::Key_L:     key = Qt::Key_Down; break;
+         default:            break;
+         }
+     }
+@@ -279,7 +286,20 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+         m_keyboardAnchorPos = keyboardAnchorPos(index);
+         break;
+ 
++    case Qt::Key_G:
++        if (shiftPressed && !controlPressed) {
++            index = itemCount - 1;
++            m_keyboardAnchorIndex = index;
++            m_keyboardAnchorPos = keyboardAnchorPos(index);
++        } else if (!shiftPressed && !controlPressed) {
++            index = 0;
++            m_keyboardAnchorIndex = index;
++            m_keyboardAnchorPos = keyboardAnchorPos(index);
++        }
++        break;
++
+     case Qt::Key_Left:
++    case Qt::Key_H:
+         if (index > 0) {
+             const int expandedParentsCount = m_model->expandedParentsCount(index);
+             if (expandedParentsCount == 0) {
+@@ -296,6 +316,7 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+         break;
+ 
+     case Qt::Key_Right:
++    case Qt::Key_L:
+         if (index < itemCount - 1) {
+             ++index;
+             m_keyboardAnchorIndex = index;
+@@ -304,11 +325,13 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+         break;
+ 
+     case Qt::Key_Up:
++    case Qt::Key_K:
+         updateKeyboardAnchor();
+         index = previousRowIndex(index);
+         break;
+ 
+     case Qt::Key_Down:
++    case Qt::Key_J:
+         updateKeyboardAnchor();
+         index = nextRowIndex(index);
+         break;
+@@ -465,6 +488,11 @@ bool KItemListController::keyPressEvent(QKeyEvent* event)
+             if (!shiftPressed) {
+                 m_selectionManager->beginAnchoredSelection(index);
+             }
++
++            if (key == Qt::Key_G && !controlPressed) {
++                m_selectionManager->clearSelection();
++                m_selectionManager->setSelected(index, 1);
++            }
+             break;
+         }
+     }
