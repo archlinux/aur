@@ -1,5 +1,5 @@
 pkgname=mastercard-pkcs11-tools
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Tools to manage objects on PKCS#11 cryptographic tokens"
 url="https://github.com/Mastercard/pkcs11-tools"
@@ -10,7 +10,7 @@ makedepends=(
   bison
   flex
 )
-_commit=7fb6322fc75888c1c5707caef0e82ee036777aa4
+_commit=v2.4.0
 source=("git+https://github.com/Mastercard/pkcs11-tools#commit=$_commit"
         "git+https://git.savannah.gnu.org/git/gnulib.git"
         "oasis-pkcs11::git+https://github.com/oasis-tcs/pkcs11")
