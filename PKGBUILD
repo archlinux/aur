@@ -59,8 +59,8 @@ _use_current=
 
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.4
-pkgrel=2
+pkgver=5.13.5
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -86,19 +86,18 @@ source=(
 "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
 "${_patchsource}/winesync/5.13-winesync.patch"
 "${_patchsource}/zen-patches/0001-zen-patches.patch"
-"${_patchsource}/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
+"${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
 "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
 "${_patchsource}/block-patches-v2/0001-block-patches.patch"
 "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
 "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
 "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
 "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-"${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
+"${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
 "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
 "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
-"${_patchsource}/misc/nohzfull.patch"
 "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
 "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
 "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
@@ -122,7 +121,7 @@ BUILD_FLAGS=(
       OBJCOPY=llvm-objcopy
       OBJDUMP=objdump
     )
-sha256sums=('7192cd2f654aa6083451dea01b80748fe1eebcf2476a589ef4146590030e7d6c'
+sha256sums=('951c7c3ee07b393925d75699eccc20c9929cbe484fcdc047de79d9def33c1053'
             '6aa1147f9adadadc11d56956bb6534552e5497506b613f66bea55a08121819da'
             '2578b367f30ddf43569280403c75c056d61883128ea7827356b681fa7970bed4'
             'f42a65d6211b3861c132c72160274252cd825c9217727d0fca9c09e1f58dbf90'
@@ -132,19 +131,18 @@ sha256sums=('7192cd2f654aa6083451dea01b80748fe1eebcf2476a589ef4146590030e7d6c'
             '9ec679871cba674cf876ba836cde969296ae5034bcc10e1ec39b372e6e07aab0'
             '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
-            '8db201cee232333287b8557456577a0151a7208481af866dbacd08943ac29aed'
+            'bd5588d4e3803913283f67232778f259b689b77e4883a2f578bbc74132bd0629'
             'c5501f058a8accf538fdb9cc541bd08419cd4d597e2c5bc31365d70c68bba5b3'
             '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
             '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
             'aa5cbec74dc27591d47616c6c0748475ab55b5efdcbc9d81c2cc49b9b0bf2c00'
             '7289f4ce29d653a0ca511410b66bd3cb42fbcc54f5e097c85e528d4e27ce41ff'
-            'a6c94bc17ca469f9fc3b887f8a6efb8a618c475403b89f016e774832c5156a1c'
+            '04acf65e5761e787b64e59b44c7792146470c1a29c998339e53c9e02f652fbc7'
             'e33908a2aca1b5b52609075c32c714e4c3f6b52c054da2b2982a86f6f3c4b87a'
             '0a32d43109ab235ac4d49b28af0c5a3e1653a2581facd4595f098977bf19dd80'
             '5b05ebca44ff6b00ac49ec36ab360f6fa47ff809e82f40fe4299d8a1a99da4dc'
             'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
-            'a13f7e04e264108d642fc968f42d265a7fb7ef2b6e3a28926326882109f5577a'
             '8e56f88209ec69bf7004c52a7f31ba5fffa2c6af3db306e7ec385210a0b5944e'
             '78b07f9d39573633ac7035201d7a95c44675084562995b7e60e549e44fbcfcb7'
             '04205c627cd3dcb737bd7b432cd7172d30f4ca0114b003bc3ac0dc8dadfa3c01'
