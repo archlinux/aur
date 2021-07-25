@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui-git
-pkgver=0.7.2.r0.g3c460c0
+pkgver=0.7.3.r0.g36f9345
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG (git)"
 arch=('x86_64')
@@ -10,7 +10,12 @@ url="https://github.com/orhun/gpg-tui"
 license=('MIT')
 depends=('libxcb' 'gpgme')
 makedepends=('rust' 'python' 'git')
-optdepends=('xplr: file selection support')
+optdepends=(
+  'xplr: for file selection support'
+  'xclip: for clipboard support on X11 (or xsel)'
+  'xsel: for clipboard support on X11 (or xclip)'
+  'wl-clipboard: for clipboard support on Wayland'
+)
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
