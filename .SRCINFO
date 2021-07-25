@@ -1,6 +1,6 @@
 pkgbase = kitty-git
 	pkgdesc = Modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = 0.20.3.r37.g7c48db7d
+	pkgver = 0.21.2.r132.gaa339a8a
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/kitty
 	arch = i686
@@ -16,6 +16,10 @@ pkgbase = kitty-git
 	makedepends = wayland-protocols
 	makedepends = mesa
 	makedepends = python-sphinx
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-inline-tabs
+	makedepends = python-sphinxext-opengraph
+	makedepends = python-sphinx-furo
 	depends = python
 	depends = freetype2
 	depends = fontconfig
@@ -50,4 +54,3 @@ pkgname = kitty-terminfo-git
 	depends = ncurses
 	provides = kitty-terminfo
 	conflicts = kitty-terminfo
-
