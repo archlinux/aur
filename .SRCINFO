@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.26.77
+	pkgver = 1.27.108
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -28,21 +28,21 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = sccache: For faster builds
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.26.77
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.27.108
 	source = chromium::git+https://github.com/chromium/chromium.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://github.com/brave/brave-core.git#tag=v1.26.77
+	source = git+https://github.com/brave/brave-core.git#tag=v1.27.108
 	source = git+https://github.com/brave/adblock-rust.git
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-7.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v7.tar.gz
-	source = https://github.com/stha09/chromium-patches/releases/download/chromium-91-patchset-5/chromium-91-patchset-5.tar.xz
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-92-patchset-7/chromium-92-patchset-7.tar.xz
 	source = chromium-no-history.patch
-	source = fix-crash-in-ThemeService.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/fix-crash-in-ThemeService.patch
-	source = unbundle-use-char16_t-as-UCHAR_TYPE.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/unbundle-use-char16_t-as-UCHAR_TYPE.patch
-	source = make-dom-distiller-protoc-plugin-call-py2.7.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/make-dom-distiller-protoc-plugin-call-py2.7.patch
-	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/extend-enable-accelerated-video-decode-flag.patch
-	source = sql-make-VirtualCursor-standard-layout-type.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/3cd421c2e8ea04eacf49253ea8b40957ef5d3524/chromium/trunk/sql-make-VirtualCursor-standard-layout-type.patch
+	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/extend-enable-accelerated-video-decode-flag.patch
+	source = linux-sandbox-syscall-broker-use-struct-kernel_stat.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
+	source = linux-sandbox-fix-fstatat-crash.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/linux-sandbox-fix-fstatat-crash.patch
+	source = make-GetUsableSize-handle-nullptr-gracefully.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/make-GetUsableSize-handle-nullptr-gracefully.patch
+	source = sql-make-VirtualCursor-standard-layout-type.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/sql-make-VirtualCursor-standard-layout-type.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -51,12 +51,12 @@ pkgbase = brave
 	sha256sums = e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
-	sha256sums = 171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a
+	sha256sums = 53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2
 	sha256sums = ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e
-	sha256sums = 3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8
-	sha256sums = 59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d
-	sha256sums = 76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c
 	sha256sums = 66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22
+	sha256sums = 268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3
+	sha256sums = 253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5
+	sha256sums = 4489e5e7854a7dcd9464133eb4664250ce7149ac1714a0bf10ca0d82d8806568
 	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 
 pkgname = brave

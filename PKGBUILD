@@ -27,7 +27,7 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.26.77
+pkgver=1.27.108
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -40,8 +40,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'sccache: For faster builds')
-chromium_base_ver="91"
-patchset="5"
+chromium_base_ver="92"
+patchset="7"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 _launcher_ver=7
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
@@ -54,14 +54,13 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         "chromium-no-history.patch")
-arch_revision=3cd421c2e8ea04eacf49253ea8b40957ef5d3524
-Patches="
-        fix-crash-in-ThemeService.patch
-        unbundle-use-char16_t-as-UCHAR_TYPE.patch
-        make-dom-distiller-protoc-plugin-call-py2.7.patch
-        extend-enable-accelerated-video-decode-flag.patch
-        sql-make-VirtualCursor-standard-layout-type.patch
-        "
+arch_revision=a9139b232f517a0e3f90542650c7dd5ba0201e68
+Patches="extend-enable-accelerated-video-decode-flag.patch
+         linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
+         linux-sandbox-fix-fstatat-crash.patch
+         make-GetUsableSize-handle-nullptr-gracefully.patch
+         sql-make-VirtualCursor-standard-layout-type.patch
+         "
 for arch_patch in $Patches
 do
   source+=("${arch_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${arch_revision}/chromium/trunk/${arch_patch}")
@@ -75,12 +74,12 @@ sha256sums=('SKIP'
             'e4478c79e2eed500777117bb1d48f4be1866908dcda8d75003a5d055618dfdca'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
-            '171525009003a9ed1182cfcb6f407d7169d9a731a474304e263029376719f55a'
+            '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '3cfe46e181cb9d337c454b5b5adbf5297052f29cd617cdee4380eeb1943825d8'
-            '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '76ceebd14c9a6f1ea6a05b1613e64d1e2aca595e0f0b3e9497e3eeee33ed756c'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
+            '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
+            '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
+            '4489e5e7854a7dcd9464133eb4664250ce7149ac1714a0bf10ca0d82d8806568'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -110,7 +109,7 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-  #echo "Build with system libs is disabled for now" && exit 1
+  echo "Build with system libs is disabled for now" && exit 1
   brave_base_ver="$(echo $pkgver | cut -d . -f 1-2)"
   brave_patchset="1"
   brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
@@ -165,10 +164,10 @@ prepare() {
     third_party/libxml/chromium/*.cc
 
   # Upstream fixes
-  patch -Np1 -i ../../fix-crash-in-ThemeService.patch
-  patch -Np1 -i ../../unbundle-use-char16_t-as-UCHAR_TYPE.patch
-  patch -Np1 -i ../../make-dom-distiller-protoc-plugin-call-py2.7.patch
   patch -Np1 -i ../../extend-enable-accelerated-video-decode-flag.patch
+  patch -Np1 -i ../../linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
+  patch -Np1 -i ../../linux-sandbox-fix-fstatat-crash.patch
+  patch -Np1 -i ../../make-GetUsableSize-handle-nullptr-gracefully.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../../sql-make-VirtualCursor-standard-layout-type.patch
@@ -317,6 +316,7 @@ package() {
     v8_context_snapshot.bin \
     libGLESv2.so \
     libEGL.so \
+    crashpad_handler \
     "${pkgdir}/usr/lib/${pkgname}/"
   cp -a --reflink=auto \
     swiftshader/libGLESv2.so \
