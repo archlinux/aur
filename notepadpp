@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 app_name='notepadpp'
+exe_name='notepad++.exe'
 
 pkgdir="/usr/share/${app_name}"
 localdir="${HOME}/.local/share/${app_name}"
@@ -14,7 +15,9 @@ for folder in "${localdir}" "${cachedir}" "${configdir}"; do
 done
 
 cleanup() {
-    umount "${localdir}"
+    until umount "${localdir}"; do
+            sleep 5
+    done
 }
 
 if mount | grep -q "${localdir}"; then
@@ -33,4 +36,4 @@ if [ -n "${1}" ]; then
 fi
 
 unset WINEPREFIX
-WINEDLLOVERRIDES="${WINEDLLOVERRIDES};mscoree=d;mshtml=d" WINEDEBUG=-all wine "${localdir}/${app_name}" "${argpath}"
+WINEDLLOVERRIDES="${WINEDLLOVERRIDES};mscoree=d;mshtml=d" WINEDEBUG=-all wine "${localdir}/${exe_name}" "${argpath}"
