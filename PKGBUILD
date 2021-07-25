@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.13.4
+gitver=v5.13.5
 patchver=20210616
-pkgver=5.13.v.4
+pkgver=5.13.v.5
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'ee078906b01680f16eaa14ada5ccf57af7c0012665f273de4be985dc5452db98'
+            '5cf4e22f108fc7e738903d89325da02df7912575228fe90f3a60bb941bdf8228'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
@@ -40,7 +40,7 @@ pkgver() {
 }
 
 prepare() {
-cd "${_srcname}"
+  cd "${_srcname}"
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
