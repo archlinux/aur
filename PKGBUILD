@@ -8,7 +8,7 @@ pkgname=(
 )
 _pkgname=SQLiteStudio
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 _pkgver=3
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -16,9 +16,9 @@ url='https://github.com/pawelsalawa/sqlitestudio'
 # url='https://sqlitestudio.pl/'
 license=('GPL3')
 depends=(
-  termcap
-  sqlite2
-  tcl
+  # termcap
+  # sqlite2
+  # tcl
   qt5-script
 )
 makedepends=(
@@ -83,7 +83,7 @@ package_sqlitestudio(){
 }
 package_sqlitestudio-plugins(){
   pkgdesc='Official plugins for sqlitestudio'
-  depends=(sqlitestudio)
+  depends=(sqlitestudio tcl qt5-base)
 
   cd $srcdir/output/build/Plugins
   make INSTALL_ROOT="$pkgdir" install

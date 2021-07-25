@@ -1,7 +1,7 @@
 pkgbase = sqlitestudio
 	pkgdesc = Database manager for SQLite
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pawelsalawa/sqlitestudio
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,6 @@ pkgbase = sqlitestudio
 	makedepends = qt5-base
 	makedepends = qt5-svg
 	makedepends = qt5-tools
-	depends = termcap
-	depends = sqlite2
-	depends = tcl
 	depends = qt5-script
 	noextract = 3.3.3.tar.gz
 	source = https://github.com/pawelsalawa/sqlitestudio/archive/refs/tags/3.3.3.tar.gz
@@ -25,4 +22,5 @@ pkgname = sqlitestudio
 pkgname = sqlitestudio-plugins
 	pkgdesc = Official plugins for sqlitestudio
 	depends = sqlitestudio
-
+	depends = tcl
+	depends = qt5-base
