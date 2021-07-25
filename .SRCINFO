@@ -1,6 +1,6 @@
 pkgbase = r-rgl
 	pkgdesc = 3D Visualization Using OpenGL
-	pkgver = 0.106.8
+	pkgver = 0.107.10
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rgl
 	arch = i686
@@ -10,19 +10,16 @@ pkgbase = r-rgl
 	depends = r>=3.3.0
 	depends = r-htmlwidgets
 	depends = r-htmltools
-	depends = r-knitr
+	depends = r-knitr>=1.33
 	depends = r-jsonlite>=0.9.20
-	depends = r-shiny
 	depends = r-magrittr
 	depends = r-crosstalk
-	depends = r-manipulatewidget>=0.9.0
 	depends = mesa
 	depends = glu
 	optdepends = r-rmarkdown
 	optdepends = r-deldir
 	optdepends = r-orientlib
 	optdepends = r-misc3d
-	optdepends = r-rstudioapi
 	optdepends = r-magick
 	optdepends = r-plotrix
 	optdepends = r-tripack
@@ -30,12 +27,18 @@ pkgbase = r-rgl
 	optdepends = r-alphashape3d
 	optdepends = r-js
 	optdepends = r-akima
+	optdepends = r-downlit
+	optdepends = r-pkgdown
+	optdepends = r-extrafont
+	optdepends = r-shiny
+	optdepends = r-manipulatewidget
+	optdepends = r-testthat
+	optdepends = r-markdown
 	optdepends = zlib
 	optdepends = libpng
 	optdepends = freetype2
 	optdepends = pandoc
-	source = https://cran.r-project.org/src/contrib/rgl_0.106.8.tar.gz
-	sha256sums = fc2ac2293cecd5bf0bc922a00f0b3cf12294fb53041efc0132ea07c4ebda3f54
+	source = https://cran.r-project.org/src/contrib/rgl_0.107.10.tar.gz
+	sha256sums = b18e8a9f20cd0efd0d8af659544aa8be6067e8883d83219c1153a9bbc0987846
 
 pkgname = r-rgl
-
