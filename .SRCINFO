@@ -1,0 +1,16 @@
+pkgbase = avvie-git
+	pkgdesc = A GTK app for quick image cropping
+	pkgver = 1.0.beta1.r63.gdda3f95
+	pkgrel = 1
+	url = https://github.com/Taiko2k/avvie
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python3
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-piexif
+	source = git+https://github.com/Taiko2k/avvie.git
+	sha256sums = SKIP
+
+pkgname = avvie-git
