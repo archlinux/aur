@@ -1,7 +1,7 @@
 pkgbase = linux-cacule
 	pkgdesc = Linux-CacULE Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.13.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
 	arch = x86_64_v3
@@ -50,7 +50,7 @@ pkgbase = linux-cacule
 	md5sums = 663870cbd6392bf34b84e2254ffd550a
 	md5sums = db27e837fe0e94c39ee8d0e663a33c3d
 	md5sums = 0c139073c9a3c742706d96a165bc8e95
-	md5sums = fd078b2b7d5995b9d79e1a68ac0159a7
+	md5sums = 20a793c0a2e666b42bb466c8b8882b78
 	md5sums = 7640a753a7803248543675a6edc75e08
 	md5sums = 85f4be6562ee033b83814353a12b61bd
 	md5sums = 2c0375b3cc9690a0f0f3d3e49df54d10
