@@ -1,0 +1,13 @@
+pkgbase = flip-git
+	pkgdesc = Flip coins in your command line
+	pkgver = 0.1.2.r2.ge4df356
+	pkgrel = 1
+	url = https://github.com/dominicegginton/flip
+	arch = x86_64
+	license = MIT
+	provides = flip
+	conflicts = flip
+	source = flip-git::git+https://github.com/dominicegginton/flip
+	sha256sums = SKIP
+
+pkgname = flip-git
