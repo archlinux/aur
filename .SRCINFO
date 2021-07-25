@@ -8,6 +8,7 @@ pkgbase = dolvim
 	groups = kde-applications
 	groups = kde-system
 	license = LGPL
+	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = packagekit-qt5
@@ -29,6 +30,8 @@ pkgbase = dolvim
 	provides = dolphin
 	conflicts = dolphin
 	source = git+https://invent.kde.org/system/dolphin.git
+	source = vi.patch
 	md5sums = SKIP
+	md5sums = 0335a201c64e45f0e3bc054e1ca7f8b4
 
 pkgname = dolvim
