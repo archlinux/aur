@@ -2,7 +2,7 @@
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=xnec2c
-pkgver=4.1.1
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="GTK+ Antenna EM Modeling Client"
 arch=('i686' 'x86_64')
@@ -17,9 +17,15 @@ optdepends=('gnuplot: to use plotted output/data files')
 source=("http://www.qsl.net/5b4az/pkg/nec2/xnec2c/xnec2c-$pkgver.tar.bz2"
         "$pkgname.desktop"
         "http://bjensen.fedorapeople.org/pkgs/hams/icon/Ham_Icon-1-48.png")
-md5sums=('ad8e922388dc364c113f3ac06d4eddf3'
+md5sums=('b2fecab6c6890141f1a1503484e0e5b5'
          '824c296ecb84175a5fa0905b8f357796'
          '38378f273628bd9a28d3e5f9ff39fa18')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+	# weird error where it installs the file to a location it won't read from?
+	sed -i 's|"/.xnec2c/xnec2c.glade"|"/.xnec2c/xnec2c/xnec2c.glade"|' src/main.c
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -32,15 +38,14 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	mkdir -p "$pkgdir/usr/share/$pkgname/"{doc/images,examples}
 	mkdir -p "$pkgdir/usr/share/"{applications,pixmaps}
 
 	make DESTDIR="$pkgdir" install
 
-	install -m644 doc/images/* "$pkgdir/usr/share/$pkgname/doc/images"
-	rm -r doc/images
-	install -m644 doc/* "$pkgdir/usr/share/$pkgname/doc"
-	install -m644 examples/* "$pkgdir/usr/share/$pkgname/examples"
+	# 4.1.2's improved install doesn't do these
+	install -m644 examples/* "$pkgdir/usr/share/examples/$pkgname/"
+
+	# check if the upstream desktop can replace ours
 	install -m644 ../*.desktop "$pkgdir/usr/share/applications/"
 	install -m644 ../Ham_Icon-1-48.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
