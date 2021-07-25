@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=723
+pkgver=734
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 url="https://github.com/koverstreet/bcachefs-tools"
@@ -10,7 +10,7 @@ license=("GPL2")
 install="$pkgname.install"
 
 provides=(bcachefs-tools)
-dependsarray="attr cargo clang fuse3 git keyutils libaio libscrypt libsodium liburcu libutil-linux pkgconf valgrind zlib"
+dependsarray="attr cargo clang fuse3 git keyutils libaio libscrypt libsodium liburcu libutil-linux pkgconf python-docutils valgrind zlib"
 makedepends=(${dependsarray})
 depends=(${dependsarray})
 
@@ -26,7 +26,7 @@ sha512sums=('SKIP'
 
 prepare() {
     cd "$srcdir/$_reponame"
-    
+
     PName="add-mkinitcpio-hook-for-Arch.patch"
     msg2 "Patching with $PName ..."
     patch -Np1 -i "../$PName"
@@ -48,7 +48,7 @@ package() {
     cd "$srcdir/$_reponame"
 
     make DESTDIR="$pkgdir" PREFIX="/usr" ROOT_SBINDIR="/usr/bin" INITRAMFS_DIR="/etc/initcpio" install
-    
+
     install -Dm644 "arch/etc/initcpio/hooks/bcachefs" \
                    "$pkgdir/etc/initcpio/hooks/bcachefs"
     install -Dm644 "arch/etc/initcpio/install/bcachefs" \
