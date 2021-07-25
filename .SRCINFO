@@ -5,6 +5,7 @@ pkgbase = linux-wifi-hotspot
 	url = https://github.com/lakinduakash/linux-wifi-hotspot
 	install = linux-wifi-hotspot.install
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	depends = hostapd
 	depends = iw
@@ -24,4 +25,3 @@ pkgbase = linux-wifi-hotspot
 	sha256sums = 39298a46daa41ac91034564f2e0a64d4afb90d9de442f1239d8fdfc96bd14900
 
 pkgname = linux-wifi-hotspot
-
