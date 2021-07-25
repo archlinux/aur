@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=sentinel-appimage
-_pkgname=Sentinel
-pkgver=0.3.1
+_pkgname=sentinel-linux
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='An open-source decentralized VPN network application'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
-	'9a1634cb6470429982f4d38b046206b984ed9da9e90bc577f153baae7742396f'
+	'9c870fc11b5667951aebdf07ade2e7510196d2c590e3fe6886c2268eb6635a1c'
 	'2da574d2e8ac213083963019ef9cc1a97a5ea93dafa6bbe1bf3c1fdfff0c16b3')
 
 

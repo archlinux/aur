@@ -1,6 +1,6 @@
 pkgbase = sentinel-appimage
 	pkgdesc = An open-source decentralized VPN network application
-	pkgver = 0.3.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/sentinel-official/desktop-client
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = sentinel-appimage
 	depends = fuse2
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = Sentinel-0.3.1.AppImage
+	noextract = sentinel-linux-0.3.4.AppImage
 	options = !strip
-	source_x86_64 = Sentinel-0.3.1.AppImage::https://github.com/sentinel-official/desktop-client/releases/download/v0.3.1/Sentinel-0.3.1.AppImage
+	source_x86_64 = sentinel-linux-0.3.4.AppImage::https://github.com/sentinel-official/desktop-client/releases/download/v0.3.4/sentinel-linux-0.3.4.AppImage
 	source_x86_64 = https://raw.githubusercontent.com/sentinel-official/desktop-client/development/LICENSE
-	sha256sums_x86_64 = 9a1634cb6470429982f4d38b046206b984ed9da9e90bc577f153baae7742396f
+	sha256sums_x86_64 = 9c870fc11b5667951aebdf07ade2e7510196d2c590e3fe6886c2268eb6635a1c
 	sha256sums_x86_64 = 2da574d2e8ac213083963019ef9cc1a97a5ea93dafa6bbe1bf3c1fdfff0c16b3
 
 pkgname = sentinel-appimage
-
