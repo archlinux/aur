@@ -1,0 +1,19 @@
+pkgbase = desktop-naotu-bin
+	pkgdesc = 桌面版脑图 (百度脑图离线版，思维导图) 跨平台支持 Windows/Linux/Mac OS. (A cross-platform multilingual Mind Map Tool)
+	pkgver = 3.2.3
+	pkgrel = 4
+	url = https://github.com/NaoTu/DesktopNaotu
+	arch = x86_64
+	license = GPL2
+	conflicts = naotu
+	conflicts = desktop-naotu
+	source = DesktopNaoTu-3.2.3.zip::https://github.com/NaoTu/DesktopNaotu/releases/download/v3.2.3/DesktopNaotu-linux-x64.zip
+	source = desktop-naotu.sh
+	source = desktop-naotu.desktop
+	source = favicon.png
+	md5sums = cfdc8b6ab74266ebff808abd92ae10e5
+	md5sums = f6044c2bbaadf9179b49e77a27407931
+	md5sums = c1968bffd05a9cd36ad913752db5cfd7
+	md5sums = 79a0a55a2bf43c6cdea94fe4e990a6ba
+
+pkgname = desktop-naotu-bin
