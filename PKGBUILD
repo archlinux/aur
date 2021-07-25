@@ -2,7 +2,7 @@
 
 pkgname=consul-bin
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for service discovery, monitoring and configuration.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.consul.io"
