@@ -1,8 +1,8 @@
 pkgbase = surface-evolver
 	pkgdesc = Interactive program for the modelling of liquid surfaces shaped by various forces and constraints
 	pkgver = 2.70
-	pkgrel = 2
-	url = http://www.susqu.edu/brakke/evolver/evolver.html
+	pkgrel = 3
+	url = http://facstaff.susqu.edu/brakke/evolver/evolver.html
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -19,4 +19,3 @@ pkgbase = surface-evolver
 	md5sums = 573aaa9d13d953bd96e22bc6bcccf155
 
 pkgname = surface-evolver
-
