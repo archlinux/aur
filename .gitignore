@@ -4,4 +4,6 @@
 !.SRCINFO
 !PKGBUILD
 !icon.png
-!flashpoint.desktop
+!flashpoint-launcher-bin.install
+!flashpoint-install-data-files.sh
+

@@ -2,8 +2,8 @@
 
 pkgname=flashpoint-launcher-bin
 pkgver=10.0.0
-pkgrel=2
-pkgdesc="Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only."
+pkgrel=4
+pkgdesc="Launcher for BlueMaxima's Flashpoint with script to install data files"
 arch=('x86_64')
 url="https://github.com/FlashpointProject/launcher"
 license=('MIT')
@@ -14,35 +14,34 @@ depends=('nss>=3.0'
          'wine')
 optdepends=('flashplayer-standalone: native Flash support')
 conflicts=('flashpoint-bin' 'flashpoint-launcher-git')
-source=("$pkgname-$pkgver.7z"::"https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-x64.7z"
-             "icon.png"::"https://aur.archlinux.org/cgit/aur.git/plain/icon.png?h=flashpoint-launcher-bin"
-             "flashpoint.desktop"::"https://aur.archlinux.org/cgit/aur.git/plain/flashpoint.desktop?h=flashpoint-launcher-bin")
-sha256sums=('fbcb0403c856a5b738f9837c5dbfea8e5cdc6ff2160b5423d1fd7955d98e3c2a'
-                      '942e3a0c70833fadb25b3bf44503e7590d976f048d04fbe29ae4fc35dbcd5037'
-                      'fe9a7031d0b092b205ffac08fb29fc5ff1d96cd29a004b16da1653cda21ce069')
-md5sums=('cfdebf0c15b03c1a7a6910cc4af7df49'
-                 '8d71d8d61a0a39586b81faf9addaeb7a'
-                 '4c4d02df6388d9859776a629f0b775ac')
+source=("https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-amd64.deb"
+             "flashpoint-install-data-files.sh")
+sha256sums=('19ba5cd803fd05d944df616719eb0e22051d3cc051e8817f4a057d02bf139bfc'
+                      '3591c14565552897c1028ddc513dfbe0a306b96f571d41509886f83a7bd92cc9')
+md5sums=('8e998d8d9c77027a67b30ddd3250ffc5'
+                  '775dd2b78c17a73edb75040fc86ebfe6')
+install=flashpoint-launcher-bin.install
 
 package(){
 
-    # Symlink to binary (WIP)
-    #ln -sf /opt/flashpoint/linux-unpacked/flashpoint-launcher $pkgdir/usr/bin/flashpoint-launcher
+    # Extract package data
+    tar xf data.tar.xz -C ${pkgdir}
 
-    # Desktop Entry
-    install -Dm644  $srcdir/flashpoint.desktop $pkgdir/usr/share/applications/flashpoint.desktop
+    # Symlink to binary
+    install -d $pkgdir/usr/bin/
+    ln -sf /opt/Flashpoint/flashpoint-launcher $pkgdir/usr/bin/flashpoint-launcher
 
     # License
-    install -Dm644 $srcdir/licenses/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -d $pkgdir/usr/share/licenses/
+    mv $pkgdir/opt/Flashpoint/licenses/ $pkgdir/usr/share/licenses/Flashpoint
 
-    # Icon
-    install -Dm644 $srcdir/icon.png "$pkgdir/usr/share/pixmaps/flashpoint.png"
+    install -Dm755 $srcdir/flashpoint-install-data-files.sh $pkgdir/usr/bin/flashpoint-install-data-files
 
-    rm $srcdir/$pkgname-$pkgver.7z
-    rm $srcdir/icon.png
-    rm $srcdir/flashpoint.desktop
-
-    # Application
-    mkdir -p $pkgdir/opt/flashpoint $pkgdir/usr/share/pixmaps/
-    cp -R $srcdir/* "$pkgdir/opt/flashpoint"
+    # Make config and preferences writable by all
+    touch "${pkgdir}/opt/Flashpoint/config.json"
+    chmod 666 "${pkgdir}/opt/Flashpoint/config.json"
+    touch "${pkgdir}/opt/Flashpoint/preferences.json"
+    chmod 666 "${pkgdir}/opt/Flashpoint/preferences.json"
+    touch "${pkgdir}/opt/Flashpoint/launcher.log"
+    chmod 666 "${pkgdir}/opt/Flashpoint/launcher.log"
 }

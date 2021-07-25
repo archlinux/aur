@@ -1,8 +1,9 @@
 pkgbase = flashpoint-launcher-bin
-	pkgdesc = Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only.
+	pkgdesc = Launcher for BlueMaxima's Flashpoint with script to install data files
 	pkgver = 10.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/FlashpointProject/launcher
+	install = flashpoint-launcher-bin.install
 	arch = x86_64
 	license = MIT
 	depends = nss>=3.0
@@ -13,14 +14,11 @@ pkgbase = flashpoint-launcher-bin
 	optdepends = flashplayer-standalone: native Flash support
 	conflicts = flashpoint-bin
 	conflicts = flashpoint-launcher-git
-	source = flashpoint-launcher-bin-10.0.0.7z::https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-x64.7z
-	source = icon.png::https://aur.archlinux.org/cgit/aur.git/plain/icon.png?h=flashpoint-launcher-bin
-	source = flashpoint.desktop::https://aur.archlinux.org/cgit/aur.git/plain/flashpoint.desktop?h=flashpoint-launcher-bin
-	md5sums = cfdebf0c15b03c1a7a6910cc4af7df49
-	md5sums = 8d71d8d61a0a39586b81faf9addaeb7a
-	md5sums = 4c4d02df6388d9859776a629f0b775ac
-	sha256sums = fbcb0403c856a5b738f9837c5dbfea8e5cdc6ff2160b5423d1fd7955d98e3c2a
-	sha256sums = 942e3a0c70833fadb25b3bf44503e7590d976f048d04fbe29ae4fc35dbcd5037
-	sha256sums = fe9a7031d0b092b205ffac08fb29fc5ff1d96cd29a004b16da1653cda21ce069
+	source = https://github.com/FlashpointProject/launcher/releases/download/10.0.0/Flashpoint-10.0.0_linux-amd64.deb
+	source = flashpoint-install-data-files.sh
+	md5sums = 8e998d8d9c77027a67b30ddd3250ffc5
+	md5sums = 775dd2b78c17a73edb75040fc86ebfe6
+	sha256sums = 19ba5cd803fd05d944df616719eb0e22051d3cc051e8817f4a057d02bf139bfc
+	sha256sums = 3591c14565552897c1028ddc513dfbe0a306b96f571d41509886f83a7bd92cc9
 
 pkgname = flashpoint-launcher-bin
