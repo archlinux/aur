@@ -2,7 +2,7 @@
 
 _pkgname=pep-engine
 pkgname=$_pkgname-git
-pkgver=2.1.24
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="A Free Software library for automatic key management and encryption of messages."
 arch=('x86_64' 'i686')
