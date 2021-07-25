@@ -3,7 +3,7 @@
 pkgname=funemustation-git
 _name=funemustation
 _export=FunEmuStation_Launcher
-pkgver=r18.9446a8a
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A simple but elegant launcher of emulators and pc games"
 url="https://dannygaray60.itch.io/funemustation-launcher"
@@ -18,7 +18,8 @@ provides=('funemustation')
 
 pkgver() {
 	cd ${srcdir}/${_name}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+	cat 'export_presets.cfg' | grep "application/product_version" | cut -c 29- | tr '"' ' ' | awk '{ print $1 }'
 }
 
 build() {
