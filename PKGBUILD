@@ -20,7 +20,7 @@ source_armv6h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}
 source_armv7h=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_armhfv6.zip")
 source_aarch64=("https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm64.zip")
 
-sha256sums=('8cc951f4b5a9926c86a4fa185e3963bffd6d8c3633a26cb68f7ab25b51e0ce30'
+sha256sums=('b2eea8fe453b322bb636afbde3253cb035b2f9d902da7a9abab5dedc7399a639'
             '31782ac6f397dfce957f6f3b2d5c6c4353aa0bc1f46edc403d7ae387b5ecee3a'
             '857d0a0eae217a941045d10877b59d9bc8fbcbba8e7cbe396d160ffd5317fa2c'
             '1838c60658eca84dfef148d179503b9df6c6e6b86ec6706d14d889829c51e532')
