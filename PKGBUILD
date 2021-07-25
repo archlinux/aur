@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=jpeg
-_cranver=0.1-8.1
+_cranver=0.1-9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,9 +11,8 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.9.0' libjpeg)
-makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('d721caf72c11eea43553d6030ae39cbc')
+sha256sums=('01a175442ec209b838a56a66a3908193aca6f040d537da7838d9368e46913072')
 
 build() {
   cd "${srcdir}"
