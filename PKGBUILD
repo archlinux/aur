@@ -3,8 +3,8 @@
 pkgname=python-piwigo
 _module=piwigo
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="piwigo description"
+pkgrel=2
+pkgdesc="python module for communication with Piwigo API"
 url="https://github.com/fraoustin/piwigo.git"
 depends=('python')
 makedepends=('python-setuptools')

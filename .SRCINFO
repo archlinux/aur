@@ -1,7 +1,7 @@
 pkgbase = python-piwigo
-	pkgdesc = piwigo description
+	pkgdesc = python module for communication with Piwigo API
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fraoustin/piwigo.git
 	arch = any
 	license = GPL
