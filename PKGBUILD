@@ -3,15 +3,14 @@
 
 pkgname=font-downloader-git
 _pkgname=font-downloader
-pkgver=r256.a680009
-pkgrel=3
+pkgver=r301.6c61340
+pkgrel=1
 pkgdesc="A simple GTK font downloader"
 arch=('any')
 url="https://github.com/GustavoPeredo/font-downloader"
 license=('GPL3')
 depends=('gtk3' 'libhandy' 'python3' 'python-gobject')
 makedepends=('git' 'meson' 'ninja')
-install=
 source=(git+$url.git)
 b2sums=('SKIP')
 
