@@ -4,7 +4,7 @@
 pkgname=libdatachannel
 pkgver=0.14.0
 pkgrel=2
-pkgdesc="C/C++ WebRTC Data Channels and Media Transport lightweight library"
+pkgdesc="C/C++ WebRTC network library featuring Data Channels, Media Transport, and WebSockets"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/paullouisageneau/$pkgname"
 license=('LGPL')
