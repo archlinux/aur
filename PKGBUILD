@@ -30,4 +30,7 @@ package() {
   install -Dm755 "$_source-$pkgver/bin/hashbrown" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$_source-$pkgver/extra/Hashbrown.desktop" "$pkgdir/usr/share/applications/dev.geopjr.Hashbrown.desktop"
   install -Dm644 "$_source-$pkgver/extra/icons/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.geopjr.Hashbrown.svg"
+  install -Dm644 "$_source-$pkgver/extra/icons/symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/dev.geopjr.Hashbrown-symbolic.svg"
+  install -Dm644 "$_source-$pkgver/extra/dev.geopjr.Hashbrown.metainfo.xml" "$pkgdir/usr/share/metainfo/dev.geopjr.Hashbrown.metainfo.xml"
+  gtk-update-icon-cache /usr/share/icons/hicolor
 }
