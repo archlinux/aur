@@ -1,16 +1,15 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=rerun
-pkgver=1.1.1
+pkgver=1.4.1
 pkgrel=1
-pkgdesc="Turn your favorite shell scripts into modular automation with standardized options handling, command line completion, documentation generation, and a built-in test framework"
+pkgdesc="Take your shell scripts and turn them into powerful full featured management utilities with no extra programming."
 arch=('any')
 depends=('bash' 'discount' 'python2-pygments')
-makedepends=('autoconf' 'make')
 url="https://rerun.github.io/rerun/"
 license=('Apache')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/rerun/$pkgname/tar.gz/v$pkgver)
-sha256sums=('6afef26be4430f47ae9bb574f16a79ac4b3bf0d49f26033733e4748c770e2cb9')
+sha256sums=('07557f1e3b9f0d94f5cee3aa9bb82ba688769806d9fd59a60713a57a7adcb727')
 install=rerun.install
 
 build() {
