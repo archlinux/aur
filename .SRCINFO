@@ -1,0 +1,13 @@
+pkgbase = tuterm
+	pkgdesc = A framework for real-time tutorials and demonstrations of CLI programs
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/HarisGusic/tuterm
+	arch = x86_64
+	license = MIT
+	optdepends = asciinema
+	source = git+https://github.com/HarisGusic/tuterm#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = tuterm
+
