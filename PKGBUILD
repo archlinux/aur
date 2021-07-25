@@ -4,16 +4,15 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 
-## The UT dictionary's upstream url: 'http://linuxplayers.g1.xrea.com/mozc-ut.html'
+## The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 
 ## Helpful internal stuff
-_commit=171aebaf3a1fb76d1a460d12c7199bc6fbcec473
-_mozcver=2.26.4416.102
-_utdicver=20210627
-#_utdicrel=
-_utuserlink=30
-_utdiclink=30840
+_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
+_mozcver=2.26.4444.102
+_utdicver=20210725
+_utuserlink=32
+_utfilelink=32748
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicver}
@@ -23,14 +22,13 @@ arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('qt5-base')
-makedepends=('bazel' 'git' 'pkgconf' 'python' 'python-six')
+makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-neologd-ut' 'mozc-neologd-ut+ut2' 'mozc-ut-unified' 'mozc-ut-united')
 provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
-#        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.${_utdicrel}.tar.bz2"
-        "https://osdn.net/downloads/users/${_utuserlink}/${_utdiclink}/mozcdic-ut-${_utdicver}.tar.bz2")
+        "https://osdn.net/downloads/users/${_utuserlink}/${_utfilelink}/mozcdic-ut-${_utdicver}.tar.bz2")
 sha256sums=('SKIP'
-            '5fc2a5c46ca2188cc6635b670c5e3c7cf46ed9f1ccdc7c1ef25f27aa3b31f7fc')
+            'ff431c6da2344d400f3e1eb875cf5f870429f8febb24db63814a4a92dcc618c6')
 
 prepare() {
     cd ${pkgname}-git
@@ -41,8 +39,7 @@ prepare() {
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' src/config.bzl
 
     # Add the UT dictionary
-    #cat ${srcdir}/mozcdic-ut-${_utdicver}.${_utdicrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
-    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic-ut-${_utdicver}.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -52,7 +49,6 @@ build() {
 }
 
 package() {
-    #install -Dm644 mozcdic-ut-${_utdicver}.${_utdicrel}/COPYING        ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
     install -Dm644 mozcdic-ut-${_utdicver}/COPYING              ${pkgdir}/usr/share/licenses/mozc/ut-dictionary
 
     cd ${pkgname}-git/src
