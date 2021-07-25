@@ -1,7 +1,7 @@
 pkgbase = gqview-devel
 	pkgdesc = An image browser and viewer
 	pkgver = 2.1.5
-	pkgrel = 8
+	pkgrel = 9
 	url = http://gqview.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = gqview-devel
 	provides = gqview
 	conflicts = gqview
 	source = http://downloads.sourceforge.net/gqview/gqview-2.1.5.tar.gz
-	md5sums = 4644187d9b14b1dc11ac3bb146f262ea
+	sha256sums = 12fea494e607a69eff31cdca13d306ef1b0b3b7850be0f8b236f267d8f2e9546
 
 pkgname = gqview-devel
-
