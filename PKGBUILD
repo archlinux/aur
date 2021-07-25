@@ -2,7 +2,7 @@
 
 pkgname=phonic-git
 _name=phonic
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A GTK audiobook player targeted at mobile Linux."
 url="https://bitbucket.org/hackersgame/phonic"
