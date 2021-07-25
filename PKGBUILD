@@ -58,7 +58,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule
 _major=5.13
-pkgver=${_major}.4
+pkgver=${_major}.5
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -68,7 +68,7 @@ arch=(x86_64)
 
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio
+  bc cpio kmod libelf perl tar xmlto xz
 )
 if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm)
@@ -94,7 +94,7 @@ done
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '923975a3700532bcccfc2dbcc4bbb6ec86bb59dfd3905389675efd04eda3818b'
+            '612f4b39430c91f8b1adce7fa688dbaccf75799293972cb4d5493d9d8c74e611'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
