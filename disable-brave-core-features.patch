@@ -1,5 +1,5 @@
 diff --git a/browser/brave_wallet/BUILD.gn b/browser/brave_wallet/BUILD.gn
-index 355a43e..b0f05ea 100644
+index 355a43e666..b0f05ea45e 100644
 --- a/browser/brave_wallet/BUILD.gn
 +++ b/browser/brave_wallet/BUILD.gn
 @@ -1,7 +1,7 @@
@@ -12,7 +12,7 @@ index 355a43e..b0f05ea 100644
  source_set("brave_wallet") {
    check_includes = false
 diff --git a/browser/ethereum_remote_client/BUILD.gn b/browser/ethereum_remote_client/BUILD.gn
-index 5684e60..218ec12 100644
+index 5684e60a00..218ec12eba 100644
 --- a/browser/ethereum_remote_client/BUILD.gn
 +++ b/browser/ethereum_remote_client/BUILD.gn
 @@ -6,9 +6,9 @@ import("//build/config/features.gni")
@@ -28,7 +28,7 @@ index 5684e60..218ec12 100644
  source_set("ethereum_remote_client") {
    configs += [ ":infura_config" ]
 diff --git a/browser/ethereum_remote_client/buildflags/buildflags.gni b/browser/ethereum_remote_client/buildflags/buildflags.gni
-index 253a07e..a85a97d 100644
+index 253a07ec0a..a85a97d62f 100644
 --- a/browser/ethereum_remote_client/buildflags/buildflags.gni
 +++ b/browser/ethereum_remote_client/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -36,8 +36,102 @@ index 253a07e..a85a97d 100644
 -  ethereum_remote_client_enabled = !is_ios && !is_android
 +  ethereum_remote_client_enabled = false
  }
+diff --git a/common/extensions/api/BUILD.gn b/common/extensions/api/BUILD.gn
+index c3e433a1a3..ef9a461813 100644
+--- a/common/extensions/api/BUILD.gn
++++ b/common/extensions/api/BUILD.gn
+@@ -73,12 +73,12 @@ json_features("behavior_features") {
+ }
+
+ brave_extensions_api_schema_sources = [
+-  "brave_rewards.json",
++  #"brave_rewards.json",
+   "brave_shields.json",
+   "brave_theme.json",
+   "brave_today.json",
+   "greaselion.json",
+-  "rewards_notifications.json",
++  #"rewards_notifications.json",
+ ]
+
+ if (ipfs_enabled) {
+diff --git a/common/extensions/api/_api_features.json b/common/extensions/api/_api_features.json
+index 50f35664df..0fb7894d19 100644
+--- a/common/extensions/api/_api_features.json
++++ b/common/extensions/api/_api_features.json
+@@ -55,9 +55,7 @@
+     "matches": [
+       "chrome://bookmarks/*",
+       "chrome://read-later.top-chrome/*",
+-      "chrome://tab-strip/*",
+-      "chrome://wallet-panel.top-chrome/*",
+-      "chrome://wallet/*"
++      "chrome://tab-strip/*"
+     ]
+   }, {
+     "channel": "stable",
+@@ -92,38 +90,11 @@
+     "contexts": ["blessed_extension"],
+     "allowlist": ["3D9518A72EB02667A773B69DBA9E72E0F4A37423", "780BF954C0F7C586EA9662D4F967771F49CC2114", "FF32507DC3DB5DFFD1D6733187C84D4B74713D63"]
+   },
+-  "braveRewards": [
+-    {
+-      "channel": "stable",
+-      "dependencies": [],
+-      "contexts": ["blessed_extension"],
+-      "allowlist": [
+-        "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"
+-      ]
+-    },
+-    {
+-      "channel": "stable",
+-      "contexts": ["webui"],
+-      "matches": [
+-        "chrome://newtab/*"
+-      ]
+-    }
+-  ],
+-  "rewardsNotifications": {
+-    "channel": "stable",
+-    "dependencies": [],
+-    "contexts": ["blessed_extension"],
+-    "allowlist": [
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"
+-    ]
+-  },
+   "braveTheme": [{
+     "channel": "stable",
+     "contexts": ["blessed_extension"],
+     "allowlist": [
+-      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD",  // braveShields
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64",  // braveRewards
+-      "21070F3D60711361C1210B870439BE49B5D995F4"   // braveWallet
++      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD"  // braveShields
+     ]
+   }, {
+     "channel": "stable",
+@@ -132,17 +103,14 @@
+       "chrome://welcome/*",
+       "chrome://settings/*",
+       "chrome://newtab/*",
+-      "chrome://webcompat/*",
+-      "chrome://wallet/*",
+-      "chrome://wallet-panel.top-chrome/*"
++      "chrome://webcompat/*"
+     ]
+   }],
+   "greaselion": [{
+     "channel": "stable",
+     "contexts": ["blessed_extension"],
+     "allowlist": [
+-      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD",  // braveShields
+-      "46E9817CBF915C0D1F6BCCF916C42CC666FF1D64"   // braveRewards
++      "A321D47A2B4CA86898167A55CA8B2E02385EA7CD"  // braveShields
+     ]
+   }, {
+     "channel": "stable",
 diff --git a/components/binance/browser/BUILD.gn b/components/binance/browser/BUILD.gn
-index b929992..0824ba4 100644
+index b92999291c..0824ba470a 100644
 --- a/components/binance/browser/BUILD.gn
 +++ b/components/binance/browser/BUILD.gn
 @@ -1,7 +1,7 @@
@@ -50,7 +144,7 @@ index b929992..0824ba4 100644
  declare_args() {
    binance_client_id = ""
 diff --git a/components/binance/browser/buildflags/buildflags.gni b/components/binance/browser/buildflags/buildflags.gni
-index d4bc81a..7b26be8 100644
+index d4bc81a781..7b26be808b 100644
 --- a/components/binance/browser/buildflags/buildflags.gni
 +++ b/components/binance/browser/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -59,7 +153,7 @@ index d4bc81a..7b26be8 100644
 +  binance_enabled = false
  }
 diff --git a/components/brave_referrals/buildflags/buildflags.gni b/components/brave_referrals/buildflags/buildflags.gni
-index 3848636..a500258 100755
+index 3848636402..a500258d00 100755
 --- a/components/brave_referrals/buildflags/buildflags.gni
 +++ b/components/brave_referrals/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -68,7 +162,7 @@ index 3848636..a500258 100755
 +  enable_brave_referrals = false
  }
 diff --git a/components/brave_referrals/common/BUILD.gn b/components/brave_referrals/common/BUILD.gn
-index a5ab8b5..0c06a94 100644
+index a5ab8b51cc..0c06a94812 100644
 --- a/components/brave_referrals/common/BUILD.gn
 +++ b/components/brave_referrals/common/BUILD.gn
 @@ -1,6 +1,6 @@
@@ -80,7 +174,7 @@ index a5ab8b5..0c06a94 100644
  static_library("common") {
    sources = [
 diff --git a/components/brave_rewards/browser/buildflags/buildflags.gni b/components/brave_rewards/browser/buildflags/buildflags.gni
-index 18ad294..1a031ad 100644
+index 18ad294e50..1a031adbee 100644
 --- a/components/brave_rewards/browser/buildflags/buildflags.gni
 +++ b/components/brave_rewards/browser/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -89,7 +183,7 @@ index 18ad294..1a031ad 100644
 +  brave_rewards_enabled = false
  }
 diff --git a/components/brave_rewards/common/buildflags/buildflags.gni b/components/brave_rewards/common/buildflags/buildflags.gni
-index 6757bf5..df05bee 100644
+index 6757bf525b..df05beeae3 100644
 --- a/components/brave_rewards/common/buildflags/buildflags.gni
 +++ b/components/brave_rewards/common/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -98,7 +192,7 @@ index 6757bf5..df05bee 100644
 +  enable_gemini_wallet = false
  }
 diff --git a/components/brave_sync/buildflags/buildflags.gni b/components/brave_sync/buildflags/buildflags.gni
-index debaffc..aa59fa8 100755
+index debaffcbdb..aa59fa8172 100755
 --- a/components/brave_sync/buildflags/buildflags.gni
 +++ b/components/brave_sync/buildflags/buildflags.gni
 @@ -1,5 +1,5 @@
@@ -109,7 +203,7 @@ index debaffc..aa59fa8 100755
 +  enable_brave_sync = false
  }
 diff --git a/components/brave_vpn/buildflags/buildflags.gni b/components/brave_vpn/buildflags/buildflags.gni
-index e8cbfc9..cdf09ce 100644
+index e8cbfc9d11..cdf09ce640 100644
 --- a/components/brave_vpn/buildflags/buildflags.gni
 +++ b/components/brave_vpn/buildflags/buildflags.gni
 @@ -5,5 +5,5 @@
@@ -120,7 +214,7 @@ index e8cbfc9..cdf09ce 100644
 +  enable_brave_vpn = false
  }
 diff --git a/components/brave_wallet/browser/BUILD.gn b/components/brave_wallet/browser/BUILD.gn
-index 58fbaec..75d5c6a 100644
+index ebba3d6e4b..d9b1a0a456 100644
 --- a/components/brave_wallet/browser/BUILD.gn
 +++ b/components/brave_wallet/browser/BUILD.gn
 @@ -3,7 +3,7 @@ import("//brave/components/brave_wallet/browser/config.gni")
@@ -133,7 +227,7 @@ index 58fbaec..75d5c6a 100644
  static_library("browser") {
    configs += [ ":infura_config" ]
 diff --git a/components/brave_wallet/common/buildflags/buildflags.gni b/components/brave_wallet/common/buildflags/buildflags.gni
-index 213b51c..a38ea6b 100644
+index 213b51ca3b..a38ea6b9bd 100644
 --- a/components/brave_wallet/common/buildflags/buildflags.gni
 +++ b/components/brave_wallet/common/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -142,7 +236,7 @@ index 213b51c..a38ea6b 100644
 +  brave_wallet_enabled = false
  }
 diff --git a/components/crypto_dot_com/browser/BUILD.gn b/components/crypto_dot_com/browser/BUILD.gn
-index b3dfda4..c730727 100644
+index b3dfda45b8..c730727146 100644
 --- a/components/crypto_dot_com/browser/BUILD.gn
 +++ b/components/crypto_dot_com/browser/BUILD.gn
 @@ -1,7 +1,7 @@
@@ -155,7 +249,7 @@ index b3dfda4..c730727 100644
  static_library("browser") {
    public_deps = [ "buildflags" ]
 diff --git a/components/crypto_dot_com/browser/buildflags/buildflags.gni b/components/crypto_dot_com/browser/buildflags/buildflags.gni
-index e0ebbbf..b23ccdb 100644
+index e0ebbbfed9..b23ccdb085 100644
 --- a/components/crypto_dot_com/browser/buildflags/buildflags.gni
 +++ b/components/crypto_dot_com/browser/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -164,7 +258,7 @@ index e0ebbbf..b23ccdb 100644
 +  crypto_dot_com_enabled = false
  }
 diff --git a/components/crypto_dot_com/common/BUILD.gn b/components/crypto_dot_com/common/BUILD.gn
-index 1a7abd9..a15c3f0 100644
+index 1a7abd96d0..a15c3f074c 100644
 --- a/components/crypto_dot_com/common/BUILD.gn
 +++ b/components/crypto_dot_com/common/BUILD.gn
 @@ -1,6 +1,6 @@
@@ -176,7 +270,7 @@ index 1a7abd9..a15c3f0 100644
  source_set("common") {
      sources = [
 diff --git a/components/gemini/browser/BUILD.gn b/components/gemini/browser/BUILD.gn
-index 206bb42..9f50d93 100644
+index 206bb428d3..9f50d936bb 100644
 --- a/components/gemini/browser/BUILD.gn
 +++ b/components/gemini/browser/BUILD.gn
 @@ -1,7 +1,7 @@
@@ -189,7 +283,7 @@ index 206bb42..9f50d93 100644
  declare_args() {
    gemini_client_id = ""
 diff --git a/components/gemini/browser/buildflags/buildflags.gni b/components/gemini/browser/buildflags/buildflags.gni
-index 891f918..49635f5 100644
+index 891f918523..49635f5c4b 100644
 --- a/components/gemini/browser/buildflags/buildflags.gni
 +++ b/components/gemini/browser/buildflags/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -198,7 +292,7 @@ index 891f918..49635f5 100644
 +  gemini_enabled = false
  }
 diff --git a/components/p3a/buildflags.gni b/components/p3a/buildflags.gni
-index b8fca0c..d606873 100644
+index b8fca0c6da..d60687346f 100644
 --- a/components/p3a/buildflags.gni
 +++ b/components/p3a/buildflags.gni
 @@ -1,3 +1,3 @@
@@ -207,7 +301,7 @@ index b8fca0c..d606873 100644
 +  brave_p3a_enabled = false
  }
 diff --git a/ios/browser/api/wallet/BUILD.gn b/ios/browser/api/wallet/BUILD.gn
-index d43223a..d2ad0e8 100644
+index d43223a1b0..d2ad0e89d9 100644
 --- a/ios/browser/api/wallet/BUILD.gn
 +++ b/ios/browser/api/wallet/BUILD.gn
 @@ -7,7 +7,7 @@ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
