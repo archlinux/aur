@@ -3,9 +3,9 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=3.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
-arch=('x86_64') # 'aarch64'
+arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
@@ -43,11 +43,27 @@ prepare() {
   sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
 
   # workaround for TS compilation failing due to a "might be null" error.
-  # this might be an ugly thing to just ignore, but, well, uh...
+  # this might be an ugly thing to just ignore, but, well, uh... (electron >=11/12 needs this)
   patch -Np1 -i ${srcdir}/webpack.patch
 
+  if [[ $CARCH == 'aarch64' ]]; then
+    export npm_config_target_arch=arm64
+    export npm_config_arch=arm64
+    export npm_config_target_host_arch=arm64
+    # export SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=1
+    # export SASS_FORCE_BUILD=1
+  fi
   yarn --cwd ./web install
+  if [[ $CARCH == 'aarch64' ]]; then
+    cd web
+    npm rebuild
+    cd ${srcdir}/${_pkgname}
+  fi
   yarn --cwd ./web run bundle:desktop
+  if [[ $CARCH == 'aarch64' ]]; then
+    sed -r 's#("keytar": ").*"#\17.7.0"#' -i app/package.json
+    sed -r 's#("electron-builder": ").*"#\122.11.1"#' -i package.json
+  fi
   yarn --cwd ./app install
   yarn install
   yarn run webpack --config webpack.prod.js
@@ -58,6 +74,12 @@ build() {
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
   nvm use ${_nodeversion}
+
+  if [[ $CARCH == 'aarch64' ]]; then
+    export npm_config_target_arch=arm64
+    export npm_config_arch=arm64
+    export npm_config_target_host_arch=arm64
+  fi
 
   _electron_dist=/usr/lib/electron
   _electron_ver=$(cat ${_electron_dist}/version)
@@ -70,7 +92,7 @@ build() {
           ;;
   esac
 
-  yarn run electron-builder --linux --${_electronbuilderrarch} --dir --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver} --config.linux.target=dir --publish=never
+  yarn run electron-builder --linux --${_electronbuilderrarch} --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver} --config.linux.target=dir --publish=never
 }
 
 
