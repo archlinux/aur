@@ -1,0 +1,15 @@
+#!/bin/sh
+cfg=$HOME/.config/GMAT
+[ ! -d "$cfg" ] && mkdir "$cfg"
+if [ ! -f "$cfg/PKGVER" ]; then
+	<"ROOT_PATH/bin/gmat_startup_file.txt" \
+	sed -e "s|^PERSONALIZATION_FILE.*|PERSONALIZATION_FILE = $cfg/PKGVER.ini|" \
+	>"$cfg/PKGVER"
+fi
+if [ ! -f "$cfg/PKGVER.ini" ]; then
+	<"ROOT_PATH/data/gui_config/MyGmat.ini" \
+	sed -e "s|\.\./samples/|ROOT_PATH/samples/|" \
+	>"$cfg/PKGVER.ini"
+
+fi
+exec "ROOT_PATH/bin/GMAT-PKGVER" -s "$cfg/PKGVER" "$@"

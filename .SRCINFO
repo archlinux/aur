@@ -1,0 +1,26 @@
+pkgbase = gmat
+	pkgdesc = General Mission Analysis Tool: An open-source space mission analysis tool
+	pkgver = R2020a
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gmat/
+	arch = x86_64
+	license = Apache
+	makedepends = cspice
+	makedepends = cmake
+	makedepends = swig
+	makedepends = patchelf
+	makedepends = f2c
+	depends = xerces-c
+	depends = python
+	depends = wxgtk2
+	depends = glu
+	conflicts = gmat-bin
+	options = !strip
+	source = GMAT.in
+	source = 010-fix-f2c-typedefs.patch
+	source = https://sourceforge.net/projects/gmat/files/GMAT/GMAT-R2020a/GMAT-src_and_data-R2020a.zip
+	sha256sums = 3d98cc2892c5b29cdf84a6d027842debfdb1a8472b0e67c7682c2ee24d4938ec
+	sha256sums = d6971947454142b12ec8d4d237c6f33b348be424f758c2e5351b1a92d9e779dc
+	sha256sums = 5ef0b434b026d907027b99db44a82750442a4b50b577f382ff3ea77e0d6b71b9
+
+pkgname = gmat

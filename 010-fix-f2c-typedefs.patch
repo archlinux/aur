@@ -1,0 +1,36 @@
+diff -u10 -r GMAT-R2020a/plugins/EstimationPlugin/src/base/measurement/Ionosphere/Ionosphere.hpp GMAT-R2020a-patched/plugins/EstimationPlugin/src/base/measurement/Ionosphere/Ionosphere.hpp
+--- GMAT-R2020a/plugins/EstimationPlugin/src/base/measurement/Ionosphere/Ionosphere.hpp	2020-04-29 20:19:59.000000000 +0200
++++ GMAT-R2020a-patched/plugins/EstimationPlugin/src/base/measurement/Ionosphere/Ionosphere.hpp	2021-07-24 18:09:45.076976758 +0200
+@@ -29,32 +29,20 @@
+ #define Ionosphere_hpp
+ 
+ #include "MediaCorrection.hpp"
+ #include "gmatdefs.hpp"
+ #include "Rvector3.hpp"
+ 
+ #include "f2c.h"
+ 
+ #ifdef __linux__
+ 
+-#ifndef integer
+-typedef int integer;
+-#endif
+-
+-#ifndef logical
+-typedef int logical;
+-#endif
+-
+-#ifndef ftnlen
+-typedef int ftnlen;
+-#endif
+-
+ // SWIG has an internal max() function, so turn off the f2c macro
+ #ifdef max
+ #undef max
+ #endif
+ 
+ #endif
+ 
+ #ifdef __APPLE__
+ 
+ //#undef abs  // to work on Mac - the macro for abs confuses the Mac C++ code
