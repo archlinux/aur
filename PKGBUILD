@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=3.0.r106623.gfbd889ec285
+pkgver=3.0.r107522.gaa321211747
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -30,7 +30,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
-makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
+makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'libxkbcommon')
 provides=("blender=${pkgver%%.r*}")
 conflicts=("blender=${pkgver%%.r*}")
 license=('GPL')
@@ -57,7 +57,8 @@ sha256sums=('SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
             '6249892f99ffd960e36f43fb893c14e2f8e4dd1d901b9581d25882e865f2603f'
-            '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
+            '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b'
+            )
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -103,7 +104,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_SYSTEM_GLEW=ON \
+        -DWITH_SYSTEM_GLEW=OFF \
         -DWITH_PYTHON_INSTALL=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
