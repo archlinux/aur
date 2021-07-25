@@ -1,14 +1,21 @@
 pkgbase = r-bit
-	pkgdesc = A Class for Vectors of 1-Bit Booleans
-	pkgver = 1.1.14
+	pkgdesc = Classes and Methods for Fast Memory-Efficient Boolean Selections
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bit
+	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = r
-	replaces = r-cran-bit
-	source = https://cran.r-project.org/src/contrib/bit_1.1-14.tar.gz
-	md5sums = e62b50777478fe4dd624955cfd609fcc
+	license = GPL3
+	depends = r>=2.9.2
+	optdepends = r-testthat
+	optdepends = r-roxygen2
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-microbenchmark
+	optdepends = r-bit64
+	optdepends = r-ff
+	source = https://cran.r-project.org/src/contrib/bit_4.0.4.tar.gz
+	sha256sums = e404841fbe4ebefe4ecd4392effe673a8c9fa05f97952c4ce6e2f6159bd2f168
 
 pkgname = r-bit
-
