@@ -2,7 +2,7 @@
 
 pkgname=around
 pkgver=0.52.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Video conferencing with AI-based camera framing."
 arch=('x86_64')
 url='https://www.around.co/'
@@ -19,7 +19,7 @@ prepare() {
 [Desktop Entry]
 Name=Around
 Comment=Around.co linux client
-Exec="${pkgdir}/opt/${pkgname}/${_appimage}" %U
+Exec="/opt/${pkgname}/${_appimage}" %U
 Terminal=false
 Type=Application
 Categories=Network;Application;

@@ -1,7 +1,7 @@
 pkgbase = around
 	pkgdesc = Video conferencing with AI-based camera framing.
 	pkgver = 0.52.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.around.co/
 	arch = x86_64
 	license = unknown
