@@ -1,13 +1,12 @@
 pkgbase = htmlunit
 	pkgdesc = Headless HTTP webclient for Java
-	pkgver = 2.50.0
+	pkgver = 2.52.0
 	pkgrel = 1
-	url = http://htmlunit.sourceforge.net/
+	url = http://htmlunit.sourceforge.net
 	arch = any
 	license = Apache
 	depends = java-runtime-common
-	source = http://sourceforge.net/projects/htmlunit/files/htmlunit/2.50.0/htmlunit-2.50.0-bin.zip
-	sha256sums = 630354b90695dfd5c3fd32cf4a8bd8eb9e5cf3951f83f8722f32db0ee1544764
+	source = https://github.com/htmlunit/htmlunit/releases/download/2.52.0/htmlunit-2.52.0-bin.zip
+	sha256sums = 30082ede9542b0205dfc50999fe6bef6dae233b1de6d615dc78bf8fe6f411164
 
 pkgname = htmlunit
-
