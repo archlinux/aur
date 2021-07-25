@@ -2,7 +2,7 @@
 
 pkgname='scaleft-server-tools-bin'
 pkgdesc='ScaleFT(TM) daemon and shell'
-pkgver=1.52.2
+pkgver=1.54.0
 pkgrel=1
 arch=('x86_64')
 url="https://scaleft.com"
@@ -10,7 +10,7 @@ license=('custom')
 install=${pkgname}.install
 depends=('glibc')
 source=("https://pkg.scaleft.com/rpm/${pkgname%-*}-${pkgver}-${pkgrel}.${arch}.rpm")
-sha256sums=('fa1f49ff4d0dfe652b6b05a76b02ee0767daeee5db785104ac15886607eaa138')
+sha256sums=('3bcce5f80758d928811c4cef79008fa20256329994911faed9e20004704d285b')
 
 package() {
   install -Dm0644 etc/systemd/system/sftd.service \
