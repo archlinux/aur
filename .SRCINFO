@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-keylase
 	pkgdesc = NVIDIA drivers utilities with NVENC and NvFBC patches made by Keylase
 	pkgver = 470.57.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/keylase/nvidia-patch/
 	install = nvidia-utils.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-keylase
 pkgver=470.57.02
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/keylase/nvidia-patch/"
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patches made by Keylase"
@@ -116,7 +116,7 @@ package() {
     install -D -m755 nvidia-ngx-updater "${pkgdir}/usr/bin/nvidia-ngx-updater"
     install -D -m755 "libnvidia-ngx.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ngx.so.${pkgver}"
     install -D -m755 _nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/_nvngx.dll"
-    install -D -m755 nvngx.dll -t "${pkgdir}/usr/lib/nvidia/wine/nvngx.dll"
+    install -D -m755 nvngx.dll "${pkgdir}/usr/lib/nvidia/wine/nvngx.dll"
 
     # Optical flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${pkgver}"
