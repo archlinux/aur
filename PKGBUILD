@@ -6,7 +6,7 @@
 
 pkgname=kibana-xpack
 relpkgname=kibana
-pkgver=7.13.2
+pkgver=7.13.3
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
@@ -22,7 +22,7 @@ source=(https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-${pkgver}
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('e4b88dd0e0266f82e893d1040689aaa88c4541ea355603680cb60d0757d5dbca8e628c65d9d74a1f898afa6926bb8d79f9008361c44c4f0cfc3284b07087ac37'
+sha512sums=('d606ea842c4ef4b655988d9cb1e0b7403b460b9a6b2af52d71cd7690ab684692864a4f14fa31c90140b3d2f626ccd9cc693f96dbd63de84e541d875277500fc4'
             'SKIP'
             'be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
