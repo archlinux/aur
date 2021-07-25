@@ -2,7 +2,7 @@
 
 pkgname=7-zip
 pkgver=21.03
-pkgrel=2
+pkgrel=3
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
@@ -13,6 +13,7 @@ sha256sums=('94a0c543092d50ca88b999c35027715181fcc9be40526ff363df6e38345222b3')
 
 prepare() {
 	sed -i 's|CFLAGS_WARN_WALL = -Wall -Werror -Wextra|CFLAGS_WARN_WALL = -Wall -Wextra|g' CPP/7zip/7zip_gcc.mak
+	sed -i 's|$(CXX) -o $(PROGPATH) -s $(MY_ARCH_2) $(LDFLAGS) $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|$(CXX) -o $(PROGPATH) -s $(MY_ARCH_2) $(LDFLAGS) -Wl,-z,noexecstack $(LD_arch) $(OBJS) $(MY_LIBS) $(LIB2)|g' CPP/7zip/7zip_gcc.mak
 }
 
 build() {
