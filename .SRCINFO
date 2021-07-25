@@ -1,15 +1,15 @@
 pkgbase = groonga
-	pkgver = 11.0.3
+	pkgver = 11.0.4
 	pkgrel = 1
 	url = http://groonga.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
-	source = http://packages.groonga.org/source/groonga/groonga-11.0.3.tar.gz
+	source = http://packages.groonga.org/source/groonga/groonga-11.0.4.tar.gz
 	source = groonga-httpd.service
-	sha1sums = 3ca2469d803f0717289c02308c10c43aa5e616ba
+	sha1sums = 6c69d6756a343424f032c72d55d82806e56142eb
 	sha1sums = 56b68b5ebfc6785f08ce101b263d6f56acd74d8a
-	sha256sums = a1895ce8f4812e8bcdb0458373a786a4323ce53e9b4c7801bf103f3d93f76905
+	sha256sums = 6bf20cae8675cc0808bfb0b1e24923e5bc883280b4a3eb1e1e1a952da5144aa7
 	sha256sums = 4d3f91b40b37ab473b716c6c303c1e58ca7b3f777439fc4c055be80d04ffa65b
 
 pkgname = groonga
