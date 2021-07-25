@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir"/wii-u-gc-adapter
+	CFLAGS="${CFLAGS//-Werror=format-security}"
 	make
 }
 
