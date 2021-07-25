@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-user-theme-x-git
 _pkgname=user-theme-x
-pkgver=3.38.r2.g4fb2622
+pkgver=3.38.r7.g5e0421c
 pkgrel=1
 pkgdesc="Customizable gnome shell user-theme with user stylesheet and night theme autoswitch support"
 arch=('any')
