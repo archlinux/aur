@@ -26,7 +26,7 @@ pkgbase = telegram-desktop-userfonts-bin
 	depends = jemalloc
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases/download/2.8.11-1/telegram-desktop-userfonts-2.8.11-1-x86_64.pkg.tar.zst
-	sha512sums = 14f20c3f5fda5316e2b3bb3809227aba816822536c69609f4e4821a326d03fac1aa96642d3e696ec13909377d580e98791a6f25a950a03471be0755f40975082
+	source = https://github.com/AndydeCleyre/archbuilder_telegram-desktop-userfonts/releases/download/2.8.11-2/telegram-desktop-userfonts-2.8.11-2-x86_64.pkg.tar.zst
+	sha512sums = c917c4d4acdbe38e2a667fc656561f3d50d7b7129c4d2984cdd28e53e9af017f345887a1f4cd861b8fe081676b47cf168615247fb4a594857dd9eb6c0ade394a
 
 pkgname = telegram-desktop-userfonts-bin
