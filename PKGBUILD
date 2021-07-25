@@ -67,7 +67,7 @@ _subarch=
 
 pkgbase=linux-ck-uksm-cjktty
 pkgver=5.12.19
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://github.com/RiverOnVenus/linux-ck-uksm-cjktty"
@@ -94,16 +94,6 @@ source=(
   "${_patchsource}/uksm-patches/0001-UKSM-for-5.12.patch"
   "${_patchsource}/cjktty-patches/0001-cjktty-5.12-initial-import-from-https-github.com-zhm.patch"
   "${_patchsource}/bbr2-patches-v3/0001-bbr2-patches.patch"
-  "${_patchsource}/bfq-lucjan/5.12-bfq-lucjan-r2K210619.patch"
-  "${_patchsource}/lqx-patches-v3/0001-zen-Allow-MSR-writes-by-default.patch"
-  "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
-  "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/btrfs-patches-v14/0001-btrfs-patches.patch"
-  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/futex-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2-stable-patches-v7/0001-futex2-resync-from-v7-gitlab.collabora.com.patch"
-  "${_patchsource}/lru-patches-v4/0001-lru-patches.patch"
-  "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -123,17 +113,7 @@ b2sums=('88e4c32cf196662a6a24e72b978019d6f8881a8523918029f4229a995c5fd957a5e01f4
         'ed1dc0f7e4f97969185de71b8f26c321359e06855d3c3b2ac3fccf2d1cdae121feb70fc5a6546c63d2ca0ce3ef21d510a40e4077262715d53165a1b236119788'
         '14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641'
         '9dfcc6b39c73945f2ba2071039a7ebf40bcfb23ab2f1cb8fe5050d86b73b34333882ea577f3b648ffeb3b76d7c0ff8d20e35b46e82726cd6970b441d266bdda1'
-        'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581'
-        'e5a2e914400cdb578467d61b2d7f7514e8bfcc331ae7a28d3d245d8e83f8ed609c2bb2a8a1ea601c2fac611ee8b50194de562395ab7272bde78324bdc2182de2'
-        '33798afdc3cc12d3a1536e611390eb05817f805c8c666a5c7dbf05ba154d87cd7ab646a45cc2b1b89e5c1322bb46edf8c36f08e6e039d31134b5c9ce6dd93127'
-        'a2c863e5b161a7646078b697819ef6d734c5f945fbbf4f26ff12e73b987f6044e2cab7ab72de6fac6e3e270f42c450c34e41c8a5a1149d671471404dfbb4fece'
-        '7f7421abd36991ed0c8453bc54e1b7ed787f90b0a434d8f8db7bc979723e8ed3249a99e61e4b160cde44ebc2cec4b489a24bd37bc58ddaa73f1156e65c05dfc0'
-        '5cb420d8889ed8d254b811a5a85f1267476cd8b18cff686fc68feb08fcb656475ed622977938cba98b32779610ab9d145dcaf59ce1b726bbd5644cba3d01e36a'
-        'f6d5e74b0b1b6c8a185312cb82d9908845bfddc0a5618ad55f059fb1d3d7950a78fb4879d1363f9fa9272da54a4374ef66cd5aef4ad006fb20e895bb8374e92b'
-        '93cf09821abb234a04550c659aa5a4d5632297e326fc61caf8c65c74bb35bc37fdd0dd1d769e6512a8471177bd01f765400e5292ca2b93ad95f7a7e24ab8e996'
-        '294f42c9e5099f923c0f2bfde2168e0e90cced379ae195cbe9505ab029900c60f17f58fa2200999a2dca91c9354f072d5171806bd9b4f8961d3d55281d7c6707'
-        '195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9'
-        '79585aa697309a34c169caca2881b39a953f3d7bd0aa901ad372161b285bbea7d3af89e62e63d0ba1821f3bfbcec738a2666c42fcf13a65cfea243646a4d5aa1')
+        'b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -181,46 +161,13 @@ prepare() {
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
 
-    echo "Enable Futex2 support"
-    scripts/config --enable CONFIG_FUTEX2
-
-    echo "Disabling TCP_CONG_CUBIC..."
+  # BBR2
     scripts/config --module CONFIG_TCP_CONG_CUBIC
     scripts/config --disable CONFIG_DEFAULT_CUBIC
-
-    echo "Enabling TCP_CONG_BBR2..."
     scripts/config --enable CONFIG_TCP_CONG_BBR2
     scripts/config --enable CONFIG_DEFAULT_BBR2
     scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
 
-    echo "Disabling NUMA from kernel config..."
-    scripts/config --disable CONFIG_NUMA
-
-    echo "Enable Anbox"
-    scripts/config --module  CONFIG_ASHMEM
-    scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
-    scripts/config --enable  CONFIG_ANDROID
-    scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
-    scripts/config --enable  CONFIG_ANDROID_BINDERFS
-    scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
-
-    echo "Set module compression to ZSTD"
-    scripts/config --enable CONFIG_MODULE_COMPRESS
-    scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-
-    echo "Enable zram compression to ZSTD"
-    scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
-    scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
-    scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
-
-    echo "Enabling multigenerational LRU..."
-    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-    scripts/config --enable CONFIG_LRU_GEN
-    scripts/config --set-val CONFIG_NR_LRU_GENS 7
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-    scripts/config --enable CONFIG_LRU_GEN_ENABLED
-    scripts/config --disable CONFIG_LRU_GEN_STATS
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
@@ -276,7 +223,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset and uksm patch and cjktty patch etc.. featuring MuQSS CPU scheduler and default bbr2"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset and uksm patch and cjktty patch featuring MuQSS CPU scheduler and default bbr2"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
