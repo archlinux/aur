@@ -1,7 +1,7 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
-
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+_gemname=gemoji
 pkgname=ruby-gemoji
-pkgver=2.1.0
+pkgver=4.0.0.rc2
 pkgrel=1
 pkgdesc="Image assets and character information for emoji"
 arch=('any')
@@ -9,16 +9,11 @@ url="https://github.com/github/gemoji"
 license=('custom:MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('dcacc532537b6244a9ea104a8e7e7ce883a8302843aeef861798b34cc3357958')
+sha256sums=('0cfb4101e11b8d091a9e26c2899789102b4151da467e5a6257d5058abb4663f7')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
-  cd "$srcdir"
-
-  msg 'Installing...'
-  gem install \
-    --no-user-install \
-    --ignore-dependencies \
-    -i "$pkgdir$(ruby -rubygems -e'puts Gem.default_dir')" \
-    ${pkgname#*-}-$pkgver.gem
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --no-document --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
