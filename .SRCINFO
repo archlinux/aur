@@ -1,6 +1,6 @@
 pkgbase = wii-u-gc-adapter
 	pkgdesc = Tool for using the Wii U GameCube Adapter on Linux
-	pkgver = 0.0.38
+	pkgver = 0.0.43
 	pkgrel = 1
 	url = https://github.com/ToadKing/wii-u-gc-adapter
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = wii-u-gc-adapter
 	license = MIT
 	makedepends = git
 	depends = libusb
-	source = git+https://github.com/ToadKing/wii-u-gc-adapter.git#commit=ae6b46d7a2b32068e746f1d2d816f4b3d6a7ac80
+	source = git+https://github.com/ToadKing/wii-u-gc-adapter.git#commit=64d7ddc511adb12f2eb05bd97294bc51cf51bfab
 	source = 51-ignore-gc-controller.conf
 	source = wii-u-gc-adapter.service
 	sha512sums = SKIP
@@ -16,4 +16,3 @@ pkgbase = wii-u-gc-adapter
 	sha512sums = 9047f2709240a485497ef33fbfe12fc7050469eae03e09ac28b8cdaa63d9595d99d19641deac4e7fece4982b0437bc899289cfb881e875c4eeb663890149ddc2
 
 pkgname = wii-u-gc-adapter
-
