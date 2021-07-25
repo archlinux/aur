@@ -1,0 +1,14 @@
+pkgbase = nix-user-chroot
+	pkgdesc = Run and install nix as user without root permissions.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/nix-community/nix-user-chroot
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = nix-user-chroot-1.2.2.tar.gz::https://github.com/nix-community/nix-user-chroot/archive/refs/tags/1.2.2.tar.gz
+	sha512sums = 3dda9eac434d9f4cba29931046377822e39a26b596f70407f487eb7d58797da1c917e0eb3ce5b40cafe46679e6b2fe5e87a6f4c5f4e3b5545290cfb1625f201d
+
+pkgname = nix-user-chroot
