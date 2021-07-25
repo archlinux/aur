@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 # Contributor: Marcin Karpezo <sirmacik at gmail dot com>
 pkgname=nqp
-pkgver=2021.06
+pkgver=2021.07
 pkgrel=1
 pkgdesc="Lightweight Raku-like environment for virtual machines (MoarVM backend)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ replaces=('nqp-moarvm')
 conflicts=('nqp-moarvm')
 options=('!makeflags')
 source=("https://github.com/Raku/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('7314f425e418161befc55f9490453a3a4c3caa0ddf13e2b3bbcc9a20a6204aba9517885b6ecccddbbaf078b60c74be90fe556bf99dcc6014e57a7c873e96381d')
+b2sums=('6f73aaa9b1ceb5e4efdd211a4e9326c123db344ede4a20965f180aa504efab03e00652d3c65ec9c0ed9447e4923e2ff4b34de0d6abb772eef8f5f6b1b597f5c5')
 
 build() {
 	cd "$pkgname-$pkgver"
