@@ -1,6 +1,6 @@
-diff -aur --no-dereference '--exclude=.git' radium-6.9.72.old/check_dependencies.sh radium-6.9.72.new/check_dependencies.sh
---- radium-6.9.72.old/check_dependencies.sh	2021-05-12 12:22:43.000000000 +0100
-+++ radium-6.9.72.new/check_dependencies.sh	2021-05-17 19:33:06.675841674 +0100
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/check_dependencies.sh radium-6.9.88.new/check_dependencies.sh
+--- radium-6.9.88.old/check_dependencies.sh	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/check_dependencies.sh	2021-07-25 17:42:43.213233704 +0100
 @@ -246,13 +246,6 @@
      exit 5
  fi
@@ -15,10 +15,10 @@ diff -aur --no-dereference '--exclude=.git' radium-6.9.72.old/check_dependencies
  if [[ $4 == "test_build" ]] ; then
      if [ `uname` == "Linux" ] ; then
          if [ ! -f bin/packages/deletemetorebuild ] ; then
-diff -aur --no-dereference '--exclude=.git' radium-6.9.72.old/Makefile.Qt radium-6.9.72.new/Makefile.Qt
---- radium-6.9.72.old/Makefile.Qt	2021-05-12 12:22:43.000000000 +0100
-+++ radium-6.9.72.new/Makefile.Qt	2021-05-17 19:33:41.772606557 +0100
-@@ -344,7 +344,7 @@
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/Makefile.Qt radium-6.9.88.new/Makefile.Qt
+--- radium-6.9.88.old/Makefile.Qt	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/Makefile.Qt	2021-07-25 17:42:43.219900395 +0100
+@@ -343,7 +343,7 @@
  
  FLAGOPTS = $(DEFINES) -DGUIISQT -DFULL_VERSION=$(FULL_VERSION) -DIS_LITTLE_ENDIAN=1 -DUSE_OPENGL=1 $(VISUAL) $(REQTYPE_TYPE) $(MENU_TYPE)
  
@@ -27,15 +27,15 @@ diff -aur --no-dereference '--exclude=.git' radium-6.9.72.old/Makefile.Qt radium
  #-fdelete-null-pointer-checks 
  # -Werror
  
-diff -aur --no-dereference '--exclude=.git' radium-6.9.72.old/pluginhost/Builds/Linux/Makefile radium-6.9.72.new/pluginhost/Builds/Linux/Makefile
---- radium-6.9.72.old/pluginhost/Builds/Linux/Makefile	2021-05-12 12:22:43.000000000 +0100
-+++ radium-6.9.72.new/pluginhost/Builds/Linux/Makefile	2021-05-17 19:33:06.675841674 +0100
-@@ -8,7 +8,7 @@
-   CONFIG=Debug
- endif
+diff -aur --no-dereference '--exclude=.git' radium-6.9.88.old/pluginhost/Builds/Linux/Makefile radium-6.9.88.new/pluginhost/Builds/Linux/Makefile
+--- radium-6.9.88.old/pluginhost/Builds/Linux/Makefile	2021-07-24 21:33:34.000000000 +0100
++++ radium-6.9.88.new/pluginhost/Builds/Linux/Makefile	2021-07-25 17:45:12.883773257 +0100
+@@ -11,7 +11,7 @@
+ AVAILABLES=
+ #"-DJUCE_MODULE_AVAILABLE_juce_audio_basics=1" "-DJUCE_MODULE_AVAILABLE_juce_audio_devices=1" "-DJUCE_MODULE_AVAILABLE_juce_audio_formats=1" "-DJUCE_MODULE_AVAILABLE_juce_audio_processors=1" "-DJUCE_MODULE_AVAILABLE_juce_audio_utils=1" "-DJUCE_MODULE_AVAILABLE_juce_core=1 -DJUCE_MODULE_AVAILABLE_juce_data_structures=1" "-DJUCE_MODULE_AVAILABLE_juce_dsp=1" "-DJUCE_MODULE_AVAILABLE_juce_events=1" "-DJUCE_MODULE_AVAILABLE_juce_graphics=1" "-DJUCE_MODULE_AVAILABLE_juce_gui_basics=1" "-DJUCE_MODULE_AVAILABLE_juce_gui_extra=1"
  
--COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
-+COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I$(RADIUM_VST2SDK_PATH) -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
+-COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" $(AVAILABLES) -I /usr/include -I /usr/include/freetype2 -I../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
++COMMONCPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "_DEBUG=1" -D "JUCE_CHECK_MEMORY_LEAKS=0" -D "JUCER_LINUX_MAKE_7346DA2A=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" $(AVAILABLES) -I /usr/include -I /usr/include/freetype2 -I../../JuceLibraryCode/modules/juce_audio_processors/format_types/VST3_SDK -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ~/SDKs/vstsdk2.4 -I$(RADIUM_VST2SDK_PATH) -DJUCE_APP_CONFIG_HEADER="\"AppConfig.h\"" -mfpmath=sse -msse2
  
- ifeq (,$(findstring clang,$(CXX)))
- 	COMMONCPPFLAGS += -Wno-class-memaccess 
+ # -I~/SDKs/VST_SDK/VST3_SDK -I ~/SDKs/VST_SDK/VST2_SDK/ -I ~/SDKs/VST3\ SDK
+ 
