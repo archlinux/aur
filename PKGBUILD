@@ -3,7 +3,7 @@
 
 pkgname=reaper-bin
 pkgver=6.32
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset"
 arch=('x86_64' 'i686' 'aarch64' 'armv7l')
 url="https://reaper.fm"
@@ -20,8 +20,10 @@ sha256sums_i686=('5cb0f4246cbe246ad5951618e48a4f8ca5c2b9dd597744cb77b0a04cbcb5bc
 sha256sums_aarch64=('85c60db57c2cbf15d124ed9c90ca6becd05f63422e55171c007294faa7b838a4')
 sha256sums_armv7l=('36c6579d8e50d93571a896332b6e304441f4f7a4765e807c8aa7b1689efdf46c')
 
+_arch=$(uname -m)
+
 package() {
-    XDG_DATA_HOME="${srcdir}/desktop" sh "${srcdir}/reaper_linux_${arch}/install-reaper.sh" --install "${pkgdir}/opt" --integrate-user-desktop
+    XDG_DATA_HOME="${srcdir}/desktop" sh "${srcdir}/reaper_linux_${_arch}/install-reaper.sh" --install "${pkgdir}/opt" --integrate-user-desktop
 
     rm "${pkgdir}/opt/REAPER/uninstall-reaper.sh"
 

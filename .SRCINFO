@@ -1,7 +1,7 @@
 pkgbase = reaper-bin
 	pkgdesc = A complete digital audio production application for computers, offering a full multitrack audio and MIDI recording, editing, processing, mixing and mastering toolset
 	pkgver = 6.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reaper.fm
 	arch = x86_64
 	arch = i686
