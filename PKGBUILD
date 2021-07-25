@@ -1,39 +1,28 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Tom van der Lee <t0m.vd.l33@gmail.com>
 
 pkgname=acts
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="Another Calendar-based Tarsnap Script"
-arch=("any")
-url="https://github.com/alexjurkiewicz/acts"
-license=("Public Domain")
-conflicts=("acts-git")
-depends=("tarsnap"
-	 "coreutils"
-	 "util-linux")
-backup=("usr/lib/systemd/system/acts.timer")
+pkgdesc='A minimal shell script that creates backups with tarsnap'
+arch=('any')
+url='https://github.com/alexjurkiewicz/acts'
+license=('Unlicense')
+depends=('tarsnap' 'coreutils' 'util-linux')
 install=$pkgname.install
-source=(https://github.com/alexjurkiewicz/acts/archive/v$pkgver.tar.gz)
-sha256sums=('0c557a84ce2adecee96e3888f037ee2279a9546ee7f41bb87924c42f0ad8133c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('b0c3f4a02eb290bbf4fd7724daf81ed05f3d051a35da0f76a0761911811c19f9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-
-	sed -i "s/^ExecStart=.*$/ExecStart=\/usr\/bin\/acts/g" contrib/systemd/acts.service
+	sed -i '/ExecStart/s|local/||' contrib/systemd/acts.service
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-
-	mkdir -p "$pkgdir/usr/bin"
-	install -m755 acts "$pkgdir/usr/bin"
-
-	mkdir -p "$pkgdir/etc"
-	install -m644 acts.conf.sample "$pkgdir/etc"
-
-	mkdir -p "$pkgdir/usr/lib/systemd/system"
-	install -m644 contrib/systemd/* "$pkgdir/usr/lib/systemd/system"
+	install -Dm 755 acts -t "$pkgdir/usr/bin/"
+	install -Dm 644 acts.conf.sample -t "$pkgdir/usr/share/$pkgname/"
+	install -Dm 644 contrib/systemd/acts.{service,timer} -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
-# vim: set ts=8 sw=8 tw=0 noet :

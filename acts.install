@@ -1,3 +1,3 @@
 post_install() {
-	printf "! NOTE: To use acts, copy /etc/acts.conf.sample to /etc/acts.conf \n"
+	echo ':: You must write your own acts.conf into /etc/acts.conf using the template in /usr/share/acts/acts.conf.sample before using this software.'
 }

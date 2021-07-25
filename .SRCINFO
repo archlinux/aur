@@ -1,18 +1,15 @@
 pkgbase = acts
-	pkgdesc = Another Calendar-based Tarsnap Script
-	pkgver = 1.4.1
+	pkgdesc = A minimal shell script that creates backups with tarsnap
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/alexjurkiewicz/acts
 	install = acts.install
 	arch = any
-	license = Public Domain
+	license = Unlicense
 	depends = tarsnap
 	depends = coreutils
 	depends = util-linux
-	conflicts = acts-git
-	backup = usr/lib/systemd/system/acts.timer
-	source = https://github.com/alexjurkiewicz/acts/archive/v1.4.1.tar.gz
-	sha256sums = 0c557a84ce2adecee96e3888f037ee2279a9546ee7f41bb87924c42f0ad8133c
+	source = acts-1.4.2.tar.gz::https://github.com/alexjurkiewicz/acts/archive/v1.4.2.tar.gz
+	sha256sums = b0c3f4a02eb290bbf4fd7724daf81ed05f3d051a35da0f76a0761911811c19f9
 
 pkgname = acts
-
