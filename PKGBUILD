@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url=https://kde.org/applications/system/dolphin
 license=(LGPL)
 depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit kactivities kuserfeedback)
-makedepends=(git extra-cmake-modules kdoctools packagekit-qt5 git)
+makedepends=(extra-cmake-modules kdoctools packagekit-qt5 git)
 optdepends=('kde-cli-tools: for editing file type options'
             'ffmpegthumbs: video thumbnails'
             'kdegraphics-thumbnailers: PDF and PS thumbnails'
