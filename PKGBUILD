@@ -1,7 +1,7 @@
  # Maintainer: Buzzkillb <buzzkillb @ protonmail.com>
 
 pkgname='denariusqt-git'
-pkgver=v3.3.9.13.r10.gddc48ef
+pkgver=v3.3.9.13.r11.g5e28bd4
 pkgrel=1
 pkgdesc="Denarius (D) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency."
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/denarius"
-    qmake "USE_UPNP=1" "USE_QRCODE=1" "USE_NATIVETOR=-" OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 denarius-qt.pro
+    qmake "USE_UPNP=1" "USE_QRCODE=1" OPENSSL_LIB_PATH=/usr/lib/openssl-1.0 OPENSSL_INCLUDE_PATH=/usr/include/openssl-1.0 denarius-qt.pro
     make
 }
 

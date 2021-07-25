@@ -1,6 +1,6 @@
 pkgbase = denariusqt-git
 	pkgdesc = Denarius (D) is an anonymous, untraceable, energy efficient, Proof-of-Work, and Proof-of-Stake cryptocurrency.
-	pkgver = v3.3.9.13.r10.gddc48ef
+	pkgver = v3.3.9.13.r11.g5e28bd4
 	pkgrel = 1
 	url = https://denarius.io
 	arch = x86_64
