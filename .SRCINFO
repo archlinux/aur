@@ -1,0 +1,16 @@
+pkgbase = cni-plugins-nftables-forcenft
+	pkgdesc = Replace CNI iptables plugins with nftables counterparts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/pacakges/cni-plugins-nftables-git
+	arch = any
+	license = apache
+	depends = bash
+	depends = cni-plugins
+	depends = cni-plugins-nftables
+	source = 10-cni-force-nftables.hook
+	source = cni_force_nftables.sh
+	sha256sums = 8452f1618be58fd01d6b9ed79d54dc34f1f9a119b429afa38de4bfac168bddaa
+	sha256sums = d2b37416a41ce5f635bfead970d3ee8553a603746a34fb89e6eec1efce82e16f
+
+pkgname = cni-plugins-nftables-forcenft

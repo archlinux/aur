@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = cni-plugins
+Target = cni-plugins-nftables-forcenft
+
+[Action]
+Description = Replacing CNI iptables plugins with nftables
+Depends = coreutils
+Depends = bash
+When = PostTransaction
+Exec = /usr/lib/cni_force_nftables.sh
+
