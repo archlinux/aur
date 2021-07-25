@@ -30,13 +30,13 @@ prepare() {
 package() {
   cd $pkgname
 
-  install -d "$pkgdir/usr/share"
+  install -dm755 "$pkgdir/usr/share"
   cp -a share/nemo "$pkgdir/usr/share"
 
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/share/applications"
-  install -d "$pkgdir/usr/share/kde4/apps/solid/actions"
-  install -d "$pkgdir/usr/share/polkit/org.linuxmint.im.policy"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -dm755 "$pkgdir/usr/share/kde4/apps/solid/actions"
+  install -dm755 "$pkgdir/usr/share/polkit/org.linuxmint.im.policy"
   ./install.sh
 }
 
