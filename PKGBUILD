@@ -1,6 +1,6 @@
 # Maintainer: Anton Karmanov <bergentroll@insiberia.net>
 pkgname=spectral-matrix-git
-pkgver=218.r635.g1f95e88
+pkgver=218.r648.g30028a2
 pkgrel=1
 epoch=
 pkgdesc="Glossy cross-platform client for Matrix"
@@ -36,5 +36,5 @@ build() {
 package() {
   cd $pkgname/build
   make install
-  rm $pkgdir/usr/share/icons/hicolor/icon-theme.cache
+  rm -f $pkgdir/usr/share/icons/hicolor/icon-theme.cache
 }
