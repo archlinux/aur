@@ -1,6 +1,6 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = r17729.2ff39f6fd
+	pkgver = r18480.e7c30f33f
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = yuzu-git
 	source = git+https://github.com/citra-emu/ext-soundtouch.git
 	source = libressl::git+https://github.com/citra-emu/ext-libressl-portable.git
 	source = git+https://github.com/libusb/libusb.git
-	source = git+https://github.com/discordapp/discord-rpc.git
+	source = git+https://github.com/discord/discord-rpc.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/ReinUsesLisp/sirit
 	source = git+https://github.com/yuzu-emu/mbedtls
@@ -46,6 +46,7 @@ pkgbase = yuzu-git
 	source = git+https://github.com/xiph/opus.git
 	source = git+https://git.ffmpeg.org/ffmpeg.git
 	source = git+https://github.com/libsdl-org/SDL.git
+	source = git+https://github.com/yhirose/cpp-httplib.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	md5sums = SKIP
@@ -66,6 +67,6 @@ pkgbase = yuzu-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = yuzu-git
-
