@@ -1,6 +1,6 @@
 pkgbase = alice-vision-git
 	pkgdesc = Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms
-	pkgver = 2.4.0.r74.gd5662a267
+	pkgver = 2.4.0.r255.gcb103ac38
 	pkgrel = 1
 	url = https://alicevision.github.io/
 	arch = i686

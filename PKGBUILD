@@ -11,6 +11,8 @@ _CMAKE_FLAGS+=(
               -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon
               -DCERES_DIR=/usr/include/ceres
               -DALICEVISION_BUILD_DOC=OFF
+              -DALICEVISION_USE_CCTAG=ON
+              -DALICEVISION_USE_OPENCV=ON
              )
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cc_list=(${CUDA_ARCH})
@@ -40,7 +42,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.4.0.r74.gd5662a267
+pkgver=2.4.0.r255.gcb103ac38
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
