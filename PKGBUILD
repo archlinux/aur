@@ -4,13 +4,13 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 
-## The UT dictionary's upstream url: 'http://linuxplayers.g1.xrea.com/mozc-ut.html'
+## The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 
 ## Helpful internal stuff
-_commit=171aebaf3a1fb76d1a460d12c7199bc6fbcec473
-_mozcver=2.26.4416.102
-_utdicver=20210627
+_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
+_mozcver=2.26.4444.102
+_utdicver=20210725
 
 pkgname='ibus-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('ibus>=1.4.1' 'mozc-ut-common')
-makedepends=('bazel' 'git' 'pkgconf' 'python' 'python-six' 'qt5-base')
+makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base' 'unzip')
 conflicts=('ibus-mozc' 'ibus-mozc-ut2' 'ibus-mozc-ut-united')
 provides=("ibus-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
@@ -35,7 +35,7 @@ prepare() {
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' src/config.bzl
 
     # Fix the GLib include path
-    sed -i -e 's/x86_64-linux-gnu\/glib/glib/' src/BUILD.ibus
+    sed -i -e 's/x86_64-linux-gnu\/glib/glib/' src/BUILD.ibus.bazel
 }
 
 build() {
@@ -60,13 +60,13 @@ package() {
     unzip -o icons.zip
 
     install -Dm644 mozc.png                                     ${pkgdir}/usr/share/ibus-mozc/product_icon.png
-    install -Dm644 alpha_full.png                               ${pkgdir}/usr/share/ibus-mozc/alpha_full.png
-    install -Dm644 alpha_half.png                               ${pkgdir}/usr/share/ibus-mozc/alpha_half.png
-    install -Dm644 direct.png                                   ${pkgdir}/usr/share/ibus-mozc/direct.png
-    install -Dm644 hiragana.png                                 ${pkgdir}/usr/share/ibus-mozc/hiragana.png
-    install -Dm644 katakana_full.png                            ${pkgdir}/usr/share/ibus-mozc/katakana_full.png
-    install -Dm644 katakana_half.png                            ${pkgdir}/usr/share/ibus-mozc/katakana_half.png
-    install -Dm644 dictionary.png                               ${pkgdir}/usr/share/ibus-mozc/dictionary.png
-    install -Dm644 properties.png                               ${pkgdir}/usr/share/ibus-mozc/properties.png
-    install -Dm644 tool.png                                     ${pkgdir}/usr/share/ibus-mozc/tool.png
+    install -Dm644 alpha_full.svg                               ${pkgdir}/usr/share/ibus-mozc/alpha_full.svg
+    install -Dm644 alpha_half.svg                               ${pkgdir}/usr/share/ibus-mozc/alpha_half.svg
+    install -Dm644 direct.svg                                   ${pkgdir}/usr/share/ibus-mozc/direct.svg
+    install -Dm644 hiragana.svg                                 ${pkgdir}/usr/share/ibus-mozc/hiragana.svg
+    install -Dm644 katakana_full.svg                            ${pkgdir}/usr/share/ibus-mozc/katakana_full.svg
+    install -Dm644 katakana_half.svg                            ${pkgdir}/usr/share/ibus-mozc/katakana_half.svg
+    install -Dm644 outlined/dictionary.svg                      ${pkgdir}/usr/share/ibus-mozc/dictionary.svg
+    install -Dm644 outlined/properties.svg                      ${pkgdir}/usr/share/ibus-mozc/properties.svg
+    install -Dm644 outlined/tool.svg                            ${pkgdir}/usr/share/ibus-mozc/tool.svg
 }
