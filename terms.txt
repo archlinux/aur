@@ -1,0 +1,253 @@
+
+  Krunker.io - owned and licensed by Yendis AG Switzerland (copyright & trademark)
+  and operated by Yendis Entertainment Pty Ltd. Australia (copyright & trademark)
+  Version 27th of May 2021
+
+  Why "terms and conditions"? Because it is a legal requirement, that any user needs to know who is allowed to use
+  this site and what conditions you agree to with information about copyright and your privacy. If you have any
+  questions or remarks - do not hesitate to contact us (see bottom of page).
+
+  == TERMS AND CONDITIONS ==
+  - If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms
+    and conditions of use.
+  - If you disagree with any part of these terms and conditions, do not continue to use this site.
+
+	The use of this site is subject to the following terms of use:
+
+    > The content of the pages of this website is for your general information and use only.
+      It is subject to change without notice.
+    > You must be at least 13 years of age to use this site. If you are not at least 13 years of age do not use this site.
+    > By playing this game and being on this site you confirm that you are at least 13 years of age and you have read and
+      fully understood these terms & conditions.
+
+    > This website uses cookies (or similar components) to monitor browsing preferences.
+      If you do allow cookies to be used, personal information may be stored by third parties.
+      Krunker.io / Yendis Entertainment Pty Ltd. or Yendis AG do not store personal data in their database from players.
+      The registration of an account does not require a user to enter any personal data and we highly recommend not using names that
+      reflect any personal information.
+    > By using this website, you understand that it features user created content such as Text, Images and Scripts.
+      We will not be held responsible for any such content created by a user, or any harm done to you or your belongings thereof.
+    > Your use of any information or materials on this website is entirely at your own risk, for which we shall not be liable.
+    > This website contains material which is owned by or licensed to Yendis Entertainment Pty Ltd. a corporation registered in Australia
+      and Yendis AG a corporation registered in Switzerland.
+      This material includes, but is not limited to, the name, the design, layout, look, appearance and graphics and source code.
+      Reproduction for commercial purposes is prohibited.
+    > Using any part of the Source Code outside of the site is prohibited
+    > Any user submitted content that is added into the game is the property of Yendis Entertainment Pty Ltd. or Yendis AG. With the exception
+      of sprays.
+      The original creator is not entitled to any ownership or revenue for adding any content unless a signed partner agreement with Yendis Pty Ltd or
+      Yendis AG exists, which explicitly contains the share of revenue.
+    > From time to time this website may also include links to other websites.
+      These links are provided for your convenience to provide further information.
+      They do not signify that we endorse the website(s). We have no responsibility for the content of the linked website(s).
+    > We will not take any responsibility for any harm done to your computer, device or person from using this site.
+    > The use of this system is at your own risk. The uploading or amending of
+      content / code is done at the risk and discretion of the user and
+      Yendis Entertainment Pty Ltd. is not responsible and will not pay any fees,
+      compensation or royalties unless this is agreed by a contract in writing between
+      the provider and Yendis Entertainment Pty Ltd. It is the full responsibility
+      of the user to ensure that no copyright or privacy laws are infringed.
+      The system / code provided by Yendis Entertainment Pty Ltd. is covered by
+      copyright laws and may not be downloaded, used or amended unless
+      this is agreed in writing.
+
+  == ACCOUNT TERMINATION ==
+  - If you are found using exploits or cheats or are modifying the game in any way, your account will be disabled.
+  - Yendis Entertainment Pty Ltd reserves the right to disable your krunker account at any time. This can include the limitation of access for certain IP ranges.
+  - A player that wishes the account to be terminated can select this on his account. The account will be terminated
+    after 14 days if the process is not reversed by the user during the 14 day period. If a the termination of a account is requested
+    without accessing the account, a proof of ownership is required. If an account is terminated, the player has no claim
+    for any asset related to the account terminated.
+
+  == PRIVACY POLICY ==
+  - If you continue to browse and use this website you consent to our privacy policy.
+
+  == THIRD PARTIES ==
+  - Third parties may be placing and reading cookies on your browser, or using web beacons to collect information as a result
+    of ad serving on this  site.
+    For More information on Third Parties go here: http://www.google.com/policies/privacy/partners/
+
+  == WHAT INFORMATION IS COLLECTED ==
+  - Krunker.io / Yendis Entertainment Pty Ltd. / Yendis AG do not collect personal data
+    of the users. When you register with krunker.io do not use a name,
+    that contains personal information. You cannot enter personal
+    information like e-mail, address, phone-numbers etc. on krunker.io.
+  - Exceptions: To open a partner account, we need a valid e-mail address
+    which will only be used for transactions related to the partner account.
+  - IP addresses may also be stored for the purpose of recovering your account
+    (Account termination can be requested on the player account)
+
+  - Certain analytics and advertising tools linked to our site may also collect information about:
+     > Your General Location (Country, City)
+     > The amount of time you spend on this site
+     > The website that you came from
+     > IP Address
+     > Battery information
+     > Connection information
+     > Browser information
+
+  - If Krunker.io is accessed via an authorized third party site, the third party may collect additional
+    data from the users. Krunker.io may exchange game related data with the third party. No personal data
+    will be exchanged as outlayed in this privacy policy.
+
+  == WHAT DO WE USE THE INFORMATION FOR? ==
+  - The information is used to protect your account and make it possible for you to
+    recover it in case you lose the details. Some information is also collected to personalize
+    your experience.
+  - Information is also collected to analyze user data and enhance the user experience and improve ad
+    performance. According with privacy regulations, the players can accept or decline the use of
+    cookies when using the website in accordance with TCF 2.0.
+
+  == DO WE SHARE ACCOUNT INFORMATION WITH THIRD PARTIES? ==
+  - No. All of the information you provide us will be kept private.
+  - No information is sold or provided to any third parties in any way.
+
+  == DO WE USE COOKIES? ==
+  - Yes. Cookies (or future replacements) are used to save certain information: settings, account info.
+
+  == PURCHASES ==
+  - Yendis Entertainment Pty Ltd / Yendis AG condition for in game  purchases for krunker.io (webgame)
+    Any purchase of in game features are limited to be used within the game they have been purchased for.
+    All purchases are final when the transaction is finalized and non-refundable. Prices for purchases include
+    value added tax, if applicable and are in US Dollars or the currency provided by the payment provider
+    or bank. The payment provider or bank can convert the prices in US Dollars to a local currency based on
+    their exchange rates valid on the date of purchase.
+    The purchases for in game features are limited to a maximum US Dollars 100.00 per transaction.
+    Yendis Entertainment Pty Ltd reserves the right withdraw sales against full refund of the paid amount in US Dollars.
+    The purchase of in game features gives the purchaser the right to use these features in the game at any time.
+    The purchase of features does not include the right to copy or distribute use any of the features or use them outside
+    the named game in any way. Yendis Entertainment Pty Ltd allows game plays to be recorded (video) and streamed on online
+    platforms. Copyright for all game content and features applies.
+  - You must be at least 18 years of age or have the consent of a parent or guardian to make purchases.
+  - The use of credit cards, payment systems, bank accounts etc. from third parties without their consent is illegal
+    and Yendis Entertainment Pty Ltd or Yendis AG reserve the right to report such activities to financial institutions
+    or government agencies.
+  - A payment ID is stored when a purchase is made so that refunds can be accommodated via the payment-provider.
+  - No other personal data is stored in the Krunker.io database. To use payment providers you need to familiarize with
+    their terms & conditions.
+
+  == HOSTING ==
+  - By using the hosting feature, you agree to only host one server per user
+  - Hosting more than one server at once may result in a ban and or loss of partner status
+
+  == USER CREATED CONTENT ==
+  - User Created Content including but not limited to Maps and Mods must adhere to all terms of the site
+  - All User Created Content must be suitable for the intended audiences of the site
+  - Any Content that shows Nudity will be removed and the owner of the content may be banned
+  - Any Content that Endorses Gambling will be removed and the Creator of the Content may be banned
+  - Any Content that may be viewed as scamming or results in the involuntary loss of funds will be removed and the Creator of the Content may be banned
+
+  == KRUNKER PARTNER AGREEMENT ==
+  -  This section outlines the additional Terms & Conditions of becoming and remaining a Krunker Partner.
+
+  == PARTNER TERMS ==
+ -   Any registered player can apply for a partner account. This requires a valid e-mail address provided
+     by the player. Any player applying for a partner account has to be 18 years or older.
+     For verification purposes the transfer of a small amount via a defined payment provider may
+     be required and will be refunded if revenue is generated. The payment provider is defined by
+     Yendis Entertainment Pty Ltd.
+  -  Krunker.io offers two partner types.
+  -  Partner type 1 = revenue share for referred players (via individual URL). The revenue share is calculated based
+     on the cumulated played hours of the players referred by the partner. A minimum threshold is required to
+     be eligible for a payout which is 100 hours per month. The amounts paid can change depending on the
+     market situation.
+  -  Partner type 2 = revenue share for referred players (see Partner type 1) and revenue share on sales (player purchases)
+     and custom map game plays.
+     Revenue share on sales is calculated based on the net revenue generated for sales transactions (see Purchases)
+     which are processed by using a partner code which links those to a partner. The usual revenueshare percentage is 20%.
+     Revenue share on game plays is calculated on 1000 game plays (sessions) on a custom map in favour of the custom
+     map creator, if he is registered as partner type 2. The revenue share on game plays can vary depeding on market
+     conditions. You cannot use your own code when making purchases. This will result in loss of revenue.
+
+  -  Yendis Entertainment Pty Ltd cannot guarantee revenue. Payout of revenue share amounts is in USD once
+     at the end of the month for the revenue share of the previous month. Amounts less than USD 5 can be accumulated and paid as
+     soon as this threshold is reached. Amounts less than USD 1.00 are not paid or accumulated.
+  -  Reporting is limited to date range, number of transactions, sessions, salesamounts, games played and the amounts in USD.
+  -  Yendis Entertainment Pty Ltd. or Yendis AG can close accounts or stop this service without notice. All funds accumulated
+     and not paid at this time will be paid to the partner pro rata. Partners are notified by email.
+  -  It is the partners obligation to provide a valid e-mail address that can be used for payouts and communication.
+     Yendis Entertainment Pty Ltd. is not responsible for any incorrect transfer resulting from incorrect
+     Information. Payouts generaly are done via PayPal (c). Any fees on the recipients side are not covered by Yendis Entertainment Pty Ltd.
+  -  Email Addresses are stored for the purposes of Account Validation and Payouts. They will not be shared with a Third Party
+  -  Partners must be over the age of 18 or have direct consent from their legal guardian to participate in the Partner Program
+  -  If an invalid Payout method is provided, payments will not be sent.
+  -  Partners will only receive payment if a certain payment Threshold is exceeded. This Threshold can be adjusted without notice
+  -  If a Partner is found to be falsifying Stats or Inflating their Plays, they will not receive a payout and will be removed
+  -  from the partner system and banned.
+  -  Partner Status may be revoked without notice at any time.
+
+  == PARTNER RESPONSIBILITIES ==
+  -  As a Partner you have a Responsibility to uphold the games reputation.
+  -  If you are found to be frequently presenting the Game in a negative light, you will lose your partner status immediately.
+  -  As a Partner, you are by extension a representative of the Game & Brand. If you behave negatively toward our players and/or
+     the developers, Partner status will be revoked immediately.
+
+  == PARTNER REFERRAL LINKS ==
+  -  If a user is found to be boosting impressions and/or sign-ups, they will lose their partner status immediately and all earnings are forfeit
+  -  If a user is account locked or banned, all revenue generated by this user will not be counted toward the payout
+  -  Users that Sign-Up with a referral link that have previously registered on Krunker will not count toward your payout
+  -  Encouraging users to Re-Sign-Up using your Referral Link will result in loss of Partner Status.
+
+  == SUBSCRIPTIONS ==
+  - Players can purchase a subscription with Krunkies which will
+     give the player access to extended functions and rewards in the game (specified in
+     the game and subject to change without notice). Subscriptions can be purchased as
+     number of days the subscription is valid. Multiple transactions add the days purchased
+     to the already existing subscription end date. Unused subscription days cannot be refunded.
+     Yendis Entertainment Pty Ltd reserves the right to terminate any subscription if the
+     system is not used according to these terms.
+
+  == ASSET CREATION & PUBLISHING ==
+  -  By publishing any assets to the game. You agree that the assets are not copyright material and that no claim
+     can be made by your or on your behalf.
+  -  Assets include but are not limited to: Textures, Maps, Mods, Models, Scripts, Images, Sounds and Files.
+  -  Publishing of Copyright Materials or Assets is prohibited.
+  -  Yendis Entertainment has the Right to Use or Remove any Assets you publish to the game.
+  -  An asset that is published may be removed for any reason. KR lost from the removal of an asset will not be refunded.
+  -  If specific assets are rewarded at the discretion of Yendis Entertainment Pty Ltd, the partner conditions apply.
+
+  == KRUNKIES & CURRENCIES ==
+  -  The resale of Krunkies or any Krunker related products is strictly prohibited. Any accounts involved in the
+     purchase, sale or transaction of Krunkies outside of the official website will be terminated.
+
+  == ACCOUNT RULES ==
+  -  Offering Boosting as a Service or having your account boosted. Will result in the termination of your account.
+  -  Promoting any materials that are breaking the terms & conditions in any way will result in the termination of your account.
+  -  Users who are found to be Account sharing may have their Accounts terminated.
+  -  An "alt" account is described as an account or multiple accounts that was created after the first or most-used "main" account.
+     Alt accounts are not prohibited.
+  -  Creating an alt account with the intent of making in-game moderators or other players suspicious of the alt account's
+     gameplay may result in a ban of their main account. Such intent would include but are not limited to using obscenities
+     or cheat-keywords (hack, cheat, alt, ware, etc.) in the alt account's username, appearing to automatically jump
+     or bunny hop, or using gameplay similar to cheaters
+
+  == TOURNAMENTS & COMPENTITONS
+  -  Krunker.io supports tournaments with dedicated servers and password protected games and special modes/API access.
+     Generally the competition regulations of the organizing entity apply. Yendis Entertainment Pty Ltd can enter into
+     agreements with third party providers and offer compensations for tournament participants. Yendis Entertainment Pty Ltd
+     cannot be held responsible for any processes and decisions made by the organizers. Yendis Entertainment Ptd Ltd
+     can close players accounts according to these terms and conditions with no right of compensation.
+     These terms and conditions apply to participants and organizers of tournaments and competitions held on Krunker.io.
+
+  == TRADEMARKS
+  - Krunker is a trademark- and copyright protected brand owned by Yendis Entertainment Pty Ltd | Yendis AG. All images, logos
+    and animations presented on the krunker.io plattform are copyright protected but can be used free of charge by third
+    parties for the promotion of krunker.io. Any content of Krunker.io or related to Krunker.io may not be used to create or
+    promote products, software or services other than related to Krunker.io. The use or amendment of code outside of the Krunker.io
+    environment is prohibited in any circumstance.
+
+
+  == YOUR ACCEPTANCE OF THESE TERMS ==
+  - By using this Site, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our Site.
+    When playing the game, you will be asked to accept or decline these terms and conditions.
+
+  == CHANGES TO THIS POLICY ==
+  - Any changes to this policy will be posted on this page and the user will be asked to check and confirm or decline these
+    terms & conditions before playing the game.
+  - Last modification/version: see top of page
+
+  == YENDIS ENTERTAINMENT LTD ==
+  Yendis Entertainment Pty Ltd ACN 621 971 051
+  Yendis AG CH CHE-364.191.430
+  info@yendis.ch
+  CH +41 79 3203543 AUS +61 400 275 866 USA +1 323 300 5962

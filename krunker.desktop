@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=krunker.io
+Icon=/usr/share/pixmaps/krunker.png
+Comment=a free Multiplayer Online Game. No Download needed.
+Categories=Game;
+Exec=/opt/appimages/krunker.AppImage $@
+Terminal=false
