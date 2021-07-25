@@ -60,7 +60,7 @@ _use_current=
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -123,10 +123,10 @@ BUILD_FLAGS=(
       OBJDUMP=objdump
     )
 sha256sums=('7192cd2f654aa6083451dea01b80748fe1eebcf2476a589ef4146590030e7d6c'
-            '959386839ae19f0ffb1e2c8a16ead2cc95344bd8ac84e747555a3dd5b55854b6'
+            '6aa1147f9adadadc11d56956bb6534552e5497506b613f66bea55a08121819da'
             '2578b367f30ddf43569280403c75c056d61883128ea7827356b681fa7970bed4'
-            '7acb2cbcbf82833842c1835828e3e9404d7e6b461657dbd0e51421e7cd106c96'
-            'f1c3a88fba7334435543edc84ca6946b1c3f528cb804e0201630fbb81a3bf3fe'
+            'f42a65d6211b3861c132c72160274252cd825c9217727d0fca9c09e1f58dbf90'
+            '0f1cfcd29f1a4be50b3c70925e15c039ae9f86f18d98dff00920aca8bf8b061e'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
             '9ec679871cba674cf876ba836cde969296ae5034bcc10e1ec39b372e6e07aab0'
