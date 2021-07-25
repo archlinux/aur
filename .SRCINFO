@@ -1,11 +1,12 @@
 pkgbase = ocrmypdf
 	pkgdesc = A tool to add an OCR text layer to scanned PDF files, allowing them to be searched
 	pkgver = 12.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jbarlow83/OCRmyPDF
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm-git-archive
 	depends = python
 	depends = python-cffi
 	depends = img2pdf
