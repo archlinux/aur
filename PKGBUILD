@@ -4,13 +4,13 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 
-## The UT dictionary's upstream url: 'http://linuxplayers.g1.xrea.com/mozc-ut.html'
+## The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 
 ## Helpful internal stuff
-_commit=171aebaf3a1fb76d1a460d12c7199bc6fbcec473
-_mozcver=2.26.4416.102
-_utdicver=20210627
+_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
+_mozcver=2.26.4444.102
+_utdicver=20210725
 
 pkgname='emacs-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -20,8 +20,8 @@ arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('emacs' 'mozc-ut-common')
-makedepends=('bazel' 'git' 'pkgconf' 'python' 'python-six' 'qt5-base')
-conflicts=('emacs-mozc' 'emacs-mozc-ut2')
+makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
+conflicts=('emacs-mozc' 'emacs-mozc-ut2' 'emacs-mozc-ut-united')
 provides=("emacs-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
 sha256sums=('SKIP')
