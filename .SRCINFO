@@ -1,17 +1,15 @@
 pkgbase = openrgb-git
 	pkgdesc = Configuration utility for RGB lights supporting motherboards, RAM, & peripherals
-	pkgver = r1230.ef0a4c3
+	pkgver = r1772.84de7ebc
 	pkgrel = 1
 	url = https://gitlab.com/CalcProgrammer1/OpenRGB
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = make
-	makedepends = binutils
-	makedepends = pkgconf
 	depends = qt5-base
 	depends = libusb
 	depends = hidapi
+	depends = mbedtls
 	optdepends = i2c-tools: Motherboard & RAM access
 	provides = openrgb
 	conflicts = openrgb
@@ -23,4 +21,3 @@ pkgbase = openrgb-git
 	sha256sums = b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2
 
 pkgname = openrgb-git
-
