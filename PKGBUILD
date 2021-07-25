@@ -2,7 +2,7 @@
 
 _pkgname=yml2
 pkgname=$_pkgname-git
-pkgver=2.6.3
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A tool written in Python to convert yml to xml"
 arch=('any')
