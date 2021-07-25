@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.699
+pkgver=mainline.0.700
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(
 	'catch2>=2.13'
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.9.1'
-	'discord-rpc'
+	'discord-rpc>3.4.0'
 	'ffmpeg'
 	'fmt>=8.0'
 	'git'
@@ -26,7 +26,7 @@ makedepends=(
 	'opus>=1.3'
 	'qt5-tools>=5.12'
 	'sdl2>=2.0.14'
-	'spirv-headers>=1.3.7' # for sirit
+	'spirv-headers>1.5.4.raytracing.fixed' # for sirit
 	'vulkan-headers>=1.2.145'
 	'xbyak>=5.96'
 	'zlib>=1.2'
@@ -44,7 +44,6 @@ source=(
 	'unbundle-inih.patch'
 	'unbundle-sdl.patch'
 	'unbundle-spirv-headers.patch'
-	'unbundle-vulkan-headers.patch'
 	'unbundle-xbyak.patch'
 )
 md5sums=(
@@ -59,7 +58,6 @@ md5sums=(
 	'56f414ef28a7e880a16ea6b114cad35b'
 	'd84ac7b61105c2a1ca667706516ba9b9'
 	'374366419df7293779295a6c800b99b5'
-	'5d83e211eb2ce207e5a4c739772a6b10'
 	'7654bb89d5febcdfcee9d3b88bdec4c3'
 )
 
@@ -77,7 +75,6 @@ prepare() {
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-sdl.patch
 	patch -Np1 < ../unbundle-spirv-headers.patch
-	patch -Np1 < ../unbundle-vulkan-headers.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
 }
@@ -122,7 +119,6 @@ package() {
 		'libswscale.so'
 		'libusb-1.0.so'
 		'libzip.so'
-		'libzstd.so'
 	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
