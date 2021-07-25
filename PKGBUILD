@@ -7,7 +7,7 @@ pkgrel=1
 arch=('any')
 url="https://scaleft.com"
 license=('custom')
-depends=('scaleft-client-tools' 'python')
+depends=('scaleft-client-tools-bin' 'python')
 source=("https://pkg.scaleft.com/rpm/${pkgname}-${pkgver}-${pkgrel}.noarch.rpm")
 sha256sums=('f8a2f3451a631f4bc1585fc64bd33f43a2696af86a8e47d89e234d516d6c66d5')
 
