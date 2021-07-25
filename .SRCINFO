@@ -1,7 +1,7 @@
 pkgbase = octoprint
-	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
+	pkgdesc = The snappy web interface for your 3D printer for Arch Linux
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
@@ -31,12 +31,12 @@ pkgbase = octoprint
 	options = !distcc
 	options = !ccache
 	backup = etc/conf.d/octoprint
-	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.6.1
+	source = https://pypi.io/packages/source/o/octoprint/OctoPrint-1.6.1.tar.gz
 	source = octoprint.sysusers
 	source = octoprint.service
 	source = octoprint-serve
 	source = octoprint.conf
-	sha256sums = SKIP
+	sha256sums = 87747809f27177dcddc318f46221b9aacaed8e45e3a28ce11c61990afebc1e16
 	sha256sums = bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65
 	sha256sums = 231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737
 	sha256sums = 08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2

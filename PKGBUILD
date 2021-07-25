@@ -1,9 +1,9 @@
-## Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
+# Maintainer: pappy <pa314159@users.noreply.github.com>
 
 pkgname=octoprint
 pkgver=1.6.1
-pkgrel=1
-pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
+pkgrel=2
+pkgdesc="The snappy web interface for your 3D printer for Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
@@ -34,14 +34,14 @@ provides=(octoprint)
 conflicts=('octoprint-venv')
 install=octoprint.install
 backup=(etc/conf.d/octoprint)
-source=("$pkgname::git+https://github.com/foosel/OctoPrint.git#tag=$pkgver"
+source=("https://pypi.io/packages/source/o/octoprint/OctoPrint-${pkgver}.tar.gz"
 		octoprint.sysusers
 		octoprint.service
 		octoprint-serve
 		octoprint.conf
 		)
 options=(!distcc !ccache)
-sha256sums=('SKIP'
+sha256sums=('87747809f27177dcddc318f46221b9aacaed8e45e3a28ce11c61990afebc1e16'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
             '08e6ff10fb7f61c40e5770b67e8f7201d02d82d3bd46c5441a7f2b0435fbe9c2'
