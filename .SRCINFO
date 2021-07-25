@@ -1,6 +1,6 @@
 pkgbase = networkmanager-f5vpn
 	pkgdesc = NetworkManager VPN plugin for F5 SSL VPN
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/ohwgiles/NetworkManager-f5vpn
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = networkmanager-f5vpn
 	depends = nm-connection-editor
 	depends = libxml2
 	depends = ppp
-	source = https://github.com/ohwgiles/networkmanager-f5vpn/archive/0.3.tar.gz
-	md5sums = 5c6fb389ebb42a66c255d7e9a59d976a
+	source = https://github.com/ohwgiles/networkmanager-f5vpn/archive/0.4.tar.gz
+	md5sums = 8cc7b8b6aa31ddb4e082807a40f6e559
 
 pkgname = networkmanager-f5vpn
-
