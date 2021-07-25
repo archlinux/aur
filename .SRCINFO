@@ -1,6 +1,6 @@
 pkgbase = ruby-evil-winrm
 	pkgdesc = Evil-WinRM
-	pkgver = 2.4
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/Hackplayers/evil-winrm
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = ruby-evil-winrm
 	depends = ruby-winrm
 	depends = ruby-winrm-fs
 	depends = ruby-stringio
-	noextract = evil-winrm-2.4.gem
+	noextract = evil-winrm-3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/evil-winrm-2.4.gem
-	sha1sums = 5ca41a5096897913ac72b24f3108ed989eb8abeb
+	source = https://rubygems.org/downloads/evil-winrm-3.0.gem
+	sha1sums = 85e5349b35d007b4f3f34439013230eb0beed0d6
 
 pkgname = ruby-evil-winrm
-
