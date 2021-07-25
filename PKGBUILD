@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=devdash-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Highly Configurable Terminal Dashboard for Developers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 provides=('devdash')
 conflicts=('devdash')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Phantas0s/devdash/releases/download/v${pkgver}/devdash_${pkgver}_Linux_x86_64.tar.gz")
-sha512sums=('099048fdefc3fca66d9a969086667d67024a39f56353cca49c595ee5e9f7461d1a8238e07ad9b0dea5516c07477f6ada862840f32ad18a527420a5c113720d70')
+sha512sums=('bf63b48db5d9b5f9900417dafeb42a40305702641687496573ae59e7d6f49792df80675264a3f8c4fc0617f8beb1a8fd02cee5f25a60cdbe2c5de972cc9f2b75')
 
 package(){
   install -Dm755 devdash -t "${pkgdir}/usr/bin"
