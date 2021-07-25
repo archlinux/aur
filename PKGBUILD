@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributer : GI_Jack <iamjacksemail@hackermail.com>
 # Contributer: Kniyl   <mathias@mettinger.fr>
 pkgname=touchegg-gce-git
@@ -17,25 +18,25 @@ source=("${pkgname%-git}::git+https://github.com/Raffarti/Touchegg-gce.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p build
+  cd "$srcdir/${pkgname%-git}"
+  mkdir -p build
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/build"
-	qmake \
-		PREFIX=/usr \
-		CONFIG_PATH=/etc \
-		..
-	make
+  cd "$srcdir/${pkgname%-git}/build"
+  qmake \
+    PREFIX=/usr \
+    CONFIG_PATH=/etc \
+    ..
+  make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	make INSTALL_ROOT="$pkgdir" install
+  cd "$srcdir/${pkgname%-git}"
+  make -C build INSTALL_ROOT="$pkgdir" install
 }

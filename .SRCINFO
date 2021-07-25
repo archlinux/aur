@@ -15,4 +15,3 @@ pkgbase = touchegg-gce-git
 	sha256sums = SKIP
 
 pkgname = touchegg-gce-git
-
