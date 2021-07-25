@@ -1,36 +1,36 @@
 pkgbase = linux-zen-versioned-bin
 	pkgdesc = The Linux ZEN kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.13.4.zen1
+	pkgver = 5.13.4.zen2
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.4-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.4-zen2
 	arch = x86_64
 	license = GPL2
-	noextract = linux-zen-5.13.4.zen1-1-x86_64.pkg.tar.zst
-	noextract = linux-zen-headers-5.13.4.zen1-1-x86_64.pkg.tar.zst
-	noextract = linux-zen-docs-5.13.4.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-5.13.4.zen2-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-headers-5.13.4.zen2-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-docs-5.13.4.zen2-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-5.13.4.zen1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-headers-5.13.4.zen1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-docs-5.13.4.zen1-1-x86_64.pkg.tar.zst
-	sha256sums = fc73e5ca6bc842cf46acd3cf250fecd872a7260d8be368ce176579398c642e54
-	sha256sums = d247fb2273b6ece0da4414ac1c8e9bca627170e04ecef3535d9b1434f7d949c2
-	sha256sums = 31aa54858f3ddbf13cc9996ff517d47f6d2c062730a0a73d9d83011f852f39c8
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-5.13.4.zen2-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-headers-5.13.4.zen2-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-zen-docs-5.13.4.zen2-1-x86_64.pkg.tar.zst
+	sha256sums = 3625b69d657915a7aa967d1c83b282235d446576fce09b36d1b2ef7169819830
+	sha256sums = c96094781ad721873a2028d1af91c3f38877119547063e8d78d6b00a9ae38b7c
+	sha256sums = 1f3622e51c4f78b337b33fe7447419b90b44705b50d0e2a14ed6d3e288046972
 
 pkgname = linux-zen-versioned-bin
-	pkgdesc = Dummy package depending on linux5.13.4.zen1-1-zen-bin
-	depends = linux5.13.4.zen1-1-zen-bin
+	pkgdesc = Dummy package depending on linux5.13.4.zen2-1-zen-bin
+	depends = linux5.13.4.zen2-1-zen-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-zen-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.13.4.zen1-1-zen-headers-bin
-	depends = linux5.13.4.zen1-1-zen-headers-bin
+	pkgdesc = Dummy package depending on linux5.13.4.zen2-1-zen-headers-bin
+	depends = linux5.13.4.zen2-1-zen-headers-bin
 
 pkgname = linux-zen-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.13.4.zen1-1-zen-docs-bin
-	depends = linux5.13.4.zen1-1-zen-docs-bin
+	pkgdesc = Dummy package depending on linux5.13.4.zen2-1-zen-docs-bin
+	depends = linux5.13.4.zen2-1-zen-docs-bin
 
-pkgname = linux5.13.4.zen1-1-zen-bin
-	pkgdesc = The Linux ZEN kernel and modules, version 5.13.4-zen1-1-zen
+pkgname = linux5.13.4.zen2-1-zen-bin
+	pkgdesc = The Linux ZEN kernel and modules, version 5.13.4-zen2-1-zen
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -41,11 +41,11 @@ pkgname = linux5.13.4.zen1-1-zen-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-zen
 
-pkgname = linux5.13.4.zen1-1-zen-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 5.13.4-zen1-1-zen
+pkgname = linux5.13.4.zen2-1-zen-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 5.13.4-zen2-1-zen
 	depends = pahole
 	conflicts = linux-zen-headers
 
-pkgname = linux5.13.4.zen1-1-zen-docs-bin
-	pkgdesc = Documentation for the Linux ZEN kernel 5.13.4-zen1-1-zen
+pkgname = linux5.13.4.zen2-1-zen-docs-bin
+	pkgdesc = Documentation for the Linux ZEN kernel 5.13.4-zen2-1-zen
 	conflicts = linux-zen-docs
