@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 249.1
+	pkgver = 249.2
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = systemd-selinux
 	makedepends = rsync
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=cc502ca399aacb1c8a6bb8ac24b7c6b0007df275?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=38c4224f14862701677dd87520355d5cc4cf26e2?signed
 	source = git+https://github.com/systemd/systemd#tag=v249?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = 0003-PARTIAL-REVERT-commit-tree-wide-replace-strverscmp-and-str_verscmp-with-strverscmp_improved.patch
@@ -136,9 +136,9 @@ pkgname = systemd-selinux
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
 	provides = nss-myhostname
-	provides = systemd-tools=249.1
-	provides = udev=249.1
-	provides = systemd=249.1-1
+	provides = systemd-tools=249.2
+	provides = udev=249.2
+	provides = systemd=249.2-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -176,7 +176,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=249.1-1
+	provides = systemd-libs=249.2-1
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -188,16 +188,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=249.1-1
+	provides = systemd-resolvconf=249.2-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=249.1-1
+	conflicts = systemd-resolvconf=249.2-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=249.1-1
-	provides = selinux-systemd-sysvcompat=249.1-1
+	provides = systemd-sysvcompat=249.2-1
+	provides = selinux-systemd-sysvcompat=249.2-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
