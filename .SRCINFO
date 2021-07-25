@@ -1,0 +1,11 @@
+pkgbase = xlcat-bin
+	pkgdesc = xlcat is like cat except for Excel files
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/xlprotips/xl
+	arch = x86_64
+	license = MIT
+	source = https://github.com/xlprotips/xl/releases/download/v0.1.6/xlcat-v0.1.6-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 56568b413912dab093bba49204667872dbc7858ce18dc8b58800bbddb2558315
+
+pkgname = xlcat-bin
