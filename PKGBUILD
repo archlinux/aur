@@ -1,17 +1,17 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=6.3-4
+_srctag=6.3-5
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.1.2
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 url="https://github.com/ValveSoftware/Proton"
 arch=(x86_64)
-options=(staticlibs)
+options=(staticlibs !lto)
 license=('custom')
 
 depends=(
@@ -35,7 +35,7 @@ depends=(
 )
 
 makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
-  git rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
   libpng                lib32-libpng
@@ -137,6 +137,7 @@ prepare() {
     virtualenv --app-data "$srcdir"/build_venv/cache --no-wheel build_venv
     source build_venv/bin/activate
     pip install --no-cache-dir afdko
+    pip install --no-cache-dir pefile
 
     [ ! -d gecko ] && mkdir gecko
     mv wine-gecko-${_geckover}-x86{,_64}.tar.xz gecko/
@@ -191,9 +192,12 @@ prepare() {
 
 build() {
     cd build
+    ROOTLESS_CONTAINER="" \
     ../proton/configure.sh \
+        --container-engine="" \
+        --proton-sdk-image="" \
         --steam-runtime=native \
-        --no-steam-runtime \
+        --no-proton-sdk \
         --build-name="${pkgname}"
 
     # Export CFLAGS used by upstream
@@ -294,7 +298,7 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
-            '4af39c754e46cbd4e59c7d0190f6d23946a11f29fd11388cdfb675cdf4057d24'
+            '2473fc498d9727c4ed4fc77ca703077d2e081225548d1c8086690e0f62ba1f13'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '36aaba6847e4577df4a496d88c11b4b7049773f1f2b90aa4545093e16d5c6066'

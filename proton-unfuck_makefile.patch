@@ -1,16 +1,16 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 99fd4be..a11aa79 100644
+index c9f14bc..a6637c5 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
-@@ -48,7 +48,6 @@ include $(SRC)/make/rules-cargo.mk
- ifeq ($(ENABLE_CCACHE),1)
- 	CCACHE_BIN := ccache
+@@ -60,7 +60,6 @@ ifeq ($(ENABLE_CCACHE),1)
+ 	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
+ 	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
--	export CCACHE_DISABLE = 1
+-	export CCACHE_DISABLE := 1
+ 	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
  endif
  
- DOCKER_BASE = docker run --rm -e HOME -e USER -e USERID=$(shell id -u) -u $(shell id -u):$(shell id -g) \
-@@ -141,7 +140,8 @@ else
+@@ -168,7 +167,8 @@ else
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
@@ -20,7 +20,7 @@ index 99fd4be..a11aa79 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-@@ -320,8 +320,8 @@ ALL_TARGETS += dist
+@@ -347,8 +347,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -31,7 +31,7 @@ index 99fd4be..a11aa79 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -369,6 +369,8 @@ endif # ifeq ($(CONTAINER),)
+@@ -404,6 +404,8 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -40,7 +40,7 @@ index 99fd4be..a11aa79 100644
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -381,6 +383,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -416,6 +418,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -48,7 +48,7 @@ index 99fd4be..a11aa79 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -397,6 +400,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -432,6 +435,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -58,7 +58,7 @@ index 99fd4be..a11aa79 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -435,6 +441,7 @@ GST_BASE_MESON_ARGS := \
+@@ -470,6 +476,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -66,7 +66,7 @@ index 99fd4be..a11aa79 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -496,6 +503,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -531,6 +538,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -74,7 +74,7 @@ index 99fd4be..a11aa79 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -616,7 +624,13 @@ WINE_SOURCE_ARGS = \
+@@ -651,8 +659,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -82,13 +82,14 @@ index 99fd4be..a11aa79 100644
 +  --with-gstreamer \
 +  --with-faudio \
    --with-mingw \
+   --without-xpresent \
 +  --without-vkd3d \
 +  --without-oss \
 +  --disable-win16 \
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -709,7 +723,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -745,7 +759,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -98,9 +99,20 @@ index 99fd4be..a11aa79 100644
      --bindir=$(VKD3D_PROTON_DST32)/lib/wine/vkd3d-proton \
      --cross-file=$(VKD3D_PROTON_OBJ32)/build-win32.txt
 diff --git a/make/rules-autoconf.mk b/make/rules-autoconf.mk
-index c6dc2d8..5aa9bd4 100644
+index 80eee67..ed255e1 100644
 --- a/make/rules-autoconf.mk
 +++ b/make/rules-autoconf.mk
+@@ -16,8 +16,8 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
+ 	    --prefix="$$($(2)_DST$(3))" \
+ 	    --libdir="$$($(2)_DST$(3))/lib$(subst 32,,$(3))" \
+ 	    $$($(2)_ENV$(3)) \
+-	    CROSSCFLAGS="$$(COMMON_FLAGS)" \
+-	    CROSSCXXFLAGS="$$(COMMON_FLAGS) -std=c++17" \
++	    CROSSCFLAGS="$$(COMMON_FLAGS) -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf" \
++	    CROSSCXXFLAGS="$$(COMMON_FLAGS) -fno-builtin-sin -fno-builtin-sinf -fno-builtin-cos -fno-builtin-cosf -std=c++17" \
+ 	    CROSSLDFLAGS="$$(CROSSLDFLAGS)" \
+ 	    $$($(2)_CONFIGURE_ARGS) \
+ 	    $$($(2)_CONFIGURE_ARGS$(3))
 @@ -27,9 +27,9 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/configure.ac
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
@@ -113,8 +125,21 @@ index c6dc2d8..5aa9bd4 100644
  	touch $$@
  endif
  endef
+diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
+index 5369fb4..3cbf8c2 100644
+--- a/make/rules-cargo.mk
++++ b/make/rules-cargo.mk
+@@ -14,7 +14,7 @@ $(OBJ)/.$(1)-configure$(3):
+ $(OBJ)/.$(1)-build$(3):
+ 	@echo ":: building $(3)bit $(1)..." >&2
+ 	cd $$($(2)_SRC) && env $$($(2)_ENV$(3)) \
+-	cargo build --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
++	cargo build --verbose --target "$$(ARCH$(3))-unknown-linux-gnu" --target-dir $$($(2)_OBJ$(3)) $$(CARGO_BUILD_ARG)
+ 	touch $$@
+ endif
+ endef
 diff --git a/make/rules-cmake.mk b/make/rules-cmake.mk
-index 4c61951..2c894e4 100644
+index 4c61951..3a31610 100644
 --- a/make/rules-cmake.mk
 +++ b/make/rules-cmake.mk
 @@ -15,7 +15,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/CMakeLists.txt
@@ -131,18 +156,18 @@ index 4c61951..2c894e4 100644
  	@echo ":: building $(3)bit $(1)..." >&2
  	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
 -	$$(MAKE)
-+	$$(MAKE) -j$$(SUBJOBS) VERBOSE=1
++	$$(MAKE) -j$$(SUBJOBS)
  	cd "$$($(2)_OBJ$(3))" && env $$($(2)_ENV$(3)) \
 -	$$(MAKE) install
-+	$$(MAKE) -j$$(SUBJOBS) install VERBOSE=1
++	$$(MAKE) -j$$(SUBJOBS) install
  	touch $$@
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index fda3e3d..84626ec 100644
+index 916df8b..044f705 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
-@@ -101,17 +101,18 @@ all: $(1)
+@@ -109,17 +109,18 @@ CONTAINERGOALS := $(CONTAINERGOALS) $(filter $(1),$(MAKECMDGOALS))
  
  $(2)_ENV$(3) = \
      CARGO_HOME=$$(OBJ)/.cargo \
@@ -167,7 +192,7 @@ index fda3e3d..84626ec 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 11d91ba..fb86161 100644
+index 7b982fa..d91bf87 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
 @@ -14,14 +14,15 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
@@ -192,8 +217,8 @@ index 11d91ba..fb86161 100644
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	env $$($(2)_ENV$(3)) \
--	ninja -C "$$($(2)_OBJ$(3))" install
-+	ninja -v -C "$$($(2)_OBJ$(3))" install
+-	ninja $$(filter -j%,$$(MAKEFLAGS)) -C "$$($(2)_OBJ$(3))" install $(-v?)
++	ninja -j$$(SUBJOBS) -C "$$($(2)_OBJ$(3))" install $(-v?)
  	touch $$@
  endif
  endef
