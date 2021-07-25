@@ -1,4 +1,5 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=kiro-git
 pkgver=0.4.3.r3.g4ba92af
 pkgrel=1
