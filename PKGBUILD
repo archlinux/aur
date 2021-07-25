@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r17731.ea377477f
+pkgver=r18479.7b86a68ee
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo Switch emulator/debugger'
 arch=('i686' 'x86_64')
@@ -33,7 +33,7 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/citra-emu/ext-soundtouch.git'
         'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
-        'git+https://github.com/discordapp/discord-rpc.git'
+        'git+https://github.com/discord/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
         'git+https://github.com/ReinUsesLisp/sirit'
         'git+https://github.com/yuzu-emu/mbedtls'
@@ -42,11 +42,13 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/xiph/opus.git'
         'git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/libsdl-org/SDL.git'
+        'git+https://github.com/yhirose/cpp-httplib.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         # sirit dependencies
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -73,7 +75,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,soundtouch,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,libzip/libzip,xbyak,opus/opus,ffmpeg,SDL}; do
+    for submodule in externals/{inih/inih,cubeb,dynarmic,soundtouch,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,libzip/libzip,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
         git submodule update
