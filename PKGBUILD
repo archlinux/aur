@@ -1,6 +1,6 @@
 # Maintainer: Dominic Egginton <dominic.egginton@gmail.com>
 pkgname=flip-git
-pkgver=0.1.2.r2.ge4df356
+pkgver=0.1.2.r2.g1a195a0
 pkgrel=1
 pkgdesc="Flip coins in your command line"
 arch=("x86_64")
