@@ -3,7 +3,7 @@
 
 pkgname=python-pdfknife
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools to manipulate PDF files"
 arch=('any')
 url="https://github.com/sciunto-org/PDFknife"
