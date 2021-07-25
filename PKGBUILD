@@ -19,7 +19,6 @@ validpgpkeys=('12E404FFD3C931F934052D06B8841A919D0FACE4')
 prepare() {
 	cd "$pkgname"
 	sed -i '/CXXFLAGS/s/=/?=/;/(CXX)/s/$/ \$(LDFLAGS)/' Makefile
-	cat Makefile
 }
 
 build() {
