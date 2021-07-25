@@ -58,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=4
+_minor=5
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -85,21 +85,21 @@ source=(
   "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
   "${_patchsource}/winesync/5.13-winesync.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
-  "${_patchsource}/lqx-patches/0001-zen-Allow-MSR-writes-by-default.patch"
+  "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
   "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v2/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
   "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v5/0001-pf-patches.patch"
+  "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
   "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 #  "${_patchsource}/lru-patches/lru_5.13.patch"
 #  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
   "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
-  "${_patchsource}/misc/nohzfull.patch"
+#  "${_patchsource}/misc/nohzfull.patch"
   "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
@@ -537,7 +537,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '663870cbd6392bf34b84e2254ffd550a'
+         'd8e0e95d439a5d37b3d4087c2b5411a6'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
          '20a793c0a2e666b42bb466c8b8882b78'
@@ -546,19 +546,18 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '2c0375b3cc9690a0f0f3d3e49df54d10'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
-         '09a9e83b7b828fae46fd1a4f4cc23c28'
+         'e6d7e16ae698f689c001d3cd7bb0a444'
          'daeacee8fcde31908f90b89dc4b54126'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         '5de99ca45528a4a7869249e54eb35b6b'
+         'cde2074acf384dcc3809640a2ecf0250'
          '055df07f7637d427a7c134c686074860'
          '86825a0c5716a1d9c6a39f9d3886b1bf'
          'a1869abc4d1a6ec1901f34302cd09b7e'
          '9977ba0e159416108217a45438ebebb4'
-         'c68e4fd9b4a55ee730a34bb39ae325ad'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
