@@ -2,8 +2,8 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-fbneo
 pkgname=$_pkgname-git
-pkgver=1.0.0.02.r448.g57c1fc5ed
-pkgrel=3
+pkgver=1.0.0.02.r552.g32159dc27
+pkgrel=1
 epoch=1
 pkgdesc="FinalBurn Neo multi-arcade core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=('libretro-fbalpha-git')
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
