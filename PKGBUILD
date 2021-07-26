@@ -47,14 +47,16 @@ _use_current=
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.11
-_minor=4
-_rtver=11
+_major=5.13
+_minor=0
+_rtver=1
 _rtpatchver=rt${_rtver}
-pkgver=${_major}.${_minor}.${_rtpatchver}
-_pkgver=${_major}.${_minor}
+#pkgver=${_major}.${_minor}.${_rtpatchver}
+#_pkgver=${_major}.${_minor}
+pkgver=${_major}.${_rtpatchver}
+_pkgver=${_major}
 _srcname=linux-${_pkgver}
-pkgrel=21
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -74,9 +76,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210421"
+_bfq_rel="r2K210628v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_compiler_path="cpu-patches-v7-sep"
+_compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -86,11 +88,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-block-another-attempt-to-fix-discard-merging.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-mm-swapfile-use-percpu_ref-to-serialize-against-conc.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0004-mm-swap-remove-confusing-checking-for-non_swap_entry.patch"
          # the main kernel config files
         'config')
 
@@ -255,13 +256,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -337,18 +341,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('69bf72b99b0ef55cb9cd8c37bc9670e0dc7d97ab1f5b9f7edd2c161e8489d3aac43eeb23fd52f32fb78a627dc74fbaeaeb7df63bf93420f5ae588fe9f457e98e'
+sha512sums=('a8edf97e9d38a49f1be2bde1e29ad96274bb2c6f7e8a2bebaa1161dd4df9cabcbaec4ff644c45bee94f86ae47725087d6deed0cd954209cec717621d137db85e'
             'SKIP'
-            'e37ebf7e6c0f669f35bbc96bbbb096ae37541aeb65c540caa1201fcc11ebd7b7cca1a6a5f42b92e1da4040c92f882fb7830d054051d5b37a7b178a2de5ca3e24'
+            'd0a912c5a32784084e6bbe5ce380613239ad7c0c56db471237d86f4e83e51d7214e3ad7eb78e94cdbb5e73c7ba9eef17b6b3d969400a6af9bfd54cb77f23e78f'
             'SKIP'
-            '1225355dae67ca06d734ab724bcbaef0aae07ad3864bb4ec2d464f62b0a4b03043710f78afdbb42d4f16c4d24b42ed49bafca0cd278540e8016ab6e5df669153'
-            'e47b7f5166618abd8ecfbe6ca2f7662230a29d4160cd09b5df33d3511f949f57841240abe7746d49b25453e23a13e9e59470c740a9df41cecd93ef6aac97f993'
-            '4d9f5419f41e0f5a937c077e3c0ee605c08f65b54e1e07affa84cb1d9d68cf59cbffdcac79b40a62fe14fbdea4b34521f9e43786f29b40044d156fa5375d3e8a'
-            'bdf872b8cc237730c2a174771d65e2d1c261cdb5c2359a8e0af88aeedc76dc510b86602941e0a7819d388163fb2ee2c0053ff79348b641c46d282c4dc11a42ca'
-            'fe0e8f597d20e44344787f267913544256ff4a9545f08dd5d7dc3eb15240c570a127b34328ab62e958dd47d85c82ff2b24e16f00e05175b6b6e88960c3f84de3'
-            'a6700231756b7fe28e78234a5b02bed96d53d198e5af67c411a2f6a2d32f79b5d1afea3931947d6f4b800976553db3d5b3d56467fa214a391a998a77abf88012'
-            '4ee0cf7e6eaba3ceb1887012a93a3e87f04b16e8a88c07de5d7242de872b03868a9780f283a93fea86c39c32b0da9108023b3e19fa056147922e0da1a9d0ccdb'
-            '105c632754bf9a8cffd3c90680d5d1eac4e597746df442df65033d1598d57ec250ce95637908e1e7af9fe6a46d5c0515494893678808a8247b9320f3f9a4fe77')
+            '6f2f0c7183c53d32950de78044da8b651daf409ee2d266a2c42ab0ef4afa6d1eaf64fa48ad9205424bb3b024a630577164f7cf1a0029da2aa276e2d38c0eece8'
+            '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
+            '98b367f2170dad1ee0e0624852bfde4d669941a07351c6678e69c71465477e2c10a0df4b408767a023be958d7bff5d7a674be4fb8acecb868c05c8ea7cbe1a2c'
+            'a9639412740b9b439d5ebbfcab64c1b6e7bf2c47fee63c5c0d9a7b4509adbac975b6198e2627d5b6d7ac39d32f2c4aee4e372213059cee460c45ebe607f75d27'
+            'c0ff033be7ff2e23a9bb03ad7dfa0ce419b2e44278dbca536aabaa591956847eaa86fb71a583c1f2ea7e31e609dacb09d4c24f461bada9f89eaf9e2c3b4cdbe6'
+            '2ec0130dc43bc1f86fb69b9436a184e18268185282a778c5eeb5c22b701374456fed02ecbc1925b5df0a79f91f2a87bfd0496c664e3cc24a62ec41b16b5cda8c'
+            '5aebb126bfe50bd1ef891aae8395379a231a75ac340d7cbe9f9f06972c9e11c892769bec2e3c39e9672400ec61e22ad604e570709cc17dc6c01afcca7bdf58db')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
