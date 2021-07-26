@@ -2,7 +2,7 @@
 pkgname=mtk
 pkgver=1.0.0
 
-pkgrel=8
+pkgrel=9
 pkgdesc="MTK CLI - Command Line Interface for the Cyan Minecraft Toolkit
 (NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG)"
 arch=( 'any' )
