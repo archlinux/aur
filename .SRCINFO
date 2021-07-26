@@ -1,13 +1,16 @@
-pkgbase = empty
-	pkgdesc = Run applications under pseudo-terminal sessions
-	pkgver = 0.6.20b
+pkgbase = pdkgo-git
+	pkgdesc = Produce content for any Puppet Product
+	pkgver = 0.2.0.r19.b774328
 	pkgrel = 1
-	url = http://empty.sourceforge.net/
-	arch = i686
+	url = https://github.com/puppetlabs/pdkgo
 	arch = x86_64
-	license = custom
-	source = http://downloads.sourceforge.net/sourceforge/empty/empty-0.6.20b.tgz
-	sha256sums = 7e6636e400856984c4405ce7bd0843aaa3329fa3efd20c58df8400a9eaa35f09
+	license = Apache
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = pdkgo
+	conflicts = pdkgo
+	source = pdkgo::git+https://github.com/puppetlabs/pdkgo
+	sha512sums = SKIP
 
-pkgname = empty
-
+pkgname = pdkgo-git
