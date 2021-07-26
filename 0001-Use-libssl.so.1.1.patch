@@ -1,0 +1,33 @@
+From aa0c23f6e74caec2efed2d02a8d7a3895a6b1643 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Felix=20H=C3=B6ffken?= <felix@ctrl.alt.coop>
+Date: Mon, 26 Jul 2021 10:53:28 +0200
+Subject: [PATCH] Use libssl.so.1.1
+
+Building with libssl.so.1.0 fails since adding BN_set_flags import.
+To ensure libssl 1.1 is used update the imports.
+---
+ srp/_ctsrp.py | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/srp/_ctsrp.py b/srp/_ctsrp.py
+index 9fadc54..7794bf1 100644
+--- a/srp/_ctsrp.py
++++ b/srp/_ctsrp.py
+@@ -155,12 +155,9 @@ elif 'win' in platform:
+             pass
+ else:
+     try:
+-        dlls.append( ctypes.cdll.LoadLibrary('libssl.so.10') )
++        dlls.append( ctypes.cdll.LoadLibrary('libssl.so.1.1.0') )
+     except OSError:
+-        try:
+-            dlls.append( ctypes.cdll.LoadLibrary('libssl.so.1.0.0') )
+-        except OSError:
+-            dlls.append( ctypes.cdll.LoadLibrary('libssl.so') )
++        dlls.append( ctypes.cdll.LoadLibrary('libssl.so') )
+ 
+ class BIGNUM_Struct (ctypes.Structure):
+     _fields_ = [ ("d",     ctypes.c_void_p),
+-- 
+2.32.0
+
