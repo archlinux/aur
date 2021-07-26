@@ -1,11 +1,12 @@
 # Maintainer: garionion <garionion ät entr0py.de>
+# thanks to nyanpasu64 for pointing out the wrong install path
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v0.32.0.r0.gcf37d567
-pkgrel=1
+pkgver=v0.34.0.r124.g62a68984
+pkgrel=2
 pkgdesc="Chat with your friends"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
 depends=('libolm' 'xdg-user-dirs')
@@ -43,14 +44,14 @@ build() {
 package() {
   # install
   install -dm755 ${pkgdir}/opt
-  mv ${_name}/build/linux/x64/release/bundle ${pkgdir}/opt/${pkgname}
+  mv ${_name}/build/linux/x64/release/bundle ${pkgdir}/opt/${_name}
   
   # link
   install -dm755 ${pkgdir}/usr/bin
-  ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -s /opt/${_name}/${_name} ${pkgdir}/usr/bin/${_name}
 
   # icon
-  install -Dm 644 ${pkgdir}/opt/${pkgname}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm 644 ${pkgdir}/opt/${_name}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${_name}.png
 
   # desktop entry
 
