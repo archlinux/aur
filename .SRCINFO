@@ -1,6 +1,6 @@
 pkgbase = meshlab
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2021.05
+	pkgver = 2021.07
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
@@ -22,13 +22,19 @@ pkgbase = meshlab
 	depends = qt5-declarative
 	depends = qt5-script
 	depends = qt5-xmlpatterns
+	depends = xerces-c
 	optdepends = u3d: for U3D and IDTF file support
 	optdepends = lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support
 	optdepends = levmar: for isoparametrization and mutualcorrs plugins
 	optdepends = muparser: for filer_func plugins
 	optdepends = mpir: for Constructive Solid Geometry operation filters
-	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-2021.05
-	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2020.12
+	optdepends = openctm-tools: for compressed triangle mesh file format
+	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-2021.07
+	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=2021.07
+	source = nexus::git+https://github.com/cnr-isti-vclab/nexus.git
+	source = corto::git+https://github.com/cnr-isti-vclab/corto.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
