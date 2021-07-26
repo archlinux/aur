@@ -1,0 +1,16 @@
+pkgbase = python-wsgiprox-git
+	pkgdesc = Webrecorder wsgiprox, a Python WSGI middleware for adding HTTP and HTTPS proxy support to a WSGI application
+	pkgver = r55.004870a
+	pkgrel = 1
+	url = https://github.com/webrecorder/wsgiprox
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-gevent-websocket: allow proxying websockets
+	source = git+https://github.com/webrecorder/wsgiprox
+	sha256sums = SKIP
+
+pkgname = python-wsgiprox-git
+
