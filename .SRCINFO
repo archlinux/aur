@@ -1,0 +1,29 @@
+pkgbase = lib32-jack
+	pkgdesc = A low-latency audio server (32-bit)
+	pkgver = 0.125.0
+	pkgrel = 4
+	url = http://jackaudio.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = gcc-multilib
+	makedepends = git
+	makedepends = lib32-libsamplerate
+	makedepends = lib32-readline
+	depends = jack
+	depends = lib32-db
+	depends = lib32-glibc
+	provides = lib32-jack2
+	provides = libjack.so
+	conflicts = lib32-jack2
+	replaces = lib32-jack2
+	source = lib32-jack-0.125.0::git+https://github.com/jackaudio/jack1.git#tag=0.125.0
+	source = git+https://github.com/jackaudio/example-clients
+	source = git+https://github.com/jackaudio/headers
+	source = git+https://github.com/jackaudio/tools
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = lib32-jack
