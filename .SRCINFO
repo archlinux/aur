@@ -1,6 +1,6 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
-	pkgver = 40.0
+	pkgver = 40.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
@@ -16,12 +16,10 @@ pkgbase = gdm-plymouth-nox
 	depends = gnome-session
 	depends = upower
 	depends = systemd
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=3246bf1af8589899621649df523e6840e4858cda
-	source = 0001-pam-arch-Update-to-match-pambase-20200721.1-2.patch
-	source = 0002-Xsession-Don-t-start-ssh-agent-by-default.patch
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=7fafdbcac9b970492e9ea23df42111d90986f3f3
+	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = default.pa
 	sha256sums = SKIP
-	sha256sums = f32555703d4f3b6babbe49ddd2c82295238623050b63826c95a959d5caec37f8
 	sha256sums = aa751223e8664f65fe2cae032dc93bb94338a41cfca4c6b66a0fca0c788c4313
 	sha256sums = e88410bcec9e2c7a22a319be0b771d1f8d536863a7fc618b6352a09d61327dcb
 
@@ -54,4 +52,3 @@ pkgname = libgdm-plymouth-nox
 	depends = dconf
 	provides = libgdm
 	conflicts = libgdm
-
