@@ -6,22 +6,14 @@ pkgdesc="A command line tool for accessing and managing OBS on HUAWEI CLOUD"
 arch=('x86_64' 'aarch64')
 url="https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0001.html"
 license=('Apache')
-depends=()
 makedepends=('go' 'git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-backup=()
-install=
+conflicts=("huaweicloud-obs-obsutil-bin")
 source=('git+https://github.com/huaweicloud/huaweicloud-obs-obsutil.git')
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
 }
 
 build() {
@@ -41,6 +33,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	#make DESTDIR="$pkgdir/" install
 	install -Dm755 "$srcdir/${pkgname%-git}"/src/obsutil/obsutil -t "$pkgdir"/usr/bin/
 }
