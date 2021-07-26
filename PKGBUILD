@@ -2,8 +2,9 @@
 pkgdesc='Client-side decorations library for Wayland clients'
 pkgname=libdecor
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 url=https://gitlab.gnome.org/jadahl/libdecor
+license=(custom:MIT)
 arch=(x86_64)
 depends=(wayland pango dbus)
 makedepends=(ninja meson)
@@ -22,4 +23,6 @@ check () {
 
 package () {
 	meson install -C _build --destdir "${pkgdir}"
+	install -Dm644 "${pkgname}-${pkgver}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,9 +1,10 @@
 pkgbase = libdecor
 	pkgdesc = Client-side decorations library for Wayland clients
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/jadahl/libdecor
 	arch = x86_64
+	license = custom:MIT
 	makedepends = ninja
 	makedepends = meson
 	depends = wayland
