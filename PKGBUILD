@@ -1,10 +1,11 @@
+# Maintainer: Joshua Ward <joshuaward at myoffice dot net dot au>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: "riverrun <alovedalongthe AT gmail DOT com>"
 
 _name=genxword
 pkgname=${_name}3
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossword generator (Python 3 version)"
 arch=('any')
 url="https://pypi.python.org/pypi/genxword"
