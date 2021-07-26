@@ -1,6 +1,6 @@
 # Maintainer: Dominic Egginton <dominic.egginton@gmail.com>
 pkgname=flip-git
-pkgver=0.1.2.r2.g1a195a0
+pkgver=0.1.3.r0.g1a195a0
 pkgrel=1
 pkgdesc="Flip coins in your command line"
 arch=("x86_64")
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
