@@ -15,7 +15,7 @@ source_aarch64=('https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com
 sha256sums_aarch64=('31586d7d608e68b0954a19160228609ba17e07c7b70fa26b4ee74a78031b0389')
 
 prepare() {
-	chmod 755 -R "$srcdir"
+    chmod 755 -R "$srcdir"
 }
 
 package() {
