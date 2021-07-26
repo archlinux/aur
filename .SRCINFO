@@ -1,0 +1,17 @@
+pkgbase = mpris-rp-git
+	pkgdesc = A Rust program to generate Discord rich presences from MPRIS players.
+	pkgver = r15.5143286
+	pkgrel = 1
+	url = https://github.com/nickofolas/mpris-rp
+	install = mpris-rp-git.install
+	arch = any
+	license = custom
+	makedepends = rust
+	depends = gcc-libs
+	provides = mpris-rp
+	source = mpris-rp::git+https://github.com/nickofolas/mpris-rp
+	source = mpris-rp.service
+	md5sums = SKIP
+	md5sums = a7b375e8041f5c79541e44df07702d2e
+
+pkgname = mpris-rp-git

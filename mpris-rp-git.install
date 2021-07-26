@@ -1,0 +1,10 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    cat <<EOF
+    ${yellow}Auto-start with systemd${all_off}
+    \`systemctl --user enable mpris-rp.service\`
+EOF
+}

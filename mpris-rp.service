@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord Rich Presence for MPRIS players
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mpris-rp
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
