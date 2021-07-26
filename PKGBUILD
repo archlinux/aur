@@ -1,7 +1,37 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-# Configuration.
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=develop}"
+
+# Use CUDA_ARCH to build for specific GPU architecture
+# Supports: single arch (52) and list of archs (52;60)
+[[ -v CUDA_ARCH ]] && _cuda_arch="-DALICEVISION_CUDA_CC_LIST=${CUDA_ARCH}"
+
+# Alow user to build without cuda
+if ((DISABLE_CUDA)); then
+  _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
+  # Disable component that could yield cuda.
+else
+  makedepends+=('cuda')
+  depends+=('popsift')
+  depends+=('magma') # uncertaintyTE deps.
+  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
+  provides+=(uncertainty-framework)
+  conflicts+=(uncertainty-framework)
+  _CMAKE_FLAGS+=(
+                -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
+                -D{MAGMA_ROOT,{UNCERTAINTYTE,PopSift}_DIR}=/usr
+                "$_cuda_arch"
+                )
+fi
+
 _CMAKE_FLAGS+=(
               -DCMAKE_INSTALL_PREFIX=/usr
               -DCMAKE_INSTALL_LIBDIR=lib
@@ -14,32 +44,8 @@ _CMAKE_FLAGS+=(
               -DALICEVISION_USE_CCTAG=ON
               -DALICEVISION_USE_OPENCV=ON
              )
-# shellcheck disable=SC2206
-[[ -v CUDA_ARCH ]] && _cc_list=(${CUDA_ARCH})
-# Alow user to build without cuda
-if ((DISABLE_CUDA)); then
-  _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
-  # Disable component that could yield cuda.
-else
-  makedepends+=('cuda')
-  depends+=('popsift')
-  depends+=('magma') # uncertaintyTE deps.
-  source+=("ute_lib::git+https://github.com/alicevision/uncertaintyTE.git")
-  provides+=(uncertainty-framework)
-  conflicts+=(uncertainty-framework)
-  sha256sums+=("SKIP")
-  _CMAKE_FLAGS+=(
-                -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
-                -D{MAGMA_ROOT,{UNCERTAINTYTE,PopSift}_DIR}=/usr
-                )
-  if [[ -v _cc_list ]]; then
-    _CMAKE_FLAGS+=( -DALICEVISION_CUDA_CC_LIST="$(IFS=';'; echo "${_cc_list[*]}";)" )
-  fi
-fi
-
 
 _name=alice-vision
-_fragment="#branch=develop"
 
 pkgname=${_name}-git
 pkgver=2.4.0.r255.gcb103ac38
@@ -59,9 +65,14 @@ source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragm
         "cmake_cxx_std_14.patch"
         "openexr3.patch"
         )
-sha256sums+=('SKIP'
+sha256sums=('SKIP'
             'SKIP'
-)
+            'SKIP'
+            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
+            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -73,9 +84,6 @@ pkgver() {
 prepare() {
   prepare_submodule
   cd "${srcdir}/${pkgname}"
-#  git config submodule.src/dependencies/MeshSDFilter.url ${srcdir}/MeshSDFilter
-#  git config submodule.src/dependencies/nanoflann.url
-#  git config submodule.src/dependencies/osi_clp.url
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
   git apply -v "${srcdir}"/{cmake_cxx_std_14,openexr3}.patch
@@ -128,14 +136,6 @@ package() {
   find "${pkgdir}/usr" . -type d -print0 | xargs --null rmdir 2>/dev/null || true
 }
 # vim:set ts=2 sw=2 et:
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
-            'e7a89d510788ff0320415d00e9871220e602e046ffc0fb65d60d465d6bed93a7'
-            'SKIP'
-            'SKIP'
-            'SKIP')
 
 # Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
 # Call prepare_submodule in prepare() function
