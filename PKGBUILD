@@ -1,7 +1,7 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Vasiliy Bukharev <b dot v dot p at outlook dot com>
 
 pkgname=gomason
-pkgver=2.6.6
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A tool for testing, building, signing, and publishing binaries"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nikogura/gomason/archive/${pkgver}.tar.gz")
-sha256sums=('a528613c329c84d2b85456b8ab9380da01e109307551362aeba3bb23af91c7b6')
+sha256sums=('528c2f21c6a05518bc2d5f28f6341aceba95295bef454792e646a9ef457b1d2e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
