@@ -1,12 +1,14 @@
 pkgbase = ruby-minitest-reporters
 	pkgdesc = Extend Minitest through simple hooks
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minitest-reporters/minitest-reporters
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
 	checkdepends = ruby-rake
 	checkdepends = ruby-rubocop
+	checkdepends = ruby-maruku
 	makedepends = git
 	makedepends = rubygems
 	makedepends = ruby-rdoc

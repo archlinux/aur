@@ -3,13 +3,13 @@
 _gemname=minitest-reporters
 pkgname=ruby-$_gemname
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Extend Minitest through simple hooks"
 arch=(any)
 url=https://github.com/minitest-reporters/minitest-reporters
 license=(MIT)
 depends=(ruby ruby-ansi ruby-builder ruby-minitest ruby-ruby-progressbar)
-checkdepends=(ruby-rake ruby-rubocop)
+checkdepends=(ruby-bundler ruby-rake ruby-rubocop ruby-maruku)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(git+https://github.com/minitest-reporters/minitest-reporters.git?tag=v$pkgver)
