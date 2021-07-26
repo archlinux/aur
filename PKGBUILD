@@ -1,38 +1,39 @@
-# Maintainer: Ariel AxionL <axionl@aosc.io>
+# Maintainer: Tom Bu <tombu@tombu.info>
+
 pkgname=ciel-git
-pkgver=r411.4e7a824
+_pkgname=ciel-rs
+pkgver=3.0.10.alpha.0.b105661
 pkgrel=1
 pkgdesc="A tool for controlling multi-layer file systems and containers."
-arch=('i686' 'x86_64')
-url="https://github.com/AOSC-Dev/ciel"
+arch=('x86_64')
+url="https://github.com/AOSC-Dev/ciel-rs"
 license=('MIT')
-depends=('bash')
-makedepends=('git' 'make' 'go' 'curl')
-optdepends=('dos2unix: Format ciel shell output.')
+depends=('gcc-libs' 'glibc' 'systemd' 'dbus' 'openssl')
+optdepends=('libgit2: git vcs support'
+            'xz: xzip archive support')
+provides=('ciel')
+conflicts=('ciel')
+makedepends=('rust' 'cargo' 'gcc' 'make' 'git')
+source=("$pkgname::git+${url}.git")
+md5sums=('SKIP')
 
-source=($pkgname::git+https://github.com/AOSC-Dev/ciel.git
-        'https://raw.githubusercontent.com/AOSC-Dev/ciel/master/LICENSE')
-
-sha256sums=('SKIP'
-            '4295cbb316868e77c32b3ce2fc2487ce8a1f0e26b8ba677d44d0b3e16412c5fd')
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    echo "$(grep ^version Cargo.toml | cut -d= -f2 | tr -d ' "' | sed 's/-/./g').$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd $pkgname
-    make
-    make PREFIX=${srcdir}/build install
+    cd "$pkgname"
+    cargo build --release
 }
+
 
 package() {
-    # License
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+    cd "$pkgname"
+    install -Dm755 target/release/ciel-rs "$pkgdir"/usr/bin/ciel
+    PREFIX="$pkgdir"/usr ./install-assets.sh
 
-    # Binaries
-    cd $srcdir/build
-    install -Dm755 bin/ciel ${pkgdir}/usr/bin/ciel
-    install -Dm755 libexec/ciel-plugin/ciel-* ${pkgdir}/usr/bin
+    # Install the license
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/ciel/LICENSE
 }
-# vim set: ts=4 sw=4 et
+
