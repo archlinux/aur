@@ -1,5 +1,4 @@
 # Maintainer: Nicolas Formichella <stigpro@outlook.fr>
-# Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
