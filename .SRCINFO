@@ -1,0 +1,20 @@
+pkgbase = cutie-tanks
+	pkgdesc = Shoot 'em all arcade game
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/RobinBoers/cutie-tanks
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = electron
+	provides = cutie-tanks
+	source = src::git+https://github.com/RobinBoers/cutie-tanks#branch=bin
+	source = cutie-tanks
+	source = cutie-tanks.desktop
+	source = icon.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cutie-tanks
