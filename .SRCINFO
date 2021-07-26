@@ -1,6 +1,6 @@
 pkgbase = opener-git
 	pkgdesc = mime-type and extention based file opener script.
-	pkgver = r3.16fbd93
+	pkgver = r4.54d9304
 	pkgrel = 1
 	url = https://github.com/soystemd/opener
 	arch = x86_64
