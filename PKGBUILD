@@ -5,30 +5,19 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
-pkgver=2.1.17
-pkgrel=2
+pkgver=2.1.18
+pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
 source=(
-    "http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz"
-    "qtfix.diff::https://github.com/drawpile/Drawpile/commit/b46115160c5587aae9306e57d4223906e74ed512.diff"
-    "mhdfix.diff::https://github.com/drawpile/Drawpile/commit/ed1a75deb113da2d1df91a28f557509c4897130e.diff")
+    "http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
 sha256sums=(
-    'ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086'
-    '5b9f5d42f0db081496f9c5bde295751dba0e029dac7bf0a0b0c1d32eef60c5de'
-    '4edb006748393df59dcd715e0fafbd8d0a7626852e6782078ace6eee708a93c4')
+    '20668661f6949addceb934ef094232f0890ade620fa78ae4849558d059d03caa')
 
 _cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
-
-prepare() {
-	cd "${pkgbase}-${pkgver}"
-	
-	patch --forward --strip=1 --input="${srcdir}/qtfix.diff"
-	patch --forward --strip=1 --input="${srcdir}/mhdfix.diff"
-}
 
 build() {
 	cd "${pkgbase}-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 2.1.17
-	pkgrel = 2
+	pkgver = 2.1.18
+	pkgrel = 1
 	url = http://drawpile.net/
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,8 @@ pkgbase = drawpile
 	makedepends = qt5-svg
 	makedepends = qt5-tools
 	makedepends = qt5-x11extras
-	source = http://drawpile.net/files/src/drawpile-2.1.17.tar.gz
-	source = qtfix.diff::https://github.com/drawpile/Drawpile/commit/b46115160c5587aae9306e57d4223906e74ed512.diff
-	source = mhdfix.diff::https://github.com/drawpile/Drawpile/commit/ed1a75deb113da2d1df91a28f557509c4897130e.diff
-	sha256sums = ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086
-	sha256sums = 5b9f5d42f0db081496f9c5bde295751dba0e029dac7bf0a0b0c1d32eef60c5de
-	sha256sums = 4edb006748393df59dcd715e0fafbd8d0a7626852e6782078ace6eee708a93c4
+	source = http://drawpile.net/files/src/drawpile-2.1.18.tar.gz
+	sha256sums = 20668661f6949addceb934ef094232f0890ade620fa78ae4849558d059d03caa
 
 pkgname = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (meta package)
@@ -45,4 +41,3 @@ pkgname = drawpile-server
 	depends = karchive
 	optdepends = libmicrohttpd: web-admin feature
 	optdepends = libsystemd: systemd and logging support
-
