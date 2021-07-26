@@ -2,7 +2,7 @@
 
 pkgname=vieb
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
 url="https://vieb.dev"
@@ -29,5 +29,8 @@ package() {
 
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
+
+  # Create a symlink to the binary in /opt
+  ln -sf /opt/Vieb/vieb "${pkgdir}/usr/bin/vieb"
 }
 # vim:set ts=2 sw=2 et:
