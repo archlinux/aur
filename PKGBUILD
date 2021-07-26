@@ -2,7 +2,7 @@
 
 pkgname=espresso
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to produce a minimal equivalent representation of a Boolean function."
 arch=("x86_64")
 url="https://github.com/chipsalliance/espresso/"

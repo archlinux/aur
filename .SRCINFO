@@ -1,7 +1,7 @@
 pkgbase = espresso
 	pkgdesc = A tool to produce a minimal equivalent representation of a Boolean function.
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chipsalliance/espresso/
 	arch = x86_64
 	license = custom
