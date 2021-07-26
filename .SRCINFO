@@ -1,6 +1,6 @@
 pkgbase = cassandra
 	pkgdesc = Apache Cassandra NoSQL database
-	pkgver = 3.11.10
+	pkgver = 3.11.11
 	pkgrel = 2
 	url = http://cassandra.apache.org/
 	install = cassandra.install
@@ -16,8 +16,8 @@ pkgbase = cassandra
 	backup = etc/cassandra/commitlog_archiving.properties
 	backup = etc/cassandra/logback.xml
 	backup = etc/cassandra/logback-tools.xml
-	source = https://www.apache.org/dist/cassandra/3.11.10/apache-cassandra-3.11.10-bin.tar.gz
-	source = https://www.apache.org/dist/cassandra/3.11.10/apache-cassandra-3.11.10-bin.tar.gz.asc
+	source = https://www.apache.org/dist/cassandra/3.11.11/apache-cassandra-3.11.11-bin.tar.gz
+	source = https://www.apache.org/dist/cassandra/3.11.11/apache-cassandra-3.11.11-bin.tar.gz.asc
 	source = 01_fix_cassandra_home_path.patch
 	source = cassandra.service
 	source = cassandra-tmpfile.conf
@@ -31,4 +31,3 @@ pkgbase = cassandra
 	sha256sums = 7a87a4369ca2c13558fa8733f6abdcf548c63dda8a16790b5bcc20bae597ee91
 
 pkgname = cassandra
-

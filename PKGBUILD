@@ -14,7 +14,7 @@
 #   `keyserver-options auto-key-retrieve` to your `~/.gnupg/gpg.conf`
 
 pkgname=cassandra
-pkgver=3.11.10
+pkgver=3.11.11
 pkgrel=2
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
