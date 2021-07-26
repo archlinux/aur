@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-window-appmenu
 	pkgdesc = Plasma 5 applet in order to show the window appmenu
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/psifidotos/applet-window-appmenu
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = plasma5-applets-window-appmenu
 	depends = libxcb
 	optdepends = libdbusmenu-gtk3: gtk3 appmenu support
 	optdepends = libdbusmenu-gtk2: gtk2 appmenu support
-	source = plasma5-applets-window-appmenu-0.7.0.tar.gz::https://github.com/psifidotos/applet-window-appmenu/archive/v0.7.0.tar.gz
-	sha256sums = 318568d1176dba81eb1c89c03e8079fc8ba737cea64e9b1fa6abf1e2e33b5f6e
+	source = plasma5-applets-window-appmenu-0.7.1.tar.gz::https://github.com/psifidotos/applet-window-appmenu/archive/v0.7.1.tar.gz
+	sha256sums = 3bb13a22f96dac57c628184806108e6b64cde4e0846105706b61791fe4e10ab2
 
 pkgname = plasma5-applets-window-appmenu
