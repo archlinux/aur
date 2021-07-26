@@ -1,18 +1,19 @@
 pkgbase = naxalnet
 	pkgdesc = Python script to create a batman-adv mesh network
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.disroot.org/pranav/naxalnet
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = iwd
 	depends = python-dasbus
 	depends = systemd>=248
 	optdepends = batctl: for debugging
 	provides = naxalnet
 	conflicts = naxalnet-git
-	source = git+https://git.disroot.org/pranav/naxalnet.git#tag=v0.1.0
+	source = git+https://git.disroot.org/pranav/naxalnet.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = naxalnet
