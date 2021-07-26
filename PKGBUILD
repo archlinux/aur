@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.0.r106621.g7b62a542308
+pkgver=3.0.r107536.gfaa65f151d9
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -112,7 +112,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_SYSTEM_GLEW=ON \
+        -DWITH_SYSTEM_GLEW=OFF \
         -DWITH_PYTHON_INSTALL=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
