@@ -4,7 +4,7 @@
 
 pkgname=rpmlint
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -62,7 +62,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  pytest
+  python -m pytest
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = rpmlint
 	pkgdesc = A tool for checking common errors in rpm packages
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpm-software-management/rpmlint
 	arch = any
 	license = GPL2
