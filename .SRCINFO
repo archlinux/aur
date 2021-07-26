@@ -1,18 +1,18 @@
 pkgbase = noto-fonts-vf
 	pkgdesc = Google Noto variable fonts
-	pkgver = 20210720
+	pkgver = 20210725
 	pkgrel = 1
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom:SIL
-	source = noto-fonts-vf-20210720.tar.gz::https://github.com/googlefonts/noto-fonts/archive/49d1cdc3c292dc822d0f16fcb0655afb110be16d.tar.gz
+	source = noto-fonts-vf-20210725.tar.gz::https://github.com/googlefonts/noto-fonts/archive/5444496f4489ba6a4da2d7d7e9faa09ddb735e3b.tar.gz
 	source = 46-noto-mono.conf
 	source = 46-noto-serif.conf
 	source = 46-noto-sans.conf
 	source = 66-noto-mono.conf
 	source = 66-noto-serif.conf
 	source = 66-noto-sans.conf
-	sha256sums = 88e678722a24b427d011ec71d9d4668fae02d0fdc4b80d9d9120bd9424f7c988
+	sha256sums = e27d5d8e8e706481c666953c541ed718ab0a6f53ac71239fa4d0dc53b7234299
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -22,5 +22,5 @@ pkgbase = noto-fonts-vf
 
 pkgname = noto-fonts-vf
 
-pkgname = noto-fonts-svf
+pkgname = noto-fonts-slim-vf
 	pkgdesc = Google Noto variable fonts (limited type faces)

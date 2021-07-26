@@ -2,17 +2,17 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgbase=noto-fonts-vf
-pkgname=(noto-fonts-{,s}vf)
-pkgver=20210720
+pkgname=(noto-fonts{,-slim}-vf)
+pkgver=20210725
 pkgrel=1
 pkgdesc='Google Noto variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
 arch=(any)
-_commit=49d1cdc3c292dc822d0f16fcb0655afb110be16d
+_commit=5444496f4489ba6a4da2d7d7e9faa09ddb735e3b
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/googlefonts/noto-fonts/archive/${_commit}.tar.gz"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('88e678722a24b427d011ec71d9d4668fae02d0fdc4b80d9d9120bd9424f7c988'
+sha256sums=('e27d5d8e8e706481c666953c541ed718ab0a6f53ac71239fa4d0dc53b7234299'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare(){
@@ -58,7 +58,7 @@ _package(){
   cd noto-fonts-*/
 
   case $pkgname in
-    *-svf)
+    *-slim-vf)
       _vfsrc=unhinted/slim-variable-ttf
       ;;
     *)
@@ -83,7 +83,7 @@ _package(){
     fi
     echo "  Installing $fontname static fonts"
     case $pkgname in
-      *-svf)
+      *-slim-vf)
         for face in Regular Medium SemiBold Bold; do
           [ -f unhinted/ttf/${fontname}/${fontname}-${face}.ttf ] &&
             install -v -t "${pkgdir}"/usr/share/fonts/noto/ \
@@ -98,7 +98,7 @@ _package(){
   done < stat_only
 
   ## install missings font in the slim variable fonts package
-  if [[ $pkgname == *-svf ]]; then
+  if [[ $pkgname == *-slim-vf ]]; then
     echo
     echo 'Installing static variants of the missing slim variable fonts..'
     while read -r fontname; do
@@ -126,7 +126,7 @@ package_noto-fonts-vf(){
   _package
 }
 
-package_noto-fonts-svf(){
+package_noto-fonts-slim-vf(){
   pkgdesc+=' (limited type faces)'
   _package
 }
