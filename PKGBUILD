@@ -3,7 +3,7 @@
 pkgname='goreleaser-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=v0.174.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
@@ -33,5 +33,5 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# License
-	install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/LICENSE.md/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
