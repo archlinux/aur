@@ -20,6 +20,7 @@ pkgbase = alice-vision-git
 	makedepends = cmake
 	depends = alembic
 	depends = boost-libs
+	depends = cctag
 	depends = ceres-solver
 	depends = coin-or-clp
 	depends = flann
