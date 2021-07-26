@@ -6,16 +6,16 @@
 pkgname=balsamiqmockups
 pkgver=3.5.17
 license=('custom')
-pkgrel=6
+pkgrel=7
 arch=('any')
 pkgdesc="The Adobe Air based Mockup client. Not free or open source, there is a 30 day free trial."
 url='http://balsamiq.com/products/mockups'
 source=("https://builds.balsamiq.com/mockups-desktop/Balsamiq_Mockups_${pkgver}_bundled.zip"
         "http://media.balsamiq.com/files/BalsamiqEula.pdf"
         'balsamiqmockups.desktop')
-sha1sums=('f302eaf35ab51cdc42b5040dd5e2f8d15b348cbf'
-          '4747058d569211132811e6f13b80d51b701cfb96'
-          'cfe7240b7403ff47d63e9f8264581a40112607ff')
+sha256sums=('52cbeaf56733d07949e71832c382d975ba9475b2858d2b218a90deac5ff63cbe'
+          'c3bf7c7e59f72be96ec598142dcf583a7b6f83f1f5f5b48bd299b7f9f0fd5215'
+          '0d17c211894fd1e6b8dcda2fb5d36c64a75c198828457db450e5cfef1e81f166')
 install=balsamiqmockups.install
 depends=(wine desktop-file-utils lib32-libgl)
 makedpends=(unzip)
