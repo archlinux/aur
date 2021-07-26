@@ -1,6 +1,6 @@
 pkgbase = hid-nintendo-dkms
 	pkgdesc = hid-nintendo Driver (DKMS)
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 2
 	url = https://github.com/nicman23/dkms-hid-nintendo
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = hid-nintendo-dkms
 	depends = dkms
 	depends = bc
 	provides = hid-nintendo
-	source = https://github.com/nicman23/dkms-hid-nintendo/archive/3.1.tar.gz
+	source = https://github.com/nicman23/dkms-hid-nintendo/archive/3.2.tar.gz
 	source = dkms.conf
-	md5sums = 7b40603e4e5ccf20dc3333a00d118a96
+	md5sums = 3f740b13f9be87730f216aaa5e3d7fc7
 	md5sums = 7dee3612b857c0aeb9de37977ed64d36
 
 pkgname = hid-nintendo-dkms
-
