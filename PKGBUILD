@@ -1,7 +1,8 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=amule-daemon
-pkgver=r11066
+pkgver=r11121
+_pkgcomm=d6693fb
 pkgrel=1
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)'
 url='http://www.amule.org'
@@ -13,17 +14,18 @@ depends=('wxbase-light'
          'libpng'
          'boost-libs'
          )
-makedepends=('boost')
+makedepends=('boost'
+             'autoconf2.13')
 conflicts=('amule')
 optdepends=('kamule: AmuleGUI for KDE')
-source=("http://amule.sourceforge.net/tarballs/aMule-SVN-${pkgver}.tar.bz2"
+source=("aMule-SVN-${pkgver}.tar.bz2::http://repo.or.cz/w/amule.git/snapshot/${_pkgcomm}.tar.gz"
         'amuled.service'
         'amuled@.service'
         'amuleweb.service'
         'amule.sysuser'
         'amule.tmpfiles'
         )
-sha256sums=('87f3ec22f31f2032d1086adb4c496f70d17cb83da9660b8f1c65ec513045a5e0'
+sha256sums=('f1371c1915fd01214a80d9aae3c414ecafc2fb40bbdeb1553c541133ce041dc2'
             '339d59211bd914dfa43c6c54b68e2715f9648de3220d712c01c004eda19a5b7a'
             '52824abdd4724db7c8c4bfc05779849c06de04b4795b3d77c98de1baa3a0babc'
             'f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd'
@@ -35,13 +37,19 @@ install=amule-daemon.install
 prepare() {
   mkdir -p build
 
-  cd "aMule-SVN-${pkgver}"
+  cd "amule-${_pkgcomm}"
+  sed -e 's|^autoconf|autoconf-2.13|g' \
+        -i autogen.sh
+
+  sed '35s|^|#|g' \
+    -i configure.ac
+
   ./autogen.sh
 }
 
 build() {
   cd build
-  ../"aMule-SVN-${pkgver}"/configure \
+  ../"amule-${_pkgcomm}/configure" \
     --prefix=/usr \
     --disable-monolithic \
     --enable-alcc \
@@ -63,8 +71,8 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
 
   install -Dm755 build/src/utils/fileview/mulefileview "${pkgdir}/usr/bin/mulefileview"
-  install -Dm755 "aMule-SVN-${pkgver}/src/utils/scripts/mldonkey_importer.pl" "${pkgdir}/usr/share/amule/mldonkey_importer.pl"
-  install -Dm755 "aMule-SVN-${pkgver}/src/utils/scripts/kadnodescreate.pl" "${pkgdir}/usr/share/amule/kadnodescreate.pl"
+  install -Dm755 "amule-${_pkgcomm}/src/utils/scripts/mldonkey_importer.pl" "${pkgdir}/usr/share/amule/mldonkey_importer.pl"
+  install -Dm755 "amule-${_pkgcomm}/src/utils/scripts/kadnodescreate.pl" "${pkgdir}/usr/share/amule/kadnodescreate.pl"
 
   install -Dm644 "${srcdir}/amuled.service" "${pkgdir}/usr/lib/systemd/system/amuled.service"
   install -Dm644 "${srcdir}/amuled@.service" "${pkgdir}/usr/lib/systemd/user/amuled.service"

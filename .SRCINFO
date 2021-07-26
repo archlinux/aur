@@ -1,6 +1,6 @@
 pkgbase = amule-daemon
 	pkgdesc = An eMule-like client for the eD2k and Kademlia p2p networks. (Only Daemon, CLI tools and Webserver)
-	pkgver = r11066
+	pkgver = r11121
 	pkgrel = 1
 	url = http://www.amule.org
 	install = amule-daemon.install
@@ -8,6 +8,7 @@ pkgbase = amule-daemon
 	arch = armv7h
 	license = GPL
 	makedepends = boost
+	makedepends = autoconf2.13
 	depends = wxbase-light
 	depends = crypto++
 	depends = libupnp
@@ -15,13 +16,13 @@ pkgbase = amule-daemon
 	depends = boost-libs
 	optdepends = kamule: AmuleGUI for KDE
 	conflicts = amule
-	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r11066.tar.bz2
+	source = aMule-SVN-r11121.tar.bz2::http://repo.or.cz/w/amule.git/snapshot/d6693fb.tar.gz
 	source = amuled.service
 	source = amuled@.service
 	source = amuleweb.service
 	source = amule.sysuser
 	source = amule.tmpfiles
-	sha256sums = 87f3ec22f31f2032d1086adb4c496f70d17cb83da9660b8f1c65ec513045a5e0
+	sha256sums = f1371c1915fd01214a80d9aae3c414ecafc2fb40bbdeb1553c541133ce041dc2
 	sha256sums = 339d59211bd914dfa43c6c54b68e2715f9648de3220d712c01c004eda19a5b7a
 	sha256sums = 52824abdd4724db7c8c4bfc05779849c06de04b4795b3d77c98de1baa3a0babc
 	sha256sums = f50c46605d3ae977913f4dcf0c7405e0bdc84322d1fc877ae851706f0e1ae5fd
@@ -29,4 +30,3 @@ pkgbase = amule-daemon
 	sha256sums = 6af2edd8a1a9cc270f7d79e332e54d84c01e1c0b88f0ee72a13df879facc8df4
 
 pkgname = amule-daemon
-
