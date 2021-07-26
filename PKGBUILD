@@ -14,7 +14,7 @@ source=($_pkgname::git+$url
        mpris-rp.service)
 
 md5sums=('SKIP'
-         'a7b375e8041f5c79541e44df07702d2e')
+         '29740850b38217f203b06f7a557f5a95')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
