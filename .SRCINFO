@@ -1,13 +1,13 @@
 pkgbase = stylua
 	pkgdesc = Code formatter for Lua
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JohnnyMorganz/StyLua
 	arch = any
 	license = MPL2
 	makedepends = rust
 	depends = gcc-libs
-	source = stylua-0.10.0.tar.gz::https://crates.io/api/v1/crates/stylua/0.10.0/download
-	b2sums = 730b43993171755b003b0c6b5f85aeebfc36b474d638d37f46db7e08cdcc0ba0ffeccd0c4089bbce227dc21bb4864baacd3a1cda0a47659a645a8855c9a1ea9f
+	source = https://github.com/JohnnyMorganz/StyLua/archive/v0.10.0/StyLua-0.10.0.tar.gz
+	b2sums = 23ef2d36faf9bb79ef5dc820a45cbff46e01c4708b1969f8e58813efed19b4a71e0775f913fd2f3d9d05811e18073a162ca38072822d52236ecbc91e02e8f262
 
 pkgname = stylua

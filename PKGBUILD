@@ -1,34 +1,35 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
+_name=StyLua
 pkgname=stylua
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Code formatter for Lua'
 arch=('any')
 url=https://github.com/JohnnyMorganz/StyLua
 license=('MPL2')
 depends=('gcc-libs')
 makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-b2sums=('730b43993171755b003b0c6b5f85aeebfc36b474d638d37f46db7e08cdcc0ba0ffeccd0c4089bbce227dc21bb4864baacd3a1cda0a47659a645a8855c9a1ea9f')
+source=("$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
+b2sums=('23ef2d36faf9bb79ef5dc820a45cbff46e01c4708b1969f8e58813efed19b4a71e0775f913fd2f3d9d05811e18073a162ca38072822d52236ecbc91e02e8f262')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $_name-$pkgver
   cargo fetch --locked
 }
 
 build() {
-  cd $pkgname-$pkgver
-  cargo build --release --locked --offline --all-features
+  cd $_name-$pkgver
+  cargo build --release --locked --offline
 }
 
 check() {
-  cd $pkgname-$pkgver
-  cargo test --release --locked --offline --all-features
+  cd $_name-$pkgver
+  cargo test --release --locked --offline
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_name-$pkgver
   install -Dt "$pkgdir"/usr/bin target/release/$pkgname
 }
 
