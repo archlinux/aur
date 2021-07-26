@@ -19,12 +19,12 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release --locked
+  cargo build --release --locked --offline
 }
 
 check() {
   cd $pkgname-$pkgver
-  cargo test --release --locked
+  cargo test --release --locked --offline
 }
 
 package() {
