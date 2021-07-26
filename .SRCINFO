@@ -8,8 +8,7 @@ pkgbase = huaweicloud-obs-obsutil-git
 	license = Apache
 	makedepends = go
 	makedepends = git
-	provides = huaweicloud-obs-obsutil
-	conflicts = huaweicloud-obs-obsutil
+	conflicts = huaweicloud-obs-obsutil-bin
 	source = git+https://github.com/huaweicloud/huaweicloud-obs-obsutil.git
 	md5sums = SKIP
 
