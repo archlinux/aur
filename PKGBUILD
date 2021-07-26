@@ -8,7 +8,7 @@ pkgname=cro-chain-desktop-bin
 pkgdesc='Crypto.org Chain desktop wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 arch=('x86_64')
 _package="chain-desktop-wallet-${pkgver}-${arch}.AppImage"
@@ -16,7 +16,7 @@ source=(
   "${_package}::${url}/releases/download/v${pkgver}/${_package}"
   "LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v${pkgver}/LICENSE"
 )
-sha512sums=('b96f29632a43b10425d43a92a900568ef4f01376422d0a264f4f32af2fb92178661cbfbad0960caf1a9a5712e051ede3658686944d5e9783dfad8e8974936523'
+sha512sums=('6943582e592cfff9d7e87bb4d8ccb54e8d9e0b7640d5be2c2e032d2ebe096eba990695f91c763a4df5ca30104054af84b7c42644589d5c9763b4e34c866d11d1'
             '1a75d1990776c2c5cbc25b0d6381a67082c48ec3e7f18a4ad66caf55987548e5a622c1c8e330a1efaaf74e9c71aaad6d5a260062b50c5df9b26352c8efc6dd47')
 
 build() {
