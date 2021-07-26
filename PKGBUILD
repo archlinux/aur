@@ -2,7 +2,7 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.48V2
+pkgver=1.4.49V1
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -16,21 +16,17 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png')
 
-sha256sums=("f48ede09bccdb6bb103e62500fd0889e38012ee0facb89dcad9681d40a2645cf" 
+sha256sums=("1e93aaff71ca5b0ecdd27a8bf7dcb8ba6398d11d30b62798b547a239601b4e2c" 
 	"SKIP"
 	"SKIP")
 
-depends=('jre8-openjdk')
-#makedepends=('detox')
+depends=('jre8-openjdk' 'java8-openjfx')
 optdepends=('wmname: change window manager name for compatibility with certain WMs')
 install="${pkgname}.install"
 
 package() {
 
 	cd "${srcdir}"
-
-	# clean up filenames
-#detox -r -v ./* &> /dev/null
 
 	msg2 "changing file format of included scripts..."
 	awk '{ sub("\r$", ""); print }' mage-client/startClient.sh > mage-client/startClient-unix.sh

@@ -2,7 +2,7 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.48V2
+pkgver=1.4.49V1
 pkgrel=0
 _java_version=8u201
 _java_dir=jre1.8.0_201
@@ -19,7 +19,7 @@ source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png'
 	'http://xmage.today/java/jre-8u201-linux-x64.tar.gz'
 )
-sha256sums=("f48ede09bccdb6bb103e62500fd0889e38012ee0facb89dcad9681d40a2645cf" 
+sha256sums=("1e93aaff71ca5b0ecdd27a8bf7dcb8ba6398d11d30b62798b547a239601b4e2c" 
 	"SKIP"
 	"SKIP"
 	'12c745fbb8735bf450b8c6ba6f649bebe19915f05742975e443bdc8566170352'
