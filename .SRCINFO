@@ -1,6 +1,6 @@
 pkgbase = blhelisuite32-bin
 	pkgdesc = Configuration tool for BLHeli_32 based ESCs
-	pkgver = 1.0.2.5
+	pkgver = 1.0.2.7
 	pkgrel = 1
 	url = https://github.com/bitdump/BLHeli/tree/master/BLHeli_32%20ARM
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = blhelisuite32-bin
 	provides = blhelisuite32
 	conflicts = blhelisuite32
 	options = !strip
-	source = BLHeliSuite32xLinux64_1025.zip::https://drive.google.com/uc?export=download&id=10EELGGIN2E1pq5jezex7IfDHkXQcFMou&confirm=q6xh
-	sha256sums = 31b61e2279f0df1854c92f78619c732a65791da40e58e00f2806d66b0b2a44d7
+	source = BLHeliSuite32xLinux64_1027.zip::https://drive.google.com/uc?export=download&id=1DDvAAz4oxJRqrTLVF30raGXeuOKhXge-
+	sha256sums = 7d06f0142f3326283d8c53b1f803bd9b9fae4dbdeacc4329f75f6f3d94f643ac
 
 pkgname = blhelisuite32-bin
