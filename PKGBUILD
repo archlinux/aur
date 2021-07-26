@@ -20,16 +20,16 @@ source=("http://deb.debian.org/debian/pool/main/l/localepurge/${pkgname}_${pkgve
 
 prepare()
 {
-    patch -uN ${srcdir}/${pkgname}/usr/sbin/localepurge < ${srcdir}/localepurge.diff
-    patch -uN ${srcdir}/${pkgname}/debian/localepurge.8 < ${srcdir}/localepurge.8.diff
-    patch -uN ${srcdir}/${pkgname}/debian/localepurge.config < ${srcdir}/localepurge.config.diff
+    patch -uN ${srcdir}/${pkgname}-${pkgver}/usr/sbin/localepurge < ${srcdir}/localepurge.diff
+    patch -uN ${srcdir}/${pkgname}-${pkgver}/debian/localepurge.8 < ${srcdir}/localepurge.8.diff
+    patch -uN ${srcdir}/${pkgname}-${pkgver}/debian/localepurge.config < ${srcdir}/localepurge.config.diff
 }
 
 package()
 {
-    install -D -m755 ${srcdir}/${pkgname}/usr/sbin/localepurge ${pkgdir}/usr/bin/localepurge
-    install -D -m644 ${srcdir}/${pkgname}/debian/localepurge.8 ${pkgdir}/usr/share/man/man8/localepurge.8
-    install -D -m755 ${srcdir}/${pkgname}/debian/localepurge.config ${pkgdir}/usr/bin/localepurge-config
+    install -D -m755 ${srcdir}/${pkgname}-${pkgver}/usr/sbin/localepurge ${pkgdir}/usr/bin/localepurge
+    install -D -m644 ${srcdir}/${pkgname}-${pkgver}/debian/localepurge.8 ${pkgdir}/usr/share/man/man8/localepurge.8
+    install -D -m755 ${srcdir}/${pkgname}-${pkgver}/debian/localepurge.config ${pkgdir}/usr/bin/localepurge-config
     install -D -m644 locale.nopurge ${pkgdir}/etc/locale.nopurge
     if [ ! -e /var/cache/localepurge/localelist ]; then
 	find /usr/share/locale -maxdepth 1 -type d -name "*" -printf "%f\n" | grep "^[a-z]" | cut -d" " -f1 | sort -u > ${srcdir}/localelist
