@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='lfutils'
 pkgname="${_pkgname}-git"
-pkgver=r40.0d3a989
+pkgver=r42.4dbb62b
 pkgrel=1
 pkgdesc='Scripts and utilities for the lf file manager.'
 arch=('x86_64')
