@@ -36,6 +36,32 @@ index 253a07ec0a..a85a97d62f 100644
 -  ethereum_remote_client_enabled = !is_ios && !is_android
 +  ethereum_remote_client_enabled = false
  }
+diff --git a/browser/profiles/brave_profile_manager.cc b/browser/profiles/brave_profile_manager.cc
+index 6bfb3a813c..fc8c6203be 100644
+--- a/browser/profiles/brave_profile_manager.cc
++++ b/browser/profiles/brave_profile_manager.cc
+@@ -11,8 +11,10 @@
+ #include <vector>
+
+ #include "base/metrics/histogram_macros.h"
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+ #include "brave/browser/brave_ads/ads_service_factory.h"
+ #include "brave/browser/brave_rewards/rewards_service_factory.h"
++#endif
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/common/pref_names.h"
+ #include "brave/components/content_settings/core/browser/brave_content_settings_pref_provider.h"
+@@ -95,8 +97,10 @@ void BraveProfileManager::DoFinalInitForServices(Profile* profile,
+   ProfileManager::DoFinalInitForServices(profile, go_off_the_record);
+   if (!do_final_services_init_)
+     return;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   brave_ads::AdsServiceFactory::GetForProfile(profile);
+   brave_rewards::RewardsServiceFactory::GetForProfile(profile);
++#endif
+ #if BUILDFLAG(IPFS_ENABLED)
+   ipfs::IpfsServiceFactory::GetForContext(profile);
+ #endif
 diff --git a/common/extensions/api/BUILD.gn b/common/extensions/api/BUILD.gn
 index c3e433a1a3..ef9a461813 100644
 --- a/common/extensions/api/BUILD.gn
