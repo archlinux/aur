@@ -36,14 +36,41 @@ index 253a07ec0a..a85a97d62f 100644
 -  ethereum_remote_client_enabled = !is_ios && !is_android
 +  ethereum_remote_client_enabled = false
  }
+diff --git a/browser/extensions/brave_component_loader.cc b/browser/extensions/brave_component_loader.cc
+index 0178a8efee..af3f28f780 100644
+--- a/browser/extensions/brave_component_loader.cc
++++ b/browser/extensions/brave_component_loader.cc
+@@ -9,16 +9,20 @@
+
+ #include "base/bind.h"
+ #include "base/command_line.h"
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+ #include "bat/ads/pref_names.h"
++#endif
+ #include "brave/browser/component_updater/brave_component_installer.h"
+ #include "brave/common/brave_switches.h"
+ #include "brave/common/pref_names.h"
+-#include "brave/components/brave_ads/common/pref_names.h"
+ #include "brave/components/brave_component_updater/browser/brave_on_demand_updater.h"
+ #include "brave/components/brave_extension/grit/brave_extension.h"
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#include "brave/components/brave_ads/common/pref_names.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
+ #include "brave/components/brave_rewards/common/pref_names.h"
+ #include "brave/components/brave_rewards/resources/extension/grit/brave_rewards_extension_resources.h"
++#endif
+ #include "brave/components/brave_webtorrent/grit/brave_webtorrent_resources.h"
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/extensions/extension_service.h"
 diff --git a/browser/profiles/brave_profile_manager.cc b/browser/profiles/brave_profile_manager.cc
-index 6bfb3a813c..fc8c6203be 100644
+index 6bfb3a813c..bc849ad0ec 100644
 --- a/browser/profiles/brave_profile_manager.cc
 +++ b/browser/profiles/brave_profile_manager.cc
-@@ -11,8 +11,10 @@
+@@ -11,8 +11,11 @@
  #include <vector>
 
  #include "base/metrics/histogram_macros.h"
++#include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
 +#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
  #include "brave/browser/brave_ads/ads_service_factory.h"
  #include "brave/browser/brave_rewards/rewards_service_factory.h"
@@ -51,7 +78,7 @@ index 6bfb3a813c..fc8c6203be 100644
  #include "brave/browser/profiles/profile_util.h"
  #include "brave/common/pref_names.h"
  #include "brave/components/content_settings/core/browser/brave_content_settings_pref_provider.h"
-@@ -95,8 +97,10 @@ void BraveProfileManager::DoFinalInitForServices(Profile* profile,
+@@ -95,8 +98,10 @@ void BraveProfileManager::DoFinalInitForServices(Profile* profile,
    ProfileManager::DoFinalInitForServices(profile, go_off_the_record);
    if (!do_final_services_init_)
      return;
@@ -178,6 +205,30 @@ index d4bc81a781..7b26be808b 100644
 -  binance_enabled = is_mac || is_linux || is_win || is_android
 +  binance_enabled = false
  }
+diff --git a/components/brave_ads/browser/BUILD.gn b/components/brave_ads/browser/BUILD.gn
+index 32215aeb3e..ded02b8f67 100644
+--- a/components/brave_ads/browser/BUILD.gn
++++ b/components/brave_ads/browser/BUILD.gn
+@@ -11,9 +11,6 @@ static_library("browser") {
+   ]
+
+   sources = [
+-    "ads_service.cc",
+-    "ads_service.h",
+-    "ads_service_observer.h",
+   ]
+
+   deps = [
+@@ -39,6 +36,9 @@ static_library("browser") {
+
+   if (brave_ads_enabled) {
+     sources += [
++      "ads_service.cc",
++      "ads_service.h",
++      "ads_service_observer.h",
+       "ads_p2a.cc",
+       "ads_p2a.h",
+       "ads_service_impl.cc",
 diff --git a/components/brave_referrals/buildflags/buildflags.gni b/components/brave_referrals/buildflags/buildflags.gni
 index 3848636402..a500258d00 100755
 --- a/components/brave_referrals/buildflags/buildflags.gni
@@ -199,6 +250,61 @@ index a5ab8b51cc..0c06a94812 100644
 
  static_library("common") {
    sources = [
+diff --git a/components/brave_rewards/browser/BUILD.gn b/components/brave_rewards/browser/BUILD.gn
+index 7d3627f98a..988e4e1742 100644
+--- a/components/brave_rewards/browser/BUILD.gn
++++ b/components/brave_rewards/browser/BUILD.gn
+@@ -9,21 +9,9 @@ static_library("browser") {
+   public_deps = [ "buildflags" ]
+
+   sources = [
+-    "android_util.cc",
+-    "android_util.h",
+     "diagnostic_log.cc",
+     "diagnostic_log.h",
+     "logging.h",
+-    "rewards_notification_service.cc",
+-    "rewards_notification_service.h",
+-    "rewards_notification_service_observer.h",
+-    "rewards_p3a.cc",
+-    "rewards_p3a.h",
+-    "rewards_protocol_handler.cc",
+-    "rewards_protocol_handler.h",
+-    "rewards_service.cc",
+-    "rewards_service.h",
+-    "rewards_service_observer.h",
+     "static_values.h",
+     "switches.cc",
+     "switches.h",
+@@ -56,6 +44,16 @@ static_library("browser") {
+     sources += [
+       "net/network_delegate_helper.cc",
+       "net/network_delegate_helper.h",
++      "rewards_notification_service.cc",
++      "rewards_notification_service.h",
++      "rewards_notification_service_observer.h",
++      "rewards_p3a.cc",
++      "rewards_p3a.h",
++      "rewards_protocol_handler.cc",
++      "rewards_protocol_handler.h",
++      "rewards_service.cc",
++      "rewards_service.h",
++      "rewards_service_observer.h",
+       "rewards_notification_service_impl.cc",
+       "rewards_notification_service_impl.h",
+       "rewards_service_impl.cc",
+@@ -82,6 +80,11 @@ static_library("browser") {
+     public_deps += [ "//brave/vendor/bat-native-ledger:headers" ]
+
+     if (is_android) {
++      sources += [
++        "android_util.cc",
++        "android_util.h",
++      ]
++
+       deps += [ "//brave/components/safetynet:android" ]
+     }
+   }
 diff --git a/components/brave_rewards/browser/buildflags/buildflags.gni b/components/brave_rewards/browser/buildflags/buildflags.gni
 index 18ad294e50..1a031adbee 100644
 --- a/components/brave_rewards/browser/buildflags/buildflags.gni

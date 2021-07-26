@@ -34,7 +34,7 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
-pkgver=r4731.8bb6dd45
+pkgver=r4740.c2972112
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -81,7 +81,7 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '60cc98f2d96c6b9c01fa004cfa1e7cf912460dd01f3e6440e067b3098f2ccf72'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
-            '4b2441e8db2d483902469f82de1470a9dd1b65279572db171f77a061dca2c57f'
+            'e73ca32804a338ee7b7d071fe2997994c8bf5a0f41bb8be66526890c3445c913'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
