@@ -6,7 +6,6 @@ pkgbase = blender-git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gcc10
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
