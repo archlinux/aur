@@ -1,5 +1,5 @@
 pkgbase = octoprint
-	pkgdesc = The snappy web interface for your 3D printer for Arch Linux
+	pkgdesc = The snappy web interface for your 3D printer on Arch Linux
 	pkgver = 1.6.1
 	pkgrel = 2
 	url = http://octoprint.org/
@@ -13,6 +13,7 @@ pkgbase = octoprint
 	depends = python-pyserial
 	depends = python-netaddr
 	depends = python-netifaces
+	depends = python-wheel
 	depends = python-pkginfo
 	depends = python-requests
 	depends = python-psutil

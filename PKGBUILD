@@ -2,8 +2,8 @@
 
 pkgname=octoprint
 pkgver=1.6.1
-pkgrel=2
-pkgdesc="The snappy web interface for your 3D printer for Arch Linux"
+pkgrel=3
+pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
 license=('AGPL3')
@@ -13,6 +13,7 @@ depends=(
 		python-pyserial
 		python-netaddr
 		python-netifaces
+		python-wheel
 		python-pkginfo
 		python-requests
 		python-psutil
@@ -49,7 +50,7 @@ sha256sums=('87747809f27177dcddc318f46221b9aacaed8e45e3a28ce11c61990afebc1e16'
 
 prepare()
 {
-	cd $srcdir/$pkgname
+	cd $srcdir/OctoPrint-${pkgver}
 
 	for s in ${source[@]}; do
 		case $s in
@@ -64,7 +65,7 @@ prepare()
 package() {
 	virtualenv --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
 
-	pushd $srcdir/$pkgname
+	pushd $srcdir/OctoPrint-${pkgver}
 	$pkgdir/usr/lib/$pkgname/bin/pip --no-cache-dir install --install-option '--optimize=1' .
 	popd
 
