@@ -4,12 +4,12 @@
 pkgname=fluffychat-git
 _name=fluffychat
 pkgver=v0.34.0.r124.g62a68984
-pkgrel=2
+pkgrel=3
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm' 'xdg-user-dirs')
+depends=('libolm' 'xdg-user-dirs' 'gtk3' 'jsoncpp')
 makedepends=('clang'
              'ninja'
              'flutter'
