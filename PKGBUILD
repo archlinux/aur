@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/emqx/MQTTX"
 license=('Apache')
 depends=('electron5')
-makedepends=('squashfs')
+makedepends=('squashfs-tools')
 source=(${_pkgname^^}-${pkgver}.snap::"https://github.com/emqx/MQTTX/releases/download/v${pkgver}/${_pkgname^^}_${pkgver}_amd64.snap"
         "${_pkgname}.sh")
 sha256sums=('03fa871f486b1eab3da52f02c3aa85a886aee56d6346c668825ea9ececc6e72a'
