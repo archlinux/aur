@@ -1,7 +1,7 @@
 pkgbase = advanced-rest-client
 	pkgdesc = A developer tool to test a HTTP request. The Advanced REST Client desktop application.
-	pkgver = 16.0.0
-	pkgrel = 2
+	pkgver = 16.0.1
+	pkgrel = 1
 	url = https://github.com/advanced-rest-client/arc-electron
 	install = advanced-rest-client.install
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = advanced-rest-client
 	depends = nss
 	depends = libxss
 	options = !strip
-	source_x86_64 = https://github.com/advanced-rest-client/arc-electron/releases/download/v16.0.0/arc-linux-16.0.0-amd64.deb
-	sha256sums_x86_64 = 099e29dad50c558abec149dbf6980a8114e2decc1fc80bbf71104613147705cd
+	source_x86_64 = https://github.com/advanced-rest-client/arc-electron/releases/download/v16.0.1/arc-linux-16.0.1-amd64.deb
+	sha256sums_x86_64 = e5b87a8e3fbb4dd132e654f7b6b8d136e72c7ea7078d89a9466060bb321ce84c
 
 pkgname = advanced-rest-client
-
