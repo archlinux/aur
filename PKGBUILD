@@ -15,6 +15,8 @@ sha256sums=('5918c3cf7f907201d6cf159ea7cbadf618fda197ba35dff3c0d4b37f2d67f695')
 
 prepare() {
   mkdir -p build
+  cd indi-3rdparty-${pkgver}
+  find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;        # Allow installing outside of /lib
 }
 
 build() {
@@ -25,7 +27,6 @@ build() {
     ../indi-3rdparty-${pkgver}/libqhy
   make
 }
-
 
 package() {
   cd build
