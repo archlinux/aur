@@ -1,10 +1,11 @@
 pkgbase = ruby-airbrussh
 	pkgdesc = Airbrussh pretties up your SSHKit and Capistrano output
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mattbrictson/airbrussh
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
 	checkdepends = ruby-rake
 	checkdepends = ruby-minitest
 	checkdepends = ruby-minitest-reporters
