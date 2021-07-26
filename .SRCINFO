@@ -1,7 +1,7 @@
 pkgbase = ctc
 	pkgdesc = CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers
 	pkgver = 1.0.0
-	pkgrel = 9
+	pkgrel = 10
 	arch = any
 	license = GPL
 	makedepends = gradle>=6.7
