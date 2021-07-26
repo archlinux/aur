@@ -9,9 +9,9 @@ pkgbase = yuzu
 	makedepends = catch2>=2.13
 	makedepends = cmake>=3.15
 	makedepends = cpp-httplib-compiled>=0.9.1
-	makedepends = discord-rpc>3.4.0
-	makedepends = ffmpeg
-	makedepends = fmt>=8.0
+	makedepends = discord-rpc>3.4
+	makedepends = ffmpeg>=4.3.1
+	makedepends = fmt>=8
 	makedepends = git
 	makedepends = glslang
 	makedepends = libinih>=52
