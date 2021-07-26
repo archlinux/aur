@@ -8,6 +8,9 @@ pkgbase = apalache
 	makedepends = patch
 	depends = java-runtime>=11
 	depends = glibc=2.33
+	depends = findutils
+	depends = coreutils
+	depends = linux-utils
 	source = https://github.com/informalsystems/apalache/releases/download/v0.15.11/apalache.tgz
 	source = https://raw.githubusercontent.com/informalsystems/apalache/unstable/LICENSE
 	source = sys-install.patch
