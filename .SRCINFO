@@ -1,7 +1,7 @@
 pkgbase = fheroes2
 	pkgdesc = Free remake of Heroes of Might and Magic II game engine
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ihhub.github.io/fheroes2/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = fheroes2
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
-	depends = sdl2_net
 	depends = sdl2_ttf
 	optdepends = curl: download demo version files
 	optdepends = wget: download demo version files

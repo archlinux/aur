@@ -1,11 +1,11 @@
 pkgname=fheroes2
 pkgver=0.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Free remake of Heroes of Might and Magic II game engine"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://ihhub.github.io/fheroes2/"
 license=('GPL2')
-depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf')
+depends=('sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf')
 optdepends=('curl: download demo version files'
             'wget: download demo version files'
             'unzip: unpack demo version files')
@@ -22,7 +22,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export CFLAGS+=' -DCONFIGURE_FHEROES2_DATA=\"/usr/share/fheroes2\"'
   export CXXFLAGS+=' -DCONFIGURE_FHEROES2_DATA=\"/usr/share/fheroes2\"'
-  make RELEASE=1 WITHOUT_BUNDLED_LIBS=1
+  make RELEASE=1 FHEROES2_IMAGE_SUPPORT=1
 }
 
 package() {
