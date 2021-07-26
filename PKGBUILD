@@ -1,5 +1,4 @@
 # Maintainer: Nicolas Formichella <stigpro@outlook.fr>
-# Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux @ free.fr>
 # Contributor: Francesco Groccia <frgroccia gmail.com>
 # Contributor: Dincer Celik <dincer@bornovali.com>
