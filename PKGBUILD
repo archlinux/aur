@@ -1,37 +1,48 @@
-# Maintainer: Gergely Imreh <imrehg@gmail.com>
-# Contributor: Frederic Bezies <fredbezies at gmail dot com>
-# Contributor: Lex Black <autumn-wind at web dot de>
-# Contributor: Weston Hanners <weston@hanners.us>
+# Maintainer: zhs <zhao4she4@tuta.io>
 
 pkgname=crawl-git
-_pkgname=${pkgname%%-git}
-pkgver=0.18.a0.r775.g4d9e04e
+_pkgname=crawl
+pkgver=r83.ef2c410
 pkgrel=1
-pkgdesc="Dungeon Crawl Stone Soup, a roguelike adventure through dungeons filled with dangerous monsters in a quest to find the mystifyingly fabulous Orb of Zot."
-arch=('i686' 'x86_64')
-url="http://crawl.develz.org"
-license=('GPL')
-depends=('zlib' 'ncurses')
-makedepends=('git' 'gcc')
-source=('git+https://github.com/crawl/crawl.git')
-md5sums=('SKIP')
+pkgdesc="Simple web crawler written in Go, storing websites in WARC format"
+arch=('x86_64')
+url="https://git.autistici.org/ale/crawl/"
+license=('MIT')
+depends=('glibc')
+makedepends=('git' 'go')
+install=crawl-git.install
+source=("git+https://git.autistici.org/ale/crawl/")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
-  git submodule update --init
+	cd "${_pkgname}"
+	mkdir -p build/
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/${_pkgname}-ref/source/"
-  make NO_LUA_BINDINGS=Y
+	cd "${srcdir}/${_pkgname}"
+
+        export CGO_CPPFLAGS="$CPPFLAGS"
+        export CGO_CFLAGS="$CFLAGS"
+        export CGO_CXXFLAGS="$CXXFLAGS"
+        export CGO_LDFLAGS="$LDFLAGS"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build ./cmd/...
+}
+
+check() {
+	cd "${srcdir}/${_pkgname}"
+	go test ./...
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/${_pkgname}-ref/source/"
-  make prefix=/usr/local/ DESTDIR="${pkgdir}" install
+	cd "${srcdir}/${_pkgname}"
+	install -Dm755 -- "build/crawl" "${pkgdir}/usr/bin/go-crawl"
+	install -Dm755 -- "build/links" "${pkgdir}/usr/bin/go-links"
+	install -Dm755 -- "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

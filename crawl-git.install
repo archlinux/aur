@@ -1,0 +1,17 @@
+_exec_location_message() {
+	cat << EOM
+
+>>> Executables have been installed as 'go-crawl' and 'go-links' to avoid
+>>> file name conflict with 'links' from core repository.
+
+EOM
+}
+
+post_install() {
+	_exec_location_message
+}
+
+post_upgrade() {
+	_exec_location_message
+}
+
