@@ -1,0 +1,18 @@
+pkgbase = termusic-git
+	pkgdesc = Terminal Music Player written in Rust
+	pkgver = 0.2.11.r223.b739157
+	pkgrel = 1
+	url = https://github.com/tramhao/termusic
+	arch = x86_64
+	license = GPL3
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = mpv
+	optdepends = youtube-dl: download files
+	provides = termusic
+	conflicts = termusic
+	source = termusic-git::git+https://github.com/tramhao/termusic.git
+	sha256sums = SKIP
+
+pkgname = termusic-git
