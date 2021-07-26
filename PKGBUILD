@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.58.2.r5.g98372f9
+pkgver=1.58.2.r6.g53b0713
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -124,8 +124,6 @@ package() {
     install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
     cp -r ${srcdir}/vscodium/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
-    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/code
-    ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscode
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
     install -D -m644 vscodium.desktop ${pkgdir}/usr/share/applications/vscodium.desktop
