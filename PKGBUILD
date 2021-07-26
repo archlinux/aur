@@ -2,7 +2,7 @@
 pkgname=saltedauth
 pkgver=1.0.0
 
-pkgrel=4
+pkgrel=5
 pkgdesc="SaltedAuth -- More secure credential manager for Connective http servers."
 arch=( 'any' )
 url=""
@@ -10,7 +10,7 @@ license=('LGPL3')
 groups=( "connective-server" )
 depends=( 'java-environment' 'connective-http' )
 makedepends=( 'gradle>=6.7' 'cq' )
-optdepends=()
+optdepends=( 'connective-usermanager' )
 provides=()
 conflicts=()
 replaces=()

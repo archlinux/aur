@@ -1,7 +1,7 @@
 pkgbase = saltedauth
 	pkgdesc = SaltedAuth -- More secure credential manager for Connective http servers.
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	install = main.install
 	arch = any
 	groups = connective-server
@@ -10,6 +10,7 @@ pkgbase = saltedauth
 	makedepends = cq
 	depends = java-environment
 	depends = connective-http
+	optdepends = connective-usermanager
 	source = git+https://aerialworks.ddns.net/ASF/SaltedAuth.git
 	md5sums = SKIP
 
