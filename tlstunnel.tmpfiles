@@ -1,2 +1,2 @@
 d /var/lib/tlstunnel 0750 tlstunnel tlstunnel -
-Z /var/lib/tlstunnel 0750 tlstunnel tlstunnel
+Z /var/lib/tlstunnel - tlstunnel tlstunnel
