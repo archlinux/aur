@@ -9,7 +9,7 @@ pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm' 'xdg-user-dirs' 'gtk3')
+depends=('libolm' 'xdg-user-dirs' 'gtk3' 'jsoncpp')
 makedepends=('clang'
              'ninja'
              'cmake'

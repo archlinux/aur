@@ -14,6 +14,7 @@ pkgbase = fluffychat
 	depends = libolm
 	depends = xdg-user-dirs
 	depends = gtk3
+	depends = jsoncpp
 	provides = fluffychat
 	conflicts = fluffychat
 	source = flutter-2.2.3-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.3-stable.tar.xz
