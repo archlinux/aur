@@ -1,16 +1,15 @@
 pkgbase = evcxr_jupyter
 	pkgdesc = A Jupyter Kernel for the Rust programming language.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
-	url = https://github.com/google/evcxr/tree/master/evcxr_jupyter
+	url = https://github.com/google/evcxr/tree/main/evcxr_jupyter
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	makedepends = cmake
 	depends = rust
 	depends = jupyter-notebook
-	source = 0.10.0.tar.gz::https://crates.io/api/v1/crates/evcxr_jupyter/0.10.0/download
-	sha256sums = 5550b0dbea97b970b692ebefdf027d5d7982f49e40bb8781707bb03b1a371f86
+	source = 0.11.0.tar.gz::https://crates.io/api/v1/crates/evcxr_jupyter/0.11.0/download
+	sha256sums = 78ea27df9a6e12344c839ba17f7b10334ff8e074b3b4b6af298c34e37821ceaf
 
 pkgname = evcxr_jupyter
-
