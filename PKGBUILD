@@ -5,7 +5,7 @@ _pkgname='youtube_tool'
 pkgname="${_pkgname/_/-}"
 
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 _commit_license='dff77ede5e0e26a0484b129f8a0e6e2bb2666c41'
 
 pkgdesc='CLI tool to extract comments, subtitles or livechat content from a youtube video'
