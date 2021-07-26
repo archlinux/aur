@@ -8,6 +8,9 @@ url="https://github.com/RobinBoers/cutie-tanks"
 license=('GPL')
 depends=(electron)
 makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=(cutie-tanks)
 source=('src::git+https://github.com/RobinBoers/cutie-tanks#branch=bin'
 		'cutie-tanks' 
 		'cutie-tanks.desktop'
