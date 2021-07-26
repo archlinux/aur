@@ -6,7 +6,7 @@ pkgbase = xmake
 	arch = i686
 	arch = x86_64
 	license = Apache
-	source = xmake.tar.gz::https://github.com/xmake-io/xmake/releases/download/v2.5.6/xmake-v2.5.6.tar.gz
+	source = https://github.com/xmake-io/xmake/releases/download/v2.5.6/xmake-v2.5.6.tar.gz
 	sha256sums = 79e65766761642d574ac24f50c4df2b896a3d9fb649a37746a9d9c67073d5998
 
 pkgname = xmake
