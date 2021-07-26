@@ -1,0 +1,21 @@
+pkgbase = emmental
+	pkgdesc = The cheesy music player
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.git.nowheycreamery.com/anna/emmental
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = python-mutagen
+	depends = python-pyxdg
+	depends = gtk4
+	depends = gstreamer
+	depends = gst-plugins-base
+	optdepends = gst-plugins-good
+	optdepends = gst-plugins-bad
+	optdepends = gst-plugins-ugly
+	source = https://git.nowheycreamery.com/anna/emmental/archive/emmental-2.0.tar.gz
+	sha256sums = 4e3f4655b991fec316dcfaa37be39b31aa0dfd813e940ea61e44f2743f6f06d0
+
+pkgname = emmental
