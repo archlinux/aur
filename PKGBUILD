@@ -1,46 +1,65 @@
+#!/bin/bash
+
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 pkgname=spades
 _name=SPAdes
-pkgver=3.15.2
+pkgver=3.15.3
 pkgrel=1
-pkgdesc="SPAdes – St. Petersburg genome assembler – is an assembly toolkit containing various assembly pipelines."
+pkgdesc='St. Petersburg genome assembler – is an assembly toolkit containing various assembly pipelines.'
+url='http://cab.spbu.ru/software/spades/'
 arch=('x86_64')
-url="http://cab.spbu.ru/software/spades/"
 license=('unknown')
-makedepends=('gcc' 'cmake' 'zlib' 'bzip2' 'sh')
-provides=("spades")
-conflicts=("spades-bin" "spades-git")
-source=("http://cab.spbu.ru/files/release$pkgver/$_name-$pkgver.tar.gz"
-    'spades')
-b2sums=('0430ce78fa622b6a36eebd4eded9207df2135891009b082a6c243b7f499ce12cb13cb5b56b3b82183c1d7bbe77d56b60d1be543633a1ba03da8572e5f3812099'
-    'e5131758892e8dea5cb22c6e7fa519aee4c1efd79c0c71b257e25e455aca27554bf4a5cd422bcc7e251e3ac6c3d7544693ad99bcbc3fa9054c622e00b99d9953')
+depends=('python')
+makedepends=(
+    'gcc'
+    'cmake'
+    'zlib'
+    'bzip2'
+    'bash'
+)
+provides=('spades')
+conflicts=(
+    'spades-bin'
+    'spades-git'
+)
+source=(
+    "http://cab.spbu.ru/files/release$pkgver/$_name-$pkgver.tar.gz"
+    'spades'
+)
+b2sums=(
+    'd1c2204889ecd4e95306f10ca1bc4c1243369737822ba882ed141aa203005ce5240698b421e6f9c867684567abe971afb7562b837ad5464cfd91ce572d5e7af4'
+    'bb76a52fbf7b1b8b4323e1833b237f4bcdad1c3ec16926f7147ffacb52302be9ca438fdf25026d73a2f29082b041cdc0bae69b6f62d752a696238165fe01d3ac'
+)
 
 prepare() {
-    cd $srcdir/$_name-$pkgver/
+    cd "$srcdir/$_name-$pkgver/" || exit
     mkdir -p bin
 }
 
 build() {
-    cd $srcdir/$_name-$pkgver/
+    cd "$srcdir/$_name-$pkgver/" || exit
+
     ./spades_compile.sh
 }
 
 check() {
-    cd $srcdir/$_name-$pkgver/bin/
+    cd "$srcdir/$_name-$pkgver/bin/" || exit
+
     python spades.py --test
 }
 
 package() {
-    cd $srcdir/$_name-$pkgver/
-    install -Dm755 $srcdir/$pkgname "${pkgdir}/usr/bin/$pkgname"
+    cd "$srcdir/$_name-$pkgver/" || exit
 
-    # install -Dm755 bin "${pkgdir}/usr/share/$pkgname/bin"
-    mkdir -p $pkgdir/usr/share/$pkgname/
-    cp -R bin $pkgdir/usr/share/$pkgname/
-    chmod -R 755 $pkgdir/usr/share/$pkgname/bin
+    install -Dm755 "$srcdir/$pkgname" "$pkgdir'/usr/bin/$pkgname"
 
-    cp -R share $pkgdir/usr/share/$pkgname/
-    chmod -R 755 $pkgdir/usr/share/$pkgname/share
+    mkdir -p "$pkgdir/usr/share/$pkgname/"
+
+    cp -R 'bin' "$pkgdir/usr/share/$pkgname/"
+    chmod -R 755 "$pkgdir/usr/share/$pkgname/bin"
+
+    cp -R 'share' "$pkgdir/usr/share/$pkgname/"
+    chmod -R 755 "$pkgdir/usr/share/$pkgname/share"
 
 }
