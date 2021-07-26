@@ -1,6 +1,6 @@
 pkgbase = xurls
 	pkgdesc = Extract urls from plain text
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/mvdan/xurls
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = xurls
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/mvdan/xurls#tag=v2.2.0
-	sha1sums = SKIP
+	source = xurls-2.3.0::https://github.com/mvdan/xurls/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = c4a5451eab432f6ac4c033fc197b7ceb947910bc1eae0db750b7c5c5ad703c46
 
 pkgname = xurls
-

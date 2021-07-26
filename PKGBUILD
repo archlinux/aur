@@ -1,24 +1,38 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=xurls
-_name="${pkgname}"
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Extract urls from plain text"
-url="https://github.com/mvdan/${_name}"
-license=('BSD')
 arch=('i686' 'x86_64')
+url="https://github.com/mvdan/${pkgname}"
+license=('BSD')
 makedepends=('git' 'go')
-source=("git+${url}#tag=v${pkgver}")
-sha1sums=('SKIP')
+source=("$pkgname-$pkgver::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c4a5451eab432f6ac4c033fc197b7ceb947910bc1eae0db750b7c5c5ad703c46')
+
+prepare(){
+	cd "$pkgname-$pkgver"
+	mkdir -p build/
+}
 
 build() {
-	cd "${srcdir}/${_name}"
-	GO111MODULES=on go build -ldflags='-w -s' ./cmd/${_name}
+	cd "$pkgname-$pkgver"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build ./cmd/...
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	go test ./...
 }
 
 package() {
-	cd "${srcdir}/${_name}"
-	install -Dm755 "${_name}" "${pkgdir}/usr/bin/${_name}"
+	cd "$pkgname-$pkgver"
+	install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
