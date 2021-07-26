@@ -1,8 +1,8 @@
 pkgbase = linux-x32
 	pkgdesc = Linux with x32 ABI
-	pkgver = 5.13.4.arch2
+	pkgver = 5.13.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.13.4-arch2
+	url = https://github.com/archlinux/linux/commits/v5.13.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-x32
 	makedepends = xz
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.4-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.5-arch1
 	source = config
 	source = x32.config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
