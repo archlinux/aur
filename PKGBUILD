@@ -1,4 +1,4 @@
-# Maintainer: Fabrizio del Tin <fdt@euniversity.pub>
+# Maintainer: phantom <info@euniversity.pub>
 pkgname=tlauncher-tl
 pkgver=999
 pkgrel=0
