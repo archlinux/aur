@@ -1,0 +1,16 @@
+pkgbase = perl-file-tee
+	pkgdesc = File::Tee
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/release/File-Tee
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SA/SALVA/File-Tee-0.07.tar.gz
+	md5sums = 663cf56b6fa52f6c377512ad04b0467b
+
+pkgname = perl-file-tee
