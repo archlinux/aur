@@ -4,12 +4,12 @@
 pkgname=fluffychat-bin
 _pkgname=fluffychat
 pkgver=0.35.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm' 'xdg-user-dirs' 'gtk3')
+depends=('libolm' 'xdg-user-dirs' 'gtk3' 'jsoncpp')
 makedepends=('unzip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
