@@ -1,0 +1,55 @@
+pkgbase = noto-fonts-cjk-vf
+	pkgdesc = Google Noto CJK variable fonts
+	pkgver = 20210430
+	pkgrel = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = custom:SIL
+	provides = noto-fonts-cjk
+	conflicts = noto-fonts-cjk
+	source = noto-fonts-cjk-vf-20210430.tar.gz::https://github.com/googlefonts/noto-cjk/archive/cee7438f5f8e66397090d483c15275d1af3d87c7.tar.gz
+	source = 70-noto-cjk.conf
+	source = 70-noto-hk.conf
+	source = 70-noto-jp.conf
+	source = 70-noto-kr.conf
+	source = 70-noto-sc.conf
+	source = 70-noto-tc.conf
+	sha256sums = e0b2b7d6eca2a336cd66d2a63e7145a961fd442601341075115dbe299fa3ddb5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = noto-fonts-cjk-vf
+
+pkgname = noto-fonts-cjk-hk-vf
+	pkgdesc = Google Noto CJK variable fonts - Traditional Chinese HK as default language (OpenType locl)
+
+pkgname = noto-fonts-cjk-jp-vf
+	pkgdesc = Google Noto CJK variable fonts - Japanese as default language (OpenType locl)
+
+pkgname = noto-fonts-cjk-kr-vf
+	pkgdesc = Google Noto CJK variable fonts - Korean as default language (OpenType locl)
+
+pkgname = noto-fonts-cjk-sc-vf
+	pkgdesc = Google Noto CJK variable fonts - Simplified Chinese as default language (OpenType locl)
+
+pkgname = noto-fonts-cjk-tc-vf
+	pkgdesc = Google Noto CJK variable fonts - Traditional Chinese as default language (OpenType locl)
+
+pkgname = noto-fonts-hk-vf
+	pkgdesc = Google Noto Traditional Chinese HK variable fonts
+
+pkgname = noto-fonts-jp-vf
+	pkgdesc = Google Noto Japanese variable fonts
+
+pkgname = noto-fonts-kr-vf
+	pkgdesc = Google Noto Korean variable fonts
+
+pkgname = noto-fonts-sc-vf
+	pkgdesc = Google Noto Simplified Chinese variable fonts
+
+pkgname = noto-fonts-tc-vf
+	pkgdesc = Google Noto Traditional Chinese variable fonts
