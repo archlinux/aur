@@ -1,6 +1,6 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="GeNN: GPU-enhanced neural networks"
 epoch=2
@@ -12,7 +12,7 @@ makedepends=(doxygen doxypypy python python-setuptools python-numpy swig)
 optdepends=("python: for pygenn" "python-numpy: for pygenn" "spinecreator: for spineml2genn")
 options=(staticlibs !emptydirs)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('1799e3f2443790613b80ce965df034421e85922048ae5c24d6c3d068c51bebcf')
+sha256sums=('f9c3191cd430aac87d2c47e9a4c206e495e6dfc26187e51dc300ff23cd961ead')
 install="${pkgname}.install"
 
 export CUDA_PATH=/opt/cuda
