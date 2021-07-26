@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=goimports-reviser-bin
 _pkgname=goimports-reviser
-pkgver=2.3.6
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Tool for Golang to sort goimports by 3-4 groups: std, general, local(which is optional) and project dependencies."
 arch=('x86_64')
