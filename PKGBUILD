@@ -8,13 +8,14 @@ pkgdesc="System for processing and editing of unstructured 3D models arising in 
 arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
 license=('GPL2')
-depends=('bzip2' 'glew' 'glu' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
-makedepends=('cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir')
+depends=('bzip2' 'cgal' 'glew' 'glu' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c')
+makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir' 'openctm-tools')
 optdepends=('u3d: for U3D and IDTF file support'
             'lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'levmar: for isoparametrization and mutualcorrs plugins'
             'muparser: for filer_func plugins'
-            'mpir: for Constructive Solid Geometry operation filters')
+            'mpir: for Constructive Solid Geometry operation filters'
+            'openctm-tools: for compressed triangle mesh file format')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 source=("$pkgname::git+https://github.com/cnr-isti-vclab/meshlab.git#tag=Meshlab-${pkgver}"
         "vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git#tag=${_pkgver_vcg}"
