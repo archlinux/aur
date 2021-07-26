@@ -1,10 +1,11 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
+# Contributer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='youtube_tool'
 pkgname="${_pkgname/_/-}"
 
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 _commit_license='dff77ede5e0e26a0484b129f8a0e6e2bb2666c41'
 
 pkgdesc='CLI tool to extract comments, subtitles or livechat content from a youtube video'
