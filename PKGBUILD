@@ -3,10 +3,18 @@
 # Submitter: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Co-maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-# Configuration.
-_fragment=${FRAGMENT:-#branch=master}
-[[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+# Use FRAGMENT=#{commit,tag,brach}=xxx for bisect build
+_fragment="${FRAGMENT:-#branch=master}"
+
+# Use CUDA_ARCH to build for specific GPU architecture
+# Supports: single arch (sm_52) and list of archs (sm_52;sm_60)
+[[ -v CUDA_ARCH ]] && _cuda_arch="-DCYCLES_CUDA_BINARIES_ARCH=${CUDA_ARCH}"
 
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
@@ -69,32 +77,31 @@ prepare() {
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+  msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
-    if [[ -v _CUDA_ARCH ]]; then
-      _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_CUDA_ARCH[*]}";)" )
-    fi
+                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+                    "$_cuda_arch" )
   fi
 
   # check for optix
-  _OPTIX_PKG=`pacman -Qq optix 2>/dev/null` || true
+  _OPTIX_PKG=$(pacman -Qq optix 2>/dev/null) || true
   if [ "$_OPTIX_PKG" != "" ]; then
       _CMAKE_FLAGS+=( -DWITH_CYCLES_DEVICE_OPTIX=ON
                       -DOPTIX_ROOT_DIR=/opt/optix )
   fi
 
   # check for open image denoise
-  _OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
+  _OIDN_PKG=$(pacman -Qq openimagedenoise 2>/dev/null) || true
   if [ "$_OIDN_PKG" != "" ]; then
       _CMAKE_FLAGS+=( -DWITH_OPENIMAGEDENOISE=ON )
   fi
 
   # check for universal scene descriptor
-  _USD_PKG=`pacman -Qq usd=21.02 2>/dev/null` || true
+  _USD_PKG=$(pacman -Qq usd=21.02 2>/dev/null) || true
   if [ "$_USD_PKG" != "" ]; then
     _CMAKE_FLAGS+=( -DWITH_USD=ON
                     -DUSD_ROOT=/usr )
