@@ -10,7 +10,7 @@ arch=('any')
 url="https://asm.ow2.io/"
 license=('BSD')
 depends=('java-runtime')
-_maven_central='http://repo.apache.maven.org/maven2'
+_maven_central='https://repo1.maven.org/maven2'
 source=("${_maven_central}/org/ow2/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.jar"
         "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-analysis/${pkgver}/${_pkgname}-analysis-${pkgver}.jar"
         "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-commons/${pkgver}/${_pkgname}-commons-${pkgver}.jar"

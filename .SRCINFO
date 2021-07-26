@@ -6,12 +6,12 @@ pkgbase = java-asm
 	arch = any
 	license = BSD
 	depends = java-runtime
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm/7.0/asm-7.0.jar
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm-analysis/7.0/asm-analysis-7.0.jar
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm-commons/7.0/asm-commons-7.0.jar
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm-tree/7.0/asm-tree-7.0.jar
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm-util/7.0/asm-util-7.0.jar
-	source = http://repo.apache.maven.org/maven2/org/ow2/asm/asm-test/7.0/asm-test-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm/7.0/asm-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/7.0/asm-analysis-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/7.0/asm-commons-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/7.0/asm-tree-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm-util/7.0/asm-util-7.0.jar
+	source = https://repo1.maven.org/maven2/org/ow2/asm/asm-test/7.0/asm-test-7.0.jar
 	source = LICENSE
 	sha256sums = b88ef66468b3c978ad0c97fd6e90979e56155b4ac69089ba7a44e9aa7ffe9acf
 	sha256sums = e981f8f650c4d900bb033650b18e122fa6b161eadd5f88978d08751f72ee8474
@@ -22,4 +22,3 @@ pkgbase = java-asm
 	sha256sums = 02f021ae8f8f2f205d36b20790eedd6a871dd3007ddf160c8692b6f3a3284fc7
 
 pkgname = java-asm
-
