@@ -2,11 +2,11 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=0.33.2
-_flutterversion=2.2.2-stable
+pkgver=0.35.0
+_flutterversion=2.2.3-stable
 pkgrel=1
 pkgdesc="Chat with your friends"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
 depends=('libolm' 'xdg-user-dirs' 'gtk3')
@@ -20,8 +20,8 @@ conflicts=("$pkgname")
 source=(
     "flutter-${_flutterversion}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterversion}.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('da1ebc597563b5d3e46d8fd5bb505cae645443c1b653d7b4fbed7c083f4d498a'
-            '17e7ee6f1e788ca099c1aa05db12e91bfaf69bfdaa69bd0c03d20e4ed731f4ce')
+sha256sums=('66a271aa9f4286596841f5c89fd5d22e4ae0042127459e88d5650ca989ba948d'
+            '0f56ecc47d803faf0440f50628de943521057d7f6fdcfb072ef9385fcf5ff352')
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"

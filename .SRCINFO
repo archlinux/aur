@@ -1,9 +1,10 @@
 pkgbase = fluffychat
 	pkgdesc = Chat with your friends
-	pkgver = 0.33.2
+	pkgver = 0.35.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	makedepends = clang
 	makedepends = ninja
@@ -15,9 +16,9 @@ pkgbase = fluffychat
 	depends = gtk3
 	provides = fluffychat
 	conflicts = fluffychat
-	source = flutter-2.2.2-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.2-stable.tar.xz
-	source = fluffychat-v0.33.2.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v0.33.2/fluffychat-v0.33.2.tar.gz
-	sha256sums = da1ebc597563b5d3e46d8fd5bb505cae645443c1b653d7b4fbed7c083f4d498a
-	sha256sums = 17e7ee6f1e788ca099c1aa05db12e91bfaf69bfdaa69bd0c03d20e4ed731f4ce
+	source = flutter-2.2.3-stable.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.3-stable.tar.xz
+	source = fluffychat-v0.35.0.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v0.35.0/fluffychat-v0.35.0.tar.gz
+	sha256sums = 66a271aa9f4286596841f5c89fd5d22e4ae0042127459e88d5650ca989ba948d
+	sha256sums = 0f56ecc47d803faf0440f50628de943521057d7f6fdcfb072ef9385fcf5ff352
 
 pkgname = fluffychat
