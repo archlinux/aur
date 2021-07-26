@@ -1,0 +1,11 @@
+pkgbase = midicomp-git
+	pkgdesc = Convert SMF MIDI files to and from plain text
+	pkgver = r27.70f7696
+	pkgrel = 1
+	url = https://github.com/markc/midicomp
+	arch = x86_64
+	license = AGPLv3
+	source = midicomp::git+https://github.com/markc/midicomp.git
+	md5sums = SKIP
+
+pkgname = midicomp-git
