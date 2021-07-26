@@ -1,6 +1,6 @@
 # Maintainer: Nogweii <me@nogweii.net>
 pkgname=zk
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A command-line tool helping you to maintain a Zettelkasten or personal wiki.'
 arch=('x86_64' 'i686' 'aarch64')
