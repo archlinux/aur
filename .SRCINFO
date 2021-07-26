@@ -1,0 +1,14 @@
+pkgbase = go-yq-bin
+	pkgdesc = portable command-line YAML processor
+	pkgver = 4.11.2
+	pkgrel = 1
+	url = https://github.com/mikefarah/yq
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	conflicts = yq
+	conflicts = go-yq
+	source = https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64.tar.gz
+	sha256sums = f21d0332945e60ac8ad7f77668224c2e688d28b8e66da2f5cfdf4c27dcb90933
+
+pkgname = go-yq-bin
