@@ -13,7 +13,7 @@ source=('https://www.cns11643.gov.tw/AIDB/Open_Data.zip'
         '53-twcns.conf' # grab from older version of rpm
         'LICENSE-zh_TW'
         'LICENSE')
-sha256sums=('7ffbbd6bb8373df944663041a06e68ab26ae7e396928c43e14a052b6dea8082a'
+sha256sums=('7c20fe628a1efd75fe0b2a91717e4a2e5c52cf42b5c6d3495dff8d4416b34c23'
             'd24c12eab3666a0dc8b64327ae9d79512cd0cf4c8b71284e9dfec6f6273d8abc'
             '5752216377a7b59433b2cc83164be2f93533446e72953a1d4769ceddd1349a00'
             '114afb4ba741595b69fbabb5e1d6668f095bbe4acfee5e5358d83cfbc72f1351')
