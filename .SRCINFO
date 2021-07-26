@@ -1,0 +1,14 @@
+pkgbase = python-h5py-docs
+	pkgdesc = Set of HTML documentation for python-h5py
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://docs.h5py.org/
+	arch = any
+	license = BSD
+	makedepends = links
+	options = docs
+	options = !strip
+	source = python-h5py-docs-3.2.1.zip::https://docs.h5py.org/_/downloads/en/3.2.1/htmlzip/
+	sha256sums = SKIP
+
+pkgname = python-h5py-docs
