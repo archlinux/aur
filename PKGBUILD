@@ -9,23 +9,24 @@ arch=("any")
 url="https://github.com/webrecorder/pywb"
 license=("GPL3")
 depends=('python'
-	 'python-six'
-	 'python-warcio'
-	 'python-requests'
-	 'python-redis'
-	 'python-jinja'
-	 'python-surt'
 	 'python-brotli'
-	 'python-yaml'
-	 'python-werkzeug'
-	 'python-webencodings'
-	 'python-gevent'
-	 'python-webassets'
-	 'python-portalocker'
-	 'python-wsgiprox-git'
+	 'python-dateutil'
 	 'python-fakeredis'
+	 'python-gevent'
+	 'python-jinja'
+	 'python-portalocker'
+	 'python-py3amf'
+	 'python-redis'
+	 'python-requests'
+	 'python-six'
+	 'python-surt'
 	 'python-tldextract'
-	 'python-dateutil')
+	 'python-warcio'
+	 'python-webassets'
+	 'python-webencodings'
+	 'python-werkzeug'
+	 'python-wsgiprox-git'
+	 'python-yaml')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/webrecorder/pywb")
 sha256sums=('SKIP')
