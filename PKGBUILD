@@ -27,5 +27,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --skip-build --optimize=1
-    rm -Rf ${pkgdir}/usr/lib/*/site-packages/test/    
+    rm -rf ${pkgdir}/usr/lib/*/site-packages/test/    
 }
