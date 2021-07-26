@@ -1,0 +1,15 @@
+pkgbase = pamod-git
+	pkgdesc = Simple bash-based pacman wrapper that lets you install AUR packages and do some other things
+	pkgver = master
+	pkgrel = 1
+	url = http://codeberg.org/glowiak/pamod
+	arch = any
+	license = GPL2
+	depends = bash
+	depends = curl
+	depends = git
+	depends = package-query
+	source = http://codeberg.org/glowiak/pamod/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = pamod-git
