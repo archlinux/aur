@@ -1,7 +1,7 @@
 pkgbase = octoprint
 	pkgdesc = The snappy web interface for your 3D printer on Arch Linux
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
