@@ -5,8 +5,7 @@ pkgbase = intellij-idea-ultimate-without-jbr
 	url = https://www.jetbrains.com/idea/
 	arch = x86_64
 	license = GPL3
-	depends = java-environment>=11
-	optdepends = jre11-openjdk: OPenJDK Java 11 full runtime environment
+	depends = java-runtime>=11
 	conflicts = intellij-idea-ultimate-with-jbr
 	conflicts = intellij-idea-ultimate-edition
 	conflicts = intellij-idea-ultimate-edition-jre

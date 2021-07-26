@@ -8,8 +8,7 @@ arch=(x86_64)
 options=(!strip)
 url='https://www.jetbrains.com/idea/'
 license=('GPL3')
-depends=('java-environment>=11')
-optdepends=('jre11-openjdk: OPenJDK Java 11 full runtime environment')
+depends=('java-runtime>=11')
 conflicts=('intellij-idea-ultimate-with-jbr' 'intellij-idea-ultimate-edition' 'intellij-idea-ultimate-edition-jre')
 
 source=(
