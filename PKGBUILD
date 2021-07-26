@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=terri-fried-git
 pkgver=r34.463aa1e
-pkgrel=4
+pkgrel=5
 pkgdesc="A multi-platform C++ game made for Ludum Dare 46"
 arch=('any')
 url="https://github.com/polymarsdev/terri-fried"
@@ -19,7 +19,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/terri-fried-git/windows/raylib"
-	g++ $CXXFLAGS -o terri-fried main.cpp player.cpp platform.cpp -lraylib
+	g++ -c -o player.o $CXXFLAGS player.cpp
+	g++ -c -o platform.o $CXXFLAGS platform.cpp
+	g++ -c -o main.o $CXXFLAGS main.cpp
+	g++ -o terri-fried player.o platform.o main.o -lraylib
 }
 
 package() {
