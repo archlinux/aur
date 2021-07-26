@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
 	pkgver = 40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL

@@ -8,7 +8,7 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth-nox
 pkgname=(gdm-plymouth-nox libgdm-plymouth-nox)
 pkgver=40.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Display manager and login screen with plymouth support, but without xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
@@ -45,7 +45,7 @@ build() {
     -D dbus-sys="/usr/share/dbus-1/system.d" \
     -D default-pam-config=arch \
     -D default-path="/usr/local/bin:/usr/local/sbin:/usr/bin" \
-    -D gdm-xsession=false \
+    -D gdm-xsession=true \
     -D ipv6=true \
     -D run-dir=/run/gdm \
     -D selinux=disabled
