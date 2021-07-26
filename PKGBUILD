@@ -2,10 +2,10 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.26.5
+pkgver=1.27.1
 pkgrel=1
-_jslibcommit='62beab8d8f5b85e2d960b6dc80ba8190d672aa72'
-_nodeversion='14.17.0'
+_jslibcommit='dbd92194ee4536d87bed5d89f39078e68c59a06c'
+_nodeversion='14.17.3'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64' 'aarch64')
 url='https://github.com/bitwarden/desktop'
@@ -17,11 +17,13 @@ options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
         "package.json.patch"
+        "jslib-angular-package.json.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('7cabf18174421c857c33b816191744909ae77c8c2041af6bb4cae10902ee512ae338ce88b1854180c16e5ca5607e55e44a943fa2fb3aeededa588cb0f8fb167e'
-            'b95f94e6c358d491791785e558caad3f06808f205fc6b9ed1240ef280caedecb29bb8b101d801aaa41564fb86485df82cd0d5ab228fcccb34356f628d034b4b9'
-            '9d5b67c534cca77c62c7965a26f44a447611f38d4c8d57fdc1689b606ad2c1e7bbb7db4a50f185db4023478aed97015497bfd9dcd4ab62c4e8370b74ae458ced'
+sha512sums=('de2c476581cac6a8a875d3d6ff11e67cd74f4b1c5dcf00a98df4541b38b848382901dca1284940e4006fbb234bb43a69c24e3c945f73e71f0a448795c41136bf'
+            '86eb6d0de6efb6f0e2d18c94787f3a4b881234c998407d03cc2ce6c1f5ae56033552e873dfa80d2357405ca2b772fbcfb3085196d7f83deadb02e2d7fe351ea3'
+            '4e7496960ff01212809d165fea1d3a7ce1e4da73c65d7bef34b1da9d245b49d4092b19823a8966c69b4dbe01508ee2b1fd624395b6096d7df12bfcf475f8c718'
+            'dfd5e24512444ea0b4b45b41da39fac28476c14fda22a7afd8bee2436fdad348d3ba51df7b0bbfd1039496214f2e8a6ec2d8b0dd0ad3b95825cece110790e0db'
             '32c29a7baed80351acf5753d35df404a818d5c88cc85f3bbed2daa5351aaf0dba20fd03cbedbcb407324f305d4556adb476ecc9ccd07bac0511ca4a943020ea4'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
@@ -31,8 +33,11 @@ prepare() {
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/desktop-${pkgver}/jslib"
   cd "${srcdir}/desktop-${pkgver}"
 
-  # Patch out postinstall routines
-  patch --strip=1 package.json ${srcdir}/package.json.patch
+  # Apply package.json patches
+  patch --strip=1 "${srcdir}/desktop-${pkgver}/package.json" ${srcdir}/package.json.patch
+  # TODO(libertylocked): See https://github.com/bitwarden/jslib/issues/440
+  patch --strip=1 "${srcdir}/jslib-${_jslibcommit}/angular/package.json" \
+    ${srcdir}/jslib-angular-package.json.patch
 
   # Patch build to make it work with system electron
   local system_electron_version=$(pacman -Q electron11 | cut -d' ' -f2 | cut -d'-' -f1)
@@ -50,6 +55,8 @@ build() {
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  cd "${srcdir}/desktop-${pkgver}/jslib/angular"
+  npm install
   cd "${srcdir}/desktop-${pkgver}/jslib"
   npm install
   cd "${srcdir}/desktop-${pkgver}"
