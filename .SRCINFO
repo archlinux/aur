@@ -1,14 +1,13 @@
 pkgbase = nodejs-feathers-cli
 	pkgdesc = The command line interface for Feathers applications
-	pkgver = 4.4.3
+	pkgver = 4.5.0
 	pkgrel = 0
 	url = https://github.com/feathersjs/feathers-cli#readme
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = v4.4.3.tar.gz
-	source = https://github.com/feathersjs/cli/archive/v4.4.3.tar.gz
-	sha256sums = ae3574f6dec0965192493e6686fd32a2d73db494895d6659345244f86254df1c
+	noextract = v4.5.0.tar.gz
+	source = https://github.com/feathersjs/cli/archive/v4.5.0.tar.gz
+	sha256sums = f6789f4adaf4afde4971e50e8464c14dec2f1406c15e050ecc4cf5ebb83b015c
 
 pkgname = nodejs-feathers-cli
-
