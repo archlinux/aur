@@ -16,6 +16,11 @@ noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
 	cd "$srcdir/$pkgname"
 	install -D -m755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
