@@ -1,13 +1,12 @@
 pkgbase = swaymgr
 	pkgdesc = Sway autotiling manager
-	pkgver = 0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = go
 	makedepends = git
-	source = swaymgr::https://github.com/Difrex/swaymgr/archive/0.1.tar.gz
+	source = swaymgr::https://github.com/Difrex/swaymgr/archive/0.1.1.tar.gz
 	md5sums = 3043058ad20d9deca536dc2b653f6dbf
 
 pkgname = swaymgr
-
