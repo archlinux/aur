@@ -1,7 +1,7 @@
 pkgbase = cloudcompare
 	pkgdesc = A 3D point cloud (and triangular mesh) processing software
 	pkgver = 2.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.danielgm.net/cc/
 	arch = i686
 	arch = x86_64
@@ -39,6 +39,7 @@ pkgbase = cloudcompare
 	source = pcl.patch
 	source = CloudCompare.desktop
 	source = ccViewer.desktop
+	source = pdal_230.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 984e6186f6483534a52cb153b65dee016904eb9efdb89211c2c0042eea2417ff
@@ -46,6 +47,6 @@ pkgbase = cloudcompare
 	sha256sums = 183f05dee316bdf7c6e9935e2a21b79b2172f61df5b0b6954bcd0d74751afc64
 	sha256sums = 14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe
 	sha256sums = 821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc
+	sha256sums = 70e5c6e932c1cf61dc9add064c2e165737db26a5fdda696c2e9cf92cbfd257c6
 
 pkgname = cloudcompare
-

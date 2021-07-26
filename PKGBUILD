@@ -9,7 +9,7 @@ name=cloudcompare
 _fragment="#tag=v2.11.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
@@ -24,6 +24,7 @@ source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragmen
         pcl.patch
         CloudCompare.desktop
         ccViewer.desktop
+        pdal_230.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -31,11 +32,12 @@ sha256sums=('SKIP'
             '1789d726d65478857633fa4797da7c3ea4c13d90cdcc169d4197c58d2d33f123'
             '183f05dee316bdf7c6e9935e2a21b79b2172f61df5b0b6954bcd0d74751afc64'
             '14096df9cf7aca3099d5df1585d1cf669544e9b10754dce3d2507100dd7034fe'
-            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc')
+            '821ac2540e1196774e26f8033946ce7b36223dae7a2a7c78f4a901b4177f68cc'
+            '70e5c6e932c1cf61dc9add064c2e165737db26a5fdda696c2e9cf92cbfd257c6')
 
 prepare() {
   git -C "${srcdir}/${name}" submodule update --init --recursive
-  git -C "${srcdir}/${name}" apply -v "${srcdir}"/{constexpr,pcl}.patch
+  git -C "${srcdir}/${name}" apply -v "${srcdir}"/{constexpr,pcl,pdal_230}.patch
   git -C "${srcdir}/${name}-cork" apply -v "${srcdir}"/cork.patch
   #fix gcc:11 porting
   sed '1 i\#include <limits>' -i "${srcdir}/${name}"/plugins/core/IO/qE57IO/extern/libE57Format/src/E57XmlParser.cpp
