@@ -1,0 +1,11 @@
+pkgbase = yt-dlp-drop-in
+	pkgdesc = Emulate youtube-dl executables with yt-dlp (youtube-dlp)
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = yt-dlp
+	provides = youtube-dl
+	conflicts = youtube-dl
+
+pkgname = yt-dlp-drop-in
