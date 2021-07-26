@@ -1,6 +1,6 @@
 pkgbase = cutie-tanks
 	pkgdesc = Shoot 'em all arcade game
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/RobinBoers/cutie-tanks
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cutie-tanks
 	depends = electron
 	provides = cutie-tanks
 	source = git+https://github.com/RobinBoers/cutie-tanks#branch=bin
-	source = cutie-tanks
+	source = sh
 	source = cutie-tanks.desktop
 	source = icon.png
 	md5sums = SKIP
