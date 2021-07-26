@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.12
-_minor=19
+_major=5.13
+_minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -62,22 +62,16 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
-_aufs_ver="20210517"
+_aufs_ver="20210705"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
-_compiler_path="cpu-patches-v5-sep"
+_compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0002-x86-setup-Consolidate-early-memory-reservations.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0007-x86-crash-remove-crash_reserve_low_1M.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -316,18 +310,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2d010d6d75052083300b1a629dbec25a39f6314a1871ed355133bb59946453915a2265f4ba26e60119ee0d05abb9859c5ee7d8fb8dd816c476ebfdb76d3399ef'
+sha512sums=('887a907f5923630224d2bbadd1e60e49856460ee5fde9fd6de770d908bada5c6fe1669f9ed64418695e9101a8e5069854beb23714dc8138cdf9ea7e319b10743'
             'SKIP'
-            'bf0e8fffff709d60d020c14bbff1666d1065e9b934094c9d7642f471dba7d831293fea89fb0068d98685a2c6da4b4b8a852283ed03434f157ad1f45d109529e9'
-            '488586fe0e9613a651a0c145a13e82d92bfe713076dde38c859f165b74c2c3bb9063828e6b90f2929af05bf1e1d032d4b209380b4b56a4ad998ddb6829680bac'
-            'dc6e19ca9e43ecc94e3fd4eb2c6c6fb40e802f22eae707b091e8d5c4a80603cd5c6236072b5759234226369066ab276ef56514b65dc2a59ea18ff47c6e36108f'
-            '6b67c87e6480664844e35d001169b0238279789c0cef3b0d4b0acef87a6c4d0eaf62ceacdaf98ed5358f813c9955212fa34c925cdf21b4bf2c0b74d76d15ccde'
-            'c189f8833280fd1751d2013b486be48f71d691204ba3a774842a6e7ebf72f83ca88b42914d841479e5a09dfa05a302b17bd20712e3787086290810895fb64659'
-            'aba9f959ad1a698e1e6230ad3be1df4173cd731a8d1b822523185387a6dde00dba6e4f0facf44bf4d6004b236627914374384508c933f46a94bf3b936b514516'
-            'd60e24ef65402bcc9c10e424eeae5fe033f08c4a12d98299e885109e9e9cadbf726fc083bb3dcd0b5d821e7ee84aa1feb97695c7905f202bc0bbe4f3e5104fee'
-            '9d8dc471c35c868794dbed30df0ba95e856707d48bc53d0f15b6dcb6659faf389a56ef4177f3961a45c864bfd224add4e126640f9283898e4d836c3180935450'
-            'fb84fc91e6be7b696aaf98177a124c321673c5e43c80daad8590faea13500624f5e759dac44a0eb6b6003ccccb793ca34ce27c65ccc96fb7253b0b3038df68cf'
-            'f70dbb61fb73235ed53bcc88c21b45481a3f069c07e75d19ec19f0205b8f6b06980c731321abfcf21235d860675e47593d462fc15603fe9bb88c41b86d2988bc')
+            'e7b2225236c69a03de7ebb2bb76111f6e6060ac6616bb5a8cb3ba6550346ce91959dd15c6acaf05641e5cc5cb5ee3ebd9129e8cbc711407d788c38ec3c4b68dc'
+            '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
+            'fddbdd4897d79b2b511720400a5024731aa400dd1eb394c31046fad6f9613a8d984daf2d267d95688b1de3ee671d1a3f637866a277a98806bf6b801423d4af01'
+            'd3dd3f1b9ddcc508fc73c686d72ef8c78fb7ac05fddb3e836ff0aa71e9a7be0bfabd1eedbd05b01ebfb5ad35d88a4e44b89a590eb03b2aade436a6c6cbc544cf')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
