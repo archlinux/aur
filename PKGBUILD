@@ -10,7 +10,7 @@ makedepends=('binutils')
 depends=('bash>=4.0.0')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d31e5304af7e35969dd138bb957d3ffcc71c8b1639cd1ad6d4a1c6b1ca0f3706')
+sha256sums=('c7be31154661cf90d83bb71e7e589c28140d4121d8a51dd8a64a7441f14f9878')
 
 package() {
 	cd "$pkgname-$pkgver"
