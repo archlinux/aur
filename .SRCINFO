@@ -1,0 +1,17 @@
+pkgbase = huaweicloud-obs-obsfs-git
+	pkgdesc = A file system tool provided by Object Storage Service (OBS) for mounting OBS parallel file systems
+	pkgver = 1.83.9ee91c6
+	pkgrel = 1
+	url = https://support.huaweicloud.com/intl/en-us/fstg-obs/obs_12_0001.html
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libxml2
+	depends = curl
+	depends = fuse2
+	provides = huaweicloud-obs-obsfs
+	conflicts = huaweicloud-obs-obsfs
+	source = git+https://github.com/huaweicloud/huaweicloud-obs-obsfs.git
+	md5sums = SKIP
+
+pkgname = huaweicloud-obs-obsfs-git
