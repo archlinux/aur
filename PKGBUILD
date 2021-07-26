@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-truezen-git
-pkgver=r1030.9a0567c
-pkgrel=2
+pkgver=r1080.bd7d0f6
+pkgrel=1
 pkgdesc="Clean and elegant distraction-free writing for Neovim"
 arch=('any')
 url="https://github.com/pocco81/truezen.nvim"
@@ -23,6 +23,6 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	find doc lua plugin \
-	  -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	  -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
