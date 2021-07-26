@@ -12,7 +12,7 @@ depends=(
 	'glibc=2.33'
 	'findutils'
 	'coreutils'
-	'linux-utils'
+	'util-linux'
 )
 makedepends=(
 	'patch'
