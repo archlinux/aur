@@ -1,11 +1,16 @@
 pkgbase = ruby-oj
 	pkgdesc = The fastest JSON parser and object serializer
 	pkgver = 3.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ohler.com/oj/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rake-compiler
+	checkdepends = ruby-minitest
+	checkdepends = ruby-test-unit
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
