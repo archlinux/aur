@@ -1,25 +1,23 @@
 pkgbase = wineasio-git
-	pkgdesc = WineASIO provides an ASIO to JACK driver for WINE.
-	pkgver = r50.4b23797
-	pkgrel = 2
-	url = https://github.com/jhernberg/wineasio
-	install = wineasio.install
+	pkgdesc = ASIO driver implementation for Wine
+	pkgver = v1.0.0.r2.g0a97f2f
+	pkgrel = 1
+	url = https://github.com/wineasio/wineasio
 	arch = i686
 	arch = x86_64
+	arch = x86_64_v3
 	license = LGPL
-	makedepends = ed
-	makedepends = steinberg-asio-sdk
 	depends = wine
 	depends = jack
 	provides = wineasio
 	conflicts = wineasio
-	source = wineasio-git::git+https://github.com/jhernberg/wineasio
-	source = unicode.h
+	source = git+https://github.com/wineasio/wineasio.git
+	source = git+https://github.com/falkTX/rtaudio.git
+	source = setup_wineasio.sh
 	sha256sums = SKIP
-	sha256sums = a552e487cba95883a15db612ae646df5d502a39afd7c4805b4ca0b549cc2f522
+	sha256sums = SKIP
+	sha256sums = 6ab4819215d9cb2fe5133380ab629538fa5de7ddb0bea82f1b4cef7904cb856d
 	depends_x86_64 = lib32-jack
 	makedepends_x86_64 = gcc-multilib
-	makedepends_x86_64 = mingw-w64-headers
 
 pkgname = wineasio-git
-
