@@ -1,0 +1,16 @@
+pkgbase = perl-shiftjis-cp932-maputf
+	pkgdesc = ShiftJIS::CP932::MapUTF - transcode between Microsoft CP932 and Unicode
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/release/ShiftJIS-CP932-MapUTF
+	arch = x86_64
+	arch = i686
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SA/SADAHIRO/ShiftJIS-CP932-MapUTF-1.03.tar.gz
+	md5sums = fe938c560101ae442a0bc6fe5b5f4aca
+
+pkgname = perl-shiftjis-cp932-maputf
