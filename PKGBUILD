@@ -6,10 +6,10 @@
 # Mozc compile option
 _bldtype=Release
 
-_mozcver=2.26.4416.102
+_mozcver=2.26.4444.102
 _fcitxver=20210329
 _iconver=20201229
-_utdicver=20210627
+_utdicver=20210725
 pkgver=${_mozcver}.${_utdicver}
 pkgrel=1
 
@@ -37,14 +37,14 @@ source=(
 )
 
 sha256sums=(
-  'baa27dd044cdf7c30c770f0a527b8ef60249fb215ff2ffb13ddfa2759f4503e5'
+  '8c9040297a838faa8417439ddb1fd5c8881c38f7f3e6200f5147bfea460aed4f'
   '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
   '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
   'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
   '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
   'b8c0e65b3e3f8cff8e35a8e044158d78bd534a3a64389cd98256b2a1b4f232ed'
   '7985e6e8c4f4f45f8d040e54715c90b54cd51bb86f6a97fa3bdb17b2137e927d'
-  '5fc2a5c46ca2188cc6635b670c5e3c7cf46ed9f1ccdc7c1ef25f27aa3b31f7fc'
+  'ff431c6da2344d400f3e1eb875cf5f870429f8febb24db63814a4a92dcc618c6'
   'SKIP'
   'SKIP'
 )
