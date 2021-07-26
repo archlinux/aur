@@ -28,6 +28,8 @@ pkgbase = zoom-bin
 	depends = dbus
 	depends = ibus
 	provides = zoom
+	conflicts = zoom
+	conflicts = zoom-system-qt
 	source = https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz
 	sha256sums = 36807dab1b2e1ac8b0b19dd8f85dd6669b33ba33c15ff9de86d14523e28f5791
 

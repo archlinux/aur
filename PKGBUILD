@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://zoom.us/download"
 license=('custom')
 provides=('zoom')
+conflicts=('zoom' 'zoom-system-qt')
 depends=('libx11' 'libxtst' 'libsm' 'libxi' 'nss' 'xcb-util-image' 'xcb-util-keysyms' 'libxcb' 'glib2' 'libxshmfence' 'libpulse' 'pulseaudio-alsa' 'libxfixes' 'libxrandr' 'fontconfig' 'mesa' 'libxrender' 'libxcomposite' 'libxslt' 'dbus' 'ibus')
 install=zoom-bin.install
 source=("https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz")
