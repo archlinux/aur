@@ -1,6 +1,6 @@
 pkgbase = avdl
 	pkgdesc = Abstract video-game development language compiler
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://notabug.org/tomtsagk/avdl
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = avdl
 	depends = sdl2_mixer
 	depends = freeglut
 	depends = glew
-	source = https://notabug.org/tomtsagk/avdl/archive/v0.0.0.tar.gz
-	md5sums = 04b7d79031597ad46108d984beb79353
+	source = https://notabug.org/tomtsagk/avdl/archive/v0.0.1.tar.gz
+	md5sums = c5bf61b83fc5c25b02686b28beddaca6
 
 pkgname = avdl
