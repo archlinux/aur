@@ -1,7 +1,7 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Vasiliy Bukharev <b dot v dot p at outlook dot com>
 
 pkgname=go-dsp-guitar
-pkgver=1.6.1
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="A cross-platform multichannel multi-effects processor for electric guitars and other instruments"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('jack' 'glibc')
 makedepends=('go' 'openssl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andrepxx/go-dsp-guitar/archive/v${pkgver}.tar.gz")
-sha256sums=('3448896394fc12a04f831205618bdabd0f267e80dd6c0a8a85e7f7ce13eb2ef2')
+sha256sums=('6da8f42b81f22c820d6ffced2ca5dd385f0edcdbc0a301b662f27c486415cfbc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -29,6 +29,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
+  export GO111MODULE="auto"
   go get -d -v
   go build -o build ./...
 }
