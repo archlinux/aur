@@ -47,10 +47,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
-_major=5.12
-_minor=19
+_major=5.13
+_minor=5
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,9 +71,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K210619"
+_bfq_rel="r2K210721v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_compiler_path="cpu-patches-v5-sep"
+_compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -81,13 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0002-x86-setup-Consolidate-early-memory-reservations.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0003-x86-setup-Merge-several-reservations-of-start-of-mem.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0004-x86-setup-Move-trim_snb_memory-later-in-setup_arch-t.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0005-x86-setup-always-reserve-the-first-1M-of-RAM.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0006-x86-setup-remove-CONFIG_X86_RESERVE_LOW-and-reservel.patch"
-        "${_lucjanpath}/arch-patches-v7-sep/0007-x86-crash-remove-crash_reserve_low_1M.patch"
+        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -334,18 +328,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2d010d6d75052083300b1a629dbec25a39f6314a1871ed355133bb59946453915a2265f4ba26e60119ee0d05abb9859c5ee7d8fb8dd816c476ebfdb76d3399ef'
+sha512sums=('887a907f5923630224d2bbadd1e60e49856460ee5fde9fd6de770d908bada5c6fe1669f9ed64418695e9101a8e5069854beb23714dc8138cdf9ea7e319b10743'
             'SKIP'
-            '168b6b2be5a04f3b435db0cffc1f89fd32342d086e076d730b337de4e9c8677aad5061ce6585116609aed70bc0bbce4b02d8391bf3761dadd77afac7ab536b01'
-            '488586fe0e9613a651a0c145a13e82d92bfe713076dde38c859f165b74c2c3bb9063828e6b90f2929af05bf1e1d032d4b209380b4b56a4ad998ddb6829680bac'
-            'dc6e19ca9e43ecc94e3fd4eb2c6c6fb40e802f22eae707b091e8d5c4a80603cd5c6236072b5759234226369066ab276ef56514b65dc2a59ea18ff47c6e36108f'
-            '6b67c87e6480664844e35d001169b0238279789c0cef3b0d4b0acef87a6c4d0eaf62ceacdaf98ed5358f813c9955212fa34c925cdf21b4bf2c0b74d76d15ccde'
-            'c189f8833280fd1751d2013b486be48f71d691204ba3a774842a6e7ebf72f83ca88b42914d841479e5a09dfa05a302b17bd20712e3787086290810895fb64659'
-            'aba9f959ad1a698e1e6230ad3be1df4173cd731a8d1b822523185387a6dde00dba6e4f0facf44bf4d6004b236627914374384508c933f46a94bf3b936b514516'
-            'd60e24ef65402bcc9c10e424eeae5fe033f08c4a12d98299e885109e9e9cadbf726fc083bb3dcd0b5d821e7ee84aa1feb97695c7905f202bc0bbe4f3e5104fee'
-            '9d8dc471c35c868794dbed30df0ba95e856707d48bc53d0f15b6dcb6659faf389a56ef4177f3961a45c864bfd224add4e126640f9283898e4d836c3180935450'
-            'fb84fc91e6be7b696aaf98177a124c321673c5e43c80daad8590faea13500624f5e759dac44a0eb6b6003ccccb793ca34ce27c65ccc96fb7253b0b3038df68cf'
-            'b093bfe31b9f00a80320087742ce8a11344488c70b23f0bc2cd2716715aef7862ad83cd8968217aa4c2627e71ae91452e12bfd7651ab1271f91c400cfdf56fa1')
+            'fd300e81747f6b8967a48462890cbe6d611967e298c95c4724c5858620c6ed798b7fd14091e2ee6e6308eebfbb01478885038a90f8b825bd32564e9ff0918ea2'
+            '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
+            'fddbdd4897d79b2b511720400a5024731aa400dd1eb394c31046fad6f9613a8d984daf2d267d95688b1de3ee671d1a3f637866a277a98806bf6b801423d4af01'
+            '366454c77d4c1d537bc113b014f6a93026a2ba9b989b59aa689ab6974fd54df46871b7cc2d4c491d1a1547154d6a7cc9f64f8cc53c3e25ba490ad8dcd32584ea')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
