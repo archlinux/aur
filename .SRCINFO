@@ -1,6 +1,6 @@
 pkgbase = go-yq
 	pkgdesc = portable command-line YAML processor
-	pkgver = 4.11.1
+	pkgver = 4.11.2
 	pkgrel = 1
 	url = https://github.com/mikefarah/yq
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = go-yq
 	makedepends = go
 	depends = glibc
 	conflicts = yq
-	source = https://github.com/mikefarah/yq/archive/v4.11.1/yq-4.11.1.tar.gz
-	sha256sums = 0a4cb1e93114334ccbbffd468f29b27d0fae4857865ae91c570c06ef94a9bd33
+	source = https://github.com/mikefarah/yq/archive/v4.11.2/yq-4.11.2.tar.gz
+	sha256sums = 910f64ceceabed5f63550a29923c158612be94f2855b0d10fdb549d8ad826a5f
 
 pkgname = go-yq
