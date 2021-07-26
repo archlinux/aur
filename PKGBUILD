@@ -1,38 +1,37 @@
-# Maintainer: Jesus Franco <jesusfranco at gmail dot com>
+# Maintainer: Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 _pkgname="image-optimizer"
 pkgname="${_pkgname}-git"
 _gitname=Image-Optimizer
-pkgver=c79ae12
+pkgver=0a9f6ee
 pkgrel=1
 pkgdesc="Simple losless image optimizer build for Elementary OS"
 arch=('i686' 'x86_64')
 url="https://github.com/gijsgoudzwaard/image-optimizer"
 license=('MIT')
 
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'imagemagick')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'imagemagick' 'optipng' 'jpegoptim')
 optdepends=('elementary-icon-theme')
-makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'optipng' 'jpegoptim' 'cmake' 'cmake-modules-elementary')
+makedepends=('git' 'desktop-file-utils' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'cmake')
 options=('!libtool')
 conflicts=('image-optimizer' 'image-optimizer-bzr')
 provides=('image-optimizer')
 source=("git+https://github.com/GijsGoudzwaard/Image-Optimizer.git")
 md5sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/Image-Optimizer"
-    git describe --always | sed 's/^v//;s/-/./g;s/_/./g;'
-}
-
 build() {
     cd "${srcdir}/${_gitname}/"
-    mkdir build/ && cd build
-    cmake ..
-    make
+    meson build --prefix=${pkgdir}/usr
+}
+
+check() {
+    cd "${srcdir}/${_gitname}/build"
+    ninja test
 }
 
 package() {
-    cd "${srcdir}/${_gitname}/"
-    cd build
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${_gitname}/build"
+    ninja install
+    rm "${pkgdir}/usr/share/applications/mimeinfo.cache"
+    rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }

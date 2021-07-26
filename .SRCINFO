@@ -1,6 +1,6 @@
 pkgbase = image-optimizer-git
 	pkgdesc = Simple losless image optimizer build for Elementary OS
-	pkgver = c79ae12
+	pkgver = 0a9f6ee
 	pkgrel = 1
 	url = https://github.com/gijsgoudzwaard/image-optimizer
 	arch = i686
@@ -8,15 +8,11 @@ pkgbase = image-optimizer-git
 	license = MIT
 	makedepends = git
 	makedepends = desktop-file-utils
-	makedepends = hicolor-icon-theme
 	makedepends = intltool
 	makedepends = yelp-tools
 	makedepends = gnome-common
 	makedepends = gobject-introspection
-	makedepends = optipng
-	makedepends = jpegoptim
 	makedepends = cmake
-	makedepends = cmake-modules-elementary
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
@@ -26,6 +22,8 @@ pkgbase = image-optimizer-git
 	depends = gtksourceview3
 	depends = libdbusmenu-gtk3
 	depends = imagemagick
+	depends = optipng
+	depends = jpegoptim
 	optdepends = elementary-icon-theme
 	provides = image-optimizer
 	conflicts = image-optimizer
@@ -35,4 +33,3 @@ pkgbase = image-optimizer-git
 	md5sums = SKIP
 
 pkgname = image-optimizer-git
-
