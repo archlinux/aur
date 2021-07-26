@@ -1,6 +1,6 @@
 pkgbase = syncplay-git
 	pkgdesc = synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers
-	pkgver = 1.6.4a.r4.3c27341
+	pkgver = 1.6.8.r8.g908c460
 	pkgrel = 1
 	url = http://syncplay.pl/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = syncplay-git
 	depends = python-twisted
 	optdepends = pyside2: GUI
 	optdepends = qt5-declarative: GUI
-	optdepends = python-service_identity: TLS
+	optdepends = python-service-identity: TLS
 	optdepends = python-certifi: TLS
 	provides = syncplay
 	conflicts = syncplay
@@ -23,4 +23,3 @@ pkgbase = syncplay-git
 	sha256sums = df3c7656024d60c59664c79f4890f7780a2c5b8b537ac61b017e16b3d4420808
 
 pkgname = syncplay-git
-

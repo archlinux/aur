@@ -1,5 +1,6 @@
-*.tar.gz
-*.tar.xz
-pkg/
-src/
-syncplay-git/
+*
+!.SRCINFO
+!PKGBUILD
+!.gitignore
+!server.conf
+!syncplay@.service
