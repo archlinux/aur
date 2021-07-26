@@ -1,0 +1,13 @@
+pkgbase = processing-examples
+	pkgdesc = Examples for Processing
+	pkgver = 3.3.3
+	pkgrel = 4
+	url = https://www.processing.org/
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = git
+	source = git+https://github.com/processing/processing-docs#commit=f6ecf823ec2a72a724ed0918538e358fec50c60a
+	b2sums = SKIP
+
+pkgname = processing-examples
