@@ -1,44 +1,51 @@
+#!/bin/bash
+
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-graph'
-pkgver='0.9704'
+_dist='Graph'
+pkgver='0.9722'
 pkgrel='1'
-pkgdesc="graph data structures and algorithms"
+pkgdesc='graph data structures and algorithms'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
+depends=(
+  'perl'
+  'perl-heap'
+  'perl-set-object'
+)
 url='https://metacpan.org/release/Graph'
-source=('http://search.cpan.org/CPAN/authors/id/J/JH/JHI/Graph-0.9704.tar.gz')
-md5sums=('1ab4e49420e56eeb1bc81d842aa8f3af')
-sha512sums=('1eed5049577112cc2e41a83f6b3b6a22a08170597b5cb89e2eab6cc68386bfd989d3953d7ceab85bcfbd7d097a6925bd8eb43f48eed1ac07469ea4b2432149da')
-_distdir="Graph-0.9704"
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETJ/$_dist-$pkgver.tar.gz")
+b2sums=('b7299fee7bb44b75ed54b0d34dae64e607cf3b7cd00fda7ea1bbfcfabd8be4284e1b77447369bd117d3b5291bdf3c83a212f27eea0b0602412e55897736eb891')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  export PERL_MM_USE_DEFAULT=1 \
+    PERL_AUTOINSTALL=--skipdeps \
+    MODULEBUILDRC=/dev/null
+
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
