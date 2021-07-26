@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=7.3.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=3
+pkgrel=4
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
@@ -22,7 +22,7 @@ source=(https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$_pkgver.tar.x
         49ee18fb.patch)
 sha256sums=('95aea93be1cfd39bb52333b82b3e57bf68080c7d1319d754d167a20f6dbe4551'
             'SKIP'
-            'e1980cd4ee76160e1262ec1044d5072a1c8ea1e36a020882e53f5cb7edd0ce23')
+            'eeba37084e799ebf5aac5d3ee002ef9a286067c0461cb609612366c0841d55cf')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {

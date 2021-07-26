@@ -188,6 +188,27 @@ index 0b96d5ceb1..d1140e23ed 100644
      /**
       * Return the current user account name.
       */
--- 
-GitLab
+diff --git a/core/libs/database/server/databaseserver.cpp b/core/libs/database/server/databaseserver.cpp
+index cebe9d0f6a..37765e3231 100644
+--- a/core/libs/database/server/databaseserver.cpp
++++ b/core/libs/database/server/databaseserver.cpp
+@@ -689,7 +689,6 @@ DatabaseServerError DatabaseServer::initMysqlDatabase() const
+             {
+                 if (query.next() && (query.lastError().type() == QSqlError::NoError))
+                 {
+-
+                     QRegExp reg(QLatin1String("\\d+\\.\\d+\\.\\d+"));
+ 
+                     if (reg.indexIn(query.value(0).toString()) != -1)
+@@ -747,7 +746,9 @@ DatabaseServerError DatabaseServer::checkUpgradeMysqlDatabase()
+ 
+     delete versionProcess;
+ 
+-    if (serverVersion == d->dbVersion)
++    if (d->dbVersion.isEmpty()        ||
++        serverVersion.isEmpty()       ||
++        (serverVersion == d->dbVersion))
+     {
+         return result;
+     }
 
