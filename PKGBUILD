@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='opener'
 pkgname="${_pkgname}-git"
-pkgver=r5.b51a8e1
+pkgver=r6.ca47b12
 pkgrel=1
 pkgdesc='mime-type and extention based file opener script.'
 arch=('x86_64')
