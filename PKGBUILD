@@ -55,11 +55,11 @@ build() {
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  cd "${srcdir}/desktop-${pkgver}/jslib"
+  npm install
   cd "${srcdir}/desktop-${pkgver}/jslib/common"
   npm install
   cd "${srcdir}/desktop-${pkgver}/jslib/angular"
-  npm install
-  cd "${srcdir}/desktop-${pkgver}/jslib"
   npm install
   cd "${srcdir}/desktop-${pkgver}"
   npm install
