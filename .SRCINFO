@@ -1,0 +1,15 @@
+pkgbase = huaweicloud-obs-obsutil-bin
+	pkgdesc = A command line tool for accessing and managing OBS on HUAWEI CLOUD
+	pkgver = 5.3.4
+	pkgrel = 1
+	url = https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0001.html
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	conflicts = huaweicloud-obs-obsutil-git
+	source_x86_64 = https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7c9b50af08464390d80a96159291a4db0df80d037f927e6abcf1acb8ef3be503
+	source_aarch64 = https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_arm64.tar.gz
+	sha256sums_aarch64 = 31586d7d608e68b0954a19160228609ba17e07c7b70fa26b4ee74a78031b0389
+
+pkgname = huaweicloud-obs-obsutil-bin
