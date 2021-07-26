@@ -1,0 +1,19 @@
+pkgbase = ti-c2000ware
+	pkgdesc = Texas Instruments C2000Ware library for C2000 Microcontrollers
+	pkgver = 3.04.00.00
+	pkgrel = 1
+	url = https://www.ti.com/tool/C2000WARE
+	arch = x86_64
+	license = custom
+	makedepends = lib32-glibc
+	makedepends = lib32-fakeroot
+	options = !strip
+	options = libtool
+	options = staticlibs
+	options = emptydirs
+	options = !purge
+	options = !zipman
+	source = https://software-dl.ti.com/C2000/c2000_apps_public_sw/c2000ware/3_04_00_00/exports/C2000Ware_3_04_00_00_setup.run
+	sha256sums = 9be4c147c09a72b36379ce92bcef046eedf69576f600a4b9be5fe9ddc004ba74
+
+pkgname = ti-c2000ware
