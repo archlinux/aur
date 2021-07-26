@@ -1,14 +1,14 @@
 pkgbase = b3sum-bin
 	pkgdesc = BLAKE3 hash function CLI utility, written in Rust
-	pkgver = 0.3.8
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/BLAKE3-team/BLAKE3
 	arch = x86_64
 	license = custom:CC1
 	provides = b3sum
 	conflicts = b3sum
-	noextract = b3sum-bin-0.3.8
-	source = b3sum-bin-0.3.8::https://github.com/BLAKE3-team/BLAKE3/releases/download/0.3.8/b3sum_linux_x64_bin
-	sha256sums = 72195bf9011c6192720c578845c4ab6565123ac43608101ab6e4ed409e93d973
+	noextract = b3sum-bin-1.0.0
+	source = b3sum-bin-1.0.0::https://github.com/BLAKE3-team/BLAKE3/releases/download/1.0.0/b3sum_linux_x64_bin
+	sha256sums = 891f301fdbe79543b9367593c8afaa3f6d0e4d38ae9f91535f7617a97c21e18e
 
 pkgname = b3sum-bin
