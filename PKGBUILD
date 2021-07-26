@@ -1,15 +1,11 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
-# Scene and source drag & drop was disabled due to this issue
-# (https://github.com/obsproject/obs-studio/issues/4488)
-# (https://github.com/obsproject/obs-browser/pull/304)
-# You can test it by changing the following variable to 1
-# But a PR fixing this is out, give your feedback on the PR page
-TEST_DRAGDROPFIX=0
+# Scene and source drag & drop with his fix is now added by default
+# No variable change needed anymore \o/
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -58,7 +54,6 @@ source=(
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
         "update_desktop_entries.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
-        "browser_unset_xdndproxy.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-browser/pull/304.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
 )
@@ -68,7 +63,6 @@ sha256sums=(
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
         "9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731"
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
-        "032dfbd47f402ad97f60c2dda1c0496798638a340acd61bcdb6c3b5a18ad132b"
         "SKIP"
         "SKIP"
 )
@@ -79,14 +73,15 @@ prepare() {
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
-  if [ "$TEST_DRAGDROPFIX" = 1 ]; then
-    git revert 457adcedd --no-edit --no-commit
+  ## Add fixed drag & drop
+  # Revert 'UI: Disable drag/drop on Linux scenes/sources (for now)' (https://github.com/obsproject/obs-studio/commit/457adcedd319ca2317d7cd5300694d486e88af90)
+  git revert --no-commit 457adcedd319ca2317d7cd5300694d486e88af90
 
-    cd "$srcdir/obs-studio/plugins/obs-browser"
-    ## Manually unset XdndProxy ("Stop deleting dragged items, browser panel, pretty please") (https://github.com/obsproject/obs-browser/pull/304)
-    patch -Np1 < "$srcdir/browser_unset_xdndproxy.patch"
-    cd "$srcdir/obs-studio"
-  fi
+  cd "$srcdir/obs-studio/plugins/obs-browser"
+  # browser-panel: Manually unset XdndProxy  (https://github.com/obsproject/obs-browser/commit/c5ba29f66b2eb8cf63d0fb6a90edd47b650f412a)
+  git cherry-pick --no-commit c5ba29f66b2eb8cf63d0fb6a90edd47b650f412a
+
+  cd "$srcdir/obs-studio"
 
   ## libobs/util: Fix loading Python binary modules on *nix (https://github.com/obsproject/obs-studio/pull/3335)
   patch -Np1 < "$srcdir/python_fix.patch"
