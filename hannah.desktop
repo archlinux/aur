@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HANNAH
+Comment=Help Hannahs Horse Its Pacman with ghosts, music and powerups. And carrots.
+Exec=hannah
+Icon=hannah
+Terminal=false
+StartupNotify=false
+Categories=Game;
