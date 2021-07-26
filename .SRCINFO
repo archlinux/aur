@@ -1,6 +1,6 @@
 pkgbase = pakka
 	pkgdesc = A simple bash based AUR helper for Arch Linux
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/SidharthArya/pakka
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pakka
 	depends = curl
 	depends = git
 	depends = jq
-	source = https://github.com/SidharthArya/pakka/archive/refs/tags/0.0.1.tar.gz
-	sha256sums = 36079d943a0e8cc8614a400c18881df3320ea3e3680651c28c932e8b5dacb6e0
+	source = https://github.com/SidharthArya/pakka/archive/refs/tags/0.0.2.tar.gz
+	sha256sums = 39ef5fc5070bcf1abe3ec732131b73c2d2cf8d5c13a9e5e9fffec3a4912c06df
 
 pkgname = pakka

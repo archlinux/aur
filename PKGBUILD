@@ -1,6 +1,6 @@
 # Maintainer: Sidharth Arya <sidhartharya10@gmail.com>
 pkgname=pakka
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A simple bash based AUR helper for Arch Linux"
 arch=(x86_64)
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://github.com/SidharthArya/$pkgname/archive/refs/tags/$pkgver.tar.gz)
 noextract=()
-sha256sums=('36079d943a0e8cc8614a400c18881df3320ea3e3680651c28c932e8b5dacb6e0')
+sha256sums=('39ef5fc5070bcf1abe3ec732131b73c2d2cf8d5c13a9e5e9fffec3a4912c06df')
 
 
 package() {
