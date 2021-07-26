@@ -1,0 +1,17 @@
+pkgbase = cplay-ng-git
+	pkgdesc = Ncurses front-end for various audio players
+	pkgver = 2.1.0.r185.g92ac5ae
+	pkgrel = 1
+	url = https://github.com/xi/cplay-ng
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = libpulse
+	depends = mpv
+	provides = cplay-ng
+	conflicts = cplay-ng
+	source = cplay-ng-git::git+https://github.com/xi/cplay-ng.git
+	sha256sums = SKIP
+
+pkgname = cplay-ng-git
