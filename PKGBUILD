@@ -17,17 +17,17 @@ prepare() {
   cmake -Bbuild \
     -DCMAKE_INSTALL_BINDIR=/usr/bin \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man \
-    -DCMAKE_C_FLAGS="$LDFLAGS"
+    -DCMAKE_C_FLAGS="$LDFLAGS $CFLAGS"
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/build"
-  cmake --build .
+  cmake --build . -v
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver/build"
-    ctest
+  cd "$srcdir/$pkgname-$pkgver/build"
+  ctest
 }
 
 package() {
