@@ -3,7 +3,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=proxygen
-pkgver=2021.06.28.00
+pkgver=2021.07.22.00
 pkgrel=1
 pkgdesc="A collection of C++ HTTP libraries including an easy to use HTTP server"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('boost' 'boost-libs' 'folly' 'fizz' 'wangle' 'zstd' 'openssl' 'zlib' 'l
 makedepends=('cmake' 'git' 'python' 'gperf' 'gperftools' 'gtest' 'gmock')
 conflicts=('proxygen-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('45b79e26f1c1bd0959e0ea64580f03d3b2f47a028f4892414f17d2a8911c3e3a')
+sha256sums=('c4e19fe6ea1d36232fa23bc8f32be085f09cce312b12b743df017bd7e6333d17')
 
 build() {
   cd "$pkgname-$pkgver"
