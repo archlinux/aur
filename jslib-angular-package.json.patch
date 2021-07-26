@@ -1,18 +1,18 @@
---- package.json.orig	2021-07-26 02:42:29.246561926 -0700
-+++ package.json	2021-07-26 02:39:06.671992415 -0700
-@@ -24,6 +24,7 @@
+--- package.json.orig	2021-07-26 07:01:06.535907475 -0700
++++ package.json	2021-07-26 07:01:51.151537381 -0700
+@@ -20,6 +20,7 @@
+     "lint:fix": "tslint 'src/**/*.ts' 'spec/**/*.ts' --fix"
+   },
+   "devDependencies": {
++    "@types/duo_web_sdk": "^2.7.0",
+     "rimraf": "^3.0.2",
      "typescript": "4.1.5"
    },
-   "dependencies": {
-+    "@types/duo_web_sdk": "^2.7.0",
-     "@angular/animations": "^11.2.11",
-     "@angular/cdk": "^11.2.10",
-     "@angular/common": "^11.2.11",
-@@ -35,6 +36,7 @@
+@@ -34,6 +35,7 @@
+     "@angular/platform-browser-dynamic": "^11.2.11",
      "@angular/router": "^11.2.11",
      "@bitwarden/jslib-common": "file:../common",
-     "ngx-infinite-scroll": "10.0.1",
 +    "duo_web_sdk": "git+https://github.com/duosecurity/duo_web_sdk.git#378e855ce4a1de1d1b2f7fd60465e564b3e9fbda",
+     "ngx-infinite-scroll": "10.0.1",
      "rxjs": "6.6.7",
      "tldjs": "^2.3.1",
-     "zone.js": "0.11.4"
