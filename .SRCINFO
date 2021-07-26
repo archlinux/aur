@@ -1,6 +1,6 @@
 pkgbase = torrenttools
 	pkgdesc = Commandline tool for inspecting, creating and editing BitTorrent metafiles.
-	pkgver = v0.4.1.r3.ga10b807
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/fbdtemme/torrenttools
 	arch = x86_64
@@ -13,10 +13,11 @@ pkgbase = torrenttools
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = m4
+	makedepends = intel-tbb
 	depends = openssl
+	depends = intel-tbb
 	provides = torrenttools
-	source = torrenttools::git+https://github.com/fbdtemme/torrenttools.git
+	source = https://github.com/fbdtemme/torrenttools/releases/download/v0.5.0/torrenttools-0.5.0.tar.gz
 	md5sums = SKIP
 
 pkgname = torrenttools
-
