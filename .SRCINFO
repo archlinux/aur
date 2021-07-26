@@ -1,13 +1,13 @@
 pkgbase = xmake
 	pkgdesc = A cross-platform build utility based on Lua
-	pkgver = 2.5.5
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://github.com/xmake-io/xmake
 	arch = i686
 	arch = x86_64
 	license = Apache
-	source = xmake.tar.gz::https://github.com/xmake-io/xmake/releases/download/v2.5.5/xmake-v2.5.5.tar.gz
-	sha256sums = 47537ecc53aa73783f630b85c30ae6b339cda928c509887b013c49f23b9f3528
+	source = xmake.tar.gz::https://github.com/xmake-io/xmake/releases/download/v2.5.6/xmake-v2.5.6.tar.gz
+	sha256sums = 79e65766761642d574ac24f50c4df2b896a3d9fb649a37746a9d9c67073d5998
 
 pkgname = xmake
 
