@@ -1,0 +1,16 @@
+pkgbase = huaweicloud-obs-obsutil-git
+	pkgdesc = A command line tool for accessing and managing OBS on HUAWEI CLOUD
+	pkgver = v5.1.15.r2.45ac956
+	pkgrel = 1
+	url = https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0001.html
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	provides = huaweicloud-obs-obsutil
+	conflicts = huaweicloud-obs-obsutil
+	source = git+https://github.com/huaweicloud/huaweicloud-obs-obsutil.git
+	md5sums = SKIP
+
+pkgname = huaweicloud-obs-obsutil-git
