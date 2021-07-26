@@ -1,64 +1,51 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributer: Bruce Zhang
 # This PKGBUILD is directly modified from aur/dingtalk
+
 pkgname=lx-music
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
-pkgdesc='一个基于 electron 的音乐软件'
-arch=('x86_64')
+pkgdesc='An Electron-based music player'
+arch=('any')
 url='https://github.com/lyswhut/lx-music-desktop'
-license=('Apache 2.0')
-depends=('electron9')
-makedepends=('jq' 'moreutils' 'npm' 'nodejs>=14')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/lyswhut/lx-music-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('0763c29c3a2ea42150f32d319db6a387bfb9c27e6d8bbf834d81b60946676b7e')
+license=('Apache')
+changelog=CHANGELOG.md
+depends=('electron' 'nodejs>=14')
+makedepends=('asar' 'jq' 'moreutils' 'npm')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname.sh"
+        "$pkgname.desktop")
+sha256sums=('d7f64e91ad031469f8ecd240f20d135736fcf8240af7e1f1a901337e4a23bdb9'
+            '0b19e2d26237f48379c024d48398a3a819b1de72bfe95c680f9a81c3d13c537f'
+            '86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce')
 
 prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
-    electronDist="\/usr\/lib\/electron9"
-    electronVersion=$(tail -1 /usr/lib/electron9/version)
-    sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
-    jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
-    jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
-    npm install
+	local electronDist="/usr/lib/electron"
+	local electronVersion="$(< $electronDist/version)"
+	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
+	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
+	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
 }
 
 build() {
-    cd "$srcdir/$pkgname-desktop-$pkgver"
-    npm run pack:dir
+	cd "$srcdir/$pkgname-desktop-$pkgver"
+	npm ci --cache npm-cache
+	npm run pack:dir
 }
 
 package() {
-	cd "$srcdir/$pkgname-desktop-$pkgver/build/linux-unpacked"
-    
-    # Install app
-    install -Dm644 resources/app.asar "$pkgdir/usr/share/lx-music/app.asar"
+	install -Dm755 lx-music.sh "$pkgdir/usr/bin/lx-music"
+	install -Dm644 lx-music.desktop -t "$pkgdir/usr/share/applications/"
 
-    # Install start script
-    echo "#!/usr/bin/env sh
-exec electron9 /usr/share/lx-music/app.asar
-    " > "$srcdir/lx-music.sh"
-    install -Dm755 "$srcdir/lx-music.sh" "$pkgdir/usr/bin/lx-music"
+	# Install app
+	cd "$srcdir/$pkgname-desktop-$pkgver/"
+	asar e build/linux-unpacked/resources/app.asar "$pkgdir/usr/share/lx-music/"
 
-    # Install desktop file
-    echo "[Desktop Entry]
-Name=lx music desktop
-Name[zh_CN]=洛雪音乐助手
-Comment=洛雪音乐助手，一个基于 electron 的音乐软件
-Exec=/usr/bin/lx-music
-Terminal=false
-Type=Application
-Icon=lx-music
-StartupWMClass=lx-music-desktop
-Categories=AudioVideo;Utility;
-    " > "$srcdir/lx-music.desktop"
-    install -Dm644 "$srcdir/lx-music.desktop" "$pkgdir/usr/share/applications/lx-music.desktop"
+	# Install icons
+	install -Dm644 resources/icons/512x512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/lx-music.png"
 
-    # Install icons
-    cd "$srcdir/$pkgname-desktop-$pkgver/resources/icons"
-    install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/lx-music.png"
-
-    # Install license
-    cd "$srcdir/$pkgname-desktop-$pkgver"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/lx-music/LICENSE"
-    cp -r "licenses" "$pkgdir/usr/share/licenses/lx-music/licenses"
+	# Install license
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/lx-music/"
+	cp -a --no-preserve=ownership licenses "$pkgdir/usr/share/licenses/lx-music/"
 }
