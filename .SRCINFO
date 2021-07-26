@@ -1,6 +1,6 @@
 pkgbase = genn_cpu_only
 	pkgdesc = GeNN: GPU-enhanced neural networks (without CUDA backend)
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/genn-team/genn
@@ -19,7 +19,7 @@ pkgbase = genn_cpu_only
 	conflicts = genn
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/genn-team/genn/archive/4.5.0.tar.gz
-	sha256sums = 1799e3f2443790613b80ce965df034421e85922048ae5c24d6c3d068c51bebcf
+	source = https://github.com/genn-team/genn/archive/4.5.1.tar.gz
+	sha256sums = f9c3191cd430aac87d2c47e9a4c206e495e6dfc26187e51dc300ff23cd961ead
 
 pkgname = genn_cpu_only
