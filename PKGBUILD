@@ -1,7 +1,7 @@
 # Maintainer: peterix@gmail.com
 
 pkgname=multimc-git
-pkgver=0.6.12.r0.g464b05f6
+pkgver=0.6.12.r148.g7921f47e
 pkgrel=1
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('i686' 'x86_64')
@@ -47,6 +47,6 @@ check() {
 package() {
  cd "$srcdir/$pkgname/build"
  make install DESTDIR="$pkgdir"
- install -D $srcdir/$pkgname/application/resources/multimc/scalable/multimc.svg $pkgdir/usr/share/pixmaps/multimc.svg
- install -D $srcdir/$pkgname/application/package/linux/multimc.desktop $pkgdir/usr/share/applications/multimc.desktop
+ install -D $srcdir/$pkgname/launcher/resources/multimc/scalable/multimc.svg $pkgdir/usr/share/pixmaps/multimc.svg
+ install -D $srcdir/$pkgname/launcher/package/linux/multimc.desktop $pkgdir/usr/share/applications/multimc.desktop
 }
