@@ -5,7 +5,7 @@ pkgver=1.0.0
 _ccfgversion=1.0.0.A19
 _aosutilverion=0.0.0.13 # Needed for CCFG
 
-pkgrel=23
+pkgrel=24
 pkgdesc="CQ -- CCFG Command Line Inteface (Cyan Configurations)"
 arch=( 'any' )
 url=""

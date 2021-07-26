@@ -1,7 +1,7 @@
 pkgbase = cq
 	pkgdesc = CQ -- CCFG Command Line Inteface (Cyan Configurations)
 	pkgver = 1.0.0
-	pkgrel = 23
+	pkgrel = 24
 	arch = any
 	license = GPL
 	makedepends = gradle>=7.0
