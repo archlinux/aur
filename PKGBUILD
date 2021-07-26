@@ -2,7 +2,7 @@
 
 pkgname=proton-community-updater
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to download and manage Community Proton builds"
 arch=('any')
 depends=('bash' 'coreutils' 'curl' 'xz')
@@ -15,7 +15,7 @@ source=(
     'proton-community-updater.desktop'
 )
 sha256sums=(
-    '9e25b966d7e5306f7a755b2332339ece944194c0bf21655bd0af7faf29b8f680'
+    '674d4b917c54fdd36c442a4d94460ad112b40e02d7438a1762531ca949c4db50'
     '07fcec5276fd0ad227fdedf5ea8dab3b054beb8a094ccda60b2c80ed4ea8411d'
 )
 
