@@ -3,7 +3,7 @@
 
 pkgname=bitwarden
 pkgver=1.27.1
-pkgrel=1
+pkgrel=2
 _jslibcommit='dbd92194ee4536d87bed5d89f39078e68c59a06c'
 _nodeversion='14.17.3'
 pkgdesc='Bitwarden Desktop Application'
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "${pkgname}.desktop")
 sha512sums=('de2c476581cac6a8a875d3d6ff11e67cd74f4b1c5dcf00a98df4541b38b848382901dca1284940e4006fbb234bb43a69c24e3c945f73e71f0a448795c41136bf'
             '86eb6d0de6efb6f0e2d18c94787f3a4b881234c998407d03cc2ce6c1f5ae56033552e873dfa80d2357405ca2b772fbcfb3085196d7f83deadb02e2d7fe351ea3'
-            '4e7496960ff01212809d165fea1d3a7ce1e4da73c65d7bef34b1da9d245b49d4092b19823a8966c69b4dbe01508ee2b1fd624395b6096d7df12bfcf475f8c718'
+            'd884221c615db95d6fd0da2d3470fb7514b6a5d2a2b3b20c8353ebb4a938dc39f93783fe7ef2b9f69f034db8f26abfa479616f9fd1c1b241af605da837fba20e'
             'dfd5e24512444ea0b4b45b41da39fac28476c14fda22a7afd8bee2436fdad348d3ba51df7b0bbfd1039496214f2e8a6ec2d8b0dd0ad3b95825cece110790e0db'
             '32c29a7baed80351acf5753d35df404a818d5c88cc85f3bbed2daa5351aaf0dba20fd03cbedbcb407324f305d4556adb476ecc9ccd07bac0511ca4a943020ea4'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
@@ -55,6 +55,8 @@ build() {
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  cd "${srcdir}/desktop-${pkgver}/jslib/common"
+  npm install
   cd "${srcdir}/desktop-${pkgver}/jslib/angular"
   npm install
   cd "${srcdir}/desktop-${pkgver}/jslib"
