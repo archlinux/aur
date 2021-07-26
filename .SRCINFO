@@ -1,0 +1,17 @@
+pkgbase = consoline-git
+	pkgdesc = consoline is GNU Readline with better support for asynchronous output
+	pkgver = 37
+	pkgrel = 1
+	url = https://github.com/thejoshwolfe/consoline
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = gcc
+	makedepends = readline
+	source = consoline::git+https://github.com/thejoshwolfe/consoline.git
+	source = readline.patch
+	md5sums = SKIP
+	md5sums = a4099f5f442b2c2303f91cf9792288af
+
+pkgname = consoline-git
