@@ -14,6 +14,10 @@ sha256sums_x86_64=('7c9b50af08464390d80a96159291a4db0df80d037f927e6abcf1acb8ef3b
 source_aarch64=('https://obs-community-intl.obs.ap-southeast-1.myhuaweicloud.com/obsutil/current/obsutil_linux_arm64.tar.gz')
 sha256sums_aarch64=('31586d7d608e68b0954a19160228609ba17e07c7b70fa26b4ee74a78031b0389')
 
+prepare() {
+	chmod 755 -R "$srcdir"
+}
+
 package() {
     if test $CARCH = 'x86_64'; then
         cd "$srcdir/obsutil_linux_amd64_${pkgver}"
