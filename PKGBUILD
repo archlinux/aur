@@ -2,16 +2,16 @@
 
 pkgname=go-yq-bin
 pkgver=4.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="portable command-line YAML processor"
-arch=(x86_64)
+arch=("x86_64")
 url=https://github.com/mikefarah/yq
-license=(MIT)
+license=('MIT')
 depends=()
-makedepends=(go)
-conflicts=(yq go-yq)
-providers=(yq)
-source=(https://github.com/mikefarah/yq/releases/download/v${pkgver}/yq_linux_amd64.tar.gz)
+makedepends=()
+conflicts=('yq' 'go-yq')
+providers=('yq')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mikefarah/yq/releases/download/v${pkgver}/yq_linux_amd64.tar.gz")
 sha256sums=('f21d0332945e60ac8ad7f77668224c2e688d28b8e66da2f5cfdf4c27dcb90933')
 
 package() {
