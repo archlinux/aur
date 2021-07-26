@@ -3,13 +3,13 @@
 
 pkgname=ncmpvc-git
 pkgver=0.0.1.r26.35bab73
-pkgrel=1
-pkgdesc="Ncurses IPC client for mpv written in Rust"
+pkgrel=2
+pkgdesc="Ncurses IPC client for mpv, written in Rust"
 arch=('x86_64')
 url="https://gitlab.com/mpv-ipc/ncmpvc"
 license=('MIT')
 depends=('mpv')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=$pkgname.install
