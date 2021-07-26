@@ -1,7 +1,7 @@
 pkgbase = vieb
 	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://vieb.dev
 	install = vieb.install
 	arch = x86_64
