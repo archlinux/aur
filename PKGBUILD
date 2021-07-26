@@ -3,8 +3,8 @@
 _pkgname=mpvz
 _github="Zren/${_pkgname}"
 pkgname=${_pkgname}-git
-pkgver=0.r147.g1eea404
-pkgrel=2
+pkgver=0.r190.g89208b7
+pkgrel=1
 pkgdesc='Qt5/QML based GUI for libmpv. Based on the Tethys theme for Bomi.'
 url="https://github.com/${_github}"
 conflicts=("${_pkgname}")
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('git')
 depends=('qt5-x11extras' 'qt5-quickcontrols' 'mpv')
-source=("${_pkgname}::git://github.com/${_github}")
+source=("${_pkgname}::git+https://github.com/${_github}")
 sha256sums=('SKIP')
 
 pkgver() {
