@@ -19,6 +19,13 @@ provides=('image-optimizer')
 source=("git+https://github.com/GijsGoudzwaard/Image-Optimizer.git")
 md5sums=('SKIP')
 
+
+pkgver() {
+	cd "${srcdir}/${_gitname}/"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
 build() {
     cd "${srcdir}/${_gitname}/"
     meson build --prefix=${pkgdir}/usr
