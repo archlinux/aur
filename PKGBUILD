@@ -2,7 +2,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libindi-qhy
-pkgver=1.8.9
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="3rd party drivers for INDI: QHY"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 depends=(libindi=${pkgver} libqhy)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("eb681bc83e6ae8bedc57e5ae899c54d997743ca0e9b832d9b7f25bb5e348f701")
+sha256sums=("5918c3cf7f907201d6cf159ea7cbadf618fda197ba35dff3c0d4b37f2d67f695")
 
 prepare() {
   mkdir -p build
