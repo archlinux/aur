@@ -1,7 +1,7 @@
 pkgbase = libqhy
 	pkgdesc = libqhy used by INDI QHY drivers. Please note that for sake of simplicity package version follows libindi versionning.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=libqhy
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="libqhy used by INDI QHY drivers. Please note that for sake of simplicity package version follows libindi versionning."
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(MIT)
