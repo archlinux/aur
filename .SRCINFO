@@ -1,7 +1,7 @@
 pkgbase = moe-theme-git
 	pkgdesc = Moe is a light theme, with blur transparencies and red tones with gradients.
-	pkgver = r16.28d4315
-	pkgrel = 2
+	pkgver = r20.4c1f4df
+	pkgrel = 3
 	url = https://gitlab.com/jomada/moe-theme
 	arch = any
 	license = GPL3
