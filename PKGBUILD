@@ -2,12 +2,12 @@
 _release_type=alpha
 
 pkgname=makedeb-alpha
-pkgver=5.10.0
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="Create Debian archives from PKGBUILDs (${_release_type} release)"
 arch=('any')
 license=('GPL3')
-depends=('dpkg')
+depends=('tar' 'binutils')
 url="https://github.com/makedeb/makedeb"
 
 source=("${url}/archive/refs/tags/v${pkgver}-${_release_type}.tar.gz")
