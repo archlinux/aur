@@ -4,13 +4,13 @@
 _gemname=coderay
 pkgname=ruby-$_gemname
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast syntax highlighting for selected languages"
 arch=(any)
 url=http://coderay.rubychan.de
 license=(MIT)
 depends=(ruby)
-checkdepends=(ruby-rake ruby-rspec)
+checkdepends=(ruby-bundler ruby-rake ruby-rspec)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(git+https://github.com/rubychan/coderay.git?tag=v${pkgver})
