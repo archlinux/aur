@@ -17,4 +17,3 @@ pkgbase = kopano-webapp-mdm-git
 	md5sums = 30bd89417f7089d30db62fb4c1f09996 kopano-webapp-mdm.ini
 
 pkgname = kopano-webapp-mdm-git
-
