@@ -1,18 +1,16 @@
-pkgbase = libguestfs-git
-	pkgdesc = Access and modify virtual machine disk image
-	pkgver = 1.42.0.r21.g4837698d8
+pkgbase = libguestfs-dev
+	pkgdesc = libguestfs Development - Access and modify virtual machine disk image - Staging Development Version
+	pkgver = 1.45.6.r0.g6410c9984
 	pkgrel = 1
-	url = http://libguestfs.org
+	url = https://github.com/libguestfs/libguestfs
 	install = appliance.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
-	makedepends = qemu-headless
 	makedepends = pcre
 	makedepends = cdrkit
-	makedepends = libvirt
-	makedepends = libconfig
+	makedepends = git
 	makedepends = libxml2
 	makedepends = gperf
 	makedepends = rpcsvc-proto
@@ -22,7 +20,6 @@ pkgbase = libguestfs-git
 	makedepends = perl-libintl-perl
 	makedepends = perl-sys-virt
 	makedepends = perl-module-build
-	makedepends = jansson
 	makedepends = po4a
 	makedepends = ruby-rdoc
 	makedepends = ruby-rake
@@ -47,20 +44,17 @@ pkgbase = libguestfs-git
 	optdepends = perl: Perl Bindings
 	optdepends = perl-sys-virt: Sys-Virt tools
 	optdepends = ocaml: Ocaml libs
-	provides = guestfish=1.42.0.r21.g4837698d8
+	provides = guestfish=1.45.6.r0.g6410c9984
 	provides = libguestfs
 	conflicts = libguestfs
 	backup = etc/libguestfs-tools.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
-	source = git+https://github.com/libguestfs/libguestfs
+	source = git+https://github.com/libguestfs/libguestfs#commit=6410c99844a36216b2425c4a6f3cd5a44e1bdb2d
 	source = git+https://git.savannah.gnu.org/git/gnulib.git
 	source = git+https://github.com/libguestfs/libguestfs-common
-	source = update-libguestfs-appliance
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 6f695baf27927a7643b2b3f6a2497ca37e306b2e8640bd6025c49f1fc3b243a379b38ad6183acb099e9d762e5ab55b28bbdfab0c6dbd1d3fe748caa0846b1c5a
 
-pkgname = libguestfs-git
-
+pkgname = libguestfs-dev
