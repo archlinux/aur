@@ -2,7 +2,7 @@
 
 _pkgname="mpv-handler"
 pkgname="mpv-handler-git"
-pkgver=0.2.8.r0.gc3b54d0
+pkgver=0.2.10.r1.gd07554c
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  MPV_HANDLER_VERSION=$pkgver cargo build --locked --release --target-dir target
+  RUSTUP_TOOLCHAIN=stable MPV_HANDLER_VERSION=$pkgver cargo build --locked --release --target-dir target
 }
 
 package() {
