@@ -2,7 +2,7 @@
 
 pkgname="mpv-handler"
 pkgver=0.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
 depends=("mpv" "youtube-dl")
@@ -15,7 +15,7 @@ b2sums=('c5c6605736ea23cffbf999415f982523cdfe1f8677af72cd1a3d5976e491dd6c805cee9
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  cargo build --locked --release --target-dir target
+  RUSTUP_TOOLCHAIN=stable cargo build --locked --release --target-dir target
 }
 
 package() {
