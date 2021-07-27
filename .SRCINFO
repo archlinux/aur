@@ -1,0 +1,13 @@
+pkgbase = jsonnet-bundler
+	pkgdesc = jsonnet package manager
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/jsonnet-bundler/jsonnet-bundler
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = https://github.com/jsonnet-bundler/jsonnet-bundler/archive/v0.4.0/jsonnet-bundler-0.4.0.tar.gz
+	sha256sums = bedb42ccacf7922fec47cffc95a1e1999400fd1e6f89d817d9d75b21a60f68e7
+
+pkgname = jsonnet-bundler
