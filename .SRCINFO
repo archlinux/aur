@@ -1,6 +1,6 @@
 pkgbase = maildir-utils
 	pkgdesc = maildir indexer/searcher + emacs mail client + guile bindings
-	pkgver = 1.4.15
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://www.djcbsoftware.nl/code/mu/
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = maildir-utils
 	depends = gtk3
 	depends = webkit2gtk
 	depends = guile
-	source = https://github.com/djcb/mu/releases/download/1.4.15/mu-1.4.15.tar.xz
-	sha512sums = e7741b77bce5c7c1c818549e803fb386f0b8727b995a7ac9b961b74e89cc7dbeed52b45d70895995a1640cfd36a49b052eeeed9be6c48999f2182a68bf5c205e
+	source = https://github.com/djcb/mu/releases/download/1.6.0/mu-1.6.0.tar.xz
+	sha512sums = d0501a7cffe4649f4206b1fc67805f73eb62944dd96cb58e8e1a982c947be3f541ff7f588527ee6fd1c82258d0eedd6d8a75d723e3c8a18d2fa454dd6a1263a5
 
 pkgname = maildir-utils
-
