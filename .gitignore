@@ -1,6 +1,4 @@
-src/*
-pkg/*
-*.zst
-*.sig
-*.bin
-latest
+/*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
