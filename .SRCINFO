@@ -19,4 +19,3 @@ pkgbase = kopano-webapp-files-git
 	md5sums = 9b59cd12f7afb490e26c6aabeb5b0b4b kopano-webapp-files.ini
 
 pkgname = kopano-webapp-files-git
-
