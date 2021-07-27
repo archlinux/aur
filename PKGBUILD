@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=esdk-settings-generator
-pkgver=20.05.00.02
+pkgver=20.05.00.03
 pkgrel=1
 epoch=
 pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates the settings.mk files for freedom-e-sdk."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/esdk-settings-generator/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('68adb06025f6339d27d3177b69c4d6df0d5769e41470fe38eb5526a88951d590')
+sha256sums=('119eb71af2214285664811457cd46eff5cdb527aca008f43e1ba24163f03ff7f')
 #validpgpkeys=()
 
 package() {
