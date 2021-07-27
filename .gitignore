@@ -1,4 +1,4 @@
-*.tar.*
-src
-pkg
-podman/
+/*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
