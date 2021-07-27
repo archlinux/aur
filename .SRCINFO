@@ -1,6 +1,6 @@
 pkgbase = libksysguard-light
 	pkgdesc = Libraries for ksysguard to retrieve information on the current status of computer hardware without the big dependency on qt5-webengine
-	pkgver = 5.22.3
+	pkgver = 5.22.4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = libksysguard.install
@@ -17,13 +17,13 @@ pkgbase = libksysguard-light
 	conflicts = libksysguard
 	conflicts = ksysguard<5.21.90
 	replaces = libksysguard
-	source = https://download.kde.org/stable/plasma/5.22.3/libksysguard-5.22.3.tar.xz
-	source = https://download.kde.org/stable/plasma/5.22.3/libksysguard-5.22.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/5.22.4/libksysguard-5.22.4.tar.xz
+	source = https://download.kde.org/stable/plasma/5.22.4/libksysguard-5.22.4.tar.xz.sig
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 50b6f881483f3c66843a8506f66cd5bec190b7b980cf9d2ed84c774edea8596a
+	sha256sums = 80b1fb5ba0a2482700d46ecfb3e915380c120c09edc276333fee997ff4330692
 	sha256sums = SKIP
 
 pkgname = libksysguard-light
