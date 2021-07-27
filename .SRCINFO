@@ -1,0 +1,16 @@
+pkgbase = ruby-oedipus_lex
+	pkgdesc = This is not your father's lexer
+	pkgver = 2.5.3
+	pkgrel = 1
+	url = https://github.com/seattlerb/oedipus_lex
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	makedepends = ruby-hoe
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/seattlerb/oedipus_lex/archive/v2.5.3/oedipus_lex-2.5.3.tar.gz
+	sha256sums = 40326fbd256766c630a2be72fb746e860a8d4325053e37bb17ff988571586066
+
+pkgname = ruby-oedipus_lex
