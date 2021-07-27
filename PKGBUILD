@@ -2,8 +2,8 @@
 
 pkgname=freedom-studio-bin
 _pkgname=FreedomStudio
-pkgver=2020.06
-_pkgver=2020-06-3
+pkgver=2021.04
+_pkgver=4.18.0.2021-04-1
 pkgrel=1
 epoch=
 pkgdesc="SiFive Freedom Studio RISC-V IDE for Embedded Development"
@@ -22,9 +22,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://static.dev.sifive.com/dev-tools/${_pkgname}/${pkgver}/${_pkgname}-${_pkgver}-lin64.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://static.dev.sifive.com/dev-tools/${_pkgname}/${pkgver}/${_pkgname}-${_pkgver}-${arch}-linux-ubuntu14.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('c025448aa96de4acf8fbfd40d590971093e44f3a2c43c305d194a1b5d3df5c4f')
+sha256sums=('1836380db2d9a863ef87235ca34ce2c279740ebf02a893313738763aef893a05')
 #validpgpkeys=()
 
 package() {
@@ -34,8 +34,8 @@ package() {
 
     tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/sifive/${pkgname%-bin}"
 
-    find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type f -exec chmod 644 "{}" \;
-    find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type d -exec chmod 755 "{}" \;
+#     find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type f -exec chmod 644 "{}" \;
+#     find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type d -exec chmod 755 "{}" \;
 
     ln -sf "/opt/sifive/${pkgname%-bin}/FreedomStudio" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -sf "/opt/sifive/${pkgname%-bin}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.xpm"
