@@ -2,7 +2,7 @@
 #Maintainer of mongodb-bin-3.6: Mohammad Taha Jahangir (taha_jahangir)
 #Maintainer of mongodb-bin: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname="mongodb-bin-3.2"
+pkgname="mongodb-3.2-bin"
 pkgver="3.2.22"
 basever="3.2"
 pkgrel="1"
