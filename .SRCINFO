@@ -19,4 +19,3 @@ pkgbase = kopano-webapp-nginx-git
 	md5sums = SKIP
 
 pkgname = kopano-webapp-nginx-git
-
