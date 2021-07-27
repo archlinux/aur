@@ -1,7 +1,7 @@
 pkgbase = frobtads
 	pkgdesc = Combined TADS 2 & 3 interpreter and compilers for playing and creating Interactive Fiction games
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tads.org/frobtads.htm
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = frobtads
 	makedepends = git
 	depends = ncurses
 	depends = curl
-	source = https://github.com/realnc/frobtads/releases/download/2.0/frobtads-2.0.tar.bz2
+	source = https://github.com/realnc/frobtads/releases/download/v2.0/frobtads-2.0.tar.bz2
 	md5sums = 5188944620298695508b9b41a2dba49c
 
 pkgname = frobtads
