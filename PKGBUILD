@@ -6,9 +6,10 @@ pkgver=r6.58a1f23
 pkgrel=1
 pkgdesc="Arch Linux integration plugins for the Ciel container manager."
 arch=('x86_64')
-url="https://gitlab.com/arch-linux-mipsr6/ciel-arch-plugins"
+url="https://gitlab.com/arch-linux-mipsr6/${_pkgname}"
 license=('NCSA')
 depends=('bash' 'ciel' 'util-linux')
+provides=("${_pkgname}")
 makedepends=('git')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
@@ -27,5 +28,5 @@ package() {
     done
 
     # Install the license
-    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/ciel-arch-plugins/LICENSE
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/"${_pkgname}"/LICENSE
 }

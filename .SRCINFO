@@ -9,6 +9,7 @@ pkgbase = ciel-arch-plugins-git
 	depends = bash
 	depends = ciel
 	depends = util-linux
+	provides = ciel-arch-plugins
 	source = ciel-arch-plugins-git::git+https://gitlab.com/arch-linux-mipsr6/ciel-arch-plugins.git
 	md5sums = SKIP
 
