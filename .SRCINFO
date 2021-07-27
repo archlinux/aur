@@ -18,4 +18,3 @@ pkgbase = kopano-webapp-spellchecker-git
 	md5sums = cb4f55c46dc7f678e7fb73e195d01d85 kopano-webapp-spellchecker.ini
 
 pkgname = kopano-webapp-spellchecker-git
-
