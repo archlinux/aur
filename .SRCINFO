@@ -1,0 +1,15 @@
+pkgbase = ciel-arch-plugins-git
+	pkgdesc = Arch Linux integration plugins for the Ciel container manager.
+	pkgver = r6.58a1f23
+	pkgrel = 1
+	url = https://gitlab.com/arch-linux-mipsr6/ciel-arch-plugins
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = ciel
+	depends = util-linux
+	source = ciel-arch-plugins-git::git+https://gitlab.com/arch-linux-mipsr6/ciel-arch-plugins.git
+	md5sums = SKIP
+
+pkgname = ciel-arch-plugins-git
