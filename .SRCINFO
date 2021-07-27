@@ -1,0 +1,11 @@
+pkgbase = katex-dist-bin
+	pkgdesc = Fast math typesetting for the web
+	pkgver = 0.13.13
+	pkgrel = 1
+	url = https://katex.org/
+	arch = any
+	license = MIT
+	source = katex-dist-bin-0.13.13.tar.gz::https://github.com/KaTeX/KaTeX/releases/download/v0.13.13/katex.tar.gz
+	sha256sums = 4797fa7a49e3b9579164a2c8ad30abd383653535731b82b4714f9fbe69de183a
+
+pkgname = katex-dist-bin
