@@ -2,7 +2,7 @@
 
 _basename=wineasio
 pkgname="${_basename}-git"
-pkgver=v1.0.0.r2.g0a97f2f
+pkgver=1.0.0.r2.g0a97f2f
 pkgrel=1
 
 pkgdesc='ASIO driver implementation for Wine'
@@ -29,7 +29,7 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/${_basename}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {

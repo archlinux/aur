@@ -1,6 +1,6 @@
 pkgbase = wineasio-git
 	pkgdesc = ASIO driver implementation for Wine
-	pkgver = v1.0.0.r2.g0a97f2f
+	pkgver = 1.0.0.r2.g0a97f2f
 	pkgrel = 1
 	url = https://github.com/wineasio/wineasio
 	arch = i686
