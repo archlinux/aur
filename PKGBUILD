@@ -4,7 +4,7 @@
 pkgname=avvie-git
 _app_id=com.github.taiko2k.avvie
 pkgver=1.0.beta1.r63.gdda3f95
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK app for quick image cropping"
 arch=('any')
 url="https://github.com/Taiko2k/avvie"
@@ -34,7 +34,7 @@ package() {
   install -Dm644 "$_app_id.appdata.xml" -t "$pkgdir/usr/share/metainfo"
   install -Dm644 "$_app_id.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm644 "$_app_id.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm644 "$_app_id-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic"
+  install -Dm644 "$_app_id-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
   install -Dm644 "icon128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_app_id.png"
   install -Dm644 "icon256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_app_id.png"
 
