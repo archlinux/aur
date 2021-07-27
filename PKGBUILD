@@ -1,6 +1,6 @@
 # Maintainer: Robin Boers <robindev2019@outlook.com>
 pkgname=cutie-tanks-git
-pkgver=1.4.5
+pkgver=1.4
 pkgrel=1
 pkgdesc="Shoot 'em all arcade game (development version)"
 arch=(x86_64)
