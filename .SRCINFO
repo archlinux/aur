@@ -1,6 +1,6 @@
 pkgbase = freedom-studio-bin
 	pkgdesc = SiFive Freedom Studio RISC-V IDE for Embedded Development
-	pkgver = 2019.08
+	pkgver = 2020.06
 	pkgrel = 1
 	url = https://github.com/sifive/freedom-studio
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = freedom-studio-bin
 	license = GPL
 	license = GPL2
 	license = GPL3
-	noextract = freedom-studio-bin-2019.08.tar.gz
+	noextract = freedom-studio-bin-2020.06.tar.gz
 	options = !strip
-	source = freedom-studio-bin-2019.08.tar.gz::https://static.dev.sifive.com/dev-tools/FreedomStudio/2019.08/FreedomStudio-2019-08-2-lin64.tar.gz
-	sha256sums = 7e93e8064060d59651d83bad1c179230a7d51ccea13135ef98bf083ac5057d5a
+	source = freedom-studio-bin-2020.06.tar.gz::https://static.dev.sifive.com/dev-tools/FreedomStudio/2020.06/FreedomStudio-2020-06-3-lin64.tar.gz
+	sha256sums = c025448aa96de4acf8fbfd40d590971093e44f3a2c43c305d194a1b5d3df5c4f
 
 pkgname = freedom-studio-bin
