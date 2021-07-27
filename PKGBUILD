@@ -20,21 +20,24 @@ pkgver() {
 }
 
 prepare() {
+	cd $_pkgname
+	# add cmake install rules
+	git pull --squash origin pull/28/head
 	# unbundle spirv-headers
-	sed -i '/SPIRV-Headers/d' $_pkgname/CMakeLists.txt
+	sed -i /SPIRV-Headers/d CMakeLists.txt
 }
 
 build() {
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
 	cmake --build build
 }
 
 package() {
 	# shellcheck disable=SC2154
-	install -Dm755 -t "$pkgdir"/usr/lib build/src/libsirit.so
-	install -Dm644 -t "$pkgdir"/usr/include/sirit $_pkgname/include/sirit/sirit.h
+	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.txt
 }
