@@ -18,7 +18,7 @@ source=('git+https://github.com/RobinBoers/cutie-tanks'
 		'cutie-tanks.desktop'
 		'icon.png')
 noextract=("release.zip")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd cutie-tanks
