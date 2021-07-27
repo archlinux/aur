@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=devicetree-overlay-generator
-pkgver=20.05.RC.05
+pkgver=20.05.00.00
 pkgrel=1
 epoch=
 pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/devicetree-overlay-generator/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('e30ce1fa4c097aa064a1664633c72e2654ee72554a2f17ea1f371a67d0382ff9')
+sha256sums=('d06ad9ae6f033a3462a4150d510af2a90dddf8134819a7764bb3f454cac4f765')
 #validpgpkeys=()
 
 package() {
