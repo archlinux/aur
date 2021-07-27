@@ -1,0 +1,17 @@
+pkgbase = neovim-tabout-git
+	pkgdesc = tabout plugin for neovim
+	pkgver = r6.e8c369e
+	pkgrel = 1
+	url = https://github.com/abecodes/tabout.nvim
+	arch = any
+	groups = neovim-plugins
+	license = Unlicense
+	makedepends = git
+	depends = neovim>=0.5
+	depends = neovim-tree-sitter
+	provides = neovim-tabout
+	conflicts = neovim-tabout
+	source = neovim-tabout-git::git+https://github.com/abecodes/tabout.nvim
+	md5sums = SKIP
+
+pkgname = neovim-tabout-git

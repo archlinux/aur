@@ -1,0 +1,9 @@
+post_install() {
+	echo ':: You must manually set up this plugin in your init.lua/init.vim.'
+	echo ':: Check upstream documentation for more information.'
+	echo ':: A copy is installed under /usr/share/doc/neovim-tabout-git/README.md for your reference.'
+}
+
+post_remove() {
+	echo ':: Remember to remove all references to this plugin in your setup scripts after uninstalling!'
+}
