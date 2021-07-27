@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.8.3
+Version=1.0
 Type=Application
 Terminal=false
 Exec=/usr/bin/electron9 --app /usr/lib/authy/app.asar
