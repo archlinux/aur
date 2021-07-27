@@ -9,9 +9,9 @@ _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.37
-_realver=${_pkgmajor}
+_realver=${_pkgmajor}.1
 pkgver=${_realver/-/}
-pkgrel=3.2
+pkgrel=1
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -24,14 +24,14 @@ validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284'  # Karel Zak
               '12D64C3ADCDA0AA427BDACDFF0733C808132F189') # Jari Ruusu
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-${_realver}.tar."{xz,sign}
         #"${_basename}-${pkgver}.diff"
-        http://loop-aes.sourceforge.net/updates/${_basename}-${pkgver}-20210620.diff.bz2{,.sign}
+        http://loop-aes.sourceforge.net/updates/${_basename}-${_pkgmajor}-20210620.diff.bz2{,.sign}
         "${pkgname}.modules"
         pam-{login,common,runuser,su}
         'util-linux-aes.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5'
+sha256sums=('8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76'
             'SKIP'
             '0a78ea9a05191b1ddaeedc8c8d8ae053f9ed4e7cd2f39ef4b3bc356e552c98a2'
             'SKIP'
@@ -48,7 +48,7 @@ sha256sums=('bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5'
 prepare() {
   cd "$_basename-$pkgver"
   #patch -Np1 -i "../${_basename}-${pkgver}.diff"
-  patch -Np1 -i "../${_basename}-${pkgver}-20210620.diff"
+  patch -Np1 -i "../${_basename}-${_pkgmajor}-20210620.diff"
   autoreconf -i
 }
 
