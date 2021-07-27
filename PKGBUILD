@@ -1,7 +1,7 @@
 # Maintainer: Fox archlinux@foxfromabyss.dev
 
 pkgname=telegram-tdlib-git
-pkgver=v1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,6 +13,10 @@ provides=('telegram-tdlib')
 conflicts=('telegram-tdlib')
 source=("git+https://github.com/tdlib/td.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cat td/td/telegram/Td.h | grep TDLIB_VERSION | sed 's/[^0-9,.]*//g'
+}
 
 build() {
   mkdir -p "td/build"
