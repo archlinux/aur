@@ -1,4 +1,4 @@
-*.tar.*
-src
-pkg
-skopeo/
+/*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
