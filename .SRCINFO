@@ -1,7 +1,7 @@
 pkgbase = libunique
 	pkgdesc = Library for writing single instance applications for GTK3
 	pkgver = 1.1.6
-	pkgrel = 9
+	pkgrel = 10
 	url = https://wiki.gnome.org/Attic/LibUnique
 	arch = i686
 	arch = x86_64
