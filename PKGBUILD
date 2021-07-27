@@ -125,11 +125,13 @@ build() {
 
 package() {
     install -d -m755 ${pkgdir}/usr/bin
-    install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
-    install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
-    cp -r ${srcdir}/MrCode/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
-    cp -r ${srcdir}/MrCode/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
-    ln -s /usr/share/${pkgname}/bin/mrcode ${pkgdir}/usr/bin/mrcode
+    install -d -m755 ${pkgdir}/usr/share/{mrcode,applications,pixmaps}
+    install -d -m755 ${pkgdir}/usr/share/licenses/mrcode
+    
+    cp -r ${srcdir}/MrCode/vscodium/vscode/LICENSE.txt ${pkgdir}/usr/share/licenses/mrcode
+    cp -r ${srcdir}/MrCode/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/mrcode
+    
+    ln -s /usr/share/mrcode/bin/mrcode ${pkgdir}/usr/bin/mrcode
     install -D -m644 mrcode.desktop ${pkgdir}/usr/share/applications/mrcode.desktop
     install -D -m644 ${srcdir}/MrCode/vscodium/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/mrcode.png
 }
