@@ -1,6 +1,6 @@
 # Maintainer: Florian De Temmerman <floriandetemmerman@gmail.com>
 pkgname=torrenttools
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Commandline tool for inspecting, creating and editing BitTorrent metafiles."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/fbdtemme/torrenttools"
 license=("MIT")
 groups=()
 depends=("openssl" "intel-tbb")
-makedepends=("cmake" "make" "git" "nasm" "autoconf" "automake" "m4" "intel-tbb")
+makedepends=("cmake" "make" "git" "nasm" "autoconf" "automake" "m4")
 optdepends=()
 provides=("torrenttools")
 conflicts=()
@@ -32,6 +32,7 @@ build() {
         -DTORRENTTOOLS_BUILD_DOCS=OFF \
         -DDOTTORRENT_CRYPTO_LIB=openssl \
         -DDOTTORRENT_MB_CRYPTO_LIB=isal \
+	-DSYSCONF_INSTALL_DIR=/etc \
         -DFETCHCONTENT_FULLY_DISCONNECTED=ON
 
     cd cmake-build
@@ -39,8 +40,5 @@ build() {
 }
 
 package() {
-    cmake --install "$srcdir/cmake-build" --component torrenttools --prefix "$pkgdir/"
-    mkdir -p "$pkgdir/usr/bin/"
-    mv "$pkgdir/bin/torrenttools" "$pkgdir/usr/bin/torrenttools"
-    rmdir "$pkgdir/bin/"
+    DESTDIR=$pkgdir cmake --install "$srcdir/cmake-build" --component torrenttools --prefix "/usr"
 }
