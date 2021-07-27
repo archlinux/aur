@@ -1,6 +1,6 @@
-pkgbase = youtube-search-python
+pkgbase = youtube-search-python-git
 	pkgdesc = Search for YouTube videos, channels & playlists & get video information using link WITHOUT YouTube Data API v3
-	pkgver = 1.1.1.r31.e021809
+	pkgver = 1.4.6.r116.539137a
 	pkgrel = 1
 	url = https://github.com/alexmercerind/youtube-search-python
 	arch = any
@@ -14,4 +14,4 @@ pkgbase = youtube-search-python
 	source = git+https://github.com/alexmercerind/youtube-search-python.git
 	md5sums = SKIP
 
-pkgname = youtube-search-python
+pkgname = youtube-search-python-git

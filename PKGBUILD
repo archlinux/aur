@@ -1,5 +1,5 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
-pkgname=youtube-search-python
+pkgname=youtube-search-python-git
 
 pkgver() {
   cd "youtube-search-python"
