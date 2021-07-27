@@ -1,0 +1,16 @@
+pkgbase = ruby-regexp_property_values
+	pkgdesc = Inspect property values supported by Ruby's regex engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jaynetics/regexp_property_values
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = git+https://github.com/jaynetics/regexp_property_values.git?tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = ruby-regexp_property_values
