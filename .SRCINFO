@@ -17,4 +17,3 @@ pkgbase = kopano-webapp-smime-git
 	md5sums = f49fb2db0167e943ce26f1db7e4055c8 kopano-webapp-smime.ini
 
 pkgname = kopano-webapp-smime-git
-
