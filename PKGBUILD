@@ -4,7 +4,7 @@
 pkgname=mrcode-bin
 pkgver=1.58.2
 pkgrel=1
-pkgdesc="An IDE based on VSCode / VSCodium (Binary release)"
+pkgdesc="An IDE based on VSCode / VSCodium (binary release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/zokugun/MrCode.git'
 license=('MIT')
