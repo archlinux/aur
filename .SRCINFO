@@ -1,0 +1,17 @@
+pkgbase = k8s-ldap-auth-git
+	pkgdesc = Kubernetes webhook token authentication plugin implementation using ldap.
+	pkgver = 2.0.0.r4.gcad7e1a
+	pkgrel = 1
+	url = https://github.com/vbouchaud/k8s-ldap-auth
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = go
+	provides = k8s-ldap-auth
+	conflicts = k8s-ldap-auth
+	source = k8s-ldap-auth::git+https://github.com/vbouchaud/k8s-ldap-auth#branch=master
+	sha256sums = SKIP
+
+pkgname = k8s-ldap-auth-git
