@@ -1,12 +1,13 @@
 pkgbase = whitesur-gtk-theme-git
 	pkgdesc = MacOS Big Sur like theme for GNOME desktops
-	pkgver = 2021.06.23.r87.gc790fa2
+	pkgver = 2021.07.27.r0.gc790fa2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = sassc
+	makedepends = setconf
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = gtk-engines: GTK2 theme support
 	optdepends = whitesur-icon-theme-git: matching icon theme
@@ -19,6 +20,8 @@ pkgbase = whitesur-gtk-theme-git
 	conflicts = whitesur-gtk-theme
 	options = !strip
 	source = whitesur-gtk-theme::git+https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+	source = wallpapers::git+https://github.com/vinceliuice/WhiteSur-gtk-theme.git#branch=wallpapers
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = whitesur-gtk-theme-git
