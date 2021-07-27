@@ -1,3 +1,17 @@
+2021.7.26:
+- [hot fix for 2021.7.25 release] fix webpage_url error when resuming download item.
+
+2021.7.25:
+- add "batch downloading" feature, issues #263, and #219
+- add "update feature" for AppImage release
+- add segment progressbar to show progress of each file segment.
+- enhance auto file segmentation.
+- add new themes - thanks to @ahmed-tasaly
+- fix video and audio progress not shown for hls files.
+- [font spinbox] disable auto-repeat behavior of mouse clicks on the arrowheads.
+- fix actions when re-downloading existing items
+- some other tweaks and bug fixes.
+
 2021.7.1:
 - [critical] fix application crash sometimes when using gtk file chooser, issue #257.
 - [critical] fix application refuse to quit when gui restarted (if theme changed), issue #257.
