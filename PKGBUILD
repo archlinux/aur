@@ -3,10 +3,11 @@
 _gemname=regexp_parser
 pkgname=ruby-${_gemname}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A regular expression parser library for Ruby"
 arch=(any)
 depends=(ruby)
+checkdepends=(ruby-rspec ruby-ice_nine ruby-regexp_property_values)
 makedepends=(rubygems ruby-rdoc ragel ruby-rake ruby-bundler)
 url=https://github.com/ammar/regexp_parser
 license=(MIT)
@@ -20,6 +21,11 @@ build() {
   gem build ${_gemname}.gemspec
 }
 
+check() {
+  cd $_gemname-$pkgver
+  rake
+}
+
 package() {
   cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
@@ -31,10 +37,11 @@ package() {
     -n "$pkgdir/usr/bin" \
     $_gemname-$pkgver.gem
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  rm -rf "$pkgdir/$_gemdir/cache"
 
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
 # vim: set ts=2 sw=2 et:
