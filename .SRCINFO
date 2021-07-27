@@ -1,0 +1,19 @@
+pkgbase = libe57
+	pkgdesc = An open source implementation of the ASTM E2807 Standard Specification for 3D Imaging Data Exchange in the C++ language.
+	pkgver = 1.1.332
+	pkgrel = 1
+	url = http://www.libe57.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = xerces-c
+	depends = boost-libs
+	depends = icu
+	source = https://downloads.sourceforge.net/project/e57-3d-imgfmt/E57Refimpl-src/E57RefImpl_src-1.1.332.zip
+	source = build-shared.patch
+	source = replace_tr1_with_cpp11.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libe57

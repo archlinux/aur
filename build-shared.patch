@@ -1,0 +1,72 @@
+diff --color -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2013-04-03 16:24:08.000000000 +0800
++++ b/CMakeLists.txt	2021-07-27 00:32:16.817794613 +0800
+@@ -73,8 +73,8 @@
+ 
+ # Find the Boost and Xerces libraries
+ 
+-set(Boost_USE_STATIC_LIBS   ON)
+-set(Boost_USE_STATIC_RUNTIME ON)
++set(Boost_USE_STATIC_LIBS   OFF)
++set(Boost_USE_STATIC_RUNTIME OFF)
+ set(Boost_USE_MULTITHREADED ON)
+ find_package(Boost
+     COMPONENTS
+@@ -92,7 +92,7 @@
+ )
+ endif(NOT Boost_FOUND)
+ 
+-set(Xerces_USE_STATIC_LIBS On)
++set(Xerces_USE_STATIC_LIBS OFF)
+ find_package(Xerces QUIET)
+ if (NOT Xerces_FOUND)
+     set(XERCES_ROOT CACHE PATH "Location of the xerces library")
+@@ -141,7 +141,7 @@
+ # The reference implementation
+ #
+ 
+-add_library( E57RefImpl STATIC
++add_library( E57RefImpl SHARED
+     src/refimpl/E57Foundation.cpp
+     src/refimpl/E57FoundationImpl.cpp
+     src/refimpl/E57FoundationImpl.h
+@@ -172,6 +172,11 @@
+     include/time_conversion/gnss_error.h
+ )
+ 
++target_link_libraries( E57RefImpl
++    LASReader
++    time_conversion
++)
++
+ #
+ # Example programs
+ #
+@@ -259,15 +264,26 @@
+ install(
+     FILES
+         include/E57Foundation.h
++        include/E57Simple.h
++        include/LASReader.h
+     DESTINATION include/e57
+ )
+ 
+ install(
+     FILES
++        include/time_conversion/time_conversion.h
++        include/time_conversion/basictypes.h
++        include/time_conversion/constants.h
++        include/time_conversion/gnss_error.h
++    DESTINATION include/e57/time_conversion
++)
++
++install(
++    FILES
+         CHANGES.TXT
+         README.TXT
+         src/refimpl/E57RefImplConfig.cmake
+-    DESTINATION .
++    DESTINATION share/e57refimpl
+ )
+ 
+ #include (InstallRequiredSystemLibraries)
