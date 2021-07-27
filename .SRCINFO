@@ -1,15 +1,11 @@
 pkgbase = whitesur-gtk-theme-git
 	pkgdesc = MacOS Big Sur like theme for GNOME desktops
-	pkgver = 2021.05.05.r68.g474b0ec
+	pkgver = 2021.06.23.r87.gc790fa2
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	arch = any
 	license = GPL
-	makedepends = dialog
 	makedepends = git
-	makedepends = gtk-engine-murrine
-	makedepends = imagemagick
-	makedepends = libnotify
 	makedepends = sassc
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = gtk-engines: GTK2 theme support
@@ -26,4 +22,3 @@ pkgbase = whitesur-gtk-theme-git
 	sha256sums = SKIP
 
 pkgname = whitesur-gtk-theme-git
-
