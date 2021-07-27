@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pydevicetree
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="This is a Python 3 library for parsing, querying, and modifying Devicetree Source v1 files as described in the Devicetree Specification v0.2."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('fb6f5bd004b35f348470c693748490462c8c2e6caaaf0a88d74691f5f228b0fd')
+sha256sums=('eb441c7d97c4c7e92111be33b2a05a5fb09bb992d9d0c18f64182c82174cf273')
 #validpgpkeys=()
 
 build() {
