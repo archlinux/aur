@@ -1,0 +1,12 @@
+pkgbase = fonts-genei-m-gothic
+	pkgdesc = GenEiMGothic Japanese outline fonts
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://okoneya.jp/font/genei-m-gothic.html
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = https://okoneya.jp/font/GenEiMGothic_v2.0.zip
+	sha256sums = SKIP
+
+pkgname = fonts-genei-m-gothic
