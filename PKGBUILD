@@ -5,10 +5,10 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=gimgview
-pkgver=1.0.1
+pkgver=2.0.1
 pkgrel=1
 epoch=
-pkgdesc="a simple gtk3 based image viewer written in C++"
+pkgdesc="a simple gtk3 based image viewer written in C"
 arch=('any')
 license=("GPL")
 groups=()
@@ -25,7 +25,7 @@ install=
 changelog=
 source=("https://gitlab.sokoll.com/moritz/gimgview/-/archive/master/gimgview-master.tar.gz")
 noextract=()
-sha256sums=("ba61848b1979c337e8ab9c92c96c05937393368e3afc2a01fc1ea997cfc1f6fa")
+sha256sums=("d93c12cab463461e6e072e3585e10bb8ca566652955f92e54906926ef7fb4661")
 validpgpkeys=()
 
 build() {
@@ -33,15 +33,14 @@ build() {
 	make build
 }
 
-check() {
-	cd gimgview-master
-	make -k check
-}
+#check() {
+#	cd gimgview-master
+#	make -k check
+#}
 
 package() {
 	cd gimgview-master
 	mkdir "$pkgdir"/usr
 	mkdir "$pkgdir"/usr/bin
-	make DESTDIR="$pkgdir/usr/bin" install
-	make MANDIR="$pkgdir/usr/man" manpage
+	make DESTDIR="$pkgdir/usr/bin" MANDIR="$pkgdir/usr/man" install
 }
