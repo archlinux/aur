@@ -1,0 +1,19 @@
+pkgbase = dynarmic-git
+	pkgdesc = An ARM dynamic recompiler
+	pkgver = 5.r97.gf33bd69e
+	pkgrel = 1
+	url = https://github.com/MerryMage/dynarmic
+	arch = x86_64
+	license = BSD
+	makedepends = boost>=1.57
+	makedepends = cmake
+	makedepends = fmt>=8
+	makedepends = git
+	provides = dynarmic=5.r97.gf33bd69e
+	provides = libdynarmic.so
+	conflicts = dynarmic
+	source = git+https://github.com/MerryMage/dynarmic.git
+	b2sums = SKIP
+
+pkgname = dynarmic-git
+	depends = libfmt.so
