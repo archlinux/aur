@@ -1,0 +1,16 @@
+pkgbase = freedom-studio-bin
+	pkgdesc = SiFive Freedom Studio RISC-V IDE for Embedded Development
+	pkgver = 2019.05.0
+	pkgrel = 1
+	url = https://github.com/sifive/freedom-studio
+	arch = x86_64
+	groups = bash
+	license = GPL
+	license = GPL2
+	license = GPL3
+	noextract = freedom-studio-bin-2019.05.0.tar.gz
+	options = !strip
+	source = freedom-studio-bin-2019.05.0.tar.gz::https://static.dev.sifive.com/dev-tools/FreedomStudio/2019.05.0/FreedomStudio-4.7.2.2019-05-0-linux.gtk.x86_64.tar.gz
+	sha256sums = fa3b0522febcfb1e2ca037a3969da2655857811e686bd9940e34bf6ef8036309
+
+pkgname = freedom-studio-bin
