@@ -5,7 +5,7 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-headless
-pkgver=3.1.2.10630
+pkgver=3.1.4.10638
 pkgrel=1
 pkgdesc="Google Drive and OneDrive headless client for servers"
 url="https://www.insynchq.com/downloads"
@@ -17,7 +17,7 @@ source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-buster_amd64.deb"
         'insync-headless.service'
         'insync-headless@.service'
         'insync-headless.patch')
-sha256sums=('5543ab522726f379c2dab883ff2298bcb6c1767721f72a838b36350043bbd19f'
+sha256sums=('27696e4e2d993e70dcabcd4985ce9dff2261f621622ed69229b86a55f26ab68a'
             '3812fee60e45e3227446328758cc4c690461b674c8fd27677ba985c635e6147d'
             'e35c8274083a04adbbc96330958f18183e169348917c6e86e69e7d71ff644e4b'
             '67a54a59f0a7c747cb9ec8913b90a6bf1ed4e4b4c2ece2e2cd27d212546a93ed')
