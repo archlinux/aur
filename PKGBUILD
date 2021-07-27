@@ -26,7 +26,7 @@ makedepends=(
 	'opus>=1.3'
 	'qt5-tools>=5.12'
 	'sdl2>=2.0.14'
-	'spirv-headers>1.5.4.raytracing.fixed' # for sirit
+	'sirit>=r184'
 	'vulkan-headers>=1.2.145'
 	'xbyak>=5.96'
 	'zlib>=1.2'
@@ -36,18 +36,16 @@ source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'git+https://github.com/MerryMage/dynarmic.git'
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
-	'git+https://github.com/ReinUsesLisp/sirit.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
 	'unbundle-httplib.patch'
 	'unbundle-inih.patch'
 	'unbundle-sdl.patch'
-	'unbundle-spirv-headers.patch'
+	'unbundle-sirit.patch'
 	'unbundle-xbyak.patch'
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -57,16 +55,15 @@ b2sums=(
 	'9c1bc256d79a8bea19e43f385f151278b60d71a8cd8746d796adcc1016e4b8b5b7c0e9205147e53144e2e1b2a8ecb2d2c04dd21b1d3794a607477c30117bc4c2'
 	'169e3ccce1c51d1aedbb9a314d817120dc59a615016f295178967c2bbea17dcc840b4c7a82ce98777ade4c25e408c8a1fabf19fc9abe5fd56a208c32ceb1a354'
 	'1112594336f6829483d9813e2144715cf965b21b700de07fb0206fd1089f29fdad8a4d17604ee87a93c4ce79fdae2f83eeef11fa489a86dafa25b959835a7e20'
-	'f7abd00f331e9fe8b4196c966f736bac829b1aff8a5bf0517cd696ce38d112d7b42f30d513ab8a1ee5e52bb92d39f7fda9d2b74ef616cc5b62ce546a15938a25'
+	'404ee663b4fefdf7b9e2bb7c96af7bc074e6e8f4477cfb76295cf6b252a04a45c638cea7addee9bfc22ef6b13dd15773dd4cb572f3aed161f3579348750ecb6b'
 	'a54c9e039c6d477778ba59f0f87b510b049120b3af0ac9b408adfdeaa038482a8486305bcbb756a1a1c4eb9d926bac723567f7d4366bba70baafde3e5306e27d'
 )
 
 prepare() {
 	cd yuzu-mainline
-	git submodule init externals/{dynarmic,mbedtls,sirit,soundtouch}
+	git submodule init externals/{dynarmic,mbedtls,soundtouch}
 	git config submodule.dynarmic.url ../dynarmic
 	git config submodule.mbedtls.url ../yuzu-mbedtls
-	git config submodule.sirit.url ../sirit
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
 	patch -Np1 < ../unbundle-cubeb.patch
@@ -74,7 +71,7 @@ prepare() {
 	patch -Np1 < ../unbundle-httplib.patch
 	patch -Np1 < ../unbundle-inih.patch
 	patch -Np1 < ../unbundle-sdl.patch
-	patch -Np1 < ../unbundle-spirv-headers.patch
+	patch -Np1 < ../unbundle-sirit.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
 }
@@ -116,6 +113,7 @@ package() {
 		'libfmt.so'
 		'libhttplib.so'
 		'libINIReader.so'
+		'libsirit.so'
 		'libswscale.so'
 		'libusb-1.0.so'
 		'libzip.so'

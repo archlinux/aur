@@ -1,0 +1,13 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -88,7 +88,9 @@ if (USE_DISCORD_PRESENCE)
+ endif()
+ 
+ # Sirit
+-add_subdirectory(sirit)
++find_library(SIRIT_LIBRARY sirit REQUIRED)
++add_library(sirit SHARED IMPORTED GLOBAL)
++set_property(TARGET sirit PROPERTY IMPORTED_LOCATION "${SIRIT_LIBRARY}")
+ 
+ # libzip
+ find_package(libzip 1.5)

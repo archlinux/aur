@@ -23,7 +23,7 @@ pkgbase = yuzu
 	makedepends = opus>=1.3
 	makedepends = qt5-tools>=5.12
 	makedepends = sdl2>=2.0.14
-	makedepends = spirv-headers>1.5.4.raytracing.fixed
+	makedepends = sirit>=r184
 	makedepends = vulkan-headers>=1.2.145
 	makedepends = xbyak>=5.96
 	makedepends = zlib>=1.2
@@ -33,16 +33,14 @@ pkgbase = yuzu
 	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-701
 	source = git+https://github.com/MerryMage/dynarmic.git
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
-	source = git+https://github.com/ReinUsesLisp/sirit.git
 	source = citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git
 	source = unbundle-cubeb.patch
 	source = unbundle-discord-rpc.patch
 	source = unbundle-httplib.patch
 	source = unbundle-inih.patch
 	source = unbundle-sdl.patch
-	source = unbundle-spirv-headers.patch
+	source = unbundle-sirit.patch
 	source = unbundle-xbyak.patch
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -52,7 +50,7 @@ pkgbase = yuzu
 	b2sums = 9c1bc256d79a8bea19e43f385f151278b60d71a8cd8746d796adcc1016e4b8b5b7c0e9205147e53144e2e1b2a8ecb2d2c04dd21b1d3794a607477c30117bc4c2
 	b2sums = 169e3ccce1c51d1aedbb9a314d817120dc59a615016f295178967c2bbea17dcc840b4c7a82ce98777ade4c25e408c8a1fabf19fc9abe5fd56a208c32ceb1a354
 	b2sums = 1112594336f6829483d9813e2144715cf965b21b700de07fb0206fd1089f29fdad8a4d17604ee87a93c4ce79fdae2f83eeef11fa489a86dafa25b959835a7e20
-	b2sums = f7abd00f331e9fe8b4196c966f736bac829b1aff8a5bf0517cd696ce38d112d7b42f30d513ab8a1ee5e52bb92d39f7fda9d2b74ef616cc5b62ce546a15938a25
+	b2sums = 404ee663b4fefdf7b9e2bb7c96af7bc074e6e8f4477cfb76295cf6b252a04a45c638cea7addee9bfc22ef6b13dd15773dd4cb572f3aed161f3579348750ecb6b
 	b2sums = a54c9e039c6d477778ba59f0f87b510b049120b3af0ac9b408adfdeaa038482a8486305bcbb756a1a1c4eb9d926bac723567f7d4366bba70baafde3e5306e27d
 
 pkgname = yuzu
@@ -65,6 +63,7 @@ pkgname = yuzu
 	depends = libfmt.so
 	depends = libhttplib.so
 	depends = libINIReader.so
+	depends = libsirit.so
 	depends = libswscale.so
 	depends = libusb-1.0.so
 	depends = libzip.so
