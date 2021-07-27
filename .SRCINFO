@@ -1,0 +1,16 @@
+pkgbase = ruby-ice_nine
+	pkgdesc = Deep Freeze Ruby Objects
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/dkubb/ice_nine
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = git+https://github.com/dkubb/ice_nine.git?tag=v0.11.2
+	sha256sums = SKIP
+
+pkgname = ruby-ice_nine
