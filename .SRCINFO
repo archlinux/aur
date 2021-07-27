@@ -1,0 +1,13 @@
+pkgbase = duh
+	pkgdesc = DUH is a suite of tools for packaging reusable hardware components and designs.
+	pkgver = 1.19.0
+	pkgrel = 1
+	url = https://github.com/sifive/duh
+	arch = any
+	license = Apache
+	makedepends = npm
+	options = !strip
+	source = duh-1.19.0.tgz::https://registry.npmjs.org/duh/-/duh-1.19.0.tgz
+	sha256sums = a71998b54e23322a9c034fdd9c64b11881adb5658772ede9b4a6b7f4c4a88227
+
+pkgname = duh
