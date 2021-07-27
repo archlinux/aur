@@ -2,10 +2,15 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
+# The upstream test suite requires an outdated version of python-parsedatetime
+# no longer available on Arch. Since the test suite is mostly for upstream
+# regressions (not packaging), skipping it is in most users’ best interest.
+BUILDENV+=(!check)
+
 _pkgname=agate-excel
 pkgname=python-$_pkgname
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds read support for Excel files (xls and xlsx) to agate'
 arch=(any)
 url='https://agate-excel.readthedocs.org/'
@@ -19,6 +24,7 @@ depends=(python
 makedepends=(python-setuptools
              'python-sphinx>=1.2.2')
 checkdepends=(python-nose
+              'python-parsedatetime<2.5'
               python-six)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/wireservice/agate-excel/archive/${pkgver}.tar.gz")
 sha256sums=('5316f158d4df81d5b6e06d4116c1fd47e76ee1f02a6cae116d65fdf6fae532c8')
