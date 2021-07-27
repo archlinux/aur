@@ -9,6 +9,7 @@ arch=("x86_64")
 url="https://github.com/aome510/hackernews-TUI"
 license=('MIT')
 makedepends=('cargo')
+optdepends=('mercury-parser: to view articles directly in the terminal')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aome510/hackernews-TUI/archive/v$pkgver.tar.gz")
 sha512sums=('1b1b7aff4443a1205f6c63e20f5a9769079c809f42c1b175e835a5c3fb230686abef0d2fa7d4620b10b6d6a54c8b531c8874ec20f4276aef7dc352adb96c6a33')
 
