@@ -1,16 +1,17 @@
 #
 # PKGBUILD for the development version of NetHack
-#    Maintainer: Eric Biggers <ebiggers3@gmail.com>
+#    Maintainer: Joshua Ward <joshuaward@myoffice.net.au>
+#    Contributer: Eric Biggers <ebiggers3@gmail.com>
 #
 # Based on the PKGBUILD for nethack 3.6.0
 #
 
 pkgname=nethack-git
-pkgver=3.6.6.r0.g36ee1849b
+pkgver=3.6.6.PostRelease.c2ebfd9e
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
-url='https://www.nethack.org/index.html'
+url='https://github.com/NetHack/NetHack'
 license=('custom')
 depends=('ncurses' 'gzip' 'gdb')
 install=nethack.install
