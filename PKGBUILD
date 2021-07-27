@@ -113,6 +113,9 @@ _fix_pod_files() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
+    # pod2text is stored at /usr/bin/core_perl/
+    export "PATH=/usr/bin/core_perl:${PATH}"
+
     # Currently Lua, Erlang, Php, Haskell and Java bindings
     # are disabled. If you want to create any of the aforementioned language
     # bindings uncomment the appropriate line in makedepends and remove the
