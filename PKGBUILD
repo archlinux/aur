@@ -4,7 +4,7 @@
 # Contributor: Chris Allison <daemon@cca.me.uk>
 
 pkgname=ccextractor
-pkgver=0.90
+pkgver=0.91
 pkgrel=1
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('gcc-libs' 'tesseract' 'leptonica' 'ffmpeg')
 source=(
    https://github.com/CCExtractor/ccextractor/archive/v$pkgver.tar.gz
 )
-sha512sums=('0e333671b9f010a1b8a3f2bb69e3a903f168f6b8555a4415124418940f7d02b2bbf148b9a3b1bf956ba438fcc6c80b47f74a93c22d92c98e7a20ed4d4a6b114e')
+sha512sums=('4b30dc92d3ad97d81b43478162ab9327addc1807f502b06fd62683560a46224094eb9f60e925e4e0d1089d430534f8b1e6334ff733d393815b4e5d89e6811a55')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/linux"
