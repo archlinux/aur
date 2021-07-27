@@ -102,7 +102,7 @@ build() {
 }
 
 check() {
-	ninja -C build test
+	cmake --build build --target test
 }
 
 package() {
