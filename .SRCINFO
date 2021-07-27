@@ -7,6 +7,7 @@ pkgbase = mrwriter-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = qt5-base
 	provides = mrwriter
 	conflicts = mrwriter
@@ -14,4 +15,3 @@ pkgbase = mrwriter-git
 	md5sums = SKIP
 
 pkgname = mrwriter-git
-

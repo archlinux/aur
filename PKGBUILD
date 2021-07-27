@@ -2,7 +2,7 @@
 _pkgname=mrwriter
 pkgname="${_pkgname}-git"
 pkgver=v0.0.7.r2.g9b9ae09
-pkgrel=1
+pkgrel=2
 pkgdesc="Notetaking and blackboard replacement application. Inspired by Xournal. Written in C++/Qt for Linux / Windows / Mac."
 arch=('x86_64')
 url="https://github.com/unruhschuh/MrWriter"
