@@ -1,6 +1,6 @@
 pkgbase = freerdp-gstfree
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
-	pkgver = 2.3.2
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://www.freerdp.com/
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = freerdp-gstfree
 	provides = libuwac0.so
 	provides = freerdp
 	conflicts = freerdp
-	source = freerdp-2.3.2.tar.gz::https://github.com/freerdp/freerdp/archive/2.3.2.tar.gz
+	source = freerdp-2.4.0.tar.gz::https://github.com/freerdp/freerdp/archive/2.4.0.tar.gz
 	source = freerdp-manpage_formatting.patch
-	sha512sums = ca22769c1fdf2806a21ed45ff537cbf0b3f515023943316cd089a204cefa284a9ee7a8f1b3fc87ece7c5ea8edff47622b5b4c75eb5833ecf8e478c89f53afe56
+	sha512sums = fb63c40dcdbbc16bf1d591227ec04537f96f0d5098be28a7b8b0158c83803941f1737604473e6fec45e85ec951bf4309c7b119a282ed2a7902f095757da67b20
 	sha512sums = d960e042d1527b5d5721136b6b20fc36f65beafd010581ea5b908668537fe9fe622de6689a29c0274b0d6f1e513615f0d02e56c1d1d1e613d093e145d39af8d7
 
 pkgname = freerdp-gstfree
@@ -81,4 +81,3 @@ pkgname = freerdp-gstfree
 	depends = libswresample.so
 	depends = libsystemd.so
 	depends = libusb-1.0.so
-
