@@ -1,0 +1,15 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -17,9 +17,9 @@ target_include_directories(catch-single-include INTERFACE catch/single_include)
+ 
+ # Dynarmic
+ if (ARCHITECTURE_x86_64)
+-    set(DYNARMIC_TESTS OFF)
+-    set(DYNARMIC_NO_BUNDLED_FMT ON)
+-    add_subdirectory(dynarmic)
++    find_library(DYNARMIC_LIBRARY dynarmic REQUIRED)
++    add_library(dynarmic SHARED IMPORTED GLOBAL)
++    set_property(TARGET dynarmic PROPERTY IMPORTED_LOCATION "${DYNARMIC_LIBRARY}")
+ endif()
+ 
+ # getopt

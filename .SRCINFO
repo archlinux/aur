@@ -10,6 +10,7 @@ pkgbase = yuzu
 	makedepends = cmake>=3.15
 	makedepends = cpp-httplib-compiled>=0.9.1
 	makedepends = discord-rpc>3.4
+	makedepends = dynarmic>=5.r88
 	makedepends = ffmpeg>=4.3.1
 	makedepends = fmt>=8
 	makedepends = git
@@ -31,11 +32,11 @@ pkgbase = yuzu
 	depends = cubeb
 	depends = qt5-webengine>=5.12
 	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-701
-	source = git+https://github.com/MerryMage/dynarmic.git
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
 	source = citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git
 	source = unbundle-cubeb.patch
 	source = unbundle-discord-rpc.patch
+	source = unbundle-dynarmic.patch
 	source = unbundle-httplib.patch
 	source = unbundle-inih.patch
 	source = unbundle-sdl.patch
@@ -44,9 +45,9 @@ pkgbase = yuzu
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = SKIP
 	b2sums = d152b6417f71d3a48c10eb94bd17b06fdf85e429feea07beaf535ceb22b207a579dfa78b85acefb97137be376ddc369adf91d221d4fe0f7f7888d6881073239f
 	b2sums = edd6991455eeeebaeaa5df22cd21d8f6c3834a42505dcae4703d65843f664d6e410ec90cc6850bfdb6071838d3da5f8a320a105ed305acc07d2ba9f05ebd02e8
+	b2sums = 006696b84c2907a15a6297ff3f652434046aff6d8f5d444990ede6ed64f2b2c45540dde445b823bb1db0a640c5f92d21349bce7f3e41303849357b6d56ab8f62
 	b2sums = 9c1bc256d79a8bea19e43f385f151278b60d71a8cd8746d796adcc1016e4b8b5b7c0e9205147e53144e2e1b2a8ecb2d2c04dd21b1d3794a607477c30117bc4c2
 	b2sums = 169e3ccce1c51d1aedbb9a314d817120dc59a615016f295178967c2bbea17dcc840b4c7a82ce98777ade4c25e408c8a1fabf19fc9abe5fd56a208c32ceb1a354
 	b2sums = 1112594336f6829483d9813e2144715cf965b21b700de07fb0206fd1089f29fdad8a4d17604ee87a93c4ce79fdae2f83eeef11fa489a86dafa25b959835a7e20
@@ -60,6 +61,7 @@ pkgname = yuzu
 	depends = libavutil.so
 	depends = libboost_context.so
 	depends = libdiscord-rpc.so
+	depends = libdynarmic.so
 	depends = libfmt.so
 	depends = libhttplib.so
 	depends = libINIReader.so
