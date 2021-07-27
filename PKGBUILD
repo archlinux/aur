@@ -1,9 +1,11 @@
 # Maintainer: samarthj <dev@samarthj.com>
 
+# shellcheck disable=2034,2148,2154
+
 pkgname=containers-common-git
 _pkgname=containers-common
 _gitpkgname=common
-pkgver=0.41.1_dev.r1204.g71bd547
+pkgver=0.41.1_dev.r1222.g3b80ec4
 pkgrel=1
 pkgdesc="Configuration files and manpages for containers (git)"
 arch=('any')
@@ -11,7 +13,6 @@ makedepends=('go-md2man' 'git' 'libgpgme.so')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _baseurl="https://github.com/containers"
-_apiurl="https://api.github.com/repos/containers"
 url="$_baseurl/$_gitpkgname.git"
 license=(Apache)
 backup=(
@@ -24,10 +25,10 @@ backup=(
 )
 options=('emptydirs')
 source=("git+$url"
-  "image.tar.gz::$_apiurl/image/tarball"
-  "podman.tar.gz::$_apiurl/podman/tarball"
-  "skopeo.tar.gz::$_apiurl/skopeo/tarball"
-  "storage.tar.gz::$_apiurl/storage/tarball"
+  "git+$_baseurl/image.git"
+  "git+$_baseurl/podman.git"
+  "git+$_baseurl/skopeo.git"
+  "git+$_baseurl/storage.git"
   'mounts.conf'
 )
 sha256sums=('SKIP'
@@ -44,20 +45,12 @@ pkgver() {
   echo "${ver//-/_}.${commit}"
 }
 
-prepare() {
-  for i in {1..4}; do
-    _tar="${source[$i]%%::*}"
-    _dirname=$(bsdtar -tf "$_tar" | awk -F / '{print $1; exit}')
-    mv "$_dirname" "${_tar%%.tar.gz}"
-  done
-
+build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-}
 
-build() {
   (
     cd "common" || exit 1
     make docs

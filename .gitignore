@@ -1,4 +1,5 @@
-*.tar.*
-src
-pkg
-common/
+/*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!mounts.conf
