@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/um 5.13.0 Kernel Configuration
+# Linux/um 5.13.5 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -710,7 +710,13 @@ CONFIG_WLAN_VENDOR_TI=y
 CONFIG_WLAN_VENDOR_ZYDAS=y
 CONFIG_WLAN_VENDOR_QUANTENNA=y
 # CONFIG_WAN is not set
+
+#
+# Wireless WAN
+#
 # CONFIG_WWAN is not set
+# end of Wireless WAN
+
 # CONFIG_NET_FAILOVER is not set
 # CONFIG_NVM is not set
 
