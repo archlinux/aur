@@ -1,0 +1,12 @@
+pkgbase = fonts-aileron
+	pkgdesc = Aileron outline fonts
+	pkgver = 0.102
+	pkgrel = 1
+	url = https://www.dotcolon.net/font/aileron
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = https://dotcolon.net/download/fonts/aileron_0102.zip
+	sha256sums = SKIP
+
+pkgname = fonts-aileron
