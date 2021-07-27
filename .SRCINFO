@@ -1,13 +1,13 @@
 pkgbase = u2o-git
 	pkgdesc = USFM to OSIS bible format converter
-	pkgver = 0.7_0_gb8194e0
+	pkgver = 0.7.r0.gb8194e0
 	pkgrel = 1
 	url = https://github.com/adyeths/u2o
 	arch = any
 	license = Unlicense
 	makedepends = git
 	depends = python
-	provides = u2o
+	provides = u2o=0.7.r0.gb8194e0
 	conflicts = u2o
 	source = git+https://github.com/adyeths/u2o.git#branch=master
 	sha256sums = SKIP
