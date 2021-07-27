@@ -6,8 +6,8 @@
 
 _pkgname=retroarch
 pkgname=retroarch-rbp4
-pkgver=1.9.6
-pkgrel=3
+pkgver=1.9.7
+pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi 4)'
 arch=(armv7h)
 url=http://www.libretro.com/
@@ -44,7 +44,7 @@ optdepends=(
   'retroarch-assets-xmb: XMB menu assets'
 )
 backup=(etc/retroarch.cfg)
-_tag=4a6dc36b1cc026bf337537e2d7527a117727bb91
+_tag=8373ac67460cd0e092453bad6bb83e674b5af31a
 source=(
   git+https://github.com/libretro/RetroArch.git#tag=${_tag}
   retroarch-config.patch
