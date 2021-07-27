@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freedom-devicetree-tools
-pkgver=20.05.RC.01
+pkgver=20.05.RC.02
 pkgrel=1
 epoch=
 pkgdesc="This project contains a handful of tools that are designed to aid embedded software developers to generate statically parameterized designs from Freedom platform device trees."
@@ -9,8 +9,8 @@ arch=('any')
 url="https://github.com/sifive/freedom-devicetree-tools"
 license=('Apache' 'MIT')
 groups=()
-depends=('gcc')
-makedepends=('autoconf' 'automake')
+depends=('dtc')
+makedepends=('autoconf' 'automake' 'gcc-libs')
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/freedom-devicetree-tools/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('e15328769925baa8fe8ffbacee83485100521e2fbd0eb861808c77ffac839044')
+sha256sums=('9ecbd5a8d89e4098ce66a185aaeb7e7a943277e961b60d2bcd76aa6806cbdd01')
 #validpgpkeys=()
 
 build() {
@@ -33,6 +33,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-#     install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/generate_openocdcfg.py" "${pkgdir}/usr/bin/${pkgname}"
     make DESTDIR=${pkgdir} install
 }
