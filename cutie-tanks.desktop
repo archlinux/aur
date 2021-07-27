@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.4
+Name=CutieTanks
+Comment=Shoot 'em all arcade game
+GenericName=Arcade game
+Path=/opt/cutie-tanks
+Exec=cutie-tanks
+Icon=/opt/cutie-tanks/icon.png
+Terminal=false
+Categories=Games;Entertainment;
