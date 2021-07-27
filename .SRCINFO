@@ -1,0 +1,12 @@
+pkgbase = git-test
+	pkgdesc = Git extension to conveniently test all distinct versions
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/spotify/git-test
+	arch = any
+	license = Apache
+	depends = git
+	source = git-test-1.0.4.tar.gz::https://github.com/spotify/git-test/archive/v1.0.4.tar.gz
+	b2sums = 48303af69ece2e1a0ea4b56f4ad5eb1404a4d8a14167343f26cb434999041c4f60f3275d80e2c8dc2c07b9d7d55ec65b941c377017212e4308cf2c48fe0b611b
+
+pkgname = git-test
