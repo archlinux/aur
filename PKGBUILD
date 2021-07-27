@@ -8,7 +8,7 @@ arch=(x86_64)
 options=(!strip)
 url='https://www.jetbrains.com/idea/'
 license=('GPL3')
-conflicts=("intellij-idea-ultimate-edition-jre")
+conflicts=('intellij-idea-ultimate-with-jbr' 'intellij-idea-ultimate-edition' 'intellij-idea-ultimate-edition-jre')
 
 source=(
     # The download url
