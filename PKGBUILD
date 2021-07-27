@@ -1,7 +1,7 @@
 # Maintainer: Tiago Cardoso <tbcardoso at outlook dot com>
 
 pkgname=evans-bin
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='More expressive universal gRPC client'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('evans')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ktr0731/evans/releases/download/${pkgver}/evans_linux_amd64.tar.gz"
         "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/ktr0731/evans/v${pkgver}/LICENSE")
-sha256sums=('166404aab42cceee41b15a47f4f94b4d8725d689293743f767eb1bfc98d971d0'
+sha256sums=('d9c53f2e049fee97e8339615f5d3323021a5b68a4cdc5b1e8c271e0f203d2d74'
             '1456fe7612f76bde2b443157a0755e31c31ef16f032e74328e64883a3402e46f')
 
 package() {
