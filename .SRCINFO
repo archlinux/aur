@@ -1,0 +1,42 @@
+pkgbase = z-push-latest-git
+	pkgdesc = open-source implementation of the ActiveSync protocol
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://z-push.org/
+	install = install
+	changelog = changelog
+	arch = any
+	groups = zarafa
+	groups = kopano
+	license = AGPL3
+	makedepends = git
+	depends = nginx
+	depends = php
+	depends = php-fpm
+	provides = z-push-latest=2.6.2
+	options = !strip
+	backup = etc/webapps/z-push/nginx-location.conf
+	backup = etc/php/conf.d/z-push.ini
+	backup = etc/php/fpm.d/z-push.conf
+	source = z-push-latest-git::git+https://stash.kopano.io/scm/zhub/z-push.git#branch=master
+	source = apache.example.conf
+	source = htaccess
+	source = z-push.ini
+	source = z-push.conf
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = php-fpm.example.conf
+	source = z-push-admin
+	source = z-push-top
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = z-push-latest-git
