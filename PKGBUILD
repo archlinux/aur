@@ -1,5 +1,5 @@
 # Maintainer: Robin Boers <robindev2019@outlook.com>
-pkgname=cutie-tanks
+pkgname=cutie-tanks-git
 pkgver=1.4.4
 pkgrel=1
 pkgdesc="Shoot 'em all arcade game (development version)"
@@ -10,7 +10,8 @@ depends=(electron)
 makedepends=(git npm)
 checkdepends=()
 optdepends=()
-provides=(cutie-tanks)
+provides=(cutie-tanks-git)
+conflicts=(cutie-tanks)
 source=('git+https://github.com/RobinBoers/cutie-tanks'
 		'sh' 
 		'cutie-tanks.desktop'
@@ -25,7 +26,7 @@ build() {
 
 package() {
 	chmod +x "sh"
-	mkdir -p "$pkgdir/opt/$pkgname/"
+	mkdir -p "$pkgdir/opt/cutie-tanks/"
 	mkdir -p "$pkgdir/usr/share/applications/"
 	mkdir -p "$pkgdir/usr/bin/"
 	
