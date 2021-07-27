@@ -3,7 +3,7 @@
 
 pkgname=jeveassets
 pkgver=6.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Out-of-game asset manager for Eve-Online, written in Java"
 arch=('any')
 url="http://eve.nikr.net/jeveasset"
@@ -22,7 +22,7 @@ source=(
         "$pkgname.sh")
 
 sha256sums=('f1e59451d49eb375a965258632bf11fa07f84ac27df410e1896a98ccc96af633'
-            '19e62a5cdb12d1ff4a6e7ca1ed86e67fbd10a8be1b53aa9e9d21eb3f33af1b29'
+            '7f49498f648874c2c733b772b7b17e0530c49bcb12a0bd0421acda3c493a7a5e'
             '0203673802ba5102e8acae19c463ab1cd79663653cce38431362367d220f951e'
             '99dd564f33ea7e7a71980b829125207a53a18c2c31f5907d1e8842b64217d69b'
             '23ff2740653dddaafc0a40dcdadfa667a55d28389088dda8bc6eca1c66298150'
