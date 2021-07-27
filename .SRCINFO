@@ -1,6 +1,6 @@
 pkgbase = ldscript-generator
 	pkgdesc = This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications.
-	pkgver = 20.05.00.00
+	pkgver = 20.05.00.01
 	pkgrel = 1
 	url = https://github.com/sifive/ldscript-generator
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = ldscript-generator
 	depends = python-pylint
 	depends = python-pydevicetree
 	options = !strip
-	source = ldscript-generator-20.05.00.00.tar.gz::https://download.fastgit.org/sifive/ldscript-generator/archive/refs/tags/v20.05.00.00.tar.gz
-	sha256sums = d24ca1b59a8e23ad8f08e466f02a3ae224a84a5770c5d43495502f9401641f72
+	source = ldscript-generator-20.05.00.01.tar.gz::https://download.fastgit.org/sifive/ldscript-generator/archive/refs/tags/v20.05.00.01.tar.gz
+	sha256sums = f99b8643c6a3f718b71f8adeb60b410c33ef73702ee4f7c5553e7b529d312dc0
 
 pkgname = ldscript-generator
