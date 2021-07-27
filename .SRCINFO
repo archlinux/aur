@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-lts
-	pkgver = 2.1.0_5.10.52.1
+	pkgver = 2.1.0_5.10.53.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-lts-headers=5.10.52-1
+	makedepends = linux-lts-headers=5.10.53-1
 	depends = kmod
 	depends = zfs-utils=2.1.0
-	depends = linux-lts=5.10.52-1
+	depends = linux-lts=5.10.53-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0/zfs-2.1.0.tar.gz
 	sha256sums = 60bddcb630284c771dcf5a1109ca9329d16523a3a40a374019955cfbf97bf34f
 
