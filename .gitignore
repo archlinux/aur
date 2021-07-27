@@ -1,4 +1,4 @@
-*.tar.*
-src
-pkg
-buildah/
+/*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
