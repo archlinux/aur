@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
-	pkgver = 6.12.GE.1
+	pkgver = 6.13.GE.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -13,11 +13,12 @@ pkgbase = proton-ge-custom
 	makedepends = flex
 	makedepends = mingw-w64-gcc
 	makedepends = git
+	makedepends = wget
 	makedepends = rsync
 	makedepends = mingw-w64-tools
 	makedepends = lld
 	makedepends = nasm
-	makedepends = meson
+	makedepends = meson=0.58.1
 	makedepends = cmake
 	makedepends = python-virtualenv
 	makedepends = python-pip
@@ -198,10 +199,10 @@ pkgbase = proton-ge-custom
 	optdepends = dosbox
 	noextract = wine-gecko-2.47.2-x86.tar.xz
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
-	noextract = wine-mono-6.2.0-x86.tar.xz
+	noextract = wine-mono-6.2.2-x86.tar.xz
 	options = staticlibs
 	options = !lto
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=b356ff201e26180e98c3dcc46f00dd3f6557aad4
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=ac142160e1d38438218fa68c894a2a619fba0cc8
 	source = wine::git://source.winehq.org/git/wine.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
 	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
@@ -227,7 +228,7 @@ pkgbase = proton-ge-custom
 	source = gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.tar.xz
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-6.2.0/wine-mono-6.2.0-x86.tar.xz
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-6.2.2/wine-mono-6.2.2-x86.tar.xz
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
@@ -257,8 +258,8 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = 8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94
 	sha256sums = b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014
-	sha256sums = f15d6a646b0bf141bd1b826dd4a273bbb6f8f1d592a2b65192281223e986ee15
-	sha256sums = 0445989f503988ff85b2061c2be545adfac1b13ee6fc904bb6be5c9dbca6dca5
+	sha256sums = 4e70675b15ba36605b98a39067a0e773e61836e64b78632503575f0c0ebc985f
+	sha256sums = 5c6862f48862fd59c8e1893fcbfaaaba33b084c08ceef8802b8c6512727fac11
 	sha256sums = 61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
 

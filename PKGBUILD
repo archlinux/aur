@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.12-GE-1
-_commit=b356ff201e26180e98c3dcc46f00dd3f6557aad4
+_srctag=6.13-GE-1
+_commit=ac142160e1d38438218fa68c894a2a619fba0cc8
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.2.0
+_monover=6.2.2
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
@@ -38,7 +38,7 @@ depends=(
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
-  git rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson=0.58.1 cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
   libpng                lib32-libpng
@@ -213,9 +213,12 @@ prepare() {
 
 build() {
     cd build
+    ROOTLESS_CONTAINER="" \
     ../proton-ge-custom/configure.sh \
+        --container-engine="" \
+        --proton-sdk-image="" \
         --steam-runtime=native \
-        --no-steam-runtime \
+        --no-proton-sdk \
         --build-name="${pkgname}"
 
     # Export CFLAGS used by upstream
@@ -324,8 +327,8 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'f15d6a646b0bf141bd1b826dd4a273bbb6f8f1d592a2b65192281223e986ee15'
-            '0445989f503988ff85b2061c2be545adfac1b13ee6fc904bb6be5c9dbca6dca5'
+            '4e70675b15ba36605b98a39067a0e773e61836e64b78632503575f0c0ebc985f'
+            '5c6862f48862fd59c8e1893fcbfaaaba33b084c08ceef8802b8c6512727fac11'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
 )
