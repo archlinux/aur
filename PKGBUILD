@@ -68,7 +68,7 @@ url="http://www.xanmod.org/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf cpio
+  bc cpio kmod libelf perl tar xz
 )
 options=('!strip')
 _srcname="linux-${pkgver}-rt${_rt}-xanmod${xanmod}"
