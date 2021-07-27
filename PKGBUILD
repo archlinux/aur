@@ -1,6 +1,6 @@
 # Maintainer: Robin Boers <robindev2019@outlook.com>
 pkgname=cutie-tanks
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Shoot 'em all arcade game"
 arch=(x86_64)
@@ -11,11 +11,17 @@ makedepends=(git)
 checkdepends=()
 optdepends=()
 provides=(cutie-tanks)
-source=('git+https://github.com/RobinBoers/cutie-tanks#branch=bin'
+source=('https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip'
 		'sh' 
 		'cutie-tanks.desktop'
 		'icon.png')
+noextract=("release.zip")
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+build() {
+	mkdir -p cutie-tanks
+  	bsdtar -xf release.zip -C cutie-tanks
+}
 
 package() {
 	chmod +x "sh"
