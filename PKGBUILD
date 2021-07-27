@@ -1,13 +1,14 @@
+
 # Maintainer: Premysl Srubar <premysl.srubar[äT]gmail(.)com>
 pkgbase=fake-background-webcam-git
 _pkgname="${pkgbase%-git}"
         
 pkgname=('fake-background-webcam-git')
-pkgver=r193.5e29493
+pkgver=r207.acdac9d
 pkgrel=1
 pkgdesc="Virtual background-replacing camera"
 #'python-cmapy>=0.6.6'
-depends=('v4l2loopback-dkms' 'python' 'python-opencv>=4.4.0.46' 'akvcam-dkms' 'opencv' 'python-numpy>=1.18.2' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-inotify-simple>=1.2' 'python-pyfakewebcam' 'python-mediapipe')
+depends=('v4l2loopback-dkms' 'python' 'python-opencv>=4.4.0.46' 'opencv' 'python-numpy>=1.19.3' 'python-requests>=2.23.0' 'python-requests-unixsocket' 'python-aiohttp>=3.6.2' 'python-inotify-simple>=1.2' 'python-pyfakewebcam' 'python-mediapipe')
 provides=('fake-background-webcam')
 conflicts=('fake-background-webcam') 
 arch=('x86_64')
