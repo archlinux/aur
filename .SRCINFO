@@ -1,0 +1,18 @@
+pkgbase = slirp4netns-git
+	pkgdesc = User-mode networking for unprivileged network namespaces.
+	pkgver = v1.1.11.r14.gdf67b2f
+	pkgrel = 1
+	url = https://github.com/rootless-containers/slirp4netns.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = libseccomp
+	depends = libslirp
+	depends = libcap
+	provides = slirp4netns
+	conflicts = slirp4netns
+	options = emptydirs
+	source = git+https://github.com/rootless-containers/slirp4netns.git
+	sha256sums = SKIP
+
+pkgname = slirp4netns-git
