@@ -1,4 +1,5 @@
 *
 !.gitignore
+!keystore-explorer-fix-282.patch
 !PKGBUILD
 !.SRCINFO
