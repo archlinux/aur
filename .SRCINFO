@@ -1,0 +1,11 @@
+pkgbase = checkmedia
+	pkgdesc = Check installation CDs and DVDs for errors.
+	pkgver = 5.4
+	pkgrel = 1
+	url = https://github.com/openSUSE/checkmedia
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/openSUSE/checkmedia.git#tag=5.4
+	md5sums = SKIP
+
+pkgname = checkmedia
