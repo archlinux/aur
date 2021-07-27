@@ -1,0 +1,2 @@
+#!/bin/sh
+APPDIR=/opt/paymo-widget /opt/paymo-widget/AppRun
