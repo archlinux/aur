@@ -2,8 +2,8 @@
 
 pkgname=freedom-studio-bin
 _pkgname=FreedomStudio
-pkgver=2019.05.0
-_pkgver=4.7.2.2019-05-0
+pkgver=2019.08
+_pkgver=2019-08-2
 pkgrel=1
 epoch=
 pkgdesc="SiFive Freedom Studio RISC-V IDE for Embedded Development"
@@ -22,9 +22,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://static.dev.sifive.com/dev-tools/${_pkgname}/${pkgver}/${_pkgname}-${_pkgver}-linux.gtk.${arch}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://static.dev.sifive.com/dev-tools/${_pkgname}/${pkgver}/${_pkgname}-${_pkgver}-lin64.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('fa3b0522febcfb1e2ca037a3969da2655857811e686bd9940e34bf6ef8036309')
+sha256sums=('7e93e8064060d59651d83bad1c179230a7d51ccea13135ef98bf083ac5057d5a')
 #validpgpkeys=()
 
 package() {
