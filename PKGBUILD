@@ -6,43 +6,43 @@
 
 pkgname=eternallands
 pkgver=1.9.5.9
-version=${pkgver}-1
-pkgrel=1
+_version=${pkgver}-1
+pkgrel=2
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
 depends=('sdl2_net' 'sdl2_image' 'sdl2_ttf' 'openal' 'cal3d' 'libvorbis' 'glu')
-makedepends=('unzip' 'pkgconf')
+makedepends=('unzip' 'cmake')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${version}/eternallands-data_${version}.zip")
+source=("https://github.com/raduprv/Eternal-Lands/archive/refs/tags/${_version}.tar.gz" "https://github.com/raduprv/Eternal-Lands/releases/download/${_version}/eternallands-data_${_version}.zip")
 md5sums=('745a75f442d6afea31df5d388450082a' '82c0b5601faed923fb30d01906e25ca3')
 
 build()
 {
-  cd ${srcdir}/Eternal-Lands-${version}
+  cd ${srcdir}/Eternal-Lands-${_version}
 
   sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
   sed -i "s|#data_dir = /usr/share/games/EternalLands|#data_dir = /usr/share/eternallands|" pkgfiles/eternallands
   sed -i "s|#data_dir = \\\/usr\\\/share\\\/games\\\/EternalLands|#data_dir = \\\/usr\\\/share\\\/eternallands|" pkgfiles/eternallands
-  rm -f gen_git_version
-  make -f Makefile.linux release
+  cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=${pkgdir}/usr/ -D LOCAL_NLOHMANN_JSON=On
+  make -C build
 }
 
 package() {
-  cd ${srcdir}/Eternal-Lands-${version}
+  cd ${srcdir}/Eternal-Lands-${_version}/build
+  make install
 
-  mkdir -p "${pkgdir}/usr/bin"
+  cd ${srcdir}/Eternal-Lands-${_version}
   mkdir -p "${pkgdir}/usr/share/man/man6"
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/licenses/eternallands/"
   mkdir -p "${pkgdir}/usr/share/eternallands"
 
-  install -m755 el.x86.linux.bin "${pkgdir}/usr/bin/"
   install -m755 pkgfiles/eternallands "${pkgdir}/usr/bin/"
   install -m644 pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
   install -m644 pkgfiles/el.linux.bin.6 "${pkgdir}/usr/share/man/man6"

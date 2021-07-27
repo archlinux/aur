@@ -1,3 +1,11 @@
+2021-07-27 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Using CMake to build the game
+	Removed pkgconf from the makedepends array
+	Added cmake to the makedepends array
+	Renamed "version" custom variable to "_version"
+
 2021-04-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD:
