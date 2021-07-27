@@ -1,6 +1,6 @@
 pkgbase = python-pydevicetree
 	pkgdesc = This is a Python 3 library for parsing, querying, and modifying Devicetree Source v1 files as described in the Devicetree Specification v0.2.
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/sifive/pydevicetree
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pydevicetree
 	makedepends = python-setuptools
 	depends = python
 	options = !strip
-	source = python-pydevicetree-0.0.10.tar.gz::https://github.com/sifive/pydevicetree/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = 47024e798994caa1cbc405d9ec7f99f78164f923468455e825cb64be4c092085
+	source = python-pydevicetree-0.0.11.tar.gz::https://github.com/sifive/pydevicetree/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 51b3c79dd048fbbc1c2e9cb0bbf97a59a42bbbaf9462981dac378f6ca77546e9
 
 pkgname = python-pydevicetree
