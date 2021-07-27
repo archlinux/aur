@@ -3,8 +3,8 @@
 _pkgname="image-optimizer"
 pkgname="${_pkgname}-git"
 _gitname=Image-Optimizer
-pkgver=0a9f6ee
-pkgrel=1
+pkgver=0.1.20.r0.g0a9f6ee
+pkgrel=2
 pkgdesc="Simple losless image optimizer build for Elementary OS"
 arch=('i686' 'x86_64')
 url="https://github.com/gijsgoudzwaard/image-optimizer"
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_gitname}/"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 

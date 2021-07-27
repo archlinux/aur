@@ -1,7 +1,7 @@
 pkgbase = image-optimizer-git
 	pkgdesc = Simple losless image optimizer build for Elementary OS
-	pkgver = 0a9f6ee
-	pkgrel = 1
+	pkgver = 0.1.20.r0.g0a9f6ee
+	pkgrel = 2
 	url = https://github.com/gijsgoudzwaard/image-optimizer
 	arch = i686
 	arch = x86_64
