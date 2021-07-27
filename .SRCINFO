@@ -1,6 +1,6 @@
 pkgbase = kio-s3
 	pkgdesc = A kio slave for Amazon Simple Storage Service (Amazon S3)
-	pkgver = e5a0eaa
+	pkgver = r91.e5a0eaa
 	pkgrel = 1
 	url = https://github.com/KDE/kio-s3
 	arch = x86_64
@@ -64,7 +64,7 @@ pkgbase = kio-s3
 	depends = libxau
 	depends = libssh2
 	depends = kdoctools
-	source = git+https://github.com/KDE/kio-s3.git#commit=e5a0eaa
+	source = git+https://github.com/KDE/kio-s3.git
 	md5sums = SKIP
 
 pkgname = kio-s3
