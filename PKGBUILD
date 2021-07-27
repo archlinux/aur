@@ -3,11 +3,12 @@
 _gemname=oedipus_lex
 pkgname=ruby-${_gemname}
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This is not your father's lexer"
 arch=(any)
 depends=(ruby)
-makedepends=(rubygems ruby-rdoc ruby-hoe)
+checkdepends=(ruby-minitest)
+makedepends=(rubygems ruby-rdoc ruby-hoe ruby-rake)
 url=https://github.com/seattlerb/oedipus_lex
 license=(MIT)
 options=(!emptydirs)

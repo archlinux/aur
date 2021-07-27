@@ -1,13 +1,15 @@
 pkgbase = ruby-oedipus_lex
 	pkgdesc = This is not your father's lexer
 	pkgver = 2.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seattlerb/oedipus_lex
 	arch = any
 	license = MIT
+	checkdepends = ruby-minitest
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	makedepends = ruby-hoe
+	makedepends = ruby-rake
 	depends = ruby
 	options = !emptydirs
 	source = https://github.com/seattlerb/oedipus_lex/archive/v2.5.3/oedipus_lex-2.5.3.tar.gz
