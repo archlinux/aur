@@ -5,7 +5,7 @@
 pkgname=z-push
 groups=('zarafa'
 	'kopano')
-pkgver=2.6.2
+pkgver=2.6.4
 pkgrel=1
 pkgdesc="open-source implementation of the ActiveSync protocol"
 arch=('any')
@@ -21,7 +21,7 @@ backup=('etc/webapps/z-push/nginx-location.conf'
 	'etc/php/conf.d/z-push.ini'
 	'etc/php/fpm.d/z-push.conf')
 options=('!strip')
-source=("${pkgname}-${pkgver}::git+https://stash.z-hub.io/scm/zp/z-push.git#tag=${pkgver}"
+source=("${pkgname}-${pkgver}::git+https://stash.kopano.io/scm/zhub/z-push.git#tag=${pkgver}"
         "apache.example.conf"
         "htaccess"
 	"z-push.ini"
