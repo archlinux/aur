@@ -1,14 +1,14 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=higgins-git
-pkgver=20200522
+pkgver=20210727
 pkgrel=1
 pkgdesc="Gambas apps launcher"
 arch=('any')
 license=('GPL')
 url="https://github.com/kokoko3k/higgins"
 
-makedepends=('gambas3-devel' 'git')
+makedepends=('gambas3-dev-tools' 'git')
 
 depends=( 
 		'schedtool'
