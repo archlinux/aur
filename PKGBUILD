@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freedom-devicetree-tools
-pkgver=20.05.RC.04
+pkgver=20.05.RC.05
 pkgrel=1
 epoch=
 pkgdesc="This project contains a handful of tools that are designed to aid embedded software developers to generate statically parameterized designs from Freedom platform device trees."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/freedom-devicetree-tools/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('1cdd3161029990cd562ee03ed4d077bc9597a66b65eff6b67fdd895cd1f149ea')
+sha256sums=('30441f86bf3323e34686b0664d1fd35dc882d9c5bd080f1d379d906169665c19')
 #validpgpkeys=()
 
 build() {
