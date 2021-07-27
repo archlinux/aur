@@ -15,4 +15,3 @@ pkgbase = kopano-webapp-mattermost-git
 	md5sums = SKIP
 
 pkgname = kopano-webapp-mattermost-git
-
