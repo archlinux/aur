@@ -1,7 +1,7 @@
 pkgbase = paperless-ng
 	pkgdesc = A supercharged version of paperless: scan, index and archive all your physical documents
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonaswinkler/paperless-ng
 	install = paperless-ng.install
 	arch = any
@@ -120,4 +120,3 @@ pkgbase = paperless-ng
 	sha256sums = 47e47fcadf029d85fa6304191afa6362b7675216cb82ed1bad8cce42c0378e7e
 
 pkgname = paperless-ng
-

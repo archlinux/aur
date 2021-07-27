@@ -3,7 +3,7 @@
 
 pkgname="paperless-ng"
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/jonaswinkler/paperless-ng"
 license=("GPL3")
@@ -148,6 +148,8 @@ package(){
  ln -s "/usr/share/paperless/src/manage.py" "$pkgdir/usr/bin/paperless-manage"
  # config file
  install -D -m 640 "$pkgname/paperless.conf" "$pkgdir/etc/paperless.conf"
+ rm "$pkgdir/usr/share/paperless/paperless.conf"
+ ln -s "/etc/paperless.conf" "$pkgdir/usr/share/paperless/paperless.conf"
  # optional pacman hook
  install -D -m 644 "$pkgname.hook" "$pkgdir/usr/share/paperless/docs/$pkgname.hook"
  # user and files to create, ownership and permission to set
