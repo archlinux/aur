@@ -1,0 +1,16 @@
+To build the package, execute the following commands:
+
+$ https://aur.archlinux.org/mrcode.git
+$ cd mrcode
+$ makepkg
+
+Wait for the build to complete, then install the package:
+
+$ pacman -U mrcode-${version}-${arch}.pkg.tar.zst
+
+If the package installed correctly, and MrCode runs correctly, update the AUR with the new code:
+
+$ makepkg --printsrcinfo > .SRCINFO
+$ git add PKGBUILD .SRCINFO
+$ git commit -am "Update mrcode to ${version}."
+$ git push
