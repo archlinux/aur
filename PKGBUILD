@@ -2,7 +2,7 @@
 
 pkgbase=latex2e-help-texinfo
 pkgname=('latex2e-help-texinfo' 'latex2e-help-texinfo-es')
-pkgver=2018_10_15
+pkgver=2021_07_25
 pkgrel=1
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format"
 url="https://ctan.org/pkg/latex2e-help-texinfo"

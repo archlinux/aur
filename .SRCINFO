@@ -1,6 +1,6 @@
 pkgbase = latex2e-help-texinfo
 	pkgdesc = Inofficial LaTeX2e Reference Manual in info format
-	pkgver = 2018_10_15
+	pkgver = 2021_07_25
 	pkgrel = 1
 	url = https://ctan.org/pkg/latex2e-help-texinfo
 	arch = any
