@@ -1,7 +1,7 @@
 # Maintainer: 1400Blank <1400blank@gmail.com>
 
 pkgbase=linux-fix_navi_reset
-pkgver=5.12.14.arch1
+pkgver=5.13.5.arch1
 pkgrel=1
 pkgdesc='experimental fix for AMD Navi Cards with "Unknown PCI header type 127" by Geoffrey McRae'
 _srctag=v${pkgver%.*}-${pkgver##*.}
