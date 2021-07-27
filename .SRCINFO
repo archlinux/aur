@@ -12,7 +12,7 @@ pkgbase = discord-rpc-git
 	provides = discord-rpc=3.4.0.r10.g963aa9f
 	provides = libdiscord-rpc.so
 	conflicts = discord-rpc
-	source = discord-rpc::git+https://github.com/discord/discord-rpc.git
-	md5sums = SKIP
+	source = git+https://github.com/discord/discord-rpc.git
+	b2sums = SKIP
 
 pkgname = discord-rpc-git
