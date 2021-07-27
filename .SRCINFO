@@ -1,0 +1,11 @@
+pkgbase = ktunnel-bin
+	pkgdesc = A CLI that exposes your local resources to kubernetes.
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/omrikiei/ktunnel
+	arch = x86_64
+	license = MIT
+	source = ktunnel-bin-1.4.1.tar.gz::https://github.com/omrikiei/ktunnel/releases/download/v1.4.1/ktunnel_1.4.1_Linux_x86_64.tar.gz
+	sha512sums = f274898ff508d4a0bad21088aee49ef72fe4bb3baa31e4db366ab9d9ed4ff90e26aa7602d8c130d1be2e1ae3b1be53ceabd98f3e65672c1f62334df21e4ae988
+
+pkgname = ktunnel-bin
