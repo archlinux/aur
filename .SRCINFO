@@ -1,7 +1,7 @@
 pkgbase = openocdcfg-generator
 	pkgdesc = This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications.
 	pkgver = 20.08.00.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sifive/openocdcfg-generator
 	arch = any
 	license = Apache
