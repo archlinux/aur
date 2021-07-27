@@ -10,6 +10,7 @@ pkgbase = cutie-tanks
 	provides = cutie-tanks
 	conflicts = cutie-tanks-git
 	noextract = release.zip
+	source = git+https://github.com/RobinBoers/cutie-tanks
 	source = https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip
 	source = sh
 	source = cutie-tanks.desktop

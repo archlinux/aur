@@ -12,12 +12,18 @@ checkdepends=()
 optdepends=()
 provides=(cutie-tanks)
 conflicts=(cutie-tanks-git)
-source=('https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip'
+source=('git+https://github.com/RobinBoers/cutie-tanks'
+		'https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip'
 		'sh' 
 		'cutie-tanks.desktop'
 		'icon.png')
 noextract=("release.zip")
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+  cd cutie-tanks
+  git describe --abbrev=0 --tags | sed 's/^v//;'
+}
 
 build() {
 	mkdir -p cutie-tanks
