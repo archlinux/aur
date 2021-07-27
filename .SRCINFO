@@ -16,4 +16,3 @@ pkgbase = kopano-webapp-files-owncloud-backend-git
 	md5sums = SKIP
 
 pkgname = kopano-webapp-files-owncloud-backend-git
-
