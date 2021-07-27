@@ -16,7 +16,7 @@ pkgbase = z-push
 	backup = etc/webapps/z-push/nginx-location.conf
 	backup = etc/php/conf.d/z-push.ini
 	backup = etc/php/fpm.d/z-push.conf
-	source = z-push-2.6.0::git+https://stash.kopano.io/scm/zhub/z-push.git#tag=2.6.4
+	source = z-push-2.6.4::git+https://stash.kopano.io/scm/zhub/z-push.git#tag=2.6.4
 	source = apache.example.conf
 	source = htaccess
 	source = z-push.ini
