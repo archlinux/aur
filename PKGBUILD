@@ -44,6 +44,12 @@ done
 # template start; name=base-scm; version=1;
 #_tagPrefix=""
 #_tagSuffix=""
+#_remoteGit=""
+
+if [[ "${pkgname}" == *-latest ]] && [ ! -z "${_remoteGit}" ];
+then
+    pkgver=$(git ls-remote --refs --tags "${_remoteGit}" | sed 's|.*tags/\(.*\)$|\1|' | sort -u | grep -vE "(beta|alpha|test)" | tail -n 1)
+fi
 
 _basePkgName="${pkgname//-git/}"
 if [[ "${pkgname}" == *-git ]];
@@ -87,12 +93,15 @@ pkgver() {
 	else
 	    echo "${pkgver}" | sed "s|\(.*\)-git|1.r${_revision}|"
 	fi
+#    elif [[ "${pkgname}" == *-latest ]];
+#    then
+#	#_tagReleaseFormat="^[0-9]*(\.[0-9])*$"
+#	_lastRelease=$(git tag -l "${_tagPrefix}*" --sort=v:refname | grep -v "(alpha|beta|test)"  | tail -n 1)
+#	echo "${_lastRelease}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|"
     else
-        echo ${pkgver}
+        echo "${pkgver}"
     fi
 }
-
-_sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 
 _patchFromGit() {
     _patchDir="${srcdir}/$(basename $(pwd))-patch.git"
@@ -101,28 +110,70 @@ _patchFromGit() {
 	git clone --bare ${1} ${_patchDir}
     fi
 
-    _sourceBranchName="${_sourceBranch//#*=/}"
+    _branchName="${_sourceBranch//#*=/}"
+    _patchGIT="git --git-dir="${_patchDir}""
+
     # Patch From Specific Range
     if [ ! -z "${3}" ];
     then
-        git --git-dir="${_patchDir}" format-patch "^${2}" "${3}" --stdout | git apply
+
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	_targetCommit=$($_patchGIT rev-parse --verify --quiet "${3}")
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit Between ${2} to ${3}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+        fi
 
     # Patch From Specific Commit
     elif [ ! -z "${2}" ];
     then
-	git --git-dir="${_patchDir}" format-patch -1 "${2}" --stdout | git apply
 
-    # Patch From Dedicated Branch
-    elif git --git-dir="${_patchDir}" rev-parse --verify --quiet "${_sourceBranchName}" > /dev/null \
-         && git --git-dir="${_patchDir}" rev-parse --verify --quiet "${_sourceBranchName}-patch" > /dev/null ;
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	if $_patchGIT format-patch -1 "${_sourceCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit ${2}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "*-latest-patch" Branch
+    elif [[ "${pkgname}" != *-git ]] \
+	 && _sourceCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}") \
+	 && _targetCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}-latest-patch") ;
     then
-	git --git-dir="${_patchDir}" format-patch "^${_sourceBranchName}" "${_sourceBranchName}-patch" --stdout | git apply
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch ${_branchName}-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "master-latest-patch" Branch
+    elif _sourceCommit=$($_patchGIT rev-parse --verify --quiet "master") \
+         && _targetCommit=$($_patchGIT rev-parse --verify --quiet "master-latest-patch") ;
+    then
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch master-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
 
     else
-	echo "No Patch Branch Found [${_sourceBranchName}-patch]"
+	echo "No Patch Branch Found"
 
     fi
 }
+
+_sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
 # template end;
 
 source+=(
