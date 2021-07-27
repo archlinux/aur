@@ -1,0 +1,19 @@
+pkgbase = dragonstone-git
+	pkgdesc = A simple GTK Gopher/Gemini client
+	pkgver = r433.8e96806
+	pkgrel = 1
+	url = https://gitlab.com/baschdel/dragonstone
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = python3
+	provides = dragonstone
+	conflicts = dragonstone
+	source = dragonstone-git::git+https://gitlab.com/baschdel/dragonstone
+	md5sums = SKIP
+
+pkgname = dragonstone-git
