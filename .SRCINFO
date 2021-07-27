@@ -1,0 +1,16 @@
+pkgbase = vim-gemini-git
+	pkgdesc = Vim syntax highlighting for text/gemini files
+	pkgver = r11.596d1f3
+	pkgrel = 1
+	url = https://tildegit.org/sloum/gemini-vim-syntax
+	arch = any
+	groups = vim-plugins
+	license = Unlicense
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-gemini
+	conflicts = vim-gemini
+	source = vim-gemini-git::git+https://tildegit.org/sloum/gemini-vim-syntax
+	sha256sums = SKIP
+
+pkgname = vim-gemini-git
