@@ -4,7 +4,7 @@
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=5.4.0.r236.g63fc728a8
+pkgver=5.4.0.r262.gbf3acbf38
 pkgrel=1
 pkgdesc='Voxel-based sandbox game engine (Git version with LevelDB support)'
 url='https://www.minetest.net/'
@@ -28,21 +28,18 @@ pkgver() {
 build() {
 	cd "${srcdir}/irrlicht"
 	cmake -G Ninja . \
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=0
 	ninja
 
 	cd "${srcdir}/${_pkgname}"
 	cmake -G Ninja . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DBUILD_CLIENT=1 \
-		-DENABLE_GETTEXT=1 \
-		-DENABLE_FREETYPE=1 \
 		-DENABLE_LEVELDB=1 \
 		-DENABLE_POSTGRESQL=0 \
 		-DENABLE_SPATIAL=1 \
 		-DENABLE_REDIS=1 \
 		-DIRRLICHT_INCLUDE_DIR="${srcdir}/irrlicht/include/" \
-		-DIRRLICHT_LIBRARY="${srcdir}/irrlicht/lib/Linux/libIrrlichtMt.so"
+		-DIRRLICHT_LIBRARY="${srcdir}/irrlicht/lib/Linux/libIrrlichtMt.a"
 	ninja
 }
 
@@ -50,9 +47,4 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	DESTDIR="${pkgdir}" ninja install
 	cp -a "${srcdir}/minetest_game/" "${pkgdir}/usr/share/minetest/games/"
-
-	cd "${srcdir}/irrlicht"
-	DESTDIR="${pkgdir}" ninja install
-	mv "${pkgdir}/usr/local/lib/" "${pkgdir}/usr/"
-	mv "${pkgdir}/usr/local/include/" "${pkgdir}/usr/"
 }
