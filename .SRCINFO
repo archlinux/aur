@@ -11,8 +11,6 @@ pkgbase = python-ldns
 	depends = ldns
 	depends = python-ipcalc
 	source = https://www.nlnetlabs.nl/downloads/ldns/ldns-1.7.1.tar.gz
-	source = setup.py
 	sha256sums = 8ac84c16bdca60e710eea75782356f3ac3b55680d40e1530d7cea474ac208229
-	sha256sums = 55669ca420b496e8d707e63cb15f5c5a2367ccd1a10a54aba0ac54a55b94d50f
 
 pkgname = python-ldns
