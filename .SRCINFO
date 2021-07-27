@@ -12,8 +12,8 @@ pkgbase = libe57
 	source = https://downloads.sourceforge.net/project/e57-3d-imgfmt/E57Refimpl-src/E57RefImpl_src-1.1.332.zip
 	source = build-shared.patch
 	source = replace_tr1_with_cpp11.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 1c124619c6cac6cb755b9221d5063f73
+	md5sums = db8cd85ae9d30d802db71f084025057b
+	md5sums = b92c37d7ef2e50339da178cf1a1e1cd6
 
 pkgname = libe57

@@ -10,9 +10,9 @@ makedepends=()
 source=("https://downloads.sourceforge.net/project/e57-3d-imgfmt/E57Refimpl-src/E57RefImpl_src-${pkgver}.zip"
         "build-shared.patch"
         "replace_tr1_with_cpp11.patch")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('1c124619c6cac6cb755b9221d5063f73'
+         'db8cd85ae9d30d802db71f084025057b'
+         'b92c37d7ef2e50339da178cf1a1e1cd6')
 
 prepare() {
   cd "${srcdir}/E57RefImpl_src-${pkgver}"
