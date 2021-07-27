@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 2021.7.14
+	pkgver = 2021.7.28
 	pkgrel = 1
 	url = https://usebottles.com
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = bottles
 	depends = python-gobject
 	depends = python-requests
 	depends = python-yaml
-	depends = samba
 	depends = wine
 	depends = cabextract
 	optdepends = gvfs
@@ -24,8 +23,8 @@ pkgbase = bottles
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = vulkan-icd-loader
 	optdepends = gamemode
-	source = bottles-2021.7.14-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.14-treviso.tar.gz
-	sha256sums = a69e464817069a21626917ad3620dd4b02527bdf3510729af71d0e8a81cf5b9e
+	source = bottles-2021.7.28-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.7.28-treviso.tar.gz
+	sha256sums = c527f4dcfd161be6540393153a0ecc85036222d7c396cc8da83c90a5cf0bdab9
 
 pkgname = bottles
 

@@ -2,7 +2,7 @@
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2021.7.14
+pkgver=2021.7.28
 pkgrel=1
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -17,7 +17,6 @@ depends=(
   'python-gobject' 
   'python-requests' 
   'python-yaml' 
-  'samba' 
   'wine' 
   'cabextract')
 optdepends=(
@@ -29,7 +28,7 @@ optdepends=(
   'gamemode')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso.tar.gz")
-sha256sums=('a69e464817069a21626917ad3620dd4b02527bdf3510729af71d0e8a81cf5b9e')
+sha256sums=('c527f4dcfd161be6540393153a0ecc85036222d7c396cc8da83c90a5cf0bdab9')
 
 build() {
   cd "Bottles-${pkgver}-treviso"
