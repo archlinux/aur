@@ -9,6 +9,7 @@ pkgbase = mongodb-3.2-bin
 	provides = mongodb=3.2.22
 	conflicts = mongodb
 	conflicts = mongodb-bin
+	replaces = mongodb-bin-3.2
 	backup = etc/mongodb.conf
 	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.2/main/binary-amd64/mongodb-org-shell_3.2.22_amd64.deb
 	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.2/main/binary-amd64/mongodb-org-server_3.2.22_amd64.deb

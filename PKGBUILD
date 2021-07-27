@@ -12,6 +12,7 @@ url="https://www.mongodb.com/"
 license=("SSPLv1")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb" "mongodb-bin")
+replaces=("mongodb-bin-3.2")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
 source=(
     "https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/${basever}/main/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
