@@ -15,6 +15,8 @@ pkgbase = kuser-frameworks
 	makedepends = automoc4
 	makedepends = extra-cmake-modules
 	makedepends = kdesignerplugin
+	makedepends = kdoctools
+	makedepends = kinit
 	depends = kdelibs4support
 	depends = kio
 	depends = kldap
@@ -28,4 +30,3 @@ pkgbase = kuser-frameworks
 	md5sums = ff4a978c0e431b0582bd933640568cba
 
 pkgname = kuser-frameworks
-
