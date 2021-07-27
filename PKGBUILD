@@ -2,9 +2,9 @@
 
 pkgname=ldscript-generator
 pkgver=20.08.00.00
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications."
+pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates linker scripts for Freedom Metal applications."
 arch=('any')
 url="https://github.com/sifive/ldscript-generator"
 license=('Apache')
