@@ -1,14 +1,13 @@
 pkgbase = emuflight-configurator-bin
 	pkgdesc = Crossplatform configuration tool for the Emuflight flight control system
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/emuflight/EmuConfigurator
 	arch = x86_64
 	license = GPL3
 	conflicts = emuflight-configurator
 	options = !strip
-	source = https://github.com/emuflight/EmuConfigurator/releases/download/0.3.5/emuflight-configurator_0.3.5_linux64.zip
-	sha256sums = d55bdc52cf93d58c728ccb296ef912a5fc0f42c57ed95f3ded5f85d1c10838c4
+	source = https://github.com/emuflight/EmuConfigurator/releases/download/0.3.6/emuflight-configurator_0.3.6_linux64.zip
+	sha256sums = 7a049477ff91368d2faf610989b824f67367aa5e6c1c2d7581cb5430af83cd6d
 
 pkgname = emuflight-configurator-bin
-

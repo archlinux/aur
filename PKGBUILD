@@ -1,14 +1,14 @@
-# Maintainer: Dyon < dyon at dyonb dot nl >
+# Maintainer: Name < dyon at dyonb dot nl >
 
 pkgname=emuflight-configurator-bin
 _pkgname=emuflight-configurator
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Emuflight flight control system"
 arch=('x86_64')
 url="https://github.com/emuflight/EmuConfigurator"
 source=("https://github.com/emuflight/EmuConfigurator/releases/download/$pkgver/emuflight-configurator_"$pkgver"_linux64.zip")
-sha256sums=('d55bdc52cf93d58c728ccb296ef912a5fc0f42c57ed95f3ded5f85d1c10838c4')
+sha256sums=('7a049477ff91368d2faf610989b824f67367aa5e6c1c2d7581cb5430af83cd6d')
 options=(!strip)
 license=('GPL3')
 conflicts=('emuflight-configurator')
