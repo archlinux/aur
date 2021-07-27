@@ -3,7 +3,7 @@
 # Maintainer: Eli schwartz <eschwartz@archlinux.org>
 
 pkgname=librewolf-extension-noscript
-pkgver=11.2.9
+pkgver=11.2.10
 pkgrel=2
 _file=3750385
 pkgdesc="Extension for Librewolf which disables javascript"
