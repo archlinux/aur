@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=elf2hex
-pkgver=20.05.01.00
+pkgver=20.08.00.00
 pkgrel=1
 epoch=
 pkgdesc="SiFive's Verilog test harnesses can't directly read ELF binaries but are instead required to be provided with a hexidecimal dump of a particular width and depth. This project allows users to easily create these files."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/elf2hex/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('ad1b12273b3a195fa9b5e7ba246f755bbdec1767f9c37141acfbe9dd1bda1abd')
+sha256sums=('16d3f51b5f4718a1074bb985543b54e7a2e615d0a501e761d68c79bfbae6185b')
 #validpgpkeys=()
 
 build() {
