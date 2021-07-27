@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.13.4
-_archver=arch2
+_kernver=5.13.5
+_archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.13.4-arch2"
+url="https://github.com/archlinux/linux/commits/v5.13.5-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('6f56b274ad679c60fd512f1336e5500a05f261b0ace927e63e9e165a85638129'
-            '7fb15b1c46f29b812fcc1989c861276bf966f64cc32dac1e688ea08c6b4ba6d1'
-            '08fc7534eb3df0cae678ce44e79138188518cd5339c368f4b3a39777921f6b23')
+sha256sums=('cc77ac67b069b0ae424b40d2ab745c469f9952e31c19db03fbcce35f967b41ea'
+            '575abab3ea79c10b7b76d506c6466d47ae60d861b88e03efc93f74a2c4d4c6ad'
+            '033d062e429000b5f66da9fed0d90c3d158d6cf65e005e648f26aff7a93cd328')
 
 package_linux-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.13.4.arch2-1-bin() {
+package_linux5.13.5.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.13.4.arch2-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.13.4.arch2-1-headers-bin() {
+package_linux5.13.5.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.13.4.arch2-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.13.4.arch2-1-docs-bin() {
+package_linux5.13.5.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
