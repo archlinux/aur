@@ -12,7 +12,6 @@ pkgbase = kuser-frameworks
 	license = LGPL
 	license = FDL
 	makedepends = cmake
-	makedepends = automoc4
 	makedepends = extra-cmake-modules
 	makedepends = kdesignerplugin
 	makedepends = kdoctools
