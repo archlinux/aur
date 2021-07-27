@@ -9,7 +9,7 @@
 pkgname=python-cssutils
 _name="${pkgname#python-}"
 
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
@@ -22,7 +22,7 @@ depends=('python')
 
 changelog=CHANGES.rst
 source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5bef59f6b59bdccbea8e36cb292d2be1b6be1b485fc4a9f5886616f19eb31aaf')
+sha256sums=('b2d3b16047caae82e5c590036935bafa1b621cf45c2f38885af4be4838f0fd00')
 
 
 prepare() {
