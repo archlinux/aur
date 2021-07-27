@@ -27,7 +27,9 @@ pkgbase = proton-ge-custom-bin
 	optdepends = xboxdrv: gamepad driver service
 	optdepends = python-cef: generic splash dialog support
 	provides = proton
+	provides = proton-ge-custom=6.13.GE_1
 	conflicts = proton-ge-custom-stable-bin
+	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
 	source = proton-ge-custom-6.13-GE-1_0.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/6.13-GE-1/Proton-6.13-GE-1.tar.gz
