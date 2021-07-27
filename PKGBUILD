@@ -1,6 +1,6 @@
 # Maintainer: Robin Boers <robindev2019@outlook.com>
 pkgname=cutie-tanks
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Shoot 'em all arcade game"
 arch=(x86_64)
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-	mkdir -p cutie-tanks
+	mkdir -p release
   	bsdtar -xf release.zip -C release
 }
 
