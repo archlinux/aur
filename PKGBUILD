@@ -12,7 +12,7 @@ makedepends=(
 	'catch2>=2.13'
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.9.1'
-	'discord-rpc>3.4'
+	'discord-rpc>=3.4.0.r10'
 	'dynarmic>=5.r88'
 	'ffmpeg>=4.3.1'
 	'fmt>=8'
