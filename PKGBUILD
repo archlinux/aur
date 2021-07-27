@@ -4,7 +4,7 @@
 
 _gemname=fluentd
 pkgname=$_gemname
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc='Data collector designed to scale and simplify log management'
 arch=('any')
@@ -38,7 +38,7 @@ source=(
 install="$pkgname.install"
 noextract=("$_gemname-$pkgver.gem")
 backup=('etc/fluent/fluentd.conf')
-b2sums=('274591f0b58bb2c466560859815362bd93964daa4cf0f018745209bb11a31892f9b5544ec07b70a63ada4982bcc9c2eee6a819e9dc17a37706519c05e4d10c52'
+b2sums=('1b967f542fdaeab51e991c9265d0b837d84f46b57c653994af23c0eb208d47d97b8ecf772e73648a1b1762050a2a55bff13cf6bbdbe272c3da3b59c33d83ba60'
         '593511fb52e2d934e89bbdae7ac7687b29165a6d20a48bab223b91b2010c82811da0a79f9c51ee857b48f2fca06677ba0f9db43bb8990df723620fa3471045a9'
         '8957872f805a274a56ae9e63896033a5fe175bd4d71704e62aff18524b95bf2a611bb3a4bff3c93b6d977f209e415a7d38d806341e144919022226ab1f53247d'
         '78cf6da081b7f370bfe6b362e5f545cefcb770cc42eafd713de5befd8489c543a99e60112b09dc47b7867fdac8be91291cab68fc102f97834f248ce879782d6c')
