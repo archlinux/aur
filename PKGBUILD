@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
 	mkdir -p cutie-tanks
-  	bsdtar -xf release.zip -C cutie-tanks
+  	bsdtar -xf release.zip -C release
 }
 
 package() {
@@ -35,8 +35,10 @@ package() {
 	mkdir -p "$pkgdir/opt/$pkgname/"
 	mkdir -p "$pkgdir/usr/share/applications/"
 	mkdir -p "$pkgdir/usr/bin/"
+
+	chmod 775 release/*
 	
-	mv cutie-tanks/* "$pkgdir/opt/cutie-tanks/"
+	mv release/* "$pkgdir/opt/cutie-tanks/"
 
 	cp ./cutie-tanks.desktop "$pkgdir/usr/share/applications/cutie-tanks.desktop"
 	cp ./sh "$pkgdir/usr/bin/cutie-tanks"
