@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ldscript-generator
-pkgver=20.05.RC.01
+pkgver=20.05.RC.02
 pkgrel=1
 epoch=
 pkgdesc="This is a python tool based on pydevicetree (GitHub/PyPI) which generates OpenOCD Configuration Files for Freedom Metal applications."
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/sifive/ldscript-generator/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('70370f5d26ea3c6c8dcf96b5684244a510245524169356c4174a3f5b23826c44')
+sha256sums=('3037e9d736e85479e98bde48e83a362f75d693331fa6cd269969d5b884d7c106')
 #validpgpkeys=()
 
 package() {
