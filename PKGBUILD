@@ -1,3 +1,5 @@
+# Maintainer: Tom Bu <tombu@tombu.info>
+
 pkgname=ciel-arch-plugins-git
 _pkgname=ciel-arch-plugins
 pkgver=r6.58a1f23
