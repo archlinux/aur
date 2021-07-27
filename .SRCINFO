@@ -55,6 +55,7 @@ pkgbase = blender-fracture_modifier-git
 	source = openvdb8.patch
 	source = openexr3.patch
 	source = opencolorio1.patch
+	source = osl19x.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -77,5 +78,6 @@ pkgbase = blender-fracture_modifier-git
 	sha256sums = edfd784f8497417660c0b9fdc97893fd0d77764d0bc10f4cb92a9082f41bae75
 	sha256sums = 8e28b28679c67ce589558468d5d912321b345dbbe46c80b359a1a38417ba2ed2
 	sha256sums = b998efa375b868e3beeba54fe070fa73256663f23a86668a04f34ceb626c65ac
+	sha256sums = 1f5f9cfc3e19c5a2e358a8de1c690e1d94dc24b63eecd76fa156f69e6cdd2edd
 
 pkgname = blender-fracture_modifier-git
