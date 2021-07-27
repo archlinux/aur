@@ -3,22 +3,29 @@
 
 _pkgname=asm
 pkgname=java-${_pkgname}
-pkgver=7.0
+pkgver=9.2
 pkgrel=1
 pkgdesc="An all purpose Java bytecode manipulation and analysis framework"
 arch=('any')
 url="https://asm.ow2.io/"
 license=('BSD')
 depends=('java-runtime')
-_maven_central='https://repo1.maven.org/maven2'
-source=("${_maven_central}/org/ow2/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-analysis/${pkgver}/${_pkgname}-analysis-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-commons/${pkgver}/${_pkgname}-commons-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-tree/${pkgver}/${_pkgname}-tree-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-util/${pkgver}/${_pkgname}-util-${pkgver}.jar"
-        "${_maven_central}/org/ow2/${_pkgname}/${_pkgname}-test/${pkgver}/${_pkgname}-test-${pkgver}.jar"
+_repository='https://repository.ow2.org/nexus/content/repositories/releases/org/ow2/asm'
+source=("${_repository}/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.jar"
+        "${_repository}/${_pkgname}-analysis/${pkgver}/${_pkgname}-analysis-${pkgver}.jar"
+        "${_repository}/${_pkgname}-commons/${pkgver}/${_pkgname}-commons-${pkgver}.jar"
+        "${_repository}/${_pkgname}-tree/${pkgver}/${_pkgname}-tree-${pkgver}.jar"
+        "${_repository}/${_pkgname}-util/${pkgver}/${_pkgname}-util-${pkgver}.jar"
+        "${_repository}/${_pkgname}-test/${pkgver}/${_pkgname}-test-${pkgver}.jar"
         LICENSE)
 
+sha256sums=('b9d4fe4d71938df38839f0eca42aaaa64cf8b313d678da036f0cb3ca199b47f5'
+            '878fbe521731c072d14d2d65b983b1beae6ad06fda0007b6a8bae81f73f433c4'
+            'be4ce53138a238bb522cd781cf91f3ba5ce2f6ca93ec62d46a162a127225e0a6'
+            'aabf9bd23091a4ebfc109c1f3ee7cf3e4b89f6ba2d3f51c5243f16b3cffae011'
+            'ff5b3cd331ae8a9a804768280da98f50f424fef23dd3c788bb320e08c94ee598'
+            'c51f82ddb3d2eaad1c8eeb7096081f8f660baa25dce7388d8653580d3ffb3570'
+            '02f021ae8f8f2f205d36b20790eedd6a871dd3007ddf160c8692b6f3a3284fc7')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/{java/$_pkgname,licenses/$pkgname}
@@ -34,10 +41,3 @@ package() {
   done
 }
 
-sha256sums=('b88ef66468b3c978ad0c97fd6e90979e56155b4ac69089ba7a44e9aa7ffe9acf'
-            'e981f8f650c4d900bb033650b18e122fa6b161eadd5f88978d08751f72ee8474'
-            'fed348ef05958e3e846a3ac074a12af5f7936ef3d21ce44a62c4fa08a771927d'
-            'cfd7a0874f9de36a999c127feeadfbfe6e04d4a71ee954d7af3d853f0be48a6c'
-            '75fbbca440ef463f41c2b0ab1a80abe67e910ac486da60a7863cbcb5bae7e145'
-            '004997b99fe2648261cd57c6a7fc7b598bf22e20e2a8f05cbec989fa4772167f'
-            '02f021ae8f8f2f205d36b20790eedd6a871dd3007ddf160c8692b6f3a3284fc7')
