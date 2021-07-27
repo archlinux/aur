@@ -4,14 +4,14 @@ pkgbase = dell2150-cups-driver
 	pkgdesc = Proprietary driver for Dell 2150cd, 2150cdn printers
 	pkgver = 1.0
 	pkgrel = 1
-	url = http://www.dell.com
+	url = https://www.dell.com
 	arch = x86_64
 	license = proprietary
 	makedepends = rpmextract
 	depends = lib32-libcups
 	depends = cups
 	options = !strip
-	source = http://downloads.dell.com/FOLDER00409836M/1/05_2150_SFP_Linux.zip
+	source = https://downloads.dell.com/FOLDER00409836M/1/05_2150_SFP_Linux.zip
 	md5sums = 30c54189a1832fc8caec89c04fad100b
 
 pkgname = dell2150-cups-driver

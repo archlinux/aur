@@ -7,13 +7,13 @@ pkgver=1.0
 pkgrel=1
 pkgdesc='Proprietary driver for Dell 2150cd, 2150cdn printers'
 arch=(x86_64)
-url='http://www.dell.com'
+url='https://www.dell.com'
 license=(proprietary)
 depends=(lib32-libcups cups)
 makedepends=(rpmextract)
 _zip="05_2150_SFP_Linux.zip"
 _rpm="Dell-2150-Color-Printer-${pkgver}-${pkgrel}.i686.rpm"
-source=("http://downloads.dell.com/FOLDER00409836M/1/$_zip")
+source=("https://downloads.dell.com/FOLDER00409836M/1/$_zip")
 md5sums=(30c54189a1832fc8caec89c04fad100b)
 options=(!strip)
 
