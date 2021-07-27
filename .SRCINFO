@@ -1,0 +1,18 @@
+pkgbase = sirit-git
+	pkgdesc = A runtime SPIR-V assembler
+	pkgver = r184.a395963
+	pkgrel = 1
+	url = https://github.com/ReinUsesLisp/sirit
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = spirv-headers>=1.5.4.raytracing.fixed.r32
+	depends = gcc-libs
+	provides = sirit=r184.a395963
+	provides = libsirit.so
+	conflicts = sirit
+	source = git+https://github.com/ReinUsesLisp/sirit.git
+	b2sums = SKIP
+
+pkgname = sirit-git
