@@ -1,6 +1,6 @@
 pkgbase = qqc2-breeze-style
 	pkgdesc = Breeze inspired QQC2 Style
-	pkgver = 5.22.3
+	pkgver = 5.22.4
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/qqc2-breeze-style
 	arch = x86_64
