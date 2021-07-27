@@ -1,6 +1,6 @@
 pkgbase = bluejeans
 	pkgdesc = BlueJeans desktop app for video calls
-	pkgver = 2.22.0
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://www.bluejeans.com
 	install = bluejeans.install
@@ -61,8 +61,7 @@ pkgbase = bluejeans
 	depends = wayland
 	depends = xz
 	depends = zlib
-	source = BlueJeans-2.22.0.rpm::https://swdl.bluejeans.com/desktop-app/linux/2.22.0/BlueJeans_2.22.0.87.rpm
-	sha256sums = d27a1b9fe61cbea6a4c2f05d928109af31e82fe386ca6db327cd3aa1469b61fa
+	source = BlueJeans-2.23.0.rpm::https://swdl.bluejeans.com/desktop-app/linux/2.23.0/BlueJeans_2.23.0.39.rpm
+	sha256sums = 2c6835e0a27f8449d2692add4e5b58f585efecd7a491fa3aeae2e4c63331f002
 
 pkgname = bluejeans
-
