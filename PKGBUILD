@@ -30,7 +30,7 @@ optdepends=(
   'gamemode')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso.tar.gz")
-sha256sums=('c527f4dcfd161be6540393153a0ecc85036222d7c396cc8da83c90a5cf0bdab9')
+sha256sums=('96b814a4f70c1e2316ee9696febe2da1ecd8595560cd4edd8352de144b9adbd6')
 
 build() {
   cd "Bottles-${pkgver}-treviso"
