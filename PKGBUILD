@@ -14,6 +14,8 @@ depends=(
   'python' 
   'libhandy' 
   'gtk3' 
+  'patool' 
+  'p7zip' 
   'python-gobject' 
   'python-requests' 
   'python-yaml' 
