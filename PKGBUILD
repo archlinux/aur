@@ -9,11 +9,11 @@
 # * https://github.com/bohoomil/fontconfig-ultimate/blob/master/freetype/03-infinality-2.6.3-2016.04.16.patch#L2092
 # * https://www.reddit.com/r/archlinux/comments/5qkvqb/best_way_to_approximate_infinalitys_ultimate5
 
-__arch_pkg_commit="a5a4ee489620cbb38b3a214feb6f3001a1a23449"
+__arch_pkg_commit="4bc1573435e38aa07178dcc838d763de701172d9"
 
 pkgname=freetype2-ultimate5
-pkgver=2.10.4
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
 conflicts=(freetype2)
@@ -28,20 +28,20 @@ source=(
 	"like-ultimate5.patch"
 
 	# Arch Linux package files.
-	"upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-subpixel-rendering.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=$__arch_pkg_commit"
-	"upstream_4.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0004-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=$__arch_pkg_commit"
+	"upstream_1.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0001-Enable-table-validation-modules.patch"
+	"upstream_2.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0002-Enable-subpixel-rendering.patch"
+	"upstream_3.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0003-Enable-infinality-subpixel-hinting.patch"
+	"upstream_4.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/$__arch_pkg_commit/trunk/0004-Enable-long-PCF-family-names.patch"
 
 	# FreeType source code.
 	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
 )
 sha256sums=('9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd'
-            'f41df4f336d5e82e58733c7a4594476c9216cfc85c096327745a7e1b559e17e1'
-            'dc77c1cfee4bf8e7e0690628c95d211df09e0d0750e4c8f075b78b5f105514f7'
-            '21a62bc12b848320c686d602d8d4e3bcd51294a9def4dc9c301736e077b59f3f'
-            '266384222f87a02fb02b2179828f6c26fe6d7b1fd09d1f7e3734e7fcb09cda2e'
-            '86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784')
+            'e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c'
+            '17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468'
+            '561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a'
+            '9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6'
+            '8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7')
 
 prepare()
 {
