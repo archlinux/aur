@@ -1,0 +1,12 @@
+pkgbase = vim-profiler
+	pkgdesc = A vim profiling tool
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/terror/vim-profiler
+	arch = x86_64
+	license = custom:CC0-1.0
+	depends = cargo
+	source = 0.0.2.tar.gz::https://crates.io/api/v1/crates/vim-profiler/0.0.2/download
+	sha256sums = 5fca342d32b39ef36d36c4ad3246c1585cc204eddeb813849e49443a22ada850
+
+pkgname = vim-profiler
