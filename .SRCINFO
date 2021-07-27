@@ -1,0 +1,12 @@
+pkgbase = u2o
+	pkgdesc = USFM to OSIS bible format converter
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/adyeths/u2o
+	arch = any
+	license = Unlicense
+	depends = python
+	source = u2o-0.7.tar.gz::https://github.com/adyeths/u2o/archive/refs/tags/0.7.tar.gz
+	sha256sums = dcda63dd61e053dcdccf948f0d88c987302e3ee2d40ae74db2c60f93b0ab0e36
+
+pkgname = u2o
