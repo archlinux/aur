@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.51.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
@@ -28,6 +28,8 @@ pkgbase = snapd
 	options = !strip
 	options = emptydirs
 	source = snapd-2.51.3.tar.xz::https://github.com/snapcore/snapd/releases/download/2.51.3/snapd_2.51.3.vendor.tar.xz
+	source = 0001-snap-squashfs-handle-squashfs-tools-4.5.patch
 	sha256sums = 67d3701b52484d7dba9c7b122752429eafbb20a0182966dd44ab1b1f6c1b780e
+	sha256sums = 8142631da873d49d9b7d32b78afcededf347199f9f42161b88213f9aef33ab82
 
 pkgname = snapd
