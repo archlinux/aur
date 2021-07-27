@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!BUILDING
+!PKGBUILD
+!mrcode.desktop
