@@ -1,6 +1,6 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=disfetch
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc='Yet another *nix distro fetching program, but less complex.'
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('binutils')
 depends=('bash>=4.0.0')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c7be31154661cf90d83bb71e7e589c28140d4121d8a51dd8a64a7441f14f9878')
+sha256sums=('4a10c7c412e18b935c4c5b81a93abb64a5557bf3339dee7e8e79ec1643e976f7')
 
 package() {
 	cd "$pkgname-$pkgver"
