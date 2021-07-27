@@ -1,0 +1,35 @@
+pkgbase = mrcode-bin
+	pkgdesc = An IDE based on VSCode / VSCodium (Binary release)
+	pkgver = 1.58.2
+	pkgrel = 1
+	url = https://github.com/zokugun/MrCode.git
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk3
+	depends = cairo
+	depends = alsa-lib
+	depends = nss
+	depends = gcc-libs
+	depends = libnotify
+	depends = libxss
+	depends = glibc>=2.28-4
+	depends = libxkbfile
+	optdepends = gvfs: For move to trash functionality
+	optdepends = libdbusmenu-glib: For KDE global menu
+	provides = mrcode
+	conflicts = mrcode
+	conflicts = mrcode-git
+	source = mrcode.desktop
+	sha256sums = 362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92
+	source_x86_64 = https://github.com/zokugun/MrCode/releases/download/1.58.2/MrCode-linux-x64-1.58.2.tar.gz
+	sha256sums_x86_64 = 70809fcea597c1fa05ea15382a90c27371dd3e8f54ca05678a0fbcee6b0afcbd
+	source_aarch64 = https://github.com/zokugun/MrCode/releases/download/1.58.2/MrCode-linux-arm64-1.58.2.tar.gz
+	sha256sums_aarch64 = a881a8c108604cfa79b24d79e9742d4294e083a37fb346497c845e7cef7b12bb
+	source_armv7h = https://github.com/zokugun/MrCode/releases/download/1.58.2/MrCode-linux-armhf-1.58.2.tar.gz
+	sha256sums_armv7h = 75d592fd3057fbafd289eee7aec426f19d7ee73dea76cb359541fb11e124f275
+
+pkgname = mrcode-bin
