@@ -1,6 +1,6 @@
 pkgbase = signal-desktop-beta
 	pkgdesc = Signal Private Messenger for Linux
-	pkgver = 5.11.0beta2
+	pkgver = 5.11.0beta3
 	pkgrel = 1
 	url = https://signal.org
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = signal-desktop-beta
 	depends = libxss
 	depends = hicolor-icon-theme
 	conflicts = signal-desktop-beta-bin
-	source = signal-desktop-beta-5.11.0beta2.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v5.11.0-beta.2.tar.gz
+	source = signal-desktop-beta-5.11.0beta3.tar.gz::https://github.com/signalapp/Signal-Desktop/archive/v5.11.0-beta.3.tar.gz
 	source = signal-desktop-beta.desktop
 	source = expire-from-source-date-epoch.patch
-	sha512sums = b450f1810ac0bf75bead97d87f0d6934745dba7e5005032cbc063a484636ad207d7922bc5590453c3feaa64baf7a0fe52d9779952f76f6f6da5683158fc20103
+	sha512sums = f2c9b13d9dcedaf1ab97ece270b8f3a8e944b32ed92e1a4a007ef0ae5346f8e086d49a51159de5970a68ac4434ac6929d70a6c350f344159cf295cdad73223cb
 	sha512sums = b92c877f6673b3eaae94ca5623ab92f0e5676d439aaf7dc7424ce74f5a5786d30886e0b1013f0ef68a4ced53cdd16a2f78df8f1e41c039d61a980edf678f3e70
 	sha512sums = 6673066172d6c367961f3e2d762dd483e51a9f733d52e27d0569b333ad397375fd41d61b8a414b8c9e8dbba560a6c710678b3d105f8d285cb94d70561368d5a2
 
