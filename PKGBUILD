@@ -2,7 +2,7 @@
 pkgname=connective-usermanager
 pkgver=1.0.0
 
-pkgrel=8
+pkgrel=9
 pkgdesc="UserManager Module -- Authentication backend for Connective servers"
 arch=( 'any' )
 url=""
