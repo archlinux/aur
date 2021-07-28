@@ -1,7 +1,7 @@
 # Maintainer: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=adasockets
-pkgver=1.11.1
+pkgver=1.12
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="BSD sockets in Ada"
@@ -11,7 +11,7 @@ depends=('sh')
 makedepends=('gcc-ada')
 options=('!libtool')
 source=(http://www.rfc1149.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('77b3ec77eb307d9700668d10402c3bfb4eb031c5b6f5c17d6a1bbe25e9083e56')
+sha256sums=('cd4ff16f2b7de7a266ac16f670963fb5e9588b1d454dbd58c99208e5abd0f587')
 
 build() {
   cd ${pkgname}-${pkgver}
