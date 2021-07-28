@@ -1,6 +1,6 @@
 pkgbase = session-desktop
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.6.8
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop.install
