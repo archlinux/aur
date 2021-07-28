@@ -2,8 +2,8 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
-pkgver=2.2.5
-pkgrel=4
+pkgver=2.2.7
+pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
 url='http://www.wings3d.com/' # https is not available
@@ -13,8 +13,8 @@ makedepends=(gendesk)
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         wings.sh)
-sha256sums=('95ecf84a8f49bc00b983643e7ccd807f64a3b8b88253037a8ccefbe7a3bedff8'
-            '0b1c4a8d89196cd31411e9b388c28f241ed8e5c978732ca006d70dabf4c165d5')
+b2sums=('a7b8273788f26cdaaecfd90a14687703960855d3b72a034d8c78ed58d1e08008ecf1a17dee839471c4ac719efcb723de912db3163b8ce0adb3000eeba9235233'
+        '99865e6e7489dd5f1f76e6a1a9c2c2a02e32b50dff34c54e40f08720f39abe46dc659ad13af8f7c888a7f6c45f30c5f235855fe2f277a1bdd1782a41a1c9e3c9')
 
 prepare() {
   gendesk -f -n \
@@ -42,5 +42,3 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r wings-$pkgver-linux/lib/wings-$pkgver/* "$pkgdir/usr/lib/$pkgname"
 }
-
-# getver: -u=2 github.com/dgud/wings/releases

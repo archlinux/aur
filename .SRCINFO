@@ -1,7 +1,7 @@
 pkgbase = wings3d
 	pkgdesc = 3D modeler using the winged edge data structure
-	pkgver = 2.2.5
-	pkgrel = 4
+	pkgver = 2.2.7
+	pkgrel = 1
 	url = http://www.wings3d.com/
 	arch = x86_64
 	license = GPL
@@ -10,9 +10,9 @@ pkgbase = wings3d
 	depends = erlang-cl
 	depends = erlang-sdl
 	optdepends = povray: render scenes with POV-Ray
-	source = https://downloads.sourceforge.net/project/wings/wings/2.2.5/wings-2.2.5.tar.bz2
+	source = https://downloads.sourceforge.net/project/wings/wings/2.2.7/wings-2.2.7.tar.bz2
 	source = wings.sh
-	sha256sums = 95ecf84a8f49bc00b983643e7ccd807f64a3b8b88253037a8ccefbe7a3bedff8
-	sha256sums = 0b1c4a8d89196cd31411e9b388c28f241ed8e5c978732ca006d70dabf4c165d5
+	b2sums = a7b8273788f26cdaaecfd90a14687703960855d3b72a034d8c78ed58d1e08008ecf1a17dee839471c4ac719efcb723de912db3163b8ce0adb3000eeba9235233
+	b2sums = 99865e6e7489dd5f1f76e6a1a9c2c2a02e32b50dff34c54e40f08720f39abe46dc659ad13af8f7c888a7f6c45f30c5f235855fe2f277a1bdd1782a41a1c9e3c9
 
 pkgname = wings3d
