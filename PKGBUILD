@@ -4,7 +4,7 @@ pkgname=freedom-studio-bin
 _pkgname=FreedomStudio
 pkgver=2021.04
 _pkgver=4.18.0.2021-04-1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SiFive Freedom Studio RISC-V IDE for Embedded Development"
 arch=('x86_64')
@@ -32,10 +32,7 @@ package() {
                     "${pkgdir}/usr/bin" \
                     "${pkgdir}/usr/share/pixmaps"
 
-    tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/sifive/${pkgname%-bin}"
-
-#     find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type f -exec chmod 644 "{}" \;
-#     find "${pkgdir}/opt/sifive/${pkgname%-bin}" -type d -exec chmod 755 "{}" \;
+    tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/sifive/${pkgname%-bin}" --no-same-owner  --no-same-permissions
 
     ln -sf "/opt/sifive/${pkgname%-bin}/FreedomStudio" "${pkgdir}/usr/bin/${pkgname%-bin}"
     ln -sf "/opt/sifive/${pkgname%-bin}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.xpm"

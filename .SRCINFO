@@ -1,7 +1,7 @@
 pkgbase = freedom-studio-bin
 	pkgdesc = SiFive Freedom Studio RISC-V IDE for Embedded Development
 	pkgver = 2021.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sifive/freedom-studio
 	arch = x86_64
 	groups = bash
