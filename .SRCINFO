@@ -1,6 +1,6 @@
 pkgbase = session-desktop-appimage
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.6.7
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://github.com/oxen-io/session-desktop
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = session-desktop-appimage
 	conflicts = session-desktop-bin
 	options = !strip
 	options = !emptydirs
-	source = session-desktop-linux-x86_64-1.6.7.AppImage::https://github.com/oxen-io/session-desktop/releases/download/v1.6.7/session-desktop-linux-x86_64-1.6.7.AppImage
+	source = session-desktop-linux-x86_64-1.6.9.AppImage::https://github.com/oxen-io/session-desktop/releases/download/v1.6.9/session-desktop-linux-x86_64-1.6.9.AppImage
 	source = session-desktop.desktop
 	source = session-desktop.png
-	sha256sums = 7d93402000e4230f2d4e4e06b65f77a1a2ca58df8105b369aa14a3263d7e59b0
+	sha256sums = ade64178a994024ce5e0137ee5d49afc8fb8652eb7d1fbbcd7d6cb0eaa71ff63
 	sha256sums = 2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b
 	sha256sums = 8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c
 
