@@ -1,0 +1,12 @@
+[Unit]
+Description=Goaccess Log Analysis
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/goaccess -f /var/log/nginx/*access.log --real-time-html -o /var/www/html/goaccess/reports.html
+[Install]
+WantedBy=multi-user.target
