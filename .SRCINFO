@@ -1,24 +1,23 @@
 pkgbase = matomo
 	pkgdesc = A real-time web analytics platform
-	pkgver = 4.3.1
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://matomo.org/
 	install = matomo.install
 	arch = any
 	license = GPL3
-	depends = php>=7.2.5
+	depends = php
 	depends = php-gd
-	optdepends = mysql>=5.5: Database server
+	optdepends = mariadb: Database server
 	optdepends = python: Log importer script
 	optdepends = geoip2-database: GeoIP database
 	replaces = piwik
 	backup = usr/share/webapps/matomo/piwik.js
 	backup = usr/share/webapps/matomo/matomo.js
-	source = https://builds.matomo.org/matomo-4.3.1.tar.gz
-	source = https://builds.matomo.org/matomo-4.3.1.tar.gz.asc
+	source = https://builds.matomo.org/matomo-4.4.0.tar.gz
+	source = https://builds.matomo.org/matomo-4.4.0.tar.gz.asc
 	validpgpkeys = 814E346FA01A20DBB04B6807B5DBD5925590A237
-	sha256sums = 55ee0fd5c555fee679f4171069464b4d33b0a635fbbdea1ff6347497763dc4e4
-	sha256sums = 7d069bd546608399e4d14e306e319d0ba1ad99a1a269c0d2265787cec5876fd3
+	sha256sums = 3eea92155178a53410c35a6489995ff4deb9ece7182dc4a11e06f96ad3b707ba
+	sha256sums = 9860fb8556030e180e0dedefb1b754dc6d1c845c27a7eacec0d938f72232a97d
 
 pkgname = matomo
-

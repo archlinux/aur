@@ -1,27 +1,27 @@
-# Maintainer: Martin Rys <rys.pw/#contact_me>
+# Maintainer: Martin Rys <rys.pw/contact>
 # Previous (Co-)Maintainers:
 #  Chris Morgan <me@chrismorgan.info>
 #  Carsten Feuls <archlinux dot carstenfeuls dot de>
 #  Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="A real-time web analytics platform"
 arch=("any")
 url="https://matomo.org/"
 license=("GPL3")
-depends=("php>=7.2.5" "php-gd")
+depends=("php" "php-gd")
 replaces=("piwik")
-optdepends=("mysql>=5.5: Database server"
+optdepends=("mariadb: Database server"
             "python: Log importer script"
             "geoip2-database: GeoIP database")
 install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=("55ee0fd5c555fee679f4171069464b4d33b0a635fbbdea1ff6347497763dc4e4"
-            "7d069bd546608399e4d14e306e319d0ba1ad99a1a269c0d2265787cec5876fd3")
+sha256sums=("3eea92155178a53410c35a6489995ff4deb9ece7182dc4a11e06f96ad3b707ba"
+            "9860fb8556030e180e0dedefb1b754dc6d1c845c27a7eacec0d938f72232a97d")
 
 validpgpkeys=("814E346FA01A20DBB04B6807B5DBD5925590A237")
 
