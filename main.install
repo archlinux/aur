@@ -12,8 +12,25 @@ post_install() {
 
     mkdir "$serverDir/coremodules" -p
     chown connective:connective "$serverDir/coremodules" -R
-    cp "/usr/lib/connective-https/ConnectiveHTTPS.jar" "$serverDir/coremodules/ConnectiveHTTPS.jar" -f
+    ln -sf "/usr/lib/connective-https/ConnectiveHTTPS.jar" "$serverDir/coremodules/ConnectiveHTTPS.jar"
     chown connective "$serverDir/coremodules/ConnectiveHTTPS.jar"
+}
+
+post_upgrade() {
+    serverDir=/etc/connective-http
+    classPathFolders=( "libs/" )
+    mainType=org.asf.connective.standalone.main.ConnectiveStandalone
+    credtoolLibs=()
+    credtoolTarget=""
+    jvmArguments="-Djava.net.preferIPv4Stack=true"
+
+    if [ -f "/etc/connective-http/config.props" ]; then
+        source "/etc/connective-http/config.props"
+    fi
+    
+    mkdir "$serverDir/coremodules" -p
+    chown connective:connective "$serverDir/coremodules" -R
+    ln -sf "/usr/lib/connective-https/ConnectiveHTTPS.jar" "$serverDir/coremodules/ConnectiveHTTPS.jar"
 }
 
 post_remove() {
