@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 
 pkgname=kaobook
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='A LaTeX class for books, reports or theses'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/fmarotta/kaobook'
 license=('LPPL')
 depends=('texlive-core')
 source=(https://github.com/fmarotta/$pkgname/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('81ef3bc3af01cd6a81955bd3a837adcd3cb80bf9e510c60f1821680f44ff0f5c')
+sha256sums=('a92390533b430a57a3266c5152f272d14f2685d5ce50a37af604345ac2be9b53')
 
 package() {
   cd "$srcdir"
