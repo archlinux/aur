@@ -1,0 +1,12 @@
+pkgbase = otf-murty-telugu
+	pkgdesc = Telugu Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.1.33
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Telugu.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Telugu.zip
+	sha256sums = c2778ccc242cbfca6793fbdee4cf31cdca855d9d1db083147b2d1029d933ab83
+
+pkgname = otf-murty-telugu

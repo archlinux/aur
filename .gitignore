@@ -1,0 +1,9 @@
+/__MACOSX
+/pkg
+/src
+/._*
+*.txt
+*.zip
+*.otf
+*.pkg.tar
+*.pkg.tar.*
