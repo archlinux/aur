@@ -1,11 +1,10 @@
 pkgbase = theshell
 	pkgdesc = Desktop Shell that gets out of your way
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 0
 	url = https://github.com/vicr123/theshell
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	depends = kwidgetsaddons
 	depends = xdg-utils
 	depends = wmctrl
@@ -27,8 +26,7 @@ pkgbase = theshell
 	conflicts = ts-polkitagent
 	replaces = ts-startsession
 	replaces = ts-polkitagent
-	source = theshell-8.0.1::git+https://github.com/vicr123/theshell#branch=master
-	md5sums = SKIP
+	source = https://github.com/vicr123/theshell/archive/refs/tags/v8.0.2.tar.gz
+	sha256sums = 00bf5d9838eae954f505143a6530d13f67938d0d3a7c5333971e4cb1b50cc615
 
 pkgname = theshell
-

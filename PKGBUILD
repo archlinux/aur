@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=8.0.1
+pkgver=8.0.2
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
@@ -12,11 +12,10 @@ depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin'
 'libcups' 'qt5-base' 'ts-qtplatform' 'qt5-charts'
 'qt5-location' 'kscreen' 'ts-bt' 'ts-bugreport')
 optdepends=('alsa-utils: for volume controls')
-makedepends=('git')
 conflicts=('ts-startsession' 'ts-polkitagent')
 replaces=('ts-startsession' 'ts-polkitagent')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=master')
-md5sums=('SKIP')
+source=('https://github.com/vicr123/theshell/archive/refs/tags/v8.0.2.tar.gz')
+sha256sums=('00bf5d9838eae954f505143a6530d13f67938d0d3a7c5333971e4cb1b50cc615')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -26,5 +25,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	make -i install INSTALL_ROOT=$pkgdir
+	chmod u+s $pkgdir/usr/lib/ts-mousepass-change
 }
