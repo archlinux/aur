@@ -15,12 +15,26 @@ post_install() {
     
     mkdir "$serverDir/modules" -p
     chown connective:connective "$serverDir/modules" -R
-    cp "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar" -f
+    ln -sf "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar"
     chown connective "$serverDir/modules/SaltedAuth.jar"
        
     if [ -f "$serverDir"/server.ccfg ]; then
         cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg .modules.UserManager &>/dev/null && cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg . -s modules.UserManager.authentication-backend salted --ccfg-output --output "$serverDir"/server.ccfg
     fi
+}
+
+post_upgrade() {
+    serverDir=/etc/connective-http
+    classPathFolders=( "libs/" )
+    mainType=org.asf.connective.standalone.main.ConnectiveStandalone
+    credtoolLibs=()
+    credtoolTarget=""
+    jvmArguments="-Djava.net.preferIPv4Stack=true"
+
+    if [ -f "/etc/connective-http/config.props" ]; then
+        source "/etc/connective-http/config.props"
+    fi
+    ln -sf "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar"
 }
 
 post_remove() {
