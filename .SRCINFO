@@ -1,0 +1,14 @@
+pkgbase = ruby-tty-platform
+	pkgdesc = Query methods for detecting different operating systems and their properties
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://ttytoolkit.org
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = tty-platform-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-platform-0.3.0.gem
+	b2sums = 3c7aa22caeeeadb07222c67db9fb888361e70f7b5b9b49ecfa681738bf82759ac836f462cbeba5c8d918069b41332d07ad4a4cde311074edaf69850880a8c0e8
+
+pkgname = ruby-tty-platform
