@@ -1,7 +1,7 @@
 # Maintainer: Robin Boers <robindev2019@outlook.com>
 pkgname=cutie-tanks
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Shoot 'em all arcade game"
 arch=(x86_64)
 url="https://github.com/RobinBoers/cutie-tanks"
@@ -13,21 +13,24 @@ optdepends=()
 provides=(cutie-tanks)
 conflicts=(cutie-tanks-git)
 source=('git+https://github.com/RobinBoers/cutie-tanks'
-		'https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip'
+		"${pkgname}-${pkgver}.zip::https://github.com/RobinBoers/cutie-tanks/releases/latest/download/release.zip"
 		'sh' 
 		'cutie-tanks.desktop'
 		'icon.png')
-noextract=("release.zip")
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' '54534a6bd86a0532825ff4ac1a7b85d7' 
+'9da57212f37e078330c4abb08d6c991c' 
+'4efc439ce7eedf5a4e1c08996b7afc29')
+noextract=("$pkgname-$pkgver.zip")
 
 pkgver() {
-  cd cutie-tanks
-  git describe --abbrev=0 --tags | sed 's/^v//;'
+  	cd cutie-tanks
+  	git describe --abbrev=0 --tags | sed 's/^v//;'
 }
 
 build() {
+	rm -rf release
 	mkdir -p release
-  	bsdtar -xf release.zip -C release
+	bsdtar -xf "$pkgname-$pkgver.zip" -C release
 }
 
 package() {
