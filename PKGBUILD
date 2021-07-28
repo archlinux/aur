@@ -11,7 +11,7 @@ _pkgbase=openocd
 pkgname=openocd-riot-git
 pkgver=0.11.0.r282.gae6de2f93
 pkgrel=1
-pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
+pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version with extra RIOT patches)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
@@ -22,7 +22,7 @@ provides=('openocd')
 conflicts=('openocd')
 
 source=(
-  "${pkgname}::git+https://repo.or.cz/openocd.git"
+  "${pkgname}::git+https://repo.or.cz/openocd.git#commit=ae6de2f93"
   "001-riot-segfault.patch"
 )
 #	"git+http://repo.or.cz/r/git2cl.git"
