@@ -2,7 +2,7 @@
 pkgname=connective-index-pages
 pkgver=1.0.0
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom Index Pages module for Connective servers"
 arch=( 'any' )
 url=""
