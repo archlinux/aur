@@ -8,7 +8,7 @@
 pkgname=rubymine
 _pkgname=RubyMine
 pkgver=2021.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools"
 arch=(i686 x86_64)
 options=(!strip)
@@ -23,30 +23,6 @@ source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
 sha256sums=('9147865bcf4f564ff799ac237ffb6f01b2633d22e57f98ed0d76204a46d33299'
             '72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
-
-prepare() {
-  cd "${_pkgname}-${pkgver}"
-
-  # Remove non-linux libs
-  rm -rf lib/libpty/macosx
-  rm -rf lib/libpty/win
-
-  # Remove bin/libs if architecture doesn't match
-  if [[ $CARCH = 'i686' ]]; then
-    rm -f bin/fsnotifier64
-    rm -f bin/libbreakgen64.so
-    rm -f bin/libyjpagent-linux64.so
-    rm -f bin/rubymine64.vmoptions
-    rm -rf lib/libpty/linux/x86_64
-  fi
-  if [[ $CARCH = 'x86_64' ]]; then
-    rm -f bin/fsnotifier
-    rm -f bin/libbreakgen.so
-    rm -f bin/libyjpagent-linux.so
-    rm -f bin/rubymine.vmoptions
-    rm -rf lib/libpty/linux/x86
- fi
-}
 
 package() {
   [ $CARCH == "x86_64" ] && SUFFIX=64

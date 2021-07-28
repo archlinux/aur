@@ -1,7 +1,7 @@
 pkgbase = rubymine
 	pkgdesc = Ruby and Rails IDE with the full stack of essential developer tools
 	pkgver = 2021.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/ruby/
 	install = rubymine.install
 	arch = i686
