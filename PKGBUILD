@@ -1,40 +1,41 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=terminalpp-git
-pkgver=0.7.2.r2.ge4d24de
+pkgver=v0.8.4.r2.gca8811d
 pkgrel=1
-pkgdesc='Minimalist, fast, cross-platform terminal emulator'
+pkgdesc="Minimalist, fast, cross-platform terminal emulator"
 arch=('x86_64')
-url='https://terminalpp.com'
-provides=('terminalpp')
+url="https://terminalpp.com"
 license=('MIT')
-depends=('libxft' 'hicolor-icon-theme')
-makedepends=('gcc8' 'imagemagick' 'cloc' 'git')
-source=("terminalpp::git+https://github.com/terminalpp/terminalpp")
-sha256sums=('SKIP')
+conflicts=('terminalpp' 'terminalpp-bin')
+depends=('libxft' 'gcc-libs')
+makedepends=('cmake' 'gcc10')
+source=(git+https://github.com/terminalpp/terminalpp)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd terminalpp
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd terminalpp
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	mkdir -p terminalpp/build
 }
 
 build() {
-  cd terminalpp
-  rm -rf build/release
-  mkdir -p build/release
-  cd build/release
-  cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc-8 -DCMAKE_CXX_COMPILER=g++-8
-  cmake --build .
+	cd terminalpp/build
+	cmake -DCMAKE_BUILD_TYPE=None \
+	      -DCMAKE_CXX_COMPILER=g++-10 \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DINSTALL=terminalpp \
+	      ..
+	make
 }
 
 package() {
-  cd terminalpp/build/release/
-  install -Dm755 terminalpp/terminalpp "${pkgdir}/usr/bin/terminalpp"
-  install -Dm644 "${srcdir}"/terminalpp/resources/terminalpp.desktop -t "${pkgdir}/usr/share/applications"
-  for i in 64 48 128 256; do
-    install -Dm644 "${srcdir}/terminalpp/resources/icons/icon_${i}x${i}.png" \
-     "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/terminalpp.png"
-  done
-  install -Dm644 "${srcdir}/terminalpp/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd terminalpp/build
+	DESTDIR="$pkgdir" make install
+
+	install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
-# vim:set ts=2 sw=2 et:
