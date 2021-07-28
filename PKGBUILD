@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 optdepends=('nintendo-udev: Udev rules for switch controllers', 'hid-nintendo-dkms: Kernel module with switch controller support.')
 
 source=("${_pkgname}::git+https://github.com/joaorb64/${_pkgname}.git" "run.sh")
-sha512sums=('SKIP' '492b633a637764f52e8750e1d9e3a32c7dd39f36db379f22392dfa21a9618b254f165771a03307886dbd69287bd353e249b9d53a738f805dd117aaf436b9c0cc')
+sha512sums=('SKIP' 'ccda550ce3daa6e5541135b81872d897b5ba1267b858a61f7e14b83829aefc91c7610fc31a83a8f0e80f56b20dfb53518b774658640b9fd0b105fe4f3c29ad57')
 
 
 pkgver() {
