@@ -1,18 +1,19 @@
 # Maintainer: Peter Tirsek <peter@tirsek.com>
 
 pkgname=perl-pod-markdown
-pkgver=3.200
+pkgver=3.300
 pkgrel=1
 pkgdesc='Convert POD to Markdown'
 _dist=Pod-Markdown
 arch=('any')
 url="https://metacpan.org/release/$_dist"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.8.0')
+depends=('perl>=5.8.0' 'perl-uri')
 checkdepends=('perl-test-differences')
+optdepends=('perl-html-parser: for nicer encoding of HTML entities')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/R/RW/RWSTAUNER/${_dist}-${pkgver}.tar.gz")
-sha256sums=("0609718191459c8a4ebb85c2e603baf8db9b997d5a3807921611b6ccf175ae99")
+sha256sums=("ec79e9908a3605749c4feb5054763eb6812dd33b54ce85a51339aa7cf9991b79")
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
