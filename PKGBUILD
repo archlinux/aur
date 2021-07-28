@@ -5,7 +5,7 @@
 pkgname=libmesh-petsc
 realname=libmesh
 pkgrel=1
-pkgver=cpp03_final.r6039.g857a62705
+pkgver=cpp03_final.r6057.gd18d49ad7
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -20,9 +20,11 @@ makedepends=('bison' 'coreutils')
 source=(
   "${realname}::git+https://github.com/libMesh/libmesh"
   "netcdf.m4.patch"
+  "0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch"
 )
 sha256sums=('SKIP'
-            'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880')
+            'b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880'
+            'da0ef283dcee18dbe2878d4b998a82d83dbf94323146cf257bc77304427533d4')
 
 # Find the location of the header files of PETSc
 # Get the PETSc directory
@@ -76,7 +78,7 @@ export PETSC_DIR=${petsc_incl##-I}
 # I used these for PETSc (from MOOSE)
 # safe_flags="-D-FORTIFY-SOURCE=2 -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
 safe_flags="-Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
-generic_flags="-pipe -fno-plt -fPIC -fopenmp -march=amdfam10 -mtune=native ${safe_flags}"
+generic_flags="-pipe -fno-plt -fPIC -fopenmp -march=x86-64 -mtune=generic ${safe_flags}"
 opt_flags="${generic_flags} -O3"
 generic_flags="${generic_flags} -O2"
 
@@ -124,6 +126,7 @@ prepare() {
   autoconf
   [[ -f /usr/include/netcdf.h ]] && \
     sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
+  patch -d "${srcdir}"/"${realname}" -p1 -i "${srcdir}"/0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch
 }
 
 build() {
@@ -208,6 +211,10 @@ build() {
 
   # Actual build
   make
+  # Is there a way to directly install the documentation in
+  # the right place?
+  make doc
+  make examples_doc
 }
 
 check() {
@@ -221,10 +228,6 @@ package() {
   _buildir="${srcdir}"/build
 
   cd "${_buildir}"
-  # Is there a way to directly install de documentation in
-  # the right place?
-  make doc
-  make examples_doc
   make DESTDIR="${pkgdir}" install
 
   _docdir="${pkgdir}"/usr/share/doc/libmesh/
@@ -234,7 +237,7 @@ package() {
   # Move libtool (and contrib) to usr/share/libmesh
   mv "${pkgdir}/usr/contrib" "${pkgdir}/usr/share/libmesh/"
   # Set right path for libtool from libMesh
-  sed -i 's-\(/usr/share/libmesh\)/bin/contrib-\1/contrib/bin-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
+  sed -i 's-/usr/contrib/bin/libtool-/usr/share/libmesh/bin/libtool-g' "${pkgdir}"/{etc/libmesh,usr/lib/pkgconfig}/Make.common
 
   # Place examples and documentation in the right directory
   install -d "${pkgdir}"/usr/share/doc/

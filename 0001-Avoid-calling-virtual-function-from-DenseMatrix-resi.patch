@@ -1,0 +1,30 @@
+From b75592607138ed3f9891f2769544ddf2b0eb9848 Mon Sep 17 00:00:00 2001
+From: John Peterson <jwpeterson@gmail.com>
+Date: Fri, 18 Jun 2021 16:09:04 -0500
+Subject: [PATCH] Avoid calling virtual function from DenseMatrix::resize()
+
+---
+ include/numerics/dense_matrix.h | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/include/numerics/dense_matrix.h b/include/numerics/dense_matrix.h
+index 277127628..0c58a5d56 100644
+--- a/include/numerics/dense_matrix.h
++++ b/include/numerics/dense_matrix.h
+@@ -896,8 +896,11 @@ void DenseMatrix<T>::resize(const unsigned int new_m,
+   this->_m = new_m;
+   this->_n = new_n;
+ 
+-  // zero and set decomposition_type to NONE
+-  this->zero();
++  // avoid calling virtual function
++  // this->zero();
++
++  _decomposition_type = NONE;
++  std::fill (_val.begin(), _val.end(), static_cast<T>(0));
+ }
+ 
+ 
+-- 
+2.17.1
+
