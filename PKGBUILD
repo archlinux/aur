@@ -21,7 +21,7 @@ sha256sums=('52afadea379c152de4f0470297355e95f99a2712a574ed66eecdc81bdde6f2f4'
 noextract=('btdex-all-v$pkgver.jar')
 
 package() {
-	install -Dm644 btdex-all-v$pkgver.jar "$pkgdir"/opt/btdex/btdex-all.jar
+	install -Dm644 btdex-v${pkgver}-all.jar "$pkgdir"/opt/btdex/btdex-all.jar
 	install -Dm755 btdex.sh "$pkgdir"/opt/btdex/btdex.sh
 	mkdir -p "$pkgdir"/usr/bin
 	ln -sf /opt/btdex/btdex.sh "$pkgdir"/usr/bin/btdex
