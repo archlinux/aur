@@ -5,7 +5,7 @@ pkgname="mongodb44-bin"
 pkgver="4.4.7"
 _basever="4.4"
 _basedist="focal"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -36,7 +36,7 @@ noextract=(
     mongodb-org-server_${pkgver}_${CARCH}.deb
     mongodb-org-mongos_${pkgver}_${CARCH}.deb)
 sha256sums=('16db77050441afb964b1899f82466d53a0677c9c4802cd98b967d3cc2efe094f'
-            '834f25ca1f53b459d02af3c0e89e4dda1b83bdd43ef5a9ea5ab2095819894a42'
+            'de4f6770c45bc5418883659c479783c0184a6057df1c405a7933637984f82f0a'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
