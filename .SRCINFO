@@ -1,6 +1,6 @@
 pkgbase = evernote-for-linux-bin
 	pkgdesc = Official Evernote client for Windows repackaged for Linux
-	pkgver = 10.17.6
+	pkgver = 10.17.8
 	pkgrel = 1
 	url = https://github.com/search5/Evernote-for-Linux
 	install = evernote-for-linux-bin.install
@@ -16,10 +16,11 @@ pkgbase = evernote-for-linux-bin
 	depends = util-linux-libs
 	depends = libappindicator-gtk3
 	depends = libsecret
+	optdepends = gnome-keyring: for credentials persistence after reboot
 	provides = evernote
 	conflicts = evernote-beta-bin
-	noextract = evernote-client_10.17.6_amd64.deb
-	source = https://github.com/search5/Evernote-for-Linux/releases/download/10.17.6-linux-ddl-ga-2775/evernote-client_10.17.6_amd64.deb
-	sha256sums = 8f8c2fd10c65c99c3a97c91438779ea4405474747c45f6b7efcdfeea0a3315d2
+	noextract = evernote-client_10.17.8_amd64.deb
+	source = https://github.com/search5/Evernote-for-Linux/releases/download/10.17.8-linux-ddl-ga-2809/evernote-client_10.17.8_amd64.deb
+	sha256sums = 940d224366865696a203bf3f6f7387a0b0bc47c1f651ac40ac02ce3d0019132f
 
 pkgname = evernote-for-linux-bin
