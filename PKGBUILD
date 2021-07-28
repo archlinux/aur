@@ -2,13 +2,13 @@
 
 _pkgname=scalc
 pkgname="${_pkgname}-git"
-pkgver=r177.6f7db56
-pkgrel=2
+pkgver=r198.b412131
+pkgrel=1
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${_pkgname}"
 license=('MIT')
-depends=('glibc')
+makedepends=('sline')
 source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
@@ -20,11 +20,11 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	make
+	make LDFLAGS="-Wl,-z,now"
 }
 
 package() {
 	cd "${_pkgname}"
-	make DESTDIR="${pkgdir}" PREFIX='/usr' install
+	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
