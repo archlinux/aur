@@ -1,7 +1,7 @@
 pkgbase = connective-https
 	pkgdesc = HTTPS support module for connective servers (requires a keystore.jks file and keystore.jks.password text file in /etc/connective-http)
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	install = main.install
 	arch = any
 	groups = connective-server
