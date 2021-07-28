@@ -1,5 +1,5 @@
-# Maintainer: Alkindi42
-
+# Maintainer: JinguTech <xiuluo.android at gmail dot com>
+# Contributor: Alkindi42
 pkgname=joplin-beta
 pkgver=2.2.2
 pkgrel=1
