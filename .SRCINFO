@@ -1,5 +1,5 @@
 pkgbase = minetest-git
-	pkgver = 5.4.0.r66.gf345d00a4
+	pkgver = 5.4.0.r267.g2866918f3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.minetest.net
@@ -72,4 +72,3 @@ pkgname = minetest-common-git
 	pkgdesc = Common data files for minetest and minetest-server (git)
 	provides = minetest-common
 	conflicts = minetest-common
-

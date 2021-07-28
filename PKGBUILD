@@ -5,7 +5,7 @@
 
 pkgbase=minetest-git
 pkgname=(minetest-git minetest-server-git minetest-common-git)
-pkgver=5.4.0.r66.gf345d00a4
+pkgver=5.4.0.r267.g2866918f3
 pkgrel=1
 epoch=1
 url=https://www.minetest.net
@@ -29,14 +29,13 @@ pkgver() {
 	git -C "${pkgbase%-git}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cmake -B build-irrlicht -S "irrlicht" \
-		-DBUILD_SHARED_LIBS=0
-	make -C build-irrlicht
+prepare() {
+	rm -rf "${srcdir}/${pkgbase%-git}/lib/irrlichtmt" >/dev/null 2>/dev/null
+	ln -s "${srcdir}/irrlicht" "${srcdir}/${pkgbase%-git}/lib/irrlichtmt"
+}
 
+build() {
 	cmake -B build-client -S "${pkgbase%-git}" \
-		-DIRRLICHT_INCLUDE_DIR="$srcdir/irrlicht/include" \
-		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlichtMt.a" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=1 \
 		-DENABLE_GETTEXT=1 \
@@ -48,8 +47,6 @@ build() {
 	make -C build-client
 
 	cmake -B build-server -S "${pkgbase%-git}" \
-		-DIRRLICHT_INCLUDE_DIR="$srcdir/irrlicht/include" \
-		-DIRRLICHT_LIBRARY="$srcdir/build-irrlicht/lib/Linux/libIrrlichtMt.a" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=0 \
 		-DBUILD_SERVER=1 \
