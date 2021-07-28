@@ -2,7 +2,7 @@
 
 pkgname=('python-catkin_lint')
 pkgver='1.6.14'
-pkgrel=1
+pkgrel=2
 pkgdesc='Check catkin packages for common errors'
 arch=('any')
 url='https://github.com/fkie/catkin_lint'
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 provides=('python-catkin-lint')
 conflicts=('python2-catkin_lint' 'python-catkin-lint')
 source=("https://github.com/fkie/catkin_lint/archive/${pkgver}.tar.gz")
-sha256sums=('5411c2a5d0f1cdbcb8e7cc2506610181716845e005eb4efe4d277ee660639fc1')
+sha256sums=('e460c114f0206d4fbfd13161bf2795e96fe8b20b457c829533c9240939e9c40f')
 
 _module='catkin_lint'
 
