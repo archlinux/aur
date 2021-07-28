@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pleaser
 _binary=please
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="please, a sudo like program with regex support written in rust, get involved!"
 url="https://gitlab.com/edneville/please"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('1880b11698b6372183944442c4922522e2dcea5d8fdd3f85687e80f3ba1139ba6bf7957ba9a59d9b5a0def63dcda66ef4e4667698d329258e749b834e68a39b1')
+sha512sums=('38958b3a1a249124d0bc9d49cec96c252091a1adb96082a2af8784ee418efce368e0c8892eefb256ecc9b701e76f26aa5d94f1c504345d8a48721a3f254c172b')
 
 prepare() {
   cd please-v${pkgver}
@@ -33,6 +33,7 @@ package() {
   install -Dt "$pkgdir/usr/bin" -m4755 target/release/please
   install -Dt "$pkgdir/usr/bin" -m4755 target/release/pleaseedit
   install -Dt "$pkgdir/usr/share/doc/pleaser" -m644 README.md
+  install -Dt "$pkgdir/usr/share/doc/pleaser" -m644 examples/please.ini
   install -Dt "$pkgdir/usr/share/man/man1" -m644 man/please.1
   install -Dt "$pkgdir/usr/share/man/man5" -m644 man/please.ini.5
 
