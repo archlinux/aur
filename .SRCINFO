@@ -1,0 +1,73 @@
+pkgbase = csky-toolchain-bin
+	pkgver = 3.10.29
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=3885366095506644992
+	arch = x86_64
+	license = Apache
+	makedepends = tar
+	depends = filesystem
+	noextract = csky-elf-noneabiv2-tools-bin-3.10.29.tar.gz
+	noextract = csky-elfabiv2-tools-bin-3.10.29.tar.gz
+	noextract = csky-linux-uclibc-tools-bin-3.10.29.tar.gz
+	noextract = csky-linux-uclibcabiv2-tools-bin-3.10.29.tar.gz
+	noextract = csky-linux-gnuabiv2-tools-bin-3.10.29.tar.gz
+	noextract = csky-elf-tools-bin-3.10.29.tar.gz
+	source = https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234913073/ReleaseNotes.pdf
+	source = csky-elf-noneabiv2-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619529419771/csky-elf-noneabiv2-tools-x86_64-newlib-20210423.tar.gz
+	source = csky-elfabiv2-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619529111421/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz
+	source = csky-linux-uclibc-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619527806432/csky-linux-uclibc-tools-x86_64-uclibc-linux-4.9.56-20210423.tar.gz
+	source = csky-linux-uclibcabiv2-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619528170242/csky-linux-uclibcabiv2-tools-x86_64-uclibc-linux-4.9.56-20210423.tar.gz
+	source = csky-linux-gnuabiv2-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619528643136/csky-linux-gnuabiv2-tools-x86_64-glibc-linux-4.9.56-20210423.tar.gz
+	source = csky-elf-tools-bin-3.10.29.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1619529266702/csky-elf-tools-x86_64-minilibc-20210423.tar.gz
+	source = C-SKY ABIV2 Standards Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083169449/C-SKY+ABIV2+Standards+Manual.pdf
+	source = C-SKY Tools V3 User Guide-GDB.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083297437/C-SKY+Tools+V3+User+Guide-GDB.pdf
+	source = C-SKY Tools V3 User Guide-Assembler.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083259363/C-SKY+Tools+V3+User+Guide-Assembler.pdf
+	source = C-SKY Tools V3 User Guide-Link.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083316694/C-SKY+Tools+V3+User+Guide-Link.pdf
+	source = C-SKY Tools V3 User Guide-Binutils.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083279742/C-SKY+Tools+V3+User+Guide-Binutils.pdf
+	source = C-SKY Tools V3 User Guide-Compiler.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083227863/C-SKY+Tools+V3+User+Guide-Compiler.pdf
+	source = C-SKY ABIV1 Standards Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083146977/C-SKY+ABIV1+Standards+Manual.pdf
+	sha256sums = e70dca4e839c503d0efff7b078c5418f0d28d0e79a032d50e5e39682507c82ae
+	sha256sums = 2e97e379bf8ec94ef2196ea6c6d62f3d3b291da19a087e3704de43e83415f859
+	sha256sums = 8b9a353c157e4d44001a21974254a21cc0f3c7ea2bf3c894f18a905509a7048f
+	sha256sums = 294514bb90355d8e0da1cb3e26b3d2862e14b861358fa5070a7333b991de725b
+	sha256sums = 6aa00d660ece51b19cbb689e7ce4e0fabeeb3f0a4a84d86fbc42ddbcf88b096f
+	sha256sums = 1a20b552977e2f7793b4ef242d41fbe6dc24fd2d369bdec5c96beb0d209fb676
+	sha256sums = 6d93e925171806136f0b12c4c26c94f3b2dafdc04aa32cd94586f23e39ce673c
+	sha256sums = 055d36544aae5ed7b4c8b8904c97c6b4386ad80a623320fbda1cb43ce9c73a56
+	sha256sums = 9898a9118219666bb4bb5ed84695e286e0cb7872284770c9e1135520ce5bfd1e
+	sha256sums = b1720cbf06f0afb2a11f98b6961acd11dcf7531a3681b3d071a06587cf54e061
+	sha256sums = a3e8dc23e2b72e05914501626840754053a0352745ff7dbf744667e4e385e06d
+	sha256sums = c3972f0b36be4f875a50718e6303917ef3f9240063e12023c768b3e81bd9c6b3
+	sha256sums = 219c07ebdd961bae2e009763a118c30e3a963ec3f134e67f5d6b5248b3d046bd
+	sha256sums = 7229d8a72f7c7900518712365251030fca2f8bfe8dc497cce95dc5fe56576315
+
+pkgname = csky-toolchain-bin
+	pkgdesc = C-Sky toolchain 800 series
+	depends = csky-elf-noneabiv2-tools-bin
+	depends = csky-elfabiv2-tools-bin
+	depends = csky-linux-uclibc-tools-bin
+	depends = csky-linux-uclibcabiv2-tools-bin
+	depends = csky-linux-gnuabiv2-tools-bin
+	depends = csky-elf-tools-bin
+	depends = csky-toolchain-guide-bin
+
+pkgname = csky-elf-noneabiv2-tools-bin
+	pkgdesc = C-Sky elf noneabiv2 tools for 800 series
+
+pkgname = csky-elfabiv2-tools-bin
+	pkgdesc = C-Sky elfabiv2 tools for 800 series
+
+pkgname = csky-linux-uclibc-tools-bin
+	pkgdesc = C-Sky linux uclibc tools for 800 series
+
+pkgname = csky-linux-uclibcabiv2-tools-bin
+	pkgdesc = C-Sky linux uclibcabiv2 tools for 800 series
+
+pkgname = csky-linux-gnuabiv2-tools-bin
+	pkgdesc = C-Sky linux gnuabiv2 tools for 800 series
+
+pkgname = csky-elf-tools-bin
+	pkgdesc = C-Sky elf tools for 800 series
+
+pkgname = csky-toolchain-guide-bin
+	pkgdesc = C-Sky toolchain guide for 800 series
