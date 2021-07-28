@@ -1,0 +1,21 @@
+post_install(){
+ cat <<INFO
+
+This hook provides connection to a ZeroTier One network to assist in the remote
+unlocking of encrypted partitions. To complete the installation follow these steps as root:
+
+0. Configure a working LAN decryption setup using either "mkinitcpio-tinyssh" or "mkinitcpio-dropbear";
+1. Edit /var/lib/zerotier-one/initcpio/config.ini according to your needs;
+2. Add "zerotier" to the "HOOKS" array in /etc/mkinitcpio.conf, placing it before your "tinyssh" or "dropbear" hook;
+3. Add "tun" to the "MODULES" array in /etc/mkinitcpio.conf;
+4. Rebuild your initial ramdisk by running 'mkinicpio -P'.
+
+You may also need to authorize your client from https://my.zerotier.com/ the first time it connects after boot.
+Be sure to have both your LAN and VPN gateway configured properly, otherwise your device may not be able
+to communicate with ZeroTier One servers or be reached by other VPN peers.
+It is not required to configure the ZeroTier One in the userspace, but you can do it to check for networking problems
+not related to this hook (e.g. UPnP not working in your router).
+See the ArchWiki for further readings remote unlocking of encrypted partitions.
+
+INFO
+}
