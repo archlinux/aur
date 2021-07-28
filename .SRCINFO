@@ -1,0 +1,16 @@
+pkgbase = mqa-identifier
+	pkgdesc = Tool to identify MQA encoding and Master's Sample Rates
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/purpl3F0x/MQA_identifier
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = flac
+	depends = qt5-base
+	source = https://github.com/purpl3F0x/MQA_identifier/archive/refs/tags/v1.3.tar.gz
+	source = CMakeLists.patch
+	sha256sums = ec9623af7babd805ae24dc9befb19aa9c6d85985fdb9105f24a175c35d460f11
+	sha256sums = 5042b493eaf1468bb5de65f140878ab9886e234041f086822386cc2a74a72e7c
+
+pkgname = mqa-identifier
