@@ -27,14 +27,14 @@ fi
 ##
 
 pkgname=brave
-pkgver=1.27.108
+pkgver=1.27.109
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
-makedepends=('git' 'npm' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
+makedepends=('git' 'npm' 'python' 'python2' 'python-protobuf' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -53,7 +53,8 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v${pk
         'brave-browser.desktop'
         "chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz"
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
-        "chromium-no-history.patch")
+        "chromium-no-history.patch"
+        "https://github.com/brave/brave-core/commit/925fe3d322e47922bffc986283d5e89f8e6d8217.patch")
 arch_revision=a9139b232f517a0e3f90542650c7dd5ba0201e68
 Patches="extend-enable-accelerated-video-decode-flag.patch
          linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
@@ -76,6 +77,7 @@ sha256sums=('SKIP'
             '86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f'
             '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
             'ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e'
+            '893f8f78211ec215ee4d344d9d6f97b97594e1b9f98b16ac1e27d471a0b27d6d'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
@@ -124,7 +126,12 @@ else
 fi
 
 prepare() {
-  cd "brave-browser"
+  cd brave-core
+  # https://github.com/brave/brave-browser/issues/17205
+  patch -Np1 -i ../925fe3d322e47922bffc986283d5e89f8e6d8217.patch
+  cd ..
+
+  cd brave-browser
 
   # Hack to prioritize python2 in PATH
   mkdir -p "${srcdir}/bin"

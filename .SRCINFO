@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.27.108
+	pkgver = 1.27.109
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = brave
 	makedepends = npm
 	makedepends = python
 	makedepends = python2
+	makedepends = python-protobuf
 	makedepends = icu
 	makedepends = glibc
 	makedepends = gperf
@@ -28,16 +29,17 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = sccache: For faster builds
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.27.108
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.27.109
 	source = chromium::git+https://github.com/chromium/chromium.git
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	source = git+https://github.com/brave/brave-core.git#tag=v1.27.108
+	source = git+https://github.com/brave/brave-core.git#tag=v1.27.109
 	source = git+https://github.com/brave/adblock-rust.git
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = chromium-launcher-7.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v7.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-92-patchset-7/chromium-92-patchset-7.tar.xz
 	source = chromium-no-history.patch
+	source = https://github.com/brave/brave-core/commit/925fe3d322e47922bffc986283d5e89f8e6d8217.patch
 	source = extend-enable-accelerated-video-decode-flag.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/extend-enable-accelerated-video-decode-flag.patch
 	source = linux-sandbox-syscall-broker-use-struct-kernel_stat.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
 	source = linux-sandbox-fix-fstatat-crash.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/a9139b232f517a0e3f90542650c7dd5ba0201e68/chromium/trunk/linux-sandbox-fix-fstatat-crash.patch
@@ -53,6 +55,7 @@ pkgbase = brave
 	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
 	sha256sums = 53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2
 	sha256sums = ea3446500d22904493f41be69e54557e984a809213df56f3cdf63178d2afb49e
+	sha256sums = 893f8f78211ec215ee4d344d9d6f97b97594e1b9f98b16ac1e27d471a0b27d6d
 	sha256sums = 66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22
 	sha256sums = 268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3
 	sha256sums = 253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5
