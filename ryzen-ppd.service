@@ -1,0 +1,9 @@
+[Unit]
+Description=Ryzen Power Profile Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ryzen-ppd
+
+[Install]
+WantedBy=multi-user.target

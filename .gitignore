@@ -1,0 +1,9 @@
+pkg/*
+src/*
+
+*.pkg.*
+
+*.asc
+*.sig
+
+README.md

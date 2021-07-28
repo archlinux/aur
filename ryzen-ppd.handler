@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Initiates a change of the profile depending on the AC state.
+
+readonly CONF_DEF=/usr/share/ryzen-ppd/defaults
+. "$CONF_DEF" || { logger "error reading the defaults configuration file $CONF_DEF"; exit 1; }
+. "$CONF_USR" || { logger "error reading the user configuration file $CONF_USR"; exit 1; }
+
+[ ! -p "$PIPE" ] && { logger "pipe not found $PIPE"; exit 1; }
+
+case "$4" in
+  00000000) profile="$PROFILE_BAT" ;;  # AC adapter unplugged
+  00000001) profile="$PROFILE_AC"  ;;  # AC adapter plugged in
+esac
+
+echo "$profile" > "$PIPE"

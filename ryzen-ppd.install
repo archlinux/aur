@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOM
+
+:: Setup instructions
+- configure profiles in '/etc/ryzen-ppd'
+- optionally set up 'acpid' for switching profiles on AC and battery modes
+- verify that the profiles work as expected by running 'ryzen-ppd' and checking limits with 'ryzenadj -i'
+- enable the systemd service 'ryzen-ppd.service'
+
+EOM
+}
