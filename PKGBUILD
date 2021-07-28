@@ -3,14 +3,14 @@
 pkgname=sdfs
 pkgver=3.10.8.0
 _pkgver=b914fcfbd10198552a1c892dede83b16774ffb03
-pkgrel=1
+pkgrel=2
 pkgdesc="Deduplication file system from Opendedup"
 arch=('x86_64')
 url="http://opendedup.org"
 license=('GPL2')
 makedepends=('maven')
 depends=('libxml2' 'java-runtime' 'fuse')
-source=(https://github.com/opendedup/sdfs/archive/{$_pkgver}.zip
+source=(https://github.com/opendedup/sdfs/archive/$_pkgver.zip
 	'build-fix.patch'
 )
 md5sums=('6d230c16d98e41e42753cf275f718936'
