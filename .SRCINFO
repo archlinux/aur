@@ -1,6 +1,6 @@
 pkgbase = csky-debugserver-bin
 	pkgdesc = C-Sky Debugger Server
-	pkgver = V5.10.13_20210416
+	pkgver = 5.12.1
 	pkgrel = 1
 	url = https://occ.t-head.cn/community/download?id=616215132330000384
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = csky-debugserver-bin
 	makedepends = tar
 	depends = bash
 	options = !strip
-	source = csky-debugserver-bin-V5.10.13_20210416.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1618899426711/CSKY-DebugServer-linux-x86_64-V5.10.13-20210416.sh.tar.gz
+	source = csky-debugserver-bin-5.12.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1626764200205/T-Head-DebugServer-linux-x86_64-V5.12.1-20210716.sh.tar.gz
 	source = https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf
-	sha256sums = 6d58cb0cbf77e3b5ba74277fa7a0dfc65df2dd1b22d574c13fa3fc445784e355
+	sha256sums = 054dd396aaf13adf409e31e2ad64e408843f27b892ed5175625bc1a3c781ff75
 	sha256sums = 6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2
 
 pkgname = csky-debugserver-bin
