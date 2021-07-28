@@ -1,10 +1,10 @@
 pkgname=otrs
-pkgver=6.0.30
+pkgver=6.0.31
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
 options=("emptydirs")
-url="http://www.otrs.com/"
+url="https://otrscommunityedition.com/"
 license=("GPLv3")
 depends=("perl"
          "perl-gd"
@@ -39,9 +39,9 @@ optdepends=("mariadb:  Fast SQL database server, drop-in replacement for MySQL"
 backup=("etc/webapps/${pkgname}/Config.pm")
 install="${pkgname}.install"
 source=("${pkgname}.install"
-        "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
+        "https://otrscommunityedition.com/download/${pkgname}-community-edition-${pkgver}.tar.gz")
 sha256sums=("cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e"
-            "0b76ac3f57843258ef862c48249b16ea757d90e11506cd78014a30a4b582175f")
+            "8332b8eadd7e3999309ca8c0fe0fe0d678e39b613213cc788d24d65567f96ca9")
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
