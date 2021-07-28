@@ -7,7 +7,7 @@
 _npmname=uniread
 
 pkgname=uniread
-pkgver=0.1.22
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="Uniread is Spritz like CLI fast reading software."
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=('npm')
 optdepends=()
 source=("https://github.com/nemanjan00/uniread/archive/v${pkgver}.tar.gz")
 noextract=(master.tar.gz)
-sha256sums=('84f2c8f7cae67c2008eb45922ec1338a13eb5e312bb54f382365521583c8af3b')
+sha256sums=('a7184f655cc826364e7762b04a7dc7522071a998500f13b8c5ab025bce80111f')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/v$pkgver.tar.gz

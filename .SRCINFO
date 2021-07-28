@@ -1,6 +1,6 @@
 pkgbase = uniread
 	pkgdesc = Uniread is Spritz like CLI fast reading software.
-	pkgver = 0.1.22
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://github.com/nemanjan00/uniread
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = uniread
 	makedepends = npm
 	depends = nodejs
 	noextract = master.tar.gz
-	source = https://github.com/nemanjan00/uniread/archive/v0.1.22.tar.gz
-	sha256sums = 84f2c8f7cae67c2008eb45922ec1338a13eb5e312bb54f382365521583c8af3b
+	source = https://github.com/nemanjan00/uniread/archive/v0.0.28.tar.gz
+	sha256sums = a7184f655cc826364e7762b04a7dc7522071a998500f13b8c5ab025bce80111f
 
 pkgname = uniread
-
