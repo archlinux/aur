@@ -1,0 +1,12 @@
+[Unit]
+Description=dell-g5se-fanctl sleep hook
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStop=bash -c 'systemctl is-active --quiet dell-g5se-fanctl && systemctl restart dell-g5se-fanctl'
+
+[Install]
+WantedBy=sleep.target

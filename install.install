@@ -1,3 +1,5 @@
 post_install() {
+	systemctl enable dell-g5se-fanctl-sleep
+	
 	echo "To control fans via a systemd service, configure the service in \`/etc/dell-g5se-fanctl.conf\` and enable the dell-g5se-fanctl service."
 }

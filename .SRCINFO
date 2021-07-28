@@ -1,22 +1,23 @@
 pkgbase = dell-g5se-fanctl
 	pkgdesc = Script to automatically set fan speed according to cpu and gpu thermals on Dell G5SE laptops.
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DavidLapous/DellG5SE-Fan-Linux
 	install = install.install
 	arch = x86_64
 	license = MIT
 	backup = etc/dell-g5se-fanctl.conf
-	source = https://github.com/DavidLapous/DellG5SE-Fan-Linux/archive/refs/tags/v3.3-2.tar.gz
+	source = dell-g5se-fanctl-3.3.2.tar.gz::https://github.com/DavidLapous/DellG5SE-Fan-Linux/archive/refs/tags/v3.3-2.tar.gz
 	source = dell-smm-hwmon-module.conf
 	source = dell-smm-hwmon-modprobe.conf
 	source = dell-g5se-fanctl.conf
 	source = dell-g5se-fanctl.service
+	source = dell-g5se-fanctl-sleep.service
 	sha256sums = 69af44777486d9741ea3a840a499ffb0af8686bc9b895967b45b396a97b30d3b
 	sha256sums = a068a92ff638389f04c90f34cfdbb9941a69617950ddb93da2dd65504b855f82
 	sha256sums = fd87577fda66330c86073bf8841dae915f2f2054a42f5e9a66ff6fad06dd9416
 	sha256sums = 173110bac7b9c571fba6dd0dc446fbe79978663e49348cb729e87bbe9d982997
 	sha256sums = 966e2fbc26a5d9639cbb48b93a0bca18f224992763b067d702b27233438d8f15
+	sha256sums = 5b96ebc051d27f23aa4c2b835d5d5c455fcb51517df9f0656cf5e00ade9c0b3d
 
 pkgname = dell-g5se-fanctl
-
