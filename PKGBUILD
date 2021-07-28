@@ -3,7 +3,7 @@
 pkgbase=csky-toolchain-bin
 pkgname=($pkgbase csky-elf-noneabiv2-tools-bin csky-elfabiv2-tools-bin csky-linux-uclibc-tools-bin csky-linux-uclibcabiv2-tools-bin csky-linux-gnuabiv2-tools-bin csky-elf-tools-bin csky-toolchain-guide-bin)
 pkgver=3.10.29
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://occ.t-head.cn/community/download?id=3885366095506644992'
 license=('Apache')
@@ -26,6 +26,8 @@ source=("https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234
         "C-SKY Tools V3 User Guide-Binutils.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083279742/C-SKY+Tools+V3+User+Guide-Binutils.pdf"
         "C-SKY Tools V3 User Guide-Compiler.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083227863/C-SKY+Tools+V3+User+Guide-Compiler.pdf"
         "C-SKY ABIV1 Standards Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083146977/C-SKY+ABIV1+Standards+Manual.pdf"
+        "T-HEAD 800 Series ABI Standards Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1356021/1614835977510/T-HEAD_800_Series_ABI_Standards_Manual.pdf"
+        "T-HEAD软件开发指南V1.7.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1615892629021/T-HEAD%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97V1.7.pdf"
         )
 
 sha256sums=('e70dca4e839c503d0efff7b078c5418f0d28d0e79a032d50e5e39682507c82ae'
@@ -41,7 +43,9 @@ sha256sums=('e70dca4e839c503d0efff7b078c5418f0d28d0e79a032d50e5e39682507c82ae'
             'a3e8dc23e2b72e05914501626840754053a0352745ff7dbf744667e4e385e06d'
             'c3972f0b36be4f875a50718e6303917ef3f9240063e12023c768b3e81bd9c6b3'
             '219c07ebdd961bae2e009763a118c30e3a963ec3f134e67f5d6b5248b3d046bd'
-            '7229d8a72f7c7900518712365251030fca2f8bfe8dc497cce95dc5fe56576315')
+            '7229d8a72f7c7900518712365251030fca2f8bfe8dc497cce95dc5fe56576315'
+            '1c950ac9da8c2e53f9473e699b53bfeaea79adfa021ac36ef5047101aae94173'
+            'f552d20599d73f824e44a03d8ca49fe74b59e838a97352a2596042ba8cad422f')
 
 noextract=(csky-elf-noneabiv2-tools-bin-${pkgver}.tar.gz csky-elfabiv2-tools-bin-${pkgver}.tar.gz csky-linux-uclibc-tools-bin-${pkgver}.tar.gz csky-linux-uclibcabiv2-tools-bin-${pkgver}.tar.gz csky-linux-gnuabiv2-tools-bin-${pkgver}.tar.gz csky-elf-tools-bin-${pkgver}.tar.gz)
 
