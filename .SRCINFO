@@ -1,6 +1,6 @@
 pkgbase = libmesh
 	pkgdesc = A C++ Finite Element Library
-	pkgver = cpp03_final.r5833.ge7c7a2246
+	pkgver = cpp03_final.r6057.gd18d49ad7
 	pkgrel = 1
 	url = http://libmesh.github.io/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = libmesh
 	depends = netcdf
 	depends = nlopt
 	depends = petsc
-	depends = hypre
+	depends = hypre=2.18.2
 	depends = openmpi
 	depends = metis
 	provides = libmesh
@@ -25,7 +25,10 @@ pkgbase = libmesh
 	conflicts = libmesh
 	source = libmesh::git+https://github.com/libMesh/libmesh
 	source = netcdf.m4.patch
+	source = 0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch
 	sha256sums = SKIP
 	sha256sums = b6b2d10d1f423b9a088e6b55d9368d8f1ac7291646da34864c5f58124f5e3880
+	sha256sums = da0ef283dcee18dbe2878d4b998a82d83dbf94323146cf257bc77304427533d4
 
 pkgname = libmesh-petsc
+

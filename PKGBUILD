@@ -3,22 +3,22 @@
 # shared libraries; Methods: opt oprof dbg; x86_64)
 
 pkgname=libmesh-petsc
-realname=libmesh
+pkgbase=libmesh
 pkgrel=1
 pkgver=cpp03_final.r6057.gd18d49ad7
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
 license=('LGPL')
-provides=($realname "metaphysicl" "timpi")
-conflicts=($realname)
+provides=($pkgbase "metaphysicl" "timpi")
+conflicts=($pkgbase)
 depends=('eigen' 'hdf5' 'boost-libs' 'intel-tbb' 'vtk' 'glpk' 'netcdf' 'nlopt' "petsc" "hypre=2.18.2" "openmpi" "metis")
 makedepends=('bison' 'coreutils')
 # From tar.bz2
 # source=("https://github.com/libMesh/libmesh/releases/download/v${pkgver}/libmesh-${pkgver}.tar.bz2")
 # sha256sums=('638cf30d05c249315760f16cbae4804964db8857a04d5e640f37617bef17ab0f')
 source=(
-  "${realname}::git+https://github.com/libMesh/libmesh"
+  "${pkgbase}::git+https://github.com/libMesh/libmesh"
   "netcdf.m4.patch"
   "0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch"
 )
@@ -103,7 +103,7 @@ export PETSC_DIR=/usr/Local/petsc
 export LANG=en_IE.UTF-8 LANGUAGE=en_IE.UTF-8 LC_ALL=en_IE.UTF-8
 
 pkgver() {
-  cd $realname
+  cd $pkgbase
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -113,7 +113,7 @@ prepare() {
   [[ -d "${buildir}" ]] || mkdir "${buildir}"
 
   # Update Git sub-modules
-  cd "${srcdir}/${realname}"
+  cd "${srcdir}/${pkgbase}"
   sed -i 's-=[[:space:]]*../../-=https://github.com/-g' .gitmodules
   git submodule sync --recursive
   git submodule update --init
@@ -122,11 +122,11 @@ prepare() {
   # (reminder -d: go to the right dir; by default the
   # directories are removed from path)
   patch -d "${srcdir}"/libmesh/m4 -i "${srcdir}"/netcdf.m4.patch
-  cd "${srcdir}/${realname}"
+  cd "${srcdir}/${pkgbase}"
   autoconf
   [[ -f /usr/include/netcdf.h ]] && \
     sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
-  patch -d "${srcdir}"/"${realname}" -p1 -i "${srcdir}"/0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch
+  patch -d "${srcdir}"/"${pkgbase}" -p1 -i "${srcdir}"/0001-Avoid-calling-virtual-function-from-DenseMatrix-resi.patch
 }
 
 build() {
@@ -137,7 +137,7 @@ build() {
 
   CONFOPTS=(
     --quiet
-    --srcdir="${srcdir}/${realname}"
+    --srcdir="${srcdir}/${pkgbase}"
     # target directory
     --prefix=/usr
     # read-only single-machine data (Make.common)
@@ -199,7 +199,7 @@ build() {
   )
 
   # Configure
-  local config_file="${srcdir}/${realname}"/configure
+  local config_file="${srcdir}/${pkgbase}"/configure
   CC=mpicc \
     CXX=mpicxx \
     FC=mpifort \
