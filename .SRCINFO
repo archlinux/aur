@@ -1,0 +1,17 @@
+pkgbase = bombadillo
+	pkgdesc = A non-web client for the terminal, supporting Gopher, Gemini and much more.
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://bombadillo.colorfield.space
+	arch = x86_64
+	arch = i686
+	arch = arm
+	license = GPL3
+	makedepends = go
+	depends = glibc
+	source = bombadillo-2.3.3.tar.gz::https://tildegit.org/sloum/bombadillo/archive/2.3.3.tar.gz
+	source = 001-Makefile.patch
+	sha256sums = 2d4ec15cac6d3324f13a4039cca86fecf3141503f556a6fa48bdbafb86325f1c
+	sha256sums = a379b36f6ba85a689942f90f9f4f4d416678f34c1e99bdbb8eaeadaaf6f0b788
+
+pkgname = bombadillo

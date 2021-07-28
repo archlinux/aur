@@ -1,0 +1,51 @@
+diff --git a/Makefile b/Makefile
+index cca7657..b3296c4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,42 +22,33 @@ install: install-bin install-man install-desktop clean
+ 
+ .PHONY: install-man
+ install-man: bombadillo.1
+-	gzip -k ./bombadillo.1
+-	install -d ${DESTDIR}${MAN1DIR}
+-	install -m 0644 ./bombadillo.1.gz ${DESTDIR}${MAN1DIR}
++	install -Dm 0644 ./bombadillo.1 -t ${DESTDIR}${MAN1DIR}
+ 
+ .PHONY: install-desktop
+ install-desktop:
+ ifeq ($(shell uname), Linux)
+ 	# These steps will not work on Darwin, Plan9, or Windows
+ 	# They would likely work on BSD systems
+-	install -d ${DESTDIR}${DATAROOTDIR}/applications
+-	install -m 0644 ./bombadillo.desktop ${DESTDIR}${DATAROOTDIR}/applications
+-	install -d ${DESTDIR}${DATAROOTDIR}/pixmaps
+-	install -m 0644 ./bombadillo-icon.png ${DESTDIR}${DATAROOTDIR}/pixmaps
+-	-update-desktop-database 2> /dev/null
++	install -Dm 0644 ./bombadillo.desktop -t ${DESTDIR}${DATAROOTDIR}/applications
++	install -Dm 0644 ./bombadillo-icon.png -t ${DESTDIR}${DATAROOTDIR}/pixmaps
+ else
+ 	@echo "* Skipping protocol handler associations and desktop file creation for non-linux system *"
+ endif
+ 
+ .PHONY: install-bin
+ install-bin: build
+-	install -d ${DESTDIR}${BINDIR}
+-	install -m 0755 ./${BINARY} ${DESTDIR}${BINDIR}
++	install -Dm 0755 ./${BINARY} -t ${DESTDIR}${BINDIR}
+ 
+ .PHONY: clean
+ clean: 
+ 	${GOCMD} clean
+-	rm -f ./bombadillo.1.gz 2> /dev/null
+ 	rm -f ./${BINARY}_* 2> /dev/null
+ 
+ .PHONY: uninstall
+ uninstall: clean
+-	rm -f ${DESTDIR}${MAN1DIR}/bombadillo.1.gz
+ 	rm -f ${DESTDIR}${BINDIR}/${BINARY}
+ 	rm -f ${DESTDIR}${DATAROOTDIR}/applications/bombadillo.desktop
+ 	rm -f ${DESTDIR}${DATAROOTDIR}/pixmaps/bombadillo-icon.png
+-	-update-desktop-database 2> /dev/null
+ 
+ .PHONY: release
+ release:
