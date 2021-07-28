@@ -12,7 +12,6 @@ depends=('kmod')
 makedepends=('git')
 optdepends=('sudo')
 provides=('modprobed-db')
-replaces=('modprobed-db')
 conflicts=('modprobed-db')
 url="https://wiki.archlinux.org/index.php/Modprobed-db"
 source=("git://github.com/graysky2/modprobed-db")
