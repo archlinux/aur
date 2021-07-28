@@ -10,7 +10,7 @@ license=('custom:GNAT_Modified_GPL')
 depends=('sh')
 makedepends=('gcc-ada')
 options=('!libtool')
-source=(http://www.rfc1149.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+source=(https://rfc1149.net/download/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('cd4ff16f2b7de7a266ac16f670963fb5e9588b1d454dbd58c99208e5abd0f587')
 
 build() {
