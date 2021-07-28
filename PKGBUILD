@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/purpl3F0x/MQA_identifier"
 license=('Apache')
 depends=('flac' 'qt5-base')
-makedepends=('python-setuptools')
+makedepends=()
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "CMakeLists.patch")
 sha256sums=('ec9623af7babd805ae24dc9befb19aa9c6d85985fdb9105f24a175c35d460f11'

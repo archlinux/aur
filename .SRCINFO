@@ -5,7 +5,6 @@ pkgbase = mqa-identifier
 	url = https://github.com/purpl3F0x/MQA_identifier
 	arch = x86_64
 	license = Apache
-	makedepends = python-setuptools
 	depends = flac
 	depends = qt5-base
 	source = https://github.com/purpl3F0x/MQA_identifier/archive/refs/tags/v1.3.tar.gz
