@@ -4,7 +4,7 @@
 
 pkgname=barman
 _realname=barman
-pkgver=2.12
+pkgver=2.13
 pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('barman')
 options=(!emptydirs)
 
 source=(
-  "http://sourceforge.net/projects/pgbarman/files/${pkgver}/barman-${pkgver}.tar.gz"
+  "https://github.com/EnterpriseDB/barman/releases/download/release/${pkgver}/barman-${pkgver}.tar.gz"
   barman.crond
   barman.logrotate
   passive-server.conf-template
@@ -24,7 +24,7 @@ source=(
   streaming-server.conf-template
 )
 
-md5sums=('8360aa84608daf477923ba4e6c86fc28'
+md5sums=('04af82a892cf330679c54cc1019fa31e'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
