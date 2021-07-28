@@ -4,28 +4,17 @@
 
 pkgname=ttf-brill
 pkgdesc='Brill Typeface by John Hudson for Brill Publishing House'
-pkgver=2.06
-pkgrel=2
-url="https://brill.com/page/BrillFont/brill-typeface"
-license=('custom')
-arch=('any')
-source=("https://brill.com/fileasset/downloads_static/static_typefacedownload_typefacepackage.zip")
-sha256sums=('b58eeb26ea43d9a020ac9891a395ff7364bac7215d0714910561b675e4947166')
-
-prepare () {
-    local _completeversion="$pkgver 051"
-    cd "Brill_Typeface_$pkgver"
-    for f in  *"$_completeversion"*; do
-        mv "$f" "${f// $_completeversion/}"
-    done
-    for f in  *_$pkgver*; do
-        mv "$f" "${f//_$pkgver/}"
-    done
-}
+pkgver=4.000.073
+_tag="${pkgver:0:3}"
+pkgrel=1
+url=https://brill.com/page/BrillFont/brill-typeface
+license=(custom)
+arch=(any)
+source=("https://brill.com/fileasset/The_Brill_Typeface_Package_v_${_tag/./_}.zip")
+sha256sums=('8312c35f9c273de4884511f60f5701c7ef6a1c8062f015b88f3c05fde66cd8dd')
 
 package() {
-    cd "Brill_Typeface_$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" 00_Brill_Fonts_Read_Me_First.txt Brill_Fonts_End_User_License_Agreement.pdf
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" Brill_Typeface_User_Guide.pdf
+	install -Dm0644 -t "$pkgdir/usr/share/fonts/TTF/" Brill-*.ttf
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" Brill_*_agreement.pdf
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" Brill_*_use.pdf
 }
