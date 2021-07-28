@@ -1,28 +1,29 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=spt
-pkgver=0.4
+pkgver=0.6
 pkgrel=1
 pkgdesc='Simple pomodoro timer that doubles your efficiency'
 arch=('x86_64')
 url=https://github.com/pickfire/spt
 license=('MIT')
 depends=('libnotify')
-source=("$url/archive/$pkgver/spt-$pkgver.tar.gz")
-sha512sums=('993fad0a811fb90143c80bc79a823864f0d2fc7897d6e1290bfe2327e780e78a29a5d286045c6dbcdcece9a03e19c42782f731a109d1c14e6cb001ef43a77068')
+source=("${url}/archive/${pkgver}/spt-${pkgver}.tar.gz")
+sha512sums=('1d475a607215e4a25642696afa020059739091963551349ee09a47b5968d4ec96ca7f144f31df7f6b2450458ce102d20a4d7ae5b456e22a03c7edda8d8ae696a')
 
 prepare() {
-  cd spt-$pkgver
+  cd ${pkgname}-${pkgver}
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/' config.mk
 }
 
 build() {
-  cd spt-$pkgver
-  make
+  cd ${pkgname}-${pkgver}
+  make clean
 }
 
 package() {
-  cd spt-$pkgver
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/spt LICENSE
+  cd ${pkgname}-${pkgver}
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${PKGNME}/LICENSE
 }
