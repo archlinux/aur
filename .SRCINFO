@@ -1,12 +1,11 @@
 pkgbase = schain
 	pkgdesc = A simple habit tracker
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~arivigo/schain
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	conflicts = schain-git
 	source = https://git.sr.ht/~arivigo/schain/archive/2.3.0.tar.gz
 	sha256sums = a63b4bf1159e048e23e4fe5411ad65bd3222fdea18a8c0dbfce3ed8b7b9dca51
