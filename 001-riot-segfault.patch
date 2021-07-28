@@ -1,0 +1,68 @@
+From 3a1057b20d77358d337c7e2eac107bad209fe97e Mon Sep 17 00:00:00 2001
+From: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
+Date: Tue, 27 Jul 2021 15:06:57 +0200
+Subject: [PATCH] rtos/riot: fix out-of-bounds writes when target is corrupted
+
+This protects against out-of-bounds writes when the memory
+of RIOT's scheduler is corrupted.
+This memory can be corrupted because of:
+ - Programming errors
+ - The scheduler not yet having been initialised
+ - An incorrect symbol file being used during debugging.
+
+This error can result in OpenOCD segfaulting. Valgrind was
+used to find the approximate location of the error.
+
+Change-Id: I60e7d7c245b8c4e38f4c98cb0c0347a9b5ec3177
+Signed-off-by: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
+---
+ src/rtos/riot.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/rtos/riot.c b/src/rtos/riot.c
+index fb5d1b2..cc109d2 100644
+--- a/src/rtos/riot.c
++++ b/src/rtos/riot.c
+@@ -118,7 +118,7 @@ const struct rtos_type riot_rtos = {
+ static int riot_update_threads(struct rtos *rtos)
+ {
+ 	int retval;
+-	unsigned int tasks_found = 0;
++	int tasks_found = 0;
+ 	const struct riot_params *param;
+ 
+ 	if (!rtos)
+@@ -170,7 +170,6 @@ static int riot_update_threads(struct rtos *rtos)
+ 			riot_symbol_list[RIOT_NUM_THREADS]);
+ 		return retval;
+ 	}
+-	rtos->thread_count = thread_count;
+ 
+ 	/* read the maximum number of threads */
+ 	uint8_t max_threads = 0;
+@@ -182,6 +181,11 @@ static int riot_update_threads(struct rtos *rtos)
+ 			riot_symbol_list[RIOT_MAX_THREADS]);
+ 		return retval;
+ 	}
++	rtos->thread_count = thread_count;
++	if (rtos->thread_count > max_threads) {
++		LOG_ERROR("Thread count is invalid");
++		return ERROR_FAIL;
++	}
+ 
+ 	/* Base address of thread array */
+ 	uint32_t threads_base = rtos->symbols[RIOT_THREADS_BASE].address;
+@@ -211,6 +215,9 @@ static int riot_update_threads(struct rtos *rtos)
+ 	char buffer[32];
+ 
+ 	for (unsigned int i = 0; i < max_threads; i++) {
++		if (tasks_found == rtos->thread_count)
++			break;
++
+ 		/* get pointer to tcb_t */
+ 		uint32_t tcb_pointer = 0;
+ 		retval = target_read_u32(rtos->target,
+-- 
+1.9.1
+
+

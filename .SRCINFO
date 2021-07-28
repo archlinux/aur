@@ -1,24 +1,31 @@
 pkgbase = openocd-riot-git
-	pkgdesc = Open On-Chip Debugger with RIOT support
-	pkgver = r8239.16d64a2c
+	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)
+	pkgver = 0.11.0.r282.gae6de2f93
 	pkgrel = 1
+	url = http://openocd.org
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = aarch64
 	license = GPL
 	makedepends = git
-	makedepends = make
-	makedepends = gcc
-	makedepends = libtool
-	makedepends = pkg-config
+	makedepends = automake>=1.11
 	makedepends = autoconf
-	makedepends = automake
-	makedepends = texinfo
-	makedepends = libusb
-	provides = openocd-riot
+	makedepends = libtool
+	makedepends = tcl
+	depends = libftdi
+	depends = libftdi-compat
+	depends = libusb
+	depends = libusb-compat
+	depends = hidapi
 	provides = openocd
-	conflicts = openocd-riot
 	conflicts = openocd
-	source = openocd::git+https://github.com/seeseemelk/openocd.git
+	options = !strip
+	source = openocd-riot-git::git+https://repo.or.cz/openocd.git
+	source = 001-riot-segfault.patch
 	md5sums = SKIP
+	md5sums = 650c374e13a0ff0817f5a47efdd69c73
+	sha1sums = SKIP
+	sha1sums = 9cb6cede8765e087fe6e8f75a43acdf2d97479e1
 
 pkgname = openocd-riot-git
-
