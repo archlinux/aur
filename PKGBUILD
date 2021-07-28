@@ -29,9 +29,9 @@ sha256sums=('48850ba49d736412a6b5c13c109e181ce0a50bf3ea2a2ac91116790da794b1bc'
             '82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f')
 
 package() {
-	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
-	install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
-	install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
-	install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
+  install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
+  install -Dm644 "${pkgname%-bin}.png" -t "$pkgdir/usr/share/pixmaps"
 }
