@@ -14,10 +14,14 @@ depends=(
   'openssl'
 )
 optdepends=('geoip2-database: for geoip support')
-backup=('etc/goaccess.conf')
+backup=('etc/goaccess/goaccess.conf'
+        'etc/goaccess/browsers.list'
+        'etc/goaccess/podcast.list')
 source=("https://tar.goaccess.io/${_pkgname}-$pkgver.tar.gz"
-        'goaccess.service')
+        "${_pkgname}.install"
+        "${_pkgname}.service")
 sha512sums=('aefdc8a61d85d7f8148857c6873b4589eb2f1d3f5b4986a97d0d4223c1d30da23d5fc8e6ba3cbdf41654072b299036fbcbae397d1934a95d1d26931e7f2f5d9a'
+            '4744271c513d08d897ce3d163959fa7e3846da82c734de6624fd1efc9aac996b4ec75992e8a92afb908d7ea9d82e47d0f8be6275a655af8fc66e94e5341df39d'
             'b488d1e375196e320e763be67cbe43d60232264578c000e9d7c1670becddd015b93ad4222c4b0235fd1540e8b8f028aae17f463044ff53a4f1f6efa4e6f9719d')
 conflicts=("${_pkgname}"
            "${_pkgname}-git")
@@ -30,15 +34,9 @@ build() {
 }
 
 package() {
-  install -Dm644 goaccess.service "${pkgdir}/usr/lib/systemd/system/goaccess.service"
+  install -Dm644 "${_pkgnamesy}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 
   cd $_pkgname-$pkgver
   make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
-
-  echo "
-    Before starting goaccess service, please configure your time/date/log formats in :
-      /etc/goaccess/goaccess.conf
-    And don't forget to limit the access of goaccess including the default port 7890 (see goaccess.conf file)
-  "
 }

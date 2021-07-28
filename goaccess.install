@@ -1,0 +1,11 @@
+#!/bin/bash
+
+post_install() {
+  echo "
+    Before starting goaccess service, please configure your time/date/log formats in :
+      /etc/goaccess/goaccess.conf
+    Then start the service with :
+      $ systemctl start goaccess.service
+    And don't forget to limit the access of goaccess including the default port 7890 (see goaccess.conf file)
+  "
+}
