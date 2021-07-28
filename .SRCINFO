@@ -1,0 +1,12 @@
+pkgbase = otf-murty-hindi
+	pkgdesc = Hindi Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.2.44
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Hindi.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Hindi.zip
+	sha256sums = d232b1fd7186a25edbe11110f10aa61e826401d7d41e708143f2feafff72d915
+
+pkgname = otf-murty-hindi
