@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2021.1.3
+pkgver=2021.2
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('d49f2bb7dc79ec6ccaabb56afb57dfe619c34b48fda224a3e7d9d37c6d62dc06'
+sha256sums=('2f6d8bcf4e11701664c6acc62e465f31619893d8c7fdcb746b9d7cec385203d1'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
-            'fdd92952973bf9c70dcb3a570b29fdc534ef87f524d06ca8f6c6422f3b954e14'
-            'dc8c77b4c75805fa51f28a7cf8ca394d5143cd939ac5e6f2288132b4a36c7159')
+            '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
+            '43d05c8bebe48eaa0489f739387c58ad919b2f07a2d9003c8e6fb1cc309e3af2')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -46,9 +46,6 @@ build() {
 }
 
 package() {
-    # workaround FS#40934
-    sed -i "s/lcd/on/" "pycharm-$pkgver/bin/"*.vmoptions
-    
     # licenses
     install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
     mv "pycharm-$pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
