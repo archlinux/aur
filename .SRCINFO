@@ -1,0 +1,12 @@
+pkgbase = otf-murty-bangla
+	pkgdesc = Bangla Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.11.32
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Bangla.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Bangla.zip
+	sha256sums = ade03f81ec7d9676c29268e246674f8e415a50349407cf9b7e2fbe4a35d4f31b
+
+pkgname = otf-murty-bangla
