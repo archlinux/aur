@@ -2,9 +2,9 @@
 # Contributor Tavian Barnes <tavianator@tavianator.com>
 # Contributor jhorcl
 pkgname=mozillavpn
-pkgver=2.3.3
+pkgver=2.4.1
 _debian_series=hirsute1
-pkgrel=2
+pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
 url="https://vpn.mozilla.org/"
@@ -26,8 +26,8 @@ makedepends=('qt5-tools')
 source=(
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}-${_debian_series}.debian.tar.xz")
-sha256sums=('4bcb5239d77fed42a7370649cb0b32a23cad723830494e54471fa70c2469097a'
-            '7191e7dabea9251575030e175e879664f06a4e079e9306285191f2c0f008b30a')
+sha256sums=('41072b7554cd0aaf5f66c90c088bf6b88e241fc02723c251a2f61aedcd99de4e'
+            'deeaed77c2835786e0d36c572440549c40d1f3c909f4ca6026163d20c11634fa')
 
 build() {
     qmake PREFIX=/usr CONFIG+=production
@@ -37,5 +37,5 @@ build() {
 package() {
     make INSTALL_ROOT="$pkgdir" install
     install -dm 755 "$pkgdir/usr/lib/systemd/system"
-    install -Dm 644 "debian/mozillavpn.service" "$pkgdir/usr/lib/systemd/system"
+    install -Dm 644 "linux/mozillavpn.service" "$pkgdir/usr/lib/systemd/system"
 }
