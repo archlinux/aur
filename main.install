@@ -34,6 +34,9 @@ post_upgrade() {
     if [ -f "/etc/connective-http/config.props" ]; then
         source "/etc/connective-http/config.props"
     fi
+    
+    mkdir "$serverDir/modules" -p
+    chown connective:connective "$serverDir/modules" -R
     ln -sf "/usr/lib/salted/SaltedAuth.jar" "$serverDir/modules/SaltedAuth.jar"
 }
 

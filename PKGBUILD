@@ -2,7 +2,7 @@
 pkgname=saltedauth
 pkgver=1.0.0
 
-pkgrel=6
+pkgrel=7
 pkgdesc="SaltedAuth -- More secure credential manager for Connective http servers."
 arch=( 'any' )
 url=""
