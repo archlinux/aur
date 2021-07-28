@@ -1,0 +1,13 @@
+pkgbase = sline-git
+	pkgdesc = Simple line-editing and command history library.
+	pkgver = r15.b78cfbf
+	pkgrel = 1
+	url = https://sr.ht/~arivigo/sline
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = sline
+	source = git+https://git.sr.ht/~arivigo/sline
+	sha256sums = SKIP
+
+pkgname = sline-git
