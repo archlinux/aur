@@ -1,8 +1,8 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=sonic2013-git
-pkgver=r310.4c5bcbc
-pkgrel=2
+pkgver=r330.c3be493
+pkgrel=1
 pkgdesc='A full decompilation of Sonic 1 & 2 (2013).'
 arch=('any')
 url='https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation'
