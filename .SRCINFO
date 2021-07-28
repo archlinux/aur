@@ -1,0 +1,19 @@
+pkgbase = csky-cpu-e902-csi-rtos-sdk
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=3916180248689188864
+	arch = x86_64
+	license = unkown
+	makedepends = libarchive
+	noextract = csky-cpu-e902-csi-rtos-sdk-1.7.3.zip
+	noextract = csky-cpu-e902m-csi-rtos-sdk-1.7.3.zip
+	source = csky-cpu-e902-csi-rtos-sdk-1.7.3.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1617782454340/SmartL_E902_RV32EC-R2S0P0-V1.7.3.zip
+	source = csky-cpu-e902m-csi-rtos-sdk-1.7.3.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1617782485250/SmartL_E902M_RV32EMC-R2S0P0-V1.7.3.zip
+	sha256sums = 2338700dd1f430444584fd6b2f4c01569712a18081d98fff811c57f880cb2f67
+	sha256sums = c8503fcae29c3c6f6c968b3a08f208acf58ae9770248188885a525810c9347c5
+
+pkgname = csky-cpu-e902-csi-rtos-sdk
+	pkgdesc = C-Sky CPU E902 CSI-RTOS SDK
+
+pkgname = csky-cpu-e902m-csi-rtos-sdk
+	pkgdesc = C-Sky CPU E902M CSI-RTOS SDK
