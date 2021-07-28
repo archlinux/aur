@@ -1,7 +1,7 @@
 pkgbase = pam-python
 	pkgdesc = Python for PAM
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pam-python.sourceforge.net/
 	arch = x86_64
 	license = GNU Affero General Public License

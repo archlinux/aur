@@ -3,7 +3,7 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 pkgname=pam-python
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Python for PAM'
 arch=('x86_64')
 url='http://pam-python.sourceforge.net/'
@@ -23,6 +23,7 @@ sha256sums=('fc69d7717db0509111500a81053487fa7684e1be3b7d0ae2b51970b6fdc918f6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i'' 's|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
   sed -n '/^License/,/^--$/p' README.txt | grep -v -e '^License' -e '^-\+' > LICENSE
 }
 
