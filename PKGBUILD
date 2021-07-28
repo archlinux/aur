@@ -2,18 +2,24 @@
 
 pkgname=python-django-q
 pkgver=1.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
 url=https://github.com/Koed00/django-q
 license=(MIT)
 depends=(
   python-arrow
+  python-asgiref
   python-blessed
+  python-dateutil
   python-django
   python-django-picklefield
   python-future
+  python-pytz
+  python-redis
   python-six
+  python-sqlparse
+  python-wcwidth
 )
 makedepends=(
   git
@@ -22,7 +28,6 @@ makedepends=(
 )
 optdepends=(
   'python-boto3: Amazon Simple Queue Service message queue support'
-  'python-redis: redis broker support'
   'python-psutil: resource usage limit support'
   'python-pymongo: MongoDB as a message broker support'
 )
