@@ -3,9 +3,9 @@
 _pkg=abydos
 pkgname=python-${_pkg,,}
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NLP/IR library for Python"
-arch=(x86_64)
+arch=(any)
 url="https://github.com/chrislit/abydos"
 license=(GPL3)
 depends=(python-numpy)
@@ -33,5 +33,6 @@ check() {
 
 package() {
   cd ${_pkg}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py install --prefix=/usr --root="${pkgdir}" --skip-build --optimize=1
 }
