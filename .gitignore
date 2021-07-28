@@ -1,7 +1,5 @@
-pkg
-src
-*.tar.gz
-*.zip
-*.tar.xz
-*.patch
-*.dat.bz2
+/pkg
+/src
+/*.tar.gz
+/*.tar.zst
+
