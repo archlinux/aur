@@ -2,7 +2,7 @@
 
 pkgname=anki-release-source
 pkgver=2.1.44
-pkgrel=3
+pkgrel=4
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -53,8 +53,17 @@ optdepends=(
     'mpv: play sound. prefered over mplayer'
     'mplayer: play sound'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
+"no-update.patch"
+)
+sha256sums=('c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5'
+'137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
+)
+
+prepare(){
+    cd "anki-$pkgver"
+    patch -p1 < "$srcdir/no-update.patch"
+}
 
 build() {
     cd "anki-$pkgver"
