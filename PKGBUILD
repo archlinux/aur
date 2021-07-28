@@ -3,7 +3,7 @@
 pkgname=evernote-for-linux-bin
 pkgver=10.17.8
 buildver=2809
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Evernote client for Windows repackaged for Linux"
 arch=('x86_64')
 url="https://github.com/search5/Evernote-for-Linux"
@@ -18,7 +18,7 @@ conflicts=("evernote-beta-bin")
 replaces=()
 install=$pkgname.install
 source=(
-    "https://github.com/search5/Evernote-for-Linux/releases/download/${pkgver}-linux-ddl-ga-${buildver}/evernote-client_${pkgver}_amd64.deb"
+    "https://github.com/search5/Evernote-for-Linux/releases/download/v${pkgver}-linux-ddl-ga-${buildver}/evernote-client_${pkgver}_amd64.deb"
     )
 noextract=("evernote-client_${pkgver}_amd64.deb")
 sha256sums=(
