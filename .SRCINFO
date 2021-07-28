@@ -1,7 +1,7 @@
 pkgbase = mongodb-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = mongodb-bin
 	source = mongodb.tmpfiles
 	source = LICENSE
 	sha256sums = f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850
-	sha256sums = 834f25ca1f53b459d02af3c0e89e4dda1b83bdd43ef5a9ea5ab2095819894a42
+	sha256sums = de4f6770c45bc5418883659c479783c0184a6057df1c405a7933637984f82f0a
 	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
 	sha256sums = 51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac
 	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27

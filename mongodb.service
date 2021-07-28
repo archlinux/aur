@@ -8,7 +8,7 @@ Wants=network-online.target
 User=mongodb
 Group=mongodb
 ExecStart=/usr/bin/mongod --config /etc/mongodb.conf
-PIDFile=/var/run/mongodb/mongod.pid
+PIDFile=/run/mongodb/mongod.pid
 # file size
 LimitFSIZE=infinity
 # cpu time

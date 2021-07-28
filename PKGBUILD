@@ -6,7 +6,7 @@ pkgver="5.0.1"
 _basever="5.0"
 _basedist="focal"
 _mshver="1.0.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -39,7 +39,7 @@ noextract=(
     mongodb-org-server_${pkgver}_${CARCH}.deb
     mongodb-org-mongos_${pkgver}_${CARCH}.deb)
 sha256sums=('f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
-            '834f25ca1f53b459d02af3c0e89e4dda1b83bdd43ef5a9ea5ab2095819894a42'
+            'de4f6770c45bc5418883659c479783c0184a6057df1c405a7933637984f82f0a'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
