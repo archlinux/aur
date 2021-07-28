@@ -1,0 +1,17 @@
+pkgbase = tweego-bin
+	pkgdesc = a command line compiler for Twine/Twee story formats, written in Go.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://www.motoslave.net/tweego
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	provides = tweego
+	conflicts = tweego
+	source_i686 = https://github.com/tmedwards/tweego/releases/download/v2.1.1/tweego-2.1.1-linux-x86.zip
+	md5sums_i686 = 99155762268a8b89868de8dfed3dcb0f
+	source_x86_64 = https://github.com/tmedwards/tweego/releases/download/v2.1.1/tweego-2.1.1-linux-x64.zip
+	md5sums_x86_64 = 6ebec69142cc6aa9501b82b141da04cc
+
+pkgname = tweego-bin
