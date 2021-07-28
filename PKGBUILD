@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc
-_gccver=11.1.0
+_gccver=11.2.0
 _islver=0.24
-pkgver=11.1.0_r153.b5056b4
+pkgver=11.2.0_r153.b5056b4
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.x
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gcc11-Wno-format-security.patch")
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             'SKIP'
             '6f9a34812a07e49a568467df11d6ab19b9fd7d953e9ecd739c7a38d9df821b52')
