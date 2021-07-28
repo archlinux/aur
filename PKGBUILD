@@ -8,7 +8,7 @@ pkgdesc="A cloud server to store your files centrally on a hardware controlled b
 arch=('any')
 url="https://nextcloud.com"
 license=('AGPL')
-depends=()
+depends=('mariadb<10.6')
 optdepends=('php7-apache: to use the Apache web server'
             'php7-sqlite: to use the SQLite database backend'
             'php7-pgsql: to use the PostgreSQL database backend'
