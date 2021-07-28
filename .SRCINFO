@@ -1,22 +1,20 @@
 pkgbase = upwork
 	pkgdesc = Desktop Application
-	pkgver = 5.5.0.11
+	pkgver = 5.6.7.13
 	pkgrel = 1
 	url = https://www.upwork.com/downloads/
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
 	depends = gtk3
-	depends = libp11-kit
-	depends = libxss
+	depends = libjpeg-turbo
 	depends = nss
 	conflicts = upwork-alpha
-	source = https://updates-desktopapp.upwork.com/binaries/v5_5_0_11_61df9c99b6df4e7b/upwork_5.5.0.11_amd64.deb
+	source = https://updates-desktopapp.upwork.com/binaries/v5_6_7_13_9f0e0a44a59e4331/upwork_5.6.7.13_amd64.deb
 	source = LICENSE
 	source = upwork
-	sha256sums = db83d5fb1b5383992c6156284f6f3cd3a6b23f727ce324ba90c82817553fb4f7
+	sha256sums = f1d3168cda47f77100192ee97aa629e2452fe62fb364dd59ad361adbc0d1da87
 	sha256sums = 793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38
 	sha256sums = 53bbbd18d7dbbcc27a1405ce9745d95f08be64a234b8fb3312cc2e6ef70e3e9b
 
 pkgname = upwork
-
