@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tasker Permissions
+Exec=tasker-permissions
+Terminal=false
+Type=Application
+Icon=tasker-permissions
+StartupWMClass=tasker-permissions
+Comment=Easily grant permissions for Tasker using a simple UI
+Categories=Utility;
