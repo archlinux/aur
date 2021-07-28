@@ -1,7 +1,7 @@
 pkgbase = connective-php
 	pkgdesc = ConnectivePHP -- PHP support module for ConnectiveHTTP
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	install = main.install
 	arch = any
 	groups = connective-server
