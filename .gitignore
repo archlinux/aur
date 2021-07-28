@@ -1,3 +1,4 @@
 pkg/
 src/
 plotly-*.tar.gz
+/last_installed.txt
