@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/joaorb64/joycond-cemuhook"
 license=("unknown")
 
-depends=("joycond-git" "python" "python-termcolor" "python-evdev" "python-dbus-common" "python-argparse" "python-pyudev" "upower" "libudev")
+depends=("joycond-git" "python" "python-termcolor" "python-evdev" "python-dbus-common" "python-argparse" "python-pyudev" "upower" "systemd-libs")
 makedepends=("git")
 conflicts=("${_pkgname}")
 optdepends=('nintendo-udev: Udev rules for switch controllers', 'hid-nintendo-dkms: Kernel module with switch controller support.')
