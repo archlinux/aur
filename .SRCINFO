@@ -1,0 +1,15 @@
+pkgbase = python-factoryboy
+	pkgdesc = A test fixtures replacement for Python
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/factoryboy/factory_boy
+	changelog = CHANGELOG
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python>=3.6
+	depends = python-faker>=0.7.0
+	source = python-factoryboy-3.2.0.tar.gz::https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-3.2.0.tar.gz
+	sha256sums = 401cc00ff339a022f84d64a4339503d1689e8263a4478d876e58a3295b155c5b
+
+pkgname = python-factoryboy
