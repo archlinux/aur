@@ -7,6 +7,6 @@ Type=simple
 User=root
 Group=root
 Restart=always
-ExecStart=/bin/sh -c '/usr/bin/goaccess -f /var/log/nginx/*-access.log --real-time-html -o /var/www/html/report.html'
+ExecStart=/bin/sh -c '/usr/bin/goaccess -f /var/log/nginx/*-access.log --enable-geopip --real-time-html -o /var/www/html/report.html'
 [Install]
 WantedBy=multi-user.target
