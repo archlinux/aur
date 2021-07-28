@@ -26,4 +26,5 @@ build() {
 package() {
 	cd "pytest-factoryboy-$pkgver"
 	python setup.py install --root "$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 README.rst AUTHORS.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
