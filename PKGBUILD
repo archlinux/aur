@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=choose
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A human-friendly and fast alternative to cut and (sometimes) awk"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2970b1e515ab77e1c9e976bb0c7e6bcd93afb992eba532c5d23c972c0971ff3')
+sha256sums=('336225a05d98e536f79969c2d1727c8371df3d289e4aebe15a1a476db0f84df2')
 
 build() {
     cd $pkgname-$pkgver
