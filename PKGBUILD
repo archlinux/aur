@@ -1,25 +1,46 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
-pkgname=ruby-ddmemoize
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
+
+_gemname=ddmemoize
+pkgname=ruby-$_gemname
 pkgver=1.0.0
-_gemname=${pkgname#ruby-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds support for memoizing functions"
-arch=(any)
-url="https://rubygems.org/gems/${_gemname}"
-license=("MIT")
+arch=('any')
+url="https://github.com/ddfreyne/ddmemoize"
+license=('MIT')
 depends=('ruby' 'ruby-ddmetrics' 'ruby-ref')
-makedepends=(rubygems)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('d42cc6aa4800c6e3282918d423accb50470d603280b1cf41a6bf8c061d84d497')
-noextract=($_gemname-$pkgver.gem)
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('3acf18cc70aed6c35ee98f42e6004ae13c623299abb0e8a3c0dbe7e7908775b9b6e2f81cc2977e4ca04ad584e7b5c43219979187448e3c87e6abc2d78a1c8f15')
 
 package() {
-  cd "$srcdir"
-
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install \
-    --no-user-install --ignore-dependencies --no-ri \
-    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  # delete unnecessary files & folders
+  cd "gems/$_gemname-$pkgver"
+  find . -type f -name ".*" -delete
+  rm -vrf spec scripts Gemfile Rakefile "$_gemname.gemspec"
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" \
+    *.md samples
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
