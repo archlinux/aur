@@ -1,15 +1,14 @@
 pkgbase = brother-color-label-printer
 	pkgdesc = A Linux color labeling printing command tool for Brother VC-500W color label printer
-	pkgver = 0.2
-	pkgrel = 3
-	url = https://m7i.org/projects/labelprinter-linux-python-for-vc-500w/
+	pkgver = 0.3
+	pkgrel = 4
+	url = https://gitlab.com/lenchan139/labelprinter-vc500w
 	arch = any
 	groups = office
 	license = AGPLv3
 	depends = python3
 	provides = labelprinter
-	source = https://m7i.org/include/software/labelprinter-0.2.tar.xz
-	md5sums = 2dad06a7c09e3bfbe0a99b0db5e1e77c
+	source = https://gitlab.com/lenchan139/labelprinter-vc500w/-/archive/0.3/labelprinter-vc500w-0.3.tar.gz
+	md5sums = bbdcacb070866a4c34d888f3a4292275
 
 pkgname = brother-color-label-printer
-
