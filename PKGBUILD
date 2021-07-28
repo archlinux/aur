@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-pcsx2
 pkgname=$_pkgname-git
-pkgver=r11822.70b76b999
+pkgver=r11900.373fca4dc
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core"
 arch=('x86_64')
