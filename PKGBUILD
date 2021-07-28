@@ -2,13 +2,12 @@
 
 _pkgname=schain
 pkgname="${_pkgname}-git"
-pkgver=r97.ffd947c
-pkgrel=2
+pkgver=r98.a3954f5
+pkgrel=1
 pkgdesc='A simple habit tracker'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${_pkgname}"
 license=('MIT')
-depends=('glibc')
 source=("git+https://git.sr.ht/~arivigo/${_pkgname}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
@@ -20,11 +19,11 @@ pkgver() {
 
 build() {
 	cd "${_pkgname}"
-	make
+	make LDFLAGS="-Wl,-z,now"
 }
 
 package() {
 	cd "${_pkgname}"
-	make DESTDIR="${pkgdir}" PREFIX='/usr' install
+	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
