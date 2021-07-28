@@ -1,7 +1,7 @@
 # Maintainer:  Al S <tei8ho.aur.al@ila5.info>
 pkgname=imdone-bin
 _pkgname=imdone
-pkgver=1.19.4
+pkgver=1.19.6
 pkgrel=1
 pkgdesc="Simple and powerful kanban board that works on top of a local folder of plain text markdown files or code."
 arch=('i686' 'x86_64')
