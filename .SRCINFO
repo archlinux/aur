@@ -1,12 +1,13 @@
 pkgbase = deadbeef-qt5-git
 	pkgdesc = Qt based user interface plugin for DeaDBeeF music player.
-	pkgver = 27.420dd44
+	pkgver = 90.56831d7
 	pkgrel = 1
 	url = https://github.com/maz-1/deadbeef-qt
 	install = deadbeef-qt5-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-base
@@ -19,4 +20,3 @@ pkgbase = deadbeef-qt5-git
 	md5sums = SKIP
 
 pkgname = deadbeef-qt5-git
-
