@@ -1,0 +1,12 @@
+pkgbase = otf-murty-sanskrit
+	pkgdesc = Sanskrit Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.1.23
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Sanskrit.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Sanskrit.zip
+	sha256sums = 8ad12a0e6fd706a2a842f39230f5612d0949cfb00f9328626c7fbebd182466cb
+
+pkgname = otf-murty-sanskrit
