@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_commit=7838d4eefea902d44e0dd0cdb77a10cddd2539c2
+_commit=43112e28eb3af3efab06830c009e659819c4732a
 pkgname=deemix
-pkgver=3.2.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://git.freezer.life/RemixDev/deemix-py/archive/$_commit.tar.gz")
-sha512sums=('a8afe4d4a96ebc2b74224a9a557c31815408cb61a5845d3d4d4699ab876c2f97c7b993dbff2a8913d35abb486446c4f79a3fc9c276beb6df3c7af1fd48b147fa')
+sha512sums=('26d9ce8aab5f5500a1e0e217addd97f2f3d194b9c39c65b2bdf76f3e29e0eaa3f3423e7c6a38ca93a27aa2d6bef09551412ee0389c4d03eabdd5c2cf97a62132')
 
 pkgver() {
     cd deemix-py
