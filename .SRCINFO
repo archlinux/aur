@@ -1,7 +1,7 @@
 pkgbase = youtube-dlp
 	pkgdesc = Fork of youtube-dlc - download videos from youtube.com or other video platforms
-	pkgver = 2021.07.07
-	pkgrel = 2
+	pkgver = 2021.07.21
+	pkgrel = 1
 	url = https://github.com/yt-dlp/yt-dlp
 	arch = any
 	license = Unlicense
@@ -19,7 +19,7 @@ pkgbase = youtube-dlp
 	optdepends = atomicparsley: for embedding thumbnails into m4a files
 	optdepends = aria2: for using aria2 as external downloader
 	provides = yt-dlp
-	source = youtube-dlp-2021.07.07.tar.gz::https://github.com/yt-dlp/yt-dlp/archive/2021.07.07.tar.gz
-	sha256sums = 0cf180410ee47f432b37fa82d0c855af3ee2eadce0b35fafd3d9252796c8b62d
+	source = youtube-dlp-2021.07.21.tar.gz::https://github.com/yt-dlp/yt-dlp/archive/2021.07.21.tar.gz
+	sha256sums = e45c9f9c8cc0fe2953ba66cb4710bbfc4b319fff6a60d830eb89f02f0160784c
 
 pkgname = youtube-dlp
