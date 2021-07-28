@@ -1,6 +1,6 @@
 pkgbase = theheartbeat
 	pkgdesc = System Monitor
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/vicr123/theheartbeat
 	arch = x86_64
@@ -10,9 +10,8 @@ pkgbase = theheartbeat
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = the-libs
-	source = theheartbeat-1.0::https://github.com/vicr123/theHeartbeat/archive/v1.0.tar.gz
+	source = theheartbeat-1.1::https://github.com/vicr123/theHeartbeat/archive/v1.1.tar.gz
 	md5sums = SKIP
-	sha256sums = 89a8837864d03d3764fb2c4a8be63cd1f03a04e94ff20b6e3e9b2a9251c3cb06
+	sha256sums = f5a1792d15dd275fd12a6f496f9c7557e190ed96c8b92a9c5bbb3e469d3c3ec0
 
 pkgname = theheartbeat
-
