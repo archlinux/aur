@@ -2,10 +2,10 @@
 
 pkgbase=csky-toolchain-900-series-bin
 pkgname=($pkgbase csky-riscv64-linux-900-series-bin csky-riscv64-elf-900-series-bin csky-toolchain-900-series-guide-bin)
-pkgver=1.12.0
+pkgver=2.0.1
 pkgrel=1
 arch=('x86_64')
-url='https://occ.t-head.cn/community/download?id=3927429448189939712'
+url='https://occ.t-head.cn/community/download?id=3913221581316624384'
 license=('Apache')
 provides=()
 #conflicts=()
@@ -13,9 +13,9 @@ depends=('filesystem')
 makedepends=('tar')
 
 source=("https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234913073/ReleaseNotes.pdf"
-        "csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1624260655742/riscv64-linux-x86_64-20210618.tar.gz"
-        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1624260502686/riscv64-elf-x86_64-20210618.tar.gz"
-        "https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1624260306781/ReleaseNote.pdf"
+        "csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1620875003024/riscv64-linux-x86_64-20210512.tar.gz"
+        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1620872950745/riscv64-elf-x86_64-20210512.tar.gz"
+        "https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1620872766321/ReleaseNote.pdf"
         "T-HEAD RISC-V LD Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083695234/T-HEAD+RISC-V+LD+Manual+V1.4.2.pdf"
         "T-HEAD RISC-V GCC Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083609604/T-HEAD+RISC-V+GCC+Manual+V1.4.2.pdf"
         "T-HEAD RISC-V GDB Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083669041/T-HEAD+RISC-V+GDB+Manual+V1.4.2.pdf"
@@ -24,8 +24,8 @@ source=("https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234
         )
 
 sha256sums=('e70dca4e839c503d0efff7b078c5418f0d28d0e79a032d50e5e39682507c82ae'
-            'e458b2f914c93788f1a616fa35bafe0049b4418f2fcabf481215976f73749c59'
-            'cbcc962fbd025c599e42626c8df947e175c82da655e393e561f1daa9d419b3ba'
+            'aa7459488abeb62e58f246dfeb38a4176f99a68f1655f1563494960599cabc4c'
+            '96e8443f2f3b481c5d7311f82fc9a3474b25d97068b2292733f0f2deeafddbb4'
             'fa50226512df02aaf348a36825c40b715fc320f66a2603e79426344f93b4a912'
             'a132754abca8e8956169a33f4239ef14e8f309259168dc8c0531e4df19e1f0f2'
             '02c47ffb157456711bb0ad3f9848a02ee939e17cf0ed649d985b2dd0c6f744de'
