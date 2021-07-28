@@ -1,7 +1,7 @@
 # Maintainer: Patrick Drechsler <socialcoding at pdrechsler dot de>
 
 pkgname=mobsh-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Fast git handover with mob"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('mobsh')
 conflicts=('mobsh' 'mob')
 
 source_x86_64=("$url/releases/download/v${pkgver}/mob_v${pkgver}_linux_amd64.tar.gz")
-md5sums_x86_64=("dabc9ba7aebbc11057fcbfb6deace3d2")
+md5sums_x86_64=("86f259a6bb5dd86a8af6ed7b6ae3f943")
 
 package() {
     install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
