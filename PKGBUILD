@@ -2,7 +2,7 @@
 
 pkgname=gtksourceview5
 pkgver=5.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
 license=('LGPL')
