@@ -1,0 +1,16 @@
+pkgbase = weaver-fossil
+	pkgdesc = socket-controlled qt5webengine browser w/ minimal UI
+	pkgver = r110.2a5e04de98
+	pkgrel = 1
+	url = https://code.jessemcclure.org/weaver
+	arch = x86_64
+	license = MIT
+	makedepends = fossil
+	depends = gcc-libs
+	depends = glibc
+	depends = qt5-base
+	depends = qt5-webengine
+	source = fossil+https://code.jessemcclure.org/weaver
+	sha256sums = SKIP
+
+pkgname = weaver-fossil
