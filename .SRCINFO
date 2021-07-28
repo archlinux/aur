@@ -1,7 +1,7 @@
 pkgbase = goaccess-systemd
-	pkgdesc = An open source real-time web log analyzer and interactive viewer
+	pkgdesc = An open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://goaccess.io
 	arch = x86_64
 	license = MIT
@@ -9,12 +9,13 @@ pkgbase = goaccess-systemd
 	depends = libmaxminddb
 	depends = openssl
 	optdepends = geoip2-database: for geoip support
+	provides = goaccess
 	conflicts = goaccess
 	conflicts = goaccess-git
 	backup = etc/goaccess.conf
 	source = https://tar.goaccess.io/goaccess-1.5.1.tar.gz
 	source = goaccess.service
 	sha512sums = aefdc8a61d85d7f8148857c6873b4589eb2f1d3f5b4986a97d0d4223c1d30da23d5fc8e6ba3cbdf41654072b299036fbcbae397d1934a95d1d26931e7f2f5d9a
-	sha512sums = 955de95a370a1af992a9a39e07cbbcf39527ed7d81c86b0b359e72524f92473ef060e6b4c86a49a04b1124d2fcc31e04a3aaf6596f86e8297b6aff741afd2243
+	sha512sums = 2c04e8d24d474dea82436c0cbc38542dab88a52146f98d034ad7ef0cd0dd39f71e7967c925d5d832d637a91c8f1409961e7d23a9537a44908d9ca835d71d29d3
 
 pkgname = goaccess-systemd
