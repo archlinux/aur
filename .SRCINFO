@@ -1,6 +1,6 @@
 pkgbase = minetest-git-leveldb
 	pkgdesc = Voxel-based sandbox game engine (Git version with LevelDB support)
-	pkgver = 5.4.0.r262.gbf3acbf38
+	pkgver = 5.4.0.r267.g2866918f3
 	pkgrel = 1
 	url = https://www.minetest.net/
 	install = install

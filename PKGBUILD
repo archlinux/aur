@@ -4,7 +4,7 @@
 # Contributor: Konsta Kokkinen <kray@tsundere.fi>
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=5.4.0.r262.gbf3acbf38
+pkgver=5.4.0.r267.g2866918f3
 pkgrel=1
 pkgdesc='Voxel-based sandbox game engine (Git version with LevelDB support)'
 url='https://www.minetest.net/'
@@ -26,10 +26,7 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/irrlicht"
-	cmake -G Ninja . \
-		-DBUILD_SHARED_LIBS=0
-	ninja
+	ln -s "${srcdir}/irrlicht/" "${srcdir}/${_pkgname}/lib/irrlichtmt"
 
 	cd "${srcdir}/${_pkgname}"
 	cmake -G Ninja . \
@@ -37,9 +34,7 @@ build() {
 		-DENABLE_LEVELDB=1 \
 		-DENABLE_POSTGRESQL=0 \
 		-DENABLE_SPATIAL=1 \
-		-DENABLE_REDIS=1 \
-		-DIRRLICHT_INCLUDE_DIR="${srcdir}/irrlicht/include/" \
-		-DIRRLICHT_LIBRARY="${srcdir}/irrlicht/lib/Linux/libIrrlichtMt.a"
+		-DENABLE_REDIS=1
 	ninja
 }
 
