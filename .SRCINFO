@@ -18,8 +18,8 @@ pkgbase = python-numpy-mkl
 	provides = python-numpy=1.20.3
 	conflicts = python-numpy
 	options = staticlibs
-	source = https://github.com/numpy/numpy/releases/download/v1.20.1/numpy-1.20.3.tar.gz
-	sha256sums = b7340f0628ce1823c151e3d2a2a8cba2a3ff1357fba4475a24b1816e75c21f90
+	source = https://github.com/numpy/numpy/releases/download/v1.21.1/numpy-1.21.1.tar.gz
+	sha256sums = 504ced5d900fd5724c74ebf5dbb03572c04074bec9baa24b5646c66a2450e654
 
 pkgname = python-numpy-mkl
 
