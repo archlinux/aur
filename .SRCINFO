@@ -1,14 +1,13 @@
 pkgbase = nodejs-yeoman
 	pkgdesc = CLI tool for running Yeoman generators
-	pkgver = 3.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = http://yeoman.io
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = yo-3.1.1.tgz
-	source = http://registry.npmjs.org/yo/-/yo-3.1.1.tgz
-	sha256sums = bc44b1f404360febfc0d483fec45b2a8ed08389f914b1bf059ccc4f3d268dfd5
+	noextract = yo-4.2.0.tgz
+	source = http://registry.npmjs.org/yo/-/yo-4.2.0.tgz
+	sha256sums = 565f49240d3aad3b51c935a902345c6a08a223357a0dcdaf54c7b925a2b6f5fd
 
 pkgname = nodejs-yeoman
-
