@@ -3,7 +3,7 @@
 pkgname=evernote-beta-bin
 pkgver=10.7.6
 buildver=2330
-pkgrel=5
+pkgrel=6
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
 url="https://evernote.com/earlyaccess"
@@ -13,7 +13,7 @@ depends=(
     'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils'
     'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret'
 )
-optdepends=()
+optdepends=('gnome-keyring: for credentials persistence after reboot')
 conflicts=('evernote-for-linux-bin')
 replaces=()
 install=$pkgname.install
