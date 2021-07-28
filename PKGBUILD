@@ -2,8 +2,8 @@
 #			Jake <aur@ja-ke.tech>
 
 pkgname=next
-pkgver=1.722
-_download_id='AGhJuyR4'
+pkgver=1.727
+_download_id='9chpuZOR'
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.zip::https://www.magentacloud.de/api/sharelink/dow
         "next.desktop"
         "next.sh")
 
-sha512sums=('07454f2e400cb9bfcfc69eec367d08e07b908add31b9a27cc880a5c0e7510cddd728060c983ba65cbddf23d4f2040b75a672f628852b5bf5f9a769b81f3db88a'
+sha512sums=('3a18304066410dc6de2c3cbc83c8a394649b271ee6ebccb9752ee03ecee496183d9a63c00024f913128712e65bf36c4c3a74aa0e258222bc65119d412aa60a83'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
