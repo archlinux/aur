@@ -9,6 +9,6 @@ pkgbase = disfetch
 	depends = bash>=4.0.0
 	provides = disfetch
 	source = disfetch-2.4.tar.gz::https://github.com/llathasa-veleth/disfetch/archive/2.4.tar.gz
-	sha256sums = 4a10c7c412e18b935c4c5b81a93abb64a5557bf3339dee7e8e79ec1643e976f7
+	sha256sums = e09a1b538e492d81c59f6bfc24c9239d3c6b405cb069e4bd79cf59c7630953c1
 
 pkgname = disfetch
