@@ -1,0 +1,2 @@
+#Type	Path			Mode	User	Group		Age	Argument
+D	/etc/default/huawei-wmi	0755	-	huawei-wmi	-	-

@@ -1,0 +1,6 @@
+post_install() {
+	chmod g+s '/etc/default/huawei-wmi'
+	chgrp huawei-wmi '/etc/default/huawei-wmi'
+
+	echo 'Add your users to huawei-wmi group.'
+}
