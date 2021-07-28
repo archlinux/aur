@@ -8,7 +8,7 @@
 
 pkgname=gazebo
 pkgver=11.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -30,6 +30,11 @@ makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
 sha256sums=('c3ede937e6a2130c191329df0e4080452070575b232a2d45291f429e0462a407')
+
+prepare() {
+  # Gazebo's CMake package file forces projects using it to use C++11 by default which screws over anyone wanting to use C++14 or newer
+  sed -i '/-std=c++11/d' "$srcdir"/$pkgname-$pkgver/cmake/gazebo-config.cmake.in
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
