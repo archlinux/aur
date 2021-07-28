@@ -1,5 +1,7 @@
 /mongodb-bin-*
 /mongodb-org-*
+/mongosh-*
+*.log
 /src/
 /pkg/
 pkg/
