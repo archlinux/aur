@@ -1,15 +1,14 @@
 pkgbase = ruby-json_schema
-	pkgdesc = A JSON Schema V4 and Hyperschema V4 parser and validator.
-	pkgver = 0.19.1
+	pkgdesc = JSON Schema & Hyperschema V4 parser and validator
+	pkgver = 0.21.0
 	pkgrel = 1
-	url = https://rubygems.org/gems/json_schema
+	url = https://github.com/brandur/json_schema
 	arch = any
 	license = MIT
-	makedepends = rubygems
 	depends = ruby
-	noextract = json_schema-0.19.1.gem
-	source = https://rubygems.org/downloads/json_schema-0.19.1.gem
-	sha256sums = 5e5bb8d8c171a08be394e894c22e662fbe4127657e7bb9f7230a604b88c0965f
+	noextract = json_schema-0.21.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/json_schema-0.21.0.gem
+	b2sums = c7555975d40e41fb2671addb5b9298349029068fe6c68184a30fd7f9663f7a01b743d3e0eb1c171dc61edb9750bc464e7e8c1039a896bbe6b0b81ea9a909b6bf
 
 pkgname = ruby-json_schema
-

@@ -1,25 +1,44 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
-pkgname=ruby-json_schema
-pkgver=0.19.1
-_gemname=${pkgname#ruby-}
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux (a) free.fr>
+
+_gemname=json_schema
+pkgname=ruby-$_gemname
+pkgver=0.21.0
 pkgrel=1
-pkgdesc="A JSON Schema V4 and Hyperschema V4 parser and validator."
-arch=(any)
-url="https://rubygems.org/gems/${_gemname}"
-license=("MIT")
+pkgdesc="JSON Schema & Hyperschema V4 parser and validator"
+arch=('any')
+url="https://github.com/brandur/json_schema"
+license=('MIT')
 depends=('ruby')
-makedepends=(rubygems)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('5e5bb8d8c171a08be394e894c22e662fbe4127657e7bb9f7230a604b88c0965f')
-noextract=($_gemname-$pkgver.gem)
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('c7555975d40e41fb2671addb5b9298349029068fe6c68184a30fd7f9663f7a01b743d3e0eb1c171dc61edb9750bc464e7e8c1039a896bbe6b0b81ea9a909b6bf')
 
 package() {
-  cd "$srcdir"
-
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  HOME="/tmp" GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install \
-    --no-user-install --ignore-dependencies --no-ri \
-    -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  # remove unnecessary files & folders
+  cd "gems/$_gemname-$pkgver"
+  rm -vrf test
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
