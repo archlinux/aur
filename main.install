@@ -12,7 +12,7 @@ post_install() {
 
     mkdir "$serverDir/modules" -p
     chown connective:connective "$serverDir/modules" -R
-    cp "/usr/lib/jazzcode/JazzCode.jar" "$serverDir/modules/JazzCode.jar" -f
+    ln -sf "/usr/lib/jazzcode/JazzCode.jar" "$serverDir/modules/JazzCode.jar"
     chown connective "$serverDir/modules/JazzCode.jar"
        
     if [ -f "$serverDir"/server.ccfg ] && cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg .context.root &>/dev/null; then
@@ -26,6 +26,24 @@ virtualfile "class:org.asf.jazzcode.internal.virtualfiles.JazzCodeJCILHandler"'
         
         cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg .context.root &>/dev/null && cq org.asf.connective.standalone.main.ConnectiveConfiguration --source-jar /usr/lib/connective-http/ConnectiveStandalone.jar --source-jar /usr/lib/connective-http/libs/RatsMemory.jar "$serverDir"/server.ccfg . -s .context.root "$rootcontextblock" --ccfg-output --output "$serverDir"/server.ccfg
     fi
+}
+
+post_upgrade() {
+    serverDir=/etc/connective-http
+    classPathFolders=( "libs/" )
+    mainType=org.asf.connective.standalone.main.ConnectiveStandalone
+    credtoolLibs=()
+    credtoolTarget=""
+    jvmArguments="-Djava.net.preferIPv4Stack=true"
+
+    if [ -f "/etc/connective-http/config.props" ]; then
+        source "/etc/connective-http/config.props"
+    fi
+    
+    mkdir "$serverDir/modules" -p
+    chown connective:connective "$serverDir/modules" -R
+    ln -sf "/usr/lib/jazzcode/JazzCode.jar" "$serverDir/modules/JazzCode.jar"
+    chown connective "$serverDir/modules/JazzCode.jar"
 }
 
 post_remove() {
