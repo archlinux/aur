@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=6.0.31
+pkgver=6.0.32
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -41,7 +41,7 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "https://otrscommunityedition.com/download/${pkgname}-community-edition-${pkgver}.tar.gz")
 sha256sums=("cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e"
-            "8332b8eadd7e3999309ca8c0fe0fe0d678e39b613213cc788d24d65567f96ca9")
+            "7386abe316764e146891922ac242cae851c5925da58078aadc5761e6cc7a4614")
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
@@ -66,10 +66,10 @@ package() {
   install -dm 0755 "${pkgdir}/etc/webapps/${pkgname}"
   install -dm 0755 "${pkgdir}/usr/share/webapps/${pkgname}"
 
-  install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/Kernel/Config.pm.dist" "${pkgdir}/etc/webapps/${pkgname}/Config.pm"
-  install -Dm 0644 "${srcdir}/${pkgname}.service"                         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm 0644 "${srcdir}/${pkgname}-community-edition-${pkgver}/Kernel/Config.pm.dist" "${pkgdir}/etc/webapps/${pkgname}/Config.pm"
+  install -Dm 0644 "${srcdir}/${pkgname}.service"                                           "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
-  cp -ra ${srcdir}/${pkgname}-${pkgver}/* ${pkgdir}/usr/share/webapps/${pkgname}/
+  cp -ra ${srcdir}/${pkgname}-community-edition-${pkgver}/* ${pkgdir}/usr/share/webapps/${pkgname}/
 
   for FILENAME in ${pkgdir}/usr/share/webapps/${pkgname}/var/cron/*.dist
   do
