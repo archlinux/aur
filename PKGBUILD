@@ -11,7 +11,6 @@ license=('GPL2')
 depends=('lzlib' 'gcc-libs')
 source=(https://download.savannah.gnu.org/releases/lzip/$pkgname/$pkgname-$pkgver.tar.lz)
 sha512sums=('1ad671da7ee115762163af57aad69ec754753e68a99ef8c4f38e880ecbb75a5b021f38794390eabcdbef4963cbc0c0e2abe36011da4135baf2c21dc22f020f4a')
-validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742')  # Antonio Diaz Diaz <antonio@gnu.org>
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -26,5 +25,5 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" make install
 }
