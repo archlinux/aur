@@ -1,26 +1,25 @@
 pkgbase = swayimg-git
 	pkgdesc = Image viewer for Sway/Wayland
-	pkgver = 1.1.r10.gf0bd709
-	pkgrel = 1
+	pkgver = 1.4
+	pkgrel = 2
 	url = https://github.com/artemsen/swayimg
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = bash-completion
 	makedepends = meson
-	makedepends = ninja
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = cairo
+	depends = libxkbcommon
 	depends = json-c
-	optdepends = libjpeg: JPEG images support
-	optdepends = giflib: GIF images support
-	optdepends = librsvg: SVG images support
-	optdepends = libwebp: WebP images support
-	optdepends = bash-completion: bash autocomplete support
+	depends = hicolor-icon-theme
+	depends = libavif
+	depends = librsvg
+	depends = libwebp
+	optdepends = bash-completion: Bash completions
 	provides = swayimg
 	conflicts = swayimg
-	source = swayimg-git-1.1.r10.gf0bd709::git+https://github.com/artemsen/swayimg.git
+	source = swayimg::git+https://github.com/artemsen/swayimg.git
 	md5sums = SKIP
 
 pkgname = swayimg-git
-
