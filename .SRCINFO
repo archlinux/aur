@@ -1,6 +1,6 @@
 pkgbase = libjuice
 	pkgdesc = UDP Interactive Connectivity Establishment (ICE) library
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/paullouisageneau/libjuice
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libjuice
 	makedepends = cmake
 	provides = libjuice
 	conflicts = libjuice
-	source = git+https://github.com/paullouisageneau/libjuice.git#tag=v0.8.3
+	source = git+https://github.com/paullouisageneau/libjuice.git#tag=v0.8.4
 	md5sums = SKIP
 
 pkgname = libjuice
