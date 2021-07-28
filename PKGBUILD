@@ -5,7 +5,7 @@
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
@@ -15,15 +15,17 @@ depends=("$_target-binutils" 'zlib' 'libmpc')
 makedepends=('gmp' 'mpfr')
 options=(!emptydirs)
 conflicts=("$_target-gcc")
+changelog='.Changelog'
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
 
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
-            '30ddb74a7dc144917ece0053e8cd0a18d6d0390941257925e0c70eb88a52e629')
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+            '6bb782c64994e655abd5cf596ed7879cc52e5bcb0352be636ea9eec7caa98837')
 
 _basedir=gcc-$pkgver
 
 validpgpkeys=(
+    '13975A70E63C361C73AE69EF6EEB81F8981C74C7' # Richard Guenther <richard.guenther@gmail.com>
     'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62' # Jakub Jelinek <jakub@redhat.com>
 )
 
@@ -59,12 +61,12 @@ check() {
     cd build
 
     # Increase stack size to prevent test failures.
-	# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
+    # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
     ulimit -s 32768
 
     # Don't abort on error as some are "expected".
-	make -k check || true
-	$srcdir/$_basedir/contrib/test_summary
+    make -k check || true
+    $srcdir/$_basedir/contrib/test_summary
 }
 
 package() {

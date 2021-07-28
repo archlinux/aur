@@ -1,0 +1,4 @@
+[2021-07-28]
+    The GCC developers are pleased to announce the release of GCC 11.2.
+
+    This release is a bug-fix release, containing fixes for regressions in GCC 11.1 relative to previous releases of GCC.
