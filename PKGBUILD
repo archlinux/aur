@@ -14,7 +14,7 @@ source=("https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-v${pkgv
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.desktop"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/LICENSE")
 sha256sums=('52afadea379c152de4f0470297355e95f99a2712a574ed66eecdc81bdde6f2f4'
-            '3c1830a574257a35e4d4e1a242f786b98fb3fa0d3c7db1418d4b69d4df881533'
+            '1bd216359e3202bdc9691e10fd67e315f3c10c7a2a88cfeabb8baff7474a26d4'
             '568d8a08b942868ab9aa67458ad9bfcee4d56ef079d2467dd259613bb37d0bff'
             'fa8e5f6561192d1f2554365a7f49c36ac368ae00413f489c0873a801c11e6219'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
