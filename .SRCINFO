@@ -1,6 +1,6 @@
 pkgbase = offlineimap3-git
 	pkgdesc = Read/sync your IMAP mailboxes (python3)
-	pkgver = r2746.fe443e6
+	pkgver = r2754.87f9507
 	pkgrel = 1
 	url = https://github.com/OfflineIMAP/offlineimap3
 	arch = any
@@ -15,8 +15,6 @@ pkgbase = offlineimap3-git
 	conflicts = offlineimap
 	conflicts = offlineimap-git
 	source = offlineimap3-git::git+https://github.com/OfflineIMAP/offlineimap3.git
-	source = imaplib2_version.patch
 	md5sums = SKIP
-	md5sums = 0ad5ba88285b4604fc6e77472892fe23
 
 pkgname = offlineimap3-git

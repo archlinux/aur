@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=offlineimap3-git
-pkgver=r2746.fe443e6
+pkgver=r2754.87f9507
 pkgrel=1
 pkgdesc="Read/sync your IMAP mailboxes (python3)"
 arch=("any")
@@ -20,23 +20,14 @@ provides=("offlineimap")
 conflicts=("offlineimap" "offlineimap-git")
 source=(
     "${pkgname}::git+https://github.com/OfflineIMAP/offlineimap3.git"
-    "imaplib2_version.patch"
 )
 md5sums=(
     "SKIP"
-    "0ad5ba88285b4604fc6e77472892fe23"
 )
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-
-    # apply patches
-    patch -p1 -i "${srcdir}/imaplib2_version.patch"
 }
 
 build() {
