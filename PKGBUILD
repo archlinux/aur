@@ -2,18 +2,18 @@
 _pkgname=libretro-genesis-plus-gx-wide
 pkgname=$_pkgname-git
 pkgver=r1539.73c298b
-pkgrel=2
+pkgrel=3
 pkgdesc="Sega CD/Game Gear/Master System/Mega Drive/SG-1000 core"
-arch=('x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/Genesis-Plus-GX-Wide"
 license=('custom')
 groups=('libretro')
-depends=('glibc' 'libretro-core-info')
+depends=('glibc' 'libretro-core-info' 'libvorbis')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	make -C $_pkgname -f Makefile.libretro
+	make -C $_pkgname -f Makefile.libretro SHARED_LIBVORBIS=1
 }
 
 package() {
