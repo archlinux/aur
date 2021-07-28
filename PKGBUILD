@@ -2,10 +2,10 @@
 
 pkgbase=csky-toolchain-900-series-bin
 pkgname=($pkgbase csky-riscv64-linux-900-series-bin csky-riscv64-elf-900-series-bin csky-toolchain-900-series-guide-bin)
-pkgver=1.8.5
+pkgver=1.10.2
 pkgrel=1
 arch=('x86_64')
-url='https://occ.t-head.cn/community/download?id=3813254164830822400'
+url='https://occ.t-head.cn/community/download?id=3853789384499601408'
 license=('Apache')
 provides=()
 #conflicts=()
@@ -13,9 +13,9 @@ depends=('filesystem')
 makedepends=('tar')
 
 source=("https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234913073/ReleaseNotes.pdf"
-        "csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1597041855162/riscv64-linux-x86_64-20200720.tar.gz"
-        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1597040004272/riscv64-elf-x86_64-20200720.tar.gz"
-        "https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1597043154039/ReleaseNote.docx"
+        "csky-riscv64-linux-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1606703449534/riscv64-linux-x86_64-20201104.tar.gz"
+        "csky-riscv64-elf-900-series-bin-${pkgver}.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1606703215159/riscv64-elf-x86_64-20201104.tar.gz"
+        "https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1606703074032/ReleaseNote.html"
         "T-HEAD RISC-V LD Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083695234/T-HEAD+RISC-V+LD+Manual+V1.4.2.pdf"
         "T-HEAD RISC-V GCC Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083609604/T-HEAD+RISC-V+GCC+Manual+V1.4.2.pdf"
         "T-HEAD RISC-V GDB Manual.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1577083669041/T-HEAD+RISC-V+GDB+Manual+V1.4.2.pdf"
@@ -24,9 +24,9 @@ source=("https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1614234
         )
 
 sha256sums=('e70dca4e839c503d0efff7b078c5418f0d28d0e79a032d50e5e39682507c82ae'
-            'fb48a971c1cc6f27c3e384b572919440fa495c77cba5d3543512efa7fc6fe819'
-            '0943e89cb93c1244ef371c1c337dcf89094aba94c4069a0c2b6d8c3c8d917150'
-            'e97bb7969df13b07c13c002959625f59822d1def9bc75e9424382ec73bb04acc'
+            '67659581c81bdb36bcea0f9f6785642ef853a12b748d7ff6bc27d572021619fb'
+            'c0b9197b25e9778afffbcda649f3e1d4cc3555fe0bed70e9aaf5730d90a70530'
+            '56b3d14ccbfe382b76b59d7c4f4826e6d1d11e2c74c0988d4ffc6cabc667284f'
             'a132754abca8e8956169a33f4239ef14e8f309259168dc8c0531e4df19e1f0f2'
             '02c47ffb157456711bb0ad3f9848a02ee939e17cf0ed649d985b2dd0c6f744de'
             '87cf75b68fa5792905cc4e1f0649a7b382c30d5986d479d1cd36d94a36c9e0a9'
@@ -74,6 +74,6 @@ package_csky-toolchain-900-series-guide-bin() {
     install -dm0755 "${pkgdir}/opt/t-head/${pkgname%-bin}"
 
     cp -r "${srcdir}"/*.pdf "${pkgdir}/opt/t-head/${pkgname%-bin}"
-    cp -r "${srcdir}"/*.docx "${pkgdir}/opt/t-head/${pkgname%-bin}"
+    cp -r "${srcdir}"/*.html "${pkgdir}/opt/t-head/${pkgname%-bin}"
 }
 # vim: ts=4 sw=4 et
