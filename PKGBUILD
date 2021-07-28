@@ -3,7 +3,7 @@
 
 _pkgname=hypseus-singe
 pkgname=$_pkgname-git
-pkgver=306.6695441
+pkgver=309.4f389ea
 pkgrel=1
 pkgdesc="A drop-in replacement for daphne."
 arch=(x86_64)
