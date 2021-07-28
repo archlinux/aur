@@ -2,7 +2,7 @@
 
 pkgname=kaobook
 pkgver=0.9.7
-pkgrel=3
+pkgrel=4
 pkgdesc='A LaTeX class for books, reports or theses'
 arch=('any')
 url='https://github.com/fmarotta/kaobook'
@@ -14,6 +14,9 @@ sha256sums=('a92390533b430a57a3266c5152f272d14f2685d5ce50a37af604345ac2be9b53')
 package() {
 
   cd "$srcdir"
+
+  mkdir -p "$pkgdir"/usr/share/texmf/tex/latex/kaobook
+
   install -m444 "$srcdir"/$pkgname-$pkgver/kaohandt.cls "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
   install -m444 "$srcdir"/$pkgname-$pkgver/kaobook.cls "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
   install -m444 "$srcdir"/$pkgname-$pkgver/kao.sty "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
