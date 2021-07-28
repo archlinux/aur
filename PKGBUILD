@@ -8,7 +8,7 @@ arch=('any')
 url='https://btdex.trade'
 license=('GPL3')
 depends=('java-runtime' 'xdg-utils')
-source=("https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-all-v$pkgver.jar"
+source=("https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-v${pkgver}-all.jar"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.sh"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/src/main/resources/icon.png"
         "https://raw.githubusercontent.com/btdex/btdex/v$pkgver/dist/btdex.desktop"
