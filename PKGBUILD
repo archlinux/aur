@@ -28,8 +28,10 @@ build() {
 	cmake -S $_pkgname -B build \
 		-DARCH_FLAG="" \
 		-DCMAKE_BUILD_TYPE=Release \
+		-DDISABLE_ADVANCE_SIMD=ON \
 		-DLIBRETRO=ON \
 		-DOPTIMIZATION_FLAG="" \
+		-DUSE_LTO=OFF \
 		-Wno-dev
 	cmake --build build
 }
