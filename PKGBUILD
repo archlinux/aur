@@ -6,13 +6,13 @@
 
 pkgname=mpdscribble
 pkgver=0.23
-pkgrel=4
+pkgrel=5
 pkgdesc='MPD client which submits track info to {Libre,Last}.fm'
 url='https://www.musicpd.org/clients/mpdscribble/'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('curl' 'libmpdclient')
-makedepends=('boost' 'libsystemd' 'meson' 'ninja')
+makedepends=('boost' 'systemd' 'meson' 'ninja')
 install=$pkgname.install
 source=("https://www.musicpd.org/download/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.sig})
 validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512') # Max Kellermann <max@musicpd.org>
