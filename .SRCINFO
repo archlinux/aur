@@ -1,7 +1,7 @@
 pkgbase = goaccess-systemd
 	pkgdesc = An open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 	pkgver = 1.5.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://goaccess.io
 	arch = any
 	license = MIT

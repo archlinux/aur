@@ -3,7 +3,7 @@
 pkgname=goaccess-systemd
 _pkgname="${pkgname%-systemd}"
 pkgver=1.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="An open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser."
 arch=('any')
 url='http://goaccess.io'
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "${_pkgnamesy}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 "${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 
   cd $_pkgname-$pkgver
   make prefix="$pkgdir/usr" sysconfdir="$pkgdir/etc" install
