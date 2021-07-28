@@ -2,7 +2,7 @@
 
 pkgname=kaobook
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A LaTeX class for books, reports or theses'
 arch=('any')
 url='https://github.com/fmarotta/kaobook'
@@ -18,8 +18,9 @@ package() {
   
   install -m444 "$srcdir"/$pkgname-$pkgver/kaohandt.cls "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
   install -m444 "$srcdir"/$pkgname-$pkgver/kaobook.cls "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
-  
-  for file in "$srcdir"/$pkgname-$pkgver/styles/*.sty; do
-    install -m 444 "$file" "$pkgdir"/usr/share/texmf/tex/latex/kaobook/styles/
-  done
+  install -m444 "$srcdir"/$pkgname-$pkgver/kao.sty "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
+  install -m444 "$srcdir"/$pkgname-$pkgver/kaobiblio.sty "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
+  install -m444 "$srcdir"/$pkgname-$pkgver/kaorefs.sty "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
+  install -m444 "$srcdir"/$pkgname-$pkgver/kaotheorems.sty "$pkgdir"/usr/share/texmf/tex/latex/kaobook/
+
 }
