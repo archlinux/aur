@@ -1,7 +1,7 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 # Contributor: dumblob <dumblob@gmail.com>
 
-pkgver=7.10.4
+pkgver=7.10.5
 pkgrel=1
 
 _basename=bonita-studio-community
@@ -14,7 +14,7 @@ url='https://www.bonitasoft.com/bonita-platform'
 license=('GPL2')
 arch=('x86_64')
 source=("https://release.ow2.org/bonita/BonitaStudioCommunity-${pkgver}-x86_64.run")
-sha256sums=('3dc5e829acb13867c064bf2f8a2526f02e7227664a95b93c76d348524f79f469')
+sha256sums=('b503a48a6688ba6e668897e06c9088fa115b6d190fdd4529ab0fc3a8df92f28d')
 install="${_basename}.install"
 replaces=('bonita-bpm-community-bin')  # yeah, they renamed it
 

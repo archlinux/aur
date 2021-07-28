@@ -1,6 +1,6 @@
 pkgbase = bonita-studio-community-bin
 	pkgdesc = Bonita Studio with embedded Engine + Portal
-	pkgver = 7.10.4
+	pkgver = 7.10.5
 	pkgrel = 1
 	url = https://www.bonitasoft.com/bonita-platform
 	install = bonita-studio-community.install
@@ -18,8 +18,7 @@ pkgbase = bonita-studio-community-bin
 	optdepends = jre8-openjdk: PROVIDES libmawt.so
 	provides = bonita-studio-community
 	replaces = bonita-bpm-community-bin
-	source = https://release.ow2.org/bonita/BonitaStudioCommunity-7.10.4-x86_64.run
-	sha256sums = 3dc5e829acb13867c064bf2f8a2526f02e7227664a95b93c76d348524f79f469
+	source = https://release.ow2.org/bonita/BonitaStudioCommunity-7.10.5-x86_64.run
+	sha256sums = b503a48a6688ba6e668897e06c9088fa115b6d190fdd4529ab0fc3a8df92f28d
 
 pkgname = bonita-studio-community-bin
-
