@@ -1,0 +1,12 @@
+pkgbase = otf-murty-kannada
+	pkgdesc = Kannada Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Kannada.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Kannada.zip
+	sha256sums = 5095ea3f54c9aad59a0c09f278492155151b1d2a02f681144425816bb7106e9e
+
+pkgname = otf-murty-kannada
