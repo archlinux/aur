@@ -1,6 +1,6 @@
 pkgbase = python-spotdl
 	pkgdesc = Download songs from YouTube using Spotify song URLs or playlists with albumart and meta-tags.
-	pkgver = 3.6.3
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/spotDL/spotify-downloader
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-spotdl
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-unidecode
-	source = https://pypi.io/packages/source/s/spotdl/spotdl-3.6.3.tar.gz
-	sha512sums = f0c66281d345a109b0fda164a4eb8ae0c57b8b99f8ff498c80be5d44187d54899e9081e0bfe71024991eb8f699debd0d3024a56050ce9269d924a06215d523df
+	source = https://pypi.io/packages/source/s/spotdl/spotdl-3.7.0.tar.gz
+	sha512sums = c2e2a30e0a8f712ca7bb96cf492ec6452f099d1455d807d4648e803990fc5aff3a209deeffc9c248fca4c0556e3182fd00e2c820565ef3fffacd035aa6a49ab3
 
 pkgname = python-spotdl
