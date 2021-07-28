@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name = "seafobj",
-    version = "8.0.5",
+    version = "8.0.6",
     author = "Seafile Ltd.",
     author_email = "info@seafile.com",
     description = ("Python library for accessing seafile data model"),
