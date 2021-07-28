@@ -1,6 +1,6 @@
 pkgbase = sickchill-git
 	pkgdesc = Automatic video library manager for TV shows
-	pkgver = 2021.7.12.6.r0
+	pkgver = 2021.7.23.1.r0
 	pkgrel = 1
 	url = https://sickchill.github.io
 	install = sickchill-git.install
@@ -15,9 +15,7 @@ pkgbase = sickchill-git
 	options = !strip
 	source = sickchill.service
 	source = sickchill.sysusers
-	source = sickchill.tmpfile
 	sha256sums = ca6a73f7c2019ddda2b338eb63be560bf1a5d6ae5ceab969dc032c05b6d2d7b5
 	sha256sums = 1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850
-	sha256sums = 43f7916915942661dad4966b989aed0a2ca85b19bceb31689cf64f83842ef521
 
 pkgname = sickchill-git

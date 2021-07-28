@@ -5,7 +5,7 @@
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2021.7.12.6.r0
+pkgver=2021.7.23.1.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -19,11 +19,9 @@ conflicts=("${pkgname%-git}")
 options=('!strip')
 install=$pkgname.install
 source=('sickchill.service'
-        'sickchill.sysusers'
-        'sickchill.tmpfile')
+        'sickchill.sysusers')
 sha256sums=('ca6a73f7c2019ddda2b338eb63be560bf1a5d6ae5ceab969dc032c05b6d2d7b5'
-            '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850'
-            '43f7916915942661dad4966b989aed0a2ca85b19bceb31689cf64f83842ef521')
+            '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850')
 
 pkgver() {
   local version
@@ -46,7 +44,6 @@ build() {
 package() {
   install -Dm644 sickchill.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 sickchill.sysusers "$pkgdir/usr/lib/sysusers.d/sickchill.conf"
-  install -Dm644 sickchill.tmpfile "$pkgdir/usr/lib/tmpfiles.d/sickchill.conf"
 
   install -dm755 "$pkgdir/opt/sickchill/data"
 
