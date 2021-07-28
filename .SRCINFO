@@ -1,6 +1,6 @@
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL
-	pkgver = 1.20.3
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-numpy-mkl
 	depends = python>=3.6
 	depends = intel-mkl
 	optdepends = python-nose: testsuite
-	provides = python-numpy=1.20.3
+	provides = python-numpy=1.21.1
 	conflicts = python-numpy
 	options = staticlibs
 	source = https://github.com/numpy/numpy/releases/download/v1.21.1/numpy-1.21.1.tar.gz
