@@ -1,16 +1,15 @@
 pkgbase = xf86-input-mtrack-git
 	pkgdesc = A multitouch X driver using the kernel MT protocol
-	pkgver = 0.5.0.r2.g0185630
+	pkgver = 0.5.0.r15.g124b80f
 	pkgrel = 1
 	url = http://github.com/p2rkw/xf86-input-mtrack
 	install = xf86-input-mtrack-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	makedepends = xorg-server-devel
-	makedepends = resourceproto
-	makedepends = glproto
+	makedepends = xorgproto
+	makedepends = pixman
 	depends = mtdev
 	depends = libxss
 	provides = xf86-input-mtrack
@@ -23,4 +22,3 @@ pkgbase = xf86-input-mtrack-git
 	md5sums = ffb540330d92957e0da28af5a005136e
 
 pkgname = xf86-input-mtrack-git
-

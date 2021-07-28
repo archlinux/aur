@@ -1,16 +1,17 @@
-# Maintainer: Zach <mikezackles@gmail.com>
+# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Contributor: Zach <mikezackles@gmail.com>
 # Contributor: James An <james@jamesan.ca>
 
 _pkgname=xf86-input-mtrack
 pkgname="$_pkgname-git"
-pkgver=0.5.0.r2.g0185630
+pkgver=0.5.0.r15.g124b80f
 pkgrel=1
 pkgdesc="A multitouch X driver using the kernel MT protocol"
 arch=('i686' 'x86_64')
 url="http://github.com/p2rkw/$_pkgname"
 license=('GPL')
 depends=('mtdev' 'libxss')
-makedepends=('git' 'xorg-server-devel' 'resourceproto' 'glproto')
+makedepends=('xorg-server-devel' 'xorgproto' 'pixman')
 provides=("$_pkgname")
 conflicts=("$_pkgname" 'xf86-input-synaptics')
 backup=('usr/share/X11/xorg.conf.d/10-mtrack.conf')
@@ -24,14 +25,6 @@ md5sums=(
   'SKIP'
   ffb540330d92957e0da28af5a005136e
 )
-
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  ( set -o pipefail
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/^[^0-9]*//' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 build() {
   cd "$_pkgname"
