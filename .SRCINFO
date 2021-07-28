@@ -1,6 +1,6 @@
 pkgbase = xpra-git
 	pkgdesc = multi-platform screen and application forwarding system screen for X11
-	pkgver = v4.1.r259.g6f3afe3c4
+	pkgver = v4.2.r429.g91bdd984e
 	pkgrel = 1
 	url = https://www.xpra.org
 	arch = x86_64
@@ -59,7 +59,9 @@ pkgbase = xpra-git
 	optdepends = twolame: MP2 encoder
 	optdepends = libmad: MP3 encoder
 	optdepends = python-numpy: GPU accelerated capture and compression for NVIDIA cards
+	optdepends = python-pyinotify: watch for application menu changes
 	optdepends = xpra-html5: HTML5 client. Can be used with Xpra proxy
+	optdepends = python-uinput: fine-grained scrolling using virtual input
 	provides = xpra
 	conflicts = xpra
 	conflicts = run_scaled-git
@@ -85,4 +87,3 @@ pkgbase = xpra-git
 	md5sums = SKIP
 
 pkgname = xpra-git
-

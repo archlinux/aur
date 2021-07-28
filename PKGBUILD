@@ -2,7 +2,7 @@
 # Maintainer: leuko <aur_et_aydos_de>
 _pkgname=xpra
 pkgname=${_pkgname}-git
-pkgver=v4.1.r259.g6f3afe3c4
+pkgver=v4.2.r429.g91bdd984e
 pkgrel=1
 pkgdesc="multi-platform screen and application forwarding system screen for X11"
 arch=('x86_64')
@@ -88,8 +88,12 @@ optdepends=(
 
 	# not listed on Github deps page but in setup.py
 	'python-numpy: GPU accelerated capture and compression for NVIDIA cards'
-	#TODO 'gst-python: Sound Forwarding'
+	'python-pyinotify: watch for application menu changes'
 	'xpra-html5: HTML5 client. Can be used with Xpra proxy'
+
+	# https://github.com/Xpra-org/xpra/blob/91bdd984e4558dafe6d47317fd2802b75fc1b051/setup.py#L1667
+	'python-uinput: fine-grained scrolling using virtual input'
+	
 )
 conflicts=('xpra' 'run_scaled-git')
 provides=('xpra')
