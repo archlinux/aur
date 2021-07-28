@@ -1,11 +1,9 @@
 pkgbase = phosh-git
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.7.1.r13.g0ca4ab1
+	pkgver = 0.12.1.r2.g3e1ba9d
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phosh
-	arch = i686
 	arch = x86_64
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	makedepends = ctags
@@ -23,4 +21,3 @@ pkgbase = phosh-git
 	sha256sums = SKIP
 
 pkgname = phosh-git
-
