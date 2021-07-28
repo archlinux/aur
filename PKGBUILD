@@ -1,15 +1,24 @@
-# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+#!/bin/bash
+
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 _name=mapclassify
 pkgname=python-mapclassify
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
-pkgdesc="Classification schemes for choropleth mapping."
+pkgdesc='Classification schemes for choropleth mapping.'
+url='https://github.com/pysal/mapclassify'
 arch=('any')
-url="https://github.com/pysal/mapclassify"
 license=('BSD')
-depends=('python-scipy' 'python-numpy' 'python-scikit-learn' 'python-pandas' 'python-networkx')
-optdepends=('python-sphinx: documents'
+depends=(
+  'python-scipy'
+  'python-numpy'
+  'python-scikit-learn'
+  'python-pandas'
+  'python-networkx'
+)
+optdepends=(
+  'python-sphinx: documents'
   'python-sphinx-gallery: documents'
   'python-sphinx-bootstrap-theme: documents'
   'python-sphinxcontrib-bibtex: documents'
@@ -19,18 +28,20 @@ optdepends=('python-sphinx: documents'
   'python-codecov: tests'
   'python-geopandas: tests'
   'python-libpysal: tests'
-  'python-palettable: tests')
+  'python-palettable: tests'
+)
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('bc20954aa433466f5fbc572e3f23b05f9606b59209f40b0ded93ac1ca983d24e')
+b2sums=('227465a610d90a6a78d4eebdfebe19433bca5262c843169d53c11be8603ab27ba9957170327ed2c861c5a859cdb5169600f6566723a592fb5a702488be57d0f6')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name-$pkgver" || exit
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name-$pkgver" || exit
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 'LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
