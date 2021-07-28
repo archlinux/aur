@@ -1,15 +1,14 @@
 pkgbase = ruby-ddplugin
 	pkgdesc = Provides plugin management for Ruby projects
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://rubygems.org/gems/ddplugin
+	url = https://github.com/ddfreyne/ddplugin
 	arch = any
 	license = MIT
-	makedepends = rubygems
 	depends = ruby
-	noextract = ddplugin-1.0.2.gem
-	source = https://rubygems.org/downloads/ddplugin-1.0.2.gem
-	sha256sums = c11d7dcc5ecd4c3f4a42e689a2630f766dc8aacf37a9258dc39e715285ce7a1f
+	noextract = ddplugin-1.0.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ddplugin-1.0.3.gem
+	b2sums = 8d287a558fe2716c394f96f92824c8b843fbdcb77b5052b8bb4699013222ef0e57c273348007dc61cde4281978570b115551ce51a71077b53f0cc8d7ebda5ea9
 
 pkgname = ruby-ddplugin
-
