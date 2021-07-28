@@ -2,3 +2,4 @@ src/
 pkg/
 *.pkg.tar.zst
 earthly-linux*
+earthly-bin*

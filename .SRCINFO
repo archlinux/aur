@@ -1,7 +1,7 @@
 pkgbase = earthly-bin
 	pkgdesc = Build automation for the container era
 	pkgver = 0.5.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://earthly.dev
 	install = earthly-bin.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = earthly-bin
 	license = MPL-2.0
 	depends = docker
 	depends = git
-	source = https://github.com/earthly/earthly/releases/download/v0.5.20/earthly-linux-amd64
+	source = earthly-linux-amd64-0.5.20:https://github.com/earthly/earthly/releases/download/v0.5.20/earthly-linux-amd64
 	sha512sums = 6624f6dd2b6bccfb99d4811e99353b07965f48349fcd50676e6c2964dddc04f3b41a0b6ae78f27bff83cfdd82bc8997e7ade761705209f63afafa3dbd8451a0c
 
 pkgname = earthly-bin
