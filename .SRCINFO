@@ -1,0 +1,19 @@
+pkgbase = csky-cpu-e801-csi-rtos-sdk
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=3773407599358185472
+	arch = x86_64
+	license = unkown
+	makedepends = libarchive
+	noextract = csky-cpu-e801-csi-rtos-sdk-1.6.zip
+	noextract = csky-cpu-ck801-csi-rtos-sdk-1.6.zip
+	source = csky-cpu-e801-csi-rtos-sdk-1.6.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1594863442329/SmartL_E801-v1.6.zip
+	source = csky-cpu-ck801-csi-rtos-sdk-1.6.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1594863476205/SmartL_CK801-v1.6.zip
+	sha256sums = 5d8b63d41d48f949cd562a98745680f509fc953d20641bad89a20cf12da175d9
+	sha256sums = bfa518d2fb316e90a504ec4d2d149b365af92559115f7efdef3748d375e9642e
+
+pkgname = csky-cpu-e801-csi-rtos-sdk
+	pkgdesc = C-Sky CPU E801 CSI-RTOS SDK
+
+pkgname = csky-cpu-ck801-csi-rtos-sdk
+	pkgdesc = C-Sky CPU CK801 CSI-RTOS SDK
