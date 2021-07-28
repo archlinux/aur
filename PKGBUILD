@@ -3,7 +3,7 @@
 pkgname=csky-debugserver-bin
 pkgver=5.12.1
 _pkgver=V${pkgver}-20210716
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
@@ -37,13 +37,14 @@ prepare(){
 build(){
 # Extract the installation file
     tar -xf "${srcdir}/${pkgname}-${pkgver}.gz"
-    echo "${srcdir}/T-HEAD_DebugServer" > csky-debug.conf
 }
 
 package() {
     install -dm0755 "${pkgdir}/opt/t-head"
     cp -r "${srcdir}/T-HEAD_DebugServer" "${pkgdir}/opt/t-head"
     cp -r "${srcdir}/C-Sky+Debugger+Server+User+Guide_v5.10.pdf" "${pkgdir}/opt/t-head/T-HEAD_DebugServer"
+
+    echo "/opt/t-head/T-HEAD_DebugServer" > csky-debug.conf
 
     install -Dm0644 "${srcdir}/csky-debug.conf" "${pkgdir}/etc/ld.so.conf.d/csky-debug.conf"
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF

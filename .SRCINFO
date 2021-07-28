@@ -1,7 +1,7 @@
 pkgbase = csky-debugserver-bin
 	pkgdesc = C-Sky Debugger Server
 	pkgver = 5.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://occ.t-head.cn/community/download?id=616215132330000384
 	arch = x86_64
 	license = BSD
