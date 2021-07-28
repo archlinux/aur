@@ -1,6 +1,6 @@
 pkgbase = soniccd-git
 	pkgdesc = A full decompilation of Sonic CD 2011, based on the PC remake with improvements & tweaks from the mobile remakes.
-	pkgver = r245.e1ffe4f
+	pkgver = r281.129cd86
 	pkgrel = 1
 	url = https://github.com/Rubberduckycooly/Sonic-CD-11-Decompilation
 	install = soniccd.install
@@ -20,4 +20,3 @@ pkgbase = soniccd-git
 	sha256sums = 5ef3e25f5391707fdc461a8c25817ddde38a1d34d125dc5b3c43f706b889ed8a
 
 pkgname = soniccd-git
-
