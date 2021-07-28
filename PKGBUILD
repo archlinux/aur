@@ -1,13 +1,14 @@
 # Contributor: Jesse McClure <code@jessemcclure.org>
 
 pkgname=weaver-fossil
-pkgver=r110.2a5e04de98
+pkgver=r112.aa71ebff43
 pkgrel=1
 pkgdesc='socket-controlled qt5webengine browser w/ minimal UI'
 arch=('x86_64')
 license=('MIT')
 depends=(gcc-libs glibc qt5-base qt5-webengine)
 makedepends=(fossil)
+optdepends=('mkinitcpio-busybox: to use the default "nc"; otherwise edit your config.conf')
 url=https://code.jessemcclure.org/weaver
 VCSCLIENTS+=(fossil::fossil)
 source=(fossil+https://code.jessemcclure.org/weaver)

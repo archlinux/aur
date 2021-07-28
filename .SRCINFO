@@ -1,6 +1,6 @@
 pkgbase = weaver-fossil
 	pkgdesc = socket-controlled qt5webengine browser w/ minimal UI
-	pkgver = r110.2a5e04de98
+	pkgver = r112.aa71ebff43
 	pkgrel = 1
 	url = https://code.jessemcclure.org/weaver
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = weaver-fossil
 	depends = glibc
 	depends = qt5-base
 	depends = qt5-webengine
+	optdepends = mkinitcpio-busybox: to use the default "nc"; otherwise edit your config.conf
 	source = fossil+https://code.jessemcclure.org/weaver
 	sha256sums = SKIP
 
