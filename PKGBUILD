@@ -19,7 +19,7 @@ source=("git+https://github.com/moinakg/${_pkgname}.git"
 md5sums=('SKIP'
          '4c0186ef0dc8367ce5cd7cc0f398b714'
          '22f1a4e1bf373c6f6b86c49f70ee3be3'
-         '2ba6de31e06aded3b5478c41804a2441')
+         '16a91b9f94f56a4981d18aa6c7bfdfdd')
 
 pkgver() {
   cd "$_pkgname"
