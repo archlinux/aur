@@ -1,0 +1,25 @@
+--- configure.orig	2021-06-03 09:31:55.000000000 +0200
++++ configure	2021-07-28 13:35:21.934743892 +0200
+@@ -21874,17 +21874,17 @@
+ 
+ BAT_DIR=
+ if test x$support_bat = xyes; then
+-   abc=`$PKGCONFIG QtGui`
++   abc=`$PKGCONFIG Qt5Gui`
+    pkg=$?
+    if test $pkg = 0; then
+-      BAT_DIR=src/qt-console
++      BAT_DIR="src/qt-console src/qt-console/tray-monitor"
+    else
+-     abc=`$PKGCONFIG Qt5Gui`
++     abc=`$PKGCONFIG QtGui`
+      pkg=$?
+      if test $pkg = 0; then
+-	BAT_DIR="src/qt-console src/qt-console/tray-monitor"
++        BAT_DIR=src/qt-console
+      else
+-	as_fn_error $? "Unable to find either Qt4 or Qt5 installation needed by bat" "$LINENO" 5
++        as_fn_error $? "Unable to find either Qt4 or Qt5 installation needed by bat" "$LINENO" 5
+      fi
+    fi
+ fi

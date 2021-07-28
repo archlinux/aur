@@ -16,7 +16,7 @@ pkgname=("${pkgbase}-common"
          "${_dir_backends[@]}"
          "${pkgbase}-dir-mysql")
 pkgver=11.0.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="${pkgbase^} - A Network Backup Tool "
 url="https://www.${pkgbase}.org"
@@ -41,6 +41,7 @@ _workdir="/var/lib/${pkgbase}"
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
+  patch -i ../../look-for-qt-order.patch
 
   ./configure                                \
     --enable-bat                             \
