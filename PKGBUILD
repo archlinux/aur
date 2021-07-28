@@ -1,14 +1,14 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Ben Widawsky <ben@bwidawsk.net>
 pkgname=kanshi-git
-pkgver=r92.dabd7a2
-pkgrel=2
+pkgver=r105.92a5a32
+pkgrel=1
 pkgdesc="Dynamic output configuration for Wayland WMs"
 arch=(x86_64)
 url="https://github.com/emersion/kanshi"
 license=('MIT')
 groups=()
-depends=('wayland')
+depends=('wayland' 'libvarlink')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wlroots>=0.7')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
