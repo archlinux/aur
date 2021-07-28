@@ -1,19 +1,16 @@
 pkgbase = stag-git
-	pkgdesc = A C curses based mp3/ogg/flac tagging application (git version)
-	pkgver = 93.0a158e7
+	pkgdesc = A public domain ncurses based audio file tagger
+	pkgver = v1.0.r1.g0a158e7
 	pkgrel = 1
-	url = http://cryptm.org/~sturm/stag.html
+	url = https://github.com/smabie/stag
 	arch = i686
 	arch = x86_64
-	license = custom:none
+	license = custom
 	makedepends = git
 	depends = ncurses
 	depends = taglib
-	provides = stag
 	conflicts = stag
-	options = !buildflags
-	source = git+https://github.com/smabie/stag.git
+	source = git+https://github.com/smabie/stag
 	sha256sums = SKIP
 
 pkgname = stag-git
-

@@ -1,34 +1,36 @@
-# Maintainer: mutantmonkey <aur@mutantmonkey.in>
+# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Contributor: mutantmonkey <aur@mutantmonkey.in>
+
 pkgname=stag-git
-_gitname=stag
-pkgver=93.0a158e7
+pkgver=v1.0.r1.g0a158e7
 pkgrel=1
-pkgdesc="A C curses based mp3/ogg/flac tagging application (git version)"
+pkgdesc="A public domain ncurses based audio file tagger"
 arch=('i686' 'x86_64')
-url="http://cryptm.org/~sturm/stag.html"
-license=('custom:none')
+url="https://github.com/smabie/stag"
+license=('custom')
 depends=('ncurses' 'taglib')
 makedepends=('git')
-options=('!buildflags')
-provides=('stag')
 conflicts=('stag')
-source=('git+https://github.com/smabie/stag.git')
+source=(git+https://github.com/smabie/stag)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+	cd stag
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-  make
+	cd stag
+	sed -n '/Released into the public domain/p' README > LICENSE
+	export CFLAGS="$CFLAGS -ansi -pedantic -Wall -D_DEFAULT_SOURCE"
+	export LDFLAGS="${LDFLAGS/--as-needed,/} -L/usr/lib `taglib-config --libs` -ltag_c -lstdc++"
+	export CPPFLAGS="-I/usr/include `taglib-config --cflags`"
+	make
 }
 
 package() {
-  cd $_gitname
-  install -Dm 755 stag $pkgdir/usr/bin/stag
-  install -D stag.1 $pkgdir/usr/share/man/man1/stag.1
+	cd stag
+	install -Dm755 stag "$pkgdir"/usr/bin/stag
+	install -Dm644 stag.1 "$pkgdir"/usr/share/man/man1/stag.1
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/stag/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
