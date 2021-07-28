@@ -71,7 +71,7 @@ package() {
 	# Copy the binaries and application to their destination in /pkg as root folder
 	cp -r -i "usr" "$pkgdir/"
 	cp -r -i "opt" "$pkgdir/"
-	cp "user/share/doc/youtube-to-mp3/copyright" "$pkgdir/LICENSE"
+	cp "usr/share/doc/youtube-to-mp3/copyright" "$pkgdir/LICENSE"
 
 	# Remove .deb packages
 	cd ../..
