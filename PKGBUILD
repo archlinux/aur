@@ -9,7 +9,7 @@ url="https://github.com/libretro/pcsx2"
 license=('GPL2' 'GPL3' 'LGPL2.1' 'LGPL3')
 groups=('libretro')
 depends=('glib2' 'libaio' 'libgl' 'libretro-core-info' 'systemd-libs')
-makedepends=('ccache' 'cmake' 'git' 'libglvnd' 'systemd' 'vim')
+makedepends=('cmake' 'git' 'libglvnd' 'systemd' 'vim')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -18,6 +18,10 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	sed -i '/ ccache)$/d' $_pkgname/CMakeLists.txt
 }
 
 build() {

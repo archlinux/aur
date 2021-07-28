@@ -9,7 +9,6 @@ pkgbase = libretro-pcsx2-git
 	license = GPL3
 	license = LGPL2.1
 	license = LGPL3
-	makedepends = ccache
 	makedepends = cmake
 	makedepends = git
 	makedepends = libglvnd
