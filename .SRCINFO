@@ -1,0 +1,12 @@
+pkgbase = otf-murty-gurmukhi
+	pkgdesc = Gurmukhi Typeface from Harvard's Murty Classical Library of India (free for non-commercial/scholarly use)
+	pkgver = 1.1.26
+	pkgrel = 1
+	url = https://murtylibrary.com/design-and-typography.php
+	arch = any
+	license = custom
+	noextract = Murty-Gurmukhi.zip
+	source = http://www.hup.harvard.edu/features/mcli/fonts/Murty-Gurmukhi.zip
+	sha256sums = 5c0e1c7d629570d2ffb8004165a47866ea7b0bcfc121f86371cf7f3da9c59abf
+
+pkgname = otf-murty-gurmukhi
