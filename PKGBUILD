@@ -1,7 +1,7 @@
 # Maintainer: Doommsatic <keniscoolu@gmail.com>
 pkgname=('sonic-1' 'sonic-2')
 pkgbase=sonic-2013
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Decompilation of the mobile ports by Taxman"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=("https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation/archiv
 	"sonic2.install"
 	"sonic1.sh"
 	"sonic2.sh")
-md5sums=('8bc0ba206c83818b1faf409079fa6f32'
+md5sums=('f4c91f0ec87edd67d508c9b88473c357'
          '604d9d9d8356e484afbe1171e342bbe1'
          '9ec41b899affd1aed9eda74ab1e7d308'
          'ceac785ff2832d5d2c4ee83c145cd4dd'
@@ -31,7 +31,7 @@ package_sonic-1() {
 	install=sonic1.install
 	install -Dm 0755 sonic1.sh $pkgdir/usr/bin/sonic1
 	cd "Sonic-1-2-2013-Decompilation-$pkgver"
-	install -Dm 0755 bin/sonic2013 $pkgdir/opt/sonic2013/sonic-1
+	install -Dm 0755 bin/RSDKv4 $pkgdir/opt/sonic2013/sonic-1
 
 }
 
@@ -41,5 +41,5 @@ package_sonic-2() {
 	install=sonic2.install
 	install -Dm 0755 sonic2.sh $pkgdir/usr/bin/sonic2
 	cd "Sonic-1-2-2013-Decompilation-$pkgver"
-	install -Dm 0755 bin/sonic2013 $pkgdir/opt/sonic2013/sonic-2
+	install -Dm 0755 bin/RSDKv4 $pkgdir/opt/sonic2013/sonic-2
 }
