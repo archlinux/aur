@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=concordium-desktop-wallet-bin
-pkgver=1.0.2
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Desktop wallet for Concordium blockchain'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('gtk3' 'libnotify' 'libsecret' 'libxss' 'nss' 'xdg-utils')
 optional=('libappindicator-gtk3')
 source=("https://distribution.mainnet.concordium.software/tools/linux/concordium-desktop-wallet-$pkgver.deb")
-sha512sums=('50f7112cae1cca3748c4b2e925c652483e4306730ae3cce3f09cd29ac2f79a91c421c2d30ff9b497e93453691edc68c800d3a3b2b6af50335d3d4710b4916c48')
+sha512sums=('43dd962ea9e2ca8e8f7cbd01cb04e73578fcaa8141fd27fcbd4957a5718ece37ac5995b5a688fa1a0774f1d00bdeaf332ffbe256624856aeff836140126ea252')
 
 prepare() {
     bsdtar -xf data.tar.xz
@@ -19,5 +19,5 @@ prepare() {
 package() {
     cp -r opt usr "$pkgdir"
     install -d "$pkgdir/usr/bin"
-    ln -s "/opt/Concordium Wallet/concordium-desktop-wallet" "$pkgdir/usr/bin"
+    ln -s '/opt/Concordium Wallet/concordium-desktop-wallet' "$pkgdir/usr/bin"
 }
