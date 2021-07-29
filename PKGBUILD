@@ -1,7 +1,7 @@
 # Maintainer: Mahdy Mirzade <me@mahdym.ir>
 pkgname=gip
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Get Private/Public IP & IP's Geolocation."
 arch=(any)
 url="https://github.com/mahdymirzade/gip"
