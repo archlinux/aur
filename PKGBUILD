@@ -1,41 +1,46 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
 
 pkgname=minizip-git
 _pkgname=minizip
 epoch=2
-pkgver=2.3.3
+pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
+pkgver=3.0.2.r0.gbc93e40
 pkgrel=1
 arch=('x86_64')
-license=('custom')
+license=('zlib')
 url="https://github.com/nmoinvaz/minizip"
 depends=('glibc' 'libbsd' 'zlib')
 makedepends=('git' 'cmake')
-source=("git+https://github.com/nmoinvaz/minizip.git#commit=7bdfbf4"
-    "soversion.patch"
-    "project_name.patch"
-    "pc.patch")
-sha256sums=('SKIP'
-            '3a648c48b9af7536e03c13327bd2f680a297fc629045fd904e344674971f3569'
-            '3268ec716b89004bbc8124b3213c3bc0d15289d7771bbac82cd4c6694e390b79'
-            'd45977c36a6c1b2eefbf39d829be8753cecd3d8910d1926ad842359da3b9a869')
+conflicts=('minizip' 'minizip-ng' 'minizip-git')
+provides=('minizip' 'minizip-ng' 'minizip-git')
+source=("git+https://github.com/zlib-ng/minizip-ng")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${srcdir}/${_pkgname}-ng
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-    cd ${srcdir}/${_pkgname}
-    patch -p1 < ../soversion.patch
-    patch -p1 < ../project_name.patch
-    patch -p1 < ../pc.patch
+    cd ${srcdir}/${_pkgname}-ng
+    if [[ -d build ]]; then
+      rm -rf build
+    fi
+    mkdir build
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${_pkgname}-ng/build
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_BUILD_TYPE=Release .
+        -DCMAKE_INSTALL_INCLUDEDIR=/usr/include/minizip \
+        -DCMAKE_BUILD_TYPE=Release ..
     make
 }
 
 package() {
-    cd ${_pkgname}
+    cd ${srcdir}/${_pkgname}-ng/build
     make DESTDIR="${pkgdir}" install
+    install -D -m644 "${srcdir}/${_pkgname}-ng/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
 
