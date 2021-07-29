@@ -1,4 +1,3 @@
-# Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
@@ -10,7 +9,7 @@ arch=(x86_64)
 url="http://www.openimageio.org/"
 depends=('boost-libs' 'fmt' 'intel-tbb' 'libraw' 'libwebp' 'opencolorio-git' 'openjpeg2' 'pugixml' 'pybind11')
 # TODO: Consider adding these deps: 'openvdb' 'ffmpeg' 'ptex' 'libheif' 'hdf5' 'opencv'
-makedepends=('boost' 'cmake' 'fontconfig' 'freetype2' 'libxrender' 'mesa' 'ninja' 'python' 'qt5-base' 'robin-map')
+makedepends=('boost' 'cmake' 'fontconfig' 'freetype2' 'git' 'libxrender' 'mesa' 'ninja' 'python' 'qt5-base' 'robin-map')
 optdepends=('qt5-base: iv image viewer'
             'python: bindings support')
 license=('custom')

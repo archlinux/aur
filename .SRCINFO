@@ -9,6 +9,7 @@ pkgbase = openimageio-git
 	makedepends = cmake
 	makedepends = fontconfig
 	makedepends = freetype2
+	makedepends = git
 	makedepends = libxrender
 	makedepends = mesa
 	makedepends = ninja
@@ -32,4 +33,3 @@ pkgbase = openimageio-git
 	sha512sums = SKIP
 
 pkgname = openimageio-git
-
