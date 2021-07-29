@@ -1,7 +1,7 @@
 # Contributor: Jesse McClure <code@jessemcclure.org>
 
 pkgname=weaver-fossil
-pkgver=r112.aa71ebff43
+pkgver=r122.b34cf15181
 pkgrel=1
 pkgdesc='socket-controlled qt5webengine browser w/ minimal UI'
 arch=('x86_64')
