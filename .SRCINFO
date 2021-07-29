@@ -9,8 +9,10 @@ pkgbase = csky-debugserver-bin
 	depends = bash
 	options = !strip
 	source = csky-debugserver-bin-5.12.1.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1836682/1626764200205/T-Head-DebugServer-linux-x86_64-V5.12.1-20210716.sh.tar.gz
-	source = https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf
+	source = DebugServer User Guide_v5.10.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588909480730/C-Sky+Debugger+Server+User+Guide_v5.10.pdf
+	source = DebugServer User Guide v5.6.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1588916696490/C-Sky+Debugger+Server+User+Guide+v5.6.pdf
 	sha256sums = 054dd396aaf13adf409e31e2ad64e408843f27b892ed5175625bc1a3c781ff75
+	sha256sums = 6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2
 	sha256sums = 6a004189c409a66f550c676990c637b08cbad5f928fed6e0309caf95fe1e62c2
 
 pkgname = csky-debugserver-bin
