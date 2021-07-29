@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN with patches for Zephyrus G14
-	pkgver = 5.13.4.zen1
+	pkgver = 5.13.6.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.4-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.13.6-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,8 +16,8 @@ pkgbase = linux-zen-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.13.4-zen1
-	source = config-5.13.4.zen1::https://github.com/archlinux/svntogit-packages/raw/eeb8b055a79b6845bf06108bb4698e24ca6175b0/trunk/config
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.13.6-zen1
+	source = config-5.13.6.zen1::https://github.com/archlinux/svntogit-packages/raw/8f12f48a5ab2a3ffb777d963b5013fa3f9043b1a/trunk/config
 	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch
 	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0001-asus-wmi-Add-panel-overdrive-functionality.patch
 	source = https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0002-asus-wmi-Add-dgpu-disable-method.patch

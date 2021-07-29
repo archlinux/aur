@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.13.4.zen1
+pkgver=5.13.6.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/eeb8b055a79b6845bf06108bb4698e24ca6175b0/trunk/config"
+  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/8f12f48a5ab2a3ffb777d963b5013fa3f9043b1a/trunk/config"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
 
   "https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
