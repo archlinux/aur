@@ -1,14 +1,14 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
-	pkgver = 6.1.24
+	pkgver = 6.1.26
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = python
-	noextract = VirtualBoxSDK-6.1.24-145767.zip
-	source = http://download.virtualbox.org/virtualbox/6.1.24/VirtualBox-6.1.24-145767-Linux_amd64.run
-	source = https://download.virtualbox.org/virtualbox/6.1.24/VirtualBoxSDK-6.1.24-145767.zip
+	noextract = VirtualBoxSDK-6.1.26-145957.zip
+	source = http://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/6.1.26/VirtualBoxSDK-6.1.26-145957.zip
 	source = VBoxAuth-r88402.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=88402
 	source = VBoxAuthPAM-r88402.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=88402
 	source = VBoxAuthSimple-r88402.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=88402
@@ -19,8 +19,8 @@ pkgbase = virtualbox-bin
 	source = virtualbox.sysusers
 	source = LICENSE.sdk
 	source = 013-Makefile.patch
-	sha256sums = e2f72ae03241ebe2fefc5f605439d84e5d771adcbec37e01c293291c5db5800f
-	sha256sums = 040ec2612130908c484742ee0453c9135bc1fd8c9ccd87bffb055cd04e0a2912
+	sha256sums = ea0e96aaab9f0c3965d73d40865950cd59227e27367e039c660f3fce81ea7c25
+	sha256sums = c0b5fbd78d6e1ac7a4b33365eb173eb6508390e8c673241ccbbd002eb73a785c
 	sha256sums = 61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a
 	sha256sums = bff06f916a9c02fce12d3aaf76572766e8f75d54c179fb26d2fda060a7473af1
 	sha256sums = 2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8
@@ -47,7 +47,7 @@ pkgname = virtualbox-bin
 	optdepends = virtualbox-bin-guest-iso: for guest additions CD image
 	optdepends = virtualbox-bin-sdk: for the software developer kit
 	optdepends = virtualbox-ext-oracle: for Oracle extensions pack
-	provides = virtualbox=6.1.24
+	provides = virtualbox=6.1.26
 	provides = virtualbox-host-dkms
 	provides = VIRTUALBOX-HOST-MODULES
 	conflicts = virtualbox
