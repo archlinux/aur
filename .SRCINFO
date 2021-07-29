@@ -1,6 +1,6 @@
 pkgbase = pipewire-full-git
 	pkgdesc = Low-latency audio/video router and processor
-	pkgver = 0.3.31.r2.g5497d2d9
+	pkgver = 0.3.32.r58.g1216371f
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -29,7 +29,9 @@ pkgbase = pipewire-full-git
 	makedepends = vulkan-icd-loader
 	makedepends = ffmpeg
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
+	source = 0001-Revert-bluez5-Use-libfreeaptx-instead-of-libopenaptx.patch
 	sha256sums = SKIP
+	sha256sums = 9545e10d4e702ee175bed80d1c030cb61ae267cc41809e107574a0e4ecba6811
 
 pkgname = pipewire-full-git
 	install = pipewire.install
