@@ -1,6 +1,6 @@
 pkgbase = autorestic-bin
 	pkgdesc = High level CLI utility for restic
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/cupcakearmy/autorestic
 	arch = x86_64
@@ -11,14 +11,13 @@ pkgbase = autorestic-bin
 	depends = restic
 	provides = autorestic
 	conflicts = autorestic
-	source_x86_64 = autorestic-1.1.1.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.1.1/autorestic_1.1.1_linux_amd64.bz2
-	sha256sums_x86_64 = 530b4179fcbf402c05150ad0352fd0d9e78f428bba71ecf60279055e14f6f951
-	source_i686 = autorestic-1.1.1.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.1.1/autorestic_1.1.1_linux_386.bz2
-	sha256sums_i686 = 62d7176b014102e19ae69e625a6dc8b49f16b03741bb2f79613f57b6116f3d53
-	source_aarch32 = autorestic-1.1.1.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.1.1/autorestic_1.1.1_linux_arm.bz2
-	sha256sums_aarch32 = a50079b3498e79021a8e1175207715ad96e4c2e7cc50ee01de8e11314a960eec
-	source_aarch64 = autorestic-1.1.1.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.1.1/autorestic_1.1.1_linux_arm64.bz2
-	sha256sums_aarch64 = d6de1d43d400aa7baa93ceeb323a8d2294a9a5915f079ac974d481fbb1eb82f2
+	source_x86_64 = autorestic-1.1.2.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.1.2/autorestic_1.1.2_linux_amd64.bz2
+	sha256sums_x86_64 = 68560d098ce1b3eb43ad7afcf33f771ffb6d19fef3f7c97e166f59ee0454c3b3
+	source_i686 = autorestic-1.1.2.bz2::https://github.com/cupcakearmy/autorestic/releases/download/v1.1.2/autorestic_1.1.2_linux_386.bz2
+	sha256sums_i686 = 368c1a348c8e80c07583537bfb6941c69e2ae1cdecb6e7ea6418ea872d7a2829
+	source_aarch32 = autorestic-1.1.2.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.1.2/autorestic_1.1.2_linux_arm.bz2
+	sha256sums_aarch32 = ada08ded0ea70ff826862221b8c7f4bc923aeed44e0c22da82a3bc276fd5fa86
+	source_aarch64 = autorestic-1.1.2.bz2::https://github.com/cupcakearmy/autorestic/autorestic-bin/releases/download/v1.1.2/autorestic_1.1.2_linux_arm64.bz2
+	sha256sums_aarch64 = 15f104b62e1f48f73dec707c1b1ea22bc609c16fc2883588ab2744b276230349
 
 pkgname = autorestic-bin
-
