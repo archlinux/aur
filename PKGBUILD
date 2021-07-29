@@ -34,7 +34,6 @@ source=(
 	'git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
 	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
-	'unbundle-xxhash.patch'
 )
 b2sums=(
 	'SKIP'
@@ -43,7 +42,6 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'61cd11e6d3a50df9f885155a5847dc4c9b4e8c3a2fd3fb6cd2c207374554a849e49cda3cf80ac700c32d4638925fb715895238ac5d9963a4e9ff67999e54f713'
 )
 
 pkgver() {
@@ -60,8 +58,9 @@ prepare() {
 	git config submodule.ui/implot.url ../implot
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git submodule update
-	patch -Np1 < ../unbundle-xxhash.patch
 	python scripts/gen-license.py > XEMU_LICENSE
+	# unbundle xxhash
+	sed -i 's/"xxHash\/xxh3\.h"/<xxh3.h>/' hw/xbox/nv2a/pgraph.c
 }
 
 build() {
