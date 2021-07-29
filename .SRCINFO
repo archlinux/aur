@@ -1,0 +1,20 @@
+pkgbase = python-digikey-api
+	pkgdesc = Python client for Digikey API
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/peeter123/digikey-api
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-retrying
+	depends = python-fake-useragent
+	depends = python-schematics
+	depends = python-inflection
+	depends = python-certauth
+	depends = python-urllib3
+	source = https://files.pythonhosted.org/packages/source/d/digikey-api/digikey-api-0.4.0.tar.gz
+	sha256sums = b21c75f26cd34e6da99191b643edebb2a188bd9f91654065d42a5f70901d19de
+
+pkgname = python-digikey-api
