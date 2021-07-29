@@ -1,7 +1,7 @@
 pkgbase = notcurses
 	pkgdesc = Blingful TUI/character graphics library
 	pkgver = 2.3.12
-	pkgrel = 0
+	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Notcurses
 	arch = x86_64
 	license = Apache

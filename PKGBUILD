@@ -2,7 +2,7 @@
 
 pkgname=notcurses
 pkgver=2.3.12
-pkgrel=0
+pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
