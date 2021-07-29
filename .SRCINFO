@@ -1,0 +1,17 @@
+pkgbase = python-tld-git
+	pkgdesc = Extracts the top level domain (TLD) from the URL given
+	pkgver = 0.12.6
+	pkgrel = 1
+	url = https://github.com/barseghyanartur/tld
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-six
+	provides = python-tld
+	options = !emptydirs
+	source = git+https://github.com/barseghyanartur/tld.git
+	sha256sums = SKIP
+
+pkgname = python-tld-git
