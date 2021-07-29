@@ -1,0 +1,23 @@
+# Colored makepkg-like functions
+# from google-chrome.install
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+  note "Link your preferred pre- and post- hooks to /etc/pacman.d/hooks, see alpm-hooks(5)"
+  note "Enable the mkmm-bleach service when using the hardlink hooks (10-mkmm-(post|pre).hook)"
+}
+
+post_remove() {
+  note "Remove the hooks from /etc/pacman.d/hooks, and disable the mkmm-bleach service"
+}
