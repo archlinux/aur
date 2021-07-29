@@ -1,0 +1,9 @@
+post_install() {
+  echo
+  echo "*****************************************************************************************************"
+  echo "Before first use, you will need to create ${HOME}/.config/captive-browser.toml"
+  echo "You can use /usr/share/captive-browser/example/captive-browser.toml as a template and edit as needed."
+  echo "For more info, see https://github.com/FiloSottile/captive-browser"
+  echo "*****************************************************************************************************"
+  echo
+}

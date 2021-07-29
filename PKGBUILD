@@ -16,6 +16,8 @@ license=('MIT')
 makedepends=('go' 'git')
 source=('git+https://github.com/FiloSottile/captive-browser.git')
 sha512sums=('SKIP')
+install=captive-browser-git.install
+
 
 pkgver() {
   cd "$srcdir/$_pkgname"

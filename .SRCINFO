@@ -3,6 +3,7 @@ pkgbase = captive-browser-git
 	pkgver = r19.0293a07
 	pkgrel = 1
 	url = https://blog.filippo.io/captive-browser
+	install = captive-browser-git.install
 	arch = x86_64
 	arch = i686
 	arch = arm
