@@ -1,7 +1,7 @@
 # Contributor: Radostin Stoyanov <rstoyanov1 at gmail dot com>
 
 pkgname=antconc
-pkgver=3.5.8
+pkgver=3.5.9
 _pkgver=${pkgver//./}
 _appname=AntConc_64bit
 pkgrel=3
@@ -13,8 +13,8 @@ options=("!strip")
 source=($pkgname-$pkgver.tar.gz::https://www.laurenceanthony.net/software/antconc/releases/AntConc${_pkgver}/AntConc_64bit.tar.gz
 	license-$pkgname-$pkgver.pdf::https://www.laurenceanthony.net/software/antconc/releases/AntConc${_pkgver}/license.pdf
 	${pkgname}.png ${pkgname}.desktop)
-sha256sums=('379650052362122ec705b84ad3bb24afdda750e4c1277f86f87c5177fa89e5a2'
-            'd9607d639078ac6ac4a848946ba98aa05faa84dfe0a157173b3b7b545e252367'
+sha256sums=('ca0e7a25457911856c36e13591fd1d9b1d19cb30258836ca7659e5617192abd0'
+            '2a21c2814af79bc7e9f3027c106f802054b2f195c5d7d4bc3487dc03f26f981f'
             '2961431f1dd2c11a7af92e5ab594ddfd43e42ccc582cddca70128c781101525e'
             '56fa958a9100000a16bf95c0d7d082aee166ac376ec007ab1746def1adafa3f1')
 

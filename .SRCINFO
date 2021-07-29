@@ -1,19 +1,18 @@
 pkgbase = antconc
 	pkgdesc = A freeware corpus analysis toolkit for arrying out corpus linguistics research and data-driven learning.
-	pkgver = 3.5.8
+	pkgver = 3.5.9
 	pkgrel = 3
 	url = https://www.laurenceanthony.net/software/antconc/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = antconc-3.5.8.tar.gz::https://www.laurenceanthony.net/software/antconc/releases/AntConc358/AntConc_64bit.tar.gz
-	source = license-antconc-3.5.8.pdf::https://www.laurenceanthony.net/software/antconc/releases/AntConc358/license.pdf
+	source = antconc-3.5.9.tar.gz::https://www.laurenceanthony.net/software/antconc/releases/AntConc359/AntConc_64bit.tar.gz
+	source = license-antconc-3.5.9.pdf::https://www.laurenceanthony.net/software/antconc/releases/AntConc359/license.pdf
 	source = antconc.png
 	source = antconc.desktop
-	sha256sums = 379650052362122ec705b84ad3bb24afdda750e4c1277f86f87c5177fa89e5a2
-	sha256sums = d9607d639078ac6ac4a848946ba98aa05faa84dfe0a157173b3b7b545e252367
+	sha256sums = ca0e7a25457911856c36e13591fd1d9b1d19cb30258836ca7659e5617192abd0
+	sha256sums = 2a21c2814af79bc7e9f3027c106f802054b2f195c5d7d4bc3487dc03f26f981f
 	sha256sums = 2961431f1dd2c11a7af92e5ab594ddfd43e42ccc582cddca70128c781101525e
 	sha256sums = 56fa958a9100000a16bf95c0d7d082aee166ac376ec007ab1746def1adafa3f1
 
 pkgname = antconc
-
