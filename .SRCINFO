@@ -1,0 +1,17 @@
+pkgbase = ruby-adsf
+	pkgdesc = A web server that you can launch instantly in any directory
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/ddfreyne/adsf
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rack
+	noextract = adsf-1.4.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/adsf-1.4.6.gem
+	source = https://raw.githubusercontent.com/ddfreyne/adsf/da657ef0926101ff941e2b8e665a0eb296993b51/LICENSE
+	b2sums = c2492a8e53f8fb51aff7c6327b54386b3de1feb8fa0e1f3ff477db113ae7e31730de269e180d53fc9a331b22469fbc023608f912a609313f073f47dde120591d
+	b2sums = 40aaf8ba18519a33d8bc34146b4da9d26a32d0739b1399d1d20463207c09604125804e89b85cf8fde1bbe35aca66956c1cd0c303a05d8873436fc3a8462f02df
+
+pkgname = ruby-adsf
