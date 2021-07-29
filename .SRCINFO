@@ -1,10 +1,10 @@
 pkgbase = youtube-to-mp3
 	pkgdesc = YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally
-	pkgver = 3.9.9.57
-	pkgrel = 1
+	pkgver = 3.9.9.59
+	pkgrel = 2
 	url = https://www.mediahuman.com/youtube-to-mp3-converter/
 	arch = any
-	license = unknown
+	license = custom
 	depends = hicolor-icon-theme>=0.17-1
 	depends = qt5-multimedia>=5.14.1-1
 	depends = qt5-webkit>=5.212.0alpha4-1
