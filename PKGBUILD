@@ -1,4 +1,7 @@
-# Maintainer: Patrice Peterson <runiq at archlinux dot us>
+# Maintainer: Christoph Schmidpeter <christoph dot schmidpeter at gmx dot de>
+# Contributor: Philippe Cherel <philippe dot cherel at mayenne dot org>
+# Contributor: Patrice Peterson <runiq at archlinux dot us>
+
 pkgname=gog-baldurs-gate-2-enhanced-edition
 _pkgname=baldurs-gate-2-enhanced-edition
 _original="Baldurs Gate 2 Enhanced Edition"
