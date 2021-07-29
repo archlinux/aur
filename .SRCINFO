@@ -1,6 +1,6 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.3.7.r80.g848cf98
+	pkgver = 0.3.7.r291.g51828fd
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = libjxl-git
 	makedepends = graphviz
 	makedepends = java-environment
 	makedepends = highway
+	makedepends = xdg-utils
 	source = git+https://github.com/libjxl/libjxl.git
 	source = git+https://github.com/google/brotli.git
 	source = git+https://github.com/lvandeve/lodepng.git
