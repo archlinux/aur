@@ -1,0 +1,15 @@
+pkgbase = ruby-tty-command
+	pkgdesc = Execute shell commands with pretty logging
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/piotrmurach/tty-command
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-pastel
+	noextract = tty-command-0.10.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-command-0.10.1.gem
+	b2sums = 375eed9d9b279664211b49e056e75afd6924571edc50035853f666ad2befac3ef251c803bec0733bd26a6344e1bd8b4650b4f8c33bc7f423fd67823069d62807
+
+pkgname = ruby-tty-command
