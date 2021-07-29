@@ -1,0 +1,17 @@
+pkgbase = csky-cpu-c807-csi-rtos-sdk
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=581552316738437120
+	arch = x86_64
+	license = unkown
+	makedepends = libarchive
+	noextract = csky-cpu-ck807f-csi-rtos-sdk-1.6.zip
+	source = csky-cpu-ck807f-csi-rtos-sdk-1.6.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/1355977/1594819201014/SmartH_CK807F-v1.6.zip
+	sha256sums = 3b0cb94006334fbd37174ad9421542fc23368538adf7741c1f02bf9e2f090697
+
+pkgname = csky-cpu-c807-csi-rtos-sdk
+	pkgdesc = C-Sky CPU C807 CSI-RTOS SDK (ALL)
+	depends = csky-cpu-ck807f-csi-rtos-sdk
+
+pkgname = csky-cpu-ck807f-csi-rtos-sdk
+	pkgdesc = C-Sky CPU CK807F CSI-RTOS SDK
