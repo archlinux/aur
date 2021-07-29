@@ -3,17 +3,11 @@
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
 pkgver=91.0b7
-pkgrel=1
+pkgrel=3
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files."
 arch=("any")
-license=(
-  'MPL'
-  'GPL'
-  'LGPL'
-) # The licenses of 'firefox-developer-edition'.
-depends=(
-  "firefox-developer-edition"
-)
+license=('custom: public domain')
+depends=("firefox-developer-edition")
 provides=(
   "${_pkgname}=${pkgver}"
   "firefox=${pkgver}"
@@ -23,9 +17,11 @@ conflicts=(
   "firefox"
 )
 
+source=('license-metapackage-pd.txt')
+sha256sums=('1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6')
+
 pkgver() {
-  # firefox-developer-edition --version | awk '{print $3}'
-  pacman -Qi firefox-developer-edition | grep -E '^Version[[:space:]]*:' | awk -F ':' '{print $2}' | tr -d '[[:space:]]' | sed -E 's|\-[^-]*$||'
+  pacman -Qi firefox-developer-edition | grep -E '^Version[[:space:]]*:' | head -n 1 | awk -F ':' '{print $2}' | sed -E 's|-.*||' | tr -d '[[:space:]]'
 }
 
 package() {
@@ -33,17 +29,21 @@ package() {
   cd "${pkgdir}/usr/bin"
   ln -s -v -T "firefox-developer-edition" "firefox"
 
-  install -d -v -m755 "${pkgdir}/usr/share/applications"
-  cd "${pkgdir}/usr/share/applications"
-  ln -s -v -T "firefox-developer-edition.desktop" "firefox.desktop"
-
-  for _icons_png_hicolor in 16x16 32x32 48x48 64x64 128x128 192x192 384x384; do
-    install -d -v -m755 "${pkgdir}/usr/share/icons/hicolor/${_icons_png_hicolor}/apps"
-    cd "${pkgdir}/usr/share/icons/hicolor/${_icons_png_hicolor}/apps"
-    ln -s -v -T "firefox-developer-edition.png" "firefox.png"
+  pacman -Qql firefox-developer-edition | grep -E '^/usr/share/applications/' | while read _f; do
+    if [ -f "${_f}" ]; then
+      install -d -v -m755 "${pkgdir}$(dirname "${_f}")"
+      cd "${pkgdir}$(dirname "${_f}")"
+      ln -s -v -T "$(basename ${_f})" "$(basename ${_f} | sed 's|-developer-edition||')"
+    fi
   done
 
-  install -d -v -m755 "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
-  cd "${pkgdir}/usr/share/icons/hicolor/symbolic/apps"
-  ln -s -v -T "firefox-developer-edition-symbolic.svg" "firefox-symbolic.svg"
+  pacman -Qql firefox-developer-edition | grep -E '^/usr/share/icons/' | while read _f; do
+    if [ -f "${_f}" ]; then
+      install -d -v -m755 "${pkgdir}$(dirname "${_f}")"
+      cd "${pkgdir}$(dirname "${_f}")"
+      ln -s -v -T "$(basename ${_f})" "$(basename ${_f} | sed 's|-developer-edition||')"
+    fi
+  done
+
+  install -D -m644 "${srcdir}/license-metapackage-pd.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
 }
