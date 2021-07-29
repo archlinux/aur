@@ -73,10 +73,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.12
-_minor=17
+_major=5.13
+_minor=6
 _srcname=linux-${_major}
-_clr=${_major}.16-1054
+_clr=${_major}.6-1062
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -137,8 +137,7 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
+    scripts/config --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -147,8 +146,7 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS \
-                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+                   --enable MODULE_COMPRESS_ZSTD
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS
@@ -156,7 +154,6 @@ prepare() {
     # Device Drivers
     scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
                    --enable DELL_SMBIOS_SMM \
-                   --enable NET_VENDOR_AQUANTIA \
                    --module PATA_JMICRON \
                    --enable-after SOUND SOUND_OSS_CORE \
                    --enable SND_OSSEMUL \
@@ -169,12 +166,10 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
-                   --enable SECURITY_SMACK \
-                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK_BRINGUP \
+                   --enable SECURITY_SMACK_NETFILTER \
+                   --enable SECURITY_SMACK_APPEND_SIGNALS \
                    --enable SECURITY_TOMOYO \
                    --enable SECURITY_APPARMOR \
                    --enable SECURITY_YAMA
@@ -353,13 +348,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('7d0df6f2bf2384d68d0bd8e1fe3e071d64364dcdc6002e7b5c87c92d48fac366'
+sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            'e334769a0947bdca5391168856d422e9f01bb485a7274bbde12c4481aec6036c'
+            'e83b798bfe22bc9d5e8115cd2bbff24cdf5fd0de1b423a3342985445b02668a8'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
-            'f3eb1e857f60a96a0c8d4f25f55a64ddf4aa4b3a33e9fcc6886430cf4789cb1c')
+            '34614e92ed29d11f5f6150ee8ed6c5ffe7f8f3d99a2fed6aebe40e513749c3ba')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
