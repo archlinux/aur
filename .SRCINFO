@@ -1,0 +1,13 @@
+pkgbase = python-schematics
+	pkgdesc = Python Data Structures for Humans
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/schematics/schematics
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/schematics/schematics-2.1.0.tar.gz
+	sha256sums = a40b20635c0e43d18d3aff76220f6cd95ea4decb3f37765e49529b17d81b0439
+
+pkgname = python-schematics
