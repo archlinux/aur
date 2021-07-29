@@ -1,7 +1,7 @@
 pkgbase = olive-git
 	pkgdesc = Free non-linear video editor
 	pkgver = continuous.r1090.g5254be3fb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.olivevideoeditor.org/
 	arch = pentium4
 	arch = x86_64

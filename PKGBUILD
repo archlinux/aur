@@ -3,7 +3,7 @@
 pkgname=olive-git
 _pkgname=${pkgname%-*}
 pkgver=continuous.r1090.g5254be3fb
-pkgrel=1
+pkgrel=2
 arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
