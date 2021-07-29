@@ -75,6 +75,7 @@ _ckpatchversion=1
 _ckpatch="patch-${_major}-ck${_ckpatchversion}"
 _gcc_more_v=20210610
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_jobs=$(nproc)
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -217,7 +218,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j40 all
+  make -j${_jobs} all
 }
 
 _package() {
