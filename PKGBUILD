@@ -58,7 +58,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=5
+_minor=6
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
@@ -540,11 +540,11 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'd8e0e95d439a5d37b3d4087c2b5411a6'
+         '91c6e1168e3a6f180f033858d9cfb1b8'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
-         '20a793c0a2e666b42bb466c8b8882b78'
-         '8c98528b8a0cb55fd0be00f22a9a89b2'
+         '177e0e7883c251b9e490a1933834dcc2'
+         'fe47cec55398df59d3d9ce30056603fd'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
          '2c0375b3cc9690a0f0f3d3e49df54d10'
