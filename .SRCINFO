@@ -1,7 +1,7 @@
 pkgbase = cargo-criterion
 	pkgdesc = Cargo plugin for analyzing and reporting on Criterion-rs benchmarks.
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/bheisler/cargo-criterion
 	arch = any
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = cargo-criterion
 	depends = cargo
 	depends = rust
 	optdepends = gnuplot: generate detailed graphs with gnuplot
-	source = cargo-criterion-1.0.1.tar.gz::https://github.com/bheisler/cargo-criterion/archive/1.0.1.tar.gz
-	sha256sums = ce2e334403134130ab81e049f19529d6a142b94882898a304550c775a5b0ca5d
+	source = cargo-criterion-1.1.0.tar.gz::https://github.com/bheisler/cargo-criterion/archive/1.1.0.tar.gz
+	sha256sums = fe156bf7b360874419f7a97349c9f2fa94ab5fd6dc2c06b0070053f9d5596445
 
 pkgname = cargo-criterion

@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-criterion
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Cargo plugin for analyzing and reporting on Criterion-rs benchmarks.'
 arch=('any')
 url='https://github.com/bheisler/cargo-criterion'
@@ -9,7 +9,7 @@ license=('Apache' 'MIT')
 depends=('cargo' 'rust')
 optdepends=('gnuplot: generate detailed graphs with gnuplot')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ce2e334403134130ab81e049f19529d6a142b94882898a304550c775a5b0ca5d')
+sha256sums=('fe156bf7b360874419f7a97349c9f2fa94ab5fd6dc2c06b0070053f9d5596445')
 
 build() {
 	cd "$pkgname-$pkgver"
