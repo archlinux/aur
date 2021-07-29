@@ -1,12 +1,12 @@
 pkgbase = parallel-disk-usage
 	pkgdesc = Create a filesystem tree from YAML
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/KSXGitHub/parallel-disk-usage
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	source = parallel-disk-usage-0.6.0.tar.gz::https://github.com/KSXGitHub/parallel-disk-usage/archive/0.6.0.tar.gz
+	source = parallel-disk-usage-0.6.1.tar.gz::https://github.com/KSXGitHub/parallel-disk-usage/archive/0.6.1.tar.gz
 	sha1sums = SKIP
 
 pkgname = parallel-disk-usage
