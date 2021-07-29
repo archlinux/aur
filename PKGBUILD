@@ -1,20 +1,19 @@
 # Maintainer: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-for-linux-bin
-pkgver=10.17.8
-buildver=2809
-pkgrel=2
+pkgver=10.18.3
+buildver=2820
+pkgrel=1
 pkgdesc="Official Evernote client for Windows repackaged for Linux"
 arch=('x86_64')
 url="https://github.com/search5/Evernote-for-Linux"
 license=('custom')
 provides=('evernote')
 depends=(
-    'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils'
-    'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret'
+    'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'attr'
 )
 optdepends=('gnome-keyring: for credentials persistence after reboot')
-conflicts=("evernote-beta-bin")
+conflicts=("evernote-beta-bin" "evernote-bin")
 replaces=()
 install=$pkgname.install
 source=(
@@ -22,7 +21,7 @@ source=(
     )
 noextract=("evernote-client_${pkgver}_amd64.deb")
 sha256sums=(
-    '940d224366865696a203bf3f6f7387a0b0bc47c1f651ac40ac02ce3d0019132f'
+    'ba18c68d4f2a9cd831bf6b76abb856c2c0a1309335235784a23943681027280b'
 )
 
 package() {
