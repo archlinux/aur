@@ -1,0 +1,15 @@
+pkgbase = kobo-dictutil-git
+	pkgdesc = A collection of tools and libraries to work with Kobo dictionaries
+	pkgver = v0.3.2.r7.g3e598b7
+	pkgrel = 1
+	url = https://github.com/pgaskin/dictutil
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/pgaskin/dictutil
+	sha256sums = SKIP
+
+pkgname = kobo-dictutil-git
