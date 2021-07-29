@@ -1,7 +1,7 @@
 # Maintainer: maz-1 <loveayawaka@gmail.com>
 _pkgname=deadbeef-qt5
 pkgname=${_pkgname}-git
-pkgver=90.56831d7
+pkgver=76.409b0b8
 pkgrel=1
 pkgdesc="Qt based user interface plugin for DeaDBeeF music player."
 arch=('i686' 'x86_64')
@@ -23,8 +23,8 @@ pkgver() {
 build() {
         mkdir -p "${srcdir}/build"
         cd "${srcdir}/build"
-        cmake "${srcdir}/${_pkgname}" -DCMAKE_INSTALL_PREFIX="/usr"
-        make clean && make 
+        cmake "../${_pkgname}" -DCMAKE_INSTALL_PREFIX="/usr"
+        make
 }
 
 package() {
