@@ -1,15 +1,18 @@
 pkgbase = python-plaster
 	pkgdesc = A loader interface around multiple config file formats.
 	pkgver = 1.0
-	pkgrel = 3
-	url = https://github.com/Pylons/plaster
+	pkgrel = 4
+	url = https://github.com/pylons/plaster
+	changelog = CHANGES.rst
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	depends = python
-	source = https://github.com/Pylons/plaster/archive/1.0.tar.gz
-	sha256sums = d998cf4d51ca868f2aa72a7b4901c62183c1da759eacbe4d25a5bd2385f0a7af
+	depends = python>=3.4
+	source = python-plaster-1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster/plaster-1.0.tar.gz
+	source = python-plaster-1.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster/plaster-1.0.tar.gz.asc
+	validpgpkeys = CC1A48C957AC6ABEF05B2C596BC977B056B829E5
+	sha256sums = 8351c7c7efdf33084c1de88dd0f422cbe7342534537b553c49b857b12d98c8c3
+	sha256sums = SKIP
 
 pkgname = python-plaster
-
