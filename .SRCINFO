@@ -1,0 +1,25 @@
+pkgbase = ruby-nanoc-core
+	pkgdesc = Contains the core of Nanoc
+	pkgver = 4.12.2
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-ddmemoize
+	depends = ruby-ddmetrics
+	depends = ruby-ddplugin
+	depends = ruby-hamster
+	depends = ruby-json_schema
+	depends = ruby-slow_enumerator_tools
+	depends = ruby-tty-platform
+	depends = ruby-zeitwerk
+	noextract = nanoc-core-4.12.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-core-4.12.2.gem
+	source = LICENSE-4.12.2::https://raw.githubusercontent.com/nanoc/nanoc/4.12.2/nanoc-core/LICENSE
+	b2sums = 83cbadbbeb964d9c58626780eb8ccfaee9d30d8bef59a3115b8d38477b3a08a5cd672f8d93fad680f0b850edb25fb00ff0dfdf3996e63bf46b6a7d83423159c8
+	b2sums = 95abf2d57bccc4622654a58cb45461ebd1fd01ffd434dc5e041d3fe97abe73af1a81e63d69653c0826239fe66e0d604573d739e10033a28d2403ce6ad3d35aa4
+
+pkgname = ruby-nanoc-core
