@@ -1,13 +1,12 @@
 pkgbase = librewolf-firefox-shim
 	pkgdesc = A symlink for using librewolf as a firefox
-	pkgver = 87.0
+	pkgver = 89.0.2
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	arch = any
 	license = MIT
 	depends = librewolf
-	provides = firefox=87.0
+	provides = firefox=89.0.2
 	conflicts = firefox
 
 pkgname = librewolf-firefox-shim
-
