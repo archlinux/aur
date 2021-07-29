@@ -10,6 +10,6 @@ pkgbase = gip
 	depends = grep
 	depends = curl
 	source = https://github.com/MahdyMirzade/gip/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = 1dfa5c62252b70c2f14319479a59163d1e3270b0d459a30ed42efbeab44d9d53
+	sha256sums = 000dcf3f510bd692df125af0a4d3cba0ffe9c1aaa4649e490ccec7b1edff5710
 
 pkgname = gip
