@@ -22,7 +22,7 @@ pkgbase = librime-sbxlm-git
 	depends = marisa
 	provides = librime
 	conflicts = librime
-	source = 0001-fix-opencc-1.1.0-failed.patch
+	source = 0001-fix-build.patch
 	source = git://github.com/sbxlmdsl/librime.git#commit=6a8d183dd1345a96f66bc74f0bc222e1b342cfc0
 	source = https://github.com/lotem/librime-octagram/archive/f92e083052b9983ee3cbddcda5ed60bb3c068e24/librime-octagram-f92e083052b9983ee3cbddcda5ed60bb3c068e24.tar.gz
 	source = https://github.com/hchunhui/librime-lua/archive/d45a41af2f9d731e3c1516a191cc3160e3cb8377/librime-lua-d45a41af2f9d731e3c1516a191cc3160e3cb8377.tar.gz
@@ -32,4 +32,3 @@ pkgbase = librime-sbxlm-git
 	sha512sums = 2a3d3b49d53066fe96dd008e8064718082225e6bf185574a25b8e98175d9936abcfa1fdc56e48f9c72a2deb46f8157d6132fd119ff8e0a3d52fbe9e2ea21386c
 
 pkgname = librime-sbxlm-git
-
