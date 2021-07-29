@@ -1,0 +1,14 @@
+pkgbase = prettier_d_slim
+	pkgdesc = Makes Prettier fast.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mikew/prettier_d_slim
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = prettier_d_slim-1.0.0.tgz
+	source = https://registry.npmjs.org/prettier_d_slim/-/prettier_d_slim-1.0.0.tgz
+	sha256sums = 22b255a83fbbf8f46f9d06fbfc6c817efb498af299c3b9d61c6d0294067b0ec3
+
+pkgname = prettier_d_slim
