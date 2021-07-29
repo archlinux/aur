@@ -3,7 +3,7 @@
 pkgname=goaccess-systemd
 _pkgname="${pkgname%-systemd}"
 pkgver=1.5.1
-pkgrel=8
+pkgrel=9
 pkgdesc="An open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser."
 arch=('any')
 url='http://goaccess.io'
@@ -23,7 +23,7 @@ source=("https://tar.goaccess.io/${_pkgname}-$pkgver.tar.gz"
         "${_pkgname}.timer")
 sha512sums=('aefdc8a61d85d7f8148857c6873b4589eb2f1d3f5b4986a97d0d4223c1d30da23d5fc8e6ba3cbdf41654072b299036fbcbae397d1934a95d1d26931e7f2f5d9a'
             '4744271c513d08d897ce3d163959fa7e3846da82c734de6624fd1efc9aac996b4ec75992e8a92afb908d7ea9d82e47d0f8be6275a655af8fc66e94e5341df39d'
-            '408f5626e5791e7fa57aa05f93354f9c475df1d6070b09fb6b320b6e7b10b793886d89c334709b6efb7f348fbb1c182e7ced5b504a300c08289705e029cc76c4'
+            'ba0c2e4644b3edc5b4d473c4ff3df7b6bcb8379e9f5eb5339cc3273cffe0d9feaede332fe183ad9636d81e7f5b7398059fc34280eb5d9c986117d9b894dd631e'
             '0ffbf4bba1d49e00358031527a745bf65f7241056991ae8acbe77c1f03f33692817159a64e90301aba8fbd3583d8c45f7f9ef7e3fb7a1306449244126d1fbaed')
 conflicts=("${_pkgname}"
            "${_pkgname}-git")

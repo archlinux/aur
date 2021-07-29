@@ -6,7 +6,6 @@ After=network.target
 Type=oneshot
 User=root
 Group=root
-Restart=always
 ExecStart=/bin/sh -c '/usr/bin/goaccess -f /var/log/nginx/*-access.log -o /var/www/html/report.html'
 
 [Install]
