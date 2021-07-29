@@ -28,7 +28,7 @@ changelog=
 source_i386=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.i386.deb")
 source_x86_64=("${pkgname}-${pkgver}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
 noextract=()
-md5sums_i386=("546482dbd9970d7b87c7995fd13681d4")
+md5sums_i386=("0e9085765b5a8a20b1c72d5d1e12f9b3")
 md5sums_x86_64=("cd84913ec234a5c8d3edcc00c2b8436b")
 validpgpkeys=()
 
