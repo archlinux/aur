@@ -2,9 +2,9 @@
 _pkgbase='cubeb'
 pkgbase="$_pkgbase-git"
 pkgname="$_pkgbase-git"
-provides=('cubeb')
+provides=('cubeb' 'libcubeb.so')
 conflicts=('cubeb')
-pkgver=r1223.9a7a551
+pkgver=r1464.f495dc9
 pkgrel=1
 pkgdesc="A cross platform audio library"
 arch=('i686' 'x86_64')
