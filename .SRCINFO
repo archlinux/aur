@@ -1,6 +1,6 @@
 pkgbase = ciel-arch-plugins-git
 	pkgdesc = Arch Linux integration plugins for the Ciel container manager.
-	pkgver = r6.58a1f23
+	pkgver = r8.03050d9
 	pkgrel = 1
 	url = https://gitlab.com/arch-linux-mipsr6/ciel-arch-plugins
 	arch = x86_64
