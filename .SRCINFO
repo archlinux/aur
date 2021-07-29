@@ -1,6 +1,6 @@
 pkgbase = amazon-workspaces-bin
 	pkgdesc = Amazon Workspace Client
-	pkgver = 3.1.7.1151
+	pkgver = 3.1.9.1245
 	pkgrel = 1
 	url = https://clients.amazonworkspaces.com/
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = amazon-workspaces-bin
 	depends = gtk3
 	depends = webkit2gtk
 	options = staticlibs
-	source = amazon-workspaces-bin-3.1.7.1151.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb
-	source = amazon-workspaces-bin-3.1.7.1151.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/Packages
+	source = amazon-workspaces-bin-3.1.9.1245.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb
+	source = amazon-workspaces-bin-3.1.9.1245.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/Packages
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = amazon-workspaces-bin
-
