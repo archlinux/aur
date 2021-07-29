@@ -6,11 +6,6 @@ pkgbase = gog-baldurs-gate-2-enhanced-edition
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = lib32-glibc
-	depends = lib32-alsa-lib
-	depends = lib32-libgl
-	depends = lib32-libxcb
-	optdepends = lib32-libpulse: pulseaudio support
 	source = gog://gog_baldur_s_gate_2_enhanced_edition_2.6.0.10.sh
 	source = gog-baldurs-gate-2-enhanced-edition
 	source = gog-baldurs-gate-2-enhanced-edition.desktop
@@ -20,7 +15,12 @@ pkgbase = gog-baldurs-gate-2-enhanced-edition
 	depends_i686 = glibc
 	depends_i686 = alsa-lib
 	depends_i686 = libgl
+	depends_i686 = libxcb
 	optdepends_i686 = libpulse: pulseaudio support
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-alsa-lib
+	depends_x86_64 = lib32-libgl
+	depends_x86_64 = lib32-libxcb
+	optdepends_x86_64 = lib32-libpulse: pulseaudio support
 
 pkgname = gog-baldurs-gate-2-enhanced-edition
-
