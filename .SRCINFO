@@ -1,0 +1,16 @@
+pkgbase = steamlink
+	pkgdesc = Steam Link client
+	pkgver = 1.1.81.199
+	pkgrel = 1
+	url = https://store.steampowered.com/remoteplay#anywhere
+	arch = x86_64
+	license = custom
+	makedepends = ostree
+	makedepends = fakeroot
+	depends = icu67
+	source = flathub.gpg
+	source = steamlink.sh
+	sha256sums = 8bdc20abc4e19c0796460beb5bfe0e7aa4138716999e19c6f2dbdd78cc41aeaa
+	sha256sums = 4d5bd2835b7ccf71e53e0f6f2c4bc9a3fe2477345cb51517f05b019dd63b8fe8
+
+pkgname = steamlink
