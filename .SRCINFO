@@ -1,12 +1,12 @@
 pkgbase = aws-ssh
 	pkgdesc = aws-ssh goes through all available AWS accounts in parallel, looks up ec2 instances and generates ssh config to access them
-	pkgver = 2.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/springload/aws-ssh
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = go
-	source = aws-ssh-2.1.tar.gz::https://github.com/springload/aws-ssh/archive/v2.1.tar.gz
-	md5sums = 1d18077676ec7ec239a456b3e9cb7493
+	source = aws-ssh-2.1.2.tar.gz::https://github.com/springload/aws-ssh/archive/v2.1.2.tar.gz
+	md5sums = 34730b10eb370e5cda9da0857e973a33
 
 pkgname = aws-ssh
