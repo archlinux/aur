@@ -1,7 +1,7 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgbase=micropython
 pkgname=(micropython micropython-lib)
-pkgver=1.14
+pkgver=1.16
 _libver=1.9.3
 pkgrel=1
 pkgdesc="Python3 for microcontrollers, with stdlib.  (unix version)"
@@ -14,10 +14,8 @@ options=('!emptydirs')
 # They finally have a real release, without all the submodule garbage.
 source=("https://micropython.org/resources/source/micropython-$pkgver.tar.xz"
         "mlib-$_libver.tgz::https://github.com/micropython/micropython-lib/archive/v$_libver.tar.gz")
-md5sums=('5db292b2bc1758b7d7062afbe9b0db0f'
+md5sums=('4d9846fd8e22226994f2470a24dd9667'
          '1752ce13e851a671a07ce3f7a807b21c')
-
-
 
 # todo:
 # fix 'imported as namespace package' warnings from stdlib
