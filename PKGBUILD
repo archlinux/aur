@@ -6,7 +6,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=3.0.2.r570.g8db0fa744
+pkgver=3.0.2.r591.g9d77acee7
 pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
@@ -20,10 +20,8 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
 conflicts=(audacity)
-source=(
-  "git+https://github.com/tenacityteam/tenacity.git"
-  "tenacity.patch"
-)
+source=("git+https://github.com/tenacityteam/tenacity.git"
+        "tenacity.patch")
 sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
 
 pkgver() {
@@ -34,12 +32,12 @@ pkgver() {
 prepare() {
   cd tenacity
   patch --forward --strip=1 --input="${srcdir}/tenacity.patch"
+  mkdir -p build
 }
 
 build() {
-  mkdir tenacity/build
   cd tenacity/build
-  CC=clang cmake \
+  CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT:STRING=gtk3 \
