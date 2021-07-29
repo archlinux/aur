@@ -1,7 +1,7 @@
 pkgbase = evernote-beta-bin
 	pkgdesc = Official Evernote client for Linux (beta, early-access)
 	pkgver = 10.17.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://evernote.com/earlyaccess
 	install = evernote-beta-bin.install
 	arch = x86_64
