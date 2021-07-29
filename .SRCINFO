@@ -1,0 +1,17 @@
+pkgbase = firefox-developer-edition-firefox-symlink
+	pkgdesc = Provides a symlink from '/usr/bin/firefox-developer-edition' to '/usr/bin/firefox', to satisfy expectations of some software.
+	pkgver = 91.0b7
+	pkgrel = 1
+	epoch = 0
+	url = http://chaps.cz/eng/download/idos/zip#kotvatt
+	arch = any
+	groups = firefox
+	license = custom: public domain
+	makedepends = firefox-developer-edition
+	depends = firefox-developer-edition
+	provides = firefox=91.0b7
+	conflicts = firefox
+	source = license-metapackage-pd.txt
+	sha256sums = 1e86f8ac1ad7315c76f4db8bf6a1dbdde6825ac95ff468e431bbe452b6865ae6
+
+pkgname = firefox-developer-edition-firefox-symlink
