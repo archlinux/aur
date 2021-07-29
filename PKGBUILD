@@ -39,7 +39,6 @@ build() {
   cd $_pkgname
   cmake -GNinja \
         -Bbuild \
-        -DCMAKE_CXX_FLAGS=-Wno-stringop-overflow \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
   ninja -C build/
