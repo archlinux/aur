@@ -17,6 +17,7 @@ pkgbase = beditor-bin
 	depends = openal
 	depends = openexr
 	depends = tesseract
+	depends = dotnet-runtime-bin
 	source = https://github.com/b-editor/BEditor/releases/download/v0.1.4/beditor_0.1.4-1_amd64.deb
 	sha512sums = SKIP
 
