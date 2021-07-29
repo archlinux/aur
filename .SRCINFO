@@ -11,6 +11,7 @@ pkgbase = joyshockmapper-git
 	depends = hidapi
 	depends = gtk3
 	depends = libappindicator-gtk3
+	depends = sdl2
 	optdepends = libx11: autoload configuration based on focused window
 	provides = joyshockmapper
 	conflicts = joyshockmapper
