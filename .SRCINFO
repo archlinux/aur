@@ -1,0 +1,21 @@
+pkgbase = ruby-sorted_set
+	pkgdesc = SortedSet for Ruby
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/knu/sorted_set
+	arch = any
+	license = BSD
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-set
+	depends = ruby-rbtree
+	options = !emptydirs
+	source = git+https://github.com/knu/sorted_set.git?tag=v1.0.3
+	sha256sums = SKIP
+
+pkgname = ruby-sorted_set
