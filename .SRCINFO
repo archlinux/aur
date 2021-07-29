@@ -1,0 +1,16 @@
+pkgbase = iferr-git
+	pkgdesc = A linter for Go source code.
+	pkgver = 20180615.bb332a3
+	pkgrel = 1
+	url = https://github.com/koron/iferr
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = iferr
+	conflicts = iferr
+	source = git://github.com/koron/iferr.git
+	source = go.mod
+	sha512sums = SKIP
+	sha512sums = 7582cd268119b3ccdb91ac30b8d1084b329883630dfce65060391d7fd6f7e24c18bba3b90d335b4c40bcdd5f6062d08e7f6b7509bd38c668acebc66693727eea
+
+pkgname = iferr-git
