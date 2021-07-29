@@ -1,12 +1,13 @@
 pkgbase = iridium-rpm
 	pkgdesc = Iridium browser - rhel/centos build altered for arch
 	pkgver = 91.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://iridiumbrowser.de/
 	arch = x86_64
 	license = BSD
 	depends = ffmpeg
 	depends = pipewire
+	depends = re2
 	provides = iridium
 	conflicts = iridium
 	conflicts = chromium

@@ -2,14 +2,14 @@
 
 pkgname=iridium-rpm
 pkgver=91.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
 url="https://iridiumbrowser.de/"
 license=('BSD')
 provides=('iridium')
 conflicts=('iridium' 'chromium')
-depends=('ffmpeg' 'pipewire')
+depends=('ffmpeg' 'pipewire' 're2')
 options=('!emptydirs' '!strip')
 
 source=('https://downloads.iridiumbrowser.de/openSUSE_Tumbleweed/x86_64/iridium-browser-2021.06.91-1.5.x86_64.rpm')
