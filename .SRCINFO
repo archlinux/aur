@@ -1,7 +1,7 @@
 pkgbase = foundryvtt
 	pkgdesc = A self-hosted, modern, and developer-friendly roleplaying platform
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foundryvtt.com/
 	arch = x86_64
 	license = custom
