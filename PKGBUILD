@@ -11,7 +11,7 @@ _pkgname=clion
 _dlname=CLion
 pkgver=212.4746.93
 _dlver=2021.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C/C++ IDE. 30-day evaluation."
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -29,9 +29,6 @@ build() {
     mkdir -p "${srcdir}/opt/${pkgbase}"
     bsdtar --strip-components 1 -xf "${_dlname}-${_dlver}.tar.gz" \
            -C "${srcdir}/opt/${pkgbase}"
-
-    cd "${srcdir}/opt/${pkgbase}"
-    rm -f bin/libyjpagent-linux.so bin/fsnotifier
 }
 
 package_clion-eap() {
@@ -54,8 +51,7 @@ package_clion-eap() {
         'python2: Python 2 programming language support'
         'doxygen: Code documentation generation'
     )
-    backup=("opt/${pkgbase}/bin/clion.vmoptions"
-            "opt/${pkgbase}/bin/clion64.vmoptions"
+    backup=("opt/${pkgbase}/bin/clion64.vmoptions"
             "opt/${pkgbase}/bin/idea.properties")
 
     rsync -rtl "${srcdir}/opt" "${pkgdir}" \
