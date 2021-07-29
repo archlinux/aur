@@ -1,10 +1,11 @@
 pkgbase = gruvbox-material-theme-git
-	pkgver = r11.9906f4c8
+	pkgver = r14.cc255d43
 	pkgrel = 1
 	url = https://github.com/sainnhe/gruvbox-material-gtk
 	arch = any
 	license = MIT
 	makedepends = git
+	options = !strip
 	source = gruvbox-material-theme::git+https://github.com/sainnhe/gruvbox-material-gtk.git
 	sha256sums = SKIP
 
@@ -24,4 +25,3 @@ pkgname = gruvbox-material-icon-theme-git
 	provides = gruvbox-material-icon-theme
 	conflicts = gruvbox-material-icon-theme
 	replaces = gruvbox-material-icon-theme
-
