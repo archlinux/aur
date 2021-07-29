@@ -1,0 +1,17 @@
+pkgbase = csky-cpu-c810-csi-rtos-sdk
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=581565156799021056
+	arch = x86_64
+	license = unkown
+	makedepends = libarchive
+	noextract = csky-cpu-ck810f-csi-rtos-sdk-1.6.zip
+	source = csky-cpu-ck810f-csi-rtos-sdk-1.6.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/cop-image-prod/resource/420257228264570880/1584672471641/SmartH_CK810F-v1.6.zip
+	sha256sums = 9d246039aec2e513cef3aa6e42ed7cda95e43367150c48ce754c8d6ec956ab4b
+
+pkgname = csky-cpu-c810-csi-rtos-sdk
+	pkgdesc = C-Sky CPU C810 CSI-RTOS SDK (ALL)
+	depends = csky-cpu-ck810f-csi-rtos-sdk
+
+pkgname = csky-cpu-ck810f-csi-rtos-sdk
+	pkgdesc = C-Sky CPU CK810F CSI-RTOS SDK
