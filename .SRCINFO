@@ -1,5 +1,5 @@
 pkgbase = csky-cpu-wujian100-open
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/T-head-Semi/wujian100_open
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = csky-cpu-wujian100-open
 	depends = gtkwave
 	optdepends = csky-debugserver-bin: C-Sky Debugger Server
 	optdepends = csky-toolchain-900-series-bin: C-Sky toolchain 900 series (RISC-V)
+	optdepends = vivado: FPGA/CPLD design suite for Xilinx devices
 	source = csky-cpu-wujian100-open::git+https://hub.fastgit.org/T-head-Semi/wujian100_open.git
 	sha256sums = SKIP
 
 pkgname = csky-cpu-wujian100-open
-	pkgdesc = C-Sky CPU wujian100 open. IC design and development should be faster，simpler and more reliable.
+	pkgdesc = C-Sky CPU wujian100 open (ALL). IC design and development should be faster，simpler and more reliable.
 	depends = csky-cpu-wujian100-open-doc
 	depends = csky-cpu-wujian100-open-fpga
 	depends = csky-cpu-wujian100-open-sdk
@@ -23,21 +24,21 @@ pkgname = csky-cpu-wujian100-open
 	depends = csky-cpu-wujian100-open-simulation
 
 pkgname = csky-cpu-wujian100-open-doc
-	pkgdesc = C-Sky CPU wujian100 open doc.
+	pkgdesc = C-Sky CPU wujian100 open doc. IC design and development should be faster，simpler and more reliable.
 
 pkgname = csky-cpu-wujian100-open-fpga
-	pkgdesc = C-Sky CPU wujian100 open FPGA.
+	pkgdesc = C-Sky CPU wujian100 open FPGA. IC design and development should be faster，simpler and more reliable.
 
 pkgname = csky-cpu-wujian100-open-sdk
-	pkgdesc = C-Sky CPU wujian100 open SDK.
+	pkgdesc = C-Sky CPU wujian100 open SDK. IC design and development should be faster，simpler and more reliable.
 
 pkgname = csky-cpu-wujian100-open-soc
-	pkgdesc = C-Sky CPU wujian100 open SoC.
+	pkgdesc = C-Sky CPU wujian100 open SoC. IC design and development should be faster，simpler and more reliable.
 	depends = csky-cpu-wujian100-open-sdk-test
 	depends = csky-cpu-wujian100-open-simulation
 
 pkgname = csky-cpu-wujian100-open-test
-	pkgdesc = C-Sky CPU wujian100 open test bench.
+	pkgdesc = C-Sky CPU wujian100 open test bench. IC design and development should be faster，simpler and more reliable.
 
 pkgname = csky-cpu-wujian100-open-simulation
-	pkgdesc = C-Sky CPU wujian100 open simulation.
+	pkgdesc = C-Sky CPU wujian100 open simulation. IC design and development should be faster，simpler and more reliable.
