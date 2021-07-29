@@ -1,7 +1,7 @@
 pkgbase = sqlfluff
 	pkgdesc = A SQL linter and auto-formatter for Humans
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://github.com/sqlfluff/sqlfluff
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = sqlfluff
 	depends = python-bench-it
 	depends = python-oyaml
 	depends = python-configparser
-	source = https://github.com/sqlfluff/sqlfluff/archive/refs/tags/0.6.1.tar.gz
-	sha256sums = 66c8d4c49d8b68cfc6ec2062beb762cceb36bc2c78d185d95ddbbf33133cbfb6
+	source = https://github.com/sqlfluff/sqlfluff/archive/refs/tags/0.6.2.tar.gz
+	sha256sums = e22a4ddb11ff47013c9d96182b25965f279194dcbd57cdac7fa222f96d8dd64f
 
 pkgname = sqlfluff
