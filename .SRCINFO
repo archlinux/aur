@@ -1,7 +1,7 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
 	pkgver = 2021.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.jetbrains.com/clion
 	arch = x86_64
@@ -33,7 +33,6 @@ pkgname = clion
 	optdepends = python: Python 3 programming language support
 	optdepends = python2: Python 2 programming language support
 	optdepends = doxygen: Code documentation generation
-	backup = opt/clion/bin/clion.vmoptions
 	backup = opt/clion/bin/clion64.vmoptions
 	backup = opt/clion/bin/idea.properties
 
