@@ -1,4 +1,4 @@
-# Maintainer: Kevin Schoon <kevinschoon@gmail.com>
+# Maintainer: Kevin Schoon <kevinschoon@pm.me>
 _pkgname=pomo
 pkgname=${_pkgname}-git
 pkgver=r135.eb08755
