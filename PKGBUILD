@@ -10,7 +10,7 @@ _srcname=linux-5.11
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
 pkgver=5.11.4
-pkgrel=5
+pkgrel=6
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,6 +19,7 @@ options=('!strip')
 source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'sun50i-h6-tqc-a01.dts'
         '0001-mfd-Add-support-for-AC200.patch'
+        '0001-HACK-h6-Add-HDMI-sound-card.patch'
         '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0002-net-phy-Add-support-for-AC200-EPHY.patch'
         '0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch'
@@ -44,6 +45,7 @@ source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
          'f5de0dfcddc871280a60d99ea3284317'
          '17aa0c69176c68cd98b4522740a1b747'
+         '2285d81ec6fb859d34b7abfd46a59550'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
          'bc7904920675ba8d38f21d46ffac33b5'
          '94a69594f90309c50c83a5cc8579fb54'
@@ -73,6 +75,7 @@ prepare() {
 
   # patches for TQC A01
   patch -p1 < ../0001-mfd-Add-support-for-AC200.patch
+  patch -p1 < ../0001-HACK-h6-Add-HDMI-sound-card.patch
   patch -p1 < ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
   patch -p1 < ../0002-net-phy-Add-support-for-AC200-EPHY.patch
   patch -p1 < ../0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch
