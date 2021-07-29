@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.5.4.r28.gcc6d19e099
+pkgver=0.6.0.r0.g3c1fcf6202
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
