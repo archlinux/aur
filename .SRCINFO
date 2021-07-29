@@ -1,0 +1,13 @@
+pkgbase = csky-cpu-c906-csi-rtos-sdk
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://occ.t-head.cn/community/download?id=3803060952769826816
+	arch = x86_64
+	license = unkown
+	makedepends = libarchive
+	noextract = csky-cpu-c906-csi-rtos-sdk-1.7.3.zip
+	source = csky-cpu-c906-csi-rtos-sdk-1.7.3.zip::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource/null/1609222581128/smarth-C906-RV64-1.7.3.zip
+	sha256sums = 73a94152e35233592f5692ed553599b9cb1b74eceabd6d8dd0499959ba00f909
+
+pkgname = csky-cpu-c906-csi-rtos-sdk
+	pkgdesc = C-Sky CPU C906 CSI-RTOS SDK
