@@ -1,0 +1,23 @@
+pkgbase = ruby-nanoc
+	pkgdesc = A static-site generator with a focus on flexibility
+	pkgver = 4.12.2
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-addressable
+	depends = ruby-colored
+	depends = ruby-nanoc-checking
+	depends = ruby-nanoc-cli
+	depends = ruby-nanoc-core
+	depends = ruby-nanoc-deploying
+	depends = ruby-parallel
+	depends = ruby-tty-command
+	depends = ruby-tty-which
+	noextract = nanoc-4.12.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-4.12.2.gem
+	b2sums = e816fa233a60dd6430dfb1495051fd5246c37663df83adb9f8387cb20fc3ad1b174132c79b8c1a3c15a41e74eeb2b6a5cd9caa9c2d671096a1f1612b6efd138a
+
+pkgname = ruby-nanoc
