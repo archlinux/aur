@@ -1,7 +1,7 @@
 pkgbase = pacdef
 	pkgdesc = A declarative manager of Arch packages
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steven-omaha/pacdef
 	arch = any
 	license = GPL3

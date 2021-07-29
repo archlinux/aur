@@ -1,10 +1,10 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
-source=("${pkgname}.py::https://github.com/steven-omaha/pacdef/releases/download/v${pkgver}/${pkgname}.py")
+source=("${pkgname}.py::https://github.com/steven-omaha/${pkgname}/releases/download/v${pkgver}/${pkgname}.py")
 arch=('any')
 license=('GPL3')
 depends=('python')
