@@ -3,7 +3,7 @@
 pkgname=minizip-git
 _pkgname=minizip
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
-pkgver=3.0.2.r0.gbc93e40
+pkgver=3.0.2.r5.gd42634c
 pkgrel=1
 arch=('x86_64')
 license=('zlib')
@@ -12,7 +12,7 @@ depends=('glibc' 'libbsd' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=('minizip' 'minizip-ng' 'minizip-git')
 provides=('minizip' 'minizip-ng' 'minizip-git')
-source=("git+https://github.com/zlib-ng/minizip-ng")
+source=("git+https://github.com/zlib-ng/minizip-ng#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
