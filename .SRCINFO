@@ -1,6 +1,6 @@
 pkgbase = thonny
 	pkgdesc = Python IDE for beginners
-	pkgver = 3.3.11
+	pkgver = 3.3.13
 	pkgrel = 1
 	url = https://thonny.org
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = thonny
 	depends = tk
 	optdepends = python-birdseye: Debug support with Birdseye
 	optdepends = python-pgzero: Run programs made with Pygame Zero
-	source = thonny-3.3.11.tar.gz::https://github.com/thonny/thonny/archive/v3.3.11.tar.gz
-	sha512sums = 897e94fa6edc9ea5b03dc022eafc5e18f8b1eef4df49164f00db14550ad32013d5b1c8af430f324f00a39a46a6a78035d99fb6203555a2e875bd6080ae5be6ee
+	source = thonny-3.3.13.tar.gz::https://github.com/thonny/thonny/archive/v3.3.13.tar.gz
+	sha512sums = de13bfbe44421e1fcce4fca06eb4513b8be4b7819b29cae99697bd2089691eb47f42bba4e998dbeb36b52e536ecc25effef71b4c905eac3bf0677685691b1a45
 
 pkgname = thonny
