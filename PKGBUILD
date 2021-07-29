@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.4.2.3
-pkgrel=33
+pkgrel=34
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -17,7 +17,7 @@ _pkgver=$(echo $pkgver | sed 's/\.//g')
 # "http://terraria.org/server/${pkgname}-${_pkgver}.zip"
 
 # https://terraria.org/server/ links after 1402 give a 404, so we use the archive link instead.
-source=("https://terraria.org/system/dedicated_servers/archives/000/000/046/original/terraria-server-1423.zip"
+source=("https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip"
         "https://github.com/mono/reference-assemblies/raw/main/v4.8/System.dll"
         "https://github.com/mono/reference-assemblies/raw/main/v4.8/System.Core.dll"
         'terraria-server'

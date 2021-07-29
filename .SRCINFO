@@ -1,7 +1,7 @@
 pkgbase = terraria-server
 	pkgdesc = Official dedicated server for Terraria
 	pkgver = 1.4.2.3
-	pkgrel = 33
+	pkgrel = 34
 	url = https://terraria.org/
 	install = terraria-server.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = terraria-server
 	makedepends = unzip
 	depends = mono
 	depends = screen
-	source = https://terraria.org/system/dedicated_servers/archives/000/000/046/original/terraria-server-1423.zip
+	source = https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip
 	source = https://github.com/mono/reference-assemblies/raw/main/v4.8/System.dll
 	source = https://github.com/mono/reference-assemblies/raw/main/v4.8/System.Core.dll
 	source = terraria-server
@@ -24,4 +24,3 @@ pkgbase = terraria-server
 	sha256sums = b2cfeb15b6e5bf97d1b7a0b0bdbec9289a842d37c52414c5b57aadda66b1b6a6
 
 pkgname = terraria-server
-
