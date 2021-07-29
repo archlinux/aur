@@ -1,5 +1,5 @@
 diff --git a/browser/brave_wallet/BUILD.gn b/browser/brave_wallet/BUILD.gn
-index 355a43e666..b0f05ea45e 100644
+index adb83bdb09..cc601c5d9e 100644
 --- a/browser/brave_wallet/BUILD.gn
 +++ b/browser/brave_wallet/BUILD.gn
 @@ -1,7 +1,7 @@
@@ -37,10 +37,10 @@ index 253a07ec0a..a85a97d62f 100644
 +  ethereum_remote_client_enabled = false
  }
 diff --git a/browser/extensions/brave_component_loader.cc b/browser/extensions/brave_component_loader.cc
-index 0178a8efee..60eabe8399 100644
+index 0178a8efee..e13fd10e46 100644
 --- a/browser/extensions/brave_component_loader.cc
 +++ b/browser/extensions/brave_component_loader.cc
-@@ -9,16 +9,18 @@
+@@ -9,16 +9,19 @@
 
  #include "base/bind.h"
  #include "base/command_line.h"
@@ -53,6 +53,7 @@ index 0178a8efee..60eabe8399 100644
  #include "brave/components/brave_extension/grit/brave_extension.h"
  #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
 +#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#error "\"brave_rewards\" is enabled"
 +#include "bat/ads/pref_names.h"
 +#include "brave/components/brave_ads/common/pref_names.h"
  #include "brave/components/brave_rewards/common/pref_names.h"
@@ -88,6 +89,231 @@ index 6bfb3a813c..bc849ad0ec 100644
  #if BUILDFLAG(IPFS_ENABLED)
    ipfs::IpfsServiceFactory::GetForContext(profile);
  #endif
+diff --git a/browser/ui/views/brave_actions/brave_actions_container.cc b/browser/ui/views/brave_actions/brave_actions_container.cc
+index fe3f853d5a..01f65e5952 100644
+--- a/browser/ui/views/brave_actions/brave_actions_container.cc
++++ b/browser/ui/views/brave_actions/brave_actions_container.cc
+@@ -11,17 +11,14 @@
+
+ #include "base/command_line.h"
+ #include "base/one_shot_event.h"
+-#include "brave/browser/brave_rewards/rewards_service_factory.h"
+ #include "brave/browser/extensions/brave_component_loader.h"
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/browser/ui/brave_actions/brave_action_view_controller.h"
+ #include "brave/browser/ui/views/brave_actions/brave_action_view.h"
+-#include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
+ #include "brave/browser/ui/views/rounded_separator.h"
+ #include "brave/common/brave_switches.h"
+ #include "brave/common/pref_names.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
+-#include "brave/components/brave_rewards/common/pref_names.h"
+ #include "chrome/browser/extensions/extension_service.h"
+ #include "chrome/browser/profiles/profile.h"
+ #include "chrome/browser/ui/browser.h"
+@@ -41,6 +38,12 @@
+ #include "ui/views/layout/grid_layout.h"
+ #include "ui/views/view.h"
+
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#include "brave/browser/brave_rewards/rewards_service_factory.h"
++#include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
++#include "brave/components/brave_rewards/common/pref_names.h"
++#endif
++
+ class BraveActionsContainer::EmptyExtensionsContainer
+     : public ExtensionsContainer {
+  public:
+@@ -117,8 +120,10 @@ BraveActionsContainer::BraveActionsContainer(Browser* browser, Profile* profile)
+           extensions::ExtensionActionManager::Get(profile)),
+       brave_action_api_(extensions::BraveActionAPI::Get(browser)),
+       empty_extensions_container_(new EmptyExtensionsContainer),
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+       rewards_service_(
+           brave_rewards::RewardsServiceFactory::GetForProfile(profile)),
++#endif
+       weak_ptr_factory_(this) {
+   // Handle when the extension system is ready
+   extension_system_->ready().Post(
+@@ -157,6 +162,7 @@ void BraveActionsContainer::Init() {
+   AddChildViewAt(brave_button_separator_, 0);
+   // Populate actions
+   actions_[brave_extension_id].position_ = 1;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   actions_[brave_rewards_extension_id].position_ = ACTION_ANY_POSITION;
+
+   // React to Brave Rewards preferences changes.
+@@ -165,6 +171,7 @@ void BraveActionsContainer::Init() {
+       base::BindRepeating(
+           &BraveActionsContainer::OnBraveRewardsPreferencesChanged,
+           base::Unretained(this)));
++#endif
+ }
+
+ bool BraveActionsContainer::IsContainerAction(const std::string& id) const {
+@@ -174,12 +181,15 @@ bool BraveActionsContainer::IsContainerAction(const std::string& id) const {
+ bool BraveActionsContainer::ShouldAddAction(const std::string& id) const {
+   if (!IsContainerAction(id))
+     return false;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   if (id == brave_rewards_extension_id)
+     return ShouldAddBraveRewardsAction();
++#endif
+   return true;
+ }
+
+ bool BraveActionsContainer::ShouldAddBraveRewardsAction() const {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   const base::CommandLine& command_line =
+       *base::CommandLine::ForCurrentProcess();
+   if (command_line.HasSwitch(switches::kDisableBraveRewardsExtension)) {
+@@ -192,6 +202,7 @@ bool BraveActionsContainer::ShouldAddBraveRewardsAction() const {
+
+   const PrefService* prefs = browser_->profile()->GetPrefs();
+   return !prefs->GetBoolean(brave_rewards::prefs::kHideButton);
++#endif
+ }
+
+ void BraveActionsContainer::AddAction(const extensions::Extension* extension) {
+@@ -215,16 +226,19 @@ void BraveActionsContainer::AddAction(const extensions::Extension* extension) {
+     actions_[id].view_ = std::make_unique<BraveActionView>(
+         actions_[id].view_controller_.get(), this);
+     AttachAction(actions_[id]);
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+     // Handle if we are in a continuing pressed state for this extension.
+     if (is_rewards_pressed_ && id == brave_rewards_extension_id) {
+       is_rewards_pressed_ = false;
+       actions_[id].view_controller_->ExecuteAction(
+           true, ToolbarActionViewController::InvocationSource::kToolbarButton);
+     }
++#endif
+   }
+ }
+
+ void BraveActionsContainer::AddActionStubForRewards() {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   const std::string id = brave_rewards_extension_id;
+   if (!ShouldAddAction(id)) {
+     return;
+@@ -232,7 +246,6 @@ void BraveActionsContainer::AddActionStubForRewards() {
+   if (actions_[id].view_) {
+     return;
+   }
+-#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   actions_[id].view_ = std::make_unique<BraveRewardsActionStubView>(
+       browser_->profile(), this);
+   AttachAction(actions_[id]);
+@@ -443,5 +456,7 @@ void BraveActionsContainer::ChildPreferredSizeChanged(views::View* child) {
+
+ // Brave Rewards preferences change observers callback
+ void BraveActionsContainer::OnBraveRewardsPreferencesChanged() {
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   ShowAction(brave_rewards_extension_id, ShouldAddBraveRewardsAction());
++#endif
+ }
+diff --git a/browser/ui/views/brave_actions/brave_actions_container.h b/browser/ui/views/brave_actions/brave_actions_container.h
+index d2ea59aad8..3aa7f230e7 100644
+--- a/browser/ui/views/brave_actions/brave_actions_container.h
++++ b/browser/ui/views/brave_actions/brave_actions_container.h
+@@ -13,7 +13,6 @@
+ #include "base/scoped_observation.h"
+ #include "brave/browser/extensions/api/brave_action_api.h"
+ #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
+-#include "brave/components/brave_rewards/browser/rewards_service.h"
+ #include "chrome/browser/extensions/api/extension_action/extension_action_api.h"
+ #include "chrome/browser/ui/browser.h"
+ #include "chrome/browser/ui/toolbar/toolbar_action_view_controller.h"
+@@ -27,6 +26,7 @@
+
+ #if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+ #include "brave/browser/ui/views/brave_actions/brave_rewards_action_stub_view.h"
++#include "brave/components/brave_rewards/browser/rewards_service.h"
+ #endif
+
+ class BraveActionViewController;
+@@ -48,10 +48,10 @@ class BraveActionsContainer : public views::View,
+                               public extensions::BraveActionAPI::Observer,
+                               public extensions::ExtensionActionAPI::Observer,
+                               public extensions::ExtensionRegistryObserver,
+-                              public ToolbarActionView::Delegate,
+ #if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+-                              public BraveRewardsActionStubView::Delegate
++                              public BraveRewardsActionStubView::Delegate,
+ #endif
++                              public ToolbarActionView::Delegate
+                               {
+  public:
+   BraveActionsContainer(Browser* browser, Profile* profile);
+@@ -187,7 +187,9 @@ class BraveActionsContainer : public views::View,
+
+   std::unique_ptr<EmptyExtensionsContainer> empty_extensions_container_;
+
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   brave_rewards::RewardsService* rewards_service_;
++#endif
+
+   base::WeakPtrFactory<BraveActionsContainer> weak_ptr_factory_;
+
+diff --git a/browser/ui/views/toolbar/brave_toolbar_view.cc b/browser/ui/views/toolbar/brave_toolbar_view.cc
+index 9a5ee51d0a..38376cddf4 100644
+--- a/browser/ui/views/toolbar/brave_toolbar_view.cc
++++ b/browser/ui/views/toolbar/brave_toolbar_view.cc
+@@ -186,8 +186,10 @@ void BraveToolbarView::OnThemeChanged() {
+
+   if (display_mode_ == DisplayMode::NORMAL && bookmark_)
+     bookmark_->UpdateImageAndText();
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   if (display_mode_ == DisplayMode::NORMAL && wallet_)
+     wallet_->UpdateImageAndText();
++#endif
+ }
+
+ void BraveToolbarView::OnProfileAdded(const base::FilePath& profile_path) {
+@@ -203,8 +205,10 @@ void BraveToolbarView::LoadImages() {
+   ToolbarView::LoadImages();
+   if (bookmark_)
+     bookmark_->UpdateImageAndText();
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   if (wallet_)
+     wallet_->UpdateImageAndText();
++#endif
+ }
+
+ void BraveToolbarView::Update(content::WebContents* tab) {
+diff --git a/browser/ui/views/toolbar/brave_toolbar_view.h b/browser/ui/views/toolbar/brave_toolbar_view.h
+index 16e6f810c5..5306db9cfd 100644
+--- a/browser/ui/views/toolbar/brave_toolbar_view.h
++++ b/browser/ui/views/toolbar/brave_toolbar_view.h
+@@ -12,7 +12,9 @@
+ #include "components/prefs/pref_member.h"
+
+ class BookmarkButton;
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+ class WalletButton;
++#endif
+
+ class BraveToolbarView : public ToolbarView,
+                          public ProfileAttributesStorage::Observer {
+@@ -21,7 +23,9 @@ class BraveToolbarView : public ToolbarView,
+   ~BraveToolbarView() override;
+
+   BookmarkButton* bookmark_button() const { return bookmark_; }
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   WalletButton* wallet_button() const { return wallet_; }
++#endif
+   void Init() override;
+   void Layout() override;
+   void Update(content::WebContents* tab) override;
+@@ -46,7 +50,9 @@ class BraveToolbarView : public ToolbarView,
+   // Tracks the preference to determine whether bookmark editing is allowed.
+   BooleanPrefMember edit_bookmarks_enabled_;
+
++#if BUILDFLAG(BRAVE_WALLET_ENABLED)
+   WalletButton* wallet_ = nullptr;
++#endif
+
+   BooleanPrefMember location_bar_is_wide_;
+   // Whether this toolbar has been initialized.
 diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 index e02f9b6792..4c454c022b 100644
 --- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
@@ -711,7 +937,7 @@ index e8cbfc9d11..cdf09ce640 100644
 +  enable_brave_vpn = false
  }
 diff --git a/components/brave_wallet/browser/BUILD.gn b/components/brave_wallet/browser/BUILD.gn
-index 6a679faedb..64be4954e0 100644
+index 313bdfbf93..ec4c9dff26 100644
 --- a/components/brave_wallet/browser/BUILD.gn
 +++ b/components/brave_wallet/browser/BUILD.gn
 @@ -3,7 +3,7 @@ import("//brave/components/brave_wallet/browser/config.gni")
