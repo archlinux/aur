@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.9.0.rc8
+	pkgver = 5.14.0.rc3
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -12,14 +12,14 @@ pkgbase = linux-clear-current
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-5.9-rc8.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.9.0.rc7-40
-	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
+	source = https://git.kernel.org/torvalds/t/linux-5.14-rc3.tar.gz
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.14.0.rc3-44
+	source = more-uarches-20210616.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210616.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = fc5d8eae3949051d2d99c9425c234b580d7c20e816617f6cab928197ab55127a
+	sha256sums = a5dbb770c4b5f9d7a58100fc577385632d0519332b45f0169b020697d9edb1ce
 	sha256sums = SKIP
-	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
+	sha256sums = e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d
 
 pkgname = linux-clear-current
 	pkgdesc = The Clear Linux current kernel and modules
@@ -35,4 +35,3 @@ pkgname = linux-clear-current
 
 pkgname = linux-clear-current-headers
 	pkgdesc = Headers and scripts for building modules for the Clear Linux current kernel
-
