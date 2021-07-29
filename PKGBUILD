@@ -3,9 +3,9 @@ pkgdesc="Header files and scripts for Clear Linux kernel and modules"
 url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-_major=5.12
-_minor=16
-_clr=1054
+_major=5.13
+_minor=6
+_clr=1062
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=34840
+_clear_version=34900
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=5b330f0b81d5d4023c8af0179f19e4861f0966e8f3b22559017f4ef0ecaf796a
-_config_hash_clear_version=34840
+_config_hash=b830602ad8761c810737402fdf7c1aae4031c1d0ac6ada5df30c401dbc845cfb
+_config_hash_clear_version=34900
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('363f14707a4c937c7068e106bad98ffbb3ad950aaac249c9359733c53f4a77ce928b828431fd81003e362e9631e6236cf3f60612f3b9303f4ae5f71091befa47'
-        'c4734a68986c477e9da8607a892bd4b173a84a6218d3167f08cac320dd2620d97ad283e5f4c7c8d2998533f9964508c892a74619ac443294ff9761b6db18a857'
-        'eadb5d947bbd2f96b153677a78b99d2abffc244999605edafeee536454ab6ddada35d983a8adc25ba3ffe21a52a612ce00e27a1d8ef60b8099814861eb3f39e8')
+b2sums=('63aa4744ac402f7a5f4c7e6b16cdd2068e85456e06bc8a45a47a1e14b6b3996d563996cfec4946d1a5543f664e3eeb8fda1302768dd05dd80ddb5a0b76c68ebb'
+        '2e76b9938a3b61dad9e0fa0d73501cd097453eae328505d4c875241a90b0312b31d9868fb6897c52aed84647b4aeffa9efa4b8d01c7ddb603af5b4c11f46f5d1'
+        '9ee83b95ac8ffcadd39511c633f448ce52acb78f238837ff6457482a043b64a91e543a43724ad995beb94b6d1eea4b2c13fbf0c3a5df99c66e9bf3edf8a88987')
