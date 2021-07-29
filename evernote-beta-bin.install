@@ -1,7 +1,7 @@
 ## arg 1:  the new package version
 post_install() {
     # Link to the binary
-    ln -sf '/opt/Evernote/evernote-client' '/usr/bin/evernote-client'
+    ln -sf '/opt/Evernote-Beta/Evernote-Beta' '/usr/bin/Evernote-Beta'
 
     # SUID chrome-sandbox for Electron 5+
     chmod 4755 '/opt/Evernote/chrome-sandbox' || true
@@ -25,5 +25,5 @@ post_upgrade() {
 ## arg 1:  the old package version
 post_remove() {
     # Delete the link to the binary
-    rm -f '/usr/bin/evernote-client'
+    rm -f '/usr/bin/Evernote-Beta
 }
