@@ -3,7 +3,7 @@
 pkgname=goaccess-systemd
 _pkgname="${pkgname%-systemd}"
 pkgver=1.5.1
-pkgrel=9
+pkgrel=10
 pkgdesc="An open source real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser."
 arch=('any')
 url='http://goaccess.io'
@@ -28,6 +28,7 @@ sha512sums=('aefdc8a61d85d7f8148857c6873b4589eb2f1d3f5b4986a97d0d4223c1d30da23d5
 conflicts=("${_pkgname}"
            "${_pkgname}-git")
 provides=("${_pkgname}")
+install="${_pkgname}.install"
 
 build() {
   cd $_pkgname-$pkgver
