@@ -60,7 +60,7 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.6
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -92,9 +92,9 @@ source=(
 "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
 "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
 "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-"${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
+"${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
 "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
-"${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
+"${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
 "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
 #"${_patchsource}/misc/nohzfull.patch"
@@ -137,9 +137,9 @@ sha256sums=('a62c1720efff2692a29da4c07748088f766cc43e275d165611e4d2581ba25276'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
             'aa5cbec74dc27591d47616c6c0748475ab55b5efdcbc9d81c2cc49b9b0bf2c00'
             '7289f4ce29d653a0ca511410b66bd3cb42fbcc54f5e097c85e528d4e27ce41ff'
-            '04acf65e5761e787b64e59b44c7792146470c1a29c998339e53c9e02f652fbc7'
+            '9068274d1c1d906087efe17e3e91382e8a616575ccf089ae7e65846675dfa77b'
             'e33908a2aca1b5b52609075c32c714e4c3f6b52c054da2b2982a86f6f3c4b87a'
-            '0a32d43109ab235ac4d49b28af0c5a3e1653a2581facd4595f098977bf19dd80'
+            'e5818fcaa55ed416b08900db04f18ae6d29b89d19e0b2fb3feb410efd8099b32'
             '5b05ebca44ff6b00ac49ec36ab360f6fa47ff809e82f40fe4299d8a1a99da4dc'
             'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
             '8e56f88209ec69bf7004c52a7f31ba5fffa2c6af3db306e7ec385210a0b5944e'
