@@ -2,7 +2,6 @@
 
 pkgname=minizip-git
 _pkgname=minizip
-epoch=2
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
 pkgver=3.0.2.r0.gbc93e40
 pkgrel=1
