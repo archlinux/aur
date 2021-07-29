@@ -1,7 +1,7 @@
 
 # Maintainer: Matthias Eberlein
 pkgname=youtube-to-mp3
-pkgver=3.9.9.57
+pkgver=3.9.9.59
 pkgrel=1
 epoch=
 pkgdesc="YouTube to Mp3 converter\nDownloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally"
@@ -70,7 +70,6 @@ pkgver() {
 package() {
 	## We still start in the src dir
 	cd "$pkgname-$pkgver"
-	echo "pgkver: $pkgver"
 
 	# Copy the binaries and application to their destination in /pkg as root folder
 	cp -r -i "usr" "$pkgdir/"
@@ -79,7 +78,7 @@ package() {
 
 	# Remove .deb packages
 	cd ../..
-	echo "Cleaning up.."
+	echo "Cleaning up old unneeded .deb file.."
 	rm "$pkgname-$pkgver.deb"
 
 	# install the license
