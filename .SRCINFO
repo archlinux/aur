@@ -1,6 +1,6 @@
 pkgbase = bluez-git
 	pkgdesc = Libraries and tools for the Bluetooth protocol stack
-	pkgver = 5.58.r80.gd7c2a4cee
+	pkgver = 5.60.r17.gb497b5942
 	pkgrel = 1
 	epoch = 1
 	url = http://www.bluez.org/
@@ -17,12 +17,12 @@ pkgbase = bluez-git
 	depends = json-c
 	optdepends = cups: CUPS backend
 	provides = libbluetooth.so
-	provides = bluez=5.58-1
-	provides = bluez-utils=5.58-1
-	provides = bluez-libs=5.58-1
-	provides = bluez-cups=5.58-1
-	provides = bluez-hid2hci=5.58-1
-	provides = bluez-plugins=5.58-1
+	provides = bluez=5.60-1
+	provides = bluez-utils=5.60-1
+	provides = bluez-libs=5.60-1
+	provides = bluez-cups=5.60-1
+	provides = bluez-hid2hci=5.60-1
+	provides = bluez-plugins=5.60-1
 	conflicts = bluez
 	conflicts = bluez-utils
 	conflicts = bluez-libs
@@ -39,4 +39,3 @@ pkgbase = bluez-git
 	md5sums = 671c15e99d7154c2df987b71c5851b3d
 
 pkgname = bluez-git
-

@@ -1,8 +1,9 @@
-# Maintainer: Juan Diego Tascon
-# Maintainer: Swift Geek
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Juan Diego Tascon
+# Contributor: Swift Geek
 pkgname=bluez-git
 _pkgname=bluez
-pkgver=5.58.r80.gd7c2a4cee
+pkgver=5.60.r17.gb497b5942
 pkgrel=1
 epoch=1
 pkgdesc="Libraries and tools for the Bluetooth protocol stack"
@@ -76,6 +77,12 @@ check() {
 package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
+  # add missing toosl FS#41132, FS#41687, FS#42716
+  for f in `find tools/ -type f -perm -755`; do
+    install -Dm755 "$f" "${pkgdir}/usr/bin/$(basename $f)"
+  done
   install -Dm644 src/main.conf        "${pkgdir}/etc/bluetooth/main.conf"
   install -Dm644 ${srcdir}/bluetooth.modprobe "${pkgdir}/usr/lib/modprobe.d/bluetooth-usb.conf"
 }
+
+# vim:set ts=2 sw=2 et:
