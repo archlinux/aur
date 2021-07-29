@@ -1,0 +1,20 @@
+pkgbase = ruby-nanoc-cli
+	pkgdesc = Command-line interface for Nanoc
+	pkgver = 4.12.2
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-cri
+	depends = ruby-diff-lcs
+	depends = ruby-nanoc-core
+	depends = ruby-zeitwerk
+	noextract = nanoc-cli-4.12.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-cli-4.12.2.gem
+	source = LICENSE-4.12.2::https://raw.githubusercontent.com/nanoc/nanoc/4.12.2/nanoc-cli/LICENSE
+	b2sums = 7c9b2989cc7aa2f98ef6e611046b1c5f9f27fd737eca92fab6705de57a41bd70ed655410f947feffc55cc477c4e54d3fc2d0ce23599647ff3c3cd18f68cdf2cc
+	b2sums = 39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630
+
+pkgname = ruby-nanoc-cli
