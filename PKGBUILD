@@ -2,7 +2,7 @@
 # Maintainer: Henry Graham <henry)dot(arch)at(hgrahamcs)dot(com(>
 
 pkgname=edmarketconnector
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='Downloads commodity market and other station data from the game Elite: Dangerous for use with all popular online and offline trading tools'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('tk' 'python-certifi' 'python-requests' 'python-watchdog' 'python-seman
 source=("https://github.com/EDCD/EDMarketConnector/archive/Release/${pkgver}.tar.gz" 
         "edmarketconnector.sh"
 	"edmarketconnector.desktop")
-sha256sums=('e5b2e6353797bf0916b6a54bee5b866b0772944c52a794f6811f212aeca66e75'
+sha256sums=('ae234b1db82242fa08056b0cb28ce5da05bfaec3d0f46ded5765d0e78465ba31'
             '7be0528d56edfcb444c4a7ba7a18e85296571e7558906c90fe6520c03206242c'
 	    'fa797932630e7b5e7cc42b0f0f4b20126b5af67661c636885b5486008cb1b13a')
 
