@@ -79,5 +79,5 @@ package() {
 	rm "$pkgname-$pkgver.deb"
 
 	# install the license
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$pkgdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
