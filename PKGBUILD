@@ -1,9 +1,9 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=zy-player-appimage
-pkgver=2.8.4
+pkgver=2.8.5
 _pkgver=$(echo $pkgver | sed 's/\./-/3')
-pkgrel=2
+pkgrel=1
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
