@@ -1,0 +1,18 @@
+pkgbase = ruby-nanoc-checking
+	pkgdesc = Provides the 'check' subcommand and associated functionality for Nanoc
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-nanoc-core
+	depends = ruby-nanoc-cli
+	noextract = nanoc-checking-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-checking-1.0.1.gem
+	source = LICENSE-4.12.2::https://raw.githubusercontent.com/nanoc/nanoc/4.12.2/nanoc-checking/LICENSE
+	b2sums = 6f6f10cf97ab17cc328d827ab19490fa6e9d6f744594c167b4d9bf050c1288a7d5657d290402efbfa8d61d8e81550feae5022720464814e27af06d5025dfde96
+	b2sums = 39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630
+
+pkgname = ruby-nanoc-checking
