@@ -1,0 +1,27 @@
+pkgbase = evernote-bin
+	pkgdesc = Official Evernote client for Linux
+	pkgver = 10.7.6
+	pkgrel = 1
+	url = https://evernote.com/
+	install = evernote-bin.install
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	optdepends = gnome-keyring: for credentials persistence after reboot
+	provides = evernote
+	conflicts = evernote-beta-bin
+	conflicts = evernote-for-linux-bin
+	noextract = Evernote-10.7.6-linux-ddl-ga-2330.deb
+	source = https://cdn1.evernote.com/boron/linux/builds/Evernote-10.7.6-linux-ddl-ga-2330.deb
+	sha256sums = 14a920801f8865dadbc5a1544e8051bb0b7bb66535575459f4f372d89170342f
+
+pkgname = evernote-bin
