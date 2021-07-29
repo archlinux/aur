@@ -4,7 +4,7 @@ _pkgname="zorin-icon-themes"
 pkgname="${_pkgname}"
 pkgdesc="The Zorin icon theme provided in a variety of color combinations"
 
-deb_pkgver="2.8.3"
+deb_pkgver="2.8.8"
 pkgver="${deb_pkgver}"
 pkgrel="1"
 
