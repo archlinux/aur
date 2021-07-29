@@ -1,7 +1,7 @@
 # Maintainer: Eugene Dementyev <e@dementyev.me>
 pkgname=aws-ssh
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="aws-ssh goes through all available AWS accounts in parallel, looks up ec2 instances and generates ssh config to access them"
 arch=(x86_64)
