@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -92,11 +92,11 @@ source=(
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
   "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v6/0001-pf-patches.patch"
+  "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
   "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 #  "${_patchsource}/lru-patches/lru_5.13.patch"
 #  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
-  "${_patchsource}/ntfs3-patches/0001-ntfs3-patches.patch"
+  "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
   "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
 #  "${_patchsource}/misc/nohzfull.patch"
@@ -557,9 +557,9 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         'cde2074acf384dcc3809640a2ecf0250'
+         'a0a99d3914525853685ac814563e5227'
          '055df07f7637d427a7c134c686074860'
-         '86825a0c5716a1d9c6a39f9d3886b1bf'
+         'b6623f818462d08b03fdc1b573c90e9f'
          'a1869abc4d1a6ec1901f34302cd09b7e'
          '9977ba0e159416108217a45438ebebb4'
          '92e9db1a7777666a1e6353b4760f1275'
