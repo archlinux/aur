@@ -67,9 +67,9 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=41
-_rtpatchver=42
-_clr=${_major}.${_minor}-76
+_minor=52
+_rtpatchver=47
+_clr=${_major}.${_minor}-80
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -84,7 +84,7 @@ _gcc_more_v='20210616'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/older/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
   "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -121,8 +121,7 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC
+    scripts/config --enable IKCONFIG_PROC
 
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
@@ -130,8 +129,7 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS \
-                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+                   --enable MODULE_COMPRESS_XZ
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS \
@@ -151,12 +149,10 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
-                   --enable SECURITY_SMACK \
-                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK_BRINGUP \
+                   --enable SECURITY_SMACK_NETFILTER \
+                   --enable SECURITY_SMACK_APPEND_SIGNALS \
                    --enable SECURITY_TOMOYO \
                    --enable SECURITY_APPARMOR \
                    --enable SECURITY_YAMA
@@ -320,9 +316,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('f604759de80767c4f8bdc500eec730dc161bc914a48bd366b748c176701a6771'
+sha256sums=('769e57a0fa218589fa2f8460b8682eb784a72718c7a3d95295f382a77902ae79'
             'SKIP'
-            '03a1be966680c3fc8853d8b1d08fca3dd1303961e471d5bb41e44d57b07e12fd'
+            '53cca2fb11f5ffc601ab0a0820e90538c4c841cbd57b17b3ef0fa80af5b2e1d8'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
