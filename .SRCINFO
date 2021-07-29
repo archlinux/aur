@@ -1,6 +1,6 @@
 pkgbase = python-astropy
 	pkgdesc = A community python library for astronomy
-	pkgver = 4.2.1
+	pkgver = 4.3
 	pkgrel = 1
 	url = http://www.astropy.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = python-astropy
 	depends = python>=3.7
 	depends = python-numpy>=1.17.0
 	depends = cfitsio>=3.49
-	depends = python-pyerfa>=1.7
+	depends = python-pyerfa>=1.7.3
 	depends = expat>=2.2.9
 	depends = wcslib>=7.3
 	optdepends = python-scipy: powers a variety of features in several modules
@@ -33,8 +33,7 @@ pkgbase = python-astropy
 	optdepends = libxml2: validates VOTABLE XML files. This is a command line tool installed outside of Python
 	conflicts = python-pyfits
 	conflicts = python-vo
-	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.2.1.tar.gz
-	sha512sums = 0566af1e06b0fb96c592f90534ffd3e8d23ad29222b9b6ee4a6067dfd61403f818c7156a9bfb94d4a20e39bbf421b02a2895ce5f735780ca86dc1ef82594ef09
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.3.tar.gz
+	sha512sums = 865b6a920ad1daff64823ec36d9f70c0de38dd897b4133001466d6d5274adcc74e006220c1e45af8fd57e7de987ecb336a1ee1b685a3e56c8a5a614125e175dc
 
 pkgname = python-astropy
-
