@@ -5,8 +5,7 @@ Type=Application
 Name=Baldur's Gate 2 Enhanced Edition
 GenericName=Baldur's Gate 2 Enhanced Edition
 Comment=Baldur's Gate 2 Enhanced Edition
-Icon=/opt/gog=baldurs-gate-2-enhanced-edition/support/icon.png
-Exec=/opt/gog-baldurs-gate-2-enhanced-edition/start.sh
+Icon=/opt/gog/baldurs-gate-2-enhanced-edition/support/icon.png
+Exec="/opt/gog/baldurs-gate-2-enhanced-edition/start.sh" ""
 Categories=Game;
-Path="/opt/gog-baldurs-gate-2-enhanced-edition"
-
+Path=/opt/gog/baldurs-gate-2-enhanced-edition/
