@@ -1,10 +1,10 @@
 # Maintainer:  Alexei Colin <ac at alexeicolin dot com>
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
-# Contributor: Amr Okasha <okasha at gmail>
+# Contributor: Amr Okasha <amradel55 at gmail.com>
 
 pkgname=ccstudio
-_semver=10.3.0
-_bldver=00007
+_semver=10.4.0
+_bldver=00006
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -24,7 +24,7 @@ optdepends=('ttf-dejavu')
 
 # The license file was copy-pasted from the installer's GUI
 _archive=CCS${pkgver}_linux-x64
-source=("http://software-dl.ti.com/ccs/esd/CCSv10/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
+source=("https://software-dl.ti.com/ccs/esd/CCSv10/CCS_$(echo $_semver | sed 's@[.]@_@g')/exports/${_archive}.tar.gz"
 "LICENSE"
 "61-msp430uif.rules"
 "71-sd-permissions.rules"
@@ -112,7 +112,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('3b22662de63602026efdbfe6770dc6ce0494c8d3609b085e25831239551b9ef4'
+sha256sums=('e3aa2d92c35b7beb0eab4d4f425d655b264b5fa527a50ecf94255173f17fca9a'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
