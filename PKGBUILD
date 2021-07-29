@@ -1,16 +1,18 @@
 # Maintainer: Brenden Hoffman <hbrenden@fastmail.com>
 # Contributor: Andy Delgado <cuba200611@gmail.com>
-pkgname=np2kai-libretro-git
+pkgname=libretro-np2kai-git
 pkgver=1034.3e8fedc
-pkgrel=2
+pkgrel=1
 pkgdesc="libretro port of the Kai fork of Neko Project 2 (a PC-98 emulator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://domisan.sakura.ne.jp/article/np2kai/np2kai.html"
 license=('MIT')
 groups=('libretro')
-install=np2kai-libretro-git.install
+install=libretro-np2kai-git.install
 depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
+provides=('np2kai-libretro-git')
+conflicts=('np2kai-libretro-git')
 
 source=('git+https://github.com/AZO234/NP2kai.git')
 
