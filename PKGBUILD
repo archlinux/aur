@@ -14,14 +14,16 @@ license=('GPL3')
 makedepends=('jq' 'python-virtualenv')
 optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
             'unrar: for RAR files')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 options=('!strip')
 install=$pkgname.install
 source=('sickchill.service'
-        'sickchill.sysusers')
+        'sickchill.sysusers'
+        'sickchill.tmpfiles')
 sha256sums=('ca6a73f7c2019ddda2b338eb63be560bf1a5d6ae5ceab969dc032c05b6d2d7b5'
-            '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850')
+            '1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850'
+            '2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f')
 
 pkgver() {
   local version
@@ -44,9 +46,9 @@ build() {
 package() {
   install -Dm644 sickchill.service -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 sickchill.sysusers "$pkgdir/usr/lib/sysusers.d/sickchill.conf"
+  install -Dm644 sickchill.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/sickchill.conf"
 
-  install -dm755 "$pkgdir/opt/sickchill/data"
-
+  install -dm755 "$pkgdir/opt/sickchill"
   cp -a build "$pkgdir/opt/sickchill/app"
 }
 

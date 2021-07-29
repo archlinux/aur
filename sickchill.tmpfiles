@@ -1,0 +1,2 @@
+#d /var/lib/sickchill/data 0750 sickchill sickchill
+d /opt/sickchill/data 0750 sickchill sickchill

@@ -15,7 +15,9 @@ pkgbase = sickchill-git
 	options = !strip
 	source = sickchill.service
 	source = sickchill.sysusers
+	source = sickchill.tmpfiles
 	sha256sums = ca6a73f7c2019ddda2b338eb63be560bf1a5d6ae5ceab969dc032c05b6d2d7b5
 	sha256sums = 1467f3613f5f25e678e373465dc09a28230f7cdf07af23875a0896a509c3b850
+	sha256sums = 2069f15e18fc7dd0f0f25b623f2067fc9028b1ca4122021a62364aa39914f88f
 
 pkgname = sickchill-git
