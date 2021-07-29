@@ -2,19 +2,19 @@
 _pkgbase='cubeb'
 pkgbase="$_pkgbase-git"
 pkgname="$_pkgbase-git"
-provides=('cubeb' 'libcubeb.so')
-conflicts=('cubeb')
 pkgver=r1464.f495dc9
+provides=("cubeb=$pkgver" 'libcubeb.so')
+conflicts=('cubeb')
 pkgrel=1
 pkgdesc="A cross platform audio library"
 arch=('i686' 'x86_64')
-url="https://github.com/kinetiknz/cubeb"
+url="https://github.com/mozilla/cubeb"
 license=('GPL2')
 depends=('sndio' 'alsa-lib')
 makedepends=('git' 'cmake' 'libpulse' 'alsa-lib' 'jack' 'sndio')
 optdepends=('libpulse: for PulseAudio support'
 			'jack: for JACK support')
-source=("$_pkgbase::git+https://github.com/kinetiknz/cubeb"
+source=("$_pkgbase::git+https://github.com/mozilla/cubeb"
 		'git+https://github.com/arsenm/sanitizers-cmake')
 md5sums=('SKIP'
 	'SKIP')
