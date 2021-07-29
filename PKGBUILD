@@ -1,12 +1,12 @@
 pkgname=steamlink
 _name=steamlink
 pkgver=1.1.81.199
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Link client"
 arch=('x86_64')
 url="https://store.steampowered.com/remoteplay#anywhere"
 license=('custom')
-depends=('icu67')
+depends=('freetype2' 'harfbuzz' 'icu67' 'libdrm' 'libglvnd' 'libjpeg6-turbo' 'libpng' 'libva' 'libvdpau' 'libx11' 'opus')
 makedepends=('ostree' 'fakeroot')
 source=(
     "flathub.gpg"
