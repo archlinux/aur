@@ -1,7 +1,7 @@
 # Maintainer: PQCraft <0456523@gmail.com>
 
 pkgname=clibasic-bin
-pkgver=0.16.1
+pkgver=0.17
 pkgrel=1
 pkgdesc="A BASIC interpreter for the terminal written in C"
 arch=(x86_64 i686)
