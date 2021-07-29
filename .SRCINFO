@@ -1,0 +1,41 @@
+pkgbase = linux-clear-lts2020
+	pkgdesc = Clear Linux lts2020
+	pkgver = 5.10.54
+	pkgrel = 1
+	url = https://github.com/clearlinux-pkgs/linux-lts2020
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = git
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.54.xz
+	source = clearlinux-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=5.10.54-5
+	source = more-uarches-20210616.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210616.tar.gz
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43
+	sha256sums = SKIP
+	sha256sums = e7d5a1b33305cf8e9d5b19ca5c87ac176a05f7de12d39a15d58acf1e0cf7dd0f
+	sha256sums = SKIP
+	sha256sums = e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d
+
+pkgname = linux-clear-lts2020
+	pkgdesc = The Clear Linux lts2020 kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+
+pkgname = linux-clear-lts2020-headers
+	pkgdesc = Headers and scripts for building modules for the Clear Linux lts2020 kernel
