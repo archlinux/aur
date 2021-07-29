@@ -3,12 +3,12 @@
 
 pkgname=deadascend
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D point'n'click-like adventure game written in Qt/QML and Javascript"
 arch=('any')
 url="https://blackgrain.dk/games/deadascend/"
 license=('MIT')
-depends=('sdl' 'sdl_mixer' 'qt5-base' 'qt5-multimedia' 'qt5-quickcontrols')
+depends=('sdl' 'sdl_mixer' 'qt5-base' 'qt5-multimedia' 'qt5-quickcontrols2')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Larpon/DeadAscend/archive/v${pkgver}.tar.gz"
 	      "qak-1.4.2.tar.gz::https://github.com/Larpon/qak/archive/v1.4.2.tar.gz"
 	      "qtfirebase-1.5.0.tar.gz::https://github.com/Larpon/QtFirebase/archive/v1.5.0.tar.gz"
