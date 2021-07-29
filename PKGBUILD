@@ -3,19 +3,37 @@
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
 pkgver=1.8.0
-pkgrel=1
-pkgdesc="RuboCop's Node and NodePattern classes"
+pkgrel=2
+pkgdesc="RuboCop's AST extensions and NodePattern functionality"
 arch=(any)
 depends=(ruby ruby-parser)
-makedepends=(rubygems ruby-rdoc)
-url=https://github.com/rubocop-hq/rubocop-ast
-noextract=($_gemname-$pkgver.gem)
+checkdepends=(ruby-bundler ruby-rspec)
+makedepends=(git rubygems ruby-rake ruby-rdoc ruby-racc ruby-oedipus_lex ruby-bump)
+url=https://github.com/rubocop/rubocop-ast
 license=(MIT)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('9e5db97a0066e113412821bd5a8457f46a45e21bd4dd9fe3750d773111a56b35')
+source=(git+https://github.com/rubocop/rubocop-ast.git?tag=v${pkgver})
+sha256sums=('SKIP')
+
+prepare() {
+  cd $_gemname
+  sed -i '/simplecov/d' Gemfile
+}
+
+build() {
+  cd $_gemname
+  RUBOCOP_VERSION=none rake generate
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname
+  # rm Gemfile
+  RUBOCOP_VERSION=none rake spec
+}
 
 package() {
+  cd ${_gemname}
   local _gemdir="$(gem env gemdir)"
 
   gem install \
@@ -25,10 +43,11 @@ package() {
     -n "$pkgdir/usr/bin" \
     $_gemname-$pkgver.gem
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  rm -rf "$pkgdir/$_gemdir/cache"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
 # vim: set ts=2 sw=2 et:
