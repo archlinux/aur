@@ -1,7 +1,7 @@
 pkgbase = audacity-wxgtk2
 	pkgdesc = Record and edit audio files
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://audacityteam.org
 	arch = x86_64
 	groups = pro-audio
