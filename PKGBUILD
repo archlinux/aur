@@ -8,11 +8,12 @@ conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
 pkgver=36.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL3')
 depends=(
     'python-bitstruct>=6.0.0'
+    'python-can>=2.2.0'
     'python-textparser>=0.21.1'
     'python-diskcache'
     'python-argparse-addons'

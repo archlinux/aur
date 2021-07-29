@@ -1,7 +1,7 @@
 pkgbase = python-cantools
 	pkgdesc = Python CAN bus tools in Python 3
 	pkgver = 36.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eerimoq/cantools
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = python-cantools
 	license = GPL3
 	makedepends = git
 	depends = python-bitstruct>=6.0.0
+	depends = python-can>=2.2.0
 	depends = python-textparser>=0.21.1
 	depends = python-diskcache
 	depends = python-argparse-addons
