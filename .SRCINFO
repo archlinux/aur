@@ -1,0 +1,14 @@
+pkgbase = libfreeaptx
+	pkgdesc = Open Source aptX codec library
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/iamthehorker/libfreeaptx
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	provides = libfreeaptx.so
+	source = git+https://github.com/iamthehorker/libfreeaptx#commit=0485c73bc12f1f860d892bb7166730b3412395bd
+	sha256sums = SKIP
+
+pkgname = libfreeaptx
