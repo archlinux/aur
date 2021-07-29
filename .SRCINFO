@@ -1,0 +1,43 @@
+pkgbase = csky-cpu-wujian100-open
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/T-head-Semi/wujian100_open
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = iverilog
+	depends = verilator
+	depends = gtkwave
+	optdepends = csky-debugserver-bin: C-Sky Debugger Server
+	optdepends = csky-toolchain-900-series-bin: C-Sky toolchain 900 series (RISC-V)
+	source = csky-cpu-wujian100-open::git+https://hub.fastgit.org/T-head-Semi/wujian100_open.git
+	sha256sums = SKIP
+
+pkgname = csky-cpu-wujian100-open
+	pkgdesc = C-Sky CPU wujian100 open. IC design and development should be faster，simpler and more reliable.
+	depends = csky-cpu-wujian100-open-doc
+	depends = csky-cpu-wujian100-open-fpga
+	depends = csky-cpu-wujian100-open-sdk
+	depends = csky-cpu-wujian100-open-soc
+	depends = csky-cpu-wujian100-open-test
+	depends = csky-cpu-wujian100-open-simulation
+
+pkgname = csky-cpu-wujian100-open-doc
+	pkgdesc = C-Sky CPU wujian100 open doc.
+
+pkgname = csky-cpu-wujian100-open-fpga
+	pkgdesc = C-Sky CPU wujian100 open FPGA.
+
+pkgname = csky-cpu-wujian100-open-sdk
+	pkgdesc = C-Sky CPU wujian100 open SDK.
+
+pkgname = csky-cpu-wujian100-open-soc
+	pkgdesc = C-Sky CPU wujian100 open SoC.
+	depends = csky-cpu-wujian100-open-sdk-test
+	depends = csky-cpu-wujian100-open-simulation
+
+pkgname = csky-cpu-wujian100-open-test
+	pkgdesc = C-Sky CPU wujian100 open test bench.
+
+pkgname = csky-cpu-wujian100-open-simulation
+	pkgdesc = C-Sky CPU wujian100 open simulation.
