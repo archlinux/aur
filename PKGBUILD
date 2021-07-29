@@ -13,7 +13,7 @@ depends=(
     'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'attr'
 )
 optdepends=('gnome-keyring: for credentials persistence after reboot')
-conflicts=('evernote-for-linux-bin', 'evernote-bin')
+conflicts=('evernote-for-linux-bin' 'evernote-bin')
 replaces=()
 install=$pkgname.install
 source=(
