@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=197
+_minor=199
 _srcname=linux-${_major}
-_clr=${_major}.195-208
+_clr=${_major}.199-212
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -125,8 +125,7 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
+    scripts/config --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -135,8 +134,7 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
-                   --enable MODULE_COMPRESS \
-                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+                   --enable MODULE_COMPRESS_XZ
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS \
@@ -157,13 +155,11 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
                    --set-val SECURITY_SELINUX_BOOTPARAM_VALUE 0 \
-                   --enable SECURITY_SMACK \
-                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                   --enable SECURITY_SMACK_BRINGUP \
+                   --enable SECURITY_SMACK_NETFILTER \
+                   --enable SECURITY_SMACK_APPEND_SIGNALS \
                    --enable SECURITY_TOMOYO \
                    --enable SECURITY_APPARMOR \
                    --set-val SECURITY_APPARMOR_BOOTPARAM_VALUE 0 \
@@ -345,7 +341,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '4787bf77505e01e6852d0bc09e95de92ecc1d45b81ec6422f2ffd05af05c40ef'
+            '3cf1782bd950b926956ccaf45d2d6c4adcf59cabcaffcad2b9e6b251ae65ad66'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
