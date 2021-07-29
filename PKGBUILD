@@ -2,7 +2,7 @@
 
 pkgname=audacity-wxgtk2
 pkgver=3.0.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Record and edit audio files"
 arch=('x86_64')
 url="https://audacityteam.org"
