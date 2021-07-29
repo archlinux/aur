@@ -1,20 +1,19 @@
 # Maintainer: kedap <kedap.dev@protonmail.com>
 
 pkgname=apmpkg
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Un administrador de paquetes universal para linux como modelo: PKGBUILD"
 arch=('x86_64')
 url="https://github.com/Kedap/apmpkg"
 license=('Apache')
 optdepends=('flatpak: for install dependencies'
-  'snapd: for install dependencies'
-  'npm: for install dependencies')
-depends=('git' 'python-pip' 'python2-pip' 'wget' 'fakeroot' 'ruby-bundler' 'rsync')
+  'snapd: for install dependencies')
+depends=('git' 'python-pip' 'python2-pip' 'wget' 'fakeroot' 'ruby-bundler' 'rsync' 'npm')
 makedepends=('cargo')
 conflicts=('apmpkg-git-dev' 'apmpkg-dev')
 source=("https://github.com/Kedap/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('919226f9937b4777b184dd5354f041507cb526aa7932a5bcff6af451d28a3d3c')
+sha256sums=('448bffda17d7568088ed907791f118a602b79297877834f245d2054583d159ad')
 
 build() {
 	cd "$pkgname-$pkgver"
