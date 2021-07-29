@@ -12,7 +12,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.31.r2.g5497d2d9
+pkgver=0.3.32.r58.g1216371f
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -25,8 +25,10 @@ makedepends=(git meson doxygen xmltoman ncurses
              avahi
              gst-plugins-base-libs
              )
-source=("git+https://gitlab.freedesktop.org/pipewire/pipewire.git")
-sha256sums=('SKIP')
+source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
+        '0001-Revert-bluez5-Use-libfreeaptx-instead-of-libopenaptx.patch')
+sha256sums=('SKIP'
+            '9545e10d4e702ee175bed80d1c030cb61ae267cc41809e107574a0e4ecba6811')
 
 pkgver() {
   cd $_pkgbase
@@ -35,6 +37,15 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 }
 
 build() {
@@ -151,8 +162,9 @@ package_pipewire-common-jack-git() {
 
 package_pipewire-common-pulse-git() {
   pkgdesc+=" - PulseAudio replacement"
-  depends=(pipewire-common-git libpipewire-$_ver.so
-           libpulse.so libavahi-{client,common}.so)
+  depends=(pipewire-common-git libpipewire-$_ver.so libpulse.so
+           libavahi-{client,common}.so
+           )
   provides=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   conflicts=(pipewire-pulse pulseaudio pulseaudio-bluetooth)
   install=pipewire-pulse.install
