@@ -1,6 +1,6 @@
 pkgbase = xorinator
 	pkgdesc = A command line utility for simple one-time pad encryption over multiple keys
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/Sonotsugipaa/xorinator
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = xorinator
 	makedepends = cmake>=3.19
 	makedepends = make
 	makedepends = bash
-	source = https://github.com/Sonotsugipaa/xorinator/archive/refs/tags/v1.3.1.tar.gz
+	source = https://github.com/Sonotsugipaa/xorinator/archive/refs/tags/v1.3.2.tar.gz
 	sha512sums = dd39ce7f9f0cb8905cf64570eb3b043df3bb6a13172ee1c46bf44aaf4c5ba7528640eb8f43b6786941ddf0f587add2ff7d4492400c9d6b106c67fd966d9511dc
 
 pkgname = xorinator
