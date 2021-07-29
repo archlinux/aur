@@ -1,0 +1,19 @@
+pkgbase = ruby-set
+	pkgdesc = This library provides the Set class
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ruby/set
+	arch = any
+	license = BSD
+	checkdepends = ruby-rake
+	checkdepends = ruby-bundler
+	checkdepends = ruby-test-unit
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = git+https://github.com/ruby/set.git?tag=v1.0.1
+	sha256sums = SKIP
+
+pkgname = ruby-set
