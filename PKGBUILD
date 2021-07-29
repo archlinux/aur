@@ -34,6 +34,7 @@ build() {
   rm -rf vendor/
 
   # Use go mod to handle deps
+  go mod init captive-browser
   go mod tidy
 
   go build
