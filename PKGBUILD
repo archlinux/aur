@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.1.8
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
@@ -33,12 +33,13 @@ makedepends=(
 )
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('34f87ea1577b1e89146a1589c67771262961bb18d0c8b21aaa9a1315e18dffc984f18f21cc8a96cc52dca9e94fcad1bdec2b62678c5f2f3434a4faba713854a6')
-b2sums=('1cb572b920524e594941dd7f74f3d9c916646e9e43de3c023650fc7717d66d5f0601804c0b4051f157a28f85e7e172c20545624d8004d8d4298d01d0b985970d')
+sha512sums=('208956e367725de4b1faeba7d4125a6a85bb4191ef0354a7087809e93d93b8986cdc30b78c135a743104851d15f3bb09776855fa02a686de0810dd14c97851c3')
+b2sums=('78fe02ae37db70e7aa92071aa609ff6f3dc6217827f89091ded1a8e2d30e84f3d7a095e101fcccfe720e9c3445f58e15da588cfcd7063388ab642649536b8fa0')
 
 build() {
   cd "${_name}-${pkgver}"
   export CC='gcc -m32'
+  export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE='None' \
