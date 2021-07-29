@@ -2,13 +2,13 @@
 
 pkgname=olive-git
 _pkgname=${pkgname%-*}
-pkgver=continuous.r370.g19eabf28
+pkgver=continuous.r1090.g5254be3fb
 pkgrel=1
-arch=('i686' 'pentium4' 'x86_64')
+arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio-git' 'qt5-multimedia')
+depends=('ffmpeg' 'openimageio' 'qt5-multimedia')
 makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
@@ -27,16 +27,25 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  # Currently the build crashes in the "ffmpegdecoder.cpp" file (-Werror=stringop-overflow).
+  # The build completes normally when this warning is disabled.
+
+  cd $_pkgname
+  sed -i "/Wshadow/a \ \ \ \ -Wno-stringop-overflow" CMakeLists.txt
+}
+
 build() {
   cd $_pkgname
   cmake -GNinja \
         -Bbuild \
+        -DCMAKE_CXX_FLAGS=-Wno-stringop-overflow \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
-  ninja -C build
+  ninja -C build/
 }
 
 package() {
   cd $_pkgname
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build/ install
 }
