@@ -14,15 +14,15 @@
 #   `keyserver-options auto-key-retrieve` to your `~/.gnupg/gpg.conf`
 
 pkgname=cassandra
-pkgver=3.11.11
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
 license=('APACHE')
-depends=('java-runtime=8')
+depends=('java-runtime>=8')
 makedepends=('gnupg')
-optdepends=('python2: to use Python CLI administration scripts')
+optdepends=('python: to use Python CLI administration scripts')
 backup=(etc/cassandra/cassandra-env.sh
         etc/cassandra/cassandra-rackdc.properties
         etc/cassandra/cassandra-topology.properties
@@ -37,7 +37,7 @@ source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkg
         'cassandra-tmpfile.conf'
         'cassandra-user.conf')
 validpgpkeys=('B7842CDAF36E6A3214FAE35D5E85B9AE0B84C041') 
-sha256sums=('a5639af781005410995a96f512d505c1def7b70cf5bbbec52e7cd5ff31b6cea3'
+sha256sums=('2ff17bda7126c50a2d4b26fe6169807f35d2db9e308dc2851109e1c7438ac2f1'
             'SKIP'
             'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'
             'abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a'
@@ -56,7 +56,7 @@ package() {
   mkdir -p ${pkgdir}/{etc/cassandra,var/log/cassandra}
   mkdir -p ${pkgdir}/{usr/bin,usr/share/cassandra,usr/share/java/cassandra}
 
-  cp -a interface pylib tools ${pkgdir}/usr/share/cassandra/
+  cp -a pylib tools ${pkgdir}/usr/share/cassandra/
 
   mkdir -p ${pkgdir}/usr/share/cassandra/bin/
   for f in bin/*; do
@@ -72,7 +72,6 @@ package() {
   ln -s ../java/cassandra ${pkgdir}/usr/share/cassandra/lib
 
   cp -a conf/* ${pkgdir}/etc/cassandra/
-  rm  ${pkgdir}/etc/cassandra/*.ps1
   ln -s /etc/cassandra ${pkgdir}/usr/share/cassandra/conf
 
   install -Dm644 ${srcdir}/cassandra.service ${pkgdir}/usr/lib/systemd/system/cassandra.service

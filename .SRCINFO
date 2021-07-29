@@ -1,14 +1,14 @@
 pkgbase = cassandra
 	pkgdesc = Apache Cassandra NoSQL database
-	pkgver = 3.11.11
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://cassandra.apache.org/
 	install = cassandra.install
 	arch = any
 	license = APACHE
 	makedepends = gnupg
-	depends = java-runtime=8
-	optdepends = python2: to use Python CLI administration scripts
+	depends = java-runtime>=8
+	optdepends = python: to use Python CLI administration scripts
 	backup = etc/cassandra/cassandra-env.sh
 	backup = etc/cassandra/cassandra-rackdc.properties
 	backup = etc/cassandra/cassandra-topology.properties
@@ -16,14 +16,14 @@ pkgbase = cassandra
 	backup = etc/cassandra/commitlog_archiving.properties
 	backup = etc/cassandra/logback.xml
 	backup = etc/cassandra/logback-tools.xml
-	source = https://www.apache.org/dist/cassandra/3.11.11/apache-cassandra-3.11.11-bin.tar.gz
-	source = https://www.apache.org/dist/cassandra/3.11.11/apache-cassandra-3.11.11-bin.tar.gz.asc
+	source = https://www.apache.org/dist/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz
+	source = https://www.apache.org/dist/cassandra/4.0.0/apache-cassandra-4.0.0-bin.tar.gz.asc
 	source = 01_fix_cassandra_home_path.patch
 	source = cassandra.service
 	source = cassandra-tmpfile.conf
 	source = cassandra-user.conf
 	validpgpkeys = B7842CDAF36E6A3214FAE35D5E85B9AE0B84C041
-	sha256sums = a5639af781005410995a96f512d505c1def7b70cf5bbbec52e7cd5ff31b6cea3
+	sha256sums = 2ff17bda7126c50a2d4b26fe6169807f35d2db9e308dc2851109e1c7438ac2f1
 	sha256sums = SKIP
 	sha256sums = bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657
 	sha256sums = abc9d54399c84eacf5922811b5480846ea1c88a73c5d214ea1db3d20c7c0422a
