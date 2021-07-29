@@ -10,7 +10,6 @@ depends=(gcc-libs glibc qt5-base qt5-webengine)
 makedepends=(fossil)
 optdepends=('mkinitcpio-busybox: to use the default "nc"; otherwise edit your config.conf')
 url=https://code.jessemcclure.org/weaver
-VCSCLIENTS+=(fossil::fossil)
 source=(fossil+https://code.jessemcclure.org/weaver)
 sha256sums=(SKIP)
 
