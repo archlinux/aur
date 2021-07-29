@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 
 pkgname=audacity-wxgtk2
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=2
 pkgdesc="Record and edit audio files"
 arch=('x86_64')
@@ -11,30 +11,36 @@ groups=('pro-audio')
 depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-sdk'
 'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
 'flac' 'libvorbis' 'libogg' 'vamp-plugin-sdk' 'portaudio' 'libsoxr' 'libsndfile' 'lame'
-'expat')
-makedepends=('cmake' 'autoconf' 'automake' 'libtool')
+'expat' 'alsa-lib' 'jack' 'util-linux')
+makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan')
 provides=("audacity")
 conflicts=("audacity")
 source=("https://github.com/audacity/audacity/archive/Audacity-${pkgver}.tar.gz")
-sha512sums=('1ea5b84b3938a448c4ab3b6a97432e4fb59f62d14f65f277047258c473501952ed53dea8860def875183ff09dd92e6e58949db876984c07a964373052bb5943e')
+sha512sums=('822f77537d39becb0caf644277d2c3ee4a7b0ffbdc6a7bc046c004b4375a9a4d6871f6404bbbd53092c641b2d8f59c022d95df4e4f7d039892d2f5887d7e8e35')
 
 prepare() {
-  mv -v "audacity-Audacity-${pkgver}" "${pkgname}-${pkgver}"
-  cd "${pkgname}-${pkgver}"
-  sed -i -e 's:--recurse-submodules:--recurse-submodules --branch v3.1.3.1-audacity:' cmake-proxies/wxWidgets/CMakeLists.txt
-  sed -i -e '/#include <algorithm>/i #include <limits>' include/audacity/Types.h
-  mkdir build
+  cd "audacity-Audacity-${pkgver}"
+  sed -i -e '/#include <iterator>/i #include <limits>' libraries/lib-utility/MemoryX.h
+  mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -Daudacity_use_ffmpeg=loaded \
-        -Daudacity_use_wxwidgets=local -Daudacity_use_sqlite=local  ..
+  cmake -G "Unix Makefiles" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DAUDACITY_BUILD_LEVEL=2 \
+        -Daudacity_use_ffmpeg=loaded \
+        -Daudacity_has_networking=off \
+        ..
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"/build
+  cd "audacity-Audacity-${pkgver}"/build
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"/build
+  cd "audacity-Audacity-${pkgver}"/build
   make DESTDIR="${pkgdir}" install
+  rm "${pkgdir}"/usr/audacity
+  chmod -R go=u "${pkgdir}"
+  chmod -R go-w "${pkgdir}"
 }

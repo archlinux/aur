@@ -1,6 +1,6 @@
 pkgbase = audacity-wxgtk2
 	pkgdesc = Record and edit audio files
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 2
 	url = https://audacityteam.org
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = audacity-wxgtk2
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
+	makedepends = git
 	depends = libmad
 	depends = libid3tag
 	depends = gtk2
@@ -37,10 +38,12 @@ pkgbase = audacity-wxgtk2
 	depends = libsndfile
 	depends = lame
 	depends = expat
+	depends = alsa-lib
+	depends = libjack
+	depends = libuuid
 	provides = audacity
 	conflicts = audacity
-	source = https://github.com/audacity/audacity/archive/Audacity-3.0.2.tar.gz
-	sha512sums = 1ea5b84b3938a448c4ab3b6a97432e4fb59f62d14f65f277047258c473501952ed53dea8860def875183ff09dd92e6e58949db876984c07a964373052bb5943e
+	source = https://github.com/audacity/audacity/archive/Audacity-3.0.3.tar.gz
+	sha512sums = 822f77537d39becb0caf644277d2c3ee4a7b0ffbdc6a7bc046c004b4375a9a4d6871f6404bbbd53092c641b2d8f59c022d95df4e4f7d039892d2f5887d7e8e35
 
 pkgname = audacity-wxgtk2
-
