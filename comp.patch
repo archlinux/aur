@@ -1,6 +1,6 @@
---- gamess/comp	2018-04-25 14:01:49.124308188 +0300
-+++ gamess/comp	2018-04-25 14:04:50.000000000 +0300
-@@ -1908,10 +1908,10 @@
+--- gamess/comp	2021-07-19 19:57:53.000000000 +0300
++++ gamess/comp	2021-07-29 22:10:39.987850221 +0300
+@@ -2193,10 +2193,10 @@
           #
           #         first, initialize OPT and EXTRAOPT
           #
@@ -12,28 +12,28 @@
 +         set EXTRAOPT=" -march=native -mno-fma"
           if (($MODULE_F:e == f90) || ($MODULE_F:e == F90)) then
              set EXTRAOPT="$EXTRAOPT -ffree-line-length-none"
-          else
-@@ -2086,7 +2086,7 @@
-                if ($MODULE == gugdm2 ) set OPT="-O0" #fixes failure of exam05
+          endif
+@@ -2370,7 +2370,7 @@
                 if ($MODULE =~ ccsd3aacg* ) set EXTRAOPT="$EXTRAOPT -fno-var-tracking-assignments"
                 #           if ($MODULE =~ ccsd3aacg* ) set EXTRAOPT="$EXTRAOPT --param=max-vartrack-size=500000000"  #--for debugging
--               set EXTRAOPT="$EXTRAOPT -w -fno-aggressive-loop-optimizations -funconstrained-commons"
-+               set EXTRAOPT="$EXTRAOPT -w -funconstrained-commons"
-                set EXTRAOPT="$EXTRAOPT -Werror=uninitialized -Werror=align-commons -Wtabs"
+                if ($MODULE == cimi ) set EXTRAOPT="$EXTRAOPT -fno-var-tracking-assignments -Wno-maybe-uninitialized"
+-               set EXTRAOPT="$EXTRAOPT -fno-aggressive-loop-optimizations -funconstrained-commons"
++               set EXTRAOPT="$EXTRAOPT -funconstrained-commons"
+                set EXTRAOPT="$EXTRAOPT -Werror=align-commons -Wtabs -Wuninitialized"
                 if (! -d $GMS_PATH/.git) set EXTRAOPT="$EXTRAOPT -Wno-maybe-uninitialized"
                 breaksw
-@@ -2153,7 +2153,7 @@
+@@ -2430,7 +2430,7 @@
           if (`uname -p` == aarch64) set EXTRAOPT="-mcpu=native $EXTRAOPT"
           #
           set echo
 -         gfortran -c -fdefault-integer-8 -g $GMS_FPE_FLAGS $OPT $EXTRAOPT $MODULE_F
-+         gfortran -c -fdefault-integer-8 $GMS_FPE_FLAGS $OPT $EXTRAOPT $MODULE_F
++         gfortran -c -I/usr/include -fdefault-integer-8 $GMS_FPE_FLAGS $OPT $EXTRAOPT $MODULE_F
           unset echo
           breaksw
  
 --- gamess/ddi/compddi	2018-02-08 00:15:23.000000000 +0300
 +++ gamess/ddi/compddi	2018-04-25 17:08:10.133181272 +0300
-@@ -704,7 +704,7 @@
+@@ -844,7 +844,7 @@
     if (`uname -p` == aarch64) set ARCH='-mcpu=native'
  
     set CC = 'gcc'
