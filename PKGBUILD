@@ -1,7 +1,7 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=xeus
 pkgver=1.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="C++ implementation of the Jupyter kernel protocol"
 arch=("x86_64")
 url="https://github.com/QuantStack/xeus"
