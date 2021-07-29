@@ -37,25 +37,24 @@ index 253a07ec0a..a85a97d62f 100644
 +  ethereum_remote_client_enabled = false
  }
 diff --git a/browser/extensions/brave_component_loader.cc b/browser/extensions/brave_component_loader.cc
-index 0178a8efee..af3f28f780 100644
+index 0178a8efee..60eabe8399 100644
 --- a/browser/extensions/brave_component_loader.cc
 +++ b/browser/extensions/brave_component_loader.cc
-@@ -9,16 +9,20 @@
+@@ -9,16 +9,18 @@
 
  #include "base/bind.h"
  #include "base/command_line.h"
-+#if BUILDFLAG(BRAVE_ADS_ENABLED)
- #include "bat/ads/pref_names.h"
-+#endif
+-#include "bat/ads/pref_names.h"
  #include "brave/browser/component_updater/brave_component_installer.h"
  #include "brave/common/brave_switches.h"
  #include "brave/common/pref_names.h"
 -#include "brave/components/brave_ads/common/pref_names.h"
  #include "brave/components/brave_component_updater/browser/brave_on_demand_updater.h"
  #include "brave/components/brave_extension/grit/brave_extension.h"
-+#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
-+#include "brave/components/brave_ads/common/pref_names.h"
  #include "brave/components/brave_rewards/browser/buildflags/buildflags.h"
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
++#include "bat/ads/pref_names.h"
++#include "brave/components/brave_ads/common/pref_names.h"
  #include "brave/components/brave_rewards/common/pref_names.h"
  #include "brave/components/brave_rewards/resources/extension/grit/brave_rewards_extension_resources.h"
 +#endif
@@ -89,6 +88,372 @@ index 6bfb3a813c..bc849ad0ec 100644
  #if BUILDFLAG(IPFS_ENABLED)
    ipfs::IpfsServiceFactory::GetForContext(profile);
  #endif
+diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
+index e02f9b6792..4c454c022b 100644
+--- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
++++ b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
+@@ -13,13 +13,17 @@
+ #include "base/memory/weak_ptr.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/values.h"
++#include "brave/components/brave_ads/buildflags/buildflags.h"
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+ #include "brave/browser/brave_ads/ads_service_factory.h"
++#include "brave/components/brave_ads/browser/ads_service.h"
++#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
++#endif
+ #include "brave/browser/ntp_background_images/view_counter_service_factory.h"
+ #include "brave/browser/profiles/profile_util.h"
+ #include "brave/browser/search_engines/search_engine_provider_util.h"
+ #include "brave/browser/ui/webui/new_tab_page/brave_new_tab_ui.h"
+ #include "brave/common/pref_names.h"
+-#include "brave/components/brave_ads/browser/ads_service.h"
+ #include "brave/components/brave_perf_predictor/browser/buildflags.h"
+ #include "brave/components/crypto_dot_com/browser/buildflags/buildflags.h"
+ #include "brave/components/ftx/browser/buildflags/buildflags.h"
+@@ -28,7 +32,6 @@
+ #include "brave/components/ntp_background_images/browser/view_counter_service.h"
+ #include "brave/components/ntp_background_images/common/pref_names.h"
+ #include "brave/components/p3a/brave_p3a_utils.h"
+-#include "brave/components/services/bat_ads/public/interfaces/bat_ads.mojom.h"
+ #include "brave/components/weekly_storage/weekly_storage.h"
+ #include "chrome/browser/browser_process.h"
+ #include "chrome/browser/profiles/profile.h"
+@@ -40,7 +43,9 @@
+
+ using ntp_background_images::features::kBraveNTPBrandedWallpaper;
+ using ntp_background_images::prefs::kNewTabPageShowBackgroundImage;
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+ using ntp_background_images::prefs::kNewTabPageShowSponsoredImagesBackgroundImage;  // NOLINT
++#endif
+ using ntp_background_images::prefs::kBrandedWallpaperNotificationDismissed;
+ using ntp_background_images::ViewCounterServiceFactory;
+
+@@ -90,9 +95,11 @@ base::DictionaryValue GetPreferencesDictionary(PrefService* prefs) {
+   pref_data.SetBoolean(
+       "showBackgroundImage",
+       prefs->GetBoolean(kNewTabPageShowBackgroundImage));
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   pref_data.SetBoolean(
+       "brandedWallpaperOptIn",
+       prefs->GetBoolean(kNewTabPageShowSponsoredImagesBackgroundImage));
++#endif
+   pref_data.SetBoolean(
+       "showClock",
+       prefs->GetBoolean(kNewTabPageShowClock));
+@@ -155,6 +162,7 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
+ // TODO(petemill): Move p3a to own NTP component so it can
+ // be used by other platforms.
+
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+ enum class NTPCustomizeUsage {
+   kNeverOpened,
+   kOpened,
+@@ -166,22 +174,28 @@ const char kNTPCustomizeUsageStatus[] =
+     "brave.new_tab_page.customize_p3a_usage";
+
+ }  // namespace
++#endif
+
+ // static
+ void BraveNewTabMessageHandler::RegisterLocalStatePrefs(
+     PrefRegistrySimple* local_state) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   local_state->RegisterIntegerPref(kNTPCustomizeUsageStatus, -1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::RecordInitialP3AValues(
+     PrefService* local_state) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kNeverOpened, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, local_state);
++#endif
+ }
+
+ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+       content::WebUIDataSource* source, Profile* profile) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   //
+   // Initial Values
+   // Should only contain data that is static
+@@ -201,6 +215,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+       "featureFlagBraveNTPSponsoredImagesWallpaper",
+       base::FeatureList::IsEnabled(kBraveNTPBrandedWallpaper) &&
+       is_ads_supported_locale_);
++#endif
+   // Private Tab info
+   if (IsPrivateNewTab(profile)) {
+     source->AddBoolean(
+@@ -258,6 +273,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       "saveNewTabPagePref",
+       base::BindRepeating(&BraveNewTabMessageHandler::HandleSaveNewTabPagePref,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   web_ui()->RegisterMessageCallback(
+       "registerNewTabPageView",
+       base::BindRepeating(
+@@ -282,14 +298,16 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayInteractionBegin,
+           base::Unretained(this)));
+-  web_ui()->RegisterMessageCallback(
+-      "todayOnCardVisit",
+-      base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardVisit,
+-                          base::Unretained(this)));
+   web_ui()->RegisterMessageCallback(
+       "todayOnCardViews",
+       base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardViews,
+                           base::Unretained(this)));
++#endif
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
++  web_ui()->RegisterMessageCallback(
++      "todayOnCardVisit",
++      base::BindRepeating(&BraveNewTabMessageHandler::HandleTodayOnCardVisit,
++                          base::Unretained(this)));
+   web_ui()->RegisterMessageCallback(
+       "todayOnPromotedCardView",
+       base::BindRepeating(
+@@ -304,11 +322,15 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit,
+           base::Unretained(this)));
++#endif
++
++#if BUILDFLAG(BRAVE_ADS_ENABLED) || BUILDFLAG(BRAVE_P3A_ENABLED)
+   web_ui()->RegisterMessageCallback(
+       "todayOnDisplayAdView",
+       base::BindRepeating(
+           &BraveNewTabMessageHandler::HandleTodayOnDisplayAdView,
+           base::Unretained(this)));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -360,10 +382,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+       kNewTabPageShowBackgroundImage,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   pref_change_registrar_.Add(
+       kNewTabPageShowSponsoredImagesBackgroundImage,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#endif
+   pref_change_registrar_.Add(
+       kNewTabPageShowClock,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+@@ -380,10 +404,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+       kNewTabPageShowToday,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   pref_change_registrar_.Add(
+       kNewTabPageShowRewards,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+                           base::Unretained(this)));
++#endif
+   pref_change_registrar_.Add(
+       kBrandedWallpaperNotificationDismissed,
+       base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
+@@ -478,9 +504,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+     LOG(ERROR) << "Invalid input";
+     return;
+   }
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kOpenedAndEdited, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, g_browser_process->local_state());
++#endif
+   PrefService* prefs = profile_->GetPrefs();
+   // Collect args
+   std::string settingsKeyInput = args->GetList()[0].GetString();
+@@ -508,10 +536,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+   const auto settingsValueBool = settingsValue.GetBool();
+   if (settingsKeyInput == "showBackgroundImage") {
+     settingsKey = kNewTabPageShowBackgroundImage;
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   } else if (settingsKeyInput == "brandedWallpaperOptIn") {
+     // TODO(simonhong): I think above |brandedWallpaperOptIn| should be changed
+     // to |sponsoredImagesWallpaperOptIn|.
+     settingsKey = kNewTabPageShowSponsoredImagesBackgroundImage;
++#endif
+   } else if (settingsKeyInput == "showClock") {
+     settingsKey = kNewTabPageShowClock;
+   } else if (settingsKeyInput == "showStats") {
+@@ -520,8 +550,10 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+     settingsKey = kNewTabPageShowToday;
+   } else if (settingsKeyInput == "isBraveTodayOptedIn") {
+     settingsKey = kBraveTodayOptedIn;
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   } else if (settingsKeyInput == "showRewards") {
+     settingsKey = kNewTabPageShowRewards;
++#endif
+   } else if (settingsKeyInput == "isBrandedWallpaperNotificationDismissed") {
+     settingsKey = kBrandedWallpaperNotificationDismissed;
+   } else if (settingsKeyInput == "hideAllWidgets") {
+@@ -546,24 +578,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+   }
+   prefs->SetBoolean(settingsKey, settingsValueBool);
+
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // P3A can only be recorded after profile is updated
+   if (settingsKeyInput == "showBackgroundImage" ||
+       settingsKeyInput == "brandedWallpaperOptIn") {
+     brave::RecordSponsoredImagesEnabledP3A(profile_);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleRegisterNewTabPageView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+
+   // Decrement original value only if there's actual branded content
+   if (auto* service = ViewCounterServiceFactory::GetForProfile(profile_))
+     service->RegisterPageView();
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   if (args->GetSize() != 1) {
+     LOG(ERROR) << "Invalid input";
+@@ -587,10 +624,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+         destination_url ? *destination_url : "",
+         wallpaper_id ? *wallpaper_id : "");
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+
+   auto* service = ViewCounterServiceFactory::GetForProfile(profile_);
+@@ -605,18 +644,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+   }
+
+   ResolveJavascriptCallback(args->GetList()[0], std::move(data));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleCustomizeClicked(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   brave::RecordValueIfGreater<NTPCustomizeUsage>(
+       NTPCustomizeUsage::kOpened, "Brave.NTP.CustomizeUsageStatus",
+       kNTPCustomizeUsageStatus, g_browser_process->local_state());
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   AllowJavascript();
+   // Track if user has ever scrolled to Brave Today.
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.HasEverInteracted", 1, 1);
+@@ -633,10 +676,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+   int answer = it_count - kSessionCountBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklySessionCount", answer,
+                              base::size(kSessionCountBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Argument should be how many cards visited in this session.
+   // We need the front-end to give us this since this class
+   // will be destroyed and re-created when the user navigates "back",
+@@ -670,10 +715,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+         item_id, creative_instance_id,
+         ads::mojom::BraveAdsPromotedContentAdEventType::kClicked);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // Argument should be how many cards viewed in this session.
+   int cards_viewed_total = args->GetList()[0].GetInt();
+   // Track how many Brave Today cards have been viewed per session
+@@ -690,10 +737,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+   int answer = it_count - kBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyMaxCardViewsCount", answer,
+                              base::size(kBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Argument should be how many cards viewed in this session.
+   std::string creative_instance_id = args->GetList()[0].GetString();
+   std::string item_id = args->GetList()[1].GetString();
+@@ -703,10 +752,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+         item_id, creative_instance_id,
+         ads::mojom::BraveAdsPromotedContentAdEventType::kViewed);
+   }
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   AllowJavascript();
+   std::string callback_id;
+   args->GetString(0, &callback_id);
+@@ -734,10 +785,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+       },
+       weak_ptr_factory_.GetWeakPtr(), callback_id);
+   ads_service_->GetInlineContentAd("900x750", std::move(on_ad_received));
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Collect params
+   std::string item_id;
+   std::string creative_instance_id;
+@@ -764,10 +817,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+   ads_service_->OnInlineContentAdEvent(
+       item_id, creative_instance_id,
+       ads::mojom::BraveAdsInlineContentAdEventType::kClicked);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+     const base::ListValue* args) {
++#if BUILDFLAG(BRAVE_ADS_ENABLED)
+   // Collect params
+   std::string item_id;
+   std::string creative_instance_id;
+@@ -795,6 +850,8 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+   ads_service_->OnInlineContentAdEvent(
+       item_id, creative_instance_id,
+       ads::mojom::BraveAdsInlineContentAdEventType::kViewed);
++#endif
++#if BUILDFLAG(BRAVE_P3A_ENABLED)
+   // Let p3a know an ad was viewed
+   WeeklyStorage storage(profile_->GetPrefs(), kBraveTodayWeeklyCardViewsCount);
+   storage.AddDelta(1u);
+@@ -805,6 +862,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+   int answer = it_count - kBuckets;
+   UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyDisplayAdsViewedCount", answer,
+                              base::size(kBuckets) + 1);
++#endif
+ }
+
+ void BraveNewTabMessageHandler::OnPrivatePropertiesChanged() {
 diff --git a/common/extensions/api/BUILD.gn b/common/extensions/api/BUILD.gn
 index c3e433a1a3..ef9a461813 100644
 --- a/common/extensions/api/BUILD.gn
@@ -346,7 +711,7 @@ index e8cbfc9d11..cdf09ce640 100644
 +  enable_brave_vpn = false
  }
 diff --git a/components/brave_wallet/browser/BUILD.gn b/components/brave_wallet/browser/BUILD.gn
-index ebba3d6e4b..d9b1a0a456 100644
+index 6a679faedb..64be4954e0 100644
 --- a/components/brave_wallet/browser/BUILD.gn
 +++ b/components/brave_wallet/browser/BUILD.gn
 @@ -3,7 +3,7 @@ import("//brave/components/brave_wallet/browser/config.gni")
@@ -432,16 +797,3 @@ index b8fca0c6da..d60687346f 100644
 -  brave_p3a_enabled = true
 +  brave_p3a_enabled = false
  }
-diff --git a/ios/browser/api/wallet/BUILD.gn b/ios/browser/api/wallet/BUILD.gn
-index d43223a1b0..d2ad0e89d9 100644
---- a/ios/browser/api/wallet/BUILD.gn
-+++ b/ios/browser/api/wallet/BUILD.gn
-@@ -7,7 +7,7 @@ import("//brave/components/brave_wallet/common/buildflags/buildflags.gni")
- import("//build/config/ios/rules.gni")
- import("//ios/build/config.gni")
-
--assert(brave_wallet_enabled)
-+#assert(brave_wallet_enabled)
-
- source_set("wallet") {
-   configs += [ "//build/config/compiler:enable_arc" ]
