@@ -10,9 +10,9 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 provides=('signal-desktop-beta')
 
-pkgver=5.11.0beta.3
-source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_5.11.0-beta.3_amd64.deb")
-sha256sums=('d97ff15091680a814f0a3cbabd80f261f335090c7e98df44caf140f3280d3239')
+pkgver=5.12.0beta.1
+source=("https://updates.signal.org/desktop/apt/pool/main/s/signal-desktop-beta/signal-desktop-beta_5.12.0-beta.1_amd64.deb")
+sha256sums=('c3f9f0971effec6332581714c1860f370408bee3e43c9730a3f55fa1dbdfe9c9')
 
 package(){
 	# Extract package data
