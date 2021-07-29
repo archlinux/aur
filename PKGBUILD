@@ -2,7 +2,7 @@
 
 pkgname=captive-browser-git
 _pkgname=captive-browser
-pkgver=r18.0845056
+pkgver=r19.0293a07
 pkgrel=1
 pkgdesc="A dedicated Chrome instance to log into captive portals without messing with DNS settings"
 arch=('x86_64' 'i686' 'arm')
@@ -28,14 +28,12 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # Force our own git checkout
-  export GOPATH="$srcdir"
-  mkdir -p "$GOPATH/src/github.com/FiloSottile"
-  ln -s `pwd` "$GOPATH/src/github.com/FiloSottile/captive-browser"
+  # Remove the vendored modules
+  rm -rf vendor/
 
-  go get -d -v github.com/BurntSushi/toml
-  go get -d -v github.com/armon/go-socks5
-  go get -d -v github.com/FiloSottile/captive-browser
+  # Use go mod to handle deps
+  go mod tidy
+
   go build
 }
 
