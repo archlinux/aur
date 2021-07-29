@@ -1,17 +1,20 @@
 pkgbase = python-hupper
 	pkgdesc = Integrated process monitor for developing servers
 	pkgver = 1.10.3
-	pkgrel = 2
-	url = https://github.com/Pylons/hupper
+	pkgrel = 3
+	url = https://github.com/pylons/hupper
 	changelog = CHANGES.rst
 	arch = any
 	license = MIT
-	checkdepends = python-watchdog
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-runner
+	checkdepends = python-watchdog
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.5
 	source = python-hupper-1.10.3.tar.gz::https://files.pythonhosted.org/packages/source/h/hupper/hupper-1.10.3.tar.gz
+	source = python-hupper-1.10.3.tar.gz.asc::https://files.pythonhosted.org/packages/source/h/hupper/hupper-1.10.3.tar.gz.asc
+	validpgpkeys = CC1A48C957AC6ABEF05B2C596BC977B056B829E5
 	sha256sums = cd6f51b72c7587bc9bce8a65ecd025a1e95f1b03284519bfe91284d010316cd9
+	sha256sums = SKIP
 
 pkgname = python-hupper
