@@ -1,8 +1,8 @@
 pkgbase = gnomebaker
 	pkgdesc = A full featured CD/DVD burning application for Gnome
 	pkgver = 0.6.4
-	pkgrel = 4
-	url = http://gnomebaker.sourceforge.net
+	pkgrel = 5
+	url = https://gnomebaker.sourceforge.net
 	install = gnomebaker.install
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = gnomebaker
 	depends = cdrdao
 	depends = gstreamer0.10-base-plugins
 	depends = libnotify
-	source = http://downloads.sourceforge.net/gnomebaker/gnomebaker-0.6.4.tar.gz
+	source = https://downloads.sourceforge.net/gnomebaker/gnomebaker-0.6.4.tar.gz
 	source = gnomebaker-0.6.4-libnotify-0.7.patch
 	source = gnomebaker-0.6.4-ldadd.patch
 	md5sums = db43492684e0ba349be85e81ce0a9e56
@@ -24,4 +24,3 @@ pkgbase = gnomebaker
 	md5sums = 37a70793b2d708fed1dbc0416b91554e
 
 pkgname = gnomebaker
-
