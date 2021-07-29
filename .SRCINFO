@@ -37,8 +37,6 @@ pkgbase = mingw-w64-vtk-git
 	options = staticlibs
 	options = !strip
 	source = git+https://gitlab.kitware.com/vtk/vtk.git
-	source = ram_usage.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mingw-w64-vtk-git

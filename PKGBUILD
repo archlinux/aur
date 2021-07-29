@@ -11,8 +11,8 @@ makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'ming
 provides=('mingw-w64-vtk')
 conflicts=('mingw-w64-vtk')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("git+https://gitlab.kitware.com/vtk/vtk.git" ram_usage.patch)
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://gitlab.kitware.com/vtk/vtk.git")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,7 +23,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  patch -p1 -i "${srcdir}/ram_usage.patch"
 }
 
 build() {
