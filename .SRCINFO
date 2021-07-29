@@ -1,6 +1,6 @@
 pkgbase = minimal-podcasts-player
 	pkgdesc = Subscribe, listen and (in the future) download your favorite podcasts, quickly and easily.
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/son-link/minimal-podcasts-player
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = minimal-podcasts-player
 	depends = python-podcastparser
 	depends = python-pyqt5
 	depends = qt5-multimedia
-	source = https://github.com/son-link/minimal-podcasts-player/archive/0.3.1.tar.gz
-	sha256sums = 39c1e1aaa97c8219ce1376f4041db847f82781b96bf81c16ad06da2afcf1c382
+	source = https://github.com/son-link/minimal-podcasts-player/archive/0.4.0.tar.gz
+	sha256sums = 9811e58d1e10b7fc460e08d411fb6d56ac961ec81fe0dabad99758f216d49106
 
 pkgname = minimal-podcasts-player
