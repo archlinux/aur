@@ -1,6 +1,6 @@
 pkgbase = ytmdesktop-git
 	pkgdesc = A desktop app for YouTube Music
-	pkgver = 1.14.0.r92.g47b5b24
+	pkgver = 1.14.0.r97.g45ed2e7
 	pkgrel = 1
 	url = https://ytmdesktop.app
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = ytmdesktop-git
 	makedepends = git
 	makedepends = npm
 	makedepends = nvm
-	makedepends = python
 	depends = electron11
 	optdepends = libnotify: for desktop notifications
 	optdepends = libappindicator-gtk3: for tray icon
