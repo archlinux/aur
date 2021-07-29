@@ -1,8 +1,8 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=go1.15
-pkgver=1.15.11
-pkgrel=3
+pkgver=1.15.14
+pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language v1.15'
 arch=(x86_64)
 url='https://golang.org/'
@@ -12,7 +12,7 @@ options=(!strip staticlibs)
 source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz{,.asc}
         "fix-color.patch::https://github.com/golang/go/commit/29634436fd741a7c685bf8f242b6fd62f093d1ad.patch")
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')
-sha256sums=('f25b2441d4c76cf63cde94d59bab237cc33e8a2a139040d904c8630f46d061e5'
+sha256sums=('60a4a5c48d63d0a13eca8849009b624629ff429c8bc5d1a6a8c3c4da9f34e70a'
             'SKIP'
             '6005e40e447b402b07d52604cfa7d444f61152cecd9a19953edbcf88160fa46a')
 
