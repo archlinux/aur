@@ -6,12 +6,13 @@ pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
 url="https://yuzu-emu.org/"
 license=('GPL2')
-depends=('cubeb' 'qt5-webengine>=5.12')
+depends=('qt5-webengine>=5.12')
 makedepends=(
 	'boost>=1.73'
 	'catch2>=2.13'
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.9.1'
+	'cubeb'
 	'discord-rpc>=3.4.0.r10'
 	'dynarmic>=5.r88'
 	'ffmpeg>=4.3.1'
@@ -110,6 +111,7 @@ package() {
 		'libavcodec.so'
 		'libavutil.so'
 		'libboost_context.so'
+		'libcubeb.so'
 		'libdiscord-rpc.so'
 		'libdynarmic.so'
 		'libfmt.so'

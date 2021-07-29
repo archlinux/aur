@@ -9,6 +9,7 @@ pkgbase = yuzu
 	makedepends = catch2>=2.13
 	makedepends = cmake>=3.15
 	makedepends = cpp-httplib-compiled>=0.9.1
+	makedepends = cubeb
 	makedepends = discord-rpc>=3.4.0.r10
 	makedepends = dynarmic>=5.r88
 	makedepends = ffmpeg>=4.3.1
@@ -29,7 +30,6 @@ pkgbase = yuzu
 	makedepends = xbyak>=5.96
 	makedepends = zlib>=1.2
 	makedepends = zstd>=1.5
-	depends = cubeb
 	depends = qt5-webengine>=5.12
 	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-702
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
@@ -55,11 +55,11 @@ pkgbase = yuzu
 	b2sums = a54c9e039c6d477778ba59f0f87b510b049120b3af0ac9b408adfdeaa038482a8486305bcbb756a1a1c4eb9d926bac723567f7d4366bba70baafde3e5306e27d
 
 pkgname = yuzu
-	depends = cubeb
 	depends = qt5-webengine>=5.12
 	depends = libavcodec.so
 	depends = libavutil.so
 	depends = libboost_context.so
+	depends = libcubeb.so
 	depends = libdiscord-rpc.so
 	depends = libdynarmic.so
 	depends = libfmt.so
