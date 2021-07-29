@@ -1,0 +1,23 @@
+pkgbase = beditor-bin
+	pkgdesc = Video editing software, Can run on Windows, Linux, and macOS.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/b-editor/BEditor
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	depends = gstreamer
+	depends = gtk2
+	depends = gtk3
+	depends = harfbuzz
+	depends = hdf5
+	depends = jasper
+	depends = libdc1394
+	depends = libwebp
+	depends = openal
+	depends = openexr
+	depends = tesseract
+	source = https://github.com/b-editor/BEditor/releases/download/v0.1.4/beditor_0.1.4-1_amd64.deb
+	sha512sums = SKIP
+
+pkgname = beditor-bin
