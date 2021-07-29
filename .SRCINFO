@@ -1,0 +1,17 @@
+pkgbase = ruby-nanoc-external
+	pkgdesc = Provides an :external filter for Nanoc
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-nanoc-core
+	noextract = nanoc-external-1.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-external-1.0.5.gem
+	source = LICENSE-4.12.2::https://raw.githubusercontent.com/nanoc/nanoc/4.12.2/nanoc-external/LICENSE
+	b2sums = 850a8c7892468c535fc203a30db15baf17f670474c45c0023fec74473803cad73b6152ab3c6deab6f451f14b009bfb58ed51231b1a9c05644d6b02b451ae8c51
+	b2sums = 39c1bde1c971c0042800d3cabd6b212152a189995154621cfe66b4646b66dfb09ea7ae0f1d2ef9b006f119c36e072e8b0b8387ce12e7dc1423e2176f5b08a630
+
+pkgname = ruby-nanoc-external
