@@ -18,7 +18,7 @@ depends=(
   openal
   openexr
   tesseract
-  dotnet-runtime-bin
+  dotnet-targeting-pack-bin 
 )
 
 source=("https://github.com/b-editor/BEditor/releases/download/v${pkgver}/beditor_${pkgver}-1_amd64.deb")
