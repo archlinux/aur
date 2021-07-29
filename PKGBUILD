@@ -2,7 +2,7 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=77.0b9
+pkgver=91.0b7
 pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks icon- and .desktop-files."
 arch=("any")
