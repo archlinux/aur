@@ -2,8 +2,6 @@
 
 set -eo pipefail
 
-set -x
-
 readonly basedir=$(mktemp -d)
 readonly pkgver=$(date +%Y%m%d)
 readonly pkgrel=${PKGBUILD_PKGREL:-1}
@@ -44,15 +42,11 @@ function foo {
         tmp_file=${basedir}/${tool}
         curl https://api.github.com/repos/vmware-tanzu/carvel-${tool}/releases/latest -o ${tmp_file} -C -
 
-        name=$(jq -r '.name' < ${tmp_file})
-
         url=$(jq -r '.assets[] | select(.name == "'${tool}'-linux-'${arch_bin}'").browser_download_url' < ${tmp_file})
-        echo "${tool}-${name}::${url}" >> ${basedir}/_source_${arch_pkg}
+        echo "${tool}::${url}" >> ${basedir}/_source_${arch_pkg}
 
         hashsum=$(jq -r '.body' < ${tmp_file} | rg -F linux-${arch_bin} | awk '{print $1}')
         echo ${hashsum} >> ${basedir}/_hashsum_${arch_pkg}
-
-        echo 'install -Dm 755 "${srcdir}/'"${tool}-${name}"'" "${pkgdir}/usr/bin/'${tool}'"' >> ${basedir}/_package_${arch_pkg}
     done
 
     cat <<EOF
@@ -62,12 +56,16 @@ $(cat ${basedir}/_source_${arch_pkg})
 sha256sums_${arch_pkg}=(
 $(cat ${basedir}/_hashsum_${arch_pkg})
 )
-package_${arch_pkg}() {
-$(cat ${basedir}/_package_${arch_pkg})
-}
 EOF
 }
 
 foo amd64 x86_64 "${tools_amd64[@]}"
 foo arm64 aarch64 "${tools_arm64[@]}"
 
+echo "package() {"
+
+    for tool in "${tools_amd64[@]}"; do
+        echo '[[ -f "${srcdir}/'${tool}'" ]] && install -Dm 755 "${srcdir}/'${tool}'" "${pkgdir}/usr/bin/'${tool}'"'
+    done
+
+echo "}"
