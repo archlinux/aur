@@ -1,6 +1,6 @@
 pkgbase = evince-git
 	pkgdesc = Simply a document viewer
-	pkgver = 40.1
+	pkgver = 41.alpha+10+g611e7667
 	pkgrel = 1
 	url = http://projects.gnome.org/evince/
 	arch = i686
@@ -27,6 +27,9 @@ pkgbase = evince-git
 	depends = dconf
 	depends = gsettings-desktop-schemas
 	depends = adwaita-icon-theme
+	depends = gspell
+	depends = gnome-desktop
+	depends = libhandy
 	optdepends = texlive-bin: DVI support
 	optdepends = gvfs: bookmark support and session saving
 	provides = evince
@@ -36,4 +39,3 @@ pkgbase = evince-git
 	md5sums = SKIP
 
 pkgname = evince-git
-

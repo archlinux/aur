@@ -4,14 +4,15 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=evince-git
-pkgver=40.1
+pkgver=41.alpha+10+g611e7667
 pkgrel=1
 pkgdesc="Simply a document viewer"
 url="http://projects.gnome.org/evince/"
 arch=(i686 x86_64)
 license=(GPL)
 depends=(gtk3 libgxps libspectre gsfonts poppler-glib djvulibre t1lib libsecret
-         desktop-file-utils dconf gsettings-desktop-schemas adwaita-icon-theme)
+         desktop-file-utils dconf gsettings-desktop-schemas adwaita-icon-theme
+         gspell gnome-desktop libhandy)
 makedepends=(itstool libnautilus-extension texlive-bin gobject-introspection
              docbook-xsl python gtk-doc git meson)
 optdepends=('texlive-bin: DVI support'
