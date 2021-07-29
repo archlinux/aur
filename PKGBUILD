@@ -3,7 +3,7 @@
 # contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
-pkgver=4.9.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('52ce273c29dcddcf2b0577ed5be7eb062a0b9c1948e5dd148ddc30aac242c4c7'
+sha256sums=('9ddfd4da1f917e874aae36cdd80b8fb0eba09e8248b55bb6781b04f50a241372'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
 
 package() {
