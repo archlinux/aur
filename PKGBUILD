@@ -56,7 +56,10 @@ pkgver() {
 	if [[ ! "$actpkgverlong" == *"$pkgver" ]]; then
 		cd ..
 		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
-		mv "$pkgname-$pkgver" "$pkgname-$actpkgver"
+		if [ -d "$pkgname-$actpkgver" ]; then
+			rm -R "$pkgname-$actpkgver"
+		fi
+		mv -T "$pkgname-$pkgver" "$pkgname-$actpkgver"
 
 		cd ..
 		mv "$pkgname-$pkgver.deb" "$pkgname-$actpkgver.deb"
@@ -67,6 +70,7 @@ pkgver() {
 package() {
 	## We still start in the src dir
 	cd "$pkgname-$pkgver"
+	echo "pgkver: $pkgver"
 
 	# Copy the binaries and application to their destination in /pkg as root folder
 	cp -r -i "usr" "$pkgdir/"
@@ -79,5 +83,6 @@ package() {
 	rm "$pkgname-$pkgver.deb"
 
 	# install the license
+	echo "PKGDIR: $pkgdir"
 	sudo install -Dm644 "$pkgdir/LICENSE" "/usr/share/licenses/$pkgname/LICENSE"
 }
