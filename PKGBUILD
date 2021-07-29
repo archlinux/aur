@@ -12,11 +12,11 @@ source=(
 )
 
 depends=(
-    "openssl"
-    "sdl2"
     "hicolor-icon-theme"
     "libunistring"
+    "openssl"
     "pcre"
+    "sdl2"
 )
 optdepends=("mpg123")
 makedepends=("cmake")
