@@ -1,22 +1,20 @@
 pkgbase = sysmontask
 	pkgdesc = System Monitor With UI Like Windows
 	pkgver = 1.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KrispyCamel4u/SysMonTask
 	arch = any
-	license = MIT
+	license = BSD
 	makedepends = python-setuptools
-	depends = python
-	depends = python-psutil
-	depends = python-gobject
-	depends = python-cairo
-	depends = python-matplotlib
-	depends = libwnck3
 	depends = gtk3
+	depends = libwnck3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-psutil
+	optdepends = python-matplotlib: For Log Plot utility
 	source = sysmontask-1.3.9.tar.gz::https://github.com/KrispyCamel4u/SysMonTask/archive/v1.3.9.tar.gz
 	source = sysmontask.patch
 	sha256sums = efb6934148333aee25560f830d43aa596f19a1145db5503eeaeb82c873013897
-	sha256sums = b7dd084e8a7fbe1ba03b279ef36f1fcf66ed117f79755168c0d5de884c774132
+	sha256sums = e2286b2c3d59fa8de51ce0b07b58308c560b49c5c7f1967a93c6d6c764a0a93e
 
 pkgname = sysmontask
-
