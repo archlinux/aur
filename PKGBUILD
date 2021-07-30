@@ -1,6 +1,7 @@
 #Maintainer: RSKYS <pouria dot rz at outlook dot com>
 
 pkgname=thefuck-git
+pkgsur=thefuck
 pkgver=3.31
 pkgrel=1
 pkgdesc='Magnificent app which corrects your previous console command'
@@ -18,6 +19,6 @@ md5sums=(
 
 package ()
 {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgsur-$pkgver"
   python3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
