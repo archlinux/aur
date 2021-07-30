@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -24,15 +24,11 @@ install=openafs.install
 source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
-        0001-Adjust-RedHat-config-and-service-files.patch
-        0002-Avoid-duplicate-definitions-of-globals.patch
-        0003-afsmonitor-remove-unused-LWP_WaitProcess.patch)
-sha256sums=('53543a561fce67714fec9f2a6bf408c5cc1d061c7dc9d1459458275e8ccbfa79'
-            'd61384efdce1aacabdd1890062ada741c0e0aeb4cc973811a493dcda6f4a317f'
+        0001-Adjust-RedHat-config-and-service-files.patch)
+sha256sums=('daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0'
+            'ddcc4e0c7d4abce4f1ac607e69c12e7711825f58813e365c4df8e97eb68e9be5'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            '56a35ca8a7946cfe379e7704f0a982e7bb70ba64bca3c0379c676fae36d416f1'
-            '2c49e0917eb8cee44b740f128e1991d75fbd53ac0661e2541824c1e9ecfd5ad1'
-            'b816e2d934c281e9d9e07ce608a74d5354b6be92c5597a1cb962f6c943800a16')
+            'e93cb374badf24662ebead212525e386cdc05e32c7606ec7b4c0da2e3f103ae5')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
@@ -43,10 +39,6 @@ prepare() {
 
   # Adjust RedHat config and service files to our needs
   patch -p1 < "${srcdir}"/0001-Adjust-RedHat-config-and-service-files.patch
-
-  # Fix compilation with GCC 10
-  patch -p1 < "${srcdir}"/0002-Avoid-duplicate-definitions-of-globals.patch
-  patch -p1 < "${srcdir}"/0003-afsmonitor-remove-unused-LWP_WaitProcess.patch
 
   # Only needed when changes to configure were made
   # ./regen.sh -q
