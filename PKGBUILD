@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=olivia
-pkgver=r815.2235bab
+pkgver=r846.0844406
 pkgrel=1
 pkgdesc="Elegant Cloud Music Player for Linux Desktop"
 arch=('i686' 'x86_64')
@@ -18,12 +18,12 @@ pkgver() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname/src"
   qmake Olivia.pro PREFIX="$pkgdir/usr" -spec linux-g++ CONFIG+=release
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname/src"
   make DESTDIR="$pkgdir/usr" install
 }
