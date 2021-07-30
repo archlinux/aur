@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=firmware-tqc-a01
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Additional firmware for TQC-A01"
 arch=('any')
@@ -17,13 +17,17 @@ _chip_bt=BCM43430A1
 options=('!strip')
 source=(
         # get from https://archlinuxarm.org/packages/any/firmware-raspberrypi/files/PKGBUILD fixes buggy linux-firmware for Zero-W
-        "${_chip_wl}-sdio_$_ver.txt::https://archlinuxarm.org/builder/src/bcm43430/7.45.98.38/${_chip_wl}-sdio.txt"
+        # "${_chip_wl}-sdio_$_ver.txt::https://archlinuxarm.org/builder/src/bcm43430/7.45.98.38/${_chip_wl}-sdio.txt"
+        "${_chip_wl}-sdio_$_ver.bin::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/master/brcm/${_chip_wl}-sdio.bin"
+        "${_chip_wl}-sdio_$_ver.txt::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/master/brcm/${_chip_wl}-sdio.AP6212.txt"
         "${_chip_bt}_$_ver.hcd::https://raw.githubusercontent.com/LibreELEC/brcmfmac_sdio-firmware/master/${_chip_bt}.vim")
-sha256sums=('e4ce7ad5ce72406f958ed758539b65d958d1c0eb3e46e3f8e9f02b510d88e0b0'
+sha256sums=('023fd9b345fc0bbabae75721bc8702a905077daacc2c36b10b0616fb910e846b'
+            'fdef0603345dd023ad28c0eff2d5167915c617bee2d6944da9a6da1c4ac87ca5'
             'd396912aa4efa7e0ea93dc6b63b1088619b59676ab53404d14fe79f5c71a5da0')
 
 package() {
   install -d "${pkgdir}/usr/lib/firmware/updates/brcm"
+  install -m 0644 ${_chip_wl}-sdio_$_ver.bin      "${pkgdir}/usr/lib/firmware/updates/brcm/${_chip_wl}-sdio.bin"
   install -m 0644 ${_chip_wl}-sdio_$_ver.txt      "${pkgdir}/usr/lib/firmware/updates/brcm/${_chip_wl}-sdio.txt"
   install -m 0644 ${_chip_bt}_$_ver.hcd           "${pkgdir}/usr/lib/firmware/updates/brcm/${_chip_bt}.hcd"
 
