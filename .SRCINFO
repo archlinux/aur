@@ -1,0 +1,21 @@
+pkgbase = ruby-adsf-live
+	pkgdesc = Live reload support for adsf
+	pkgver = 1.4.6
+	pkgrel = 1
+	url = https://github.com/ddfreyne/adsf
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-adsf
+	depends = ruby-em-websocket
+	depends = ruby-eventmachine
+	depends = ruby-listen
+	depends = ruby-rack-livereload
+	noextract = adsf-live-1.4.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/adsf-live-1.4.6.gem
+	source = LICENSE-1.4.6::https://raw.githubusercontent.com/ddfreyne/adsf/adsf-live-v1.4.6/LICENSE
+	b2sums = d5c55cafee2ff6f6189ca89eb5461acb40d683d98e222d816da5f59c51ac1059c72ac64f2a01a8efd7a9bdbb03b89dc0455cc03a957af6d3b113f8dea18ecbc3
+	b2sums = 40aaf8ba18519a33d8bc34146b4da9d26a32d0739b1399d1d20463207c09604125804e89b85cf8fde1bbe35aca66956c1cd0c303a05d8873436fc3a8462f02df
+
+pkgname = ruby-adsf-live
