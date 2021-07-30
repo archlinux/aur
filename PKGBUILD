@@ -6,8 +6,6 @@
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
-_CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10 -DCMAKE_CXX_COMPILER=g++-10 )
-
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 ((DISABLE_USD)) && {
@@ -30,7 +28,7 @@ url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
          "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
-makedepends=("git" "cmake" "boost" "mesa" "llvm" "gcc10" "gcc10-libs")
+makedepends=("git" "cmake" "boost" "mesa" "llvm")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
