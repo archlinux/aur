@@ -20,6 +20,7 @@ pkgbase = minizip-git
 	conflicts = minizip
 	conflicts = minizip-ng
 	conflicts = minizip-git
+	conflicts = minizip-asm
 	source = git+https://github.com/zlib-ng/minizip-ng#branch=dev
 	sha256sums = SKIP
 
