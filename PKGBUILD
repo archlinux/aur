@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=impressive
-_rev=310
+_rev=311
 pkgver=0.13.0_r$_rev
 pkgrel=1
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
