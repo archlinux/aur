@@ -1,6 +1,6 @@
 pkgbase = i3lock-color
-	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
-	pkgver = 2.13.c.3
+	pkgdesc = The world's most popular non-default computer lockscreen.
+	pkgver = 2.13.c.4
 	pkgrel = 1
 	url = https://github.com/Raymo111/i3lock-color
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = i3lock-color
 	provides = i3lock-color
 	conflicts = i3lock
 	conflicts = i3lock-color-git
-	source = https://github.com/Raymo111/i3lock-color/archive/2.13.c.3.tar.gz
-	sha256sums = 3932ec280aa9baa1cd1c7703d704cc4657efd4a6af392967bbb38d9bf9fbcc68
+	source = https://github.com/Raymo111/i3lock-color/archive/2.13.c.4.tar.gz
+	sha256sums = 5df4cd3d515d938630ced981a7f0a6e01344d1ec51d10fd3c3d131d19283df69
 
 pkgname = i3lock-color
-
