@@ -1,6 +1,6 @@
 pkgbase = python-fpyutils
 	pkgdesc = A collection of useful non-standard Python functions which aim to be simple to use
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://blog.franco.net.eu.org/software/#fpyutils
 	arch = any
@@ -9,12 +9,11 @@ pkgbase = python-fpyutils
 	depends = python
 	depends = python-atomicwrites=1.4.0
 	depends = python-yaml=5.4.1.1
-	depends = python-requests=2.25.1
+	depends = python-requests=2.26.0
 	options = !emptydirs
-	source = https://blog.franco.net.eu.org/software/fpyutils-2.0.0.tar.gz.sig
-	source = https://blog.franco.net.eu.org/software/fpyutils-2.0.0.tar.gz
+	source = https://blog.franco.net.eu.org/software/fpyutils-2.0.1/fpyutils-2.0.1.tar.gz.sig
+	source = https://blog.franco.net.eu.org/software/fpyutils-2.0.1/fpyutils-2.0.1.tar.gz
 	sha512sums = SKIP
-	sha512sums = 7e56dd953a151369a44b2f7b89c2e28963c744038f54ec24179c7035d272f06787b8ed37eb3ecd794a924f3dd94c845232d225e154e175219aac408415918c5a
+	sha512sums = 5d11ed532b321b383dbaed8adbecd5686b1acbf2da25ff05b599b0312ebad64bffe2f83f71a291ecdd81472116de01589fbbc59dd6f4a102d0d442e360849f41
 
 pkgname = python-fpyutils
-
