@@ -6,7 +6,7 @@
 
 pkgname=gnomebaker
 pkgver=0.6.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A full featured CD/DVD burning application for Gnome"
 license=('GPL')
 arch=('i686' 'x86_64')
@@ -22,16 +22,16 @@ md5sums=('db43492684e0ba349be85e81ce0a9e56'
          '37a70793b2d708fed1dbc0416b91554e')
 
 prepare() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "$srcdir"/${pkgname}-${pkgver}
 
-  patch -p0 < "${srcdir}"/gnomebaker-0.6.4-libnotify-0.7.patch
+  patch -p0 < "$srcdir"/gnomebaker-0.6.4-libnotify-0.7.patch
 
   # patch from fedora; thanks to hadrons123 for finding
-  patch -p1 < "${srcdir}"/gnomebaker-0.6.4-ldadd.patch
+  patch -p1 < "$srcdir"/gnomebaker-0.6.4-ldadd.patch
 }
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "$srcdir"/${pkgname}-${pkgver}
 
   ./configure \
     --prefix=/usr \
@@ -43,15 +43,16 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "$srcdir"/${pkgname}-${pkgver}
 
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="${pkgdir}" install
+  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
 
-  install -dm755 "${pkgdir}"/usr/share/gconf/schemas
+  install -dm755 "$pkgdir"/usr/share/gconf/schemas
   gconf-merge-schema \
-  "${pkgdir}"/usr/share/gconf/schemas/${pkgname}.schemas \
-  "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
+    "$pkgdir"/usr/share/gconf/schemas/${pkgname}.schemas \
+    "$pkgdir"/etc/gconf/schemas/*.schemas
+  rm -f "$pkgdir"/etc/gconf/schemas/*.schemas
 }
 
 # vim:set ts=2 sw=2 et:
+

@@ -1,7 +1,7 @@
 pkgbase = gnomebaker
 	pkgdesc = A full featured CD/DVD burning application for Gnome
 	pkgver = 0.6.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gnomebaker.sourceforge.net
 	install = gnomebaker.install
 	arch = i686
