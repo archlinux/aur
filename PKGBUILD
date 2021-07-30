@@ -6,14 +6,14 @@ pkgver=5.6.7.13
 _rawver=${pkgver//./_}
 _hashver='9f0e0a44a59e4331'
 _pkgupname='Upwork'
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop Application'
 arch=(x86_64)
 url='https://www.upwork.com/downloads/'
 license=(custom)
 conflicts=(upwork-alpha)
 depends=(alsa-lib gtk3 libjpeg-turbo nss)
-source=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
+source=(https://upwork-usw2-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
 	LICENSE
 	upwork)
 sha256sums=('f1d3168cda47f77100192ee97aa629e2452fe62fb364dd59ad361adbc0d1da87'

@@ -1,7 +1,7 @@
 pkgbase = upwork
 	pkgdesc = Desktop Application
 	pkgver = 5.6.7.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.upwork.com/downloads/
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = upwork
 	depends = libjpeg-turbo
 	depends = nss
 	conflicts = upwork-alpha
-	source = https://updates-desktopapp.upwork.com/binaries/v5_6_7_13_9f0e0a44a59e4331/upwork_5.6.7.13_amd64.deb
+	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_7_13_9f0e0a44a59e4331/upwork_5.6.7.13_amd64.deb
 	source = LICENSE
 	source = upwork
 	sha256sums = f1d3168cda47f77100192ee97aa629e2452fe62fb364dd59ad361adbc0d1da87
