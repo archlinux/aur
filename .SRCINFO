@@ -8,6 +8,7 @@ pkgbase = python-pyfzf-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-plumbum
+	provides = python-pyfzf
 	source = git://github.com/nk412/pyfzf.git
 	sha256sums = SKIP
 

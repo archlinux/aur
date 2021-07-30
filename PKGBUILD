@@ -8,6 +8,7 @@ arch=('any')
 license=('MIT')
 depends=('python-plumbum')
 makedepends=('git' 'python-setuptools')
+provides=('python-pyfzf')
 url="https://github.com/nk412/pyfzf"
 source=("git://github.com/nk412/pyfzf.git")
 sha256sums=('SKIP')
