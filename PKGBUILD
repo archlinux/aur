@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=wg++
-pkgver=3.2.0
+pkgver=3.2
 pkgrel=1
 pkgdesc='WebGrab+Plus is a freeware (license via donation) multi-site incremental XMLTV EPG grabber.'
 arch=('any')
@@ -10,11 +10,11 @@ license=('custom')
 depends=('mono')
 makedepends=('git')
 provides=('wg++')
-source=("http://webgrabplus.com/sites/default/files/download/SW/V3.2.0/WebGrabPlus_V3.2_install.tar.gz"
+source=("http://webgrabplus.com/sites/default/files/download/SW/V3.2.1/WebGrabPlus_V3.2.1_beta_install.tar.gz"
         "git+https://github.com/SilentButeo2/webgrabplus-siteinipack.git"
         "wg++")
 
-md5sums=('8c99a00f2bb86e673ab848f823db8270'
+md5sums=('d9d8d84625f6a3c4f945a03a4558e0ef'
          'SKIP'
          '96ddf77a84554bb457dab4fd63e82ae6')
 
