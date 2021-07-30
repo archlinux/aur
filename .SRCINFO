@@ -1,0 +1,22 @@
+pkgbase = ruby-timecop
+	pkgdesc = A gem providing "time travel", "time freezing", and "time acceleration" capabilities
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/travisjeffery/timecop
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	checkdepends = ruby-nokogiri
+	checkdepends = ruby-mocha
+	checkdepends = ruby-activesupport
+	checkdepends = ruby-tzinfo
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/travisjeffery/timecop/archive/v0.9.4.tar.gz
+	sha256sums = c7b06c71ebdebc61a89f9ac394c6a9dbd89205350c59af68843c718da2eb3444
+
+pkgname = ruby-timecop
