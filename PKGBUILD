@@ -8,6 +8,7 @@ arch=('any')
 license=('BSD')
 depends=()
 makedepends=('git' 'python-setuptools')
+provides=('python-pymitter')
 url="https://github.com/riga/pymitter"
 source=("git://github.com/riga/pymitter.git")
 sha256sums=('SKIP')

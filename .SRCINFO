@@ -7,6 +7,7 @@ pkgbase = python-pymitter-git
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	provides = python-pymitter
 	source = git://github.com/riga/pymitter.git
 	sha256sums = SKIP
 
