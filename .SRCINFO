@@ -1,6 +1,6 @@
 pkgbase = docker-ipv6nat
 	pkgdesc = Extend Docker with IPv6 NAT, similar to IPv4
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/robbertkl/docker-ipv6nat
@@ -12,10 +12,9 @@ pkgbase = docker-ipv6nat
 	makedepends = go
 	depends = docker
 	depends = iptables
-	source = git+https://github.com/robbertkl/docker-ipv6nat.git#tag=v0.4.3
+	source = git+https://github.com/robbertkl/docker-ipv6nat.git#tag=v0.4.4
 	source = docker-ipv6nat.service
 	sha256sums = SKIP
 	sha256sums = 4f0443dc6873fa2ed217309b79d8db362aa2fbcfca81b717edc6ec805bdd24f4
 
 pkgname = docker-ipv6nat
-

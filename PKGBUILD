@@ -1,7 +1,7 @@
 # Maintainer: Elias Werberich <elias@werberich.de>
 
 pkgname=docker-ipv6nat
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 epoch=0
 pkgdesc="Extend Docker with IPv6 NAT, similar to IPv4"
