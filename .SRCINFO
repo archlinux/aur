@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.13.5.arch1
+	pkgver = 5.13.6.arch1
 	pkgrel = 2
-	url = https://github.com/archlinux/linux/commits/v5.13.5-arch1
+	url = https://github.com/archlinux/linux/commits/v5.13.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,7 +20,7 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.5-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.6-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
