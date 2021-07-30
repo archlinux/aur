@@ -1,5 +1,6 @@
 pkgbase = thefuck-git
 	pkgdesc = Magnificent app which corrects your previous console command
+	pkgsur = thefuck
 	pkgver = 3.31
 	pkgrel = 1
 	url = https://github.com/nvbn/thefuck
