@@ -1,16 +1,14 @@
 pkgbase = ruby-rack-livereload
 	pkgdesc = Insert LiveReload into your app easily as Rack middleware
-	pkgver = 0.3.15
+	pkgver = 0.3.17
 	pkgrel = 1
-	url = https://rubygems.org/gems/rack-livereload
+	url = https://github.com/jaredmdobson/rack-livereload
 	arch = any
-	license = rack
+	license = MIT
 	depends = ruby
-	depends = ruby-rack
-	noextract = rack-livereload-0.3.15.gem
+	noextract = rack-livereload-0.3.17.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rack-livereload-0.3.15.gem
-	sha512sums = e58644ad411e2ca0018a4d61bf37dc9cd4cda19b69ddeca5c60679fe3a79069a05d507bc9f66c99b5dd477ed1385dcdf0731381d3e98eafeddc68bff0ab2a475
+	source = https://rubygems.org/downloads/rack-livereload-0.3.17.gem
+	b2sums = 61c65cd9698b8fc9f002a3db7ff1fe47e20310b02fad0e659cc25b27c43d98b82b90eb344e6b8e1264b321cf84314b80608002c84e74ff10f5a94f5d2d4d820d
 
 pkgname = ruby-rack-livereload
-
