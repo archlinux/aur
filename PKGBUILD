@@ -13,5 +13,5 @@ md5sums=('SKIP')
 
 package() {
 	cd "ideapad_mode"
-	install -D "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -D "ideapadmode" "$pkgdir/usr/bin/ideapadmode"
 }
