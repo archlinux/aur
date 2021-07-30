@@ -1,13 +1,12 @@
 pkgbase = systemd-failmsg
 	pkgdesc = A systemd service and script to send failure emails
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/dino-/systemd-failmsg
 	arch = any
 	license = ISC
 	depends = bash
-	source = https://github.com/dino-/systemd-failmsg/releases/download/1.0/systemd-failmsg-1.0.tar.gz
-	sha256sums = 20a6fb3c5c2b044f49ddcd8330266e5e08a633de3895181e30f16629959e1f4f
+	source = https://github.com/dino-/systemd-failmsg/releases/download/1.1/systemd-failmsg-1.1.tar.gz
+	sha256sums = 13d9cf29cc33e3927e0bfb7a42092702ac518d9d89fcc9e443c2409c496b733f
 
 pkgname = systemd-failmsg
-
