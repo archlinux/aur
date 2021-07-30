@@ -8,9 +8,9 @@
 
 # https://download.jetbrains.com/rider/JetBrains.Rider-2020.3-EAP10-203.5981.86.Checked.tar.gz
 pkgname=rider-eap
-eapver=2020.3
-eaprelease=10
-pkgver=203.5981.86
+eapver=2021.2
+eaprelease=8
+pkgver=212.4746.59
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
 pkgrel=2
 epoch=1
@@ -26,7 +26,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('4f081b76b01775fa3ad3dcac253423c16ef682590fd148b7e22df3a94619e9ed'
+sha256sums=('7f08750b5516e6f0ecd10d3356024d988b6bc2d02e144b73a3033529c17ab665'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
