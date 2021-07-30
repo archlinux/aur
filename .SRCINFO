@@ -1,0 +1,11 @@
+pkgbase = svg-term-cli
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/marionebl/svg-term-cli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = asciinema
+
+pkgname = svg-term-cli
