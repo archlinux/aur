@@ -1,6 +1,6 @@
 pkgbase = python-nilearn
 	pkgdesc = Python library for fast and easy statistical learning on NeuroImaging data
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://nilearn.github.io/
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = python-nilearn
 	depends = python-nibabel>=2.0.2
 	optdepends = python-matplotlib: Plotting library for fancy examples
 	options = !emptydirs
-	source = python-nilearn-0.7.0.tar.gz::https://github.com/nilearn/nilearn/archive/0.7.0.tar.gz
-	sha256sums = 3d0e65bf0af8ca0ed9dc1bbd7d68675286b1891d4ed0863ea7f0e16f5f4d5115
+	source = python-nilearn-0.8.0.tar.gz::https://github.com/nilearn/nilearn/archive/0.8.0.tar.gz
+	sha256sums = 21d5b190e92f75c061680f8688e18b5a16eb537856fd9d22be7aff11261fdee7
 
 pkgname = python-nilearn
-
