@@ -1,6 +1,6 @@
 pkgbase = python-xdg
 	pkgdesc = Variables defined by the XDG Base Directory Specification
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/srstevenson/xdg
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-xdg
 	makedepends = python-dephell
 	depends = python
 	conflicts = python-pyxdg
-	source = python-xdg-5.1.0.tar.gz::https://github.com/srstevenson/xdg/archive/5.1.0.tar.gz
-	sha256sums = 3162ec1f612aca656da5b5a956ec40542d119c1f64f51b952d6d71b01ddeedc4
+	source = python-xdg-5.1.1.tar.gz::https://github.com/srstevenson/xdg/archive/5.1.1.tar.gz
+	sha256sums = f4afbbc21a8405da1a7f4ad8f1d8abd3132aca2ef9c3441b39200d939041160f
 
 pkgname = python-xdg

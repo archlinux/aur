@@ -1,7 +1,7 @@
 # Maintainer: Jaan Toots <jaan@jaantoots.org>
 pkgname=python-xdg
 _name=${pkgname#python-}
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Variables defined by the XDG Base Directory Specification"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-dephell')
 conflicts=('python-pyxdg')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3162ec1f612aca656da5b5a956ec40542d119c1f64f51b952d6d71b01ddeedc4')
+sha256sums=('f4afbbc21a8405da1a7f4ad8f1d8abd3132aca2ef9c3441b39200d939041160f')
 
 prepare() {
     cd "$_name-$pkgver"
