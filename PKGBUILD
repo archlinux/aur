@@ -1,6 +1,6 @@
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 pkgname=vfu-utf
-pkgver=4.16
+pkgver=4.21
 pkgrel=1
 pkgdesc="VFU is console (text mode) file manager. Patched for Unicode (UTF-8) support."
 arch=('i686' 'x86_64')
@@ -16,14 +16,17 @@ backup=('etc/vfu/vfu.conf')
 install='vfu.install'
 source=(http://cade.datamax.bg/vfu/vfu-$pkgver.tar.gz \
 	vfu-4.15-unicode.patch)
-md5sums=('b4a68f4f8dea29ca8a507ebb7a98bc83'
+md5sums=('32a3bfa66c2889302c833d6c7d061fd0'
          '218b3674f660dc9c41dafdbb4a5ad44d')
+
+prepare() {
+  cd "$srcdir/vfu-$pkgver"
+  # patch for unicode (utf-8) support.
+  patch -p1 -i ../vfu-4.15-unicode.patch
+}
 
 build() {
   cd "$srcdir/vfu-$pkgver"
-
-  # patch for unicode (utf-8) support.
-  patch -p1 -i ../vfu-4.15-unicode.patch
 
   make CCDEF="$CFLAGS -D_FILE_OFFSET_BITS=64"
   ./build.docs
