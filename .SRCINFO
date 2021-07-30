@@ -1,5 +1,5 @@
 pkgbase = xorg-server-bug865
-	pkgver = 1.20.12
+	pkgver = 1.20.13
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -37,8 +37,8 @@ pkgbase = xorg-server-bug865
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = egl-wayland
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.12.tar.xz
-	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.12.tar.xz.sig
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.13.tar.xz
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.13.tar.xz.sig
 	source = xserver-autobind-hotplug.patch
 	source = 0001-v2-FS-58644.patch
 	source = 0002-fix-libshadow-2.patch
@@ -49,7 +49,7 @@ pkgbase = xorg-server-bug865
 	validpgpkeys = C383B778255613DFDB409D91DB221A6900000011
 	validpgpkeys = DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3
 	validpgpkeys = 3BB639E56F861FA2E86505690FDD682D974CA72A
-	sha512sums = 98350c42fb1f10c965663c1c8d4b225689a6a63163d788d454aa71b28b9cc8fcf9709a932f882358a13ca0c277c0c15812d05919092b4c32828d4ed61cca0406
+	sha512sums = 4e0b7bd4e070dc52cb2c51c2056feb133de2c0487d359392ed63abba9702910cd2e2983e9415973d8d6e9672eac78be6f39202687fc56610877914ce722554b3
 	sha512sums = SKIP
 	sha512sums = d84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22
 	sha512sums = 74e1aa0c101e42f0f25349d305641873b3a79ab3b9bb2d4ed68ba8e392b4db2701fcbc35826531ee2667d3ee55673e4b4fecc2a9f088141af29ceb400f72f363
@@ -77,7 +77,7 @@ pkgname = xorg-server-bug865
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
-	provides = xorg-server=1.20.12
+	provides = xorg-server=1.20.13
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
