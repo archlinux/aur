@@ -1,12 +1,7 @@
-pre_install() {
-	if [ -f /etc/clash/config.yaml ]; then
-		mv /etc/clash/config.yaml /etc/clash/config.yaml.bak
-	fi
-}
-
 post_install() {
-    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-	echo "+  Install successfully                                         +"
+    systemctl daemon-reload
+	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo "+  Install successfully                                         +"
     echo "+                                                               +"
     echo "+  Home directory at /etc/clash                                 +"
     echo "+                                                               +"
@@ -15,30 +10,17 @@ post_install() {
     echo "+                                                               +"
     echo "+  Use 'systemctl start clash' to start                         +"
     echo "+  Use 'systemctl enable clash' to enable auto-restart on boot  +"
-	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-}
-
-pre_upgrade() {
-	if [ -f /etc/clash/config.yaml ]; then
-		mv /etc/clash/config.yaml /etc/clash/config.yaml.user
-	fi
+    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 }
 
 post_upgrade() {
-    if [ -f /etc/clash/config.yaml.user ]; then
-		mv /etc/clash/config.yaml.user /etc/clash/config.yaml
-	fi
-	systemctl restart clash
+    systemctl restart clash
 }
 
 pre_remove() {
-	systemctl stop clash
-    systemctl disable clash
-	if [ -f /etc/clash/config.yaml ]; then
-      mv /etc/clash/config.yaml /etc/clash/config.yaml.bak
-    fi
+    systemctl disable --now clash
 }
 
 post_remove() {
-	systemctl daemon-reload
+    systemctl daemon-reload
 }

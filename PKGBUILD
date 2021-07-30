@@ -9,13 +9,13 @@ arch=('x86_64')
 url="https://github.com/Dreamacro/clash"
 license=('custom')
 install=${pkgname}.install
-depends=('glibc' 'clash-geoip' 'iptables' 'nftables' 'systemd' 'iproute2')
+depends=('glibc' 'clash-geoip' 'nftables' 'systemd' 'iproute2')
 makedepends=('git' 'gzip')
-provides=('clash' 'clash-dev' 'clash-dev-git' 'clash-premium-bin')
-conflicts=('clash' 'clash-dev' 'clash-dev-git' 'clash-premium-bin')
+provides=('clash')
+conflicts=('clash')
 backup=("etc/clash/config.yaml")
 source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951"
-        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-2021.07.03.gz"
+        "https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-amd64-${pkgver}.gz"
         "config.yaml")
 sha256sums=('SKIP'
             '2f6d81b350048c71fc142ea743ee4463663170638286e49d71e1c7b930c2d5b4'
@@ -26,6 +26,7 @@ prepare() {
 	sed -i "s/srv/etc/g" clash.service
 	sed -i "s/lib/share/g" clash.service
 	sed -i "s/bin\/bypass/share\/clash\/bypass/g" clash.service
+	sed -i "s/\ iptabels.service//g" clash.service
 	sed -i "s/lib/share/g" 99-clash.rules
 	sed -i "/bash/,+38 s/tcp, udp/tcp, udp, icmp/g" setup-tun.sh
 	sed -i "s/1.0.0.1/198.18.0.2/g" clash-default
@@ -34,9 +35,9 @@ prepare() {
 
 package() {
 	cd "${srcdir}"
-    gunzip --force clash-linux-amd64-2021.07.03.gz
-	install -Dm 755 clash-linux-amd64-2021.07.03 "${pkgdir}"/usr/bin/clash
-    install -Dm 644 ../config.yaml "${pkgdir}"/etc/clash/config.yaml
+    gunzip --force clash-linux-amd64-${pkgver}.gz
+	install -Dm 755 clash-linux-amd64-${pkgver} "${pkgdir}"/usr/bin/clash
+    install -Dm 644 config.yaml "${pkgdir}"/etc/clash/config.yaml
 	cd "${srcdir}"/clash-premium-installer/scripts
     install -Dm 644 clash-default "${pkgdir}"/etc/default/clash
     install -Dm 755 bypass-proxy-pid "${pkgdir}"/usr/share/clash/bypass-proxy-pid
