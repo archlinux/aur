@@ -1,6 +1,6 @@
 pkgbase = python-sonicprobe
 	pkgver = 0.3.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decryptus/sonicprobe
 	arch = any
 	license = GPL3
