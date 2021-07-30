@@ -1,0 +1,14 @@
+pkgbase = neoray-git
+	pkgdesc = Go GUI for neovim
+	pkgver = r295.04af3e7
+	pkgrel = 1
+	url = https://github.com/hismailbulut/neoray
+	arch = any
+	license = MIT
+	depends = go
+	source = git+https://github.com/hismailbulut/neoray.git
+	source = neoray.desktop
+	md5sums = SKIP
+	md5sums = f10c9d8fdbf4e7b468770d23b3fb53a3
+
+pkgname = neoray-git
