@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-cache
 	pkgdesc = A defined interface for working with a cache of jupyter notebooks
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://jupyter-cache.readthedocs.io
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = python-jupyter-cache
 	checkdepends = python-click-completion
 	checkdepends = python-click-log
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/j/jupyter-cache/jupyter-cache-0.4.2.tar.gz
-	md5sums = a1f1a9846e4462ce79a81a5b2cee6270
+	source = https://files.pythonhosted.org/packages/source/j/jupyter-cache/jupyter-cache-0.4.3.tar.gz
+	md5sums = fac82fe60e0d3a5366e31c7f82fc96e6
 
 pkgname = python-jupyter-cache
 	depends = python-nbdime
@@ -29,4 +29,3 @@ pkgname = python-jupyter-cache
 	optdepends = flake8: code_style
 	optdepends = python-black: code_style
 	optdepends = python-pre-commit: code_style
-

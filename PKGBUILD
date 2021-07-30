@@ -3,7 +3,7 @@ pkgbase=python-jupyter-cache
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A defined interface for working with a cache of jupyter notebooks"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ checkdepends=('jupyter-notebook'
               'python-click-completion'
               'python-click-log')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a1f1a9846e4462ce79a81a5b2cee6270')
+md5sums=('fac82fe60e0d3a5366e31c7f82fc96e6')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,7 +37,7 @@ check() {
 }
 
 package_python-jupyter-cache() {
-    depends=('python-nbdime' 'jupyter-nbclient' 'python-sqlalchemy')
+    depends=('python-nbdime' 'jupyter-nbclient' 'python-sqlalchemy') # nbdime -> nbformat -> attrs
     optdepends=('python-click-completion: cli'
                 'python-click-log: cli'
                 'python-tabulate: cli'
