@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.32.8.ga33df863b
+	pkgver = 0.3.32.71.g8375d7b2d
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = pipewire-git
 	makedepends = bluez-libs
 	makedepends = ffmpeg
 	makedepends = libldac
-	makedepends = libopenaptx
+	makedepends = libfreeaptx
 	makedepends = libfdk-aac
 	makedepends = libcamera-git
 	makedepends = vulkan-headers
@@ -34,7 +34,7 @@ pkgbase = pipewire-git
 
 pkgname = pipewire-git
 	install = pipewire-git.install
-	depends = alsa-card-profiles-git=0.3.32.8.ga33df863b
+	depends = alsa-card-profiles-git=0.3.32.71.g8375d7b2d
 	depends = rtkit
 	depends = libasound.so
 	depends = libbluetooth.so
@@ -42,7 +42,7 @@ pkgname = pipewire-git
 	depends = libfdk-aac.so
 	depends = libldacBT_enc.so
 	depends = libncursesw.so
-	depends = libopenaptx.so
+	depends = libfreeaptx.so
 	depends = libsbc.so
 	depends = libsndfile.so
 	depends = libsystemd.so
@@ -81,7 +81,7 @@ pkgname = pipewire-jack-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - JACK support (GIT version)
 	license = MIT
 	license = GPL2
-	depends = pipewire-media-session-git=0.3.32.8.ga33df863b
+	depends = pipewire-media-session-git=0.3.32.71.g8375d7b2d
 	depends = libpipewire-0.3.so
 	provides = pipewire-jack
 	provides = jack
@@ -94,7 +94,7 @@ pkgname = pipewire-jack-git
 pkgname = pipewire-alsa-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA configuration (GIT version)
 	arch = any
-	depends = pipewire-media-session-git=0.3.32.8.ga33df863b
+	depends = pipewire-media-session-git=0.3.32.71.g8375d7b2d
 	provides = pipewire-alsa
 	provides = pulseaudio-alsa
 	conflicts = pipewire-alsa
@@ -103,7 +103,7 @@ pkgname = pipewire-pulse-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - PulseAudio replacement (GIT version)
 	install = pipewire-pulse.install
 	arch = x86_64
-	depends = pipewire-media-session-git=0.3.32.8.ga33df863b
+	depends = pipewire-media-session-git=0.3.32.71.g8375d7b2d
 	depends = libpipewire-0.3.so
 	depends = libpulse.so
 	depends = libavahi-client.so
@@ -117,7 +117,7 @@ pkgname = pipewire-pulse-git
 
 pkgname = pipewire-ffmpeg-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - FFmpeg SPA plugin (GIT version)
-	depends = pipewire-git=0.3.32.8.ga33df863b
+	depends = pipewire-git=0.3.32.71.g8375d7b2d
 	depends = libpipewire-0.3.so
 	depends = ffmpeg
 	provides = pipewire-ffmpeg
@@ -126,7 +126,7 @@ pkgname = pipewire-ffmpeg-git
 pkgname = pipewire-media-session-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Session manager (GIT version)
 	install = pipewire-media-session.install
-	depends = pipewire-git=0.3.32.8.ga33df863b
+	depends = pipewire-git=0.3.32.71.g8375d7b2d
 	depends = libpipewire-0.3.so
 	provides = pipewire-media-session
 	conflicts = pipewire-media-session
@@ -148,7 +148,7 @@ pkgname = alsa-card-profiles-git
 
 pkgname = pipewire-zeroconf-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Zeroconf support (GIT version)
-	depends = pipewire-git=0.3.32.8.ga33df863b
+	depends = pipewire-git=0.3.32.71.g8375d7b2d
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
