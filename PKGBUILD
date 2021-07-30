@@ -18,7 +18,7 @@ makedepends=('git' 'sassc')
 conflicts=('gnome-shell-extension-dash-to-dock')
 provides=('gnome-shell-extension-dash-to-dock')
 source=("git+https://github.com/micheleg/${_srcname}.git"
-        "https://patch-diff.githubusercontent.com/raw/micheleg/${_srcname}/pull/1402.patch")
+        "${pkgname}-1402.patch::https://github.com/micheleg/${_srcname}/pull/1402.patch")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -30,7 +30,7 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  patch -d "${_srcname}" -p1 -i ../1402.patch
+  patch -d "${_srcname}" -p1 -i ../${pkgname}-1402.patch
 }
 
 build() {
