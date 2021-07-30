@@ -1,6 +1,6 @@
 # Maintainer: Dominic Egginton <dominic.egginton@gmail.com>
 pkgname=flip-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Flip coins in your command line"
 arch=("x86_64")
