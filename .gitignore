@@ -3,3 +3,4 @@ pkg/
 *.zst
 *.xz
 *.dtb
+set-source-mirror.sh
