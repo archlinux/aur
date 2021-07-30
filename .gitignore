@@ -1,5 +1,5 @@
-LICENSE
 *.tar.gz
-*.tar.xz
+*.tar.zst
+*.log
 pkg
 src
