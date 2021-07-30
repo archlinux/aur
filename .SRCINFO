@@ -1,7 +1,7 @@
 pkgbase = s
 	pkgdesc = Web search from the terminal. Supports over 50 providers including google, github, and stackoverflow.
-	pkgver = 0.5.15
-	pkgrel = 2
+	pkgver = 0.5.16
+	pkgrel = 0
 	url = http://github.com/zquestz/s
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = s
 	provides = s
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/zquestz/s/archive/v0.5.15.tar.gz
-	sha256sums = d697da32c050d026983a9696d14dace8926838eef9f491937a4f14215b674c6a
+	source = https://github.com/zquestz/s/archive/v0.5.16.tar.gz
+	sha256sums = 08b7082ff900c7ec61905d954b7025dc6f780c23c81f2f13e200b2bbd7a2ef9c
 
 pkgname = s
-
