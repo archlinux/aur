@@ -1,7 +1,7 @@
 pkgbase = python-sklearn-bayes
 	pkgdesc = Python package for Bayesian Machine Learning with scikit-learn API
 	pkgver = r542.619bea4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AmazaspShumik/sklearn-bayes
 	arch = i686
 	arch = x86_64
