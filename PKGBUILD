@@ -1,19 +1,21 @@
-# Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
+# Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
+# Contributor: Nils Grunwald <nils@grunwald.fr>
 
 pkgname=jet-bin
-pkgver=0.0.13
+pkgver=0.0.15
 pkgrel=1
 pkgdesc='CLI to transform between JSON, EDN and Transit, powered with a minimal query language.'
 arch=('x86_64')
 url='https://github.com/borkdude/jet'
 license=('EPL')
-provides=('jet')
-conflicts=()
+depends=('gcc-libs' 'zlib')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 
-source=("https://github.com/borkdude/jet/releases/download/v${pkgver}/${pkgname/\-bin/}-${pkgver}-linux-amd64.zip")
+source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.zip")
 
-sha256sums=('e09effc645a7e9d478e9aa57c0bfdde1f0dfd26f94a6e8e6241437b59f3672ba')
+sha256sums_x86_64=('a7a87e11fb98b9b36501405aeda9d285ce974539282d51e0a3101c5bbb82cac0')
 
 package() {
-  install -Dm755 "${srcdir}/jet" "${pkgdir}/usr/bin/jet"
+  install -Dm755 "${srcdir}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
