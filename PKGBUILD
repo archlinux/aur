@@ -51,7 +51,7 @@ EOF
 exec /opt/${pkgname%-bin}/uninstall "\$@"
 EOF
     install -Dm0644 /dev/stdin  "${pkgdir}/usr/share/applications/xDroidiUninstall.desktop" << EOF
-Desktop Entry]
+[Desktop Entry]
 Categories=System;
 Comment=LinZhuo xDroid xDroidiUninstall
 Exec=xDroidiUninstall
