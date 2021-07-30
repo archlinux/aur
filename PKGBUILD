@@ -8,12 +8,6 @@
 
 _CMAKE_FLAGS+=( -DCMAKE_C_COMPILER=gcc-10 -DCMAKE_CXX_COMPILER=g++-10 )
 
-# opencolorio=2 fix (add LD_LIBRAY_PATH or rpath to blender-2.93)
-_CMAKE_FLAGS+=( -DOSL_ROOT_DIR=/opt/osl
-        -DOPENIMAGEIO_ROOT_DIR=/opt/oiio
-        -DOPENCOLORIO_ROOT_DIR=/opt/ocio
-)
-
 #some extra, unofficially supported stuff goes here:
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 ((DISABLE_USD)) && {
