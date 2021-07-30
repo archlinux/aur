@@ -1,7 +1,7 @@
 # Maintainer: Christoph Nickel <techrisx@protonmail.com>
 pkgname=ideapadmode
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=1.1
 pkgdesc="Bash script to controll the battery and cooling of the Lenovo Ideapad 5 on Linux"
 arch=('any')
 url="https://github.com/chrisinick/ideapad_mode"
