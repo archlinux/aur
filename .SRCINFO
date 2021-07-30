@@ -1,0 +1,20 @@
+pkgbase = python-sonicprobe
+	pkgver = 0.3.41
+	pkgrel = 1
+	url = https://github.com/decryptus/sonicprobe
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	depends = python-pyopenssl
+	depends = python-magic
+	depends = python-psutil
+	depends = python-pycurl
+	depends = python-yaml
+	depends = python-unidecode
+	depends = python-semantic-version
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/py3/s/sonicprobe/sonicprobe-0.3.41-py3-none-any.whl
+	md5sums = 6dbec591364d28dc1f73508624d4c466
+
+pkgname = sonicprobe
