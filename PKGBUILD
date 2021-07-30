@@ -2,7 +2,7 @@
 # Contributor: Xiang Gao <qasdfgtyuiop@gmail.com>
 
 pkgname=thrust
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library'
 arch=('any')
@@ -17,8 +17,8 @@ optdepends=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thrust/${pkgname}/archive/${pkgver}.tar.gz"
         "cub-${pkgver}.tar.gz::https://github.com/thrust/cub/archive/${pkgver}.tar.gz")
-sha256sums=('d68f89937ed1a0dadafd4f77d3e65ab9a5baa48dd5fa5698f8d3f7e3d6749da2'
-            '3b03d0cbc9549606fbeda69a920562eb563836346b39014c79dfd024165ee549')
+sha256sums=('f43306ae4230efdd78a8ce82fb10685676b27ce692777ee5c5a3361ced305d63'
+            '8c8851bf1a7390cfb07183c3d4b3e55cebe818943b2daed8b338bd65ce70ce01')
 
 package() {
   install -dm 755 "${pkgdir}/opt/${pkgname}"
