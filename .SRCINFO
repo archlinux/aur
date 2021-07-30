@@ -1,0 +1,13 @@
+pkgbase = pymitter-git
+	pkgdesc = Python port of the extended Node.js EventEmitter 2 approach
+	pkgver = v0.3.1.r0.g17acaf0
+	pkgrel = 1
+	url = https://github.com/riga/pymitter
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	source = git://github.com/riga/pymitter.git
+	sha256sums = SKIP
+
+pkgname = pymitter-git
