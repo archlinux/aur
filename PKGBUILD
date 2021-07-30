@@ -23,8 +23,8 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
-pkgver=2.04
-pkgrel=5
+pkgver=2.06
+pkgrel=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -61,10 +61,9 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '05-sleep_shift.patch'
         '06-maybe_quiet.patch'
         '07-quick_boot.patch'
-		'08-fix_wrong_image_size.patch'
         'grub.silent')
 
-sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
+sha256sums=('b79ea44af91b93d17cd3fe80bdae6ed43770678a9a5ae192ccea803ebb657ee1'
             'fb6b37db9b14fd03e4d26775d84b570fbe91d4ea5de3df4e31114d79a2dfa97e'
             'd101e9d33fbc67f7aaf6fb1191ec1315e8e5572c1d0538b95746ee194b8860db'
             'b6e1c57dc9632ddf14e0acd96c5182cb4491994b67765cb11518d1356b603879'
@@ -73,7 +72,6 @@ sha256sums=('e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             '4b189e00a8c97ec09903e9588e02fc78b4bb114ee4822fcce13811aca00c8884'
             'b7489c7facc4fb3dad4426c9c00079b64908640a2bec2409e22194daa3f72af4'
             '1723340737b91a5bf503829bbe66b1c56683ef0e533f20d18b7098840aecb3a2'
-            '13053d6f36456234a5ed7dc4d4006459f6f9d2c9a19e6febfa4dc17cb5982bd3'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {
@@ -108,8 +106,6 @@ prepare() {
 	patch -Np1 -i "${srcdir}/07-quick_boot.patch"
 	echo
 
-	msg "Appliying patch to fix wrong image size on some rare cases"
-	patch -Np1 -i "${srcdir}/08-fix_wrong_image_size.patch"
 	echo
 
 	msg "Pull in latest language files"
