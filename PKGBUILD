@@ -15,7 +15,7 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.32.r58.g1216371f
+pkgver=0.3.32.r60.g6773ea7e
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -24,17 +24,15 @@ arch=(x86_64)
 makedepends=(git meson doxygen xmltoman ncurses
              libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
-             sbc libldac libopenaptx libfdk-aac
+             sbc libldac libfreeaptx libfdk-aac
              avahi
              gst-plugins-base-libs
              jack2
              vulkan-headers vulkan-icd-loader
              ffmpeg
              )
-source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git'
-        '0001-Revert-bluez5-Use-libfreeaptx-instead-of-libopenaptx.patch')
-sha256sums=('SKIP'
-            '9545e10d4e702ee175bed80d1c030cb61ae267cc41809e107574a0e4ecba6811')
+source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgbase
@@ -91,7 +89,7 @@ package_pipewire-full-git() {
            libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
-           libopenaptx.so libfdk-aac.so)
+           libfreeaptx.so libfdk-aac.so)
   optdepends=('pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA configuration'
               'pipewire-full-jack-git: JACK support'
