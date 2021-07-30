@@ -1,6 +1,6 @@
 pkgbase = cpeditor
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.8.2
+	pkgver = 6.8.4
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -17,8 +17,7 @@ pkgbase = cpeditor
 	optdepends = jre-openjdk: execute Java support
 	optdepends = python: execute Python support
 	conflicts = cpeditor-git
-	source = https://github.com/cpeditor/cpeditor/releases/download/6.8.2/cpeditor-6.8.2-full-source.tar.gz
-	sha256sums = 9b9b726c14de9a0d2cd94225304be6b658d9ef4770faa6fafa0f63cd73a7f6a2
+	source = https://github.com/cpeditor/cpeditor/releases/download/6.8.4/cpeditor-6.8.4-full-source.tar.gz
+	sha256sums = d1f033a84ed2599bfcfe9d285172772bd7705ec69d16f0a37fbc34bbfc5be542
 
 pkgname = cpeditor
-

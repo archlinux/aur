@@ -1,7 +1,7 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.8.2
+pkgver=6.8.4
 _pkgdir=cpeditor-$pkgver-full-source
 pkgrel=1
 pkgdesc='The editor for competitive programming'
@@ -25,7 +25,7 @@ optdepends=(
 )
 conflicts=("cpeditor-git")
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-$pkgver-full-source.tar.gz")
-sha256sums=('9b9b726c14de9a0d2cd94225304be6b658d9ef4770faa6fafa0f63cd73a7f6a2')
+sha256sums=('d1f033a84ed2599bfcfe9d285172772bd7705ec69d16f0a37fbc34bbfc5be542')
 
 build() {
 	cd "$_pkgdir"
