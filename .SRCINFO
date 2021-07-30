@@ -1,6 +1,6 @@
 pkgbase = gsequencer
 	pkgdesc = Advanced Gtk+ Sequencer
-	pkgver = 3.9.4
+	pkgver = 3.9.5
 	pkgrel = 1
 	url = https://nongnu.org/gsequencer
 	arch = x86_64
@@ -40,8 +40,8 @@ pkgbase = gsequencer
 	provides = libags_gui.so
 	provides = libags_audio.so
 	provides = libags.so
-	source = https://download.savannah.gnu.org/releases/gsequencer/3.9.x/gsequencer-3.9.4.tar.gz
-	sha512sums = 1518135651b960078cf36717db076986d3f33eaa75ccc0478a83982642eb804d177953bb1e3ee4be382d5118c0c99e77e528a5161aa6726b87cb6893b92d52a2
+	source = https://download.savannah.gnu.org/releases/gsequencer/3.9.x/gsequencer-3.9.5.tar.gz
+	sha512sums = 7a2d7d11473563dd279f92966f68d4aae373f48e57410f7696f7de0058c4f5231b4d74b45cb7b15592dcc812c4a9dc09d3927aa4775eeda548bf4a7dad3cd1f0
 
 pkgname = gsequencer
 	depends = cairo
@@ -72,4 +72,3 @@ pkgname = gsequencer
 	depends = libsoup-2.4.so
 	depends = libuuid.so
 	depends = libwebkit2gtk-4.0.so
-
