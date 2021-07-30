@@ -14,7 +14,8 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl restart clash
+    systemctl daemon-reload
+	systemctl restart clash
 }
 
 pre_remove() {
