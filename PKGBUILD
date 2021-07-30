@@ -1,7 +1,7 @@
 # Maintainer: tkit <ch1994@outlook.com>
 pkgname=code-nautilus-git
-pkgver=r9.ddff975
-pkgrel=2
+pkgver=r13.40b6d31
+pkgrel=1
 pkgdesc="VSCode extension for Nautilus"
 arch=('i686' 'x86_64')
 url="https://github.com/cra0zy/code-nautilus"
