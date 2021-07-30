@@ -1,12 +1,11 @@
 pkgbase = python-name-that-hash
-	pkgdesc = The Modern Hash Identification System
+	pkgdesc = The Modern Hash Identification System.
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HashPals/Name-That-Hash
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python-dephell
 	depends = python
 	depends = python-click
 	depends = python-rich
