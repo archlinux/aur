@@ -12,6 +12,7 @@ depends=('glibc' 'libbsd' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=('minizip' 'minizip-ng' 'minizip-git')
 provides=('minizip' 'minizip-ng' 'minizip-git')
+optdepends=('zstd: enables zstd compression' 'lzma: enables lzma compression' 'bzip2: enables bzip2 compression' 'openssl: enables encryption via openssl')
 source=("git+https://github.com/zlib-ng/minizip-ng#branch=dev")
 sha256sums=('SKIP')
 
@@ -33,7 +34,8 @@ build() {
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_INCLUDEDIR=/usr/include/minizip \
-        -DCMAKE_BUILD_TYPE=Release ..
+        -DCMAKE_BUILD_TYPE=Release \
+        ..
     make
 }
 
