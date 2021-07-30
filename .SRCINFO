@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.7
-	pkgrel = 3
+	pkgver = 1.8.8
+	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -10,37 +10,14 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs
-	provides = openafs-modules=1.8.7
+	provides = openafs-modules=1.8.8
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.7/openafs-1.8.7-src.tar.bz2
+	source = http://openafs.org/dl/openafs/1.8.8/openafs-1.8.8-src.tar.bz2
 	source = dkms.conf
-	source = 0001-Avoid-duplicate-definitions-of-globals.patch
-	source = 0002-LINUX-5.8-Replace-kernel_setsockopt-with-new-funcs.patch
-	source = 0003-LINUX-5.8-do-not-set-name-field-in-backing_dev_info.patch
-	source = 0004-LINUX-5.8-use-lru_cache_add.patch
-	source = 0005-LINUX-5.9-Remove-HAVE_UNLOCKED_IOCTL-COMPAT_IOCTL.patch
-	source = 0006-LINUX-Fix-includes-for-fatal_signal_pending-test.patch
-	source = 0007-Linux-Refactor-test-for-32bit-compat.patch
-	source = 0008-Linux-5.11-Test-32bit-compat-with-in_compat_syscall.patch
-	source = 0009-LINUX-Introduce-afs_d_path.patch
-	source = 0010-Linux-Create-wrapper-for-setattr_prepare.patch
-	source = 0011-Linux-5.12-Add-user_namespace-param-to-inode-ops.patch
-	sha256sums = 53543a561fce67714fec9f2a6bf408c5cc1d061c7dc9d1459458275e8ccbfa79
+	sha256sums = daa8ef86a7727facfcde3bc97a6ad143129c1c25ee35f3347080ec7e9d284da0
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
-	sha256sums = 909ebe2f2f82187ec5c8bd19a385e310521dceedb0b0d5ce8413809a37fe5654
-	sha256sums = 2439b2f663feed02c526f4e34b2cdc2a1d5ad35f7223ade87508c1cf4359ee9c
-	sha256sums = e605d4e7154f9ccf4dec24fec27abe4e2947713f35dae6aa8698e5f8722609a7
-	sha256sums = 15b53b4ab0578eaa31f849670990e15949e67be8b330d7581825a5e8408953ed
-	sha256sums = ba8c81c035303cbcf204744516a83b66adac94384aaa59ea2ea1a619a41aa7c0
-	sha256sums = d078882d94adf881bac2e7955689931abe7ac443db86d85e0b60c72d8b27738e
-	sha256sums = 19ca49013e32824002e355a85df6e25028283a0b06a6409cc7d5cd9800fea488
-	sha256sums = 52d40f8a3b032a9fa0ae57bc15d3611bc652ff6e417a488eac4223cef0db9142
-	sha256sums = 457474e625565c28daa6d642b2416b4398b2b9fec3a8b90c048fc0460412a0ce
-	sha256sums = 76d73a55d3e8da63c9ead2cecdec1efbaeb78739bb5abf635a64380eeba35158
-	sha256sums = 8bc24efe33f06228134dd27e5c9a6832abb436e2fbe3fab09b529fed4a5b406c
 
 pkgname = openafs-modules-dkms
-
