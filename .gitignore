@@ -1,5 +1,4 @@
 src/
 pkg/
-*.pkg.tar.xz
-*.pkg.tar
-*.src.tar.gz
+*.pkg.tar.zst
+defrag_*.zip
