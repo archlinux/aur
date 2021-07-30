@@ -4,7 +4,7 @@
 pkgname=mrcode
 pkgver=1.58.2
 pkgrel=1
-pkgdesc="An IDE based on VSCode / VSCodium (git build from latest release)"
+pkgdesc="A custom build of VSCodium / VSCode (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/zokugun/MrCode.git'
 license=('MIT')
@@ -34,11 +34,7 @@ makedepends=(
     'libxdmcp'
     'bash'
     'git'
-    'patch'
     'python'
-    'make'
-    'gcc'
-    'pkg-config'
 )
 source=(
     "git+${url}#tag=${pkgver}"
