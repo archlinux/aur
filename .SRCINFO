@@ -1,6 +1,6 @@
 pkgbase = typeracer-git
 	pkgdesc = Terminal typing speed tester (git)
-	pkgver = 2.0.6.r0.gc10708b
+	pkgver = 2.0.7.r0.gf2be6a4
 	pkgrel = 1
 	url = https://gitlab.com/ttyperacer/terminal-typeracer
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = typeracer-git
 	makedepends = rust
 	makedepends = git
 	depends = openssl
-	depends = zlib
+	depends = sqlite
 	provides = typeracer
 	conflicts = typeracer
 	source = git+https://gitlab.com/ttyperacer/terminal-typeracer
