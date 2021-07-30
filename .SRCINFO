@@ -1,0 +1,11 @@
+pkgbase = rl78flash
+	pkgdesc = Flash programmer for the renesas rl78 family
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/msalau/rl78flash
+	arch = any
+	license = MIT
+	source = https://github.com/msalau/rl78flash/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 2867d0352e84dbcf32f04c95fbce1ba1f102fb7fa761718ee6515c785400e210
+
+pkgname = rl78flash
