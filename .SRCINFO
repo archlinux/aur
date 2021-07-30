@@ -1,0 +1,14 @@
+pkgbase = netrs
+	pkgdesc = netr simple console network traffic graph
+	pkgver = 0.1.6
+	pkgrel = 0
+	url = https://gitlab.com/edneville/netrs
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = https://gitlab.com/edneville/netrs/-/archive/v0.1.6/netrs-v0.1.6.tar.gz
+	sha512sums = dfd458e780f3e0fcc5ef5c9057e5ed5c53f7084deb159e8afc122c258fa3a10dd4a68ceef0e44117075857d28f7a4e7ea04051d1b94d1cefd3b1ebd1583f9d61
+
+pkgname = netrs
