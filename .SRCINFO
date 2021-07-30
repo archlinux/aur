@@ -8,6 +8,7 @@ pkgbase = autodiff
 	license = MIT
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = catch2
 	makedepends = pybind11
 	makedepends = python
 	depends = gcc-libs
