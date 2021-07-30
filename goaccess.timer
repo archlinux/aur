@@ -2,8 +2,8 @@
 Description=Daily update of GoAccess Log Analysis
 
 [Timer]
-OnCalendar=daily
-RandomizedDelaySec=1h
+OnCalendar=hourly
+RandomizedDelaySec=5min
 Persistent=true
 
 [Install]
