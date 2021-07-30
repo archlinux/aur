@@ -6,8 +6,8 @@
 _install_libs=false
 
 pkgname=servo-git
-pkgver=43157.858bb432988
-pkgrel=2
+pkgver=r44209.052278d058
+pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
 url=https://github.com/servo/servo
@@ -35,10 +35,10 @@ makedepends=(autoconf2.13
              git
              gperf
              llvm
-             python2
-             python2-distlib
-             python2-virtualenv
-             rustup)
+             python
+             python-distlib
+             python-virtualenv
+             rust-nightly)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -46,7 +46,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
