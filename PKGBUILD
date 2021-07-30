@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=typos-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 
 pkgdesc="Source code spell checker."
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz"
         "LICENSE-MIT::https://raw.githubusercontent.com/crate-ci/${pkgname%-bin}/v${pkgver}/LICENSE-MIT"
         "LICENSE-APACHE::https://raw.githubusercontent.com/crate-ci/${pkgname%-bin}/v${pkgver}/LICENSE-APACHE")
-sha256sums=('a142d30316656df1b0ae963a9291a17f5a79666b3d1acdfbbe1068612cd87a28'
+sha256sums=('41c0673899fe85386789da555f4f1576150b6c266f4ff0f868ad4b0128373873'
             '3c3d25d01d6a8e911c4baddc2a0ac74a014928066b7d29f1f7cfa73c2a7550bf'
             'c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08')
 
