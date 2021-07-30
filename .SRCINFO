@@ -1,0 +1,15 @@
+pkgbase = dcon-git
+	pkgdesc = A program that converts decimal degrees to dms
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ClaraCF/dcon
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = gcc
+	provides = dcon
+	conflicts = dcon-bin
+	source = git+https://github.com/ClaraCF/dcon
+	md5sums = SKIP
+
+pkgname = dcon-git
