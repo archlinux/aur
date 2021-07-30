@@ -1,0 +1,15 @@
+pkgbase = keyd-git
+	pkgdesc = A key remapping daemon for linux.
+	pkgver = r10.7d1c03a
+	pkgrel = 1
+	url = https://github.com/rvaiya/keyd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libudev.so
+	provides = keyd
+	conflicts = keyd
+	source = git+https://github.com/rvaiya/keyd.git
+	sha256sums = SKIP
+
+pkgname = keyd-git
