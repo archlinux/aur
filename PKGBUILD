@@ -1,4 +1,4 @@
-# Maintainer: eNV25 <bkvikag8k@relay.firefox.com>
+# Maintainer: eNV25 <env252525@gmail.com>
 # Contributor: Sergey Zolotorev <sergey.zolotorev@gmail.com>
 
 pkgname=pacman-hook-kernel-install
