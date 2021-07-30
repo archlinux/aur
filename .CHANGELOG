@@ -1,5 +1,167 @@
 # Changelog
 
+## v0.25.1
+
+*Jul 29, 2021*
+
+- Fix solr fulltext search by adding the new japanese content field
+
+The SOLR fulltext search is broken in 0.25.0, so this is a fixup
+release.
+
+## v0.25.0
+
+*Jul 29, 2021*
+
+- Introducing a new CLI tool (#345) that replaces all the shell
+  scripts from the `tools/` directory! https://github.com/docspell/dsc
+- UI changes:
+  - year separators are now more prominent (#950)
+  - fixes a bug in the item counter in detail view when an item is
+    deleted (#920)
+  - German translation improvements (#901)
+  - The number of selected files is shown in upload page (#896)
+- The created date of an item can now be used in queries (#925, #958)
+- Setting tags api has been improved (#955)
+- Task for converting pdfs is now behind the admin secret (#949)
+- Task for generating preview images is now behind the admin secret (#915)
+- respond with 404 when the source-id is not correct (#931)
+- Update of core libraries (#890)
+- Add Japanese to the list of document languages. Thanks @wallace11
+  for helping out (#948, #962)
+- Fix setting the folder from metadata when processing a file and
+  allow to specifiy it by name or id (#940)
+- Fixes docspell config file in docker-compose setup (#909)
+- Fixes selecting the next job in the job executor (#898)
+- Fixes a bug that prevents uploading more than one file at once
+  (#938)
+
+### Rest API Changes
+
+- Removed `sec/item/convertallpdfs` endpoint in favor for new
+  `admin/attachments/convertallpdfs` endpoint which is now an admin
+  task
+- Removed `sec/collective/previews` endpoint, in favor for new
+  `admin/attachments/generatePreviews` endpoint which is now an admin
+  task to generate previews for all files. The now removed enpoint did
+  this only for one collective.
+- `/sec/item/{id}/tags`: Setting tags to an item (replacing existing
+  tags) has been changed to allow tags to be specified as names or ids
+- `/sec/item/{id}/tagsremove`: Added a route to remove tags for a
+  single item
+  
+### Configuration Changes
+
+None.
+
+
+## v0.24.0
+
+*Jun 18, 2021*
+
+This time a translation of the Web-UI in German is included and the
+docker build was overhauled. The releases are now build and tested
+using Java 11.
+
+- Rework Docker setup. Images are now provided for different
+  architectures and have a new home now (see below). The images are
+  now built via a github-action from the official packages of each
+  release. (#635, #643, #840, #687)
+- Translation of the UI into German (thanks to @monnypython for proof
+  reading and applying lots of corrections!) (#292, #683, #870)
+- Improve migration of SOLR (#604)
+  - The information whether solr has been setup, is now stored inside
+    SOLR. This means when upgrading Docspell, all data will be
+    re-indexed.
+- Add `--exclude` and `--include` options to the `consumedir.sh`
+  script (#885)
+- Improved documenation of the http api (#874)
+- Removed unused libraries in the final packages to reduce file size a
+  bit (#841)
+- Bug: Searching by tag category was broken when using upper case
+  letters (#849)
+- Bug: when adding a boolean custom field, it must be applied
+  immediatly (#842)
+- Bug: when entering a space in a dropdown the menu closes (#863)
+- Bug: Some scripts didn't work with earlier versions of `jq` (#851)
+- Bug: The source form was broken in that it didn't load the language
+  correctly (#877)
+- Bug: Tag category options were wrongly populated when narrowing tags
+  via a search (#880)
+
+### Breaking Changes
+
+#### Java 11
+
+Not really a breaking change. Docspell is now build and tested using
+Java 11. Docspell has a small amount of Java source code. This is
+compiled using Java 11 but to target Java 8 JVMs. So it still can run
+under Java 8. However, it is recommended to use at least Java 11 to
+run Docspell.
+
+
+#### Docker Images
+
+The docker images are now pushed to the
+[docspell](https://hub.docker.com/u/docspell) organization at
+docker-hub! So the images are now:
+
+- `docspell/restserver`
+- `docspell/joex`
+- `docspell/tools`
+
+Tags: images are tagged with two floating tags: `nightly` and
+`latest`. The `nightly` tag always points to the latest development
+state (the master branch). The `latest` tag points to the latest
+release. Each release is also tagged with its version number, like
+`v0.24.0`.
+
+The images changed slightly in that there is no assumption on where
+the config file is placed. Now you need to pass the docspell config
+file explicitely when using the images.
+
+Multiarch: Images are now build for `amd64`, `arm64` and `armv7`.
+
+The consumedir is being replaced by the more generic `docspell/tools`
+image which contains all the scripts from the `tools/` section. That
+means it has no special entrypoint for the consumedir script anymore.
+The polling functionality is now provided by the consumedir script.
+And the docker-compose file needs now to specify the complete command
+arguments. This makes it much more flexible to use.
+
+This allows to use this image to run all the other tool scripts, too.
+The scripts are in PATH inside the image and prefixed by `ds-`, so for
+example `ds-consumedir` or `ds-export-files` etc.
+
+#### Docker Compose
+
+The docker-compose setup is now at `docker/docker-compose`. Please
+look at the new [compose
+file](https://github.com/eikek/docspell/blob/master/docker/docker-compose/docker-compose.yml)
+and do the corresponding changes at yours. Especially the consumedir
+container changed significantly. Then due to the fact that the config
+file must be given explicitely, you need to add this argument to each
+docspell component (restserver and joex) via a `command` section (see
+the compose file referenced above).
+
+The `.envrc` has been cleaned from some settings. Since the config
+files is mounted into the image, you can just edit this file instead.
+The only settings left in the .envrc file are those that need to be
+available in the docker-compose file and the application. If some
+settings need to be duplicated for joex and restserver, you can use
+the builtin variable resolution mechanism for this. An example is
+provided in the new config file.
+
+### Configuration Changes
+
+None.
+
+
+### Rest API Changes
+
+None.
+
+
 ## v0.23.0
 
 *May 29, 2021*
@@ -812,7 +974,7 @@ improvements for processing files.
   upload the file into memory for nothing if something fails (e.g. the
   source doesn't exist)
 - Re-process files. A
-  [route](https://docspell.org/openapi/docspell-openapi.html#api-Item-secItemItemIdReprocessPost)
+  [route](https://docspell.org/openapi/docspell-openapi.html#operation/sec-item-start-reprocess)
   has been added that submits files for re-processing. It is possible
   to re-process some files of an item or all. There is no UI for this
   for now. You'd need to run `curl` or something manually to trigger
