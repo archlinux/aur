@@ -1,6 +1,6 @@
 pkgbase = ananicy-cpp-git
 	pkgdesc = Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage.
-	pkgver = 0.7.3.r0.g0b2f7ee
+	pkgver = 1.0.0.rc1.r0.g73390d2
 	pkgrel = 1
 	arch = x86_64
 	arch = i386
@@ -12,7 +12,7 @@ pkgbase = ananicy-cpp-git
 	depends = spdlog
 	depends = nlohmann-json
 	depends = systemd
-	optdepends = ananicy: community rules
+	optdepends = ananicy-rules-git: community rules
 	provides = ananicy-cpp
 	conflicts = ananicy-cpp
 	source = git+https://gitlab.com/aviallon/ananicy-cpp.git

@@ -2,7 +2,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=0.7.3.r0.g0b2f7ee
+pkgver=1.0.0.rc1.r0.g73390d2
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=("git+https://gitlab.com/aviallon/ananicy-cpp.git")
