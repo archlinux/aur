@@ -1,6 +1,4 @@
 pkg/
 src/
-*.patch
-!Makefile.patch
-!legacy_kernel.patch
+ntfs3-*.patch
 *.pkg.tar.*
