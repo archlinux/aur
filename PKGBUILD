@@ -1,4 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: José Miguel Sarasola <jmsaraur@gmail.com>
+# Contributor: Như Bảo Trương <28810481+nhubaotruong@users.noreply.github.com>
 # Contributor: Andrés Rodríguez <hello@andres.codes>
 # Contributor: Jacob Mischka <jacob@mischka.me>
 # Contributor: Manuel Mazzuola <origin.of@gmail.com>
@@ -9,7 +11,7 @@
 # Version notes:
 # `curl https://brave-browser-downloads.s3.brave.com/latest/release.version`
 #
-# 1.27.108 known broken on Linux
+# 1.27.108 and 1.27.109 are known broken on Linux
 
 pkgname=brave-bin
 pkgver=1.26.77
@@ -17,7 +19,7 @@ pkgrel=3
 epoch=1
 pkgdesc='Web browser that blocks ads and trackers by default (binary release)'
 arch=(x86_64)
-url='https://brave.com'
+url=https://brave.com
 license=(MPL2 BSD custom:chromium)
 depends=(alsa-lib
          gtk3
@@ -53,9 +55,10 @@ package() {
 
 	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "brave-browser.desktop"
-	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
-		install -Dm644 "$pkgdir/usr/lib/$pkgname/product_logo_${i/x*/}.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/brave-desktop.png"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" brave/LICENSE
+	pushd "$pkgdir/usr/"
+	for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+		install -Dm0644 "lib/$pkgname/product_logo_${size/x*/}.png" \
+			"share/icons/hicolor/$size/apps/brave-desktop.png"
 	done
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" brave/LICENSE
-	rm "$pkgdir/usr/lib/$pkgname/LICENSE"
 }
