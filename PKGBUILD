@@ -1,7 +1,7 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=go-impl
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Generate method stubs for implementing an interface."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/josharian/impl"
 license=('BSD')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('e73499e30e98cb67f9195dbc6851751756d50e790017704f0ffd4ef0a2fc08ef6bea1423db77c95c26d211b58f88134fb72387ed3ae4116747378de92631fe3a')
+sha512sums=('aa8091cc76698da161f36413273c30e3709e440c3aea670df36d70c6e3c99a3966c20341585b271621adde26de47a2a28b92c8398cc8f8686c5faf829abed178')
 
 prepare() {
 	mkdir -p bin
