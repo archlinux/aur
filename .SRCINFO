@@ -1,6 +1,6 @@
 pkgbase = bukuserver
 	pkgdesc = Powerful command-line bookmark manager. CLI and server.
-	pkgver = 4.5
+	pkgver = 4.6
 	pkgrel = 2
 	url = https://github.com/jarun/Buku
 	arch = any
@@ -34,8 +34,7 @@ pkgbase = bukuserver
 	depends = python-werkzeug
 	provides = buku
 	conflicts = buku
-	source = bukuserver-4.5.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v4.5
-	sha256sums = 68c7bb77ba579ce69543e17d7dacaa31164a6662bb183463e8f1ffec2f9d6785
+	source = bukuserver-4.6.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v4.6
+	sha256sums = 2e1968016d3856184db8ac49cdc92a6c70869f62846185f28c8c60ead0c42888
 
 pkgname = bukuserver
-

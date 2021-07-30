@@ -2,7 +2,7 @@
 # Previous maintainer: Ben Oliver <ben@bfoliver.com>
 
 pkgname=bukuserver
-pkgver=4.5
+pkgver=4.6
 pkgrel=2
 pkgdesc="Powerful command-line bookmark manager. CLI and server."
 arch=('any')
@@ -13,7 +13,7 @@ provides=('buku')
 url="https://github.com/jarun/Buku"
 license=('GPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jarun/Buku/tar.gz/v$pkgver)
-sha256sums=('68c7bb77ba579ce69543e17d7dacaa31164a6662bb183463e8f1ffec2f9d6785')
+sha256sums=('2e1968016d3856184db8ac49cdc92a6c70869f62846185f28c8c60ead0c42888')
 
 package() {
   cd "$srcdir/buku-$pkgver"
