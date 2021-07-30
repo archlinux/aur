@@ -1,0 +1,16 @@
+# Maintainer: Marc Plano-Lesay <kernald@enoent.fr>
+
+pkgname=brother-hll5100dn-lpr-bin
+pkgver=3.5.1.1
+pkgrel=1
+pkgdesc="LPR driver for Brother HL-L5100DN printer"
+arch=("i686" "x86_64")
+url="http://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll5100dn_us_eu_as"
+license=("EULA")
+groups=("base-devel")
+source=("https://download.brother.com/welcome/dlf102553/hll5100dnlpr-3.5.1-1.i386.deb")
+sha256sums=("2673e205527e6492a2be3abe2a2cdc7f953cbe294e15d2d5581b91522589e731")
+
+package() {
+	tar -xf data.tar.gz -C "${pkgdir}"
+}
