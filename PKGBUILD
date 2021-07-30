@@ -8,7 +8,7 @@
 _gemname=nanoc
 pkgname=ruby-$_gemname
 pkgver=4.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A static-site generator with a focus on flexibility"
 arch=('any')
 url="https://nanoc.app"
@@ -24,6 +24,12 @@ depends=(
   'ruby-parallel'
   'ruby-tty-command'
   'ruby-tty-which'
+)
+optdepends=(
+  'ruby-nanoc-external: For using an :external filter'
+  "ruby-nanoc-checking: Provides the 'check' subcommand"
+  "ruby-nanoc-deploying: Provides the 'deploy' subcommand"
+  "ruby-nanoc-live: Provides the 'live' subcommand, and required for 'nanoc compile --watch'"
 )
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
