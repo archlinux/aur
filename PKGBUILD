@@ -2,8 +2,8 @@
 
 pkgname=iferr-git
 pkgver=20180615.bb332a3
-pkgrel=1
-pkgdesc="A linter for Go source code."
+pkgrel=2
+pkgdesc="Tool for generating if err != nil { blocks."
 arch=('x86_64')
 url="https://github.com/koron/iferr"
 license=('MIT')
