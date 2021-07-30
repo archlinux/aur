@@ -1,7 +1,7 @@
 pkgbase = go-honnef-tools
 	pkgdesc = State of the art linter tooling for the Go programming language.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://honnef.co/go/tools
 	arch = any
 	license = BSD
@@ -10,4 +10,3 @@ pkgbase = go-honnef-tools
 	sha512sums = 98649bd9f35f8b69c48b3d57a7c979c81ba7fe29bcff710689184702b46e96677efb0a8ccc589e20ea803216464d3388d306d5034180b49328d9c3066c306207
 
 pkgname = go-honnef-tools
-

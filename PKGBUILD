@@ -2,7 +2,7 @@
 
 pkgname=go-honnef-tools
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="State of the art linter tooling for the Go programming language."
 arch=('any')
 url="https://honnef.co/go/tools"
@@ -23,11 +23,11 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		./...
-	rm -f ../bin/staticheck
 }
 
 package() {
 	install -Dm755 bin/* -t "$pkgdir/usr/bin"
+	rm "$pkgdir/usr/bin/staticcheck"
 	cd "go-tools-${pkgver}"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
