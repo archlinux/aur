@@ -1,0 +1,20 @@
+pkgbase = ruby-nanoc-live
+	pkgdesc = Provides support for auto-recompiling Nanoc sites
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://nanoc.app
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-adsf-live
+	depends = ruby-listen
+	depends = ruby-nanoc-cli
+	depends = ruby-nanoc-core
+	noextract = nanoc-live-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/nanoc-live-1.0.0.gem
+	source = LICENSE-4.12.2::https://raw.githubusercontent.com/nanoc/nanoc/4.12.2/nanoc-live/LICENSE
+	b2sums = 5df1b76425a74d7f9302dd4ea7c80c0c935ff40a98f4a13ee0594d5f1f7342d8e0a54a815624bd21983a7b922fe3dede0e9420b7f6e5208a2a8a33de4d7f9cca
+	b2sums = e2de6741a4b7e28ea98b87fe43eefdbfa27ce4404be103f75a058717cea87d8b9031fd4714d5e5c461520c1d3a7dd58001b6523afdc3b014db5d32270fcb3fa6
+
+pkgname = ruby-nanoc-live
