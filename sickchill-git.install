@@ -14,6 +14,7 @@ pre_remove() {
 }
 
 post_remove() {
+  # Remove additional files created by the built-in updater
   rm -rf /opt/sickchill/app
 
   echo "==> To delete the configuration files, run as root: rm -rf /opt/sickchill/data"
