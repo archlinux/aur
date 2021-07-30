@@ -2,7 +2,7 @@
 
 pkgname=cpp-taskflow
 _alt_pkgname=taskflow
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/taskflow/taskflow"
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('b83e9a78c254d831b8401d0f8a766e3c5b60d8d20be5af6e2d2fad4aa4a8b980')
+sha256sums=('26c37a494789fedc5de8d1f8452dc8a7774a220d02c14d5b19efe0dfe0359c0c')
 
 prepare() {
     cd "${_alt_pkgname}-${pkgver}"
