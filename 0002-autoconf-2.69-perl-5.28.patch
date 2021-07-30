@@ -1,0 +1,25 @@
+From dfb0659b205e03af62542cd318a9f3253e28c40a Mon Sep 17 00:00:00 2001
+From: Daniel Colascione <dancol@dancol.org>
+Date: Sun, 4 Mar 2018 13:36:55 -0800
+Subject: [PATCH] Fix test suite with modern Perl
+
+---
+ tests/tools.at | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/tools.at b/tests/tools.at
+index a4a7dd7..e9a6240 100644
+--- a/tests/tools.at
++++ b/tests/tools.at
+@@ -1386,7 +1386,7 @@ do
+   funny=`func_sanitize_file_name "$funny"`
+   file=" file $funny"
+   dir=`func_sanitize_dir_name " dir $funny"`
+-  TMPDIR=" tmp$dir"
++  TMPDIR="./ tmp$dir"
+   export TMPDIR
+ 
+   # skip if we cannot create such a file or directory
+-- 
+1.9.1
+
