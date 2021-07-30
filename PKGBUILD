@@ -13,7 +13,7 @@
 
 pkgname=brave-bin
 pkgver=1.26.77
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Web browser that blocks ads and trackers by default (binary release)'
 arch=(x86_64)
@@ -32,13 +32,11 @@ conflicts=("${pkgname%-bin}")
 options=(!strip)
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v$pkgver/brave-browser-$pkgver-linux-amd64.zip"
         "$pkgname.sh"
-        'brave-browser.desktop'
-        'logo.png')
+        'brave-browser.desktop')
 noextract=("$pkgname-$pkgver.zip")
 sha256sums=('75af7ea3438ac80fee18372798d2c689384d8f1bc2f1dead5470047931f5b43c'
             'ba7d57a3328c68e6a78e49506af0e238936e823b2f463e8087c20fcf4300232a'
-            'c07276b69c7304981525ecb022f92daf7ae125a4fb05ac3442157b50826e257a'
-            '4a585cb8740f4c9ba267f0df19d894eb9fae1b9a6af4a3e44737b7d0bcbc104a')
+            'c07276b69c7304981525ecb022f92daf7ae125a4fb05ac3442157b50826e257a')
 
 prepare() {
 	mkdir -p brave
@@ -55,7 +53,9 @@ package() {
 
 	install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "brave-browser.desktop"
-	install -Dm0644 "logo.png" "$pkgdir/usr/share/pixmaps/brave-desktop.png"
+	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+		install -Dm644 "$pkgdir/usr/lib/$pkgname/product_logo_${i/x*/}.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/brave-desktop.png"
+	done
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" brave/LICENSE
 	rm "$pkgdir/usr/lib/$pkgname/LICENSE"
 }
