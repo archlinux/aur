@@ -3,25 +3,55 @@
 # Based on aur/android-studio-canary: tilal6991 <lalitmaganti@gmail.com>, vanpra <pranavmaganti@gmail.com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
+PKGEXT='.pkg.tar'
 _pkgname=android-studio
 pkgname="${_pkgname}-beta"
-pkgver=2020.3.1.21
+pkgver=2020.3.1.22
 pkgrel=1
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
 license=('APACHE')
 makedepends=('unzip' 'zip')
-depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
-optdepends=('gtk2: GTK+ look and feel'
-            'libgl: emulator support')
+depends=(
+	'fontconfig'
+	'freetype2'
+	'lib32-bzip2'
+	'lib32-gcc-libs'
+	'lib32-zlib'
+	'libxrender'
+	'libxtst'
+	'which'
+)
+optdepends=(
+	'alsa-lib: emulator support'
+	'dbus: emulator support'
+	'expat: emulator support'
+	'git: for flutter'
+	'glib2: GTK+ look and feel'
+	'gtk2: GTK+ look and feel'
+	'gvfs: GTK+ look and feel'
+	'libX11: emulator support'
+	'libgl: emulator support'
+	'libpulseaudio: emulator support'
+	'libuuid: emulator support'
+	'libxcb: emulator support'
+	'libxcomposite: emulator support'
+	'libxcursor: emulator support'
+	'libxdamage: emulator support'
+	'libxfixes: emulator support'
+	'nspr: emulator support'
+	'nss: emulator support'
+	'systemd: emulator support'
+	'xorg-setxkbmap: emulator support'
+)
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "license.html")
-sha256sums=('6eb4cbb362dec3c78a73addcc43c20bb4281c7a855dcbd50ec11d185c4606712'
+sha256sums=('4adb7b9876ed7a59ae12de5cbfe7a402e1c07be915a4a516a32fef1d30b47276'
             'c4a15624eb258acbe119567b044f4a54be4ebb41f05e6f6cb4d941d130dc714f'
-            '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
+            'b417d7d95165598f64e8c5b76d7b152d91d764501ce65eb62d5145f98283576a')
 
 if [ "${CARCH}" = "i686" ]; then
     depends+=('java-environment')
