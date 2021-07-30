@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=tt
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Terminal based typing test"
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64' )
@@ -14,7 +14,7 @@ makedepends=(
 	'git'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('d42928da6dc3480613e1ecb81506fd4accbe22ef3dfb75b46d1e9471f24e6b5fcc47643de422d88093e03663340bfd3f01e3ad9ca48cea320ed9e6064d6fd14c')
+b2sums=('f2b5d6f0795986532f072980e46e6e47d212c508dda51a1338a0d7fd094a73e8f1fa778b8c78795cee3ff7364c6925b1e8fb7e0443928edd493f88506a5732e9')
 
 build() {
 	export local CGO_CPPFLAGS="${CPPFLAGS}"
