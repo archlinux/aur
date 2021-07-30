@@ -15,7 +15,7 @@ pkgbase = ananicy-cpp-git
 	optdepends = ananicy-rules-git: community rules
 	provides = ananicy-cpp
 	conflicts = ananicy-cpp
-	source = git+https://gitlab.com/aviallon/ananicy-cpp.git
+	source = git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git
 	md5sums = SKIP
 
 pkgname = ananicy-cpp-git
