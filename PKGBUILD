@@ -70,15 +70,15 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.13
-pkgver=${_major}.4
+pkgver=${_major}.6
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="f1bd9b6ad461634994d89bc8cdcb742f11ac1789" # 5.13.4-1
+__commit="cbc57124aad739167a615920c9f8cf4be791ca98" # 5.13.6-1
 
 license=(GPL2)
 makedepends=(
@@ -107,9 +107,9 @@ done
         
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '713a7b5b781d115d6579498fd9b3026cd128ba171272a23cece75b0cc0a05988'  # xanmod
+            '77f6fb980e779037841b7bca3f0bc4544d89c285f62884ec72c7ac1c79586ba2'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '8a6d39c6c617b2c9d0b380684050a01267a30830fc600084e1a71e11c6475364') # manjaro
+            'c93e8ada03ebb548b99b2b13f581866dc0bc8be6e11e7507bc658457b1030640') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -228,7 +228,7 @@ prepare() {
       make LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
-      exit
+      exit 1
     fi
   fi
 
