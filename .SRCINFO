@@ -1,7 +1,7 @@
 pkgbase = stumpwm-ql
 	pkgdesc = Stumpwm tiling window manager built with dependencies from quicklisp
 	pkgver = 20.11_2021_06_30
-	pkgrel = 3
+	pkgrel = 4
 	url = https://stumpwm.github.io
 	arch = x86_64
 	license = GPL2
