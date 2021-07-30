@@ -27,7 +27,7 @@ license=('custom:NVIDIA')
 # fi
 
 source=("https://developer.download.nvidia.com/compute/cutensor/${pkgver:0:5}/local_installers/libcutensor-linux-x86_64-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('98d9559da6c1d880b71e7618d266f4e912ea4330f137d78f195781cb7864042f')
 
 _create_links() {
   # create soname links
