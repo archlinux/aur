@@ -6,5 +6,5 @@ post_install()  {
 
 post_upgrade() {
 	echo ":: Don't forget to check the changelog for any possible breaking changes!"
-	echo ":: You can do so with 'pacman -Qc timeshift'"
+	echo ":: You can do so with 'pacman -Qc timetrace'"
 }
