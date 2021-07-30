@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=frum-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A little bit fast and modern Ruby version manager written in Rust"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 provides=("frum")
 conflicts=("frum" "frum-git")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/frum-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=("993d676523135e2a01b304f6bc21828f231e845e10ce03f3af32bbfd1acfc8d4")
+sha256sums=("95af67115f69ae8979e2ec51635298ad5803ef38d6a79ae2a2b967e00e49ea29")
 
 package() {
   mkdir -p "$pkgdir/opt/frum"
