@@ -1,16 +1,11 @@
 pkgbase = otf-bulgaria-moderna-pro
-	pkgdesc = Bulgaria Moderna is an OpenType digital font inspired by the Early Cyrillic script developed during the 10th Century in the Preslav Literary School
-	pkgver = 4.0
-	pkgrel = 1
-	url = http://alphadesigner.com/bulgaria-moderna-font/
-	install = otf-bulgaria-moderna-pro.install
+	pkgdesc = inspired by the Early Cyrillic script developed during the 10th Century in the Preslav Literary School
+	pkgver = 4.000
+	pkgrel = 2
+	url = https://alphadesigner.com/fonts/bulgaria-moderna
 	arch = any
-	license = cc-by-nc-3.0
-	makedepends = unzip
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://alphadesigner.com/fonts/bulgaria-moderna.zip
-	sha512sums = c33471b8735a9d231aa32718e3531b73293f322f1a87d28eeb8a8d95e1a62d55003c91182bd08821e636fc264ea6c9cddae03fe91aca1f678d6731d90c552442
+	license = CCPL
+	source = otf-bulgaria-moderna-pro-4.000.zip::https://dl.dafont.com/dl/?f=bulgaria_moderna
+	sha256sums = 2b526d0647b8663a0dddf8781574876c67789a8ccd878efe83d934cadfe172b2
 
 pkgname = otf-bulgaria-moderna-pro
-
