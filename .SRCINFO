@@ -17,4 +17,4 @@ pkgbase = python-sonicprobe
 	source = https://files.pythonhosted.org/packages/py3/s/sonicprobe/sonicprobe-0.3.41-py3-none-any.whl
 	md5sums = 6dbec591364d28dc1f73508624d4c466
 
-pkgname = sonicprobe
+pkgname = python-sonicprobe
