@@ -3,13 +3,13 @@
 _pkgbase=neoray
 pkgname=${_pkgbase}-git
 pkgver=r295.04af3e7
-pkgrel=1
+pkgrel=2
 pkgdesc="Go GUI for neovim"
 arch=('any')
 url="https://github.com/hismailbulut/neoray"
 license=('MIT')
 depends=('neovim')
-makedepends=('go')
+makedepends=('go' 'git')
 conflicts=()
 source=('git+https://github.com/hismailbulut/neoray.git'
         'neoray.desktop')
