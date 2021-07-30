@@ -1,7 +1,7 @@
 pkgbase = anki-release-source
 	pkgdesc = The latest release building from source locally
-	pkgver = 2.1.44
-	pkgrel = 4
+	pkgver = 2.1.45
+	pkgrel = 1
 	url = https://apps.ankiweb.net/
 	arch = x86_64
 	license = AGPL3
@@ -40,9 +40,9 @@ pkgbase = anki-release-source
 	conflicts = anki20
 	conflicts = anki-git
 	conflicts = anki-official-binary-bundle
-	source = anki-release-source-2.1.44.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/2.1.44.tar.gz
+	source = anki-release-source-2.1.45.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/2.1.45.tar.gz
 	source = no-update.patch
-	sha256sums = c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5
+	sha256sums = 030647ecd3acc6b29fd9fc3af872d5f3d9e5d8237bbcde83e92ab401332a5bec
 	sha256sums = 137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797
 
 pkgname = anki-release-source

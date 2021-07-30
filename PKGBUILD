@@ -1,8 +1,8 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 pkgname=anki-release-source
-pkgver=2.1.44
-pkgrel=4
+pkgver=2.1.45
+pkgrel=1
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -56,7 +56,7 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
 )
-sha256sums=('c24c87aac042b3ac803ea22669091730a48b575ee9d9939672d46caf6d3287b5'
+sha256sums=('030647ecd3acc6b29fd9fc3af872d5f3d9e5d8237bbcde83e92ab401332a5bec'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
