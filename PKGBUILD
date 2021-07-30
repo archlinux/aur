@@ -1,26 +1,27 @@
-#Maintainer: Machina <machinax@protonmail.com>
+# Maintainer: amadejpapez
+# Previous maintainer: Machina <machinax@protonmail.com>
+
 pkgname='python-name-that-hash'
-_module='name-that-hash'
-pkgver=1.6.0
-pkgrel=4
-pkgdesc="The Modern Hash Identifcation System"
-url="https://github.com/HashPals/Name-That-Hash"
-makedepends=('python-setuptools')
-depends=('python' 'python-click' 'python-rich')
-license=('(L)GPL3')
+_pkgname='name-that-hash'
+pkgver=1.10.0
+pkgrel=1
+pkgdesc="The Modern Hash Identification System"
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-md5sums=('d4e70b2bbc2fedc7f591b9047fd6641d')
+url="https://github.com/HashPals/Name-That-Hash"
+license=('GPL3')
+depends=('python' 'python-click' 'python-rich')
+makedepends=('python-setuptools' 'python-dephell')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('aabe1a3e23f5f8ca1ef6522eb1adcd5c69b5fed3961371ed84a22fc86ee648a2')
 
 build() 
 {
-	cd "$_module-$pkgver"
+	cd "$_pkgname-$pkgver"
 	python setup.py build
 }
 
 package() 
 {
-	cd "$_module-$pkgver"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps loguru
-	python setup.py install --prefix="/usr" --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_pkgname-$pkgver"
+	python setup.py install --prefix="/usr" --root="$pkgdir/" --optimize=1 --skip-build
 }
