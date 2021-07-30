@@ -41,12 +41,19 @@ makedepends=(autoconf2.13
              rust-nightly)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+backup=("etc/profile.d/${pkgname%-git}".{csh,sh})
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$pkgname"
+	echo 'export PATH=$PATH:/opt/servo' > "${pkgname%-git}.sh"
+	echo 'setenv PATH ${PATH}:/opt/servo' > "${pkgname%-git}.csh"
 }
 
 build() {
@@ -59,7 +66,7 @@ build() {
 
 package() {
 	servopath=$pkgname/target/release
-	install -Dm755 "$servopath/servo" "$pkgdir/opt/servo/servo"
+	install -Dm0755 -t "$pkgdir/opt/servo/" "$servopath/servo"
 	if [ "$_install_libs" = true ] ; then
 		mkdir -p "$pkgdir/usr/lib"
 		find "$servopath/deps" -name "*-*.so" -exec basename {} \; | sort | uniq | while read _f; do
@@ -73,8 +80,6 @@ package() {
 	fi
 	mkdir -p "$pkgdir/opt/servo/resources"
 	cp -r $pkgname/resources/* "$pkgdir/opt/servo/resources"
-	mkdir -p "$pkgdir/etc/profile.d"
-	echo 'export PATH=$PATH:/opt/servo' > "$pkgdir/etc/profile.d/${pkgname%-git}.sh"
-	echo 'setenv PATH ${PATH}:/opt/servo' > "$pkgdir/etc/profile.d/${pkgname%-git}.csh"
-	chmod 755 "$pkgdir/etc/profile.d/${pkgname%-git}".{csh,sh}
+	cd "$pkgname"
+	install -Dm0755 -t "$pkgdir/etc/profile.d/" "${pkgname%-git}".{csh,sh}
 }

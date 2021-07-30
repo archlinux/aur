@@ -35,6 +35,8 @@ pkgbase = servo-git
 	depends = xcb-util
 	provides = servo
 	conflicts = servo
+	backup = etc/profile.d/servo.csh
+	backup = etc/profile.d/servo.sh
 	source = servo-git::git+https://github.com/servo/servo.git
 	sha256sums = SKIP
 
