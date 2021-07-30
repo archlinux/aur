@@ -1,0 +1,14 @@
+pkgbase = ideapad_mode
+	pkgdesc = Bash script to controll the battery and cooling of the Lenovo Ideapad 5 on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chrisinick/ideapad_mode
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = acpi_call
+	depends = bash
+	source = git://github.com/chrisinick/ideapad_mode.git
+	md5sums = SKIP
+
+pkgname = ideapad_mode
