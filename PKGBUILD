@@ -3,21 +3,41 @@
 
 _gemname=nenv
 pkgname=ruby-$_gemname
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Convenience wrapper for Ruby'\''s ENV'
-arch=(any)
-url='https://github.com/e2/nenv'
-license=(MIT)
+pkgdesc="Convenience wrapper for Ruby's ENV"
+arch=('any')
+url="https://github.com/e2/nenv"
+license=('MIT')
 depends=(ruby)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('abadad26da4efca39096135b0a3bc864381e78ce')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('41ff5a4f56f6390dae900437eb4905399a252b2021ea3a00361a80d843ed4d5b5f185be150f15e40c55eaffd68e2071f6ac68ce7e3aa6de18dd73659d5dbbd68')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    --no-document \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  cd "gems/$_gemname-$pkgver"
+  rm -vrf .gitignore "$_gemname.gemspec"
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
