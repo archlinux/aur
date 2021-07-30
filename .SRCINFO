@@ -1,0 +1,20 @@
+pkgbase = ruby-shellany
+	pkgdesc = Portable shell command output capturing
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/guard/shellany
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rake
+	checkdepends = ruby-nenv
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = git+https://github.com/guard/shellany.git?tag=v0.0.1
+	sha256sums = SKIP
+
+pkgname = ruby-shellany
