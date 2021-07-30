@@ -1,7 +1,7 @@
 pkgbase = keyd-git
 	pkgdesc = A key remapping daemon for linux.
 	pkgver = r10.7d1c03a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rvaiya/keyd
 	arch = x86_64
 	license = MIT

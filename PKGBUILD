@@ -2,7 +2,7 @@
 
 pkgname=keyd-git
 pkgver=r10.7d1c03a
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
@@ -27,7 +27,7 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -dm755 "$pkgdir/etc/keyd/"
-	install -Dm755 keyd.service -t "$pkgdir/usr/lib/systemd/system/"
 	install -Dm755 bin/keyd -t "$pkgdir/usr/bin/"
 	install -Dm644 keyd.1.gz -t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 keyd.service -t "$pkgdir/usr/lib/systemd/system/"
 }
