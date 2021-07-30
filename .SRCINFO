@@ -1,5 +1,5 @@
 pkgbase = mrcode-bin
-	pkgdesc = An IDE based on VSCode / VSCodium (Binary release)
+	pkgdesc = A custom build of VSCodium / VSCode (binary release)
 	pkgver = 1.58.2
 	pkgrel = 1
 	url = https://github.com/zokugun/MrCode.git
