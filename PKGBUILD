@@ -1,31 +1,37 @@
-# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=python-plaster-pastedeploy
 pkgver=0.7
-_distname=plaster_pastedeploy-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A loader interface around multiple config file formats."
 arch=('any')
-url="https://github.com/Pylons/plaster_pastedeploy"
+url="https://github.com/pylons/plaster_pastedeploy"
 license=('MIT')
-depends=('python-plaster' 'python-pastedeploy')
+depends=('python-plaster>=0.5'
+         'python-pastedeploy>=2.0')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner')
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('afe2da1f67a1450a739e32eedb3d69d976c8352bf3da1edc7672a99050e5f6ad')
+checkdepends=('python-pytest-cov' 'python-pytest-runner')
+changelog=CHANGES.rst
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-$pkgver.tar.gz.asc")
+sha256sums=('391d93a4e1ff81fc3bae27508ebb765b61f1724ae6169f83577f06b6357be7fd'
+            'SKIP')
+validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build(){
-    cd $_distname
-    python setup.py build
+	cd "plaster_pastedeploy-$pkgver"
+	python setup.py build
 }
 
 check(){
-    cd $_distname
-    python setup.py pytest -v
+	cd "plaster_pastedeploy-$pkgver"
+	python setup.py pytest -v
 }
 
 package(){
-    cd $_distname
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-    install -D LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "plaster_pastedeploy-$pkgver"
+	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }

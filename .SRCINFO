@@ -1,16 +1,20 @@
 pkgbase = python-plaster-pastedeploy
 	pkgdesc = A loader interface around multiple config file formats.
 	pkgver = 0.7
-	pkgrel = 1
-	url = https://github.com/Pylons/plaster_pastedeploy
+	pkgrel = 2
+	url = https://github.com/pylons/plaster_pastedeploy
+	changelog = CHANGES.rst
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
-	depends = python-plaster
-	depends = python-pastedeploy
-	source = https://github.com/Pylons/plaster_pastedeploy/archive/0.7.tar.gz
-	sha256sums = 6259d32c427bec456b0179835cba35ebb42dd171701d8cc4974ce386cf595bdd
+	depends = python-plaster>=0.5
+	depends = python-pastedeploy>=2.0
+	source = python-plaster-pastedeploy-0.7.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-0.7.tar.gz
+	source = python-plaster-pastedeploy-0.7.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-0.7.tar.gz.asc
+	validpgpkeys = CC1A48C957AC6ABEF05B2C596BC977B056B829E5
+	sha256sums = 391d93a4e1ff81fc3bae27508ebb765b61f1724ae6169f83577f06b6357be7fd
+	sha256sums = SKIP
 
 pkgname = python-plaster-pastedeploy
-
