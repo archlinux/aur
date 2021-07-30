@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('bind' 'grep' 'curl')
 makedepends=('git')
 source=("https://github.com/MahdyMirzade/$pkgname/archive/refs/tags/$pkgver.$pkgrel.tar.gz")
-sha256sums=("1dfa5c62252b70c2f14319479a59163d1e3270b0d459a30ed42efbeab44d9d53")
+sha256sums=("a5792f91eddf6fe4f2f612ff0a5ff2da1116cfbb17ded349b1b0cee5a8f400d1")
 
 package() {
     path="$srcdir/$pkgname-$pkgver.$pkgrel"
