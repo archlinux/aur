@@ -26,7 +26,7 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
-  ./install.sh -t all --tweaks round -d "$pkgdir/usr/share/themes"
+    ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
   # Remove unnecessary files:
   rm -rf "$pkgdir"/usr/share/themes/{Fluent,Fluent-*}/gnome-shell/extensions
