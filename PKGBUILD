@@ -60,5 +60,4 @@ package() {
 	rm -f "$pkgdir"/usr/share/info/standards.info
 
 	mv "${pkgdir}"/usr/share/info/autoconf{,-2.69}.info
-	mv "${pkgdir}"/usr/share/info/standards{,-2.69}.info
 }
