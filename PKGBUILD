@@ -4,9 +4,9 @@
 # Contributer: jonathon https://aur.archlinux.org/packages/pulseaudio-modules-bt/#comment-787490
 
 pkgname="pulseaudio-modules-bt"
-pulseaudio_ver="14.2"
+pulseaudio_ver="15.0"
 module_ver="1.4"
-pkgrel="8"
+pkgrel="0"
 pkgver="${module_ver}_${pulseaudio_ver}"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")

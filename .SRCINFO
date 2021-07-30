@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-modules-bt
 	pkgdesc = PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support
-	pkgver = 1.4_14.2
-	pkgrel = 8
+	pkgver = 1.4_15.0
+	pkgrel = 0
 	url = https://github.com/EHfive/pulseaudio-modules-bt
 	arch = i686
 	arch = x86_64
@@ -24,11 +24,10 @@ pkgbase = pulseaudio-modules-bt
 	provides = pulseaudio-bluetooth
 	conflicts = pulseaudio-bluetooth
 	source = pulseaudio-modules-bt-1.4.zip::https://github.com/EHfive/pulseaudio-modules-bt/archive/v1.4.zip
-	source = pulseaudio-14.2.zip::https://github.com/pulseaudio/pulseaudio/archive/v14.2.zip
+	source = pulseaudio-15.0.zip::https://github.com/pulseaudio/pulseaudio/archive/v15.0.zip
 	md5sums = 711a7f930321e56706acdb441de0e432
 	md5sums = SKIP
 	sha512sums = 5c3ed59dec46a1a9cc2f359ac1d28a82a50a5dea47a268a10601b95a8e17a68dd00ba7628c429271349bae290f461abeb1a4a3715b1833c71d7f82f9a902fe2d
 	sha512sums = SKIP
 
 pkgname = pulseaudio-modules-bt
-
