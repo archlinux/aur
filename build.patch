@@ -1,32 +1,12 @@
 --- db/nist/CMakeLists.txt
 +++ db/nist/CMakeLists.txt
-@@ -10,7 +10,7 @@ set(NIST_SAMPLE_MODELS
+@@ -10,7 +10,8 @@ set(NIST_SAMPLE_MODELS
  )
  
  foreach(im ${NIST_SAMPLE_MODELS})
 -  ADD_G_TARGET(${im} "BRL-CAD Geometry Models/Sample")
++#  disabled because this often segfaults
 +#  ADD_G_TARGET(${im} "BRL-CAD Geometry Models/Sample")
  endforeach(im ${NIST_SAMPLE_MODELS})
  
  CMAKEFILES(
-
---- src/libbg/earcut.hpp
-+++ src/libbg/earcut.hpp
-@@ -24,6 +24,7 @@
- #include <algorithm>
- #include <cassert>
- #include <cmath>
-+#include <limits>
- #include <memory>
- #include <vector>
-
---- src/libged/brep/brep.cpp
-+++ src/libged/brep/brep.cpp
-@@ -32,6 +32,7 @@
- #include <fstream>
- #include <iomanip>
- #include <iostream>
-+#include <limits>
- #include <list>
- #include <map>
- #include <queue>

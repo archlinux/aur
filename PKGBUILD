@@ -1,6 +1,6 @@
 pkgname=brlcad
-pkgver=7.32.2
-pkgrel=2
+pkgver=7.32.4
+pkgrel=1
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
 license=('LGPL' 'BSD' 'custom:BDL')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/rel-${pkgver//./-}.tar.gz")
 sha256sums=(
     'SKIP'
-    'd025b51bf85e944fc599bce6615b82b01b1f7932adbb6d139b4b2a0056922534')
+    '0f402e9b506942540c33cc655b2712e53eca39bd4fd6789b5ee33eb0072fbbea')
 
 
 _build_config='Release'
