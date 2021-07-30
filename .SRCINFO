@@ -1,13 +1,13 @@
 pkgbase = zfs-linux-zen
-	pkgver = 2.1.0_5.13.5.zen1.1
+	pkgver = 2.1.0_5.13.6.zen1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-zen-headers=5.13.5.zen1-1
+	makedepends = linux-zen-headers=5.13.6.zen1-1
 	depends = kmod
 	depends = zfs-utils=2.1.0
-	depends = linux-zen=5.13.5.zen1-1
+	depends = linux-zen=5.13.6.zen1-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.0/zfs-2.1.0.tar.gz
 	sha256sums = 60bddcb630284c771dcf5a1109ca9329d16523a3a40a374019955cfbf97bf34f
 
