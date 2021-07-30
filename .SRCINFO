@@ -1,7 +1,7 @@
 pkgbase = howdy
 	pkgdesc = Windows Hello for Linux
 	pkgver = 2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boltgolt/howdy
 	arch = x86_64
 	license = MIT
@@ -10,13 +10,14 @@ pkgbase = howdy
 	depends = opencv
 	depends = hdf5
 	depends = pam-python
-	depends = python3
+	depends = python
 	depends = python-pillow
 	depends = python-dlib
 	depends = python-face_recognition
 	depends = python-face_recognition_models
 	depends = python-click
 	depends = python-numpy
+	depends = python-opencv
 	backup = usr/lib/security/howdy/config.ini
 	source = https://github.com/boltgolt/howdy/archive/v2.6.1.tar.gz
 	source = https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2
@@ -28,4 +29,3 @@ pkgbase = howdy
 	sha256sums = 6e787bbebf5c9efdb793f6cd1f023230c4413306605f24f299f12869f95aa472
 
 pkgname = howdy
-

@@ -5,7 +5,7 @@
 
 pkgname=howdy
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Hello for Linux"
 arch=('x86_64')
 url="https://github.com/boltgolt/howdy"
@@ -14,13 +14,14 @@ depends=(
 	'opencv'
 	'hdf5'
 	'pam-python'
-	'python3'
+	'python'
 	'python-pillow'
 	'python-dlib'
 	'python-face_recognition'
 	'python-face_recognition_models'
 	'python-click'
 	'python-numpy'
+	'python-opencv'
 )
 makedepends=(
 	'cmake'
@@ -40,17 +41,18 @@ sha256sums=('f3f48599f78fd82b049539fcfc34de25c9435cad732697bdda94e85352964794'
 
 package() {
 	# Installing the proper license files and the rest of howdy
-	cd howdy-$pkgver
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	mkdir -p "$pkgdir/usr/lib/security/howdy"
-	cp -r src/* "$pkgdir/usr/lib/security/howdy"
-	cp "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
-	cp "${srcdir}/mmod_human_face_detector.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
-	cp "${srcdir}/shape_predictor_5_face_landmarks.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
-	chmod 600 -R "$pkgdir/usr/lib/security/howdy"
-	mkdir -p "$pkgdir/usr/bin"
-	ln -s /lib/security/howdy/cli.py "$pkgdir/usr/bin/howdy"
-	chmod +x "$pkgdir/usr/lib/security/howdy/cli.py"
-	mkdir -p "$pkgdir/usr/share/bash-completion/completions"
-	cp autocomplete/howdy "$pkgdir/usr/share/bash-completion/completions/howdy"
+	cd "${pkgname}-${pkgver}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	mkdir -p "${pkgdir}/usr/lib/security/howdy"
+	cp -r src/* "${pkgdir}/usr/lib/security/howdy"
+	cp "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
+	cp "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
+	cp "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
+	chmod 600 -R "${pkgdir}/usr/lib/security/howdy"
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s /lib/security/howdy/cli.py "${pkgdir}/usr/bin/howdy"
+	chmod +x "${pkgdir}/usr/lib/security/howdy/cli.py"
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	cp autocomplete/howdy "${pkgdir}/usr/share/bash-completion/completions/howdy"
 }
+
