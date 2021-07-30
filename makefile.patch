@@ -1,0 +1,55 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,13 +1,6 @@
+-# x86
+-STAGING_DIR     =
+-BIN             =
+-LIBEXEC         =
+-CC              = gcc
+-CPP             = g++
+-STRIP           = strip
++CC              ?= gcc
++CXX             ?= g++
+ RM              = rm
+-PLATFORM        = x86
+-TARGET_DIR      = .
+-MY_CFLAGS       =
++MY_CFLAGS       ?=
+ 
+ include rules.mk
+--- a/src/rules.mk
++++ b/src/rules.mk
+@@ -1,25 +1,17 @@
+-LUA     = lua-5.3.5
+-CFLAGS  = -fno-exceptions -fno-rtti -Os -I$(LUA) $(MY_CFLAGS) -DWITHOUT_OPENSSL
++CFLAGS  = $(MY_CFLAGS) -fno-exceptions -fno-rtti -Os -DWITHOUT_OPENSSL
+ OBJS    = main.o soap.o mem.o mcast.o luaxlib.o luaxcore.o luajson.o luajson_parser.o md5c.o
+-LIBS    = $(LUA)/liblua.a
+ 
+-all: $(LIBS) $(OBJS)
+-	PATH=$(PATH):$(LIBEXEC) STAGING_DIR=$(STAGING_DIR) $(CC) -B $(LIBEXEC) $(CFLAGS) -o $(TARGET_DIR)/xupnpd-$(PLATFORM) $(OBJS) $(LIBS) -ldl -lm
+-	$(STRIP) $(TARGET_DIR)/xupnpd-$(PLATFORM)
+-
+-$(LUA)/liblua.a:
+-	$(MAKE) -C $(LUA) a CC=$(CC) PATH=$(PATH):$(LIBEXEC) STAGING_DIR=$(STAGING_DIR) MYCFLAGS="-DLUA_USE_LINUX -Os"
++all: $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o xupnpd $(OBJS) -llua -ldl -lm
+ 
+ clean:
+ 	$(RM) -f $(OBJS)
+-	$(MAKE) -C $(LUA) clean
+-	$(RM) -f $(TARGET_DIR)/xupnpd-$(PLATFORM)
++	$(RM) -f xupnpd
+ 
+ .c.o:
+-	PATH=$(PATH):$(LIBEXEC) STAGING_DIR=$(STAGING_DIR) $(CC) -c -o $@ $<
++	$(CC) -c -o $@ $<
+ 
+ .cpp.o:
+-	PATH=$(PATH):$(LIBEXEC) STAGING_DIR=$(STAGING_DIR) $(CPP) -c $(CFLAGS) -o $@ $<
++	$(CXX) -c $(CFLAGS) -o $@ $<
+ 
+ test: all	# either 'make test' or 'make test test=plugins/recent.lua-test.sh/it_symlinks_media_most_recent_first'
+-	cd ../test; PLATFORM=$(PLATFORM) roundup $(or ${test},${test},plugins/*-test.sh)	# https://github.com/samunders-core/roundup/tree/function_as_test_plan
+\ No newline at end of file
++	cd ../test; roundup $(or ${test},${test},plugins/*-test.sh)	# https://github.com/samunders-core/roundup/tree/function_as_test_plan

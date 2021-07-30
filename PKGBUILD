@@ -1,54 +1,64 @@
-# Maintainer: Konstantin Shalygin <k0ste@k0ste.ru>
+# Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
-# Contributor: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 
-pkgname='xupnpd'
-pkgdesc="eXtensible UPnP agent (proxy IP TV multicast to DLNA)"
-pkgver='1.033'
-pkgrel='8'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+# All my PKGBUILDs are managed at https://github.com/tmn505/AUR
+
+pkgname=xupnpd
+pkgver=1.034.r115.g2bc1e74
+pkgrel=1
+pkgdesc='eXtensible UPnP agent (proxy IP TV multicast to DLNA)'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://${pkgname}.org"
 license=('GPL2')
-depends=('openssl')
+depends=('lua')
 makedepends=('git')
 optdepends=('udpxy: custom udp to http proxy')
-source=("${pkgname}::git+https://github.com/clark15b/${pkgname}"
-        "res_and_conf_dirs.patch"
+backup=("var/lib/${pkgname}.lua")
+source=("${pkgname}::git+https://github.com/clark15b/${pkgname}#commit=2bc1e741e0efe04cb3150430ff25410093618b4f"
         "${pkgname}.service"
-        "sysusers.conf")
+        "${pkgname}.sysusers"
+        'makefile.patch')
 sha256sums=('SKIP'
-            'd1a0060f3cfd2c89ccbaa4322ca184f152919991332b0c40da998d47cde4e01e'
             'c5404309699c528e09ff399da1253e3ab6006040c51a1ad6c63d59f1f43c356e'
-            '3f669a1034bcfb9923822fb0adf6d5a379beb7a184a89cd4d72a5b02bc072852')
-_var="var/lib/${pkgname}"
-_usr="usr/share/${pkgname}"
-backup=("${_var}/${pkgname}.lua")
+            '3f669a1034bcfb9923822fb0adf6d5a379beb7a184a89cd4d72a5b02bc072852'
+            'c86de2d435c37d6b2560e844291843d159c643052f82126774ee5ff809e05adb')
 
 prepare() {
-  cd "${srcdir}"
-  patch -p0 -i ./res_and_conf_dirs.patch
+	cd "${srcdir}/${pkgname}/src"
+	patch -p2 -i "${srcdir}/makefile.patch"
+	sed -e 's,/run,/lib/xupnpd,' -i xupnpd.lua
+}
+
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "%s.r%s.g%s" \
+		"$(awk -F\' '/version/ {printf $2}' src/xupnpd.lua)" \
+		"$(git rev-list --count HEAD)" \
+		"$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/src"
-  make
+	cd "${srcdir}/${pkgname}/src"
+	make MY_CFLAGS="${CFLAGS}"
 }
 
 package() {
-  cd ${srcdir}
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm0644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  cd "${pkgname}/src"
-  install -Dm0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -dm0755 -o 187 -g 187 "${pkgdir}/run/${pkgname}"
-  install -dm0755 -o 187 -g 187 "${pkgdir}/${_var}/config"
-  install -dm0755 -o 187 -g 187 "${pkgdir}/${_var}/localmedia"
-  install -Dm0644 -o 187 -g 187 *.lua -t "${pkgdir}/${_var}"
-  cp -ax "playlists" "${pkgdir}/${_var}"
-  chown -R 187:187 "${pkgdir}/${_var}/playlists"
-  install -dm0755 "${pkgdir}/${_usr}"
-  cp -ax "plugins" "${pkgdir}/${_usr}"
-  cp -ax "profiles" "${pkgdir}/${_usr}"
-  cp -ax "ui" "${pkgdir}/${_usr}"
-  cp -ax "www" "${pkgdir}/${_usr}"
+	cd "${srcdir}"
+	install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+	cd "${pkgname}/src"
+	install -Dm0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+	install -dm0755 "${pkgdir}/var/lib/${pkgname}/examples"
+	install -dm0755 "${pkgdir}/var/lib/${pkgname}/localmedia"
+	install -dm0755 "${pkgdir}/var/lib/${pkgname}/playlists"
+	install -Dm0644 *.lua -t "${pkgdir}/var/lib/${pkgname}"
+	cp -ax "config" "${pkgdir}/var/lib/${pkgname}"
+	cp -ax "playlists" "${pkgdir}/var/lib/${pkgname}/examples"
+	cp -ax "plugins" "${pkgdir}/var/lib/${pkgname}"
+	cp -ax "profiles" "${pkgdir}/var/lib/${pkgname}"
+	cp -ax "ui" "${pkgdir}/var/lib/${pkgname}"
+	cp -ax "www" "${pkgdir}/var/lib/${pkgname}"
+	chown -R 187:187 "${pkgdir}/var/lib/${pkgname}"
 }
