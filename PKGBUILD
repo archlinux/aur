@@ -106,8 +106,6 @@ prepare() {
 	patch -Np1 -i "${srcdir}/07-quick_boot.patch"
 	echo
 
-	echo
-
 	msg "Pull in latest language files"
 	./linguas.sh
 	echo
