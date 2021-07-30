@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=typos
-pkgver=1.0.11
+pkgver=1.1.1
 pkgrel=1
 
 pkgdesc="Source code spell checker."
@@ -9,7 +9,7 @@ url="https://github.com/crate-ci/${pkgname}"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e107591a32fb502be4589198605240c95dab6eab4b73cc6195c27e485582a442')
+sha256sums=('0cfe10e120e133257b50256f5a9ad2ad1d5f575fab17f67390eebe1e757a9ea4')
 
 build() {
 	cd "${pkgname}-${pkgver}"
