@@ -1,5 +1,6 @@
 # Maintainer: Haris Gušić <harisgusic dot dev at gmail dot com>
 pkgname=svg-term-cli
+pkgdesc="Share terminal sessions via SVG and CSS"
 pkgver=2.1.1
 pkgrel=1
 arch=('x86_64')

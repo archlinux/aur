@@ -1,4 +1,5 @@
 pkgbase = svg-term-cli
+	pkgdesc = Share terminal sessions via SVG and CSS
 	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/marionebl/svg-term-cli
