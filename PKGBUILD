@@ -8,6 +8,7 @@ arch=(any)
 license=(MIT)
 url="https://github.com/nvbn/thefuck"
 depends=(python-mock python-pypandoc python-pyte python-pytest python-colorama python-psutil)
+conflicts=('thefuck')
 source=(
   https://github.com/nvbn/thefuck/archive/refs/tags/3.31.tar.gz
 )
