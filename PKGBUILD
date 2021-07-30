@@ -2,7 +2,7 @@
 
 pkgname=docker-ipv6nat
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Extend Docker with IPv6 NAT, similar to IPv4"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -50,6 +50,7 @@ build() {
     GOARM=${_GOARM} \
     CGO_ENABLED=0 \
     GOPATH="$srcdir" \
+    GO111MODULE=off \
     go build \
         -o "docker-ipv6nat" \
         -gcflags "all=-trimpath=${PWD}" \
