@@ -1,0 +1,17 @@
+pkgbase = thefuck-git
+	pkgdesc = Magnificent app which corrects your previous console command
+	pkgver = 3.31
+	pkgrel = 1
+	url = https://github.com/nvbn/thefuck
+	arch = any
+	license = MIT
+	depends = python-mock
+	depends = python-pypandoc
+	depends = python-pyte
+	depends = python-pytest
+	depends = python-colorama
+	depends = python-psutil
+	source = https://github.com/nvbn/thefuck/archive/refs/tags/3.31.tar.gz
+	md5sums = 2a2b933426871da927fcf7857188344e
+
+pkgname = thefuck-git
