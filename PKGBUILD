@@ -2,7 +2,7 @@
 _pluginname=SceneSwitcher
 _pluginname2=advanced-scene-switcher
 pkgname=obs-$_pluginname2
-pkgver=1.15.1
+pkgver=1.15.2
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
