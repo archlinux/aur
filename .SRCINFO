@@ -1,0 +1,22 @@
+pkgbase = python-sphinx-changelog
+	pkgdesc = A changelog renderer for sphinx
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://openastronomy.org
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	makedepends = python-sphinx
+	makedepends = python-sphinx-automodapi
+	makedepends = towncrier
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_changelog/sphinx_changelog-1.1.1.tar.gz
+	source = https://raw.githubusercontent.com/OpenAstronomy/sphinx-changelog/main/changelog/template.rst
+	md5sums = 31d0d07a2a3c398480753bf048f42ebd
+	md5sums = SKIP
+
+pkgname = python-sphinx-changelog
+	depends = python-sphinx
+	depends = towncrier>=21.3.0
+
+pkgname = python-sphinx-changelog-doc
+	pkgdesc = Documentation for sphinx-notfound-page
