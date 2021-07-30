@@ -1,0 +1,21 @@
+pkgbase = monit-docker
+	pkgdesc = Monitor docker containers resources usage and execute docker commands or inside containers
+	pkgver = 0.0.41
+	pkgrel = 1
+	url = https://github.com/decryptus/monit-docker
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	depends = python-cryptography
+	depends = python-bitmath
+	depends = python-docker
+	depends = python-mako
+	depends = python-pyopenssl
+	depends = python-yaml
+	depends = python-six
+	depends = python-sonicprobe
+	source = https://files.pythonhosted.org/packages/py3/m/monit-docker/monit_docker-0.0.41-py3-none-any.whl
+	md5sums = ea9a1cadb68e6a14ed77af3ee0d14aba
+
+pkgname = monit-docker
