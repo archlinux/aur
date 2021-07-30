@@ -1,7 +1,8 @@
 # Maintainer: Alexis "Horgix" Chotard <alexis.horgix.chotard@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=terminal-parrot
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 conflicts=('terminal-parrot-git')
 pkgdesc="Party parrot (http://cultofthepartyparrot.com) for your terminal"
@@ -11,7 +12,7 @@ license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/jmhobbs/terminal-parrot/archive/$pkgver.tar.gz")
-sha256sums=('beba7a1fb643b72e3d2f23f5371936828653e60c1bb1339cf732026e15b8370d')
+sha256sums=('93acae68396c8cb9e7a7ef4911503f03656e427b5791f4c2e5c9b3f8e56dce8d')
 
 prepare() {
     mkdir -p go
@@ -24,13 +25,18 @@ build() {
   export GOPATH="$srcdir/go"
   cd "$pkgname-$pkgver"
 
-  go build
+	go build \
+	  -trimpath \
+	  -buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
-  # To be included in later version
-  #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
