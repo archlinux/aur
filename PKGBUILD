@@ -34,14 +34,14 @@ if [ -z ${USE_NOCONFIRM+x} ]; then
 fi
 
 pkgname=unbrave-git
-pkgver=r4755.527e5add
+pkgver=r4758.54080bf0
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
-makedepends=('git' 'npm' 'python' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
+makedepends=('git' 'npm' 'python' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'

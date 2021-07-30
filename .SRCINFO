@@ -1,6 +1,6 @@
 pkgbase = unbrave-git
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = r4755.527e5add
+	pkgver = r4758.54080bf0
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = unbrave-git
 	makedepends = git
 	makedepends = npm
 	makedepends = python
+	makedepends = python2
 	makedepends = icu
 	makedepends = glibc
 	makedepends = gperf
