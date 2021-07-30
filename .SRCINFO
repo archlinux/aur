@@ -1,6 +1,6 @@
 pkgbase = portfolio-file-manager
 	pkgdesc = A minimalist file manager for those who want to use Linux mobile devices.
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://github.com/tchx84/Portfolio
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = portfolio-file-manager
 	depends = gtk3
 	depends = libhandy
 	depends = python-gobject
-	source = portfolio-file-manager-0.9.10.tar.gz::https://github.com/tchx84/Portfolio/archive/v0.9.10.tar.gz
-	sha256sums = 4ffce8e7978d7f6c2c9f25e69c9981dcb42fac2eabc30f6338ae9be2bf5d143a
+	source = portfolio-file-manager-0.9.11.tar.gz::https://github.com/tchx84/Portfolio/archive/v0.9.11.tar.gz
+	sha256sums = 9bf8a7c9beffa0b23697c5f6f33598309cd58aa86e6ec050b285f8ac484520e4
 
 pkgname = portfolio-file-manager
-
