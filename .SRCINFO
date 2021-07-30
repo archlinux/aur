@@ -1,0 +1,20 @@
+pkgbase = brave-browser
+	pkgdesc = Brave Stable version based on the official rpm package
+	pkgver = 1.27.109
+	pkgrel = 1
+	url = https://brave.com/linux/
+	arch = x86_64
+	license = MPL2
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = ttf-font
+	depends = libnotify
+	optdepends = libgnome-keyring: Enable GNOME keyring support
+	optdepends = cups: Printer support
+	source = https://github.com/brave/brave-browser/releases/download/v1.27.109/brave-browser-1.27.109-1.x86_64.rpm
+	validpgpkeys = 6481A7A3E66A3AA39D0DD7302A60AB408C14BF70
+	sha256sums = 8ba5c8eca039a9d3a403d11db0b898cc4df2c33f8d4bde5e96ecaa38a5b068ee
+
+pkgname = brave-browser
