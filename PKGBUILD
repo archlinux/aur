@@ -1,7 +1,7 @@
 #Maintainer: RSKYS <pouria dot rz at outlook dot com>
 
 pkgname=thefuck-git
-pkgsur=thefuck
+pkgdir=thefuck
 pkgver=3.31
 pkgrel=1
 pkgdesc='Magnificent app which corrects your previous console command'
