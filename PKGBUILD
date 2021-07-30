@@ -5,9 +5,9 @@ arch=('x86_64')
 pkgdesc="nginx generated index files optimized for music"
 url="https://cgit.ctu.cx/${pkgname}"
 license=( 'GPL-3' )
-_commit="eed52e44922c9b8cc8dd04b026eb5efa6a9bf8ef"
+_commit="ac42fd4ab6820f5e840b13cbd03f3cdf0ae149ff"
 source=("${pkgname}-${_commit}.tar.gz::https://cgit.ctu.cx/${pkgname}/snapshot/${pkgname}-${_commit}.tar.gz")
-sha256sums=('bc358adb3281eb07c36d1e869e2c38b14c2413956c316e3025daa5b75b76bbab')
+sha256sums=('59a659a17f2385d42f29928773cfd5d77591f10ee6b4816150ba45e944b830c7')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/webapps/
