@@ -1,0 +1,9 @@
+post_upgrade() {
+    if [[ $1 = 1.6.0-1 ]] || [[ $1 = 1.6.1-1 ]]; then
+	echo ""
+	echo "Notes for update 1.6.0:"
+	echo "A new TOFU trust store will be created. The old one is kept around but ignored."
+	echo "App state serialization format has been updated. Downgrading to a previous release will cause app state to be reset (e.g., tabs closed, navigation history cleared)."
+	echo ""
+    fi
+}

@@ -3,6 +3,7 @@ pkgbase = lagrange
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://git.skyjake.fi/skyjake/lagrange
+	install = lagrange.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
