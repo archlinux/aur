@@ -8,9 +8,9 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.2.0
+pkgver=3.3.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -18,7 +18,7 @@ checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
               python-graphql-core python-unidiff
               openssh chromium)
-makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
+makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
              python-sqlalchemy-migrate python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-setuptools python-future
@@ -27,12 +27,10 @@ makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "subunit-tests.diff"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch")
-sha256sums=('b94c62cb92398d1e32d5796f493711ecc568b2430efc856d48912f05ea8afb09'
+sha256sums=('2ffa268d7c328545d7e93fce2de1167527a2119c4b4ff0b6faa6ccc257074191'
             'SKIP'
             'SKIP'
-            'cd66bf65e45fa0a5916a6e0201dcebc4db001e4f47da856afbffc58a04356d55'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
@@ -56,11 +54,6 @@ prepare() {
   rm -v master/buildbot/scripts/windows_service.py
   sed -i '/buildbot_worker_windows_service/d' worker/setup.py
   rm -v worker/buildbot_worker/scripts/windows_service.py
-
-  # Subunit logs are from testtools. Arch Linux's testtools is patched to use
-  # traceback instead of traceback2, and causing a difference. See
-  # https://github.com/testing-cabal/testtools/pull/299 for more defailts.
-  patch -Np1 -i ../subunit-tests.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -134,7 +127,7 @@ export PYTHONHASHSEED=0
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
-  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy1.3
+  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy
            python-sqlalchemy-migrate python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
