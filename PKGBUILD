@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-git
-pkgver=r145.d73813f
+pkgver=r148.48b482e
 pkgrel=1
 pkgdesc='Session settings for Pantheon'
 arch=(any)
@@ -12,18 +12,21 @@ groups=(pantheon-unstable)
 depends=(
   dconf
   gnome-{keyring,session,settings-daemon}
-  lib{gala.so=0-64,wingpanel-2.0.so=0-64}
+  gala
+  wingpanel
   onboard
   orca
-  pantheon-{applications-menu,dpms-helper}
-  plank
+  pantheon-{applications-menu,dock,settings-daemon}
   xdg-user-dirs-gtk
 )
 makedepends=(
   git
   meson
 )
-optdepends=(pantheon-default-settings)
+optdepends=("pantheon-default-settings:  Default settings for Pantheon"
+            "pantheon-onboarding: Onboarding app for new users"
+            "contractor: A desktop-wide extension service"
+)
 source=(pantheon-session::git+https://github.com/elementary/session-settings.git)
 sha256sums=(SKIP)
 
