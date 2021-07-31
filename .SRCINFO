@@ -1,6 +1,6 @@
 pkgbase = em-keyboard
 	pkgdesc = Command-line utility for referencing emoji characters by name
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/hugovk/em-keyboard
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = em-keyboard
 	depends = python-docopt
 	depends = python-xerox
 	depends = python-wheel
-	source = em-keyboard::git+https://github.com/hugovk/em-keyboard#tag=v1.0.0
+	source = em-keyboard::git+https://github.com/hugovk/em-keyboard#tag=v1.1.0
 	sha512sums = SKIP
 
 pkgname = em-keyboard
-
