@@ -1,21 +1,55 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=guard
 pkgname=ruby-$_gemname
-pkgver=2.14.1
+pkgver=2.17.0
 pkgrel=1
-pkgdesc="Guard is a command line tool to easily handle events on file system modifications."
+pkgdesc="A command line tool to easily handle events on file system modifications"
 arch=('any')
-url="http://guardgem.org/"
 license=('MIT')
-depends=('ruby' 'ruby-formatador>=0.2.4' 'ruby-listen>=2.7' 'ruby-lumberjack>=1.0' 'ruby-pry>=0.9.12' 'ruby-thor>=0.18.1')
-makedepends=('rubygems')
-source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
+depends=(
+  'ruby'
+  'ruby-formatador'
+  'ruby-listen'
+  'ruby-lumberjack'
+  'ruby-nenv'
+  'ruby-notiffany'
+  'ruby-pry'
+  'ruby-shellany'
+  'ruby-thor'
+)
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('66476b20d287a7a9a4f636ba29a67a14f789ee15ff48b9ae248c5d002b97fcbc73da37ea961166f6f624593783c8da5ad453342691bec1a027abb7009010b56b')
 
 package() {
-  cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+
+  gem install \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  cd "gems/$_gemname-$pkgver"
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" *.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  # copy man page
+  install -vDm644 -t "$pkgdir/usr/share/man/man1" man/guard.1
 }
-sha512sums=('00e3a9fbb53edeef95f0a7d037429949774cbbaa65c39beb4bc8429926687f9e40d3a5e6a249dbcdbfba6f2dd56d2e673b396a7e371864cdab3bb4d822fa8fc1')
