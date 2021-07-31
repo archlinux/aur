@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=985.1h
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -32,20 +32,43 @@ sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
 
 build() {
   cd ${srcdir}
-  chmod +x tws-${pkgver}-standalone-linux-x64.sh
-  # Assumes no other Install4J packages are in use by user; if so, makepkg from dedicated user account
-  majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop
-  ./tws-${pkgver}-standalone-linux-x64.sh -q
+  rm -rf ${srcdir}/target ${srcdir}/jre
+  mkdir ${srcdir}/target ${srcdir}/jre
 
-  BUNDLED_JRE_VER=$(ls -1 ${HOME}/.i4j_jres)
-  mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
-  mv ${HOME}/.i4j_jres/jre ${srcdir}/jre
-  mv ${HOME}/tws/jars/*.jar ${srcdir}
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop $HOME/.local/share/applications/install4j_*.desktop
-  cd ${srcdir}
+  chmod +x tws-${pkgver}-standalone-linux-x64.sh
+  ./tws-${pkgver}-standalone-linux-x64.sh -q -dir ${srcdir}/target
+
+  # install4j provides a "shared" JRE that may go into /opt, /usr/local or $HOME/.i4j_jres/.
+  # If it already exists, the install4j log will include a "java.home=" truncated path.
+  BUNDLED_JRE_LOCATION=$(grep java.home ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d '=' -f 2 | sed 's/\.\.\.//g')
+  if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
+    echo "java.home JRE location could not be found in the log"
+    exit 1
+  fi
+  BUNDLED_JRE_LOCATION=$(echo ${BUNDLED_JRE_LOCATION}*)
+  echo "java.home JRE location expanded to ${BUNDLED_JRE_LOCATION}"
+
+  if [ ! -f ${BUNDLED_JRE_LOCATION}/bin/java ]; then
+    echo "java.home JRE location did not contain java; finding log entry which installed java"
+    BUNDLED_JRE_LOCATION=$(grep -e "Install file.*\/java\;" ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d ';' -f 1|sed -e 's/ .*Install file\: //g'|sed 's/\/bin\/java//')
+    if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
+      echo "Could not find bundled JRE installation entry in log"
+      exit 1
+    fi
+  fi
+  if [ -f ${BUNDLED_JRE_LOCATION}/bin/java  ]; then
+    echo "Confirmed java in ${BUNDLED_JRE_LOCATION}"
+  else
+    echo "Cannot find java; last tried ${BUNDLED_JRE_LOCATION}"
+    exit 1
+  fi
+
+  # copy the bundled JRE (do not move it as other install4j applications may be sharing it)
+  cp -r ${BUNDLED_JRE_LOCATION}/* ${srcdir}/jre
+  mv ${srcdir}/target/jars/*.jar ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
+  majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
   unzip -o jts4launch-${majorVer}.jar trader/common/images/ibapp_icon_48x48.gif
   unzip -o jts4launch-${majorVer}.jar trader/common/images/quote_details_48x48.jpg
   convert trader/common/images/ibapp_icon_48x48.gif ${pkgname}.png
