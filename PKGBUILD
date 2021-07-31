@@ -8,6 +8,8 @@ arch=(x86_64)
 url="https://github.com/nats-io/natscli"
 license=('Apache')
 
+makedepends=("go")
+
 conflicts=('natscli-bin')
 provides=('nats')
 
