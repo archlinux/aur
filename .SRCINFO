@@ -1,13 +1,13 @@
 pkgbase = circle
 	pkgdesc = Compiler for the Circle language
-	pkgver = build_128
+	pkgver = build_129
 	pkgrel = 1
 	url = https://circle-lang.org
 	arch = any
 	license = custom
 	depends = gcc>=9.0.0
 	depends = binutils
-	source = https://www.circle-lang.org/linux/build_128.tgz
-	sha256sums = afdd7cf7314bf7b3cde2b1fe6baa589076fb4585729151f5fb90f4041b70402c
+	source = https://www.circle-lang.org/linux/build_129.tgz
+	sha256sums = 5544396eb5ff04b6da6ce783deaf697bc4f423ce9b34a77c08af524e2cc7df77
 
 pkgname = circle
