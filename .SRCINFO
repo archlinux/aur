@@ -1,13 +1,13 @@
 pkgbase = cloudflare-wrangler-bin
 	pkgdesc = Command-line tool for working with Cloudflare Workers
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/cloudflare/wrangler
 	arch = x86_64
 	license = Apache
 	license = MIT
 	provides = cloudflare-wrangler=1.16.1
-	source = https://github.com/cloudflare/wrangler/releases/download/v1.18.0/wrangler-v1.18.0-x86_64-unknown-linux-musl.tar.gz
-	sha512sums = 0c0cfe980ff2d2b898be4f15ab8ffd168ceadc40fdab4fa0c19dd6d948b2229390bc2a5a7f32b71dd70d84e043e2ef0238e0fc442063fe9ff6fe4f0216e3acfc
+	source = https://github.com/cloudflare/wrangler/releases/download/v1.19.0/wrangler-v1.19.0-x86_64-unknown-linux-musl.tar.gz
+	sha512sums = 02c4bb83934ac1c5f5fc16217ae5bd8b7545848280a2b453157e7c341849be8cf86ab6a51539d21613cb53ad953c33790a98ee722ed0dd8ddfe202450cb9bddc
 
 pkgname = cloudflare-wrangler-bin
