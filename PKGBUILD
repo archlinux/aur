@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-imath
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)"
 url="https://github.com/AcademySoftwareFoundation/Imath"
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'a63fe91d8d0917acdc31b0c9344b1d7dbc74bf42de3e3ef5ec982386324b9ea4'
+	'f21350efdcc763e23bffd4ded9bbf822e630c15ece6b0697e2fcb42737c08c2d'
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
