@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Robot Ricochet
+Comment=You are a sneaky smuggler, who has had an unlucky encounter with the galactic police bots. Now you must evade capture by destroying the robots that have come aboard.
+Exec=robo-ricochet
+Icon=robo-ricochet
+Terminal=false
+StartupNotify=false
+Categories=Games;
