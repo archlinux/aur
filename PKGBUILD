@@ -74,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=54
+_minor=55
 _srcname=linux-${_major}
 _clr=${_major}.54-5
 pkgbase=linux-clear-lts2020
@@ -127,7 +127,7 @@ prepare() {
 
     # General setup
     scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
+                   --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -137,7 +137,7 @@ prepare() {
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
                    --enable MODULE_COMPRESS \
-                   --enable-after MODULE_COMPRESS MODULE_COMPRESS_XZ
+                   --enable MODULE_COMPRESS_XZ
 
     # Networking support
     scripts/config --enable NETFILTER_INGRESS
@@ -159,11 +159,11 @@ prepare() {
 
     # Security options
     scripts/config --enable SECURITY_SELINUX \
-                   --enable-after SECURITY_SELINUX SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SELINUX_BOOTPARAM \
                    --enable SECURITY_SMACK \
-                   --enable-after SECURITY_SMACK SECURITY_SMACK_BRINGUP \
-                   --enable-after SECURITY_SMACK_BRINGUP SECURITY_SMACK_NETFILTER \
-                   --enable-after SECURITY_SMACK_NETFILTER SECURITY_SMACK_APPEND_SIGNALS \
+                   --enable SECURITY_SMACK_BRINGUP \
+                   --enable SECURITY_SMACK_NETFILTER \
+                   --enable SECURITY_SMACK_APPEND_SIGNALS \
                    --enable SECURITY_TOMOYO \
                    --enable SECURITY_APPARMOR \
                    --enable SECURITY_YAMA
@@ -344,7 +344,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'e7d5a1b33305cf8e9d5b19ca5c87ac176a05f7de12d39a15d58acf1e0cf7dd0f'
+            'c7534d57a2bf049ba1e53759e481b4922b02ed08de9344c5ca18b55d8a72e8fd'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
