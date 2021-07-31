@@ -2,7 +2,7 @@
 
 pkgname=iauto
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Flowchart diagrams drawer"
 arch=('x86_64')
 url="http://www.iautodraw.com"
@@ -10,7 +10,7 @@ license=('unknown')
 depends=(electron)
 makedepends=(p7zip gendesk)
 source=("${pkgname}-${pkgver}.exe::https://www.iautodraw.com/static/version/IAuto%20Setup%20${pkgver}(win%2064).exe")
-sha512sums=('c7ae6bc68f7ed6bc109bf304a212c26156d5ef28297e0adbc84365c76e173ce26caed0eb6d1e1a14610518ec013b1638fdac8b81c42b9811e8051752b046baa6')
+sha512sums=('9cbda61e9f58d91ea592ae87ac4560e2169f710959721015c889c2fa84a5a4bbe418a7d5ab55619be69ee56e4045968ca145cf1be7231b1e4bb51a44e4413e28')
 
     prepare() {
     cd $srcdir
