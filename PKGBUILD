@@ -1,4 +1,4 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
@@ -6,7 +6,7 @@
 _projectname='react'
 pkgname="ocaml-$_projectname"
 pkgver='1.2.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='An OCaml module for functional reactive programming'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://erratique.ch/software/$_projectname"
