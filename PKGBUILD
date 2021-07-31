@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='lwt_log'
 pkgname="ocaml-$_projectname"
 pkgver='1.1.1'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Lwt-friendly logger'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
