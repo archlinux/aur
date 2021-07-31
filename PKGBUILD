@@ -1,3 +1,4 @@
+
 # Maintainer: Evert Vorster <evorster@gmail.com>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: IncredibleLaser
@@ -7,14 +8,19 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=21.03.80.r14168
+pkgver=21.07.90.r14647
 pkgrel=1
 pkgdesc="A non-linear video editor. Following latest released branch in git."
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('breeze-icons' 'qt5-quickcontrols' 'qt5-webkit' 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt6' 
-'hicolor-icon-theme')
+depends=('purpose'
+	'qt5-networkauth' 
+	'breeze-icons' 
+	'kfilemetadata' 
+	'knewstuff' 'knotifyconfig' 
+	'mlt'
+	'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
             'cdrkit: for creation of DVD ISO images'
@@ -30,10 +36,10 @@ conflicts=('kdenlive')
 #run the following command in the kdenlive repo directory:
 #git remote set-url origin https://invent.kde.org/multimedia/kdenlive
 ##If there has been a branch switch, Arch will not build unless you supply --cleanbuild to makepkg
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/21.04')
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/21.08')
 sha1sums=('SKIP')
 install=$pkgname.install
-options=(debug !strip)
+#options=(debug !strip)
 
 pkgver() {
   cd ${srcdir}/kdenlive
@@ -50,7 +56,7 @@ prepare(){
 build() {
   cd build
   cmake ../kdenlive \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \

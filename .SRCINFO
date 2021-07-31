@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
 	pkgdesc = A non-linear video editor. Following latest released branch in git.
-	pkgver = 21.03.80.r14168
+	pkgver = 21.07.90.r14647
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install
@@ -11,14 +11,13 @@ pkgbase = kdenlive-release-git
 	makedepends = kdoctools
 	makedepends = git
 	makedepends = v4l-utils
+	depends = purpose
+	depends = qt5-networkauth
 	depends = breeze-icons
-	depends = qt5-quickcontrols
-	depends = qt5-webkit
 	depends = kfilemetadata
 	depends = knewstuff
-	depends = kplotting
 	depends = knotifyconfig
-	depends = mlt6
+	depends = mlt
 	depends = hicolor-icon-theme
 	optdepends = ffmpeg: for FFmpeg plugin
 	optdepends = cdrkit: for creation of DVD ISO images
@@ -30,10 +29,7 @@ pkgbase = kdenlive-release-git
 	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
-	options = debug
-	options = !strip
-	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/21.04
+	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/21.08
 	sha1sums = SKIP
 
 pkgname = kdenlive-release-git
-
