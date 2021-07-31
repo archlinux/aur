@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_bench'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.1'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line benchmarks in ocaml code'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
