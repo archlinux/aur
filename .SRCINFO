@@ -1,6 +1,6 @@
 pkgbase = htcondor
 	pkgdesc = Distributed workload management system
-	pkgver = 9.0.3
+	pkgver = 9.0.4
 	pkgrel = 1
 	url = https://research.cs.wisc.edu/htcondor/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = htcondor
 	depends = python-setuptools
 	provides = htcondor
 	conflicts = htcondor
-	source = htcondor-9.0.3.tar.gz::https://github.com/htcondor/htcondor/archive/V9_0_3.tar.gz
-	md5sums = 4d4997ed1b6edcaa770db6d1f53edce4
+	source = htcondor-9.0.4-src.tar.gz::https://research.cs.wisc.edu/htcondor/tarball/9.0/9.0.4/release/condor-9.0.4-src.tar.gz
+	md5sums = 542bdfe1646f544818eaa99f3bfa5d66
 
 pkgname = htcondor

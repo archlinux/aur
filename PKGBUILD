@@ -5,7 +5,7 @@
 
 # Maintainer: Thomas Hartmann <thomas@th-ht.de>
 pkgname=htcondor
-pkgver=9.0.3
+pkgver=9.0.4
 pkgrel=1
 epoch=
 pkgdesc="Distributed workload management system"
@@ -24,13 +24,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/htcondor/htcondor/archive/V${pkgver//./_}.tar.gz")
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/htcondor/htcondor/archive/V${pkgver//./_}.tar.gz")
+source=("condor-$pkgver-src.tar.gz::https://research.cs.wisc.edu/htcondor/tarball/${pkgver::-2}/$pkgver/release/condor-$pkgver-src.tar.gz")
 noextract=()
-md5sums=('4d4997ed1b6edcaa770db6d1f53edce4')
+md5sums=('542bdfe1646f544818eaa99f3bfa5d66')
 validpgpkeys=()
 
 build() {
-	cd "htcondor-${pkgver//./_}"
+	cd "condor-$pkgver"
 	mkdir -p build_folder
 	cd build_folder
 	cmake -DSYSTEM_NAME=arch -DWITH_VOMS=False -DWITH_GLOBUS=False -DWITH_PYTHON_BINDINGS=True -DCMAKE_INSTALL_PREFIX=/opt/htcondor -DWITH_SCITOKENS=False ../
@@ -38,12 +39,12 @@ build() {
 }
 
 check() {
-	cd "htcondor-${pkgver//./_}/build_folder"
+	cd "condor-$pkgver/build_folder"
 	make tests
 }
 
 package() {
-	cd "htcondor-${pkgver//./_}/build_folder"
+	cd "condor-$pkgver/build_folder"
 	make DESTDIR="$pkgdir/" install
 
 	echo "export PATH=\$PATH:/opt/htcondor/bin" > $srcdir/htcondor.sh
