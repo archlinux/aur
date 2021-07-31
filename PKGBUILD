@@ -3,14 +3,14 @@
 
 pkgname=terminalpp-git
 pkgver=v0.8.4.r2.gca8811d
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist, fast, cross-platform terminal emulator"
 arch=('x86_64')
 url="https://terminalpp.com"
 license=('MIT')
 conflicts=('terminalpp' 'terminalpp-bin')
-depends=('libxft' 'gcc-libs')
-makedepends=('cmake' 'gcc10')
+depends=('libxft' 'libxcursor' 'libxext' 'gcc-libs')
+makedepends=('cmake' 'gcc10' 'git' 'imagemagick' 'cloc' 'doxygen' 'graphviz')
 source=(git+https://github.com/terminalpp/terminalpp)
 sha512sums=('SKIP')
 
@@ -26,8 +26,9 @@ prepare() {
 build() {
 	cd terminalpp/build
 	cmake -DCMAKE_BUILD_TYPE=None \
-	      -DCMAKE_CXX_COMPILER=g++-10 \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_C_COMPILER=gcc-10 \
+	      -DCMAKE_CXX_COMPILER=g++-10 \
 	      -DINSTALL=terminalpp \
 	      ..
 	make
