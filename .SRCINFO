@@ -1,0 +1,23 @@
+pkgbase = pybind11-git
+	pkgdesc = pybind11 (git version)
+	pkgver = v2.7.0.r22.gdcbda8d7
+	pkgrel = 1
+	url = https://pybind11.readthedocs.org/
+	arch = any
+	license = BSD
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = eigen
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	optdepends = python: for python bindings
+	provides = pybind11
+	conflicts = pybind11
+	source = git+https://github.com/pybind/pybind11.git
+	sha256sums = SKIP
+
+pkgname = pybind11-git
