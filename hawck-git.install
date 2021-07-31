@@ -6,6 +6,7 @@ post_install() {
     usermod -aG hawck-input-share hawck-input
     groupadd uinput
     usermod -aG uinput hawck-input
+    chsh -s /bin/nologin hawck-input
 
     ## Set up hawck-input home directory
     mkdir -p "/var/lib/hawck-input/keys"
