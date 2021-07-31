@@ -6,7 +6,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=3.0.2.r591.g9d77acee7
+pkgver=3.0.2.r595.g04609bba0
 pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
@@ -30,7 +30,14 @@ pkgver() {
 }
 
 prepare() {
-  cd tenacity
+  cd tenacity/images/icons
+  for i in *; do # fix for png icons not following hicolor category folders
+	cd $i
+    mkdir -p apps
+    test -f tenacity.png && mv tenacity.png apps
+    cd ..
+  done
+  cd ../..
   patch --forward --strip=1 --input="${srcdir}/tenacity.patch"
   mkdir -p build
 }
