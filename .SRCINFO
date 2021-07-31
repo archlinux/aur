@@ -1,6 +1,6 @@
 pkgbase = dbus-term-launcher
 	pkgdesc = Wrapper program to launch arbitrary terminal with Terminal intent API
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/thayne/dbus-term-launcher
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dbus-term-launcher
 	optdepends = kitty: for kitty launcher
 	optdepends = xterm: for xterm launcher
 	optdepends = rxvt-unicode: for urxvt launcher
-	source = https://gitlab.com/thayne/dbus-term-launcher/-/archive/0.1.1/dbus-term-launcher-0.1.1.tar.gz
-	sha256sums = 19851c5aa87ec6100fa4adfb55910a1f2832f35db18bf6c1ca21eb851cc974ec
+	source = https://gitlab.com/thayne/dbus-term-launcher/-/archive/0.1.2/dbus-term-launcher-0.1.2.tar.gz
+	sha256sums = 5c90b04251d80eabea4aac6190250a3b068649fb0c1021cda4302a0679a53105
 
 pkgname = dbus-term-launcher
