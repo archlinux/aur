@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='mew'
 pkgname="ocaml-$_projectname"
 pkgver='0.1.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A general modal editing engine generator'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kandu/$_projectname"
