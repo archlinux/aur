@@ -1,15 +1,15 @@
 # Maintainer: Mahdy Mirzade <me@mahdym.ir>
 pkgname=gip
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Get Private/Public IP & IP's Geolocation."
 arch=(any)
 url="https://github.com/mahdymirzade/gip"
 license=('GPL-3.0')
-depends=('bind' 'grep' 'curl')
+depends=('dog' 'grep' 'curl' 'jq')
 makedepends=('git')
 source=("https://github.com/MahdyMirzade/$pkgname/archive/refs/tags/$pkgver.$pkgrel.tar.gz")
-sha256sums=("a5792f91eddf6fe4f2f612ff0a5ff2da1116cfbb17ded349b1b0cee5a8f400d1")
+sha256sums=("207167246fa45854878e4b548da1acd7c84984f760383e701d8847811b725385")
 
 package() {
     path="$srcdir/$pkgname-$pkgver.$pkgrel"
