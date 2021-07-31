@@ -1,11 +1,12 @@
 # Maintainer: George Dietrich <george@dietrich.app>
 pkgname=oq-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.'
 arch=('x86_64')
 url='https://github.com/blacksmoke16/oq'
 license=('MIT')
+depends=('jq')
 conflicts=('oq')
 provides=('oq')
 source=("oq-$pkgver::$url/archive/v$pkgver.tar.gz")
