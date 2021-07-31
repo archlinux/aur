@@ -50,5 +50,5 @@ package() {
       install -Dm755 "./ReCT.${i}.pack" "$pkgdir/usr/bin/rect/Packages"
       cd ../../../..
    done
-   ln -sf "$pkgdir/usr/bin/rect/rctc" "$pkgdir/usr/bin/rctc"
+   ln -sf "/usr/bin/rect/rctc" "$pkgdir/usr/bin/rctc"
 }
