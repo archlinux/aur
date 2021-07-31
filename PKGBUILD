@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/mike-engel/jwt-cli"
 license=('MIT')
 
-conflicts=('jwt')
+conflicts=('jwt-cli' 'jwt-cli-git')
 provides=('jwt')
 
 source=("https://github.com/mike-engel/jwt-cli/releases/download/${pkgver}/jwt-linux.tar.gz")

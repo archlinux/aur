@@ -6,7 +6,8 @@ pkgbase = jwt-cli-bin
 	arch = x86_64
 	license = MIT
 	provides = jwt
-	conflicts = jwt
+	conflicts = jwt-cli
+	conflicts = jwt-cli-git
 	source = https://github.com/mike-engel/jwt-cli/releases/download/4.0.0/jwt-linux.tar.gz
 	sha256sums = 6b0740c3f4c7134a0cbcf802b95b033bd2246d592ad16aa2ee2d80e5b289b4d6
 
