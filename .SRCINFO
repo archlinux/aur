@@ -7,6 +7,7 @@ pkgbase = gosimac-bin
 	license = GPL2
 	provides = gosimac
 	conflicts = gosimac
+	conflicts = gosimac-git
 	source = https://github.com/1995parham/gosimac/releases/download/v4.1.1/gosimac_4.1.1_linux_amd64.tar.gz
 	sha256sums = a8e399597f0058c434d068916a6f4849559aabe3e4a94f531950dbfd4e015374
 

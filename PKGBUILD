@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/1995parham/gosimac"
 license=('GPL2')
 
-conflicts=('gosimac')
+conflicts=('gosimac' 'gosimac-git')
 provides=('gosimac')
 
 source=("https://github.com/1995parham/gosimac/releases/download/v${pkgver}/gosimac_${pkgver}_linux_amd64.tar.gz")
