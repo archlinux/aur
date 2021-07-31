@@ -1,6 +1,6 @@
 # Maintainer: Steven Guikal <aur-void@fluix.one>
 pkgname=scalc
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=(glibc)
 makedepends=(sline)
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~arivigo/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('c76360e054d450eb4f891fbe6f8e3c26e1999231114ac00e1b2a0b6e075fc272242eba55bb59c5ce6d22cea2796e3de5d630657f225d0c95898562f7ffddcfec')
+sha512sums=('1614b1f8ce5b6cd04aec18a014d66e0fab486c004057cf80f0c829ad8e99b0dae30001aa81a06d6c6842b7b04dbfa807f9f49be53e89c6eecc5f23b6f1295848')
 
 build() {
   cd "$pkgname-$pkgver"
