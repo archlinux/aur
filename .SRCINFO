@@ -1,13 +1,12 @@
 pkgbase = amiri-typewriter-font
 	pkgdesc = Mono-width companion to Amiri font family
 	pkgver = 1.1
-	pkgrel = 1
-	url = https://github.com/alif-type/amiri-typewriter
+	pkgrel = 2
+	url = https://github.com/aliftype/amiri-typewriter
 	arch = any
 	license = OFL
 	provides = amiri-typewriter-font
-	source = https://github.com/alif-type/amiri-typewriter/releases/download/v1.1/AmiriTypewriter-1.1.zip
+	source = https://github.com/aliftype/amiri-typewriter/releases/download/v1.1/AmiriTypewriter-1.1.zip
 	sha256sums = 985aa63413f4955f9428aab67021e55023bd040933b7dd434461fe5800f33fab
 
 pkgname = ttf-amiri-typewriter
-
