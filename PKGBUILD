@@ -2,32 +2,34 @@
 # Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 pkgname=syg_go
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Yggdrasil address miner written in Go'
 
-url="https://git.tdem.in/tdemin/syg_go"
+url="https://github.com/tdemin/syg_go"
 arch=(any)
 license=(LGPL3)
 makedepends=(go)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://git.tdem.in/tdemin/syg_go/archive/v${pkgver}.tar.gz")
-sha256sums=('79825ce498ea29b34a10c644115c0205825adbf5b1f4c5d5413c74277e6d5278')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('34f615a5c5a34b9c526b7d6766f9039aafd00a051084619d97a425ed08c9d0b6')
+
+_dir="${pkgname}-${pkgver}"
 
 build () {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
     export GOPATH="${SRCDEST}/go-modules"
 
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_dir}"
     go build -ldflags="-linkmode=external -X main.version=v$pkgver" .
 }
 
 check () {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_dir}"
     go test ./...
 }
 
 package () {
-    install -p -m 755 -D -t "$pkgdir/usr/bin/" "${srcdir}/${pkgname}/${pkgname}"
-    install -m 644 -D -t "$pkgdir/usr/share/doc/$pkgname/" "${srcdir}/${pkgname}/README.md"
+    install -p -m 755 -D -t "$pkgdir/usr/bin/" "${srcdir}/${_dir}/${pkgname}"
+    install -m 644 -D -t "$pkgdir/usr/share/doc/$pkgname/" "${srcdir}/${_dir}/README.md"
 }

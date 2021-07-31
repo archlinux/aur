@@ -1,13 +1,13 @@
 pkgbase = syg_go
 	pkgdesc = Yggdrasil address miner written in Go
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://git.tdem.in/tdemin/syg_go
+	url = https://github.com/tdemin/syg_go
 	arch = any
 	license = LGPL3
 	makedepends = go
-	source = syg_go-0.2.0.tar.gz::https://git.tdem.in/tdemin/syg_go/archive/v0.2.0.tar.gz
-	sha256sums = 79825ce498ea29b34a10c644115c0205825adbf5b1f4c5d5413c74277e6d5278
+	source = syg_go-0.2.1.tar.gz::https://github.com/tdemin/syg_go/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 34f615a5c5a34b9c526b7d6766f9039aafd00a051084619d97a425ed08c9d0b6
 
 pkgname = syg_go
 
