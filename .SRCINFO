@@ -1,6 +1,6 @@
 pkgbase = carla-git
 	pkgdesc = Audio Plugin Host
-	pkgver = 2.3.0.RC2.r0.g2294a5c86
+	pkgver = 2.3.1.r6.g030bcbb92
 	pkgrel = 1
 	epoch = 1
 	url = http://kxstudio.sf.net/carla
@@ -27,4 +27,3 @@ pkgbase = carla-git
 	md5sums = SKIP
 
 pkgname = carla-git
-
