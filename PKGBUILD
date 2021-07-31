@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='variantslib'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.0'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='OCaml variants as first class values'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')

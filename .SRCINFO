@@ -1,7 +1,7 @@
 pkgbase = ocaml-variantslib
 	pkgdesc = OCaml variants as first class values
 	pkgver = 0.14.0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/janestreet/variantslib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ocaml-variantslib
 	depends = ocaml>=4.04.2
 	depends = ocaml-base>=0.14.0
 	options = !strip
-	source = ocaml-variantslib-1:0.14.0-3.tar.gz::https://github.com/janestreet/variantslib/archive/v0.14.0.tar.gz
+	source = ocaml-variantslib-1:0.14.0-4.tar.gz::https://github.com/janestreet/variantslib/archive/v0.14.0.tar.gz
 	sha256sums = bbd3f2f27a08c5a2954fcc50d0f14bee8a16241f16da597db0b914c01690b814
 
 pkgname = ocaml-variantslib
