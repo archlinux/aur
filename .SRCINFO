@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_custom_printf
 	pkgdesc = Printf-style format-strings for user-defined string conversion
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_custom_printf
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_custom_printf
 	depends = ocaml-ppx_sexp_conv>=0.14.0
 	depends = ocaml-ppxlib>=0.18.0
 	options = !strip
-	source = ocaml-ppx_custom_printf-1:0.14.1-1.tar.gz::https://github.com/janestreet/ppx_custom_printf/archive/v0.14.1.tar.gz
+	source = ocaml-ppx_custom_printf-1:0.14.1-2.tar.gz::https://github.com/janestreet/ppx_custom_printf/archive/v0.14.1.tar.gz
 	sha256sums = 34cb58dbc886757ce95202059ee3e387a9581a0e00c36055d2c33ab8d764eb4f
 
 pkgname = ocaml-ppx_custom_printf
