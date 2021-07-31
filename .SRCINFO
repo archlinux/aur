@@ -1,7 +1,7 @@
 pkgbase = xupnpd
 	pkgdesc = eXtensible UPnP agent (proxy IP TV multicast to DLNA)
 	pkgver = 1.034.r115.g2bc1e74
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xupnpd.org
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = xupnpd
 	makedepends = git
 	depends = lua
 	optdepends = udpxy: custom udp to http proxy
-	backup = var/lib/xupnpd.lua
+	backup = var/lib/xupnpd/xupnpd.lua
 	source = xupnpd::git+https://github.com/clark15b/xupnpd#commit=2bc1e741e0efe04cb3150430ff25410093618b4f
 	source = xupnpd.service
 	source = xupnpd.sysusers
