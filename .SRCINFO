@@ -1,0 +1,12 @@
+pkgbase = g64drive
+	pkgdesc = Portable Linux/Mac tool for Retroactive 64drive
+	pkgver = 0.3
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = libftdi
+	source = https://github.com/rasky/g64drive/archive/refs/tags/v0.3.tar.gz
+	sha256sums = 402d1e2b9c39a6d21345a4e076b802520ab01d7db1d4dc1b2552bd0004d320df
+
+pkgname = g64drive
