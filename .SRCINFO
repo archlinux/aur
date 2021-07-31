@@ -1,6 +1,6 @@
 pkgbase = tuned
 	pkgdesc = Daemon that performs monitoring and adaptive configuration of devices in the system
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://github.com/redhat-performance/tuned
 	install = tuned.install
@@ -14,17 +14,14 @@ pkgbase = tuned
 	depends = polkit
 	depends = python-configobj
 	depends = python-dbus
-	depends = python-decorator
 	depends = python-gobject
 	depends = python-linux-procfs
 	depends = python-perf
 	depends = python-pyudev
-	depends = python-schedutils
 	optdepends = virt-what: For use with virtual machines
 	optdepends = systemtap: Disk and net statistic monitoring systemtap scripts
 	backup = etc/tuned/active_profile
-	source = https://github.com/redhat-performance/tuned/archive/v2.15.0.tar.gz
-	sha256sums = 5fb11da077e681c4f3d2c0ea9ad73ba8152e6b98f9d07dc60a7802267784831a
+	source = https://github.com/redhat-performance/tuned/archive/v2.16.0.tar.gz
+	sha256sums = 7f0b858c35fb9695703f04177af074555de59a7a3e94ec0b7e28357584d4502d
 
 pkgname = tuned
-
