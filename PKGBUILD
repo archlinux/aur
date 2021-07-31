@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname='pipdeptree'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Command line utility to show dependency tree of Python packages"
 url="https://github.com/naiquevin/${pkgname}"
@@ -10,7 +10,7 @@ optdepends=('graphviz: for generating graphical output')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('44de04e0034b7d80a5071325c80c4c8f126da001225157f542f62afa79c60f8c')
+sha256sums=('0edf5e0d11d26c3960884839ac6fbe72eabf6f3bf3c76e495414d3aae693f9a2')
 
 
 build() {
