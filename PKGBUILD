@@ -6,7 +6,7 @@ _static_liftoff=0
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.8.4.r85.g802d86c
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -18,8 +18,9 @@ conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git")
 sha512sums=('SKIP')
 
-[ $_static_wlroots -gt 0 ] || depends+=("wlroots=0.13.0")
-[ $_static_liftoff -gt 0 ] || depends+=("libliftoff")
+[ $_static_wlroots -gt 0 ] && depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" \
+        "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors") && makedepends+=("cmake") || depends+=("wlroots=0.13.0")
+[ $_static_liftoff -gt 0 ] && depends+=("libdrm") || depends+=("libliftoff")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
