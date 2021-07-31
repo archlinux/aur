@@ -1,16 +1,12 @@
 pkgbase = archiso-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images
-	pkgver = 55.r4.g960b988
+	pkgver = 57.r0.ga4691b8
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
 	license = GPL3
+	checkdepends = shellcheck
 	makedepends = git
-	source = git+https://gitlab.archlinux.org/archlinux/archiso.git?signed
-	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha512sums = SKIP
-
-pkgname = archiso-git
 	depends = arch-install-scripts
 	depends = bash
 	depends = dosfstools
@@ -21,16 +17,10 @@ pkgname = archiso-git
 	optdepends = erofs-utils: for EROFS based airootfs image
 	optdepends = e2fsprogs: for dm-snapshot based airootfs image
 	optdepends = qemu: for run_archiso
-	provides = archiso=55.r4.g960b988
+	provides = archiso=57.r0.ga4691b8
 	conflicts = archiso
+	source = git+https://gitlab.archlinux.org/archlinux/archiso.git?signed
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha512sums = SKIP
 
-pkgname = mkinitcpio-archiso-git
-	pkgdesc = Mkinitcpio hooks and scripts for archiso
-	depends = device-mapper
-	depends = gnupg
-	depends = mkinitcpio
-	optdepends = mkinitcpio-nfs-utils: for archiso_pxe_common and archiso_pxe_nfs
-	optdepends = curl: for archiso_pxe_http
-	optdepends = nbd: for archiso_pxe_nbd
-	provides = mkinitcpio-archiso=55.r4.g960b988
-	conflicts = mkinitcpio-archiso
+pkgname = archiso-git

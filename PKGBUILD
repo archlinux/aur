@@ -5,47 +5,41 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Gerardo Exequiel Pozzi <djgera@archlinux.org>
 
-pkgbase='archiso-git'
-pkgname=('archiso-git' 'mkinitcpio-archiso-git')
-pkgver=55.r4.g960b988
+_name=archiso
+pkgname=archiso-git
+pkgver=57.r0.ga4691b8
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
 url="https://gitlab.archlinux.org/archlinux/archiso"
 license=('GPL3')
+depends=('arch-install-scripts' 'bash' 'dosfstools' 'libisoburn' 'mtools'
+'squashfs-tools')
 makedepends=('git')
-source=('git+https://gitlab.archlinux.org/archlinux/archiso.git?signed')
+checkdepends=('shellcheck')
+optdepends=(
+  'edk2-ovmf: for emulating UEFI with run_archiso'
+  'erofs-utils: for EROFS based airootfs image'
+  'e2fsprogs: for dm-snapshot based airootfs image'
+  'qemu: for run_archiso'
+)
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
+source=("git+https://gitlab.archlinux.org/archlinux/${_name}.git?signed")
 sha512sums=('SKIP')
 validpgpkeys=('C7E7849466FE2358343588377258734B41C31549') # David Runge <dvzrv@archlinux.org>
 
 pkgver() {
-  cd "${srcdir}/${pkgbase%-git}"
+  cd "${_name}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package_archiso-git() {
-  depends=('arch-install-scripts' 'bash' 'dosfstools' 'libisoburn' 'mtools'
-  'squashfs-tools')
-  optdepends=('edk2-ovmf: for emulating UEFI with run_archiso'
-              'erofs-utils: for EROFS based airootfs image'
-              'e2fsprogs: for dm-snapshot based airootfs image'
-              'qemu: for run_archiso')
-  conflicts=("${pkgname%-git}")
-  provides=("${pkgname%-git}=${pkgver}")
-
-  cd "${srcdir}/${pkgbase%-git}"
-  make DESTDIR="${pkgdir}/" install
+check() {
+  cd "${_name}"
+  make -k check
 }
 
-package_mkinitcpio-archiso-git() {
-  pkgdesc='Mkinitcpio hooks and scripts for archiso'
-  depends=('device-mapper' 'gnupg' 'mkinitcpio')
-  optdepends=('mkinitcpio-nfs-utils: for archiso_pxe_common and archiso_pxe_nfs'
-              'curl: for archiso_pxe_http'
-              'nbd: for archiso_pxe_nbd')
-  conflicts=("${pkgname%-git}")
-  provides=("${pkgname%-git}=${pkgver}")
-
-  cd "${srcdir}/${pkgbase%-git}"
-  make DESTDIR="${pkgdir}/" install-initcpio
+package() {
+  cd "${_name}"
+  make DESTDIR="${pkgdir}/" PREFIX='/usr' install
 }
