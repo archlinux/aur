@@ -16,7 +16,7 @@ source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0b9c143e37932725a802ad3c8b35354384230532060f0b7c61bd8448fd5ac3b1')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}/nats"
 	go build \
 		-trimpath \
 		-buildmode=pie \
@@ -27,7 +27,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -D -m755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+	cd "${srcdir}/${pkgname}-${pkgver}/nats"
+	install -D -m755 nats ${pkgdir}/usr/bin/nats
 }
