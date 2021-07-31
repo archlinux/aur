@@ -50,8 +50,6 @@ build() {
 	autoreconf -if
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man
-
-	sed -i "s|.*in_addr_t.*||g" config.h
 	make -j1
 }
 
