@@ -1,6 +1,6 @@
 pkgbase = pantheon-notifications-git
 	pkgdesc = A Gtk notification server for Pantheon
-	pkgver = r47.1cd4b3a
+	pkgver = r282.a495af5
 	pkgrel = 1
 	url = https://github.com/elementary/notifications
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = pantheon-notifications-git
 	makedepends = git
 	makedepends = meson
 	makedepends = libgranite.so
+	makedepends = libhandy
+	makedepends = libcanberra
 	makedepends = vala
 	depends = gtk3
 	depends = gtk-theme-elementary
@@ -18,4 +20,3 @@ pkgbase = pantheon-notifications-git
 	sha512sums = SKIP
 
 pkgname = pantheon-notifications-git
-
