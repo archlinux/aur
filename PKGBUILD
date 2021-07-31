@@ -1,4 +1,5 @@
-# Maintainer: mlunax <lunax@mlunax.com>
+# Maintainer: mlunax <lunax at mlunax dot com>
+# Maintainer: oscareczek <oscareczek at gmail dot com>
 
 pkgname=haruhi-dl
 pkgver=2021.06.24.1
