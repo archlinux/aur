@@ -59,8 +59,8 @@ _use_current=
 
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.6
-pkgrel=2
+pkgver=5.13.7
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -86,7 +86,7 @@ source=(
 "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
 "${_patchsource}/winesync/5.13-winesync.patch"
 "${_patchsource}/zen-patches/0001-zen-patches.patch"
-"${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
+"${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
 "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
 "${_patchsource}/block-patches-v2/0001-block-patches.patch"
 "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
@@ -96,7 +96,7 @@ source=(
 "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
 "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-"${_patchsource}/lrng-patches/0001-lrng-patches.patch"
+"${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
 "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
 "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
@@ -121,7 +121,7 @@ BUILD_FLAGS=(
       OBJCOPY=llvm-objcopy
       OBJDUMP=objdump
     )
-sha256sums=('a62c1720efff2692a29da4c07748088f766cc43e275d165611e4d2581ba25276'
+sha256sums=('f91e561053afe454afce8a6dcc7f8319010bfe2fa17aeea1d8566f61760be439'
             '6aa1147f9adadadc11d56956bb6534552e5497506b613f66bea55a08121819da'
             '2578b367f30ddf43569280403c75c056d61883128ea7827356b681fa7970bed4'
             '12885a2c61a4da5fac56275bc092de97209777d9ce2482f235bdeb6e9148ef6e'
@@ -131,7 +131,7 @@ sha256sums=('a62c1720efff2692a29da4c07748088f766cc43e275d165611e4d2581ba25276'
             '9ec679871cba674cf876ba836cde969296ae5034bcc10e1ec39b372e6e07aab0'
             '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
-            'bd5588d4e3803913283f67232778f259b689b77e4883a2f578bbc74132bd0629'
+            '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
             'c5501f058a8accf538fdb9cc541bd08419cd4d597e2c5bc31365d70c68bba5b3'
             '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
             '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
@@ -141,7 +141,7 @@ sha256sums=('a62c1720efff2692a29da4c07748088f766cc43e275d165611e4d2581ba25276'
             '9068274d1c1d906087efe17e3e91382e8a616575ccf089ae7e65846675dfa77b'
             'e33908a2aca1b5b52609075c32c714e4c3f6b52c054da2b2982a86f6f3c4b87a'
             'e5818fcaa55ed416b08900db04f18ae6d29b89d19e0b2fb3feb410efd8099b32'
-            '5b05ebca44ff6b00ac49ec36ab360f6fa47ff809e82f40fe4299d8a1a99da4dc'
+            '0c1e42b6c197e5e5c8a0c5f4047037289063e064f6b841f05028c62b5449864b'
             'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
             '8e56f88209ec69bf7004c52a7f31ba5fffa2c6af3db306e7ec385210a0b5944e'
             '78b07f9d39573633ac7035201d7a95c44675084562995b7e60e549e44fbcfcb7'
