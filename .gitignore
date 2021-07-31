@@ -1,0 +1,5 @@
+pkg/
+src/
+infra-appimage-*
+infra-latest.AppImage
+infra_latest_amd64.deb
