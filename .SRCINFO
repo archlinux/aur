@@ -1,7 +1,7 @@
 pkgbase = ocaml-splittable_random
 	pkgdesc = PRNG that can be split into independent streams
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janestreet/splittable_random
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocaml-splittable_random
 	depends = ocaml-ppx_inline_test>=0.14.0
 	depends = ocaml-ppx_sexp_message>=0.14.0
 	options = !strip
-	source = ocaml-splittable_random-0.14.0-2.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.14.0.tar.gz
+	source = ocaml-splittable_random-0.14.0-3.tar.gz::https://github.com/janestreet/splittable_random/archive/v0.14.0.tar.gz
 	sha256sums = 02bf2f0f0482442cd573c0fbcf55ea89644466fe1f5e48c8c18018f58878f93a
 
 pkgname = ocaml-splittable_random
