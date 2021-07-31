@@ -99,6 +99,8 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
+  # !@#$ing openj9
+  export EXTRA_CMAKE_ARGS="-DOMR_WARNINGS_AS_ERRORS=OFF"
   bash configure \
     --with-version-build="${_updatever}" \
     --with-version-pre="" \
