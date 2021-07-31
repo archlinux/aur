@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_fields_conv
 	pkgdesc = Generation of accessor and iteration functions for ocaml records
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_fields_conv
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_fields_conv
 	depends = ocaml-fieldslib>=0.14.0
 	depends = ocaml-ppxlib>=0.18.0
 	options = !strip
-	source = ocaml-ppx_fields_conv-1:0.14.2-1.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.14.2.tar.gz
+	source = ocaml-ppx_fields_conv-1:0.14.2-2.tar.gz::https://github.com/janestreet/ppx_fields_conv/archive/v0.14.2.tar.gz
 	sha256sums = 37b6967a03c2855427b4ff97e93f08162de520acb06acc97513f64526428ed64
 
 pkgname = ocaml-ppx_fields_conv
