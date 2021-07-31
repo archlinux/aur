@@ -1,7 +1,7 @@
 # Maintainer: Jonas Møller <jonas.moeller2@protonmail.com>
 pkgname=hawck-git
 _pkgname=Hawck
-pkgver=20200219
+pkgver=20210731
 pkgrel=1
 pkgdesc="Keyboard macro/rebinding daemon"
 arch=("x86_64")

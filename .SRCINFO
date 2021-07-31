@@ -1,6 +1,6 @@
 pkgbase = hawck-git
 	pkgdesc = Keyboard macro/rebinding daemon
-	pkgver = 20200219
+	pkgver = 20210731
 	pkgrel = 1
 	url = https://github.com/snyball/Hawck
 	install = hawck-git.install
@@ -25,4 +25,3 @@ pkgbase = hawck-git
 	md5sums = SKIP
 
 pkgname = hawck-git
-
