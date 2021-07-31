@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='wtf8'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.2'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='An ocaml library that implements a WTF-8 encoder and decoder'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
