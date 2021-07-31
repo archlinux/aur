@@ -4,8 +4,8 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=21.04.2
-_umsver=21.04.2
+pkgver=21.04.3
+_umsver=21.04.7
 pkgrel=1
 pkgdesc="Tweak tool for MATE (fork of MintDesktop)"
 arch=('any')
@@ -24,8 +24,8 @@ optdepends=('brisk-menu: for Manjaro panel layout'
             'vala-panel-appmenu-mate: for Mutiny,Cupertino')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/$pkgname/archive/$pkgver.tar.gz"
         "ubuntu-mate-settings-$_umsver.tar.gz::https://github.com/ubuntu-mate/ubuntu-mate-settings/archive/$_umsver.tar.gz")
-sha256sums=('338a9072d47321e5fd95ca7cc9dac24330deccbdff9ffca5d8513fe0565f2a9d'
-            '1da28ca2b13213de6088f3819f3b4bad66f4072c932febd041aa56ff7d3be7b8')
+sha256sums=('936a196c51f61ea1c3ef06531a5f3189b6739ff0c18783809bf7d2ebc2a057f6'
+            '8598858413b4160eef6039f488b1d56b66de896ac37d8d004d60c7e1f4f5c54d')
 
 prepare() {
   cd "$pkgname-$pkgver"
