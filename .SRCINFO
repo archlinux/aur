@@ -1,6 +1,6 @@
 pkgbase = outfox_bin
 	pkgdesc = fork of open source rhythm game engine StepMania
-	pkgver = 5.3.0_20210425_4.9.8_alpha
+	pkgver = 5.3.0_20210731_4.9.9_alpha
 	pkgrel = 1
 	url = https://projectmoon.dance/index.php
 	arch = i686
@@ -10,12 +10,11 @@ pkgbase = outfox_bin
 	depends = libusb-compat
 	depends = ffmpeg
 	depends = lua
-	source = https://github.com/TeamRizu/OutFox/releases/download/OF4.9.8/OutFox-5.3.0-alpha-4.9.8-amd64-date-20210425.tar.gz
+	source = https://github.com/TeamRizu/OutFox/releases/download/OF4.9.9/OutFox-5.3.0-alpha-4.9.9-amd64-date-20210731.tar.gz
 	source = outfox.sh
 	source = outfox.png
-	md5sums = ccfaba6626c79cff39a7a37731c19328
+	md5sums = 5df412ac4d6aa3c81532a7857351eb36
 	md5sums = 3e3c8e98728b383cb4e7b0f51de31da8
 	md5sums = 2b26841e2f3580e5bf2f63218834ec41
 
 pkgname = outfox_bin
-
