@@ -1,0 +1,12 @@
+pkgbase = graalpython-jdk16-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 16 version
+	pkgver = 21.2.0
+	pkgrel = 1
+	url = https://github.com/graalvm/graalpython
+	arch = x86_64
+	license = custom
+	depends = jdk16-graalvm-bin
+	source = https://github.com/graalvm/graalpython/releases/download/vm-21.2.0/python-installable-svm-java16-linux-amd64-21.2.0.jar
+	sha256sums = d64bdca173c496a14a19a7a8b3b3c3f8fde0709248eb7b08de9f987fb17e2dd6
+
+pkgname = graalpython-jdk16-bin
