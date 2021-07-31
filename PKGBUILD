@@ -74,7 +74,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=136
+_minor=137
 _srcname=linux-${_major}
 _clr=${_major}.136-129
 pkgbase=linux-clear-lts2019
@@ -127,7 +127,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG_PROC \
+    scripts/config --enable IKCONFIG \
+                   --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -136,6 +137,7 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
+                   --enable MODULE_COMPRESS \
                    --enable MODULE_COMPRESS_XZ
 
     # Networking support
@@ -157,7 +159,9 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK \
                    --enable SECURITY_SMACK_BRINGUP \
                    --enable SECURITY_SMACK_NETFILTER \
                    --enable SECURITY_SMACK_APPEND_SIGNALS \
@@ -341,7 +345,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '03475ef36d75db03a6ec2f9893be717bc30af5de10ef155d9b42f3bf0151621b'
+            '4d13c66db0abfe435156411a4d9751f9944274b16ae3b2d1457c7236e4cf5645'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
