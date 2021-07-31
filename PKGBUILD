@@ -1,14 +1,14 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r9964
+pkgver=r9979
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('gcc-libs' 'zstd' 'zlib' 'sdl2_mixer' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
-makedepends=('subversion' 'pkgconf' 'autoconf' 'make')
+makedepends=('subversion' 'pkgconf' 'cmake' 'make')
 optdepends=('soundfont-fluid: Default MIDI soundfont for music'
 			'soundfont-realfont: Alternative higher quality MIDI soundfont'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
@@ -31,7 +31,7 @@ optdepends=('soundfont-fluid: Default MIDI soundfont for music'
             'simutrans-pak192.comic: Highest resolution graphics set for Simutrans')
 
 conflicts=('simutrans')
-source=(svn+svn://servers.simutrans.org/simutrans/trunk
+source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk
         settings-folder.patch
         path-for-game-data.patch
         simutrans.desktop
@@ -43,7 +43,7 @@ sha256sums=('SKIP'
             '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
 prepare() {
-  cd trunk
+  cd $pkgname
 
   # Adjust paths
   patch -Np0 -i ../settings-folder.patch
@@ -51,32 +51,33 @@ prepare() {
 }
 
 build() {
-  cd trunk
-  autoconf
-  ./configure
-  make
+  cd $pkgname
+  sh ./get_lang_files.sh
+  mkdir build && cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cmake --build .
 }
 
 package() {
   #binary
-  install -Dm755 trunk/sim "$pkgdir/usr/bin/simutrans"
+  install -Dm755 $pkgname/build/simutrans/simutrans "$pkgdir/usr/bin/simutrans"
   
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans"
-  cp -r trunk/simutrans/* "$pkgdir/usr/share/games/simutrans"
+  cp -r $pkgname/simutrans/* "$pkgdir/usr/share/games/simutrans"
   cp -r "How to add files and paksets.md" "$pkgdir/usr/share/games/simutrans"
 
   #desktop file and icon
-  install -Dm644 trunk/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
+  install -Dm644 $pkgname/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
   install -Dm644 simutrans.desktop "$pkgdir/usr/share/applications/simutrans.desktop"
 
   #license
-  install -Dm644 trunk/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
+  install -Dm644 $pkgname/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
   
 }
 
 pkgver() {
-  cd trunk
+  cd $pkgname
   local ver="$(svnversion)"
   printf "r%s" "${ver//[[:alpha:]]}"
 }
