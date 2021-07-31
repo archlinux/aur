@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=g4l
-pkgver=0.57
+pkgver=0.59
 pkgrel=1
 pkgdesc="Ghost 4 Linux is a hard disk and partition imaging and cloning tool."
 arch=('any')
@@ -25,4 +25,4 @@ package() {
     install -c -s -m 755 jetcat-mod $pkgdir/usr/bin
 }
 
-md5sums=('9b1f7884e4c9f238f0965dcdc6d7bf6a')
+md5sums=('1626fa9310eac55f5b609951cb9433b8')
