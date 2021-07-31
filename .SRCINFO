@@ -7,6 +7,7 @@ pkgbase = gopass-jsonapi-bin
 	license = MIT
 	provides = gopass-jsonapi
 	conflicts = gopass-jsonapi
+	conflicts = gopass-jsonapi-git
 	source = https://github.com/gopasspw/gopass-jsonapi/releases/download/v1.11.1/gopass-jsonapi-1.11.1-linux-amd64.tar.gz
 	sha256sums = 11fbc59afa6a4ca6385974bdded34adc38dfc6837ab7297b106d012029cdbb19
 

@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/gopasspw/gopass-jsonapi"
 license=('MIT')
 
-conflicts=('gopass-jsonapi')
+conflicts=('gopass-jsonapi' 'gopass-jsonapi-git')
 provides=('gopass-jsonapi')
 
 source=("https://github.com/gopasspw/gopass-jsonapi/releases/download/v${pkgver}/gopass-jsonapi-${pkgver}-linux-amd64.tar.gz")
