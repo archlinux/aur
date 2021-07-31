@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppxfind'
 pkgname="ocaml-$_projectname"
 pkgver='1.4'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Tool combining ocamlfind and ppx'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diml/$_projectname"

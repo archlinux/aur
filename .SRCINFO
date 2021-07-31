@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxfind
 	pkgdesc = Tool combining ocamlfind and ppx
 	pkgver = 1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/diml/ppxfind
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppxfind
 	depends = ocaml-findlib
 	depends = ocaml-migrate-parsetree
 	options = !strip
-	source = ocaml-ppxfind-1.4-5.tar.gz::https://github.com/diml/ppxfind/archive/1.4.tar.gz
+	source = ocaml-ppxfind-1.4-6.tar.gz::https://github.com/diml/ppxfind/archive/1.4.tar.gz
 	sha256sums = 49e2f5cb7fb31e8fc2d482097d1bc96c8915ab50ea37133366da03a9a5ca3604
 
 pkgname = ocaml-ppxfind
