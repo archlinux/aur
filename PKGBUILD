@@ -1,7 +1,7 @@
 # Maintainer: Roman Vasilev <2rvasilev@live.ru>
 
 pkgname=zoomdl
-pkgver=2021.06.21
+pkgver=2021.07.28
 pkgrel=1
 epoch=
 pkgdesc="Download Zoom recorded meetings easily"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/releases/download/$pkgver/$pkgname")
 noextract=()
-md5sums=('6bc182963d5740fea1d49a0d9ed5cbe0')
+md5sums=('2d3da1cf85373112620fec6be8da5236')
 validpgpkeys=()
 
 package() {
