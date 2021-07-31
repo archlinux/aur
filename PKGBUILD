@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Gaffney <gaffclant@gmail.com>
 pkgname=python-scpreader
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Read the SCP wiki from the terminal"
 arch=(x86_64)
