@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=3.4
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
@@ -15,7 +15,11 @@ build() {
   cd "${srcdir}/nDPI-${pkgver}"
   unset CPPFLAGS
   ./autogen.sh
-  ./configure --prefix=/usr --with-pic --includedir=/usr/include --libdir=/usr/lib
+  ./configure \
+    --prefix=/usr \
+    --with-pic \
+    --includedir=/usr/include \
+    --libdir=/usr/lib
   make
 }
 
@@ -26,4 +30,4 @@ package() {
     "${pkgdir}/usr/include/libndpi"
 }
 
-md5sums=('4a2978b0d527a220ab46344444a1934c')
+md5sums=('533296eb09ab27499b6881f3411aa22b')
