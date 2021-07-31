@@ -1,7 +1,8 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu-git
-pkgver=2.7.1.r110.e980206a
+pkgver=2.8.0.r22.0ba02643
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
@@ -16,9 +17,8 @@ depends=(
   gtk3
   json-glib
   lib{gee,soup,handy}
-  libgranite.so=6-64
+  lib{granite,wingpanel}.so
   libswitchboard-2.0.so
-  libwingpanel-3.0.so
   zeitgeist
 )
 makedepends=(
