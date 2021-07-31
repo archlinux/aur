@@ -4,7 +4,7 @@ _edition=' Isolated Edition Beta'
 pkgname="$_pkgname-bin"
 _pkgver='1.27.0-beta.10'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -26,6 +26,8 @@ package() {
 
 	install -dm755 "$pkgdir/opt/"
 	cp -r --no-preserve=ownership --preserve=mode "usr/lib/$_pkgname/" "$pkgdir/opt/$_pkgname/"
+
+	chmod u+s "$pkgdir/opt/$_pkgname/chrome-sandbox"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	ln -sf "/opt/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
