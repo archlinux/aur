@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='ppx_stable'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Stable types conversions generator'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
