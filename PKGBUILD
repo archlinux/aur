@@ -1,8 +1,8 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-en-gb
-pkgver=2.53.5
-pkgrel=2
+pkgver=2.53.8.1
+pkgrel=1
 _lang=en-GB
 pkgdesc="English (United Kingdom) language pack for SeaMonkey"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('a92bdcaee91ab6e8469df6b2d04be94d06fc4a1f7a9c0fcd89d9f81aa744e51d8fbc5af2f73003c002feb91781de7e307f85cc5844fe64a6648392466b9c2e3f')
+sha512sums=('94c2c6403956225b6b8cb7ade1b61adc8bd93fc0a73a1924f50d758cfcc8b8707aa6943609e6dbf4668b640fc9b9ebc067e384f23beb08a7fa556e762efb55ce')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
