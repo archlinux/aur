@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=gracegtk
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
@@ -50,7 +50,7 @@ package() {
   install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
-md5sums=('751e8cbf92d8e3688e61dc544e5ea7bb'
+md5sums=('acddb3511061a32d1ca246c74d733290'
          '05b430f86615ab1aea79cee6ca204792'
          'ef085e503d30207035f5dfbef648ed36'
          '8427067a73698b5425901866ca3195d0'
