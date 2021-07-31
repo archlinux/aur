@@ -15,3 +15,19 @@ pkgbase = lammps-beta
 
 pkgname = lammps-beta
 
+pkgbase = lammps-beta
+	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
+	pkgver = 20210730
+	pkgrel = 1
+	url = https://lammps.sandia.gov/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = fftw
+	depends = openmpi
+	provides = lammps
+	conflicts = lammps
+	source = git+https://github.com/lammps/lammps#tag=patch_30Jul2021?signed
+	sha512sums = SKIP
+
+pkgname = lammps-beta
