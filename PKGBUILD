@@ -3,7 +3,7 @@
 _projectname='ppx_typerep_conv'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.2'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Generation of runtime types from type declarations'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
