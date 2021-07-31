@@ -1,14 +1,13 @@
 pkgbase = seamonkey-i18n-cs
 	pkgdesc = Czech language pack for SeaMonkey
-	pkgver = 2.53.5
-	pkgrel = 2
+	pkgver = 2.53.8.1
+	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.5
-	noextract = seamonkey-2.53.5.cs.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.5/langpack/seamonkey-2.53.5.cs.langpack.xpi
-	sha512sums = 95bb88a7818735f8a99143c75cb20ef26229ee84c54e97a7252a5fa76d4a960d9b8fe9fed6d824f546b84bb63ce9378fa9029341b026f0520ae97c95144a8701
+	depends = seamonkey>=2.53.8.1
+	noextract = seamonkey-2.53.8.1.cs.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.8.1/langpack/seamonkey-2.53.8.1.cs.langpack.xpi
+	sha512sums = 016d4879ef7c7f9ed4e33dfc55c227f5ee8cf1ce5e12b76b57304a6c0d90926e8a08edb87b86b499ae09ab6ec58a5a164f5940eedae1f6a8d0b3e2cd343f3cd5
 
 pkgname = seamonkey-i18n-cs
-
