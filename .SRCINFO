@@ -1,6 +1,6 @@
 pkgbase = disfetch
 	pkgdesc = Yet another *nix distro fetching program, but less complex.
-	pkgver = 2.5
+	pkgver = 2.6
 	pkgrel = 1
 	url = https://github.com/llathasa-veleth/disfetch
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = disfetch
 	makedepends = binutils
 	depends = bash>=4.0.0
 	provides = disfetch
-	source = disfetch-2.5.tar.gz::https://github.com/llathasa-veleth/disfetch/archive/2.5.tar.gz
-	sha256sums = 1970d2cda8503fe0811540e57014dd52285ed417dcbce5a5be287203b58c8d7f
+	source = disfetch-2.6.tar.gz::https://github.com/llathasa-veleth/disfetch/archive/2.6.tar.gz
+	sha256sums = d2abcc291fc16bc18d30213766a09a1147f600c04dd5a887f88737533636bc9c
 
 pkgname = disfetch
