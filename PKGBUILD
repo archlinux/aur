@@ -33,11 +33,32 @@ prepare() {
 
 build() {
   cd "$_pkgname"
+
+# ./config flags:
+# --prefix=<val>          The installation prefix (default: /usr).
+# --enable-debug          Enable debug mode compilation (default: disabled).
+# --disable-allocator     Disable use of internal memory allocator mechanism (default: enabled).
+# --enable-debug-stats    Enable printing of some verbose debug info (default: disabled).
+# --with-openssl=<path to OpenSSL installation tree> (Default: System)
+# --with-zlib=<path to zlib installation tree> (Default: System)
+# --with-bzlib=<path to Bzip2 library installation tree> (Default: System)
+# --with-external-libbsc=<path to libbsc source tree>
+# --wavpack-dir=<path to WavPack source tree>
+# --disable-wavpack       Disables the WavPack filter.
+# --no-sse-detect         Do NOT attempt to probe the system`s SSE capability for build flags.
+# --no-avx-detect         Do NOT attempt to probe the system's AVX capability for build flags.
+# --no-1.3-archive-compat Disable compatibility with compressed archives created with Pcompress
+# --limit-key128          Limit key length to 128-bit encryption keys.
+
+  if check_option "debug" "y"; then
+    _config_flags+=('--enable-debug')
+  fi
   ./config --prefix=/usr \
     --wavpack-dir="$srcdir"/wavpack-${_wavpack_ver} \
     --with-openssl-incdir="/usr/include/openssl-1.0" \
-    --with-openssl-libdir="/usr/lib/openssl-1.0"
-  make -j1
+    --with-openssl-libdir="/usr/lib/openssl-1.0" \
+    "${_config_flags[@]}"
+  make
 }
 
 package() {
