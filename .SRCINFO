@@ -1,15 +1,16 @@
 pkgbase = emacs-org-roam
 	pkgdesc = Org-roam is a plain-text knowledge management system.
-	pkgver = 1.2.4
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/org-roam/org-roam
 	arch = any
 	license = GPL3
+	makedepends = emacs-magit
 	depends = emacs
 	depends = emacs-org-mode
 	depends = emacs-f
 	depends = emacs-emacsql-sqlite3
-	source = https://github.com/org-roam/org-roam/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = de5bd76afdb516b41eff21f2f4746a35414b7cf594bd2945b1efc4aa4bb45bbb
+	source = https://github.com/org-roam/org-roam/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 916a8e3b7bd0ff13ed276622d8d48bc44596e1a73380eaa7c6fde51b87f2909d
 
 pkgname = emacs-org-roam

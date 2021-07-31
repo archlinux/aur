@@ -1,22 +1,21 @@
 # Maintainer: hamki <hamki.do2000@gmail.com>
-
 pkgname=emacs-org-roam
-pkgver=1.2.4
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Org-roam is a plain-text knowledge management system."
 url="https://github.com/org-roam/org-roam"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-org-mode' 'emacs-f' 'emacs-emacsql-sqlite3')
-makedepends=()
+depends=('emacs' 'emacs-org-mode' 'emacs-f'  'emacs-emacsql-sqlite3')
+makedepends=('emacs-magit')
 provides=()
 conflicts=()
 source=("https://github.com/org-roam/org-roam/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('de5bd76afdb516b41eff21f2f4746a35414b7cf594bd2945b1efc4aa4bb45bbb')
+sha256sums=('916a8e3b7bd0ff13ed276622d8d48bc44596e1a73380eaa7c6fde51b87f2909d')
 
 build() {
   cd "${srcdir}/org-roam-${pkgver}"
-  emacs -Q -batch -L . -f batch-byte-compile *.el
+  emacs -batch -L . -f batch-byte-compile *.el
  }
 
 package() {
