@@ -5,7 +5,7 @@
 # See: https://gitlab.com/timvisee/prs/-/tree/master/pkg/aur/prs
 
 pkgname=prs
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Secure, fast & convenient password manager CLI using GPG and git to sync"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('gpgme' 'dbus' 'libxcb' 'libxkbcommon' 'skim' 'tomb')
 makedepends=('rust' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('41a317409db4a2a8bc0a6125a5c6de7a7c5a6290856979bca21a143d9b8fbddc80a3497a5aaabab537ccb265b3001c53ad65a9c8e930ac55c30b29bc81151aa7')
+sha512sums=('9cfe1fe8fe7da8f80e740fc2a00db1f7976e722446ae4253726509dda0e86b314e6eb2b9c2e2994c645e3a8efdaf87972cd49cb2d38a4ccd7ffd181619d69d13')
 _prs_cli_features=alias,clipboard,notify,backend-gpgme,select-skim-bin,tomb
 
 build() {
