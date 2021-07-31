@@ -1,0 +1,19 @@
+pkgbase = netflix-git
+	pkgdesc = Unofficial Netflix desktop app.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/foxtelgo/application
+	arch = x86_64
+	license = GPL
+	makedepends = npm
+	makedepends = git
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = netflix-git
+	conflicts = Netflix-bin
+	source = git+https://gitlab.com/netflix-desktop/application
+	sha256sums = SKIP
+
+pkgname = netflix-git
