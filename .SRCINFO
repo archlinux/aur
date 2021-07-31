@@ -1,12 +1,13 @@
 pkgbase = lagrange
 	pkgdesc = Beautiful Gemini Client
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.skyjake.fi/skyjake/lagrange
 	install = lagrange.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7h
 	license = BSD
 	makedepends = cmake
 	depends = fribidi
