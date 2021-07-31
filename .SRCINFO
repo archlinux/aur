@@ -1,6 +1,6 @@
 pkgbase = friture
 	pkgdesc = An application to visualize and analyze live audio data in real-time.
-	pkgver = 0.46
+	pkgver = 0.47
 	pkgrel = 1
 	url = http://tlecomte.github.com/friture/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = friture
 	depends = python-rtmixer
 	depends = python-sounddevice
 	optdepends = jack: for JACK I/O support
-	source = https://github.com/tlecomte/friture/archive/v0.46.tar.gz
-	sha256sums = 55b08ff489b19d6ed8d794de8af97858d6d280bc633da442f7d1a86de7000578
+	source = https://github.com/tlecomte/friture/archive/v0.47.tar.gz
+	sha256sums = d98be9a1b304f49cb084d7f127de7e120866ccfb491d2b5bb4357ab49a7b4cd7
 
 pkgname = friture
