@@ -3,7 +3,7 @@
 java_=16
 pkgname_=graal-nodejs
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=21.1.0
+pkgver=21.2.0
 pkgrel=1
 pkgdesc="GraalVM-based, ployglot-enabled implementation of Node.js, Java ${java_} version"
 arch=('x86_64'
@@ -11,20 +11,16 @@ arch=('x86_64'
 url='https://github.com/oracle/graaljs'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
-source_x86_64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-java${java_}-linux-amd64-${pkgver}.jar"
-               "https://github.com/oracle/graaljs/raw/vm-${pkgver}/LICENSE")
-source_aarch64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-java${java_}-linux-aarch64-${pkgver}.jar"
-               "https://github.com/oracle/graaljs/raw/vm-${pkgver}/LICENSE")
-sha256sums_x86_64=('9344d6fd96bcd81da84a878e6322cc22101e511cd67c260a8d6bde7e369f9331'
-                   '2c0950e91e3b7cf3671ca3c5d68b21ce72960b81f9ba09659f61cc2ebed67ecd')
-sha256sums_aarch64=('818058b887afff0596d80e955f09dcf90c145a9e994c3c3061093813b816c59a'
-                    '2c0950e91e3b7cf3671ca3c5d68b21ce72960b81f9ba09659f61cc2ebed67ecd')
+source_x86_64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/oracle/graaljs/releases/download/vm-${pkgver}/nodejs-installable-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('793debfb5dd99e4ac0ca9741a105a7bf59d3eea7bb57be6eb2f8e4ac83526f7f')
+sha256sums_aarch64=('d67337b8eba35a55e96bae286f131b4482179468b0d2d039be59f403c770ed21')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_GRAALNODEJS.txt THIRD_PARTY_LICENSE_GRAALNODEJS.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -57,5 +53,5 @@ package() {
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
 
-    install -DTm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -DTm644 LICENSE_GRAALNODEJS.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
