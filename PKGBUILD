@@ -2,23 +2,29 @@
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python-$_projectname"
-pkgver='20210713'
-_commit='67a75665b2e18e465b87c167ac24830730ab768b'
+pkgver='1.1.0'
 pkgrel='1'
-pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork - python version'
+epoch='1'
+pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork'
 arch=('any')
 url="https://github.com/freenas/$_reponame"
 license=('LGPL2.1')
-depends=('python' 'smartmontools')
+depends=('python' 'python-humanfriendly' 'smartmontools')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('984b9a0b53f790c7f4e07538dbc8aea5cbc31083d47a21a31f286d1b35346486')
+checkdepends=('python-pytest')
+source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d4ddf6c5e3d7cd78e969547e5fa57e185df89bb360e1f1fc55d9d08614e72b03')
 
-_sourcedirectory="$_reponame-$_commit"
+_sourcedirectory="$_reponame-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 	python setup.py build
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	pytest
 }
 
 package() {
