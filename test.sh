@@ -15,7 +15,7 @@ PATH=/usr/lib/jvm/java-${java_}-graalvm/bin/:$(systemd-path search-binaries-defa
 
 printf '%s\n' 'Testing Node with polyglot R, Python, Ruby, JavaScript, and Java...'
 
-jsThree=$(node --polyglot << 'EOF'
+jsThree=$(node --polyglot --jvm << 'EOF'
 rPlus = Polyglot.eval('R', '(function(s1, s2) s1 + s2)');
 pythonPlus = Polyglot.eval('python', 'lambda s1, s2: s1 + s2');
 rubyOne = Polyglot.eval('ruby', '1')
