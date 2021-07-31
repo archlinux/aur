@@ -1,0 +1,13 @@
+pkgbase = plank-theme-paperterial-git
+	pkgdesc = Paperterial theme for Plank
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kennyh7279/plank-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plank
+	source = git://github.com/MMcQueenGNU/plank-theme-paperterial.git
+	sha256sums = SKIP
+
+pkgname = plank-theme-paperterial-git
