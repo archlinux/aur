@@ -2,17 +2,18 @@
 
 pkgname=sfd2ufo-git
 _pkgname=sfdLib
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc='An SFD to UFO converter providing sdflib'
-arch=('any')
-url="https://github.com/alif-type/$_pkgname"
-license=('BSD')
-depends=('python'
-         'python-ufolib2'
-         'python-fonttools')
-makedepends=('python-setuptools')
-provides=("${pkgname%-git}" 'python-sfdlib')
+arch=(any)
+url="https://github.com/aliftype/$_pkgname"
+license=(BSD)
+depends=(python
+         python-ufolib2
+         python-fonttools)
+makedepends=(git
+             python-setuptools)
+provides=("${pkgname%-git}" python-sfdlib)
 conflicts=("${pkgname%-git}")
 options=(!emptydirs)
 source=("git+$url.git")
@@ -20,8 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-    git describe --tags --abbrev=7 --match="v*" HEAD |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -31,5 +32,5 @@ build() {
 
 package() {
 	cd "$_pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
