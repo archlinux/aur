@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='trie'
 pkgname="ocaml-$_projectname"
 pkgver='1.0.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Strict impure trie tree'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kandu/$_projectname"
