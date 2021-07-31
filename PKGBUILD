@@ -7,19 +7,19 @@
 pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
 _majorver=16
-_minorver=
-_securityver=
-_updatever=36
-_openj9ver=0.25.0
+_minorver=0
+_securityver=1
+_updatever=9
+_openj9ver=0.26.0
 pkgrel=1
-pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}b${_updatever}_openj9_${_openj9ver}
+pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
 url='http://www.eclipse.org/openj9/'
 license=('custom')
 makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
-             'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
+             'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'freemarker' 'numactl' 'nasm')
+             'libnet' 'bash' 'freemarker' 'numactl' 'nasm' 'cmake')
 source=(openj9-openjdk-jdk-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
         https://github.com/eclipse/openj9/archive/openj9-${_openj9ver}.tar.gz
         openj9-omr-${_openj9ver}.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-${_openj9ver}.tar.gz
@@ -28,9 +28,9 @@ source=(openj9-openjdk-jdk-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
         omr-fam.patch)
-sha256sums=('1e112938c7260b55e28a9faa1db8608502ad08257fb56142e965d9e5a7edfc52'
-            'fdb1af35c8df1b2c92962b95e614fe6929fe677d32bca89aa407a1687e402927'
-            '76a71eecee6bb69c14d9e63087c712f00dece1113acfbc97c6eeebdb645ff743'
+sha256sums=('f412e6e44d5f379671b55bb0a646d1c0ab79fe9dc3f380a3d42ee58693149416'
+            'ffb6a76161638d2a64b731774d170eccfd77ad738a31221ee32b57d9cd27211b'
+            '749d939b94533f6a600c5d238c82d0bf357718f6bea37f295276544eb394b5e4'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
@@ -43,7 +43,7 @@ case "${CARCH}" in
 esac
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-openj9
-_jdkdir=openj9-openjdk-jdk${_majorver}-openj9-${_openj9ver}
+_jdkdir=openj9-openjdk-jdk${_majorver}-${_openj9ver}-release
 _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 
 _nonheadless=(lib/libawt_xawt.{so,debuginfo}
@@ -60,7 +60,8 @@ prepare() {
   patch -d omr -p1 -i $srcdir/omr-omrstr-iconv-failure-overflow.patch
   patch -d omr -p1 -i $srcdir/omr-fam.patch
 
-  sed -i -e '/^OPENJ9_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
+  sed -i -e '/^OPENJDK_SHA :=/s/:=.*/:= __OPENJDK_SHA__/' \
+         -e '/^OPENJ9_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
          -e '/^OPENJ9_TAG :=/s/:=.*/:= openj9-'${_openj9ver}/ \
          -e '/^OPENJ9OMR_SHA :=/s/:=.*/:= openj9-'${_openj9ver}/ \
          closed/OpenJ9.gmk

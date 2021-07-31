@@ -1,5 +1,5 @@
 pkgbase = java-openj9
-	pkgver = 16b36_openj9_0.25.0
+	pkgver = 16.0.1.u9_openj9_0.26.0
 	pkgrel = 1
 	url = http://www.eclipse.org/openj9/
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = java-openj9
 	makedepends = libxext
 	makedepends = libxrandr
 	makedepends = alsa-lib
-	makedepends = pandoc
 	makedepends = graphviz
 	makedepends = freetype2
 	makedepends = libjpeg-turbo
@@ -29,17 +28,18 @@ pkgbase = java-openj9
 	makedepends = freemarker
 	makedepends = numactl
 	makedepends = nasm
-	source = openj9-openjdk-jdk-0.25.0.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk16/archive/v0.25.0-release.tar.gz
-	source = https://github.com/eclipse/openj9/archive/openj9-0.25.0.tar.gz
-	source = openj9-omr-0.25.0.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-0.25.0.tar.gz
+	makedepends = cmake
+	source = openj9-openjdk-jdk-0.26.0.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk16/archive/v0.26.0-release.tar.gz
+	source = https://github.com/eclipse/openj9/archive/openj9-0.26.0.tar.gz
+	source = openj9-omr-0.26.0.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-0.26.0.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = omr-omrstr-iconv-failure-overflow.patch
 	source = omr-fam.patch
-	sha256sums = 1e112938c7260b55e28a9faa1db8608502ad08257fb56142e965d9e5a7edfc52
-	sha256sums = fdb1af35c8df1b2c92962b95e614fe6929fe677d32bca89aa407a1687e402927
-	sha256sums = 76a71eecee6bb69c14d9e63087c712f00dece1113acfbc97c6eeebdb645ff743
+	sha256sums = f412e6e44d5f379671b55bb0a646d1c0ab79fe9dc3f380a3d42ee58693149416
+	sha256sums = ffb6a76161638d2a64b731774d170eccfd77ad738a31221ee32b57d9cd27211b
+	sha256sums = 749d939b94533f6a600c5d238c82d0bf357718f6bea37f295276544eb394b5e4
 	sha256sums = 7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230
 	sha256sums = bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd
 	sha256sums = bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975
@@ -59,7 +59,7 @@ pkgname = jre-openj9-headless
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=16
 	provides = java-runtime-headless-openj9=16
-	provides = jre16-openj9-headless=16b36_openj9_0.25.0-1
+	provides = jre16-openj9-headless=16.0.1.u9_openj9_0.26.0-1
 	backup = etc/java-openj9/logging.properties
 	backup = etc/java-openj9/management/jmxremote.access
 	backup = etc/java-openj9/management/jmxremote.password.template
@@ -78,33 +78,32 @@ pkgname = jre-openj9-headless
 pkgname = jre-openj9
 	pkgdesc = OpenJDK Java 16 full runtime environment
 	install = install_jre-openj9.sh
-	depends = jre16-openj9-headless=16b36_openj9_0.25.0-1
+	depends = jre16-openj9-headless=16.0.1.u9_openj9_0.26.0-1
 	depends = giflib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=16
 	provides = java-runtime-openj9=16
-	provides = jre16-openj9=16b36_openj9_0.25.0-1
+	provides = jre16-openj9=16.0.1.u9_openj9_0.26.0-1
 
 pkgname = jdk-openj9
 	pkgdesc = OpenJDK Java 16 development kit
 	install = install_jdk-openj9.sh
-	depends = jre16-openj9=16b36_openj9_0.25.0-1
+	depends = jre16-openj9=16.0.1.u9_openj9_0.26.0-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	provides = java-environment=16
 	provides = java-environment-openj9=16
-	provides = jdk16-openj9=16b36_openj9_0.25.0-1
+	provides = jdk16-openj9=16.0.1.u9_openj9_0.26.0-1
 
 pkgname = openj9-src
 	pkgdesc = OpenJDK Java 16 sources
-	depends = jdk16-openj9=16b36_openj9_0.25.0-1
-	provides = openj916-src=16b36_openj9_0.25.0-1
+	depends = jdk16-openj9=16.0.1.u9_openj9_0.26.0-1
+	provides = openj916-src=16.0.1.u9_openj9_0.26.0-1
 
 pkgname = openj9-doc
 	pkgdesc = OpenJDK Java 16 documentation
-	depends = jdk16-openj9=16b36_openj9_0.25.0-1
-	provides = openj916-doc=16b36_openj9_0.25.0-1
-
+	depends = jdk16-openj9=16.0.1.u9_openj9_0.26.0-1
+	provides = openj916-doc=16.0.1.u9_openj9_0.26.0-1
