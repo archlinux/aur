@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_jane
 	pkgdesc = Standard Jane Street ppx rewriters
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_jane
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = ocaml-ppx_jane
 	depends = ocaml-ppx_variants_conv>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_jane-1:0.14.0-2.tar.gz::https://github.com/janestreet/ppx_jane/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_jane-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_jane/archive/v0.14.0.tar.gz
 	sha256sums = fc0d1aaa9ff120eef1eeed5c2fcfb406b27c6ef865439dfeac38cce181d0c771
 
 pkgname = ocaml-ppx_jane
