@@ -1,0 +1,21 @@
+pkgbase = pantheon-settings-daemon-git
+	pkgdesc = The Pantheon Settings Daemon
+	pkgver = 1.0.0.r18.e4b709d
+	pkgrel = 1
+	url = https://github.com/elementary/settings-daemon
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = accountsservice
+	depends = geoclue
+	depends = dbus
+	depends = libgranite.so
+	provides = pantheon-settings-daemon
+	conflicts = pantheon-settings-daemon
+	source = pantheon-settings-daemon::git+https://github.com/elementary/settings-daemon.git
+	sha256sums = SKIP
+
+pkgname = pantheon-settings-daemon-git
