@@ -1,0 +1,17 @@
+pkgbase = dashie-telegraf-plugins-git
+	pkgdesc = Command line license text generator
+	pkgver = master.r0.g071e959
+	pkgrel = 1
+	url = https://dev.sigpipe.me/dashie/telegraf-plugins
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = dashie-telegraf-plugins
+	conflicts = dashie-telegraf-plugins
+	options = !emptydirs
+	source = dashie-telegraf-plugins-git::git+https://dev.sigpipe.me/dashie/telegraf-plugins
+	sha256sums = SKIP
+
+pkgname = dashie-telegraf-plugins-git
