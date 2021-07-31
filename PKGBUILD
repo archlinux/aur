@@ -1,7 +1,7 @@
 # Maintainer: RedCubeDev <someredcubedev@gmail.com>
 pkgname='rctc'
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Commandline Compiler for the ReCT Programming language"
 arch=('x86_64')
 url="http://rect.ml/"
@@ -25,7 +25,7 @@ package() {
    
    # building the lastest release of rctc
    cd "rctc"
-   DOTNET_CLI_HOME="/tmp"
+   export DOTNET_CLI_HOME="/tmp"
    dotnet build -c Release
 
    # install compiled binary
