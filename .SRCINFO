@@ -1,7 +1,7 @@
 pkgbase = dsf2flac-git
 	pkgdesc = Tool for converting DSF to FLAC files.
 	pkgver = r29.b0cf5aa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hank/dsf2flac
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,8 @@ pkgbase = dsf2flac-git
 	depends = taglib
 	depends = id3lib
 	source = git+https://github.com/hank/dsf2flac.git
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/dsf2flac-fix-build-with-boost-1.76.patch
 	sha256sums = SKIP
+	sha256sums = ecfb109a680f308a9a5da1bc648111f108a05a3031d13c2e0460fbb5d719cc9c
 
 pkgname = dsf2flac-git
-
