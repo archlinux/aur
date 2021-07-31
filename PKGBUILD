@@ -2,7 +2,7 @@
 pkgname=local-by-flywheel-bin
 _pkgname=local-by-flywheel
 pkgver=6.1.0
-pkgrel=5444
+pkgrel=5452
 pkgdesc="A program to create a local WordPress development environment."
 arch=('x86_64')
 url="https://localbyflywheel.com/"
