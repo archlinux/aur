@@ -2,7 +2,7 @@
 
 pkgname=cyan
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Teal build system and project manager"
 arch=(any)
 url=https://github.com/teal-language/$pkgname
@@ -10,7 +10,9 @@ license=(MIT)
 _lua_deps=(argparse
            filesystem
            tl)
-depends=(lua "${_lua_deps[@]/#/lua-}")
+depends=(lua
+         "${_lua_deps[@]/#/lua-}"
+         teal)
 makedepends=(luarocks)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('d40cd2a130c9304d2534e3dc8b2f22a3f9d3d398e77ec2a788e22b5d50471984')
