@@ -32,4 +32,3 @@ pkgbase = dogecoin-qt
 	sha256sums = 04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6
 
 pkgname = dogecoin-qt
-

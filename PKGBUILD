@@ -21,20 +21,17 @@ install=$_binname.install
 sha256sums=('01039ad91adf7d2815ab07b45f751426e1c8e230f868dc878d4f5ff8aefeee47'
             '04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6')
 
-prepare() {
-	cd "$srcdir/$_binname-$pkgver"
-}
+#prepare() {
+	#cd "$srcdir/$_binname-$pkgver"
+#}
 
 build() {
 	cd "$srcdir/$_binname-$pkgver/"
 
 	./autogen.sh
 
-	# --with-incompatible-bdb is needed, because dogecon-qt wants version 5.1, but Arch is already on 5.3
-	CFLAGS="-I/usr/include/openssl-1.0 $CFLAGS" CPPFLAGS="-I/usr/include/openssl-1.0 $CPPFLAGS" LDFLAGS=" -L/usr/lib/openssl-1.0 $LDFLAGS" \
-	./configure QMAKE_CFLAGS_RELEASE="$CPPFLAGS $CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CPPFLAGS $CXXFLAGS" \
-	QMAKE_LFLAGS_RELEASE="$LDFLAGS" --with-incompatible-bdb --prefix=/usr \
-	--sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib
+    ./configure --with-incompatible-bdb --prefix=/usr \
+	--sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib --with-gui=qt5
 
 	make
 }
