@@ -1,7 +1,7 @@
 pkgbase = rctc
 	pkgdesc = Commandline Compiler for the ReCT Programming language
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rect.ml/
 	arch = x86_64
 	license = GPL3
