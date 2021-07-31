@@ -2,12 +2,13 @@
 # Co-Maintainer: Bandie <bandie at chaospott dot de>
 pkgname=grub2-signing-extension
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts for signing and verifying grub2 files for grub2's check_signatures feature."
 arch=('any')
 url="https://github.com/Bandie/grub2-signing-extension"
 license=('GPL')
 depends=('gnupg' 'grub')
+validpgpkeys=('E2D7876915312785DC086BFCC1E133BC65A822DD')
 source=(
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
