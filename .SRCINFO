@@ -1,6 +1,6 @@
 pkgbase = homepager
 	pkgdesc = A simple homepage generator.
-	pkgver = 1.0beta
+	pkgver = 1.1beta
 	pkgrel = 0
 	url = https://github.com/NewAwkwardTools/homepager
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = homepager
 	depends = python>=3.6
 	depends = titlegetter
 	depends = python-toml
-	source = homepager-1.0beta.tar.gz::https://github.com/NewAwkwardTools/homepager/archive/1.0beta.tar.gz
-	sha512sums = 38796c8594f12694e75e04f22a393bf57da4bbe941fa653b66812662da306e0a1966ce2ef4ce30eae3e37cc0879921c40b475b97d8e0815f57946742fb5cb592
+	source = homepager-1.1beta.tar.gz::https://github.com/NewAwkwardTools/homepager/archive/1.1beta.tar.gz
+	sha512sums = 1f03c863f7cc8f5ec630642560c0b0bf4a2faaed33baf212781a5cd221deab11fd9be3862522179fd348bb921dcb96d816803dbbe4a3c3a70f05d27ffb3b1f2b
 
 pkgname = homepager

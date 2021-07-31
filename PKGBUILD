@@ -1,7 +1,7 @@
 # Maintainer: WeepingDogel
 
 pkgname=homepager
-pkgver=1.0beta
+pkgver=1.1beta
 pkgrel=0
 pkgdesc='A simple homepage generator.'
 url='https://github.com/NewAwkwardTools/homepager'
@@ -9,7 +9,7 @@ arch=('any')
 license=('MIT')
 depends=('python>=3.6' 'titlegetter' 'python-toml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('38796c8594f12694e75e04f22a393bf57da4bbe941fa653b66812662da306e0a1966ce2ef4ce30eae3e37cc0879921c40b475b97d8e0815f57946742fb5cb592')
+sha512sums=('1f03c863f7cc8f5ec630642560c0b0bf4a2faaed33baf212781a5cd221deab11fd9be3862522179fd348bb921dcb96d816803dbbe4a3c3a70f05d27ffb3b1f2b')
 package(){
     cd homepager-$pkgver
     install -Dm755 "homepager.py" -t "$pkgdir/usr/bin"
