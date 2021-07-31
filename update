@@ -41,7 +41,7 @@ else
   sed -i "s/pkgver=.*/pkgver=${VER}/" PKGBUILD
   sed -i "s/pkgrel=.*/pkgrel=1/" PKGBUILD
   # Next line from https://bugs.archlinux.org/task/15051
-  { rm PKGBUILD; awk '$0 ~ /^md5sums/ {i = 1; system("makepkg -g 2>/dev/null")}; !i {print}; $0 ~ /\)/ {i = 0}' > PKGBUILD; } < PKGBUILD
+  { rm PKGBUILD; awk '$0 ~ /^sha256sums/ {i = 1; system("makepkg -g 2>/dev/null")}; !i {print}; $0 ~ /\)/ {i = 0}' > PKGBUILD; } < PKGBUILD
   makepkg
   if ! ls *.zst &> /dev/null ; then
     echo "Package creation failure"
