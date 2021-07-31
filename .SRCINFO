@@ -1,14 +1,14 @@
 pkgbase = teal
 	pkgdesc = The compiler for Teal, a typed dialect of Lua
 	pkgver = 0.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/teal-language/tl
 	arch = any
 	license = MIT
 	makedepends = lua
-	makedepends = lua53
-	makedepends = lua52
 	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
 	makedepends = luarocks
 	source = teal-0.13.2.tar.gz::https://github.com/teal-language/tl/archive/refs/tags/v0.13.2.tar.gz
 	sha256sums = a42c8dd1719933de027f8954b3edd4b255785d933f6ff183ae32bbf8adc7c6ae
@@ -16,6 +16,7 @@ pkgbase = teal
 pkgname = teal
 	depends = lua
 	depends = lua-tl
+	optdepends = cyan: The Teal build system and project manager
 	provides = tl
 
 pkgname = lua-tl

@@ -1,17 +1,21 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgbase=teal
 _rockname=tl
+pkgbase=teal
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The compiler for Teal, a typed dialect of Lua"
 arch=(any)
-url=https://github.com/teal-language/tl
+url=https://github.com/teal-language/$_rockname
 license=(MIT)
 _lua_deps=(argparse
            filesystem)
-makedepends=(lua lua53 lua52 lua51 luarocks)
+makedepends=(lua
+             lua51
+             lua52
+             lua53
+             luarocks)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('a42c8dd1719933de027f8954b3edd4b255785d933f6ff183ae32bbf8adc7c6ae')
 
@@ -19,17 +23,16 @@ _package_helper() {
 	cd "$_rockname-$pkgver"
 	luarocks --lua-version=$1 --tree="$pkgdir/usr/" \
 		make --deps-mode=none --no-manifest "$_rockname-dev-1.rockspec"
-	if [[ -n $2 ]]; then
-		find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
-		rm -rf "$pkgdir/usr/"{lib,share}
-	else
+	find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
+	[[ -v 2 ]] &&
+		rm -rf "$pkgdir/usr/"{lib,share} ||
 		rm -rf "$pkgdir/usr/bin"
-	fi
 }
 
 package_teal() {
 	depends+=(lua lua-tl)
-	provides+=(tl)
+	optdepends+=('cyan: The Teal build system and project manager')
+	provides+=($_rockname)
 	_package_helper 5.4 bin
 }
 
