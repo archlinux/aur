@@ -1,16 +1,16 @@
 # Maintainer: dreieck
 
 _pkgname=dropbear-openrc
-pkgname="${_pkgname}-latest"
+pkgname="${_pkgname}-git"
 _pkgver="latest"
-pkgver=2017.75.r1
-pkgrel=1
+pkgver=2020.81.r0
+pkgrel=2
 pkgdesc='OpenRC init script and conf.d file for dropbear.'
 url='http://pkgs.alpinelinux.org/package/edge/main/x86/dropbear-openrc'
-license=('MIT')
+license=('custom: dropbear')
 arch=('any')
 depends=('dropbear')
-makedepends=(s)
+makedepends=()
 provides=("${_pkgname}=${pkgver}")
 replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
@@ -19,8 +19,10 @@ options=('!emptydirs')
 source=(
   "dropbear.initd::https://git.alpinelinux.org/cgit/aports/plain/main/dropbear/dropbear.initd"
   "dropbear.confd::https://git.alpinelinux.org/cgit/aports/plain/main/dropbear/dropbear.confd"
+  "LICENSE::https://github.com/mkj/dropbear/raw/master/LICENSE"
 )
 sha256sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -32,4 +34,5 @@ pkgver() {
 package() {
   install -D -v -m755 "${srcdir}/dropbear.initd" "${pkgdir}/etc/init.d/dropbear"
   install -D -v -m644 "${srcdir}/dropbear.confd" "${pkgdir}/etc/conf.d/dropbear"
+  install -D -v -m644 "${srcdir}/LICENSE"        "${pkgdir}/usr/share/licenses/dropbear/LICENSE"
 }
