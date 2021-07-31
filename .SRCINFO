@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_assert
 	pkgdesc = Assert-like extension nodes that raise useful errors on failure
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_assert
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = ocaml-ppx_assert
 	depends = ocaml-ppx_sexp_conv>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_assert-1:0.14.0-2.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_assert-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_assert/archive/v0.14.0.tar.gz
 	sha256sums = bb4808387bc143e8e4e443bb5caa6ad665009d51097b8ebf6c76a0bf53b2105d
 
 pkgname = ocaml-ppx_assert
