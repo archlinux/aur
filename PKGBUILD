@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/nats-io/natscli"
 license=('Apache')
 
-conflicts=('nats')
+conflicts=('natscli')
 provides=('nats')
 
 source=("https://github.com/nats-io/natscli/releases/download/${pkgver}/nats-${pkgver}-linux-amd64.zip")
