@@ -26,6 +26,7 @@ pkgbase = dogecoin-qt
 	provides = dogecoin-daemon
 	provides = dogecoin-tx
 	provides = dogecoin-cli
+	options = !lto
 	source = https://github.com/dogecoin/dogecoin/archive/v1.14.3.tar.gz
 	source = dogecoin.desktop
 	sha256sums = 01039ad91adf7d2815ab07b45f751426e1c8e230f868dc878d4f5ff8aefeee47
