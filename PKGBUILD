@@ -1,8 +1,8 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-fi
-pkgver=2.53.5
-pkgrel=2
+pkgver=2.53.8.1
+pkgrel=1
 _lang=fi
 pkgdesc="Finnish language pack for SeaMonkey"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('2278f96faca2e88f4c736724b3a37e2e27a55a8b4d54c749d06106096da12fab5a3273c55d10c75233ca1f9fb19436c9dd3d55050b198c2d7d989b2ee6ef22c2')
+sha512sums=('fd324dd7a47aecf446904fc76c8c039576e6d7c2d977f480848d3da50b599919b85f49b0eb8305e9404422c059541e658806dd57d71e3eaa6e92ecb785c6e746')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
