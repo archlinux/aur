@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_tools_versioned'
 pkgname="ocaml-$_projectname"
 pkgver='5.4.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Tools for authors of ppx rewriters and other syntactic tools (with ocaml-migrate-parsetree support)'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
