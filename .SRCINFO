@@ -1,7 +1,7 @@
 pkgbase = ocaml-cinaps
 	pkgdesc = Trivial Metaprogramming tool using the OCaml toplevel
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/cinaps
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-cinaps
 	depends = ocaml>=4.04.0
 	depends = ocaml-re>=1.8.0
 	options = !strip
-	source = ocaml-cinaps-0.15.1-1.tar.gz::https://github.com/ocaml-ppx/cinaps/archive/v0.15.1.tar.gz
+	source = ocaml-cinaps-0.15.1-2.tar.gz::https://github.com/ocaml-ppx/cinaps/archive/v0.15.1.tar.gz
 	sha256sums = 1be18e70f5d8a6b03566c3619b62836a26094fc7208fde46ab7b32ee64116170
 
 pkgname = ocaml-cinaps
