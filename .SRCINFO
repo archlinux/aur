@@ -1,6 +1,6 @@
 pkgbase = todoman-git
 	pkgdesc = A simple CalDav-based todo manager.
-	pkgver = 4.0.0
+	pkgver = 4.0.0.post15+gcaa5d86
 	pkgrel = 1
 	url = https://github.com/pimutils/todoman
 	arch = any
@@ -10,16 +10,18 @@ pkgbase = todoman-git
 	checkdepends = python-pytest-runner
 	checkdepends = python-freezegun
 	checkdepends = python-pytest-cov
-	depends = python-icalendar
-	depends = python-urwid
-	depends = python-xdg
-	depends = python-parsedatetime
+	makedepends = git
 	depends = python-atomicwrites
 	depends = python-click
-	depends = python-setuptools-scm
+	depends = python-click-log
 	depends = python-dateutil
-	depends = python-tabulate
 	depends = python-humanize
+	depends = python-icalendar
+	depends = python-parsedatetime
+	depends = python-setuptools-scm
+	depends = python-tabulate
+	depends = python-urwid
+	depends = python-xdg
 	optdepends = python-click-repl: the repl command.
 	optdepends = bash-completion: bash autocompletion.
 	optdepends = zsh-completions: zsh autocompletion.
@@ -29,4 +31,3 @@ pkgbase = todoman-git
 	md5sums = SKIP
 
 pkgname = todoman-git
-

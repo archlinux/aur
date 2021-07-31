@@ -2,23 +2,27 @@
 
 pkgname=todoman-git
 _pkgname=todoman
-pkgver=4.0.0
+pkgver=4.0.0.post15+gcaa5d86
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
 url="https://github.com/pimutils/todoman"
 license=('ISC')
+makedepends=(
+  git
+)
 depends=(
-  python-icalendar
-  python-urwid
-  python-xdg
-  python-parsedatetime
   python-atomicwrites
   python-click
-  python-setuptools-scm
+  python-click-log
   python-dateutil
-  python-tabulate
   python-humanize
+  python-icalendar
+  python-parsedatetime
+  python-setuptools-scm
+  python-tabulate
+  python-urwid
+  python-xdg
 )
 optdepends=('python-click-repl: the repl command.'
             'bash-completion: bash autocompletion.'
