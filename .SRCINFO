@@ -1,7 +1,7 @@
 pkgbase = teal
 	pkgdesc = The compiler for Teal, a typed dialect of Lua
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teal-language/tl
 	arch = any
 	license = MIT
@@ -21,23 +21,19 @@ pkgname = teal
 pkgname = lua-tl
 	depends = lua
 	depends = lua-argparse
-	depends = lua-compat53
 	depends = lua-filesystem
 
 pkgname = lua53-tl
 	depends = lua53
 	depends = lua53-argparse
-	depends = lua53-compat53
 	depends = lua53-filesystem
 
 pkgname = lua52-tl
 	depends = lua52
 	depends = lua52-argparse
-	depends = lua52-compat53
 	depends = lua52-filesystem
 
 pkgname = lua51-tl
 	depends = lua51
 	depends = lua51-argparse
-	depends = lua51-compat53
 	depends = lua51-filesystem

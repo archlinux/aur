@@ -4,13 +4,12 @@ pkgbase=teal
 _rockname=tl
 pkgname=(teal "lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The compiler for Teal, a typed dialect of Lua"
 arch=(any)
 url=https://github.com/teal-language/tl
 license=(MIT)
 _lua_deps=(argparse
-           compat53
            filesystem)
 makedepends=(lua lua53 lua52 lua51 luarocks)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -45,11 +44,13 @@ package_lua53-tl() {
 }
 
 package_lua52-tl() {
+	_lua_deps+=(compat53)
 	depends+=(lua52 "${_lua_deps[@]/#/lua52-}")
 	_package_helper 5.2
 }
 
 package_lua51-tl() {
+	_lua_deps+=(compat53)
 	depends+=(lua51 "${_lua_deps[@]/#/lua51-}")
 	_package_helper 5.1
 }
