@@ -1,5 +1,5 @@
 pkgname=shortcut-satan
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Global shortcut program like hotkey daemon, but better'
 url='https://github.com/sandsmark/shortcut-satan'
@@ -18,4 +18,4 @@ package() {
     cd shortcut-satan-${pkgver}
     make install DESTDIR="${pkgdir}"
 }
-md5sums=('1a2cdfaf1ad4d616d94b8f041044c2ac')
+md5sums=('e86ba464982dc3db62a9a7a0e00c9cd5')
