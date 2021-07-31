@@ -1,19 +1,15 @@
 pkgbase = ruby-guard-compat
 	pkgdesc = Test helper for testing Guard plugins
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guard/guard-compat
 	arch = any
 	license = MIT
-	checkdepends = ruby-bundler
-	checkdepends = ruby-rspec
-	checkdepends = ruby-rake
-	makedepends = git
-	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
+	noextract = guard-compat-1.2.1.gem
 	options = !emptydirs
-	source = git+https://github.com/guard/guard-compat.git?tag=v1.2.1
-	sha256sums = SKIP
+	source = https://rubygems.org/downloads/guard-compat-1.2.1.gem
+	b2sums = 988365132a2594deff90623dd2d590b14f12b4d119e0d486c865dc0c3c53e67fe9c831173eeb009c4a37fa6061bf07c59f8759b5a63a86fbfd1010576ac18663
 
 pkgname = ruby-guard-compat
