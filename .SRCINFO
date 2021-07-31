@@ -1,6 +1,6 @@
 pkgbase = trickle-git
 	pkgdesc = Lightweight userspace bandwidth shaper
-	pkgver = latest
+	pkgver = r23.09a1d95
 	pkgrel = 2
 	url = https://github.com/mariusae/trickle
 	arch = i686
@@ -16,8 +16,11 @@ pkgbase = trickle-git
 	conflicts = trickle
 	source = git+https://github.com/mariusae/trickle.git
 	source = remove-libtrickle.patch
+	source = https://github.com/mariusae/trickle/pull/28/commits/4171f1716eb2e37d36fb9189800c53b83723569d.patch
+	source = https://github.com/mariusae/trickle/pull/29/commits/29de2a4704d9843d3c6cba1d4a4ac177f2d6e568.patch
 	sha256sums = SKIP
 	sha256sums = 7e148c9526dbd6667c94ce3ee4f1a1fd550e61ab185735939c4d5312cf13b7a1
+	sha256sums = dfffeb04a403e7eeb67e0fd5e611f2e428569b68139324fe7af8dee7e7b7cacb
+	sha256sums = 0b5ae4357c8b383b30235172a10b673eb2bfa5d640cfe86dd0b890d0d8c3dcc0
 
 pkgname = trickle-git
-
