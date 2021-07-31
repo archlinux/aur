@@ -5,6 +5,7 @@ pkgbase = gosimac
 	url = https://github.com/1995parham/
 	arch = any
 	license = GPL2
+	makedepends = go
 	conflicts = gosimac-bin
 	conflicts = gosimac-git
 	source = https://github.com/1995parham//archive/refs/tags/v4.1.1.tar.gz
