@@ -8,6 +8,8 @@ arch=(x86_64)
 url="https://github.com/wagoodman/dive"
 license=('MIT')
 
+depends=("docker")
+
 conflicts=('dive' 'dive-git')
 provides=('dive')
 
