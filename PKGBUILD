@@ -4,27 +4,41 @@
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 _pkgname='ferdi'
 pkgname="$_pkgname-bin"
-pkgver='5.5.0'
-pkgrel='3'
+pkgver='5.6.0'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libsecret' 'libxkbfile' 'libxslt' 'libxss' 'libxtst' 'minizip' 'nss' 're2' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxkbfile' 'libxslt' 'minizip' 'nss' 're2' 'snappy')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/get$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.x86_64.rpm")
-sha256sums=('9bf22a3bc6daa6d3995c27595ca664b0daa8ce1ab42bf779870735f3cb05ee6a')
+_releaseurl="https://github.com/get$_pkgname/$_pkgname/releases/download/v$pkgver/ferdi_$pkgver"
+source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.zip::${_releaseurl}_amd64.deb")
+source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h.zip::${_releaseurl}_armv7l.deb")
+source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.zip::${_releaseurl}_arm64.deb")
+sha256sums_x86_64=('c9a01835002f6ed02bc3da80b5b4c30f5d5af671f639010f13c40b83513bf587')
+sha256sums_armv7h=('3953a8794d766aa29458804f6db3701c8f10db2aa64283cac84297b0d0227aed')
+sha256sums_aarch64=('7c5bc192986587de46942251473a6a1e6b66a127ed624249b9f974ca5beed355')
+
+_sourcedirectory="$pkgname-$pkgver-$pkgrel"
 
 prepare() {
-	sed -E -i -e "s|Exec=/opt/${_pkgname^}/$_pkgname|Exec=/usr/bin/$_pkgname|" "$srcdir/usr/share/applications/$_pkgname.desktop"
+	cd "$srcdir/"
+	mkdir -p "$_sourcedirectory/"
+	bsdtar -xf 'data.tar.xz' -C "$_sourcedirectory/"
+
+	cd "$srcdir/$_sourcedirectory/"
+	sed -E -i -e "s|Exec=/opt/${_pkgname^}/$_pkgname|Exec=/usr/bin/$_pkgname|" "usr/share/applications/$_pkgname.desktop"
 }
 
 package() {
-	cd "$srcdir/"
+	cd "$srcdir/$_sourcedirectory/"
 
 	install -dm755 "$pkgdir/opt/"
 	cp -r --no-preserve=ownership --preserve=mode "opt/${_pkgname^}/" "$pkgdir/opt/$_pkgname/"
+
+	chmod u+s "$pkgdir/opt/$_pkgname/chrome-sandbox"
 
 	install -dm755 "$pkgdir/usr/bin/"
 	ln -sf "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
