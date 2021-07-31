@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_inline_test
 	pkgdesc = Syntax extension for writing in-line tests in ocaml code
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_inline_test
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ocaml-ppx_inline_test
 	depends = ocaml-time_now>=0.14.0
 	depends = ocaml-ppxlib>=0.14.0
 	options = !strip
-	source = ocaml-ppx_inline_test-1:0.14.1-2.tar.gz::https://github.com/janestreet/ppx_inline_test/archive/v0.14.1.tar.gz
+	source = ocaml-ppx_inline_test-1:0.14.1-3.tar.gz::https://github.com/janestreet/ppx_inline_test/archive/v0.14.1.tar.gz
 	sha256sums = d7e5c1b92e5ae1e9076979852c80cb192af443ff90e2fb11b5561df032aafb63
 
 pkgname = ocaml-ppx_inline_test
