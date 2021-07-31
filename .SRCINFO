@@ -1,6 +1,6 @@
 pkgbase = play-emu-git
 	pkgdesc = Play! is an experimental Playstation 2 emulator.
-	pkgver = 0.31.r21.g5359327f
+	pkgver = 0.42.r14.gd27ce484
 	pkgrel = 1
 	url = https://purei.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = play-emu-git
 	depends = qt5-base
 	depends = openal
 	depends = glew
-	source = play-emu::git+https://github.com/jpd002/Play-
+	source = play-emu::git+https://github.com/jpd002/Play-.git
 	source = git+https://github.com/jpd002/Play-Dependencies.git
 	source = git+https://github.com/jpd002/Play--Framework.git
 	source = git+https://github.com/jpd002/Play--CodeGen.git
@@ -30,4 +30,3 @@ pkgbase = play-emu-git
 	sha256sums = SKIP
 
 pkgname = play-emu-git
-

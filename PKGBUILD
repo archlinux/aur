@@ -2,7 +2,7 @@
 # Contributor:  Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=play-emu-git
-pkgver=0.31.r21.g5359327f
+pkgver=0.42.r14.gd27ce484
 pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://purei.org/"
 license=(MIT)
 depends=(qt5-base openal glew)
 makedepends=(git cmake ninja qt5-x11extras)
-source=("${pkgname%-git}::git+https://github.com/jpd002/Play-"
+source=("${pkgname%-git}::git+https://github.com/jpd002/Play-.git"
         "git+https://github.com/jpd002/Play-Dependencies.git"
         "git+https://github.com/jpd002/Play--Framework.git"
         "git+https://github.com/jpd002/Play--CodeGen.git"
