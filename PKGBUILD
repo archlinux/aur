@@ -1,6 +1,6 @@
 # Maintainer: RedCubeDev <someredcubedev@gmail.com>
 pkgname='rctc'
-pkgver=2.3.1.420
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Commandline Compiler for the ReCT Programming language"
 arch=('x86_64')
@@ -25,14 +25,15 @@ package() {
    
    # building the lastest release of rctc
    cd "rctc"
+   DOTNET_CLI_HOME=/tmp
    dotnet build -c Release
 
    # install compiled binary
    cd "bin/Release/netcoreapp3.1/"
-   mkdir -p "$pkgdir/usr/bin/rctc"
-   mkdir -p "$pkgdir/usr/bin/rctc/Packages"
-   install -Dm755 ./rctc ./rctc.dll ./rctc.runtimeconfig.json ./ReCT.dll "$pkgdir/usr/bin/rctc"
-   install -Dm755 ./Json.Net.dll ./Mono.Cecil.dll ./Mono.Options.dll ./Mono.Cecil.Rocks.dll "$pkgdir/usr/bin/rctc"
+   mkdir -p "$pkgdir/usr/bin/rect"
+   mkdir -p "$pkgdir/usr/bin/rect/Packages"
+   install -Dm755 ./rctc ./rctc.dll ./rctc.runtimeconfig.json ./ReCT.dll "$pkgdir/usr/bin/rect"
+   install -Dm755 ./Json.Net.dll ./Mono.Cecil.dll ./Mono.Options.dll ./Mono.Cecil.Rocks.dll "$pkgdir/usr/bin/rect"
 
    # building all system packages
    cd ../../../..
@@ -46,7 +47,8 @@ package() {
       dotnet build -c Release
       cd "./bin/Release/netcoreapp3.1/"
       mv "./${i}lib.dll" "./ReCT.${i}.pack"
-      install -Dm755 "./ReCT.${i}.pack" "$pkgdir/usr/bin/rctc/Packages"
+      install -Dm755 "./ReCT.${i}.pack" "$pkgdir/usr/bin/rect/Packages"
       cd ../../../..
    done
+   ln -sf "$pkgdir/usr/bin/rect/rctc" "$pkgdir/usr/bin/rctc"
 }
