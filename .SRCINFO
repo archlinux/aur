@@ -1,0 +1,14 @@
+pkgbase = rctc
+	pkgdesc = Commandline Compiler for the ReCT Programming language
+	pkgver = 2.3.1.420
+	pkgrel = 1
+	url = http://rect.ml/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk-3.1
+	depends = dotnet-runtime-3.1
+	source = rctc::git://github.com/RedCubeDev-ByteSpace/ReCT.git
+	md5sums = SKIP
+
+pkgname = rctc
