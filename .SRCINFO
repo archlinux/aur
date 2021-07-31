@@ -1,6 +1,6 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = 3.3.2.r236.g9f6b6a3
+	pkgver = 6.0.0.r24.gd12d2940
 	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-qq
 	install = gala.install
@@ -15,8 +15,9 @@ pkgbase = pantheon-workarounds
 	depends = gnome-session
 	depends = xdg-user-dirs-gtk
 	depends = pantheon-applications-menu
-	depends = plank
-	depends = libwingpanel-3.0.so
+	depends = pantheon-dock
+	depends = pantheon-settings-daemon
+	depends = wingpanel
 	optdepends = contractor: A desktop-wide extension service
 	optdepends = dconf-editor: GUI gsettings editor
 	optdepends = elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme
@@ -31,7 +32,7 @@ pkgbase = pantheon-workarounds
 	optdepends = pantheon-files: The Pantheon File Browser
 	optdepends = pantheon-geoclue2-agent: Pantheon Geoclue2 Agent
 	optdepends = pantheon-music: The Pantheon Music Player
-	optdepends = pantheon-notifications-git: A Gtk notification server for Pantheon
+	optdepends = pantheon-notifications: A Gtk notification server for Pantheon
 	optdepends = pantheon-photos: The Pantheon Photos Manager
 	optdepends = pantheon-polkit-agent: Pantheon Polkit Agent
 	optdepends = pantheon-print: Simple shim for printing support via Contractor
@@ -39,8 +40,8 @@ pkgbase = pantheon-workarounds
 	optdepends = pantheon-terminal: The Pantheon Terminal Emulator
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
 	optdepends = wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)
-	provides = libgala.so=0-64
-	conflicts = libgala.so=0-64
+	provides = libgala.so
+	conflicts = libgala.so
 	source = https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in
 	source = pantheon-session-qq
 	source = numlockx-pantheon.desktop
@@ -57,4 +58,3 @@ pkgbase = pantheon-workarounds
 	sha256sums = 26bf13c56a66172e5d70c7b35dc5b8dbdcbbe8d32d3fb666e26e05c0b7e62ee7
 
 pkgname = pantheon-workarounds
-

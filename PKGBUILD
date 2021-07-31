@@ -3,7 +3,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=3.3.2.r236.g9f6b6a3
+pkgver=6.0.0.r24.gd12d2940
 pkgrel=1
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 groups=('pantheon-qq')
 depends=("cinnamon-settings-daemon"
          "dconf" gnome-{keyring,session} "xdg-user-dirs-gtk"
-         "pantheon-applications-menu" "plank" "libwingpanel-3.0.so")
+         pantheon-{applications-menu,dock,settings-daemon} "wingpanel")
 optdepends=("contractor: A desktop-wide extension service"
             "dconf-editor: GUI gsettings editor"
             "elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme"
@@ -27,7 +27,7 @@ optdepends=("contractor: A desktop-wide extension service"
             "pantheon-files: The Pantheon File Browser"
             "pantheon-geoclue2-agent: Pantheon Geoclue2 Agent"
             "pantheon-music: The Pantheon Music Player"
-            "pantheon-notifications-git: A Gtk notification server for Pantheon"
+            "pantheon-notifications: A Gtk notification server for Pantheon"
             "pantheon-photos: The Pantheon Photos Manager"
             "pantheon-polkit-agent: Pantheon Polkit Agent"
             "pantheon-print: Simple shim for printing support via Contractor"
@@ -36,8 +36,8 @@ optdepends=("contractor: A desktop-wide extension service"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
             "wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)")
 makedepends=('git' 'intltool')
-provides=("libgala.so=0-64")
-conflicts=("libgala.so=0-64")
+provides=("libgala.so")
+conflicts=("libgala.so")
 install='gala.install'
 source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"
         'pantheon-session-qq'
