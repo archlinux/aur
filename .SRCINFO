@@ -1,16 +1,14 @@
 pkgbase = buzhug
 	pkgdesc = a fast pure-Python database engine, using a Pythonic, no-SQL syntax
 	pkgver = 1.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://buzhug.sourceforge.net/
 	arch = any
 	license = BSD
-	makedepends = unzip
 	depends = python2
-	source = http://downloads.sourceforge.net/buzhug/buzhug-1.8.zip
+	source = https://downloads.sourceforge.net/buzhug/buzhug-1.8.zip
 	source = LICENSE
 	md5sums = a5c15b484c91a55db35e71447d2e709c
 	md5sums = 0fbf9b394a8e03fa25f013410cd92225
 
 pkgname = buzhug
-
