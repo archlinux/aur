@@ -1,6 +1,6 @@
 #!/bin/bash
 pkgname=python-commitizen
-pkgver=2.17.4
+pkgver=2.17.13
 pkgrel=0
 pkgdesc="Create committing rules for projects, auto bump versions, and auto changelog generation"
 arch=('any')
@@ -11,22 +11,24 @@ makedepends=(
   'python-dephell'
 )
 checkdepends=(
-  'python-pytest'
+  'python-pytest-freezegun'
   'python-pytest-mock'
+  'python-pytest-regressions'
+  'python-pytest'
 )
 depends=(
-  'python-questionary'
-  # 'python-decli'
-  'python-colorama'
-  'python-termcolor'
-  'python-packaging'
-  'python-tomlkit'
-  'python-jinja'
-  'python-pyaml'
   'python-argcomplete'
+  'python-colorama'
+  'python-decli'
+  'python-jinja'
+  'python-packaging'
+  'python-pyaml'
+  'python-questionary'
+  'python-termcolor'
+  'python-tomlkit'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6cf0fbf9378bf4d247084ad156ec054ce004c72dfd621b93e9871ef957e78dad')
+sha256sums=('c56c617956fd7bb31cc18718a9125adbf714ce6d75887cfaecaf8076a3702bd1')
 
 _pkgname="${pkgname/python-/}"
 
@@ -36,6 +38,7 @@ prepare() {
   # Skip test that checks the root folder of the repo but as we download the tar ball
   # it would detect aur as its root
   sed -i'' 's/test_find_git_project_root/skip_find_git_project_root/' tests/test_conf.py
+  sed -i'' 's/test_get_commits_with_signature/skip_get_commits_with_signature/' tests/test_git.py
 }
 
 check() {
