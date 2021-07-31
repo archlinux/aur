@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxlib
 	pkgdesc = Standard library for ppx rewriters
 	pkgver = 0.22.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ppxlib
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppxlib
 	depends = ocaml-sexplib0
 	depends = ocaml-stdlib-shims
 	options = !strip
-	source = ocaml-ppxlib-0.22.2-1.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.22.2.tar.gz
+	source = ocaml-ppxlib-0.22.2-2.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.22.2.tar.gz
 	source = ocaml-migrate-parsetree2.diff
 	sha256sums = 8bdb42e3fb17240ad5578da621c37c73bbc02507ecc27d193d1b4cf11a4ea05d
 	sha256sums = 7c9586671c3b39e49b7f38c7c7765887cba1a9417484b3c1112677997da35d12
