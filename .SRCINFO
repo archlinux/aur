@@ -1,7 +1,7 @@
 pkgbase = ocaml-charinfo_width
 	pkgdesc = Determine column width for a character
 	pkgver = 1.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kandu/charInfo_width
 	arch = x86_64
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = ocaml-charinfo_width
 	depends = ocaml-camomile>=1.0.0
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-charinfo_width-1.1.0-6.tar.gz::https://github.com/kandu/charInfo_width/archive/1.1.0.tar.gz
-	source = ocaml-charinfo_width-1.1.0-6-LICENSE::https://github.com/kandu/charInfo_width/raw/20aaaa6dca8f1e0b1ace55b6f2a8ba5e5910b620/LICENSE
+	source = ocaml-charinfo_width-1.1.0-7.tar.gz::https://github.com/kandu/charInfo_width/archive/1.1.0.tar.gz
+	source = ocaml-charinfo_width-1.1.0-7-LICENSE::https://github.com/kandu/charInfo_width/raw/20aaaa6dca8f1e0b1ace55b6f2a8ba5e5910b620/LICENSE
 	sha256sums = 21b2ed7a7bfb92da47c01edb4126c0f2dedda37c9c07c8e17ab58abe38838172
 	sha256sums = 861f4f38563857ccf124b890b03182a1711c685b8e55c07e4e2565add10c885a
 

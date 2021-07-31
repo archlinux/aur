@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _opamname='charInfo_width'
 pkgname="ocaml-${_opamname,,}"
 pkgver='1.1.0'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Determine column width for a character'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kandu/$_opamname"
