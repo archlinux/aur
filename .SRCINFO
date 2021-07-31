@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 18 Early-Access Build
-	pkgver = 18_dc2528b
+	pkgver = 18_a5ca4f3
 	pkgrel = 1
-	epoch = 77
+	epoch = 78
 	url = https://jdk.java.net/loom/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-loom-ea-bin
 	provides = java-runtime-openjdk=18
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/77/jdk-18-loom-linux.tar.gz
-	sha256sums = 8949b0d824c0fdb351881f675b4bd38bfaf27a92402acdb342067025463cdeac
+	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/78/jdk-18-loom-linux.tar.gz
+	sha256sums = a3c7a39d2f65eb72e9723ffc943b6408f32319dd195949dc134890757210de46
 
 pkgname = java-openjdk-loom-ea-bin
