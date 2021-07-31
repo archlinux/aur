@@ -1,8 +1,8 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-es-ar
-pkgver=2.53.5
-pkgrel=2
+pkgver=2.53.8.1
+pkgrel=1
 _lang=es-AR
 pkgdesc="Spanish (Argentina) language pack for SeaMonkey"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('9f4c8b45a4342cf32751a99f43b60493eba2d1accb1fadeb4611521d9e90f39f40764c8ffa3665956ed2e565b0d88bd309c766c00a5e87ba8c3409607646aa9c')
+sha512sums=('eb2731b5cb41a54c0824686619040ef840c5da24035d367169814438901fac87e29cb6835dde314c08e618a9fe51d2f213a335e346c39ccd7574ded043f0f2bb')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
