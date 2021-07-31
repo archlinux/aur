@@ -13,18 +13,21 @@ function cleanup {
 trap cleanup EXIT
 PATH=/usr/lib/jvm/java-${java_}-graalvm/bin/:$(systemd-path search-binaries-default)
 
-printf '%s\n' 'Testing polyglot R, JavaScript, and Java...'
+printf '%s\n' 'Testing polyglot R, JavaScript, Python, Ruby, and Java...'
 
 cat > test.R << 'EOF'
 jsPlus = eval.polyglot('js', '(function(s1, s2) { return s1 + s2; })')
+pythonPlus = eval.polyglot('python', 'lambda s1, s2: s1 + s2')
+rubyOne = eval.polyglot('ruby', '1')
+pythonOne = eval.polyglot('python', '1')
 rOne = 1
 jvmPrint = java.type("java.lang.System")$out$println
-jvmPrint(jsPlus(rOne, rOne))
+jvmPrint(pythonPlus(jsPlus(rubyOne, pythonOne), rOne))
 EOF
 
-rTwo=$(Rscript --polyglot --jvm test.R) || exit
-if [[ $rTwo != 2 ]]; then
-    printf 'expected 2, got %q\n' "$rTwo"
+rThree=$(Rscript --polyglot --jvm test.R) || exit
+if [[ $rThree != 3 ]]; then
+    printf 'expected 3, got %q\n' "$rThree"
     exit 1
 fi
 
