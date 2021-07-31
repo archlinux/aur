@@ -10,7 +10,6 @@ pkgbase = ulauncher-revived-git
 	makedepends = git
 	makedepends = yarn
 	makedepends = python-setuptools
-	makedepends = python-distutils-extra
 	depends = gobject-introspection-runtime
 	depends = libkeybinder3
 	depends = gtk3
