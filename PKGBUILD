@@ -4,7 +4,7 @@
 
 _pkgname=android-studio
 pkgname="${_pkgname}-dummy"
-pkgver=2.2.3.0
+pkgver=2020.3.1
 pkgrel=1
 _pkgdesc='The official Android IDE'
 pkgdesc="${_pkgdesc}, dummy package"
@@ -13,7 +13,8 @@ url='http://tools.android.com/'
 license=('APACHE')
 depends=('alsa-lib' 'freetype2' 'java-environment' 'libxrender' 'libxtst')
 optdepends=('gtk2: GTK+ look and feel'
-            'libgl: emulator support')
+            'libgl: emulator support'
+            'ncurses5-compat-libs: native debugger support')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'android-studio-beta' 'android-studio-dev' 'android-studio-canary')
