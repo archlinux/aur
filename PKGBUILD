@@ -4,8 +4,8 @@
 pkgname=hashbrown-git
 _pkgname=hashbrown
 _app_id=dev.geopjr.Hashbrown
-pkgver=v1.3.2.r0.g8f0ac42
-pkgrel=3
+pkgver=1.3.2.r0.g8f0ac42
+pkgrel=1
 pkgdesc="A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
 url="https://github.com/GeopJr/Hashbrown"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_source"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
