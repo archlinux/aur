@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_js_style
 	pkgdesc = Code style checker for Jane Street Packages
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_js_style
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_js_style
 	depends = ocaml-octavius
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_js_style-0.14.1-1.tar.gz::https://github.com/janestreet/ppx_js_style/archive/v0.14.1.tar.gz
+	source = ocaml-ppx_js_style-0.14.1-2.tar.gz::https://github.com/janestreet/ppx_js_style/archive/v0.14.1.tar.gz
 	sha256sums = 3c5e1db934c3695315e00e27fd2df1f32efcb5c8f1c88b046b64b8548ccc04db
 
 pkgname = ocaml-ppx_js_style
