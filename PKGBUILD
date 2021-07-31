@@ -5,7 +5,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
 pkgver='0.156.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A static type checker for JavaScript'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://$pkgname.org"
@@ -20,8 +20,8 @@ _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	# ignore warnings that upstream escalates to errors for some reason
-	OCAMLPARAM='_,warn-error=-60-67' make
+	# use the default ocaml behaviour to ignore warnings that upstream escalates to errors for some reason
+	OCAMLPARAM='_,warn-error=-a+31' make
 }
 
 check() {
