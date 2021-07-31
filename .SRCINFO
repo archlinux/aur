@@ -1,0 +1,15 @@
+pkgbase = oq-bin
+	pkgdesc = A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/blacksmoke16/oq
+	arch = x86_64
+	license = MIT
+	provides = oq
+	conflicts = oq
+	source = oq-1.2.1::https://github.com/blacksmoke16/oq/archive/v1.2.1.tar.gz
+	sha256sums = dc71c2662aa67a74add7331b5275dbce2c52adcab88767d356bcdd96f4e73b46
+	source_x86_64 = https://github.com/blacksmoke16/oq/releases/download/v1.2.1/oq-v1.2.1-linux-x86_64
+	sha256sums_x86_64 = 469f9497c02942f98601e6ab4c49b4751cecb82f4d3424afb9d302eb1551a80a
+
+pkgname = oq-bin
