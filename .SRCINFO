@@ -1,6 +1,6 @@
 pkgbase = audiowaveform
 	pkgdesc = Generate waveform data and render waveform images from audio files
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/bbc/audiowaveform
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = audiowaveform
 	depends = libid3tag
 	depends = gd
 	depends = boost-libs
-	source = audiowaveform-1.5.0.tar.gz::https://github.com/bbc/audiowaveform/archive/1.5.0.tar.gz
-	sha1sums = 8793cfb3971947ecf6fd8dd822738d3f6723c157
+	source = audiowaveform-1.5.1.tar.gz::https://github.com/bbc/audiowaveform/archive/1.5.1.tar.gz
+	sha1sums = 221b4706c1f486845bd65fa158bfd5a8db1d169c
 
 pkgname = audiowaveform
