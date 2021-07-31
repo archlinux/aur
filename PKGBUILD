@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_fail'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.0'
-pkgrel='2'
+pkgrel='3'
 epoch='1'
 pkgdesc='Add location to calls to failwiths'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
