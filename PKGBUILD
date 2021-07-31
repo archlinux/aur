@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pijul
-pkgver=1.0.0_alpha.52
+pkgver=1.0.0_alpha.53
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A sound and fast distributed version control system"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('zstd' 'openssl' 'xxhash')
 makedepends=('cargo' 'clang' 'libsodium' 'gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$_pkgver.crate")
-b2sums=('87ef8eea79cf20f2c9ab119dce66fdb24c88f0d7a8f8bfa6407a5cd7768cb52f1c36748fb4b7e6c82a7e3946fa6dd644ff7d3cfa32da4cb55e28ea8c031d7c01')
+b2sums=('686e00bbc4dd42343c08f8b7c2a65b04aada355d8ea7a2e51acdeacee10991a87d71b0146eb676346730b2f69b3c57a2a662762e7b7980516c3856cd170d205d')
 
 build() {
   cd "$pkgname-$_pkgver"
