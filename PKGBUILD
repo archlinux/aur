@@ -1,21 +1,22 @@
-# Maintainer: Christopher Vittal ("viralstitch") <chris@vittal.dev>
+# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
+# Contributor: Christopher Vittal ("viralstitch") <chris@vittal.dev>
 
 pkgname=htslib
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
-pkgdesc="library for high-throughput sequencing data formats"
-arch=('i686' 'x86_64')
-url="https://github.com/samtools/htslib"
+pkgdesc='A C library for high-throughput sequencing data formats'
+arch=('x86_64')
+url="https://github.com/samtools/${pkgname}"
 license=('custom')
 depends=('bzip2' 'curl' 'xz')
 provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
-source=(https://github.com/samtools/htslib/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('2280141b46e953ba4ae01b98335a84f8e6ccbdb6d5cdbab7f70ee4f7e3b6f4ca')
+source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('f2407df9f97f0bb6b07656579e41a1ca5100464067b6b21bf962a2ea4b0efd65')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -27,18 +28,18 @@ build() {
 }
 
 check() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
   make check
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR=${pkgdir} install
 
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # htslib shared library comes installed as 0644
-  chmod +x $pkgdir/usr/lib/libhts.so.*.*
+  chmod +x ${pkgdir}/usr/lib/libhts.so.*.*
 }
