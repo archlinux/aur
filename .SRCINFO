@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_optional
 	pkgdesc = Pattern matching on flat options
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janestreet/ppx_optional
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-ppx_optional
 	depends = ocaml-base>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_optional-0.14.0-2.tar.gz::https://github.com/janestreet/ppx_optional/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_optional-0.14.0-3.tar.gz::https://github.com/janestreet/ppx_optional/archive/v0.14.0.tar.gz
 	sha256sums = 8a7db222cb6b6ca7b946890182d060edb2492912b29b36f74ef22b7c9d3c2be9
 
 pkgname = ocaml-ppx_optional
