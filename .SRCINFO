@@ -1,0 +1,22 @@
+pkgbase = jackctl-git
+	pkgdesc = A no fuss solution to wrangling Pro-Audio on Linux
+	pkgver = 0.0.0.47
+	pkgrel = 1
+	url = https://gitlab.com/IGBC/jackctl
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = gtk3
+	makedepends = cmake
+	makedepends = make
+	makedepends = clang
+	depends = gtk3
+	depends = jack2
+	depends = libappindicator-gtk3
+	provides = jackctl
+	conflicts = jackctl
+	source = jackctl-git::git+https://gitlab.com/IGBC/jackctl
+	sha1sums = SKIP
+
+pkgname = jackctl-git
