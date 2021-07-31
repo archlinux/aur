@@ -7,17 +7,11 @@ pkgdesc="Neovim GUI written in Golang, using a Golang qt backend (git build)"
 arch=('x86_64')
 url="https://github.com/akiyosi/goneovim"
 license=('MIT')
-groups=()
 depends=('neovim' 'glibc' 'gcc-libs' 'libx11' 'nss' 'nspr' 'fontconfig' 'freetype2' 'expat' 'zlib' 'libglvnd' 'libxcb')
 makedepends=('git' 'go' 'qt5-base' 'qt5-tools' 'qt5-webengine' 'qt5-multimedia' 'qt5-svg' 'qt5-declarative' 'qt5-webchannel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "goneovim-bin")
-replaces=()
-backup=()
-options=()
-install=
 source=('goneovim::git+https://github.com/akiyosi/goneovim.git' 'goneovim.desktop' 'goneovim.ico')
-noextract=()
 sha256sums=('SKIP'
             'bb7dd036f10fe1e9132d2bbbf346e99234425b012fadf177bb212c472ac5fca0'
             '0a36211b6ada93d811575b5ca9b33511e405f61cca791858ea2fe1eb5d29279e')
