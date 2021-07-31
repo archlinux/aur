@@ -1,7 +1,7 @@
 pkgbase = ocaml-typerep
 	pkgdesc = A library for runtime types
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/typerep
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ocaml-typerep
 	depends = ocaml>=4.04.2
 	depends = ocaml-base>=0.14.0
 	options = !strip
-	source = ocaml-typerep-1:0.14.0-2.tar.gz::https://github.com/janestreet/typerep/archive/v0.14.0.tar.gz
+	source = ocaml-typerep-1:0.14.0-3.tar.gz::https://github.com/janestreet/typerep/archive/v0.14.0.tar.gz
 	sha256sums = f71d5094dbbaa9a0b70e68730cfa0140ca91962a69ac496673346d0af2d29648
 
 pkgname = ocaml-typerep
