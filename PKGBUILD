@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/wagoodman/dive"
 license=('MIT')
 
-conflicts=('dive')
+conflicts=('dive' 'dive-git')
 provides=('dive')
 
 source=("https://github.com/wagoodman/dive/releases/download/v${pkgver}/dive_${pkgver}_linux_amd64.tar.gz")
