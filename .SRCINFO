@@ -1,14 +1,13 @@
 pkgbase = seamonkey-i18n-pl
 	pkgdesc = Polish language pack for SeaMonkey
-	pkgver = 2.53.5
-	pkgrel = 2
+	pkgver = 2.53.8.1
+	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = any
 	license = MPL
-	depends = seamonkey>=2.53.5
-	noextract = seamonkey-2.53.5.pl.langpack.xpi
-	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.5/langpack/seamonkey-2.53.5.pl.langpack.xpi
-	sha512sums = 301af19fa2cd025179ed4c791351cb460e648973c3a2348c14cc4ffdbf463925c03105d6ada8073d5c5a0b131461d776b3bb926f7d2592442448292ebd35809c
+	depends = seamonkey>=2.53.8.1
+	noextract = seamonkey-2.53.8.1.pl.langpack.xpi
+	source = https://ftp.mozilla.org/pub/seamonkey/releases/2.53.8.1/langpack/seamonkey-2.53.8.1.pl.langpack.xpi
+	sha512sums = d2539c855ba9d15f77b7aecbae346c91ff15128744be7943c7b76c73b0224438232cf462b14394a33ba3f03ffbffedc9f5e1715250853a0a7564e1ea753a1b80
 
 pkgname = seamonkey-i18n-pl
-
