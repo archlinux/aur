@@ -2,8 +2,8 @@
 
 pkgname=python-kifield
 _name=${pkgname#python-}
-pkgver=0.1.16
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A utility for manipulating part fields in KiCad schematic files or "\
 "libraries."
 url="https://github.com/xesscorp/KiField"
@@ -19,7 +19,7 @@ source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
 )
 provides=("$pkgname")
-md5sums=('f2b1cfbeef2b714fcb98a7194fd45e91')
+md5sums=('312523298662438e2649d0f431a4cc6d')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}/"
