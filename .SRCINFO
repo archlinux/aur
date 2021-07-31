@@ -1,6 +1,6 @@
 pkgbase = ocaml-dtools
 	pkgdesc = OCaml modules for writing daemons
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-dtools
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ocaml-dtools
 	depends = ocaml
 	depends = ocaml-syslog
 	options = !strip
-	source = https://github.com/savonet/ocaml-dtools/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 14b86fb86a8059e071197832385262578f6a9792596ece52da8173b855e60dcd
+	source = https://github.com/savonet/ocaml-dtools/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 969b58a06f5bb09164c44db5c127533515fe194f72a49b5dfa14acb359fa0004
 
 pkgname = ocaml-dtools

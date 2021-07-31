@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-dtools
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="OCaml modules for writing daemons"
 arch=('i686' 'x86_64')
@@ -31,4 +31,4 @@ package() {
   ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('14b86fb86a8059e071197832385262578f6a9792596ece52da8173b855e60dcd')
+sha256sums=('969b58a06f5bb09164c44db5c127533515fe194f72a49b5dfa14acb359fa0004')
