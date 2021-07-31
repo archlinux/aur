@@ -1,0 +1,13 @@
+pkgbase = governor-switcher-git
+	pkgdesc = Bash script to change CPU scaling_governor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/i-can-not-program/governor-switcher
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/i-can-not-program/governor-switcher.git
+	md5sums = SKIP
+
+pkgname = governor-switcher-git
