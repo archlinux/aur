@@ -12,7 +12,7 @@ depends=('glibc' 'libbsd' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=('minizip' 'minizip-ng' 'minizip-git' 'minizip-asm')
 provides=('minizip' 'minizip-ng' 'minizip-git')
-optdepends=('zstd: enables zstd compression' 'lzma: enables lzma compression' 'bzip2: enables bzip2 compression' 'openssl: enables encryption via openssl')
+optdepends=('zstd: enables zstd compression' 'xz: enables xz and lzma compression' 'bzip2: enables bzip2 compression' 'openssl: enables encryption via openssl')
 source=("git+https://github.com/zlib-ng/minizip-ng#branch=dev")
 sha256sums=('SKIP')
 
