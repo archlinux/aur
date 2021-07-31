@@ -1,27 +1,50 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: carstene1ns <arch carsten-teibes de>
 
 _gemname=guard-nanoc
 pkgname=ruby-$_gemname
-pkgver=2.1.4
+pkgver=2.1.9
 pkgrel=1
-pkgdesc='Guard helper gem for nanoc static site generator'
+pkgdesc="Guard helper gem for Nanoc"
 arch=('any')
-url='https://github.com/nanoc/nanoc/tree/master/guard-nanoc'
+url="https://nanoc.app"
 license=('MIT')
-depends=("ruby-guard" "nanoc")
-makedepends=("ruby-rdoc")
-options=(!emptydirs)
+depends=(
+  'ruby'
+  'ruby-guard'
+  'ruby-guard-compat'
+  'ruby-nanoc-cli'
+  'ruby-nanoc-core'
+)
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('505978cac1c5b9cb814156ef7b1006a2bd07bff6d91819cc4ef80aaaa4db7b11')
+b2sums=('b63e4353b47533eacaaf2f7d817f1b6c7d2ec41d022174d73c9292a66292fa990a2d4a53c27c148fe1c5a04ca2bcbafcb667ff8468b67c818c114b1110e6e04f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  # license
-  install -Dm644 "$pkgdir/$_gemdir"/gems/$_gemname-$pkgver/LICENSE \
-    "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  gem install \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  cd "gems/$_gemname-$pkgver"
+  rm -vrf "$_gemname.gemspec" Rakefile
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" *.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
