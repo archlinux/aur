@@ -1,0 +1,20 @@
+pkgbase = min-ed-launcher-bin
+	pkgdesc = Minimal Elite Dangerous Launcher
+	pkgver = v0.5.3
+	pkgrel = 1
+	url = https://github.com/Rfvgyhn/min-ed-launcher
+	install = min-ed-launcher.install
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = MIT
+	provides = min-ed-launcher
+	conflicts = min-ed-launcher
+	options = !strip
+	source = https://github.com/Rfvgyhn/min-ed-launcher/releases/download/v0.5.3/min-ed-launcher_v0.5.3_linux-x64.tar.gz
+	source = CHANGELOG.md
+	source = min-ed-launcher.install
+	sha256sums = f94fe90b98bb518f71b8144c0e8e8af24fe0b71823241a81570f5ed0d173489d
+	sha256sums = 1202a6afc4f6dcb177840ddaee878a01f73b7c0541f859c8e78f32fb5cb2906b
+	sha256sums = e6827e6d4705ad29af2d87803f2824f9590af5650289aea005846baf5e58db4c
+
+pkgname = min-ed-launcher-bin

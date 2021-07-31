@@ -1,0 +1,7 @@
+post_install() {
+    echo 'Remember to configure your game launch options'
+}
+
+post_remove() {
+    echo 'Remember to revert your game launch options'
+}
