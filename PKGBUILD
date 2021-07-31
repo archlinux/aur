@@ -1,7 +1,7 @@
 # Maintainer: SoMuchForSubtlety <s0muchfrsubtlety@gmail.com>
 pkgname=f1viewer
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="TUI client for F1TV"
 arch=('any')
 url="https://github.com/SoMuchForSubtlety/f1viewer"
@@ -12,14 +12,14 @@ optdepends=('mpv: play videos using mpv'
             'kwallet: secret store backend')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SoMuchForSubtlety/f1viewer/archive/v${pkgver}.tar.gz")
-sha256sums=('59354ef3b1ec29e28b845709558270b745ef473a086e550f09598572fb2efa62')
+sha256sums=('d6a512af83572939e62125b90a9d72ae12a1672c4e6c5760cb924f921abef053')
 
 build() {
   cd "${pkgname}-${pkgver}"
   go build \
     -trimpath \
     -ldflags="-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" \
-    -o $pkgname ./cmd/main.go
+    -o $pkgname .
 }
 
 package() {
