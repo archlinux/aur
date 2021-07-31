@@ -2,16 +2,16 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r291.g51828fd
+pkgver=0.3.7.r294.g50660ed
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl' 'freeglut'
-             'gtest' 'gmock' 'python' 'asciidoc' 'doxygen' 'graphviz'
-             'java-environment' 'highway' 'xdg-utils')
+             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl'
+             'freeglut' 'gtest' 'gmock'  'python' 'asciidoc' 'doxygen'
+             'graphviz' 'java-environment' 'highway' 'xdg-utils')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/lvandeve/lodepng.git'
@@ -82,6 +82,8 @@ package_libjxl-git() {
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'giflib: for CLI tools'
                 'gimp: for gimp plugin'
+                'gperftools: for CLI tools and gimp plugin'
+                'java-runtime: for JNI bindings'
                 'libjpeg-turbo: for CLI tools'
                 'libpng: for CLI tools'
                 'openexr: for CLI tools')
