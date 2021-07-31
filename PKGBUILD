@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Portable Linux/Mac tool for Retroactive 64drive'
 arch=('x86_64')
 license=('MIT')
+url='https://github.com/rasky/g64drive'
 makedepends=('go')
 depends=('libftdi')
 source=("https://github.com/rasky/g64drive/archive/refs/tags/v${pkgver}.tar.gz")
