@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_sexp_message
 	pkgdesc = A ppx rewriter for easy construction of s-expressions
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_message
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppx_sexp_message
 	depends = ocaml-ppx_sexp_conv>=0.14.0
 	depends = ocaml-ppxlib>=0.18.0
 	options = !strip
-	source = ocaml-ppx_sexp_message-1:0.14.1-1.tar.gz::https://github.com/janestreet/ppx_sexp_message/archive/v0.14.1.tar.gz
+	source = ocaml-ppx_sexp_message-1:0.14.1-2.tar.gz::https://github.com/janestreet/ppx_sexp_message/archive/v0.14.1.tar.gz
 	sha256sums = 4e625145e9cd6f89e3cecd3b14f6d68e0ac09ed24f629a407f9019685167a119
 
 pkgname = ocaml-ppx_sexp_message
