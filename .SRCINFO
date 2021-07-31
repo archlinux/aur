@@ -1,18 +1,26 @@
 pkgbase = classikstyles
-	pkgdesc = A highly customizable binary Window Decoration and Application Style plugin for recent versions of the KDE Plasma
+	pkgdesc = A highly customizable binary Window Decoration and Application Style plugin for recent versions of the KDE Plasma desktop. It provides the Classik, Kite, Oxygen/Breeze, and Redmond icon styles.
 	pkgver = 2.6.breeze5.22.80
 	pkgrel = 1
 	url = https://github.com/paulmcauley/classikstyles
 	arch = x86_64
-	arch = aarch64
+	groups = plasma
 	license = GPL
-	makedepends = kdecoration
-	makedepends = qt5-declarative
-	makedepends = qt5-x11extras
+	makedepends = git
 	makedepends = cmake
 	makedepends = make
 	makedepends = gcc
 	makedepends = extra-cmake-modules
+	makedepends = kcmutils
+	makedepends = kdecoration
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	depends = frameworkintegration>=5.82
+	depends = kdecoration
+	depends = breeze-icons
+	depends = kwayland
+	depends = hicolor-icon-theme
+	optdepends = kcmutils-git: for breeze-settings
 	source = classikstyles-2.6.breeze5.22.80::https://github.com/paulmcauley/classikstyles/archive/refs/tags/2.6.breeze5.22.80.tar.gz
 	sha256sums = cd51527abf63127553e1c8ebb4a22cc2fb6b63c6f97bb2f3dd3251f2ab9b5bb4
 
