@@ -1,7 +1,7 @@
 pkgbase = peerflix-server
 	pkgdesc = Streaming torrent client for node.js with web ui
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/asapach/peerflix-server
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = peerflix-server
 	sha256sums = 88da04100ee77e2ac03e87b22636147ff38bb091f9b03e2e7df1e57027a0b2bf
 
 pkgname = peerflix-server
-

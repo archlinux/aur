@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=peerflix-server
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Streaming torrent client for node.js with web ui"
 arch=('i686' 'x86_64')
 url="https://github.com/asapach/peerflix-server"
@@ -33,5 +33,5 @@ package() {
 }
 
 sha256sums=('0e7df5ed1521ff0f1f1e039cccdc20b1c92a3b0edc1d38e5e524db37559cd006'
-  '669025775203d7e39255be921e51d93781ee74b10d3e8bf22d381035c2605fcc'
-  '88da04100ee77e2ac03e87b22636147ff38bb091f9b03e2e7df1e57027a0b2bf')
+            '669025775203d7e39255be921e51d93781ee74b10d3e8bf22d381035c2605fcc'
+            '88da04100ee77e2ac03e87b22636147ff38bb091f9b03e2e7df1e57027a0b2bf')
