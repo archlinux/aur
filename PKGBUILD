@@ -1,8 +1,8 @@
 # Maintainer: 3ED <krzysztof1987 at gmail>
 
 pkgname=seamonkey-i18n-ru
-pkgver=2.53.5
-pkgrel=2
+pkgver=2.53.8.1
+pkgrel=1
 _lang=ru
 pkgdesc="Russian language pack for SeaMonkey"
 arch=('any')
@@ -11,7 +11,7 @@ url="http://www.seamonkey-project.org/"
 depends=("seamonkey>=${pkgver}")
 source=(https://ftp.mozilla.org/pub/seamonkey/releases/${pkgver}/langpack/seamonkey-${pkgver}.${_lang}.langpack.xpi)
 noextract=(seamonkey-${pkgver}.${_lang}.langpack.xpi)
-sha512sums=('f7cb4ff5d3df94c874c3caf893956694fb2ca6078e6357f90d73fea237183f2118c88522babf22eebd1e38f63209b04c4249c61e551d7e100376e7ffb6446df5')
+sha512sums=('2656e16a77300d5066b94ed70efefef6ae74fe043167a1727d9f446a2c809b4f745d70b66abc7449c3e645d2c8cd02ec4250906e9e009ad3a8bd55070007cc18')
 
 package() {
   install -Dm644 "${srcdir}/seamonkey-${pkgver}.${_lang}.langpack.xpi" \
