@@ -5,6 +5,8 @@ pkgbase = dive-bin
 	url = https://github.com/wagoodman/dive
 	arch = x86_64
 	license = MIT
+	provides = dive
+	conflicts = dive
 	source = https://github.com/wagoodman/dive/releases/download/v0.10.0/dive_0.10.0_linux_amd64.tar.gz
 	sha256sums = 9541997876d4985de66d0fa5924dac72258a3094ef7d3f6ef5fa5dcf6f6a47ad
 
