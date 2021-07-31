@@ -2,9 +2,9 @@
 pkgname=python-certauth
 _name=${pkgname#python-}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Certificate Authority for MITM proxies"
-url="https://gitlab.com/ikreymer/certauth"
+url="https://github.com/ikreymer/certauth"
 depends=(
     'python'
     'python-pyopenssl'
