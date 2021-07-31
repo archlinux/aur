@@ -1,9 +1,9 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ocplib-endian'
 pkgname="ocaml-$_projectname"
 pkgver='1.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/OCamlPro/$_projectname"
