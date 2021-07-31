@@ -1,13 +1,12 @@
 pkgbase = aref-ruqaa-font
 	pkgdesc = an Arabic typeface that aspires to capture the classical Ruqaa calligraphic style
 	pkgver = 1.003
-	pkgrel = 1
-	url = https://github.com/alif-type/aref-ruqaa
+	pkgrel = 2
+	url = https://github.com/aliftype/aref-ruqaa
 	arch = any
 	license = OFL
 	provides = aref-ruqaa-font
-	source = https://github.com/alif-type/aref-ruqaa/releases/download/v1.003/ArefRuqaa-1.003.zip
+	source = https://github.com/aliftype/aref-ruqaa/releases/download/v1.003/ArefRuqaa-1.003.zip
 	sha256sums = 26c4b0690d48d3fba4d8b3d0a004c92e9f9cf5f476a6a2fcbc5221427bf1dcb3
 
 pkgname = ttf-aref-ruqaa
-
