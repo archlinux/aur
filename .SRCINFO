@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_base
 	pkgdesc = Base set of ppx rewriters
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janestreet/ppx_base
 	arch = x86_64
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = ocaml-ppx_base
 	depends = ocaml-ppx_sexp_conv>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_base-0.14.0-2.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_base-0.14.0-3.tar.gz::https://github.com/janestreet/ppx_base/archive/v0.14.0.tar.gz
 	sha256sums = 3c5073365367705742038d98284f9813d837efcf3d2172e22eecad166410dcf9
 
 pkgname = ocaml-ppx_base
