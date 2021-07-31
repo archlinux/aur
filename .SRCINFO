@@ -1,7 +1,7 @@
 pkgbase = ocaml-migrate-parsetree2
 	pkgdesc = Convert OCaml parsetrees between different major versions - 2.x.x version
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ocaml-migrate-parsetree
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = ocaml-migrate-parsetree2
 	makedepends = dune>=2.3.0
 	depends = ocaml>=4.02.3
 	options = !strip
-	source = ocaml-migrate-parsetree2-2.2.0-1.tar.gz::https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v2.2.0.tar.gz
+	source = ocaml-migrate-parsetree2-2.2.0-2.tar.gz::https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v2.2.0.tar.gz
 	source = ocaml-migrate-parsetree2.diff
 	sha256sums = 718dcfa6d28d8a623f11da9798371f75c58fb0ab20fc968a037d3b96b36f8bf6
 	sha256sums = 3831b60723b68f5d70bfb5a12402491b0518e1642a2e2d9ec529c4c0b021e6e0
