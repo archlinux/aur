@@ -1,16 +1,17 @@
 pkgbase = vita3k-git
 	pkgdesc = Experimental PlayStation Vita emulator
-	pkgver = r1388.0dea8bf9
+	pkgver = r2257.de68b346
 	pkgrel = 1
 	url = https://vita3k.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
 	makedepends = cmake
-	makedepends = gcc8
 	makedepends = git
 	makedepends = python2
 	makedepends = vulkan-headers
+	makedepends = clang
+	makedepends = ninja
 	depends = boost-libs
 	depends = gtk3
 	depends = sdl2
@@ -21,4 +22,3 @@ pkgbase = vita3k-git
 	md5sums = SKIP
 
 pkgname = vita3k-git
-

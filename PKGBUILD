@@ -2,7 +2,7 @@
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
 _pkgname=vita3k
 pkgname="${_pkgname}-git"
-pkgver=r1388.0dea8bf9
+pkgver=r2257.de68b346
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -11,10 +11,11 @@ license=('GPL2')
 makedepends=(
 	'boost'
 	'cmake'
-	'gcc8'
 	'git'
 	'python2'
 	'vulkan-headers'
+	'clang'
+	'ninja'
 )
 depends=(
 	'boost-libs'
@@ -38,28 +39,25 @@ pkgver() {
 
 prepare() {
 	cd "${_pkgname}"
-	git submodule update --recursive --init
+	git submodule update --init --recursive
 }
 
 build() {
 	cd "${_pkgname}"
 
-	export CC="/usr/bin/gcc-8"
-	export CXX="/usr/bin/g++-8"
+	export CC="/usr/bin/clang"
+	export CXX="/usr/bin/clang++"
 
-	mkdir -p build
-	cd build/
-	cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=ON ..
-	make UNICORN_QEMU_FLAGS="--python=/usr/bin/python2"
+	cmake -S . -B build-linux -G Ninja -DCMAKE_TOOLCHAIN_FILE=./cmake/toolchain/linux-x64.cmake -DCMAKE_BUILD_TYPE=Release -DUSE_VULKAN=ON -DUSE_DISCORD_RICH_PRESENCE=OFF
+	cmake --build build-linux
 }
 
 package() {
 	cd "${_pkgname}"
 
-	install -d -m 755 "${pkgdir}/usr/bin/"
-	install -d -m 755 "${pkgdir}/opt/vita3k/"
+	mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/opt/vita3k/"
 
-	cp -r "build/bin/"* "${pkgdir}/opt/vita3k/"
+	cp -r "build-linux/bin/"* "${pkgdir}/opt/vita3k/"
 	ln -s "/opt/vita3k/Vita3K" "${pkgdir}/usr/bin/vita3k"
 
 	# These folders needs 777 permissions because vita3k creates files in them
