@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=('natscli-bin')
 provides=('nats')
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 
 sha256sums=('0b9c143e37932725a802ad3c8b35354384230532060f0b7c61bd8448fd5ac3b1')
 
