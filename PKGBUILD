@@ -7,7 +7,7 @@ pkgname='ros-noetic-geodesy'
 pkgver='0.5.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-noetic-uuid-msgs
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="geographic_info-release-release-noetic-geodesy"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-geographic-info/geographic_info-release/archive/release/noetic/geodesy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0e0e30544c26aba82e9436650848b1442ac5cb4a51157c5acbfdc348d6aadaae')
+sha256sums=('362b1ca0f50cbbe53612b6839e1c174f8a7003eb5170c725e0e77ffd7e8bd83e')
 
 build() {
   # Use ROS environment variables
