@@ -4,7 +4,7 @@ _pkgname=dropbear-openrc
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=2020.81.r0
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenRC init script and conf.d file for dropbear.'
 url='http://pkgs.alpinelinux.org/package/edge/main/x86/dropbear-openrc'
 license=('custom: dropbear')
@@ -13,7 +13,6 @@ depends=('dropbear')
 makedepends=()
 provides=("${_pkgname}=${pkgver}")
 replaces=(
-  "${_pkgname}<=${pkgver}"
   "${_pkgname}-latest"
 )
 conflicts=("${_pkgname}")
