@@ -1,7 +1,7 @@
 pkgbase = trickle
 	pkgdesc = Lightweight userspace bandwidth shaper
 	pkgver = 1.07
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/mariusae/trickle
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,9 @@ pkgbase = trickle
 	depends = libtirpc
 	source = trickle-1.07.tar.gz::https://github.com/mariusae/trickle/archive/a2aeb9f30aa3c651580b9be9ba3c9c13bf51a416.tar.gz
 	source = fix-crasher.patch
+	source = https://github.com/mariusae/trickle/commit/20f221f166fc03323ed28dc3cad0b0da2c879513.patch
 	sha256sums = b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37
 	sha256sums = 495aeb95039dcdeb3bfde46c40b3391fe2416ec51678a1ded9bbeced6f6d1349
+	sha256sums = 432194c2a25e934a865a06de9fa876545431a1729028ca1a60943554865fb40c
 
 pkgname = trickle
-
