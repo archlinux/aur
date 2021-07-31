@@ -1,19 +1,17 @@
-pkgbase = neosiji
+pkgbase = siji-ng
 	pkgdesc = A fixed and maintained Siji.
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/begss/neosiji
+	url = https://github.com/begss/siji-ng
 	arch = any
 	license = GPL2
 	makedepends = xorg-bdftopcf
 	makedepends = python3
-	depends = fontconfig
-	depends = xorg-mkfontscale
 	provides = siji
 	conflicts = siji
 	conflicts = siji-git
-	source = neosiji-1.0.tar.gz::https://github.com/begss/neosiji/archive/refs/tags/v1.0.tar.gz
-	sha512sums = df686d9c250ed4a76d01b9b401f9e214fb640055a25a26824c0d0b19be64cbcda4cbba89715b5bd92802a2f9e3bad158c8541d84d566c79ec9f13eb539ae6648
+	conflicts = neosiji
+	source = siji-ng-1.1.tar.gz::https://github.com/begss/siji-ng/archive/refs/tags/v1.1.tar.gz
+	sha512sums = 00eecb55cf777c1a6d767e5785f1b16f38e740b2b25502c48f3117eda1ce2c835a49ec6c8ac5c553181ae21de88c84e9a48b77e01b1b01e306955da8a5ad70ac
 
-pkgname = neosiji
-
+pkgname = siji-ng

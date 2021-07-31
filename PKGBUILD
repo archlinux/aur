@@ -1,17 +1,17 @@
 # Maintainer: imp0 <jan <(@)> siteworld <(.)> be>
 _pkgname=siji
-pkgname="neo${_pkgname}"
-pkgver=1.0
+pkgname="${_pkgname}-ng"
+pkgver=1.1
 pkgrel=1
 pkgdesc='A fixed and maintained Siji.'
 provides=("${_pkgname}")
-conflicts=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-git" "neo${_pkgname}")
 arch=('any')
 url="https://github.com/begss/${pkgname}"
 license=('GPL2')
 makedepends=('xorg-bdftopcf' 'python3')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('df686d9c250ed4a76d01b9b401f9e214fb640055a25a26824c0d0b19be64cbcda4cbba89715b5bd92802a2f9e3bad158c8541d84d566c79ec9f13eb539ae6648')
+sha512sums=('00eecb55cf777c1a6d767e5785f1b16f38e740b2b25502c48f3117eda1ce2c835a49ec6c8ac5c553181ae21de88c84e9a48b77e01b1b01e306955da8a5ad70ac')
 
 build() {
   cd "${pkgname}-${pkgver}"
