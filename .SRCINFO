@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_bin_prot
 	pkgdesc = Generation of bin_prot readers and writers from types
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_bin_prot
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppx_bin_prot
 	depends = ocaml-ppx_here>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_bin_prot-1:0.14.0-2.tar.gz::https://github.com/janestreet/ppx_bin_prot/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_bin_prot-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_bin_prot/archive/v0.14.0.tar.gz
 	sha256sums = fecad38f08b09a95eed95e541e88574bc35b2c2b6047671461a7df7f45f91f8b
 
 pkgname = ocaml-ppx_bin_prot
