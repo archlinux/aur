@@ -5,13 +5,15 @@ pkgname=hashbrown-git
 _pkgname=hashbrown
 _app_id=dev.geopjr.Hashbrown
 pkgver=v1.3.2.r0.g8f0ac42
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
 url="https://github.com/GeopJr/Hashbrown"
 license=('AGPL3')
 depends=('gtk3')
 makedepends=('crystal' 'gobject-introspection' 'gobject-introspection-runtime' 'shards' 'spglib')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 _source=Hashbrown
 sha256sums=('SKIP')
