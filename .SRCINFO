@@ -1,0 +1,22 @@
+pkgbase = oq
+	pkgdesc = A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/blacksmoke16/oq
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = jq
+	checkdepends = crystal
+	makedepends = crystal
+	makedepends = shards
+	depends = jq
+	depends = libyaml
+	depends = libxml2
+	depends = libevent
+	depends = gc
+	depends = pcre
+	source = oq-1.2.1::https://github.com/blacksmoke16/oq/archive/v1.2.1.tar.gz
+	sha256sums = dc71c2662aa67a74add7331b5275dbce2c52adcab88767d356bcdd96f4e73b46
+
+pkgname = oq
