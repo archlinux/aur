@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_expect
 	pkgdesc = Cram like framework for OCaml
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/ppx_expect
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = ocaml-ppx_expect
 	depends = ocaml-re>=1.8.0
 	depends = ocaml-stdio>=0.14.0
 	options = !strip
-	source = ocaml-ppx_expect-1:0.14.1-1.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.14.1.tar.gz
+	source = ocaml-ppx_expect-1:0.14.1-2.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.14.1.tar.gz
 	sha256sums = 0307f47adb5e79c22d6b31948cdbfb81dce44af4e4c6a0deea89e38e1b561fa1
 
 pkgname = ocaml-ppx_expect
