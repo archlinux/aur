@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='luv'
 pkgname="ocaml-$_projectname"
-pkgver='0.5.8'
+pkgver='0.5.9'
 pkgrel='1'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libuv' 'ocaml>=4.02.0' 'ocaml-ctypes>=0.13.0' 'ocaml-result')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('0d100ce65555fbe9a2b54fde9d9a21b3e7f41729e075ba3b5f74a74105a78403')
+sha256sums=('fc94c26a2d567fb57917dbdc08e5e4f02e19bdbefd1524d5ccf650f87a4d3835')
 
 _sourcedirectory="$_projectname-$pkgver"
 
