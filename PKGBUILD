@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 url="http://dogecoin.com/"
 license=('MIT')
 provides=('dogecoin-daemon' 'dogecoin-tx' 'dogecoin-cli' )
-depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db' 'libevent')
+depends=('miniupnpc' 'boost-libs' 'protobuf' 'openssl-1.0' 'db' 'libevent' 'qt5-base')
 makedepends=('boost' 'gcc' 'make' 'git' 'qt5-tools' 'miniupnpc' 'boost-libs' 'protobuf' 'openssl' 'db')
 source=("https://github.com/$_binname/$_binname/archive/v${pkgver}.tar.gz"
         "$_binname.desktop")

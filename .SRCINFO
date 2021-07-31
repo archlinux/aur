@@ -23,6 +23,7 @@ pkgbase = dogecoin-qt
 	depends = openssl-1.0
 	depends = db
 	depends = libevent
+	depends = qt5-base
 	provides = dogecoin-daemon
 	provides = dogecoin-tx
 	provides = dogecoin-cli
