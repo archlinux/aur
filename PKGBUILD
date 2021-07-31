@@ -1,6 +1,6 @@
 pkgname=dnf
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('libdnf>=0.61.1' 'libcomps>=0.1.8'
          'python' 'python-gpgme' 'rpm-tools>=4.14.0')
 makedepends=('bash-completion' 'cmake>=3.13' 'python-sphinx')
-optdepends=('python-unbound: for gpgkey_dns_verification option')
+optdepends=('unbound: for gpgkey_dns_verification option')
 backup=("etc/$pkgname/automatic.conf"
         "etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/aliases.d/zypper.conf"
