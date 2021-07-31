@@ -1,7 +1,7 @@
-pkgbase = dropbear-openrc-git
+pkgbase = dropbear-openrc-latest
 	pkgdesc = OpenRC init script and conf.d file for dropbear.
 	pkgver = 2020.81.r0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://pkgs.alpinelinux.org/package/edge/main/x86/dropbear-openrc
 	arch = any
 	license = custom: dropbear
@@ -18,4 +18,4 @@ pkgbase = dropbear-openrc-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = dropbear-openrc-git
+pkgname = dropbear-openrc-latest

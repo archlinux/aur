@@ -1,10 +1,10 @@
 # Maintainer: dreieck
 
 _pkgname=dropbear-openrc
-pkgname="${_pkgname}-git"
+pkgname="${_pkgname}-latest"
 _pkgver="latest"
 pkgver=2020.81.r0
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenRC init script and conf.d file for dropbear.'
 url='http://pkgs.alpinelinux.org/package/edge/main/x86/dropbear-openrc'
 license=('custom: dropbear')
