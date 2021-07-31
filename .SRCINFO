@@ -1,0 +1,14 @@
+pkgbase = python-sphinxcontrib-youtube-git
+	pkgdesc = Sphinx extension for including YouTube and Vimeo videos
+	pkgver = r23.98f8caf
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/youtube
+	arch = any
+	license = custom:BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-sphinx>=0.6
+	source = python-sphinxcontrib-youtube::git+https://github.com/sphinx-contrib/youtube.git
+	md5sums = SKIP
+
+pkgname = python-sphinxcontrib-youtube-git
