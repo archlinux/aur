@@ -1,0 +1,12 @@
+pkgbase = anti-font
+	pkgdesc = a cryptic and playful Arabic typeface
+	pkgver = 4.000
+	pkgrel = 1
+	url = https://github.com/aliftype/anti
+	arch = any
+	license = AGPL3
+	provides = anti-font
+	source = https://github.com/aliftype/anti/releases/download/v4.00/Anti-4.0.zip
+	sha256sums = 276646b191e512498a463e4ec9ea1a45ae0f5cae82dc635620a35d6415b4ea06
+
+pkgname = otf-anti
