@@ -4,9 +4,10 @@
 _gemname=guard
 pkgname=ruby-$_gemname
 pkgver=2.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool to easily handle events on file system modifications"
 arch=('any')
+url="https://guardgem.org"
 license=('MIT')
 depends=(
   'ruby'

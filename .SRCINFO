@@ -1,7 +1,8 @@
 pkgbase = ruby-guard
 	pkgdesc = A command line tool to easily handle events on file system modifications
 	pkgver = 2.17.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://guardgem.org
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
