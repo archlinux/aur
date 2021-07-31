@@ -1,8 +1,8 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 pkgname='ocaml-migrate-parsetree'
 pkgver='1.8.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Convert OCaml parsetrees between different major versions - 1.x.x version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
