@@ -1,6 +1,6 @@
 pkgbase = xournalpp-git
 	pkgdesc = Xournal++ is a handwriting Notetaking software with PDF annotation support. Supports Pen input like Wacom Tablets.
-	pkgver = 0
+	pkgver = 1.1.0.r18.g97c20f62
 	pkgrel = 1
 	url = https://github.com/xournalpp/xournalpp
 	arch = i686
