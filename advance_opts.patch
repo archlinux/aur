@@ -1,0 +1,15 @@
+diff --git a/pcompress.c b/pcompress.c
+index 3d22b9b..95884e2 100644
+--- a/pcompress.c
++++ b/pcompress.c
+@@ -3693,6 +3693,10 @@ init_pc_context(pc_ctx_t *pctx, int argc, char *argv[])
+ 			pctx->preprocess_mode = 1;
+ 			pctx->enable_analyzer = 1;
+ 		}
++		init_filters(&ff);
++		pctx->enable_packjpg = ff.enable_packjpg;
++		pctx->enable_wavpack = ff.enable_wavpack;
++		pctx->exe_preprocess = ff.exe_preprocess;
+ 	} else if (pctx->do_uncompress) {
+ 		struct filter_flags ff;
+ 		/*
