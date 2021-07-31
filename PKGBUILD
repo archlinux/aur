@@ -2,7 +2,7 @@
 _corpname=glaxnimate
 _pkgname='glaxnimate'
 pkgname="$_pkgname-git"
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 pkgdesc="Simple vector animation program."
