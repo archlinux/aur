@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_compare
 	pkgdesc = Generation of comparison functions from types
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_compare
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_compare
 	depends = ocaml-base>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_compare-1:0.14.0-2.tar.gz::https://github.com/janestreet/ppx_compare/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_compare-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_compare/archive/v0.14.0.tar.gz
 	sha256sums = 9ecd7d68da862913b4ebc70d2e9f5d31baf45063b61a6e86a6f4a71182c5d525
 
 pkgname = ocaml-ppx_compare
