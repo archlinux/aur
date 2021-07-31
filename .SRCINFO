@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_here
 	pkgdesc = Expands [%here] into its location
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/janestreet/ppx_here
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppx_here
 	depends = ocaml-base>=0.14.0
 	depends = ocaml-ppxlib>=0.11.0
 	options = !strip
-	source = ocaml-ppx_here-1:0.14.0-2.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.14.0.tar.gz
+	source = ocaml-ppx_here-1:0.14.0-3.tar.gz::https://github.com/janestreet/ppx_here/archive/v0.14.0.tar.gz
 	sha256sums = 9acc67b2a040181373f1db2da8913d873f01458a01e2d3e72d0c092e7abc6f90
 
 pkgname = ocaml-ppx_here
