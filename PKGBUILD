@@ -1,11 +1,11 @@
-# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='re'
 pkgname="ocaml-$_projectname"
 pkgver='1.9.0'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$pkgname"
