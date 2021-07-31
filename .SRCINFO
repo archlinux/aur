@@ -1,7 +1,7 @@
 pkgbase = connective-usermanager
 	pkgdesc = UserManager Module -- Authentication backend for Connective servers
 	pkgver = 1.0.0
-	pkgrel = 14
+	pkgrel = 15
 	install = main.install
 	arch = any
 	groups = connective-server
