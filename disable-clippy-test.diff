@@ -1,0 +1,20 @@
+diff --git a/src/meson.build b/src/meson.build
+index 114c965..cbdfeff 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -185,14 +185,3 @@ test('Unit tests',
+   ],
+   timeout: 60
+ )
+-
+-cargo_clippy = find_program(meson.source_root() / 'build-aux/clippy.sh')
+-test('Clippy',
+-  cargo_clippy,
+-  args: [
+-    meson.source_root(),
+-    meson.build_root(),
+-    get_option('offline') ? 'true' : 'false'
+-  ],
+-  timeout: 120
+-)
+\ No newline at end of file
