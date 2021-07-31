@@ -1,0 +1,18 @@
+# - keyboards: [ "AT Translated Set 2 keyboard"]
+#   # Remap capslock and left control.
+#   keymap:
+#     leftctrl: capslock
+#     capslock: leftctrl
+#   # Specify layered configurations (much similar to fn+F keys)
+#   layers:
+#     Specify the modifiers of the layer
+#     - modifiers: ['rightalt']
+#       keymap:
+#         i: up
+#         j: left
+#         k: down
+#         l: right
+#         u: pageup
+#         o: pagedown
+#         p: home
+#         semicolon: end

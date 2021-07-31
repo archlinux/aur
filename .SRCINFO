@@ -1,0 +1,20 @@
+pkgbase = kbct-git
+	pkgdesc = Keyboard keycode mapping utility for Linux supporting layered configuration
+	pkgver = 0.1.0.r45.7c2a54f
+	pkgrel = 1
+	url = https://github.com/samvel1024/kbct
+	arch = x86_64
+	license = None
+	makedepends = git
+	makedepends = cargo
+	makedepends = rust
+	provides = kbct
+	backup = etc/kbct/config.yml
+	source = git+https://github.com/samvel1024/kbct
+	source = kbct.service
+	source = config.yml
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kbct-git
