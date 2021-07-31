@@ -1,0 +1,29 @@
+pkgbase = vim-nano
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/vim-nano
+	arch = any
+	license = GPL
+	provides = nano
+	conflicts = nano
+	replaces = nano
+
+pkgname = vim-nano
+	pkgdesc = Replace nano with vim using symlinks.
+	depends = vim
+	provides = nano
+	provides = gvim-nano
+	conflicts = nano
+	conflicts = gvim-nano
+	replaces = nano
+	replaces = gvim-nano
+
+pkgname = gvim-nano
+	pkgdesc = Replace nano with gvim using symlinks.
+	depends = gvim
+	provides = nano
+	provides = vim-nano
+	conflicts = nano
+	conflicts = vim-nano
+	replaces = nano
+	replaces = vim-nano
