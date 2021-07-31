@@ -3,7 +3,7 @@
 pkgname=goneovim-git
 pkgver=r2006.ac1785c
 pkgrel=1
-pkgdesc="Neovim GUI written in Golang, using a Golang qt backend"
+pkgdesc="Neovim GUI written in Golang, using a Golang qt backend (git build)"
 arch=('x86_64')
 url="https://github.com/akiyosi/goneovim"
 license=('MIT')
