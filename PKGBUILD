@@ -28,7 +28,7 @@ _mm_protect=y
 ### Enable multigenerational LRU
 _lru_enable=y
 ### Enable Linux Random Number Generator
-_lrng_enable=
+_lrng_enable=y
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -58,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=6
+_minor=7
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -85,7 +85,7 @@ source=(
   "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
   "${_patchsource}/winesync/5.13-winesync.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
-  "${_patchsource}/lqx-patches-v2/0001-lqx-patches.patch"
+  "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
   "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v2/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
@@ -95,11 +95,10 @@ source=(
   "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
   "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 #  "${_patchsource}/lru-patches/lru_5.13.patch"
-#  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
+  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
   "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-  "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
+  "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
-#  "${_patchsource}/misc/nohzfull.patch"
   "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
@@ -540,7 +539,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '91c6e1168e3a6f180f033858d9cfb1b8'
+         'aebc49e4d58bd8314548a364bec99d1e'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
          '177e0e7883c251b9e490a1933834dcc2'
@@ -550,7 +549,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '2c0375b3cc9690a0f0f3d3e49df54d10'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
-         'e6d7e16ae698f689c001d3cd7bb0a444'
+         '31c897f53b91f98532321cd24928c0d7'
          'daeacee8fcde31908f90b89dc4b54126'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
@@ -559,8 +558,9 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'a0a99d3914525853685ac814563e5227'
          '055df07f7637d427a7c134c686074860'
+         '7aeb2c86091b9432d1fc9172d418d486'
          'b6623f818462d08b03fdc1b573c90e9f'
-         'a1869abc4d1a6ec1901f34302cd09b7e'
+         '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
