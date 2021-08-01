@@ -42,5 +42,6 @@ package() {
   cd ${srcdir}
   tar -xvf data.tar.xz -C ${pkgdir}
   cp -vrf ${srcdir}/packages/vlc/repos/extra-x86_64/pkg/vlc/usr/lib/* ${pkgdir}/opt/netease/netease-cloud-music/libs/
+  rm ${pkgdir}/opt/netease/netease-cloud-music/libs/libgtk-x11-2.0.so.0
   install -D -m644 service.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
 }
