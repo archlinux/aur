@@ -2,14 +2,16 @@
 
 pkgbase=vim-fern
 pkgname=('vim-fern' 'neovim-fern')
-pkgver=1.38.0
+pkgver=1.38.1
 pkgrel=1
 pkgdesc="A general purpose asynchronous tree viewer"
 arch=('any')
 url="https://github.com/lambdalisue/fern.vim"
 license=('MIT')
+optdepends=('gomi: trash-bin functionality'
+            'trash-cli: trash-bin functionality')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8b214bbd44d31a9ab051318cda1c707d0c44fa64fa3234a7bf91720959a1c2c4')
+sha256sums=('42013a349a579c2c0755b7e4cf8fdf0614bd7a7c8c198bc03abe8a1f3928d324')
 
 package_vim-fern() {
   depends=('vim>=8.1')
