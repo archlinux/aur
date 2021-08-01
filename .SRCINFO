@@ -1,0 +1,17 @@
+pkgbase = ruby-dry-matcher
+	pkgdesc = Flexible, expressive pattern matching for Ruby
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-matcher
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-core
+	noextract = dry-matcher-0.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-matcher-0.9.0.gem
+	b2sums = 77202a258e415bc06366b8813ceb72326bf0f654742cc2c510bbd39158765e03ed661dc7af75351bc798abf03930470abbac460ba9702b84fe4ad86c93e2d7e5
+
+pkgname = ruby-dry-matcher
