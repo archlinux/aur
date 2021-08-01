@@ -1,8 +1,7 @@
 # Maintainer: Mahdy Mirzade <me@mahdym.ir>
-
 pkgname=gip
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Get Private/Public IP & IP's Geolocation."
 arch=(any)
 url="https://github.com/mahdymirzade/gip"
@@ -14,5 +13,5 @@ sha256sums=("207167246fa45854878e4b548da1acd7c84984f760383e701d8847811b725385")
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm755 "${path}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
