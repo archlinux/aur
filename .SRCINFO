@@ -1,0 +1,15 @@
+pkgbase = ruby-dry-transformer
+	pkgdesc = Data transformation toolkit
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-transformer
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = dry-transformer-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-transformer-0.1.1.gem
+	b2sums = d4318076aaeea2615d22334e649297e46f1a05cc112e4794bdc0e8e35f1b18564e899588d3ed0730f3934185d4a544ebf9b200a5649f00c6d52e2f4a83075a03
+
+pkgname = ruby-dry-transformer
