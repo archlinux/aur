@@ -1,7 +1,7 @@
 pkgbase = fido2luks-bin
 	pkgdesc = Decrypt your LUKS partition using a FIDO2 compatible authenticator
 	pkgver = 0.2.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shimunn/fido2luks
 	install = dracut-integration-instructions.install
 	arch = x86_64

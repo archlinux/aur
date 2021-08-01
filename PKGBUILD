@@ -4,13 +4,13 @@
 pkgname=fido2luks-bin
 _pkgname=fido2luks
 pkgver=0.2.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Decrypt your LUKS partition using a FIDO2 compatible authenticator"
 arch=('x86_64')
 url="https://github.com/shimunn/fido2luks"
 license=('MPL-2.0')
-provides=('$_pkgname')
-conflicts=('$_pkgname')
+provides=('fido2luks')
+conflicts=('fido2luks')
 depends=('cryptsetup')
 optdepends=('dracut: booting with 2FA')
 backup=('etc/fido2luks.conf')
