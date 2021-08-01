@@ -1,7 +1,7 @@
 pkgbase = embedded-studio-risc-v
 	pkgdesc = Segger Embedded Studio for RISC-V
 	pkgver = 5.50d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.segger.com/products/development-tools/embedded-studio/
 	arch = x86_64
 	arch = aarch64

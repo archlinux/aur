@@ -2,7 +2,7 @@
 
 pkgname="embedded-studio-risc-v"
 pkgver=5.50d
-pkgrel=1
+pkgrel=2
 pkgdesc="Segger Embedded Studio for RISC-V"
 arch=('x86_64' 'aarch64')
 makedepends=()
@@ -21,10 +21,10 @@ md5sums_aarch64=('c95711dcf83e132a8655b0dc053e39fa')
 
 prepare(){
 	# Change src path name
-	if [ ${CARCH} = "i686" ]; then
-		mv riscv_segger_embedded_studio_${pkgver/./}_linux_x86 embedded-studio-risc-v
-	else 
+	if [ ${CARCH} = "x86_64" ]; then
 		mv riscv_segger_embedded_studio_${pkgver/./}_linux_x64 embedded-studio-risc-v
+	else 
+		mv riscv_segger_embedded_studio_${pkgver/./}_linux_arm64 embedded-studio-risc-v
 	fi
 }
 
