@@ -2,7 +2,7 @@
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodstudio
-pkgver=2.02.01
+pkgver=2.02.02
 pkgrel=1
 pkgdesc="Desktop application for adaptive audio content creation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'libxcursor' 'libxcomposite' 'freetype2' 'nss' 'hicolor-icon
 source=('LICENSE.html')
 sha256sums=('f828e794ce468d1aa47f1a4436af9fbf2e95eac0e3051c1eefa44ab1a7c9eab8')
 makedepends=('jq')
-_filename=fmodstudio20201linux64-installer.deb
+_filename=fmodstudio20202linux64-installer.deb
 
 build() {
     echo "Downloading FMOD Studio requires an FMOD.com account"
