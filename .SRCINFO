@@ -1,8 +1,8 @@
 pkgbase = ruby-dry-validation
 	pkgdesc = Validation library with type-safe schemas and rules
 	pkgver = 1.6.0
-	pkgrel = 1
-	url = https://github.com/dry-rb/dry-core
+	pkgrel = 2
+	url = https://github.com/dry-rb/dry-validation
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc

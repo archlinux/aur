@@ -4,10 +4,10 @@
 _gemname=dry-validation
 pkgname=ruby-$_gemname
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Validation library with type-safe schemas and rules"
 arch=('any')
-url="https://github.com/dry-rb/dry-core"
+url="https://github.com/dry-rb/dry-validation"
 license=('MIT')
 depends=(
   'ruby'
