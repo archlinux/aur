@@ -1,6 +1,6 @@
 pkgbase = systemd-git
 	pkgdesc = systemd (git version)
-	pkgver = 249.r108.g6c39b39aa8
+	pkgver = 249.r224.ge3709627e6
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = systemd-git
 	source = initcpio-install-udev
 	source = arch.conf
 	source = loader.conf
-	source = splash-arch.bmp::https://git.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd
+	source = splash-arch.bmp::https://github.com/archlinux/svntogit-packages/raw/packages/systemd/trunk/splash-arch.bmp
 	source = systemd-user.pam
 	source = systemd-hook
 	source = 20-systemd-sysusers.hook
@@ -128,10 +128,10 @@ pkgname = systemd-git
 	optdepends = curl: machinectl pull-tar and pull-raw
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
-	provides = systemd=249.r108.g6c39b39aa8
+	provides = systemd=249.r224.ge3709627e6
 	provides = nss-myhostname
-	provides = systemd-tools=249.r108.g6c39b39aa8
-	provides = udev=249.r108.g6c39b39aa8
+	provides = systemd-tools=249.r224.ge3709627e6
+	provides = udev=249.r224.ge3709627e6
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -166,7 +166,7 @@ pkgname = systemd-libs-git
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs=249.r108.g6c39b39aa8
+	provides = systemd-libs=249.r224.ge3709627e6
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
@@ -178,7 +178,7 @@ pkgname = systemd-resolvconf-git
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved, git version)
 	license = LGPL2.1
 	depends = systemd-git
-	provides = systemd-resolvconf=249.r108.g6c39b39aa8
+	provides = systemd-resolvconf=249.r224.ge3709627e6
 	provides = openresolv
 	provides = resolvconf
 	conflicts = systemd-resolvconf
@@ -188,6 +188,6 @@ pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd (git version)
 	license = GPL2
 	depends = systemd-git
-	provides = systemd-sysvcompat=249.r108.g6c39b39aa8
+	provides = systemd-sysvcompat=249.r224.ge3709627e6
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit

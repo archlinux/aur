@@ -8,7 +8,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=249.r108.g6c39b39aa8
+pkgver=249.r224.ge3709627e6
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -27,7 +27,7 @@ source=('git+https://github.com/systemd/systemd'
         'initcpio-install-udev'
         'arch.conf'
         'loader.conf'
-        'splash-arch.bmp'::'https://git.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd'
+        'splash-arch.bmp'::'https://github.com/archlinux/svntogit-packages/raw/packages/systemd/trunk/splash-arch.bmp'
         'systemd-user.pam'
         'systemd-hook'
         '20-systemd-sysusers.hook'
@@ -196,7 +196,7 @@ package_systemd-git() {
     -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
-  install -m0644 "$_pkgbase"/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
+  # install -m0644 "$_pkgbase"/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
