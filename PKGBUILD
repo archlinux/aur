@@ -6,7 +6,7 @@ _static_liftoff=0
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.8.4.r85.g802d86c
-pkgrel=2
+pkgrel=3
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -18,9 +18,20 @@ conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git")
 sha512sums=('SKIP')
 
-[ $_static_wlroots -gt 0 ] && depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" \
-        "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors") && makedepends+=("cmake") || depends+=("wlroots=0.13.0")
-[ $_static_liftoff -gt 0 ] && depends+=("libdrm") || depends+=("libliftoff")
+if [ $_static_wlroots -gt 0 ]; then
+    depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors")
+    makedepends+=("cmake")
+else
+    depends+=("wlroots=0.13.0")
+fi
+
+if [ $_static_liftoff -gt 0 ]; then
+    depends+=("libdrm")
+    provides+=("libliftoff")
+    conflicts+=("libliftoff")
+else
+    depends+=("libliftoff")
+fi
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -49,7 +60,9 @@ build() {
     [ $_static_wlroots -gt 0 ] && _force_static+=(wlroots)
     [ $_static_liftoff -gt 0 ] && _force_static+=(libliftoff)
 
-    _force_fallback=$(IFS=, echo "${_force_static[*]}")
+    # combine _force_static into comma (,) seperated list
+    # warning: following code does not work when items in _force_static have spaces in them
+    _force_fallback=$(echo "${_force_static[*]}" | tr " " ",")
 
     if [ -z "$_force_fallback" ]; then
         _force_fallback="[]"

@@ -1,7 +1,7 @@
 pkgbase = gamescope-git
 	pkgdesc = Micro-compositor formerly known as steamcompmgr
 	pkgver = 3.8.4.r85.g802d86c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = custom:BSD-2-Clause
