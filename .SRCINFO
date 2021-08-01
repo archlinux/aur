@@ -1,0 +1,14 @@
+pkgbase = unrar-libre
+	pkgdesc = Free software RAR archive extractor compatible with proprietary WinRAR CLI
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/abelianring/unrar-libre
+	arch = any
+	license = custom
+	makedepends = go
+	provides = unrar
+	conflicts = unrar
+	source = https://github.com/abelianring/unrar-libre/archive/0ae0ae481fb72d21f1f579ada1b808ab126b5cd4.zip
+	sha256sums = 2cca3cdf5c4a0247e894fe1cdd75abcf8054cabc3425c7206e22c922ed2a2586
+
+pkgname = unrar-libre
