@@ -1,7 +1,7 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2021.6.26
-pkgrel=1
+pkgver=2021.8.1
+pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes, Gaana, Deezer etc."
 arch=("any")
 url="https://github.com/deepjyoti30/ytmdl"
@@ -21,7 +21,6 @@ depends=(
 		"python-requests"
 		"python-lxml"
 		"python-wheel"
-		"python-youtube-search-git"
 		"python-unidecode"
 		"python-simber"
 		"python-pydes"
@@ -29,6 +28,8 @@ depends=(
 		"python-rich"
 		"python-musicbrainzngs"
 		"python-ytmusicapi"
+		"python-spotipy"
+		"youtube-search-python"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=("tensorflow: Trim Support")
@@ -39,23 +40,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://files.pythonhosted.org/packages/92/bb/7d012536e1f47c96dafdb45cc45b037412e15fcddc3284fe775e1e69764d/ytmdl-2021.6.26.post1.tar.gz")
+source=("https://files.pythonhosted.org/packages/a3/3b/ea83f90df9af447e8453576f88ddab38c65f635daa0310a8adeabec27990/ytmdl-2021.8.1.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
 
 prepare() {
-	cd "${pkgname}-${pkgver}.post${pkgrel}"
+	cd "${pkgname}-${pkgver}"
   	sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
 }
 
 build() {
-	cd "${pkgname}-${pkgver}.post${pkgrel}"
+	cd "${pkgname}-${pkgver}"
 	python setup.py build
 }
 
 package() {
-	cd "${pkgname}-${pkgver}.post${pkgrel}"
+	cd "${pkgname}-${pkgver}"
 	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 "${pkgdir}/share/bash-completion/completions/ytmdl.bash" \
 	   	"${pkgdir}/usr/share/bash-completion/completions/ytmdl"
