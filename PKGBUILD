@@ -2,8 +2,8 @@
 # Contributor: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2021.3
-pkgrel=2
+pkgver=2021.4
+pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -14,15 +14,15 @@ optdepends=('networkmanager: create Wireguard interface')
 conflicts=('mullvad-vpn')
 provides=('mullvad-vpn')
 install="${pkgname}.install"
-_commit='2063422c167c874eceab10692d4385a0c40b3f47'
+_commit='3a236d50fd1ffb67cd3d29fbfc31393cdf03a224'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
+#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed" # unverified commit by mvd-ows
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}"
         'override.conf'
-        'settings.json.sample')
+        )
 sha256sums=('SKIP'
             'SKIP'
-            'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316'
-            '448755ee76e7c150d6a091a003ed5ccbdefdcac3a13514ed88e35e9617383f40')
+            'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
@@ -45,19 +45,19 @@ prepare() {
 
 build() {
     cd "$srcdir/mullvadvpn-app"
-    source env.sh
+    source env.sh ""
 
     echo "Building Mullvad VPN..."
     echo "Building wireguard-go..."
     pushd wireguard/libwg
-    mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
+    mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
     export GOPATH="$srcdir/gopath"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
+    go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
     popd
 
     # Clean mod cache for makepkg -C
@@ -106,8 +106,9 @@ package() {
     install --verbose --directory --mode=755 "${pkgdir}/opt/mullvad-vpn-cli"
     cp -rav dist-assets/* "${pkgdir}/opt/mullvad-vpn-cli"
 
-    # Install daemon service
-    install --verbose -D --mode=644 dist-assets/linux/mullvad-daemon.service -t \
+    # Symlink daemon service to correct directory
+    install --verbose -d "${pkgdir}/usr/lib/systemd/system"
+    ln -s "/opt/mullvad-vpn-cli/linux/mullvad-daemon.service" \
         "${pkgdir}/usr/lib/systemd/system"
 
     # Install override for daemon
@@ -131,9 +132,6 @@ package() {
     # Install shell completion fish
     install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
         "$pkgdir/usr/share/fish/vendor_completions.d"
-
-    # Install settings.json
-    install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
 
     # Install license
     install --verbose -D --mode=644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

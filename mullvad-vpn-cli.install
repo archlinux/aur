@@ -3,15 +3,11 @@ pre_install() {
         echo 'Stopping & disabling Mullvad VPN daemon...'
         systemctl disable --now mullvad-daemon
     fi
+
+    rm -f /var/cache/mullvad-vpn/relays.json || true
 }
 
 post_install() {
-    echo 'Copying sample settings...'
-    if [[ ! -e /etc/mullvad-vpn/settings.json ]]; then
-        cp -av /etc/mullvad-vpn/settings.json.sample \
-            /etc/mullvad-vpn/settings.json
-        echo 'Please edit /etc/mullvad-vpn/settings.json'
-    fi
     chmod u+s "/usr/bin/mullvad-exclude"
 	echo 'Enabling Mullvad VPN daemon...'
 	systemctl enable mullvad-daemon
@@ -27,6 +23,8 @@ post_install() {
 pre_upgrade() {
     echo 'Stopping Mullvad VPN daemon...'
     systemctl stop mullvad-daemon
+
+    rm -f /var/cache/mullvad-vpn/relays.json || true
 }
 
 post_upgrade() {
