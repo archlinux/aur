@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-curly-slab
-pkgver=8.0.2
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-curly-slab-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('1d42fe3cd9a63fae2985655a1b7f08b6e965cb9adb7fe8ef59891c52a90a9cef'
+sha256sums=('c43ae3f9673a6a456f500ccf66f7a8044c109ef5cd9d50c7e7ba0ae8585fc558'
             '72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80')
 
 package() {
