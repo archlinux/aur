@@ -1,0 +1,17 @@
+pkgbase = ruby-dry-monads
+	pkgdesc = A set of common monads for Ruby
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-monads
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-core
+	noextract = dry-monads-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-monads-1.4.0.gem
+	b2sums = 1ee1d05784a97b74513f8b32c6621609ea89d6371a52efd510d804ab66bd7535126379d5c51be980cc9aed15b915da64eaa6df894aea5f11ea7021eb472ad045
+
+pkgname = ruby-dry-monads
