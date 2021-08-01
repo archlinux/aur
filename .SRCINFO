@@ -1,6 +1,6 @@
 pkgbase = iicalc-beta
 	pkgdesc = An extensible calculator written in Python. Development/Beta Channel.
-	pkgver = 2.11.19
+	pkgver = 2.11.20
 	pkgrel = 1
 	url = https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator
 	install = iicalc-beta.install
@@ -13,7 +13,7 @@ pkgbase = iicalc-beta
 	conflicts = iicalc
 	options = !strip
 	options = !emptydirs
-	source = iicalc-2.11.19.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager
-	sha512sums = 39365ceb3937419355834b94177ab824bdc39341fce200c1f049abfe9b94a6d95f2a204e20ba7cd7f0562e3773ece921576a945416b87820d35196618390708d
+	source = iicalc-2.11.20.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/development/raw/iicalc.deb?job=debian%20packager
+	sha512sums = aa3ad12c5bfb9975545f16ef4d56f0dee44566248ad3eec8365afc4ec13ac20e028314c1f2221e9b7099a2f1825d73b49f16c1bcc2d67e74f5ebf0aa3c468b5a
 
 pkgname = iicalc-beta
