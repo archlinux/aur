@@ -10,7 +10,7 @@ pkgdesc="Minimal Lua-API for building cross platform GUIs"
 arch=("i686" "x86_64")
 url="https://github.com/osch/lua-lpugl#lpugl"
 license=("MIT")
-depends=("lua" "lua-oocairo")
+depends=("lua" "lua-oocairo" "libgl")
 makedepends=("luarocks")
 source=("https://github.com/osch/lua-$_pkgluaname/archive/v$pkgver.tar.gz")
 package() {
