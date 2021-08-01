@@ -1,14 +1,13 @@
 pkgbase = acme-tiny-wrapper
 	pkgdesc = A wrapper around acme-tiny for easier certificate generation
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/tasn/acme-tiny-wrapper
 	arch = any
 	license = MIT
 	depends = bash
 	depends = acme-tiny
-	source = git+git://github.com/tasn/acme-tiny-wrapper.git#tag=v1.1.1
+	source = git+git://github.com/tasn/acme-tiny-wrapper.git#tag=v1.1.2
 	md5sums = SKIP
 
 pkgname = acme-tiny-wrapper
-
