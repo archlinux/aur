@@ -53,9 +53,11 @@ pkgbase = icecat
 	source = icecat.desktop
 	source = icecat-safe.desktop
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/0adcedc05ce67d53268575f8801c8de872206901/firefox/trunk/0001-Use-remoting-name-for-GDK-application-names.patch
+	source = make_packed_simd_compile_with_Rust_1.54.patch::https://hg.mozilla.org/releases/mozilla-esr78/raw-rev/f09969c47ae8
 	sha256sums = 762215d0d2898becbabf6d5e63e9fd0bdef56caa9df17a48724f0181d173a1d2
 	sha256sums = e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d
 	sha256sums = 33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208
 	sha256sums = e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442
+	sha256sums = 67a374de4188e9a19b1aa72b7705b7e6f574fd68098e458a64aa19debea64992
 
 pkgname = icecat
