@@ -4,7 +4,7 @@
 # Contributor: Laramy Black <laramy2020@gmail.com>
 
 pkgname=nuvolaruntime
-pkgver=4.21.0
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
 arch=(x86_64)
@@ -19,16 +19,16 @@ makedepends=(vala)
 #libappindicator-gtk3 is mandatory if enabled
 provides=(nuvolaplayer)
 conflicts=(nuvolaplayer)
-source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5e1d91c3e56ea8668e89ec3e2e8eaabfbd9ff4d9b1c6b1fd54e15756ddd5aa69')
+source=("https://github.com/tiliado/$pkgname/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('afc5115383410ab1207bd9e1d9ceab31c312100c11343239b1e4cac4588a6f31')
 
 build() {
 	cd "nuvolaplayer-${pkgver}"
 	./waf configure \
 		--prefix=/usr \
 		--libdir=/usr/lib \
-        --no-appindicator \
         --dummy-engine \
+        --no-appindicator \
 		--no-vala-lint \
 		--no-js-lint \
         --no-strict \
