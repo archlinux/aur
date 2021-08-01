@@ -1,9 +1,9 @@
 # Maintainer: Peter Cai <peter at typeblog dot net>
-pkgname=netease-cloud-music
+pkgname=netease-cloud-music-workarounds
 pkgver=1.2.1
 _pkgdate=20190428
 pkgrel=1
-pkgdesc="Netease Cloud Music, converted from .deb package"
+pkgdesc="Netease Cloud Music, converted from .deb package, with some workarounds.."
 arch=("x86_64")
 url="https://music.163.com/"
 license=('custom')
