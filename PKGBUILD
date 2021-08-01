@@ -6,16 +6,16 @@
 # Contributor: Lorenzo Ferrillo <lorenzofersteam@live.it>
 
 pkgname=diorite
-pkgver=4.21.0
+pkgver=4.23.0
 pkgrel=1
 pkgdesc="Utility and widget library for Nuvola Player project based on GLib, GIO, and GTK"
 arch=(x86_64)
 url="https://tiliado.eu/diorite/"
 license=(BSD)
-depends=(gtk3 libgee sqlite libx11 gobject-introspection)
-makedepends=(vala python-pyparsing)
+depends=(gtk3 libgee sqlite libx11)
+makedepends=(vala python-pyparsing gobject-introspection)
 source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('74b8d36db44dc8f4607bfe9da872e5f10fa144ae63c76a8832113c109dce30c9')
+sha256sums=('6ee91447a265762d090345276583e7bb4aab12fca5c9a4fa4b06d1afe8d68985')
 
 build() {
 	cd "${pkgname}-${pkgver}"
