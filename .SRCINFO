@@ -1,12 +1,11 @@
 pkgbase = f34-backgrounds
 	pkgdesc = Fedora 34 backgrounds
 	pkgver = 34.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedoraproject.org/wiki/F34_Artwork
 	arch = any
 	license = custom
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f34-backgrounds-34.0.1-1.fc35.src.rpm
-	sha256sums = 32fb14652e207a3812cceeb8edb16531e4665491efae0eed560e23bdf3bfb0fe
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f34-backgrounds-34.0.1-2.fc35.src.rpm
+	sha256sums = 84029a503a201e89b8ac2c56c287db2c3bd3b703cb733c5ffb828fbc07bf0533
 
 pkgname = f34-backgrounds
-
