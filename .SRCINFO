@@ -1,0 +1,17 @@
+pkgbase = ruby-dry-events
+	pkgdesc = A library providing pub/sub API
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-events
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-core
+	noextract = dry-events-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-events-0.3.0.gem
+	b2sums = 462441cb7836e484d22384a063976e292473aadbcc1ee566dd6f2378843186b18e7ff4918e3c128423c2543f7b1c4c993112c720ad5d27843826283f2bae9841
+
+pkgname = ruby-dry-events
