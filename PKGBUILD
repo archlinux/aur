@@ -1,6 +1,6 @@
 # Maintainer: Nicolas Marier <aur at nmarier dot com>
 pkgname=venv-wrapper-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Simple python virtual environment management'
 url='https://github.com/marier-nico/venv-wrapper'
@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 conflicts=('venv-wrapper-bin')
 provides=('venv-wrapper-bin')
-sha256sums=('baff71a186c6d2f52df4a0868dc48e6e5c2355099397856c1846589fc265861a')
+sha256sums=('900c9a8807f6d06d65c390d9158e604777fd09abe66229d4c9d45dda36676fb6')
 
 package() {
   cd "$srcdir/"
