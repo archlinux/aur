@@ -1,7 +1,7 @@
 pkgbase = prosody-mod-http-libjs
 	pkgdesc = Serve common Javascript libraries
-	pkgver = 2020.09.11
-	pkgrel = 2
+	pkgver = 2021.06.29
+	pkgrel = 1
 	url = https://modules.prosody.im/mod_http_libjs.html
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = prosody-mod-http-libjs
 	depends = prosody
 	optdepends = jquery: for the default html templates
 	optdepends = bootstrap: for the default html templates
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=de2390d6bbe4
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=f0efbb0b0b5b
 	sha1sums = SKIP
 
 pkgname = prosody-mod-http-libjs
-

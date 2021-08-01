@@ -1,9 +1,9 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=prosody-mod-http-libjs
-pkgver=2020.09.11
-pkgrel=2
-_commit="de2390d6bbe4"
+pkgver=2021.06.29
+pkgrel=1
+_commit="f0efbb0b0b5b"
 pkgdesc="Serve common Javascript libraries"
 arch=('any')
 url="https://modules.prosody.im/mod_http_libjs.html"
