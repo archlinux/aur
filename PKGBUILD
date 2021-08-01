@@ -2,7 +2,7 @@
 _release_type=beta
 
 pkgname=makedeb-beta
-pkgver=5.13.2
+pkgver=5.13.3
 pkgrel=1
 pkgdesc="Create Debian archives from PKGBUILDs (${_release_type} release)"
 arch=('any')
