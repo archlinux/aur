@@ -1,8 +1,8 @@
 pkgbase = perl-graphics-colorutils
 	pkgdesc = Easy-to-use color space conversions and more.
 	pkgver = 0.17
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Graphics-ColorUtils
+	pkgrel = 2
+	url = https://metacpan.org/release/Graphics-ColorUtils
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = perl-graphics-colorutils
 	sha512sums = c2b2ee98a180ddcc471beb04f90e08b4a6328ae3bd646ef70d95aba2fd795e8439d8800e672342fed8a4d2f605d1ed948659ddcc76dcdc23d67c6b107bddc24b
 
 pkgname = perl-graphics-colorutils
-
