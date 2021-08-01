@@ -4,6 +4,7 @@ pkgname=jupyterlab_code_formatter
 pkgver=1.4.10
 pkgrel=1
 pkgdesc='A universal code formatter for JupyterLab.'
+_ups_dev=ryantam626
 arch=(any)
 url=https://pypi.org/project/${pkgname//_/-}
 license=(MIT)
