@@ -6,11 +6,11 @@
 # https://github.com/armbian/build/tree/master/patch/kernel/archive/sunxi-5.11
 
 pkgbase=linux-tqc-a01
-_srcname=linux-5.11
+_srcname=linux-5.13
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.11.4
-pkgrel=6
+pkgver=5.13.6
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -30,11 +30,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
         '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
-        'fix-missing-H6-spi-pins.patch'
         'config'
-        'kernel.its'
-        'kernel.keyblock'
-        'kernel_data_key.vbprivk'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
@@ -42,29 +38,25 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('d2985a3f16ef1ea3405c04c406e29dcc'
-         'f5de0dfcddc871280a60d99ea3284317'
+md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
+         '3f7ed062bb75788f487089df2844f16b'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
          'bc7904920675ba8d38f21d46ffac33b5'
          '94a69594f90309c50c83a5cc8579fb54'
          'e1868e41094baff9eceba481fc097c79'
-         '5a15e321aa56da359a8b0c62cda99013'
+         '2d2de8db5e0c7d8f51a05fd33000c19a'
          '5d42a68276c8f9e8b3de040fa2579b84'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
          'f27a8190e862a7edcf2b09cc27aef180'
-         '11dfddadb815a896a2db65812e66e6fa'
-         'a81cb45032d0ce8b9d26a4585eeb75c5'
-         '7f1a96e24f5150f790df94398e9525a3'
-         '61c5ff73c136ed07a7aadbf58db3d96a'
-         '584777ae88bce2c5659960151b64c7d8'
+         'a459d4bd827bc7048a45296251b20ae5'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         'afcc9a617c2b4e09c2da1411318a26da')
+         '91c6e1168e3a6f180f033858d9cfb1b8')
 
 prepare() {
   cd ${_srcname}
@@ -86,7 +78,6 @@ prepare() {
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
   patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
-  patch -p1 < ../fix-missing-H6-spi-pins.patch
 
   cat "${srcdir}/config" > ./.config
 

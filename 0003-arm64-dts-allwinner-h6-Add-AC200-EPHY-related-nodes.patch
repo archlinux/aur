@@ -29,7 +29,7 @@ index 3329283e38ab..81caf1e96407 100644
  	cpus {
  		#address-cells = <1>;
  		#size-cells = <0>;
-@@ -248,6 +258,10 @@
+@@ -248,5 +258,9 @@
  			ths_calibration: thermal-sensor-calibration@14 {
  				reg = <0x14 0x8>;
  			};
@@ -37,9 +37,8 @@ index 3329283e38ab..81caf1e96407 100644
 +			ephy_calibration: ephy-calibration@2c {
 +				reg = <0x2c 0x2>;
 +			};
- 		};
  
- 		watchdog: watchdog@30090a0 {
+ 			cpu_speed_grade: cpu-speed-grade@1c {
 @@ -291,6 +305,14 @@
  				function = "emac";
  				drive-strength = <40>;

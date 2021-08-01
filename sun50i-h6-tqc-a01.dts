@@ -44,7 +44,7 @@
 	leds {
 		compatible = "gpio-leds";
 
-		power {
+		led-0 {
 			label = "orangepi:blue:power";
 			gpios = <&r_pio 0 4 GPIO_ACTIVE_HIGH>; /* PL4 */
 			default-state = "on";
@@ -198,14 +198,14 @@
 	vcc-pg-supply = <&reg_vcc_wifi_io>;
 };
 
-&r_i2c {
+&r_rsb {
 	status = "okay";
 
-	axp805: pmic@36 {
+	axp805: pmic@745 {
 		compatible = "x-powers,axp805", "x-powers,axp806";
-		reg = <0x36>;
+		reg = <0x745>;
 		interrupt-parent = <&r_intc>;
-		interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
 		interrupt-controller;
 		#interrupt-cells = <1>;
 		x-powers,self-working-mode;
@@ -267,7 +267,7 @@
 				regulator-always-on;
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
-				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart-2";
+				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart";
 			};
 
 			cldo2 {

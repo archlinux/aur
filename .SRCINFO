@@ -1,6 +1,6 @@
 pkgbase = linux-tqc-a01
-	pkgver = 5.11.4
-	pkgrel = 6
+	pkgver = 5.13.6
+	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = aarch64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-tqc-a01
 	makedepends = vboot-utils
 	makedepends = dtc
 	options = !strip
-	source = http://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.tar.xz
+	source = http://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.tar.xz
 	source = sun50i-h6-tqc-a01.dts
 	source = 0001-mfd-Add-support-for-AC200.patch
 	source = 0001-HACK-h6-Add-HDMI-sound-card.patch
@@ -28,38 +28,30 @@ pkgbase = linux-tqc-a01
 	source = 0006-drm-sun4i-Add-GEM-allocator.patch
 	source = 0010-general-h6-add-dma-i2c-ir-spi-uart.patch
 	source = 0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
-	source = fix-missing-H6-spi-pins.patch
 	source = config
-	source = kernel.its
-	source = kernel.keyblock
-	source = kernel_data_key.vbprivk
 	source = linux.preset
 	source = 60-linux.hook
 	source = 90-linux.hook
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.11.4.xz
-	md5sums = d2985a3f16ef1ea3405c04c406e29dcc
-	md5sums = f5de0dfcddc871280a60d99ea3284317
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.13.6.xz
+	md5sums = 76c60fb304510a7bbd9c838790bc5fe4
+	md5sums = 3f7ed062bb75788f487089df2844f16b
 	md5sums = 17aa0c69176c68cd98b4522740a1b747
 	md5sums = 2285d81ec6fb859d34b7abfd46a59550
 	md5sums = f9b6f367eef351eaa89b23a9b1ffc5a2
 	md5sums = bc7904920675ba8d38f21d46ffac33b5
 	md5sums = 94a69594f90309c50c83a5cc8579fb54
 	md5sums = e1868e41094baff9eceba481fc097c79
-	md5sums = 5a15e321aa56da359a8b0c62cda99013
+	md5sums = 2d2de8db5e0c7d8f51a05fd33000c19a
 	md5sums = 5d42a68276c8f9e8b3de040fa2579b84
 	md5sums = 335382823f6dc2aae2f6038b7aee339e
 	md5sums = cb38b30491472097c3b9b475de39127f
 	md5sums = bc65c0b9e4d6fb2fe3a81b8358886885
 	md5sums = f27a8190e862a7edcf2b09cc27aef180
-	md5sums = 11dfddadb815a896a2db65812e66e6fa
-	md5sums = a81cb45032d0ce8b9d26a4585eeb75c5
-	md5sums = 7f1a96e24f5150f790df94398e9525a3
-	md5sums = 61c5ff73c136ed07a7aadbf58db3d96a
-	md5sums = 584777ae88bce2c5659960151b64c7d8
+	md5sums = a459d4bd827bc7048a45296251b20ae5
 	md5sums = 66e0ae63183426b28c0ec0c7e10b5e16
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
-	md5sums = afcc9a617c2b4e09c2da1411318a26da
+	md5sums = 91c6e1168e3a6f180f033858d9cfb1b8
 
 pkgname = linux-tqc-a01
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for TQC A01
@@ -69,7 +61,7 @@ pkgname = linux-tqc-a01
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.11.4
+	provides = linux=5.13.6
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -77,5 +69,5 @@ pkgname = linux-tqc-a01
 
 pkgname = linux-tqc-a01-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for TQC A01
-	provides = linux-headers=5.11.4
+	provides = linux-headers=5.13.6
 	conflicts = linux-headers
