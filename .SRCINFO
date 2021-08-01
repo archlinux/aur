@@ -9,6 +9,7 @@ pkgbase = lua-oocairo
 	makedepends = git
 	makedepends = libtool
 	makedepends = pkgconfig
+	makedepends = pod2man
 	depends = cairo>=1.8.0
 	depends = lua>=5.1
 	provides = lua-oocairo
@@ -17,4 +18,3 @@ pkgbase = lua-oocairo
 	md5sums = 887981465a1eaea01a5af9c71e6fc90c
 
 pkgname = lua-oocairo
-

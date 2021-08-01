@@ -12,7 +12,7 @@ arch=("i686" "x86_64")
 url="https://github.com/awesomeWM/$_pkgname"
 license=("MIT")
 depends=("cairo>=1.8.0" "lua>=5.1")
-makedepends=("git" "libtool" "pkgconfig")
+makedepends=("git" "libtool" "pkgconfig" "pod2man")
 provides=("lua-oocairo")
 conflicts=("lua-oocairo")
 source=("https://github.com/awesomeWM/$_pkgname/archive/v$pkgver.tar.gz")
