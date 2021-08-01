@@ -1,13 +1,13 @@
 pkgbase = python-nuvolasdk
 	pkgdesc = SDK for building Nuvola Player's web app scripts
-	pkgver = 4.21.0
+	pkgver = 4.23.0
 	pkgrel = 1
 	url = https://github.com/tiliado/nuvolasdk
 	arch = any
 	license = BSD
-	depends = python
-	source = python-nuvolasdk-4.21.0.tar.gz::https://github.com/tiliado/nuvolasdk/archive/4.21.0.tar.gz
-	sha256sums = 602e87d6d6265b0f279e1d82ab6655c3e1cb48b3c9fe4a6d320c3de93a4dea71
+	makedepends = python-setuptools
+	depends = python-pillow
+	source = python-nuvolasdk-4.23.0.tar.gz::https://github.com/tiliado/nuvolasdk/archive/4.23.0.tar.gz
+	sha256sums = 697d6206fe2075b8874a0d79d720f6a8b62083fd3d8e871a7ddc724df502625f
 
 pkgname = python-nuvolasdk
-
