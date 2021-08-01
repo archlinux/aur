@@ -2,14 +2,14 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.6.1
-_pkgver_ext=1.6.1_9958_20210326_1446
-_pkg_file_name=en.st-stm32cubeide_1.6.1_9958_20210326_1446_amd64.sh.zip
+pkgver=1.7.0
+_pkgver_ext=1.7.0_10852_20210715_0634
+_pkg_file_name=en.st-stm32cubeide_1.7.0_10852_20210715_0634_amd64.sh_v1.7.0.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
-depends=('java-runtime' 'jlink-software-and-documentation' 'stlink' 'ncurses5-compat-libs' 'glibc' 'libusb')
+depends=('java-runtime' 'jlink-software-and-documentation' 'stlink' 'ncurses5-compat-libs' 'glibc' 'libusb' 'webkit2gtk')
 optdepends=()
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
@@ -22,7 +22,8 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
 	else
 		msg2 ""
-		msg2 "The package can be downloaded here: "
+		msg2 "Package not found!"
+		msg2 "The package can be downloaded here: ${url}"
 		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
 		msg2 ""
 	fi
@@ -31,7 +32,7 @@ fi
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('8e3375a55c0737d722d9831c77f145f11de07c8a9f575688e07b4aba982e0a9b'
+sha256sums=('bfe2fb78652cbea961c46da9a71640b3b00eaf8137d6f258622638d65fb85ae1'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP')
 
@@ -85,7 +86,7 @@ END
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.6.1
+Comment=STM32CubeIDE 1.7.0
 GenericName=STM32CubeIDE
 Exec=env GDK_BACKEND=x11 stm32cubeide %F
 Icon=stm32cubeide

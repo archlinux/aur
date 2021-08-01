@@ -1,6 +1,6 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = stm32cubeide
 	depends = ncurses5-compat-libs
 	depends = glibc
 	depends = libusb
+	depends = webkit2gtk
 	options = !strip
-	source = local://en.st-stm32cubeide_1.6.1_9958_20210326_1446_amd64.sh.zip
+	source = local://en.st-stm32cubeide_1.7.0_10852_20210715_0634_amd64.sh_v1.7.0.zip
 	source = 99-jlink.rules.patch
 	source = https://www.st.com/resource/en/license_agreement/dm00218346.pdf
-	sha256sums = 8e3375a55c0737d722d9831c77f145f11de07c8a9f575688e07b4aba982e0a9b
+	sha256sums = bfe2fb78652cbea961c46da9a71640b3b00eaf8137d6f258622638d65fb85ae1
 	sha256sums = 0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3
 	sha256sums = SKIP
 
 pkgname = stm32cubeide
-
