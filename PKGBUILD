@@ -16,7 +16,7 @@ pkgname=vmware-workstation15
 pkgver=15.5.7
 _buildver=17171714
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
+pkgrel=4
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -117,7 +117,7 @@ sha256sums=(
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-  '904518b48c039611c26bf97a15784f87fcff252ce0858b6af88bbf102f9fe5be'
+  'c6192797745e19e6361e005adb98383f8877f0118e1db5c018c67cc88c7cb6e1'
   '361a3abf195098a90cbf2a4ce16dbcfcfc224c78284269b6d980972bc3647796'
 )
 options=(!strip emptydirs)
