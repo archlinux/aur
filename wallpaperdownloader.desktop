@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=WallpaperDownloader
+GenericName=Wallpaper Downloader
+Comment=Download, manage and change your wallpapers automatically from the Internet
+Keywords=wallpaper;gallery;internet;download;downloader;changer;picture;desktop
+Exec=/usr/bin/wallpaperdownloader
+Icon=wallpaperdownloader
+Terminal=false
+Type=Application
+Categories=Utility;

@@ -1,46 +1,34 @@
 # Maintainer: Eloy Garcia Almaden <eloy.garcia.pca@gmail.com>
+# Contributor: gbr <gbr@protonmail.com>
 pkgname=wallpaperdownloader
 pkgver=4.2
 pkgrel=1
-epoch=
-pkgdesc="Download, manage and change automatically your favorite wallpapers from the Internet. It supports GNOME Shell, Plasma 5, MATE, Unity, XFCE, Cinnamon, Budgie, Deepin and Pantheon"
-arch=('i686' 'x86_64')
-url="https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader"
-license=('GPL')
-groups=()
+pkgdesc='Download, manage and change automatically your favorite wallpapers from the Internet'
+arch=('any')
+url='https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader'
+license=('GPL3')
 depends=('java-runtime>=8' 'xdg-utils')
-makedepends=('java-environment>=8' 'git' 'maven')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=('git+https://bitbucket.org/eloy_garcia_pca/wallpaperdownloader.git#branch=master')
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+makedepends=('java-environment>=8' 'maven')
+source=("$pkgname-$pkgver.tar.gz::$url/get/v$pkgver.tar.gz"
+         wallpaperdownloader.{desktop,sh})
+noextract=("${source[@]%%::*}")
+sha256sums=('76e8d523f6127032d08f33167e9182ae52d5900d98c314a85c7f7aba73592a12'
+            'SKIP' 'SKIP')
+
+prepare() {
+    mkdir -p "$pkgname-$pkgver"
+    bsdtar -C "$pkgname-$pkgver" -x -f "$pkgname-$pkgver.tar.gz" --strip-components 1
+}
 
 build() {
-	cd "$pkgname"
-        # Compilation and jar package build
-	mvn clean package
+    cd "$pkgname-$pkgver"
+    mvn clean package -DpackagingPhase=none
 }
 
 package() {
-	cd "$pkgname"
-        # Destination
-  	install -dm755 "$pkgdir/opt/$pkgname"
-        # Complete jar
-	install -Dm644 "$srcdir/$pkgname/target/$pkgname.jar" "$pkgdir/opt/$pkgname/jar/$pkgname.jar"
-
-  	# launcher
-  	install -Dm755 "$srcdir/$pkgname/aur/$pkgname.sh" "$pkgdir/usr/bin/$pkgname.sh"
-
-  	# .desktop file and icon
-  	install -Dm644 "$srcdir/$pkgname/aur/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "$srcdir/$pkgname/aur/$pkgname.svg" "$pkgdir/opt/$pkgname/gui/$pkgname.svg"
+    cd "$pkgname-$pkgver"
+    install -Dm644 "target/$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+    install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "aur/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 }
