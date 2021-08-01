@@ -1,22 +1,52 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Mario Finelli <mario at finel dot li>
 
 _gemname=dry-types
 pkgname=ruby-$_gemname
-pkgver=0.9.3
+pkgver=1.5.1
 pkgrel=1
-pkgdesc='Type system for Ruby supporting coercions, constraints and complex types like structs, value objects, enums etc.'
-arch=(any)
-url='https://github.com/dryrb/dry-types'
-license=(MIT)
-depends=(ruby ruby-concurrent-ruby ruby-dry-configurable ruby-dry-container ruby-dry-core ruby-dry-equalizer ruby-dry-logic ruby-inflecto)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('2db96a40f4efab0b991fb937c72538e9c58bfc7ee5ab76690bdeb29b1e6e6a8e')
+pkgdesc="Flexible type system for Ruby with coercions and constraints"
+arch=('any')
+url="https://github.com/dry-rb/dry-types"
+license=('MIT')
+depends=(
+  'ruby'
+  'ruby-concurrent'
+  'ruby-dry-container'
+  'ruby-dry-core'
+  'ruby-dry-inflector'
+  'ruby-dry-logic'
+)
+makedepends=('ruby-rdoc')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('1d2e23a9dcf5786334bd9f26904d18c891710481898c4610052c2cc914c38dee0b635d8ef4a5469306876f1ae61b335aab086ca241909fb3e60e7b5cfa7167da')
 
 package() {
-  cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  # delete unnecessary files & folders
+  cd "gems/$_gemname-$pkgver"
+  rm -vrf "$_gemname.gemspec"
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" *.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
