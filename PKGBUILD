@@ -3,7 +3,7 @@
 _apilevel=28
 _sdkShortVer=9
 _sdkver="${_sdkShortVer}.0.0"
-_rev='r05'
+_rev='r06'
 pkgname="android-wear-x86-system-image-${_apilevel}"
 pkgver="${_apilevel}_${_sdkver}_${_rev}"
 pkgrel=3
@@ -18,8 +18,8 @@ conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android-wear/x86-${_apilevel}_${_rev}.zip"
         "package.xml")
-sha256sums=('7289bc1dbd70ab312e5b936bdfd8944ea4ab9ff7443a77a69d9cab3e8f27d227'
-            'd9366cc9863053a6146d41a5cff12cc5d713759fd59c5dbf465bbe36fa417f3e')
+sha256sums=('97f0afa6f09c57bd130e30ec8e78e7f453630c9bec27957c809099c64eac9703'
+            'c5c7eab5a5033ec467547a773639bb8fb1bd1982bb274b9950c0135b0edaa4ef')
 
 prepare() {
   # Fix permissions
