@@ -2,7 +2,7 @@
 
 pkgname=canonical-multipass
 _realname=multipass
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
@@ -20,8 +20,9 @@ source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
         git+https://github.com/ricab/scope_guard.git
         git+https://github.com/Skycoder42/QHotkey.git
         git+https://github.com/fmtlib/fmt.git
+        git+https://github.com/pocoproject/poco.git
 )
-sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 prepare() {
   cd "${srcdir}/${_realname}"
@@ -36,8 +37,9 @@ prepare() {
   git config submodule.3rd-party/scope_guard.url $srcdir/scope_guard
   git config submodule.3rd-party/qhotkey.url $srcdir/QHotkey
   git config submodule.3rd-party/fmt.url $srcdir/fmt
+  git config submodule.3rd-party/poco.url $srcdir/poco
 
-  git submodule update --recursive
+  git submodule update --recursive --init
 }
 
 build() {
