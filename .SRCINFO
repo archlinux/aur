@@ -1,0 +1,20 @@
+pkgbase = ruby-dry-transaction
+	pkgdesc = Business Transaction Flow DSL
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-transaction
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-container
+	depends = ruby-dry-events
+	depends = ruby-dry-matcher
+	depends = ruby-dry-monads
+	noextract = dry-transaction-0.13.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-transaction-0.13.3.gem
+	b2sums = ef716eb43839055212cc9ce8a3e294492ab58420dd03531dadc894c14f5a0b1af33085bf53583a787eb967d076cf491ad4514e1ee388304a094700da2c8caac2
+
+pkgname = ruby-dry-transaction
