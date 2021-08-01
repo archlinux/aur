@@ -1,4 +1,4 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: osiixy <osiixy at gmail dot com>
 
 pkgname=eggs
 pkgver=8.1.2
