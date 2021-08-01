@@ -1,27 +1,25 @@
 pkgbase = bitbake
-	pkgdesc = Build tool executing tasks and managing metadata.
-	pkgver = 1.46.0
+	pkgdesc = Build tool executing tasks and managing metadata
+	pkgver = 1.50.1
 	pkgrel = 1
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
 	license = GPL2
-	makedepends = git
-	makedepends = wget
-	source = https://github.com/openembedded/bitbake/archive/1.46.0.tar.gz
+	source = https://git.openembedded.org/bitbake/snapshot/bitbake-1.50.1.tar.gz
 	source = ignore-TestHashEquivalenceTCPServer.patch
-	md5sums = aff0217dcba08df3dcbbad256cc07911
-	md5sums = 62c3ad291fff1fa27e31d29d2bc5e2b9
+	sha256sums = 04dd74c66902c1ada8e2f3e52b33747712ccac57f4fba2d6e51e0cc0661614b8
+	sha256sums = 0347fc61bb5e1b25e62b698470aaecf411680088c7d5c88a8a0e59138b620a33
 
 pkgname = bitbake
 	install = bitbake.install
 	depends = python
 	depends = python-beautifulsoup4
-	depends = python-codegen
-	depends = python-django18
 	depends = python-ply
+	depends = python-codegen
 	depends = python-progressbar
 	depends = python-pyinotify
 	depends = python-simplediff
+	depends = cpio
+	depends = diffstat
 
 pkgname = bitbake-vim
-

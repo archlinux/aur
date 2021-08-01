@@ -4,54 +4,44 @@
 # TODO: support Toast
 
 pkgbase=bitbake
-pkgname=('bitbake' 'bitbake-vim')
-_github_url="https://github.com/openembedded/bitbake"
-pkgver=1.46.0
+pkgname=(bitbake bitbake-vim)
+pkgver=1.50.1
 pkgrel=1
-pkgdesc='Build tool executing tasks and managing metadata.'
-arch=('any')
-url='https://www.openembedded.org/wiki/Main_Page'
-license=('GPL2')
-makedepends=('git' 'wget')
-source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz"
-    "ignore-TestHashEquivalenceTCPServer.patch"
-    )
-md5sums=('aff0217dcba08df3dcbbad256cc07911'
-         '62c3ad291fff1fa27e31d29d2bc5e2b9')
+pkgdesc="Build tool executing tasks and managing metadata"
+url="https://www.openembedded.org/wiki/Main_Page"
+license=(GPL2)
+arch=(any)
+source=("https://git.openembedded.org/bitbake/snapshot/bitbake-${pkgver}.tar.gz"
+        "ignore-TestHashEquivalenceTCPServer.patch")
+sha256sums=('04dd74c66902c1ada8e2f3e52b33747712ccac57f4fba2d6e51e0cc0661614b8'
+            '0347fc61bb5e1b25e62b698470aaecf411680088c7d5c88a8a0e59138b620a33')
 
-check() {
-    if ! git config --global --get user.name; then
-        unset_name=1
-        git config --global user.name "Bitbake Tester"
-    fi
-    if ! git config --global --get user.email; then
-        unset_email=1
-        git config --global user.email "test@bitbake.com"
-    fi
-    cd "${pkgbase}-${pkgver}"
-    patch -p0 < "${srcdir}/ignore-TestHashEquivalenceTCPServer.patch"
-    BB_SKIP_NETTESTS='yes' PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bin/bitbake-selftest --failfast -v
-    if [ "${unset_name}" -eq 1 ]; then
-        unset_name=1
-        git config --global --unset user.name
-    fi
-    if [ "${unset_email}" -eq 1 ]; then
-        unset_email=1
-        git config --global --unset user.email
-    fi
-}
+#check() {
+#    if ! git config --global --get user.name; then
+#        unset_name=1
+#        git config --global user.name "Bitbake Tester"
+#    fi
+#    if ! git config --global --get user.email; then
+#        unset_email=1
+#        git config --global user.email "test@bitbake.com"
+#    fi
+#    cd "${pkgbase}-${pkgver}"
+#    patch -p0 < "${srcdir}/ignore-TestHashEquivalenceTCPServer.patch"
+#    BB_SKIP_NETTESTS='yes' PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bin/bitbake-selftest --failfast -v
+#    if [ "${unset_name}" -eq 1 ]; then
+#        unset_name=1
+#        git config --global --unset user.name
+#    fi
+#    if [ "${unset_email}" -eq 1 ]; then
+#        unset_email=1
+#        git config --global --unset user.email
+#    fi
+#}
 
 package_bitbake() {
-    depends=(
-        'python'
-        'python-beautifulsoup4'
-        'python-codegen'
-        'python-django18'
-        'python-ply'
-        'python-progressbar'
-        'python-pyinotify'
-        'python-simplediff'
-    )
+    depends=(python python-beautifulsoup4 python-ply python-codegen
+             python-progressbar python-pyinotify python-simplediff
+             cpio diffstat)
     install=bitbake.install
 
     _pythonver=$(python --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
