@@ -76,7 +76,7 @@ package()
 		cat > "$pkgdir/usr/bin/$prog-nightly" <<EOF
 #!/bin/sh
 . /usr/share/kicad-nightly/kicad-nightly.env
-exec /usr/lib/kicad-nightly/bin/$prog
+exec /usr/lib/kicad-nightly/bin/$prog "$@"
 EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
 	done
