@@ -1,0 +1,17 @@
+pkgbase = ytrssil
+	pkgdesc = Subscribe to YouTube RSS feeds and keep track of watched videos
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://pypi.org/project/ytrssil/
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	depends = python-feedparser
+	depends = python-inject
+	depends = python-aiohttp
+	noextract = ytrssil-0.0.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/06/76/b68467510ccb1e42905fa21fcca575abdb26f68ff8186507e5c6f377bf57/ytrssil-0.0.1-py3-none-any.whl
+	md5sums = caf1e22867eedc5f53410639e33fd63d
+
+pkgname = ytrssil
