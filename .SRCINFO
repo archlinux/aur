@@ -1,6 +1,6 @@
 pkgbase = dict-foldoc
 	pkgdesc = The Free On-line Dictionary of Computing for dictd et al.
-	pkgver = 20210709_085937
+	pkgver = 20210731_214027
 	pkgrel = 1
 	url = https://foldoc.org/
 	install = dict-foldoc.install
@@ -11,7 +11,7 @@ pkgbase = dict-foldoc
 	optdepends = dictd: dict client and server
 	provides = dictd-foldoc
 	conflicts = dictd-foldoc
-	source = Dictionary-20210709_085937::https://foldoc.org/Dictionary
+	source = Dictionary-20210731_214027::https://foldoc.org/Dictionary
 	source = fix_misspellings.sed
 	source = extract_license.sed
 	sha512sums = SKIP
@@ -19,4 +19,3 @@ pkgbase = dict-foldoc
 	sha512sums = 5dc4a4e112ca7046a0e0bbc9f3d3464916764e00d72a47794b91a5aac9608b1cf15e4659788529b9f904c8aee3949e6f360ab5872308f524549f742a3b780a1f
 
 pkgname = dict-foldoc
-
