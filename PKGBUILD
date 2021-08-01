@@ -5,6 +5,7 @@
 pkgname=instead-git
 pkgver=master
 pkgrel=1
+conflict=('instead')
 pkgdesc="a quest interpreter"
 arch=('i686' 'x86_64')
 url="https://github.com/instead-hub/instead"
