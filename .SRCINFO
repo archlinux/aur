@@ -1,0 +1,22 @@
+pkgbase = ruby-dry-system
+	pkgdesc = Organize your code into reusable components
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-system
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-auto_inject
+	depends = ruby-dry-configurable
+	depends = ruby-dry-container
+	depends = ruby-dry-core
+	depends = ruby-dry-inflector
+	depends = ruby-dry-struct
+	noextract = dry-system-0.19.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-system-0.19.1.gem
+	b2sums = aa13c219090eb15b151dabc40743dcd64f1833889b8563b5c2cab557e5def2e1cdc73f77c3a6eee27db85b97d992e64e0d55a757366f029e3e09e4b9232b2f64
+
+pkgname = ruby-dry-system
