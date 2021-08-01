@@ -12,7 +12,9 @@ GetOptions("installer=s" => \$installer);
 chdir("/tmp");
 system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/cewe-fotowelt.tar.gz -O cewe-fotowelt.tar.gz");
 system("tar -xf cewe-fotowelt.tar.gz");
-chdir("cewe-fotowelt");
+
+system("mv cewe-fotowelt cewe-software");
+chdir("cewe-software");
 
 system("mv '$installer' ./");
 $installer =~ s!.*/!!;
