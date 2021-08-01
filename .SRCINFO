@@ -1,0 +1,20 @@
+pkgbase = ruby-dry-effects
+	pkgdesc = A practical, production-oriented implementation of algebraic effects
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-effects
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-container
+	depends = ruby-dry-core
+	depends = ruby-dry-inflector
+	depends = ruby-dry-initializer
+	noextract = dry-effects-0.1.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-effects-0.1.5.gem
+	b2sums = 6a772497f610ba42eaaf139f81f789446a440c61a9c7bc3053b1c5774045fc40992630237479a0a9102da1f6a845b7746ee13fe72739aeb378eb4137aedfbd27
+
+pkgname = ruby-dry-effects
