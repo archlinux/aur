@@ -27,8 +27,6 @@ fi
 
 if [ $_static_liftoff -gt 0 ]; then
     depends+=("libdrm")
-    provides+=("libliftoff")
-    conflicts+=("libliftoff")
 else
     depends+=("libliftoff")
 fi
@@ -82,7 +80,13 @@ check() {
 package() {
 
     DESTDIR="$pkgdir" ninja -C build install
-    rm -rfv "$pkgdir/usr/include/wlr" "$pkgdir/usr/lib/libwlroots*" "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
+
+    # Delete library files that were linked statically
+    rm -rfv "$pkgdir/usr/include/wlr" "$pkgdir/usr/lib/libwlroots.a" "$pkgdir/usr/lib/libwlroots*" "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
+    rm -rfv "$pkgdir/usr/include/libliftoff.h" "$pkgdir/usr/lib/libliftoff.a" "$pkgdir/usr/lib/libliftoff*" "$pkgdir/usr/lib/pkgconfig/libliftoff.pc"
+
+    # Delete empty directories
+    find "$pkgdir" -type d -empty -print -delete
 
     cd "$srcdir/$_pkgname"
 
