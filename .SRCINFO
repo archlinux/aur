@@ -1,4 +1,4 @@
-pkgbase = instead
+pkgbase = instead-git
 	pkgdesc = a quest interpreter
 	pkgver = master
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = instead
 	source = git+https://github.com/instead-hub/instead.git
 	sha256sums = SKIP
 
-pkgname = instead
+pkgname = instead-git

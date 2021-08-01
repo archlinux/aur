@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Peter Kosyh <p.kosyhgmail.com>
 
-pkgname=instead
+pkgname=instead-git
 pkgver=master
 pkgrel=1
 pkgdesc="a quest interpreter"
@@ -24,7 +24,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_LUAJIT=1 \
     -DWITH_GTK3=1 \
-    "${srcdir}"/$pkgname
+    "${srcdir}"/instead
   make
 }
 
