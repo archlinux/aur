@@ -1,0 +1,15 @@
+pkgbase = jupyterlab-lsp
+	pkgdesc = Coding assistance for JupyterLab with Language Server Protocol.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://pypi.org/project/jupyterlab-lsp
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = jupyter-lsp
+	depends = jupyterlab
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-lsp/jupyterlab-lsp-3.8.0.tar.gz
+	sha256sums = 5c87b25f11dff3d94db239ce8d01bd639b5fa0f3aaa2ecfbaba560f3360e8cb2
+
+pkgname = jupyterlab-lsp
