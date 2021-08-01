@@ -1,0 +1,12 @@
+diff --git a/game/bink/frame.h b/game/bink/frame.h
+index 6fd6ba1d..e846a85c 100644
+--- a/game/bink/frame.h
++++ b/game/bink/frame.h
+@@ -2,6 +2,7 @@
+ 
+ #include <vector>
+ #include <cstdint>
++#include <cstddef>
+ 
+ namespace Bink {
+ 
