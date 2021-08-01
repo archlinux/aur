@@ -1,7 +1,7 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=galaxybuds-batterylevel-git
-pkgver=r24.ff6dadc
+pkgver=r28.e01596e
 pkgrel=1
 pkgdesc="Simple python script to read battery values and the current wearing status from the Samsung Galaxy Buds and Buds+"
 arch=(any)

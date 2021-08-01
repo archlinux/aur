@@ -1,6 +1,6 @@
 pkgbase = galaxybuds-batterylevel-git
 	pkgdesc = Simple python script to read battery values and the current wearing status from the Samsung Galaxy Buds and Buds+
-	pkgver = r24.ff6dadc
+	pkgver = r28.e01596e
 	pkgrel = 1
 	url = https://github.com/ThePBone/GalaxyBuds-BatteryLevel
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = galaxybuds-batterylevel-git
 	md5sums = SKIP
 
 pkgname = galaxybuds-batterylevel-git
-
