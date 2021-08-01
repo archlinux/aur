@@ -3,8 +3,8 @@
 pkgname=elpa
 PkgName=ELPA
 pkgver=2021.05.001
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('x86_64' 'aarch64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
 license=("LGPL3")
@@ -46,20 +46,32 @@ prepare() {
           _AVX=no
           _AVX2=no
           _AVX512=no
-          echo "No vectorization is enabled"
+          echo "No advanced vectorization is enabled"
           ;;
   esac
+
+  # Checking CPU architecture
+  if [ $CARCH == 'aarch64' ];
+  then
+    _SSE=no
+    _AVX=no
+    _AVX2=no
+    _AVX512=no
+    echo "No vectorization is enabled"
+  fi
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-   ./configure --prefix=/usr                        \
-               --enable-openmp                      \
-               --enable-avx=$_AVX                   \
-               --enable-avx2=$_AVX2                 \
-               --enable-avx512=$_AVX512             \
-               CFLAGS="-O3 -march=native"           \
-               FCFLAGS="-O3 -march=native"          \
+   ./configure --prefix=/usr                      \
+               --enable-openmp                    \
+               --enable-sse=$_SSE                 \
+               --enable-sse-assembly=$_SSE        \
+               --enable-avx=$_AVX                 \
+               --enable-avx2=$_AVX2               \
+               --enable-avx512=$_AVX512           \
+               CFLAGS="-O2 -march=native"         \
+               FCFLAGS="-O2 -march=native"        \
                LIBS='-lscalapack -lblas -llapack'
   make
 }
