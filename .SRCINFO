@@ -1,0 +1,15 @@
+pkgbase = ruby-dry-files
+	pkgdesc = A library that provides a great abstraction for file manipulations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-files
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = dry-files-0.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-files-0.1.0.gem
+	b2sums = 4d69d414de354ff2b3a86b4f7a61630fb31aa5268b5c99ff74410058798323423e0f4ef9bb7d1a4bbe040c87b37a740c12cfc37a003b3792e45372c868643a40
+
+pkgname = ruby-dry-files
