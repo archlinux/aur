@@ -16,7 +16,6 @@ pkgbase = qv2ray-git
 	makedepends = which
 	depends = grpc
 	depends = hicolor-icon-theme
-	depends = libqv2ray-git
 	depends = protobuf
 	depends = qt6-base
 	depends = qt6-svg
