@@ -2,7 +2,7 @@
 
 pkgname=gotask-taskfile
 _binname=gtask
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A task runner / simpler Make alternative written in Go. Installs as gtask to allow coexistance with taskwarrior."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
