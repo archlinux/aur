@@ -1,0 +1,15 @@
+pkgbase = ruby-dry-inflector
+	pkgdesc = String inflections for Ruby
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-inflector
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = dry-inflector-0.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-inflector-0.2.1.gem
+	b2sums = 8d3a4000bc57bb0a1a7bd289b7ae4b7135fa34fb3703a9b7a8de8dceae8dbaaea88cb735438b1f63495b4fd9291209115bc16aada672ca2306cc082eb7974cf0
+
+pkgname = ruby-dry-inflector
