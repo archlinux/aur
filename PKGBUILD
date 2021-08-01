@@ -1,8 +1,8 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=r10.7d1c03a
-pkgrel=2
+pkgver=r14.ac0d827
+pkgrel=1
 arch=(x86_64)
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/keyd"
