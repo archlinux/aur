@@ -1,0 +1,23 @@
+pkgbase = vakzination-git
+	pkgdesc = Vakzination manages your health certificates like vaccination, test, and recovery certificates
+	pkgver = r68.690b1a6
+	pkgrel = 1
+	url = https://invent.kde.org/plasma-mobile/vakzination
+	arch = x86_64
+	arch = aarch64
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = prison
+	depends = qt5-declarative
+	depends = kcodecs
+	depends = karchive
+	depends = qt5-svg
+	depends = khealthcertificate
+	depends = kitinerary
+	provides = vakzination
+	conflicts = vakzination
+	source = git+https://invent.kde.org/plasma-mobile/vakzination.git
+	sha256sums = SKIP
+
+pkgname = vakzination-git
