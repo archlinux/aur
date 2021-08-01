@@ -60,7 +60,7 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.7
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -92,7 +92,7 @@ source=(
 "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
 "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
 "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-"${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
+"${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
 "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
 "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
@@ -122,9 +122,9 @@ BUILD_FLAGS=(
       OBJDUMP=objdump
     )
 sha256sums=('f91e561053afe454afce8a6dcc7f8319010bfe2fa17aeea1d8566f61760be439'
-            '6aa1147f9adadadc11d56956bb6534552e5497506b613f66bea55a08121819da'
+            '4d46148d5e076722537220c854147dc102fc994eeb7ab2d77363dc3873a011be'
             '2578b367f30ddf43569280403c75c056d61883128ea7827356b681fa7970bed4'
-            '12885a2c61a4da5fac56275bc092de97209777d9ce2482f235bdeb6e9148ef6e'
+            '4edb5cd8504d4985de2a1c2ac18aff663366061da5b094df294a8ac9bf26bb55'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
             '9ec679871cba674cf876ba836cde969296ae5034bcc10e1ec39b372e6e07aab0'
@@ -137,7 +137,7 @@ sha256sums=('f91e561053afe454afce8a6dcc7f8319010bfe2fa17aeea1d8566f61760be439'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
             'aa5cbec74dc27591d47616c6c0748475ab55b5efdcbc9d81c2cc49b9b0bf2c00'
             '7289f4ce29d653a0ca511410b66bd3cb42fbcc54f5e097c85e528d4e27ce41ff'
-            '9068274d1c1d906087efe17e3e91382e8a616575ccf089ae7e65846675dfa77b'
+            'd2ba0ec7f76e267417f72abbf3ef35ce232d1e83c7ff33971bf8ccabb9739604'
             'e33908a2aca1b5b52609075c32c714e4c3f6b52c054da2b2982a86f6f3c4b87a'
             'e5818fcaa55ed416b08900db04f18ae6d29b89d19e0b2fb3feb410efd8099b32'
             '0c1e42b6c197e5e5c8a0c5f4047037289063e064f6b841f05028c62b5449864b'
