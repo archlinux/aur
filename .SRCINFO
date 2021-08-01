@@ -1,13 +1,14 @@
 pkgbase = ruby-dry-container
 	pkgdesc = A simple container intended for use as an IoC container
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dry-rb/dry-container
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-concurrent
+	depends = ruby-dry-configurable
 	noextract = dry-container-0.8.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/dry-container-0.8.0.gem

@@ -4,12 +4,12 @@
 _gemname=dry-container
 pkgname=ruby-$_gemname
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple container intended for use as an IoC container"
 arch=('any')
 url="https://github.com/dry-rb/dry-container"
 license=('MIT')
-depends=('ruby' 'ruby-concurrent')
+depends=('ruby' 'ruby-concurrent' 'ruby-dry-configurable')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
