@@ -1,7 +1,7 @@
 pkgbase = electron-qq
 	pkgdesc = A cross-platform QQ made with Electron
-	pkgver = 1.5.7
-	pkgrel = 1
+	pkgver = 2.0.0_beta
+	pkgrel = 2
 	url = https://github.com/Clansty/electron-qq
 	arch = any
 	license = GPL
@@ -14,12 +14,12 @@ pkgbase = electron-qq
 	optdepends = ristretto: Image viewer
 	optdepends = okular: Image viewer
 	optdepends = gimp: Image viewer
-	source = app-1.5.7.asar::https://github.com/Clansty/electron-qq/releases/download/v1.5.7/app.asar
+	source = app-2.0.0_beta.asar::https://github.com/Clansty/electron-qq/releases/download/v2.0.0_beta/app.asar
 	source = 512x512.png
 	source = electron-qq.desktop
 	source = electron-qq
-	md5sums = 4328b63eb9e3d0dde20e2d6b7175b453
-	md5sums = 215fb139ab700bf2632f568c4e564d68
+	md5sums = e46332eec9b9faebd3ea615652153a9f
+	md5sums = f6edfa276c96b746048458413b8c26ce
 	md5sums = 77bdf165bded76c2bac542402e8fe35c
 	md5sums = f88f67ee85da8a00d21770ef73b02915
 
