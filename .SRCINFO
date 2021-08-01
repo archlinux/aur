@@ -1,6 +1,6 @@
 pkgbase = bracmat-git
 	pkgdesc = Programming language for symbolic computation with pattern matching features
-	pkgver = 6.7.9.r243
+	pkgver = 6.8.0.r244
 	pkgrel = 2
 	url = https://github.com/BartJongejan/Bracmat
 	arch = i686
