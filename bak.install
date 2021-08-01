@@ -1,5 +1,0 @@
-post_install() {
-	echo
-	echo -e "\e[34m ==> bak has been successfully installed! Run \`bak\` (without the quotes) in your terminal to use it.\e[0m"
-	echo
-}
