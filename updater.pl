@@ -7,23 +7,18 @@ use strict;
 use Getopt::Long;
 
 my $installer = "";
-
 GetOptions("installer=s" => \$installer);
 
-unless ($installer =~ /(CEWE_Fotowelt|Mein_CEWE_FOTOBUCH)/){
-	print "\033[1;31mNo AUR package available for this update ('$installer').\033[0m"
-}else{
+chdir("/tmp");
+system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/cewe-fotowelt.tar.gz -O cewe-fotowelt.tar.gz");
+system("tar -xf cewe-fotowelt.tar.gz");
 
-	my $pkgName = $1 eq 'Mein_CEWE_FOTOBUCH' ? 'cewe-fotobuch' : 'cewe-fotowelt';
+system("mv cewe-fotowelt cewe-software");
+chdir("cewe-software");
 
-	chdir('/tmp');
-	system("wget https://aur.archlinux.org/cgit/aur.git/snapshot/$pkgName.tar.gz -O $pkgName.tar.gz");
-	system("tar -xvf $pkgName.tar.gz");
+system("mv '$installer' ./");
+$installer =~ s!.*/!!;
+system("_UPDATING=1 _SETUP_FILE=$installer _RENAME='APPLICATION NAME' makepkg --install --noconfirm --clean");
 
-	chdir($pkgName);
-	system("mv '$installer' ./");
-	system('_UPDATING=1 makepkg --install --clean --skipchecksums');
-}
-
-print "\nDrücken Sie <ENTER> um dieses Fenster zu schließen.\n";
+print "\nHit <ENTER> to close this window.\n";
 my $input = <STDIN>;
