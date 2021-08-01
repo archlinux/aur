@@ -4,7 +4,7 @@ post_install() {
 	Diese CEWE Software ist ein Produkt und Eigentum der
 	CEWE Stiftung & Co. KGaA, Meerweg 30-32,
 	26133 Oldenburg. Die Nutzungsbedingen sind
-	in /usr/share/licenses/cewe-fotowelt/EULA.txt.
+	in /usr/share/licenses/PACKAGE NAME/EULA.txt.
 	WENN SIE DIESE SOFTWARE INSTALLIEREN, ERKLÄREN SIE
 	SICH MIT DEN BEDINGUNGEN DIESES LIZENZABKOMMENS
 	EINVERSTANDEN.
@@ -12,7 +12,7 @@ post_install() {
 	This CEWE software was created by and the is the 
 	property of CEWE Stiftung & Co. KGaA, Meerweg 30-32,
 	26133 Oldenburg, Germany. Conditions of use are in
-	/usr/share/licenses/cewe-fotowelt/EULA.txt.
+	/usr/share/licenses/PACKAGE NAME/EULA.txt.
 	BY INSTALLING THIS SOFTWARE YOU DECLARE YOUR
 	AGREEMENT WITH THE CONDITIONS OF THIS LICENCE.
 	---------------------------------------------------
