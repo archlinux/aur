@@ -85,6 +85,8 @@ source=(
   'vmware-networks-configuration.service'
   'vmware-networks.service'
   'vmware-usbarbitrator.service'
+  'vmware-networks.path'
+  'vmware-usbarbitrator.path'
 
   'dkms.conf.in'
   'Makefile'
@@ -113,6 +115,8 @@ sha256sums=(
   '9b4fbe0ba83f761a2eb9ecd05d48428f8b0a5b3abd8404ccbd928408e682f02b'
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
+  '16a73931894a65d43da489ff25d07647c0ecddf60d443b103bceca63504910fe'
+  'fe1b1be8297f4170406f97dd1f8b385d911faf45afe19cbc0c26b8092b3ddf8d'
 
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
@@ -323,7 +327,9 @@ fi
     vmware-authd.service \
     vmware-networks-configuration.service \
     vmware-networks.service \
-    vmware-usbarbitrator.service
+    vmware-usbarbitrator.service \
+    vmware-networks.path \
+    vmware-usbarbitrator.path
   do
     install -Dm 644 \
       "$srcdir/$service_file" \
