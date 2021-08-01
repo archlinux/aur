@@ -1,0 +1,19 @@
+pkgbase = ruby-dry-struct
+	pkgdesc = Typed struct and value objects
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-struct
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-core
+	depends = ruby-dry-types
+	depends = ruby-ice_nine
+	noextract = dry-struct-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-struct-1.4.0.gem
+	b2sums = 1bb2be0785c2ceb652e87cf4a854d2a69d1641e92520c781e125fab6df2a9710ffb6687fa779eb60e0aafb40253b078d0e4848551c5b725a62d159121759c785
+
+pkgname = ruby-dry-struct
