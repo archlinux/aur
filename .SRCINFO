@@ -1,0 +1,12 @@
+pkgbase = cmind
+	pkgdesc = Mastermind®-like console game.
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://github.com/mdomlop/cmind
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = cmind-0.20.tar.gz::https://github.com/mdomlop/cmind/archive/0.20.tar.gz
+	md5sums = 09f8254db6d1c806bbc8eabc25a80b7a
+
+pkgname = cmind
