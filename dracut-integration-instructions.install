@@ -1,0 +1,6 @@
+post_install() {
+	echo 'In order for fido2luks to integrate with dracut, one must have the proper modules installed:'
+	echo 'git clone https://github.com/shimunn/fido2luks.git'
+	echo 'cd fido2luks/dracut'
+	echo 'sudo make install'
+}
