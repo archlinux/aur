@@ -17,8 +17,9 @@
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 42 => native
-## I choose native to let it optimization itself, you can change it by yourself
+## Good option if your package is for one machine: 98 => Intel native
+##                                                 99 => AMD native
+## I choose generic, you can change it by yourself
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -113,7 +114,7 @@ done
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
         '349c53d427fc4b0cbbdb25211bc38947fef4bfea7636dba4ba6ce4ca24f9f8fdf2775a499ec4cc798bec37c4b216d25aad1a55b866d224f29ab4f4daf89f69b3'
-        '2f0d5ddc9a1003958e8a3745cb42e47af8e7ff9961dd3d2ea070cc72444b5c63763f953b393bdd7c8a31f3ea29e8d3c86cc8647ae67bb054e22bce34af492ce1'
+        '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
         'c88d3053e0e1d1145ec7d487df7ed1c18b8a4e8cf62f8fc9e05baa5f1b270aa64177f33b13c1d409e63a83691cc530e5f848ab73bfd2b10f60cdb681b9e310c1'
