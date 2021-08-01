@@ -1,0 +1,19 @@
+pkgbase = bak-bin
+	pkgdesc = A backup tool written in bash (binary version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gamemaker1/bak
+	arch = any
+	license = AGPL3
+	depends = bash
+	depends = coreutils
+	depends = tar
+	depends = zip
+	depends = unzip
+	provides = bak
+	conflicts = bak
+	conflicts = bak-git
+	source = bak-0.1.0.tar.zst::https://github.com/gamemaker1/bak/releases/download/0.1.0/bak-0.1.0-1-any.pkg.tar.zst
+	sha256sums = cdca97c5822ca6c22f11df30721fe6b6a23073c34c2a89c933bb5461350afb79
+
+pkgname = bak-bin
