@@ -2,11 +2,11 @@
 _release_type=alpha
 
 pkgname=makedeb-makepkg-alpha
-pkgver=7.0.4
+pkgver=7.0.5
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (alpha release)"
 arch=(any)
-depends=('awk' 'libarchive' 'bzip' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gpg' 'grep' 'gzip' 'sed' 'ncurses' 'xz')
+depends=('awk' 'libarchive' 'bzip2' 'coreutils' 'fakeroot' 'file' 'findutils' 'gettext' 'gnupg' 'grep' 'gzip' 'sed' 'ncurses' 'xz')
 conflicts=('makedeb-makepkg' 'makedeb-makepkg-beta')
 license=('GPL2')
 url="https://github.com/makedeb/makepkg"
