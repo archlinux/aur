@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-edge
 	pkgdesc = Linux Xanmod - Latest Mainline (EDGE)
-	pkgver = 5.13.6
-	pkgrel = 2
+	pkgver = 5.13.7
+	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -15,13 +15,13 @@ pkgbase = linux-xanmod-edge
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.13.6-xanmod2/patch-5.13.6-xanmod2.xz
+	source = https://github.com/xanmod/linux/releases/download/5.13.7-xanmod1/patch-5.13.7-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9
 	sha256sums = SKIP
-	sha256sums = 77f6fb980e779037841b7bca3f0bc4544d89c285f62884ec72c7ac1c79586ba2
+	sha256sums = b2916ea01d281d04cddce6571abfd0cfa0ce18f7d09effda76ddc4919ffc9a72
 	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
 
 pkgname = linux-xanmod-edge
