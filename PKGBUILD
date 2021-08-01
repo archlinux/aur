@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
-# Contributor:  Michael DeGuzis <mdeguzis@gmail.com>
+# Contributor: Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=play-emu-git
-pkgver=0.42.r14.gd27ce484
+pkgver=0.42.r60.gf7acc8d7
 pkgrel=1
 pkgdesc="Play! is an experimental Playstation 2 emulator."
 arch=(x86_64)
@@ -29,10 +29,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
@@ -58,7 +55,7 @@ prepare () {
 
 build() {
   cd "${pkgname%-git}/build"
-  cmake .. -G"Ninja"
+  cmake .. -Wno-dev -G"Ninja"
   cmake --build . --config Release
 }
 
