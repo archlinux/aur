@@ -1,6 +1,6 @@
 pkgbase = archuseriso
 	pkgdesc = Build desktop iso images, create bootable usb drives, install on usb drives.
-	pkgver = 0.6.8
+	pkgver = 0.6.9
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
@@ -21,12 +21,12 @@ pkgbase = archuseriso
 	optdepends = pacman-contrib: for building ZFS packages
 	optdepends = qemu: virtual machine for aui-run
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.6.8.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.6.8.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.6.9.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.6.9.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha256sums = 20a9f39579781188ea6dc095e0b503492d334b1fd1af15cfd3433714f525aebc
+	sha256sums = af585571698deec693a1b60744edfedbd15bf0c4d26ad5b5eed82926615a7859
 	sha256sums = SKIP
-	b2sums = 30d9d2de6f8e1f6ddda0fb2cae13fb133acdd0c21534439aba0cab9528f8d1eef3ca89f7adb86b6f391f6a47f0b3dfa5dd3ba17029db876b7fd482df1bf489b6
+	b2sums = 1c2458a52ffbbc216714b41f45d69b5b8c3bd9935060c910547b694a20c3fb3992aa5a49358522f7f01188efcc80032db0424d366c7949b75f0e9928881d908c
 	b2sums = SKIP
 
 pkgname = archuseriso
