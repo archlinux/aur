@@ -6,7 +6,6 @@ pkgbase = com.fenbi.deepin
 	arch = i686
 	arch = x86_64
 	license = unknown
-	makedepends = tar
 	depends = deepin-wine6-stable>=6.0.0.1
 	depends = deepin-wine-helper>=5.1.16
 	depends = p7zip

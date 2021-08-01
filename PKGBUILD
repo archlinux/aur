@@ -9,7 +9,7 @@ url="https://fenbi.com/"
 license=('unknown')
 groups=()
 depends=('deepin-wine6-stable>=6.0.0.1' 'deepin-wine-helper>=5.1.16' 'p7zip' 'xdg-utils' 'hicolor-icon-theme')
-makedepends=('tar')
+makedepends=()
 checkdepends=()
 optdepends=('ttf-ms-fonts: Microsoft Core fonts'
 			'noto-fonts-cjk: Google Noto CJK fonts')
