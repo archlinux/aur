@@ -1,6 +1,6 @@
 pkgbase = nuclei-bin
 	pkgdesc = Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/nuclei
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = nuclei-bin
 	conflicts = nuclei
 	source = LICENSE.md::https://github.com/projectdiscovery/nuclei/raw/master/LICENSE.md
 	sha256sums = cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb
-	source_x86_64 = nuclei-2.4.0-x86_64.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.0/nuclei_2.4.0_linux_amd64.zip
-	sha256sums_x86_64 = 12f70a1bc8cc37c7dc9a4a7d5f1888242fd354bb986f526e5b2eaad18763f222
-	source_armv6h = nuclei-2.4.0-armv6.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.0/nuclei_2.4.0_linux_armv6.zip
-	sha256sums_armv6h = 8fe2c6f9b3e6309bdc38d60d77c592dbe90d030a5b3899d67cc0a23798c25abf
-	source_aarch64 = nuclei-2.4.0-aarch64.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.0/nuclei_2.4.0_linux_arm64.zip
-	sha256sums_aarch64 = 77d89e39ad12b6bf0d6fccc93df81c0a8f29d6e54d415860d1ae843d3f8df8f3
+	source_x86_64 = nuclei-2.4.2-x86_64.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.2/nuclei_2.4.2_linux_amd64.zip
+	sha256sums_x86_64 = 5d3df9dca3377c3d226d911b3110067a9fd163a7f53e887532be1d5df530c89e
+	source_armv6h = nuclei-2.4.2-armv6.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.2/nuclei_2.4.2_linux_armv6.zip
+	sha256sums_armv6h = 4bd7495f502d14631abbb93e7fb14bec0131e304773c364ad34de8f1c850dccd
+	source_aarch64 = nuclei-2.4.2-aarch64.zip::https://github.com/projectdiscovery/nuclei/releases/download/v2.4.2/nuclei_2.4.2_linux_arm64.zip
+	sha256sums_aarch64 = c3e9abbda53d0f3118113af4c8a1f3bc9d9c4ea7b0df3fe4f167649873113646
 
 pkgname = nuclei-bin
