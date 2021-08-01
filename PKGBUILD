@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=rapidwright
-_pkgver=2020.2.6-beta
+_pkgver=2020.2.7-beta
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Build Customized FPGA Implementations for Vivado"
@@ -17,9 +17,9 @@ source=(
 	"invoke_rapidwright"
 )
 
-sha256sums=('c48727499dad87687f90c7788adcd16c9c7ce4710cd2d26312ee436779ccd9b8'
-            '3f4c549499ddcdfcb43878d960f351c9d406374b0a47180e51bb55ebf580a56b'
-            '43ff56e12f840e6749578cbfea62ad4e604545747b7797fa94ea0d9bbf7a0d07'
+sha256sums=('9b840a019d007fe465b0a6e36431e81b243a6e9907c055726a5de8e4bbd7e558'
+            '0a030229348d55869a05964bc17b00aad3ac7036bfd685431fc3dfb10bfe3d57'
+            '660fc3d86f3ee82177d6cfc344bb80f09d722274a942689ee1cf0e257486a63d'
             'a0c2f5577cd955cb81aec2839c3c060dc78c6ee48dc99406f67cc902e98f644f')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 build() {
 	cd "RapidWright-$_pkgver"
 
-	gradle build
+	gradle build --exclude-task test
 }
 
 package() {
