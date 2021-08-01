@@ -1,0 +1,21 @@
+pkgbase = ruby-dry-schema
+	pkgdesc = Coercion and validation for data structures
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/dry-rb/dry-schema
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-concurrent
+	depends = ruby-dry-configurable
+	depends = ruby-dry-core
+	depends = ruby-dry-initializer
+	depends = ruby-dry-logic
+	depends = ruby-dry-types
+	noextract = dry-schema-1.7.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/dry-schema-1.7.0.gem
+	b2sums = 507d91aff48108c14203e3f233470532702757f5e78621ccaca4c211fc9d90a64fda4b69cb39715b48f6a2084db7ce483150ee62fd617d437912e28bb18cfea6
+
+pkgname = ruby-dry-schema
