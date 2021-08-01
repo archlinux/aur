@@ -1,7 +1,7 @@
 pkgbase = fzf-tab-git
 	pkgdesc = Replace zsh's default completion selection menu with fzf (git version)
 	pkgver = r196.bc086fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aloxaf/fzf-tab
 	arch = any
 	license = MIT

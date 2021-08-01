@@ -3,7 +3,7 @@
 pkgname=fzf-tab-git
 _pkgname=fzf-tab
 pkgver=r196.bc086fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Replace zsh's default completion selection menu with fzf (git version)"
 url='https://github.com/Aloxaf/fzf-tab'
 arch=('any')
@@ -20,8 +20,10 @@ pkgver() {
 
 package() {
   cd $srcdir/$_pkgname
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -dm 755 "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
-  cp -dr --no-preserve=ownership {fzf-tab.zsh,fzf-tab.plugin.zsh} \
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
+  cp -dr --no-preserve=ownership {fzf-tab.zsh,lib,modules,test} \
     "${pkgdir}/usr/share/zsh/plugins/${pkgname}"
+  ln -s "fzf-tab.zsh" \
+    "${pkgdir}/usr/share/zsh/plugins/${pkgname}/fzf-tab.plugin.zsh"
 }
