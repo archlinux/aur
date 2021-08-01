@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -92,7 +92,7 @@ source=(
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
   "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v7/0001-pf-patches.patch"
+  "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
 #  "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
   "${_patchsource}/lru-patches/lru_5.13.patch"
   "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
@@ -540,7 +540,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'aebc49e4d58bd8314548a364bec99d1e'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
-         '177e0e7883c251b9e490a1933834dcc2'
+         '8bf08ab7a4b7586f7824d57d0b61a284'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
          '2c0375b3cc9690a0f0f3d3e49df54d10'
@@ -553,7 +553,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
-         'a0a99d3914525853685ac814563e5227'
+         'f9b3c2263204ebfae89f29b83278b54b'
          '3f302dbaceea020abd40f6e9f23b75df'
          '7aeb2c86091b9432d1fc9172d418d486'
          'b6623f818462d08b03fdc1b573c90e9f'
