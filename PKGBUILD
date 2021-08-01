@@ -21,8 +21,8 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   python setup.py install --root $pkgdir --skip-build --optimize=1
-  # mkdir -p $pkgdir/{etc,usr/share/jupyter/labextensions/@$_ups_dev}
-  # cp -r $pkgname/labextension $pkgdir/usr/share/jupyter/labextensions/@$_ups_dev/$pkgname
-  # cp -r $srcdir/$pkgname-$pkgver/jupyter-config $pkgdir/etc/jupyter
+  mkdir -p $pkgdir/{etc,usr/share/jupyter/labextensions/@$_ups_dev}
+  cp -r $pkgname/labextension $pkgdir/usr/share/jupyter/labextensions/@$_ups_dev/$pkgname
+  cp -r $srcdir/$pkgname-$pkgver/jupyter-config $pkgdir/etc/jupyter
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
