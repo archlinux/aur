@@ -1,14 +1,14 @@
-# Maintainer:
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Michael Straube <michael.straubej@gmail.com>
 # Contributor: Loui Chang <louipc dot ist at no spam gmail company>
 
 pkgname=tomatoes
 pkgver=1.55
-pkgrel=16
+pkgrel=17
 pkgdesc="I Have No Tomatoes - tomato smashing game"
-url="http://tomatoes.sourceforge.net"
+url="https://tomatoes.sourceforge.net"
 license=('ZLIB')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('sdl_image' 'sdl_mixer' 'glu')
 makedepends=('gendesk')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-linux-src-$pkgver.tar.bz2"

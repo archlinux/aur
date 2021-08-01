@@ -1,10 +1,11 @@
 pkgbase = tomatoes
 	pkgdesc = I Have No Tomatoes - tomato smashing game
 	pkgver = 1.55
-	pkgrel = 16
-	url = http://tomatoes.sourceforge.net
+	pkgrel = 17
+	url = https://tomatoes.sourceforge.net
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = ZLIB
 	makedepends = gendesk
 	depends = sdl_image
@@ -22,4 +23,3 @@ pkgbase = tomatoes
 	sha256sums = 0dcab19428d4904d1d5ab0099b23f6d9f3f53399303166ad3cea6e743efcd9bf
 
 pkgname = tomatoes
-
