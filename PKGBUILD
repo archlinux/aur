@@ -1,6 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Contributor: Philipp Schmitt <philipp@schmitt.co>
+# Contributor: Coelacanthus <coelacanthus@outlook.com>
 
 pkgname=advanced-ssh-config
 _name=assh
