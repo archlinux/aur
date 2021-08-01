@@ -1,0 +1,16 @@
+pkgbase = vim-yin-yang-git
+	pkgdesc = Low contrast black/white colorscheme for Vim
+	pkgver = r32.77ed628
+	pkgrel = 1
+	url = https://github.com/pgdouyon/vim-yin-yang
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-yin-yang
+	conflicts = vim-yin-yang
+	source = vim-yin-yang-git::git+https://github.com/pgdouyon/vim-yin-yang
+	sha256sums = SKIP
+
+pkgname = vim-yin-yang-git
