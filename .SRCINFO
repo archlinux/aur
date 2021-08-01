@@ -1,5 +1,5 @@
 pkgbase = netease-cloud-music-workarounds
-	pkgdesc = Netease Cloud Music, converted from .deb package, with some workarounds..
+	pkgdesc = Netease Cloud Music, converted from .deb package, fix IM & flac
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://music.163.com/
