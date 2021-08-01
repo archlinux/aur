@@ -1,13 +1,13 @@
 pkgbase = wordpress-plugin-webp-converter-for-media
 	pkgdesc = Speed up your website by serving WebP images instead of standard formats
-	pkgver = 3.0.7
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = https://wordpress.org/plugins/webp-converter-for-media
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-webp-converter-for-media-3.0.7.tar.gz::https://downloads.wordpress.org/plugin/webp-converter-for-media.zip
-	sha512sums = 7d36b6bd2d3e10c568f6853a07e763b44b660eb391818b18452f5a54ec144a19e679062a1cae02122081fe35a96aac37a0e1ac48627018bb4f4b236ee69efc48
+	source = wordpress-plugin-webp-converter-for-media-3.0.8.tar.gz::https://downloads.wordpress.org/plugin/webp-converter-for-media.zip
+	sha512sums = 25c75ffc0397870cdb06d2ad47c2f09316d6dcaf4236b59794b9f29b7c5bf4c42b92424d192244e5278e269d8de34be7f89f036e30cab620aff30afe500436d5
 
 pkgname = wordpress-plugin-webp-converter-for-media
