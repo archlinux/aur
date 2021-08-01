@@ -1,10 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Mehmet Ozgur Bayhan <mozgurbayhan at gmail.com>
 # Contributor: Thomas Quillan <tjquillan at gmail.com>
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('x86_64')
@@ -18,7 +19,7 @@ makedepends=('cmocka' 'python-setuptools')
 optdepends=('python-pycrypto: bytecode encryption support'
             'upx: executable compression support')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('af3ef0b9f265a2d3859357a25ab16743fbb6143c89fd7c3570cb84b8d24db0ba')
+sha256sums=('86f694faec78a08c3893aacef84b1a49cb53d4e2880559c6124beefd196a3a74')
 
 build() {
   cd "$pkgname-$pkgver"
