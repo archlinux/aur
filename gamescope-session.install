@@ -1,5 +1,5 @@
 post_install() {
     echo "  Make sure the user 'gamer' exists in your system. You need to"
     echo "  enable the systemd service for this to work i.e:"
-    echo "      # systemd enable gamescope@tty1.service"
+    echo "      # systemctl enable gamescope@tty1.service"
 }
