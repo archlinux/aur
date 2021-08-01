@@ -1,7 +1,7 @@
 # Maintainer: Amina Khakimova <hakami1024@gmail.com>
 # Contributor: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
 pkgname=neo4j-enterprise
-pkgver=4.2.2
+pkgver=4.2.8
 pkgrel=1
 pkgdesc='A fully transactional graph database implemented in Java'
 arch=(any)
@@ -14,15 +14,21 @@ backup=(etc/neo4j/neo4j.conf)
 options=(!strip)
 install=neo4j.install
 source=(http://dist.neo4j.org/neo4j-enterprise-$pkgver-unix.tar.gz
+	bin.patch
         neo4j.conf
         neo4j.install
         neo4j.service
         neo4j-tmpfile.conf)
-sha256sums=('81795a9bc84d800a318d22668d2eb34b73d0ab7319f4f2f9b4cd4c8a650ffcf0'
+sha256sums=('411e928c22f81e3da7fc4486a98913f3efb5cfb911f63f7c7c2e990cba7b2446'
+            '3d6485fe74e174044954216cbfecf0e87611952d9cb0a2e4dd5758aecbaaf3ae'
             '40ecfbdcb843577a0e9b677e9c0cc7ab4899962309d6148ce8fcd1da35560103'
             'f95936abc4a519b01d2cd987cd38a253003cf4cd39bfab29948708e82d98de66'
             '4e56e56e38cfe91755adf76642972bece509a9fd3f7d1851d65715fff762b9db'
             'e1311352e05b1e698599b91883141b938ceb418abd7e6bc11cc964854f0a21e1')
+prepare() {
+  cd $srcdir/neo4j-enterprise-$pkgver
+  patch -Np1 -i ../bin.patch
+}
 package() {
   cd $srcdir/neo4j-enterprise-$pkgver
 
