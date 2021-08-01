@@ -1,0 +1,14 @@
+pkgbase = vim-css3-git
+	pkgdesc = CSS3 syntax support for Vim's built-in syntax/css.vim
+	pkgver = 1.9.0.r12.g058c814
+	pkgrel = 1
+	url = https://github.com/hail2u/vim-css3-syntax
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-css3-git::git+https://github.com/hail2u/vim-css3-syntax
+	sha256sums = SKIP
+
+pkgname = vim-css3-git
