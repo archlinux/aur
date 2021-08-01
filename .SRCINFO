@@ -1,6 +1,6 @@
 pkgbase = nasc
 	pkgdesc = Do maths like a normal person.
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://parnold-x.github.io/nasc/
 	arch = i686
@@ -16,10 +16,9 @@ pkgbase = nasc
 	depends = webkit2gtk
 	conflicts = nasc-git
 	conflicts = nasc-bzr
-	source = nasc-0.7.6.tar.gz::https://github.com/parnold-x/nasc/archive/0.7.6.tar.gz
+	source = nasc-0.7.7.tar.gz::https://github.com/parnold-x/nasc/archive/0.7.7.tar.gz
 	source = libqalculate-ad985fd77acfd54ee369d56f6066b1460b973cdb::git+https://github.com/parnold-x/libqalculate#commit=ad985fd77acfd54ee369d56f6066b1460b973cdb
-	sha512sums = db1981b8b5bd745fdac3f55a72f13df13395dbaed55fb30f25a959c7a543f0ed2862fa0552727fa41f67b84ffe3b26e1986145bc922527646e8b220785d6f8bf
+	sha512sums = 88fcfb542cb2138ff7138a9411225e7e8c486bd1e11e4caba58af817541cd0a0d9f5ffd63f8ee8199e9318dd7772f19991dda2194f76c866b022781a56a34f5b
 	sha512sums = SKIP
 
 pkgname = nasc
-
