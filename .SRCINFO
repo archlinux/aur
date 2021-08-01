@@ -1,0 +1,20 @@
+pkgbase = com.fenbi.deepin
+	pkgdesc = Fenbi on Deepin Wine
+	pkgver = 4.0.0.1295
+	pkgrel = 4
+	url = https://fenbi.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine6-stable>=6.0.0.1
+	depends = deepin-wine-helper>=5.1.16
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	source = https://community-store-packages.deepin.com/appstore/pool/appstore/c/com.fenbi.deepin/com.fenbi.deepin_4.0.0.1295deepin4_i386.deb
+	sha512sums = 3e1b5a7bbbd7785225d5ec4bde7853e9b799d5c0e6876285ec5cc05829c3fac5edb75ecda783a3a3aad950adb298c50a85c3a0f895baa9b49b714d14eca77404
+
+pkgname = com.fenbi.deepin
