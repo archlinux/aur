@@ -1,7 +1,7 @@
 pkgbase = scalapack
 	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.netlib.org/scalapack/
 	install = scalapack.install
 	arch = i686

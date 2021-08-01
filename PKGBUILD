@@ -3,7 +3,7 @@
 
 pkgname=scalapack
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
@@ -25,24 +25,24 @@ prepare() {
 }
 
 build() {
-    msg "Starting make..."
-
-    [[ -e build ]] && rm -rf build
-    mkdir build 
-    cd build
-
-    cmake ../${pkgname}-${pkgver} \
+  msg "Starting make..."
+  
+  [[ -e build ]] && rm -rf build
+  mkdir build 
+  cd build
+  
+  cmake ../${pkgname}-${pkgver} \
 	-DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
 	-DBUILD_SHARED_LIBS=ON \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
 	-DCMAKE_CXX_COMPILER=/usr/bin/mpic++ \
-	-DCMAKE_Fortran_FLAGS="-fallow-argument-mismatch" \
+	-DCMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch" \
 	-DCMAKE_C_COMPILER=/usr/bin/mpicc
-    make
+  make
 }
 
 package(){
-  cd "${srcdir}"/build
+  cd build
   make install #DESTDIR="${pkgdir}"
 
   sed -i 's#'${pkgdir}'##g' "${pkgdir}"/usr/lib/pkgconfig/scalapack.pc
