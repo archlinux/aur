@@ -24,4 +24,3 @@ pkgbase = scalapack
 	sha256sums = d9904ecb69f318c4782c0bd39ff2bff511af31960a2383a9d42d6620a266ea70
 
 pkgname = scalapack
-
