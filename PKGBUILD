@@ -1,7 +1,7 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_11604_g878538abff
+pkgver=5.99.0_11614_g2a2dc1c0ff
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=878538abff
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=2a2dc1c0ff
 	'kicad-nightly.env'
 )
 sha256sums=(
@@ -39,12 +39,7 @@ build()
 		-DCMAKE_EXECUTABLE_SUFFIX=-nightly \
 		-DKICAD_USE_OCE=OFF \
 		-DKICAD_USE_OCC=ON \
-		-DKICAD_SCRIPTING=ON \
-		-DKICAD_SCRIPTING_PYTHON3=ON \
-		-DKICAD_SCRIPTING_MODULES=ON \
 		-DKICAD_SCRIPTING_WXPYTHON=ON \
-		-DKICAD_SCRIPTING_ACTION_MENU=ON \
-		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON \
 		-DKICAD_DATA=/usr/share/kicad-nightly \
 		-DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
 	ninja
@@ -76,7 +71,7 @@ package()
 		cat > "$pkgdir/usr/bin/$prog-nightly" <<EOF
 #!/bin/sh
 . /usr/share/kicad-nightly/kicad-nightly.env
-exec /usr/lib/kicad-nightly/bin/$prog
+exec /usr/lib/kicad-nightly/bin/$prog "$@"
 EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
 	done
