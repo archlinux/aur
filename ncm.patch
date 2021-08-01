@@ -1,0 +1,23 @@
+diff --git a/modules/access/http/resource.c b/modules/access/http/resource.c
+index 9a28bb50f3..4919cb3a05 100644
+--- a/modules/access/http/resource.c
++++ b/modules/access/http/resource.c
+@@ -315,6 +315,18 @@ char *vlc_http_res_get_type(struct vlc_http_resource *res)
+     if (status < 200 || status >= 300)
+         return NULL;
+ 
++    if(res->path){
++        char *suffix = "\0";
++        for(int i = (int) (strlen(res->path) - 1); i >= 0; --i){
++            if(res->path[i] == '.'){
++                suffix = res->path + i + 1;
++                break;
++            }
++        }
++        if(strcmp(suffix, "flac") == 0)
++            return strdup("audio/flac");
++    }
++
+     const char *type = vlc_http_msg_get_header(res->response, "Content-Type");
+     return (type != NULL) ? strdup(type) : NULL;
+ }
