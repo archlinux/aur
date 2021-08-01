@@ -1,0 +1,24 @@
+pkgbase = odysee-nativefier
+	pkgdesc = Odysee.com desktop built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://odysee.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = odysee-nativefier.png
+	source = odysee-nativefier.desktop
+	source = odysee-nativefier-inject.js
+	sha256sums = eb39fb3525bb40278d902ff9afdcec2eea749827095cce3b395bba17d0a4e53d
+	sha256sums = b23960f67fde24cc0fd853c81db8a806c878c563d45f674961f54ecec08a5e1e
+	sha256sums = f46bdc1adc9868d13b4f0809667cd5a9b1a6e5e47bc25b570f062d7072d0f942
+
+pkgname = odysee-nativefier

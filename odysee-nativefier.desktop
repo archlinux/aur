@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Odysee
+Comment=Odysee desktop built with nativefier (electron)
+Exec=odysee-nativefier
+Icon=odysee-nativefier
+Encoding=UTF-8
+StartupWMClass=odysee-nativefier
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Audio;Video;AudioVideo;
