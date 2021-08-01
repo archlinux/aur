@@ -1,13 +1,13 @@
 pkgbase = hysteria
 	pkgdesc = TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/HyNetwork/hysteria
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = hysteria::git+https://github.com/HyNetwork/hysteria.git#tag=v0.8.1
+	source = hysteria::git+https://github.com/HyNetwork/hysteria.git#tag=v0.8.2
 	source = hysteria@.service
 	source = hysteria-server@.service
 	source = sysusers.conf
@@ -17,4 +17,3 @@ pkgbase = hysteria
 	sha256sums = abaab463035e67c1e1728e5378b8f4a50960bf80d5005e02b3b2c9468f06150d
 
 pkgname = hysteria
-
