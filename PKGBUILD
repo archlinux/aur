@@ -4,7 +4,7 @@
 pkgname=fido2luks-bin
 _pkgname=fido2luks
 pkgver=0.2.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Decrypt your LUKS partition using a FIDO2 compatible authenticator"
 arch=('x86_64')
 url="https://github.com/shimunn/fido2luks"
@@ -24,9 +24,10 @@ source=(
 )
 
 b2sums=(
-				'e21519cdd29cc12026183e492918ef63522fa3cd2870a4f4ddf0bf9e2040f8d55de88448d3106c76a274995d30bf3e061bde40a7a9058a7e6e9ec492d836ceda'
-				'SKIP'
-				'0f4cba3368e3f713064d890c8e3688721aa8dc7c59e463d20c2a00db650d71a2837c5229becd43e31b4b590650390685930d86056eab62c251220854b7a3983b')
+	'e21519cdd29cc12026183e492918ef63522fa3cd2870a4f4ddf0bf9e2040f8d55de88448d3106c76a274995d30bf3e061bde40a7a9058a7e6e9ec492d836ceda'
+	'SKIP'
+	'0f4cba3368e3f713064d890c8e3688721aa8dc7c59e463d20c2a00db650d71a2837c5229becd43e31b4b590650390685930d86056eab62c251220854b7a3983b'
+)
 
 package() {
 	tar xf data.tar.xz -C "${pkgdir}"
