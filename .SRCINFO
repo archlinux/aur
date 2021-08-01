@@ -1,0 +1,15 @@
+pkgbase = lua-lpugl
+	pkgdesc = Minimal Lua-API for building cross platform GUIs
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/osch/lua-lpugl#lpugl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = luarocks
+	depends = lua
+	depends = lua-oocairo
+	source = https://github.com/osch/lua-lpugl/archive/v0.0.1.tar.gz
+	md5sums = 7d9408f67a69790262b22e5618f45448
+
+pkgname = lua-lpugl
