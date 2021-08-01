@@ -1,6 +1,6 @@
 pkgbase = radium-bin
 	pkgdesc = A graphical music editor. A next generation tracker. (Demo Version)
-	pkgver = 6.9.88
+	pkgver = 6.9.91
 	pkgrel = 1
 	url = https://users.notam04.no/~kjetism/radium
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = radium-bin
 	provides = radium
 	conflicts = radium
 	options = !strip
-	source = https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-6.9.88-demo.tar.xz
+	source = https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-6.9.91-demo.tar.xz
 	sha256sums = fdc54cd447e00d99eef8592759245b3699acf4c4f982072fee8507592604a17e
 
 pkgname = radium-bin
