@@ -1,9 +1,10 @@
-# Contributor: Michael Gerdau <mgd@qata.de>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Maintainer: Michael Gerdau <mgd@qata.de>
+# Contributor: xduugu <xduugu@gmx.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-spreadsheet-parseexcel'
 pkgver='0.65'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Read information from an Excel file."
 _realname='Spreadsheet-ParseExcel'
 arch=('any')
@@ -11,7 +12,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-crypt-rc4>=0' 'perl-digest-perl-md5>=0' 'perl-io-stringy>=0' 'perl-ole-storage-lite>=0.19')
 makedepends=()
-url='http://search.cpan.org/dist/Spreadsheet-ParseExcel'
+url='https://metacpan.org/release/Spreadsheet-ParseExcel'
 source=("http://search.cpan.org/CPAN/authors/id/D/DO/DOUGW/${_realname}-${pkgver}.tar.gz")
 md5sums=('4b8857e3a391d86501c1b742b459ac9e')
 sha512sums=('a57be764a9781d1e219d1aab940a9b834d1ddf90ebb4966eaeba86afea3de03617fbdeda67d9bc2bedd8651cc3feafd46905021150bbcd68cbc7453865877637')
