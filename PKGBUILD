@@ -3,7 +3,7 @@
 pkgname=raven-reader-bin
 _pkgname=raven-reader
 urlname=Raven-Reader
-pkgver=1.0.63
+pkgver=1.0.64
 pkgrel=1
 pkgdesc="Electron-based RSS reader -- All your articles in one place. Beautiful."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/hello-efficiency-inc/${_pkgname}/releases/download/v${pkgver}/${urlname}-${pkgver}.AppImage")
-md5sums=('cbec5f69b8bb0b522fcfd8d9c68f9d72')
+md5sums=('049f23cb7b089f5a6efc9e39cc3e4495')
 
 package() {
   # Extract AppImage
