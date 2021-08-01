@@ -5,20 +5,21 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.1.6.1.r30.gd201e647
+pkgver=3.2.2.r11.gbdeb414a
 pkgrel=1
-pkgdesc='CLI curses-based monitoring tool'
+pkgdesc='CLI curses-based monitoring tool (git)'
 arch=(any)
 url=https://github.com/nicolargo/glances
 license=(LGPL)
-makedepends=(git)
-depends=(python python-psutil python-setuptools python-future)
+makedepends=(git python-setuptools)
+depends=(python python-psutil python-future python-defusedxml)
 optdepends=('hddtemp: HDD temperature monitoring support'
             'python-bottle: web server support'
             'python-docker: for the Docker monitoring support'
             'python-matplotlib: for graphical/chart support'
             'python-netifaces: for the IP plugin'
-            'python-zeroconf: for the autodiscover mode')
+            'python-zeroconf: for the autodiscover mode'
+            'python-pystache: templating engine')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=(git+"${url}".git
