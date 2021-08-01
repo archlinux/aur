@@ -5,10 +5,10 @@
 # Mostly copied from the `flutter` aur package
 
 _pkgname=flutter
-_pkgver=2.4.0-4.0.pre
+_pkgver=2.5.0-1.0.pre
 
 pkgname=flutter-dev
-pkgver=2.4.0_4.0.pre
+pkgver=2.5.0_1.0.pre
 pkgrel=1
 epoch=
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android"
@@ -17,16 +17,16 @@ url="https://flutter.dev"
 license=("custom" "BSD" "CCPL")
 depends=("git" "glu" "java-environment" "libglvnd" "unzip")
 optdepends=("android-sdk" "android-studio" "dart" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "perl" "python" "clang" "cmake" "gtk3" "ninja" "pkgconf")
+makedepends=("python")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-beta")
-makedepends=("python")
 backup=("opt/${_pkgname}/packages/${_pkgname}_test/pubspec.yaml" "opt/${_pkgname}/packages/${_pkgname}/pubspec.yaml")
 options=("!emptydirs")
 install="${_pkgname}.install"
 source=("${_pkgname}-${_pkgver}.tar.gz::https://storage.googleapis.com/flutter_infra_release/releases/dev/linux/flutter_linux_${_pkgver}-dev.tar.xz"
 				"${_pkgname}.sh"
   			"${_pkgname}.csh")
-sha256sums=('9ab51abd5714e563d696363b8322b9caedea60479171310a1721b1f654ad0ea5'
+sha256sums=('7741b4950a414a1e70d3afb1bbdd5e485476e0afd4a399b8f3be93f6bebdae49'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
