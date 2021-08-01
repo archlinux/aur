@@ -1,0 +1,19 @@
+pkgbase = instead
+	pkgdesc = a quest interpreter
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/instead-hub/instead
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = gtk3
+	depends = luajit
+	optdepends = instead-launcher: install and update INSTEAD games from net,insteadman: Manager for INSTEAD interpreter.
+	source = git+https://github.com/instead-hub/instead.git
+	sha256sums = SKIP
+
+pkgname = instead
