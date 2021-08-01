@@ -1,6 +1,6 @@
 pkgbase = rapidwright
 	pkgdesc = Build Customized FPGA Implementations for Vivado
-	pkgver = 2020.2.7_beta
+	pkgver = 2021.1.0_beta
 	pkgrel = 1
 	url = http://www.rapidwright.io/
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = rapidwright
 	makedepends = gradle
 	depends = java-runtime
 	depends = jython
-	source = rapidwright-2020.2.7_beta.tar.gz::https://github.com/Xilinx/RapidWright/archive/v2020.2.7-beta.tar.gz
-	source = rapidwright_data-2020.2.7_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2020.2.7-beta/rapidwright_data.zip
-	source = rapidwright_jars-2020.2.7_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2020.2.7-beta/rapidwright_jars.zip
+	source = rapidwright-2021.1.0_beta.tar.gz::https://github.com/Xilinx/RapidWright/archive/v2021.1.0-beta.tar.gz
+	source = rapidwright_data-2021.1.0_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2021.1.0-beta/rapidwright_data.zip
+	source = rapidwright_jars-2021.1.0_beta.zip::https://github.com/Xilinx/RapidWright/releases/download/v2021.1.0-beta/rapidwright_jars.zip
 	source = invoke_rapidwright
-	sha256sums = 9b840a019d007fe465b0a6e36431e81b243a6e9907c055726a5de8e4bbd7e558
-	sha256sums = 0a030229348d55869a05964bc17b00aad3ac7036bfd685431fc3dfb10bfe3d57
-	sha256sums = 660fc3d86f3ee82177d6cfc344bb80f09d722274a942689ee1cf0e257486a63d
+	sha256sums = b0e9b8e13ee7b02d3e3ed3ac8ff4302215fd48fab0078f3babe5aad18d734fb4
+	sha256sums = d05cb8939bf6d76b42c66335d349b33ae251e56432575948a1724d2040287203
+	sha256sums = 1b4fdc497e6ffa75fdca3b0fc369cb42325c56f1775d3fd19e16c8850319c38b
 	sha256sums = a0c2f5577cd955cb81aec2839c3c060dc78c6ee48dc99406f67cc902e98f644f
 
 pkgname = rapidwright
