@@ -1,14 +1,13 @@
 pkgbase = prosody-mod-invites-register
 	pkgdesc = Allow account registration using invite tokens
-	pkgver = 2021.01.26
+	pkgver = 2021.06.25
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_invites_register.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
 	depends = prosody
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=52e1ab99d25e
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=06c9c9ef0a51
 	sha1sums = SKIP
 
 pkgname = prosody-mod-invites-register
-
