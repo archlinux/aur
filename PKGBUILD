@@ -1,7 +1,7 @@
 # Maintainer: RedCubeDev <someredcubedev@gmail.com>
 pkgname='rctc'
-pkgver=2.3.1
-pkgrel=5
+pkgver=2.3.1.420
+pkgrel=6
 pkgdesc="Commandline Compiler for the ReCT Programming language"
 arch=('x86_64')
 url="http://rect.ml/"
@@ -32,6 +32,7 @@ package() {
    cd "bin/Release/netcoreapp3.1/"
    mkdir -p "$pkgdir/usr/bin/rect"
    mkdir -p "$pkgdir/usr/bin/rect/Packages"
+   mkdir -p "$pkgdir/usr/bin/rect/System Dotnet Assemblies"
    install -Dm755 ./rctc ./rctc.dll ./rctc.runtimeconfig.json ./ReCT.dll "$pkgdir/usr/bin/rect"
    install -Dm755 ./Json.Net.dll ./Mono.Cecil.dll ./Mono.Options.dll ./Mono.Cecil.Rocks.dll "$pkgdir/usr/bin/rect"
 
@@ -50,5 +51,10 @@ package() {
       install -Dm755 "./ReCT.${i}.pack" "$pkgdir/usr/bin/rect/Packages"
       cd ../../../..
    done
+
+   cd ..
+   cd "./System Dotnet Assemblies"
+   install -Dm755 ./System.Console.dll ./System.IO.FileSystem.dll ./System.Net.Sockets.dll ./System.Runtime.Extensions.dll ./System.Runtime.dll ./System.Threading.Thread.dll ./System.Threading.dll "$pkgdir/usr/bin/rect/System Dotnet Assemblies"
+
    ln -sf "/usr/bin/rect/rctc" "$pkgdir/usr/bin/rctc"
 }
