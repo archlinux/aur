@@ -13,11 +13,11 @@ conflicts=('qv2ray' 'xray')
 release=$(curl -s https://api.github.com/repos/Shadowsocks-NET/QvStaticBuild/releases/latest)
 
 pkgver() {
-    echo $release | jq '.tag_name' | sed 's/"//g;s/^nightly-//;s/-//g'
+    echo $release | jq -r '.tag_name' | sed 's/^nightly-//;s/-//g'
 }
 
 package() {
-    curl -Lo $pkgver.tar.zst $(echo $release | jq '.assets[0].browser_download_url' | sed 's/"//g')
+    curl -Lo $pkgver.tar.zst $(echo $release | jq -r '.assets[0].browser_download_url')
     mkdir $pkgdir/usr
     tar -C $pkgdir/usr -xvf $pkgver.tar.zst
 }
