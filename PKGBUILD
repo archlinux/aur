@@ -2,8 +2,8 @@
 _perlmod="Crypt-OpenSSL-X509"
 _modnamespace=Crypt
 pkgname=perl-crypt-openssl-x509
-pkgver=1.908
-pkgrel=3
+pkgver=1.910
+pkgrel=1
 pkgdesc="Perl extension to OpenSSL's X509 API"
 arch=(x86_64)
 url="http://search.cpan.org/dist/$_perlmod"
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'openssl')
 checkdepends=('perl-test-pod')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha512sums=('77fc1f9eab616eb11e90417c9ee81b8cc4f7831f53f4f5b58eee49aecea917072d0bacb183916f59909bd375ea3d8a2863ad3a12b480f7ff03bef0140433a7a4')
+sha512sums=('6ddb5358f4a96cae85a016143f3fec11bd715dcf47a0aa694587bc09077a5067be7a22fe16be0e47b7bd59d2db826d03801737482a812f4cff3a51ff7da0d6ad')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
