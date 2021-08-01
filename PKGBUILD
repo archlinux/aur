@@ -4,13 +4,13 @@ _commit=d0c8469f66806b5ea738d607f7d2b000af8b1129
 
 pkgname=ftl-sdk
 pkgver=0.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Software Development Kit for Mixer's FTL Protocol"
 arch=(x86_64)
 url="https://github.com/Scrumplex/ftl-sdk"
 license=("custom:MIT")
 depends=("jansson" "curl")
-makedepends=("cmake" "make")
+makedepends=("cmake" "make" "git")
 provides=("libftl.so=0-64")
 source=("$pkgname::git+https://github.com/microsoft/ftl-sdk.git#commit=${_commit}"
         "0001-cmake-Use-external-jansson-if-possible.patch"
