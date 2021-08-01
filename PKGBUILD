@@ -1,7 +1,7 @@
 # Maintainer: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 	'python-xmltodict'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ad5ed4d6959ead3f8f054b8e773922cedd81ea050067fb8aaec2ac3e69f943d1')
+sha256sums=('bde2e02912f2cdcb9ee2f70dc60607acae674e4431011ff35ebc96ad1761aad1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
