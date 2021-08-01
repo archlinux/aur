@@ -3,9 +3,9 @@
 _pkgname=pmdarima
 pkgname=python-$_pkgname
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ARIMA estimators for Python"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://alkaline-ml.com/pmdarima"
 license=('MIT')
 depends=('python-scikit-learn' 'python-statsmodels' 'python-urllib3')
