@@ -2,25 +2,25 @@
 
 pkgname=spflashtool-bin
 _pkgname=spflashtool
-pkgver="5.2112"
+pkgver="6.2124"
 pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
 url="http://spflashtools.com/category/linux"
 license=('unknown')
-depends=('qtwebkit' 'libpng12')
+depends=('qt5-serialport' 'qt5-xmlpatterns')
 makedepends=('gendesk')
 provides=('spflashtool')
 conflicts=('spflashtool')
-source=("http://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
+source=("https://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
         'spflashtool.png'
         '60-spflashtool.rules')
-sha256sums=('a3abde16afccd58328eeab65f6c425fdac240f5abad9865aa0920fadafe4b1d0'
+sha256sums=('45fb7885b87a1b7c340d6a1267eac9559fea52c9d59f656f9ec014d13bda92a1'
             'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7'
-            'a46a4fc667cf5d6114f3757dc8dbc6cfbc27229319d48f6d78c1e026b34210da')
+            'a0e20dea13cfc63a92444e3763c764701162cfb5a8d04092dc69169f4214fb8d')
 
 # Workaround for source file download, which requires the 'Referer' header to be set
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -e %u -o %o %u'
+DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u -e %u'
           "${DLAGENTS[@]}")
 
 prepare() {
@@ -38,7 +38,7 @@ prepare() {
 	{
 		echo '#!/bin/sh'
 		echo 'export LD_LIBRARY_PATH="/opt/'"${_pkgname}"'"'
-		echo '/opt/'"${_pkgname}"'/flash_tool "${@}"'
+		echo 'exec /opt/'"${_pkgname}"'/SPFlashToolV6 "${@}"'
 	} > "${srcdir}/${_pkgname}"
 }
 
@@ -46,17 +46,18 @@ package() {
 	local folderName="SP_Flash_Tool_v${pkgver}_Linux"
 
 	# Clean files we do not need
-	rm "${srcdir}/${folderName}/flash_tool.sh"
-	rm -r "${srcdir}/${folderName}/bin"
+	rm -r "${srcdir}/${folderName}/Driver"
 	rm -r "${srcdir}/${folderName}/lib"
 	rm -r "${srcdir}/${folderName}/plugins"
-	rm -r "${srcdir}/${folderName}/Driver"
+	rm "${srcdir}/${folderName}/99-ttyacms.rules"
+	rm "${srcdir}/${folderName}/modemmanagercmd.sh"
+	rm "${srcdir}/${folderName}/SPFlashToolV6.sh"
 
 	# Install remaining files
 	install -Dm644 -t "${pkgdir}/opt/${_pkgname}/" "${srcdir}/${folderName}/"*
 
 	# Mark the binary as executable and install the shell file created in prepare()
-	chmod 755 "${pkgdir}/opt/${_pkgname}/flash_tool"
+	chmod 755 "${pkgdir}/opt/${_pkgname}/SPFlashToolV6"
 	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Desktop file and icon
@@ -65,8 +66,4 @@ package() {
 
 	# Udev rule
 	install -Dm644 "${srcdir}/60-${_pkgname}.rules" "${pkgdir}/usr/lib/udev/rules.d/60-${_pkgname}.rules"
-
-	# Link QT assistant so the help menu works
-	install -dm755 "${pkgdir}/opt/${_pkgname}/bin"
-	ln -sf "/usr/lib/qt4/bin/assistant" "${pkgdir}/opt/${_pkgname}/bin/assistant"
 }
