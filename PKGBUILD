@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=r14.ac0d827
+pkgver=r25.c51fb41
 pkgrel=1
 arch=(x86_64)
 pkgdesc="A key remapping daemon for linux. "
@@ -26,8 +26,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -dm755 "$pkgdir/etc/keyd/"
-	install -Dm755 bin/keyd -t "$pkgdir/usr/bin/"
-	install -Dm644 keyd.1.gz -t "$pkgdir/usr/share/man/man1/"
-	install -Dm644 keyd.service -t "$pkgdir/usr/lib/systemd/system/"
+	make DESTDIR="${pkgdir}" PREFIX='/usr' install
 }
