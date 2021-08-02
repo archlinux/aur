@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-fmt
-pkgver=7.1.3
-pkgrel=5
+pkgver=8.0.1
+pkgrel=1
 pkgdesc="Open-source formatting library for C++ (mingw-w64)"
 url="https://fmt.dev/"
 license=("MIT")
@@ -13,10 +13,10 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"5cae7072042b3043e12d53d50ef404bbb76949dad1de368d7f993a15c8c05ecc"
+	"b06ca3130158c625848f3fb7418f235155a4d389b2abc3a6245fb01cb0eb1e01"
 )
 source=(
-	"https://github.com/fmtlib/fmt/archive/${pkgver}.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/fmtlib/fmt/archive/${pkgver}.tar.gz"
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -24,7 +24,7 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DND
 
 prepare() {
 	cd "fmt-${pkgver}"
-	sed -i 's/class ostream final/class FMT_API ostream final/' 'include/fmt/os.h'
+	#sed -i 's/class ostream final/class FMT_API ostream final/' 'include/fmt/os.h'
 }
 
 build() {
