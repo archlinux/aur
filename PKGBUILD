@@ -2,7 +2,7 @@
 
 pkgname=todoist-nativefier
 pkgver=2021.06.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
@@ -10,7 +10,7 @@ license=('MIT')
 # Would be nice to use the latest Electron, but, for example, I've encountered
 # an issue where new windows get stuck on about:blank in Electron 13, but not in
 # Electron 12, the latest supported by Nativefier.
-_electronv=12
+_electronv=
 depends=("electron${_electronv}")
 makedepends=(
   'curl'
