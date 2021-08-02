@@ -9,15 +9,15 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=('gdal-hdf4' 'python-gdal-hdf4')
-pkgver=3.0.4
-pkgrel=9.0
+pkgver=3.3.1
+pkgrel=4.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool). Based on gdal ArchLinux package version."
 arch=('x86_64')
-url="http://www.gdal.org/"
+url="https://gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c')
-makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'boost')
+makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-breathe' 'python-numpy' 'python-sphinx' 'boost')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl: perl binding support')
@@ -25,7 +25,7 @@ options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal)
-sha256sums=('5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277'
+sha256sums=('48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
 
 prepare() {
@@ -53,7 +53,7 @@ build() {
   make man
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python3 setup.py build
+  python setup.py build
 }
 
 package_gdal-hdf4 () {
@@ -82,8 +82,8 @@ package_python-gdal-hdf4 () {
   optdepends=()
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python3 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+#   install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
 
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
