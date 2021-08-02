@@ -3,7 +3,7 @@
 _pkgname=asfa
 pkgname=${_pkgname}-git
 pkgver=0.8.0.r16.g89c4c83
-pkgrel=1
+pkgrel=2
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
 url="https://github.com/obreitwi/asfa"
@@ -23,17 +23,19 @@ pkgver() {
     cd $_oldpwd
 }
 
-# version string that is accepted by cargo 
+# version string that is accepted by cargo
 _cargo_version() {
     local _oldpwd
     _oldpwd="$PWD"
     cd "$srcdir/$_pkgname"
-    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/')"
+    printf "%s" "$(git describe --long --tags \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/\([^-]*\)-\([^-]*\)$/\1.\2/')"
     cd $_oldpwd
 }
 
-# ensure that the asfa binary contains the (almost) same git-based version
-# information as the installed package
+# Ensure that the asfa binary contains the (almost) same git-based version
+# information as the installed package.
+# Only difference: dash after minor version.
 _ensure_version_information() {
     local _version
     _version="$(_cargo_version)"
