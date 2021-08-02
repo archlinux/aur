@@ -1,17 +1,16 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libtorrent-rasterbar-git
-pkgver=2.0.0.RC.r584.ge0d9d7791
+pkgver=2.0.4.r297.gf0864b383
 pkgrel=1
 pkgdesc='A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)'
 url='https://www.rasterbar.com/products/libtorrent/'
 arch=('x86_64')
 license=('BSD')
-makedepends=('git' 'cmake' 'boost' 'python2' 'python2-setuptools'
-             'python' 'python-setuptools')
+depends=('openssl')
+makedepends=('git' 'cmake' 'boost' 'python' 'python-setuptools')
 optdepends=('boost-libs: for python bindings'
-            'python2: for python2 bindings'
-            'python: for python3 bindings')
+            'python: for python bindings')
 provides=('libtorrent-rasterbar')
 conflicts=('libtorrent-rasterbar')
 source=('libtorrent-rasterbar'::'git+https://github.com/arvidn/libtorrent.git#branch=master'
@@ -29,68 +28,33 @@ sha256sums=('SKIP'
 
 prepare() {
     git -C libtorrent-rasterbar submodule init
-    git -C libtorrent-rasterbar config --local "submodule.simulation/libsimulator.url" "${srcdir}/libsimulator"
-    git -C libtorrent-rasterbar config --local "submodule.deps/try_signal.url" "${srcdir}/try_signal"
-    git -C libtorrent-rasterbar config --local "submodule.deps/asio-gnutls.url" "${srcdir}/boost-asio-gnutls"
-    git -C libtorrent-rasterbar config --local "submodule.deps/libdatachannel.url" "${srcdir}/libdatachannel"
-    git -C libtorrent-rasterbar config --local "submodule.deps/json.url" "${srcdir}/json-vinniefalco"
+    git -C libtorrent-rasterbar config --local submodule.simulation/libsimulator.url "${srcdir}/libsimulator"
+    git -C libtorrent-rasterbar config --local submodule.deps/try_signal.url "${srcdir}/try_signal"
+    git -C libtorrent-rasterbar config --local submodule.deps/asio-gnutls.url "${srcdir}/boost-asio-gnutls"
+    git -C libtorrent-rasterbar config --local submodule.deps/libdatachannel.url "${srcdir}/libdatachannel"
+    git -C libtorrent-rasterbar config --local submodule.deps/json.url "${srcdir}/json-vinniefalco"
     git -C libtorrent-rasterbar submodule update
 }
 
 pkgver() {
-    git -C libtorrent-rasterbar describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g;s/^libtorrent.//'
-}
-
-_build_common() {
-    local _pyver="$1"
-    
-    printf '%s\n' "Building for python${_pyver%%.*}..."
-    
-    # NOTE: needs -Dboost-python-module-name to specify the correct boost python cmake config file
-    # https://github.com/arvidn/libtorrent/blob/9dfff3677f1a7291e03febc4724511da5b6a89b9/bindings/python/CMakeLists.txt#L1-L8
-    
-    cmake -B "build-py${_pyver%%.*}" -S libtorrent-rasterbar \
-        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DCMAKE_SKIP_RPATH:BOOL='YES' \
-        -Dbuild_examples:BOOL='ON' \
-        -Dbuild_tools:BOOL='ON' \
-        -Dpython-bindings:BOOL='ON' \
-        -Dboost-python-module-name='python' \
-        -DPYTHON_EXECUTABLE:FILEPATH="/usr/bin/python${_pyver}" \
-        -DPYTHON_INCLUDE_DIR:PATH="/usr/include/python${_pyver}" \
-        -DPYTHON_LIBRARY:FILEPATH="/usr/lib/libpython${_pyver}.so" \
-        -Wno-dev
-    make -C "build-py${_pyver%%.*}"
+    git -C libtorrent-rasterbar describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g;s/^libtorrent.//;s/^v//'
 }
 
 build() {
-    local _py2ver
-    local _pyver
-    _py2ver="$(python2 -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    # NOTE: needs -Dboost-python-module-name to specify the correct boost python cmake config file
+    # https://github.com/arvidn/libtorrent/blob/f0864b3836ab82beaf819bf8cb07665a8afa9f7b/bindings/python/CMakeLists.txt#L3-L9
     
-    _build_common "$_py2ver"
-    _build_common "$_pyver"
+    cmake -B build -S libtorrent-rasterbar \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DCMAKE_SKIP_RPATH:BOOL='YES' \
+        -Dpython-bindings:BOOL='ON' \
+        -Dboost-python-module-name='python' \
+        -Dpython-egg-info='ON' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    local _py2ver
-    local _pyver
-    _py2ver="$(python2 -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    
-    make -C "build-py${_py2ver%%.*}" DESTDIR="$pkgdir" install
-    make -C "build-py${_pyver%%.*}" DESTDIR="$pkgdir" install
-    
-    # binaries
-    local _bin
-    while read -r -d '' _bin
-    do
-        install -D -m755 "$_bin" -t "${pkgdir}/usr/bin"
-    done < <(find "build-py${_pyver%%.*}/examples" "build-py${_pyver%%.*}/tools" \
-                 -maxdepth 1 -type f ! -name '*_test*' ! -name 'simple_client' \
-                 ! -name 'stats_counters' -executable -print0)
-    
-    # license
+    make -C build DESTDIR="$pkgdir" install
     install -D -m644 libtorrent-rasterbar/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 

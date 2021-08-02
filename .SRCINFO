@@ -1,6 +1,6 @@
 pkgbase = libtorrent-rasterbar-git
 	pkgdesc = A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)
-	pkgver = 2.0.0.RC.r584.ge0d9d7791
+	pkgver = 2.0.4.r297.gf0864b383
 	pkgrel = 1
 	url = https://www.rasterbar.com/products/libtorrent/
 	arch = x86_64
@@ -8,13 +8,11 @@ pkgbase = libtorrent-rasterbar-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = python2
-	makedepends = python2-setuptools
 	makedepends = python
 	makedepends = python-setuptools
+	depends = openssl
 	optdepends = boost-libs: for python bindings
-	optdepends = python2: for python2 bindings
-	optdepends = python: for python3 bindings
+	optdepends = python: for python bindings
 	provides = libtorrent-rasterbar
 	conflicts = libtorrent-rasterbar
 	source = libtorrent-rasterbar::git+https://github.com/arvidn/libtorrent.git#branch=master
@@ -31,4 +29,3 @@ pkgbase = libtorrent-rasterbar-git
 	sha256sums = SKIP
 
 pkgname = libtorrent-rasterbar-git
-
