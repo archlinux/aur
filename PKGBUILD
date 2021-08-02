@@ -1,19 +1,19 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
-pkgver=7211.2021.0107.1
-pkgrel=3
+pkgver=7213.2021.0526.1
+pkgrel=1
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 16.0'
 arch=('x86_64')
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
-# Hashes match linux_f5vpn.x86_64.rpm from APM Clients version 7.2.1 (apmclients-7210.2020.827.422-5307.0.iso) from downloads.f5.com
-source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://connect.healthsystem.virginia.edu/public/download/linux_${pkgname}.x86_64.rpm")
-sha256sums=('a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1'
-            '3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
-sha256sums_x86_64=('08a6f7fe3dc2b5bf40b6df1930c81697e4dbcbbbaa7ffe1bae5a45c0db25d77e')
-md5sums=('2508fc5e24d46163844dba9534fe7924'
-         '130ef2376ad4581cc91a11814c00d948')
-md5sums_x86_64=('0430b76071d95dabdc7cfdefe176edf9')
+source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://f5vpn.geneseo.edu/public/download/linux_${pkgname}.x86_64.rpm")
+sha512sums=('8eb670337568d49fa38f4888826db827e6460079f35a81e30f430bfc11df43562c3a4095980266e6ed9372467e3655bd0d699d7618b4798a7f1b25a835983073'
+            '51ee6ca353685de98b5e87bf44de9605006190cc56ae4612c39f9f4e8b22d89b5bfab6cba09b740bb799fa74ce3a8054c533f807473b13c2c4da3683da4fef4c')
+b2sums=('7a5866d947d40a1c993795f96f87ba94cdefa572fc5524848316792b602bdfd1ad50c639f33b1e72dd97e739c7f7312a8f2efd086aab9be4b5fe4f0790ba37a5'
+         '5be3f5ebd0358e022c85081b45bc23b1e847542ae9035bece95c40fa5113a1fd9159ced013950d237206c2e6be94caa38b9d6414ea29ab65cd80043a2dfbfe5a')
+# Hashes match linux_f5vpn.x86_64.rpm from APM Clients version 7.2.1.3 (apmclients-7213.2021.527.649-5386.0.iso) from downloads.f5.com
+b2sums_x86_64=('e44cf5a0c237a8adb67f28a0a61b4d4d2e527b1f995a9afbdb069a3896b2a23002b63a34272ea65303beac89014bcb14ec410623847d88b42766aabe5691f5e9')
+sha512sums_x86_64=('0023e9fdb7ff7355e7e0be19faad94fa9a83fef42d4e31bfe7dcbb513012318b1a0e87e15becc48790cb290c5e1f5304e51e4dd78279272929f3168dc9c10095')
 depends=(icu openssl qt5-base qt5-webkit)
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')
