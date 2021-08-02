@@ -28,6 +28,7 @@ prepare ()
 	cd "$srcdir/$_name-$pkgver"
 	git clone https://github.com/pybind/pybind11
 	sed -i 's/add_subdirectory(pybind11)/find_package(pybind11 CONFIG)/' CMakeLists.txt
+	(echo "#include <limits>"; cat include/mapbox/earcut.hpp) > tmp && mv tmp include/mapbox/earcut.hpp
 }
 
 build ()
