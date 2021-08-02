@@ -1,6 +1,11 @@
+# Maintainer: Schilli <schilli at mailbox dot org>
+# Maintainer: blx32 <>
+# Maintainer: Natetronn <>
+# Maintainer: Twiki <>
+# Contributor: <tianyu at vt dot edu>
 
 pkgname=pinegrow
-pkgver=6
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
@@ -11,7 +16,7 @@ makedepends=(gendesk unzip)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
 	"${pkgname}.png"
   "LICENSE")
-sha512sums=('c83478b5bdfe4529dff5424f404ff80c558c93c158b062409d3bae9fb03fa1fcb066a9164c8385c279f51fcecfb7866e7d3205b597fd00f1645dc39af0dc22e9'
+sha512sums=('f0eb8974b926249caa81027028118117e3c3cc879607d83352e16c2359bd6e44a2171d028e85efc07aab723d0fc6c2a4c9c08091f29c73e42d7a527c9c03c212'
             'e71d7bfa237604fdf183cf1dc61e674c3f0ee9a33609f5c2aa6adf3b0359acd12f6ff2c1deeec52128461327c0fde013f4e1cc6fc5170e21f09b7fb01a4f334e'
             '1f2dd46c34bac1d218176f977eec05811982f1f74ead24deadb64717bb64059122e056ee1c95de34e207dd9e90107ce2f7187a4d6781f024257a7c2d7d605967')
 
