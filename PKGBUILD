@@ -19,12 +19,11 @@ sha256sums=('91bb7e1f023d5c76234f1e7f9ab446bfe64325fa7f144ed5ee5b709f4eaa5fe8'
 build() {
     cd "EternalModManager-${pkgver}"
 
-    # Remove the electron line from package.json
-    sed -i '/"electron": /d' package.json
+    # Replace electron with electron type declarations for typescript
+    sed -i '/"electron":/c\    "@types/electron": "^1.6.10",' package.json
 
     # Install node packages and build app
     HOME="${srcdir}/.electron-gyp" npm install
-    HOME="${srcdir}/.electron-gyp" npm install --save-dev @types/electron
     npm run build -- --linux --x64 --dir -c.electronDist="/usr/lib/electron13" -c.electronVersion="$(electron13 --version | tail -c +2)"
 }
 
