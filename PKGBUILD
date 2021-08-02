@@ -2,14 +2,14 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r1987.e41cb83e
+pkgver=r2044.9b26d3a6
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
 license=('GPL2')
 depends=('ffmpeg'
-         'glfw-x11'
+         'glfw'
          'libuv'
          'freetype2'
          'sdl2'
@@ -39,9 +39,11 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/Neargye/magic_enum.git'
         'git+https://github.com/Distrotech/ucl.git'
         'git+https://github.com/gabomdq/SDL_GameControllerDB'
+        'git+https://github.com/herumi/xbyak'
         'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -87,6 +89,7 @@ prepare() {
   git config submodule.third_party/magic_enum.url "$srcdir/magic_enum"
   git config submodule.third_party/ucl.url "$srcdir/ucl"
   git config submodule.third_party/SDL_GameControllerDB.url "$srcdir/SDL_GameControllerDB"
+  git config submodule.third_party/xbyak.url "$srcdir/xbyak"
 
   git submodule update third_party/imgui \
                        third_party/imgui_club \
@@ -104,7 +107,8 @@ prepare() {
                        third_party/tracy \
                        third_party/magic_enum \
                        third_party/ucl \
-                       third_party/SDL_GameControllerDB
+                       third_party/SDL_GameControllerDB \
+                       third_party/xbyak
 
   cd third_party/luv
   git submodule init
