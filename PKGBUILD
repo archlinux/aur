@@ -31,15 +31,18 @@ prepare() {
   # we can't use "git config submodule" here like in cgrep-clang-git because in
   # cgrep-clang we download an archive and do not clone a repo
   git clone "$srcdir"/cfe-extra
+
+  # see https://www.archlinux.org/todo/llvm-10/
+  patch -p1 -i "$srcdir/adjust-libclang-lib-names.patch"
+}
+
+build() {
+  cd "$srcdir/$_mainfolder"
+  make
 }
 
 package() {
   cd "$srcdir/$_mainfolder"
-
-  # see https://www.archlinux.org/todo/llvm-10/
-  patch -p1 -i "$srcdir/adjust-libclang-lib-names.patch"
-
-  make
 
   # `make install` isn't provided, so we have to manually copy the files
   install -dm755 "$pkgdir"/{usr/bin,usr/share/licenses/$_name}
