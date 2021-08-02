@@ -4,7 +4,7 @@ pkgname=minizip-git
 _pkgname=minizip
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
 pkgver=3.0.2.r5.gd42634c
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 license=('zlib')
 url="https://github.com/zlib-ng/minizip-ng"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_pkgname}-ng
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
