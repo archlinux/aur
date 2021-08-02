@@ -2,7 +2,7 @@
 # Contributor: aereaux <aidan@jmad.org>
 
 pkgname=meli-git
-pkgver=alpha.0.4.2.r232.g6ccb9d3
+pkgver=0.6.2.r236.gb085703
 pkgrel=1
 pkgdesc='experimental terminal mail client'
 arch=(x86_64)

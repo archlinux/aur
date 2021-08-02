@@ -1,6 +1,6 @@
 pkgbase = meli-git
 	pkgdesc = experimental terminal mail client
-	pkgver = alpha.0.4.2.r232.g6ccb9d3
+	pkgver = 0.6.2.r236.gb085703
 	pkgrel = 1
 	url = https://meli.delivery
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = meli-git
 	depends = dbus
 	depends = pcre2
 	depends = sqlite
-	provides = meli=alpha.0.4.2.r232.g6ccb9d3
+	provides = meli=0.6.2.r236.gb085703
 	conflicts = meli
 	source = git+https://git.meli.delivery/meli/meli.git
 	sha256sums = SKIP
