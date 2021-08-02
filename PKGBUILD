@@ -1,22 +1,25 @@
-# Maintainer: EmixamPP <https://github.com/EmixamPP/linux-enable-ir-emitter/issues>
+# Maintainer: Maxime Dirksen <dirksen.maxime@gmail.com>
 # Maintainer: Antoine Bertin <ant.bertin@gmail.com>
+# Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 
 pkgname=linux-enable-ir-emitter
 pkgver=20210725.0
 pkgrel=1
 pkgdesc='Enables infrared cameras that are not directly enabled out-of-the box.'
 url='https://github.com/EmixamPP/linux-enable-ir-emitter'
-license=('MIT')
-makedepends=('git')
-depends=(
-    'python'
-    'python-opencv'
-    'python-yaml'
-)
+license=(MIT)
+arch=(x86_64)
+
+provides=(linux-enable-ir-emitter)
+conflicts=(chicony-ir-toggle)
+
+makedepends=('gcc' 'git' 'make')
+depends=('python' 'python-opencv' 'python-yaml')
 optdepends=(
     'python-pyshark: full configuration setup support'
+    'systemd: system and service manager to support linux-enable-ir-emitter running automatically'
 )
-arch=('x86_64')
+
 source=("git+https://github.com/EmixamPP/linux-enable-ir-emitter")
 sha256sums=('SKIP')
 
@@ -35,4 +38,3 @@ package() {
     install -dm 755 $pkgdir/usr/bin/
     ln -s /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py $pkgdir/usr/bin/linux-enable-ir-emitter
 }
-

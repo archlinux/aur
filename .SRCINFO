@@ -5,11 +5,16 @@ pkgbase = linux-enable-ir-emitter
 	url = https://github.com/EmixamPP/linux-enable-ir-emitter
 	arch = x86_64
 	license = MIT
+	makedepends = gcc
 	makedepends = git
+	makedepends = make
 	depends = python
 	depends = python-opencv
 	depends = python-yaml
 	optdepends = python-pyshark: full configuration setup support
+	optdepends = systemd: system and service manager to support linux-enable-ir-emitter running automatically
+	provides = linux-enable-ir-emitter
+	conflicts = chicony-ir-toggle
 	source = git+https://github.com/EmixamPP/linux-enable-ir-emitter
 	sha256sums = SKIP
 
