@@ -1,13 +1,14 @@
-# Maintainer: Daniel Mensinger <daniel@mensinger-ka.de>
+# Maintainer: Martin Chang <marty188586@gmail.com>
+# Creater: Daniel Mensinger <daniel@mensinger-ka.de>
 pkgname=drogon-git
-pkgver=1.0.0.beta8.r1.gf999899
+pkgver=1.7.1.c5398b2
 pkgrel=1
 pkgdesc='A C++14/17 based HTTP web application framework running on Linux/macOS/Unix'
 arch=('x86_64')
 url='https://github.com/an-tao/drogon'
 license=('MIT')
-depends=(mariadb postgresql libpqxx sqlite jsoncpp util-linux c-ares)
-makedepends=(cmake)
+depends=(mariadb postgresql libpqxx sqlite jsoncpp util-linux c-ares hiredis brotli)
+makedepends=(cmake git)
 checkdepends=()
 optdepends=()
 provides=(drogon)
