@@ -1,7 +1,7 @@
 pkgbase = lib32-lilv
 	pkgdesc = A C library interface to the LV2 plug-in standard (32-bit)
 	pkgver = 0.24.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drobilla.net/software/lilv/
 	arch = x86_64
 	license = custom:ISC
@@ -19,4 +19,3 @@ pkgbase = lib32-lilv
 	b2sums = SKIP
 
 pkgname = lib32-lilv
-
