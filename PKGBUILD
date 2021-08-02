@@ -2,7 +2,7 @@
 
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="AMDGPU Fan control service"
 url="https://github.com/Eraden/amdgpud"
@@ -24,7 +24,7 @@ keywords=(
 
 prepare() {
     cd $srcdir/
-    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to dowanload sources and validate them by myself"
+    echo "Due to 'makepkg' and 'PKGBUILD' specs limitations I need to download sources and validate them by myself"
     for source_url in ${_source[@]}; do
         source_filename=${source_url##*/}
         if [ ! -f "$source_filename" ]; then
