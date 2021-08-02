@@ -1,6 +1,6 @@
 # Maintainer: Florian De Temmerman <floriandetemmerman@gmail.com>
 pkgname=torrenttools
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Commandline tool for inspecting, creating and editing BitTorrent metafiles."
 arch=('x86_64' 'aarch64')
