@@ -1,0 +1,9 @@
+# source
+/mkosi/
+
+# build
+/src/
+/pkg/
+
+# package
+/*.pkg.tar*
