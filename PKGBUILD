@@ -3,8 +3,10 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Mark Schneider <queueRAM@gmail.com>
 
+# AUR Maintainer: Joaquin 'ShyanJMC' <shyan@shyanjmc.com>
+
 pkgname=gnucash-minimal
-pkgver=4.5
+pkgver=4.6
 pkgrel=1
 pkgdesc='Personal and small-business financial-accounting application. Compiled with minimal features.'
 arch=(x86_64)
@@ -17,7 +19,7 @@ optdepends=('gnucash-docs: documentation'
             'perl-finance-quote: stock information lookups')
 options=(!emptydirs)
 source=(https://razaoinfo.dl.sourceforge.net/project/gnucash/gnucash%20%28stable%29/${pkgver}/gnucash-${pkgver}.tar.bz2)
-sha256sums=('bc1f48a8453488a2e9f6b83b68613aa55caebe4d2983460bdac7e084b46cffdc')
+sha256sums=('251b01dfb9f9c679db26926f934ca4d13c7092a485be04f60e2031d85a445733')
 
 build() {
   cd gnucash-$pkgver
