@@ -1,13 +1,13 @@
 post_install() {
-	while read; do
-		printf '%s\n' "$REPLY"
-	done <<-EOF
-	==> Edit config.h in PKGBUILD's directory
-	==> and rebuild the package if you want to change settings.
-	EOF
+    while read; do
+        printf '%s\n' "$REPLY"
+    done <<-EOF
+    ==> Add a config.h in PKGBUILD's directory
+    ==> and rebuild the package if you want to change settings.
+    EOF
 }
 
 post_upgrade() {
-	post_install
+    post_install
 }
 

@@ -1,4 +1,5 @@
-# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Maintainer: Sumit Sahrawat <archlinux at sums dot rs>
+# Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Contributor: Ray Kohler <ataraxia937 at gmail dot com>
@@ -7,7 +8,7 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'
@@ -17,33 +18,26 @@ optdepends=('dmenu: URL-bar'
             'ca-certificates: SSL verification'
             'xterm: default download handler'
             'curl: default download handler')
-makedepends=('git')
+makedepends=()
 install='surf.install'
-_commit=d75c3ded0b1ebb8e2778961c5a928f247798686a
-source=("git+git://git.suckless.org/surf#commit=$_commit"
-        "config.h")
-sha256sums=('SKIP'
-            '02a630a13d800c4baf3dd8eab8712c38de071ee15f8b6820942828cd2b1958a1')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=("https://dl.suckless.org/surf/surf-${pkgver}.tar.gz")
+sha256sums=('72e582920ba25a646203e93c2d2331d87f03037a28894d6c7e99af00ee043257')
 
 prepare() {
-  cd $pkgname
-  cp "$srcdir/config.h" config.h
+    if [[ -f config.h ]]; then
+        cp config.h "${pkgname}-${pkgver}/config.h"
+    fi
 }
 
 build() {
-  cd $pkgname
-  make
+    cd "${pkgname}-${pkgver}"
+    make
 }
 
 package() {
-  cd $pkgname
+    cd "${pkgname}-${pkgver}"
 
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
