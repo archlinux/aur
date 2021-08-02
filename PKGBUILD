@@ -3,7 +3,7 @@
 pkgname=mpv-assrt-git
 _pkgname=${pkgname%-git}
 pkgver=r22.e12edf5
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically download subtitles from assrt.net for mpv player."
 arch=(any)
 url="https://github.com/AssrtOSS/mpv-assrt"
@@ -19,7 +19,13 @@ pkgver() {
 }
 
 package() {
-  cd "$_pkgname"/scripts
-  install -Dm644 -t "$pkgdir"/usr/share/mpv/scripts assrt.lua
-  install -Dm644 -t "$pkgdir"/usr/share/mpv/scripts/modules modules/*.lua
+  cd "$_pkgname"
+
+  install -Dm644 scripts/modules/*.lua \
+    -t "$pkgdir"/usr/share/mpv/scripts/modules
+  install -Dm644 scripts/assrt.lua \
+    -t "$pkgdir"/usr/share/mpv/scripts
+
+  install -Dm644 script-opts/assrt.conf.example \
+    "$pkgdir"/usr/share/doc/mpv/script-opts/assrt.conf
 }
