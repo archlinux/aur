@@ -2,8 +2,8 @@
 
 _pkgname=asfa
 pkgname=${_pkgname}-git
-pkgver=0.8.0.r16.g89c4c83
-pkgrel=2
+pkgver=0.8.0.r18.g179dfa1
+pkgrel=1
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
 url="https://github.com/obreitwi/asfa"
