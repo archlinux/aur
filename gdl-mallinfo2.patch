@@ -1,0 +1,69 @@
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/CMakeLists.txt gdl-1.0.0-rc.3/CMakeLists.txt
+--- gdl-1.0.0-rc.3_orig/CMakeLists.txt	2020-06-19 18:03:33.000000000 +0200
++++ gdl-1.0.0-rc.3/CMakeLists.txt	2021-07-31 21:36:40.184567405 +0200
+@@ -162,6 +162,7 @@
+ check_function_exists(malloc_zone_statistics HAVE_MALLOC_ZONE_STATISTICS)
+ check_function_exists(sbrk HAVE_SBRK)
+ check_function_exists(mallinfo HAVE_MALLINFO)
++check_function_exists(mallinfo2 HAVE_MALLINFO2)
+ 
+ # mallocs
+ check_include_file(malloc.h HAVE_MALLOC_H)
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/config.h.cmake gdl-1.0.0-rc.3/config.h.cmake
+--- gdl-1.0.0-rc.3_orig/config.h.cmake	2020-06-19 18:03:33.000000000 +0200
++++ gdl-1.0.0-rc.3/config.h.cmake	2021-07-31 21:36:40.184567405 +0200
+@@ -22,6 +22,7 @@
+ #cmakedefine HAVE_LOCALE_H 1
+ #cmakedefine HAVE_SBRK 1
+ #cmakedefine HAVE_MALLINFO 1
++#cmakedefine HAVE_MALLINFO2 1
+ #cmakedefine HAVE_MALLOC_H 1
+ #cmakedefine HAVE_MALLOC_MALLOC_H 1
+ #cmakedefine HAVE_MALLOC_ZONE_STATISTICS 1
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/src/basegdl.cpp gdl-1.0.0-rc.3/src/basegdl.cpp
+--- gdl-1.0.0-rc.3_orig/src/basegdl.cpp	2020-06-19 18:03:33.000000000 +0200
++++ gdl-1.0.0-rc.3/src/basegdl.cpp	2021-07-31 22:10:51.046521975 +0200
+@@ -769,7 +769,7 @@
+ SizeT MemStats::HighWater = 0;
+ SizeT MemStats::Current = 0;
+ 
+-#if !defined(HAVE_MALLINFO) 
++#if (!defined(HAVE_MALLINFO) && !defined(HAVE_MALLINFO2))
+ #  if (!defined(HAVE_MALLOC_ZONE_STATISTICS) || !defined(HAVE_MALLOC_MALLOC_H))
+ #    if defined(HAVE_SBRK)
+ char* MemStats::StartOfMemory = reinterpret_cast<char*>(::sbrk(0));
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/src/basegdl.hpp gdl-1.0.0-rc.3/src/basegdl.hpp
+--- gdl-1.0.0-rc.3_orig/src/basegdl.hpp	2021-07-31 21:12:27.366570216 +0200
++++ gdl-1.0.0-rc.3/src/basegdl.hpp	2021-07-31 22:13:46.689456377 +0200
+@@ -37,7 +37,7 @@
+ #ifdef HAVE_MALLOC_MALLOC_H
+ #  include <malloc/malloc.h>
+ #endif
+-#if !defined(HAVE_MALLINFO) 
++#if (!defined(HAVE_MALLINFO) && !defined(HAVE_MALLINFO2))
+ #  if (!defined(HAVE_MALLOC_ZONE_STATISTICS) || !defined(HAVE_MALLOC_MALLOC_H))
+ #    if defined(HAVE_SBRK)
+ #      include <unistd.h>
+@@ -292,7 +292,7 @@
+   // SizeT has architecture-dependant size (32/64 bit)
+   static SizeT NumAlloc, NumFree, HighWater, Current;
+ 
+-#if !defined(HAVE_MALLINFO) 
++#if (!defined(HAVE_MALLINFO) && !defined(HAVE_MALLINFO2))
+ #  if (!defined(HAVE_MALLOC_ZONE_STATISTICS) || !defined(HAVE_MALLOC_MALLOC_H))
+ #    if defined(HAVE_SBRK)
+   static char* StartOfMemory;
+@@ -340,7 +340,12 @@
+     // - the LLVM project (lib/System/Unix/Process.inc) see http://llvm.org/
+     // - the Squid cache project (src/tools.cc) see http://squid-cache.org/
+     // TODO (TOCHECK): Squid considers also gnumalloc.h - ?
+-#if defined(HAVE_MALLINFO)
++#if defined(HAVE_MALLINFO2)
++    // Docs see below, newer versions of glibc deprecated mallinfo()
++    static struct mallinfo2 mi;
++    mi = mallinfo2();
++    Current = mi.arena+mi.hblkhd;
++#elif defined(HAVE_MALLINFO)
+     // Linux case for example
+     static struct mallinfo mi;
+     mi = mallinfo();

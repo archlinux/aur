@@ -61,11 +61,11 @@ test-gnudatalanguage:
   image: ${CI_REGISTRY_IMAGE}/${BUILD_AND_TEST_IMAGE}:${CI_COMMIT_REF_NAME}
   needs: ["build-gnudatalanguage"]
   script:
+    # Try to install package
+    - sudo pacman -U --noconfirm gnudatalanguage*.pkg.tar.zst
     # Recommended checks
     - namcap -m PKGBUILD
     - namcap -m gnudatalanguage*.pkg.tar.zst
-    # Try to install package
-    - sudo pacman -U --noconfirm gnudatalanguage*.pkg.tar.zst
 
 deploy-gnudatalanguage:
   stage: deploy
