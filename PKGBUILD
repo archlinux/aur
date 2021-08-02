@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.18.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Multimedia graph framework - bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -27,10 +27,8 @@ optdepends=('lib32-nvidia-utils: nvcodec plugin')
 checkdepends=(xorg-server-xvfb)
 options=(!emptydirs)
 _commit=8cb03bdf01ca6ad8c87f951bcd7962c3ca9f6860 # tags/1.18.4^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
-        gst-plugins-bad-openexr3.patch)
-sha256sums=('SKIP'
-            '6bf2b72021586efa41b35507beedb939e952cfd612ce50f5f9e704cf1bd1d876')
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_basename
@@ -41,7 +39,8 @@ pkgver() {
 prepare() {
     cd $_basename
 
-    patch -p1 < ../gst-plugins-bad-openexr3.patch # Fix build with OpenEXR 3
+    git cherry-pick -n 68858358544dd3b7e20663f731db22fd74a78a45 # fix build with GCC 11
+    git cherry-pick -n a9fafd98b74fd184b178604095d35ac6105119b8 # fix build with OpenEXR 3
 }
 
 build() {
