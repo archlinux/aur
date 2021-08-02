@@ -2,9 +2,9 @@
 
 pkgname=vilearn
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="An interactive vi tutorial."
-url="https://web.archive.org/web/20190102034242/eel.sdf.org/pit/vilearn.html"
+url="https://web.archive.org/web/20020806204039/http://vilearn.org/"
 arch=('any')
 
 source=("https://archive.org/download/vilearn/vilearn"{-1.0.tar.gz,.diff})
