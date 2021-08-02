@@ -19,7 +19,7 @@ build() {
 
 check() {
 
-# Validate appstream file test failing
+  # Validate appstream file test failing
   meson test -C build 'Validate desktop file' 'Validate schema file' --print-errorlogs
 }
 
