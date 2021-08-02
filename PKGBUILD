@@ -15,31 +15,40 @@ conflicts=('xc3sprog')
 source=(svn+http://svn.code.sf.net/p/xc3sprog/code/trunk)
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/trunk"
+pkgver()
+{
+  cd "${srcdir}/trunk"
   local ver="$(svnversion)"
   printf "0.r%s" "${ver//[[:alpha:]]}"
 }
 
-prepare() {
-  cd "$srcdir/trunk"
+prepare()
+{
+  cd "${srcdir}/trunk"
 }
 
-build() {
-  cd "$srcdir/trunk"
+build()
+{
+  cd "${srcdir}/trunk"
   mkdir _build
   cd _build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_STANDARD=11 ..
   make
 }
 
-check() {
-  cd "$srcdir/trunk/_build"
+check()
+{
+  cd "${srcdir}/trunk/_build"
 }
 
-package() {
-  cd "$srcdir/trunk/_build"
-  make DESTDIR="$pkgdir/" install
-  cd "$srcdir/trunk"
-  install -Dm0644 xc3sprog.1 "$pkgdir/usr/share/man/man1/xc3sprog.1"
+package()
+{
+  cd "${srcdir}/trunk/_build"
+  make DESTDIR="${pkgdir}/" install
+  cd "${srcdir}/trunk"
+  install -Dm0644 xc3sprog.1 "${pkgdir}/usr/share/man/man1/xc3sprog.1"
 }
+
+#
+# EOF
+#
