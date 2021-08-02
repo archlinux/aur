@@ -1,6 +1,6 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = B4.r237.ge23144ae
+	pkgver = B4.r249.gbae19cb1
 	pkgrel = 1
 	epoch = 2
 	url = https://looking-glass.io/
@@ -14,6 +14,7 @@ pkgbase = looking-glass-git
 	makedepends = wayland-protocols
 	makedepends = libxss
 	makedepends = libxi
+	makedepends = libxpresent
 	makedepends = obs-studio
 	source = looking-glass::git+https://github.com/gnif/LookingGlass.git
 	source = LGMP::git+https://github.com/gnif/LGMP.git
@@ -36,6 +37,7 @@ pkgname = looking-glass-git
 	depends = libxi
 	depends = libxinerama
 	depends = libxcursor
+	depends = libxpresent
 	provides = looking-glass
 	conflicts = looking-glass
 
