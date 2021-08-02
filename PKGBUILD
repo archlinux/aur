@@ -2,7 +2,7 @@
 
 pkgname="kbd_stats-git"
 _pkgname="kbd_stats"
-pkgver=0.1.0.31.ge9baaad
+pkgver=0.1.0.34.gc5d1096
 pkgrel=1
 pkgdesc="A tool to log/measure keyboard metrics"
 arch=("i686" "x86_64" "arm" "aarch64")
