@@ -1,0 +1,21 @@
+pkgbase = gnome-connections-git
+	pkgdesc = A remote desktop client for the GNOME desktop environment
+	pkgver = 41.alpha.r20.g3ee04f0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/connections
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = libhandy
+	depends = gtk-vnc
+	depends = libusb
+	depends = freerdp
+	optdepends = libxml
+	optdepends = gtk-frdp
+	source = git+https://gitlab.gnome.org/GNOME/connections.git
+	md5sums = SKIP
+
+pkgname = gnome-connections-git
