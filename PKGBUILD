@@ -3,8 +3,8 @@
 pkgorg='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -12,14 +12,9 @@ license=('BSD')
 depends=('hpp-fcl' 'eigenpy' 'urdfdom')
 optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig} "$url/pull/1459.patch")
-sha256sums=('SKIP' 'SKIP' 'f17244b8cb3921fc2b76cd0da38cf2ed997ce7758af463268b888eb67962e517')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-    patch -p1 -i "$srcdir/1459.patch"
-}
 
 build() {
     mkdir -p "$pkgbase-$pkgver/build"
