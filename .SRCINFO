@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-bgrt-cactus
+	pkgdesc = Plymouth theme with Cactus branding
+	pkgver = 20200711
+	pkgrel = 1
+	url = https://vicr123.com/cactus
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = plymouth
+	depends = ttf-contemporary
+	source = git+https://github.com/vicr123/bgrt-cactus.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-bgrt-cactus
