@@ -3,13 +3,11 @@
 pkgname=ttf-ifao-grec
 _pkgname=IFAOGrec_2nd_edn_final
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Greek polytonic font suitable for specialized text editing."
 arch=('any')
 url="https://www.ifao.egnet.net/publications/outils/polices/#grec"
 license=('public domain')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=("http://www.ifao.egnet.net/uploads/polices/$_pkgname.zip")
 md5sums=('6a0e32ce4541ccf47686969da11432e8')
 sha1sums=('5c385c0da090737fb25ebc8dd6501ee5b2d4858d')
