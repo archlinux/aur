@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=('any')
@@ -15,8 +15,8 @@ makedepends=()
 backup=()
 options=('!strip')
 #install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('be2086a8f966aa8834f70b5d6ed621382a73892df2e23d14eb477f8cd04ef2b2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver:+v$pkgver}.tar.gz")
+
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,3 +28,4 @@ package() {
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/99-xfel.rules" "${pkgdir}/etc/udev/rules.d/99-xfel.rules"
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+sha256sums=('776e15a06b1b4767ae21c1d605e4379fc62cc6866782584d305104c2ff5c6229')
