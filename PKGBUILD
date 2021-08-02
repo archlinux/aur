@@ -11,7 +11,7 @@ groups=('pro-audio')
 depends=('libmad' 'libid3tag' 'gtk2' 'glib2' 'soundtouch' 'ffmpeg' 'vamp-plugin-sdk'
 'portsmf' 'portmidi' 'twolame' 'suil' 'lilv' 'lv2' 'serd' 'sord' 'sratom' 'python'
 'flac' 'libvorbis' 'libogg' 'vamp-plugin-sdk' 'portaudio' 'libsoxr' 'libsndfile' 'lame'
-'expat' 'alsa-lib' 'jack' 'util-linux')
+'expat' 'alsa-lib' 'jack' 'util-linux' 'zlib')
 makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan')
 provides=("audacity")
 conflicts=("audacity")

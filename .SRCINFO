@@ -42,6 +42,7 @@ pkgbase = audacity-wxgtk2
 	depends = alsa-lib
 	depends = jack
 	depends = util-linux
+	depends = zlib
 	provides = audacity
 	conflicts = audacity
 	source = https://github.com/audacity/audacity/archive/Audacity-3.0.3.tar.gz
