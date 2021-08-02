@@ -1,6 +1,6 @@
 pkgbase = python-pyabf
 	pkgdesc = A Python interface to files in the Axon Binary Format (ABF)
-	pkgver = 2.3.1
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/swharden/pyABF
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = python-pyabf
 	depends = python
 	depends = python-numpy
 	depends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/f9/0a/7283eacc38a999a90f78da4e43fbe3bd2d47de34f70d0072ef6a467288ff/pyabf-2.3.1.tar.gz
-	sha256sums = 5447b3f09a5c5bac97a311f4873ffb0e26afbff7cc1da8a2d7c2ca05e40de451
+	source = https://files.pythonhosted.org/packages/44/c9/13b12d02ce9112b1524d34009655a13830fc8c13a8cb566b59c7b1d3ab96/pyabf-2.3.3.tar.gz
+	sha256sums = 5a01f1f2738ab1daf213578c146cd2e8d1b82561ad0b23ec86d085f96142f40f
 
 pkgname = python-pyabf
