@@ -1,5 +1,5 @@
 pkgname=clever-reposync-bin
-pkgver=0.6.5
+pkgver=0.7.0
 pkgrel=0
 pkgdesc="Sync repos for a GitHub user or organization into a folder on your computer"
 arch=("x86_64")
@@ -11,8 +11,8 @@ depends=(
     "git"
     "openssh"
 )
-source=("$pkgname-$pkgver::https://github.com/Clever/reposync/releases/download/$pkgver/reposync-$pkgver-linux-amd64")
-sha256sums=("87249672fb12c0b728c421c9d05511aff323f51cb906aba2695b801e00e059dc")
+source=("$pkgname-$pkgver::https://github.com/Clever/reposync/releases/download/v$pkgver/reposync-$pkgver-linux-amd64")
+sha256sums=("f09f91a1de6c779f1519fa4474fa45b95f144866dc6892ead48a864e2e8b7ee8")
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/clever-reposync"
