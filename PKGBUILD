@@ -1,16 +1,17 @@
 # Maintainer: Alban Fichet <alban.fichet@gmx.fr>
 pkgname=spectral-viewer
-pkgver=3.2.4
-pkgrel=8
+pkgver=3.3.0
+pkgrel=9
 pkgdesc="Tool for visualising and manipulating spectral images and HDR images."
 arch=('any')
-url="https://adufay.gitlabpages.inria.fr/SpectralViewer/"
+url="https://mrf-devteam.gitlab.io/spectral-viewer/"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'qt5-charts' 'qt5-svg')
+depends=('qt5-base' 'qt5-charts' 'qt5-svg' 'libtiff' 'openexr' 'eigen')
 makedepends=('git' 'cmake')
 checkdepends=()
-optdepends=('eigen')
+optdepends=()
+# optdepends=('openexr' 'libtiff' 'eigen')
 provides=($pkgname=$pkgver)
 conflicts=()
 replaces=()
@@ -18,14 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver::git+https://gitlab.inria.fr/adufay/SpectralViewer.git")
+source=("$pkgname-$pkgver::git+https://gitlab.com/mrf-devteam/spectral-viewer.git#tag=v$pkgver")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	git checkout v3.2.4b
 	git submodule init
 	git submodule update
 }
