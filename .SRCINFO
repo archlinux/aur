@@ -1,5 +1,5 @@
 pkgbase = php73
-	pkgver = 7.3.28
+	pkgver = 7.3.29
 	pkgrel = 1
 	url = https://www.php.net/
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = php73
 	makedepends = freetds
 	makedepends = pcre2
 	makedepends = libnsl
-	source = https://php.net/distributions/php-7.3.28.tar.xz
-	source = https://php.net/distributions/php-7.3.28.tar.xz.asc
+	source = https://php.net/distributions/php-7.3.29.tar.xz
+	source = https://php.net/distributions/php-7.3.29.tar.xz.asc
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch
@@ -39,7 +39,7 @@ pkgbase = php73
 	source = freetype.patch
 	validpgpkeys = CBAF69F173A0FEA4B537F470D66C9593118BCCB6
 	validpgpkeys = F38252826ACD957EF380D39F2F7956BC5DA04B5D
-	sha256sums = a2a84dbec8c1eee3f46c5f249eaaa2ecb3f9e7a6f5d0604d2df44ff8d4904dbe
+	sha256sums = 7db2834511f3d86272dca3daee3f395a5a4afce359b8342aa6edad80e12eb4d0
 	sha256sums = SKIP
 	sha256sums = 62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a
 	sha256sums = ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce
@@ -56,7 +56,7 @@ pkgname = php73
 	depends = libzip
 	depends = pcre2
 	depends = argon2
-	provides = php73-ldap=7.3.28
+	provides = php73-ldap=7.3.29
 	provides = php
 	conflicts = php73-ldap
 	replaces = php73-ldap
@@ -157,4 +157,3 @@ pkgname = php73-xsl
 	pkgdesc = xsl module for PHP
 	depends = php73
 	depends = libxslt
-
