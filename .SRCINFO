@@ -68,7 +68,7 @@ pkgbase = librewolf-hg
 	source = git+https://gitlab.com/vnepogodin/librewolf-common.git
 	source = git+https://gitlab.com/vnepogodin/librewolf-settings.git
 	sha512sums = SKIP
-	sha512sums = 0d1d64832ae34a0c7bbb9e37eac48b9b3830481a0e0aa4c20321a1408a4a20b2b2045d24d8ae0d002895291c6f7d988cce16b1607ee73778a62d7f7d9143a248
+	sha512sums = 5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd
 	sha512sums = SKIP
 	sha512sums = SKIP
 
