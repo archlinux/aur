@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=5
+_minor=7
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -108,7 +108,7 @@ validpgpkeys=(
 sha256sums=(
   '3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # linux-5.1x.tar.xz
   '168b26fe2060901e6f46cc744d1e95bee3a8ea414b58372b1c134d71ac05c876'  # linux-5.1x.tar.sign
-  '113a47d893d324fdb9528b5c602eb7cba2439dcf271b7dcd522316d8af610b45'  # patch-5.1x.x.xz
+  '4e67f54ebc7f81c418c841f600ca8b124cb607a5c45b5545fe9ad6ae7ff98dba'  # patch-5.1x.x.xz
   'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'  # more-uarches-x.tar.gz
   'fcfb29005032125010bcf18ce2f177af7c84c74cff729de8f0cc3e4a552a59a4'  # config
 )
