@@ -1,6 +1,6 @@
 pkgbase = nginx-minimal
 	pkgdesc = Nginx with less features to be more minimal as never,just with SSL for security. Compiled with native support.
-	pkgver = 1.21
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://nginx.org
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = nginx-minimal
 	md5sums = SKIP
 
 pkgname = nginx-minimal
-
