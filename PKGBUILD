@@ -23,7 +23,7 @@ package() {
 
   cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
   ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 net.code-industry.masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
