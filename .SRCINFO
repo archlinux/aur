@@ -1,20 +1,20 @@
 pkgbase = aeron
 	pkgdesc = Efficient reliable UDP unicast, UDP multicast, and IPC message transport
-	pkgver = 1.28.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://github.com/real-logic/aeron
 	arch = i686
 	arch = x86_64
-	license = Apache-2.0
+	license = Apache
 	makedepends = cmake
 	depends = gcc-libs
-	depends = gcc
-	depends = cmake
+	depends = libbsd
+	depends = util-linux-libs
 	depends = zlib
-	source = https://github.com/real-logic/aeron/archive/1.28.0.tar.gz
+	depends = java-environment
+	source = aeron-1.34.0.tar.gz::https://github.com/real-logic/aeron/archive/1.34.0.tar.gz
 	source = aeronmd.service
-	md5sums = 29e68f7172aab98a1fbc7f411e6e1263
-	md5sums = 7ec78d21efed1477e37ba044c3f1b1b3
+	sha256sums = e475f895f0f75654bc7e25e21169d656401f446bf63a03d4efd931deb60246ca
+	sha256sums = 3e6f3d61880ef39743c77103a169f53074337adbe382c78a768bd001d8a646be
 
 pkgname = aeron
-

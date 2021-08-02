@@ -1,45 +1,35 @@
 # Maintainer: das_kube
-pkgname='aeron'
-pkgver='1.28.0'
-arch=('i686' 'x86_64')
-pkgrel='1'
-pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transport "
-url="https://github.com/real-logic/aeron"
-source=("https://github.com/real-logic/aeron/archive/$pkgver.tar.gz"
-        "aeronmd.service")
-license=('Apache-2.0')
-depends=('gcc-libs' 'gcc' 'cmake' 'zlib')
-makedepends=('cmake')
+# Co-Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
-ROOT="aeron-$pkgver"
+pkgname=aeron
+pkgver=1.34.0
+pkgrel=1
+pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transport"
+arch=('i686' 'x86_64')
+url="https://github.com/real-logic/aeron"
+license=('Apache')
+depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib' 'java-environment')
+makedepends=('cmake')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/real-logic/aeron/archive/${pkgver}.tar.gz"
+        "aeronmd.service")
+sha256sums=('e475f895f0f75654bc7e25e21169d656401f446bf63a03d4efd931deb60246ca'
+            '3e6f3d61880ef39743c77103a169f53074337adbe382c78a768bd001d8a646be')
 
 build() {
-  cd "$ROOT"
-  echo "in $PWD"
-  mkdir -p cppbuild/Release
-  cd cppbuild/Release
-  cmake ../.. -DCMAKE_BUILD_TYPE=Release
-  cmake --build . --clean-first
-}
+  mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
+  cmake \
+    -DBUILD_SHARED_LIBS=on \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DAERON_BUILD_DOCUMENTATION=off \
+    -DAERON_TESTS=off \
+    ../${pkgname}-${pkgver}
 
-#check() {
-#  cd "$ROOT"
-#  cd cppbuild/Release/
-#  ctest
-#}
+  make
+}
 
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  mkdir -p "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/include/"
-  mkdir -p "$pkgdir/usr/lib/systemd/user"
-  install -Dm755 "$ROOT/cppbuild/Release/binaries/aeronmd" "$pkgdir/usr/bin/aeronmd"
-  install -Dm755 "$ROOT/cppbuild/Release/binaries/AeronStat" "$pkgdir/usr/bin/AeronStat"
-  install -Dm655 "$ROOT/cppbuild/Release/lib/libaeron_client_shared.so" "$pkgdir/usr/lib/"
-  install -Dm655 "$ROOT/cppbuild/Release/lib/libaeron_driver.so" "$pkgdir/usr/lib/"
-  install -Dm655 "$ROOT/cppbuild/Release/lib/libaeron.so" "$pkgdir/usr/lib/"
-  install -Dm655 "$ROOT/aeron-client/src/main/c/aeronc.h" "$pkgdir/usr/include/"
-  install -Dm655 "aeronmd.service" "$pkgdir/usr/lib/systemd/user/aeronmd.service"
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/aeronmd.service" "${pkgdir}/usr/lib/systemd/user/aeronmd.service"
 }
-md5sums=('e090b280c237a2aa2eee30719ca9295b'
-         '7ec78d21efed1477e37ba044c3f1b1b3')
