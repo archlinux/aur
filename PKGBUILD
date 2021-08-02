@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=9.r1.g9fc158c
+pkgver=10.r0.g4d64fc8
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=('dnf: build Fedora or Mageia images'
             'sbsigntools: sign EFI binaries for UEFI SecureBoot')
 provides=('mkosi')
 conflicts=('mkosi')
-source=('git://github.com/systemd/mkosi.git')
+source=('git://github.com/systemd/mkosi.git#branch=main')
 md5sums=('SKIP')
 
 pkgver() {
