@@ -1,6 +1,6 @@
 pkgbase = repo-add_and_sign
 	pkgdesc = Easily create signed Pacman package repositories.
-	pkgver = 2021.2
+	pkgver = 2021.7
 	pkgrel = 1
 	url = https://xyne.archlinux.ca/projects/repo-add_and_sign
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = repo-add_and_sign
 	depends = pyalpm
 	depends = python3
 	depends = python3-gpg_batch_sign
-	source = https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.2.tar.xz
-	source = https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.2.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.7.tar.xz
+	source = https://xyne.archlinux.ca/projects/repo-add_and_sign/src/repo-add_and_sign-2021.7.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 59e757f62d7f903464349cc0e692c55e
-	md5sums = 252cd2e0478a76e540401833759449df
-	sha512sums = ef81619f3527fb362936295d2712ea3e41fc3874c76c7876ebb017f1ac53b191d678f3a51a7a04483785c3aa9a97d3e9fd42281032d5aa0e9d7ff7b8520e0bcd
-	sha512sums = ff6d29793567426460fcfc7815a254c0e7451a541ef2a8f4eab893cc128ba4fb5535fce57e6a84ce9e06efe8c2583b7c53c7b1b9a3f014be393ab3a94bf83651
+	md5sums = 13cb8cc330db8f1735f7c7d86e05c348
+	md5sums = fd57e524b94ae77b160edb9364d442c0
+	sha512sums = e4228e0925effb1c82d371bec6bf3fe955b9c122921a23858d42118d374d49c092938585e233f07a3cc36beb8de39e99b6ac21fe632e60f550c830b1b5371563
+	sha512sums = 1fab23e37147274d0bdfc1c5d8a96f4b2ddfb41df8122981147ce74ba67765f52a73c51dc86a112af21e73d6c8fa9a081134c38777a8db18cb74f2bbd32bf18f
 
 pkgname = repo-add_and_sign
-
