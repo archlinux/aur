@@ -3,8 +3,8 @@
 pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.7.4
-pkgrel=3
+pkgver=1.7.5
+pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -12,17 +12,9 @@ license=('BSD')
 depends=('assimp' 'eigenpy' 'octomap' 'qhull')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
-source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig}
-    "$url/pull/232.patch" "$url/pull/233.patch")
-sha256sums=('SKIP' 'SKIP' 'eca4ba8f4f7b5ac0aa3c435bc96c8c0fdf849b957e4e655ec7c3dd4bb48d56d9'
-    '9befb15966d3d08eb32d507a6a6f8f34062c89c913b91e5ea0e9fa50d7944c8d')
+source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
+sha256sums=('SKIP' 'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28' 'A031AD35058955293D54DECEC45D22EF408328AD')
-
-prepare() {
-    cd "$pkgbase-$pkgver"
-    patch -p1 -i "$srcdir/232.patch"
-    patch -p1 -i "$srcdir/233.patch"
-}
 
 build() {
     cd "$pkgbase-$pkgver"
