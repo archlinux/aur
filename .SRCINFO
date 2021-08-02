@@ -1,36 +1,36 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = The LTS Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.10.54
+	pkgver = 5.10.55
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
-	noextract = linux-lts-5.10.54-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-headers-5.10.54-1-x86_64.pkg.tar.zst
-	noextract = linux-lts-docs-5.10.54-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-5.10.55-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-headers-5.10.55-1-x86_64.pkg.tar.zst
+	noextract = linux-lts-docs-5.10.55-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-5.10.54-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-headers-5.10.54-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-docs-5.10.54-1-x86_64.pkg.tar.zst
-	sha256sums = 79756cffbfd41483243cc9a0d1071a6366c5f9e142e9304eb371ea67b64b3387
-	sha256sums = fca65c97bf6c87c9e2607d048916a78d245f5f2db9a997dcf51905d39e0f4441
-	sha256sums = a9a84bf5796f3897bac0f4755ce99d10ffcbed0c02179a19f2d26ad6b32e0fb2
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-5.10.55-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-headers-5.10.55-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-lts-docs-5.10.55-1-x86_64.pkg.tar.zst
+	sha256sums = 7f960992fcdd7de866b68435f0b746ae8f7a06588acef59f5aeb138d5bbdc5a6
+	sha256sums = de0d159ee6faa03b879deca63cd6a485b2337fea187f8a88150134e8248698fd
+	sha256sums = 277ccd409a72cff4441f2fcfd2c9210f8c6b135a833ea734f036e506b7595092
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.10.54-1-lts-bin
-	depends = linux5.10.54-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.10.55-1-lts-bin
+	depends = linux5.10.55-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.10.54-1-lts-headers-bin
-	depends = linux5.10.54-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.10.55-1-lts-headers-bin
+	depends = linux5.10.55-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.10.54-1-lts-docs-bin
-	depends = linux5.10.54-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.10.55-1-lts-docs-bin
+	depends = linux5.10.55-1-lts-docs-bin
 
-pkgname = linux5.10.54-1-lts-bin
-	pkgdesc = The LTS Linux kernel and modules, version 5.10.54-1-lts
+pkgname = linux5.10.55-1-lts-bin
+	pkgdesc = The LTS Linux kernel and modules, version 5.10.55-1-lts
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -41,10 +41,10 @@ pkgname = linux5.10.54-1-lts-bin
 	conflicts = linux-lts
 	replaces = wireguard-lts
 
-pkgname = linux5.10.54-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.54-1-lts
+pkgname = linux5.10.55-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel 5.10.55-1-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.10.54-1-lts-docs-bin
-	pkgdesc = Documentation for the LTS Linux kernel 5.10.54-1-lts
+pkgname = linux5.10.55-1-lts-docs-bin
+	pkgdesc = Documentation for the LTS Linux kernel 5.10.55-1-lts
 	conflicts = linux-lts-docs
