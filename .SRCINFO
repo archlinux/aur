@@ -1,6 +1,6 @@
 pkgbase = python-pylightxl
 	pkgdesc = Minimal functionality Excel library
-	pkgver = 1.55
+	pkgver = 1.56
 	pkgrel = 1
 	url = https://github.com/PydPiper/pylightxl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pylightxl
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	depends = python
-	source = python-pylightxl-1.55.tar.gz::https://github.com/PydPiper/pylightxl/archive/v1.55.tar.gz
-	b2sums = 6d00ad1a62f5c781b38c0c0f94e3503a51a3a7143db953e1da09544c06facfefb552349b9f940632ea6620535d8588683a94e211d6c56a9b842658ff302e85a3
+	source = python-pylightxl-1.56.tar.gz::https://github.com/PydPiper/pylightxl/archive/v1.56.tar.gz
+	b2sums = 61ed59e7322f5ee0def53a007d9b44ccd3a68a79b2b2972963b2139f0934b4b18677ac82a8ec37e9e4cfbc983d5f71df115a09843ae3eb01b288734f61abd710
 
 pkgname = python-pylightxl
