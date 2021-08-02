@@ -10,7 +10,8 @@ pkgbase = pyinstaller-hooks-contrib
 	depends = python-setuptools
 	depends = python-wheel
 	depends = twine
-	source = https://pypi.org/packages/source/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-2021.2.tar.gz
-	sha256sums = 7f5d0689b30da3092149fc536a835a94045ac8c9f0e6dfb23ac171890f5ea8f2
+	depends = git
+	source = git+https://github.com/pyinstaller/pyinstaller-hooks-contrib
+	sha256sums = SKIP
 
 pkgname = pyinstaller-hooks-contrib

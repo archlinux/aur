@@ -1,22 +1,35 @@
-# Maintainer:
+# Maintainer: Sam <dev at samarthj dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
+# shellcheck disable=2034,2148,2154
+
 pkgname=pyinstaller-hooks-contrib
+_pkgname=pyinstaller-hooks-contrib
 pkgver=2021.2
 pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
 url="https://github.com/pyinstaller/pyinstaller-hooks-contrib"
 license=('GPL' 'APACHE')
-depends=('towncrier' 'python-setuptools' 'python-wheel' 'twine')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('7f5d0689b30da3092149fc536a835a94045ac8c9f0e6dfb23ac171890f5ea8f2')
+depends=('towncrier' 'python-setuptools' 'python-wheel' 'twine' 'git')
+source=("git+https://github.com/pyinstaller/$_pkgname")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}" || exit
+  ver=$(curl -fSsL "https://api.github.com/repos/pyinstaller/$_pkgname/releases/latest" | grep -oP "tag_name.*$" |
+    head -n1 |
+    sed -re 's|^tag_name": "(.*)",$|\1|g')
+  echo "${ver#v}"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+  cd "$srcdir/$_pkgname" || exit
+  git checkout "v$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_pkgname" || exit
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
