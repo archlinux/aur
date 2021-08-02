@@ -1,6 +1,6 @@
 pkgbase = makedeb-alpha
 	pkgdesc = Create Debian archives from PKGBUILDs (alpha release)
-	pkgver = 5.15.1
+	pkgver = 5.15.3
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = makedeb-alpha
 	depends = makedeb-makepkg-alpha
 	conflicts = makedeb
 	conflicts = makedeb-beta
-	source = https://github.com/makedeb/makedeb/archive/refs/tags/v5.15.1-alpha.tar.gz
+	source = https://github.com/makedeb/makedeb/archive/refs/tags/v5.15.3-alpha.tar.gz
 	sha256sums = SKIP
 
 pkgname = makedeb-alpha
