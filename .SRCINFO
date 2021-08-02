@@ -1,32 +1,25 @@
 pkgbase = python-aiogram3
 	pkgdesc = Modern and fully asynchronous framework for Telegram Bot API (experimental version)
-	pkgver = 3.0.0a8
+	pkgver = 3.0.0a12
 	pkgrel = 1
 	url = https://github.com/aiogram/aiogram
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python>=3.7
+	depends = python>=3.8.0
 	depends = python-aiohttp>=3.7.4
-	depends = python-aiohttp<4.0
 	depends = python-pydantic>=1.8.1
-	depends = python-pydantic<2.0
 	depends = python-babel>=2.9.1
-	depends = python-babel<3.0
 	depends = python-aiofiles>=0.6.0
-	depends = python-aiofiles<0.7.0
 	depends = python-async_lru>=1.0.2
-	depends = python-async_lru<1.1.0
-	depends = python-magic-filter>=1.0.0a1
-	depends = python-magic-filter<1.1.0
+	depends = python-magic-filter>=1.0.0
 	optdepends = python-uvloop: fast, drop-in replacement of the built-in asyncio event loop
 	optdepends = python-aiohttp-socks: SOCKS4(a) and SOCKS5 proxy support
+	optdepends = python-aioredis: Redis storage support
 	provides = python-aiogram
 	conflicts = python-aiogram
-	conflicts = python-aiogram-git
-	conflicts = python-aiogram3-git
-	source = https://test-files.pythonhosted.org/packages/18/08/bc99e08bb53eafb4baedad7f45f8937afe9176f53a975b2e05673edde5cb/aiogram-3.0.0a8.tar.gz
-	sha256sums = 765dec68dd3fc7776101e7428a3ef307f2982c4acd912c43d125689d73425990
+	conflicts = python-aiogram3
+	source = https://pypi.python.org/packages/source/a/aiogram/aiogram-3.0.0a12.tar.gz
+	sha256sums = 84f10eb89639691084c814a3f1f55d6ed15d438d43393084b611d6e582d02394
 
 pkgname = python-aiogram3
-
