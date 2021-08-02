@@ -1,0 +1,109 @@
+From 801e31f77268db8ff5b3f16847bb74118ca78f50 Mon Sep 17 00:00:00 2001
+From: James Anandraj <james.sushanth.anandraj@intel.com>
+Date: Wed, 12 May 2021 17:54:24 +0200
+Subject: [PATCH] Pass path length as parameter to os_mkdir function
+
+os_mkdir function used static fixed sized path. This
+results in build failure when using GCC 11 compiler as
+the size of path string passed in was different. This
+change adds a path length parameter to the function to
+fix the issue.
+
+Fixes #169
+
+Signed-off-by: James Sushanth Anandraj <james.sushanth.anandraj@intel.com>
+---
+ DcpmPkg/common/PbrOs.c    | 4 ++--
+ src/os/ini/ini.c          | 2 +-
+ src/os/linux/lnx_system.c | 4 +++-
+ src/os/os.h               | 2 +-
+ src/os/win/win_system.c   | 6 ++++--
+ 5 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/DcpmPkg/common/PbrOs.c b/DcpmPkg/common/PbrOs.c
+index 1fccd4d6..12e786e6 100644
+--- a/DcpmPkg/common/PbrOs.c
++++ b/DcpmPkg/common/PbrOs.c
+@@ -134,7 +134,7 @@ EFI_STATUS PbrSerializeCtx(
+ 
+   //create temp directory (buffers serialized into files that reside here)
+   AsciiSPrint(pbr_dir, sizeof(pbr_dir), PBR_TMP_DIR);
+-  os_mkdir(pbr_dir);
++  os_mkdir(pbr_dir, sizeof(pbr_dir));
+ 
+   SerializePbrMode(ctx->PbrMode);
+ 
+@@ -186,7 +186,7 @@ EFI_STATUS PbrDeserializeCtx(
+ 
+   //create temp directory (buffers serialized into files that reside here)
+   AsciiSPrint(pbr_dir, sizeof(pbr_dir), PBR_TMP_DIR);
+-  os_mkdir(pbr_dir);
++  os_mkdir(pbr_dir, sizeof(pbr_dir));
+ 
+   DeserializePbrMode(&PbrMode, PBR_NORMAL_MODE);
+ 
+diff --git a/src/os/ini/ini.c b/src/os/ini/ini.c
+index ca478b5d..2148b10c 100644
+--- a/src/os/ini/ini.c
++++ b/src/os/ini/ini.c
+@@ -459,7 +459,7 @@ int nvm_ini_dump_to_file(dictionary *p_dictionary, const char *p_ini_file_name,
+   if ((NULL == h_file) || (NULL == (h_file = freopen(ini_path_filename, "w", h_file)))) {
+     if (force_file_update) {
+       snprintf(ini_path_filename, sizeof(ini_path_filename), "%s%s", APP_DATA_FILE_PATH, INI_INSTALL_FILEPATH);
+-      os_mkdir(ini_path_filename);
++      os_mkdir(ini_path_filename, sizeof(ini_path_filename));
+       snprintf(ini_path_filename, sizeof(ini_path_filename), "%s%s%s", APP_DATA_FILE_PATH, INI_INSTALL_FILEPATH, p_ini_file_name);
+       h_file = fopen(ini_path_filename, "w");
+     }
+diff --git a/src/os/linux/lnx_system.c b/src/os/linux/lnx_system.c
+index 1b88fc21..c635fa32 100644
+--- a/src/os/linux/lnx_system.c
++++ b/src/os/linux/lnx_system.c
+@@ -486,9 +486,11 @@ int os_check_admin_permissions()
+ /*
+ * Recursive mkdir, return 0 on success, -1 on error
+ */
+-int os_mkdir(OS_PATH path)
++int os_mkdir(char *path, unsigned int path_len)
+ {
+   char* p;
++  if (path_len > OS_PATH_LEN)
++    return -1;
+   for (p = strchr(path + 1, '/'); p; p = strchr(p + 1, '/'))
+   {
+     *p = '\0';
+diff --git a/src/os/os.h b/src/os/os.h
+index 76202794..a86b7feb 100644
+--- a/src/os/os.h
++++ b/src/os/os.h
+@@ -71,7 +71,7 @@ struct nvm_driver_capabilities
+ };
+ extern void os_get_locale_dir(OS_PATH locale_dir);
+ extern char * os_get_cwd(OS_PATH buffer, size_t size);
+-extern int os_mkdir(OS_PATH path);
++extern int os_mkdir(char *path, unsigned int path_len);
+ 
+ extern int os_start_process(const char *process_name, unsigned int *p_process_id);
+ extern int os_stop_process(unsigned int process_id);
+diff --git a/src/os/win/win_system.c b/src/os/win/win_system.c
+index fbf394dd..30fed41d 100644
+--- a/src/os/win/win_system.c
++++ b/src/os/win/win_system.c
+@@ -948,10 +948,12 @@ int os_get_os_type()
+ /*
+ * Recursive mkdir, return 0 on success, -1 on error
+ */
+-int os_mkdir(OS_PATH path)
++int os_mkdir(char *path, unsigned int path_len)
+ {
+   char* p;
+-  char seperator = '/';
++  char separator = '/';
++  if (path_len > OS_PATH_LEN)
++    return -1;
+   if (NULL == strchr(path + 1, '/') && NULL != strchr(path + 1, '\\'))
+   {
+     seperator = '\\';
+-- 
+2.32.0
+
