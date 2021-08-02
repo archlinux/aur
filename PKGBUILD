@@ -8,7 +8,7 @@
 
 pkgname=surf
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple web browser based on WebKit/GTK+.'
 arch=('x86_64')
 url='https://surf.suckless.org/'

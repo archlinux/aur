@@ -1,7 +1,7 @@
 pkgbase = surf
 	pkgdesc = A simple web browser based on WebKit/GTK+.
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://surf.suckless.org/
 	install = surf.install
 	arch = x86_64
