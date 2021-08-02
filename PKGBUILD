@@ -2,7 +2,7 @@
 _release_type=stable
 
 pkgname=makedeb-makepkg
-pkgver=0
+pkgver=7.1.4
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (stable release)"
 arch=(any)
@@ -15,7 +15,7 @@ source=("git+file://${_gitdir}")
 sha256sums=('SKIP')
 
 package() {
-	cd "${_foldername}"
+	cd "makepkg-${pkgver}-${_release_type}"
 
 	# Copy and configure makepkg
 	install -Dm 555 "src/makepkg.sh" "${pkgdir}/usr/bin/makedeb-makepkg"
@@ -25,14 +25,4 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/"
 	cp -R "src/functions" "${pkgdir}/usr/share/makedeb-makepkg"
 	chmod 555 "${pkgdir}/usr/share/makedeb-makepkg"
-
-	# Copy config file
-	install -Dm 444 "src/makepkg.conf" "${pkgdir}/etc/makepkg.conf"
-
-	# Copy makepkg-template
-	install -Dm 555 "src/makepkg-template" "${pkgdir}/usr/bin/makepkg-template"
-
-	# Create pacman binary
-	touch "${pkgdir}/usr/bin/pacman"
-	chmod 555 "${pkgdir}/usr/bin/pacman"
 }
