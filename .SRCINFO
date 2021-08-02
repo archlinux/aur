@@ -1,0 +1,12 @@
+pkgbase = com.qianxin.browser-stable
+	pkgdesc = 奇安信可信浏览器
+	pkgver = 1.0.32574.3_1
+	pkgrel = 1
+	url = https://www.qianxin.com/
+	arch = x86_64
+	license = custom
+	noextract = 4126711d-9e85-4da1-a611-991d0583a2d7
+	source = https://home-store-img.uniontech.com/apppkg/4126711d-9e85-4da1-a611-991d0583a2d7
+	md5sums = f40f611792cdbbfdd8eb5d4d2fdc083f
+
+pkgname = com.qianxin.browser-stable
