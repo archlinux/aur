@@ -7,7 +7,7 @@ pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
 pkgver=92.0a1.r574816.6f50eaaba7ee
 _pkgver=92.0a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -165,8 +165,6 @@ END
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
   install -Dm644 browser/branding/${theme}/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dm644 browser/branding/${theme}/content/identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
   install -Dm644 ../$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"

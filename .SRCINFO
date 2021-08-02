@@ -1,7 +1,7 @@
 pkgbase = firefox-nightly-hg
 	pkgdesc = Standalone web browser from mozilla.org, nightly version
 	pkgver = 92.0a1.r574816.6f50eaaba7ee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
