@@ -1,6 +1,6 @@
 pkgbase = bin32-jre
 	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit)
-	pkgver = 8u291
+	pkgver = 8u301
 	pkgrel = 1
 	url = https://www.java.com/en/download/linux_manual.jsp
 	install = bin32-jre.install
@@ -23,7 +23,6 @@ pkgbase = bin32-jre
 	provides = java32-runtime-headless-jre=8
 	provides = java32-web-start-jre=8
 	provides = java32-openjfx=8
-	backup = etc/java32-jre8/i386/jvm.cfg
 	backup = etc/java32-jre8/images/cursors/cursors.properties
 	backup = etc/java32-jre8/management/jmxremote.access
 	backup = etc/java32-jre8/management/management.properties
@@ -38,12 +37,11 @@ pkgbase = bin32-jre
 	backup = etc/java32-jre8/psfont.properties.ja
 	backup = etc/java32-jre8/psfontj2d.properties
 	backup = etc/java32-jre8/sound.properties
-	source = jre-8u291-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=244573_d7fc238d0cbf4b0dac67be84580cfb4b
+	source = jre-8u301-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245050_d3c52aa6bfa54d3ca74e617f18309292
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool32-jre8.desktop
-	sha256sums = db3188e65958d6e358f1c4eed9930a90fe8876f9561d2603723092fea840fecd
+	sha256sums = aa15533de2260d058d7d44d9ea210f9d5bb0db5e81fb6594e2ae2f43cd47f406
 	sha256sums = 9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6
 	sha256sums = b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8
 
 pkgname = bin32-jre
-
