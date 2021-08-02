@@ -1,7 +1,7 @@
 # Maintainer: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=apalache
-pkgver=0.15.11
+pkgver=0.15.12
 pkgrel=1
 pkgdesc="Apalache: symbolic model checker for TLA+"
 arch=('any')
@@ -23,7 +23,7 @@ source=(
 	'sys-install.patch'
 )
 sha256sums=(
-	'd67bd61a7a4b2c4003beaec97536c68122c3fa653220e935c99c5175c3955f2b'
+	'970cc5d9ffb73d4110edfa5d9e666a672e639fb3eb73cc26a14a5a6bbce37be2'
 	'7408d4d61efe32fe697cf519374ba5d85d45fe3eb0b51d486a16888be73fb6f4'
 	'825557bfdd2928787480e7d21e3b8397e48080fddc3fa6656d4b910db6c58c01'
 )
