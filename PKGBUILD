@@ -1,14 +1,15 @@
-# Maintainer: Jose Luis Lafuente <jl@lafuente.me>
+# Maintainer: Edoardo Brogiolo <edoardo@brogiolo.eu>
+# Contributor: Jose Luis Lafuente <jl@lafuente.me>
 
 pkgname=canon-pixma-mx495-printer
 pkgver=5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Printer driver for Canon Pixma MX495"
 url="http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx495.aspx"
 arch=('i686' 'x86_64')
 license=('custom')
 if [ "${CARCH}" = "x86_64" ]; then
-  depends=('libcups' 'popt' 'libpng12' 'libusb-compat' 'libtiff4' 'gtk2')
+  depends=('libcups' 'popt' 'libpng12' 'libusb-compat' 'libtiff4')
   _arch='amd64'
 elif [ "${CARCH}" = "i686" ]; then
   depends=('lib32-libcups' 'lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-gtk2')
