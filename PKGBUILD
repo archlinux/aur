@@ -12,7 +12,7 @@ _source=(
 )
 arch=('x86_64')
 _md5sums=(
-    '81b66a3e6f7bd625e3e757d098b25437'
+    '31d6c8e27710a2e297e1e076f7152721'
 )
 depends=(
 )
