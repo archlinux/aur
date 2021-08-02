@@ -1,0 +1,20 @@
+pkgbase = kbd_stats-git
+	pkgdesc = A tool to log/measure keyboard metrics
+	pkgver = 0.1.0.31.ge9baaad
+	pkgrel = 1
+	url = https://github.com/ripxorip/kbd_stats
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = kbd_stats
+	conflicts = kbd_stats
+	source = kbd_stats::git+https://github.com/ripxorip/kbd_stats.git
+	sha256sums = SKIP
+
+pkgname = kbd_stats-git
