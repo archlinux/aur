@@ -21,10 +21,10 @@ optdepends=('postgresql: run postgresql locally'
             'php-ldap: PHP module for ldap support')
 backup=("etc/webapps/davical/localhost-conf.php")
 install="$pkgname.install"
-source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/repository/archive.tar.bz2?ref=r${pkgver}"
-        httpd-davical.conf
-        README.archlinux)
-sha512sums=('82ffeb1e6158c6d4eada2eacf9c5bbab8c84a94e52aa34ceb610057b8a8bdfe255dcceb29257b460b4458f25a98f8f67ae011711eff28537fafe387a1ef24b1d'
+source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/davical-project/${pkgname}/-/archive/r${pkgver}/${pkgname}-r${pkgver}.tar.bz2"
+         httpd-davical.conf
+         README.archlinux)
+sha512sums=('e39333fdb3ded3baaeda6430325009d0c9237ce6e0b63adfba6754c1816d3b458ab6bb4ec8896f3de08e61ddbf4930e455297e365408bbb39c766efa688bc0f8'
             'b4466049d9ba116cdbe3951a7a4cf004a423b59f197f78765151c656cf4f16f30a2bcc302bd643be0548818a67611654f95deb95113fa7f581394af78cb17109'
             'd7ffe40a87e4752f1cd148bcc0a39285d81d9a717357207a114c1fc8384431ac07e673c84fd152865d47a1291b2c00dfd95237a973f3b6069a97ba5d0940ca84')
 
@@ -35,7 +35,7 @@ _etcdir="etc/webapps/davical"
 prepare() {
     cd "${srcdir}"
     # rename source dir
-    mv ${pkgname}-r${pkgver}-* "${pkgname}-${pkgver}"
+    mv "${pkgname}-r${pkgver}" "${pkgname}-${pkgver}"
     # strip debian build files from source dir
     rm -rf "${srcdir}/${pkgname}-${pkgver}/debian"
     # enable pdo_sqlite php extension for apigen
