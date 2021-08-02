@@ -77,6 +77,7 @@ xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Branch with Cacule scheduler by Hamad Marri'
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_jobs=$(nproc)
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
@@ -272,7 +273,7 @@ prepare() {
 
 build() {
   cd linux-${_major}
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM -j${_jobs} all
 }
 
 _package() {
