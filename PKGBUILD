@@ -15,7 +15,7 @@
 
 #
 _pkg_name=codelite
-_pkg_ver=15.0.5-1
+_pkg_ver=15.0.6
 _commit=c4971afd07a893b42a8aaf1d855fb54de895cc5f
 
 # pkg
@@ -67,7 +67,7 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('ceee929981744f82535356b2cd9763d6'
+md5sums=('713e65233d8d0ba87602c3ce68754a01'
          '20f3428eb831c3ff2539a7228afaa3b4')
 
 noextract=('wxgui.zip')
