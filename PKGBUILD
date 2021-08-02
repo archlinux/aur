@@ -1,11 +1,11 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=libdecsync
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='libdecsync is a multiplatform library for synchronizing using DecSync.'
 arch=(x86_64)
 url='https://github.com/39aldo39/libdecsync'
-license=(LGPL2)
+license=('custom:LGPL2')
 depends=()
 optdepends=()
 makedepends=(jre8-openjdk ncurses5-compat-libs)
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
