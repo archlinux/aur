@@ -1,7 +1,7 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices
-	pkgver = 3.72
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = https://www.sdr-j.tk/
 	arch = x86_64
 	license = GPL2
@@ -18,16 +18,7 @@ pkgbase = qt-dab
 	optdepends = libad9361: Support for Pluto
 	optdepends = rtl-sdr: Support for RTL-SDR
 	optdepends = libsdrplay: Support for SDRplay
-	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/Qt-DAB3.72.tar.gz
-	source = 0001-mot_dir-changes.patch
-	source = 0002-padHandler-verify-data-length.patch
-	source = 0003-padHandler-correct-valid-range-for-last.patch
-	source = 0004-hackrf-update-gain-display-when-restoring-settings.patch
-	sha256sums = 8e90bd7e35a2fb6e3f3f3aee61ee65d3c37ead5731ba0146fa29883685167ed4
-	sha256sums = f4f60612d82afffbbd99b5549a4e4ddcd9745e046da9974fe373091251ace85c
-	sha256sums = f20e66cd0a2f29ee90e20bcdf8aa6ca5b2f06e554e3373ef9118823d5b2ca9d6
-	sha256sums = 170fe2ce981e1d7bc4a7ea5924862887a5c752822375887935f67ea5c34341d6
-	sha256sums = 09ee42c73a928688e710d961c16d46f5d804fb00f7037e24109823b0898d22d4
+	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/qt-dab-4.0.tar.gz
+	sha256sums = 4abaee18c385e7c0aade3e53296c96b1779d4e0e5604968cc9c696a4e937a05b
 
 pkgname = qt-dab
-
