@@ -1,0 +1,15 @@
+pkgbase = luks-header-integrity
+	pkgdesc = A systemd generator and mkinitcpio hook allowing the user to enforce a sha256 hash for disks defined in the crypttab
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/danielrparks/luks-header-integrity
+	arch = any
+	license = MIT
+	depends = mkinitcpio
+	depends = mkinitcpio-busybox
+	depends = systemd
+	source = git+https://gitlab.com/danielrparks/luks-header-integrity?signed#tag=v1.0.1
+	validpgpkeys = 8A144654AD99CA9E984F4156EC74EAEC196A648E
+	sha256sums = SKIP
+
+pkgname = luks-header-integrity
