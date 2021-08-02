@@ -1,0 +1,7 @@
+clever-reposync-bin*
+
+pkg/
+src/
+
+*.gz
+*.zst
