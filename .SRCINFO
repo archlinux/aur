@@ -1,7 +1,7 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
 	pkgver = 17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openmsx.org/
 	install = openmsx.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = openmsx
 	depends = libxml2
 	depends = sdl
 	depends = sdl_image
-	depends = sdl_ttf
+	depends = sdl2_ttf
 	depends = tcl
 	depends = libpng
 	depends = zlib
@@ -25,4 +25,3 @@ pkgbase = openmsx
 	md5sums = 3e03d3298d91d00bab77045c039d77f3
 
 pkgname = openmsx
-
