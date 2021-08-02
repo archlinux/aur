@@ -4,19 +4,19 @@
 
 _name=cgrep-clang
 pkgname=$_name
-pkgver=1.1
+pkgver=1.1.2
 _mainfolder=cgrep-$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc='grep for C/C++ source files'
 arch=(any)
 url=https://github.com/terminaldweller/cgrep
 license=(GPL3)
 depends=(llvm clang)
 makedepends=(git)
-source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/terminaldweller/cfe-extra#commit=0d705a3
         adjust-libclang-lib-names.patch)
-sha256sums=('68e7e66029f643a3a7e745a88bf95516c517aec1739c81ba1f1d3978833c7d80'
+sha256sums=('f3d4cb66401282b89e6400d10056f1553e9126428c40e2a02bbafc4e288c79dc'
             'SKIP'
             'c726ccfdc45f9ad434647cfcab95ac536700ab87978f05f3a341a555642eb8c4')
 
