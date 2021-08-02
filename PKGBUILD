@@ -4,7 +4,7 @@ pkgname=dungeonrush
 _pkgname=DungeonRush
 pkgver=1.1
 _pkgprever=beta
-pkgrel=2
+pkgrel=3
 pkgdesc="A opensource game inspired by Snake with RPG elements, written in pure C with SDL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rapiz1/${_pkgname}"
@@ -33,4 +33,6 @@ package() {
   chmod 777 "${pkgdir}/opt/${pkgname}/save"
 	cp -r "bin/res" "${pkgdir}/opt/${pkgname}/"
 	install -Dm755 "bin/dungeon_rush" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
