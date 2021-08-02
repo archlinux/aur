@@ -1,7 +1,7 @@
 pkgbase = dungeonrush-git
 	pkgdesc = A opensource game inspired by Snake with RPG elements, written in pure C with SDL
 	pkgver = r123.2b45a05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Rapiz1/DungeonRush.git
 	arch = x86_64
 	arch = aarch64

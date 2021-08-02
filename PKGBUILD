@@ -3,7 +3,7 @@
 _pkgname=dungeonrush
 pkgname=${_pkgname}-git
 pkgver=r123.2b45a05
-pkgrel=2
+pkgrel=3
 pkgdesc="A opensource game inspired by Snake with RPG elements, written in pure C with SDL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rapiz1/DungeonRush.git"
@@ -31,10 +31,12 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${srcdir}/${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   mkdir -p "${pkgdir}/opt/${_pkgname}/save"
   chmod 777 "${pkgdir}/opt/${_pkgname}/save"
-	cp -r "bin/res" "${pkgdir}/opt/${_pkgname}/"
+  cp -r "bin/res" "${pkgdir}/opt/${_pkgname}/"
   install -Dm755 "bin/dungeon_rush" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 }
