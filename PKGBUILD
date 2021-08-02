@@ -1,14 +1,14 @@
 # Maintainer: heliochronix <heliochronix@gmail.com>
 
 pkgname=gr-satellites-git
-pkgver=r319.3aeba2a
-pkgrel=2
+pkgver=r1137.6b4c607
+pkgrel=1
 pkgdesc="gr-satellites decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"
-branch="maint-3.8"
+branch="master"
 license=('GPL3')
-depends=('gnuradio' 'boost-libs' 'python-construct>=2.8' 'python-requests')
+depends=('gnuradio' 'boost-libs' 'python-construct>=2.9' 'python-requests')
 optdepends=('feh: For realtime image decoders'
             'doxygen: For document generation')
 makedepends=('git' 'cmake' 'libfec' 'swig' 'boost')
