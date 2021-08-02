@@ -1,21 +1,28 @@
 pkgbase = pyinstaller-git
-	pkgdesc = An application to convert python scripts into stand-alone binaries
-	pkgver = r6822.e29c0472
+	pkgdesc = Bundles a Python application and all its dependencies into a single package
+	pkgver = 5.0.dev0.r8021.g0c9c07807
 	pkgrel = 1
 	url = http://www.pyinstaller.org
-	arch = i686
 	arch = x86_64
-	license = GPL2
-	makedepends = git
+	arch = i686
+	arch = aarch64
+	arch = ppc64le
+	arch = s390x
+	license = custom:PyInstaller
+	makedepends = cmocka
+	makedepends = python>=3.6
 	makedepends = python-setuptools
-	depends = python
+	makedepends = curl
+	makedepends = git
+	makedepends = python-wheel
 	depends = python-altgraph
-	depends = python-pefile
-	depends = python-macholib
+	depends = pyinstaller-hooks-contrib
+	optdepends = python-pycrypto: bytecode encryption support
+	optdepends = upx: executable compression support
 	provides = pyinstaller
 	conflicts = pyinstaller
-	source = git+https://github.com/pyinstaller/pyinstaller.git
-	md5sums = SKIP
+	source = git+https://github.com/pyinstaller/pyinstaller
+	sha256sums = SKIP
+	depends_i686 = lib32-zlib
 
 pkgname = pyinstaller-git
-
