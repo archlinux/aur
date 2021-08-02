@@ -8,7 +8,7 @@
 
 pkgname=davical
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A server for calendar sharing"
 arch=('any')
 url="https://gitlab.com/davical-project/davical"

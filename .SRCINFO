@@ -1,7 +1,7 @@
 pkgbase = davical
 	pkgdesc = A server for calendar sharing
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/davical-project/davical
 	install = davical.install
 	arch = any
