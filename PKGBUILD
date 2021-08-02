@@ -5,7 +5,7 @@
 #
 pkgname="caja-dropbox"
 pkgver="1.25.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Dropbox extension for Caja file manager "
 arch=('i686' 'x86_64')
 url="https://github.com/mate-desktop/caja-dropbox"
