@@ -1,22 +1,26 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=gcc-go-no-conflicts
-_pkgname_=gcc-go
 pkgver=11.1.0
-pkgrel=3
-_pkgrel_=1
+pkgrel=4
 pkgdesc='Go front-end for GCC, does not conflict with go package.'
 arch=(x86_64)
 url='https://gcc.gnu.org'
 license=(GPL LGPL FDL custom)
-depends=("gcc=$pkgver-${_pkgrel_}")
-provides=(gcc-go "go=1.12.2" ${_pkgname_}-multilib)
-replaces=(gcc-go ${_pkgname_}-multilib)
+depends=(gcc)
+provides=(gcc-go go gcc-go-multilib)
+replaces=(gcc-go gcc-go-multilib)
 conflicts=(gcc-go)
 options=(!strip)
 
-source_x86_64=("${_pkgname_}-${pkgver}-${_pkgrel_}-x86_64.tar.zst::https://archlinux.org/packages/core/x86_64/${_pkgname_}/download/")
-sha256sums_x86_64=('8bc1dc82ca3220bec383a2a4bdf6fe1cb9a34a3cb2c9e01700ce5709da754343')
+prepare() {
+	curl -L --no-progress-meter https://archlinux.org/packages/core/x86_64/gcc-go/download/ | bsdtar xf -
+}
+
+pkgver() {
+	local ver="$(awk -v FS=' = ' '/pkgver/ { print $2 }' "${srcdir}/.PKGINFO")"
+	echo "${ver%-*}"
+}
 
 package() {
 	install -Dm755 "${srcdir}/usr/bin/go" "${pkgdir}/usr/bin/gcc-go"
