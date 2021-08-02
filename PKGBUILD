@@ -75,7 +75,7 @@ _use_current=
 
 _major=5.14
 _minor=0
-_rc=3
+_rc=4
 _srcname=linux-${_major}-rc${_rc}
 _clr=${_major}.0.rc3-44
 pkgbase=linux-clear-current
@@ -121,7 +121,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG_PROC \
+    scripts/config --enable IKCONFIG \
+                   --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -144,7 +145,9 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK \
                    --enable SECURITY_SMACK_BRINGUP \
                    --enable SECURITY_SMACK_NETFILTER \
                    --enable SECURITY_SMACK_APPEND_SIGNALS \
@@ -326,7 +329,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('a5dbb770c4b5f9d7a58100fc577385632d0519332b45f0169b020697d9edb1ce'
+sha256sums=('a96537474e8bab29cd77266ff6eb99763d94aa9ed4852cd146ad2e8ddea1b51d'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
