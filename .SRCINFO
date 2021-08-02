@@ -1,6 +1,6 @@
 pkgbase = python-re2
 	pkgdesc = RE2 Python bindings
-	pkgver = 0.2.20210601
+	pkgver = 0.2.20210801
 	pkgrel = 1
 	url = https://github.com/google/re2
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-re2
 	makedepends = python-setuptools
 	makedepends = pybind11
 	depends = re2
-	source = https://files.pythonhosted.org/packages/source/g/google-re2/google-re2-0.2.20210601.tar.gz
-	sha256sums = 69c0df6e8c3c87d059595921f78968c24533d10e62d34e133d1ebe7c3809ea51
+	source = https://files.pythonhosted.org/packages/source/g/google-re2/google-re2-0.2.20210801.tar.gz
+	sha256sums = 0806d78691e67970b3761767a30f1c631fed85b87001266c6adcb672ac2c9beb
 
 pkgname = python-re2
