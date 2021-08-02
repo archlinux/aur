@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-hg
 	pkgdesc = Standalone web browser from mozilla.org, nightly version
-	pkgver = 90.0a1.r574816.6f50eaaba7ee
+	pkgver = 92.0a1.r574816.6f50eaaba7ee
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -50,8 +50,6 @@ pkgbase = firefox-nightly-hg
 	depends = ffmpeg
 	depends = ttf-font
 	depends = libpulse
-	depends = nss-hg
-	depends = nspr-hg
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
@@ -72,4 +70,3 @@ pkgbase = firefox-nightly-hg
 	sha512sums = 02480231cec469fba1e03f669f0a47954bf633f0487ed27d4e0f135d100d9ae023044ef659cc32915aa8acb8dbcbfa2a6a69c78a94700961f9fa80a18bd2f4eb
 
 pkgname = firefox-nightly-hg
-

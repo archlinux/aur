@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=90.0a1.r574816.6f50eaaba7ee
-_pkgver=90.0a1
+pkgver=92.0a1.r574816.6f50eaaba7ee
+_pkgver=92.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -14,7 +14,7 @@ license=(MPL GPL LGPL)
 _repo=https://hg.mozilla.org/mozilla-central
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg
-         ttf-font libpulse nss-hg nspr-hg)
+         ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
             xorg-server-xvfb autoconf2.13 rust ccache mercurial icu clang llvm jack 
             python nodejs python2-psutil cbindgen nasm
@@ -98,10 +98,6 @@ ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/google-api-key
 ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
  
 # Features
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
-ac_add_options --enable-alsa
-ac_add_options --enable-jack
 ac_add_options --disable-warnings-as-errors
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
