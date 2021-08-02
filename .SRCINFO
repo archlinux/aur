@@ -1,0 +1,22 @@
+pkgbase = ssh-rdp-git
+	pkgdesc = Real display ssh based remote desktop. No relation to Microsoft's remote desktop protocol.
+	pkgver = r100.fd0db21
+	pkgrel = 1
+	url = https://github.com/kokoko3k/ssh-rdp
+	arch = any
+	license = LGPL3
+	depends = bash
+	depends = ffmpeg
+	depends = openssh
+	depends = netevent-git
+	depends = inotify-tools
+	depends = wmctrl
+	depends = mpv
+	depends = util-linux
+	optdepends = ssh-rdp-host-git: udev rules and dependencies for the host
+	provides = ssh-rdp
+	conflicts = ssh-rdp
+	source = git+https://github.com/kokoko3k/ssh-rdp.git
+	sha256sums = SKIP
+
+pkgname = ssh-rdp-git
