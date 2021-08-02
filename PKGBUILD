@@ -9,7 +9,7 @@ pkgbase=linux-tqc-a01
 _srcname=linux-5.13
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.13.6
+pkgver=5.13.7
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -56,7 +56,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '91c6e1168e3a6f180f033858d9cfb1b8')
+         'aebc49e4d58bd8314548a364bec99d1e')
 
 prepare() {
   cd ${_srcname}
