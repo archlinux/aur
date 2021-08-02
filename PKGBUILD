@@ -1,6 +1,6 @@
 # Maintainer: inhzus <inhzus@gmail.com>
 pkgname=cppinsights-git
-pkgver=r679.040545e
+pkgver=r720.8612ae5
 pkgrel=1
 pkgdesc="C++ Insights - See your source code with the eyes of a compiler"
 arch=('x86_64')
@@ -29,12 +29,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname}"
-    test -d build || mkdir build
-    cd build
-    cmake -G"Ninja" ..
-    sed -i "s/-isystem/-I/g" build.ninja
-    sed -i "s|LINK_LIBRARIES.*|LINK_LIBRARIES=-L/usr/lib -lclang-cpp -lLLVM|" build.ninja
-    ninja
+    cmake -G"Ninja" -B build -DCLANG_LINK_CLANG_DYLIB=1 -DLLVM_LINK_LLVM_DYLIB=1 -DINSIGHTS_USE_SYSTEM_INCLUDES=OFF .
+    cmake --build build -j
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = cppinsights-git
 	pkgdesc = C++ Insights - See your source code with the eyes of a compiler
-	pkgver = r679.040545e
+	pkgver = r720.8612ae5
 	pkgrel = 1
 	url = https://cppinsights.io
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = cppinsights-git
 	md5sums = SKIP
 
 pkgname = cppinsights-git
-
