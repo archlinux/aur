@@ -14,7 +14,7 @@ url="http://www.pyinstaller.org"
 license=('custom:PyInstaller')
 depends=('python-altgraph' 'pyinstaller-hooks-contrib')
 depends_i686=('lib32-zlib')
-makedepends=('cmocka' 'python>=3.6' 'python-setuptools' 'curl' 'git' 'python-wheel')
+makedepends=('cmocka' 'python>=3.6' 'python-setuptools' 'git' 'python-wheel')
 optdepends=('python-pycrypto: bytecode encryption support'
   'upx: executable compression support')
 provides=('pyinstaller')
