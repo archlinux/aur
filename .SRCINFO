@@ -9,7 +9,7 @@ pkgbase = ferdi-git
 	arch = aarch64
 	license = Apache
 	makedepends = git
-	makedepends = nodejs
+	makedepends = nodejs>=14.0.0
 	makedepends = npm6
 	makedepends = python
 	makedepends = python2
