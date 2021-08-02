@@ -1,12 +1,12 @@
 pkgbase = stringsuite
 	pkgdesc = Suite to work with strings with different encodings
-	pkgver = 2.0.1
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/Loara/StringSuite
 	arch = any
 	license = LGPL3
 	makedepends = cmake>=3.20
-	source = stringsuite-2.0.1.tar.gz::https://github.com/Loara/StringSuite/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = 5f78fc96e0fbf9ecb41118829cf8db6c8ba701113a241e198a029ea8a474f3f7
+	source = stringsuite-2.1.tar.gz::https://github.com/Loara/StringSuite/archive/refs/tags/2.1.tar.gz
+	sha256sums = 06a7d798954059f2eed160acb6aa99c4cd11c997b276d859a359a9abe206ce3e
 
 pkgname = stringsuite
