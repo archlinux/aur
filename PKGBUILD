@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.16.0
+pkgver=2.2.17.0
 pkgrel=1
 pkgdesc="A library for reading and writing images, including classes, utilities, and applications (mingw-w64)"
 url="http://www.openimageio.org/"
@@ -36,7 +36,7 @@ source=(
 	"mingw-dependency-fix.patch"
 )
 sha256sums=(
-	'd1a59f32dbba3ba71ad2e62e107034d1c5287bca1b0696474e927d504cd05ef4'
+	'387f0e66dd5788542d2076ec833d9d5d002895ec78fc73c355046559ebbadad3'
 	'9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352'
 )
 
@@ -51,8 +51,9 @@ _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DND
 
 prepare() {
 	cd "oiio-Release-${pkgver}"
-	patch -uNp1 < "../mingw-dependency-fix.patch"
+	patch -uNp1 < '../mingw-dependency-fix.patch'
 	rm -f "src/cmake/modules/FindOpenCV.cmake"
+	#sed -i 's/return os\.path\.join \(path, "bin", app\)/return os.environ.get("WINEEXEC") + " " + os\.path\.join \(path, "bin", app\) + ".exe"/' 'testsuite/runtest.py'
 }
 
 build() {
@@ -65,8 +66,8 @@ build() {
 #check() {
 #	for _arch in ${_architectures}; do
 #		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON -DOIIO_BUILD_TESTS=ON
-#		make -C "build-${_arch}"
-#		make -C "build-${_arch}" test
+#		cmake --build "build-${_arch}"
+#		WINEEXEC=${_arch}-wine cmake --build "build-${_arch}" --target test
 #	done
 #}
 
