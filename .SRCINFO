@@ -4,14 +4,22 @@ pkgbase = pyinstaller
 	pkgrel = 1
 	url = http://www.pyinstaller.org
 	arch = x86_64
-	license = GPL2
+	arch = i686
+	arch = aarch64
+	arch = ppc64le
+	arch = s390x
+	license = custom:PyInstaller
 	makedepends = cmocka
+	makedepends = python>=3.6
 	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-wheel
 	depends = python-altgraph
 	depends = pyinstaller-hooks-contrib
 	optdepends = python-pycrypto: bytecode encryption support
 	optdepends = upx: executable compression support
-	source = https://pypi.org/packages/source/p/pyinstaller/pyinstaller-4.5.tar.gz
-	sha256sums = 86f694faec78a08c3893aacef84b1a49cb53d4e2880559c6124beefd196a3a74
+	source = git+https://github.com/pyinstaller/pyinstaller
+	sha256sums = SKIP
+	depends_i686 = lib32-zlib
 
 pkgname = pyinstaller
