@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libsass
-pkgver=3.6.3
+pkgver=3.6.5
 pkgrel=1
 pkgdesc="C implementation of Sass CSS preprocessor (library) (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("libsass-${pkgver}.tar.gz"::"https://github.com/sass/libsass/archive/${pkgver}.tar.gz")
-sha256sums=('dadb470bb9141e91b437119d367654427180ed2b3d04b8000eab5b0ca47cd5bb')
+sha256sums=('89d8f2c46ae2b1b826b58ce7dde966a176bac41975b82e84ad46b01a55080582')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,7 +24,7 @@ build() {
   cd "${srcdir}/libsass-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure ..
+    LIBS+=" -lssp" ${_arch}-configure ..
     make
     popd
   done
