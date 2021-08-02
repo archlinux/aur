@@ -1,6 +1,6 @@
 pkgbase = makedeb-makepkg-beta
 	pkgdesc = Arch Linux build utility, modified for use with makedeb (beta release)
-	pkgver = 0
+	pkgver = 7.1.4
 	pkgrel = 1
 	url = https://github.com/makedeb/makepkg
 	arch = any
