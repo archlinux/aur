@@ -1,6 +1,6 @@
 pkgbase = fntsample
 	pkgdesc = PDF and PostScript font samples generator
-	pkgver = 5.3
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://github.com/eugmes/fntsample
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = fntsample
 	depends = unicode-character-database
 	depends = perl-pdf-api2
 	depends = perl-libintl-perl
-	source = fntsample-5.3.tar.gz::https://github.com/eugmes/fntsample/archive/release/5.3.tar.gz
-	sha256sums = e4e8b50b0a5e984cfdaa32b7d133bd3bf0c62edb14f752f7df1190176023972b
+	source = fntsample-5.4.tar.gz::https://github.com/eugmes/fntsample/archive/release/5.4.tar.gz
+	sha256sums = 69eb3d83bce78b6610f4a8f19d089059079ebc475c36d456ebcb4c8add431166
 
 pkgname = fntsample
-
