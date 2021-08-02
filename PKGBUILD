@@ -2,7 +2,7 @@
 _release_type=stable
 
 pkgname=makedeb-makepkg
-pkgver=7.1.5
+pkgver=7.1.6
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (stable release)"
 arch=(any)
@@ -11,7 +11,7 @@ conflicts=('makedeb-makepkg-beta' 'makedeb-makepkg-alpha')
 license=('GPL2')
 url="https://github.com/makedeb/makepkg"
 
-source=("git+file://${_gitdir}")
+source=("${url}/archive/refs/tags/v${pkgver}-${_release_type}.tar.gz")
 sha256sums=('SKIP')
 
 package() {

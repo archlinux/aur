@@ -1,6 +1,6 @@
 pkgbase = makedeb-makepkg
 	pkgdesc = Arch Linux build utility, modified for use with makedeb (stable release)
-	pkgver = 7.1.5
+	pkgver = 7.1.6
 	pkgrel = 1
 	url = https://github.com/makedeb/makepkg
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = makedeb-makepkg
 	depends = xz
 	conflicts = makedeb-makepkg-beta
 	conflicts = makedeb-makepkg-alpha
-	source = git+file://
+	source = https://github.com/makedeb/makepkg/archive/refs/tags/v7.1.6-stable.tar.gz
 	sha256sums = SKIP
 
 pkgname = makedeb-makepkg
