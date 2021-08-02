@@ -1,15 +1,15 @@
 pkgbase = ruby-globalid
 	pkgdesc = Refer to any model with a URI: gid://app/class/id
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-activesupport
-	noextract = globalid-0.5.1.gem
+	noextract = globalid-0.5.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/globalid-0.5.1.gem
-	sha1sums = a7e1613839e7fcf70b35b906dd35a56dfe916e95
+	source = https://rubygems.org/downloads/globalid-0.5.2.gem
+	sha1sums = 6091a20c6a87a78e9b6e729da51a418388a11022
 
 pkgname = ruby-globalid
