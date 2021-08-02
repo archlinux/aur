@@ -1,34 +1,32 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.4.arch1
-_tagver=5.13.4.arch1
+pkgver=5.13.7.arch1
 pkgrel=1
 pkgdesc='Linux'
-#_srctag=v${pkgver%.*}-${pkgver##*.}
-_srctag=v${_tagver%.*}-${_tagver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-	bc kmod libelf pahole cpio tar xz
-	xmlto
-	git
-	"gcc>=11.0"
+  bc kmod libelf pahole cpio tar xz
+  xmlto
+  git
+  "gcc>=11.0"
 )
 options=('!strip')
 _srcname=archlinux-linux
 _fedora_kernel_commit_id=91f97d88231152006764d3c50cc52ddbb508529f
 source=(
-	"$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-	config         # the main kernel config file
-	"choose-gcc-optimization.sh"
+  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
+  config         # the main kernel config file
+  "choose-gcc-optimization.sh"
 
-	"sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
-	"sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
+  "sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
+  "sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
   
-	#"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
-	"sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
+  #"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
+  "sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
 
   # for now let's just pull the 5 asus-linux patches we need directly and skip all of the git filtering
   "sys-kernel_arch-sources-g14_files-0039-asus-wmi-Add-panel-overdrive-functionality.patch"
@@ -36,6 +34,7 @@ source=(
   "sys-kernel_arch-sources-g14_files-0041-asus-wmi-Add-egpu-enable-method.patch"
   "sys-kernel_arch-sources-g14_files-0042-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
   "sys-kernel_arch-sources-g14_files-0043-ALSA-hda-realtek-Fix-speakers-not-working-on-Asus-Fl.patch"
+  "sys-kernel_arch-sources-g14_files-0044-claymore.patch"
 
 
   # k10temp support for Zen3 APUs
@@ -45,7 +44,7 @@ source=(
 
   # mediatek mt7921 bt/wifi patches
   "sys-kernel_arch-sources-g14_files-8011-Bluetooth-btusb-Add-support-for-Lite-On-Mediatek-Chi.patch"
-  "sys-kernel_arch-sources-g14_files-8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
+  #"sys-kernel_arch-sources-g14_files-8012-mt76-mt7921-continue-to-probe-driver-when-fw-already.patch"
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
   "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
 
@@ -57,6 +56,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge
 )
 
 sha256sums=('SKIP'
@@ -70,10 +70,10 @@ sha256sums=('SKIP'
             'f3461e7cc759fd4cef2ec5c4fa15b80fa6d37e16008db223f77ed88a65aa938e'
             '96bf4c0fb920a876d7ec1ed25123bab8a0a43db5f363823e83e14707083d8501'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
+            '4e9c387a0d88a17dc8f82f0c5e0c2d8c20aaa60822f3d9d3ac5eef110f6102f9'
             'ed28a8051514f8c228717a5cdd13191b1c58181e0228d972fbe2af5ee1d013d7'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             '67ebf477b2ecbf367ea3fee1568eeb3de59de7185ef5ed66b81ae73108f6693c'
-            '13f1c3a15fb1418b4aee0594e1f7871151303ca4f7eaab3c6f2ea21af965d85b'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             'e5d1bfe9d309f292d41bb06b98b94df168e0004f6e8ace45b310c6829a803d03')
