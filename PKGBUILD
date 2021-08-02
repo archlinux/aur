@@ -4,7 +4,7 @@
 
 pkgname=qogir-gtk-theme
 _pkgname=Qogir-theme
-_pkgver=2021-06-25
+_pkgver=2021-08-02
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Qogir is a flat Design theme for GTK"
@@ -19,7 +19,7 @@ optdepends=('kvantum-theme-qogir-git: Matching Kvantum theme'
 conflicts=('qogir-gtk-themes-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz")
-sha256sums=('4f518e134c25ed5abbb5cd42985f18075534ea6905c85e2dc67d995459aab250')
+sha256sums=('8eaa45957cc99088ba8ee566b074e9a12fbc74a7cbc4728bd9efc423839e5604')
 
 package() {
 	cd "$_pkgname-$_pkgver"
