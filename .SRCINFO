@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-mx495-printer
 	pkgdesc = Printer driver for Canon Pixma MX495
 	pkgver = 5.10
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx495.aspx
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = canon-pixma-mx495-printer
 	depends = libpng12
 	depends = libusb-compat
 	depends = libtiff4
-	source = http://gdlp01.c-wss.com/gds/9/0100006669/01/cnijfilter2-5.10-2-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/9/0100006669/01/cnijfilter2-5.10-1-deb.tar.gz
 	md5sums = 7dd81b16288dc0b46221d600e9541695
 
 pkgname = canon-pixma-mx495-printer

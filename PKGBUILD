@@ -3,7 +3,7 @@
 
 pkgname=canon-pixma-mx495-printer
 pkgver=5.10
-pkgrel=2
+pkgrel=1
 pkgdesc="Printer driver for Canon Pixma MX495"
 url="http://www.canon.co.uk/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx495.aspx"
 arch=('i686' 'x86_64')
