@@ -1,4 +1,4 @@
-# Maintainer: Marco Schulze <aur@ereski.org>
+# Maintainer: Carol Schulze <aur@ereski.org>
 # Contributor: TuxSpirit<tuxpsiritATarchlinuxDOTfr>
 # Contributor: Jan Stępień <jstepien@users.sourceforge.net>
 
