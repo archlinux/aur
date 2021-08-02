@@ -1,0 +1,18 @@
+pkgbase = wallset
+	pkgdesc = A wallpaper manager that makes it easy to set videos as your wallpaper
+	pkgver = v0.1alpha
+	pkgrel = 1
+	url = https://github.com/terroo/wallset
+	arch = any
+	license = GPL3
+	depends = ffmpeg
+	depends = feh
+	depends = imagemagick
+	depends = xorg-xrandr
+	depends = xdg-utils
+	depends = bash
+	depends = sed
+	source = https://github.com/terroo/wallset/archive/refs/tags/v0.1-alpha.tar.gz
+	sha256sums = 00247de94d8a9d5794692c721fb635628db308ad3b6e401c1045d43a917c3b03
+
+pkgname = wallset
