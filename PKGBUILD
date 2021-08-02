@@ -18,7 +18,7 @@ makedepends=(
 	'patch'
 )
 source=(
-	"https://github.com/informalsystems/$pkgname/releases/download/v$pkgver/$pkgname.tgz"
+	"https://github.com/informalsystems/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver.tgz"
 	'https://raw.githubusercontent.com/informalsystems/apalache/unstable/LICENSE'
 	'sys-install.patch'
 )
