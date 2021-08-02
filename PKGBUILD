@@ -30,7 +30,7 @@ fi
 ##                             y to enable  (stock default)
 ## Here keeps default is ok
 if [ -z ${use_numa+x} ]; then
-  use_numa=n
+  use_numa=y
 fi
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
@@ -86,7 +86,7 @@ makedepends=(
 )
 
 if [ "${_compiler}" = "clang" ]; then
-  makedepends+=(clang llvm)
+  makedepends+=(clang llvm lld python)
 fi
 
 options=('!strip')
