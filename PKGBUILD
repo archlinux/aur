@@ -3,16 +3,16 @@
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
 
 pkgname=python-libnacl
-pkgver=1.7.2
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='https://libnacl.readthedocs.org'
 license=('Apache')
 depends=('python' 'libsodium')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/saltstack/libnacl/archive/v$pkgver.tar.gz")
-sha512sums=('a4efbf73f73d9493ac365efa5a5bd6481f85ce4c880ad236bbf7478090bdea857e78e33e445c4e467d2a2032040863b835f32f9a942d2f1e467015bd76b0d469')
+source=("https://pypi.io/packages/source/l/libnacl/libnacl-$pkgver.tar.gz")
+sha512sums=('a57b0a17a27d81c0192edb62d64f9e6a93efd21a580df6721f5bb6e2fb4f23a9dbc448d430428bdcd664e5cec2622e0e4cd5588752e232cdc48842ad5144f848')
 
 build() {
   cd libnacl-$pkgver
