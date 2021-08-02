@@ -17,7 +17,7 @@ conflicts=('v2raya')
 sha_service=ba580b203c1971780d2721a48fbc828d11467d5a
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-sha_web=54f9f46992b4b8f2e493cc937a29e82c20d69431
+sha_web=401522edf70ef40cb197bb4190e41523bb59e309
 
 source=(
     "v2raya.service"
@@ -27,10 +27,10 @@ source=(
 )
 
 source_i686=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_x86_v${pkgver}"
 )
 source_x86_64=(
-    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_x64_v${pkgver}"
 )
 source_aarch64=(
     "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
@@ -50,10 +50,10 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    ''
+    '0f4a1c26a65ed0b4455a929fad772a05df8beb8d'
 )
 sha1sums_x86_64=(
-    ''
+    '15e68f9c073ed01c60e3d677348a90bb372e54d4'
 )
 sha1sums_aarch64=(
     '4969ce4ba6240ed72008f379f4edaf3581dda763'
