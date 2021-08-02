@@ -2,7 +2,7 @@
 pkgname=mqtt-shell
 pkgver=2.1.0
 pkgrel=1
-pkgdesc='A shell like command line interface for mqtt written in go.'
+pkgdesc='A shell like command line interface for MQTT written in go.'
 arch=('x86_64' 'i686')
 url="https://github.com/rainu/mqtt-shell"
 license=('MIT')
@@ -30,3 +30,4 @@ package() {
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
