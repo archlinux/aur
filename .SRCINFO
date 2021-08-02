@@ -1,13 +1,14 @@
 pkgbase = zsh-abbr
 	pkgdesc = zsh abbreviations, ported from fish and enhanced
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/olets/zsh-abbr
+	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = zsh
-	source = zsh-abbr-4.3.0.tar.gz::https://github.com/olets/zsh-abbr/archive/v4.3.0.tar.gz
-	sha256sums = c142bdbf20969539f13dc97f565ac1f4b64960cc84e5cdafc05fc53e95471587
+	source = zsh-abbr-4.4.0.tar.gz::https://github.com/olets/zsh-abbr/archive/v4.4.0.tar.gz
+	sha256sums = 390affea4ea8a351660a6b8177f493ccf2674e20d73896f7b8f846670defaf5d
 
 pkgname = zsh-abbr
-
