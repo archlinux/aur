@@ -13,7 +13,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
 depends=('electron' 'libxkbfile')
-makedepends=('git' 'nodejs' 'npm6' 'python' 'python2')
+makedepends=('git' 'nodejs>=14.0.0' 'npm6' 'python' 'python2')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
