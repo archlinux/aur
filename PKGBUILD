@@ -2,7 +2,7 @@
 # Maintainer (core/linux): Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-x32
-pkgver=5.13.5.arch1
+pkgver=5.13.7.arch1
 pkgrel=1
 pkgdesc='Linux with x32 ABI'
 _srctag=v${pkgver%.*}-${pkgver##*.}
