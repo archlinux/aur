@@ -1,9 +1,9 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg-i18n
-_version=90.0a1
+_version=92.0a1
 #_version="${pkgver%.*}"
-pkgver=90.0a1.20210320
+pkgver=92.0a1.20210320
 pkgrel=1
 pkgdesc='Universal i18n for firefox-nightly - xpi version'
 url="https://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/"
