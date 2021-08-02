@@ -1,0 +1,20 @@
+pkgbase = ssh-rdp-host-git
+	pkgdesc = Udev rules and dependencies for an ssh-rdp host
+	pkgver = r100.fd0db21
+	pkgrel = 1
+	url = https://github.com/kokoko3k/ssh-rdp
+	arch = any
+	license = LGPL3
+	depends = bash
+	depends = ffmpeg
+	depends = openssh
+	depends = netevent-git
+	depends = xorg-xdpyinfo
+	depends = pulseaudio
+	optdepends = ssh-rdp-git: bash script used on clients to connect
+	provides = ssh-rdp-host
+	conflicts = ssh-rdp-host
+	source = git+https://github.com/kokoko3k/ssh-rdp.git
+	sha256sums = SKIP
+
+pkgname = ssh-rdp-host-git
