@@ -12,6 +12,6 @@ pkgbase = rexpaint
 	source = launcher.desktop
 	sha256sums = 55c8c7dc299ff4a246d2f381c0ce8a3f72bc1df0922364ed17cb3d05bc48bdb1
 	sha256sums = e1bd48ec4d337c24127b311efaa5dff523cf680eef0aacaf2fe11c16a19b05d2
-	sha256sums = 2c4eb485e81a003dbee59ccdb751bff54d59948f3f5502e646aab5b6ee03ad85
+	sha256sums = 2fd6f3dbef29e201b57d941df145f3439e7a5593e7ffffbe009ae413efd4db89
 
 pkgname = rexpaint
