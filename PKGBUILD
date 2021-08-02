@@ -11,7 +11,7 @@ source=("https://www.gridsagegames.com/blogs/files/REXPaint-v$pkgver.zip"
          "launcher.sh"
          "launcher.desktop")
 sha256sums=('55c8c7dc299ff4a246d2f381c0ce8a3f72bc1df0922364ed17cb3d05bc48bdb1'
-            'e1bd48ec4d337c24127b311efaa5dff523cf680eef0aacaf2fe11c16a19b05d2'
+            'b68e78c4b4d0373944158c1dc6146dd3401b06f040d35166b6328aed0b872306'
 	    '2fd6f3dbef29e201b57d941df145f3439e7a5593e7ffffbe009ae413efd4db89')
 DLAGENTS=("https::/usr/bin/curl -A 'PKGBUILD' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 

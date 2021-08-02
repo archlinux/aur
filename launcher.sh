@@ -16,4 +16,4 @@ if [ ! -d "$XDG_DATA_DIR/rexpaint" ]; then
 	cp -r "$RP_INSTALL_DIR/data" .
 fi
 cd "$XDG_DATA_DIR/rexpaint"
-WINEDEBUG=-all wine "$XDG_DATA_DIR/rexpaint/REXPaint.exe" "$@"
+WINEDLLOVERRIDES="mshtml,mscoree=" WINEDEBUG=-all wine "$XDG_DATA_DIR/rexpaint/REXPaint.exe" "$@"
