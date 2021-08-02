@@ -1,7 +1,7 @@
 diff --git a/ares-PLACEHOLDER/lucia/lucia.cpp b/ares-PLACEHOLDER/lucia/lucia.cpp
-@@ -10,8 +10,11 @@
-   string location = {Path::program(), name};
-   if(inode::exists(location)) return location;
+@@ -15,8 +15,11 @@
+     if(inode::exists(location)) return location;
+   #endif
  
 -  directory::create({Path::userData(), "lucia/"});
 -  return {Path::userData(), "lucia/", name};

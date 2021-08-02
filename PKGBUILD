@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=121a
-pkgrel=3
+pkgver=122
+pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -11,10 +11,10 @@ depends=(gtk3 gtksourceview3 libao libgl libpulse libudev.so=1-64 libxv openal s
 makedepends=(mesa git)
 provides=(ares-emu)
 conflicts=(ares-emu)
-source=("https://github.com/higan-emu/ares/archive/refs/tags/v121a.tar.gz"
+source=("https://github.com/higan-emu/ares/archive/refs/tags/v${pkgver}.tar.gz"
         "ares-paths.patch")
-sha256sums=("ee723ca63783b37da36bf4dce9c0cdea91f7a18145cbcc9fb98e0c91908a305f"
-        "9d96572075ae4694a68d3a10a855de3223db28de90b51330f0c17cd2d0c7c6e6")
+sha256sums=("282153f320c8b66e8489e88740c338f096a87ef7ffe7e7268438241a6c12e65a"
+        "3e177ddb419dd2363b29e39253ff6bb71143de5332616b1c056119cf06a88608")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder
@@ -40,9 +40,6 @@ package() {
   
   # It's commonly known as Ares, less so as Lucia, so specify that in .desktop file
   sed -i "s/Name=lucia/Name=Ares (Lucia)/" "${srcdir}/ares-${pkgver}/lucia/resource/lucia.desktop"
-
-  # Force XWayland if running on Wayland, because Ares currently isn't compatible with it.
-  sed -i "s/Exec=lucia/Exec=env GDK_BACKEND=x11 lucia/" "${srcdir}/ares-${pkgver}/lucia/resource/lucia.desktop"
   install -Dm 644 "${srcdir}/ares-${pkgver}/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Also install the shaders in Ares' shared directory
