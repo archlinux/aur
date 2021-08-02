@@ -6,7 +6,7 @@
 pkgname=xflr5
 _revision=1309
 pkgver=6.49.r$_revision
-pkgrel=1
+pkgrel=2
 pkgdesc="An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers."
 arch=('i686' 'x86_64')
 url="http://www.xflr5.com/xflr5.htm"
