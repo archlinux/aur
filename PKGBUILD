@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=bupstash
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="a tool for encrypted backups"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libsodium' 'gcc-libs')
 makedepends=('cargo' 'ruby-ronn-ng')
 checkdepends=('bash-bats' 'python') # if you hate yourself, add procps-ng + bubblewrap
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('b58b840fe70c24cc48cb61a52301e0a3475d25724c12ff3c5c0262b42e01ca42837dfdf805a70a866009a0db8bc358cdd20074556a5de5a1f70a69124c113c36')
+b2sums=('8675ebb1da20a3729151a82b7eb68c762a5c8c7e6046d487b736161a2f1367a805934ae290873df015c9d3169a84e65db2ed8ec1fc1a68ec3c4146befe3f5227')
 
 build() {
   cd "$pkgname-$pkgver"
