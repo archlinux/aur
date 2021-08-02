@@ -3,7 +3,7 @@
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bulk downloader for Reddit"
 arch=('any')
 url="https://github.com/aliparlakci/bulk-downloader-for-reddit"
@@ -11,7 +11,7 @@ depends=('python' 'python-setuptools')
 makedepends=()
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aliparlakci/bulk-downloader-for-reddit/archive/refs/tags/v2.3.0.tar.gz")
-md5sums=('3da354979837d37f20b3465d2d13a552')
+md5sums=("b125637b73c5baeefcd92d73e96e5c44")
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
