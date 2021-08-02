@@ -9,6 +9,7 @@ arch=(any)
 url="https://github.com/AssrtOSS/mpv-assrt"
 license=("unknown")
 depends=("mpv")
+makedepends=("git")
 provides=("mpv-assrt")
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
