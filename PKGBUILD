@@ -11,7 +11,7 @@ pkgname=(util-linux-aes util-linux-libs-aes)
 _pkgmajor=2.37
 _realver=${_pkgmajor}.1
 pkgver=${_realver/-/}
-pkgrel=1
+pkgrel=3
 pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
@@ -26,6 +26,8 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basena
         #"${_basename}-${pkgver}.diff"
         http://loop-aes.sourceforge.net/updates/${_basename}-${_pkgmajor}-20210620.diff.bz2{,.sign}
         "${pkgname}.modules"
+        '0001-sulogin-fix-getpasswd.patch'
+        '0002-libmount-fix-setgroups-use.patch'
         pam-{login,common,runuser,su}
         'util-linux-aes.sysusers'
         '60-rfkill.rules'
@@ -36,6 +38,8 @@ sha256sums=('8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76'
             '0a78ea9a05191b1ddaeedc8c8d8ae053f9ed4e7cd2f39ef4b3bc356e552c98a2'
             'SKIP'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
+            '00d526cfaca8979e433c7379c634cf14e700322f0ed0c5a7996af1c900147268'
+            '56fbc491b999aa18113237f28d399045a6d66678353b3619ab8da2f8518d2a4d'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -47,6 +51,10 @@ sha256sums=('8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76'
 
 prepare() {
   cd "$_basename-$pkgver"
+
+  patch -Np1 < ../0001-sulogin-fix-getpasswd.patch
+  patch -Np1 < ../0002-libmount-fix-setgroups-use.patch
+
   #patch -Np1 -i "../${_basename}-${pkgver}.diff"
   patch -Np1 -i "../${_basename}-${_pkgmajor}-20210620.diff"
   autoreconf -i
