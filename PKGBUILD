@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/wagoodman/dive"
 license=('MIT')
 
-depends=("docker")
+optdepends=('docker: docker support')
 
 conflicts=('dive' 'dive-git')
 provides=('dive')
