@@ -1,0 +1,15 @@
+pkgbase = python-pydyf
+	pkgdesc = a low-level PDF generator written in Python and based on PDF specification 1.7
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/CourtBouillon/pydyf
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = python
+	depends = python-sphinx_rtd_theme
+	source = https://files.pythonhosted.org/packages/source/p/pydyf/pydyf-0.0.3.tar.gz
+	sha256sums = d12ad2ddce4c49c32a7fa06c4b9cf4166d6f4659b6314961a4dedb0857c2d246
+
+pkgname = python-pydyf
