@@ -1,14 +1,14 @@
 pkgbase = lua-std-normalize
 	pkgdesc = Normalized Lua functions
 	pkgver = 2.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lua-stdlib/normalize
 	arch = any
 	license = MIT
 	makedepends = lua
-	makedepends = lua53
-	makedepends = lua52
 	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
 	makedepends = luarocks
 	source = lua-std-normalize-2.0.3.tar.gz::https://github.com/lua-stdlib/normalize/archive/v2.0.3.tar.gz
 	sha256sums = 2038c38da542cf274b0b7512928e5b649c90a34f36c8919fbbbc2524b4ef716d
@@ -28,4 +28,3 @@ pkgname = lua52-std-normalize
 pkgname = lua51-std-normalize
 	depends = lua51
 	depends = lua51-std-_debug
-
