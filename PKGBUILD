@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=4.6.r2.e1fa47b27
+pkgver=4.16.r370.0331ea1ff
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -52,7 +52,7 @@ build() {
   export CGO_CFLAGS="-I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
   export CGO_LDFLAGS="-L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
   export LD_LIBRARY_PATH="${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/"
-  export CGO_LDFLAGS_ALLOW="-Wl,-wrap,pthread_create"
+  export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
   make
 }
 
