@@ -3,12 +3,12 @@
 
 pkgname=google-calendar-nativefier
 pkgver=2021.06.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Calendar in shared Electron runtime'
 arch=('x86_64')
 url='https://calendar.google.com'
 license=('MIT')
-_electronv=12 # See todoist-nativefier for rationale
+_electronv= # See todoist-nativefier for rationale
 depends=("electron${_electronv}")
 makedepends=(
   'gendesk'
