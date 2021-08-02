@@ -1,6 +1,6 @@
 # Maintainer: Francisco Giordano <fg@frang.io>
 
-pkgname=volta
+pkgname=volta-bin
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="JavaScript Launcher"
