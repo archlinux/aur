@@ -1,12 +1,10 @@
 pkgbase = sodalite
 	pkgdesc = Keyboard-driven terminal file navigator and launcher
-	pkgver = 0.20.0
+	pkgver = 0.21.2
 	pkgrel = 1
 	url = https://www.github.com/hnicke/sodalite
 	arch = any
 	license = GPL
-	makedepends = git
-	makedepends = awk
 	depends = python>=3.9
 	depends = python-binaryornot
 	depends = python-urwid
@@ -17,8 +15,7 @@ pkgbase = sodalite
 	depends = python-click
 	depends = python-blinker
 	depends = xdg-utils
-	backup = etc/sodalite.conf
-	source = sodalite-0.20.0.tar.gz::https://github.com/hnicke/sodalite/archive/v0.20.0.tar.gz
-	sha256sums = abd9b68f9838a938862881c81d3acc72dcb6ade51ded432fabd0a52c3aca4de9
+	source = https://files.pythonhosted.org/packages/source/s/sodalite/sodalite-0.21.2.tar.gz
+	sha256sums = a95e95938b27def8586b3cfccee855ef2e415f0f0175551e83e1da603af80cb0
 
 pkgname = sodalite
