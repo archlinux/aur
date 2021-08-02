@@ -1,0 +1,15 @@
+pkgbase = quickemu-git
+	pkgdesc = Simple shell script to "manage" Qemu virtual machines.
+	pkgver = r126.eae99eb
+	pkgrel = 1
+	url = https://github.com/wimpysworld/quickemu
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = qemu
+	optdepends = samba: file sharing support
+	provides = quickemu
+	source = quickemu-git::git://github.com/wimpysworld/quickemu.git
+	md5sums = SKIP
+
+pkgname = quickemu-git
