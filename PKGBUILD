@@ -1,41 +1,42 @@
-# Maintainer: aereaux <aidan@jmad.org>
-_pkgname=meli
-pkgname=${_pkgname}-git
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: aereaux <aidan@jmad.org>
+
+pkgname=meli-git
 pkgver=alpha.0.4.2.r232.g6ccb9d3
 pkgrel=1
-pkgdesc="Experimental terminal mail client aiming for configurability and extensibility with sane defaults."
-arch=("x86_64")
-url="https://meli.delivery/"
-license=('GPL3')
-depends=()
-makedepends=("git" "rust")
-optdepends=()
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+pkgdesc='experimental terminal mail client'
+arch=(x86_64)
+url=https://meli.delivery
+license=(GPL3)
+depends=(curl
+         dbus
+         pcre2
+         sqlite)
+makedepends=(git
+             mandoc
+             rust)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("git+https://git.meli.delivery/meli/meli.git")
-md5sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+	cd "${pkgname%-git}"
+	git describe --long --tags --abbrev=7 --tags HEAD |
+		sed 's/^\(pre\)\?-\?\(v\|alpha\|beta\|rc\)\?-\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+	cd "${pkgname%-git}"
+	cargo fetch --locked
 }
 
 build() {
-  cd "$_pkgname"
-
-  make meli
+	cd "${pkgname%-git}"
+	cargo build --offline --release --all-features
 }
 
-# TODO: Right now the makefile does not have a check target
-#check() {
-#  cd "$_pkgname"
-#
-#  cargo test --release --locked
-#}
-
 package() {
-  cd "$_pkgname"
-
-  make PREFIX=/usr DESTDIR="$pkgdir/" install
+	cd "${pkgname%-git}"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
 }
