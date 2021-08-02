@@ -1,6 +1,6 @@
 pkgbase = mutt-slang
 	pkgdesc = Small but very powerful text-based mail client - slang version
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://www.mutt.org/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = mutt-slang
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = git+https://gitlab.com/muttmua/mutt.git#tag=mutt-2-1-rel?signed
+	source = git+https://gitlab.com/muttmua/mutt.git#tag=mutt-2-1-1-rel?signed
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
 	sha512sums = SKIP
 	b2sums = SKIP

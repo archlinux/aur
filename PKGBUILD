@@ -8,7 +8,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 url="http://www.mutt.org/"
