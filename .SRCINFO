@@ -1,6 +1,6 @@
 pkgbase = looking-glass-git
 	pkgdesc = An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough
-	pkgver = B4.r63.gb8effaf4
+	pkgver = B4.r237.ge23144ae
 	pkgrel = 1
 	epoch = 2
 	url = https://looking-glass.io/
@@ -35,6 +35,7 @@ pkgname = looking-glass-git
 	depends = libxss
 	depends = libxi
 	depends = libxinerama
+	depends = libxcursor
 	provides = looking-glass
 	conflicts = looking-glass
 
