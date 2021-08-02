@@ -4,12 +4,12 @@
 
 pkgname=python-vispy
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance interactive 2D/3D data visualization library.'
 arch=('any')
 url='http://vispy.org'
 license=('BSD')
-depends=('python-numpy')
+depends=('python-numpy' 'python-hsluv' 'python-freetype-py' 'python-kiwisolver')
 makedepends=('python-setuptools' 'cython' 'npm')
 optdepends=('pyside2: a possible backend'
             'python-pyqt5: a possible backend')
@@ -17,7 +17,7 @@ _pkgname=vispy
 _js_commit=2d8be774552f20add80860b2b7d0bfd600730595
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz"
         "vispy.js.tar.gz"::"https://github.com/vispy/vispy.js/archive/${_js_commit}.tar.gz")
-sha256sums=('32a721a2c4113e95dfcbde381558835a65f657be6b6128aca127a19d257887e5'
+sha256sums=('f9c9e44a9d7fed744abbe98dfa815bb6b690d53665d472f163478e746b6a7923'
             '2f10454096cb1ebfa14bd76109fa9ec729f3866307eb990bb66dad1012938c4f')
 
 prepare() {
