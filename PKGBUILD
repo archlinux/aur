@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-makepkg-alpha
-pkgver=7.1.4
+pkgver=7.1.5
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (alpha release)"
 arch=(any)
@@ -20,6 +20,7 @@ package() {
 	# Copy and configure makepkg
 	install -Dm 555 "src/makepkg.sh" "${pkgdir}/usr/bin/makedeb-makepkg"
 	sed -i 's|.*# REMOVE AT PACKAGING||g' "${pkgdir}/usr/bin/makedeb-makepkg"
+  sed -i "s|makepkg_version='git'|makepkg_version='${pkgver}-${pkgrel}'|" "${pkgdir}/usr/bin/makedeb-makepkg"
 
 	# Copy functions
 	mkdir -p "${pkgdir}/usr/share/"
