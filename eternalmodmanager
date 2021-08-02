@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec electron13 /usr/lib/eternalmodmanager.asar "$@"
