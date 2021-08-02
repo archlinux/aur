@@ -1,7 +1,7 @@
 pkgbase = amdfand-bin
 	pkgdesc = AMDGPU Fan control service
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Eraden/amdgpud
 	arch = x86_64
 	license = MIT

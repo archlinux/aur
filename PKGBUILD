@@ -3,7 +3,7 @@
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="AMDGPU Fan control service"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
@@ -12,7 +12,7 @@ _source=(
 )
 arch=('x86_64')
 _md5sums=(
-    'e1feb676f947613ab23b5594673641fc'
+  'eb496cca24bba7647d37c6bc38e1aae2'
 )
 depends=(
 )
