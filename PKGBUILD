@@ -36,10 +36,8 @@ prepare() {
 package() {
 	cd "com.qianxin.browser-stable_1.0.32574.3-1"
 	mkdir -p ${pkgdir}/opt/apps/
-	mkdir -p ${pkgdir}/usr/share/applications/
 	mkdir -p ${pkgdir}/usr/share/icons/
 	cp -a  ${srcdir}/com.qianxin.browser-stable_1.0.32574.3-1/opt/apps/com.qianxin.browser-stable  ${pkgdir}/opt/apps/
-	cp -a ${srcdir}/com.qianxin.browser-stable_1.0.32574.3-1/opt/apps/com.qianxin.browser-stable/entries/applications/com.qianxin.browser-stable.desktop  ${pkgdir}/usr/share/applications/
-	chmod 644 ${pkgdir}/usr/share/applications/com.qianxin.browser-stable.desktop
+	install -Dm644 ${srcdir}/com.qianxin.browser-stable_1.0.32574.3-1/opt/apps/com.qianxin.browser-stable/entries/applications/com.qianxin.browser-stable.desktop  ${pkgdir}/usr/share/applications/com.qianxin.browser-stable.desktop
 	cp -a ${srcdir}/com.qianxin.browser-stable_1.0.32574.3-1/opt/apps/com.qianxin.browser-stable/entries/icons/hicolor   ${pkgdir}/usr/share/icons/
 }
