@@ -6,7 +6,7 @@ _commit=db818a32be2b10462f3e37489f6bc88ab03d8955
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -263,7 +263,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
-    SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)")
+    SUBJOBS="${MAKEFLAGS/-j/}" \
         make -j1 dist
 }
 
