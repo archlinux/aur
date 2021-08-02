@@ -4,15 +4,15 @@
 
 pkgbase=textadept
 pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
-pkgver=11.1
-pkgrel=4
+pkgver=11.2
+pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://foicica.com/textadept/"
 license=('MIT')
 makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/orbitalquark/$pkgname/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('87d67975b22952344e1bdcb330301b88cdfe8242e7710526cd344ab252499c2a')
+sha256sums=('07ca4cb64682021f3bf948d810495e23ec7761705f958e5057383e7d8e2a9a74')
 
 prepare() {
 	cd "textadept-textadept_$pkgver/src"
