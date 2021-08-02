@@ -2,7 +2,7 @@
 
 pkgname=watson
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A wonderful CLI to track your time!'
 arch=('any')
 url='https://tailordev.github.io/Watson/'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(
     'python'
     'python-arrow'
-    'python-click'
+    'python-click>=7.0' 'python-click<8.0'
     'python-click-didyoumean'
     'python-requests'
 )
