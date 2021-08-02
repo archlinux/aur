@@ -9,16 +9,18 @@ pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 arch=(any)
 url=http://weasyprint.org
 license=(BSD)
-_py_deps=(cairo
-          cairocffi
-          cairosvg
+_py_deps=(brotli # for fonttools[woff]
           cffi
           cssselect2
+          fonttools
           html5lib
           pillow
+          pydyf
           pyphen
-          tinycss2)
-depends=(python
+          tinycss2
+          zopfli) # for fonttools[woff]
+depends=(pango
+         python
          "${_py_deps[@]/#/python-}")
 makedepends=(python-pytest-runner
              python-setuptools)
