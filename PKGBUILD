@@ -2,15 +2,15 @@
 
 _name=slade
 pkgname=${_name}
-pkgver=3.2.0_b2
-pkgrel=2
+pkgver=3.2.0_b3
+pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
          'curl'
-         'fluidsynth>=2.0'
+         'fluidsynth>=2.2'
          'fmt>=7'
          'freeimage'
          'ftgl'
@@ -27,7 +27,7 @@ depends=('bzip2'
 makedepends=('cmake'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('e139173840351135cb0864facc7ece1c52f0e291f56b769123512614f876ec26')
+sha256sums=('bd4b0d52852fc3b31911c86ad5ff59e203e4ec8917416876ccbbbacca2246814')
 
 build() {
     cd SLADE-${pkgver}
