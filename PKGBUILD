@@ -20,6 +20,7 @@ md5sums=(
 depends=(
 	'pyalpm'
 	'git'
+	'fakeroot'
 )
 makedepends=(
 	'python-commonmark'

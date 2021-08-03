@@ -8,6 +8,7 @@ pkgbase = pikaur-aurnews
 	makedepends = python-commonmark
 	depends = pyalpm
 	depends = git
+	depends = fakeroot
 	optdepends = asp: for ABS support in -G/--getpkgbuild operation
 	optdepends = python-pysocks: for socks5 proxy support
 	provides = pikaur
