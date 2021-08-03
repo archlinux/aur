@@ -3,7 +3,7 @@
 _pkgbase=hysteria
 pkgname=$_pkgbase
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments'
 arch=('x86_64')
 url="https://github.com/HyNetwork/hysteria"
@@ -15,8 +15,8 @@ source=("$_pkgbase"::"git+$url.git#tag=v$pkgver"
         sysusers.conf
         )
 sha256sums=('SKIP'
-            '2b0057f4f0e236ca59c91035e406c7c55df9b2420fd45c3dfe3efbc21c1fa046'
-            'facb84351432dbac9a2bdfc9a4564fd87c0823a51d52b0bb6b7af5170feab676'
+            'bfa8685eee317d0c1ba4c6b6696e702f93ea777a89cf7e92c27987f7f012ed2a'
+            'eb928868a8c4b6d15dedc9923aaa75ef969b6645893194f7e22a89399f677463'
             'abaab463035e67c1e1728e5378b8f4a50960bf80d5005e02b3b2c9468f06150d')
 
 prepare(){
