@@ -1,12 +1,12 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=drm_info-git
 _pkgname=drm_info
-pkgver=1.1.0.r45.g6bb0405046ed
+pkgver=2.3.0.r2.gd41993496add
 pkgrel=1
 license=('MIT')
 pkgdesc='Small utility to dump info about DRM devices'
 makedepends=("meson" "git")
-depends=("libdrm" "json-c")
+depends=("libdrm" "json-c" "pciutils")
 arch=("x86_64")
 url='https://github.com/ascent12/drm_info'
 source=("${_pkgname}::git+https://github.com/ascent12/drm_info.git")
