@@ -5,7 +5,6 @@ pkgbase = disfetch
 	url = https://github.com/llathasa-veleth/disfetch
 	arch = any
 	license = MIT
-	makedepends = binutils
 	depends = bash>=4.0.0
 	provides = disfetch
 	source = disfetch-2.7.tar.gz::https://github.com/llathasa-veleth/disfetch/archive/2.7.tar.gz
