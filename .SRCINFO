@@ -1,0 +1,13 @@
+pkgbase = dartaotruntime-bin
+	pkgdesc = Run AOT compiled Dart programs without the Dart SDK
+	pkgver = 2.13.4
+	pkgrel = 1
+	url = https://dart.dev
+	arch = x86_64
+	license = BSD
+	conflicts = dart
+	noextract = dartaotruntime-bin-2.13.4-64.zip
+	source = dartaotruntime-bin-2.13.4-64.zip::https://storage.googleapis.com/dart-archive/channels/stable/release/2.13.4/sdk/dartsdk-linux-x64-release.zip
+	sha512sums = f9c8f3b3528548fda5e575d1e384d90321a14782fadc7e8c98b551afcb5ef3a0d7a371cadd495efe281b8b3cd0dc466db54beb250f111ef8b6092e9494d288cd
+
+pkgname = dartaotruntime-bin
