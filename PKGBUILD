@@ -6,7 +6,7 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
-pkgver=11.1.0
+pkgver=11.2.0
 _islver=0.24
 pkgrel=0
 #_snapshot=8-20190111
@@ -22,7 +22,7 @@ source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         #https://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
         http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
 
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0')
 
@@ -75,7 +75,7 @@ build() {
 package() {
   cd gcc-build
 
-  make install DESTDIR="$pkgdir"
+  make install-strip DESTDIR="$pkgdir"
   ln -s $_target-gcc "$pkgdir"/usr/bin/$_target-cc
   # Remove files that conflict with host gcc package
   rm -r "$pkgdir"/usr/{include,lib/libcc*,share}
