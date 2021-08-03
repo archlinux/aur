@@ -2,7 +2,7 @@
 _pkgname=discord-rpc
 pkgname=$_pkgname-git
 pkgver=3.4.0.r10.g963aa9f
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord Rich Presence library'
 arch=('x86_64')
 url="https://github.com/discord/$_pkgname"
@@ -19,9 +19,12 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i 's/CONFIGURATIONS Release//' $_pkgname/examples/send-presence/CMakeLists.txt
+}
+
 build() {
 	cmake -S $_pkgname -B build \
-		-DBUILD_EXAMPLES=OFF \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
