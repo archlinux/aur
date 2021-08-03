@@ -4,13 +4,15 @@
 pkgname=python-cffsubr
 _pyname=${pkgname#python-}
 pkgver=0.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Standalone CFF subroutinizer based on AFDKO tx'
 arch=(x86_64)
 url="https://github.com/adobe-type-tools/$_pyname"
 license=(Apache)
-depends=(python-fonttools)
-makedepends=(python-setuptools-{git-ls-files,scm})
+depends=(python
+         python-fonttools)
+makedepends=(python-setuptools-git-ls-files
+             python-setuptools-scm)
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
