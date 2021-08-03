@@ -1,12 +1,13 @@
 # Maintainer: OctopusET
 pkgbase=python-norminette
-pkgname=python-norminette-git
-pkgver=r334.2cdcfd5
+pkgname=norminette-git
+pkgver=r480.2184517
 pkgrel=1
 pkgdesc="Open source norminette"
 arch=('any')
 url='https://github.com/42School/norminette'
 license=('MIT')
+conflicts=('norminette')
 depends=('python-argparse')
 makedepends=('git' 'python-setuptools')
 source=("$pkgname"::'git+https://github.com/42School/norminette.git')
