@@ -20,6 +20,7 @@ build() {
     _folder_man=target/release/man
     mkdir -p ${_folder_man}/man1
     help2man "${_path_bin}" > ${_folder_man}/man1/${pkgname}.1
+    # Generate info about all subcommands except for 'help' (which leads to error)
     "${_path_bin}" --help | awk 'enabled && $1 != "help" { print $1 } /^SUBCOMMANDS:$/ { enabled=1 }' \
     | while read -r cmd; do
         help2man "$_path_bin $cmd" > ${_folder_man}/man1/${pkgname}-${cmd}.1
