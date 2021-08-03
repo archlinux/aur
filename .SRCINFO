@@ -1,6 +1,6 @@
 pkgbase = bak
 	pkgdesc = A backup tool written in bash
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/gamemaker1/bak
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bak
 	depends = tar
 	depends = zip
 	depends = unzip
-	source = bak-0.1.0.tar.gz::https://github.com/gamemaker1/bak/archive/0.1.0.tar.gz
-	sha256sums = 0024bbe0428db7e9dd4727c7f439573073dbacc0a1cef6835856f0926718c001
+	source = bak-0.1.1.tar.gz::https://github.com/gamemaker1/bak/archive/0.1.1.tar.gz
+	sha256sums = f4b73bb22c567907e71b89a8627eed9e5406f3e08848f09c0c53fc9a87419dc9
 
 pkgname = bak
