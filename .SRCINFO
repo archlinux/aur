@@ -1,13 +1,12 @@
 pkgbase = wxwabbitemu-git
 	pkgdesc = A cross-platform TI-8x emulator based on Wabbitemu
-	pkgver = 48325ca
+	pkgver = 7b9ef9d
 	pkgrel = 1
 	url = https://github.com/alberthdev/wxwabbitemu
 	arch = x86_64
-	license = unknown
+	license = custom
 	depends = wxgtk2
 	source = wxwabbitemu-git::git+https://github.com/alberthdev/wxwabbitemu.git
 	sha256sums = SKIP
 
 pkgname = wxwabbitemu-git
-
