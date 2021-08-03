@@ -1,7 +1,7 @@
 # Maintainer: Limgmk <limgmkgm@gmail.com>
 
 pkgname=leedns-git
-pkgver=0.0.1.r0.g215c667
+pkgver=0.0.2.r0.g5960650
 pkgrel=1
 pkgdesc="A dns server and client which support udp, tcp, dot and doh"
 arch=('any')
