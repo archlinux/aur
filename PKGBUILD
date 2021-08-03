@@ -2,7 +2,7 @@
 
 pkgname=asfa
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
 url="https://github.com/obreitwi/asfa"
@@ -20,7 +20,9 @@ build() {
     _folder_man=target/release/man
     mkdir -p ${_folder_man}/man1
     help2man "${_path_bin}" > ${_folder_man}/man1/${pkgname}.1
-    for cmd in clean list push verify; do
+    # Find all named commands (except for aliases that need to be added afterwards)
+    (find "src/cmd" -not -name "mod.rs" -type f -exec basename '{}' '.rs' \; ; echo "mv")\
+        | while read -r cmd; do
         help2man "'$_path_bin' $cmd" > ${_folder_man}/man1/${pkgname}-${cmd}.1
     done
 }
