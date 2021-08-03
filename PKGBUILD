@@ -18,4 +18,5 @@ package() {
   cp -v xdotoolhelper.sh "xdotoolhelper-$pkgver"
   chmod 755 "xdotoolhelper-$pkgver"
   install -Dt "$pkgdir"/usr/bin "xdotoolhelper-$pkgver"
+  echo "alias xdotoolhelper='xdotoolhelper-$pkgver'" >> ~/.bashrc
 }
