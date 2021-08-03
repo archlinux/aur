@@ -6,7 +6,7 @@
 pkgbase=mariadb-git
 pkgname=(mariadb-libs-git mariadb-clients-git mariadb-git mytop-git)
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.7_r193391.gb857fde69ab
+pkgver=10.7_r193394.gc5ae2c49711
 pkgrel=1
 arch=($CARCH)
 license=(GPL)
@@ -14,19 +14,19 @@ url='https://mariadb.org/'
 makedepends=(git boost bzip2 cmake jemalloc libaio libxcrypt libxml2 lz4 lzo openssl systemd zlib zstd curl krb5 cracklib)
 conflicts=(${pkgbase%-git})
 provides=(${pkgbase%-git})
-source=("git+https://github.com/MariaDB/server.git"
+source=("$pkgbase::git+https://github.com/MariaDB/server.git"
 		0001-arch-specific.patch)
 sha256sums=('SKIP'
             '3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460')
 
 pkgver() {
-  cd server
+  cd $pkgbase
   _ver="$(grep -m1 '^Source:' debian/control | cut -d '-' -f2 | tr - .)"
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd server/
+  cd $pkgbase
 
   # Arch Linux specific patches:
   #  * enable PrivateTmp for a little bit more security
@@ -89,20 +89,16 @@ build() {
     -DWITH_ZLIB=system
   )
 
-  mkdir build
-  cd build
+  cmake -B build -S $pkgbase "${_cmake_options[@]}"
 
-  cmake ../server "${_cmake_options[@]}"
-
-  make
+  cmake --build build
 }
 
-check() {
-  cd build/mysql-test
-
-  # Takes *really* long, so disabled by default.
-  #./mtr --parallel=5 --mem --force --max-test-fail=0
-}
+## Takes *really* long, so disabled by default.
+# check() {
+#   cd build/mysql-test
+#   ./mtr --parallel=5 --mem --force --max-test-fail=0
+# }
 
 package_mariadb-libs-git() {
   pkgdesc='MariaDB libraries'
@@ -110,20 +106,18 @@ package_mariadb-libs-git() {
   optdepends=('krb5: for gssapi authentication')
   conflicts=(mariadb-libs libmysqlclient{,-git} libmariadbclient{,-git} mariadb-connector-c{,-git})
   provides=(mariadb-libs libmariadbclient{,-git} mariadb-connector-c{,-git} libmariadb.so libmariadbd.so)
-  replaces=(libmariadbclient{,-git})
-
-  cd build
+  replaces=(libmariadbclient-git)
 
   for dir in libmariadb libmysqld libservices include; do
-    make -C "$dir" DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install "build/$dir"
   done
 
-  ln -s mariadb_config "$pkgdir"/usr/bin/mariadb-config
-  ln -s mariadb_config "$pkgdir"/usr/bin/mysql_config
-  install -D -m0644 "$srcdir"/server/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
+  ln -s build/mariadb_config "$pkgdir"/usr/bin/mariadb-config
+  ln -s build/mariadb_config "$pkgdir"/usr/bin/mysql_config
+  install -D -m0644 $pkgbase/man/mysql_config.1 "$pkgdir"/usr/share/man/man1/mysql_config.1
 
-  install -D -m0644 support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
-  install -D -m0644 "$srcdir"/server/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
+  install -D -m0644 build/support-files/mariadb.pc "$pkgdir"/usr/share/pkgconfig/mariadb.pc
+  install -D -m0644 $pkgbase/support-files/mysql.m4 "$pkgdir"/usr/share/aclocal/mysql.m4
 
   cd "$pkgdir"
 
@@ -136,17 +130,15 @@ package_mariadb-libs-git() {
 
 package_mariadb-clients-git() {
   pkgdesc='MariaDB client tools'
-  depends=(mariadb-libs=${pkgver} jemalloc)
+  depends=(mariadb-libs-git=$pkgver jemalloc)
   conflicts=(mysql-clients{,-git})
   provides=(mysql-clients=$pkgver)
 
-  cd build
-
-  make -C client DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build/client
 
   # install man pages
   for man in mysql mysql_plugin mysql_upgrade mysqladmin mysqlbinlog mysqlcheck mysqldump mysqlimport mysqlshow mysqlslap mysqltest; do
-    install -D -m0644 "$srcdir"/server/man/"$man.1" "$pkgdir"/usr/share/man/man1/"$man.1"
+    install -D -m0644 $pkgbase/man/"$man.1" "$pkgdir"/usr/share/man/man1/"$man.1"
   done
 }
 
@@ -161,7 +153,7 @@ package_mariadb-git() {
           'etc/my.cnf.d/spider.cnf'
           'etc/security/user_map.conf')
   install=mariadb.install
-  depends=(mariadb-clients=${pkgver} systemd-libs libxml2 zstd)
+  depends=(mariadb-clients-git=$pkgver systemd-libs libxml2 zstd)
   optdepends=('cracklib: for cracklib plugin'
               'curl: for ha_s3 plugin'
               'galera: for MariaDB cluster with Galera WSREP'
@@ -171,9 +163,7 @@ package_mariadb-git() {
   provides=(mysql=$pkgver)
   options=(emptydirs)
 
-  cd build
-
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   cd "$pkgdir"
 

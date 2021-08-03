@@ -1,6 +1,6 @@
 pkgbase = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
-	pkgver = 10.7_r193391.gb857fde69ab
+	pkgver = 10.7_r193394.gc5ae2c49711
 	pkgrel = 1
 	url = https://mariadb.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = mariadb-git
 	makedepends = cracklib
 	provides = mariadb
 	conflicts = mariadb
-	source = git+https://github.com/MariaDB/server.git
+	source = mariadb-git::git+https://github.com/MariaDB/server.git
 	source = 0001-arch-specific.patch
 	sha256sums = SKIP
 	sha256sums = 3289efb3452d199aec872115f35da3f1d6fd4ce774615076690e9bc8afae1460
@@ -55,21 +55,20 @@ pkgname = mariadb-libs-git
 	conflicts = libmariadbclient-git
 	conflicts = mariadb-connector-c
 	conflicts = mariadb-connector-c-git
-	replaces = libmariadbclient
 	replaces = libmariadbclient-git
 
 pkgname = mariadb-clients-git
 	pkgdesc = MariaDB client tools
-	depends = mariadb-libs=10.7_r193391.gb857fde69ab
+	depends = mariadb-libs-git=10.7_r193394.gc5ae2c49711
 	depends = jemalloc
-	provides = mysql-clients=10.7_r193391.gb857fde69ab
+	provides = mysql-clients=10.7_r193394.gc5ae2c49711
 	conflicts = mysql-clients
 	conflicts = mysql-clients-git
 
 pkgname = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
 	install = mariadb.install
-	depends = mariadb-clients=10.7_r193391.gb857fde69ab
+	depends = mariadb-clients-git=10.7_r193394.gc5ae2c49711
 	depends = systemd-libs
 	depends = libxml2
 	depends = zstd
@@ -78,7 +77,7 @@ pkgname = mariadb-git
 	optdepends = galera: for MariaDB cluster with Galera WSREP
 	optdepends = python-mysqlclient: for myrocks_hotbackup
 	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
-	provides = mysql=10.7_r193391.gb857fde69ab
+	provides = mysql=10.7_r193394.gc5ae2c49711
 	conflicts = mysql
 	conflicts = mysql-git
 	options = emptydirs
