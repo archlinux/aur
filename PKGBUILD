@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Peter Hatina <phatina AT gmail.com>
 pkgname=glm-git
-pkgver=0.9.9.8.r181.g84f2045a
+pkgver=0.9.9.8.r187.g06ed280d
 pkgrel=1
 pkgdesc="C++ mathematics library for 3D software based on the OpenGL Shading Language (GLSL) specification"
 arch=('any')
