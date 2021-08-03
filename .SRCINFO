@@ -1,7 +1,7 @@
 pkgbase = raven-reader
 	pkgdesc = Simple Desktop RSS Reader made using VueJS
 	pkgver = 1.0.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hello-efficiency-inc/raven-reader
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=raven-reader
 pkgver=1.0.64
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
 license=('MIT')
@@ -20,8 +20,8 @@ sha512sums=('314fb99e715091e8c6a858e23d81bf1c3f3f176648bac70728eea6b517275287422
 
 build(){
 	cd ${srcdir}
-	chmod +x *.AppImage
-	./*.AppImage --appimage-extract
+	chmod +x Raven-Reader-${pkgver}.AppImage
+	./Raven-Reader-${pkgver}.AppImage --appimage-extract
 }
 package() {
 	mkdir -p ${pkgdir}/usr
