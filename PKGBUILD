@@ -5,7 +5,7 @@
 pkgname=gimp-brush-max-512
 _pkgname=gimp
 pkgver=2.10.24
-pkgrel=5
+pkgrel=6
 pkgdesc='Gimp with easy-to-handle tool sizes'
 url='https://www.gimp.org/'
 arch=('x86_64')
