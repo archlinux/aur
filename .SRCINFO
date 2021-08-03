@@ -1,0 +1,14 @@
+pkgbase = chmap
+	pkgdesc = A CLI utility to get info for Unicode characters
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kiedtl/chmap/
+	arch = x86_64
+	arch = i686
+	license = Expat
+	makedepends = scdoc
+	source = chmap-1.1.0.tar.gz::https://github.com/kiedtl/chmap/archive/1.1.0.tar.gz
+	sha512sums = 037151020827c9902fbac3a0e377d0429258e95fb16db2754aac7af0d00bc91b054d4d50fc9a0dd21b1fb7f6ab1d430c8d39e56a9fa26835e7504cd1c202b769
+
+pkgname = chmap
+
