@@ -1,6 +1,6 @@
 pkgbase = rust-doom-git
 	pkgdesc = A little Doom 1 & 2 Renderer written in Rust.
-	pkgver = r433.7fdc2ab
+	pkgver = r436.2efa6ae
 	pkgrel = 1
 	url = https://github.com/cristicbz/rust-doom
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = rust-doom-git
 	depends_x86_64 = sdl2_ttf
 
 pkgname = rust-doom-git
-

@@ -7,7 +7,7 @@
 pkgname='rust-doom-git'
 _gitname='rust-doom'
 _execname='rs_doom'
-pkgver=r433.7fdc2ab
+pkgver=r436.2efa6ae
 pkgrel=1
 pkgdesc='A little Doom 1 & 2 Renderer written in Rust.'
 arch=('i686' 'x86_64')
