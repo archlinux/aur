@@ -2,7 +2,7 @@
 
 pkgname=lizzie-improve
 _pkgname=lizzie
-pkgver=20210608
+pkgver=20210803
 _pkgver=2.4.1
 pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
