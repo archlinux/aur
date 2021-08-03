@@ -6,7 +6,6 @@ pkgdesc='Random quote fetching console utility'
 arch=('x86_64')
 url="https://github.com/q60/rralle"
 license=('MIT')
-makedepends=('binutils')
 depends=('erlang')
 provides=('rralle')
 source=("$pkgname-$pkgver::$url/releases/download/$pkgver/rralle")
