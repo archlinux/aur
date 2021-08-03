@@ -1,8 +1,8 @@
 # Maintainer: gardenapple <gardenapple@posteo.net>
 
 pkgname=run-mailcap-rs-git
-pkgver=r54.231621a
-pkgrel=1
+pkgver=r56.3e5ed74
+pkgrel=2
 pkgdesc='run-mailcap replacement written in Rust'
 arch=('any')
 url="https://github.com/cglindkamp/run-mailcap-rs"
@@ -10,19 +10,12 @@ license=('ISC')
 provides=('run-mailcap')
 conflicts=('run-mailcap')
 makedepends=('cargo' 'git')
-source=("$pkgname::git+https://github.com/cglindkamp/run-mailcap-rs"
-	'makefile-remove-bashism.patch')
-sha256sums=('SKIP'
-            '92ef1492206a6ff1990483fa8019646cbbe15a329ae962165a08d896ee580dd5')
+source=("$pkgname::git+https://github.com/cglindkamp/run-mailcap-rs")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$pkgname"
-	patch --strip=1 --input="$srcdir/makefile-remove-bashism.patch"
 }
 
 build() {

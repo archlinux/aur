@@ -1,7 +1,7 @@
 pkgbase = run-mailcap-rs-git
 	pkgdesc = run-mailcap replacement written in Rust
-	pkgver = r54.231621a
-	pkgrel = 1
+	pkgver = r56.3e5ed74
+	pkgrel = 2
 	url = https://github.com/cglindkamp/run-mailcap-rs
 	arch = any
 	license = ISC
@@ -10,8 +10,6 @@ pkgbase = run-mailcap-rs-git
 	provides = run-mailcap
 	conflicts = run-mailcap
 	source = run-mailcap-rs-git::git+https://github.com/cglindkamp/run-mailcap-rs
-	source = makefile-remove-bashism.patch
 	sha256sums = SKIP
-	sha256sums = 92ef1492206a6ff1990483fa8019646cbbe15a329ae962165a08d896ee580dd5
 
 pkgname = run-mailcap-rs-git
