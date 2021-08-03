@@ -3,12 +3,11 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
-license=('Apache')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
              'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'zlib' 'libgl'
              'freeglut' 'gtest' 'gmock' 'python' 'asciidoc' 'doxygen'
