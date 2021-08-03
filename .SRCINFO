@@ -1,8 +1,8 @@
 pkgbase = taffybar
 	pkgdesc = A desktop bar similar to xmobar, but with more GUI
-	pkgver = 3.2.3
+	pkgver = 3.3.0
 	pkgrel = 1
-	url = http://github.com/travitch/taffybar
+	url = http://github.com/taffybar/taffybar
 	install = taffybar.install
 	arch = i686
 	arch = x86_64
@@ -12,16 +12,15 @@ pkgbase = taffybar
 	depends = zlib
 	depends = libxss
 	depends = libdbusmenu-gtk3
-	source = https://github.com/taffybar/taffybar/archive/v3.2.3.tar.gz
+	source = https://github.com/taffybar/taffybar/archive/v3.3.0.tar.gz
 	source = taffybar.install
 	source = taffybar.service
 	source = stack.yaml
 	source = https://raw.githubusercontent.com/taffybar/taffybar/13b32fc2bc62129093494e939339a979d641691c/xmonad.hs.example
-	sha256sums = 74333f8177677d4acb509d09ca3727b726b70d1b6cfc1a5439d236eabc6556b3
+	sha256sums = 41d19c12694c7fe9526d4082993f2c1f07e12ea133c494c7d017da1d2c370b32
 	sha256sums = 554340a052abecb78fbb959d1a05b8f4f4db947fc151e7f0f8c49f2300f1ab6d
 	sha256sums = f4a08e887ba527a24f4cecc22393023bf7230172cc76f840ddfc5cfc54182a7e
-	sha256sums = 0bd90a3b0859ccb7a5319ce7906a7c4611153035cb75ee5a1127d34325cc03d4
+	sha256sums = ad02a7524b7c9bd9ae28babfbbb30519b3eb10ff40e3e493aee051bd36c0b715
 	sha256sums = 1a8ca4f177891941960585e228d5386ea9f120a1bb12ac0a956200de839032cb
 
 pkgname = taffybar
-
