@@ -171,20 +171,6 @@ build() {
 	make
 }
 
-check() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
-
-	# Check if sendmail was configured correctly (FS#47600)
-	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
-
-	export REPORT_EXIT_STATUS=1
-	export NO_INTERACTION=1
-	export SKIP_ONLINE_TESTS=1
-	export SKIP_SLOW_TESTS=1
-
-	${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
-}
-
 package_php73() {
 	pkgdesc='A general-purpose scripting language that is especially suited to web development'
 	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
