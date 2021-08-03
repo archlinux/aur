@@ -1,18 +1,21 @@
 # Maintainer: Vince <vince@ultrabanana.net>
+# Contributor: Jan Baudisch <dev@baudisch.xyz>
 pkgname=wxwabbitemu-git
-pkgver=7b9ef9d
-pkgrel=2
+pkgver=r140.7b9ef9d
+pkgrel=1
+epoch=1
 pkgdesc="A cross-platform TI-8x emulator based on Wabbitemu"
 arch=("x86_64")
 url="https://github.com/alberthdev/wxwabbitemu"
-license=("custom")
+license=("GPL2")
 depends=("wxgtk2")
+makedepends=("git")
 source=("$pkgname::git+https://github.com/alberthdev/wxwabbitemu.git")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"
-  git rev-parse --short HEAD
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
