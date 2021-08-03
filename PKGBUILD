@@ -1,4 +1,5 @@
 # Maintainer: Vince <vince@ultrabanana.net>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Jan Baudisch <dev@baudisch.xyz>
 pkgname=wxwabbitemu-git
 pkgver=r140.7b9ef9d
