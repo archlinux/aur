@@ -1,28 +1,42 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname='python-fontparts'
-_pkgname='fontParts'
+
+_pyname=fontParts
+pkgname=python-${_pyname,,}
 pkgver=0.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc='The replacement for RoboFab'
-url='https://github.com/robotools/fontParts'
-checkdepends=('python-fontpens')
-depends=('python' 'python-booleanoperations' 'python-defcon' 'python-fontmath' 'python-fonttools' 'python-fs')
-makedepends=('python-setuptools')
-optdepends=()
-license=('MIT')
-arch=('any')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
+arch=(any)
+url="https://github.com/robotools/${_pyname}"
+license=(MIT)
+_pydeps=(booleanoperations
+         defcon
+         fontmath
+         fontpens # for defcon[pens]
+         fonttools
+         fs # for fonttools[ufo]
+         lxml # for fonttools[lxml]
+         unicodedata2) # for fonttools[unicode]
+depends=(python
+         "${_pydeps[@]/#/python-}")
+makedepends=(python-setuptools-scm)
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
 sha256sums=('4898942385e0ea28a721fd8de3232f5db7b6c528840754fa8b703a3617b69243')
 
-package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver/Lib"
-  sed -e 's/unittest2 as //' -i fontParts/test/test_deprecated.py
-  PYTHONPATH=. python fontParts/fontshell/test.py
+	cd "$_archive/Lib"
+	PYTHONPATH=. python "$_pyname/fontshell/test.py"
 }
 
+package() {
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+}
