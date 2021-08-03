@@ -1,11 +1,11 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=drm_info
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 license=(MIT)
 pkgdesc='Small utility to dump info about DRM devices'
 makedepends=(meson git)
-depends=(libdrm json-c)
+depends=(libdrm json-c pciutils)
 arch=(x86_64)
 url=https://github.com/ascent12/drm_info
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")

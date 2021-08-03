@@ -1,7 +1,7 @@
 pkgbase = drm_info
 	pkgdesc = Small utility to dump info about DRM devices
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ascent12/drm_info
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = drm_info
 	makedepends = git
 	depends = libdrm
 	depends = json-c
+	depends = pciutils
 	conflicts = drm_info-git
 	source = drm_info-2.3.0.tar.gz::https://github.com/ascent12/drm_info/archive/refs/tags/v2.3.0.tar.gz
 	sha512sums = 111b558f36f7fdcc17bd77be0f4965cc4b69ab63149ea326b16566156e3d619f47033bee8164d9d28dc540c0a453ef774249ec3d37587f42ebe6c97fcc7925d2
 
 pkgname = drm_info
-
