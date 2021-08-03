@@ -18,9 +18,11 @@ depends=(plasma-workspace bluez-qt networkmanager-qt ddcutil)
 makedepends=(extra-cmake-modules kdoctools)
 optdepends=('kinfocenter: for the Energy Information KCM')
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig}
+        '45-ddcutil-i2c.rules')
 sha256sums=('d5d01e5017306aff215e6ba3be21c940b7771a599e92445f8526406fb63e829c'
-            'SKIP')
+            'SKIP'
+            'aa9980b02beb49e0ccafc59c57fc6b28b31308e60559120697a864a511fbef6c')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -36,4 +38,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 '45-ddcutil-i2c.rules' "$pkgdir/usr/lib/udev/rules.d/45-ddcutil-i2c.rules"
 }

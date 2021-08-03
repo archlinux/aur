@@ -17,11 +17,13 @@ pkgbase = powerdevil-ddcutil
 	conflicts = powerdevil
 	source = https://download.kde.org/stable/plasma/5.22.4/powerdevil-5.22.4.tar.xz
 	source = https://download.kde.org/stable/plasma/5.22.4/powerdevil-5.22.4.tar.xz.sig
+	source = 45-ddcutil-i2c.rules
 	validpgpkeys = 2D1D5B0588357787DE9EE225EC94D18F7F05997E
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = d5d01e5017306aff215e6ba3be21c940b7771a599e92445f8526406fb63e829c
 	sha256sums = SKIP
+	sha256sums = aa9980b02beb49e0ccafc59c57fc6b28b31308e60559120697a864a511fbef6c
 
 pkgname = powerdevil-ddcutil
