@@ -1,0 +1,12 @@
+# Colored makepkg-like functions
+# from google-chrome.install
+
+post_install() {
+	echo
+	echo "$(tput sgr0)$(tput bold)$(tput setaf 3)NOTE:$(tput sgr0)"
+	echo "To open .desktop files using run-desktop by default, add the following to ~/.config/mimeapps.list"
+	echo
+	echo "[Default Applications]"
+	echo "application/x-desktop=run-desktop.desktop;"
+	echo
+}

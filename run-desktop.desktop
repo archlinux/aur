@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=run-desktop
+Exec=run-desktop %U
+MimeType=application/x-desktop
+Terminal=false
+Type=Application
