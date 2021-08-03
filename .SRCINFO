@@ -1,17 +1,15 @@
 pkgbase = python-fontpens
 	pkgdesc = A collection of classes implementing the pen protocol for manipulating glyphs.
 	pkgver = 0.2.4
-	pkgrel = 1
-	url = https://pypi.org/project/fontPens/
+	pkgrel = 2
+	url = https://github.com/robotools/$_pyname
 	arch = any
 	license = BSD
-	checkdepends = python-fontmath
 	checkdepends = python-fontparts
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-fonttools
-	source = https://pypi.org/packages/source/f/fontPens/fontPens-0.2.4.zip
+	source = https://files.pythonhosted.org/packages/source/f/fontPens/fontPens-0.2.4.zip
 	sha256sums = a6d9a14573b3450f3313d69523f9006028c21fc7aef5d35333b87aab7f2b41fd
 
 pkgname = python-fontpens
-
