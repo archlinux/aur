@@ -4,13 +4,13 @@
 # Contributor: utdemir <utdemir@riseup.net>
 
 pkgname='pelican-git'
-pkgver=3.5.0.r103.g8a47973
+pkgver=4.6.0.r26.g332be6e5
 pkgrel=1
 pkgdesc='A static site generator written in Python w/ reST/Markdown support.'
 url='http://blog.getpelican.com/'
 license=('AGPL3')
 source=($pkgname'::git+https://github.com/getpelican/pelican.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 arch=('any')
 depends=(
  'python-feedgenerator'
