@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20210319.33e4e2a3d
+	pkgver = 20210803.d8ed9ea25
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = x86_64
@@ -23,10 +23,12 @@ pkgbase = mupdf-git
 	conflicts = mupdf-gl
 	conflicts = mupdf-tools
 	source = git://git.ghostscript.com/mupdf.git
-	source = git://git.ghostscript.com/mujs.git
-	source = git://git.ghostscript.com/thirdparty-lcms2.git
+	source = git://git.ghostscript.com/thirdparty-extract.git
 	source = git://git.ghostscript.com/thirdparty-freeglut.git
+	source = git://git.ghostscript.com/thirdparty-lcms2.git
+	source = git://git.ghostscript.com/mujs.git
 	source = desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -34,4 +36,3 @@ pkgbase = mupdf-git
 	sha256sums = 3240d4ebda002cb2c4f42cd42793c6160f1701d349d0acb797819dfd10d4fedd
 
 pkgname = mupdf-git
-
