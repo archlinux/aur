@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.2.0_b2+6+gb247aab8
+pkgver=3.2.0_b3+44+gdfeecacb
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
          'curl'
-         'fluidsynth>=2.0'
+         'fluidsynth>=2.2'
          'fmt>=7'
          'freeimage'
          'ftgl'
