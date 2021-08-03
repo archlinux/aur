@@ -4,7 +4,7 @@
 
 pkgname=pharo-launcher
 epoch=1
-pkgver=2.2
+pkgver=2.3
 pkgrel=0
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=(
 )
 
 md5sums=(
-	'fae500bc5a6de2e0e78dea23fbb2abd1'
+	'2f08268f47bbdd231fc28d51ab46a521'
 	'b2e30a17b522ee265fd57fe7c45592fc'
 )
 
@@ -52,7 +52,7 @@ package() {
 	cp -f $srcdir/pharolauncher/pharo-launcher $pkgdir/usr/bin/pharo-launcher
 	chmod +x $pkgdir/usr/bin/pharo-launcher
 
-	cp $srcdir/pharolauncher/icons/pharo-launcher.png	$pkgdir/usr/share/pixmaps/$pkgname.png
+	cp $srcdir/pharolauncher/icons/pharo-launcher.png $pkgdir/usr/share/pixmaps/$pkgname.png
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 
