@@ -1,6 +1,6 @@
 pkgbase = mousai
 	pkgdesc = Simple application for identifying songs
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/SeaDve/Mousai
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mousai
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-requests
-	source = mousai-0.4.3.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = af56d53d7c5de33f793857b001ad34d5bef93c19bceea631a8ad86424b452d94
+	source = mousai-0.4.4.tar.gz::https://github.com/SeaDve/Mousai/archive/refs/tags/v0.4.4.tar.gz
+	sha256sums = 6f511be018eb01d67e1918d42f034d060f86b4d8d403f295da9ac4ff62950eef
 
 pkgname = mousai
