@@ -1,6 +1,6 @@
 pkgbase = archiso-git
 	pkgdesc = Tools for creating Arch Linux live and install iso images
-	pkgver = 57.r0.ga4691b8
+	pkgver = 57.r5.g0f3a83a
 	pkgrel = 1
 	url = https://gitlab.archlinux.org/archlinux/archiso
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = archiso-git
 	optdepends = erofs-utils: for EROFS based airootfs image
 	optdepends = e2fsprogs: for dm-snapshot based airootfs image
 	optdepends = qemu: for run_archiso
-	provides = archiso=57.r0.ga4691b8
+	provides = archiso=57.r5.g0f3a83a
 	conflicts = archiso
 	source = git+https://gitlab.archlinux.org/archlinux/archiso.git?signed
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
