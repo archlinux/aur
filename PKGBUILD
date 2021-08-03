@@ -2,7 +2,7 @@
 
 _pkgbase=hysteria
 pkgname=$_pkgbase
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments'
 arch=('x86_64')
