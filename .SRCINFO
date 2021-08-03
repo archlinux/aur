@@ -1,0 +1,17 @@
+pkgbase = archlinuxcn-mirrorlist
+	pkgdesc = Arch Linux CN Community repo mirrors list
+	pkgver = 20210803
+	pkgrel = 1
+	url = https://github.com/archlinuxcn/mirrorlist-repo
+	install = archlinuxcn-mirrorlist.install
+	arch = any
+	license = unknown
+	makedepends = python-yaml
+	makedepends = git
+	provides = archlinuxcn-mirrorlist-git
+	conflicts = archlinuxcn-mirrorlist-git
+	backup = etc/pacman.d/archlinuxcn-mirrorlist
+	source = archlinuxcn-mirrorlist::git+https://github.com/archlinuxcn/mirrorlist-repo
+	sha256sums = SKIP
+
+pkgname = archlinuxcn-mirrorlist

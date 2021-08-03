@@ -1,0 +1,28 @@
+# This script runs after installed and before remove.
+# It will automatically add or remove configurations
+# in `/etc/pacman.conf`.
+
+post_install() {
+  cat >> /etc/pacman.conf << EOF
+
+# archlinuxcn community repository mirrorlist.
+# view https://www.archlinuxcn.org
+[archlinuxcn]
+Include = /etc/pacman.d/archlinuxcn-mirrorlist
+EOF
+
+  # Install archlinuxcn-keyring to import PGP Keys.
+  cat << EOF
+
+Great! You have successfully installed archlinuxcn-mirrorlist.
+
+Now, you should import PGP Keys:
+
+    sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
+
+EOF
+}
+
+pre_remove () {
+  sed -i "/archlinuxcn/d" /etc/pacman.conf
+}

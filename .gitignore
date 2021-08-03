@@ -1,0 +1,6 @@
+*
+
+!.gitignore
+!.SRCINFO
+!archlinuxcn-mirrorlist.install
+!PKGBUILD
