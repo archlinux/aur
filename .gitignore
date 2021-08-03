@@ -15,3 +15,5 @@ src/
 *.AppImage
 anytype-appimage-*.pkg.tar.zst
 anytype-appimage-*.log
+
+*.code-workspace
