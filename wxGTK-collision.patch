@@ -30,8 +30,8 @@ index 9b24d92a79..a189dcb454 100644
 @@ -126,6 +126,7 @@ distclean: clean
 
  @COND_USE_XRC_1@uninstall_wxrc:
- @COND_USE_XRC_1@       rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT)
-+@COND_USE_XRC_1@       rm -f $(DESTDIR)$(bindir)/wxrc-$(WX_RELEASE)$(WX_FLAVOUR)$(EXEEXT)
+ @COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT)
++@COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc-$(WX_RELEASE)$(WX_FLAVOUR)$(EXEEXT)
 
  wxrc_wxrc.o: $(srcdir)/wxrc.cpp
-        $(CXXC) -c -o $@ $(WXRC_CXXFLAGS) $(srcdir)/wxrc.cpp
+ 	$(CXXC) -c -o $@ $(WXRC_CXXFLAGS) $(srcdir)/wxrc.cpp

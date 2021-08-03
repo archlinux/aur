@@ -31,7 +31,7 @@ source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver
 sha256sums=('SKIP'
             '214c2d9211e3505e94008747352f5fa07203d4d9087535985a1b6084d4e40ac7'
             'SKIP'
-            '7b41947bc72bf8d6edae67837d854390555cc5afc48dda618efd3021b5f6d7a8'
+            '48b528acbbbbb0bc409c1efed04a0a055a5c81393ae3133c6339aee6821acfe5'
             )
 
 prepare() {
@@ -173,6 +173,7 @@ package_wxcommon-dev-light() {
   make -C build-base DESTDIR="${pkgdir}" install
 
   rm -fr "${pkgdir}/usr/bin/wx-config-3.1"
+  rm -fr "${pkgdir}/usr/bin/wxrc"
   rm -fr "${pkgdir}/usr/lib"
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-dev-light/LICENSE"
