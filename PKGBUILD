@@ -1,7 +1,7 @@
 # Maintainer: Vince <vince@ultrabanana.net>
 pkgname=wxwabbitemu-git
 pkgver=7b9ef9d
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform TI-8x emulator based on Wabbitemu"
 arch=("x86_64")
 url="https://github.com/alberthdev/wxwabbitemu"
