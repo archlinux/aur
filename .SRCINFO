@@ -1,0 +1,11 @@
+pkgbase = findaes
+	pkgdesc = Find AES keys using key schedules
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/findaes/
+	arch = x86_64
+	license = public-domain
+	source = https://downloads.sourceforge.net/findaes/findaes-1.2.zip
+	sha512sums = 1f999b0fe5b59308dbf07c6e4e23ceed410bc6fd745356b148d98cd9ea6c855a25ab20d1215df541a68f07b7dfbdca4f0e6314bfd519bdd7961c3a6e2ee17fb0
+
+pkgname = findaes
