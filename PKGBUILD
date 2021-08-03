@@ -1,6 +1,6 @@
 # Maintainer: tuftedocelot <tuftedocelot@fastmail.fm>
+# Co-Maintainer: Davide Girardi <davidegirardi googlesmtp>
 # Contributor: Davbo <dave@davbo.org>
-# Contributor: Davide Girardi <davidegirardi googlesmtp>
 pkgname=x3270
 pkgver=4.0ga12
 pkgrel=1
