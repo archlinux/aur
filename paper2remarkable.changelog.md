@@ -1,3 +1,9 @@
+## Version 0.9.6
+
+* Bugfix for Springer provider (metadata)
+* Bugfix for Nature provider (metadata)
+* Increase flexibility for ACM provider pdf urls
+
 ## Version 0.9.5
 
 * Bugfix for ACL provider

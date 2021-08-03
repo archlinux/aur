@@ -1,6 +1,6 @@
 pkgbase = paper2remarkable
 	pkgdesc = Easily download an academic paper and send it to a reMarkable.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/GjjvdBurg/paper2remarkable
 	install = paper2remarkable.install
@@ -26,7 +26,7 @@ pkgbase = paper2remarkable
 	depends = python-unidecode>=1.1
 	depends = python-weasyprint>=51
 	optdepends = python-readabilipy: Improves output of web articles
-	source = https://files.pythonhosted.org/packages/source/p/paper2remarkable/paper2remarkable-0.9.5.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/paper2remarkable/paper2remarkable-0.9.6.tar.gz
 	sha256sums = 845005b0beacc1d42f67271cc027e85ffc5224f992e3289d8c3b53523a226bbe
 
 pkgname = paper2remarkable
