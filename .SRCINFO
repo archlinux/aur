@@ -1,6 +1,6 @@
 pkgbase = zmusic-git
 	pkgdesc = GZDoom's music system as a standalone library (git version)
-	pkgver = 1.1.3+14+geac26c3
+	pkgver = 1.1.8+4+gd8e6e28
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = zmusic-git
 	makedepends = cmake
 	makedepends = git
 	depends = alsa-lib
-	depends = fluidsynth>=2
+	depends = fluidsynth>=2.2
 	depends = libsndfile
 	depends = mpg123
 	depends = zlib
