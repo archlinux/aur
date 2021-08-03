@@ -1,9 +1,9 @@
 # Maintainer: Bruno Galeotti <bgaleotti at gmail dot com>
-# Co-Mantainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Co-Mantainer: Stefan Auditor <stefan@auditor.email>
 
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
 url="http://cs.sensiolabs.org/"
