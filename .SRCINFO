@@ -1,6 +1,6 @@
 pkgbase = poplog-git
 	pkgdesc = poplog development system
-	pkgver = r24.d8028de
+	pkgver = r24.fc756e6
 	pkgrel = 1
 	url = http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
 	arch = i686

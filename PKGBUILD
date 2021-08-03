@@ -3,7 +3,7 @@
 # Contributor: Steve Leach <sfkleach@gmail.com>
 
 pkgname=poplog-git
-pkgver=r24.d8028de
+pkgver=r24.fc756e6
 pkgrel=1
 pkgdesc="poplog development system"
 arch=('i686' 'x86_64')
@@ -38,9 +38,12 @@ prepare() {
   git config submodule.Base.url "$srcdir/Base"
   git config submodule.Corepops.url "$srcdir/Corepops"
   git submodule update
-  mkdir -p "$srcdir/Seed/_download"
+  mkdir -p "$srcdir/Build/Seed/_download"
+  for d in Corepops Base; do
+    cp -r "$srcdir/Build/$d" "$srcdir/Build/Seed/_download/$d"
+  done
   cp "$srcdir/packages-V16.tar.bz2" "$srcdir/Seed/_download"
-  touch "$srcdir/Seed/_download/Packages.Downloaded.proxy"
+  touch "$srcdir/Build/Seed/_download/Packages.Downloaded.proxy"
 }
 
 build() {
