@@ -20,11 +20,12 @@ pkgver() {
 
 build() {
 	cd "$srcdir/diesel/diesel_cli"
-	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+	RUSTFLAGS="--cap-lints allow" RUSTUP_TOOLCHAIN=stable cargo build --release --no-default-features --features sqlite
 }
 
 check() {
-    RUSTUP_TOOLCHAIN=stable cargo test --locked --target-dir=target
+    cd "$srcdir/diesel/diesel_cli"
+    RUSTFLAGS="--cap-lints allow" RUSTUP_TOOLCHAIN=stable cargo test --no-default-features --features sqlite
 }
 
 
