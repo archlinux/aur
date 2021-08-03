@@ -20,8 +20,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/diesel/diesel_cli"
-	RUSTUP_TOOLCHAIN=stable cargo build --release
+	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
 }
+
+check() {
+    RUSTUP_TOOLCHAIN=stable cargo test --locked --target-dir=target
+}
+
 
 package() {
     cd "$srcdir/diesel"
