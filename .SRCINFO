@@ -1,12 +1,11 @@
 pkgbase = random123
 	pkgdesc = counter-based random number generators library
-	pkgver = 1.08
+	pkgver = 1.13.2
 	pkgrel = 1
-	url = http://www.deshawresearch.com/resources_random123.html
+	url = https://www.deshawresearch.com/resources_random123.html
 	arch = any
 	license = BSD
-	source = http://www.deshawresearch.com/downloads/download_random123.cgi/Random123-1.08.tar.gz
-	md5sums = 87d2783831c7a95b244868bf754a7f50
+	source = https://www.deshawresearch.com/downloads/download_random123.cgi/Random123-1.13.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = random123
-
