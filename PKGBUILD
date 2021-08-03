@@ -3,8 +3,8 @@
 
 _gemname=guard
 pkgname=ruby-$_gemname
-pkgver=2.17.0
-pkgrel=2
+pkgver=2.18.0
+pkgrel=1
 pkgdesc="A command line tool to easily handle events on file system modifications"
 arch=('any')
 url="https://guardgem.org"
@@ -24,7 +24,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('66476b20d287a7a9a4f636ba29a67a14f789ee15ff48b9ae248c5d002b97fcbc73da37ea961166f6f624593783c8da5ad453342691bec1a027abb7009010b56b')
+b2sums=('07f802e1ccfed7a39c6e1e0a2915a52da99d1c5a2e47eb98aa0044749bbc1cc4a8944d4eb8b2115df9aff446885fa9625038ff931efeac0d16d7e8d1f2bad27f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
