@@ -3,11 +3,15 @@ log:
   file: ""
 
 plugin:
-  - tag: main_server # 启动服务器
+  ################# 服务插件 ################
+
+  # 启动服务器的插件
+  - tag: main_server
     type: server
     args:
-      entry: main_sequence
-      max_concurrent_queries: 0
+      entry:
+        - _default_cache # 缓存
+        - main_sequence # 分流逻辑
       server:
         - protocol: udp
           addr: 127.0.0.1:53
@@ -20,15 +24,15 @@ plugin:
 
   ################# 可执行插件 ################
 
+  # 包含分流的逻辑的插件
   - tag: main_sequence
     type: sequence
     args:
       exec:
-        - _default_cache # 缓存
         - if:
             - query_is_ad_domain # 已知的广告域名
           exec:
-            - _block_with_nxdomain # 屏蔽
+            - _block_with_nxdomain # 用 NXDOMAIN 屏蔽
             - _end
 
         - if:
@@ -44,41 +48,31 @@ plugin:
             - forward_remote # 用远程服务器
             - _end
 
-          # 剩下的域名用 IP 分流。
-          # 有两种方案："顺序分流"或"并发分流"。
-          # 下面的是"顺序分流"的配置.
-
+        # 剩下的未知域名用 IP 分流。以下是"顺序 IP 分流"方案。先转发至本地服务器，然后
+        # 判断应答 IP 再决定是否转发至远程服务器。没有竞争，很稳定，不易出错。
+        # <高级> 如果想用"并发 IP 分流"方案，从下文的 <并发 IP 分流示例> 里选择一个方案，
+        # 然后将下面几行替换掉。复制时注意缩进。
+        # 并发分流会同时请求本地和远程服务器，延时稍低些，但存在竞争，可能出现非期望的分流结果。
         - forward_local # 先请求转发至本地服务器
         - if:
-            - response_has_local_ip # 如果应答包含本地 IP
+            - response_has_local_ip # 如果(本地)应答包含本地 IP
+          exec:
             - _end # 就直接采用结果
-        - forward_remote # 否则用远程服务器的结果
+        - forward_remote # 否则去请求远程服务器的结果
 
-        # 如果想用类似 ChinaDNS 的"并发分流"逻辑。将上面的配置注释掉，然后用下面的配置。
-        # 注意: 如果上游支持连接复用，不要用并发分流。因为服务器延时不可预测，会有问题。
-
-        # - parallel:
-        #     - - forward_local                 # 并发请求本地和远程服务器
-        #       - if:
-        #           - "!response_has_local_ip"  # 如果本地服务器返回的非本地 IP
-        #         exec:
-        #           - _drop_response            # 应答会被丢弃
-        #     - - forward_remote
-
-  - tag: forward_local # 转发至本地服务器的插件
+  # 转发请求至本地服务器的插件
+  - tag: forward_local
     type: forward
     args:
       upstream:
         - addr: https://223.5.5.5/dns-query
 
-  - tag: forward_remote # 转发至远程服务器的插件
+  # 转发请求至远程服务器的插件
+  - tag: forward_remote
     type: forward
     args:
       upstream:
-        - addr: https://1.0.0.1/dns-query
         - addr: https://1.1.1.1/dns-query
-        - addr: https://2606:4700:4700::1111/dns-query
-        - addr: https://2606:4700:4700::1001/dns-query
 
   ################ 匹配器插件 #################
 

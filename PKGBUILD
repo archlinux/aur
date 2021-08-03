@@ -2,7 +2,7 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
 pkgver=1.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plug-in configured DNS forwarder/server"
 arch=('x86_64')
 url="https://github.com/IrineSistiana/mosdns/"
