@@ -1,9 +1,9 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=libdecsync
 pkgver=1.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc='libdecsync is a multiplatform library for synchronizing using DecSync.'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://github.com/39aldo39/libdecsync'
 license=('custom:LGPL2')
 depends=()
