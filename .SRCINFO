@@ -11,6 +11,8 @@ pkgbase = pyinstaller-hooks-contrib-git
 	depends = python-wheel
 	depends = twine
 	depends = git
+	provides = pyinstaller-hooks-contrib
+	conflicts = pyinstaller-hooks-contrib
 	source = git+https://github.com/pyinstaller/pyinstaller-hooks-contrib
 	sha256sums = SKIP
 

@@ -12,6 +12,8 @@ arch=('any')
 url="https://github.com/pyinstaller/pyinstaller-hooks-contrib"
 license=('GPL' 'APACHE')
 depends=('towncrier' 'python-setuptools' 'python-wheel' 'twine' 'git')
+provides=('pyinstaller-hooks-contrib')
+conflicts=('pyinstaller-hooks-contrib')
 source=("git+https://github.com/pyinstaller/$_pkgname")
 sha256sums=('SKIP')
 
