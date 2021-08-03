@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=typos
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Source code spell checker."
 arch=('any')
@@ -18,7 +18,8 @@ build() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	cargo install --no-track --locked --all-features --root "$pkgdir/usr/" --path .
+
+	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 	install -Dm 644 "LICENSE-MIT"    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 	install -Dm 644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }
