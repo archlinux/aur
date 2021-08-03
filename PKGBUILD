@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/diesel/diesel_cli"
-	cargo build --release
+	RUSTUP_TOOLCHAIN=stable cargo build --release
 }
 
 package() {
