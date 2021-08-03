@@ -1,6 +1,6 @@
 pkgbase = python-norminette
 	pkgdesc = Open source norminette
-	pkgver = r334.2cdcfd5
+	pkgver = r480.2184517
 	pkgrel = 1
 	url = https://github.com/42School/norminette
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-norminette
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-argparse
-	source = python-norminette-git::git+https://github.com/42School/norminette.git
+	conflicts = norminette
+	source = norminette-git::git+https://github.com/42School/norminette.git
 	md5sums = SKIP
 
-pkgname = python-norminette-git
-
+pkgname = norminette-git
