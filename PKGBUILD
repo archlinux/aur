@@ -1,26 +1,46 @@
-# Maintainer: Joel Goguen <contact+aur@jgoguen.ca>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 _gemname=ruby-lint
-pkgname=${_gemname}
+pkgname=$_gemname
 pkgver=2.3.1
-pkgrel=1
-pkgdesc="A linter and static code analysis tool for Ruby."
+pkgrel=2
+pkgdesc="A linter and static code analysis tool for Ruby"
 arch=('any')
+url="https://gitlab.com/yorickpeterse/ruby-lint"
+license=('MPL')
 depends=('ruby' 'ruby-parser' 'ruby-slop')
-#makedepends=('ruby-json' 'ruby-kramdown' 'ruby-redcard' 'ruby-simplecov' 'ruby-yard')
-url="https://rubygems.org/gems/${_gemname}"
-noextract=($_gemname-$pkgver.gem)
-license=('custom')
-source=(
-	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
-)
-sha256sums=(
-	'040ab20a862488cc1bd47cf5b6bf64192a88c9a42611f4921f80304ee29bf375'
-)
+makedepends=('rubygems' 'ruby-rdoc')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+b2sums=('71f3e221c84a74ba072d427829dc50caf32baa5980385d1b6389d24efaa6d5cfc4c753f58bf19c671f24d33be4eb43fcead49bff14e86bedac324dcaa6078bce')
 
 package() {
-	local _gemdir="$(ruby -e'puts Gem.default_dir')"
-	gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-	rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-	install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
+  gem install \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "$pkgdir/$_gemdir" \
+    --bindir "$pkgdir/usr/bin" \
+    "$_gemname-$pkgver.gem"
+
+  # delete cache
+  cd "$pkgdir/$_gemdir"
+  rm -vrf cache
+
+  # delete unnecessary files & folders
+  cd "gems/$_gemname-$pkgver"
+  rm -vrf checksum "$_gemname.gemspec"
+  find . -type f -name ".*" -delete
+
+  # move documentation
+  install -vd "$pkgdir/usr/share/doc/$pkgname"
+  mv -vt "$pkgdir/usr/share/doc/$pkgname" doc *.md
+
+  # move license
+  install -vd "$pkgdir/usr/share/licenses/$pkgname"
+  mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
