@@ -1,14 +1,13 @@
 pkgbase = docksal
 	pkgdesc = Docker powered environments for web development on macOS, Windows and Linux
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://docksal.io/
 	arch = any
 	license = MIT
 	depends = docker
 	depends = docker-compose
-	source = docksal-1.15.1.tar.gz::https://github.com/docksal/docksal/archive/v1.15.1.tar.gz
-	sha256sums = 5ed5b241cd04a114a2611fa7a4dd2d33d2027273e540784dcccc6f878524cec5
+	source = docksal-1.16.0.tar.gz::https://github.com/docksal/docksal/archive/v1.16.0.tar.gz
+	sha256sums = 0d24ea4653af5e898ce50bd97b02c3a4ac90df833b8dc95567c9045d286e056d
 
 pkgname = docksal
-

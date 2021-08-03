@@ -3,7 +3,7 @@
 # Contributor: Zach Hoffman <zach@zrhoffman.net>
 
 pkgname=docksal
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
 pkgdesc='Docker powered environments for web development on macOS, Windows and Linux'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://docksal.io/'
 license=('MIT')
 depends=('docker' 'docker-compose' )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/docksal/docksal/archive/v$pkgver.tar.gz")
-sha256sums=('5ed5b241cd04a114a2611fa7a4dd2d33d2027273e540784dcccc6f878524cec5')
+sha256sums=('0d24ea4653af5e898ce50bd97b02c3a4ac90df833b8dc95567c9045d286e056d')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bin/fin" "$pkgdir/usr/bin/fin"
