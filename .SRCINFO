@@ -8,6 +8,7 @@ pkgbase = 2048-curses
 	arch = armv7h
 	license = GPL
 	depends = ncurses>=6.0-0
+	depends = git
 	source = git+https://github.com/theretikgm/2048-curses.git
 	sha256sums = SKIP
 
