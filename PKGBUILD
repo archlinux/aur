@@ -2,7 +2,7 @@
 
 pkgname=qt-jpegxl-image-plugin-git
 _pkgname=${pkgname%-git}
-pkgver=r32.7d19098
+pkgver=r36.6a77371
 pkgrel=1
 pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write JXL images'
 arch=('x86_64')
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -Dm755 "$srcdir/$_pkgname/plugins/imageformats/libqjpegxl.so" "$pkgdir/usr/lib/qt/plugins/imageformats/libqjpegxl.so"
+  make install INSTALL_ROOT="$pkgdir"
   install -Dm644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
