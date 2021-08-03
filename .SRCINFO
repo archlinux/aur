@@ -2,13 +2,13 @@ pkgbase = rralle-bin
 	pkgdesc = Random quote fetching console utility
 	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/q60/rralle-bin
+	url = https://github.com/q60/rralle
 	arch = x86_64
 	license = MIT
 	makedepends = binutils
 	depends = erlang
-	provides = rralle-bin
-	source = rralle-bin-0.1.1::https://github.com/q60/rralle-bin/releases/download/0.1.1/rralle-bin
+	provides = rralle
+	source = rralle-bin-0.1.1::https://github.com/q60/rralle/releases/download/0.1.1/rralle
 	sha256sums = cfa060b81e7980466fb0e1feebe9a9be281fe0a74f78ad115622369c92cad36b
 
 pkgname = rralle-bin
