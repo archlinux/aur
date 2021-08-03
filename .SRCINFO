@@ -1,0 +1,13 @@
+pkgbase = python-setuptools-git-ls-files
+	pkgdesc = A plugin for setuptools that finds all git tracked files, including submodules
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/anthrotype/setuptools_git_ls_files
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/s/setuptools-git-ls-files/setuptools_git_ls_files-0.1.2.tar.gz
+	sha256sums = 7d612087430dc912f0dca7a35c99bf791b2f86b7fa5a40c5a562192947c86efa
+
+pkgname = python-setuptools-git-ls-files
