@@ -7,6 +7,8 @@ pkgbase = codedeploy-agent-bin
 	license = APACHE
 	depends = ruby2.7
 	depends = systemd
+	provides = codedeploy-agent
+	conflicts = codedeploy-agent
 	source = https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/codedeploy-agent_1.3.2-1902_all.deb
 	md5sums = 4a2697e9e3c022313705497caa197327
 

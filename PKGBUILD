@@ -8,7 +8,9 @@ url="https://aws.amazon.com/documentation/codedeploy/"
 license=('APACHE')
 groups=()
 depends=('ruby2.7' 'systemd')
-source=(https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/codedeploy-agent_${pkgver//_/-}_all.deb)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=(https://aws-codedeploy-eu-west-1.s3-eu-west-1.amazonaws.com/releases/${pkgname%-bin}_${pkgver//_/-}_all.deb)
 md5sums=('4a2697e9e3c022313705497caa197327')
 noextract=()
 
