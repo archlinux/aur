@@ -1,6 +1,6 @@
 pkgbase = mdpdf-git
 	pkgdesc = a shell script for converting markdown to pdf using lowdown.
-	pkgver = r5.3c4e190
+	pkgver = r6.3b399c7
 	pkgrel = 1
 	url = https://github.com/soystemd/mdpdf
 	arch = x86_64

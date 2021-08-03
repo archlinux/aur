@@ -1,7 +1,7 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 _pkgname='mdpdf'
 pkgname="${_pkgname}-git"
-pkgver=r5.3c4e190
+pkgver=r6.3b399c7
 pkgrel=1
 pkgdesc='a shell script for converting markdown to pdf using lowdown. '
 arch=(x86_64)
