@@ -1,6 +1,6 @@
 # Maintainer: Paul Makles <paulmakles@gmail.com>
 pkgname=revolt-desktop-git
-pkgver=18.a87824b
+pkgver=25.0d49135
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")

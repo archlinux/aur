@@ -1,6 +1,6 @@
 pkgbase = revolt-desktop-git
 	pkgdesc = User-first, privacy focused chat platform.
-	pkgver = 18.a87824b
+	pkgver = 25.0d49135
 	pkgrel = 1
 	url = https://revolt.chat
 	arch = x86_64
