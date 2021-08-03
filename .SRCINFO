@@ -1,0 +1,27 @@
+pkgbase = dataspell
+	pkgdesc = Python IDE for data scientists
+	pkgver = 212.3746.7
+	pkgrel = 1
+	url = https://www.jetbrains.com/dataspell/
+	arch = x86_64
+	arch = i686
+	license = custom:jetbrains
+	depends = glib2
+	depends = python
+	options = !strip
+	source = https://download.jetbrains.com/python/jetbrains-data-spell-212.3746.7.tar.gz
+	source = jetbrains-dataspell.desktop
+	source = LICENSE
+	b2sums = 0f174ce1667ba8b5a3670548c0576c8212d16c15064aa762baa84e4f6c0b67b7c30aaa1c6bc1ce47e33a0cdfe2c7f937dedf2e3eb55d9532b882c4a83bbd8f94
+	b2sums = 1e027616a89aecde36668690ae3bbf1dbb167e4d4e9514875932400af0b1d33ec87dbb33df9bca500be9bd4a1485929a76f154c73b815a3e331a12fa8b27a8cd
+	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
+
+pkgname = dataspell
+	optdepends = dataspell-jre: JetBrains custom Java Runtime (Recommended)
+	optdepends = java-runtime: JRE - Required if dataspell-jre is not installed
+	optdepends = gnome-keyring: save login/deployment credentials safely
+	optdepends = java-openjfx: rendering Markdown files
+
+pkgname = dataspell-jre
+	pkgdesc = JBR (JetBrains Runtime) for DataSpell - a patched JRE
+	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
