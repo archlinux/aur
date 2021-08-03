@@ -18,7 +18,7 @@ optdepends=('python-readabilipy: Improves output of web articles')
 changelog=$pkgname.changelog.md
 install=$pkgname.install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("845005b0beacc1d42f67271cc027e85ffc5224f992e3289d8c3b53523a226bbe")
+sha256sums=("a9c0894edc019198b4753fca0ccd99f7d7b8a740382a670045e657f95a119940")
 
 build() {
     cd "$pkgname-$pkgver/"
