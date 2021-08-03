@@ -1,14 +1,14 @@
 pkgbase = pdepend
 	pkgdesc = A tool for PHP software metrics
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = http://pdepend.org/
 	install = pdepend.install
 	arch = any
 	license = BSD
 	depends = php
-	source = https://github.com/pdepend/pdepend/releases/download/2.7.0/pdepend.phar
-	source = https://raw.githubusercontent.com/pdepend/pdepend/2.7.0/LICENSE
+	source = https://github.com/pdepend/pdepend/releases/download/2.7.1/pdepend.phar
+	source = https://raw.githubusercontent.com/pdepend/pdepend/2.7.1/LICENSE
 	source = pdepend.install
 	sha512sums = f8b0b878e0a349ddf45926c9832345c6db4412bfb650f248b068f914a5c48e92392e25b6944e039b6c0616364acfb2858fcd9b63c6ea687e0777d0d9cccf3eef
 	sha512sums = 9772652fd67993b6e75b65d3d368210d44058ebd2d78bfca6d3b189ffeaf14d8de56ab1b8e59f7e0e2b4e0ddcdce5bb102100efdb6cce70bfe32229746fae436

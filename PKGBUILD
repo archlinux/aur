@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/sanduhrs/arch-aur-pdepend
 
 pkgname=pdepend
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A tool for PHP software metrics"
 url="http://pdepend.org/"
