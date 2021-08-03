@@ -1,41 +1,46 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-# Ex-Maintainer: William Turner <willtur.will@gmail.com>
-pkgname='python-booleanoperations'
-_pkgname=booleanOperations
+# Contributor: William Turner <willtur.will@gmail.com>
+
+_pyname=booleanOperations
+pkgname=python-${_pyname,,}
 pkgver=0.9.0
-pkgrel=1
-pkgdesc='Boolean operations on paths.'
-arch=('any')
-url='https://github.com/typemytype/booleanOperations'
-license=('MIT')
-#checkdepends=('python-pytest' 'python-defcon' 'python-fontpens')
-checkdepends=()
-depends=('python-pyclipper' 'python-fonttools')
-makedepends=('python-setuptools')
-options=(!emptydirs)
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.zip"
-    'install.patch')
-sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8'
-            'db49ee64cf2799da96c600570c3557ef2fee2998223d2ff5c0ad4ce62bfd4be6')
+pkgrel=2
+pkgdesc='Boolean operations on paths'
+arch=(any)
+url="https://github.com/typemytype/$_pyname"
+license=(MIT)
+_pydeps=(pyclipper
+         fonttools)
+depends=(python
+         "${_pydeps[@]/#/python-}")
+checkdepends=(python-defcon
+              python-fontpens
+              python-pytest)
+makedepends=(python-setuptools-scm)
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
+sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8')
 
 prepare() {
-    cd "$_pkgname-$pkgver"
-    patch -p1 -i ../install.patch
+	cd "$_archive"
+    # Upstream PR: https://github.com/typemytype/booleanOperations/pull/63
+    sed -i -e '/wheel$/d' setup.cfg
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
-  python setup.py build
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
+}
+
+check() {
+	cd "$_archive"
+	PYTHONPATH=Lib pytest tests
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
-  install -D -m644  LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
-
-# tests disabled to break circular dependency
-#check() {
-  #cd "${_pkgname}-${pkgver}"
-  #pytest
-#}
