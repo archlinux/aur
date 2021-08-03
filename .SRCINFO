@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Feature centric port for all Doom engine games
-	pkgver = 4.6.0
-	pkgrel = 2
+	pkgver = 4.6.1
+	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = gzdoom
 	optdepends = xorg-xmessage: crash dialog (other)
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.6.0
+	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.6.1
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
 	sha256sums = SKIP
