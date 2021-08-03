@@ -1,7 +1,7 @@
 pkgname=messages-bin
 _pkgname=Messages-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -15,9 +15,9 @@ conflicts=("messages-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/androidmessages/binaries/1.0.2-1/-/raw/master/Messages-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/androidmessages/binaries/1.0.2-1/-/raw/master/Messages-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/androidmessages/binaries/1.0.2-1/-/raw/master/Messages-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/androidmessages/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Messages-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/androidmessages/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Messages-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/androidmessages/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Messages-linux-arm64.tar.gz")
 
 
 package() {
