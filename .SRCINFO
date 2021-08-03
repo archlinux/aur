@@ -1,4 +1,4 @@
-pkgbase = python-cx-freeze
+pkgbase = python-cx-freeze-qfix
 	pkgdesc = Create standalone executables from Python scripts
 	pkgver = 6.8b1
 	pkgrel = 1
@@ -10,9 +10,10 @@ pkgbase = python-cx-freeze
 	makedepends = python-setuptools
 	depends = python-importlib-metadata
 	provides = python-cx_freeze
+	provides = python-cx-freeze
 	conflicts = python-cx_freeze
-	replaces = python-cx_freeze
+	conflicts = python-cx-freeze
 	source = https://github.com/marcelotduarte/cx_Freeze/archive/6.8b1/python-cx-freeze-6.8b1.tar.gz
 	sha512sums = 388d362815a502c155d8c41aafe769cddd320c7e58bd047c995b6456a9c746fbec8b5e3b4e133797cf2652eeb31afe25f43edee5b93f352904c89c66b2a273a2
 
-pkgname = python-cx-freeze
+pkgname = python-cx-freeze-qfix
