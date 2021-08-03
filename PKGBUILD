@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mumps
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
 url='http://mumps.enseeiht.fr'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://mumps.enseeiht.fr/MUMPS_${pkgver}.tar.gz")
-sha256sums=('774fc9411a3ab4704bc907cb7d30090ce6a65b83cde32549c58d3e9f63594e1a')
+sha256sums=('c613414683e462da7c152c131cebf34f937e79b30571424060dd673368bbf627')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     cp -r MUMPS_${pkgver} build-${_arch} && pushd build-${_arch}
     make -C src ../include/mumps_int_def.h
-    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib -j1
+    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib LIBOTHERS="-lpthread -lssp" -j1
     popd
   done
 }
