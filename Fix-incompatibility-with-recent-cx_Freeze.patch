@@ -1,0 +1,36 @@
+From b9a7174886d7a215818f382f9d5c05226f86a3ff Mon Sep 17 00:00:00 2001
+From: Mikko Rasa <tdb@tdb.fi>
+Date: Sun, 18 Jul 2021 12:09:00 +0300
+Subject: [PATCH] Fix incompatibility with recent cx_Freeze
+
+The run() function of the startup script now gets the main module name
+as a parameter.
+---
+ setupInitScriptUnix.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/setupInitScriptUnix.py b/setupInitScriptUnix.py
+index 049680d4..75e1844c 100755
+--- a/setupInitScriptUnix.py
++++ b/setupInitScriptUnix.py
+@@ -30,11 +30,14 @@ sys.frozen = True
+ sys.path = sys.path[:4]
+ 
+ 
+-def run():
++def run(*args):
+     m = __import__("__main__")
+     importer = zipimport.zipimporter(os.path.dirname(os.__file__))
+-    name, ext = os.path.splitext(os.path.basename(os.path.normcase(FILE_NAME)))
+-    moduleName = "%s__main__" % name
++    if len(args) == 0:
++        name, ext = os.path.splitext(os.path.basename(os.path.normcase(FILE_NAME)))
++        moduleName = "%s__main__" % name
++    else:
++        moduleName = args[0]
+     code = importer.get_code(moduleName)
+     exec(code, m.__dict__)
+ 
+-- 
+2.32.0
+
