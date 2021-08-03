@@ -10,6 +10,7 @@ url="https://github.com/davidde/mpv-autosub"
 license=("MIT")
 depends=("mpv")
 makedepends=("git")
+provides=("mpv-autosub")
 source=("$_pkgname::git+$url")
 sha256sums=("SKIP")
 

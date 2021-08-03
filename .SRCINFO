@@ -7,6 +7,7 @@ pkgbase = mpv-autosub-git
 	license = MIT
 	makedepends = git
 	depends = mpv
+	provides = mpv-autosub
 	source = mpv-autosub::git+https://github.com/davidde/mpv-autosub
 	sha256sums = SKIP
 
