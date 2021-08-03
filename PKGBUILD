@@ -1,7 +1,7 @@
 pkgname=mpv-playlistmanager-git
 _pkgname=${pkgname%-git}
 pkgver=r224.1c2c880
-pkgrel=1
+pkgrel=2
 pkgdesc="Mpv lua script to create and manage playlists."
 arch=('any')
 url="https://github.com/jonniek/mpv-playlistmanager"
@@ -19,5 +19,6 @@ pkgver() {
 
 package() {
   cd "$_pkgname"
-  install -Dm 755 playlistmanager.lua "$pkgdir/usr/share/mpv/scripts/playlistmanager.lua"
+  install -Dm644 playlistmanager.lua -t "$pkgdir"/usr/share/mpv/scripts
+  install -Dm644 playlistmanager.conf -t "$pkgdir"/usr/share/doc/mpv/script-opts
 }

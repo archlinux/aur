@@ -1,7 +1,7 @@
 pkgbase = mpv-playlistmanager-git
 	pkgdesc = Mpv lua script to create and manage playlists.
 	pkgver = r224.1c2c880
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonniek/mpv-playlistmanager
 	arch = any
 	license = Unlicense
