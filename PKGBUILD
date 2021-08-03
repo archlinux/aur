@@ -2,7 +2,7 @@
 
 pkgname=python-dash-core-components
 _pkgname=dash_core_components
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Dash UI core components suite"
 arch=('any')
