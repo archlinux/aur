@@ -6,7 +6,7 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
-pkgver=2.33
+pkgver=2.34
 pkgrel=1
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM64 target"
@@ -17,7 +17,7 @@ depends=()
 makedepends=($_arch-gcc $_arch-linux-api-headers)
 options=(!strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('2e2556000e105dbd57f0b6b2a32ff2cf173bde4f0d85dffccfd8b7e51a0677ff'
+sha256sums=('44d26a1fe20b8853a48f470ead01e4279e869ac149b195dda4e44a195d981ab2'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
@@ -33,10 +33,7 @@ build() {
   echo "slibdir=/usr/lib" >> configparms
   echo "rtlddir=/usr/lib" >> configparms
 
-  #hack - Having CPPFLAGS defined makes the build barf. Workaround it like this:
-  _cppflags=$CPPFLAGS
-  unset LD_LIBRARY_PATH CFLAGS CPPFLAGS
-  
+  unset CFLAGS
   ../glibc-$pkgver/configure \
       --prefix=/usr \
       --host=$_target \
@@ -47,7 +44,7 @@ build() {
       --enable-stack-protector=strong \
       --enable-stackguard-randomization \
       --disable-timezone-tools \
-      --enable-multi-arch CFLAGS="$_cppflags -O2 -pipe -fno-plt" 
+      --enable-multi-arch CFLAGS="-O2 -pipe"
 
   make
 }
