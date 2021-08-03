@@ -4,11 +4,11 @@
 
 _gemname=rb-fsevent
 pkgname=ruby-$_gemname
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
-pkgdesc='Very simple & usable FSEvents API.'
+pkgdesc="Very simple & usable FSEvents API"
 arch=('i686' 'x86_64')
-url='http://rubygems.org/gems/rb-fsevent'
+url="https://github.com/thibaudgg/rb-fsevent"
 license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc')
