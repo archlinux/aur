@@ -1,6 +1,6 @@
 pkgbase = python-cx-freeze-qfix
 	pkgdesc = Create standalone executables from Python scripts
-	pkgver = 6.8b1
+	pkgver = 6.7
 	pkgrel = 1
 	url = https://marcelotduarte.github.io/cx_Freeze
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = python-cx-freeze-qfix
 	provides = python-cx-freeze
 	conflicts = python-cx_freeze
 	conflicts = python-cx-freeze
-	source = https://github.com/marcelotduarte/cx_Freeze/archive/6.8b1/python-cx-freeze-6.8b1.tar.gz
-	sha512sums = 388d362815a502c155d8c41aafe769cddd320c7e58bd047c995b6456a9c746fbec8b5e3b4e133797cf2652eeb31afe25f43edee5b93f352904c89c66b2a273a2
+	source = https://github.com/marcelotduarte/cx_Freeze/archive/6.7/python-cx-freeze-6.7.tar.gz
+	source = export-dynamic.patch
+	sha512sums = e4b7a1ff58fc5024ae57b6ba05ca01ebbd98eb1b3a234ea1167ce0dacfa79ff748a0425483f4f639dee417371edf59277740a8c55208187b2dfe36eb72ab2742
+	sha512sums = 8535ffee971e10597133e4710d8a9ac3c6e1c02d91c28bcf8090662b07fdb34a92e387ac47fa6bd0d783c77f4913c2cd7d1b3040db74f0f0d961f5af67affdc3
 
 pkgname = python-cx-freeze-qfix
