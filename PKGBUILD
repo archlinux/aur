@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r294.g50660ed
+pkgver=0.3.7.r304.g76df97e
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -19,14 +19,8 @@ source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/googletest.git'
         'git+https://github.com/webmproject/sjpeg.git'
         'git+https://skia.googlesource.com/skcms.git'
-        'git+https://github.com/veluca93/IQA-optimization.git'
-        'git+https://github.com/Netflix/vmaf.git'
-        'git+https://github.com/thorfdbg/difftest_ng.git'
         'git+https://github.com/google/highway.git')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,9 +37,6 @@ prepare() {
     git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
     git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
     git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-    git -C libjxl config --local submodule.third_party/IQA-optimization.url "${srcdir}/IQA-optimization"
-    git -C libjxl config --local submodule.third_party/vmaf.url "${srcdir}/vmaf"
-    git -C libjxl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
     git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C libjxl submodule update
 }
