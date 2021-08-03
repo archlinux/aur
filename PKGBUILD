@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc='Cross platform mod manager for DOOM Eternal.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
         eternalmodmanager
         eternalmodmanager.desktop)
-sha256sums=('7ae83c0bc9ce645e040a3e14d4436c9a3aa64d3b868ad18b66b9f93ad184e1f7'
+sha256sums=('fb571468194af9a704da1ce3c11a57801467b97a511a0b9f34968e1aeb1d3226'
             'd500abdf9bb20e4221679abe0d85e687c371590f409b378ce30a909838db99e8'
             '0e8c5bfbde1269d598f0a1582bc0dab38745bfae41f7de43a0d1b59b55861532')
 
