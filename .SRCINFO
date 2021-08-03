@@ -1,15 +1,14 @@
 pkgbase = sparklines-git
 	pkgdesc = Spark: Sparklines for your shell
-	pkgver = v1.0.1.6.g9832447
+	pkgver = v1.0.1.33.gab88ac6
 	pkgrel = 1
-	url = http://zachholman.com/spark/
+	url = https://zachholman.com/spark/
 	arch = any
 	license = MIT
 	makedepends = git
 	provides = sparklines
 	conflicts = sparklines
-	source = git://github.com/holman/spark.git
+	source = git+https://github.com/holman/spark.git
 	sha256sums = SKIP
 
 pkgname = sparklines-git
-
