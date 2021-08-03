@@ -5,27 +5,29 @@ pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
+_giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
-depends=('lapack' 'expat' 'lpsolve' 'omniorb' 'java-environment')
+depends=('lapack' 'expat' 'lpsolve' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git')
-source=("git+https://github.com/OpenModelica/OpenModelica.git#tag=v${pkgver}")
+source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 prepare() {
   cd "$srcdir/OpenModelica"
-  git checkout "tags/v${pkgver}"
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/7327.patch | patch -p1
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/7445.patch | patch -p1
-  sed -i "s,\.\./,https://github.com/OpenModelica/,g" .gitmodules
-  git submodule sync
-  git submodule update --init --recursive
+  git remote set-url origin ${_giturl}
+  git submodule update --force --init --recursive
+  # OMCompiler: Dont try to install translations
+  git cherry-pick -n 2a39a402d9604a1ce353b0a12574fed5d320be0e
+  # Fix build with cmake >= 3.20
+  git cherry-pick -n 4f3a50974f0f916efd716809699f18d47f1dbe34
 }
 
 build() {
   cd "$srcdir/OpenModelica/OMCompiler"
   autoreconf -vfi
-  export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
-  ./configure --prefix=/usr/ --without-omc --with-omniORB  --with-cppruntime --with-lapack='-llapack -lblas'
+  # https://github.com/OpenModelica/OpenModelica/issues/7619
+  export CXXFLAGS="${CXXFLAGS} -std=c++14"
+  ./configure --prefix=/usr/
   make
 }
 

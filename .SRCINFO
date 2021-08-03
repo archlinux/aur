@@ -12,10 +12,8 @@ pkgbase = openmodelica-omc
 	depends = lapack
 	depends = expat
 	depends = lpsolve
-	depends = omniorb
 	depends = java-environment
 	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.17.0
 	sha1sums = SKIP
 
 pkgname = openmodelica-omc
-
