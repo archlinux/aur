@@ -1,8 +1,8 @@
 pkgbase = freerct-git
 	pkgdesc = Open Source RollerCoaster Tycoon 1 and 2 implementation
-	pkgver = r1793.9a5a6c9b
-	pkgrel = 5
-	url = http://freerct.org
+	pkgver = r1819.da71e14d
+	pkgrel = 1
+	url = https://github.com/FreeRCT/FreeRCT
 	arch = i686
 	arch = x86_64
 	arch = aarch64

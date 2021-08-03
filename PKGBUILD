@@ -1,13 +1,13 @@
-# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 _pkgname=freerct
 pkgname=${_pkgname}-git
-pkgver=r1793.9a5a6c9b
-pkgrel=5
+pkgver=r1819.da71e14d
+pkgrel=1
 pkgdesc="Open Source RollerCoaster Tycoon 1 and 2 implementation"
 arch=('i686' 'x86_64' 'aarch64')
-url="http://freerct.org"
+url="https://github.com/FreeRCT/FreeRCT"
 license=('GPL2')
 depends=('sdl2' 'sdl2_ttf' 'libzip' 'libpng' 'gnu-free-fonts')
 makedepends=('git' 'cmake')
