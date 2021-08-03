@@ -1,6 +1,6 @@
 pkgbase = python-fonttools-git
 	pkgdesc = A library to manipulate font files from Python
-	pkgver = 4.24.4.r1.gee2aa26
+	pkgver = 4.26.1.r1.g032befd
 	pkgrel = 1
 	url = https://github.com/fonttools/fonttools
 	arch = x86_64
@@ -14,16 +14,15 @@ pkgbase = python-fonttools-git
 	optdepends = python-lxml: faster backend for XML files reading/writing
 	optdepends = python-lz4: for graphite type tables in ttLib/tables
 	optdepends = python-matplotlib: for visualizing DesignSpaceDocument and resulting VariationModel
-	optdepends = python-pyqt5: for drawing glyphs with Ql’s QPainterPath
+	optdepends = python-pyqt5: for drawing glyphs with Qt’s QPainterPath
 	optdepends = python-reportlab: to drawing glyphs as PNG images
 	optdepends = python-scipy: for finding wrong contour/component order between different masters
 	optdepends = python-sympy: for symbolic font statistics analysis
 	optdepends = python-unicodedata2: for displaying the Unicode character names when dumping the cmap table with ttx
 	optdepends = python-zopfli: faster backend fom WOFF 1.0 web fonts compression
-	provides = python-fonttools=4.24.4.r1.gee2aa26
+	provides = python-fonttools=4.26.1.r1.g032befd
 	conflicts = python-fonttools
 	source = python-fonttools-git::git+https://github.com/fonttools/fonttools.git
 	sha256sums = SKIP
 
 pkgname = python-fonttools-git
-
