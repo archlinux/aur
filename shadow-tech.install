@@ -1,16 +1,29 @@
+#!/bin/bash
+
 post_remove() {
-	# Remove configuration
-	for user in `ls /home`
-	do
-		if [ -d /home/$user/.config/Shadow ]; then
-			rm -R /home/$user/.config/Shadow
-		fi
-	done
+    for user in `ls /home`; do
+        # remove configuration
+        if [ -d /home/$user/.config/shadow ]; then
+            rm -R /home/$user/.config/shadow
+        fi
+        # remove cache
+        if [ -d /home/$user/.cache/blade ]; then
+            rm -R /home/$user/.cache/blade
+        fi
+    done
 }
 
 pre_upgrade(){
-	# Delete the old version of Shadow
-	if [ -d "/opt/Shadow" ]; then
-	    rm -r "/opt/Shadow"
-	fi
+    # delete the old version of Shadow
+    if [ -d "/opt/shadow-tech" ]; then
+        rm -r "/opt/shadow-tech"
+    fi
+
+    # delete cache
+    for user in `ls /home`; do
+        # remove cache
+        if [ -d /home/$user/.cache/blade ]; then
+            rm -R /home/$user/.cache/blade
+        fi
+    done
 }

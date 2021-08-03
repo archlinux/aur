@@ -1,107 +1,111 @@
-# Maintainer: Nover <novares.x@gmail.com>
-# Maintainer: agentcobra <agentcobra@free.fr>
-
-# Creator Blade <contact@blade-group.com>
-
-# Made with https://github.com/NicolasGuilloux/blade-shadow-beta
-
-# Import parse_yaml script
-. parse_yaml.sh
-
-# Get the info from the yaml
-info() {
-	if [ ! -f info.yml ]; then
-		curl -s "https://storage.googleapis.com/shadow-update/launcher/${basename}/linux/ubuntu_18.04/latest-linux.yml" -o info.yml
-	fi
-
-	eval $(parse_yaml info.yml "shadow_")
-}
-
-# Get the package version
-pkgver() {
-	info
-
-  echo "$shadow_version"
-}
-
-# Get the SHA512 checksum
-sha512sum() {
-	info
-
-	echo "$shadow_sha512" | base64 -d | xxd -ps -c 512
-}
-
-file() {
-	echo "$pkgname-$pkgver-$pkgrel.AppImage"
-}
-
-# Extract the zip file and prepare for the build
-prepare() {
-	# Give execution rights
-	chmod +x $(file)
-
-	# Extract AppImage
-	./$(file) --appimage-extract
-}
-
-# Build the package
-package() {
-	# Make the directories
-	mkdir -p "${pkgdir}/opt"
-
-	# Move directories
-	mv "${srcdir}/squashfs-root/usr" "${pkgdir}"
-	mv "${srcdir}/squashfs-root" "${pkgdir}/opt/${pkgname}"
-
-	# Move de icons
-	mv "${pkgdir}/usr/share/icons/hicolor/0x0/" "${pkgdir}/usr/share/icons/hicolor/1024x1024/"
-
-	# Make a copy of the icons
-	cp "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/shadow.png" "${pkgdir}/usr/share/icons/"
-
-	# Fix rights
-	chmod -R g-w "${pkgdir}/usr"
-	chmod -R g-w "${pkgdir}/opt"
-
-	# Create shortcut folder
-	mkdir "${pkgdir}/usr/share/applications"
-
-	# Move to shortcut directory
-	cd "${pkgdir}/usr/share/applications"
-
-	mv "${pkgdir}/opt/${pkgname}/shadow.desktop" "${pkgname}.desktop"
-	sed -i -e 's/^Categories=.*$/Categories=Games;Game;Utility;Virtualization/g' ${pkgname}.desktop
-	sed -i -e "s/^Exec=.*$/Exec=\/opt\/${pkgname}\/shadow --no-sandbox/g" ${pkgname}.desktop
-
-	chmod g-w ${pkgname}.desktop
-
-	# Create shortcut
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -srf "/opt/${pkgname}/shadow" "${pkgdir}/usr/bin/${pkgname}"
-
-	# Remove AppImage related files
-	rm "${pkgdir}/opt/${pkgname}/AppRun"
-
-	# Remove embedded libraries to avoid conflicts
-	rm -R "${pkgdir}/usr/lib"
-
-	# Fix rights
-	chmod 755 -R "${pkgdir}"
-}
-
-_commit=9add3366d25530d51d168608c54b5339b64d2a4e
+# Maintainer: Pi-Yueh chuang <pychuang@pm.me>
+# Contributor: Nover <novares.x@gmail.com>
+# Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
-basename=prod
-pkgver="$(pkgver)"
+pkgver=5.0.996
 pkgrel=1
-pkgdesc="Shadow application"
+pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
 url="https://shadow.tech"
 license=('unknown')
-depends=('desktop-file-utils' 'freetype2' 'libuv' 'gconf' 'hicolor-icon-theme' 'json-c' 'libappindicator-gtk2' 'libbsd' 'libcurl-gnutls' 'libdrm' 'libnotify' 'libva' 'libxtst' 'nss' 'opus' 'qt5-base' 'qt5-svg' 'sdl2' 'libcurl-compat' 'sdl' 'gcc7-libs' 'ttf-dejavu' 'libxss' 'libsndio-61-compat' 'gnome-keyring')
-optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nouveau-fw: Driver for old Nvidia GPU' 'libva-intel-driver: Driver for Intel GPU')
+depends=(
+    'gtk3'
+    'libinput'
+    'libva'
+    'libxss'
+    'nss'
+    'xcb-util-renderutil'
+    'xcb-util-image'
+)
+makedepends=(
+    'yq'
+    'desktop-file-utils'
+)
+optdepends=(
+    'libva-intel-driver: driver for Intel GPU (G45 and HD family)'
+    'intel-media-driver: driver of Intel GPU (Broadwell (2014) and newer)'
+    'libva-vdpau-driver-shadow-nvidia: patch for recent Nvidia GPU'
+    'nouveau-fw: driver for old Nvidia GPU'
+    'org.freedesktop.secrets: to remember login credentials'
+)
 provides=(shadow-tech)
-source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/Shadow.AppImage")
-# sha512sums=("$(sha512sum))
-sha512sums=('SKIP')
-install=$pkgname.install
+_urlbase='https://storage.googleapis.com/shadow-update/launcher/prod/linux/ubuntu_18.04'
+source=(
+    "${pkgname}-meta.yml::${_urlbase}/latest-linux.yml"
+    "${pkgname}-${pkgver}.AppImage::${_urlbase}/Shadow.AppImage"
+    "shadow.sh"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    '9d8583947ef29549b26e85f81abe7cc3b7c28555cf42986d6d0f831532c798bf'
+)
+install=${pkgname}.install
+
+pkgver() {
+    cd ${srcdir}
+    echo $(yq -r .version "${pkgname}-meta.yml")
+}
+
+prepare() {
+    cd ${srcdir}
+
+    # manually check the sha512sum of the appimage file
+    sha="$(yq -r .sha512 ${pkgname}-meta.yml| base64 -d | xxd -p -c 256)"
+    echo "${sha} ${pkgname}-${pkgver}.AppImage" | sha512sum --check
+
+    # give execution rights
+    chmod +x ${pkgname}-${pkgver}.AppImage
+
+    # extract AppImage
+    ./${pkgname}-${pkgver}.AppImage --appimage-extract
+
+    # rename the folder
+    rm -rf ${pkgname}-${pkgver}
+    mv squashfs-root ${pkgname}-${pkgver}
+}
+
+package() {
+
+    # copy all files first
+    mkdir -p "${pkgdir}/opt"
+    mv ${pkgname}-${pkgver} "${pkgdir}/opt/${pkgname}"
+
+    # go into the package folder
+    cd "${pkgdir}/opt/${pkgname}"
+
+    # move icons
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    cp "usr/share/icons/hicolor/0x0/apps/shadow.png" "${pkgdir}/usr/share/icons"
+
+    # modify and install desktop file
+    mv "shadow.desktop" "${pkgname}.desktop"
+    desktop-file-install \
+        --dir="${pkgdir}/usr/share/applications" \
+        --set-key="Categories" --set-value="Game;" \
+        --set-key="Exec" --set-value="/usr/bin/shadow.sh --no-sandbox" \
+        --delete-original \
+        "${pkgname}.desktop"
+
+    # remove files that are not needed
+    rm "${pkgdir}/opt/${pkgname}/AppRun"
+    rm "${pkgdir}/opt/${pkgname}/.DirIcon"
+    rm "${pkgdir}/opt/${pkgname}/shadow.png"
+    rm -r "${pkgdir}/opt/${pkgname}/usr/share"
+    rm "${pkgdir}/opt/${pkgname}/usr/lib/libappindicator.so.1"
+    rm "${pkgdir}/opt/${pkgname}/usr/lib/libgconf-2.so.4"
+    rm "${pkgdir}/opt/${pkgname}/usr/lib/libindicator.so.7"
+    rm "${pkgdir}/opt/${pkgname}/usr/lib/libnotify.so.4"
+
+    # fix permissions
+    chmod 755 $(find ${pkgdir} -type d)
+    chmod 644 $(find ${pkgdir} -type f)
+    chmod 755 "${pkgdir}/opt/${pkgname}/shadow"
+    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/Shadow"
+    chmod 755 "${pkgdir}/opt/${pkgname}/resources/app.asar.unpacked/release/native/ShadowHelper"
+    chmod 755 $(find ./ -path "*.so*")
+
+    # install executable shell script
+    install -Dm755 ${srcdir}/shadow.sh -t "${pkgdir}/usr/bin"
+}
