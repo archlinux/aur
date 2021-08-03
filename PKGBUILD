@@ -62,6 +62,6 @@ package() {
   #strip manually
   find "$pkgdir"/usr/$_target/sys-root -name '*.so' -and ! -name 'libc.so' -print0 | xargs -0 $_target-strip --strip-all
 
-  #workaround for fakeroot bug
-  chown -R root:root "$pkgdir"/usr
+  #fix missing symlink
+  ln -s libpthread.so.0 "$pkgdir"/usr/$_target/sys-root/usr/lib/libpthread.so
 }
