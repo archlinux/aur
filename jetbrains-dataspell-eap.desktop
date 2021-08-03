@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DataSpell EAP
+Icon=dataspell-eap
+Exec="/opt/dataspell-eap/bin/dataspell.sh" %f
+Comment=Python IDE for data scientists
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-dataspell
