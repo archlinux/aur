@@ -1,0 +1,11 @@
+diff --git a/src/styl/main.styl b/src/styl/main.styl
+index be95a73bf..45208f4e5 100644
+--- a/src/styl/main.styl
++++ b/src/styl/main.styl
+@@ -287,3 +287,6 @@ main
+   margin-bottom: env(safe-area-inset-bottom);
+   @media only screen and (orientation portrait) and (min-width 768px) and (min-height 768px)
+     flex 0 0 footerHeightBigScreens
++
++*::-webkit-scrollbar
++  display none

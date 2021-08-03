@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=lichess
+Comment=lichess.org mobile application, packaged with electron
+Exec=/usr/bin/lichobile-electron %u
+Icon=lichesslogowhite
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
+X-Purism-FormFactor=Workstation;Mobile;

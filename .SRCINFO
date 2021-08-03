@@ -1,0 +1,25 @@
+pkgbase = lichobile-electron
+	pkgdesc = lichess.org mobile application, packaged with electron
+	pkgver = 7.11.3
+	pkgrel = 3
+	url = https://lichess.org/mobile
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = npm
+	depends = electron
+	source = https://github.com/veloce/lichobile/archive/refs/tags/v7.11.3.tar.gz
+	source = appconfig.prod.json
+	source = run.sh
+	source = lichobile-electron.desktop
+	source = lichesslogowhite.svg
+	source = hide-scrollbar.patch
+	source = index.js
+	sha256sums = 27719c7be577931e8b2020d6e27760a00982b55efd1d6a507128e0f2168224a6
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lichobile-electron
