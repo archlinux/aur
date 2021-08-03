@@ -60,7 +60,7 @@ _use_current=
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.7
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -80,10 +80,9 @@ source=(
 #  '0003-clang.patch'
 "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
 "${_caculepatches}/v5.13/cacule-5.13.patch"
-"${_caculepatches}/v5.13/rdb-5.13.patch"
 "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
 "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-"${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
+"${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
 "${_patchsource}/winesync/5.13-winesync.patch"
 "${_patchsource}/zen-patches/0001-zen-patches.patch"
 "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
@@ -100,6 +99,7 @@ source=(
 "${_patchsource}/security-patches/0001-security-patches.patch"
 "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
 "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+"${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
 "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
 "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
@@ -122,13 +122,12 @@ BUILD_FLAGS=(
       OBJDUMP=objdump
     )
 sha256sums=('f91e561053afe454afce8a6dcc7f8319010bfe2fa17aeea1d8566f61760be439'
-            '4d46148d5e076722537220c854147dc102fc994eeb7ab2d77363dc3873a011be'
+            '8d740f771b2b2284c4866fb228629e456a08e3f87b07f08f8b31f43f677ee6ae'
             '2578b367f30ddf43569280403c75c056d61883128ea7827356b681fa7970bed4'
-            '4edb5cd8504d4985de2a1c2ac18aff663366061da5b094df294a8ac9bf26bb55'
-            '0469f4bd12082c1972aff782a35b3ad26a4b5552f3a68dc663ef0597c5034fbe'
+            '8255b73ce1c3fbac7d5b9d44460e1f43d3767e2432e59e43d3193d5d7591d6a9'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
-            '9ec679871cba674cf876ba836cde969296ae5034bcc10e1ec39b372e6e07aab0'
+            'e1d58afdd4a9bf5a6a9ff0ff8e943d8a67da24fd4160b94655bf3fae5820e135'
             '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
             '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
@@ -145,6 +144,7 @@ sha256sums=('f91e561053afe454afce8a6dcc7f8319010bfe2fa17aeea1d8566f61760be439'
             'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
             '8e56f88209ec69bf7004c52a7f31ba5fffa2c6af3db306e7ec385210a0b5944e'
             '78b07f9d39573633ac7035201d7a95c44675084562995b7e60e549e44fbcfcb7'
+            'a137f641dad68b0b29491c4e87a41569578aa3c95a37a654912b7d5c16a756bc'
             '04205c627cd3dcb737bd7b432cd7172d30f4ca0114b003bc3ac0dc8dadfa3c01'
             '586d03baec3f8b583b1b73e838f5e69c1d25c502e4d7e6738e1291de1b52af15')
 options=('!strip')
@@ -327,7 +327,6 @@ prepare() {
       scripts/config --disable CONFIG_SCHED_INFO
       scripts/config --disable CONFIG_SCHEDSTATS
       scripts/config --disable CONFIG_DEBUG_KERNEL
-#        scripts/config --disable CONFIG_RT_GROUP_SCHED
       echo "Enabling Full Tickless"
       scripts/config --disable CONFIG_HZ_PERIODIC
       scripts/config --disable CONFIG_NO_HZ_IDLE
