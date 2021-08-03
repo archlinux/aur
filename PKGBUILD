@@ -2,12 +2,13 @@
 
 pkgname='nuxhash-git'
 pkgver=v1.0.0b2.r33.g33e9a09
-pkgrel=2
+pkgrel=3
 pkgdesc="A NiceHash cryptocurrency mining client for Linux."
 arch=('x86_64' 'i686')
 url="https://github.com/YoRyan/nuxhash"
 license=('GPL3')
-depends=('python' 'curl' 'nvidia' 'opencl-nvidia')
+depends=('python' 'python-requests' 'curl' 'nvidia' 'opencl-nvidia' 'cuda')
+makedepends=('python-setuptools')
 optdepends=('python-wxpython: GUI support')
 source=("git+https://github.com/YoRyan/nuxhash.git"
         "nuxhash-gui.desktop")
@@ -21,7 +22,7 @@ pkgver() {
 
 package() {
 	cd nuxhash
-	python3 setup.py install --root "${pkgdir}/"
+	python3 setup.py install --optimize=1 --root "$pkgdir"
 	install -Dm644 nuxhash/gui/icons/nuxhash.svg "$pkgdir/usr/share/pixmaps/nuxhash.svg"
 	install -Dm644 ../nuxhash-gui.desktop "$pkgdir/usr/share/applications/nuxhash-gui.desktop"
 }
