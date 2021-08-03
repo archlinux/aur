@@ -28,7 +28,7 @@ _mm_protect=y
 ### Enable multigenerational LRU
 _lru_enable=y
 ### Enable Linux Random Number Generator
-_lrng_enable=
+_lrng_enable=y
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -82,7 +82,7 @@ source=(
   "${_caculepatches}/v5.13/cacule-5.13.patch"
   "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2/0007-v5.13-futex2_interface.patch"
+  "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/winesync/5.13-winesync.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
@@ -93,15 +93,13 @@ source=(
   "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
   "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
   "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-#  "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
-  "${_patchsource}/lru-patches/lru_5.13.patch"
-  "${_patchsource}/lru-patches/le9db_patches/le9db1-5.10.patch"
+  "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
   "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-  "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
+  "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
   "${_patchsource}/security-patches/0001-security-patches.patch"
-  "${_patchsource}/misc/nohzfull.patch"
   "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+  "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
   "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
 )
@@ -267,15 +265,15 @@ prepare() {
          scripts/config --enable CONFIG_MODULE_COMPRESS
           scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
           scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-    #      scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-    #      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+          scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+          scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
       ### Enabling Cacule-Config ##
           echo "Enable CacULE CPU scheduler..."
+          scripts/config --disable CONFIG_EXPERT
           scripts/config --enable CONFIG_CACULE_SCHED
           scripts/config --enable CONFIG_FAIR_GROUP_SCHED
           scripts/config --enable CONFIG_SCHED_AUTOGROUP
-          scripts/config --disable CONFIG_EXPERT
           scripts/config --disable CONFIG_SCHED_DEBUG
           scripts/config --disable CONFIG_SCHED_INFO
           scripts/config --disable CONFIG_SCHEDSTATS
@@ -540,10 +538,10 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'aebc49e4d58bd8314548a364bec99d1e'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '0c139073c9a3c742706d96a165bc8e95'
-         '8bf08ab7a4b7586f7824d57d0b61a284'
+         '43407e834830af9d260705fdd4422689'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
-         '2c0375b3cc9690a0f0f3d3e49df54d10'
+         '3ec9a8784a9e73462def2e9c33de9a1e'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '31c897f53b91f98532321cd24928c0d7'
@@ -554,13 +552,12 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'f9b3c2263204ebfae89f29b83278b54b'
-         '3f302dbaceea020abd40f6e9f23b75df'
-         '7aeb2c86091b9432d1fc9172d418d486'
+         '055df07f7637d427a7c134c686074860'
          'b6623f818462d08b03fdc1b573c90e9f'
-         'a1869abc4d1a6ec1901f34302cd09b7e'
+         '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
-         'c68e4fd9b4a55ee730a34bb39ae325ad'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
+         '2aa4d3664fc16dac2f18fe8c22ba1df1'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
          'ef7748efcae55f7db8961227cbae3677')
