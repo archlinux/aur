@@ -1,7 +1,7 @@
 pkgbase = tksuite-server-agfeo
 	pkgdesc = AGFEO TK-Suite Professional telephone system configuration tool
 	pkgver = 4.4.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.agfeo.de
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,9 @@ pkgbase = tksuite-server-agfeo
 	license = custom:SFL
 	license = custom:SMT
 	makedepends = imagemagick
-	depends = zenity
-	depends = xdg-utils
+	optdepends = zenity: graphical error message when launched from .desktop-file
+	optdepends = xdg-utils: open the web interface from the .desktop-file
+	backup = etc/conf.d/tksuite_server.cfg
 	source = ftp://ftp.agfeo.de/pub/software/tksuite_server_agfeo_4.4.42_linux-x86.tgz
 	source = tksuite-server-agfeo.service
 	source = tksuite-server-agfeo.desktop
@@ -24,4 +25,3 @@ pkgbase = tksuite-server-agfeo
 	depends_i686 = glibc
 
 pkgname = tksuite-server-agfeo
-
