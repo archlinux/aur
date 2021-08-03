@@ -48,7 +48,7 @@ package() {
   install -Dm755 contrib/completion/bash_autocomplete "${pkgdir}/usr/share/bash-completion/completions/assh"
   for _dir_name in examples/*
   do
-    install -Dm755 -t "${pkgdir}/usr/share/doc/advanced-ssh-config/$_dir_name" $_dir_name/*
+    install -Dm755 -t "${pkgdir}/usr/share/doc/advanced-ssh-config/$_dir_name" "${_dir_name}/"*
   done
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
