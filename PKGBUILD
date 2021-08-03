@@ -1,25 +1,35 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname='python-xmldiff'
-_pkgname='xmldiff'
-pkgver='2.4'
-pkgrel=1
-pkgdesc="A libray and command line utility for diffing xml"
-url="https://xmldiff.readthedocs.io"
-checkdepends=()
-depends=('python-lxml')
-makedepends=('python-setuptools')
-license=('BSD')
-arch=('any')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+pkgname=python-xmldiff
+_pyname=${pkgname#python-}
+pkgver=2.4
+pkgrel=2
+pkgdesc='A libray and command line utility for diffing xml'
+arch=(any)
+url="https://$_pyname.readthedocs.io"
+license=(BSD)
+depends=(python
+         python-lxml
+         python-six)
+makedepends=(python-setuptools)
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('05bea20ce1f2c9678683bcce0c3ba9981f87d92b709d190e018bcbf047eccf63')
 
+build() {
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
+}
+
 check() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py test
+	cd "$_archive"
+	python setup.py test
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }
