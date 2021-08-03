@@ -1,0 +1,17 @@
+pkgbase = xdgterm
+	pkgdesc = Launch user's preferred terminal
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/thayne/xdgterm
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = glib2
+	optdepends = dbus-term-launcher: implementation of org.freedesktop.Terminal1
+	source = https://files.pythonhosted.org/packages/source/x/xdgterm/xdgterm-0.0.2.tar.gz
+	sha256sums = 2c918ff923eaebef67c148fdf85221f8bc28d4fb1ae7c608091f2fd18ce00b79
+
+pkgname = xdgterm
