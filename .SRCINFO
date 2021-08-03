@@ -1,0 +1,15 @@
+pkgbase = mouse_m908
+	pkgdesc = Control Redragon gaming mice from Linux, BSD and Haiku
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/dokutan/mouse_m908
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	depends = libusb
+	depends = gcc-libs
+	provides = mouse_m908
+	source = https://github.com/dokutan/mouse_m908/archive/v3.2.tar.gz
+	sha256sums = f6c3b73114a10669016cfeef28a42eac339f29deca6fbe865f352b54667920cc
+
+pkgname = mouse_m908
