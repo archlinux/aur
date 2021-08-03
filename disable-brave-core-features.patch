@@ -390,7 +390,7 @@ index 16e6f810c5..082d34314a 100644
    BooleanPrefMember location_bar_is_wide_;
    // Whether this toolbar has been initialized.
 diff --git a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
-index e02f9b6792..a4d216e1a6 100644
+index 3461e852d8..d397f793c0 100644
 --- a/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 +++ b/browser/ui/webui/new_tab_page/brave_new_tab_message_handler.cc
 @@ -13,13 +13,18 @@
@@ -431,19 +431,27 @@ index e02f9b6792..a4d216e1a6 100644
  using ntp_background_images::prefs::kBrandedWallpaperNotificationDismissed;
  using ntp_background_images::ViewCounterServiceFactory;
 
-@@ -90,9 +96,11 @@ base::DictionaryValue GetPreferencesDictionary(PrefService* prefs) {
-   pref_data.SetBoolean(
-       "showBackgroundImage",
-       prefs->GetBoolean(kNewTabPageShowBackgroundImage));
+@@ -89,15 +95,19 @@ base::DictionaryValue GetPreferencesDictionary(PrefService* prefs) {
+   base::DictionaryValue pref_data;
+   pref_data.SetBoolean("showBackgroundImage",
+                        prefs->GetBoolean(kNewTabPageShowBackgroundImage));
 +#if BUILDFLAG(BRAVE_ADS_ENABLED)
    pref_data.SetBoolean(
        "brandedWallpaperOptIn",
        prefs->GetBoolean(kNewTabPageShowSponsoredImagesBackgroundImage));
 +#endif
+   pref_data.SetBoolean("showClock", prefs->GetBoolean(kNewTabPageShowClock));
+   pref_data.SetString("clockFormat", prefs->GetString(kNewTabPageClockFormat));
+   pref_data.SetBoolean("showStats", prefs->GetBoolean(kNewTabPageShowStats));
+   pref_data.SetBoolean("showToday", prefs->GetBoolean(kNewTabPageShowToday));
++#if BUILDFLAG(BRAVE_REWARDS_ENABLED)
+   pref_data.SetBoolean("showRewards",
+                        prefs->GetBoolean(kNewTabPageShowRewards));
++#endif
    pref_data.SetBoolean(
-       "showClock",
-       prefs->GetBoolean(kNewTabPageShowClock));
-@@ -155,6 +163,7 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
+       "isBrandedWallpaperNotificationDismissed",
+       prefs->GetBoolean(kBrandedWallpaperNotificationDismissed));
+@@ -140,6 +150,7 @@ base::DictionaryValue GetTorPropertiesDictionary(bool connected,
  // TODO(petemill): Move p3a to own NTP component so it can
  // be used by other platforms.
 
@@ -451,7 +459,7 @@ index e02f9b6792..a4d216e1a6 100644
  enum class NTPCustomizeUsage {
    kNeverOpened,
    kOpened,
-@@ -166,22 +175,28 @@ const char kNTPCustomizeUsageStatus[] =
+@@ -151,22 +162,28 @@ const char kNTPCustomizeUsageStatus[] =
      "brave.new_tab_page.customize_p3a_usage";
 
  }  // namespace
@@ -480,7 +488,7 @@ index e02f9b6792..a4d216e1a6 100644
    //
    // Initial Values
    // Should only contain data that is static
-@@ -201,6 +216,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
+@@ -186,6 +203,7 @@ BraveNewTabMessageHandler* BraveNewTabMessageHandler::Create(
        "featureFlagBraveNTPSponsoredImagesWallpaper",
        base::FeatureList::IsEnabled(kBraveNTPBrandedWallpaper) &&
        is_ads_supported_locale_);
@@ -488,7 +496,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Private Tab info
    if (IsPrivateNewTab(profile)) {
      source->AddBoolean(
-@@ -258,6 +274,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+@@ -243,6 +261,7 @@ void BraveNewTabMessageHandler::RegisterMessages() {
        "saveNewTabPagePref",
        base::BindRepeating(&BraveNewTabMessageHandler::HandleSaveNewTabPagePref,
                            base::Unretained(this)));
@@ -496,7 +504,7 @@ index e02f9b6792..a4d216e1a6 100644
    web_ui()->RegisterMessageCallback(
        "registerNewTabPageView",
        base::BindRepeating(
-@@ -282,14 +299,16 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+@@ -267,14 +286,16 @@ void BraveNewTabMessageHandler::RegisterMessages() {
        base::BindRepeating(
            &BraveNewTabMessageHandler::HandleTodayInteractionBegin,
            base::Unretained(this)));
@@ -517,7 +525,7 @@ index e02f9b6792..a4d216e1a6 100644
    web_ui()->RegisterMessageCallback(
        "todayOnPromotedCardView",
        base::BindRepeating(
-@@ -304,11 +323,15 @@ void BraveNewTabMessageHandler::RegisterMessages() {
+@@ -289,11 +310,15 @@ void BraveNewTabMessageHandler::RegisterMessages() {
        base::BindRepeating(
            &BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit,
            base::Unretained(this)));
@@ -533,7 +541,7 @@ index e02f9b6792..a4d216e1a6 100644
  }
 
  void BraveNewTabMessageHandler::OnJavascriptAllowed() {
-@@ -360,10 +383,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -345,10 +370,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
        kNewTabPageShowBackgroundImage,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
                            base::Unretained(this)));
@@ -546,7 +554,7 @@ index e02f9b6792..a4d216e1a6 100644
    pref_change_registrar_.Add(
        kNewTabPageShowClock,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
-@@ -380,10 +405,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
+@@ -365,10 +392,12 @@ void BraveNewTabMessageHandler::OnJavascriptAllowed() {
        kNewTabPageShowToday,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
                            base::Unretained(this)));
@@ -559,7 +567,7 @@ index e02f9b6792..a4d216e1a6 100644
    pref_change_registrar_.Add(
        kBrandedWallpaperNotificationDismissed,
        base::BindRepeating(&BraveNewTabMessageHandler::OnPreferencesChanged,
-@@ -478,9 +505,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -463,9 +492,11 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
      LOG(ERROR) << "Invalid input";
      return;
    }
@@ -571,7 +579,7 @@ index e02f9b6792..a4d216e1a6 100644
    PrefService* prefs = profile_->GetPrefs();
    // Collect args
    std::string settingsKeyInput = args->GetList()[0].GetString();
-@@ -508,10 +537,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -493,10 +524,12 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
    const auto settingsValueBool = settingsValue.GetBool();
    if (settingsKeyInput == "showBackgroundImage") {
      settingsKey = kNewTabPageShowBackgroundImage;
@@ -584,7 +592,7 @@ index e02f9b6792..a4d216e1a6 100644
    } else if (settingsKeyInput == "showClock") {
      settingsKey = kNewTabPageShowClock;
    } else if (settingsKeyInput == "showStats") {
-@@ -520,8 +551,10 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -505,8 +538,10 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
      settingsKey = kNewTabPageShowToday;
    } else if (settingsKeyInput == "isBraveTodayOptedIn") {
      settingsKey = kBraveTodayOptedIn;
@@ -595,7 +603,7 @@ index e02f9b6792..a4d216e1a6 100644
    } else if (settingsKeyInput == "isBrandedWallpaperNotificationDismissed") {
      settingsKey = kBrandedWallpaperNotificationDismissed;
    } else if (settingsKeyInput == "hideAllWidgets") {
-@@ -546,24 +579,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
+@@ -531,24 +566,29 @@ void BraveNewTabMessageHandler::HandleSaveNewTabPagePref(
    }
    prefs->SetBoolean(settingsKey, settingsValueBool);
 
@@ -625,7 +633,7 @@ index e02f9b6792..a4d216e1a6 100644
    AllowJavascript();
    if (args->GetSize() != 1) {
      LOG(ERROR) << "Invalid input";
-@@ -587,10 +625,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
+@@ -572,10 +612,12 @@ void BraveNewTabMessageHandler::HandleBrandedWallpaperLogoClicked(
          destination_url ? *destination_url : "",
          wallpaper_id ? *wallpaper_id : "");
    }
@@ -638,7 +646,7 @@ index e02f9b6792..a4d216e1a6 100644
    AllowJavascript();
 
    auto* service = ViewCounterServiceFactory::GetForProfile(profile_);
-@@ -605,18 +645,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
+@@ -590,18 +632,22 @@ void BraveNewTabMessageHandler::HandleGetBrandedWallpaperData(
    }
 
    ResolveJavascriptCallback(args->GetList()[0], std::move(data));
@@ -661,7 +669,7 @@ index e02f9b6792..a4d216e1a6 100644
    AllowJavascript();
    // Track if user has ever scrolled to Brave Today.
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.HasEverInteracted", 1, 1);
-@@ -633,10 +677,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
+@@ -618,10 +664,12 @@ void BraveNewTabMessageHandler::HandleTodayInteractionBegin(
    int answer = it_count - kSessionCountBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklySessionCount", answer,
                               base::size(kSessionCountBuckets) + 1);
@@ -674,7 +682,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Argument should be how many cards visited in this session.
    // We need the front-end to give us this since this class
    // will be destroyed and re-created when the user navigates "back",
-@@ -670,10 +716,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
+@@ -655,10 +703,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardVisit(
          item_id, creative_instance_id,
          ads::mojom::BraveAdsPromotedContentAdEventType::kClicked);
    }
@@ -687,7 +695,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Argument should be how many cards viewed in this session.
    int cards_viewed_total = args->GetList()[0].GetInt();
    // Track how many Brave Today cards have been viewed per session
-@@ -690,10 +738,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
+@@ -675,10 +725,12 @@ void BraveNewTabMessageHandler::HandleTodayOnCardViews(
    int answer = it_count - kBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyMaxCardViewsCount", answer,
                               base::size(kBuckets) + 1);
@@ -700,7 +708,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Argument should be how many cards viewed in this session.
    std::string creative_instance_id = args->GetList()[0].GetString();
    std::string item_id = args->GetList()[1].GetString();
-@@ -703,10 +753,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
+@@ -688,10 +740,12 @@ void BraveNewTabMessageHandler::HandleTodayOnPromotedCardView(
          item_id, creative_instance_id,
          ads::mojom::BraveAdsPromotedContentAdEventType::kViewed);
    }
@@ -713,7 +721,7 @@ index e02f9b6792..a4d216e1a6 100644
    AllowJavascript();
    std::string callback_id;
    args->GetString(0, &callback_id);
-@@ -734,10 +786,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
+@@ -719,10 +773,12 @@ void BraveNewTabMessageHandler::HandleTodayGetDisplayAd(
        },
        weak_ptr_factory_.GetWeakPtr(), callback_id);
    ads_service_->GetInlineContentAd("900x750", std::move(on_ad_received));
@@ -726,7 +734,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Collect params
    std::string item_id;
    std::string creative_instance_id;
-@@ -764,10 +818,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
+@@ -749,10 +805,12 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdVisit(
    ads_service_->OnInlineContentAdEvent(
        item_id, creative_instance_id,
        ads::mojom::BraveAdsInlineContentAdEventType::kClicked);
@@ -739,7 +747,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Collect params
    std::string item_id;
    std::string creative_instance_id;
-@@ -795,6 +851,8 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+@@ -780,6 +838,8 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
    ads_service_->OnInlineContentAdEvent(
        item_id, creative_instance_id,
        ads::mojom::BraveAdsInlineContentAdEventType::kViewed);
@@ -748,7 +756,7 @@ index e02f9b6792..a4d216e1a6 100644
    // Let p3a know an ad was viewed
    WeeklyStorage storage(profile_->GetPrefs(), kBraveTodayWeeklyCardViewsCount);
    storage.AddDelta(1u);
-@@ -805,6 +863,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
+@@ -790,6 +850,7 @@ void BraveNewTabMessageHandler::HandleTodayOnDisplayAdView(
    int answer = it_count - kBuckets;
    UMA_HISTOGRAM_EXACT_LINEAR("Brave.Today.WeeklyDisplayAdsViewedCount", answer,
                               base::size(kBuckets) + 1);
@@ -757,16 +765,17 @@ index e02f9b6792..a4d216e1a6 100644
 
  void BraveNewTabMessageHandler::OnPrivatePropertiesChanged() {
 diff --git a/common/extensions/api/BUILD.gn b/common/extensions/api/BUILD.gn
-index c3e433a1a3..ef9a461813 100644
+index 9cc06b14b4..88371839eb 100644
 --- a/common/extensions/api/BUILD.gn
 +++ b/common/extensions/api/BUILD.gn
-@@ -73,12 +73,12 @@ json_features("behavior_features") {
+@@ -69,13 +69,13 @@ json_features("behavior_features") {
  }
 
  brave_extensions_api_schema_sources = [
 -  "brave_rewards.json",
 +  #"brave_rewards.json",
    "brave_shields.json",
+   "brave_talk.json",
    "brave_theme.json",
    "brave_today.json",
    "greaselion.json",
