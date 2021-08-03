@@ -15,8 +15,8 @@ pkgbase = x11spice
 	makedepends = libcacard
 	depends = spice
 	depends = gtk3
+	depends = xorg-util-macros
 	source = x11spice-1.1::git+https://gitlab.freedesktop.org/spice/x11spice
 	md5sums = SKIP
 
 pkgname = x11spice
-
