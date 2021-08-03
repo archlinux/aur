@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.7.0pre+33+gadad028b3
+pkgver=4.7.0pre+91+gf89e6950c
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games (git version)'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ source=('gzdoom::git://github.com/coelckers/gzdoom.git'
         '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            '9b6c37c6fc90080ceb4162673f23187210b083af7cd61294ece2711790eac186')
+            '7db3c08eb3756a19a9b6eda76f169e82e8c47b9a28108f17aac24774e2e53ff1')
 
 pkgver() {
     cd gzdoom
