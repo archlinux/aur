@@ -1,0 +1,22 @@
+pkgbase = brpc-git
+	pkgdesc = Apache brpc is an industrial-grade RPC framework for building reliable and high-performance services.
+	pkgver = 1.0.0.rc01.r32.gfd38def9
+	pkgrel = 1
+	url = https://brpc.apache.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = gflags
+	depends = leveldb
+	depends = google-glog
+	depends = openssl
+	depends = protobuf
+	source = brpc-git::git+https://github.com/apache/incubator-brpc
+	source = always_use_dynamic_link.patch
+	sha256sums = SKIP
+	sha256sums = edcfd99c3454ccfa0a7c16efdcac2a123aa14b0f52cf1de022379662c23aced4
+
+pkgname = brpc-git

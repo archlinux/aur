@@ -1,0 +1,25 @@
+diff --git a/config_brpc.sh b/config_brpc.sh
+index 1720031f..18427986 100755
+--- a/config_brpc.sh
++++ b/config_brpc.sh
+@@ -192,18 +192,8 @@ if [ "$SYSTEM" = "Darwin" ]; then
+ 	DYNAMIC_LINKINGS="$DYNAMIC_LINKINGS -Wl,-U,_RegisterThriftProtocol"
+ fi
+ append_linking() {
+-    if [ -f $1/lib${2}.a ]; then
+-        if [ "$SYSTEM" = "Darwin" ]; then
+-            # *.a must be explicitly specified in clang
+-            STATIC_LINKINGS="$STATIC_LINKINGS $1/lib${2}.a"
+-        else
+-            STATIC_LINKINGS="$STATIC_LINKINGS -l$2"
+-        fi
+-        export STATICALLY_LINKED_$2=1
+-    else
+-        DYNAMIC_LINKINGS="$DYNAMIC_LINKINGS -l$2"
+-        export STATICALLY_LINKED_$2=0
+-    fi
++    DYNAMIC_LINKINGS="$DYNAMIC_LINKINGS -l$2"
++    export STATICALLY_LINKED_$2=0
+ }
+ 
+ GFLAGS_LIB=$(find_dir_of_lib_or_die gflags)
