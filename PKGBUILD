@@ -1,5 +1,5 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
-pkgname=rralle
+pkgname=rralle-bin
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='Random quote fetching console utility'
