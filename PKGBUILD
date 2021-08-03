@@ -2,12 +2,12 @@
 
 pkgname=smbbrowse
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Samba share browser and mounter written in Python. Supports SMBv2 and SMBv3"
 arch=(any)
 url="https://github.com/cyberjunkie1970/smbbrowse"
 license=('MIT')
-depends=('smbclient' 'gvfs-smb' 'python' 'python-pillow' 'tk' 'xdg-utils')
+depends=('smbclient' 'gvfs-smb' 'python' 'python-pillow' 'tk' 'xdg-utils' 'sshfs')
 makedepends=('git')
 provides=('SMBbrowse.py')
 source=("git+https://github.com/cyberjunkie1970/${pkgname}.git")
