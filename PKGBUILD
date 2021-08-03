@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=523.3ce2211
+pkgver=1357.68bec41
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
@@ -37,6 +37,8 @@ package()
         "$pkgdir"/usr/bin/librespot
     install -D -m 644 "$_pkgname"/contrib/librespot.service \
         "$pkgdir"/usr/lib/systemd/system/librespot.service
+    install -D -m 644 "$_pkgname"/contrib/librespot.user.service \
+        "$pkgdir"/usr/lib/systemd/user/librespot.service
     install -D -m 644 "$_pkgname"/LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
