@@ -1,9 +1,9 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=cxx
-pkgver=3.2.8
+pkgver=3.3.0
 pkgrel=1
-pkgdesc='Easily compile a main.cpp file written in C++20'
+pkgdesc='Compile C++ code by detecting flags and includes automatically'
 arch=(any)
 url='https://github.com/xyproto/cxx'
 license=(MIT)
@@ -18,8 +18,8 @@ optdepends=('ccache: For faster builds'
             'mingw-w64-gcc: For compiling 64-bit Windows executables'
             'valgrind: For tracing calls and profiling'
             'wine: For running 64-bit Windows exectuables')
-source=("git+$url#commit=dcb95022c4deb4d70ca1ca4d9050eff535a54eb1") # tag: 3.2.8
-b2sums=('SKIP')
+source=("git+$url#commit=bac4780e070d7168a44e9f4ce596d27614eda02e") # tag: 3.3.0
+b2sums=(SKIP)
 
 package() {
   DESTDIR="$pkgdir" make -C $pkgname install

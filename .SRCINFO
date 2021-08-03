@@ -1,6 +1,6 @@
 pkgbase = cxx
-	pkgdesc = Easily compile a main.cpp file written in C++20
-	pkgver = 3.2.8
+	pkgdesc = Compile C++ code by detecting flags and includes automatically
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/xyproto/cxx
 	arch = any
@@ -16,8 +16,7 @@ pkgbase = cxx
 	optdepends = mingw-w64-gcc: For compiling 64-bit Windows executables
 	optdepends = valgrind: For tracing calls and profiling
 	optdepends = wine: For running 64-bit Windows exectuables
-	source = git+https://github.com/xyproto/cxx#commit=dcb95022c4deb4d70ca1ca4d9050eff535a54eb1
+	source = git+https://github.com/xyproto/cxx#commit=bac4780e070d7168a44e9f4ce596d27614eda02e
 	b2sums = SKIP
 
 pkgname = cxx
-
