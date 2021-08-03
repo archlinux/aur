@@ -14,4 +14,3 @@ pkgbase = php-humbug-box-bin
 	sha512sums = 4574410c9a00c41e11d166bcc0d44b4e31b5beaf24bf498a608ebf611e86466a3a61549da6d608b714b3c32c5c361a1514baf38e4db2a5fc0a0d36b69169cb50
 
 pkgname = php-humbug-box-bin
-
