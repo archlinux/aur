@@ -1,0 +1,16 @@
+pkgbase = vim-emoji-git
+	pkgdesc = Emoji in Vim
+	pkgver = 35.g9ed6515
+	pkgrel = 1
+	url = https://github.com/junegunn/vim-emoji
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	provides = vim-emoji
+	conflicts = vim-emoji
+	source = git+https://github.com/junegunn/vim-emoji.git
+	md5sums = SKIP
+
+pkgname = vim-emoji-git
