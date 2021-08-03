@@ -3,5 +3,7 @@
 !gdl.profile
 !gdl-python3.patch
 !gdl-graphicsmagick.patch
+!gdl-mallinfo2.patch
+!gdl-tiff.patch
 !PKGBUILD
 !.SRCINFO

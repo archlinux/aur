@@ -1,0 +1,199 @@
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/src/tiff.cxx gdl-1.0.0-rc.3/src/tiff.cxx
+--- gdl-1.0.0-rc.3_orig/src/tiff.cxx	2020-06-19 18:03:33.000000000 +0200
++++ gdl-1.0.0-rc.3/src/tiff.cxx	2021-07-31 23:55:20.514208009 +0200
+@@ -219,24 +219,24 @@
+             return true;
+         }
+ 
+-        uint16 Handler::DirectoryCount() const
++        uint16_t Handler::DirectoryCount() const
+         {
+             return (tiff_ ? nDirs_ : 0);
+         }
+ 
+-        uint16 Handler::FileVersion() const
++        uint16_t Handler::FileVersion() const
+         {
+             return (tiff_ ? verNum_ : 0);
+         }
+ 
+-        typedef void (*ScanlineFn)(BaseGDL*, uint32, uint32, const void*, size_t);
++        typedef void (*ScanlineFn)(BaseGDL*, uint32_t, uint32_t, const void*, size_t);
+         template<typename T>
+         ScanlineFn createScanlineFn(BaseGDL*& var, T* val)
+         {
+             if(!(var = val))
+                 return nullptr;
+ 
+-            return [](BaseGDL* image, uint32 x, uint32 y, const void* buf, size_t bytes) {
++            return [](BaseGDL* image, uint32_t x, uint32_t y, const void* buf, size_t bytes) {
+                 auto img = static_cast<T*>(image);
+                 auto ptr = reinterpret_cast<typename T::Ty*>(img->DataAddr());
+                 auto dim = img->Dim();
+@@ -248,9 +248,9 @@
+ 
+         BaseGDL* Handler::ReadImage(const Directory& dir, const Rectangle& rect)
+         {
+-            uint32 c = dir.samplesPerPixel;
+-            uint32 w = (rect.w ? rect.w : dir.width - rect.x);
+-            uint32 h = (rect.h ? rect.h : dir.height - rect.y);
++            uint32_t c = dir.samplesPerPixel;
++            uint32_t w = (rect.w ? rect.w : dir.width - rect.x);
++            uint32_t h = (rect.h ? rect.h : dir.height - rect.y);
+ 
+             ScanlineFn addScanline;
+             BaseGDL* image = nullptr;
+@@ -289,7 +289,7 @@
+                     goto error;
+                 }
+ 
+-                for(uint32 y = 0; y < h; ++y) {
++                for(uint32_t y = 0; y < h; ++y) {
+                     if(TIFFReadScanline(tiff_, buffer, rect.y + y, 0) == -1)
+                         goto error;
+ 
+@@ -307,13 +307,13 @@
+                     goto error;
+                 }
+ 
+-                for(uint32 y = 0, yrem, yoff; y < h; y += yrem) {
++                for(uint32_t y = 0, yrem, yoff; y < h; y += yrem) {
+                     yoff = (rect.y + y) % dir.tileHeight;
+ 
+                     if(((yrem = dir.tileHeight - yoff) + y) > h)
+                         yrem = h - y;
+ 
+-                    for(uint32 x = 0, xrem, xoff; x < w; x += xrem) {
++                    for(uint32_t x = 0, xrem, xoff; x < w; x += xrem) {
+                         if(TIFFReadTile(tiff_, buffer, rect.x + x, rect.y + y, 0, 0) == -1)
+                             goto error;
+ 
+@@ -323,7 +323,7 @@
+                         if(((xrem = dir.tileWidth - xoff) + x) > w)
+                             xrem = w - x;
+ 
+-                        for(uint32 ty = 0; ty < yrem; ++ty, start += (sampOff * dir.tileWidth))
++                        for(uint32_t ty = 0; ty < yrem; ++ty, start += (sampOff * dir.tileWidth))
+                             addScanline(image, x, y + ty, start, sampOff * xrem);
+                     }
+                 }
+@@ -352,7 +352,7 @@
+ 
+             DStructFactory gtif;
+             TIFF::GeoKey gk;
+-            int16 nvals;
++            int16_t nvals;
+             double* val;
+ 
+             // TIFF geo fields
+diff -U 3 -dHrN -- gdl-1.0.0-rc.3_orig/src/tiff.hxx gdl-1.0.0-rc.3/src/tiff.hxx
+--- gdl-1.0.0-rc.3_orig/src/tiff.hxx	2020-06-19 18:03:33.000000000 +0200
++++ gdl-1.0.0-rc.3/src/tiff.hxx	2021-07-31 23:53:29.572624524 +0200
+@@ -36,12 +36,12 @@
+         struct Directory
+         {
+             tdir_t index                = 0;
+-            uint32 width                = 0;
+-            uint32 height               = 0;
+-            uint32 tileWidth            = 0;
+-            uint32 tileHeight           = 0;
+-            uint16 samplesPerPixel      = 1;
+-            uint16 bitsPerSample        = 1;
++            uint32_t width              = 0;
++            uint32_t height             = 0;
++            uint32_t tileWidth          = 0;
++            uint32_t tileHeight         = 0;
++            uint16_t samplesPerPixel    = 1;
++            uint16_t bitsPerSample      = 1;
+ 
+             struct Position
+             {
+@@ -54,7 +54,7 @@
+                 float x                 = 1.f;
+                 float y                 = 1.f;
+ 
+-                enum class Unit : uint16
++                enum class Unit : uint16_t
+                 {
+                     None                = 1,
+                     Inches              = 2,
+@@ -62,7 +62,7 @@
+                 } unit                  = Unit::Inches;
+             } resolution;
+ 
+-            enum class Orientation : uint16
++            enum class Orientation : uint16_t
+             {
+                 LeftToRightTopToBottom  = 1,
+                 RightToLeftTopToBottom  = 2,
+@@ -74,7 +74,7 @@
+                 BottomToTopLeftToRight  = 8,
+             } orientation               = Orientation::LeftToRightTopToBottom;
+ 
+-            enum class SampleFormat : uint16
++            enum class SampleFormat : uint16_t
+             {
+                 UnsignedInteger         = 1,
+                 SignedInteger           = 2,
+@@ -84,13 +84,13 @@
+                 ComplexFloatingPoint    = 6,
+             } sampleFormat              = SampleFormat::UnsignedInteger;
+ 
+-            enum class PlanarConfig : uint16
++            enum class PlanarConfig : uint16_t
+             {
+                 Contiguous              = 1,
+                 Separate                = 2,
+             } planarConfig              = PlanarConfig::Contiguous;
+ 
+-            enum class Photometric : uint16
++            enum class Photometric : uint16_t
+             {
+                 MinIsWhite              = 0,
+                 MinIsBlack              = 1,
+@@ -109,9 +109,9 @@
+ 
+             struct ColorMap
+             {
+-                uint16* red;
+-                uint16* green;
+-                uint16* blue;
++                uint16_t* red;
++                uint16_t* green;
++                uint16_t* blue;
+             } colorMap                  = { 0 };
+ 
+             const char* description     = "";
+@@ -148,8 +148,8 @@
+ 
+         struct Rectangle
+         {
+-            uint32 x, y;
+-            uint32 w, h;
++            uint32_t x, y;
++            uint32_t w, h;
+         };
+ 
+         class Handler
+@@ -161,8 +161,8 @@
+             bool        Open(const char* file, const char* mode);
+             void        Close();
+             bool        GetDirectory(tdir_t, Directory&) const;
+-            uint16      DirectoryCount() const;
+-            uint16      FileVersion() const;
++            uint16_t    DirectoryCount() const;
++            uint16_t    FileVersion() const;
+             BaseGDL*    ReadImage(const Directory&, const Rectangle& = { 0 });
+ 
+             template<typename... Ts>
+@@ -193,8 +193,8 @@
+             #endif
+             TIFFErrorHandler    defEH_  = nullptr;
+             TIFFErrorHandler    defWH_  = nullptr;
+-            uint16              nDirs_  = 1;
+-            uint16              verNum_ = 0;
++            uint16_t            nDirs_  = 1;
++            uint16_t            verNum_ = 0;
+         };
+     }
+ 

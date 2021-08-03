@@ -5,55 +5,53 @@
 # Contributor: Jan Kohnert <kohni.jk at gmail dot com>
 
 pkgname=python-gdl
-pkgver=0.9.9
+pkgver=1.0.0_rc.3
 pkgrel=2
 pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
-url="http://gnudatalanguage.sourceforge.net/"
+url="http://gnudatalanguage.sourceforge.net"
 license=('GPL')
 depends=("gnudatalanguage=${pkgver}")
-makedepends=('cmake' 'python')
+makedepends=('cmake')
 #options=('!makeflags')
 conflicts=('python2-gdl')
-source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
-#       'gdl-tirpc.patch'
-#       'gdl-updates.patch'
-        'gdl-python3.patch'
-        'gdl-graphicsmagick.patch'
-        'gdl.profile')
-md5sums=('749dc9b6dd0b9a5385ffe83e7b1a6f46'
-         'f757aec04c3149e5cd003990d50c8fa4'
-         '366bb65898facb4112dd213fe20c69e3'
-         '40aa5fd8278cd8e80425c62a577563cc')
+source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver/_/-}.tar.gz"
+        'gdl.profile'
+        'gdl-mallinfo2.patch'
+        'gdl-tiff.patch')
+md5sums=('a6dbcbf5eaf7bb27440fdb69b84d38d7'
+         '40aa5fd8278cd8e80425c62a577563cc'
+         'ae546f1cb8f775dfc8589f656bdaf40a'
+         'e3270e6d366670a10947e4199c7bc35a')
 
 prepare() {
-    cd ${srcdir}/gdl-${pkgver}
+    cd ${srcdir}/gdl-${pkgver/_/-}
 
 #   patch -p1 < ../gdl-tirpc.patch
 #   patch -p1 < ../gdl-updates.patch
-    patch -Np1 -l -i "${srcdir}/gdl-python3.patch"
-    patch -Np1 -i "${srcdir}/gdl-graphicsmagick.patch"
+    patch -p1 -l -N -i "${srcdir}"/gdl-mallinfo2.patch
+    patch -p1 -l -N -i "${srcdir}"/gdl-tiff.patch
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
-    cd ${srcdir}/gdl-${pkgver}
+    cd ${srcdir}/gdl-${pkgver/_/-}
     if [[ -d build ]]; then
         rm -r build
     fi
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=ON -DPYTHONVERSION=3 \
+    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=ON -DPYTHONVERSION=3 \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_MODULE=ON \
         -DGRAPHICSMAGICK=ON -DMAGICK=OFF -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
-        -DHDF5=ON -DGRIB=ON -DUDUNITS=ON -DEIGEN3=ON \
-        -DNETCDF=ON -DREADLINE=ON -DEDITLINE=OFF ..
+        -DHDF5=ON -DGRIB=ON -DUDUNITS2=ON -DEIGEN3=ON \
+        -DNETCDF=ON -DREADLINE=ON -DLIBPROJ4=OFF -DGLPK=ON -DSHAPELIB=ON ..
 
     make
 }
 
 package() {
-    cd ${srcdir}/gdl-${pkgver}/build
+    cd ${srcdir}/gdl-${pkgver/_/-}/build
     if [[ -d ../pkginstall ]]; then
         rm -r ../pkginstall
     fi

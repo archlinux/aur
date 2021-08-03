@@ -1,23 +1,21 @@
 pkgbase = python-gdl
 	pkgdesc = Python interface for the GNU Data Language(GDL)
-	pkgver = 0.9.9
+	pkgver = 1.0.0_rc.3
 	pkgrel = 2
-	url = http://gnudatalanguage.sourceforge.net/
+	url = http://gnudatalanguage.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = python
-	depends = gnudatalanguage=0.9.9
+	depends = gnudatalanguage=1.0.0_rc.3
 	conflicts = python2-gdl
-	source = https://github.com/gnudatalanguage/gdl/archive/v0.9.9.tar.gz
-	source = gdl-python3.patch
-	source = gdl-graphicsmagick.patch
+	source = https://github.com/gnudatalanguage/gdl/archive/v1.0.0-rc.3.tar.gz
 	source = gdl.profile
-	md5sums = 749dc9b6dd0b9a5385ffe83e7b1a6f46
-	md5sums = f757aec04c3149e5cd003990d50c8fa4
-	md5sums = 366bb65898facb4112dd213fe20c69e3
+	source = gdl-mallinfo2.patch
+	source = gdl-tiff.patch
+	md5sums = a6dbcbf5eaf7bb27440fdb69b84d38d7
 	md5sums = 40aa5fd8278cd8e80425c62a577563cc
+	md5sums = ae546f1cb8f775dfc8589f656bdaf40a
+	md5sums = e3270e6d366670a10947e4199c7bc35a
 
 pkgname = python-gdl
-
