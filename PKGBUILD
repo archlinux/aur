@@ -7,7 +7,7 @@ pkgdesc='Cross platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager'
 license=('MIT')
-depends=('electron13-bin')
+depends=('electron')
 makedepends=('npm')
 source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
         eternalmodmanager
@@ -24,7 +24,7 @@ build() {
 
     # Install node packages and build app
     HOME="${srcdir}/.electron-gyp" npm install
-    npm run build -- --linux --x64 --dir -c.electronDist="/usr/lib/electron13" -c.electronVersion="$(electron13 --version | tail -c +2)"
+    npm run build -- --linux --x64 --dir -c.electronDist="/usr/lib/electron" -c.electronVersion="$(electron --version | tail -c +2)"
 }
 
 package() {
