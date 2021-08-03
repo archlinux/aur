@@ -1,7 +1,7 @@
 pkgbase = gerbera-mysql
 	pkgdesc = UPnP Media Server (Based on MediaTomb) with MySQL backend
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/gerbera/gerbera
 	install = gerbera.install
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = gerbera-mysql
 	conflicts = gerbera
 	replaces = gerbera
 	options = emptydirs
-	source = gerbera-1.8.2.tar.gz::https://github.com/gerbera/gerbera/archive/v1.8.2.tar.gz
+	source = gerbera-1.9.0.tar.gz::https://github.com/gerbera/gerbera/archive/v1.9.0.tar.gz
 	source = gerbera.sysusers
 	source = gerbera.tmpfiles
-	sha256sums = b1e5591515f05a46de052ef4d95a2bb3387e96f565a5ce7abb6a77dbe581f09a
+	sha256sums = 7d3af525a6c37e10869961b2fedc2cfb54d8acf30256a2d5a10394c6a97ed25b
 	sha256sums = 0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc
 	sha256sums = 452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8
 
