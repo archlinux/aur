@@ -2,7 +2,7 @@
 
 _pkgname=asfa
 pkgname=${_pkgname}-git
-pkgver=0.8.0.r18.g179dfa1
+pkgver=0.9.0.r5.ge2992ad
 pkgrel=1
 pkgdesc='share files by upload via ssh and generation of a non-guessable link'
 arch=('x86_64')
