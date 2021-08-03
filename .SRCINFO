@@ -1,6 +1,6 @@
 pkgbase = xdotoolhelper-git
 	pkgdesc = A simple bash script to generate xdotool scripts.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/gamingdoom/xdotoolhelper
 	arch = any

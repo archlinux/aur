@@ -1,6 +1,6 @@
 # Maintainer: Cat2048 <xdotoolhelper@outlook.com>
 pkgname=xdotoolhelper-git
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A simple bash script to generate xdotool scripts."
 arch=('any')
