@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,15 @@ include(KDECMakeSettings)
+ include(CheckIncludeFiles)
+ 
+ set(REQUIRED_QT_VERSION 5.14.0)
+-find_package(Qt5Gui ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++string(REGEX MATCH "^[0-9]" REQUIRED_QT_MAJOR "${REQUIRED_QT_VERSION}")
++set(QT_MAJOR ${REQUIRED_QT_MAJOR} CACHE STRING "Qt major version to use")
++
++if(QT_MAJOR GREATER_EQUAL ${REQUIRED_QT_MAJOR})
++  message(STATUS "Info: building with Qt${QT_MAJOR}")
++  find_package(Qt${QT_MAJOR}Gui ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++else()
++  message(FATAL_ERROR "Qt major version must be at least ${REQUIRED_QT_MAJOR}")
++endif()
+ 
+ include(FindPkgConfig)
+ pkg_check_modules(LibJXL REQUIRED IMPORTED_TARGET libjxl>=0.5.0)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -18,16 +18,16 @@ function(kimageformats_add_plugin plugin)
+     add_library(${plugin} MODULE ${KIF_ADD_PLUGIN_SOURCES})
+     set_property(TARGET ${plugin} APPEND PROPERTY AUTOGEN_TARGET_DEPENDS ${json})
+     set_target_properties(${plugin} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/imageformats")
+-    target_link_libraries(${plugin} Qt5::Gui)
++    target_link_libraries(${plugin} Qt${QT_MAJOR}::Gui)
+     install(TARGETS ${plugin} DESTINATION ${KDE_INSTALL_QTPLUGINDIR}/imageformats)
+ endfunction()
+ 
+ ##################################
+ 
+ if (LibJXL_FOUND)
+-    kimageformats_add_plugin(libqjpegxl JSON "jpegxl.json" SOURCES "main.cpp" "qjpegxlhandler.cpp")
+-    target_link_libraries(libqjpegxl PkgConfig::LibJXL PkgConfig::LibJXLThreads)
+-    install(FILES jxl.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/qimageioplugins/)
++    kimageformats_add_plugin(libqjpegxl-qt${QT_MAJOR} JSON "jpegxl.json" SOURCES "main.cpp" "qjpegxlhandler.cpp")
++    target_link_libraries(libqjpegxl-qt${QT_MAJOR} PkgConfig::LibJXL PkgConfig::LibJXLThreads)
++    install(FILES jxl.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR}/qimageioplugins/ RENAME jxl-qt${QT_MAJOR}.desktop)
+ endif()
+ 
+ ##################################
