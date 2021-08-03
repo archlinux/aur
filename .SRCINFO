@@ -1,0 +1,25 @@
+pkgbase = eclipse-jee-bin
+	pkgdesc = Highly extensible IDE
+	pkgver = 4.20
+	pkgrel = 1
+	url = https://www.eclipse.org
+	arch = x86_64
+	license = EPL
+	makedepends = imagemagick
+	depends = java-environment>=11
+	depends = polkit
+	provides = eclipse-jee
+	provides = eclipse-java
+	conflicts = eclipse-jee
+	conflicts = eclipse-java
+	conflicts = eclipse-cpp
+	source = eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse.desktop
+	source = eclipse-root.desktop
+	source = eclipse.policy
+	sha512sums = 89b8d359e7a0e5891b4adce63b464a84520c7aff7fde8f47689b2414dc7fdb1247d74f8651986d7fe8699561368c10133c9633b0d39fc7cc76b6206d574eb4cb
+	sha512sums = 105f797bbcd7465b87ea0b43f3a243fa1c49e6b6ce26cde51c2e651b217ea596d4317456e5718efeff500a1eed7223e2a01f5b41769a1cf66233d5dd36e9b988
+	sha512sums = 3a7ce30eac368d3edc73f0525ae212fc174da3a53db456839ca2747aaa250e0029617e9e3e493a9b90abd6746345bced7b68ee4a1d553bad743f80f264a71b92
+	sha512sums = ddeb688a077bba915333270934a13bdb0720b07b0d36cf0d39fdc33648c1c80cc41a5bab8ae97b58317cbf03b49c02f256d04dfb43fefe3eaaa43eaaa4e3276d
+
+pkgname = eclipse-jee-bin

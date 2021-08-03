@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Eclipse (Root)
+Comment=Open Development Platform
+Exec=pkexec /opt/eclipse/eclipse %u
+Icon=eclipse
+Terminal=false
+Categories=GTK;Development;IDE;
+StartupNotify=true
+MimeType=x-scheme-handler/eclipse+command;x-scheme-handler/eclipse+mpc;
