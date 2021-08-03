@@ -1,6 +1,6 @@
 pkgbase = python310
 	pkgdesc = Major release 3.10 of the Python high-level programming language
-	pkgver = 3.10.0b4
+	pkgver = 3.10.0rc1
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = python310
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
-	source = https://www.python.org/ftp/python/3.10.0/Python-3.10.0b4.tar.xz
-	sha256sums = 27d2f40401144830bd89d632002d1ab7c7898637f098d83e813e3edf70dd3b40
+	source = https://www.python.org/ftp/python/3.10.0/Python-3.10.0rc1.tar.xz
+	sha256sums = 135b56c2703ad8e01a2728b564f13ffe5cea691fc244f40df4d9e1b3841e690c
 
 pkgname = python310
-
