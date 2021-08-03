@@ -1,0 +1,14 @@
+pkgbase = typography
+	pkgdesc = Tool for working with the GNOME typography design guidelines
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/typography
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	source = git+https://gitlab.gnome.org/World/design/typography.git#tag=0.1.0
+	md5sums = SKIP
+
+pkgname = typography
