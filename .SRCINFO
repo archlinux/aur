@@ -1,0 +1,20 @@
+pkgbase = feef-git
+	pkgdesc = a feed-querying and filtering tool
+	pkgver = v0.1.0.r3.gbd88407
+	pkgrel = 1
+	url = https://sr.ht/~skuzzymiglet/feef
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = fzf
+	depends = bash
+	depends = findutils
+	depends = xdg-utils
+	depends = wget
+	provides = feef
+	provides = feef-read
+	source = git+https://git.sr.ht/~skuzzymiglet/feef
+	sha256sums = SKIP
+
+pkgname = feef-git
