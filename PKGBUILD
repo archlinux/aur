@@ -7,24 +7,32 @@ pkgname=advanced-ssh-config
 _name=assh
 pkgver=2.11.3
 _vcsref=281772c
-pkgrel=2
+pkgrel=3
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
 url='https://github.com/moul/assh'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
+optdepends=(
+  'bash-completion: for shell auto-completion'
+  'zsh-completions: for shell auto-completion'
+)
 conflicts=('assh-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
 sha256sums=('da95db33f72ad2531124b0de42074ba61ac1eebdad90bac90c68d1b02aa51354')
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$_name-$pkgver"
   go build \
      -trimpath \
      -buildmode=pie \
      -modcacherw \
-     -ldflags "-X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
+     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
      -o assh \
      .
 }
