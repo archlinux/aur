@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=hostctl-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Command-line tool to manage your hosts file'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_64-bit.tar.gz")
-sha256sums=('68b3ad82317291a8bb1ed36eb43595c32dde4228bd19312d5dcd9f712103bf66')
+sha256sums=('85951c9aaba3761befcf280786bd7dc98d13a8413f394721db3f76079e59bd24')
 
 package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}/"
