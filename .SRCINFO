@@ -1,7 +1,7 @@
 pkgbase = messages-git
 	pkgdesc = Unnofficial messages desktop app.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/androidmessages/application
 	arch = any
 	license = GPL
@@ -17,4 +17,3 @@ pkgbase = messages-git
 	sha256sums = SKIP
 
 pkgname = messages-git
-

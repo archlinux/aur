@@ -1,7 +1,7 @@
 pkgname=messages-git
 _pkgname=Messages-git
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unnofficial messages desktop app."
 arch=('any')
 url="https://gitlab.com/androidmessages/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@13.1.4 electron-context-menu@3.1.1 electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@13.1.7 electron-context-menu@3.1.1 electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in Messages-linux-*/ ; do mv "${dir}" "Messages" ;done
 }
