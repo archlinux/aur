@@ -11,7 +11,7 @@ pkgbase = qt5-jpegxl-image-plugin
 	makedepends = highway
 	depends = libjxl
 	depends = qt5-base
-	source = https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v0.2.0/qt5-jpegxl-image-plugin-0.2.0.tar.gz
+	source = https://github.com/novomesk/qt-jpegxl-image-plugin/archive/v0.2.0/qt-jpegxl-image-plugin-0.2.0.tar.gz
 	sha256sums = 90c8c5b0afb709d4a71f536b3c1eb04d4f26a186220b2cae1b396c42ffbe299c
 
 pkgname = qt5-jpegxl-image-plugin
