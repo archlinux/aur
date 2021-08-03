@@ -1,6 +1,6 @@
 pkgbase = libirimager-bin
 	pkgdesc = Development library for Optris PI imagers.
-	pkgver = 8.5.1
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = http://www.evocortex.org/irimagerdirect-sdk/
 	install = libirimager-bin.install
@@ -11,8 +11,7 @@ pkgbase = libirimager-bin
 	depends = systemd-libs>=1.0
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://ftp.evocortex.com/libirimager-8.5.1-amd64.deb
-	sha512sums_x86_64 = 7466dcd89f22f70bbe940bb42caaa9bbc2f73954c86463750a5a3756f8fe5dbdd45c5e42589c7c6f3f1709e6a498d6eafbcfd8528d71088d68fb85a024478011
+	source_x86_64 = http://ftp.evocortex.com/libirimager-8.7.0-amd64.deb
+	sha512sums_x86_64 = 5329b4c94f8d73532f97478ea2bd119374c94cfca9e3d8a7517bca4e26e43a6a938879ed7365e07ca7342b287dd63d255fe0cbd2d3725886d3428364ba4eabf7
 
 pkgname = libirimager-bin
-
