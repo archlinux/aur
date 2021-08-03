@@ -11,22 +11,17 @@ arch=("i686" "x86_64")
 url="https://github.com/osch/lua-lpugl#lpugl"
 license=("MIT")
 depends=("lua" "lua-oocairo" "libgl")
-makedepends=("luarocks")
 source=("https://github.com/osch/lua-$_pkgluaname/archive/v$pkgver.tar.gz")
 package() {
 	_luaver=$($_luacmd -e 'io.write(_VERSION:gsub("^.* (.*)$","%1"),"")')
-	cd "$srcdir/$pkgname-$pkgver"
-	sed -i -e 's/, "oocairo"//' "rockspecs/"$_pkgluaname"_cairo-$pkgver-$_rockrel.rockspec"
-	luarocks --lua-version $_luaver --tree="$pkgdir/usr" make "rockspecs/"$_pkgluaname"-$pkgver-$_rockrel.rockspec"
-	luarocks --lua-version $_luaver --tree="$pkgdir/usr" make "rockspecs/"$_pkgluaname"_cairo-$pkgver-$_rockrel.rockspec"
-	luarocks --lua-version $_luaver --tree="$pkgdir/usr" make "rockspecs/"$_pkgluaname"_opengl-$pkgver-$_rockrel.rockspec"
-	mkdir -p "$pkgdir/usr/share/doc"
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	mv "$pkgdir/usr/lib/luarocks/rocks-"*"/$_pkgluaname/$pkgver-$_rockrel/doc" "$pkgdir/usr/share/doc/$pkgname"
-	rm -rf "$pkgdir/usr/share/lua"
-	chmod -R 0644 "$pkgdir/usr/share/doc/$pkgname"/*
-	ln -s "../../doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	rm -rf "$pkgdir/usr/lib/luarocks"
+	cd "$srcdir/$pkgname-$pkgver"/src
+	sed -i -e "s/LPUGL_VERSION=Makefile-1/LPUGL_VERSION=$pkgver/" Makefile
+	make
+	cd build
+	install -D -t "$pkgdir/usr/lib/lua/$_luaver/"   -m "u=rwx,go=rx" lpugl.so lpugl_cairo.so lpugl_opengl.so 
+	cd ../../
+	install -D -t "$pkgdir/usr/share/doc/$pkgname/"      -m "u=rw,go=r"  doc/README.md
+	install -D -t "$pkgdir/usr/share/licenses/$pkgname/" -m "u=rw,go=r"  LICENSE
 }
 
 md5sums=('7d9408f67a69790262b22e5618f45448')

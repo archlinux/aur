@@ -6,7 +6,6 @@ pkgbase = lua-lpugl
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = luarocks
 	depends = lua
 	depends = lua-oocairo
 	depends = libgl
