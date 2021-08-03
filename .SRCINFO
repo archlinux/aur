@@ -1,6 +1,6 @@
 pkgbase = run-desktop
-	pkgdesc = Run desktop files using xdg-open.
-	pkgver = 1
+	pkgdesc = .desktop file launcher. Can to run .desktop files using xdg-open.
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/run-desktop/
 	install = run-desktop.install

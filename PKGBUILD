@@ -1,9 +1,9 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=run-desktop
-pkgver=1
+pkgver=0.0.1
 pkgrel=1
-pkgdesc="Run desktop files using xdg-open."
+pkgdesc=".desktop file launcher. Can to run .desktop files using xdg-open."
 arch=(any)
 url="https://aur.archlinux.org/packages/run-desktop/"
 license=('GPL')
