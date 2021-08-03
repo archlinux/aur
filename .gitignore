@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!autosub.lua
+!LICENSE
+!PKGBUILD
