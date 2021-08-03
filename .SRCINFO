@@ -1,0 +1,13 @@
+pkgbase = python-launcher
+	pkgdesc = Launch your Python interpreter the lazy/smart way!
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/brettcannon/python-launcher
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = python-launcher-1.0.0.tar.gz::https://github.com/brettcannon/python-launcher/archive/refs/tags/v1.0.0.tar.gz
+	sha512sums = 52d6e9fe4fb7f9651c25d87d3b390431d53830d1c80f2fc903807da73ec66ae495ca07a3a158030c69396d3dfa155f0928e9b21652b5e92aed2a1c73d8c02562
+
+pkgname = python-launcher
