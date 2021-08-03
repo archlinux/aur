@@ -1,7 +1,7 @@
 # Maintainer: Kevin Kuehler <keur@xcf.berkeley.edu>
 
 pkgname='git-quick-stats'
-pkgver='2.1.9'
+pkgver='2.3.0'
 pkgrel=1
 pkgdesc='`git-quick-stats` is a simple and efficient way to access various statistics in git repository.'
 arch=('x86_64')

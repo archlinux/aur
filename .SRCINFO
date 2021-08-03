@@ -1,6 +1,6 @@
 pkgbase = git-quick-stats
 	pkgdesc = `git-quick-stats` is a simple and efficient way to access various statistics in git repository.
-	pkgver = 2.1.9
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/arzzen/git-quick-stats
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = git-quick-stats
 	depends = util-linux
 	provides = git-quick-stats
 	conflicts = git-quick-stats
-	source = git-quick-stats::git+https://github.com/arzzen/git-quick-stats#tag=2.1.9
+	source = git-quick-stats::git+https://github.com/arzzen/git-quick-stats#tag=2.3.0
 	sha256sums = SKIP
 
 pkgname = git-quick-stats
-
