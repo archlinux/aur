@@ -1,0 +1,14 @@
+pkgbase = python-cplot
+	pkgdesc = Color maps for complex-valued functions
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/nschloe/cplot
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	depends = python-colorio
+	source = https://github.com/nschloe/cplot/archive/v0.4.1.tar.gz
+	sha512sums = 0bd7d443159560b46ed108950bb52d983aae0a1342e8d6259fe266033b412ae2ce786989597fd5fc0c2b267957521c66c0c742b1e786645c4970d7fd5cb1f850
+
+pkgname = python-cplot
