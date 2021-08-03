@@ -1,6 +1,6 @@
 pkgbase = x3270
 	pkgdesc = An IBM 3270 terminal emulator for the X Window System
-	pkgver = 4.0ga12
+	pkgver = 4.0ga14
 	pkgrel = 1
 	url = http://x3270.bgp.nu/
 	install = x3270.install
