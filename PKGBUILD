@@ -6,7 +6,7 @@ pkgname=${_pkgname}
 pkgver=3.0.1
 pkgrel=1
 pkgdesc="Analyzes some PHP source code and tries to fix coding standards issues (PSR-1 and PSR-2 compatible)."
-url="http://cs.sensiolabs.org/"
+url="https://github.com/FriendsOfPHP"
 license=("MIT")
 arch=("any")
 depends=("php>=7.1.3")
