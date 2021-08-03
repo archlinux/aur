@@ -1,13 +1,13 @@
 pkgbase = hostctl
 	pkgdesc = Command-line tool to manage your hosts file
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 3
 	url = https://github.com/guumaster/hostctl
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = hostctl-bin
-	source = https://github.com/guumaster/hostctl/archive/v1.1.0.tar.gz
-	sha256sums = 7d184f5189b98657bc5be3b4b34d3f908794f545e4648631d365ae9544155a77
+	source = https://github.com/guumaster/hostctl/archive/v1.1.1.tar.gz
+	sha256sums = d9e458c164d50c14deada5eafdfde5b7887aefc8025e4e6c4dda82ec946827f1
 
 pkgname = hostctl
