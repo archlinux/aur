@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=wch-bleuart
-pkgname=($pkgbase wch-bleuart-app wch-bleuart-lib wch-bleuart-guide)
+pkgname=($pkgbase wch-bleuart-app wch-ble-lib wch-bleuart-guide)
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('GPL2' 'GPL3' 'Custom')
@@ -13,22 +13,22 @@ depends=('bash')
 makedepends=('libarchive' 'unarchiver')
 optdepends=('mounriver-studio-toolchain-bin: This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.')
 source=("wch-bleuart-app-${pkgver}.zip::http://www.wch.cn/downloads/file/347.html"
-        "wch-bleuart-lib-${pkgver}.zip::http://www.wch.cn/downloads/file/346.html"
+        "wch-ble-lib-${pkgver}.zip::http://www.wch.cn/downloads/file/349.html"
         "CH9143DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/332.html"
         "CH9140DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/331.html"
         "CH9141DS1-${pkgver}.pdf::http://www.wch.cn/downloads/file/274.html")
 
 sha256sums=('cba8b6949bd91967b182c38086da7a329184c35b749cb4df4d38541edc2dd18b'
-            '9f9326c81fdf2d1e88e621a628f1c5d64c55d07fd2dab67c5362a3c9b1a3282d'
+            'f8c2d31a356cbd09fce6635f176c5ce24ff1f9c4ea2bfaf88fa9fae98638288b'
             '7d31eb1b4fede49c7f6786c072a6a4d61329dad797b1ad72e5060ac24f33456b'
             '4013a01ef7a7928e3232b0aed9a4622ad4a9c4ac3481900c6ff895250de690ef'
             '2b2140fed808922a9f7f84891bacd9d401fcc22ebcec0185b45b3254effc92a4')
 
-noextract=(wch-bleuart-app-${pkgver}.zip wch-bleuart-lib-${pkgver}.zip)
+noextract=(wch-bleuart-app-${pkgver}.zip wch-ble-lib-${pkgver}.zip)
 
 package_wch-bleuart() {
     pkgdesc="Wch-bleuart contains all related software packages of BleUart."
-    depends=(wch-bleuart-app wch-bleuart-lib wch-bleuart-guide)
+    depends=(wch-bleuart-app wch-ble-lib wch-bleuart-guide)
 }
 
 package_wch-bleuart-app() {
@@ -43,6 +43,7 @@ package_wch-bleuart-app() {
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/bleuart" << EOF
 #!/bin/env bash
+
 cd /opt/wch/${pkgname}
 exec ./BleUart "\$@"
 
@@ -61,13 +62,13 @@ Encoding=UTF-8
 EOF
 }
 
-package_wch-bleuart-lib() {
-    pkgdesc="The BLE serial interface library of each system platform is used to call when developing APP for the chip module of CH914X low-power Bluetooth to serial port."
-    provides=('CH914X-lib' 'CH9140-lib' 'CH9141-lib' 'CH9143-lib')
+package_wch-ble-lib() {
+    pkgdesc="WCH BleLib Multi-system platform low Power Bluetooth Development Interface Library."
+    provides=('CH914X-lib' 'CH57X-lib' 'CH9140-lib' 'CH9141-lib' 'CH9143-lib' 'CH579-lib' 'CH578-lib' 'CH573-lib')
     install -dm0755 "${pkgdir}/opt/wch/${pkgname}"
 
     unar -e GBK "${srcdir}/${pkgname}-${pkgver}.zip"
-    cp -r "${srcdir}"/BleUartLib/* "${pkgdir}/opt/wch/${pkgname}"
+    cp -r "${srcdir}"/WCHBleLib_MultiOS/* "${pkgdir}/opt/wch/${pkgname}"
 
     install -Dm0755 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname}.sh" << EOF
 #!/bin/sh
