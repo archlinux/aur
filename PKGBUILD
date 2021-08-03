@@ -3,7 +3,7 @@
 pkgbase=libjxl
 pkgname=('libjxl' 'libjxl-doc')
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG XL image format reference implementation'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -22,7 +22,8 @@ source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/veluca93/IQA-optimization.git'
         'git+https://github.com/Netflix/vmaf.git'
         'git+https://github.com/thorfdbg/difftest_ng.git'
-        'git+https://github.com/google/highway.git')
+        'git+https://github.com/google/highway.git'
+        '010-libjxl-jdk7-fix.patch'::'https://github.com/libjxl/libjxl/commit/76df97ea2d7e91ceecc778d7c098dc376209ee73.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -33,7 +34,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '40e22d47f073b8ccc9382451449360e01afed96ce5d80c89ff82ae8babb96303')
 
 prepare() {
     git -C libjxl submodule init
@@ -48,6 +50,9 @@ prepare() {
     git -C libjxl config --local submodule.third_party/difftest_ng.url "${srcdir}/difftest_ng"
     git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
     git -C libjxl submodule update
+    
+    # https://github.com/libjxl/libjxl/issues/396
+    patch -d libjxl -Np1 -i "${srcdir}/010-libjxl-jdk7-fix.patch"
 }
 
 build() {
