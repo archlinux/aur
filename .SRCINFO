@@ -5,7 +5,6 @@ pkgbase = rralle
 	url = https://github.com/q60/rralle
 	arch = any
 	license = MIT
-	makedepends = binutils
 	makedepends = rebar3
 	makedepends = make
 	depends = erlang
