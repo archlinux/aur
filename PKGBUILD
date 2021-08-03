@@ -2,7 +2,7 @@
 
 pkgname=python-launcher
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Launch your Python interpreter the lazy/smart way!"
 arch=('x86_64')
 license=('MIT')

@@ -1,7 +1,7 @@
 pkgbase = python-launcher
 	pkgdesc = Launch your Python interpreter the lazy/smart way!
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brettcannon/python-launcher
 	arch = x86_64
 	license = MIT
