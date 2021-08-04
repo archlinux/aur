@@ -1,5 +1,5 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
-pkgname=docker-bench-security
+pkgname=docker-bench-security-git
 pkgver=1.3.5.r142.gdfb3a90
 pkgrel=1
 pkgdesc="Check common best-practices around deploying Docker container"
