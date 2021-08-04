@@ -1,6 +1,6 @@
 pkgbase = onevpl-cpu
 	pkgdesc = oneVPL runtime implementation for CPU
-	pkgver = 2021.4.0
+	pkgver = 2021.5.0
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = onevpl-cpu
 	depends = ffmpeg
 	provides = onevpl-runtime
 	options = !emptydirs
-	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2021.4.0/onevpl-cpu-2021.4.0.tar.gz
+	source = https://github.com/oneapi-src/oneVPL-cpu/archive/v2021.5.0/onevpl-cpu-2021.5.0.tar.gz
 	source = 010-onevpl-cpu-fix-libs.patch
 	source = 020-onevpl-cpu-googletest-remove-werror.patch
-	sha256sums = 2c03ca23fc92433f00655063543be478523c7107751bebf571ffe924007c4a55
+	sha256sums = ada5eb8737dc7d3c03fc616d03392177fa7b06adf59ad7e1777059e05d442f72
 	sha256sums = ab8858a2fd1da6de829c180fdf91e41cbaa7caca71ebcb7dff377816ba42c7b0
 	sha256sums = a0caaa1dd7701b6a13ebe58bc6917c4f10f787f33d4d7e53d52766ddf985b980
 
