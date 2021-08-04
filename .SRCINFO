@@ -1,6 +1,6 @@
 pkgbase = xplayer
 	pkgdesc = Simple media player. X-Apps Project.
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
@@ -36,8 +36,7 @@ pkgbase = xplayer
 	optdepends = grilo: Grilo plugins
 	provides = xplayer
 	conflicts = xplayer-git
-	source = xplayer-2.4.0.tar.gz::https://github.com/linuxmint/xplayer/archive/2.4.0.tar.gz
-	md5sums = 6f18fa65a54d4e9c3b7fedad2344aaad
+	source = xplayer-2.4.2.tar.gz::https://github.com/linuxmint/xplayer/archive/2.4.2.tar.gz
+	md5sums = 00bfa48048b789cc0e79b3b0e38df117
 
 pkgname = xplayer
-
