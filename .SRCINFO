@@ -1,6 +1,6 @@
 pkgbase = gimp-plugin-gmic-git
 	pkgdesc = Front-end to the image processing framework G'MICQ
-	pkgver = 2.9.7.r82.gda87d71.gimp.2.0
+	pkgver = 2.9.8.r13.g2885531.gimp.2.0
 	pkgrel = 1
 	url = https://github.com/c-koi/gmic-qt
 	arch = i686
