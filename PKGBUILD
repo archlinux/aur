@@ -14,6 +14,7 @@ checkdepends=(
   'python-responses'
   'python-testfixtures'
   'python-freezegun'
+  'python-pytest-socket'
 )
 depends=(
   'flake8'
@@ -49,7 +50,7 @@ prepare() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  py.test -vvv tests/
+  PYTHONPATH=src py.test -vvv tests/
 }
 
 build() {
