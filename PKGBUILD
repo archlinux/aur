@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zrhoffman@apche.org>
 pkgname=f5fpc
 pkgver=7213.2021.0526.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(x86_64 armv7h)
 source=('LICENSE')
@@ -14,14 +14,15 @@ source_armv7h=("linux_f5cli-${pkgver}.armv7h.deb::https://f5vpn.geneseo.edu/publ
 sha512sums_armv7h=(e8ab78264df37f0b464865052ca43643873d25768b8318628a9b4657c8c07948ed7f8f156f0e6ce4ca1e575a41f5870ef09454fcd0ec58a9fe86b8caba6805c2)
 b2sums_armv7h=(5ef7be9d67efde900c2595b30869e095ca3690b9a8abf220fb9125ed65921259c4bc4475cce36ea7681910eba7d2d3b9001f5ea7036d8635aa26677a8c873087)
 depends=(openssl)
+conflicts=('f5vpn<7213.2021.0526.1-2')
 makedepends=(tar)
+provides=("${pkgname}" svpn)
 url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html'
 license=('commercial')
 
 package() {
   tar -xf data.tar.gz
   install -dm755 "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
 
   rm -r "${srcdir}/usr/local/bin"
 
@@ -31,8 +32,9 @@ package() {
     suffix="$CARCH"
   fi
 
-  ln -s "/usr/local/lib/F5Networks/${pkgname}_${suffix}" "${pkgdir}"/usr/bin/${pkgname}
   chmod u+s "${srcdir}/usr/local/lib/F5Networks/SSLVPN/svpn_${suffix}"
+  ln -s "/usr/local/lib/F5Networks/SSLVPN/svpn_${suffix}" "${pkgdir}/usr/bin/svpn"
+  ln -s "/usr/local/lib/F5Networks/${pkgname}_${suffix}" "${pkgdir}/usr/bin/${pkgname}"
 
   cp -a usr "${pkgdir}"
 }

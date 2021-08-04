@@ -1,13 +1,16 @@
 pkgbase = f5fpc
 	pkgdesc = Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0
 	pkgver = 7213.2021.0526.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html
 	arch = x86_64
 	arch = armv7h
 	license = commercial
 	makedepends = tar
 	depends = openssl
+	provides = f5fpc
+	provides = svpn
+	conflicts = f5vpn<7213.2021.0526.1-2
 	source = LICENSE
 	sha512sums = 8eb670337568d49fa38f4888826db827e6460079f35a81e30f430bfc11df43562c3a4095980266e6ed9372467e3655bd0d699d7618b4798a7f1b25a835983073
 	b2sums = 7a5866d947d40a1c993795f96f87ba94cdefa572fc5524848316792b602bdfd1ad50c639f33b1e72dd97e739c7f7312a8f2efd086aab9be4b5fe4f0790ba37a5
