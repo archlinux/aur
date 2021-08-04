@@ -1,0 +1,13 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -4,8 +4,8 @@
+ 
+ # catch
+ 
+-add_library(catch INTERFACE)
+-target_include_directories(catch INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/catch>)
++add_library(catch INTERFACE IMPORTED GLOBAL)
++target_include_directories(catch SYSTEM INTERFACE /usr/include/catch2)
+ 
+ # fmt
+ 

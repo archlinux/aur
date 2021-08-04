@@ -1,0 +1,12 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -11,7 +11,8 @@ target_include_directories(catch INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOU
+ 
+ if (NOT DYNARMIC_NO_BUNDLED_FMT)
+     # fmtlib formatting library
+-    add_subdirectory(fmt)
++    find_package(fmt)
++    set_property(TARGET fmt::fmt PROPERTY IMPORTED_GLOBAL TRUE)
+ endif()
+ 
+ # mp

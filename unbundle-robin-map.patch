@@ -1,0 +1,14 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -21,9 +21,8 @@ target_include_directories(mp INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE
+ 
+ # robin-map
+ 
+-add_library(robin_map INTERFACE)
+-add_library(tsl::robin_map ALIAS robin_map)
+-target_include_directories(robin_map SYSTEM INTERFACE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/robin-map/include>")
++find_package(tsl-robin-map)
++set_property(TARGET tsl::robin_map PROPERTY IMPORTED_GLOBAL TRUE)
+ 
+ # vixl
+ 

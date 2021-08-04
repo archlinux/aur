@@ -1,0 +1,14 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -35,9 +35,8 @@ endif()
+ 
+ if (NOT TARGET xbyak)
+     if (ARCHITECTURE STREQUAL "x86" OR ARCHITECTURE STREQUAL "x86_64")
+-        add_library(xbyak INTERFACE)
+-        target_include_directories(xbyak SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/xbyak/xbyak)
+-        target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
++        add_library(xbyak INTERFACE IMPORTED GLOBAL)
++        target_include_directories(xbyak SYSTEM INTERFACE /usr/include/xbyak)
+     endif()
+ endif()
+ 

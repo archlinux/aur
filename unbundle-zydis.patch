@@ -1,0 +1,12 @@
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -43,7 +43,5 @@ endif()
+ 
+ # zydis
+ 
+-option(ZYDIS_BUILD_TOOLS "" OFF)
+-option(ZYDIS_BUILD_EXAMPLES "" OFF)
+-set(ZYDIS_ZYCORE_PATH "${CMAKE_CURRENT_LIST_DIR}/zycore" CACHE PATH "")
+-add_subdirectory(zydis EXCLUDE_FROM_ALL)
++add_library(Zydis SHARED IMPORTED GLOBAL)
++set_property(TARGET Zydis PROPERTY IMPORTED_LOCATION /usr/lib/libZydis.so)

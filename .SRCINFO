@@ -1,19 +1,34 @@
 pkgbase = dynarmic-git
 	pkgdesc = An ARM dynamic recompiler
 	pkgver = 5.r97.gf33bd69e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MerryMage/dynarmic
 	arch = x86_64
 	license = BSD
 	makedepends = boost>=1.57
-	makedepends = cmake
+	makedepends = catch2>=2.13.1
+	makedepends = cmake>=3.8
 	makedepends = fmt>=8
 	makedepends = git
+	makedepends = robin-map>=0.6.2
+	makedepends = xbyak>=5.991
+	makedepends = zydis>=3.1
 	provides = dynarmic=5.r97.gf33bd69e
 	provides = libdynarmic.so
 	conflicts = dynarmic
 	source = git+https://github.com/MerryMage/dynarmic.git
+	source = unbundle-catch2.patch
+	source = unbundle-fmt.patch
+	source = unbundle-robin-map.patch
+	source = unbundle-xbyak.patch
+	source = unbundle-zydis.patch
 	b2sums = SKIP
+	b2sums = 7047d87826551417b188afc0d0fef5768840b4110c556c3471411a3ba94a0c270b5996e49a3e97211bc076f80b652a9995c26023a3559976d0eb708ffc4f8436
+	b2sums = e17436a93047f2b43de9aa5013d48daafe924a1c177c0c76d5fb61887ff250ca97262d10c54239e0b5558a4bba191230041b82f93529e5039da53bccb7111fbf
+	b2sums = 0d88d24bc5b44a9a67b4054ccd1ab4da87a1b954ea85c14f010a3aa9684d198360fcded8c12a9865c621ca841e95da119fe32948e51bbc954b1f0ff8f366d11e
+	b2sums = f394f1cc4a81121e0373a5f3df9e00b02784fe1a2f4beaa20122cd2681e3b81aee4b9cc357b9b58c1c976d76ae1036d38cd11b2bfb3af98f6a89238ff8f50a5e
+	b2sums = c948e6a94df3352114f174f3876974785b96ddd530ae43811acf0f6e59626628f8197f59d523ef93f82a658331ba5f2721f3f6d9f09c38c25172558c720a9c8f
 
 pkgname = dynarmic-git
 	depends = libfmt.so
+	depends = libZydis.so
