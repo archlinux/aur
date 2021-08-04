@@ -1,7 +1,7 @@
 pkgbase = python310
 	pkgdesc = Major release 3.10 of the Python high-level programming language
 	pkgver = 3.10.0rc1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python310
 	optdepends = sqlite
 	provides = python
 	source = https://www.python.org/ftp/python/3.10.0/Python-3.10.0rc1.tar.xz
-	sha256sums = 135b56c2703ad8e01a2728b564f13ffe5cea691fc244f40df4d9e1b3841e690c
+	sha256sums = 797061692282d0e573a0093476e57e39cf52cad56782ab2dfb79afadb3c1e638
 
 pkgname = python310
 

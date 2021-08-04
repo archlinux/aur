@@ -3,7 +3,7 @@
 
 pkgname=python310
 pkgver=3.10.0rc1
-pkgrel=2
+pkgrel=3
 _pyver=3.10.0
 _pybasever=3.10
 _pymajver=3
@@ -15,7 +15,7 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('135b56c2703ad8e01a2728b564f13ffe5cea691fc244f40df4d9e1b3841e690c')
+sha256sums=('797061692282d0e573a0093476e57e39cf52cad56782ab2dfb79afadb3c1e638')
 provides=('python')
 
 prepare() {
