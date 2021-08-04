@@ -1,13 +1,13 @@
 pkgbase = rocm-device-libs
 	pkgdesc = Radeon Open Compute - device libs
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-Device-Libs
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = llvm-amdgpu
-	source = rocm-device-libs-4.2.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-4.2.0.tar.gz
-	sha256sums = 34a2ac39b9bb7cfa8175cbab05d30e7f3c06aaffce99eed5f79c616d0f910f5f
+	source = rocm-device-libs-4.3.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/rocm-4.3.0.tar.gz
+	sha256sums = 055a67e63da6491c84cd45865500043553fb33c44d538313dd87040a6f3826f2
 
 pkgname = rocm-device-libs
