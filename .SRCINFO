@@ -1,6 +1,6 @@
 pkgbase = rocm-dbgapi
 	pkgdesc = Support library necessary for a debugger of AMD's GPUs
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/ROCdbgapi
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = rocm-dbgapi
 	makedepends = texlive-latexextra
 	depends = comgr
 	depends = hsa-rocr
-	source = rocm-dbgapi-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCdbgapi/archive/rocm-4.2.0.tar.gz
-	sha256sums = fcdee5aaf5ed40c0377ce007a2947da9e718eeee86ca3e13192ff9e96a1b7373
+	source = rocm-dbgapi-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/ROCdbgapi/archive/rocm-4.3.0.tar.gz
+	source = gcc11-limits.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/ROCdbgapi/pull/2.patch
+	sha256sums = 4255d83d218bb0db8be9fef18e03a955ea1c6de1c635c31685ee5fc1540ddde6
+	sha256sums = d0482525967dc9b0e6e99ef4052e7810872c285c4768987adfcf71399ff87f8b
 
 pkgname = rocm-dbgapi
