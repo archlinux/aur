@@ -1,0 +1,40 @@
+Index: als-2021-20210701-19A88-src/gnat/tester.gpr
+===================================================================
+--- als-2021-20210701-19A88-src.orig/gnat/tester.gpr
++++ als-2021-20210701-19A88-src/gnat/tester.gpr
+@@ -17,6 +17,7 @@
+ 
+ with "lsp_client";
+ with "gnatcoll";
++with "gtkada";
+ 
+ project Tester is
+ 
+Index: als-2021-20210701-19A88-src/Makefile
+===================================================================
+--- als-2021-20210701-19A88-src.orig/Makefile
++++ als-2021-20210701-19A88-src/Makefile
+@@ -72,12 +72,13 @@ endif
+ 
+ all: coverage-instrument
+ 	$(GPRBUILD) -P gnat/tester.gpr -p $(BUILD_FLAGS)
+-	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -p $(BUILD_FLAGS) s-memory.adb
++	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -aP /usr/share/gpr -p $(BUILD_FLAGS) s-memory.adb
+ 	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(COVERAGE_BUILD_FLAGS) \
+ 		-XVERSION=$(TRAVIS_TAG)
+ 	$(GPRBUILD) -P gnat/codec_test.gpr -p $(COVERAGE_BUILD_FLAGS)
+ 	$(GPRBUILD) -P gnat/lsp_client.gpr -p $(COVERAGE_BUILD_FLAGS) \
+ 		-XVERSION=$(TRAVIS_TAG)
++	$(GPRBUILD) -p gnat/lsp_client_glib.gpr -p $(COVERAGE_BUILD_FLAGS)
+ 	mkdir -p integration/vscode/ada/$(PLATFORM)
+ 	cp -f .obj/server/ada_language_server integration/vscode/ada/$(PLATFORM) ||\
+ 	  cp -f .obj/server/ada_language_server.exe integration/vscode/ada/$(PLATFORM)
+@@ -108,6 +109,8 @@ install:
+ 		--mode=dev				\
+ 		--prefix=$(DESTDIR)			\
+ 		$(LIBRARY_FLAGS)
++	gprinstall -f -P gnat/lsp_client_glib.gpr -p -r	\
++      --prefix=$(DESTDIR) $(LIBRARY_FLAGS)
+ ifneq ($(COVERAGE),)
+ 	mkdir -p $(DESTDIR)/share/als/sids || true
+ 	cp .obj/*/*.sid $(DESTDIR)/share/als/sids/
