@@ -1,29 +1,28 @@
-# Maintainer: DisLogicator <supasecrethacker@gmail.com>
+# Maintainer : djnk8 <djnk8@mailinator.com>
+_host='Host: cdn.hancom.com'
+_referer='Referer: https://www.hancom.com/cs_center'
+DLAGENTS=("https::/usr/bin/curl -o %o -H ${_referer// /\\ } -H ${_host// /\\} %u")
 
 pkgname='hoffice'
 pkgver=11.20.0.1520
 pkgrel=1
-pkgdesc="Hancom office programs provided by Hancom. Ported to Arch Linux from Hancom Gooroom OS."
+pkgdesc='Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.'
 arch=('x86_64')
 url='https://www.hancom.com/'
 license=('custom:hoffice')
-depends=('harfbuzz-icu' 'libcurl-gnutls' 'glu')
+depends=('cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'harfbuzz' 'harfbuzz-icu' 'libcups' 'libcurl-gnutls' 'libxcb' 'qt5-base' 'qt5-x11extras' 'zlib')
+optdepends=()
 source=(
-    "https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz"
-    "LICENSE"
+	'https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb'
+	'license.txt'
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+	'SKIP'
+	'09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
 )
 
 package() {
-    msg2 "Please ignore the errors. They don't mean anything."
-    mkdir "${pkgdir}/opt"
-    mkdir "${pkgdir}/opt/hnc"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname" "${srcdir}/LICENSE"
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}"/*.desktop
-    bsdtar -xf hoffice11.zip -C "${pkgdir}/opt/hnc"
-    install -Dm644 -t "${pkgdir}/opt/hnc/icons" "${srcdir}"/*.png
-
+	msg2 "Extracting Package binaries..."
+	bsdtar -xf data.tar.xz -C "$pkgdir/"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/hoffice/LICENSE"
 }

@@ -1,17 +1,27 @@
 pkgbase = hoffice
-	pkgdesc = Hancom office programs provided by Hancom. Ported to Arch Linux from Hancom Gooroom OS.
+	pkgdesc = Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.
 	pkgver = 11.20.0.1520
 	pkgrel = 1
 	url = https://www.hancom.com/
 	arch = x86_64
 	license = custom:hoffice
-	depends = harfbuzz-icu
-	depends = libcurl-gnutls
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
 	depends = glu
-	source = https://github.com/DisLogicator/hoffice/releases/download/11.20.0.1520-rc2/hoffice-11.20.0.1520.tar.gz
-	source = LICENSE
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = libcups
+	depends = libcurl-gnutls
+	depends = libxcb
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = zlib
+	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
+	source = license.txt
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583
 
 pkgname = hoffice
-
