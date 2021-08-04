@@ -111,18 +111,6 @@ pkgname = gcc-go-git
 	conflicts = go-git
 	replaces = gcc-git-multilib-git
 
-pkgname = lib32-gcc-libs-git
-	pkgdesc = 32-bit runtime libraries shipped by GCC
-	groups = multilib-devel-git
-	depends = lib32-glibc>=2.27
-	provides = libgo.so
-	provides = libgfortran.so
-	provides = libubsan.so
-	provides = libasan.so
-	conflicts = lib32-gcc-libs
-	options = !emptydirs
-	options = !strip
-
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
 	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1

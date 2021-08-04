@@ -7,7 +7,7 @@
 # Just edit the --enable-languages option as well as the pkgname array
 
 pkgbase=gcc-git
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git)
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git)
 pkgver=12.0.0_r187145.g929f2cf4105
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
@@ -369,43 +369,44 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_lib32-gcc-libs-git() {
-  pkgdesc='32-bit runtime libraries shipped by GCC'
-  depends=("lib32-glibc>=2.27")
-  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
-  conflicts=(lib32-gcc-libs)
-  groups=(multilib-devel-git)
-  options=(!emptydirs !strip)
-
-  cd gcc-build
-
-  make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
-  rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
-
-  for lib in libatomic \
-             libgfortran \
-             libgo \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub}san \
-             libstdc++-v3/src \
-             libvtv; do
-    make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
-  done
-
-  make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
-
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
-
-  # remove files provided by gcc-libs
-  rm -rf "$pkgdir"/usr/lib
-
-  # Install Runtime Library Exception
-  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
-    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
-}
+## This package already exists on the AUR
+# package_lib32-gcc-libs-git() {
+#   pkgdesc='32-bit runtime libraries shipped by GCC'
+#   depends=("lib32-glibc>=2.27")
+#   provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+#   conflicts=(lib32-gcc-libs)
+#   groups=(multilib-devel-git)
+#   options=(!emptydirs !strip)
+# 
+#   cd gcc-build
+# 
+#   make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
+#   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
+# 
+#   for lib in libatomic \
+#              libgfortran \
+#              libgo \
+#              libgomp \
+#              libitm \
+#              libquadmath \
+#              libsanitizer/{a,l,ub}san \
+#              libstdc++-v3/src \
+#              libvtv; do
+#     make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+#   done
+# 
+#   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
+# 
+#   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+#   rm -f "$pkgdir"/usr/lib32/libgphobos.spec
+# 
+#   # remove files provided by gcc-libs
+#   rm -rf "$pkgdir"/usr/lib
+# 
+#   # Install Runtime Library Exception
+#   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
+#     "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+# }
 
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC"
