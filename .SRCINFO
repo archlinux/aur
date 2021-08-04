@@ -1,7 +1,7 @@
 pkgbase = armv7l-gcc-bootstrap
 	pkgdesc = The GNU Compiler Collection - cross compiler for armv7l
-	pkgver = 10.3.0
-	pkgrel = 2
+	pkgver = 11.2.0
+	pkgrel = 0
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL
@@ -15,14 +15,15 @@ pkgbase = armv7l-gcc-bootstrap
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz
-	source = https://ftp.gnu.org/gnu/gcc/gcc-10.3.0/gcc-10.3.0.tar.xz.sig
-	source = http://isl.gforge.inria.fr/isl-0.23.tar.bz2
-	validpgpkeys = 33C235A34C46AA3FFB293709A328C3A2C3C45C06
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz.sig
+	source = http://isl.gforge.inria.fr/isl-0.24.tar.bz2
+	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
+	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
-	sha256sums = 64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+	sha256sums = d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
 	sha256sums = SKIP
-	sha256sums = c58922c14ae7d0791a77932f377840890f19bc486b653fa64eba7f1026fb214d
+	sha256sums = fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0
 
 pkgname = armv7l-gcc-bootstrap
-
