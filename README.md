@@ -74,7 +74,7 @@ http
 * Finally, all software needs to be run. `lnd` requires some options. Alternatively, a config file can be created for it. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
-tmux new-session -s lnd -d "lnd --externalip=EXTERNAL_IP_ADDRESS --bitcoin.active --bitcoin.mainnet --bitcoin.node=bitcoind --bitcoind.rpcuser=USERNAME --bitcoind.rpcpass=PASSWORD --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333;bash -i"
+tmux new-session -s lnd -d "lnd --externalip=localhost --bitcoin.active --bitcoin.mainnet --bitcoin.node=bitcoind --bitcoind.rpcuser=USERNAME --bitcoind.rpcpass=PASSWORD --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333;bash -i"
 lncli unlock
 tmux new-session -s nbxplorer -d "nbxplorer;bash -i"
 tmux new-session -s btcpayserver -d "btcpayserver;bash -i"
@@ -85,6 +85,3 @@ tmux kill-session -t lnd
 tmux kill-session -t nbxplorer
 tmux kill-session -t btcpayserver
 ```
-
-### Usage with a dynamic IP address
-Give the option "--externalip" your DynDNS domain name.
