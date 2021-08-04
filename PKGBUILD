@@ -3,11 +3,11 @@
 
 pkgname=nbfc-linux-git
 _pkgname=nbfc-linux
-pkgver=0.1.5.r4.g6d80216
-pkgrel=1
+pkgver=0.1.5.r0.g8d5f1fa
+pkgrel=2
 pkgdesc="Lightweight C port of NoteBook FanControl (no Mono required)"
 arch=('i686' 'x86_64')
-url="https://github.com/braph/nbfc-linux"
+url="https://github.com/nbfc-linux/nbfc-linux"
 optdepends=('dmidecode: for getting recommended notebook configurations')
 makedepends=('git')
 license=('GPL3')
