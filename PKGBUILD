@@ -2,7 +2,7 @@
 # If you think this package is shit, contact me with patch
 
 pkgname=keystore-explorer-git
-pkgver=v5.4.4+9+gbdf6b5f
+pkgver=v5.4.4+118+ga3c2c495
 pkgrel=1
 pkgdesc="KeyStore Explorer is a free GUI replacement for the Java command-line utilities keytool and jarsigner."
 _pkgname=keystore-explorer
@@ -15,8 +15,13 @@ depends=('java-environment' 'bash' 'desktop-file-utils')
 makedepends=('unzip' 'gradle' 'java-environment')
 conflicts=('keystore-explorer' 'keystore-explorer-bin')
 provides=('keystore-explorer')
-source=('git+https://github.com/kaikramer/keystore-explorer.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/kaikramer/keystore-explorer.git' 'fix282.patch')
+sha256sums=('SKIP' '8fc828930ab36564e2c947bd32d725a42a15aef7a734915bc92caef2a46586a1')
+
+prepare() {
+    cd "${_pkgname}"
+    patch --forward --strip=1 --input="${srcdir}/fix282.patch"
+}
 
 pkgver() {
   cd ${_pkgname}

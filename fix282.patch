@@ -1,0 +1,31 @@
+diff --git a/kse/build.gradle b/kse/build.gradle
+index 47942b5a..618f67f4 100644
+--- a/kse/build.gradle
++++ b/kse/build.gradle
+@@ -180,7 +180,7 @@ task zip(type: Zip, dependsOn: prepareExe) {
+ 		}
+ 	}
+ 	into("$distFileNamePrefix/lib") {
+-		from configurations.runtime
++		from configurations.runtimeClasspath.files
+ 	}
+ 	into("$distFileNamePrefix/licenses") {
+ 		from(licensesDir) {
+@@ -198,7 +198,7 @@ task zip(type: Zip, dependsOn: prepareExe) {
+ }
+ 
+ task copyDependencies(type: Copy) {
+-   from configurations.compile
++   from configurations.runtimeClasspath.files
+    into dependenciesDir
+ }
+ 
+@@ -358,7 +358,7 @@ ospackage {
+ 
+ 	into "/opt/${packageName}"
+ 	from(jar.outputs.files)
+-	from(configurations.runtime) {
++	from(configurations.runtimeClasspath.files) {
+ 		into 'lib'
+ 	}
+ 	from('lib') {
