@@ -1,51 +1,21 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 22.0.8
+	pkgver = 2021
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
 	license = GPL3
 	makedepends = gcc-ada
-	makedepends = gprbuild-git
-	makedepends = autopep8
-	makedepends = python-coverage
-	makedepends = python-docutils
-	makedepends = python-funcy
-	makedepends = python-mako
-	makedepends = python-psutil
-	makedepends = python-sphinx_rtd_theme
-	makedepends = yapf
-	makedepends = python-pycodestyle
-	makedepends = mypy
-	makedepends = flake8
-	makedepends = python-jsonschema
-	makedepends = python-e3-core
-	makedepends = python-e3-testsuite
-	makedepends = git
-	depends = gnatcoll-iconv
-	depends = gnatcoll-gmp
-	depends = ada-libfswatch-git
-	provides = ada_language_server
-	conflicts = ada_language_server-git
-	conflicts = libvss
-	conflicts = libadalang
-	source = ada_language_server-22.0.8.tar.gz::https://github.com/AdaCore/ada_language_server/archive/22.0.8.tar.gz
-	source = git+https://github.com/AdaCore/VSS.git#commit=0709cab
-	source = git+https://github.com/AdaCore/langkit.git#commit=cbd7542
-	source = git+https://github.com/AdaCore/libadalang.git#commit=cb8f782
-	source = git+https://github.com/AdaCore/libadalang-tools.git#commit=7cc5d58
-	source = git+https://github.com/AdaCore/spawn.git#commit=725a42d
-	source = libadalang-tools.patch
-	source = VSS.patch
-	source = ada_language_server.patch
-	sha1sums = d56ba8b7bc207579ac9bf5f91a1d825986458ff8
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = SKIP
-	sha1sums = 1eb931d9aea713d3d553d9f6ebc44e5bce58f551
-	sha1sums = aee366f733a0821034ac683745799d72f79b1941
-	sha1sums = ee3bc8ed18ef9f1c94361aa91acae4f6c1364a25
+	makedepends = gprbuild
+	depends = libadalang-tools
+	depends = gtkada
+	depends = libvss
+	depends = ada_spawn
+	depends = ada-libfswatch
+	source = ada_language_server-2021-20210701-19A88-src.tar.gz::https://community.download.adacore.com/v1/176c07d5fafde00cbb0b2eaebe13039da27ca135?filename=ada_language_server-2021-20210701-19A88-src.tar.gz
+	source = als.patch
+	sha1sums = 176c07d5fafde00cbb0b2eaebe13039da27ca135
+	sha1sums = a3905d1ee3a4a84fdbbb1a8f5fd1c6deb2b767ba
 
 pkgname = ada_language_server
