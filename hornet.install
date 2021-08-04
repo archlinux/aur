@@ -17,5 +17,11 @@ pre_upgrade() {
 		echo "> hornet$ Node operators should update their Hornet configurations"
 		echo "> hornet$ and restart Hornet for an immediate mitigation."
 		echo "> hornet$ https://status.iota.org/"
+	elif (( $(vercmp $2 1.0.4) < 0 )); then
+		echo "> hornet$ Cleaned up parameter names and values in all config files."
+		echo "> hornet$ Your Hornet configuration may get invalid."
+		echo "> hornet$ A template configuration can be found in"
+		echo "> hornet$ /var/lib/hornet/config.json.pacnew"
+		echo "> hornet$ https://github.com/gohornet/hornet/releases/tag/v1.0.4"
 	fi
 }
