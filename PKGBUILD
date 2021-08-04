@@ -3,7 +3,7 @@
 pkgname=astronciaiptv
 pkgver=0.0.58
 pkgrel=1
-pkgdesc="IPTV player"
+pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://gitlab.com/astroncia/iptv"
 license=('GPL3')

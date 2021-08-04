@@ -1,5 +1,5 @@
 pkgbase = astronciaiptv
-        pkgdesc = IPTV player
+        pkgdesc = IPTV player with EPG support
         pkgver = 0.0.58
         pkgrel = 1
         url = https://gitlab.com/astroncia/iptv
