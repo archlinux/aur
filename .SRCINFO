@@ -1,7 +1,7 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 92.0.4515.107
-	pkgrel = 3
+	pkgver = 92.0.4515.131
+	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
@@ -47,25 +47,25 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=92.0.4515.107
+	provides = chromium=92.0.4515.131
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-92.0.4515.107.tar.xz
-	source = https://github.com/foutrelis/chromium-launcher/archive/v7/chromium-launcher-7.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-92.0.4515.131.tar.xz
+	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-92-patchset-7/chromium-92-patchset-7.tar.xz
 	source = extend-enable-accelerated-video-decode-flag.patch
 	source = linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
 	source = linux-sandbox-fix-fstatat-crash.patch
-	source = make-GetUsableSize-handle-nullptr-gracefully.patch
 	source = sql-make-VirtualCursor-standard-layout-type.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 6e51ac6512a4e95018eefc9fef1d2e7597f28a1c45c763b3a8eb7dde5f557012
-	sha256sums = 86859c11cfc8ba106a3826479c0bc759324a62150b271dd35d1a0f96e890f52f
+	source = chromium-freetype-2.11.patch::https://src.fedoraproject.org/rpms/chromium/raw/rawhide/f/chromium-freetype-2.11.patch
+	sha256sums = b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a
+	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2
 	sha256sums = 66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22
 	sha256sums = 268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3
 	sha256sums = 253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5
-	sha256sums = 4489e5e7854a7dcd9464133eb4664250ce7149ac1714a0bf10ca0d82d8806568
 	sha256sums = dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150
 	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
+	sha256sums = 7ef689cd6b2f85f2b76b2a10ecede003cfa0c2da15acc998ecbc445f2c95ced6
 
 pkgname = chromium-no-extras
