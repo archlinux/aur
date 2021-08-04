@@ -18,11 +18,13 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
+	'SKIP'
 )
 
 package() {
-	msg2 "Extracting Package binaries..."
+	msg2 "Extracting package binaries..."
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/hoffice/LICENSE"
+	install -D -m644 license.txt "$pkgdir/usr/share/licenses/hoffice/license.txt"
+	msg2 "The error messages are from UTF-8 limitations. Please ignore it, as it does no harm."
+	sleep 5
 }

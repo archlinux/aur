@@ -22,6 +22,6 @@ pkgbase = hoffice
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
 	source = license.txt
 	sha256sums = SKIP
-	sha256sums = 09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583
+	sha256sums = SKIP
 
 pkgname = hoffice
