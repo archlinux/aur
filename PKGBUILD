@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 _pkgname=reverse_image_search
-pkgname=firefox-extension-${_pkgname}
+pkgname=firefox-extension-reverse-image-source
 pkgver=3.3.5
 pkgrel=1
 _file=3578603
