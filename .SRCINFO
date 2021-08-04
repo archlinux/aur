@@ -1,0 +1,13 @@
+pkgbase = python-mwoauth
+	pkgdesc = A generic MediaWiki OAuth handshake helper for Python
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mediawiki-utilities/python-mwoauth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-mwoauth-0.3.0.tar.gz::https://github.com/mediawiki-utilities/python-mwoauth/archive/refs/tags/v0.3.0.tar.gz
+	sha512sums = 4d07726687e55669d63de00c5ef2a65400e7c62c269e99c26e3b26873d93074434f96fb886eaa57fffc7738e2f763a84f833b44ff33e27a523a0e9ab930d6dd4
+
+pkgname = python-mwoauth
