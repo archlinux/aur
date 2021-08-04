@@ -4,7 +4,7 @@
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
 pkgver=1.18.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Multimedia graph framework - bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(lib32-aom lib32-bzip2 lib32-chromaprint lib32-curl lib32-faac lib32-faa
         lib32-libmpcdec lib32-libnice lib32-libofa lib32-librsvg lib32-libsndfile
         lib32-libsrtp lib32-libusb lib32-libva lib32-libvdpau lib32-libwebp lib32-libx11
         lib32-libxcb lib32-libxkbcommon-x11 lib32-libxml2 lib32-lilv lib32-mjpegtools lib32-neon
-        lib32-nettle lib32-openal lib32-openexr lib32-openjpeg2 lib32-openssl lib32-opus lib32-orc
+        lib32-nettle lib32-openal lib32-openjpeg2 lib32-openssl lib32-opus lib32-orc
         lib32-pango lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-spandsp lib32-srt
         lib32-vulkan-icd-loader lib32-wayland lib32-webrtc-audio-processing lib32-wildmidi
         lib32-x265 lib32-zbar lib32-zvbi gst-plugins-bad)
@@ -74,6 +74,7 @@ build() {
         -D microdns=disabled \
         -D svthevcenc=disabled \
         -D zxing=disabled \
+        -D openexr=disabled \
         -D package-name="GStreamer Bad Plugins (Arch Linux)" \
         -D package-origin="https://www.archlinux.org/"
 
