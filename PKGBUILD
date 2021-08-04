@@ -1,7 +1,7 @@
 # Maintainer: Cloudskiff <tech at cloudskiff dot com>
 # Maintainer: Elie <elie at cloudskiff dot com>
 pkgname=driftctl-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Detect, track and alert on infrastructure drift"
 arch=(x86_64 i686)
@@ -11,8 +11,8 @@ provides=('driftctl')
 _src="${url}/releases/download/v${pkgver}/driftctl"
 source_x86_64=("driftctl-${pkgver}::${_src}_linux_amd64")
 source_i686=("driftctl-${pkgver}::${_src}_linux_386")
-sha256sums_x86_64=('edbcfff79c0823a0c9fb1d811fa236b570310a07b9b06acb1eadf0abb4aa6ffb')
-sha256sums_i686=('cd7d60397f38dacdea96e5e51409130b3029d01a7e338ee1cc3006c26705aadd')
+sha256sums_x86_64=('603b2279b26d4ce3f5d200c924c04df38b24d3ca1ffcd9c62a65f2dbe680fc95')
+sha256sums_i686=('b42d0b15d2c9efc50b51c70a6b458d89320436962d73cf2115b36165285ad889')
 
 package() {
 	mv driftctl-${pkgver} driftctl
