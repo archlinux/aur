@@ -1,0 +1,28 @@
+pkgbase = hoffice-bin
+	pkgdesc = Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.
+	pkgver = 11.20.0.1520
+	pkgrel = 1
+	url = https://www.hancom.com/
+	arch = x86_64
+	license = custom:hoffice
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = glu
+	depends = harfbuzz
+	depends = harfbuzz-icu
+	depends = libcups
+	depends = libcurl-gnutls
+	depends = libxcb
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = zlib
+	provides = hoffice=11.20.0.1520-1
+	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
+	source = license.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hoffice-bin
