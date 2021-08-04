@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python>=3.0' 'python-natsort' 'gtk3')
 replaces=('icon-explorer=1.0-2')
 source=("https://gitlab.com/JollyDevelopment/icon-explorer/-/archive/v1.4/icon-explorer-v1.4.tar.gz")
-md5sums=('1e0a719b78f8b704b92de063214d5552')
+md5sums=('1e0a719b78f8b704b92de063214d5551')
 package() {
         cd "$pkgname-$pkgver"/app
         install -Dm755 "$pkgname" -t "$pkgdir/opt/$pkgname"
