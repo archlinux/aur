@@ -1,0 +1,4 @@
+*.pkg.tar.zst
+/pkg/
+/src/
+community.general-*.tar.gz
