@@ -1,6 +1,6 @@
 pkgbase = openoffice-ru-bin
 	pkgdesc = Russian language pack for OpenOffice.org
-	pkgver = 4.1.9
+	pkgver = 4.1.10
 	pkgrel = 2
 	url = http://www.openoffice.org/
 	install = openoffice-i18n-bin.install
@@ -8,12 +8,11 @@ pkgbase = openoffice-ru-bin
 	arch = x86_64
 	license = APACHE
 	makedepends = rpmextract
-	depends = openoffice-bin>=4.1.9
+	depends = openoffice-bin>=4.1.10
 	options = !strip
 	options = docs
-	source = http://apache.org/dist/openoffice/4.1.9/binaries/ru/Apache_OpenOffice_4.1.9_Linux_x86-64_langpack-rpm_ru.tar.gz
+	source = http://apache.org/dist/openoffice/4.1.10/binaries/ru/Apache_OpenOffice_4.1.10_Linux_x86-64_langpack-rpm_ru.tar.gz
 	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = openoffice-ru-bin
-
