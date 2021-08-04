@@ -3,7 +3,7 @@
 pkgname=mpv-autosub-git
 _pkgname=${pkgname%-git}
 pkgver=r52.3511535
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully automatic subtitle downloading for the MPV media player"
 arch=(any)
 url="https://github.com/davidde/mpv-autosub"
@@ -28,4 +28,7 @@ package() {
   cd "$_pkgname"
   install -Dm644 autosub.lua \
     -t "$pkgdir"/usr/share/mpv/scripts
+
+  install -Dm644 LICENSE-MIT \
+    "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }

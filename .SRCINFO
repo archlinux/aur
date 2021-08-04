@@ -1,7 +1,7 @@
 pkgbase = mpv-autosub-git
 	pkgdesc = Fully automatic subtitle downloading for the MPV media player
 	pkgver = r52.3511535
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidde/mpv-autosub
 	arch = any
 	license = MIT
