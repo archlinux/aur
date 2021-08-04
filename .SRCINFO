@@ -9,6 +9,6 @@ pkgbase = python-dash-core-components
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.org/packages/source/d/dash_core_components/dash_core_components-1.17.1.tar.gz
-	sha256sums = b61cb37322de91b4feb0d4d823694cbba8686f6459db774b53d553135350c71e
+	sha256sums = 7e503f5eddb63034dd20c23d218cc0d8a81ec88e9a15b7cbc60e266b0e2b60a9
 
 pkgname = python-dash-core-components
