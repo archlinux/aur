@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl
-pkgver=2021.4.0
+pkgver=2021.5.0
 pkgrel=1
 pkgdesc='oneAPI Video Processing Library'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('onevpl-runtime: for runtime implementation'
 makedepends=('cmake' 'libdrm' 'pybind11' 'python' 'libx11')
 options=('!emptydirs')
 source=("https://github.com/oneapi-src/oneVPL/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a2745ab76796f94c756f0d9da47b7449d0535f59d5aa8b728939a5a8a305d888')
+sha256sums=('af5998f3e3cd530f8bd5de9656d420bea6e957d7626557e5cc1392b5cf1db2ea')
 
 build() {
     cmake -B build -S "oneVPL-${pkgver}" \
