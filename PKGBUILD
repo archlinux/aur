@@ -2,8 +2,7 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=opensmtpd-extras
-_pkgname=OpenSMTPD-extras
-pkgver=6.6.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc='Additional queues, schedulers, and tables for OpenSMTPD'
 arch=(i686 x86_64)
@@ -18,17 +17,17 @@ optdepends=(
   'hiredis: for table-redis support'
 )
 source=(https://www.opensmtpd.org/archives/$pkgname-$pkgver.tar.gz)
-sha512sums=('0c2f89449f51df243d8933a228f7685c8262376a1c95632517c02066c7be6155ddeae71ce364d953d3571cad4a46cfdbfbb11010ee778d82f6185b49d1336003')
+sha512sums=('0969c53a5d13816862f13b3572c0d84d34e2d36d85f83a528d70ee3f4ad5e6b2cdda256529e95a43a177e64368e4e93540d5bb2f81039808d79049234b249d91')
 
 prepare() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   # Fix config folder location
   sed 's#/mail#/smtpd#' -i extras/tables/table-sqlite/sqlite.conf
 }
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   ./bootstrap
 
@@ -61,11 +60,11 @@ build() {
 }
 
 check() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   make -k check
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
