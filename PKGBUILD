@@ -1,8 +1,8 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=znapzend
-pkgver=0.20.0
-pkgrel=3
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="A ZFS centric backup tool to create snapshots and send them to backup locations."
 arch=('any')
 url="http://www.znapzend.org/"
@@ -10,13 +10,7 @@ license=('GPL')
 depends=('perl' 'zfs')
 optdepends=('mbuffer: stream buffering')
 source=("https://github.com/oetiker/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c0a1ab9df5d6c4936560b5f8f08d393d4e99313da190fa404cd8ee5df420a7ca')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    sed -i 's:@BINDIR@:/usr/bin:' "init/znapzend.service.in"
-    sed -i "s:'Mojolicious':'Mojolicious', '< 9.0':"  "cpanfile"
-}
+sha256sums=('c9218f8540269a85d83b4d9159b7990ce074bac5f56566049ba355fd45ab16c5')
 
 build() {
     cd "${pkgname}-${pkgver}"
