@@ -1,0 +1,25 @@
+pkgbase = genimage-git
+	pkgdesc = tool to generate multiple filesystem and flash images from a tree
+	pkgver = v14.r82.43fccb5
+	pkgrel = 1
+	url = https://github.com/pengutronix/genimage
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = confuse
+	optdepends = mtools: vfat
+	optdepends = cramfs-tools: mkcramfs
+	optdepends = genext2fs
+	optdepends = qemu-headless: qemu-img
+	optdepends = qemu: qemu-img
+	optdepends = dtc
+	optdepends = uboot-tools: mkimage
+	optdepends = rauc
+	optdepends = android-simg2img: simg2img
+	optdepends = simg-tools: simg2img
+	source = genimage::git+https://github.com/pengutronix/genimage.git
+	source = index.html::https://github.com/pengutronix/genimage/blob/master/README.rst
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = genimage-git
