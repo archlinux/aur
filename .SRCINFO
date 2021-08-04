@@ -1,6 +1,6 @@
 pkgbase = giara-git
 	pkgdesc = GTK app for Reddit
-	pkgver = 0.3.r118.gcee3186
+	pkgver = 0.3.r162.g8c666d0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/giara
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = giara-git
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
-	depends = gtk4-git
+	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita-git
 	depends = python-beautifulsoup4
@@ -26,4 +26,3 @@ pkgbase = giara-git
 	sha256sums = SKIP
 
 pkgname = giara-git
-

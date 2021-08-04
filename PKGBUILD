@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=0.3.r118.gcee3186
+pkgver=0.3.r162.g8c666d0
 pkgrel=1
 epoch=
 pkgdesc="GTK app for Reddit"
@@ -10,7 +10,7 @@ url="https://gitlab.gnome.org/World/giara"
 license=('GPL3')
 groups=()
 depends=(
-	'gtk4-git'
+	'gtk4'
 	'gtksourceview5'
 	'libadwaita-git'
 	'python-beautifulsoup4'
