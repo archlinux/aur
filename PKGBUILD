@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r304.g76df97e
+pkgver=0.3.7.r306.g0debc57
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -48,6 +48,8 @@ pkgver() {
 build() {
     export CC='clang'
     export CXX='clang++'
+    export CFLAGS+=' -DNDEBUG'
+    export CXXFLAGS+=' -DNDEBUG'
     cmake -B build -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
