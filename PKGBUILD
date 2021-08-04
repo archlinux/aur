@@ -51,7 +51,7 @@ _major=5.13
 _minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,7 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
          # the main kernel config files
         'config')
 
@@ -315,7 +316,8 @@ sha512sums=('3a502e61b012152801be2de318f03bdadff2a7ef304c3f52425b72cd935dc5293ec
             'SKIP'
             'a954cc04ac1e90e57c1a59736a81a96680e69079e4a32865ee125611ff2fdf5d873bd9f68e36839a25720cee9b11ef0ea6a230b30c2c7b37c23fbc4830fdb168'
             '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
-            'fddbdd4897d79b2b511720400a5024731aa400dd1eb394c31046fad6f9613a8d984daf2d267d95688b1de3ee671d1a3f637866a277a98806bf6b801423d4af01'
+            'c582eb6264c3af1857549d4934e25970ac0d45e7a25ad702cc348da214b31c241f08cb95228eea44f780a3818a99a90464edd5c70e6b90e52f2d24a592e22202'
+            '81220cd0505abbae5e830b5fb15f51d54ef8283eb9b1f64b4bc73ee2302f5b4a779ff85495452f2bb04852019a679c6d34494d6ca97acd9aeb766167e45c54e4'
             '8124e1d471045586892c77b886672852b1cea96f81b160eea509579573df42d99fb69cfafd03f75bea2bda9eec56bfb7701b0a17ac1b5ac6da12fe7f47b52511')
 
 validpgpkeys=(
