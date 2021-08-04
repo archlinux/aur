@@ -5,7 +5,7 @@
 
 pkgname=python35
 pkgver=3.5.10
-pkgrel=2
+pkgrel=3
 _pybasever=3.5
 pkgdesc="Next generation of the python high-level scripting language"
 _github_url="none"
@@ -21,6 +21,7 @@ sha256sums=('0f0fa8685c1dc1f1dacb0b4e7779796b90aef99dc1fa4967a71b9da7b57d4a28'
             'SKIP'
             'd5d3412e120f7369518688dfc512d5ba1ae3b054c35c179013ed91a207770e42')
 validpgpkeys=('97FC712E4C024BBEA48A61ED3A5CA953F73C700D')
+provides=('python')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
