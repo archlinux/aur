@@ -3,7 +3,7 @@
 java_=8
 pkgname_=truffleruby
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=21.2.0
+pkgver=21.2.0.1
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Ruby language (Java ${java_} version)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='https://github.com/oracle/truffleruby'
 license=('EPL' 'GPL2' 'LGPL2.1')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('4c9a6b92b83f346ded67d259c0ca217ca7b92b424949a4b1cf376003bc0237a2')
+sha256sums=('dcae9f87f7bcff74f9fb2e9c7b6ea725fe5322322d1284e82251c30468b9d72b')
 
 package() {
     local file eq permissions mode name target

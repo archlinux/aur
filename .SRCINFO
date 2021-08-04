@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk8-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 8 version)
-	pkgver = 21.2.0
+	pkgver = 21.2.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = truffleruby-jdk8-bin
 	license = GPL2
 	license = LGPL2.1
 	depends = jdk8-graalvm-bin
-	source = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java8-linux-amd64-21.2.0.jar
-	sha256sums = 4c9a6b92b83f346ded67d259c0ca217ca7b92b424949a4b1cf376003bc0237a2
+	source = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0.1/ruby-installable-svm-java8-linux-amd64-21.2.0.1.jar
+	sha256sums = dcae9f87f7bcff74f9fb2e9c7b6ea725fe5322322d1284e82251c30468b9d72b
 
 pkgname = truffleruby-jdk8-bin
