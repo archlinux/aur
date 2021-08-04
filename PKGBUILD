@@ -4,16 +4,14 @@
 
 pkgname=poplog-git
 pkgver=r24.fc756e6
-pkgrel=1
+pkgrel=2
 pkgdesc="poplog development system"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html"
 license=('custom:poplog')
-
 depends=('tcsh' 'libxext' 'libxt' 'openmotif' 'libxp' 'ncurses5-compat-libs')
 optdepends=('espeak: for run-speaking-eliza demo')
-
-
+conflicts=(poplog)
 source=(
     "git+https://github.com/GetPoplog/Seed"
     "git+https://github.com/GetPoplog/Base"
