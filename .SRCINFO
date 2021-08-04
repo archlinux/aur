@@ -1,7 +1,7 @@
 pkgbase = cudapm1
 	pkgdesc = Program that implements the P-1 algorithm for factoring Mersenne numbers.
 	pkgver = 0.22
-	pkgrel = 4
+	pkgrel = 5
 	url = https://mersenneforum.org/showthread.php?t=17835
 	arch = x86_64
 	license = GPL3
@@ -16,4 +16,3 @@ pkgbase = cudapm1
 	sha256sums = SKIP
 
 pkgname = cudapm1
-
