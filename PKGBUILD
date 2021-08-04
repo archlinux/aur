@@ -3,7 +3,7 @@
 
 pkgname=python310
 pkgver=3.10.0rc1
-pkgrel=1
+pkgrel=2
 _pyver=3.10.0
 _pybasever=3.10
 _pymajver=3
@@ -16,6 +16,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
 sha256sums=('135b56c2703ad8e01a2728b564f13ffe5cea691fc244f40df4d9e1b3841e690c')
+provides=('python')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
