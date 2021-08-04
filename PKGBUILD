@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 pkgname=anki-release-source
-pkgver=2.1.45
+pkgver=2.1.46
 pkgrel=1
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
@@ -21,6 +21,7 @@ depends=(
     'python-protobuf'
     'python-orjson'
     'python-distro'
+    'python-stringcase'
 
     # aqt
     'python-send2trash'
@@ -56,7 +57,7 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
 )
-sha256sums=('030647ecd3acc6b29fd9fc3af872d5f3d9e5d8237bbcde83e92ab401332a5bec'
+sha256sums=('4b3113510804475020196071271e2c19984506c5c8a5e86049eac19feb2827cf'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
