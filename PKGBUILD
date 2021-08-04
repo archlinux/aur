@@ -1,38 +1,58 @@
+# Merged with official ABS gcc PKGBUILD by João, 2021/08/03 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
-# NOTE: libtool requires rebuilt with each new gcc version
+# NOTE: libtool requires rebuilding with each new gcc version
 
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-gitb gcc-d-git)
-pkgver=12.0.0.r185046.56103737f17
+# You probably don't need support for all the languages, feel free to remove the ones you don't
+# Just edit the --enable-languages option as well as the pkgname array
+
+pkgbase=gcc-git
+pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git lib32-gcc-libs-git gcc-d-git)
+pkgver=12.0.0_r187145.g929f2cf4105
 _majorver=${pkgver%%.*}
-_islver=0.24
+_isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
-arch=(x86_64)
+arch=($CARCH)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git)
+makedepends=(git binutils libmpc gcc-ada doxygen lib32-glibc lib32-gcc-libs python git libxcrypt)
+conflicts=(${pkgbase%-git})
+provides=(${pkgbase%-git})
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/12.0.0
-source=("git+https://gcc.gnu.org/git/gcc.git"
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+
+source=(git://gcc.gnu.org/git/gcc.git
+        http://isl.gforge.inria.fr/$_isl
         c89 c99
-)
-b2sums=('SKIP'
-        '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
-        '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
-        '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
+        gdc_phobos_path.patch
+        fs64270.patch
+        ipa-fix-bit-CPP-when-combined-with-IPA-bit-CP.patch
+        ipa-fix-ICE-in-get_default_value.patch
+        gcc-ada-repro.patch
+        gcc11-Wno-format-security.patch)
+sha256sums=('SKIP'
+            'SKIP'
+            'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
+            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
+            'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
+            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee'
+            'fcb11c9bcea320afd202b031b48f8750aeaedaa4b0c5dddcd2c0a16381e927e4'
+            '42865f2af3f48140580c4ae70b6ea03b5bdca0f29654773ef0d42ce00d60ea16'
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
+            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
 
 pkgver() {
-  cd gcc
-  echo $(cat gcc/BASE-VER).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd ${pkgbase%-git}
+  echo "$(cat gcc/BASE-VER)_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd gcc
 
   # link isl for in-tree build
-  ln -s ../isl-${_islver} isl
+  ln -s ../${_isl%.tar.xz} isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -42,6 +62,15 @@ prepare() {
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+  # D hacks
+  patch -p1 -i "$srcdir/gdc_phobos_path.patch"
+
+  # Reproducible gcc-ada
+  patch -Np0 < "$srcdir/gcc-ada-repro.patch"
+
+  # configure.ac: When adding -Wno-format, also add -Wno-format-security
+  patch -Np0 < "$srcdir/gcc11-Wno-format-security.patch"
 
   mkdir -p "$srcdir/gcc-build"
 }
@@ -94,6 +123,9 @@ build() {
 check() {
   cd gcc-build
 
+  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time  
+  sed -i '/maybe-check-target-libphobos \\/d' Makefile 
+
   # do not abort on error as some are "expected"
   make -k check || true
   "$srcdir/gcc/contrib/test_summary"
@@ -101,11 +133,11 @@ check() {
 
 package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
-  depends=('glibc>=2.27')
+  depends=(glibc)
   options+=(!strip)
-  provides=(gcc-libs-multilib=${pkgver}-${pkgrel} libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libgphobos.so=${pkgver}-${pkgrel}
-            libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel} libtsan.so=${pkgver}-${pkgrel} liblsan.so=${pkgver}-${pkgrel} gcc-libs=${pkgver}-${pkgrel})
-  conflicts=(gcc-libs)
+  provides=($pkgbase-multilib libgo.so libgfortran.so libgphobos.so
+            libubsan.so libasan.so libtsan.so liblsan.so)
+  replaces=($pkgbase-multilib libgphobos)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -136,7 +168,7 @@ package_gcc-libs-git() {
     make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
-  # remove files provided by lib32-gcc-libs-gitb
+  # remove files provided by lib32-gcc-libs
   rm -rf "$pkgdir"/usr/lib32/
 
   # Install Runtime Library Exception
@@ -146,11 +178,12 @@ package_gcc-libs-git() {
 
 package_gcc-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gcc-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc)
-  groups=('base-devel')
-  optdepends=('lib32-gcc-libs: for generating code for 32-bit ABI')
-  provides=(gcc-multilib=${pkgver}-${pkgrel} gcc=${pkgver}-${pkgrel})
+  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
+  groups=(base-devel-git)
+  optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
+  provides=($pkgbase-multilib{,-git})
   conflicts=(gcc)
+  replaces=($pkgbase-multilib-git)
   options+=(staticlibs)
 
   cd gcc-build
@@ -219,7 +252,7 @@ package_gcc-git() {
   # install the libstdc++ man pages
   make -C $CHOST/libstdc++-v3/doc DESTDIR="$pkgdir" doc-install-man
 
-  # remove files provided by lib32-gcc-libs-gitb
+  # remove files provided by lib32-gcc-libs
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
@@ -234,14 +267,15 @@ package_gcc-git() {
 
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC'
-  depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-fortran-multilib=${pkgver}-${pkgrel} gcc-fortran=${pkgver}-${pkgrel})
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=($pkgbase-multilib{,-git})
   conflicts=(gcc-fortran)
+  replaces=($pkgbase-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS,gfor_cHEADERS}
-  make -C $CHOST/32/libgfortran DESTDIR=$pkgdir install-cafexeclibLTLIBRARIES \
+  make -C $CHOST/32/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS,gfor_cHEADERS}
   make -C $CHOST/libgomp DESTDIR="$pkgdir" install-nodist_fincludeHEADERS
   make -C gcc DESTDIR="$pkgdir" fortran.install-{common,man,info}
@@ -257,9 +291,10 @@ package_gcc-fortran-git() {
 
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC'
-  depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-objc-multilib=${pkgver}-${pkgrel} gcc-objc=${pkgver}-${pkgrel})
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=($pkgbase-multilib{,-git})
   conflicts=(gcc-objc)
+  replaces=($pkgbase-multilib-git)
 
   cd gcc-build
   make DESTDIR="$pkgdir" -C $CHOST/libobjc install-headers
@@ -274,9 +309,10 @@ package_gcc-objc-git() {
 
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT)'
-  depends=("gcc=$pkgver-$pkgrel")
-  provides=(gcc-ada-multilib=${pkgver}-${pkgrel} gcc-ada=${pkgver}-${pkgrel})
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=($pkgbase-multilib{,-git})
   conflicts=(gcc-ada)
+  replaces=($pkgbase-multilib-git)
   options+=(staticlibs)
 
   cd gcc-build/gcc
@@ -284,11 +320,11 @@ package_gcc-ada-git() {
   install -m755 gnat1 "$pkgdir/${_libdir}"
 
   cd "$srcdir"/gcc-build/$CHOST/libada
-  make DESTDIR=${pkgdir} INSTALL="install" \
+  make DESTDIR="${pkgdir}" INSTALL="install" \
     INSTALL_DATA="install -m644" install-libada
 
   cd "$srcdir"/gcc-build/$CHOST/32/libada
-  make DESTDIR=${pkgdir} INSTALL="install" \
+  make DESTDIR="${pkgdir}" INSTALL="install" \
     INSTALL_DATA="install -m644" install-libada
 
   ln -s gcc "$pkgdir/usr/bin/gnatgcc"
@@ -313,9 +349,10 @@ package_gcc-ada-git() {
 
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC'
-  depends=("gcc=$pkgver-$pkgrel")
-  provides=("go=1.12.2" gcc-go-multilib=${pkgver}-${pkgrel} gcc-go=${pkgver}-${pkgrel})
-  conflicts=(go gcc-go)
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=("go=1.12.2" $pkgbase-multilib{,-git})
+  conflicts=(gcc-go go{,-git})
+  replaces=($pkgbase-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgo DESTDIR="$pkgdir" install-exec-am
@@ -332,11 +369,12 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_lib32-gcc-libs-gitb() {
+package_lib32-gcc-libs-git() {
   pkgdesc='32-bit runtime libraries shipped by GCC'
-  depends=('lib32-glibc>=2.27')
-  provides=(libgo.so=${pkgver}-${pkgrel} libgfortran.so=${pkgver}-${pkgrel} libubsan.so=${pkgver}-${pkgrel} libasan.so=${pkgver}-${pkgrel} lib32-gcc-libs=${pkgver}-${pkgrel})
+  depends=("lib32-glibc>=2.27")
+  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
   conflicts=(lib32-gcc-libs)
+  groups=(multilib-devel-git)
   options=(!emptydirs !strip)
 
   cd gcc-build
@@ -361,7 +399,7 @@ package_lib32-gcc-libs-gitb() {
   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
   rm -f "$pkgdir"/usr/lib32/libgphobos.spec
 
-  # remove files provided by gcc-libs-git
+  # remove files provided by gcc-libs
   rm -rf "$pkgdir"/usr/lib
 
   # Install Runtime Library Exception
@@ -371,10 +409,11 @@ package_lib32-gcc-libs-gitb() {
 
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC"
-  depends=("gcc=$pkgver-$pkgrel")
-  provides=(gdc=${pkgver}-${pkgrel} gcc-d=${pkgver}-${pkgrel})
+  depends=("gcc-git=$pkgver-$pkgrel")
+  provides=(gdc{,-git})
   conflicts=(gcc-d)
-  options=('staticlibs')
+  replaces=(gdc-git)
+  options=(staticlibs)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
