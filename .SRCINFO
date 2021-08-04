@@ -1,6 +1,6 @@
 pkgbase = opensmtpd-extras
 	pkgdesc = Additional queues, schedulers, and tables for OpenSMTPD
-	pkgver = 6.6.0
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = https://github.com/OpenSMTPD/OpenSMTPD-extras
 	arch = i686
@@ -20,8 +20,7 @@ pkgbase = opensmtpd-extras
 	optdepends = postgresql-libs: for table-postgres support
 	optdepends = mariadb-libs: for table-mysql support
 	optdepends = hiredis: for table-redis support
-	source = https://www.opensmtpd.org/archives/opensmtpd-extras-6.6.0.tar.gz
-	sha512sums = 0c2f89449f51df243d8933a228f7685c8262376a1c95632517c02066c7be6155ddeae71ce364d953d3571cad4a46cfdbfbb11010ee778d82f6185b49d1336003
+	source = https://www.opensmtpd.org/archives/opensmtpd-extras-6.7.1.tar.gz
+	sha512sums = 0969c53a5d13816862f13b3572c0d84d34e2d36d85f83a528d70ee3f4ad5e6b2cdda256529e95a43a177e64368e4e93540d5bb2f81039808d79049234b249d91
 
 pkgname = opensmtpd-extras
-
