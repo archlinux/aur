@@ -1,6 +1,6 @@
 pkgbase = rocprofiler
 	pkgdesc = ROC profiler library. Profiling with perf-counters and derived metrics.
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = rocprofiler
 	depends = python
 	options = !staticlibs
 	options = strip
-	source = rocprofiler-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-4.2.0.tar.gz
-	source = rocprofiler-roctracer-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.2.0.tar.gz
+	source = rocprofiler-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/rocprofiler/archive/rocm-4.3.0.tar.gz
+	source = rocprofiler-roctracer-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.3.0.tar.gz
 	source = add_string_header.patch::https://patch-diff.githubusercontent.com/raw/ROCmSoftwarePlatform/hsa-class/pull/2.patch
-	sha256sums = c5888eda1404010f88219055778cfeb00d9c21901e172709708720008b1af80f
-	sha256sums = 62a9c0cb1ba50b1c39a0636c886ac86e75a1a71cbf5fec05801517ceb0e67a37
+	sha256sums = 3b876a0e601d2c6ae56ddf2a6027afe45b3533f4445b0c2da748d020b6b00cf2
+	sha256sums = c3d9f408df8d4dc0e9c0026217b8c684f68e775da80b215fecb3cd24419ee6d3
 	sha256sums = 35c45b367d917b8ecf5d4d738e7761699b115b25530ab5528c8a6a4a49424199
 
 pkgname = rocprofiler
