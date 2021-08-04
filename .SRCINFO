@@ -1,7 +1,7 @@
 pkgbase = python39
 	pkgdesc = Major release 3.9 of the Python high-level programming language
 	pkgver = 3.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = python39
 	depends = zlib
 	optdepends = tk: for tkinter
 	optdepends = sqlite
+	provides = python
 	source = https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tar.xz
 	source = mpdecimal-2.5.1.patch
 	sha256sums = 397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a

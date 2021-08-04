@@ -3,7 +3,7 @@
 
 pkgname=python39
 pkgver=3.9.6
-pkgrel=1
+pkgrel=2
 _pybasever=3.9
 _pymajver=3
 pkgdesc="Major release 3.9 of the Python high-level programming language"
@@ -21,6 +21,7 @@ sha256sums=(
     '397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a'
     '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
 )
+provides=('python')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
