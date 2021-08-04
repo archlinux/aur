@@ -14,6 +14,6 @@ pkgbase = linux-enable-ir-emitter
 	conflicts = linux-enable-ir-emitter-git
 	conflicts = chicony-ir-toggle
 	source = https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/2.0.0.tar.gz
-	sha256sums = 6d52c11ec93efeabc2cc2dc7a43a6624a1f91bac1ce57d9935e8198a4017fe0b
+	sha256sums = cfdc87dca1a57d9c2aea3b2aac5c1f0c9641f1d3b5dfeb97ff51207aefe80d39
 
 pkgname = linux-enable-ir-emitter
