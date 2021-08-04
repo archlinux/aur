@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=r25.c51fb41
+pkgver=r29.f5d0c04
 pkgrel=1
 arch=(x86_64)
 pkgdesc="A key remapping daemon for linux. "
@@ -27,4 +27,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="${pkgdir}" PREFIX='/usr' install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
