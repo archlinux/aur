@@ -3,26 +3,17 @@
 
 pkgname=llvm-amdgpu
 pkgdesc='Radeon Open Compute - LLVM toolchain (llvm, clang, lld)'
-pkgver=4.2.0
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/llvm-project'
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=(z3)
 makedepends=(cmake python ninja)
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
-        "libstdc++-11.1.0-workaround.patch::https://github.com/ROCm-Developer-Tools/llvm-project/commit/9a75c06cd9d94d3fd13c47a01044da97b98cf26b.patch")
-sha256sums=('751eca1d18595b565cfafa01c3cb43efb9107874865a60c80d6760ba83edb661'
-            '241d737fe09822b784c37da3cfc38362d8599e4e6e49273fca990e58f4983341')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
+sha256sums=('1567d349cd3bcd2c217b3ecec2f70abccd5e9248bd2c3c9f21d4cdb44897fc87')
 options=(staticlibs)
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
-
-prepare() {
-    cd "$_dirname"
-
-    # fix compatibility with GCC 11: https://github.com/ROCmSoftwarePlatform/rocBLAS/issues/1191#issuecomment-851634017
-    patch -Np1 < "$srcdir/libstdc++-11.1.0-workaround.patch"
-}
 
 build() {
     cmake -GNinja \
