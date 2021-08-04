@@ -1,0 +1,45 @@
+pkgbase = onenet-debugger-tool-wine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://open.iot.10086.cn/doc/art433.html#118
+	arch = x86_64
+	license = Custom
+	makedepends = libarchive
+	makedepends = unarchiver
+	depends = bash
+	depends = wine
+	depends = wqy-zenhei
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	noextract = onenet-edpproto-debugger-wine-1.0.0.rar
+	noextract = onenet-mqtt-device-debugger-wine-1.0.0.rar
+	noextract = onenet-lua-script-debugger-wine-1.0.0.zip
+	source = onenet-edpproto-debugger-wine-1.0.0.rar::https://upfiles.heclouds.com/123/ueditor/2016/09/26/99dd0b18908b05a2f74588d5c9217957.rar
+	source = onenet-mqtt-device-debugger-wine-1.0.0.rar::https://upfiles.heclouds.com/123/tools/simulate-device.rar
+	source = onenet-lua-script-debugger-wine-1.0.0.zip::https://upfiles.heclouds.com/123/ueditor/2017/04/05/d7ed57e61270a67f640338cb6a00a4b4.zip
+	source = onenet-edpproto-debugger-wine.install
+	source = onenet-mqtt-device-debugger-wine.install
+	source = onenet-lua-script-debugger-wine.install
+	sha256sums = 2337d7a979b47b027cf1082910d17a9ffd2b05ac14ede8407aeab77c94bdf797
+	sha256sums = e6b181fb7194cabbebbd2537496fdaa95d440b9b96660774d5bc33091502f0a0
+	sha256sums = 0d9d39ab285e7679b61ebe4020726ea9f058a63385d10098f1342b9942c0035a
+	sha256sums = d64b11e05aa8e4511e418bec1f320f498edf167753a02d5be697be4c8bf4982d
+	sha256sums = 065acc7e612cf863890945c8c6f1e27770024217979436d1174bbf8c0ca85d01
+	sha256sums = be6e6b4c5f331e770511c5d147b03aa79e3602255cf0f3bb23a58a317846e530
+
+pkgname = onenet-debugger-tool-wine
+	pkgdesc = Wine OneNET EdpProto MQTT Lua 调试工具，设备模拟器，运行环境Win7+
+	depends = onenet-edpproto-debugger-wine
+	depends = onenet-mqtt-device-debugger-wine
+	depends = onenet-lua-script-debugger-wine
+
+pkgname = onenet-edpproto-debugger-wine
+	pkgdesc = Wine OneNET EdpProto 调试工具，设备模拟器，运行环境Win7+
+	install = onenet-edpproto-debugger-wine.install
+
+pkgname = onenet-mqtt-device-debugger-wine
+	pkgdesc = Wine OneNET MQTT 调试工具，设备模拟器，运行环境Win7+
+	install = onenet-mqtt-device-debugger-wine.install
+
+pkgname = onenet-lua-script-debugger-wine
+	pkgdesc = Wine OneNET Lua 调试工具，设备模拟器，运行环境Win7+
+	install = onenet-lua-script-debugger-wine.install

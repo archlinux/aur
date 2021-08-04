@@ -1,0 +1,16 @@
+# onenet-lua-script-debugger-wine.install
+info() {
+    echo -e "Wine OneNET Lua 调试工具，设备模拟器，运行环境Win7+"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the onenet-lua-script-debugger bottle..."
+    find /home -maxdepth 3 -name "onenet-lua-script-debugger" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the onenet-lua-script-debugger bottle..."
+    find /home -maxdepth 3 -name "onenet-lua-script-debugger" -exec rm -rf {} \;
+}
