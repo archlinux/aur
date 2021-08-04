@@ -1,6 +1,6 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocm-gdb
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='ROCm source-level debugger for Linux, based on GDB'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('rocm-dbgapi' 'python' 'guile2.0' 'ncurses' 'expat' 'xz' 'zlib' 'mpfr' 'source-highlight' 'babeltrace')
 makedepends=('texinfo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('4bc579584a1f8614111e7e44d8aa1c6d5d06be3f5db055aba2cf1abc140122ac')
+sha256sums=('8ee0667ab2cd91b2cc41d3a7af046d36a6b4e2007f050265aa65e0aedec83fd7')
 _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 prepare() {
