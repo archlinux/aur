@@ -3,16 +3,16 @@
 
 pkgname=nbfc-linux
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C port of NoteBook FanControl (no Mono required)"
 arch=('i686' 'x86_64')
-url="https://github.com/braph/nbfc-linux"
+url="https://github.com/nbfc-linux/nbfc-linux"
 optdepends=('dmidecode: for getting recommended notebook configurations')
 license=('GPL3')
 conflicts=('nbfc')
 provides=('nbfc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/braph/nbfc-linux/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('0e6e391ecd516a9cb4b3607eefb1d225bf5e6288dcfbaf99e640452fb6c47ec1821c2de45599156c43b120581efe79f2f599ba14bf4bc460d477793da202869d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nbfc-linux/nbfc-linux/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('3acfa0cfa7e72e2dd1a496d6285b79b8bf1fc272b8094c87c656ce4f0ca5a60f308e6966f3374e1af2cd2f8bf32482abd7f215550f807ba8940acd4d44bdff56')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
