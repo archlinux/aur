@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.13.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -24,6 +24,7 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
   "sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
+  "sys-kernel_arch-sources-g14_files-0006-fix-tigerlake-pin-mapping.patch"
   
   #"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
   "sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
@@ -64,6 +65,7 @@ sha256sums=('SKIP'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
             '9327ac3edacbc60a023928147f9439789527fad62cef66945f35a9165108e30d'
+            '1e2777841f0ed2957cb9e869a150caa014fff3c32e2744fda9c950260997dcdc'
             '0c515951db1c3dfc847e9b4777249c09be520ac140feb015a39c29e0531a89e6'
             '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
             '8cc771f37ee08ad5796e6db64f180c1415a5f6e03eb3045272dade30ca754b53'
