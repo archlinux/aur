@@ -1,0 +1,20 @@
+image: archlinux
+sources:
+    - https://git.sr.ht/~ineptattech/aur-als
+packages:
+    - gprbuild-bootstrap
+    - xmlada
+    - git
+tasks:
+- prepare: |
+    git clone https://aur.archlinux.org/gprbuild.git
+    cd gprbuild
+    makepkg
+    yay -R --noconfirm gprbuild-bootstrap
+    makepkg -i --noconfirm
+    cd ..
+    yay -S --answerclean=All --noconfirm xmlada
+    yay -S libadalang-tools gtkada libvss ada_spawn ada-libfswatch --noconfirm
+- build: |
+    cd aur-als
+    makepkg
