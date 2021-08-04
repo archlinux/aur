@@ -1,17 +1,16 @@
 pkgbase = armv7l-binutils
-	pkgdesc = Cross binutils for armv7l
-	pkgver = 2.36.1
-	pkgrel = 2
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for 32bit ARM
+	pkgver = 2.37
+	pkgrel = 0
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
 	depends = libelf
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.xz
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz.sig
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha256sums = e81d9edf373f193af428a0f256674aea62a9d74dfe93f65192d4eae030b0f3b0
+	sha256sums = 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
 	sha256sums = SKIP
 
 pkgname = armv7l-binutils
-
