@@ -19,7 +19,7 @@ optdepends=(
   'mpd: used by dm-music'
   'qutebrowser: used by dm-bookman'
   'reddio: used by dm-reddit'
-  'zenity: used by dm-reddit'
+  'yad: used by dm-reddit and dm-weather'
   'slock: used by dm-logout'
   'sxiv: used by dm-setbg'
   'xwallpaper: used by dm-setbg'

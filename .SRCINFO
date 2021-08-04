@@ -22,7 +22,7 @@ pkgbase = dmscripts-git
 	optdepends = mpd: used by dm-music
 	optdepends = qutebrowser: used by dm-bookman
 	optdepends = reddio: used by dm-reddit
-	optdepends = zenity: used by dm-reddit
+	optdepends = yad: used by dm-reddit and dm-weather
 	optdepends = slock: used by dm-logout
 	optdepends = sxiv: used by dm-setbg
 	optdepends = xwallpaper: used by dm-setbg
@@ -33,4 +33,3 @@ pkgbase = dmscripts-git
 	md5sums = SKIP
 
 pkgname = dmscripts-git
-
