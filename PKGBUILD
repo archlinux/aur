@@ -4,7 +4,7 @@
 
 _gitname=CuteMarkEd-NG
 pkgname=cutemarked
-pkgver=20210516.r928
+pkgver=20210729.r935
 pkgrel=1
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/Waqar144/${_gitname}"

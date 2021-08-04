@@ -1,6 +1,6 @@
 pkgbase = cutemarked
 	pkgdesc = Qt Markdown Editor
-	pkgver = 20210516.r928
+	pkgver = 20210729.r935
 	pkgrel = 1
 	url = https://github.com/Waqar144/CuteMarkEd-NG
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = cutemarked
 	sha256sums = SKIP
 
 pkgname = cutemarked
-
