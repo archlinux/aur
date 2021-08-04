@@ -3,8 +3,8 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.2.0
-pkgrel=3
+pkgver=9.3.1
+pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -24,8 +24,6 @@ optdepends=(
       'lapack: Linear Algebra PACKage'
       'metis: partitioning graphs, finite element meshes, fill reducing orderings for sparse matrices.'
       'muparser: A fast math parser library'
-      'nanoflann: a C++ header-only library for Nearest Neighbor (NN) search wih KD-trees'
-      'netcdf-cxx-legacy: Legacy NetCDF C++ bindings'
       'openmpi: High performance message passing library (MPI)'
       'opencascade: Open CASCADE Technology, 3D modeling & numerical simulation'
       'p4est-deal-ii: The parallel forest (p4est) library, built to work with deal.II'
@@ -42,28 +40,11 @@ optdepends=(
       )
 makedepends=('cmake')
 install=deal-ii.install
-source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz
-        0001-Add-a-quick-check-for-matching-boost-versions.patch
-        0001-Added-missing-header-for-boost-1.75.0.patch)
-sha1sums=('fff66749d7e7e8baf569e5da5a42f93e99424a86'
-          'a2e5ab873e623fc20cf2d38657047c6d64a4b471'
-          '0c8d0297c33ad3474b6c347cf192bc2d68d29635')
+source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
+sha1sums=('d7aeb5aa397d2299fd9ffc8e82ba0408eeb9d8fc')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
-installation_prefix=/usr
-
-prepare() {
-    _dir="${srcdir}/${_realname}-${pkgver}/"
-    # patch from c0aa1399014f70f7fe7fbc2ceefba2c6f80f3462: needed for the next patch
-    _patchname1="0001-Add-a-quick-check-for-matching-boost-versions.patch"
-    # patch from 13bc2f8a021316d38be0c0fcaa93aa177e214d86: needed for boost 1.75
-    _patchname2="0001-Added-missing-header-for-boost-1.75.0.patch"
-    cp ../${_patchname1} ${_dir}
-    cp ../${_patchname2} ${_dir}
-    cd ${_dir}
-    patch --forward --strip=1 --input="${_patchname1}"
-    patch --forward --strip=1 --input="${_patchname2}"
-}
+_installation_prefix=/usr
 
 build() {
   # Since deal.II relies on a relatively large number of packages that are
@@ -123,22 +104,20 @@ build() {
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
 
-  # New versions of muParser (2.3.2 and newer) have a different convention for
-  # numbering:
-  sed -i 's/#define MUP_VERSION _T/string_type ParserVersion = string_type/' \
-      ${srcdir}/${_realname}-$pkgver/cmake/modules/FindMUPARSER.cmake
-
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
 
   # Skip some warnings that appear if Trilinos uses OpenMP pragmas in headers:
   extra_warning_flags=" -Wno-unknown-pragmas"
+  # Also skip warnings from compiling without optimizations (debug mode) and
+  # _FORTIFY_SOURCE:
+  extra_warning_flags="${extra_warning_flags} -Wno-cpp"
 
   # the deal.II GCC flags are already well-chosen for speed (and O3 is known to
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
   # default. If you want to add more flags or disable specific packages, then
   # refer to the deal.II manual.
-  cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$installation_prefix  \
+  cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix  \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
         -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
@@ -149,7 +128,7 @@ build() {
   make $MAKEFLAGS
 
   cd "${srcdir}/build"
-  echo "export DEAL_II_DIR=$installation_prefix" > ./deal-ii.sh
+  echo "export DEAL_II_DIR=$_installation_prefix" > ./deal-ii.sh
 }
 
 check() {
@@ -164,10 +143,10 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # delete extra files that deal.II installs into the top level directory
-  rm "${pkgdir}/${installation_prefix}/LICENSE.md"
-  rm "${pkgdir}/${installation_prefix}/README.md"
-  rm "${pkgdir}/${installation_prefix}/detailed.log"
-  rm "${pkgdir}/${installation_prefix}/summary.log"
+  rm "${pkgdir}/${_installation_prefix}/LICENSE.md"
+  rm "${pkgdir}/${_installation_prefix}/README.md"
+  rm "${pkgdir}/${_installation_prefix}/detailed.log"
+  rm "${pkgdir}/${_installation_prefix}/summary.log"
 
   install -D -m755 "${srcdir}/build/deal-ii.sh" "${pkgdir}/etc/profile.d/deal-ii.sh"
   install -D -m644 "${srcdir}/${_realname}-$pkgver/LICENSE.md" "${pkgdir}/usr/share/licenses/${_realname}-$pkgver/LICENSE.md"
