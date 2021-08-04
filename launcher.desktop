@@ -6,3 +6,4 @@ Terminal=false
 Exec=rexpaint
 Name=REXPaint
 Icon=/usr/share/rexpaint/rex/icon.png
+Categories=Graphics;2DGraphics;
