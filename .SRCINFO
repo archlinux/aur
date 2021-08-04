@@ -1,6 +1,6 @@
 pkgbase = muserv-git
 	pkgdesc = muserv (UPnP server for music)
-	pkgver = v0.3.2
+	pkgver = v0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/muserv/
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = muserv-git
 	sha256sums = SKIP
 
 pkgname = muserv-git
-
