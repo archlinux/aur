@@ -1,7 +1,7 @@
 pkgbase = cef-minimal-obs-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs
 	pkgver = 87.1.14+ga29e9a3+chromium_87.0.4280.141
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = cef-minimal-obs-bin
 	depends = mesa
 	provides = cef-minimal-obs=87.1.14
 	conflicts = cef-minimal-obs
+	options = !lto
 	source_i686 = https://cef-builds.spotifycdn.com/cef_binary_87.1.14+ga29e9a3+chromium-87.0.4280.141_linux32_minimal.tar.bz2
 	sha256sums_i686 = a214a7a180b2c1cd9b9009e23aac6462e813d9334995b7d8bbf4ecf335aa8b12
 	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_87.1.14+ga29e9a3+chromium-87.0.4280.141_linux64_minimal.tar.bz2

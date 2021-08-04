@@ -4,9 +4,9 @@ pkgname=cef-minimal-obs-bin
 _version="87.1.14"
 _commit="a29e9a3"
 _chromiumver="87.0.4280.141"
-pkgver="${_version}+g${_commit}+chromium_${_chromiumver}"
 _cefver="${_version}+g${_commit}+chromium-${_chromiumver}"
-pkgrel=1
+pkgver=`echo "$_cefver" | tr - _`
+pkgrel=2
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("i686" "x86_64" "aarch64")
 url="https://bitbucket.org/chromiumembedded/cef"
@@ -16,10 +16,11 @@ depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
 makedepends=("cmake" "make")
 provides=("cef-minimal-obs=$_version")
 conflicts=("cef-minimal-obs")
+# Prevent people using link time optimisation for this package because it make OBS unable to be built against it
+options=('!lto')
 source_x86_64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux64_minimal.tar.bz2")
 source_i686=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux32_minimal.tar.bz2")
 source_aarch64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linuxarm64_minimal.tar.bz2")
-
 sha256sums_x86_64=("9a34dbb60b5eb3b6eb63420df6c55408dd84be70119b0f7ba72ea384d2af4835")
 sha256sums_i686=("a214a7a180b2c1cd9b9009e23aac6462e813d9334995b7d8bbf4ecf335aa8b12")
 sha256sums_aarch64=("eb7ed49a020f06b54d4561a7d6811fa78b518035449c16a1cfd687cd3b2f6f5c")
