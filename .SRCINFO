@@ -1,18 +1,17 @@
 pkgbase = armv7l-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (armv7l-unknown-linux-gnueabihf)
-	pkgver = 5.10.28
+	pkgver = 5.10.55
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = any
 	license = GPL2
 	makedepends = rsync
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.28.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.28.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.55.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.55.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 4dfc3aea719556e63e90b8692e9d4b779ad1cb2a9a4823bf721e30004e7ac354
+	sha256sums = 7581113dad67a095bc5cc32b457e1a9283f91579e248f3b547a7302157fe8889
 	sha256sums = SKIP
 
 pkgname = armv7l-linux-api-headers
-
