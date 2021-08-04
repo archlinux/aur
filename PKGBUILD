@@ -8,8 +8,8 @@
 # https://github.com/michaellass/AUR
 
 _majorver=16
-_completever=16.0.1
-_updatever=9
+_completever=16.0.2
+_updatever=7
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -54,11 +54,11 @@ backup=(etc/${pkgname}/logging.properties
         etc/${pkgname}/sound.properties)
 install=install_jdk-adoptopenjdk.sh
 
-source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
+source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('7fdda042207efcedd30cd76d6295ed56b9c2e248cb3682c50898a560d4aa1c6f'
+sha256sums=('323d6d7474a359a28eff7ddd0df8e65bd61554a8ed12ef42fd9365349e573c2c'
             'e931a0070e4a69dd4b37789c28057c1b956e9830fbedc0efe38aa9988a02b444'
             'bb86dc8ef9ad1bac2045b575e84fb6696d70104dd610d8a5507b068d1f96cc58'
             '31122fb2dc414968d7cea452e5abc90c32813cce8db2f83023d19fe04b40f6d5')
