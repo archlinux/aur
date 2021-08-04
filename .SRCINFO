@@ -1,5 +1,5 @@
 pkgbase = qt5-jpegxl-image-plugin-git
-	pkgdesc = Qt5 plug-in to allow Qt and KDE based applications to read/write JXL images
+	pkgdesc = Qt5 plug-in to allow Qt5 and KDE based applications to read/write JXL images (git version)
 	pkgver = 0.2.0.r0.geb424dd
 	pkgrel = 1
 	url = https://github.com/novomesk/qt-jpegxl-image-plugin
