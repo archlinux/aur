@@ -28,6 +28,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         linux-sandbox-syscall-broker-use-struct-kernel_stat.patch
         linux-sandbox-fix-fstatat-crash.patch
         sql-make-VirtualCursor-standard-layout-type.patch
+        chromium-freetype-2.11.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
@@ -36,6 +37,7 @@ sha256sums=('b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a'
             '268e18ad56e5970157b51ec9fc8eb58ba93e313ea1e49c842a1ed0820d9c1fa3'
             '253348550d54b8ae317fd250f772f506d2bae49fb5dc75fe15d872ea3d0e04a5'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
+            '7ef689cd6b2f85f2b76b2a10ecede003cfa0c2da15acc998ecbc445f2c95ced6'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -89,6 +91,9 @@ prepare() {
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
+
+  # Fix build with FreeType 2.11 (patch from Gentoo)
+  patch -Np1 -i ../chromium-freetype-2.11.patch
 
   # Upstream fixes
   patch -Np1 -i ../extend-enable-accelerated-video-decode-flag.patch
