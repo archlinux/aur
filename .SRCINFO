@@ -1,7 +1,7 @@
 pkgbase = ttf-paratype
 	pkgdesc = ParaType font family with extended cyrillic and latin character sets
 	pkgver = 2.005
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://company.paratype.com/pt-sans-pt-serif
 	arch = any
@@ -26,4 +26,3 @@ pkgbase = ttf-paratype
 	sha512sums = ec939bebecfb1612fdfc000fcd5eff8a2203658572f4ffdc2f3d30b4c6cc6dae414f2f263cbc7435d53de071e7f232e41b13d90e09eab4e3db8763e8e7712e22
 
 pkgname = ttf-paratype
-

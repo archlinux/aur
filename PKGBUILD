@@ -5,7 +5,7 @@
 
 pkgname=ttf-paratype
 pkgver=2.005
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='ParaType font family with extended cyrillic and latin character sets'
 arch=('any')
@@ -61,15 +61,15 @@ package() {
 	mkdir -p \
 		"${pkgdir}"/usr/share/fonts/TTF/ \
 		"${pkgdir}"/usr/share/licenses/${pkgname}/ \
-		"${pkgdir}"/etc/fonts/conf.{d,avail}/
+		"${pkgdir}"/usr/share/fontconfig/conf.{avail,default}/
 
 	# Install font files
 	cp "${srcdir}"/*.ttf "${pkgdir}"/usr/share/fonts/TTF/
 
+	# Install font config file
+	cp "${srcdir}"/*.conf "${pkgdir}"/usr/share/fontconfig/conf.avail/
+	ln -sr "${pkgdir}"/usr/share/fontconfig/conf.avail/* "${pkgdir}"/usr/share/fontconfig/conf.default/
+
 	# Install license
 	cp "${srcdir}"/PT_FreeLicense_E.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-
-	# Install font config file
-	cp "${srcdir}"/54-paratype.conf "${pkgdir}"/etc/fonts/conf.avail/
-	ln -sr "${pkgdir}"/etc/fonts/conf.avail/54-paratype.conf "${pkgdir}"/etc/fonts/conf.d/
 }
