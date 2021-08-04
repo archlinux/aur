@@ -1,5 +1,5 @@
 pkgbase = rkdeveloptool-git
-	pkgdesc = firmware upgrade tool for Rockchip SoC, consider to be a opensource version of upgrade_tool
+	pkgdesc = The firmware upgrade tool for Rockchip SoC, consider to be a opensource version of upgrade_tool
 	pkgver = 69
 	pkgrel = 1
 	url = https://github.com/rockchip-linux/rkdeveloptool
