@@ -2,8 +2,8 @@
 pkgname="hornet-git"
 _pkgname="hornet"
 _branch="main"
-_pkgver="1.0.3"
-pkgver=1.0.3.r0.ge5716dd9
+_pkgver="1.0.4"
+pkgver=1.0.4.r0.g809f618a
 pkgrel=1
 pkgdesc="HORNET is a powerful IOTA fullnode software"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git://github.com/gohornet/$_pkgname.git#branch=$_branch"
 	"$_pkgname.service")
 sha256sums=('SKIP'
             '163dd546132a9168ffdd3443b0235605fed5deb07719335de6b6cb3cc28f0497')
-backup=('etc/hornet/config.json' 'etc/hornet/config_as.json' 'etc/hornet/config_chrysalis_testnet.json' 'etc/hornet/peering.json' 'etc/hornet/profiles.json')
+backup=('etc/hornet/config.json' 'etc/hornet/peering.json' 'etc/hornet/profiles.json')
 install=$_pkgname.install
 
 pkgver() {
@@ -35,8 +35,6 @@ package() {
 
 	# Install files
 	install -Dm600 ${srcdir}/hornet/config.json ${pkgdir}/etc/hornet/config.json
-	install -Dm600 ${srcdir}/hornet/config_as.json ${pkgdir}/etc/hornet/config_as.json
-	install -Dm600 ${srcdir}/hornet/config_chrysalis_testnet.json ${pkgdir}/etc/hornet/config_chrysalis_testnet.json
 	install -Dm600 ${srcdir}/hornet/peering.json ${pkgdir}/etc/hornet/peering.json
 	install -Dm600 ${srcdir}/hornet/profiles.json ${pkgdir}/etc/hornet/profiles.json	
 	install -D ${srcdir}/hornet/hornet ${pkgdir}/usr/bin/hornet	
