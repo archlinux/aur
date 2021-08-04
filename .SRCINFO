@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk16-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 16 version)
-	pkgver = 21.2.0
+	pkgver = 21.2.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = truffleruby-jdk16-bin
 	license = GPL2
 	license = LGPL2.1
 	depends = jdk16-graalvm-bin
-	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java16-linux-amd64-21.2.0.jar
-	sha256sums_x86_64 = 5ff0dde506b9f40f6364e7a67dd5f5f173ce4fb8fed4f1c2533126e2c0b7a94b
-	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0/ruby-installable-svm-java16-linux-aarch64-21.2.0.jar
-	sha256sums_aarch64 = 5358ea23381514f4c9cf2a42955d0c17cd518021f32e8e0313eaaf8290bc1559
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0.1/ruby-installable-svm-java16-linux-amd64-21.2.0.1.jar
+	sha256sums_x86_64 = c055662a0d385a204b77009b1352c5b3c71e9d1e97a3db1dfe2597293fef823b
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/vm-21.2.0.1/ruby-installable-svm-java16-linux-aarch64-21.2.0.1.jar
+	sha256sums_aarch64 = 11e958c73d9933a104c0f8a8bc07a0e9542da17341175508737b561f08ec336b
 
 pkgname = truffleruby-jdk16-bin
