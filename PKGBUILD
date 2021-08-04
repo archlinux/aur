@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.13
-_minor=7
+_minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -61,7 +61,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_aufs_path="aufs-patches"
+_aufs_path="aufs-patches-v2"
 _aufs_ver="20210705"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _compiler_path="cpu-patches-sep"
@@ -310,9 +310,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d50ff2c639f89187b261225223e1c1a599e6face488574325f5f2e2fd43cc551a9684484ac7fefacd7fcaf76b7c86fa2679d62d27c4f4d5b7634f2d1739f0ac5'
+sha512sums=('3a502e61b012152801be2de318f03bdadff2a7ef304c3f52425b72cd935dc5293ece53f773201506190df8b4b9fb1bd96023c6b10008de5a8c11d10c69f7fb44'
             'SKIP'
-            'e7b2225236c69a03de7ebb2bb76111f6e6060ac6616bb5a8cb3ba6550346ce91959dd15c6acaf05641e5cc5cb5ee3ebd9129e8cbc711407d788c38ec3c4b68dc'
+            '0ae9e2f4f0edba4f9d8ce5a0a1c0126d0db3401c15d14f26da64f93c2ae1915e5f6d947c7ac68b3aeac7244c746de65f1e883222a73f000ba936198e2da98997'
             '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
             'fddbdd4897d79b2b511720400a5024731aa400dd1eb394c31046fad6f9613a8d984daf2d267d95688b1de3ee671d1a3f637866a277a98806bf6b801423d4af01'
             'd3dd3f1b9ddcc508fc73c686d72ef8c78fb7ac05fddb3e836ff0aa71e9a7be0bfabd1eedbd05b01ebfb5ad35d88a4e44b89a590eb03b2aade436a6c6cbc544cf')
