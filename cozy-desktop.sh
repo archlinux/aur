@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron12 /usr/lib/cozy-desktop/app.asar "$@"
+exec @ELECTRON@ /usr/lib/cozy-desktop/app.asar --disable-dev-mode "$@"
