@@ -1,12 +1,12 @@
 pkgbase = pacdef
 	pkgdesc = A declarative manager of Arch packages
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/steven-omaha/pacdef
 	arch = any
 	license = GPL3
 	depends = python
-	source = pacdef.py::https://github.com/steven-omaha/pacdef/releases/download/v0.4.1/pacdef.py
-	sha256sums = e82fd02be99346a286a198de93f2c6437afe4b3f848cd039d32c02e84c3d3439
+	source = pacdef.py::https://github.com/steven-omaha/pacdef/releases/download/v0.4.2/pacdef.py
+	sha256sums = e0fe981a55c2733f181a852e0da0b38f97a038e8836b83a0208a3297747b8635
 
 pkgname = pacdef
