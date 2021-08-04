@@ -1,7 +1,7 @@
 pkgbase = googleduo-bin
 	pkgdesc = Unnofficial Google Duo desktop app
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/google-duo/application
 	arch = x86_64
 	arch = arm7h
@@ -12,10 +12,9 @@ pkgbase = googleduo-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = googleduo-git
-	source_x86_64 = https://gitlab.com/google-duo/binaries/1.0.2-1/-/raw/master/GoogleDuo-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/google-duo/binaries/1.0.2-2/-/raw/main/GoogleDuo-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/google-duo/binaries/1.0.2-1/-/raw/master/GoogleDuo-linux-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/google-duo/binaries/1.0.2-2/-/raw/main/GoogleDuo-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = googleduo-bin
-
