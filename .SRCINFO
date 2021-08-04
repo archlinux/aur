@@ -1,11 +1,11 @@
 pkgbase = immudb
 	pkgdesc = immudb - world’s fastest immutable database
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://www.codenotary.com/technologies/immudb/
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/codenotary/immudb/releases/download/v1.0.1/immudb-v1.0.1-linux-amd64
-	sha256sums = 026723f2f78ddcb978e1621cadf1b907bdd20fa89ce2ed055829add5b1fe3bb3
+	source = https://github.com/codenotary/immudb/releases/download/v1.0.5/immudb-v1.0.5-linux-amd64
+	sha256sums = 24b5a9d9300d59f2469372a5f728406c8fcfd82616364e42f6e43ce4058bf3f6
 
 pkgname = immudb
