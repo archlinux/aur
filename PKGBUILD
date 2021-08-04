@@ -13,6 +13,7 @@ sha256sums=('9b5d68bf1874a7b393432410c7e8c376f174d2602179883845d2508152153ff0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-src"
+  curl -L https://github.com/kichik/nsis/pull/17.patch | patch -p1
 }
 
 build() {
