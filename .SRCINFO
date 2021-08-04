@@ -1,26 +1,19 @@
 pkgbase = hugo-bin
-	pkgdesc = A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository
-	pkgver = 0.30
+	pkgdesc = Fast and flexible static site generator written in Go
+	pkgver = 0.87.0
 	pkgrel = 1
-	url = https://gohugo.io/
+	url = https://gohugo.io
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
 	license = Apache
-	optdepends = pygmentize: source code highlighting
-	optdepends = asciidoc: AsciiDoc support
-	optdepends = asciidoctor: AsciiDoc support (Ruby implementation)
+	optdepends = asciidoctor: AsciiDoc support
+	optdepends = bash-completion: Tab autocompletion
+	optdepends = git: Git info variables
+	optdepends = pandoc: Pandoc support
 	optdepends = python-docutils: reStructuredText support
 	provides = hugo
 	conflicts = hugo
-	source_x86_64 = https://github.com/spf13/hugo/releases/download/v0.30/hugo_0.30_Linux-64bit.tar.gz
-	sha256sums_x86_64 = 1c4dbbc4fb38577e7100129ded51984ea1795294370fded876b71698f64f8eae
-	source_i686 = https://github.com/spf13/hugo/releases/download/v0.30/hugo_0.30_Linux-32bit.tar.gz
-	sha256sums_i686 = 060b1e931a14f6b26864310dd5d37a1813a90f891139b347460397f4ab9285e4
-	source_arm = https://github.com/spf13/hugo/releases/download/v0.30/hugo_0.30_linux_ARM.tar.gz
-	sha256sums_arm = aa944a4c470e8bc9996879854fb0290896e7e42ec13d24f769a9f541cd783822
+	conflicts = hugo-git
+	source = https://github.com/gohugoio/hugo/releases/download/v0.87.0/hugo_extended_0.87.0_Linux-64bit.tar.gz
+	b2sums = af2729b4869534502e87b0a7a27195b92aba37ce84238467666587660df47351ef84f9d8aceb7e0630d28ee441c87bf2255c97b5e68410e3aabef1c7cd60278b
 
 pkgname = hugo-bin
-

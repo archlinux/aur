@@ -1,49 +1,34 @@
-# Maintainer: sdvcrx <memory.silentvoyage at gmail dot com>
-# Contributor: Bastien "neitsab" Traverse <firstname at lastname dot email>
-# Contributor: masterme120
-# Contributor: runical
-# Contributor: oozyslug <oozyslug at gmail dot com>
-# Submitter: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname=hugo-bin
-pkgver=0.30
+_pkgname="${pkgname%-bin}"
+pkgver=0.87.0
 pkgrel=1
-pkgdesc="A Fast and Flexible Static Site Generator built in Go - Precompiled binary from official repository"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-url="https://gohugo.io/"
+pkgdesc='Fast and flexible static site generator written in Go'
+arch=('x86_64')
+_goos='linux'
+_goarch='amd64'
+url='https://gohugo.io'
 license=('Apache')
-optdepends=('pygmentize: source code highlighting'
-            'asciidoc: AsciiDoc support'
-            'asciidoctor: AsciiDoc support (Ruby implementation)'
-            'python-docutils: reStructuredText support')
-provides=('hugo')
-conflicts=('hugo')
-
-source_x86_64=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-64bit.tar.gz")
-source_i686=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_Linux-32bit.tar.gz")
-source_arm=("https://github.com/spf13/hugo/releases/download/v${pkgver}/${pkgname/-bin}_${pkgver}_linux_ARM.tar.gz")
-sha256sums_x86_64=('1c4dbbc4fb38577e7100129ded51984ea1795294370fded876b71698f64f8eae')
-sha256sums_i686=('060b1e931a14f6b26864310dd5d37a1813a90f891139b347460397f4ab9285e4')
-sha256sums_arm=('aa944a4c470e8bc9996879854fb0290896e7e42ec13d24f769a9f541cd783822')
-
-case "$CARCH" in
-  arm*) _pkgarch="arm"
-	;;
-  i686) _pkgarch="386"
-	;;
-  x86_64) _pkgarch="amd64"
-	;;
-esac
+optdepends=(
+	'asciidoctor: AsciiDoc support'
+	'bash-completion: Tab autocompletion'
+	'git: Git info variables'
+	'pandoc: Pandoc support'
+	'python-docutils: reStructuredText support'
+)
+provides=("$_pkgname")
+conflicts=(
+	"$_pkgname"
+	"$_pkgname-git"
+)
+source=("https://github.com/gohugoio/$_pkgname/releases/download/v$pkgver/${_pkgname}_extended_${pkgver}_Linux-64bit.tar.gz")
+b2sums=(af2729b4869534502e87b0a7a27195b92aba37ce84238467666587660df47351ef84f9d8aceb7e0630d28ee441c87bf2255c97b5e68410e3aabef1c7cd60278b)
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname/-bin}" "${pkgdir}/usr/bin/${pkgname/-bin}"
-  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname/-bin}/LICENSE"
-
-  # Generate shell autocompletion script
-  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
-  "${srcdir}/${pkgname/-bin}" gen autocomplete --completionfile="${pkgdir}/usr/share/bash-completion/completions/${pkgname/-bin}"
-
-  # Generate man pages
-  mkdir -p "${pkgdir}/usr/share/man/man1/"
-  "${srcdir}/${pkgname/-bin}" gen man --dir="${pkgdir}/usr/share/man/man1/"
+	install -Dm 755 "$_pkgname" -t "$pkgdir/usr/bin"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" gen autocomplete bash | install -Dm 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" gen autocomplete zsh | install -Dm 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
