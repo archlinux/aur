@@ -82,14 +82,26 @@ post_install() {
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Enhanced RSA and AES CSP' -add long Type 24
-
     cpconfig -ini '\config\parameters\Crypto-Pro Enhanced RSA and AES CSP' -add long KeyTimeValidityControlMode 128
+
+    cpconfig -defprov -setdef -provtype 32 -provname 'Crypto-Pro Curve25519 and AES KC1 CSP'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES KC1 CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES KC1 CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES KC1 CSP' -add long Type 32
+    cpconfig -ini '\config\parameters\Crypto-Pro Curve25519 and AES KC1 CSP' -add long KeyTimeValidityControlMode 128 
+
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro Curve25519 and AES CSP' -add long Type 32
+    cpconfig -ini '\config\parameters\Crypto-Pro Curve25519 and AES CSP' -add long KeyTimeValidityControlMode 128 
+
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 075' -add string 'TypeName' "GOST R 34.10-2001 Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 080' -add string 'TypeName' "GOST R 34.10-2012 (256) Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 081' -add string 'TypeName' "GOST R 34.10-2012 (512) Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 001' -add string 'TypeName' "RSA Full (Signature and Key Exchange)"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 016' -add string 'TypeName' "ECDSA Full and AES"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 024' -add string 'TypeName' "RSA Full and AES"
+    cpconfig -ini '\cryptography\Defaults\Provider Types\Type 032' -add string 'TypeName' "Curve25519 Full and AES"
 
     # lsb-cprocsp-capilite-64
     cpconfig -ini '\config\apppath' -add string libssp.so /opt/cprocsp/lib/amd64/libssp.so
@@ -273,6 +285,7 @@ post_install() {
                         ccid_reg.sh -add $pList 0x2fb0 0x0172 "Infocrypt HWDSSL DEVICE - CP"
                         ccid_reg.sh -add $pList 0x2fb0 0x0226 "Infocrypt HWDSSL DEVICE - CP"
                         ccid_reg.sh -add $pList 0x2a0c 0x0001 "MultiSoft ltd. SCR2 - CP"
+                        ccid_reg.sh -add $pList 0x2a0c 0x0002 "SKZI ANGARA - CP"
                         ccid_reg.sh -add $pList 0x23a0 0x0008 "BIFIT ANGARA - CP"
                         ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
                         ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
@@ -454,8 +467,8 @@ post_install() {
     cpconfig -ini '\config\KeyCarriers\RutokenNFC' -add string DLL librdrrutoken.so
     cpconfig -hardware media -add RutokenNFC -name 'Rutoken NFC' > /dev/null
 
-    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex atr 3B9C978011405275746F6B656E4543507363C0
-    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex mask ffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex atr 3B9C968011405275746F6B656E4543507363C0
+    cpconfig -hardware media -configure RutokenNFC -connect Default -add hex mask fffffefffffffffffffffffffffffffffffffe
     cpconfig -hardware media -configure RutokenNFC -connect Default -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_1 60
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_2 70

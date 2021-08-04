@@ -1,7 +1,7 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.11944
+pkgver=5.0.12222
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
@@ -28,11 +28,11 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/11944/linux-amd64.tgz
+    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12222/linux-amd64.tgz
     'https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz'
 )
 md5sums=(
-    '1310caeed04da8b9cc025ad4f619d9ec'
+    '0f7b7c16f0a5427903cbd26223f0de6d'
     '11ec1def2383ba5644066ab73163785f'
 )
 install=cryptopro-csp-k1.install
@@ -48,7 +48,7 @@ package() {
     bsdtar -xf "lsb-cprocsp-pkcs11-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-gui-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-pcsc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1170-4.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1237-4.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-rutoken-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-cptools-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
 
