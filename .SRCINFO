@@ -1,0 +1,21 @@
+pkgbase = shell-utilities-git
+	pkgdesc = A collection of scripts to run in a Linux/Unix terminal.
+	pkgver = 1.0.r17.420e6a5
+	pkgrel = 1
+	url = https://github.com/enchant97/shell-utilities.git
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = findutils
+	depends = less
+	depends = python
+	depends = python-requests
+	provides = ignore-gen
+	provides = license-gen
+	provides = project-gen
+	provides = git-archiver
+	provides = git-maintenance
+	source = git+https://github.com/enchant97/shell-utilities.git
+	md5sums = SKIP
+
+pkgname = shell-utilities-git
