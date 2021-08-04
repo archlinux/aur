@@ -1,39 +1,22 @@
-# Maintainer: Jeremy Tregunna <jeremy@metismachine.com>
-# Maintainer: Wess Cope <wess@metismachine.com>
+# Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=lfe
-pkgver=1.3
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="LISP Flavoured Erlang"
-arch=(x86_64)
-url="https://github.com/rvirding/lfe"
+arch=('x86_64')
+url="https://github.com/lfe/lfe"
 license=('Apache')
-depends=('erlang>=20.3.8')
-makedepends=('make>=4.0.0', 'gcc>=8.0.0')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rvirding/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('c57494020a7227978172803277048749')
-sha1sums=('f5875799a8e06dca1636c736df79366c384eadb4')
-sha256sums=('1946c0df595ae49ac33fe583f359812dec6349da6acf43c1458534de3267036b')
-validpgpkeys=()
+depends=('erlang')
+makedepends=('make' 'gcc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('d64a5c0b626411afe67f146b56094337801c596d9b0cdfeabaf61223c479985f')
 
 build() {
-	cd "$pkgname-$pkgver"
-  cc -o bin/lfeexec c_src/lfeexec.c
-	PREFIX=/usr make compile
+  cd "$pkgname-$pkgver"
+  make compile
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-  echo `pwd`
-  mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib/$pkgname/bin $pkgdir/usr/lib/$pkgname/ebin $pkgdir/usr/share
-  for i in bin/*; do
-    install -m755 $i $pkgdir/usr/lib/$pkgname/$i
-    ln -sf /usr/lib/$pkgname/$i $pkgdir/usr/$i
-  done
-  for i in 1 3 7; do
-    mkdir -p $pkgdir/usr/share/man/man$i
-    install -m644 doc/man/*.$i $pkgdir/usr/share/man/man$i/
-  done
-  for i in ebin/*; do
-    install -m 644 $i $pkgdir/usr/lib/$pkgname/ebin
-  done
+  make PREFIX="$pkgdir/usr" install
 }
