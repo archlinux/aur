@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at heiko-nickerl dot com>
 pkgname=sodalite
-pkgver=0.21.2
+pkgver=0.21.6
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -18,24 +18,25 @@ depends=(
     'python-blinker'
     'xdg-utils'
 )
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('a95e95938b27def8586b3cfccee855ef2e415f0f0175551e83e1da603af80cb0')
+source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('f77074c8ff6e2d2b0f63a8adfd5b72839d199ed6a2b06bc4aade9bfe7fc85c31')
 
+_srcdir=$pkgname-$pkgver
 build() {
-    cd $pkgname-$pkgver
+    cd $_srcdir
     python setup.py build
 }
 
 
 package() {
-    cd $pkgname-$pkgver
+    cd $_srcdir
     python setup.py install \
     --root="$pkgdir" \
     --optimize=1 \
     --skip-build
+
     install -Dm644 sodalite.desktop "$pkgdir/usr/share/applications/sodalite.desktop"
     install -Dm644 docs/sodalite.1 "$pkgdir/usr/share/man/man1/sodalite.1"
-    install -Dm644 docs/sodalite-open.1 "$pkgdir/usr/share/man/man1/sodalite-open.1"
     install -Dm644 docs/sodalite-open.1 "$pkgdir/usr/share/man/man1/sodalite-open.1"
     install -Dm755 scripts/sodalite-open "$pkgdir/usr/bin/sodalite-open"
     install -Dm644 README.md "$pkgdir/usr/share/doc/sodalite/README"
