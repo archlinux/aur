@@ -1,8 +1,8 @@
 pkgbase = jdk-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk16
-	pkgver = 16.0.1b9_openj9_0.26.0
+	pkgver = 16.0.2b7_openj9_0.27.0
 	pkgrel = 1
-	url = https://adoptopenjdk.net/index.html?variant=openjdk16&jvmVariant=openj9
+	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
 	license = custom
 	depends = java-environment-common
@@ -17,8 +17,7 @@ pkgbase = jdk-openj9-bin
 	conflicts = jdk16-openj9-bin
 	conflicts = jdk16-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9_openj9-0.26.0/OpenJDK16U-jdk_x64_linux_openj9_16.0.1_9_openj9-0.26.0.tar.gz
-	sha256sums = 7395aaa479a7410bbe5bd5efc43d2669718c61ba146b06657315dbd467b98bf1
+	source = https://github.com/ibmruntimes/semeru16-binaries/releases/download/jdk-16.0.2%2B7_openj9-0.27.0/ibm-semeru-open-jdk_x64_linux_16.0.2_7_openj9-0.27.0.tar.gz
+	sha256sums = 1349eb9a1d9af491a1984d66a80126730357c4a5c4fcbe7112a2c832f6c0886e
 
 pkgname = jdk-openj9-bin
-
