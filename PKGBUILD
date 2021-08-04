@@ -12,7 +12,10 @@ pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
 license=('GPL')
-makedepends=(pkg-config make gcc patch git automake autoconf libtool pulseaudio xorg-server-devel xorg-util-macros libxcomposite libxt pixman qubes-vm-gui-common qubes-libvchan-xen qubes-db-vm lsb-release
+makedepends=(pkg-config make gcc patch git automake autoconf libtool
+             pulseaudio<=15.0
+             xorg-server-devel xorg-util-macros libxcomposite libxt pixman
+             qubes-vm-gui-common qubes-libvchan-xen qubes-db-vm lsb-release
 )
 validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
               '0064428F455451B3EBE78A7F063938BA42CFA724'  # Marek Marczykowski-Górecki
@@ -77,7 +80,7 @@ package_qubes-vm-pulseaudio() {
   depends=('alsa-lib'
            'alsa-utils'
            'pulseaudio-alsa'
-           'pulseaudio<15.0'
+           'pulseaudio<=15.0'
   )
   install=PKGBUILD-pulseaudio.install
 
