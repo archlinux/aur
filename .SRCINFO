@@ -1,12 +1,14 @@
 pkgbase = docker-bench-security
 	pkgdesc = Check common best-practices around deploying Docker container
 	pkgver = 1.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/docker-bench-security
 	arch = any
 	license = Apache
 	depends = docker
 	source = https://github.com/docker/docker-bench-security/archive/refs/tags/v1.3.5.tar.gz
+	source = docker-bench-security-exec.sh
 	sha256sums = 70b7496440acbee7c80700b048a6fe1272467e2aeec3a6b6b2b46329d9fdc370
+	sha256sums = cd14edcb0f5c5cf05a51ba6e01c9a01d45e88738fda2ae56e31dc1f8af29025d
 
 pkgname = docker-bench-security
