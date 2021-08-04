@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Multiverse
+Comment=Play Multiverse
+Exec=multiverse
+Icon=multiverse
+Terminal=false
+StartupNotify=false
+Categories=Game

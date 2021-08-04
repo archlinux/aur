@@ -1,0 +1,16 @@
+pkgbase = multiverse
+	pkgdesc = Online video game platform making it as easy as possible to make, play, stream, and share tabletop role-playing games
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://multiverse.com
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source = multiverse.desktop
+	source = multiverse.svg
+	sha1sums = 823098589a6cdbe3e298f4e38d488e82f8610699
+	sha1sums = 9aadec2fdce3c6c8699f860a3d35464c6d5f1d22
+	source_x86_64 = https://download.todesktop.com/2101156wuvac7e1/One-More-Multiverse-1.2.0.AppImage
+	sha1sums_x86_64 = 5e24b86bba65d644fb34e1c2d7879f7bf2a49be2
+
+pkgname = multiverse
