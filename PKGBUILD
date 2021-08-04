@@ -1,7 +1,7 @@
 # Maintainer: "Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>"
 pkgname=genimage-git
 pkgver=v14.r82.43fccb5
-pkgrel=1
+pkgrel=2
 pkgdesc="tool to generate multiple filesystem and flash images from a tree"
 arch=($CARCH)
 url=https://github.com/pengutronix/${pkgname%-*}
@@ -22,15 +22,8 @@ optdepends=(
       'simg-tools: simg2img'
 )
 
-# makedepends=(${optdepends[@]})
-
-# https://sphinx-rtd-theme.readthedocs.io/en/stable/
-# makedepends=(python-sphinx python-sphinx_rtd_theme)
-source=(
-  ${pkgname%-*}::git+https://github.com/pengutronix/${pkgname%-*}.git
-         index.html::https://github.com/pengutronix/${pkgname%-*}/blob/master/README.rst
-)
-sha1sums=(SKIP SKIP)
+source=(${pkgname%-*}::git+https://github.com/pengutronix/${pkgname%-*}.git)
+sha1sums=(SKIP)
 
 pkgver() {
   cd ${pkgname%-*}
@@ -39,12 +32,6 @@ pkgver() {
 
 build() {
   cd ${pkgname%-*}
-
-  # echo
-  # pwd
-  # echo
-  # return 1
-
   # autoupdate # Corrupts ./configure
   ./autogen.sh
   ./configure \
@@ -62,5 +49,6 @@ check() {
 package() {
   cd ${pkgname%-*}
   make DESTDIR="$pkgdir/" install
-  install -vdm755 "$pkgdir/usr/share/doc/${pkgname%-*}"; cp -Lv "$srcdir/index.html" "$_"
+  install -vdm755 "$pkgdir/usr/share/doc/${pkgname%-*}"
+  cp -Lv README.rst "$_"
 }
