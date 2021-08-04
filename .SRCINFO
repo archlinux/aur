@@ -1,9 +1,10 @@
 pkgbase = vilearn
 	pkgdesc = An interactive vi tutorial.
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://web.archive.org/web/20020806204039/http://vilearn.org/
 	arch = any
+	license = custom
 	source = https://archive.org/download/vilearn/vilearn-1.0.tar.gz
 	source = https://archive.org/download/vilearn/vilearn.diff
 	md5sums = 8fd3b72e5eb1e4dce1870e7b3becbeab
