@@ -9,7 +9,7 @@ url="https://github.com/MrPotatoBobx/fetchcord"
 license=('MIT')
 depends=('python')
 provides=('fetchcord')
-depends=('neofetch' 'python-psutil' 'python-setuptools' 'python-pypresence')
+depends=('neofetch' 'python-psutil' 'python-setuptools')
 source=("fetchcord::git+$url#branch=testing")
 sha256sums=('SKIP')
 install=fetchcord.install
