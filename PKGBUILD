@@ -1,7 +1,8 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
