@@ -1,0 +1,15 @@
+pkgbase = nanodbc
+	pkgdesc = A small C++ wrapper for the native C ODBC API
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = http://nanodbc.io/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	depends = unixodbc
+	source = nanodbc-2.13.0.tar.gz::https://github.com/nanodbc/nanodbc/archive/v2.13.0.tar.gz
+	sha256sums = 174080f1cab25b1d7fe5a8e2862f4e730a1c7c1732b7bc54132ade832ef1a07c
+
+pkgname = nanodbc
