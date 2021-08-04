@@ -20,7 +20,7 @@ index fb807c8e989b..0cce348cd50d 100644
 +		* this causes the whole system to go into suspend.
 +		*/
 +
-+		if(data[0] == 0x02 && data[1] == 0x00) {
++		if(size == 2 && data[0] == 0x02 && data[1] == 0x00) {
 +			return -1;
 +		}
 +	}
