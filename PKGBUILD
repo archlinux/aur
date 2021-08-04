@@ -1,14 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.40.1
+pkgver=2.41.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
+depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=d04156356c3c5ea00f47520257b04beacaf1cd40") # tag: 2.40.1
+source=("git+$url#commit=da31088c13a2314c5720fae0f3f5e89ff227f50a") # tag: 2.41.0
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
@@ -40,6 +41,7 @@ b2sums=(SKIP)
 build() {
   cd $pkgname
   go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\""
+  make gui
 }
 
 package() {
@@ -49,4 +51,5 @@ package() {
   ln -sf /usr/bin/o "$pkgdir/usr/bin/ro"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" make gui-install
 }
