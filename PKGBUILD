@@ -18,7 +18,7 @@ _install_name='openoffice4'
 _install_path=${_install_prefix}/${_install_name}
 
 pkgname=openoffice-${_lang}-bin
-pkgver=4.1.9
+pkgver=4.1.10
 pkgrel=2
 pkgdesc="Russian language pack for OpenOffice.org"
 arch=('i686' 'x86_64')
