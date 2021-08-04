@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.8.8
+pkgver=2.8.9
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends=('electron12')
+depends=('electron')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -30,7 +30,7 @@ source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electr
         'pipewire_wayland.patch'
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('bdabecda7a3dd741734a973405682e13d40b3df026ab76f5f9d6d0f041098531'
+sha256sums=('f54a4c3ae93ffebf36a6d475037498ae9eef652a9f18c5dff82bb5491d3f909a'
             '39d54520962f8665e858748335594cca6b504884462b80d79a0d8aa6141129c4'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
@@ -57,14 +57,14 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron12
+  _electron_dist=/usr/lib/electron
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
 
   # This patch from https://github.com/jitsi/jitsi-meet-electron/commit/0e0483cbc52a9cad1fef51ed5abb846bd6445b11
   # broke jitsi-meet-electron for me on when running on sway with full wayland support via flags
   # If you you want to use that feature flag (--WebRTCPipeWireCapturer), I'd recommend putting it in
-  # ~/.config/electron12-flags.conf manually instead of having it applied by default
+  # ~/.config/electron-flags.conf manually instead of having it applied by default
   patch -Np1 -i ${srcdir}/pipewire_wayland.patch
 
   npm install
@@ -80,7 +80,7 @@ build() {
   # npm run build
   npx webpack --config ./webpack.main.js --mode production
   npx webpack --config ./webpack.renderer.js --mode production
-  npx electron-builder --linux --${_electronbuilderrarch} --dir $dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
+  npx electron-builder --linux --${_electronbuilderrarch} --dir dist -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
 }
 
 package() {
@@ -96,7 +96,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron12 /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
