@@ -1,0 +1,19 @@
+pkgbase = zydis-git
+	pkgdesc = Fast and lightweight x86/x86-64 disassembler library
+	pkgver = 3.1.0.r75.g6a17c48
+	pkgrel = 1
+	url = https://zydis.re/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	provides = zydis=3.1.0.r75.g6a17c48
+	provides = libZydis.so
+	conflicts = zydis
+	source = git+https://github.com/zyantific/zydis.git
+	source = git+https://github.com/zyantific/zycore-c.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = zydis-git
