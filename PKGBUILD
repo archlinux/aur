@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7213.2021.0526.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 16.0'
 arch=('x86_64')
 source=('LICENSE'
@@ -15,6 +15,8 @@ b2sums=('7a5866d947d40a1c993795f96f87ba94cdefa572fc5524848316792b602bdfd1ad50c63
 b2sums_x86_64=('e44cf5a0c237a8adb67f28a0a61b4d4d2e527b1f995a9afbdb069a3896b2a23002b63a34272ea65303beac89014bcb14ec410623847d88b42766aabe5691f5e9')
 sha512sums_x86_64=('0023e9fdb7ff7355e7e0be19faad94fa9a83fef42d4e31bfe7dcbb513012318b1a0e87e15becc48790cb290c5e1f5304e51e4dd78279272929f3168dc9c10095')
 depends=(icu openssl qt5-base qt5-webkit)
+conflicts=('f5fpc<7213.2021.0526.1-2')
+provides=("${pkgname}")
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')
 
@@ -28,7 +30,7 @@ package() {
     install -Dm644 "com.f5.${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.f5.${pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/bin/"
     install -dm755 "${pkgdir}/usr/local/lib/F5Networks/SSLVPN/var/run" # For svpn.pid
-    for executable in $pkgname svpn tunnelserver; do
+    for executable in $pkgname tunnelserver; do
         ln -s "/opt/f5/vpn/${executable}" "${pkgdir}"/usr/bin/${executable}
     done
 
