@@ -19,7 +19,8 @@ pkgbase = hoffice-bin
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = zlib
-	provides = hoffice=11.20.0.1520-1
+	provides = hoffice
+	conflicts = hoffice
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
 	source = license.txt
 	sha256sums = SKIP
