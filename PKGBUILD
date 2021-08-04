@@ -32,7 +32,7 @@ build() {
   cd "${srcdir}/json-c-json-c-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
+    ${_arch}-cmake -DBUILD_TESTING=OFF ..
     make
     popd
   done

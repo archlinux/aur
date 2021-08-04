@@ -20,4 +20,3 @@ pkgbase = mingw-w64-json-c
 	sha256sums = df185895f20f5591717daa6075c29a6b99b9dbcbc94e1b753689a8952cd95577
 
 pkgname = mingw-w64-json-c
-
