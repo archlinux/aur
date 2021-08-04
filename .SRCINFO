@@ -1,6 +1,6 @@
 pkgbase = hsakmt-roct
 	pkgdesc = Radeon Open Compute Thunk Interface
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCt.html
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = hsakmt-roct
 	makedepends = cmake
 	depends = numactl
 	depends = pciutils
-	provides = roct-thunk-interface=4.2.0
+	provides = roct-thunk-interface=4.3.0
 	replaces = roct-thunk-interface
-	source = hsakmt-roct-4.2.0.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/rocm-4.2.0.tar.gz
-	sha256sums = cc325d4b9a96062f2ad0515fce724a8c64ba56a7d7f1ac4a0753941b8599c52e
+	source = hsakmt-roct-4.3.0.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/rocm-4.3.0.tar.gz
+	sha256sums = 1ef5fe687bc23ffda17841fe354c1fb94e9aaf276ca9e5757488852f9066f231
 
 pkgname = hsakmt-roct
