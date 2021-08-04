@@ -1,0 +1,230 @@
+From ece2d15b4c492aed991735a72e99cf1e2fcaa47d Mon Sep 17 00:00:00 2001
+From: vantu5z <vantu5z@mail.ru>
+Date: Tue, 20 Jul 2021 16:23:15 +0300
+Subject: [PATCH] fix build files (for gulp 4)
+
+---
+ gulpfile.js  | 108 ++++++++++++++++-----------------------------------
+ package.json |   4 +-
+ 2 files changed, 36 insertions(+), 76 deletions(-)
+
+diff --git a/gulpfile.js b/gulpfile.js
+index d92108e..82356d5 100644
+--- a/gulpfile.js
++++ b/gulpfile.js
+@@ -64,7 +64,7 @@ function timeLog(m) {
+ /**
+  * GTK Auto reload
+  */
+-function autoreload() {
++gulp.task('autoreload', async function () {
+ 
+ 	var theme = dirLight;
+ 
+@@ -91,7 +91,7 @@ function autoreload() {
+ 		})
+ 
+ 	}
+-}
++});
+ 
+ 
+ /**
+@@ -101,7 +101,7 @@ function autoreload() {
+  */
+ 
+ gulp.task('copy-user-theme-folder', function () {
+-	return gulp.src('./build/**/*')
++	return gulp.src(`./build/+(${dirLight}|${dirDark})/**/*`)
+ 		.pipe(gulp.dest(os.homedir() + '/.local/share/themes/'))
+ })
+ 
+@@ -196,7 +196,6 @@ gulp.task('gtk3-assets', function () {
+ 
+ /*----------  gtk-2.0  ----------*/
+ // Light
+-gulp.task('gtk2-light', ['gtk2-light-assets', 'gtk2-light-menubar', 'gtk2-light-files']);
+ 
+ gulp.task('gtk2-light-assets', function (cb) {
+ 	return gulp.src('./src/gtk-2.0/assets/*')
+@@ -221,8 +220,9 @@ gulp.task('gtk2-light-files', function () {
+ 		.pipe(gulp.dest(`./build/${dirLight}/gtk-2.0`));
+ })
+ 
++gulp.task('gtk2-light', gulp.series(['gtk2-light-assets', 'gtk2-light-menubar', 'gtk2-light-files']));
++
+ // Dark
+-gulp.task('gtk2-dark', ['gtk2-dark-assets', 'gtk2-dark-menubar', 'gtk2-dark-files', 'gtk2-gtkrc-dark']);
+ 
+ gulp.task('gtk2-dark-assets', function (cb) {
+ 	return gulp.src('./src/gtk-2.0/assets-dark/*')
+@@ -252,6 +252,8 @@ gulp.task('gtk2-gtkrc-dark', function (cb) {
+ 		.pipe(gulp.dest(`./build/${dirDark}/gtk-2.0`))
+ });
+ 
++gulp.task('gtk2-dark', gulp.series(['gtk2-dark-assets','gtk2-dark-menubar','gtk2-dark-files','gtk2-gtkrc-dark']));
++
+ // gulp.task('gtk2-light', function(){
+ // 	return 	gulp.src([
+ // 						"./src/gtk-2.0/*",
+@@ -307,8 +309,6 @@ gulp.task('xfwm4-light', function (cb) {
+ });
+ 
+ 
+-gulp.task('xfwm4-dark', ['xfwm4-dark-assets', 'xfwm4-dark-themerc']);
+-
+ gulp.task('xfwm4-dark-assets', function (cb) {
+ 	return gulp.src('./src/xfwm4/assets-dark/*.png')
+ 		.pipe(gulp.dest(`./build/${dirDark}/xfwm4`))
+@@ -320,6 +320,7 @@ gulp.task('xfwm4-dark-themerc', function (cb) {
+ 		.pipe(gulp.dest(`./build/${dirDark}/xfwm4`))
+ });
+ 
++gulp.task('xfwm4-dark', gulp.series(['xfwm4-dark-assets','xfwm4-dark-themerc']));
+ 
+ 
+ /*=====  End of Common tasks  ======*/
+@@ -334,74 +335,36 @@ gulp.task('xfwm4-dark-themerc', function (cb) {
+ gulp.task('watch', function () {
+ 
+ 	// Gtk4
+-	gulp.watch('./src/gtk-4.0/**/*.scss', function (cb) {
+-
+-		gulp.start(['gtk4-light', 'gtk4-dark'], function () {
+-
+-			gulp.start('copy-user-theme-folder', function () {
+-				autoreload();
+-			})
+-		})
+-
+-	});
+-
+-	gulp.watch('./src/gtk-4.0/assets/*', function (file) {
+-
+-		gulp.src(file.path)
+-			.pipe(gulp.dest(`./build/${dirLight}/gtk-4.0/assets`))
+-			.pipe(gulp.dest(`./build/${dirDark}/gtk-4.0/assets`))
+-			.on('end', (cb) => {
+-
+-				timeLog(`gtk-4.0 Assets`);
+-
+-			})
+-
+-	});
++	gulp.watch('./src/gtk-4.0/**/*.scss',
++		gulp.parallel([
++			'gtk4-light', 'gtk4-dark',
++			'copy-user-theme-folder', 'autoreload']));
+ 
++	gulp.watch('./src/gtk-4.0/assets/*',
++		gulp.parallel([
++			'gtk4-assets',
++			'copy-user-theme-folder', 'autoreload']));
+ 
+ 	// Gtk3
+-	gulp.watch('./src/gtk-3.0/**/*.scss', function (cb) {
++	gulp.watch('./src/gtk-3.0/**/*.scss',
++		gulp.parallel([
++			'gtk3-light', 'gtk3-dark',
++			'copy-user-theme-folder', 'autoreload']));
+ 
+-		gulp.start(['gtk3-light', 'gtk3-dark'], function () {
+-
+-			gulp.start('copy-user-theme-folder', function () {
+-				autoreload();
+-			})
+-		})
+-
+-	});
+-
+-	gulp.watch('./src/gtk-3.0/assets/*', function (file) {
+-
+-		gulp.src(file.path)
+-			.pipe(gulp.dest(`./build/${dirLight}/gtk-3.0/assets`))
+-			.pipe(gulp.dest(`./build/${dirDark}/gtk-3.0/assets`))
+-			.on('end', (cb) => {
+-
+-				timeLog(`gtk-3.0 Assets`);
+-
+-			})
+-
+-	});
++	gulp.watch('./src/gtk-3.0/assets/*',
++		gulp.parallel([
++			'gtk3-assets',
++			'copy-user-theme-folder', 'autoreload']));
+ 
+ 	// Gnome-shell
+-	gulp.watch('./src/gnome-shell/**/*.scss', function (cb) {
+-
+-		gulp.start([
++	gulp.watch('./src/gnome-shell/**/*.scss',
++		gulp.parallel([
+ 			'gnome-shell-light',
+ 			'gnome-shell-light-assets',
+ 			'gnome-shell-dark',
+ 			'gnome-shell-dark-assets',
+-			'gnome-shell-high'
+-		], function () {
+-			gulp.start('copy-user-theme-folder', function () {
+-				autoreload();
+-			})
+-		})
+-
+-	});
+-
+-
++			'gnome-shell-high',
++			'copy-user-theme-folder', 'autoreload']));
+ });
+ 
+ /*=====  End of Watch  ======*/
+@@ -418,7 +381,7 @@ gulp.task('zip-dark', function () {
+ 		.pipe(gulp.dest('./build/'))
+ })
+ 
+-
++gulp.task('zip', gulp.series(['zip-light', 'zip-dark']));
+ 
+ /**
+  *
+@@ -426,7 +389,7 @@ gulp.task('zip-dark', function () {
+  *
+  */
+ 
+-gulp.task('default', [
++gulp.task('default', gulp.series([
+ 	'theme-light',
+ 	'theme-dark',
+ 	'gtk4-light',
+@@ -443,11 +406,6 @@ gulp.task('default', [
+ 	'gnome-shell-dark-assets',
+ 	'gnome-shell-high',
+ 	'xfwm4-light',
+-	'xfwm4-dark'
+-], (cb) => {
+-
+-	gulp.start(['zip-light', 'zip-dark'], function () {
+-		cb;
+-	})
+-
+-});
++	'xfwm4-dark',
++	'zip'
++]));
+diff --git a/package.json b/package.json
+index bf667d6..a72cd1e 100644
+--- a/package.json
++++ b/package.json
+@@ -26,8 +26,10 @@
+     "gulp-zip": "^4.1.0"
+   },
+   "devDependencies": {
++    "graceful-fs": "^4.2.3",
++    "chokidar": "^3.5.2",
+     "del": "^3.0.0",
+-    "gulp": "^3.9.1",
++    "gulp": "^4.0.2",
+     "gulp-rename": "^1.2.3",
+     "gulp-sass": "^4.0.1",
+     "gulp-watch": "^5.0.1"

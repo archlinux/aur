@@ -1,6 +1,6 @@
 pkgbase = plane-theme-git
 	pkgdesc = A modern icon theme for gnome linux versions.
-	pkgver = r179.a11a397
+	pkgver = r183.41f07309
 	pkgrel = 1
 	url = https://github.com/wfpaisa/plane-theme
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = plane-theme-git
 	makedepends = gulp
 	makedepends = npm
 	makedepends = python2
-	makedepends = nodejs-lts-erbium
+	makedepends = nodejs-lts-fermium
 	depends = gnome-shell
-	source = plane-theme-git::git+https://github.com/vantu5z/plane-theme
+	source = plane-theme-git::git+https://github.com/wfpaisa/plane-theme
+	source = gulp4.patch::https://github.com/vantu5z/plane-theme/commit/ece2d15b4c492aed991735a72e99cf1e2fcaa47d.patch
 	sha256sums = SKIP
+	sha256sums = 8c6c4dfa9b22406de10f9e065c2a1186f2033d290e6cf9f90f2cc809eab70e52
 
 pkgname = plane-theme-git
-
