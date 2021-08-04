@@ -1,6 +1,6 @@
 pkgbase = crossover
 	pkgdesc = Run Windows Programs on Linux
-	pkgver = 20.0.4
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = http://www.codeweavers.com
 	install = crossover.install
@@ -15,8 +15,8 @@ pkgbase = crossover
 	replaces = crossover-games
 	replaces = crossover-pro
 	replaces = crossover-standard
-	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_20.0.4-1.deb
-	sha256sums = ee6cad08453e29981f608ffb6e9ab300dfca0440e894738042f03cb19f8a9e9e
+	source = https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover_21.0.0-1.deb
+	sha256sums = 30e065c2a554472765c5cbe78efa352a84e3be7f75627fcd102af861eb4969b7
 	depends_i686 = glibc>=2.11
 	depends_i686 = libice
 	depends_i686 = libsm
@@ -94,4 +94,3 @@ pkgbase = crossover
 	optdepends_x86_64 = lib32-v4l-utils: Lets Windows applications access video devices.
 
 pkgname = crossover
-
