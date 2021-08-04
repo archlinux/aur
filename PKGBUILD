@@ -1,31 +1,24 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=general-preprocessor
-pkgver=1.6
+pkgver=2.1
 pkgrel=1
 pkgdesc="Bash-based preprocessor for anything"
 url="https://github.com/maandree/gpp"
 arch=(any)
-license=(GPL3)
-depends=(python bash)
-makedepends=(make coreutils python texinfo auto-auto-complete)
-install=general-preprocessor.install
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(46aa12e2ac51f235c801d0751686e6699efd51fa063078b8e13a0d63cf277dde)
-
-_prefix=/usr
-_command=gpp ## change this if you have a package conflicting package
+license=('custom:ISC')
+depends=()
+optdepends=('bash: default shell')
+source=("gpp-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=(ef305acf927ba6a37aa7e250b3a3d4f1fd4e0513a98acd6d2bdcdc15e4930faf)
 
 
-build() {
+build () {
         cd "${srcdir}/gpp-${pkgver}"
-        make PREFIX="${_prefix}" PKGNAME="${pkgname}" COMMAND="${_command}" DESTDIR="${pkgdir}" PY=python3
+        make PREFIX="/usr" DESTDIR="${pkgdir}"
 }
 
-package() {
+package () {
         cd "${srcdir}/gpp-${pkgver}"
-        make PREFIX="${_prefix}" PKGNAME="${pkgname}" COMMAND="${_command}" DESTDIR="${pkgdir}" PY=python3 install
-        _dir="${pkgdir}${_prefix}/share/licenses/${pkgname}"
-        ln -sf -- "/usr/share/licenses/common/GPL3" "${_dir}/LICENSE"
+        make PREFIX="/usr" DESTDIR="${pkgdir}" install
 }
-
