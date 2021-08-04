@@ -1,6 +1,6 @@
 pkgbase = system76-driver-git
 	pkgdesc = System76 Driver for System76 computers
-	pkgver = 20.04.31.r0.gb3a83f8
+	pkgver = 20.04.40.r0.g9a2d421
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-driver
 	install = system76-driver-git.install
@@ -42,4 +42,3 @@ pkgbase = system76-driver-git
 	sha256sums = 2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3
 
 pkgname = system76-driver-git
-
