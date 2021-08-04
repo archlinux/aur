@@ -21,6 +21,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DDISABLE_GEOS_INLINE=ON \
+      -DBUILD_TESTING=OFF -DBUILD_BENCHMARKS=OFF \
       ..
     make
     popd

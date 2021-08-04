@@ -15,4 +15,3 @@ pkgbase = mingw-w64-geos
 	sha256sums = 7e630507dcac9dc07565d249a26f06a15c9f5b0c52dd29129a0e3d381d7e382a
 
 pkgname = mingw-w64-geos
-
