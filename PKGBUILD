@@ -1,6 +1,6 @@
 # Maintainer: Daniel Menelkir <menelkir at itroll dot org>
 pkgname=g15daemon-openrc
-pkgver=20210613
+pkgver=20210805
 pkgrel=1
 pkgdesc="g15daemon init script for OpenRC"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('g15daemon' 'openrc')
 _filename='g15daemon.initd'
 source=("https://gitlab.com/menelkir/g15daemon/-/raw/master/contrib/init/g15daemon.openrc")
-sha256sums=('3fad6371f206be83cbaa9b904f494bbe7828d1da6ef5ec3ea202bc5959f2b402')
+sha256sums=('fc8697cdb8b0823c737ab19df382162f5fb055c9ada1b917deeb75457255fb05')
 
 package() {
     install -dm755 "$pkgdir/etc/init.d"
