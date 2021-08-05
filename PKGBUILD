@@ -2,13 +2,13 @@
 
 pkgname=palette-git
 pkgver=2.0.1.r2.g27c60fa
-pkgrel=1
-pkgdesc="Colour Palette tool"
+pkgrel=2
+pkgdesc="Tool for viewing the GNOME color palette as defined by the design guidelines"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/design/palette"
 license=('GPL3')
 depends=('gtk4' 'vala')
-makedepends=('meson')
+makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(

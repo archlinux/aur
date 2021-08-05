@@ -1,10 +1,11 @@
 pkgbase = palette-git
-	pkgdesc = Colour Palette tool
+	pkgdesc = Tool for viewing the GNOME color palette as defined by the design guidelines
 	pkgver = 2.0.1.r2.g27c60fa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/design/palette
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	depends = gtk4
 	depends = vala
