@@ -1,7 +1,7 @@
 # Maintainer: Vedant K (gamemaker1) <gamemaker0042 at gmail dot com>
 
 pkgname=bak-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="A backup tool written in bash (binary version)"
@@ -12,7 +12,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 depends=("bash" "coreutils" "tar" "zip" "unzip")
 source=("${pkgname%-bin}-$pkgver.tar.zst::https://github.com/gamemaker1/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-$pkgrel-any.pkg.tar.zst")
-sha256sums=('cdca97c5822ca6c22f11df30721fe6b6a23073c34c2a89c933bb5461350afb79')
+sha256sums=('62536ae9c9cb3b79d4b1778f03428195972c97b69e3e33dc99867221f038c3bd')
 
 package() {
 	install -Dm775 "usr/bin/bak" "$pkgdir/usr/bin/bak"
