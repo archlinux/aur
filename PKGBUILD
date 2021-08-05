@@ -19,9 +19,16 @@
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 => Intel native
 ##                                                 99 => AMD native
-## I choose generic, you can change it by yourself
+## It will use native by default
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
+  cpu=`grep vendor_id /proc/cpuinfo | awk -F: '{print $2}' | tail -1`
+  if [ $cpu == 'GenuineIntel' ]; then
+    _microarchitecture=98
+  elif [ $cpu == 'AuthenticAMD' ]; then
+    _microarchitecture=99
+  else
+    _microarchitecture=0
+  fi
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -65,13 +72,13 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+_makenconfig=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.13
-pkgver=${_major}.7
+pkgver=${_major}.8
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -114,7 +121,7 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        '349c53d427fc4b0cbbdb25211bc38947fef4bfea7636dba4ba6ce4ca24f9f8fdf2775a499ec4cc798bec37c4b216d25aad1a55b866d224f29ab4f4daf89f69b3'
+        '42275338efa96260802a4b0890a05f7173bdb3e7a48bd1087b818756e8ce9db385e158d43634d2654e2724968d025c1d5d3c348769438fe049942c3224558ea3'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
