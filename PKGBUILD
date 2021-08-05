@@ -3,12 +3,12 @@
 pkgname=protonup-git
 _realname=protonup
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and Update Proton-GE"
 arch=('any')
 url="https://github.com/AUNaseef/protonup"
 license=('GPL')
-depends=('python')
+depends=('python' 'python-requests')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
 source=("git+https://github.com/AUNaseef/$_realname.git")
