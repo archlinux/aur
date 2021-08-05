@@ -1,4 +1,4 @@
-pkgbase = grub-customizer
+pkgbase = grub-customizer-git
 	pkgdesc = A graphical interface to configure the GRUB2/BURG settings and menuentries
 	pkgver = 5.1.0
 	pkgrel = 2
@@ -17,4 +17,4 @@ pkgbase = grub-customizer
 	sha512sums = d79c7996afd8486483d4460432207dc19315d7377dcfd2fd6a4594e64c6750bbae36f96c395c4a9748d0ff43c6095399d822fc6a23beedbc8769802818dfa11f
 	sha512sums = 40156b6546a4d7e8abbef2ab3dece0481a4a2ca276b9a15c5a7bf7e3b11004335b6a747be391b5c1accb35c9e9e3bc628e571cd245e5f2980e5ecd6a3ceb24f5
 
-pkgname = grub-customizer
+pkgname = grub-customizer-git
