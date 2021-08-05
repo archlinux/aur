@@ -1,0 +1,13 @@
+pkgbase = minilibx-git
+	pkgdesc = A simple X-Window (X11R6) programming API in C suitable for X-beginners.
+	pkgver = r61.9cd1813
+	pkgrel = 1
+	url = https://github.com/42Paris/minilibx-linux
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	provides = minilibx
+	source = minilibx::git+https://github.com/42Paris/minilibx-linux
+	md5sums = SKIP
+
+pkgname = minilibx-git
