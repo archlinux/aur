@@ -1,8 +1,8 @@
 pkgbase = python-leather
 	pkgdesc = Python charting for 80% of humans
 	pkgver = 0.3.3
-	pkgrel = 3
-	url = https://leather.readthedocs.io/
+	pkgrel = 4
+	url = https://leather.readthedocs.io
 	arch = any
 	license = MIT
 	checkdepends = python-cssselect
@@ -14,4 +14,3 @@ pkgbase = python-leather
 	sha256sums = 70f621f7c5ddac6bc3261850134c0187cb200844243eb878a29f8a8f15a8db46
 
 pkgname = python-leather
-
