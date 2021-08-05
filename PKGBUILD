@@ -1,8 +1,8 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
-# Maintainer: wedjat <wedjat@protonmail.com>
+# Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
@@ -11,10 +11,15 @@ license=('MIT' 'custom')
 depends=('python')
 makedepends=('python-setuptools')
 optdepends=('python-numpy: for working with pixel data'
-            'python-pillow: for working with compressed image data')
+            'python-pillow: for working with compressed image data'
+            'gdcm: for working with compressed JPEG, JPEG-LS and JPEG 2000 images'
+            'python-pylibjpeg: for working with compressed JPEG images'
+            'python-pylibjpeg-openjpeg: for working with compressed JPEG-LS or JPEG 2000 images'
+            'python-pylibjpeg-rle: for working with compressed RLE images'
+            )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz")
-md5sums=('398d943c9da2aec28857b60fe7e02123')
+md5sums=('b08d86a3eb637515c9e851f254d11612')
 
 build()
 {
