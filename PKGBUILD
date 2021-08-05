@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nvtop-git
-pkgver=1.1.0.r6.g117b5c4
+pkgver=1.2.2.r0.g29e5523
 pkgrel=1
 pkgdesc="A (h)top like task monitor for NVIDIA GPUs"
 arch=('x86_64')
