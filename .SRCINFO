@@ -1,6 +1,6 @@
 pkgbase = simutrans-svn
 	pkgdesc = Transportation simulation game - Nightly build from SVN
-	pkgver = r9981
+	pkgver = r9982
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
