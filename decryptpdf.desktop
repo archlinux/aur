@@ -1,0 +1,12 @@
+#dir: ~/.local/share/kservices5/ServiceMenus/
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/pdf
+Actions=decryptPdf
+
+[Desktop Action decryptPdf]
+
+Name=Decrypt Password-Protected PDF-File
+Icon=application-pdf
+Exec=/usr/bin/pdfdecrypt %U;
