@@ -1,13 +1,14 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Minmo <com dot gmail at maroboromike>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgbase='th06-demo'
 pkgname=('th06-demo-data' 'th06-demo-wine' 'th06-demo-pytouhou')
 pkgver=0.13
-pkgrel=3
+pkgrel=4
 url='http://www16.big.or.jp/~zun/html/th06.html'
 arch=('any')
 license=('custom')
-makedepends=('convmv' 'icoutils')
+makedepends=('convmv' 'icoutils' 'p7zip')
 source=('http://www16.big.or.jp/~zun/data/soft/kouma_tr013.lzh'
         "$pkgbase-wine.desktop" "$pkgbase-wine.sh"
         "$pkgbase-pytouhou.desktop" "$pkgbase-pytouhou.sh")
@@ -18,8 +19,9 @@ sha1sums=('dfeb4dd358c6613ec4d8b701d41672ca75b6a0c9'
           '4591e137f7948508140c5014d11eacad41b63b0d')
 
 prepare() {
-  cd "$srcdir"
+  LC_ALL=C 7z x kouma_tr013.lzh
   convmv -f CP932 -t UTF-8 -r --notest .
+  cd "$srcdir"
 }
 
 package_th06-demo-data() {

@@ -1,11 +1,12 @@
 pkgbase = th06-demo
 	pkgver = 0.13
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www16.big.or.jp/~zun/html/th06.html
 	arch = any
 	license = custom
 	makedepends = convmv
 	makedepends = icoutils
+	makedepends = p7zip
 	source = http://www16.big.or.jp/~zun/data/soft/kouma_tr013.lzh
 	source = th06-demo-wine.desktop
 	source = th06-demo-wine.sh
@@ -30,4 +31,3 @@ pkgname = th06-demo-pytouhou
 	pkgdesc = Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; PyTouhou version.
 	depends = th06-demo-data
 	depends = pytouhou-hg
-
