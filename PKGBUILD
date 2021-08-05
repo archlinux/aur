@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at hnicke dot de>
 pkgname=sodalite
-pkgver=0.21.22
+pkgver=0.21.23
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e52c27b3bcd53315bfdb46a8f092c26b48926d8357fa7a1514d30b0787627868')
+sha256sums=('2dd57ceca9729a1691f4cd5f77540fdeb32de46272858b6aefb271a25461f3e0')
 
 _srcdir=$pkgname-$pkgver
 build() {
@@ -32,6 +32,7 @@ package() {
     cd $_srcdir
     python setup.py install \
     --root="$pkgdir" \
+    --prefix="/usr" \
     --optimize=1 \
     --skip-build
 
