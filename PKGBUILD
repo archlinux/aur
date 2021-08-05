@@ -3,7 +3,7 @@
 
 pkgname=meli-git
 pkgver=0.6.2.r236.gb085703
-pkgrel=1
+pkgrel=2
 pkgdesc='experimental terminal mail client'
 arch=(x86_64)
 url=https://meli.delivery
@@ -14,7 +14,7 @@ depends=(curl
          sqlite)
 makedepends=(git
              mandoc
-             rust)
+             cargo)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git+https://git.meli.delivery/meli/meli.git")
@@ -28,13 +28,22 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname%-git}"
-	cargo fetch --locked
+	cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
 	cd "${pkgname%-git}"
-	cargo build --offline --release --all-features
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARAGET_DIR=target
+	cargo build --frozen --release --all-features
 }
+
+check() {
+	cd "${pkgname%-git}"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen
+}
+
 
 package() {
 	cd "${pkgname%-git}"
