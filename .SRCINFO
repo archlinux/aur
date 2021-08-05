@@ -1,0 +1,11 @@
+pkgbase = kde-servicemenus-sendtodesktop
+	pkgdesc = KDE service menus for sending files to desktop from dolphin
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = dolphin
+	source = sendToDesktop.desktop
+	sha256sums = 71589c650e3c2d43d3b7d4d45824b9744da497d4134e242446c33f368fdbeae4
+
+pkgname = kde-servicemenus-sendtodesktop

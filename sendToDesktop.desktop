@@ -1,0 +1,21 @@
+# Dolphin Services Easy Quick Install Suite 
+# https://github.com/Intika-Linux-Plasmoid
+# Contact: intika@librefox.org
+# Release: 2019 intika
+# License: GPL-3.0 
+# Version: 5.21
+
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+Actions=sendDesktop;
+InitialPreference=99
+Version=5.21
+
+[Desktop Action sendDesktop]
+Name=Send to Desktop (ln -s)
+Exec=ln -s %F ~/Desktop
+Icon=desktop
