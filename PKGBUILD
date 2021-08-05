@@ -2,8 +2,8 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=0
-pkgrel=1
+pkgver=1.0.0
+pkgrel=3
 pkgdesc="Rustcat - Like Netcat but in Rust"
 url="https://github.com/robiot/rustcat"
 license=('MIT')
