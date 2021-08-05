@@ -6,8 +6,8 @@
 _productVariant=Fotobuch
 # leave this unset to get a package name based on the application name
 pkgname=
+pkgrel=3
 
-conflicts=(cewe-fotowelt cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
 
 # locale, key account, original name, version, md5sum, (optional) replacement name
@@ -48,10 +48,12 @@ _productUrname=${_prams[2]}
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
 pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
-sed "s/PACKAGE NAME/$pkgname/" CEWE.install > $pkgname.install
+sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
+
+conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
+conflicts=(${conflicts[@]/$pkgname/})
 
 pkgver=${_prams[3]}
-pkgrel=3
 source=($source 'updater.pl')
 md5sums=(${_prams[4]} 'SKIP')
 
@@ -82,10 +84,11 @@ package() {
 	# keep packages unless updating from within application
 	[ -z "$_UPDATING" ] && keepPackages='-k' || update='--upgrade'
 
-	./install.pl $update $keepPackages --installDir=$_installDir -v
+	./install.pl $update $keepPackages --installDir="$_installDir" -v
 
 	install -m644 -b updater.pl $_installDir/updater.pl
 	sed -i "s/APPLICATION NAME/$_productRename/" $_installDir/updater.pl
+	rm $_installDir/uninstall.pl
 
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
         # pixmap for legacy customised mimetypes
