@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Max Roder <maxroder@web.de>
 # Contributor: Oleg Finkelshteyn <olegfink@gmail.com>
