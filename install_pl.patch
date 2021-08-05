@@ -1,29 +1,101 @@
-diff -u fwsnort-1.6.3-2/install.pl fwsnort-1.6.3/install.pl
---- fwsnort-1.6.3-2/install.pl	2012-12-24 21:31:28.597018440 -0700
-+++ fwsnort-1.6.3/install.pl	2012-12-24 21:40:38.564569377 -0700
-@@ -45,7 +45,7 @@
+Common subdirectories: fwsnort-1.6.8/deps and fwsnort-1.6.8-2/deps
+diff -u fwsnort-1.6.8/fwsnort.conf fwsnort-1.6.8-2/fwsnort.conf
+--- fwsnort-1.6.8/fwsnort.conf	2018-07-31 20:45:56.000000000 -0400
++++ fwsnort-1.6.8-2/fwsnort.conf	2021-08-05 15:26:33.058823615 -0400
+@@ -59,10 +59,10 @@
+ ### variables, one per line). Note that by default the update IP's for
+ ### Emerging Threats ruleset downloads are whitelisted:
+ ## Name:   rules.emergingthreats.net
+-## Address: 96.43.137.99
++## Address: 52.5.252.216
+ ## Name:   rules.emergingthreats.net
+-## Address: 204.12.217.19
+-WHITELIST               96.43.137.99, 204.12.217.19;
++## Address: 52.1.74.181
++WHITELIST               52.5.252.216, 52.1.74.181;
+ 
+ ### Use the BLACKLIST variable to define a list of hosts/networks
+ ### that for which fwsnort should DROP or REJECT all traffic.  For
+@@ -106,18 +106,18 @@
+ IPT_BACKUP_SAVE_FILE    $STATE_DIR/iptables.save; ### iptables policy backup
+ 
+ ### system binaries
+-shCmd                   /bin/sh;
+-catCmd                  /bin/cat;
+-grepCmd                 /bin/grep;
+-echoCmd                 /bin/echo;
+-tarCmd                  /bin/tar;
++shCmd                   /usr/bin/sh;
++catCmd                  /usr/bin/cat;
++grepCmd                 /usr/bin/grep;
++echoCmd                 /usr/bin/echo;
++tarCmd                  /usr/bin/tar;
+ wgetCmd                 /usr/bin/wget;
+ unameCmd                /usr/bin/uname;
+-ifconfigCmd             /sbin/ifconfig;
+-ipCmd                   /sbin/ip;
+-iptablesCmd             /sbin/iptables;
+-iptables-saveCmd        /sbin/iptables-save;
+-iptables-restoreCmd     /sbin/iptables-restore;
+-ip6tablesCmd            /sbin/ip6tables;
+-ip6tables-saveCmd       /sbin/ip6tables-save;
+-ip6tables-restoreCmd    /sbin/ip6tables-restore;
++ifconfigCmd             /usr/bin/ifconfig;
++ipCmd                   /usr/bin/ip;
++iptablesCmd             /usr/bin/iptables;
++iptables-saveCmd        /usr/bin/iptables-save;
++iptables-restoreCmd     /usr/bin/iptables-restore;
++ip6tablesCmd            /usr/bin/ip6tables;
++ip6tables-saveCmd       /usr/bin/ip6tables-save;
++ip6tables-restoreCmd    /usr/bin/ip6tables-restore;
+diff -u fwsnort-1.6.8/install.pl fwsnort-1.6.8-2/install.pl
+--- fwsnort-1.6.8/install.pl	2018-07-31 20:45:56.000000000 -0400
++++ fwsnort-1.6.8-2/install.pl	2021-08-05 15:31:20.845968975 -0400
+@@ -36,7 +36,7 @@
+ #========================= config ========================
+ my $fwsnort_conf_file = 'fwsnort.conf';
+ 
+-my $sbin_dir     = '/usr/sbin';
++my $sbin_dir     = '/usr/bin';
+ my $install_root = '/';
+ 
+ my $update_website = 'www.emergingthreats.net';
+@@ -45,19 +45,15 @@
  my $perlCmd = '/usr/bin/perl';
  my $makeCmd = '/usr/bin/make';
  my $wgetCmd = '/usr/bin/wget';
 -my $gzipCmd = '/bin/gzip';
+-my $tarCmd  = '/bin/tar';
 +my $gzipCmd = '/usr/bin/gzip';
- my $tarCmd  = '/bin/tar';
++my $tarCmd  = '/usr/bin/tar';
  #======================= end config ======================
-
-@@ -129,10 +129,6 @@
+ 
+ my %config = ();
+ 
+ my @cmd_search_paths = qw(
+-    /bin
+-    /sbin
+     /usr/bin
+-    /usr/sbin
+     /usr/local/bin
+-    /usr/local/sbin
+ );
+ 
+ my %exclude_cmds = (
+@@ -143,10 +139,6 @@
  ### make sure the system binaries are where we think they are.
  &check_commands();
-
+ 
 -### check to make sure we are running as root
--$< == 0 && $> == 0 or die "You need to be root (or equivalent UID 0",
--    " account) to install/uninstall fwsnort!\n";
+- die "You need to be root (or equivalent UID 0",
+-    " account) to install/uninstall fwsnort!\n" unless &is_root();
 -
  if ($uninstall) {
      &uninstall();
  } else {
-@@ -154,10 +150,10 @@
+@@ -168,10 +160,10 @@
          "sources directory." unless -e 'fwsnort' and -e 'fwsnort.conf';
-
+ 
      unless (-d $config{'CONF_DIR'}) {
 -        &full_mkdir($config{'CONF_DIR'}, 0500);
 +        &full_mkdir($config{'CONF_DIR'}, 0700);
@@ -32,16 +104,16 @@ diff -u fwsnort-1.6.3-2/install.pl fwsnort-1.6.3/install.pl
 -        &full_mkdir($config{'RULES_DIR'}, 0500);
 +        &full_mkdir($config{'RULES_DIR'}, 0700);
      }
-
+ 
      ### install perl modules
-@@ -336,52 +332,11 @@
-
+@@ -350,52 +342,11 @@
+ 
  sub install_manpage() {
      my $manpage = 'fwsnort.8';
 -    ### remove old man page
 -    unlink "/usr/local/man/man8/${manpage}" if
 -        (-e "/usr/local/man/man8/${manpage}");
-
+ 
      ### default location to put the fwsnort man page, but check with
      ### /etc/man.config
 -    my $mpath = '/usr/share/man/man8';
@@ -89,38 +161,7 @@ diff -u fwsnort-1.6.3-2/install.pl fwsnort-1.6.3/install.pl
      &full_mkdir($mpath, 0755);
      my $mfile = "${mpath}/${manpage}";
      print "[+] Installing $manpage man page as $mfile\n";
-@@ -532,6 +487,9 @@
-         /bin
-         /usr/bin
-         /usr/local/bin
-+        /sbin
-+        /usr/sbin
-+        /usr/local/sbin
-     );
-     CMD: for my $cmd (keys %cmds) {
-         unless (-x $cmds{$cmd}) {
-diff -u fwsnort-1.6.3-2/fwsnort.conf fwsnort-1.6.3/fwsnort.conf
---- fwsnort-1.6.3-2/fwsnort.conf	2012-12-24 22:39:21.323178467 -0700
-+++ fwsnort-1.6.3/fwsnort.conf	2012-12-24 22:41:52.172194457 -0700
-@@ -103,14 +103,14 @@
-
- ### system binaries
- shCmd                   /bin/sh;
--echoCmd                 /bin/echo;
-+echoCmd                 /usr/bin/echo;
- tarCmd                  /bin/tar;
- wgetCmd                 /usr/bin/wget;
- unameCmd                /usr/bin/uname;
- ifconfigCmd             /sbin/ifconfig;
--iptablesCmd             /sbin/iptables;
--iptables-saveCmd        /sbin/iptables-save;
--iptables-restoreCmd     /sbin/iptables-restore;
--ip6tablesCmd            /sbin/ip6tables;
--ip6tables-saveCmd       /sbin/ip6tables-save;
--ip6tables-restoreCmd    /sbin/ip6tables-restore;
-+iptablesCmd             /usr/sbin/iptables;
-+iptables-saveCmd        /usr/sbin/iptables-save;
-+iptables-restoreCmd     /usr/sbin/iptables-restore;
-+ip6tablesCmd            /usr/sbin/ip6tables;
-+ip6tables-saveCmd       /usr/sbin/ip6tables-save;
-+ip6tables-restoreCmd    /usr/sbin/ip6tables-restore;
+Common subdirectories: fwsnort-1.6.8/lib and fwsnort-1.6.8-2/lib
+Common subdirectories: fwsnort-1.6.8/packaging and fwsnort-1.6.8-2/packaging
+Common subdirectories: fwsnort-1.6.8/patches and fwsnort-1.6.8-2/patches
+Common subdirectories: fwsnort-1.6.8/test and fwsnort-1.6.8-2/test
