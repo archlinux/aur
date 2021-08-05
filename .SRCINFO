@@ -1,0 +1,8 @@
+pkgbase = makesndwch
+	pkgdesc = Order Tux to make a sandwich for you.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	source = makesndwch.sh
+
+pkgname = makesndwch
