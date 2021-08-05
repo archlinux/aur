@@ -1,7 +1,7 @@
 # Maintainer: Peter Smit <peter@smitmail.eu>
 
 pkgname=nova
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='A cli tool to find outdated Helm charts running in your Kubernetes cluster'
 arch=(x86_64)
@@ -26,4 +26,4 @@ package() {
   install -Dm 755 "$srcdir"/nova-$pkgver/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm 755 "$srcdir"/nova-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums=('b8af2867a954d92dfcc89c6d662092c3')
+md5sums=('1afe4fe5ccec1d69437af7c272a54043')
