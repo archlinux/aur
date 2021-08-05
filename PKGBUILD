@@ -8,7 +8,7 @@ pkgver=0.2.4
 pkgrel=3
 pkgdesc='Adds read support for Excel files (xls and xlsx) to agate'
 arch=(any)
-url="https://$_pyname.readthedocs.org/"
+url="https://$_pyname.readthedocs.org"
 license=(MIT)
 _pydeps=('agate>=1.5.0'
          olefile
