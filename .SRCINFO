@@ -1,6 +1,6 @@
 pkgbase = eka2l1-git
 	pkgdesc = Experimental Symbian OS emulator (GIT version)
-	pkgver = 4195.b86731a2
+	pkgver = 4746.4d9e1addc
 	pkgrel = 1
 	url = https://github.com/EKA2L1/EKA2L1
 	arch = x86_64
@@ -12,11 +12,14 @@ pkgbase = eka2l1-git
 	makedepends = glfw
 	makedepends = vulkan-headers
 	makedepends = python
+	makedepends = qt5-tools
 	depends = boost-libs
-	depends = gtk3
+	depends = qt5-base
+	depends = qt5-svg
 	depends = freetype2
 	depends = pango
 	depends = vulkan-icd-loader
+	depends = gtk3
 	provides = eka2l1
 	conflicts = eka2l1
 	source = eka2l1-git::git+https://github.com/EKA2L1/EKA2L1.git
@@ -25,4 +28,3 @@ pkgbase = eka2l1-git
 	md5sums = a37f85023bcce416aaaf6b72e0d01c46
 
 pkgname = eka2l1-git
-
