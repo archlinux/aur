@@ -2,12 +2,13 @@
 
 pkgname=ansible-language-server
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ansible Language Server'
 arch=('any')
 url="https://github.com/ansible/ansible-language-server"
 license=('MIT')
-depends=('nodejs')
+depends=('ansible' 'nodejs')
+optdepends=('ansible-lint: required for linter support')
 makedepends=('npm' 'jq')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver-0.tgz")
 noextract=("$pkgname-$pkgver.tgz")
