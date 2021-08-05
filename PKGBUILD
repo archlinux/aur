@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz [at] gmail [dot] com>
 
 pkgname=bootstrap
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="Front-end framework for web development"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 install=bootstrap.install
 source=("https://github.com/twbs/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-dist.zip"
 	"LICENSE")
-sha256sums=('66fbc134317db2370ee099cb3d19330b5075606ddf70cca333dab0165020f6c1'
+sha256sums=('395342b2974e3350560e65752d36aab6573652b11cc6cb5ef79a2e5e83ad64b1'
             '9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb')
 
 package() {
