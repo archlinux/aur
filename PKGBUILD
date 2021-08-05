@@ -1,8 +1,8 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
 pkgname=bracmat-git
-pkgver=6.9.1.r247
-pkgrel=3
+pkgver=6.9.2.r249
+pkgrel=4
 pkgdesc='Programming language for symbolic computation with pattern matching features'
 arch=('i686' 'x86_64')
 url='https://github.com/BartJongejan/Bracmat'
@@ -13,7 +13,7 @@ conflicts=('bracmat')
 source=("git+$url.git"
         'path-to-help.patch')
 md5sums=('SKIP'
-         'f595a0ccdef5980c45433127c1bc37b4')
+         '6ef0a6e438c5f7ff66c59dcb34c50411')
 
 pkgver() {
   sed -nr 'N;s/#define VERSION "([0-9\.]+)"\n#define BUILD "([0-9]+)"/\1.r\2/p;D'\
