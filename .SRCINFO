@@ -1,0 +1,12 @@
+pkgbase = terminus-rust
+	pkgdesc = Allows conveniently modify features of crate
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/laxect/terminus
+	arch = x86_64
+	license = MIT
+	depends = cargo
+	source = terminus-server.service
+	sha256sums = 0b751e8577a228eabe731363dec15759eba0a81d081bdbce7e17d87f91544bb5
+
+pkgname = terminus-rust

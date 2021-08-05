@@ -1,0 +1,12 @@
+[Unit]
+Description=A rule based proxy in Go for %i.
+After=network.target
+
+[Service]
+Type=exec
+Restart=on-abort
+ExecStart=/usr/bin/terminus-server
+WorkingDirectory=/usr/share/terminus/
+
+[Install]
+WantedBy=network-online.target
