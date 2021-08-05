@@ -1,29 +1,22 @@
 # Maintainer: Jonas Hahnfeld <hahnjo@hahnjo.de>
 
 pkgname=dynconf
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A small program to apply recipes to configuration files"
 arch=('x86_64')
 url="https://github.com/hahnjo/dynconf"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'dep' 'go-pie')
+makedepends=('git' 'go')
 validpgpkeys=('5F0FF9606A4BE87F553A03B691C9C33D2C61ACDB')
 source=("git+https://github.com/hahnjo/dynconf#tag=v${pkgver}?signed")
 sha256sums=('SKIP')
 
-prepare(){
-  export GOPATH="${srcdir}/go"
-  mkdir -p "${GOPATH}/src/github.com/hahnjo"
-  ln -rTsf "${pkgname}" "${GOPATH}/src/github.com/hahnjo/${pkgname}"
-}
-
 build(){
-  export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/github.com/hahnjo/${pkgname}"
-  EXTRA_GOFLAGS="-trimpath -ldflags \"-extldflags ${LDFLAGS}\"" \
-    make
+  cd "$pkgname"
+  export EXTRA_GOFLAGS="-buildmode=pie -trimpath -ldflags \"-linkmode=external -extldflags ${LDFLAGS}\""
+  make
 }
 
 package() {
