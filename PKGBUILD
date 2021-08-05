@@ -3,7 +3,7 @@
 # Maintainer: Joshua Taillon <jat255 AT gmail DOT com>
 pkgname=python-hyperspy
 pkgshort=hyperspy
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
