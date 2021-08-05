@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ "$(id -u)" -ne 0 ]; then
-        echo 'TUX says that they cannot make you a sandwich unless you are root.' >&2
+        echo 'TUX says: What? Make it yourself.' >&2
         exit 1
 fi
 
