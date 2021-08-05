@@ -3,7 +3,7 @@
 _pkgname=glif
 pkgname=mfek-$_pkgname
 pkgver=1.0a
-pkgrel=4
+pkgrel=5
 pkgdesc='A stand-alone glyph viewer and editor (from Modular Font Editor K)'
 arch=(x86_64)
 url="https://github.com/MFEK/$_pkgname"
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	export CARGO_TARAGET_DIR=target
+	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
