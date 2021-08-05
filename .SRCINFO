@@ -20,8 +20,8 @@ pkgbase = hoffice
 	depends = qt5-x11extras
 	depends = zlib
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
-	source = license.txt
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = LICENSE
+	sha256sums = 1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730
+	sha256sums = 09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583
 
 pkgname = hoffice
