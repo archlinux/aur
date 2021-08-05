@@ -1,7 +1,7 @@
 pkgbase = terminus-rust
-	pkgdesc = Allows conveniently modify features of crate
+	pkgdesc = Text board in tui
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laxect/terminus
 	arch = x86_64
 	license = MIT

@@ -3,8 +3,8 @@
 pkgname=terminus-rust
 _pkgname=terminus
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Allows conveniently modify features of crate"
+pkgrel=2
+pkgdesc="Text board in tui"
 url="https://github.com/laxect/$_pkgname"
 arch=("x86_64")
 license=("MIT")
