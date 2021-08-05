@@ -1,14 +1,14 @@
 pkgbase = terminus-rust
 	pkgdesc = Text board in tui
-	pkgver = 0.1.1
-	pkgrel = 5
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/laxect/terminus
 	arch = x86_64
 	license = MIT
 	depends = cargo
-	source = https://github.com/laxect/terminus/archive/v0.1.1.tar.gz
+	source = https://github.com/laxect/terminus/archive/v0.1.2.tar.gz
 	source = terminus-server.service
-	sha256sums = 7986966df70719ce9bf19eb7f8af9f0f496b03b3afcdb2a1c6413875b9ab2963
+	sha256sums = 9b8aacc15e2f1756559f9e85c7f789caaf28efda19326bd46217b6cad4398133
 	sha256sums = e194ff8ba6fc62539f8d4b573f126b0f08f3a4d9f1ae607dee0534d4ec4129d3
 
 pkgname = terminus-rust
