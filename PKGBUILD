@@ -106,6 +106,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
         "0003-zstd.patch::${_patches_url}/zstd-patches-v5/0001-zstd-patches.patch"
+        "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
         )
 
 validpgpkeys=(
@@ -126,6 +127,7 @@ b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
         'c88d3053e0e1d1145ec7d487df7ed1c18b8a4e8cf62f8fc9e05baa5f1b270aa64177f33b13c1d409e63a83691cc530e5f848ab73bfd2b10f60cdb681b9e310c1'
+        'f0baa68af63ae61284584ef474273657cfb132e8b6e129dfe0ef89df3b4468a4324a4b61cccdcf35339b6023cfdc64e6a77a3555df5802689dbeeb411ca369d9'
       )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
