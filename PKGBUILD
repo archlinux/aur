@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 # Contributor: Edgard Castro <castro@edgard.org>
 
 pkgname=ttf-heuristica
