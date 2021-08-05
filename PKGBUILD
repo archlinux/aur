@@ -1,7 +1,7 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
