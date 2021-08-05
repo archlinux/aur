@@ -2,37 +2,47 @@
 
 _pkgname=glif
 pkgname=mfek-$_pkgname-git
-pkgver=1.0a.r16.g561930f
+pkgver=1.0a.r70.g574fc59
 pkgrel=1
 pkgdesc='A stand-alone glyph viewer and editor (from Modular Font Editor K)'
 arch=(x86_64)
 url="https://github.com/MFEK/$_pkgname"
 license=(Apache)
-depends=(gtk3 libxcb)
-makedepends=(git rust-nightly)
+depends=(gtk3
+         libxcb)
+makedepends=(cargo-nightly
+             cmake
+             git
+             python)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags --abbrev=7 --tags HEAD |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 --tags HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
-    cargo fetch --locked
+	cd "$pkgname"
+	cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
 
 build() {
-    cd "$pkgname"
-    cargo build --offline --release --all-features
+	cd "$pkgname"
+	export CARGO_TARAGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd "$pkgname"
+	cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname"
-    install -Dm755 target/release/MFEK$_pkgname "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	cd "$pkgname"
+	install -Dm0755 "target/release/MFEK$_pkgname" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
