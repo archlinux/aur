@@ -58,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=7
+_minor=8
 _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -78,7 +78,7 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "config"
 #  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-  "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
+  "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
   "${_caculepatches}/v5.13/cacule-5.13.patch"
   "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
@@ -101,7 +101,7 @@ source=(
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
-  "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
+  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
 )
 
 
@@ -535,9 +535,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'aebc49e4d58bd8314548a364bec99d1e'
+         'c21e43334165513b131796d4270aefc6'
          'db27e837fe0e94c39ee8d0e663a33c3d'
-         '0c139073c9a3c742706d96a165bc8e95'
+         '6d8a2a8f499dd9643ca4af2254389ce7'
          '43407e834830af9d260705fdd4422689'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
@@ -560,4 +560,4 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '9e5114dba6da65e8d444aa225b109a21'
          '2aa4d3664fc16dac2f18fe8c22ba1df1'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
-         'ef7748efcae55f7db8961227cbae3677')
+         '08590776013d05bc7a96ef5557c54200')
