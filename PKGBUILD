@@ -28,7 +28,7 @@ _mm_protect=y
 ### Enable multigenerational LRU
 _lru_enable=y
 ### Enable Linux Random Number Generator
-_lrng_enable=
+_lrng_enable=y
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -60,7 +60,7 @@ _use_current=
 _major=5.13
 _minor=8
 _srcname=linux-${_major}
-pkgbase=linux-cacule-rdb-autogroup
+pkgbase=linux-cacule-rdb-autogroup-lto
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
 pkgrel=1
@@ -77,7 +77,7 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
     "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
     "config"
-    "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
+    "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
     "${_caculepatches}/v5.13/cacule-5.13.patch"
     "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
     "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
@@ -553,8 +553,8 @@ done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'c21e43334165513b131796d4270aefc6'
-         'db27e837fe0e94c39ee8d0e663a33c3d'
-         '6d8a2a8f499dd9643ca4af2254389ce7'
+         '14021c2c3f7fc2d83bd2114c42e23ec1'
+         '0c139073c9a3c742706d96a165bc8e95'
          '43407e834830af9d260705fdd4422689'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
