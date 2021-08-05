@@ -3,10 +3,8 @@
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: beatgammit
 
-_install_libs=false
-
 pkgname=servo-git
-pkgver=r44209.052278d058
+pkgver=r44260.bd92fad81a
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
@@ -28,6 +26,7 @@ depends=(bzip2
          xcb-util)
 install="$pkgname.install"
 makedepends=(autoconf2.13
+             cargo-nightly
              clang
              cmake
              curl
@@ -37,8 +36,7 @@ makedepends=(autoconf2.13
              llvm
              python
              python-distlib
-             python-virtualenv
-             rust-nightly)
+             python-virtualenv)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/profile.d/${pkgname%-git}".{csh,sh})
@@ -58,27 +56,15 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	# fixes build error
-	# possibly _FORTIFY_SOURCE? https://bugs.archlinux.org/task/34759
-	#unset CPPFLAGS
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	./mach build --release
 }
 
 package() {
 	servopath=$pkgname/target/release
 	install -Dm0755 -t "$pkgdir/opt/servo/" "$servopath/servo"
-	if [ "$_install_libs" = true ] ; then
-		mkdir -p "$pkgdir/usr/lib"
-		find "$servopath/deps" -name "*-*.so" -exec basename {} \; | sort | uniq | while read _f; do
-			_file=$(find "$servopath/deps" -name "$_f" -print | head -n 1)
-			if [ -z "$_file" ]; then
-				echo "Skipping: $_f"
-				continue
-			fi
-			install -Dm644 "$_file" "$pkgdir/usr/lib"
-		done
-	fi
-	mkdir -p "$pkgdir/opt/servo/resources"
+	install -d "$pkgdir/opt/servo/resources/"
 	cp -r $pkgname/resources/* "$pkgdir/opt/servo/resources"
 	cd "$pkgname"
 	install -Dm0755 -t "$pkgdir/etc/profile.d/" "${pkgname%-git}".{csh,sh}
