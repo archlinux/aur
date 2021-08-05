@@ -1,7 +1,7 @@
 pkgbase = pacman-hook-systemd-restart-git
 	pkgdesc = An alpm hook to automatically restart updated services, or the systemd daemon.
 	pkgver = r1.9b9506b
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	source = git+https://gitlab.com/aviallon/pacman-hook-systemd-restart.git
 	sha1sums = SKIP
