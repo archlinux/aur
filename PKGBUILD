@@ -13,7 +13,7 @@ install=gopro-webcam.install
 source=("gopro" "gopro_webcam.service" "60-gopro.rules")
 noextract=("gopro" "gopro_webcam.service" "60-gopro.rules")
 sha256sums=("4d8c86533933b8fc5f44f74921a9819a7b5d76eb95046ceab99e4a6dd205b826"
-            "c891e2e4a114fc6d6e1d6f874df8e1105f57c248b0ca97475456e92c558fae64"
+            "5f6d0005d9790b4fa03107f83790c23948f34c887790e26d25dc7ed9e5ff2fae"
             "76f247506012177858323eeadfca859ba4b9abbe832181ac0c178c8aac0a3c9c")
 
 package() {
