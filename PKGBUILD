@@ -1,7 +1,7 @@
 # Maintainer: Your Name <tjmcgrew@gmail.com>
 pkgname=famistudio
 _pkgname=FamiStudio
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(mono gtk-sharp-2 openal libcanberra rtmidi ffmpeg)
+depends=(mono gtk-sharp-2 openal libcanberra rtmidi libvorbis ffmpeg)
 makedepends=(mono-msbuild mono-msbuild-sdkresolver nuget)
 checkdepends=()
 optdepends=()
@@ -24,10 +24,10 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/${pkgver}.tar.gz"
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('8ab86581dc5e9a7c9793903329e1891c'
+md5sums=('32adcecb4d190ed2baeffb812ab17676'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('72bcec408dc44333b430c005116f160427339fd797bc163acec1891ae4ff9ad4'
+sha256sums=('e36f8ea71a84eb078a5cf243759166495b696b173b0b2c86f61c590f796aa854'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
 
@@ -51,7 +51,10 @@ build() {
     cd ThirdParty/ShineMp3 && ./build_linux.sh && cd -
     cp ThirdParty/ShineMp3/libShineMp3.so FamiStudio/
 
-    touch ${_pkgname}/libopenal32.so ${_pkgname}/librtmidi.so
+    cd ThirdParty/Vorbis && ./build_linux.sh && cd -
+    cp ThirdParty/Vorbis/libVorbis.so FamiStudio/
+
+    touch ${_pkgname}/libopenal32.so ${_pkgname}/librtmidi.so ${_pkgname}/libVorbis.so
 
     msbuild -restore ${_pkgname}.Linux.sln
     msbuild -p:Configuration=Release -p:Platform=x64 ${_pkgname}.Linux.sln
