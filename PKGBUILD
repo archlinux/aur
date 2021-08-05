@@ -1,20 +1,19 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=elfcat
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Generates HTML files from ELF binaries"
 arch=('x86_64')
 url="https://github.com/ruslashev/elfcat"
 license=('ZLIB')
-depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('640ba104e2942fdcea7157cb6bc771fe6c95f69bc72c017770ff2e7e8003afc651bc99bf3dec4ebd25f2499723d0d9e03c6031af47068bfc73f21e9be8dae310')
+b2sums=('69239f1db94c5d59644e8e51ba34c67ea14435ca2773b411d664a2ee085c1e257d37b2bbbb7c9078fb59ec4d8222e430485bbf110f771922ad8524f0e5c88a41')
 
 build() {
 	cd "$pkgname-$pkgver"
-   RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --locked --all-features --target-dir=target
 }
 
 package() {
