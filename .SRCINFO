@@ -1,0 +1,17 @@
+pkgbase = lorem-git
+	pkgdesc = Simple app to generate the Lorem Ipsum placeholder text
+	pkgver = r22.27dbbcd
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/lorem
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = gtk4
+	depends = glib2
+	depends = libadwaita
+	source = git+https://gitlab.gnome.org/World/design/lorem.git
+	md5sums = SKIP
+
+pkgname = lorem-git
