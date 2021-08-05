@@ -5,11 +5,12 @@ pkgbase = mfek-glif
 	url = https://github.com/MFEK/glif
 	arch = x86_64
 	license = Apache
-	makedepends = rust-nightly
+	makedepends = cargo-nightly
+	makedepends = cmake
+	makedepends = python
 	depends = gtk3
 	depends = libxcb
-	source = mfek-glif-1.0a.tar.gz::https://github.com/MFEK/glif/archive/refs/tags/1.0a.tar.gz
+	source = glif-1.0a.tar.gz::https://github.com/MFEK/glif/archive/refs/tags/1.0a.tar.gz
 	sha256sums = c2faa685f3642bfd0f3a93635d2afefe2429e8f76b798b84e0ba8e4ad7cb0a6b
 
 pkgname = mfek-glif
-
