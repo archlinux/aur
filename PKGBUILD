@@ -1,14 +1,14 @@
 # Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
 pkgname=stm32cubemx
 pkgver=6.3.0
-pkgrel=22
+pkgrel=23
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
 url="https://www.st.com/en/development-tools/stm32cubemx.html"
 license=('custom')
 groups=()
-depends=('java-runtime>=11'
+depends=('java-runtime=11'
 	 'bash')
 makedepends=('imagemagick')
 checkdepends=()
