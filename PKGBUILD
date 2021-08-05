@@ -2,15 +2,15 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_bundleid=245050
-_hash=d3c52aa6bfa54d3ca74e617f18309292
+_bundleid=245048
+_hash=d3c52aa6bfa54d3ca74e617f18309292244573
 _major=8
 _minor=301
 _pkgname=jre
 
 pkgname=bin32-jre
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
@@ -38,7 +38,8 @@ DLAGENTS=("${DLAGENTS[@]//curl -/curl --retry 3 --retry-delay 3 -fL -b 'oracleli
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib32/jvm/java32-$_major-$_pkgname/jre
 
-backup=("etc/java32-$_jname/images/cursors/cursors.properties"
+backup=("etc/java32-$_jname/i386/jvm.cfg"
+        "etc/java32-$_jname/images/cursors/cursors.properties"
         "etc/java32-$_jname/management/jmxremote.access"
         "etc/java32-$_jname/management/management.properties"
         "etc/java32-$_jname/security/java.policy"
@@ -58,7 +59,7 @@ source=(
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('aa15533de2260d058d7d44d9ea210f9d5bb0db5e81fb6594e2ae2f43cd47f406'
+sha256sums=('ee377427586a998e676e5de623f3298d51dbb648c578934e7829736fec2987ba'
             '9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
@@ -117,7 +118,7 @@ package() {
     done
 
     # Link NPAPI plugin
-    ln -sf $_jvmdir/lib/amd64/libnpjp2.so "$pkgdir"/usr/lib32/mozilla/plugins/libnpjp2-$_jname.so
+    ln -sf $_jvmdir/lib/i386/libnpjp2.so "$pkgdir"/usr/lib32/mozilla/plugins/libnpjp2-$_jname.so
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
@@ -156,3 +157,4 @@ package() {
         permission java.awt.AWTPermission \"accessClipboard\";" \
     -i "$pkgdir"/etc/java32-$_jname/security/java.policy
 }
+
