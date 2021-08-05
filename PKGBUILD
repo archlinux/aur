@@ -1,8 +1,8 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
-pkgver=4.2.0
-pkgrel=4
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -13,27 +13,24 @@ provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
 _roctracer='https://github.com/ROCm-Developer-Tools/roctracer'
+_opencl='https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "$pkgname-roctracer-$pkgver.tar.gz::$_roctracer/archive/rocm-$pkgver.tar.gz"
-        'amdgpu-targets.patch')
-sha256sums=('ecb929e0fc2eaaf7bbd16a1446a876a15baf72419c723734f456ee62e70b4c24'
-            '62a9c0cb1ba50b1c39a0636c886ac86e75a1a71cbf5fec05801517ceb0e67a37'
-            'c1ccea2c6ca3e0e2a5f6449dccab7081386cb224db8c95391b27d8ac6f1d5754')
+        "$pkgname-opencl-$pkgver.tar.gz::$_opencl/archive/rocm-$pkgver.tar.gz")
+sha256sums=('293b5025b5e153f2f25e465a2e0006a2b4606db7b7ec2ae449f8a4c0b52d491b'
+            'c3d9f408df8d4dc0e9c0026217b8c684f68e775da80b215fecb3cd24419ee6d3'
+            'd37bddcc6835b6c0fecdf4d02c204ac1d312076f3eef2b1faded1c4c1bc651e9')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 _dirtracer="$(basename "$_roctracer")-$(basename "${source[1]}" ".tar.gz")"
 
-prepare() {
-    cd "$_dirname"
-    patch -Np1 -i "$srcdir/amdgpu-targets.patch"
-}
-
 build() {
-  CXXFLAGS="$CXXFLAGS -isystem /opt/rocm/include/compiler/lib/include -isystem /opt/rocm/include/elf" \
+  CXXFLAGS="$CXXFLAGS -isystem /opt/rocm/include/compiler/lib/include -isystem /opt/rocm/include/elf -isystem $srcdir/ROCm-OpenCL-Runtime-rocm-$pkgver" \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
         -DCMAKE_PREFIX_PATH=/opt/rocm/lib/cmake \
         -DPROF_API_HEADER_PATH="$srcdir/$_dirtracer/inc/ext" \
+        -DCMAKE_HIP_ARCHITECTURES='gfx900;gfx906;gfx908' \
         -DHIP_COMPILER=clang \
         -DHIP_PLATFORM=rocclr \
         -D__HIP_ENABLE_PCH=OFF
@@ -61,6 +58,11 @@ package() {
   # Same holds for the HIP library
   install -d "$pkgdir/opt/rocm/lib"
   ln -s "/opt/rocm/hip/lib/libamdhip64.so" "$pkgdir/opt/rocm/lib/libamdhip64.so"
+
+  # CMake projects with language "HIP" look for hip config files in /opt/rocm/lib
+  install -d "$pkgdir/opt/rocm/lib/cmake"
+  ln -s "/opt/rocm/hip/lib/cmake/hip" "$pkgdir/opt/rocm/lib/cmake/hip"
+  ln -s "/opt/rocm/hip/lib/cmake/hip-lang" "$pkgdir/opt/rocm/lib/cmake/hip-lang"
 
   install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/hip.conf" <<EOF
 /opt/rocm/hip/lib
