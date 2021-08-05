@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pomerium-bin
