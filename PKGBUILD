@@ -2,44 +2,45 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
-_pkgname=agate-dbf
-pkgname=python-$_pkgname
+_pyname=agate-dbf
+pkgname=python-$_pyname
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds read support for dbf files to agate"
-arch=('any')
-url='https://agate-dbf.readthedocs.org/'
-license=('MIT')
-depends=(
-    'python'
-    'python-agate>=1.5.0'
-    'python-dbfread>=2.0.5'
-    'python-sphinx_rtd_theme>=0.1.6'
-  )
-makedepends=(
-    'python-setuptools'
-    'python-sphinx>=1.2.2'
-  )
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/wireservice/$_pkgname/archive/$pkgver.tar.gz")
+arch=(any)
+url="https://$_pyname.readthedocs.org/"
+license=(MIT)
+_pydeps=('agate>=1.5.0'
+         'dbfread>=2.0.5')
+depends=(python
+         "${_pydeps[@]/#/python-}"
+         python-sphinx_rtd_theme)
+makedepends=(python-setuptools
+             python-sphinx)
+checkdepends=(python-pytest)
+_archive="$_pyname-$pkgver"
+source=("$_archive.tar.gz::https://github.com/wireservice/$_pyname/archive/$pkgver.tar.gz")
 sha256sums=('5b60feb4bbb48dd4dcabef2b0248f2b8d4c3d42d60d50971c8067dbb5b01d5f6')
 
 build() {
-    cd "$_pkgname-$pkgver"
-    python setup.py build
-    python setup.py build_sphinx
-    _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
-    rm -rvf "build/sphinx/html/_static"
-    ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "build/sphinx/html/_static"
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
+	python setup.py build_sphinx
+	_rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+	rm -rvf build/sphinx/html/_static
+	ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" build/sphinx/html/_static
 }
 
 check() {
-    cd "$_pkgname-$pkgver"
-    python setup.py test --test-suite=tests
+	cd "$_archive"
+	pytest tests
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    mkdir -p "$pkgdir/usr/share/doc"
-    cp -rv "build/sphinx/html" "$pkgdir/usr/share/doc/$pkgname"
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -dm0755 "$pkgdir/usr/share/doc/"
+	cp -rv build/sphinx/html "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
