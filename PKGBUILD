@@ -20,6 +20,7 @@ pkgver() {
 }
 
 prepare() {
+	# build example app
 	sed -i 's/CONFIGURATIONS Release//' $_pkgname/examples/send-presence/CMakeLists.txt
 }
 
