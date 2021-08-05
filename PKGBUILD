@@ -1,4 +1,4 @@
-# Contributor: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sql-abstract-pg'
