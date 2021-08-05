@@ -3,10 +3,10 @@
 _pkgname=open-fpga-loader
 pkgname=$_pkgname-git
 
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=($_pkgname openfpgaloader)
+conflicts=($_pkgname openfpgaloader openfpgaloader-git)
 
-pkgver=r391.4ed01ae
+pkgver=r585.3ea05cc
 pkgrel=1
 arch=('x86_64')
 
