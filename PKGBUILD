@@ -6,8 +6,8 @@
 _productVariant=Germany
 # leave this unset to get a package name based on the application name
 pkgname=
+pkgrel=1
 
-conflicts=(cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
 
 # locale, key account, original name, version, md5sum, (optional) replacement name
@@ -16,7 +16,7 @@ _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3 d05b5491c95c14d3219
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3 e34b967b54520f59a8241ece3c4bc8f2)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.1.4 c4095abf2f8fd7873a007a3b2429e285 'CEWE Fotobuch')
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.1.4 1f48a372a529a1c114eab8a983f6b119)
-_prams_Poland=(pl_PL 29241 'CEWE Fotoswiat' 7.1.3 18f4cb458c729cee0bffb006bcc12a51)
+_prams_Poland=(pl_PL 29241 'CEWE Fotoswiat' 7.1.3 18f4cb458c729cee0bffb006bcc12a51 'CEWE Fotoświat')
 _prams_Slovakia=(sk_SK 31916 'CEWE fotosvet' 7.1.3 d7b4cee0eb3ebd0d0d24b7c2d15ea868)
 _prams_UK=(en_GB 12611 'CEWE Creator' 7.1.3 7ebc546641a0417de04b8ae5e21acfa1)
 
@@ -48,10 +48,12 @@ _productUrname=${_prams[2]}
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
 pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
-sed "s/PACKAGE NAME/$pkgname/" CEWE.install > $pkgname.install
+sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
+
+conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
+conflicts=(${conflicts[@]/$pkgname/})
 
 pkgver=${_prams[3]}
-pkgrel=1
 source=($source 'updater.pl')
 md5sums=(${_prams[4]} 'SKIP')
 
@@ -86,6 +88,7 @@ package() {
 
 	install -m644 -b updater.pl $_installDir/updater.pl
 	sed -i "s/APPLICATION NAME/$_productRename/" $_installDir/updater.pl
+	rm $_installDir/uninstall.pl
 
 	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
         # pixmap for legacy customised mimetypes
