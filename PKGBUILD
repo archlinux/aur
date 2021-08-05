@@ -32,6 +32,6 @@ package() {
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/resources/app/GoogleDuo.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
+        "$pkgdir/usr/share/applications/GoogleDuo.desktop"
     sed -i s%/usr/share%/opt% "$pkgdir/usr/share/applications/GoogleDuo.desktop"
 }
