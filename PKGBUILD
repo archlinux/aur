@@ -1,21 +1,30 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=chamber
-_upstreamver=2.10.1
-pkgver="${_upstreamver//-/_}"
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="A tool for managing secrets using AWS SSM Parameter Store"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/segmentio/$pkgname/"
 license=('MIT')
-source=("https://github.com/segmentio/$pkgname/releases/download/v$_upstreamver/$pkgname-v$_upstreamver-linux-amd64"
-        "$pkgname-$_upstreamver-LICENSE::https://raw.githubusercontent.com/segmentio/$pkgname/v$_upstreamver/LICENSE")
-sha256sums=('820151fe4be8290fe8d9c0f1789f5715c0bc65027ece24f9d44d8128743b5805'
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/segmentio/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+        "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/segmentio/$pkgname/v$pkgver/LICENSE")
+sha256sums=('50e8bf541aac590a7eefbee7fe4d064a4bf23ddc8d83bbb81921f8b38c497299'
             'feaff489d3c077f7b48cf76a5f038604338a092be379c1297c64c26c6b81714b')
 
+declare -A _archmap=( ['x86_64']='amd64' ['aarch64']='arm64' )
+_carch=${_archmap[$CARCH]}
+
+build() {
+  cd "$pkgname-$pkgver"
+  export VERSION=v$pkgver
+  make dist/$pkgname-v$pkgver-linux-$_carch
+}
+
 package() {
-  install -Dm755 "$pkgname-v$_upstreamver-linux-amd64" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname-$_upstreamver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname-$pkgver/dist/$pkgname-v$pkgver-linux-$_carch" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
