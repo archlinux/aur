@@ -61,6 +61,8 @@ package_th06-demo-wine() {
   echo '######################################'
   echo '# To hear sound, install the optional dependencies and add the following to `/etc/timidity/timidity.cfg`'
   echo '# `soundfont /usr/share/soundfonts/FluidR3_GM.sf2`'
+  echo '# Add your user to the audio group: `gpasswd -a $USER audio`'
+  echo '# Reboot'
   echo '# If you still cannot hear sound recheck the timidity config file, it seems to sometimes get overwritten'
   echo '######################################'
   echo ''
