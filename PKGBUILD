@@ -63,7 +63,16 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=36
+if [ -z ${_subarch+x} ]; then
+  cpu=`grep vendor_id /proc/cpuinfo | awk -F: '{print $2}' | tail -1`
+  if [ $cpu == 'GenuineIntel' ]; then
+    _subarch=40
+  elif [ $cpu == 'AuthenticAMD' ]; then
+    _subarch=41
+  else
+    _subarch=36
+  fi
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
