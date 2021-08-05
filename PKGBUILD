@@ -1,7 +1,7 @@
 # Maintainer: Greg Hurrell <greg@hurrell.net>
 pkgname=clipper-git
-pkgver=2.0.0_20_g3ab426d
-pkgrel=2
+pkgver=2.0.0_11_gecb7766
+pkgrel=1
 pkgdesc="Clipboard access for local and remote tmux sessions"
 arch=(x86_64)
 url="https://github.com/wincent/clipper"
@@ -14,18 +14,16 @@ makedepends=(
 optdepends=('xclip: access to X11 clipboard')
 source=(
   "${pkgname}::git+https://github.com/wincent/clipper.git"
-  "service-path.patch"
+  "service.patch"
 )
-sha256sums=(
-  'SKIP'
-  'e9f238ab3619091b3e191570f4cee46ecb56063d77dc7677bbe6f5b1013b901a'
-)
+sha256sums=('SKIP'
+            '5cdc4f5262ca69c8530813e6a4b2555cf2b30d8c6489d45a16b7d94f1655a354')
 
 prepare() {
   cd "$pkgname"
   echo "$LDFLAGS"
-  git reset --hard master
-  patch --strip 1 --input="${srcdir}/service-path.patch"
+  git reset --hard main
+  patch --strip 1 --input="${srcdir}/service.patch"
 }
 
 pkgver() {
@@ -44,7 +42,7 @@ check() {
 
 package() {
   cd "$pkgname"
-  LDFLAGS="-extldflags \"${LDFLAGS}\"" make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm755 clipper "$pkgdir/usr/bin/clipper"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/clipper-git/LICENSE"
   install -Dm644 contrib/linux/systemd-service/clipper.service "$pkgdir/usr/share/clipper/clipper.service"
   echo
