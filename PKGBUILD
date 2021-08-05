@@ -58,7 +58,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=
+_minor=8
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb-autogroup
 pkgver=${_major}.${_minor}
@@ -102,23 +102,6 @@ source=(
     "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
     "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
   )
-BUILD_FLAGS=(
-      LLVM=1
-      LLVM_IAS=1
-      CC=clang
-      CXX=clang++
-      LD=ld.lld
-      AR=llvm-ar
-      NM=llvm-nm
-      STRIP=llvm-strip
-      READELF=llvm-readelf
-      HOSTCC=clang
-      HOSTCXX=clang++
-      HOSTAR=llvm-ar
-      HOSTLD=ld.lld
-      OBJCOPY=llvm-objcopy
-      OBJDUMP=objdump
-    )
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -148,7 +131,7 @@ prepare() {
  ### Setting config
     echo "Setting config..."
     cp "${srcdir}"/config .config
-    make ${BUILD_FLAGS[*]}  olddefconfig
+    make olddefconfig
     ### CPU_ARCH SCRIPT ##
     source "${startdir}"/configure
     cpu_arch
@@ -437,7 +420,7 @@ prepare() {
 
 build() {
     cd $_srcname
-    make ${BUILD_FLAGS[*]} all
+    make  all
 }
 
 _package() {
@@ -552,9 +535,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'aebc49e4d58bd8314548a364bec99d1e'
+         'c21e43334165513b131796d4270aefc6'
          'db27e837fe0e94c39ee8d0e663a33c3d'
-         '0c139073c9a3c742706d96a165bc8e95'
+         '6d8a2a8f499dd9643ca4af2254389ce7'
          '43407e834830af9d260705fdd4422689'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
@@ -569,7 +552,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'f9b3c2263204ebfae89f29b83278b54b'
-         '055df07f7637d427a7c134c686074860'
+         '3da3890b2df6e3fa44eaca19d2db3399'
          'b6623f818462d08b03fdc1b573c90e9f'
          '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
