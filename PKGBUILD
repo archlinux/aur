@@ -2,7 +2,7 @@
 
 pkgname=python-launcher
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Launch your Python interpreter the lazy/smart way!"
 arch=('x86_64')
 license=('MIT')
@@ -14,14 +14,13 @@ sha512sums=('ff37ebce5532b37ac073d3fb9decc2c40b9cf5b04da5d0fdbf13bf2d04364beb97c
 
 build() {
   cd $pkgname-$pkgver
-
   cargo build --release --locked --all-features
 }
 
 package() {
   cd $pkgname-$pkgver
-
   install -Dm 755 target/release/py "$pkgdir"/usr/bin/py
-
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 docs/man-page/py.1 "$pkgdir"/usr/share/man/man1/py.1
+  install -Dm 644 completions/py.fish "$pkgdir"/usr/share/fish/vendor_functions.d/py.fish
 }
