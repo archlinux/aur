@@ -1,14 +1,13 @@
 pkgbase = firefox-umatrix
 	pkgdesc = Point and click matrix to filter net requests by source, destination and type
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.4
+	pkgrel = 1
 	url = https://github.com/gorhill/uMatrix
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	noextract = umatrix-1.4.0-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-1.4.0-an+fx.xpi
-	sha256sums = 991f0fa5c64172b8a2bc0a010af60743eba1c18078c490348e1c6631882cbfc7
+	noextract = umatrix-1.4.4-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/613250/umatrix-1.4.4-an+fx.xpi
+	sha256sums = 1de172b1d82de28c334834f7b0eaece0b503f59e62cfc0ccf23222b8f2cb88e5
 
 pkgname = firefox-umatrix
-
