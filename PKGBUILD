@@ -2,7 +2,7 @@
 pkgname=ctc
 pkgver=1.0.0
 
-pkgrel=10
+pkgrel=11
 pkgdesc="CTC -- Cyan Trust Container CLI, frontend for creating CTC trust containers"
 arch=( 'any' )
 url=""
