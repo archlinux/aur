@@ -1,9 +1,9 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=f2
-pkgver=1.6.7
+pkgver=1.7.0
 pkgrel=1
-pkgdesc="Cross-platform command-line tool for batch renaming files and directories quickly and safely"
-arch=(x86_64 i686 aarch64)
+pkgdesc='Cross-platform command-line tool for batch renaming files and directories quickly and safely'
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/ayoisaiah/$pkgname"
 license=('MIT')
 depends=(
@@ -13,7 +13,7 @@ makedepends=(
 	'go'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('579801f00c80b8ecfa580f17b3acbac95348381c931f099a5f26f41365f05702812fdc779d5a34e57060aace9d4271d73104916126c29b9a6d13d522b7615f0c')
+b2sums=('b1cbeb7f5f610ebc0cf887f5c6a0591e2f60c5ab0123870038fab16c8a30a709d044c06db8bb284b3ef25e07cb6d79f7dd90609f01d29a8e3ec714edad658b2c')
 
 build() {
 	export local CGO_CPPFLAGS="${CPPFLAGS}"
