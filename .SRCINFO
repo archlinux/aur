@@ -1,0 +1,18 @@
+pkgbase = telepresence2-git
+	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
+	pkgver = 2.4.0.r1.gd31d1761
+	pkgrel = 1
+	url = https://github.com/telepresenceio/telepresence
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	provides = telepresence2
+	conflicts = telepresence-git
+	conflicts = telepresence
+	conflicts = telepresence2
+	source = telepresence2-git::git+https://github.com/telepresenceio/telepresence.git
+	md5sums = SKIP
+
+pkgname = telepresence2-git
