@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-merriweather-sans
 _commit='8a1b078e3aeec6aecc856c3422898816af9b9dc7'
