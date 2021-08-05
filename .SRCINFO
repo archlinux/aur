@@ -1,0 +1,13 @@
+pkgbase = kde-servicemenus-officeconverter
+	pkgdesc = KDE service menus for converting documents from dolphin
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = dolphin
+	depends = kdialog
+	optdepends = libreoffice
+	source = OfficeConverter.tar.gz
+	sha256sums = d7095ebc2c142fc4f4e8da9757c9295e2b9d00dd27a10bcdd43518df33ac7914
+
+pkgname = kde-servicemenus-officeconverter
