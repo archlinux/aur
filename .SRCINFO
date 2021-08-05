@@ -1,6 +1,6 @@
 pkgbase = rustcat
 	pkgdesc = Rustcat - Like Netcat but in Rust
-	pkgver = 1.0.0
+	pkgver = latest
 	pkgrel = 3
 	url = https://github.com/robiot/rustcat
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=1.0.0
+pkgver=latest
 pkgrel=3
 pkgdesc="Rustcat - Like Netcat but in Rust"
 url="https://github.com/robiot/rustcat"
@@ -14,6 +14,7 @@ conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
 package() {
     cd "${srcdir}"
+    chmod +x rc
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/${pkgname}
     cp -r . ${pkgdir}/usr/share/${pkgname}
