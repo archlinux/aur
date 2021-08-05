@@ -58,12 +58,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=7
+_minor=8
 _srcname=linux-${_major}
-pkgbase=linux-cacule-rdb-autogroup-lto
+pkgbase=linux-cacule-rdb-autogroup
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -77,7 +77,7 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
     "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
     "config"
-    "${_patchsource}/arch-patches-v2/0001-arch-patches.patch"
+    "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
     "${_caculepatches}/v5.13/cacule-5.13.patch"
     "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
     "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
@@ -92,7 +92,7 @@ source=(
     "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
     "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
     "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-    "${_patchsource}/lru-patches-v5/0001-lru-patches.patch"
+    "${_patchsource}/lru-patches-v6/0001-lru-patches.patch"
     "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
     "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
     "${_patchsource}/security-patches/0001-security-patches.patch"
@@ -552,9 +552,9 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'aebc49e4d58bd8314548a364bec99d1e'
-         '14021c2c3f7fc2d83bd2114c42e23ec1'
-         '0c139073c9a3c742706d96a165bc8e95'
+         'c21e43334165513b131796d4270aefc6'
+         'db27e837fe0e94c39ee8d0e663a33c3d'
+         '6d8a2a8f499dd9643ca4af2254389ce7'
          '43407e834830af9d260705fdd4422689'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
@@ -569,7 +569,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'f9b3c2263204ebfae89f29b83278b54b'
-         '055df07f7637d427a7c134c686074860'
+         '3da3890b2df6e3fa44eaca19d2db3399'
          'b6623f818462d08b03fdc1b573c90e9f'
          '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
