@@ -1,4 +1,4 @@
-# Maintainer:  Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 # Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 # Contributor: Chris Brannon <chris@the-brannons.com>
 # Contributor  Sarah Hay <sarahhay@mb.sympatico.ca>
