@@ -2,7 +2,7 @@
 pkgname=connective-http
 pkgver=1.0.0
 
-pkgrel=26
+pkgrel=27
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
