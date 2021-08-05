@@ -3,7 +3,7 @@
 # Contributor: ormris ormris@ormris.com
 
 pkgname="wyrd-git"
-pkgver=20210419.e363b38
+pkgver=20210805.45f1557
 pkgrel=1
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64')
@@ -30,6 +30,8 @@ build() {
 	# make all
         cd "$srcdir/${pkgname%-git}"
 	./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc --enable-utf8
+        make curses-clean
+        make clean
 	make
 }
 
