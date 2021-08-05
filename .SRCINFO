@@ -1,0 +1,22 @@
+pkgbase = gopro-webcam
+	pkgdesc = Utility to use a GoPro as a webcam
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/NewoIsTaken/gopro_as_webcam_on_linux
+	install = gopro-webcam.install
+	arch = any
+	license = unknown
+	depends = v4l2loopback-dkms
+	depends = ffmpeg
+	optdepends = vlc: preview support
+	noextract = gopro
+	noextract = gopro_webcam.service
+	noextract = 60-gopro.rules
+	source = gopro
+	source = gopro_webcam.service
+	source = 60-gopro.rules
+	sha256sums = e1a2b49da464a1c29ac4d339e6d2d32a930b652439f442b414d4912b906c8d66
+	sha256sums = 11352f6a616bed219ee143c65cb5071545638fe1b39e616a15ff698eccab17c4
+	sha256sums = 1b3b896dd0bfaea7987dc03cfc5febcfeea77f0d48619fb3910fa002beb46f02
+
+pkgname = gopro-webcam

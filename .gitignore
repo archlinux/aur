@@ -1,0 +1,5 @@
+.vscode/
+*workspace
+src/
+pkg/
+*.pkg.tar.zst
