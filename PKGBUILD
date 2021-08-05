@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-quintessential
 _commit='883939708704a19a295e0652036369d22469e8dc'
