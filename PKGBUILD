@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby-bin
 _pkgname=tabby
-pkgver=1.0.150
+pkgver=1.0.151
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
 arch=('x86_64')
@@ -13,8 +13,14 @@ provides=("tabby")
 conflicts=("tabby")
 replaces=('tabby')
 source=("$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
-sha256sums=('1698e2e7f7151cf67227d3fed6959cb74c80a36a74b3fe663023e5308fa4faa1')
+sha256sums=('6c8d5a3576742e2931a43612c23f426763906898ad6881cce147e8e81dcacd15')
 
+prepare() {
+msg "Initiating build"
+}
+
+ msg "Removing redundant .deb file"
+ rm "${_pkgname}-${pkgver}-linux.deb"
 
 package() {
   cd "$srcdir/"
@@ -24,8 +30,9 @@ package() {
 
  install -Dm755 /dev/stdin "$pkgdir"/usr/bin/$_pkgname <<END
   #!/usr/bin/bash
-  /opt/Terminus/terminus
+  /opt/Tabby/tabby
 
 END
 
 }
+
