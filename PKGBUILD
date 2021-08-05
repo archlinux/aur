@@ -1,22 +1,29 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xfel
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
+epoch=
 pkgdesc="Tiny FEL tools for allwinner SOC, support RISC-V D1 chip."
 arch=('any')
 url="https://github.com/xboot/xfel"
 license=('MIT')
-provides=(${pkgname})
-conflicts=(${pkgname} ${pkgname}-git)
-#replaces=(${pkgname})
+groups=()
 depends=('libusb')
-makedepends=()
+makedepends=("gcc")
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=(xfel-git)
+replaces=()
 backup=()
 options=('!strip')
-#install=${pkgname}.install
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver:+v$pkgver}.tar.gz")
-
+install=
+changelog=
+source=("${pkgname}-${pkgver}.tar.gz::https://download.fastgit.org/xboot/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+noextract=()
+sha256sums=('c11841572f1a752a0cd8f1b5b5c59ea2501341c08c81f326c340f0d35669a578')
+#validpgpkeys=()
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,4 +35,3 @@ package() {
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/99-xfel.rules" "${pkgdir}/etc/udev/rules.d/99-xfel.rules"
     install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('776e15a06b1b4767ae21c1d605e4379fc62cc6866782584d305104c2ff5c6229')
