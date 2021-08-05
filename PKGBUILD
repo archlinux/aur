@@ -1,6 +1,6 @@
 # Maintainer: Aiden "Acey" Sognatore theaidency [at] gmail [dot] com
 pkgname="makesndwch"
-pkgver="1.0.0"
+pkgver="1.0.1"
 pkgrel="1"
 pkgdesc="Order Tux to make a sandwich for you."
 arch=("x86_64")
@@ -15,3 +15,4 @@ package(){
 	echo 'Your local resident Tux is now capable of making you a sandwich.'
 }
 
+sha256sums=('2e0dda8b07a12fba5301bb309c681e724abe203935948a458025340fa826acc2')
