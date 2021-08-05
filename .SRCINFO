@@ -1,0 +1,11 @@
+pkgbase = kde-servicemenus-setaswallpaper
+	pkgdesc = KDE service menus for set as wallpaper from dolphin
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = dolphin
+	source = SetAsWallpaper.desktop
+	sha256sums = ea3f0d7a2cf9df122b363434d97bc32e9cee74f092082cf51144cbcfbae8f539
+
+pkgname = kde-servicemenus-setaswallpaper
