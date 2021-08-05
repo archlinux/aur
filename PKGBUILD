@@ -3,14 +3,14 @@
 # Contributor: josephgbr
 
 _bundleid=245048
-_hash=d3c52aa6bfa54d3ca74e617f18309292244573
+_hash=d3c52aa6bfa54d3ca74e617f18309292
 _major=8
 _minor=301
 _pkgname=jre
 
 pkgname=bin32-jre
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
