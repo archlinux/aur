@@ -1,0 +1,14 @@
+pkgbase = xrock
+	pkgdesc = The low level tools for rockchip SOC with maskrom and loader mode support.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xboot/xrock
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = libusb
+	options = !strip
+	source = xrock-1.0.0.tar.gz::https://download.fastgit.org/xboot/xrock/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7f7d1c93896f0288e67e82dcdedfcd209a6676a7e5340c08a3b769cf44b9aa19
+
+pkgname = xrock
