@@ -1,4 +1,5 @@
-# Maintainer: Colin Shea <colin@evaryont.me>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Contributor: Colin Shea <colin@evaryont.me>
 pkgname=fwsnort
 pkgver=1.6.3
 pkgrel=3
@@ -40,4 +41,4 @@ package() {
   chmod 755 $pkgdir/etc
 }
 
-# vim:set ts=2 sw=2 et:
+
