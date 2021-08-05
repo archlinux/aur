@@ -1,6 +1,6 @@
 pkgbase = wyrd-git
 	pkgdesc = A text-based front-end to Remind.
-	pkgver = 20210419.5872ee0
+	pkgver = 20210419.e363b38
 	pkgrel = 1
 	url = https://github.com/Perdu/wyrd
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = wyrd-git
 	md5sums = SKIP
 
 pkgname = wyrd-git
-

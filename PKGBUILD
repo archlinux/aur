@@ -3,7 +3,7 @@
 # Contributor: ormris ormris@ormris.com
 
 pkgname="wyrd-git"
-pkgver=20210419.5872ee0
+pkgver=20210419.e363b38
 pkgrel=1
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64')
