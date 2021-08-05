@@ -1,0 +1,15 @@
+pkgbase = ansible-language-server
+	pkgdesc = Ansible Language Server
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ansible/ansible-language-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	noextract = ansible-language-server-0.1.1.tgz
+	source = ansible-language-server-0.1.1.tgz::https://registry.npmjs.org/ansible-language-server/-/ansible-language-server-0.1.1-0.tgz
+	sha256sums = 134df3c572728a259486968225fdd5451701b947b96c2a3be519e4bdab2f835f
+
+pkgname = ansible-language-server
