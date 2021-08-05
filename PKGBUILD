@@ -2,8 +2,8 @@
 
 pkgname=terminus-rust
 _pkgname=terminus
-pkgver=0.1.0
-pkgrel=5
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Text board in tui"
 url="https://github.com/laxect/$_pkgname"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
   "terminus-server.service"
 )
 
-sha256sums=('47917c81c7fdee4fa376fea8ada407b522f09571a21e52d025f5decec3a5041c'
+sha256sums=('7986966df70719ce9bf19eb7f8af9f0f496b03b3afcdb2a1c6413875b9ab2963'
             'e194ff8ba6fc62539f8d4b573f126b0f08f3a4d9f1ae607dee0534d4ec4129d3')
 
 build()
