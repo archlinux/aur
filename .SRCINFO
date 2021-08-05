@@ -1,0 +1,24 @@
+pkgbase = python-pygmsh
+	pkgdesc = Gmsh for Python
+	pkgver = 7.1.10
+	pkgrel = 1
+	url = https://github.com/nschloe/pygmsh
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-tox
+	checkdepends = fltk
+	checkdepends = med
+	checkdepends = opencascade
+	checkdepends = cairo
+	checkdepends = metis
+	checkdepends = alglib
+	checkdepends = ann
+	checkdepends = glu
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python-meshio
+	depends = gmsh
+	source = https://github.com/nschloe/pygmsh/archive/v7.1.10.tar.gz
+	sha512sums = 91a0fb5e27f4369a42a638e69347a1551c4d8a283162c6e0e534c7e17ae31f3211e98288915a4227476dc5a68f99e2e421a00be1ba53aac3039484db195eb0e3
+
+pkgname = python-pygmsh
