@@ -1,5 +1,5 @@
 # Maintainer: Edgard Castro <castro@edgard.org>
-# Contributor: Tyler Swagar <buttpickle69@shaw.ca>
+# Contributor:  Tyler Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-liberastika
 pkgver=1.1.5
