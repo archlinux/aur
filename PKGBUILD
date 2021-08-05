@@ -5,7 +5,7 @@
 # Contributor: Adam Nych <adam@nych.me>
 # Maintainer: Adam Nych <adam@nych.me>
 
-pkgname=brother-dcpj100
+pkgname=brother-dcpj100-lpr-cups-bin
 pkgver=3.0.0
 pkgrel=3
 pkgdesc="Driver for the Brother DCP-J100 multifuncional printer"
