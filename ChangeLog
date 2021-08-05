@@ -1,3 +1,8 @@
+* Wed Aug 04 2020 Andrew Sachen <webmaster@RealityRipple.com> 1.2.1
+- Improved textbox Copy functionality
+- Improved Profile selection after deletion
+- Improved window and button sizing
+
 * Sun Nov 22 2020 Andrew Sachen <webmaster@RealityRipple.com> 1.2.0
 - Removed QT4 support
 
