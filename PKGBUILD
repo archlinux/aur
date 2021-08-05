@@ -2,27 +2,18 @@
 
 pkgname=rustcat
 _binname=rc
-pkgver=0.0.5
-pkgrel=2
+pkgver=0
+pkgrel=1
 pkgdesc="Rustcat - Like Netcat but in Rust"
 url="https://github.com/robiot/rustcat"
 license=('MIT')
 arch=('x86_64')
-makedepends=(
-    'rustup'
-)
 
-source=("${pkgname}.tar.gz::https://github.com/robiot/rustcat/archive/refs/tags/v${pkgver}.tar.gz")
+source=("rc::https://github.com/robiot/rustcat/releases/latest/download/rc")
 conflicts=("${pkgname}" "${pkgname}-bin" "${pkgname}-git")
 
-build() {
-    rustup update stable
-    cd "${srcdir}/rustcat-${pkgver}"
-    cargo build --release
-}
-
 package() {
-    cd "${srcdir}/rustcat-${pkgver}/target/release"
+    cd "${srcdir}"
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/${pkgname}
     cp -r . ${pkgdir}/usr/share/${pkgname}
