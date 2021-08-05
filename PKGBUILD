@@ -1,6 +1,6 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
-pkgname=('keyboard-configurator')
-pkgbase=keyboard-configurator
+pkgname=system76-keyboard-configurator
+pkgbase=system76-keyboard-configurator
 pkgver=1.0.0
 pkgrel=2
 pkgdesc="Configures keymap and backlight of System76 keyboards."
@@ -16,7 +16,7 @@ build() {
 	make prefix=/usr
 }
 
-package_keyboard-configurator() {
+package() {
 	pkgdesc="System76 GUI for managing keyboards"
 	depends=('xz' 'hidapi' 'gtk3')
 
