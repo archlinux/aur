@@ -2,17 +2,17 @@
 
 _pkgname=ksmbd
 pkgname=ksmbd-dkms
-pkgver=3.3.9
+pkgver=3.4.0
 pkgrel=1
-pkgdesc="In-kernel CIFS/SMB3 server (aka cifsd), with the primary goal of improved I/O performance."
+ pkgdesc="In-kernel SMB server, with the primary goal of improved I/O performance."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
-url="https://github.com/cifsd-team/cifsd"
+url="https://github.com/cifsd-team/ksmbd"
 license=('GPL2')
 depends=('dkms')
 options=('!strip')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/cifsd-team/cifsd/archive/$pkgver.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "dkms.conf")
-sha256sums=("c196d1773b9f89221133780fd189b550acbc56ac93c2e79260a70eab9853b3e1"
+sha256sums=("36fe6b8fb641c302909e65de58f0e7cff4fa641c6ad6979597fd4319d6acf775"
             "1d844a3ced7c4b2227a71df1fcb48ffcb64c083a257715dd4afc193cf3f26240")
 
 prepare() {
@@ -21,6 +21,6 @@ prepare() {
 
 package() {
 	mkdir -p "${pkgdir}/usr/src"
-	cp -r "cifsd-${pkgver}" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
+	cp -r "${_pkgname}-${pkgver}" "${pkgdir}/usr/src/"
 	install -Dm644 "${srcdir}/dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
 }
