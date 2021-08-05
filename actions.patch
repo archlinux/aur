@@ -1,0 +1,34 @@
+diff --unified --recursive --text a/system76driver/actions.py b/system76driver/actions.py
+--- a/system76driver/actions.py	2021-02-23 12:14:22.000000000 -0700
++++ b/system76driver/actions.py	2021-02-23 15:19:40.284093704 -0700
+@@ -102,8 +102,8 @@
+ 
+ 
+ def update_initramfs():
+-    log.info('Calling `update-initramfs`...')
+-    SubProcess.check_call(['update-initramfs', '-u'])
++    log.info('Calling `mkinitcpio`...')
++    SubProcess.check_call(['mkinitcpio', '-P'])
+ 
+ 
+ def parse_lspci(text):
+@@ -264,7 +264,7 @@
+                 update_grub()
+ 
+         if any(action.update_initramfs for action in self.needed):
+-            yield _('Running `update-initramfs`')
++            yield _('Running `mkinitcpio`')
+             update_initramfs()
+ 
+ 
+@@ -1494,8 +1494,8 @@
+ 
+ class i915_initramfs(FileAction):
+     update_initramfs = True
+-    relpath = ('usr', 'share', 'initramfs-tools', 'modules.d', 's76-i915-initramfs.conf')
+-    content = '# Added by system76-driver\ni915\n'
++    relpath = ('etc', 'modprobe.d', 's76-i915-mkinitcpio.conf')
++    content = '# Added by system76-driver\noptions i915\n'
+ 
+     def describe(self):
+         return _('Add i915 driver to initramfs')

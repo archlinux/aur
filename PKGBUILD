@@ -2,102 +2,118 @@
 
 pkgname=system76-driver-git
 pkgver=20.04.40.r0.g9a2d421
-pkgrel=1
+pkgrel=2
 pkgdesc="System76 Driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
-install=system76-driver-git.install
 conflicts=("system76-driver")
 provides=("system76-driver")
 depends=(
-	'python>=3.6'
-	'python-cffi'
-	'python-dbus'
-	'python-evdev'
-	'python-gobject'
-	'python-pynacl'
-	'python-systemd'
-	'python-xlib'
-	'dmidecode'
-	'at'
-	'tlp'
-	'system76-dkms'
-	'system76-io-dkms'
-	'system76-firmware-daemon'
-	'firmware-manager-git')
-makepdepends=('python-pyflakes')
+    'at'
+    'dmidecode'
+    'ethtool'
+    'grub'
+    'gtk3'
+    'lm_sensors'
+    'pciutils'
+    'polkit'
+    'python>=3.6'
+    'python-cffi'
+    'python-dbus'
+    'python-distro'
+    'python-evdev'
+    'python-gobject'
+    'python-pynacl'
+    'python-systemd'
+    'python-xlib'
+    'system76-firmware-daemon'
+    'usbutils'
+    'wireless_tools'
+)
+makepdepends=(
+    'python-pyflakes'
+)
 optdepends=(
-	'pm-utils: For power management features'
-	'gtk3: To launch System76 driver and firmware GUI'
-	'grub: To apply kernel boot time parameters'
-	'polkit: Run System76 Driver GUI from application menu'
-	'pulseaudio: To apply microphone fix'
-	'xorg-xhost: To enable GUI applications on Wayland'
-	'xorg-xbacklight: To use the backlight service')
+    'firmware-manager: Manage System76 firmware updates via standalone application'
+    'gnome-control-center-system76: Manage System76 firmware updates via Settings'
+    'pm-utils: For power management features'
+    'pulseaudio: To apply microphone fix'
+    'system76-dkms: Control hotkeys and fan on certain System76 laptops'
+    'system76-acpi-dkms: Provides the system76_acpi in-tree driver'
+    'system76-io-dkms: Enable System76 I/O daughterboard'
+    'system76-oled: Control brightness on OLED displays'
+    'system76-power: System76 Power Management'
+    'xorg-xhost: To enable GUI applications on Wayland'
+    'xorg-xbacklight: To use the backlight service'
+)
 source=("${pkgname}::git+https://github.com/pop-os/system76-driver.git"
-        'galu1.patch'
-        'gtk.patch'
+        'actions.patch'
         'cli.patch'
         'wayland.patch')
 sha256sums=('SKIP'
-            '2ccf53ec0ffdeea00930d218253f5b3db2bdc7d3405e8353caabc36107f3ab26'
-            '14c6d669b5a4a5b4a306978ebdad7e26d939e8e559de52274aec26cd5b2ea853'
+            '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
             '2ffbd813744c0b99416947a2755767767af434758aa20dcfafefb49fb367d5d3')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	# patch for cli version - enable override vendor/model via /etc/system76-daemon.json
-	msg2 ${srcdir}/cli.patch
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/cli.patch
+    # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
+    patch --no-backup-if-mismatch -Np1 -i "${srcdir}/cli.patch"
 
-	# galu1 model-specific patch
-	msg2 ${srcdir}/galu1.patch
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/galu1.patch
+    # Use xhost for GUI apps on Wayland
+    patch --no-backup-if-mismatch -Np1 -i "${srcdir}/wayland.patch"
 
-	# enabling "Restore System" button if all changes applied
-	msg2 ${srcdir}/gtk.patch
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch
+    # Use mkinitcpio instead of initramfs-tools
+    patch --no-backup-if-mismatch -Np1 -i "${srcdir}/actions.patch"
+}
 
-	# Use xhost for GUI apps on Wayland
-	msg2 ${srcdir}/wayland.patch
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
+build() {
+    cd "${srcdir}/${pkgname}"
+
+    python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}"
 
-	# Build and install base package
-	python setup.py install --prefix=/usr --root=${pkgdir} --optimize=1
+    # Install base package
+    export PYTHONHASHSEED=0
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
-	# Install daemons and executables
-	install -m755 -D system76-daemon ${pkgdir}/usr/lib/system76-driver/system76-daemon
-	#install -m755 -D system76-backlight-daemon ${pkgdir}/usr/lib/system76-driver/system76-backlight-daemon
-	install -m755 -D system76-driver-pkexec ${pkgdir}/usr/bin/system76-driver-pkexec
+    local _pkgname="${pkgname%%-git}"
 
-	# Install systemd unit files
-	# Note: system76-driver* service files shortened to system76*
-	install -m644 -D debian/system76-driver.service ${pkgdir}/usr/lib/systemd/system/system76.service
-	#install -m644 -D debian/system76-driver-backlight.service ${pkgdir}/usr/lib/systemd/user/system76-backlight.service
+    # Install daemons and executables
+    install -Dm755 system76-daemon -t "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 system76-user-daemon -t "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 system76-driver-pkexec -t "${pkgdir}/usr/bin"
 
-	# Install scripts and configuration
-	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/system76-driver/system76-nm-restart
-	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
+    # Install systemd unit files
+    # Note: system76-driver* service files shortened to system76*
+    install -Dm644 debian/system76-driver.service \
+        "${pkgdir}/usr/lib/systemd/system/system76.service"
 
-	# Install desktop shortcuts
-	#install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
+    # Install scripts and configuration
+    install -Dm755 system76-nm-restart "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 system76-thunderbolt-reload -t "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm644 com.system76.pkexec.system76-driver.policy -t \
+        "${pkgdir}/usr/share/polkit-1/actions"
 
-	# Create /var/lib/system76-driver directory for brightness settings saving
-	install -m755 -d ${pkgdir}/var/lib/system76-driver
+    # Install application launchers
+    install -Dm644 system76-driver.desktop -t "${pkgdir}/etc/xdg/autostart"
+    install -Dm644 system76-user-daemon.desktop -t "${pkgdir}/etc/xdg/autostart"
 
-	# Clean up
-	rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
+    # Create /var/lib/system76-driver directory for brightness settings saving
+    install -dm755 "${pkgdir}/var/lib/${_pkgname}"
+
+    # Remove tests
+    local site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+    rm -rf "${pkgdir}${site_packages}/system76driver/tests"
 }
