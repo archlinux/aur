@@ -14,6 +14,9 @@ pkgbase = qubes-linux-utils
 	source = qubes-vm-utils::git+https://github.com/QubesOS/qubes-linux-utils.git?signed#tag=v4.0.34
 	source = PKGBUILD-initcpio-hook.sh
 	source = PKGBUILD-initcpio-install.sh
+	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
+	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
+	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
 	sha512sums = SKIP
 	sha512sums = 5d67ae7d8c7bf166d647b7f39485a5399d17464c2f7df3d831d9e8107e83a00e8cd2214a00a9b21a76fc1edc39e79d3fa81a8d912022bb4a3ae409250e46c1cb
 	sha512sums = 392f562e0f1a1bbd94958c5fa3c9746529d78f1ccafc7ef85d5b0d9f06d7ec66a30467f1cd6b869a9492864586b316751e864643f1c5b82becc377bd34701246
@@ -31,4 +34,3 @@ pkgname = qubes-vm-kernel-support
 	depends = mkinitcpio
 	depends = dkms
 	depends = grub
-
