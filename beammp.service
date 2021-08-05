@@ -1,0 +1,11 @@
+[Unit]
+Description=BeamMP - beamng.drive multiplayer server
+
+[Service]
+Type=simple
+ExecStart=/opt/beammp/beammp-server
+WorkingDirectory=/opt/beammp
+User=beammp
+
+[Install]
+WantedBy=multi-user.target

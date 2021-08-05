@@ -1,0 +1,25 @@
+pkgbase = beammp-server
+	pkgdesc = Server for BeamMP, providing multiplayer support for the driving simulator beamng.drive
+	pkgver = v2.2.0.r0.3d0d5e9
+	pkgrel = 1
+	url = https://beammp.com/
+	arch = x86_64
+	license = proprietary
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = lua53
+	depends = zlib
+	depends = openssl
+	depends = rapidjson
+	depends = boost
+	depends = websocketpp
+	source = git+https://github.com/BeamMP/BeamMP-Server.git#tag=v2.2.0
+	source = beammp.sysusers
+	source = beammp.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = beammp-server
