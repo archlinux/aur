@@ -20,9 +20,8 @@ pkgbase = qubes-gui-agent-linux
 	makedepends = libxt
 	makedepends = pixman
 	makedepends = qubes-vm-gui-common
-	makedepends = qubes-libvchan-xen
+	makedepends = qubes-libvchan
 	makedepends = qubes-db-vm
-	makedepends = lsb-release
 	source = qubes-vm-gui::git+https://github.com/QubesOS/qubes-gui-agent-linux.git?signed#tag=v4.0.37
 	source = PKGBUILD-z-qubes-session.sh
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3

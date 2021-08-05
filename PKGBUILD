@@ -15,7 +15,7 @@ license=('GPL')
 makedepends=(pkg-config make gcc patch git automake autoconf libtool
              'pulseaudio<=15.0'
              xorg-server-devel xorg-util-macros libxcomposite libxt pixman
-             qubes-vm-gui-common qubes-libvchan-xen qubes-db-vm lsb-release
+             qubes-vm-gui-common qubes-libvchan qubes-db-vm
 )
 validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
               '0064428F455451B3EBE78A7F063938BA42CFA724'  # Marek Marczykowski-Górecki
@@ -46,6 +46,7 @@ build() {
   sed 's/After=\(.*\)qubes-misc-post.service/After=\1qubes-misc-post.service getty.target/' -i appvm-scripts/qubes-gui-agent.service
 
   make BACKEND_VMM="${qubes_backend_vmm}" appvm
+  make appvm
 }
 
 
