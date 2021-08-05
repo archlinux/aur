@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-gelasio-ib
 _commit='5bced461d54bcf8e900bb3ba69455af35b0d2ff1'
