@@ -19,5 +19,5 @@ sha256sums=("e1a2b49da464a1c29ac4d339e6d2d32a930b652439f442b414d4912b906c8d66"
 package() {
 	install -D gopro $pkgdir/usr/bin/gopro
 	install -D gopro_webcam.service $pkgdir/usr/lib/systemd/system/gopro_webcam.service
-	install -D 60-gopro.rules $pkgdir/lib/udev/rules.d/60-gopro.rules
+	install -D 60-gopro.rules $pkgdir/usr/lib/udev/rules.d/60-gopro.rules
 }
