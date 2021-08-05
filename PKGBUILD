@@ -58,4 +58,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('18dfc184e7e3a2a85698a8401aa3d037')
+md5sums=('ecaf5a0bb6c35c7cb52c3836bd24b2de')
