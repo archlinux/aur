@@ -1,6 +1,6 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
@@ -8,7 +8,7 @@ source=("${pkgname}.py::https://github.com/steven-omaha/${pkgname}/releases/down
 arch=('any')
 license=('GPL3')
 depends=('python')
-sha256sums=('e0fe981a55c2733f181a852e0da0b38f97a038e8836b83a0208a3297747b8635')
+sha256sums=('19498642d5a87ebab807ccb09be5bf8727dac07ffdc0fa87eb3c5d92e66efc11')
 
 package() {
   sed -i -e "s/VERSION = 'unknown'/VERSION = '${pkgver}'/" pacdef.py
