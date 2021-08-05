@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=G3.2.3
+pkgver=G3.2.4
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -22,13 +22,15 @@ optdepends=('libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=G3.2.3 # patch releases don't follow the same format so we can't use $pkgver
+_archivename=G3.2.4 # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
-        0001-Use-remoting-name-for-GDK-application-names.patch)
-sha256sums=('661b25e4fc386242280156d21e8d41e032a9a7daadec206ade69f84ac83529cb'
+        0001-Use-remoting-name-for-GDK-application-names.patch
+	make_packed_simd_compile_with_Rust_1.54.patch)
+sha256sums=('baa3760a7f0a7bd72daf77d657338568b86e7fa8ce1230459d127675e7a37631'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
-            '1dba448eb1605c9dc73c22861a5394b50055909399f056baee4887b29af1b51e')
+            '1dba448eb1605c9dc73c22861a5394b50055909399f056baee4887b29af1b51e'
+            '67a374de4188e9a19b1aa72b7705b7e6f574fd68098e458a64aa19debea64992')
 #_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
 
 prepare() {
@@ -37,6 +39,8 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  patch -Np1 -i ../make_packed_simd_compile_with_Rust_1.54.patch
 
   cat >../mozconfig <<END
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
