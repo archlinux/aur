@@ -1,6 +1,6 @@
 pkgbase = eaglemode
 	pkgdesc = Visit almost everything in your PC simply by zooming in
-	pkgver = 0.95.0
+	pkgver = 0.95.1
 	pkgrel = 1
 	url = http://eaglemode.sourceforge.net/
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = eaglemode
 	depends = xdg-utils
 	depends = xine-lib
 	depends = xz
-	source = https://downloads.sourceforge.net/eaglemode/eaglemode-0.95.0.tar.bz2
-	sha256sums = a3a63a4a5eba73d89c54840aa1f6fdb26da505d9c2b220fcca90d94b3727756a
+	source = https://downloads.sourceforge.net/eaglemode/eaglemode-0.95.1.tar.bz2
+	sha256sums = e7dd54d31f2092a766909971e2fcf8a002170e9e2bca30698e4912e66ac363a0
 
 pkgname = eaglemode
-
