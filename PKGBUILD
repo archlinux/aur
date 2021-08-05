@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 # Contributor: Juraj Fiala <doctorjellyface at riseup dot net>
 
 pkgname=fonts-meta-extended-lt
