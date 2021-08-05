@@ -1,0 +1,18 @@
+pkgbase = palette-git
+	pkgdesc = Colour Palette tool
+	pkgver = 2.0.1.r2.g27c60fa
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/palette
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = gtk4
+	depends = vala
+	provides = palette
+	conflicts = palette
+	source = git+https://gitlab.gnome.org/World/design/palette.git
+	source = git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = palette-git
