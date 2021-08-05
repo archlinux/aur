@@ -14,8 +14,8 @@
 # 1.27.108 and 1.27.109 are known broken on Linux
 
 pkgname=brave-bin
-pkgver=1.26.77
-pkgrel=3
+pkgver=1.27.111
+pkgrel=1
 epoch=1
 pkgdesc='Web browser that blocks ads and trackers by default (binary release)'
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         "$pkgname.sh"
         'brave-browser.desktop')
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('75af7ea3438ac80fee18372798d2c689384d8f1bc2f1dead5470047931f5b43c'
+sha256sums=('ae058d6068cb18f826c079775ad05f59a92884397b6a36e45712e25ce761100e'
             'ba7d57a3328c68e6a78e49506af0e238936e823b2f463e8087c20fcf4300232a'
             'c07276b69c7304981525ecb022f92daf7ae125a4fb05ac3442157b50826e257a')
 
