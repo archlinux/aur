@@ -22,7 +22,6 @@ license=('GPL')
 groups=()
 depends=('python'
          'bridge-utils'
-         'python-lxml'
          'libutil-linux'
          'lzo'
          'libsystemd'

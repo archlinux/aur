@@ -21,7 +21,6 @@ pkgbase = qubes-vm-xen
 	makedepends = python2-distlib
 	depends = python
 	depends = bridge-utils
-	depends = python-lxml
 	depends = libutil-linux
 	depends = lzo
 	depends = libsystemd
