@@ -3,7 +3,7 @@
 pkgname=terminus-rust
 _pkgname=terminus
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Text board in tui"
 url="https://github.com/laxect/$_pkgname"
 arch=("x86_64")
@@ -27,6 +27,7 @@ package()
 {
     cd "$srcdir/$_pkgname-$pkgver"
 
+    install -d "${pkgdir}/usr/share/terminus"
     install -Dm 755 "target/release/terminus-server" "$pkgdir/usr/bin/terminus-server"
     install -Dm 755 "target/release/kanban" "$pkgdir/usr/bin/kanban"
     install -Dm 644 "${srcdir}/terminus-server.service" -t "${pkgdir}/usr/lib/systemd/system"

@@ -1,7 +1,7 @@
 pkgbase = terminus-rust
 	pkgdesc = Text board in tui
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/laxect/terminus
 	arch = x86_64
 	license = MIT
