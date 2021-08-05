@@ -1,8 +1,8 @@
 pkgbase = uxplay-git
 	pkgdesc = AirPlay Unix mirroring server
-	pkgver = r17.6a473d6
-	pkgrel = 3
-	url = https://github.com/antimof/UxPlay
+	pkgver = r71.5a9d101
+	pkgrel = 1
+	url = https://github.com/FDH2/UxPlay
 	arch = any
 	license = GPL3
 	makedepends = cmake
@@ -15,10 +15,8 @@ pkgbase = uxplay-git
 	depends = avahi
 	provides = uxplay
 	conflicts = uxplay
-	source = git+https://github.com/antimof/UxPlay.git
-	source = wm-name.patch::https://github.com/antimof/UxPlay/pull/31.patch
+	source = git+https://github.com/FDH2/UxPlay.git
 	source = uxplay.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3
 

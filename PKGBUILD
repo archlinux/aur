@@ -1,18 +1,18 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay-git
 _gitname=UxPlay
-pkgver=r17.6a473d6
-pkgrel=3
+pkgver=r71.5a9d101
+pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
-url="https://github.com/antimof/$_gitname"
+url="https://github.com/FDH2/$_gitname"
 license=('GPL3')
 depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-libav' 'gstreamer-vaapi' 'avahi')
 makedepends=('cmake' 'git')
 conflicts=('uxplay')
 provides=('uxplay')
-source=("git+$url.git" "wm-name.patch::https://github.com/antimof/UxPlay/pull/31.patch" "uxplay.desktop")
-sha256sums=('SKIP' 'SKIP' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
+source=("git+$url.git" "uxplay.desktop")
+sha256sums=('SKIP' '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -21,17 +21,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-  patch -p1 < "$srcdir/wm-name.patch"
-}
-
 build() {
   cd "$srcdir/$_gitname"
   mkdir -p build
   cd build
-  cmake ..
-  make
+  cmake .. -DZOOMFIX=1
+  cmake --build . --config Release
 }
 
 package() {
