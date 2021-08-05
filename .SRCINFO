@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = OpenTTD with JGR's patch pack.
-	pkgver = 0.42.2
+	pkgver = 0.42.3
 	pkgrel = 1
 	url = http://www.tt-forums.net/viewtopic.php?f=33&t=73469
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = openttd-jgrpp
 	depends = libpng
 	depends = sdl2
 	optdepends = lzo: (de)compressing of old (pre OpenTTD 0.3.0) savegames
-	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.42.2.tar.gz
-	sha256sums = f08220e4a417a8e262f4af4d5a7613d04defb7417fec880fc6e7dfa60d6747d6
+	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.42.3.tar.gz
+	sha256sums = 296b5b8e14a6d5c7fe0e2f80c8a989902bb25081775409af76190ad87c804742
 
 pkgname = openttd-jgrpp
