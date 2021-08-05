@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 
 # Notes:
 #   + gog:// DLAGENT:
