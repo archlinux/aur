@@ -5,7 +5,7 @@ pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
 
 pkgver=1.20.13
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -93,7 +93,9 @@ _install() {
     f="${src#fakeinstall/}"
     dir="${pkgdir}/${f%/*}"
     install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
+    # use copy so a new file is created and fakeroot can track properties such as setuid
+    cp -av "${src}" "${dir}/"
+    rm -rf "${src}"
   done
 }
 package_xorg-server-bug865() {
