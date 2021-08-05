@@ -1,7 +1,7 @@
 pkgbase = qubes-linux-utils
 	pkgdesc = Common Linux files for Qubes VM.
-	pkgver = 4.0.32
-	pkgrel = 10
+	pkgver = 4.0.34
+	pkgrel = 1
 	url = https://github.com/QubesOS/qubes-linux-utils
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = qubes-linux-utils
 	makedepends = qubes-libvchan
 	makedepends = python-setuptools
 	options = staticlibs
-	source = qubes-vm-utils::git+https://github.com/QubesOS/qubes-linux-utils.git?signed#tag=v4.0.32
+	source = qubes-vm-utils::git+https://github.com/QubesOS/qubes-linux-utils.git?signed#tag=v4.0.34
 	source = PKGBUILD-initcpio-hook.sh
 	source = PKGBUILD-initcpio-install.sh
 	sha512sums = SKIP

@@ -5,9 +5,9 @@
 
 pkgbase=qubes-linux-utils
 pkgname=(qubes-vm-utils qubes-vm-kernel-support)
-pkgver=4.0.32
+pkgver=4.0.34
 _gitname=${pkgname%-git*}
-pkgrel=10
+pkgrel=1
 pkgdesc="Common Linux files for Qubes VM."
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-linux-utils"
