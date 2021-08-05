@@ -22,6 +22,7 @@ pkgbase = mingw-w64-gdal
 	depends = mingw-w64-libheif
 	depends = mingw-w64-libwebp
 	depends = mingw-w64-expat
+	depends = mingw-w64-mariadb-connector-c
 	options = !buildflags
 	options = !strip
 	options = staticlibs

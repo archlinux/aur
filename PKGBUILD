@@ -5,7 +5,7 @@ pkgdesc="A translator library for raster geospatial data formats (mingw-w64)"
 arch=('any')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('mingw-w64-curl' 'mingw-w64-hdf5' 'mingw-w64-netcdf' 'mingw-w64-libgeotiff' 'mingw-w64-libjpeg' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-sqlite' 'mingw-w64-postgresql' 'mingw-w64-geos' 'mingw-w64-giflib' 'mingw-w64-libfreexl' 'mingw-w64-libheif' 'mingw-w64-libwebp' 'mingw-w64-expat')
+depends=('mingw-w64-curl' 'mingw-w64-hdf5' 'mingw-w64-netcdf' 'mingw-w64-libgeotiff' 'mingw-w64-libjpeg' 'mingw-w64-libpng' 'mingw-w64-libtiff' 'mingw-w64-sqlite' 'mingw-w64-postgresql' 'mingw-w64-geos' 'mingw-w64-giflib' 'mingw-w64-libfreexl' 'mingw-w64-libheif' 'mingw-w64-libwebp' 'mingw-w64-expat' 'mingw-w64-mariadb-connector-c')
 makedepends=('perl' 'mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.gz")
@@ -26,7 +26,7 @@ build() {
     sed -i "s|/usr|/usr/${_arch}|g" configure.ac m4/*.m4
     autoreconf -vfi
     ./autogen.sh 
-    LDFLAGS="-lssp -lssl -lcrypt32" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
+    LDFLAGS="-lssp -lssl -lcrypt32 -lmariadb" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
       --with-mysql --with-curl --with-hdf5 --with-perl --with-geos \
       --with-png --with-poppler --with-spatialite --with-openjpeg \
       --without-python --without-perl \
