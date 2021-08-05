@@ -17,7 +17,7 @@ conflicts=('v2raya')
 sha_service=ba580b203c1971780d2721a48fbc828d11467d5a
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
-sha_web=38c1673dedd15489c749f10848ca3b0b2face14e
+sha_web=15071b0f623bbd08654e4bb30fa3a3d092c54b72
 
 source=(
     "v2raya.service"
@@ -50,19 +50,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '9956697d85f7259b06ad0d3ff09b4a4aefd58131'
+    'd68c1f3fb9f4cd5cd8b738210137d6802ef4815f'
 )
 sha1sums_x86_64=(
-    '3f3464a2506ed00fc86546ea952df35b4094c4e8'
+    '706e0e38521e6b5c60ba92bcf4c8f453896e7c52'
 )
 sha1sums_aarch64=(
-    'ce3ad25ffe2c98fd91f244985732ad93378dc17b'
+    '663ebe176b205fd2ae595c571cfb2a5ed6abdee5'
 )
 sha1sums_armv6h=(
-    'a34161affbccf44526e4fb1bc6a95085e40b18ff'
+    'c7a9a45e400260686e60b0d463f41f60a9eafd52'
 )
 sha1sums_armv7h=(
-    'a34161affbccf44526e4fb1bc6a95085e40b18ff'
+    'c7a9a45e400260686e60b0d463f41f60a9eafd52'
 )
 
 package() {
