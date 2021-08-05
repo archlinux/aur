@@ -49,13 +49,21 @@ package_th06-demo-data() {
 package_th06-demo-wine() {
   pkgdesc='Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; Wine version.'
   depends=("$pkgbase-data" 'wine')
-  optdepends=('timidity++: for MIDI musics')
+  optdepends=('timidity++: for MIDI musics' 'soundfont-fluid: soundfont')
 
   install -dm755 "$pkgdir/usr/share/applications"
   install -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications"
 
   install -dm755 "$pkgdir/usr/bin"
   install -m755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+
+  echo ''
+  echo '######################################'
+  echo '# To hear sound, install the optional dependencies and add the following to `/etc/timidity/timidity.cfg`'
+  echo '# `soundfont /usr/share/soundfonts/FluidR3_GM.sf2`'
+  echo '# If you still cannot hear sound recheck the timidity config file, it seems to sometimes get overwritten'
+  echo '######################################'
+  echo ''
 }
 
 package_th06-demo-pytouhou() {

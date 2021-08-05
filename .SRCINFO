@@ -26,6 +26,7 @@ pkgname = th06-demo-wine
 	depends = th06-demo-data
 	depends = wine
 	optdepends = timidity++: for MIDI musics
+	optdepends = soundfont-fluid: soundfont
 
 pkgname = th06-demo-pytouhou
 	pkgdesc = Embodiment of Scarlet Devil trial version. Sixth game of the Touhou Project series; PyTouhou version.
