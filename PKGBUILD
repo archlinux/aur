@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at hnicke dot de>
 pkgname=sodalite
-pkgver=0.21.23
+pkgver=0.21.24
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2dd57ceca9729a1691f4cd5f77540fdeb32de46272858b6aefb271a25461f3e0')
+sha256sums=('74de678ce114f1d5bf5f64350ec89ee169fd6f2c4b3095ef331232ae1b7dd70c')
 
 _srcdir=$pkgname-$pkgver
 build() {
