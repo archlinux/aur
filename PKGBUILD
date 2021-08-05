@@ -1,9 +1,9 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=pyroscope-bin
-pkgver=0.0.35
+pkgver=0.0.37
 pkgrel=1
-pkgdesc="Continuous profiling platform"
-arch=(x86_64 aarch64)
+pkgdesc='Continuous profiling platform'
+arch=('x86_64' 'aarch64')
 url="https://pyroscope.io/"
 license=('APACHE')
 provides=("${pkgname%-bin}")
@@ -23,8 +23,8 @@ b2sums=('5ec13ef7bc1e15b9487b036214176fb7c3f7d38134f47b312946e35aa4fdff4acd2a8d3
         '6814b0d17b0e28903297ea09220f27125d6b9d185ba51d09042621526728c2794ca88dafc02dd42101cf461dd71c993f7c6145a70dbe7bd770ffae0dca017e7f'
         '948dc828f1b2e1068b45d298a073b4c0df4bb18138832c4d0cbcbd33d2f0b995fd37fa0b4ab5f057f30ea01f7b8c16652fc4c469e9262e9e1fde7c30ead62671'
         '068e5c7ca80e3111625e593a844bb6d3231a5a1273816bf975cd25f8a608fb6ce964e3bb16574bfd930d86189c59a441185f949763574edab5c4de99f80a4937')
-b2sums_x86_64=('3620b6dcd3beb44397c08effa0bd97285165095126e5ee3f0aa9ac5326e8624756bc7efca9b5ae97e0fadd9bd762b10f5010ff175aae7a44b5e2cd059c440133')
-b2sums_aarch64=('ae9724bde32264216af05dfbafec4cc948516d00f301938637571c41527e2bc23e5ea8aafa7973d174c4ff6d2df1c002073d58bb967ede4b256facc16e6a300e')
+b2sums_x86_64=('154dc103259ee926ca35437a6a2c6c8b31a17d6a6d3cbf20f63636eb4164941d1338f7b09738f24f1293754949e4953511da002cb5ddbfe56083459c406b7dac')
+b2sums_aarch64=('1163989c9ae2aacf0547456322dbbe25b54e16054f4778339412771f0d95e7ad23d41df4c57484860e25c537d56296cc470db8e6bea87910d61d04d27ae48c94')
 
 package() {
 	install -Dm644 "${pkgname%-bin}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-bin}.conf"
