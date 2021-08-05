@@ -1,0 +1,15 @@
+image: archlinux
+sources:
+    - https://git.sr.ht/~ineptattech/aur-gameoftrees-git
+packages:
+    - ncurses
+    - libmd
+    - util-linux-libs
+    - zlib
+    - libbsd
+    - pkgconf
+    - git
+tasks:
+- build: |
+    cd aur-gameoftrees-git
+    makepkg

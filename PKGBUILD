@@ -3,7 +3,7 @@
 pkgname=gameoftrees-git
 pkgver=r3550.fe5032d2
 pkgrel=1
-pkgdesc="A version control system which prioritizes ease of use and simplicity over flexibility. "
+pkgdesc="A version control system which prioritizes ease of use and simplicity over flexibility."
 arch=('x86_64')
 url="http://gameoftrees.org/"
 license=('ISC')
