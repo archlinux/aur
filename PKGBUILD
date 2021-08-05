@@ -1,4 +1,4 @@
-# Maintainer: Tyler Swagar <buttpickle69@shaw.ca>
+# Maintainer:  Tyler Swagar <distorto@member.fsf.org>
 
 pkgname=ttf-signika
 _commit='d774fc0799fdeddbd8720616a6d2d791be29fafa'
