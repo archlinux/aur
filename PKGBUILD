@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pomerium-bin
-pkgver=0.14.7
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='An identity-aware access proxy'
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,24 @@ license=('Apache')
 optdepends=('pomerium-cli: CLI component for interacting with server')
 provides=('pomerium')
 conflicts=('pomerium')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-linux-amd64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-linux-arm64.tar.gz")
-sha256sums_x86_64=('4c562b69a5bb2b6a00c582853e4b6dce29f94f4a67fd250f37d137b8cf7858e2')
-sha256sums_aarch64=('2d0982e5e2e62f68c41d18d036ac86598efe05a62786b00bf04805b8383455ab')
+backup=('etc/pomerium/config.yaml')
+source=('pomerium.sysusers')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium_${pkgver}-1_arm64.deb")
+sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
+sha256sums_x86_64=('121e4e16b32820a5d5433f2f60cd59753b5ea2a91eaf6bc995400b3a2dc30482')
+sha256sums_aarch64=('6303401b1ac8efc6579bee3fbdee03220fa706c42b3cc0388f1b0c37324428e2')
+
+prepare() {
+	mkdir dump
+	bsdtar xf data.tar.gz -C dump
+}
 
 package() {
-	install -Dm755 "${srcdir}/pomerium" -t "${pkgdir}/usr/bin"
+	install -Dm 644 pomerium.sysusers "$pkgdir/usr/lib/sysusers.d/pomerium.conf"
+
+	cd dump
+	install -Dm 755 usr/sbin/pomerium -t "$pkgdir/usr/bin/"
+	install -Dm 644 usr/lib/systemd/system/pomerium.service -t "$pkgdir/usr/lib/systemd/system/"
+	install -Dm 644 etc/pomerium/config.yaml -t "$pkgdir/etc/pomerium/"
 }
