@@ -1,43 +1,47 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-power-git
-pkgver=1.1.16.r17.gb74bcb7
+pkgver=1.1.17.r1.g82bf0f4
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
 url="https://github.com/pop-os/system76-power"
 license=('GPL')
-install=system76-power-git.install
 conflicts=("system76-power")
 provides=("system76-power")
 makedepends=('git' 'rust')
 depends=('dbus' 'systemd' 'system76-dkms')
 source=("${pkgname}::git+https://github.com/pop-os/system76-power.git"
-        "graphics.patch")
+        "makefile.patch"
+        "mkinitcpio.patch")
 sha256sums=('SKIP'
-            'c44423e11bbe3f045203ef5b836f64151728aec0762d798295a1787092fecf1b')
+            '97deb1f9cf6a312e8378bb96a4a83dae2498a4936c130e2ef5b125d13b92bb65'
+            '2ead269c71919c220a7880b0036c6d62aadeae3d6cde769029784d3565686539')
 
 pkgver() {
-    cd ${pkgname}
+    cd "${srcdir}/${pkgname}"
 
-	#printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+
+    # use mkinitcpio -P inplace of update-initramfs -u
+    patch --no-backup-if-mismatch -Np1 -i "${srcdir}/mkinitcpio.patch"
+
+    # fix makefile
+    patch --no-backup-if-mismatch -Np1 -i "${srcdir}/makefile.patch"
 }
 
 build() {
-    cd ${pkgname}
+    cd "${srcdir}/${pkgname}"
 
-    # Build and install base package
-    cargo build --release
+    make
 }
 
 package() {
-    # Install daemons
-    install -Dm755 ${srcdir}/${pkgname}/target/release/system76-power ${pkgdir}/usr/bin/system76-power
+    cd "${srcdir}/${pkgname}"
 
-    # Install systemd unit files
-    install -Dm644 ${srcdir}/${pkgname}/debian/system76-power.service ${pkgdir}/usr/lib/systemd/system/system76-power.service
-
-    # Install scripts and configuration
-    install -Dm755 ${srcdir}/${pkgname}/data/system76-power.conf ${pkgdir}/usr/share/dbus-1/system.d/system76-power.conf
+    make sysconfdir="/usr/lib" DESTDIR="${pkgdir}" install
 }
