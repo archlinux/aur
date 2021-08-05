@@ -1,12 +1,13 @@
 pkgbase = belle-sip
 	pkgdesc = A Voice-over-IP phone
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BelledonneCommunications/belle-sip/
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = avahi
+	depends = belr
 	depends = bctoolbox>=5.0.3
 	options = !emptydirs
 	source = belle-sip-5.0.3.tar.gz::https://github.com/BelledonneCommunications/belle-sip/archive/5.0.3.tar.gz
