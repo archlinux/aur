@@ -3,7 +3,7 @@
 
 pkgname=meli-git
 pkgver=0.6.2.r236.gb085703
-pkgrel=2
+pkgrel=3
 pkgdesc='experimental terminal mail client'
 arch=(x86_64)
 url=https://meli.delivery
@@ -34,7 +34,7 @@ prepare() {
 build() {
 	cd "${pkgname%-git}"
 	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARAGET_DIR=target
+	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 

@@ -1,7 +1,7 @@
 pkgbase = meli-git
 	pkgdesc = experimental terminal mail client
 	pkgver = 0.6.2.r236.gb085703
-	pkgrel = 2
+	pkgrel = 3
 	url = https://meli.delivery
 	arch = x86_64
 	license = GPL3
