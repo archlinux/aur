@@ -1,6 +1,6 @@
 # Maintainer: fsyy <fossy2001 at web dot de>
 pkgname=abgate.lv2
-_basename=abgate
+_basename=abGate
 pkgver=1.2.0
 pkgrel=1
 pkgdesc='abGate is LV2 noise gate plugin for Linux.'
