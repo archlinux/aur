@@ -46,7 +46,7 @@ package () {
     make DESTDIR="${pkgdir}" install
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -rf "$pkgdir"/usr/${_arch}/share
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
