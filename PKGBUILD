@@ -46,8 +46,8 @@ _uuu_autocomplete()
 }
 complete -o nospace -F _uuu_autocomplete  uuu
 EOF
-    install -dm0755  "${pkgdir}/etc/udev/rules.d/"
-    exec uuu/uuu -udev > "${pkgdir}/etc/udev/rules.d/70-uuu.rules"
-
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -dm0755  "${pkgdir}/etc/udev/rules.d/"
+    ./uuu/uuu -udev > "${pkgdir}/etc/udev/rules.d/70-uuu.rules"
+
 }
