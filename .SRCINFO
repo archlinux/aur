@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-hexer-hobu
+	pkgdesc = LAS and OGR hexagonal density and boundary surface generation (mingw-w64)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/hobu/hexer
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-gdal
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/hobu/hexer/archive/1.4.0.tar.gz
+	sha512sums = 4db94af7fe0a2cc3cd26202c4ec88fadd88408c92d14e11ac117af51ee267aa87cd82aa18b29867f318d272f644be60a826e7fb3c72908baba4124499f39579c
+
+pkgname = mingw-w64-hexer-hobu
