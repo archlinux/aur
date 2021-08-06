@@ -1,0 +1,20 @@
+pkgbase = khronos
+	pkgdesc = Track each task's time in a simple inobtrusive way
+	pkgver = 3.5.5
+	pkgrel = 1
+	url = https://github.com/lainsce/khronos
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk4
+	depends = json-glib
+	depends = libadwaita
+	depends = libhandy
+	depends = libgee
+	source = khronos-3.5.5.tar.gz::https://github.com/lainsce/khronos/archive/3.5.5.tar.gz
+	md5sums = SKIP
+
+pkgname = khronos
