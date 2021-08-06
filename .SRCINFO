@@ -1,0 +1,14 @@
+pkgbase = ness-stretch-git
+	pkgdesc = Implements a phase randomized Real FFT time stretch algorithm, the NessStretch, which splits the original sound file into 9 discrete frequency bands, and uses a decreasing frame size to correspond to increasing frequency.
+	pkgver = r178.e64eb33
+	pkgrel = 1
+	url = https://github.com/spluta/TimeStretch
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cargo
+	makedepends = rust
+	source = ness-stretch-git::git+https://github.com/spluta/TimeStretch
+	sha256sums = SKIP
+
+pkgname = ness-stretch-git
