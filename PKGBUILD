@@ -22,6 +22,7 @@ build() {
 
 package() {
 	cd "${srcdir}/${_basename}-${pkgver}"
+        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
         make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
 
