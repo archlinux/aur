@@ -1,6 +1,6 @@
 pkgbase = autotrash
 	pkgdesc = Tool to automatically purge old trashed files
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/bneijt/autotrash
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = autotrash
 	depends = python-setuptools
 	provides = autotrash
 	conflicts = autotrash
-	source = https://files.pythonhosted.org/packages/source/a/autotrash/autotrash-0.4.3.tar.gz
-	md5sums = 55c5db635d4de6fa2a2450192120dcc1
+	source = https://files.pythonhosted.org/packages/source/a/autotrash/autotrash-0.4.4.tar.gz
+	md5sums = 56fbe3eafa88b04bcc32ed3cee2de2e8
 
 pkgname = autotrash
