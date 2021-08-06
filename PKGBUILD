@@ -60,7 +60,7 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.8
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -87,7 +87,7 @@ source=(
   "${_patchsource}/winesync/5.13-winesync.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-  "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+  "${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v2/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
@@ -125,14 +125,14 @@ BUILD_FLAGS=(
 sha256sums=('d088c2b84d9813f415a1d8dcfadb02d27d03f709c8b989d8c11b7b56c3c9a428'
             '8d740f771b2b2284c4866fb228629e456a08e3f87b07f08f8b31f43f677ee6ae'
             '5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf'
-            '8255b73ce1c3fbac7d5b9d44460e1f43d3767e2432e59e43d3193d5d7591d6a9'
+            'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
             'e1d58afdd4a9bf5a6a9ff0ff8e943d8a67da24fd4160b94655bf3fae5820e135'
             '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
             '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
-            'c5501f058a8accf538fdb9cc541bd08419cd4d597e2c5bc31365d70c68bba5b3'
+            '93d45391d29ca7b53c3ba885815daea8440143fcbf10e8fc06e6c636e97d9dbd'
             '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
             '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
