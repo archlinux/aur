@@ -125,11 +125,11 @@ build() {
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
   # default. If you want to add more flags or disable specific packages, then
   # refer to the deal.II manual.
-  cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix  \
+  cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
         -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
-        -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ../${_realname}-$pkgver
+        -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ${srcdir}/${_realname}-$pkgver
 
   # deal.II needs about 3 GB/compilation process so use fewer jobs if your
   # machine does not have the memory to support the maximum number.
