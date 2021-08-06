@@ -5,7 +5,7 @@ pkgver=0.1.8
 pkgrel=1
 pkgdesc="Emulating Gentoo’s world files and sets for other package managers."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/Jguer/yay"
+url="https://github.com/kdb424/worldedit"
 license=('GPL3')
 depends=(
   'pacman>5'
