@@ -1,0 +1,26 @@
+pkgbase = worldedit-git
+	pkgdesc = Emulating Gentoo’s world files and sets for other package managers.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/Jguer/yay
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = nim
+	makedepends = nimble
+	depends = pacman>5
+	depends = git
+	depends = sudo
+	optdepends = yay
+	optdepends = yay-bin
+	provides = worldedit
+	conflicts = worldedit
+	source = worldedit::git+https://github.com/kdb424/worldedit.git#branch=main
+	sha256sums = SKIP
+
+pkgname = worldedit-git
