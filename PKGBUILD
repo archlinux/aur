@@ -47,11 +47,11 @@ pkgver() {
 
 build() {
   cd $srcdir/wezterm
-	cargo build --release
+  cargo build --release
 }
 
 package() {
-	cd $srcdir/wezterm
+  cd $srcdir/wezterm
   install -Dsm755 target/release/wezterm $pkgdir/usr/bin/wezterm
   install -Dsm755 target/release/wezterm-gui $pkgdir/usr/bin/wezterm-gui
   install -Dsm755 target/release/wezterm-mux-server $pkgdir/usr/bin/wezterm-mux-server
