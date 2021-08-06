@@ -10,10 +10,10 @@ license=('GPL3')
 depends=(
   'pacman>5'
   'git'
-  'sudo')
+  'sudo'
+  'clang')
 optdepends=(
   'yay'
-  'yay-bin'
 )
 makedepends=(
   'nim'
