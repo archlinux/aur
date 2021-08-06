@@ -2,10 +2,10 @@
 pkgname=rue 
 pkgdesc="A card game about deduction, love and regret"
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://darkdimension.org/games/rue.html"
-license=('GPL2')
+license=('GPL3')
 makedepends=('avdl')
 depends=('sdl2' 'sdl2_mixer' 'freeglut' 'glew')
 source=($pkgname-$pkgver.tar.gz::https://notabug.org/tomtsagk/$pkgname/archive/v$pkgver.tar.gz)

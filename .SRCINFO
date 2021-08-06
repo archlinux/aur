@@ -1,10 +1,10 @@
 pkgbase = rue
 	pkgdesc = A card game about deduction, love and regret
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://darkdimension.org/games/rue.html
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = avdl
 	depends = sdl2
 	depends = sdl2_mixer
