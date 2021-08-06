@@ -2,12 +2,12 @@
 
 pkgname=python-jep
 pkgver=3.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Java Embedded Python - Embeds CPython in Java through JNI"
 arch=('any')
 url="https://github.com/ninia/jep"
 license=('ZLIB')
-depends=('python-setuptools' 'python-numpy' 'java-runtime')
+depends=('python-setuptools' 'python-numpy' 'java-environment')
 makedepends=('python-setuptools')
 provides=('python-jep')
 conflicts=('python-jep')
