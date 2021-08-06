@@ -1,0 +1,22 @@
+pkgbase = mfgtools-git
+	pkgdesc = uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.
+	pkgver = 1.4.139.r19.gab2f4c7
+	pkgrel = 1
+	url = https://github.com/NXPmicro/mfgtools
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = bzip2
+	depends = zlib
+	depends = libusb
+	depends = libzip
+	depends = openssl
+	provides = uuu
+	provides = mfgtool
+	conflicts = mfgtools
+	options = !strip
+	source = mfgtools::git+https://hub.fastgit.org/NXPmicro/mfgtools.git
+	sha256sums = SKIP
+
+pkgname = mfgtools-git
