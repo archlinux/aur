@@ -1,6 +1,6 @@
 pkgbase = rralle
 	pkgdesc = Random quote fetching console utility
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/q60/rralle
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = rralle
 	makedepends = make
 	depends = erlang
 	provides = rralle
-	source = rralle-0.1.1.tar.gz::https://github.com/q60/rralle/archive/0.1.1.tar.gz
+	source = rralle-0.1.2.tar.gz::https://github.com/q60/rralle/archive/0.1.2.tar.gz
 	sha256sums = c23b8cbcc81e108eb5e784c97092c036974b4cc874cc6c4b6ad90b93ad6f7e94
 
 pkgname = rralle

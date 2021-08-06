@@ -1,6 +1,6 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=rralle
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Random quote fetching console utility'
 arch=('any')
@@ -19,5 +19,5 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
