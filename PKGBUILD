@@ -1,20 +1,20 @@
-# Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Gabriel Magno <gabrielmagno1@gmail.com>
 # Contributor: Michał Pałubicki <maln0ir@gmx.com>
 
 _pyname=agate-dbf
 pkgname=python-$_pyname
 pkgver=0.2.2
 pkgrel=2
-pkgdesc="Adds read support for dbf files to agate"
+pkgdesc='Adds read support for dbf files to agate'
 arch=(any)
-url="https://$_pyname.readthedocs.org/"
+url="https://$_pyname.readthedocs.org"
 license=(MIT)
 _pydeps=('agate>=1.5.0'
-         'dbfread>=2.0.5')
+         'dbfread>=2.0.5'
+         sphinx_rtd_theme)
 depends=(python
-         "${_pydeps[@]/#/python-}"
-         python-sphinx_rtd_theme)
+         "${_pydeps[@]/#/python-}")
 makedepends=(python-setuptools
              python-sphinx)
 checkdepends=(python-pytest)
