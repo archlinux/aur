@@ -1,4 +1,4 @@
-pkgbase = libvlc
+pkgbase = libvlc-plugins
 	pkgdesc = The plugins for VLC library
 	pkgver = 5.6.0
 	pkgrel = 5
