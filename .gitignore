@@ -1,0 +1,8 @@
+src/
+pkg/
+
+*.tar.xz
+*-win.pkg
+*-android.pkg
+
+unity-editor-vrchat*.pkg.tar

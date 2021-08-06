@@ -1,11 +1,13 @@
 # Maintainer: sksat <sksat@sksat.net>
-# Unity for VRChat(2018.4.20f1)
-# UnityHub link: unityhub://2018.4.20f1/008688490035
+# Unity for VRChat(2019.4.29f1)
+# VRChat current Unity version information: https://docs.vrchat.com/docs/current-unity-version
+# UnityHub link: unityhub://2019.4.29f1/0eeae20b1d82
 
 _prefix=/opt/Unity
+_unityhub_id=0eeae20b1d82
 
 pkgname=unity-editor-vrchat
-pkgver=2018.4.20f1
+pkgver=2019.4.29f1
 pkgrel=1
 epoch=1
 pkgdesc="Allows building your Unity projects for VRChat"
@@ -31,17 +33,17 @@ optdepends=("unityhub"
 conflicts=("unity-editor"
            "unity-editor-windows")
 install=${pkgname}.install
-source=("${pkgver}.tar.xz::https://download.unity3d.com/download_unity/008688490035/LinuxEditorInstaller/Unity.tar.xz"
-        "${pkgver}-win.pkg::https://download.unity3d.com/download_unity/008688490035/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-${pkgver}.pkg"
-        "${pkgver}-android.pkg::https://download.unity3d.com/download_unity/008688490035/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${pkgver}.pkg"
+source=("${pkgver}.tar.xz::https://download.unity3d.com/download_unity/${_unityhub_id}/LinuxEditorInstaller/Unity.tar.xz"
+        "${pkgver}-win.pkg::https://download.unity3d.com/download_unity/${_unityhub_id}/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-${pkgver}.pkg"
+        "${pkgver}-android.pkg::https://download.unity3d.com/download_unity/${_unityhub_id}/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-${pkgver}.pkg"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
 noextract=("${pkgver}-android.pkg")
-md5sums=("d1651b6b0a6d639253e8d149c4bc6b6a"
-         "2af219c4a5f6a9679af9ae43a86d7dfb"
-         "5272bd150acd2d9a412118978407d885"
+md5sums=("d8d19397849073a6e15a3be912ac3acb"
+         "b91bdc8972c6ec30b50e7eb62d59dc53"
+         "ffad9b886d2941bcfcf4ec12caf14c90"
          'a8fe2e41f06489dd09f651b08ec87125'
          'ee60f0d4d3c3fa9e0a52da085b1f3be6'
          '723f9e556821810682a6d1f4be540a74'
@@ -89,4 +91,3 @@ package() {
   cd "${_dest_android}"
   cat "${srcdir}/Android/TargetSupport.pkg.tmp/Payload" | gzip -dc | cpio -i
 }
-
