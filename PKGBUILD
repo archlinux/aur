@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=home-assistant-cli
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Work with a local or a remote Home Assistant instance directly from the command-line."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-tabulate' 'python-idna' 'python-jsonpath-rw' 'python-click-log'
 makedepends=('python-setuptools')
 checkdepends=('python-coverage' 'python-wheel')
 source=("https://github.com/home-assistant/home-assistant-cli/archive/${pkgver}.tar.gz")
-sha256sums=('c0506495308c0b478f8a6c8c36036462274baaae4320faef458818d8540ec3c7')
+sha256sums=('0ec8b52fc3e21b3277a0d0038e1beca4b51c2d035783cca08b472cb38263c908')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
