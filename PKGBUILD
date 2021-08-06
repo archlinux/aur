@@ -12,7 +12,7 @@ optdepends=("vlc: preview support")
 install=gopro-webcam.install
 source=("gopro" "gopro_webcam.service" "60-gopro.rules")
 noextract=("gopro" "gopro_webcam.service" "60-gopro.rules")
-sha256sums=("4d8c86533933b8fc5f44f74921a9819a7b5d76eb95046ceab99e4a6dd205b826"
+sha256sums=("fcf5de75c567d6aba5c29521661476419ca61f5540f33efc04a4f97a1166df75"
             "5f6d0005d9790b4fa03107f83790c23948f34c887790e26d25dc7ed9e5ff2fae"
             "76f247506012177858323eeadfca859ba4b9abbe832181ac0c178c8aac0a3c9c")
 
