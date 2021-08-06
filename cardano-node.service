@@ -13,6 +13,7 @@ ExecStart=cardano-node run \
     --port $BIND_PORT \
     --config $CONFIG_FILE  \
     --topology $TOPOLOGY_FILE
+KillSignal=SIGINT
 Restart=always
 RestartSec=60
 User=cardano
