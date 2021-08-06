@@ -5,7 +5,7 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced
-pkgver=4.3.6.10
+pkgver=4.3.7.10
 pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
@@ -46,9 +46,4 @@ package() {
 
 	make INSTALL_ROOT="$pkgdir/" install
 	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-
-	msg "IMPORTANT NOTICE"
-  msg2 "As of 2021 Mar 29, one of the dependency of this package, libtorrent-rasterbar >= 1.2.12"
-	msg2 "is not available yet in archlinux/extra."
-	msg2 "You may install without checking dependency by 'pacman -Ud {package_name}'"
 }
