@@ -20,7 +20,7 @@ optdepends=(
       'gmsh: An automatic 3D finite element mesh generator with pre and post-processing facilities'
       'gsl: A modern numerical library for C and C++ programmers'
       'hdf5-openmpi: General purpose library and file format for storing scientific data'
-      'intel-tbb: High level abstract threading library'
+      'intel-mkl: Intel Math Kernel Library'
       'lapack: Linear Algebra PACKage'
       'metis: partitioning graphs, finite element meshes, fill reducing orderings for sparse matrices.'
       'muparser: A fast math parser library'
@@ -34,6 +34,7 @@ optdepends=(
       # deal.II is not compatible with sundials 4.0 or newer yet
       # 'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
+      'tbb: High level abstract threading library'
       'trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems'
       'suitesparse: A collection of sparse matrix libraries'
       'zlib: Compression library implementing the deflate compression method found in gzip and PKZIP'
@@ -52,7 +53,7 @@ build() {
   # /opt/petsc/), source their environment variable scripts in the (likely) case
   # that a user installed one of these packages without logging out and logging
   # back in
-  for package in opencascade p4est-deal-ii petsc slepc
+  for package in opencascade p4est-deal-ii petsc slepc intel-mkl
   do
       if pacman -Qs $package >/dev/null
       then
@@ -95,6 +96,13 @@ build() {
          cmake_configuration_flags+=" -DDEAL_II_WITH_64BIT_INDICES=ON"
       fi
   fi
+
+  # deal.II cannot find MKL unless we specify where its header is
+  if [ -n "${MKLROOT+x}" ]
+  then
+     cmake_configuration_flags+=" -DLAPACK_INCLUDE_DIRS=${MKLROOT}/include"
+  fi
+
 
   # For GSL compatibility we need the full link interface, which includes
   # libgslcblas, so disable --as-needed with GCC:
