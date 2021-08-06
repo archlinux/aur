@@ -1,0 +1,18 @@
+pkgbase = magnifiqus
+	pkgdesc = Qt based screen magnifier
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/redtide/magnifiqus
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-x11extras
+	provides = magnifiqus
+	conflicts = magnifiqus
+	source = https://github.com/redtide/magnifiqus/archive/v0.2.0.tar.gz
+	sha512sums = ddf3101cfc4979951a3081f484f5629e3624b9317c80863e57f194b8c91a2a4482d7de14c56cfb4e0f375bf0181be749695b4bf4df5f5bc428ffa059bfef6249
+	b2sums = c53db2795bd58385ed436f3e2fc9195aff2990e446324cebcf548b173c53536c49b01d8ba862d783400bd9c3054dc48561265fcc17672b330deeda4d7713810d
+
+pkgname = magnifiqus
