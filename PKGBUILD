@@ -5,32 +5,46 @@
 #   remove forced tag on ba1f37f when rpository gets tagged
 
 pkgname=sear-git
-pkgver=0.0.0.r38.g1b262d8
+pkgver=0.0.0.r87.gea67ae4
 pkgrel=1
-pkgdesc="Signed/Encrypted ARchive"
-arch=('x86_64')
+pkgdesc='Signed/Encrypted ARchive'
+arch=(x86_64)
 url="https://github.com/iqlusioninc/${pkgname%-git}"
-license=('MIT' 'Apache')
-makedepends=('cargo')
-provides=("${pkgname%-git}")
-conflicts=($provides)
+license=(Apache)
+makedepends=(cargo
+             git)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
+prepare() {
+	cd "$pkgname"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 pkgver() {
-  cd "$pkgname"
-  git tag -f 0.0.0 ba1f37f 2>&1 >/dev/null ||:
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$pkgname"
+	git tag -f 0.0.0 ba1f37f 2>&1 >/dev/null ||:
+	git describe --long --tags --always --abbrev=7 HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  cargo build --release --locked --all-features
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
+}
+
+check() {
+	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --all-features
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	cd "$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
