@@ -25,7 +25,6 @@ build() {
     sed -i "s|/usr/local|/usr/${_arch}|g" configure.ac
     sed -i "s|/usr|/usr/${_arch}|g" configure.ac m4/*.m4
     echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/mariadb_config.exe \$@" > mariadb_config && chmod a+rx mariadb_config
-    echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/pg_config.exe \$@" > pg_config && chmod a+rx pg_config
     autoreconf -vfi
     ./autogen.sh 
     LDFLAGS="-lssp -lssl -lcrypt32" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
@@ -34,7 +33,6 @@ build() {
       --without-python --without-perl \
       --with-geos=/usr/${_arch}/bin/geos-config \
       --with-netcdf=/usr/${_arch} \
-      --with-pg=./pg_config \
       --with-mysql=./mariadb_config \
       .
     make
@@ -48,7 +46,7 @@ package () {
     make DESTDIR="${pkgdir}" install
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -rf "$pkgdir"/usr/${_arch}/share
-    #${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
