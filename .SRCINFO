@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-laz-perf
 	pkgdesc = Alternative LAZ implementation for C++ and JavaScript (mingw-w64)
-	pkgver = 1.4.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/hobu/laz-perf
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-laz-perf
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/hobu/laz-perf/archive/1.4.4.tar.gz
-	sha512sums = 2d1016c7d477be2264a9df57b0df822d1e40de033763f12caba0b8a7267826f3278fdfadc81d6ee800a6110af1a53ed9c11ca8173b10dc6b848697c20a70b6eb
+	source = https://github.com/hobu/laz-perf/archive/2.0.5.tar.gz
+	sha512sums = fd4f53399c01c168b977b1da101ba93ade4a2020aa76cf58f5af64a47a315bc443a71985404d62541670fef24a47357d40d21a08b4e7bbd70b562182f4bb92a1
 
 pkgname = mingw-w64-laz-perf
-

@@ -1,5 +1,5 @@
 pkgname=mingw-w64-laz-perf
-pkgver=1.4.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Alternative LAZ implementation for C++ and JavaScript (mingw-w64)'
 arch=('any')
@@ -9,14 +9,12 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/hobu/laz-perf/archive/${pkgver}.tar.gz")
-sha512sums=('2d1016c7d477be2264a9df57b0df822d1e40de033763f12caba0b8a7267826f3278fdfadc81d6ee800a6110af1a53ed9c11ca8173b10dc6b848697c20a70b6eb')
+sha512sums=('fd4f53399c01c168b977b1da101ba93ade4a2020aa76cf58f5af64a47a315bc443a71985404d62541670fef24a47357d40d21a08b4e7bbd70b562182f4bb92a1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/laz-perf-${pkgver}"
-  # minwindef.h:131:15: error: conflicting declaration ‘typedef int BOOL’
-  sed -i "s|typedef bool               BOOL|typedef int BOOL|g" laz-perf/common/types.hpp
 }
 
 build() {
