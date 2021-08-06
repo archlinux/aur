@@ -1,45 +1,55 @@
-# Upstream Project Author: Hodong Kim <https://gitlab.com/hodong>
-# PKGBUILD Author: Hodong Kim <https://gitlab.com/hodong>
-# PKGBUILD Maintainer: Bumsik Kim <k.bumsik@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Whemoon Jang <palindrom615@gmail.com>
+# Contributor: Bumsik Kim <k.bumsik@gmail.com>
+# Contributor: Hodong Kim <https://gitlab.com/hodong>
 
-#
-# PKGBUILD
-# This file is part of Nimf.
-#
-# Unlike other files in the Nimf project,
-# this PKGBUILD file is in the public domain.
+# Note upstream seems to have several build system experiments going on. The
+# AUR package nimf-git which upstream endorses uses a branch older
+# than the current release with meson in it. I've left some meson stuff in this
+# PKGBUILD in case that ever hits a tagged release.
 
 pkgname=nimf
-# This strictly follows AC_INIT field in configure.ac
-pkgver=2019.08.14
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="Nimf is an input method framework."
-arch=('any')
-url="https://gitlab.com/nimf-i18n/nimf"
-license=('LGPL3')
-
-# Reference: https://gitlab.com/nimf-i18n/nimf/blob/master/archlinux/PKGBUILD
-makedepends=('binutils' 'autoconf' 'automake' 'gcc' 'make' 'glib2' 'intltool'
-             'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3' 'librsvg'
-             'noto-fonts-cjk' 'libhangul' 'anthy' 'librime' 'libxkbcommon'
-             'wayland' 'libxklavier' 'm17n-lib' 'm17n-db' 'gtk-doc')
-depends=('glib2' 'gtk3' 'gtk2' 'qt4' 'qt5-base' 'libappindicator-gtk3'
-         'libhangul' 'anthy' 'librime' 'libxkbcommon' 'wayland' 'libxklavier'
-		 'm17n-lib' 'm17n-db')
+epoch=1
+pkgdesc='a lightweight, fast and extensible input method framework'
+arch=(x86_64)
+url="https://github.com/hamonikr/$pkgname"
+license=(LGPL3)
+depends=(gtk3
+         libappindicator-gtk3
+         libxkbcommon
+         libxklavier
+         qt5-base
+         wayland)
+makedepends=(anthy
+             gtk-doc
+             gtk2
+             intltool
+             libhangul
+             librime
+             m17n-db
+             m17n-lib
+             # meson
+             librsvg)
 optdepends=('brise: Rime schema repository'
             'noto-fonts-cjk: Google Noto CJK fonts')
-
-source=("nimf-master::git+https://gitlab.com/nimf-i18n/nimf#commit=dec1a11c3034677a825b0dff319a05a8d019ae08")
-md5sums=('SKIP')
+_archive="$pkgname-$pkgver"
+source=("$pkgname-$pkgver.tar.bz2::$url/releases/download/$pkgver/$pkgname-master.tar.bz2")
+sha256sums=('543ccaa963a8366d68162887fadf61dc36425a99aad6d3bb075e8b0039ef9ed2')
 
 build() {
-	cd "$srcdir/nimf-master"
-	./autogen.sh --prefix=/usr
-	make -j 4
+	cd "$_archive"
+	./autogen.sh
+	./configure --prefix /usr
+	# arch-meson \
+	#     -D with_nimf_qt4=false
+	#     "$_archive" build \
+	# ninja -C build
 }
 
 package() {
-	cd "$srcdir/nimf-master"
-	make DESTDIR="${pkgdir}/" install
+	cd "$_archive"
+	make DESTDIR="$pkgdir/" install
+	# DESTDIR="$pkgdir/" ninja -C build install
 }
-
