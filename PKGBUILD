@@ -1,16 +1,16 @@
-# Maintainer: mms <saboorian@gmail.com>
+# Maintainer: Muhammad Usman <usman@gmail.com>
+# Contributor: Mohsen Saboorian <saboorian@gmail.com>
 
 pkgname=zekr
 pkgver=1.1.0
 pkgrel=2
-pkgdesc="An open Quranic platform aimed to ease access to the Holy Quran for reading, \
-	translating, or researching."
-url="http://zekr.org/quran/quran-for-linux"
+pkgdesc="An opensource Quranic research platform."
+url="https://sourceforge.net/projects/zekr"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('java-runtime' 'libwebkit')
-#optdepends=('flashplugin: Enable Audio Recitations') #Apparently not needed anymore
-# Sources abd nd5sums for i686
+depends=('java-runtime' 'webkitgtk2')
+
+# Sources and md5sums for i686
 [ "$CARCH" = "i686" ] && source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-linux.tar.gz $pkgname.desktop)
 [ "$CARCH" = "i686" ] && md5sums=('a6e7178d9ce2ccbe04c8b1b3acd64d01' 'c82122b0b8766412fc152dd7cb5f176e')
 # Sources and md5sums for x86_64
