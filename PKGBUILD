@@ -1,15 +1,15 @@
 # Maintainer: malacology
-# Contributor: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 _pkgname=lilac
 pkgname=$_pkgname-git
-pkgver=r824.ab03f70
-pkgrel=2
+pkgver=r831.5d4986c
+pkgrel=3
 pkgdesc='The build bot for archlinuxcn'
 arch=(any)
 url='https://github.com/archlinuxcn/lilac'
 license=(GPL3)
-depends=(python git devtools nvchecker gnupg pid_children fakeroot
+depends=(python git devtools nvchecker gnupg pid_children fakeroot bubblewrap
          python-requests python-lxml python-yaml python-toml pyalpm
          python-structlog python-prctl)
 makedepends=(python-setuptools-scm)
