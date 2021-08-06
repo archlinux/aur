@@ -3,7 +3,7 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -39,8 +39,8 @@ optdepends=('alsa-oss: for OSS output plugin'
             'wavpack: for wavpack plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
-source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/1.8.7/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('49a9610f8aa8d9853cd4f9a38d103f9a902993a5ae1990937a3ac5a14a4f8533f4233002893875aedf45f737d1a95c7cea189c61d6387bd8be7f3535d60c96eb')
+source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
+sha512sums=('399f0e70eca5e102a9e73ff03199c89c6f28f3e0da96e793316d1af83f00e71f09f6cc81a3fd0b0f0d52fe9e0195a3b9ffb0cf7e7708c3ea7085f33a5ec08b47')
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
