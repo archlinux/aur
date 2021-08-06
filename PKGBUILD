@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=21.30.20482
+pkgver=21.31.20514
 _gmmver=21.2.1
-_igcver=1.0.7862
+_igcver=1.0.8173
 _lzver="1.1.${pkgver##*.}"
 pkgrel=1
 pkgdesc='Intel Graphics Compute Runtime for oneAPI Level Zero and OpenCL Driver (pre-compiled binaries)'
@@ -27,10 +27,10 @@ noextract=("intel-opencl_${pkgver}_amd64.deb"
            "intel-ocloc_${pkgver}_amd64.deb"
            "intel-level-zero-gpu_${_lzver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('97a90157e7aabcfd3748db6645009d03b1eccb2e029ff44f03c122d660464786'
-            '76beea8e0721e380fb102c2c0ff1af0766169e0aafd6c82ae14b996ed6d5fb15'
-            '4db9b75d79f564a4f663d5a33dda5e312bd6e22d6962a596f9b7975825156961'
-            '1f2078473ce2b6ac5f61f11bdd10807127f2cf884f50abb8001dc109fd82f933'
+sha256sums=('6a237a1301b52c024fcb7a39a8cf71820e986e34503dfe3b83bb3ab67644623d'
+            'b4db183a079eaceda4b5cf8d37ed063fa684e53457b177fc2113e65810f9917f'
+            'd9e1ff44e45a66221e9edfefb645ac114b778d1008bf9d535d9873ae867e7008'
+            'f9e64497cb00a32060ababdc51378107bcd885fdfe8ace12649adff8747e1cd7'
             '912cd86e4cb564b6fa549d69a28b72b9cdcb5a3eab9320955ed70ac37381fc2f'
             '73783f7cd3b35aa7d23fa64e400c8c6a6cf6256b62b35e4827094719a9acb172')
 
