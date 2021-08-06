@@ -12,7 +12,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('0c7200eb5ae510688b0cca40469c577ebbea6ab331c807b0a16f790e1e506fd0')
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
