@@ -1,6 +1,6 @@
 # Maintainer: Heiko Nickerl <dev at hnicke dot de>
 pkgname=sodalite
-pkgver=0.21.24
+pkgver=0.21.27
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('74de678ce114f1d5bf5f64350ec89ee169fd6f2c4b3095ef331232ae1b7dd70c')
+sha256sums=('placeholder')
 
 _srcdir=$pkgname-$pkgver
 build() {
@@ -36,14 +36,5 @@ package() {
     --optimize=1 \
     --skip-build
 
-    install -Dm644 sodalite.desktop "$pkgdir/usr/share/applications/sodalite.desktop"
-    install -Dm644 docs/sodalite.1 "$pkgdir/usr/share/man/man1/sodalite.1"
-    install -Dm644 docs/sodalite-open.1 "$pkgdir/usr/share/man/man1/sodalite-open.1"
-    install -Dm755 scripts/sodalite-open "$pkgdir/usr/bin/sodalite-open"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/sodalite/README"
-    install -Dm644 copyright "$pkgdir/usr/share/doc/sodalite/copyright"
-    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/sodalite/changelog"
-    install -Dm644 scripts/shell-integration.sh "$pkgdir/usr/share/sodalite/shell-integration.sh"
-    install -Dm644 scripts/shell-integration.fish "$pkgdir/usr/share/sodalite/shell-integration.fish"
-    install -Dm644 sodalite/core/sodalite.conf "$pkgdir/usr/share/sodalite/sodalite.conf"
+    make install-misc root="$pkgdir"
 } 
