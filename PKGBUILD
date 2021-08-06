@@ -17,8 +17,9 @@ sha256sums=("SKIP"
 						"SKIP")
 
 prepare() {
-        # Extract AppImage
-        echo "Extracting AppImage..."
+    # Extract AppImage
+    echo "Extracting AppImage..."
+	mv "Bootstrap%20Studio.AppImage" "Bootstrap Studio.AppImage"
 	chmod +x "Bootstrap Studio.AppImage"
 	./"Bootstrap Studio.AppImage" --appimage-extract &> /dev/null
 }
