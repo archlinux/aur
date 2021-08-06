@@ -1,21 +1,22 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-prance
-pkgver=0.21.2
-_openapi_commit=fbe62006211838a8bb7bf2433a1d15f1a5838a03
+pkgver=0.21.8.0
+_openapi_commit=0f9d3ec7c033fef184ec54e1ffc201b2d61ce023
 pkgrel=1
 pkgdesc="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
 url="https://github.com/jfinkhaeuser/prance"
 license=('custom:MITNFA')
 arch=('any')
-depends=('python-chardet' 'python-yaml' 'python-flex' 'python-click' 'python-requests'
-         'python-six' 'python-semver')
+depends=('python-chardet' 'python-ruamel-yaml' 'python-requests' 'python-six' 'python-semver')
+optdepends=('python-flex' 'python-click' 'python-pyicu' 'python-openapi-spec-validator')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-cov')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jfinkhaeuser/prance/archive/v$pkgver.tar.gz"
-        "OpenAPI-Specification-$_openapi_commit.tar.gz::https://github.com/OAI/OpenAPI-Specification/archive/$_openapi_commit.tar.gz")
-sha512sums=('4c0f9be32c2b2a74221e098191d722505a1ce25a07716daa2033d4b61da747be08dc8433af21b1ce16dc02d5b82a25609a7d53b8a1a61ef4cf2d5cf9d18b746e'
-            'd7957f1cdaa681b4c163e6e0b35ed6b808f469c3fdbba86a5e7221bb3c0c980415dca145e7f57bcebed75624562e89a893841d17c9e0ff82df4f0ff65ffaa2ae')
+# 'python-flex' is broken, removed for now: https://github.com/RonnyPfannschmidt/prance/issues/116
+checkdepends=('python-pytest-cov' 'python-click' 'python-pyicu' 'python-openapi-spec-validator')
+source=("https://github.com/jfinkhaeuser/prance/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "https://github.com/OAI/OpenAPI-Specification/archive/$_openapi_commit/OpenAPI-Specification-$_openapi_commit.tar.gz")
+sha512sums=('654d37a50bd79177b285eca585f56ef07a6a553a09c018e2df640879ab62e0a376cbd8fc2205b6408b7fce31851be0accb123afc79114edd36c8a270e6557b84'
+            'c75ff7410c75ce23fd736ccb4294175438b66a954687d380124c0e37237112b043fa0c289269a8d792e8385264c923b0be09d6bf63112a106e4579d9d7a9808f')
 
 prepare() {
   rmdir prance-$pkgver/tests/OpenAPI-Specification
@@ -35,5 +36,5 @@ check() {
 package() {
   cd prance-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+  install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
