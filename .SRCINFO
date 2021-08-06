@@ -1,6 +1,6 @@
 pkgbase = ncdu2
 	pkgdesc = Disk usage analyzer with an ncurses interface. Rewrite in Zig.
-	pkgver = 2.0
+	pkgver = 2.0beta2
 	pkgrel = 1
 	url = https://dev.yorhel.nl/ncdu
 	arch = i686

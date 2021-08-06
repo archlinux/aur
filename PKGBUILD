@@ -1,8 +1,8 @@
 #Maintainer: Illia Shestakov <illia@ishestakov.com>
 
 pkgname=ncdu2
-pkgver=2.0
-_pkgver2=beta2
+pkgver=2.0beta2
+_pkgver=${pkgver/beta/-beta}
 pkgrel=1
 pkgdesc="Disk usage analyzer with an ncurses interface. Rewrite in Zig."
 arch=("i686" "x86_64")
@@ -10,17 +10,17 @@ url="https://dev.yorhel.nl/ncdu"
 license=('MIT')
 depends=("ncurses")
 makedepends=("zig" "make")
-source=("https://dev.yorhel.nl/download/ncdu-${pkgver}-${_pkgver2}.tar.gz")
+source=("https://dev.yorhel.nl/download/ncdu-${_pkgver}.tar.gz")
 sha512sums=("4e69d792b281b27bbd99f2426d0f48765f7a6096f618efddf5362bc3303a807544a4f7149e0ca6e2bcb3527e928d26466b3558094ab1ae6595fa06e810910c24")
 
 build() {
-    cd "${srcdir}/ncdu-${pkgver}-${_pkgver2}"
+    cd "${srcdir}/ncdu-${_pkgver}"
 
     make
 }
 
 package() {
-    cd "${srcdir}/ncdu-${pkgver}-${_pkgver2}"
+    cd "${srcdir}/ncdu-${_pkgver}"
 
     install -Dm755 zig-out/bin/ncdu "${pkgdir}/usr/bin/ncdu2"
 }
