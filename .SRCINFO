@@ -1,0 +1,14 @@
+pkgbase = python-future-annotations
+	pkgdesc = A backport of __future__ annotations to python<3.7
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/asottile/future-annotations
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tokenize-rt
+	source = https://files.pythonhosted.org/packages/source/f/future_annotations/future_annotations-1.0.0.tar.gz
+	sha256sums = c707d19f7c74e08d9e67b310fd6a7438ff510ba5cbfb7334695627f8f69c6378
+
+pkgname = python-future-annotations
