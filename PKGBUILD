@@ -24,14 +24,16 @@ build() {
     rm -rf build-${_arch} && cp -r gdal-$pkgver build-${_arch} && pushd build-${_arch}
     sed -i "s|/usr/local|/usr/${_arch}|g" configure.ac
     sed -i "s|/usr|/usr/${_arch}|g" configure.ac m4/*.m4
+    echo -e "#!/bin/sh\n${_arch}-wine /usr/${_arch}/bin/mariadb_config.exe \$@" > mariadb_config && chmod a+rx mariadb_config
     autoreconf -vfi
     ./autogen.sh 
-    LDFLAGS="-lssp -lssl -lcrypt32 -lmariadbclient" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
+    LDFLAGS="-lssp -lssl -lcrypt32" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
       --with-mysql --with-curl --with-hdf5 --with-perl --with-geos \
       --with-png --with-poppler --with-spatialite --with-openjpeg \
       --without-python --without-perl \
       --with-geos=/usr/${_arch}/bin/geos-config \
       --with-netcdf=/usr/${_arch} \
+      --with-mysql=./mariadb_config \
       .
     make
     popd
