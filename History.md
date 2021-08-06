@@ -1,4 +1,83 @@
 
+uuu_1.4.139 / 2021-06-02
+========================
+
+  * Fix trail data missed at some sparse file
+
+uuu_1.4.138 / 2021-05-25
+========================
+
+  * fix linux build fail
+  * Add help option -IgSerNum to set windows registry
+  * add usb_next_timeout to break infinit wait between stages
+  * usbhotplug: avoid code duplication and make it thread save
+  * usbhotplug: remove unused variable
+  * return out of memory when allocate failure
+  * Create post-refresh
+  * Revert "Disable snap home interface attribute to avoid manual review"
+  * -bshow error message add new line
+  * -bshow show error message at stderr
+  * -bshow don't show uuu version information and recover cursor ESC
+
+uuu_1.4.127 / 2021-03-30
+========================
+
+  * Fix 8ulp only download spl
+  * remove alias universal-update-utility
+  * test snapcraft webhook 2
+  * test snapcraft webhook
+  * test snapcraft 3
+  * test snapcraft 2
+  * test snapcraft
+  * Disable snap home interface attribute to avoid manual review
+  * Migrate snap base to core18 to mitigate submodule clone error
+  * Allow reading the SUDO_USER's uuu script whenthe snap is run as root
+  * Warn snap confinement issues when program errors
+  * Sync snap metadata with store listing
+  * Fix selective-checkout wrongly checking out v2.8.0 tag
+  * Fix selective checkout part definition
+  * Update README.md
+  * Revert "update selective-checkout of snap.yaml"
+
+uuu_1.4.107 / 2021-03-05
+========================
+
+  * mv snap/license to snap/local
+  * update selective-checkout of snap.yaml
+  * update snap svg
+  * snap: Fix missing copyright declaration
+  * snap: Add MIT license file
+  * Ignore locally built snaps from Git
+  * snap: Drop packaging revision which is only useful with out-of-repo recipe
+  * snap: Use in-repo source instead of cloning from GitHub
+  * Implement snap packaging (#221)
+  * Add Snap badges
+
+uuu_1.4.95 / 2021-02-24
+=======================
+
+  * Build all after added mac build
+  * deloy uuu_mac
+  * update path
+  * fix path on mac build
+  * try build on macos
+  * test build on MacOS
+  * try build on macos
+  * try build on macos
+  * try build on macos
+  * Test macOS build
+  * Add mac prebuild image
+  * fails to build on alpine arm32v6'; fix adding interpreter to uuu/gen_txt_include.sh
+
+uuu_1.4.77 / 2021-01-22
+=======================
+
+  * Add 8ULP support
+  * uuu: Move rules to priority 70
+  * uuu: Use uaccess instead of '0666' in the udev rule
+  * update bzip2 to bzip2-1.0.8
+  * update bzip2 to official git repo
+
 uuu_1.4.72 / 2021-01-13
 =======================
 
