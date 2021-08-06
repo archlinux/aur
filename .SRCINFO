@@ -1,7 +1,7 @@
 pkgbase = nextcloud20
 	pkgdesc = A cloud server to store your files centrally on a hardware controlled by you
 	pkgver = 20.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nextcloud.com
 	arch = any
 	license = AGPL

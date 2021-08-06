@@ -3,7 +3,7 @@
 pkgname=nextcloud20
 _pkgname=nextcloud
 pkgver=20.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
 url="https://nextcloud.com"
