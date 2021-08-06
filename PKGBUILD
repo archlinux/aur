@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.22
+pkgver=2.2.23
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'wireshark-qt: Live packet capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop')
-sha256sums=('1a9d6644f24ff9a763ea3719a6013b2565af3b0a2c10cceac70d92f9d7724490'
+sha256sums=('60347f84b48bdd7dc6125469a7f82d5ef67bf061e85a554aa2b97795d45d40a8'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
 
 prepare() {
