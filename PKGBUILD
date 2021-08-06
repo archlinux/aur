@@ -1,37 +1,45 @@
 # Maintainer: Walter C <bitlord {at} disroot {dot} org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname="dust-git"
-_pkgname="dust"
-pkgver=0.4.2.148.ga6839c0
+pkgname=dust-git
+_pkgname=${pkgname%-git}
+pkgver=0.6.2.r8.gca0a93f
 pkgrel=1
 pkgdesc="A more intuitive version of du in rust"
-arch=("i686" "x86_64")
+arch=('x86_64' 'i686')
 url="https://github.com/bootandy/dust"
-license=("Apache")
-depends=()
-makedepends=("rust" "cargo" "git")
-provides=("dust")
-conflicts=("dust")
-source=("$_pkgname::git+https://github.com/bootandy/dust.git")
-sha256sums=("SKIP")
+license=('Apache')
+makedepends=('cargo' 'git')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$_pkgname"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 pkgver() {
     cd "$_pkgname"
-    echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 --match='v[0-9]*' |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd $_pkgname
-    cargo build --release --locked
+    cargo build --frozen --release --all-features
 }
-    
+
 check() {
     cd $_pkgname
-    cargo test --release --locked
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_pkgname"
+    install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
