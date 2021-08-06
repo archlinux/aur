@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-fcgi
+	pkgdesc = FASTCgi (fcgi) is a language independent, high performant extension to CGI (mingw-w64)
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://www.fastcgi.com/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = mingw-w64-fcgi-2.4.2.tar.gz::https://github.com/FastCGI-Archives/fcgi2/archive/2.4.2.tar.gz
+	sha256sums = 1fe83501edfc3a7ec96bb1e69db3fd5ea1730135bd73ab152186fd0b437013bc
+
+pkgname = mingw-w64-fcgi
