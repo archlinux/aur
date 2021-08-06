@@ -2,7 +2,7 @@
 # Contributor: budRich
 
 pkgname=i3ass
-pkgver=2021.08.06.1
+pkgver=2021.08.06.4
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('7fc64df2ec62caa6ecc0c8d02b7bb8c48d8bd3b8511bbd5217eaf3620e7e88d2')
+sha256sums=('292f8a4c5df1be8c24222d785733c3ea41201c0fa4bd5533d3b4b94b287ff36f')
 
 package() {
   cd "$pkgname-$pkgver"
