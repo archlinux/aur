@@ -6,6 +6,7 @@ pkgbase = dxirc
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	depends = fox
 	depends = lua
 	depends = qt5-base
@@ -15,4 +16,3 @@ pkgbase = dxirc
 	md5sums = 9e48935484bbc4333a79fc704e6c207e
 
 pkgname = dxirc
-
