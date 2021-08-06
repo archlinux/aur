@@ -1,5 +1,7 @@
-# Maintainer: Jeremy Kescher <jeremy@kescher.at>
+# Maintainer: Alberto Oliveira <orkan.aos@gmail.com>
+# Previous Maintainer: Jeremy Kescher <jeremy@kescher.at>
 # Previous Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 
 pkgname=lib32-spirv-tools
 pkgver=2021.1
@@ -28,6 +30,9 @@ prepare() {
   mkdir -p build
 
   alias widl=
+
+  cd "${srcdir}/SPIRV-Headers"
+  git reset --hard cf00fad5b4374c1ee10b46659d2766797769a658
 }
 
 build() {
@@ -40,7 +45,7 @@ build() {
   cmake ../SPIRV-Tools \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=lib32 \
-      -DCMAKE_BUILD_TYPE=None \
+      -DCMAKE_BUILD_TYPE=RELEASE \
       -DSPIRV_WERROR=OFF \
       -DSPIRV-Headers_SOURCE_DIR="${srcdir}/SPIRV-Headers"
 
