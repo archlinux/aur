@@ -6,31 +6,27 @@
 pkgname=scilab-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A software package for numerical computation, providing a powerful computing environment for engineering and scientific applications."
 arch=("x86_64")
 license=("GPL")
 url="https://www.scilab.org"
 # Standalone package
 depends=('ncurses5-compat-libs' 'jre8-openjdk')
-conflicts=('scilab')
+conflicts=('scilab' 'scilab-git')
+provides=('scilab')
 options=(!strip)
 source=("http://www.scilab.org/download/${pkgver}/scilab-${pkgver}.bin.linux-x86_64.tar.gz")
 sha256sums=("3ee1a7cf661d021ae26afc27b9fe50cb2d1c9c27911e5582e9d4337ebedb2c79")
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/share/applications"
-  sed -i "s|Exec=scilab-adv-cli|Exec=/opt/scilab/bin/scilab-adv-cli|" scilab-adv-cli.desktop
-  sed -i "s|Exec=scilab-cli|Exec=/opt/scilab/bin/scilab-cli|" scilab-cli.desktop
-  sed -i "s|Exec=scilab -f|Exec=/opt/scilab/bin/scilab -f %f|" scilab.desktop
-  sed -i "s|Exec=scinotes|Exec=/opt/scilab/bin/scinotes|" scinotes.desktop
-  sed -i "s|Exec=xcos|Exec=/opt/scilab/bin/xcos|" xcos.desktop
   cd "${srcdir}/${_pkgname}-${pkgver}"
   rm -R thirdparty/java
 }
 
 package() {
   install -d "${pkgdir}/opt"
+  mkdir -p "${pkgdir}/usr/bin"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/opt/${_pkgname}"
   ln -s "/usr/lib/jvm/java-8-openjdk/jre" "${pkgdir}/opt/${_pkgname}/thirdparty/java"
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -39,4 +35,7 @@ package() {
   install -Dm 644 share/applications/*.desktop "${pkgdir}/usr/share/applications"
   install -d "${pkgdir}/usr/share/icons"
   cp -a share/icons/hicolor "${pkgdir}/usr/share/icons"
+  for _executable in scilab scilab-cli scilab-adv-cli scinotes xcos; do
+    ln -s "${instdir}/opt/scilab/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
+  done
 }
