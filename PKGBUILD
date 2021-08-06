@@ -20,7 +20,7 @@
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=112123.7b877cab449
+pkgver=112334.fe966584e8f
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -28,7 +28,7 @@ url="https://upbge.org/"
 depends=("alembic" "embree" "libgl" "python" "python-numpy" "openjpeg2" "libharu" "potrace" "openxr"
          "ffmpeg" "fftw" "openal" "freetype2" "libxi" "openimageio" "opencolorio"
          "openvdb" "opencollada" "opensubdiv" "openshadinglanguage" "libtiff" "libpng" "openimagedenoise")
-makedepends=("git" "cmake" "boost" "mesa" "llvm")
+makedepends=("git" "cmake" "boost" "mesa" "llvm" "ninja")
 provides=("blender")
 conflicts=("blender")
 license=("GPL")
