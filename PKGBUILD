@@ -1,4 +1,5 @@
 # Maintainer:  Wez Furlong <wez at wezfurlong dot org>
+# Co-Maintainer: Bernat Gabor <gaborjbernat@gmail.com>
 
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
