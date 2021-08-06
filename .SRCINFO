@@ -1,14 +1,15 @@
 pkgbase = python-geojson
 	pkgdesc = Python bindings and utilities for GeoJSON
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frewsxcv/python-geojson
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	source = python-geojson-2.5.0.tar.gz::https://github.com/frewsxcv/python-geojson/archive/2.5.0.tar.gz
+	source = 0001-Remove-encoding-parameter-from-json.load-for-Python-.patch
 	sha1sums = e24040ec8efc582d2d3ef71b4e922ab5fe3b2bdd
+	sha1sums = fcb3e74597fe4858c95ab63c2d38b04f27e80516
 
 pkgname = python-geojson
-
