@@ -4,7 +4,7 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.100.r69.gfe06ee20
+pkgver=2.4.107.r6.g8d0fb9b3
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
@@ -16,7 +16,7 @@ url="http://dri.freedesktop.org/"
 provides=('lib32-libdrm')
 conflicts=('lib32-libdrm')
 
-source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
+source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
         COPYING)
 sha256sums=('SKIP'
             '9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93')

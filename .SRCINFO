@@ -1,6 +1,6 @@
 pkgbase = lib32-libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, git 32-bit version
-	pkgver = 2.4.100.r69.gfe06ee20
+	pkgver = 2.4.107.r6.g8d0fb9b3
 	pkgrel = 1
 	url = http://dri.freedesktop.org/
 	arch = x86_64
@@ -14,10 +14,9 @@ pkgbase = lib32-libdrm-git
 	depends = lib32-gcc-libs
 	provides = lib32-libdrm
 	conflicts = lib32-libdrm
-	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
+	source = libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git
 	source = COPYING
 	sha256sums = SKIP
 	sha256sums = 9631d4f694952e3e6ae5a05534c2e93e994e47d3413677a3a00e45c8cef6db93
 
 pkgname = lib32-libdrm-git
-
