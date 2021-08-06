@@ -1,16 +1,18 @@
 pkgbase = runebender-git
 	pkgdesc = A font editor written in Rust
-	pkgver = 0.0.0.r284.geb86482
+	pkgver = 0.0.0.r307.g07d182a
 	pkgrel = 1
 	url = https://github.com/linebender/runebender
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
 	makedepends = git
-	makedepends = rust
+	depends = atk
 	depends = cairo
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = pango
 	source = runebender-git::git+https://github.com/linebender/runebender.git
 	sha256sums = SKIP
 
 pkgname = runebender-git
-
