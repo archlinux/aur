@@ -10,7 +10,7 @@ makedepends=('rebar3' 'make')
 depends=('erlang')
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c23b8cbcc81e108eb5e784c97092c036974b4cc874cc6c4b6ad90b93ad6f7e94')
+sha256sums=('40a5324fc594fbf746a5b9cdf18899f2f03eae21d6c85f4cb251489a606a812c')
 
 build() {
   cd "$pkgname-$pkgver"
