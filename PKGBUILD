@@ -4,7 +4,7 @@
 # Contributor: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=libdart
-pkgver=6.11.1
+pkgver=6.11.0
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
