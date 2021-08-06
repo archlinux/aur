@@ -6,7 +6,7 @@ pkgbase=libcd
 pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd' 'lua53-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.14
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'pdflib-lite' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua53' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
@@ -30,6 +30,9 @@ prepare() {
     sed 's/LIBS += gdk_pixbuf-2.0 pango-1.0 gobject-2.0 gmodule-2.0 glib-2.0/LIBS += gdk_pixbuf-2.0 pango-1.0 harfbuzz gobject-2.0 gmodule-2.0 glib-2.0/' -i "$srcdir"/cd/tecmake.mak
     sed 's|STDINCS += $(GTK)/include/cairo $(GTK)/include/pango-1.0 $(GTK)/include/glib-2.0|STDINCS += $(GTK)/include/cairo $(GTK)/include/pango-1.0 $(GTK)/include/harfbuzz $(GTK)/include/glib-2.0|' -i "$srcdir"/cd/tecmake.mak
   fi
+
+  # patch to link to pdflib-lite correctly (AUR pdflib-lite is just named libpdf instead of libpdflib)
+  sed 's|LIBS += pdflib|LIBS += pdf|' -i "$srcdir"/cd/tecmake.mak
 }
 
 build() {

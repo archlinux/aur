@@ -1,7 +1,7 @@
 pkgbase = libcd
 	pkgdesc = Canvas Draw - 2D vector graphics library
 	pkgver = 5.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tecgraf.puc-rio.br/cd/
 	arch = i686
 	arch = x86_64
@@ -46,4 +46,3 @@ pkgname = lua52-cd
 pkgname = lua53-cd
 	pkgdesc = Lua (5.3) bindings for Canvas Draw library
 	depends = libcd
-
