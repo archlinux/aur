@@ -1,0 +1,20 @@
+pkgbase = abgate.lv2
+	pkgdesc = abGate is LV2 noise gate plugin for Linux.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/antanasbruzas/abGate
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = LGPL3
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = qt5-base
+	depends = gtkmm
+	depends = lv2
+	provides = abgate
+	conflicts = abgate
+	source = https://github.com/antanasbruzas/abGate/archive/refs/tags/v1.2.0.tar.gz
+	sha512sums = 18e24d21b07d86edd50df41e6679fcdf14d5124c64e6f03b829c68810a14dae6a0bde3aab4342368a29b2fefcc0ec7ec8b8f20624ee25935ed4b66b96b38b751
+
+pkgname = abgate.lv2
