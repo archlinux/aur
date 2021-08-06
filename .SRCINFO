@@ -1,6 +1,6 @@
 pkgbase = unity-editor-vrchat
 	pkgdesc = Allows building your Unity projects for VRChat
-	pkgver = 2018.4.20f1
+	pkgver = 2019.4.29f1
 	pkgrel = 1
 	epoch = 1
 	url = https://unity3d.com/
@@ -25,22 +25,21 @@ pkgbase = unity-editor-vrchat
 	optdepends = jq: needed for UnityHub integration helpers --register/--deregister
 	conflicts = unity-editor
 	conflicts = unity-editor-windows
-	noextract = 2018.4.20f1-android.pkg
+	noextract = 2019.4.29f1-android.pkg
 	options = !strip
-	source = 2018.4.20f1.tar.xz::https://download.unity3d.com/download_unity/008688490035/LinuxEditorInstaller/Unity.tar.xz
-	source = 2018.4.20f1-win.pkg::https://download.unity3d.com/download_unity/008688490035/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2018.4.20f1.pkg
-	source = 2018.4.20f1-android.pkg::https://download.unity3d.com/download_unity/008688490035/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.4.20f1.pkg
+	source = 2019.4.29f1.tar.xz::https://download.unity3d.com/download_unity/0eeae20b1d82/LinuxEditorInstaller/Unity.tar.xz
+	source = 2019.4.29f1-win.pkg::https://download.unity3d.com/download_unity/0eeae20b1d82/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.4.29f1.pkg
+	source = 2019.4.29f1-android.pkg::https://download.unity3d.com/download_unity/0eeae20b1d82/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2019.4.29f1.pkg
 	source = unity-editor-vrchat
 	source = unity-editor-vrchat.desktop
 	source = unity-editor-vrchat-icon.png
 	source = eula.txt
-	md5sums = d1651b6b0a6d639253e8d149c4bc6b6a
-	md5sums = 2af219c4a5f6a9679af9ae43a86d7dfb
-	md5sums = 5272bd150acd2d9a412118978407d885
+	md5sums = d8d19397849073a6e15a3be912ac3acb
+	md5sums = b91bdc8972c6ec30b50e7eb62d59dc53
+	md5sums = ffad9b886d2941bcfcf4ec12caf14c90
 	md5sums = a8fe2e41f06489dd09f651b08ec87125
 	md5sums = ee60f0d4d3c3fa9e0a52da085b1f3be6
 	md5sums = 723f9e556821810682a6d1f4be540a74
 	md5sums = 24f6741eba3d591a0761f3c92e3cc1f7
 
 pkgname = unity-editor-vrchat
-
