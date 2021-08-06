@@ -1,7 +1,7 @@
 pkgbase = python-ouster-sdk
 	pkgdesc = Ouster sensor SDK
-	pkgver = 0.2.1
-	pkgrel = 2
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://pypi.org/project/ouster-sdk/
 	arch = any
 	license = BSD-3-Clause License
@@ -11,9 +11,10 @@ pkgbase = python-ouster-sdk
 	makedepends = jsoncpp
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = python-wheel
 	depends = python
 	depends = python-typing_extensions
-	source = https://files.pythonhosted.org/packages/source/o/ouster-sdk/ouster-sdk-0.2.1.tar.gz
-	sha256sums = 4002bd62303ad13d085919d8c5f4ad4e4c74bc1ae3baa365a3d87c28da3bdfd9
+	source = https://files.pythonhosted.org/packages/source/o/ouster-sdk/ouster-sdk-0.2.2.tar.gz
+	sha256sums = a983065fc28e8f572f395a0f502b28969d585427554531c8be94d57cfa338117
 
 pkgname = python-ouster-sdk
