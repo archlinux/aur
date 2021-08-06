@@ -1,13 +1,14 @@
 pkgbase = cmus-notify
 	pkgdesc = A notification script for cmus
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AntoineGagne/cmus-notify
 	arch = any
 	license = MIT
 	depends = python>=3.5
 	depends = python-notify2
 	depends = libnotify
+	depends = python-pip
 	source = https://pypi.io/packages/source/c/cmus-notify/cmus-notify-1.4.1.tar.gz
 	sha256sums = 8ac845a6596c259286802fd983c34ab3cee9345b5892cf936448e43fc7bd8380
 
