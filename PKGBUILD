@@ -12,8 +12,13 @@ makedepends=('python-setuptools')
 source=("mvt-${pkgver}.tar.gz"::"https://github.com/mvt-project/mvt/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('39027b419bb07634d1c31a57264f2fbba2d0f9b446ee588a5be42431bb85504fa676c5d087b252f23351c06e9090173a856895df0311116649db26c82cf5c0a7')
 
+build() {
+    cd "mvt-${pkgver}"
+    python setup.py build
+}
+
 package() {
     cd "mvt-${pkgver}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python setup.py install --root="$pkgdir" --skip-build --optimize=1
 }
