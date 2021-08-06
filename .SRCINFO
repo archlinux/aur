@@ -1,14 +1,16 @@
 pkgbase = google-java-format
 	pkgdesc = Reformats Java source code to comply with Google Java Style
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/google-java-format
 	arch = any
 	license = Apache
 	depends = java-runtime
 	source = https://github.com/google/google-java-format/releases/download/v1.11.0/google-java-format-1.11.0-all-deps.jar
 	source = google-java-format
+	source = https://raw.githubusercontent.com/google/google-java-format/master/LICENSE
 	b2sums = 7050e9a2a13fc38f748c28a90b77492f439dcf9543678d59e2f7d71bd35cf15a43db9487b60661b5f3c424f21df175b954b8860a24176e708540b10f6c81cd36
-	b2sums = 485e66103e4cea678b009d98600a97bb896ff6c32b390b69cd643296433c63c871b387aebac4a795c478282cb6ac3ced49d05f8ecc5f08e8cae170930891bf0f
+	b2sums = d319ec34e96625bed496ba998e8408eaf49683a4312e37568abc39236c527b4daca21c3361e109964596c2e9387d5d69f26a7b59eb6ea4cd999c2be3bfcf3642
+	b2sums = e2f774f14d1d661b483d40d6261bb8b56962c182da6846987c6dea37d099bcb381d2bea2b2de6ba6ead4eb2e3520676540a85600b1fbf4ba39157bd1c24c82a2
 
 pkgname = google-java-format

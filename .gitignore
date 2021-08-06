@@ -2,4 +2,7 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+<<<<<<< HEAD
 !google-java-format
+=======
+>>>>>>> e03d6187dcf89eb70262df7c3670b533ad68fd3f
