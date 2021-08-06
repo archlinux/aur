@@ -16,8 +16,8 @@ pkgbase = worldedit-git
 	depends = pacman>5
 	depends = git
 	depends = sudo
+	depends = clang
 	optdepends = yay
-	optdepends = yay-bin
 	provides = worldedit
 	conflicts = worldedit
 	source = worldedit::git+https://github.com/kdb424/worldedit.git#branch=main
