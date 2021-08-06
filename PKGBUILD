@@ -1,6 +1,6 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=fsleyes
-pkgver=1.0.15
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="FSLeyes is the FSL image viewer"
 arch=('any')
@@ -11,14 +11,16 @@ depends=('python' 'python-setuptools' 'python-sphinx' 'python-six' 'python-numpy
 optdepends=('fsl: Enable loading standard images and advanced features (highly recommended)'
             'python-wxnatpy: Enable loading overlay from XNAT'
             'python-indexed-gzip: Fast random access of gzipped image files'
-            'python-rtree')
+            'python-rtree'
+            'jupyter-notebook'
+            'python-trimesh')
 makedepends=()
 provides=()
 conflicts=()
 replaces=()
 source=("https://git.fmrib.ox.ac.uk/fsl/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('d0c3de973c0e0e6224f96bb179f97141e68e80d7325c5af74794a977587f8b11'
+sha256sums=('88288b81d996b56a52a46ed496b1797cdbb7b447d80b70270f36f6c12eef1cce'
             '6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb')
 
 package() {
