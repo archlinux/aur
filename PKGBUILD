@@ -1,8 +1,8 @@
 # Maintainer: Jelle van der Waa <jelle@archlinux.org
 
 pkgname=taskell
-pkgver=1.11.1
-pkgrel=16
+pkgver=1.11.2
+pkgrel=1
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://hackage.haskell.org/package/$pkgname"
 depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick haskell-config-ini haskell-file-embed haskell-fold-debounce haskell-http-client haskell-http-conduit haskell-http-types haskell-lens haskell-tz haskell-vty haskell-classy-prelude)
 makedepends=(ghc haskell-classy-prelude haskell-raw-strings-qq haskell-tasty haskell-tasty-discover haskell-tasty-expected-failure haskell-tasty-hunit)
 source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('297d612488fda32284d339eda16249f18aeaba727bca53d9b3d899868ed73b430281502891e6f69210feb12c9c8c7df1a75f353e572edad61f79200a4a4deb02')
+sha512sums=('433c81a368c5a63e63c466c1742109108701f8a0c03a95dcb0bbd47f83f4f894ed669a4ef92d626f16ffa1b498796d91a1bd96741070c8ee18d9670289f73d6e')
 
 build() {
   cd $pkgname-$pkgver
