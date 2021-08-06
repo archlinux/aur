@@ -1,15 +1,16 @@
 pkgbase = python-lapsolver
 	pkgdesc = Fast linear assignment problem solvers
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheind/py-lapsolver
 	arch = any
 	license = MIT
+	checkdepends = python-numpy
+	checkdepends = python-pytest-runner
+	makedepends = cmake
+	makedepends = python-setuptools
 	depends = python
-	depends = python-setuptools
-	depends = cmake
 	source = https://files.pythonhosted.org/packages/source/l/lapsolver/lapsolver-1.1.0.tar.gz
 	sha256sums = e438689e528f18b801d996f10d158554050618a89ffff6b562a97ba41cfd37ed
 
 pkgname = python-lapsolver
-
