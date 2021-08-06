@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/coc.nvim"
-    git describe release --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe master --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
