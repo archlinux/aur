@@ -8,6 +8,6 @@ pkgbase = rralle-bin
 	depends = erlang
 	provides = rralle
 	source = rralle-bin-0.1.2::https://github.com/q60/rralle/releases/download/0.1.2/rralle
-	sha256sums = cfa060b81e7980466fb0e1feebe9a9be281fe0a74f78ad115622369c92cad36b
+	sha256sums = 0991f450d81317ad2fb382bab5e7b7d685bae5cbf76f9d75a345f4b0ab9faf40
 
 pkgname = rralle-bin

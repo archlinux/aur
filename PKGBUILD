@@ -9,7 +9,7 @@ license=('MIT')
 depends=('erlang')
 provides=('rralle')
 source=("$pkgname-$pkgver::$url/releases/download/$pkgver/rralle")
-sha256sums=('cfa060b81e7980466fb0e1feebe9a9be281fe0a74f78ad115622369c92cad36b')
+sha256sums=('0991f450d81317ad2fb382bab5e7b7d685bae5cbf76f9d75a345f4b0ab9faf40')
 
 package() {
   install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/rralle"
