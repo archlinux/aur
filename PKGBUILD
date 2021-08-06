@@ -63,7 +63,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb-autogroup
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -85,7 +85,7 @@ source=(
     "${_patchsource}/winesync/5.13-winesync.patch"
     "${_patchsource}/zen-patches/0001-zen-patches.patch"
     "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-    "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+    "${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
     "${_patchsource}/block-patches-v2/0001-block-patches.patch"
     "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
     "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
@@ -538,14 +538,14 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'c21e43334165513b131796d4270aefc6'
          'db27e837fe0e94c39ee8d0e663a33c3d'
          '6d8a2a8f499dd9643ca4af2254389ce7'
-         '43407e834830af9d260705fdd4422689'
+         '078da517ec2d54283af81d7da3af671a'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
          '3ec9a8784a9e73462def2e9c33de9a1e'
          '9573b92353399343db8a691c9b208300'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '31c897f53b91f98532321cd24928c0d7'
-         'daeacee8fcde31908f90b89dc4b54126'
+         'c34f3bfc52d936d896df90d458f95235'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
