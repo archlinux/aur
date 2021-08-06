@@ -63,6 +63,7 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
+## It will select by itself
 if [ -z ${_subarch+x} ]; then
   cpu=`grep vendor_id /proc/cpuinfo | awk -F: '{print $2}' | tail -1`
   if [ $cpu == 'GenuineIntel' ]; then
@@ -175,6 +176,9 @@ prepare() {
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
+
+  scripts/config --enable CONFIG_FTRACE
+  scripts/config --enable CONFIG_FTRACE_SYSCALLS
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
