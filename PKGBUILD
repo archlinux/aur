@@ -4,7 +4,7 @@ _pkgname=dropbear-openrc
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 pkgver=2020.81.r0
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenRC init script and conf.d file for dropbear.'
 url='http://pkgs.alpinelinux.org/package/edge/main/x86/dropbear-openrc'
 license=('custom: dropbear')
@@ -19,8 +19,8 @@ conflicts=("${_pkgname}")
 backup=('etc/conf.d/dropbear')
 options=('!emptydirs')
 source=(
-  "dropbear.initd::https://git.alpinelinux.org/cgit/aports/plain/main/dropbear/dropbear.initd"
-  "dropbear.confd::https://git.alpinelinux.org/cgit/aports/plain/main/dropbear/dropbear.confd"
+  "dropbear.initd::http://git.alpinelinux.org/aports/plain/main/dropbear/dropbear.initd"
+  "dropbear.confd::http://git.alpinelinux.org/aports/plain/main/dropbear/dropbear.confd"
   "LICENSE::https://github.com/mkj/dropbear/raw/master/LICENSE"
 )
 sha256sums=(
