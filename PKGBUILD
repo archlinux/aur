@@ -3,7 +3,7 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 
 pkgname=mrtg
-pkgver=2.17.7
+pkgver=2.17.8
 pkgrel=1
 pkgdesc="Multi Router Traffic Grapher."
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="http://oss.oetiker.ch/mrtg/"
 license=('GPL')
 depends=('gd' 'perl')
 source=("http://oss.oetiker.ch/mrtg/pub/${pkgname}-${pkgver}.tar.gz")
-md5sums=('eada3870c0419e425299401486600d95')
+md5sums=('f9826ea660866d219701b36d811fb24d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

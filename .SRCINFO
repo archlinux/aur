@@ -1,14 +1,13 @@
 pkgbase = mrtg
 	pkgdesc = Multi Router Traffic Grapher.
-	pkgver = 2.17.7
+	pkgver = 2.17.8
 	pkgrel = 1
 	url = http://oss.oetiker.ch/mrtg/
 	arch = x86_64
 	license = GPL
 	depends = gd
 	depends = perl
-	source = http://oss.oetiker.ch/mrtg/pub/mrtg-2.17.7.tar.gz
-	md5sums = eada3870c0419e425299401486600d95
+	source = http://oss.oetiker.ch/mrtg/pub/mrtg-2.17.8.tar.gz
+	md5sums = f9826ea660866d219701b36d811fb24d
 
 pkgname = mrtg
-
