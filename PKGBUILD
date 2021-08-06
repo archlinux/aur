@@ -6,6 +6,7 @@ _pkgver=3.0.16-3
 pkgrel=6
 pkgdesc="The plugins for VLC library"
 arch=('x86_64')
+depends=('libvlc')
 url='https://www.videolan.org/LibVLC/'
 license=('LGPL2.1')
 source=("https://archive.archlinux.org/packages/v/${_pkgname}/${_pkgname}-${_pkgver}-x86_64.pkg.tar.zst")
