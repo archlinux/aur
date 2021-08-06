@@ -4,7 +4,7 @@
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.100.r68.g8a73372e
+pkgver=2.4.107.r6.g8d0fb9b3
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
@@ -16,7 +16,9 @@ url="http://dri.freedesktop.org/"
 provides=('libdrm')
 conflicts=('libdrm')
 
-source=('libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master'
+# source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
+#        COPYING)
+ source=('libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git'
         COPYING)
 sha512sums=('SKIP'
             'b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660')
