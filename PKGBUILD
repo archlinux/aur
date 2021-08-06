@@ -202,6 +202,8 @@ prepare() {
 
   scripts/config --disable CONFIG_DEFAULT_SECURITY_APPARMOR
   scripts/config --enable CONFIG_DEFAULT_SECURITY_DAC
+  scripts/config --enable CONFIG_FTRACE
+  scripts/config --enable CONFIG_FTRACE_SYSCALLS
 
   scripts/config --disable CONFIG_KVM_WERROR
   scripts/config --disable CONFIG_X86_X32
