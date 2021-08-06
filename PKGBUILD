@@ -1,6 +1,6 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
 pkgname=encodarr-controller
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Server software for encoding media files to a user-defined format."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MPL2")
 depends=("glibc" "mediainfo")
 makedepends=("go")
 source=("encodarr-$pkgver.tar.gz"::"https://github.com/BrenekH/encodarr/archive/$pkgver.tar.gz")
-sha256sums=('9d8a873b00738640e7fe0eebfad070336873ed81be446292b3f2bf8b876f6a7e')
+sha256sums=('985d13b26a82222c7eeaf3aae4f496f5cf29eafc84fabe5aa63dc45a5ef58a63')
 
 build() {
 	cd "encodarr-$pkgver/controller"
@@ -28,8 +28,8 @@ build() {
 	  -buildmode=pie \
 	  -mod=readonly \
 	  -modcacherw \
-	  -ldflags "-X 'github.com/BrenekH/encodarr/controller/options.Version=$pkgver' -linkmode external -extldflags \"${LDFLAGS}\"" \
-	  -o encodarr-controller main.go
+	  -ldflags "-X 'github.com/BrenekH/encodarr/controller/globals.Version=$pkgver' -linkmode external -extldflags \"${LDFLAGS}\"" \
+	  -o encodarr-controller cmd/main.go
 
 	# Clean up Go caches
 	go clean -modcache
