@@ -1,0 +1,14 @@
+pkgbase = tbd
+	pkgdesc = A command-line tool to create Text-Based Application Programming Interface (TAPI) files from existing binaries
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/inoahdev/tbd
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = MIT
+	source = https://github.com/inoahdev/tbd/archive/refs/tags/2.2.tar.gz
+	sha256sums = ca1da3da0388048d14d941500e47f9ead6e31933666b3455a500e11720a014f3
+
+pkgname = tbd
