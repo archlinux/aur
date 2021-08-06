@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=cdhist
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="Linux shell cd history"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('56d65d40a361abc62c7cc24eb4894449')
+md5sums=('e7ba2c820d37e7c5ad6d2181b8cf0430')
 
 package() {
   cd "$pkgname-$pkgver"
