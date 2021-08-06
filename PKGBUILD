@@ -26,7 +26,7 @@ build() {
     sed -i "s|/usr|/usr/${_arch}|g" configure.ac m4/*.m4
     autoreconf -vfi
     ./autogen.sh 
-    LDFLAGS="-lssp -lssl -lcrypt32 -lmariadb" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
+    LDFLAGS="-lssp -lssl -lcrypt32 -lmariadbclient" ${_arch}-configure --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
       --with-mysql --with-curl --with-hdf5 --with-perl --with-geos \
       --with-png --with-poppler --with-spatialite --with-openjpeg \
       --without-python --without-perl \
