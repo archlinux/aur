@@ -1,36 +1,47 @@
 # Maintainer:  Wez Furlong <wez at wezfurlong dot org>
 
-pkgname=('wezterm-git')
+pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=5
-arch=('x86_64' 'i686')
+pkgver=20210806.095157.40bb5ddb
+pkgrel=1
+arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
-license=('MIT')
+license=("MIT")
 depends=(
-  'dbus'
-  'fontconfig'
-  'hicolor-icon-theme'
-  'libx11'
-  'libxkbcommon-x11'
-  'wayland'
-  'xcb-util-image'
-  'xcb-util-keysyms'
-  'xcb-util-wm'
+  "dbus"
+  "fontconfig"
+  "hicolor-icon-theme"
+  "libx11"
+  "libxkbcommon-x11"
+  "wayland"
+  "xcb-util-image"
+  "xcb-util-keysyms"
+  "xcb-util-wm"
 )
-makedepends=('rust' 'cargo' 'cmake' 'git' 'pkgconf' 'python')
-source=("git+https://github.com/wez/wezterm.git")
-sha256sums=('SKIP')
-conflicts=('wezterm-bin' 'wezterm-nightly-bin')
+makedepends=("rust" "cargo" "cmake" "git" "pkgconf" "python")
+source=(
+  "wezterm::git+https://github.com/wez/wezterm.git"
+  "harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
+  "libpng::git+https://github.com/glennrp/libpng.git"
+  "zlib::git+https://github.com/madler/zlib.git"
+  "freetype2::git+https://github.com/wez/freetype2.git"
+)
+sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
+conflicts=("wezterm-bin" "wezterm-nightly-bin")
 
 prepare() {
   cd $srcdir/wezterm
-  git submodule update --init --recursive
+  git submodule init
+  git config -f .gitmodules "submodule.harfbuzz/harfbuzz.url" $srcdir/harfbuzz
+  git config -f .gitmodules "submodule.freetype/libpng.url" $srcdir/libpng
+  git config -f .gitmodules "submodule.deps/freetype/zlib.url" $srcdir/zlib
+  git config -f .gitmodules "submodule.freetype2.url" $srcdir/freetype2
+  git submodule update
 }
 
 pkgver() {
   cd $srcdir/wezterm
-  git describe --tags | tr - .
+  git show -s "--format=%cd-%h" "--date=format:%Y%m%d-%H%M%S" | tr - .
 }
 
 build() {
