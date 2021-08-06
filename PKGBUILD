@@ -4,7 +4,7 @@
 # Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 
 pkgname=lib32-spirv-tools
-pkgver=2021.1
+pkgver=2021.2
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
