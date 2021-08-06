@@ -1,7 +1,7 @@
 pkgbase = dust-git
 	pkgdesc = A more intuitive version of du in rust
 	pkgver = 0.6.2.r8.gca0a93f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bootandy/dust
 	arch = x86_64
 	arch = i686

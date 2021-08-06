@@ -4,7 +4,7 @@
 pkgname=dust-git
 _pkgname=${pkgname%-git}
 pkgver=0.6.2.r8.gca0a93f
-pkgrel=1
+pkgrel=2
 pkgdesc="A more intuitive version of du in rust"
 arch=('x86_64' 'i686')
 url="https://github.com/bootandy/dust"
@@ -28,6 +28,8 @@ pkgver() {
 
 build() {
     cd $_pkgname
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
