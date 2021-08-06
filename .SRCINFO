@@ -1,19 +1,17 @@
 pkgbase = lib32-libbluray
 	pkgdesc = Library to access Blu-Ray disks for video playback (32 bit)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = http://www.videolan.org/developers/libbluray.html
+	url = https://www.videolan.org/developers/libbluray.html
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = gcc-multilib
 	depends = libbluray
 	depends = lib32-fontconfig
-	depends = lib32-glibc
 	depends = lib32-freetype2
+	depends = lib32-glibc
 	depends = lib32-libxml2
 	provides = libbluray.so
-	source = ftp://ftp.videolan.org/pub/videolan/libbluray/1.2.0/libbluray-1.2.0.tar.bz2
-	sha512sums = d10413b6b86ff2d2e7c4b0103546f2142727cc5209ddb7b227aa74e27384f2e0b9abee37bf8ccc5b0cdfcaeebfb0669cf20903a247df278a8ad6dbd27469d324
+	source = https://download.videolan.org/pub/videolan/libbluray/1.3.0/libbluray-1.3.0.tar.bz2
+	sha256sums = e2dbaf99e84e0a9725f4985bcb85d41e52c2261cc651d8884b1b790b5ef016f9
 
 pkgname = lib32-libbluray
-
