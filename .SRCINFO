@@ -1,7 +1,7 @@
 pkgbase = python-compreffor
 	pkgdesc = A CFF table suroutinizer for FontTools
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/googlefonts/compreffor
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = python-compreffor
 	makedepends = python-setuptools
 	depends = python
 	depends = python-fonttools
-	source = https://files.pythonhosted.org/packages/source/c/compreffor/compreffor-0.5.0.zip
-	sha256sums = b804999e0c256094e28a9cbb9306f6031b7cf6884bbb98fd44ad70eed6c4c2fd
+	source = https://files.pythonhosted.org/packages/source/c/compreffor/compreffor-0.5.1.zip
+	sha256sums = 5ee371aea1ba2db13884e2dec9a7bd2a51f87a9d06085e9321f58e5bde94c6c3
 
 pkgname = python-compreffor
