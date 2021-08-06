@@ -1,9 +1,0 @@
-{
-    "platforms": [
-        "linux-ia32"
-    ],
-    "electronVersion": "9.2.1",
-    "installable": [
-        "linux"
-    ]
-}
