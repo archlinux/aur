@@ -9,7 +9,7 @@ pkgbase = libvlc-plugins
 	md5sums = da19f26ccd6a67c516379568403f083f
 
 pkgname = libvlc-plugins
-	depends = libvlc-plugins
+	depends = libvlc
 	provides = libvlc-plugins=5.6.0
 
 
