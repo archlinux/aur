@@ -8,8 +8,8 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=455.50.14
-pkgrel=2
+pkgver=470.56.05
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -22,7 +22,7 @@ source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linu
         'nvidia-vulkan-utils.sysusers'
         'kernel-5.11.patch'
         'kernel-5.12.patch')
-sha512sums=('f8d24f70ea6e8d6078ef366539988022a9ef0ba0fde6c51233bf3cf860731ec2c07d3ac1013d0c0e9e4aa2c642999f58cd43546fa2c2c72325e02af2a75751e1'
+sha512sums=('a63f5c86f46cf0678bb327aa662548b82218b63ea6ee9552ba36d5b603446cb62c8fadc0f74f62dbba6c5a130496f5a78a72ac458f05f0414f49192a4482d76b'
             'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             '6409fdc44f441be1bdf30bd78de35f49ed3970a9496e265ac9f45db9760bdcb0736ecb5a7342e97b57c62c0f69b403f52e7ca69b2360e64a559a44fe0a809896'
@@ -43,8 +43,8 @@ prepare() {
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-    patch -Np1 -i ../kernel-5.11.patch
-    patch -Np1 -i ../kernel-5.12.patch
+    #patch -Np1 -i ../kernel-5.11.patch
+    #patch -Np1 -i ../kernel-5.12.patch
 
     # Fixing regex pattern for Module.symvers
     sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
@@ -193,7 +193,7 @@ package_nvidia-vulkan-utils() {
     # raytracing
     install -D -m755 "libnvoptix.so.${pkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${pkgver}"
     install -D -m755 "libnvidia-rtcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${pkgver}"
-    install -D -m755 "libnvidia-cbl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cbl.so.${pkgver}"
+    #install -D -m755 "libnvidia-cbl.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-cbl.so.${pkgver}"
 
     # Optical Flow
     install -D -m755 "libnvidia-opticalflow.so.${pkgver}" -t "${pkgdir}/usr/lib"
@@ -252,11 +252,11 @@ package_nvidia-vulkan-utils() {
     ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-vulkan-utils"
 
     # new power management support
-    install -D -m644 nvidia-suspend.service "${pkgdir}/usr/lib/systemd/system/nvidia-suspend.service"
-    install -D -m644 nvidia-hibernate.service "${pkgdir}/usr/lib/systemd/system/nvidia-hibernate.service"
-    install -D -m644 nvidia-resume.service "${pkgdir}/usr/lib/systemd/system/nvidia-resume.service"
-    install -D -m755 nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
-    install -D -m755 nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
+    install -D -m644 systemd/system/nvidia-suspend.service "${pkgdir}/usr/lib/systemd/system/nvidia-suspend.service"
+    install -D -m644 systemd/system/nvidia-hibernate.service "${pkgdir}/usr/lib/systemd/system/nvidia-hibernate.service"
+    install -D -m644 systemd/system/nvidia-resume.service "${pkgdir}/usr/lib/systemd/system/nvidia-resume.service"
+    install -D -m755 systemd/system-sleep/nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
+    install -D -m755 systemd/nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
 
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
