@@ -1,8 +1,8 @@
 pkgbase = avdl
 	pkgdesc = Abstract video-game development language compiler
 	pkgver = 0.0.5
-	pkgrel = 1
-	url = https://notabug.org/tomtsagk/avdl
+	pkgrel = 2
+	url = https://darkdimension.org/avdl.html
 	arch = x86_64
 	license = GPL3
 	depends = sdl2

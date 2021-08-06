@@ -2,9 +2,9 @@
 pkgname=avdl 
 pkgdesc="Abstract video-game development language compiler"
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
-url="https://notabug.org/tomtsagk/$pkgname"
+url="https://darkdimension.org/avdl.html"
 license=('GPL3')
 depends=('sdl2' 'sdl2_mixer' 'freeglut' 'glew')
 source=($pkgname-$pkgver.tar.gz::https://notabug.org/tomtsagk/$pkgname/archive/v$pkgver.tar.gz)
