@@ -1,0 +1,19 @@
+pkgbase = lean4-git
+	pkgdesc = An interactive theorem prover
+	pkgver = r25881.g81400109f3
+	pkgrel = 1
+	url = https://leanprover.github.io/
+	arch = i686
+	arch = x86_64
+	license = apache
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gmp
+	provides = lean4
+	conflicts = lean4
+	options = staticlibs
+	source = git+https://github.com/leanprover/lean4.git
+	sha256sums = SKIP
+
+pkgname = lean4-git
