@@ -7,6 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/webmaild start
 ExecStop=/usr/sbin/webmaild stop
+ExecReload=/usr/sbin/webmaild reload
 PIDFile=/run/courier/sqwebmaild.pid
 
 [Install]

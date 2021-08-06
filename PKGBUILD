@@ -11,7 +11,7 @@
 
 pkgname=courier-mta
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -40,18 +40,18 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	courier-courierfilter.service
 	courier-mta.conf)
 sha1sums=('e79c4529138ccdbe4c58530f4d13ccd8597faa5d'
-          '9feaa269795a85c1464c104d9268fb266ad1a666'
-          '0344ac948b189cae73d86f4565e40847c44772c9'
-          '920bd35afc0bf6e6ba5cf7b309210be4d2c76e18'
-          '47c289e743d1d513b7181e04bc8cb222ba7d7119'
-          '0c57caa214c3e4da976162e08fd4f575f2976d94'
-          '6cb5d9a472ff374089b0046362db899ffa4379a2'
-          '86a07e4deddca5c1b3d17d2bd59074781a93711a'
-          '20e07d4995d6028ef0a99333b31cc53d202ee6e9'
+          '68012617edb5d82a99245bd7a7e319d88580e110'
+          '8400fc2538aebbb68933eac3c4d82b4303c61315'
+          'c52f436744307d3777a852cfaa85b4ff6345f4a4'
+          '54ebc3276a51d8a3c28d1cfcd537df913f0d014a'
+          '4e4206c214efd344a31e49b66a227f62c0a3b258'
+          '54a120ea0db0162d841588725502a2587d47c6a2'
+          '9f380f4f80672cd70d5bdeed4d6a1ee9f24c5729'
+          '5227755a96f373121f2d94895a0753285d79a5d6'
           'feb094c689a0c37c68f3b0c7e2b88eb5d572209f'
           '7c6e687d1cefe3139274b39c659351a503a3adb3'
-          '7f4dd31cab51636983966d7c97df5e384b0ca3c1'
-          '24d07f37ba5150b08f68dc73c0a5e53ae50ee9d5'
+          '1b382c3d952c1734adc9e7dd1ea52f9127bddf49'
+          '94bff6926f312a015ce4156d4d9b62fca45b41b1'
           'ba376789c8c5db6a709d2c4657b5bcf090417221')
 
 build() {
@@ -125,7 +125,10 @@ package() {
 
   # install the imapd binary as /usr/lib/courier/courierimapd and modify usr/share scripts.
   # courier-mta by default installs usr/bin/imapd as the binary, usr/share/imapd as script file and usr/sbin/imapd as link to /usr/share/imapd
-  # hence the binary gets overwritten by the link because Arch bin and sbin are same location
+  # because Arch bin and sbin are same location the binary would be overwritten by the link
   install -m 755 "${srcdir}/courier-${pkgver}/courier/imapd" "${pkgdir}/usr/lib/courier/courierimapd"
   sed -i 's/\/usr\/bin\/imapd/\/usr\/lib\/courier\/courierimapd/' "${pkgdir}/usr/share/imapd" "${pkgdir}/usr/share/imapd-ssl"
+
+  # patch just for ths version - in anticipation of it being added to official courier release shortly.
+  sed -i '76 a restart)\n\t/usr/bin/courierlogger -pid=$SSLPIDFILE -restart\n\t;;' "${pkgdir}/usr/share/imapd-ssl"
 }

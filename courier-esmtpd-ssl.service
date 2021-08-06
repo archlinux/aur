@@ -7,6 +7,7 @@ After=authdaemond.service courier-courierfilter.service
 Type=forking
 ExecStart=/usr/sbin/esmtpd-ssl start
 ExecStop=/usr/sbin/esmtpd-ssl stop
+ExecReload=/usr/sbin/esmtpd-ssl restart
 PIDFile=/run/courier/esmtpd-ssl.pid
 
 [Install]

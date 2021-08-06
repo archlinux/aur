@@ -7,6 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/imapd-ssl start
 ExecStop=/usr/sbin/imapd-ssl stop
+ExecReload=/usr/sbin/imapd-ssl restart
 PIDFile=/run/courier/imapd-ssl.pid
 
 [Install]

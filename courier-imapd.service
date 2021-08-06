@@ -7,6 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/imapd start
 ExecStop=/usr/sbin/imapd stop
+ExecReload=/usr/sbin/imapd restart
 PIDFile=/run/courier/imapd.pid
 
 [Install]

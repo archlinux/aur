@@ -7,6 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/esmtpd-msa start
 ExecStop=/usr/sbin/esmtpd-msa stop
+ExecReload=/usr/sbin/esmtpd-msa restart
 PIDFile=/run/courier/esmtpd-msa.pid
 
 [Install]

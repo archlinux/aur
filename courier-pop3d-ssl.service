@@ -7,6 +7,7 @@ After=authdaemond.service
 Type=forking
 ExecStart=/usr/sbin/pop3d-ssl start
 ExecStop=/usr/sbin/pop3d-ssl stop
+ExecReload=/usr/sbin/pop3d-ssl restart
 PIDFile=/run/courier/pop3d-ssl.pid
 
 [Install]

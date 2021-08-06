@@ -5,6 +5,7 @@ Description=Courier filter Daemon
 Type=forking
 ExecStart=/usr/sbin/courierfilter start
 ExecStop=/usr/sbin/courierfilter stop
+ExecReload=/usr/sbin/courierfilter restart
 PIDFile=/run/courier/courierfilter.pid
 
 [Install]
