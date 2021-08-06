@@ -3,12 +3,12 @@
 
 pkgname=pg_activity
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
 url="https://github.com/dalibo/pg_activity/"
 license=('BSD')
-depends=('python' 'python-psutil'  'python-psycopg2' 'python-pytest' 'python-blessed' 'python-humanize' )
+depends=('python>=3.6' 'python-psutil>=2.0.0'  'python-psycopg2>=2.8' 'python-pytest' 'python-blessed' 'python-humanize' )
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.zip")
