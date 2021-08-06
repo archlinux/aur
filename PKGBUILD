@@ -9,10 +9,10 @@ pkgdesc="A LaTeX template for printable academic documents."
 
 arch=('any')
 license=('GPL-2.0')
-url="https://github.com/Groctel/aqademia"
+url="https://gitlab.com/Groctel/aqademia"
 
-source=("https://github.com/Groctel/aqademia/archive/refs/heads/main.zip")
-sha512sums=('50326f4cee69f7def7e4eeddb5b3ae56c922549be859f998e4277aa79bc3cfa72817200f560f8cca1d985348436dfba6b143204d45bec607cb53fab5ef803fa9')
+source=("$url/-/archive/main/aqademia-main.zip")
+sha512sums=('4f644217a4fca8446a71ee72427d8e70e2d07b07d9606d51eb1ba14f308965b874e971d5002c73ea57a45fd6c2ae60ae209973657e14e5f984949398210972c0')
 
 depends=('texlive-core')
 
