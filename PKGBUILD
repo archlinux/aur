@@ -2,7 +2,7 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 
 pkgname=pg_activity
-pkgver=2.1.5
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
@@ -12,11 +12,11 @@ depends=('python' 'python-psutil'  'python-psycopg2' 'python-pytest' 'python-ble
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.zip")
-md5sums=('7d20e610532a7acef76bf0bfc962d6f2')
+md5sums=('51c4c482908b2608e81effd402b81ffd')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --with-man
+  python setup.py install --root="${pkgdir}" --optimize=1
 
   # install LICENSEfile
   install -D -m 0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
