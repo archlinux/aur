@@ -1,0 +1,10 @@
+[Unit]
+Description=Daemon to start mpv on command
+# Documentation=man:
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/play-with-mpv
+
+[Install]
+WantedBy=graphical.target
