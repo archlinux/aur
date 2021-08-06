@@ -1,0 +1,15 @@
+pkgbase = libvlc
+	pkgdesc = The plugins for VLC library
+	pkgver = 5.6.0
+	pkgrel = 5
+	url = https://www.videolan.org/LibVLC/
+	arch = x86_64
+	license = LGPL2.1
+	source = https://archive.archlinux.org/packages/v/vlc/vlc-3.0.16-3-x86_64.pkg.tar.zst
+	md5sums = da19f26ccd6a67c516379568403f083f
+
+pkgname = libvlc-plugins
+	depends = libvlc-plugins
+	provides = libvlc-plugins=5.6.0
+
+
