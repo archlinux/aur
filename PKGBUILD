@@ -5,13 +5,13 @@
 
 pkgname=bootstrap-studio
 pkgver=5.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootstrap Studio is a powerful tool which web developers and designers use to create layouts and fully functional websites using the Bootstrap framework."
 arch=("x86_64")
 license=("custom")
 url="https://bootstrapstudio.io/"
 
-source=("https://bootstrapstudio.io/releases/desktop/${pkgver}/Bootstrap Studio.AppImage"
+source=("https://bootstrapstudio.io/releases/desktop/${pkgver}/Bootstrap%20Studio.AppImage"
 				"bstudio.desktop")
 sha256sums=("SKIP"
 						"SKIP")
