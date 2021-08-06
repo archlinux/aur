@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=supercollider-mi-ugens-git
 pkgver=r91.b2607b9
-pkgrel=2
+pkgrel=3
 pkgdesc="SuperCollider UGen versions of Mutable Instruments synthesizer modules"
 arch=('any')
 url="https://github.com/v7b1/mi-UGens"
@@ -10,7 +10,7 @@ groups=('pro-audio' 'supercollider-plugins' )
 depends=()
 makedepends=('git' 'cmake' 'gcc-libs' 'supercollider-headers-git')
 optdepends=()
-source=("$pkgname-$pkgver::git+$url.git")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 # These should work on all architectures (MiRipples does not build on arm)
@@ -21,12 +21,12 @@ _folders_full=("MiRipples")
 _folders_full+=("${_folders_limited[@]}")
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	# Get dependencies
 	git submodule update --init --recursive
@@ -68,7 +68,7 @@ package() {
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname/"
 	mkdir -p $DEST/Classes $DEST/HelpSource/Classes
 
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	for FILE in "${folders[@]}"
 	do

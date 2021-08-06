@@ -1,7 +1,7 @@
 pkgbase = supercollider-mi-ugens-git
 	pkgdesc = SuperCollider UGen versions of Mutable Instruments synthesizer modules
 	pkgver = r91.b2607b9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/v7b1/mi-UGens
 	arch = any
 	groups = pro-audio
@@ -11,8 +11,7 @@ pkgbase = supercollider-mi-ugens-git
 	makedepends = cmake
 	makedepends = gcc-libs
 	makedepends = supercollider-headers-git
-	source = supercollider-mi-ugens-git-r91.b2607b9::git+https://github.com/v7b1/mi-UGens.git
+	source = supercollider-mi-ugens-git::git+https://github.com/v7b1/mi-UGens.git
 	md5sums = SKIP
 
 pkgname = supercollider-mi-ugens-git
-
