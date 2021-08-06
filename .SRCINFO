@@ -1,6 +1,6 @@
 pkgbase = madx-git
 	pkgdesc = Accelerator Optics simulation code, git master version
-	pkgver = 5.07.00.r12.g09fb2ab1
+	pkgver = 5.07.00.r16.gb5f5014c
 	pkgrel = 1
 	url = http://cern.ch/mad
 	arch = i686
