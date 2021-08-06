@@ -1,6 +1,6 @@
 pkgbase = gping-git
 	pkgdesc = Ping, but with a graph
-	pkgver = 0.1.6.r9.g3179477
+	pkgver = 1.2.3.r4.ga95a678
 	pkgrel = 1
 	url = https://github.com/orf/gping
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = gping-git
 	sha256sums = SKIP
 
 pkgname = gping-git
-

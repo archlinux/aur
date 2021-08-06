@@ -1,7 +1,7 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=gping-git
-pkgver=0.1.6.r9.g3179477
+pkgver=1.2.3.r4.ga95a678
 pkgrel=1
 pkgdesc="Ping, but with a graph"
 arch=("x86_64")
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$pkgname"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/^\(gping-\)\?v\?//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
