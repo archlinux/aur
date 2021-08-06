@@ -1,26 +1,57 @@
 # Maintainer: fkobayashi <see name left ＠ 数学 (but in english) dot ubc.ca
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plom
 pkgver=0.5.16
-pkgrel=1
-pkgdesc="Paperless open marking."
-arch=('any')
-license=('AGPL3')
-url="https://gitlab.com/${pkgname}"
-depends=(python python-toml python-opencv python-lapsolver python-imutils python-jpegtran-cffi python-requests pyzbar python-aiohttp python-pypng python-peewee python-pyqrcode python-numpy python-tqdm python-pandas python-passlib python-pymupdf python-cffi python-pyqt5 python-requests-toolbelt python-appdirs python-weasyprint python-scikit-learn python-pillow)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+pkgrel=2
+pkgdesc='Paperless open marking'
+arch=(any)
+url="https://gitlab.com/$pkgname/$pkgname"
+license=(AGPL3)
+_pydeps=(aiohttp
+         appdirs
+         cffi
+         imutils
+         jpegtran-cffi
+         lapsolver
+         numpy
+         opencv
+         pandas
+         passlib
+         peewee
+         pillow
+         pymupdf
+         pypng
+         pyqrcode
+         pyqt5
+         requests
+         requests-toolbelt
+         scikit-learn
+         toml
+         tqdm
+         weasyprint)
+depends=(opencv
+         python
+         "${_pydeps[@]/#/python-}"
+         pyzbar)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest)
+_archive="$pkgname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 sha256sums=('efe3171afd9d254c3b52b8cde74edb3cc219c7b96d11c10a94dce05f8176e93e')
 
-
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  python setup.py build
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
+}
+
+check() {
+	cd "$_archive"
+    pytest -l --pyargs "$pkgname" ||:
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  python setup.py install --prefix=/usr --root $pkgdir || return 1
-
-  install -Dm644 LICENSE.md \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
