@@ -1,32 +1,36 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Maintainer: Jonas Schwartz <jonas@josc.io>
+# Maintainer: Vlad <ejiek at mail.ru>
 # Maintainer: Solomon Choina<shlomochoina@gmail.com>
-# Contributor: Vlad <ejiek at mail.ru>
 # Contributor: intrnl
 
-pkgname=microsoft-edge-dev-bin
+_channel=dev
 _pkgname=microsoft-edge-dev
+pkgname=microsoft-edge-dev-bin
 _pkgshortname=msedge-dev
 pkgver=93.0.961.10
-pkgrel=1
+pkgrel=2
+_uprel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
-arch=('x86_64')
+arch=(x86_64)
 url="https://www.microsoftedgeinsider.com/en-us/download"
-license=('custom')
-provides=('microsoft-edge-dev' 'edge-dev')
-conflicts=('microsoft-edge-dev' 'edge-dev' 'edge-dev-bin' 'edge')
-depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
-makedepends=('imagemagick')
-optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
-            'kdialog: for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet'
+license=(custom)
+provides=("microsoft-edge=$pkgver")
+conflicts=(microsoft-edge)
+depends=(gtk3 libcups nss alsa-lib libxtst libdrm mesa)
+makedepends=(imagemagick)
+optdepends=('gnome-keyring: for storing passwords in GNOME keyring'
             'gtk3: for printing'
+            'kdialog: for file dialogs in KDE'
+            'kwallet: for storing passwords in KWallet'
+            'libpipewire02: WebRTC desktop sharing under Wayland'
             'libunity: for download progress on KDE'
             'ttf-liberation: fix fonts for some PDFs - CRBug #369991'
             'xdg-utils')
 options=(!strip !zipman)
-_channel=dev
-source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-dev/${_pkgname}_${pkgver}-1_amd64.deb"
-        "microsoft-edge-dev.sh"
+source=("https://packages.microsoft.com/repos/edge/pool/main/m/$_pkgname/${_pkgname}_$pkgver-${_uprel}_amd64.deb"
+        "$_pkgname.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
 sha256sums=('e740f8d1ef9ae7d3120d4cc9f553e5ee3d08f435c07e2a59e0bf0f57231676b6'
             '285afe53b2cd617ae7f4930a1d0befe12a97ae31c30cfad74e97bf695c6f6a8a'
@@ -36,33 +40,31 @@ package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
 	# suid sandbox
-	chmod 4755 "${pkgdir}/opt/microsoft/${_pkgshortname}/msedge-sandbox"
+	chmod 4755 "$pkgdir/opt/microsoft/$_pkgshortname/msedge-sandbox"
 
 	# 256 and 24 are proper colored icons
 	for res in 128 64 48 32; do
-		convert "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256_dev.png" \
-			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_dev.png"
+		convert "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_256_dev.png" \
+			-resize "${res}x${res}" \
+			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
 	for res in 22 16; do
-		convert "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24_dev.png" \
-			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_dev.png"
+		convert "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_24_dev.png" \
+			-resize "${res}x${res}" \
+			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
 
-	# install icons
+	# copy icons where FHS expects them
 	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_dev.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
+		install -Dm644 "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png" \
+			"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$_pkgname.png"
 	done
 
 	# User flag aware launcher
-	install -m755 microsoft-edge-dev.sh "${pkgdir}/usr/bin/microsoft-edge-dev"
+	install -Dm0755 microsoft-edge-dev.sh "$pkgdir/usr/bin/$_pkgname"
 
-	# License
-	install -Dm644 'Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.pdf"
-	rm -r "${pkgdir}/etc/cron.daily/" "${pkgdir}/opt/microsoft/${_pkgshortname}/cron/"
-	# Globbing seems not to work inside double parenthesis
-	rm "${pkgdir}/opt/microsoft/${_pkgshortname}"/product_logo_*.png
+	install -Dm0644 'Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
+	rm -r "$pkgdir/etc/cron.daily/" "$pkgdir/opt/microsoft/$_pkgshortname/cron/"
+	rm "$pkgdir/opt/microsoft/$_pkgshortname/"product_logo_*.png
 }
 
