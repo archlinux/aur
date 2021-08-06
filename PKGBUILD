@@ -7,7 +7,7 @@ _srcname=linux-5.13
 _major=5.13
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=7
+_minor=8
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -30,17 +30,19 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('201d2ccee279efa8d102bf7e3957e285a2ed7c9af9dc6e937a4ad6a2fdf30435be99a3fd31132df08cb9491af35913aa58a7450c00201e4495d142c17d3344d5'
+b2sums=('782ac3d6eac495eed708de5b06eaacdc37385f25ab69940653586abe4bf247f372f1b13a3b7cdcd95dcf0d925ac2436807ec056a388b9d8a95cdfbc084fe0b39'
         'SKIP'
-        '2204912daa4b48f551f8d72b6f982e7e0c3bd12c98a9f4fe3a038c72a3229803e39577da057149d1b1bb117dc4fc33ed3ec0b3889b4d94470f7d77d9dd2c812d'
+        '567812f1ad10dd2fa260cd087849148b8b4ea05db73ec9743c44e49e572cb5604ac24fd402db0b22660cdbc59e4dd5dac4662acf33b468018c31e250ba75eb0a'
         'SKIP'
         '135757fad4d5301d665bcda81118b3b2dd855b4732593841ff6f01d175d63632cfd98b215a3117b7c2363be9ebd3966e1ba3c66fdd326ff6a4c43fb56fa3af3b'
-        '87175031fe8d6e2afb71d43624a21c789e6fd44072ae9f191170ae04e392b32fc114b3ccd0f4c80e4b87168c52da35c78cadadc5f8ca0238eafbf93b8ffa50ed')
+        'e6df0ce8d665261cffc930e0a99023abd1b26caf1e89dda756cf76713953e6b3a36d3210a4c01beedb2a28acc357a9880d19870a71864ede86e29b58991fff72'
+        'ea7fd8a0fd1431078f158ef3bc184b3b826290ae4fde9739e9159444e44c8ed9fb33b1419f4650977e701f8bbbddf22a16b0dfa7aa775c89e42cb54e213de146')
 
 
 export KBUILD_BUILD_HOST=archlinux
