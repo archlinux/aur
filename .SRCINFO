@@ -1,0 +1,13 @@
+pkgbase = plank-theme-y-ru-git
+	pkgdesc = Y-RU theme for Plank
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/kennyh7279/plank-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plank
+	source = git://github.com/MMcQueenGNU/plank-theme-y-ru.git
+	sha256sums = SKIP
+
+pkgname = plank-theme-y-ru-git
