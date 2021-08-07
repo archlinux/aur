@@ -1,4 +1,7 @@
 # Maintainer: Benjamin 'PenguinJoints' Wang <w.benji at tuta dot io>
+# Contributor: Frederic Bezies <frdbezies at gmail dot com>
+# Contributor: Takashi Kokubun <takashikkbn@domain.com>
+
 pkgname=nocturn
 pkgver=1.8.4
 pkgrel=1
