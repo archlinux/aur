@@ -1,3 +1,4 @@
+#!/bin/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
 name=meshroom
