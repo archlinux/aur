@@ -60,6 +60,7 @@ build() {
 		-DBUILD_SHARED_LIBS=ON \
 		-DCCTAG_WITH_CUDA="$_with_cuda" \
 		-DCCTAG_BUILD_APPS="$_build_apps" \
+		-DCCTAG_BUILD_DOC="$_build_doc" \
 		-DCCTAG_ENABLE_SIMD_AVX2="$_enable_avx" \
 		-DCCTAG_SERIALIZE="$_serialize" \
 		-DCCTAG_VISUAL_DEBUG="$_visual_debug" \
