@@ -4,8 +4,8 @@
 # Contributor: Martin Wimpress <code@flexion.org>
 #
 pkgname="caja-dropbox"
-pkgver="1.25.0"
-pkgrel="2"
+pkgver="1.26.0"
+pkgrel="1"
 pkgdesc="Dropbox extension for Caja file manager "
 arch=('i686' 'x86_64')
 url="https://github.com/mate-desktop/caja-dropbox"
@@ -15,7 +15,7 @@ depends=('caja' 'glib2' 'libnotify' 'polkit' 'procps' 'pygtk' 'xdg-utils')
 optdepends=('dropbox: Dropbox support')
 makedepends=('mate-common' 'python-docutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c7e6356d794770923d338725846e3523676f2250ba99442a8afdc0f7ac24f9ac')
+sha256sums=('49e966a3afba40850285e4bd5e50f90b5986bd72894cf3636dccce95585c5595')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
