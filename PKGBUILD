@@ -4,7 +4,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.1.19
+pkgver=4.1.20
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
@@ -26,7 +26,9 @@ build() {
 	cd $pkgname-$pkgver
 
 	./configure --prefix=/usr \
-		--enable-tls --with-flxmlrpc --without-asciidoc
+		--enable-tls --without-flxmlrpc --without-asciidoc
+#			(^^^ temporary, until flxmlrpc is updated)
+#		--enable-tls --with-flxmlrpc --without-asciidoc
 	make ASCIIDOC_ICONS_DIR=/etc/asciidoc/images/icons/
 }
 
@@ -41,5 +43,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('61f68a174bfabedbd88b417c48ec21c7')
-sha256sums=('8715e7109d2a674d80b742c97743fe7cb8997166b3c6ddef622c8cd8779d6e7f')
+md5sums=('b7c93a9477dbd35526506bd2541578fe')
+sha256sums=('5030900a0f6905eb86dbe68e41fff0be781eecee6d42007675540e2a23bec438')
