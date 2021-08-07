@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-git
 	pkgdesc = Next generation desktop shell
-	pkgver = 40.0+23+g3aa3231a9
+	pkgver = 40.1+133+ge49d8162a
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-shell
 	arch = x86_64
 	groups = gnome
-	license = GPL2
+	license = GPL
 	makedepends = gtk-doc
 	makedepends = gnome-control-center
 	makedepends = evolution-data-server
@@ -26,7 +26,7 @@ pkgbase = gnome-shell-git
 	depends = gtk4
 	depends = gnome-settings-daemon
 	depends = gnome-themes-extra
-	depends = gsettings-desktop-schemas
+	depends = gsettings-desktop-schemas-git
 	depends = libcanberra-pulse
 	depends = libgdm
 	depends = libsecret
@@ -46,4 +46,3 @@ pkgbase = gnome-shell-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-git
-
