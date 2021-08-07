@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
 pkgver=41.7.0.19440
-pkgrel=1
+pkgrel=2
 pkgdesc="Webex for Linux"
 arch=('x86_64')
 url="https://www.webex.com/"
@@ -44,6 +44,7 @@ prepare() {
 package() {
     cd "$pkgname-$pkgver"
     cp -dpr --no-preserve=ownership opt/ "$pkgdir/"
+    rm "$pkgdir/opt/Webex/lib/libstdc++.so.6"
 
     mkdir -p "$pkgdir/usr/share/applications/"
     mv "$pkgdir/opt/Webex/bin/webex.desktop" "$pkgdir/usr/share/applications/"

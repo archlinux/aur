@@ -1,7 +1,7 @@
 pkgbase = webex-bin
 	pkgdesc = Webex for Linux
 	pkgver = 41.7.0.19440
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.webex.com/
 	arch = x86_64
 	license = custom
