@@ -10,6 +10,7 @@ pkgbase = cctag
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = ninja
+	makedepends = opencv
 	depends = boost-libs
 	depends = tbb
 	source = cctag-1.0.0.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.0.tar.gz
