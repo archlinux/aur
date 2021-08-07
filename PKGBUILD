@@ -15,7 +15,7 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.12.6
+pkgver=5.13.8
 pkgrel=1
 pkgdesc='Linux-libre'
 rcnver=5.11.11
@@ -29,7 +29,7 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.12
+_srcname=linux-5.13
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
@@ -47,7 +47,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # Arch Linux patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-drm-i915-gt-Disable-HiZ-Raw-Stall-Optimization-on-br.patch
+  0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
 )
 source_i686=(
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
@@ -73,9 +73,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('07730c51e4030dc9c1d01367098eabafd5665c40a69f8b102b2fa0aaae4f2124c32f60560b30a55fab18a76eb782650fac04a4aa2aaa558e96bfd13faaea328c'
+sha512sums=('a24f2db9316297127447b3d7fd7a1e9e7b9a8bdb5e59e6e341568cbf877c4b65d2ccdb27ec1c23b07af6c365b2930b040bcef0d989202b503bc55b107c04d121'
             'SKIP'
-            'c110f873ace206d7b8ad07fee6e3daf458708713dabd6ce0d4f48ad42cb7e310f4abc968f98ea22972157047d152231012e70e60a6d4803289b0081cdc650114'
+            '53a9a1abfb8ae6e73337986ed780034d5ecf4d89bf1bbf7d4c2b5b04b527b00296c7c427045c8ab454a175db1ab272c76ef115edd4b88f4f530cbd884e604bb5'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -83,8 +83,8 @@ sha512sums=('07730c51e4030dc9c1d01367098eabafd5665c40a69f8b102b2fa0aaae4f2124c32
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'ab647d9cb0f5a1c6ac0bd4e38a95fedf6b331e86e9cb39be6110cd60e1d6a854c0c41a90d1f445539dc7bc69ec39506f5fde69953fc42d84d841fdc14afc8128'
-            '73c307a7a4f55a6ffed394faadba511630354af81fcec1c63f8d978b31c0d310b0f7016ae7f4bc9c20791953fe1a2b976103aab8136d6186153b20feb34bccec'
+            'f97711c3ade9e09527967adb7c94d8a0e03061ab7bb16104a23ecb3f8a237d56f8a662424c8620a6ebf14f1e2bf4b84723a8cd68cc957763a8ecaea2528474c4'
+            'ca293f654e0fcbcacfc60fdf2b09596bd336a33784e236e002bf89cf5cb4ef3f6d34ce1da9e8d747a38ebca6b62107e7c0f87cd09e43dd8fa3a8c61cb9a1816f'
             '51e8b4da770067e8257d292622d865cb16ac57fdfd8967bdfb74efec197dae9eab958e5637a728640ae60885bdde41c06c8076227a4f83db0b752215f91f3a87'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -92,8 +92,8 @@ sha512sums=('07730c51e4030dc9c1d01367098eabafd5665c40a69f8b102b2fa0aaae4f2124c32
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '25f31c3e068070b324811be20c7e4a1515ca1cc2f27a39ed095ebd6265e998c70cf7a6891d476d62c32ec8dccec938635ca04edb7d683ea7e840a6ba19f5af62'
-            'b54502e4198b01386fcf2c937ad24e06c2894a0a783b62eeea99f8df9e92501c547a8f1f81840808ea5c642b44c576eee9385035ace8c4498b131487a580e44a')
+            'fac53c8ce68e9f56c8930a9392c89377c909f6a43a318010194949def91a104f34f46c2b32457e571435a8b326c47a48737ceb6255644bb6d42c59b27b07449a'
+            '722d92b750f0a5af39b850c18ff0c57dac0165e3c0219415843ec5207945971448790fec3fca570b62c8726c89b0ca6b7a5b16fd503e4581b3a63b3adfcf2c50')
 sha512sums_i686=('3a346ff5e0fdefafd28bc3dd0e4b6cd68e3f0014e59d1611d99f2edb8d074fd32649eeb0894a7e340e4f907b5cfc0e08e0753e0427a68dc113bb22835a892968')
 sha512sums_armv7h=('a4aa00ca3f03d524d3fb6379116c4e4e7908e7c30f6347f55be256c44d806d8db5f04c96369d5a725e45b7390e9fde842f388cdc5d5699d80ec5d1519f7367f4'
                    'SKIP'
@@ -265,13 +265,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
