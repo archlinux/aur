@@ -1,6 +1,6 @@
 # Maintainer: alecromski <alecromski@gmail.com>
 pkgname=asus-touchpad-numpad-driver
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="asus touchpad numpad toggler"
 arch=('any')
@@ -22,7 +22,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/1.1/asus-touchpad-numpad-driver.zip")
+source=("https://github.com/OppaiWeeb/asus-touchpad-numpad-driver/releases/download/$pkgver/asus-touchpad-numpad-driver.zip")
 noextract=($source)
 md5sums=(SKIP)
 validpgpkeys=()
@@ -32,5 +32,6 @@ prepare() {
 }
 
 package() {
-	./install.sh
+	sudo ./install.sh
 }
+
