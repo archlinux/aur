@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/"
 license=('BSD' 'custom')
 depends=(libxcb glib2 nss xdg-utils)
-optdepends=(edge-${_channel})
+optdepends=(microsoft-edge-${_channel})
 provides=("${_pkgname}-${_channel}")
 conflicts=(
     "${_pkgname}"
