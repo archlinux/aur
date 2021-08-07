@@ -4,7 +4,7 @@
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=40.0+24+ga796edd89
+pkgver=40.1+290+ga96caf6de
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
