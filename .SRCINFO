@@ -1,0 +1,22 @@
+pkgbase = mingw-w64-pdal
+	pkgdesc = A C++ library for translating and manipulating point cloud data (mingw-w64)
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://www.pdal.io
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-gdal
+	depends = mingw-w64-libgeotiff
+	depends = mingw-w64-laszip
+	depends = mingw-w64-jsoncpp
+	depends = mingw-w64-hexer-hobu
+	depends = mingw-w64-postgresql-libs
+	depends = mingw-w64-sqlite
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/PDAL/PDAL/releases/download/2.3.0/PDAL-2.3.0-src.tar.gz
+	sha512sums = 9de87de7370175e76b95d3ec08667eb28b90a63eed8133f144427ff931e575d1f37aa13496f12054577539ee552458475dd054bcbdedfabe52eb0e32c4483d05
+
+pkgname = mingw-w64-pdal
