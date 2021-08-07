@@ -1,7 +1,7 @@
 pkgbase = nocturn
 	pkgdesc = Desktop twitter client
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/k0kubun/Nocturn
 	arch = x86_64
 	license = MIT
