@@ -2,7 +2,7 @@
 
 _pkgname=magnifiqus
 pkgname="${_pkgname}-git"
-pkgver=r1.ec3c95d
+pkgver=0.2.0.r0.g93f9847
 pkgrel=1
 pkgdesc="Qt based screen magnifier"
 url="https://github.com/redtide/${_pkgname}"
@@ -16,7 +16,8 @@ source=("${pkgname}"::"git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 build() {
