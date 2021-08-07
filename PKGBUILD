@@ -3,7 +3,7 @@
 pkgname='pingme-bin'
 _pkgname="${pkgname%-bin}"
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="PingMe is a CLI tool which provides the ability to send messages or alerts to multiple messaging platforms & email. (official binary)"
 url='https://pingme.lmno.pk'
 arch=("i686" "x86_64" "aarch64")
@@ -18,13 +18,13 @@ optdepends=('nfpm: deb and rpm packager')
 _basedownloadurl="https://github.com/kha7iq/${_pkgname}/releases/download/v${pkgver}"
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_x86_64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_x86_64.tar.gz")
-sha256sums_x86_64=(0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
+sha256sums_x86_64=(f50558f8b442b319b306dc1ee4619293ac4d0ace5cadba8fd6f129ea100ea6ca)
 
 source_i686=("${_pkgname}_${pkgver}_linux_i386.tar.gz::${_basedownloadurl}/${_pkgname}_linux_i386.tar.gz")
-sha256sums_i686=(0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
+sha256sums_i686=(51be9ae16ece28419400d15ce3252a16e29deb65d4229c48b2213369a7cbecfb)
 
 source_aarch64=("${_pkgname}_${pkgver}_linux_arm64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_aarch64=(0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5)
+sha256sums_aarch64=(92ac1ef472fe7b140309dc426e49d34b4a69e72c5c1c66764c23d78943c34798)
 
 package() {
 	# Bin
