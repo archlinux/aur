@@ -1,0 +1,45 @@
+diff --git a/Rakefile b/Rakefile
+index dd14c8b0..193cf28d 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -35,15 +35,15 @@ load "#{MRUBY_ROOT}/tasks/gitlab.rake"
+ task :default => :all
+ 
+ bin_path = ENV['INSTALL_DIR'] || "#{MRUBY_ROOT}/bin"
+-FileUtils.mkdir_p bin_path, { :verbose => $verbose }
++FileUtils.mkdir_p bin_path
+ 
+ depfiles = MRuby.targets['host'].bins.map do |bin|
+   install_path = MRuby.targets['host'].exefile("#{bin_path}/#{bin}")
+   source_path = MRuby.targets['host'].exefile("#{MRuby.targets['host'].build_dir}/bin/#{bin}")
+ 
+   file install_path => source_path do |t|
+-    FileUtils.rm_f t.name, { :verbose => $verbose }
+-    FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++    FileUtils.rm_f t.name
++    FileUtils.cp t.prerequisites.first, t.name
+   end
+ 
+   install_path
+@@ -76,8 +76,8 @@ MRuby.each_target do |target|
+         install_path = MRuby.targets['host'].exefile("#{bin_path}/#{bin}")
+ 
+         file install_path => exec do |t|
+-          FileUtils.rm_f t.name, { :verbose => $verbose }
+-          FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++          FileUtils.rm_f t.name
++          FileUtils.cp t.prerequisites.first, t.name
+         end
+         depfiles += [ install_path ]
+       elsif target == MRuby.targets['host-debug']
+@@ -85,8 +85,8 @@ MRuby.each_target do |target|
+           install_path = MRuby.targets['host-debug'].exefile("#{bin_path}/#{bin}")
+ 
+           file install_path => exec do |t|
+-            FileUtils.rm_f t.name, { :verbose => $verbose }
+-            FileUtils.cp t.prerequisites.first, t.name, { :verbose => $verbose }
++            FileUtils.rm_f t.name
++            FileUtils.cp t.prerequisites.first, t.name
+           end
+           depfiles += [ install_path ]
+         end

@@ -1,0 +1,12 @@
+diff --git a/mrbgem.rake b/mrbgem.rake
+index e7481ab..8cba5e1 100644
+--- a/mrbgem.rake
++++ b/mrbgem.rake
+@@ -10,7 +10,6 @@ MRuby::Gem::Specification.new('mruby-dir-glob') do |spec|
+   spec.add_dependency 'mruby-errno'
+   spec.add_dependency 'mruby-file-stat'
+   spec.add_dependency 'mruby-process'
+-  spec.add_dependency 'mruby-pack'
+ 
+   # how to specify a 'general' regexp engine?
+ #  spec.add_dependency 'mruby-regexp-pcre'
