@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=portfolio-file-manager
-pkgver=0.9.11
-pkgrel=2
+pkgver=0.9.12
+pkgrel=1
 pkgdesc="A minimalist file manager for those who want to use Linux mobile devices."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tchx84/Portfolio"
 license=('GPL3')
-depends=('gtk3' 'gvfs' 'libhandy' 'python-gobject')
+depends=('gtk3' 'libhandy' 'python-gobject')
 makedepends=('meson')
-checkdepends=('appstream-glib')
+checkdepends=('appstream-glib' 'python-black' 'python-pyflakes')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9bf8a7c9beffa0b23697c5f6f33598309cd58aa86e6ec050b285f8ac484520e4')
+sha256sums=('40ace67fafa3d611166cdf5aa001d98e54552b6dba87843566f67c0a48b30235')
 
 build() {
   arch-meson Portfolio-$pkgver build
