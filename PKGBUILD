@@ -1,37 +1,43 @@
-# Maintainer: NicerSlicer <jans_coid at posteo dot de>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: NicerSlicer <jans_coid at posteo dot de>
 # Contributor: Christian Wieden <wiedenchr at gmail dot com>
 # Contributor: Ricardo Band <me at xengi dot de>
 # Contributor: Filip Szymański <fszymanski at, fedoraproject.org>
 
 pkgname=hstr-git
-pkgver=2.3.r1.g1d82a22
+pkgver=2.3.r3.g6507ac7
 pkgrel=1
-pkgdesc="A command line utility that brings improved bash/zsh command completion from the history. It aims to make completion easier and more efficient than Ctrl-r."
+pkgdesc="Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history"
 arch=('x86_64')
 url="https://github.com/dvorka/hstr"
 license=('Apache')
-makedepends=('git' 'readline' 'ncurses')
-depends=('readline')
-source=(git://github.com/dvorka/hstr.git#branch=master)
-md5sums=('SKIP')
-conflicts=('hh');
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  git -C $pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  sed -i "s|<ncursesw/curses.h>|<curses.h>|g" $pkgname/src/include/hstr{,_curses}.h
+}
 
 build() {
-    cd "hstr/build/tarball"
-    ./tarball-automake.sh
-    cd ../..
-    sed -i -e "s#<ncursesw/curses.h>#<curses.h>#g" src/include/hstr_curses.h
-    sed -i -e "s#<ncursesw/curses.h>#<curses.h>#g" src/include/hstr.h
-    ./configure --prefix=/usr
-    make
+  cd $pkgname/build/tarball
+  ./tarball-automake.sh
+
+  cd ../..
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "hstr"
-    make DESTDIR="$pkgdir/" install
+  install -Dm644 $pkgname/{Changelog,README.md} -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+
+  make -C $pkgname DESTDIR="$pkgdir/" install
+  rm -f "$pkgdir/usr/bin/hh"
 }
 
-pkgver() {
-    cd "hstr"
-    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
