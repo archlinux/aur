@@ -1,14 +1,15 @@
 pkgbase = mdevctl
 	pkgdesc = A mediated device management utility for Linux
-	pkgver = 0.78
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mdevctl/mdevctl
-	arch = any
+	arch = x86_64
 	license = LGPL2.1
-	depends = bash
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
 	options = emptydirs
-	source = mdevctl-0.78.tar.gz::https://github.com/mdevctl/mdevctl/archive/0.78.tar.gz
-	sha256sums = 58d72bd805dd934c247089dbb59f062c60bc9aab1585322702f2c2f09ca2815b
+	source = mdevctl-1.0.0.tar.gz::https://github.com/mdevctl/mdevctl/archive/v1.0.0.tar.gz
+	sha256sums = a6173629e689fa2532a57a63b947ed44d5a69367d0e3d15023d0ff88f41a585f
 
 pkgname = mdevctl
-

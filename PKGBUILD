@@ -1,18 +1,29 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=mdevctl
-pkgver=0.78
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A mediated device management utility for Linux"
 url="https://github.com/mdevctl/mdevctl"
-arch=('any')
+arch=('x86_64')
 license=('LGPL2.1')
-depends=('bash')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mdevctl/mdevctl/archive/$pkgver.tar.gz")
-sha256sums=('58d72bd805dd934c247089dbb59f062c60bc9aab1585322702f2c2f09ca2815b')
+depends=('gcc-libs')
+makedepends=('rust' 'cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mdevctl/mdevctl/archive/v$pkgver.tar.gz")
+sha256sums=('a6173629e689fa2532a57a63b947ed44d5a69367d0e3d15023d0ff88f41a585f')
 options+=(emptydirs)
+
+build() {
+    cd "$pkgname-$pkgver"
+    env CARGO_INCREMENTAL=0 cargo build --release
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    env CARGO_INCREMENTAL=0 cargo test --release
+}
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" SBINDIR="\$(PREFIX)/bin" install
+    make DESTDIR="$pkgdir" SBINDIR="/usr/bin" install
 }
