@@ -1,0 +1,15 @@
+pkgbase = cargo-prefetch
+	pkgdesc = A Cargo subcommand to download popular crates
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ehuss/cargo-prefetch
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	source = cargo-prefetch-0.1.0.tar.gz::https://static.crates.io/crates/cargo-prefetch/cargo-prefetch-0.1.0.crate
+	source = https://raw.githubusercontent.com/ehuss/cargo-prefetch/08bbc066b608ae849a4ff8c40aa64fa3193f90b0/Cargo.lock
+	b2sums = f82b5eabe98839d9bf36d4355c8a8b0caf6eb1d94956f5c59968fb2049f2689f6eb3440b6b9b837a25b56e4555b3317727651337fd7de9faf8117417cbfb2cf5
+	b2sums = 8e74583a23e79af4eeae91588eb7b2fc962b362f4959b682800fa631ef9581d5199059bba6ed9c3f42b72a96a29f6284715eedfd3e8042c60032cce445e64553
+
+pkgname = cargo-prefetch
