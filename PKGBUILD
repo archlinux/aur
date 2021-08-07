@@ -26,7 +26,7 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=maste
         "hevc-vaapi.diff"
         "fix_python_binary_loading.patch")
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP"
-            "66fed73be753773fb52f98fdb92b37353e0450653125007e8ab694e97983a71b"
+            "bfaabd24cab61247926a262c03285090e4c4b06eaf4459004c9e91279e2b9d95"
             "bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd")
 
 pkgver() {
