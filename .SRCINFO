@@ -1,5 +1,5 @@
 pkgbase = python-discord-self
-	pkgdesc = A fork of the popular Discord.py for self-bots
+	pkgdesc = A fork of the popular discord.py for self-bots
 	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/dolfies/discord.py-self
