@@ -9,11 +9,11 @@ arch=(i686 x86_64)
 url="https://github.com/obsproject/obs-studio"
 license=(GPL2)
 depends=(at-spi2-atk ffmpeg jansson libxinerama qt5-x11extras mbedtls libxrandr nss libxss)
-makedepends=(cmake git x264 jack vlc swig cef-minimal)
+makedepends=(cmake git x264 jack vlc-luajit swig cef-minimal)
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"
-            "vlc: VLC Media Source"
+            "vlc-luajit: VLC Media Source"
             "swig: Scripting"
             "luajit: Lua scripting"
             "python: Python scripting"
