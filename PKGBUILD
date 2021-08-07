@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-git
-pkgver=20210805.r770.5f51899
+pkgver=20210807.r793.3414a0c
 pkgrel=1
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
@@ -30,6 +30,7 @@ build() {
     yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
     yarn --check-files
     yarn build
+    mv "$srcdir/v2raya-git/web" "$srcdir/v2raya-git/service/server/router/"
 
     cd "$srcdir/$pkgname/service"
     export GO111MODULE=on
@@ -40,8 +41,6 @@ build() {
 package() {
     cd "${srcdir}"/"${pkgname}"/
     install -Dm 755 service/v2raya -t "${pkgdir}"/usr/bin/
-    find web -type d -exec install -vd "${pkgdir}"/etc/v2raya/{} \;
-    find web -type f -exec install -vm 644 {} "${pkgdir}"/etc/v2raya/{} \;
     install -dm 750 "${pkgdir}"/etc/v2raya/
     install -Dm 644 install/universal/v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 install/universal/v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
