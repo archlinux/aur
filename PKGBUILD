@@ -1,5 +1,5 @@
 # Maintainer: Holger Schramm <dev@strace.it>
-pkgname=mingo
+pkgname=mingo-bin
 pkgver=1.4.5
 pkgrel=1
 pkgdesc="A MongoDB GUI based on electron from developers for developers"

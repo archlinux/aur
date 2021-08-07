@@ -1,9 +1,9 @@
-pkgbase = mingo
+pkgbase = mingo-bin
 	pkgdesc = A MongoDB GUI based on electron from developers for developers
 	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/mingo-app/mingo#readme
-	install = mingo.install
+	install = mingo-bin.install
 	arch = i686
 	arch = x86_64
 	license = custom:mingo
@@ -42,4 +42,4 @@ pkgbase = mingo
 	source_x86_64 = https://github.com/mingo-app/mingo/releases/download/v1.4.5/mingo_1.4.5_amd64.deb
 	sha512sums_x86_64 = c165ec992d4ce9fc6faa3475db9cea3934800ef514d871e6385627773e8575e894d313ff24e92af326cab6859c3c3b2bcd8e04f10d59e7c87154714eb472df6d
 
-pkgname = mingo
+pkgname = mingo-bin
