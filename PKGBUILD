@@ -54,7 +54,7 @@ prepare() {
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
-		-DCUDA_HOST_COMPILER=/usr/bin/gcc-10 \
+		-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
