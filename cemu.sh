@@ -31,9 +31,10 @@ fi
 
 if [ ! -f "$HOME"/.cemu/wine/drive_c/windows/syswow64/vcruntime140.dll ]; then
   if [ -n "`whereis zenity|grep bin`" ]; then
-    zenity --info  --title 'Cemu' --text 'Installing wine dependencies.\n\nThe process may take a few minutes'
+    winetricks arch=32 -q vcrun2017 | zenity --title 'Cemu' --text 'Installing wine dependencies.\n\nThe process may take a few minutes' --progress --pulsate --no-cancel --auto-close
+  else
+    winetricks arch=32 -q vcrun2017
   fi
-  winetricks -q vcrun2017
   winetricks settings win7
 fi
 cd ~/.cemu
