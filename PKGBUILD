@@ -2,12 +2,12 @@
 
 pkgname=cargo-docset
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo subcommand to generate a Dash/Zeal docset for your Rust packages"
 url="https://github.com/Robzz/${pkgname}"
 arch=("x86_64")
 license=("MIT")
-depends=("cargo")
+depends=("cargo" "sqlite")
 url="https://github.com/rust-secure-code/cargo-supply-chain"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 b2sums=('2ee59098d4635b9a6e348312874f1f04e26d3b3b8425aad491a4053c6f49b5cb22e94d9f2d6fce334d238e006f558a3d13e94ceac9e7ab8dd4925ca9fb960df2')
