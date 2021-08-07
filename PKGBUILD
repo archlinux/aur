@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-makepkg-alpha
-pkgver=7.2.0
+pkgver=7.2.1
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (alpha release)"
 arch=(any)
