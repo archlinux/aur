@@ -66,7 +66,7 @@ build() {
 		-DCCTAG_VISUAL_DEBUG="$_visual_debug" \
 		-DCCTAG_CUDA_CC_CURRENT_ONLY="$_cc_current" \
 		-DCCTAG_NO_THRUST_COPY_IF="$_no_thrust" \
-		"$_cuda_arch"
+		$_cuda_arch
 	ninja -C build
 }
 
