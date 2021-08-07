@@ -9,7 +9,7 @@ pkgbase=linux-tqc-a01
 _srcname=linux-5.13
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.13.7
+pkgver=5.13.8
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0005-drm-gem-cma-Export-with-handle-allocator.patch'
         '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
-        '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
+        # '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -39,7 +39,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '3f7ed062bb75788f487089df2844f16b'
+         '73b95ca2cd8dd9f41d704aa20b288a34'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
@@ -51,12 +51,11 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
-         'f27a8190e862a7edcf2b09cc27aef180'
          'a459d4bd827bc7048a45296251b20ae5'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         'aebc49e4d58bd8314548a364bec99d1e')
+         'c21e43334165513b131796d4270aefc6')
 
 prepare() {
   cd ${_srcname}
@@ -77,7 +76,7 @@ prepare() {
   patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
-  patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
+  # patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
 
   cat "${srcdir}/config" > ./.config
 

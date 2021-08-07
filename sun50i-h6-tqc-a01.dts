@@ -180,6 +180,7 @@
 	vqmmc-supply = <&reg_bldo2>;
 	cap-mmc-hw-reset;
 	non-removable;
+	mmc-hs200-1_8v;
 	bus-width = <8>;
 	status = "okay";
 };
