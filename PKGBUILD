@@ -6,6 +6,7 @@ pkgdesc='Desktop twitter client'
 arch=('x86_64')
 url='https://github.com/k0kubun/Nocturn'
 license=('MIT')
+makedepends=('gconf')
 depends=('gconf')
 source=("Nocturn-$pkgver.zip::https://github.com/k0kubun/Nocturn/releases/download/v$pkgver/Nocturn-linux-x64.zip")
 sha256sums=('2ef1f5b43b5f282ee0c32734b20612f6437af43f4608df42c04a0baf2b644e0f')
