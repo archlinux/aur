@@ -1,7 +1,7 @@
 # Maintainer: osiixy <osiixy at gmail dot com>
 
 pkgname=eggs
-pkgver=8.1.2
+pkgver=8.1.3
 pkgrel=1
 pkgdesc="A terminal utility, in active development, which allows you to remaster your system and redistribute it as an ISO image, on a USB stick or through the network via PXE remote boot"
 arch=('x86_64')
