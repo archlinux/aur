@@ -2,7 +2,7 @@
 
 pkgname=isync-utf8-mailboxes
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP and MailDir mailbox synchronizer"
 arch=('x86_64')
 url="http://isync.sourceforge.net"
