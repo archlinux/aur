@@ -6,6 +6,9 @@
 # Use: {yay,paru} --mflags=VAR1=0,VAR2=1
 # Use: aurutils --margs=VAR1=0,VAR2=1
 # Use: VAR1=0 VAR2=1 pamac
+
+((ENABLE_QTALICEVISION)) && component+=(qtAliceVision)
+
 name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 fragment="#tag=v2021.1.0"
@@ -22,6 +25,7 @@ _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision alembic openimageio python python-psutil "${_depends_qt[@]}")
 makedepends=(git cmake python-{cx-freeze-qfix,idna,setuptools} patchelf)
+((ENABLE_QTALICEVISION)) && makedepends+=(popsift coin-or-lemon)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git${fragment}"
@@ -35,6 +39,11 @@ sha256sums=('SKIP'
             'SKIP'
             'e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc'
             '40ee489604627e5be1b8ce5f3fdd4b1828a5588427fda298b61aa37beb9125c5')
+((ENABLE_QTALICEVISION)) && {
+  source+=("git+https://github.com/alicevision/qtAliceVision.git#commit=517fc5ffb43471b12f71aa8b9881cf0634647a93^")
+  sha256sums+=('SKIP')
+}
+
 
 prepare() {
   cd "${srcdir}"/${pkgname}
