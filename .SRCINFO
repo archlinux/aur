@@ -6,11 +6,10 @@ pkgbase = msedgedriver-dev-bin
 	arch = x86_64
 	license = BSD
 	license = custom
-	depends = libxcb
 	depends = glib2
 	depends = nss
 	depends = xdg-utils
-	optdepends = microsoft-edge-dev
+	optdepends = microsoft-edge=94.0.972.2
 	provides = msedgedriver=94.0.972.2
 	provides = msedgedriver-dev
 	conflicts = msedgedriver
