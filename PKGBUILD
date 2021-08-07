@@ -3,7 +3,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsparse
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='rocSPARSE marshalling library.'
 arch=('x86_64')
@@ -13,15 +13,19 @@ depends=('hip-rocclr' 'rocsparse')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/hipSPARSE'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('cdedf3766c10200d3ebabe86cbb9c0fe6504e4b3317dccca289327d7c189bb3f')
+sha256sums=('194fbd589ce34471f3255f71ea5fca2d27bee47a464558a86d0713b4d26237ea')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.2.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.3.x/docs/markdown/clang_options.md
+
+  # With version 3.21, HIP support was added to CMake that breaks the current scripts, see
+  # https://github.com/ROCmSoftwarePlatform/rocRAND/issues/198#issuecomment-893573440
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
+        -D__skip_rocmclang=ON \
         -DCMAKE_CXX_STANDARD=20 \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
