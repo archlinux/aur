@@ -1,8 +1,8 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=systemd-lock-handler
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Logind lock event to systemd target translation."
 arch=('any')
 url="https://git.sr.ht/~whynothugo/systemd-lock-handler"
