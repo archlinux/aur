@@ -1,10 +1,3 @@
-pre_install() {
-    # Create required symlinks (see https://wiki.archlinux.org/index.php/ROS)
-    mkdir -p /usr/share/sip
-    ln -sf /usr/lib/python3.9/site-packages/PyQt5 /usr/share/sip/.
-    ln -sf /usr/lib/python3.9/site-packages/PyQt5/bindings/* /usr/share/sip/PyQt5/.
-}
-
 post_install() {
     printf "
     \e[33m\e[1mIMPORTANT NOTE:\e[0m
@@ -12,14 +5,14 @@ post_install() {
 
       export ROS_DOMAIN_ID=42
       source /opt/ros2/galactic/setup.bash
-    
+
     This quick command will do it for you:
-        
+
       printf \"\\\nexport ROS_DOMAIN_ID=42\\\nsource /opt/ros2/galactic/setup.bash\\\n\" >> ~/.bashrc
 
     Note 1: If you use zsh, replace '.bash' in the above lines with
     '.zsh' and add the lines to ~/.zshrc .
-    
+
     Note 2: This will slow down terminal startup for a few seconds on
     cold start, and a fraction of a second for terminals that open later.
     If you know a better transparent solution, you are welcome to edit
