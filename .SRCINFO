@@ -1,6 +1,6 @@
 pkgbase = dmenu_bw-git
 	pkgdesc = dmenu wrapper for bitwarden-cli written in POSIX shellscript.
-	pkgver = r72.2a88c7f
+	pkgver = r75.e22a67f
 	pkgrel = 15
 	url = https://github.com/Sife-ops/dmenu_bw
 	arch = x86_64
