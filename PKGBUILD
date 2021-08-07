@@ -1,5 +1,6 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
+# Maintainer: Simon Zack <simonzack@gmail.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 _pkgname=PDFStudio
