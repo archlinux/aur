@@ -4,8 +4,8 @@
 # Contributor: Anmol <anmol@coder.com>
 
 pkgname=code-server
-pkgver=3.11.0
-pkgrel=1
+pkgver=3.11.1
+pkgrel=0
 pkgdesc="VS Code in the browser"
 arch=("x86_64" "aarch64")
 url="https://github.com/cdr/code-server"
@@ -24,8 +24,8 @@ source_aarch64=(
 )
 sha512sums=('7040df09c7404a56dbbb32e09d04ead3b622773520feae19c6710656cef46ca5d79b1972bfebb931e309e495d041b9938cd6a51c39fc0f8f6133dfe711be9280'
             'ab8e679c05f6184f163dccf0651e8c1fac22a29ae583148f8c93b6930ece27cdff45a48b425e8b15b8c8ce749015680a3ae8225b7e8037979ff3d228f396f629')
-sha512sums_x86_64=('3eb67108005fa9c501af5a88c786db9339aee08cab51372694bab2a11d8401a30082f797979a63e897fe35b94fb34c98db4d3d7b9755b3f366ab686c4e5d780e')
-sha512sums_aarch64=('2f95e3ba879ec37f351dd98532d27d42cbaddd46f0a7a46f230c11a29bbb9f93a073b78e45417f09de3b455d1eef48dfab057279f50c322d99892d2e1cea2a90')
+sha512sums_x86_64=('597731a401ad48f2fa902f98e9d376f509d343d04e94a8a2f980885e60ff3a85f37d3d3b3b5628546fda371cea37b5b26b4b40864d6483d6d569e4ee13af0af3')
+sha512sums_aarch64=('e48545a35fe505f9b44996fec838f81c4ffeef51e1521c8377ee87e0c692abf73838c656c5d7a94b6cda112166d33af70c52097d39b44f5c6016d6d52d7cd8a5')
 
 package() {
   if [[ $(uname -m) == x86_64 ]]; then
