@@ -6,9 +6,9 @@
 # Contributor: lybin
 # Forked from chromedriver package
 _pkgname=msedgedriver
-_channel=beta
+_channel=dev
 pkgname=${_pkgname}-${_channel}
-pkgver=93.0.961.11
+pkgver=94.0.972.2
 pkgrel=1
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for microsoft edge)"
 arch=('x86_64')
@@ -16,9 +16,9 @@ url="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/"
 license=('BSD' 'custom')
 depends=(alsa-lib gtk3 libcups libxss libxtst nss xdg-utils)
 optdepends=(edge-${_channel})
-conflicts=("${_pkgname}" "${_pkgname}-dev")
+conflicts=("${_pkgname}" "${_pkgname}-beta")
 source=("${_pkgname}_${pkgver}_linux64.zip::https://msedgedriver.azureedge.net/${pkgver}/edgedriver_linux64.zip")
-sha512sums=('ffd618d00015434655f68c0e6ac97c437a6fe8ee5e4ba8edf7bc3abd06e19cd9968cdba710703ff9687f9df5f3cfff5b922828aec501ad1bcb39a349a7b56138')
+sha512sums=('a3e5ce8767e69e6f2788a72c0a3e229e1d586a558e15de6c24722ca8991a64ea5a8acb85b443107d55bc6a545fae29ffd4c77561ddf905acacc89646ddcb00da')
 
 package() {    
     install -Dm755 "${srcdir}/${_pkgname}" -t "${pkgdir}/usr/bin/"
