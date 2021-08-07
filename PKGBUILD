@@ -1,5 +1,6 @@
 # Maintainer: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
 # Contributor: mjbogusz <mjbogusz+github@gmail.com>
+# Contributor: yuanyuyuan <az6980522@gmail.com>
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
