@@ -6,6 +6,7 @@ pkgbase = msedgedriver-beta-bin
 	arch = x86_64
 	license = BSD
 	license = custom
+	depends = libxcb
 	depends = glib2
 	depends = nss
 	depends = xdg-utils
