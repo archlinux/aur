@@ -1,38 +1,39 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Florijan Hamzic <florijanh at gmail dot com>
 
-_pypi_name=weasyprint
-pkgname=python-$_pypi_name
+_pyname=weasyprint
+pkgname=python-$_pyname
 pkgver=53.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert web documents (HTML, CSS, SVG, ...) to PDF'
 arch=(any)
-url=http://weasyprint.org
+url=https://weasyprint.org
 license=(BSD)
-_py_deps=(brotli # for fonttools[woff]
-          cffi
-          cssselect2
-          fonttools
-          html5lib
-          pillow
-          pydyf
-          pyphen
-          tinycss2
-          zopfli) # for fonttools[woff]
+_pydeps=(brotli # for fonttools[woff]
+         cffi
+         cssselect2
+         fonttools
+         html5lib
+         pillow
+         pydyf
+         pyphen
+         tinycss2
+         zopfli) # for fonttools[woff]
 depends=(pango
          python
-         "${_py_deps[@]/#/python-}"
+         "${_pydeps[@]/#/python-}"
          ttf-font)
 makedepends=(python-setuptools)
-_py_check_deps=(coverage
-                pytest
-                pytest-cov
-                pytest-flake8
-                pytest-isort
-                toml) # for coverage[toml
-checkdepends=("${_py_check_deps[@]/#/python-}")
-_archive="$_pypi_name-$pkgver"
-source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/$_pypi_name/$_archive.tar.gz")
+_pycheckdeps=(coverage
+              pytest
+              pytest-cov
+              pytest-flake8
+              pytest-isort
+              toml) # for coverage[toml
+checkdepends=("${_pycheckdeps[@]/#/python-}")
+provides=("$_pyname=$pkgver")
+_archive="$_pyname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
 sha256sums=('21ea1626e15ae4070f3eb4ffc90e5fd65bf17650f912affa911f829fb7c0e112')
 
 prepare() {
