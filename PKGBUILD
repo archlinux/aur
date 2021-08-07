@@ -7,7 +7,7 @@
 # Forked from chromedriver package
 _pkgname=msedgedriver
 _channel=dev
-pkgname=${_pkgname}-${_channel}
+pkgname=${_pkgname}-${_channel}-bin
 pkgver=94.0.972.2
 pkgrel=1
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for microsoft edge)"

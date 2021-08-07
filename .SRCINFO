@@ -1,4 +1,4 @@
-pkgbase = msedgedriver-dev
+pkgbase = msedgedriver-dev-bin
 	pkgdesc = Standalone server that implements the W3C WebDriver standard (for microsoft edge)
 	pkgver = 94.0.972.2
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = msedgedriver-dev
 	source = msedgedriver_94.0.972.2_linux64.zip::https://msedgedriver.azureedge.net/94.0.972.2/edgedriver_linux64.zip
 	sha512sums = a3e5ce8767e69e6f2788a72c0a3e229e1d586a558e15de6c24722ca8991a64ea5a8acb85b443107d55bc6a545fae29ffd4c77561ddf905acacc89646ddcb00da
 
-pkgname = msedgedriver-dev
+pkgname = msedgedriver-dev-bin
