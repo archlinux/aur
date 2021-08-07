@@ -2,14 +2,14 @@
 
 pkgname=enroute-git
 _name=enroute
-pkgver=2.5.0.r60.g32a1060
+pkgver=10.0.1.r0.g539698af
 pkgrel=1
 pkgdesc="Enroute Flight Navigation"
 arch=('i686' 'x86_64')
 url="https://akaflieg-freiburg.github.io/enroute/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'clang')
-depends=('qt5-location' 'qt5-translations' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'hicolor-icon-theme' 'geoclue')
+depends=('qt5-location' 'qt5-translations' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-webview' 'hicolor-icon-theme' 'geoclue')
 source=("enroute::git+https://github.com/Akaflieg-Freiburg/enroute.git#branch=master")
 md5sums=('SKIP')
 
@@ -20,9 +20,13 @@ pkgver() {
 
 prepare() {
     cd "${_name}"
-    git submodule update --init --recursive
-
-    sed -i 's/\/usr\/share\/qt5/\/usr\/share\/qt/g' src/CMakeLists.txt
+    
+    git submodule init
+    # replace relative pathes with absolute to avoid looking in build dir
+    git config submodule."3rdParty/qhttpengine".url https://github.com/Akaflieg-Freiburg/qhttpengine.git
+    git config submodule."3rdParty/enrouteText".url https://github.com/Akaflieg-Freiburg/enrouteText.git
+    
+    git submodule update --recursive
 }
 
 build() {
