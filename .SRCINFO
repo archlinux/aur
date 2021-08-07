@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-qtkeychain-qt5
+	pkgdesc = Provides support for secure credentials storage (mingw-w64)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/frankosterfeld/qtkeychain
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-qt5-tools
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/frankosterfeld/qtkeychain/archive/v0.12.0.tar.gz
+	sha256sums = cc547d58c1402f6724d3ff89e4ca83389d9e2bdcfd9ae3d695fcdffa50a625a8
+
+pkgname = mingw-w64-qtkeychain-qt5
