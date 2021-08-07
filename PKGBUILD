@@ -1,5 +1,4 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
@@ -8,25 +7,35 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea-qt
-pkgver=60.4.0
+pkgver=60.5.0
 pkgrel=1
-pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS"
-arch=('x86_64')
-url="http://semiletov.org/tea"
-license=('GPL')
-depends=('qt6-base' 'qt6-5compat' 'gcc-libs' 'zlib' 'hunspell' 'desktop-file-utils')
-makedepends=('cmake')
-source=(https://github.com/psemiletov/tea-qt/archive/$pkgver.tar.gz)
-md5sums=(6cf13ad2036e1d5da53538dbae08d893)
+pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
+arch=(x86_64)
+url="https://tea.ourproject.org/"
+license=(GPL3)
+depends=(qt6-base qt6-5compat hunspell)
+makedepends=(cmake)
+optdepends=('poppler-qt6: open and search text in PDF files'
+            'djvulibre: open and search in DJVU')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/psemiletov/tea-qt/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('e62ba4a57dfd212c3848e2cd730628e34b28aab379768294cb80ff931a60ce8de00d0fe11046564a251a633b40c287abe39a280cb4ed865c2aea2a6cdc40669b')
+
+prepare() {
+  mkdir -p "${srcdir}/tea-qt-${pkgver}/build"
+}
 
 build() {
-  mkdir -p "${srcdir}/tea-qt-${pkgver}/b"
-  cd "${srcdir}/tea-qt-${pkgver}/b"
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cd "${srcdir}/tea-qt-${pkgver}/build"
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_PDF=ON \
+    -DUSE_DJVU=ON
+
   make
 }
 
 package(){
-  cd "${srcdir}/tea-qt-${pkgver}/b"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/tea-qt-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
 }
+
