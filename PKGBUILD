@@ -1,7 +1,7 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 # Co-Maintainer: Barfin
 pkgname=cloudflare-warp-bin
-pkgver=2021.7.0
+pkgver=2021.7.2
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 
@@ -12,9 +12,9 @@ depends=("glibc")
 arch=('x86_64')
 provides=('warp-cli' 'warp-diag' 'warp-svc')
 
-source=("https://pkg.cloudflareclient.com/uploads/cloudflare_warp_2021_7_0_1_amd64_44b51d5c11.deb")
+source=("http://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2021_7_2_1_amd64_e749f2ca49_amd64.deb")
 
-sha256sums=('7cd0bcac979ad39ba2698f66a7f39d116558ce361b76ebad07045cf65e900fed')
+sha256sums=('16f496aa08fd065393ec4329f0ad723e6b875f3a10e76f158aa4b1ee40885b78')
 install=$pkgname.install
 
 package() {
