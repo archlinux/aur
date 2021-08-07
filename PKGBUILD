@@ -1,4 +1,5 @@
-# Maintainer    zan <zan@420blaze.it>
+# Maintainer: Nigel Kukard <nkukard@LBSD.net>
+# Contributor: zan <zan@420blaze.it>
 
 pkgname=obs-hevc-vaapi-git
 pkgver=27.0.0.rc1.r41.g0314ff372
