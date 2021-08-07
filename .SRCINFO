@@ -1,6 +1,6 @@
 pkgbase = butane-bin
 	pkgdesc = Fedora CoreOS Config Transpiler
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/coreos/butane
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = butane-bin
 	license = Apache
 	conflicts = butane
 	validpgpkeys = 8C5BA6990BDB26E19F2A1A801161AE6945719A39
-	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.13.0/butane-aarch64-unknown-linux-gnu
-	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.13.0/butane-aarch64-unknown-linux-gnu.asc
-	sha256sums_aarch64 = 3852c65c1096a9bf585eb2c56468d595d654e71172cfd21d7ea768f86b164fcf
+	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.13.1/butane-aarch64-unknown-linux-gnu
+	source_aarch64 = https://github.com/coreos/butane/releases/download/v0.13.1/butane-aarch64-unknown-linux-gnu.asc
+	sha256sums_aarch64 = 54289fc3a78b61e8ae33193258af4ee2c91b69d039d2de5312464df82ea2834f
 	sha256sums_aarch64 = SKIP
-	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.13.0/butane-x86_64-unknown-linux-gnu
-	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.13.0/butane-x86_64-unknown-linux-gnu.asc
-	sha256sums_x86_64 = 527d933a6dbd0523d610ae15ad45d549168dea443c4f2fc6a8f7b41adcb2bbd4
+	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.13.1/butane-x86_64-unknown-linux-gnu
+	source_x86_64 = https://github.com/coreos/butane/releases/download/v0.13.1/butane-x86_64-unknown-linux-gnu.asc
+	sha256sums_x86_64 = 7720bda45dd600a2409a725f48b62fb3566f7d9914d895914331dc3b65b124b1
 	sha256sums_x86_64 = SKIP
 
 pkgname = butane-bin
