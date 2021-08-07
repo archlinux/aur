@@ -1,7 +1,42 @@
 #!/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-# Configuration.
+# Configuration:
+# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+# Use: aurutils --margs=VAR1=0,VAR2=1
+# Use: VAR1=0 VAR2=1 pamac
+
+# Use CUDA_ARCH to build for specific GPU architecture
+# Supports: single arch (52) and list of archs (52;60)
+
+[[ -v CUDA_ARCH ]] && _cuda_arch="-DALICEVISION_CUDA_CC_LIST=${CUDA_ARCH}"
+
+((DISABLE_CUDA))    && _use_cuda=OFF    || _use_cuda=ON     # Alow user to build without cuda
+((DISABLE_CUDA))    && eval DISABLE_{CCTAG,POPSIFT,UTE}=1   # Disable other components that requires cuda
+((DISABLE_CCTAG))   &&   _use_cctag=OFF ||   _use_cctag=ON  # Disable CCTag (require: cuda)
+#((!DISABLE_CCTAG))  && DISABLE_OPENCV=0                     # CCTag requires OpenCV""
+((DISABLE_OPENCV))  &&((!DISABLE_CCTAG))&&{ echo "error:CCTag requires OpenCV" >&2; exit 1; }
+((DISABLE_POPSIFT)) && _use_popsift=OFF || _use_popsift=ON  # Disable Popsift (requires: cuda)
+((DISABLE_UTE))     &&     _use_ute=OFF ||     _use_ute=ON  # Disable Uncertainty computation (require: cuda)
+((DISABLE_ALEMBIC)) && _use_alembic=OFF || _use_alembic=ON  # Disable Alembic (mesh export format)
+((DISABLE_OPENGV))  &&  _use_opengv=OFF ||  _use_opengv=ON  # Disable OpenGV (camera calibration)
+((DISABLE_OPENCV))  &&  _use_opencv=OFF ||  _use_opencv=ON  # Disable OpenCV (examples & CCTag dependency)
+((!BUILD_DOC))      &&   _build_doc=OFF ||   _build_doc=ON  # Disable Docs
+
+# Other CMake Options:
+
+# ALICEVISION_BUILD_SFM "Build AliceVision SfM part" ON
+# ALICEVISION_BUILD_MVS "Build AliceVision MVS part" ON
+# ALICEVISION_BUILD_HDR "Build AliceVision HDR part" ON
+# ALICEVISION_BUILD_SOFTWARE "Build AliceVision command line tools." ON
+# ALICEVISION_BUILD_EXAMPLES "Build AliceVision samples applications." OFF
+# ALICEVISION_BUILD_COVERAGE "Enable code coverage generation (gcc only)" OFF
+# ALICEVISION_BUILD_TESTS "Build AliceVision tests" OFF
+# ALICEVISION_USE_OCVSIFT "Add or not OpenCV SIFT in available features" OFF
+# ALICEVISION_USE_MESHSDFILTER "Use MeshSDFilter library (enable MeshDenoising and MeshDecimate)" ON
+# ALICEVISION_USE_NVTX_PROFILING "Use CUDA NVTX for profiling." OFF
+# ALICEVISION_NVCC_WARNINGS      "Switch on several additional warnings for CUDA nvcc." OFF
 _CMAKE_FLAGS+=(
               -DCMAKE_INSTALL_PREFIX=/usr
               -DCMAKE_INSTALL_LIBDIR=lib
@@ -10,34 +45,20 @@ _CMAKE_FLAGS+=(
               -D{COINUTILS,CLP,OSI}_INCLUDE_DIR_HINTS=/usr/include/coin
               -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon
               -DCERES_DIR=/usr/include/ceres
-              -DALICEVISION_BUILD_DOC=OFF
+              -DPopSift_DIR=/usr
+              -DCCTag_DIR=/usr/lib/cmake/CCTag
+              -DUNCERTAINTYTE_DIR=/usr
+              -DMAGMA_ROOT=/usr
+              -DALICEVISION_USE_CUDA="$_use_cuda"
+              -DALICEVISION_USE_CCTAG="$_use_cctag"
+              -DALICEVISION_USE_POPSIFT="$_use_popsift"
+              -DALICEVISION_USE_UNCERTAINTYTE="$_use_ute"
+              -DALICEVISION_USE_ALEMBIC="$_use_alembic"
+              -DALICEVISION_USE_OPENGV="$_use_opengv"
+              -DALICEVISION_USE_OPENCV="$_use_opencv"
+              -DALICEVISION_BUILD_DOC="$_build_doc"
+              "$_cuda_arch"
              )
-# shellcheck disable=SC2206
-[[ -v CUDA_ARCH ]] && _cc_list=(${CUDA_ARCH})
-# Alow user to build without cuda
-if ((DISABLE_CUDA)); then
-  _CMAKE_FLAGS+=('-DALICEVISION_USE_CUDA=OFF')
-  # Disable component that could yield cuda.
-else
-  ((DISABLE_POPSIFT)) && makedepends+=('cuda')
-  _CMAKE_FLAGS+=( -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc )
-  if [[ -v _cc_list ]]; then
-    _CMAKE_FLAGS+=( -DALICEVISION_CUDA_CC_LIST="$(IFS=';'; echo "${_cc_list[*]}";)" )
-  fi
-fi
-
-# Disable popsift and ute when cuda is disabled.
-((DISABLE_POPSIFT|DISABLE_CUDA)) || {
-  _CMAKE_FLAGS+=( -DPopSift_DIR=/usr )
-  makedepends+=('popsift')
-  optdepends+=('popsift-libs: for GPU accelerated feature matching')
-}
-
-((DISABLE_UTE|DISABLE_CUDA)) || {
-  _CMAKE_FLAGS+=( -DUNCERTAINTYTE_DIR=/usr -DMAGMA_ROOT=/usr )
-  makedepends+=('uncertainty-framework' 'magma')
-  optdepends+=('uncertainty-framework: for SFM uncertainty estimation')
-}
 
 
 _name=alice-vision
@@ -48,10 +69,15 @@ pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstru
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
-groups=()
-# split: cctag
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
 makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
+((!DISABLE_CCTAG))   && depends+=('cctag')
+((!DISABLE_ALEMBIC)) && depends+=('alembic')
+((!DISABLE_OPENGV))  && depends+=('opengv')
+((!DISABLE_OPENCV))  && depends+=('opencv')
+((BUILD_DOC))        && makedepends+=('python-sphinx')
+((!DISABLE_POPSIFT)) && { makedepends+=('popsift'); optdepends+=('popsift-libs: for GPU accelerated feature matching'); }
+((!DISABLE_UTE))     && { makedepends+=('uncertainty-framework' 'magma'); optdepends+=('uncertainty-framework: for SFM uncertainty estimation'); }
 source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
@@ -89,10 +115,11 @@ build() {
 
 
 package() {
-#  postpone till `cuda-split` package is ready
-#  ((DISABLE_CUDA)) || depends+=( 'libcudart.so=10.1' )
-  ((DISABLE_CUDA)) || optdepends+=( 'cuda: (libcudart.so) for depth map computation' )
+  ((DISABLE_CUDA)) || depends+=( 'libcudart.so=10.1' )
   DESTDIR="${pkgdir}" ninja -C build install
+
+# install docs
+  ((BUILD_DOC)) && { install -dm755 "${pkgdir}"/usr/share/doc/${pkgname}; cp -rvt "${pkgdir}"/usr/share/doc/${pkgname} build/src/htmlDoc/*; }
 
 # install custom licenses.
   cd "${pkgdir}"/usr/share

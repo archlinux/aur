@@ -23,6 +23,9 @@ pkgbase = alice-vision
 	depends = opengv
 	depends = coin-or-clp
 	depends = ceres-solver
+	depends = alembic
+	depends = opengv
+	depends = opencv
 	source = alice-vision_2.4.0.tgz::https://github.com/alicevision/AliceVision/archive/v2.4.0.tar.gz
 	source = MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop
 	source = nanoflann::git+https://github.com/alicevision/nanoflann.git
@@ -35,4 +38,3 @@ pkgbase = alice-vision
 	sha256sums = de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b
 
 pkgname = alice-vision
-
