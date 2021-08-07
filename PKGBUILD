@@ -1,27 +1,32 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
 url='https://rocalution.readthedocs.io/en/master'
 license=('MIT')
 depends=('hip-rocclr' 'rocsparse' 'rocblas' 'rocprim' 'rocrand' 'openmp')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'rocm-cmake' 'git')
 _git='https://github.com/ROCmSoftwarePlatform/rocALUTION'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('0424adf522ded41de5b77666e04464a25c73c92e34025762f30837f90a797445')
+sha256sums=('f064b96f9f04cf22b89f95f72147fcfef28e2c56ecd764008c060f869c74c144')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
- # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.2.x/docs/markdown/clang_options.md
+  # -fcf-protection is not supported by HIP, see
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.3.x/docs/markdown/clang_options.md
+
+  # With version 3.21, HIP support was added to CMake that breaks the current scripts, see
+  # https://github.com/ROCmSoftwarePlatform/rocRAND/issues/198#issuecomment-893573440
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
+        -D__skip_rocmclang=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DROCM_PATH=/opt/rocm \
         -DSUPPORT_HIP=ON \
         -DSUPPORT_OMP=ON \
         -DSUPPORT_MPI=OFF \
