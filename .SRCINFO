@@ -1,12 +1,12 @@
 pkgbase = nocturn
 	pkgdesc = Desktop twitter client
-	pkgver = 1.6.6
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/k0kubun/Nocturn
 	arch = x86_64
 	license = MIT
-	source = Nocturn-1.6.6.zip::https://github.com/k0kubun/Nocturn/releases/download/v1.6.6/Nocturn-linux-x64.zip
-	sha256sums = 4b3d516db1f25ee562e29019e79d581a52422482b3b49887548d30108b25788e
+	source = Nocturn-1.8.4.zip::https://github.com/k0kubun/Nocturn/releases/download/v1.8.4/Nocturn-linux-x64.zip
+	sha256sums = 2ef1f5b43b5f282ee0c32734b20612f6437af43f4608df42c04a0baf2b644e0f
 
 pkgname = nocturn
 
