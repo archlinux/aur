@@ -4,7 +4,7 @@
 
 pkgname=kaizen
 pkgdesc="Kaizen ElasticSearch GUI"
-pkgver=5.79.98
+pkgver=5.714.99
 pkgrel=1
 arch=('x86_64')
 url='https://www.elastic-kaizen.com/'
@@ -15,7 +15,7 @@ source=("https://www.elastic-kaizen.com/releases/kaizen-${pkgver}-linux-x64.zip"
   "LICENSE"
   "kaizen.png")
 
-sha512sums=('bbbed0d92f502e905e2eb00c7431cbe749273cc9477c6da1f0222a1502b722808b5a405e369986a6fb3af4bd1aca207d541c59b25ca6f15d3170e84b8271a135'
+sha512sums=('d9e462903d8728e22dfaec20b203a17d08a224a5f1bcaec3304b1389e28cfe3b75d01ee756a6cf94108030cf3db900443041650644d3a500a36f599badf705ac'
             'c7555c9173855402c3d47acc0b624e7ef26018b0f31d20db74eb52afea76b6109bec3d66bf3dad99194917dc9a58f784bc45662aa899f633fd2c7adfea4852d1'
             '35e15a34c425c8af17c1141a35cec0cbea6aba65d01443fb39ceb09ff51bb30ab356192d54b33dfb953ef9ddc6e489e42067358543f129e03f9a0c4f5a041529'
             'a0277b72a04cfa7dad2ae8819fc5a009211bbbb44645cc1b7f73fb66e9473d47d5fa6273dfc977bd6746bc435e5ddc21ba28d3cb03e3f090ae6b5ac82137b913')
