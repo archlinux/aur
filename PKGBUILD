@@ -25,8 +25,8 @@ source=("worldedit::git+https://github.com/kdb424/worldedit.git#branch=main")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
