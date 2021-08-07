@@ -6,10 +6,10 @@
 
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
-pkgver='3.0'
-pkgrel=4
+pkgver='3.0.1'
+pkgrel=1
 url='https://github.com/pycontribs/jira'
-license=('BSD 2-Clause')
+license=('BSD')
 arch=('any')
 depends=('python-defusedxml'
          'python-keyring'
@@ -17,17 +17,20 @@ depends=('python-defusedxml'
          'python-requests-oauthlib'
          'python-requests-toolbelt')
 optdepends=("ipython")
-makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/pycontribs/jira.git#tag=$pkgver")
-sha256sums=('SKIP')
+makedepends=('python-setuptools')
+source=("https://github.com/pycontribs/jira/archive/refs/tags/$pkgver.tar.gz"
+        "version.patch")
+sha256sums=('feb5f77431728aee7c99bca65f00c9f39682720369c7f24c0cf932049a72ec5f'
+            '1526a7899a67fd8388c4b3fc878de85da3d7589810e911680cd2d2adb15c1021')
 
-build() {
-  cd jira
-  python setup.py build
+
+prepare() {
+  cd "${srcdir}/jira-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/version.patch"
 }
 
 package() {
-  cd jira
+  cd "${srcdir}/jira-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

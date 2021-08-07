@@ -1,0 +1,8 @@
+--- jira-3.0.1/setup.py	2021-05-12 22:27:16.000000000 +0200
++++ jira-3.0.1/setup.py	2021-08-07 15:51:25.890726258 +0200
+@@ -2,4 +2,4 @@
+ import setuptools
+ 
+ if __name__ == "__main__":
+-    setuptools.setup(use_scm_version=True)
++    setuptools.setup(version='3.0.1')
