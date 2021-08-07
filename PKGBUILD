@@ -1,7 +1,7 @@
 # Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
 pkgname=xcolor-git
 pkgver=0.5.0.100.g0e99e67
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight color picker for X11"
 arch=(x86_64)
 url="https://github.com/Soft/xcolor"
@@ -17,9 +17,9 @@ pkgver() {
 }
 
 prepare() {
-	_get_commit=$(git ls-remote https://github.com/Soft/xcolor.git HEAD | cut -f1)
-	if [ ${_get_commit} = "0e99e67cd37000bf563aa1e89faae796ec25f163" ]; then
-		cd "$pkgname"
+	cd "$pkgname"
+	_commit=$(git rev-parse HEAD | cut -c1-7)
+	if [ "${_commit}" = "0e99e67" ]; then
 		patch -p1 < $startdir/cargo_fix.patch
 	fi
 }
