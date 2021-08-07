@@ -4,7 +4,7 @@
 _pkgname=augustus
 pkgname=$_pkgname-game-git
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
-pkgver=r3127.fe833c2b
+pkgver=r3879.e7ef0470
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Keriew/augustus"
@@ -13,9 +13,10 @@ conflicts=('augustus-game')
 provides=('augustus-game')
 makedepends=('git' 'cmake')
 depends=('sdl2' 'sdl2_mixer' 'libpng')
+install="${_pkgname}-game.install"
 source=($_pkgname-game.desktop $_pkgname-game.install git+https://github.com/Keriew/augustus)
 sha256sums=('52fd21bbd8a32cee21399c598283dfea11fa507e01e92c8344fb6e021fae0928'
-            '03467d55f4314a46ad3c8e6b16e689f36772969c42869823c175b01e6f6392c7'
+            'd0d9e1fdfa9edbb22239d55612c8b7ffdb501a1cfebea82cce2ccf4259f867ef'
             'SKIP')
 
 pkgver() {
