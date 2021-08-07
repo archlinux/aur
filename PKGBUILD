@@ -16,7 +16,15 @@ url="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/"
 license=('BSD' 'custom')
 depends=(glib2 nss xdg-utils)
 optdepends=(edge-${_channel})
-conflicts=("${_pkgname}" "${_pkgname}-dev")
+provides=("${_pkgname}-${_channel}")
+conflicts=(
+    "${_pkgname}"
+    "${_pkgname}-beta"
+    "${_pkgname}-dev"
+    "${_pkgname}-bin"
+    # "${_pkgname}-beta-bin"
+    "${_pkgname}-dev-bin"
+)
 source=("${_pkgname}_${pkgver}_linux64.zip::https://msedgedriver.azureedge.net/${pkgver}/edgedriver_linux64.zip")
 sha512sums=('ffd618d00015434655f68c0e6ac97c437a6fe8ee5e4ba8edf7bc3abd06e19cd9968cdba710703ff9687f9df5f3cfff5b922828aec501ad1bcb39a349a7b56138')
 
