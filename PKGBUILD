@@ -4,12 +4,13 @@
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: lybin
+# Forked from chromedriver package
 _pkgname=msedgedriver
 _channel=beta
 pkgname=${_pkgname}-${_channel}
 pkgver=93.0.961.11
 pkgrel=1
-pkgdesc="Standalone server that implements the W3C WebDriver standard (for google-chrome)"
+pkgdesc="Standalone server that implements the W3C WebDriver standard (for microsoft edge)"
 arch=('x86_64')
 url="https://chromedriver.chromium.org/"
 license=('BSD')
