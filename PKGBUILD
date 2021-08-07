@@ -1,21 +1,26 @@
-# Maintainer: JunYoung Gwak <aur@jgwak.com>
+# Maintainer: Triss Healy (trissylegs) <th@trissyle.gs>
+# Contributer: JunYoung Gwak <aur@jgwak.com>
 # Contributor: relrel <relrelbachar@gmail.com>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: James An <james@jamesan.ca>
 # Contributor: lybin
-pkgname=chromedriver
-pkgver=90.0.4430.24
+_pkgname=msedgedriver
+_channel=beta
+pkgname=${_pkgname}-${_channel}
+pkgver=93.0.961.11
 pkgrel=1
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for google-chrome)"
 arch=('x86_64')
 url="https://chromedriver.chromium.org/"
 license=('BSD')
 depends=(alsa-lib gtk3 libcups libxss libxtst nss xdg-utils)
-optdepends=(google-chrome)
-conflicts=(chromium)
-source=("${pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
-sha512sums=('b85313de6abc1b44f26a0e12e20cb66657b840417f5ac6018946de0c8392b05c11d2c22d35f0526b26c35cf8d6134348e5b6c54a28a3955c5b22cc247ae2ce4a')
+optdepends=(edge-${_channel})
+conflicts=("${_pkgname}" "${_pkgname}-dev")
+source=("${_pkgname}_${pkgver}_linux64.zip::https://msedgedriver.azureedge.net/93.0.961.11/edgedriver_linux64.zip")
+sha512sums=('ffd618d00015434655f68c0e6ac97c437a6fe8ee5e4ba8edf7bc3abd06e19cd9968cdba710703ff9687f9df5f3cfff5b922828aec501ad1bcb39a349a7b56138')
 
-package() {
-    install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/$pkgname"
+package() {    
+    install -Dm755 "${srcdir}/${_pkgname}" -t "${pkgdir}/usr/bin/"
+    install -Dm644 "${srcdir}/Driver_Notes/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 "${srcdir}/Driver_Notes/credits.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
