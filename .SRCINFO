@@ -1,7 +1,7 @@
 pkgbase = aurutils-git
 	pkgdesc = helper tools for the arch user repository
 	pkgver = 3.0.0.r6.g868691f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AladW/aurutils
 	arch = any
 	license = custom:ISC
@@ -10,6 +10,7 @@ pkgbase = aurutils-git
 	depends = jq
 	depends = pacutils
 	depends = curl
+	depends = expect
 	optdepends = bash-completion: bash completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: build file interaction
