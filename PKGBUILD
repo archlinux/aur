@@ -2,7 +2,7 @@
 
 pkgname=tea-qt-git
 pkgver=60.5.0.r0.g56c7271
-pkgrel=1
+pkgrel=2
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from stable git-commit with PDF and DJVU support."
 arch=('x86_64')
 url="https://tea.ourproject.org"
