@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=bbcli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="inoffical Bitbucket.org command line tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/craftamap/bb"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c0e12e9029cffcc4d37505cccebe4d85288338314beaa772de4bd94fa783b609')
+sha256sums=('2c7905c0433f4cb94161188bfda70b264ec4346cca187cec89c22dfb35c2c925')
 
 prepare() {
     export GOPATH="$srcdir/gopath"
@@ -31,7 +31,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -ldflags "-X github.com/craftamap/bb/cmd.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
         -o "${pkgname%cli}" .
 
     go clean -modcache
@@ -45,4 +45,3 @@ package() {
 }
 
 # vim:set ts=4 sw=4 et:
-sha256sums=('419dc562a2ec6b65fc5ef00d22d2d302a8f21ea59bad88db6ef4b7b5940f14e5')
