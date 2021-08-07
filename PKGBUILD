@@ -14,9 +14,17 @@ pkgdesc="Standalone server that implements the W3C WebDriver standard (for micro
 arch=('x86_64')
 url="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/"
 license=('BSD' 'custom')
-depends=(alsa-lib gtk3 libcups libxss libxtst nss xdg-utils)
-optdepends=(edge-${_channel})
-conflicts=("${_pkgname}" "${_pkgname}-beta")
+depends=(libxcb glib2 nss xdg-utils)
+optdepends=(microsoft-edge-${_channel})
+provides=("${_pkgname}=${pkgver}" "${_pkgname}-${_channel}")
+conflicts=(
+    "${_pkgname}"
+    "${_pkgname}-beta"
+    "${_pkgname}-dev"
+    "${_pkgname}-bin"
+    "${_pkgname}-beta-bin"
+    # "${_pkgname}-dev-bin"
+)
 source=("${_pkgname}_${pkgver}_linux64.zip::https://msedgedriver.azureedge.net/${pkgver}/edgedriver_linux64.zip")
 sha512sums=('a3e5ce8767e69e6f2788a72c0a3e229e1d586a558e15de6c24722ca8991a64ea5a8acb85b443107d55bc6a545fae29ffd4c77561ddf905acacc89646ddcb00da')
 

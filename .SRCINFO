@@ -6,16 +6,18 @@ pkgbase = msedgedriver-dev-bin
 	arch = x86_64
 	license = BSD
 	license = custom
-	depends = alsa-lib
-	depends = gtk3
-	depends = libcups
-	depends = libxss
-	depends = libxtst
+	depends = libxcb
+	depends = glib2
 	depends = nss
 	depends = xdg-utils
-	optdepends = edge-dev
+	optdepends = microsoft-edge-dev
+	provides = msedgedriver=94.0.972.2
+	provides = msedgedriver-dev
 	conflicts = msedgedriver
 	conflicts = msedgedriver-beta
+	conflicts = msedgedriver-dev
+	conflicts = msedgedriver-bin
+	conflicts = msedgedriver-beta-bin
 	source = msedgedriver_94.0.972.2_linux64.zip::https://msedgedriver.azureedge.net/94.0.972.2/edgedriver_linux64.zip
 	sha512sums = a3e5ce8767e69e6f2788a72c0a3e229e1d586a558e15de6c24722ca8991a64ea5a8acb85b443107d55bc6a545fae29ffd4c77561ddf905acacc89646ddcb00da
 
