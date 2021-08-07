@@ -37,10 +37,10 @@ arch=('i686' 'x86_64')
 url="https://github.com/alicevision/CCTag"
 license=('MPL2')
 depends=(boost-libs tbb)
-makedepends=(boost cmake eigen ninja)
+makedepends=(boost cmake eigen ninja opencv)
 # Configuration specific dependencis:
 ((DISABLE_CUDA)) || { makedepends+=(cuda); optdepends+=('cuda: for cuda detector'); }
-((ENABLE_APPS)) && depends+=(devil2 opencv qt5-base)
+((ENABLE_APPS)) && depends+=(devil2 qt5-base)
 ((ENABLE_DOC)) && makedepends+=(python-sphinx doxygen)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"fix_boost_math.patch::https://github.com/alicevision/CCTag/pull/166.diff")
