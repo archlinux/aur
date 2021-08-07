@@ -2,17 +2,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plom
-pkgver=0.5.16
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='Paperless open marking'
 arch=(any)
 url="https://gitlab.com/$pkgname/$pkgname"
 license=(AGPL3)
 _pydeps=(aiohttp
          appdirs
-         cffi
+         canvasapi
          imutils
-         jpegtran-cffi
          lapsolver
          numpy
          opencv
@@ -38,7 +37,7 @@ makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('efe3171afd9d254c3b52b8cde74edb3cc219c7b96d11c10a94dce05f8176e93e')
+sha256sums=('cf3fe708850c45d8cd1b4e4ad491162267c008dbe0bf80ae2db93cbb3fadcc0d')
 
 build() {
 	cd "$_archive"
@@ -48,7 +47,9 @@ build() {
 
 check() {
 	cd "$_archive"
-    pytest -l --pyargs "$pkgname" ||:
+	# Tests are not all passing yet, I think because the test suite layout is messed up.
+	# I'm giving it a pass at least until we figure out *why* it is failing.
+	pytest -l --pyargs "$pkgname" ||:
 }
 
 package() {
