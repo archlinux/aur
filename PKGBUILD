@@ -1,7 +1,7 @@
 # Maintainer: vinibali <vinibali1 at gmail dot com>
 
 pkgname=amdctl-git
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="Set P-State voltages and clock speeds on recent AMD CPUs on Linux.
 Currently supported families are: 10h, 11h, 12h, 14h, 15h, 16h"
@@ -10,7 +10,7 @@ url="https://github.com/kevinlekiller/amdctl"
 license=('GPLv3')
 depends=()
 source=(https://github.com/kevinlekiller/amdctl/archive/v"${pkgver}".zip)
-md5sums=(9e0c9568a236375f4a4fd8594783fcb2)
+md5sums=(f152b897230bebf4c31ae9c2aae2e61c)
 
 build()
 	{
