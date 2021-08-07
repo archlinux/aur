@@ -15,27 +15,23 @@ optdepends=('fuse-overlayfs: overlayfs support'
 provides=('docker-rootless' 'docker-rootless-extras')
 conflicts=('docker-rootless' 'docker-rootless-extras')
 install=$pkgname.install
-source_x86_64=(
-	"https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-$pkgver.tgz"
+source=(
 	"docker.service"
 	"docker.socket"
 	"99-docker-rootless.conf"
+)
+source_x86_64=(
+	"https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-$pkgver.tgz"
 )
 source_aarch64=(
 	"https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-$pkgver.tgz"
-	"docker.service"
-	"docker.socket"
-	"99-docker-rootless.conf"
 )
 
-sha256sums_x86_64=('3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef'
-                   '7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
-                   'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
-                   'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
-sha256sums_aarch64=('3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef'
-                    '7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
-                    'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
-                    'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
+sha256sums=('7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
+            'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
+            'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
+sha256sums_x86_64=('3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef')
+sha256sums_aarch64=('3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
