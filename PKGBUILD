@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 
 pkgname=tea-qt-git
-pkgver=60.5.0.r1.g56c7271
+pkgver=60.5.0.r0.g56c7271
 pkgrel=1
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from stable git-commit with PDF and DJVU support."
 arch=('x86_64')
@@ -12,8 +12,8 @@ optdepends=('poppler-qt6: open and search text in PDF files'
             'djvulibre: open and search in DJVU')
 
 makedepends=('cmake' 'git')
-provides=('tea')
-conflicts=('tea')
+provides=('tea-qt')
+conflicts=('tea-qt')
 
 source=("git+https://github.com/psemiletov/tea-qt.git")
 md5sums=('SKIP')
