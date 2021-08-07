@@ -14,8 +14,8 @@ pkgdesc="Standalone server that implements the W3C WebDriver standard (for micro
 arch=('x86_64')
 url="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/"
 license=('BSD' 'custom')
-depends=(libxcb glib2 nss xdg-utils)
-optdepends=(microsoft-edge-${_channel})
+depends=(glib2 nss xdg-utils)
+optdepends=(microsoft-edge-beta=${pkgver})
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-${_channel}")
 conflicts=(
     "${_pkgname}"
