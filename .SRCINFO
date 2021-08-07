@@ -4,7 +4,7 @@ pkgbase = firmware-tqc-a01
 	pkgrel = 1
 	url = https://github.com/RPi-Distro
 	arch = any
-	license = custom
+	license = GPL
 	conflicts = firmware-raspberrypi
 	options = !strip
 	source = brcmfmac43430-sdio_20210716.1.txt::https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/brcm/brcmfmac43430-sdio.AP6212.txt?h=20210716
