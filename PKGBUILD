@@ -3,14 +3,14 @@
 
 pkgname=vdo
 pkgrel=1
-pkgver=8.1.0.264
+pkgver=8.1.0.316
 pkgdesc='Userspace tools for managing VDO volumes'
 arch=('x86_64')
 url="https://github.com/dm-vdo/vdo"
 license=('GPL2')
 depends=('kvdo-dkms' 'python-yaml' 'device-mapper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dm-vdo/vdo/archive/$pkgver.tar.gz")
-sha256sums=('346d284cb08b41442492c59f428267e04564a103822cb0a8ef6f01b5c47fa46d')
+sha256sums=('f1dd66e7a927e323a5da1ef1c9523af22333ca2873423e7a09110dab73943cd2')
 
 build() {
   cd "$pkgname-$pkgver"

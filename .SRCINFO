@@ -1,6 +1,6 @@
 pkgbase = vdo
 	pkgdesc = Userspace tools for managing VDO volumes
-	pkgver = 8.1.0.264
+	pkgver = 8.1.0.316
 	pkgrel = 1
 	url = https://github.com/dm-vdo/vdo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vdo
 	depends = kvdo-dkms
 	depends = python-yaml
 	depends = device-mapper
-	source = vdo-8.1.0.264.tar.gz::https://github.com/dm-vdo/vdo/archive/8.1.0.264.tar.gz
-	sha256sums = 346d284cb08b41442492c59f428267e04564a103822cb0a8ef6f01b5c47fa46d
+	source = vdo-8.1.0.316.tar.gz::https://github.com/dm-vdo/vdo/archive/8.1.0.316.tar.gz
+	sha256sums = f1dd66e7a927e323a5da1ef1c9523af22333ca2873423e7a09110dab73943cd2
 
 pkgname = vdo
