@@ -10,8 +10,7 @@ pkgbase = python-flask-limiter
 	depends = python-flask
 	depends = python-six
 	depends = python-limits
-	source = flask-limiter-1.4.tar.gz::https://github.com/alisaifee/flask-limiter/archive/1.4.tar.gz
-	sha256sums = 46784a4128a18fd2b823a17bda0effeb5cc6e66b0807ee67fd222de7579419df
+	source = https://files.pythonhosted.org/packages/source/F/Flask-Limiter/Flask-Limiter-1.4.tar.gz
+	sha256sums = 021279c905a1e24f181377ab3be711be7541734b494f4e6db2b8edeba7601e48
 
 pkgname = python-flask-limiter
-
