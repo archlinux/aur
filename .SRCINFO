@@ -1,6 +1,6 @@
 pkgbase = gdm-tools-git
 	pkgdesc = Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)
-	pkgver = 54.aa9fcb8
+	pkgver = 57.6aba23f
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/gdm-tools
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = gdm-tools-git
 	md5sums = SKIP
 
 pkgname = gdm-tools-git
-
