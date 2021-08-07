@@ -1,4 +1,4 @@
-# Maintainer: Caleb Maclennan <caleb@aleque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=scribl
 pkgver=0.3.3
