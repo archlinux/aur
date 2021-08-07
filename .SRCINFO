@@ -1,10 +1,11 @@
-pkgbase = chromedriver
-	pkgdesc = Standalone server that implements the W3C WebDriver standard (for google-chrome)
-	pkgver = 90.0.4430.24
+pkgbase = msedgedriver-beta
+	pkgdesc = Standalone server that implements the W3C WebDriver standard (for microsoft edge)
+	pkgver = 93.0.961.11
 	pkgrel = 1
-	url = https://chromedriver.chromium.org/
+	url = https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 	arch = x86_64
 	license = BSD
+	license = custom
 	depends = alsa-lib
 	depends = gtk3
 	depends = libcups
@@ -12,10 +13,10 @@ pkgbase = chromedriver
 	depends = libxtst
 	depends = nss
 	depends = xdg-utils
-	optdepends = google-chrome
-	conflicts = chromium
-	source = chromedriver_90.0.4430.24_linux64.zip::https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
-	sha512sums = b85313de6abc1b44f26a0e12e20cb66657b840417f5ac6018946de0c8392b05c11d2c22d35f0526b26c35cf8d6134348e5b6c54a28a3955c5b22cc247ae2ce4a
+	optdepends = edge-beta
+	conflicts = msedgedriver
+	conflicts = msedgedriver-dev
+	source = msedgedriver_93.0.961.11_linux64.zip::https://msedgedriver.azureedge.net/93.0.961.11/edgedriver_linux64.zip
+	sha512sums = ffd618d00015434655f68c0e6ac97c437a6fe8ee5e4ba8edf7bc3abd06e19cd9968cdba710703ff9687f9df5f3cfff5b922828aec501ad1bcb39a349a7b56138
 
-pkgname = chromedriver
-
+pkgname = msedgedriver-beta
