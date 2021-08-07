@@ -1,17 +1,13 @@
 pkgbase = firmware-tqc-a01
 	pkgdesc = Additional firmware for TQC-A01
-	pkgver = 2
+	pkgver = 20210716
 	pkgrel = 1
 	url = https://github.com/RPi-Distro
 	arch = any
 	license = custom
 	conflicts = firmware-raspberrypi
 	options = !strip
-	source = brcmfmac43430-sdio_2.1.bin::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/master/brcm/brcmfmac43430-sdio.bin
-	source = brcmfmac43430-sdio_2.1.txt::https://raw.githubusercontent.com/RPi-Distro/firmware-nonfree/master/brcm/brcmfmac43430-sdio.AP6212.txt
-	source = BCM43430A1_2.1.hcd::https://raw.githubusercontent.com/LibreELEC/brcmfmac_sdio-firmware/master/BCM43430A1.vim
-	sha256sums = 023fd9b345fc0bbabae75721bc8702a905077daacc2c36b10b0616fb910e846b
+	source = brcmfmac43430-sdio_20210716.1.txt::https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/brcm/brcmfmac43430-sdio.AP6212.txt?h=20210716
 	sha256sums = fdef0603345dd023ad28c0eff2d5167915c617bee2d6944da9a6da1c4ac87ca5
-	sha256sums = d396912aa4efa7e0ea93dc6b63b1088619b59676ab53404d14fe79f5c71a5da0
 
 pkgname = firmware-tqc-a01
