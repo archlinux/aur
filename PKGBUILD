@@ -1,12 +1,13 @@
+# Maintainer: dummyx <dummyx at gmail dot com>
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r30
+pkgver=r33
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
-url='http://forum.doom9.org/showthread.php?t=166582'
+url='https://github.com/HomeOfVapourSynthEvolution/havsfunc'
 license=('GPL')
 depends=('vapoursynth'
          'vapoursynth-plugin-adjust-git'
@@ -15,7 +16,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-bilateral-git'
          'vapoursynth-plugin-ctmf-git'
          'vapoursynth-plugin-dctfilter-git'
-         'vapoursynth-plugin-deblock-git'
+         'vapoursynth-plugin-deblock'
          'vapoursynth-plugin-dfttest-git'
          'vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-eedi3cl-git'
@@ -31,11 +32,14 @@ depends=('vapoursynth'
          'vapoursynth-plugin-sangnom-hg'
          'vapoursynth-plugin-svpflow1'
          'vapoursynth-plugin-svpflow2-bin'
+         'vapoursynth-plugin-ttempsmooth-git'
          'vapoursynth-plugin-znedi3-git'
          )
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}-git")
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha256sums=('5c8505ebf764ec9bb860c0295c2c4b48168770e3a0a30cc6c1abf8a4fa48e2cc')
+sha256sums=('87446e937145c19f94b6ef51776099918140d439a142c460454e7e17cff0778e')
 
 _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
