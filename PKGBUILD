@@ -1,9 +1,15 @@
 #!/bin/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+# Configuration:
+# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+# Use: aurutils --margs=VAR1=0,VAR2=1
+# Use: VAR1=0 VAR2=1 pamac
 name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
 fragment="#tag=v2021.1.0"
+components+=(QtOIIO qmlAlembic)
 pkgname=${name}
 pkgver=${fragment#\#tag=v}
 pkgrel=6
@@ -18,8 +24,8 @@ depends=(alice-vision alembic openimageio python python-psutil "${_depends_qt[@]
 makedepends=(git cmake python-{cx-freeze-qfix,idna,setuptools} patchelf)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
-        "git+https://github.com/alicevision/QtOIIO.git"
-        "git+https://github.com/alicevision/qmlAlembic.git"
+        "git+https://github.com/alicevision/QtOIIO.git${fragment}"
+        "git+https://github.com/alicevision/qmlAlembic.git${fragment}"
         "pyside_property_error.patch"
         "Fix-incompatibility-with-recent-cx_Freeze.patch"
         )
@@ -35,12 +41,17 @@ prepare() {
   msg2 "Hardcode camera_database and voctree default value"
   sed -i   "s:'ALICEVISION_VOCTREE', '':'ALICEVISION_VOCTREE', '/usr/share/${pkgname}/vlfeat_K80L3.SIFT.tree':g" meshroom/nodes/aliceVision/*.py
   sed -i "s:'ALICEVISION_SENSOR_DB', '':'ALICEVISION_SENSOR_DB', '/usr/share/aliceVision/cameraSensors.db':g" meshroom/nodes/aliceVision/*.py
+# Fix for QtOIIO plugin to build against openexr:3
   sed -i '1 i\#include <cmath>' "${srcdir}"/QtOIIO/src/jetColorMap.hpp
   sed -i 's|imageformats|plugins/imageformats|' "${srcdir}"/QtOIIO/src/imageIOHandler/CMakeLists.txt
+  sed -i 's|${OPENIMAGEIO_LIBRARIES}|OpenImageIO::OpenImageIO|g' "${srcdir}"/QtOIIO/src/{imageIOHandler,depthMapEntity}/CMakeLists.txt
+  sed -i 's|${OPENIMAGEIO_INCLUDE_DIRS}|${OpenImageIO_INCLUDE_DIRS}|g' "${srcdir}"/QtOIIO/src/{imageIOHandler,depthMapEntity}/CMakeLists.txt
   sed -i 's|OPENIMAGEIO_FOUND|OpenImageIO_FOUND|' "${srcdir}"/QtOIIO/CMakeLists.txt
   rm -rf "${srcdir}"/QtOIIO/cmake/
+
+# Fix for qmlAlembic plugin to build against openexr:3
   sed -i '/find_package(IlmBase REQUIRED)/d' "${srcdir}"/qmlAlembic/CMakeLists.txt
-  sed -i 's|ILMBASE_INCLUDE_DIR||' "${srcdir}"/qmlAlembic/src/CMakeLists.txt
+  sed -i 's|${ILMBASE_INCLUDE_DIR}||' "${srcdir}"/qmlAlembic/src/CMakeLists.txt
   rm -rf "${srcdir}"/qmlAlembic/cmake/
 
   # avoid bug in pyside 5.15.2 (https://bugreports.qt.io/browse/PYSIDE-1426)
@@ -50,15 +61,13 @@ prepare() {
 }
 
 build() {
-  msg2 'build QtOIIO'
-  cd "${srcdir}"/QtOIIO
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
-  make
-
-  msg2 'build qmlAlembic'
-  cd "${srcdir}"/qmlAlembic
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
-  make
+  for component in "${components[@]}" ; do
+    msg2 "build $component"
+    cd "${srcdir}/$component"
+#   cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/${name^}-${pkgver%.r*}/qtPlugins" -DCMAKE_BUILD_TYPE=Release .
+    cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt" -DCMAKE_BUILD_TYPE=Release .
+    make
+  done
 
   msg2 'build Meshroom'
   cd "${srcdir}"/${pkgname}
@@ -67,12 +76,13 @@ build() {
 
 
 package() {
-  cd "${srcdir}"/QtOIIO
-  make DESTDIR="${pkgdir}" install
+  for component in "${components[@]}" ; do
+    msg2 "install $component"
+    cd "${srcdir}/$component"
+    make DESTDIR="${pkgdir}" install
+  done
 
-  cd "${srcdir}"/qmlAlembic
-  make DESTDIR="${pkgdir}" install
-
+  msg2 'install Meshroom'
   cd "${srcdir}"/${pkgname}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 -t "${pkgdir}"/usr/share/${pkgname} "${srcdir}"/voctree/vlfeat_K80L3.SIFT.tree

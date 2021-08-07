@@ -28,8 +28,8 @@ pkgbase = meshroom
 	depends = qt5-charts
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#tag=v2021.1.0
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
-	source = git+https://github.com/alicevision/QtOIIO.git
-	source = git+https://github.com/alicevision/qmlAlembic.git
+	source = git+https://github.com/alicevision/QtOIIO.git#tag=v2021.1.0
+	source = git+https://github.com/alicevision/qmlAlembic.git#tag=v2021.1.0
 	source = pyside_property_error.patch
 	source = Fix-incompatibility-with-recent-cx_Freeze.patch
 	sha256sums = SKIP
