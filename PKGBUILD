@@ -1,10 +1,10 @@
-# Maintainer: Heiko Nickerl <dev at hnicke dot de>
+# Maintainer: Heiko Nickerl <sodalite at hnicke dot de>
 pkgname=sodalite
-pkgver=0.21.34
+pkgver=0.21.35
 pkgrel=1
 pkgdesc="Keyboard-driven terminal file navigator and launcher"
 arch=('any')
-url="https://www.github.com/hnicke/sodalite"
+url="https://sodalite.hnicke.de"
 license=('GPL')
 depends=(
     'python>=3.9'
@@ -19,7 +19,7 @@ depends=(
     'xdg-utils'
 )
 source=("https://github.com/hnicke/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a4fecfa330e60f8ecb057105eb8b011bfa074883b8060c2c150fd9dd11c4a6ba')
+sha256sums=('e5cd2dba775383faa5fb4659039ff13a17ec9b0f1e566e57cb1efdc43ef50d65')
 
 _srcdir=$pkgname-$pkgver
 build() {
