@@ -1,0 +1,65 @@
+Description: This patch updates the scripts "is_clang.py" (gn) and "make_data_assembly.py" (icu) to work with Python 3.
+
+diff --unified --recursive --text enve.orig/third_party/skia/gn/is_clang.py enve.new/third_party/skia/gn/is_clang.py
+--- enve.orig/third_party/skia/gn/is_clang.py	2021-04-27 23:42:44.879494431 -0300
++++ enve.new/third_party/skia/gn/is_clang.py	2021-04-28 18:47:13.033804170 -0300
+@@ -11,8 +11,8 @@
+ import sys
+ cc,cxx = sys.argv[1:3]
+ 
+-if ('clang' in subprocess.check_output('%s --version' % cc, shell=True) and
+-    'clang' in subprocess.check_output('%s --version' % cxx, shell=True)):
++if (b'clang' in subprocess.check_output('%s --version' % cc, shell=True) and
++    b'clang' in subprocess.check_output('%s --version' % cxx, shell=True)):
+   print('true')
+ else:
+   print('false')
+diff --unified --recursive --text enve.orig/third_party/skia/third_party/externals/icu/scripts/make_data_assembly.py enve.new/third_party/skia/third_party/externals/icu/scripts/make_data_assembly.py
+--- enve.orig/third_party/skia/third_party/externals/icu/scripts/make_data_assembly.py	2021-04-28 17:45:36.609684118 -0300
++++ enve.new/third_party/skia/third_party/externals/icu/scripts/make_data_assembly.py	2021-04-28 19:07:03.537511109 -0300
+@@ -42,7 +42,7 @@
+   step = -1
+ 
+ input_data = open(input_file, 'rb').read()
+-n = input_data.find("icudt")
++n = input_data.find(b"icudt")
+ if n == -1:
+   sys.exit("Cannot find a version number in %s." % input_file)
+ 
+@@ -75,28 +75,28 @@
+                "\t.type icudt%s_dat,%%object\n"
+                "icudt%s_dat:\n" % tuple([version_number] * 4))
+ 
+-split = [binascii.hexlify(input_data[i:i + 4][::step]).upper().lstrip('0')
++split = [binascii.hexlify(input_data[i:i + 4][::step]).upper().lstrip(b'0')
+         for i in range(0, len(input_data), 4)]
+ 
+ for i in range(len(split)):
+   if (len(split[i]) == 0):
+-    value = '0'
++    value = b'0'
+   elif (len(split[i]) == 1):
+-    if not any((c in '123456789') for c in split[i]):
+-      value = '0x0' + split[i]
++    if not any((c in b'123456789') for c in split[i]):
++      value = b'0x0' + split[i]
+     else:
+       value = split[i]
+   elif (len(split[i]) % 2 == 1):
+-    value = '0x0' + split[i]
++    value = b'0x0' + split[i]
+   else:
+-    value = '0x' + split[i]
++    value = b'0x' + split[i]
+ 
+   if (i % 32 == 0):
+     output.write("\n.long ")
+   else:
+     output.write(",")
+-  output.write(value)
++  output.write(value.decode('utf-8'))
+ 
+ output.write("\n")
+ output.close()
+-print "Generated " + output_file
++print(f'Generated {output_file}')
