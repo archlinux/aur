@@ -1,4 +1,0 @@
-post_install () {
-    udevadm control --reload
-    udevadm trigger
-}
