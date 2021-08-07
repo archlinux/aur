@@ -1,22 +1,11 @@
-From c5c4ea6d73b96660a0c7a4acfa20260a009eaded Mon Sep 17 00:00:00 2001
+From 6c661da8add5168cee3b745594d66173189bc8a2 Mon Sep 17 00:00:00 2001
 From: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date: Wed, 14 Jul 2021 21:52:37 -0700
-Subject: [PATCH] v5.13.2-s0ix patch 2021-07-14
+Date: Thu, 5 Aug 2021 02:39:45 -0700
+Subject: [PATCH] v5.13.8 s0ix patch 2021-08-05
 
 Squashed commit of the following:
 
-commit dfd19418b30dd4b44909fc2c4b6a9b06c2554d9b
-Author: Marcin Bachry <hegel666@gmail.com>
-Date:   Tue Mar 16 15:28:51 2021 -0400
-
-    PCI: quirks: Quirk PCI d3hot delay for AMD xhci
-
-    Renoir needs a similar delay.
-
-    Signed-off-by: Marcin Bachry <hegel666@gmail.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit 1d4a9adf12b2f2e175f937cd8b056b7e382bbc2d
+commit 8f506eaa976e148acdc856704a655659cadd279e
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jul 7 09:16:47 2021 -0500
 
@@ -30,7 +19,7 @@ Date:   Wed Jul 7 09:16:47 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 5d419d5edb6c52b50a6883496e545dea2108f7ab
+commit fd065a1e8ee224a0c550662f3812e987c6d21fa6
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 30 14:46:06 2021 -0500
 
@@ -71,7 +60,7 @@ Date:   Wed Jun 30 14:46:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit 027e28cf9b134b6c9996ba586a5e501953db6c75
+commit cd38229157b4ed96831763fed09a2ef1d67466b2
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:03 2021 +0530
 
@@ -83,7 +72,7 @@ Date:   Tue Jun 29 14:18:03 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit d659780411974015aa21e8740cdf90a6c1821cbb
+commit 6cbf4ca877f9a7763eb7ceaec82884f7542b8584
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:02 2021 +0530
 
@@ -95,7 +84,7 @@ Date:   Tue Jun 29 14:18:02 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 92df7f17d7461ae779957ebbe64797caaab680ff
+commit b08043dc2dc982e77f2a620f6ac64dcc77085796
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:01 2021 +0530
 
@@ -115,7 +104,7 @@ Date:   Tue Jun 29 14:18:01 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit ce4b6d7cca5300babedff9030592628ae24e5795
+commit abfb68f228563b457a9f7f2c8db8f9946f1c082d
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:00 2021 +0530
 
@@ -134,7 +123,7 @@ Date:   Tue Jun 29 14:18:00 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 8236650e7af934a9912f5810c95506e638ede06c
+commit df0f8a8e29ae2d10f34d0f1ba879cd6df0004871
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:17:59 2021 +0530
 
@@ -146,43 +135,18 @@ Date:   Tue Jun 29 14:17:59 2021 +0530
 
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 46400a2beb5c6c819db50eaeae0a7640c1273a70
-Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-Date:   Tue Jun 29 14:17:58 2021 +0530
+commit 0dd5c53f0d5b1a07b0473562a6be34005eb852a2
+Author: Marcin Bachry <hegel666@gmail.com>
+Date:   Tue Mar 16 15:28:51 2021 -0400
 
-    platform/x86: amd-pmc: Fix SMU firmware reporting mechanism
+    PCI: quirks: Quirk PCI d3hot delay for AMD xhci
 
-    It was lately understood that the current mechanism available in the
-    driver to get SMU firmware info works only on internal SMU builds and
-    there is a separate way to get all the SMU logging counters (addressed
-    in the next patch). Hence remove all the smu info shown via debugfs as it
-    is no more useful.
+    Renoir needs a similar delay.
 
-    Fixes: 156ec4731cb2 ("platform/x86: amd-pmc: Add AMD platform support for S2Idle")
-    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Marcin Bachry <hegel666@gmail.com>
+    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit bd06b697a1e6a136b2e305634e9f312762059909
-Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-Date:   Tue Jun 29 14:17:57 2021 +0530
-
-    platform/x86: amd-pmc: Fix command completion code
-
-    The protocol to submit a job request to SMU is to wait for
-    AMD_PMC_REGISTER_RESPONSE to return 1,meaning SMU is ready to take
-    requests. PMC driver has to make sure that the response code is always
-    AMD_PMC_RESULT_OK before making any command submissions.
-
-    When we submit a message to SMU, we have to wait until it processes
-    the request. Adding a read_poll_timeout() check as this was missing in
-    the existing code.
-
-    Also, add a mutex to protect amd_pmc_send_cmd() calls to SMU.
-
-    Fixes: 156ec4731cb2 ("platform/x86: amd-pmc: Add AMD platform support for S2Idle")
-    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
-    Acked-by: Raul E Rangel <rrangel@chromium.org>
-
-commit e8ef1eac2ff5426b9b35f49a587bc3a7d9397659
+commit df67da22f52dcde4ca3bba9609f9605565b3cfaf
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jun 17 11:42:12 2021 -0500
 
@@ -198,7 +162,7 @@ Date:   Thu Jun 17 11:42:12 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 864a6b01761b2000ec7bc9fff388c61efceaf353
+commit c53aff424e31bcb6706d6c7b8a6c06f0bca05a19
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:11 2021 -0500
 
@@ -212,7 +176,7 @@ Date:   Thu Jun 17 11:42:11 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 8b4804c4344b418f9d626814e920ccf95e364024
+commit 2019bfd57b6fe44cae0d356f54b948bfd707fa97
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:10 2021 -0500
 
@@ -223,7 +187,7 @@ Date:   Thu Jun 17 11:42:10 2021 -0500
 
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 3715cebc4d1c47cf135944773fa9ff284542910e
+commit d9c8d6d7d178fbfedddc1d1a9f27d189cb8a4df9
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:09 2021 -0500
 
@@ -241,7 +205,7 @@ Date:   Thu Jun 17 11:42:09 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 67e6dbc2f704df510523cd62d0b70a33096d565f
+commit 9f339765df127c0973766c4c282aab07999292a8
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:08 2021 -0500
 
@@ -252,7 +216,7 @@ Date:   Thu Jun 17 11:42:08 2021 -0500
 
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit f207e3ee5d44caa2626e08f3d331dc3d994d9ff1
+commit 6e853c597c7786939ea18e03e161d4b098a5201c
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 9 13:40:18 2021 -0500
 
@@ -299,7 +263,7 @@ Date:   Wed Jun 9 13:40:18 2021 -0500
     Tested-by: Julian Sikorski <belegdol@gmail.com>
     Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-commit 4707d17911041378604fa53b28e09b5aab2d2a5c
+commit fd82413988169aa648d1507298b925f73e5b0ce4
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 9 13:40:17 2021 -0500
 
@@ -321,15 +285,15 @@ Date:   Wed Jun 9 13:40:17 2021 -0500
     Reviewed-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
     Signed-off-by: Christoph Hellwig <hch@lst.de>
 ---
- drivers/acpi/device_pm.c       |  32 +++++
+ drivers/acpi/device_pm.c       |  32 ++++++
  drivers/acpi/internal.h        |   9 ++
- drivers/acpi/x86/s2idle.c      | 157 ++++++++++++++-------
+ drivers/acpi/x86/s2idle.c      | 157 +++++++++++++++++--------
  drivers/acpi/x86/utils.c       |  25 ++++
- drivers/nvme/host/pci.c        |  28 +---
+ drivers/nvme/host/pci.c        |  28 +----
  drivers/pci/quirks.c           |   3 +
- drivers/platform/x86/amd-pmc.c | 246 ++++++++++++++++++++++++++++++---
+ drivers/platform/x86/amd-pmc.c | 204 ++++++++++++++++++++++++++++++---
  include/linux/acpi.h           |   5 +
- 8 files changed, 405 insertions(+), 100 deletions(-)
+ 8 files changed, 372 insertions(+), 91 deletions(-)
 
 diff --git a/drivers/acpi/device_pm.c b/drivers/acpi/device_pm.c
 index 9d2d3b9bb8b5..0cfdef2fc3ad 100644
@@ -685,10 +649,10 @@ index bdc1ba00aee9..f22f23933063 100644
 +	return x86_match_cpu(storage_d3_cpu_ids);
 +}
 diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
-index 42ad75ff1348..5a72bdf5ad03 100644
+index d963f25fc7ae..66455e2261d0 100644
 --- a/drivers/nvme/host/pci.c
 +++ b/drivers/nvme/host/pci.c
-@@ -2828,32 +2828,6 @@ static unsigned long check_vendor_combination_bug(struct pci_dev *pdev)
+@@ -2880,32 +2880,6 @@ static unsigned long check_vendor_combination_bug(struct pci_dev *pdev)
  	return 0;
  }
  
@@ -721,7 +685,7 @@ index 42ad75ff1348..5a72bdf5ad03 100644
  static void nvme_async_probe(void *data, async_cookie_t cookie)
  {
  	struct nvme_dev *dev = data;
-@@ -2903,7 +2877,7 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+@@ -2955,7 +2929,7 @@ static int nvme_probe(struct pci_dev *pdev, const struct pci_device_id *id)
  
  	quirks |= check_vendor_combination_bug(pdev);
  
@@ -731,10 +695,10 @@ index 42ad75ff1348..5a72bdf5ad03 100644
  		 * Some systems use a bios work around to ask for D3 on
  		 * platforms that support kernel managed suspend.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 22b2bb1109c9..c4f5e2f093a3 100644
+index 6d74386eadc2..446f8f7b0ee4 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -1899,6 +1899,9 @@ static void quirk_ryzen_xhci_d3hot(struct pci_dev *dev)
+@@ -1900,6 +1900,9 @@ static void quirk_ryzen_xhci_d3hot(struct pci_dev *dev)
  }
  DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, 0x15e0, quirk_ryzen_xhci_d3hot);
  DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, 0x15e1, quirk_ryzen_xhci_d3hot);
@@ -745,10 +709,10 @@ index 22b2bb1109c9..c4f5e2f093a3 100644
  #ifdef CONFIG_X86_IO_APIC
  static int dmi_disable_ioapicreroute(const struct dmi_system_id *d)
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index b9da58ee9b1e..680f94c7e075 100644
+index ca95c2a52e26..663a4ca0580d 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
-@@ -46,34 +46,79 @@
+@@ -46,26 +46,70 @@
  #define AMD_PMC_RESULT_CMD_UNKNOWN           0xFE
  #define AMD_PMC_RESULT_FAILED                0xFF
  
@@ -776,7 +740,6 @@ index b9da58ee9b1e..680f94c7e075 100644
  #define AMD_CPU_ID_CZN			AMD_CPU_ID_RN
 +#define AMD_CPU_ID_YC			0x14B5
  
--#define AMD_SMU_FW_VERSION		0x0
  #define PMC_MSG_DELAY_MIN_US		100
  #define RESPONSE_REGISTER_LOOP_MAX	200
  
@@ -819,10 +782,9 @@ index b9da58ee9b1e..680f94c7e075 100644
  	u32 cpu_id;
 +	u32 active_ips;
  	struct device *dev;
-+	struct mutex lock; /* generic mutex lock */
+ 	struct mutex lock; /* generic mutex lock */
  #if IS_ENABLED(CONFIG_DEBUG_FS)
- 	struct dentry *dbgfs_dir;
- #endif /* CONFIG_DEBUG_FS */
+@@ -74,6 +118,7 @@ struct amd_pmc_dev {
  };
  
  static struct amd_pmc_dev pmc;
@@ -830,7 +792,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  
  static inline u32 amd_pmc_reg_read(struct amd_pmc_dev *dev, int reg_offset)
  {
-@@ -85,18 +130,76 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
+@@ -85,13 +130,76 @@ static inline void amd_pmc_reg_write(struct amd_pmc_dev *dev, int reg_offset, u3
  	iowrite32(val, dev->regbase + reg_offset);
  }
  
@@ -854,8 +816,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  #ifdef CONFIG_DEBUG_FS
  static int smu_fw_info_show(struct seq_file *s, void *unused)
  {
- 	struct amd_pmc_dev *dev = s->private;
--	u32 value;
++	struct amd_pmc_dev *dev = s->private;
 +	struct smu_metrics table;
 +	int idx;
 +
@@ -877,9 +838,7 @@ index b9da58ee9b1e..680f94c7e075 100644
 +			seq_printf(s, "%-8s : %lld\n", soc15_ip_blk[idx].name,
 +				   table.timecondition_notmet_lastcapture[idx]);
 +	}
- 
--	value = ioread32(dev->smu_base + AMD_SMU_FW_VERSION);
--	seq_printf(s, "SMU FW Info: %x\n", value);
++
  	return 0;
  }
  DEFINE_SHOW_ATTRIBUTE(smu_fw_info);
@@ -910,7 +869,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  static void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
  {
  	debugfs_remove_recursive(dev->dbgfs_dir);
-@@ -107,6 +210,8 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -102,6 +210,8 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
  	dev->dbgfs_dir = debugfs_create_dir("amd_pmc", NULL);
  	debugfs_create_file("smu_fw_info", 0644, dev->dbgfs_dir, dev,
  			    &smu_fw_info_fops);
@@ -919,7 +878,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -118,6 +223,32 @@ static inline void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
+@@ -113,6 +223,32 @@ static inline void amd_pmc_dbgfs_unregister(struct amd_pmc_dev *dev)
  }
  #endif /* CONFIG_DEBUG_FS */
  
@@ -952,7 +911,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
  {
  	u32 value;
-@@ -132,15 +263,15 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
+@@ -127,10 +263,9 @@ static void amd_pmc_dump_registers(struct amd_pmc_dev *dev)
  	dev_dbg(dev->dev, "AMD_PMC_REGISTER_MESSAGE:%x\n", value);
  }
  
@@ -963,61 +922,37 @@ index b9da58ee9b1e..680f94c7e075 100644
 -	u8 msg;
  	u32 val;
  
-+	mutex_lock(&dev->lock);
- 	/* Wait until we get a valid response */
- 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
--				val, val > 0, PMC_MSG_DELAY_MIN_US,
-+				val, val != 0, PMC_MSG_DELAY_MIN_US,
- 				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
- 	if (rc) {
- 		dev_err(dev->dev, "failed to talk to SMU\n");
-@@ -154,34 +285,91 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 	mutex_lock(&dev->lock);
+@@ -150,8 +285,8 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_ARGUMENT, set);
  
  	/* Write message ID to message ID register */
 -	msg = (dev->cpu_id == AMD_CPU_ID_RN) ? MSG_OS_HINT_RN : MSG_OS_HINT_PCO;
  	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
--	return 0;
 +
-+	/* Wait until we get a valid response */
-+	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
-+				val, val != 0, PMC_MSG_DELAY_MIN_US,
-+				PMC_MSG_DELAY_MIN_US * RESPONSE_REGISTER_LOOP_MAX);
-+	if (rc) {
-+		dev_err(dev->dev, "SMU response timed out\n");
-+		goto out_unlock;
-+	}
-+
-+	switch (val) {
-+	case AMD_PMC_RESULT_OK:
+ 	/* Wait until we get a valid response */
+ 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
+ 				val, val != 0, PMC_MSG_DELAY_MIN_US,
+@@ -163,6 +298,11 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 
+ 	switch (val) {
+ 	case AMD_PMC_RESULT_OK:
 +		if (ret) {
 +			/* PMFW may take longer time to return back the data */
 +			usleep_range(DELAY_MIN_US, 10 * DELAY_MAX_US);
 +			*data = amd_pmc_reg_read(dev, AMD_PMC_REGISTER_ARGUMENT);
 +		}
-+		break;
-+	case AMD_PMC_RESULT_CMD_REJECT_BUSY:
-+		dev_err(dev->dev, "SMU not ready. err: 0x%x\n", val);
-+		rc = -EBUSY;
-+		goto out_unlock;
-+	case AMD_PMC_RESULT_CMD_UNKNOWN:
-+		dev_err(dev->dev, "SMU cmd unknown. err: 0x%x\n", val);
-+		rc = -EINVAL;
-+		goto out_unlock;
-+	case AMD_PMC_RESULT_CMD_REJECT_PREREQ:
-+	case AMD_PMC_RESULT_FAILED:
-+	default:
-+		dev_err(dev->dev, "SMU cmd failed. err: 0x%x\n", val);
-+		rc = -EIO;
-+		goto out_unlock;
-+	}
-+
-+out_unlock:
-+	mutex_unlock(&dev->lock);
+ 		break;
+ 	case AMD_PMC_RESULT_CMD_REJECT_BUSY:
+ 		dev_err(dev->dev, "SMU not ready. err: 0x%x\n", val);
+@@ -182,32 +322,54 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set)
+ 
+ out_unlock:
+ 	mutex_unlock(&dev->lock);
 +	amd_pmc_dump_registers(dev);
-+	return rc;
-+}
-+
+ 	return rc;
+ }
+ 
 +static int amd_pmc_get_os_hint(struct amd_pmc_dev *dev)
 +{
 +	switch (dev->cpu_id) {
@@ -1028,8 +963,8 @@ index b9da58ee9b1e..680f94c7e075 100644
 +		return MSG_OS_HINT_RN;
 +	}
 +	return -EINVAL;
- }
- 
++}
++
  static int __maybe_unused amd_pmc_suspend(struct device *dev)
  {
  	struct amd_pmc_dev *pdev = dev_get_drvdata(dev);
@@ -1070,7 +1005,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  	return 0;
  }
  
-@@ -190,6 +378,7 @@ static const struct dev_pm_ops amd_pmc_pm_ops = {
+@@ -216,6 +378,7 @@ static const struct dev_pm_ops amd_pmc_pm_ops = {
  };
  
  static const struct pci_device_id pmc_pci_ids[] = {
@@ -1078,7 +1013,7 @@ index b9da58ee9b1e..680f94c7e075 100644
  	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, AMD_CPU_ID_CZN) },
  	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, AMD_CPU_ID_RN) },
  	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, AMD_CPU_ID_PCO) },
-@@ -201,9 +390,8 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -227,9 +390,8 @@ static int amd_pmc_probe(struct platform_device *pdev)
  {
  	struct amd_pmc_dev *dev = &pmc;
  	struct pci_dev *rdev;
@@ -1090,21 +1025,13 @@ index b9da58ee9b1e..680f94c7e075 100644
  	int err;
  	u32 val;
  
-@@ -248,16 +436,25 @@ static int amd_pmc_probe(struct platform_device *pdev)
- 	pci_dev_put(rdev);
- 	base_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
- 
--	dev->smu_base = devm_ioremap(dev->dev, base_addr, AMD_PMC_MAPPING_SIZE);
--	if (!dev->smu_base)
--		return -ENOMEM;
--
- 	dev->regbase = devm_ioremap(dev->dev, base_addr + AMD_PMC_BASE_ADDR_OFFSET,
- 				    AMD_PMC_MAPPING_SIZE);
+@@ -279,9 +441,21 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	if (!dev->regbase)
  		return -ENOMEM;
  
 -	amd_pmc_dump_registers(dev);
-+	mutex_init(&dev->lock);
+-
+ 	mutex_init(&dev->lock);
 +
 +	/* Use FCH registers to get the S0ix stats */
 +	base_addr_lo = FCH_BASE_PHY_ADDR_LOW;
@@ -1118,16 +1045,11 @@ index b9da58ee9b1e..680f94c7e075 100644
 +	err = amd_pmc_setup_smu_logging(dev);
 +	if (err)
 +		dev_err(dev->dev, "SMU debugging info not supported on this platform\n");
- 
++
  	platform_set_drvdata(pdev, dev);
  	amd_pmc_dbgfs_register(dev);
-@@ -269,11 +466,14 @@ static int amd_pmc_remove(struct platform_device *pdev)
- 	struct amd_pmc_dev *dev = platform_get_drvdata(pdev);
- 
- 	amd_pmc_dbgfs_unregister(dev);
-+	mutex_destroy(&dev->lock);
  	return 0;
- }
+@@ -298,6 +472,8 @@ static int amd_pmc_remove(struct platform_device *pdev)
  
  static const struct acpi_device_id amd_pmc_acpi_ids[] = {
  	{"AMDI0005", 0},
@@ -1161,4 +1083,3 @@ index c60745f657e9..dd0dafd21e33 100644
  #if defined(CONFIG_ACPI) && defined(CONFIG_PM_SLEEP)
 -- 
 2.32.0
-

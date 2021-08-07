@@ -1,0 +1,26 @@
+From 5a236062383273593ffef3a4d79c9c7892eab5ca Mon Sep 17 00:00:00 2001
+From: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date: Wed, 21 Jul 2021 18:10:28 -0700
+Subject: [PATCH] amd-pmc smu register dump for diagnostics
+
+patch this per Mario's request:
+https://gitlab.freedesktop.org/drm/amd/-/issues/1629#note_1000332
+---
+ drivers/platform/x86/amd-pmc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index 663a4ca0580d..dd67b6585095 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -269,6 +269,7 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+ 	u32 val;
+ 
+ 	mutex_lock(&dev->lock);
++	amd_pmc_dump_registers(dev);
+ 	/* Wait until we get a valid response */
+ 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
+ 				val, val != 0, PMC_MSG_DELAY_MIN_US,
+-- 
+2.32.0
+

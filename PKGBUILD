@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.7.arch1
-pkgrel=3
+pkgver=5.13.8.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -49,8 +49,10 @@ source=(
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
   "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
 
-  # squashed s0ix enablement through 2021-07-14; all current patches
-  "sys-kernel_arch-sources-g14_files-9001-v5.13.2-s0ix-patch-2021-07-14.patch"
+  # squashed s0ix enablement through 2021-08-05
+  "sys-kernel_arch-sources-g14_files-9001-v5.13.2-s0ix-patch-2021-08-05.patch"
+  # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
+  "sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
 )
 
 validpgpkeys=(
@@ -78,7 +80,8 @@ sha256sums=('SKIP'
             '67ebf477b2ecbf367ea3fee1568eeb3de59de7185ef5ed66b81ae73108f6693c'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            'e5d1bfe9d309f292d41bb06b98b94df168e0004f6e8ace45b310c6829a803d03')
+            'c097278b0421bcfd80f24b37bd58d7c9b3e809eaf3c391c73def1451fa366c8b'
+            '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b')
 
 # notable microarch levels:
 #
