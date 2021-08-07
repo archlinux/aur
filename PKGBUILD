@@ -1,15 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=python-puzpy
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="Python library for reading and writing .puz crossword files"
 arch=('any')
 url="https://github.com/alexdej/puzpy"
 license=('MIT')
+makedepends=('python-setuptools')
 depends=('python')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('eee6af3cc1fd52aaff1eb804e47ff73c9794ed2aece6a2bf37a907cab52067aa249587b2afe9d61f94243ebabd05c2f6a2711f7e9a31df8d8c817f776efc17d0')
+b2sums=('a25322e4db892f7e77ece35bc43c2e3ab04bc13faacd3ffa3f89f92e0063b87369050a4a421d64efa10093c67b697451e404563041909e7a3a2e0f7e05a98f76')
 
 build() {
   cd "${pkgname/python-/}-$pkgver"
