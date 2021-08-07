@@ -1,8 +1,8 @@
 # Maintainer: slimb
 
 pkgname=zsa-wally-bin
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc='Flash your ZSA Keyboard the EZ way.'
 arch=('i686' 'x86_64')
 url='https://github.com/zsa/wally'
@@ -19,7 +19,7 @@ source=("https://github.com/zsa/wally/releases/download/${pkgver}-linux/wally"
         'udev-rules.patch'
         'desktop.patch'
 )
-sha256sums=('46984b397a8a3488d4982c01009795a3d6824ec97ba5fb17d52ef69751d91242'
+sha256sums=('2a6301033a29b5ecf1d5a05e7f760358fb554a3a9eec31f94c9e268b02b191db'
             '81df9f24859cfd19ee8128d74a72155fe222e33349c9a647da98922f3f5b7857'
             'd2841d63f4e0bdfda102390ab1ca09136230d22f88538863b24b0c7fc68e548e'
             '269c9196bc65b2e62be549e3d34e56768fe702ff099b7780a1661ca4c92a0143'

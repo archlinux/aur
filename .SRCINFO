@@ -1,7 +1,7 @@
 pkgbase = zsa-wally-bin
 	pkgdesc = Flash your ZSA Keyboard the EZ way.
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/zsa/wally
 	arch = i686
 	arch = x86_64
@@ -11,15 +11,15 @@ pkgbase = zsa-wally-bin
 	depends = libusb
 	provides = wally
 	conflicts = zsa-wally
-	source = https://github.com/zsa/wally/releases/download/2.1.1-linux/wally
-	source = https://github.com/zsa/wally/raw/2.1.1-linux/appicon.png
-	source = https://github.com/zsa/wally/raw/2.1.1-linux/license.md
-	source = https://github.com/zsa/wally/raw/2.1.1-linux/dist/linux64/50-wally.rules
-	source = https://github.com/zsa/wally/raw/2.1.1-linux/dist/linux64/50-oryx.rules
-	source = https://github.com/zsa/wally/raw/2.1.1-linux/dist/linux64/wally.desktop
+	source = https://github.com/zsa/wally/releases/download/2.1.2-linux/wally
+	source = https://github.com/zsa/wally/raw/2.1.2-linux/appicon.png
+	source = https://github.com/zsa/wally/raw/2.1.2-linux/license.md
+	source = https://github.com/zsa/wally/raw/2.1.2-linux/dist/linux64/50-wally.rules
+	source = https://github.com/zsa/wally/raw/2.1.2-linux/dist/linux64/50-oryx.rules
+	source = https://github.com/zsa/wally/raw/2.1.2-linux/dist/linux64/wally.desktop
 	source = udev-rules.patch
 	source = desktop.patch
-	sha256sums = 46984b397a8a3488d4982c01009795a3d6824ec97ba5fb17d52ef69751d91242
+	sha256sums = 2a6301033a29b5ecf1d5a05e7f760358fb554a3a9eec31f94c9e268b02b191db
 	sha256sums = 81df9f24859cfd19ee8128d74a72155fe222e33349c9a647da98922f3f5b7857
 	sha256sums = d2841d63f4e0bdfda102390ab1ca09136230d22f88538863b24b0c7fc68e548e
 	sha256sums = 269c9196bc65b2e62be549e3d34e56768fe702ff099b7780a1661ca4c92a0143
@@ -29,4 +29,3 @@ pkgbase = zsa-wally-bin
 	sha256sums = a0d79d48c932c4d6c02ce8e8802dff3e888b35cb996e10a981adb839aafc2afd
 
 pkgname = zsa-wally-bin
-
