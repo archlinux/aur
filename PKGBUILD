@@ -5,7 +5,7 @@
 
 pkgname=log4net
 pkgver=2.0.12
-pkgrel=2
+pkgrel=4
 pkgdesc="A tool to help the programmer output log statements to a variety of output targets"
 arch=('any')
 url="https://logging.apache.org/log4net/"
@@ -17,13 +17,19 @@ source=(
 )
 sha512sums=(
   '7c98c96272f1627c6db171554731c1624d138f3d1de9013031a96b91a7a7be03d657e21a25dadd9139c134c6d55d1f1c3277d89b4dc1fc75c68603b70c1c1e3c'
-  'a6e46ce91a5896a7c1ff91554ef742c40b2c04d03c0c7004f369488d3d1892f7c948f86a1b604e54a258a550017c6494eecfcc8a38d1b0796746d77edd47a23e'
+  '1f8068d6373fdedc47e624583b6b36879ee4722b27f38938c36e3d82a6bfd1f07c1f164700fc4bef8a23e506b2a1bfa63c1e8e0c85118ef3cb14b6aa3ed0b2f7'
 )
 
 prepare() {
-  sed -i "s/@VERSION@/$pkgver/" "$srcdir/$pkgname.pc"
+  sed -i "s/@VERSION@/$pkgver/"  "$srcdir/$pkgname.pc"
 }
+
 package() {
-  gacutil -i net20/$pkgname.dll -package $pkgname -root "$pkgdir/usr/lib/mono/${pkgname}20/"
+  for ABSDIR in $srcdir/*; do
+    if [ -d $ABSDIR ]; then
+      DIRNAME=$(echo $ABSDIR | awk -F'/' '{ print $NF }')
+      gacutil -i $DIRNAME/$pkgname.dll -package $pkgname/$DIRNAME -root "$pkgdir/usr/lib/mono/${pkgname}/$DIRNAME/"
+    fi
+  done
   install -Dm644 "$srcdir/$pkgname.pc" "$pkgdir/usr/share/pkgconfig/$pkgname.pc"
 }
