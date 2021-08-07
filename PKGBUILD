@@ -3,7 +3,7 @@
 pkgbase=gtk4-rc
 pkgname=(gtk4-rc gtk-update-icon-cache-rc gtk4-docs-rc gtk4-demos-rc)
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="gtk4 built from the latest tag in the repo"
 arch=(x86_64)
@@ -57,7 +57,7 @@ _pick() {
 package_gtk4-rc() {
   conflicts=(gtk4)
   depends+=(gtk-update-icon-cache-rc)
-  provides=(gtk4 libgtk-4.so)
+  provides=(gtk4=${pkgver} libgtk-4.so)
 
   DESTDIR="$pkgdir" meson install -C build
 

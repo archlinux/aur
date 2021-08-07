@@ -1,7 +1,7 @@
 pkgbase = gtk4-rc
 	pkgdesc = gtk4 built from the latest tag in the repo
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gtk.org/
 	arch = x86_64
@@ -106,7 +106,7 @@ pkgname = gtk4-rc
 	depends = adwaita-icon-theme
 	depends = cantarell-fonts
 	depends = gtk-update-icon-cache-rc
-	provides = gtk4
+	provides = gtk4=4.3.2
 	provides = libgtk-4.so
 	conflicts = gtk4
 
