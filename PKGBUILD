@@ -26,7 +26,7 @@ pkgname=${_pkgname}-beta
 pkgver=20210730
 _pkgver="30Jul2021"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -46,37 +46,36 @@ sha512sums=('SKIP')
 if (( $_ENABLE_INTEL_COMPILER )); then
     depends+=('intel-mkl')
     optdepends=('intel-parallel-studio-xe')
-    _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O3 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
-    _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
-    _feature_args+=('-DMPI_C_COMPILER=mpiicc')
-    _feature_args+=('-DMPI_CXX_COMPILER=mpiicpc')
+    _feature_args+=('-D CMAKE_C_COMPILER=icc')
+    _feature_args+=('-D CMAKE_C_FLAGS=-xHost -O3 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
+    _feature_args+=('-D CMAKE_CXX_COMPILER=icpc')
+    _feature_args+=('-D CMAKE_CXX_FLAGS=-no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O3 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
+    _feature_args+=('-D CMAKE_Fortran_COMPILER=ifort')
+    _feature_args+=('-D MPI_C_COMPILER=mpiicc')
+    _feature_args+=('-D MPI_CXX_COMPILER=mpiicpc')
 fi
 if (( $_BUILD_DOC )); then
     makedepends+=('python-virtualenv' 'doxygen')
 fi
 if (( $_ENABLE_KIM )); then
     depends+=('kim-api>=2.0.2')
-    _feature_args+=('-DPKG_KIM=yes')
+    _feature_args+=('-D PKG_KIM=yes')
 fi
 if (( $_ENABLE_INTEL )); then
-    _feature_args+=('-DINTEL_ARCH=cpu')
-    _feature_args+=('-DPKG_USER-INTEL=yes')
+    _feature_args+=('-D INTEL_ARCH=cpu')
+    _feature_args+=('-D PKG_INTEL=yes')
 fi
 if (( $_ENABLE_OMP )); then
-    _feature_args+=('-DBUILD_OMP=yes')
-    _feature_args+=('-DPKG_USER-OMP=yes')
+    _feature_args+=('-D PKG_OPENMP=yes')
 fi
 #_feature_args+=('-DCMAKE_EXE_LINKER_FLAGS=-lamdlibm -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now')
 #depends+=('aocl-aocc')
 if (( $_ENABLE_AMD_COMPILER )); then
     depends+=('aocc')
-    _feature_args+=('-DCMAKE_CXX_COMPILER=clang++')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-march=native -O3 -std=c++11')
-    _feature_args+=('-DMPI_C_COMPILER=mpicc')
-    _feature_args+=('-DMPI_CXX_COMPILER=mpicxx')
+    _feature_args+=('-D CMAKE_CXX_COMPILER=clang++')
+    _feature_args+=('-D CMAKE_CXX_FLAGS=-march=native -O3 -std=c++11')
+    _feature_args+=('-D MPI_C_COMPILER=mpicc')
+    _feature_args+=('-D MPI_CXX_COMPILER=mpicxx')
 fi
 
 prepare(){
