@@ -11,7 +11,7 @@ pkgname=('pipewire-git'
          'alsa-card-profiles-git'
          'pipewire-zeroconf-git'
          )
-pkgver=0.3.32.71.g8375d7b2d
+pkgver=0.3.33.14.g33d8f14e4
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -66,7 +66,7 @@ build() {
     -D gstreamer-device-provider=disabled \
     -D roc=disabled \
     -D ffmpeg=enabled \
-    -D jack-devel=enabled \
+    -D jack-devel=TRUE \
     -D libjack-path=/usr/lib
 
   ninja
