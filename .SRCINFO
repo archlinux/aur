@@ -1,7 +1,7 @@
 pkgbase = highscore-git
 	pkgdesc = Highscore is a retro gaming application for the GNOME desktop
 	pkgver = 40.0.r221.g5ce721ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/highscore
 	arch = any
 	license = GPL3
@@ -28,6 +28,9 @@ pkgbase = highscore-git
 	depends = sqlite
 	depends = libxml2
 	optdepends = libretro
+	provides = highscore
+	conflicts = highscore
+	replaces = gnome-games
 	source = git+https://gitlab.gnome.org/World/highscore.git
 	md5sums = SKIP
 
