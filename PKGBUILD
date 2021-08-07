@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
@@ -13,19 +13,23 @@ makedepends=('cmake' 'git' 'python' 'python-virtualenv' 'python-pyaml'
              'gcc-fortran')
 _rocblas='https://github.com/ROCmSoftwarePlatform/rocBLAS'
 source=("$pkgname-$pkgver.tar.gz::$_rocblas/archive/rocm-$pkgver.tar.gz")
-sha256sums=('547f6d5d38a41786839f01c5bfa46ffe9937b389193a8891f251e276a1a47fb0')
+sha256sums=('b15a66c861b3394cb83c56b64530b2c7e57b2b4c50f55d0e66bb3d1483b50ec4')
 options=(!strip)
 _dirname="$(basename "$_rocblas")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
 
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.2.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.3.x/docs/markdown/clang_options.md
+
+  # With version 3.21, HIP support was added to CMake that breaks the current scripts, see
+  # https://github.com/ROCmSoftwarePlatform/rocRAND/issues/198#issuecomment-893573440
   PATH="/opt/rocm/llvm/bin:${PATH}" \
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -B build -Wno-dev \
         -S "$_dirname" \
+        -D__skip_rocmclang=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DCMAKE_PREFIX_PATH=/opt/rocm/llvm/lib/cmake/llvm \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
