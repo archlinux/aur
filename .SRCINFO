@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-librttopo
+	pkgdesc = RT Topology Library (mingw-w64)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://git.osgeo.org/gitea/rttopo/librttopo
+	arch = any
+	license = GPL2
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-geos
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://git.osgeo.org/gitea/rttopo/librttopo/archive/librttopo-1.1.0.tar.gz
+	sha256sums = 2e2fcabb48193a712a6c76ac9a9be2a53f82e32f91a2bc834d9f1b4fa9cd879f
+
+pkgname = mingw-w64-librttopo
