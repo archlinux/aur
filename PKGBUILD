@@ -1,7 +1,7 @@
 # Maintainer: Viktor A. Rozenko Voitenko <sharpvik@gmail.com>
 pkgname=sema
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=2
 pkgdesc="Semantic commit tool"
 arch=(x86_64)
 url="https://github.com/sharpvik/sema"
