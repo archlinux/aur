@@ -5,7 +5,7 @@
 
 pkgname=log4net
 pkgver=2.0.12
-pkgrel=4
+pkgrel=1
 pkgdesc="A tool to help the programmer output log statements to a variety of output targets"
 arch=('any')
 url="https://logging.apache.org/log4net/"
