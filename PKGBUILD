@@ -1,8 +1,8 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=v121a.r1.g77110f15a
-pkgrel=5
+pkgver=v121a.r47.g409ea8d7c
+pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
 url="https://ares.dev/"
@@ -14,7 +14,7 @@ conflicts=(ares-emu)
 source=("git+https://github.com/higan-emu/ares.git"
         "ares-paths.patch")
 sha256sums=("SKIP"
-           "ff3d8b06d2296ea9b48f5a83f070500161aad3638caae1633b203aa51e6b5f8b")
+           "71fcc3a8ad81107c025545c39a9f972f80b0d7096739f54b1004a2b58704b2ee")
 
 pkgver() {
   cd "${srcdir}/ares"
@@ -26,31 +26,21 @@ pkgver() {
 
 prepare() {
   # Patch Ares so that it can look for its files that are installed system-wide here
+  # With v123 lucia has been changed to ares, so we rename any user folder named lucia, to ares.
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
 build() {
-  # Download first parallel-rdp from github, otherwise N64 emulation won't work.
-  make -C "${srcdir}/ares/ares/n64/vulkan" sync-upstream
-  make -C "${srcdir}/ares/lucia" hiro=gtk3
+  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3
 }
 
 package() {
-  # Install Ares' license in /usr/share/licenses
   install -Dm 644 "${srcdir}/ares/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # Lucia is the simple user interface for Ares
-  install -Dm 755 "${srcdir}/ares/lucia/out/lucia" -t "${pkgdir}/usr/bin/"
-  install -Dm 644 "${srcdir}/ares/lucia/resource/lucia.png" -t "${pkgdir}/usr/share/icons/"
-  
-  # It's commonly known as Ares, less so as Lucia, so specify that in .desktop file
-  sed -i "s/Name=lucia/Name=Ares (Lucia)/" "${srcdir}/ares/lucia/resource/lucia.desktop"
-
-  # Force XWayland if running on Wayland, because Ares currently isn't compatible with it.
-  sed -i "s/Exec=lucia/Exec=env GDK_BACKEND=x11 lucia/" "${srcdir}/ares/lucia/resource/lucia.desktop"
-  install -Dm 644 "${srcdir}/ares/lucia/resource/lucia.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm 755 "${srcdir}/ares/desktop-ui/out/ares" -t "${pkgdir}/usr/bin/"
+  install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/"
+  install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.desktop" -t "${pkgdir}/usr/share/applications/"
 
   # Also install the shaders in Ares' shared directory
-  install -dm 755 "${pkgdir}/usr/share/lucia"
-  cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/lucia/Shaders/"
+  install -dm 755 "${pkgdir}/usr/share/ares"
+  cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
 }

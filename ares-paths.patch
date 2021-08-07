@@ -1,16 +1,23 @@
-diff --git a/ares/lucia/lucia.cpp b/ares/lucia/lucia.cpp
-@@ -10,8 +10,11 @@
-   string location = {Path::program(), name};
-   if(inode::exists(location)) return location;
+diff --git a/ares/desktop-ui/desktop-ui.cpp b/ares/desktop-ui/desktop-ui.cpp
+@@ -15,8 +15,19 @@
+     if(inode::exists(location)) return location;
+   #endif
  
--  directory::create({Path::userData(), "lucia/"});
--  return {Path::userData(), "lucia/", name};
-+  location = {Path::sharedData(), "lucia/", name};
+-  directory::create({Path::userData(), "ares/"});
+-  return {Path::userData(), "ares/", name};
++  location = {Path::sharedData(), "ares/", name};
 +  if(inode::exists(location)) return location;
 +
-+  directory::create({Path::userSettings(), "lucia/"});
-+  return {Path::userSettings(), "lucia/", name};
++  if(directory::exists({Path::userSettings(), "lucia/"})) {
++    directory::rename({Path::userSettings(), "lucia/"}, {Path::userSettings(), "ares/"});
++  }
++  
++  if(directory::exists({Path::userData(), "lucia/"})) {
++    directory::rename({Path::userData(), "lucia/"}, {Path::userData(), "ares/"});
++  }
++  
++  directory::create({Path::userSettings(), "ares/"});
++  return {Path::userSettings(), "ares/", name};
  }
  
  #include <nall/main.hpp>
-

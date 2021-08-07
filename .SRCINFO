@@ -1,7 +1,7 @@
 pkgbase = ares-emu-git
 	pkgdesc = Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)
-	pkgver = v121a.r1.g77110f15a
-	pkgrel = 5
+	pkgver = v121a.r47.g409ea8d7c
+	pkgrel = 1
 	url = https://ares.dev/
 	arch = x86_64
 	arch = i686
@@ -24,6 +24,6 @@ pkgbase = ares-emu-git
 	source = git+https://github.com/higan-emu/ares.git
 	source = ares-paths.patch
 	sha256sums = SKIP
-	sha256sums = ff3d8b06d2296ea9b48f5a83f070500161aad3638caae1633b203aa51e6b5f8b
+	sha256sums = 71fcc3a8ad81107c025545c39a9f972f80b0d7096739f54b1004a2b58704b2ee
 
 pkgname = ares-emu-git
