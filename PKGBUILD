@@ -24,7 +24,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.06
-pkgrel=1
+pkgrel=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -66,12 +66,12 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
 sha256sums=('b79ea44af91b93d17cd3fe80bdae6ed43770678a9a5ae192ccea803ebb657ee1'
             'fb6b37db9b14fd03e4d26775d84b570fbe91d4ea5de3df4e31114d79a2dfa97e'
             'd101e9d33fbc67f7aaf6fb1191ec1315e8e5572c1d0538b95746ee194b8860db'
-            'b6e1c57dc9632ddf14e0acd96c5182cb4491994b67765cb11518d1356b603879'
-            'f77417646a5480623f61006304bf68e3a733e77642978af949d4452f36e3203a'
+            '21153ab7f020d9f819a70b9c879b29e9709996c5b0304816123c09b6849f95a3'
+            '6fa180674094f9e1723f736d458f1fe0b5740ea7cf5db5064139defc17ce0e94'
             '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
-            '4b189e00a8c97ec09903e9588e02fc78b4bb114ee4822fcce13811aca00c8884'
-            'b7489c7facc4fb3dad4426c9c00079b64908640a2bec2409e22194daa3f72af4'
-            '1723340737b91a5bf503829bbe66b1c56683ef0e533f20d18b7098840aecb3a2'
+            'c4cb3aa5ed535c7f3a3f784a779ea0a02bfed0ac54f202387a18de04dda8297f'
+            'fe2871773868fdbb9523661fd67e38a60d3cf1eb51f6964beb839105dfa8ec3e'
+            '7769a65321d1611217d6af47c1c3fe91ce2f97adcfd58c4e0d2e0bb06b39100e'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {

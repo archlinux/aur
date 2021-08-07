@@ -1,16 +1,16 @@
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 9f477ff..b0e6d45 100644
+index f8cbb8d..17269b3 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -233,6 +233,8 @@ export GRUB_DEFAULT \
-   GRUB_THEME \
-   GRUB_GFXPAYLOAD_LINUX \
+@@ -205,6 +205,8 @@ export GRUB_DEVICE \
+   GRUB_DEVICE_BOOT \
+   GRUB_DEVICE_BOOT_UUID \
    GRUB_DISABLE_OS_PROBER \
 +  GRUB_COLOR_NORMAL \
 +  GRUB_COLOR_HIGHLIGHT \
-   GRUB_INIT_TUNE \
-   GRUB_SAVEDEFAULT \
-   GRUB_ENABLE_CRYPTODISK \
+   GRUB_FS \
+   GRUB_FONT \
+   GRUB_PRELOAD_MODULES \
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
 index 93a9023..c5955df 100644
 --- a/util/grub.d/00_header.in

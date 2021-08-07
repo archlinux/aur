@@ -1,43 +1,8 @@
-From db2c839f0201d67aace730049d6704006beccf4c Mon Sep 17 00:00:00 2001
-From: Colin Watson <cjwatson@ubuntu.com>
-Date: Mon, 13 Jan 2014 12:13:28 +0000
-Subject: Add configure option to bypass boot menu if possible
-
-If other operating systems are installed, then automatically unhide the
-menu.  Otherwise, if GRUB_HIDDEN_TIMEOUT is 0, then use keystatus if
-available to check whether Shift is pressed.  If it is, show the menu,
-otherwise boot immediately.  If keystatus is not available, then fall
-back to a short delay interruptible with Escape.
-
-This may or may not remain Ubuntu-specific, although it's not obviously
-wanted upstream.  It implements a requirement of
-https://wiki.ubuntu.com/DesktopExperienceTeam/KarmicBootExperienceDesignSpec#Bootloader.
-
-If the previous boot failed (defined as failing to get to the end of one
-of the normal runlevels), then show the boot menu regardless.
-
-Contributor : Angel Perez <drlorente97@gmail.com>
-Author: Richard Laager <rlaager@wiktel.com>
-Author: Robie Basak <robie.basak@ubuntu.com>
-Forwarded: no
-Last-Update: 2021-05-21
-
-Patch-Name: quick_boot.patch
----
- configure.ac                | 11 +++++++
- docs/grub.texi              | 14 +++++++++
- grub-core/normal/menu.c     | 24 ++++++++++++++
- util/grub-mkconfig.in       |  3 +-
- util/grub.d/00_header.in    | 77 ++++++++++++++++++++++++++++++++++++++-------
- util/grub.d/10_linux.in     |  4 +++
- util/grub.d/30_os-prober.in | 21 +++++++++++++
- 7 files changed, 141 insertions(+), 13 deletions(-)
-
 diff --git a/configure.ac b/configure.ac
-index dd2fbd01c..e508f9c43 100644
+index d3ca0a1..cc2ef03 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1841,6 +1841,17 @@ else
+@@ -1915,6 +1915,17 @@ else
  fi
  AC_SUBST([QUIET_BOOT])
  
@@ -56,10 +21,10 @@ index dd2fbd01c..e508f9c43 100644
  
  AC_SUBST([FONT_SOURCE])
 diff --git a/docs/grub.texi b/docs/grub.texi
-index e935af33e..5b2a7bbb2 100644
+index f8b4b3b..0b58daf 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -1490,6 +1490,20 @@ This option may be set to a list of GRUB module names separated by spaces.
+@@ -1563,6 +1563,20 @@ This option may be set to a list of GRUB module names separated by spaces.
  Each module will be loaded as early as possible, at the start of
  @file{grub.cfg}.
  
@@ -81,10 +46,10 @@ index e935af33e..5b2a7bbb2 100644
  
  The following options are still accepted for compatibility with existing
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index 1f3447ad3..906a480a2 100644
+index 338f5a5..101aa80 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -604,6 +604,30 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+@@ -603,6 +603,30 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
        static struct grub_term_coordinate *pos;
        int entry = -1;
  
@@ -116,10 +81,10 @@ index 1f3447ad3..906a480a2 100644
  	{
  	  pos = grub_term_save_pos ();
 diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index b4f0011b5..fac560464 100644
+index 17269b3..92e640c 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -239,7 +239,8 @@ export GRUB_DEFAULT \
+@@ -253,7 +253,8 @@ export GRUB_DEFAULT \
    GRUB_ENABLE_CRYPTODISK \
    GRUB_BADRAM \
    GRUB_OS_PROBER_SKIP_LIST \
@@ -130,7 +95,7 @@ index b4f0011b5..fac560464 100644
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index 93a90233e..674a76140 100644
+index c5955df..d660755 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
 @@ -21,6 +21,8 @@ prefix="@prefix@"
@@ -201,7 +166,7 @@ index 93a90233e..674a76140 100644
  function load_video {
  EOF
  if [ -n "${GRUB_VIDEO_BACKEND}" ]; then
-@@ -282,10 +328,16 @@ fi
+@@ -290,10 +336,16 @@ fi
  
  make_timeout ()
  {
@@ -219,7 +184,7 @@ index 93a90233e..674a76140 100644
  	# Handle the deprecated GRUB_HIDDEN_TIMEOUT scheme.
  	timeout="${1}"
  	if [ "x${2}" != "x0" ] ; then
-@@ -304,26 +356,27 @@ make_timeout ()
+@@ -312,26 +364,27 @@ make_timeout ()
  	style="menu"
      fi
      cat << EOF
@@ -259,18 +224,18 @@ index 93a90233e..674a76140 100644
  EOF
  }
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 67d57ecfd..0f8a16837 100644
+index e0c22fc..9c992c6 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -22,6 +22,7 @@ exec_prefix="@exec_prefix@"
+@@ -21,6 +21,7 @@ prefix="@prefix@"
+ exec_prefix="@exec_prefix@"
  datarootdir="@datarootdir@"
- ubuntu_recovery="@UBUNTU_RECOVERY@"
  quiet_boot="@QUIET_BOOT@"
 +quick_boot="@QUICK_BOOT@"
  
  . "$pkgdatadir/grub-mkconfig_lib"
  
-@@ -119,6 +120,9 @@ linux_entry ()
+@@ -109,6 +110,9 @@ linux_entry ()
    else
        echo "menuentry '$(echo "$os" | grub_quote)' ${CLASS} \$menuentry_id_option 'gnulinux-simple-$boot_device_id' {" | sed "s/^/$submenu_indentation/"
    fi      
@@ -281,7 +246,7 @@ index 67d57ecfd..0f8a16837 100644
        save_default_entry | grub_add_tab
    fi
 diff --git a/util/grub.d/30_os-prober.in b/util/grub.d/30_os-prober.in
-index 271044f59..da5f28876 100644
+index 5984e92..e694e33 100644
 --- a/util/grub.d/30_os-prober.in
 +++ b/util/grub.d/30_os-prober.in
 @@ -20,12 +20,26 @@ set -e
@@ -309,9 +274,9 @@ index 271044f59..da5f28876 100644
 +}
 +
  if [ "x${GRUB_DISABLE_OS_PROBER}" = "xtrue" ]; then
+   grub_warn "$(gettext_printf "os-prober will not be executed to detect other bootable partitions.\nSystems on them will not be added to the GRUB boot configuration.\nCheck GRUB_DISABLE_OS_PROBER documentation entry.")"
    exit 0
- fi
-@@ -42,6 +56,7 @@ if [ -z "${OSPROBED}" ] ; then
+@@ -45,6 +59,7 @@ if [ -z "${OSPROBED}" ] ; then
  fi
  
  osx_entry() {
@@ -319,15 +284,15 @@ index 271044f59..da5f28876 100644
      if [ x$2 = x32 ]; then
          # TRANSLATORS: it refers to kernel architecture (32-bit)
  	bitstr="$(gettext "(32-bit)")"
-@@ -165,6 +180,7 @@ for OS in ${OSPROBED} ; do
- 	  ;;
-       esac
+@@ -149,6 +164,7 @@ for OS in ${OSPROBED} ; do
+   case ${BOOT} in
+     chain)
  
 +      found_other_os=1
  	  onstr="$(gettext_printf "(on %s)" "${DEVICE}")"
        cat << EOF
  menuentry '$(echo "${LONGNAME} $onstr" | grub_quote)' $CLASS --class os \$menuentry_id_option 'osprober-chain-$(grub_get_device_id "${DEVICE}")' {
-@@ -195,6 +211,7 @@ EOF
+@@ -179,6 +195,7 @@ EOF
      ;;
      efi)
  
@@ -335,15 +300,15 @@ index 271044f59..da5f28876 100644
  	EFIPATH=${DEVICE#*@}
  	DEVICE=${DEVICE%@*}
  	onstr="$(gettext_printf "(on %s)" "${DEVICE}")"
-@@ -243,6 +260,7 @@ EOF
- 	  [ "${prepare_boot_cache}" ] || continue
+@@ -222,6 +239,7 @@ EOF
+ 	  LINITRD="${LINITRD#/boot}"
  	fi
  
 +	found_other_os=1
  	onstr="$(gettext_printf "(on %s)" "${DEVICE}")"
- 	recovery_params="$(echo "${LPARAMS}" | grep 'single\|recovery')" || true
+ 	recovery_params="$(echo "${LPARAMS}" | grep single)" || true
  	counter=1
-@@ -311,6 +329,7 @@ EOF
+@@ -302,6 +320,7 @@ EOF
        fi
      ;;
      hurd)
@@ -351,7 +316,7 @@ index 271044f59..da5f28876 100644
        onstr="$(gettext_printf "(on %s)" "${DEVICE}")"
        cat << EOF
  menuentry '$(echo "${LONGNAME} $onstr" | grub_quote)' --class hurd --class gnu --class os \$menuentry_id_option 'osprober-gnuhurd-/boot/gnumach.gz-false-$(grub_get_device_id "${DEVICE}")' {
-@@ -353,3 +372,5 @@ EOF
+@@ -344,3 +363,5 @@ EOF
      ;;
    esac
  done

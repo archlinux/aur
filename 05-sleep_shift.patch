@@ -1,23 +1,5 @@
-From 6d92ce5e4248eec87c831734bff72581721a1026 Mon Sep 17 00:00:00 2001
-From: Colin Watson <cjwatson@ubuntu.com>
-Date: Mon, 13 Jan 2014 12:13:23 +0000
-Subject: Allow Shift to interrupt 'sleep --interruptible'
-
-Upstream would like to consider this at more length. See
-http://lists.gnu.org/archive/html/grub-devel/2009-08/msg00718.html, and
-the rest of the thread for context.
-
-Forwarded: http://lists.gnu.org/archive/html/grub-devel/2009-08/msg00694.html
-Last-Update: 2013-12-04
-
-Patch-Name: sleep_shift.patch
----
- grub-core/commands/sleep.c | 27 ++++++++++++++++++++++++++-
- grub-core/normal/menu.c    | 19 +++++++++++++++++++
- 2 files changed, 45 insertions(+), 1 deletion(-)
-
 diff --git a/grub-core/commands/sleep.c b/grub-core/commands/sleep.c
-index e77e7900f..3906b1410 100644
+index a1370b7..be9f386 100644
 --- a/grub-core/commands/sleep.c
 +++ b/grub-core/commands/sleep.c
 @@ -46,6 +46,31 @@ do_print (int n)
@@ -52,20 +34,11 @@ index e77e7900f..3906b1410 100644
  /* Based on grub_millisleep() from kern/generic/millisleep.c.  */
  static int
  grub_interruptible_millisleep (grub_uint32_t ms)
-@@ -55,7 +80,7 @@ grub_interruptible_millisleep (grub_uint32_t ms)
-   start = grub_get_time_ms ();
- 
-   while (grub_get_time_ms () - start < ms)
--    if (grub_getkey_noblock () == GRUB_TERM_ESC)
-+    if (grub_check_keyboard ())
-       return 1;
- 
-   return 0;
 diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index 719e2fb1c..9d0ad4c95 100644
+index 8397886..c2943c6 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -615,8 +615,27 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+@@ -614,8 +614,27 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
        saved_time = grub_get_time_ms ();
        while (1)
  	{
