@@ -9,7 +9,7 @@ pkgbase = msedgedriver-beta-bin
 	depends = glib2
 	depends = nss
 	depends = xdg-utils
-	optdepends = microsoft-edge=93.0.961.11
+	optdepends = microsoft-edge-beta=93.0.961.11
 	provides = msedgedriver=93.0.961.11
 	provides = msedgedriver-beta
 	conflicts = msedgedriver
