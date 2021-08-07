@@ -1,4 +1,4 @@
-# Maintainer: Caleb Maclennan <caleb@aleque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=runebender-git
 pkgver=0.0.0.r307.g07d182a
