@@ -1,10 +1,38 @@
-# Maintainer: Paolo Giangrandi <paolo@luccalug.it>
+# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=base-devel-meta
-pkgver=2018.08.31
+pkgver=2021.08.07
 pkgrel=1
-pkgdesc='Meta package for the group `base-devel`'
-arch=(any)
-url='https://www.archlinux.org/'
-license=('GPL')
-depends=(autoconf automake binutils bison fakeroot file findutils flex gawk gcc gettext grep groff gzip libtool m4 make pacman patch pkgconf sed sudo systemd texinfo util-linux which)
+pkgdesc='Metapackage for all the base-devel group.'
+arch=('any')
+license=('none')
+depends=(
+  'autoconf'
+  'automake'
+  'binutils'
+  'bison'
+  'fakeroot'
+  'file'
+  'findutils'
+  'flex'
+  'gawk'
+  'gcc'
+  'gettext'
+  'grep'
+  'groff'
+  'gzip'
+  'libtool'
+  'm4'
+  'make'
+  'pacman'
+  'patch'
+  'pkgconf'
+  'sed'
+  'sudo'
+  'texinfo'
+  'which'
+)
+replaces=(meta-group-base-devel)
+conflicts=(meta-group-base-devel)
+provides=(meta-group-base-devel)
+url="https://www.archlinux.org/"

@@ -1,10 +1,10 @@
 pkgbase = base-devel-meta
-	pkgdesc = Meta package for the group `base-devel`
-	pkgver = 2018.08.31
+	pkgdesc = Metapackage for all the base-devel group.
+	pkgver = 2021.08.07
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
-	license = GPL
+	license = none
 	depends = autoconf
 	depends = automake
 	depends = binutils
@@ -27,10 +27,10 @@ pkgbase = base-devel-meta
 	depends = pkgconf
 	depends = sed
 	depends = sudo
-	depends = systemd
 	depends = texinfo
-	depends = util-linux
 	depends = which
+	provides = meta-group-base-devel
+	conflicts = meta-group-base-devel
+	replaces = meta-group-base-devel
 
 pkgname = base-devel-meta
-
