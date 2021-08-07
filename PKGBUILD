@@ -1,43 +1,39 @@
-# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Andy Kluger <https://t.me/andykluger>
 # Contributor: jurplel <jeep70cp[at]gmail[dotcom]>
-_pkgname=qview
+
 pkgname=qview-git
-pkgver=r434.4d15b97
+pkgver=4.0.r178.ge2bfcf7
 pkgrel=1
-epoch=
-pkgdesc="qView is a Qt image viewer designed with minimalism and usability in mind."
-arch=('i686' 'x86_64')
+pkgdesc="Practical and minimal image viewer"
+arch=('x86_64')
 url="https://interversehq.com/qview/"
 license=('GPL3')
-groups=()
-depends=('qt5-base>=5.9' 'hicolor-icon-theme')
-optdepends=('xdg-utils: Used to open containing folder of file' 'qt5-imageformats: Extra image format support' 'qt5-svg: SVG support')
-makedepends=('git' 'qt5-base')
-checkdepends=()
-provides=('qview')
-conflicts=('qview')
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+https://github.com/jurplel/qView")
-noextract=()
+depends=('qt5-base' 'qt5-tools')
+optdepends=('kimageformats: additional image formats'
+            'qt-avif-image-plugin-git: AVIF format'
+            'qt5-apng-plugin: APNG format'
+            'qt5-heif: HEIF format'
+            'qt5-imageformats: additional image formats'
+            'qt5-svg: SVG format'
+            'qtraw: RAW format')
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=($pkgname::git+https://github.com/jurplel/qView.git)
 sha256sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
-    cd qView
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C $pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd qView
-	qmake
-	make
+  cd $pkgname
+  qmake PREFIX=/usr
+  make
 }
 
 package() {
-	cd qView
-	make INSTALL_ROOT="$pkgdir/" install
+  make -C $pkgname INSTALL_ROOT="$pkgdir/" install
 }
+
