@@ -1,7 +1,7 @@
 pkgbase = augustus-game
 	pkgdesc = An enhanced re-implementation of Caesar III (Original copy required)
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/Keriew/augustus
 	install = augustus-game.install
 	arch = i686
@@ -13,10 +13,9 @@ pkgbase = augustus-game
 	depends = libpng
 	source = augustus-game.desktop
 	source = augustus-game.install
-	source = https://github.com/Keriew/augustus/archive/v2.0.1.tar.gz
+	source = https://github.com/Keriew/augustus/archive/v3.0.1.tar.gz
 	sha256sums = 52fd21bbd8a32cee21399c598283dfea11fa507e01e92c8344fb6e021fae0928
-	sha256sums = 95793de9019c9343e39add889f3efab5833702f068d39b4c727b2f8ae92e093c
-	sha256sums = 9210b6123989554a22f39b4b53bb25d2f75407355cfc2a8b28a788df967a03ea
+	sha256sums = d0d9e1fdfa9edbb22239d55612c8b7ffdb501a1cfebea82cce2ccf4259f867ef
+	sha256sums = 3452ff516f1006e48036925a3f815329cce6e90d8848e44a90ea7ce120169eb2
 
 pkgname = augustus-game
-

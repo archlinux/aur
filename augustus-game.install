@@ -3,14 +3,14 @@ post_install() {
 
     echo "
 augustus also requires additional folders/files to be installed to your Caesar III installation.
-The easiest way is to symlink the 'maps' and 'mods' folder from '/opt/augustus-game'
+The easiest way is to symlink the 'maps' and 'assets' folder from '/opt/augustus-game'
 into the root of your Caesar III installation.
 
 If you are in your Caesar III installation folder
 you can copy & paste the following lines to symlink them (depending on your shell):
 
   ln -s /opt/augustus-game/res/maps .
-  ln -s /opt/augustus-game/mods .
+  ln -s /opt/augustus-game/assets .
 
 
 For further information and how to add high-quality MP3 music/sounds to your installation see:
@@ -18,8 +18,18 @@ For further information and how to add high-quality MP3 music/sounds to your ins
 "
 }
 
+post_upgrade() {
+   echo "
+Augustus renamed the 'mods' folder to 'assets', please check your Caesar III installation.
+
+If there is an 'mods' folder, please unlink it and link the assets folder from /opt into it:
+
+  ln -s /opt/augustus-game/assets .
+"
+}
+
 post_remove() {
     echo "
-Don't forget to remove/unlink the 'maps' and 'mods' folder from your Caesar III installation.
+Don't forget to remove/unlink the 'maps' and 'assets' folder from your Caesar III installation.
 "
 }

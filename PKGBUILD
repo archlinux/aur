@@ -3,8 +3,8 @@
 
 _pkgname=augustus
 pkgname=$_pkgname-game
-pkgver=2.0.1
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="An enhanced re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
 url="https://github.com/Keriew/augustus"
@@ -14,8 +14,8 @@ depends=('sdl2' 'sdl2_mixer' 'libpng')
 install="${pkgname}.install"
 source=(${pkgname}.desktop ${pkgname}.install $url/archive/v$pkgver.tar.gz)
 sha256sums=('52fd21bbd8a32cee21399c598283dfea11fa507e01e92c8344fb6e021fae0928'
-            '03467d55f4314a46ad3c8e6b16e689f36772969c42869823c175b01e6f6392c7'
-            '9210b6123989554a22f39b4b53bb25d2f75407355cfc2a8b28a788df967a03ea')
+            'd0d9e1fdfa9edbb22239d55612c8b7ffdb501a1cfebea82cce2ccf4259f867ef'
+            '3452ff516f1006e48036925a3f815329cce6e90d8848e44a90ea7ce120169eb2')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
@@ -33,8 +33,8 @@ package() {
 
     # Install additional folders to /opt
     install -m 775 -d "${pkgdir}/opt/${pkgname}"
-    install -m 775 -d "${pkgdir}/opt/${pkgname}/mods"
+    install -m 775 -d "${pkgdir}/opt/${pkgname}/assets"
     install -m 775 -d "${pkgdir}/opt/${pkgname}/res/maps"
-    cp -r "$srcdir/$_pkgname-$pkgver/mods"  "${pkgdir}/opt/${pkgname}/"
+    cp -r "$srcdir/$_pkgname-$pkgver/assets"  "${pkgdir}/opt/${pkgname}/"
     cp -r "$srcdir/$_pkgname-$pkgver/res/maps" "${pkgdir}/opt/${pkgname}/res/"
 }
