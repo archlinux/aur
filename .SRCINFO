@@ -1,7 +1,7 @@
 pkgbase = termite
 	pkgdesc = A simple VTE-based terminal
 	pkgver = 15
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/thestinger/termite/
 	install = termite.install
 	arch = x86_64
@@ -11,12 +11,13 @@ pkgbase = termite
 	makedepends = intltool
 	makedepends = gperf
 	makedepends = gtk-doc
+	makedepends = meson
 	depends = gtk3
 	depends = pcre2
 	depends = gnutls
 	depends = vte-common
 	source = git+https://github.com/thestinger/termite.git#tag=v15?signed
-	source = git+https://github.com/thestinger/vte-ng.git#tag=0.56.2.a
+	source = git+https://github.com/BarbUk/vte-ng.git#tag=0.64.2a
 	source = termite-util::git+https://github.com/thestinger/util.git#tag=409b8449ab51fccf51057621168c9c15c54d4807
 	validpgpkeys = E499C79F53C96A54E572FEE1C06086337C50773E
 	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
