@@ -1,29 +1,31 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontdiffenator
-pkgver=0.9.11
+pkgver=0.9.12
 pkgrel=1
 pkgdesc='Font regression tester for Google Fonts'
-arch=('any')
+arch=(any)
 url="https://github.com/googlefonts/$pkgname"
-license=('Apache')
-_py_deps=('fonttools'
-          'pillow'
-          'cairo'
-          'uharfbuzz'
-          'freetype-py')
-depends=('python')
-depends+=("${_py_deps[@]/#/python-}")
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('994c3e51f38fa257a77befd107d69c26980f311acff64b513cb42b333e7c3465')
+license=(Apache)
+_py_deps=(fonttools
+          pillow
+          cairo
+          uharfbuzz
+          freetype-py)
+depends=(python
+         "${_py_deps[@]/#/python-}")
+makedepends=(python-setuptools)
+_archive="$pkgname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
+sha256sums=('23caa29fed25af34dfed5b2a51145f9b7153f5087f16b0b51c191d906cf47962')
 
 build() {
-    cd "$pkgname-$pkgver"
-    python setup.py build
+	cd "$_archive"
+	export PYTHONHASHSEED=0
+	python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_archive"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
