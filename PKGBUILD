@@ -9,7 +9,7 @@ _provide_udev_rule=true
 pkgbase='winesync'
 pkgname=()
 pkgver=5.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync'
@@ -64,7 +64,7 @@ fi
 
 if [ "$_provide_nondkms" = true ] || [ "$_provide_dkms" = true ]; then
 prepare() {
-    _supported_kernvers=('5.11' '5.12')
+    _supported_kernvers=('5.11' '5.12' '5.13')
     _regex=("${_supported_kernvers[@]//./\\\\.}")
     _regex="^($(IFS='|'; printf '%s' "${_regex[*]}"))(\\.|\$)"
     sed -i -e "s/@PACKAGE_VERSION@/$pkgver/g" -e "s/@KERNVER_REGEX@/$_regex/g" "$srcdir/dkms.conf"
