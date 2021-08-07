@@ -1,7 +1,7 @@
 pkgbase = arcolinux-logout
 	pkgdesc = Beautiflul ArcoLinux logout screen
 	pkgver = 21.07_02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arcolinux/arcolinux-logout
 	arch = x86_64
 	license = GPL3
