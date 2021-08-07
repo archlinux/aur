@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2021-05-06
-_rustc=1.52.0
+_date=2021-06-17
+_rustc=1.53.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.53.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('e53a2df2c2c26f8929d551852eeae242b9a6167fba34481f92010b30def32dec'
+sha256sums=('a2934f85f76a35a3796c0fefd31e91f5b6dd8377cd8c3769c1c10e7ce7a495f4'
             'SKIP'
-            'dcdc0083facd6484527494ee5b8f72e040a095ab346bb658ce176be573d5c9b4'
+            '66d5257bbd194db08e67ca63a74cc80cdc4a36eaa30bf7dfe65861d9deaff7f7'
             'SKIP'
-            'a5ce7d951dbebd815530c3c571c193c24ae4b83bc1bf431845c0dbfbe1280476'
+            '9c2f0443a546dd18f1f020c7711a7b9864432545ceb812e79315c1e76508b193'
             'SKIP'
-            'd0931a1e728afdfbe3390a2ff3a5256d1668402298a3a6c050ac65ad01c4db2b'
+            'e4437f6c83574fc60e183f4df439190f7610e4a669476802795645da66fbb83b'
             'SKIP'
-            '86c703a76b098e5ae715acdb5b9c3a2918e88b8172f06ceb040ca0081611568e')
+            '84597d6a7fabbac6d7b17d7f5939be8cd01023eeb0fb26ec9b4fc8bca57e5d29')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -105,7 +105,8 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/${_prefix}/bin/"{cargo,rustc,rustdoc}
-  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"*
+  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"rust-*
+  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/gcc-ld/"*
   strip --strip-all "${pkgdir}/${_prefix}/libexec/"*
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/librustc"*.so
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so

@@ -372,8 +372,6 @@ debug = false
 # This is mostly useful for tools; if you have changes to `compiler/` they will be ignored.
 #
 # You can set this to "if-unchanged" to only download if `compiler/` has not been modified.
-#
-# FIXME(#82739): currently, this also uses the downloaded compiler for stage0, but that causes unnecessary rebuilds.
 #download-rustc = false
 
 # Number of codegen units to use for each compiler invocation. A value of 0
@@ -565,6 +563,14 @@ test-compare-mode = false
 
 # Use LLVM libunwind as the implementation for Rust's unwinder.
 # Accepted values are 'in-tree' (formerly true), 'system' or 'no' (formerly false).
+# This option only applies for Linux and Fuchsia targets.
+# On Linux target, if crt-static is not enabled, 'no' means dynamic link to
+# `libgcc_s.so`, 'in-tree' means static link to the in-tree build of llvm libunwind
+# and 'system' means dynamic link to `libunwind.so`. If crt-static is enabled,
+# the behavior is depend on the libc. On musl target, 'no' and 'in-tree' both 
+# means static link to the in-tree build of llvm libunwind, and 'system' means 
+# static link to `libunwind.a` provided by system. Due to the limitation of glibc,
+# it must link to `libgcc_eh.a` to get a working output, and this option have no effect.
 llvm-libunwind = 'no'
 
 # Enable Windows Control Flow Guard checks in the standard library.
