@@ -5,8 +5,8 @@
 # Contributor: serp <serp256 at gmail dot com>
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
-pkgver='5.4.1'
-pkgrel='2'
+pkgver='5.4.2'
+pkgrel='1'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
@@ -15,7 +15,7 @@ depends=('libev' 'dune>=1.8.0' 'ocaml>=4.08.0' 'ocaml-luv' 'ocaml-mmap>=1.1.0' '
 makedepends=('cppo>=1.1.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9090e646cff89435971a9bca08c4ddbb4719f5d6c8745cfd617d3a549a0ed1cf')
+sha256sums=('e169cbe6722d9364002e8107297a24c7479843cb88222fe3e179e58407c1d2cb')
 
 _sourcedirectory="$_projectname-$pkgver"
 
