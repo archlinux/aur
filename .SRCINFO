@@ -1,0 +1,14 @@
+pkgbase = apple-ib-drv-dkms-git
+	pkgdesc = Apple iBridge devices support (Touchbar/ALS) for MacBook Pro 2018 and onward
+	pkgver = r305.fc9aefa
+	pkgrel = 1
+	url = https://github.com/t2linux/apple-ib-drv
+	arch = x86_64
+	groups = apple-t2
+	license = GPL2
+	depends = dkms
+	depends = pahole
+	source = git+https://github.com/t2linux/apple-ib-drv#branch=mbp15
+	sha256sums = SKIP
+
+pkgname = apple-ib-drv-dkms-git
