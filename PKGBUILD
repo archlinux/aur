@@ -13,7 +13,7 @@ depends=('python'
 options=('!strip')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/penguins-eggs/files/packages-deb/eggs_${pkgver}-1_amd64.deb/download")
-sha256sums=('01dc2dd0980535af0b5f15061e7047611f79450d5fbdb72bb47c3c0b42ba5aa4')
+sha1sums=('da72c05b0790622f963b1754d9aa99438982e456')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
