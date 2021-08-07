@@ -4,7 +4,7 @@
 _pkgname=julius
 pkgname=$_pkgname-game-git
 pkgdesc="Open source re-implementation of Caesar III (Original copy required)"
-pkgver=r2121.7c1502a4
+pkgver=r2482.9b8c90d2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/bvschaik/julius"
