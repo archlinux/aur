@@ -1,7 +1,7 @@
 pkgbase = mt
 	pkgdesc = A terminal written in GTK+ and Rust
 	pkgver = 0.1.0+alpha2021.07.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Miridyan/mt
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = mt
 	depends = vte3
 	depends = libhandy
 	provides = com.gitlab.miridyan.Mt
-	source = mt-v0.1.0+alpha2021.07.11-1.tar.gz::https://gitlab.com/Miridyan/mt/-/archive/v0.1.0+alpha2021.07.11-1/mt-v0.1.0+alpha2021.07.11-1.tar.gz
-	sha512sums = ef69e61eba2b63639c5e48be236dc8f5a9059b148e1e5b97cbe36b7aa6c363a1eb46610519854a533c28c3d139664190fb779ad9586a1e2418b661b586fccb79
+	source = mt-v0.1.0+alpha2021.07.11-2.tar.gz::https://gitlab.com/Miridyan/mt/-/archive/v0.1.0+alpha2021.07.11-2/mt-v0.1.0+alpha2021.07.11-2.tar.gz
+	sha512sums = 4e5b31d2e5c6dc2090664fd0fa2be259840e28f5c7fc9c1dbff58bedaccacdf277ca8eb338bfd9ff24dae8210ab97b07608feadc17d4676216b08fd990f98287
 
 pkgname = mt

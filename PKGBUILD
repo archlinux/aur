@@ -1,6 +1,6 @@
 pkgname=mt
 pkgver=0.1.0+alpha2021.07.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal written in GTK+ and Rust"
 provides=("com.gitlab.miridyan.Mt")
 makedepends=('cargo')
@@ -9,10 +9,11 @@ arch=('x86_64')
 url="https://gitlab.com/Miridyan/mt"
 source=("$pkgname-v$pkgver-$pkgrel.tar.gz::https://gitlab.com/Miridyan/$pkgname/-/archive/v$pkgver-$pkgrel/$pkgname-v$pkgver-$pkgrel.tar.gz")
 license=('GPL2')
-sha512sums=('ef69e61eba2b63639c5e48be236dc8f5a9059b148e1e5b97cbe36b7aa6c363a1eb46610519854a533c28c3d139664190fb779ad9586a1e2418b661b586fccb79')
+sha512sums=('4e5b31d2e5c6dc2090664fd0fa2be259840e28f5c7fc9c1dbff58bedaccacdf277ca8eb338bfd9ff24dae8210ab97b07608feadc17d4676216b08fd990f98287')
 
 build() {
     cd $srcdir/$pkgname-v$pkgver-$pkgrel
+    unset CARGO_TARGET_DIR
     cargo build --release
 }
 
