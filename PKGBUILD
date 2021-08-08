@@ -1,6 +1,6 @@
 # Maintainer: Mikołaj "D1SoveR" Banasik <d1sover@gmail.com>
 pkgname='luxtorpeda-git'
-pkgver=23.0.0.r230.9c75226
+pkgver=30.0.0.r270.415ad45
 pkgrel=1
 pkgdesc='Steam Play compatibility tool to run games using native Linux engines'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ source=("git+${url}.git"
         'size-optimisations.patch')
 sha256sums=('SKIP'
             'e97cf95dedcf60c97edb3a693052964e4ce6da795631ca5c9f04182462f67895'
-            'e6ed4eebc62d1cf4c6b489cfd47b94cd2d0bec59ca4a60cb0ae50632a1202852')
+            '2bd6a8b0586cf5f382d4e98ed8803bc34af2b5227f31a3f219957b4d6f50ada3')
 
 pkgver() {
   cd "${pkgname%-git}"
