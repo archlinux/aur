@@ -2,14 +2,14 @@
 
 pkgname=f32-backgrounds
 pkgver=32.2.2
-pkgrel=2
+pkgrel=4
 _relnum=32
 pkgdesc="Fedora $_relnum backgrounds"
 arch=('any')
 url="https://fedoraproject.org/wiki/F${_relnum}_Artwork"
 license=('custom')
-source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f$_relnum-backgrounds-$pkgver-$pkgrel.fc33.src.rpm")
-sha256sums=('c78aa5ed090b9aae9b4b4f21f10e83c6611bd0a64efbefb83686768dc89f8143')
+source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f$_relnum-backgrounds-$pkgver-$pkgrel.fc35.src.rpm")
+sha256sums=('81c623efc60679b262b5ee434b964d0a79f19e105d620b423a96c6ba04d80cae')
 
 prepare() {
     tar -xvJf ./${pkgname}-${pkgver}.tar.xz
