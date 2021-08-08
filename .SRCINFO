@@ -1,6 +1,6 @@
 pkgbase = protontricks
 	pkgdesc = A simple wrapper that does winetricks things for Proton enabled games.
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/Matoking/protontricks
 	arch = any
@@ -10,10 +10,11 @@ pkgbase = protontricks
 	depends = python
 	depends = python-vdf
 	depends = winetricks
-	optdepends = zenity: GUI for GNOME desktop
+	optdepends = yad: GUI for game selection,
+	optdepends = zenity: GUI for winetricks
 	provides = protontricks
 	conflicts = protontricks-git
-	source = git+https://github.com/Matoking/protontricks.git#tag=1.5.2
+	source = git+https://github.com/Matoking/protontricks.git#tag=1.6.0
 	sha512sums = SKIP
 
 pkgname = protontricks
