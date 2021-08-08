@@ -1,6 +1,6 @@
 pkgbase = pokete-git
 	pkgdesc = A small terminal based game in the style of a very popular and old game from gamefreak.
-	pkgver = 0.3.3
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/pokete
 	arch = any
