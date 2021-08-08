@@ -1,17 +1,14 @@
---- a/externals/CMakeLists.txt
-+++ b/externals/CMakeLists.txt
-@@ -35,11 +35,9 @@ endif()
- 
- if (NOT TARGET xbyak)
-     if (ARCHITECTURE STREQUAL "x86" OR ARCHITECTURE STREQUAL "x86_64")
--        add_library(xbyak INTERFACE)
--        file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/xbyak/include)
--        file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/xbyak/xbyak DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/xbyak/include)
--        target_include_directories(xbyak SYSTEM INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/xbyak/include)
--        target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
-+        find_package(xbyak REQUIRED)
-+        set_property(TARGET xbyak::xbyak PROPERTY IMPORTED_GLOBAL TRUE)
-+        add_library(xbyak ALIAS xbyak::xbyak)
-     endif()
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,6 +136,11 @@ if (DYNARMIC_TESTS_USE_UNICORN)
+     find_package(Unicorn REQUIRED)
  endif()
+ 
++if (ARCHITECTURE STREQUAL "x86" OR ARCHITECTURE STREQUAL "x86_64")
++    find_package(xbyak REQUIRED)
++    add_library(xbyak ALIAS xbyak::xbyak)
++endif()
++
+ # Pull in externals CMakeLists for libs where available
+ add_subdirectory(externals)
  

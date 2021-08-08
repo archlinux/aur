@@ -1,13 +1,34 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,11 +136,16 @@ if (DYNARMIC_TESTS_USE_UNICORN)
+     find_package(Unicorn REQUIRED)
+ endif()
+ 
++find_package(Catch2 QUIET)
++if (Catch2_FOUND)
++    add_library(catch ALIAS Catch2::Catch2)
++endif()
++
+ # Pull in externals CMakeLists for libs where available
+ add_subdirectory(externals)
+ 
+ # Dynarmic project files
+ add_subdirectory(src/dynarmic)
+-if (DYNARMIC_TESTS)
++if (DYNARMIC_TESTS AND TARGET catch)
+     add_subdirectory(tests)
+ endif()
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -4,8 +4,8 @@
+@@ -2,11 +2,6 @@
+ # simply add the directory to that file as a subdirectory
+ # to have CMake automatically recognize them.
  
- # catch
- 
+-# catch
+-
 -add_library(catch INTERFACE)
--target_include_directories(catch INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/catch>)
-+add_library(catch INTERFACE IMPORTED GLOBAL)
-+target_include_directories(catch SYSTEM INTERFACE /usr/include/catch2)
- 
+-target_include_directories(catch INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/catch/include>)
+-
  # fmt
  
+ if (NOT DYNARMIC_NO_BUNDLED_FMT)
