@@ -1,0 +1,13 @@
+pkgbase = plank-theme-data-stora-git
+	pkgdesc = Anti-Shade theme for Plank
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1299919
+	arch = any
+	license = CC BY NC ND
+	makedepends = git
+	depends = plank
+	source = git://github.com/MMcQueenGNU/plank-theme-data-stora.git
+	sha256sums = SKIP
+
+pkgname = plank-theme-data-stora-git
