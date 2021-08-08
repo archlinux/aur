@@ -3,11 +3,12 @@
 
 pkgname=devpi-client
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Workflow commands for Python developers"
 arch=('any')
 url="https://doc.devpi.net/"
 license=('MIT')
+groups=('devpi')
 depends=(
   'check-manifest>=0.28'
   'devpi-common>=3.6.0'

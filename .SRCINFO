@@ -1,9 +1,10 @@
 pkgbase = devpi-client
 	pkgdesc = Workflow commands for Python developers
 	pkgver = 5.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://doc.devpi.net/
 	arch = any
+	groups = devpi
 	license = MIT
 	makedepends = python-setuptools
 	depends = check-manifest>=0.28
