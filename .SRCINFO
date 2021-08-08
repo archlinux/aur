@@ -1,0 +1,16 @@
+pkgbase = vscodium-marketplace
+	pkgdesc = Enable vscode marketplace in vscodium
+	pkgver = 1.59.0
+	pkgrel = 1
+	url = https://marketplace.visualstudio.com/vscode
+	install = vscodium-marketplace.install
+	arch = any
+	license = unknown
+	depends = vscodium
+	depends = sed
+	source = vscodium-marketplace.hook
+	source = patch.sh
+	md5sums = c4b0dc2ddfb8788415344fc0e528c002
+	md5sums = b93f0158ea7dd0880420a15ba135854c
+
+pkgname = vscodium-marketplace
