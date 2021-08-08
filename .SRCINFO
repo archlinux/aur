@@ -1,6 +1,6 @@
 pkgbase = hip-nvcc
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hip-nvcc
 	depends = llvm-amdgpu
 	provides = hip
 	conflicts = hip
-	source = hip-nvcc-4.2.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.2.0.tar.gz
-	sha256sums = ecb929e0fc2eaaf7bbd16a1446a876a15baf72419c723734f456ee62e70b4c24
+	source = hip-nvcc-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.3.0.tar.gz
+	sha256sums = 293b5025b5e153f2f25e465a2e0006a2b4606db7b7ec2ae449f8a4c0b52d491b
 
 pkgname = hip-nvcc
