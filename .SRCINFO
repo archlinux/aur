@@ -1,0 +1,15 @@
+pkgbase = rclip-git
+	pkgdesc = Clipboard manager written in rust with ability to save different entry types (text, images, etc.)
+	pkgver = r56.2c97aaf
+	pkgrel = 1
+	url = https://github.com/UnkwUsr/rclip
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = rclip
+	conflicts = rclip
+	source = rclip-git::git+https://github.com/UnkwUsr/rclip
+	sha1sums = SKIP
+
+pkgname = rclip-git
