@@ -1,7 +1,7 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=libsahtrace-git
-pkgver=0.1.0.r0.g37c28b2
-pkgrel=3
+pkgver=v1.0.0.r0.gedbe4ae
+pkgrel=1
 pkgdesc="Small and flexible library to enable tracing and logging"
 arch=('any')
 url="https://gitlab.com/soft.at.home/logging/libsahtrace.git"
@@ -24,7 +24,7 @@ conflicts=(
 	'libsahtrace-git'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/logging/libsahtrace.git#branch=${gitbranch}" "components.config")
 md5sums=('SKIP' 'SKIP')
@@ -44,7 +44,7 @@ build() {
 	# STAGINGDIR
 	export STAGINGDIR=$(pwd)
 	# Disable some warnings
-	export CFLAGS+=" -Wstringop-overflow=0"
+	export CFLAGS+=" -Wstringop-overflow=0 -Wno-stringop-truncation"
 	cd "${pkgname}"
 	make clean
 	make
@@ -53,6 +53,7 @@ build() {
 package() {
 	cd "${pkgname}"
 	make D="${pkgdir}/" install
+	mkdir ${pkgdir}/usr/lib/
 	mv ${pkgdir}/lib/libsahtrace* ${pkgdir}/usr/lib/
 	rm -Rf ${pkgdir}/lib/
 }
