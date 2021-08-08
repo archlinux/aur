@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxp-git
-pkgver=v0.9.1.r0.gf51933a
+pkgver=v0.9.3.r0.ga393e80
 pkgrel=1
 pkgdesc="Generic C-API for common patterns"
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=(
 	'lib_amxp'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxp.git#branch=${gitbranch}")
 md5sums=('SKIP')
