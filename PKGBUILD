@@ -1,27 +1,26 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Maintainer: Luke Horwell <code (at) horwell (dot) me>
 
 pkgname=polychromatic
-pkgver=0.3.12
-pkgrel=3
-pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
+pkgver=0.7.0
+pkgrel=1
+pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
 url='https://github.com/polychromatic/polychromatic'
 license=('GPL3')
-depends=('python' 'python-distro' 'hicolor-icon-theme' 'python-openrazer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
-makedepends=('nodejs-less')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz"
-        "0001-Migrate-platform-module-to-distro-v0.3.12.patch")
-sha512sums=('e4099408f1543436ac8d1145f34631af59086542ba16c1f7b729f422d6555f5ce0ecfa0b49917cf73c88a0bf2467684001242b230833e994fa8c164c43fdad52'
-            'a73552e795ad3c418b478f6ee203cb301f059319f07f630371f7f218a64e4efd9ca2173f1b4aa4f5cbfd41f7a37b996ec7ae91644d2fa2c484802138cb577766')
+depends=('python' 'python-colorama' 'python-colour' 'python-setproctitle' 'python-requests' 'python-pyqt5' 'python-pyqt5-webengine' 'qt5-svg' 'libappindicator-gtk3' 'python-gobject')
+optdepends=('python-openrazer')
+makedepends=('meson' 'ninja' 'sassc')
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz")
+sha512sums=('28ffd8ca0428713693234583dcb96b4ef440fbda4689c5c660d38a53d590183f28310fe267aad4a72c709c70e25ed6ebe32c3cb945d757bdbec347d22d86aea0')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -Np1 < ../0001-Migrate-platform-module-to-distro-v0.3.12.patch
+build() {
+  arch-meson $pkgname-$pkgver build
+  ninja -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
 
 # vim:set ts=2 sw=2 et:
