@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.05.07.r39.g3c288b6
+pkgver=2021.08.08.r0.g0a959cf
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
 url="https://www.pling.com/p/1477941"
 license=('GP3')
-depends=('gnome-themes-extra')
+depends=('gnome-themes-extra' 'gtk3')
 makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
@@ -26,10 +26,10 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
-    ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
-  # Remove unnecessary files:
-  rm -rf "$pkgdir"/usr/share/themes/{Fluent,Fluent-*}/gnome-shell/extensions
+  for variant in default purple pink red orange yellow green grey; do
+    ./install.sh -t ${variant} -d "$pkgdir/usr/share/themes"
+  done
 
   # Plank theme
   install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
@@ -46,8 +46,6 @@ package() {
   # Dash to dock theme
   cp -r src/dash-to-dock "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  ## Fix for Dash to panel
-  install -d "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
-  cp -r src/gnome-shell/extensions/dash-to-panel \
-    "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
+  # Fix for Dash to panel & Workspaces to Dock
+  cp -r src/gnome-shell/extensions/* "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
