@@ -1,13 +1,16 @@
 [buildPlans.iosevka-custom]
 family = "Iosevka Custom"
+export-glyph-names = true
+
+[buildPlans.iosevka-custom.ligations]
+inherits = "dlig"
+# disables = []
+# enables = []
 
 # [buildPlans.iosevka-custom.variants]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
-# inherits = "ss14"
+# inherits = "ss16"
 
 [buildPlans.iosevka-custom.variants.design]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
-# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
 digit-form = "lining"
 capital-a = "curly-serifless"
 capital-b = "standard-interrupted-bilateral-serifed"
@@ -63,9 +66,11 @@ long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
 turn-v = "curly"
 lower-alpha = "crossing"
+lower-delta = "rounded"
 capital-gamma = "serifless"
 lower-iota = "serifed-flat-tailed"
 lower-lambda = "curly"
+lower-xi = "flat-top"
 cyrl-capital-ze = "unilateral-serifed"
 cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
@@ -78,7 +83,7 @@ cyrl-capital-u = "curly-turn"
 cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "dotted-oval"
+zero = "slashed-oval"
 one = "nobase"
 two = "curly-neck"
 three = "flattop"
@@ -106,30 +111,27 @@ lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
+punctuation-dot = "round"
 
 # Override above variants for each slope:
 # [buildPlans.iosevka-custom.variants.upright]
 # [buildPlans.iosevka-custom.variants.italic]
 # [buildPlans.iosevka-custom.variants.oblique]
 
-# [buildPlans.iosevka-custom.ligations]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
-# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
-# inherits = "calt"
+[buildPlans.iosevka-term-custom]
+family = "Iosevka Term Custom"
+export-glyph-names = true
+spacing = "term"
+
+[buildPlans.iosevka-term-custom.ligations]
+inherits = "dlig"
 # disables = []
 # enables = []
 
-[buildPlans.iosevka-term-custom]
-family = "Iosevka Term Custom"
-spacing = "term"
-
 # [buildPlans.iosevka-term-custom.variants]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
-# inherits = "ss14"
+# inherits = "ss16"
 
 [buildPlans.iosevka-term-custom.variants.design]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
-# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
 digit-form = "lining"
 capital-a = "curly-serifless"
 capital-b = "standard-interrupted-bilateral-serifed"
@@ -185,9 +187,11 @@ long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
 turn-v = "curly"
 lower-alpha = "crossing"
+lower-delta = "rounded"
 capital-gamma = "serifless"
 lower-iota = "serifed-flat-tailed"
 lower-lambda = "curly"
+lower-xi = "flat-top"
 cyrl-capital-ze = "unilateral-serifed"
 cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
@@ -200,7 +204,7 @@ cyrl-capital-u = "curly-turn"
 cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "dotted-oval"
+zero = "slashed-oval"
 one = "nobase"
 two = "curly-neck"
 three = "flattop"
@@ -228,30 +232,27 @@ lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
+punctuation-dot = "round"
 
 # Override above variants for each slope:
 # [buildPlans.iosevka-term-custom.variants.upright]
 # [buildPlans.iosevka-term-custom.variants.italic]
 # [buildPlans.iosevka-term-custom.variants.oblique]
 
-# [buildPlans.iosevka-term-custom.ligations]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
-# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
-# inherits = "calt"
+[buildPlans.iosevka-fontconfig-mono-custom]
+family = "Iosevka Fontconfig Mono Custom"
+export-glyph-names = true
+spacing = "fontconfig-mono"
+
+[buildPlans.iosevka-fontconfig-mono-custom.ligations]
+inherits = "dlig"
 # disables = []
 # enables = []
 
-[buildPlans.iosevka-fontconfig-mono-custom]
-family = "Iosevka Fontconfig Mono Custom"
-spacing = "fontconfig-mono"
-
 # [buildPlans.iosevka-fontconfig-mono-custom.variants]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
-# inherits = "ss14"
+# inherits = "ss16"
 
 [buildPlans.iosevka-fontconfig-mono-custom.variants.design]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
-# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
 digit-form = "lining"
 capital-a = "curly-serifless"
 capital-b = "standard-interrupted-bilateral-serifed"
@@ -307,9 +308,11 @@ long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
 turn-v = "curly"
 lower-alpha = "crossing"
+lower-delta = "rounded"
 capital-gamma = "serifless"
 lower-iota = "serifed-flat-tailed"
 lower-lambda = "curly"
+lower-xi = "flat-top"
 cyrl-capital-ze = "unilateral-serifed"
 cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
@@ -322,7 +325,7 @@ cyrl-capital-u = "curly-turn"
 cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "dotted-oval"
+zero = "slashed-oval"
 one = "nobase"
 two = "curly-neck"
 three = "flattop"
@@ -350,30 +353,27 @@ lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
+punctuation-dot = "round"
 
 # Override above variants for each slope:
 # [buildPlans.iosevka-fontconfig-mono-custom.variants.upright]
 # [buildPlans.iosevka-fontconfig-mono-custom.variants.italic]
 # [buildPlans.iosevka-fontconfig-mono-custom.variants.oblique]
 
-# [buildPlans.iosevka-fontconfig-mono-custom.ligations]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
-# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
-# inherits = "calt"
+[buildPlans.iosevka-fixed-custom]
+family = "Iosevka Fixed Custom"
+export-glyph-names = true
+spacing = "fixed"
+
+[buildPlans.iosevka-fixed-custom.ligations]
+inherits = "dlig"
 # disables = []
 # enables = []
 
-[buildPlans.iosevka-fixed-custom]
-family = "Iosevka Fixed Custom"
-spacing = "fixed"
-
 # [buildPlans.iosevka-fixed-custom.variants]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#stylistic-sets
-# inherits = "ss14"
+# inherits = "ss16"
 
 [buildPlans.iosevka-fixed-custom.variants.design]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-character-variants
-# https://github.com/be5invis/Iosevka/raw/dev-v4/images/charvars.png
 digit-form = "lining"
 capital-a = "curly-serifless"
 capital-b = "standard-interrupted-bilateral-serifed"
@@ -429,9 +429,11 @@ long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed"
 turn-v = "curly"
 lower-alpha = "crossing"
+lower-delta = "rounded"
 capital-gamma = "serifless"
 lower-iota = "serifed-flat-tailed"
 lower-lambda = "curly"
+lower-xi = "flat-top"
 cyrl-capital-ze = "unilateral-serifed"
 cyrl-ze = "unilateral-serifed"
 cyrl-capital-ka = "curly-serifless"
@@ -444,7 +446,7 @@ cyrl-capital-u = "curly-turn"
 cyrl-ya = "straight-tailed"
 cyrl-yeri = "round"
 cyrl-yery = "round"
-zero = "dotted-oval"
+zero = "slashed-oval"
 one = "nobase"
 two = "curly-neck"
 three = "flattop"
@@ -472,16 +474,131 @@ lig-ltgteq = "flat"
 ascii-single-quote = "raised-comma"
 ascii-grave = "straight"
 question = "smooth"
+punctuation-dot = "round"
 
 # Override above variants for each slope:
 # [buildPlans.iosevka-fixed-custom.variants.upright]
 # [buildPlans.iosevka-fixed-custom.variants.italic]
 # [buildPlans.iosevka-fixed-custom.variants.oblique]
 
-# [buildPlans.iosevka-fixed-custom.ligations]
-# https://github.com/be5invis/Iosevka/tree/dev-v4#configuring-ligations
-# https://github.com/be5invis/Iosevka/tree/dev-v4#ligations
-# inherits = "calt"
+[buildPlans.iosevka-quasi-proportional-custom]
+family = "Iosevka Quasi Proportional Custom"
+export-glyph-names = true
+spacing = "quasi-proportional"
+
+[buildPlans.iosevka-quasi-proportional-custom.ligations]
+inherits = "dlig"
 # disables = []
 # enables = []
+
+# [buildPlans.iosevka-quasi-proportional-custom.variants]
+# inherits = "ss16"
+
+[buildPlans.iosevka-quasi-proportional-custom.variants.design]
+digit-form = "lining"
+capital-a = "curly-serifless"
+capital-b = "standard-interrupted-bilateral-serifed"
+capital-c = "serifless"
+capital-d = "more-rounded-unilateral-serifed"
+capital-e = "serifless"
+capital-f = "top-left-serifed"
+capital-g = "toothless-corner-serifless-hooked"
+capital-h = "serifless"
+capital-i = "short-serifed"
+capital-j = "serifless"
+capital-k = "curly-top-left-serifed"
+capital-l = "serifless"
+capital-m = "hanging-motion-serifed"
+capital-n = "standard"
+capital-p = "closed-motion-serifed"
+capital-q = "crossing"
+capital-r = "straight-open"
+capital-s = "serifless"
+capital-t = "serifless"
+capital-u = "toothless-rounded"
+capital-v = "curly"
+capital-w = "straight-asymmetric"
+capital-x = "curly-serifless"
+capital-y = "curly-serifless"
+capital-z = "straight-serifless-with-crossbar"
+a = "double-storey-tailed"
+b = "toothless-corner"
+c = "serifless"
+d = "tailed-serifless"
+e = "rounded"
+f = "flat-hook-tailed"
+g = "double-storey-open"
+h = "straight"
+i = "hooky"
+j = "serifless"
+k = "curly-serifless"
+l = "flat-tailed"
+m = "short-leg"
+n = "earless-corner-tailed"
+p = "motion-serifed"
+q = "earless-corner-diagonal-tailed"
+r = "earless-corner"
+s = "serifless"
+t = "standard"
+u = "toothless-rounded"
+v = "curly"
+w = "cursive"
+x = "curly-serifless"
+y = "curly"
+z = "straight-serifless-with-crossbar"
+long-s = "bent-hook-tailed"
+eszet = "longs-s-lig-tailed"
+turn-v = "curly"
+lower-alpha = "crossing"
+lower-delta = "rounded"
+capital-gamma = "serifless"
+lower-iota = "serifed-flat-tailed"
+lower-lambda = "curly"
+lower-xi = "flat-top"
+cyrl-capital-ze = "unilateral-serifed"
+cyrl-ze = "unilateral-serifed"
+cyrl-capital-ka = "curly-serifless"
+cyrl-ka = "curly-serifless"
+cyrl-el = "straight"
+cyrl-en = "tailed-top-left-serifed"
+cyrl-ef = "cursive"
+cyrl-che = "tailed"
+cyrl-capital-u = "curly-turn"
+cyrl-ya = "straight-tailed"
+cyrl-yeri = "round"
+cyrl-yery = "round"
+zero = "slashed-oval"
+one = "nobase"
+two = "curly-neck"
+three = "flattop"
+four = "semi-open"
+five = "oblique-upper-left-bar"
+six = "open-contour"
+seven = "curly-serifless"
+eight = "crossing-asymmetric"
+nine = "straight-bar"
+tilde = "low"
+asterisk = "turn-hex-high"
+underscore = "high"
+paragraph-sign = "low"
+caret = "high"
+paren = "normal"
+brace = "curly"
+number-sign = "upright"
+ampersand = "flat-top"
+at = "short"
+dollar = "open-cap"
+cent = "open"
+percent = "rings-segmented-slash"
+bar = "natural-slope"
+lig-ltgteq = "flat"
+ascii-single-quote = "raised-comma"
+ascii-grave = "straight"
+question = "smooth"
+punctuation-dot = "round"
+
+# Override above variants for each slope:
+# [buildPlans.iosevka-quasi-proportional-custom.variants.upright]
+# [buildPlans.iosevka-quasi-proportional-custom.variants.italic]
+# [buildPlans.iosevka-quasi-proportional-custom.variants.oblique]
 

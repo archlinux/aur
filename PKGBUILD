@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka-custom
 pkgname=${_pkgname}-git
-pkgver=1622540711
+pkgver=1627815710
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 source=('private-build-plans.toml.example')
-sha256sums=('16c2dea4a9bb67eee87b38ebe49d0b854ef2e03e11907191333529075db71676')
+sha256sums=('cce26afc81543505be3eea8d8fb465c903a428673406b43b5d4ad23821eed066')
 
 prepare () {
   rm -rf Iosevka
@@ -37,7 +37,7 @@ build () {
   cd Iosevka
   npm install
   npm update
-  npm run build -- ttf::${_pkgname#*-}
+  NO_COLOR=1 npm run build -- ttf::${_pkgname#*-}
 }
 
 package () {
