@@ -4,9 +4,9 @@
 # Contributor: Sergey Shatunov <me@prok.pw>
 
 pkgname=jetty
-pkgver=9.4.38
-_timestamp=v20210224
-pkgrel=2
+pkgver=9.4.43
+_timestamp=v20210629
+pkgrel=1
 pkgdesc="Jetty is a pure Java-based HTTP server and Java Servlet container"
 arch=('any')
 url="http://www.eclipse.org/jetty/"
@@ -20,7 +20,7 @@ source=(https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/$pkg
         jetty.service
         jetty.sysusers
         jetty.tmpfiles)
-sha256sums=('579f6496ecf1d2a77cac8a12a0606b37e5098eca95f0c4de74235ddb898eff09'
+sha256sums=('01fae654b09932e446019aa859e7af6e05e27dbade12b54cd7bae3249fc723d9'
             'SKIP'
             'e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d'
             'da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb'

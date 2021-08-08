@@ -1,22 +1,22 @@
 pkgbase = jetty
 	pkgdesc = Jetty is a pure Java-based HTTP server and Java Servlet container
-	pkgver = 9.4.38
-	pkgrel = 2
+	pkgver = 9.4.43
+	pkgrel = 1
 	url = http://www.eclipse.org/jetty/
 	arch = any
 	license = Apache
 	license = EPL
 	depends = java-environment
 	options = !strip
-	source = https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.38.v20210224/jetty-distribution-9.4.38.v20210224.tar.gz
-	source = https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.38.v20210224/jetty-distribution-9.4.38.v20210224.tar.gz.asc
+	source = https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.43.v20210629/jetty-distribution-9.4.43.v20210629.tar.gz
+	source = https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.43.v20210629/jetty-distribution-9.4.43.v20210629.tar.gz.asc
 	source = jetty.default
 	source = jetty.logrotate
 	source = jetty.service
 	source = jetty.sysusers
 	source = jetty.tmpfiles
 	validpgpkeys = 5989BAF76217B843D66BE55B2D0E1FB8FE4B68B4
-	sha256sums = 579f6496ecf1d2a77cac8a12a0606b37e5098eca95f0c4de74235ddb898eff09
+	sha256sums = 01fae654b09932e446019aa859e7af6e05e27dbade12b54cd7bae3249fc723d9
 	sha256sums = SKIP
 	sha256sums = e5b425043a379bde57fd37c498ff8efb822325b7606b149cc09a53737ab4297d
 	sha256sums = da0402440e0a3b66e55387700b2c178c294dc65cc4a7bd079c622343845adecb
@@ -25,4 +25,3 @@ pkgbase = jetty
 	sha256sums = b421e99f731635a68e59dabab803d1bbaecf11d338f17837cf0bb37c6bf32e6e
 
 pkgname = jetty
-
