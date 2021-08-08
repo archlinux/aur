@@ -1,6 +1,6 @@
 pkgbase = python-datalad
 	pkgdesc = Keep code, data, containers under control with git and git-annex
-	pkgver = 0.14.3
+	pkgver = 0.14.7
 	pkgrel = 1
 	url = https://github.com/datalad/datalad
 	arch = any
@@ -28,8 +28,7 @@ pkgbase = python-datalad
 	depends = python-tqdm
 	depends = python-keyring
 	depends = python-gitpython
-	source = datalad-0.14.3.tar.gz::https://github.com/datalad/datalad/archive/0.14.3.tar.gz
-	sha512sums = 2c4f4433069380e753c0f2f161793f6c6cf98c47acdbcdc1d510f4e6795bebb81fc19a41b78db8581038f91704d1b32918c50a4a71f9d2895139c1690b88e972
+	source = datalad-0.14.7.tar.gz::https://github.com/datalad/datalad/archive/0.14.7.tar.gz
+	sha512sums = 6372c7fa7913f1719e00cf870b638ee5555c33402cd4fc3c21c16b11875dc9e3701f74cf3ea582dfc7b2faae415d47fa3e557855c5ede3db9af7adcb61cfca45
 
 pkgname = python-datalad
-
