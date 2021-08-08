@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxd-git
-pkgver=v2.0.6.r0.g75e9d83
+pkgver=v3.2.1.r0.g84b2c0c
 pkgrel=1
 pkgdesc="Generic C-implementation for managing a data model"
 arch=('any')
@@ -20,7 +20,7 @@ conflicts=(
 	'lib_amxd'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git#branch=${gitbranch}")
 md5sums=('SKIP')

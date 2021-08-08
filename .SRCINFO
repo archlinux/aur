@@ -1,6 +1,6 @@
 pkgbase = lib_amxd-git
 	pkgdesc = Generic C-implementation for managing a data model
-	pkgver = v2.0.6.r0.g75e9d83
+	pkgver = v3.2.1.r0.g84b2c0c
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = lib_amxd-git
 	depends = lib_amxp
 	provides = lib_amxd
 	conflicts = lib_amxd
-	source = lib_amxd-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git#branch=master
+	source = lib_amxd-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxd.git#branch=main
 	md5sums = SKIP
 
 pkgname = lib_amxd-git
-
