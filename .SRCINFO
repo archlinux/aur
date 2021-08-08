@@ -1,7 +1,7 @@
 pkgbase = gcc-go-no-conflicts
 	pkgdesc = Go front-end for GCC, does not conflict with go package.
 	pkgver = 11.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,6 @@ pkgbase = gcc-go-no-conflicts
 	license = custom
 	depends = gcc
 	provides = gcc-go
-	provides = go
 	provides = gcc-go-multilib
 	conflicts = gcc-go
 	replaces = gcc-go
