@@ -16,7 +16,7 @@ source=("license.html::https://www.downloadhelper.net/terms-of-service"
         "extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3804074/video_downloadhelper-${pkgver}-fx.xpi")
 noextract=("license.html"
            "extension.xpi")
-sha512sums=('cec88e3e74561cc7b1a13b378530c2ae3539cc6edee7960a16f2d2f7f2b2b882023adb7b0b50f638ac90c246165516a5dfa9552508583d7ba82448177112adbb'
+sha512sums=(SKIP
             '1a56c8169aa2493ee33b636607f49cab8994002c9346d1a045d418a5064040f55350d781d6273ad7351ed7c620b7bd5f8629c3381e5f326eca44a4cf385f359e')
 
 package() {
