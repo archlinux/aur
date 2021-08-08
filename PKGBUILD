@@ -21,7 +21,7 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	'dynarmic-add-cmake-install-rules.patch::https://github.com/MerryMage/dynarmic/pull/636.patch'
+	"dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
 	'unbundle-catch2.patch'
 	'unbundle-fmt.patch'
 	'unbundle-robin-map.patch'
