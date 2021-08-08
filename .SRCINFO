@@ -1,15 +1,14 @@
 pkgbase = alder
-	pkgdesc = A minimal implementation of the UNIX tree command with colors!
+	pkgdesc = A minimal implementation of the UNIX tree command with colors
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aweary/alder
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = alder-2.0.0.tar.gz
-	source = alder-2.0.0.tar.gz::https://github.com/aweary/alder/archive/v2.0.0.tar.gz
-	sha256sums = 8303420eb1620801ad81b8f551a51d49353d6feda5da3541adcc15fc58ec088d
+	noextract = alder-2.0.0.tgz
+	source = alder-2.0.0.tgz::https://registry.npmjs.org/@aweary/alder/-/alder-2.0.0.tgz
+	sha256sums = c2cb747b93df87d7bd39e38167f6d21ade5234d43974cc4659f73981a84521a7
 
 pkgname = alder
-
