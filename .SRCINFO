@@ -1,33 +1,36 @@
 pkgbase = devpi-server
 	pkgdesc = reliable private and pypi.python.org caching server
-	pkgver = 5.5.0
+	pkgver = 6.1.0
 	pkgrel = 1
-	url = http://doc.devpi.net/
-	install = devpi-server.install
+	url = https://doc.devpi.net/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	depends = python-py
+	depends = python>=3.6
+	depends = python-py>=1.4.23
+	depends = python-argon2_cffi
 	depends = python-appdirs
 	depends = python-attrs
-	depends = python-itsdangerous
-	depends = python-execnet
-	depends = python-pyramid
-	depends = python-waitress
-	depends = python-repoze.lru
-	depends = python-pluggy
-	depends = python-pastedeploy
+	depends = python-defusedxml
+	depends = devpi-common>=3.3.0
+	depends = devpi-common<4
+	depends = python-execnet>=1.2
+	depends = python-itsdangerous>=0.24
 	depends = python-passlib
-	depends = python-argon2_cffi
+	depends = python-pluggy>=0.6.0
+	depends = python-pluggy<1.0
+	depends = python-pyramid>=2
+	depends = python-repoze.lru>=0.6
+	depends = python-ruamel-yaml
+	depends = python-waitress>=1.0.1
 	depends = python-strictyaml
-	depends = devpi-common
-	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-5.5.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/devpi-server/devpi-server-6.1.0.tar.gz
 	source = devpi-server.service
-	source = devpi-server.install
-	sha256sums = 11c2609bf6e0b06a6262ea4232a403def26909164ef403faf36b840914f13452
+	source = devpi-server.sysusers
+	source = devpi-server.tmpfiles
+	sha256sums = 2585e6355f5414458b4e64a7a9d7daa8167ece0f66469d63d80bb5728e0f6098
 	sha256sums = 1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95
-	sha256sums = 16c075687426589b69da252f04ee1a2ff0f8e73526eb773c53475d82e827f199
+	sha256sums = 4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48
+	sha256sums = bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1
 
 pkgname = devpi-server
-
