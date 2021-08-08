@@ -17,6 +17,7 @@ pkgbase = satdump-git
 	depends = glew
 	depends = fftw
 	depends = libcorrect-git
+	depends = nng
 	source = git+https://github.com/altillimity/SatDump
 	md5sums = SKIP
 
