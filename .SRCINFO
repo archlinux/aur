@@ -1,6 +1,6 @@
 pkgbase = rocm-bandwidth-test
 	pkgdesc = Bandwidth test for ROCm
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocm_bandwidth_test
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = rocm-bandwidth-test
 	depends = hsa-rocr
 	options = !staticlibs
 	options = strip
-	source = rocm-bandwidth-test-4.2.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-4.2.0.tar.gz
-	sha256sums = d268365e3bb8031c1201c05e705074d1fd794d236843f80064855cf31e4412f5
+	source = rocm-bandwidth-test-4.3.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_bandwidth_test/archive/rocm-4.3.0.tar.gz
+	source = delete_local_array.patch::https://patch-diff.githubusercontent.com/raw/RadeonOpenCompute/rocm_bandwidth_test/pull/74.patch
+	sha256sums = c6eb406cd2836af61dd5987f6b761340a1be20f66a9325f480423d10b9d3ec1b
+	sha256sums = c13fcff87232d443061a9fc9d0aa151d5fad4921ea7fb98e189ace17a345106d
 
 pkgname = rocm-bandwidth-test
