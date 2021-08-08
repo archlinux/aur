@@ -51,10 +51,10 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            'aebc3eaa0b4c96a2e6453cb8a9f123ac253254775b8928e2317777caa3867205'
+            '417ed82d81895d3cd2773e9a44406dc676810e1faf09947be3084c53afcdaee4'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
- 
+
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
