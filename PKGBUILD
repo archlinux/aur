@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=7.2.0-preview.6
+_pkgver=7.2.0-preview.8
 _version=7-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('5565B2B4E1A9D140225923852EE535F324B5D52600414B1C7A3617999B1A0593')
+sha256sums=('CB98C746E36A959A3FC1BE9FD03EE2EBA47D0F1CEEBD3A6BB4A9B2AFD91AEDEA')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
 
 package() {
