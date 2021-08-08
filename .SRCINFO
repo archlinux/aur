@@ -1,0 +1,18 @@
+pkgbase = gf-debugger-git
+	pkgdesc = A GDB frontend
+	pkgver = r139.25cd537
+	pkgrel = 1
+	url = https://github.com/nakst/gf
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	depends = gdb
+	depends = libx11
+	depends = freetype2
+	source = gf-debugger-git::git+https://github.com/nakst/gf
+	sha256sums = SKIP
+
+pkgname = gf-debugger-git
