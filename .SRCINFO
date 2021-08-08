@@ -1,17 +1,18 @@
 pkgbase = igsc-git
-	pkgdesc = Intel Graphics System Controller Firmware Update (git version)
+	pkgdesc = Intel graphics system controller firmware update library (git version)
 	pkgver = 0.2.2.r12.g90bfd55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intel/igsc/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
 	makedepends = systemd
+	depends = intel-metee
 	depends = systemd-libs
+	provides = igsc
+	conflicts = igsc
 	source = git+https://github.com/intel/igsc.git
-	source = git+https://github.com/intel/metee.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = igsc-git
