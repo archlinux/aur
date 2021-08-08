@@ -22,7 +22,7 @@ sha512sums=('667908a8c4296f742e91705bb74d2276f8e8d721eb4b16f8e5f97f99156075b1945
 prepare() {
   min_ver='1.51'
   echo "Checking for minimal required rust version (${min_ver})..."
-  rust_ver=$(rustc --version | awk '{print $2}')
+  rust_ver=$(rustc --version | awk '{print $2}' | sed 's/-nightly//')
   semver -r ">=${min_ver}" "${rust_ver}"
 }
 
