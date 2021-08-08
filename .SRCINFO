@@ -1,6 +1,6 @@
 pkgbase = nyxt-browser-git
 	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
-	pkgver = 1.5.0.r1236.g10fdbf5b
+	pkgver = 2.1.1.r469.gaf599d8d
 	pkgrel = 1
 	url = https://nyxt.atlas.engineer
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = nyxt-browser-git
 	makedepends = git
 	makedepends = sbcl
 	makedepends = cl-asdf
-	depends = webkit2gtk
+	depends = enchant
 	depends = glib-networking
+	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
 	depends = libfixposix
-	depends = enchant
+	depends = webkit2gtk
 	optdepends = gstreamer: for HTML5 audio/video
 	optdepends = gst-plugins-base: for HTML5 audio/video
 	optdepends = gst-plugins-good: for HTML5 audio/video
@@ -28,4 +29,3 @@ pkgbase = nyxt-browser-git
 	sha256sums = SKIP
 
 pkgname = nyxt-browser-git
-
