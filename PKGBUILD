@@ -21,8 +21,8 @@ sha256sums=('f5aa82c93f97f6c922a03497dea06a85b1c05c68740858445c33f2597ca0a6ad'
             'bde496b06c7ee3d28aab1363d226b88485386ae87f90249b530c850b2b322cdb')
 
 build() {
-  mv '${_ucode}' intel-ucode.cpio
-  mv '${_i915}' i915-firmware.cpio.xz
+  mv "${_ucode}" intel-ucode.cpio
+  mv "${_i915}" i915-firmware.cpio.xz
 }
 package() {
   install -d '${pkgdir}'/boot
