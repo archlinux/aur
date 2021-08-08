@@ -1,9 +1,10 @@
 pkgbase = icet
 	pkgdesc = High-performance sort-last parallel rendering library
 	pkgver = 2.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://icet.sandia.gov
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	makedepends = freeglut
@@ -16,4 +17,3 @@ pkgbase = icet
 	sha256sums = 536d0d708b435047bf3ef8a48d5c19354b9553b948f240df2802cd6480d468e9
 
 pkgname = icet
-
