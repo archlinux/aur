@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxb-git
-pkgver=v3.0.6.r0.gd7db04d
+pkgver=v3.4.2.r0.gacf5fd3
 pkgrel=1
 pkgdesc="Generic C-implementation for Ambiorix Backend library"
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=(
 	'lib_amxb'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxb.git#branch=${gitbranch}")
 md5sums=('SKIP')

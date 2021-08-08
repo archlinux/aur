@@ -1,6 +1,6 @@
 pkgbase = lib_amxb-git
 	pkgdesc = Generic C-implementation for Ambiorix Backend library
-	pkgver = v3.0.6.r0.gd7db04d
+	pkgver = v3.4.2.r0.gacf5fd3
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxb.git
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = lib_amxb-git
 	depends = uriparser
 	provides = lib_amxb
 	conflicts = lib_amxb
-	source = lib_amxb-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxb.git#branch=master
+	source = lib_amxb-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxb.git#branch=main
 	md5sums = SKIP
 
 pkgname = lib_amxb-git
-
