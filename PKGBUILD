@@ -29,7 +29,6 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0005-drm-gem-cma-Export-with-handle-allocator.patch'
         '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
-        # '0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -39,7 +38,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '73b95ca2cd8dd9f41d704aa20b288a34'
+         '3a6a8b9477658e6dccdeb2ef5f0eef1c'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
@@ -76,7 +75,6 @@ prepare() {
   patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
-  # patch -p1 < ../0011-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
 
   cat "${srcdir}/config" > ./.config
 
