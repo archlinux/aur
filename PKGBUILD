@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.8.2.r169.g5b016cbc
+pkgver=0.8.2.r386.g35b36e24
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "libnice" "libolm" "spdlog" "curl" "libevent")
+depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "libnice" "libolm" "spdlog" "curl" "libevent")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json")
 
 provides=("nheko")

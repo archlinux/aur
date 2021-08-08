@@ -1,6 +1,6 @@
 pkgbase = nheko-git
 	pkgdesc = Desktop client for the Matrix protocol
-	pkgver = 0.8.2.r169.g5b016cbc
+	pkgver = 0.8.2.r386.g35b36e24
 	pkgrel = 1
 	url = https://github.com/Nheko-Reborn/nheko
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = nheko-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
+	depends = gst-plugin-qmlgl
 	depends = libnice
 	depends = libolm
 	depends = spdlog
