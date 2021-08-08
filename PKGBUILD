@@ -8,9 +8,9 @@ pkgbase=java-openj9
 pkgname=('jre-openj9-headless' 'jre-openj9' 'jdk-openj9' 'openj9-src' 'openj9-doc')
 _majorver=16
 _minorver=0
-_securityver=1
-_updatever=9
-_openj9ver=0.26.0
+_securityver=2
+_updatever=7
+_openj9ver=0.27.0
 pkgrel=1
 pkgver=${_majorver}${_minorver:+.${_minorver}}${_securityver:+.${_securityver}}.u${_updatever}_openj9_${_openj9ver}
 arch=('x86_64')
@@ -19,8 +19,8 @@ license=('custom')
 makedepends=('java-environment>=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'freemarker' 'numactl' 'nasm' 'cmake')
-source=(openj9-openjdk-jdk-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
+             'libnet' 'bash' 'numactl' 'nasm' 'cmake')
+source=(openj9-openjdk-jdk${_majorver}-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/openj9-openjdk-jdk${_majorver}/archive/v${_openj9ver}-release.tar.gz
         https://github.com/eclipse/openj9/archive/openj9-${_openj9ver}.tar.gz
         openj9-omr-${_openj9ver}.tar.gz::https://github.com/eclipse/openj9-omr/archive/openj9-${_openj9ver}.tar.gz
         freedesktop-java.desktop
@@ -28,9 +28,9 @@ source=(openj9-openjdk-jdk-${_openj9ver}.tar.gz::https://github.com/ibmruntimes/
         freedesktop-jshell.desktop
         omr-omrstr-iconv-failure-overflow.patch
         omr-fam.patch)
-sha256sums=('f412e6e44d5f379671b55bb0a646d1c0ab79fe9dc3f380a3d42ee58693149416'
-            'ffb6a76161638d2a64b731774d170eccfd77ad738a31221ee32b57d9cd27211b'
-            '749d939b94533f6a600c5d238c82d0bf357718f6bea37f295276544eb394b5e4'
+sha256sums=('f4b90b065cf1ff9ec60da7f0a78635be499fba436b4a42cb7e0ce1b95b9275fd'
+            'b50e0846e12089f4f7956e1ed060835e8583a0793450b9757388352d67d89825'
+            'de90911d2fb49ea4b3758914503af913d967733403d909e87d2984243fe04fe5'
             '7cb89746dbbcf498dd43b53fee59b124f42e3ea0d8b7134ab803cc2bd6b50230'
             'bf76024528d050fd912f72d73e18a814a930df3478b132a99a887fbbdc0c9dfd'
             'bd2d4da78a65eec20dc32e21fd4fe134a2483b0bbe2dfb940d66755acc237975'
@@ -117,8 +117,8 @@ build() {
     --with-jvm-features=zgc \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors{,-omr,-openj9} \
-    --with-freemarker-jar=/usr/share/java/freemarker/freemarker.jar \
     --disable-ddr \
+    --with-cmake=yes
     ${NUM_PROC_OPT}
     #--disable-javac-server
 
