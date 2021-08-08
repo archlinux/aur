@@ -4,7 +4,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=2.8.13
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -13,10 +13,13 @@ license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'gtk3' 'glibmm'
-         'webkit2gtk' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' )
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'libtg_owt')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'libtg_owt' 'extra-cmake-modules' 'jemalloc')
+             'extra-cmake-modules' 'gtk3' 'webkit2gtk')
+optdepends=('gtk3: GTK environment integration'
+            'webkit2gtk: embedded browser features'
+            'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 _commit="tag=v$pkgver"
@@ -37,6 +40,7 @@ source=(
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "hime::git+https://github.com/hime-ime/hime.git"
     "hunspell::git+https://github.com/hunspell/hunspell"
+    "jemalloc::git+https://github.com/jemalloc/jemalloc"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
     "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
@@ -53,7 +57,6 @@ source=(
     "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
     "lib_webview::git+https://github.com/desktop-app/lib_webview.git"
     "lz4::git+https://github.com/lz4/lz4.git"
-    "mallocng::git+https://github.com/desktop-app/mallocng.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
     "QR::git+https://github.com/nayuki/QR-Code-generator"
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
@@ -123,10 +126,10 @@ prepare() {
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
+    git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/jemalloc"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
-    git config submodule.Telegram/ThirdParty/mallocng.url "$srcdir/mallocng"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
     git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
@@ -146,35 +149,21 @@ prepare() {
     # patch -Np1 -i "$srcdir/my_beautiful.patch"
 
     # Official package patches
-    cd cmake
-    # force webrtc link to libjpeg and X11 libs
-    echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
-    echo "find_package(X11 REQUIRED COMPONENTS Xcomposite Xdamage Xext Xfixes Xrender Xrandr Xtst)" | tee -a external/webrtc/CMakeLists.txt
-    echo "target_link_libraries(external_webrtc INTERFACE Xcomposite Xdamage Xext Xfixes Xrandr Xrender Xtst)" | tee -a external/webrtc/CMakeLists.txt
 }
 
 build() {
     cd "$srcdir/tdesktop"
 
-    # Before were used:
-    # -DTDESKTOP_API_ID=17349
-    # -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb
-    # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
-    # Optional flags:
-    # -DTDESKTOP_DISABLE_GTK_INTEGRATION=1 \
-    # -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=1 \
-    cmake . \
+    cmake \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
-        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
-        -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
-        -DDESKTOP_APP_SPECIAL_TARGET=""
+        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     ninja -C build
 }
 
