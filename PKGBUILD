@@ -7,7 +7,7 @@ pkgrel=1
 epoch=2
 pkgdesc="A port of the popular GTK theme Arc for Plasma 5 desktop with a few additions and extras"
 arch=('any')
-url="https://github.com/PapirusDevelopmentTeam/arc-kde"
+url="https://github.com/PapirusDevelopmentTeam/$_pkgname"
 license=('GPL3')
 makedepends=('git')
 optdepends=(
@@ -22,8 +22,8 @@ optdepends=(
 provides=("$_pkgname" 'kvantum-theme-arc')
 conflicts=("$_pkgname" 'kvantum-theme-arc')
 options=('!strip')
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-	rm -rf $_pkgname/konversation/themes/papirus{,-dark}/src
+	rm -r $_pkgname/konversation/themes/papirus{,-dark}/src
 }
 
 package() {
