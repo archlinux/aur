@@ -1,26 +1,17 @@
-pkgbase = scalapack
-	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers.
+pkgbase = scalapack-static
+	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers, static version.
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 1
 	url = http://www.netlib.org/scalapack/
-	install = scalapack.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	makedepends = gcc-fortran
-	depends = glibc
-	depends = openmpi
-	depends = blas
-	depends = lapack
-	provides = blacs
+	depends = scalapack=2.1.0
 	source = http://www.netlib.org/scalapack/scalapack-2.1.0.tgz
 	source = http://www.netlib.org/scalapack/manpages.tgz
-	source = Makefile
-	source = example1.f
 	sha256sums = 61d9216cf81d246944720cfce96255878a3f85dec13b9351f1fa0fd6768220a6
 	sha256sums = a745c9f367d65e3c7611c126597a4681094b002552e47b621964d30a966aac7b
-	sha256sums = 5f7e81c1c76fc010677fd446bfc689c7f6af1a22a51093e8790e8a615159c541
-	sha256sums = d9904ecb69f318c4782c0bd39ff2bff511af31960a2383a9d42d6620a266ea70
 
-pkgname = scalapack
+pkgname = scalapack-static
