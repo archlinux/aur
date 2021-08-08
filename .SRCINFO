@@ -1,0 +1,15 @@
+pkgbase = coilgunrailgunutility-mono
+	pkgdesc = 一个计算电磁炮的软件 Coilgun Railgun Misaka Mikoto 你指尖跳动的电光,是我永恒不变的信仰。
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kmakise/CoilgunRailgunUtility
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mono
+	provides = CoilgunRailgunUtility
+	options = !strip
+	source = coilgunrailgunutility::git+https://download.fastgit.org/kmakise/CoilgunRailgunUtility.git
+	sha256sums = SKIP
+
+pkgname = coilgunrailgunutility-mono
