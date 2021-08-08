@@ -1,0 +1,21 @@
+pkgbase = teachingapp-mcu-exunit-mono
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kmakise/TeachingApp_MCU_Exunit
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mono
+	source = teachingapp-mcu-exunit::git+https://download.fastgit.org/kmakise/TeachingApp_MCU_Exunit.git
+	sha256sums = SKIP
+
+pkgname = teachingapp-mcu-exunit-mono
+	pkgdesc = TeachingApp MCU Exunit: 教学演示程序、单片机外设原理演示操作。
+	depends = teachingapp-mcu-exunit-led-display-mono
+	depends = teachingapp-mcu-exunit-keyboard-mono
+
+pkgname = teachingapp-mcu-exunit-led-display-mono
+	pkgdesc = TeachingApp MCU Exunit: 数码管演示程序。
+
+pkgname = teachingapp-mcu-exunit-keyboard-mono
+	pkgdesc = TeachingApp MCU Exunit: 键盘演示程序。（mono 下不支持 Linux 的串口功能。只能使用键盘）。
