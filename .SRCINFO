@@ -1,6 +1,6 @@
 pkgbase = mod_sahtrace-git
 	pkgdesc = Ambiorix module for sahtrace
-	pkgver = v0.0.7.r1.g083ebe1
+	pkgver = v0.0.9.r0.g0656055
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mod_sahtrace-git
 	provides = mod_sahtrace-git
 	conflicts = mod_sahtrace
 	conflicts = mod_sahtrace-git
-	source = mod_sahtrace-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git#branch=master
+	source = mod_sahtrace-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git#branch=main
 	source = components.config
 	md5sums = SKIP
 	md5sums = SKIP

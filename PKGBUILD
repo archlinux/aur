@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=mod_sahtrace-git
-pkgver=v0.0.7.r1.g083ebe1
+pkgver=v0.0.9.r0.g0656055
 pkgrel=1
 pkgdesc="Ambiorix module for sahtrace"
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=(
 	'mod_sahtrace-git'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git#branch=${gitbranch}" "components.config")
 md5sums=('SKIP' 'SKIP')
