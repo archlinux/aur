@@ -1,0 +1,30 @@
+pkgbase = elementary-files
+	pkgdesc = File browser designed for elementary OS
+	pkgver = 6.0.1
+	pkgrel = 1
+	url = https://github.com/elementary/files
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = meson
+	depends = vala
+	depends = libcanberra
+	depends = libcloudproviders
+	depends = dbus-glib
+	depends = gtk2
+	depends = libgee
+	depends = libgit2-glib
+	depends = libgit2
+	depends = granite
+	depends = gtk3
+	depends = libhandy
+	depends = libnotify
+	depends = pango
+	depends = plank
+	depends = sqlite
+	depends = zeitgeist
+	depends = flatpak-builder
+	source = git+https://github.com/elementary/files.git#tag=6.0.1
+	sha1sums = SKIP
+
+pkgname = elementary-files
