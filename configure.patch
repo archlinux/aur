@@ -1,5 +1,5 @@
---- configure.orig	2020-12-21 20:56:04.000000000 +0300
-+++ configure	2021-04-02 16:48:20.600655457 +0300
+--- configure	2021-08-08 10:32:02.637988859 +0000
++++ configure	2021-08-08 10:31:14.808470930 +0000
 @@ -497,19 +497,19 @@
  
  $arch_cc          = "cc";
@@ -157,7 +157,15 @@
      }
  
      $arch_lex		= "flex"; # has problems with vendor lex
-@@ -2611,7 +2605,7 @@
+@@ -2605,13 +2599,13 @@
+ 
+ 
+ if ($config_arch eq "LINUXARM64") {
+-  $tcl_libs         = "-ltcl8.5";
+-  if ($config_tk) { $tcl_libs = "-ltk8.5 -lX11 " . $tcl_libs; }
++  $tcl_libs         = "-ltcl";
++  if ($config_tk) { $tcl_libs = "-ltk -lX11 " . $tcl_libs; }
+   $vmd_libs          = "$tcl_libs -lz";
  
    $arch_nvcc     = "/usr/local/cuda/bin/nvcc";
    $arch_nvccflags   = "--ptxas-options=-v " .

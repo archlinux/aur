@@ -1,22 +1,23 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
 	pkgver = 1.9.4a51
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = gcc
 	depends = tcsh
 	depends = tk
 	depends = python-numpy
 	depends = fltk
-	depends = ospray
 	depends = netcdf
 	depends = ocl-icd
 	depends = libxi
 	depends = opencl-headers
 	optdepends = openbabel: additional file formats support
 	optdepends = sqlite: dmsplugin
+	optdepends = ospray: accelerated ray tracing for Intel CPUs
 	optdepends = optix: accelerated ray tracing for NVIDIA GPUs
 	optdepends = cuda: NVIDIA CUDA GPU acceleration functions
 	conflicts = vmd
@@ -24,7 +25,6 @@ pkgbase = vmd-src
 	source = local://vmd-1.9.4a51.src.tar.gz
 	source = configure.patch
 	sha256sums = b1c40b21111f5bab56d43d5e442c468d327159b07915af2ec175ba6b12842e5c
-	sha256sums = fa4912916f0a9adfe985a456d4ad6a30b302eb31c7be26efabbfdd4466c43e05
+	sha256sums = cef0605dfeb529616c7b760696ac0305aa84e80eeffbbcb6e5473bc5a46760f9
 
 pkgname = vmd-src
-
