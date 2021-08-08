@@ -2,12 +2,12 @@
 pkgdesc='An UNIX shell with a simplified Scheme syntax'
 pkgname=esh
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 license=(GPL2)
 arch=(x86_64)
 depends=(readline)
 install=esh.install
-source=("http://gentoo.inode.at/distfiles/${pkgname}-${pkgver}.tar.gz")
+source=("http://distfiles.gentoo.org/distfiles/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('2473cc2418f70533136305f47dfe59bee560206a8b58c080e2113297dd82483e867937bda1b015069a7220552b4d03346a3b71026a24a2795b0b499e355490a0')
 
 prepare () {

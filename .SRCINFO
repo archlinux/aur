@@ -1,13 +1,12 @@
 pkgbase = esh
 	pkgdesc = An UNIX shell with a simplified Scheme syntax
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	install = esh.install
 	arch = x86_64
 	license = GPL2
 	depends = readline
-	source = http://gentoo.inode.at/distfiles/esh-0.8.5.tar.gz
+	source = http://distfiles.gentoo.org/distfiles/esh-0.8.5.tar.gz
 	sha512sums = 2473cc2418f70533136305f47dfe59bee560206a8b58c080e2113297dd82483e867937bda1b015069a7220552b4d03346a3b71026a24a2795b0b499e355490a0
 
 pkgname = esh
-
