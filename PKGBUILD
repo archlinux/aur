@@ -1,14 +1,14 @@
 # Maintainer: barfin
 pkgname=threshold-miku-light-steam-skin
-pkgver=2.3.6
+pkgver=2.4.0
 pkgrel=1
-pkgdesc=" A Hatsune Miku Steam Theme Skin with Steam New Library Supported!(Light Version)"
+pkgdesc="A Hatsune Miku Steam Theme Skin with Steam New Library Supported!(Light Version)"
 arch=(any)
 url="https://github.com/Jack-Myth/Threshold-Miku"
 license=("unknown")
 depends=(steam sssm)
 source=(${url}/releases/download/v${pkgver}-Light/Threshold.Miku.Light.zip)
-md5sums=('e92af798c9dc4a84fce63d7987203488')
+md5sums=('f47c5fa53234915a14d5e27d75256206')
 install="${pkgname}.install"
 
 package() {

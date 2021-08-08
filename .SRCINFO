@@ -1,6 +1,6 @@
 pkgbase = threshold-miku-light-steam-skin
 	pkgdesc = A Hatsune Miku Steam Theme Skin with Steam New Library Supported!(Light Version)
-	pkgver = 2.3.6
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/Jack-Myth/Threshold-Miku
 	install = threshold-miku-light-steam-skin.install
@@ -8,8 +8,7 @@ pkgbase = threshold-miku-light-steam-skin
 	license = unknown
 	depends = steam
 	depends = sssm
-	source = https://github.com/Jack-Myth/Threshold-Miku/releases/download/v2.3.6-Light/Threshold.Miku.Light.zip
-	md5sums = e92af798c9dc4a84fce63d7987203488
+	source = https://github.com/Jack-Myth/Threshold-Miku/releases/download/v2.4.0-Light/Threshold.Miku.Light.zip
+	md5sums = f47c5fa53234915a14d5e27d75256206
 
 pkgname = threshold-miku-light-steam-skin
-
