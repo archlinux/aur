@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_ubus-git
-pkgver=v2.0.6.r0.g1782b06
+pkgver=v2.1.4.r0.g15647f6
 pkgrel=1
 pkgdesc="Ubus baapi back-end"
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=(
 	'amxb_ubus'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git#branch=${gitbranch}")
 md5sums=('SKIP')

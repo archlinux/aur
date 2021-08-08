@@ -1,6 +1,6 @@
 pkgbase = amxb_ubus-git
 	pkgdesc = Ubus baapi back-end
-	pkgver = v2.0.6.r0.g1782b06
+	pkgver = v2.1.4.r0.g15647f6
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = amxb_ubus-git
 	depends = ubus
 	provides = amxb_ubus
 	conflicts = amxb_ubus
-	source = amxb_ubus-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git#branch=master
+	source = amxb_ubus-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git#branch=main
 	md5sums = SKIP
 
 pkgname = amxb_ubus-git
-
