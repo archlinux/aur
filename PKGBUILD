@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxm-git
-pkgver=v0.0.24.r0.g64ffbfa
+pkgver=v0.0.28.r0.gda18b41
 pkgrel=1
 pkgdesc="Generic C-implementation of modular support"
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=(
 	'lib_amxm'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxm.git#branch=${gitbranch}")
 md5sums=('SKIP')
