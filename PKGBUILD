@@ -3,7 +3,7 @@
 
 pkgname=grayskull
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Recipe generator for Conda"
 arch=(x86_64)
 url="https://github.com/conda-incubator/grayskull"
@@ -41,4 +41,5 @@ build() {
 package() {
   cd grayskull-${pkgver}
   python -m pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
+  find "${pkgdir}" -type d -name "tests" -prune -exec rm -rf "{}" \;  # do not install tests
 }
