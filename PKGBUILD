@@ -3,12 +3,12 @@
 
 pkgname=devpi-web
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Web interface plugin for devpi-server"
 arch=('any')
 url="https://doc.devpi.net/"
 license=('MIT')
-depends=('python' 'devpi-server')
+groups=('devpi')
 depends=(
   'devpi-server>=5.2.0'
   'devpi-common>=3.2.0'
