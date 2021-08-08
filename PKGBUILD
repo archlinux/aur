@@ -3,10 +3,7 @@ pkgver=2.1.4
 pkgrel=2
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
-depends=('ffmpeg')
-depends_x86_64=('electron')
-depends_aarch64=('electron-bin')
-depends_i686=('electron-bin')
+depends=('ffmpeg' 'electron')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
