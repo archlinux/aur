@@ -1,4 +1,5 @@
-# Maintainer : George Eleftheriou <eleftg>
+# Maintainer : chn <g897331845@gmail.com>
+# Contributor : George Eleftheriou <eleftg>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 # Contributor: Jiaxi Hu <sftrytry _AT_ gmail _DOT_ com>
 # Contributor: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
@@ -6,28 +7,34 @@
 pkgname=openblas-lapack-static
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.3.7
+pkgver=0.3.17
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
-_lapackver=3.8.0
+_lapackver=3.9.0
+_blasver=3.8.0
 pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('x86_64')
-url="https://www.openblas.net/"
+url="http://www.openblas.net/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
-provides=('openblas-lapack' 'openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
-conflicts=('openblas-lapack' 'openblas' 'blas' 'lapack' 'cblas' 'lapacke')
-options=('!emptydirs' 'staticlibs')
-source=(${_PkgName}-v${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
-sha256sums=('bde136122cef3dd6efe2de1c6f65c10955bbb0cc01a520c2342f5287c28f9379')
+provides=('openblas' "blas=${_blasver}" "lapack=${_lapackver}" "cblas=${_blasver}" "lapacke=${_lapackver}")
+conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
+options=(!emptydirs staticlibs)
+source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
+sha256sums=('df2934fa33d04fd84d839ca698280df55c690c86a5a1133b3f7266fce1de279f')
+
+# Add the following line to the _config variable if you want to set the number of make jobs
+#  MAKE_NB_JOBS=2 \
+_config="FC=gfortran USE_OPENMP=1 USE_THREAD=1 \
+  USE_TLS=1 \
+  NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 \
+  MAJOR_VERSION=${_lapackver:0:1}"
 
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
 
-  make FC=gfortran NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 USE_OPENMP=0 \
-      USE_THREAD=1 USE_COMPILER_TLS=0 MAKE_NB_JOBS=$(nproc) \
-      libs netlib shared
+  make ${_config} CFLAGS="${CFLAGS}" libs netlib shared
 }
 
 check(){
@@ -49,13 +56,13 @@ package(){
   # BLAS
   ln -sf libopenblas.a libblas.a
   ln -sf libopenblas.so libblas.so
-  ln -sf libopenblas.so libblas.so.${_lapackver:0:1}
-  ln -sf libopenblas.so libblas.so.${_lapackver}
+  ln -sf libopenblas.so libblas.so.${_blasver:0:1}
+  ln -sf libopenblas.so libblas.so.${_blasver}
   # CBLAS
   ln -sf libopenblas.a libcblas.a
   ln -sf libopenblas.so libcblas.so
-  ln -sf libopenblas.so libcblas.so.${_lapackver:0:1}
-  ln -sf libopenblas.so libcblas.so.${_lapackver}
+  ln -sf libopenblas.so libcblas.so.${_blasver:0:1}
+  ln -sf libopenblas.so libcblas.so.${_blasver}
   # LAPACK
   ln -sf libopenblas.a liblapack.a
   ln -sf libopenblas.so liblapack.so
@@ -67,3 +74,4 @@ package(){
   ln -sf libopenblas.so liblapacke.so.${_lapackver:0:1}
   ln -sf libopenblas.so liblapacke.so.${_lapackver}
 }
+# vim:set ts=2 sw=2 et:
