@@ -10,7 +10,7 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-esp32
-pkgver=v0.10.0.esp32.20191114
+pkgver=v0.10.0_esp32_20210721
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has ESP32 support'
 arch=('i686' 'x86_64' 'arm')
@@ -21,7 +21,7 @@ makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 
 source=(
-    "$pkgname::git+https://github.com/espressif/openocd-esp32.git#tag=v0.10.0-esp32-20191114"
+    "$pkgname-$pkgver::git+https://github.com/espressif/openocd-esp32.git#tag=${pkgver//_/-}"
     )
 md5sums=(
     'SKIP'
@@ -31,25 +31,27 @@ sha1sums=(
     )
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   local ver="$(cat configure.ac | grep AC_INIT | cut -d'[' -f3 | cut -d']' -f1)"
   local rev="$(./guess-rev.sh)"
-  echo "${rev//-/.}"
+  echo "${pkgver//-/_}"
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   git submodule init
   git submodule update
+  ac_init_version=$(echo $pkgver | cut -d'_' -f1)
+  sed -i 's/AC_INIT(\[openocd\], \[ \],/AC_INIT([openocd], ['"$ac_init_version"'],/g' configure.ac
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   ./bootstrap
   ./configure \
     --prefix=/usr \
-    --program-suffix=-esp32 \
+    --program-prefix=${pkgname%openocd} \
     --disable-werror \
     --with-gnu-ld
 
@@ -57,7 +59,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   make pkgdatadir="/usr/share/$pkgname" DESTDIR="$pkgdir" install
 
