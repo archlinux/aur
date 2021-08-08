@@ -1,0 +1,14 @@
+pkgbase = metro-for-steam-skin
+	pkgdesc = A new look for the platform you already know and love. Metro is fresh and exciting from the moment you open Steam.
+	pkgver = 4.4
+	pkgrel = 1
+	url = https://github.com/minischetti/metro-for-steam
+	install = metro-for-steam-skin.install
+	arch = any
+	license = MIT
+	depends = steam
+	depends = sssm
+	source = https://github.com/minischetti/metro-for-steam/archive/refs/tags/v4.4.zip
+	md5sums = 446b2f1495a5f9877927f9f9fc320fa8
+
+pkgname = metro-for-steam-skin
