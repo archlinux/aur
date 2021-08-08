@@ -1,14 +1,17 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=protontricks-git
-pkgver=1.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games. (Git Version)"
 arch=('any')
 url="https://github.com/Matoking/protontricks"
 license=('GPL3')
 depends=('python' 'python-vdf>=2.4' 'winetricks')
-optdepends=('zenity: GUI for GNOME desktop')
+optdepends=(
+  'yad: GUI for game selection', 
+  'zenity: GUI for winetricks'
+)
 makedepends=('git' 'python-setuptools-scm')
 provides=("protontricks")
 conflicts=('protontricks')
