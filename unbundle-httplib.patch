@@ -1,32 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++if (ENABLE_WEB_SERVICE)
++    find_package(httplib REQUIRED)
++    add_library(httplib ALIAS httplib::httplib)
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -98,26 +98,10 @@ if (NOT libzip_FOUND)
+@@ -97,7 +97,7 @@ if (NOT libzip_FOUND)
+     add_subdirectory(libzip EXCLUDE_FROM_ALL)
  endif()
  
- if (ENABLE_WEB_SERVICE)
--    find_package(OpenSSL 1.1)
--    if (OPENSSL_FOUND)
--        set(OPENSSL_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)
--    else()
--        # LibreSSL
--        set(LIBRESSL_SKIP_INSTALL ON CACHE BOOL "")
--        set(OPENSSLDIR "/etc/ssl/")
--        add_subdirectory(libressl EXCLUDE_FROM_ALL)
--        target_include_directories(ssl INTERFACE ./libressl/include)
--        target_compile_definitions(ssl PRIVATE -DHAVE_INET_NTOP)
--        get_directory_property(OPENSSL_LIBRARIES
--            DIRECTORY libressl
--            DEFINITION OPENSSL_LIBS)
--    endif()
--
-     # httplib
--    add_library(httplib INTERFACE)
--    target_include_directories(httplib INTERFACE ./cpp-httplib)
--    target_compile_definitions(httplib INTERFACE -DCPPHTTPLIB_OPENSSL_SUPPORT)
--    target_link_libraries(httplib INTERFACE ${OPENSSL_LIBRARIES})
-+    find_package(httplib 0.9.1 REQUIRED)
-+    set_property(TARGET httplib::httplib PROPERTY IMPORTED_GLOBAL TRUE)
-+    add_library(httplib ALIAS httplib::httplib)
-     if (WIN32)
-         target_link_libraries(httplib INTERFACE crypt32 cryptui ws2_32)
-     endif()
+-if (ENABLE_WEB_SERVICE)
++if (ENABLE_WEB_SERVICE AND NOT TARGET httplib)
+     find_package(OpenSSL 1.1)
+     if (OPENSSL_FOUND)
+         set(OPENSSL_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)

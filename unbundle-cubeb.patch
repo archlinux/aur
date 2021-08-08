@@ -1,14 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++if (ENABLE_CUBEB)
++    find_package(cubeb REQUIRED)
++    add_library(cubeb ALIAS cubeb::cubeb)
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -77,8 +77,9 @@ add_subdirectory(soundtouch)
+@@ -76,7 +76,7 @@ endif()
+ add_subdirectory(soundtouch)
  
  # Cubeb
- if(ENABLE_CUBEB)
--    set(BUILD_TESTS OFF CACHE BOOL "")
--    add_subdirectory(cubeb EXCLUDE_FROM_ALL)
-+    find_package(cubeb REQUIRED)
-+    set_property(TARGET cubeb::cubeb PROPERTY IMPORTED_GLOBAL TRUE)
-+    add_library(cubeb ALIAS cubeb::cubeb)
+-if(ENABLE_CUBEB)
++if(ENABLE_CUBEB AND NOT TARGET cubeb)
+     set(BUILD_TESTS OFF CACHE BOOL "")
+     add_subdirectory(cubeb EXCLUDE_FROM_ALL)
  endif()
- 
- # DiscordRPC

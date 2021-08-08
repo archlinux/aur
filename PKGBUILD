@@ -9,7 +9,6 @@ license=('GPL2')
 depends=('qt5-webengine>=5.12')
 makedepends=(
 	'boost>=1.73'
-	'catch2>=2.13'
 	'cmake>=3.15'
 	'cpp-httplib-compiled>=0.9.1'
 	'cubeb>=r1398'
@@ -34,10 +33,12 @@ makedepends=(
 	'zlib>=1.2'
 	'zstd>=1.5'
 )
+checkdepends=('catch2>=2.13')
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
+	'unbundle-catch2.patch'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
 	'unbundle-dynarmic.patch'
@@ -51,14 +52,15 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'd152b6417f71d3a48c10eb94bd17b06fdf85e429feea07beaf535ceb22b207a579dfa78b85acefb97137be376ddc369adf91d221d4fe0f7f7888d6881073239f'
-	'edd6991455eeeebaeaa5df22cd21d8f6c3834a42505dcae4703d65843f664d6e410ec90cc6850bfdb6071838d3da5f8a320a105ed305acc07d2ba9f05ebd02e8'
-	'006696b84c2907a15a6297ff3f652434046aff6d8f5d444990ede6ed64f2b2c45540dde445b823bb1db0a640c5f92d21349bce7f3e41303849357b6d56ab8f62'
-	'9c1bc256d79a8bea19e43f385f151278b60d71a8cd8746d796adcc1016e4b8b5b7c0e9205147e53144e2e1b2a8ecb2d2c04dd21b1d3794a607477c30117bc4c2'
-	'169e3ccce1c51d1aedbb9a314d817120dc59a615016f295178967c2bbea17dcc840b4c7a82ce98777ade4c25e408c8a1fabf19fc9abe5fd56a208c32ceb1a354'
+	'ec89a824b651ff464b8d4b7a744765b1badf3b776387717c3d8013a7bc20fd095c7ed2781530e802b0a26a7cf168b554a4432c35626e165c94e98a3f61c88d41'
+	'5f1cf15e9486e50fe9416919bf34d9b78e5f02cab96216cef77f365855e4c09eaa74118de89c29f6b7899fa43f07e0f70ef8fb21e47808ef347212ea9ee4ed39'
+	'0c9b84444e4c938a04b1f60907fc816cbe8eb8d598a9a4b7e490750d339fac7a48de1b682bc5b00b6c2333b5f4e39b1738287b9168844094e3817703635aad9c'
+	'86dcbd45aea4bc68846df5737bbf44362de1e96bade7e86b457b247bcd99f7c4c0c28d3ea396902a904ffe57fe4612a37818a54f17d2df9108a038e3edd45f3c'
+	'7508b5e6ca43f44eeecd8b91ca8bdfe3350a37601d8c626ce300435d0e3976ae48068ed014c7b4e1712359ef025fff59fef3a0a3adf5f5bf499129492f840df5'
+	'f9df47354efda0ef25685e4dc13426a0f8ee2ba61a7af5af18eaaa00de142d0a60208a3f8c7002ea85922cda666288e156ff81449c0e4d74c0931de481b84092'
 	'1112594336f6829483d9813e2144715cf965b21b700de07fb0206fd1089f29fdad8a4d17604ee87a93c4ce79fdae2f83eeef11fa489a86dafa25b959835a7e20'
-	'404ee663b4fefdf7b9e2bb7c96af7bc074e6e8f4477cfb76295cf6b252a04a45c638cea7addee9bfc22ef6b13dd15773dd4cb572f3aed161f3579348750ecb6b'
-	'a54c9e039c6d477778ba59f0f87b510b049120b3af0ac9b408adfdeaa038482a8486305bcbb756a1a1c4eb9d926bac723567f7d4366bba70baafde3e5306e27d'
+	'50eece7824e59195ac9906eb142e10328607bb002fbfd6d9b262abb3fa29b1a0425fc5c33d4ca9ab5a88608ddd72891a592eaa669213db76bdde6142485bc1f6'
+	'a960a8976783b49e88cde7aae5c1b16b20200241f74f0375075c26f997f05cf4071b9c9bc48d7e1da8b3e85c2eae512e2659286580a4d8873f7525845d46bd55'
 )
 
 prepare() {
@@ -67,6 +69,7 @@ prepare() {
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
+	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-cubeb.patch
 	patch -Np1 < ../unbundle-discord-rpc.patch
 	patch -Np1 < ../unbundle-dynarmic.patch

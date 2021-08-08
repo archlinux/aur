@@ -1,15 +1,28 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,10 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(inih REQUIRED IMPORTED_TARGET INIReader)
++add_library(inih ALIAS PkgConfig::inih)
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -31,7 +31,8 @@ endif()
+@@ -30,9 +30,6 @@ endif()
+ # Glad
  add_subdirectory(glad)
  
- # inih
+-# inih
 -add_subdirectory(inih)
-+pkg_check_modules(inih REQUIRED IMPORTED_TARGET GLOBAL INIReader)
-+add_library(inih ALIAS PkgConfig::inih)
- 
+-
  # mbedtls
  add_subdirectory(mbedtls EXCLUDE_FROM_ALL)
+ target_include_directories(mbedtls PUBLIC ./mbedtls/include)
 --- a/src/yuzu_cmd/config.cpp
 +++ b/src/yuzu_cmd/config.cpp
 @@ -15,7 +15,7 @@

@@ -1,0 +1,41 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++find_package(Catch2 QUIET)
++if (Catch2_FOUND)
++    add_library(catch-single-include ALIAS Catch2::Catch2)
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
+--- a/externals/CMakeLists.txt
++++ b/externals/CMakeLists.txt
+@@ -11,10 +11,6 @@ if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
+     target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
+ endif()
+ 
+-# Catch
+-add_library(catch-single-include INTERFACE)
+-target_include_directories(catch-single-include INTERFACE catch/single_include)
+-
+ # Dynarmic
+ if (ARCHITECTURE_x86_64)
+     set(DYNARMIC_TESTS OFF)
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -143,7 +143,10 @@ add_subdirectory(audio_core)
+ add_subdirectory(video_core)
+ add_subdirectory(input_common)
+ add_subdirectory(shader_recompiler)
+-add_subdirectory(tests)
++
++if (TARGET catch-single-include)
++    add_subdirectory(tests)
++endif()
+ 
+ if (ENABLE_SDL2)
+     add_subdirectory(yuzu_cmd)

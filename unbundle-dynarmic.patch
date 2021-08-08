@@ -1,15 +1,26 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,12 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++if (ARCHITECTURE_x86_64)
++    find_library(DYNARMIC_LIBRARY dynarmic REQUIRED)
++    add_library(dynarmic UNKNOWN IMPORTED)
++    set_property(TARGET dynarmic PROPERTY IMPORTED_LOCATION "${DYNARMIC_LIBRARY}")
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -17,9 +17,9 @@ target_include_directories(catch-single-include INTERFACE catch/single_include)
+@@ -16,7 +16,7 @@ add_library(catch-single-include INTERFACE)
+ target_include_directories(catch-single-include INTERFACE catch/single_include)
  
  # Dynarmic
- if (ARCHITECTURE_x86_64)
--    set(DYNARMIC_TESTS OFF)
--    set(DYNARMIC_NO_BUNDLED_FMT ON)
--    add_subdirectory(dynarmic)
-+    find_library(DYNARMIC_LIBRARY dynarmic REQUIRED)
-+    add_library(dynarmic SHARED IMPORTED GLOBAL)
-+    set_property(TARGET dynarmic PROPERTY IMPORTED_LOCATION "${DYNARMIC_LIBRARY}")
- endif()
- 
- # getopt
+-if (ARCHITECTURE_x86_64)
++if (ARCHITECTURE_x86_64 AND NOT TARGET dynarmic)
+     set(DYNARMIC_TESTS OFF)
+     set(DYNARMIC_NO_BUNDLED_FMT ON)
+     add_subdirectory(dynarmic)

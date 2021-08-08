@@ -1,15 +1,26 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,12 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
++    find_path(XBYAK_INCLUDE_DIR xbyak.h PATH_SUFFIXES xbyak REQUIRED)
++    add_library(xbyak INTERFACE IMPORTED)
++    target_include_directories(xbyak SYSTEM INTERFACE "${XBYAK_INCLUDE_DIR}")
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -6,9 +6,9 @@ include(DownloadExternals)
+@@ -5,7 +5,7 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/externals/find-modules")
+ include(DownloadExternals)
  
  # xbyak
- if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
--    add_library(xbyak INTERFACE)
--    target_include_directories(xbyak SYSTEM INTERFACE ./xbyak/xbyak)
--    target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)
-+    find_path(XBYAK_INCLUDE_DIR xbyak.h PATH_SUFFIXES xbyak REQUIRED)
-+    add_library(xbyak INTERFACE IMPORTED GLOBAL)
-+    target_include_directories(xbyak SYSTEM INTERFACE "${XBYAK_INCLUDE_DIR}")
- endif()
- 
- # Catch
+-if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
++if ((ARCHITECTURE_x86 OR ARCHITECTURE_x86_64) AND NOT TARGET xbyak)
+     add_library(xbyak INTERFACE)
+     target_include_directories(xbyak SYSTEM INTERFACE ./xbyak/xbyak)
+     target_compile_definitions(xbyak INTERFACE XBYAK_NO_OP_NAMES)

@@ -1,13 +1,25 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,10 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++find_library(SIRIT_LIBRARY sirit REQUIRED)
++add_library(sirit UNKNOWN IMPORTED)
++set_property(TARGET sirit PROPERTY IMPORTED_LOCATION "${SIRIT_LIBRARY}")
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -88,7 +88,9 @@ if (USE_DISCORD_PRESENCE)
+@@ -87,9 +87,6 @@ if (USE_DISCORD_PRESENCE)
+     target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
  endif()
  
- # Sirit
+-# Sirit
 -add_subdirectory(sirit)
-+find_library(SIRIT_LIBRARY sirit REQUIRED)
-+add_library(sirit SHARED IMPORTED GLOBAL)
-+set_property(TARGET sirit PROPERTY IMPORTED_LOCATION "${SIRIT_LIBRARY}")
- 
+-
  # libzip
  find_package(libzip 1.5)
+ if (NOT libzip_FOUND)

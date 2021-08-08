@@ -1,14 +1,26 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -786,6 +786,12 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+     -DBOOST_REGEX_NO_LIB
+ )
+ 
++if (USE_DISCORD_PRESENCE)
++    find_library(DISCORD_RPC_LIBRARY discord-rpc REQUIRED)
++    add_library(discord-rpc UNKNOWN IMPORTED)
++    set_property(TARGET discord-rpc PROPERTY IMPORTED_LOCATION "${DISCORD_RPC_LIBRARY}")
++endif()
++
+ enable_testing()
+ add_subdirectory(externals)
+ add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -83,8 +83,9 @@ endif()
- 
- # DiscordRPC
- if (USE_DISCORD_PRESENCE)
--    add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
--    target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
-+    find_library(DISCORD_RPC_LIBRARY discord-rpc REQUIRED)
-+    add_library(discord-rpc SHARED IMPORTED GLOBAL)
-+    set_property(TARGET discord-rpc PROPERTY IMPORTED_LOCATION "${DISCORD_RPC_LIBRARY}")
+@@ -82,7 +82,7 @@ if(ENABLE_CUBEB)
  endif()
  
- # Sirit
+ # DiscordRPC
+-if (USE_DISCORD_PRESENCE)
++if (USE_DISCORD_PRESENCE AND NOT TARGET discord-rpc)
+     add_subdirectory(discord-rpc EXCLUDE_FROM_ALL)
+     target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
+ endif()
