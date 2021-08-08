@@ -2,18 +2,32 @@
 
 pkgname=printmyfonts
 _pkgname=PrintMyFonts
-pkgver=21.1.28
+pkgver=21.5.5
 pkgrel=1
 pkgdesc="A tool to show, demonstrate, and print all of the installed fonts on the computer."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://www.sttmedia.com/printmyfonts"
 license=('custom')
-depends=('lib32-gtk2')
+depends=('gtk2')
 makedepends=('binutils')
-source=("https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
+
+if [[ $CARCH == 'i686' ]]
+then
+	_CARCH='i386'
+	source=("https://www.sttmedia.com/downloads/${_pkgname}Deb.zip"
 	"LICENSE")
-md5sums=('6b2043e63ed8989a8a66d7557657ee4c'
-         '19cb049712d6b49c891e537d84cf23e9')
+	md5sums=('a472384ded1bfc810c5ff55839404f88'
+         	 '19cb049712d6b49c891e537d84cf23e9')
+fi
+
+if [[ $CARCH == 'x86_64' ]]
+then
+	_CARCH='amd64'
+	source=("https://www.sttmedia.com/downloads/${_pkgname}Deb64.zip"
+	"LICENSE")
+	md5sums=('5bc24e3f413d5fe9ec2bc933a3fdd27e'
+         	 '19cb049712d6b49c891e537d84cf23e9')
+fi
 
 prepare() {
 	cd "${srcdir}"
@@ -22,7 +36,7 @@ prepare() {
 	[ -d "${pkgname}-${pkgver}" ] || mkdir "${pkgname}-${pkgver}"
 
 	# Extract the .deb file
-	ar x ${pkgname}_${pkgver}-1.i386.deb --output "${pkgname}-${pkgver}"
+	ar x ${pkgname}_${pkgver}-1_${_CARCH}.deb --output "${pkgname}-${pkgver}"
 	
 	# Remove unnecessary files
 	rm "${pkgname}-${pkgver}"/{control.tar.gz,debian-binary}

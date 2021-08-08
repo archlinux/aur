@@ -1,16 +1,16 @@
 pkgbase = printmyfonts
 	pkgdesc = A tool to show, demonstrate, and print all of the installed fonts on the computer.
-	pkgver = 21.1.28
+	pkgver = 21.5.5
 	pkgrel = 1
 	url = https://www.sttmedia.com/printmyfonts
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = custom
 	makedepends = binutils
-	depends = lib32-gtk2
-	source = https://www.sttmedia.com/downloads/PrintMyFontsDeb.zip
+	depends = gtk2
+	source = https://www.sttmedia.com/downloads/PrintMyFontsDeb64.zip
 	source = LICENSE
-	md5sums = 6b2043e63ed8989a8a66d7557657ee4c
+	md5sums = 5bc24e3f413d5fe9ec2bc933a3fdd27e
 	md5sums = 19cb049712d6b49c891e537d84cf23e9
 
 pkgname = printmyfonts
-
