@@ -1,6 +1,6 @@
 # Maintainer: RedCubeDev <someredcubedev@gmail.com>
 pkgname='rctc'
-pkgver=2.3.1.1
+pkgver=2.3.1.2
 pkgrel=7
 pkgdesc="Commandline Compiler for the ReCT Programming language"
 arch=('x86_64')
