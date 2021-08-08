@@ -1,6 +1,6 @@
 pkgbase = lib_amxo-git
 	pkgdesc = Generic C-implementation for ODL (Object Definition Language)
-	pkgver = v1.1.0.r0.g2ae7b4e
+	pkgver = v1.3.3.r0.g6ae7bfb
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxo.git
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = lib_amxo-git
 	depends = lib_amxd
 	provides = lib_amxo
 	conflicts = lib_amxo
-	source = lib_amxo-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxo.git#branch=master
+	source = lib_amxo-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxo.git#branch=main
 	md5sums = SKIP
 
 pkgname = lib_amxo-git
-

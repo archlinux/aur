@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxo-git
-pkgver=v1.1.0.r0.g2ae7b4e
+pkgver=v1.3.3.r0.g6ae7bfb
 pkgrel=1
 pkgdesc="Generic C-implementation for ODL (Object Definition Language)"
 arch=('any')
@@ -21,7 +21,7 @@ conflicts=(
 	'lib_amxo'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxo.git#branch=${gitbranch}")
 md5sums=('SKIP')
