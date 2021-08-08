@@ -3,11 +3,12 @@
 
 pkgname=devpi-server
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="reliable private and pypi.python.org caching server"
 arch=('any')
 url="https://doc.devpi.net/"
 license=('MIT')
+groups=('devpi')
 depends=(
   'python>=3.6'
   'python-py>=1.4.23'
@@ -28,6 +29,7 @@ depends=(
   'python-waitress>=1.0.1'
   'python-strictyaml')
 makedepends=('python-setuptools')
+optdepends=('devpi-client')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'devpi-server.service'
         'devpi-server.sysusers'
