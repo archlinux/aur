@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=helvum
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='GTK-based patchbay for pipewire, inspired by the JACK tool catia'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('rust' 'clang' 'semver')
 conflicts=('helvum-git')
 source=("https://gitlab.freedesktop.org/ryuukyu/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=('667908a8c4296f742e91705bb74d2276f8e8d721eb4b16f8e5f97f99156075b194540083b36d69c4fe6ee0558584047dd5862d71c91c59b9d59f9d0cc2eb9a1a'
+sha512sums=('32f79d1df8cab164c16745744ade36dccd03e4ea51ae62231c56c575eea4b8d82d4263928e70c158d8547765d3fafc4fb817cdffc120a8a46fd6e9e313bacba1'
     '0a76aa3b7c98d08ded9d4c7a2254faa0b83a2f2339db81b995819b0f0e4721cf79df17473ca22a4d8aab161b162e70f7e63b728e603c6b9cb09f2f361aa8e537')
 
 # This package needs at least rust 1.51 to build correctly: https://gitlab.freedesktop.org/ryuukyu/helvum/-/issues/4
