@@ -1,6 +1,6 @@
 pkgbase = lzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support (legacy version)
-	pkgver = 3.87c
+	pkgver = 3.88
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -39,14 +39,9 @@ pkgbase = lzdoom
 	optdepends = square1-wad: The Adventures of Square, Episode 1 game data
 	optdepends = urbanbrawl-wad: Urban Brawl: Action Doom 2 game data
 	optdepends = xorg-xmessage: crash dialog (other)
-	source = lzdoom-3.87c.tar.gz::https://github.com/drfrag666/gzdoom/archive/refs/tags/3.87c.tar.gz
+	source = lzdoom-3.88.tar.gz::https://github.com/drfrag666/gzdoom/archive/refs/tags/3.88.tar.gz
 	source = lzdoom.desktop
-	source = 0001-Fix-soundfont-search-path.patch
-	source = gcc-11-fix.patch
-	sha256sums = 7d792537ece446613d35d9fbff368f8c9aa88feb0930f361693fa138459de457
+	sha256sums = 40b79d2dad489ea8b07a5e400042ea2918ecaeb9c3561d9c3290796d48f901ad
 	sha256sums = 7b3ffa8b74e5d6283206dd074b09e944aa07670ec7d7b1fe587350ffb91819b3
-	sha256sums = ad4e23586755a37997078166c650363caefd66f9d3ef7a8aafbb8dc2947b83fc
-	sha256sums = a7da870a62bbbb20b444b52732e01e26a3bd61af7b83e780e471e44f9732d048
 
 pkgname = lzdoom
-
