@@ -1,0 +1,17 @@
+pkgbase = mod_dmext_cli-git
+	pkgdesc = Module Data Model Extension
+	pkgver = v0.1.2.r0.g6ab410b
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/ambiorix/modules/mod-dmext.git
+	arch = any
+	license = MIT
+	depends = lib_amxc
+	depends = lib_amxp
+	depends = lib_amxo
+	depends = lib_amxd
+	provides = mod_dmext
+	conflicts = mod_dmext
+	source = mod_dmext_cli-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/mod-dmext.git#branch=main
+	md5sums = SKIP
+
+pkgname = mod_dmext_cli-git
