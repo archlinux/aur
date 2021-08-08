@@ -1,0 +1,30 @@
+pkgbase = lunarvim-git
+	pkgdesc = An IDE layer for Neovim with sane defaults. Completely free and community driven.
+	pkgver = 0.5.1.r106.g3da49e4b
+	pkgrel = 1
+	url = https://github.com/LunarVim/LunarVim
+	install = lunarvim-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = neovim
+	depends = lua
+	depends = git
+	depends = ripgrep
+	depends = fzf
+	depends = neovim-remote
+	depends = neovim-plenary-git
+	depends = tree-sitter
+	depends = python-pynvim
+	depends = nodejs
+	depends = yarn
+	source = lunarvim-git::git+https://github.com/LunarVim/LunarVim.git#branch=rolling
+	source = git+https://github.com/nvim-treesitter/nvim-treesitter.git#branch=0.5-compat
+	source = init-lvim.sh
+	source = lvim
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 481874f766e0eee893569f327a16c2decb0bc1cbd3536d985aa2964e494db562
+	sha256sums = cfaa30e851dad37d89c131db0b76d3b2f74961933c109e462c710aab8e78defa
+
+pkgname = lunarvim-git
