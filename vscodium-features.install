@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/vscodium-features/patch.sh
+}
+
+pre_upgrade() {
+  /usr/share/vscodium-features/patch.sh -R
+}
+
+post_upgrade() {
+  /usr/share/vscodium-features/patch.sh
+}
+
+pre_remove() {
+  /usr/share/vscodium-features/patch.sh -R
+}   

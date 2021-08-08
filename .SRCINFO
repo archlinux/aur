@@ -1,0 +1,19 @@
+pkgbase = vscodium-features
+	pkgdesc = Unblock some features in VSCodium
+	pkgver = 1.59.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode
+	install = vscodium-features.install
+	arch = any
+	license = unknown
+	depends = vscodium
+	depends = sed
+	optdepends = org.freedesktop.secrets: for settings sync feature
+	provides = vscodium-features
+	conflicts = vscodium-features
+	source = vscodium-features.hook
+	source = patch.sh
+	md5sums = 1f08c4648040bc4e90d483764851b421
+	md5sums = fc3312785ce4a67a6443a7bc72caf78a
+
+pkgname = vscodium-features
