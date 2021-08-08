@@ -1,7 +1,7 @@
 # Maintainer: Kyle Brown <kdb424@gmail.com>
 pkgname=worldedit-git
-_pkgname=worldedit
 pkgver=r18.e1f53d0
+_pkgname=worldedit
 pkgrel=1
 pkgdesc="Emulating Gentoo’s world files and sets for other package managers."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -25,7 +25,7 @@ source=("worldedit::git+https://github.com/kdb424/worldedit.git#branch=main")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$pkgname"
+  cd "worldedit"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
