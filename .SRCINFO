@@ -1,14 +1,14 @@
 pkgbase = vim-fern
 	pkgdesc = A general purpose asynchronous tree viewer
-	pkgver = 1.38.1
+	pkgver = 1.38.2
 	pkgrel = 1
 	url = https://github.com/lambdalisue/fern.vim
 	arch = any
 	license = MIT
 	optdepends = gomi: trash-bin functionality
 	optdepends = trash-cli: trash-bin functionality
-	source = vim-fern-1.38.1.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.38.1.tar.gz
-	sha256sums = 42013a349a579c2c0755b7e4cf8fdf0614bd7a7c8c198bc03abe8a1f3928d324
+	source = vim-fern-1.38.2.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.38.2.tar.gz
+	sha256sums = 57e5593f644c62f5682ec76901691fcfb1658e086b8ddf80e539f4d30e26b480
 
 pkgname = vim-fern
 	groups = vim-plugins
