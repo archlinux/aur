@@ -26,9 +26,11 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable multigenerational LRU
-_lru_enable=y
+_lru_enable=
 ### Enable Linux Random Number Generator
 _lrng_enable=y
+### Enable FULLCONENAT
+_nf_cone=y
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -58,12 +60,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=8
+_minor=9
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -77,30 +79,31 @@ source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "config"
-    "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
-    "${_caculepatches}/v5.13/cacule-5.13.patch"
-    "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
-    "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-    "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
-    "${_patchsource}/winesync/5.13-winesync.patch"
-    "${_patchsource}/zen-patches/0001-zen-patches.patch"
-    "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-    "${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
-    "${_patchsource}/block-patches-v2/0001-block-patches.patch"
-    "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-    "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
-    "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
-    "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-    "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-    "${_patchsource}/lru-patches-v6/0001-lru-patches.patch"
-    "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-    "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
-    "${_patchsource}/security-patches/0001-security-patches.patch"
-    "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
-    "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-    "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
-    "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
-    "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
+  "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
+  "${_caculepatches}/v5.13/cacule-5.13.patch"
+  "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+  "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+  "${_patchsource}/winesync/5.13-winesync.patch"
+  "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
+  "${_patchsource}/zen-patches/0001-zen-patches.patch"
+  "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
+  "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+  "${_patchsource}/block-patches-v2/0001-block-patches.patch"
+  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+  "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
+  "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
+  "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
+  "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
+  "${_patchsource}/lru-patches-v6/0001-lru-patches.patch"
+  "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
+  "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
+  "${_patchsource}/security-patches/0001-security-patches.patch"
+  "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
+  "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+  "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
+  "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
+  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -240,25 +243,32 @@ prepare() {
     #      scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
 
-        ### Enable Linux Random Number Generator
-        if [ -n "$_lrng_enable" ]; then
-            echo "Enabling Linux Random Number Generator ..."
-            scripts/config --enable CONFIG_LRNG
-            scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-            scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-            scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-            scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-            scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-            scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
-            scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-            scripts/config --disable CONFIG_LRNG_JENT
-            scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-            scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-            scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
-            scripts/config --disable CONFIG_LRNG_DRBG
-            scripts/config --disable CONFIG_LRNG_TESTING_MENU
-            scripts/config --disable CONFIG_LRNG_SELFTEST
-        fi
+    ### Enable Linux Random Number Generator
+    if [ -n "$_lrng_enable" ]; then
+        echo "Enabling Linux Random Number Generator ..."
+        scripts/config --enable CONFIG_LRNG
+        scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+        scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+        scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+        scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+        scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+        scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+        scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+        scripts/config --disable CONFIG_LRNG_JENT
+        scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+        scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+        scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+        scripts/config --disable CONFIG_LRNG_DRBG
+        scripts/config --disable CONFIG_LRNG_TESTING_MENU
+        scripts/config --disable CONFIG_LRNG_SELFTEST
+    fi
+
+    ### Enable FULLCONENAT
+  	if [ -n "$_nf_cone" ]; then
+  		echo "Enabling FULLCONENAT..."
+  		scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
+  		scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
+  	fi
 
             ### Enable SECURITY_FORK_BRUTE
         if [ -n "$_fork_brute" ]; then
@@ -537,17 +547,18 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         'c21e43334165513b131796d4270aefc6'
-         'db27e837fe0e94c39ee8d0e663a33c3d'
+         '39a5d2b3ff92c000dc93f9fa2efb2c45'
+         '37ce9281370f5b5d479662e9419225a7'
          '6d8a2a8f499dd9643ca4af2254389ce7'
          '078da517ec2d54283af81d7da3af671a'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
          '3ec9a8784a9e73462def2e9c33de9a1e'
          '9573b92353399343db8a691c9b208300'
+         'e15a64663e6221ea40b02aeb8517e70a'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '31c897f53b91f98532321cd24928c0d7'
-         'c34f3bfc52d936d896df90d458f95235'
+         'daeacee8fcde31908f90b89dc4b54126'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
@@ -562,4 +573,4 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '9e5114dba6da65e8d444aa225b109a21'
          '2aa4d3664fc16dac2f18fe8c22ba1df1'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
-         'ef7748efcae55f7db8961227cbae3677')
+         '08590776013d05bc7a96ef5557c54200')
