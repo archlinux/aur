@@ -1,7 +1,7 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail dot com>
 
 pkgname=ugit
-pkgver=3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="ugit helps you undo your last git command with grace. Your damage control git buddy"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/Bhupesh-V/ugit"
 license=('MIT')
 depends=('bash' 'awk' 'grep' 'ncurses' 'fzf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('39033264078804c3e92805042a59785bfffe4cec6af156850ff8f9ed4b6cd68b428057d490b813d7b5b6634507eab98a70981d536d87af94a294481754e528f3')
+sha512sums=('713ac7eb1823860703e98552f8752f50541f184c457e6a3d7d2627b766bd82454a30094a464e12fee5fa1fd820e476b60f91cdc4c71a870ded966f3221289a8f')
 
 package(){
 
