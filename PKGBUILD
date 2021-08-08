@@ -1,7 +1,7 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=snowmix
-pkgver=0.5.1
-pkgrel=4
+pkgver=0.5.1.1
+pkgrel=1
 pkgdesc="Dynamic audio and video feed mixer"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://snowmix.sourceforge.net"
@@ -11,7 +11,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'awk')
 depends=('openbsd-netcat' 'cairo' 'pango' 'gst-libav' 'sdl' 'freeglut' 'libpng'
          'tcl' 'bwidget' 'glu')
 source=("https://downloads.sourceforge.net/sourceforge/snowmix/Snowmix-$pkgver.tar.gz")
-sha256sums=('0f39911243741f9c64a1994c7a0523db41e2e6e24efacd634d0d1f33c9c3e7bd')
+sha256sums=('e72d3fdab4b4c03b52787b8641fd6399b3a0a0c8976bf019a959b99f0f0a459d')
 
 build() {
   cd "Snowmix-$pkgver"
