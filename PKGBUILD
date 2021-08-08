@@ -1,7 +1,7 @@
 # Maintainer: Your Name <johnjahi55@gmail.com>
 _pkgname=nchat
 pkgname=${_pkgname}-git
-pkgver=2.02.r2.g8ec85a6
+pkgver=2.04.r0.g60760e1
 pkgrel=1
 pkgdesc="nchat is a console-based chat client for Linux and macOS with support for Telegram."
 arch=('any')
@@ -9,11 +9,9 @@ url="https://github.com/d99kris/nchat"
 license=('MIT')
 depends=('ncurses' 'ccache' 'cmake' 'gperf' 'help2man' 'readline' 'openssl' 'zlib'  'sqlite' 'go' 'file')
 
-# depends=('ncurses' 'ccache' 'cmake' 'gperf' 'help2man' 'readline' 'openssl' 'ncurses' 'zlib', 'php', 'clang')  #dependancies for slow mode (low memory/RAM systems)
-
 makedepends=('git')
-provides=('nchat')
-conflicts=('nchat')
+provides=('nchat-git')
+conflicts=('nchat-git' 'nchat')
 source=("git+$url")
 md5sums=('SKIP')
 
