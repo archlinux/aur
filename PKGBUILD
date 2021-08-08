@@ -1,7 +1,7 @@
 # Maintainer: Azarattum <azarattum@pm.me>
 pkgname=hotkeyer-git
 _pkgname=hotkeyer
-pkgver=r40.7bae753
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Universal context-aware hotkeyer. (fork of keymapper)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

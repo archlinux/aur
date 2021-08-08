@@ -1,6 +1,6 @@
 pkgbase = hotkeyer-git
 	pkgdesc = Universal context-aware hotkeyer. (fork of keymapper)
-	pkgver = r40.7bae753
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/Azarattum/UniversalHotkeyer
 	arch = i686
