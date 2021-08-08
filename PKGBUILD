@@ -1,8 +1,8 @@
 # Maintainer: Nova King <technobaboo@protonmail.com>
 
-pkgname=libstardustxr-git
+pkgname=libstardustxr-fusion-git
 _pkgname=libstardustxr
-pkgver=r157.f622901
+pkgver=r159.62ea8d5
 pkgrel=1
 
 pkgdesc="Client/Server libraries for Stardust XR"
@@ -10,8 +10,8 @@ arch=('x86_64' 'aarch64' 'armv7l')
 url="https://stardustxr.org/"
 license=('MIT')
 
-provides=('libstardustxr')
-depends=('gcc-libs')
+provides=('libstardustxr-fusion')
+depends=('libstardustxr' 'flatbuffers>=1.12.0')
 makedepends=('git' 'meson' 'ninja')
 
 source=(git+https://github.com/StardustXR/libstardustxr.git)
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "libstardustxr" build -Dfusion=false
+	arch-meson "libstardustxr" build -Dclient=false -Dserver=false
 	meson compile -C build
 }
 
