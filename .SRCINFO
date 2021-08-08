@@ -1,6 +1,6 @@
 pkgbase = level-zero-git
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (git version)
-	pkgver = 0.91.10.r2.g13d1883
+	pkgver = 1.4.1.r2.gb8a433d
 	pkgrel = 1
 	url = https://spec.oneapi.com/versions/latest/elements/l0/source/index.html
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgname = level-zero-headers-git
 pkgname = level-zero-loader-git
 	pkgdesc = oneAPI Level Zero loader (git version)
 	depends = gcc-libs
+	optdepends = level-zero-gpu-driver: for packaged Level Zero GPU driver
 	provides = level-zero-loader
 	conflicts = level-zero-loader
-

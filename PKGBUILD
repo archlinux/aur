@@ -2,7 +2,7 @@
 
 pkgbase=level-zero-git
 pkgname=('level-zero-headers-git' 'level-zero-loader-git')
-pkgver=0.91.10.r2.g13d1883
+pkgver=1.4.1.r2.gb8a433d
 pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices (git version)'
 arch=('x86_64')
@@ -17,8 +17,6 @@ pkgver() {
 }
 
 build() {
-    export CFLAGS+=" ${CPPFLAGS}"
-    export CXXFLAGS+=" ${CPPFLAGS}"
     cmake -B build -S level-zero \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -44,7 +42,7 @@ package_level-zero-headers-git() {
 package_level-zero-loader-git() {
     pkgdesc='oneAPI Level Zero loader (git version)'
     depends=('gcc-libs')
-    #optdepends=('level-zero-gpu-driver: for packaged Level Zero GPU driver') # no package provides this yet
+    optdepends=('level-zero-gpu-driver: for packaged Level Zero GPU driver')
     provides=('level-zero-loader')
     conflicts=('level-zero-loader')
     
