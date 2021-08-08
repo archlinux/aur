@@ -11,6 +11,7 @@ pkgbase = libstardustxr-git
 	makedepends = meson
 	makedepends = ninja
 	depends = gcc-libs
+	provides = libstardustxr
 	source = git+https://github.com/StardustXR/libstardustxr.git
 	sha256sums = SKIP
 

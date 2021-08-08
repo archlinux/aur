@@ -10,6 +10,7 @@ arch=('x86_64' 'aarch64' 'armv7l')
 url="https://stardustxr.org/"
 license=('MIT')
 
+provides=('libstardustxr')
 depends=('gcc-libs')
 makedepends=('git' 'meson' 'ninja')
 
