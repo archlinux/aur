@@ -1,5 +1,5 @@
 pkgbase = libstardustxr-fusion-git
-	pkgdesc = Client/Server libraries for Stardust XR
+	pkgdesc = High level C++ client library for Stardust XR
 	pkgver = r159.62ea8d5
 	pkgrel = 1
 	url = https://stardustxr.org/

@@ -5,7 +5,7 @@ _pkgname=libstardustxr
 pkgver=r159.62ea8d5
 pkgrel=1
 
-pkgdesc="Client/Server libraries for Stardust XR"
+pkgdesc="High level C++ client library for Stardust XR"
 arch=('x86_64' 'aarch64' 'armv7l')
 url="https://stardustxr.org/"
 license=('MIT')
