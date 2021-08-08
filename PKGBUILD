@@ -3,11 +3,12 @@
 
 pkgname=devpi-common
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities jointly used by devpi-server and devpi-client"
 arch=('any')
 url="https://doc.devpi.net/"
 license=('MIT')
+groups=('devpi')
 depends=(
   'python>=3.4'
   'python-lazy'
