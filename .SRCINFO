@@ -1,0 +1,20 @@
+pkgbase = mod_ba_cli-git
+	pkgdesc = Bus Agnostic Interactive Command Line Interface
+	pkgver = v0.3.5.r0.g59c6b2e
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/ambiorix/modules/mod-ba-cli.git
+	arch = any
+	license = MIT
+	depends = lib_amxc
+	depends = lib_amxt
+	depends = lib_amxm
+	depends = lib_amxp
+	depends = lib_amxd
+	depends = lib_amxb
+	depends = lib_amxo
+	provides = mod_ba_cli
+	conflicts = mod_ba_cli
+	source = mod_ba_cli-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/amx_cli/mod-ba-cli.git#branch=main
+	md5sums = SKIP
+
+pkgname = mod_ba_cli-git
