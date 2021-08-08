@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.13.8
+gitver=v5.13.9
 patchver=20210616
-pkgver=5.13.v.8
+pkgver=5.13.v.9
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
