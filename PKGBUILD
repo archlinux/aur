@@ -25,6 +25,6 @@ build() {
   mv "${_i915}" i915-firmware.cpio.xz
 }
 package() {
-  install -d '${pkgdir}'/boot
-  install -D {intel-ucode.cpio,i915-firmware.cpio.xz} '${pkgdir}'/boot
+  install -d "${pkgdir}"/boot
+  install -D {intel-ucode.cpio,i915-firmware.cpio.xz} "${pkgdir}"/boot
 }
