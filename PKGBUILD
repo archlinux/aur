@@ -26,9 +26,11 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable multigenerational LRU
-_lru_enable=y
+_lru_enable=
 ### Enable Linux Random Number Generator
-_lrng_enable=
+_lrng_enable=y
+### Enable FULLCONENAT
+_nf_cone=y
 ### Enable SECURITY_FORK_BRUTE
 # WARNING Not recommended.
 # An experimental solution, still in testing phase.
@@ -59,8 +61,8 @@ _use_current=
 
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.8
-pkgrel=2
+pkgver=5.13.9
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -85,9 +87,10 @@ source=(
   "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/winesync/5.13-winesync.patch"
+  "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-  "${_patchsource}/bfq-patches-v5/0001-bfq-patches.patch"
+  "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
   "${_patchsource}/block-patches-v2/0001-block-patches.patch"
   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
   "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
@@ -102,7 +105,7 @@ source=(
   "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
   "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
   "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
-  "${_patchsource}/v4l2loopback-patches/0001-v4l2loopback-patches.patch"
+  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
 )
 
 BUILD_FLAGS=(
@@ -122,7 +125,7 @@ BUILD_FLAGS=(
       OBJCOPY=llvm-objcopy
       OBJDUMP=objdump
     )
-sha256sums=('d088c2b84d9813f415a1d8dcfadb02d27d03f709c8b989d8c11b7b56c3c9a428'
+sha256sums=('72fe7cc1f0363523061659a21e24754697b27f405cb88a41a63038629636159a'
             '8d740f771b2b2284c4866fb228629e456a08e3f87b07f08f8b31f43f677ee6ae'
             '5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf'
             'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
@@ -130,9 +133,10 @@ sha256sums=('d088c2b84d9813f415a1d8dcfadb02d27d03f709c8b989d8c11b7b56c3c9a428'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
             'e1d58afdd4a9bf5a6a9ff0ff8e943d8a67da24fd4160b94655bf3fae5820e135'
             '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
+            'd9b37cb7edfd48b368f6969e1698278f74f548474bd2707d14a78f371a5e3b15'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
             '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
-            '93d45391d29ca7b53c3ba885815daea8440143fcbf10e8fc06e6c636e97d9dbd'
+            'c5501f058a8accf538fdb9cc541bd08419cd4d597e2c5bc31365d70c68bba5b3'
             '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
             '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
@@ -147,7 +151,7 @@ sha256sums=('d088c2b84d9813f415a1d8dcfadb02d27d03f709c8b989d8c11b7b56c3c9a428'
             '78b07f9d39573633ac7035201d7a95c44675084562995b7e60e549e44fbcfcb7'
             'a137f641dad68b0b29491c4e87a41569578aa3c95a37a654912b7d5c16a756bc'
             '04205c627cd3dcb737bd7b432cd7172d30f4ca0114b003bc3ac0dc8dadfa3c01'
-            '586d03baec3f8b583b1b73e838f5e69c1d25c502e4d7e6738e1291de1b52af15')
+            '825d83cc3f243d12a4501e6b691a78dfa812e61dcd4c042a07ab4be484052bda')
 options=('!strip')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -279,26 +283,43 @@ prepare() {
           scripts/config --enable CONFIG_LRU_GEN_ENABLED
           scripts/config --disable CONFIG_LRU_GEN_STATS
         fi
+        ### Enable FULLCONENAT
+      	if [ -n "$_nf_cone" ]; then
+      		echo "Enabling FULLCONENAT..."
+      		scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
+      		scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
+      	fi
+        ### Enable Linux Random Number Generator
+    	if [ -n "$_lrng_enable" ]; then
+    		echo "Enabling Linux Random Number Generator ..."
+    		scripts/config --enable CONFIG_LRNG
+    		scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+    		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
+    		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
+    		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+    		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+    		scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+    		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+    		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+    		scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+    		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+    		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+    		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+    		scripts/config --enable CONFIG_LRNG_JENT
+    		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+    		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+    		scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+    		scripts/config --disable CONFIG_LRNG_DRBG
+    		scripts/config --disable CONFIG_LRNG_TESTING_MENU
+    		scripts/config --disable CONFIG_LRNG_SELFTEST
+    	fi
 
-      ### Enable Linux Random Number Generator
-      if [ -n "$_lrng_enable" ]; then
-          echo "Enabling Linux Random Number Generator ..."
-          scripts/config --enable CONFIG_LRNG
-          scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-          scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-          scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-          scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-          scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-          scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
-          scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-          scripts/config --disable CONFIG_LRNG_JENT
-          scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-          scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-          scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
-          scripts/config --disable CONFIG_LRNG_DRBG
-          scripts/config --disable CONFIG_LRNG_TESTING_MENU
-          scripts/config --disable CONFIG_LRNG_SELFTEST
-      fi
 
           ### Enable SECURITY_FORK_BRUTE
       if [ -n "$_fork_brute" ]; then
