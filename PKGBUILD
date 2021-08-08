@@ -4,27 +4,28 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 
 pkgname=serpent-browser
-pkgver=2021.04.27
+pkgver=2021.07.19
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://www.basilisk-browser.org/"
 license=(MPL GPL LGPL)
 depends=(gtk2 gtk3 libxt mailcap nss alsa-lib icu ttf-font libpulse)
-makedepends=(git unzip zip python2 yasm mesa autoconf2.13)
+makedepends=(git unzip zip python2 yasm mesa autoconf2.13 gcc10)
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')
 provides=(basilisk)
 conflicts=(basilisk)
 options=(!emptydirs !makeflags)
-
 source=("${pkgname%-git}::git+https://repo.palemoon.org/MoonchildProductions/Basilisk.git#tag=v${pkgver}"
         serpent-browser.desktop
         "git+https://repo.palemoon.org/MoonchildProductions/UXP.git")
 sha256sums=('SKIP'
             'ba1502352e069f6945519228ef776e4c2eadaf5165132ec9edcbe71135b7c848'
             'SKIP')
+
+export CC=/usr/bin/gcc-10 CXX=/usr/bin/g++-10
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
