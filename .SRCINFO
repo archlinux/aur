@@ -1,13 +1,13 @@
 pkgbase = lib_amxc-git
 	pkgdesc = Generic C-implementation of data containers
-	pkgver = v1.1.1.r0.g9959798
+	pkgver = v1.2.1.r0.g6b6e7b0
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc
 	arch = any
 	license = MIT
 	provides = lib_amxc
 	conflicts = lib_amxc
-	source = lib_amxc-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc.git#branch=master
+	source = lib_amxc-git::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc.git#branch=main
 	md5sums = SKIP
 
 pkgname = lib_amxc-git
