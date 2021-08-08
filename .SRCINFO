@@ -1,0 +1,21 @@
+pkgbase = ruby-rubocop-rake
+	pkgdesc = A RuboCop plugin for Rake
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/rubocop/rubocop-rake
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rubocop-rspec
+	checkdepends = ruby-rake
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	makedepends = git
+	depends = ruby
+	depends = ruby-rubocop
+	options = !emptydirs
+	source = git+https://github.com/rubocop/rubocop-rake.git?tag=v0.6.0
+	sha256sums = SKIP
+
+pkgname = ruby-rubocop-rake
