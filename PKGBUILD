@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=filetovox
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="Tool for convert files into Magicavoxel file"
 url="https://github.com/Zarbuz/FileToVox"
@@ -10,7 +10,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 depends=('dotnet-runtime>=5' 'libgdiplus')
 makedepends=('dotnet-sdk>=5')
 source=("https://github.com/Zarbuz/FileToVox/archive/$pkgver.tar.gz")
-sha256sums=('198bbca35b74f6e2e04cd567bf79feca6412260e75f77aca48a97a0844bfdd99')
+sha256sums=('510c3443e11731dd2baf733054c47ace5db01dcb91ad29f499578d7d6813a9d1')
 
 build() {
     cd "$srcdir/FileToVox-$pkgver"
