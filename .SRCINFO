@@ -1,15 +1,18 @@
 pkgbase = ruby-buftok
-	pkgdesc = BufferedTokenizer extracts token delimited entities from a sequence of arbitrary inputs.
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgdesc = extract token delimited entities from a sequence of arbitrary inputs
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/sferik/buftok
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = buftok-0.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/buftok-0.2.0.gem
-	sha256sums = bad760334631e15b8eea608468709d3265e087703b5af0532f6583e277f0fae7
+	source = https://github.com/sferik/buftok/archive/v0.3.0/buftok-0.3.0.tar.gz
+	sha256sums = dd47be7642f5260b83ad2c2dcb88bb747a0be9888500aecc0a60d89bb62dcebb
 
 pkgname = ruby-buftok
-

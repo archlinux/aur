@@ -1,23 +1,50 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _gemname=buftok
 pkgname=ruby-$_gemname
-pkgver=0.2.0
-pkgrel=3
-pkgdesc="BufferedTokenizer extracts token delimited entities from a sequence of arbitrary inputs."
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="extract token delimited entities from a sequence of arbitrary inputs"
 arch=(any)
-url='https://github.com/sferik/buftok'
+url=https://github.com/sferik/buftok
 license=(MIT)
 depends=(ruby)
+checkdepends=(ruby-bundler ruby-rake ruby-test-unit)
+makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('bad760334631e15b8eea608468709d3265e087703b5af0532f6583e277f0fae7')
+source=(https://github.com/sferik/buftok/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('dd47be7642f5260b83ad2c2dcb88bb747a0be9888500aecc0a60d89bb62dcebb')
+
+prepare() {
+  cd $_gemname-$pkgver
+  sed -i 's|~>|>=|g' ${_gemname}.gemspec
+}
+
+build() {
+  cd $_gemname-$pkgver
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake test
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname-$pkgver
+  local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
