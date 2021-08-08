@@ -1,0 +1,16 @@
+pkgbase = wiiu-vc-extractor-git
+	pkgdesc = Extracts Wii U Virtual Console roms from dumps created via DDD or dumped from the SNES Mini
+	pkgver = r111.c78a740
+	pkgrel = 1
+	url = https://github.com/wheatevo/wiiu-vc-extractor
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-runtime>=5
+	makedepends = dotnet-sdk>=5
+	depends = dotnet-runtime
+	provides = wiiu-vc-extractor
+	source = git+https://github.com/wheatevo/wiiu-vc-extractor
+	md5sums = SKIP
+
+pkgname = wiiu-vc-extractor-git
