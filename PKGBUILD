@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Client/Server libraries for Stardust XR"
 arch=('x86_64' 'aarch64' 'armv7l')
 url="https://stardustxr.org/"
-license=('GPL2')
+license=('MIT')
 
 depends=('gcc-libs')
 makedepends=('git' 'meson' 'ninja')
@@ -31,4 +31,5 @@ build() {
 
 package() {
 	meson install -C build --destdir "$pkgdir"
+	install -Dm775 "libstardustxr/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
