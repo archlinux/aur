@@ -2,7 +2,7 @@
 # Maintainer: Leon De Andrade <leondeandrade@hotmail.com>
 
 pkgname=theia-electron
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
@@ -10,7 +10,7 @@ pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
 depends=('nodejs-lts-erbium' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('yarn' 'make' 'gcc' 'pkgconf' 'python2' 'node-gyp')
-optdepends=('git: git support')
+optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
 source=(
@@ -22,7 +22,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         'aca0c5da32944e7a9dd519304a362bc6'
+         '644ba3afe6ad93ad91afd9eabb461f04'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
          '1dde0e422484895d3509f4ee9bb8d980'
