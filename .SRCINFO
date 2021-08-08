@@ -1,0 +1,18 @@
+pkgbase = darktile-git
+	pkgdesc = A GPU-rendered terminal emulator designed for tiling window managers
+	pkgver = 0.0.10.r0.g41f8406
+	pkgrel = 1
+	url = https://github.com/liamg/darktile
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxinerama
+	depends = xorg-xinput
+	source = darktile-git::git+https://github.com/liamg/darktile
+	sha256sums = SKIP
+
+pkgname = darktile-git
