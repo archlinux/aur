@@ -9,7 +9,7 @@ pkgbase = satdump-git
 	makedepends = make
 	makedepends = cmake
 	makedepends = libcorrect-git
-	makedepends = airspy-git
+	makedepends = airspy
 	makedepends = rtl-sdr
 	makedepends = hackrf
 	depends = libvolk
@@ -21,4 +21,3 @@ pkgbase = satdump-git
 	md5sums = SKIP
 
 pkgname = satdump-git
-
