@@ -1,7 +1,7 @@
 # Maintainer: Kyle Brown <kdb424@gmail.com>
 pkgname=worldedit-git
 _pkgname=worldedit
-pkgver=16
+pkgver=r18.e1f53d0
 pkgrel=1
 pkgdesc="Emulating Gentoo’s world files and sets for other package managers."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
