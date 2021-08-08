@@ -1,0 +1,18 @@
+pkgbase = fingerpaint-wayland
+	pkgdesc = Fingerpaint tool with wayland dependencies
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Wazzaps/fingerpaint
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python-evdev
+	depends = python-pillow
+	depends = python-pyudev
+	depends = dconf
+	provides = fingerpaint
+	conflicts = fingerpaint
+	source = fingerpaint-1.2.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.tar.gz
+	md5sums = 4a32a607a4e7d4b38ff570016f02bbf1
+
+pkgname = fingerpaint-wayland
