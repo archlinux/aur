@@ -1,0 +1,22 @@
+pkgbase = tuxedo-control-center-bin
+	pkgdesc = A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops.
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = https://github.com/tuxedocomputers/tuxedo-control-center
+	install = tuxedo-control-center-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = tuxedo-keyboard
+	depends = libxss
+	depends = nss
+	depends = gtk3
+	conflicts = tuxedo-control-center
+	options = !strip
+	source = https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/tuxedo-control-center_1.0.14.rpm
+	source = tuxedo-control-center-bin.install
+	sha256sums = a1a1bd8547209e908df6cc720d36fdeba18a0e35bf4b3f6f3a4bac268deb0cba
+	sha256sums = fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3
+	sha512sums = 01b95c71651ea9ce3b64ebfadf6094b1d607173a3627bbc9efc5fc7a912032005f5dfbc0433462cc7ed5d86026f7c697ab27f090e4210f2799856f8e8b16f4d1
+	sha512sums = b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a
+
+pkgname = tuxedo-control-center-bin
