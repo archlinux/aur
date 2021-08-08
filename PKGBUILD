@@ -3,7 +3,7 @@
 _pkgname=etelemetry
 pkgname=python-$_pkgname
 _name=${pkgname#python-}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Etelemetry python client API"
 url="https://github.com/sensein/etelemetry-client"
@@ -12,16 +12,16 @@ license=('apache')
 depends=('python-ci-info')
 provides=("python-etelemetry")
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/6e/35/e684ac76f9044b888d9d1961e93e38c9b12bfb4f6d2eaf17329109b8e770/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bfb58f58e98f63eae20caffb8514fb68c572332aa6e773cf3fcbde9b408d88e7')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/sensein/etelemetry-client/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bfec416552d248ad0f50b90ba5ff015e825ad70e4a87f7a06cc7da6d19152897')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-client-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-client-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
