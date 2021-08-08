@@ -1,0 +1,8 @@
+# Ignore everything
+*
+# Allow PKGBUILD
+!PKGBUILD
+# Allow .SRCINFO
+!.SRCINFO
+# allow .gitignore
+!.gitignore

@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb-inspect-git
-pkgver=v1.0.2.r0.g8347fa5
+pkgver=v1.0.6.r0.g048460d
 pkgrel=1
 pkgdesc="Ambiorix Backend inspector/validation tool"
 arch=('any')
@@ -19,7 +19,7 @@ conflicts=(
 	'amxb-inspect'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git#branch=${gitbranch}")
 md5sums=('SKIP')

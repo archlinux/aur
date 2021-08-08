@@ -1,6 +1,6 @@
 pkgbase = amxb-inspect-git
 	pkgdesc = Ambiorix Backend inspector/validation tool
-	pkgver = v1.0.2.r0.g8347fa5
+	pkgver = v1.0.6.r0.g048460d
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = amxb-inspect-git
 	depends = lib_amxb
 	provides = amxb-inspect
 	conflicts = amxb-inspect
-	source = amxb-inspect-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git#branch=master
+	source = amxb-inspect-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git#branch=main
 	md5sums = SKIP
 
 pkgname = amxb-inspect-git
-
