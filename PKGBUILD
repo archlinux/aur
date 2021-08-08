@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -24,13 +24,13 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/pineapple-pictures/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-    '50bf5bc186ed1f296f871294c83256b89551323ce6b6f23183a6ad8a1b30821b'
+    'f55467513607004918f2fcacd105e1c0d694f254723df91d5b63a9901b5c9ff0'
 )
 
 build () {
     cd ${srcdir}/${pkgname}-${pkgver}
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
-    make
+    cmake --build . -j`nproc`
 }
 
 package() {
