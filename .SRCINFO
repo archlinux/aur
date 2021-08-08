@@ -1,7 +1,7 @@
 pkgbase = ruby-rubocop-ast
 	pkgdesc = RuboCop's AST extensions and NodePattern functionality
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/rubocop/rubocop-ast
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = ruby-rubocop-ast
 	depends = ruby
 	depends = ruby-parser
 	options = !emptydirs
-	source = git+https://github.com/rubocop/rubocop-ast.git?tag=v1.8.0
+	source = git+https://github.com/rubocop/rubocop-ast.git?tag=v1.9.0
 	sha256sums = SKIP
 
 pkgname = ruby-rubocop-ast
