@@ -1,0 +1,16 @@
+pkgbase = sif-git
+	pkgdesc = Steam Icons Fixer - Fix runtime icons of Steam games on Linux.
+	pkgver = r92.a38c47e
+	pkgrel = 1
+	url = https://github.com/BlueManCZ/SIF
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = xdotool
+	depends = python-gobject
+	depends = python-requests
+	depends = python-vdf
+	source = git+https://github.com/BlueManCZ/SIF
+	sha256sums = SKIP
+
+pkgname = sif-git
