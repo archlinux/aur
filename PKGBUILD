@@ -9,6 +9,8 @@ url="https://github.com/liamg/darktile"
 license=('MIT')
 depends=('libgl' 'libx11' 'libxcursor' 'libxinerama' 'xorg-xinput')
 makedepends=('go' 'git')
+provides=('darktile')
+conflicts=('darktile')
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 

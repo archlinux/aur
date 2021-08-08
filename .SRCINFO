@@ -12,6 +12,8 @@ pkgbase = darktile-git
 	depends = libxcursor
 	depends = libxinerama
 	depends = xorg-xinput
+	provides = darktile
+	conflicts = darktile
 	source = darktile-git::git+https://github.com/liamg/darktile
 	sha256sums = SKIP
 
