@@ -2,8 +2,8 @@
 _projname=wstunnel
 _pkgname=haskell-"${_projname}"
 pkgname="${_pkgname}"-bin
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Tunneling over websocket protocol"
 arch=('x86_64' 'i686' 'armv7l' 'aarch64')
 url="https://github.com/erebe/wstunnel"
@@ -14,29 +14,27 @@ conflicts=("${_pkgname}" 'nodejs-wstunnel')
 source=("${pkgname}-${pkgver}-LICENSE::https://github.com/erebe/${_projname}/raw/v${pkgver}/LICENSE"
         "${pkgname}-${pkgver}-README.md::https://github.com/erebe/${_projname}/raw/v${pkgver}/README.md"
         "${pkgname}-${pkgver}-logo.png::https://github.com/erebe/${_projname}/raw/v${pkgver}/logo_${_projname}.png")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-x64-linux.zip")
-source_i686=("${pkgname}-${pkgver}-i686.tar.gz::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-x86-linux-ubuntu18.tar.gz")
-source_armv7l=("${pkgname}-${pkgver}-armv7l.tar.gz::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-armv7l-raspbian-buster.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-aarch64-ubuntu18.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-x64-linux")
+source_armv7l=("${pkgname}-${pkgver}-armv7l.zip::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-armv7l-linux.zip")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/erebe/${_projname}/releases/download/v${pkgver}/${_projname}-aarch64-linux.zip")
 sha256sums=('eaea4f8a2ebca92e3ca13f77d01364b110723c70ed6370ce1ecdb4f84261d411'
-            'c408ac4b73b05052357f6a598b961f9fb73ddc29df296febdf06842ceaaa6422'
+            '341a52f78b0a7af437a674650805bd8d0e1ee038854e2c50e91be8bd00e9168b'
             'e193de98502986dfb54639058b1409e92282f78b54d04b0d2735d4b4c9be2b77')
-sha256sums_x86_64=('040b3d6d98b8d3ff0df2ba05b6b89e8a6820be981ffe4a3b39af563225f66098')
-sha256sums_i686=('1818b9862a1ba9e2f9594ecdd71045d375900c827ea33132a7bebc83610eff68')
-sha256sums_armv7l=('d010c323a0c443da0a8190e8fc74c4c0de8580fb718adf3cc6e0dc2eeb96093c')
-sha256sums_aarch64=('ebdc2d80d610aca00a122e12da089b7c6b2204112615594321754a543c68810c')
+sha256sums_x86_64=('d22edd6dc10a971e77c46a09c512077a71a16abaede8a50a0d6a7afb3b36d69b')
+sha256sums_armv7l=('e48f7ad7233165c47769665cf001acf97d5460f3b77417e9b37dae70b30cd6a6')
+sha256sums_aarch64=('e6c9569a1f94dfd2ec71ddc03cca2eeed6e9b23fbf4ef8fcf3b06ef7e29f007d')
 
 prepare() {
   sed -i "s|https://github.com/erebe/${_projname}/raw/master/logo_${_projname}.png|logo.png|g" "${pkgname}-${pkgver}-README.md"
 }
 
 package() {
+  local _executable_name
   case "$CARCH" in
-    aarch64) _executable_name="${_projname}-aarch64-ubuntu18" ;;
-          *) _executable_name="${_projname}"                  ;;
+    x86_64) _executable_name="${pkgname}-${pkgver}-${CARCH}" ;;
+         *) _executable_name="${_projname}/${_projname}"     ;;
   esac
   install -Dm755 "${_executable_name}" "${pkgdir}/usr/bin/${_projname}"
-  unset _executable_name
 
   install -Dm644 "${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
