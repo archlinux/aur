@@ -1,6 +1,6 @@
 pkgbase = amxo-cg-git
 	pkgdesc = ODL (Object Definition Language) Compiler/Generator
-	pkgver = v1.0.4.r3.gc201165
+	pkgver = v1.1.6.r0.ga0ab6e1
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = amxo-cg-git
 	depends = lib_amxd
 	depends = lib_amxo
 	provides = amxo-cg
+	provides = amxo_cg
 	conflicts = amxo-cg
-	source = amxo-cg-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git#branch=master
+	conflicts = amxo_cg
+	source = amxo-cg-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git#branch=main
 	md5sums = SKIP
 
 pkgname = amxo-cg-git
-

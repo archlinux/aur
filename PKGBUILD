@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo-cg-git
-pkgver=v1.0.4.r3.gc201165
+pkgver=v1.1.6.r0.ga0ab6e1
 pkgrel=1
 pkgdesc="ODL (Object Definition Language) Compiler/Generator"
 arch=('any')
@@ -16,12 +16,14 @@ makedepends=(
 )
 provides=(
 	'amxo-cg'
+	'amxo_cg'
 )
 conflicts=(
 	'amxo-cg'
+	'amxo_cg'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git#branch=${gitbranch}")
 md5sums=('SKIP')
