@@ -2,7 +2,7 @@
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=osdlyrics
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="A lyric show compatible with various media players"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'desktop-file-utils' 'hicolor-icon-theme' 'sqlite' 'python')
 makedepends=('intltool')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c00c9dc2ec792009752d0e6f314e48aa941063c8e09440ccb499ceb861ddf0a1')
+sha256sums=('491c1a6e78fcd211528031f84fcb6a80e41c60028a430080a9ee77053ffefd58')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
