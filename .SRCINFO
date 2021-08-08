@@ -1,13 +1,13 @@
 pkgbase = rbspy-bin
 	pkgdesc = Sampling profiler for Ruby
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://rbspy.github.io
 	arch = x86_64
 	license = MIT
 	makedepends = fakeroot
 	conflicts = rbspy
-	source = rbspy-v0.8.0-x86_64-musl.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.8.0/rbspy-x86_64-musl.tar.gz
-	sha256sums = aae499d51c019449066c76dea786e35d897ec2bdcbc8d90a97e79fac75af803d
+	source = rbspy-v0.8.1-x86_64-musl.tar.gz::https://github.com/rbspy/rbspy/releases/download/v0.8.1/rbspy-x86_64-musl.tar.gz
+	sha256sums = 564d4d21b7d02d9fe8920faa19c3b0a5d2b40bd3605b7b2ca03c394a5894a21a
 
 pkgname = rbspy-bin
