@@ -2,7 +2,7 @@
 
 pkgname=icedrive-appimage
 _pkgname=Icedrive_Portable_Linux-x64
-pkgver=1.2.7
+pkgver=`date +%Y%m%d`
 pkgrel=1
 pkgdesc='The next generation of cloud storage'
 arch=('x86_64')
@@ -12,11 +12,10 @@ depends=('fuse2' 'zlib' 'hicolor-icon-theme')
 options=(!strip)
 _shortname='icedrive'
 _appimage="${_pkgname}.AppImage"
-source=("${_appimage}::${url}/downloads/portable/${_pkgname}.AppImage")
-#source=("${_appimage}::${url}/downloads/portable/${_pkgname}.AppImage")
+source=("https://icedrive.net/downloads/portable/Icedrive_Portable_Linux-x64.AppImage")
+DLAGENTS=("https::/usr/bin/env wget -U 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)'")
 noextract=("${_appimage}")
-sha256sums=(
-	'5a25ecbc31e48dccd5b8f110fbf193fd8989883ab6128ae66787cabfe0d6b05c')
+sha256sums=('SKIP')
 
 
 prepare() {
