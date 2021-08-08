@@ -3,12 +3,14 @@
 pkgbase=intel-metee-git
 pkgname=('intel-metee-git' 'intel-metee-doc-git')
 pkgver=3.1.0.r0.g73636d2
-pkgrel=1
-pkgdesc='Cross-platform access library for Intel CSME HECI interface (git version)'
+pkgrel=2
+pkgdesc='Access library for Intel CSME HECI interface (git version)'
 arch=('x86_64')
 url='https://github.com/intel/metee/'
 license=('Apache')
 makedepends=('git' 'cmake' 'doxygen')
+provides=('intel-metee')
+conflicts=('intel-metee')
 source=('git+https://github.com/intel/metee.git')
 sha256sums=('SKIP')
 
