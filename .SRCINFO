@@ -1,7 +1,7 @@
 pkgbase = octoprint
 	pkgdesc = The snappy web interface for your 3D printer on Arch Linux
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
@@ -23,6 +23,8 @@ pkgbase = octoprint
 	depends = python-filetype
 	depends = python-blinker
 	depends = python-babel
+	depends = python-cachelib
+	depends = python-pylru
 	optdepends = ffmpeg: timelapse support
 	optdepends = curaengine: fast and robust engine for processing 3D models
 	optdepends = mjpg-streamer: stream images from webcam

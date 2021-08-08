@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
@@ -22,9 +22,12 @@ depends=(
 		python-wrapt
 		python-filetype
 		python-blinker
-
 		python-babel
-		)
+
+		# aur
+		python-cachelib
+		python-pylru
+)
 makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
 			'curaengine: fast and robust engine for processing 3D models'
@@ -63,10 +66,11 @@ prepare()
 }
 
 package() {
-	virtualenv --system-site-packages --no-setuptools --no-wheel $pkgdir/usr/lib/$pkgname
+	python -m venv --system-site-packages --symlinks $pkgdir/usr/lib/$pkgname
+	source $pkgdir/usr/lib/$pkgname/bin/activate
 
 	pushd $srcdir/OctoPrint-${pkgver}
-	$pkgdir/usr/lib/$pkgname/bin/pip --no-cache-dir install --install-option '--optimize=1' .
+	pip --use-feature=in-tree-build --no-cache-dir install --install-option '--optimize=1' .
 	popd
 
 	find $pkgdir/usr/lib/$pkgname/bin -type f -exec grep -q $pkgdir {} \; -exec sed -i "s:$pkgdir::g" {} \;
