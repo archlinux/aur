@@ -3,16 +3,16 @@
 
 pkgbase=java8-adoptopenjdk
 pkgname=("${pkgbase/java/jre}-headless" "${pkgbase/java/jre}" "${pkgbase/java/jdk}" "${pkgbase/java8-/}8-src")
-pkgver=8u292
-_jdk_build=10
+pkgver=8u302b08
+_jdk_build=08
 pkgrel=1
 pkgdesc="AdoptOpenJDK ${pkgver%u*} HotSpot"
 arch=("x86_64")
 url="https://${pkgbase/java8-/}.net/"
 license=("custom")
 makedepends=("ca-certificates-utils" "hicolor-icon-theme" "java-environment-common" "java-runtime-common" "nss" "xdg-utils")
-source=("https://github.com/AdoptOpenJDK/openjdk${pkgver%u*}-binaries/releases/download/jdk${pkgver}-b${_jdk_build}/OpenJDK${pkgver%u*}U-jdk_x64_linux_hotspot_${pkgver}b${_jdk_build}.tar.gz")
-sha256sums=("0949505fcf42a1765558048451bb2a22e84b3635b1a31dd6191780eeccaa4ada")
+source=("https://github.com/adoptium/temurin${pkgver%u*}-binaries/releases/download/jdk${pkgver/b/-b}/OpenJDK${pkgver%u*}U-jdk_x64_linux_hotspot_${pkgver}.tar.gz")
+sha256sums=("cc13f274becf9dd5517b6be583632819dfd4dd81e524b5c1b4f406bdaf0e063a")
 
 _nonheadless=(
   "bin/policytool"
@@ -46,11 +46,11 @@ package_jre8-adoptopenjdk-headless() {
   )
   install="install_${pkgname}.sh"
 
-  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre"
+  cd "${srcdir}/jdk${pkgver/b/-b}/jre"
 
   install -dm755 "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/"
-  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
-  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
+  cp -a "${srcdir}/jdk${pkgver/b/-b}/jre/bin" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
+  cp -a "${srcdir}/jdk${pkgver/b/-b}/jre/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre"
 
   # Set config files
   mv "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/lib/management/jmxremote.password"{.template,}
@@ -65,11 +65,11 @@ package_jre8-adoptopenjdk-headless() {
   pushd "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/bin"
   install -dm755 "${pkgdir}/usr/share/man/"{,ja/}"man1/"
   for _file in *; do
-    if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" ]; then
-      install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" "${pkgdir}/usr/share/man/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
+    if [ -f "${srcdir}/jdk${pkgver/b/-b}/man/man1/${_file}.1" ]; then
+      install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/man1/${_file}.1" "${pkgdir}/usr/share/man/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
     fi
-    if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" ]; then
-      install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
+    if [ -f "${srcdir}/jdk${pkgver/b/-b}/man/ja/man1/${_file}.1" ]; then
+      install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/ja/man1/${_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
     fi
   done
   popd
@@ -80,9 +80,9 @@ package_jre8-adoptopenjdk-headless() {
 
   # Install license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/ASSEMBLY_EXCEPTION" "${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/THIRD_PARTY_README" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/jre/ASSEMBLY_EXCEPTION" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/jre/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}"
+  install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/jre/THIRD_PARTY_README" "${pkgdir}/usr/share/licenses/${pkgbase}"
   ln -sf "/usr/share/licenses/${pkgbase}" "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Move config files that were set in _backup_etc from ./lib to /etc
@@ -105,19 +105,19 @@ package_jre8-adoptopenjdk() {
   provides=("java-runtime=${pkgver%u*}" "java-runtime-openjdk=${pkgver%u*}")
   install="install_${pkgname}.sh"
 
-  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre"
+  cd "${srcdir}/jdk${pkgver/b/-b}/jre"
 
   for _file in "${_nonheadless[@]}"; do
-    install -D "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/${_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/${_file}"
+    install -D "${srcdir}/jdk${pkgver/b/-b}/jre/${_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/${_file}"
   done
 
   # Man pages
   pushd "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/jre/bin"
   install -dm755 "${pkgdir}/usr/share/man/"{,ja/}"man1/"
   for _file in *; do
-    install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_file}.1" \
+    install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/man1/${_file}.1" \
       "${pkgdir}/usr/share/man/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
-    install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_file}.1" \
+    install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/ja/man1/${_file}.1" \
       "${pkgdir}/usr/share/man/ja/man1/${_file}-${pkgbase/java8-/}${pkgver%u*}.1"
   done
   popd
@@ -133,38 +133,38 @@ package_jdk8-adoptopenjdk() {
   provides=("java-environment=${pkgver%u*}" "java-environment-openjdk=${pkgver%u*}")
   install="install_${pkgname}.sh"
 
-  cd "${srcdir}/jdk${pkgver}-b${_jdk_build}"
+  cd "${srcdir}/jdk${pkgver/b/-b}"
 
   # Main files
   install -dm755 "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
 
-  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/include" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
-  cp -a "${srcdir}/jdk${pkgver}-b${_jdk_build}/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
+  cp -a "${srcdir}/jdk${pkgver/b/-b}/include" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
+  cp -a "${srcdir}/jdk${pkgver/b/-b}/lib" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}"
 
   # 'bin' files
-  pushd "${srcdir}/jdk${pkgver}-b${_jdk_build}/bin"
+  pushd "${srcdir}/jdk${pkgver/b/-b}/bin"
 
   # 'java-rmi.cgi' will be handled separately as it should not be in the PATH and has no man page
   for _binary_file in $(ls | grep -v "java-rmi.cgi"); do
-    if [ -e "${srcdir}/jdk${pkgver}-b${_jdk_build}/jre/bin/${_binary_file}" ]; then
+    if [ -e "${srcdir}/jdk${pkgver/b/-b}/jre/bin/${_binary_file}" ]; then
       # Provide a link of the jre binary in the jdk/bin/ directory
       ln -s "../jre/bin/${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
     else
       # Copy binary to jdk/bin/
       install -Dm755 "${_binary_file}" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/${_binary_file}"
       # Copy man page
-      if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" ]; then
-        install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
+      if [ -f "${srcdir}/jdk${pkgver/b/-b}/man/man1/${_binary_file}.1" ]; then
+        install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
       fi
-      if [ -f "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_binary_file}.1" ]; then
-        install -Dm644 "${srcdir}/jdk${pkgver}-b${_jdk_build}/man/ja/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
+      if [ -f "${srcdir}/jdk${pkgver/b/-b}/man/ja/man1/${_binary_file}.1" ]; then
+        install -Dm644 "${srcdir}/jdk${pkgver/b/-b}/man/ja/man1/${_binary_file}.1" "${pkgdir}/usr/share/man/ja/man1/${_binary_file}-${pkgbase/java8-/}${pkgver%u*}.1"
       fi
     fi
   done
   popd
 
   # Handling 'java-rmi.cgi' separately
-  install -Dm755 "${srcdir}/jdk${pkgver}-b${_jdk_build}/bin/java-rmi.cgi" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/java-rmi.cgi"
+  install -Dm755 "${srcdir}/jdk${pkgver/b/-b}/bin/java-rmi.cgi" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/bin/java-rmi.cgi"
 
   # link license
   install -dm755 "${pkgdir}/usr/share/licenses/"
@@ -174,5 +174,5 @@ package_jdk8-adoptopenjdk() {
 package_adoptopenjdk8-src() {
   pkgdesc='AdoptOpenJDK Java ${pkgver%u*} sources'
 
-  install -D "${srcdir}/jdk${pkgver}-b${_jdk_build}/src.zip" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/src.zip"
+  install -D "${srcdir}/jdk${pkgver/b/-b}/src.zip" "${pkgdir}/usr/lib/jvm/${pkgbase/java/java-}/src.zip"
 }
