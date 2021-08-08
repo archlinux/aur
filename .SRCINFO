@@ -1,0 +1,19 @@
+pkgbase = python3_ambiorix_bindings-git
+	pkgdesc = Python3 AMX Language Bindings
+	pkgver = v0.2.3.r0.gaf7afab
+	pkgrel = 1
+	url = https://gitlab.com/soft.at.home/ambiorix/bindings/python3.git
+	arch = any
+	license = MIT
+	depends = lib_amxc
+	depends = lib_amxp
+	depends = lib_amxb
+	depends = lib_amxd
+	depends = libevent
+	depends = python
+	provides = python3_ambiorix_bindings
+	conflicts = python3_ambiorix_bindings
+	source = python3_ambiorix_bindings-git::git+https://gitlab.com/soft.at.home/ambiorix/bindings/python3.git#branch=main
+	md5sums = SKIP
+
+pkgname = python3_ambiorix_bindings-git
