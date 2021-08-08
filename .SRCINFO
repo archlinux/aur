@@ -1,0 +1,12 @@
+pkgbase = touchcursor-linux-git
+	pkgdesc = TouchCursor style keyboard remapping for Linux, Git version.
+	pkgver = r96.1383893
+	pkgrel = 1
+	url = https://github.com/donniebreve/touchcursor-linux
+	arch = any
+	license = GPL2
+	depends = glibc
+	source = git+https://github.com/donniebreve/touchcursor-linux
+	md5sums = SKIP
+
+pkgname = touchcursor-linux-git
