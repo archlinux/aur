@@ -1,7 +1,7 @@
 pkgbase = ib-tws
 	pkgdesc = Electronic trading platform from discount brokerage firm Interactive Brokers
 	pkgver = 985.1h
-	pkgrel = 2
+	pkgrel = 1
 	url = http://interactivebrokers.com/
 	arch = any
 	license = custom
@@ -27,6 +27,6 @@ pkgbase = ib-tws
 	sha256sums = 62fbd49b8c7fb5d4ae7491ca2b9072d42bbe589a2b9f0e14d09d1bf1177a3c46
 	sha256sums = 21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44
 	sha256sums = 9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4
-	sha256sums = 399026ba937f4a9f4f458b8fa69095ad876e6bad342fe440f90cec5be05c3e35
+	sha256sums = 3c2ae6a6453c51f45ca39afe6dd786447695423194ba822cffc47a49b1feba3d
 
 pkgname = ib-tws
