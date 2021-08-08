@@ -1,6 +1,6 @@
 pkgbase = amxrt-git
 	pkgdesc = Ambiorix application runtime
-	pkgver = v1.0.2.r0.g30d5526
+	pkgver = v1.1.3.r0.gb36bc57
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = amxrt-git
 	depends = lib_amxo
 	provides = amxrt
 	conflicts = amxrt
-	source = amxrt-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git#branch=master
+	source = amxrt-git::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git#branch=main
 	md5sums = SKIP
 
 pkgname = amxrt-git
-

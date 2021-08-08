@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxrt-git
-pkgver=v1.0.2.r0.g30d5526
+pkgver=v1.1.3.r0.gb36bc57
 pkgrel=1
 pkgdesc="Ambiorix application runtime"
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=(
 	'amxrt'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git#branch=${gitbranch}")
 md5sums=('SKIP')
