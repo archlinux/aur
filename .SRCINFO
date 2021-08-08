@@ -1,0 +1,13 @@
+pkgbase = python-tox-docker
+	pkgdesc = Tox plugin to run one or more Docker containers during tests
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/tox-dev/tox-docker
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-tox
+	source = https://github.com/tox-dev/tox-docker/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = aa944c10b05dcbe13c10c711047813e401fcb0626491e1392928bb002605e316
+
+pkgname = python-tox-docker
