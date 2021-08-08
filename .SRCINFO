@@ -17,4 +17,4 @@ pkgname = opengigabyte-driver-dkms
 
 pkgname = opengigabyte-meta
 	pkgdesc = Meta package for installing all required opengigabyte packages.
-	depends = openaero-driver-dkms
+	depends = opengigabyte-driver-dkms
