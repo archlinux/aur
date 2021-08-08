@@ -1,6 +1,6 @@
 pkgbase = plank-theme-data-stora-git
-	pkgdesc = Anti-Shade theme for Plank
-	pkgver = 0.1
+	pkgdesc = Data-Stora theme for Plank
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://www.pling.com/p/1299919
 	arch = any

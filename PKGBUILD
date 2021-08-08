@@ -1,9 +1,9 @@
 # Maintainer: McQueen <clear3239@yahoo.com>
 _pkgname=plank-theme-data-stora
 pkgname=$_pkgname-git
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="Anti-Shade theme for Plank"
+pkgdesc="Data-Stora theme for Plank"
 arch=('any')
 url='https://www.pling.com/p/1299919'
 license=('CC BY NC ND')
