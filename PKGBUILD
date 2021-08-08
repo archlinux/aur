@@ -15,8 +15,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('f40dd43f667735741be95f753e52d3ec36731fcb3c3217084ad07e70dbac7a2a')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  cargo build --release --all-features --target-dir=target
+	cd "${pkgname}-${pkgver}"
+	cargo build --release --all-features --target-dir=target
 }
 
 check() {
