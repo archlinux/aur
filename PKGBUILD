@@ -13,11 +13,13 @@ provides=("$_pkgname=$pkgver" 'libsirit.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	'sirit-add-cmake-install-rules.patch::https://github.com/ReinUsesLisp/sirit/pull/28.patch'
+	"sirit-add-cmake-install-rules.patch::$url/pull/28.patch"
+	'unbundle-spirv-headers.patch'
 )
 b2sums=(
 	'SKIP'
 	'5f56e767c9ed4cb55741230438f3d8d95478cd7cfa14c0954c39205a1ecfabf3d3e42b7fa0c5f43c54c7a129591e576009f74617dee3aec2564f744184a7bf05'
+	'b937242d066614db16211c0e64ab63ac7cfab0696a0dde00ae4ec1e1b06863cbb99e1e102eb3aa5f8d6885a5aa9a73ee998215a33593319077c382c3a664b610'
 )
 
 pkgver() {
@@ -28,8 +30,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	patch -Np1 < ../sirit-add-cmake-install-rules.patch
-	# unbundle spirv-headers
-	sed -i /SPIRV-Headers/d CMakeLists.txt
+	patch -Np1 < ../unbundle-spirv-headers.patch
 }
 
 build() {

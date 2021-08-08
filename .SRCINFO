@@ -14,7 +14,9 @@ pkgbase = sirit-git
 	conflicts = sirit
 	source = git+https://github.com/ReinUsesLisp/sirit.git
 	source = sirit-add-cmake-install-rules.patch::https://github.com/ReinUsesLisp/sirit/pull/28.patch
+	source = unbundle-spirv-headers.patch
 	b2sums = SKIP
 	b2sums = 5f56e767c9ed4cb55741230438f3d8d95478cd7cfa14c0954c39205a1ecfabf3d3e42b7fa0c5f43c54c7a129591e576009f74617dee3aec2564f744184a7bf05
+	b2sums = b937242d066614db16211c0e64ab63ac7cfab0696a0dde00ae4ec1e1b06863cbb99e1e102eb3aa5f8d6885a5aa9a73ee998215a33593319077c382c3a664b610
 
 pkgname = sirit-git
