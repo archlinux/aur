@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxj-git
-pkgver=v0.3.19.r0.g905e132
+pkgver=v0.3.23.r0.g6724cc7
 pkgrel=1
 pkgdesc="JSON Reader/generation - JSON string variant"
 arch=('any')
@@ -20,7 +20,7 @@ conflicts=(
 	'lib_amxj'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/libraries/libamxj.git#branch=${gitbranch}")
 md5sums=('SKIP')
