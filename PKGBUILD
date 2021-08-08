@@ -4,7 +4,7 @@ _nginxver=1.20.1
 
 pkgname=nginx-mod-ipscrub
 pkgver=1.0.1
-pkgrel=10
+pkgrel=11
 pkgdesc='IP address anonymizer for nginx log files'
 
 arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h')
