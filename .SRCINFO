@@ -1,6 +1,6 @@
 pkgbase = amxb_pcb-git
 	pkgdesc = PCB baapi back-end
-	pkgver = v2.0.5.r0.gfd496a3
+	pkgver = v2.1.3.r0.g83c7d92
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = amxb_pcb-git
 	provides = amxb_pcb-git
 	conflicts = amxb_pcb
 	conflicts = amxb_pcb-git
-	source = amxb_pcb-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git#branch=master
+	source = amxb_pcb-git::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git#branch=main
 	md5sums = SKIP
 
 pkgname = amxb_pcb-git
-

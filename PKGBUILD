@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_pcb-git
-pkgver=v2.0.5.r0.gfd496a3
+pkgver=v2.1.3.r0.g83c7d92
 pkgrel=1
 pkgdesc="PCB baapi back-end"
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=(
 	'amxb_pcb-git'
 )
 
-gitbranch="master"
+gitbranch="main"
 
 source=("${pkgname}::git+https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git#branch=${gitbranch}")
 md5sums=('SKIP')
