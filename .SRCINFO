@@ -1,7 +1,7 @@
 pkgbase = scalapack-static
 	pkgdesc = subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers, static version.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.netlib.org/scalapack/
 	arch = i686
 	arch = x86_64
