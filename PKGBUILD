@@ -1,5 +1,5 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
-pkgname=mod_dmext_cli-git
+pkgname=mod_dmext-git
 pkgver=v0.1.2.r0.g6ab410b
 pkgrel=1
 pkgdesc="Module Data Model Extension"
