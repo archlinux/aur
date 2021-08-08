@@ -1,7 +1,7 @@
 # Maintainer: Justin Yao Du <justinyaodu@gmail.com>
 pkgname='iscanimage'
-pkgver='1.0.0'
-pkgrel=2
+pkgver='1.1.0'
+pkgrel=1
 pkgdesc="User-friendly command line program for operating scanner devices."
 arch=('any')
 url="https://github.com/justinyaodu/${pkgname}"
