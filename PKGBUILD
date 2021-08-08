@@ -4,27 +4,27 @@
 # Contributor: aorth for his check-firmware-version.sh
 
 pkgname=intel-ucode-clear
-pkgver=34380
+pkgver=34870
 pkgrel=1
-pkgdesc="Intel cpu microcode and i915 firmware used by Clear Linux"
+pkgdesc='Intel cpu microcode and i915 firmware used by Clear Linux'
 arch=(x86_64)
-url="https://clearlinux.org/"
+url='https://clearlinux.org/'
 license=()
 provides=(intel-ucode)
-_ucode=973f1b665837a5d9bdf4daf7def4ffbaf3e89a96fea9bbb6be6a864730243deb
-_i915=3bdcf116862f61ce1bfbe1c7cfac17516b80533d34a5b28b751378d031f89a03
-source=("${pkgver}-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/${pkgver}/Manifest.linux-firmware"
-        "${pkgver}-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_ucode}.tar"
-        "${pkgver}-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_i915}.tar")
-sha256sums=('65e7509640432d585cbd9038f2b882f1b0b9eedee56c26180e400633334c280e'
-            '5943d82fa1d152d920afd3712273bf1c7efbe5e9380020d467d3c4d741510af9'
-            '08899af0d6676c47c3fbc67aa7722486498e1df97805792d3cbb1f9ba445252c')
+_ucode=81710c000616de17cc41a095796cff930ef67fd667f5fade46bb743b0d3efad4
+_i915=4569c17b0029817b927247e38e58f7dfaf97e31fce2418d290c00531d6fb4b08
+source=('34870-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/34870/Manifest.linux-firmware'
+        '34870-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/34870/files/81710c000616de17cc41a095796cff930ef67fd667f5fade46bb743b0d3efad4.tar'
+        '34870-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/34870/files/4569c17b0029817b927247e38e58f7dfaf97e31fce2418d290c00531d6fb4b08.tar')
+sha256sums=('f5aa82c93f97f6c922a03497dea06a85b1c05c68740858445c33f2597ca0a6ad'
+            'e46298bb87db84fd8144fc625ebaf7e5c8e11148807b468a86d98f37113daff7'
+            'bde496b06c7ee3d28aab1363d226b88485386ae87f90249b530c850b2b322cdb')
 
 build() {
-  mv "${_ucode}" intel-ucode.cpio
-  mv "${_i915}" i915-firmware.cpio.xz
+  mv '81710c000616de17cc41a095796cff930ef67fd667f5fade46bb743b0d3efad4' intel-ucode.cpio
+  mv '4569c17b0029817b927247e38e58f7dfaf97e31fce2418d290c00531d6fb4b08' i915-firmware.cpio.xz
 }
 package() {
-  install -d "${pkgdir}"/boot
-  install -D {intel-ucode.cpio,i915-firmware.cpio.xz} "${pkgdir}"/boot
+  install -d '${pkgdir}'/boot
+  install -D {intel-ucode.cpio,i915-firmware.cpio.xz} '${pkgdir}'/boot
 }
