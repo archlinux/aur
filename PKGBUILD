@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nlnetlabs-krill
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="RPKI certificate authority and publication server"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/NLnetLabs/krill/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a829458fbfa2690a89b74e13a9fc34629a9544f2d6b1ae13b0a520039a4a2906')
+sha256sums=('2b690023cf03e168c8d044aec73471383963ad3497560500d524a6128b441122')
 
 
 check() {
