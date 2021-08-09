@@ -2,7 +2,7 @@
 # Contributor: Matthew Murray <matt@compti.me>
 
 pkgname=mautrix-whatsapp
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
@@ -19,14 +19,14 @@ source=("${url}/archive/v${pkgver}.tar.gz"
         mautrix-whatsapp.service
         log-path.diff)
 backup=("etc/${pkgname}/mautrix-whatsapp.yaml")
-sha256sums=('003a224ee3b9e0a0a19457fbc6d46fa8492f7fb4776e7dc51b5f3bb6908f1777'
+sha256sums=('66d696d868293bad9cb9b47403d1afda0a4fec3fd294599fa42344cf298b7f33'
             '409e8fb3e35de1bd1ceebefa0ac275ad62ec66680117648058bcc177ddd2f9a1'
             '38c236650de46cf60a550afff79635f777335812531a67f4094a73186295f53c'
             'c353ac242c501063c7c45169e1e65e7a75fe7d681f73409e76682e7537466965'
             'e27eea84a3df3380e26cfa485d383b19bb8b7cc8e0fd273e79df501b504160e4')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/whatsapp-$pkgver"
   patch -Np1 < "$srcdir/log-path.diff"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/whatsapp-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$srcdir/sysusers-mautrix-whatsapp.conf" "$pkgdir/usr/lib/sysusers.d/mautrix-whatsapp.conf"
