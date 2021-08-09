@@ -1,4 +1,5 @@
-# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
+# Maintainer: Valentin Churavy <v dot churavy at gmail dot com>
+# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=julia-beta-bin
 _pkgver=1.7.0-beta2
