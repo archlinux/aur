@@ -1,6 +1,6 @@
 # Maintainer: Holger Döbler <holger.doebler@posteo.de>
 pkgname=verapdf
-pkgver=1.16.1
+pkgver=1.18.6
 pkgrel=1
 epoch=
 pkgdesc="purpose-built, open source, file-format validator covering all PDF/A parts and conformance levels"
@@ -10,12 +10,12 @@ license=('GPL3' 'MPL2')
 groups=()
 depends=('java-runtime' 'bash')
 makedepends=('unzip')
-source=("https://software.verapdf.org/rel/1.16/${pkgname}-greenfield-${pkgver}-installer.zip"
+source=("https://software.verapdf.org/rel/1.18/${pkgname}-greenfield-${pkgver}-installer.zip"
         "$pkgname.png::https://avatars1.githubusercontent.com/u/9946925?s=280&v=4"
         "$pkgname.desktop"
         "auto-install.xml")
 noextract=("${pkgname}-greenfield-${pkgver}-installer.zip" 'auto-install.sh')
-md5sums=('7c6a5ee2914747dafacec99cf9c53ccf'
+md5sums=('ab2304af430178a80623b61975005ec1'
          '076b23717ab675281ed53dcf84471b89'
          'd84e22d0455afdf60816e182d66ce089'
          '312f8dc7e9c4a6ecfd25d75aff7b22c9')
