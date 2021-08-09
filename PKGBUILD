@@ -8,9 +8,9 @@ _pkgver=1.0.0-beta1
 _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools-beta
-provides=(mdbtools)
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=4
+provides=("mdbtools=$pkgver")
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/mdbtools/mdbtools"
