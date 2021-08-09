@@ -1,13 +1,13 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=media-server-connect-git
-pkgver=r120.08083f0
+pkgver=r122.45769f8
 pkgrel=1
 pkgdesc="App for connecting to Emby server web interface"
 arch=("any")
 url="https://gitlab.com/The3DmaN/${pkgname%-git}"
 license=("GPL3")
-makedepends=("git" "make" "gcc")
+makedepends=("git")
 depends=("qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols2")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
