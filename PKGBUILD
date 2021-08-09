@@ -1,7 +1,7 @@
 # Maintainer: "Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>"
 pkgname=genimage-git
 pkgver=v14.r82.43fccb5
-pkgrel=3
+pkgrel=4
 pkgdesc="tool to generate multiple filesystem and flash images from a tree"
 arch=($CARCH)
 url=https://github.com/pengutronix/${pkgname%-*}
@@ -23,6 +23,8 @@ optdepends=(
   'uboot-tools: mkimage'
 )
 checkdepends=($( printf "%s\n" "${optdepends[@]}" | cut -d':' -f1 ))
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
 
 source=(${pkgname%-*}::git+https://github.com/pengutronix/${pkgname%-*}.git)
 sha1sums=(SKIP)

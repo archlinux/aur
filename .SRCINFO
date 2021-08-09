@@ -1,7 +1,7 @@
 pkgbase = genimage-git
 	pkgdesc = tool to generate multiple filesystem and flash images from a tree
 	pkgver = v14.r82.43fccb5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pengutronix/genimage
 	arch = x86_64
 	license = GPL2
@@ -25,6 +25,8 @@ pkgbase = genimage-git
 	optdepends = qemu-headless: qemu-img
 	optdepends = rauc
 	optdepends = uboot-tools: mkimage
+	provides = genimage
+	conflicts = genimage
 	source = genimage::git+https://github.com/pengutronix/genimage.git
 	sha1sums = SKIP
 
