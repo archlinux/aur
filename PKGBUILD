@@ -5,12 +5,12 @@ pkgver=5.993.r2.g2fb843c
 pkgrel=2
 pkgdesc="C++ header-only JIT assembler library"
 arch=('any')
-url="https://github.com/herumi/xbyak"
+url="https://github.com/herumi/$_pkgname"
 license=('BSD')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git")
+source=("git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {

@@ -9,7 +9,7 @@ pkgbase = xbyak-git
 	makedepends = git
 	provides = xbyak=5.993.r2.g2fb843c
 	conflicts = xbyak
-	source = xbyak::git+https://github.com/herumi/xbyak.git
+	source = git+https://github.com/herumi/xbyak.git
 	b2sums = SKIP
 
 pkgname = xbyak-git
