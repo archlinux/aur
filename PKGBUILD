@@ -1,5 +1,8 @@
-# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
+#!/bin/hint/bash
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
+# shellcheck disable=SC2015
 ((DISABLE_BUNDLED_RADARE)) && {
 	depends+=('radare2>=5.1.0')
 	_CMAKE_FLAGS+=(-DIAITO_USE_BUNDLED_RADARE2=OFF)
