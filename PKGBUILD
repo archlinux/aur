@@ -1,23 +1,58 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 
 _gemname=mechanize
 pkgname=ruby-$_gemname
-pkgver=2.7.6
+pkgver=2.8.2
 pkgrel=1
-pkgdesc='The Mechanize library is used for automating interaction with websites.'
-arch=('any')
-url='http://docs.seattlerb.org/mechanize/'
-license=('MIT')
+pkgdesc="The Mechanize library is used for automating interaction with websites"
+arch=(any)
+url=https://github.com/sparklemotion/mechanize
+license=(MIT)
+depends=(
+  ruby
+  ruby-addressable
+  ruby-domain_name
+  ruby-http-cookie
+  ruby-mime-types
+  ruby-net-http-digest_auth
+  ruby-net-http-persistent
+  ruby-nokogiri
+  ruby-rubyntlm
+  ruby-webrick
+  ruby-webrobots
+)
+checkdepends=(ruby-rake ruby-minitest)
+makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
-noextract=($_gemname-$pkgver.gem)
-depends=('ruby' 'ruby-domain_name' 'ruby-http-cookie' 'ruby-mime-types' 'ruby-net-http-digest_auth' 'ruby-net-http-persistent' 'ruby-nokogiri' 'ruby-ntlm-http' 'ruby-webrobots' rubygems ruby-rdoc)
-makedepends=('rubygems')
-source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('3d3318db3c66a27721b7cfcb0924464887e2737b6c120d401f0f196df6270301')
+source=(git+https://github.com/sparklemotion/mechanize.git?tag=v${pkgver})
+sha256sums=('SKIP')
+
+build() {
+  cd $_gemname
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname
+  rake test
+}
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  cd $_gemname
+  local _gemdir="$(gem env gemdir)"
 
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
+
+# vim: set ts=2 sw=2 et:
