@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=orchis-theme-git
-pkgver=2021.06.25.r42.g7a954da
+pkgver=2021.06.25.r44.gee918c3
 pkgrel=1
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 arch=('any')
@@ -27,7 +27,7 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
-  ./install-all.sh -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
   # Remove unnecessary files:
   rm -rf "$pkgdir"/usr/share/themes/{Orchis,Orchis-*}/gnome-shell/extensions
@@ -43,8 +43,6 @@ package() {
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  # Fix for Dash to panel
-  install -d "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
-  cp -r src/gnome-shell/extensions/dash-to-panel \
-    "$pkgdir/usr/share/doc/${pkgname%-git}/gnome-shell/extensions"
+  # Fix for Dash to panel & Workspaces to Dock
+  cp -r src/gnome-shell/extensions "$pkgdir/usr/share/doc/${pkgname%-git}"
 }

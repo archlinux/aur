@@ -4,12 +4,16 @@ post_install() {
   echo "https://github.com/vinceliuice/Orchis-theme/tree/master/src/firefox#installation"
   echo ""
   echo "Fix for Dash to panel:"
-  echo "cd /usr/share/doc/orchis-theme/gnome-shell/extensions/dash-to-panel"
+  echo "cd /usr/share/doc/orchis-theme/dash-to-panel"
   echo "sudo ./install.sh "
   echo ""
   echo "Restore original styesheet.css before updating Dash to panel:"
   echo "cd /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com"
   echo "sudo mv stylesheet.css.back stylesheet.css"
+  echo ""
+  echo "Fix for Workspaces to Dock:"
+  echo "cd /usr/share/doc/orchis-theme/workspaces-to-dock"
+  echo "sudo ./install.sh "
   echo ""
 }
 
