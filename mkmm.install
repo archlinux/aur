@@ -15,7 +15,7 @@ yellow="${bold}$(tput setaf 3)"
 
 post_install() {
   note "Link your preferred pre- and post- hooks to /etc/pacman.d/hooks, see alpm-hooks(5)"
-  note "Enable the mkmm-bleach service when using the hardlink hooks (10-mkmm-(post|pre).hook)"
+  note "Readme: pacman -Qql mkmm | grep -i readme"
 }
 
 post_remove() {
