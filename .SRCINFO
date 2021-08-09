@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
 	pkgver = 2.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = jitsi-meet-desktop
 	makedepends = coreutils
 	makedepends = git
 	makedepends = npm
-	makedepends = python2
+	makedepends = python
 	makedepends = png++
 	makedepends = libxtst
 	makedepends = nvm
