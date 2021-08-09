@@ -2,15 +2,15 @@
 
 _gitname=complete-alias
 pkgname=bash-${_gitname}
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='automagical bash shell alias completion'
 arch=(any)
 url='https://repo.cykerway.com/complete-alias'
 license=('GPL3')
 install=${pkgname}.install
-source=("https://github.com/cykerway/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=('467a8a0cff0e2c5096f2e42c7b991cff20f5252b7f69e4cfbb6984d3ce0ab06d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cykerway/${_gitname}/archive/${pkgver}.tar.gz")
+sha256sums=('0232907e8f615b5050f8c06045ab3357be6cf172031c923f31ec008aa754b0f9')
 
 package() {
   depends=('bash-completion' 'findutils' 'sed')

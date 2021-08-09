@@ -7,7 +7,11 @@ post_install() {
   echo '    1. Source /usr/share/bash-complete-alias/complete_alias in your bash config (e.g. ~/.bashrc).'
   echo
   echo '    2. For each alias in your bash config, call the complete builtin with _complete_alias and the name of the alias.'
-  echo '       i.e. complete -F _complete_alias my_alias'
+  echo '       For example:'
+  echo '         complete -F _complete_alias my_alias'
+  echo
+  echo '       Alternatively, add the following one-liner after all the aliases are defined:'
+  echo '         complete -F _complete_alias "${!BASH_ALIASES[@]}"'
   echo
   echo '==> For more details see /usr/share/doc/bash-complete-alias/README.md'
   echo
