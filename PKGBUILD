@@ -6,7 +6,7 @@
 # Set the next two variables to ANYTHING that is not null to enable them
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=y
+_makenconfig=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
