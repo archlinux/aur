@@ -3,7 +3,7 @@
 
 pkgname=teleport-client
 _pkgname=teleport
-pkgver=6.2.3
+pkgver=6.2.8
 pkgrel=1
 pkgdesc="Client-only (tsh, tctl) package for teleport"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -13,13 +13,13 @@ depends=()
 makedepends=('go>=1.14.0')
 provides=('tctl' 'tsh')
 
-_webassets_ref=8c2812c169fa6bd5f31c13160bd93ef8b317bbc9
+_webassets_ref=7820228a3ed3fac73aa74d12f2ef851eb2905058
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-webassets-${_webassets_ref}.tar.gz::https://github.com/gravitational/webassets/archive/${_webassets_ref}.tar.gz")
 
-sha256sums=('a24c56c9aa0f9b215655947b9ca56438351b407aacabe2eb8c4c9e5fa128c6d9'
-            '14445b0864d759347c1f53dc144a346b1974b8ded49031d7f0b7227f5d49d407')
+sha256sums=('bbc128d0778d253ec6e8af44286df750caec65d8c8e2616c85cf2656c267460f'
+            'a7fac0f1bab9d73d6e60d94740bc7462f051fec9ac5febe38a22b260982a2b8e')
 
 prepare() {
     mv "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${pkgname}"
