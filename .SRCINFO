@@ -1,0 +1,15 @@
+pkgbase = nfs2iso2nfs-git
+	pkgdesc = convert nfs files to iso and back (git version)
+	pkgver = v0.5.6
+	pkgrel = 1
+	url = https://github.com/FIX94/nfs2iso2nfs
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = mono
+	provides = nfs2iso2nfs
+	conflicts = nfs2iso2nfs
+	source = git+https://github.com/FIX94/nfs2iso2nfs.git
+	md5sums = SKIP
+
+pkgname = nfs2iso2nfs-git
