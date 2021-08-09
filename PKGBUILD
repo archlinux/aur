@@ -1,5 +1,5 @@
 pkgname="autorestic-bin"
-pkgver=1.1.2
+pkgver=1.2.0
 _pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="High level CLI utility for restic"
@@ -15,18 +15,18 @@ _arch_x86_64="amd64"
 _arch_aarch64="arm64"
 _arch_aarch32="arm"
 
-sha256sums_i686=('368c1a348c8e80c07583537bfb6941c69e2ae1cdecb6e7ea6418ea872d7a2829')
-sha256sums_x86_64=('68560d098ce1b3eb43ad7afcf33f771ffb6d19fef3f7c97e166f59ee0454c3b3')
-sha256sums_aarch64=('15f104b62e1f48f73dec707c1b1ea22bc609c16fc2883588ab2744b276230349')
-sha256sums_aarch32=('ada08ded0ea70ff826862221b8c7f4bc923aeed44e0c22da82a3bc276fd5fa86')
+sha256sums_x86_64=('b581d5ea36fc73562fc9a7eaed861a09d4077794bfd6ec02c2a5fbf98e2e4c63')
+sha256sums_i686=('2f5d4f3b940d91b464c3e62867684d02e206d9432be57728f23eeb6163de0570')
+sha256sums_aarch32=('6db2f0215ac8b45dadf6cd56ffbf34585b49eec119d5f2ec1d0fb378f5f1a38e')
+sha256sums_aarch64=('2cf0391c873eff7a6e820ee6db2af1119e849bafa9ea0e451841d097ab115677')
 
-source_i686=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
-source_x86_64=("${pkgname%-bin}-$pkgver.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
-source_aarch64=("${pkgname%-bin}-$pkgver.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch64}.bz2")
-source_aarch32=("${pkgname%-bin}-$pkgver.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch32}.bz2")
+source_i686=("${pkgname%-bin}-$pkgver-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_i686}.bz2")
+source_x86_64=("${pkgname%-bin}-$pkgver-$arch.bz2"::"${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_x86_64}.bz2")
+source_aarch64=("${pkgname%-bin}-$pkgver-$arch.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch64}.bz2")
+source_aarch32=("${pkgname%-bin}-$pkgver-$arch.bz2"::"${url}/${pkgname}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_${_arch_aarch32}.bz2")
 
 prepare() {
-  bzip2 -fdc ${pkgname%-bin}-$pkgver.bz2 > autorestic
+  bzip2 -fdc ${pkgname%-bin}-$pkgver-$arch.bz2 > autorestic
   chmod +x autorestic
 }
 
