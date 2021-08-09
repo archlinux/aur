@@ -1,0 +1,11 @@
+post_install() {
+    /usr/bin/sssm sync Pixelvision2
+}
+
+post_upgrade() {
+    /usr/bin/sssm sync Pixelvision2
+}
+
+post_remove() {
+    /usr/bin/sssm remove Pixelvision2
+}
