@@ -1,14 +1,13 @@
 pkgbase = gnunet-gtk
 	pkgdesc = A frontend for GNUnet
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = x86_64
 	license = GPL
 	depends = gnunet
 	depends = glade
-	source = https://ftp.gnu.org/gnu/gnunet/gnunet-gtk-0.14.0.tar.gz
-	sha256sums = 8a93127f61b1a44c2485c4c9c7de31399edb23b9c25d9a6d6927f842563d2ca3
+	source = https://ftp.gnu.org/gnu/gnunet/gnunet-gtk-0.15.0.tar.gz
+	sha256sums = 14b2e5aa943b05ffa835152fc7b227895c45baccbfb4f63110fd93e95185ee1f
 
 pkgname = gnunet-gtk
-
