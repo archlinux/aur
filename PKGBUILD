@@ -23,9 +23,21 @@ prepare() {
     ./${_CLIENT} --appimage-extract 2> /dev/null
 }
 
+check() {
+    MATCH=$(cat ${srcdir}/squashfs-root/gopanda2.desktop | grep X-AppImage-Version=$pkgver || [[ $? == 1 ]])
+    if [[ -z ${MATCH} ]]; then
+        echo "Version check failed! A newer version has been released, but the
+        PKGBUILD has not yet been updated. Change the pkgver and checksums in
+        the PKGUILB yourself and/or leave a comment at
+        https://aur.archlinux.org/packages/gopanda/ so that the PKGBUILD will be
+        updated.";
+        exit 1;
+    fi
+}
+
 package() {
 
-	# Copy license
+    # Copy license
 	install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	cd "$srcdir/"
