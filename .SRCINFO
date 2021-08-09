@@ -1,16 +1,14 @@
 pkgbase = gsshvnc
 	pkgdesc = A simple VNC client with built-in SSH forwarding
-	pkgver = 0.94
+	pkgver = 0.95
 	pkgrel = 1
 	url = https://github.com/zrax/gsshvnc
-	arch = i386
 	arch = x86_64
 	license = GPL2
 	depends = gtkmm3
 	depends = gtk-vnc
 	depends = libssh
-	source = https://github.com/zrax/gsshvnc/archive/v0.94.tar.gz
-	sha256sums = e6e90647c1491d273373cb10c8b18aed630b5f505e4b8a3199e4f24cd2f49b52
+	source = https://github.com/zrax/gsshvnc/archive/v0.95.tar.gz
+	sha256sums = 5de4c3f3f771fab96d29063f8b0418271e7294ff093ababee8d88c81087dfa35
 
 pkgname = gsshvnc
-
