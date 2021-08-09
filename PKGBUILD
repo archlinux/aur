@@ -10,8 +10,10 @@ license=('MIT')
 makedepends=("python-${_pyname}=${pkgver}"
              'python-smmap'
              'mkdocs-pymdownx-material-extras'
-             'python-mkdocs-material-extensions'
-             'python-mkdocs-git-revision-date-localized-plugin')
+#            'python-mkdocs-material-extensions'
+             'mkdocs-material-extensions'
+#            'python-mkdocs-git-revision-date-localized-plugin'
+             'mkdocs-git-revision-date-localized-plugin')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('73ff6ce22ba973fe2d47197834e0f728')
 
