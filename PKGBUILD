@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-gitsigns-git
-pkgver=0.1.r37.g521e935
-pkgrel=2
+pkgver=r339.dd58b79
+pkgrel=1
+epoch=1
 pkgdesc="Git signs written in pure Lua"
 arch=('any')
 url="https://github.com/lewis6991/gitsigns.nvim"
@@ -17,7 +18,10 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+	( set -o pipefail
+	  git describe --long --tags 2> /dev/null | sed 's/^v//;s/-/.r/;s/-/./' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 package() {

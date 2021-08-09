@@ -1,16 +1,11 @@
-post_install()	{
-	printf "
-	:: This plugin must be activated through your init file.
-	:: You can do so with either of the following:
-
-		init.vim: lua 'require('gitsigns').setup()'
-
-		init.lua: require('gitsigns').setup()
-	\n"
+post_install() {
+	echo ':: This plugin must be activated through your init file.'
+	echo ':: You can activate it with either of the following:'
+	echo ''
+	echo "init.vim: lua 'require('gitsigns').setup()"
+	echo "init.lua: require('gitsigns').setup()"
 }
 
-post_remove()	{
-	printf "
-	:: Remember to remove your setup from your init files!
-	\n"
+post_remove() {
+	echo ':: Remember to remove your setup from your init scripts.'
 }
