@@ -1,8 +1,8 @@
-# Maintainer: Luke Shumaker <lukeshu@sbcglobal.net>
-# Maintainer (AUR): Miguel Revilla <yo@miguelrevilla.com>
-# Contributor (AUR): TDY <tdy@gmx.com>
-# Contributor (AUR): Eduard "bekks" Warkentin <eduard.warkentin@gmail.com>
-# Contributor (AUR): Cezary Drożak <czarek@drozak.net>
+# Maintainer: Cezary Drożak <czarek@drozak.net>
+# Contributor: TDY <tdy@gmx.com>
+# Contributor: Eduard "bekks" Warkentin <eduard.warkentin@gmail.com>
+# Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
+# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
 _pkgver=1.0.0-beta1
 _pkgname=mdbtools
