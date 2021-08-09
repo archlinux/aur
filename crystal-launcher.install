@@ -1,0 +1,19 @@
+# Based on the prototype here:
+# /usr/share/pacman/proto.install
+
+post_install() {
+    echo "If you would like to configure a specific directory for the launcher files,"
+    echo "write the desired path to the file '.crystalinst' in your home directory."
+    echo
+    echo "An example is:"
+    echo '    echo "/PATH/FOR/LAUNCHER" > $HOME/.crystalinst'
+}
+
+post_remove() {
+    echo "Remember to remove the launcher files!"
+    echo
+    echo "You can see where the files are stored via:"
+    echo '    cat $HOME/.crystalinst'
+    echo "You can then remove the files via:"
+    echo "    rm -rfv /PATH/FOR/LAUNCHER"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Crystal Launcher
+GenericName=Crystal Launcher
+Comment=A Minecraft modpack launcher
+Exec=/usr/bin/crystal-launcher
+Icon=crystal-launcher
+Terminal=false
+Type=Application
+Categories=Game;
