@@ -1,4 +1,4 @@
-pkgbase = spwn
+pkgbase = spwn-lang
 	pkgdesc = A language for Geometry Dash triggers. An easy way to create levels using code.
 	pkgver = 0.0.5
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = spwn
 	source = git+https://github.com/Spu7Nix/SPWN-language.git
 	sha256sums = SKIP
 
-pkgname = spwn
+pkgname = spwn-lang
