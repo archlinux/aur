@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-opencl-icd
+	pkgdesc = The OpenCL ICD Loader (mingw-w64)
+	pkgver = 2021.06.30
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/OpenCL-ICD-Loader
+	arch = any
+	groups = mingw-w64-vulkan-devel
+	license = APACHE
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-opencl-headers
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/v2021.06.30.tar.gz
+	sha256sums = a50557ed6ff18c81aa1ed5e74700521e389c84ca5cd9188d35d368936e0a4972
+
+pkgname = mingw-w64-opencl-icd
