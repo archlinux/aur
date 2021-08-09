@@ -5,9 +5,9 @@
 
 pkgname=phoenicis-playonlinux
 _pkgname=phoenicis
-pkgver=5.0_alpha2
-_pkgver=5.0-alpha.2
-pkgrel=6
+pkgver=5.0_alpha3
+_pkgver=5.0-alpha.3
+pkgrel=1
 pkgdesc="Phoenicis PlayOnLinux allows you to install and use non-native applications on linux"
 arch=('any')
 url="https://www.phoenicis.org/"
@@ -17,7 +17,7 @@ depends=('cabextract' 'curl' 'icoutils' 'imagemagick'
          'p7zip' 'unzip' 'wget' 'wine' 'xterm')
 options=(!strip)
 source=("https://github.com/PhoenicisOrg/${_pkgname}/archive/v${_pkgver}.tar.gz")
-sha256sums=('c88b8ca68c0c37f62aad4db44cef0047c09e8fd553455af15ef3265b0e3c575b')
+sha256sums=('6b3be12e08db85ef800cf7a03c26daf7689c8d541a40592d8560cfb5e132ec79')
 
 build() {
   cd "${_pkgname}-${_pkgver}"
@@ -34,6 +34,6 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver}/phoenicis-dist/target/Phoenicis_5.0-alpha-2"
+  cd "${_pkgname}-${_pkgver}/phoenicis-dist/target/Phoenicis_5.0-alpha-3"
   cp -a usr "${pkgdir}"
 }
