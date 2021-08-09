@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 url='https://gitlab.gnome.org/World/decoder'
@@ -15,12 +15,11 @@ makedepends=(
 	cargo
 	meson
 )
-_commit=d48971d5833c270d1dd77cf0d984e1ac8315e67d
-source=("${url}/-/archive/${_commit}/decoder-${_commit}.tar.gz")
-sha256sums=('ff0070923ac5a44532985c3dbe679a325625d2bae74f2cc1635baa876b51a594')
+source=("${url}/-/archive/${pkgver}/decoder-${pkgver}.tar.gz")
+sha256sums=('0c44273ba830799221df1e021f98ec6b1da55a878e150aec01d4d604ad74c2cc')
 
 build() {
-	arch-meson decoder-${_commit} build
+	arch-meson decoder-${pkgver} build
 	meson compile -C build
 }
 
