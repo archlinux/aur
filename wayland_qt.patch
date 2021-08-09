@@ -1,0 +1,37 @@
+From 0bfefcd197cbb05eb04933ea5ebad3e4456728be Mon Sep 17 00:00:00 2001
+From: tytan652 <tytan652@tytanium.xyz>
+Date: Mon, 9 Aug 2021 20:44:27 +0200
+Subject: [PATCH] UI: Force Wayland usage under Wayland session
+
+Under GNOME Wayland session, Qt will always launch OBS with
+X11 (xcb plarform). OBS need to force Qt by setting QT_QPA_PLATFORM
+environment variable to "wayland". The user still can set
+QT_QPA_PLATFORM or the -platform with an other option.
+
+Co-authored-by: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+---
+ UI/obs-app.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/UI/obs-app.cpp b/UI/obs-app.cpp
+index 1dabd5e4bf6..1e63c76e8dd 100644
+--- a/UI/obs-app.cpp
++++ b/UI/obs-app.cpp
+@@ -2009,6 +2009,17 @@ static int run_program(fstream &logFile, int argc, char *argv[])
+ 	InstallNSApplicationSubclass();
+ #endif
+ 
++#if defined(__linux__)
++	/* NOTE: Under GNOME Wayland session, Qt will always launch OBS with
++	 * X11 (xcb plarform). OBS need to force Qt by setting QT_QPA_PLATFORM
++	 * environment variable to "wayland". The user still can set
++	 * QT_QPA_PLATFORM or the -platform with an other option. */
++
++	const char *session_type = getenv("XDG_SESSION_TYPE");
++	if (session_type && strcmp(session_type, "wayland") == 0)
++		setenv("QT_QPA_PLATFORM", "wayland", false);
++#endif
++
+ 	OBSApp program(argc, argv, profilerNameStore.get());
+ 	try {
+ 		QAccessible::installFactory(accessibleFactory);

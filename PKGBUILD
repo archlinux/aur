@@ -5,7 +5,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -16,8 +16,12 @@ depends=("ffmpeg" "mbedtls" "jack" "gtk-update-icon-cache" "x264" "rnnoise"
          # "libxkbcommon-x11" provided by "qt5-base"
          # "jansson" "curl" provided by "ftl-sdk"
 
+         # Needed to use Qt on Wayland platform
+         "qt5-wayland"
+
          # Both needed to load linux-capture, so those two are no longer optional
          "libxcomposite" "pipewire"
+
          # Needed to use PipeWire capture
          "xdg-desktop-portal"
 
@@ -52,7 +56,7 @@ source=(
         "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
         "python_fix.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3335.patch
         "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
-        "update_desktop_entries.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
+        "wayland_qt.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4496.patch
         "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
         "obs-browser::git+https://github.com/obsproject/obs-browser.git"
         "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
@@ -61,7 +65,7 @@ sha256sums=(
         "SKIP"
         "430d7d0a7e1006c1f6309ad7d4912033dadd542b641f9d41259a5bad568379c9"
         "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
-        "9dedcb1996794754f5e36c0c69b36abc5a2c3e6514f4556dc5b867cec2ec9731"
+        "c96ab95f3638f76c223291575bb84d70147891e7a7259409fee4cb4acbe0c9ce"
         "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
         "SKIP"
         "SKIP"
@@ -92,15 +96,8 @@ prepare() {
   echo -e "\r\n# Bind Network Interface PR translation" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
   echo "Basic.Settings.Advanced.Network.BindToInterface=\"Bind to interface\"" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
 
-  ## xdg-data: Add a custom desktop entry for Gnome Shell, Phosh and maybe more (https://github.com/obsproject/obs-studio/pull/4496)
-  patch -Np1 < "$srcdir/update_desktop_entries.patch"
-  # Creating the GNOME entry based on the non-GNOME one
-  cp "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.desktop "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
-  sed -i 's/NotShowIn=GNOME/OnlyShowIn=GNOME/g' "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
-  sed -i 's/Actions=new-window;/Actions=new-window;new-wayland-window;/g' "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
-  echo -e "\n[Desktop Action new-wayland-window]" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
-  echo "Name=New Wayland Instance" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
-  echo "Exec=obs -platform wayland" >> "$srcdir/obs-studio"/UI/xdg-data/com.obsproject.Studio.Gnome.desktop
+  ## UI: Force Wayland usage under Wayland session (https://github.com/obsproject/obs-studio/pull/4496)
+  patch -Np1 < "$srcdir/wayland_qt.patch"
 
   ## linux-v4l2: Save device by path (https://github.com/obsproject/obs-studio/pull/3437)
   patch -Np1 < "$srcdir/v4l2_by-path.patch"
