@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=fossil-fossil
-pkgver=r15706.d1f6b9d
-pkgrel=2
+pkgver=r15951.1e919d6
+pkgrel=1
 pkgdesc="A simple, high-reliability, distributed software configuration management system"
 arch=('i686' 'x86_64')
 url="https://fossil-scm.org/home/doc/trunk/www/index.wiki"
 license=('BSD')
-depends=('glibc' 'openssl' 'sqlite' 'zlib')
+depends=('glibc' 'openssl' 'zlib')
 makedepends=('fossil' 'tcl')
 optdepends=('tcl')
 provides=('fossil')
@@ -38,7 +38,6 @@ build() {
     --prefix="/usr" \
     --with-tcl="/usr" \
     --with-tcl-private-stubs=1 \
-    --disable-internal-sqlite \
     --json
   make
 }

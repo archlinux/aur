@@ -1,7 +1,7 @@
 pkgbase = fossil-fossil
 	pkgdesc = A simple, high-reliability, distributed software configuration management system
-	pkgver = r15706.d1f6b9d
-	pkgrel = 2
+	pkgver = r15951.1e919d6
+	pkgrel = 1
 	url = https://fossil-scm.org/home/doc/trunk/www/index.wiki
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = fossil-fossil
 	makedepends = tcl
 	depends = glibc
 	depends = openssl
-	depends = sqlite
 	depends = zlib
 	optdepends = tcl
 	provides = fossil
