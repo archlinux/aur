@@ -32,8 +32,8 @@ package() {
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   install -Dm644 LICENSE.md \
       ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
-      
-  cp -r {bin,include,lib,share} ${pkgdir}/usr/
+
+  cp -r {bin,include,lib,share,libexec} ${pkgdir}/usr/
   cp -r etc ${pkgdir}
   rm -rf $pkgdir/usr/share/icons/hicolor/scalable
   for i in 16 32 128 256 512
