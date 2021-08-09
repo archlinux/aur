@@ -1,7 +1,7 @@
 # Maintainer: Steven Cook <scook@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ source=(
     "anope.tmpfiles"
 )
 sha512sums=(
-    '0ce2caa5ede2831215781a333d896f1169f90bbb515078912f32beaff1699b7957384974cca7c86f1d584d624cb43c76769299ce245ee1fb6836ce7f14ada3e0'
+    '2a0e4f14a275a6b986fd224449dddd66584de92509770311262076bd659ba0bbd6e2726fc7a22a6edef57ade5268756ac0c56e6f220fb953ed83e72017d1c67b'
     '81bc1bbb504fa021417312a72799b04682e54dd0dd1e070a035d62fa66ac7fa8ee3cb1c8ffe3746c4569e7716d591cfa14e9631571a74a4b8224fae18fd50bef'
     '6535e075c27a124e3aeb45f1496194a70130da88e2eae29a80ac3d33754ce4020b405438681690b3df032b386bccbb3f65983ad84f85fe76f3562e744ea55b52'
     '5c58a55c7e5974dec516f43eb960c9cdcadb68c92ceeaed7d96c82c180f8073d76d7491575331bca46f4714b19cdb188fe1bd056efb3391e3b3113c076407d21'
@@ -32,7 +32,7 @@ sha512sums=(
 
 prepare() {
     echo "If you want to enable any extra modules before building Anope,"
-    echo "please run the ./extras script in the Anope source directory."
+    echo "please run the 'extras' script in the ${srcdir} directory."
 }
 
 build() {
