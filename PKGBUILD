@@ -2,7 +2,7 @@
 _pkgname=sirit
 pkgname=$_pkgname-git
 pkgver=r185.8cfe8ba
-pkgrel=1
+pkgrel=2
 pkgdesc='A runtime SPIR-V assembler'
 arch=('x86_64')
 url="https://github.com/ReinUsesLisp/$_pkgname"
@@ -38,8 +38,13 @@ build() {
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSIRIT_TESTS="$CHECKFUNC" \
 		-Wno-dev
 	cmake --build build
+}
+
+check() {
+	cmake --build build --target test
 }
 
 package() {
