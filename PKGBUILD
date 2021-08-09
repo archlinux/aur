@@ -1,7 +1,7 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=gnunet-user
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking - single user config"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('bluez: for bluetooth support'
 options=('!makeflags')
 source=("https://ftpmirror.gnu.org/gnu/gnunet/gnunet-${pkgver}.tar.gz"
         "gnunet.service")
-sha256sums=('daef603bd32ed1d335ca2c5c6aa3a765c0df19ca7af5d739087e6d925eaf45ab'
+sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
             'cc5ac23e64aa7c42efb86dfc8dd644f05b9b5d838e881642e8562374e7915825')
 
 build() {
