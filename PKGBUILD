@@ -16,7 +16,7 @@ source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linu
         "dingtalk")
 md5sums=('24ea8f14c8d5552d0b4aa616a4985155'
          'e1b984a024700a9ef5f77a1018a41f8e'
-         '48bc3b680934d45d70f6256f731d29e6')
+         '0e255cd61852162548db96e46f1dda00')
 
 prepare(){
     cd ${srcdir}
