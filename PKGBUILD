@@ -3,8 +3,8 @@
 
 pkgname=python-marisa-trie
 _pyname=marisa-trie
-pkgver=0.7.5
-pkgrel=3
+pkgver=0.7.7
+pkgrel=1
 pkgdesc='Static memory-efficient & fast Trie-like structures for Python (based on marisa-trie C++ library)'
 arch=('any')
 url='https://github.com/pytries/marisa-trie'
@@ -12,10 +12,10 @@ license=('MIT')
 depends=('python')
 makedepends=('cython' 'python-pip' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/m/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('c73bc25d868e8c4ea7aa7f1e19892db07bba2463351269b05340ccfa06eb2baf')
+sha256sums=('bbeafb7d92839dc221365340e79d012cb50ee48a1f3f30dd916eb35a8b93db00')
 
 build() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
 
   ./update_cpp.sh
 
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
+  cd "${_pyname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
