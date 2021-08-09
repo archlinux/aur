@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Chat;Network;
 Comment=DingTalk
-Exec=/opt/apps/com.alibabainc.dingtalk/files/Elevator.sh %u
+Exec=dingtalk %u
 GenericName=dingtalk
 Icon=/opt/apps/com.alibabainc.dingtalk/files/logo.svg
 Keywords=dingtalk;
