@@ -1,7 +1,7 @@
 pkgbase = wacomareax11-git
 	pkgdesc = A TUI and GUI to set your tablet area etc and to generate config files
 	pkgver = v3.0.r0.47a0a49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yellowsink/WacomAreaX11
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = wacomareax11-git
 	makedepends = dotnet-sdk>=5.0.0
 	makedepends = dotnet-targeting-pack>=5.0.0
 	depends = xf86-input-wacom
+	depends = ttf-ms-win10-auto
 	provides = wacomareax11
 	conflicts = wacomareax11
 	options = !strip

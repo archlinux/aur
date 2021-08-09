@@ -3,7 +3,7 @@
 _pkgname="wacomareax11"
 pkgname="${_pkgname}-git"
 pkgver=v3.0.r0.47a0a49
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI and GUI to set your tablet area etc and to generate config files"
 arch=('x86_64')
 url="https://github.com/yellowsink/WacomAreaX11"
