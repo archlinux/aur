@@ -5,7 +5,6 @@ pkgname=('citra-canary-bin' 'citra-qt-canary-bin')
 pkgrel=1
 pkgver=1984_20210809_1bc889a
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
-conflicts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin' 'citra-bin' 'citra-qt' 'citra-canary-bin' 'citra-qt-canary-bin')
 license=('GPL2')
 arch=('x86_64')
 url="https://citra-emu.org"
@@ -21,7 +20,7 @@ sha256sums=('802e6ad1a1f6ab81b508e3608eae03ceaee9380fe3bb9004b3adbfc856358639'
 
 package_citra-canary-bin() {
     depends=('ffmpeg-compat-57' 'libsndio-61-compat' 'sdl2')
-    provides=('citra')
+    conflicts=('citra-git' 'citra-nightly-bin' 'citra-bin')
 
 
     cd "${srcdir}/citra-linux-${_ref}"
@@ -33,7 +32,7 @@ package_citra-qt-canary-bin() {
     depends=('ffmpeg-compat-57' 'qt5-multimedia' 'libsndio-61-compat' 'sdl2' 'desktop-file-utils')
     optdepends=('libxkbcommon-x11: for X11 support'
 	        'qt5-wayland: for Wayland support')
-    provides=('citra-qt')
+    conflicts=('citra-qt-git' 'citra-qt-nightly-bin' 'citra-qt')
 
 
     cd "${srcdir}/citra-linux-${_ref}"
