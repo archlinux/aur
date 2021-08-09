@@ -1,7 +1,7 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=idokremote-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Remote for Kodi"
 arch=("any")
@@ -25,7 +25,7 @@ cd "$srcdir/${pkgname%-git}"
 pkgver()
 {
   cd "${pkgname%-git}"
-  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
