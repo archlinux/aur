@@ -1,7 +1,7 @@
 pkgname=gamerworld-bin
 _pkgname=GamerWorld-bin
-pkgver=1.2.0
-pkgrel=8
+pkgver=1.3.0
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -15,9 +15,9 @@ conflicts=("gamerworld-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/gamerworld/binaries/1.2.0-8/-/raw/master/GamerWorld-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/gamerworld/binaries/1.2.0-8/-/raw/master/GamerWorld-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/gamerworld/binaries/1.2.0-8/-/raw/master/GamerWorld-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/gamerworld/binaries/"$pkgver"-"$pkgrel"/-/raw/main/GamerWorld-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/gamerworld/binaries/"$pkgver"-"$pkgrel"/-/raw/main/GamerWorld-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/gamerworld/binaries/"$pkgver"-"$pkgrel"/-/raw/main/GamerWorld-linux-arm64.tar.gz")
 
 
 package() {

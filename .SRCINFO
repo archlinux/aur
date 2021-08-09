@@ -1,7 +1,7 @@
 pkgbase = gamerworld-bin
 	pkgdesc = Play games all in one place
-	pkgver = 1.2.0
-	pkgrel = 8
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://gitlab.com/gamerworld/application
 	arch = x86_64
 	arch = arm7h
@@ -12,10 +12,9 @@ pkgbase = gamerworld-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = gamerworld-git
-	source_x86_64 = https://gitlab.com/gamerworld/binaries/1.2.0-8/-/raw/master/GamerWorld-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/gamerworld/binaries/1.3.0-1/-/raw/main/GamerWorld-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/gamerworld/binaries/1.2.0-8/-/raw/master/GamerWorld-linux-arm64.tar.gz
+	source_aarch64 = https://gitlab.com/gamerworld/binaries/1.3.0-1/-/raw/main/GamerWorld-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = gamerworld-bin
-
