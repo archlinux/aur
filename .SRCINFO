@@ -1,0 +1,17 @@
+pkgbase = steam-skins-meta
+	pkgdesc = Meta package of all steam skins in AUR.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/steam-skins-meta
+	arch = any
+	depends = air-for-steam
+	depends = compact-steam-skin
+	depends = invert-steam-skin
+	depends = metro-for-steam-skin
+	depends = pixelvision2-steam-skin
+	depends = pressure1-unofficial-steam-skin
+	depends = pressure2-unofficial-steam-skin
+	depends = threshold-miku-dark-steam-skin
+	depends = threshold-miku-light-steam-skin
+
+pkgname = steam-skins-meta
