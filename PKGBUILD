@@ -1,33 +1,27 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=snm
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
-pkgdesc="Smol Node Manager written in Rust"
+pkgdesc="Smol and simple node version manager"
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/numToStr/snm
 license=('GPL')
 provides=($pkgname)
 conflicts=($pkgname)
 
-depends=(
-  'pacman<6'
-  'sudo'
-  'git'
-)
-
 source_x86_64=(
-    "$url/releases/download/v$pkgver/$pkgname-x86_64-unknown-linux-gnu.tar.gz"
+    "$url/releases/download/v$pkgver/$pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz"
 )
 md5sums_x86_64=(SKIP)
 
 source_armv7=(
-    "$url/releases/download/v$pkgver/$pkgname-armv7-unknown-linux-gnueabihf.tar.gz"
+    "$url/releases/download/v$pkgver/$pkgname-v$pkgver-armv7-unknown-linux-gnueabihf.tar.gz"
 )
 md5sums_armv7=(SKIP)
 
 source_aarch64=(
-    "$url/releases/download/v$pkgver/$pkgname-aarch64-unknown-linux-gnu.tar.gz"
+    "$url/releases/download/v$pkgver/$pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz"
 )
 md5sums_aarch64=(SKIP)
 
@@ -35,13 +29,13 @@ package() {
     _output=""
     case $CARCH in
         x86_64 )
-            _output="$pkgname-x86_64-unknown-linux-gnu"
+            _output="$pkgname-v$pkgver-x86_64-unknown-linux-gnu"
             ;;
         armv7 )
-            _output="$pkgname-armv7-unknown-linux-gnueabihf"
+            _output="$pkgname-v$pkgver-armv7-unknown-linux-gnueabihf"
             ;;
         aarch64 )
-            _output="$pkgname-aarch64-unknown-linux-gnu"
+            _output="$pkgname-v$pkgver-aarch64-unknown-linux-gnu"
             ;;
     esac
 
