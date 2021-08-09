@@ -1,17 +1,18 @@
 pkgbase = perl-mail-mbox-messageparser
 	pkgdesc = A fast and simple mbox folder reader
-	pkgver = 1.5002
+	pkgver = 1.5111
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-Mbox-MessageParser
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	makedepends = perl-text-diff
+	checkdepends = perl-test-compile
+	checkdepends = perl-text-diff
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
 	depends = perl-filehandle-unget
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Mail-Mbox-MessageParser-1.5002.tar.gz
-	md5sums = 0df054faf3a43a537636ea7ca997694c
-	sha512sums = d36fec04875dd9c22db4a58e63f4af73325b98a7ff3fbfa0ba56f4d15fd8fb50f7fb00d93c05c15eb1b9bfd299835af07c7492589fa76290f1a127a455711f08
+	source = http://search.cpan.org/CPAN/authors/id/D/DC/DCOPPIT/Mail-Mbox-MessageParser-1.5111.tar.gz
+	sha512sums = c0b0c4066da3be2d8b669eed1a527309aefbbedf08531cd8eb524db37319532df75719784a557929adc409fc680a384d731f8b06768020a18855e34f392d6d0f
 
 pkgname = perl-mail-mbox-messageparser
-
