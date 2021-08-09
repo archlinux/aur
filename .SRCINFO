@@ -1,0 +1,17 @@
+pkgbase = vaults-git
+	pkgdesc = An application for creating encrypted vaults for the GNOME desktop
+	pkgver = 0.1.0.r14.ge56f714
+	pkgrel = 1
+	url = https://github.com/mpobaschnig/Vaults
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = gtk4
+	provides = vaults
+	conflicts = vaults
+	source = git+https://github.com/mpobaschnig/Vaults.git
+	md5sums = SKIP
+
+pkgname = vaults-git
