@@ -1,11 +1,13 @@
-pkgbase = media-server-connect-git
-	pkgdesc = App to connect to Emby server web interface
-	pkgver = 1.1
+pkgbase = media-server-connect
+	pkgdesc = App for connecting to Emby server web interface
+	pkgver = r115.f5482f3
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/media-server-connect
 	arch = any
 	license = GPL3
-	depends = git
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
 	depends = qt5-svg
 	depends = qt5-base
 	depends = qt5-webengine
@@ -17,4 +19,4 @@ pkgbase = media-server-connect-git
 	source = git+https://gitlab.com/The3DmaN/media-server-connect.git
 	md5sums = SKIP
 
-pkgname = media-server-connect-git
+pkgname = media-server-connect
