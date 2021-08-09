@@ -1,0 +1,19 @@
+pkgbase = nvs-git
+	pkgdesc = A cross-platform tool for switching between versions and forks of Node.js
+	pkgver = v1.6.0.r15.g024dea3
+	pkgrel = 1
+	url = https://github.com/jasongin/nvs
+	install = nvs.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = openssl
+	depends = zlib
+	source = https://nodejs.org/dist/v12.22.2/node-v12.22.2-linux-x64.tar.xz
+	source = nvs.sh
+	source = nvs::git+https://github.com/jasongin/nvs.git
+	sha256sums = c17f838cec2eb111048342543d23a74bcab7459a4374615ff4124940a717377a
+	sha256sums = 1603479565d3e85c3db26c6dcdecd73b31c702a606e5913368b8b1ae2979ddcb
+	sha256sums = SKIP
+
+pkgname = nvs-git
