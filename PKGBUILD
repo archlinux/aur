@@ -3,7 +3,7 @@
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 
 pkgname=linux-enable-ir-emitter
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
@@ -18,12 +18,13 @@ depends=(
     'python'
     'python-opencv'
     'python-yaml'
+    'nano'
 )
 optdepends=(
     'python-pyshark: full configuration setup support'
 )
 source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cfdc87dca1a57d9c2aea3b2aac5c1f0c9641f1d3b5dfeb97ff51207aefe80d39')
+sha256sums=('3f4e7f59daa9f8ad72f9141577a481e225137710daff5feeba153c21ef8f2b15')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/sources"
@@ -35,12 +36,12 @@ package() {
 
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    install -Dm 755 sources/enable-ir-emitter "${pkgdir}"/usr/lib/linux-enable-ir-emitter/enable-ir-emitter
-    install -Dm 644 sources/config.yaml "${pkgdir}"/usr/lib/linux-enable-ir-emitter/config.yaml
-    install -Dm 755 sources/*.py "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
+    install -Dm 755 sources/enable-ir-emitter -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
+    install -Dm 644 sources/config.yaml -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
+    install -Dm 755 sources/*.py -t "${pkgdir}"/usr/lib/linux-enable-ir-emitter/
 
-    install -Dm 644 sources/linux-enable-ir-emitter.service "${pkgdir}"/usr/lib/systemd/system/linux-enable-ir-emitter.service
+    install -Dm 644 sources/linux-enable-ir-emitter.service -t "${pkgdir}"/usr/lib/systemd/system/
 
     install -dm 755 ${pkgdir}/usr/bin/
-    ln -s /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py ${pkgdir}/usr/bin/linux-enable-ir-emitter
+    ln -fs /usr/lib/linux-enable-ir-emitter/linux-enable-ir-emitter.py ${pkgdir}/usr/bin/linux-enable-ir-emitter
 }
