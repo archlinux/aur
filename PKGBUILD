@@ -1,9 +1,9 @@
-# Maintainer: Princeton Ferro (prince781) <princetonferro[at]gmail[dot]com)
+# Maintainer: Princeton Ferro (prince781) <princetonferro[at]gmail[dot]com>
 
 pkgname=cambalache-git
 _pkgname=cambalache
-pkgver=0.6.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='A new RAD tool for Gtk 4 and 3 with a clear MVC design and data model first philosophy'
 url=https://gitlab.gnome.org/jpu/cambalache
 arch=(any)
@@ -15,10 +15,10 @@ provides=($_pkgname=$pkgver)
 source=('git+https://gitlab.gnome.org/jpu/cambalache.git')
 sha512sums=('SKIP')
 
-# pkgver() {
-#     cd cambalache
-#     git describe  --tags | sed 's/-/./g'
-# }
+pkgver() {
+    cd cambalache
+    git describe  --tags | sed 's/-/./g'
+}
 
 build() {
     arch-meson cambalache build
