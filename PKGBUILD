@@ -3,8 +3,8 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname='osu'
-pkgver='20210520.2'
-pkgrel=2
+pkgver='20210809.1'
+pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 arch=('i686' 'x86_64')
 url='https://osu.ppy.sh'
