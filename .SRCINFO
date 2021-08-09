@@ -1,6 +1,6 @@
 pkgbase = flowee
 	pkgdesc = Flowee provides the shortest path to Bitcoin Cash
-	pkgver = 2021.04.0
+	pkgver = 2021.05.0
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install
@@ -18,12 +18,11 @@ pkgbase = flowee
 	provides = flowee-libs
 	backup = etc/flowee/flowee.conf
 	backup = etc/flowee/rest-service.conf
-	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2021.04.0/thehub-2021.04.0.tar.gz
+	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2021.05.0/thehub-2021.05.0.tar.gz
 	source = flowee.logrotate
 	source = flowee.conf
-	sha256sums = 96595030e655f3a1103cdf4e63818497e4fd033e303124a9e0fec06298351c06
+	sha256sums = ff9398c3c5a2fd2125245eecc7208429d6dff9e52d44b451e06d23d00bd2c3cd
 	sha256sums = 0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e
 	sha256sums = 59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89
 
 pkgname = flowee
-
