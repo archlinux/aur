@@ -27,6 +27,7 @@ pkgbase = linux-ck-uksm
 	source = 0008-UKSM.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/uksm-patches/0001-UKSM-for-5.12.patch
 	source = 0009-bbr2.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/bbr2-patches-v3/0001-bbr2-patches.patch
 	source = 0010-lru.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/lru-patches-v4/0001-lru-patches.patch
+	source = 0011-block.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.12/block-patches-v7/0001-block-patches.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	b2sums = 88e4c32cf196662a6a24e72b978019d6f8881a8523918029f4229a995c5fd957a5e01f42de9f53c7980df7e3de5ea6b069cc2c5f93852e615fe8fe78a1b131c6
@@ -44,6 +45,7 @@ pkgbase = linux-ck-uksm
 	b2sums = 14f45171afc3b15488b40a05e58b352c5057da3a5782e13527392f7750d8e45a8db54f9b50b218fedb8bf679de3b4e5d78e230a44f7b1aa482f7b3aa831bd641
 	b2sums = b6ab69f6b24293504f32a2fb10622c0e77ece7921c637456fba5e61e4d200063832be37a8119fae251d490cc4b80cfea3e45547e17de3cb363bcee164dffd581
 	b2sums = 195d90d613a64d7525b4fe228b6932fc1b821395559d6851b3cb5369431ac2b6e85119a0160040295697f69288e64335620bd94857c32b9302f39638a73833f9
+	b2sums = f6bad0e2ceac2849ff6d3ef330165bc06a6061bc7c653c084674af40598bf4aab826dd7039b05eb07fede3a3e45b9c3ba11c684930c383cf3eef18c98091e3bc
 
 pkgname = linux-ck-uksm
 	pkgdesc = The Linux-ck-uksm kernel and modules with the ck1 and uksm patchesset featuring MuQSS CPU scheduler
