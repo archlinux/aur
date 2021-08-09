@@ -3,7 +3,7 @@ post_install()
 	systemd-sysusers
 
 	mkdir -p /var/lib/octoprint
-	chown -R octoprint:octoprint /var/lib/octoprint /usr/lib/octoprint/lib/python2.7/site-packages
+	chown -R octoprint:octoprint /var/lib/octoprint /usr/lib/octoprint/lib
 
 	echo "To start octoprint, run: systemctl start octoprint"
 	echo "To enable octoprint at boot, run: systemctl enable octoprint"

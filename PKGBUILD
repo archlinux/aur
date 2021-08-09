@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.7.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
@@ -31,6 +31,7 @@ depends=(
 		python-sarge
 		python-cachelib
 		python-pylru
+		python-immutabledict
 )
 makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
@@ -38,11 +39,10 @@ optdepends=('ffmpeg: timelapse support'
 			'mjpg-streamer: stream images from webcam'
 			'motion: motion detector which grabs images from video4linux devices and/or from webcams'
 			)
-provides=(octoprint)
 conflicts=('octoprint-venv')
 install=octoprint.install
 backup=(etc/conf.d/octoprint)
-source=("https://github.com/OctoPrint/OctoPrint/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OctoPrint/OctoPrint/archive/refs/tags/${pkgver}.tar.gz"
 		octoprint.sysusers
 		octoprint.service
 		octoprint-serve
@@ -70,6 +70,7 @@ prepare()
 }
 
 package() {
+	# TODO remove venv
 	python -m venv --system-site-packages --symlinks $pkgdir/usr/lib/$pkgname
 	source $pkgdir/usr/lib/$pkgname/bin/activate
 
