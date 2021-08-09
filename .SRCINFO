@@ -15,10 +15,10 @@ pkgbase = afni
 	depends = libjpeg-turbo
 	depends = libxmu
 	depends = libxft
+	depends = freeglut
 	source = afni-21.1.08.tar.gz::https://github.com/afni/afni/archive/AFNI_21.1.08.tar.gz
 	source = Makefile.patch
 	md5sums = 055dfa1d026f2fb1d297c73c4275fddc
 	md5sums = 2cc1916ecd1e775f52d189f1dd5b0ed9
 
 pkgname = afni
-
