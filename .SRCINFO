@@ -1,16 +1,17 @@
 pkgbase = ruby-exifr
-	pkgdesc = EXIF Reader is a module to read EXIF from JPEG and TIFF images.
-	pkgver = 1.3.5
+	pkgdesc = module to read EXIF from JPEG and TIFF images
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://github.com/remvee/exifr
 	arch = any
 	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = exifr-1.3.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/exifr-1.3.5.gem
-	sha512sums = 63ace54eeb4b01f15b7c0c4a406e2de9e44c81c6fe7b83e5c4f24ac77bbf6108fa5b2df6ce3202a31dac50b86eb25265f355de7f941ff43874c2399f917ac9f5
+	source = https://github.com/remvee/exifr/archive/release-1.3.9/exifr-1.3.9.tar.gz
+	sha256sums = bf2a9f5235dbe60ad700ebd9cab08ed40d4646f2d4bf14bbb83cc95cbfc1dcec
 
 pkgname = ruby-exifr
-
