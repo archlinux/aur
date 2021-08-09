@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=authselect
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Authselect is a tool to select system authentication and identity sources from a list of supported profiles."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('authconfig')
 conflicts=('authconfig')
 makedepends=()
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('dcb0e6541e7b4f263360086eeffbe439c82bef2befa0c649ed5ace9d4df5ff33')
+sha256sums=('92c576d0bf03d97025a451dfc65e203c40537220f89e6569e8de68325f7c6f6e')
 
 _srcdir="${pkgname}-${pkgver}"
 
