@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=8
+_minor=9
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -108,9 +108,9 @@ validpgpkeys=(
 sha256sums=(
   '3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'  # linux-5.1x.tar.xz
   '168b26fe2060901e6f46cc744d1e95bee3a8ea414b58372b1c134d71ac05c876'  # linux-5.1x.tar.sign
-  'dfbaaf312cd69021fbe8ab597460aa961b8d2944efca35caa26b36fce43e616d'  # patch-5.1x.x.xz
+  '358da3bbe06ad323c4d0fec4fc8d755a07733ea69363101913fdd6056878113d'  # patch-5.1x.x.xz
   'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d'  # more-uarches-x.tar.gz
-  'fcfb29005032125010bcf18ce2f177af7c84c74cff729de8f0cc3e4a552a59a4'  # config
+  '6b3672ffafb1b29bde3eb76dc27d1a41cc2f8349068a6532717c3d4764a2d238'  # config
 )
 
 export KBUILD_BUILD_HOST=archlinux
