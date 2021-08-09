@@ -11,7 +11,7 @@ license=('BSD')
 depends=('boost' 'minizip')
 makedepends=('cmake' 'git')
 conflicts=('assimp')
-provides=('assimp='$pkgver)
+provides=("assimp=${pkgver%.r*}")
 options=(makeflags !emptydirs)
 _gitname="assimp"
 source=("git://github.com/assimp/assimp.git")

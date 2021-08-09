@@ -10,6 +10,8 @@ pkgbase = assimp-git
 	makedepends = git
 	depends = boost
 	depends = minizip
+	provides = assimp=5.0.1
+	conflicts = assimp
 	options = makeflags
 	options = !emptydirs
 	source = git://github.com/assimp/assimp.git
