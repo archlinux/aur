@@ -27,12 +27,10 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -S "$_gitname" -B build -DCMAKE_INSTALL_PREFIX=/usr
+  make -C build
 }
 
 package() {
-  cd $_gitname
-  make DESTDIR=$pkgdir install
+  make -C build DESTDIR="$pkgdir" install
 }
