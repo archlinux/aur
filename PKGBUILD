@@ -3,13 +3,13 @@
 
 pkgname=font-downloader-git
 _pkgname=font-downloader
-pkgver=r301.6c61340
+pkgver=r302.333b715
 pkgrel=1
 pkgdesc="A simple GTK font downloader"
 arch=('any')
 url="https://github.com/GustavoPeredo/font-downloader"
 license=('GPL3')
-depends=('gtk3' 'libhandy' 'python3' 'python-gobject')
+depends=('gtk3' 'libhandy' 'python' 'python-gobject')
 makedepends=('git' 'meson' 'ninja')
 source=(git+$url.git)
 b2sums=('SKIP')
@@ -22,6 +22,10 @@ pkgver() {
 build() {
   arch-meson $_pkgname build
   meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
