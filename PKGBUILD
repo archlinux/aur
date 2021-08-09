@@ -1,6 +1,6 @@
 # Maintainer: Mike Cuche <cuche@gmx.com>
 pkgname=dsda-doom
-pkgver=0.19.7
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Fork of PrBoom+ with extra tooling for demo recording and playback, with a focus on speedrunning"
 arch=('x86_64')
@@ -11,12 +11,12 @@ makedepends=('cmake' 'imagemagick')
 conflicts=('prboom-plus')
 source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz"
 'dsda-doom.desktop')
-sha256sums=('0b9c5126fbd4b29cd95384528a9fd291e698abef60b7b52fe7580dfbbcaa4ff4'
+sha256sums=('d5653c57734044d97850f886d24e31ede6a8d83ceb5f15046f6b497e84815f73'
 '31944f60e6cf45db60d63dd6538e0d21bade193646f28b000fa8c2f1d9672dbf')
 
 build() {
 	cd "${srcdir}/dsda-doom-${pkgver}/prboom2"  
-	cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+	cmake . -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
 	make
 }
