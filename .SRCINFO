@@ -1,6 +1,6 @@
 pkgbase = assimp-git
 	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner
-	pkgver = 3.0.1.1629.b65b380
+	pkgver = 5.0.1.r10393.g76e3092b2
 	pkgrel = 1
 	url = http://assimp.sourceforge.net/
 	arch = i686

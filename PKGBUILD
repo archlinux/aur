@@ -2,7 +2,7 @@
 #Contributor: socke <github@socker.lepus.uberspace.de>
 
 pkgname=assimp-git
-pkgver=3.1.1.2748.85e2f47
+pkgver=5.0.1.r10393.g76e3092b2
 pkgrel=1
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
 arch=(i686 x86_64)
@@ -20,15 +20,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  
-  major=$(grep "set (ASSIMP_VERSION_MAJOR" CMakeLists.txt | sed 's/set (ASSIMP_VERSION_MAJOR //' | sed 's/)//')
-  minor=$(grep "set (ASSIMP_VERSION_MINOR" CMakeLists.txt | sed 's/set (ASSIMP_VERSION_MINOR //' | sed 's/)//')
-  patch=$(grep "set (ASSIMP_VERSION_PATCH" CMakeLists.txt | sed 's/set (ASSIMP_VERSION_PATCH //' | sed 's/) # subversion revision?//')
-  
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  
-  echo $major.$minor.$patch.$revision.$hash
+  printf "%s.r%s.g%s" \
+  "$(grep -oP '^PROJECT\( Assimp VERSION \K[0-9.]*' CMakeLists.txt)" \
+  "$(git rev-list --count HEAD)" \
+  "$(git rev-parse --short HEAD)"
 }
 
 build() {
