@@ -1,12 +1,13 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=ha-connect-git
-pkgver=1.1
+pkgver=r36.caf705e
 pkgrel=1
 pkgdesc="App to connect to Home Assistant server web interface"
 arch=("any")
 url="https://gitlab.com/The3DmaN/${pkgname%-git}"
 license=("GPL3")
+makedepends=("git")
 depends=("git" "qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols2")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -25,7 +26,7 @@ cd "$srcdir/${pkgname%-git}"
 pkgver()
 {
   cd "${pkgname%-git}"
-  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
@@ -34,6 +35,6 @@ package()
   install -Dm644 HA-Connect.desktop "$pkgdir"/usr/share/applications/HA-Connect.desktop
   install -Dm644 images/ha-connect.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/ha-connect.svg
   
-  install -Dm755 ha-connect "$pkgdir"/usr/bin/ha-connect-git
+  install -Dm755 ha-connect "$pkgdir"/usr/bin/ha-connect
 
 }
