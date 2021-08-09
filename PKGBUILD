@@ -18,7 +18,7 @@ optdepends=(
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'gcc' 'make' 'python2-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
+makedepends=('cmake' 'gcc' 'make' 'python-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
 conflicts=('firestorm-bin' 'firestorm-nightly' 'firestorm-beta-bin')
 provides=('firestorm')
 
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
 	export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
 	cd "$pkgname"
-	virtualenv2 ".venv"
+	virtualenv ".venv" -p python2
 	source .venv/bin/activate
 	pip install git+https://vcs.firestormviewer.org/autobuild-1.1
 
