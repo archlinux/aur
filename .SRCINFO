@@ -1,35 +1,36 @@
 pkgbase = alerta
 	pkgdesc = A tool used to consolidate and de-duplicate alerts from multiple sources
-	pkgver = 8.3.3
+	pkgver = 8.6.0
 	pkgrel = 1
 	url = https://github.com/alerta/alerta
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.6
+	depends = python-blinker
 	depends = python-bcrypt
 	depends = python-cryptography
-	depends = python-flask
-	depends = python-flask-cors
-	depends = python-flask-compress
-	depends = python-pyjwt
-	depends = python-pyparsing
 	depends = python-dateutil
-	depends = python-pytz
+	depends = python-flask>=2.0.1
+	depends = python-flask-cors>=3.0.2
+	depends = python-flask-compress>=1.4.0
+	depends = python-mohawk
 	depends = python-pyaml
+	depends = python-pyjwt
+	depends = python-pymongo>=3.6
+	depends = python-pyparsing
+	depends = python-pytz
 	depends = python-requests
-	depends = python-sentry_sdk
-	depends = python-blinker
-	depends = python-pymongo
+	depends = python-requests-hawk
+	depends = python-sentry_sdk>=0.10.2
 	optdepends = python-psycopg2
 	optdepends = postgresql
 	optdepends = mongodb
-	source = https://github.com/alerta/alerta/archive/v8.3.3.tar.gz
+	source = alerta-8.6.0.tar.gz::https://github.com/alerta/alerta/archive/v8.6.0.tar.gz
 	source = alertad.service
 	source = alerta.sysusers
-	sha256sums = a964d63899080d3f4186e2de1a1415895e557239d18b1cce30da8b2a9568f600
+	sha256sums = 5f0795cfc81c412b057018a77d7ce3d6e3a19e1e8cd1f7b8b1b6bcb01b43d37e
 	sha256sums = 4449acb346807229e4cbfeed68d9ba6006a165e65dec09487fb6e627088016c2
 	sha256sums = f0a2f76266ba07275ab2baeab1497dfb2946305e85ae68e3b34dd14e2ac47423
 
 pkgname = alerta
-
