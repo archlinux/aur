@@ -1,0 +1,19 @@
+pkgbase = evdi-amd-vmap-texture
+	pkgdesc = A Linux® kernel module that enables management of multiple screens. Patched for the amd_vmap_texture support.
+	pkgver = 1.9.1.r6.g5490f94
+	pkgrel = 1
+	url = https://github.com/pioto1225/evdi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libdrm
+	makedepends = linux-headers
+	depends = dkms
+	provides = evdi=1.9.1
+	conflicts = evdi
+	source = git+https://github.com/pioto1225/evdi#branch=amd_vmap_texture
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = evdi-amd-vmap-texture
