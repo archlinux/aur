@@ -1,0 +1,14 @@
+pkgbase = nodejs-relaypro-cli
+	pkgdesc = Relay developer CLI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/relaypro/relay-cli
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = cli-0.1.1.tgz
+	source = https://registry.npmjs.org/@relaypro/cli/-/cli-0.1.1.tgz
+	sha1sums = ae7c7d6317f448f705512579bf5b3fa2015b8f58
+
+pkgname = nodejs-relaypro-cli
