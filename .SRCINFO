@@ -1,6 +1,6 @@
 pkgbase = media-server-connect-git
 	pkgdesc = App for connecting to Emby server web interface
-	pkgver = r116.c0fec68
+	pkgver = r120.08083f0
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/media-server-connect
 	arch = any
