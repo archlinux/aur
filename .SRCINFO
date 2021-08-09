@@ -6,12 +6,13 @@ pkgbase = assimp-git
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
 	makedepends = git
 	depends = boost
+	depends = minizip
 	options = makeflags
 	options = !emptydirs
 	source = git://github.com/assimp/assimp.git
 	md5sums = SKIP
 
 pkgname = assimp-git
-

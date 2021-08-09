@@ -8,8 +8,8 @@ pkgdesc="Portable Open Source library to import various well-known 3D model form
 arch=(i686 x86_64)
 url="http://assimp.sourceforge.net/"
 license=('BSD')
-depends=('boost')
-makedepends=('git')
+depends=('boost' 'minizip')
+makedepends=('cmake' 'git')
 conflicts=('assimp')
 provides=('assimp='$pkgver)
 options=(makeflags !emptydirs)
