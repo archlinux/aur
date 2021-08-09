@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=docker-rootless-extras
-pkgver=20.10.6
+pkgver=20.10.8
 pkgrel=1
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
@@ -16,11 +16,11 @@ source=(
         "docker.service"
         "docker.socket"
         "99-docker-rootless.conf")
-
-sha256sums=('dc595e950c27b07320a46db60d47fc69c8acce1ee77ac43b773e7a08eaadffdb'
+sha256sums=('91cc2aa9fb386fb4f8d9e73218c0623ddb4dd4fdee9946b81f8392651252d1dd'
             '7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
+
 
 package() {
   install -Dm755 "$srcdir/dockerd-rootless.sh" "$pkgdir/usr/bin/dockerd-rootless.sh"
