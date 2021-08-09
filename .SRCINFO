@@ -1,0 +1,18 @@
+pkgbase = lettercase-git
+	pkgdesc = Your new favorite font manager
+	pkgver = r61.e506357
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/lettercase
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk4
+	depends = libadwaita
+	source = git+https://gitlab.gnome.org/World/design/lettercase.git
+	md5sums = SKIP
+
+pkgname = lettercase-git
