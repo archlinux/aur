@@ -1,6 +1,6 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
-_pkgver=5.6.1-nightly.13
+_pkgver=5.6.1-nightly.19
 pkgname=ferdi-nightly-bin
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -15,9 +15,9 @@ depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser'
 provides=('ferdi')
 conflicts=('ferdi' 'ferdi-bin')
 source=("${pkgname}-${_pkgver}.rpm::https://github.com/getferdi/nightlies/releases/download/v${_pkgver}/ferdi-${_pkgver}.x86_64.rpm")
-cksums=('95727164')
-sha256sums=('4fef8a020cec37442779269b619d26e60109a8bd247c5dfdc68708d71e098306')
-b2sums=('26e99ba938e0c269c2d5399837258f303d80421f914f1ff8b054672ad8b430e1bacccbc6167f7a24719f73fd94d8f32910044c88a5e9cdf71edfe512298f7b00')
+cksums=('3900184303')
+sha256sums=('d84b66530bfc9c634d717d8e6094bc2e069292abd48bce5f55adfb2145bbce03')
+b2sums=('c4ec2d3471e5ecb4f79cba7f0c71e4c360de64460012365b0bb267c18e93868ab691b4ed9a2664b2016f6e56f8d44e704847e7bed5a1e9f029e021c6cb00aea8')
 
 prepare() {
   sed -E -i -e 's|Exec=/opt/Ferdi/ferdi|Exec=/usr/bin/ferdi|' usr/share/applications/ferdi.desktop
