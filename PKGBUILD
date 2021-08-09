@@ -9,8 +9,8 @@ _pkgver=0.9.0-beta3
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=gmdb2-beta
 pkgver=${_pkgver//-/_}
-pkgrel=1
-provides=("${_pkgname}")
+pkgrel=2
+provides=("gmdb2=$pkgver")
 pkgdesc="Graphical viewer for Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/mdbtools/gmdb2"
