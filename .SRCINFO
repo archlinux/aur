@@ -1,0 +1,20 @@
+pkgbase = czkawka
+	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/qarmin/czkawka
+	arch = x86_64
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	makedepends = gtk3
+	source = git+https://github.com/qarmin/czkawka.git#commit=243505b692a0d36233645de4a5207ec477a4761c
+	sha512sums = SKIP
+
+pkgname = czkawka-cli
+	license = MIT
+	depends = bzip2
+
+pkgname = czkawka-gui
+	license = MIT
+	depends = gtk3
