@@ -1,20 +1,22 @@
+# Maintainer:  dummyx <dummyxa at gmail dot com>
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r20
+pkgver=r23
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
 url='http://forum.doom9.org/showthread.php?t=166504'
 license=('custom:WTFPL')
 depends=('vapoursynth')
+conflicts=('vapoursynth-plugin-fmtconv-git')
+#Dirty workaround for not breaking the dependencies.
+provides=('vapoursynth-plugin-fmtconv-git')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha1sums=('83014b6b21afc8198221de9c0461a9dc0e5e1ebb')
+sha256sums=('d2decc302094145490877a309680827cb369bd43277f49a47a30d8493d3830bc')
 
 prepare() {
-  rm -fr src/VapourSynth.h
-
   cd build/unix
   autoreconf --verbose --install --force
 }
