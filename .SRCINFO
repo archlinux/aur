@@ -1,0 +1,19 @@
+pkgbase = ruby-guard-rspec
+	pkgdesc = Guard::RSpec automatically run your specs
+	pkgver = 4.7.3
+	pkgrel = 1
+	url = https://github.com/guard/guard-rspec
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-guard
+	depends = ruby-rspec
+	depends = ruby-guard-compat
+	options = !emptydirs
+	source = git+https://github.com/guard/guard-rspec.git?tag=v4.7.3
+	sha256sums = SKIP
+
+pkgname = ruby-guard-rspec
