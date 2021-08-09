@@ -1,0 +1,13 @@
+pkgbase = mfem
+	pkgdesc = Lightweight, general, scalable C++ library for finite element methods
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://mfem.org
+	changelog = CHANGELOG
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	source = mfem-4.3.tar.gz::https://github.com/mfem/mfem/archive/v4.3.tar.gz
+	sha256sums = b5f2b33997caeed653c0fadd353cdce596754f2883b5860ef7e5a370e33eeafd
+
+pkgname = mfem
