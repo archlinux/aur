@@ -3,7 +3,7 @@
 # Contributor: Viacheslav Chimishuk <voice@root.ua>
 
 pkgname=python-pysvn
-pkgver=1.9.13
+pkgver=1.9.15
 _pycxxver=7.1.5
 pkgrel=1
 pkgdesc="The Pythonic interface to Subversion"
@@ -12,14 +12,11 @@ depends=('python>=3.1.3' 'subversion' 'apr')
 conflicts=('pysvn<=1.7.4-3')
 arch=('i686' 'x86_64')
 license=('Apache')
-source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz"
-        "fake_svnversion.sh")
-sha256sums=('3ce1fad1dfb770d535a8364731a399d52a5a5d8d7fc76b1a7ed01ecdad3b9ca2'
-            '169b1579568954cf3b394d3fe8e6b7515b7c51e55f7584a8151a8efc614124ec')
+source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz")
+sha256sums=('4a9ad698ab123c5946f4ea778e6cdecabc8985997bf77b8e128b809aa9bfba61')
 
 build() {
   cd "$srcdir/pysvn-$pkgver/Source"
-  export WC_SVNVERSION="$srcdir/fake_svnversion.sh"
   python3 setup.py configure --norpath --verbose --pycxx-dir="../Import/pycxx-${_pycxxver}"
   make
 }
