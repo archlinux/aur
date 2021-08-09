@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-hash-fieldhash'
-pkgver='0.14'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc="Lightweight field hash for inside-out objects"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = perl-hash-fieldhash
 	pkgdesc = Lightweight field hash for inside-out objects
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Hash-FieldHash
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = perl-hash-fieldhash
 	sha512sums = 25c13a103ee8e643ae08ad47b5ba2f9f35a43c2f1ac3812b52c8893f15cc52aabf6f923282491839feb306294dae6878e3a102e21e78d51eebc9e954b4792d99
 
 pkgname = perl-hash-fieldhash
-
