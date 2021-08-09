@@ -2,9 +2,9 @@
 
 pkgname=stumpwm-ql
 _stumpver=20.11
-_qlver=2021_06_30
+_qlver=2021_08_07
 pkgver="${_stumpver}_${_qlver}"
-pkgrel=4
+pkgrel=1
 pkgdesc='Stumpwm tiling window manager built with dependencies from quicklisp'
 arch=('x86_64')
 url='https://stumpwm.github.io'
