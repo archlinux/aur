@@ -1,6 +1,6 @@
 pkgbase = flowee-pay
 	pkgdesc = Flowee Payment solution
-	pkgver = 2021.04.1
+	pkgver = 2021.05.0
 	pkgrel = 1
 	url = https://flowee.org/
 	arch = x86_64
@@ -8,11 +8,12 @@ pkgbase = flowee-pay
 	license = GPL3
 	makedepends = boost
 	makedepends = cmake
-	makedepends = flowee>=2021.04.0
+	makedepends = flowee>=2021.05.0
 	depends = qt5-base
 	provides = flowee-pay
-	source = https://gitlab.com/FloweeTheHub/pay/-/archive/2021.04.1/pay-2021.04.1.tar.gz
-	sha256sums = fbfdb2fcb1fd2f92384e7901293d71c98fcb063ef963a033e410483c1d1da640
+	source = https://gitlab.com/FloweeTheHub/pay/-/archive/2021.05.0/pay-2021.05.0.tar.gz
+	source = https://flowee.org/products/pay/blockheaders
+	sha256sums = 592eeb0f07ae639f48d01f562906d7dcba6a0df360911012fd46ef20955c0bfe
+	sha256sums = 8c2dfde998b4472aea25daa1e4bfe7bcca0b765145ee740bd8cfb0152400abce
 
 pkgname = flowee-pay
-
