@@ -3,14 +3,15 @@
 _pkgname='youki'
 pkgname="${_pkgname}-git"
 pkgver=r507.5bc0778
-pkgrel=1
+pkgrel=2
 pkgdesc="A container runtime written in rust"
 arch=('x86_64')
 url='https://github.com/containers/youki'
 license=('MIT')
 sha256sums=('SKIP')
 source=("git+${url}")
-provides=('youki')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 makedepends=('git' 'dbus-glib' 'pkg-config' 'systemd')
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = youki-git
 	pkgdesc = A container runtime written in rust
 	pkgver = r507.5bc0778
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/containers/youki
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = youki-git
 	makedepends = pkg-config
 	makedepends = systemd
 	provides = youki
+	conflicts = youki
 	source = git+https://github.com/containers/youki
 	sha256sums = SKIP
 
