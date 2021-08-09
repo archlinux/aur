@@ -1,5 +1,6 @@
 # Maintainer: Gingka Akiyama <gingkathfox at gmail dot com>
 pkgname=spwn-lang
+_binname="spwn"
 pkgver=0.0.5
 pkgrel=1
 pkgdesc="A language for Geometry Dash triggers. An easy way to create levels using code."
@@ -34,5 +35,5 @@ build() {
 }
 
 package() {
-    install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/SPWN-language/spwn-lang/target/release/$pkgname"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/SPWN-language/spwn-lang/target/release/$_binname"
 }
