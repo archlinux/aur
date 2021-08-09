@@ -38,7 +38,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '3a6a8b9477658e6dccdeb2ef5f0eef1c'
+         '46d921dba031a9f397955a787c71911e'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
          'f9b6f367eef351eaa89b23a9b1ffc5a2'
@@ -50,7 +50,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
-         'a459d4bd827bc7048a45296251b20ae5'
+         '7149bc2e1daaeffe151dc06d50a1c2f7'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'

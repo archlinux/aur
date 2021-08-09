@@ -101,6 +101,18 @@
 	cpu-supply = <&reg_dcdca>;
 };
 
+&cpu1 {
+	cpu-supply = <&reg_dcdca>;
+};
+
+&cpu2 {
+	cpu-supply = <&reg_dcdca>;
+};
+
+&cpu3 {
+	cpu-supply = <&reg_dcdca>;
+};
+
 &de {
 	status = "okay";
 };
@@ -270,7 +282,7 @@
 				regulator-always-on;
 				regulator-min-microvolt = <3300000>;
 				regulator-max-microvolt = <3300000>;
-				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart";
+				regulator-name = "vcc33-io-pd-emmc-sd-usb-uart-2";
 			};
 
 			cldo2 {
