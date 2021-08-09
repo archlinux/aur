@@ -6,7 +6,7 @@
 pkgbase=termite
 pkgname=('termite' 'termite-terminfo')
 pkgver=15
-pkgrel=6
+pkgrel=7
 _vtever='0.64.2a'
 _commit='409b8449ab51fccf51057621168c9c15c54d4807'
 pkgdesc='A simple VTE-based terminal'
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  arch-meson vte-ng build --prefix="${srcdir}"/vte-static --default-library=static -D docs=true -D b_lto=false -D static=true -D gir=false -D vapi=false -D docs=false
+  arch-meson vte-ng build --prefix="${srcdir}"/vte-static --default-library=static -D b_lto=false -D static=true -D gir=false -D vapi=false -D docs=false
   meson compile -C build
   meson install -C build
 
