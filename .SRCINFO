@@ -11,6 +11,6 @@ pkgbase = com.alibabainc.dingtalk
 	source = dingtalk
 	md5sums = 24ea8f14c8d5552d0b4aa616a4985155
 	md5sums = e1b984a024700a9ef5f77a1018a41f8e
-	md5sums = fe38820e0300cf3947a298147467357e
+	md5sums = 48bc3b680934d45d70f6256f731d29e6
 
 pkgname = com.alibabainc.dingtalk
