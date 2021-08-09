@@ -1,0 +1,18 @@
+pkgbase = python-gooey
+	pkgdesc = Turn (almost) any Python command line program into a full GUI application with one line
+	pkgver = 1.0.8.1
+	pkgrel = 1
+	url = https://github.com/chriskiehl/Gooey
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wxpython
+	depends = python-pillow
+	depends = python-psutil
+	depends = python-colored
+	depends = python-pygtrie
+	source = python-gooey-1.0.8.1.tar.gz::https://github.com/chriskiehl/Gooey/archive/refs/tags/1.0.8.1.tar.gz
+	sha256sums = e62b2c6c4fe1049d824331399554ad95a65339c06de5b5bba1b647e5052ee0f8
+
+pkgname = python-gooey
