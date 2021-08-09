@@ -1,14 +1,14 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname="datree"
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Prevent Kubernetes misconfigurations from reaching production (again triumph)! Datree is a CLI tool to ensure K8s manifests and Helm charts follow best practices as well as your organization’s policies."
 arch=('x86_64')
 url="https://github.com/datreeio/datree"
 license=('Apache-2.0')
 source=("https://github.com/datreeio/${pkgname}/releases/download/${pkgver}/${pkgname}-cli_${pkgver}_Linux_x86_64.zip")
-sha256sums=('2674117b87df02f0a29ea52b93f89e6f3f2d19e7c858f9c37e1e8ee973d7af3b')
+sha256sums=('54515c9e73bfb43821cf4106c8a1a7025ea3af113fc394f82de41fda42dfd5d1')
 
 package() {
   mkdir -p "${pkgdir}/usr/local/bin"
