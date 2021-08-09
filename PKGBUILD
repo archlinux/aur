@@ -1,7 +1,7 @@
 # Maintainer: Gyara <laxect39@gmail.com>
 
 pkgname=helio-workstation-bin
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Helio is free and cross-platform lightweight music creation playground."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://helio.fm/"
 license=('GPL3')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://ci.helio.fm/helio-${pkgver}-x64.deb")
-sha512sums_x86_64=('390d78fbefb711081fa46109d3c62be4fea77f36aa515ec3c1a4c365faa91aaf11271ef5ec8fcdad63df2ddc8146d5bd14fab18304d6eb1786f328df0942b401')
+sha512sums_x86_64=('c5429cb519e8a4971ed7550fcd8b998d08353e1c4038a57c694d9dfe2de534fe6a28de3c155ac11541a8914bf0315b7bfa4274e2f69e9ebc2caf7b08595047d1')
 
 package(){
 	# Extract package data
