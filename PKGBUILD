@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.41.1
+pkgver=2.41.3
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=40e47a648fa0605b443f11f0a5ea43fcb4de1c38") # tag: 2.41.1
+source=("git+$url#commit=9ca00fada9c740e93bb9ca21fbbad90d94e365d3") # tag: 2.41.3
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
@@ -40,7 +40,8 @@ b2sums=(SKIP)
 
 build() {
   cd $pkgname
-  go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\""
+  go build -v -mod=vendor -trimpath -buildmode=pie \
+    -ldflags="-s -w -extldflags \"${LDFLAGS}\""
   make gui
 }
 
