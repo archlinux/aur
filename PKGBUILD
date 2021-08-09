@@ -1,7 +1,7 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
-pkgname=media-server-connect
-pkgver=r115.f5482f3
+pkgname=media-server-connect-git
+pkgver=r116.c0fec68
 pkgrel=1
 pkgdesc="App for connecting to Emby server web interface"
 arch=("any")
