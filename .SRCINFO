@@ -1,0 +1,24 @@
+pkgbase = mauikit-accounts-git
+	pkgdesc = MauiKit utilities to handle User Accounts
+	pkgver = r10.d9f46d9
+	pkgrel = 1
+	url = https://invent.kde.org/maui/mauikit-accounts
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = mauikit-git
+	depends = ki18n
+	depends = kconfig
+	depends = kcoreaddons
+	provides = mauikit-accounts
+	conflicts = mauikit-accounts
+	source = git+https://invent.kde.org/maui/mauikit-accounts.git
+	sha256sums = SKIP
+
+pkgname = mauikit-accounts-git
