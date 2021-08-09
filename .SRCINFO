@@ -1,7 +1,7 @@
 pkgbase = lokinet
 	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet.
 	pkgver = 0.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lokinet.org
 	install = lokinet.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lokinet
 	depends = zeromq
 	depends = unbound
 	depends = sqlite
-	depends = ngtcp2-notls
+	depends = ngtcp2
 	depends = jemalloc
 	backup = etc/conf.d/lokinet
 	source = https://github.com/oxen-io/lokinet/releases/download/v0.9.5/lokinet-v0.9.5.tar.xz
