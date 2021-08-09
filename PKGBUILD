@@ -1,13 +1,14 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=lord-almightys-modern-bible-git
-pkgver=1.7
+pkgver=r507.e62a2ae
 pkgrel=1
 pkgdesc="Mobile version of the Bible"
 arch=("any")
 url="https://gitlab.com/The3DmaN/${pkgname%-git}"
 license=("GPL3")
-depends=("git" "qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols2")
+makedepends=("git")
+depends=("qt5-svg" "qt5-base" "qt5-webengine" "qt5-webview" "qt5-wayland" "qt5-quickcontrols2")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.com/The3DmaN/${pkgname%-git}.git")
@@ -25,7 +26,7 @@ cd "$srcdir/${pkgname%-git}"
 pkgver()
 {
   cd "${pkgname%-git}"
-  printf "1.7.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
