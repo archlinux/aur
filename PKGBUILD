@@ -7,9 +7,9 @@ pkgver=0.1
 pkgrel=4
 arch=('i686' 'x86_64' 'armv6h')
 depends=('glibc')
-license='GPL'
+license=('GPL')
 
-source=("http://downloads.lara.click/$pkgname-$pkgver.tar.gz"
+source=("http://web.archive.org/web/20150802072158/downloads.lara.click/$pkgname-$pkgver.tar.gz"
 	'fix-warnings.patch'
 	'makefile_update.patch')
 	
