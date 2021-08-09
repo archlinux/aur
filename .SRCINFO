@@ -1,6 +1,6 @@
 pkgbase = lord-almightys-modern-bible-git
 	pkgdesc = Mobile version of the Bible
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/lord-almightys-modern-bible
 	arch = any

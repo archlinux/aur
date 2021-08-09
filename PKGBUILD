@@ -1,7 +1,7 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=lord-almightys-modern-bible-git
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="Mobile version of the Bible"
 arch=("any")
@@ -25,7 +25,7 @@ cd "$srcdir/${pkgname%-git}"
 pkgver()
 {
   cd "${pkgname%-git}"
-  printf "1.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.7.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package()
