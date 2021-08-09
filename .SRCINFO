@@ -28,7 +28,6 @@ pkgbase = yuzu
 	makedepends = sirit>=r184
 	makedepends = vulkan-headers>=1.2.145
 	makedepends = xbyak>=5.96
-	makedepends = zlib>=1.2
 	makedepends = zstd>=1.5
 	depends = qt5-webengine>=5.12
 	source = git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-711

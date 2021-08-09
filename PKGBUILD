@@ -30,7 +30,6 @@ makedepends=(
 	'sirit>=r184'
 	'vulkan-headers>=1.2.145'
 	'xbyak>=5.96'
-	'zlib>=1.2'
 	'zstd>=1.5'
 )
 checkdepends=('catch2>=2.13')
