@@ -1,0 +1,18 @@
+pkgbase = share-preview-git
+	pkgdesc = Preview and debug websites metadata tags for social media share.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/rafaelmardojai/share-preview
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = rust
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	source = git+https://github.com/rafaelmardojai/share-preview.git
+	md5sums = SKIP
+
+pkgname = share-preview-git
