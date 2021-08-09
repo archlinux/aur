@@ -1,0 +1,16 @@
+pkgbase = beatoraja-modernchic
+	pkgdesc = Cross-platform rhythm game based on Java and libGDX.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/exch-bms2/beatoraja
+	arch = x86_64
+	license = GPL3
+	license = unknown
+	depends = java-runtime-openjdk=8
+	depends = java8-openjfx
+	source = https://mocha-repository.info/download/beatoraja0.8.3-modernchic.zip
+	source = beatoraja.sh
+	sha256sums = a4296a7f243de5733d55d9fa5da7bc97df83d54f4c3f02a7d75030d1a2909b81
+	sha256sums = e3ecfadd046942b8e1bbf686e6d5e0573cc312b6d463f45b2940056cf4239f78
+
+pkgname = beatoraja-modernchic
