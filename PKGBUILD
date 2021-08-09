@@ -136,6 +136,6 @@ package() {
     make DESTDIR="${pkgdir}" install
 
     mkdir -p "${pkgdir}/usr/lib/guestfs" "${pkgdir}/var/cache/guestfs"
-    install -Dm755 "./update-libguestfs-appliance" "${pkgdir}/usr/bin/update-libguestfs-appliance"
+    install -Dm755 "../../update-libguestfs-appliance" "${pkgdir}/usr/bin/update-libguestfs-appliance"
 }
 
