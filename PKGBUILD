@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.08.08.r0.g0a959cf
+pkgver=2021.08.08.r15.gff2cc5f
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
@@ -26,10 +26,10 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   install -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -d "$pkgdir/usr/share/themes"
 
-  for variant in default purple pink red orange yellow green grey; do
-    ./install.sh -t ${variant} -d "$pkgdir/usr/share/themes"
-  done
+  # Remove unnecessary files:
+  rm -rf "$pkgdir"/usr/share/themes/{Fluent,Fluent-*}/gnome-shell/extensions
 
   # Plank theme
   install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
