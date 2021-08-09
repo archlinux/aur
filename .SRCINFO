@@ -6,14 +6,11 @@ pkgbase = mingw-w64-cfitsio
 	arch = any
 	license = custom
 	makedepends = mingw-w64-configure
-	makedepends = rsync
-	depends = mingw-w64-curl
+	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	source = https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.0.0.tar.gz
-	source = cfitsio-4.0.0-mingw_rename_TBYTE.patch
 	sha256sums = b2a8efba0b9f86d3e1bd619f662a476ec18112b4f27cc441cc680a4e3777425e
-	sha256sums = SKIP
 
 pkgname = mingw-w64-cfitsio
