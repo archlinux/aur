@@ -1,7 +1,7 @@
 pkgbase = youki-git
 	pkgdesc = A container runtime written in rust
-	pkgver = r507.5bc0778
-	pkgrel = 2
+	pkgver = r509.243d5f6
+	pkgrel = 1
 	url = https://github.com/containers/youki
 	arch = x86_64
 	license = MIT
