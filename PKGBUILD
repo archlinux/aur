@@ -3,15 +3,15 @@
 # Contributer: Jeroen Bollen <jbinero at gmail dot comau>
 
 pkgname="ckbcomp-bin"
-pkgver=1.203
+pkgver="1.205"
 pkgrel=1
 pkgdesc="Compile a XKB keyboard description to a keymap suitable for loadkeys or kbdcontrol"
 arch=(any)
 url="http://anonscm.debian.org/cgit/d-i/console-setup.git/"
 license=('GPL2')
 depends=('perl')
-source=("http://ftp.debian.org/debian/pool/main/c/console-setup/console-setup_1.203_all.deb")
-sha512sums=('59278e5bde389de7f9b51c1a24ff7bd91c2f66be2266b60eac7dc82680f26b6993e335ae38c6e780722084af73e6fb46749f04632c06b9d4b97678be062c25f8')
+source=("http://ftp.debian.org/debian/pool/main/c/console-setup/console-setup_${pkgver}_all.deb")
+sha512sums=('SKIP')
 provides=("ckbcomp")
 
 prepare(){
