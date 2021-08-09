@@ -12,6 +12,6 @@ pkgbase = youki-git
 	provides = youki
 	conflicts = youki
 	source = git+https://github.com/containers/youki
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = youki-git
