@@ -18,7 +18,7 @@ optdepends=(
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'gcc' 'python2-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
+makedepends=('cmake' 'gcc' 'python-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
 conflicts=('alchemy')
 provides=('alchemy-next')
 
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	virtualenv2 ".venv"
+	virtualenv ".venv" -p python2
 	source .venv/bin/activate
 	pip install autobuild -i https://pkg.alchemyviewer.org/repository/autobuild/simple --extra-index-url https://pypi.org/simple
 
