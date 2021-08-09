@@ -2,8 +2,8 @@
 
 _gemname=github-markup
 pkgname=ruby-$_gemname-git
-pkgver=3.0.4.r10.gcd01f9e
-pkgrel=2
+pkgver=4.0.0.r5.g4690850
+pkgrel=1
 pkgdesc='The code GitHub uses to render README.markup'
 arch=(any)
 url='https://github.com/github/markup'
