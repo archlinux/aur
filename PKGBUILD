@@ -3,7 +3,7 @@
 pkgname=gsshvnc
 pkgver="0.95"
 pkgrel=1
-pkgdesc="A simple VNC client with built-in SSH forwarding"
+pkgdesc="A simple VNC client with built-in SSH tunneling"
 arch=('x86_64')
 url="https://github.com/zrax/gsshvnc"
 license=('GPL2')
