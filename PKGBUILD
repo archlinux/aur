@@ -1,7 +1,7 @@
 pkgname=gamerworld-git
 _pkgname=GamerWorld-git
-pkgver=1.2.0
-pkgrel=9
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Play games all in one place"
 arch=('any')
 url="https://gitlab.com/gamerworld/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron@13.0.1 jquery electron-packager
+    npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in GamerWorld-linux-*/ ; do mv "${dir}" "GamerWorld" ;done
 }
