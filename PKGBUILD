@@ -3,7 +3,7 @@
 _base=triangle
 pkgname=python-${_base}
 pkgver=20200424
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings to the triangle library"
 url="https://github.com/drufat/triangle"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('triangle' 'python-numpy')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 optdepends=('python-matplotlib: for Matplotlib rendering')
-provides=(${pkgname})
+provides=(${_base})
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('8b9b6ff0636ef09c0c0b5383fd6e5153965bac3767f4311e464cb100a485d3ee79274a2aa2045ee1edf6aa11992f946269d4847308c3bc9f9350b99182175fcb')
 
