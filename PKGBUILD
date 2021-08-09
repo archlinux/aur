@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/yellowsink/WacomAreaX11"
 license=('BSD')
 groups=()
-depends=('xf86-input-wacom')
+depends=('xf86-input-wacom' 'ttf-ms-win10-auto')
 makedepends=('git' 'dotnet-sdk>=5.0.0' 'dotnet-targeting-pack>=5.0.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
