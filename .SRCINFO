@@ -12,9 +12,8 @@ pkgbase = iwbtg
 	source = iwbtg.png
 	source = https://raw.githubusercontent.com/NiYanhhhhh/wine-iwbtg/master/iwbtg.exe
 	md5sums = de16e318e16a6f3022f914bbaa7c8808
-	md5sums = 2be6fb940b4b35c64dea159b47b29747
+	md5sums = 6985a98231c32abc72be24b479a11ee2
 	md5sums = 07cab17ae7dea4a85069239eb37b5fa3
 	md5sums = 7fa61f9a2f95f61cc5392fc127d5027d
 
 pkgname = iwbtg
-
