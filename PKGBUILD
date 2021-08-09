@@ -3,8 +3,8 @@
 _pkgname=RSSOwlnix
 
 pkgname=rssowlnix-bin
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="RSSOwlnix fork of RSSOwl"
 arch=('x86_64')
 url="https://github.com/Xyrio/RSSOwlnix"
@@ -28,7 +28,7 @@ source=(
   "${_pkgname}.desktop"
 )
 sha256sums=(
-  'ccc20f1ca9f4b9fac8d922913311e5d93d69e9de5838162ed6c4825c51e17aca'
+  '6f5e7fe7d46e3e6ce6b7969b1b00fae0589de5fb4f75803fd216625e42adec29'
   '63e631d213b69f2080c9ded859846b5ca3bf826ce38cb134842d54ce35508ae3'
 )
 

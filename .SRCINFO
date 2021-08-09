@@ -1,7 +1,7 @@
 pkgbase = rssowlnix-bin
 	pkgdesc = RSSOwlnix fork of RSSOwl
-	pkgver = 2.8.0
-	pkgrel = 2
+	pkgver = 2.9.0
+	pkgrel = 1
 	url = https://github.com/Xyrio/RSSOwlnix
 	arch = x86_64
 	license = EPL
@@ -9,10 +9,9 @@ pkgbase = rssowlnix-bin
 	depends = gtk2>=2.2.1
 	depends = webkit2gtk
 	provides = rssowl
-	source = https://github.com/Xyrio/RSSOwlnix/releases/download/2.8.0/RSSOwlnix-2-8-0-linux.gtk.x86_64.zip
+	source = https://github.com/Xyrio/RSSOwlnix/releases/download/2.9.0/RSSOwlnix-2-9-0-linux.gtk.x86_64.zip
 	source = RSSOwlnix.desktop
-	sha256sums = ccc20f1ca9f4b9fac8d922913311e5d93d69e9de5838162ed6c4825c51e17aca
+	sha256sums = 6f5e7fe7d46e3e6ce6b7969b1b00fae0589de5fb4f75803fd216625e42adec29
 	sha256sums = 63e631d213b69f2080c9ded859846b5ca3bf826ce38cb134842d54ce35508ae3
 
 pkgname = rssowlnix-bin
-
