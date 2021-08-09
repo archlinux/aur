@@ -1,13 +1,14 @@
 pkgbase = ngtcp2-notls-git
 	pkgdesc = An effort to implement IETF QUIC protocol (main branch, built without tls support)
-	pkgver = r2652.f183441a
-	pkgrel = 1
+	pkgver = r2719.5c84af76
+	pkgrel = 2
 	url = https://github.com/ngtcp2/ngtcp2
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	checkdepends = cunit
 	makedepends = git
+	provides = ngtcp2
 	provides = ngtcp2-notls
 	provides = libngtcp2.so
 	conflicts = ngtcp2
@@ -16,4 +17,3 @@ pkgbase = ngtcp2-notls-git
 	md5sums = SKIP
 
 pkgname = ngtcp2-notls-git
-

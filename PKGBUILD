@@ -1,15 +1,15 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 # Contributor: Dave Reisner <d@falconindy.com>
 pkgname=ngtcp2-notls-git
-pkgver=r2652.f183441a
-pkgrel=1
+pkgver=r2719.5c84af76
+pkgrel=2
 pkgdesc="An effort to implement IETF QUIC protocol (main branch, built without tls support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ngtcp2/ngtcp2"
 license=('MIT')
 makedepends=('git')
 checkdepends=('cunit')
-provides=('ngtcp2-notls' 'libngtcp2.so')
+provides=('ngtcp2' 'ngtcp2-notls' 'libngtcp2.so')
 conflicts=('ngtcp2' 'ngtcp2-notls')
 source=('git+https://github.com/ngtcp2/ngtcp2')
 md5sums=('SKIP')
