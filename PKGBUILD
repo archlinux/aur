@@ -14,7 +14,7 @@ name=meshroom
 fragment="#branch=develop"
 components+=(QtOIIO qmlAlembic)
 pkgname=${name}-git
-pkgver=2021.1.0.r93.gd312d635
+pkgver=2021.1.0.r134.gf1331c6a
 pkgrel=1
 pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework."
 arch=('i686' 'x86_64')
