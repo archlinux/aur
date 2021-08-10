@@ -1,10 +1,10 @@
 diff --git a/block/elevator.c b/block/elevator.c
-index 076ba7308e65..81f89095aa77 100644
+index 440699c28119..47fffc18978f 100644
 --- a/block/elevator.c
 +++ b/block/elevator.c
-@@ -623,15 +623,15 @@ static inline bool elv_support_iosched(struct request_queue *q)
+@@ -616,8 +616,8 @@ static inline bool elv_support_iosched(struct request_queue *q)
  }
- 
+
  /*
 - * For single queue devices, default to using mq-deadline. If we have multiple
 - * queues or mq-deadline is not available, default to "none".
@@ -13,11 +13,12 @@ index 076ba7308e65..81f89095aa77 100644
   */
  static struct elevator_type *elevator_get_default(struct request_queue *q)
  {
- 	if (q->nr_hw_queues != 1)
+@@ -625,7 +625,7 @@ static struct elevator_type *elevator_get_default(struct request_queue *q)
+ 			!blk_mq_is_sbitmap_shared(q->tag_set->flags))
  		return NULL;
- 
+
 -	return elevator_get(q, "mq-deadline", false);
 +	return elevator_get(q, "bfq", false);
  }
- 
+
  /*

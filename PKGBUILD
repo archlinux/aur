@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.12.15.arch1
+pkgver=5.13.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -21,20 +21,42 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  0001-futex-wait-multiple.patch
-  0002-futex-wait-multiple-proton-compatibility.patch
+  0001-futex2-implement-wait-and-wake-functions.patch
+  0002-futex2-implement-vectorized-wait.patch
+  0003-futex2-implement-requeue-operation.patch
+  0004-futex2-documentation.patch
+#   0005-futex2-test-wake-wait.patch
+#   0006-futex2-test-timeout.patch
+#   0007-futex2-test-wouldblock.patch
+#   0008-futex2-test-waitv.patch
+#   0009-futex2-test-requeue.patch
+#   0010-futex2-benchmark.patch
+  0011-futex2-enable-waitpid-for-futex2.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '828d90d788ad44ba1480486081afb3ec730de5b48dfe344662043940a0b42cdf'
+            'fcfb29005032125010bcf18ce2f177af7c84c74cff729de8f0cc3e4a552a59a4'
             # -- covolunablu-gaming patches --
-            '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
-            'cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7'
-            'bbbbc90c25659c16f2697b509a15a3969bf0dd277e81b44718a8149e61b51dbc')
+            'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d'
+#             'cb37801751ea51bc7e784331132f9390b61e477491f103bec3b48f1e751c79b7'
+#             'bbbbc90c25659c16f2697b509a15a3969bf0dd277e81b44718a8149e61b51dbc'
+            '695af5865c0048ccc2a458a151607cb609642ad295b9f562440f7cdec7dffae2'
+            'a8183948f375ceb4ac4623531a97aa885b3e4403e50e02c4698af5aaade05bb8'
+            '2a8c8ed6607150a4ab25db3320b91d15d9693c55b7b01fbbb00d4b323b8a1230'
+            '91e604ce4fb59df365ad88219269a57bbf09811b0a7ff4833b3fab072ad5b038'
+#             '001157deded265983c100bd215bad4493de8a4e1e9ede95587018913187ab71a'
+#             '141ae54946f64596fb9bf4ecf1c885acdaf730aef9a4b2fe9699b026f8827685'
+#             '40d90f134900c9515a274dae011d4adebdc7f4cafe0a6a833cce55e6a86ee84a'
+#             '5ca3ad330fb7d792fca01a014280c70231d99de9149044569fc1f96ca0f8aaee'
+#             '937a01c0c02c05c0a33890ef5a6e3b9f6c7d61b3283d2b79145ae05bc1ae6c88'
+#             'c97748f88974c6ffe2e0903ffca524104b22939cddf5cc92c2b064ea5ceab880'
+            'c71f09b597b5f97895421dba2e7d76e4fb4338c6b18ed51f5a09e0775f749b4f'
+)
 
 export KBUILD_BUILD_HOST=covolunablu
 export KBUILD_BUILD_USER=$pkgbase
