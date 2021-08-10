@@ -1,21 +1,11 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -136,11 +136,16 @@ if (DYNARMIC_TESTS_USE_UNICORN)
-     find_package(Unicorn REQUIRED)
- endif()
- 
-+find_package(Catch2 QUIET)
-+if (Catch2_FOUND)
-+    add_library(catch ALIAS Catch2::Catch2)
-+endif()
-+
- # Pull in externals CMakeLists for libs where available
- add_subdirectory(externals)
- 
+@@ -142,5 +142,7 @@ add_subdirectory(externals)
  # Dynarmic project files
  add_subdirectory(src/dynarmic)
--if (DYNARMIC_TESTS)
-+if (DYNARMIC_TESTS AND TARGET catch)
+ if (DYNARMIC_TESTS)
++    find_package(Catch2 REQUIRED)
++    add_library(catch ALIAS Catch2::Catch2)
      add_subdirectory(tests)
  endif()
 --- a/externals/CMakeLists.txt
