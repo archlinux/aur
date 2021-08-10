@@ -28,9 +28,8 @@ source_x86_64=(
 	'https://static.playkey.net/clientdownload.aspx?file=windows-desktop/Release/PlaykeySetup.exe&name=PlaykeySetup.exe'
 	'git+https://github.com/vilkoz/playkey-linux-launcher.git'
 )
-sha256sums_x86_64=('eba36f76d2f5f75567b5a2cd1f78a8add03f40d736797c16207abecdd3c37ed6'
+sha256sums_x86_64=('d53f9a016635f5c72e8fae86023a4e612f94c8399ee27df7c013c7dc043ad451'
 'SKIP')
-
 
 prepare() {
 	msg2 'Extracting PlaykeySetup.exe'
