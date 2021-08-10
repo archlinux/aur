@@ -1,0 +1,20 @@
+pkgbase = libhildonmime
+	pkgdesc = Hildon MIME library
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libhildonmime
+	arch = any
+	groups = gnome
+	license = LGPL-2.1-only
+	makedepends = glib2
+	makedepends = dbus-glib
+	makedepends = libxml2
+	makedepends = gtk-doc
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = m4
+	makedepends = libtool
+	source = git+https://github.com/maemo-leste/libhildonmime.git#tag=3.0.3
+	sha256sums = SKIP
+
+pkgname = libhildonmime
