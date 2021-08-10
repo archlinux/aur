@@ -78,7 +78,7 @@ provides+=("${_name}" geogram)
   provides+=(uncertainty-framework)
   conflicts+=(uncertainty-framework)
 }
-depends+=('boost-libs' 'ceres-solver' 'coin-or-clp' 'flann' 'google-glog' 'openimageio')
+depends+=('assimp' 'boost-libs' 'ceres-solver' 'coin-or-clp' 'flann' 'google-glog' 'openimageio')
 depends+=('glu' 'glfw-x11') # geogram deps.
 makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 ((!DISABLE_CCTAG))   && depends+=('cctag')

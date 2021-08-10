@@ -16,6 +16,7 @@ pkgbase = alice-vision-git
 	makedepends = coin-or-lemon
 	makedepends = git
 	makedepends = cmake
+	depends = assimp
 	depends = boost-libs
 	depends = ceres-solver
 	depends = coin-or-clp
