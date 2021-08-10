@@ -1,7 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgname=dbus-python
-pkgname=$_pkgname2
+pkgname=${_pkgname}2
 pkgver=1.2.18
 pkgrel=1
 pkgdesc="Python 2.7 bindings for DBUS"
