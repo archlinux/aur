@@ -3,7 +3,7 @@
 
 _metaname='org.gnome.design.Palette'
 pkgname='palette'
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Tool for viewing the GNOME color palette as defined by the design guidelines'
 arch=('x86_64')
