@@ -16,7 +16,8 @@ sha256sums=('82c64762bf5ef1919966c004abd0878487e2e387f8de2b03bb6c02e3cf4d81d5'
             '26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf')
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
+    jdk="$(find /usr/lib/jvm -maxdepth 1 -regex ".*1[4-9].*" | head -1)" &&
+      test -n "$jdk" && export JAVA_HOME="$jdk"
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./scripts/link_linux.sh
     mvn package -DskipTests
