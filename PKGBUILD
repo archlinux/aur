@@ -10,7 +10,7 @@ _pkgname=jre
 
 pkgname=bin32-jre
 pkgver=${_major}u${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
@@ -55,7 +55,7 @@ backup=("etc/java32-$_jname/i386/jvm.cfg"
         "etc/java32-$_jname/sound.properties")
 install=$pkgname.install
 source=(
-  "${_pkgname}-${pkgver}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
+  "${_pkgname}-${pkgver}-${pkgrel}-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=${_bundleid}_${_hash}"
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )

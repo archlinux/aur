@@ -1,7 +1,7 @@
 pkgbase = bin32-jre
 	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit)
 	pkgver = 8u301
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.java.com/en/download/linux_manual.jsp
 	install = bin32-jre.install
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = bin32-jre
 	backup = etc/java32-jre8/psfont.properties.ja
 	backup = etc/java32-jre8/psfontj2d.properties
 	backup = etc/java32-jre8/sound.properties
-	source = jre-8u301-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245048_d3c52aa6bfa54d3ca74e617f18309292
+	source = jre-8u301-4-linux-i586.tar.gz::https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245048_d3c52aa6bfa54d3ca74e617f18309292
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool32-jre8.desktop
 	sha256sums = ee377427586a998e676e5de623f3298d51dbb648c578934e7829736fec2987ba
