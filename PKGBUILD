@@ -4,14 +4,14 @@
 model="9330cdw"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
-pkgrel=4
+pkgrel=5
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9330CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
 license=('unknown')
 install="brother-mfc-${model}.install"
-depends=('deb2targz' 'perl' 'brscan4' 'a2ps')
+depends=('deb2targz' 'perl' 'brscan4' 'a2ps' 'lib32-libcups')
 lpr_ver="1.1.2"
 lpr_rev=1
 cw_ver="1.1.4"
