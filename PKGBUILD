@@ -27,7 +27,8 @@ pkgver() {
 }
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
+    jdk="$(find /usr/lib/jvm -maxdepth 1 -regex ".*1[4-9].*" | head -1)" &&
+      test -n "$jdk" && export JAVA_HOME="$jdk"
     cd "${srcdir}/${_pkgname}"
     ./scripts/link_linux.sh
     mvn package -DskipTests
