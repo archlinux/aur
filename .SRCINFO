@@ -1,0 +1,12 @@
+pkgbase = storj-uplink-c
+	pkgdesc = Storj Tardigrade Uplink-C
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/storj/uplink-c
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = go
+	source = https://github.com/storj/uplink-c/archive/v1.2.3.tar.gz
+	sha256sums = 1ead521f53fbc7cfd43adfac7dfa2d97365bc6683d90b3df1d3950480a234094
+
+pkgname = storj-uplink-c
