@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-wintile-git
 	pkgdesc = Windows 10 window tiling for GNOME
 	pkgver = r94.53e69a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fmstrat/wintile
 	arch = any
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = gnome-shell-extension-wintile-git
 	provides = gnome-shell-extension-wintile
 	conflicts = gnome-shell-extension-wintile
 	source = git+https://github.com/fmstrat/wintile.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-wintile-git

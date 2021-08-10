@@ -2,20 +2,19 @@
 # Contributor: Ben Curtis <nospam@nowsci.com>
 
 pkgname=gnome-shell-extension-wintile-git
-_pkgname=gnome-shell-extension-wintile
 pkgver=r94.53e69a4
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
 url="https://github.com/fmstrat/wintile"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git' 'zip')
-provides=("${_pkgname%}")
-conflicts=("${_pkgname%}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 _srcname=wintile
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_srcname"
