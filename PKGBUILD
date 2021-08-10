@@ -26,7 +26,7 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable multigenerational LRU
-_lru_enable=
+_lru_enable=y
 ### Enable Linux Random Number Generator
 _lrng_enable=y
 ### Enable FULLCONENAT
@@ -65,7 +65,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb-autogroup
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -88,14 +88,14 @@ source=(
     "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
     "${_patchsource}/zen-patches/0001-zen-patches.patch"
     "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-    "${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+    "${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
     "${_patchsource}/block-patches-v2/0001-block-patches.patch"
     "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
     "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
     "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
     "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
     "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-    "${_patchsource}/lru-patches-v6/0001-lru-patches.patch"
+    "${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
     "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
     "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
     "${_patchsource}/security-patches/0001-security-patches.patch"
@@ -557,7 +557,7 @@ done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '39a5d2b3ff92c000dc93f9fa2efb2c45'
-         '37ce9281370f5b5d479662e9419225a7'
+         '0bbcd031c4532ba66c16f974d6648439'
          '6d8a2a8f499dd9643ca4af2254389ce7'
          '078da517ec2d54283af81d7da3af671a'
          '7640a753a7803248543675a6edc75e08'
@@ -567,14 +567,14 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          'e15a64663e6221ea40b02aeb8517e70a'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '31c897f53b91f98532321cd24928c0d7'
-         'daeacee8fcde31908f90b89dc4b54126'
+         '698d661fa23611933146b83e0fa9cade'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          'f9b3c2263204ebfae89f29b83278b54b'
-         '3da3890b2df6e3fa44eaca19d2db3399'
+         'e84f0dadb9e7487fac39541c5bd85d7a'
          'b6623f818462d08b03fdc1b573c90e9f'
          '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
