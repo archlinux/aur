@@ -13,7 +13,7 @@ checkdepends=()
 provides=($pkgname)
 conflicts=($pkgname)
 groups=(gnome)
-source=("git+$url.git#tag=$_pkgver")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {

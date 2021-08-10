@@ -9,7 +9,7 @@ pkgbase = libhildon
 	depends = gtk3
 	provides = libhildon
 	conflicts = libhildon
-	source = git+https://github.com/maemo-leste/libhildon.git#tag=
+	source = git+https://github.com/maemo-leste/libhildon.git#tag=2.2.28
 	sha256sums = SKIP
 
 pkgname = libhildon
