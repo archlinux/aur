@@ -1,6 +1,6 @@
 pkgbase = maddy
 	pkgdesc = Composable all-in-one mail server
-	pkgver = 0.4.4
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/foxcpp/maddy
 	arch = x86_64
@@ -10,15 +10,14 @@ pkgbase = maddy
 	makedepends = scdoc
 	depends = glibc
 	backup = etc/maddy/maddy.conf
-	source = maddy-0.4.4.tar.zst::https://foxcpp.dev/maddy-builds/0.4.4/maddy-0.4.4-src.tar.zst
-	source = maddy-0.4.4.tar.zst.sig::https://foxcpp.dev/maddy-builds/0.4.4/maddy-0.4.4-src.tar.zst.sig
+	source = maddy-0.5.0.tar.zst::https://foxcpp.dev/maddy-builds/0.5.0/maddy-0.5.0-src.tar.zst
+	source = maddy-0.5.0.tar.zst.sig::https://foxcpp.dev/maddy-builds/0.5.0/maddy-0.5.0-src.tar.zst.sig
 	source = maddy.sysusers
 	source = maddy.tmpfiles
 	validpgpkeys = 3197BBD95137E682A59717B434BB2007081396F4
-	sha512sums = 7f889b859c465e872ea48266c40b9b4dce87ec66587617eac43be69d0bfe31a2d1f2667bb463adeb99b5755ae8549bd3fc434a027727f0fdfd866ef57244bec7
+	sha512sums = 28702a13bebaf5f77934bc5883c75e364d54c73bafc0dae30c8cef4e6019225dc96848c24a8c63aac35524b90b46bd1b6931f593aa6a215d2e40e4a2c55ea654
 	sha512sums = SKIP
 	sha512sums = 750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589
 	sha512sums = f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5
 
 pkgname = maddy
-
