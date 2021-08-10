@@ -1,7 +1,7 @@
 pkgbase = xi-core
 	pkgdesc = A modern editor with a backend written in Rust
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xi-editor/xi-editor
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = xi-core
 	sha256sums = e42998ad9b6d6df0f797afd005f9c1286aad24c30a77d0dd380730c248274b8d
 
 pkgname = xi-core
-
