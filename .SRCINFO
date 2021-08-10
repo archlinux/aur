@@ -1,20 +1,21 @@
 pkgbase = pushpin
 	pkgdesc = Reverse proxy for realtime web services
-	pkgver = 1.32.2
+	pkgver = 1.33.1
 	pkgrel = 1
 	url = https://github.com/fanout/pushpin
 	arch = x86_64
 	arch = i686
 	license = AGPL
+	makedepends = cargo
 	makedepends = qt5-base
 	makedepends = zeromq
 	depends = qt5-base
 	depends = zeromq
 	depends = zurl
 	depends = mongrel2
-	source = https://github.com/fanout/pushpin/releases/download/v1.32.2/pushpin-1.32.2.tar.bz2
+	source = https://github.com/fanout/pushpin/releases/download/v1.33.1/pushpin-1.33.1.tar.bz2
 	source = pushpin.service
-	sha256sums = 67fd1cabcaf95deb998007abb189acf06d72f761caae7292fe2a6cb35de779f1
+	sha256sums = 37b8ed8a262492e86fd02fe55c3b6f280cff2da718400ce926b5480745cec4a4
 	sha256sums = 4883656bed6873853a901a6017c9ebc557260cec690cbdb8231458a9dc33a686
 
 pkgname = pushpin
