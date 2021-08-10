@@ -1,6 +1,6 @@
 pkgbase = kbd_stats-git
 	pkgdesc = A tool to log/measure keyboard metrics
-	pkgver = 0.1.0.40.gbc13380
+	pkgver = 0.1.0.44.g9483f22
 	pkgrel = 1
 	url = https://github.com/ripxorip/kbd_stats
 	arch = i686
