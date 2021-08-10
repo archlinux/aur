@@ -1,6 +1,6 @@
 pkgbase = dendron
 	pkgdesc = CLI tool for Dendron, the hierarchical note taking tool that grows as you do!
-	pkgver = 0.53.2
+	pkgver = 0.53.10
 	pkgrel = 1
 	url = https://www.dendron.so/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = dendron
 	depends = nodejs
 	depends = libx11
 	depends = python
-	noextract = dendron-cli-0.53.2.tgz
+	noextract = dendron-cli-0.53.10.tgz
 	options = !strip
-	source = https://registry.npmjs.org/@dendronhq/dendron-cli/-/dendron-cli-0.53.2.tgz
-	sha512sums = 876884e4b83047e138f327f2fe3a090c70341ae450d3c89126fff0e75f62f1c4735e8187d5ce8251cf373aa20bfef58420ef95e1b668a02ca4580781d530270d
+	source = https://registry.npmjs.org/@dendronhq/dendron-cli/-/dendron-cli-0.53.10.tgz
+	sha512sums = c2c1603faf4ce235e108d55f0dfa663eea60aba955ce265e663ac30cb794f8146a1696581694fb553afde00c93a50cc07c47509abeeb53560754c9455600f035
 
 pkgname = dendron
