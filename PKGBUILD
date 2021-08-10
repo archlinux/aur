@@ -1,6 +1,7 @@
 # Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=python-runtest
-pkgver=2.2.0
+_name=runtest
+pkgver=2.2.2
 pkgrel=1
 epoch=
 pkgdesc="Numerically tolerant end-to-end test library for research software."
@@ -19,12 +20,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/bast/runtest/archive/v2.2.0.tar.gz")
-noextract=()
-sha256sums=("818fc71cbce9e4714098cf24406999b2077a0eaf51dfa69a493dc8cc04a5392c")
-validpgpkeys=()
-
-package() {
-	cd "$srcdir/${pkgname#"python-"}-${pkgver//_/-}"
-	python setup.py install --root="$pkgdir" 
+source=(
+  https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py2.py3-none-any.whl
+)
+sha256sums=("cc1d255767eeefce66420e4c616dd1cd8120d6c51ee83c2b15921ba1040784bc")
+package ()
+{
+  cd "$srcdir"
+  PIP_CONFIG_FILE=/dev/null python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ${_name/-/_}-$pkgver-py2.py3-none-any.whl
 }
+
