@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-fs-local"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="The SWC-DB FileSystem Local library"
 arch=("x86_64")
