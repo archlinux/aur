@@ -7,7 +7,7 @@
 
 pkgname=mathics
 _pkgname=Mathics3
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mathics/Mathics/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('dd01edc2eb5d6718db0cc35d428907277289501a37688ab60a645036723e6309')
+sha256sums=('d50ee5ad07db845609078c99af789253337a45f50bef6f8b09262f48dca8da7c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
