@@ -72,7 +72,7 @@ url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
 makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
-((!DISABLE_CUDA))    && depends+=('libcudart.so')
+((!DISABLE_CUDA))    && { depends+=('libcudart.so'); makedepends+=('cuda'); }
 ((!DISABLE_CCTAG))   && depends+=('cctag')
 ((!DISABLE_ALEMBIC)) && depends+=('alembic')
 ((!DISABLE_OPENGV))  && depends+=('opengv')
