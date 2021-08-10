@@ -3,7 +3,7 @@
 # Contributor: agentcobra <agentcobra@free.fr>
 pkgname=shadow-tech
 pkgver=5.0.996
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for Shadow Tech cloud gaming service."
 arch=('x86_64')
 url="https://shadow.tech"
@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
     'yq'
+    'xxd'
     'desktop-file-utils'
 )
 optdepends=(

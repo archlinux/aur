@@ -1,12 +1,13 @@
 pkgbase = shadow-tech
 	pkgdesc = Desktop client for Shadow Tech cloud gaming service.
 	pkgver = 5.0.996
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shadow.tech
 	install = shadow-tech.install
 	arch = x86_64
 	license = unknown
 	makedepends = yq
+	makedepends = xxd
 	makedepends = desktop-file-utils
 	depends = gtk3
 	depends = libinput
