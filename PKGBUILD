@@ -1,7 +1,7 @@
 # Maintainer: redtide <redtid3@gmail.com>
 
 pkgname=magnifiqus
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Qt based screen magnifier"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('cmake' 'qt5-tools')
 provides=('magnifiqus')
 conflicts=('magnifiqus')
 source=("https://github.com/redtide/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ddf3101cfc4979951a3081f484f5629e3624b9317c80863e57f194b8c91a2a4482d7de14c56cfb4e0f375bf0181be749695b4bf4df5f5bc428ffa059bfef6249')
-b2sums=('c53db2795bd58385ed436f3e2fc9195aff2990e446324cebcf548b173c53536c49b01d8ba862d783400bd9c3054dc48561265fcc17672b330deeda4d7713810d')
+sha512sums=('33051ae56231551c81ac71627887e856fb205d4f4db17b84c85e3b0a474a2a3138d23445015d190b449e3978dbd337e80aee4f5094901eb659cce8a968a35d26')
+b2sums=('fcc6ef72304fdb11a3164a84ca378f68136c10596635c0436c5870f860837ff3c3a3d17a2874da04018fd4de8ece9ba32e3d8f21ca3ca05c3a108c954ee1e670')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
