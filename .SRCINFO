@@ -10,7 +10,6 @@ pkgbase = ntfs3-dkms
 	provides = ntfs3=27.0.0
 	provides = ntfs3-dkms=27.0.0
 	conflicts = ntfs3
-	conflicts = ntfs3-dkms
 	options = !strip
 	source = Makefile.patch
 	source = dkms.conf

@@ -7,7 +7,7 @@ url='https://www.paragon-software.com/home/ntfs3-driver-faq/'
 license=('GPL2')
 depends=('dkms')
 provides=('NTFS3-MODULE' "ntfs3=${pkgver}" "ntfs3-dkms=${pkgver}")
-conflicts=('ntfs3' 'ntfs3-dkms')
+conflicts=('ntfs3')
 options=('!strip')
 
 source=(
