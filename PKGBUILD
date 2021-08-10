@@ -12,11 +12,11 @@ _pkgbase=gdal
 provides=('gdal=3.3.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
-url="http://www.gdal.org/"
+url="https://gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c'
@@ -32,9 +32,9 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal
+        https://raw.githubusercontent.com/archlinux/svntogit-community/3a1ed1385f3ff65de7f463789e58c77afe1fb6fa/trunk/gdal-perl-vendor.patch
 )
-sha256sums=('190c8f4b56afc767f43836b2a5cd53cc52ee7fdc25eb78c6079c5a244e28efa7'
+sha256sums=('48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
 )
 
