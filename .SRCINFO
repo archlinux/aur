@@ -1,12 +1,12 @@
 pkgbase = elfcat
 	pkgdesc = Generates HTML files from ELF binaries
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/ruslashev/elfcat
 	arch = x86_64
 	license = ZLIB
 	makedepends = rust
-	source = elfcat-0.1.5.tar.gz::https://github.com/ruslashev/elfcat/archive/0.1.5.tar.gz
-	b2sums = 69239f1db94c5d59644e8e51ba34c67ea14435ca2773b411d664a2ee085c1e257d37b2bbbb7c9078fb59ec4d8222e430485bbf110f771922ad8524f0e5c88a41
+	source = elfcat-0.1.6.tar.gz::https://github.com/ruslashev/elfcat/archive/0.1.6.tar.gz
+	b2sums = a91f8277d0333615704bca4ff163cabd527d2a7a669aff3da72ec54059f9c882a94e2b41c9b2759e25eac752b27074c98bccc351d3f402126b723a3d4e229ef7
 
 pkgname = elfcat
