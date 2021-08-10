@@ -2,13 +2,13 @@
 pkgname=python-quadpy
 _name=quadpy
 pkgver=0.16.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Numerical integration (quadrature, cubature) in Python'
 arch=(any)
 license=(GPL)
 url="https://github.com/nschloe/quadpy"
 depends=(python)
-makedepends=(python-build git-lfs)
+makedepends=(python-build python-pip git-lfs)
 replaces=()
 conflicts=(python-quadpy)
 provides=(python-quadpy)
