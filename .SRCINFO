@@ -1,6 +1,6 @@
 pkgbase = sloc
 	pkgdesc = Simple source-lines-of-code counter
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/bytbox/sloc/
 	arch = i686
