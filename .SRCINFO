@@ -1,6 +1,6 @@
 pkgbase = facebook-nativefier
 	pkgdesc = Facebook desktop app built with nativefier (electron)
-	pkgver = 20200802
+	pkgver = 20210810
 	pkgrel = 1
 	url = https://facebook.com
 	arch = i686
@@ -19,4 +19,3 @@ pkgbase = facebook-nativefier
 	md5sums = 9dc630d63334dcfb8766566013cef991
 
 pkgname = facebook-nativefier
-

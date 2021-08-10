@@ -1,7 +1,7 @@
 # Maintainer: Daniel Souza <danielsouzat at pm dot me>
 
 pkgname=facebook-nativefier
-pkgver=20200802
+pkgver=20210810
 pkgrel=1
 pkgdesc="Facebook desktop app built with nativefier (electron)"
 arch=("i686" "x86_64")
@@ -19,7 +19,7 @@ md5sums=('b59d15f1d09ebd9882cad4a448688aac'
 
 build() {
   cd "${srcdir}"
-  
+
   nativefier \
     --name "Facebook" \
     --icon "${pkgname}.png" \
@@ -46,4 +46,3 @@ package() {
     convert "${srcdir}/${pkgname}.png" -strip -resize "${_size}" "${pkgdir}/usr/share/icons/hicolor/${_size}/apps/${pkgname}.png"
   done
 }
-
