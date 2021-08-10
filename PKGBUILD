@@ -27,7 +27,9 @@ pkgver() {
 }
 
 build() {
-  cmake -S "$_gitname" -B build -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -S "$_gitname" -B build \
+   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DCMAKE_BUILD_TYPE=Release
   make -C build
 }
 
