@@ -5,3 +5,4 @@ Type=Application
 Terminal=false
 Exec=/usr/share/vegalinux64/VegaTeam
 Name=VegaTeam
+Icon=/usr/share/vegalinux64/logo.png

@@ -21,19 +21,23 @@ install=
 changelog=
 source=("http://www.vegachess.com/download/$pkgname.tar.gz"
         'vegachess.desktop'
-        'vegateam.desktop')
+        'vegateam.desktop'
+        'logo.png')
 noextract=()
 sha256sums=('6f9ba9ee0da41b412b2e3be18ae7b02710abe6672d38c5a56ae54ca466d78e5a'
-            '0ca71921a84035f42968d938f426383c2a98530d9096d941cc5be0f168f3a79b'
-            'f37e48211f22274873f9c8b8e3f1a66d6c032a145b07367682ecf99d70cade5c')
+            '50936a1e32642f599797fb991f303b833d949f23c676a25c783d2e610e884ccb'
+            '6d6d077594a73211cde79043d661735f84f39929fb2d9fdff48d311dc1269b48'
+            'ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6')
 
 package() {
     cd "$srcdir"
     mkdir -p $pkgdir/usr/share/applications
     cp -v *.desktop $pkgdir/usr/share/applications
 
-    cd "$pkgname"
     mkdir -p $pkgdir/usr/share/$pkgname
+    cp -v logo.png $pkgdir/usr/share/$pkgname
+
+    cd "$pkgname"
     cp -rv * $pkgdir/usr/share/$pkgname
 
     mkdir -p $pkgdir/usr/bin/
