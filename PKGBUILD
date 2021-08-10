@@ -6,7 +6,7 @@ pkgver=0.45.0
 pkgrel=1
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
-url="https://github.com/dbartolini/crown"
+url="https://www.crownengine.org"
 license=('MIT')
 depends=('glib2>=2.48.2'
          'gtk3>=3.16'
@@ -16,7 +16,7 @@ depends=('glib2>=2.48.2'
          'libx11'
          'libxrandr'
          )
-source=("https://github.com/dbartolini/crown/releases/download/v$pkgver/$pkgname-$pkgver-linux-x64.tar.gz"
+source=("https://github.com/crownengine/crown/releases/download/v$pkgver/$pkgname-$pkgver-linux-x64.tar.gz"
         "crown.sh"
         "crown.desktop"
         "icons.tar.gz"
