@@ -16,7 +16,7 @@ _tarball_name=${_tarball_base_name}.tar.gz
 _ld_so_conf_name=${pkgname}-${pkgver}-${pkgrel}.conf
 
 source=(
-	"${_tarball_name}"
+	"file://${_tarball_name}"
 	"${_ld_so_conf_name}"
 	"${install}"
 )

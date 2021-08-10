@@ -12,6 +12,7 @@ pkgbase = scrt-sfx-opt-bin
 	depends = icu66
 	provides = SecureCRT
 	provides = SecureFX
+	source = file://scrt-sfx-9.0.2.2496.ubuntu20-64.tar.gz
 	source = scrt-sfx-opt-bin-9.0.2-2496.conf
 	source = scrt-sfx-opt-bin-9.0.2-2496.install
 	sha512sums = 62e3ec59da19c995c785ba839f6a26d96b848efcf251c4fe92976be6503271eff5082e16b78de3b6c8f9598990ed8efe2ec6ddb5ae200f15b4e1774d143b7ac4
