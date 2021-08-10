@@ -1,7 +1,7 @@
 # Maintainer: Sajeev Ramasamy <thorion3006@gmail.com>
 pkgname=(ttf-kascadia)
 pkgver=v2106.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Cascadia Powerline fonts patched with missing glyphs from nerd font.'
 arch=(any)
 url="https://github.com/thorion3006/kascadia_font"
@@ -11,6 +11,6 @@ md5sums=('SKIP')
 
 package() {
         cd "${Kascadia-$pkgver}"
-        install -Dm644 -t "$pkgdir/usr/share/fonts/commissioner" *.ttf
+        install -Dm644 -t "$pkgdir/usr/share/fonts/kascadia" *.ttf
 }
 
