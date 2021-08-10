@@ -23,11 +23,14 @@ prepare() {
   # https://github.com/marcelotduarte/cx_Freeze/pull/833
   sed -i 's/excludes$/excludes or []/' cx_Freeze/finder.py
   patch -Np1 -i "$srcdir"/export-dynamic.patch
+# Preserve debug symbols when build with `options+=(debug)`
+  sed -i '/extra_args.append("-s")/d' setup.py
 }
 
 build() {
   cd cx_Freeze-$pkgver
-  python setup.py build
+  check_option "debug" "y" && _build_flag="--debug"
+  python setup.py build $_build_flag
 }
 
 check() {
