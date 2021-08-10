@@ -1,0 +1,20 @@
+pkgbase = qdirstat-bin
+	pkgdesc = Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/shundhammer/qdirstat
+	install = qdirstat-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	conflicts = qdirstat
+	conflicts = qdirstat-git
+	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/qdirstat-bin/qdirstat-bin-1.7.1-1-x86_64.tar.gz
+	md5sums = de789ea4acce5f1ea4f5402be7c98950
+	sha256sums = fb5a454ea37cac8b3c81953e878fed05fc624afe8bd97a23a5e608e0104b780d
+
+pkgname = qdirstat-bin
