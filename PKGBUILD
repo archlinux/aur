@@ -1,8 +1,18 @@
 #!/bin/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
+# Configuration:
+# Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+# Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+# Use: aurutils --margs=VAR1=0,VAR2=1
+# Use: VAR1=0 VAR2=1 pamac
+
+((ENABLE_QTALICEVISION)) && components+=(qtAliceVision)
+((DISABLE_CUDA)) && msg2 "DISABLE_CUDA valid only if 'alice-vision' was build with DISABLE_CUDA=1" >&2
+
 name=meshroom
 fragment="#branch=develop"
+components+=(QtOIIO qmlAlembic)
 pkgname=${name}-git
 pkgver=2021.1.0.r93.gd312d635
 pkgrel=1
@@ -16,6 +26,8 @@ _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision-git alembic openimageio python python-psutil "${_depends_qt[@]}")
 makedepends=(git cmake python-{cx-freeze-qfix,idna,setuptools} patchelf)
+((ENABLE_QTALICEVISION)) && makedepends+=(coin-or-lemon boost)
+((ENABLE_QTALICEVISION&!DISABLE_CUDA)) && makedepends+=(popsift)
 source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git#branch=develop"
@@ -27,6 +39,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc')
+((ENABLE_QTALICEVISION)) && {
+  source+=("git+https://github.com/alicevision/qtAliceVision.git#branch=develop")
+  sha256sums+=('SKIP')
+}
 
 pkgver() {
   cd "$name"
@@ -53,15 +69,12 @@ prepare() {
 }
 
 build() {
-  msg2 'build QtOIIO'
-  cd "${srcdir}"/QtOIIO
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
-  make
-
-  msg2 'build qmlAlembic'
-  cd "${srcdir}"/qmlAlembic
-  cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt/" -DCMAKE_BUILD_TYPE=Release .
-  make
+  for component in "${components[@]}" ; do
+    msg2 "build $component"
+    cd "${srcdir}/$component"
+    cmake -DCMAKE_INSTALL_PREFIX="/usr/lib/qt" -DCMAKE_BUILD_TYPE=Release .
+    make
+  done
 
   msg2 'build Meshroom'
   cd "${srcdir}"/${name}
@@ -70,13 +83,11 @@ build() {
 
 
 package() {
-  msg2 'install QtOIIO'
-  cd "${srcdir}"/QtOIIO
-  make DESTDIR="${pkgdir}" install
-
-  msg2 'install qmlAlembic'
-  cd "${srcdir}"/qmlAlembic
-  make DESTDIR="${pkgdir}" install
+  for component in "${components[@]}" ; do
+    msg2 "install $component"
+    cd "${srcdir}/$component"
+    make DESTDIR="${pkgdir}" install
+  done
 
   msg2 'install Meshroom'
   cd "${srcdir}"/${name}
