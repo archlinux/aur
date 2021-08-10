@@ -3,7 +3,7 @@
 
 pkgname=pulldown-cmark-git
 _pkgname=${pkgname%-git}
-pkgver=0.8.0.r41.g8db4423
+pkgver=0.8.0.r42.g4d5094b
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=(x86_64 i686)
@@ -37,8 +37,7 @@ build() {
 check() {
 	cd "$_pkgname"
 	export RUSTUP_TOOLCHAIN=stable
-	# Upstream Issue: https://github.com/raphlinus/pulldown-cmark/issues/534
-	cargo test --frozen --all-features ||:
+	cargo test --frozen --all-features
 }
 
 package () {
