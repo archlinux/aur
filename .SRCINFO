@@ -1,0 +1,13 @@
+pkgbase = libcal
+	pkgdesc = Hildon Desktop Library
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libcal
+	arch = any
+	groups = gnome
+	license = GPL
+	makedepends = autoconf
+	source = git+https://github.com/maemo-leste/libcal.git#tag=0.3.1
+	sha256sums = SKIP
+
+pkgname = libcal
