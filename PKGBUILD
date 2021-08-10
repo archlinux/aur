@@ -1,7 +1,7 @@
 pkgname=youtubemusic-bin
 _pkgname=YoutubeMusicMusic-bin
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -12,12 +12,12 @@ license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("youtube-git")
-sha256sums_x86_64=('SKIP')
+sha256sums_x86_64=('edfa98cb3df21e3ac5155f72d33cc40d27c998eef2063ed0851812b0d852f23a')
+sha256sums_aarch64=('7b34892f82a548fa063799b4160b8351dfcc8c104f9807024faf267ae3da09b5')
 sha256sums_armv7h=('SKIP')
-sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/youtube-music/binaries/1.0.3-3/-/raw/master/YoutubeMusic-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/youtube-music/binaries/1.0.3-3/-/raw/master/YoutubeMusic-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/youtube-music/binaries/1.0.3-3/-/raw/master/YoutubeMusic-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/youtube-music/binaries/"$pkgver"-"$pkgrel"/-/raw/main/YoutubeMusic-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/youtube-music/binaries/"$pkgver"-"$pkgrel"/-/raw/main/YoutubeMusic-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/youtube-music/binaries/"$pkgver"-"$pkgrel"/-/raw/main/YoutubeMusic-linux-arm64.tar.gz")
 
 
 package() {
