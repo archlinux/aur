@@ -1,15 +1,12 @@
 pkgbase = gnome-shell-extension-coverflow-alt-tab
 	pkgdesc = Replacement of Alt-Tab, iterates through windows in a cover-flow manner
-	pkgver = 1.8.1
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/dmo60/CoverflowAltTab
 	install = gschemas.install
 	arch = any
 	license = GPL
-	makedepends = jq
-	depends = gnome-shell
-	source = tags::https://api.github.com/repos/dmo60/CoverflowAltTab/tags
+	source = https://github.com/dmo60/CoverflowAltTab/archive/refs/tags/v1.11.zip
 	md5sums = SKIP
 
 pkgname = gnome-shell-extension-coverflow-alt-tab
-
