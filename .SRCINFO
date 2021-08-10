@@ -1,6 +1,6 @@
 pkgbase = check_docker_container
 	pkgdesc = Nagios / Icinga monitoring plugin to check if docker container is running
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/BlackZork/check_docker_container.git
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = check_docker_container
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-nagiosplugin
-	source = git+https://github.com/BlackZork/check_docker_container.git#tag=v1.0.0
+	source = git+https://github.com/BlackZork/check_docker_container.git#tag=1.0.1
 	sha256sums = SKIP
 
 pkgname = check_docker_container
