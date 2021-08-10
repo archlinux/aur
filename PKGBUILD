@@ -32,6 +32,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/UwUpp"
-  stack install
+    cd "$srcdir/UwUpp"
+    stack install
+    # Rename output binary
+    cd $(stack path --local-bin)
+    if test -f "./UwUpp-exe"; then
+        mv ./UwUpp-exe ./uwupp
+        echo -e "\n\n\e[1;33mBinary has been renamed to \"uwupp\".\e[0m\n\n"
+    fi # If the file doesn't exist, just ignore it
 }
