@@ -13,8 +13,8 @@ pkgbase = youtube-bin
 	depends = libxss
 	conflicts = youtube-git
 	source_x86_64 = https://gitlab.com/youtube-desktop/binaries/1.0.6-2/-/raw/main/Youtube-linux-x64.tar.gz
-	sha256sums_x86_64 = 147cc3752c57539d9348af6ece25d738db6838e64c67aba6163fa7a32f78a973
+	sha256sums_x86_64 = ab680e5d43a1a53d8f23da27b2cf2a4b5e6eff79082691c7899762a2dde0356f
 	source_aarch64 = https://gitlab.com/youtube-desktop/binaries/1.0.6-2/-/raw/main/Youtube-linux-arm64.tar.gz
-	sha256sums_aarch64 = d9d2881489b63f5c1ab03bcaa78f40741a042bb743867e6505f0d20de947934b
+	sha256sums_aarch64 = 3e454664573f2247cb8c7ef5305bb24437a9ba487595da16ca0801e664ba693c
 
 pkgname = youtube-bin
