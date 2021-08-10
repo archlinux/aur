@@ -10,20 +10,21 @@ pkgdesc="Meshroom is a free, open-source 3D Reconstruction Software based on the
 arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2')
-groups=()
-_depends_qt=(qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
+_depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision alembic openimageio python python-psutil "${_depends_qt[@]}")
-makedepends=(python-pip git cmake python-setuptools python-cx_freeze patchelf)
+makedepends=(git cmake python-setuptools python-cx_freeze patchelf)
 source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git"
         "git+https://github.com/alicevision/qmlAlembic.git"
+        "pyside_property_error.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'e211783ead22d388c72f60bac7ab95d670a4d6ae196225c15038b5c9e7c80fdc')
 
 pkgver() {
   cd "$name"
@@ -44,6 +45,9 @@ prepare() {
   sed -i '/find_package(IlmBase REQUIRED)/d' "${srcdir}"/qmlAlembic/CMakeLists.txt
   sed -i 's|ILMBASE_INCLUDE_DIR||' "${srcdir}"/qmlAlembic/src/CMakeLists.txt
   rm -rf "${srcdir}"/qmlAlembic/cmake/
+
+  # avoid bug in pyside 5.15.2 (https://bugreports.qt.io/browse/PYSIDE-1426)
+  patch -Np1 -i "$srcdir"/pyside_property_error.patch
 }
 
 build() {
@@ -59,8 +63,6 @@ build() {
 
   msg2 'build Meshroom'
   cd "${srcdir}"/${name}
-  sed -i '/^PySide2/s/5.14.1/5.15.2/' requirements.txt
-  pip install --user -r requirements.txt
   python setup.py build
 }
 
