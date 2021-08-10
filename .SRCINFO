@@ -1,17 +1,20 @@
 pkgbase = ruby-rubygems-tasks
-	pkgdesc = Agnostic and unobtrusive Rake tasks for managing and releasing Ruby Gems.
-	pkgver = 0.2.4
+	pkgdesc = Simple Rake tasks for managing and releasing Ruby projects
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/postmodern/rubygems-tasks
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rspec
+	makedepends = git
 	makedepends = rubygems
+	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-rspec
-	depends = ruby-yard
-	noextract = rubygems-tasks-0.2.4.gem
-	source = https://rubygems.org/downloads/rubygems-tasks-0.2.4.gem
-	sha256sums = 52fc573970545df3f3bb586922c026bf711fdb903b38521bb6f4b14571219799
+	depends = ruby-rake
+	depends = ruby-irb
+	options = !emptydirs
+	source = git+https://github.com/postmodern/rubygems-tasks.git?tag=v0.2.5
+	sha256sums = SKIP
 
 pkgname = ruby-rubygems-tasks
-
