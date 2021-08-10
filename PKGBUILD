@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210614
-pkgrel=3
+pkgver=20210810
+pkgrel=1
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
 url=""
@@ -26,7 +26,12 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           mutagen ladspa-plugins spice-glib gcc-multilib gnu-efi-libs
           libwebkit libsystemd heirloom-mailx mailx mailx-heirloom
           fsharp-mono-bin monodevelop-stable python2-gtkspell opentk
+          nuvolaplayer-git python-django18 wxgtk
+          qscintilla-qt4 python-qscintilla-qt4 python2-qscintilla-qt4 python-qscintilla-qt4-common
 )
+
+#pkgver() { date +%Y%m%d }
+
 # systemd-tools -> systemd
 # jade          -> openjade
 # markdown      -> discount
@@ -38,6 +43,12 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
 # heirloom-mailx-> s-nail
 # mailx         -> s-nail
 # mailx-heirloom-> s-nail
+# wxgtk         -> wxgtk2
+# ebtables      -> iptables-nft
+# cdrkit        -> cdrtools
+# fuse          -> fuse2
+# gdisk         -> gptfdisk
+# procps        -> procps-ng
 #
 # python2-gtkspell -> python2-gtkspellcheck
 # geoclue2      -> geoclue

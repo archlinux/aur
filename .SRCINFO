@@ -1,7 +1,7 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix
-	pkgver = 20210614
-	pkgrel = 3
+	pkgver = 20210810
+	pkgrel = 1
 	arch = any
 	license = GPL
 	optdepends = dmenu
@@ -91,6 +91,12 @@ pkgbase = ghost-deps-meta
 	provides = monodevelop-stable
 	provides = python2-gtkspell
 	provides = opentk
+	provides = nuvolaplayer-git
+	provides = python-django18
+	provides = wxgtk
+	provides = qscintilla-qt4
+	provides = python-qscintilla-qt4
+	provides = python2-qscintilla-qt4
+	provides = python-qscintilla-qt4-common
 
 pkgname = ghost-deps-meta
-
