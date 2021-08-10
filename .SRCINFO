@@ -1,4 +1,4 @@
-pkgbase = mce-dev
+pkgbase = mce-headers
 	pkgdesc = Headers defining the D-Bus method calls provided by the Mode Control Entity
 	pkgver = 1.8.21
 	pkgrel = 1
@@ -9,5 +9,4 @@ pkgbase = mce-dev
 	source = mce-dev-1.8.21.tar.gz::https://github.com/maemo-leste/mce-dev/archive/1.8.21.tar.gz
 	sha512sums = ae52169a1120bf4c970d854e7b6a13bf36e17d1b5a897e529f9117cec351a9564753b8d83204479bc04912fc49357e6af01777910a4f99319a56dec6f726f962
 
-pkgname = mce-dev
-
+pkgname = mce-headers
