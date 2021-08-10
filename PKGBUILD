@@ -10,8 +10,8 @@ url="https://github.com/fwcd/KotlinLanguageServer.git"
 license=('MIT')
 conflicts=('kotlin-language-server')
 provides=('kotlin-language-server')
-depends=('java-runtime>=14')
-makedepends=('java-environment>=14' 'git')
+depends=('java-runtime>=11')
+makedepends=('java-environment>=11' 'git')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -23,7 +23,8 @@ pkgver() {
 }
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
+    jdk="$(find /usr/lib/jvm -maxdepth 1 -name "*1*" | head -1)" &&
+      test -n "$jdk" && export JAVA_HOME="$jdk"
     cd "${srcdir}/${_pkgname}"
     ./gradlew server:installDist
 }

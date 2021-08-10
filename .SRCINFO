@@ -5,9 +5,9 @@ pkgbase = kotlin-language-server-git
 	url = https://github.com/fwcd/KotlinLanguageServer.git
 	arch = any
 	license = MIT
-	makedepends = java-environment>=14
+	makedepends = java-environment>=11
 	makedepends = git
-	depends = java-runtime>=14
+	depends = java-runtime>=11
 	provides = kotlin-language-server
 	conflicts = kotlin-language-server
 	source = kotlin-language-server::git+https://github.com/fwcd/KotlinLanguageServer.git
