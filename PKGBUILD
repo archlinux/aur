@@ -25,7 +25,7 @@ _opt_defaultmode='660' # default: 620
 set -u
 pkgname='nslink'
 pkgver='8.00'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='tty driver and firmware update for Comtrol DeviceMaster, RTS, LT, PRO, 500, UP, RPSH-SI, RPSH, and Serial port Hub console terminal device server'
 # UP is not explicitly supported by NS-Link, only by the firmware updater.
 _pkgdescshort="Comtrol DeviceMaster ${pkgname} TTY driver"
@@ -49,15 +49,21 @@ source=(
   'https://downloads.comtrol.com/dev_mstr/rts/utility/linux_firmware_uploader/DM-Firmware-Updater-1.06.tar.gz'
   'dmupdate.py.usage.patch'
   '0002-kernel-5.6-proc_dir_entry-proc_ops.patch'
+  '0003-tty_unregister_driver-void.patch'
+  '0004-kernel-5.12-tty-low_latency.patch'
 )
 md5sums=('b59906d80268e69a24c211b398ffd10c'
          'e3ffb36acfdd321c919e44d477f0774a'
          '581cd5f582ed20c7cf85a4df23a9f78a'
-         '36fcfa504772df4aabbde9f23d5459d5')
+         '36fcfa504772df4aabbde9f23d5459d5'
+         '7e0659716e30c6e2ff5c16f20aac07be'
+         '4e0c61dc0c5da4c3125db7ac1e481aac')
 sha256sums=('092859a3c198f8e3f5083a752eab0af74ef71dce59ed503d120792be13cc5fa3'
             'd21c5eeefdbf08a202a230454f0bf702221686ba3e663eb41852719bb20b75fb'
             '5a4e2713a8d1fe0eebd94fc843839ce5daa647f9fa7d88f62507e660ae111073'
-            'cbaa55f16357688b992a7d7c0f2fb56225edda286d97595918c50e05005d1318')
+            'cbaa55f16357688b992a7d7c0f2fb56225edda286d97595918c50e05005d1318'
+            '7b7718789a4a23c3f16094f93b9fc0d8a5915e67e6a0aedef17cdb6adb22a1ac'
+            'a48cdf948f907b00919c3a2dadbaa2c41c28891d689195e072765c39b0b4af49')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -83,9 +89,17 @@ prepare() {
   fi
   unset _ver
 
-  #cp nslink.c{,.orig}; false
+  #cp -p nslink.c{,.orig}; false
   #diff -pNau5 nslink.c{.orig,} > '0002-kernel-5.6-proc_dir_entry-proc_ops.patch'
   #patch -Nbup0 -i "${srcdir}/0002-kernel-5.6-proc_dir_entry-proc_ops.patch"
+
+  #cp -p nslink.c{,.orig}; false
+  #diff -pNau5 nslink.c{.orig,} > '0003-tty_unregister_driver-void.patch'
+  patch -Nbup0 -i "${srcdir}/0003-tty_unregister_driver-void.patch"
+
+  #cp -p nslink.c{,.orig}; false
+  #diff -pNau5 nslink.c{.orig,} > '0004-kernel-5.12-tty-low_latency.patch'
+  patch -Nbup0 -i "${srcdir}/0004-kernel-5.12-tty-low_latency.patch"
 
   # Make package compatible
   #cp -p 'install.sh' 'install.sh.Arch' # testmode for diff comparison

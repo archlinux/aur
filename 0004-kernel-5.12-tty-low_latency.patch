@@ -1,0 +1,69 @@
+--- nslink.c.orig	2021-08-10 16:38:55.351971026 -0400
++++ nslink.c	2021-08-10 16:40:03.424715195 -0400
+@@ -2505,14 +2505,16 @@ static void init_nr_port(struct si_state
+         info->close_delay = 500;     //ms
+         info->baud_rate = 9600;
+         info->baud_base = 0;
+         // don't set low latency flag on MAC-mode ports, or it causes
+         // problems when tty_flip_buffer_push() is called
++#if LINUX_VERSION_CODE < VERSION_CODE(5,12,0)
+         if (low_latency && si->use_tcp)
+                 info->port.flags |= ASYNC_LOW_LATENCY;
+         else
+                 info->port.flags &= ~ASYNC_LOW_LATENCY;
++#endif
+         info->rx_fifo_disable = rx_fifo_disable;
+ 
+         // check for invalid RS mode setting
+ 
+         if (UnitHasOnly232(si->modelID) && (si->rsmode[portnum] != SI_RSMODE_232)) {
+@@ -3311,12 +3313,14 @@ static int set_serial_info(struct nr_por
+         if (new_serial.closing_wait != ASYNC_CLOSING_WAIT_NONE)
+                 new_serial.closing_wait *= 10;
+ 
+         // don't allow low_latency mode in MAC mode since it causes problems
+         // when tty_flip_buffer_push() is called.
++#if LINUX_VERSION_CODE < VERSION_CODE(5,12,0)
+         if (!info->si->use_tcp)
+                 new_serial.flags &= ~ASYNC_LOW_LATENCY;
++#endif
+ 
+ #ifdef CAP_SYS_ADMIN
+         if (!capable(CAP_SYS_ADMIN))
+ #else
+         if (!suser())
+@@ -3333,12 +3337,14 @@ static int set_serial_info(struct nr_por
+         }
+ 
+         info->baud_base = new_serial.baud_base;
+         info->custom_divisor = new_serial.custom_divisor;
+ 
++#if LINUX_VERSION_CODE < VERSION_CODE(5,12,0)
+         if (info->tty)
+                 nrp_tty_is_low_latency(info->tty) =  (info->port.flags & ASYNC_LOW_LATENCY) != 0;
++#endif
+ 
+         info->inter_char_timeout = new_serial.irq;
+         if (UnitHasNewTimeoutCommands(info->si))
+                 info->update_ic_timeout = 1;
+ 
+@@ -3786,17 +3792,19 @@ static int nrp_write(struct tty_struct *
+ 
+ end:
+         up(&info->write_sem);
+ 
+         //  Call the routines to send data to hub
++#if LINUX_VERSION_CODE < VERSION_CODE(5,12,0)
+         if (info->tty && nrp_tty_is_low_latency(info->tty)) {
+                 info->si->need_to_send = 1;
+                 if (info->si->use_tcp == 0)
+                         si_timer((callback_param_type)&info->si->timer);
+                 else
+                         tcp_send_remote_cmds(info->si);
+         }
++#endif
+ #ifdef NSLINK_DEBUG_WRITE
+         printk(KERN_INFO "ret=%d\n", retval);
+ #endif
+ 
+         return retval;

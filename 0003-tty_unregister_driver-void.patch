@@ -1,0 +1,31 @@
+--- nslink.c.orig	2020-10-29 11:49:44.000000000 -0400
++++ nslink.c	2021-08-10 16:35:56.677430829 -0400
+@@ -5671,11 +5671,11 @@ int nrp_init(void)
+         return 0;
+ }
+ 
+ static void nrp_cleanup_module(void)
+ {
+-        int retval, i;
++        int i;
+ 	printk(KERN_INFO "nslink: starting driver module shutdown\n");
+ 
+         remove_proc_entry("driver/nslink/status",0);
+         remove_proc_entry("driver/nslink/hdlc",0);
+         remove_proc_entry("driver/nslink/ports",0);
+@@ -5697,14 +5697,12 @@ static void nrp_cleanup_module(void)
+ 
+         for (i = 0; i < numBoxes; i++)
+                 free_si_box(i);
+ 
+         if (driver_registered) {
+-                retval = tty_unregister_driver(nslink_driver);
++                tty_unregister_driver(nslink_driver);
+                 put_tty_driver(nslink_driver);
+-                if (retval)
+-                        printk(KERN_INFO "nslink: Error %d while trying to unregister Nslink driver\n", -retval);
+         }
+ 
+ 	printk(KERN_INFO "nslink: finished driver module shutdown\n");
+         return;
+ }
