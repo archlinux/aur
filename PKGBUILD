@@ -4,12 +4,12 @@ pkgver=9f59ff8
 pkgrel=2
 pkgdesc="A compilation of networking jokes"
 url="http://attrition.org/misc/ee/protolol.txt"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom:WTFPL')
 depends=(fortune-mod)
 makedepends=(git)
 _gitname="fortune-protolol"
-source=(git://github.com/virtualtam/fortune-protolol.git)
+source=(git+https://github.com/virtualtam/fortune-protolol.git)
 sha256sums=(SKIP)
 
 pkgver() {

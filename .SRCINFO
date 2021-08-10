@@ -3,13 +3,11 @@ pkgbase = fortune-mod-protolol-git
 	pkgver = 9f59ff8
 	pkgrel = 2
 	url = http://attrition.org/misc/ee/protolol.txt
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:WTFPL
 	makedepends = git
 	depends = fortune-mod
-	source = git://github.com/virtualtam/fortune-protolol.git
+	source = git+https://github.com/virtualtam/fortune-protolol.git
 	sha256sums = SKIP
 
 pkgname = fortune-mod-protolol-git
-
