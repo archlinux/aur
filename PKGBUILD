@@ -4,11 +4,12 @@
 pkgname=pulldown-cmark-git
 _pkgname=${pkgname%-git}
 pkgver=0.8.0.r42.g4d5094b
-pkgrel=1
+pkgrel=2
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=(x86_64 i686)
 url="https://github.com/raphlinus/$_pkgname"
 license=(MIT)
+depends=(gcc-libs)
 makedepends=(cargo
              git)
 provides=("$_pkgname=$pkgver")
