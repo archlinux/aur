@@ -2,7 +2,7 @@
 
 pkgname=mkmm
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Moviuro's Kernel Module Manager"
 arch=('any')
 license=('MIT')
@@ -13,7 +13,7 @@ validpgpkeys=('2CD96FEE343C6799B9CEAFAD62009A2E0C22D9AB')
 source=("git+${url}?signed#tag=${pkgver}"
         "${pkgname}.install")
 sha256sums=('SKIP'
-            '979d20b0f573fcdf50b048a7ebee9d756ebadeac481c65954d83eef5f9a863fa')
+            '19066ac2fd8b1790b8f03b237596d98880149f2bcbd8bf328567e32f042d93b7')
 
 package() {
   install -Dm 555 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
