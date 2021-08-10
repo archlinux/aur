@@ -9,7 +9,7 @@ url="https://github.com/BlackZork/check_docker_container.git"
 license=('MIT')
 depends=('python-nagiosplugin')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/BlackZork/check_docker_container.git#tag=v$pkgver")
+source=("git+https://github.com/BlackZork/check_docker_container.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
