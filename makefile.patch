@@ -1,0 +1,11 @@
+--- src/mce-4b7cb5348b3edafb6712c97a2be5f34f8401c68f/Makefile	2020-09-16 14:11:51.000000000 +0200
++++ Makefile.new	2021-08-10 19:51:25.777027233 +0200
+@@ -125,7 +125,7 @@
+ _INFODIR        ?= $(_DATADIR)/info#             # /usr/share/info
+ _DEFAULTDOCDIR  ?= $(_DATADIR)/doc#              # /usr/share/doc
+ _LOCALSTATEDIR  ?= /var#                         # /var
+-_UNITDIR        ?= /lib/systemd/system#
++_UNITDIR        ?= /usr/lib/systemd/system#
+ _TESTSDIR       ?= /opt/tests#                   # /opt/tests
+ 
+ # Install directories within DESTDIR

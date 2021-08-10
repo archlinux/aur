@@ -1,0 +1,17 @@
+pkgbase = mce
+	pkgdesc = mce with support for tap-to-wake and tilt-to-wake.
+	pkgver = 0_git20200916
+	pkgrel = 1
+	url = https://github.com/AsteroidOS/mce
+	arch = any
+	groups = mer
+	license = GPL
+	depends = libiphb
+	source = https://github.com/AsteroidOS/mce/archive/4b7cb5348b3edafb6712c97a2be5f34f8401c68f/mce-4b7cb5348b3edafb6712c97a2be5f34f8401c68f.tar.gz
+	source = fix-build.patch
+	source = makefile.patch
+	sha256sums = SKIP
+	sha256sums = dc5e2b15f886611787fa62fd60a7bc76bc4b703a08ae51833482b9a7484f7768
+	sha256sums = a61f5d49dcfffc8cc0643812b2b393274e81e05d17c8300aec235c712d1a9133
+
+pkgname = mce
