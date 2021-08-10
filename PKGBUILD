@@ -8,7 +8,7 @@ url="https://github.com/maemo-leste/libhildon"
 arch=(any)
 license=(GPL)
 depends=(gtk3) 
-makedepends=()
+makedepends=(make)
 checkdepends=()
 provides=($pkgname)
 conflicts=($pkgname)
@@ -18,11 +18,11 @@ sha256sums=('SKIP')
 
 build() {
   cd $pkgname
-  ./autogen.sh --prefix=$pkgdir/usr \
+  ./autogen.sh --prefix=/usr \
                --with-maemo-gtk=no
   make
  }
 package() {
   cd $pkgname
-  DESTDIR=$pkgdir make install
+  make DESTDIR=${pkgdir} install
 }
