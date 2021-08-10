@@ -7,9 +7,9 @@
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
-major='21.20'
-minor='1271047'
-amdver='2.4.100'
+major='21.30'
+minor='1290604'
+amdver='2.4.106'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
 tarname="${prefix}${major}-${minor}${postfix}"
@@ -27,10 +27,10 @@ conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver')
 optdepends=('clinfo')
 
-DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-20 -N %u'
+DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-30 -N %u'
 
 source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
-sha256sums=('8ea051de8c9c6814eb45ce18d102e639bb6edb5786e948b50c5105e3e21978f9')
+sha256sums=('5840aac63a3658b3f790c59e57226062e7e4bc74f3c066a3e7bc9e3065e24382')
 
 package() {
 	mkdir -p "${srcdir}/opencl"
@@ -73,7 +73,7 @@ package() {
 	# roc*
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2.1.0" "${pkgdir}/usr/lib"
-	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.1.21233-" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4.2.21303-" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamdhip64.so.4" "${pkgdir}/usr/lib"	
 	mv "${srcdir}/opencl/${shared}/libhsa-runtime64.so.1.3.0" "${pkgdir}/usr/lib"
@@ -88,8 +88,7 @@ package() {
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.2" "${pkgdir}/usr/lib/libamd_comgr.so"
 
 	# orca
-	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamdocl12cl64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"	
 	mv "${srcdir}/libdrm/${shared2}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/libdrm/${shared2}/libdrm_amdgpo.so.1" "${pkgdir}/usr/lib/"
 
