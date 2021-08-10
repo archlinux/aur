@@ -1,0 +1,12 @@
+pkgbase = torrentinim-bin
+	pkgdesc = Torrentinim is a self-hosted API-only, low memory footprint, torrent search engine and crawler.
+	pkgver = v0.3.1
+	pkgrel = 1
+	url = https://github.com/sergiotapia/torrentinim
+	arch = x86_64
+	license = MIT
+	provides = torrentinim
+	source_x86_64 = https://github.com/sergiotapia/torrentinim/releases/download/v0.3.1/Torrentinim_linux.tar.gz
+	sha256sums_x86_64 = 0559b51daa4b499f5ec6b3a65e5fa052dfde739d66ae866eab156d78675a070d
+
+pkgname = torrentinim-bin
