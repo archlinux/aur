@@ -9,7 +9,7 @@ url="https://github.com/Wazzaps/fingerpaint"
 license=('GPL2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('4a32a607a4e7d4b38ff570016f02bbf1')
-depends=('python-evdev' 'python-pillow' 'python-pyudev' 'xorg-xinput')
+depends=('python-evdev' 'python-pillow' 'python-pyudev' 'xorg-xinput' 'tk')
 makedepends=('python-setuptools')
 
 build() {

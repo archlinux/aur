@@ -10,6 +10,7 @@ pkgbase = fingerpaint
 	depends = python-pillow
 	depends = python-pyudev
 	depends = xorg-xinput
+	depends = tk
 	source = fingerpaint-1.2.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.tar.gz
 	md5sums = 4a32a607a4e7d4b38ff570016f02bbf1
 
