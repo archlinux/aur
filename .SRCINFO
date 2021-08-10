@@ -1,6 +1,6 @@
 pkgbase = cdebootstrap-static
 	pkgdesc = Bootstrap a Debian system
-	pkgver = 0.7.7+b12
+	pkgver = 0.7.8+b3
 	pkgrel = 1
 	url = http://packages.debian.org/search?keywords=cdebootstrap
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = cdebootstrap-static
 	depends = wget
 	depends = gnupg
 	optdepends = debian-archive-keyring
-	source_i686 = http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/cdebootstrap-static_0.7.7+b12_i386.deb
-	md5sums_i686 = 67a75fa55f4aede6c5f2dcb2c7e8d63f
-	source_x86_64 = http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/cdebootstrap-static_0.7.7+b12_amd64.deb
-	md5sums_x86_64 = 31d69d6a7b10a13ff5b9a4dd7ecc02df
+	source_i686 = http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/cdebootstrap-static_0.7.8+b3_i386.deb
+	md5sums_i686 = c7bf64d48371314a0b737ee4d0f8c3b3
+	source_x86_64 = http://httpredir.debian.org/debian/pool/main/c/cdebootstrap/cdebootstrap-static_0.7.8+b3_amd64.deb
+	md5sums_x86_64 = e7b1aa352c4366bb273a42996e5348e3
 
 pkgname = cdebootstrap-static
-
