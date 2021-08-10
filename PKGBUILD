@@ -3,8 +3,8 @@
 pkgname=python-proton-client
 _gitpkgname=proton-python-client
 pkgver=0.5.1
-pkgrel=1
-pkgdesc="Proton API Python Client."
+pkgrel=2
+pkgdesc="Official Proton API Python Client, maintained by the Proton(VPN/Mail) team."
 arch=("any")
 url="https://github.com/ProtonMail/proton-python-client"
 license=("GPL3")

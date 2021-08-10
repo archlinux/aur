@@ -1,7 +1,7 @@
 pkgbase = python-proton-client
-	pkgdesc = Proton API Python Client.
+	pkgdesc = Official Proton API Python Client, maintained by the Proton(VPN/Mail) team.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonMail/proton-python-client
 	arch = any
 	groups = ProtonVPN
