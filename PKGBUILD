@@ -13,7 +13,7 @@ license=('MPL2')
 _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision alembic openimageio python python-psutil "${_depends_qt[@]}")
-makedepends=(git cmake python-setuptools python-cx_freeze patchelf)
+makedepends=(git cmake python-setuptools python-cx_freeze-qfix patchelf)
 source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git"
