@@ -1,30 +1,27 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=hackgregator-git
-_pkgname=hackgregator
 pkgver=0.3.0.r9.g2c3ce65
 pkgrel=1
 pkgdesc="This application is a comfortable reader application for news.ycombinator.com"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.com/gunibert/hackgregator"
 license=('GPL3')
 depends=('glib2' 'gtk3' 'libhandy' 'libsoup' 'json-glib' 'webkit2gtk')
 makedepends=('git' 'gobject-introspection' 'meson' 'ninja')
-provides=()
-conflicts=()
-replaces=()
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-noextract=()
-md5sums=(SKIP) #autofill using updpkgsums
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"  
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $_pkgname build
+  arch-meson "${pkgname%-git}" build
   meson compile -C build
 }
 
