@@ -8,7 +8,7 @@
 - Just update <https://github.com/indic-transliteration/sanskrit-fonts/releases>.
 - Verify package by running `makepkg -si`.
 - Update AUR repository.
-  - Set remote: `git remote add ssh://aur@aur.archlinux.org/dyuganga.git .`
+  - Set remote: `git remote add ssh://aur@aur.archlinux.org/sanskrit-fonts.git .`
   - Generate or update .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`
   - Push to the AUR repo. (Even a single invalid commit will cause rejection.)
 
