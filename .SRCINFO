@@ -1,0 +1,13 @@
+pkgbase = libngf
+	pkgdesc = Library for Non-Grafic Feedback.
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/libngf
+	arch = any
+	groups = mer
+	license = GPL
+	makedepends = check
+	source = libngf::git+https://git.sailfishos.org/mer-core/libngf#tag=0.28
+	sha256sums = SKIP
+
+pkgname = libngf
