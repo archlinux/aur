@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/camunda-modeler/camunda-modeler &
+/opt/camunda-modeler/camunda-modeler "$@" &
