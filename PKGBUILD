@@ -17,14 +17,16 @@ source=("https://github.com/AsteroidOS/mce/archive/$_commit/mce-$_commit.tar.gz"
         "makefile.patch")
 sha256sums=('SKIP'
             'dc5e2b15f886611787fa62fd60a7bc76bc4b703a08ae51833482b9a7484f7768'
-            'a61f5d49dcfffc8cc0643812b2b393274e81e05d17c8300aec235c712d1a9133')
+            '6a0bff6641feb52323139064b45b98a1ee389b564d3f64960d78bfc94f7e96ca')
 
  build() {
   cd $pkgname-$_commit
-  PREFIX=/usr make
+  DESTDIR=$pkgdir PREFIX=/usr _UNITDIR=/usr/lib/systemd make
  }
 
 package() {
   cd $pkgname-$_commit
   make DESTDIR=$pkgdir PREFIX=/usr install
+  mv $pkgdir/lib $pkgdir/usr/lib
+  mv $pkgdir/usr/sbin $pkgdir/usr/bin
 }

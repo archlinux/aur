@@ -12,6 +12,6 @@ pkgbase = mce
 	source = makefile.patch
 	sha256sums = SKIP
 	sha256sums = dc5e2b15f886611787fa62fd60a7bc76bc4b703a08ae51833482b9a7484f7768
-	sha256sums = a61f5d49dcfffc8cc0643812b2b393274e81e05d17c8300aec235c712d1a9133
+	sha256sums = 6a0bff6641feb52323139064b45b98a1ee389b564d3f64960d78bfc94f7e96ca
 
 pkgname = mce
