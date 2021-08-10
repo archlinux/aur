@@ -3,8 +3,8 @@
 
 pkgname=python-defcon
 _pyname=${pkgname#python-}
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=(any)
 url="https://github.com/robotools/$_pyname"
@@ -20,7 +20,7 @@ optdepends=(python-fontpens
             'python-lxml: enables faster UFO parsing')
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('410adb6bd18996054ad82b0654aea2bc0a334a9ff7007fe983ec6f3f39f449ea')
+sha256sums=('140f51da51e9630a9fa11dfd34376c4e29785fdb0bddc2e371df5b36bec17b76')
 
 build() {
 	cd "$_archive"
