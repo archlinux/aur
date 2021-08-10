@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-endian
+	pkgdesc = endian.h (mingw-w64)
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceware.org/elfutils/
+	arch = any
+	license = MIT
+	makedepends = mingw-w64-gcc
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/mikepb/endian.h.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-endian
