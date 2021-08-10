@@ -3,7 +3,7 @@
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
 pkgver=1.2.1.r0.g39077f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
     cd "$srcdir/${_pkgbase}"
     (
         set -o pipefail
-        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags --match '[0-9.]*' 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
