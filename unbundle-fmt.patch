@@ -10,14 +10,3 @@
  # Pull in externals CMakeLists for libs where available
  add_subdirectory(externals)
  
---- a/externals/CMakeLists.txt
-+++ b/externals/CMakeLists.txt
-@@ -9,7 +9,7 @@ target_include_directories(catch INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOU
- 
- # fmt
- 
--if (NOT DYNARMIC_NO_BUNDLED_FMT)
-+if (NOT DYNARMIC_NO_BUNDLED_FMT AND NOT TARGET fmt)
-     # fmtlib formatting library
-     add_subdirectory(fmt)
- endif()
