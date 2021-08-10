@@ -1,24 +1,56 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=digest-crc
 pkgname=ruby-${_gemname}
-pkgver=0.4.1
-pkgrel=2
-pkgdesc="Adds support for calculating Cyclic Redundancy Check (CRC) to the Digest module."
-arch=('any')
+pkgver=0.6.4
+pkgrel=1
+pkgdesc="A Cyclic Redundancy Check (CRC) library for Ruby"
+arch=(x86_64)
+url=https://github.com/postmodern/digest-crc
+license=(MIT)
 depends=(ruby)
-url="https://rubygems.org/gems/${_gemname}"
-noextract=($_gemname-$pkgver.gem)
+checkdepends=(ruby-rspec)
+makedepends=(git rubygems ruby-rdoc ruby-bundler ruby-rake ruby-rubygems-tasks)
 options=(!emptydirs)
-license=('MIT')
-source=(
-  "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
-)
-sha256sums=('1494ee18bbb84a61828afe09616dc22c2b73a492b50b0f79334a85321db80823')
+source=(git+https://github.com/postmodern/digest-crc.git?tag=v$pkgver)
+sha256sums=('SKIP')
+
+prepare() {
+  cd ${_gemname}
+  sed -i '/kramdown/d' Gemfile
+  sed -i '/yard/d' Gemfile
+  sed -i '/github-markup/d' Gemfile
+  sed -i '/yard/Id' Rakefile
+}
+
+build() {
+  cd ${_gemname}
+  # rake build:c_exts
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd ${_gemname}
+  rake spec
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_gemname}
+  local _gemdir="$(gem env gemdir)"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm -rf "$pkgdir/$_gemdir/cache"
+
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 ChangeLog.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
+
+# vim: set ts=2 sw=2 et:

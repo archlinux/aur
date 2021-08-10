@@ -1,15 +1,20 @@
 pkgbase = ruby-digest-crc
-	pkgdesc = Adds support for calculating Cyclic Redundancy Check (CRC) to the Digest module.
-	pkgver = 0.4.1
-	pkgrel = 2
-	url = https://rubygems.org/gems/digest-crc
-	arch = any
+	pkgdesc = A Cyclic Redundancy Check (CRC) library for Ruby
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/postmodern/digest-crc
+	arch = x86_64
 	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	makedepends = ruby-bundler
+	makedepends = ruby-rake
+	makedepends = ruby-rubygems-tasks
 	depends = ruby
-	noextract = digest-crc-0.4.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/digest-crc-0.4.1.gem
-	sha256sums = 1494ee18bbb84a61828afe09616dc22c2b73a492b50b0f79334a85321db80823
+	source = git+https://github.com/postmodern/digest-crc.git?tag=v0.6.4
+	sha256sums = SKIP
 
 pkgname = ruby-digest-crc
-
