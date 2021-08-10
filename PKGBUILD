@@ -12,7 +12,7 @@
 
 [[ -v CUDA_ARCH ]] && _cuda_arch="-DALICEVISION_CUDA_CC_LIST=${CUDA_ARCH}"
 
-((DISABLE_CUDA))    && _use_cuda=OFF    || _use_cuda=ON     # Alow user to build without cuda
+((DISABLE_CUDA))    &&    _use_cuda=OFF ||    _use_cuda=ON     # Alow user to build without cuda
 ((DISABLE_CUDA))    && eval DISABLE_{CCTAG,POPSIFT,UTE}=1   # Disable other components that requires cuda
 ((DISABLE_CCTAG))   &&   _use_cctag=OFF ||   _use_cctag=ON  # Disable CCTag (require: cuda)
 #((!DISABLE_CCTAG))  && DISABLE_OPENCV=0                     # CCTag requires OpenCV""
@@ -22,7 +22,8 @@
 ((DISABLE_ALEMBIC)) && _use_alembic=OFF || _use_alembic=ON  # Disable Alembic (mesh export format)
 ((DISABLE_OPENGV))  &&  _use_opengv=OFF ||  _use_opengv=ON  # Disable OpenGV (camera calibration)
 ((DISABLE_OPENCV))  &&  _use_opencv=OFF ||  _use_opencv=ON  # Disable OpenCV (examples & CCTag dependency)
-((!BUILD_DOC))      &&   _build_doc=OFF ||   _build_doc=ON  # Disable Docs
+((!BUILD_DOC))      &&   _build_doc=OFF ||   _build_doc=ON  # Build Doc (sphinx)
+((BUILD_DOXYGEN&=BUILD_DOC))                                # Build Doc (doxygen) requires BUILD_DOC
 
 # Other CMake Options:
 
@@ -71,11 +72,13 @@ url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
 makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
+((!DISABLE_CUDA))    && depends+=('libcudart.so')
 ((!DISABLE_CCTAG))   && depends+=('cctag')
 ((!DISABLE_ALEMBIC)) && depends+=('alembic')
 ((!DISABLE_OPENGV))  && depends+=('opengv')
 ((!DISABLE_OPENCV))  && depends+=('opencv')
 ((BUILD_DOC))        && makedepends+=('python-sphinx')
+((BUILD_DOXYGEN))    && makedepends+=('doxygen')
 ((!DISABLE_POPSIFT)) && { makedepends+=('popsift'); optdepends+=('popsift-libs: for GPU accelerated feature matching'); }
 ((!DISABLE_UTE))     && { makedepends+=('uncertainty-framework' 'magma'); optdepends+=('uncertainty-framework: for SFM uncertainty estimation'); }
 source=("${pkgname}_${pkgver}.tgz::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
@@ -95,15 +98,17 @@ prepare() {
   rm -rf src/dependencies/{MeshSDFilter,nanoflann}
   cp -r "${srcdir}"/MeshSDFilter src/dependencies/MeshSDFilter
   cp -r "${srcdir}"/nanoflann src/dependencies/nanoflann
-  #fix missing submodule warning.
+# fix missing submodule warning.
   mkdir src/dependencies/osi_clp/CoinUtils
   patch -Np1 -i"${srcdir}"/cmake_cxx_std_14.patch
-  #fix FindOpenEXR.cmake against openexr:3
+# fix FindOpenEXR.cmake against openexr:3
   patch -Np1 -i"${srcdir}"/openexr3.patch
-  #fix header relocation against openexr:3
+# fix header relocation against openexr:3
   grep -lR "#include.*OpenEXR/half.h"|xargs sed -i 's|OpenEXR/half|Imath/half|'
-  #fix gcc:11 headers regression
+# fix gcc:11 headers regression
   grep -lR "std::numeric_limits"|xargs sed -i '1 i\#include <limits>'
+# fix doc build
+  ((BUILD_DOXYGEN)) && sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt || true
 }
 
 
@@ -115,11 +120,10 @@ build() {
 
 
 package() {
-  ((DISABLE_CUDA)) || depends+=( 'libcudart.so=10.1' )
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install || bash
 
-# install docs
-  ((BUILD_DOC)) && { install -dm755 "${pkgdir}"/usr/share/doc/${pkgname}; cp -rvt "${pkgdir}"/usr/share/doc/${pkgname} build/src/htmlDoc/*; }
+# install doxygen doc
+  ((BUILD_DOXYGEN)) && ninja -C build doc_doxygen && cp -rvt "${pkgdir}"/usr/share/doc/aliceVision build/src/doc/
 
 # install custom licenses.
   cd "${pkgdir}"/usr/share
