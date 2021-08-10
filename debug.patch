@@ -1,0 +1,11 @@
+--- fsck/main.c
++++ fsck/main.c
+@@ -26,8 +26,6 @@
+ #include <inttypes.h>
+ #include <unistd.h>
+ 
+-#define exfat_debug(format, ...)
+-
+ uint64_t files_count, directories_count;
+ 
+ static int nodeck(struct exfat* ef, struct exfat_node* node)
