@@ -2,8 +2,8 @@
 # Previous maintainer: Swift Geek <swiftgeek@gmail.com>
 
 pkgname=earlyoom-git
-pkgver=1.3.r13.gc58d548
-pkgrel=2
+pkgver=1.6.2.r35.g788fe49
+pkgrel=1
 pkgdesc="Early OOM Daemon for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/rfjakob/earlyoom"
@@ -39,6 +39,14 @@ check() {
 package() {
   cd "earlyoom"
 
-  make DESTDIR="$pkgdir" PREFIX="/usr" earlyoom.service install-bin install-default install-man # install
+  make \
+    DESTDIR="$pkgdir" \
+    PREFIX="/usr" \
+    earlyoom.service \
+    install-bin \
+    install-default \
+    install-man
+    # install
+  install -Dm644 "earlyoom.service" -t "$pkgdir/usr/lib/systemd/system"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/earlyoom"
 }
