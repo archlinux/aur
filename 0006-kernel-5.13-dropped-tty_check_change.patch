@@ -1,0 +1,17 @@
+diff -pNaru5 driver/2.6.27.orig/dgrp_tty.c driver/2.6.27/dgrp_tty.c
+--- driver/2.6.27.orig/dgrp_tty.c	2020-01-28 12:01:10.000000000 -0500
++++ driver/2.6.27/dgrp_tty.c	2021-08-10 14:00:21.627782755 -0400
+@@ -3246,10 +3246,13 @@ static int dgrp_tty_digisetedelay(struct
+ 	drp_param(ch);
+ 
+ 	return 0;
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,13,0)
++int tty_check_change(struct tty_struct *tty);
++#endif
+ 
+ /*
+  *	The usual assortment of ioctl's
+  *
+  *	note:  use tty_check_change to make sure that we are not

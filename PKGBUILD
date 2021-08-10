@@ -105,7 +105,7 @@ pkgname='dgrp'
 #_pkgver='1.9-39'; _dl='40002086_Z.tgz'
 _pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='3'
+pkgrel='4'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -193,6 +193,7 @@ source=(
   '0003'{,a}'-kernel-5.0.0-dgrp_mon_ops-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
   '0004-kernel-5.6-proc_dir_entry-proc_ops.patch'
   '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
+  '0006-kernel-5.13-dropped-tty_check_change.patch'
 )
 unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
@@ -237,7 +238,8 @@ md5sums=('175349c08d19158c88ad582c76916397'
          'a65ba371ae411de4607259fc78a55682'
          '4f1c03f1cc5f440a770c080a121d998a'
          'c25c1fdfbdc1fa38d87e45cf1c8511c2'
-         '2596b5f38ef54d72af08dca05fcce369')
+         '2596b5f38ef54d72af08dca05fcce369'
+         '60a06421a819bc65bd5ba0c3841e0500')
 sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
@@ -277,7 +279,8 @@ sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             'acbcf462628daf4fa2dbee064969a158ccc0bb0ce9f286ceb3617e470eab1c1f'
             '882019276d59e6cc15fcda1bb1dea75b01591509a2644ddb0225ef1d5a17fd1c'
             'b812176f6061d135ab45facecf5a05922d9ffd5ec0a6f17c3e3a5a74729034b1'
-            '82f2c244f169c1f5a9b6186e4e4436c116bd020a1be973e8be261097d38bc937')
+            '82f2c244f169c1f5a9b6186e4e4436c116bd020a1be973e8be261097d38bc937'
+            'eaab5a80791644a24950fe0c6db2c09535655c63ed3a263eb70791ab30f86ab9')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -392,6 +395,10 @@ prepare() {
   #cp -pr driver/2.6.27{,.orig}; false
   #diff -pNaru5 driver/2.6.27{.orig,} > '0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch'
   patch -Nbup0 -i "${srcdir}/0005-kernel-5.12-MODULE_SUPPORTED_DEVICE.patch"
+
+  #cp -pr driver/2.6.27{,.orig}; false
+  #diff -pNaru5 driver/2.6.27{.orig,} > '0006-kernel-5.13-dropped-tty_check_change.patch'
+  patch -Nbup0 -i "${srcdir}/0006-kernel-5.13-dropped-tty_check_change.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
