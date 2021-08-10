@@ -1,0 +1,22 @@
+pkgbase = sums-git
+	pkgdesc = Sums is a simple GTK postfix calculator that adheres to GNOME's human-interface guidelines
+	pkgver = 0.7.r5.g5038662
+	pkgrel = 1
+	url = https://gitlab.com/leesonwai/sums
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = gobject-introspection-runtime
+	makedepends = gcc
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = mpfr
+	provides = sums
+	conflicts = sums
+	source = git+https://gitlab.com/leesonwai/sums.git
+	sha256sums = SKIP
+
+pkgname = sums-git
