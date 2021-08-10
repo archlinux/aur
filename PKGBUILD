@@ -3,7 +3,7 @@
 pkgname=exfat-utils-debug
 pkgver=1.3.0
 pkgrel=3
-pkgdesc='Utilities for the exFAT file system without fuse (to prefer exfat kernel module over fuse)'
+pkgdesc='Utilities for the exFAT file system with debugging enabled'
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url='https://github.com/relan/exfat'
 license=('GPL2')
