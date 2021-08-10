@@ -1,0 +1,16 @@
+pkgbase = emacs-pyim
+	pkgdesc = A Chinese input method in emacs supporting quanpin, shuangpin, wubi, cangjie, and rime.
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = https://github.com/tumashu/pyim
+	arch = any
+	license = GPL
+	makedepends = emacs
+	depends = emacs
+	optdepends = emacs-pyim-basedict: pinyin dictionary
+	optdepends = emacs-pyim-wubidict: wubi dictionary
+	source = emacs-pyim-3.8.2.tar.gz::https://github.com/tumashu/pyim/archive/3c13e24bc8703ee0854fcad1756b2b7b1827cda5.tar.gz
+	sha512sums = 4481a5fb53be65d72750ba6848d73b46abdaaa88cfddc1fb7d8ac01888ef9b231f409a2a61934c6e7f09986611f194b6b567eb3856f41716ad26fcd7ba07e5af
+	b2sums = ea2ae55fc997ac80c7c750563a64b8536c4b1d2a19a1bd8c3d9fe4969560bc623e31144b29cecb2464918f2b0665cab772c8f2481cb63bd22242f1f85fe7a58b
+
+pkgname = emacs-pyim
