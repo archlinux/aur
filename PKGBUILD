@@ -49,10 +49,10 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=91.0b6
+pkgver=92.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-_pkgver=91.0
+_pkgver=92.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
@@ -60,20 +60,21 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=("firefox=$pkgver")
 conflicts=('firefox-beta-bin')
 options=(!emptydirs !makeflags !strip)
-source=(http://archive.mozilla.org/pub/firefox/releases/91.0b6/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
+source=(http://archive.mozilla.org/pub/firefox/releases/${pkgver}/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('bd2aba509bcde4030941a690dc9570f65f7efc365ad1235ffabec03121fc9552'
+sha256sums=('0ab670d560428188f64acfd488ec6aef4f300b1a02c78666164c83a43249d9ec'
             'SKIP'
             '1b6814e85f13dcf069482ad1acfc1a099661922c85e3344aa4ee059288506ccc'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
@@ -119,6 +120,7 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-bootstrap
 
 # Branding
 ac_add_options --enable-official-branding
@@ -129,7 +131,6 @@ ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
-export MOZ_REQUIRE_SIGNING=1
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
