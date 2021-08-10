@@ -2,17 +2,16 @@
 
 pkgname=libunique
 pkgver=1.1.6
-pkgrel=10
+pkgrel=8
 pkgdesc='Library for writing single instance applications for GTK3'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Attic/LibUnique'
 license=('GPL')
 depends=('gtk3')
 #conflicts=('libunique3')
-source=(https://archive.artixlinux.org/packages/l/libunique/libunique-1.1.6-8-x86_64.pkg.tar.zst)
-sha256sums=('762f66826c73fdf97810cc3e04579139f564be50f53a071cc3dfb90c7836c48a')
+source=(libunique-1.1.6-8-x86_64.tar.gz)
+sha256sums=('3f1aa2a6adbda9c9624d1ad131dd87802d76218649bd884e7f0ad3eb679f70b7')
 
 package(){
    mv $srcdir/usr $pkgdir/usr
-   rm $srcdir/libunique-1.1.6-8-x86_64.pkg.tar.zst
 }
