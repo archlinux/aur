@@ -1,6 +1,6 @@
 pkgbase = python-quadpy
 	pkgdesc = Numerical integration (quadrature, cubature) in Python
-	pkgver = 0.16.5
+	pkgver = 0.16.8
 	pkgrel = 3
 	url = https://github.com/nschloe/quadpy
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-quadpy
 	depends = python
 	provides = python-quadpy
 	conflicts = python-quadpy
-	source = https://files.pythonhosted.org/packages/py3/q/quadpy/quadpy-0.16.5-py3-none-any.whl
-	sha256sums = 48243dc7699a536bab2f59f71308dd5f58cd1993fdbfe20c33a31f2a904818c3
+	source = https://files.pythonhosted.org/packages/py3/q/quadpy/quadpy-0.16.8-py3-none-any.whl
+	sha256sums = 4e3872ba00e7a8e9ac97be95babee583821a0e142eddad9ceb63beaed1832138
 
 pkgname = python-quadpy
-
