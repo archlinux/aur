@@ -2,9 +2,9 @@
 pkgname=python-ffsubsync
 _name=${pkgname#python-}
 pkgver=0.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video."
-url="https://gitlab.com/smacke/ffsubsync"
+url="https://github.com/smacke/ffsubsync"
 depends=(
     'python'
     'python-argparse'

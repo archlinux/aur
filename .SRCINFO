@@ -1,8 +1,8 @@
 pkgbase = python-ffsubsync
 	pkgdesc = Language-agnostic automatic synchronization of subtitles with video.
 	pkgver = 0.4.16
-	pkgrel = 1
-	url = https://gitlab.com/smacke/ffsubsync
+	pkgrel = 2
+	url = https://github.com/smacke/ffsubsync
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
