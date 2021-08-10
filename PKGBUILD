@@ -12,7 +12,6 @@ depends=(
     emacs
     emacs-pyim
 )
-makedepends=(emacs)
 # release commit hash
 GIT_HASH='7495c974ada99f9fed96d8e85d8b97dabce9532c'
 source=("$pkgname-pkgver.tar.gz::$url/archive/$GIT_HASH.tar.gz")

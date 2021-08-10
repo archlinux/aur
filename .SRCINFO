@@ -5,7 +5,6 @@ pkgbase = emacs-pyim-basedict
 	url = https://github.com/tumashu/pyim-basedict
 	arch = any
 	license = GPL
-	makedepends = emacs
 	depends = emacs
 	depends = emacs-pyim
 	source = emacs-pyim-basedict-pkgver.tar.gz::https://github.com/tumashu/pyim-basedict/archive/7495c974ada99f9fed96d8e85d8b97dabce9532c.tar.gz
