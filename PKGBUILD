@@ -7,7 +7,8 @@
 # Use: aurutils --margs=VAR1=0,VAR2=1
 # Use: VAR1=0 VAR2=1 pamac
 
-((ENABLE_QTALICEVISION)) && component+=(qtAliceVision)
+((ENABLE_QTALICEVISION)) && components+=(qtAliceVision)
+((DISABLE_CUDA)) && msg2 "DISABLE_CUDA valid only if 'alice-vision' was build with DISABLE_CUDA=1" >&2
 
 name=meshroom
 #fragment="#commit=9bd70ed8ace83c6dde174178e17c5147bb50248f"
@@ -25,7 +26,8 @@ _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision alembic openimageio python python-psutil "${_depends_qt[@]}")
 makedepends=(git cmake python-{cx-freeze-qfix,idna,setuptools} patchelf)
-((ENABLE_QTALICEVISION)) && makedepends+=(popsift coin-or-lemon)
+((ENABLE_QTALICEVISION)) && makedepends+=(coin-or-lemon boost)
+((ENABLE_QTALICEVISION&!DISABLE_CUDA)) && makedepends+=(popsift)
 source=("${pkgname}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
         "git+https://github.com/alicevision/QtOIIO.git${fragment}"
