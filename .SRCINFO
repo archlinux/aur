@@ -13,8 +13,8 @@ pkgbase = youtubemusic-bin
 	depends = libxss
 	conflicts = youtube-git
 	source_x86_64 = https://gitlab.com/youtube-music/binaries/1.0.4-1/-/raw/main/YoutubeMusic-linux-x64.tar.gz
-	sha256sums_x86_64 = edfa98cb3df21e3ac5155f72d33cc40d27c998eef2063ed0851812b0d852f23a
+	sha256sums_x86_64 = ad7d8cacf72e95bac7fb2b1b740f9594d5dccea9e39ce690793d800b084d9aa1
 	source_aarch64 = https://gitlab.com/youtube-music/binaries/1.0.4-1/-/raw/main/YoutubeMusic-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7b34892f82a548fa063799b4160b8351dfcc8c104f9807024faf267ae3da09b5
+	sha256sums_aarch64 = 2b489f792bdb888deed8a302b6a889b541ee238ff2dd5cb760f04752acd51bee
 
 pkgname = youtubemusic-bin
