@@ -1,6 +1,6 @@
 pkgbase = purism-chatty
 	pkgdesc = XMPP and SMS messaging via libpurple and Modemmanager
-	pkgver = 0.1.15
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/chatty
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = purism-chatty
 	depends = evolution-data-server
 	depends = feedbackd
 	depends = libhandy
+	depends = libolm
 	depends = libpurple-carbons
 	optdepends = libpurple-lurch: XMPP E2E OMEMO encryption
 	optdepends = purple-xmpp-http-upload: XMPP HTTP Upload - Filesharing
 	provides = purism-chatty
 	conflicts = purism-chatty
-	source = https://source.puri.sm/Librem5/chatty/-/archive/v0.1.15/chatty-v0.1.15.tar.bz2
-	sha256sums = 924023241d42d0328821d88d599ca7de8c9cdf97cd19f27ce3732f14bfcca1c4
+	source = https://source.puri.sm/Librem5/chatty/-/archive/v0.3.4/chatty-v0.3.4.tar.bz2
+	sha256sums = a957d3955ca83727bb4ba3d8bc0fbe5bdd87bf2286ff099c5dc8f62aab1e102d
 
 pkgname = purism-chatty
-
