@@ -24,7 +24,8 @@ _fragment="${FRAGMENT:-#branch=develop}"
 ((DISABLE_ALEMBIC)) && _use_alembic=OFF || _use_alembic=ON  # Disable Alembic (mesh export format)
 ((DISABLE_OPENGV))  &&  _use_opengv=OFF ||  _use_opengv=ON  # Disable OpenGV (camera calibration)
 ((DISABLE_OPENCV))  &&  _use_opencv=OFF ||  _use_opencv=ON  # Disable OpenCV (examples & CCTag dependency)
-((!BUILD_DOC))      &&   _build_doc=OFF ||   _build_doc=ON  # Disable Docs
+((!BUILD_DOC))      &&   _build_doc=OFF ||   _build_doc=ON  # Build Doc (sphinx)
+((BUILD_DOXYGEN&=BUILD_DOC))                                # Build Doc (doxygen) requires BUILD_DOC
 
 # Other CMake Options:
 
@@ -85,7 +86,8 @@ makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'coin-or-coinutils' '
 ((!DISABLE_ALEMBIC)) && depends+=('alembic')
 ((!DISABLE_OPENGV))  && depends+=('opengv')
 ((!DISABLE_OPENCV))  && depends+=('opencv')
-((BUILD_DOC))        && makedepends+=('python-sphinx' 'doxygen')
+((BUILD_DOC))        && makedepends+=('python-sphinx')
+((BUILD_DOXYGEN))    && makedepends+=('doxygen')
 ((!DISABLE_POPSIFT)) && { makedepends+=('popsift'); optdepends+=('popsift-libs: for GPU accelerated feature matching'); }
 ((!DISABLE_UTE))     && makedepends+=('magma')
 source+=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
@@ -114,7 +116,7 @@ prepare() {
   prepare_submodule
   cd "${srcdir}/${pkgname}"
 # fix doc build
-  sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
+  ((BUILD_DOXYGEN)) && sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt || true
   git apply -v "${srcdir}"/{cmake_cxx_std_14,openexr3}.patch
   #fix gcc:11 headers regression
   grep -lR "std::numeric_limits" src/aliceVision/hdr |xargs sed -i '1 i\#include <limits>'
@@ -155,6 +157,9 @@ package() {
 
   msg2 "Install Alice-Vision"
   DESTDIR="${pkgdir}" ninja -C build install
+
+# install doxygen doc
+  ((BUILD_DOXYGEN)) && ninja -C build doc_doxygen && cp -rvt "${pkgdir}"/usr/share/doc/aliceVision build/src/doc/
 
 # install custom licenses.
   cd "${pkgdir}"/usr/share
