@@ -1,7 +1,7 @@
 pkgbase = protonvpn
-	pkgdesc = A metapackage to install ProtonVPN
+	pkgdesc = Official ProtonVPN metapackage that installs protonvpn-gui and protonvpn-cli, maintained by the ProtonVPN team.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/
 	arch = any
 	license = GPL3
