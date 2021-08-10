@@ -1,10 +1,11 @@
 pkgbase = banner-viewer
 	pkgdesc = View and edit GNOME Software banners
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/design/banner-viewer
-	arch = any
+	arch = x86_64
 	license = GPL
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
@@ -14,6 +15,6 @@ pkgbase = banner-viewer
 	depends = libhandy
 	depends = gtksourceview3
 	source = https://gitlab.gnome.org/World/design/banner-viewer/-/archive/0.0.1/banner-viewer-0.0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = e5b3a9a7a38d95a68e27116dd1d039697a738b5008eff4493ecac3ad26d686ab
 
 pkgname = banner-viewer
