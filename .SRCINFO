@@ -1,7 +1,7 @@
 pkgbase = khronos-git
 	pkgdesc = Track each task's time in a simple inobtrusive way
 	pkgver = 3.5.5.r5.gd6154bc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lainsce/khronos
 	arch = any
 	license = GPL3
@@ -18,6 +18,6 @@ pkgbase = khronos-git
 	provides = khronos
 	conflicts = khronos
 	source = git+https://github.com/lainsce/khronos.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = khronos-git

@@ -2,7 +2,7 @@
 
 pkgname=khronos-git
 pkgver=3.5.5.r5.gd6154bc
-pkgrel=1
+pkgrel=2
 pkgdesc="Track each task's time in a simple inobtrusive way"
 arch=('any')
 url="https://github.com/lainsce/khronos"
@@ -12,11 +12,11 @@ makedepends=('git' 'meson' 'gobject-introspection' 'ninja' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-md5sums=('SKIP') #autofill using updpkgsums
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
@@ -24,11 +24,11 @@ check() {
 }
 
 build() {
-    arch-meson ${pkgname%-git} build
-    meson compile -C build
+  arch-meson ${pkgname%-git} build
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir"
-    DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
