@@ -1,7 +1,7 @@
 pkgbase = python-astropy
 	pkgdesc = A community python library for astronomy
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.astropy.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = python-astropy
 	makedepends = cython
 	makedepends = python-jinja
 	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-extension-helpers
 	depends = python>=3.7
 	depends = python-numpy>=1.17.0
 	depends = cfitsio>=3.49

@@ -2,7 +2,7 @@
 # Maintainer: Médéric Boquien <mboquien@free.fr>
 pkgname=python-astropy
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A community python library for astronomy"
 arch=('i686' 'x86_64')
 url="http://www.astropy.org/"
@@ -26,7 +26,7 @@ optdepends=('python-scipy: powers a variety of features in several modules'
             'libxml2: validates VOTABLE XML files. This is a command line tool installed outside of Python'
 )
 conflicts=('python-pyfits' 'python-vo')
-makedepends=('cython' 'python-jinja' 'python-pip')
+makedepends=('cython' 'python-jinja' 'python-pip' 'python-setuptools-scm' 'python-extension-helpers')
 source=("https://files.pythonhosted.org/packages/source/a/astropy/astropy-${pkgver}.tar.gz")
 sha512sums=('865b6a920ad1daff64823ec36d9f70c0de38dd897b4133001466d6d5274adcc74e006220c1e45af8fd57e7de987ecb336a1ee1b685a3e56c8a5a614125e175dc')
 
