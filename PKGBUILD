@@ -2,15 +2,15 @@
 # Contributor: SuchBlue
 pkgname=salad
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Salad allows gamers to mine crypto in their downtime."
 arch=(x86_64)
 url="https://salad.com/"
 license=('MIT')
 groups=()
-depends=(nodejs npm)
-makedepends=(unzip wget sed tar)
+depends=(nodejs)
+makedepends=(unzip wget sed tar yarn)
 checkdepends=()
 optdepends=()
 provides=(salad)
@@ -32,10 +32,10 @@ prepare() {
 
 build() {
 	cd "salad-applications-${pkgver}/packages/desktop-app"	
-	npm install --force
-	npm run lint
-	npm run build-app
-	npm run build-installer
+	yarn install --force
+	yarn run lint
+	yarn run build-app
+	yarn run build-installer
 }
 
 package() {
