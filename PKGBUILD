@@ -5,7 +5,7 @@
 
 pkgname=xulrunner
 pkgver=41.0.2
-pkgrel=17
+pkgrel=18
 pkgdesc="Mozilla Runtime Environment"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -78,8 +78,8 @@ prepare() {
 
   # WebRTC build tries to execute "python" and expects Python 2
   # Workaround taken from chromium PKGBUILD
-  mkdir "$srcdir/python2-path"
-  ln -s /usr/bin/python2 "$srcdir/python2-path/python"
+  mkdir -p "$srcdir/python2-path"
+  ln -sf /usr/bin/python2 "$srcdir/python2-path/python"
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
@@ -93,11 +93,22 @@ build() {
   export LDFLAGS="$LDFALGS -Wl,-rpath,/usr/lib/xulrunner-$pkgver"
   export PYTHON="/usr/bin/python2"
 
+  export CFLAGS="${CFLAGS/-fstack-clash-protection/}"
+  export CFLAGS="${CFLAGS/-fcf-protection/}"
+  export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/}"
+  export CXXFLAGS="${CXXFLAGS/-fcf-protection/}"
+
   make -j1 -f client.mk build
 }
 
 package() {
   cd "$srcdir/mozilla-release"
+  
+  export CFLAGS="${CFLAGS/-fstack-clash-protection/}"
+  export CFLAGS="${CFLAGS/-fcf-protection/}"
+  export CXXFLAGS="${CXXFLAGS/-fstack-clash-protection/}"
+  export CXXFLAGS="${CXXFLAGS/-fcf-protection/}"
+
   make -j1 -f client.mk DESTDIR="$pkgdir" install
 
   # Use system-provided dictionaries

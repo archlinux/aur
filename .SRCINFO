@@ -1,7 +1,7 @@
 pkgbase = xulrunner
 	pkgdesc = Mozilla Runtime Environment
 	pkgver = 41.0.2
-	pkgrel = 17
+	pkgrel = 18
 	url = http://wiki.mozilla.org/XUL:Xul_Runner
 	arch = x86_64
 	license = MPL
