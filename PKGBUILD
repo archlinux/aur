@@ -33,4 +33,6 @@ build() {
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
+  rm $pkgdir/usr/include/dbus-1.0/dbus/dbus-python.h
+  rm $pkgdir/usr/lib/pkgconfig/dbus-python.pc
 }
