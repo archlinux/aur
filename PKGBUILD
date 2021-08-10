@@ -120,7 +120,7 @@ build() {
 
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install || bash
+  DESTDIR="${pkgdir}" ninja -C build install
 
 # install doxygen doc
   ((BUILD_DOXYGEN)) && ninja -C build doc_doxygen && cp -rvt "${pkgdir}"/usr/share/doc/aliceVision build/src/doc/
