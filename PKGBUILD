@@ -11,6 +11,8 @@ arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2')
 _depends_qt=(python-pyside2 qt5-quickcontrols{,2} qt5-3d qt5-graphicaleffects qt5-imageformats qt5-location qt5-svg)
+provides=(${name}=${pkgver%.r*})
+conflicts=(${name})
 #_depends_qt+=(qt5-datavis3d qt5-scxml)
 depends=(alice-vision-git alembic openimageio python python-psutil "${_depends_qt[@]}")
 makedepends=(git cmake python-setuptools python-cx_freeze-qfix patchelf)

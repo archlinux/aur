@@ -24,6 +24,8 @@ pkgbase = meshroom-git
 	depends = qt5-imageformats
 	depends = qt5-location
 	depends = qt5-svg
+	provides = meshroom=2021.1.0
+	conflicts = meshroom
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#branch=develop
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
 	source = git+https://github.com/alicevision/QtOIIO.git#branch=develop
