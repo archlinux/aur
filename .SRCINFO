@@ -1,14 +1,13 @@
 pkgbase = papirus-claws-mail-theme-git
 	pkgdesc = Papirus theme for claws mail
-	pkgver = 20200504
+	pkgver = 20201019
 	pkgrel = 1
 	url = https://github.com/PapirusDevelopmentTeam/papirus-claws-mail-theme
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = librsvg
-	source = git+https://github.com/PapirusDevelopmentTeam/papirus-claws-mail-theme#commit=7d02981d23ecfc279c87ff6c172ba09314940352
+	source = git+https://github.com/PapirusDevelopmentTeam/papirus-claws-mail-theme#commit=3017a659a613489f110c2aa600496ac49c61da55
 	md5sums = SKIP
 
 pkgname = papirus-claws-mail-theme-git
-
