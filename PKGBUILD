@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam  <virtualtam@flibidi.net>
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 pkgname=minetestmapper-git
-pkgver=6bb818a
+pkgver=20200328.7.gfd4c5dd
 pkgrel=1
 pkgdesc="Minetest map generator"
 arch=('armv7h' 'i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --always --tags | sed 's|-|.|g'
 }
 
 build(){
