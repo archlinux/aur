@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3: system tray icon support')
 provides=('lightcord')
 conflicts=('lightcord-git')
 makedepends=()
-source=("$pkgname-$pkgver.zip::https://lightcord.org/api/v1/gh/releases/Lightcord/Lightcord/v$pkgver/lightcord-linux-x64.zip"
+source=("$pkgname-$pkgver.zip::https://github.com/Lightcord/Lightcord/releases/download/v$pkgver/lightcord-linux-x64.zip"
         "Lightcord.desktop"
         "https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png"
         "https://raw.githubusercontent.com/Lightcord/Lightcord/master/LICENSE"
