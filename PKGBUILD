@@ -16,8 +16,8 @@ depends=(alice-vision-git alembic openimageio python python-psutil "${_depends_q
 makedepends=(git cmake python-setuptools python-cx_freeze-qfix patchelf)
 source=("${name}::git+https://github.com/alicevision/meshroom.git${fragment}"
         "voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git"
-        "git+https://github.com/alicevision/QtOIIO.git"
-        "git+https://github.com/alicevision/qmlAlembic.git"
+        "git+https://github.com/alicevision/QtOIIO.git#branch=develop"
+        "git+https://github.com/alicevision/qmlAlembic.git#branch=develop"
         "pyside_property_error.patch"
         )
 sha256sums=('SKIP'

@@ -26,8 +26,8 @@ pkgbase = meshroom-git
 	depends = qt5-svg
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#branch=develop
 	source = voctree::git+https://gitlab.com/alicevision/trainedVocabularyTreeData.git
-	source = git+https://github.com/alicevision/QtOIIO.git
-	source = git+https://github.com/alicevision/qmlAlembic.git
+	source = git+https://github.com/alicevision/QtOIIO.git#branch=develop
+	source = git+https://github.com/alicevision/qmlAlembic.git#branch=develop
 	source = pyside_property_error.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
