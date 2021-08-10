@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc
-pkgver=0.23.9
+pkgver=0.23.10
 pkgrel=0
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
@@ -97,7 +97,7 @@ package() {
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 }
-sha256sums=('722be60fa74dc11b94ca3a268a56ee1e7f157d0b71ef47666df883585791fe9b'
+sha256sums=('963433c30056408eabef0ecf2b257f4874c888f93d7c7a81cbd7b746a07a1fd1'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
