@@ -9790,8 +9790,7 @@ CONFIG_LOCK_DOWN_KERNEL_FORCE_NONE=y
 # CONFIG_DEFAULT_SECURITY_TOMOYO is not set
 # CONFIG_DEFAULT_SECURITY_APPARMOR is not set
 CONFIG_DEFAULT_SECURITY_DAC=y
-CONFIG_LSM="lockdown,yama"
-
+CONFIG_LSM="landlock,lockdown,yama,apparmor,bpf"
 #
 # Kernel hardening options
 #

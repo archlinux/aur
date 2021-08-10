@@ -26,7 +26,7 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable multigenerational LRU
-_lru_enable=
+_lru_enable=y
 ### Enable Linux Random Number Generator
 _lrng_enable=y
 ### Enable FULLCONENAT
@@ -62,7 +62,7 @@ _use_current=
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.9
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -84,19 +84,19 @@ source=(
 "${_caculepatches}/v5.13/cacule-5.13.patch"
 "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
 "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
- "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+"${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
 "${_patchsource}/winesync/5.13-winesync.patch"
 "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
 "${_patchsource}/zen-patches/0001-zen-patches.patch"
 "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-"${_patchsource}/bfq-patches-v3/0001-bfq-patches.patch"
+"${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
 "${_patchsource}/block-patches-v2/0001-block-patches.patch"
 "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
 "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
 "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
 "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
 "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-"${_patchsource}/lru-patches-v6/0001-lru-patches.patch"
+"${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
 "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
@@ -125,7 +125,7 @@ BUILD_FLAGS=(
       OBJDUMP=objdump
     )
 sha256sums=('72fe7cc1f0363523061659a21e24754697b27f405cb88a41a63038629636159a'
-            '8d740f771b2b2284c4866fb228629e456a08e3f87b07f08f8b31f43f677ee6ae'
+            '7510ac05af905dc484f04da8322b399d5d42b762c53f890640726c48e4cfbd90'
             '5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf'
             'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
@@ -135,14 +135,14 @@ sha256sums=('72fe7cc1f0363523061659a21e24754697b27f405cb88a41a63038629636159a'
             'd9b37cb7edfd48b368f6969e1698278f74f548474bd2707d14a78f371a5e3b15'
             'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
             '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
-            'c5501f058a8accf538fdb9cc541bd08419cd4d597e2c5bc31365d70c68bba5b3'
+            '0b2a42aad39d0feb26b7cf1996ba6792788d060f3b73a7019aa1df9c0922ced8'
             '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
             '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
             '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
             'aa5cbec74dc27591d47616c6c0748475ab55b5efdcbc9d81c2cc49b9b0bf2c00'
             '7289f4ce29d653a0ca511410b66bd3cb42fbcc54f5e097c85e528d4e27ce41ff'
             'd2ba0ec7f76e267417f72abbf3ef35ce232d1e83c7ff33971bf8ccabb9739604'
-            'c463e9b24c0b3f5a2eed4689a816fdd1aab8d02770fe1c87ada73d7c6442b868'
+            '4c1bd02bdd1f3596f1066db8b0d5c38252ecaa830eb0719d4c0df11535523dc1'
             'e5818fcaa55ed416b08900db04f18ae6d29b89d19e0b2fb3feb410efd8099b32'
             '0c1e42b6c197e5e5c8a0c5f4047037289063e064f6b841f05028c62b5449864b'
             'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
