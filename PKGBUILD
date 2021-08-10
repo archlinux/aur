@@ -3,21 +3,23 @@
 pkgname=vaults-git
 _pkgname=Vaults
 pkgver=0.1.0.r14.ge56f714
-pkgrel=1
+pkgrel=2
 pkgdesc="An application for creating encrypted vaults for the GNOME desktop"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/mpobaschnig/Vaults"
 license=('GPL3')
-depends=('glib2' 'gtk4')
+depends=('glib2' 'gtk4' 'libadwaita' 'fuse3')
 makedepends=('meson' 'rust')
+optdepends=('gocryptfs' 'cryfs')
+checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-md5sums=('SKIP') #autofill using updpkgsums
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${_pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${_pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
