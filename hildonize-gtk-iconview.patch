@@ -1,0 +1,1311 @@
+--- a/gtk/gtkiconview.c
++++ b/gtk/gtkiconview.c
+@@ -40,12 +40,15 @@
+ #include "gtkcombobox.h"
+ #include "gtktextbuffer.h"
+ #include "gtktreednd.h"
++#include "gtkicontheme.h"
+ #include "gtkprivate.h"
+ #include "gtkalias.h"
+ 
+ #undef DEBUG_ICON_VIEW
+ 
+ #define SCROLL_EDGE_SIZE 15
++#define HILDON_TICK_MARK_SIZE 48
++#define HILDON_ROW_HEADER_HEIGHT 35
+ 
+ #define GTK_ICON_VIEW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ICON_VIEW, GtkIconViewPrivate))
+ 
+@@ -73,7 +76,7 @@
+ 
+   guint selected : 1;
+   guint selected_before_rubberbanding : 1;
+-
++  guint is_header : 1;
+ };
+ 
+ typedef struct _GtkIconViewCellInfo GtkIconViewCellInfo;
+@@ -187,6 +190,20 @@
+   guint extend_selection_pressed : 1;
+ 
+   guint draw_focus : 1;
++
++  guint queued_select_was_selected : 1;
++
++  HildonUIMode hildon_ui_mode;
++
++  GtkIconViewItem *queued_activate_item;
++  GtkIconViewItem *queued_select_item;
++
++  HildonIconViewRowHeaderFunc row_header_func;
++  gpointer row_header_data;
++  GDestroyNotify row_header_destroy;
++  PangoLayout *row_header_layout;
++
++  GdkPixbuf *tickmark_icon;
+ };
+ 
+ /* Signals */
+@@ -222,7 +239,8 @@
+   PROP_MARGIN,
+   PROP_REORDERABLE,
+   PROP_TOOLTIP_COLUMN,
+-  PROP_ITEM_PADDING
++  PROP_ITEM_PADDING,
++  PROP_HILDON_UI_MODE
+ };
+ 
+ /* GObject vfuncs */
+@@ -453,6 +471,9 @@
+ 
+ static void     adjust_wrap_width                (GtkIconView     *icon_view,
+ 						  GtkIconViewItem *item);
++static void     free_queued_activate_item            (GtkIconView   *icon_view);
++static void     free_queued_select_item              (GtkIconView   *icon_view);
++static void hildon_icon_view_setup_row_header_layout (GtkIconView *icon_view);
+ 
+ /* GtkBuildable */
+ static GtkBuildableIface *parent_buildable_iface;
+@@ -794,7 +815,29 @@
+ 						     0, G_MAXINT, 6,
+ 						     GTK_PARAM_READWRITE));
+ 
+-
++  /**
++   * GtkIconView::hildon-ui-mode
++   *
++   * Specifies which UI mode to use.  A setting of #HILDON_UI_MODE_NORMAL
++   * will cause the icon view to disable selections and emit item-activated
++   * as soon as an item is pressed.  When #HILDON_UI_MODE_EDIT is set,
++   * selections can be made according to the setting of the mode in
++   * GtkIconView::selection-mode.
++   *
++   * Toggling this property will cause the icon view to select an
++   * appropriate selection mode if not already done.
++   *
++   * Since: maemo 5.0
++   * Stability: unstable.
++   */
++  g_object_class_install_property (gobject_class,
++				   PROP_HILDON_UI_MODE,
++				   g_param_spec_enum ("hildon-ui-mode",
++						      P_("Hildon UI Mode"),
++						      P_("The mode according to which the icon view should behave"),
++						      HILDON_TYPE_UI_MODE,
++						      HILDON_UI_MODE_NORMAL,
++						      GTK_PARAM_READWRITE));
+ 
+   /* Style properties */
+   gtk_widget_class_install_style_property (widget_class,
+@@ -1145,6 +1188,11 @@
+   icon_view->priv->item_padding = 6;
+ 
+   icon_view->priv->draw_focus = TRUE;
++
++  icon_view->priv->hildon_ui_mode = HILDON_UI_MODE_NORMAL;
++
++  icon_view->priv->queued_activate_item = NULL;
++  icon_view->priv->queued_select_item = NULL;
+ }
+ 
+ static void
+@@ -1184,6 +1232,24 @@
+       icon_view->priv->vadjustment = NULL;
+     }
+   
++  if (icon_view->priv->row_header_destroy && icon_view->priv->row_header_data)
++    {
++      (* icon_view->priv->row_header_destroy) (icon_view->priv->row_header_data);
++      icon_view->priv->row_header_data = NULL;
++    }
++
++  if (icon_view->priv->row_header_layout != NULL)
++    {
++      g_object_unref (icon_view->priv->row_header_layout);
++      icon_view->priv->row_header_layout = NULL;
++    }
++
++  if (icon_view->priv->tickmark_icon)
++    {
++      g_object_unref (icon_view->priv->tickmark_icon);
++      icon_view->priv->tickmark_icon = NULL;
++  }
++
+   GTK_OBJECT_CLASS (gtk_icon_view_parent_class)->destroy (object);
+ }
+ 
+@@ -1258,6 +1324,10 @@
+       gtk_icon_view_set_item_padding (icon_view, g_value_get_int (value));
+       break;
+ 
++    case PROP_HILDON_UI_MODE:
++      hildon_icon_view_set_hildon_ui_mode (icon_view, g_value_get_enum (value));
++      break;
++
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -1324,6 +1394,10 @@
+       g_value_set_int (value, icon_view->priv->item_padding);
+       break;
+ 
++    case PROP_HILDON_UI_MODE:
++      g_value_set_enum (value, icon_view->priv->hildon_ui_mode);
++      break;
++
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -1425,6 +1499,21 @@
+       gdk_window_set_background (icon_view->priv->bin_window, &widget->style->base[widget->state]);
+     }
+ 
++  /* Reset the UI mode */
++  hildon_icon_view_set_hildon_ui_mode (icon_view, icon_view->priv->hildon_ui_mode);
++
++  if (icon_view->priv->row_header_layout)
++    hildon_icon_view_setup_row_header_layout (icon_view);
++
++  if (icon_view->priv->tickmark_icon)
++    g_object_unref (icon_view->priv->tickmark_icon);
++
++  icon_view->priv->tickmark_icon =
++      gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
++				"widgets_tickmark_grid",
++				HILDON_TICK_MARK_SIZE,
++				0, NULL);
++
+   gtk_widget_queue_resize (widget);
+ }
+ 
+@@ -1561,12 +1650,15 @@
+   gint dest_index;
+   GtkIconViewDropPosition dest_pos;
+   GtkIconViewItem *dest_item = NULL;
++  HildonMode mode;
+ 
+   icon_view = GTK_ICON_VIEW (widget);
+ 
+   if (expose->window != icon_view->priv->bin_window)
+     return FALSE;
+ 
++  gtk_widget_style_get (widget, "hildon-mode", &mode, NULL);
++
+   /* If a layout has been scheduled, do it now so that all
+    * cell view items have valid sizes before we proceed. */
+   if (icon_view->priv->layout_idle_id != 0)
+@@ -1601,8 +1693,25 @@
+       gtk_icon_view_paint_item (icon_view, cr, item, &expose->area, 
+ 				icon_view->priv->bin_window,
+ 				item->x, item->y,
+-				icon_view->priv->draw_focus); 
+- 
++				icon_view->priv->draw_focus);
++
++      if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE
++	  && mode == HILDON_FREMANTLE
++	  && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT
++	  && item->selected)
++	{
++	  gdk_draw_pixbuf (icon_view->priv->bin_window,
++			   NULL,
++			   icon_view->priv->tickmark_icon,
++			   0, 0,
++			   item->x + (item->width - HILDON_TICK_MARK_SIZE) / 2,
++			   item->y + (item->height - HILDON_TICK_MARK_SIZE) / 2,
++			   HILDON_TICK_MARK_SIZE,
++			   HILDON_TICK_MARK_SIZE,
++			   GDK_RGB_DITHER_MAX,
++			   0, 0);
++	}
++
+       if (dest_index == item->index)
+ 	dest_item = item;
+     }
+@@ -1713,10 +1822,28 @@
+ {
+   GtkIconView *icon_view;
+   gint abs_y;
++  HildonMode mode;
+   
+   icon_view = GTK_ICON_VIEW (widget);
+ 
+-  gtk_icon_view_maybe_begin_drag (icon_view, event);
++  gtk_widget_style_get (widget,
++			"hildon-mode", &mode,
++			NULL);
++
++  if (mode == HILDON_FREMANTLE
++      && gtk_drag_check_threshold (widget,
++				   icon_view->priv->press_start_x,
++				   icon_view->priv->press_start_y,
++				   event->x, event->y))
++    {
++      if (icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_NORMAL)
++	free_queued_activate_item (icon_view);
++      else if (icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT)
++	free_queued_select_item (icon_view);
++    }
++
++  if (icon_view->priv->pressed_button >= 0 && mode == HILDON_DIABLO)
++    gtk_icon_view_maybe_begin_drag (icon_view, event);
+ 
+   if (icon_view->priv->doing_rubberband)
+     {
+@@ -2138,6 +2265,7 @@
+   gboolean dirty = FALSE;
+   GtkCellRendererMode mode;
+   gint cursor_cell = -1;
++  HildonMode hildon_mode;
+ 
+   icon_view = GTK_ICON_VIEW (widget);
+ 
+@@ -2154,12 +2282,14 @@
+ 					       FALSE,
+ 					       &info);    
+ 
++      gtk_widget_style_get (widget, "hildon-mode", &hildon_mode, NULL);
++
+       /*
+        * We consider only the the cells' area as the item area if the
+        * item is not selected, but if it *is* selected, the complete
+        * selection rectangle is considered to be part of the item.
+        */
+-      if (item != NULL && (info != NULL || item->selected))
++      if (item != NULL && (info != NULL || item->selected) && !item->is_header)
+ 	{
+ 	  if (info != NULL)
+ 	    {
+@@ -2172,44 +2302,65 @@
+ 
+ 	  gtk_icon_view_scroll_to_item (icon_view, item);
+ 	  
+-	  if (icon_view->priv->selection_mode == GTK_SELECTION_NONE)
++	  if (hildon_mode == HILDON_DIABLO)
+ 	    {
+-	      gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+-	    }
+-	  else if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE &&
+-		   (event->state & GTK_EXTEND_SELECTION_MOD_MASK))
+-	    {
+-	      gtk_icon_view_unselect_all_internal (icon_view);
++	      if (icon_view->priv->selection_mode == GTK_SELECTION_NONE)
++		{
++		  gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
++		}
++	      else if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE &&
++		       (event->state & GTK_EXTEND_SELECTION_MOD_MASK))
++		{
++		  gtk_icon_view_unselect_all_internal (icon_view);
+ 
+-	      gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+-	      if (!icon_view->priv->anchor_item)
+-		icon_view->priv->anchor_item = item;
+-	      else 
+-		gtk_icon_view_select_all_between (icon_view,
+-						  icon_view->priv->anchor_item,
+-						  item);
+-	      dirty = TRUE;
++		  gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
++		  if (!icon_view->priv->anchor_item)
++		    icon_view->priv->anchor_item = item;
++		  else
++		    gtk_icon_view_select_all_between (icon_view,
++						      icon_view->priv->anchor_item,
++						      item);
++		  dirty = TRUE;
++		}
++	      else
++		{
++		  if ((icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE ||
++		       ((icon_view->priv->selection_mode == GTK_SELECTION_SINGLE) && item->selected)) &&
++		      (event->state & GTK_MODIFY_SELECTION_MOD_MASK))
++		    {
++		      item->selected = !item->selected;
++		      gtk_icon_view_queue_draw_item (icon_view, item);
++		      dirty = TRUE;
++		    }
++		  else
++		    {
++		      gtk_icon_view_unselect_all_internal (icon_view);
++
++		      item->selected = TRUE;
++		      gtk_icon_view_queue_draw_item (icon_view, item);
++		      dirty = TRUE;
++		    }
++		  gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
++		  icon_view->priv->anchor_item = item;
++		}
+ 	    }
+-	  else 
++	  else
+ 	    {
+-	      if ((icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE ||
+-		  ((icon_view->priv->selection_mode == GTK_SELECTION_SINGLE) && item->selected)) &&
+-		  (event->state & GTK_MODIFY_SELECTION_MOD_MASK))
++	      if (icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_NORMAL)
+ 		{
+-		  item->selected = !item->selected;
++		  icon_view->priv->queued_activate_item = item;
++
++		  /* Queue a draw so it will appear highlighted */
+ 		  gtk_icon_view_queue_draw_item (icon_view, item);
+-		  dirty = TRUE;
+ 		}
+-	      else
++	      else if (icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT)
+ 		{
+-		  gtk_icon_view_unselect_all_internal (icon_view);
++		  icon_view->priv->queued_select_item = item;
+ 
+-		  item->selected = TRUE;
+-		  gtk_icon_view_queue_draw_item (icon_view, item);
+-		  dirty = TRUE;
++		  /* Queue a draw so it will appear highlighted */
++		  if (!item->selected)
++		    gtk_icon_view_queue_draw_item (icon_view, item);
+ 		}
+-	      gtk_icon_view_set_cursor_item (icon_view, item, cursor_cell);
+-	      icon_view->priv->anchor_item = item;
+ 	    }
+ 
+ 	  /* Save press to possibly begin a drag */
+@@ -2236,7 +2387,7 @@
+ 					     (GdkEvent *)event);
+ 	    }
+ 	}
+-      else
++      else if (hildon_mode == HILDON_DIABLO)
+ 	{
+ 	  if (icon_view->priv->selection_mode != GTK_SELECTION_BROWSE &&
+ 	      !(event->state & GTK_MODIFY_SELECTION_MOD_MASK))
+@@ -2252,26 +2403,6 @@
+       icon_view->priv->draw_focus = FALSE;
+     }
+ 
+-  if (event->button == 1 && event->type == GDK_2BUTTON_PRESS)
+-    {
+-      item = gtk_icon_view_get_item_at_coords (icon_view,
+-					       event->x, event->y,
+-					       FALSE,
+-					       NULL);
+-
+-      if (item && item == icon_view->priv->last_single_clicked)
+-	{
+-	  GtkTreePath *path;
+-
+-	  path = gtk_tree_path_new_from_indices (item->index, -1);
+-	  gtk_icon_view_item_activated (icon_view, path);
+-	  gtk_tree_path_free (path);
+-	}
+-
+-      icon_view->priv->last_single_clicked = NULL;
+-      icon_view->priv->pressed_button = -1;
+-    }
+-  
+   if (dirty)
+     g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+ 
+@@ -2283,12 +2414,79 @@
+ 			      GdkEventButton *event)
+ {
+   GtkIconView *icon_view;
++  HildonMode mode;
++  GtkIconViewItem *item = NULL;
+ 
+   icon_view = GTK_ICON_VIEW (widget);
+   
+   if (icon_view->priv->pressed_button == event->button)
+     icon_view->priv->pressed_button = -1;
+ 
++  gtk_widget_style_get (widget,
++			"hildon-mode", &mode,
++			NULL);
++
++  if (mode == HILDON_FREMANTLE)
++    item = gtk_icon_view_get_item_at_coords (icon_view,
++					     event->x, event->y,
++					     FALSE,
++					     NULL);
++
++  if (icon_view->priv->queued_activate_item
++      && mode == HILDON_FREMANTLE
++      && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_NORMAL)
++    {
++      GtkTreePath *path;
++
++      gtk_icon_view_queue_draw_item (icon_view,
++				     icon_view->priv->queued_activate_item);
++
++      if (icon_view->priv->queued_activate_item == item)
++	{
++	  path = gtk_tree_path_new_from_indices (icon_view->priv->queued_activate_item->index, -1);
++	  gtk_icon_view_item_activated (icon_view, path);
++	  gtk_tree_path_free (path);
++	}
++
++      icon_view->priv->queued_activate_item = NULL;
++    }
++
++  if (icon_view->priv->queued_select_item
++      && mode == HILDON_FREMANTLE
++      && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT)
++    {
++      GtkIconViewItem *select_item = icon_view->priv->queued_select_item;
++
++      free_queued_select_item (icon_view);
++
++      if (select_item == item)
++	{
++	  if (icon_view->priv->selection_mode == GTK_SELECTION_SINGLE)
++	    {
++	      if (!item->selected)
++		{
++		  gtk_icon_view_unselect_all_internal (icon_view);
++
++		  item->selected = TRUE;
++		  gtk_icon_view_queue_draw_item (icon_view, item);
++
++		  g_signal_emit (icon_view,
++				 icon_view_signals[SELECTION_CHANGED], 0);
++		}
++	    }
++	  else if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE)
++	    {
++	      item->selected = !item->selected;
++	      gtk_icon_view_queue_draw_item (icon_view, item);
++
++	      g_signal_emit (icon_view,
++			     icon_view_signals[SELECTION_CHANGED], 0);
++	    }
++
++	  icon_view->priv->anchor_item = item;
++	}
++    }
++
+   gtk_icon_view_stop_rubberbanding (icon_view);
+ 
+   remove_scroll_timeout (icon_view);
+@@ -2447,6 +2645,9 @@
+       gboolean is_in;
+       gboolean selected;
+       
++      if (item->is_header)
++	continue;
++
+       is_in = gtk_icon_view_item_hit_test (icon_view, item, 
+ 					   x, y, width, height);
+ 
+@@ -2687,6 +2888,74 @@
+     }
+ }
+ 
++static inline gboolean
++item_is_header (GtkIconView     *icon_view,
++		GtkIconViewItem *item)
++{
++  gboolean is_header = FALSE;
++
++  if (icon_view->priv->row_header_func)
++    {
++      GtkTreeIter iter;
++
++      if (gtk_tree_model_get_flags (icon_view->priv->model) & GTK_TREE_MODEL_ITERS_PERSIST)
++	{
++	  GtkTreePath *path;
++
++	  path = gtk_tree_path_new_from_indices (item->index, -1);
++	  if (!gtk_tree_model_get_iter (icon_view->priv->model, &iter, path))
++	    return is_header;
++	  gtk_tree_path_free (path);
++	}
++      else
++	iter = item->iter;
++
++      is_header = (* icon_view->priv->row_header_func) (icon_view->priv->model,
++							&iter,
++							NULL,
++							icon_view->priv->row_header_data);
++    }
++
++  return is_header;
++}
++
++static gboolean
++search_first_selectable_path (GtkIconView  *icon_view,
++			      GtkTreePath **path,
++			      gboolean      search_forward)
++{
++  int index;
++  GList *list;
++
++  if (!path || !*path)
++    return FALSE;
++
++  index = gtk_tree_path_get_indices (*path)[0];
++  list = g_list_nth (icon_view->priv->items, index);
++
++  while (list && item_is_header (icon_view, list->data))
++    {
++      if (search_forward)
++	{
++	  index++;
++	  list = list->next;
++	}
++      else
++	{
++	  index--;
++	  list = list->prev;
++	}
++    }
++
++  if (!list)
++    return FALSE;
++
++  gtk_tree_path_up (*path);
++  gtk_tree_path_append_index (*path, index);
++
++  return TRUE;
++}
++
+ static GList *
+ gtk_icon_view_layout_single_row (GtkIconView *icon_view, 
+ 				 GList       *first_item, 
+@@ -2703,6 +2972,7 @@
+   gint *max_height;
+   gint i;
+   gboolean rtl;
++  GtkIconViewItem *header_item = NULL;
+ 
+   rtl = gtk_widget_get_direction (GTK_WIDGET (icon_view)) == GTK_TEXT_DIR_RTL;
+   max_height = g_new0 (gint, icon_view->priv->n_cells);
+@@ -2725,6 +2995,17 @@
+       GtkIconViewItem *item = items->data;
+ 
+       gtk_icon_view_calculate_item_size (icon_view, item);
++
++      if (item->is_header)
++	{
++	  header_item = item;
++	  item->y = *y + focus_width;
++
++	  /* Include the header item as last item of this row */
++	  items = items->next;
++	  break;
++	}
++
+       colspan = 1 + (item->width - 1) / (item_width + icon_view->priv->column_spacing);
+ 
+       item->width = colspan * item_width + (colspan - 1) * icon_view->priv->column_spacing;
+@@ -2765,6 +3046,9 @@
+     {
+       GtkIconViewItem *item = items->data;
+ 
++      if (item->is_header)
++	continue;
++
+       if (rtl)
+ 	{
+ 	  item->x = *maximum_width - item->width - item->x;
+@@ -2778,6 +3062,18 @@
+ 	*y = item->y + item->height + focus_width + icon_view->priv->row_spacing;
+     }
+ 
++  if (header_item)
++    {
++      /* FIXME: we might want to use allocation->width here instead. */
++      header_item->x = 0;
++      header_item->width = icon_view->priv->width;
++
++      header_item->y = *y;
++      header_item->height = HILDON_ROW_HEADER_HEIGHT;
++
++      *y += HILDON_ROW_HEADER_HEIGHT;
++    }
++
+   g_free (max_height);
+   
+   return last_item;
+@@ -2991,7 +3287,7 @@
+   gint spacing;
+   GList *l;
+ 
+-  if (item->width != -1 && item->height != -1) 
++  if (item->width != -1 && item->height != -1 && !item->is_header)
+     return;
+ 
+   if (item->n_cells != icon_view->priv->n_cells)
+@@ -3013,6 +3309,11 @@
+ 
+   item->width = 0;
+   item->height = 0;
++  item->is_header = item_is_header (icon_view, item);
++
++  if (item->is_header)
++    return;
++
+   for (l = icon_view->priv->cell_list; l; l = l->next)
+     {
+       GtkIconViewCellInfo *info = (GtkIconViewCellInfo *)l->data;
+@@ -3153,6 +3454,58 @@
+ }
+ 
+ static void
++gtk_icon_view_paint_row_header (GtkIconView     *icon_view,
++				GtkIconViewItem *item,
++				GdkRectangle    *area,
++				GdkDrawable     *drawable)
++{
++  gchar *label = NULL;
++  int width, height;
++  gboolean is_header;
++  GtkTreeIter iter;
++  GtkWidget *widget = GTK_WIDGET (icon_view);
++
++  g_return_if_fail (icon_view->priv->row_header_func != NULL);
++
++  if (gtk_tree_model_get_flags (icon_view->priv->model) & GTK_TREE_MODEL_ITERS_PERSIST)
++    {
++      GtkTreePath *path;
++
++      path = gtk_tree_path_new_from_indices (item->index, -1);
++      g_return_if_fail (gtk_tree_model_get_iter (icon_view->priv->model, &iter, path));
++      gtk_tree_path_free (path);
++    }
++  else
++    iter = item->iter;
++
++  is_header = (* icon_view->priv->row_header_func) (icon_view->priv->model,
++						    &iter,
++						    &label,
++						    icon_view->priv->row_header_data);
++
++  g_return_if_fail (is_header == TRUE);
++  g_return_if_fail (icon_view->priv->row_header_layout != NULL);
++
++  pango_layout_set_text (icon_view->priv->row_header_layout,
++			 label, strlen (label));
++  pango_layout_get_pixel_size (icon_view->priv->row_header_layout,
++			       &width, &height);
++
++  gtk_paint_layout (widget->style,
++		    drawable,
++		    widget->state,
++		    TRUE,
++		    area,
++		    widget,
++		    "iconview-group-header",
++		    item->x + (item->width - width) / 2,
++		    item->y + item->height - height,
++		    icon_view->priv->row_header_layout);
++
++  g_free (label);
++}
++
++static void
+ gtk_icon_view_paint_item (GtkIconView     *icon_view,
+ 			  cairo_t         *cr,
+ 			  GtkIconViewItem *item,
+@@ -3169,10 +3522,17 @@
+   gint i;
+   GtkStateType state;
+   GtkCellRendererState flags;
+-      
++  gboolean selected = FALSE;
++
+   if (icon_view->priv->model == NULL)
+     return;
+   
++  if (item->is_header)
++     {
++       gtk_icon_view_paint_row_header (icon_view, item, area, drawable);
++       return;
++    }
++
+   gtk_icon_view_set_cell_data (icon_view, item);
+ 
+   gtk_widget_style_get (GTK_WIDGET (icon_view),
+@@ -3181,7 +3541,12 @@
+   
+   padding = focus_width; 
+   
+-  if (item->selected)
++  if (item->selected
++      || item == icon_view->priv->queued_select_item
++      || item == icon_view->priv->queued_activate_item)
++    selected = TRUE;
++
++  if (selected)
+     {
+       flags = GTK_CELL_RENDERER_SELECTED;
+       if (gtk_widget_has_focus (GTK_WIDGET (icon_view)))
+@@ -3203,7 +3568,7 @@
+ 		      item->width, item->height);
+ #endif
+ 
+-  if (item->selected)
++  if (selected)
+     {
+       gtk_paint_flat_box (GTK_WIDGET (icon_view)->style,
+ 			  (GdkWindow *) drawable,
+@@ -3215,7 +3580,7 @@
+ 			  x, y,
+ 			  item->width, item->height);
+     }
+-  
++
+   for (l = icon_view->priv->cell_list; l; l = l->next)
+     {
+       GtkIconViewCellInfo *info = (GtkIconViewCellInfo *)l->data;
+@@ -3264,9 +3629,10 @@
+             continue;
+ 
+           /* If found a editable/activatable cell, draw focus on it. */
+-          if (icon_view->priv->cursor_cell < 0 &&
+-              info->cell->mode != GTK_CELL_RENDERER_MODE_INERT)
+-            icon_view->priv->cursor_cell = i;
++	  /* If found a editable/activatable cell, draw focus on it. */
++	  if (icon_view->priv->cursor_cell < 0 &&
++	      info->cell->mode != GTK_CELL_RENDERER_MODE_INERT)
++	    icon_view->priv->cursor_cell = i;
+ 
+           gtk_icon_view_get_cell_box (icon_view, item, info, &box);
+ 
+@@ -3426,11 +3792,24 @@
+   AtkObject *obj;
+   AtkObject *item_obj;
+   AtkObject *cursor_item_obj;
++  HildonMode mode;
+ 
+   if (icon_view->priv->cursor_item == item &&
+       (cursor_cell < 0 || cursor_cell == icon_view->priv->cursor_cell))
+     return;
+ 
++  /* Cannot set cursor on header */
++  if (item->is_header)
++    return;
++
++  gtk_widget_style_get (GTK_WIDGET (icon_view),
++			"hildon-mode", &mode,
++			NULL);
++
++  /* No cursors in new-style */
++  if (mode == HILDON_FREMANTLE)
++    return;
++
+   obj = gtk_widget_get_accessible (GTK_WIDGET (icon_view));
+   if (icon_view->priv->cursor_item != NULL)
+     {
+@@ -3554,6 +3933,9 @@
+   if (item->selected)
+     return;
+   
++  if (item->is_header)
++    return;
++
+   if (icon_view->priv->selection_mode == GTK_SELECTION_NONE)
+     return;
+   else if (icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
+@@ -3578,6 +3960,9 @@
+   if (!item->selected)
+     return;
+   
++  if (item->is_header)
++    return;
++
+   if (icon_view->priv->selection_mode == GTK_SELECTION_NONE ||
+       icon_view->priv->selection_mode == GTK_SELECTION_BROWSE)
+     return;
+@@ -3590,11 +3975,12 @@
+   gtk_icon_view_queue_draw_item (icon_view, item);
+ }
+ 
+-static void
++static gint
+ verify_items (GtkIconView *icon_view)
+ {
+   GList *items;
+   int i = 0;
++  int selected = 0;
+ 
+   for (items = icon_view->priv->items; items; items = items->next)
+     {
+@@ -3604,8 +3990,13 @@
+ 	g_error ("List item does not match its index: "
+ 		 "item index %d and list index %d\n", item->index, i);
+ 
++      if (item->selected)
++	selected++;
++
+       i++;
+     }
++
++  return selected;
+ }
+ 
+ static void
+@@ -3671,7 +4062,26 @@
+       item->index++;
+     }
+     
+-  verify_items (icon_view);
++  if (verify_items (icon_view) < 1)
++    {
++      HildonMode mode;
++
++      gtk_widget_style_get (GTK_WIDGET (icon_view),
++			    "hildon-mode", &mode,
++			    NULL);
++
++      if (mode == HILDON_FREMANTLE
++	  && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT
++	  && icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
++	{
++	  GtkTreePath *tmppath;
++
++	  tmppath = gtk_tree_path_copy (path);
++	  search_first_selectable_path (icon_view, &tmppath, TRUE);
++	  gtk_icon_view_select_path (icon_view, tmppath);
++	  gtk_tree_path_free (tmppath);
++	}
++    }
+ 
+   gtk_icon_view_queue_layout (icon_view);
+ }
+@@ -3716,8 +4126,28 @@
+   
+   icon_view->priv->items = g_list_delete_link (icon_view->priv->items, list);
+ 
+-  verify_items (icon_view);  
+-  
++  if (emit && verify_items (icon_view) < 1)
++    {
++      HildonMode mode;
++
++      gtk_widget_style_get (GTK_WIDGET (icon_view),
++			    "hildon-mode", &mode,
++			    NULL);
++
++      if (mode == HILDON_FREMANTLE
++	  && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_EDIT
++	  && icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
++	{
++	  GtkTreePath *path;
++
++	  /* The last item was just removed, select the first one */
++	  path = gtk_tree_path_new_first ();
++	  search_first_selectable_path (icon_view, &path, TRUE);
++	  gtk_icon_view_select_path (icon_view, path);
++	  gtk_tree_path_free (path);
++	}
++    }
++
+   gtk_icon_view_queue_layout (icon_view);
+ 
+   if (emit)
+@@ -3908,6 +4338,10 @@
+   for (items = icon_view->priv->items; items; items = items->next)
+     {
+       item = items->data;
++
++      if (item->is_header)
++	continue;
++
+       if (item->row == row && item->col == col)
+ 	return item;
+     }
+@@ -4011,6 +4445,9 @@
+ 	{
+ 	  for (next = item->next; next; next = next->next)
+ 	    {
++	      if (((GtkIconViewItem *)next->data)->is_header)
++		continue;
++
+ 	      if (((GtkIconViewItem *)next->data)->col == col)
+ 		break;
+ 	    }
+@@ -4026,6 +4463,9 @@
+ 	{
+ 	  for (next = item->prev; next; next = next->prev)
+ 	    {
++	      if (((GtkIconViewItem *)next->data)->is_header)
++		continue;
++
+ 	      if (((GtkIconViewItem *)next->data)->col == col)
+ 		break;
+ 	    }
+@@ -4042,6 +4482,28 @@
+   return NULL;
+ }
+ 
++static inline GList *
++find_first_cursor_item (GtkIconView *icon_view,
++			gboolean     search_forward)
++{
++  GList *list;
++
++  if (search_forward)
++    {
++      list = icon_view->priv->items;
++      while (list && ((GtkIconViewItem *)list->data)->is_header)
++	list = list->next;
++    }
++  else
++    {
++      list = g_list_last (icon_view->priv->items);
++      while (list && ((GtkIconViewItem *)list->data)->is_header)
++	list = list->prev;
++    }
++
++  return list;
++}
++
+ static gboolean
+ gtk_icon_view_select_all_between (GtkIconView     *icon_view,
+ 				  GtkIconViewItem *anchor,
+@@ -4081,7 +4543,7 @@
+       if (row1 <= item->row && item->row <= row2 &&
+ 	  col1 <= item->col && item->col <= col2)
+ 	{
+-	  if (!item->selected)
++	  if (!item->selected && !item->is_header)
+ 	    {
+ 	      dirty = TRUE;
+ 	      item->selected = TRUE;
+@@ -4112,11 +4574,16 @@
+   if (!icon_view->priv->cursor_item)
+     {
+       GList *list;
++      HildonMode mode;
+ 
+-      if (count > 0)
+-	list = icon_view->priv->items;
+-      else
+-	list = g_list_last (icon_view->priv->items);
++      gtk_widget_style_get (GTK_WIDGET (icon_view),
++			    "hildon-mode", &mode,
++			    NULL);
++
++      if (mode == HILDON_FREMANTLE)
++	return;
++
++      list = find_first_cursor_item (icon_view, count > 0);
+ 
+       item = list ? list->data : NULL;
+       cell = -1;
+@@ -4190,11 +4657,16 @@
+   if (!icon_view->priv->cursor_item)
+     {
+       GList *list;
++      HildonMode mode;
+ 
+-      if (count > 0)
+-	list = icon_view->priv->items;
+-      else
+-	list = g_list_last (icon_view->priv->items);
++      gtk_widget_style_get (GTK_WIDGET (icon_view),
++			    "hildon-mode", &mode,
++			    NULL);
++
++      if (mode == HILDON_FREMANTLE)
++	return;
++
++      list = find_first_cursor_item (icon_view, count > 0);
+ 
+       item = list ? list->data : NULL;
+     }
+@@ -4250,11 +4722,16 @@
+   if (!icon_view->priv->cursor_item)
+     {
+       GList *list;
++      HildonMode mode;
+ 
+-      if (count > 0)
+-	list = icon_view->priv->items;
+-      else
+-	list = g_list_last (icon_view->priv->items);
++      gtk_widget_style_get (GTK_WIDGET (icon_view),
++			    "hildon-mode", &mode,
++			    NULL);
++
++      if (mode == HILDON_FREMANTLE)
++	return;
++
++      list = find_first_cursor_item (icon_view, count > 0);
+ 
+       item = list ? list->data : NULL;
+     }
+@@ -4321,15 +4798,19 @@
+   GtkIconViewItem *item;
+   GList *list;
+   gboolean dirty = FALSE;
++  HildonMode mode;
+   
+   if (!gtk_widget_has_focus (GTK_WIDGET (icon_view)))
+     return;
+   
+-  if (count < 0)
+-    list = icon_view->priv->items;
+-  else
+-    list = g_list_last (icon_view->priv->items);
+-  
++  gtk_widget_style_get (GTK_WIDGET (icon_view),
++			"hildon-mode", &mode,
++			NULL);
++
++  if (mode == HILDON_FREMANTLE)
++    return;
++
++  list = find_first_cursor_item (icon_view, count < 0);
+   item = list ? list->data : NULL;
+ 
+   if (item == icon_view->priv->cursor_item)
+@@ -4858,7 +5339,7 @@
+   
+   g_return_val_if_fail (GTK_IS_ICON_VIEW (icon_view), NULL);
+ 
+-  item = gtk_icon_view_get_item_at_coords (icon_view, x, y, TRUE, NULL);
++  item = gtk_icon_view_get_item_at_coords (icon_view, x, y, FALSE, NULL);
+ 
+   if (!item)
+     return NULL;
+@@ -5278,11 +5759,25 @@
+ gtk_icon_view_set_selection_mode (GtkIconView      *icon_view,
+ 				  GtkSelectionMode  mode)
+ {
++  HildonMode hildon_mode;
++
+   g_return_if_fail (GTK_IS_ICON_VIEW (icon_view));
+ 
+   if (mode == icon_view->priv->selection_mode)
+     return;
+   
++  gtk_widget_style_get (GTK_WIDGET (icon_view),
++			"hildon-mode", &hildon_mode,
++			NULL);
++
++  if (hildon_mode == HILDON_FREMANTLE
++      && icon_view->priv->hildon_ui_mode == HILDON_UI_MODE_NORMAL
++      && mode != GTK_SELECTION_NONE)
++    {
++      g_warning ("Cannot change the selection mode to anything other than GTK_SELECTION_NONE in normal-mode.\n");
++      return;
++    }
++
+   if (mode == GTK_SELECTION_NONE ||
+       icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE)
+     gtk_icon_view_unselect_all (icon_view);
+@@ -5897,7 +6392,7 @@
+     {
+       GtkIconViewItem *item = items->data;
+       
+-      if (!item->selected)
++      if (!item->selected && !item->is_header)
+ 	{
+ 	  dirty = TRUE;
+ 	  item->selected = TRUE;
+@@ -7648,6 +8143,176 @@
+   g_object_notify (G_OBJECT (icon_view), "reorderable");
+ }
+ 
++HildonIconViewRowHeaderFunc
++hildon_icon_view_get_row_header_func (GtkIconView *icon_view)
++{
++  g_return_val_if_fail (GTK_IS_ICON_VIEW (icon_view), NULL);
++
++  return icon_view->priv->row_header_func;
++}
++
++static void
++hildon_icon_view_setup_row_header_layout (GtkIconView *icon_view)
++{
++  GdkColor font_color;
++  GtkStyle *font_style;
++  GtkWidget *widget = GTK_WIDGET (icon_view);
++
++  font_style = gtk_rc_get_style_by_paths (gtk_settings_get_default (),
++					  "EmpSmallSystemFont",
++					  NULL, G_TYPE_NONE);
++  if (font_style)
++    {
++      pango_layout_set_font_description (icon_view->priv->row_header_layout,
++					 font_style->font_desc);
++    }
++
++  if (gtk_style_lookup_color (widget->style, "SecondaryTextColor", &font_color))
++    {
++      PangoAttrList *list;
++      PangoAttribute *attr;
++
++      list = pango_attr_list_new ();
++      attr = pango_attr_foreground_new (font_color.red,
++					font_color.green,
++					font_color.blue);
++      attr->start_index = 0;
++      attr->end_index = G_MAXINT;
++      pango_attr_list_insert (list, attr);
++
++      pango_layout_set_attributes (icon_view->priv->row_header_layout,
++				   list);
++
++      pango_attr_list_unref (list);
++    }
++}
++
++void
++hildon_icon_view_set_row_header_func (GtkIconView                 *icon_view,
++				      HildonIconViewRowHeaderFunc  func,
++				      gpointer                    data,
++				      GDestroyNotify              destroy)
++{
++  g_return_if_fail (GTK_IS_ICON_VIEW (icon_view));
++
++  if (icon_view->priv->row_header_destroy)
++    (* icon_view->priv->row_header_destroy) (icon_view->priv->row_header_data);
++
++  icon_view->priv->row_header_func = func;
++  icon_view->priv->row_header_data = data;
++  icon_view->priv->row_header_destroy = destroy;
++
++  if (func && !icon_view->priv->row_header_layout)
++    {
++      icon_view->priv->row_header_layout =
++	  gtk_widget_create_pango_layout (GTK_WIDGET (icon_view), "");
++
++      hildon_icon_view_setup_row_header_layout (icon_view);
++    }
++  else if (!func && icon_view->priv->row_header_layout)
++    {
++      g_object_unref (icon_view->priv->row_header_layout);
++      icon_view->priv->row_header_layout = NULL;
++    }
++
++  gtk_icon_view_queue_layout (icon_view);
++}
++
++static void
++free_queued_activate_item (GtkIconView *icon_view)
++{
++  if (icon_view->priv->queued_activate_item)
++    {
++      gtk_icon_view_queue_draw_item (icon_view,
++				     icon_view->priv->queued_activate_item);
++
++      icon_view->priv->queued_activate_item = NULL;
++    }
++}
++
++static void
++free_queued_select_item (GtkIconView *icon_view)
++{
++  if (icon_view->priv->queued_select_item)
++    {
++      gtk_icon_view_queue_draw_item (icon_view,
++				     icon_view->priv->queued_select_item);
++
++      icon_view->priv->queued_select_item = NULL;
++    }
++}
++
++HildonUIMode
++hildon_icon_view_get_hildon_ui_mode (GtkIconView *icon_view)
++{
++  g_return_val_if_fail (GTK_IS_ICON_VIEW (icon_view), 0);
++
++  return icon_view->priv->hildon_ui_mode;
++}
++
++void
++hildon_icon_view_set_hildon_ui_mode (GtkIconView   *icon_view,
++				     HildonUIMode   hildon_ui_mode)
++{
++  HildonMode mode;
++
++  g_return_if_fail (GTK_IS_ICON_VIEW (icon_view));
++
++  icon_view->priv->hildon_ui_mode = hildon_ui_mode;
++
++  gtk_widget_style_get (GTK_WIDGET (icon_view),
++			"hildon-mode", &mode,
++			NULL);
++
++  if (mode == HILDON_DIABLO)
++    return;
++
++  if (hildon_ui_mode == HILDON_UI_MODE_NORMAL)
++    {
++      gtk_icon_view_set_selection_mode (icon_view, GTK_SELECTION_NONE);
++    }
++  else if (hildon_ui_mode == HILDON_UI_MODE_EDIT)
++    {
++      int count = 0;
++      GList *list;
++
++      if (gtk_icon_view_get_selection_mode (icon_view) == GTK_SELECTION_NONE)
++	{
++	  gtk_icon_view_set_selection_mode (icon_view, GTK_SELECTION_SINGLE);
++	}
++
++      if (icon_view->priv->selection_mode != GTK_SELECTION_MULTIPLE)
++	{
++	  /* Instead of using gtk_icon_view_get_selected_items() we walk
++	   * over the list of items ourselves to save allocating/deallocating
++	   * all paths.
++	   */
++	  for (list = icon_view->priv->items; list; list = list->next)
++	    {
++	      GtkIconViewItem *item = list->data;
++
++	      if (item->selected)
++		{
++		  count++;
++		  break;
++		}
++	    }
++
++	  if (!count)
++	    {
++	      GtkTreePath *path;
++
++	      /* Select the first item */
++	      path = gtk_tree_path_new_first ();
++	      search_first_selectable_path (icon_view, &path, TRUE);
++	      gtk_icon_view_select_path (icon_view, path);
++	      gtk_tree_path_free (path);
++	    }
++	}
++    }
++  else
++    g_assert_not_reached ();
++}
+ 
+ /* Accessibility Support */
+ 
+--- a/gtk/gtkiconview.h
++++ b/gtk/gtkiconview.h
+@@ -46,6 +46,10 @@
+ typedef void (* GtkIconViewForeachFunc)     (GtkIconView      *icon_view,
+ 					     GtkTreePath      *path,
+ 					     gpointer          data);
++typedef gboolean (* HildonIconViewRowHeaderFunc) (GtkTreeModel *model,
++						  GtkTreeIter  *iter,
++						  gchar       **label,
++						  gpointer data);
+ 
+ typedef enum
+ {
+@@ -236,7 +240,13 @@
+                                                                gint               column);
+ gint     gtk_icon_view_get_tooltip_column                     (GtkIconView       *icon_view);
+ 
+-
++HildonIconViewRowHeaderFunc hildon_icon_view_get_row_header_func (GtkIconView                 *icon_view);
++void                        hildon_icon_view_set_row_header_func (GtkIconView                 *icon_view,
++								  HildonIconViewRowHeaderFunc  func,
++								  gpointer                     data,
++								  GDestroyNotify               destroy);
++void
++hildon_icon_view_set_hildon_ui_mode (GtkIconView   *icon_view, HildonUIMode   hildon_ui_mode);
+ G_END_DECLS
+ 
+ #endif /* __GTK_ICON_VIEW_H__ */

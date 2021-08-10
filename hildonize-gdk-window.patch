@@ -1,0 +1,45 @@
+--- a/gdk/gdkwindow.c
++++ b/gdk/gdkwindow.c
+@@ -6372,6 +6372,32 @@
+ }
+ 
+ /**
++ * gdk_window_reset_toplevel_updates_libgtk_only:
++ * @window: a #GdkWindow
++ *
++ * Thaws all pending freezes (if any) made with
++ * gdk_window_freeze_toplevel_updates_libgtk_only()
++ *
++ * This function is not part of the GDK public API and is only
++ * for use by GTK+.
++ **/
++void
++gdk_window_reset_toplevel_updates_libgtk_only (GdkWindow *window)
++{
++  GdkWindowObject *private = (GdkWindowObject *)window;
++
++  g_return_if_fail (GDK_IS_WINDOW (window));
++  g_return_if_fail (private->window_type != GDK_WINDOW_CHILD);
++
++  if (private->update_and_descendants_freeze_count > 0)
++    {
++      private->update_and_descendants_freeze_count = 0;
++
++      gdk_window_schedule_update (window);
++    }
++}
++
++/**
+  * gdk_window_set_debug_updates:
+  * @setting: %TRUE to turn on update debugging
+  *
+--- a/gdk/gdkwindow.h
++++ b/gdk/gdkwindow.h
+@@ -679,6 +679,7 @@
+ 
+ void       gdk_window_freeze_toplevel_updates_libgtk_only (GdkWindow *window);
+ void       gdk_window_thaw_toplevel_updates_libgtk_only   (GdkWindow *window);
++void       gdk_window_reset_toplevel_updates_libgtk_only  (GdkWindow *window);
+ 
+ void       gdk_window_process_all_updates (void);
+ void       gdk_window_process_updates     (GdkWindow    *window,
