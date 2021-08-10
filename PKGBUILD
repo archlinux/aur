@@ -82,6 +82,7 @@ provides+=("${_name}" geogram)
 depends+=('assimp' 'boost-libs' 'ceres-solver' 'coin-or-clp' 'flann' 'google-glog' 'openimageio')
 depends+=('glu' 'glfw-x11') # geogram deps.
 makedepends+=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
+((!DISABLE_CUDA))    && { depends+=('libcudart.so'); makedepends+=('cuda'); }
 ((!DISABLE_CCTAG))   && depends+=('cctag')
 ((!DISABLE_ALEMBIC)) && depends+=('alembic')
 ((!DISABLE_OPENGV))  && depends+=('opengv')
