@@ -1,0 +1,18 @@
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptys.c trueport-6.10.0/ptyx/ptys.c
+--- trueport-6.10.0.orig/ptyx/ptys.c	2020-05-28 07:56:32.000000000 -0400
++++ trueport-6.10.0/ptyx/ptys.c	2021-08-10 15:09:44.904120804 -0400
+@@ -487,10 +487,14 @@ static void ptyx_slave_start(struct tty_
+ //        changing the state of a terminal when we are not a process
+ //        in the forground.  See tty_io.c
+ // 
+ //*****************************************************************************
+ 
++#if LINUX_VERSION_CODE >=  KERNEL_VERSION(5,13,0)
++int tty_check_change(struct tty_struct *tty);
++#endif
++
+ #if (LINUX_VERSION_CODE <  KERNEL_VERSION(2,6,39))		// Less than 2.6.39
+ static int ptyx_slave_ioctl(struct tty_struct *tty, struct file *file,
+ 									unsigned int cmd, unsigned long arg)
+ #else
+ static int ptyx_slave_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg)

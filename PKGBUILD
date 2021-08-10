@@ -121,11 +121,17 @@ source=(
   # http://rglinuxtech.com/?p=1930
   # https://forum.manjaro.org/t/error-with-rtl8812au/24066
   #'trueport-patch-signal_pending-kernel-4-11.patch'
+  '0000-tty_unregister_driver-void.patch'
+  '0001-kernel-5.13-dropped-tty_check_change.patch'
 )
 md5sums=('5a529676de30706133255ba4e8dae5b0'
-         '56444e2f404aa2e6a2c9e8e2bd919fcf')
+         '56444e2f404aa2e6a2c9e8e2bd919fcf'
+         'fb798f306553cb253b30ff5af5ba2f40'
+         'a103f2791c03733b1fd75493864fb464')
 sha256sums=('c21340a7523593da3e229b79cfbcf9e656772b2039e972dbca3947d138d55ffa'
-            '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639')
+            '28863731fd99e447dc456312ef33e40f93623b56da0d345e45f40e238ca49639'
+            '5f806246751d3a91c59bd97273221d1066006bafc7ed598c3d93f9b7bdae65a1'
+            '88181bc7a0a5fa5a1320cbed20e02e1329b03b4c9800fc691990754b9a9aac18')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -143,6 +149,14 @@ prepare() {
   #patch -Nup0 < '../trueport-patch-signal_pending-kernel-4-11.patch'
   # diff -pNaru5 'trueport-6.8.0' 'trueport-6.8.5' > 'trueport-patch-6.8.0-6.8.5.patch'
   #patch -Nup1 -i '../trueport-patch-6.8.0-6.8.5.patch'
+
+  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
+  # diff -pNaru5 trueport-6.10.0{.orig,} > '0000-tty_unregister_driver-void.patch'
+  patch -Nup1 -i "${srcdir}/0000-tty_unregister_driver-void.patch"
+
+  #cd ..; cp -pr trueport-6.10.0{,.orig}; false
+  # diff -pNaru5 trueport-6.10.0{.orig,} > '0001-kernel-5.13-dropped-tty_check_change.patch'
+  patch -Nup1 -i "${srcdir}/0001-kernel-5.13-dropped-tty_check_change.patch"
 
   # insert parameters and make install script non interactive.
   set +u; msg2 'Checking SSL with rpm_build'; set -u

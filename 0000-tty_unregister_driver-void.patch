@@ -1,0 +1,38 @@
+diff -pNaru5 trueport-6.10.0.orig/ptyx/ptymod.c trueport-6.10.0/ptyx/ptymod.c
+--- trueport-6.10.0.orig/ptyx/ptymod.c	2020-05-28 07:56:32.000000000 -0400
++++ trueport-6.10.0/ptyx/ptymod.c	2021-08-10 15:06:08.809526111 -0400
+@@ -425,30 +425,21 @@ init_out:
+ 	return retval;
+ }
+ 
+ static void __exit ptyx_finish(void) 
+ {
+-	int e1, i;
++	int i;
+ 	
+ 	ptyx_print(PTYX_DEBUG_MISC, ("ptyx_finish(): unregistering driver \n"));
+ 
+-	if ( (e1 = tty_unregister_driver(ptyx_master_driver)) )
+-	{
+-		printk("ptyx_finish(): ptyx faied to unregister master TTY driver (%d) \n", e1);
+-	}
++	tty_unregister_driver(ptyx_master_driver);
+ 	put_tty_driver(ptyx_master_driver);
+ 
+-	if ( (e1 = tty_unregister_driver(ptyx_slave_driver)) )
+-	{
+-		printk("ptyx_finish(): ptyx faied to unregister slave TTY driver (%d) \n", e1);
+-	}
++	tty_unregister_driver(ptyx_slave_driver);
+ 	put_tty_driver(ptyx_slave_driver);
+ 
+-	if ( (e1 = tty_unregister_driver(ptyx_control_driver)) )
+-	{
+-		printk("ptyx_finish(): ptyx faied to unregister control status TTY driver (%d) \n", e1);
+-	}
++	tty_unregister_driver(ptyx_control_driver);
+ 	put_tty_driver(ptyx_control_driver);
+ 	
+ 	if (pty_state_table)
+ 	{
+ 	 	for (i = 0; i < max_installed_ports; i++)
