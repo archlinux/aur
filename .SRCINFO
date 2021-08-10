@@ -1,0 +1,19 @@
+pkgbase = stoat-git
+	pkgdesc = STatic (LLVM) Object file Analysis Tool
+	pkgver = v1.1.r26.g1189397
+	pkgrel = 1
+	url = https://github.com/fundamental/stoat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = clang
+	depends = llvm
+	depends = ruby
+	depends = binutils
+	provides = stoat
+	source = stoat::git+https://github.com/fundamental/stoat.git
+	md5sums = SKIP
+
+pkgname = stoat-git
