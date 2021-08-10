@@ -8,7 +8,6 @@ pkgdesc='Inverse of rx: convert Emacs string regexps to rx form'
 url='https://github.com/mattiase/xr'
 license=(GPL)
 arch=(any)
-makedepends=(emacs)
 depends=(emacs)
 # no release tag, extract hash from git commit
 GIT_HASH='2889b88cab47109f8ddadf1d2c67cac6a46c9420'

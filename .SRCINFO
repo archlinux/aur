@@ -5,7 +5,6 @@ pkgbase = emacs-xr
 	url = https://github.com/mattiase/xr
 	arch = any
 	license = GPL
-	makedepends = emacs
 	depends = emacs
 	source = emacs-xr-1.21.tar.gz::https://github.com/mattiase/xr/archive/2889b88cab47109f8ddadf1d2c67cac6a46c9420.tar.gz
 	sha512sums = d679f1fb67fbe164db0ff1b2327cef7272d364d38f36bf07c8cb5ef0d8529864bc243468f0db272df637fae72aae86cddc75dc2e1964daa233d270a6324dc571
