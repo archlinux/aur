@@ -1,7 +1,7 @@
 pkgname=youtube-bin
 _pkgname=Youtube-bin
-pkgver=1.0.5
-pkgrel=3
+pkgver=1.0.6
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -15,9 +15,9 @@ conflicts=("youtube-git")
 sha256sums_x86_64=('SKIP')
 sha256sums_armv7h=('SKIP')
 sha256sums_aarch64=('SKIP')
-source_x86_64=("https://gitlab.com/youtube-desktop/binaries/1.0.5-3/-/raw/master/Youtube-linux-x64.tar.gz")
-source_armv7h=("https://gitlab.com/youtube-desktop/binaries/1.0.5-3/-/raw/master/Youtube-linux-armv7l.tar.gz")
-source_aarch64=("https://gitlab.com/youtube-desktop/binaries/1.0.5-3/-/raw/master/Youtube-linux-arm64.tar.gz")
+source_x86_64=("https://gitlab.com/youtube-desktop/binaries/"$pkgver"-"$pkgrel"/-/main/master/Youtube-linux-x64.tar.gz")
+source_armv7h=("https://gitlab.com/youtube-desktop/binaries/"$pkgver"-"$pkgrel"/-/main/master/Youtube-linux-armv7l.tar.gz")
+source_aarch64=("https://gitlab.com/youtube-desktop/binaries/"$pkgver"-"$pkgrel"/-/main/master/Youtube-linux-arm64.tar.gz")
 
 
 package() {
