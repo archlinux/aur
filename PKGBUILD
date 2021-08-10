@@ -4,7 +4,7 @@
 pkgname=hashbrown-git
 _pkgname=hashbrown
 _app_id=dev.geopjr.Hashbrown
-pkgver=1.3.2.r0.g8f0ac42
+pkgver=1.3.2.r8.gc22842f
 pkgrel=1
 pkgdesc="A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
