@@ -2,8 +2,8 @@
 
 pkgname='python-mido'
 _name='mido'
-pkgver=1.2.9
-pkgrel=3
+pkgver=1.2.10
+pkgrel=1
 pkgdesc="A Python library for working with MIDI messages and ports"
 url="https://mido.readthedocs.io/"
 depends=('python-rtmidi')
@@ -15,7 +15,7 @@ optdepends=(
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('bec86e55a19f5bfdd5a3546c7cdc418a')
+md5sums=('928a0a5df7701cd5db5baa96f173f9e0')
 
 
 build() {
