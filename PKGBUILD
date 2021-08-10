@@ -1,6 +1,6 @@
 # Maintainer: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A simple & easy to use private note-taking app that encrypts everything on the client side."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://notesnook.com/"
 license=('Unknown')
 depends=('gtk3' 'nss')
 source=("https://github.com/streetwriters/$pkgname/releases/download/v$pkgver/${pkgname}_amd64.deb")
-sha256sums=('fda20be93b46a12c887aa4b00f9dc2148455819a0925c4c52c320fe5c7dfcfe1')
+sha256sums=('ca937af6c01ea8e4285c2ac1d2cfaf2caf22395b38b764872feca3c7870534db')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir"
