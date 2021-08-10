@@ -1,4 +1,4 @@
-From bdb12383a58d6989a0b1c2f925890948146bbc90 Mon Sep 17 00:00:00 2001
+From 26e5c7a7e7dd11cef2b7be68881c151634b7b363 Mon Sep 17 00:00:00 2001
 From: Pauli Virtanen <pav@iki.fi>
 Date: Mon, 26 Jul 2021 21:02:06 +0300
 Subject: [PATCH 2/3] Bluetooth: btusb: check conditions before enabling USB
