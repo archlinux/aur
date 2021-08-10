@@ -81,7 +81,7 @@ set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
 pkgver='5.0'; # _build='17110917'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
@@ -103,6 +103,8 @@ source=(
   '0004-mxloadsvr.c-disable-built-in-systemd-support.patch'
   '0005-kernel-5.10-async-initialized.patch'
   '0006-kernel-5.12-tty-low_latency.patch'
+  '0007-tty_unregister_driver-void.patch'
+  '0008-kernel-5.13-dropped-tty_check_change.patch'
   'npreal2.sh'
 )
 #_srcdir="${pkgname}"
@@ -116,6 +118,8 @@ md5sums=('4ba260f2e3b2b25419bd40a5f030d926'
          '0c53bb8e2df459fabbca10b567981a93'
          '7aac842974d5dd76b9bc8fd9fd4de470'
          'd8a5ab4731575a4ffe90656e1793b46b'
+         'e8c288232d6e2174c165e8f5e098a05d'
+         'd5da78ee96047557af03b6e496164160'
          '90ac27b669542c11b0a9b6763f6e0d9b')
 sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
@@ -124,6 +128,8 @@ sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             'e1856e4a410af0b112dd8beee58edd2516bb5cd7607d84b06bc25133b8bd8f15'
             '2e913895e2c382abc8fd610faddf6bbda6b59845fb3f95a1d33136995d27cb3f'
             '252ce8e55b835c22e6fdf4e3c661ef906be41fdf9dfc76900d787907892e6f21'
+            'd35d49ab325a17976d26d64661a235fc5c8f0e0ce6c7e86483607654e94d5b22'
+            'f8496f2e62a4e57d57df5ce27d2bd92eed234581331c8ee6b7b9e139e0e7ac13'
             '13e297691ba1b6504f66ef98e072194343321d2a47928c3964e315160b246153')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
@@ -256,6 +262,14 @@ prepare() {
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0006-kernel-5.12-tty-low_latency.patch'
   patch -Nbup0 -i "${srcdir}/0006-kernel-5.12-tty-low_latency.patch"
+
+  #cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0007-tty_unregister_driver-void.patch'
+  patch -Nbup0 -i "${srcdir}/0007-tty_unregister_driver-void.patch"
+
+  #cp -p 'npreal2.c'{,.orig}; false
+  #diff -pNau5 'npreal2.c'{.orig,} > '0008-kernel-5.13-dropped-tty_check_change.patch'
+  patch -Nbup0 -i "${srcdir}/0008-kernel-5.13-dropped-tty_check_change.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

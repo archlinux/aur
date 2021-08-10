@@ -1,0 +1,17 @@
+--- npreal2.c.orig	2021-08-10 15:19:53.500816830 -0400
++++ npreal2.c	2021-08-10 15:21:10.617898548 -0400
+@@ -1319,10 +1319,14 @@ static void npreal_ldisc_flush_buffer(st
+ 	}
+ 	current->state = TASK_INTERRUPTIBLE;
+ 	schedule_timeout(HZ/100);
+ }
+ 
++#if LINUX_VERSION_CODE >= VERSION_CODE(5,13,0)
++int tty_check_change(struct tty_struct *tty);
++#endif
++
+ static int npreal_ioctl(struct tty_struct * tty,
+ 		unsigned int cmd, unsigned long arg)
+ {
+ 	int			error;
+ 	struct npreal_struct *	info = (struct npreal_struct *)tty->driver_data;

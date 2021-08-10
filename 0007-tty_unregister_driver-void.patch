@@ -1,0 +1,18 @@
+--- npreal2.c.orig	2021-08-10 15:16:05.526245528 -0400
++++ npreal2.c	2021-08-10 15:16:43.473119614 -0400
+@@ -541,14 +541,11 @@ static void __exit npreal2_module_exit(v
+ #endif
+ 		npvar_proc_root = NULL;
+ 	}
+ 
+ 	DBGPRINT(MX_DEBUG_INFO, "Unloading module npreal ...\n");
+-	if ((err |= tty_unregister_driver(DRV_VAR)))
+-	{
+-		DBGPRINT(MX_DEBUG_ERROR, "Couldn't unregister MOXA Async/NPort server family Real TTY driver\n");
+-	}
++	tty_unregister_driver(DRV_VAR);
+ 	put_tty_driver(DRV_VAR);
+ 
+ 	DBGPRINT(MX_DEBUG_INFO, "Done.\n");
+ 
+ }
