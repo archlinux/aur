@@ -1,5 +1,5 @@
 # Maintainer: Gingka Akiyama <gingkathfox @ gmail . com>
-pkgname=uwupp
+pkgname=uwupp-git
 pkgver=0.2.0.r0.g4b993e7
 pkgrel=1
 pkgdesc="The next generation esoteric language."

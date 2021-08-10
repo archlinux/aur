@@ -1,4 +1,4 @@
-pkgbase = uwupp
+pkgbase = uwupp-git
 	pkgdesc = The next generation esoteric language.
 	pkgver = 0.2.0.r0.g4b993e7
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = uwupp
 	source = git+https://github.com/Deltaphish/UwUpp.git
 	md5sums = SKIP
 
-pkgname = uwupp
+pkgname = uwupp-git
