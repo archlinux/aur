@@ -1,7 +1,7 @@
 pkgbase = sile-luajit
 	pkgdesc = Modern typesetting system inspired by TeX
 	pkgver = 0.10.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,9 @@ pkgbase = sile-luajit
 	depends = icu
 	depends = libpng
 	depends = luajit
+	depends = lua51-bit32
 	depends = lua51-cassowary
+	depends = lua51-compat53
 	depends = lua51-cosmo
 	depends = lua51-cliargs
 	depends = lua51-expat
@@ -43,4 +45,3 @@ pkgbase = sile-luajit
 	sha256sums = 49b55730effd473c64a8955a903e48f61c51dd7bb862e6d5481193218d1e3c5c
 
 pkgname = sile-luajit
-
