@@ -1,0 +1,1 @@
+/home/adithyankv/Code/pokemon-colorscripts/PKGBUILD
