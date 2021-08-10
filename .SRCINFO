@@ -1,0 +1,16 @@
+pkgbase = osso-bookmark-engine
+	pkgdesc = Basic library for Maemo applications
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/maemo-leste/osso-bookmark-engine
+	arch = x86_64
+	arch = i686
+	license = LGPL2.1
+	makedepends = gconf
+	makedepends = glib2
+	makedepends = libtool
+	makedepends = libxml2
+	source = osso-bookmark-engine-2.0.0.tar.gz::https://github.com/maemo-leste/osso-bookmark-engine/archive/2.0.0.tar.gz
+	sha512sums = f19cfd615c7658c9da7ada8d53c398f7f6ec9bd6ac5c99f6bb85551ec9db9f7865507a00a877f32ebf15924d69c4f85d5d444443b817a27ca9da4bb176bab323
+
+pkgname = osso-bookmark-engine
