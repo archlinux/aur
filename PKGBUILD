@@ -4,13 +4,13 @@
 _pkgname=Hash-FieldHash
 pkgname=perl-${_pkgname,,}
 pkgver=0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight field hash for inside-out objects"
-arch=('any')
+arch=('x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.5')
-makedepends=('perl-test-leaktrace>=0.07')
+makedepends=('perl-test-leaktrace>=0.07' 'perl-module-build')
 url='http://search.cpan.org/dist/Hash-FieldHash'
 source=("http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Hash-FieldHash-$pkgver.tar.gz")
 sha256sums=('5c515707a5433796a5697b118ddbf1f216d13c5cd52f2b64292e76f7d9b7e8f1')

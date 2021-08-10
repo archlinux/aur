@@ -1,12 +1,13 @@
 pkgbase = perl-hash-fieldhash
 	pkgdesc = Lightweight field hash for inside-out objects
 	pkgver = 0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Hash-FieldHash
-	arch = any
+	arch = x86_64
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-test-leaktrace>=0.07
+	makedepends = perl-module-build
 	depends = perl>=5.8.5
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/G/GF/GFUJI/Hash-FieldHash-0.15.tar.gz
