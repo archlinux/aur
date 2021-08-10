@@ -3,7 +3,7 @@
 
 _metaname='org.gnome.design.Palette'
 pkgname='palette'
-pkgver=2.0.1
+pkgver=2.0.1.r0.g3af4acb
 pkgrel=1
 pkgdesc='Tool for viewing the GNOME color palette as defined by the design guidelines'
 arch=('x86_64')
@@ -15,6 +15,10 @@ source=("git+${url}.git#tag=${pkgver}"
         "git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
 sha256sums=('SKIP'
             'SKIP')
+
+pkgver() {
+  git -C "${pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${pkgname}"
