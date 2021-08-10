@@ -1,13 +1,13 @@
 pkgbase = jprofiler10
 	pkgdesc = The Award-Winning All-in-One Java Profiler
-	pkgver = 10.1.4
-	pkgrel = 2
+	pkgver = 10.1.5
+	pkgrel = 1
 	url = http://jprofiler.com
 	arch = any
 	license = custom
 	depends = java-environment<=9
 	options = !strip
-	source = http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_10_1_4.tar.gz
+	source = https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_10_1_5.tar.gz
 	source = jprofiler10.desktop
 	source = jprofiler10.sh
 	sha256sums = e104bb4f7a1f1d73f4ac7bea0ff93ddfd690cc06c6bb4a0b9d667265ab8c4816
@@ -15,4 +15,3 @@ pkgbase = jprofiler10
 	sha256sums = 7dcd6fc0d748b448f6a08dcb2c7c12c428798728484e0fd8404af6780e59aecd
 
 pkgname = jprofiler10
-

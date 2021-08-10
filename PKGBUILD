@@ -1,17 +1,17 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler10
-pkgver=10.1.4
-pkgrel=2
+pkgver=10.1.5
+pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
 arch=(any)
 url="http://jprofiler.com"
 license=('custom')
 depends=('java-environment<=9')
-source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
+source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('e104bb4f7a1f1d73f4ac7bea0ff93ddfd690cc06c6bb4a0b9d667265ab8c4816'
+sha256sums=('e063be99201a3382c9b038f8e46e86436531314c2c38e18a8bae9d2907d86cfe'
             '590d69cbc227fa7a0a3d274fca6423c1a113768264b67e7d9f6e6f121d650cea'
             '7dcd6fc0d748b448f6a08dcb2c7c12c428798728484e0fd8404af6780e59aecd')
 
