@@ -125,7 +125,6 @@ prepare() {
 
 
 build() {
-  export CCACHE_BASEDIR="$srcdir"
   ((DISABLE_CUDA|DISABLE_UTE)) || {
     msg2 "Build uncertaintyTE library"
     cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/usr -G Ninja -S ute_lib -B ute_build
