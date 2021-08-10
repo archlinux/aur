@@ -2,7 +2,7 @@
 
 pkgname=gcc-go-no-conflicts
 pkgver=11.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Go front-end for GCC, does not conflict with go package.'
 arch=(x86_64)
 url='https://gcc.gnu.org'
@@ -12,10 +12,8 @@ provides=(gcc-go gcc-go-multilib)
 replaces=(gcc-go gcc-go-multilib)
 conflicts=(gcc-go)
 options=(!strip)
-
-prepare() {
-	curl -L 'https://archlinux.org/packages/core/x86_64/gcc-go/download/' | bsdtar xf -
-}
+source=('gcc-go.tar.zst::https://archlinux.org/packages/core/x86_64/gcc-go/download/')
+sha256sums=('SKIP')
 
 pkgver() {
 	local ver="$(awk -v FS=' = ' '/pkgver/ { print $2 }' "${srcdir}/.PKGINFO")"

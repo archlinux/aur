@@ -1,7 +1,7 @@
 pkgbase = gcc-go-no-conflicts
 	pkgdesc = Go front-end for GCC, does not conflict with go package.
 	pkgver = 11.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -15,5 +15,7 @@ pkgbase = gcc-go-no-conflicts
 	replaces = gcc-go
 	replaces = gcc-go-multilib
 	options = !strip
+	source = gcc-go.tar.zst::https://archlinux.org/packages/core/x86_64/gcc-go/download/
+	sha256sums = SKIP
 
 pkgname = gcc-go-no-conflicts
