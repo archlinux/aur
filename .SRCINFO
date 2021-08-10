@@ -1,0 +1,12 @@
+pkgbase = uwupp
+	pkgdesc = The next generation esoteric language.
+	pkgver = 0.2.0.r0.g4b993e7
+	pkgrel = 1
+	url = https://github.com/Deltaphish/UwUpp/
+	arch = x86_64
+	license = BSD
+	depends = stack
+	source = git+https://github.com/Deltaphish/UwUpp.git
+	md5sums = SKIP
+
+pkgname = uwupp
