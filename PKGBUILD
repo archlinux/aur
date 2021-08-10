@@ -12,11 +12,10 @@
 
 [[ -v CUDA_ARCH ]] && _cuda_arch="-DALICEVISION_CUDA_CC_LIST=${CUDA_ARCH}"
 
-((DISABLE_CUDA))    &&    _use_cuda=OFF ||    _use_cuda=ON     # Alow user to build without cuda
 ((DISABLE_CUDA))    && eval DISABLE_{CCTAG,POPSIFT,UTE}=1   # Disable other components that requires cuda
+((DISABLE_OPENCV))  && DISABLE_CCTAG=1                      # CCTag requires OpenCV
+((DISABLE_CUDA))    &&    _use_cuda=OFF ||    _use_cuda=ON  # Alow user to build without cuda
 ((DISABLE_CCTAG))   &&   _use_cctag=OFF ||   _use_cctag=ON  # Disable CCTag (require: cuda)
-#((!DISABLE_CCTAG))  && DISABLE_OPENCV=0                     # CCTag requires OpenCV""
-((DISABLE_OPENCV))  &&((!DISABLE_CCTAG))&&{ echo "error:CCTag requires OpenCV" >&2; exit 1; }
 ((DISABLE_POPSIFT)) && _use_popsift=OFF || _use_popsift=ON  # Disable Popsift (requires: cuda)
 ((DISABLE_UTE))     &&     _use_ute=OFF ||     _use_ute=ON  # Disable Uncertainty computation (require: cuda)
 ((DISABLE_ALEMBIC)) && _use_alembic=OFF || _use_alembic=ON  # Disable Alembic (mesh export format)
