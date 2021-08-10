@@ -1,0 +1,15 @@
+pkgbase = libiphb
+	pkgdesc = Interface to IP heartbeat service.
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://git.sailfishos.org/mer-core/libiphb
+	arch = any
+	groups = gnome
+	license = GPL
+	depends = mce-dev>=1.28
+	source = git+https://git.sailfishos.org/mer-core/libiphb.git#tag=1.2.7
+	source = https://github.com/sailfishos-mirror/dbus-glib/archive/d42176ae4763e5288ef37ea314fe58387faf2005/dbus-glib-d42176ae4763e5288ef37ea314fe58387faf2005.tar.gz
+	sha256sums = SKIP
+	sha256sums = f4c28d4740ac90863082e81c869e5178d25238b179747984faf0509e40d1afef
+
+pkgname = libiphb
