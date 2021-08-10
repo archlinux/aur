@@ -2,7 +2,7 @@
 pkgname=python-runtest
 _name=runtest
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Numerically tolerant end-to-end test library for research software."
 arch=("x86_64")
@@ -13,7 +13,7 @@ depends=(python)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=(python-parselglossy)
+provides=(python-runtest)
 conflicts=()
 replaces=()
 backup=()

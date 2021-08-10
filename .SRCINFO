@@ -1,12 +1,12 @@
 pkgbase = python-runtest
 	pkgdesc = Numerically tolerant end-to-end test library for research software.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://runtest.readthedocs.io
 	arch = x86_64
 	license = Mozilla Public License version 2.0
 	depends = python
-	provides = python-parselglossy
+	provides = python-runtest
 	source = https://files.pythonhosted.org/packages/py2.py3/r/runtest/runtest-2.2.2-py2.py3-none-any.whl
 	sha256sums = cc1d255767eeefce66420e4c616dd1cd8120d6c51ee83c2b15921ba1040784bc
 
