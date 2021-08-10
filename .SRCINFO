@@ -1,6 +1,6 @@
 pkgbase = hurl
 	pkgdesc = HTTP/HTTPS/Gopher file grabber
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://codemadness.org/hurl.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hurl
 	license = ISC
 	depends = libretls
 	conflicts = hurl-bin
-	source = https://codemadness.org/releases/hurl/hurl-0.5.tar.gz
-	sha256sums = 92429a6c11689b1dfb2efe27faf5e3344cb4a00d78a365ee4fbbf10537a1077e
+	source = https://codemadness.org/releases/hurl/hurl-0.6.tar.gz
+	sha256sums = 63e92528afcfbc6661130159c67a4297e2db1c358499dab768249e2c93e32549
 
 pkgname = hurl
