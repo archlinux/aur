@@ -1,7 +1,7 @@
 pkgbase = vegalinux64
 	pkgdesc = Chess tournament administration sorfware
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vegachess.com
 	arch = x86_64
 	license = Custom

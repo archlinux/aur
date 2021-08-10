@@ -24,7 +24,7 @@ source=("http://www.vegachess.com/download/$pkgname.tar.gz"
         'vegateam.desktop'
         'logo.png')
 noextract=()
-sha256sums=('6f9ba9ee0da41b412b2e3be18ae7b02710abe6672d38c5a56ae54ca466d78e5a'
+sha256sums=('9ff31e38d2a4c48e7ccd10cafb44d63f7399c74911543897b7375d888da42e59'
             '50936a1e32642f599797fb991f303b833d949f23c676a25c783d2e610e884ccb'
             '6d6d077594a73211cde79043d661735f84f39929fb2d9fdff48d311dc1269b48'
             'ac0385b28ad27877947913ae486d619f39c495d4e69369066e7e10755247bfc6')
