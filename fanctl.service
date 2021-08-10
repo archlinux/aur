@@ -2,7 +2,7 @@
 Description=fanctl fan controller
 
 [Service]
-Environment=RUST_LOG=fanctl=trace
+Environment=RUST_LOG=fanctl=info
 ExecStart=/usr/bin/fanctl -c /etc/fanctl.yml
 
 [Install]
