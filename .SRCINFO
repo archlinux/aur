@@ -1,0 +1,17 @@
+pkgbase = libhildondesktop
+	pkgdesc = Hildon Desktop Library
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libhildondesktop
+	arch = any
+	groups = gnome
+	license = GPL
+	depends = gtk3
+	depends = libhildon
+	depends = libiphb
+	source = git+https://github.com/maemo-leste/libhildondesktop.git#tag=2.2.2
+	source = stop-deprecated-functions-from-breaking-compilation.patch
+	sha256sums = SKIP
+	sha256sums = 63fe53fea2bfa0c787fb661f939f91fb364d8e826eb5e9ec36404c746888a1a4
+
+pkgname = libhildondesktop

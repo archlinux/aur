@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index 3d15e48..70fec1c 100644
+--- configure.ac
++++ configure.ac
+@@ -71,9 +71,9 @@ fi
+ 
+ if test "x${hildon_use_instrumenting}" = "xyes"
+ then
+-    CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wmissing-declarations -Werror -Wno-format-extra-args -g -finstrument-functions"
++    CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wmissing-declarations -Wno-format-extra-args -g -finstrument-functions"
+ else
+-    CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wmissing-declarations -Werror -Wno-format-extra-args -DG_DISABLE_CAST_CHECKS"
++    CFLAGS="$CFLAGS -Wall -Wmissing-prototypes -Wmissing-declarations -Wno-format-extra-args -DG_DISABLE_CAST_CHECKS"
+ fi
+ 
+ AC_SUBST(CFLAGS)
+
