@@ -1,7 +1,7 @@
 pkgbase = ttf-kascadia
 	pkgdesc = Cascadia Powerline fonts patched with missing glyphs from nerd font.
 	pkgver = v2106.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thorion3006/kascadia_font
 	arch = any
 	license = OFL
