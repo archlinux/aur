@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-plenary-git
-pkgver=r150.3f99330
-pkgrel=2
+pkgver=r187.d777a27
+pkgrel=1
 pkgdesc="A Lua library for Neovim plugins"
 arch=('any')
 url="https://github.com/nvim-lua/plenary.nvim"
@@ -23,7 +23,7 @@ pkgver() {
 package() {
 	cd "$pkgname"
 	find data lua plugin \
-		-type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

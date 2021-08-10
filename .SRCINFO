@@ -1,7 +1,7 @@
 pkgbase = neovim-plenary-git
 	pkgdesc = A Lua library for Neovim plugins
-	pkgver = r150.3f99330
-	pkgrel = 2
+	pkgver = r187.d777a27
+	pkgrel = 1
 	url = https://github.com/nvim-lua/plenary.nvim
 	arch = any
 	groups = neovim-plugins
@@ -14,4 +14,3 @@ pkgbase = neovim-plenary-git
 	sha256sums = SKIP
 
 pkgname = neovim-plenary-git
-
