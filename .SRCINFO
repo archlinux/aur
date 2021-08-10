@@ -1,0 +1,15 @@
+pkgbase = emacs-pyim-basedict
+	pkgdesc = The default pyim dict.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/tumashu/pyim-basedict
+	arch = any
+	license = GPL
+	makedepends = emacs
+	depends = emacs
+	depends = emacs-pyim
+	source = emacs-pyim-basedict-pkgver.tar.gz::https://github.com/tumashu/pyim-basedict/archive/7495c974ada99f9fed96d8e85d8b97dabce9532c.tar.gz
+	sha512sums = 297adb1eebbfa11e31f499815bbfa765b6f3cc1f250669b74a80f368f9c08b44d614a3c5dc1f47d8ba296db7ce4ff9e813331d20bd56ccc5136f456d858a1ca5
+	b2sums = f7d94f5f05dcef8cb9437273afb1919ff5dc5413ac3a787b86974e03b02d897abdfa8cab921e6e8c89b92f3f05f1933acc7326d269a5c499b0caa584dad76497
+
+pkgname = emacs-pyim-basedict
