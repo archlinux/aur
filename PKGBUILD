@@ -1,7 +1,7 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
-pkgrel=3
-pkgver=r548.74367b8
+pkgrel=1
+pkgver=r569.35cd6f5
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -18,7 +18,7 @@ source=('git://github.com/zimfw/zimfw.git'
 md5sums=('SKIP'
          'SKIP'
          '6e5ffd11ddfc72d74afb105829821f28'
-         '2465e684f59cbb9313670468493f7712'
+         '65deeb0db560f14c98838f9bfa72d7c3'
          '0cb8764ba7f67c37c3c6452cc06751af')
 options=('!strip')
 install='zim.install'
@@ -64,8 +64,7 @@ package() {
     echo "Patching build paths occurrence in: ${entry}"
     sed -i "s/${pkgdir//\//\\/}//g" "${ZIM_HOME}/${entry}"
   done
-  cp zimfw.zsh.patch "${ZIM_HOME}/"
-  ( cd "${ZIM_HOME}" && patch < zimfw.zsh.patch && rm zimfw.zsh.patch )
+  ( cd "${ZIM_HOME}" && patch < "${startdir}/zimfw.zsh.patch" )
   find ${ZIM_HOME} -iname "*.old" -type f -exec rm -f \{\} \;
   # files will be recompiled during installation, when zsh will be executed as root
   find ${ZIM_HOME} -iname "*.zwc" -type f -exec rm -f \{\} \;

@@ -1,7 +1,7 @@
---- zimfw.zsh	2021-01-11 22:16:26.000000000 +0100
-+++ zimfw.zsh	2021-01-13 18:59:16.889418467 +0100
-@@ -52,16 +52,13 @@
- 
+--- zimfw.zsh   2021-07-28 16:45:25.000000000 +1000
++++ zimfw.zsh   2021-07-28 16:45:25.000000000 +1000
+@@ -52,26 +52,19 @@
+
  _zimfw_build_init() {
    local -r ztarget=${ZIM_HOME}/init.zsh
 -  # Force update of init.zsh if it's older than .zimrc
@@ -16,12 +16,11 @@
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
- 
+
  _zimfw_build_login_init() {
-@@ -69,10 +66,6 @@
+   # Array with unique dirs. ${ZIM_HOME} or any subdirectory should only occur once.
    local -Ur zscriptdirs=(${ZIM_HOME} ${${_zdirs##${ZIM_HOME}/*}:A})
-   local -r zscriptglob=("${^zscriptdirs[@]}/(^*test*/)#*.zsh(|-theme)(N-.)")
-   local -r ztarget=${ZIM_HOME}/login_init.zsh
+   local -r zscriptglob=("${^zscriptdirs[@]}/(^*test*/)#*.zsh(|-theme)(N-.)") ztarget=${ZIM_HOME}/login_init.zsh
 -  # Force update of login_init.zsh if it's older than .zimrc
 -  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
@@ -29,11 +28,11 @@
    _zimfw_mv =(
      print -Rn "() {
    setopt LOCAL_OPTIONS CASE_GLOB EXTENDED_GLOB
-@@ -99,6 +92,7 @@
+@@ -98,6 +91,7 @@
  } \"\${@}\"
  "
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
- 
+
  _zimfw_build() {
