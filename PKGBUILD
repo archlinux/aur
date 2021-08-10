@@ -1,6 +1,6 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-pkgver=4.1.0
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 	graylog.service
 )
 
-sha256sums=('bebcd86bbbe4786b7a3696a178b43e679bfbbcd5b7b650855a25ecba1e84e4f7'
+sha256sums=('516b32cc3f6888bbbdedfa1c3d722a5413da658257de6be7eb9adf2fb404ac83'
             'SKIP'
             'SKIP')
 
