@@ -1,12 +1,12 @@
 pkgbase = general-preprocessor
 	pkgdesc = Bash-based preprocessor for anything
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/maandree/gpp
 	arch = any
 	license = custom:ISC
 	optdepends = bash: default shell
-	source = gpp-2.1.1.tar.gz::https://github.com/maandree/gpp/archive/2.1.1.tar.gz
-	sha256sums = 20bec3e76e70ee856cddee06cd692daa1d0a8c50e9e7d37ee7ae1c106ed9fb23
+	source = gpp-2.1.2.tar.gz::https://github.com/maandree/gpp/archive/2.1.2.tar.gz
+	sha256sums = 7b4dce40443c23dbb6c0d4593fb167ae8a754510b55afb1b5e49645fc27260eb
 
 pkgname = general-preprocessor

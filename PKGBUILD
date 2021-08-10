@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=general-preprocessor
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Bash-based preprocessor for anything"
 url="https://github.com/maandree/gpp"
@@ -10,7 +10,7 @@ license=('custom:ISC')
 depends=()
 optdepends=('bash: default shell')
 source=("gpp-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=(20bec3e76e70ee856cddee06cd692daa1d0a8c50e9e7d37ee7ae1c106ed9fb23)
+sha256sums=(7b4dce40443c23dbb6c0d4593fb167ae8a754510b55afb1b5e49645fc27260eb)
 
 
 build () {
