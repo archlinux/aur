@@ -10,6 +10,7 @@ pkgbase = fingerpaint-wayland
 	depends = python-pillow
 	depends = python-pyudev
 	depends = dconf
+	depends = tk
 	provides = fingerpaint
 	conflicts = fingerpaint
 	source = fingerpaint-1.2.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.tar.gz
