@@ -66,7 +66,7 @@ _CMAKE_FLAGS+=(
 _name=alice-vision
 
 pkgname=${_name}-git
-pkgver=2.4.0.r255.gcb103ac38
+pkgver=2.4.0.r283.g73fef3491
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
