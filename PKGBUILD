@@ -8,12 +8,16 @@ pkgdesc='A Chinese input method in emacs supporting quanpin, shuangpin, wubi, ca
 url='https://github.com/tumashu/pyim'
 license=(GPL)
 arch=(any)
-makedepends=(emacs)
 optdepends=(
     'emacs-pyim-basedict: pinyin dictionary'
     'emacs-pyim-wubidict: wubi dictionary'
 )
-depends=(emacs)
+depends=(
+    emacs
+    emacs-async			# this is required because the code
+				# always uses its functions, despite
+				# being marked as optional in code
+)
 # git hash for release 3.8.2
 GIT_HASH='3c13e24bc8703ee0854fcad1756b2b7b1827cda5'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$GIT_HASH.tar.gz")
