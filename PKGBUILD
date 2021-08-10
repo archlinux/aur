@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r105.g2bc86209
+pkgver=5.r108.g72f8abe1
 pkgrel=1
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
