@@ -1,8 +1,8 @@
 pkgbase = python-future-annotations
 	pkgdesc = A backport of __future__ annotations to python<3.7
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://gitlab.com/asottile/future-annotations
+	pkgrel = 2
+	url = https://github.com/asottile/future-annotations
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools

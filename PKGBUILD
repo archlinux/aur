@@ -2,9 +2,9 @@
 pkgname=python-future-annotations
 _name="future_annotations"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A backport of __future__ annotations to python<3.7"
-url="https://gitlab.com/asottile/future-annotations"
+url="https://github.com/asottile/future-annotations"
 depends=(
     'python'
     'python-tokenize-rt'
