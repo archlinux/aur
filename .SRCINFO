@@ -1,0 +1,12 @@
+pkgbase = crabfetch
+	pkgdesc = A simple fetch utility, written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/flyingcakes85/crabfetch
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = crabfetch-0.1.0.tar.gz::https://github.com/flyingcakes85/crabfetch/archive/refs/tags/0.1.0.tar.gz
+	sha512sums = 35b7888c84f817276972e603f16cae4bfbbb5fb80d312936b67905b6151d084633d2064828255915803746aa875d5a2b717be5b0e17e798b3700bf126fad83f1
+
+pkgname = crabfetch
