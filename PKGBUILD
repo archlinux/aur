@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Michalski <lm@zork.pl>
 
 pkgname=check_docker_container
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Nagios / Icinga monitoring plugin to check if docker container is running"
 arch=('any')

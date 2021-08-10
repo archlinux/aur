@@ -1,5 +1,5 @@
 *~
-check_docker_container-1.0.0-1-any.pkg.tar.xz
+check_docker_container-*.pkg.*
 check_docker_container
 pkg
 src
