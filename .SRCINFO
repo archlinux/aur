@@ -1,6 +1,6 @@
 pkgbase = ruby-gstreamer
 	pkgdesc = Ruby/GStreamer is a Ruby binding for GStreamer.
-	pkgver = 3.4.6
+	pkgver = 3.4.9
 	pkgrel = 1
 	url = http://ruby-gnome2.osdn.jp/
 	arch = any
@@ -8,10 +8,9 @@ pkgbase = ruby-gstreamer
 	makedepends = ruby-pkg-config
 	depends = gstreamer
 	depends = ruby-gobject-introspection
-	noextract = ${pkgname#ruby-}-${pkgver}.gem
+	noextract = gstreamer-3.4.9.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/${pkgname#ruby-}-${pkgver}.gem
-	sha512sums = a1fb484f6fb3e23398e76e374eda190a48cbd14ff69abeeda29ccba2146035e19a0477ed353e6d5a251411e74d72d4409020a6365f01bc6b7e0d25c51eb8eca2
+	source = https://rubygems.org/downloads/gstreamer-3.4.9.gem
+	sha512sums = c34fa35c394f9c290efcc433df5c58e531a5f6a6f253072d955e280b4f685d8a14617afdc7c6a16534a087d9a02cb655b42903561d88715bb01787d788266c22
 
 pkgname = ruby-gstreamer
-
