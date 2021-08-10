@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-runcat-git
 	pkgdesc = The cat tells you the CPU usage by running speed
-	pkgver = v13.r0.g67da37b
-	pkgrel = 1
+	pkgver = 13.r0.g67da37b
+	pkgrel = 2
 	url = https://github.com/win0err/gnome-runcat
 	arch = any
 	license = GPL3

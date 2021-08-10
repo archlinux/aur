@@ -2,8 +2,8 @@
 # Contributor: Sergei Kolesnikov <youremail@domain.com>
 
 pkgname=gnome-shell-extension-runcat-git
-pkgver=v13.r0.g67da37b
-pkgrel=1
+pkgver=13.r0.g67da37b
+pkgrel=2
 pkgdesc="The cat tells you the CPU usage by running speed"
 arch=('any')
 url="https://github.com/win0err/gnome-runcat"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_srcname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
