@@ -1,16 +1,16 @@
 pkgname=wsdd2
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="WSD/LLMNR Discovery/Name Service Daemon. Install it to make Samba shares discoverable on Windows hosts."
-url="https://github.com/Andy2244/wsdd2"
+url="https://github.com/Netgear/wsdd2"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=(GPL)
 depends=()
 makedepends=()
 source=(
-  "wsdd2-${pkgver}-${pkgrel}.tar.gz::https://github.com/Andy2244/wsdd2/archive/${pkgver}.tar.gz"
+  "wsdd2-${pkgver}-${pkgrel}.tar.gz::https://github.com/Netgear/wsdd2/archive/${pkgver}.tar.gz"
 )
-sha256sums=('1b5ed922da8f39d541e2e712f1991694a002dcde00c43136c9e617229da36184')
+sha256sums=('707f9403559de70cc488c6c3deea12baf30d74068da88a59e7c0669a347b4661')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,11 +26,8 @@ package()
 {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  mkdir -p "${pkgdir}/usr/lib/systemd/system/smb.service.wants"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -D -m 755 "wsdd2" "${pkgdir}/usr/bin"
   install -D -m 644 "wsdd2.service" "${pkgdir}/usr/lib/systemd/system"
-  cd "${pkgdir}/usr/lib/systemd/system/smb.service.wants"
-  ln -s "../wsdd2.service" .
 }
