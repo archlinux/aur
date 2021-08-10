@@ -1,7 +1,7 @@
 pkgbase = jprofiler11
 	pkgdesc = The Award-Winning All-in-One Java Profiler
 	pkgver = 11.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jprofiler.com
 	arch = any
 	license = custom
@@ -15,4 +15,3 @@ pkgbase = jprofiler11
 	sha256sums = ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36
 
 pkgname = jprofiler11
-
