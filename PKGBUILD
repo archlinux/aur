@@ -1,7 +1,7 @@
 # Maintainer: RichieMay
 
 pkgname=intellij-idea-ultimate-without-jbr
-pkgver=2021.1.3
+pkgver=2021.2
 pkgrel=1
 pkgdesc="Intellij Idea Ultimate Without Jbr"
 arch=(x86_64)
@@ -17,7 +17,8 @@ source=(
     "intellij-idea-ultimate.desktop")
 
 sha256sums=(
-    'd73e2266c85602f355179c53b72c6d7014c4d4e74437e25fe005f0f54d52878d'
+    # https://download.jetbrains.com/idea/ideaIU-${pkgver}-no-jbr.tar.gz.sha256
+    '554e0613e69fcb94d899329305df3b8ae0a96604af70ed77034a44e49e0d7d3d'
     'a8a31e45e8abed10f71c3e948064fe7258dc9cb3d60d6f48de7b009b05625f88')
 
 
