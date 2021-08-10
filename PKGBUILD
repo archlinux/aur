@@ -9,11 +9,11 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.3.0')
+provides=('gdal=3.3.1')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="https://gdal.org/"
