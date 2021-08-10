@@ -1,7 +1,7 @@
 pkgbase = playkey-linux
 	pkgdesc = Client for game streaming service playkey.net
 	pkgver = 1.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.playkey.net
 	arch = x86_64
 	license = custom

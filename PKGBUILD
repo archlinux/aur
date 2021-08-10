@@ -3,7 +3,7 @@
 
 pkgname=playkey-linux
 pkgver=1.10
-pkgrel=3
+pkgrel=4
 pkgdesc='Client for game streaming service playkey.net'
 arch=('x86_64')
 url='https://www.playkey.net'
