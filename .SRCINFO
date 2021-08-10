@@ -1,0 +1,21 @@
+pkgbase = maple2021
+	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2021.
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.maplesoft.com/download/
+	install = maple2021.install
+	arch = x86_64
+	license = custom
+	depends = ld-lsb
+	conflicts = maple18
+	conflicts = maple2019
+	conflicts = maple2020
+	options = !strip
+	source = maple2021.desktop
+	source = Maplesoft-x-maple-worksheet.xml
+	source = local://Maple2021.1LinuxX64Installer.run
+	sha256sums = f5dc3735d44e7db229a73d60752932fc86160c06e5d67e5d50bbfe9ca45ecf52
+	sha256sums = e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+pkgname = maple2021
