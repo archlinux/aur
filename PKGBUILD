@@ -1,15 +1,17 @@
+# Maintainer: Bruno Felipe Leal Delfino <bruno.delfino1995@gmail.com>
+
 pkgname='kct'
-pkgver=0.2.0
-pkgrel=2
-arch=('any')
+pkgver=0.3.1
+pkgrel=1
+arch=('x86_64')
 url='https://github.com/kseat/kct'
 pkgdesc='A Kubernetes Configuration Tool'
 license=('MIT')
 makedepends=('rust' 'cargo')
-provides=('kct')
-conflicts=('kct')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kseat/kct/archive/v$pkgver.tar.gz")
-sha256sums=('2741090e944c8c096c9fe4318324bf0505520117c68415b4830d833cba9afaf5')
+depends=('gcc-libs')
+conflicts=('kct-bin' 'kct-git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/oddin-org/kct/archive/v$pkgver.tar.gz")
+sha256sums=('07bf41e5084b1be8df359a6f43dd52a5df1becb1ebb376b34237d53850054506')
 
 build(){
 	cd "$pkgname-$pkgver"

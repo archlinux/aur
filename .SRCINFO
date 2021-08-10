@@ -1,16 +1,16 @@
 pkgbase = kct
 	pkgdesc = A Kubernetes Configuration Tool
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/kseat/kct
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	provides = kct
-	conflicts = kct
-	source = kct-0.2.0.tar.gz::https://github.com/kseat/kct/archive/v0.2.0.tar.gz
-	sha256sums = 2741090e944c8c096c9fe4318324bf0505520117c68415b4830d833cba9afaf5
+	depends = gcc-libs
+	conflicts = kct-bin
+	conflicts = kct-git
+	source = kct-0.3.1.tar.gz::https://github.com/oddin-org/kct/archive/v0.3.1.tar.gz
+	sha256sums = 07bf41e5084b1be8df359a6f43dd52a5df1becb1ebb376b34237d53850054506
 
 pkgname = kct
-
