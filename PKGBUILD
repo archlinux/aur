@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=picosvg
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc='CLI tool to simplify SVG files, intended for use as part of a font build'
 arch=(any)
@@ -13,16 +13,23 @@ depends=(absl-py
          python
          "${_py_deps[@]/#/python-}")
 makedepends=(python-setuptools-scm)
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('eefc54bc29216941fb48a08aa84cd569041c7fe9de9a46105e29d8f36308ef23')
+checkdepends=(python-pytest)
+_archive="$pkgname-$pkgver"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
+sha256sums=('1065c8fbaa142bcfbe1bd6a8269bba675e729d4f0c08526fde025029c8d53e3a')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	export PYTHONHASHSEED=0
 	python setup.py build
 }
 
+check() {
+	cd "$_archive"
+	PYTHONPATH=src pytest tests
+}
+
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
