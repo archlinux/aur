@@ -4,7 +4,7 @@
 
 pkgname=python-meshplex
 _name=${pkgname#python-}
-pkgver=0.16.4
+pkgver=0.16.5
 pkgrel=1
 pkgdesc='Compute interesting points, areas, and volumes in triangular and tetrahedral meshes.'
 url='https://github.com/nschloe/meshplex'
@@ -25,7 +25,7 @@ optdepends=(
 	'vtk'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('ac1c981fcf60ff353e3cf504f2922ef16090501679a02107141c299358dd52f3f0af58b48da155e6e143fd3e9875c41d4a1b235df90be62fc18b84c1e76a341a')
+b2sums=('6e97a5164bc8cfb7bf410508aa92b2900671c5372fdf1b8a522042f84978b5d404190195a0ce864ef2270a9cfd2497a832a6e14effbf6ab71688f5d8c256c840')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver" || exit
