@@ -3,9 +3,9 @@
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
-pkgver=0.6.0.r231.gbf0768d
+pkgver=0.7.0.r2.g441a87a
 pkgrel=1
-pkgdesc='Open source RGB lighting management front-end application for OpenRazer'
+pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
 license=('GPL3')
 source=("git+https://github.com/polychromatic/polychromatic.git")
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
