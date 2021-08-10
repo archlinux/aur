@@ -1,0 +1,27 @@
+pkgbase = dbus-python2
+	pkgdesc = Python 2.7 bindings for DBUS
+	pkgver = 1.2.18
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/DBusBindings
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = python2
+	makedepends = autoconf-archive
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python2-sphinx
+	depends = dbus
+	depends = glib2
+	provides = python2-dbus=1.2.18
+	provides = python2-dbus-common=1.2.18
+	conflicts = python2-dbus
+	conflicts = python2-dbus-common
+	replaces = python2-dbus
+	replaces = python2-dbus-common
+	source = https://dbus.freedesktop.org/releases/dbus-python2/dbus-python2-1.2.18.tar.gz
+	source = https://dbus.freedesktop.org/releases/dbus-python2/dbus-python2-1.2.18.tar.gz.asc
+	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
+	sha256sums = 92bdd1e68b45596c833307a5ff4b217ee6929a1502f5341bae28fd120acf7260
+	sha256sums = SKIP
+
+pkgname = dbus-python2
