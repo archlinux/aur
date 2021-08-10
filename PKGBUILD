@@ -3,14 +3,14 @@
 # Maintainer: Andrey Kolchenko <andrey@kolchenko.me>
 pkgname=pam-python
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Python for PAM'
 arch=('x86_64')
 url='http://pam-python.sourceforge.net/'
 license=('GNU Affero General Public License')
 depends=(
 	'pam'
-	'python'
+	'python2'
 )
 makedepends=(
 	'python-sphinx'
