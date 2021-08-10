@@ -1,5 +1,5 @@
 pkgbase = exfat-utils-debug
-	pkgdesc = Utilities for the exFAT file system without fuse (to prefer exfat kernel module over fuse)
+	pkgdesc = Utilities for the exFAT file system with debugging enabled
 	pkgver = 1.3.0
 	pkgrel = 3
 	url = https://github.com/relan/exfat
