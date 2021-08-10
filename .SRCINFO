@@ -1,0 +1,15 @@
+pkgbase = libhildon-git
+	pkgdesc = Hildon Desktop Library
+	pkgver = 2.2.28
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libhildon
+	arch = any
+	groups = gnome
+	license = GPL
+	depends = gtk3
+	provides = libhildon
+	conflicts = libhildon
+	source = git+https://github.com/maemo-leste/libhildon.git#tag=
+	sha256sums = SKIP
+
+pkgname = libhildon-git
