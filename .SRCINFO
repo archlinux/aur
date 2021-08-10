@@ -8,8 +8,9 @@ pkgbase = meshroom-git
 	license = MPL2
 	makedepends = git
 	makedepends = cmake
-	makedepends = python-setuptools
 	makedepends = python-cx-freeze-qfix
+	makedepends = python-idna
+	makedepends = python-setuptools
 	makedepends = patchelf
 	depends = alice-vision-git
 	depends = alembic
@@ -24,6 +25,7 @@ pkgbase = meshroom-git
 	depends = qt5-imageformats
 	depends = qt5-location
 	depends = qt5-svg
+	depends = qt5-charts
 	provides = meshroom=2021.1.0
 	conflicts = meshroom
 	source = meshroom::git+https://github.com/alicevision/meshroom.git#branch=develop
