@@ -2,7 +2,7 @@
 pkgname=python-ros-cross-compile
 _name=${pkgname:7}
 __name=$(echo $_name | tr '-' '_')
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A tool to build ROS workspaces for various target architectures and platforms."
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-docker' 'docker' 'qemu-user-static')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${__name}/${__name}-$pkgver.tar.gz)
-sha256sums=('a39d378dcf98dd720927436057cbdbe59e87b1d283e1379ebad4918ce3e0815c')
+sha256sums=('eeb60ac6ad230f1c492fb8027fea8d5529d9147d202f2147730fefee4ef1f484')
 
 package() {
     cd ${srcdir}/${__name}-${pkgver}
