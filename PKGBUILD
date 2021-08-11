@@ -2,14 +2,14 @@
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
-pkgver=0.7.6
-pkgrel=2
+pkgver=0.7.7
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
-license=(GPL3)
-depends=(python-matplotlib python-npx)
-makedepends=(python-setuptools git-lfs)
-checkdepends=(python-tox gmsh)
+license=('GPL3')
+depends=('python-matplotlib' 'python-npx')
+makedepends=('python-setuptools' 'git-lfs')
+checkdepends=('python-tox' 'gmsh')
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
   'python-optimesh: for triangular mesh optimization'
@@ -17,7 +17,7 @@ optdepends=('python-meshio: for creation mesh'
   'python-pyvista: for creation unstructured grid and plotter'
   'python-scipy: for curve fit support'
   'vtk: for create VTK hexahedron support')
-source=(git+${url}.git#tag=${pkgver})
+source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
