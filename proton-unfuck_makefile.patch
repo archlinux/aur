@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index c9f14bc..a6637c5 100644
+index c9f14bc..b5d8063 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -60,7 +60,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -31,16 +31,17 @@ index c9f14bc..a6637c5 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -404,6 +404,8 @@ endif # ifeq ($(CONTAINER),)
+@@ -404,6 +404,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
 +	-Db_lto=true \
 +	-Db_pie=true \
++	-Ddoc=disabled \
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -416,6 +418,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -416,6 +419,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -48,7 +49,7 @@ index c9f14bc..a6637c5 100644
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -432,6 +435,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -432,6 +436,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -58,7 +59,7 @@ index c9f14bc..a6637c5 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -470,6 +476,7 @@ GST_BASE_MESON_ARGS := \
+@@ -470,6 +477,7 @@ GST_BASE_MESON_ARGS := \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
  	-Dtools=disabled \
@@ -66,7 +67,7 @@ index c9f14bc..a6637c5 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -531,6 +538,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -531,6 +539,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dximagesrc=disabled \
  	-Dy4m=disabled \
  	-Dtools=disabled \
@@ -74,7 +75,7 @@ index c9f14bc..a6637c5 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -651,8 +659,14 @@ WINE_SOURCE_ARGS = \
+@@ -651,8 +660,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -89,7 +90,7 @@ index c9f14bc..a6637c5 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -745,7 +759,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -745,7 +760,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
@@ -192,19 +193,19 @@ index 916df8b..044f705 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 7b982fa..d91bf87 100644
+index 7b982fa..8e08128 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
-@@ -14,14 +14,15 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
- 	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
+@@ -11,7 +11,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+ 	@echo ":: configuring $(3)bit $(1)..." >&2
+ 	rm -rf "$$($(2)_OBJ$(3))/meson-private/coredata.dat"
+ 
+-	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
++	grep -s -v -e c_args -e cpp_args "$$($(2)_SRC)/build-win$(3).txt" | \
  	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
--	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
-+	    -e "s:\[properties\]:[properties]\nc_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
-+	    -e "s:\[properties\]:[properties]\ncpp_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
- 	  > "$$($(2)_OBJ$(3))/build-win$(3).txt"
- 
- 	env $$($(2)_ENV$(3)) \
+ 	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
+@@ -21,7 +21,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  	meson "$$($(2)_OBJ$(3))" "$$($(2)_SRC)" \
  	      --prefix="$$($(2)_DST$(3))" \
  	      --libdir="lib$(subst 32,,$(3))" \
@@ -213,7 +214,7 @@ index 7b982fa..d91bf87 100644
  	      $$($(2)_MESON_ARGS) \
  	      $$($(2)_MESON_ARGS$(3)) \
  	      $$(MESON_STRIP_ARG)
-@@ -31,7 +32,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+@@ -31,7 +31,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	env $$($(2)_ENV$(3)) \
