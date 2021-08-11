@@ -5,12 +5,12 @@ _repouser=post-factum
 _reponame=uksmd
 _rev=b6af35cb9a772f643fd1bd703f4d1f6c6c6d3b79
 pkgver=0.0.0.r5.${_rev:0:10}
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=(procps-ng libcap-ng)
+depends=(UKSMD-BUILTIN procps-ng libcap-ng)
 source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_repouser}/${_reponame}/-/archive/${_rev}/${_reponame}-${_rev}.tar.gz)
 sha256sums=('434d34035ee2032668f9393e39af5a2fdc34dd0ff90b742d8e1d3af8df433198')
 
@@ -25,7 +25,6 @@ package() {
 
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "distro/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${pkgname}.service
 }
 
