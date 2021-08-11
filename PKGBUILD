@@ -2,7 +2,7 @@
 
 pkgname=hysteria-bin
 _pkgbase=hysteria
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments (binary release)'
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=("$_pkgbase::https://github.com/HyNetwork/$_pkgbase/releases/download/v$p
         'hysteria-server@.service'
         'sysusers.conf')
 
-sha512sums=('47e34fb6713a02167e925cce570105a42a38197774f14ab7e22b081c6f0cdfb355417b14625e1c7c9a4ecce0ffca1a392a8dd7521831d17c0111bcb6db90730d'
-            'd1d13fc53943dd3caadec1b2882188457eef914e5b54cf5f532e04f94119f2227737a24a751dbcd7aa65c5fd051bbe1ba2c79983c6e5ae189df0f541130e68de'
-            'c43f7de39624a6e7e7910280d16d5675660f2a49e430b050ebbb8415f8d3bed491f959126917e096aa9de180f9c5ffd62c8c74c9c0ac944dc3c0eba39e9c48f4'
+sha512sums=('35d0dbc3030f2bb86591ae3d3467c179e57ae21c9814c5690f92ddc31057bab3d4294b65f08bb6a38e12c3a1b551c472c277e20179038af52f9f400a8ed357cd'
+            '32e38b0c77680bfac57ad10e2ec5f8057c81e1286c6dcd6a7ae110ce6956ca1e57fef00e5cbacff15e4b6f010029f7a0d68b62ed09c8cdbe1cba6485b900fe8c'
+            'c042e08a22adaa18c1477dab5d44341bd54cc2a0baeaff5f7b615ffdf43aa663ebb7d22a88ef8178ef5c1aaa6b9e4538d8fa7277c65551aafd2d1f8de29d387b'
             '5a3927c7ae9d9dea619bd073eb666d52a454ed8a2af5d5cc95f0dd54a69d56731543b54c493bfd53e2d11a2395996df688f1126ddede977b4aa9ed4ee91011c5')
 
 package() {
