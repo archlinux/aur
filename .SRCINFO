@@ -1,0 +1,16 @@
+pkgbase = ruby-docile
+	pkgdesc = keeps your Ruby DSLs tame and well-behaved
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://ms-ati.github.io/docile/
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ms-ati/docile/archive/v1.4.0/docile-1.4.0.tar.gz
+	sha256sums = ca09c0b0436acaa18ea8740c99da1cce4072feee83a5918a7177e52d231b3fde
+
+pkgname = ruby-docile
