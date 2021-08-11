@@ -1,0 +1,15 @@
+pkgbase = ruby-constructor
+	pkgdesc = Declarative named-argument object initialization
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/atomicobject/constructor/
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = constructor-2.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/constructor-2.0.0.gem
+	sha256sums = 3e2184496074926f5afa396f5d4377dce99a26f3a5763afe6c256e3611b8150b
+
+pkgname = ruby-constructor
