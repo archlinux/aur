@@ -7,7 +7,7 @@ pkgbase = notesnook
 	license = Unknown
 	depends = gtk3
 	depends = nss
-	source = https://github.com/streetwriters/notesnook/releases/download/v1.5.1/notesnook_amd64.deb
+	source = notesnook_1.5.1_amd64.deb::https://github.com/streetwriters/notesnook/releases/download/v1.5.1/notesnook_amd64.deb
 	sha256sums = ca937af6c01ea8e4285c2ac1d2cfaf2caf22395b38b764872feca3c7870534db
 
 pkgname = notesnook

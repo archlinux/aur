@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://notesnook.com/"
 license=('Unknown')
 depends=('gtk3' 'nss')
-source=("https://github.com/streetwriters/$pkgname/releases/download/v$pkgver/${pkgname}_amd64.deb")
+source=("${pkgname}_${pkgver}_amd64.deb"::"https://github.com/streetwriters/$pkgname/releases/download/v$pkgver/${pkgname}_amd64.deb")
 sha256sums=('ca937af6c01ea8e4285c2ac1d2cfaf2caf22395b38b764872feca3c7870534db')
 
 package() {
