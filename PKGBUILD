@@ -3,14 +3,14 @@
 _base=quadpy
 pkgname=python-${_base}
 pkgver=0.16.8
-pkgrel=5
+pkgrel=6
 pkgdesc="Numerical integration (quadrature, cubature) in Python"
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
 depends=('python-orthopy' 'python-scipy' 'python-ndim')
 makedepends=('python-setuptools' 'git-lfs')
-checkdepends=('python-tox' 'eigen')
+checkdepends=('python-tox' 'eigen' 'qt5-x11extras')
 optdepends=('python-matplotlib: for Matplotlib rendering'
   'vtk: for generate polygon data for a sphere')
 source=(git+${url}.git#tag=${pkgver})
