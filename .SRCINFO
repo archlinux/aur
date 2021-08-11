@@ -1,7 +1,7 @@
 pkgbase = icalingua
 	pkgdesc = A Linux client for QQ and more
 	pkgver = 2.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Clansty/Icalingua
 	arch = aarch64
 	arch = x86_64

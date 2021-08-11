@@ -1,6 +1,6 @@
 pkgname=icalingua
 pkgver=2.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
