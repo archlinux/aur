@@ -6,9 +6,9 @@ pkgbase = mullvad-vpn
 	install = mullvad-vpn.install
 	arch = x86_64
 	license = GPL3
+	makedepends = cargo
 	makedepends = git
 	makedepends = go
-	makedepends = rust
 	makedepends = nodejs>=12
 	makedepends = npm>=6.12
 	makedepends = nvm
