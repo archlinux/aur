@@ -1,26 +1,35 @@
 # Maintainer: Gyara <laxect39@gmail.com>
 
-pkgname=xtr
-pkgver=0.1.6
+pkgname=xtr-git
+_pkgname=xtr
+pkgver=r41.ae762fb
 pkgrel=1
 pkgdesc="Translation tools for rust"
 url="https://github.com/woboq/tr"
+conflicts=('xtr')
+provides=('xtr')
 arch=("x86_64")
 license=("AGPL")
 depends=("cargo")
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('e7d0e91ecbeee7ab326e8694585111437aa59ca00d51b8362a37eb01bfc83a973c8c9d9752d9cd1e3228795a3a4f98e79fbc62116e2155917afb7c4ddab3170d')
+makedepends=('git')
+source=("git+$url.git")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "tr/"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-  RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+  cd "$srcdir/tr"
+  RUSTUP_TOOLCHAIN=stable cargo build --release --all-features --target-dir=target -p xtr
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/tr"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$_pkgname"
 }
 
 # vim: ts=2 sw=2 et:
