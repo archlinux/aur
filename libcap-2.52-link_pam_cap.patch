@@ -1,0 +1,33 @@
+From f5a6d2badc35c2db8f16adba3dd2e3907a7185d4 Mon Sep 17 00:00:00 2001
+From: David Runge <dave@sleepmap.de>
+Date: Wed, 11 Aug 2021 19:18:08 +0200
+Subject: [PATCH] Fix pam_cap tests with pam 1.5.1
+
+pam_cap/Makefile:
+When running tests against pam_cap they fail due to a missing link
+against libpam.so, as discussed in
+https://bugzilla.kernel.org/show_bug.cgi?id=214023.
+This patch adds `-lpam` to ensure pam_cap.so is linked against
+libpam.so.
+
+Signed-off-by: David Runge <dave@sleepmap.de>
+---
+ pam_cap/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pam_cap/Makefile b/pam_cap/Makefile
+index a4c4891..42c5016 100644
+--- a/pam_cap/Makefile
++++ b/pam_cap/Makefile
+@@ -22,7 +22,7 @@ execable.o: execable.c ../libcap/execable.h ../libcap/loader.txt
+ 	$(CC) $(CFLAGS) $(IPATH) -DLIBCAP_VERSION=\"libcap-$(VERSION).$(MINOR)\" -DSHARED_LOADER=\"$(shell cat ../libcap/loader.txt)\" -c execable.c -o $@
+ 
+ pam_cap.so: pam_cap.o execable.o
+-	$(LD) -o pam_cap.so $+ $(LIBCAPLIB) $(LDFLAGS) --entry=__so_start
++	$(LD) -o pam_cap.so -lpam $+ $(LIBCAPLIB) $(LDFLAGS) --entry=__so_start
+ 
+ pam_cap.o: pam_cap.c
+ 	$(CC) $(CFLAGS) $(IPATH) -c $< -o $@
+-- 
+2.32.0
+
