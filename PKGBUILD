@@ -84,7 +84,7 @@ package() {
 	# keep packages unless updating from within application
 	[ -z "$_UPDATING" ] && keepPackages='-k' || update='--upgrade'
 
-	./install.pl $update $keepPackages --installDir=$_installDir -v
+	./install.pl $update $keepPackages --installDir="$_installDir" -v
 
 	install -m644 -b updater.pl $_installDir/updater.pl
 	sed -i "s/APPLICATION NAME/$_productRename/" $_installDir/updater.pl

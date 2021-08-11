@@ -4,7 +4,7 @@ post_install() {
 
 	if [ -n "$DISPLAY" ]
 	then
-		setsid xterm -sb -rightbar -u8 -geometry 120x80 -e "cat $eula ; sleep 32000000" &> /dev/null \
+		setsid xterm -title "$eula" -sb -rightbar -u8 -geometry 120x80 -e "cat $eula ; sleep 32000000" &> /dev/null \
 		&& return
 	fi
 
