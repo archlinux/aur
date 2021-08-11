@@ -3,7 +3,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=xlog
-pkgver=2.0.17
+pkgver=2.0.23
 pkgrel=1
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
@@ -42,5 +42,5 @@ package() {
 	rm $pkgdir/usr/share/applications/mimeinfo.cache
 	rm $pkgdir/usr/share/pixmaps/gnome-mime-text-x-xlog.png
 }
-md5sums=('360b93e32ad530e3bb0dc40a8de1e8ad')
-sha256sums=('54ef23290987c6126c6082f8ba25f8a03be4406d0886bb6a98f8cc8f4241b66e')
+md5sums=('0949ad82805eccd970f074cf11fca9d9')
+sha256sums=('2523f25ce25b60e09e598ea1d2ff1f6e60647f50e8a7581d9a79f880a74181a7')
