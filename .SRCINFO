@@ -1,8 +1,8 @@
 pkgbase = cargo-docset
 	pkgdesc = Cargo subcommand to generate a Dash/Zeal docset for your Rust packages
 	pkgver = 0.2.1
-	pkgrel = 2
-	url = https://github.com/rust-secure-code/cargo-supply-chain
+	pkgrel = 3
+	url = https://github.com/Robzz/cargo-docset
 	arch = x86_64
 	license = MIT
 	depends = cargo
