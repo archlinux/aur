@@ -7,3 +7,4 @@ Terminal=false
 Type=Application
 Categories=Development;
 Keywords=decompile;decompiler;java;fernflower;procyon;
+MimeType=application/x-java
