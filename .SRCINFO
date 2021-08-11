@@ -1,0 +1,13 @@
+pkgbase = realm-studio-appimage
+	pkgdesc = Graphical tool to open and edit local and synced Realm Databases.
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://github.com/realm/realm-studio
+	arch = x86_64
+	license = Apache
+	noextract = realm-studio-11.1.0.AppImage
+	options = !strip
+	source_x86_64 = realm-studio-11.1.0.AppImage::https://github.com/realm/realm-studio/releases/download/v11.1.0/MongoDB.Realm.Studio-11.1.0.AppImage
+	sha256sums_x86_64 = 2eae888eef7e36eee7a25f1c29820daeca3fcaf0094162ebea608d0808cb4213
+
+pkgname = realm-studio-appimage
