@@ -1,11 +1,11 @@
 pkgbase = nvidia-dkms-performance
-	pkgver = 470.57.02
+	pkgver = 470.63.01
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.57.02/NVIDIA-Linux-x86_64-470.57.02.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.63.01/NVIDIA-Linux-x86_64-470.63.01.run
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils.sysusers
 	source = nvidia.hook
@@ -14,12 +14,12 @@ pkgbase = nvidia-dkms-performance
 	source = 0003-nvidia-drm-modeset.patch
 	source = 0004-NVreg-Improvements.patch
 	source = 0005-nvidia-settings-paths.patch
-	sha256sums = 55d7ae104827faa79e975321fe2b60f9dd42fbff65642053443c0e56fdb4c47d
+	sha256sums = 6f1a44cc4a2ce27dce749ccd1e403c1db0f4791e2d22c05ec966842101d3ed14
 	sha256sums = ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293
-	sha256sums = 010e5ee27c6121b0c32e3298bd5cc6b86a8d428a724858f88db4b32c5d520935
-	sha256sums = ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce
+	sha256sums = a885c208a4cda620797eae6ffca412c7a3c44fa11624fa1fee5b04c29fcf9cc4
+	sha256sums = 6ef8cde2a5c1a5eadaefc0b4fb9005ab433ac10b0452a015b9d93e345156665e
 	sha256sums = 7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b
 	sha256sums = 898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311
 	sha256sums = 6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017
@@ -27,21 +27,21 @@ pkgbase = nvidia-dkms-performance
 pkgname = nvidia-dkms-performance
 	pkgdesc = NVIDIA driver sources for linux with some optimizations
 	depends = dkms
-	depends = nvidia-utils-performance=470.57.02
+	depends = nvidia-utils-performance=470.63.01
 	depends = libglvnd
-	provides = nvidia=470.57.02
-	provides = nvidia-dkms=470.57.02
-	provides = nvidia-dkms-performance=470.57.02
+	provides = nvidia=470.63.01
+	provides = nvidia-dkms=470.63.01
+	provides = nvidia-dkms-performance=470.63.01
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms
 
 pkgname = nvidia-settings-performance
 	pkgdesc = Tool for configuring the NVIDIA graphics driver
-	depends = nvidia-utils-performance>=470.57.02
+	depends = nvidia-utils-performance>=470.63.01
 	depends = gtk3
-	provides = nvidia-settings=470.57.02
-	provides = nvidia-settings-performance=470.57.02
+	provides = nvidia-settings=470.63.01
+	provides = nvidia-settings-performance=470.63.01
 	conflicts = nvidia-settings
 
 pkgname = nvidia-utils-performance
@@ -53,11 +53,11 @@ pkgname = nvidia-utils-performance
 	optdepends = xorg-server-devel: for nvidia-xconfig
 	optdepends = egl-wayland: for Wayland support
 	optdepends = opencl-nvidia-performance: for OpenCL support
-	provides = nvidia-utils=470.57.02
+	provides = nvidia-utils=470.63.01
 	provides = vulkan-driver
 	provides = opengl-driver
-	provides = nvidia-libgl=470.57.02
-	provides = nvidia-libgl-performance=470.57.02
+	provides = nvidia-libgl=470.63.01
+	provides = nvidia-libgl-performance=470.63.01
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -65,9 +65,9 @@ pkgname = nvidia-utils-performance
 pkgname = opencl-nvidia-performance
 	pkgdesc = OpenCL implemention for NVIDIA
 	depends = zlib
-	depends = nvidia-utils-performance>=470.57.02
+	depends = nvidia-utils-performance>=470.63.01
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=470.57.02
+	provides = opencl-nvidia=470.63.01
 	provides = opencl-driver
 	conflicts = opencl-nvidia
 
@@ -76,13 +76,13 @@ pkgname = lib32-nvidia-utils-performance
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-utils-performance>=470.57.02
+	depends = nvidia-utils-performance>=470.63.01
 	optdepends = lib32-opencl-nvidia-performance: for OpenCL support
-	provides = lib32-nvidia-utils=470.57.02
+	provides = lib32-nvidia-utils=470.63.01
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
-	provides = lib32-nvidia-libgl=470.57.02
-	provides = lib32-nvidia-libgl-performance=470.57.02
+	provides = lib32-nvidia-libgl=470.63.01
+	provides = lib32-nvidia-libgl-performance=470.63.01
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-nvidia-libgl
 	replaces = lib32-nvidia-libgl
@@ -91,8 +91,8 @@ pkgname = lib32-opencl-nvidia-performance
 	pkgdesc = OpenCL implemention for NVIDIA (Multilib)
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
-	depends = lib32-nvidia-utils-performance>=470.57.02
+	depends = lib32-nvidia-utils-performance>=470.63.01
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=470.57.02
+	provides = lib32-opencl-nvidia=470.63.01
 	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia

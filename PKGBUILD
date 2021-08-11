@@ -69,7 +69,7 @@ _override_max_perf=
 pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
 	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
-pkgver=470.57.02
+pkgver=470.63.01
 pkgrel=1
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -85,12 +85,12 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '0003-nvidia-drm-modeset.patch'
         '0004-NVreg-Improvements.patch'
         '0005-nvidia-settings-paths.patch')
-sha256sums=('55d7ae104827faa79e975321fe2b60f9dd42fbff65642053443c0e56fdb4c47d'
+sha256sums=('6f1a44cc4a2ce27dce749ccd1e403c1db0f4791e2d22c05ec966842101d3ed14'
             'ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
             '717920f48b4d7ec50b83d2d096bab36449b30f1b5d144f0fe586627025367293'
-            '010e5ee27c6121b0c32e3298bd5cc6b86a8d428a724858f88db4b32c5d520935'
-            'ed20d9fa8b04d8f519feef42f4ffea7998bc29457b4e48d0b2ca863330125fce'
+            'a885c208a4cda620797eae6ffca412c7a3c44fa11624fa1fee5b04c29fcf9cc4'
+            '6ef8cde2a5c1a5eadaefc0b4fb9005ab433ac10b0452a015b9d93e345156665e'
             '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
             '898fe80847fb2974e1d16b380c16569ddb3ab24c6974bbeb72d68e8e13902311'
             '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
