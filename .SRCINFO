@@ -1,14 +1,14 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 2.0.1.r46.g28c41ef
-	pkgrel = 2
+	pkgver = 2.0.1.r51.ga6841fa
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Shortwave
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = cargo
 	makedepends = git
 	makedepends = meson
-	makedepends = rust
 	makedepends = wayland-protocols
 	depends = gst-plugins-bad
 	depends = gtk4
