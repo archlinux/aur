@@ -4,7 +4,7 @@
 # Contributor : Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=78.12.0
+pkgver=91.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
@@ -23,13 +23,11 @@ provides=(firefox=${pkgver})
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        ${pkgname}.desktop 0001-Use-remoting-name-for-GDK-application-names.patch
-        "make_packed_simd_compile_with_Rust_1.54.patch::https://hg.mozilla.org/releases/mozilla-esr78/raw-rev/f09969c47ae8")
-sha256sums=('8b55a8b8254ddde03db83f44c9fecfc4ae86ea126b5445a0355d915830bd7410'
+        ${pkgname}.desktop 0001-Use-remoting-name-for-GDK-application-names.patch)
+sha256sums=('fa1bae287ef55416ae4ee3fbd22f923f9d1fec066c91766d60633d53db6a9959'
             'SKIP'
             'd86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726'
-            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
-            '67a374de4188e9a19b1aa72b7705b7e6f574fd68098e458a64aa19debea64992')
+            '7e7435e8171426e87a84cecf9eb017cb969c9c85d973feb78c1e05771972b6e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -50,9 +48,6 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1719674#c11
-  patch -Np1 -i ../make_packed_simd_compile_with_Rust_1.54.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
