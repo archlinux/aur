@@ -1,4 +1,10 @@
+post_upgrade() {
+    echo "NOTE: You may not use the original JACK server (jackd) anymore after installing pipewire-jack-dropin."
+}
+
 post_install() {
+    post_upgrade
+
     echo "Reboot your system for the changes to take effect."
 }
 
