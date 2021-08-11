@@ -1,28 +1,27 @@
 #Maintainer: Dylan Delgado
 
 pkgname=mlucas
-pkgver=19.1
-pkgrel=2
+pkgver=20
+pkgrel=1
 pkgdesc="Program used to perform Lucas-Lehmer tests of Mersenne numbers. Can be built on the ARM architecture."
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://www.mersenneforum.org/mayer/README.html"
+depends=("gmp")
 license=('FDL1.3')
-source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v19.1.txz"
-'sysctl-missing.patch')
-md5sums=('2b9af033d4bbb6d439d70bb9bc0c2617'
-'a5f745d70a87481235dc350b8cdb77ee')
+source=("https://www.mersenneforum.org/mayer/src/C/mlucas_v20.txz")
+md5sums=('9b19a56bf9d598a141fd2f655e61f175')
 
-prepare() {
-cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
+#prepare() {
+#cd "${srcdir}"/"${pkgname}"_v"${pkgver}"
 #Only patch if the kernel version is at least 5.5.0
-kermajver=`uname -r | cut -d. -f1`
-kerminver=`uname -r | cut -d. -f2`
-if [ $kermajver -gt 5 ]; then
-   patch -p1 < "../../sysctl-missing.patch"
-elif [ $kermajver -eq 5 ] && [ $kerminver -ge 5 ]; then
-   patch -p1 < "../../sysctl-missing.patch"
-fi
-}
+#kermajver=`uname -r | cut -d. -f1`
+#kerminver=`uname -r | cut -d. -f2`
+#if [ $kermajver -gt 5 ]; then
+   #patch -p1 < "../../sysctl-missing.patch"
+#elif [ $kermajver -eq 5 ] && [ $kerminver -ge 5 ]; then
+   #patch -p1 < "../../sysctl-missing.patch"
+#fi
+#}
 
 build() {
 cd "${srcdir}"/"${pkgname}"_v"${pkgver}"/src
@@ -69,7 +68,7 @@ fi
 
 if ! grep error build.log > /dev/null;
 then
-   gcc -g -o ../Mlucas *.o -lm -lpthread -lrt
+   gcc -g -o ../Mlucas *.o -lm -lpthread -lrt -lgmp
 fi
 }
 
