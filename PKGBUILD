@@ -1,7 +1,7 @@
 pkgname=('python-openchemistrypy-git')
 _srcname='openchemistrypy'
 pkgdesc='OpenChemistry python libraries.'
-pkgver=0.0.17
+pkgver=0.0.22
 pkgrel=1
 arch=('any')
 url="https://github.com/OpenChemistry/${_srcname}"

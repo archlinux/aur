@@ -1,6 +1,6 @@
 pkgbase = python-openchemistrypy-git
 	pkgdesc = OpenChemistry python libraries.
-	pkgver = 0.0.17
+	pkgver = 0.0.22
 	pkgrel = 1
 	url = https://github.com/OpenChemistry/openchemistrypy
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = python-openchemistrypy-git
 	sha512sums = SKIP
 
 pkgname = python-openchemistrypy-git
-
