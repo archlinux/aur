@@ -1,6 +1,6 @@
 pkgname=icalingua
-pkgver=2.1.4
-pkgrel=5
+pkgver=2.1.5
+pkgrel=1
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
@@ -26,8 +26,8 @@ package() {
     ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/electron-qq"
 }
 sha256sums=('84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38'
-            '5fd26f012a6729114fd7743eddc56375ccaf871aa799469b613eff93cd0fefb2'
+            '43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd'
             '60eebcac935e9fbf834ee3e7ee2e0a058fc6b22f39faa9734244f0b6b316678b')
-sha256sums_aarch64=('45beab8d42e080705a574c93ed1970e4aa1bdc4a47c4c17ab6d224ef2bd309d6')
-sha256sums_x86_64=('c622c94249facd7b3a9b7fd4503c2178c6dece63a559d335d071510c4368291e')
-sha256sums_i686=('0f0eac0f13c46d7b74f5a6b3280f0a906cd3626f20c20db05853e994b714dbc7')
+sha256sums_aarch64=('13a4f5bf43b16b4b1acc85ff8c28c6b45c8fbea84a44f020e8cc2fec51037ab7')
+sha256sums_x86_64=('5016813a9f626dcf1a9a851941838e757fbdf3baa5bffb9e2abcd65d97edd3fc')
+sha256sums_i686=('a9a6025401e249a490a658f6511aa279f924b2f58445b63674bb62e4bba1cb60')
