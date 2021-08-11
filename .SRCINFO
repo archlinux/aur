@@ -1,6 +1,6 @@
 pkgbase = oorexx-beta
 	pkgdesc = open source implementation of Object Rexx
-	pkgver = 5.0.0.r12165
+	pkgver = 5.0.0.r12284
 	pkgrel = 1
 	url = http://www.oorexx.org/
 	install = oorexx-beta.install
@@ -22,4 +22,3 @@ pkgbase = oorexx-beta
 	sha256sums = a6f754d77fb2805c7cc14cd249002cffc1d624ab877cdc2867b0e0df9aff14f6
 
 pkgname = oorexx-beta
-
