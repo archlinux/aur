@@ -1,0 +1,13 @@
+pkgbase = g15daemon-git
+	pkgdesc = A daemon that makes it possible to use the G-Buttons and draw on the G15 LCD
+	pkgver = 3.0.4.r1
+	pkgrel = 1
+	url = https://gitlab.com/menelkir/g15daemon
+	arch = x86_64
+	license = GPL
+	depends = libg15render>=3.0
+	conflicts = g15daemon
+	source = g15daemon-git::git+https://gitlab.com/menelkir/g15daemon
+	sha512sums = SKIP
+
+pkgname = g15daemon-git
