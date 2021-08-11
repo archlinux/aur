@@ -1,16 +1,15 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=otf-recursive
-pkgver=1.074
-pkgrel=2
+pkgver=1.079
+pkgrel=1
 pkgdesc="A variable type family built for better code & UI"
 arch=('any')
 url="https://github.com/arrowtype/recursive"
-license=('custom:SIL Open Font License 1.1')
-depends=('fontconfig')
+license=('OFL')
 _srcname=ArrowType-Recursive
 source=("${url}/releases/download/v${pkgver}/${_srcname}-${pkgver}.zip")
-sha256sums=('ef897b49a7a12ddb19d057fda4d666c1c75aaa8ad10f655dd3af477199223484')
+sha256sums=('e8499836cb7656d33d82ebbf4a24c8a660ceaa69909849764b93d7fa251c9053')
 
 package() {
   install -d ${pkgdir}/usr/share/fonts/OTF/Recursive
