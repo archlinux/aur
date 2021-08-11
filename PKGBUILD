@@ -5,7 +5,7 @@
 
 pkgname=ttf-paratype
 pkgver=2.005
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='ParaType font family with extended cyrillic and latin character sets'
 arch=('any')
@@ -53,7 +53,7 @@ sha512sums=(
 	'479f2c9067bd5631d9ac6ad61a91add41a99c2acdfec173386754891f6c8b6d78d4ec16bac73caaf816f751fa70857a7836a3733a35e3048d85f84c1ea9d734f'
 
 	# Font config file
-	'ec939bebecfb1612fdfc000fcd5eff8a2203658572f4ffdc2f3d30b4c6cc6dae414f2f263cbc7435d53de071e7f232e41b13d90e09eab4e3db8763e8e7712e22'
+	'dd1b7ff88230e49dbeabf2927fd08f44f5ced302e62c4fba8798cd013bb04a916bae051c78661d07639c052e12144727f2d35fc4b66be7a00850c4810d76e042'
 )
 
 package() {
