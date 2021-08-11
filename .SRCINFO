@@ -12,7 +12,7 @@ pkgbase = sync-my-moodle-git
 	depends = youtube-dl
 	depends = python-tqdm
 	depends = python-pdfkit
-	optdepends = python-secretstorage
+	optdepends = python-secretstorage: For storing your password in your keyring
 	source = sync-my-moodle-git::git+https://github.com/Romern/syncMyMoodle.git
 	sha512sums = SKIP
 

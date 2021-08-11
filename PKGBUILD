@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Romern/syncMyMoodle"
 license=('GPL3')
 depends=('python>=3.6' 'python-requests' 'python-beautifulsoup4' 'youtube-dl' 'python-tqdm' 'python-pdfkit')
-optdepends=('python-secretstorage')
+optdepends=('python-secretstorage: For storing your password in your keyring')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/Romern/syncMyMoodle.git")
 sha512sums=('SKIP')
