@@ -1,0 +1,30 @@
+From 7c996a93a84e0eed0c05522cfa4550af5686e4f7 Mon Sep 17 00:00:00 2001
+From: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
+Date: Wed, 11 Aug 2021 14:51:29 +0200
+Subject: [PATCH 2/3] rtos/riot: fix out-of-bounds read of optional symbols
+ array
+
+This fixes an out-of-bounds read of the riot_optional_symbols array.
+
+Change-Id: I172ae182dd0c7dd68edaa66ac030030d9bc65401
+Signed-off-by: Sebastiaan de Schaetzen <sebastiaan.de.schaetzen@gmail.com>
+---
+ src/rtos/riot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rtos/riot.c b/src/rtos/riot.c
+index fb5d1b29d..905b3d6a8 100644
+--- a/src/rtos/riot.c
++++ b/src/rtos/riot.c
+@@ -374,7 +374,7 @@ static int riot_get_symbol_list_to_lookup(struct symbol_table_elem *symbol_list[
+ 		(*symbol_list)[i].optional = false;
+ 
+ 		/* Lookup if symbol is optional */
+-		for (unsigned int k = 0; k < sizeof(riot_optional_symbols); k++) {
++		for (unsigned int k = 0; k < ARRAY_SIZE(riot_optional_symbols); k++) {
+ 			if (i == riot_optional_symbols[k]) {
+ 				(*symbol_list)[i].optional = true;
+ 				break;
+-- 
+2.32.0
+

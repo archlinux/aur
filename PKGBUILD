@@ -23,15 +23,18 @@ conflicts=('openocd')
 
 source=(
   "${pkgname}::git+https://repo.or.cz/openocd.git#commit=ae6de2f93"
-  "001-riot-segfault.patch"
+  "0001-fix-corrupt-target.patch"
+  "0002-fix-optional-symbols.patch"
 )
 #	"git+http://repo.or.cz/r/git2cl.git"
 #	"git+http://repo.or.cz/r/jimtcl.git"
 #	"git+http://repo.or.cz/r/libjaylink.git"
 md5sums=('SKIP'
-         '650c374e13a0ff0817f5a47efdd69c73')
+         '1c3bb06054a3e2b36975784c81d6b3df'
+         '654334beb4cd0c3618b2ba86f73109a8')
 sha1sums=('SKIP'
-          '9cb6cede8765e087fe6e8f75a43acdf2d97479e1')
+          'caaae2bedf536ccb7fb794272c3a77c4023b9f16'
+          'df65ed79c1a0dc6c4dc3b59b0c508915e261719b')
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
@@ -80,7 +83,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
-  patch -p1 -i ../001-riot-segfault.patch
+  patch -p1 -i ../0001-fix-corrupt-target.patch
+  patch -p1 -i ../0002-fix-optional-symbols.patch
 }
 
 build() {

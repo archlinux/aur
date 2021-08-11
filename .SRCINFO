@@ -22,10 +22,13 @@ pkgbase = openocd-riot-git
 	conflicts = openocd
 	options = !strip
 	source = openocd-riot-git::git+https://repo.or.cz/openocd.git#commit=ae6de2f93
-	source = 001-riot-segfault.patch
+	source = 0001-fix-corrupt-target.patch
+	source = 0002-fix-optional-symbols.patch
 	md5sums = SKIP
-	md5sums = 650c374e13a0ff0817f5a47efdd69c73
+	md5sums = 1c3bb06054a3e2b36975784c81d6b3df
+	md5sums = 654334beb4cd0c3618b2ba86f73109a8
 	sha1sums = SKIP
-	sha1sums = 9cb6cede8765e087fe6e8f75a43acdf2d97479e1
+	sha1sums = caaae2bedf536ccb7fb794272c3a77c4023b9f16
+	sha1sums = df65ed79c1a0dc6c4dc3b59b0c508915e261719b
 
 pkgname = openocd-riot-git
