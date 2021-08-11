@@ -1,14 +1,14 @@
 pkgbase = pkger-rs
 	pkgdesc = Build rpm, deb, pkg and other packages using Docker
-	pkgver = 0.4.0
-	pkgrel = 1
+	pkgver = 0.5.0
+	pkgrel = 0
 	url = https://github.com/wojciechkepka/pkger
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = pkger
 	conflicts = pkger
-	source = https://github.com/wojciechkepka/pkger/archive/refs/tags/0.4.0.tar.gz
+	source = https://github.com/wojciechkepka/pkger/archive/refs/tags/0.5.0.tar.gz
 	sha1sums = SKIP
 
 pkgname = pkger-rs

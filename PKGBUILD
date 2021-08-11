@@ -1,7 +1,7 @@
 # Maintainer: Wojciech Kepka <wojciech@wkepka.dev>
 pkgname=pkger-rs
-pkgver=0.4.0
-pkgrel=1
+pkgver=0.5.0
+pkgrel=0
 epoch=
 pkgdesc='Build rpm, deb, pkg and other packages using Docker'
 arch=('x86_64')
