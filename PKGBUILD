@@ -8,13 +8,19 @@ pkgdesc="System76 CLI tool for installing firmware updates and systemd service t
 arch=('x86_64')
 url="https://github.com/pop-os/system76-firmware"
 license=('GPL3')
-makedepends=('rust' 'dbus')
+makedepends=('cargo' 'dbus')
 conflicts=("$pkgbase-daemon-git")
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('74ddeaafc9994dc3ea14b58e6b5204a79e07e9b8766a3053f2e9ee2107374cf3')
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$pkgbase-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
   make
 }
 
