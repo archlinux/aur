@@ -1,7 +1,7 @@
 pkgbase = icalingua
 	pkgdesc = A Linux client for QQ and more
 	pkgver = 2.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Clansty/Icalingua
 	arch = aarch64
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = icalingua
 	license = GPL
 	depends = ffmpeg
 	depends = electron
+	depends = libappindicator-gtk3
 	optdepends = mongodb-bin: Provides storage
 	optdepends = redis: Provides storage
 	provides = electron-qq
