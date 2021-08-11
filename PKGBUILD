@@ -1,13 +1,13 @@
 # Maintainer: Niclas Meyer <niclas at countingsort dot com>
 
 pkgname=kiwmi-git
-pkgver=r13.3bc3034
+pkgver=r208.e0142de
 pkgrel=1
 pkgdesc="A fully manual tiling Wayland compositor"
 arch=('i686' 'x86_64')
 url="https://github.com/buffet/kiwmi"
 license=('MPL')
-depends=('wlroots')
+depends=('luajit' 'wlroots')
 makedepends=('git' 'meson' 'ninja')
 conflicts=('kiwmi')
 provides=('kiwmi')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  meson --prefix /usr build
+  meson --prefix /usr --buildtype release -Dlua-pkg=luajit build
   ninja -C build
 }
 
