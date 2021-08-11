@@ -5,7 +5,7 @@ pkgbase = system76-oled
 	url = https://github.com/pop-os/system76-oled
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	depends = dbus
 	depends = libx11
 	depends = libxrandr
@@ -13,4 +13,3 @@ pkgbase = system76-oled
 	sha256sums = 14bd774108a91780af1cb85bc15089d28d8bd8c3dbe5c6d2eba1b41791ce1f16
 
 pkgname = system76-oled
-
