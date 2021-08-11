@@ -1,14 +1,14 @@
 # Maintainer: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=csdr-jketterl-git
-pkgver=0.17.0.r9.g64ed1aa
-pkgrel=3
+pkgver=0.17.1.r38.gc4a970b
+pkgrel=4
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/jketterl/csdr"
 license=('GPL3')
 depends=('fftw')
-makedepends=('git')
+makedepends=('git' 'cmake')
 conflicts=('csdr')
 provides=('csdr')
 source=("$pkgname"::'git://github.com/jketterl/csdr.git')
@@ -24,13 +24,13 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	autoreconf -i
-	./configure --prefix=/usr
-	make
+	cmake -B build -S "$srcdir/$pkgname" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+
+	make -C build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 }

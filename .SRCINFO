@@ -1,12 +1,13 @@
 pkgbase = csdr-jketterl-git
 	pkgdesc = A simple DSP library and command-line tool for Software Defined Radio.
-	pkgver = 0.17.0.r9.g64ed1aa
-	pkgrel = 3
+	pkgver = 0.17.1.r38.gc4a970b
+	pkgrel = 4
 	url = https://github.com/jketterl/csdr
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	depends = fftw
 	provides = csdr
 	conflicts = csdr
@@ -14,4 +15,3 @@ pkgbase = csdr-jketterl-git
 	md5sums = SKIP
 
 pkgname = csdr-jketterl-git
-
