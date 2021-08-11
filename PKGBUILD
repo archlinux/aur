@@ -11,6 +11,8 @@ depends=('wine' 'gtk3')
 conflicts=('linvst3x')
 optdepends=('jack')
 suffix="Manjaro"
+suffix=""LinVst3-X-4.5.2-Manjaro.zip""
+
 source=("$url/releases/download/$pkgver/LinVst3-X-$pkgver-$suffix.zip")
 md5sums=('a8b9a48651a82e89a859ff388aafc93f')
 
@@ -27,7 +29,7 @@ package() {
 	
 	#test
 	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/TestVst3/testvst3.exe" "$pkgdir/usr/bin/testvst3x.exe"
-	install -Dm755 "$srcdir/LinVst3-X-$pkgver-$suffix/TestVst3/testvst3.exe.so" "$pkgdir/usr/bin/testvst3x.exe.so"
+	install -Dm755 "$srcdir/LinVst3-$pkgver-$suffix/TestVst3/testvst3.exe.so" "$pkgdir/usr/bin/testvst3x.exe.so"
 
 }
 
