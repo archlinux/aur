@@ -93,7 +93,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and the steam fsync_v1 patches for proton"
+  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and the steam fsync_v2 patches for proton"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')

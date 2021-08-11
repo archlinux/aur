@@ -42,7 +42,7 @@ pkgbase = linux-covolunablu-gaming
 	sha256sums = c71f09b597b5f97895421dba2e7d76e4fb4338c6b18ed51f5a09e0775f749b4f
 
 pkgname = linux-covolunablu-gaming
-	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and the steam fsync_v1 patches for proton
+	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and the steam fsync_v2 patches for proton
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
