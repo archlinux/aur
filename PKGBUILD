@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kmon-git
-pkgver=1.5.4.r0.g606f2f4
+pkgver=1.5.5.r0.g9025c4f
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('x86_64')
@@ -20,14 +20,19 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
