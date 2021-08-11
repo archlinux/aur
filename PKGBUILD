@@ -3,7 +3,7 @@
 
 pkgname=nanodbc
 pkgver=2.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A small C++ wrapper for the native C ODBC API"
 arch=('i686' 'x86_64')
 url="http://nanodbc.io/"
@@ -31,7 +31,6 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DNANODBC_DISABLE_LIBCXX=ON \
     -DNANODBC_DISABLE_TESTS=ON \
-    -DNANODBC_ENABLE_UNICODE=ON \
     "../${pkgname}-${pkgver}"
 
   make
@@ -44,7 +43,6 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DNANODBC_DISABLE_LIBCXX=ON \
     -DNANODBC_DISABLE_TESTS=ON \
-    -DNANODBC_ENABLE_UNICODE=ON \
     "../${pkgname}-${pkgver}"
 
   make
