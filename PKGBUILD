@@ -2,7 +2,7 @@
 
 pkgname=dell-h825cdw-s2825cdn
 pkgver=1.0_3
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary driver for Dell's H825cdw and S2825 Printers"
 arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers"
