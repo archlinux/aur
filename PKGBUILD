@@ -1,16 +1,28 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='A declarative manager of Arch packages'
+pkgdesc='declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
-source=("${pkgname}.py::https://github.com/steven-omaha/${pkgname}/releases/download/v${pkgver}/${pkgname}.py")
+source=("https://github.com/steven-omaha/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 arch=('any')
 license=('GPL3')
 depends=('python')
-sha256sums=('b2a6cbd5b44e2997ae4f75d0f67523a695cf1e56dc6a750082ea9cd1abafb072')
+checkdepends=('python-pytest' 'python-mock')
+sha256sums=('e024aeb25b331daabd672fa249102e6a57edac622729f6000733f9582a941ab4')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i -e "s/VERSION = 'unknown'/VERSION = '${pkgver}'/" pacdef.py
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  pytest -v
+}
 
 package() {
-  sed -i -e "s/VERSION = 'unknown'/VERSION = '${pkgver}'/" pacdef.py
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 pacdef.py "${pkgdir}/usr/bin/pacdef"
+  install -Dm644 _completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_pacdef"
 }
