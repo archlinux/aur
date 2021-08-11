@@ -1,7 +1,7 @@
 pkgbase = nanodbc
 	pkgdesc = A small C++ wrapper for the native C ODBC API
 	pkgver = 2.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nanodbc.io/
 	arch = i686
 	arch = x86_64

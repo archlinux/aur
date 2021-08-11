@@ -3,7 +3,7 @@
 
 pkgname=nanodbc
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small C++ wrapper for the native C ODBC API"
 arch=('i686' 'x86_64')
 url="http://nanodbc.io/"
@@ -20,11 +20,26 @@ prepare() {
 }
 
 build() {
-  rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
+  rm -rf "${srcdir}/build" "${srcdir}/build-static"
+  mkdir "${srcdir}/build" "${srcdir}/build-static"
+
+  cd "${srcdir}/build-static"
+
+  cmake \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DNANODBC_DISABLE_LIBCXX=ON \
+    -DNANODBC_DISABLE_TESTS=ON \
+    -DNANODBC_ENABLE_UNICODE=ON \
+    "../${pkgname}-${pkgver}"
+
+  make
+
   cd "${srcdir}/build"
 
   cmake \
+    -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DNANODBC_DISABLE_LIBCXX=ON \
@@ -40,6 +55,8 @@ build() {
 #}
 
 package() {
+  cd "${srcdir}/build-static"
+  make DESTDIR="${pkgdir}" install
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
 }
