@@ -3,14 +3,14 @@
 
 _name=terraform-docs
 pkgname=terraform-docs-bin
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Generate docs from terraform modules"
 arch=('x86_64')
 url="https://github.com/terraform-docs/terraform-docs"
 license=('MIT')
 source=("https://github.com/${_name}/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('f0a46b13c126f06eba44178f901bb7b6b5f61a8b89e07a88988c6f45e5fcce19')
+sha256sums=('e0b399d9dc2eb97853a7e12f1ae678e7160cae4c811646ce70169a8d611f6cf9')
 
 package() {
   cd "${srcdir}"
