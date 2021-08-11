@@ -3,7 +3,7 @@
 pkgname=aur-auto-vote-git
 _pkgname=${pkgname%-git}
 _reponame=bin
-pkgver=146.bb877b8
+pkgver=r146.bb877b8
 pkgrel=1
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
@@ -21,7 +21,7 @@ install="${pkgname}.install"
 
 pkgver() {
     cd "$srcdir/$_reponame"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
