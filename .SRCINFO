@@ -1,6 +1,6 @@
 pkgbase = worldedit-git
 	pkgdesc = Emulating Gentoo’s world files and sets for other package managers.
-	pkgver = r18.e1f53d0
+	pkgver = r20.7dc081f
 	pkgrel = 1
 	url = https://github.com/kdb424/worldedit
 	arch = i686
