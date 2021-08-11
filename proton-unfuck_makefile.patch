@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index a154243..82daf41 100755
+index f9a677c..56fb367 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -230,19 +230,19 @@ index 916df8b..044f705 100644
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
 diff --git a/make/rules-meson.mk b/make/rules-meson.mk
-index 7b982fa..d91bf87 100644
+index 7b982fa..8e08128 100644
 --- a/make/rules-meson.mk
 +++ b/make/rules-meson.mk
-@@ -14,14 +14,15 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
- 	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
+@@ -11,7 +11,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+ 	@echo ":: configuring $(3)bit $(1)..." >&2
+ 	rm -rf "$$($(2)_OBJ$(3))/meson-private/coredata.dat"
+ 
+-	grep -s -v -e c_args -e cpp_args -e link_args "$$($(2)_SRC)/build-win$(3).txt" | \
++	grep -s -v -e c_args -e cpp_args "$$($(2)_SRC)/build-win$(3).txt" | \
  	sed -e "s:\[properties\]:[properties]\nc_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
  	    -e "s:\[properties\]:[properties]\ncpp_args = [$$(call list-quote,$$(COMMON_FLAGS))]:" \
--	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
-+	    -e "s:\[properties\]:[properties]\nc_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
-+	    -e "s:\[properties\]:[properties]\ncpp_link_args = [$$(call list-quote,$$(LDFLAGS) $$(CROSSLDFLAGS))]:" \
- 	  > "$$($(2)_OBJ$(3))/build-win$(3).txt"
- 
- 	env $$($(2)_ENV$(3)) \
+ 	    -e "s:\[properties\]:[properties]\nlink_args = [$$(call list-quote,$$(CROSSLDFLAGS))]:" \
+@@ -21,7 +21,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  	meson "$$($(2)_OBJ$(3))" "$$($(2)_SRC)" \
  	      --prefix="$$($(2)_DST$(3))" \
  	      --libdir="lib$(subst 32,,$(3))" \
@@ -251,7 +251,7 @@ index 7b982fa..d91bf87 100644
  	      $$($(2)_MESON_ARGS) \
  	      $$($(2)_MESON_ARGS$(3)) \
  	      $$(MESON_STRIP_ARG)
-@@ -31,7 +32,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
+@@ -31,7 +31,7 @@ $$(OBJ)/.$(1)-configure$(3): $$($(2)_SRC)/meson.build
  $$(OBJ)/.$(1)-build$(3):
  	@echo ":: building $(3)bit $(1)..." >&2
  	env $$($(2)_ENV$(3)) \
