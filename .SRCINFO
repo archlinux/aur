@@ -1,6 +1,6 @@
 pkgbase = nexus3-cli
 	pkgdesc = A python-based CLI for Sonatype Nexus OSS 3
-	pkgver = 4.1.0
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://gitlab.com/thiagocsf/nexus3-cli
 	arch = any
@@ -10,12 +10,11 @@ pkgbase = nexus3-cli
 	depends = python-inflect
 	depends = python-clint
 	depends = python-semver
-	source = https://files.pythonhosted.org/packages/source/n/nexus3-cli/nexus3-cli-4.1.0.tar.gz
-	sha256sums = 91dc505661407f3d70cf4e99c8af87bd813f7c417bceba8878c53d29712e0712
+	source = https://files.pythonhosted.org/packages/source/n/nexus3-cli/nexus3-cli-4.1.3.tar.gz
+	sha256sums = 0a94e9dd4df57288cba5bcd2ef2fcfe4fe29512df9f9d4d94d178476536327a9
 
 pkgname = nexus3-cli
 	depends = python
 	depends = python-inflect
 	depends = python-clint
 	depends = python-semver
-

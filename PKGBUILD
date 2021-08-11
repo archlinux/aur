@@ -2,7 +2,7 @@
 
 pkgbase='nexus3-cli'
 pkgname='nexus3-cli'
-pkgver='4.1.0'
+pkgver='4.1.3'
 pkgrel=1
 pkgdesc="A python-based CLI for Sonatype Nexus OSS 3"
 url="https://gitlab.com/thiagocsf/nexus3-cli"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('91dc505661407f3d70cf4e99c8af87bd813f7c417bceba8878c53d29712e0712')
+sha256sums=('0a94e9dd4df57288cba5bcd2ef2fcfe4fe29512df9f9d4d94d178476536327a9')
 
 prepare() {
     # patching package inflect
