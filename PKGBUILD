@@ -3,11 +3,12 @@
 _pkgbase=v4l2loopback
 pkgname=v4l2loopback-utils
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="v4l2-loopback device (utilities only)"
 arch=(any)
 url="https://github.com/umlaeute/v4l2loopback"
-license=(GPL2)
+license=(GPL)
+depends=(V4L2LOOPBACK-MODULE)
 conflicts=(v4l2loopback-dkms v4l2loopback-dkms-git)
 replaces=(v4l2loopback-dkms v4l2loopback-dkms-git)
 makedepends=(help2man)
@@ -18,5 +19,4 @@ package() {
 	cd ${_pkgbase}-${pkgver}
 
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install-utils install-man
-	install -Dm644 COPYING -t "${pkgdir}"/usr/share/licenses/${_pkgbase}
 }

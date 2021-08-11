@@ -1,11 +1,12 @@
 pkgbase = v4l2loopback-utils
 	pkgdesc = v4l2-loopback device (utilities only)
 	pkgver = 0.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/umlaeute/v4l2loopback
 	arch = any
-	license = GPL2
+	license = GPL
 	makedepends = help2man
+	depends = V4L2LOOPBACK-MODULE
 	conflicts = v4l2loopback-dkms
 	conflicts = v4l2loopback-dkms-git
 	replaces = v4l2loopback-dkms
@@ -14,4 +15,3 @@ pkgbase = v4l2loopback-utils
 	sha256sums = e152cd6df6a8add172fb74aca3a9188264823efa5a2317fe960d45880b9406ae
 
 pkgname = v4l2loopback-utils
-
