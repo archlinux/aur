@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=2.0.0
-_commit=cf31d2e03960a9e6a0a89bac181253a8803113d2
+pkgver=2.1.0
+_commit=ef80b844c74525219536071bab0fd5a6d19bb345
 pkgrel=1
 pkgdesc="A tool for writing better scripts"
 arch=("any")
@@ -33,4 +33,3 @@ package() {
 }
 
 # vim: syntax=sh
-
