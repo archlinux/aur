@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 448
+	pkgver = 450
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
@@ -33,7 +33,7 @@ pkgbase = hydrus
 	conflicts = hydrus-docs
 	conflicts = hydrus-sources
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=212088ba4b504c3dbce45c602741b0cce2e799b4
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=b0a3e217bbb088c49c4744b3ad92a6f3265c9495
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
