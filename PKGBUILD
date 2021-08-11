@@ -1,6 +1,7 @@
 #!/bin/bash
-# Maintainer: Stephen Zhang <zsrkmyn at gmail dot com>
-# Maintainer: Maël Kerbiriou <m431.kerbiriou@gmail.com>
+# Maintainer  : bartus <arch-user-repoᘓbartus.33mail.com>
+# Contributor : Stephen Zhang <zsrkmyn at gmail dot com>
+# Contributor : Maël Kerbiriou <m431.kerbiriou@gmail.com>
 
 _pkgname=autofdo
 pkgname=$_pkgname-git
