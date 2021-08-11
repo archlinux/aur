@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=sync-my-moodle-git
-pkgver=r149.2f3bccf
+pkgver=r161.85c9c1e
 pkgrel=1
 pkgdesc="a synchronization client for the RWTH Moodle"
 arch=('any')
@@ -20,10 +20,10 @@ pkgver() {
 
 prepare()
 {
-	sed -i 's/, default="config.json"/, default=os.path.expanduser("~\/.config\/sync-my-moodle.json")/g' "$srcdir/$pkgname/syncMyMoodle.py"
+	sed -i 's/, default="config.json"/, default=os.path.expanduser("~\/.config\/sync-my-moodle.json")/g' "$srcdir/$pkgname/syncmymoodle/__main__.py"
 }
 
 package()
 {
-	install -Dm 755 "$srcdir/$pkgname/syncMyMoodle.py" "$pkgdir/usr/bin/syncmymoodle"
+	install -Dm 755 "$srcdir/$pkgname/syncmymoodle/__main__.py" "$pkgdir/usr/bin/syncmymoodle"
 }
