@@ -6,8 +6,8 @@ pkgbase = pop-shell-shortcuts-git
 	url = https://github.com/pop-os/shell-shortcuts
 	arch = x86_64
 	license = GPL3
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
 	depends = gtk3
 	provides = pop-shell-shortcuts
 	conflicts = pop-shell-shortcuts
@@ -15,4 +15,3 @@ pkgbase = pop-shell-shortcuts-git
 	sha256sums = SKIP
 
 pkgname = pop-shell-shortcuts-git
-
