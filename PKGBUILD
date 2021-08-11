@@ -2,7 +2,7 @@
 _pkgname=dynarmic
 pkgname=$_pkgname-git
 pkgver=5.r108.g72f8abe1
-pkgrel=1
+pkgrel=2
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
 url="https://github.com/MerryMage/$_pkgname"
@@ -21,7 +21,7 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
+	"0001-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
 	'unbundle-catch2.patch'
 	'unbundle-fmt.patch'
 	'unbundle-robin-map.patch'
@@ -30,7 +30,7 @@ source=(
 )
 b2sums=(
 	'SKIP'
-	'027a8eae057b4b4aeb1cd278719c49cc824206a9b1ab9ee1e2c2dd2b194efc114fde3f7c74d12f2b7d6dc199d208cdadf2c3da9575542b01c14536fe0335b5e9'
+	'dba51c0f58050dcbd0cb2409a6231ba7de708a3d9ea608900cff662e83327bce2985dd1c189e7aed7555c7b572288b4e7ab79738007799020f7e1d14eb8ce12c'
 	'd5adb75e25b1f3cb297f781d4c00d978d234912ca7fcb4e206e7f7779ccbe9a9d747c652a6fc2d8af55442b457dc8d496f3708b67fa0072aba8cdf5aba15bdde'
 	'4bcf176ce2a82cbaf54f9eb0b463844e77c099e5824fb9d994817dd8a5b75ea1abebf17da4c01be14042ce36564d8df5836e9a02a5cbe92bb95d7232263123b4'
 	'd474ec20f085832c73de96b19a06b5d8018d6fb429ea054a9e026c1d56f12035b83bc3b980487825ecb473b674a7b22f2b92733bdb53d71dcb1528318f2a5d80'
@@ -45,7 +45,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	patch -Np1 < ../dynarmic-add-cmake-install-rules.patch
+	patch -Np1 < ../0001-dynarmic-add-cmake-install-rules.patch
 	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-fmt.patch
 	patch -Np1 < ../unbundle-robin-map.patch
