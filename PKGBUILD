@@ -1,13 +1,13 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 pkgname=wem
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
 url='https://git.sr.ht/~hristoast/wem'
 license=('GPL3')
 depends=('glibc')
-makedepends=('go' 'make')
+makedepends=('go')
 provides=('wem')
 conflicts=('wem')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~hristoast/wem/archive/${pkgver}.tar.gz")
