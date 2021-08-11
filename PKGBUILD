@@ -2,7 +2,7 @@
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Run websites as if they were apps"
 arch=('any')
 url="https://github.com/linuxmint/webapp-manager"
@@ -21,7 +21,11 @@ prepare() {
     "usr/lib/${pkgname}/common.py"
   sed -i 's/epiphany-browser/epiphany/g' \
     "usr/lib/${pkgname}/common.py"
+  sed -i 's/"google-chrome"/"google-chrome-stable"/g' \
+    "usr/lib/${pkgname}/common.py"
   sed -i 's/microsoft-edge/microsoft-edge-beta/g' \
+    "usr/lib/${pkgname}/common.py"
+  sed -i 's/"vivaldi"/"vivaldi-stable"/g' \
     "usr/lib/${pkgname}/common.py"
 
   # Fix license path
