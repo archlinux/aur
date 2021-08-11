@@ -8,6 +8,8 @@ pkgbase = pass-clip-git
 	depends = pass
 	optdepends = rofi: Use rofi to present choices.
 	optdepends = fzf: Use fzf to present choices.
+	provides = pass-clip
+	conflicts = pass-clip
 	source = git+https://github.com/ibizaman/pass-clip
 	sha512sums = SKIP
 

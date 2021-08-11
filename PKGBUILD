@@ -9,6 +9,8 @@ arch=('any')
 url='https://github.com/ibizaman/pass-clip'
 license=('GPL3')
 depends=('pass')
+provides=("${pkgbasename}")
+conflicts=("${pkgbasename}")
 optdepends=('rofi: Use rofi to present choices.'
             'fzf: Use fzf to present choices.')
 source=('git+https://github.com/ibizaman/pass-clip')
