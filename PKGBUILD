@@ -12,7 +12,7 @@ url="https://github.com/google/autofdo"
 license=('Apache')
 depends=('google-glog' 'protobuf') # common dependencies
 depends+=('libelf' 'openssl')      # required by GCC variant
-makedepends=('cmake' 'ninja' 'git' 'llvm' 'clang')
+makedepends=('clang' 'cmake' 'git' 'llvm' 'ninja' 'python')
 optdepends=('llvm: for LLVM support')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
