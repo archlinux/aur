@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler9
-pkgver="9.2.1"
+pkgver=9.2.1
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler (Version 9.x)"
@@ -8,7 +8,7 @@ arch=(any)
 url="http://jprofiler.com"
 license=('custom')
 depends=('java-environment')
-source=("http://download-keycdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
+source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop")
 sha256sums=('f6bba9ef5391cefcd206aae93669479052081f9ee863c323eea793119039b8a6'
             '423b3d10bfa13e8c76ed5136c9721dabea21acef8b288660e8983d099100d850')
