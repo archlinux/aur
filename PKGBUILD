@@ -70,7 +70,7 @@ pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
 	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
 pkgver=470.63.01
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -284,6 +284,7 @@ package_nvidia-utils-performance() {
     # Vulkan ICD
     install -D -m644 nvidia_icd.json -t "${pkgdir}/usr/share/vulkan/icd.d"
     install -D -m644 nvidia_layers.json -t "${pkgdir}/usr/share/vulkan/implicit_layer.d"
+    install -D -m755 "libnvidia-vulkan-producer.so.${pkgver}" -t "${pkgdir}/usr/lib"
     
     # VDPAU
     install -D -m755 "libvdpau_nvidia.so.${pkgver}" -t "${pkgdir}/usr/lib/vdpau"
