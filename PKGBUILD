@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.13.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -19,12 +19,12 @@ sha256sums=('c50172d473c43eafebd366587c690eec88961f2092d2c7b4dd2904df945ade46'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
 
 _ensure_local_nvm() {
-  # lets be sure we are starting clean
+  # let's be sure we are starting clean
   which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
   export NVM_DIR="$srcdir/.nvm"
 
-  # The init script returns 3 if version
-  # specified in ./.nvrc is not (yet) installed in $NVM_DIR
+  # The init script returns 3 if version specified
+  # in ./.nvrc is not (yet) installed in $NVM_DIR
   # but nvm itself still gets loaded ok
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 }
@@ -32,11 +32,8 @@ _ensure_local_nvm() {
 prepare() {
   cd "$pkgname-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
-  local nodeversion='12.22.4'
-  local npm_prefix=$(npm config get prefix)
-  npm config delete prefix
   _ensure_local_nvm
-  nvm install "$nodeversion" && nvm use "$nodeversion"
+  nvm install 12.22.5
 }
 
 build() {
