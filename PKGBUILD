@@ -2,24 +2,24 @@
 
 _pkgname='xdot.py'
 pkgname=xdot-git
-pkgver=1.0.r1.g9ce8cca
+pkgver=1.2.r7.g6f0a5cc
 pkgrel=1
 pkgdesc="Interactive viewer for Graphviz dot files (git version)"
 arch=('any')
 url="https://github.com/jrfonseca/xdot.py"
 license=('LGPL2.1')
 makedepends=('git')
-depends=('graphviz' 'python' 'gtk3' 'python-gobject' 'python-cairo' 'python-setuptools' 'python-graphviz')
+depends=('graphviz' 'python' 'gtk3' 'python-gobject' 'python-cairo' 'python-setuptools' 'python-graphviz' 'python-numpy')
 
 provides=('xdot')
 conflicts=('xdot')
 
 source=('git+https://github.com/jrfonseca/xdot.py.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-    cd $_pkgname
-    git describe --tags | sed -e 's|-|.r|' | sed -e 's|-|.|'
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
