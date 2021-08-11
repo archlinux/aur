@@ -1,7 +1,7 @@
 pkgbase = termite-aperezdc
 	pkgdesc = A simple VTE-based terminal, aperezdc fork
 	pkgver = 15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aperezdc/termite
 	arch = x86_64
 	license = LGPL
@@ -14,7 +14,6 @@ pkgbase = termite-aperezdc
 	depends = vte-common
 	provides = termite
 	conflicts = termite
-	conflicts = termite-git
 	backup = etc/xdg/termite/config
 	source = https://github.com/aperezdc/termite/releases/download/v15.3/termite-15.3.tar.xz
 	source = https://github.com/aperezdc/termite/releases/download/v15.3/termite-15.3.tar.xz.asc

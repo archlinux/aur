@@ -2,12 +2,12 @@
 pkgdesc='A simple VTE-based terminal, aperezdc fork'
 pkgname=termite-aperezdc
 pkgver=15.3
-pkgrel=1
+pkgrel=2
 url=https://github.com/aperezdc/termite
 license=(LGPL)
 depends=(gtk3 pcre2 gnutls vte-common)
 makedepends=(gperf 'meson>=0.58' ninja)
-conflicts=(termite termite-git)
+conflicts=(termite)
 provides=(termite)
 arch=(x86_64)
 backup=(etc/xdg/termite/config)
