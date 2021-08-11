@@ -11,10 +11,8 @@ depends=('wine' 'gtk3')
 conflicts=('linvst3x')
 optdepends=('jack')
 suffix="Manjaro"
-suffix="Manjaro"
-
-source=("$url/releases/download/$pkgver/LinVst3-X-$pkgver-$suffix.zip")
-md5sums=('a8b9a48651a82e89a859ff388aafc93f')
+source=("https://github.com/osxmidi/LinVst3-X/releases/download/4.5/LinVst3-X-4.5.2-Manjaro.zip")
+md5sums=('b4549a62bb552c284ae3899755f912be')
 
 package() {
 	# Shared library
