@@ -1,17 +1,18 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab-glab
 _realpkgname=glab
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
-pkgdesc='Gitlab Cli tool written in Go to help work seamlessly with Gitlab from the command line.'
+pkgdesc='Gitlab Cli tool to help work seamlessly with Gitlab from the command line'
 arch=('x86_64')
 url="https://github.com/profclems/glab"
 license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('693fa7d81e50a1a029eec94b0d1a779f2627d17a4a73d4d40d833242a3ff7b1b')
+sha256sums=('c0b5644f53e5d66b77843c4e1f5746fed12f31079fc95679ac78d05609a87e65')
 
 prepare(){
   cd "${_realpkgname}-${pkgver}"
