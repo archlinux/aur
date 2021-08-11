@@ -13,3 +13,5 @@ pkgbase = boohu-git
 	md5sums = SKIP
 
 pkgname = boohu-git
+
+pkgname = boohu-tk-git
