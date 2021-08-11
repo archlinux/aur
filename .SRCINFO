@@ -1,6 +1,6 @@
 pkgbase = twint
 	pkgdesc = An advanced Twitter scraping & OSINT tool.
-	pkgver = 2.1.19
+	pkgver = 2.1.20
 	pkgrel = 1
 	url = https://github.com/twintproject/twint
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = twint
 	depends = python-schedule
 	depends = python-fake-useragent
 	depends = python-aiohttp-socks
-	source = https://files.pythonhosted.org/packages/source/t/twint/twint-2.1.19.tar.gz
-	sha256sums = 61ff7f4e4b55cedfa36c65c7981638733ac2ad948db0dae9de07701013b40a72
+	source = https://files.pythonhosted.org/packages/source/t/twint/twint-2.1.20.tar.gz
+	sha256sums = b3b7671997e31ea5dff9f4cca0f83add07c3163fd7ab1dc8e44f9110eeb1965d
 
 pkgname = twint
 	depends = python
@@ -36,4 +36,3 @@ pkgname = twint
 	depends = python-schedule
 	depends = python-fake-useragent
 	depends = python-aiohttp-socks
-

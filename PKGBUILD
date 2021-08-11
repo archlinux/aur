@@ -3,7 +3,7 @@
 pkgbase='twint'
 pkgname=('twint')
 _module='twint'
-pkgver='2.1.19'
+pkgver='2.1.20'
 pkgrel=1
 pkgdesc="An advanced Twitter scraping & OSINT tool."
 url="https://github.com/twintproject/twint"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('61ff7f4e4b55cedfa36c65c7981638733ac2ad948db0dae9de07701013b40a72')
+sha256sums=('b3b7671997e31ea5dff9f4cca0f83add07c3163fd7ab1dc8e44f9110eeb1965d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
