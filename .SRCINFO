@@ -1,12 +1,11 @@
 pkgbase = wem
 	pkgdesc = A tool for managing wine "envs" or prefixes.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~hristoast/wem
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	makedepends = make
 	depends = glibc
 	provides = wem
 	conflicts = wem
