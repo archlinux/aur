@@ -1,0 +1,85 @@
+2.1
+	Added ability to specify number of harmonics on command line. 
+
+    Added HARMONICS command to AutoZen and seq2wav. 
+
+    A VOLUME command at the beginning of a sequence is now processed before AutoZen
+    	starts producing sound. 
+
+	Autozen now looks in ~/.autozen and /usr/share/AutoZen for sequence files when
+		the play button is presed. the ~/.autozen directory is created if it doesn't 
+		exist.
+
+	Added install to Makefile.
+
+    The source tar has been fully debianized. 
+
+2.0
+	Added -colorbox option
+		The colorbox is a simple window which oscillates between red and green
+		in synch with the audio phase difference. Hopefully, the color change 
+		will inject a second autozen signal into the visual cortex.
+
+		When the colorbox is active, a phase adjustment slide is provided at the 
+		bottom of the main Autozen window. A phase adjust is necessary since I don't 
+		know the time delay difference between the auditory and visual signal paths 
+		and it may, in fact, be different for each individual. The strongest 
+		entrainment should be achieved by adjusting the phase control so that the 
+		auditory and visual signals arrive simultainiously in the midbrain. Other 
+		interesting effects may be achievable by detuning the phase from that setting 
+		to create an interference pattern in the brain (thus stimulating only some areas). 
+		Not much is known about that yet, so please keep logs of experiments in that area. 
+
+	At user request, the max beat frequency is now 40 Hz. 
+
+	Code cleanup (again). 
+		Window creation has been moved into seperate functions to enhance readability.
+		A few other small fixes made.
+		A few more things are #defines now.
+
+1.3
+	Minor appearance and readability cleanups for GUI.
+
+	Added sequencer commands for seq2wav to control volume fade
+	when producing wav files.
+
+	Added EXIT sequencer command to cause AutoZen to fade volume and
+	quit rather than continuing at the final beat frequency when a
+	sequence ends.
+
+	Added time.pl, a simple script to total up how long a sequence file
+	will play for.
+
+	Should compile for Solaris and *BSD by uncommenting a line in Makefile
+		Thanks to Trevor Johnson for this.
+
+	Added a debian sub-directory to facilitate making a .deb.
+
+1.2.1
+
+	A small but important bug in the sound generation function. 
+	When it's too early, (2^i) looks like it should do pow(2,i) :-) 
+
+1.2
+
+	Much improved effectiveness. It now uses several upper harmonics of 
+	the tones with the same phase relation as the base frequency. 
+
+	Fade in/out. Audio is now faded in when AutoZen is started, and 
+	fades back out when Quit is pressed. Press Quit twice to exit instantly. 
+	Play button graphic now changes based on state. Now displays vertical 
+	bars when playing a sequence and a yellow triangle when a sequence is 
+	paused. 
+
+	More code cleanup. Factored sound generation into logical functions. 
+
+	Generalized sound functions so that harmonics can be easily mixed in 
+	with the base frequency. 
+
+	Added seq2wav. 
+
+1.1 
+	Internal version, not released.
+
+1.0 
+	This is the initial public release.

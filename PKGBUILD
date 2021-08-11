@@ -1,50 +1,32 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Harvie
-# Maintainer: realitygaps
+# Contributor: realitygaps
+
 pkgname=autozen
 pkgver=2.1
-pkgrel=3
-pkgdesc="A binural brainwave generator. Cause the user to experience an altered state of consciousness. Wear headphones. Don't use if you suffer for any kind of epilepsy and use at your own risk!"
-url="http://www.linuxlabs.com/autozen.shtml"
-license="GPL"
-arch=('i686' 'x86_64')
-source=(http://www.sourcefiles.org/Miscellaneous/$pkgname-$pkgver.tar.gz)
-depends=('gtk')
-md5sums=('8d85f8435f3733b9ea835cd0ffd106cc')
+pkgrel=4
+pkgdesc="A binaural brainwave generator"
+arch=('x86_64')
+url="http://linuxlabs.com/autozen.html"
+license=('GPL')
+depends=('gtk' 'perl')
+changelog=CHANGES
+source=("$pkgname-$pkgver.tar.gz::http://linuxlabs.com/download/$pkgname-$pkgver.tar.gz"
+        '001-Makefile.patch')
+sha256sums=('e7677d8b192999d02c5e25354e0546f08a933d594b79f55bfec199de947a1301'
+            '3b48ef8e274eac0c54667d6cd009a96091dc9be842de0e1c7013194b69ff03f1')
+
+prepare() {
+	patch -p1 -d "$pkgname-$pkgver" Makefile < 001-Makefile.patch
+}
 
 build() {
-#Make
-cd ${srcdir}/${pkgname}-${pkgver}/ || return 1
-make clean || return 1
-make || return 1
+	cd "$pkgname-$pkgver"
+	make clean
+	make PREFIX=/usr
+}
 
-mkdir -p ${pkgdir}/usr/
-make "PREFIX=${pkgdir}/usr" install || return 1
-
-#Menu Icons
-mkdir -p ${pkgdir}/usr/share/applications/
-
-echo '[Desktop Entry]
-Encoding=UTF-8
-Name=AutoZen
-GenericName=BrainWave Generator/Synchronizator
-Exec=autozen
-Icon=autozen
-Categories=Application;GTK;AudioVideo;Player;
-Terminal=false
-Type=Application
-' > ${pkgdir}/usr/share/applications/autozen.desktop
-
-echo '[Desktop Entry]
-Encoding=UTF-8
-Name=AutoZen (colorbox)
-GenericName=BrainWave Generator/Synchronizator
-Exec=autozen -colorbox
-Icon=autozen
-Categories=Application;GTK;AudioVideo;Player;
-Terminal=false
-Type=Application
-' > ${pkgdir}/usr/share/applications/autozen-colorbox.desktop
-
-#Rights
-chmod -R 755 ${pkgdir}
+package() {
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }

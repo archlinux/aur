@@ -1,0 +1,46 @@
+2,3c2,3
+< CC = gcc
+< CFLAGS = -g
+---
+> CC ?= gcc
+> CFLAGS ?= -g
+6,7c6,9
+< PREFIX = /usr
+< PUBLIC_SEQUENCES = $(PREFIX)/share/AutoZen
+---
+> PREFIX ?= /usr
+> DESTDIR ?=
+> LDFLAGS ?=
+> PUBLIC_SEQUENCES = $(PREFIX)/share/autozen
+9c11
+< # uncomment one of the OS= lines below if you're compiling on one of those OSen. 
+---
+> # uncomment one of the OS= lines below if you're compiling on one of those OSen.
+22c24
+< 	$(CC) $(OS) -D_REENTRANT -DPUBLIC_SEQUENCES='"$(PUBLIC_SEQUENCES)"' $(CFLAGS) `gtk-config --cflags` `gtk-config  --libs` -pthread autozen.c -o autozen $(DEBUG_LIBS)
+---
+> 	$(CC) $(OS) -D_REENTRANT -DPUBLIC_SEQUENCES='"$(PUBLIC_SEQUENCES)"' $(CFLAGS) `gtk-config --cflags` `gtk-config  --libs` -pthread autozen.c -o autozen $(DEBUG_LIBS) $(LDFLAGS)
+25,26c27,28
+< 	$(CC) seq2wav.c -o seq2wav -lm
+< clean: 
+---
+> 	$(CC) seq2wav.c -o seq2wav -lm $(CFLAGS) $(LDFLAGS)
+> clean:
+30,40c32,36
+< 	install -d $(PREFIX)/bin
+< 	install zentime $(PREFIX)/bin
+< 	install -s seq2wav $(PREFIX)/bin
+< 	install -s autozen $(PREFIX)/bin
+< 	install -d $(PREFIX)/share/AutoZen
+< 	install -m 644 *.seq $(PREFIX)/share/AutoZen
+< 	install -d $(PREFIX)/share/doc/AutoZen/HTML/images
+< 	install -m 644 doc/HTML/*.html $(PREFIX)/share/doc/AutoZen/HTML
+< 	install -m 644 doc/HTML/images/* $(PREFIX)/share/doc/AutoZen/HTML/images
+< 	install -d $(PREFIX)/man/man1
+< 	install -m 644 doc/autozen.1 $(PREFIX)/man/man1
+---
+> 	install -Dm 755 zentime seq2wav -t "$(DESTDIR)/$(PREFIX)/bin/"
+> 	install -Dm 644 *.seq -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/"
+> 	install -Dm 644 doc/HTML/*.html -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/HTML/"
+> 	install -Dm 644 doc/HTML/images/* -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/HTML/images/"
+> 	install -Dm 644 doc/autozen.1 -t "$(DESTDIR)/$(PREFIX)/share/man/man1/"
