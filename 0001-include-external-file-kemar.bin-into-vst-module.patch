@@ -1,0 +1,149 @@
+From 426f9be3a3c1c587d2fa91abdfa342a93ed4d323 Mon Sep 17 00:00:00 2001
+From: osch <oliver at luced de>
+Date: Tue, 10 Aug 2021 23:25:00 +0200
+Subject: [PATCH] include external file kemar.bin into vst module
+
+---
+ .gitignore                 |  1 +
+ JUCE/binaural-vst.jucer    |  2 ++
+ source/HRTFContainer.cpp   |  6 +-----
+ source/HRTFContainer.h     |  2 +-
+ source/PluginProcessor.cpp |  9 +++++++--
+ source/kemarBinToC.lua     | 37 +++++++++++++++++++++++++++++++++++++
+ 6 files changed, 49 insertions(+), 8 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 source/kemarBinToC.lua
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..30dd75e
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++/source/hrir_kemar_bin.c
+diff --git a/JUCE/binaural-vst.jucer b/JUCE/binaural-vst.jucer
+index 9aed51d..0e19f20 100644
+--- a/JUCE/binaural-vst.jucer
++++ b/JUCE/binaural-vst.jucer
+@@ -26,6 +26,8 @@
+             file="../source/AtomicAudioParameter.h"/>
+       <FILE id="awkfBW" name="Crossover.cpp" compile="1" resource="0" file="../source/Crossover.cpp"/>
+       <FILE id="g4mgpi" name="Crossover.h" compile="0" resource="0" file="../source/Crossover.h"/>
++      <FILE id="PsjOsv" name="hrir_kemar_bin.c" compile="1" resource="0"
++            file="../source/hrir_kemar_bin.c"/>
+       <FILE id="lc0O54" name="HRIRFilter.cpp" compile="1" resource="0" file="../source/HRIRFilter.cpp"/>
+       <FILE id="IlfLLb" name="HRIRFilter.h" compile="0" resource="0" file="../source/HRIRFilter.h"/>
+       <FILE id="QvnZNy" name="HRTFContainer.cpp" compile="1" resource="0"
+diff --git a/source/HRTFContainer.cpp b/source/HRTFContainer.cpp
+index 6b0bf4f..d6d87a4 100644
+--- a/source/HRTFContainer.cpp
++++ b/source/HRTFContainer.cpp
+@@ -65,10 +65,8 @@ const HRIRBuffer& HRTFContainer::hrir() const
+ 	return hrir_[hrirReadIndex];
+ }
+ 
+-void HRTFContainer::loadHrir(String filename)
++void HRTFContainer::loadHrir(InputStream& istream)
+ {
+-	FileInputStream istream(filename);
+-	if (istream.openedOk())
+ 	{
+ 		std::vector<Vec2f> points;
+ 		int azimuths[] = {-90, -80, -65, -55, -45, -40, -35, -30, -25, -20,
+@@ -95,8 +93,6 @@ void HRTFContainer::loadHrir(String filename)
+ 		triangulation_ = new Delaunay();
+ 		triangulation_->triangulate(points);
+ 	}
+-	else
+-		throw std::ios_base::failure("Failed to open HRIR file");
+ }
+ 
+ int HRTFContainer::getElvIndex(int elv)
+diff --git a/source/HRTFContainer.h b/source/HRTFContainer.h
+index 91393fd..912e7a5 100644
+--- a/source/HRTFContainer.h
++++ b/source/HRTFContainer.h
+@@ -22,7 +22,7 @@ public:
+ 	void updateHRIR(double azimuth, double elevation);
+ 	const HRIRBuffer& hrir() const;
+ 
+-	void loadHrir(String filename);
++	void loadHrir(InputStream& istream);
+ private:
+ 	static int getElvIndex(int elv);
+ 
+diff --git a/source/PluginProcessor.cpp b/source/PluginProcessor.cpp
+index d11f17a..f7e7d93 100644
+--- a/source/PluginProcessor.cpp
++++ b/source/PluginProcessor.cpp
+@@ -3,6 +3,9 @@
+ #include "PluginEditor.h"
+ #include "AtomicAudioParameter.h"
+ 
++extern "C" const size_t        binaural_hrir_kemar_bin_size;
++extern "C" const unsigned char binaural_hrir_kemar_bin_bytes[];
++
+ 
+ HrtfBiAuralAudioProcessor::HrtfBiAuralAudioProcessor()
+ 	: bypassed(false)
+@@ -16,10 +19,12 @@ HrtfBiAuralAudioProcessor::HrtfBiAuralAudioProcessor()
+ 	addParameter(gainDbParam);
+ 
+ 	// load HRIR
+-	auto thisDir = File::getSpecialLocation(File::currentExecutableFile).getParentDirectory();
+ 	try
+ 	{
+-		hrtfContainer.loadHrir(thisDir.getFullPathName() + "/hrir/kemar.bin");
++                MemoryInputStream hrirStream(binaural_hrir_kemar_bin_bytes, 
++                                             binaural_hrir_kemar_bin_size,
++                                             false);
++                hrtfContainer.loadHrir(hrirStream);
+ 		hrirLoaded = true;
+ 	}
+ 	catch (std::ios_base::failure&)
+diff --git a/source/kemarBinToC.lua b/source/kemarBinToC.lua
+new file mode 100644
+index 0000000..c7894ff
+--- /dev/null
++++ b/source/kemarBinToC.lua
+@@ -0,0 +1,37 @@
++os.setlocale("C")
++
++local output = {}
++local function writef(...)
++    output[#output + 1] = string.format(...)
++end
++local function printf(...)
++    io.stderr:write(string.format(...))
++end
++
++local bytes
++do
++    local inp = io.open("../build/hrir/kemar.bin", "rb")
++    bytes = inp:read("a")
++    inp:close()
++end
++
++do
++    writef("#include <stddef.h>\n")
++    writef("const size_t        binaural_hrir_kemar_bin_size    = %d;\n", #bytes)
++    writef("const unsigned char binaural_hrir_kemar_bin_bytes[] = {\n    ")
++    for j = 1, #bytes do
++        if j > 1 and (j - 1) % 20 == 0 then
++            writef("\n    ")
++        end
++        local b = bytes:byte(j)
++        writef("0x%02x", b)
++        if j < #bytes then
++            writef(", ")
++        end
++    end
++    writef("\n};\n")
++end
++local out = io.open("hrir_kemar_bin.c", "w")
++out:write(table.concat(output))
++out:close()
++
+-- 
+2.32.0
+

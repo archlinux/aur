@@ -1,0 +1,55 @@
+From 53ded23c4107add4848f2f18d71f8ddac1a622c4 Mon Sep 17 00:00:00 2001
+From: osch <oliver at luced de>
+Date: Tue, 10 Aug 2021 23:24:08 +0200
+Subject: [PATCH] Fix compile errors
+
+---
+ source/OouraFFT.cpp | 12 ++++++------
+ source/Util.h       |  1 +
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/source/OouraFFT.cpp b/source/OouraFFT.cpp
+index e1d34bb..4d8ae86 100644
+--- a/source/OouraFFT.cpp
++++ b/source/OouraFFT.cpp
+@@ -27,10 +27,10 @@ void OouraFFT::fft(float* in, std::complex<float>* out)
+ 	// copy to output from the ooura format
+ 	for (size_t i = 0; i < nfft / 2; ++i)
+ 	{
+-		out[i]._Val[0] = (float)buffer_[i * 2]; //real part
+-		out[i]._Val[1] = (float)buffer_[i * 2 + 1]; // imag part
++		out[i].real((float)buffer_[i * 2]); //real part
++		out[i].imag((float)buffer_[i * 2 + 1]); // imag part
+ 	}
+-	out[nfft / 2]._Val[0] = (float)buffer_[1]; // a[1] = R[n/2]
++	out[nfft / 2].real((float)buffer_[1]); // a[1] = R[n/2]
+ }
+ 
+ void OouraFFT::ifft(std::complex<float>* in, float* out)
+@@ -40,10 +40,10 @@ void OouraFFT::ifft(std::complex<float>* in, float* out)
+ 	// copy to the ooura format
+ 	for (size_t i = 0; i < nfft / 2; ++i)
+ 	{
+-		buffer_[i * 2] = in[i]._Val[0]; // real part
+-		buffer_[i * 2 + 1] = in[i]._Val[1]; // imag part
++		buffer_[i * 2] = in[i].real(); // real part
++		buffer_[i * 2 + 1] = in[i].imag(); // imag part
+ 	}
+-	buffer_[1] = in[nfft / 2]._Val[0]; // a[1] = R[n/2]
++	buffer_[1] = in[nfft / 2].real(); // a[1] = R[n/2]
+ 
+ 	// perform inverse DFT
+ 	rdft((int)nfft, -1, buffer_.data(), ip_.data(), sineTable_.data());
+diff --git a/source/Util.h b/source/Util.h
+index 8731fe1..b202794 100644
+--- a/source/Util.h
++++ b/source/Util.h
+@@ -1,4 +1,5 @@
+ #pragma once
++#include "../JuceLibraryCode/JuceHeader.h"
+ #include <complex>
+ #include <vector>
+ 
+-- 
+2.32.0
+

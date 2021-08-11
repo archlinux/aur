@@ -1,0 +1,18 @@
+pkgbase = binaural-vst-git
+	pkgdesc = A vst plugin that positions sound in a 3D space using Head-Related Transfer Functions (HRTF).
+	pkgver = 1.0.r27.e0b842b
+	pkgrel = 1
+	url = https://github.com/twoz/binaural-vst
+	arch = x86_64
+	groups = vst-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	makedepends = lua
+	makedepends = juce
+	provides = binaural-vst
+	conflicts = binaural-vst
+	source = binaural-vst::git+https://github.com/twoz/binaural-vst.git
+	md5sums = SKIP
+
+pkgname = binaural-vst-git
