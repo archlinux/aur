@@ -1,0 +1,19 @@
+pkgbase = ruby-ceedling
+	pkgdesc = Build system for C projects
+	pkgver = 0.31.1
+	pkgrel = 1
+	url = https://www.throwtheswitch.org/ceedling/
+	arch = any
+	license = BSD
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-constructor
+	depends = ruby-deep_merge
+	depends = ruby-rake
+	depends = ruby-thor-0.20
+	noextract = ceedling-0.31.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ceedling-0.31.1.gem
+	sha256sums = 31af51affce247d603488884a2ac9fc61d9c51307377950943bba0d748f85bca
+
+pkgname = ruby-ceedling
