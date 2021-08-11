@@ -1,13 +1,13 @@
 # Maintainer: Steven Guikal <aur-void@fluix.one>
 pkgname=sline
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=(x86_64)
 url='https://sr.ht/~arivigo/sline/'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~arivigo/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('75333c4ebd0ecc324c0075ec4432f845a1edfad791f1fed12aa5f7a142138a0b19129123e2cee5cc4feea773208bc76fb46068d4c449eced9f26a27996dd8c5e')
+sha512sums=('f2c29261c7abd6de3763b38b17ca437e7c1fb937fc4cf760ffe83e5493692bd75c5095889dcb1bda4826d7232cbe25967574fe37ee617918cc014ef651753712')
 
 build() {
   cd "$pkgname-$pkgver"
