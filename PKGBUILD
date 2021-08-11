@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/pop-os/hidpi-widget"
 license=('GPL3')
 depends=('gtk3' 'libhandy')
-makedepends=('git' 'rust')
+makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/hidpi-widget.git')
@@ -18,10 +18,17 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$srcdir/hidpi-widget"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$srcdir/hidpi-widget"
-  cargo build --release
-  cargo build --release --manifest-path ffi/Cargo.toml
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+  cargo build --frozen --release --manifest-path ffi/Cargo.toml
   cargo run -p tools --bin pkgconfig -- \
     s76_hidpi_widget /usr/lib /usr/include
 }
