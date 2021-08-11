@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=AutoZen
+Comment=Brain Wave Generator
+Exec=/usr/bin/autozen
+Icon=autozen
+Categories=GTK;AudioVideo;Player
+Terminal=false
+Type=Application
+Actions=Colorbox
+
+[Desktop Action Colorbox]
+Name=AutoZen (Colorbox)
+Exec=/usr/bin/autozen -colorbox
