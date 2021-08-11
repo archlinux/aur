@@ -1,6 +1,6 @@
 pkgbase = friendiqa
 	pkgdesc = Client for social network Friendica
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://git.friendi.ca/lubuwest/Friendiqa
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = friendiqa
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols2
 	depends = qt5-webview
-	source = friendiqa-0.6.1.tar.gz::https://git.friendi.ca/lubuwest/Friendiqa/archive/v0.6.1.tar.gz
-	md5sums = 1178630805bad8dc970f3a303430cc96
+	source = friendiqa-0.6.2.tar.gz::https://git.friendi.ca/lubuwest/Friendiqa/archive/v0.6.1.tar.gz
+	md5sums = 180f36d5b8dd03693ca14a1508d37497
 
 pkgname = friendiqa
 
