@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-x-bin
-pkgver=4.2
+pkgver=4.5
 pkgrel=1
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
