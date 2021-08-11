@@ -39,7 +39,7 @@
 < 	install -d $(PREFIX)/man/man1
 < 	install -m 644 doc/autozen.1 $(PREFIX)/man/man1
 ---
-> 	install -Dm 755 zentime seq2wav -t "$(DESTDIR)/$(PREFIX)/bin/"
+> 	install -Dm 755 autozen zentime seq2wav -t "$(DESTDIR)/$(PREFIX)/bin/"
 > 	install -Dm 644 *.seq -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/"
 > 	install -Dm 644 doc/HTML/*.html -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/HTML/"
 > 	install -Dm 644 doc/HTML/images/* -t "$(DESTDIR)/$(PUBLIC_SEQUENCES)/HTML/images/"
