@@ -2,7 +2,7 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at protonmail dot com>
 
 pkgname=tachidesk
-pkgver=0.4.4_r739
+pkgver=0.4.5_r754
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
