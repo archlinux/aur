@@ -2,7 +2,7 @@ pkgbase = shayla-git
 	pkgdesc = A fast and simple static site generator
 	pkgver = 1.1.r0.g28bb961
 	pkgrel = 1
-	url = https://git.mobley.ne02ptzero.me/~louis/shayla
+	url = https://git.sr.ht/~ne02ptzero/shayla
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -15,7 +15,7 @@ pkgbase = shayla-git
 	makedepends = gcc
 	provides = shayla
 	conflicts = shayla
-	source = shayla::git+https://git.mobley.ne02ptzero.me/~louis/shayla
+	source = shayla::git+https://git.sr.ht/~ne02ptzero/shayla
 	md5sums = SKIP
 
 pkgname = shayla-git
