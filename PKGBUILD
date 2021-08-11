@@ -2,7 +2,7 @@
 
 pkgname=zapier-platform-cli
 _pkgname="${pkgname%-platform-cli}"
-pkgver=11.0.1
+pkgver=11.1.0
 pkgrel=1
 pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('bash-completion: for tab completion')
 provides=("$_pkgname")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-b2sums=(22e313c12e32eeb20870caf54173e7d366ed2c96c5dcc2d5fa078f2f72c5116018bf06cdb4951912a38ae5e32ef7f61566ab0d718d85a1c0accbd4f0c5508003)
+b2sums=(2411b12b1d94fda9b1dff3e1419fc0edb279bf5e21a0ef890789a6cd12eecd7218348f54e580618f0bba8aeb079f5e7fd2872f9735ee6443621e2d57e523e89b)
 
 package() {
 	# https://wiki.archlinux.org/title/Node.js_package_guidelines
@@ -48,11 +48,4 @@ package() {
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
-
-	#find "$pkgdir" -type f -name package.json | while read pkgjson; do
-	#	local tmppackage="$(mktemp)"
-	#	jq 'del(.man)' "$pkgjson" > "$tmppackage"
-	#	mv "$tmppackage" "$pkgjson"
-	#	chmod 644 "$pkgjson"
-	#done
 }
