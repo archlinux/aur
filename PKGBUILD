@@ -1,26 +1,21 @@
 # Maintainer: Erde <erkkah@gmail.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby-bin
 _pkgname=tabby
-pkgver=1.0.151
+pkgver=1.0.152
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
 arch=('x86_64')
 url="https://github.com/Eugeny/tabby"
 license=('MIT')
 depends=('nodejs')
+optdepends=('gnome-keyring')
 provides=("tabby")
 conflicts=("tabby")
 replaces=('tabby')
 source=("$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.deb")
-sha256sums=('6c8d5a3576742e2931a43612c23f426763906898ad6881cce147e8e81dcacd15')
-
-prepare() {
-msg "Initiating build"
-}
-
- msg "Removing redundant .deb file"
- rm "${_pkgname}-${pkgver}-linux.deb"
+sha256sums=('f39206b622cd226aa1e26e2b85cacb345071783330a759cab442ab012f7d6a03')
 
 package() {
   cd "$srcdir/"
@@ -32,7 +27,9 @@ package() {
   #!/usr/bin/bash
   /opt/Tabby/tabby
 
+  chown root:root /opt/Tabby/chrome-sandbox
+  chmod 4755 /opt/Tabby/chrome-sandox
+
 END
 
 }
-
