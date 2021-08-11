@@ -5,7 +5,7 @@
 
 _pkgname=autofdo
 pkgname=$_pkgname-git
-pkgver=0.1.r168.gd8a2738
+pkgver=0.1.r169.g188db28
 pkgrel=1
 pkgdesc="a tool to convert perf.data profile to AutoFDO profile that can be used by GCC and LLVM"
 arch=('x86_64')
