@@ -1,0 +1,15 @@
+pkgbase = ybacklight
+	pkgdesc = an xbacklight compatible replacement using sysfs
+	pkgver = 55d2d70
+	pkgrel = 1
+	url = https://github.com/yath/ybacklight
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = perl-file-util
+	provides = ybacklight
+	conflicts = ybacklight
+	source = ybacklight::https://raw.githubusercontent.com/yath/ybacklight/55d2d703d30291b5b5276f10aa1fcacb5bfe3d33/ybacklight
+	md5sums = ade6c20e33db2c3daeca4bd57c749df5
+
+pkgname = ybacklight
