@@ -1,6 +1,6 @@
 pkgbase = kiwmi-git
 	pkgdesc = A fully manual tiling Wayland compositor
-	pkgver = r13.3bc3034
+	pkgver = r208.e0142de
 	pkgrel = 1
 	url = https://github.com/buffet/kiwmi
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = kiwmi-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	depends = luajit
 	depends = wlroots
 	provides = kiwmi
 	conflicts = kiwmi
