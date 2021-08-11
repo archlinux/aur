@@ -1,6 +1,6 @@
 pkgbase = expandrive-bin
 	pkgdesc = A utility for managing multiple cloud storage services
-	pkgver = 2021.6.1
+	pkgver = 2021.8.1
 	pkgrel = 1
 	url = https://www.expandrive.com/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = expandrive-bin
 	depends = libxss
 	depends = gnome-keyring
 	source = LICENSE
-	source = https://packages.expandrive.com/expandrive/pool/stable/e/ex/ExpanDrive_2021.6.1_amd64.deb
+	source = https://packages.expandrive.com/expandrive/pool/stable/e/ex/ExpanDrive_2021.8.1_amd64.deb
 	sha256sums = dd77a86c9319a5e12b066688a0c804f942fd358b096ad1981eba04426dd16781
-	sha256sums = c4c014ae9618073718dc488c978a694c7695a2a176dcb563e835cdec905eba71
+	sha256sums = 1d08c7ea59f86654bf9ba57fdc2b122624a125ddee86dfb878ce7fb027c1da73
 
 pkgname = expandrive-bin
