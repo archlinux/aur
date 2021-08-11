@@ -1,0 +1,38 @@
+post_install() {
+echo -n Generating AllFonts.js, please wait...
+sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/allfontsgen"\
+  --input="/usr/share/webapps/onlyoffice/documentserver/core-fonts"\
+  --allfonts-web="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/AllFonts.js"\
+  --allfonts="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/AllFonts.js"\
+  --images="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
+  --selection="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin/font_selection.bin"\
+  --output-web="/usr/share/webapps/onlyoffice/documentserver/fonts"\
+  --use-system="true"
+chown -R onlyoffice:onlyoffice "/usr/share/webapps/onlyoffice/documentserver/sdkjs"
+chown -R onlyoffice:onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin"
+chown -R onlyoffice:onlyoffice "/usr/share/webapps/onlyoffice/documentserver/fonts"
+echo Done
+echo -n Generating presentation themes, please wait...
+sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/allthemesgen"\
+  --converter-dir="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin"\
+  --src="/usr/share/webapps/onlyoffice/documentserver/sdkjs/slide/themes"\
+  --output="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"
+sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/allthemesgen"\
+  --converter-dir="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin"\
+  --src="/usr/share/webapps/onlyoffice/documentserver/sdkjs/slide/themes"\
+  --output="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
+  --postfix="ios"\
+  --params="280,224"
+sudo -u onlyoffice "/usr/share/webapps/onlyoffice/documentserver/server/tools/allthemesgen"\
+  --converter-dir="/usr/share/webapps/onlyoffice/documentserver/server/FileConverter/bin"\
+  --src="/usr/share/webapps/onlyoffice/documentserver/sdkjs/slide/themes"\
+  --output="/usr/share/webapps/onlyoffice/documentserver/sdkjs/common/Images"\
+  --postfix="android"\
+  --params="280,224"
+}
+ 
+post_upgrade() {
+   post_install
+}
+
+

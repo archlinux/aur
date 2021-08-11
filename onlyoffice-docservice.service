@@ -1,0 +1,21 @@
+[Unit]
+Description=Onlyoffice documentserver
+After=network.target
+
+[Service]
+User=onlyoffice
+Group=onlyoffice
+Type=simple
+Environment="NODE_ENV=production-linux" "NODE_CONFIG_DIR=/etc/webapps/onlyoffice/documentserver"
+ExecStart=/usr/share/webapps/onlyoffice/documentserver/server/DocService/docservice
+WorkingDirectory=/var/lib/onlyoffice/documentserver
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/onlyoffice/documentserver
+
+[Install]
+WantedBy=multi-user.target

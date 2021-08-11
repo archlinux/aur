@@ -1,0 +1,3 @@
+d /var/lib/onlyoffice                    0750        onlyoffice   onlyoffice   -
+d /var/log/onlyoffice                    0750        onlyoffice   onlyoffice   -
+d /usr/share/webapps/onlyoffice                    0750        onlyoffice   onlyoffice   -
