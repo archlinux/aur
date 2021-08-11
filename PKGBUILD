@@ -1,31 +1,31 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Phil A. <flying-sheep@web.de>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Aniket Pradhan <aniket17133[at]iiitd[dot]ac[dot]in>
 # Contributor: Roman Haritonov <reclosedev[at]gmail[dot]com>
 
-_pkgname="requests-cache"
-pkgname="python-requests-cache"
-pkgver=0.6.4
+_pkgname=requests-cache
+pkgname=python-requests-cache
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="Transparent persistent cache for http://python-requests.org/ library."
-arch=("x86_64")
-url="https://github.com/reclosedev/requests-cache"
-license=("BSD")
-depends=("python" "python-requests")
-makedepends=("git" "python-setuptools")
-provides=("python-requests-cache")
-conflicts=("python2-requests-cache")
+pkgdesc='Transparent persistent cache for http://python-requests.org/ library.'
+arch=(x86_64)
+url="https://github.com/reclosedev/$_pkgname"
+license=(BSD)
+depends=(python python-requests)
+makedepends=(git python-setuptools)
+conflicts=(python2-requests-cache)
 source=("https://files.pythonhosted.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('dd9120a4ab7b8128cba9b6b120d8b5560d566a3cd0f828cced3d3fd60a42ec40')
+sha256sums=('d17c95b0fa52670044356378886dbaf8e25069123d4fced43e05cd13b38c42f8')
 
 build() {
-  cd "$srcdir/$_pkgname-${pkgver}"
-  python setup.py build
+	cd "$srcdir/$_pkgname-$pkgver"
+	python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	cd "$srcdir/$_pkgname-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
 }
