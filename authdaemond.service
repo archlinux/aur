@@ -6,6 +6,7 @@ Type=forking
 User=courier
 Group=courier
 ExecStart=/usr/bin/authdaemond start
+ExecReload=/usr/bin/authdaemond restart
 ExecStop=/usr/bin/authdaemond stop
 PIDFile=/run/authdaemon/pid
 AmbientCapabilities=CAP_DAC_OVERRIDE
