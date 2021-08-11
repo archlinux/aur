@@ -1,6 +1,6 @@
 pkgbase = sync-my-moodle-git
 	pkgdesc = a synchronization client for the RWTH Moodle
-	pkgver = r149.2f3bccf
+	pkgver = r161.85c9c1e
 	pkgrel = 1
 	url = https://github.com/Romern/syncMyMoodle
 	arch = any
@@ -17,4 +17,3 @@ pkgbase = sync-my-moodle-git
 	sha512sums = SKIP
 
 pkgname = sync-my-moodle-git
-
