@@ -3,7 +3,7 @@
 # Upstream: https://github.com/anaseto/boohu
 
 pkgname=('boohu-git')
-pkgver=0.9.0.48.gee52056
+pkgver=0.13.0.5.g9103191
 pkgrel=1
 pkgdesc="Break Out Of Hareka's Underground, a roguelike game."
 arch=('i686' 'x86_64')
@@ -22,16 +22,17 @@ pkgver() {
 }
 
 prepare() {
-  export GOPATH="$srcdir"
-  rm -fr "$srcdir/src"
-  rm -fr "$srcdir/bin"
-  git clone "$srcdir/$pkgname" "$GOPATH/src/github.com/anaseto/boohu"
+  cd "$pkgname"
+  go mod init "${url#https://}" # strip https:// from canonical URL
+  go mod tidy
+}
+
+build() {
+  cd "$pkgname"
+  go build -o boohu .
 }
 
 package() {
-  export GOPATH="$srcdir"
-  cd "$GOPATH/src/github.com/anaseto/boohu"
-  go get -v .
-  install -Dm 755 "$srcdir/bin/boohu" -t "$pkgdir/usr/bin";
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 755 "$srcdir/$pkgname/boohu" -t "$pkgdir/usr/bin";
+  install -Dm 644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
