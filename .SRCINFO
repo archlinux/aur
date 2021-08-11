@@ -1,0 +1,14 @@
+pkgbase = pass-clip-git
+	pkgdesc = A pass extension to copy passwords to the clipboard using fzf or rofi.
+	pkgver = v0.2.r7.g9ef6e93
+	pkgrel = 1
+	url = https://github.com/ibizaman/pass-clip
+	arch = any
+	license = GPL3
+	depends = pass
+	optdepends = rofi: Use rofi to present choices.
+	optdepends = fzf: Use fzf to present choices.
+	source = git+https://github.com/ibizaman/pass-clip
+	sha512sums = SKIP
+
+pkgname = pass-clip-git
