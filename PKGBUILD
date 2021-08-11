@@ -1,6 +1,6 @@
 # Maintainer:  jon4hz me@jon4hz.io
 pkgname=aaregurucli-git
-pkgver=0.4.3.r98.ed3ab04
+pkgver=0.4.3
 pkgrel=1
 epoch=
 pkgdesc="aare.guru CLI "
@@ -32,7 +32,7 @@ get_latest_release() {
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "%s.r%s.%s" "$(get_latest_release)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(get_latest_release)"
 	
 }
 

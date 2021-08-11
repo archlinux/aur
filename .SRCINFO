@@ -1,6 +1,6 @@
 pkgbase = aaregurucli-git
 	pkgdesc = aare.guru CLI
-	pkgver = 0.4.3.r98.ed3ab04
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/gexclaude/aaregurucli.git
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = aaregurucli-git
 	md5sums = SKIP
 
 pkgname = aaregurucli-git
-
