@@ -1,13 +1,13 @@
-# Maintainer: Alex (indigo@protonmail.com)
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Tung Ha <tunght13488 at gmail dot com>
+# Contributor: Alex <indigo at protonmail dot com>
+# Contributor: Sergej Pupykin <pupykin.s+arch at gmail dot com>
 # Contributor: Jonathan Wiersma <arch aur at jonw dot org>
-# Contributor: sracker <smb.sac@gmail.com>
+# Contributor: sracker <smb.sac at gmail dot com>
 
 pkgname=xdebug7
-provides=('xdebug7')
-conflicts=('xdebug')
-pkgver=3.0.2
-pkgrel=2
+provides=('xdebug')
+pkgver=3.0.4
+pkgrel=1
 pkgdesc="PHP debugging extension. For PHP7 package."
 arch=('x86_64')
 url="https://www.xdebug.org"
@@ -16,7 +16,7 @@ depends=('php7')
 backup=('etc/php7/conf.d/xdebug.ini')
 source=("https://xdebug.org/files/xdebug-${pkgver}.tgz"
 	'xdebug.ini')
-sha256sums=('096d46dec061341868d3e3933b977013a592e2e88992b2c0aba7fa52f87c4e17'
+sha256sums=('b27290491f4634b0cd3badfc3a2be98fb1e3c0c3710a706724d8b195baad72af'
             '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 
 build() {
