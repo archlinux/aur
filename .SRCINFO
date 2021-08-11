@@ -1,7 +1,7 @@
 pkgbase = icalingua
 	pkgdesc = A Linux client for QQ and more
 	pkgver = 2.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Clansty/Icalingua
 	arch = aarch64
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = icalingua
 	source = icalingua.desktop
 	source = icalingua
 	sha256sums = 84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38
-	sha256sums = 119484b280c0e5aac03f979488a5edbb4170d214e4f5f7328d779c79d653c376
+	sha256sums = 5fd26f012a6729114fd7743eddc56375ccaf871aa799469b613eff93cd0fefb2
 	sha256sums = 60eebcac935e9fbf834ee3e7ee2e0a058fc6b22f39faa9734244f0b6b316678b
 	source_aarch64 = app-aarch64-2.1.4.asar::https://github.com/Clansty/Icalingua/releases/download/v2.1.4/app-arm64.asar
 	sha256sums_aarch64 = 45beab8d42e080705a574c93ed1970e4aa1bdc4a47c4c17ab6d224ef2bd309d6
