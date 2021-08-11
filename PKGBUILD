@@ -1,7 +1,8 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=c-lightning-git
-pkgver=0.10.0.r9907.03cfe0b46
+pkgver=0.10.1.r10187.405b914dd
 pkgrel=1
 pkgdesc='A Lightning Network implementation in C'
 arch=('i686' 'x86_64')
