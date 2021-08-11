@@ -1,0 +1,15 @@
+pkgbase = ruby-thor-0.20
+	pkgdesc = Toolkit for building powerful command-line interfaces (version 0.20.x)
+	pkgver = 0.20.3
+	pkgrel = 1
+	url = http://whatisthor.com/
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	noextract = thor-0.20.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/thor-0.20.3.gem
+	sha256sums = 49bc217fe28f6af34c6e60b003e3405c27595a55689077d82e9e61d4d3b519fa
+
+pkgname = ruby-thor-0.20
