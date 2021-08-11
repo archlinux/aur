@@ -24,6 +24,6 @@ package() {
         cd "$srcdir/$pkgname-$pkgver"
         make DESTDIR="$pkgdir/" PREFIX=/usr install
         install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 graftcp-local/example-graftcp-local.conf "$pkgdir/etc/graftcp-local/graftcp-local.conf"
+        install -Dm644 local/example-graftcp-local.conf "$pkgdir/etc/graftcp-local/graftcp-local.conf"
         install -Dm644 "$srcdir/graftcp-local.service" "$pkgdir/usr/lib/systemd/system/graftcp-local.service"
 }
