@@ -1,6 +1,6 @@
 pkgbase = wolai-bin
 	pkgdesc = wolai
-	pkgver = 1.0.34
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://www.wolai.com/
 	arch = x86_64
@@ -11,10 +11,9 @@ pkgbase = wolai-bin
 	depends = libxtst
 	provides = wolai
 	options = !strip
-	source = https://static2.wolai.com/dist/installers/wolai-1.0.34.AppImage
+	source = https://static2.wolai.com/dist/installers/wolai-1.1.2.AppImage
 	source = start.sh
-	md5sums = 16f245da6f00148643a2ce60e49bb29d
+	md5sums = 70efc2811c2df5a553f04925335726ee
 	md5sums = 0a949982a3b76ebe44048559cf382c2f
 
 pkgname = wolai-bin
-
