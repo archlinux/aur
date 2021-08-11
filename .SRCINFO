@@ -1,7 +1,7 @@
 pkgbase = opencpn
 	pkgdesc = Open Source Chart Plotting / Marine Navigation
 	pkgver = 5.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://opencpn.org
 	install = opencpn.install
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = opencpn
 	sha1sums = 157d7392e42a8ee9b6efbb6496642e575ad958fa
 
 pkgname = opencpn
-

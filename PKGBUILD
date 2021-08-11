@@ -8,7 +8,7 @@
 pkgname=opencpn
 _name="OpenCPN"
 pkgver=5.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
@@ -22,8 +22,8 @@ sha1sums=('157d7392e42a8ee9b6efbb6496642e575ad958fa')
 prepare() {
   cd "OpenCPN-Release_${pkgver}"
   export PATH="$PWD/bin:$PATH"
-  mkdir bin
-  ln -s /usr/bin/wx-config-gtk3 bin/wx-config
+  mkdir -p  bin
+  ln -sf /usr/bin/wx-config-gtk3 bin/wx-config
 }
 
 build() {
