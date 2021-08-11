@@ -4,25 +4,19 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
 depends=(python-six)
-makedepends=(
-  python-pip
-  python-poetry
-)
-checkdepends=(
-  python-pytest
-  python-tox
-)
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+makedepends=(python-build python-install python-poetry)
+checkdepends=(python-tox)
+source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8')
 
 build() {
   cd "${_base}-${pkgver}"
-  poetry build --format wheel
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
@@ -32,7 +26,7 @@ check() {
 
 package() {
   cd "${_base}-${pkgver}"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
-  rm -r "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base//-/_}/__pycache__"
+  export PYTHONHASHSEED=0
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
