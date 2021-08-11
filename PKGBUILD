@@ -2,18 +2,18 @@
 # Contributor: carlosal1015
 
 pkgname=betterbib
-pkgver=3.5.16
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Update BibTeX files with info from online resources"
 arch=('any')
 url="https://github.com/nschloe/betterbib"
 license=('custom')
-depends=('python' 'python-importlib-metadata' 'python-pybtex' 'python-pyenchant'
-         'python-requests-cache' 'python-setuptools' 'python-tqdm' 'python-pip'
-         'python-itsdangerous' 'python-rich' 'aspell-en' 'nuspell' 'hspell'
-         'libvoikko')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6e32bcb209a7e1f880aa5a3d66e33caa9a2c61407f856da817d7719e16a7acf5')
+depends=('python>=3.8' 'python-appdirs' 'python-latexcodec' 'python-pybtex>=0.19.0'
+         'python-pyenchant' 'python-requests' 'python-requests-cache' 'python-rich'
+         'python-setuptools' 'python-unidecode' 'aspell-en' 'hspell' 'libvoikko'
+         'nuspell')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('113fe46d1735fa1c34e6c422b17893f2285b3dc15b1d80fd47850f960754a116')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

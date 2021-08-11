@@ -1,25 +1,25 @@
 pkgbase = betterbib
 	pkgdesc = Update BibTeX files with info from online resources
-	pkgver = 3.5.16
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/nschloe/betterbib
 	arch = any
 	license = custom
-	depends = python
-	depends = python-importlib-metadata
-	depends = python-pybtex
+	depends = python>=3.8
+	depends = python-appdirs
+	depends = python-latexcodec
+	depends = python-pybtex>=0.19.0
 	depends = python-pyenchant
+	depends = python-requests
 	depends = python-requests-cache
-	depends = python-setuptools
-	depends = python-tqdm
-	depends = python-pip
-	depends = python-itsdangerous
 	depends = python-rich
+	depends = python-setuptools
+	depends = python-unidecode
 	depends = aspell-en
-	depends = nuspell
 	depends = hspell
 	depends = libvoikko
-	source = betterbib-3.5.16.tar.gz::https://github.com/nschloe/betterbib/archive/v3.5.16.tar.gz
-	sha256sums = 6e32bcb209a7e1f880aa5a3d66e33caa9a2c61407f856da817d7719e16a7acf5
+	depends = nuspell
+	source = betterbib-4.0.0.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/4.0.0.tar.gz
+	sha256sums = 113fe46d1735fa1c34e6c422b17893f2285b3dc15b1d80fd47850f960754a116
 
 pkgname = betterbib
