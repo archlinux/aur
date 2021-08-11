@@ -1,5 +1,5 @@
 pkgname=hashcat-utils-git
-pkgver=v1.9.r5.g44bd93d
+pkgver=v1.9.r7.g234feea
 pkgrel=1
 pkgdesc="Hashcat-utils are a set of small utilities that are useful in advanced password cracking."
 arch=('i686' 'x86_64')
