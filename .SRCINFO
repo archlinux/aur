@@ -5,8 +5,8 @@ pkgbase = ludusavi
 	url = https://github.com/mtkennerly/ludusavi
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
 	makedepends = libx11
 	makedepends = python
 	depends = gcc-libs
@@ -20,4 +20,3 @@ pkgbase = ludusavi
 	sha256sums = 9f9abd3a3ea78c1094c52a80d65c7d4bc59ffc0f67ee06ab07de373e6f769edb
 
 pkgname = ludusavi
-
