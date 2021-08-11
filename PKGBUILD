@@ -1,7 +1,7 @@
 pkgname=boost-note-bin
 pkgver=0.21.1
-pkgrel=1
-pkgdesc="Boost Note.next, a replacement for Boostnote, an open source note-taking app for programmers. Official binary."
+pkgrel=2
+pkgdesc="Boost Note.next, a replacement for Boostnote, an open source note-taking app for programmers. Official binary for the Cloud Space version."
 arch=('any')
 url="https://boostnote.io/"
 license=('GPL3')
