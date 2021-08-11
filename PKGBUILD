@@ -1,9 +1,9 @@
 pkgname=icalingua
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Linux client for QQ and more'
 license=('GPL')
-depends=('ffmpeg' 'electron')
+depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
