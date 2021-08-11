@@ -1,0 +1,12 @@
+pkgbase = rime-dieghv
+	pkgdesc = Rime schema for Teochew dialect
+	pkgver = 0.0.0.20190211
+	pkgrel = 1
+	url = https://github.com/kahaani/dieghv
+	arch = x86_64
+	license = GPL3
+	makedepends = librime
+	source = https://github.com/kahaani/dieghv/archive/1709bb786a144de7be2229755011fde9034457de/dieghv-1709bb786a144de7be2229755011fde9034457de.tar.gz
+	md5sums = 756386d338eb71b64a0691d0136ba9bb
+
+pkgname = rime-dieghv
