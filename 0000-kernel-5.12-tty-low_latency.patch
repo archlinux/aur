@@ -1,0 +1,18 @@
+--- rocketrp2.c.orig	2021-08-10 20:56:17.604171941 -0400
++++ rocketrp2.c	2021-08-10 20:57:28.365337602 -0400
+@@ -115,11 +115,15 @@
+ # define rp2_tty_buffer_request_room(tty,size)        tty_buffer_request_room(tty,size)
+ # define rp2_tty_insert_flip_string(tty,cbuf,size)    tty_insert_flip_string(tty,cbuf,size)
+ # define rp2_tty_insert_flip_string_flags(tty,cbuf,fbuf,size) tty_insert_flip_string_flags(tty,cbuf,fbuf,size)
+ #else
+ # define rp2_tty_flip_buffer_push(up)                 tty_flip_buffer_push(&up->port.state->port)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,12,0)
+ # define rp2_tty_is_low_latency(tty)                  tty->port->low_latency
++#else
++# define rp2_tty_is_low_latency(tty)                  (0)
++#endif
+ # define rp2_tty_buffer_request_room(tty,size)        tty_buffer_request_room(tty->port,size)
+ # define rp2_tty_insert_flip_string(tty,cbuf,size)    tty_insert_flip_string(tty->port,cbuf,size)
+ # define rp2_tty_insert_flip_string_flags(tty,cbuf,fbuf,size) tty_insert_flip_string_flags(tty->port,cbuf,fbuf,size)
+ #endif
+ 

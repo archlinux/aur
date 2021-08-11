@@ -31,7 +31,7 @@ _origmodname='rp2'
 set -u
 pkgname='comtrol-rocketport-express-infinity'
 pkgver='2.18'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='kernel module driver for Comtrol RocketPort Express Infinity Rocketmodem serial RS-232 422 485 port'
 arch=('i686' 'x86_64')
 url='http://downloads.comtrol.com/html/rp_express_drivers.htm'
@@ -42,7 +42,11 @@ install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
 source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8')
+source+=('0000-kernel-5.12-tty-low_latency.patch')
+md5sums=('6d3269e9f5a0d893822a63b327081bc1'
+         'aba286dfcadfd6135e2bc90b2909587d')
+sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8'
+            '807649a7dac40fc9dc184c7cef4dc7d01f84ec5936e89c0376e0508cbce1da75')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -131,6 +135,10 @@ prepare() {
     _fn_patch_km "${_opt_LEGACY_VER}"
     popd > /dev/null
   fi
+
+  #cp -p 'rocketrp2.c'{,.orig}; false
+  #diff -pNau5 'rocketrp2.c'{.orig,} > '0000-kernel-5.12-tty-low_latency.patch'
+  patch -Nbup0 -i "${srcdir}/0000-kernel-5.12-tty-low_latency.patch"
 
   set +u
 }
