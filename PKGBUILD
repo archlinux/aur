@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('glibc')
 provides=('exfat-utils')
 conflicts=('fuse-exfat' 'exfat-utils')
-source=("exfat::git+https://github.com/relan/exfat#branch=master")
+source=('git+https://github.com/relan/exfat')
 b2sums=('SKIP')
 
 prepare() {

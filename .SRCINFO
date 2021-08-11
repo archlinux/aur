@@ -15,7 +15,7 @@ pkgbase = exfat-utils-debug-git
 	provides = exfat-utils
 	conflicts = fuse-exfat
 	conflicts = exfat-utils
-	source = exfat::git+https://github.com/relan/exfat#branch=master
+	source = git+https://github.com/relan/exfat
 	b2sums = SKIP
 
 pkgname = exfat-utils-debug-git
