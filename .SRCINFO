@@ -1,6 +1,6 @@
 pkgbase = linux-g14
 	pkgdesc = Linux
-	pkgver = 5.13.8.arch1
+	pkgver = 5.13.9.arch1
 	pkgrel = 1
 	url = https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-g14
 	makedepends = git
 	makedepends = gcc>=11.0
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.8-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.13.9-arch1
 	source = config
 	source = choose-gcc-optimization.sh
 	source = sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch::https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch
@@ -36,6 +36,9 @@ pkgbase = linux-g14
 	source = sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch
 	source = sys-kernel_arch-sources-g14_files-9001-v5.13.2-s0ix-patch-2021-08-05.patch
 	source = sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch
+	source = sys-kernel_arch-sources-g14_files-9003-ACPI-PM-s2idle-Invert-Microsoft-UUID-entry-and-exit.patch
+	source = sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch
+	source = sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
@@ -60,6 +63,9 @@ pkgbase = linux-g14
 	sha256sums = a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9
 	sha256sums = c097278b0421bcfd80f24b37bd58d7c9b3e809eaf3c391c73def1451fa366c8b
 	sha256sums = 6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b
+	sha256sums = 5b7b8f450282a15d0832b171e82fc5639de1cb7aa495efe6e6c7989ebeb8ca36
+	sha256sums = 544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4
+	sha256sums = f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90
 
 pkgname = linux-g14
 	pkgdesc = The Linux kernel and modules

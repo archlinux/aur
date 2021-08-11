@@ -1,0 +1,48 @@
+From ee3b91570a02d421d73f235edfe21ea62c628100 Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Mon, 9 Aug 2021 20:40:04 -0500
+Subject: [PATCH] ACPI: PM: s2idle: Invert Microsoft UUID entry and exit
+
+It was reported by a user with a Dell m15 R5 (5800H) that
+the keyboard backlight was turning on when entering suspend
+and turning off when exiting (the opposite of how it should be).
+
+The user bisected it back to commit 5dbf50997578 ("ACPI: PM:
+s2idle: Add support for new Microsoft UUID").  Previous to that
+commit the LEDs didn't turn off at all.  Confirming in the spec,
+these were reversed when introduced.
+
+Fix them to match the spec.
+
+BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1230#note_1021836
+Fixes: 5dbf50997578 ("ACPI: PM: s2idle: Add support for new Microsoft UUID")
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/acpi/x86/s2idle.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
+index fbdbef0ab552..3a308461246a 100644
+--- a/drivers/acpi/x86/s2idle.c
++++ b/drivers/acpi/x86/s2idle.c
+@@ -452,7 +452,7 @@ int acpi_s2idle_prepare_late(void)
+ 	if (lps0_dsm_func_mask_microsoft > 0) {
+ 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_OFF,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_EXIT,
++		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_ENTRY,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+ 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+@@ -479,7 +479,7 @@ void acpi_s2idle_restore_early(void)
+ 	if (lps0_dsm_func_mask_microsoft > 0) {
+ 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+-		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_ENTRY,
++		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_EXIT,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+ 		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_ON,
+ 				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
+-- 
+2.32.0
+

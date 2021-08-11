@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.8.arch1
+pkgver=5.13.9.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -53,6 +53,11 @@ source=(
   "sys-kernel_arch-sources-g14_files-9001-v5.13.2-s0ix-patch-2021-08-05.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
   "sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
+  
+  "sys-kernel_arch-sources-g14_files-9003-ACPI-PM-s2idle-Invert-Microsoft-UUID-entry-and-exit.patch"
+  
+  "sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch"
+  "sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch"
 )
 
 validpgpkeys=(
@@ -81,7 +86,10 @@ sha256sums=('SKIP'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             'c097278b0421bcfd80f24b37bd58d7c9b3e809eaf3c391c73def1451fa366c8b'
-            '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b')
+            '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b'
+            '5b7b8f450282a15d0832b171e82fc5639de1cb7aa495efe6e6c7989ebeb8ca36'
+            '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
+            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90')
 
 # notable microarch levels:
 #
