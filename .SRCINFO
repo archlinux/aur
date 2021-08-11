@@ -1,16 +1,15 @@
 pkgbase = darktable-plugin-dtmediawiki-git
 	pkgdesc = MediaWiki export plugin for darktable
-	pkgver = r55.7c2a2c7
+	pkgver = r59.4045142
 	pkgrel = 1
 	url = https://github.com/trougnouf/dtMediaWiki
 	arch = x86_64
 	license = GPL3
 	depends = darktable
-	depends = lua53-luajson
-	depends = lua53-sec
-	depends = lua53-multipart-post
+	depends = lua-luajson
+	depends = lua-sec
+	depends = lua-multipart-post
 	source = git+https://github.com/trougnouf/dtMediaWiki.git
 	sha256sums = SKIP
 
 pkgname = darktable-plugin-dtmediawiki-git
-
