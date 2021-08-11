@@ -2,7 +2,7 @@
 pkgbase=python-reproject
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7.1
+pkgver=0.8
 pkgrel=1
 pkgdesc="Python-based Astronomical image reprojection"
 arch=('i686' 'x86_64')
@@ -11,11 +11,10 @@ license=('BSD')
 makedepends=('cython' 'python-setuptools-scm' 'python-extension-helpers' 'python-sphinx-astropy' 'python-astropy-healpix' 'python-pyvo' 'python-mimeparse')
 checkdepends=('python-shapely' 'python-pytest-astropy' 'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('817570e405d3b4b173fc3e098f83a54a')
-_pyver=$(python -V | cut -c 8-10)
+md5sums=('b7db39086abc683c2b5cfc9b2185736c')
 
 prepare() {
-    export _pyver=$(python -V | cut -c 8-10)
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
@@ -34,7 +33,7 @@ check() {
 }
 
 package_python-reproject() {
-    depends=('python>=3.6' 'python-numpy>=1.13' 'python-scipy>=1.1' 'python-astropy>=3.2' 'python-astropy-healpix>=0.2')
+    depends=('python>=3.7' 'python-numpy>=1.14' 'python-scipy>=1.1' 'python-astropy>=3.2' 'python-astropy-healpix>=0.6')
     optdepends=('python-shapely>=1.6: For some of the mosaicking functionality'
                 'python-reproject-doc: Documentation for Reproject'
                 'python-pytest-astropy: For testing')
