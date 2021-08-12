@@ -65,10 +65,10 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DPYTHON3_INCLUDE_DIR="/usr/include/python${_pyver}"
               -Wno-dev
             )
-  grep -q    avx /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX=ON)
-  grep -q   avx2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX2=ON)
-  grep -q   f16c /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_F16C=ON)
-  grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_SSE42=ON)
+  grep -qw    avx /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX=ON)
+  grep -qw   avx2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_AVX2=ON)
+  grep -qw   f16c /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_F16C=ON)
+  grep -qw sse4_2 /proc/cpuinfo && CMAKE_FLAGS+=(-DUSE_SSE42=ON)
 
   cmake "${CMAKE_FLAGS[@]}" -S "${srcdir}/${pkgname}" -B build -G Ninja
 # shellcheck disable=SC2086 # allow MAKEFLAGS to carry multiple flags
