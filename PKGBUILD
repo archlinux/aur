@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.15
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 license=(MIT)
@@ -34,7 +34,7 @@ depends=(fontconfig
          lua
          "${_lua_deps[@]/#/lua-}"
          zlib)
-# Note find via find-deps; needs rebuilding any time versions of these change;
+# Note: find via find-deps; needs rebuilding any time versions of these change;
 # currently missing several because parent packages are missing the provides=()
 depends+=(libfreetype.so
           libharfbuzz.so
@@ -44,23 +44,24 @@ depends+=(libfreetype.so
           libicuuc.so)
 checkdepends=(poppler)
 provides=(libtexpdf.so)
-source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
+_archive="$pkgname-$pkgver"
+source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$_archive.tar.xz")
 sha256sums=('49b55730effd473c64a8955a903e48f61c51dd7bb862e6d5481193218d1e3c5c')
 
 build () {
-    cd "$pkgname-$pkgver"
-    ./configure \
-        --prefix /usr \
-        --with-system-luarocks
-    make all
+	cd "$_archive"
+	./configure \
+		--prefix /usr \
+		--with-system-luarocks
+	make all
 }
 
 check () {
-    cd "$pkgname-$pkgver"
-    make check
+	cd "$_archive"
+	make check
 }
 
 package () {
-    cd "$pkgname-$pkgver"
-    make install DESTDIR="$pkgdir"
+	cd "$_archive"
+	make install DESTDIR="$pkgdir"
 }
