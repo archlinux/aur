@@ -7,11 +7,44 @@ diff --git a/src/main.js b/src/main.js
  
 +	// enable transparent
 +	app.commandLine.appendSwitch('enable-transparent-visuals');
-+	app.commandLine.appendSwitch('disable-gpu');
++	app.commandLine.appendSwitch('use-gl', 'desktop');
 +
  	// Support JS Flags
  	const jsFlags = getJSFlags(cliArgs);
  	if (jsFlags) {
+diff --git a/src/vs/platform/theme/electron-main/themeMainService.ts b/src/vs/platform/theme/electron-main/themeMainService.ts
+index 189811d6fdf..d10bd05bced 100644
+--- a/src/vs/platform/theme/electron-main/themeMainService.ts
++++ b/src/vs/platform/theme/electron-main/themeMainService.ts
+@@ -3,7 +3,7 @@
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+ 
+-import { BrowserWindow, nativeTheme } from 'electron';
++import { nativeTheme } from 'electron';
+ import { isWindows, isMacintosh } from 'vs/base/common/platform';
+ import { IStateMainService } from 'vs/platform/state/electron-main/state';
+ import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
+@@ -68,19 +68,6 @@ export class ThemeMainService implements IThemeMainService {
+ 			{ key: THEME_WINDOW_SPLASH, data: splash }
+ 		]);
+ 
+-		// Update in opened windows
+-		if (typeof windowId === 'number') {
+-			this.updateBackgroundColor(windowId, splash);
+-		}
+-	}
+-
+-	private updateBackgroundColor(windowId: number, splash: IPartsSplash): void {
+-		for (const window of BrowserWindow.getAllWindows()) {
+-			if (window.id === windowId) {
+-				window.setBackgroundColor(splash.colorInfo.background);
+-				break;
+-			}
+-		}
+ 	}
+ 
+ 	getWindowSplash(): IPartsSplash | undefined {
 diff --git a/src/vs/platform/windows/electron-main/window.ts b/src/vs/platform/windows/electron-main/window.ts
 --- a/src/vs/platform/windows/electron-main/window.ts
 +++ b/src/vs/platform/windows/electron-main/window.ts
