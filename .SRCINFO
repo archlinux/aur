@@ -1,0 +1,12 @@
+pkgbase = stdcdec-git
+	pkgdesc = Stdcdec program to demodulate, decode and parse Inmarsat-C signals
+	pkgver = 1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libinmarsatc
+	source = git://github.com/cropinghigh/stdcdec
+	md5sums = SKIP
+
+pkgname = stdcdec-git
