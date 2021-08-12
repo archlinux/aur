@@ -7,7 +7,7 @@ pkgdesc="Hildon file management libraries"
 url="https://github.com/maemo-leste/$pkgname"
 arch=(any)
 license=(LGPL)
-depends=(libhildon) 
+depends=(libhildon xdg-user-dirs) 
 makedepends=(gconf mce-headers libpng libosso hildon-thumbnail libhildonmime
              autoconf automake m4 libtool)
 checkdepends=()
@@ -25,4 +25,5 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR=$pkgdir install
+  rm /etc/xdg/user-dirs.defaults
 }

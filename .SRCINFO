@@ -17,6 +17,7 @@ pkgbase = libhildonfm
 	makedepends = m4
 	makedepends = libtool
 	depends = libhildon
+	depends = xdg-user-dirs
 	source = git+https://github.com/maemo-leste/libhildonfm.git#tag=2.28.27
 	sha256sums = SKIP
 
