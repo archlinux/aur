@@ -1,12 +1,13 @@
 pkgbase = aurago-git
 	pkgdesc = Aura is a replacement for wget and curl to fetch online content from terminal
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/arghyagod-coder/aurago.git
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
+	makedepends = wget
 	source = git+https://github.com/arghyagod-coder/aurago.git
 	md5sums = SKIP
 

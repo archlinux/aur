@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=aurago-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 epoch=
 pkgdesc="Aura is a replacement for wget and curl to fetch online content from terminal"
@@ -14,7 +14,7 @@ url="https://github.com/arghyagod-coder/aurago.git"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(git)
+makedepends=(git wget)
 checkdepends=()
 optdepends=()
 provides=()
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "${_pkgname}"
-    printf "1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
