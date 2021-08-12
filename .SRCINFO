@@ -1,0 +1,13 @@
+pkgbase = paper-wl
+	pkgdesc = Serifed Iosevka build
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/snakedye/paper
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://gitlab.com/snakedye/paper.git
+	sha256sums = SKIP
+
+pkgname = paper-wl
