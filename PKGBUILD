@@ -1,4 +1,6 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: Nikita Ukhrenkov <thekit@disroot.org>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz> 
 
 pkgname=hildon-home
 pkgver=0.3.73
