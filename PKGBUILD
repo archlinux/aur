@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Maintainer: Elia s. <elia.defcon7@gmail.com>
 pkgname=evolus-pencil-git-dev-branch
-pkgver=1521.f1309bc
+pkgver=r1540.043ca48
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/pencil"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

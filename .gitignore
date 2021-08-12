@@ -1,0 +1,4 @@
+# exclude outputs of build
+src/
+pkg/
+*.pkg.tar.zst
