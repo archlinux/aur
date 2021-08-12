@@ -1,15 +1,14 @@
 pkgbase = python-stsci.tools-doc
 	pkgdesc = Documentation for STScI utility functions
-	pkgver = 3.6.0
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://stscitools.readthedocs.io/
+	url = https://stscitools.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-stsci.tools=3.6.0
+	makedepends = python-stsci.tools=4.0.0
 	makedepends = python-sphinx
-	source = https://github.com/spacetelescope/stsci.tools/archive/3.6.0.tar.gz
-	md5sums = 911d86bab531ac2e47a5daa6b4e16062
+	source = https://github.com/spacetelescope/stsci.tools/archive/4.0.0.tar.gz
+	md5sums = 566deb168fd91a1e463a19dbb92b43e2
 
 pkgname = python-stsci.tools-doc
-
