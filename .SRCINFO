@@ -6,7 +6,6 @@ pkgbase = libhildondesktop
 	arch = any
 	groups = gnome
 	license = GPL
-	depends = gtk3
 	depends = libhildon
 	depends = libiphb
 	source = git+https://github.com/maemo-leste/libhildondesktop.git#tag=2.2.2
