@@ -1,7 +1,7 @@
 # Maintainer: Peter Semiletov <peter.semiletov@gmail.com>
 
 pkgname=tea-qt-git
-pkgver=60.5.0.r1.g0fffa1a
+pkgver=60.5.0.r3.gb6e5500
 pkgrel=1
 pkgdesc="Rich-featured text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS. Build from stable git-commit with PDF and DJVU support."
 arch=('x86_64')
@@ -29,7 +29,7 @@ build() {
   cmake .. -DUSE_PDF=ON -DUSE_DJVU=ON -DCMAKE_INSTALL_PREFIX=/usr
   make
   cd "${srcdir}/tea-qt/"
-  sed -i 's/tea %U/tea-qt %U/g' desktop/tea.desktop
+  sed -i 's/tea %F/tea-qt %F/g' desktop/tea.desktop
 }
 
 package(){
