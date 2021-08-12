@@ -1,0 +1,20 @@
+pkgbase = ruby-logger-application
+	pkgdesc = Add logging support to your application
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/ruby/logger-application
+	arch = any
+	license = RUBY
+	license = custom:BSDL
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-test-unit
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/logger-application/archive/v0.0.2.tar.gz
+	sha256sums = 02b51c2d3d8387dd8491362aa77ba92783b982dfb8be31c749320caecef9dd5b
+
+pkgname = ruby-logger-application
