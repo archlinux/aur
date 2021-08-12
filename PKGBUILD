@@ -12,6 +12,7 @@ license=('MIT')
 depends=('lua52' 'sdl2' 'freetype2' 'pcre2' 'hicolor-icon-theme')
 makedepends=('meson>=0.58')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+https://github.com/franko/lite-xl")
 sha256sums=('SKIP')
 
