@@ -15,6 +15,8 @@ pkgbase = tabby
 	depends = glib2
 	depends = gtk3
 	depends = nss
+	conflicts = terminus-terminal
+	replaces = terminus-terminal
 	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.152
 	sha256sums = SKIP
 

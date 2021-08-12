@@ -1,11 +1,13 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby
 pkgver=1.0.152
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://eugeny.github.io/terminus/"
 license=('MIT')
+conflicts=('terminus-terminal')
+replaces=('terminus-terminal')
 depends=('glib2' 'gtk3' 'nss')
 makedepends=('git' 'npm' 'yarn' 'python' 'nodejs-lts-fermium' 'cmake' 'node-gyp')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v$pkgver")
