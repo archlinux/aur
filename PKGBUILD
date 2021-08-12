@@ -1,6 +1,8 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Nikita Ukhrenkov <thekit@disroot.org>
+# Contributor: Bart Ribbers <bribbers@disroot.org>
 
 _pkgname=gtk2
 pkgname=$_pkgname-maemo
