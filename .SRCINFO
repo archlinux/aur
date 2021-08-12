@@ -1,0 +1,15 @@
+pkgbase = tkblt
+	pkgdesc = Adds a new command (vector) and widgets (graph and barchart) to the Tcl interpreter.
+	pkgver = 3.2.23
+	pkgrel = 1
+	url = https://github.com/wjoye/tkblt
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = tk
+	conflicts = blt_tcl85
+	conflicts = blt
+	source = tkblt-3.2.23.zip::https://github.com/wjoye/tkblt/archive/V3.2.23.zip
+	sha256sums = 66b14c32eebf2c7289b49cbb555fa24d83980516719fe24a3166bc78e693759f
+
+pkgname = tkblt
