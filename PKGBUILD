@@ -3,14 +3,14 @@
 pkgname=rime-dieghv
 pkgver=0.0.0.20190211
 _commit=1709bb786a144de7be2229755011fde9034457de
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime schema for Teochew dialect"
 arch=('x86_64')
 url="https://github.com/kahaani/dieghv"
 license=('GPL3')
 # dependency for reverse lookup
-#depends=()
-makedepends=('librime')
+depends=('rime-luna-pinyin')
+makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("$url/archive/$_commit/dieghv-$_commit.tar.gz")
 md5sums=('756386d338eb71b64a0691d0136ba9bb')
 
