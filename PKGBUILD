@@ -10,7 +10,9 @@ url="https://gov.dingtalk.com"
 license=("custom")
 depends=()
 options=()
-provides=('dingtalk')
+provides=('com.alibabainc.dingtalk' 'dingtalk')
+conflicts=('com.alibabainc.dingtalk')
+replaces=('com.alibabainc.dingtalk')
 source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_${pkgver}_amd64.deb"
         "com.alibabainc.dingtalk.desktop"
         "dingtalk")
