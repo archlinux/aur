@@ -4,15 +4,17 @@ _base=url-normalize
 pkgname=python-${_base}
 pkgdesc="URL normalization for Python"
 pkgver=1.4.3
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://github.com/niksite/${_base}"
 license=(MIT)
 depends=(python-six)
 makedepends=(python-build python-install python-poetry)
-checkdepends=(python-tox)
+checkdepends=(python-pytest-cov python-pytest-flakes python-pytest-socket)
 source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('46eaa1753b37e89d56cb19818144a7cf5b38653811720eb506732c35bb3732ef0c556420b22a9ee2c08e70e5b408aab7f44cea5e15d1ebe3d717c0c77706bfb8')
+
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
   cd "${_base}-${pkgver}"
@@ -21,7 +23,9 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m install --optimize=1 --destdir=temp dist/*.whl
+  PATH="$PWD/temp/usr/bin:$PATH" PYTHONPATH="$PWD/temp/$site_packages" pytest tests
 }
 
 package() {
