@@ -2,8 +2,8 @@
 
 _pkgname=spdlog
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 pkgdesc='Very fast, header-only/compiled, C++ logging library (mingw-w64)'
 url="https://github.com/gabime/${_pkgname}/"
 license=('MIT')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'9a452cfa24408baccc9b2bc2d421d68172a7630c99e9504a14754be840d31a62'
+	'6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38'
 )
 
 _srcdir="${_pkgname}-${pkgver}"
