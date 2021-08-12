@@ -1,0 +1,13 @@
+diff --git a/tllocalmgr b/tllocalmgr
+index b947ed2..8724243 100755
+--- a/tllocalmgr
++++ b/tllocalmgr
+@@ -34,7 +34,7 @@ GetOptions( $opts,
+ 			'forceupdate',
+ 			'localsearch', #TODO
+ 			'location', #TODO ?
+-			'mirror',
++			'mirror=s',
+ 			'nocolor',
+ 			'help|h',
+ 			'version|v'
