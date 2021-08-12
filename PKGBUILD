@@ -3,12 +3,13 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.todesk.com/"
 license=('unknown')
 depends=('gtk3')
+optdepends=("noto-fonts-cjk: Chinese display support")
 makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -43,8 +44,8 @@ package() {
   find opt/${_pkgname}/lib     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
   # find opt/${_pkgname}/plugins -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
-  # font & icon
-  find opt/${_pkgname}/res     -type f -exec install -Dm644 {} ${pkgdir}/{} \;
+  # icon
+  find opt/${_pkgname}/res -maxdepth 1 -type f -exec install -Dm644 {} ${pkgdir}/{} \;
 
   # config 
   # empty dir

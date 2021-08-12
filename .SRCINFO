@@ -1,7 +1,7 @@
 pkgbase = todesk-bin
 	pkgdesc = Remote control and team work
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.todesk.com/
 	install = todesk.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = todesk-bin
 	license = unknown
 	makedepends = tar
 	depends = gtk3
+	optdepends = noto-fonts-cjk: Chinese display support
 	provides = todesk
 	conflicts = todesk
 	options = !strip
