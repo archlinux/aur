@@ -2,12 +2,12 @@
 
 pkgname=libhildon
 pkgver=2.2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Hildon Desktop Library"
 url="https://github.com/maemo-leste/libhildon"
 arch=(any)
 license=(GPL)
-depends=(gtk3) 
+depends=(gtk2-maemo) 
 makedepends=(make)
 checkdepends=()
 provides=($pkgname)
@@ -18,8 +18,7 @@ sha256sums=('SKIP')
 
 build() {
   cd $pkgname
-  ./autogen.sh --prefix=/usr \
-               --with-maemo-gtk=no
+  ./autogen.sh --prefix=/usr
   make
  }
 package() {
