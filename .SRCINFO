@@ -1,6 +1,6 @@
 pkgbase = podman-dnsname-git
 	pkgdesc = name resolution for containers
-	pkgver = 1.2.0.r12.g11e8348
+	pkgver = 1.2.0.r19.g98cd96f
 	pkgrel = 1
 	url = https://github.com/containers/dnsname.git
 	arch = any
