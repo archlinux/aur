@@ -1,0 +1,13 @@
+pkgbase = perl-text-levenshteinxs
+	pkgdesc = An XS implementation of the Levenshtein edit distance
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/Text-LevenshteinXS
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	source = https://search.cpan.org/CPAN/authors/id/J/JG/JGOLDBERG/Text-LevenshteinXS-0.03.tar.gz
+	sha256sums = e374ff7b237919ce5ea9245f356d1cb52cc87fd26b3a5a38b3f3e5ff82a01491
+
+pkgname = perl-text-levenshteinxs
