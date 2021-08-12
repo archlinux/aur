@@ -1,0 +1,19 @@
+pkgbase = ruby-mono_logger
+	pkgdesc = A lock-free logger for Ruby
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/steveklabnik/mono_logger
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	checkdepends = ruby-logger-application
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/steveklabnik/mono_logger/archive/v1.1.1.tar.gz
+	sha256sums = a4a5f652eda4311c74662e0431bd630317b0c0623b46bbd51470b56239fcc3d0
+
+pkgname = ruby-mono_logger
