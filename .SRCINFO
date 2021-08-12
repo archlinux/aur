@@ -1,12 +1,12 @@
 pkgbase = exa-git
 	pkgdesc = Replacement for ls written in Rust
-	pkgver = 0.10.1.r19.ga6754f3
+	pkgver = 0.10.1.r33.g3f24f7c
 	pkgrel = 1
 	url = https://github.com/ogham/exa
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	makedepends = pandoc
 	depends = libgit2
@@ -16,4 +16,3 @@ pkgbase = exa-git
 	md5sums = SKIP
 
 pkgname = exa-git
-
