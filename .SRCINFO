@@ -5,6 +5,7 @@ pkgbase = libinmarsatc-git
 	arch = i686
 	arch = x86_64
 	license = GPL
+	provides = libinmarsatc
 	source = git://github.com/cropinghigh/inmarsatc
 	md5sums = SKIP
 

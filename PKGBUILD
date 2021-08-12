@@ -6,6 +6,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inmarsat-C Open-source library based on Scytale-c"
 license=('GPL')
+provides=("libinmarsatc")
 source=("git://github.com/cropinghigh/inmarsatc")
 md5sums=('SKIP')
 
