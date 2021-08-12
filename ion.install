@@ -1,0 +1,12 @@
+post_install() {
+	grep -qe '^/bin/ion$' etc/shells || echo '/bin/ion' >> etc/shells
+	grep -qe '^/usr/bin/ion$' etc/shells || echo '/usr/bin/ion' >> etc/shells
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	sed -i -r '/^(\/usr)?\/bin\/ion$/d' etc/shells
+}

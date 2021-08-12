@@ -1,0 +1,18 @@
+pkgbase = ion-shell-git
+	pkgdesc = a modern system shell that features a simple, yet powerful, syntax.
+	pkgver = r2133.df993477
+	pkgrel = 2
+	url = https://gitlab.redox-os.org/redox-os/ion/
+	install = ion.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = ion
+	conflicts = ion
+	source = git+https://gitlab.redox-os.org/redox-os/ion/
+	sha256sums = SKIP
+
+pkgname = ion-shell-git
