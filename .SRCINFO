@@ -1,15 +1,19 @@
 pkgbase = linux-enable-ir-emitter-git
-	pkgdesc = Enables infrared cameras that are not directly enabled out-of-the box.
-	pkgver = r109.624855b
+	pkgdesc = Enables infrared cameras that are not directly enabled out-of-the box
+	pkgver = r167.04f6c73
 	pkgrel = 1
 	url = https://github.com/EmixamPP/linux-enable-ir-emitter
 	arch = x86_64
-	license = Unlicense
+	license = MIT
 	makedepends = git
 	depends = python
+	depends = python-opencv
+	depends = python-yaml
+	optdepends = python-pyshark: full configuration setup support
 	provides = linux-enable-ir-emitter
 	conflicts = linux-enable-ir-emitter
+	conflicts = chicony-ir-toggle
 	source = git+https://github.com/EmixamPP/linux-enable-ir-emitter
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = linux-enable-ir-emitter-git
