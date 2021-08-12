@@ -1,22 +1,21 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=palette-git
-pkgver=2.0.1.r2.g27c60fa
-pkgrel=2
+pkgver=2.0.1.r3.gca8e63d
+pkgrel=1
 pkgdesc="Tool for viewing the GNOME color palette as defined by the design guidelines"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/design/palette"
 license=('GPL3')
-depends=('gtk4' 'vala')
-makedepends=('git' 'meson')
+depends=('gtk4')
+makedepends=('git' 'meson' 'vala')
+checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=(
-  "git+$url.git"
+source=("git+$url.git"
   "git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git")
-md5sums=(
-  'SKIP'
-  'SKIP') #autofill using updpkgsums
+sha256sums=('SKIP'
+  'SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -24,7 +23,10 @@ pkgver() {
 }
 
 prepare() {
-  mv HIG-app-icons/GNOME\ HIG.gpl ${pkgname%-git}/src/hig/GNOME\ HIG.gpl
+  cd ${pkgname%-git}
+  git submodule init
+  git config submodule.hig.url $srcdir/HIG-app-icons
+  git submodule update
 }
 
 build() {
