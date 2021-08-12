@@ -1,7 +1,7 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
 pkgver=2.44
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced x86/x86_64 BIOS/UEFI bootloader"
 arch=("x86_64")
 url="https://github.com/limine-bootloader/limine"
