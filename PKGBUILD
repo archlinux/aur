@@ -3,11 +3,13 @@
 pkgname=binance-bin
 _pkgname=binance
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Buy & sell Crypto in minutes, join the world's largest crypto exchange"
 arch=('x86_64')
 url="https://www.binance.com/en/download"
 license=('MIT')
+provides=('binance')
+conflicts=('binance')
 source=(
     "${_pkgname}-latest.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb"
     "checksum.txt::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux-deb-sha256.txt"
