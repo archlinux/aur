@@ -2,11 +2,11 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb-bin"
-pkgver="5.0.1"
+pkgver="5.0.2"
 _basever="5.0"
 _basedist="focal"
-_mshver="1.0.1"
-pkgrel="2"
+_mshver="1.0.4"
+pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -28,41 +28,44 @@ source_x86_64=(
     mongodb-org-shell_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-shell_${pkgver}_amd64.deb"
     mongodb-org-server_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-server_${pkgver}_amd64.deb"
     mongodb-org-mongos_${pkgver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-org-mongos_${pkgver}_amd64.deb"
-    mongosh-${_mshver}-linux-x86_64.tgz::https://downloads.mongodb.com/compass/mongosh-${_mshver}-linux-x64.tgz)
+    mongodb-mongosh_${_mshver}_x86_64.deb::"${_repo_url}/binary-amd64/mongodb-mongosh_${_mshver}_amd64.deb")
 source_aarch64=(
     mongodb-org-shell_${pkgver}_aarch64.deb::"${_repo_url}/binary-arm64/mongodb-org-shell_${pkgver}_arm64.deb"
     mongodb-org-server_${pkgver}_aarch64.deb::"${_repo_url}/binary-arm64/mongodb-org-server_${pkgver}_arm64.deb"
     mongodb-org-mongos_${pkgver}_aarch64.deb::"${_repo_url}/binary-arm64/mongodb-org-mongos_${pkgver}_arm64.deb"
-    mongosh-${_mshver}-linux-aarch64.tgz::https://downloads.mongodb.com/compass/mongosh-${_mshver}-linux-arm64.tgz)
+    mongodb-mongosh_${_mshver}_aarch64.deb::"${_repo_url}/binary-arm64/mongodb-mongosh_${_mshver}_arm64.deb")
 noextract=(
     mongodb-org-shell_${pkgver}_${CARCH}.deb
     mongodb-org-server_${pkgver}_${CARCH}.deb
-    mongodb-org-mongos_${pkgver}_${CARCH}.deb)
+    mongodb-org-mongos_${pkgver}_${CARCH}.deb
+    mongodb-mongosh_${_mshver}_${CARCH}.deb)
 sha256sums=('f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
             'de4f6770c45bc5418883659c479783c0184a6057df1c405a7933637984f82f0a'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('dc82d623dbe00042be5c82cc23da004b968ee32d5fd3248c7f651ca4f770da9c'
-                   'eec75fd99ac90f876636c37926cb12ff0a852de4709b8d6e7a2ae8f82d69000f'
-                   '56622b95b9d54cb653c41223ef8e8b7fe83f64cff02a5cb07ea0e49830701762'
-                   'd273ab2be09d0f88a0e0dbdd09e1252f994b2ea1b47d6b2ea0f5d1eba186ea25')
-sha256sums_aarch64=('3e001a05c2eddab35d1d053b0059bab3babcca17dc454f4e13f1cdcc6b9b29d0'
-                    '7562e6df8ad3acf70449aa5e5d5281fdca4d3493192b90166fff208b36a187be'
-                    '673cdbba32ed1c61cde93d114871da1736881e8a76c3eb8d1cbbd7bdf9b605d4'
-                    '5d1b246f32a2bf50d7d5fb0d984ee7ac785810450794fc3f75bbad92e0ef791f')
+sha256sums_x86_64=('30301479982eabf28aa56f444cf32ca9a54e8319fc03df69e6296cc6df682588'
+                   'd29d26b73adefc90f6e9bf45c5876518fbcf559c207634947cd08586daaf678e'
+                   'f7ea216f06c005b82911dc2314bb33e6d1e50362e1263c9ae09c0381a8a1cdc0'
+                   '57d77e07c80c12f7a0c2c2e5d7041a682c162c25cab46496af0da624927a8913')
+sha256sums_aarch64=('6489eb006edbdef9a7c63cc9531f71d1eb493337ca34d5fb06c3a31fa16ee11f'
+                    'f7ad3c972a4d456074898fee41859a4791f0737437c83f28f6b682ec31bd89cd'
+                    '153c6dd802bb517c83fca0c7192a3ea7ed58d65aaba386b29c1dc63c017da58e'
+                    'b20ec0e5d573a183da2fbc3c7b27a2149b9a104cd715832a71c2b6b31491b68d')
 
 prepare() {
   mkdir -p output
   bsdtar -O -xf mongodb-org-shell_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf -  #mongo extracted
   bsdtar -O -xf mongodb-org-server_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #server extracted
   bsdtar -O -xf mongodb-org-mongos_${pkgver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf - #mongos extracted
-  install -t output/usr/bin/ mongosh-${_mshver}-linux-*/bin/*
+  bsdtar -O -xf mongodb-mongosh_${_mshver}_${CARCH}.deb data.tar.xz | bsdtar -C output -xJf -   #mongosh extracted
 }
 
 package() {
   mkdir -p "$pkgdir/usr/share/man"
   cp -r "output/usr/bin" "$pkgdir/usr/"
+  # TODO:mongocrypt-mongosh is missing libsasl2.so.2 soname, not available in Arch
+  #cp -r "output/usr/libexec"/* "$pkgdir/usr/bin/"
   cp -r "output/usr/share/man/man1" "$pkgdir/usr/share/man/"
   install -Dm644 "mongodb.conf" "$pkgdir/etc/mongodb.conf"
   install -Dm644 "mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
