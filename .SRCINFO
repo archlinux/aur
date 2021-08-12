@@ -1,6 +1,6 @@
 pkgbase = python-pytest-check
 	pkgdesc = pytest plugin that allows multiple failures per test
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/okken/pytest-check
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-pytest-check
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pytest
-	source = python-pytest-check-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest_check/pytest_check-1.0.1.tar.gz
-	b2sums = 9c50cd960a74c8e8f19ced8197518850e074a631ca87b8d6db1eee3fc4ed1f3d7ed6701965734064a1bd532f9d40c0b45b5ff75e12070dda56e541c2458967c0
+	source = python-pytest-check-1.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest_check/pytest_check-1.0.2.tar.gz
+	b2sums = f759e7977cef1f6910a4027760b30324da445a563ad43a5077b3e57be5a9c82f8ac339a9152a6c3d3904673a4a2d3f1ef3e1e4aea56cc9940a3fa1b7a60e1356
 
 pkgname = python-pytest-check
-
