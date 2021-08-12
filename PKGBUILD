@@ -3,13 +3,13 @@
 pkgname=rime-stenotype
 pkgver=1.1
 _commit=f3e9189d5ce33c55d3936cc58e39d0c88b3f0c88
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime schema for Chinese stenotype"
 arch=('x86_64')
 url="https://github.com/rime/rime-stenotype"
 license=('GPL3')
 depends=('rime-luna-pinyin')
-makedepends=('librime')
+makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("$url/archive/$_commit/$pkgname-$_commit.tar.gz")
 md5sums=('0c72140b34c2e954bc6cad4682b4e021')
 
