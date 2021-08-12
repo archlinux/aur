@@ -1,0 +1,13 @@
+pkgbase = rime-stenotype
+	pkgdesc = Rime schema for Chinese stenotype
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/rime/rime-stenotype
+	arch = x86_64
+	license = GPL3
+	makedepends = librime
+	depends = rime-luna-pinyin
+	source = https://github.com/rime/rime-stenotype/archive/f3e9189d5ce33c55d3936cc58e39d0c88b3f0c88/rime-stenotype-f3e9189d5ce33c55d3936cc58e39d0c88b3f0c88.tar.gz
+	md5sums = 0c72140b34c2e954bc6cad4682b4e021
+
+pkgname = rime-stenotype
