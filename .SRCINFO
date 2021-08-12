@@ -1,0 +1,25 @@
+pkgbase = freezer-electron-git
+	pkgdesc = Freezer (Free client for Deezer) using the system provided electron.
+	pkgver = 1.1.24
+	pkgrel = 1
+	url = https://git.freezer.life/exttex/freezerpc
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = git
+	makedepends = sed
+	depends = openssl
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = electron
+	provides = freezer
+	conflicts = freezer-git
+	conflicts = freezer-appimage
+	conflicts = freezer-bin
+	source = freezer::git+https://git.freezer.life/exttex/freezerpc.git
+	source = freezer.desktop
+	sha512sums = SKIP
+	sha512sums = 1fd1323efa485ebd56087b2ed799f9b1452cd7bb03e398fce561eb3321bc7af149c22c02a5e7360f814b4cf790c88c3792ec970e6f25f0f49d073381accdddff
+
+pkgname = freezer-electron-git

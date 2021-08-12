@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Freezer
+StartupNotify=true
+Exec=freezer %U
+Keywords=Freezer;Music;Player;Deezer;
+Keywords[ru]=Фризер;Музыка;Плеер;Дизер;
+Categories=AudioVideo;Player;Audio;
+Icon=freezer
+Terminal=false
+Type=Application
