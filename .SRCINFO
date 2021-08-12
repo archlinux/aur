@@ -1,6 +1,6 @@
 pkgbase = evolus-pencil-git-dev-branch
 	pkgdesc = An open-source GUI prototyping tool
-	pkgver = 1521.f1309bc
+	pkgver = r1540.043ca48
 	pkgrel = 1
 	url = http://pencil.evolus.vn/
 	arch = i686
