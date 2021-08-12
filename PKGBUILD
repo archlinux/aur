@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-bin
-pkgver=4.2
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('wine' 'gtk3')
 conflicts=('linvst3')
 optdepends=('jack')
 suffix="Manjaro"
-source=("$url/releases/download/$pkgver/LinVst3-$pkgver-$suffix.zip")
-md5sums=('90511cdcb8c8a00f60ddad383d80b200')
+source=("https://github.com/osxmidi/LinVst3/releases/download/4.5/LinVst3-4.5.2-Manjaro.zip")
+md5sums=('8cc9380b718c0f7f299f5a4bfd5e90b4')
 
 package() {
 
