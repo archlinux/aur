@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Nikita Ukhrenkov <thekit@disroot.org>
 
 pkgname=osso-bookmark-engine
 pkgver=2.0.0
