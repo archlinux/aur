@@ -1,6 +1,6 @@
 pkgbase = astronciaiptv
         pkgdesc = IPTV player with EPG support
-        pkgver = 0.0.64
+        pkgver = 0.0.65
         pkgrel = 1
         url = https://gitlab.com/astroncia/iptv
         arch = any
@@ -16,8 +16,8 @@ pkgbase = astronciaiptv
         depends = python-unidecode
         depends = python-requests
         depends = ffmpeg
-        source = https://gitlab.com/astroncia/iptv/-/archive/0.0.64/iptv-0.0.64.tar.gz
-        b2sums = 1b850fafbe6a374c4d9389113d437643d9d566b5b4cca5c9dfda534e06238c72ca53482db914aabca1a157fd461390894bef0567dc588747dc64c886f91a0604
+        source = https://gitlab.com/astroncia/iptv/-/archive/0.0.65/iptv-0.0.65.tar.gz
+        b2sums = e5c4d6b4407734da1a1012d8b734754337b1070bcbb72f4e253bf06cf8506cc566a38bd99b81af83155d668e6983e6d9d139677c4946f49d02f3d8d7531dd6c4
 
 pkgname = astronciaiptv
 
