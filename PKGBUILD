@@ -2,7 +2,7 @@
 
 pkgname=libnbd
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD client library in userspace"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/nbdkit/libnbd"
@@ -31,8 +31,6 @@ package() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i /pycodestyle.sh/d python/Makefile
-  rm python/pycodestyle.sh
   make check
 }
 

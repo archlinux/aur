@@ -1,7 +1,7 @@
 pkgbase = libnbd
 	pkgdesc = NBD client library in userspace
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/nbdkit/libnbd
 	arch = i686
 	arch = x86_64
