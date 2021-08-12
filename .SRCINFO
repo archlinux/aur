@@ -1,0 +1,24 @@
+pkgbase = evolus-pencil-git-dev-branch
+	pkgdesc = An open-source GUI prototyping tool
+	pkgver = 1521.f1309bc
+	pkgrel = 1
+	url = http://pencil.evolus.vn/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	provides = evolus-pencil-bin
+	provides = evolus-pencil-avn
+	conflicts = evolus-pencil-bin
+	conflicts = evolus-pencil-svn
+	replaces = evolus-pencil-svn
+	source = pencil::git+https://github.com/evolus/pencil.git#branch=development
+	source = pencil.desktop
+	source = pencil.sh
+	md5sums = SKIP
+	md5sums = 25b8e3921c596da71720cd5feb9c04b7
+	md5sums = e72976807104a384ed291f239df2d77f
+
+pkgname = evolus-pencil-git-dev-branch
