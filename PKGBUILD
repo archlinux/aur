@@ -1,13 +1,15 @@
 # Contributor: feufochmar <feufochmar.gd@gmail.com>
+
 pkgname=otf-pecita
 pkgver=5.4
 pkgrel=3
 pkgdesc="A handwritten font with attached letters."
 arch=('any')
 url="http://pecita.eu"
-license=('custom:OFL')
-depends=()
+license=('OFL')
 source=("http://pecita.eu/b/Pecita.otf" "OFL.txt")
+sha256sums=('0fd219fa9e1414750db7d99eec3e2fbf4c7aacc2bd21a56228f962084c97eade'
+            '02db0ecd402bde9494564c4b0cbd4e4b8be4845e16ed8126c57d9dd93b04a065')
 
 package() {
   cd "$srcdir"
@@ -15,6 +17,3 @@ package() {
   mkdir -p  "$pkgdir"/usr/share/fonts/OTF
   install -m644 *.otf "$pkgdir"/usr/share/fonts/OTF/
 }
-
-md5sums=('2d9707af5d62c09a782b31aa96de12cb'
-         '3fa78374b78960f75ba6b4440309ac91')
