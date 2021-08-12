@@ -1,0 +1,16 @@
+pkgbase = homegenie-bin
+	pkgdesc = HomeGenie: Embeddable, Smart Home server for Windows, Mac and Linux.
+	pkgver = 1.3_stable.19
+	pkgrel = 1
+	url = https://github.com/genielabs/HomeGenie
+	arch = any
+	license = GPL3
+	makedepends = tar
+	depends = bash
+	provides = HomeGenie
+	conflicts = homegenie
+	options = !strip
+	source = https://hub.fastgit.org/genielabs/HomeGenie/releases/download/v1.3-stable.19/homegenie_1.3-stable.19.tgz
+	sha256sums = 00b6d57bcfbe42c254d69fbb3510a8bb29fdd70839285826b26311c4b96fb2a6
+
+pkgname = homegenie-bin
