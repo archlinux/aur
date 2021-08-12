@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-llvm
 	pkgdesc = Linux Kernel with cacule scheduler and lto compiled
-	pkgver = 5.13.9
-	pkgrel = 2
+	pkgver = 5.13.10
+	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
 	arch = x86_64_v3
@@ -23,7 +23,7 @@ pkgbase = linux-cacule-llvm
 	makedepends = llvm
 	makedepends = clang
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.9.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.10.tar.xz
 	source = config
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/arch-patches-v3/0001-arch-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE/v5.13/cacule-5.13.patch
@@ -50,8 +50,8 @@ pkgbase = linux-cacule-llvm
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/zstd-patches-v5/0001-zstd-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/clearlinux-patches-v2/0001-clearlinux-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch
-	sha256sums = 72fe7cc1f0363523061659a21e24754697b27f405cb88a41a63038629636159a
-	sha256sums = 26251861d486c5fde4ac4f29f67cb95d47234b017c3cf82d4166fceeeba4db95
+	sha256sums = 30caf51b8f8bd127f3dbcad8ed5e696c0c0e3ca5201ce34c3cb66d820590d705
+	sha256sums = d0994816a0ee4150235b3b3337d92380e78a8ad092808297483f418875ca4e27
 	sha256sums = 5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf
 	sha256sums = d498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22
 	sha256sums = 476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde
@@ -92,5 +92,5 @@ pkgname = linux-cacule-llvm
 
 pkgname = linux-cacule-llvm-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Kernel with cacule scheduler and lto compiled
-	depends = linux-cacule-llvm=5.13.9
+	depends = linux-cacule-llvm=5.13.10
 	depends = pahole

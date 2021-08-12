@@ -61,8 +61,8 @@ _use_current=
 
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.9
-pkgrel=2
+pkgver=5.13.10
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -125,8 +125,8 @@ BUILD_FLAGS=(
       OBJCOPY=llvm-objcopy
       OBJDUMP=objdump
     )
-sha256sums=('72fe7cc1f0363523061659a21e24754697b27f405cb88a41a63038629636159a'
-            '26251861d486c5fde4ac4f29f67cb95d47234b017c3cf82d4166fceeeba4db95'
+sha256sums=('30caf51b8f8bd127f3dbcad8ed5e696c0c0e3ca5201ce34c3cb66d820590d705'
+            'd0994816a0ee4150235b3b3337d92380e78a8ad092808297483f418875ca4e27'
             '5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf'
             'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
