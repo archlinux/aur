@@ -6,13 +6,13 @@
 
 pkgname=ariamaestosa
 pkgver=1.4.13
-pkgrel=2
+pkgrel=3
 pkgdesc='MIDI editor, player, tracker and composer'
 arch=('x86_64' 'i686')
 url='http://ariamaestosa.sourceforge.net/'
 license=('GPL2')
-depends=('wxgtk' 'mesa' 'alsa-lib' 'hicolor-icon-theme' 'xdg-utils'
-         'desktop-file-utils' 'webkitgtk2')
+depends=('wxgtk2' 'mesa' 'alsa-lib' 'hicolor-icon-theme' 'xdg-utils'
+         'desktop-file-utils' 'webkitgtk')
 optdepends=('timidity++: for midi playback'
             'timidity-freepats: for midi playback'
             'fluidsynth: for midi playback')
