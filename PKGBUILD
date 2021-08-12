@@ -2,7 +2,7 @@
 
 pkgname=astronciaiptv
 pkgver=0.0.65
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://gitlab.com/astroncia/iptv"
@@ -25,7 +25,8 @@ package() {
 	mkdir -p "${pkgdir}"/usr/lib/astronciaiptv/
         cp -r packaging/usr/share/icons/hicolor "${pkgdir}"/usr/share/icons/
         cp -r data "${pkgdir}"/usr/lib/astronciaiptv/
-        rm -rf "${pkgdir}"/usr/lib/astronciaiptv/data/modules/binary "${pkgdir}"/usr/lib/astronciaiptv/data/lang/astronciaiptv.pot "${pkgdir}"/usr/lib/astronciaiptv/data/lang/update_translations.sh "${pkgdir}"/usr/lib/astronciaiptv/data/lang/*/*/*.po
+        rm -rf "${pkgdir}"/usr/lib/astronciaiptv/data/modules/binary "${pkgdir}"/usr/lib/astronciaiptv/data/lang/astronciaiptv.pot
+        rm -rf "${pkgdir}"/usr/lib/astronciaiptv/data/lang/update_translations.sh "${pkgdir}"/usr/lib/astronciaiptv/data/lang/*/*/*.po
         chmod 755 "${pkgdir}"/usr/bin/astronciaiptv
         chmod 755 "${pkgdir}"/usr/lib/astronciaiptv/data/modules/astroncia/pfs.py
 }
