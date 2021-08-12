@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo' 'git')
 depends=('gcc-libs')
 provides=('bunnyfetch')
 conflicts=('bunnyfetch')
-source=("$_pkgname::git+https://github.com/Luvella/Bunnyfetch.git#branch=rs")
+source=("$_pkgname::git+https://github.com/Rosettea/Bunnyfetch.git#branch=rs")
 sha256sums=('SKIP')
 
 pkgver() {
