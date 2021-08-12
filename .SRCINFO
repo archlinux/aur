@@ -1,7 +1,7 @@
 pkgbase = comrak-git
 	pkgdesc = CommonMark + GFM compatible Markdown parser and renderer
 	pkgver = 0.11.0.r1.g49eef43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kivikakk/comrak
 	arch = x86_64
 	arch = i686
