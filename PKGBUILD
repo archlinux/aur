@@ -1,7 +1,8 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
@@ -9,8 +10,8 @@ license=(MIT)
 depends=(python-pytest)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-cov)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9a03c097bc0739c9343c40a1ab81675de2fed27fcb9bd7de10f18de1706336e5e0c10b26aaaea922ddc082d1baef48ea776b92672a2ee2aa3775fbbcbd91659f')
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('f476fece6e5bf4284516ecb61fdce01f75906c947bad3b127b8433c62e9cd654ccf700ba70696d834bf4f4556b15152ca66e6e692ec4d8e1c96de85732239aeb')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
