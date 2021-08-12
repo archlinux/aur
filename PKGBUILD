@@ -2,11 +2,11 @@
 
 pkgname=comrak
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
 url="https://github.com/kivikakk/$pkgname"
-license=(MIT custom)
+license=(BSD)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
