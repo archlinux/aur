@@ -19,7 +19,7 @@ package_ttf-fantasma() {
 }
 
 package_otf-fantasma() {
-  pkgdesc="Fantasma: An ael-lab Release AEL-01 // Font design by Froyo Tam AEL-01(OTF Open Type Font)"
+  pkgdesc="Fantasma: An 「ael-lab」 Release AEL-01 // Font design by Froyo Tam AEL-01(OTF Open Type Font)"
   cd "${_pkgbase}-${pkgver}"
   install -Dm644 fonts/Fantasma-Regular.otf "${pkgdir}/usr/share/fonts/TTF/Fantasma-Regular.otf"
 }
