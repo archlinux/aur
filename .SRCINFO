@@ -1,6 +1,6 @@
 pkgbase = skypeforlinux-preview-bin
 	pkgdesc = Skype for Linux - Preview/Insider Version
-	pkgver = 8.75.76.133
+	pkgver = 8.76.76.40
 	pkgrel = 1
 	url = http://www.skype.com
 	install = install.sh
@@ -23,7 +23,7 @@ pkgbase = skypeforlinux-preview-bin
 	conflicts = skypeforlinux-beta-bin
 	conflicts = skype
 	replaces = skypeforlinux-bin
-	source = https://repo.skype.com/rpm/unstable/skypeforlinux_8.75.76.133-1.x86_64.rpm
-	sha256sums = 6c47775c76e7538d9a2d1184f3daf85b66587e241dcca57463adde1181b6d4f8
+	source = https://repo.skype.com/rpm/unstable/skypeforlinux_8.76.76.40-1.x86_64.rpm
+	sha256sums = 288a32072345ecd58bf69dab376f7df18fcf69ae2a582c58921b41c716ff6018
 
 pkgname = skypeforlinux-preview-bin
