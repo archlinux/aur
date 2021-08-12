@@ -1,0 +1,15 @@
+pkgbase = python-pyfma
+	pkgdesc = Fused multiply-add (with a single rounding) for Python
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/nschloe/pyfma
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest-codeblocks
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = python-numpy
+	source = https://github.com/nschloe/pyfma/archive/v0.1.4.tar.gz
+	sha512sums = 68a9607cc16a07f9ca5c52bb63caf73645d94223aa50052ce828abd0322727bf611948513653d8b3250a251b3ce7364a15ad81cb4bd2007a65caa2f18b64be6a
+
+pkgname = python-pyfma
