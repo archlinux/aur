@@ -1,6 +1,6 @@
 pkgbase = pacdef-git
 	pkgdesc = declarative manager of Arch packages
-	pkgver = 0.5.0.r4.g7218696
+	pkgver = 0.5.0.r14.g4ab44f0
 	pkgrel = 1
 	url = https://github.com/steven-omaha/pacdef
 	arch = any

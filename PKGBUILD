@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=0.5.0.r4.g7218696
+pkgver=0.5.0.r14.g4ab44f0
 pkgrel=1
 pkgdesc='declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
@@ -16,7 +16,6 @@ sha256sums=(SKIP)
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  _commit=$(git rev-parse --short HEAD)
   sed -i -e "s/VERSION = 'unknown'/VERSION = 'git-${pkgver}-${pkgrel}'/" pacdef.py
 }
 
