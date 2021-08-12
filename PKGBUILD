@@ -1,5 +1,5 @@
-# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
-# Contributor: Pellegrino Prevete <pellegrinoprevete (at) gmail (dot) com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete (at) gmail (dot) com>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=mce-dev
 pkgver=1.28.3
