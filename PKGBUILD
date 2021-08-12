@@ -15,10 +15,10 @@ makedepends=(gobject-introspection git gtk-doc hicolor-icon-theme)
 optdepends=('gnome-themes-standard: Default widget theme'
             'adwaita-icon-theme: Default icon theme'
             'python: gtk-builder-convert')
-provides=(libgailutil.so libg{d,t}k-x11-2.0.so gtk2)
-replaces=(gtk2)
+provides=(libgailutil.so libg{d,t}k-x11-2.0.so $_pkgname)
+conflicts=($_pkgname)
 license=(LGPL)
-install=gtk2.install
+install=$_pkgname.install
 source=("$_pkgname::git+https://gitlab.gnome.org/tallero/gtk.git#branch=maemo"
         gtkrc
         gtk-query-immodules-2.0.hook
