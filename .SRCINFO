@@ -1,7 +1,7 @@
 pkgbase = lorem
 	pkgdesc = Simple app to generate the Lorem Ipsum placeholder text
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/design/lorem
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = lorem
 	depends = glib2
 	depends = libadwaita
 	source = https://gitlab.gnome.org/World/design/lorem/-/archive/0.1/lorem-0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 909c89c123047c471cbb667c3bfb665844da280d1334d21780c9745e886d19b7
 
 pkgname = lorem
