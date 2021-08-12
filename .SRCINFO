@@ -1,5 +1,5 @@
 pkgbase = java8-openjdk-shenandoah
-	pkgver = 8.u262b02
+	pkgver = 8.u302b08
 	pkgrel = 2
 	url = https://openjdk.java.net/
 	arch = x86_64
@@ -15,22 +15,22 @@ pkgbase = java8-openjdk-shenandoah
 	makedepends = fontconfig
 	makedepends = libcups
 	makedepends = alsa-lib
-	source = jdk8u-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = corba-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/corba/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = hotspot-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/hotspot/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = jdk-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jdk/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = jaxws-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jaxws/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = jaxp-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jaxp/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = langtools-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/langtools/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	source = nashorn-aarch64-shenandoah-jdk8u262-b02.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/nashorn/archive/aarch64-shenandoah-jdk8u262-b02.tar.gz
-	sha256sums = 0bda934299f7c5cde64dcfb096269bab926ab67ced34339b09cc760596807224
-	sha256sums = f8a993291e88193533660297ceddb73b11967731c233df5d50534f59cf5cd8ad
-	sha256sums = 69c0a61f650a9acb7e6e07947a005e151433698b05956c232aca5e19ac27989c
-	sha256sums = 3fd6b3af79ba1b396c775bc89f9855d5e38bce4893cf76e05ef407bea0e5d308
-	sha256sums = dc796608cc2838cb3097d777ce84ce8776205c7d5cb4f9e35501e9d04c6ef6d2
-	sha256sums = f724f62bf2fe2058aebd4fdf6596fe3fe3f1d7e9c926a1bd22e9d3195aa627df
-	sha256sums = 6d446b9d28199972e55fde509ebfa8585cf968bb77b1d72abed6defd9126639a
-	sha256sums = a067a3de924f16cd96190e9bc535947e230d2a197a092d2b4afac4ecedd66c28
+	source = jdk8u-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = corba-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/corba/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = hotspot-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/hotspot/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = jdk-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jdk/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = jaxws-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jaxws/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = jaxp-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/jaxp/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = langtools-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/langtools/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	source = nashorn-aarch64-shenandoah-jdk8u302-b08.tar.gz::http://hg.openjdk.java.net/aarch64-port/jdk8u-shenandoah/nashorn/archive/aarch64-shenandoah-jdk8u302-b08.tar.gz
+	sha256sums = 560750630652cf96f6f17b50d072f56a86f62b6928cf256a016047c3904f90fa
+	sha256sums = 91a5d894b3db6e594ceab35b1ead9057a9239695d184cda7f3b4cc3c86f64813
+	sha256sums = 5e6402e2f1eb9a28fef1a2369e7d479be8ccf229c10ed8a1bd395da13c5fa5c1
+	sha256sums = 1292c22710213a97ba7a10a516e86b600874de321e025a2dfb194a328e320102
+	sha256sums = 83b28da5442d19f64088c6693681290b9979f88c71f13276bf5742531cfdf6b6
+	sha256sums = f946dab7e4710f3b421cf12553545463640f21b334d1449d8edaadb35f75e924
+	sha256sums = 459f927af167ad60d4998c5493df330cf8f0aa36a1f44fde4d31e202d3d4fdae
+	sha256sums = 3e12895fe11c35756c09faefde4782cdec2424d46a6c8a92858fdec1cc2a7f4a
 
 pkgname = jre8-openjdk-shenandoah-headless
 	pkgdesc = OpenJDK Java 8 headless runtime environment
@@ -48,7 +48,7 @@ pkgname = jre8-openjdk-shenandoah-headless
 pkgname = jre8-openjdk-shenandoah
 	pkgdesc = OpenJDK Java 8 full runtime environment
 	install = install_jre8-openjdk.sh
-	depends = jre8-openjdk-shenandoah-headless=8.u262b02-2
+	depends = jre8-openjdk-shenandoah-headless=8.u302b08-2
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = icedtea-web: web browser plugin + Java Web Start
@@ -63,7 +63,7 @@ pkgname = jdk8-openjdk-shenandoah
 	pkgdesc = OpenJDK Java 8 development kit
 	install = install_jdk8-openjdk.sh
 	depends = java-environment-common
-	depends = jre8-openjdk-shenandoah=8.u262b02-2
+	depends = jre8-openjdk-shenandoah=8.u302b08-2
 	provides = java-environment=8
 	provides = java-environment-openjdk=8
 	provides = java-environment-openjdk-shenandoah=8
@@ -73,4 +73,3 @@ pkgname = openjdk8-shenandoah-src
 
 pkgname = openjdk8-shenandoah-doc
 	pkgdesc = OpenJDK Java 8 documentation
-
