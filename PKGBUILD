@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=waypoint
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A tool to build, deploy, and release any application on any platform"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('go' 'go-bindata')
 optdepends=('docker: for local development server')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hashicorp/waypoint/archive/v$pkgver.tar.gz")
-b2sums=('b4033c0c7b38b2a53af9706f63ca4beed3064a0aae0bbaa603f711659ac998b8599a0a67e6b283b9ac0f037e1ca6935401ed660fa1dca865bc09d171ce010872')
+b2sums=('9e4f79c66c944a67e126de971b42a8a5c35792fbc441ec42774a46553874ee4ea83778462d714dbd9d490eef84d3dae48e41cd54e4dc360b78b93cd8428944bf')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -48,4 +48,5 @@ package() {
   # documentation
   install -vDm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   cp -vr contrib/serverinstall/kind-k8s "$pkgdir/usr/share/doc/$pkgname"
+  rm -vf "$pkgdir/usr/share/doc/$pkgname/.gitignore"
 }
