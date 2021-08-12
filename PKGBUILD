@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cicero-git
-pkgver=0.2.1.r0.gcd6e04b
+pkgver=0.2.2.r0.g5888ed4
 pkgrel=1
 pkgdesc="Unicode tool with a terminal user interface (git)"
 arch=('x86_64')
