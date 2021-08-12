@@ -1,9 +1,10 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: John Beard <john.j.beard@gmail.com>
 
 _pkgname=daty
 pkgname=$_pkgname-git
 pkgver=1.0beta+78+g81b9736
-pkgrel=3
+pkgrel=4
 pkgdesc='Daty Wikidata Editor'
 url='https://gitlab.gnome.org/World/daty'
 license=('AGPLv3')
@@ -12,7 +13,7 @@ depends=('libhandy0' 'python-appdirs' 'python-bleach' 'python-beautifulsoup4' 'p
 makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('$_pkgname::git+https://gitlab.gnome.org/World/Daty.git')
+source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
