@@ -90,8 +90,8 @@ prepare() {
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -Np1 -i ${_patches_dir}/librewolf/megabar.patch
 
-  # Debian patch to enable global menubar
-  patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+  # Debian patch to enable global menubar - Breaking building v91, needs investigation
+  # patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
