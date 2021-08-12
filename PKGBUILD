@@ -3,7 +3,7 @@
 # This PKGBUILD is directly modified from aur/dingtalk
 
 pkgname=lx-music
-pkgver=1.11.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='An Electron-based music player'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('asar' 'jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('d7f64e91ad031469f8ecd240f20d135736fcf8240af7e1f1a901337e4a23bdb9'
+sha256sums=('65f898abc23c96b5a501c5a055766ea4c051d3f3d61af4a0c7cd0c6782f9f5a0'
             '0b19e2d26237f48379c024d48398a3a819b1de72bfe95c680f9a81c3d13c537f'
             '86c65106fb93671b2f3da2896ef69d709f0558b2113779b9ca45bbbb73de64ce')
 
