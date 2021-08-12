@@ -1,13 +1,13 @@
 pkgbase = mce-dev
 	pkgdesc = Headers defining the D-Bus method calls provided by the Mode Control Entity
-	pkgver = 1.8.21
+	pkgver = 1.28.3
 	pkgrel = 1
-	url = https://github.com/maemo-leste/mce-dev
+	url = https://git.sailfishos.org/mer-core/mce-dev
 	arch = any
 	license = LGPL2.1
 	makedepends = doxygen
-	source = mce-dev-1.8.21.tar.gz::https://github.com/maemo-leste/mce-dev/archive/1.8.21.tar.gz
-	sha512sums = ae52169a1120bf4c970d854e7b6a13bf36e17d1b5a897e529f9117cec351a9564753b8d83204479bc04912fc49357e6af01777910a4f99319a56dec6f726f962
+	conflicts = mce-headers
+	source = mce-dev-1.28.3.tar.gz::https://git.sailfishos.org/mer-core/mce-dev/-/archive/1.28.3/mce-dev-1.28.3.tar.gz
+	sha512sums = a244567d905713d9065fc95ce5e91a5b6895516a944c42acbd2df0dd428e74343f8ba750f4e4388798b7bf924d7d87db2352e065942e7abb45214e23d2dfb67e
 
 pkgname = mce-dev
-
