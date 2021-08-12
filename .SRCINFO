@@ -1,14 +1,13 @@
 pkgbase = enyo-launcher
 	pkgdesc = Frontend for Doom engines
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
-	url = https://github.com/stephendcofer/enyo-launcher
+	url = https://gitlab.com/sdcofer70/enyo-launcher
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = qt5-base
-	source = enyo-launcher-2.0.4.tar.gz::https://github.com/stephendcofer/enyo-launcher/archive/refs/tags/2.0.4.tar.gz
-	sha512sums = 85f812c4de37a2964fe1561db7822ef22958b4b231d612539f5c25654231baca3904b4de94f3c8a6843060356cf98e4602d7344b6f09a084a0a2610d41197aca
+	source = https://gitlab.com/sdcofer70/enyo-launcher/-/archive/2.0.5/enyo-launcher-2.0.5.tar.bz2
+	sha512sums = fb86ed4c8001d279cd728e5d6590a6a32ebce7e1b94c0076a77a313dc10afc0c1179fda36f8b99b591b50e63b4d2b7eb4776ce2c87058c1007c49d43a53f6ecd
 
 pkgname = enyo-launcher
-
