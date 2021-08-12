@@ -1,0 +1,16 @@
+pkgbase = dingtalk-bin
+	pkgdesc = 钉钉
+	pkgver = 1.0.0.203
+	pkgrel = 1
+	url = https://gov.dingtalk.com
+	arch = x86_64
+	license = custom
+	provides = dingtalk
+	source = https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_1.0.0.203_amd64.deb
+	source = com.alibabainc.dingtalk.desktop
+	source = dingtalk
+	md5sums = 24ea8f14c8d5552d0b4aa616a4985155
+	md5sums = e1b984a024700a9ef5f77a1018a41f8e
+	md5sums = 0e255cd61852162548db96e46f1dda00
+
+pkgname = dingtalk-bin
