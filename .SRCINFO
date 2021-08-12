@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 91.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -53,11 +53,13 @@ pkgbase = firefox-esr
 	source = https://archive.mozilla.org/pub/firefox/releases/91.0esr/source/firefox-91.0esr.source.tar.xz
 	source = https://archive.mozilla.org/pub/firefox/releases/91.0esr/source/firefox-91.0esr.source.tar.xz.asc
 	source = firefox-esr.desktop
+	source = identity-icons-brand.svg
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = fa1bae287ef55416ae4ee3fbd22f923f9d1fec066c91766d60633d53db6a9959
 	sha256sums = SKIP
 	sha256sums = d86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726
+	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
 	sha256sums = 7e7435e8171426e87a84cecf9eb017cb969c9c85d973feb78c1e05771972b6e9
 
 pkgname = firefox-esr
