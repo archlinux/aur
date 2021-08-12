@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=text-pthread
 pkgname=obs-$_pluginname
-pkgver=1.0.1
+pkgver=1.0.2
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="This plugin aims to show beautiful texts on OBS Studio"
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/norihiro/obs-text-pthread/archive/$pkgver.tar.gz"
 )
 sha256sums=(
-  "f6fb63b4a76d6473f8030e7ff410ea9c7d271562d32da66aea495e153adbcc17"
+  "0ab4bc658b9f6abcbd5e079c92f8e8e30e3aaf69edcbf9024880b7ba5e9e65da"
 )
 
 # Need to compile plugin in OBS compilation process
