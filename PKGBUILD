@@ -2,7 +2,7 @@
 
 pkgname='beancount-exchangerates'
 pkgdesc='Price source for Beancount that loads data from https://exchangerate.host/'
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 arch=('any')
 url="https://github.com/xuhcc/beancount-exchangerates"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('beancount')
 optdepends=('beanprice: standalone bean-price package')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xuhcc/beancount-exchangerates/archive/v${pkgver}.tar.gz")
-sha256sums=('6cfc9262c807f519bf5af5490c5695f91466094cdc79e99fbfced1eb02a434bf')
+sha256sums=('fb87334397c134d02ebeacf9dbbeefec70a4376d98de7619727cd50df4ddea57')
 
 package () {
     cd "${pkgname}-${pkgver}"

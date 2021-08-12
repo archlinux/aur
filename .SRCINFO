@@ -1,14 +1,13 @@
 pkgbase = beancount-exchangerates
 	pkgdesc = Price source for Beancount that loads data from https://exchangerate.host/
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/xuhcc/beancount-exchangerates
 	arch = any
 	license = GPL
 	depends = beancount
 	optdepends = beanprice: standalone bean-price package
-	source = beancount-exchangerates-3.0.0.tar.gz::https://github.com/xuhcc/beancount-exchangerates/archive/v3.0.0.tar.gz
-	sha256sums = 6cfc9262c807f519bf5af5490c5695f91466094cdc79e99fbfced1eb02a434bf
+	source = beancount-exchangerates-3.1.0.tar.gz::https://github.com/xuhcc/beancount-exchangerates/archive/v3.1.0.tar.gz
+	sha256sums = fb87334397c134d02ebeacf9dbbeefec70a4376d98de7619727cd50df4ddea57
 
 pkgname = beancount-exchangerates
-
