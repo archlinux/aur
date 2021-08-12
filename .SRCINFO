@@ -1,0 +1,13 @@
+pkgbase = mir-jit
+	pkgdesc = A lightweight JIT compiler and C11 JIT compiler/interpreter based on MIR
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/vnmakarov/mir
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/vnmakarov/mir.git#branch=v_0_1
+	md5sums = SKIP
+
+pkgname = mir-jit
