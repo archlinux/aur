@@ -1,0 +1,17 @@
+pkgbase = kawpowminer-git
+        pkgdesc = kawpow miner with OpenCL, CUDA and stratum support
+        pkgver = r14409.632f6ea0a
+        pkgrel = 1
+        url = https://github.com/RavenCommunity/kawpowminer
+        arch = x86_64
+        license = GPL3
+        makedepends = cmake
+        makedepends = gcc9
+        makedepends = perl
+        makedepends = git
+        depends = cuda
+        provides = kawpowminer
+        source = git+https://github.com/RavenCommunity/kawpowminer.git
+        sha256sums = SKIP
+
+pkgname = kawpowminer-git
