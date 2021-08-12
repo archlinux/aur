@@ -3,7 +3,7 @@
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-playfair-display-ibx
-pkgver=1.2000
+pkgver=1.200
 pkgrel=1
 depends=('fontconfig')
 pkgdesc="An Open Source typeface family for display and titling use"
