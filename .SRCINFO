@@ -1,12 +1,13 @@
 pkgbase = neuron-zettelkasten-bin
-	pkgdesc = Future-proof command-line app for managing your plain-text Zettelkasten notes
-	pkgver = 1.0.1.0
-	pkgrel = 2
+	pkgdesc = Future-proof note-taking and publishing based on Zettelkasten
+	pkgver = 1.9.35.0
+	pkgrel = 1
 	url = https://github.com/srid/neuron
 	arch = x86_64
 	license = AGPL3
-	source_x86_64 = https://github.com/srid/neuron/releases/download/1.0.1.0/neuron-1.0.1.0-linux.tar.gz
-	sha256sums_x86_64 = 25d0c2c27e8840ec527ea66823844bf880fc00b3dd43b171d93b99172f4afa2b
+	source_x86_64 = https://github.com/srid/neuron/releases/download/1.9.35.0/neuron
+	source_x86_64 = neuron.sh
+	sha256sums_x86_64 = f16eedd05ca71f3f0e323072c95e4ee457feba8aa85e982154b2015515e88bb6
+	sha256sums_x86_64 = 1cfc1b63aeb82d69abaf48a737551fb43a9283d7d694310dcd802119a3bfd159
 
 pkgname = neuron-zettelkasten-bin
-
