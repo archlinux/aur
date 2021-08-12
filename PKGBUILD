@@ -1,15 +1,17 @@
 # Maintainer: otaj
+# If you also want to test GPU portion of the package, set this to 1. Make sure you have a capable GPU with large enough memory 
+TEST_GPU=0
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=0.4.0.r15.g6434c36
+pkgver=0.5.8.r0.g8b619aea
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
 license=(Apache)
-makedepends=('git' 'python-setuptools')
-depends=('python-pytorch' 'python-numpy' 'python-torchvision' 'opencv' 'ipython' 'jupyter' 'python-matplotlib')
+makedepends=('git' 'python-setuptools' 'python-pip')
+depends=('python-pytorch')
 checkdepends=('python-pytest')
 provides=('python-kornia')
 conflicts=('python-kornia')
@@ -24,7 +26,10 @@ pkgver() {
 
 check() {
   cd "${srcdir}/${_name}"
-  pytest -v --device all --dtype float32,float64 test/
+  pytest -v --device cpu --dtype float32,float64 test/
+  if ! [ "$TEST_GPU" -eq "0" ] ; then
+    pytest -v --device cuda --dtype float32,float64 test/
+  fi
 }
 
 package() {
