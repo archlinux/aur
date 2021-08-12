@@ -1,0 +1,20 @@
+pkgbase = vector-slicer-git
+	pkgdesc = Export multi-page PDFs from an SVG
+	pkgver = r26.8a31aa1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/vector-slicer
+	arch = x86_64
+	license = MIT
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk3
+	provides = vector-slicer
+	conflicts = vector-slicer
+	source = git+https://gitlab.gnome.org/World/design/vector-slicer.git
+	sha256sums = SKIP
+
+pkgname = vector-slicer-git
