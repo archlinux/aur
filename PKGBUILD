@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=wakatime-cli-bin
-pkgver=1.18.9
+pkgver=1.18.10
 pkgrel=1
 provides=('wakatime' 'wakatime-cli')
 conflicts=('wakatime' 'wakatime-cli')
@@ -11,7 +11,7 @@ url='https://github.com/wakatime/wakatime-cli'
 license=('BSD')
 source=("https://github.com/wakatime/wakatime-cli/releases/download/v$pkgver/wakatime-cli-linux-amd64.zip"
         "https://raw.githubusercontent.com/wakatime/wakatime-cli/v$pkgver/LICENSE")
-sha256sums=('5c9e1f6a0d6ca72fbf22e661672c6abffd36341be8c2927c6cc83e4038c786ca'
+sha256sums=('1a098dcca06374009474e44b97270a7a9c44ddd10db56e3e87dbf15ec29d2b17'
             '4aafe64159ef6372aba2de60ba7de1b92cb37c9adc63f904ae1a0e4e7b1292d2')
 
 package() {
