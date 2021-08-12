@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=steam-screensaver-fix
-pkgver=2.0.14
-pkgrel=2
+pkgver=2.0.16
+pkgrel=1
 pkgdesc="Fix for steam screensaving bug."
 arch=('i686' 'x86_64')
 url="https://github.com/ValveSoftware/steam-for-linux/issues/5607"
@@ -18,7 +18,7 @@ source=(
 	'steam-screensaver-fix-runtime'
 	'steam-screensaver-fix-native')
 sha256sums=(
-	'd8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc'
+	'65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b'
 	'SKIP'
 	'114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379'
 	'1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1'

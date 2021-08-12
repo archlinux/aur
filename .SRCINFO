@@ -1,14 +1,14 @@
 pkgbase = steam-screensaver-fix
 	pkgdesc = Fix for steam screensaving bug.
-	pkgver = 2.0.14
-	pkgrel = 2
+	pkgver = 2.0.16
+	pkgrel = 1
 	url = https://github.com/ValveSoftware/steam-for-linux/issues/5607
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = steam
-	source = https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
-	source = https://www.libsdl.org/release/SDL2-2.0.14.tar.gz.sig
+	source = https://www.libsdl.org/release/SDL2-2.0.16.tar.gz
+	source = https://www.libsdl.org/release/SDL2-2.0.16.tar.gz.sig
 	source = steam-screensaver-fix-runtime.desktop
 	source = steam-screensaver-fix-native.desktop
 	source = 0001-SDL-allow-screensaver.patch
@@ -16,7 +16,7 @@ pkgbase = steam-screensaver-fix
 	source = steam-screensaver-fix-runtime
 	source = steam-screensaver-fix-native
 	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
-	sha256sums = d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
+	sha256sums = 65be9ff6004034b5b2ce9927b5a4db1814930f169c4b2dae0a1e4697075f287b
 	sha256sums = SKIP
 	sha256sums = 114c7ca82e6b7605c9e88bf569bd7f0d3ddad3f7260ac79c255f7f8f833a5379
 	sha256sums = 1fdb424e1535aae8ae0acf045cc0b251f14563b7423f895abc6110b1da4c4ef1
@@ -26,4 +26,3 @@ pkgbase = steam-screensaver-fix
 	sha256sums = 3afff6777e5661922881442b75c601fd01ab4fc637e8e2f1e41b05a109cdafac
 
 pkgname = steam-screensaver-fix
-
