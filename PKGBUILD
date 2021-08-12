@@ -10,6 +10,7 @@ depends=(
   'pacman>5'
   'git'
   'nim'
+  'nimble'
 )
 optdepends=(
   'sudo'
