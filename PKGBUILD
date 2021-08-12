@@ -3,7 +3,7 @@
 
 pkgname='dex-idp'
 pkgdesc='OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors'
-pkgver='2.28.1'
+pkgver='2.30.0'
 pkgrel='1'
 url="https://github.com/dexidp/dex"
 license=('Apache')
@@ -25,7 +25,7 @@ prepare () {
 
 build () {
   cd "$PACKAGE_ROOT"
-  make
+  make build
 }
 
 package () {
