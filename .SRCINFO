@@ -10,6 +10,7 @@ pkgbase = veeam
 	depends = lvm2
 	depends = fuse
 	depends = mlocate
+	depends = veeamsnap
 	noextract = veeam-5.0.0.4318-1.el8.x86_64.rpm
 	backup = etc/veeam/veeam.ini
 	backup = usr/share/veeam/lpb_scheme.sql
