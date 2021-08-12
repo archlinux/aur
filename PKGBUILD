@@ -1,7 +1,7 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=gnome-shell-extension-shuzhi
 _pkgname=shuzhi
-pkgver=3.38
+pkgver=40
 pkgrel=1
 pkgdesc="A wallpaper generation extension for gnome shell, inspired by Jizhi."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/tuberry/shuzhi"
 license=('GPL3')
 depends=('gnome-shell')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('bc2680639b35fdd3157d7d827a9a0d184a0b2238000f303e37d000f9068d9407a7375ed13c622eb5312ceb76469d360983ab3cffa2de9178929f1ee351f91a22')
+sha512sums=('b67d01e48ae9ba7d71fe400b6a3f0c188b955e1010c23a1464dda0bc3d627587e2105828079706227602e8cee22ca58f915d2bf0bf29868da46128915269c61b')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
