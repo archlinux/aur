@@ -1,7 +1,7 @@
 pkgbase = obs-vnc
 	pkgdesc = This plugin is a VNC viewer that works as a source in OBS Studio
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/vnc-source.1000/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = obs-vnc
 	makedepends = cmake
 	depends = obs-studio>=27.0.0
 	depends = libvncserver
-	source = obs-vnc-0.3.1.tar.gz::https://github.com/norihiro/obs-vnc/archive/0.3.1.tar.gz
-	sha256sums = d16ccaa52a8471643094fe0145059620320f13bd498bf7595f0956ab515da489
+	source = obs-vnc-0.4.0.tar.gz::https://github.com/norihiro/obs-vnc/archive/0.4.0.tar.gz
+	sha256sums = c61397314c7cc0518beb7cfcfa89a391039241200fad0e61d01552a3ceceaa57
 
 pkgname = obs-vnc
