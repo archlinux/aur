@@ -1,6 +1,6 @@
 pkgbase = mediawiki-extension-bouncehandler
 	pkgdesc = An extension for MediaWiki that allows a wiki to handle bounce emails efficiently
-	pkgver = REL1_36+r412+gb411d48
+	pkgver = 1.36+r412+gb411d48
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:BounceHandler
 	arch = any
