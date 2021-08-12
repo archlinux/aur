@@ -6,8 +6,8 @@
 # Contriburot jetchisel #bash
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="90.0.2.931.2"
-_pkgver="90.0.2-931.2"
+pkgver="90.0.2.931.6"
+_pkgver="90.0.2-931.6"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('727465d1e9d9f8c8154148f348d0ee6994dc56d379dea438e49b2e836403dfe48b8cc28652ac04fa3446373768130b49c5c9fcf5789eef196610e4c378bfe95b')
+sha512sums_x86_64=('a98ec8000fa0d75a3fe2ef238f82026b33e3146ce2bdf8aa0963fd2b58d0e8c5dbcb83f9e3e897443b1dc47e6c393aa78642bb9e9600923e2c82af3a8e3486bc')
 prepare() {
     cd "usr"
     
