@@ -1,6 +1,6 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
-pkgname=delete-tweets
+pkgname=python-delete-tweets
 _pkgname=delete-tweets
 pkgver=2.0.1
 pkgrel=1
