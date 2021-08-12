@@ -3,10 +3,10 @@
 pkgname=python-remote_ikernel
 _name=${pkgname#python-}
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote kernel setup for Jupyter"
 arch=(any)
-url="https://bitbucket.org/tdaff/remote_ikernel"
+url="https://github.com/cfriedline/remote_ikernel"
 license=('BSD')
 depends=('python-pexpect' 'jupyter-notebook')
 makedepends=('python-setuptools')
