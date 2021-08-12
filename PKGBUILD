@@ -3,7 +3,7 @@
 pkgname=q5go
 pkgver=2.1.2
 pkgrel=1
-pkgdesc="SGF editor and IGS client for Go players"
+pkgdesc="SGF editor and IGS client for the game of Go"
 arch=('x86_64')
 url='https://github.com/bernds/q5Go'
 license=('GPL')
@@ -12,7 +12,7 @@ optdepends=('pandoc: make dependency, add README to menu options')
 source=("https://github.com/bernds/q5Go/archive/q5go-$pkgver.tar.gz"
         "q5go.desktop")
 sha256sums=('00a685eed2bb4318ce148e916248def63ac484dda6eb8b3cda501a526e215d67'
-            '11c3490e0dd8613465672f4b74b19ee2329944618f566e908d0b0936064f8a69')
+            'fd7c9d277d3a79ac95604751b0d03d7696d6e500229bbbcd3a145328661d5325')
 
 build() {
     mkdir build && cd build

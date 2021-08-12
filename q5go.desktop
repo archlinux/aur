@@ -2,7 +2,7 @@
 Type=Application
 Name=q5Go
 GenericName=Go Client
-Comment=SGF editor and IGS client for Go players
+Comment=SGF editor and IGS client for the game of Go
 Icon=qgo
 Exec=q5go
 Terminal=false
