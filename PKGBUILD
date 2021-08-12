@@ -1,8 +1,8 @@
 # Maintainer: elementh <hello@lucasmarino.me>
 pkgname=anytype
-pkgver=0.18.51
+pkgver=0.18.58
 pkgrel=1
-pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
+pkgdesc="Warnnig! Please use [anytype-bin]. || Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
@@ -13,12 +13,12 @@ provides=('anytype')
 conflicts=('anytype')
 _appimage="Anytype-${pkgver}.AppImage"
 source=(
-    "Anytype-${pkgver}.AppImage::https://download.anytype.io/?action=download&id=40825766"
+    "Anytype-${pkgver}.AppImage::https://at9412003.fra1.digitaloceanspaces.com/Anytype-0.18.58.AppImage"
     "anytype.desktop"
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('572b2bc3fa183d924ebf2d5ad25a3e79cadf0d808ac1c4455469a55e9dbad0f4'
+sha256sums=('72bb78439ab1c04fd3d1e9cd56efe01258fc88756a52713d1d09c6fea8e561ab'
             '1bda1398291bed84ebee1d2c3e94b4c367925a8e2c0bd371aba8d6604e54281f'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
