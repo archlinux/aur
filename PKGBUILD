@@ -2,13 +2,13 @@ _base=orthopy
 pkgname=python-${_base}
 pkgdesc="Orthogonal polynomials in all shapes and sizes"
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-numpy python-sympy)
 makedepends=(python-setuptools)
-checkdepends=(python-tox)
+# checkdepends=(python-tox)
 optdepends=('python-cplot: for SRGB1 coloring'
   'python-dufte: for minimalistic matplotlib style'
   'python-meshio: for creation sphere mesh'
@@ -23,10 +23,10 @@ build() {
   python -c "from setuptools import setup; setup();" build
 }
 
-check() {
-  cd "${_base}-${pkgver}"
-  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
-}
+# check() {
+#   cd "${_base}-${pkgver}"
+#   tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
+# }
 
 package() {
   cd "${_base}-${pkgver}"

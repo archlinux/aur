@@ -1,11 +1,10 @@
 pkgbase = python-orthopy
 	pkgdesc = Orthogonal polynomials in all shapes and sizes
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/orthopy
 	arch = x86_64
 	license = GPL3
-	checkdepends = python-tox
 	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-sympy
