@@ -1,27 +1,25 @@
+# Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
 pkgname=pcb-rnd
-pkgver=2.4.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="free/open source, flexible, modular Printed Circuit Board editor"
-url="http://repo.hu/projects/pcb-rnd/"
-arch=('i686' 'x86_64' 'armv7h')
-license=('GPL')
-depends=('gtk2' 'gd' 'gtkglext' 'openmotif' 'libstroke')
-# - glib and gtk if you are using the gtk frontend
-# - openmotif or lesstif if you are using the lesstif frontend
-# - gdlib if you are using the png HID
-conflicts=('pcb-rnd-svn')
-source=("http://repo.hu/projects/pcb-rnd/releases/pcb-rnd-$pkgver.tar.gz")
-sha256sums=('7d8e8faa1b1fd001495a51d1a68d32ce5cf7620604c62952d88df105ffa47fde')
+url="http://www.repo.hu/projects/pcb-rnd/"
+arch=('i686' 'x86_64')
+license=('GPL2')
+depends=('librnd3' 'libxml2')
+optdepends=('gd: gd based exports and pixmap imports (png, gif, jpeg)'
+            'freetype2: import_ttf plugin'
+            'fungw')
+source=("http://www.repo.hu/projects/$pkgname/releases/$pkgname-$pkgver.tar.gz")
+sha256sums=('c0aad375ce1582f4154954cbf1c4692787f03bfcbcefa6e2ed0c9791e758a541')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/"
-  # many knobs under ./configure --help
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
-  # prefix?  DESTDIR? install_root?
-  make -j1 install_root="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 }
