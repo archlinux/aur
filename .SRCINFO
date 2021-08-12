@@ -1,19 +1,19 @@
 pkgbase = kodi-addon-peripheral-joystick-git
 	pkgdesc = Joystick support for Kodi
-	pkgver = r742.12e7d52
+	pkgver = r876.e045115
 	pkgrel = 1
 	url = https://github.com/xbmc/peripheral.joystick
-	arch = armv7h
-	arch = x86_64
-	groups = kodi-addons
-	groups = kodi-addons-peripheral
-	license = GPL
+	arch = any
+	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = kodi-platform
 	makedepends = kodi-dev
-	depends = kodi-platform
-	source = kodi-addon-peripheral-joystick-git::git+https://github.com/xbmc/peripheral.joystick.git#branch=master
+	depends = kodi
+	depends = p8-platform
+	provides = kodi-addon-peripheral-joystick
+	conflicts = kodi-addon-peripheral-joystick
+	source = peripheral.joystick::git+https://github.com/xbmc/peripheral.joystick.git
 	sha256sums = SKIP
 
 pkgname = kodi-addon-peripheral-joystick-git
-

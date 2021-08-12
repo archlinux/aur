@@ -1,42 +1,36 @@
-# Maintainer: mickybart <mickybart@pygoscelis.org>
-# Contributor: BlackEagle <ike.devolder@gmail.com>>
+# Maintainer: Tilla <carlosfritz@posteo.net>
 
+_gitname=peripheral.joystick
 pkgname=kodi-addon-peripheral-joystick-git
-pkgver=r742.12e7d52
+pkgver=r876.e045115
 pkgrel=1
 pkgdesc="Joystick support for Kodi"
-arch=('armv7h' 'x86_64')
 url='https://github.com/xbmc/peripheral.joystick'
-license=('GPL')
-groups=('kodi-addons' 'kodi-addons-peripheral')
-depends=('kodi-platform')
-makedepends=('git' 'cmake' 'kodi-dev')
-source=("$pkgname::git+https://github.com/xbmc/peripheral.joystick.git#branch=master")
+license=('GPL2')
+source=("${_gitname}::git+https://github.com/xbmc/peripheral.joystick.git")
 sha256sums=('SKIP')
+arch=('any')
+depends=('kodi' 'p8-platform')
+makedepends=('git' 'cmake' 'kodi-platform' 'kodi-dev')
+conflicts=('kodi-addon-peripheral-joystick')
+provides=('kodi-addon-peripheral-joystick')
 
 pkgver() {
-	cd "$pkgname"
-	_revision=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
-	echo "$_revision"
-}
-
-prepare() {
-	[[ -d kodi-addons-build ]] && rm -rf kodi-addons-build
-	mkdir kodi-addons-build
+  cd "${srcdir}/${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-        cd kodi-addons-build
-        cmake \
-                -DCMAKE_INSTALL_PREFIX=/usr/share/kodi/addons/ \
-                -DCMAKE_BUILD_TYPE=Release \
-                -DPACKAGE_ZIP=1 \
-                "../$pkgname"
-        make
+  cd "${srcdir}/${_gitname}"
+  cmake \
+    -DADDONS_TO_BUILD=peripheral.joystick \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_MODULE_PATH=/usr/lib/kodi
 }
 
 package() {
-        cd kodi-addons-build
-        make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_gitname}"
+  make prefix=/usr DESTDIR="$pkgdir" install
 }
-
