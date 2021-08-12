@@ -1,0 +1,15 @@
+[Unit]
+Description=Mondoo Service
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mondoo/bin/
+ExecStart=/opt/mondoo/bin/mondoo --config /etc/opt/mondoo/mondoo.yml serve
+KillMode=process
+Restart=on-failure
+RestartSec=90
+RestartPreventExitStatus=78
+
+[Install]
+WantedBy=multi-user.target
