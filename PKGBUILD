@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=0.5.0.r14.g4ab44f0
+pkgver=0.5.0.r17.g9b59c50
 pkgrel=1
 pkgdesc='declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('pacdef')
 provides=('pacdef')
+makedepends=('git')
 checkdepends=('python-pytest' 'python-mock')
 sha256sums=(SKIP)
 
