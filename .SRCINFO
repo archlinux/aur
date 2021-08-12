@@ -11,6 +11,7 @@ pkgbase = vitable
 	depends = pacman>5
 	depends = git
 	depends = nim
+	depends = nimble
 	optdepends = sudo
 	source = vitable-0.1.0.tar.gz::https://github.com/CartelProject/vitable/archive/0.1.0.tar.gz
 	md5sums = d5f6c4b270a04ec3f041fa70d558478b
