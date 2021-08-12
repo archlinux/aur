@@ -1,6 +1,6 @@
 pkgbase = mkefikeys
 	pkgdesc = Generate signing keys and authenticated efivar updates for SecureBoot systems.
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/ansemjo/mkefikeys
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = mkefikeys
 	depends = efitools
 	provides = mkefikeys
 	conflicts = mkefikeys
-	source = mkefikeys-0.0.2.tar.gz::https://github.com/ansemjo/mkefikeys/archive/0.0.2.tar.gz
-	sha256sums = c045ac1995f06d71491b201778d3137803dbe93a682d19661b9e9ac550cfdf78
+	source = mkefikeys-0.1.0.tar.gz::https://github.com/ansemjo/mkefikeys/archive/0.1.0.tar.gz
+	sha256sums = ec2e43772195bdee471ea45b8a8acad9a9d144a590443caf416cfbdce616908f
 
 pkgname = mkefikeys
-

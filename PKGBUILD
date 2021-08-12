@@ -1,9 +1,9 @@
-# Maintainer: Anton Semjonov < a**** \ät semjonov.de >
+# https://github.com/ansemjo/mkefikeys
 
-pkgname="mkefikeys"
+pkgname=mkefikeys
 pkgdesc="Generate signing keys and authenticated efivar updates for SecureBoot systems."
 
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 
 arch=('any')
@@ -17,7 +17,7 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c045ac1995f06d71491b201778d3137803dbe93a682d19661b9e9ac550cfdf78')
+sha256sums=("ec2e43772195bdee471ea45b8a8acad9a9d144a590443caf416cfbdce616908f")
 
 package() {
   cd "$pkgname-$pkgver/"
