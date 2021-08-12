@@ -2,15 +2,15 @@
 
 _pkgsrcname=pyjokes
 pkgname=python-pyjokes
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="One line jokes for programmers (jokes as a service)"
 url="https://github.com/pyjokes/pyjokes"
-license=("Public Domain")
+license=("custom:BSD")
 arch=("any")
 depends=('python')
-source=("https://pypi.python.org/packages/b4/62/79a5aa98d2db64eb4925e7ae7b9de1fa9f2e78050b5410a69371ba13a86f/$_pkgsrcname-$pkgver.tar.gz")
-md5sums=('a357877ddbdffb73d88eea3963ac4f3b')
+source=("https://files.pythonhosted.org/packages/c2/82/faa0a9676ba148de181793a81f193f4a5a9eb344b4faf80fa28d8b1c8f3f/$_pkgsrcname-$pkgver.tar.gz")
+sha256sums=('08860eedb78cbfa4618243c8db088f21c39823ece1fdaf0133e52d9c56e981a5')
 
 package() {
   cd $srcdir/${_pkgsrcname}-$pkgver
