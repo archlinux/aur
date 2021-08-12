@@ -1,0 +1,22 @@
+pkgbase = animdl-git
+	pkgdesc = Highly efficient, fast, powerful and lightweight anime downloader and streamer
+	pkgver = 1.3.4+39+gd769dd2
+	pkgrel = 1
+	url = https://github.com/justfoolingaround/animdl
+	arch = any
+	license = custom:Unlicensed
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-lxml
+	depends = python-tqdm
+	depends = python-requests
+	depends = python-pycryptodomex
+	optdepends = mpv: stream anime
+	optdepends = vlc: stream anime
+	provides = animdl
+	conflicts = animdl
+	source = git+https://github.com/justfoolingaround/animdl.git
+	md5sums = SKIP
+
+pkgname = animdl-git
