@@ -1,22 +1,12 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -81,7 +81,7 @@ endif()
+@@ -83,7 +83,8 @@ endif()
  enable_testing(true)
  
  # SPIR-V headers
 -add_subdirectory(externals/SPIRV-Headers EXCLUDE_FROM_ALL)
 +find_package(SPIRV-Headers REQUIRED)
++add_library(SPIRV-Headers ALIAS SPIRV-Headers::SPIRV-Headers)
  
  # Sirit project files
  add_subdirectory(src)
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -27,5 +27,6 @@ target_compile_options(sirit PRIVATE ${SIRIT_CXX_FLAGS})
- 
- target_include_directories(sirit
-                            PUBLIC ../include
--                           PRIVATE . ${SPIRV-Headers_SOURCE_DIR}/include
--                           INTERFACE ${SPIRV-Headers_SOURCE_DIR}/include)
-+                           PRIVATE .)
-+
-+target_link_libraries(sirit PUBLIC SPIRV-Headers::SPIRV-Headers)

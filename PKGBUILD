@@ -2,7 +2,7 @@
 _pkgname=sirit
 pkgname=$_pkgname-git
 pkgver=r185.8cfe8ba
-pkgrel=2
+pkgrel=3
 pkgdesc='A runtime SPIR-V assembler'
 arch=('x86_64')
 url="https://github.com/ReinUsesLisp/$_pkgname"
@@ -13,13 +13,13 @@ provides=("$_pkgname=$pkgver" 'libsirit.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"sirit-add-cmake-install-rules.patch::$url/pull/28.patch"
+	"0001-sirit-add-cmake-install-rules.patch::$url/pull/28.patch"
 	'unbundle-spirv-headers.patch'
 )
 b2sums=(
 	'SKIP'
-	'5f56e767c9ed4cb55741230438f3d8d95478cd7cfa14c0954c39205a1ecfabf3d3e42b7fa0c5f43c54c7a129591e576009f74617dee3aec2564f744184a7bf05'
-	'b937242d066614db16211c0e64ab63ac7cfab0696a0dde00ae4ec1e1b06863cbb99e1e102eb3aa5f8d6885a5aa9a73ee998215a33593319077c382c3a664b610'
+	'eb2c72c36172e716675a27ad65635971dd17bce8510cff7a01c8e5592e05222f2d0f3d256488f6a781dd9f48300d17d58e19cee9fc857b7f03d78c07edf47a7c'
+	'14f068bbf5e4d891078ce141418d30727700d881a0965b5d80ec3d58522b380efaacac880a562f14786169c958fb72283b1bb8a8940f8ae2b2c528d84b69a77a'
 )
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	patch -Np1 < ../sirit-add-cmake-install-rules.patch
+	patch -Np1 < ../0001-sirit-add-cmake-install-rules.patch
 	patch -Np1 < ../unbundle-spirv-headers.patch
 }
 
