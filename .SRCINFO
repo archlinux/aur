@@ -1,0 +1,18 @@
+pkgbase = python-accupy
+	pkgdesc = Accurate sums and dot products for Python
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/nschloe/accupy
+	arch = x86_64
+	license = GPL3
+	checkdepends = python-pytest-cov
+	checkdepends = python-perfplot
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = python-mpmath
+	depends = python-pyfma
+	depends = eigen
+	source = https://github.com/nschloe/accupy/archive/v0.3.4.tar.gz
+	sha512sums = ae1b3b8d3291e8f3322bf20075790e6bc7855ab06275427b954f8958939da83b6216d1ac875259b7ae256cdf190693567c828abf6588f9849aec8f0eaf280316
+
+pkgname = python-accupy
