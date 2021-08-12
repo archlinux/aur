@@ -2,13 +2,13 @@ _base=orthopy
 pkgname=python-${_base}
 pkgdesc="Orthogonal polynomials in all shapes and sizes"
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-numpy python-sympy)
 makedepends=(python-setuptools)
-# checkdepends=(python-tox)
+checkdepends=(python-pytest-codeblocks python-ndim python-scipy python-meshzoo python-dufte python-cplot python-meshio)
 optdepends=('python-cplot: for SRGB1 coloring'
   'python-dufte: for minimalistic matplotlib style'
   'python-meshio: for creation sphere mesh'
@@ -23,13 +23,14 @@ build() {
   python -c "from setuptools import setup; setup();" build
 }
 
-# check() {
-#   cd "${_base}-${pkgver}"
-#   tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
-# }
+check() {
+  cd "${_base}-${pkgver}"
+  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+}
 
 package() {
   cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
+  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
