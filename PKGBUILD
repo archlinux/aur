@@ -15,12 +15,12 @@ optdepends=('doom3-data: for game data and icon')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$_pkgname::git+https://github.com/dhewm/dhewm3.git"
+	"git+https://github.com/dhewm/$_pkgname.git"
 	"$_pkgname.desktop"
 )
-md5sums=(
+b2sums=(
 	'SKIP'
-	'cd3a45168aa702fea871caea05da95b9'
+	'92b58520e236a61611aea15dfe2106c8375387a6d22139442bfae1fd55c3e5ccf1c12717ec01edc92c331a15fb39b9cf50bed9d893eff4df8b6d418556b13ce6'
 )
 
 pkgver() {
