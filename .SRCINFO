@@ -1,6 +1,6 @@
 pkgbase = sile-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.10.13.r16.g0982f48
+	pkgver = 0.10.15.r65.g7e77f89
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = sile-git
 	depends = libicuio.so
 	depends = libicuuc.so
 	provides = libtexpdf.so
-	provides = sile=0.10.13.r16.g0982f48
+	provides = sile=0.10.15.r65.g7e77f89
 	conflicts = sile
 	source = git://github.com/sile-typesetter/sile.git
 	source = git://github.com/sile-typesetter/libtexpdf.git
@@ -47,4 +47,3 @@ pkgbase = sile-git
 	sha256sums = SKIP
 
 pkgname = sile-git
-
