@@ -1,0 +1,23 @@
+pkgbase = libhildonfm
+	pkgdesc = Hildon file management libraries
+	pkgver = 2.28.27
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libhildonfm
+	arch = any
+	groups = hildon
+	license = LGPL
+	makedepends = gconf
+	makedepends = mce-headers
+	makedepends = libpng
+	makedepends = libosso
+	makedepends = hildon-thumbnail
+	makedepends = libhildonmime
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = m4
+	makedepends = libtool
+	depends = libhildon
+	source = git+https://github.com/maemo-leste/libhildonfm.git#tag=2.28.27
+	sha256sums = SKIP
+
+pkgname = libhildonfm
