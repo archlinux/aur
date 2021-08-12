@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=typescript-language-server
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Language Server Protocol (LSP) implementation for TypeScript using tsserver'
 url=https://github.com/theia-ide/typescript-language-server
@@ -11,17 +11,15 @@ depends=('typescript')
 makedepends=('jq' 'yarn')
 checkdepends=('npm')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('ba5fe257c2f4f6c2b0aa01ee50578798e6b484acec9e86a586022c89fcf3a50496872ad1d9422d6166f322e356e0be28dd45009cbf5f72001d6330c7c49dc19f')
+b2sums=('74bc74a39005066ff0cd51c14c0c6237872318b80dd76038b32848e04194bb5769fc7ebf393f72cab99cd05b77ccdf40f545352ba160502a554892e804d0f637')
 
-# Fails to run with commander>=5
 prepare() {
-  cd $pkgname-$pkgver/server
-  yarn add --ignore-scripts commander@4
+  cd $pkgname-$pkgver
+  yarn --frozen-lockfile
 }
 
 build() {
   cd $pkgname-$pkgver
-  yarn --ignore-scripts --frozen-lockfile
   yarn compile # Needs bin links
 }
 
@@ -33,18 +31,14 @@ check() {
 package() {
   cd $pkgname-$pkgver
 
-  # Emulate `npm prune --production` for server workspace deps
-  mv package.json{,.bak}
-  cp server/package.json .
+  # Emulate `npm prune --production`
   yarn remove --frozen-lockfile $(jq -r '.devDependencies | keys | join(" ")' \
     package.json)
-  mv package.json{.bak,}
 
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
   ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/$pkgname
-  chmod +x server/lib/cli.js
-  cp -r server/lib node_modules package.json \
-    "$pkgdir"/usr/lib/node_modules/$pkgname
+  chmod +x lib/cli.js
+  cp -r lib node_modules package.json "$pkgdir"/usr/lib/node_modules/$pkgname
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname {CHANGELOG,README}.md
 }
 
