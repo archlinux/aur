@@ -1,6 +1,6 @@
 pkgbase = sile-luajit-git
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.10.14.r0.g175595a
+	pkgver = 0.10.15.r65.g7e77f89
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
 	arch = x86_64
@@ -14,7 +14,9 @@ pkgbase = sile-luajit-git
 	depends = icu
 	depends = libpng
 	depends = luajit
+	depends = lua51-bit32
 	depends = lua51-cassowary
+	depends = lua51-compat53
 	depends = lua51-cosmo
 	depends = lua51-cliargs
 	depends = lua51-expat
@@ -38,7 +40,7 @@ pkgbase = sile-luajit-git
 	depends = libicuio.so
 	depends = libicuuc.so
 	provides = libtexpdf.so
-	provides = sile=0.10.14.r0.g175595a
+	provides = sile=0.10.15.r65.g7e77f89
 	conflicts = sile
 	source = git://github.com/sile-typesetter/sile.git
 	source = git://github.com/sile-typesetter/libtexpdf.git
@@ -46,4 +48,3 @@ pkgbase = sile-luajit-git
 	sha256sums = SKIP
 
 pkgname = sile-luajit-git
-
