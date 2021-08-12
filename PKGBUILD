@@ -2,8 +2,8 @@
 
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.2
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.todesk.com/"
@@ -23,9 +23,9 @@ install="${_pkgname}.install"
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7.deb")
-sha256sums_x86_64=('dd6d811e0f4350ec9b4dd8623579b5e686e2505c0952ae1736ceb8bd7b0ace70')
-sha256sums_aarch64=('90fcde5dd7c772272606ab6be81665c0929ae7ec143d7ced09928164c660cab9')
-sha256sums_armv7h=('1134f180d01d7c5eb392f936582e99c10a133ddd6335f17ca5f51925b932674c')
+sha256sums_x86_64=('b7d1a34d1054e9708fab1dcd59a4e3f1253c39887c2c2e53f8a7e64f424a8f7e')
+sha256sums_aarch64=('526a0debdca1305da291e9da6fc450874dc4ca70538ba111a5b2224ed8b29a29')
+sha256sums_armv7h=('de2820a57c2fd4a0efb84513e0deceb0265d181e407149dad2c42c271932a53e')
 
 build() {
   mkdir -p ${srcdir}/build
