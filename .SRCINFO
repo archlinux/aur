@@ -4,6 +4,7 @@ pkgbase = glmark2
 	pkgrel = 1
 	url = https://github.com/glmark2/glmark2
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = custom
 	makedepends = meson
