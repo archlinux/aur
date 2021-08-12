@@ -1,11 +1,10 @@
 pkgbase = helix-bin
 	pkgdesc = A text editor written in rust
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://helix-editor.com
 	arch = x86_64
-	source = https://github.com/helix-editor/helix/releases/download/v0.3.0/helix-v0.3.0-x86_64-linux.tar.xz
-	sha256sums = ba70ab46d91171c9ba30bda6692666356c3e3d47739638b9b64e3cff80809efa
+	source = https://github.com/helix-editor/helix/releases/download/v0.4.0/helix-v0.4.0-x86_64-linux.tar.xz
+	sha256sums = 602d6da9940d9c80a583f9e09a65950e3a3f4b75f0c094bb8f9eb4f4c4a225b1
 
 pkgname = helix-bin
-
