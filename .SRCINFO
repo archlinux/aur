@@ -1,0 +1,16 @@
+pkgbase = pacdef-git
+	pkgdesc = declarative manager of Arch packages
+	pkgver = 0.5.0.r1.g0090b20
+	pkgrel = 1
+	url = https://github.com/steven-omaha/pacdef
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	depends = python
+	provides = pacdef
+	conflicts = pacdef
+	source = git+https://github.com/steven-omaha/pacdef
+	sha256sums = SKIP
+
+pkgname = pacdef-git
