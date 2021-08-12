@@ -1,4 +1,5 @@
-# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+# Maintainer: Andreas "Cocaine Johnsson" Björkman <akb95@disroot.org>
+# Contributor: Deposite Pirate <dpirate at metalpunks dot info>
 #
 # Upstream: https://git.metalpunks.info/arch-ports
 
