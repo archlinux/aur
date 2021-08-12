@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-abusefilter
-pkgver=REL1_36+r6229+gffea3c309
+pkgver=1.36+r6230+g276efdf85
 pkgrel=1
-_mw='REL1_36'
-_commit='ffea3c3096796407342841cdc7f5e29da3988fc3'
+_mw='1.36'
+_commit='276efdf8590f44c0cfc2071b169266e61306ae78' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that allows privileged users to set specific actions to be taken when actions by users, such as edits, match certain criteria'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:AbuseFilter'
