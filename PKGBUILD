@@ -8,12 +8,13 @@ arch=('any')
 url="https://gitlab.gnome.org/World/design/typography"
 license=('GPL3')
 depends=('gtk4')
-makedepends=('git' 'meson')
-source=("git+${url}.git#tag=${pkgver}")
-md5sums=('SKIP') #autofill using updpkgsums
+makedepends=('meson')
+checkdepends=('appstream-glib')
+source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('7990df024495c6018f066273b91ab8f6bf27e4ea2dc2f506bc18420b4ed769b0')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson $pkgname-$pkgver build
   meson compile -C build
 }
 

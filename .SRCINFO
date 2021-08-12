@@ -5,10 +5,10 @@ pkgbase = typography
 	url = https://gitlab.gnome.org/World/design/typography
 	arch = any
 	license = GPL3
-	makedepends = git
+	checkdepends = appstream-glib
 	makedepends = meson
 	depends = gtk4
-	source = git+https://gitlab.gnome.org/World/design/typography.git#tag=0.1.0
-	md5sums = SKIP
+	source = https://gitlab.gnome.org/World/design/typography/-/archive/0.1.0/typography-0.1.0.tar.gz
+	sha256sums = 7990df024495c6018f066273b91ab8f6bf27e4ea2dc2f506bc18420b4ed769b0
 
 pkgname = typography
