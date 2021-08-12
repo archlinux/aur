@@ -1,6 +1,6 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=2.43
+pkgver=2.44
 pkgrel=1
 pkgdesc="An advanced x86/x86_64 BIOS/UEFI bootloader"
 arch=("x86_64")
@@ -12,7 +12,9 @@ makedepends=('git' 'nasm' 'mtools')
 _dir="${pkgname}"
 
 build() {
-  CFLAGS="" LDFLAGS="" make -C "${_dir}"
+  unset CFLAGS
+  unset LDFLAGS
+  make -C "${_dir}"
 }
 
 package() {
