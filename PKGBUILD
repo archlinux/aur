@@ -2,12 +2,12 @@
 # Contributor: pio
 pkgname=retrobreak
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple breakout remake"
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://sourceforge.net/projects/retropong/"
-source=("http://downloads.sourceforge.net/project/retropong/${pkgname}.tar.gz" "${pkgname}.desktop" fix.patch)
+url="https://sourceforge.net/projects/retropong/"
+source=("https://downloads.sourceforge.net/project/retropong/${pkgname}.tar.gz" "${pkgname}.desktop" fix.patch)
 depends=('sdl_mixer' 'sdl_ttf' 'bash')
 md5sums=('af360923372fa28c99c2fade157fd841'
          '2a09f3a67150b6c7f7ee4e33cc4d04de'
