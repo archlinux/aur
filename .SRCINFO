@@ -1,0 +1,11 @@
+pkgbase = xfce-simplicity-edition-wallpapers
+	pkgdesc = Collection of Simplicity Edition Wallpapers Themed for XFCE
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1307493/
+	arch = any
+	license = CC-BY-SA
+	source = https://github.com/MMcQueenGNU/xfce-simplicity-edition-wallpapers/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = c2615ec06bda728e2b3b660463122548
+
+pkgname = xfce-simplicity-edition-wallpapers
