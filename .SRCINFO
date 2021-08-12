@@ -1,0 +1,18 @@
+pkgbase = ruby-http-accept
+	pkgdesc = Parse Accept and Accept-Language HTTP headers in Ruby
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/socketry/http-accept
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	source = git+https://github.com/socketry/http-accept.git?tag=v2.1.1
+	sha256sums = SKIP
+
+pkgname = ruby-http-accept
