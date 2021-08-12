@@ -12,7 +12,7 @@ conflicts=('linvst3')
 optdepends=('jack')
 suffix="Manjaro"
 source=("$url/releases/download/$pkgver/LinVst3-$pkgver-$suffix.zip")
-md5sums=('1ca552736f43c73232d736a8e63a4214')
+md5sums=('90511cdcb8c8a00f60ddad383d80b200')
 
 package() {
 

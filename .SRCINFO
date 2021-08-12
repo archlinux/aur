@@ -11,7 +11,6 @@ pkgbase = linvst3-bin
 	optdepends = jack
 	conflicts = linvst3
 	source = https://github.com/osxmidi/LinVst3/releases/download/4.2/LinVst3-4.2-Manjaro.zip
-	md5sums = 1ca552736f43c73232d736a8e63a4214
+	md5sums = 90511cdcb8c8a00f60ddad383d80b200
 
 pkgname = linvst3-bin
-
