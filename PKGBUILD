@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=ludusavi
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Backup tool for PC game saves"
 arch=('x86_64')
 url="https://github.com/mtkennerly/ludusavi"
@@ -40,7 +40,7 @@ package() {
   install -Dm644 assets/icon.png \
     "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 assets/icon.svg \
-    "$pkgdir/usr/share/icons/scalable/apps/$pkgname.svg"
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/$pkgname-v$pkgver-legal.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/legal.txt"
