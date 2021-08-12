@@ -1,44 +1,29 @@
-# Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
-pkgbase=python-pytest-flakes
-pkgname=('python-pytest-flakes' 'python2-pytest-flakes')
-_name=${pkgbase#python-}
-pkgver=4.0.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Daniel Moch <daniel AT danielmoch DOT com>
+_base=pytest-flakes
+pkgname=python-${_base}
+pkgver=4.0.3
 pkgrel=1
-pkgdesc='pytest plugin to check source code with pyflakes'
+pkgdesc="pytest plugin to check source code with pyflakes"
 arch=('any')
-url='https://github.com/fschulze/pytest-flakes'
-license=('MIT')
-makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('341964bf5760ebbdde9619f68a17d5632c674c3f6903ef66daa0a4f540b3d143')
+url="https://github.com/asmeurer/${_base}"
+license=(MIT)
+depends=(python-pytest python-pyflakes)
+makedepends=(python-setuptools)
+# checkdepends=(python-coverage) #python-pytest-pep8
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('ca63d68063cf48789d86dee3707b3ea7c5076fc1f636e17f408ad6f444303fb3a701af8d1e464d49af745e350272bffe8596853a52c01baa0bdb0b6b0c0bb303')
 
-prepare() {
-  cp -a ${_name}-$pkgver{,-py2}
-}
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
-build()
-{
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}/${_name}-${pkgver}-py2"
+build() {
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
-package_python-pytest-flakes()
-{
-  depends=('python' 'python-pyflakes')
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_python2-pytest-flakes()
-{
-  depends=('python2' 'python2-pyflakes')
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-# vim: ft=PKGBUILD sts=2 sw=2 et

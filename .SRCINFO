@@ -1,21 +1,14 @@
 pkgbase = python-pytest-flakes
 	pkgdesc = pytest plugin to check source code with pyflakes
-	pkgver = 4.0.0
+	pkgver = 4.0.3
 	pkgrel = 1
-	url = https://github.com/fschulze/pytest-flakes
+	url = https://github.com/asmeurer/pytest-flakes
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	source = pytest-flakes-4.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-flakes/pytest-flakes-4.0.0.tar.gz
-	sha256sums = 341964bf5760ebbdde9619f68a17d5632c674c3f6903ef66daa0a4f540b3d143
+	depends = python-pytest
+	depends = python-pyflakes
+	source = https://pypi.org/packages/source/p/pytest-flakes/pytest-flakes-4.0.3.tar.gz
+	sha512sums = ca63d68063cf48789d86dee3707b3ea7c5076fc1f636e17f408ad6f444303fb3a701af8d1e464d49af745e350272bffe8596853a52c01baa0bdb0b6b0c0bb303
 
 pkgname = python-pytest-flakes
-	depends = python
-	depends = python-pyflakes
-
-pkgname = python2-pytest-flakes
-	depends = python2
-	depends = python2-pyflakes
