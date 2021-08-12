@@ -1,6 +1,6 @@
 # Maintainer: Kyle Brown <kdb424@gmail.com>
 pkgname=worldedit-git
-pkgver=r20.7dc081f
+pkgver=r22.0356f27
 _pkgname=worldedit
 pkgrel=1
 pkgdesc="Emulating Gentoo’s world files and sets for other package managers."
