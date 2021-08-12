@@ -1,0 +1,23 @@
+pkgbase = hildon-home
+	pkgdesc = Hildon Home application
+	pkgver = 0.3.73
+	pkgrel = 0
+	url = https://github.com/maemo-leste/hildon-home
+	arch = any
+	groups = hildon
+	license = LGPL2
+	makedepends = libhildondesktop
+	makedepends = libosso
+	makedepends = hildon-thumbnail
+	makedepends = libhildonfm
+	makedepends = osso-bookmark-engine
+	makedepends = mce-headers
+	makedepends = sqlite
+	makedepends = autoconf
+	makedepends = m4
+	makedepends = libtool
+	depends = libhildon
+	source = git+https://github.com/maemo-leste/hildon-home.git#tag=0.3.73
+	sha256sums = SKIP
+
+pkgname = hildon-home
