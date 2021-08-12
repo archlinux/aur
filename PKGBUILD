@@ -1,19 +1,19 @@
 # Contributor: Calimero <calimeroteknik@free.fr>
 
 pkgname=lib_users
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc='Checks /proc for libraries being mapped but marked as deleted'
 arch=('any')
-url='http://www.schwarzvogel.de/software/lib_users.html'
+url='https://github.com/klausman/lib_users/'
 license=('GPL2')
 
  # works with any version of python, you can set this to "python2" or "python3"
 _python="python"
 
 depends=("$_python")
-source=("http://schwarzvogel.de/pkgs/${pkgname}-${pkgver}.tar.gz")
-md5sums=('b75920a0466390d126467b692506bb7b')
+source=("https://github.com/klausman/lib_users/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('264f8a76451174691767ca23d352e3cf')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
