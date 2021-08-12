@@ -1,0 +1,15 @@
+pkgbase = ki-desktop-wallet
+	pkgdesc = Desktop wallet for the KiChain
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/KiFoundation/ki-desktop-wallet
+	arch = x86_64
+	license = unknown
+	makedepends = npm
+	depends = electron
+	source = https://github.com/KiFoundation/ki-desktop-wallet/archive/refs/tags/v0.3.1.tar.gz
+	source = ki-desktop-wallet.desktop
+	sha512sums = 45b5ad18b39eb1c9714355d2bb8f675be4a0028eccd2838dc2660de05d5d942b3b27a14fccb6169ae190c52929eb802c5ebe38c8050680769ad348587bec6871
+	sha512sums = b94126589582fae8cc5a04d3dd5e6a8444603150852b7d8aebe6f6170ecfa80488c9cba2edd3d683af82628ba4de8d564573e0386637a35dd62edfbf1f3ab830
+
+pkgname = ki-desktop-wallet

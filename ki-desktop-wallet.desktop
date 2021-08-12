@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ki Desktop Wallet
+Comment=The KiCahin wallet
+GenericName=Ki Desktop Wallet
+Exec=ki-desktop-wallet %U
+Icon=ki-desktop-wallet
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=Finance;Network;
