@@ -1,15 +1,16 @@
 pkgbase = lite-xl-git
 	pkgdesc = A lightweight text editor written in Lua
-	pkgver = 1.16.12.r113.gd10865b
+	pkgver = 2.0.beta1.r32.g8c86cc5
 	pkgrel = 1
 	url = https://github.com/franko/lite-xl
 	arch = x86_64
 	license = MIT
 	makedepends = meson>=0.58
-	makedepends = gendesk
 	depends = lua52
 	depends = sdl2
 	depends = freetype2
+	depends = pcre2
+	depends = hicolor-icon-theme
 	provides = lite-xl
 	conflicts = lite
 	conflicts = lite-xl
