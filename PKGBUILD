@@ -60,12 +60,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=9
+_minor=10
 _srcname=linux-${_major}
 pkgbase=linux-cacule-rdb
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -547,7 +547,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
-         '39a5d2b3ff92c000dc93f9fa2efb2c45'
+         '4d745d474d07277daee24107239c8902'
          'aca08268e009c0d0101956df3f5ad44a'
          '6d8a2a8f499dd9643ca4af2254389ce7'
          '078da517ec2d54283af81d7da3af671a'
