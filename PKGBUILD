@@ -2,16 +2,16 @@
 # Contributor: Kevin Cox <kevincox at kevincox dot ca>
 
 pkgname=backward-cpp
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A beautiful stack trace pretty printer for C++."
 url="https://github.com/bombela/backward-cpp"
 arch=('i686' 'x86_64' 'pentium4' 'i486')
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cmake' 'binutils' 'libelf' 'libdwarf')
+makedepends=('cmake' 'binutils' 'libelf' 'libdwarf' 'libunwind')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bombela/backward-cpp/archive/v${pkgver}.tar.gz")
-sha256sums=('faf7d4fe7ca65117ed4fe7be9bff9628927bd95b49f71df63d5f99af233d1915')
+sha256sums=('c654d0923d43f1cea23d086729673498e4741fb2457e806cfaeaea7b20c97c10')
 
 build() {
   cd "${srcdir}/backward-cpp-${pkgver}"
