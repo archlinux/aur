@@ -9,7 +9,7 @@ pkgbase=linux-tqc-a01
 _srcname=linux-5.13
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.13.8
+pkgver=5.13.9
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -20,7 +20,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'sun50i-h6-tqc-a01.dts'
         '0001-mfd-Add-support-for-AC200.patch'
         '0001-HACK-h6-Add-HDMI-sound-card.patch'
-        '0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
+	'0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
         '0002-net-phy-Add-support-for-AC200-EPHY.patch'
         '0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch'
         '0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch'
@@ -29,6 +29,7 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0005-drm-gem-cma-Export-with-handle-allocator.patch'
         '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
+	'0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -41,7 +42,7 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '46d921dba031a9f397955a787c71911e'
          '17aa0c69176c68cd98b4522740a1b747'
          '2285d81ec6fb859d34b7abfd46a59550'
-         'f9b6f367eef351eaa89b23a9b1ffc5a2'
+         '7a18066683f3351b2bbd2653db783f80'
          'bc7904920675ba8d38f21d46ffac33b5'
          '94a69594f90309c50c83a5cc8579fb54'
          'e1868e41094baff9eceba481fc097c79'
@@ -50,11 +51,12 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
-         '7149bc2e1daaeffe151dc06d50a1c2f7'
+         '6637a33cfc563c8f1ccff00cfd5b39c5'
+         'a5564b07e7a88dc6211d647c7949904d'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         'c21e43334165513b131796d4270aefc6')
+         '39a5d2b3ff92c000dc93f9fa2efb2c45')
 
 prepare() {
   cd ${_srcname}
@@ -63,10 +65,15 @@ prepare() {
   [[ ${pkgver##*.} != 0 ]] && \
   patch -p1 < "../patch-${pkgver}"
 
+  # dts for TQC-A01
+  target_dts="sun50i-h6-tqc-a01.dts"
+  echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts//dts/dtb}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
+  cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/allwinner/${target_dts}"
+
   # patches for TQC A01
   patch -p1 < ../0001-mfd-Add-support-for-AC200.patch
   patch -p1 < ../0001-HACK-h6-Add-HDMI-sound-card.patch
-  patch -p1 < ../0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+  patch -p1 < ../0001-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch
   patch -p1 < ../0002-net-phy-Add-support-for-AC200-EPHY.patch
   patch -p1 < ../0002-net-stmmac-sun8i-Use-devm_regulator_get-for-PHY-regu.patch
   patch -p1 < ../0003-net-stmmac-sun8i-Rename-PHY-regulator-variable-to-re.patch
@@ -75,13 +82,9 @@ prepare() {
   patch -p1 < ../0005-drm-gem-cma-Export-with-handle-allocator.patch
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
+  patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
 
   cat "${srcdir}/config" > ./.config
-
-  # dts for TQC-A01
-  target_dts="sun50i-h6-tqc-a01.dts"
-  echo "dtb-\$(CONFIG_ARCH_SUNXI) += ${target_dts//dts/dtb}" >> "./arch/arm64/boot/dts/allwinner/Makefile"
-  cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/allwinner/${target_dts}"
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile

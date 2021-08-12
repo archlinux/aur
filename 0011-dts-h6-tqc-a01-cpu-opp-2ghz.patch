@@ -1,0 +1,165 @@
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-cpu-opp.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h6-cpu-opp.dtsi
+index 8c6e853..15dde12 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6-cpu-opp.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-cpu-opp.dtsi
+@@ -12,90 +12,117 @@ opp-480000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <480000000>;
+ 
+-			opp-microvolt-speed0 = <880000 880000 1200000>;
+-			opp-microvolt-speed1 = <820000 820000 1200000>;
+-			opp-microvolt-speed2 = <820000 820000 1200000>;
++			opp-microvolt-speed0 = <880000 880000 1260000>;
++			opp-microvolt-speed1 = <820000 820000 1260000>;
++			opp-microvolt-speed2 = <820000 820000 1260000>;
+ 		};
+ 
+ 		opp-720000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <720000000>;
+ 
+-			opp-microvolt-speed0 = <880000 880000 1200000>;
+-			opp-microvolt-speed1 = <820000 820000 1200000>;
+-			opp-microvolt-speed2 = <820000 820000 1200000>;
++			opp-microvolt-speed0 = <880000 880000 1260000>;
++			opp-microvolt-speed1 = <820000 820000 1260000>;
++			opp-microvolt-speed2 = <820000 820000 1260000>;
+ 		};
+ 
+ 		opp-816000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <816000000>;
+ 
+-			opp-microvolt-speed0 = <880000 880000 1200000>;
+-			opp-microvolt-speed1 = <820000 820000 1200000>;
+-			opp-microvolt-speed2 = <820000 820000 1200000>;
++			opp-microvolt-speed0 = <880000 880000 1260000>;
++			opp-microvolt-speed1 = <820000 820000 1260000>;
++			opp-microvolt-speed2 = <820000 820000 1260000>;
+ 		};
+ 
+ 		opp-888000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <888000000>;
+ 
+-			opp-microvolt-speed0 = <880000 880000 1200000>;
+-			opp-microvolt-speed1 = <820000 820000 1200000>;
+-			opp-microvolt-speed2 = <820000 820000 1200000>;
++			opp-microvolt-speed0 = <880000 880000 1260000>;
++			opp-microvolt-speed1 = <820000 820000 1260000>;
++			opp-microvolt-speed2 = <820000 820000 1260000>;
+ 		};
+ 
+ 		opp-1080000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1080000000>;
+ 
+-			opp-microvolt-speed0 = <940000 940000 1200000>;
+-			opp-microvolt-speed1 = <880000 880000 1200000>;
+-			opp-microvolt-speed2 = <880000 880000 1200000>;
++			opp-microvolt-speed0 = <940000 940000 1260000>;
++			opp-microvolt-speed1 = <880000 880000 1260000>;
++			opp-microvolt-speed2 = <880000 880000 1260000>;
+ 		};
+ 
+ 		opp-1320000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1320000000>;
+ 
+-			opp-microvolt-speed0 = <1000000 1000000 1200000>;
+-			opp-microvolt-speed1 = <940000 940000 1200000>;
+-			opp-microvolt-speed2 = <940000 940000 1200000>;
++			opp-microvolt-speed0 = <1000000 1000000 1260000>;
++			opp-microvolt-speed1 = <940000 940000 1260000>;
++			opp-microvolt-speed2 = <940000 940000 1260000>;
+ 		};
+ 
+ 		opp-1488000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1488000000>;
+ 
+-			opp-microvolt-speed0 = <1060000 1060000 1200000>;
+-			opp-microvolt-speed1 = <1000000 1000000 1200000>;
+-			opp-microvolt-speed2 = <1000000 1000000 1200000>;
++			opp-microvolt-speed0 = <1060000 1060000 1260000>;
++			opp-microvolt-speed1 = <1000000 1000000 1260000>;
++			opp-microvolt-speed2 = <1000000 1000000 1260000>;
+ 		};
+ 
+ 		opp-1608000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1608000000>;
+ 
+-			opp-microvolt-speed0 = <1090000 1090000 1200000>;
+-			opp-microvolt-speed1 = <1030000 1030000 1200000>;
+-			opp-microvolt-speed2 = <1030000 1030000 1200000>;
++			opp-microvolt-speed0 = <1090000 1090000 1260000>;
++			opp-microvolt-speed1 = <1030000 1030000 1260000>;
++			opp-microvolt-speed2 = <1030000 1030000 1260000>;
+ 		};
+ 
+ 		opp-1704000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1704000000>;
+ 
+-			opp-microvolt-speed0 = <1120000 1120000 1200000>;
+-			opp-microvolt-speed1 = <1060000 1060000 1200000>;
+-			opp-microvolt-speed2 = <1060000 1060000 1200000>;
++			opp-microvolt-speed0 = <1120000 1120000 1260000>;
++			opp-microvolt-speed1 = <1060000 1060000 1260000>;
++			opp-microvolt-speed2 = <1060000 1060000 1260000>;
+ 		};
+ 
+ 		opp-1800000000 {
+ 			clock-latency-ns = <244144>; /* 8 32k periods */
+ 			opp-hz = /bits/ 64 <1800000000>;
+ 
+-			opp-microvolt-speed0 = <1160000 1160000 1200000>;
+-			opp-microvolt-speed1 = <1100000 1100000 1200000>;
+-			opp-microvolt-speed2 = <1100000 1100000 1200000>;
++			opp-microvolt-speed0 = <1160000 1160000 1260000>;
++			opp-microvolt-speed1 = <1100000 1100000 1260000>;
++			opp-microvolt-speed2 = <1100000 1100000 1260000>;
++		};
++
++		opp@1896000000 {
++			clock-latency-ns = <244144>; /* 8 32k periods */
++			opp-hz = /bits/ 64 <1896000000>;
++
++			opp-microvolt-speed0 = <1180000 1180000 1260000>;
++			opp-microvolt-speed1 = <1120000 1120000 1260000>;
++			opp-microvolt-speed2 = <1120000 1120000 1260000>;
++		};
++
++		opp@1968000000 {
++			clock-latency-ns = <244144>; /* 8 32k periods */
++			opp-hz = /bits/ 64 <1968000000>;
++
++			opp-microvolt-speed0 = <1200000 1200000 1260000>;
++			opp-microvolt-speed1 = <1140000 1140000 1260000>;
++			opp-microvolt-speed2 = <1140000 1140000 1260000>;
++		};
++
++		opp@2016000000 {
++			clock-latency-ns = <244144>; /* 8 32k periods */
++			opp-hz = /bits/ 64 <2016000000>;
++
++			opp-microvolt-speed0 = <1220000 1220000 1260000>;
++			opp-microvolt-speed1 = <1160000 1160000 1260000>;
++			opp-microvolt-speed2 = <1160000 1160000 1260000>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h6-tqc-a01.dts b/arch/arm64/boot/dts/allwinner/sun50i-h6-tqc-a01.dts
+index e3e01fa..a2f6364 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h6-tqc-a01.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h6-tqc-a01.dts
+@@ -296,7 +296,7 @@ cldo3 {
+ 			reg_dcdca: dcdca {
+ 				regulator-always-on;
+ 				regulator-min-microvolt = <800000>;
+-				regulator-max-microvolt = <1160000>;
++				regulator-max-microvolt = <0x129da0>;
+ 				regulator-ramp-delay = <2500>;
+ 				regulator-name = "vdd-cpu";
+ 			};
