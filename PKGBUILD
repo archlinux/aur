@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: Nikita Ukhrenkov <thekit@disroot.org>
 
 pkgname=libhildonfm
 pkgver=2.28.27
@@ -25,5 +26,5 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR=$pkgdir install
-  rm /etc/xdg/user-dirs.defaults
+  rm $pkgdir/etc/xdg/user-dirs.defaults
 }
