@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: Nikita Ukhrenkov <thekit@disroot.org>
 
 pkgname=libhildon
 pkgver=2.2.28
