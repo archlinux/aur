@@ -1,27 +1,32 @@
 # Maintainer: Kamil Krzyżanowski <kamnxt@kamnxt.com>
-_pkgname=python-npyscreen2
-pkgname=${_pkgname}-git
-pkgver=20141124.75ecd73
+pkgname=python-npyscreen2-git
+pkgver=r47.75ecd73
 pkgrel=1
 pkgdesc="A fork of npyscreen with changed core components"
 arch=('any')
 url="https://github.com/SavinaRoja/npyscreen2"
 license=('GPL3')
+groups=()
 depends=('python')
-makedepends=('git')
-provides=("${_pkgname}")
-options=(!emptydirs)
-source=("${_pkgname}::git+https://github.com/SavinaRoja/npyscreen2")
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('npyscreen2::git+https://github.com/SavinaRoja/npyscreen2')
+noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:    
