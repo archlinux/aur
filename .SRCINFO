@@ -20,4 +20,3 @@ pkgbase = python-dowel
 	sha256sums = aac42c226c15941ba676ca6167bae296fd617f312f8dc456dffc95f561f35c8e
 
 pkgname = python-dowel
-
