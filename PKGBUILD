@@ -1,6 +1,6 @@
 pkgname=ntfs3-dkms-git
 _pkgver=27.0.0
-pkgver=27.0.0.96b1804
+pkgver=27.0.0
 pkgrel=1
 pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
@@ -23,7 +23,7 @@ sha512sums=(
     '533c249f0f6bd4833faf02d0d92ca1b5802a49afc5feb2e46a7d37275cfca7896db76cd83593f4f313977d278a9a7e92eda550667be2b93910c49cfb68ead4fb'
     'ac00adb4a6d7fc685c39af054474631c930455e9ad0838338e6b3622b72451e81397506866b83a4a51dd0e34ed7752963c0fed9e8b017da5122e0dca3d345fb6'
     '374c6fa524defb5dcac093493bc7526e43ca9fe07602357fb51df4a26b02280ba4f2d764d3ba2ba2b32d5318ef466f3e0b6cbfdad1cdac0b04c31e8543114e33'
-    '081b19b271ed89c47a9306874827a0c15feba6dda6d7c8a085f634a72a6691a78fdeccf47488ed141b979f7bfbf3df2d117301f09ba2da8416449460d4711d34'
+    '5f04690f57fea1b4db18dd7723d9e21c23ed382935988fd9e192e07a80216efbcb06e1ff6a2ff3286bd824c19da5de1ccad68667dd06d7cc686611c0a93d6691'
     'SKIP'
 )
 
