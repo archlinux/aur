@@ -4,7 +4,7 @@
 
 _pkg=cado-nfs
 pkgname=${_pkg}-git
-pkgver=20210429.6df3f65c8
+pkgver=20210806.c5b20eac1
 pkgrel=1
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
 arch=('i686' 'pentium4' 'x86_64')
@@ -37,7 +37,7 @@ CURL=$PREFIX
 # Remove 32-bit barriers to big factorizations
 FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8"
 EOF
-  make
+  make CFLAGS="$CFLAGS -march=x86-64-v4" CPPFLAGS="$CPPFLAGS -march=x86-64-v4"
 }
 
 package() {
