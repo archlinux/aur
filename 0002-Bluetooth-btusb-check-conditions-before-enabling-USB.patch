@@ -1,7 +1,7 @@
-From 26e5c7a7e7dd11cef2b7be68881c151634b7b363 Mon Sep 17 00:00:00 2001
+From 3067de41319a25466c140cf55fb1364813828a18 Mon Sep 17 00:00:00 2001
 From: Pauli Virtanen <pav@iki.fi>
 Date: Mon, 26 Jul 2021 21:02:06 +0300
-Subject: [PATCH 2/3] Bluetooth: btusb: check conditions before enabling USB
+Subject: [PATCH 2/4] Bluetooth: btusb: check conditions before enabling USB
  ALT 3 for WBS
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

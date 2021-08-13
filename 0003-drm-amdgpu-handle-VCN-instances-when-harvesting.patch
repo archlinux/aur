@@ -1,0 +1,61 @@
+From 1132186766e4a51b1a742ab13618f7152414d352 Mon Sep 17 00:00:00 2001
+From: Alex Deucher <alexander.deucher@amd.com>
+Date: Mon, 9 Aug 2021 11:22:20 -0400
+Subject: [PATCH 3/4] drm/amdgpu: handle VCN instances when harvesting
+
+There may be multiple instances an only one is harvested.
+
+Fixes: 83a0b8639185 ("drm/amdgpu: add judgement when add ip blocks (v2)")
+Bug: https://gitlab.freedesktop.org/drm/amd/-/issues/1673
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c
+index e1b6f5891759..73f45f2e7fc4 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_discovery.c
+@@ -299,6 +299,9 @@ int amdgpu_discovery_reg_base_init(struct amdgpu_device *adev)
+ 				  ip->major, ip->minor,
+ 				  ip->revision);
+ 
++			if (le16_to_cpu(ip->hw_id) == VCN_HWID)
++				adev->vcn.num_vcn_inst++;
++
+ 			for (k = 0; k < num_base_address; k++) {
+ 				/*
+ 				 * convert the endianness of base addresses in place,
+@@ -377,7 +380,7 @@ void amdgpu_discovery_harvest_ip(struct amdgpu_device *adev)
+ {
+ 	struct binary_header *bhdr;
+ 	struct harvest_table *harvest_info;
+-	int i;
++	int i, vcn_harvest_count = 0;
+ 
+ 	bhdr = (struct binary_header *)adev->mman.discovery_bin;
+ 	harvest_info = (struct harvest_table *)(adev->mman.discovery_bin +
+@@ -389,8 +392,7 @@ void amdgpu_discovery_harvest_ip(struct amdgpu_device *adev)
+ 
+ 		switch (le32_to_cpu(harvest_info->list[i].hw_id)) {
+ 		case VCN_HWID:
+-			adev->harvest_ip_mask |= AMD_HARVEST_IP_VCN_MASK;
+-			adev->harvest_ip_mask |= AMD_HARVEST_IP_JPEG_MASK;
++			vcn_harvest_count++;
+ 			break;
+ 		case DMU_HWID:
+ 			adev->harvest_ip_mask |= AMD_HARVEST_IP_DMU_MASK;
+@@ -399,6 +401,10 @@ void amdgpu_discovery_harvest_ip(struct amdgpu_device *adev)
+ 			break;
+ 		}
+ 	}
++	if (vcn_harvest_count == adev->vcn.num_vcn_inst) {
++		adev->harvest_ip_mask |= AMD_HARVEST_IP_VCN_MASK;
++		adev->harvest_ip_mask |= AMD_HARVEST_IP_JPEG_MASK;
++	}
+ }
+ 
+ int amdgpu_discovery_get_gfx_info(struct amdgpu_device *adev)
+-- 
+2.32.0
+

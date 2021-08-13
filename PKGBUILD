@@ -7,7 +7,7 @@ _srcname=linux-5.13
 _major=5.13
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=9
+_minor=10
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -31,18 +31,20 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
+  0003-drm-amdgpu-handle-VCN-instances-when-harvesting.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('58c3925c8fed8af4ed475e6c56af75f9b022919d5b86a2c4646957f564af08baba3232e4dc7669197a10fbc9c3f18c6787bc816d6055e8323e69867e913c9d9e'
+b2sums=('795d2886344676676256d496fb2c4fae53b9c1a7a9f47e71aab09bce7d09e69174b799e78c516927f00c772d5c317e438ea35175d4af51e2dc246dff1c0a96aa'
         'SKIP'
-        'ac535116a6c5877096b0144358fbe1140edd21ef6cd857dc4684d3da0c5c1892e055df35a69eab7dae2ab1820a3efa5ef5a6fa864969c6332ca7c7930cb77313'
+        '511c7e1cc447dfe2a0e287982d485b7071df8c242046b8e0ef1bc402adb8d1f8d375e730dbb4f94fbf6eb2a2972b1cbbd43b9935f5007710804f1ca444ac7b55'
         'SKIP'
         '65c2a6790e288fd7bfab74ffb5a93c91ae880d699338852ffc2059c666974fdc469ee36e0d1455f74a4c377ba749649173347af0a054328032fd866688739c04'
-        'e6df0ce8d665261cffc930e0a99023abd1b26caf1e89dda756cf76713953e6b3a36d3210a4c01beedb2a28acc357a9880d19870a71864ede86e29b58991fff72'
-        'ea7fd8a0fd1431078f158ef3bc184b3b826290ae4fde9739e9159444e44c8ed9fb33b1419f4650977e701f8bbbddf22a16b0dfa7aa775c89e42cb54e213de146')
+        '509a60a85c9aa85325b55f3d5d2a48e8ec390d7e5b6c5486e6929a79b4a5418e0348b18ef8547f82ddca874e21576585accc559a9414f1089e923f56bc4211b9'
+        'b0ce95aaf60e4a13fa19ebdb443f6be01b083b745052e649bef12184569dec07dc49cbf7f956553a6d765db536eaed03e582883d455b19c4e376bc46bba1f5d6'
+        '455db30e45e6e0266c13a9814b9be5521f37f8327a675ceb88af62b9a388b9afcf6a91e293e14d3ce52b3b19218b600bf32a88ad7c9c5f8a22bff3d1175e764a')
 
 
 export KBUILD_BUILD_HOST=archlinux
