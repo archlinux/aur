@@ -1,23 +1,25 @@
 pkgbase = ruby-rest-client
-	pkgdesc = Simple HTTP and REST client for Ruby, inspired by Sinatra
+	pkgdesc = A simple HTTP and REST client for Ruby
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rest-client/rest-client
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-webmock
+	checkdepends = ruby-rexml
+	makedepends = git
 	makedepends = rubygems
-	makedepends = ruby-webmock>=2.0
-	makedepends = ruby-rspec>=3.0
-	makedepends = ruby-pry
-	makedepends = ruby-rdoc>=2.4.2
-	makedepends = ruby-rubocop>=0.49
-	depends = ruby>=2.0
-	depends = ruby-http-cookie>=1.0.2
-	depends = ruby-mime-types>=1.16
-	depends = ruby-netrc>=0.8
-	noextract = rest-client-2.1.0.gem
-	source = https://rubygems.org/downloads/rest-client-2.1.0.gem
-	sha256sums = 35a6400bdb14fae28596618e312776c158f7ebbb0ccad752ff4fa142bf2747e3
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-http-accept
+	depends = ruby-http-cookie
+	depends = ruby-mime-types
+	depends = ruby-netrc
+	options = !emptydirs
+	source = git+https://github.com/rest-client/rest-client.git?tag=v2.1.0
+	sha256sums = SKIP
 
 pkgname = ruby-rest-client
-
