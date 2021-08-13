@@ -2,7 +2,7 @@
 
 pkgname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/stern/stern"
@@ -10,7 +10,7 @@ license=('apache')
 depends=('glibc')
 makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9b02a7cb9cbfdcaa8ac9d5cc11056bffe05ef1ebb46d2e7d988332daee1ef4f8973affa340a77cc9f4a3b97ecb3b8dd8b01745877fdd5ed003ef0713f52f5388')
+sha512sums=('9885fef4f068d7de9c9eaa1b18e9b9c92e88a5ac9fb72eb22b2bae8c47668809dcf6c5ead4f77a9a9f3012e8f63a1f7c484dcc90180e8fa3de01713810abcee5')
 
 build() {
   cd "${pkgname}-${pkgver}"
