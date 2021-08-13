@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 90.0.2
+	pkgver = 91.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-bin.install
@@ -29,13 +29,13 @@ pkgbase = librewolf-bin
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
 	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1449588552/artifacts/raw/librewolf-90.0.2-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/466c6eb427671b218cb86486ffa21cad/librewolf-90.0.2-1-x86_64.pkg.tar.zst.sig
-	sha256sums_x86_64 = 1e134edb4a95a066faf02cb14fe47e7a96e71a89658ca3f4dc10383ad1549a17
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1494837732/artifacts/raw/librewolf-91.0-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/f70613c60b8b32685465bbed9d1e1aa1/librewolf-91.0-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 86c18e6df452e5e545b8689ec58d2eb5d9161afea97f2127e85c6de3f02ca4be
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1449588553/artifacts/raw/librewolf-90.0.2-1-aarch64.pkg.tar.zst
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/0082f59df247c5cb29e1705ecc7f6026/librewolf-90.0.2-1-aarch64.pkg.tar.zst.sig
-	sha256sums_aarch64 = 7281f19514baf90051343b0a4a63917ba2690b2cbf19fe335d57e73a8719d53b
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1494837733/artifacts/raw/librewolf-91.0-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/595b4cfd90bd0d6e044f20d0f638c57a/librewolf-91.0-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = c10dc0db2591f42cc7e4bc08d9636efaf74c8d104c84a5ed43401492bfe7a14a
 	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
