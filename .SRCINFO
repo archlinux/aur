@@ -1,14 +1,13 @@
 pkgbase = 0ad-zh-lang
 	pkgdesc = Chinese Fonts and Translations For 0ad
-	pkgver = a24.b
+	pkgver = a25
 	pkgrel = 1
 	url = https://play0ad.com/
 	arch = any
 	license = GPL
-	depends = 0ad=a24.b
-	depends = 0ad-data=a24.b
-	source = 0ad-zh-lang-0.0.24.zip::http://releases.wildfiregames.com/locales/zh-lang-0.0.24.pyromod
-	sha256sums = ca66ade52746f8dc1b37f9193a1303500a7ca3e9c70c082e21aebecd73a5668c
+	depends = 0ad=a25
+	depends = 0ad-data=a25
+	source = 0ad-zh-lang-0.0.25.zip::http://releases.wildfiregames.com/locales/zh-lang-0.0.25.pyromod
+	sha256sums = c9842d4ab73f6bb662f53328e573e2161459e0bef3609a6010e2df4daea9962c
 
 pkgname = 0ad-zh-lang
-
