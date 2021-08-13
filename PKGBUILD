@@ -1,13 +1,13 @@
 pkgname=ignition-msgs-1
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/msgs"
 license=('Apache')
 groups=('development')
 depends=('protobuf' 'protobuf-c' 'ignition-math=4' 'ignition-tools')
-makedepends=('ignition-cmake=0' 'ruby-ronn' 'doxygen')
+makedepends=('ignition-cmake=0' 'ruby-ronn-ng' 'doxygen')
 optdepends=()
 provides=('ignition-msgs=1')
 _name="ignition-msgs"

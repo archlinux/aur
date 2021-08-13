@@ -1,14 +1,14 @@
 pkgbase = ignition-msgs-1
 	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://ignitionrobotics.org/libs/msgs
 	arch = i686
 	arch = x86_64
 	groups = development
 	license = Apache
 	makedepends = ignition-cmake=0
-	makedepends = ruby-ronn
+	makedepends = ruby-ronn-ng
 	makedepends = doxygen
 	depends = protobuf
 	depends = protobuf-c
@@ -19,4 +19,3 @@ pkgbase = ignition-msgs-1
 	sha256sums = 4327e47c1ed01fc635b1a1bad0e86b78cdfd401540eb3d0f94e98be161a753ee
 
 pkgname = ignition-msgs-1
-
