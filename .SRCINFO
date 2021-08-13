@@ -1,0 +1,13 @@
+pkgbase = superslicer-profiles-git
+	pkgdesc = predefinded printer profiles for SuperSlicer
+	pkgver = r16.a95ec3a
+	pkgrel = 1
+	url = https://github.com/slic3r/slic3r-profiles
+	arch = any
+	license = AGPL3
+	makedepends = git
+	provides = superslicer-profiles=:r16.a95ec3a
+	source = slic3r-profiles::git+https://github.com/slic3r/slic3r-profiles.git
+	sha512sums = SKIP
+
+pkgname = superslicer-profiles-git
