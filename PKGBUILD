@@ -1,3 +1,4 @@
+# Maintainer: Alyxia Sother <yrkvfbgu2005@tznvy.pbz(rot13)>
 _pkgname='discordo'
 pkgname='discordo-git'
 pkgdesc='A lightweight and feature-rich terminal-based Discord client'
