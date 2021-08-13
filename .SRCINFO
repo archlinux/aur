@@ -1,13 +1,13 @@
 pkgbase = crconf
 	pkgdesc = configuration tool for kernel crypto algorithms
-	pkgver = 0.2
+	pkgver = 0.4
 	pkgrel = 1
 	url = http://sourceforge.net/projects/crconf/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://downloads.sourceforge.net/project/crconf/crconf-pre2.tar.gz
-	sha256sums = 15d39b599acda93a50f473190e702d593ba13613b6ed31711f3584b5726b81b8
+	makedepends = libmnl
+	source = crconf-0.4.tar.gz::https://github.com/Thermi/crconf/archive/refs/tags/0.4.tar.gz
+	sha256sums = 63a01e273a4e1c5005549ce67b2ef465d6230cc5dbd915fc24201161053e1fe0
 
 pkgname = crconf
-
