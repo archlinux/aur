@@ -1,4 +1,6 @@
 post_install() {
+  rm /usr/lib/cups/filter/brother_lpdwrapper_mfcj497dw
+  ln -s /opt/brother/Printers/mfcj497dw/cupswrapper/brother_lpdwrapper_mfcj497dw /usr/lib/cups/filter/brother_lpdwrapper_mfcj497dw
   post_upgrade;
 }
 
