@@ -1,6 +1,6 @@
 pkgbase = mt32-pi-control
 	pkgdesc = A control program for the mt32-pi MIDI synthesizer
-	pkgver = 1.0.0a
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/gmcn42/mt32-pi-control
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = mt32-pi-control
 	arch = aarch64
 	license = BSD
 	depends = alsa-lib
-	source = https://github.com/gmcn42/mt32-pi-control/archive/v1.0.0a.tar.gz
-	sha256sums = ff86af3b29d814452831b066cde2e47271d658a447e213e56bb4e992f0434a1e
+	optdepends = bash-completion: for Bash shell auto-completion
+	optdepends = alsa-utils: for auto-completion of the -p option
+	source = https://github.com/gmcn42/mt32-pi-control/archive/v1.0.1.tar.gz
+	sha256sums = 4533941e8baf86b6c293decd62895ca552f4108801b0cb5567725c3ca251b0d9
 
 pkgname = mt32-pi-control
-
