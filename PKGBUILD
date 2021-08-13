@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.6.1
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
 url="https://github.com/AnalogJ/lexicon"
@@ -16,18 +16,15 @@ optdepends=('python-pynamecheap: for Namecheap support'
             'python-xmltodict: for Plesk support'
             'python-localzone: for localzone support'
             'python-zeep: for Gransy support')
+            # 'python-oci: for Oracle Cloud Infrastructure (OCI) support'
 checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-boto3' 'python-mock'
               'python-pynamecheap' 'python-zeep' 'python-xmltodict' 'python-beautifulsoup4'
               'python-localzone' 'python-html5lib' 'python-dnspython' 'bind-tools')
 source=("https://github.com/AnalogJ/lexicon/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6ec7d61857e6da8925fc0c1ec27957bd5d2c53c35f2af3956101854a3c40aec1f25a9b25bffb1ded018ea3006157af4a64b3844edf8baed7a12361e9a9a43a92')
+sha512sums=('aabfb2460bc2665b57552e6267846a0f2e508661dfdefbd22adca5833f32e8034198d1c3d5c33b2b89fb4a0cf0e9a84ec7d90426a6d8ba78acf2f2d0748c2d65')
 
 prepare() {
   cd lexicon-$pkgver
-
-  # Wait for a proper fix
-  sed -i 's/cache_file=TLDEXTRACT_CACHE_FILE, //' lexicon/client.py
-  sed -i 's/tldextract = "\^2"/tldextract = ">=2"/' pyproject.toml
 
   # poetry-generated setup.py is badly broken in several ways, including
   # distribution of tests in the built package as well as using distutils for
@@ -43,7 +40,7 @@ build() {
 
 check() {
   cd lexicon-$pkgver
-  python setup.py pytest --addopts '--deselect lexicon/tests/providers/test_transip.py'
+  python setup.py pytest --addopts '--deselect lexicon/tests/providers/test_transip.py --deselect lexicon/tests/providers/test_oci.py'
 }
 
 package() {
