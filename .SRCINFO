@@ -1,10 +1,12 @@
 pkgbase = python-pytest-flakes
 	pkgdesc = pytest plugin to check source code with pyflakes
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asmeurer/pytest-flakes
 	arch = any
 	license = MIT
+	checkdepends = python-coverage
+	checkdepends = python-pytest-pep8
 	makedepends = python-setuptools
 	depends = python-pytest
 	depends = python-pyflakes
