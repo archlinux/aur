@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.13.9.zen1
+pkgver=5.13.10.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,13 +18,14 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/368852cced9fba6504b67b7dfc51a9d09c23c675/trunk/config"
+  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/0dd90e5d7d0cee209c5006544ac4cbcf0f703b16/trunk/config"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
 
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/f16575cd5a1944d64bab27a6e6dd37378f503d02/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/f16575cd5a1944d64bab27a6e6dd37378f503d02/0002-asus-wmi-Add-dgpu-disable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/f16575cd5a1944d64bab27a6e6dd37378f503d02/0003-asus-wmi-Add-egpu-enable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/f16575cd5a1944d64bab27a6e6dd37378f503d02/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/6090dd3b676aef199c2cadc47ade25add57bd995/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/6090dd3b676aef199c2cadc47ade25add57bd995/0001-asus-wmi-Add-support-for-platform_profile.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/6090dd3b676aef199c2cadc47ade25add57bd995/0002-asus-wmi-Add-dgpu-disable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/6090dd3b676aef199c2cadc47ade25add57bd995/0003-asus-wmi-Add-egpu-enable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/6090dd3b676aef199c2cadc47ade25add57bd995/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -36,6 +37,7 @@ sha256sums=('SKIP'
             '556a5f3347e5e81cda0d93fbd0a6e2640bb0237a88c918d74c91aa77ea81b71f'
             'd38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086'
             'b398326e3177b65ff47c78a787e3a54794a83243db640a322f8f3edf51780582'
+            '5a3ea9a6f41c3f89b00298fbe8975c64ea95ba62126d3ef75aa38adf2f6f9ef5'
             'f11b31d5ffa04a846c2d8f13890f41e99941279b06b3ec3a169d82cb795502a9'
             '859bfbfee7731c8dd3bded9247d44fd57d924e6f5f518bf8467772e8e44fa03b'
             '0f35ea4573333c1bb44680de7b1ae5ba6dc98f5151d5686560bccfbcfd1e8541')
