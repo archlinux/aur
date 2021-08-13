@@ -1,37 +1,35 @@
-
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
-
-pkgname=jupyter-gnuplot_kernel
-_pkgname=${pkgname#*-}
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
+_base=gnuplot_kernel
+pkgname=jupyter-${_base}
 pkgver=0.4.1
 pkgrel=3
-pkgdesc='A Jupyter kernel for GNUplot'
+pkgdesc="A Jupyter/IPython kernel for gnuplot"
 arch=('any')
-url="https://github.com/has2k1/$_pkgname"
-license=('BSD')
-depends=('jupyter-metakernel' 'jupyter-notebook' 'gnuplot')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
+url="https://github.com/has2k1/${_base}"
+license=(BSD)
+depends=(jupyter-metakernel gnuplot)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest)
 install=${pkgname}.install
-source=("$_pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bfc0e72556a32198b589ccfa97ed9575e31e2017f3f60b65a1b6d956bd1a7333')
+source=($url/archive/v$pkgver.tar.gz)
+sha512sums=('00e51bc5cf77d3618ed53e0e2224d0b03ac4ac4a283d9991896a4a84abe441c0fd2ec592afd5a4415e84dfd2d3b707a13de43bbd002d3be1585e308e0942a6fd')
+
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-
-	python setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
 check() {
-	cd "$srcdir/$_pkgname-$pkgver"
-
-	pytest
+  cd "${_base}-${pkgver}"
+  pytest
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 'README.rst' -t "$pkgdir/usr/share/doc/$pkgname"
+  cd "${_base}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
