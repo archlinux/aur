@@ -5,9 +5,9 @@ pkgbase = discorde-git
 	url = https://github.com/andremaravilha/discorde-tsp
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = concorde
 	source = git+https://github.com/andremaravilha/discorde-tsp.git
 	sha256sums = SKIP
 
 pkgname = discorde-git
-

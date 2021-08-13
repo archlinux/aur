@@ -1,4 +1,4 @@
-# Mantainer: Alberto Santini <alberto dot santini at upf dot edu>
+# Contributor: Alberto Santini <alberto dot santini at upf dot edu>
 
 pkgname='discorde-git'
 pkgdesc='C and C++ wrapper around Concorde API'
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/andremaravilha/discorde-tsp'
 license=('MIT')
 depends=('concorde')
-
+makedepends=('git')
 source=('git+https://github.com/andremaravilha/discorde-tsp.git')
 sha256sums=('SKIP')
 
