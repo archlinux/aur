@@ -65,7 +65,7 @@ _srcname=linux-${_major}
 pkgbase=linux-cacule
 pkgver=${_major}.${_minor}
 #pkgver=${_major}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -339,66 +339,7 @@ prepare() {
           scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
           echo "Enable VHBA-Module"
           scripts/config --module CONFIG_VHBA
-          # General Setup
-          scripts/config --disable CONFIG_BSD_PROCESS_ACCT
-          scripts/config --disable CONFIG_TASK_XACCT
-          scripts/config --enable CONFIG_PSI
-          scripts/config --disable CONFIG_MEMCG
-          scripts/config --enable CONFIG_CGROUP_CPUACCT
-          scripts/config --disable CONFIG_CGROUP_DEBUG
-          scripts/config --disable CONFIG_CHECKPOINT_RESTORE
-          scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
-          scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
-          scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
-          scripts/config --disable CONFIG_PROFILING
-
-          # Processor type and features
-          scripts/config --disable CONFIG_X86_5LEVEL
-          scripts/config --disable CONFIG_KEXEC
-          scripts/config --disable CONFIG_KEXEC_FILE
-          scripts/config --disable CONFIG_CRASH_DUMPs
-          scripts/config --disable CONFIG_KPROBES
-          # Kernel hacking
-          scripts/config --disable CONFIG_FTRACE
-          scripts/config --disable CONFIG_DEBUG_KERNEL
-          scripts/config --disable CONFIG_PAGE_EXTENSION
-          scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
-          scripts/config --disable CONFIG_PRINTK_TIME
-          scripts/config --disable CONFIG_DEBUG_INFO
-          scripts/config --disable CONFIG_ENABLE_MUST_CHECK
-          scripts/config --disable CONFIG_STRIP_ASM_SYMS
-          scripts/config --disable CONFIG_UNUSED_SYMBOLS
-          scripts/config --disable CONFIG_DEBUG_FS
-          scripts/config --disable CONFIG_OPTIMIZE_INLINING
-          scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
-          scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
-          scripts/config --disable CONFIG_STACK_VALIDATION
-          scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
-          scripts/config --disable CONFIG_MAGIC_SYSRQ
-          scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
-          scripts/config --disable CONFIG_PAGE_EXTENSION
-          scripts/config --disable CONFIG_DEBUG_PAGEALLOC
-          scripts/config --disable CONFIG_PAGE_OWNER
-          scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
-          scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
-          scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
-          scripts/config --disable CONFIG_DETECT_HUNG_TASK
-          scripts/config --disable CONFIG_WQ_WATCHDOG
-          scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
-          scripts/config --disable CONFIG_SCHEDSTATS
-          scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
-          scripts/config --disable CONFIG_STACKTRACE
-          scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
-          scripts/config --disable CONFIG_RCU_TRACE
-          scripts/config --disable CONFIG_FAULT_INJECTION
-          scripts/config --disable CONFIG_LATENCYTOP
-          scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
-          scripts/config --disable RUNTIME_TESTING_MENU
-          scripts/config --disable CONFIG_MEMTEST
-          scripts/config --disable CONFIG_KGDB
-          scripts/config --disable CONFIG_EARLY_PRINTK
-          scripts/config --disable CONFIG_DOUBLEFAULT
-
+          
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
@@ -553,7 +494,7 @@ done
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '4d745d474d07277daee24107239c8902'
-         'e06c061313ff51cf1472f5ac1cdb3db5'
+         'b6a1cf477cc2e872da5fe4aea33bf59a'
          '6d8a2a8f499dd9643ca4af2254389ce7'
          '078da517ec2d54283af81d7da3af671a'
          '7640a753a7803248543675a6edc75e08'
