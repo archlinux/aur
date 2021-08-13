@@ -1,7 +1,7 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Cross platform mod manager for DOOM Eternal.'
 arch=('x86_64')
@@ -10,11 +10,9 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm')
 source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
-        eternalmodmanager
-        eternalmodmanager.desktop)
-sha256sums=('0cee104c507d89fe55430d4d52d6e13ef42d3c09b58286772ce781d9644f1831'
-            'd500abdf9bb20e4221679abe0d85e687c371590f409b378ce30a909838db99e8'
-            '0e8c5bfbde1269d598f0a1582bc0dab38745bfae41f7de43a0d1b59b55861532')
+        eternalmodmanager)
+sha256sums=('b258b22240150803ee9b7f16c5ca2d3cb938f22b45f14ad53a80d2916d2d4e60'
+            'd500abdf9bb20e4221679abe0d85e687c371590f409b378ce30a909838db99e8')
 
 build() {
     cd "EternalModManager-${pkgver}"
@@ -29,12 +27,12 @@ build() {
 
 package() {
     # Install app's files
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
     install -Dm755 -t "${pkgdir}/usr/bin" "$pkgname"
 
     cd "EternalModManager-${pkgver}"
-    install -Dm644 "flatpak/com.powerball253.eternalmodmanager.appdata.xml" "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
-    install -Dm644 "resources/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/${pkgname}.desktop"
+    install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/${pkgname}.appdata.xml"
+    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
     install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}.asar"
 }
