@@ -1,0 +1,14 @@
+pkgbase = nodejs-maildev
+	pkgdesc = SMTP Server + Web Interface for viewing and testing emails during development.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/maildev
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	noextract = maildev-1.1.0.tgz
+	source = http://registry.npmjs.org/maildev/-/maildev-1.1.0.tgz
+	md5sums = b49a878eaa0d7bd327ff5f846eabca1a
+
+pkgname = nodejs-maildev
