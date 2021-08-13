@@ -24,11 +24,11 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname"
+	cd iv
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd iv
 	make install
 }
