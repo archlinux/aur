@@ -1,7 +1,7 @@
 pkgbase = python-dowel
 	pkgdesc = A logger for machine learning research
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/rlworkgroup/dowel
 	arch = any
 	license = MIT

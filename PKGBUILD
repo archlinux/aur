@@ -2,7 +2,7 @@
 pkgname=python-dowel
 _name=${pkgname#python-}
 pkgver=0.0.4
-pkgrel=2
+pkgrel=1
 pkgdesc="A logger for machine learning research"
 arch=('any')
 url="https://github.com/rlworkgroup/dowel"
