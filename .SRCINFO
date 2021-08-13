@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-llvm
 	pkgdesc = Linux Kernel with cacule scheduler and lto compiled
 	pkgver = 5.13.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kernel.org/
 	arch = x86_64
 	arch = x86_64_v3
