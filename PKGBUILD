@@ -36,7 +36,7 @@ prepare() {
     mkdir -p "${_pkgver}"
     cd "${_pkgver}"
 
-    patch -p3 -t -N -i "${srcdir}/ntfs3-v${pkgver}.patch" || true
+    patch -p3 -t -N -i "${srcdir}/ntfs3-v${_pkgver}.patch" || true
 
     patch -p0 -N -i "${srcdir}/Makefile.patch"
 
