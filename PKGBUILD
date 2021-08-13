@@ -6,18 +6,21 @@
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 # Contributor: William Penton <william@penton.us>
+# Contributor: Jeff Moody <jeff@fifthecho.com>
+# Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=gitkraken-standalone
 pkgrel=1
-pkgver=7.7.1
+pkgver=7.7.2
 pkgdesc="Stand-alone version of GitKraken for labs and computers without internet access (requires license file)."
 url="https://support.gitkraken.com/standalone/standalone/"
 provides=('gitkraken')
 conflicts=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('nss' 'gtk3' 'libsecret' 'libxkbfile' 'dbus-x11')
-optdepends=('git-lfs: git-lfs support')
+depends=('nss' 'gtk3' 'libsecret' 'libxkbfile')
+optdepends=('git-lfs: git-lfs support'
+            'org.freedesktop.secrets: Provides ways to store passwords and encryption keys')
 makedepends=()
 backup=()
 install=''
@@ -28,9 +31,8 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-
-sha256sums=('e98a1da8d46ea37b67abb62409004bfff180bc82fa2cf801e259eb55a5e40afc'
-            '81b32ad2fae47fcdf8adb4fdb5c734430ed993f712e75bd62297ae8540fdf889'
+sha256sums=('76588eb5c3016292591425d9485dfa74d3cc684405281fa089064754aeec8920'
+            'f4a63737eccf279b0b131fe34e4a711aaf0dd5be86e932baf2593069553ef3b1'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
             '6e6c6ac37287e1ec5d5266689a49d18899488be901b21f5cb9749f545453626f')
@@ -42,6 +44,9 @@ package() {
     find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
     chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/src/js/redux/domain/AskPass/AskPass.sh
+    chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/resources/cli/unix/gk
+    chmod 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/resources/cli/unix/gkrc
+    chmod -R 755 "$pkgdir"/opt/gitkraken/resources/app.asar.unpacked/resources/cli/unix/helpers
     chmod 4755 "$pkgdir"/opt/gitkraken/chrome-sandbox
 
     install -d "$pkgdir"/usr/bin
