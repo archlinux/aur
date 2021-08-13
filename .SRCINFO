@@ -1,0 +1,23 @@
+pkgbase = ruby-rspec-pending_for
+	pkgdesc = Mark specs pending or skipped for specific Ruby engine / version
+	pkgver = 0.1.16
+	pkgrel = 1
+	url = https://github.com/pboling/rspec-pending_for
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-minitest
+	checkdepends = ruby-test-unit
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-rspec-core
+	depends = ruby-ruby_engine
+	depends = ruby-ruby_engine
+	options = !emptydirs
+	source = https://github.com/pboling/rspec-pending_for/archive/v0.1.16/rspec-pending_for-0.1.16.tar.gz
+	sha256sums = 547e3e770549ea527a81478f5fa758bc813f1063f8fb8e4fbf99ba8a9cf18f9f
+
+pkgname = ruby-rspec-pending_for
