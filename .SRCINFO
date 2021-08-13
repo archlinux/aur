@@ -27,4 +27,3 @@ pkgbase = duplicacy-web
 	sha256sums_armv7 = 1a28c214493c69c1a7e65dfc985e95cacda246935ca5e2541e2014cc8e2a9678
 
 pkgname = duplicacy-web
-
