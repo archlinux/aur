@@ -1,0 +1,11 @@
+pkgbase = gnome-fine-tune-wallpapers
+	pkgdesc = Fine Tune Wallpapers Themed for Gnome
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1305245/
+	arch = any
+	license = CC-BY-SA
+	source = https://github.com/MMcQueenGNU/gnome-fine-tune-wallpapers/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = 23be1bf75a8836a297bb367e83aa552c
+
+pkgname = gnome-fine-tune-wallpapers
