@@ -51,7 +51,7 @@ _major=5.13
 _minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
+        "${_lucjanpath}/arch-patches-v4-sep/0003-drm-amdgpu-handle-VCN-instances-when-harvesting.patch"
          # the main kernel config files
         'config')
 
@@ -315,8 +316,9 @@ sha512sums=('f45210619400832e1780fb31abc1224e61b8c6e4f46afc2983a1abcf70b08b65961
             'SKIP'
             'df0cc22801c81c24fa6202799518fb363ae6e2bf44c88bfd1ea83fa3d2be3730cfada04a3a2b7845f44d0ca8c48cdaf50be79be250c351a1485c3b557a579515'
             '8f7664cf380e413a2c09d3bd774059dad700de81c43e6e234f72f422c3a9f9f2e853ddcd4b0a71c91a0544f84b4a4534d7c8ef5a428b3fe395af87b6a2a22572'
-            'c582eb6264c3af1857549d4934e25970ac0d45e7a25ad702cc348da214b31c241f08cb95228eea44f780a3818a99a90464edd5c70e6b90e52f2d24a592e22202'
-            '81220cd0505abbae5e830b5fb15f51d54ef8283eb9b1f64b4bc73ee2302f5b4a779ff85495452f2bb04852019a679c6d34494d6ca97acd9aeb766167e45c54e4'
+            'bc191829371a9210772c987ce31a33a64a228268a0319ba123353d40b41e1428870ffc814f2b03453e5e4d69fb79b9afe55dcfcd30009029cd51e1b6f4b09d78'
+            '07c09eb8eeb2fa9d84c8f38ea4789a050baea5b8b5617bca9824ba009688555a3511d82e27c8799a503328b0e3684166fb3b1417b92e986e564e90a994931610'
+            '0a5f7334690ebd8552f97f19e715b6408b3cc6e9477fe40142ac36bf1e51f4d37e525fc31cc719a5b1b9d62884010c0c5f06ea2e10d22704efa169594d475d56'
             '8b8c0013548f74ca10b7d770690891cbe52f1d67520b39f7377213190952d1ca0dd65b73ba714067619f6d7baa34ddd39813f52bdd962588d435c1d01a16ba5a')
 
 validpgpkeys=(
