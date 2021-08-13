@@ -47,7 +47,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-        g++ -O3 -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
+        g++ -Ofast -pthread ./tuidoku/src/*.cpp -lncursesw -o tuidoku-bin
 }
 
 package() {
