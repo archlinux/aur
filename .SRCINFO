@@ -1,6 +1,6 @@
 pkgbase = wob
 	pkgdesc = A lightweight overlay volume/backlight/progress/anything bar for Wayland
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://github.com/francma/wob
 	arch = i686
@@ -10,11 +10,10 @@ pkgbase = wob
 	makedepends = wayland-protocols
 	makedepends = scdoc
 	depends = wayland
-	source = wob-0.11.tar.gz::https://github.com/francma/wob/releases/download/0.11/wob-0.11.tar.gz
-	source = wob-0.11.tar.gz.sig::https://github.com/francma/wob/releases/download/0.11/wob-0.11.tar.gz.sig
+	source = wob-0.12.tar.gz::https://github.com/francma/wob/releases/download/0.12/wob-0.12.tar.gz
+	source = wob-0.12.tar.gz.sig::https://github.com/francma/wob/releases/download/0.12/wob-0.12.tar.gz.sig
 	validpgpkeys = 5C6DA024DDE27178073EA103F4B432D5D67990E3
-	sha512sums = 71237095bea0e8ecb8030f13a440bae351e97e19092fc832ac77b87947a826ec103b597e0d7900670dc4407deb35bc318f7092ff8bcfa7b7ca2b03c113a6cde8
+	sha512sums = a8b0bf5d3b3ade69fa367cef50cb94e3de2fe8fafe99a3f9ab37f7690d89a5bc4adece34df9c79c064f1d0dc203bc2c6785292f725d5c63d6d1e5732c09b38c3
 	sha512sums = SKIP
 
 pkgname = wob
-
