@@ -2,13 +2,13 @@
 # Contributor: muhas <muhas@muhas.ru>
 pkgname=skb
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple keyboard layout indicator."
 arch=('i686' 'x86_64')
-url="http://plhk.ru/"
+url="https://plhk.ru/"
 license=('GPL')
 depends=('libx11')
-source=(http://plhk.ru/static/skb/${pkgname}-${pkgver}.tar.gz)
+source=(https://plhk.ru/static/skb/${pkgname}-${pkgver}.tar.gz)
 md5sums=('feaf75eb5d4c557ed9ac75620a7ce264')
 
 build() {
