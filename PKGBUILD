@@ -1,9 +1,8 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-
 pkgname=steamtinkerlaunch-git
-pkgver=6.11_r335.93e81b9
+pkgver=6.15_r361.c61081c
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -29,11 +28,10 @@ optdepends=(
 	'libnotify: for optional Notifier'
 	'innoextract: optional for extracting the Cheat Engine setup archive'
 	'usbutils: optional for a quick VR HMD presence check'
-	'jq: optional for extracting game names from the steam api and for sorting available Lutris Wine Versions'
+	'jq: optional for extracting game names from the steam api'
 	'rsync: optional for backing up steamuser files from proton games'
 	'openssl: optional for generating a random hex string for Non-Steam games'
 	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
-	'appinfo-vdf: optional for converting the binary appinfo.vdf into a parsable format'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
