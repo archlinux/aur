@@ -1,7 +1,7 @@
 pkgbase = openocd-riot-git
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (git version with extra RIOT patches)
 	pkgver = 0.11.0.r282.gae6de2f93
-	pkgrel = 1
+	pkgrel = 2
 	url = http://openocd.org
 	arch = i686
 	arch = x86_64
