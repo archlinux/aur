@@ -1,0 +1,26 @@
+pkgbase = lua-hsluv
+	pkgdesc = Human-friendly HSL
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/hsluv/hsluv-lua
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	source = hsluv-0.1-1.tar.gz::https://github.com/hsluv/hsluv-lua/archive/ff1bcf087b2b352ed5903d6d407b5e394b7a0496.tar.gz
+	sha256sums = da7369b71df1e5398208dcff328cebc00d9a2546a0515ca9419ae9c85b3a7386
+
+pkgname = lua-hsluv
+	depends = lua
+
+pkgname = lua53-hsluv
+	depends = lua53
+
+pkgname = lua52-hsluv
+	depends = lua52
+
+pkgname = lua51-hsluv
+	depends = lua51
