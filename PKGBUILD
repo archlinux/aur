@@ -19,7 +19,8 @@ sha256sums=('5bde56704ef8542f84ab9a8d6739cbfbcfcaaa26e089421fe0a527c5c9013f8d'
 
 prepare() {
   cd "$pkgbase-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  make toml-gen
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
