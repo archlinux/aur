@@ -2,8 +2,8 @@
 set -e
 rm -rf src
 rm -rf pkg
-rm -rf symfony_linux_amd64.gz
-rm -rf symfony-cli*.tar.xz
+rm -rf symfony-cli-*.gz
+rm -rf symfony-cli-*.tar.zst
 updpkgsums
 makepkg -si --noconfirm
 makepkg --printsrcinfo > .SRCINFO
