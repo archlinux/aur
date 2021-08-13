@@ -1,7 +1,7 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=release.2.0.16.r31.g907943a23
+pkgver=r7713.907943a23
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,13 +14,13 @@ optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
 source=("git+https://github.com/libsdl-org/SDL")
-provides=(sdl2=$pkgver)
+provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
 sha512sums=('SKIP')
 
 pkgver() {
   cd SDL
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
