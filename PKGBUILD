@@ -1,9 +1,9 @@
 pkgname=motionbox-bin
 _pkgname=motionbox-bin
-pkgver=1.7.0.1
+pkgver=1.7.0.2
 majver=1.7.0
-subver=1
-pkgrel=2
+subver=2
+pkgrel=1
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
