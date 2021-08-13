@@ -1,6 +1,6 @@
 pkgbase = sdl2-static
 	pkgdesc = SDL2 with libraries for static linking
-	pkgver = 2.0.14
+	pkgver = 2.0.16
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -34,10 +34,10 @@ pkgbase = sdl2-static
 	provides = sdl2
 	conflicts = sdl2
 	options = staticlibs
-	source = https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
-	source = https://www.libsdl.org/release/SDL2-2.0.14.tar.gz.sig
+	source = https://www.libsdl.org/release/SDL2-2.0.16.tar.gz
+	source = https://www.libsdl.org/release/SDL2-2.0.16.tar.gz.sig
 	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
-	sha512sums = ebc482585bd565bf3003fbcedd91058b2183e333b9ea566d2f386da0298ff970645d9d25c1aa4459c7c96e9ea839fd1c5f2da0242a56892865b2e456cdd027ee
+	sha512sums = ec75ef8526792650c2647b78bb0244f973774418aeae33a2182d90ce696b30acb652f8be9c2012a16c1c5d5622f7630ff2e1eadae27ea3dc78ab47730cf5e62f
 	sha512sums = SKIP
 
 pkgname = sdl2-static
