@@ -1,7 +1,7 @@
 pkgbase = python-perfplot
 	pkgdesc = Performance plots for Python code
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/perfplot
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = python-perfplot
 	makedepends = python-setuptools
 	depends = python-dufte
 	depends = python-rich
-	source = https://github.com/nschloe/perfplot/archive/v0.9.8.tar.gz
+	source = https://github.com/nschloe/perfplot/archive/0.9.8.tar.gz
 	sha512sums = a355ece1ffa562b7419e49c98f29b7926419c4b731e65a7be7cbba73a49fe8ff70d35994bbfa125fd2406c5b663ba5888516338f8ea667e108c389bdfcea5a61
 
 pkgname = python-perfplot
