@@ -1,6 +1,6 @@
 pkgname=mingw-w64-openfst
 _pkgname=openfst
-pkgver=1.7.7
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Library for constructing, combining, optimizing, and searching weighted finite-state transducers (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=(mingw-w64-dlfcn mingw-w64-mman-win32-git)
 options=(!strip !buildflags staticlibs)
 source=("http://www.openfst.org/twiki/pub/FST/FstDownload/openfst-${pkgver}.tar.gz"
         getpagesize.patch)
-sha256sums=('3246eaff369d334f24a684e94918a2fda99d7e633a1081718bb4a3a3e9bcf3be'
+sha256sums=('24fb53b72bb687e3fa8ee96c72a31ff2920d99b980a0a8f61dda426fca6713f0'
             'efc9f8dee9f0410a4cc39c26c1dac23e04b770ea70260672695720e1802b924d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
