@@ -28,4 +28,3 @@ pkgbase = python-mujoco-py
 	sha256sums = 21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865
 
 pkgname = python-mujoco-py
-
