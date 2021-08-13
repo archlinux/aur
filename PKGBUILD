@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.713
+pkgver=mainline.0.715
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -26,7 +26,7 @@ makedepends=(
 	'nlohmann-json>=3.8'
 	'opus>=1.3'
 	'qt5-tools>=5.12'
-	'sdl2>=2.0.14'
+	'sdl2>=2.0.16'
 	'sirit>=r184'
 	'vulkan-headers>=1.2.145'
 	'xbyak>=5.96'
@@ -43,7 +43,6 @@ source=(
 	'unbundle-dynarmic.patch'
 	'unbundle-httplib.patch'
 	'unbundle-inih.patch'
-	'unbundle-sdl.patch'
 	'unbundle-sirit.patch'
 	'unbundle-xbyak.patch'
 )
@@ -57,7 +56,6 @@ b2sums=(
 	'86dcbd45aea4bc68846df5737bbf44362de1e96bade7e86b457b247bcd99f7c4c0c28d3ea396902a904ffe57fe4612a37818a54f17d2df9108a038e3edd45f3c'
 	'7508b5e6ca43f44eeecd8b91ca8bdfe3350a37601d8c626ce300435d0e3976ae48068ed014c7b4e1712359ef025fff59fef3a0a3adf5f5bf499129492f840df5'
 	'f9df47354efda0ef25685e4dc13426a0f8ee2ba61a7af5af18eaaa00de142d0a60208a3f8c7002ea85922cda666288e156ff81449c0e4d74c0931de481b84092'
-	'1112594336f6829483d9813e2144715cf965b21b700de07fb0206fd1089f29fdad8a4d17604ee87a93c4ce79fdae2f83eeef11fa489a86dafa25b959835a7e20'
 	'50eece7824e59195ac9906eb142e10328607bb002fbfd6d9b262abb3fa29b1a0425fc5c33d4ca9ab5a88608ddd72891a592eaa669213db76bdde6142485bc1f6'
 	'a960a8976783b49e88cde7aae5c1b16b20200241f74f0375075c26f997f05cf4071b9c9bc48d7e1da8b3e85c2eae512e2659286580a4d8873f7525845d46bd55'
 )
@@ -74,7 +72,6 @@ prepare() {
 	patch -Np1 < ../unbundle-dynarmic.patch
 	patch -Np1 < ../unbundle-httplib.patch
 	patch -Np1 < ../unbundle-inih.patch
-	patch -Np1 < ../unbundle-sdl.patch
 	patch -Np1 < ../unbundle-sirit.patch
 	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
