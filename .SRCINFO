@@ -21,4 +21,3 @@ pkgbase = mujoco-bin
 	sha256sums = SKIP
 
 pkgname = mujoco-bin
-
