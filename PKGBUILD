@@ -3,7 +3,7 @@
 # Contributor: slact
 
 pkgname=tlpui
-tlpui_ver="1.3.1-11"
+tlpui_ver="1.4.0-alpha1"
 pkgver="$(echo "${tlpui_ver}" | tr "-" ".")"
 pkgrel="1"
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -17,7 +17,7 @@ source=(
     "${pkgname}.desktop"
 )
 sha256sums=(
-    '46a6c1c5c97f1bbc8689a4ef83a446ac88819f82eae519549cf3ba2043f9454e'
+    'SKIP'
     'fbf9e4b92bff5c92f5ced1ee1b155110b32cd128e5f066260d8dc6cea163c4af'
 )
 
