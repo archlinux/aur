@@ -1,16 +1,16 @@
 pkgbase = libmdbx
 	pkgdesc = Extremely fast, compact, powerful, embedded, transactional key-value database, with permissive license.
-	pkgver = 0.9.3
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/erthink/libmdbx
 	arch = x86_64
 	license = OLDAP-2.8
 	makedepends = linux-headers
 	makedepends = bash
-	source = libmdbx-0.9.3.tar.gz::https://github.com/erthink/libmdbx/archive/v0.9.3.tar.gz
-	source = 0001-Make-MDBX_-vars-specifyable-via-args.patch
-	sha512sums = d69b24a304071edc13ceb41de44c7bd6cf1a18e8c462bb3147cf6809b4db92c41586cc65b1c242581c54c7e3ab2787c4773156657baea4aa9995fc6479c36306
-	sha512sums = a7504757ac9f555d6b4f214ba2a3e0565b48a9c0be95b891c9b2d95684f66a4d1483a7383679f0533604aa67f2063d21a78f3fc020616b234d40a2c2f5792dd9
+	makedepends = cmake
+	source = libmdbx-0.10.2.tar.gz::https://github.com/erthink/libmdbx/archive/refs/tags/v0.10.2.tar.gz
+	source = 0001-mdbx-Remove-all-checks-for-amalgated-or-git-source-i.patch
+	sha512sums = 3d5f127a140841db6c89815adf65fdaefc4bb1d7941bfd1922c54ba38589dd49c6d6f5cd1dcf1b042c526c848cc6900eb80ee51fd8b2c0cabfe4a34c5678663e
+	sha512sums = 5e5fef4219279b10f0d4371fcbf3e2d4a7d958eb337f9de92aebb6a7d0d6644faa65eb804f46021678997a638ac601b03d9facbbf1164b45ae9075384d300df2
 
 pkgname = libmdbx
-
