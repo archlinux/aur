@@ -6,7 +6,7 @@ _Pkgname=Vial
 
 pkgname="${_pkgname}"-appimage
 pkgname=vial-appimage
-pkgver=v0.4
+pkgver=v0.4.1
 pkgrel=1
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA."
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="${_Pkgname}-${pkgver}-x86_64.AppImage"
 source_x86_64=("${_appimage}::https://github.com/vial-kb/vial-gui/releases/download/${pkgver}/${_Pkgname}-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('e040c4552aa343a61bab1e01a0dc04e294f9c852d8334e4504773975e414f5ff')
+sha256sums_x86_64=('68dd30be06a158f3525cffc9995d4959a12701120e4f245dcf5928e9e0bb639b')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -47,3 +47,4 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_Pkgname}"
 }
+
