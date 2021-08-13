@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-rdb
 	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets
 	pkgver = 5.13.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
 	arch = x86_64_v3
@@ -49,7 +49,7 @@ pkgbase = linux-cacule-rdb
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch
 	md5sums = 76c60fb304510a7bbd9c838790bc5fe4
 	md5sums = 4d745d474d07277daee24107239c8902
-	md5sums = aca08268e009c0d0101956df3f5ad44a
+	md5sums = e48c7e742ba1270c5475b69f034a4331
 	md5sums = 6d8a2a8f499dd9643ca4af2254389ce7
 	md5sums = 078da517ec2d54283af81d7da3af671a
 	md5sums = 7640a753a7803248543675a6edc75e08
