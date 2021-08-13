@@ -5,6 +5,7 @@ pkgbase = sdl2_compat12-git
 	url = https://github.com/libsdl-org/sdl12-compat.git
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = ZLIB
 	makedepends = cmake
 	makedepends = git
@@ -20,4 +21,3 @@ pkgbase = sdl2_compat12-git
 	sha256sums = e59519698276b34277a76746b84c06afe5f21037e3c4a5a8e8f913306f0bd812
 
 pkgname = sdl2_compat12-git
-
