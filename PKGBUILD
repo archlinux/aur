@@ -5,10 +5,10 @@
 _pkgname=atoml
 pkgname=python-atoml
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another style-preserving TOML library for Python."
 arch=('any')
-url="https://pdm.fming.dev/"
+url="https://github.com/frostming/atoml.git"
 license=('MIT')
 makedepends=("python-pip")
 source=("https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-py3-none-any.whl")
@@ -24,7 +24,7 @@ package() {
     --no-compile \
     --no-warn-script-location \
     ${_pkgname//-/_}-$pkgver-py3-none-any.whl
-  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/python3.9/site-packages/"
+  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/"
   rm -rf "$pkgdir/usr/lib/python3.9/site-packages/${_pkgname//-/_}-$pkgver.dist-info/direct_url.json" || true
   install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
