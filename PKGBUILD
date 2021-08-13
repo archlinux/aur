@@ -4,7 +4,7 @@
 # Package Information
 pkgname=refinery_cli
 _bins=(refinery)
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Run Refinery migrations via cli.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('openssl' 'sqlite')
 url="https://crates.io/crates/$pkgname"
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('6398c8564b47f9cbca2ac75db0cd0dc79b095aa671e3878a287e752455d6e7a7c8aefb44978ce5df2b6e419f6859f1215cd991d82225c8eadde81775bd48fae9')
+sha512sums=('317144130fe44632c15e5ac2bf1ba0d74121c964736aa97dc5ef5a46a53c586acd047a27dc01d97e5ae620f75c0c99e55238ce2e87b2f4546a4110821d80b581')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
