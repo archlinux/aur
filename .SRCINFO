@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-activities-icons-git
+	pkgdesc = A Gnome Shell extension that replaces the Activities button with 2 icons for selecting between Applications and Workspaces.
+	pkgver = r6.f29ee60
+	pkgrel = 1
+	url = https://github.com/fawtytoo/activities-icons
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/fawtytoo/activities-icons.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-activities-icons-git
