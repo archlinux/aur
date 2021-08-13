@@ -2,16 +2,16 @@
 _base=pygmsh
 pkgname=python-${_base}
 pkgdesc="Gmsh for Python"
-pkgver=7.1.10
-pkgrel=2
+pkgver=7.1.11
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-meshio gmsh)
-makedepends=(python-setuptools)
-checkdepends=(python-pytest-codeblocks) #python-matplotlib python-pytest-randomly
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('91a0fb5e27f4369a42a638e69347a1551c4d8a283162c6e0e534c7e17ae31f3211e98288915a4227476dc5a68f99e2e421a00be1ba53aac3039484db195eb0e3')
+makedepends=(python-setuptools python-pip)
+checkdepends=(python-pytest-codeblocks) #python-matplotlib
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('ee08578a9198e1725baaba55f13e052ef6ddf523bde5040c052837df72d57ab9ef9aa6b3fbba2ba649a222175f2504edf21427a6b6707ad3e28e8bca113976ce')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
