@@ -1,13 +1,14 @@
 pkgbase = python-tikzplotlib
 	pkgdesc = Convert matplotlib figures into TikZ/PGFPlots
 	pkgver = 0.9.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/tikzplotlib
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-matplotlib
 	depends = python-pillow
+	depends = python-numpy
 	source = python-tikzplotlib-v0.9.12.tar.gz::https://github.com/nschloe/tikzplotlib/archive/refs/tags/0.9.12.tar.gz
 	source = setup.py
 	sha256sums = feff006929712fb944f3678d234458da8f931bcabf56b1198a68d5ca70c5d4f4

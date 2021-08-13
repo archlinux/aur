@@ -1,11 +1,11 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=python-tikzplotlib
 pkgver=0.9.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 url="https://github.com/nschloe/tikzplotlib"
 makedepends=('python-setuptools')
-depends=('python-matplotlib' 'python-pillow')
+depends=('python-matplotlib' 'python-pillow' 'python-numpy')
 license=('MIT')
 arch=('any')
 source=("python-tikzplotlib-v${pkgver}.tar.gz::https://github.com/nschloe/tikzplotlib/archive/refs/tags/${pkgver}.tar.gz"
