@@ -3,15 +3,15 @@
 _pkgname=amply
 pkgbase=python-amply
 pkgname=(python-amply python2-amply)
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A Python package for AMPL/GMPL datafile parsing"
 arch=("any")
 license=("EPL")
 url="http://github.com/willu47/amply"
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-pip' 'python-wheel' 'python2-pip' 'python2-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('f555c44d80eecde41d0a1b946cc3192e6e3b637ee4c33896ccb251527358eb8761fec79875da168be610268fd4cbaa3a4c55bfff8b777b82ff350222bdf07603')
+b2sums=('78ae51f18355968c7713351267fe8a60adc797c9e0e37092f538935026898b51413f346a0faecc748a290f3fd3e4c313cfab6d0ddacfe34f76ecdb4ecd562ffb')
 
 prepare() {
 	for _python in python python2; do
