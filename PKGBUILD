@@ -1,12 +1,13 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anthony C <kurodroid.1@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=psad
 pkgver=2.4.6
-pkgrel=1
-pkgdesc='A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic'
+pkgrel=2
+pkgdesc='Port Scan Attack Detector: Makes use of iptables log messages to detect, alert, and (optionally) block port scans and other suspect traffic'
 arch=('i686' 'x86_64')
 url='http://cipherdyne.org/psad/'
 license=('GPL')
@@ -17,47 +18,33 @@ depends=('perl-bit-vector'
          'perl-net-ipv4addr' 
          'perl-storable' 
          'perl-unix-syslog' 
-         'net-tools')
-
-source=("http://cipherdyne.org/psad/download/${pkgname}-${pkgver}.tar.gz"
+         'net-tools'
+         's-nail')
+optdepends=('smtp-server: For Sending Email alerts')
+source=("https://github.com/mrash/psad/archive/refs/tags/${pkgver}.tar.gz"
         'responses'
-        'psad-systemdinit.archlinux'
+        'psadwatchd.service'
+        'kmsgsd.service'
         'psad.patch')
-sha256sums=('3d9eba09111fc51668a4e6c26cd791c0b322ff2b6f1e71d48b9c9582b63aa8e6'
+sha256sums=('2001f6f6d8eaa50e74c3a8c346d885e9578f15578b54669ef56c2d301d8b45d4'
             '0f1116e25f43f1562764d81ebd232ed807f2249058f0cfb0cb4d06d99bd600d8'
-            '9db280ba745205b188333267f05cf7cf1a75300789c92c48075625e64f37ff34'
-            '9137ea481f1cad79d62d3a7cf1ac22bbc85cccc7e18d49e1c092b38beec36170')
+            '426b9e1ff9fd3b9f802b418790d54881087d7b92f4ddb4026ba70fbabb5c9da2'
+            '0cda106fa0add325c8b91fbb9d6dca5bda825c7a589d4d3b6c757342b606af96'
+            '6155bd90a071a27f04dfb515a495def85507c0d1671df8fa1ba10dce58540bd6')
 prepare() {
   cd "${pkgname}-${pkgver}"
+  make clean
   if [ ! -e responses ]; then
     ln "${srcdir}/responses" responses -s;
   fi
+  # because people who write Perl don't care about how things are done in
+  # the 21st century
+  patch -N -p1 < "${srcdir}/psad.patch"
+}
 
-  #Set the config dirs
-  #'/usr/sbin' and '/var/run' are just symlinks and makepkg -i doesn't like that.
-  #Just sed '/usr/sbin' to '/usr/bin' and '/var/run' to 'run'
-  #Also, '/lib' should really be '/usr/lib'
-  sed -e "s|'/usr/sbin'|'$pkgdir/usr/bin'|" \
-      -e "s|'/usr/bin'|'$pkgdir/usr/bin'|" \
-      -e "s|'/var/run'|'$pkgdir/run'|" \
-      -e "s|'/lib/systemd/system'|'$pkgdir/usr/lib/systemd/system'|" \
-      -e "s|my \$mpath = \"/usr/share/man/man\$section\";|my \$mpath = \"$pkgdir/usr/share/man/man\$section\";|" \
-          ./install.pl -i
-
-  #Same cure applies to config file
-  sed -e "s|/var/log/psad|$pkgdir&|" \
-      -e "s|/var/run|/run|" \
-      -e "s|/run/psad|$pkgdir&|" \
-      -e "s|/var/lib/psad|$pkgdir&|" \
-      -e "s|/usr/lib/psad|$pkgdir&|" \
-      -e "s|/etc/psad|$pkgdir&|" \
-      -e "s|/usr/bin/whois_psad|$pkgdir&|" \
-      -e "s|/usr/sbin|/usr/bin|" \
-      -e "s|/usr/bin/fwcheck_psad|$pkgdir&|" \
-      -e "s|/usr/bin/psadwatchd|$pkgdir&|" \
-      -e "s|/usr/bin/kmsgsd|$pkgdir&|" \
-      -e "s|/usr/bin/psad|$pkgdir&|" \
-         ./psad.conf -i
+build() {
+  cd "${pkgname}-${pkgver}"
+  make all
 }
 
 package () {
@@ -71,7 +58,7 @@ package () {
            "$pkgdir/usr/lib/psad" \
            "$pkgdir/usr/lib/systemd/system"
 
-  ./install.pl --init-dir="$pkgdir" < responses
+  ./install.pl  --runlevel 3 --install-root="${pkgdir}" --systemd-init-dir="${pkgdir}/usr/lib/systemd/system" < responses
 
   #Set correct permissions
   chmod -R o+r "$pkgdir/etc/psad"
@@ -80,10 +67,14 @@ package () {
   chmod 0755 "$pkgdir/run"
 
   #add the systemd service file in '/usr/lib'
-  cp "$srcdir/psad-systemdinit.archlinux" "$pkgdir/usr/lib/systemd/system/psad.service"
-
+  cp "$srcdir/psadwatchd.service" "$pkgdir/usr/lib/systemd/system/psadwatchd.service"
+  cp "$srcdir/kmsgsd.service" "$pkgdir/usr/lib/systemd/system/kmsgsd.service"
+  
+  # Fix systemd unit
   # Fix the config
-  sed -e "s|$pkgdir||g" "$pkgdir/etc/psad/psad.conf" -i
+  sed -e "s|/usr/sbin|/usr/bin|g" "$pkgdir/usr/lib/systemd/system/psad.service" -i
+  sed -e "s|/var/run|/run|g" "$pkgdir/usr/lib/systemd/system/psad.service" -i
+  sed -e "s|$pkgdir|/|g" "$pkgdir/etc/psad/psad.conf" -i
   sed -e "s|$pkgdir||g" "$pkgdir/var/log/psad/install.log" -i
 }
 # vim:set ts=2 sw=2 et:

@@ -1,0 +1,11 @@
+[Unit]
+Description=KMSG Daemon(PSAD)
+Documentation=man:kmsgsd(8) https://www.cipherdyne.org/psad/docs/manpages/kmsgsd.html
+After=psad.service
+
+[Service]
+ExecStart=/usr/bin/kmsgsd
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

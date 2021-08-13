@@ -1,0 +1,11 @@
+[Unit]
+Description=PSAD Watcher
+Documentation=man:psadwatchd(8) https://www.cipherdyne.org/psad/docs/manpages/psadwatchd.html
+After=psad.service kmsgsd.service
+
+[Service]
+ExecStart=/usr/bin/psadwatchd
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

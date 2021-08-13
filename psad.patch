@@ -1,6 +1,66 @@
---- a/install.pl	2017-03-29 00:58:58.151686321 +0200
-+++ b/install.pl	2017-03-29 01:01:33.861628259 +0200
-@@ -773,6 +773,8 @@
+diff -u psad-2.4.6/install.pl psad-2.4.6-1/install.pl
+--- psad-2.4.6/install.pl	2018-07-31 20:41:59.000000000 -0400
++++ psad-2.4.6-1/install.pl	2021-08-13 14:41:54.730087506 -0400
+@@ -39,21 +39,21 @@
+ use strict;
+ 
+ #============== config ===============
+-my $USRSBIN_DIR  = '/usr/sbin';  ### consistent with FHS (Filesystem
++my $USRSBIN_DIR  = '/usr/bin';  ### consistent with FHS (Filesystem
+                                  ### Hierarchy Standard)
+ my $USRBIN_DIR   = '/usr/bin';   ### consistent with FHS
+ 
+ my $psad_conf_file  = 'psad.conf';
+ 
+ ### system binaries ###
+-my $chkconfigCmd = '/sbin/chkconfig';
+-my $rcupdateCmd  = '/sbin/rc-update';  ### Gentoo
+-my $updatercdCmd = '/usr/sbin/update-rc.d';  ### Ubuntu
++my $chkconfigCmd = '/usr/bin/chkconfig';
++my $rcupdateCmd  = '/usr/bin/rc-update';  ### Gentoo
++my $updatercdCmd = '/usr/bin/update-rc.d';  ### Ubuntu
+ my $makeCmd      = '/usr/bin/make';
+ my $perlCmd      = '/usr/bin/perl';
+ my $wgetCmd      = '/usr/bin/wget';
+-my $runlevelCmd  = '/sbin/runlevel';
+-my $systemctlCmd = '/bin/systemctl';
++my $runlevelCmd  = '/usr/bin/runlevel';
++my $systemctlCmd = '/usr/bin/systemctl';
+ 
+ my $install_root = '/';
+ 
+@@ -136,12 +136,8 @@
+ my %cmds   = ();
+ 
+ my @cmd_search_paths = qw(
+-    /bin
+-    /sbin
+     /usr/bin
+-    /usr/sbin
+     /usr/local/bin
+-    /usr/local/sbin
+ );
+ 
+ ### IP regex
+@@ -178,7 +174,7 @@
+ my $no_locale = 0;
+ my $deps_dir = 'deps';
+ my $init_dir = '/etc/init.d';
+-my $systemd_init_dir = '/lib/systemd/system';
++my $systemd_init_dir = '/usr/lib/systemd/system';
+ my $init_name = 'psad';
+ my $systemd_init_name = 'psad.service';
+ my $install_syslog_fifo = 0;
+@@ -490,7 +486,7 @@
+     }
+ 
+     ### put the nf2csv script in place
+-    unlink '/usr/sbin/nf2csv' if -e '/usr/sbin/nf2csv';  ### old path
++    unlink '/usr/bin/nf2csv' if -e '/usr/bin/nf2csv';  ### old path
+     &logr("[+] Copying nf2csv -> ${USRBIN_DIR}/nf2csv\n");
+     unlink "${USRBIN_DIR}/nf2csv" if -e "${USRBIN_DIR}/nf2csv";
+     copy 'nf2csv', "${USRBIN_DIR}/nf2csv" or die "[*] Could ",
+@@ -773,6 +769,8 @@
              $init_file = 'init-scripts/psad-init.redhat';
          } elsif ($distro eq 'fedora') {
              $init_file = 'init-scripts/psad-init.fedora';
@@ -9,13 +69,92 @@
          } elsif ($distro eq 'gentoo') {
              $init_file = 'init-scripts/psad-init.gentoo';
          } else {
-@@ -801,7 +803,8 @@
-     if ($preserve_rv) {
-         &logr("\n[+] psad has been installed (with your original config merged).\n");
-     } else {
--        &logr("\n[+] psad has been installed.\n");
-+        &logr("\n[+] psad has been compiled.\n");
-+        &logr("\n[+] use pacman -U to install.\n");
-     }
-     if ($installed_init_script) {
-         if ($init_dir) {
+@@ -1434,7 +1432,7 @@
+     unless ($found) {
+         &logr("[+] Modifying $syslog_conf to write kern.info messages " .
+             "to\n    $config{'PSAD_FIFO_FILE'} " .
+-            "(with script /usr/sbin/psadpipe.sh)");
++            "(with script /usr/bin/psadpipe.sh)");
+         unless (-e "$syslog_conf.orig") {
+             copy $syslog_conf, "$syslog_conf.orig" or die "[*] Could not copy ",
+                 "$syslog_conf -> $syslog_conf.orig: $!";
+@@ -1446,16 +1444,16 @@
+             "\nPSAD :\n",
+             "  facility = \"kern\"\n",
+             '  command  = ',
+-            "\"/usr/sbin/psadpipe.sh\"\n";
++            "\"/usr/bin/psadpipe.sh\"\n";
+         close METALOG;
+ 
+-        open PIPESCRIPT, '> /usr/sbin/psadpipe.sh' or
+-            die "[*] Unable to open /usr/sbin/psadpipe.sh: $!";
++        open PIPESCRIPT, '> /usr/bin/psadpipe.sh' or
++            die "[*] Unable to open /usr/bin/psadpipe.sh: $!";
+         print PIPESCRIPT "#!/bin/sh\n\n",
+             "echo \"\$3\" >> $config{'PSAD_FIFO_FILE'}\n";
+         close PIPESCRIPT;
+-        chmod 0700, '/usr/sbin/psadpipe.sh';
+-        &logr('[+] Generated /usr/sbin/psadpipe.sh ' .
++        chmod 0700, '/usr/bin/psadpipe.sh';
++        &logr('[+] Generated /usr/bin/psadpipe.sh ' .
+             "which writes to $config{'PSAD_FIFO_FILE'}");
+ 
+         ### (Dennis Freise <cat@final-frontier.ath.cx>)
+diff -u psad-2.4.6/psad.conf psad-2.4.6-1/psad.conf
+--- psad-2.4.6/psad.conf	2018-07-31 20:41:59.000000000 -0400
++++ psad-2.4.6-1/psad.conf	2021-08-13 14:44:36.501561557 -0400
+@@ -586,9 +586,9 @@
+ PSADWATCHD_MAX_RETRIES      10;
+ 
+ ### Directories
+-INSTALL_ROOT                /;
++INSTALL_ROOT                /home/jack/Documents/archpackages/psad/pkg/psad;
+ PSAD_DIR                    $INSTALL_ROOT/var/log/psad;
+-PSAD_RUN_DIR                $INSTALL_ROOT/var/run/psad;
++PSAD_RUN_DIR                $INSTALL_ROOT/run/psad;
+ PSAD_FIFO_DIR               $INSTALL_ROOT/var/lib/psad;
+ PSAD_LIBS_DIR               $INSTALL_ROOT/usr/lib/psad;
+ PSAD_CONF_DIR               $INSTALL_ROOT/etc/psad;
+@@ -671,23 +671,23 @@
+ IPT_ERROR_PATTERN           psad_ipterr.XXXXXX;
+ 
+ ### system binaries
+-iptablesCmd      /sbin/iptables;
+-ip6tablesCmd     /sbin/ip6tables;
+-shCmd            /bin/sh;
++iptablesCmd      /usr/bin/iptables;
++ip6tablesCmd     /usr/bin/ip6tables;
++shCmd            /usr/bin/sh;
+ wgetCmd          /usr/bin/wget;
+-gzipCmd          /bin/gzip;
+-mknodCmd         /bin/mknod;
+-psCmd            /bin/ps;
+-mailCmd          /bin/mail;
+-sendmailCmd      /usr/sbin/sendmail;
+-ifconfigCmd      /sbin/ifconfig;
+-ipCmd            /sbin/ip;
++gzipCmd          /usr/bin/gzip;
++mknodCmd         /usr/bin/mknod;
++psCmd            /usr/bin/ps;
++mailCmd          /usr/bin/mail;
++sendmailCmd      /usr/bin/sendmail;
++ifconfigCmd      /usr/bin/ifconfig;
++ipCmd            /usr/bin/ip;
+ killallCmd       /usr/bin/killall;
+-netstatCmd       /bin/netstat;
+-unameCmd         /bin/uname;
++netstatCmd       /usr/bin/netstat;
++unameCmd         /usr/bin/uname;
+ whoisCmd         $INSTALL_ROOT/usr/bin/whois_psad;
+-dfCmd            /bin/df;
+-fwcheck_psadCmd  $INSTALL_ROOT/usr/sbin/fwcheck_psad;
+-psadwatchdCmd    $INSTALL_ROOT/usr/sbin/psadwatchd;
+-kmsgsdCmd        $INSTALL_ROOT/usr/sbin/kmsgsd;
+-psadCmd          $INSTALL_ROOT/usr/sbin/psad;
++dfCmd            /usr/bin/df;
++fwcheck_psadCmd  $INSTALL_ROOT/usr/bin/fwcheck_psad;
++psadwatchdCmd    $INSTALL_ROOT/usr/bin/psadwatchd;
++kmsgsdCmd        $INSTALL_ROOT/usr/bin/kmsgsd;
++psadCmd          $INSTALL_ROOT/usr/bin/psad;
+
+
