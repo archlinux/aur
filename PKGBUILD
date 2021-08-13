@@ -30,7 +30,6 @@ build() {
 }
 package() {
 	mkdir -p "$pkgdir/usr/lib"
-	echo "A"
 	cp -r "$srcdir/$_pkgname/dist/linux-unpacked/resources" "$pkgdir/usr/lib/freezer"
 	cd "$srcdir/$_pkgname/build/iconset"
 	for size in 128 256 512; do
