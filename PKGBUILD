@@ -1,4 +1,5 @@
-# Maintainer: Aleksandr Gornostal <ulauncher.app@gmail.com>
+# Maintainer: Albin Larsson <mail@albinlarsson.com>
+# Contributor: Aleksandr Gornostal <ulauncher.app@gmail.com>
 
 # To install, run `makepkg -is`
 
@@ -9,12 +10,17 @@ pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
-depends=('gobject-introspection-runtime' 'libappindicator-gtk3' 'libkeybinder3' 'webkit2gtk'
-         "python-"{dbus,gobject,cairo,pyinotify,levenshtein,xdg,websocket-client})
-makedepends=('git' 'yarn' "python-"{distutils-extra,setuptools})
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+depends=('gobject-introspection-runtime' 'libkeybinder3' 'gtk3' 'webkit2gtk' 'libnotify'
+         'gdk-pixbuf2' 'python-dbus' 'python-levenshtein' 'python-pyinotify'
+         'python-websocket-client' 'python-pyxdg' 'python-gobject' 'python-cairo')
+makedepends=('git' 'yarn' 'python-setuptools' 'python-distutils-extra')
+checkdepends=('desktop-file-utils')
+optdepends=('libappindicator-gtk3: tray icon' 'wmctrl: fix window focus on Wayland')
+install="ulauncher.install"
+provides=("ulauncher")
+conflicts=("ulauncher")
 source=("ulauncher::git+https://github.com/Ulauncher/Ulauncher.git")
+
 sha256sums=('SKIP')
 
 pkgver() {
@@ -34,10 +40,20 @@ build() {
   ./ul build-preferences
 }
 
+check() {
+  cd ulauncher
+  desktop-file-validate "build/share/applications/ulauncher.desktop"
+}
+
 package() {
   cd ulauncher
-  install -Dm644 build/share/applications/ulauncher.desktop "$pkgdir/usr/share/applications/ulauncher.desktop"
+
+  install -Dm644 "build/share/applications/ulauncher.desktop" -t \
+        "$pkgdir/usr/share/applications"
+  
+  export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 "ulauncher.service" -t "$pkgdir/usr/lib/systemd/user"
   rm -rf "$pkgdir"/usr/share/ulauncher/preferences/{no*,src,bow*,gul*,pack*}
   find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
