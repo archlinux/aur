@@ -1,6 +1,6 @@
 pkgbase = python-dowel
 	pkgdesc = A logger for machine learning research
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 2
 	url = https://github.com/rlworkgroup/dowel
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-dowel
 	depends = python-tabulate
 	depends = python-tensorboardx
 	optdepends = tensorboard: Output to tensorboard
-	source = https://files.pythonhosted.org/packages/source/d/dowel/dowel-0.0.3.tar.gz
-	sha256sums = aac42c226c15941ba676ca6167bae296fd617f312f8dc456dffc95f561f35c8e
+	source = https://files.pythonhosted.org/packages/source/d/dowel/dowel-0.0.4.tar.gz
+	sha256sums = 832a6d06936d43101fc6f53d767db48612164e08a6e679da32b28f3898de638e
 
 pkgname = python-dowel

@@ -1,7 +1,7 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=python-dowel
 _name=${pkgname#python-}
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=2
 pkgdesc="A logger for machine learning research"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=(
 	'python-pytest-xdist'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('aac42c226c15941ba676ca6167bae296fd617f312f8dc456dffc95f561f35c8e')
+sha256sums=('832a6d06936d43101fc6f53d767db48612164e08a6e679da32b28f3898de638e')
 
 build() {
 	cd "$_name-$pkgver"
