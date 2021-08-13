@@ -1,12 +1,14 @@
 pkgbase = fonts-vegur
 	pkgdesc = Vegur outline fonts
 	pkgver = 0.701
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dotcolon.net/font/vegur
 	arch = any
 	license = custom
 	depends = fontconfig
 	source = https://dotcolon.net/download/fonts/vegur_0701.zip
+	source = COPYING::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	sha256sums = cfb06f0860aae4a6ed0ffaba4ab749a7c09c7f482e68a284a6f832c8382669ed
 	sha256sums = SKIP
 
 pkgname = fonts-vegur
