@@ -1,27 +1,25 @@
 pkgbase = python-pdm
 	pkgdesc = A modern Python package manager with PEP 582 support.
-	pkgver = 1.5.3
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://pdm.fming.dev/
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-pip
+	makedepends = python-pip>=20.1
+	depends = python>=3.8
 	depends = python-appdirs
-	depends = python-click
-	depends = python-cfonts
-	depends = python-distlib
+	depends = python-atoml>=1.0.3
+	depends = python-click>7
 	depends = python-dotenv
-	depends = python-keyring
-	depends = python-pdm-pep517
+	depends = python-installer
 	depends = python-pep517
+	depends = python-pdm-pep517>=0.8
 	depends = python-pythonfinder
 	depends = python-resolvelib
 	depends = python-shellingham
-	depends = python-tomlkit
-	depends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/p/pdm/pdm-1.5.3.tar.gz
-	sha512sums = e61f0e187b29532a56e8d95dc9f066f84ab06f843df6cd10082cf779b993b42b8e185d219e4389a35aa83089cd9ebab550e0af085957af12a59c727b5c5c15a9
+	depends = python-tomli>=1.1.0
+	source = https://files.pythonhosted.org/packages/py3/p/pdm/pdm-1.7.2-py3-none-any.whl
+	sha512sums = bbcc42195cb955aef1b31ea8b200156d9bf13e6428cd39edd4d30cb03c6d0c9f69a04f99dbac2d5f2cdb21c633b1282b6c2ee55327b507f17c600b4fd72c8747
 
 pkgname = python-pdm
-
