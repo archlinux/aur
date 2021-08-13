@@ -1,3 +1,22 @@
+=== Morgen 2.1.12
+Improvements
+- Several performance improvements were added. Most notably, the navigation with calendar shortcuts should be much more responsive now.
+- Users who have a Gravatar profile will see their avatar picture in Morgen
+- Improved parsing of attendee emails when creating an event to ensure they are valid and support for pasting multiple emails at once
+- The due date of a task can be removed after it has been set
+- The text from the conference room field of the event widget can now be copied
+- Allow invitations to be imported into a Google calendar when the calendar owner is neither the organizer nor an attendee
+- Improved shortcuts for non-US keyboards and fixed zoom using plus button on numeric keypad
+
+Bug Fixes
+- Fixed an issue that may have caused a duplicate event when accepting invitations on Google, along with additional validation checks to prevent this from happening again
+- Calendar shortcuts stopped working after restarting the app. This is fixed now.
+- Fixed an issue where the due date label of a task was not updated after midnight
+- Fixed a problem where the quick join action for meetings with a Google Meet link was not triggered correctly
+- The Windows notification center now displays the Morgen icon and correct application name
+- Fixed a bug that prevented saving task changes after selecting a due date when clicking away
+- In some cases, the tags in the event widget were not correctly recognized. This is now fixed as well.
+
 === Morgen 2.1.11
 Improvements & Fixes
 - Fixed an issue when parsing Exchange events that caused some daily events to be displayed on a wrong day
