@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/zrax/gsshvnc"
 license=('GPL2')
 depends=('gtkmm3' 'gtk-vnc' 'libssh')
+makedepends=('meson')
 source=("https://github.com/zrax/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('5de4c3f3f771fab96d29063f8b0418271e7294ff093ababee8d88c81087dfa35')
 

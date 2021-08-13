@@ -5,6 +5,7 @@ pkgbase = gsshvnc
 	url = https://github.com/zrax/gsshvnc
 	arch = x86_64
 	license = GPL2
+	makedepends = meson
 	depends = gtkmm3
 	depends = gtk-vnc
 	depends = libssh
