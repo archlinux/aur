@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 12.0.0_r187145.g929f2cf4105
+	pkgver = 12.0.0_r187312.gfb85d6eb6c3
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -47,7 +47,7 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel-git
-	depends = gcc-libs-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-libs-git=12.0.0_r187312.gfb85d6eb6c3-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs-git: for generating code for 32-bit ABI
@@ -76,7 +76,7 @@ pkgname = gcc-libs-git
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-fortran
@@ -84,7 +84,7 @@ pkgname = gcc-fortran-git
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC
-	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-objc
@@ -92,7 +92,7 @@ pkgname = gcc-objc-git
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-ada
@@ -102,7 +102,7 @@ pkgname = gcc-ada-git
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC
-	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
 	provides = go=1.12.2
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
@@ -113,7 +113,7 @@ pkgname = gcc-go-git
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
-	depends = gcc-git=12.0.0_r187145.g929f2cf4105-1
+	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
 	provides = gdc
 	provides = gdc-git
 	conflicts = gcc-d

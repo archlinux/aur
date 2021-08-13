@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git)
-pkgver=12.0.0_r187145.g929f2cf4105
+pkgver=12.0.0_r187312.gfb85d6eb6c3
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=(${pkgbase%-git})
 provides=(${pkgbase%-git})
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%_*}
 
 source=(git://gcc.gnu.org/git/gcc.git
         http://isl.gforge.inria.fr/$_isl
