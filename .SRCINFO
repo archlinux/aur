@@ -1,6 +1,6 @@
 pkgbase = linux_install-git
 	pkgdesc = Install various distros from Linux to any architecture.
-	pkgver = 0.5.0
+	pkgver = v.0.5.0.r0.gb8814c8
 	pkgrel = 1
 	url = https://github.com/alealexpro100/linux_install
 	arch = any

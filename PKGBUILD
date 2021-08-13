@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=0.5.0
+pkgver=v.0.5.0.r0.gb8814c8
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
@@ -17,8 +17,8 @@ source=("git+https://github.com/alealexpro100/linux_install.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_reponame"
-    cat version_install
+    cd "$_reponame"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
