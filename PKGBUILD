@@ -1,7 +1,6 @@
 # Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
 
 pkgname=minizip-git
-_pkgname=minizip
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
 pkgver=3.0.2.r5.gd42634c
 pkgrel=6
@@ -13,16 +12,16 @@ makedepends=('git' 'cmake')
 conflicts=('minizip' 'minizip-ng' 'minizip-asm')
 provides=('minizip' 'minizip-ng' 'libminizip.so=3.0')
 optdepends=('zstd: enables zstd compression' 'xz: enables xz and lzma compression' 'bzip2: enables bzip2 compression' 'openssl: enables encryption via openssl' 'libbsd: Build with libbsd for crypto random')
-source=("git+https://github.com/zlib-ng/minizip-ng#branch=dev")
+source=("${pkgname}::git+https://github.com/zlib-ng/minizip-ng#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}-ng
+  cd ${srcdir}/${pkgname}
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd ${srcdir}/${_pkgname}-ng
+    cd ${srcdir}/${pkgname}
     if [[ -d build ]]; then
       rm -rf build
     fi
@@ -30,7 +29,7 @@ prepare() {
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}-ng/build
+    cd ${srcdir}/${pkgname}/build
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_INSTALL_INCLUDEDIR=/usr/include/minizip \
@@ -40,8 +39,8 @@ build() {
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-ng/build
+    cd ${srcdir}/${pkgname}/build
     make DESTDIR="${pkgdir}" install
-    install -D -m644 "${srcdir}/${_pkgname}-ng/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
+    install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
 
