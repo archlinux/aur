@@ -1,0 +1,16 @@
+pkgbase = ruby-ruby_engine
+	pkgdesc = Adds the RubyEngine pseudo-constant
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/janlelis/ruby_engine
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/janlelis/ruby_engine/archive/v2.0.0/ruby_engine-2.0.0.tar.gz
+	sha256sums = 0c831878b609e1fd29681bc3a354e4e64715a16e7be029f762886dfc46cf1019
+
+pkgname = ruby-ruby_engine
