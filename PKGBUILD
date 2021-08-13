@@ -5,7 +5,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r8793.d88d22080
+pkgver=r9037.c40871f12
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -15,6 +15,12 @@ depends=('ffmpeg')
 makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-utils' 'qt5-multimedia')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra")
 md5sums=('SKIP')
+
+# Clang generates weird object files when LTO is enabled, breaking static libraries (.a).
+# Force-disable LTO if we are using clang.
+if [ "$CXX" = "clang++" ]; then
+	options=('!lto')
+fi
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -34,6 +40,11 @@ build() {
 
 	# Fix for an issue some users are facing when compiling with GCC
 	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
+
+	# Bump the expression nesting limit for clang
+	if [ "$CXX" = "clang++" ]; then
+		CXXFLAGS+=" -fbracket-depth=649"
+	fi
 
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
