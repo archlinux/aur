@@ -3,12 +3,12 @@
 _gemname=rspec-pending_for
 pkgname=ruby-${_gemname}
 pkgver=0.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Mark specs pending or skipped for specific Ruby engine / version"
 arch=(any)
 url=https://github.com/pboling/rspec-pending_for
 license=(MIT)
-depends=(ruby ruby-rspec-core ruby-ruby_engine ruby-ruby_engine)
+depends=(ruby ruby-rspec-core ruby-ruby_engine ruby-ruby_version)
 checkdepends=(ruby-bundler ruby-rake ruby-rspec ruby-minitest ruby-test-unit)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
