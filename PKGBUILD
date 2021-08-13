@@ -3,18 +3,20 @@
 _base=quadpy
 pkgname=python-${_base}
 pkgver=0.16.8
-pkgrel=6
+pkgrel=7
 pkgdesc="Numerical integration (quadrature, cubature) in Python"
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
 depends=('python-orthopy' 'python-scipy' 'python-ndim')
 makedepends=('python-setuptools' 'git-lfs')
-checkdepends=('python-tox' 'eigen' 'qt5-x11extras')
+# checkdepends=('python-tox' 'eigen' 'qt5-x11extras')
 optdepends=('python-matplotlib: for Matplotlib rendering'
   'vtk: for generate polygon data for a sphere')
 source=(git+${url}.git#tag=${pkgver})
 sha512sums=('SKIP')
+
+export GIT_LFS_SKIP_SMUDGE=1
 
 prepare() {
   cd "${_base}"
@@ -29,10 +31,10 @@ build() {
   python -c "from setuptools import setup; setup();" build
 }
 
-check() {
-  cd "${_base}"
-  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
-}
+# check() {
+#   cd "${_base}"
+#   tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
+# }
 
 package() {
   cd "${_base}"
