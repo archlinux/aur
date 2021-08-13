@@ -1,8 +1,8 @@
 pkgbase = pc-git
 	pkgdesc = Command line client for pastebins
-	pkgver = v0.1.0.r1.g1e88bfa
+	pkgver = v0.1.0.r9.gbffb741
 	pkgrel = 1
-	url = https://github.com/swalladge/pc
+	url = https://git.sr.ht/~swalladge/pc
 	arch = i686
 	arch = x86_64
 	license = APACHE
@@ -11,8 +11,7 @@ pkgbase = pc-git
 	makedepends = git
 	provides = pc
 	conflicts = pc
-	source = pc-git::git+https://github.com/swalladge/pc
+	source = pc-git::git+https://git.sr.ht/~swalladge/pc
 	sha256sums = SKIP
 
 pkgname = pc-git
-

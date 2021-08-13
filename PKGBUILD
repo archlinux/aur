@@ -1,16 +1,16 @@
 # Maintainer: Samuel Walladge <samuel@swalladge.net>
 pkgname=pc-git
 _pkgname=pc
-pkgver=v0.1.0.r1.g1e88bfa
+pkgver=v0.1.0.r9.gbffb741
 pkgrel=1
 pkgdesc="Command line client for pastebins"
 arch=('i686' 'x86_64')
-url="https://github.com/swalladge/pc"
+url="https://git.sr.ht/~swalladge/pc"
 license=('APACHE' 'MIT')
 provides=("pc")
 conflicts=("pc")
 makedepends=('cargo' 'git')
-source=("$pkgname::git+https://github.com/swalladge/pc")
+source=("$pkgname::git+https://git.sr.ht/~swalladge/pc")
 sha256sums=('SKIP')
 
 build() {
