@@ -1,11 +1,10 @@
 pkgbase = python-pdm
 	pkgdesc = A modern Python package manager with PEP 582 support.
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pdm.fming.dev/
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-pip>=20.1
 	depends = python>=3.8
 	depends = python-appdirs
