@@ -1,6 +1,6 @@
 pkgbase = abra-git
 	pkgdesc = The Co-op Cloud command-line interface 🎩🐇
-	pkgver = r181.edd0b1e
+	pkgver = r191.cc9c690
 	pkgrel = 1
 	url = https://git.coopcloud.tech/coop-cloud/go-abra
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Roxie Gibson <me@roxanne.dev>
 
 pkgname=abra-git
-pkgver=r181.edd0b1e
+pkgver=r191.cc9c690
 pkgrel=1
 pkgdesc="The Co-op Cloud command-line interface 🎩🐇"
 arch=("x86_64" "i686" "aarch64")
