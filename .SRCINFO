@@ -12,10 +12,9 @@ pkgbase = psp-libpng
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://sourceforge.net/projects/libpng/files/libpng15/older-releases/1.5.7/libpng-1.5.7.tar.gz
+	source = https://sourceforge.net/projects/libpng/files/libpng15/older-releases/1.5.7/libpng-1.5.7.tar.gz
 	source = https://raw.githubusercontent.com/pspdev/psplibraries/master/patches/libpng-1.5.7-PSP.patch
 	md5sums = 944b56a84b65d94054cc73d7ff965de8
 	md5sums = SKIP
 
 pkgname = psp-libpng
-

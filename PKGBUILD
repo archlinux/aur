@@ -1,4 +1,3 @@
-
 pkgname=psp-libpng
 pkgver=1.5.7
 pkgrel=1
@@ -10,7 +9,7 @@ groups=('psp')
 depends=('psp-sdk' 'psp-zlib')
 makedepends=('psp-gcc')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://sourceforge.net/projects/libpng/files/libpng15/older-releases/${pkgver}/libpng-${pkgver}.tar.gz"
+source=("https://sourceforge.net/projects/libpng/files/libpng15/older-releases/${pkgver}/libpng-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/pspdev/psplibraries/master/patches/libpng-${pkgver}-PSP.patch")
 md5sums=('944b56a84b65d94054cc73d7ff965de8'
          'SKIP')
