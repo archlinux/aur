@@ -2,7 +2,7 @@
 pkgbase=python-stsci.skypac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Sky matching for image mosaic"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools-scm' 'python-pytest-runner' 'python-stwcs' 'python-stsci.imagestats' 'python-spherical_geometry>=1.2.2' 'python-stsci_rtd_theme' 'python-sphinx_rtd_theme' 'python-numpydoc' 'texlive-latexextra')
 checkdepends=('python-pytest-doctestplus')
 source=("https://github.com/spacetelescope/stsci.skypac/archive/${pkgver}.tar.gz")
-md5sums=('ef0fa3f76ad6e647409b83033024bf60')
+md5sums=('30e5e2724de005f44a008d6c6e8cfaae')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs/source
