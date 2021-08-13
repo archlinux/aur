@@ -2,9 +2,9 @@
 
 _appname='nextgen'
 pkgname="${_appname}-git"
-pkgver='r12.820419d'
+pkgver='r14.81d3e71'
 pkgrel=1
-pkgdesc='An interactive Bash script that lets you easily set up a new extension project for GNOME Files (formerly Nautilus)'
+pkgdesc='An interactive Bash script that lets you easily set up a new extension project for GNOME Files (Nautilus)'
 arch=('any')
 url="https://github.com/madmurphy/${_appname}"
 license=('GPL')
