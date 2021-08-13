@@ -1,7 +1,7 @@
 # Maintainer: Alban Fichet <alban.fichet@inria.fr>
 pkgname=openexr-thumbnailer
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool to display thumbnails for OpenEXR images in your file manager."
 arch=('any')
 url="https://github.com/afichet/openexr-thumbnailer"
