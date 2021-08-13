@@ -1,7 +1,7 @@
 pkgbase = spectral-viewer
 	pkgdesc = Tool for visualising and manipulating spectral images and HDR images.
 	pkgver = 3.3.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://mrf-devteam.gitlab.io/spectral-viewer/
 	arch = any
 	license = GPL3
