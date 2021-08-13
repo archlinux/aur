@@ -1,5 +1,5 @@
 pkgbase = superslicer-profiles-git
-	pkgdesc = predefinded printer profiles for SuperSlicer
+	pkgdesc = predefined printer profiles for SuperSlicer
 	pkgver = r16.a95ec3a
 	pkgrel = 1
 	url = https://github.com/slic3r/slic3r-profiles

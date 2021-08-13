@@ -3,7 +3,7 @@
 pkgname=superslicer-profiles-git
 pkgver=r16.a95ec3a
 pkgrel=1
-pkgdesc="predefinded printer profiles for SuperSlicer"
+pkgdesc="predefined printer profiles for SuperSlicer"
 arch=('any')
 url="https://github.com/slic3r/slic3r-profiles"
 license=('AGPL3')
