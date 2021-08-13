@@ -1,0 +1,14 @@
+pkgbase = iv-git
+	pkgdesc = A simple yet powerful image viewer
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/unknown989/iv.git
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = sfml
+	depends = zenity
+	source = git+https://github.com/unknown989/iv.git
+	md5sums = SKIP
+
+pkgname = iv-git
