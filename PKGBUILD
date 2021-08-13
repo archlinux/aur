@@ -30,5 +30,5 @@ build() {
 
 package() {
 	cd iv
-	make install
+	sudo make install
 }
