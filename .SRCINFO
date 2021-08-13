@@ -1,0 +1,16 @@
+pkgbase = ruby-ruby_version
+	pkgdesc = Adds the RubyVersion pseudo-constant
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/janlelis/ruby_version
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/janlelis/ruby_version/archive/v1.0.2/ruby_version-1.0.2.tar.gz
+	sha256sums = cabe4c44f73bfad606d0ff4b61ed42270f4b38c03d37da5a9bf30b53e3b7126a
+
+pkgname = ruby-ruby_version
