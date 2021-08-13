@@ -5,7 +5,6 @@ pkgbase = python-atoml
 	url = https://pdm.fming.dev/
 	arch = any
 	license = MIT
-	makedepends = python-build
 	makedepends = python-pip
 	source = https://files.pythonhosted.org/packages/py3/a/atoml/atoml-1.0.3-py3-none-any.whl
 	sha512sums = 7e131dc4d90da83d80a200683e766efdac42b83725f576e9661386cdf37f1c3b04eca11325b8d439aac88bb0dbfcfc6e7cc2b769ca8a9d07825ec8b6b1c08c5f
