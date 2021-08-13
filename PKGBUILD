@@ -1,8 +1,8 @@
 # Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-extension-localcdn
-pkgver=2.6.8
-pkgrel=2
+pkgver=2.6.10
+pkgrel=1
 pkgdesc='LocalCDN addon for Librewolf'
 arch=('any')
 url='https://addons.mozilla.org/de/firefox/addon/localcdn-fork-of-decentraleyes/'
