@@ -1,20 +1,31 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=python-miio
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
 license=('GPL3')
-depends=('python>=3.6' 'python-appdirs' 'python-attrs' 'python-click>=7'
-         'python-construct' 'python-croniter' 'python-cryptography'
-         'python-netifaces' 'python-pytz' 'python-tqdm' 'python-yaml' 'python-zeroconf')
+depends=(
+	'python>=3.6'
+	'python-appdirs'
+	'python-attrs'
+	'python-click>=7'
+	'python-construct'
+	'python-croniter'
+	'python-cryptography'
+	'python-netifaces'
+	'python-pytz'
+	'python-tqdm'
+	'python-yaml'
+	'python-zeroconf')
 optdepends=('python-android-backup-tools: Android backup extraction support')
 makedepends=('python-dephell')
+install=miio.install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('c1f94d0129cf1992dbf4d27ab0bae56c0bccb9be62ae51593f3a49dc7bd90209839188f498dad97778b3c0321506b372c3e9af2f5ec72db01b867cfe2de4848e')
+sha512sums=('d44f48875c72fc85f99859293528c140b9ded80c39c53d4181f499159e75fc95d6625a51d43c1fb1c32f29787346d5e8cc7c12d35103177aaefbcee0aebe5f43')
 
 prepare() {
 	cd "$pkgname-$pkgver"

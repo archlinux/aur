@@ -1,0 +1,6 @@
+post_upgrade() {
+	if [ "${1%-*}" != "${2%-*}" ]; then
+		echo ':: Please check upstream documentation for any breaking changes.'
+		echo ":: You can find them here: https://github.com/rytilahti/python-miio/releases/tag/${1%-*}"
+	fi
+}
