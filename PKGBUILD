@@ -6,7 +6,7 @@
 pkgname=obs-studio-tytan652
 pkgver=27.0.1
 pkgrel=8
-pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, working VLC sources and my bind interface and GNOME entry PRs."
+pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, GNOME Wayland fix, Drag & Drop fix backported, V4L2 devices by paths and my bind interface."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
