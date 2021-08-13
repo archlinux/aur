@@ -1,0 +1,14 @@
+pkgbase = python-pytest-cache
+	pkgdesc = pytest plugin with mechanisms for caching across test runs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pypi.org/project/pytest-cache
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-pytest
+	depends = python-execnet
+	source = https://pypi.org/packages/source/p/pytest-cache/pytest-cache-1.0.tar.gz
+	sha512sums = 55eb66718a45fb0ad8931780d96fa4715cf0d9f2568be2a1b08b3399d391b818a7ae8b2afeb74b50aaf8ec8f7f0d8da8e7a7483845a50e884822ca6ddbca03ea
+
+pkgname = python-pytest-cache
