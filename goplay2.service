@@ -5,7 +5,7 @@ Requires=pulseaudio.service
 ConditionUser=!root
 
 [Service]
-ExecStart=/usr/bin/goplay2 -i enp5s0
+ExecStart=/usr/bin/goplay2 -i $(cat $HOME/.config/goplay2-network-interface || cat /etc/goplay2-default-network-interface)
 Restart=on-failure
 
 [Install]

@@ -33,4 +33,5 @@ package() {
 
   install -Dm755 goplay2/goplay2 ${bin_dir}/goplay2
   install -Dm644 ${startdir}/goplay2.service ${service_dir}/goplay2.service
+  install -Dm644 ${startdir}/goplay2-default-network-interface ${pkgdir}/etc/goplay2-default-network-interface
 }
