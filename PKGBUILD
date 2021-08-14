@@ -4,7 +4,7 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='https://wiki.ros.org/mk'
 
 pkgname='ros-noetic-mk'
-pkgver='1.15.7'
+pkgver='1.15.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -29,7 +29,7 @@ depends=(
 
 _dir="ros-${pkgver}/core/mk"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e')
+sha256sums=('2cece46697585e55db415c5ddb4be935641b70c8a220f761a8e551225f133e40')
 
 build() {
 	# Use ROS environment variables.
