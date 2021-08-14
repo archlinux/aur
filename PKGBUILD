@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=game-devices-udev
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/fabis_cafe/game-devices-udev'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('udev')
 makedepends=('git')
 install="install"
-_commit=d01b775b85e6c5874ea83ed037a6ae006cce18fd # tags/0.14^0
+_commit=a0e9de31bc37576715abe995907b49f461bfb78e #tags/0.15^0
 source=("git+https://gitlab.com/fabis_cafe/game-devices-udev.git#commit=${_commit}"
         "uinput.conf")
 sha512sums=('SKIP'
