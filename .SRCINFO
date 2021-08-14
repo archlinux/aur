@@ -1,17 +1,17 @@
 pkgbase = rsshub-git
 	pkgdesc = Everything is RSSible
-	pkgver = r5997.c0f4b73e8
+	pkgver = r6350.47176b672
 	pkgrel = 1
 	url = https://rsshub.app/
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = yarn
 	makedepends = node-gyp
 	makedepends = git
 	depends = nodejs
 	optdepends = chromium: for routes using a headless browser
 	options = !emptydirs
+	options = !strip
 	backup = etc/rsshub/rsshub.conf
 	source = rsshub-git::git+https://github.com/DIYgod/RSSHub.git
 	source = rsshub.conf
@@ -25,4 +25,3 @@ pkgbase = rsshub-git
 	sha512sums = ae2fd7a452716fccd0f421176aba9b9971edf9a9a3f241bd023044f9bce140dfcad0777eff9d47a891264d0ea49ce9f9f7671043b44fd2bcf7c9f484c08b8449
 
 pkgname = rsshub-git
-
