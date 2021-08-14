@@ -4,10 +4,10 @@
 _pkgbase=veeamsnap
 pkgname=veeamsnap
 pkgver=5.0.0.4318
-pkgrel=2
+pkgrel=3
 pkgdesc="Veeam Agent for Linux kernel modules (DKMS)"
 arch=('i686' 'x86_64')
-url="http://repository.veeam.com/backup/linux/agent"
+url="https://repository.veeam.com/backup/linux/agent"
 license=('GPLv2')
 depends=('dkms' 'rpmextract')
 conflicts=("${_pkgbase}")
