@@ -1,5 +1,6 @@
 # Changelog
 
+* [2.4.5](#2-4-5)
 * [2.4.4](#2-4-4)
 * [2.4.3](#2-4-3)
 * [2.4.2](#2-4-2)
@@ -23,6 +24,17 @@
 * [2.1.0](#2-1-0)
 * [2.0.0](#2-0-0)
 * [1.1.7](#1-1-7)
+
+
+## 2.4.5
+
+### Fixed
+
+* `fcft_text_run_rasterize()` not checking if codepoint is in the
+  font’s charset before attempting shaping
+  (https://codeberg.org/dnkl/fcft/issues/30).
+* Crash when destroying a font with a grapheme cache entry
+  representing a failed grapheme glyph.
 
 
 ## 2.4.4

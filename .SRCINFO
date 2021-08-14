@@ -1,6 +1,6 @@
 pkgbase = fcft
 	pkgdesc = Simple library for font loading and glyph rasterization using FontConfig, FreeType and pixman.
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/fcft
 	changelog = CHANGELOG.md
@@ -17,7 +17,7 @@ pkgbase = fcft
 	depends = fontconfig
 	depends = pixman
 	depends = harfbuzz
-	source = fcft-2.4.4.tar.gz::https://codeberg.org/dnkl/fcft/archive/2.4.4.tar.gz
-	sha256sums = dabf5d83bf464c493fdd3a0baa69dc549ba08633299f0197d20707ae875a59ce
+	source = fcft-2.4.5.tar.gz::https://codeberg.org/dnkl/fcft/archive/2.4.5.tar.gz
+	sha256sums = b17fcf556e2beecacd0b5dbcdf4441b737850576446f33342a3577b6afd09ee9
 
 pkgname = fcft
