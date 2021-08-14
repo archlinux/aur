@@ -1,7 +1,7 @@
 pkgbase = rime-nushu
 	pkgdesc = Nushu input for rime
 	pkgver = 0.0.0.20200722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nushu-script/rime-nushu
 	arch = x86_64
 	license = Unlicense
@@ -11,4 +11,3 @@ pkgbase = rime-nushu
 	md5sums = da3b0921dcd5152c8052d1e6ef83c68e
 
 pkgname = rime-nushu
-
