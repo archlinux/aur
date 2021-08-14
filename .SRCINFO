@@ -1,0 +1,14 @@
+pkgbase = osso-systemui-dbus-headers
+	pkgdesc = Headers for D-Bus calls provided by the system UI, and the signals emitted by it
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/maemo-leste/osso-systemui-dbus-dev
+	arch = any
+	groups = maemo
+	license = LGPL2
+	makedepends = doxygen
+	makedepends = git
+	source = git+https://github.com/maemo-leste/osso-systemui-dbus-dev.git#tag=0.1.4
+	sha256sums = SKIP
+
+pkgname = osso-systemui-dbus-headers
