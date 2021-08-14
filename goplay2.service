@@ -5,7 +5,7 @@ Requires=pulseaudio.service
 ConditionUser=!root
 
 [Service]
-ExecStart=/usr/bin/goplay2 -i enp5s0 -sink alsa_output.pci-0000_43_00.1.hdmi-stereo-extra3
+ExecStart=/usr/bin/goplay2 -i enp5s0
 Restart=on-failure
 
 [Install]
