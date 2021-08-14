@@ -1,9 +1,9 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=minecraft-legacy-launcher
 pkgver=1.6.93.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft Legacy Java Launcher"
-arch=(x86_64)
+arch=('x86_64')
 url="https://bugs.mojang.com/browse/MCL-11993"
 license=('All rights reserved')
 depends=('glibc' 'libx11' 'freetype2' 'glib2' 'java-runtime' 'opengl-driver')
