@@ -1,16 +1,16 @@
-# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
+# Maintainer: Qontinuum <qontinuum@artixlinux.org>
 
 pkgname='chromium-extension-privacybadger'
-pkgver=2021.6.8
+pkgver=2021.8.11
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 license=('GPL3')
 arch=('any')
 url="https://privacybadger.org/"
-depends=('chromium')
+optdepends=('chromium')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/privacy_badger-$pkgver.crx")
-b2sums=('e5c6022e33a9374d6e759e61222bbd0781cb10428eba7228c5abffc0a978ad3258fb1dbc45db4908be6339342004c043e20eec08c6d2c40ceb9b58be3f17f8f3')
+b2sums=('ff250bd2dfee3218a11979b995f608e87d1a7701ef8e45caa0ef54818ebe29fd09e5d019eaf9a62d7fd6acd0afbed3b0c5dd0e6607fec557608663e0055b3fcf')
 
 build() {
     echo "{ \"external_crx\": \"/usr/share/$pkgname/$pkgname.crx\", \"external_version\": \"$pkgver\" }" > pkehgijcmpdhfbdbbnkijodmdjhbjlgp.json
