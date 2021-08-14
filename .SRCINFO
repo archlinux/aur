@@ -1,0 +1,11 @@
+pkgbase = arch-linux-2d-wallpapers
+	pkgdesc = Collection of Arch Logo 2D Wallpapers
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://wallpaperzone.tumblr.com/tagged/linux/page/3
+	arch = any
+	license = CC-BY-SA
+	source = https://github.com/MMcQueenGNU/arch-linux-2d-wallpapers/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = 51da4e44e1bf5c80c7c7f15bf8ba5238
+
+pkgname = arch-linux-2d-wallpapers
