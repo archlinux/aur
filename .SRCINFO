@@ -1,6 +1,6 @@
 pkgbase = neomutt-git
 	pkgdesc = A version of mutt with added features - development branch
-	pkgver = 20210205.r683.g37fd30d1c
+	pkgver = 20210205.r719.g68949a97e
 	pkgrel = 1
 	url = http://www.neomutt.org/
 	arch = i686
