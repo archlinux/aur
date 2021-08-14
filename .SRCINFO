@@ -1,6 +1,6 @@
 pkgbase = juliaup
 	pkgdesc = An experimental Julia version manager
-	pkgver = 1.1.11
+	pkgver = 1.1.12
 	pkgrel = 1
 	url = https://github.com/JuliaLang/juliaup
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = juliaup
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/JuliaLang/juliaup/archive/refs/tags/v1.1.11.tar.gz
-	md5sums = ef7ea7c570a168a0488beb041f359259
+	source = https://github.com/JuliaLang/juliaup/archive/refs/tags/v1.1.12.tar.gz
+	md5sums = 3dae9873b9e07e6645ed719e1019dc64
 
 pkgname = juliaup
 
