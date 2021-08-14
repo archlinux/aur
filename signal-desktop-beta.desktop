@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Signal Desktop Beta
-Comment=Signal Private Messenger for Linux
+Comment=Signal Private Messenger for Linux - Beta version.
 Icon=signal-desktop-beta
 Exec=signal-desktop-beta %U
 Terminal=false
