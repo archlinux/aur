@@ -3,10 +3,10 @@
 
 pkgname=veeam
 pkgver=5.0.0.4318
-pkgrel=11
+pkgrel=12
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
-url=http://repository.veeam.com/backup/linux/agent
+url=https://repository.veeam.com/backup/linux/agent
 install=${pkgname}.install
 license=('custom')
 depends=('ncurses' 'lvm2' 'fuse' 'mlocate' 'veeamsnap')
