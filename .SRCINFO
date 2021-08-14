@@ -1,6 +1,6 @@
 pkgbase = vopono-git
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = r190.66bdbf4
+	pkgver = r197.6eb823c
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = any
