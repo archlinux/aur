@@ -2,14 +2,14 @@
 
 
 pkgname=apidb-commands
-pkgver=5.0.12
+pkgver=5.13.4
 pkgrel=1
 pkgdesc="API Generator for Database acces."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/apidb"
 depends=('apidb-core')
-md5sums=('f0eeeb1c7afb2a942203f5e661ced334')
+md5sums=('635d36bde44f97b1e0694b69d494bdf9')
 source=(https://github.com/azaeldevel/apidb/archive/${pkgver}-beta.tar.gz)
 conflicts=('apidb')
 
