@@ -1,11 +1,11 @@
 pkgbase = otf-linja-pona
 	pkgdesc = A toki pona font for the sitelen pona writing system
-	pkgver = 4.2
+	pkgver = 4.9
 	pkgrel = 1
 	url = http://musilili.net/linja-pona/
 	arch = any
 	license = unknown
-	source = linja-pona-4.2.otf::https://github.com/janSame/linja-pona/blob/master/linja-pona-4.2.otf?raw=true
-	sha256sums = 8d7664a942ecb293e37dd7c64654e9fd763fa97003ca4e9697e003fb26b05bd3
+	source = linja-pona-4.9.otf::https://github.com/janSame/linja-pona/blob/master/linja-pona-4.9.otf?raw=true
+	sha256sums = c107d32b86ff4be37e60b74af3750289ed8baae4d03b8e05844e394c4b9725cb
 
 pkgname = otf-linja-pona
