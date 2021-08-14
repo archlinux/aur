@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='https://wiki.ros.org/roslib'
 
 pkgname='ros-noetic-roslib'
-pkgver='1.15.7'
+pkgver='1.15.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -34,7 +34,7 @@ depends=(
 
 _dir="ros-${pkgver}/core/roslib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e')
+sha256sums=('2cece46697585e55db415c5ddb4be935641b70c8a220f761a8e551225f133e40')
 
 build() {
 	# Use ROS environment variables.
