@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=dngconverter
-pkgver=13.1
+pkgver=13.3
 pkgrel=1
 pkgdesc='Adobe DNG Converter'
 arch=('x86_64')
@@ -11,10 +11,10 @@ makedepends=('wine' 'winetricks')
 options=('!strip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("http://download.adobe.com/pub/adobe/dng/win/DNGConverter_${pkgver/./_}.exe"
+source=("http://download.adobe.com/pub/adobe/dng/win/AdobeDNGConverter_x64_${pkgver/./_}.exe"
         'dngconverter'
         '_dngconverter')
-sha1sums=('3552c924a6928aa092384cae54a2511bc056d1eb'
+sha1sums=('548e18c0bafd9a5b333966217bbaca56568dae75'
           'SKIP'
           'SKIP')
 
@@ -24,8 +24,7 @@ build() {
     export XDG_DATA_HOME="$srcdir"/tmp/local
     export WINEDLLOVERRIDES="mscoree=,mshtml="
     winetricks win10
-    wine "${srcdir}"/DNGConverter_${pkgver/./_}.exe /S
-    pkill -f 'C\:\\windows\\system32\\explorer\.exe C:\\Program Files\\Adobe'
+    wine "${srcdir}"/AdobeDNGConverter_x64_${pkgver/./_}.exe /VERYSILENT
 }
 
 package() {
