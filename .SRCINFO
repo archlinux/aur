@@ -1,0 +1,14 @@
+pkgbase = cityinfo
+	pkgdesc = Cityinfo library allows to get some informations about cities.
+	pkgver = 0.5.18
+	pkgrel = 1
+	url = https://github.com/maemo-leste/cityinfo
+	arch = any
+	groups = maemo
+	license = LGPL
+	makedepends = gconf
+	makedepends = glib2
+	source = git+https://github.com/maemo-leste/cityinfo.git#tag=0.5.18
+	sha256sums = SKIP
+
+pkgname = cityinfo
