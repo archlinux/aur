@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=lib32-mozjpeg
-pkgver=4.0.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='JPEG image codec with accelerated baseline decoding and superior encoding (32-bit)'
 url=https://github.com/mozilla/mozjpeg
