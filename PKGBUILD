@@ -11,9 +11,8 @@ license=("GNU")
 arch=("x86_64")
 provides=("cell")
 conflicts=("cell")
-source=("https://github.com/ShaharyarAhmed-bot/cell/releases/download/v$pkgver/cell-$pkgver-x86_64.tar.gz")
-
-sha256sums=("11d3bc59f207eb6bd93aedcb902aab1aad60cd34f47f4a63742f9d197ec9e09d")
+source=("https://github.com/shaharyarahmed-bot/cell/releases/download/$pkgver/cell-$pkgver-x86_64.tar.gz")
+sha256sums=("2bfa32785cdcd7fa8469a8ea0e5dff707b0bc60d18bd1b848d9bd29a57f48476")
 
 package() {
     install -Dm755 cell -t "$pkgdir/usr/bin"

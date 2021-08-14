@@ -7,7 +7,7 @@ pkgbase = cell-bin
 	license = GNU
 	provides = cell
 	conflicts = cell
-	source = https://github.com/ShaharyarAhmed-bot/cell/releases/download/v0.1.0/cell-0.1.0-x86_64.tar.gz
+	source = https://github.com/ShaharyarAhmed-bot/cell/releases/download/0.1.0/cell-0.1.0-x86_64.tar.gz
 	sha256sums = 11d3bc59f207eb6bd93aedcb902aab1aad60cd34f47f4a63742f9d197ec9e09d
 
 pkgname = cell-bin
