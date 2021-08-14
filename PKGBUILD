@@ -28,15 +28,8 @@ depends=(
 )
 
 _dir="python_qt_binding-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
-        "sip_path.patch"::"https://patch-diff.githubusercontent.com/raw/ros-visualization/python_qt_binding/pull/95.patch")
-sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07'
-            '5fdb617cccdd83d5f834b12bb50cba96088851dedeafdb93e1263afe49826d50')
-
-prepare() {
-    cd ${srcdir}/${_dir}
-    patch --strip=1 --input="${srcdir}/sip_path.patch"
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz")
+sha256sums=('bcb5076226100f901e6a22656cf69ef0e8d5f1845670e6fad6fc5fdcb3a1dd07')
 
 build() {
     # Use ROS environment variables.
