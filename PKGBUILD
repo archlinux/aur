@@ -14,7 +14,7 @@ pkgdesc="Eclipse based LDAP browser and directory client"
 arch=('x86_64')
 url="https://directory.apache.org/studio/"
 license=('Apache')
-depends=('java-runtime>=11' 'java-runtime<=15' 'python' 'libsecret')
+depends=('java-runtime>=11' 'java-runtime<=16' 'python' 'libsecret')
 source=('apachedirectorystudio.desktop' 'apachedirectorystudio.png')
 source_x86_64=("http://www.apache.org/dist/directory/studio/$_pkgver/$_pkgname-$_pkgver-linux.gtk.${CARCH}.tar.gz")
 sha256sums=('d8c2b2b4bc29de8d5dca34b6f9f1ff1a8716f91cf132d76232a9a133a95c6e68'

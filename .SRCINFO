@@ -6,7 +6,7 @@ pkgbase = apachedirectorystudio
 	arch = x86_64
 	license = Apache
 	depends = java-runtime>=11
-	depends = java-runtime<=15
+	depends = java-runtime<=16
 	depends = python
 	depends = libsecret
 	source = apachedirectorystudio.desktop
