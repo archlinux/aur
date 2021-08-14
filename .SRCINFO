@@ -1,0 +1,18 @@
+pkgbase = gccgo-bin
+	pkgdesc = gccgo compiler for the go command. For use with go build -compiler gccgo .
+	pkgver = 11.1.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = gcc=11.1.0-1
+	provides = gccgo
+	conflicts = gcc-go
+	options = !strip
+	source = gcc-go-11.1.0-1-x86_64.tar.zst::https://github.com/eNV25/aur-gccgo-bin/releases/download/11.1.0-1/gcc-go-11.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = 8bc1dc82ca3220bec383a2a4bdf6fe1cb9a34a3cb2c9e01700ce5709da754343
+
+pkgname = gccgo-bin
