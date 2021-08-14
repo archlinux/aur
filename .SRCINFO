@@ -1,0 +1,19 @@
+pkgbase = libconic
+	pkgdesc = Internet connectivity library
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/maemo-leste/libconic
+	arch = any
+	groups = maemo
+	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = glib2
+	depends = dbus-glib
+	depends = gconf
+	depends = icd2-osso-ic-headers
+	source = git+https://github.com/maemo-leste/libconic.git#tag=0.24.1
+	sha256sums = SKIP
+
+pkgname = libconic
