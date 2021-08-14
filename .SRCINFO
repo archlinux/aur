@@ -1,6 +1,6 @@
 pkgbase = ghost-deps-meta
 	pkgdesc = Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix
-	pkgver = 20210810
+	pkgver = 20210814
 	pkgrel = 1
 	arch = any
 	license = GPL
@@ -98,5 +98,13 @@ pkgbase = ghost-deps-meta
 	provides = python-qscintilla-qt4
 	provides = python2-qscintilla-qt4
 	provides = python-qscintilla-qt4-common
+	provides = js
+	provides = python2-gevent
+	provides = python2-m2crypto
+	provides = cegui-0.7
+	provides = raspberrypi-firmware
+	provides = python-raspberry-gpio
+	provides = raspberrypi-userland-aarch64
+	provides = raspberrypi-userland-aarch64-git
 
 pkgname = ghost-deps-meta

@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=ghost-deps-meta
-pkgver=20210810
+pkgver=20210814
 pkgrel=1
 pkgdesc="Metapkg for cleaning the AUR, provide no longer existing packages for finding pkgbuilds that need a fix"
 arch=(any)
@@ -28,6 +28,8 @@ provides=(tui dbus-core mono-stable msbuild-stable gtk3-print-backends libudev.s
           fsharp-mono-bin monodevelop-stable python2-gtkspell opentk
           nuvolaplayer-git python-django18 wxgtk
           qscintilla-qt4 python-qscintilla-qt4 python2-qscintilla-qt4 python-qscintilla-qt4-common
+          js python2-gevent python2-m2crypto cegui-0.7
+          raspberrypi-firmware python-raspberry-gpio raspberrypi-userland-aarch64 raspberrypi-userland-aarch64-git
 )
 
 #pkgver() { date +%Y%m%d }
