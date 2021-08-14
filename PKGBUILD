@@ -3,23 +3,21 @@
 pkgname=enve-git
 _pkgname=${pkgname%-git}
 pkgver=continuous.linux.r52.gc39be6f4
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="2D animation software"
 url="https://maurycyliebner.github.io/"
 license=('GPL3')
-depends=('gperftools' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine')
+depends=('gperftools' 'qt5-multimedia' 'qt5-svg' 'qt5-webengine' 'qscintilla-qt5' 'quazip')
 makedepends=('git' 'gn' 'intltool' 'ninja' 'openmp' 'python')
 source=("git+https://github.com/MaurycyLiebner/enve.git"
         "git+https://github.com/gperftools/gperftools.git"
         "git+https://github.com/mypaint/libmypaint.git"
         "git+https://skia.googlesource.com/skia.git"
-        "git+https://github.com/opencor/qscintilla.git"
         "enve-QPainterPath.patch"
         "enve-skia-deps-python3.patch")
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -37,13 +35,21 @@ prepare() {
   git submodule init
   git config submodule.third_party/gperftools.url $srcdir/gperftools
   git config submodule.third_party/libmypaint.url $srcdir/libmypaint
-  git config submodule.third_party/qscintilla.url $srcdir/qscintilla
   git config submodule.third_party/skia.url $srcdir/skia
   git submodule update
 
   # Patching enve source code
   patch --forward --strip=1 --input="$srcdir/enve-QPainterPath.patch"
-  sed -i 's|libmypaint/||g' src/core/libmypaintincludes.h
+  sed -i 's|libmypaint/||g' \
+          src/core/libmypaintincludes.h
+
+  # Change include directories
+  sed -i 's|$$THIRD_PARTY_FOLDER/qscintilla/Qt4Qt5|/usr/include/qt|' \
+          src/app/app.pro
+  sed -i "s|\$\$THIRD_PARTY_FOLDER/quazip|$(pacman -Ql quazip | cut -d ' ' -f 2 | grep -i include\/quazip | head -1 | sed 's|\/$||')|" \
+          src/core/core.pri
+  sed -i "s|-L\$\$QUAZIP_FOLDER/.*|$(pacman -Ql quazip | cut -d ' ' -f 2 | grep -i lib\/*quazip | head -1)|" \
+          src/core/core.pri
 
   cd third_party
 
@@ -88,20 +94,10 @@ build() {
   make
   unset CFLAGS
 
-  # Build quazip
-  cd "$_third_party_dir/quazip"
-  qmake quazip.pro CONFIG+=Release
-  make
-
   # Build gperftools
   cd "$_third_party_dir/gperftools"
   ./autogen.sh
   ./configure --prefix=/usr LIBS=-lpthread
-  make
-
-  # Build qscintilla
-  cd "$_third_party_dir/qscintilla"
-  qmake Qt4Qt5/qscintilla.pro CONFIG+=Release
   make
 
   # Build enve
