@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=v.0.5.0.r0.gb8814c8
+pkgver=v0.5.1.r0.g08ca1ee
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
