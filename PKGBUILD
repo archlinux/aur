@@ -12,14 +12,14 @@
 
 _name=opencv
 pkgname="$_name-git"
-pkgver=4.1.1.r65.gbf0765fc7f
+pkgver=4.5.3.r118.g0c01cf7c85
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library"
 url="https://opencv.org/"
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('intel-tbb' 'openexr' 'gst-plugins-base' 'libdc1394' 'cblas' 'lapack' 'libgphoto2' 'jasper' 'ffmpeg')
-makedepends=('git' 'cmake' 'python-numpy' 'python-setuptools' 'mesa' 'eigen' 'hdf5' 'lapacke' 'gtk3' 'vtk' 'glew' 'ant' 'java-environment')
+makedepends=('git' 'cmake' 'python-numpy' 'python-setuptools' 'mesa' 'eigen' 'hdf5' 'lapacke' 'gtk3' 'vtk' 'glew' 'ant' 'java-environment' 'qt5-base')
 optdepends=('opencv-samples: samples'
             'gtk3: for the HighGUI module and Python bindings'
             'vtk: for the viz module'
@@ -30,9 +30,11 @@ optdepends=('opencv-samples: samples'
 conflicts=('opencv')
 provides=("$_name=$pkgver")
 source=('git+https://github.com/opencv/opencv.git'
-        'git+https://github.com/opencv/opencv_contrib.git')
+        'git+https://github.com/opencv/opencv_contrib.git'
+        'opencv-lapack-3.10.patch')
 sha512sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'a13dfa91ee423d2ee5f6344ccb8394f96195538b3d668f97c5fdc3ccd84d5ecd54f80bc6fa45685f319ab0d0c9bb5ad533c0f2d1a20d21f3a5afdd1c0239bfa1')
 
 _cmakeopts=('-DWITH_OPENCL=ON'
             '-DWITH_OPENGL=ON'
@@ -60,6 +62,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  cd "$srcdir"
+  patch -d "$_name" -p1 < opencv-lapack-3.10.patch # Fix build with LAPACK 3.10
 }
 
 build() {

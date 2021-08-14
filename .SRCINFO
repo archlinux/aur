@@ -1,6 +1,6 @@
 pkgbase = opencv-git
 	pkgdesc = Open Source Computer Vision Library
-	pkgver = 4.0.0.r81.g197285d12a
+	pkgver = 4.5.3.r118.g0c01cf7c85
 	pkgrel = 1
 	url = https://opencv.org/
 	arch = i686
@@ -17,6 +17,9 @@ pkgbase = opencv-git
 	makedepends = gtk3
 	makedepends = vtk
 	makedepends = glew
+	makedepends = ant
+	makedepends = java-environment
+	makedepends = qt5-base
 	depends = intel-tbb
 	depends = openexr
 	depends = gst-plugins-base
@@ -27,16 +30,19 @@ pkgbase = opencv-git
 	depends = jasper
 	depends = ffmpeg
 	optdepends = opencv-samples: samples
-	optdepends = gtk3: for the HighGUI module
-	optdepends = hdf5: Support for HDF5 format
+	optdepends = gtk3: for the HighGUI module and Python bindings
+	optdepends = vtk: for the viz module
+	optdepends = hdf5: for the HDF5 module and the Python bindings
 	optdepends = opencl-icd-loader: For coding with OpenCL
-	optdepends = python-numpy: Python 3 interface
-	provides = opencv=4.0.0.r81.g197285d12a
+	optdepends = python-numpy: Python bindings
+	optdepends = java-runtime: Java interface
+	provides = opencv=4.5.3.r118.g0c01cf7c85
 	conflicts = opencv
 	source = git+https://github.com/opencv/opencv.git
 	source = git+https://github.com/opencv/opencv_contrib.git
+	source = opencv-lapack-3.10.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = a13dfa91ee423d2ee5f6344ccb8394f96195538b3d668f97c5fdc3ccd84d5ecd54f80bc6fa45685f319ab0d0c9bb5ad533c0f2d1a20d21f3a5afdd1c0239bfa1
 
 pkgname = opencv-git
-
