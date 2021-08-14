@@ -1,27 +1,21 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=legit
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Add licenses to projects at the command line"
 arch=('any')
 url='https://github.com/captainsafia/legit'
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@captainsafia/legit/-/legit-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ad126242ca1657fe9470712903383c6f588461ad15182734667e760d805ba21b')
+sha256sums=('44b38be1f7f511596367c9e1eed13e5f42970bcf5289691bda60d0a2bcfd3b97')
 
 package() {
-  npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-  local tmppackage="$(mktemp)"
-  local pkgjson="$pkgdir/usr/lib/node_modules/@captainsafia/$pkgname/package.json"
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  mv "$tmppackage" "$pkgjson"
-  chmod 644 "$pkgjson"
-  chown -R root:root "${pkgdir}"
-  install -Dm644 "${pkgdir}/usr/lib/node_modules/@captainsafia/legit/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
+	install -Dm 644 "$pkgdir/usr/lib/node_modules/@captainsafia/legit/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	chown -R root:root "$pkgdir/"
 }
