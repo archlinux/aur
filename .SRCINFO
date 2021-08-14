@@ -1,0 +1,17 @@
+pkgbase = icd2-osso-ic-headers
+	pkgdesc = Compatibility header files for osso-ic-headers
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/maemo-leste/icd2-osso-ic-dev
+	arch = any
+	groups = maemo
+	license = LGPL
+	makedepends = libtool
+	makedepends = m4
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	source = git+https://github.com/maemo-leste/icd2-osso-ic-dev.git#tag=2.0.1
+	sha256sums = SKIP
+
+pkgname = icd2-osso-ic-headers
