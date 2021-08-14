@@ -4,7 +4,7 @@
 
 pkgname=ttf-playfair-display-ibx
 pkgver=1.200
-pkgrel=1
+pkgrel=2
 depends=('fontconfig')
 pkgdesc="An Open Source typeface family for display and titling use"
 url="http://www.forthehearts.net/"
@@ -26,7 +26,7 @@ source=('https://github.com/google/fonts/blob/c0b8d90a7e6bd80588da02746085c903c8
         'https://github.com/google/fonts/raw/c0b8d90a7e6bd80588da02746085c903c8e2d242/ofl/playfairdisplay/PlayfairDisplay-Italic.ttf'
         45-playfair-display.conf
         90-tt-playfair-display.conf)
-sha256sums=('ff7cf3685e80028ba29d3b5f07124f5f90adc93fe69086555a8bbd2a55ff04f6'
+sha256sums=('f6ac8c39789c7e5848672b79bbc04125ce7ddeffbe18dbdfa7817b4cea048642'
             'e414e07f7a4da16ed47ebec80d52dd79f21d3ca42bc92385a755d8078a038814'
             '9a508229401e2a5deb52ff9c11f00446a482bd25029836a54027716310cfe0b0'
             '6bea69bbdbbc93addd99bd124763e1fc8a31c9d72513e2d22087d04676e1546f'
