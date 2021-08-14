@@ -2,7 +2,7 @@
 # Maintainer: LycheeSlicer
 # Contributor: LycheeSlicer
 pkgname=lycheeslicer
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Lychee Slicer"
 arch=('x86_64')
