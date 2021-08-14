@@ -2,8 +2,8 @@
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-keylase
-pkgver=470.57.02
-pkgrel=2
+pkgver=470.63.01
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/keylase/nvidia-patch/"
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patches made by Keylase"
@@ -13,8 +13,6 @@ optdepends=("nvidia-settings=${pkgver}: configuration tool"
             "opencl-nvidia=${pkgver}: OpenCL support")
 # Only accept the normal version with the same version to avoid issue.
 conflicts=('nvidia-libgl'
-           "nvidia>${pkgver}" "nvidia-dkms>${pkgver}"
-           "nvidia<${pkgver}" "nvidia-dkms<${pkgver}"
            'nvidia-vulkan' 'nvidia-vulkan-dkms'
            'nvidia-beta' 'nvidia-beta-dkms'
            'nvidia-dkms-performance')
@@ -29,7 +27,7 @@ source=('nvidia-drm-outputclass.conf'
         "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
-            '7123ee05aa0cc94c4cf1f0717daf85b116f0200b8f78f9322ea847db70e56386a065e0085959f27cbf0a8f9befe6fc7a0145d1bf2a28616df9bc8b5effd812f8')
+            'd3dadf93df86e5462ecb4ae6a04f03b05bf1450ad91e8c2aa73e838ddc9aa11b4e926fc32714d32bd7c606498fee5a54c77d5e40ecc08a039d3e9c2d331ad454')
 
 
 create_links() {
