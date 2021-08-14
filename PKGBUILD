@@ -7,6 +7,7 @@ arch=('any')
 url='https://github.com/SammysHP/i3lockmore'
 license=('MIT')
 depends=('i3lock' 'imagemagick' 'xorg-xset' 'xorg-xrandr')
+makedepends=('git')
 source=("${pkgname%-git}::git+https://github.com/SammysHP/${pkgname%-git}.git")
 md5sums=('SKIP')
 
