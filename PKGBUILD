@@ -1,9 +1,9 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libvtflib-git
 pkgver=r38.a501ba5
-pkgrel=3
+pkgrel=4
 pkgdesc="Library to handle Valve's Texture Format"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/panzi/VTFLib"
 license=('GPL')
 depends=('libtxc_dxtn')
