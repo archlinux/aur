@@ -4,13 +4,13 @@
 # Contributor: farseerfc <farseerfc@gmail.com>
 pkgname=glmark2-git
 pkgver=r960.ca8de51
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark (X11, Wayland, DRM)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glmark2/glmark2"
 license=('GPL' 'custom')
 depends=('libjpeg-turbo' 'libpng' 'libx11' 'mesa' 'systemd-libs' 'libgl' 'libgles' 'wayland' 'egl-wayland')
-makedepends=('meson' 'systemd' 'wayland-protocols')
+makedepends=('git' 'meson' 'systemd' 'wayland-protocols')
 conflicts=('glmark2')
 provides=('glmark2')
 source=("$pkgname"::'git://github.com/glmark2/glmark2.git')

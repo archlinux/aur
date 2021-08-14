@@ -1,12 +1,13 @@
 pkgbase = glmark2-git
 	pkgdesc = An OpenGL 2.0 and ES 2.0 benchmark (X11, Wayland, DRM)
 	pkgver = r960.ca8de51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glmark2/glmark2
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	license = custom
+	makedepends = git
 	makedepends = meson
 	makedepends = systemd
 	makedepends = wayland-protocols
