@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g3-kpe
-pkgver=2.4.1
+pkgver=2.5
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python-setuptools'
              'nodejs' 'python-psutil' 'binutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=2a0b88ee80b2ec6bbd4642290402392185570f52
+_filesrev=22307ab353f68d777ea1ce0881a7fdc55a06a26b
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g3-kpe
 _commit=11befa20d8c009ee5eaeb44bb3b586de9390bfcd
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -158,9 +158,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
 
-# Build langpacks
-#   mkdir -p "${srcdir}"/waterfox-g3-kpe-$pkgver/langpacks/
-
+  # Build langpacks
 #   cat > ../mozconfig_LANG <<END
 # ac_add_options --with-app-name=waterfox-g3
 # ac_add_options --with-app-basename=Waterfox
@@ -179,8 +177,8 @@ END
 #         sed -i "s|obj_LANG|obj_$locale|" ${PWD}/mozconfig_$locale
 #         export MOZCONFIG=${PWD}/mozconfig_$locale
 #         ./mach build config/nsinstall langpack-$locale
-#         cp -L ../obj_$locale/dist/linux-*/xpi/waterfox-g3-$(<browser/config/version.txt).$locale.langpack.xpi \
-#             ${PWD}/langpacks/langpack-$locale@l10n.waterfox.net.xpi
+#         cp -L ../obj_$locale/dist/linux-*/xpi/waterfox-g3-$(<browser/config/version_display.txt).$locale.langpack.xpi \
+#             ${PWD}/langpack-$locale@l10n.waterfox.net.xpi
 # ' -- {}
 }
 
@@ -240,9 +238,9 @@ END
   cp "$srcdir/syspref.js" "$pkgdir/etc/waterfox-g3/"
   ln -Tsf /etc/waterfox-g3/syspref.js "$pkgdir/usr/lib/waterfox-g3/browser/defaults/preferences/syspref.js"
 
-  # Add langpacks
-  # mkdir -p "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
-  # cp "${srcdir}"/waterfox-g3-kpe-$pkgver/langpacks/*.xpi "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
+#   # Add langpacks
+#   mkdir -p "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
+#   cp "${srcdir}"/waterfox-g3-kpe-$pkgver/*.xpi "$pkgdir/usr/lib/waterfox-g3/browser/extensions/"
 }
 
 # vim: set ts=2 sw=2 et syn=sh ft=sh:
