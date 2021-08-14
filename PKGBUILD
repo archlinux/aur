@@ -7,7 +7,7 @@
 
 pkgname=apachedirectorystudio
 _pkgname=ApacheDirectoryStudio
-pkgver=2.0.0.v20210213.16
+pkgver=2.0.0.v20210717.17
 pkgrel=0
 _pkgver="${pkgver%.*}-M${pkgver##*.}"
 pkgdesc="Eclipse based LDAP browser and directory client"
@@ -19,7 +19,7 @@ source=('apachedirectorystudio.desktop' 'apachedirectorystudio.png')
 source_x86_64=("http://www.apache.org/dist/directory/studio/$_pkgver/$_pkgname-$_pkgver-linux.gtk.${CARCH}.tar.gz")
 sha256sums=('d8c2b2b4bc29de8d5dca34b6f9f1ff1a8716f91cf132d76232a9a133a95c6e68'
             '400929c64547773a1bba1c82f7c12f9cd55f2a68b43f5fcebc3c4d07cbe6549b')
-sha256sums_x86_64=('6292ee07e8dad3022bae27768392b44397ac7f4cdae606518f0a3afc932b6bec')
+sha256sums_x86_64=('24764eff94ad3a257a899d34f9933276af0d201fba9017d6737558b2ffd5eda7')
 
 package() {
   cd "$pkgdir"
