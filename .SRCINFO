@@ -1,0 +1,13 @@
+pkgbase = goplay2-git
+	pkgdesc = goplay2 airplay2 server
+	pkgver = 0.0.62
+	pkgrel = 1
+	url = https://github.com/openairplay/goplay2
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = libfdk-aac
+	source = git+https://github.com/openairplay/goplay2
+	sha256sums = SKIP
+
+pkgname = goplay2-git
