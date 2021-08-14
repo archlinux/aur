@@ -3,13 +3,13 @@ _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
 pkgver=0.7.7
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
 depends=('python-matplotlib' 'python-npx')
 makedepends=('python-setuptools' 'git-lfs')
-checkdepends=('python-tox' 'gmsh')
+# checkdepends=('python-tox' 'gmsh')
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
   'python-optimesh: for triangular mesh optimization'
@@ -36,10 +36,10 @@ build() {
   python -c "from setuptools import setup; setup();" build
 }
 
-check() {
-  cd "${_base}"
-  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
-}
+# check() {
+#   cd "${_base}"
+#   tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
+# }
 
 package() {
   cd "${_base}"

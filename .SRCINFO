@@ -1,12 +1,10 @@
 pkgbase = python-colorio
 	pkgdesc = Tools for color models
 	pkgver = 0.7.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nschloe/colorio
 	arch = x86_64
 	license = GPL3
-	checkdepends = python-tox
-	checkdepends = gmsh
 	makedepends = python-setuptools
 	makedepends = git-lfs
 	depends = python-matplotlib
