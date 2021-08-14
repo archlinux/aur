@@ -1,0 +1,15 @@
+pkgbase = statusbar-alarm-dbus
+	pkgdesc = Plugin showing current time and alarm set
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://github.com/maemo-leste/statusbar-alarm-dbus-api
+	arch = any
+	groups = maemo
+	license = LGPL
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	source = git+https://github.com/maemo-leste/statusbar-alarm-dbus-api.git#tag=0.5.11
+	sha256sums = SKIP
+
+pkgname = statusbar-alarm-dbus
