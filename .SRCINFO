@@ -1,6 +1,6 @@
 pkgbase = pencil-git
 	pkgdesc = An open-source GUI prototyping tool
-	pkgver = r1540.043ca48
+	pkgver = 3.0.3.r167.g043ca48
 	pkgrel = 1
 	url = http://pencil.evolus.vn/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = pencil-git
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	provides = pencil=r1540.043ca48
+	provides = pencil=3.0.3.r167.g043ca48
 	conflicts = pencil
 	replaces = evolus-pencil-git
 	replaces = evolus-pencil-svn

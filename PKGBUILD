@@ -3,7 +3,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=pencil-git
-pkgver=r1540.043ca48
+pkgver=3.0.3.r167.g043ca48
 pkgrel=1
 pkgdesc="An open-source GUI prototyping tool"
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/pencil"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 --match="v*" HEAD |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
