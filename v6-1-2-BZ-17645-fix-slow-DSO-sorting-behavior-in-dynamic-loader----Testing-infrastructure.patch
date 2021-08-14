@@ -1,8 +1,8 @@
 diff --git a/elf/Makefile b/elf/Makefile
-index 5e7f938e2d..1cfc22b5d1 100644
+index 4fe60947ad..fe7a8b418f 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
-@@ -450,6 +450,21 @@  tests-special += $(objpfx)order-cmp.out $(objpfx)tst-array1-cmp.out \
+@@ -469,6 +469,21 @@ tests-special += $(objpfx)order-cmp.out $(objpfx)tst-array1-cmp.out \
  		 $(objpfx)tst-unused-dep-cmp.out
  endif
  
@@ -26,10 +26,10 @@ index 5e7f938e2d..1cfc22b5d1 100644
  update-abi: update-abi-ld
 diff --git a/elf/dso-sort-tests-1.def b/elf/dso-sort-tests-1.def
 new file mode 100644
-index 0000000000..51337ec3c7
+index 0000000000..51f1d2e158
 --- /dev/null
 +++ b/elf/dso-sort-tests-1.def
-@@ -0,0 +1,61 @@ 
+@@ -0,0 +1,66 @@
 +# DSO sorting test descriptions.
 +# This file is to be processed by ../scripts/dso-ordering-test.py, see usage
 +# in elf/Makefile for how it is executed.
@@ -79,6 +79,11 @@ index 0000000000..51337ec3c7
 +tst-dso-ordering9: a->b->c->d->e;{}!->[abcde]
 +output: e>d>c>b>a>{}<a<b<c<d<e
 +
++# Test if init/fini ordering behavior is proper, despite main program with
++# an soname that may cause confusion
++tst-dso-ordering10: {}->a->b->c;soname({})=c
++output: b>a>{}<a<b
++
 +# Complex example from Bugzilla #15311, under-linked and with circular
 +# relocation(dynamic) dependencies. While this is technically unspecified, the
 +# presumed reasonable practical behavior is for the destructor order to respect
@@ -93,10 +98,10 @@ index 0000000000..51337ec3c7
 +output(glibc.rtld.dynamic_sort=2): {+a[d>c>b>a>];+e[e>];+f[f>];+g[g>];+d[];%d(b(e(a()))a()g(c(a()f(b(e(a()))))));-d[];-g[];-f[];-e[];-a[<g<f<a<b<c<d<e];}
 diff --git a/elf/dso-sort-tests-2.def b/elf/dso-sort-tests-2.def
 new file mode 100644
-index 0000000000..1ff3094895
+index 0000000000..865f57be04
 --- /dev/null
 +++ b/elf/dso-sort-tests-2.def
-@@ -0,0 +1,614 @@ 
+@@ -0,0 +1,614 @@
 +# Large DSO sorting testcase adapted from Red Hat Bugzilla 1162810
 +#
 +# Note that below we specify different expected outputs between dynamic_sort=1
@@ -106,7 +111,7 @@ index 0000000000..1ff3094895
 +# They are not "definitively" correct outputs, for circular dependencies
 +# inherently have unspecified behavior.
 +
-+tst-redhat-1162810:
++xtest(tst-redhat-1162810):
 +{}->A101
 +{}->*
 +A101->(B101 B163 B122 B181)
@@ -713,10 +718,10 @@ index 0000000000..1ff3094895
 +output(glibc.rtld.dynamic_sort=2): M30X19>M30X15>M30X16>M30X11>M30X12>M30X17>M30X13>M30X14>M29X20>M30X23>M30X24>M30X20>M30X18>M29X15>M29X12>M30X22>M30X21>M29X22>M30X25>M29X19>M29X23>M29X16>M29X24>M29X13>M29X17>M29X18>M28X19>M29X21>M29X25>M29X14>M28X20>M28X15>M28X16>M28X21>M27X18>M29X11>M28X17>M28X11>M28X22>M28X24>M28X23>M27X21>M28X13>M27X20>M27X19>M26X14>M27X25>M28X18>M27X11>M28X25>M27X24>M26X24>M27X15>M27X14>M27X13>M26X23>M27X17>M26X22>M25X13>M28X14>M27X16>M26X19>M26X18>M27X23>M27X22>M26X17>M25X18>M26X21>M25X17>M26X20>M26X15>M26X13>M25X19>M24X14>M25X23>M26X11>M26X25>M25X16>M25X15>M24X22>M25X21>M25X20>M24X21>M25X25>M25X24>M24X20>M23X13>M22X15>M25X14>M24X19>M23X17>M24X25>M23X24>M24X13>M23X15>M24X18>M23X14>M22X11>M24X15>M23X22>M24X11>M23X19>M22X21>M24X24>M23X21>M22X20>M23X25>M22X19>M21X24>M20X23>M22X22>M25X11>M23X16>M22X18>M23X20>M22X17>M21X21>M21X20>M20X24>M22X14>M22X13>M21X11>M21X17>M22X23>M21X16>M20X25>M19X23>M18X16>M21X22>M20X20>M20X19>M21X13>M20X18>M19X13>M21X18>M20X21>M19X24>M18X12>M20X14>M20X13>M22X25>M20X12>M20X15>M19X14>M18X22>M19X18>M20X17>M19X17>M19X16>M18X21>M17X20>M19X19>M18X13>M17X11>M18X17>M19X25>M18X15>M17X25>M18X19>M17X24>M16X19>M15X17>M17X21>M16X24>M18X23>M17X16>M16X25>M19X15>M18X25>M17X23>M16X23>M15X23>M18X14>M17X14>M16X14>M17X18>M16X13>M17X22>M16X12>M15X22>M14X16>M17X12>M16X22>M15X12>M16X11>M15X11>M16X15>M15X25>M14X15>M13X14>M15X18>M16X21>M15X16>M14X21>M15X14>M16X20>M15X13>M14X22>M15X20>M14X20>M13X20>M14X11>M15X19>M14X24>M13X19>M14X13>M13X18>M12X13>M15X24>M14X23>M13X12>M14X12>M13X11>M12X11>M11X11>M21X12>M20X11>M19X11>M18X11>M17X15>M16X18>M14X25>M14X19>M13X24>M13X23>M13X22>M12X12>M22X12>M21X15>M19X22>M18X20>M16X17>M14X14>M24X12>M23X23>M22X16>M21X14>M20X22>M18X24>M16X16>M26X12>M24X16>M23X11>M21X23>M19X20>M17X17>M27X12>M26X16>M25X22>M24X17>M23X18>M21X25>M19X12>M17X19>M15X21>M14X18>M13X13>M23X12>M21X19>M19X21>M17X13>M15X15>M25X12>M24X23>M22X24>M20X16>M18X18>M28X12>A150>C158>B112>A112>C167>B146>A146>C180>B180>A180>C143>B143>A115>C126>B126>A126>C190>B190>A190>C138>B138>A138>C174>B174>A102>C122>B122>A122>C162>B162>A162>C142>B142>A142>C102>B102>A174>C176>B176>A176>C115>B115>A143>C172>B172>A172>C187>B187>A187>C130>B130>A130>C118>B118>A118>C184>B184>A184>C171>B171>A171>C168>B182>A182>C182>B168>A168>C109>B109>A109>C159>B159>A159>C134>B134>A134>C146>B167>A167>C140>B140>A140>C163>B163>A163>C112>B158>A158>C164>B164>A164>C131>B131>A131>C188>B188>A188>C199>B199>A199>C114>B114>A114>C106>B106>A106>C200>B200>A200>C183>B183>A183>C152>B152>A152>C147>B147>A147>C150>B150>A198>C144>B144>A144>C191>B191>A191>C108>B108>A108>C139>B139>A139>C194>B194>A194>C166>B166>A166>C120>B120>A120>C123>B123>A123>C132>B132>A132>C107>B107>A107>C170>B170>A170>C198>B198>A156>C125>B125>A125>C121>B121>A121>C193>B193>A193>C197>B197>A197>C175>B175>A175>C196>B196>A196>C105>B105>A105>C181>B181>A181>C113>B113>A113>C137>B137>A137>C155>B155>A155>C156>B156>A110>C128>B128>A128>C179>B179>A179>C124>B124>A124>C151>B151>A151>C178>B178>A178>C104>B104>A104>C111>B111>A111>C148>B148>A148>C169>B169>A169>C129>B129>A129>C149>B149>A149>C189>B189>A189>C119>B119>A119>C154>B154>A154>C136>B136>A136>C135>B135>A135>C116>B116>A116>C145>B145>A145>C161>B161>A161>C173>B173>A173>C157>B157>A157>C195>B195>A195>C186>B186>A186>C160>B160>A160>C153>B153>A153>C117>B117>A117>C165>B165>A165>C101>B101>A101>C103>B103>A103>C192>B192>A192>C177>B177>A177>C185>B185>A185>C141>B141>A141>C133>B133>A133>C127>B127>A127>C110>B110>M14X17>M13X15>M13X16>M13X17>M12X17>M12X21>M12X25>M12X14>M13X25>M12X15>M13X21>M12X16>M12X18>M12X19>M12X20>M12X22>M12X23>M12X24>M11X25>M11X24>M11X23>M11X22>M11X21>M11X20>M11X19>M11X18>M11X17>M11X16>M11X15>M11X14>M11X13>M11X12>{}<M11X12<M11X13<M11X14<M11X15<M11X16<M11X17<M11X18<M11X19<M11X20<M11X21<M11X22<M11X23<M11X24<M11X25<M12X24<M12X23<M12X22<M12X20<M12X19<M12X18<M12X16<M13X21<M12X15<M13X25<M12X14<M12X25<M12X21<M12X17<M13X17<M13X16<M13X15<M14X17<B110<C110<A127<B127<C127<A133<B133<C133<A141<B141<C141<A185<B185<C185<A177<B177<C177<A192<B192<C192<A103<B103<C103<A101<B101<C101<A165<B165<C165<A117<B117<C117<A153<B153<C153<A160<B160<C160<A186<B186<C186<A195<B195<C195<A157<B157<C157<A173<B173<C173<A161<B161<C161<A145<B145<C145<A116<B116<C116<A135<B135<C135<A136<B136<C136<A154<B154<C154<A119<B119<C119<A189<B189<C189<A149<B149<C149<A129<B129<C129<A169<B169<C169<A148<B148<C148<A111<B111<C111<A104<B104<C104<A178<B178<C178<A151<B151<C151<A124<B124<C124<A179<B179<C179<A128<B128<C128<A110<B156<C156<A155<B155<C155<A137<B137<C137<A113<B113<C113<A181<B181<C181<A105<B105<C105<A196<B196<C196<A175<B175<C175<A197<B197<C197<A193<B193<C193<A121<B121<C121<A125<B125<C125<A156<B198<C198<A170<B170<C170<A107<B107<C107<A132<B132<C132<A123<B123<C123<A120<B120<C120<A166<B166<C166<A194<B194<C194<A139<B139<C139<A108<B108<C108<A191<B191<C191<A144<B144<C144<A198<B150<C150<A147<B147<C147<A152<B152<C152<A183<B183<C183<A200<B200<C200<A106<B106<C106<A114<B114<C114<A199<B199<C199<A188<B188<C188<A131<B131<C131<A164<B164<C164<A158<B158<C112<A163<B163<C163<A140<B140<C140<A167<B167<C146<A134<B134<C134<A159<B159<C159<A109<B109<C109<A168<B168<C182<A182<B182<C168<A171<B171<C171<A184<B184<C184<A118<B118<C118<A130<B130<C130<A187<B187<C187<A172<B172<C172<A143<B115<C115<A176<B176<C176<A174<B102<C102<A142<B142<C142<A162<B162<C162<A122<B122<C122<A102<B174<C174<A138<B138<C138<A190<B190<C190<A126<B126<C126<A115<B143<C143<A180<B180<C180<A146<B146<C167<A112<B112<C158<A150<M28X12<M18X18<M20X16<M22X24<M24X23<M25X12<M15X15<M17X13<M19X21<M21X19<M23X12<M13X13<M14X18<M15X21<M17X19<M19X12<M21X25<M23X18<M24X17<M25X22<M26X16<M27X12<M17X17<M19X20<M21X23<M23X11<M24X16<M26X12<M16X16<M18X24<M20X22<M21X14<M22X16<M23X23<M24X12<M14X14<M16X17<M18X20<M19X22<M21X15<M22X12<M12X12<M13X22<M13X23<M13X24<M14X19<M14X25<M16X18<M17X15<M18X11<M19X11<M20X11<M21X12<M11X11<M12X11<M13X11<M14X12<M13X12<M14X23<M15X24<M12X13<M13X18<M14X13<M13X19<M14X24<M15X19<M14X11<M13X20<M14X20<M15X20<M14X22<M15X13<M16X20<M15X14<M14X21<M15X16<M16X21<M15X18<M13X14<M14X15<M15X25<M16X15<M15X11<M16X11<M15X12<M16X22<M17X12<M14X16<M15X22<M16X12<M17X22<M16X13<M17X18<M16X14<M17X14<M18X14<M15X23<M16X23<M17X23<M18X25<M19X15<M16X25<M17X16<M18X23<M16X24<M17X21<M15X17<M16X19<M17X24<M18X19<M17X25<M18X15<M19X25<M18X17<M17X11<M18X13<M19X19<M17X20<M18X21<M19X16<M19X17<M20X17<M19X18<M18X22<M19X14<M20X15<M20X12<M22X25<M20X13<M20X14<M18X12<M19X24<M20X21<M21X18<M19X13<M20X18<M21X13<M20X19<M20X20<M21X22<M18X16<M19X23<M20X25<M21X16<M22X23<M21X17<M21X11<M22X13<M22X14<M20X24<M21X20<M21X21<M22X17<M23X20<M22X18<M23X16<M25X11<M22X22<M20X23<M21X24<M22X19<M23X25<M22X20<M23X21<M24X24<M22X21<M23X19<M24X11<M23X22<M24X15<M22X11<M23X14<M24X18<M23X15<M24X13<M23X24<M24X25<M23X17<M24X19<M25X14<M22X15<M23X13<M24X20<M25X24<M25X25<M24X21<M25X20<M25X21<M24X22<M25X15<M25X16<M26X25<M26X11<M25X23<M24X14<M25X19<M26X13<M26X15<M26X20<M25X17<M26X21<M25X18<M26X17<M27X22<M27X23<M26X18<M26X19<M27X16<M28X14<M25X13<M26X22<M27X17<M26X23<M27X13<M27X14<M27X15<M26X24<M27X24<M28X25<M27X11<M28X18<M27X25<M26X14<M27X19<M27X20<M28X13<M27X21<M28X23<M28X24<M28X22<M28X11<M28X17<M29X11<M27X18<M28X21<M28X16<M28X15<M28X20<M29X14<M29X25<M29X21<M28X19<M29X18<M29X17<M29X13<M29X24<M29X16<M29X23<M29X19<M30X25<M29X22<M30X21<M30X22<M29X12<M29X15<M30X18<M30X20<M30X24<M30X23<M29X20<M30X14<M30X13<M30X17<M30X12<M30X11<M30X16<M30X15<M30X19
 diff --git a/scripts/dso-ordering-test.py b/scripts/dso-ordering-test.py
 new file mode 100644
-index 0000000000..c84d299a2f
+index 0000000000..5dfb3476fa
 --- /dev/null
 +++ b/scripts/dso-ordering-test.py
-@@ -0,0 +1,1075 @@ 
+@@ -0,0 +1,1150 @@
 +#!/usr/bin/python3
 +# Generate testcase files and Makefile fragments for DSO sorting test
 +# Copyright (C) 2021 Free Software Foundation, Inc.
@@ -799,6 +804,18 @@ index 0000000000..c84d299a2f
 +  # When multiple outputs (with specific tunable strings) are specified,
 +  # these take priority over any active 'tunable_option' settings.
 +
++  # When a test is meant to be placed under 'xtests' (not run under
++  # "make check", but only when "make xtests" is used), the testcase name can be
++  # declared using 'xtest(<test-name>)':
++  ...
++  xtest(test-too-big1): <test-description>
++  output: <expected-output-string>
++  ...
++
++  # Do note that under current elf/Makefile organization, for such a xtest case,
++  # while the test execution is only run under 'make xtests', the associated
++  # DSOs are always built even under 'make check'.
++
 +On the description language used, an example description line string:
 +
 +  a->b!->[cdef];c=>g=>h;{+c;%c;-c}->a
@@ -867,6 +884,16 @@ index 0000000000..c84d299a2f
 +the script command-line, multiple <test-name_1>, <test-name_2>, etc.
 +tests will be generated (e.g. for a!->[bc]!->[de], eight tests with
 +different link orders for a, b, and c will be generated)
++
++It is possible to specify the ELF soname field for an object or the
++main program:
++   # DSO 'a' will be linked with the appropriate -Wl,-soname=x setting
++   a->b->c;soname(a)=x
++   # The the main program can also have a soname specified
++   soname({})=y
++
++This can be used to test how ld.so behaves when objects and/or the
++main program have such a field set.
 +
 +
 +Strings Output by Generated Testcase Programs
@@ -989,19 +1016,23 @@ index 0000000000..c84d299a2f
 +        # map of DSO object -> list of call refs
 +        self.callrefs = OrderedDict()
 +
-+         # map of DSO object -> list of permutations of dependencies
++        # map of DSO object -> list of permutations of dependencies
 +        self.dep_permutations = OrderedDict()
++
++        # map of DSO object -> SONAME of object (if one is specified)
++        self.soname_map = OrderedDict()
 +
 +        # list of main program operations
 +        self.main_program = []
 +        # set if main program needs -ldl
 +        self.main_program_needs_ldl = False
-+         # set if default dependencies added to main
++        # set if default dependencies added to main
 +        self.main_program_default_deps = True
 +
 +        self.test_name = ""                   # name of testcase
 +        self.expected_outputs = OrderedDict() # expected outputs of testcase
 +        self.xfail = False                    # set if this is a XFAIL testcase
++        self.xtest = False                    # set if this is put under 'xtests'
 +
 +    # Add 'object -> [object, object, ...]' relations to CURR_MAP
 +    def __add_deps_internal(self, src_objs, dst_objs, curr_map):
@@ -1067,13 +1098,14 @@ index 0000000000..c84d299a2f
 +    return obj_list
 +
 +# Lexer for tokens
-+tokenspec = [ ("OBJ",      r"([0-9a-zA-Z]+)"),
++tokenspec = [ ("SONAME",   r"soname\(([0-9a-zA-Z{}]+)\)=([0-9a-zA-Z]+)"),
++              ("OBJ",      r"([0-9a-zA-Z]+)"),
 +              ("DEP",      r"->"),
 +              ("CALLREF",  r"=>"),
 +              ("OBJSET",   r"\[([0-9a-zA-Z]+)\]"),
 +              ("OBJSET2",  r"\(([0-9a-zA-Z \-]+)\)"),
 +              ("OBJSET3",  r"\*"),
-+              ("PROG",     r"{([0-9a-zA-Z;+^\-%]*)}"),
++              ("PROG",     r"{([0-9a-zA-Z;+^\-%@]*)}"),
 +              ("PERMUTE",  r"!"),
 +              ("SEMICOL",  r";"),
 +              ("ERROR",    r".") ]
@@ -1093,7 +1125,26 @@ index 0000000000..c84d299a2f
 +    for m in re.finditer(tok_re, descr_str):
 +        kind = m.lastgroup
 +        value = m.group()
-+        if kind == "OBJ":
++        if kind == "SONAME":
++            s = re.match(r"soname\(([0-9a-zA-Z{}]+)\)=([0-9a-zA-Z]+)", value)
++            obj = s.group(1)
++            val = s.group(2)
++            if obj == "{}":
++                if '#' in t.soname_map:
++                    error("soname of main program already set")
++                # Adjust to internal name
++                obj = '#'
++            else:
++                if re.match(r"[{}]", obj):
++                    error("invalid object name '%s'" % (obj))
++                if not obj in t.objs:
++                    error("'%s' is not name of already defined object" % (obj))
++                if obj in t.soname_map:
++                    error("'%s' already has soname of '%s' set"
++                          % (obj, t.soname_map[obj]))
++            t.soname_map[obj] = val
++
++        elif kind == "OBJ":
 +            if in_dep:
 +                t.add_deps(curr_objs, [value])
 +            elif in_callref:
@@ -1337,7 +1388,13 @@ index 0000000000..c84d299a2f
 +        # Print LDFLAGS-* and *-no-z-defs
 +        for o in test_descr.objs:
 +            dso = test_name + "-" + o + ".so"
-+            makefile.write("LDFLAGS-%s = -Wl,--no-as-needed\n" % (dso))
++            ldflags = "-Wl,--no-as-needed"
++            if o in test_descr.soname_map:
++                soname = ("$(objpfx)" + test_subdir + "/"
++                          + test_name + "-"
++                          + test_descr.soname_map[o] + ".so")
++                ldflags += (" -Wl,-soname=" + soname)
++            makefile.write("LDFLAGS-%s = %s\n" % (dso, ldflags))
 +            if o in test_descr.callrefs:
 +                makefile.write("%s-no-z-defs = yes\n" % (dso))
 +
@@ -1350,7 +1407,13 @@ index 0000000000..c84d299a2f
 +        if test_descr.main_program_needs_ldl:
 +            depstr += " $(libdl)"
 +        makefile.write("$(objpfx)%s/%s:%s\n" % (test_subdir, test_name, depstr))
-+        makefile.write("LDFLAGS-%s = -Wl,--no-as-needed\n" % (test_name))
++        ldflags = "-Wl,--no-as-needed"
++        if '#' in test_descr.soname_map:
++            soname = ("$(objpfx)" + test_subdir + "/"
++                      + test_name + "-"
++                      + test_descr.soname_map['#'] + ".so")
++            ldflags += (" -Wl,-soname=" + soname)
++        makefile.write("LDFLAGS-%s = %s\n" % (test_name, ldflags))
 +
 +        not_depended_objs = find_objs_not_depended_on(test_descr)
 +        if not_depended_objs:
@@ -1477,7 +1540,7 @@ index 0000000000..c84d299a2f
 +        f.write("#include <stdlib.h>\n")
 +        for s in test_descr.main_program:
 +            if s[0] == '@':
-+                f.write("extern void fn_%s (void);\n", s[1]);
++                f.write("extern void fn_%s (void);\n" % (s[1:]));
 +        f.write("int main (void) {\n")
 +        f.write("  putchar('{');\n")
 +
@@ -1488,7 +1551,7 @@ index 0000000000..c84d299a2f
 +        i = 0
 +        while i < len(test_descr.main_program):
 +            s = test_descr.main_program[i]
-+            obj = s[len(s)-1]
++            obj = s[1:]
 +            dso = test_name + "-" + obj
 +            if s[0] == '+' or s[0] == '^':
 +                if s[0] == '+':
@@ -1576,9 +1639,13 @@ index 0000000000..c84d299a2f
 +                                fake_created[dep] = True
 +                dso_deps = map(lambda d: testpfx + test_name + "-" + d + ".so",
 +                               deps)
-+                cmd = ([build_gcc, "-shared", "-o", testpfx + dso_name,
-+                        testpfx + obj_name,
-+                        "-Wl,--no-as-needed"] + list(dso_deps))
++                cmd = [build_gcc, "-shared", "-o", testpfx + dso_name,
++                       testpfx + obj_name, "-Wl,--no-as-needed"]
++                if obj in test_descr.soname_map:
++                    soname = ("-Wl,-soname=" + testpfx + test_name + "-"
++                              + test_descr.soname_map[obj] + ".so")
++                    cmd += [soname]
++                cmd += list(dso_deps)
 +                run_cmd(cmd)
 +                obj_processed[obj] = True
 +
@@ -1592,10 +1659,14 @@ index 0000000000..c84d299a2f
 +                deps = test_descr.deps['#']
 +            main_deps = map(lambda d: testpfx + test_name + "-" + d + ".so",
 +                            deps)
-+            cmd = ([build_gcc, "-Wl,--no-as-needed", "-o", testpfx + test_name,
-+                    testpfx + test_name + ".c", "-L%s" % (os.getcwd()),
-+                    "-Wl,-rpath-link=%s" % (os.getcwd())]
-+                   + list(main_deps))
++            cmd = [build_gcc, "-Wl,--no-as-needed", "-o", testpfx + test_name,
++                   testpfx + test_name + ".c", "-L%s" % (os.getcwd()),
++                   "-Wl,-rpath-link=%s" % (os.getcwd())]
++            if '#' in test_descr.soname_map:
++                soname = ("-Wl,-soname=" + testpfx + test_name + "-"
++                          + test_descr.soname_map['#'] + ".so")
++                cmd += [soname]
++            cmd += list(main_deps)
 +            if test_descr.main_program_needs_ldl:
 +                cmd += ["-ldl"]
 +            run_cmd(cmd)
@@ -1691,7 +1762,10 @@ index 0000000000..c84d299a2f
 +    makefile.write("\t$(SHELL) $< $(common-objpfx) '$(test-wrapper-env)' "
 +                    "'$(run-program-env)' > $@; $(evaluate-test)\n")
 +    makefile.write("ifeq ($(run-built-tests),yes)\n")
-+    makefile.write("tests-special += $(objpfx)%s.out\n" % (t.test_name))
++    if t.xtest:
++        makefile.write("xtests-special += $(objpfx)%s.out\n" % (t.test_name))
++    else:
++        makefile.write("tests-special += $(objpfx)%s.out\n" % (t.test_name))
 +    makefile.write("endif\n")
 +    makefile.write("endif\n")
 +
@@ -1734,10 +1808,11 @@ index 0000000000..c84d299a2f
 +
 +        m = re.match(r"^([^:]+):\s*(.*)$", line)
 +        if m:
-+            o = re.match(r"^output(.*)$", m.group (1))
++            lhs = m.group(1)
++            o = re.match(r"^output(.*)$", lhs)
 +            xfail = False
 +            if not o:
-+                o = re.match(r"^xfail_output(.*)$", m.group (1))
++                o = re.match(r"^xfail_output(.*)$", lhs)
 +                if o:
 +                    xfail = True;
 +            if o:
@@ -1759,7 +1834,12 @@ index 0000000000..c84d299a2f
 +                    # current one.
 +                    process_testcase(t)
 +                t = TestDescr()
-+                t.test_name = m.group(1)
++                x = re.match(r"^xtest\((.*)\)$", lhs)
++                if x:
++                    t.xtest = True
++                    t.test_name = x.group(1)
++                else:
++                    t.test_name = lhs
 +                descr_string = m.group(2)
 +                parse_description_string(t, descr_string)
 +            continue
@@ -1797,13 +1877,13 @@ new file mode 100644
 index 0000000000..7e7d5dc67c
 --- /dev/null
 +++ b/support/Depend
-@@ -0,0 +1 @@ 
+@@ -0,0 +1 @@
 +elf
 diff --git a/support/Makefile b/support/Makefile
-index bb9889efb4..a5f21ed43b 100644
+index a462781718..0da604ade8 100644
 --- a/support/Makefile
 +++ b/support/Makefile
-@@ -233,10 +233,16 @@  others-noinstall += shell-container echo-container true-container
+@@ -252,10 +252,16 @@ others-noinstall += shell-container echo-container true-container
  others += $(LINKS_DSO_PROGRAM)
  others-noinstall += $(LINKS_DSO_PROGRAM)
  
@@ -1821,10 +1901,10 @@ index bb9889efb4..a5f21ed43b 100644
  tests = \
    README-testing \
 diff --git a/support/support_test_main.c b/support/support_test_main.c
-index cb72512226..4ce3799956 100644
+index 07e3cdd173..66a754b84f 100644
 --- a/support/support_test_main.c
 +++ b/support/support_test_main.c
-@@ -227,6 +227,18 @@  run_test_function (int argc, char **argv, const struct test_config *config)
+@@ -228,6 +228,18 @@ run_test_function (int argc, char **argv, const struct test_config *config)
    while (wait_for_debugger)
      usleep (1000);
  
@@ -1847,7 +1927,7 @@ diff --git a/support/test-driver.c b/support/test-driver.c
 index b0bea46dee..1552f62c9b 100644
 --- a/support/test-driver.c
 +++ b/support/test-driver.c
-@@ -116,7 +116,9 @@  main (int argc, char **argv)
+@@ -116,7 +116,9 @@ main (int argc, char **argv)
  #if defined (TEST_FUNCTION) && defined (TEST_FUNCTON_ARGV)
  # error TEST_FUNCTION and TEST_FUNCTION_ARGV cannot be defined at the same time
  #endif
@@ -1862,7 +1942,7 @@ diff --git a/support/test-driver.h b/support/test-driver.h
 index 8d4f38275d..b44c0ff033 100644
 --- a/support/test-driver.h
 +++ b/support/test-driver.h
-@@ -36,6 +36,7 @@  struct test_config
+@@ -36,6 +36,7 @@ struct test_config
    int expected_signal;   /* If non-zero, expect termination by signal.  */
    char no_mallopt;       /* Boolean flag to disable mallopt.  */
    char no_setvbuf;       /* Boolean flag to disable setvbuf.  */
@@ -1875,7 +1955,7 @@ new file mode 100644
 index 0000000000..61560d7bfb
 --- /dev/null
 +++ b/support/test-run-command.c
-@@ -0,0 +1,22 @@ 
+@@ -0,0 +1,22 @@
 +/* Main program for test-run-command support utility.
 +   Copyright (C) 2021 Free Software Foundation, Inc.
 +   This file is part of the GNU C Library.
