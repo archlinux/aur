@@ -1,9 +1,9 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=creators-tf-launcher-bin
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The community launcher from the Creators.TF project for Team Fortress 2"
-arch=(x86_64)
+arch=('x86_64')
 url="https://creators.tf/launcher"
 license=('MIT')
 depends=('libnotify' 'libxss' 'nspr' 'nss' 'gtk3')
