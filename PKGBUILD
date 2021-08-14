@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=v0.5.1.r0.g08ca1ee
+pkgver=0.5.2.r0.gad2e1b0
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://github.com/alealexpro100/linux_install.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$_reponame"
+    cd "$_reponame" || exit 1
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -28,8 +28,8 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/$_reponame"
-    rm -rf "_config.yml" "bin/debootstrap-debian" "custom" "tests" "PKGBUILD"
+    cd "$srcdir/$_reponame" || exit 1
+    rm -rf "_config.yml" "bin/debootstrap-debian" "custom" "tests"
     for file in TODO README.md CHANGES.md; do
         install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
         rm -rf "$file"
