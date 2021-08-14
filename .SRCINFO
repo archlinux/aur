@@ -8,6 +8,7 @@ pkgbase = cityinfo
 	license = LGPL
 	makedepends = gconf
 	makedepends = glib2
+	makedepends = git
 	source = git+https://github.com/maemo-leste/cityinfo.git#tag=0.5.18
 	sha256sums = SKIP
 
