@@ -2,10 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gtk-theme-bin'
-pkgver='5.3.3'
-pkgrel=4
-_timestamp=1625837590
-_commit=11bcd41
+pkgver='5.4.0'
+pkgrel=1
+_timestamp=1628277903
+_commit=b068687
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
@@ -30,13 +30,13 @@ optdepends=(
 	"ttf-fira-mono: Recommended monospace font"
 	"ttf-roboto-slab: Recommended font for documents"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~21.04~${_commit}_all.deb")
-sha256sums=('68b77d63bc63e743e67e393bd8170471467de3b8db3f32ab81427ffe8ed71aa2')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
+sha256sums=('fdbdd2f92e041a113c9de2e2959dfc33a2d591f4d61e0c61dc5cc36a6972937e')
 
 package() {
   cd "${srcdir}"
   
-  tar -xJC "${pkgdir}" -f data.tar.xz
+  tar --zstd -xC "${pkgdir}" -f data.tar.zst
 }
 
 # vim: ts=2 sw=2 et:
