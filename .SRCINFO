@@ -1,6 +1,6 @@
 pkgbase = octave-tsa
 	pkgdesc = Stochastic concepts and maximum entropy methods for time series analysis
-	pkgver = 4.6.2
+	pkgver = 4.6.3
 	pkgrel = 1
 	url = https://octave.sourceforge.io/tsa/
 	install = octave-tsa.install
@@ -9,9 +9,8 @@ pkgbase = octave-tsa
 	license = GPL3
 	depends = octave>=2.9.7
 	depends = octave-nan>3.0.0
-	noextract = tsa-4.6.2.tar.gz
-	source = https://downloads.sourceforge.net/octave/tsa-4.6.2.tar.gz
-	sha256sums = b6820005febb2d79c4195704d6b903acbf192d3e260f3c60241772f9bf964c5c
+	noextract = tsa-4.6.3.tar.gz
+	source = https://downloads.sourceforge.net/octave/tsa-4.6.3.tar.gz
+	sha256sums = 54f3bce33dd439fea60e7d36252c04d6c6b313a632de6ce204f61ed6cfc17ddd
 
 pkgname = octave-tsa
-
