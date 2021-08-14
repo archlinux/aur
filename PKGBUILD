@@ -1,19 +1,20 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Maintainer: Samuel Collins <samuel.collins@live.co.uk>
+# Co-Maintainer: Bradley Garrod <bradleybredgarrod@gmail.com>
 
 _pkgname=pexip-infinity-connect
 pkgname="${_pkgname}-bin"
 pkgdesc='Pexip Infinity Connect App'
-_buildno_in_url='53046.187.0'
-pkgver="1.6.2"
+_buildno_in_url='62088.0.0-1'
+pkgver="1.8.0"
 pkgrel=1
 url='https://www.pexip.com/apps'
 license=('custom')
 arch=('x86_64')
 depends=('nss' 'xdg-utils' 'gtk3' 'libxss')
-source=("https://dl.pexip.com/connect/nextgen/${pkgver}/${_pkgname}_${pkgver}-${_buildno_in_url}_linux-x64.deb")
-md5sums=('1aa38c3c8a2af180f9a35912e659ec4c')
-sha1sums=('e1ca0ff25f0a5d665d444dc10ac7549069cd3725')
-sha512sums=('8aa455a52c4340e7df1fbb38dcab7b6b1de6c14540c3111e3e517f046dd2ded70b4c7236b2de6f12daa152b06c525e0c37fdba8fafaa6b088e40450b70eb2f8c')
+source=("https://www.pexip.com/hubfs/pexip-infinity-connect_${pkgver}-${_buildno_in_url}_amd64.deb")
+md5sums=('4d38950f6ff9f5f51380ddb6f67364f2')
+sha1sums=('ebb6b640110ad2d9e4c1275872616fc7e1e3f7a1')
+sha512sums=('6bb5899b96b74aa49d501f466d397dc4bd88542d07e23bf83ecc7f06a6f9dea4d9dd212326c121e88139a7b5c2cc78ee5ba9b8e61dbbe9bd8318b25f759ea6f5')
 
 package() {
     tar --no-same-owner -xJC "$pkgdir" -f data.tar.xz
@@ -23,7 +24,4 @@ package() {
         mv "$pkgdir/usr/lib/pexip-infinity-connect_linux-x64/${license_file}" \
             "$pkgdir/usr/share/licenses/$pkgname"
     done
-
-    ln -s /usr/lib/pexip-infinity-connect_linux-x64/pexip-infinity-connect \
-        "$pkgdir/usr/bin/pexip-infinity-connect"
 }
