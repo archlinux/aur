@@ -1,6 +1,6 @@
 # Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=germanium-bin
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Generate image from source code"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,9 +10,9 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
 source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('ebc7875c5fb1facd735a5b4d97b9911f8c7a2cd169367f7033f3a6de3850d7b8')
-sha256sums_i686=('dc0f4ee8b8a3eef82ceaf2a4808a12f8790d4bec4890706cc9cd68ca92c0c791')
-sha256sums_aarch64=('5b690c4d3ad2cb7af9d7a05b76bb088de0ffcee711e53352e042e06221258bdd')
+sha256sums_x86_64=('27e8e61b2ba51ffe1b6f33b12b7a37ec4473d38a7c31191c517c916d46ef1c6c')
+sha256sums_i686=('a7994c1404d0c9c839b2548f1a0cd4cf71210d553a96b8f988312c9e8fbe1255')
+sha256sums_aarch64=('cb567dada6191444afd2049a84457cb06d32063011b9d5b655e0549087c98240')
 
 package() {
     install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
