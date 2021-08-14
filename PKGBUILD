@@ -1,7 +1,7 @@
 # Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname='privacy-redirect'
-pkgver=1.1.47
+pkgver=1.1.49
 pkgrel=1
 pkgdesc="Redirect Youtube, Twitter, Instagram, ... to privacy friendly alternatives"
 license=('GPL3')
@@ -10,7 +10,7 @@ url="https://github.com/SimonBrazell/privacy-redirect"
 makedepends=('npm' 'nodejs>=10.0.0')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SimonBrazell/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('293bcfb3aec279fd79e248bf26f95c1e2ccf34ada54fbc9f464dc345e67d410f11fd1b332dfdbdc79b290df252d36f1532580f52bef924d6cae2ed9a031ff501')
+b2sums=('b6767e1b63cd42d21410cf277f7a203d25b14e75969c2218718069ed2462d733cec9a3666cb58fbcee5126d3c8b83f7e3c76a140c5c9212f7886672086f9008b')
 
 prepare() {
     cd "$pkgname-$pkgver"
