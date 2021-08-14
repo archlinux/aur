@@ -13,7 +13,7 @@ source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
         "${_patches[@]}"
 	)
 sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
-            '144f56606e2119990eeadfc10a3eda8ba7e481c1dcf15dc16588956d958bbc06')
+            '7e09a8b62416edbe76fe136ad25178317f17578613c4705583b80dba8ab89f75')
 _sourcedir=st-$pkgver
 _makeopts="--directory=$_sourcedir"
 
