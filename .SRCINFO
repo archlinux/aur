@@ -9,11 +9,12 @@ pkgbase = pencil-git
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	provides = evolus-pencil-bin
-	provides = evolus-pencil-avn
-	conflicts = evolus-pencil-bin
-	conflicts = evolus-pencil-svn
+	provides = pencil=r1540.043ca48
+	conflicts = pencil
+	replaces = evolus-pencil-git
 	replaces = evolus-pencil-svn
+	replaces = evolus-pencil-devel-git
+	replaces = evolus-pencil-git-dev-branch
 	source = pencil::git+https://github.com/evolus/pencil.git#branch=development
 	source = pencil.desktop
 	source = pencil.sh

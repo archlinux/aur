@@ -1,5 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Maintainer: Elia s. <elia.defcon7@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=pencil-git
 pkgver=r1540.043ca48
 pkgrel=1
@@ -9,9 +11,9 @@ url="http://pencil.evolus.vn/"
 license=('GPL2')
 depends=('electron')
 makedepends=('git' 'npm')
-provides=('evolus-pencil-bin' 'evolus-pencil-avn')
-conflicts=('evolus-pencil-bin' 'evolus-pencil-svn')
-replaces=('evolus-pencil-svn')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
+replaces=('evolus-pencil-git' 'evolus-pencil-svn' 'evolus-pencil-devel-git' 'evolus-pencil-git-dev-branch')
 source=("pencil::git+https://github.com/evolus/pencil.git#branch=development"
         "pencil.desktop"
         "pencil.sh")
