@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-roscreate
 	pkgdesc = ROS - roscreate contains a tool that assists in the creation of ROS filesystem resources.
-	pkgver = 1.15.7
+	pkgver = 1.15.8
 	pkgrel = 1
 	url = https://wiki.ros.org/roscreate
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = ros-noetic-roscreate
 	makedepends = ros-noetic-catkin
 	makedepends = python-setuptools
 	depends = python-rospkg
-	source = ros-noetic-roscreate-1.15.7.tar.gz::https://github.com/ros/ros/archive/1.15.7.tar.gz
-	sha256sums = 7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e
+	source = ros-noetic-roscreate-1.15.8.tar.gz::https://github.com/ros/ros/archive/1.15.8.tar.gz
+	sha256sums = 2cece46697585e55db415c5ddb4be935641b70c8a220f761a8e551225f133e40
 
 pkgname = ros-noetic-roscreate
-
