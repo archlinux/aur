@@ -2,7 +2,7 @@
 
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="RuboCop's AST extensions and NodePattern functionality"
 arch=(any)
