@@ -1,7 +1,7 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
 	pkgver = 5.13.10.arch1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux/commits/v5.13.10-arch1
 	arch = x86_64
 	license = GPL2
