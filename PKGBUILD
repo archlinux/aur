@@ -3,7 +3,7 @@
 pkgname=python-fastdownload
 _pkgname=fastdownload
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily download, verify, and extract arcrhives. To be used with fast.ai'
 arch=('any')
 url='https://github.com/fastai/fastdownload'
@@ -16,7 +16,6 @@ depends=(
 )
 makedepends=(
   python-setuptools
-  python-pip
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastdownload/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('4229f4c76a7d19595158113d44853de820ba2476e47ede31ab4f83cd22228cba31a0431a2e2174d03bbbccc2531a6465bed2bbf54a43eef5320723ddc32dc398')
