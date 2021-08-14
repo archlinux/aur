@@ -1,0 +1,22 @@
+[Unit]
+Description=GoRTR
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=10s
+EnvironmentFile=/etc/conf.d/gortr
+WorkingDirectory=/usr/lib/gortr
+ExecStart=/usr/bin/gortr $GORTR_ARGS
+User=gortr
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+CapabilityBoundingSet=cap_net_raw
+AmbientCapabilities=cap_net_raw
+
+[Install]
+WantedBy=multi-user.target
