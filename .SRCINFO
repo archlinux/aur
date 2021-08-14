@@ -1,6 +1,6 @@
 pkgbase = exmplayer-git
 	pkgdesc = MPlayer GUI front-end. Plays any media file. Video downloader, subtitle search, audio converter/extractor, media cutter, Gif animation generator
-	pkgver = 5.0.1.r17.gaecf78a
+	pkgver = 5.0.1.r38.g47f67c6
 	pkgrel = 1
 	url = http://exmplayer.sourceforge.net/
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = exmplayer-git
 	provides = exmplayer
 	conflicts = exmplayer
 	source = exmplayer-git::git+https://github.com/rupeshs/ExMplayer.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = exmplayer-git
-
