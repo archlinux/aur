@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("larz")
 conflicts=("larz")
 source=("https://github.com/Dirout/larz/releases/download/v$pkgver/larz-$pkgver-x86_64.tar.gz")
-sha256sums=("80d7dac3887d3f7564d20a60020eaa173848bbc9fb0cca3ff159ccfe2f0fbe4d")
+sha256sums=("1804989531f169157c0fe965863286be182353f8ffeeab90a5df4389a69a712e")
 
 package() {
     install -Dm755 larz -t "$pkgdir/usr/bin"

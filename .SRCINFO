@@ -6,8 +6,8 @@ pkgbase = larz-bin
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = larz
+	conflicts = larz
 	source = https://github.com/Dirout/larz/releases/download/v0.1.0/larz-0.1.0-x86_64.tar.gz
-	sha256sums = 80d7dac3887d3f7564d20a60020eaa173848bbc9fb0cca3ff159ccfe2f0fbe4d
+	sha256sums = 1804989531f169157c0fe965863286be182353f8ffeeab90a5df4389a69a712e
 
 pkgname = larz-bin
-
