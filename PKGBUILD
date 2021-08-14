@@ -15,25 +15,25 @@ provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 replaces=('evolus-pencil-git' 'evolus-pencil-svn' 'evolus-pencil-devel-git' 'evolus-pencil-git-dev-branch')
 source=("pencil::git+https://github.com/evolus/pencil.git#branch=development"
-        "pencil.desktop"
-        "pencil.sh")
+        'pencil.desktop'
+        'pencil.sh')
 md5sums=('SKIP'
          '25b8e3921c596da71720cd5feb9c04b7'
          'e72976807104a384ed291f239df2d77f')
 
 pkgver() {
-  cd "$srcdir/pencil"
+  cd "pencil"
   git describe --long --tags --abbrev=7 --match="v*" HEAD |
     sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/pencil"
-  npm install --cache "${srcdir}/npm-cache"
+  cd "pencil"
+  npm install --cache "$srcdir/npm-cache"
 }
 
 package() {
-  cd "$srcdir/pencil"
+  cd "pencil"
 
   install -d -m755 "$pkgdir/usr/lib"
   cp -r app "$pkgdir/usr/lib/pencil"
