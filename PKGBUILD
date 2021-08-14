@@ -65,7 +65,7 @@ sha1sums=(
 
 pkgver() {
 	cd "${srcdir}/${_TIANO_DIR_}/"
-	echo "$(git rev-list --count HEAD).$(git describe --always --tags)" | sed -e 's|-|\.|g'
+	echo "$(git rev-list --count HEAD).$(git describe --long --always --tags)" | sed -e 's|-|\.|g'
 }
 
 _setup_env_vars() {
