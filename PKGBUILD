@@ -1,6 +1,6 @@
 # Maintainer: Ukang'a <ukanga@users.noreply.github.com>
 pkgname=sre-tooling-git
-pkgver=0.7.1.04b628cd
+pkgver=v0.11.0.ff96311
 pkgrel=1
 pkgdesc="A set of useful SRE tools."
 arch=('x86_64')
