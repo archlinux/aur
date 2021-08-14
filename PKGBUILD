@@ -5,7 +5,7 @@
 # Upstream: https://github.com/lightningnetwork/lnd
 
 pkgname=('lnd-git')
-pkgver=0.13.1.beta.rc2.r11657.583dee991
+pkgver=0.13.1.beta.r11862.5499a3598
 pkgrel=1
 pkgdesc='The Lightning Network Daemon, for secure off-chain bitcoin transactions.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  _tag=$(git tag --list --sort=taggerdate | tail -n1 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  _tag=$(git tag --list --sort=taggerdate | grep "^v" | tail -n1 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
   printf $_tag;
   printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
