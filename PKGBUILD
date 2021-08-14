@@ -2,7 +2,7 @@
 
 _pkgname=stormlib
 pkgname=$_pkgname-git
-pkgver=v9.00a.49.gb845241
+pkgver=9.20.227.gc5fb5c7
 pkgrel=1
 pkgdesc="A C/C++ API to read and write MPQ files"
 arch=("i686" "x86_64")
@@ -18,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
+	git describe --always | sed "s/-/./g" | sed "s/^v//"
 }
 
 build() {

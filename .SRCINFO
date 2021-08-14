@@ -1,6 +1,6 @@
 pkgbase = stormlib-git
 	pkgdesc = A C/C++ API to read and write MPQ files
-	pkgver = v9.00a.49.gb845241
+	pkgver = 9.20.227.gc5fb5c7
 	pkgrel = 1
 	url = http://www.zezula.net/en/mpq/stormlib.html
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = stormlib-git
 	sha256sums = SKIP
 
 pkgname = stormlib-git
-
