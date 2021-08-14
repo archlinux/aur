@@ -4,16 +4,16 @@
 
 _pkgname=catalogue
 pkgname="python-${_pkgname}"
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='Super lightweight function registries for your library'
-arch=('any')
+arch=(any)
 url='https://github.com/explosion/catalogue'
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9ed345d12855af315f1715583612b26b8621a2b0a2e3bef974dc5d712f7983aa')
+sha256sums=('6ce41a082512c6e42916a2f31d1d9df72e506f35f84e045800bfe93d4fcbb22d')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
