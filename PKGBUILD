@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: carstene1ns <arch.carsten@teibes.de>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='WebP library'
 arch=('x86_64')
@@ -13,7 +13,8 @@ url='https://developers.google.com/speed/webp/'
 license=('BSD')
 depends=('lib32-glibc' 'libwebp')
 makedepends=('git')
-_commit=fedac6cc69cda3e9e04b780d324cf03921fb3ff4  # tags/v1.2.0-rc3^0
+provides=(libwebp{,decoder,demux,mux}.so)
+_commit=9ce5843dbabcfd3f7c39ec7ceba9cbeb213cbfdf  # tags/v1.2.1^0
 source=("git+https://chromium.googlesource.com/webm/libwebp#commit=${_commit}")
 sha256sums=('SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
