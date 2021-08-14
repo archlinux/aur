@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-rosmake
 	pkgdesc = ROS - rosmake is a ros dependency aware build tool which can be used to build all dependencies in the correct order.
-	pkgver = 1.15.7
+	pkgver = 1.15.8
 	pkgrel = 1
 	url = https://wiki.ros.org/rosmake
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = ros-noetic-rosmake
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-catkin
 	depends = python-rospkg
-	source = ros-noetic-rosmake-1.15.7.tar.gz::https://github.com/ros/ros/archive/1.15.7.tar.gz
-	sha256sums = 7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e
+	source = ros-noetic-rosmake-1.15.8.tar.gz::https://github.com/ros/ros/archive/1.15.8.tar.gz
+	sha256sums = 2cece46697585e55db415c5ddb4be935641b70c8a220f761a8e551225f133e40
 
 pkgname = ros-noetic-rosmake
-
