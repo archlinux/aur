@@ -1,37 +1,36 @@
 # Maintainer: Donald Carr <sirspudd _at_ gmail.com>
 
-pkgname=goplay2-git
-pkgver=0.0.62
+_pkgname=goplay2
+pkgname=${_pkgname}-git
+pkgver=r62.dcbcdf3
 pkgrel=2
 pkgdesc='goplay2 airplay2 server'
 arch=(x86_64)
 url='https://github.com/openairplay/goplay2'
 license=(Apache)
 depends=(libfdk-aac)
-makedepends=(go)
+makedepends=(go git)
 source=("git+$url")
 sha256sums=('SKIP')
+install=goplay2.install
 
 pkgver() {
-    cd goplay2
-
-    #git describe --tags | sed -e "s/^v//" | tr '-' '.'
-    echo "0.0.$(git rev-list HEAD --count)"
+  cd "$_pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-    cd goplay2
-
-    go build
+  cd "$_pkgname"
+  go build -o output-binary .
 }
 
 package() {
-    local bin_dir="${pkgdir}/usr/bin"
-    local service_dir="${pkgdir}/usr/lib/systemd/user"
+  local bin_dir="${pkgdir}/usr/bin"
+  local service_dir="${pkgdir}/usr/lib/systemd/user"
 
-    mkdir -p ${bin_dir} ${service_dir}
-    setcap 'cap_net_bind_service=+ep' goplay2/goplay2
-    cp -a goplay2/goplay2 ${bin_dir}
-
-    cp ${startdir}/goplay2.service ${service_dir}
+  install -Dm755 goplay2/goplay2 ${bin_dir}/goplay2
+  install -Dm644 ${startdir}/goplay2.service ${service_dir}/goplay2.service
 }
