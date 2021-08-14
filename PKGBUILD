@@ -10,7 +10,7 @@ url="https://github.com/nushu-script/rime-nushu"
 license=('Unlicense')
 # dependency for reverse lookup
 depends=('rime-luna-pinyin')
-makedepends=('librime')
+makedepends=('librime' 'rime-prelude')
 source=("https://github.com/nushu-script/rime-nushu/archive/$_commit/rime-nushu-$_commit.tar.gz")
 md5sums=('da3b0921dcd5152c8052d1e6ef83c68e')
 

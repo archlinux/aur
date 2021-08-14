@@ -6,6 +6,7 @@ pkgbase = rime-nushu
 	arch = x86_64
 	license = Unlicense
 	makedepends = librime
+	makedepends = rime-prelude
 	depends = rime-luna-pinyin
 	source = https://github.com/nushu-script/rime-nushu/archive/a3337fc6a5cb8b7e6c62b2f318b69d52fe4ad383/rime-nushu-a3337fc6a5cb8b7e6c62b2f318b69d52fe4ad383.tar.gz
 	md5sums = da3b0921dcd5152c8052d1e6ef83c68e
