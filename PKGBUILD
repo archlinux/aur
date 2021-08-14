@@ -4,15 +4,15 @@ pkgname=doom3-cdoom
 pkgver=1.3.1
 pkgrel=2
 pkgdesc='Classic Doom: Doom 1 shareware episode maps recreated for use with Doom 3.'
-url='http://www.moddb.com/mods/classic-doom-3'
+url='https://www.moddb.com/mods/classic-doom-3'
 license=('custom')
 arch=('any')
 depends=('doom3' 'sh')
 # Download: http://www.gamefront.com/files/files/9003559/classic_doom_3_1.3.1.zip
-source=('http://www.slashbunny.com/aur/doom3-cdoom/classic_doom_3_131.zip' 'doom3-cdoom.desktop' 'doom3-cdoom.launcher')
-sha256sums=('e771efcb2178389cfd73d4ba59c4b78ce226d42f82ccba9859f597291bbecad5'
-            '62f81a078d70b5474f9b6829d76835ea58b50dc40ee120649d7b19d6d456714e'
-            '32ed98f373573906d5f5082ad9a09ae0d65e4ae7c47e42cee8468b95e4ce8171')
+source=('https://www.slashbunny.com/aur/doom3-cdoom/classic_doom_3_131.zip' 'doom3-cdoom.desktop' 'doom3-cdoom.launcher')
+sha256sums=('32ed98f373573906d5f5082ad9a09ae0d65e4ae7c47e42cee8468b95e4ce8171'
+            'e771efcb2178389cfd73d4ba59c4b78ce226d42f82ccba9859f597291bbecad5'
+            '62f81a078d70b5474f9b6829d76835ea58b50dc40ee120649d7b19d6d456714e')
 PKGEXT='.pkg.tar'
 
 package() {
