@@ -12,5 +12,5 @@ If the package installed correctly, and MrCode runs correctly, update the AUR wi
 
 $ makepkg --printsrcinfo > .SRCINFO
 $ git add PKGBUILD .SRCINFO
-$ git commit -am "Update mrcode-git to ${version}."
+$ git commit -am "Update mrcode-git to <version>"
 $ git push
