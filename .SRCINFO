@@ -1,9 +1,9 @@
 pkgbase = dell-h825cdw-s2825cdn
 	pkgdesc = Proprietary driver for Dell's H825cdw and S2825 Printers
 	pkgver = 1.0_3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dell.com/support/home/en-us/product-support/product/dell-h825cdw-printer/drivers
-	arch = x86_64
+	arch = any
 	license = Dell Software License Agreement
 	depends = cups
 	source = https://dl.dell.com/FOLDER03385341M/1/Printer_H825cdw_Driver_Dell_A00_Linux.zip
