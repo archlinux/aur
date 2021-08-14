@@ -1,17 +1,17 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgbase=mingw-w64-mygui
 pkgname=('mingw-w64-mygui')
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A multilayer and overlappable GUI System (mingw-w64)"
 arch=('any')
 url="http://mygui.info/"
 license=('LGPL')
-depends=('mingw-w64-crt' 'mingw-w64-boost' 'mingw-w64-sdl2' 'mingw-w64-sdl2_image' 'mingw-w64-pkg-config')
+depends=('mingw-w64-crt' 'mingw-w64-sdl2' 'mingw-w64-sdl2_image' 'mingw-w64-pkg-config')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-cmake' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'doxygen' 'graphviz' 'ttf-dejavu')
 source=("https://github.com/MyGUI/mygui/archive/MyGUI${pkgver}.tar.gz")
-sha512sums=('3f560fd9c7e5b514da40e41c7753dc20649f80b763f5ee20afc9627df3be14242ea833eff09eac16b9e88b1c9fbed7c09def0c5068c832e710c247191fb53487')
+sha512sums=('9d36272345b1a755db88848c8a0919feb6f8ae09d048efa3b8ed833bb5ddb9c65e1e7e0d26ad39eecd2a4de53fb654f4099c555e9ebd21ce9541a1a74580ef05')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -31,7 +31,7 @@ build() {
       -DMYGUI_BUILD_TOOLS=FALSE \
       -DMYGUI_STATIC=TRUE \
       -DMYGUI_RENDERSYSTEM=7 \
-      ../mygui-MyGUI$pkgver
+      ../mygui-MyGUI${pkgver}
     make
 
     # Shared build
@@ -48,7 +48,7 @@ build() {
       -DMYGUI_BUILD_DEMOS=FALSE \
       -DMYGUI_BUILD_TOOLS=FALSE \
       -DMYGUI_RENDERSYSTEM=7 \
-      ../mygui-MyGUI$pkgver
+      ../mygui-MyGUI${pkgver}
     make
   done
 }
