@@ -1,11 +1,12 @@
 pkgbase = asgardex-appimage
-	pkgdesc = Thorchain wallett desktop app
+	pkgdesc = Thorchain wallet desktop app
 	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/thorchain/asgardex-electron/releases
 	arch = x86_64
 	license = MIT
 	noextract = ASGARDEX-0.3.11.AppImage
+	options = !strip
 	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.3.11/ASGARDEX-0.3.11-linux.AppImage
 	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.3.11/msg-v0311
 	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.3.11/msg-v0311.asc

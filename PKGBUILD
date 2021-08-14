@@ -6,13 +6,14 @@ pkgname=asgardex-appimage
 pkgver=0.3.11
 msgver=(${pkgver//./})
 pkgrel=1
-pkgdesc="Thorchain wallett desktop app"
+pkgdesc="Thorchain wallet desktop app"
 arch=('x86_64')
 url="https://github.com/thorchain/asgardex-electron/releases"
 license=('MIT')
 validpgpkeys=('9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709' '0F1342110E1A10DCAFA7194DABB32D7C24F80F1D')
 source=("$url/download/v$pkgver/$_pkgname-$pkgver-linux.AppImage" "$url/download/v$pkgver/msg-v$msgver"{,.asc} )
 noextract=("$_pkgname-$pkgver.AppImage")
+options=('!strip')
 
 shasumappimage=$(curl -sL $url/download/v$pkgver/msg-v$msgver | grep $_pkgname-$pkgver-linux.AppImage | cut -c1-64)
 sha256sums=($shasumappimage 'SKIP' 'SKIP')
