@@ -10,7 +10,7 @@ url="https://github.com/maemo-leste/$pkgname"
 arch=(any)
 license=(LGPL)
 depends=(dbus-glib gconf icd2-osso-ic-headers)
-makedepends=(autoconf automake libtool glib2)
+makedepends=(git glib2)
 checkdepends=()
 groups=(maemo)
 source=("git+$url.git#tag=$pkgver")
