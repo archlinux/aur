@@ -10,8 +10,6 @@ pkgdesc="Plugin showing current time and alarm set"
 url="https://github.com/maemo-leste/$_pkgname"
 arch=(any)
 license=(LGPL)
-makedepends=(autoconf automake libtool)
-checkdepends=()
 groups=(maemo)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
