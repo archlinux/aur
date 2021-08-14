@@ -1,6 +1,6 @@
 # Maintainer: samarthj <dev@samarthj.com>
 
-# shellcheck disable=2034,2154
+# shellcheck disable=2034,2148,2154
 
 pkgname=podman-dnsname-git
 _pkgname=podman-dnsname
@@ -32,7 +32,7 @@ build() {
   export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
   cd $_gitpkgname || exit 1
-  make
+  LDFLAGS="-X main.gitCommit=$(git rev-parse HEAD)" make
 }
 
 package() {
