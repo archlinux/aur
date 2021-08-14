@@ -9,7 +9,7 @@ pkgdesc="Cityinfo library allows to get some informations about cities."
 url="https://github.com/maemo-leste/$pkgname"
 arch=(any)
 license=(LGPL)
-makedepends=(gconf glib2)
+makedepends=(gconf glib2 git)
 groups=(maemo)
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
