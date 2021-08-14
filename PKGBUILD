@@ -1,21 +1,20 @@
 # Maintainer: Ryo Munakata <afpacket@gmail.com>
+# Rebased on glmark2 (https://aur.archlinux.org/packages/glmark2/)
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: farseerfc <farseerfc@gmail.com>
 pkgname=glmark2-git
-pkgver=r870.b949d5f
+pkgver=r960.ca8de51
 pkgrel=1
-pkgdesc="OpenGL (ES) 2.0 benchmark (X11, Wayland, DRM)"
-arch=('i686' 'x86_64')
-url="https://launchpad.net/glmark2"
-license=('GPL3')
-depends=('libjpeg-turbo' 'libpng12' 'libx11' 'libxcb' 'wayland' 'libgl' 'libgles')
-makedepends=('git' 'python2')
+pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark (X11, Wayland, DRM)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/glmark2/glmark2"
+license=('GPL' 'custom')
+depends=('libjpeg-turbo' 'libpng' 'libx11' 'mesa' 'systemd-libs' 'libgl' 'libgles' 'wayland' 'egl-wayland')
+makedepends=('meson' 'systemd' 'wayland-protocols')
 conflicts=('glmark2')
 provides=('glmark2')
-source=(
-    "$pkgname"::'git://github.com/glmark2/glmark2.git'
-    )
-md5sums=(
-    'SKIP'
-    )
+source=("$pkgname"::'git://github.com/glmark2/glmark2.git')
+md5sums=('SKIP')
 
 # GLMARK2 features
 GM2_FLAVORS="x11-gl,x11-glesv2,wayland-gl,wayland-glesv2,drm-gl,drm-glesv2"
@@ -25,19 +24,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "${srcdir}/${pkgname}"
-}
-
 build() {
-    cd "${srcdir}/${pkgname}"
-    python2 ./waf configure \
-        --prefix=/usr \
-        --with-flavors=${GM2_FLAVORS}
-    python2 ./waf -j4
+    pwd
+    arch-meson "$pkgname" build -Dflavors=${GM2_FLAVORS}
+    meson compile -C build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    DESTDIR="${pkgdir}" python2 ./waf install
+    DESTDIR="$pkgdir" meson install -C build
+
+    cd "$pkgname"
+    install -Dm644 COPYING.SGI -t "$pkgdir/usr/share/licenses/$pkgname"
 }
