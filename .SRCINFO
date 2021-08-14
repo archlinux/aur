@@ -1,0 +1,16 @@
+pkgbase = silo-fossil
+	pkgdesc = Launcher menu with explosive potential (wayland or x11)
+	pkgver = 0
+	pkgrel = 1
+	url = https://code.jessemcclure.org/silo
+	arch = x86_64
+	license = MIT
+	makedepends = fossil
+	depends = gcc-libs
+	depends = glibc
+	depends = layer-shell-qt
+	depends = qt5-base
+	source = fossil+https://code.jessemcclure.org/silo
+	sha256sums = SKIP
+
+pkgname = silo-fossil
