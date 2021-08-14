@@ -5,17 +5,18 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
-pkgver=2.76
+pkgver=2.77.1
+_binaryversion=254
 pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3' 'custom')
 makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'minizip' 'openal' 'sdl2')
-source=("https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
-        "http://www.etlegacy.com/download/file/121")
+source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
+        "${_pkgbase}-${pkgver}-${arch}-binary.tar.gz::http://www.etlegacy.com/download/file/${_binaryversion}")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha256sums=("8bb8e9785e3be983a331c39298c1451cf805299560c769d59b9f04ae51912ee1"
-            "546cfd736ea978915e69d3aa6ae5b38f92969be793d7f5b03ddfa936243d1682")
+sha256sums=('730a8a52435884b922d8c280fcdeace648902399798c7a973da72fbc4163ebe2'
+            'b9c4ba1dc594c43d860b0f6598bbe24ea0f885181ef931d30192e30b74ea7567')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -96,7 +97,7 @@ package_etlegacy-mod() {
 
     # mod
     mkdir -p $pkgdir/usr/lib/$_pkgbase/legacy
-    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/{etl_bin,pak3}_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
+    install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/legacy_v$pkgver.pk3 $pkgdir/usr/lib/$_pkgbase/legacy
     install -m 644 $srcdir/etlegacy-v$pkgver-x86_64/legacy/qagame.mp.x86_64.so $pkgdir/usr/lib/$_pkgbase/legacy
 
     # geoip
