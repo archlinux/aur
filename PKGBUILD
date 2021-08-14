@@ -1,8 +1,8 @@
-# Maintainer: Martin Rys <https://rys.pw/#contact_me>
+# Maintainer: Martin Rys <rys.pw/contact>
 
 pkgname=python-deezer-py
 _reponame=deezer-py
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A wrapper for all Deezer's APIs"
 url="https://pypi.org/project/deezer-py/"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_reponame::1}/${_reponame}/${_reponame}-$pkgver.tar.gz")
-sha256sums=('c643db2851942eae4e9f5df1bae57406a6f90134d7a271fa9823dfde6c30bfc0')
+sha256sums=('15d2d224500b78671e70b00793d9212532a531ddcc79cff0fcf190387ab160c4')
 
 build() {
 	cd "$srcdir/${_reponame}-$pkgver"
