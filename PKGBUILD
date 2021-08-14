@@ -2,7 +2,7 @@
 pkgname=st-pajas
 pkgver=0.8.4
 pkgrel=1
-pkgdesc='Pajas version of suckless with scrollback, alpha, nordtheme and Vertcenter'
+pkgdesc='Pajas version of suckless with alpha, nordtheme and Vertcenter'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
