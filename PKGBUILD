@@ -2,10 +2,10 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-gnome-shell-theme-bin'
-pkgver='5.3.3'
-pkgrel=4
-_timestamp=1625837590
-_commit=11bcd41
+pkgver='5.4.0'
+pkgrel=1
+_timestamp=1628277903
+_commit=b068687
 pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gnome-shell-theme'
@@ -24,13 +24,13 @@ optdepends=(
   "ttf-roboto-slab: Recommended font for documents"
   "pop-session-bin"
 )
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~21.04~${_commit}_all.deb")
-sha256sums=('243b5b9e08e97433ade64b80f96fa7b6f636ef5024bed2867d5487660c08cd93')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~21.10~${_commit}_all.deb")
+sha256sums=('3bd902faa383044da6e974ca875671c8c3f5f09fb8880ef63a922e4135067a47')
 
 package() {
   cd "${srcdir}"
   
-  tar -xJC "${pkgdir}" -f data.tar.xz
+  tar --zstd -xC "${pkgdir}" -f data.tar.zst
 }
 
 # vim: ts=2 sw=2 et:
