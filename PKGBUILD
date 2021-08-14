@@ -1,55 +1,38 @@
-# Maintainer: Adrian Sinclair <adrian@transloadit.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=standard
-pkgver=10.0.1
+pkgver=16.0.3
 pkgrel=1
-pkgdesc='JavaScript Standard Style'
+pkgdesc="JavaScript style guide, linter, and formatter"
 arch=('any')
-url='http://standardjs.com/index.html'
+url="https://standardjs.com"
 license=('MIT')
-depends=('nodejs' 'eslint' 'eslint-plugin-react' 'eslint-plugin-promise' 'eslint-plugin-node' 'eslint-plugin-import')
+depends=('nodejs')
 makedepends=('npm')
-
-_npmnames=($pkgname
-           standard-engine
-           eslint-plugin-standard
-           eslint-config-standard
-           eslint-config-standard-jsx)
-_npmvers=($pkgver
-          7.0.0
-          3.0.1
-	  10.2.0
-          4.0.1)
-
-source=()
-noextract=()
-for n in 0 1 2 3 4; do
-  source[$n]="http://registry.npmjs.org/${_npmnames[$n]}/-/${_npmnames[$n]}-${_npmvers[$n]}.tgz"
-  noextract[$n]="${_npmnames[$n]}-${_npmvers[$n]}.tgz"
-done
-md5sums=('c175de17e2d6cb6c6a92e7d9c7d92689'
-         '9aef55b42ac22f66d8c80401c4262a55'
-	 '42240fb33303d86c1ef76531f174125c'
-	 '129ffff2f86e93850047fad9676e25bf'
-	 '0693e72fb2ca2879de76caf1e0bb3870')
-
+replaces=('nodejs-standard')
+source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+noextract=("$pkgname-$pkgver.tar.gz")
+b2sums=('65f7ea268608abc77172a4149bc6b39059f0a05c17ee2fa53136bde1ea2ca884491ad0db0e1a9779493f90e1ab8a974cca7b6aa93eded65c926ac0d020e76ad4')
 
 package() {
-  for n in 0 1 2 3 4; do
-    npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/${_npmnames[$n]}-${_npmvers[$n]}.tgz
-  done
-  rm -r "$pkgdir"/usr/etc
+  local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
 
-  # Fix permissions
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
+  npm install \
+    --global \
+    --prefix "$pkgdir/usr" \
+    --cache "$srcdir/npm-cache" \
+    "${NPM_FLAGS[@]}" \
+    "$pkgname-$pkgver.tar.gz"
 
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s ../../../lib/node_modules/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
 
-  # Experimental dedup
-  cd "$pkgdir"/usr/lib/node_modules/$pkgname/node_modules
-  for dep in eslint eslint-plugin-react eslint-plugin-promise; do
-    rm -r $dep;
-    npm link $dep;
-  done
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+    "$pkgdir/usr/lib/node_modules/$pkgname/LICENSE"
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" \
+    "$pkgdir/usr/lib/node_modules/$pkgname/"*.md
 }
