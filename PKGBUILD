@@ -1,8 +1,8 @@
-# Maintainer: Lam Duong <lamduong2@acm.org>
+#Maintainer: Lam Duong <lamduong2@acm.org>
 
 pkgname=python-fastai2
 _pkgname=fastai
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Deep learning library build on PyTorch with CPU. Version 2 of fastai.'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://github.com/fastai/fastai'
 license=('Apache')
 depends=(
   python-fastcore
+  python-fastdownload
   python-fastprogress
   python-matplotlib
   python-packaging
@@ -29,7 +30,8 @@ makedepends=(
   python-pip
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastai/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('0b2d20bd1c16a94fb9b7de06046836bfa24d5bb0d57e8095223b3e22a2b070cf56d8c24371f3b664cb5819cfa807f522c63b472bb2f441851838d39b175f1b22')
+sha512sums=('2b4dd7df348fc1e24420786463ef3681dd794a05a9f1874a05cbf6c224a7a16e9ded7fdc0a7c6c6147d6c3888e763a31f5b60ef452e4ca78bc5b112ae305deba')
+
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
