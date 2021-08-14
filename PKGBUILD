@@ -1,13 +1,14 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
-url='https://source.puri.sm/Librem5/phosh'
+url='https://gitlab.gnome.org/World/Phosh/phosh'
 license=('GPL3')
 arch=(x86_64 aarch64)
 depends=(
+	callaudiod
 	feedbackd
 	libhandy
 	phoc
