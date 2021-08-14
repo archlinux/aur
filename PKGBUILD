@@ -3,7 +3,7 @@
 _pkgname=goplay2
 pkgname=${_pkgname}-git
 pkgver=r62.dcbcdf3
-pkgrel=2
+pkgrel=4
 pkgdesc='goplay2 airplay2 server'
 arch=(x86_64)
 url='https://github.com/openairplay/goplay2'

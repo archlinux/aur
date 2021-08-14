@@ -1,7 +1,7 @@
 pkgbase = goplay2-git
 	pkgdesc = goplay2 airplay2 server
 	pkgver = r62.dcbcdf3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/openairplay/goplay2
 	install = goplay2.install
 	arch = x86_64
