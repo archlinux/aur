@@ -1,0 +1,23 @@
+[Unit]
+Description=Sound Service
+
+Requires=pulseaudio.service
+ConditionUser=!root
+
+[Service]
+ExecStart=/usr/bin/goplay2 -i enp5s0 -sink alsa_output.pci-0000_43_00.1.hdmi-stereo-extra3
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+Restart=on-failure
+RestrictNamespaces=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+# Note that notify will only work if --daemonize=no
+Type=basic
+UMask=0077
+Slice=session.slice
+
+[Install]
+Also=pulseaudio.service
+WantedBy=default.target

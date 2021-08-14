@@ -2,7 +2,7 @@
 
 pkgname=goplay2-git
 pkgver=0.0.62
-pkgrel=1
+pkgrel=2
 pkgdesc='goplay2 airplay2 server'
 arch=(x86_64)
 url='https://github.com/openairplay/goplay2'
@@ -27,8 +27,11 @@ build() {
 
 package() {
     local bin_dir="${pkgdir}/usr/bin"
+    local service_dir="${pkgdir}/usr/lib/systemd/user"
 
-    mkdir -p ${bin_dir}
+    mkdir -p ${bin_dir} ${service_dir}
     setcap 'cap_net_bind_service=+ep' goplay2/goplay2
-    cp goplay2/goplay2 ${bin_dir}
+    cp -a goplay2/goplay2 ${bin_dir}
+
+    cp ${startdir}/goplay2.service ${service_dir}
 }
