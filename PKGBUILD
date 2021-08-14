@@ -1,14 +1,14 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=kalendar-git
-pkgver=r138.12b71ad
-pkgrel=3
+pkgver=r171.9e689fd
+pkgrel=1
 pkgdesc="A calendar application using Akonadi to sync with external services (NextCloud, GMail, ...)"
 arch=(x86_64 aarch64)
 url="https://invent.kde.org/pim/kalendar"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'kcalendarcore' 'kpackage' 'kconfigwidgets' 'kwindowsystem' 'akonadi' 'akonadi-contacts' 'calendarsupport')
-makedepends=('fakeroot' 'binutils' 'git' 'extra-cmake-modules' 'qt5-svg' 'boost')
+depends=('ki18n' 'kirigami2' 'kcalendarcore' 'kpackage' 'kconfigwidgets' 'kwindowsystem' 'akonadi' 'akonadi-contacts' 'calendarsupport' 'kpeople')
+makedepends=('fakeroot' 'binutils' 'git' 'extra-cmake-modules' 'qt5-svg' 'boost' 'kpeople')
 provides=('kalendar')
 conflicts=('kalendar')
 source=("git+${url}.git")
