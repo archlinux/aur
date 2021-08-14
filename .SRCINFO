@@ -1,0 +1,18 @@
+pkgbase = slang-verilog
+	pkgdesc = SystemVerilog Language Services
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/MikePopoloski/slang
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = fmt
+	depends = xxhash
+	depends = catch2
+	source = git://github.com/MikePopoloski/slang.git
+	md5sums = SKIP
+
+pkgname = slang-verilog
