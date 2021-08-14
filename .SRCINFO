@@ -1,6 +1,6 @@
 pkgbase = git-cliff
 	pkgdesc = A highly customizable changelog generator
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/orhun/git-cliff
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = git-cliff
 	makedepends = rust
 	depends = gcc-libs
 	depends = zlib
-	source = git-cliff-0.1.0.tar.gz::https://github.com/orhun/git-cliff/archive/v0.1.0.tar.gz
-	sha512sums = 633aa1b03db408c494dbc5f9d93f1244a94241b717a6ffa85c8c8717dc2c51a0c184db021a1cc9fc9fdbc22acfb0ac1d139e7201dede9676cca7f027eb05408b
+	source = git-cliff-0.1.2.tar.gz::https://github.com/orhun/git-cliff/archive/v0.1.2.tar.gz
+	sha512sums = 8a38d2e9c7b8a985071797a70f3cfa9f94ee17c8a5e85df342332c5444ba909e224164b4061b4b1bf4489e4cb90333945db2666e0359018eab0de5bf50202707
 
 pkgname = git-cliff
