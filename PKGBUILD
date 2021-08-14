@@ -3,7 +3,7 @@ _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
@@ -20,6 +20,7 @@ optdepends=('python-meshio: for creation mesh'
 source=("git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
+export GIT_LFS_SKIP_SMUDGE=1
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 prepare() {
