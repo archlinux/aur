@@ -1,4 +1,4 @@
-# Maintainer Tim Meusel <tim@bastelfreak.de>
+# Maintainer: Tim Meusel <tim@bastelfreak.de>
 # Contributor: Nigel Kukard <nkukard@LBSD.net>
 # Contributor: Zhaofeng Li <hello@zhaofeng.li>
 
