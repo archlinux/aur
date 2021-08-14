@@ -1,37 +1,35 @@
-# Contributor: Anton Leontyev <scileont /at/ gmail.com>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=ttf-georgewilliams
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Free unicode TrueType fonts by George Williams: Caliban, Caslon Roman, Cupola'
 arch=('any')
-license=('BSD')
-url='http://fontforge.github.io/sfds/'
-makedepends=('unzip')
-depends=('fontconfig' 'xorg-font-utils')
-#depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
-install=ttf-georgewilliams.install
-source=(http://ftp.debian.org/debian/pool/main/g/gw-fonts-ttf/gw-fonts-ttf_1.0.orig.tar.bz2)
-md5sums=('e81446f5c03ed00fb280072eb75252e6')
+license=('BSD' 'OFL')
+url='https://fontforge.org/archive/sfds/'
+makedepends=('fontforge')
+source=(https://fontforge.org/archive/sfds/Caliban.sfd.gz
+	https://fontforge.org/archive/sfds/CaslonRoman.sfd.gz
+	https://fontforge.org/archive/sfds/CaslonItalic.sfd.gz
+	https://fontforge.org/archive/sfds/CaslonBold.sfd.gz
+	https://fontforge.org/archive/sfds/Caslon-Black.sfd.gz
+	https://fontforge.org/archive/sfds/Cupola.sfd.gz)
+md5sums=('7941b977b89f7cc00d78f509002a63e2'
+         '9116b8a19f2448d01a1759c862b537aa'
+         '57894bf9f2d779845a0283dec7b5c745'
+         '2ad1197e29dcbb78c46da9bd18f75d98'
+         'aef29c573464181a2bc0ad0f86570de4'
+         '692e3111ede29197e559f0fe73736606')
 
-prepare() {
-	cd gw-fonts-ttf-$pkgver
-
-	gunzip Caliban.ttf.gz
-	unzip CasUni.zip
-	unzip CupUniTTF.zip
+build() {
+	for i in Caliban Caslon{Roman,Italic,Bold,-Black} Cupola; do
+		fontforge -quiet -lang=ff -c 'Open($1); Generate($2)' $i.sfd $i.ttf
+	done
 }
 
 package() {
-	cd gw-fonts-ttf-$pkgver
-
 	install -dm755 "$pkgdir"/usr/share/fonts/TTF
+	install -m644 {Caliban,Caslon{Roman,Italic,Bold,-Black},Cupola}.ttf \
+		"$pkgdir"/usr/share/fonts/TTF/
 
-	install -m644 Caliban.ttf "$pkgdir"/usr/share/fonts/TTF/Caliban.ttf
-	install -m644 CUPOU___.TTF "$pkgdir"/usr/share/fonts/TTF/CupolaRegular.ttf
-	install -m644 CUPOULI_.TTF "$pkgdir"/usr/share/fonts/TTF/CupolaItalic.ttf
-	install -m644 CaslonRoman.ttf "$pkgdir"/usr/share/fonts/TTF/CaslonRoman.ttf
-	install -m644 CaslonItalic.ttf "$pkgdir"/usr/share/fonts/TTF/CaslonItalic.ttf
-	install -m644 CaslonBold.ttf "$pkgdir"/usr/share/fonts/TTF/CaslonBold.ttf
-
-	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/ttf-georgewilliams/COPYING
+	# Author don't provide license text (or I didn't find it)
 }
