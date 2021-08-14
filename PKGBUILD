@@ -21,8 +21,7 @@ pkgver() {
 }
 
 build() {
-  #make -C $pkgname KDE_SUPPORT=1
-  make -C $pkgname
+  make -C $pkgname    # KDE_SUPPORT=1
 }
 
 package() {
@@ -30,12 +29,5 @@ package() {
   install -Dm644 $pkgname/exmplayer{,_enqueue}.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $pkgname/linux_build/{fmts,sc_default.xml} -t "$pkgdir/etc/exmplayer"
   install -Dm755 $pkgname/src/exmplayer -t "$pkgdir/usr/bin"
-
-  # Use installed ffmpeg
-  install -dm755 "$pkgdir/usr/share/exmplayer"
-  ln -s /usr/bin/ffmpeg "$pkgdir/usr/share/exmplayer/ffmpeg"
-
-  # Or use bundled ffmpeg
-  #install -Dm755 $pkgname/linux_build/ffmpeg -t "$pkgdir/usr/share/exmplayer"
 }
 
