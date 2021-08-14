@@ -1,7 +1,7 @@
 pkgbase = creators-tf-launcher-bin
 	pkgdesc = The community launcher from the Creators.TF project for Team Fortress 2
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://creators.tf/launcher
 	arch = x86_64
 	license = MIT
