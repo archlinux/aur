@@ -1,0 +1,24 @@
+pkgbase = gnome-metronome-git
+	pkgdesc = Practice music with a regular tempo
+	pkgver = 1.0.0.r0.g43f1728
+	pkgrel = 1
+	url = https://gitlab.gnome.org/aplazas/metronome
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = libsass
+	depends = sassc
+	depends = gtk4
+	depends = libadwaita
+	provides = gnome-metronome
+	conflicts = gnome-metronome
+	source = git+https://gitlab.gnome.org/aplazas/metronome.git
+	sha256sums = SKIP
+
+pkgname = gnome-metronome-git
