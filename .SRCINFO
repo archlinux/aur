@@ -1,6 +1,6 @@
 pkgbase = mvt
 	pkgdesc = Collection of utilities to simplify and automate the process of gathering forensic traces helpful to identify a potential compromise of Android and iOS devices
-	pkgver = 1.0.17
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mvt-project/mvt
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = mvt
 	depends = python-tqdm
 	depends = python-requests
 	depends = python-simplejson
-	source = mvt-1.0.17.tar.gz::https://github.com/mvt-project/mvt/archive/refs/tags/v1.0.17.tar.gz
-	sha512sums = 39027b419bb07634d1c31a57264f2fbba2d0f9b446ee588a5be42431bb85504fa676c5d087b252f23351c06e9090173a856895df0311116649db26c82cf5c0a7
+	source = mvt-1.1.0.tar.gz::https://github.com/mvt-project/mvt/archive/refs/tags/v1.1.0.tar.gz
+	sha512sums = 3f5e30c9613da541a29af4109973045c0aa3cc21768fefabff28e7287ed6d14826a761de081befba4e540301f56b7635fb185edddd841b8fa1cb7169b3418749
 
 pkgname = mvt
