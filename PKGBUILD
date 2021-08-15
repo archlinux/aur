@@ -8,7 +8,7 @@ pkgdesc="Use graph theory to reveal the hidden and often unintended relationship
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/BloodHoundAD/BloodHound"
 license=('GPLv3')
-depends=('neo4j-community' 'java-runtime')
+depends=('neo4j-community' 'java-runtime>=11')
 makedepends=('electron' 'npm' 'python-sphinx' )
 source=("https://github.com/BloodHoundAD/BloodHound/archive/${pkgver}.tar.gz"
 	"bloodhound.desktop")
