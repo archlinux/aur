@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=sonobuoy
-pkgver=0.53.0
+pkgver=0.53.1
 pkgrel=1
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
   'kubectl: advances workflows')
 makedepends=('go' 'git')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('379b12216d5d153b5f9ad051087f512d08f3603b6f7aed100111cf1fc32f1ff7')
+sha256sums=('9205f44f6af3d5d53c4d812475ef526c965f28ced286644fa7fef2f962f10507')
 
 build() {
   local _commit _defines
