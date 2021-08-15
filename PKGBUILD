@@ -11,6 +11,7 @@ depends=('python' 'python-pyqt5' 'python-paramiko' 'python-twisted')
 makedepends=('git' 'python-setuptools')
 source=("git+${url}.git#tag=v${pkgver}")
 md5sums=('SKIP')
+conflicts=('rmview-git')
 
 build() {
 	cd "${srcdir}/${pkgname}"
