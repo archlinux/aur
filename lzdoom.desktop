@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=LZDoom
+GenericName=Fork of legacy versions of the GZDoom source port for older hardware
+Icon=lzdoom
+Exec=lzdoom %F
+Terminal=false
+MimeType=application/x-doom-wad;
+Categories=Game;ActionGame;
