@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://packages.debian.org/sid/rephrase'
 depends=('gnupg')
 optdepends=('cryptsetup: can recover Cryptsetup/LUKS passphrases')
-license=('GPL3')
+license=('GPL3', 'GPL2')
 source=("http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}.orig.tar.gz"
   "http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}-${_debianrel}.debian.tar.xz")
 md5sums=('d73b9b30194f3ebbf92f19737a62ddfa'
@@ -30,7 +30,7 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make BINDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" install
-  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 COPYING ../debian/copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
