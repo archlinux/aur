@@ -1,0 +1,18 @@
+pkgbase = zap-git
+	pkgdesc = Blazing fast web shortcuts.
+	pkgver = v1.3.0.r1.g7eeedaa
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/issmirnov/zap
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = zap
+	conflicts = zap
+	backup = etc/zap/config.yml
+	source = zap::git+https://github.com/issmirnov/zap.git
+	source = zap.service
+	md5sums = SKIP
+	md5sums = 5ea62889f6649d308a3fe8b733258e781e59a07044dc282f7c082776db25a3e3
+
+pkgname = zap-git

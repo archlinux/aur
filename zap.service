@@ -1,0 +1,16 @@
+[Unit]
+Description=Zap (URL text expander)
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/etc/zap
+ExecStart=/usr/bin/zap -port 80 -config /etc/zap/config.yml
+Restart=always
+RestartSec=2s
+
+[Install]
+WantedBy=multi-user.target
