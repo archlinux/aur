@@ -62,8 +62,8 @@ _minor=13
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=8
-_pfrel=4
+_unpatched_sublevel=10
+_pfrel=5
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -299,7 +299,11 @@ _package() {
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
               'uksmd: Userspace KSM helper daemon'
 	            'modprobed-db: Keeps track of EVERY kernel module that has ever been probed. Useful for make localmodconfig.')
-  provides=('linux-tomoyo' VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=('linux-tomoyo'
+            VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE KSMBD-MODULE
+            NTFS3-MODULE UKSMD-BUILTIN
+            V4L2LOOPBACK-MODULE)
   replaces=('kernel26-pf')
 
   cd "${srcdir}/linux-${_basekernel}"
@@ -656,11 +660,11 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
 
 
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
-            '6030ad40747f2055165a6a9081122034ed45283b51533c9018eda6ebec200b84'
-            'e08fcc0d2b8ea04f006c2a22da499cc8364ba23da44a14d9a3d7471bea632c29'
+            '6b3672ffafb1b29bde3eb76dc27d1a41cc2f8349068a6532717c3d4764a2d238'
+            '80a4babea945f563f635820c80ca1285645b2ca30ccb1e7f3082d2cd70c025a5'
             '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'c0b673977abaa2b8ddaacecf3763a245b1d41eb9fc47eb82388980803c62eccb'
+            'a415d1526802e3b883008991da724acbef27de5bc2c690484802174968f214de'
             '18ac1705203969485d5811c93fdecb9d042020cc69567b579b32053ac4ceb1c9'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
