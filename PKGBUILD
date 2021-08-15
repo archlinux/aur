@@ -1,33 +1,33 @@
-# Maintainer: mcol <mcol at posteo dot net>
+# Maintainer: Bet4 <0xbet4@gmail.com>
 
-# PKGBUILD @ mcol.xyz/code/gita-git
+# Contributer: mcol <mcol at posteo dot net>
 
-pkgname=gita-git
-pkgver=r8.43eb798
+_pkgname=gita
+pkgname=${_pkgname}-git
+pkgver=0.15.2.r1.gee9b2f7
 pkgrel=1
-pkgdesc="Manage multiple git repos side by side for sanity 不疯了似地管理多个git库 "
+pkgdesc="Manage many git repos with sanity 从容管理多个git库"
 url="https://github.com/nosarthur/gita"
 arch=('any')
-license=('GPL3')
-source=("git+$url")
-depends=('python-setuptools' 'python-yaml')
+license=('MIT')
+source=("git+${url}.git")
+depends=('python-yaml')
 makedepends=('git' 'python-setuptools')
-optdepends=()
 
 sha256sums=('SKIP')
-provides=("gita")
+provides=(${_pkgname})
 
 pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${_pkgname}"
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/${_pkgname}"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

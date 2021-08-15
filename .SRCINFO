@@ -1,17 +1,15 @@
 pkgbase = gita-git
-	pkgdesc = Manage multiple git repos side by side for sanity 不疯了似地管理多个git库
-	pkgver = r8.43eb798
+	pkgdesc = Manage many git repos with sanity 从容管理多个git库
+	pkgver = 0.15.2.r1.gee9b2f7
 	pkgrel = 1
 	url = https://github.com/nosarthur/gita
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-setuptools
 	depends = python-yaml
 	provides = gita
-	source = git+https://github.com/nosarthur/gita
+	source = git+https://github.com/nosarthur/gita.git
 	sha256sums = SKIP
 
 pkgname = gita-git
-
