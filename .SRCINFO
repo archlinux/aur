@@ -1,7 +1,7 @@
 pkgbase = librtprocess
 	pkgdesc = Library for raw image processing
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CarVac/librtprocess
 	arch = i686
 	arch = pentium4
@@ -14,4 +14,3 @@ pkgbase = librtprocess
 	sha512sums = 49f1d4c3c8915fec60e554fff2d6d7e821778217ecabb4f9c49438101ecf9bf6ecbd55cd6dda5efd69106d841d3bb47a9cb4497880923395e7aa621cce4a0f8d
 
 pkgname = librtprocess
-

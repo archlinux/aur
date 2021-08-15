@@ -2,7 +2,7 @@
 
 pkgname=librtprocess
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Library for raw image processing"
 url="https://github.com/CarVac/librtprocess"
@@ -20,6 +20,11 @@ prepare() {
   fi
 
   mkdir build
+
+  # Fix build in GCC 11
+  # https://github.com/CarVac/librtprocess/pull/62
+  sed -i '/functional/a #include <cstddef>' \
+          src/include/librtprocess.h
 }
 
 build() {
