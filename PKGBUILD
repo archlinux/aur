@@ -1,7 +1,7 @@
 # Maintainer: Rainu <mqtt-shell@raysha.de>
 pkgname=mqtt-shell
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='A shell like command line interface for MQTT written in go.'
 arch=('x86_64' 'i686')
 url="https://github.com/rainu/mqtt-shell"
