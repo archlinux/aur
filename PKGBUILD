@@ -9,7 +9,7 @@ pkgbase=linux-tqc-a01
 _srcname=linux-5.13
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for TQC A01"
-pkgver=5.13.9
+pkgver=5.13.10
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -30,6 +30,9 @@ source=("http://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         '0006-drm-sun4i-Add-GEM-allocator.patch'
         '0010-general-h6-add-dma-i2c-ir-spi-uart.patch'
 	'0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch'
+	'0012-arm64-h6-gpu-devfreq-enable.patch'
+	'0040-wip-H6-deinterlace.patch'
+	'0041-arm64-dts-h6-deinterlace.patch'
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -51,12 +54,15 @@ md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '335382823f6dc2aae2f6038b7aee339e'
          'cb38b30491472097c3b9b475de39127f'
          'bc65c0b9e4d6fb2fe3a81b8358886885'
-         '6637a33cfc563c8f1ccff00cfd5b39c5'
-         'a5564b07e7a88dc6211d647c7949904d'
+         '74baf0cb243b3abd5e38f0131c95408f'
+         '05c4d9cbe622d5ff15e6b84b1c5c1a70'
+         'd1543c205b4faf9be4552d4308228217'
+         'e4ef0ae46cdfb23abb11d729452f68b2'
+         '75b51f71570f7ee1a7a18cfa05b67edd'
          '66e0ae63183426b28c0ec0c7e10b5e16'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '39a5d2b3ff92c000dc93f9fa2efb2c45')
+         '4d745d474d07277daee24107239c8902')
 
 prepare() {
   cd ${_srcname}
@@ -83,6 +89,9 @@ prepare() {
   patch -p1 < ../0006-drm-sun4i-Add-GEM-allocator.patch
   patch -p1 < ../0010-general-h6-add-dma-i2c-ir-spi-uart.patch
   patch -p1 < ../0011-dts-h6-tqc-a01-cpu-opp-2ghz.patch
+  patch -p1 < ../0012-arm64-h6-gpu-devfreq-enable.patch
+  patch -p1 < ../0040-wip-H6-deinterlace.patch
+  patch -p1 < ../0041-arm64-dts-h6-deinterlace.patch
 
   cat "${srcdir}/config" > ./.config
 

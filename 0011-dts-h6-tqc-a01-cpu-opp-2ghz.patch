@@ -159,7 +159,7 @@ index e3e01fa..a2f6364 100644
  				regulator-always-on;
  				regulator-min-microvolt = <800000>;
 -				regulator-max-microvolt = <1160000>;
-+				regulator-max-microvolt = <0x129da0>;
++				regulator-max-microvolt = <1220000>;
  				regulator-ramp-delay = <2500>;
  				regulator-name = "vdd-cpu";
  			};
