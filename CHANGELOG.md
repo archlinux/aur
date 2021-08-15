@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.6.2](#1-6-2)
 * [1.6.1](#1-6-1)
 * [1.6.0](#1-6-0)
 * [1.5.4](#1-5-4)
@@ -9,6 +10,30 @@
 * [1.5.0](#1-5-0)
 * [1.4.2](#1-4-2)
 * [1.4.1](#1-4-1)
+
+
+
+## 1.6.2
+
+### Added
+
+* `-s,--selection-text-color` command line option, that lets you
+  configure the foreground/text color of the currently selected item
+  (https://codeberg.org/dnkl/fuzzel/issues/37).
+
+
+### Changed
+
+* Use `rsvg_handle_render_document()` instead of
+  `rsvg_handle_render_cairo()` on libsrvg >= 2.46, since the latter
+  has been deprecated (https://codeberg.org/dnkl/fuzzel/issues/32).
+
+
+### Fixed
+
+* Icons not being searched for in all icon theme instances
+* Crash when XKB compose file is missing
+  (https://codeberg.org/dnkl/fuzzel/issues/35).
 
 
 ## 1.6.1
