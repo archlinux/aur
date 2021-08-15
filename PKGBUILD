@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis at martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis at martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello-bin
@@ -22,10 +22,10 @@ sha256sums=('56348cd387d244e87b6c0c6e652172536013965578b29e99571b0346ef1c3212'
             'f8bf6563747618790c8c12679c284e23d04aad749063afc4ac471be37c949ac4')
 
 package() {
-  install -Dvm755 jello -t "$pkgdir/usr/bin"
-  install -Dvm644 "LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dvm644 "README-$pkgver.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dvm644 "jello-$pkgver.1" "$pkgdir/usr/share/man/man1/jello.1"
+  install -Dm755 jello -t "$pkgdir/usr/bin"
+  install -Dm644 "LICENSE-$pkgver" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README-$pkgver.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "jello-$pkgver.1" "$pkgdir/usr/share/man/man1/jello.1"
 }
 
 # vim: ts=2 sw=2 et:
