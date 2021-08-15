@@ -1,7 +1,7 @@
 # Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
 
 pkgname=cbm
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Color Bandwidth Meter - display in real time the network traffic speed"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('ncurses')
 makedepends=('autoconf' 'automake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('63e7222e0a8023116f2dc1819c32c6fd9b415af76c670fc49438a403b03f0650')
+sha256sums=('2014491b160bce82ac11558611f735f6fbeffcd6f5ae006ae0ab09cdd7f5c152')
 
 build() {
   cd ${pkgname}-${pkgver}
