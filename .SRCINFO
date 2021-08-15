@@ -1,13 +1,13 @@
 pkgbase = antsword
 	pkgdesc = AntSword is a cross-platform webshell management toolkit.
 	pkgver = 2.1.12
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.yuque.com/antswordproject
 	arch = any
 	license = MIT
 	makedepends = imagemagick
 	makedepends = nodejs
-	depends = electron
+	depends = electron4
 	provides = antsword
 	options = strip
 	source = https://github.com/AntSwordProject/antsword/archive/refs/tags/2.1.12.tar.gz
@@ -22,4 +22,3 @@ pkgbase = antsword
 	sha256sums = 93fb7eb6f00647f0f2bdb82a86176a8413d0a986a37ce7972799fb95d4f02b01
 
 pkgname = antsword
-

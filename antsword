@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-electron10 "/usr/lib/antsword" "$@"
+electron4 "/usr/lib/antsword" "$@"

@@ -5,12 +5,12 @@
 
 pkgname=antsword
 pkgver=2.1.12
-pkgrel=6
+pkgrel=7
 pkgdesc="AntSword is a cross-platform webshell management toolkit."
 arch=('any')
 url="https://www.yuque.com/antswordproject"
 license=('MIT')
-depends=('electron')
+depends=('electron4')
 makedepends=('imagemagick' 'nodejs')
 provides=('antsword')
 options=('strip')
