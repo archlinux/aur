@@ -1,0 +1,12 @@
+pkgbase = nemo-qml-plugin-dbus
+	pkgdesc = Provides types to access D-Bus from QML
+	pkgver = 2.1.25
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-only
+	depends = qt5-base
+	source = https://github.com/sailfishos/nemo-qml-plugin-dbus/archive/refs/tags/2.1.25.tar.gz
+	sha256sums = 6440cac7221bf26a342b66cc1c262e7ce320e3fba200a8116a373c9de44ecf1f
+
+pkgname = nemo-qml-plugin-dbus
