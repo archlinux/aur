@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=siglo
-pkgver=0.8.4
+pkgver=0.8.13
 pkgrel=1
 pkgdesc="GTK app to sync InfiniTime(PineTime) watch"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python' 'dbus-python' 'python-pyxdg' 'python-gatt' 'bluez' 'bluez-utils')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexr4535/siglo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7e95a5d91c5bbcbb6db3c0aa5831cf02e1b012e969f8a2b6c00f306aad6e4b70')
+sha256sums=('73c8b074ee175853eb2e3ab334f7dd78d6e7f913ae5d4e28a9730f22bf289fd5')
 
 build() {
   cd "${pkgname}-${pkgver}"
