@@ -4,13 +4,13 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.107.r6.g8d0fb9b3
+pkgver=2.4.107.r7.g1d29e1df
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
 license=('custom')
 depends=('libdrm-git' 'lib32-libpciaccess' 'lib32-gcc-libs')
-makedepends=('meson' 'git' 'ninja')
+makedepends=('python-docutils' 'meson' 'git' 'ninja')
 checkdepends=('lib32-cairo')
 url="http://dri.freedesktop.org/"
 provides=('lib32-libdrm')
