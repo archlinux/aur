@@ -11,6 +11,7 @@ depends=("gtk-update-icon-cache")
 provides=("kora-icon-theme" "korla-icon-theme")
 conflicts=("kora-icon-theme" "korla-icon-theme")
 replaces=("korla-icon-theme")
+options=('!strip')
 optdepends=(
     "hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme"
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"

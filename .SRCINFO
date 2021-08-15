@@ -15,6 +15,7 @@ pkgbase = kora-icon-theme
 	conflicts = kora-icon-theme
 	conflicts = korla-icon-theme
 	replaces = korla-icon-theme
+	options = !strip
 	source = https://github.com/bikass/kora/archive/v1.4.5.tar.gz
 	sha256sums = 83ef25ad9c14e64093dc1866e79ad74b6d92f278f7725848af44a906032c7e2a
 
