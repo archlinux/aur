@@ -4,6 +4,7 @@ pkgname=uupdumpbot
 _pkgname=UUPdumpbot
 pkgver=1.0.2
 _pkgver=1.0.2-5.0
+pkgdesc="UUP dump bot for Discord"
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/dongle-the-gadget/UUPdumpbot'
