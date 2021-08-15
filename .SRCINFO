@@ -1,6 +1,6 @@
 pkgbase = dewobble-git
 	pkgdesc = Video stabilisation library with awareness of lens projections
-	pkgver = 0.0.1.r98.g1e15ad0
+	pkgver = v1.0.0.r0.g4d49006
 	pkgrel = 1
 	url = https://git.sr.ht/~hedgepigdaniel/dewobble
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = dewobble-git
 	md5sums = SKIP
 
 pkgname = dewobble-git
-

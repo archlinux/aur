@@ -2,7 +2,7 @@
 
 pkgname=dewobble-git
 _pkgname=dewobble
-pkgver=0.0.1.r98.g1e15ad0
+pkgver=v1.0.0.r0.g4d49006
 pkgrel=1
 pkgdesc="Video stabilisation library with awareness of lens projections"
 url="https://git.sr.ht/~hedgepigdaniel/dewobble"
