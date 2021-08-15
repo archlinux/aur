@@ -1,6 +1,6 @@
 pkgbase = vim-material-git
 	pkgdesc = Port of the Material colorscheme for Vim/Neovim
-	pkgver = r59.7dfa4bb
+	pkgver = r60.3b61e78
 	pkgrel = 1
 	url = https://github.com/kaicataldo/material.vim
 	arch = any
@@ -8,20 +8,13 @@ pkgbase = vim-material-git
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	provides = vim-material
+	provides = vim-airline-material
+	provides = vim-lightline-material
+	conflicts = vim-material
+	replaces = vim-airline-material-git
+	replaces = vim-lightline-material-git
 	source = vim-material-git::git+https://github.com/kaicataldo/material.vim
 	md5sums = SKIP
 
 pkgname = vim-material-git
-	provides = vim-material
-	conflicts = vim-material
-
-pkgname = vim-airline-material-git
-	depends = vim-airline
-	provides = vim-airline-material
-	conflicts = vim-airline-material
-
-pkgname = vim-lightline-material-git
-	depends = vim-lightline
-	provides = vim-lightline-material
-	conflicts = vim-lightline-material
-
