@@ -1,10 +1,10 @@
 pkgbase = gnome-metronome
 	pkgdesc = Practice music with a regular tempo
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/aplazas/metronome
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = cargo
 	makedepends = meson
 	depends = libadwaita
