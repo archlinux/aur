@@ -20,7 +20,7 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
 conflicts=(audacity)
-source=("git+https://github.com/tenacityteam/tenacity.git"
+source=("git+https://git.sr.ht/~tenacity/tenacity"
         "tenacity.patch")
 sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
 
