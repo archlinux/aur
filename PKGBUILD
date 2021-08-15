@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=pwninit-git
-pkgver=3.0.1.r29.g306b371
+pkgver=3.0.2.r0.g9ea20e7
 pkgrel=1
 pkgdesc="Automate starting binary exploit challenges (git)"
 arch=('x86_64')
@@ -20,6 +20,12 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${pkgname%-git}"
   cargo build --release --locked
@@ -27,7 +33,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --locked
 }
 
 package() {
