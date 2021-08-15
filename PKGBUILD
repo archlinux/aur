@@ -17,7 +17,7 @@ source=("$pkgname::git+https://github.com/vignette-project/vignette.git"
         "$pkgname.png"
         "$pkgname.desktop")
 sha256sums=('SKIP'
-            'c49001b8faa530300a1d33d1dddb4d8a7c671f432c0417d357a6e5e83f65a275'
+            '6e5093a1e0ab26efd32cb343ed058cd779aed68ea60c750490fcbd8d83fe41f6'
             '081f9369356779e79f5613be3ce1a8c4591aa91d5f2da57d0fa4294549893ec3'
             'da8ba30c4d5033fa63e7289ea9ca341da4e0cef514100754cc343b22c4f35d80')
 
