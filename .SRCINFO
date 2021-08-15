@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-llvm
 	pkgdesc = Linux Kernel with cacule scheduler and lto compiled
-	pkgver = 5.13.10
-	pkgrel = 2
+	pkgver = 5.13.11
+	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
 	arch = x86_64_v3
@@ -22,10 +22,13 @@ pkgbase = linux-cacule-llvm
 	makedepends = git
 	makedepends = llvm
 	makedepends = clang
+	makedepends = lld
+	makedepends = llvm-libs
+	makedepends = compiler-rt
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.13.11.tar.xz
 	source = config
-	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/arch-patches-v3/0001-arch-patches.patch
+	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/arch-patches-v4/0001-arch-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE/v5.13/cacule-5.13.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/cpu-patches/0001-cpu-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch
@@ -50,9 +53,9 @@ pkgbase = linux-cacule-llvm
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/zstd-patches-v5/0001-zstd-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/clearlinux-patches-v2/0001-clearlinux-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch
-	sha256sums = 30caf51b8f8bd127f3dbcad8ed5e696c0c0e3ca5201ce34c3cb66d820590d705
-	sha256sums = d0994816a0ee4150235b3b3337d92380e78a8ad092808297483f418875ca4e27
-	sha256sums = 5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf
+	sha256sums = 80929bcfdd6db2f6b4bea62c9864b6685a1b3ce96df0d420ad04662e8a49457d
+	sha256sums = 750c6fd22bf6ab894f781a123ee301adb95629fd8413e135c72ef81635162d19
+	sha256sums = 062b19c56e1caf1517ae6c6fff4c8c65ae85557170d3664eb6adf6729ed1d2ee
 	sha256sums = d498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22
 	sha256sums = 476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde
 	sha256sums = a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809
@@ -92,5 +95,5 @@ pkgname = linux-cacule-llvm
 
 pkgname = linux-cacule-llvm-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Kernel with cacule scheduler and lto compiled
-	depends = linux-cacule-llvm=5.13.10
+	depends = linux-cacule-llvm=5.13.11
 	depends = pahole

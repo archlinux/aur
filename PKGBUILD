@@ -7,36 +7,18 @@
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
-# Enable fsync
-_fsync=y
-#enable futex2
-_futex2=y
 #enable winesync
 _winesync=y
 ### Set performance governor as default
-_per_gov=y
-### Disable Deadline I/O scheduler
-_deadline_disable=y
-### Disable Kyber I/O scheduler
-_kyber_disable=y
+_per_gov=
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
-### Enable multigenerational LRU
-_lru_enable=y
 ### Enable Linux Random Number Generator
-_lrng_enable=y
-### Enable FULLCONENAT
-_nf_cone=y
-### Enable SECURITY_FORK_BRUTE
-# WARNING Not recommended.
-# An experimental solution, still in testing phase.
-# Possible compilation and installation errors.
-# Leave it unselected.
-_fork_brute=
+_lrng_enable=
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -61,8 +43,8 @@ _use_current=
 
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.10
-pkgrel=2
+pkgver=5.13.11
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -71,7 +53,7 @@ license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git llvm clang
+  graphviz imagemagick git llvm clang lld llvm-libs compiler-rt
 )
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
@@ -81,7 +63,7 @@ source=(
   #'0002-x86-fpu-2021-07-07.patch'
 #  '0003-clang.patch'
 #  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-  "${_patchsource}/arch-patches-v3/0001-arch-patches.patch"
+  "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
   "${_caculepatches}/v5.13/cacule-5.13.patch"
   "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
   "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
@@ -113,21 +95,22 @@ BUILD_FLAGS=(
       LLVM_IAS=1
       CC=clang
       CXX=clang++
-      LD=ld.lld
+      CC_LD=lld
+      CXX_LD=lld
       AR=llvm-ar
       NM=llvm-nm
       STRIP=llvm-strip
+      OBJCOPY=llvm-objcopy
+      OBJDUMP=llvm-objdump
       READELF=llvm-readelf
+      RANLIB=llvm-ranlib
       HOSTCC=clang
       HOSTCXX=clang++
       HOSTAR=llvm-ar
-      HOSTLD=ld.lld
-      OBJCOPY=llvm-objcopy
-      OBJDUMP=objdump
     )
-sha256sums=('30caf51b8f8bd127f3dbcad8ed5e696c0c0e3ca5201ce34c3cb66d820590d705'
-            'd0994816a0ee4150235b3b3337d92380e78a8ad092808297483f418875ca4e27'
-            '5e0070b364a3d6f05b0c8fe32e6a30b8acfaf16d2b60d472375f780582fe36cf'
+sha256sums=('80929bcfdd6db2f6b4bea62c9864b6685a1b3ce96df0d420ad04662e8a49457d'
+            '750c6fd22bf6ab894f781a123ee301adb95629fd8413e135c72ef81635162d19'
+            '062b19c56e1caf1517ae6c6fff4c8c65ae85557170d3664eb6adf6729ed1d2ee'
             'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
             '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
             'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
@@ -221,17 +204,6 @@ prepare() {
         scripts/config --disable CONFIG_NUMA
       fi
 
-      if [ -n "$_fsync" ]; then
-        echo "Enable Fsync support"
-        scripts/config --enable CONFIG_FUTEX
-        scripts/config --enable CONFIG_FUTEX_PI
-      fi
-
-      if [ -n "$_futex2" ]; then
-        echo "Enable Futex2 support"
-        scripts/config --enable CONFIG_FUTEX2
-      fi
-
       if [ -n "$_winesync" ]; then
         echo "Enable winesync support"
         scripts/config --module CONFIG_WINESYNC
@@ -249,19 +221,6 @@ prepare() {
         scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
       fi
 
-  ### Disable Deadline I/O scheduler
-       if [ -n "$_deadline_disable" ]; then
-         echo "Disabling Deadline I/O scheduler..."
-         scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
-       fi
-
-  ### Disable Kyber I/O scheduler
-       if [ -n "$_kyber_disable" ]; then
-          echo "Disabling Kyber I/O scheduler..."
-          scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
-        fi
-
-
     ### Enable protect file mappings under memory pressure
         if [ -n "$_mm_protect" ]; then
           echo "Enabling protect file mappings under memory pressure..."
@@ -273,22 +232,7 @@ prepare() {
           scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
         fi
 
-            ### Enable multigenerational LRU
-        if [ -n "$_lru_enable" ]; then
-          echo "Enabling multigenerational LRU..."
-          scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-          scripts/config --enable CONFIG_LRU_GEN
-          scripts/config --set-val CONFIG_NR_LRU_GENS 7
-          scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-          scripts/config --enable CONFIG_LRU_GEN_ENABLED
-          scripts/config --disable CONFIG_LRU_GEN_STATS
-        fi
-        ### Enable FULLCONENAT
-      	if [ -n "$_nf_cone" ]; then
-      		echo "Enabling FULLCONENAT..."
-      		scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
-      		scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
-      	fi
+
         ### Enable Linux Random Number Generator
     	if [ -n "$_lrng_enable" ]; then
     		echo "Enabling Linux Random Number Generator ..."
@@ -319,60 +263,6 @@ prepare() {
     		scripts/config --disable CONFIG_LRNG_TESTING_MENU
     		scripts/config --disable CONFIG_LRNG_SELFTEST
     	fi
-
-
-          ### Enable SECURITY_FORK_BRUTE
-      if [ -n "$_fork_brute" ]; then
-          echo "Enabling SECURITY_FORK_BRUTE..."
-          scripts/config --enable CONFIG_SECURITY_FORK_BRUTE
-          scripts/config --set-str CONFIG_LSM lockdown,yama,brute
-      fi
-
-  ### Enabling ZSTD COMPRESSION ##
-        echo "Set module compression to ZSTD"
-        scripts/config --enable CONFIG_MODULE_COMPRESS
-        scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
-        scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-        scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-       scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-
-    ### Enabling Cacule-Config ##
-        echo "Enable CacULE CPU scheduler..."
-        scripts/config --enable CONFIG_CACULE_SCHED
-        scripts/config --enable CONFIG_FAIR_GROUP_SCHED
-        scripts/config --enable CONFIG_SCHED_AUTOGROUP
-        scripts/config --disable CONFIG_EXPERT
-        scripts/config --disable CONFIG_SCHED_DEBUG
-        scripts/config --disable CONFIG_SCHED_INFO
-        scripts/config --disable CONFIG_SCHEDSTATS
-        scripts/config --disable CONFIG_DEBUG_KERNEL
-        #scripts/config --enable CONFIG_RT_GROUP_SCHED
-        echo "Enabling Full Tickless"
-        scripts/config --disable CONFIG_HZ_PERIODIC
-        scripts/config --disable CONFIG_NO_HZ_IDLE
-        scripts/config --enable CONFIG_NO_HZ_FULL
-        scripts/config --enable CONFIG_NO_HZ
-        scripts/config --enable CONFIG_NO_HZ_COMMON
-        scripts/config --enable CONFIG_CONTEXT_TRACKING
-        scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
-        echo "Enabling KBUILD_CFLAGS -O3..."
-        scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-        scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-        echo "Enable PREEMPT"
-        scripts/config --disable CONFIG_PREEMPT_NONE
-        scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
-        scripts/config --enable CONFIG_PREEMPT
-        scripts/config --enable CONFIG_PREEMPT_COUNT
-        scripts/config --enable CONFIG_PREEMPTION
-        scripts/config --enable CONFIG_PREEMPT_DYNAMIC
-        echo "Enable NTFS3"
-        scripts/config --module CONFIG_NTFS_FS
-        scripts/config --enable CONFIG_NTFS_RW
-        scripts/config --enable CONFIG_NTFS_DEBUG
-        scripts/config --module CONFIG_NTFS3_FS
-        scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-        scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-        scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
         echo "Enable Anbox"
         scripts/config --module  CONFIG_ASHMEM
         scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -389,7 +279,7 @@ prepare() {
         scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
         echo "Enable VHBA-Module"
         scripts/config --module CONFIG_VHBA
-  
+
   ### Optionally use running kernel's config
   # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
   if [ -n "$_use_current" ]; then
