@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Bloodhound
+Exec=/opt/bloodhound/BloodHound %U
+Terminal=false
+Type=Application
+Icon=bloodhound-rbw.png
+StartupWMClass=bloodhound
+Comment=BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment.
+GenericName=Bloodhound
+StartupNotify=true
+Categories=Utility;Security;
+Keywords=bloodhound;
