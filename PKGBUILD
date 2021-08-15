@@ -2,7 +2,7 @@
 
 pkgname=promscale
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source analytical platform for Prometheus metrics"
 arch=('x86_64')
 url="https://github.com/timescale/promscale"
@@ -30,6 +30,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+
   go build -v \
     -buildmode=pie \
     -trimpath \

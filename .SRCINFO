@@ -1,7 +1,7 @@
 pkgbase = promscale
 	pkgdesc = An open source analytical platform for Prometheus metrics
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/timescale/promscale
 	arch = x86_64
 	license = Apache
