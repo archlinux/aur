@@ -1,0 +1,17 @@
+pkgbase = cpod-appimage
+	pkgdesc = A simple, beautiful podcast app for Windows, macOS, and Linux.
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://github.com/z-------------/CPod
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	depends = appimagelauncher
+	conflicts = cpod
+	conflicts = cpod-git
+	noextract = cpod-1.28.0.AppImage
+	options = !strip
+	source = cpod-1.28.0.AppImage::https://github.com/z-------------/CPod/releases/download/v1.28.0/CPod-1.28.0-x86_64.AppImage
+	sha256sums = 796562f9645981549c6311315cd6bf3a91ba01aae157524428b1ba2193a503af
+
+pkgname = cpod-appimage
