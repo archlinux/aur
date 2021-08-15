@@ -1,6 +1,6 @@
 pkgbase = perl-uri-fetch
 	pkgdesc = Smart URI fetching/caching
-	pkgver = 0.13
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://metacpan.org/release/URI-Fetch
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = perl-uri-fetch
 	depends = perl-uri
 	depends = perl-libwww
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-0.13.tar.gz
-	sha256sums = 0db061a05dc2b950d3468ddb2e8435ff0e891c1c2da618150a42835371ec8667
+	source = http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-0.15.tar.gz
+	sha256sums = 379f39f24c6dae5c536332b17979fd90799dabccdfe8e792e7eead3eb8cda50c
 
 pkgname = perl-uri-fetch
-

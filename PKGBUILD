@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-fetch'
-pkgver='0.13'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
@@ -12,9 +12,9 @@ options=('!emptydirs')
 depends=('perl-class-errorhandler' 'perl-uri' 'perl-libwww')
 makedepends=('perl-test-requiresinternet')
 url='https://metacpan.org/release/URI-Fetch'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-0.13.tar.gz')
-sha256sums=('0db061a05dc2b950d3468ddb2e8435ff0e891c1c2da618150a42835371ec8667')
-_distdir="URI-Fetch-0.13"
+source=("http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-${pkgver}.tar.gz")
+sha256sums=('379f39f24c6dae5c536332b17979fd90799dabccdfe8e792e7eead3eb8cda50c')
+_distdir="URI-Fetch-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
