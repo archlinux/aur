@@ -1,6 +1,6 @@
 pkgbase = fluent-gtk-theme-git
 	pkgdesc = Fluent design gtk theme for linux desktops
-	pkgver = 2021.08.08.r15.gff2cc5f
+	pkgver = 2021.08.08.r23.ge97f950
 	pkgrel = 1
 	url = https://www.pling.com/p/1477941
 	install = fluent-gtk-theme.install
@@ -17,6 +17,8 @@ pkgbase = fluent-gtk-theme-git
 	conflicts = fluent-gtk-theme
 	options = !strip
 	source = fluent-gtk-theme::git+https://github.com/vinceliuice/Fluent-gtk-theme.git
+	source = wallpaper::git+https://github.com/vinceliuice/Fluent-gtk-theme.git#branch=Wallpaper
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = fluent-gtk-theme-git

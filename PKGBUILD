@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.08.08.r15.gff2cc5f
+pkgver=2021.08.08.r23.ge97f950
 pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
@@ -15,8 +15,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
 install="${pkgname%-git}.install"
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/Fluent-gtk-theme.git")
-sha256sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/vinceliuice/Fluent-gtk-theme.git"
+        'wallpaper::git+https://github.com/vinceliuice/Fluent-gtk-theme.git#branch=Wallpaper')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -34,11 +36,6 @@ package() {
   # Plank theme
   install -Dm644 src/plank/dock.theme -t "$pkgdir/usr/share/plank/themes/Fluent"
 
-  # Wallpapers
-  install -d "$pkgdir/usr/share/backgrounds/${pkgname%-git}"
-  cp -r src/wallpaper/wallpaper-* \
-    "$pkgdir/usr/share/backgrounds/${pkgname%-git}"
-
   # Firefox theme
   install -d "$pkgdir/usr/share/doc/${pkgname%-git}"
   cp -r src/firefox "$pkgdir/usr/share/doc/${pkgname%-git}"
@@ -48,4 +45,9 @@ package() {
 
   # Fix for Dash to panel & Workspaces to Dock
   cp -r src/gnome-shell/extensions/* "$pkgdir/usr/share/doc/${pkgname%-git}"
+
+  # Wallpapers
+  cd "$srcdir/wallpaper"
+  install -d "$pkgdir"/usr/share/{backgrounds,gnome-background-properties}
+  ./install-gnome-backgrounds.sh
 }
