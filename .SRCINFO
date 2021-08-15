@@ -1,19 +1,16 @@
 pkgbase = uasm
-	pkgdesc = Continued evolution of JWasm
-	pkgver = 2.52
-	pkgrel = 1
+	pkgdesc = A free MASM-compatible assembler based on JWasm
+	pkgver = 2.52.r1.c612f83d97
+	pkgrel = 3
 	url = http://www.terraspace.co.uk/uasm.html
 	arch = x86_64
 	license = custom:JWasm License
 	license = custom:Sybase Open Watcom Public License
-	makedepends = git
-	depends = sh
-	source = uasm.git::git+https://github.com/Terraspace/UASM.git#branch=v2.52
+	source = uasm-2.52.r1.c612f83d97.tar.gz::https://github.com/Terraspace/UASM/archive/c612f83d97a0cb192dfd983676743dabf662ed51.tar.gz
 	source = uasm-nocolor
 	source = dbgcv.patch
-	sha1sums = SKIP
-	sha1sums = 49f6a6ca16eba01fafce563e0f14cd145b512ff6
-	sha1sums = 9489b5239bbb2b4c3c93ef04c61ec1797ec443dd
+	sha256sums = e9d610360eb1e03be44261e1ae3c2286745e16976a285a402431ed54b36ccd24
+	sha256sums = 19ea1744abea546768544c5d12afbb6a3f86946c002f092871a6c9876ac1fbb5
+	sha256sums = df32228b7258abc8c3462601fcced228a5137e7ebc761863eb15edea240dc322
 
 pkgname = uasm
-
