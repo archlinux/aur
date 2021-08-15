@@ -1,8 +1,10 @@
 pkgbase = s2geometry
+	pkgdesc = A library for manipulating geometric shapes
 	pkgver = 0.9.0
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
+	license = Apache-2.0
 	makedepends = cmake
 	depends = openssl
 	source = https://github.com/google/s2geometry/archive/refs/tags/v0.9.0.tar.gz
