@@ -3,7 +3,7 @@
 
 pkgname=schismtracker
 pkgver=20210525
-pkgrel=1
+pkgrel=2
 pkgdesc='An oldschool sample-based music composition tool'
 arch=('i686' 'pentium4' 'x86_64' 'armv7h')  # and probably other ARMs
 url='http://schismtracker.org/'
@@ -15,14 +15,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/r
 sha512sums=('1f20535e4e3b5175ceea803a45b7286a99cab248829c39d11bc85780bc63e0e26c49ad78997a13e290fb4ad2c292d15eeb494a975d53fbe25dec80499e675b16')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   autoreconf -i
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 README.md \
                  "$pkgdir/usr/share/doc/$pkgname/README.md"

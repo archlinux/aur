@@ -1,7 +1,7 @@
 pkgbase = schismtracker
 	pkgdesc = An oldschool sample-based music composition tool
 	pkgver = 20210525
-	pkgrel = 1
+	pkgrel = 2
 	url = http://schismtracker.org/
 	arch = i686
 	arch = pentium4
@@ -16,4 +16,3 @@ pkgbase = schismtracker
 	sha512sums = 1f20535e4e3b5175ceea803a45b7286a99cab248829c39d11bc85780bc63e0e26c49ad78997a13e290fb4ad2c292d15eeb494a975d53fbe25dec80499e675b16
 
 pkgname = schismtracker
-
