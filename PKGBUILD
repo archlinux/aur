@@ -6,9 +6,9 @@
 # Maintainer: Gabriel Guldner <gabriel at guldner.eu>
 pkgname=git-credential-manager-core-bin
 _pkgname=git-credential-manager-core
-pkgver=2.0.474
+pkgver=2.0.498
 # _pkgver=2.0.452
-_build=41365
+_build=54650
 pkgrel=1
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!strip')
 source=("https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v$pkgver/gcmcore-linux_amd64.$pkgver.$_build.tar.gz"
 		"$_pkgname.install"
 		'LICENSE')
-sha256sums=('09234cd1368a3670058bff935024eee1c062b6c8e5fc1d9d119f99bc2b6c6e28'
+sha256sums=('c364b78f896188beac64dfc75848a01a4189b4c01b5546e7932bba56a58cc7f7'
             '399aa9e3cf7a30c3658129564f9aa14871de61aed9a1b429ecc4f96a92a69400'
             '30147347d5ce41662672ea2be7b158ae0e014398b97a148dd07bfd46c5166292')
 
