@@ -1,6 +1,6 @@
 pkgbase = vim-miramare-git
 	pkgdesc = Comfortable and pleasant colorscheme for Vim
-	pkgver = r26.a2abfb8
+	pkgver = r28.ec1b7cf
 	pkgrel = 1
 	url = https://github.com/franbach/miramare
 	arch = any
@@ -8,24 +8,13 @@ pkgbase = vim-miramare-git
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	provides = vim-miramare
+	provides = vim-airline-miramare
+	provides = vim-lightline-miramare
+	conflicts = vim-miramare
+	replaces = vim-airline-miramare-git
+	replaces = vim-lightline-miramare-git
 	source = vim-miramare-git::git+https://github.com/franbach/miramare
 	sha256sums = SKIP
 
 pkgname = vim-miramare-git
-	optdepends = vim-airline-miramare: Airline theme
-	optdepends = vim-lightline-miramare: Lightline theme
-	provides = vim-miramare
-	conflicts = vim-miramare
-
-pkgname = vim-airline-miramare-git
-	depends = vim-airline
-	optdepends = vim-miramare: Base vim colorscheme
-	provides = vim-airline-miramare
-	conflicts = vim-airline-miramare
-
-pkgname = vim-lightline-miramare-git
-	depends = vim-lightline-git
-	optdepends = vim-miramare: Base vim colorscheme
-	provides = vim-lightline-miramare
-	conflicts = vim-lightline-miramare
-
