@@ -1,12 +1,11 @@
 pkgbase = ttf-camingocode
 	pkgdesc = A modern monospaced typeface designed for code editors
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.janfromm.de/typefaces/camingomono/overview/
 	arch = any
-	license = CC-BY-ND 3.0
+	license = custom:CC-BY-ND 3.0
 	source = ttf-camingocode-1.0.zip::http://janfromm.de/_data/downloads/CamingoCode-v1.0.zip
 	sha256sums = 13b188ca8d1b5fe2c3ba880771f20a6faac550405ae98d12edd46240f8896714
 
 pkgname = ttf-camingocode
-
