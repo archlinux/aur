@@ -1,0 +1,24 @@
+pkgbase = cinny-desktop-bin
+	pkgdesc = Unofficial Build of the Cinny Desktop Client. Repackages hbarsaiyan/cinny-tauri .deb package to an Arch-Compatible format.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cinny.in/
+	install = cinny-desktop-bin.install
+	arch = x86_64
+	groups = 
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = openssl
+	depends = pango
+	depends = webkit2gtk
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/hbarsaiyan/cinny-tauri/releases/download/v1.1.0/cinny_1.1.0_amd64.deb
+	sha512sums_x86_64 = 7311ae424f6f30687863cb34479643eddde9128f6f760bb223fccabe54eaae4341d0d97a7069902d0a7c8022c2021e9563be1c074b2e6ac5523b7ced9619b9c4
+
+pkgname = cinny-desktop-bin
