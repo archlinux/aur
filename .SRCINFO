@@ -1,6 +1,6 @@
 pkgbase = retroshare-git
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = v0.6.6.r49.gd1a166df5
+	pkgver = v0.6.6.r71.g8bed99cc9
 	pkgrel = 1
 	url = http://retroshare.cc/
 	arch = i686
@@ -27,9 +27,6 @@ pkgbase = retroshare-git
 	provides = retroshare
 	conflicts = retroshare
 	source = retroshare::git+https://github.com/RetroShare/RetroShare.git
-	source = fix_create_directories.patch
 	sha256sums = SKIP
-	sha256sums = 1019d25aa0f6d467fcd1e67c15acb5e11a44f97b328385b750b061decdcdf6a3
 
 pkgname = retroshare-git
-

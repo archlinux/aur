@@ -28,7 +28,7 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.r49.gd1a166df5
+pkgver=v0.6.6.r71.g8bed99cc9
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -42,11 +42,8 @@ optdepends=('tor: tor hidden node support'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git"
-	'fix_create_directories.patch'
-)
-sha256sums=('SKIP'
-            '1019d25aa0f6d467fcd1e67c15acb5e11a44f97b328385b750b061decdcdf6a3')
+source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git")
+sha256sums=('SKIP')
 
 # Add sql dependency
 [[ "$_no_sqlcipher" == 'true' ]] && depends=(${depends[@]} 'sqlite') || depends=(${depends[@]} 'sqlcipher')
@@ -87,8 +84,6 @@ pkgver() {
 
 prepare() {
         cd "${srcdir}/${_pkgname}"
-
-        patch -p1 --ignore-whitespace -i "${srcdir}"/fix_create_directories.patch
 }
 
 build() {
