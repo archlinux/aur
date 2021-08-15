@@ -1,0 +1,12 @@
+pkgbase = gitbatch
+	pkgdesc = Manage your git repositories in one place
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/isacikgoz/gitbatch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = gitbatch-0.6.1.tar.gz::https://github.com/isacikgoz/gitbatch/archive/v0.6.1.tar.gz
+	sha256sums = 0ef36a4ea0b6cf4beb51928dd51281ec106006ba800c439d2588515c1bfeaf41
+
+pkgname = gitbatch
