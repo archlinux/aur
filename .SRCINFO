@@ -1,0 +1,16 @@
+pkgbase = awakened-poe-trade-git
+	pkgdesc = Path of Exile trading app for price checking
+	pkgver = v2.13.1.r1.fc69988
+	pkgrel = 1
+	url = https://github.com/SnosMe/awakened-poe-trade
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	provides = awakened-poe-trade-git
+	conflicts = awakened-poe-trade-git
+	options = !strip
+	source = git+https://github.com/SnosMe/awakened-poe-trade.git
+	md5sums = SKIP
+
+pkgname = awakened-poe-trade-git
