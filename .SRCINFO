@@ -1,6 +1,6 @@
 pkgbase = pwninit-bin
 	pkgdesc = Automate starting binary exploit challenges.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/io12/pwninit
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = pwninit-bin
 	depends = patchelf
 	provides = pwninit
 	conflicts = pwninit
-	source = pwninit-bin-3.0.1::https://github.com/io12/pwninit/releases/download/3.0.1/pwninit
-	source = pwninit-bin-3.0.1-LICENSE::https://github.com/io12/pwninit/raw/3.0.1/LICENSE
-	source = pwninit-bin-3.0.1-README.md::https://github.com/io12/pwninit/raw/3.0.1/README.md
-	sha256sums = 5188c4c00cf1ea7711aff20e59adc755ff897deccd368b4c01899da505ad3ef6
+	source = pwninit-bin-3.0.2::https://github.com/io12/pwninit/releases/download/3.0.2/pwninit
+	source = pwninit-bin-3.0.2-LICENSE::https://github.com/io12/pwninit/raw/3.0.2/LICENSE
+	source = pwninit-bin-3.0.2-README.md::https://github.com/io12/pwninit/raw/3.0.2/README.md
+	sha256sums = d01999171e0a24581c22613afadf8af4f4869d7e86948920e919f124c62f5f78
 	sha256sums = 99dce9273c26ee94572b9fe715d449a300dbcc8d5914285cf3cb31110ca92019
 	sha256sums = 6e517b44b14541dc04b9c671ff42a30ebe3500c60c79e44b257c3d68ed577f06
 
