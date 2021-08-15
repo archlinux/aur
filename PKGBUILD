@@ -6,7 +6,7 @@
 
 pkgname=psad
 pkgver=2.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Port Scan Attack Detector: Makes use of iptables log messages to detect, alert, and (optionally) block port scans and other suspect traffic'
 arch=('i686' 'x86_64')
 url='http://cipherdyne.org/psad/'
@@ -69,6 +69,17 @@ package () {
   #add the systemd service file in '/usr/lib'
   cp "$srcdir/psadwatchd.service" "$pkgdir/usr/lib/systemd/system/psadwatchd.service"
   cp "$srcdir/kmsgsd.service" "$pkgdir/usr/lib/systemd/system/kmsgsd.service"
+  
+  # Logrotate file
+  install -Dm 644 misc/logrotate.psad "${pkgdir}/etc/logrotate.d/psad"
+  
+  # misc crap
+  for file in misc/*.pl;do
+    install -Dm444 ${file} "${pkgdir}/usr/lib/psad/${file}"
+  done
+  
+  # pscan.
+  install -Dm 644 misc/pscan "${pkgdir}/usr/bin/pscan"
   
   # Fix systemd unit
   # Fix the config
