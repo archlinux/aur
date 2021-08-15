@@ -1,14 +1,15 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=cras
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='The Anti-Procrastination Tool'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${pkgname}"
 license=('MIT')
-source=("https://git.sr.ht/~arivigo/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a68a4f49b784d3e50618ba62888877e312d22e4d7a4e0d3879d9f7582c3e8498')
+makedepends=('sline')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~arivigo/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('23993109ebb233c570344932aeb49bb8536b7bee52a4b4bb4f27aa7dcbaeb59d')
 conflicts=("${pkgname}-git")
 
 build() {
