@@ -1,15 +1,15 @@
 # Maintainer: Florian "Bluewind" Pritz <flo@xssn.at>
 pkgname=spampd
-pkgver=2.53
-pkgrel=3
+pkgver=2.61
+pkgrel=1
 pkgdesc="Spamassassin Proxy Daemon"
 arch=('any')
 url="https://www.worlddesign.com/index.cfm/page/software/open-source/spampd.htm"
 license=('GPL3')
 depends=('perl' 'perl-net-server' 'spamassassin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mpaperno/spampd/archive/2.53.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mpaperno/spampd/archive/$pkgver.tar.gz"
         spampd.service)
-md5sums=('63ef45a103687ec3a1b7983f537b4d9a'
+md5sums=('e5cd2854e151e1088e872ef4f06a5b6f'
          '009db21d0046a73bde74e403e903da6e')
 
 build() {
