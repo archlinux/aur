@@ -1,7 +1,7 @@
 pkgbase = wlroots-hi-res-scroll-git
 	pkgdesc = Modular Wayland compositor library with hi-res scroll patches (git version)
 	pkgver = 0.13.0.r153.g9e58301d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
 	license = custom:MIT
@@ -28,6 +28,6 @@ pkgbase = wlroots-hi-res-scroll-git
 	source = wlroots-hi-res-scroll-git::git+https://github.com/swaywm/wlroots
 	source = hi_res_scroll.diff::https://github.com/swaywm/wlroots/compare/master...janza:master.diff
 	sha512sums = SKIP
-	sha512sums = a7eec598fa659a9118826d26596c7b8baea4b6fc7297195039726dee961f22aca7d9627b40498d1c490644657244198a31577c5b1bc66ae8a99f2d0b5d460949
+	sha512sums = SKIP
 
 pkgname = wlroots-hi-res-scroll-git

@@ -3,7 +3,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-hi-res-scroll-git
 pkgver=0.13.0.r153.g9e58301d
-pkgrel=1
+pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library with hi-res scroll patches (git version)'
 url=https://github.com/swaywm/wlroots
@@ -34,7 +34,7 @@ source=("${pkgname}::git+${url}"
         "hi_res_scroll.diff::https://github.com/swaywm/wlroots/compare/master...janza:master.diff"
        )
 sha512sums=('SKIP'
-            'a7eec598fa659a9118826d26596c7b8baea4b6fc7297195039726dee961f22aca7d9627b40498d1c490644657244198a31577c5b1bc66ae8a99f2d0b5d460949')
+            'SKIP')
 
 pkgver () {
 	cd "${pkgname}"
