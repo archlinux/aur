@@ -27,10 +27,9 @@ build() {
 }
 
 check() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
-    cd ${srcdir}/${_pyname}-${pkgver}/build/lib.linux-${CARCH}-${_pyver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest "build/lib.linux-${CARCH}-${_pyver}" || warning "Tests failed"
 }
 
 package_python-reproject() {
