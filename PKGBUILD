@@ -4,8 +4,8 @@
 # then please put 'unknown'.
 
 pkgname=antsword
-pkgver=2.1.12
-pkgrel=8
+pkgver=2.1.14
+pkgrel=1
 pkgdesc="AntSword is a cross-platform webshell management toolkit."
 arch=('any')
 url="https://www.yuque.com/antswordproject"
@@ -19,7 +19,7 @@ source=("https://github.com/AntSwordProject/$pkgname/archive/refs/tags/$pkgver.t
         "$pkgname.desktop"
         "$pkgname.png"
         "$pkgname")
-sha256sums=("e590e98deea1130932e702056ad13ed7a6805e45c0f3695ae6e76f1088c356f9"
+sha256sums=("1667e636b68ffde32b5faa76a40797a6efc63c78693e545598a44028b6a25b5b"
         "7a9d56dad4d5df8968aed7aec76c6c983a0f6141334ca07e1d5ae80f0829531e"
         "f3cff3ac504b8ff4bd48c9086e49ae978b6f13a3a60dc80b4dfca584c6995f69"
         "94894700d63d1c94f8e8d1fade1df936e1fee32d42f886ea32a6e6b29d40a866"
