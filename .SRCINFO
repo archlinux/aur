@@ -1,15 +1,15 @@
 pkgbase = zigmod
 	pkgdesc = A package manager for the Zig programming language
-	pkgver = 67
+	pkgver = 69
 	pkgrel = 1
 	url = https://github.com/nektro/zigmod
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = zig
-	source = zigmod-67.tar.gz::https://github.com/nektro/zigmod/archive/refs/tags/v67.tar.gz
+	source = zigmod-69.tar.gz::https://github.com/nektro/zigmod/archive/refs/tags/v69.tar.gz
 	source = https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
-	sha256sums = bc07cf6362497a964c5ca340f3592788f3023103ca23a987ddce16ca3fdec651
+	sha256sums = c5c528ad97280473a7e3c44df783e9aea9a20290b8c598dbaa9e9b5f50b565f9
 	sha256sums = c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 
 pkgname = zigmod
