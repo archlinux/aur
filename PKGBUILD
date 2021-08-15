@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=0.5.2.r0.gad2e1b0
+pkgver=0.5.3.r0.g62bf965
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
@@ -11,8 +11,7 @@ license=('GPL3')
 depends=('coreutils' 'util-linux' 'bash' 'wget' 'tar' 'zstd')
 makedepends=('git')
 optdepends=('debootstrap: debian support'
-            'qemu-user-static: foreign architectures support'
-            'squashfs-tools: live installer build support')
+            'qemu-user-static: foreign architectures support')
 source=("git+https://github.com/alealexpro100/linux_install.git")
 md5sums=('SKIP')
 
@@ -29,15 +28,18 @@ prepare() {
 
 package() {
     cd "$srcdir/$_reponame" || exit 1
-    rm -rf "_config.yml" "bin/debootstrap-debian" "custom" "tests"
+    rm -rf "_config.yml" "bin/debootstrap-debian" "custom" "tests" "bin/make_images"
     for file in TODO README.md CHANGES.md; do
         install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
         rm -rf "$file"
     done
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     rm -rf LICENSE
+    install -m644 -d "$pkgdir/usr/share/$pkgname/auto_configs"
+    cp -r auto_configs/* "$pkgdir/usr/share/$pkgname/auto_configs"
+    rm -rf auto_configs
     install -m755 -d "$pkgdir/usr/lib/$pkgname"
-    cp -r * "$pkgdir/usr/lib/$pkgname"
+    cp -r ./* "$pkgdir/usr/lib/$pkgname"
     for file in install_sys profile_gen; do
         install -Dm755 "${srcdir}/$file" "$pkgdir/usr/bin/$file"
     done
