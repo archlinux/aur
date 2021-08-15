@@ -2,12 +2,11 @@
 # Contributor: ajbura, hbarsaiyan
 pkgname=cinny-desktop-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Build of the Cinny Desktop Client. Repackages hbarsaiyan/cinny-tauri .deb package to an Arch-Compatible format."
 arch=('x86_64')
 url="https://cinny.in/"
 license=('MIT')
-groups=('')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'openssl' 'pango' 'webkit2gtk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install

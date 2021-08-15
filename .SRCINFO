@@ -1,11 +1,10 @@
 pkgbase = cinny-desktop-bin
 	pkgdesc = Unofficial Build of the Cinny Desktop Client. Repackages hbarsaiyan/cinny-tauri .deb package to an Arch-Compatible format.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cinny.in/
 	install = cinny-desktop-bin.install
 	arch = x86_64
-	groups = 
 	license = MIT
 	depends = cairo
 	depends = desktop-file-utils
