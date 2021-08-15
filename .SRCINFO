@@ -12,6 +12,7 @@ pkgbase = scrnsvr-bin
 	depends = grep
 	depends = procps-ng
 	depends = libxss
+	depends = pcre
 	optdepends = dunst: dunstify for notifications
 	optdepends = libnotify: for notifications
 	optdepends = libxinerama: for multi-monitor with xinerama fullscreen check support
