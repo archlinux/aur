@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
 url=https://github.com/Taiko2k/Avvie
-license=('GPL')
+license=(GPL3)
 depends=(gtk3
          libnotify
          python-cairo
