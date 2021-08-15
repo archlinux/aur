@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-adementary-git
 	pkgdesc = A theme for GNOME/Budgie/Xfce/Cinnamon desktop with elementary-ish aesthetics.
-	pkgver = r258.054d4ae
-	pkgrel = 2
+	pkgver = r272.e261167
+	pkgrel = 1
 	url = https://github.com/hrdwrrsk/adementary-theme
 	arch = any
 	license = GPL3
@@ -15,4 +15,3 @@ pkgbase = gtk-theme-adementary-git
 	sha512sums = SKIP
 
 pkgname = gtk-theme-adementary-git
-
