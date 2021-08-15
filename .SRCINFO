@@ -1,0 +1,13 @@
+pkgbase = uupdumpbot
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/dongle-the-gadget/UUPdumpbot
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	depends = icu
+	options = staticlibs
+	source = https://github.com/dongle-the-gadget/UUPdumpbot/archive/v1.0.2-5.0.tar.gz
+	sha256sums = 50bf8bbb51c4bf8dd0c959436431cc0231e316e18ff717438fa5f137578d1d59
+
+pkgname = uupdumpbot
