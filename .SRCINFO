@@ -1,7 +1,7 @@
 pkgbase = mutter-git
 	pkgdesc = A window manager for GNOME.
 	pkgver = 40.1+299+ged391eb06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
@@ -9,7 +9,7 @@ pkgbase = mutter-git
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland
-	makedepends = meson
+	makedepends = meson-git
 	makedepends = xorg-server
 	depends = dconf
 	depends = gobject-introspection-runtime
