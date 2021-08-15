@@ -33,11 +33,9 @@ source=(
   dbgcv.patch
 )
 
-sha1sums=(
-  SKIP
-  49f6a6ca16eba01fafce563e0f14cd145b512ff6
-  9489b5239bbb2b4c3c93ef04c61ec1797ec443dd
-)
+sha1sums=('SKIP'
+          '49f6a6ca16eba01fafce563e0f14cd145b512ff6'
+          'f41bb76a34bde4a30ec8f17eda857e6d0951d070')
 
 prepare() {
 

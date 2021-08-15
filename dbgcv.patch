@@ -1,5 +1,6 @@
---- dbgcv.c.orig	2021-06-09 16:42:58.071853143 +0100
-+++ dbgcv.c	2021-06-10 10:32:31.453195825 +0100
+diff '--color=auto' -Naur UASM-c612f83d97a0cb192dfd983676743dabf662ed51~/dbgcv.c UASM-c612f83d97a0cb192dfd983676743dabf662ed51/dbgcv.c
+--- UASM-c612f83d97a0cb192dfd983676743dabf662ed51~/dbgcv.c	2021-04-02 17:57:14.000000000 +0200
++++ UASM-c612f83d97a0cb192dfd983676743dabf662ed51/dbgcv.c	2021-07-20 14:31:39.634571179 +0200
 @@ -17,7 +17,24 @@
  #include <fixup.h>
  #include <dbgcv.h>
@@ -35,20 +36,7 @@
  #define MD5_LENGTH ( sizeof( uint_32 ) + sizeof( uint_16 ) + 16 + sizeof( uint_16 ) )
  
  static int calc_md5(const char* filename, unsigned char* sum)
-@@ -1565,22 +1584,31 @@
- 		s = strcpy(s, "cwd") + 4;
- 		s = strcpy(s, cv.currdir) + q + 1;
- 		s = strcpy(s, "exe") + 4;
-+		
- 		len = strlen(_pgmptr) + 1;
- 		s = strcpy(s, _pgmptr) + len;
-+		
- 		s = strcpy(s, "src") + 4;
- 		p = cv.files[0].name;
- 		if (_memicmp(p, cv.currdir, q) == 0)
- 			p += q + 1;
--
-+		
+@@ -1575,12 +1594,20 @@
  		len = strlen(p) + 1;
  		s = strcpy(s, p) + len;
  		*s++ = '\0';
@@ -60,7 +48,7 @@
  		cv.ps = s;
  
  		/* length needs to be added for each symbol */
--
+ 
 +		#ifdef _WIN32
  		cv.section->length += (s - start);
 +		#else
