@@ -1,21 +1,37 @@
-# Maintainer: Emile Pesik <emile [at] aerion [dot] co [dot] uk> 
+# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
+# Contributor: Emile Pesik <emile [at] aerion [dot] co [dot] uk>
+
 pkgname=rephrase
-pkgver=0.1
-pkgrel=1 
-pkgdesc="A specialized passphrase recovery tool for GnuPG." 
-arch=(any) 
-url="http://www.roguedaemon.net/rephrase/" 
-license=("GPL")
+pkgver=0.2
+pkgrel=1
+_debianrel=4
+pkgdesc='A specialized passphrase recovery tool for GnuPG.'
+arch=('i686' 'x86_64')
+url='https://packages.debian.org/sid/rephrase'
 depends=('gnupg')
-source=("http://www.roguedaemon.net/${pkgname}/${pkgname}-${pkgver}.tar.gz") 
-md5sums=('be53cd4988efa1a226f3dc15decf12a9')
+optdepends=('cryptsetup: can recover Cryptsetup/LUKS passphrases')
+license=('GPL3')
+source=("http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}.orig.tar.gz"
+  "http://deb.debian.org/debian/pool/main/r/rephrase/${pkgname}_${pkgver}-${_debianrel}.debian.tar.xz")
+md5sums=('d73b9b30194f3ebbf92f19737a62ddfa'
+  '790197413e1c4bbacb3894d625c2b029')
+
+prepare() {
+  for p in debian/patches/*.patch; do
+    patch -d ${pkgname}-${pkgver} -p1 < $p
+  done
+}
 
 build() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make GPG=/usr/bin/gpg
-  }
-	
+}
+
 package() {
-  cd $srcdir/${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make BINDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" install
-  }
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
