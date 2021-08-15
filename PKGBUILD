@@ -1,6 +1,6 @@
 # Maintainer: Jan-Henrik Bruhn <aur@jhbruhn.de> 
 pkgname=upstream-electron-bin
-pkgver=0.1.12
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Desktop client for radicle (binary version, system electron)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v${pkgver}/LICENSE"
     "radicle-launcher.sh"
 )
-sha256sums=('25532377b5261e80288c4e68448fbe3681b06ae2921f76ea7fbf16126175321e'
+sha256sums=('510290af496dfcf4fc366689a3089027557b83f2d0a744b9c21a1fe96bda1da6'
             'd1bb5e1a4cd3774790ae7024904d572c27267857ed004a062416d520bf4230ad'
             'ca84ffe5cda88ad75fa3aa95c9f100768eff2ea91b977235418ef74ec1f37ac4')
 
@@ -35,7 +35,7 @@ package() {
     rm "${srcdir}/upstream/libffmpeg.so" 
     rm "${srcdir}/upstream/libGLESv2.so" 
     rm "${srcdir}/upstream/libvk_swiftshader.so" 
-    rm "${srcdir}/upstream/libvulkan.so" 
+    rm "${srcdir}/upstream/libvulkan.so.1" 
     rm "${srcdir}/upstream/snapshot_blob.bin" 
     rm "${srcdir}/upstream/icudtl.dat" 
     rm "${srcdir}/upstream/LICENSE.electron.txt" 
