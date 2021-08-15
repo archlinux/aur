@@ -2,6 +2,7 @@ pkgbase = s2geometry
 	pkgdesc = A library for manipulating geometric shapes
 	pkgver = 0.9.0
 	pkgrel = 1
+	url = https://s2geometry.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
