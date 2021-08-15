@@ -1,11 +1,12 @@
 pkgbase = cras-git
 	pkgdesc = The Anti-Procrastination Tool
-	pkgver = r153.4ea346a
+	pkgver = r181.1ce187c
 	pkgrel = 1
 	url = https://sr.ht/~arivigo/cras
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = sline
 	conflicts = cras
 	source = git+https://git.sr.ht/~arivigo/cras
 	sha256sums = SKIP
