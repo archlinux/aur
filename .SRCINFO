@@ -1,0 +1,20 @@
+pkgbase = avvie
+	pkgdesc = A utility for quickly cropping images
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/Taiko2k/Avvie
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = libnotify
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-piexif
+	depends = python-pillow
+	source = git+https://github.com/Taiko2k/Avvie.git
+	source = avvie.sh
+	sha512sums = SKIP
+	sha512sums = bca66e08dba2ef9c0e1ccfd3ecf8ff3125421b71a25d1a0aaa91030db0a5b6e19c3318bba2a5146b085c855f16a798ada55fbc78ebe5fcdb821eea67f15bc07a
+
+pkgname = avvie
