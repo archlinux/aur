@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-normalize
 	pkgdesc = Audio normalization using ffmpeg.
-	pkgver = 1.22.1
-	pkgrel = 7
+	pkgver = 1.22.2
+	pkgrel = 1
 	url = https://github.com/slhck/ffmpeg-normalize
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = ffmpeg-normalize
 	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = python-ffmpeg-progress-yield
-	source = ffmpeg-normalize-1.22.1.tar.gz::https://github.com/slhck/ffmpeg-normalize/archive/v1.22.1.tar.gz
-	sha512sums = 2ce908f4fdb12e3f17ec068e162fd2738482862db423c1519c064190745339431eb38c328c0c522357920c23f3e5e0ee761fb7f929c3110ff55ca7beeb61cddf
+	source = ffmpeg-normalize-1.22.2.tar.gz::https://github.com/slhck/ffmpeg-normalize/archive/v1.22.2.tar.gz
+	sha512sums = eeb8355bf578ea73476f58b0b5e151540805593003e13b6aec1839f0304d33f595c9ee7d15680a341f0a70a44cc4aad989e383fc75931315a52c95ad4a71f064
 
 pkgname = ffmpeg-normalize
-
