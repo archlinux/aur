@@ -2,7 +2,7 @@
 # Maintainer: Sian1468 <setthawut DOT a AT protonmail DOT com>
 
 pkgname=python-ffmpeg-progress-yield
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Run an ffmpeg command with its progress yielded."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-colorama' 'python-tqdm')
 provides=('ffmpeg-progress-yield')
 conflicts=('ffmpeg-progress-yield')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('1064366941669930446da671b278a049cbaf2ed562615068a9ea87711b4817761c71a12e7eed30cc8f234a37f62b3582738e2fd531eee0ca82ff6bbb2c0f7ec1')
+sha512sums=('0eb888e855b0aded8c2050a1d1e52bb39927847b0191b653232f56b1f865e9ec97668c25f0966155f9b5405bdbf4c79b252dc0da0ea7cad9304c154522d6e096')
 
 build() {
   cd ffmpeg-progress-yield-$pkgver
