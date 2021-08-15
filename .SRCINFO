@@ -8,27 +8,13 @@ pkgbase = vim-code-dark-git
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
+	provides = vim-code-dark
+	provides = vim-airline-code-dark
+	provides = vim-lightline-code-dark
+	conflicts = vim-code-dark
+	conflicts = vim-airline-code-dark
+	conflicts = vim-lightline-code-dark
 	source = vim-code-dark-git::git+https://github.com/tomasiser/vim-code-dark
 	sha256sums = SKIP
 
 pkgname = vim-code-dark-git
-	depends = vim-plugin-runtime
-	optdepends = vim-airline-code-dark
-	optdepends = vim-lightline-code-dark
-	provides = vim-code-dark
-	conflicts = vim-code-dark
-
-pkgname = vim-airline-code-dark-git
-	depends = vim-plugin-runtime
-	depends = vim-airline
-	optdepends = vim-code-dark
-	provides = vim-airline-code-dark
-	conflicts = vim-airline-code-dark
-
-pkgname = vim-lightline-code-dark-git
-	depends = vim-plugin-runtime
-	depends = vim-lightline-git
-	optdepends = vim-code-dark
-	provides = vim-lightline-code-dark
-	conflicts = vim-lightline-code-dark
-
