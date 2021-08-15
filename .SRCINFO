@@ -1,7 +1,7 @@
 pkgbase = rephrase
 	pkgdesc = A specialized passphrase recovery tool for GnuPG.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/sid/rephrase
 	arch = i686
 	arch = x86_64
