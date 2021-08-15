@@ -2,7 +2,7 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='General-purpose allocator with excellent performance characteristics'
 arch=('x86_64')
