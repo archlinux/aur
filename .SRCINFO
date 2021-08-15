@@ -1,0 +1,17 @@
+pkgbase = tiempo-git
+	pkgdesc = A command line time tracker
+	pkgver = 1.0.2.r0.7a79878
+	pkgrel = 1
+	url = https://gitlab.com/categulario/tiempo-rs
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	optdepends = sqlite: for manually editing the database
+	provides = tiempo
+	conflicts = tiempo
+	source = tiempo-git::git+https://gitlab.com/categulario/tiempo-rs
+	sha256sums = SKIP
+
+pkgname = tiempo-git
