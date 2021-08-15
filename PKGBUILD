@@ -3,8 +3,8 @@
 
 _name="multi-account-containers"
 pkgname=firefox-extension-multi-account-containers
-pkgver=7.3.0
-pkgrel=3
+pkgver=7.4.0
+pkgrel=1
 pkgdesc="Keep parts of your online life separated into color-coded tabs"
 arch=("any")
 url="https://github.com/mozilla/${_name}"
@@ -12,7 +12,7 @@ license=("MPL2")
 groups=("firefox-addons")
 makedepends=("npm" "unzip" "zip")
 source=("${url}/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
-sha512sums=('4048a4fcf802ac2bffbd89f5fe3718ced81c2f666c05c5bf2e2839d7d63958b270fadfbe80753a84353385cc9c5435dbcaaed1e021fda18b2a15a95ee17e070f')
+sha512sums=('a457c20132780e43ecbcecd3925e75df0ee441c02c3b2c0bdb18d0bf3a98918961bd5c81b439c841fd2616e385536cae757412e41dadc32e0738d56d8415f809')
 
 build() {
 	cd "${_name}-${pkgver}"
