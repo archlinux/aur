@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo -e "Writing .SRCINFO file..."
+makepkg --printsrcinfo > .SRCINFO
+echo -e "Done"
