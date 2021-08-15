@@ -1,6 +1,6 @@
 pkgbase = mod_auth_openidc
-	pkgdesc = An authentication/authorization module for the Apache 2.x HTTP server that functions as an OpenID Connect Relying Party, authenticating users against an OpenID Connect Provider.
-	pkgver = 2.4.9
+	pkgdesc = OpenID Certified™ OpenID Connect Relying Party implementation for Apache HTTP Server 2.x
+	pkgver = 2.4.9.1
 	pkgrel = 1
 	url = https://www.mod-auth-openidc.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mod_auth_openidc
 	depends = curl
 	depends = cjose
 	depends = pcre
-	source = https://github.com/zmartzone/mod_auth_openidc/archive/v2.4.9.tar.gz
-	sha512sums = 21033971fedcfa1b8042aba53b17c2dba8f5c633006a40a01ae56d347eff5d772f380d0f2d0b7b8284e45796c25dd4aff96b8bf9299c283d0b40ff742d3a933c
+	source = https://github.com/zmartzone/mod_auth_openidc/archive/v2.4.9.1.tar.gz
+	sha512sums = 25ad23fa9ae39ed9ff6d7a9607ef2d92ab96c4898ba9dc548418ab80652e310424c41c76ec55dccd415d1d30c271fccf7dd9f5b65f0f0b9dfa2386d242c4b0b5
 
 pkgname = mod_auth_openidc
