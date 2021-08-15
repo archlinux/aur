@@ -12,6 +12,7 @@ makedepends=('git' 'python-setuptools')
 source=("git+${url}.git#tag=v${pkgver}")
 md5sums=('SKIP')
 conflicts=('rmview-git')
+provides=('rmview')
 
 build() {
 	cd "${srcdir}/${pkgname}"

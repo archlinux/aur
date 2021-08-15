@@ -11,6 +11,7 @@ pkgbase = rmview
 	depends = python-pyqt5
 	depends = python-paramiko
 	depends = python-twisted
+	provides = rmview
 	conflicts = rmview-git
 	source = git+https://github.com/bordaigorl/rmview.git#tag=v2.1
 	md5sums = SKIP
