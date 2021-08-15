@@ -1,7 +1,7 @@
 pkgbase = scrnsvr
 	pkgdesc = Yet Another X Screensaver/locker
-	pkgver = 1
-	pkgrel = 15
+	pkgver = 1.16
+	pkgrel = 16
 	url = https://github.com/koraynilay/scrnsvr
 	install = scrnsvr.install
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = scrnsvr
 	depends = grep
 	depends = procps-ng
 	depends = libxss
+	depends = pcre
 	optdepends = dunst: dunstify for notifications
 	optdepends = libnotify: for notifications
 	optdepends = libxinerama: for multi-monitor with xinerama fullscreen check support
 	optdepends = libxrandr: for multi-monitor with xrandr fullscreen check support
 	conflicts = scrnsvr-bin
-	source = scrnsvr-1::git+https://github.com/koraynilay/scrnsvr
+	source = scrnsvr-1.16::git+https://github.com/koraynilay/scrnsvr
 	md5sums = SKIP
 
 pkgname = scrnsvr
-
