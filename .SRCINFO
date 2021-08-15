@@ -1,0 +1,13 @@
+pkgbase = biblesay
+	pkgdesc = Print out one out of 100 verses in a speech bubble coming from an ASCII-Art dove in your UNIX-Terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theeyeofcthulhu/biblesay
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = git
+	source = git://github.com/theeyeofcthulhu/biblesay
+	sha1sums = SKIP
+
+pkgname = biblesay
