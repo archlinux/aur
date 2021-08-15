@@ -1,7 +1,7 @@
 pkgbase = cpod-appimage
 	pkgdesc = A simple, beautiful podcast app for Windows, macOS, and Linux.
 	pkgver = 1.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z-------------/CPod
 	arch = x86_64
 	license = LGPL

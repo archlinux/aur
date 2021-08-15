@@ -3,7 +3,7 @@
 _pkgname=cpod
 pkgname=$_pkgname-appimage
 pkgver=1.28.0
-pkgrel=1
+pkgrel=2
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='A simple, beautiful podcast app for Windows, macOS, and Linux.'
 arch=('x86_64')
