@@ -9,9 +9,9 @@ url='https://github.com/vignette-project/vignette'
 license=('Non-Profit OSL')
 depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl')
 makedepends=('git' 'dotnet-sdk>=5')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-options=('!strip')
+#provides=("${pkgname%-git}")
+#conflicts=("${pkgname%-git}")
+#options=('!strip')
 source=("$pkgname::git+https://github.com/vignette-project/vignette.git"
         "$pkgname.sh"
         "$pkgname.png"
