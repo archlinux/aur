@@ -2,7 +2,7 @@
 _release_type=alpha
 
 pkgname=makedeb-makepkg-alpha
-pkgver=7.3.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Arch Linux build utility, modified for use with makedeb (alpha release)"
 arch=(any)
@@ -14,13 +14,20 @@ url="https://github.com/makedeb/makepkg"
 source=("${url}/archive/refs/tags/v${pkgver}-${_release_type}.tar.gz")
 sha256sums=('SKIP')
 
+prepare() {
+  # Remove prebuild commands, and set package version.
+  sed -i 's|.*# REMOVE AT PACKAGING||g' "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
+  sed -i "s|makepkg_version='git'|makepkg_version='${pkgver}-${pkgrel}'|" "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
+
+  # Set target OS
+  sed -i 's|target_os="[^"]*"|target_os="arch"|' "makepkg-${pkgver}-${_release_type}/src/makepkg.sh"
+}
+
 package() {
 	cd "makepkg-${pkgver}-${_release_type}"
 
-	# Copy and configure makepkg
+	# Copy makepkg
 	install -Dm 555 "src/makepkg.sh" "${pkgdir}/usr/bin/makedeb-makepkg"
-	sed -i 's|.*# REMOVE AT PACKAGING||g' "${pkgdir}/usr/bin/makedeb-makepkg"
-  sed -i "s|makepkg_version='git'|makepkg_version='${pkgver}-${pkgrel}'|" "${pkgdir}/usr/bin/makedeb-makepkg"
 
 	# Copy functions
 	mkdir -p "${pkgdir}/usr/share/"
