@@ -5,7 +5,7 @@ _appname=Avvie
 _appid=com.github.taiko2k.avvie
 pkgver=1.7
 _commit=dda3f9583bd22b21edbfbb2500402b9e3ca139f8
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
 url=https://github.com/Taiko2k/Avvie
@@ -17,7 +17,7 @@ depends=(gtk3
          python-piexif
          python-pillow)
 makedepends=(git)
-source=("git+$url.git"
+source=("git+$url.git#commit=$_commit"
         "$pkgname.sh")
 sha512sums=('SKIP'
             'bca66e08dba2ef9c0e1ccfd3ecf8ff3125421b71a25d1a0aaa91030db0a5b6e19c3318bba2a5146b085c855f16a798ada55fbc78ebe5fcdb821eea67f15bc07a')
