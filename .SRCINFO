@@ -1,0 +1,22 @@
+pkgbase = swaysettings-git
+	pkgdesc = A gui for setting sway wallpaper, default apps, GTK themes, etc...
+	pkgver = 0.1.r44.42f4e96
+	pkgrel = 1
+	url = https://github.com/ErikReider/SwaySettings
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	depends = gtk3>=3.22
+	depends = gtk-layer-shell>=0.1
+	depends = libhandy>=1.0.0
+	depends = glib2>=2.50
+	depends = gobject-introspection>=1.68
+	depends = libgee>=0.20
+	depends = json-glib>=1.0
+	depends = granite>=6.1.0
+	source = git+https://github.com/ErikReider/SwaySettings
+	sha256sums = SKIP
+
+pkgname = swaysettings-git
