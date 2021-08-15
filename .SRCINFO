@@ -1,6 +1,6 @@
 pkgbase = archwrt-ss.sh-git
 	pkgdesc = A simple Shadowsocks transparent proxy setup script by archwrt.
-	pkgver = r64.f17cac7
+	pkgver = r65.d5a1a35
 	pkgrel = 1
 	url = https://github.com/archwrt/archwrt-ss.sh
 	install = archwrt-ss.sh-git.install
@@ -13,7 +13,7 @@ pkgbase = archwrt-ss.sh-git
 	optdepends = simple-obfs: shadowsocks-libev plugin
 	optdepends = shadowsocks-v2ray-plugin: shadowsocks-libev plugin
 	optdepends = dnsproxy-adguard: a tiny dnsproxy with doh & dot support
-	optdepends = shadowsocks-libev: working mode ss needed
+	optdepends = shadowsocks-rust: working mode ss needed
 	optdepends = v2ray: working mode v2ray needed
 	backup = etc/archwrt/ss/archwrt-ss.conf
 	source = archwrt-ss.sh-git::git+https://github.com/archwrt/archwrt-ss.sh.git
