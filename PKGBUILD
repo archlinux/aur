@@ -3,7 +3,7 @@
 pkgname=fwsnort
 pkgver=1.6.8
 pkgrel=1
-pkgdesc="application layer IDS/IPS by translating snort rules into iptables"
+pkgdesc="Fwsnort translates Snort rules into equivalent iptables rules"
 arch=('any')
 url="http://www.cipherdyne.org/fwsnort/"
 license=('GPL')
