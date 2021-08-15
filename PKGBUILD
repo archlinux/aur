@@ -10,6 +10,7 @@ url="https://github.com/BloodHoundAD/BloodHound"
 license=('GPLv3')
 depends=('neo4j-community' 'java-runtime>=11')
 makedepends=('electron' 'npm' 'python-sphinx' )
+optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
 source=("https://github.com/BloodHoundAD/BloodHound/archive/${pkgver}.tar.gz"
 	"bloodhound.desktop")
 sha256sums=('5908676e3e6679381231720fdf494c6b73f096ce7cd47378671603d9699fe9f5'
