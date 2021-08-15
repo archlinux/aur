@@ -6,8 +6,9 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=3.0.2.r595.g04609bba0
+pkgver=r13667.g4e877b8ae
 pkgrel=1
+epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -19,14 +20,14 @@ makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-li
 # can't find system lame portmidi
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(tenacity)
-#conflicts=(tenacity)
+conflicts=(tenacity)
 source=("git+https://git.sr.ht/~tenacity/tenacity"
         "tenacity.patch")
 sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
 
 pkgver() {
   cd tenacity
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
