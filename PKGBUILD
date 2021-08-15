@@ -4,7 +4,7 @@
 pkgname=sway-titlebar-positioning-git
 _pkgname=sway-titlebar-positioning
 pkgver=r6704.b9971472
-pkgrel=1
+pkgrel=2
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager patched with config option to have titlebars on the bottom"
 makedepends=(
@@ -44,7 +44,7 @@ source=("${pkgname%-*}::git+https://github.com/swaywm/sway.git"
         "titlebar_position.diff::https://github.com/swaywm/sway/compare/master...janza:titlebar-position.diff"
 	50-systemd-user.conf)
 sha512sums=('SKIP'
-            '73ec0b3f4599574bd4b17858957868ea0dfc3a6d0bb34efcf8378a38de5fa947426ee1447b1c2f7bc2ecb67c9ce22d922641815aeb56d641593293203684c792'
+            'SKIP'
             '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 provides=("sway")
 conflicts=("sway")
