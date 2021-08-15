@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis at martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis at martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello-git
@@ -28,8 +28,8 @@ build() {
 package() {
   cd "${pkgname}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
