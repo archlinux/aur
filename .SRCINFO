@@ -11,7 +11,7 @@ pkgbase = dewobble
 	depends = opencl-driver
 	depends = opencv
 	depends = gram-savitzky-golay
-	source = git+file:///home/daniel/code/oss/dewobble
+	source = git+https://git.sr.ht/~hedgepigdaniel/dewobble#tag=v1.0.0
 	md5sums = SKIP
 
 pkgname = dewobble

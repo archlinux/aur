@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL3)
 depends=(opencl-driver opencv gram-savitzky-golay)
 makedepends=(git meson opencl-clhpp)
-source=("git+file:///home/daniel/code/oss/dewobble")
+source=("git+https://git.sr.ht/~hedgepigdaniel/dewobble#tag=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
