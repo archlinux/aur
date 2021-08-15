@@ -5,30 +5,32 @@
 
 pkgname=firefox-esr
 pkgver=91.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=(gtk2 gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse libevent libxt)
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
+             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English')
+            'hunspell-en_US: Spell checking, American English'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=(firefox=${pkgver})
 conflicts=(firefox)
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        ${pkgname}.desktop identity-icons-brand.svg 0001-Use-remoting-name-for-GDK-application-names.patch)
+        0001-Use-remoting-name-for-GDK-application-names.patch
+        ${pkgname}.desktop identity-icons-brand.svg)
 sha256sums=('fa1bae287ef55416ae4ee3fbd22f923f9d1fec066c91766d60633d53db6a9959'
             'SKIP'
-            'd86fe1636346ff003744b65e73cd3a7182618faedf3ee57023bb942e325cc726'
-            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '7e7435e8171426e87a84cecf9eb017cb969c9c85d973feb78c1e05771972b6e9')
+            '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
+            '39c4c2d1f465e3fb08e20e3036c2284ee3e8dfbd539abe4ffea3c46b4058f16d'
+            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -44,7 +46,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
-  mkdir -p mozbuild
+  mkdir mozbuild
   cd firefox-$pkgver
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
@@ -64,11 +66,7 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
-#export CC='clang --target=x86_64-unknown-linux-gnu'
-#export CXX='clang++ --target=x86_64-unknown-linux-gnu'
-#export AR=llvm-ar
-#export NM=llvm-nm
-#export RANLIB=llvm-ranlib
+ac_add_options --disable-bootstrap
 
 # Branding
 ac_add_options --enable-official-branding
@@ -78,7 +76,6 @@ ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
-export MOZ_REQUIRE_SIGNING=1
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -186,6 +183,8 @@ END
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
   install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$pkgname.png"
+  install -Dvm644 browser/branding/$theme/content/about-logo.svg \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
   install -Dvm644 ../identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$pkgname-symbolic.svg"
 
@@ -212,7 +211,7 @@ END
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
     make -C obj uploadsymbols
   else
-    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.zip
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
 
