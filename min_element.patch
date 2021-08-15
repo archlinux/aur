@@ -1,0 +1,38 @@
+From 569bbc7f0d218432e76e68137b3f647b4b8faa6f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 15 Oct 2020 16:09:19 +0200
+Subject: [PATCH] Add missing algorithm include for std::min_element/count
+
+algorithm is no longer pulled in implicitly by current boost versions,
+do it explicitly.
+---
+ dolfin/geometry/IntersectionConstruction.cpp | 1 +
+ dolfin/mesh/MeshFunction.h                   | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/dolfin/geometry/IntersectionConstruction.cpp b/dolfin/geometry/IntersectionConstruction.cpp
+index 765dbb6..7ba99a8 100644
+--- a/dolfin/geometry/IntersectionConstruction.cpp
++++ b/dolfin/geometry/IntersectionConstruction.cpp
+@@ -18,6 +18,7 @@
+ // First added:  2014-02-03
+ // Last changed: 2017-12-12
+ 
++#include <algorithm>
+ #include <iomanip>
+ #include <dolfin/mesh/MeshEntity.h>
+ #include "predicates.h"
+diff --git a/dolfin/mesh/MeshFunction.h b/dolfin/mesh/MeshFunction.h
+index 08cbc82..4e68324 100644
+--- a/dolfin/mesh/MeshFunction.h
++++ b/dolfin/mesh/MeshFunction.h
+@@ -27,6 +27,7 @@
+ #include <map>
+ #include <vector>
+ 
++#include <algorithm>
+ #include <memory>
+ #include <unordered_set>
+ #include <dolfin/common/Hierarchical.h>
+-- 
+2.28.0

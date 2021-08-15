@@ -1,4 +1,5 @@
 # Maintainer: Sigvald Marholm <marholm@marebakken.com>
+# Maintainer: Nick Winovich <nw2190@gmail.com>
 # Maintainer: Georg S. Voelker <voelker@maibox.org>
 # Based on dolfin-git, maintained by Lucas H. Gabrielli <heitzmann@gmail.com> and submitted by myles
 
@@ -22,11 +23,21 @@ optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
             'slepc: eigenvalue problem solvers'
             'hdf5<=1.12.0-1: for reading/writing hdf5 files')
 options=(!emptydirs)
-source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
-sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f')
+source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz min_element.patch hdf5.patch endian.patch)
+sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f'
+            '80cdfc689854cc4cada1a2bdbde298a27f4456ac1495dceeac030b5a9b02b27e'
+            '2e718c5586228fa2031da4b95ef9bb54266fed4c15e195ef47470fddb3a99c36'
+            '19dc90d5fa8139ed3311a1df89f74093478dd578833a898e901860349da45284')
 
 export MAKEFLAGS="-j1"
 
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/min_element.patch"
+    patch --forward --strip=0 --input="${srcdir}/hdf5.patch"
+    patch --forward --strip=1 --input="${srcdir}/endian.patch"
+}
+     
 build() {
 	cd ${srcdir}/${_base}-${pkgver}
 	[ -d build ] && rm -rf build
@@ -53,5 +64,3 @@ package() {
 	cd ${srcdir}/${_base}-${pkgver}/build
 	make install DESTDIR="${pkgdir}"
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab

@@ -1,0 +1,13 @@
+--- dolfin/io/HDF5Interface.cpp 
++++ dolfin/io/HDF5Interface.cpp 
+@@ -281,8 +281,8 @@
+     return false;
+   }
+
+-  H5O_info_t object_info;
+-  H5Oget_info_by_name(hdf5_file_handle, group_name.c_str(), &object_info,
++  H5O_info1_t object_info;
++  H5Oget_info_by_name1(hdf5_file_handle, group_name.c_str(), &object_info,
+                       lapl_id);
+
+   // Close link access properties
