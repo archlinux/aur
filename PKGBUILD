@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosconsole'
 pkgname='ros-noetic-rosconsole'
 pkgver='1.14.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -18,7 +18,7 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    google-glog
+    log4cxx
     boost
 )
 
@@ -33,6 +33,8 @@ depends=(
     apr
     apr-util
 )
+
+optdepends=('google-glog: glog backend')
 
 _dir="rosconsole-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz"
