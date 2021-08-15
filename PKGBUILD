@@ -5,9 +5,9 @@
 _pkg=cado-nfs
 pkgname=${_pkg}-git
 pkgver=20210806.c5b20eac1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the Number Field Sieve (NFS) algorithm for factoring integers"
-arch=('i686' 'pentium4' 'x86_64')
+arch=('x86_64')
 url="http://cado-nfs.gforge.inria.fr/"
 license=('LGPL2')
 # We configure with optional curl, hwloc, gmp-ecm.
@@ -22,6 +22,22 @@ provides=('cado-nfs')
 source=("git+https://gitlab.inria.fr/cado-nfs/${_pkg}.git")
 md5sums=('SKIP')
 
+# Need -march for SIMD support. Makes the resulting package less portable.
+_march=native
+
+_update_march()
+{
+  local flags_no_march=''
+
+  for f in $1; do
+    if ! [[ "$f" =~ -march=.* ]]; then
+      flags_no_march+=" $f"
+    fi
+  done
+
+  echo "${flags_no_march} -march=$_march"
+}
+
 pkgver() {
   cd "$_pkg"
   git log -1 --format="%cd.%h" --date=short | sed 's/-//g'
@@ -29,6 +45,11 @@ pkgver() {
 
 build() {
   cd "$_pkg"
+
+  CFLAGS="$(_update_march "$CFLAGS")"
+  CPPFLAGS="$(_update_march "$CPPFLAGS")"
+  CXXFLAGS="$(_update_march "$CXXFLAGS")"
+
   cat <<EOF >local.sh
 PREFIX=/usr
 HWLOC=$PREFIX
@@ -37,7 +58,8 @@ CURL=$PREFIX
 # Remove 32-bit barriers to big factorizations
 FLAGS_SIZE="-DSIZEOF_P_R_VALUES=8 -DSIZEOF_INDEX=8"
 EOF
-  make CFLAGS="$CFLAGS -march=x86-64-v4" CPPFLAGS="$CPPFLAGS -march=x86-64-v4"
+
+  make
 }
 
 package() {
