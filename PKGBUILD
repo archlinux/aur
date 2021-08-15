@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis at martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis at martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=jello
@@ -16,6 +16,7 @@ sha256sums=('c42d5202282fa10b57f5830b8e4a74da7a75d585f000b812bbfd90bff28c2bfc')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  ## remove manpage from setuptools installation to install it manually
   mv jello/man ./
 }
 
@@ -26,9 +27,9 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dvm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
