@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=jellex
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="TUI to filter JSON data with Python syntax"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('jello' 'python-pygments' 'python-prompt_toolkit')
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('786548df86cd2d896dace7c2640dc6e0938b5a1a8dd3d2760c2f9f598cd00951')
+sha256sums=('bbdad05d0a6c3b745f207e408e3a9f55c134521ffafa946dc2ed810942c02920')
 
 build() {
 	cd "$pkgname-$pkgver"
