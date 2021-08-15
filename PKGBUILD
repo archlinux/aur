@@ -48,5 +48,7 @@ package() {
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Runtime
-  find "$pkgname/compiled" -type f -exec install -Dm644 '{}' "$pkgdir/usr/lib/vignette/{}" ';'
+  cd "$pkgname/compiled"
+  find . -type f -exec install -Dm644 '{}' "$pkgdir/usr/lib/vignette/{}" ';'
+  cd ..
 }
