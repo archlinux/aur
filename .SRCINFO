@@ -1,0 +1,26 @@
+pkgbase = python-perspective
+	pkgdesc = Python bindings and JupyterLab integration for Perspective
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://pypi.org/project/perspective-python
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = pybind11
+	makedepends = boost
+	depends = python
+	depends = python-ipywidgets
+	depends = python-future
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-dateutil
+	depends = python-six
+	depends = python-tornado
+	depends = python-traitlets
+	optdepends = doxygen
+	source = https://files.pythonhosted.org/packages/source/p/perspective-python/perspective-python-0.10.0.tar.gz
+	sha512sums = f78d2b1a11b20bfca85939425909972b5ebcd5199f347bb68f28d5e70a3586047e4be132da4af56b2e38320a5085c3eed7c9f161f475f082551544bcca059984
+
+pkgname = python-perspective
