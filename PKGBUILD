@@ -23,8 +23,8 @@ makedepends=(
   cmake
   pybind11
   boost
-)
-optdepends=(doxygen)
+  flatbuffers
+  doxygen)
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
 sha512sums=(
