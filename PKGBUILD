@@ -3,7 +3,7 @@
 pkgname=spotify-player
 _gitname=spotify-player
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command driven spotify player."
 arch=("x86_64")
 url="https://github.com/aome510/spotify-player"
@@ -18,15 +18,9 @@ build() {
     cargo build --release --locked --all-features --target-dir=target
 }
 
-check() {
-    cd "${_gitname}-$pkgver"
-
-    cargo test --release --locked --target-dir=target
-}
-
 package() {
     cd "${_gitname}-$pkgver"
 
-    install -Dm755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm755 target/release/spotify_player -t "${pkgdir}/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
