@@ -1,6 +1,6 @@
 # Maintainer: Jan-Henrik Bruhn <aur@jhbruhn.de> 
 pkgname=upstream-electron-bin
-pkgver=0.2.6
+pkgver=0.2.9
 pkgrel=1
 pkgdesc='Desktop client for radicle (binary version, system electron)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://raw.githubusercontent.com/radicle-dev/radicle-upstream/v${pkgver}/LICENSE"
     "radicle-launcher.sh"
 )
-sha256sums=('510290af496dfcf4fc366689a3089027557b83f2d0a744b9c21a1fe96bda1da6'
+sha256sums=('7218eedd910514b3b313d15a9142b68b39bfe5e8c42dd2ff89632d3376d1a566'
             'd1bb5e1a4cd3774790ae7024904d572c27267857ed004a062416d520bf4230ad'
             'ca84ffe5cda88ad75fa3aa95c9f100768eff2ea91b977235418ef74ec1f37ac4')
 
