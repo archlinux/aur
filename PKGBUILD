@@ -8,7 +8,7 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('any')
@@ -20,7 +20,7 @@ source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}.desktop"
         "${pkgname}.xml")
 noextract=("BlueJ-linux-${pkgver//.}.deb")
-sha256sums=('2a1361276c6cc35836c9e9b03fa350989be4e1cc5901040d3c4501b8bb28e6a3'
+sha256sums=('f6c59f55017fc028950ca0667ac32933ee411e31543ecce6e94d52809350f251'
             'c1bdaad64fcf45b1efac00e010d5f750c417d64896cde80b9b7c5745277422b8'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
