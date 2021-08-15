@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=source-dock
 pkgname=obs-$_pluginname
-pkgver=0.1.2
+pkgver=0.1.3
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio allowing you to create a Dock for a source, which lets you interact, see audio levels, change volume and control media"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-dock#commit=dca9d4965e8dddb2c7711d1e12121e6ecd168bcd"
+  "$pkgname-$pkgver::git+https://github.com/exeldro/obs-source-dock#commit=3458a302cee9467e95954ba996f50e3529b3f25e"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
