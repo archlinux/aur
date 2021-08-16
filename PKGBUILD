@@ -13,11 +13,11 @@ _openj9ver=0.27.0
 _buildvershort=7
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
-url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
-license=('GPL2')
+url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
+license=('custom')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
 provides=(
   "java-environment=${_jdkver}"
@@ -29,7 +29,7 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/AdoptOpenJDK/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
 sha256sums=('4c2d776f69e3ff7d01cd57c0938b7a7f058264425faf18e3708b905e93f915c4')
 

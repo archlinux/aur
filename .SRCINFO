@@ -1,10 +1,10 @@
 pkgbase = jdk11-openj9-bin
 	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk11
 	pkgver = 11.0.12b7_openj9_0.27.0
-	pkgrel = 1
-	url = https://adoptopenjdk.net/index.html?variant=openjdk11&jvmVariant=openj9
+	pkgrel = 2
+	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
-	license = GPL2
+	license = custom
 	depends = java-environment-common
 	depends = ca-certificates-utils
 	depends = nss
@@ -16,7 +16,7 @@ pkgbase = jdk11-openj9-bin
 	provides = java-runtime-headless-openjdk=11
 	conflicts = jdk11-openj9
 	options = !strip
-	source = https://github.com/AdoptOpenJDK/semeru11-binaries/releases/download/jdk-11.0.12%2B7_openj9-0.27.0/ibm-semeru-open-jdk_x64_linux_11.0.12_7_openj9-0.27.0.tar.gz
+	source = https://github.com/ibmruntimes/semeru11-binaries/releases/download/jdk-11.0.12%2B7_openj9-0.27.0/ibm-semeru-open-jdk_x64_linux_11.0.12_7_openj9-0.27.0.tar.gz
 	sha256sums = 4c2d776f69e3ff7d01cd57c0938b7a7f058264425faf18e3708b905e93f915c4
 
 pkgname = jdk11-openj9-bin
