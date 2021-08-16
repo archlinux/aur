@@ -13,7 +13,7 @@ backup=('usr/lib/firedragon/firedragon.cfg'
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss nspr ttf-font libpulse
-        libwebp libvpx libjpeg zlib icu libevent libpipewire02 aom harfbuzz 
+        libwebp libvpx libjpeg zlib icu libevent pipewire aom harfbuzz
         graphite dav1d kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              rust ccache autoconf2.13 clang llvm jack nodejs cbindgen nasm
