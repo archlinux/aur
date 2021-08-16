@@ -113,7 +113,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   # Needed patch to have build working
-  patch -Np1 -i ${_patches_dir}/misc-patches/fix-wayland.patch
+  patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
