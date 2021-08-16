@@ -2,7 +2,7 @@
 
 pkgname=v2ray-domain-list-custom
 pkgver=20210814110437
-pkgrel=1
+pkgrel=2
 pkgdesc="A list of domains to be used as geosites for routing purpose in Project V"
 arch=('any')
 url="https://github.com/Loyalsoldier/domain-list-custom"
