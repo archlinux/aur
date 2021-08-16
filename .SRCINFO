@@ -1,0 +1,13 @@
+pkgbase = python-daemoniker
+	pkgdesc = Cross-platform daemonization tools.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://daemoniker.readthedocs.io
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/daemoniker/daemoniker-0.2.3.tar.gz
+	sha256sums = d9b62c8d75227b3da88c0ca22b82e19d88d32dade4ffa838427235e0cdd5e578
+
+pkgname = python-daemoniker
