@@ -1,7 +1,7 @@
 pkgbase = share-preview-git
 	pkgdesc = Preview and debug websites metadata tags for social media share.
 	pkgver = 0.1.2.r10.gedc6058
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rafaelmardojai/share-preview
 	arch = any
 	license = GPL3
@@ -13,9 +13,9 @@ pkgbase = share-preview-git
 	depends = libadwaita
 	depends = glib2
 	provides = share-preview
-	provides = share-preview-git
+	provides = share-preview
 	conflicts = share-preview
-	conflicts = share-preview-git
+	conflicts = share-preview
 	source = git+https://github.com/rafaelmardojai/share-preview.git
 	sha256sums = SKIP
 

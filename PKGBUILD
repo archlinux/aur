@@ -3,7 +3,7 @@
 pkgname=share-preview-git
 _pkgname=share-preview
 pkgver=0.1.2.r10.gedc6058
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview and debug websites metadata tags for social media share."
 arch=('any')
 url="https://github.com/rafaelmardojai/share-preview"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'glib2')
 makedepends=('meson' 'rust' 'git')
 checkdepends=('appstream-glib')
-provides=("${pkgname%-git}" "${pkgname%-bin}")
-conflicts=("${pkgname%-git}" "${pkgname%-bin}")
+provides=("${pkgname%-git}" "${_pkgname%-bin}")
+conflicts=("${pkgname%-git}" "${_pkgname%-bin}")
 source=(git+$url.git)
 sha256sums=('SKIP')
 
