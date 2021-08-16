@@ -88,6 +88,7 @@ source=(
     "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
     "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
     "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
+    "auto-cpu-optimization.sh"
   )
   BUILD_FLAGS=(
         LLVM=1
@@ -452,4 +453,5 @@ md5sums=('89020a90124a6798054a03c7a2ead059'
          '9e5114dba6da65e8d444aa225b109a21'
          '2aa4d3664fc16dac2f18fe8c22ba1df1'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
-         '08590776013d05bc7a96ef5557c54200')
+         '08590776013d05bc7a96ef5557c54200'
+         '7cf0b5c39d16da18451d1e7e7523d992')
