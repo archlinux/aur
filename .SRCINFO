@@ -1,0 +1,12 @@
+pkgbase = est
+	pkgdesc = Easy signing tool (using ED25519)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/42LoCo42/est
+	arch = x86_64
+	license = GPL3
+	makedepends = zig
+	source = https://github.com/42LoCo42/est/archive/refs/tags/v1.tar.gz
+	sha256sums = 6157a7604d6d75fe4126da23f0f21fa0a26b93af98392ebec3dfe8ba397f30dc
+
+pkgname = est
