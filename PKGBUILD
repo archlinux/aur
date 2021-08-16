@@ -79,7 +79,6 @@ depends=(
   zlib
 )
 makedepends=(
-  amf-headers
   avisynthplus
   clang
   git
@@ -135,7 +134,7 @@ build() {
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-amf \
+    --disable-amf \
     --enable-avisynth \
     --enable-cuda-llvm \
     --enable-fontconfig \
