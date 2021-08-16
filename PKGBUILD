@@ -2,7 +2,7 @@
 
 pkgname=python-yqxx
 _pkgname="${pkgname#*-}"
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Auto submitter for xg.hit.edu.cn yqxx"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('python-beautifulsoup4' 'python-pycryptodome' 'python-requests' 'python-yaml' 'python-hitutil')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3f28a961276892718c16f2fce3106409119b121736e53d3907c41c7729681f7d')
+sha256sums=('5f1ee26bfb3816b8e572017e0ad414ce09c1d0db4f1f35c55f611af4284e1710')
 
 build() {
 	cd "$_pkgname-$pkgver"
