@@ -1,6 +1,6 @@
 pkgbase = write_stylus
 	pkgdesc = Write(orignal name) - A word processor for handwriting
-	pkgver = 300.r403
+	pkgver = 300.r421
 	pkgrel = 1
 	url = http://www.styluslabs.com/
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = write_stylus
 	makedepends = desktop-file-utils
 	depends = sdl2
 	noextract = eula.docx
-	source = write_stylus-300.r403.tar.gz::http://www.styluslabs.com/write/write-latest.tar.gz
+	source = write_stylus-300.r421.tar.gz::http://www.styluslabs.com/write/write-latest.tar.gz
 	source = http://www.styluslabs.com/write/eula.docx
-	md5sums = fddf15e8c15d935b21be4bf624b04a32
-	md5sums = fafaef86844ead59b3837a5909bf780f
+	sha256sums = 7f226be9b0ecdbb4e9e254a52b06ee30685771fe9f8acd5e5a341d4944fcc267
+	sha256sums = 637c47c1843860a16f1ca87e2df5d72b4396ff23cefacf6244de95cdac23de6e
 
 pkgname = write_stylus
-
