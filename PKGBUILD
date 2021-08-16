@@ -26,14 +26,3 @@ package() {
 	install -Dm 644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm 644 "timetrace-bash-completion-$pkgver.sh" "$pkgdir/usr/share/bash-completion/completions/timetrace"
 }
-
-# package() {
-#     install -Dm 755 "$srcdir/$_srcname" -t "$pkgdir/usr/bin"
-# 
-#     cd "$_srcname-$pkgver"
-#     install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-#     install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-# 
-#     install -Dm 755 "completion/bash/timetrace.sh" \
-#         "$pkgdir/usr/share/bash-completion/completions/timetrace"
-# }
