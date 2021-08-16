@@ -1,4 +1,4 @@
-pkgbase = aws-iam-authenticator-bin
+pkgbase = sync-ssh-keys-bin
     pkgdesc = Sync public ssh keys to ~/.ssh/authorized_keys, based on Github/Gitlab organization membership.
     pkgver = 0.5.0
     pkgrel = 1
