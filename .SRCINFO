@@ -1,0 +1,19 @@
+pkgbase = openxr-explorer-git
+	pkgdesc = OpenXR capabilities explorer and runtime switcher with a CLI and GUI.
+	pkgver = v1.1.r2.gb11f564
+	pkgrel = 1
+	url = https://github.com/maluoi/openxr-explorer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = openxr
+	depends = libxcb
+	provides = openxr-explorer=v1.1.r2.gb11f564
+	conflicts = openxr-explorer
+	source = git+https://github.com/maluoi/openxr-explorer.git
+	md5sums = SKIP
+
+pkgname = openxr-explorer-git
