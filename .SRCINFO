@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
 	pkgver = 91.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -53,6 +53,7 @@ pkgbase = firefox-appmenu
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
 	source = identity-icons-brand.svg
+	source = fix-wayland-build.patch
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
@@ -61,6 +62,7 @@ pkgbase = firefox-appmenu
 	sha256sums = 138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
 	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
+	sha256sums = 85c7287cd38d218305bf80dfb462db98ba27d55b13ba30275194e28b8fa03f48
 	sha256sums = f5e5af8cfb8db2e0ed2e3cb8ae844ece713923ca103deb63c689c2011eb57cb7
 	sha256sums = e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e
 

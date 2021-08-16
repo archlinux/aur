@@ -8,7 +8,7 @@
 pkgname=firefox-appmenu
 _pkgname=firefox
 pkgver=91.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -30,6 +30,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         identity-icons-brand.svg
+        fix-wayland-build.patch
         unity-menubar.patch
         fix_csd_window_buttons.patch)
 sha256sums=('2a4d1f788ab77f68380d4e6ab0b36bd1efd1a4ac9e9c6d10e39377894c077901'
@@ -37,6 +38,7 @@ sha256sums=('2a4d1f788ab77f68380d4e6ab0b36bd1efd1a4ac9e9c6d10e39377894c077901'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            '85c7287cd38d218305bf80dfb462db98ba27d55b13ba30275194e28b8fa03f48'
             'f5e5af8cfb8db2e0ed2e3cb8ae844ece713923ca103deb63c689c2011eb57cb7'
             'e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -56,6 +58,9 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+
+  #https://aur.archlinux.org/packages/firefox-appmenu nicman32 comment 2021-08-16
+  patch -Np1 -i ../fix-wayland-build.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
