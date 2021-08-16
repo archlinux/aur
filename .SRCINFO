@@ -1,6 +1,6 @@
 pkgbase = berty-bin
 	pkgdesc = A secure peer-to-peer messenger which works with or without internet access, cellular data or trust in the network and uses IPFS.
-	pkgver = 2.302.5
+	pkgver = 2.302.8
 	pkgrel = 1
 	url = https://github.com/berty/berty
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = berty-bin
 	depends = libglvnd
 	provides = berty
 	conflicts = berty
-	source = berty-bin-2.302.5.tar.gz::https://github.com/berty/berty/releases/download/v2.302.5/berty_Linux_x86_64.tar.gz
-	sha256sums = 120c8dcd4af1292a1faba6917522a55b17eb8c5492bfdb59e5fb1a4917af929b
-	b2sums = 8d376d2c8dc952659415d69bdcc4c6618749b8b4c980167c7b8e44f0b6813a1561e7ee7a6aa12ad8515eaa6bc1f5e672ec6f365fe33e8550de3171f362f72305
+	source = berty-bin-2.302.8.tar.gz::https://github.com/berty/berty/releases/download/v2.302.8/berty_Linux_x86_64.tar.gz
+	sha256sums = b8a53a7b6c1480028001978d64afb9bfb8df1a67b89dec4741133feb78157184
+	b2sums = 1c90f4137ba291d8bf8b657b7902990bcee50ba045ae7d634b042af9aa19b316984080e5e968ab554d8c4d388fbc9a95364b2126365b4c4cb08b93d19be491c8
 
 pkgname = berty-bin
