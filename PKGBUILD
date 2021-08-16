@@ -51,7 +51,7 @@ pkgbase=linux-cacule-rc
 _major=5.14
 #_minor=1
 #_minorc=$((_minor+1))
-_rcver=rc5
+_rcver=rc6
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 _stablerc=${_major}-${_rcver}
@@ -97,12 +97,12 @@ source=("https://git.kernel.org/torvalds/t/linux-${_stablerc}.tar.gz"
       #  "${_patchsource}/initramfs-patches/0001-initramfs-patches.patch"
       )
 
-sha512sums=('612ed50eeed5fc2a96943b0d957ab8262e4e41dc155e6521310f754c4fd2b494265db5d0f49c3f0d24ff4e7bb76c4ec02d599f5b17695777ac12007e44fbffa5'
+sha512sums=('fcad38548c610e02143c3aa702d6f945f9795d47cd5ab0fd3683c53da31e4aa96bac2a06dc214085ba2de0ee7f6372f6301a40320e763068e253861453e7caec'
             'b4fcfc2d6a95f8ed1ab8bf8647b67d33cc5aa6440074f859613603968d4b66f5b311c4b8804dfddbe8e3d42fe123c54ec0a45d9636b8070b8a0f8850502b19ab'
             '38b0fd8b67d577cadc6afbaf545752eb7a38779f29f5a465035183a3e2f6112244b5b38f15801f819b7672ab8645c0d7ec14694ad7bf44aaec02c4c53f811798'
             '7f46e2c51d2f694ca851ef0f88c824e69425015deade8167ddf4694610b614ebd74784892c596105dad7cc422c35637b85f8eeff0855a1c619dc31bc6e5fb5f8'
             '424da49dbb06288a73bf737b68e281575ef3cc1090dc26ecf9fcd0531b2aad28bdee871dcc893e35b6c4372cc5571504134626f86bcb5197d32361e7955002fe'
-            '0dd6130aee07532e2318421c85a68be5aa97f94445f94480a133cd788906912314944881ad39f994f48ffe9ec65cd35bc584adb5b33f9b5acc801ebc04e5fe24'
+            '40eb64517a45027b9c47de0d5fd72081b86d5b10eb394b611d43f3acc625377f9968ea38ce060bc01062c2a2645bf9a610847671bee038c58dec946434d7800a'
             'ed2e61717b37570c7f058915b8ee2f6515ec3b22884be4646f3bcf2d5b48f17b57be93cfc63970f6988fc70e6e236b574b30c5ce09f54a56b601827cc1793299'
             'b928e2233fab6aa7919b95ca7c35442dc8e48998f1ef195f24b5ee13f8d275397ddfacb9275031553512273f8045c6a2c8df10b48a5d408f945bd2dd6d677b30'
             '9d19321f93637094bdbaaa91b9a8acb216a4f0e9b2a106c46782b1f2e57c7da98a74fe5fa840f1fd700aa1de831aa71615f5a48b43de70d63d1b9df813916cee')
@@ -111,17 +111,6 @@ sha512sums=('612ed50eeed5fc2a96943b0d957ab8262e4e41dc155e6521310f754c4fd2b494265
                   LLVM_IAS=1
                   CC=clang
                   CXX=clang++
-                  LD=ld.lld
-                  AR=llvm-ar
-                  NM=llvm-nm
-                  STRIP=llvm-strip
-                  READELF=llvm-readelf
-                  HOSTCC=clang
-                  HOSTCXX=clang++
-                  HOSTAR=llvm-ar
-                  HOSTLD=ld.lld
-                  OBJCOPY=llvm-objcopy
-                  OBJDUMP=objdump
                 )
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
