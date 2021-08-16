@@ -2,7 +2,7 @@
 
 pkgname=gemgen
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Markdown to Gemtext generator"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~kota/gemgen/"
@@ -13,6 +13,9 @@ sha256sums=('9deeaeba81cac61caa7992392cee409a18219d35d86c4c958a67d54fdef99ba4')
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
+    export GOFLAGS='-buildmode=pie'
+    export CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2"
+    export CGO_LDFLAGS="-Wl,-z,relro,-z,now"
     make all
 }
 
