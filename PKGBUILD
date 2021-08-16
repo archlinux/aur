@@ -1,28 +1,28 @@
 # Maintainer: Watanabe Fumihiko <random@chars.jp>
 
 pkgname=freenitori
-pkgver=1.13.0
+pkgver=2.1.0
 pkgrel=3
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
 url="https://${pkgname}.jp/"
 license=("GPL")
 depends=()
-makedepends=("go" "make" "bash")
+makedepends=("go" "make")
 backup=("etc/${pkgname}/nitori.conf")
 source=(
-  "git+https://git.randomchars.net/FreeNitori/FreeNitori.git"
+  "git+https://git.randomchars.net/${pkgname}/${pkgname}.git"
   "${pkgname}.service"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
 sha256sums=('SKIP'
-            '7b50e0e628828635d639238b003da5749a38b5942d765418cdeb466bcce95782'
+            '39a1d66caace0434566a8a434cc8552e83fdbadf48b362830a8917921b6ecec5'
             '89719b5009884f17fed228d2cb0562c4e71f3a6dc61618d8989d632a2fa5a953'
             '9c387032930c51ca0232839c29e95dc66e6f1feb46e0d3a1d1ba8fe3b910c57f')
 
 build() {
-  cd "FreeNitori"
+  cd "${pkgname}"
   git checkout v${pkgver}
   git config advice.detachedHead false
   export GOPATH="${PWD}/../go"
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "FreeNitori"
+  cd "${pkgname}"
   install -Dm755 "build/freenitori" "${pkgdir}/usr/bin/freenitori"
   install -Dm755 "build/nitorictl" "${pkgdir}/usr/bin/nitorictl"
   ./build/freenitori || true
