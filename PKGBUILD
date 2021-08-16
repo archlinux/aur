@@ -1,6 +1,6 @@
 # Maintainer: Andrea Corsini <andrea dot corsini at outlook dot com>
 pkgname=devour-git
-pkgver=v11.0.r4.0fe8d05
+pkgver=12.r22.3184e2a
 pkgrel=1
 pkgdesc="Window Manager agnostic swallowing feature for terminal emulators"
 arch=('x86_64')
@@ -10,17 +10,19 @@ depends=('libx11')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/salman-abedin/devour.git")
-md5sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/salman-abedin/devour.git"
+	"devour-shellalias-12.diff") # PR in upstream, so far ignored.
+md5sums=('SKIP'
+         'a3a3112ba39dd024a139f9ba027d3e5f')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --tag | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "12.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"
-        patch < devour-shellalias-10.0.diff
+        patch --verbose < "$srcdir/devour-shellalias-12.diff"
 }
 
 build() {
@@ -30,5 +32,6 @@ build() {
 
 package() {
         cd "$srcdir/${pkgname%-git}"
-        make BIN_DIR="$pkgdir/usr/local/bin" install
+        make BIN_DIR="$pkgdir/usr/bin" install
 }
+
