@@ -9,7 +9,7 @@
 
 pkgbase=postgresql-9.6
 pkgname=(${pkgbase} ${pkgbase/-/-libs-} ${pkgbase/-/-docs-})
-pkgver=9.6.22
+pkgver=9.6.23
 pkgrel=1
 pkgdesc="Sophisticated object-relational DBMS"
 arch=("i686" "x86_64")
@@ -17,7 +17,7 @@ url="https://www.${pkgbase%-*}.org/"
 license=("custom:PostgreSQL")
 makedepends=("clang" "icu" "krb5" "libldap" "libxml2" "llvm" "openssl>=1.0.0" "pam" "perl" "python" "python2" "systemd" "tcl>=8.6.0" "zlib")
 source=(
-  "https://ftp.${pkgbase%-*}.org/pub/source/v${pkgver}/${pkgbase%-*}-${pkgver}.tar.bz2"
+  "https://ftp.${pkgbase%-*}.org/pub/source/v${pkgver}/${pkgbase%-*}-${pkgver}.tar.gz"
   "${pkgbase%-*}-perl-rpath.patch"
   "${pkgbase%-*}-run-socket.patch"
   "${pkgbase%-*}.pam"
@@ -28,7 +28,7 @@ source=(
   "${pkgbase%-*}.tmpfiles"
 )
 sha256sums=(
-  "3d32cd101025a0556813397c69feff3df3d63736adb8adeaf365c522f39f2930"
+  "679a7004871d3af4fd70144a6f885db00a8337bd384504527e7b579e81f35926"
   "77624f5efda79bd12d5ab59831883aad8e94395bc3ab933268b215d0b7b0df5f"
   "23ada3488c0d219f5957130b8231ab495b02467c30773082a9851ddc855cd705"
   "57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5"

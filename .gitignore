@@ -8,6 +8,7 @@ postgresql-9.6-*.log
 postgresql-docs-9.6-*.log
 postgresql-libs-9.6-*.log
 postgresql-9.6.*.tar.bz2
+postgresql-9.6.*.tar.gz
 postgresql-9.6.*/
 PKGBUILD-namcap.log
 pkg/
