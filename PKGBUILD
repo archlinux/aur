@@ -1,9 +1,9 @@
-# Maintainer: Daniel T. Borelli < d a n i e l t b o r e l l i @ g m a i l . c o m >
+# Maintainer: Daniel T. Borelli <daltomi@disroot.org>
 
 pkgbase=moc_notify-git
 pkgname=$pkgbase
-pkgver=2.4
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 _gitname=moc_notify
 _gittag="v${pkgver}"
 
@@ -25,10 +25,10 @@ install=moc_notify-git.install
 
 source=("moc_notify-git.install" "git+${url}.git?signed#tag=${_gittag}")
 
-sha256sums=('dc8acfa99a68825cc74e9659f2f5e03802a336705cd5e080504cd4fc88743f01' 'SKIP')
+sha256sums=('dc8acfa99a68825cc74e9659f2f5e03802a336705cd5e080504cd4fc88743f01'
+            'SKIP')
 
-
-validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
+validpgpkeys=('BADA62B7B55622A8B764DC6CB1B08540E74FE8A2')
 
 
 build() {

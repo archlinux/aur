@@ -1,7 +1,7 @@
 pkgbase = moc_notify-git
 	pkgdesc = Notifier for 'Music On Console' using libnotify.
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://github.com/daltomi/moc_notify
 	install = moc_notify-git.install
 	arch = x86_64
@@ -13,10 +13,9 @@ pkgbase = moc_notify-git
 	depends = libnotify
 	optdepends = moc: Music on Console
 	source = moc_notify-git.install
-	source = git+https://github.com/daltomi/moc_notify.git?signed#tag=v2.4
-	validpgpkeys = 95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1
+	source = git+https://github.com/daltomi/moc_notify.git?signed#tag=v2.4.1
+	validpgpkeys = BADA62B7B55622A8B764DC6CB1B08540E74FE8A2
 	sha256sums = dc8acfa99a68825cc74e9659f2f5e03802a336705cd5e080504cd4fc88743f01
 	sha256sums = SKIP
 
 pkgname = moc_notify-git
-
