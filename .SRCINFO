@@ -1,0 +1,17 @@
+pkgbase = chromono
+	pkgdesc = A very circular color puzzle game
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://thp.io/2013/chromono/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = python3
+	depends = sdl2
+	depends = zlib
+	depends = libvorbis
+	depends = libglvnd
+	source = https://thp.io/2013/chromono/chromono-1.1.0.tar.gz
+	sha256sums = 9a15fa795e4f14ef8683c5ddaf1b6c115fda306957c97604fc4f117599c9f2ae
+
+pkgname = chromono
