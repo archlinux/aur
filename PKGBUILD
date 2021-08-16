@@ -1,8 +1,8 @@
-# Maintainer: Daniel T. Borelli < danieltborelli@gmail.com>
+# Maintainer: Daniel T. Borelli <daltomi@disroot.org>
 
 pkgbase=chkuuid-git
 pkgname=$pkgbase
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 _gitname=chkuuid
 _gittag="v${pkgver}"
@@ -25,7 +25,7 @@ source=("git+${url}.git?signed#tag=${_gittag}")
 
 sha256sums=('SKIP')
 
-validpgpkeys=('95BDE4BDE7F657BC298DD722EA8BDDF776B54DD1')
+validpgpkeys=('BADA62B7B55622A8B764DC6CB1B08540E74FE8A2')
 
 build() {
   cd $_gitname &&  make
