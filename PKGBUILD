@@ -32,7 +32,7 @@ package() {
   make BINDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" install
   install -Dm 644 COPYING ../debian/copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
-  gzip ../debian/${pkgname}.1 && install -Dm 644 ../debian/${pkgname}.1.gz -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 ../debian/${pkgname}.1 -t "${pkgdir}/usr/share/man/man1"
 }
 
 # vim: ts=2 sw=2 et:
