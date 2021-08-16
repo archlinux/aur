@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.51.3
-pkgrel=2
+pkgver=2.51.4
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -22,10 +22,8 @@ source=(
     # cherry-picked from https://github.com/snapcore/snapd/pull/10567/
     "0001-snap-squashfs-handle-squashfs-tools-4.5.patch"
 )
-sha256sums=(
-    '67d3701b52484d7dba9c7b122752429eafbb20a0182966dd44ab1b1f6c1b780e'
-    '8142631da873d49d9b7d32b78afcededf347199f9f42161b88213f9aef33ab82'
-)
+sha256sums=('392890808f1f0549146237d88622db6a0f29c70f2848072d28a766adb2e037c6'
+            '8142631da873d49d9b7d32b78afcededf347199f9f42161b88213f9aef33ab82')
 
 _gourl=github.com/snapcore/snapd
 
