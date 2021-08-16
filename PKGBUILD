@@ -7,7 +7,7 @@ _srcname=linux-5.13
 _major=5.13
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=10
+_minor=11
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -31,20 +31,18 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch
-  0003-drm-amdgpu-handle-VCN-instances-when-harvesting.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('795d2886344676676256d496fb2c4fae53b9c1a7a9f47e71aab09bce7d09e69174b799e78c516927f00c772d5c317e438ea35175d4af51e2dc246dff1c0a96aa'
+b2sums=('caca344f358129093fdef5f7082b017efa53bbf9a885991c8585e3ac15dd50d4d7f4a4586906abf964d20561c726d9d3d7a0ac0eb8f9c69b7f3b51648ad1b198'
         'SKIP'
-        '511c7e1cc447dfe2a0e287982d485b7071df8c242046b8e0ef1bc402adb8d1f8d375e730dbb4f94fbf6eb2a2972b1cbbd43b9935f5007710804f1ca444ac7b55'
+        'c266ced0839680fffee79b2d75fa119dcb54df1cb4253b14ca246f25e8dfa9b6ff579e4d4e67c7d9ce9d52c960f1ba22243bf576f87db5a41fb808d77777c7b4'
         'SKIP'
         '65c2a6790e288fd7bfab74ffb5a93c91ae880d699338852ffc2059c666974fdc469ee36e0d1455f74a4c377ba749649173347af0a054328032fd866688739c04'
         '509a60a85c9aa85325b55f3d5d2a48e8ec390d7e5b6c5486e6929a79b4a5418e0348b18ef8547f82ddca874e21576585accc559a9414f1089e923f56bc4211b9'
-        'b0ce95aaf60e4a13fa19ebdb443f6be01b083b745052e649bef12184569dec07dc49cbf7f956553a6d765db536eaed03e582883d455b19c4e376bc46bba1f5d6'
-        '455db30e45e6e0266c13a9814b9be5521f37f8327a675ceb88af62b9a388b9afcf6a91e293e14d3ce52b3b19218b600bf32a88ad7c9c5f8a22bff3d1175e764a')
+        'b0ce95aaf60e4a13fa19ebdb443f6be01b083b745052e649bef12184569dec07dc49cbf7f956553a6d765db536eaed03e582883d455b19c4e376bc46bba1f5d6')
 
 
 export KBUILD_BUILD_HOST=archlinux
