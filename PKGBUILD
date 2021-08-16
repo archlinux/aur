@@ -3,8 +3,8 @@
 
 pkgname=ibus-theme-tools
 _pkgname=IBus-Theme-Tools
-_commit=08dd2ff59ef41dcd04c684d821d75195a72c6ac9
-pkgver=4.1.1
+_commit=e21722861935a2e07b1e2575c1e41f65dccc71a1
+pkgver=4.1.2
 pkgrel=1
 epoch=0
 pkgdesc="Generate the IBus GTK or GNOME Shell theme from existing themes."
