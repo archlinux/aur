@@ -1,5 +1,7 @@
-# Maintainer: Justin Jagieniak <justin@jagieniak.net>
+# Author: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Rye Mutt
+# Maintainer: Xenhat Hex (me@xenh.at)
+
 
 pkgname=alchemy-next-viewer
 pkgver=6.4.22.47251
