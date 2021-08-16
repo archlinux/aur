@@ -1,7 +1,7 @@
 # Maintainer: André <andre-aur@delorus.de>
 pkgname=gomopho
 _realname=GoMoPho
-pkgver=3.1
+pkgver=3.3
 pkgrel=1
 pkgdesc="Google motion photos video extractor (extract MP4 from MVIMG)"
 arch=(x86_64)
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/cliveontoast/GoMoPho/releases/download/v"$pkgver"/"$_realname".GNULinux."$pkgver".zip")
 noextract=()
-sha256sums=('45366ad405b7b0ea91962377cb444ff9f09373f06d9ea8a0fed787391a720a12')
+sha256sums=('5272c95183495c7bae10835a0e1c740f6c8807ba25061f9b4cbafe79d1392f2c')
 
 build() {
   chmod a+x GoMoPhoCoreConsole 
