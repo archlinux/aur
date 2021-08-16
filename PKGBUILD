@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=cpc-calc
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Text calculator with support for units and conversion"
 arch=("x86_64")
@@ -12,7 +12,7 @@ source=(
     "https://github.com/probablykasper/cpc/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha512sums=(
-    "864cbcfb60f80163e000f056b100ff5ffd59d9b5e0d7b3111817590fe47ede969af16a03705b27316c74d9504d03caa82bc0c1964705f75332400337d5474e0c"
+    "218ac7d1bebeb3caf21293312bbca9e59283b455285463faa63d4812f7d86cbdd1853ea8efefbbb5b6ce08dd1c0a83684355cb17707846310fd126f339823222"
 )
 
 build() {
