@@ -2,7 +2,7 @@
 
 pkgname=ciel-arch-plugins-git
 _pkgname=ciel-arch-plugins
-pkgver=r8.03050d9
+pkgver=r9.829a824
 pkgrel=1
 pkgdesc="Arch Linux integration plugins for the Ciel container manager."
 arch=('x86_64')
@@ -22,9 +22,9 @@ pkgver() {
 package() {
     cd "$pkgname"
     # Install the plugins
-    for i in makepkg provision sync-image
+    for i in configure makepkg provision sync-image
     do
-      install -Dm755 ciel-arch-${i} ${pkgdir}/usr/libexec/ciel-plugins/ciel-arch-${i}
+      install -Dm755 ciel-arch-${i} ${pkgdir}/usr/libexec/ciel-plugin/ciel-arch-${i}
     done
 
     # Install the license
