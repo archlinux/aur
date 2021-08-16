@@ -18,9 +18,14 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable Linux Random Number Generator
-_lrng_enable=
+_lrng_enable=y
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
+## Setting some security options
+use_selinux=n
+use_tomoyo=n
+use_yama=n
+use_apparmor=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -44,105 +49,55 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.11
-pkgrel=1
-arch=(x86_64 x86_64_v3)
-pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
+pkgrel=2
 _gittag=v${pkgver%.*}-${pkgver##*.}
-url="https://kernel.org/"
-license=(GPL2)
-makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git llvm clang lld llvm-libs compiler-rt
-)
+pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization'
+arch=('x86_64' 'x86_64_v3')
+url="https://github.com/hamadmarri/cacule-cpu-scheduler"
+license=('GPL2')
+makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'clang' 'llvm' 'lld' 'python' 'llvm-libs')
+options=('!strip')
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13"
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
-  'config' # kernel config file
-  #'0002-x86-fpu-2021-07-07.patch'
-#  '0003-clang.patch'
-#  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-  "${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
-  "${_caculepatches}/v5.13/cacule-5.13.patch"
-  "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
-  "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/winesync/5.13-winesync.patch"
-  "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
-  "${_patchsource}/zen-patches/0001-zen-patches.patch"
-  "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-  "${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
-  "${_patchsource}/block-patches-v2/0001-block-patches.patch"
-  "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
-  "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
-  "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
-  "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
-  "${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
-  "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-  "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
-  "${_patchsource}/security-patches/0001-security-patches.patch"
-  "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
-  "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-  "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
-  "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
-  "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
-)
-
-BUILD_FLAGS=(
-      LLVM=1
-      LLVM_IAS=1
-      CC=clang
-      CXX=clang++
-      CC_LD=lld
-      CXX_LD=lld
-      AR=llvm-ar
-      NM=llvm-nm
-      STRIP=llvm-strip
-      OBJCOPY=llvm-objcopy
-      OBJDUMP=llvm-objdump
-      READELF=llvm-readelf
-      RANLIB=llvm-ranlib
-      HOSTCC=clang
-      HOSTCXX=clang++
-      HOSTAR=llvm-ar
-    )
-sha256sums=('80929bcfdd6db2f6b4bea62c9864b6685a1b3ce96df0d420ad04662e8a49457d'
-            '750c6fd22bf6ab894f781a123ee301adb95629fd8413e135c72ef81635162d19'
-            '062b19c56e1caf1517ae6c6fff4c8c65ae85557170d3664eb6adf6729ed1d2ee'
-            'd498816b89a46bde060cbea77313ec14e293f820ea76c682870e894e6ff4af22'
-            '476c99cb010eb536ebf8b68044cd7f2a581c74e4d5c5e71e0983541f727bafde'
-            'a65035f7b751ea792989784083d5063293d1a0979bcf4c428b4ba94aeac17809'
-            'e1d58afdd4a9bf5a6a9ff0ff8e943d8a67da24fd4160b94655bf3fae5820e135'
-            '034d12a73b507133da2c69a34d61efd2f6b6618549650aa26d748142d22002e1'
-            'd9b37cb7edfd48b368f6969e1698278f74f548474bd2707d14a78f371a5e3b15'
-            'f39ce0a6a967e4c83f665288479c3236b211bbbb4ee508d6fbefee2904a4e80c'
-            '933cf04b6705e9564435163a514082f249b2a8e81e88f08fb3ce68bfe8ffcec7'
-            '0b2a42aad39d0feb26b7cf1996ba6792788d060f3b73a7019aa1df9c0922ced8'
-            '0735544a91293d9c192b7f9283541fe62ea5517c11e4b421b502ab76c064bd62'
-            '320e67ab827abb506481b9053fae85e494195e5d0ee3b61948999965856b425c'
-            '744a615a9099df44bb9c181f1d140a099fe11136c8dbb0b26e4af045460298a6'
-            'aa5cbec74dc27591d47616c6c0748475ab55b5efdcbc9d81c2cc49b9b0bf2c00'
-            '7289f4ce29d653a0ca511410b66bd3cb42fbcc54f5e097c85e528d4e27ce41ff'
-            'd2ba0ec7f76e267417f72abbf3ef35ce232d1e83c7ff33971bf8ccabb9739604'
-            '4c1bd02bdd1f3596f1066db8b0d5c38252ecaa830eb0719d4c0df11535523dc1'
-            'e5818fcaa55ed416b08900db04f18ae6d29b89d19e0b2fb3feb410efd8099b32'
-            '0c1e42b6c197e5e5c8a0c5f4047037289063e064f6b841f05028c62b5449864b'
-            'd562264ae4492ec07c55690cac0ee95703beed453330ab7a147e60c25b52e20f'
-            '8e56f88209ec69bf7004c52a7f31ba5fffa2c6af3db306e7ec385210a0b5944e'
-            '78b07f9d39573633ac7035201d7a95c44675084562995b7e60e549e44fbcfcb7'
-            'a137f641dad68b0b29491c4e87a41569578aa3c95a37a654912b7d5c16a756bc'
-            '04205c627cd3dcb737bd7b432cd7172d30f4ca0114b003bc3ac0dc8dadfa3c01'
-            '825d83cc3f243d12a4501e6b691a78dfa812e61dcd4c042a07ab4be484052bda')
-options=('!strip')
-
+    "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
+    "config"
+    "${_patchsource}/arch-patches-v5/0001-arch-patches.patch"
+    "${_caculepatches}/v5.13/cacule-5.13.patch"
+    "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+    "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+    "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
+    "${_patchsource}/winesync/5.13-winesync.patch"
+    "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
+    "${_patchsource}/zen-patches/0001-zen-patches.patch"
+    "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
+    "${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
+    "${_patchsource}/block-patches-v2/0001-block-patches.patch"
+    "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+    "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
+    "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
+    "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
+    "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
+    "${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
+    "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
+    "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
+    "${_patchsource}/security-patches/0001-security-patches.patch"
+    "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
+    "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+    "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
+    "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
+    "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
+  )
+  BUILD_FLAGS=(
+        LLVM=1
+        LLVM_IAS=1
+      )
 export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER="${pkgbase}"
+export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Prepare failed! \E[0m"
     exit 1
@@ -154,218 +109,239 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local src
-      for src in "${source[@]}"; do
-      src="${src%%::*}"
-      src="${src##*/}"
-      [[ $src = *.patch ]] || continue
-      echo "Applying patch $src..."
-      patch -Np1 < "../$src"
-  done
+    local src
+        for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        echo "Applying patch $src..."
+        patch -Np1 < "../$src"
+    done
 
+    echo "Setting config..."
+    cp ../config .config
 
-  echo "Setting config..."
-  cp ../config .config
+    # Let's user choose microarchitecture optimization in GCC
+    sh "${srcdir}"/auto-cpu-optimization.sh
 
-  make ${BUILD_FLAGS[*]} olddefconfig
-
-  ### CPU_ARCH SCRIPT ##
-    source "${startdir}"/configure
-
-    cpu_arch
-    ### Optionally set tickrate to 2000HZ
-      if [ -n "$_2k_HZ_ticks" ]; then
-        echo "Setting tick rate to 2k..."
-        scripts/config --disable CONFIG_HZ_300
-        scripts/config --enable CONFIG_HZ_2000
-        scripts/config --set-val CONFIG_HZ 2000
-      fi
-
-    ### Optionally set tickrate to 1000
-       if [ -n "$_1k_HZ_ticks" ]; then
-        echo "Setting tick rate to 1k..."
-        scripts/config --disable CONFIG_HZ_300
-        scripts/config --enable CONFIG_HZ_1000
-        scripts/config --set-val CONFIG_HZ 1000
-       fi
-
-    ### Optionally set tickrate to 500HZ
-      if [ -n "$_500_HZ_ticks" ]; then
-        echo "Setting tick rate to 500HZ..."
-        scripts/config --disable CONFIG_HZ_300
-        scripts/config --enable CONFIG_HZ_500
-        scripts/config --set-val CONFIG_HZ 500
-      fi
-
-  ### Optionally disable NUMA for 64-bit kernels only
-    # (x86 kernels do not support NUMA)
-      if [ -n "$_NUMAdisable" ]; then
-        echo "Disabling NUMA from kernel config..."
-        scripts/config --disable CONFIG_NUMA
-      fi
-
-      if [ -n "$_winesync" ]; then
-        echo "Enable winesync support"
-        scripts/config --module CONFIG_WINESYNC
-      fi
-
-  ### Set performance governor
-      if [ -n "$_per_gov" ]; then
-        echo "Setting performance governor..."
-        scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-        scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-        echo "Disabling uneeded governors..."
-        scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-        scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-        scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
-        scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-      fi
-
-    ### Enable protect file mappings under memory pressure
-        if [ -n "$_mm_protect" ]; then
-          echo "Enabling protect file mappings under memory pressure..."
-          scripts/config --enable CONFIG_UNEVICTABLE_FILE
-          scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-          scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-          scripts/config --enable CONFIG_UNEVICTABLE_ANON
-          scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-          scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+      ### Optionally set tickrate to 2000HZ
+        if [ -n "$_2k_HZ_ticks" ]; then
+          echo "Setting tick rate to 2k..."
+          scripts/config --disable CONFIG_HZ_300
+          scripts/config --enable CONFIG_HZ_2000
+          scripts/config --set-val CONFIG_HZ 2000
         fi
 
+      ### Optionally set tickrate to 1000
+         if [ -n "$_1k_HZ_ticks" ]; then
+          echo "Setting tick rate to 1k..."
+          scripts/config --disable CONFIG_HZ_300
+          scripts/config --enable CONFIG_HZ_1000
+          scripts/config --set-val CONFIG_HZ 1000
+         fi
 
-        ### Enable Linux Random Number Generator
-    	if [ -n "$_lrng_enable" ]; then
-    		echo "Enabling Linux Random Number Generator ..."
-    		scripts/config --enable CONFIG_LRNG
-    		scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-    		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
-    		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
-    		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-    		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-    		scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
-    		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
-    		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
-    		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-    		scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
-    		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
-    		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
-    		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-    		scripts/config --enable CONFIG_LRNG_JENT
-    		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-    		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-    		scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
-    		scripts/config --disable CONFIG_LRNG_DRBG
-    		scripts/config --disable CONFIG_LRNG_TESTING_MENU
-    		scripts/config --disable CONFIG_LRNG_SELFTEST
-    	fi
-        echo "Enable Anbox"
-        scripts/config --module  CONFIG_ASHMEM
-        scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
-        scripts/config --enable  CONFIG_ANDROID
-        scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
-        scripts/config --enable  CONFIG_ANDROID_BINDERFS
-        scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
-        echo "Disabling TCP_CONG_CUBIC..."
-        scripts/config --module CONFIG_TCP_CONG_CUBIC
-        scripts/config --disable CONFIG_DEFAULT_CUBIC
-        echo "Enabling TCP_CONG_BBR2..."
-        scripts/config --enable CONFIG_TCP_CONG_BBR2
-        scripts/config --enable CONFIG_DEFAULT_BBR2
-        scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
-        echo "Enable VHBA-Module"
-        scripts/config --module CONFIG_VHBA
+      ### Optionally set tickrate to 500HZ
+        if [ -n "$_500_HZ_ticks" ]; then
+          echo "Setting tick rate to 500HZ..."
+          scripts/config --disable CONFIG_HZ_300
+          scripts/config --enable CONFIG_HZ_500
+          scripts/config --set-val CONFIG_HZ 500
+        fi
 
-  ### Optionally use running kernel's config
-  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-  if [ -n "$_use_current" ]; then
-      if [[ -s /proc/config.gz ]]; then
-          echo "Extracting config from /proc/config.gz..."
-          # modprobe configs
-          zcat /proc/config.gz > ./.config
-      else
-          warning "Your kernel was not compiled with IKCONFIG_PROC!"
-          warning "You cannot read the current config!"
-          warning "Aborting!"
-          exit
-      fi
-  fi
+    ### Optionally disable NUMA for 64-bit kernels only
+      # (x86 kernels do not support NUMA)
+        if [ -n "$_NUMAdisable" ]; then
+          echo "Disabling NUMA from kernel config..."
+          scripts/config --disable CONFIG_NUMA
+        fi
 
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-  if [ -n "$_localmodcfg" ]; then
-      if [ -e $HOME/.config/modprobed.db ]; then
-          echo "Running Steven Rostedt's make localmodconfig now"
-          make LSMOD=$HOME/.config/modprobed.db localmodconfig
-      else
-          echo "No modprobed.db data found"
-          exit
-      fi
-  fi
+        if [ -n "$_winesync" ]; then
+          echo "Enable winesync support"
+          scripts/config --module CONFIG_WINESYNC
+        fi
+
+    ### Set performance governor
+        if [ -n "$_per_gov" ]; then
+          echo "Setting performance governor..."
+          scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+          scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+          echo "Disabling uneeded governors..."
+          scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+          scripts/config --disable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+          scripts/config --disable CONFIG_CPU_FREQ_GOV_USERSPACE
+          scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+        fi
+
+      ### Enable protect file mappings under memory pressure
+          if [ -n "$_mm_protect" ]; then
+            echo "Enabling protect file mappings under memory pressure..."
+            scripts/config --enable CONFIG_UNEVICTABLE_FILE
+            scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
+            scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
+            scripts/config --enable CONFIG_UNEVICTABLE_ANON
+            scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
+            scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
+          fi
+
+          if [ "$use_selinux" = "n" ]; then
+            echo "Disabling SELinux..."
+            scripts/config --disable CONFIG_SECURITY_SELINUX
+          fi
+
+          if [ "$use_tomoyo" = "n" ]; then
+            echo "Disabling TOMOYO..."
+            scripts/config --disable CONFIG_SECURITY_TOMOYO
+          fi
+
+          if [ "$use_apparmor" = "n" ]; then
+            echo "Disabling AppArmor..."
+            scripts/config --disable CONFIG_SECURITY_APPARMOR
+            scripts/config --set-str CONFIG_LSM lockdown,yama,integrity
+          fi
+
+          if [ "$use_yama" = "n" ]; then
+            echo "Disabling YAMA..."
+            scripts/config --disable CONFIG_SECURITY_YAMA
+            scripts/config --set-str CONFIG_LSM lockdown,integrity,apparmor
+          fi
+
+          ### Enable Linux Random Number Generator
+      	if [ -n "$_lrng_enable" ]; then
+      		echo "Enabling Linux Random Number Generator ..."
+      		scripts/config --enable CONFIG_LRNG
+      		scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+      		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
+      		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
+      		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+      		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+      		scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+      		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+      		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+      		scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+      		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+      		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+      		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+      		scripts/config --enable CONFIG_LRNG_JENT
+      		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+      		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+      		scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+      		scripts/config --disable CONFIG_LRNG_DRBG
+      		scripts/config --disable CONFIG_LRNG_TESTING_MENU
+      		scripts/config --disable CONFIG_LRNG_SELFTEST
+      	fi
+
+          echo "Enable Anbox"
+          scripts/config --module  CONFIG_ASHMEM
+          scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
+          scripts/config --enable  CONFIG_ANDROID
+          scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
+          scripts/config --enable  CONFIG_ANDROID_BINDERFS
+          scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
+          echo "Disabling TCP_CONG_CUBIC..."
+          scripts/config --module CONFIG_TCP_CONG_CUBIC
+          scripts/config --disable CONFIG_DEFAULT_CUBIC
+          echo "Enabling TCP_CONG_BBR2..."
+          scripts/config --enable CONFIG_TCP_CONG_BBR2
+          scripts/config --enable CONFIG_DEFAULT_BBR2
+          scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
+          echo "Enable VHBA-Module"
+          scripts/config --module CONFIG_VHBA
+          ### Enabling ZSTD COMPRESSION ##
+          echo "Set module compression to ZSTD"
+          scripts/config --enable CONFIG_MODULE_COMPRESS
+          scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+          scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+          scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+          scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
 
-  make ${BUILD_FLAGS[*]} -s kernelrelease >version
-  echo "Prepared ${pkgbase} version $(<version)"
+    ### Optionally use running kernel's config
+    # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+    if [ -n "$_use_current" ]; then
+        if [[ -s /proc/config.gz ]]; then
+            echo "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
+        else
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
+        fi
+    fi
 
+    ### Optionally load needed modules for the make localmodconfig
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -e $HOME/.config/modprobed.db ]; then
+            echo "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            echo "No modprobed.db data found"
+            exit
+        fi
+    fi
 
-    [[ -z "$_makenconfig" ]] || make nconfig
+    make ${BUILD_FLAGS[*]} olddefconfig
 
-    ## Save configuration for later reuse
+    make ${BUILD_FLAGS[*]} -s kernelrelease > version
+    echo "Prepared $pkgbase version $(<version)"
+
+    [[ -z "$_makenconfig" ]] || make ${BUILD_FLAGS[*]} nconfig
+
+    ### Save configuration for later reuse
     cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
-  }
+}
 
 build() {
-
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Build failed! \E[0m"
     exit 1
   )
-
- make ${BUILD_FLAGS[*]} all
-
+    make ${BUILD_FLAGS[*]} all
 }
 
 package_linux-cacule-llvm() {
-
   pkgdesc="The ${pkgdesc} and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
-    'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+    depends=('coreutils' 'kmod' 'initramfs')
+    optdepends=('crda: to set the correct wireless channels of your country'
+                'linux-firmware: firmware images needed for some devices'
+                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
-  cd "${srcdir:?}/linux-${pkgver}" || (
-    echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux kernel failed! \E[0m"
-    exit 1
-  )
+    cd "${srcdir:?}/linux-${pkgver}" || (
+      echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux kernel failed! \E[0m"
+      exit 1
+    )
 
-  local kernver="$(<version)"
-  local modulesdir="${pkgdir:?}/usr/lib/modules/$kernver"
+    local kernver="$(<version)"
+    local modulesdir="${pkgdir:?}/usr/lib/modules/$kernver"
 
-  echo "Installing boot image..."
-  # systemd expects to find the kernel here to allow hibernation
-  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "${modulesdir}/vmlinuz"
+    echo "Installing boot image..."
+    # systemd expects to find the kernel here to allow hibernation
+    # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
+    install -Dm644 "$(make -s image_name)" "${modulesdir}/vmlinuz"
 
-  # Used by mkinitcpio to name the kernel
-  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
+    # Used by mkinitcpio to name the kernel
+    echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
 
-  echo "Installing modules..."
-  make INSTALL_MOD_PATH="${pkgdir:?}/usr" INSTALL_MOD_STRIP=1 modules_install
+    echo "Installing modules..."
+    make INSTALL_MOD_PATH="${pkgdir:?}/usr" INSTALL_MOD_STRIP=1 modules_install
 
-  # remove build and source links
-  rm "${modulesdir}/"{source,build}
-
+    # remove build and source links
+    rm "${modulesdir}/"{source,build}
 }
 
 package_linux-cacule-llvm-headers() {
 
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
-  depends=("linux-cacule-llvm=${pkgver}" pahole)
+  depends=("linux-cacule-llvm=${pkgver}" "pahole")
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux headers failed! \E[0m"
@@ -449,3 +425,31 @@ package_linux-cacule-llvm-headers() {
   ln -sr "${builddir}" "${pkgdir:?}/usr/src/${pkgbase}"
 
 }
+
+md5sums=('89020a90124a6798054a03c7a2ead059'
+         '5fef4ec9c05a8c360f84da843e90c0f3'
+         '9f9b916ed39dc125db45d0bff672f4c0'
+         '078da517ec2d54283af81d7da3af671a'
+         '7640a753a7803248543675a6edc75e08'
+         '85f4be6562ee033b83814353a12b61bd'
+         '3ec9a8784a9e73462def2e9c33de9a1e'
+         '9573b92353399343db8a691c9b208300'
+         'e15a64663e6221ea40b02aeb8517e70a'
+         '1217799f33d6ba822152a0e2fb6f2e34'
+         '31c897f53b91f98532321cd24928c0d7'
+         '698d661fa23611933146b83e0fa9cade'
+         '4f9e72e7edb909da5cd650afe13aadb6'
+         '9bbbd88f0303ccd59064648eaaf80edd'
+         '1bd37d8e71b2a7aae8ebd2853a08f445'
+         '65a4399a10b2abd0f327145d479db12d'
+         '81f27f12e20971c7d7fc3a53ffb6842c'
+         'f9b3c2263204ebfae89f29b83278b54b'
+         'e84f0dadb9e7487fac39541c5bd85d7a'
+         'b6623f818462d08b03fdc1b573c90e9f'
+         '2b2be59407dd342f1cea80602a93b6c0'
+         '9977ba0e159416108217a45438ebebb4'
+         '92e9db1a7777666a1e6353b4760f1275'
+         '9e5114dba6da65e8d444aa225b109a21'
+         '2aa4d3664fc16dac2f18fe8c22ba1df1'
+         '7dd37a74d7926f4c5ae3b3f76d7172a2'
+         '08590776013d05bc7a96ef5557c54200')
