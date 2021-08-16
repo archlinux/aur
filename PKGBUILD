@@ -1,17 +1,27 @@
-# Maintainer: Thulinma <jaron@vietors.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=subsync
-pkgdesc="Automagically synchronize subtitles with video"
-pkgver=0.2.4
+pkgver=0.16
 pkgrel=1
-license=('MIT')
-arch=('any')
-url="https://github.com/smacke/subsync"
-makedepends=('python-pip')
-source=("https://github.com/smacke/subsync/archive/master.zip")
-md5sums=('1c1bbb4ad2870194a489043eef63f8b9')
+pkgdesc="Subtitle Speech Synchronizer"
+arch=('x86_64')
+url="https://subsync.online"
+license=('GPL3')
+depends=('ffmpeg' 'pocketsphinx' 'pybind11' 'python-certifi' 'python-cryptography'
+         'python-pysubs2' 'python-pyaml' 'python-requests' 'python-wxpython')
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sc0ty/subsync/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('bdbfc0504b6dd036bb238daaa863016ed157c810edde5c4fc5e50a28cee309f2')
 
-package() {
-    cd "$srcdir/subsync-master"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps subsync
+build() {
+  cd "$pkgname-$pkgver"
+  python setup.py build
 }
 
+package() {
+  cd "$pkgname-$pkgver"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 "resources/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dm644 "resources/$pkgname.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+}
