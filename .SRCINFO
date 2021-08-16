@@ -1,0 +1,19 @@
+pkgbase = cargo-pgx
+	pkgdesc = Build PostgreSQL extensions with Rust
+	pkgver = 0.1.21
+	pkgrel = 1
+	url = https://github.com/zombodb/pgx
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	depends = clang
+	depends = llvm
+	optdepends = postgresql: to compile with system postgresql
+	source = cargo-pgx-0.1.21.tar.gz::https://static.crates.io/crates/cargo-pgx/cargo-pgx-0.1.21.crate
+	source = https://raw.githubusercontent.com/zombodb/pgx/v0.1.21/LICENSE
+	b2sums = 49b9546bb269ed233518fffa5ec0590ababc166e619ac6ede08cb7ca37a34a07478043a6f19b9ce9d1db31e070bf847a7e218204841a4533f1ed2ca823e517f4
+	b2sums = 2cab3447814cebb834e21e3db43ac2dd42bd0ca064d304120ecf5d4f831b90dcd7fe5f9ddc10983e5f362689258d5af0ee4abedfcbf87f52ff31fe697511f165
+
+pkgname = cargo-pgx
