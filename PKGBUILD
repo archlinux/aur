@@ -6,8 +6,8 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r13467.g79a234eff7'
-pkgrel='2'
+pkgver='5.0.r14885.g35c64d1f57'
+pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,12 @@ depends=(
 )
 makedepends=('cmake' 'git' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$pkgname::git+https://github.com/$_mainpkgname/$_projectname")
-sha256sums=('SKIP')
+source=(
+	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
+	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
+)
+sha256sums=('SKIP'
+            'SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -31,6 +35,13 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
+
+	# Provide git submodule
+	_submodule='mgba'
+	_submodulepath="Externals/mGBA/$_submodule"
+	git submodule init "$_submodulepath"
+	git config "submodule.$_submodulepath.url" "$srcdir/$pkgname-$_submodule/"
+	git submodule update "$_submodulepath"
 }
 
 pkgver() {
