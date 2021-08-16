@@ -1,11 +1,10 @@
 pkgbase = python-biplist
 	pkgdesc = Library for reading/writing binary property lists
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/wooster/biplist
 	arch = any
 	license = BSD
-	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python
 	source = https://bitbucket.org/wooster/biplist/downloads/biplist-1.0.3.tar.gz
