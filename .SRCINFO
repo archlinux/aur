@@ -1,0 +1,15 @@
+pkgbase = astronaut-git
+	pkgdesc = A Gemini browser for the terminal
+	pkgver = r315.bf35dae
+	pkgrel = 1
+	url = https://git.sr.ht/~adnano/astronaut
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	depends = glibc
+	source = astronaut-git::git+https://git.sr.ht/~adnano/astronaut
+	sha256sums = SKIP
+
+pkgname = astronaut-git
