@@ -141,6 +141,9 @@ prepare() {
 
 build() {
   cd mcpelauncher-manifest || exit 1
+  # Hacky solution to fix compile
+  sed -i '22i#include <mutex>' mcpelauncher-linker/core/liblog/logger_write.cpp
+  sed -i '26i#include <limits>' mcpelauncher-linker/core/libziparchive/zip_archive_stream_entry.cc
   mkdir -p build
   cd build || exit
   CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_DEV_PATHS=OFF -Wno-dev ..
