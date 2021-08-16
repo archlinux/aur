@@ -18,9 +18,14 @@ _500_HZ_ticks=
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 ### Enable Linux Random Number Generator
-#_lrng_enable=y
+_lrng_enable=y
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
+## Setting some security options
+use_selinux=n
+use_tomoyo=n
+use_yama=n
+use_apparmor=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -44,7 +49,7 @@ _use_current=
 pkgbase=linux-cacule-rdb
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.11
-pkgrel=2
+pkgrel=3
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -59,7 +64,7 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/maste
 source=(
 "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
 "config"
-"${_patchsource}/arch-patches-v4/0001-arch-patches.patch"
+"${_patchsource}/arch-patches-v5/0001-arch-patches.patch"
 "${_caculepatches}/v5.13/cacule-5.13.patch"
 "${_patchsource}/cpu-patches/0001-cpu-patches.patch"
 "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
@@ -77,13 +82,14 @@ source=(
 "${_patchsource}/pf-patches-v9/0001-pf-patches.patch"
 "${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
-#"${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
+"${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
 "${_patchsource}/alsa-patches/0001-alsa-patches.patch"
 "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
 "${_patchsource}/zstd-patches-v5/0001-zstd-patches.patch"
 "${_patchsource}/clearlinux-patches-v2/0001-clearlinux-patches.patch"
 "${_patchsource}/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch"
+"auto-cpu-optimization.sh"
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -114,11 +120,9 @@ prepare() {
     echo "Setting config..."
     cp ../config .config
 
-    make olddefconfig
-    ### CPU_ARCH SCRIPT ##
-      source "${startdir}"/configure
+    # Let's user choose microarchitecture optimization in GCC
+    sh "${srcdir}"/auto-cpu-optimization.sh
 
-      cpu_arch
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
           echo "Setting tick rate to 2k..."
@@ -178,6 +182,59 @@ prepare() {
             scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
           fi
 
+          if [ "$use_selinux" = "n" ]; then
+            echo "Disabling SELinux..."
+            scripts/config --disable CONFIG_SECURITY_SELINUX
+          fi
+
+          if [ "$use_tomoyo" = "n" ]; then
+            echo "Disabling TOMOYO..."
+            scripts/config --disable CONFIG_SECURITY_TOMOYO
+          fi
+
+          if [ "$use_apparmor" = "n" ]; then
+            echo "Disabling AppArmor..."
+            scripts/config --disable CONFIG_SECURITY_APPARMOR
+            scripts/config --set-str CONFIG_LSM lockdown,yama,integrity
+          fi
+
+          if [ "$use_yama" = "n" ]; then
+            echo "Disabling YAMA..."
+            scripts/config --disable CONFIG_SECURITY_YAMA
+            scripts/config --set-str CONFIG_LSM lockdown,integrity,apparmor
+          fi
+
+          ### Enable Linux Random Number Generator
+      	if [ -n "$_lrng_enable" ]; then
+      		echo "Enabling Linux Random Number Generator ..."
+      		scripts/config --enable CONFIG_LRNG
+      		scripts/config --disable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+      		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 0
+      		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 0
+      		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+      		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+      		scripts/config --disable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_32
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_256
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+      		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+      		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+      		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+      		scripts/config --disable CONFIG_LRNG_HEALTH_TESTS
+      		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+      		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+      		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+      		scripts/config --enable CONFIG_LRNG_JENT
+      		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+      		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+      		scripts/config --disable CONFIG_LRNG_DRNG_SWITCH
+      		scripts/config --disable CONFIG_LRNG_DRBG
+      		scripts/config --disable CONFIG_LRNG_TESTING_MENU
+      		scripts/config --disable CONFIG_LRNG_SELFTEST
+      	fi
+
           echo "Enable Anbox"
           scripts/config --module  CONFIG_ASHMEM
           scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
@@ -194,6 +251,13 @@ prepare() {
           scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
           echo "Enable VHBA-Module"
           scripts/config --module CONFIG_VHBA
+          ### Enabling ZSTD COMPRESSION ##
+          echo "Set module compression to ZSTD"
+          scripts/config --enable CONFIG_MODULE_COMPRESS
+          scripts/config --disable CONFIG_MODULE_COMPRESS_XZ
+          scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+          scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+          scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -213,15 +277,17 @@ prepare() {
     ### Optionally load needed modules for the make localmodconfig
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
-        if [ -e $HOME/.config/modprobed.db ]; then
+        if [ -e "$HOME"/.config/modprobed.db ]; then
             echo "Running Steven Rostedt's make localmodconfig now"
-            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+            make LSMOD="$HOME"/.config/modprobed.db localmodconfig
         else
             echo "No modprobed.db data found"
             exit
         fi
     fi
 
+    echo "Applying default config..."
+    make olddefconfig
     make -s kernelrelease > version
     echo "Prepared $pkgbase version $(<version)"
 
@@ -241,11 +307,11 @@ build() {
 
 package_linux-cacule-rdb() {
   pkgdesc="The ${pkgdesc} and modules"
-  depends=(coreutils kmod initramfs)
+  depends=(coreutils kmod initramfs )
   optdepends=('crda: to set the correct wireless channels of your country'
-    'linux-firmware: firmware images needed for some devices')
+              'linux-firmware: firmware images needed for some devices'
+              'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux kernel failed! \E[0m"
@@ -274,7 +340,7 @@ package_linux-cacule-rdb() {
 package_linux-cacule-rdb-headers() {
 
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
-  depends=("linux-cacule-rdb=${pkgver}" pahole)
+  depends=("linux-cacule-rdb=${pkgver}" "pahole")
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux headers failed! \E[0m"
@@ -360,8 +426,8 @@ package_linux-cacule-rdb-headers() {
 }
 
 md5sums=('89020a90124a6798054a03c7a2ead059'
-         'bb15c4c539a601d9593289b78ca9a6d9'
-         '5a1e1af6bd9993ad250c070f90870b78'
+         'fc5268d6d49ea366e09631ac8d68972f'
+         '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
          '7640a753a7803248543675a6edc75e08'
          '85f4be6562ee033b83814353a12b61bd'
@@ -379,9 +445,11 @@ md5sums=('89020a90124a6798054a03c7a2ead059'
          'f9b3c2263204ebfae89f29b83278b54b'
          'e84f0dadb9e7487fac39541c5bd85d7a'
          'b6623f818462d08b03fdc1b573c90e9f'
+         '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
          '92e9db1a7777666a1e6353b4760f1275'
          '9e5114dba6da65e8d444aa225b109a21'
          '2aa4d3664fc16dac2f18fe8c22ba1df1'
          '7dd37a74d7926f4c5ae3b3f76d7172a2'
-         '08590776013d05bc7a96ef5557c54200')
+         '08590776013d05bc7a96ef5557c54200'
+         '7cf0b5c39d16da18451d1e7e7523d992')
