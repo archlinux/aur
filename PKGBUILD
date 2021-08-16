@@ -11,12 +11,10 @@ provides=('v2ray-domain-list-community')
 conflicts=('v2ray-domain-list-community')
 
 source=("geosite-$pkgver.dat::https://github.com/Loyalsoldier/domain-list-custom/releases/download/$pkgver/geosite.dat"
-	LICENSE)
+	"https://raw.githubusercontent.com/Loyalsoldier/domain-list-custom/master/LICENSE")
+
 sha256sums=('5709957117e9a72251a7016a362b8c6a9e8505bc864343f70a64a0d087acf9b3'
             '35f18e0331a1ecd1835400c50e3b367c2ce09f6c13d91c4a0f3cb11f71d3bbc3')
-
-#source=(LICENSE)
-#sha256sums=('35f18e0331a1ecd1835400c50e3b367c2ce09f6c13d91c4a0f3cb11f71d3bbc3')
 
 package() {
   install -Dm644 geosite-$pkgver.dat "$pkgdir"/usr/share/v2ray/geosite.dat
