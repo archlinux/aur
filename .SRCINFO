@@ -1,7 +1,7 @@
 pkgbase = hysteria
 	pkgdesc = TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HyNetwork/hysteria
 	arch = x86_64
 	license = MIT

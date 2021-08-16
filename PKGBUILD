@@ -3,7 +3,7 @@
 _pkgbase=hysteria
 pkgname=$_pkgbase
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments'
 arch=('x86_64')
 url="https://github.com/HyNetwork/hysteria"
@@ -33,9 +33,9 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS} -DLWIP_NOASSERT"
   export CGO_LDFLAGS="${LDFLAGS}"
   local _goldflags="-w -s -linkmode=external"
-  local _goldflags="$GOLDFLAGS -X 'main.appVersion=$(git describe --tags)'"
-  local _goldflags="$GOLDFLAGS -X 'main.appCommit=$(git rev-parse HEAD)'"
-  local _goldflags="$GOLDFLAGS -X 'main.appDate=$(date "+%F %T")'"
+  local _goldflags="$_goldflags -X 'main.appVersion=$(git describe --tags)'"
+  local _goldflags="$_goldflags -X 'main.appCommit=$(git rev-parse HEAD)'"
+  local _goldflags="$_goldflags -X 'main.appDate=$(date "+%F %T")'"
   go build \
     -buildmode=pie -trimpath -mod=readonly -modcacherw \
     -o build/$_pkgbase \
