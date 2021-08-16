@@ -1,6 +1,6 @@
 pkgbase = python-cardano
 	pkgdesc = A comprehensive Python module for handling Cardano cryptocurrency and blockchain platform
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/emesik/cardano-python
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-cardano
 	makedepends = python-distribute
 	depends = python
 	depends = python-requests
-	source = https://github.com/emesik/cardano-python/archive/v0.6.1.tar.gz
-	sha256sums = b2fcc10ea2f75ac0d140d17b88f7dd7532e9667b32d238a8307d11b8193a4e88
+	source = https://github.com/emesik/cardano-python/archive/v0.7.1.tar.gz
+	sha256sums = 0eec397aad5fc9a9d11554a90801f414ce5cc43477c01b76eda12e885427654a
 
 pkgname = python-cardano
