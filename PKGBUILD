@@ -3,8 +3,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-cuda
-pkgver=4.5.2
-pkgrel=3
+pkgver=4.5.3
+pkgrel=1
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
@@ -23,8 +23,8 @@ optdepends=('opencv-samples: samples'
 source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/archlinux/svntogit-packages/29adf974618f75894f9b03e1519281a5e0c8824e/trunk/opencv-lapack-3.10.patch")
-sha256sums=('be976b9ef14f1deaa282fb6e30d75aa8016a2d5c1f08e85795c235148940d753'
-            '9f52fd3114ac464cb4c9a2a6a485c729a223afb57b9c24848484e55cef0b5c2a'
+sha256sums=('a61e7a4618d353140c857f25843f39b2abe5f451b018aab1604ef0bc34cd23d5'
+            '73da052fd10e73aaba2560eaff10cc5177e2dcc58b27f8aedf7c649e24c233bc'
             'f83c64f2731a39910d0d4a48898dd04e4aca5c22f746b7b0ead003992ae11199')
 
 prepare() {
