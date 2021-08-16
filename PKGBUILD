@@ -1,3 +1,4 @@
+# Maintainer: Christoph Petrausch aur@petrausch.info
 pkgname=gnome-shell-extension-paperwm-git
 _pkgname=PaperWM
 pkgver=r1652.e9f7148
