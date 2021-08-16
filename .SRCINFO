@@ -1,0 +1,12 @@
+pkgbase = hdb
+	pkgdesc = The Hierarchical Database
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/42LoCo42/hdb
+	arch = any
+	license = GPL3
+	depends = bash
+	source = https://github.com/42LoCo42/hdb/archive/refs/tags/v1.tar.gz
+	sha256sums = 79ee47e4d79baf07555bbbb1538e3089a269cea3475e38763478cd0d6273fae3
+
+pkgname = hdb
