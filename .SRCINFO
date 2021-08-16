@@ -1,6 +1,6 @@
 pkgbase = prometheus-bin
 	pkgdesc = An open-source service monitoring system and time series database (binary, not built from source)
-	pkgver = 2.27.1
+	pkgver = 2.29.1
 	pkgrel = 1
 	url = http://prometheus.io
 	install = prometheus.install
@@ -16,16 +16,15 @@ pkgbase = prometheus-bin
 	backup = etc/prometheus/prometheus.yml
 	source = prometheus.service
 	sha256sums = 0c99b68b282d72feb9fd2bc0b190554659a59dada74ec92ca2b2f48016a9b805
-	source_x86_64 = https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-amd64.tar.gz
-	sha256sums_x86_64 = ce637d0167d5e6d2561f3bd37e1c58fe8601e13e4e1ea745653c068f6e1317ae
-	source_arm = https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-armv5.tar.gz
-	sha256sums_arm = 6d8c3188a3bef6cb732544fd2cd47575bea4ee1bf509197011629a8340310a4a
-	source_armv6h = https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-armv6.tar.gz
-	sha256sums_armv6h = 2f9b8a5d148e861b510db78a7e222545d3d8d3405be85bdb48ae5a599a3b6fae
-	source_armv7h = https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-armv7.tar.gz
-	sha256sums_armv7h = 3325499884d69ef776219cd0fea01c07cf89c03bc5ed7606484887a97a33454b
-	source_aarch64 = https://github.com/prometheus/prometheus/releases/download/v2.27.1/prometheus-2.27.1.linux-arm64.tar.gz
-	sha256sums_aarch64 = a96fc1466d9030a9a899c783c087c30e91471342a771544d4e494ceead95cedc
+	source_x86_64 = https://github.com/prometheus/prometheus/releases/download/v2.29.1/prometheus-2.29.1.linux-amd64.tar.gz
+	sha256sums_x86_64 = b85769c7e819ed27e7a09a7a15bdfea06e01484737011677d043b1b85a22f82e
+	source_arm = https://github.com/prometheus/prometheus/releases/download/v2.29.1/prometheus-2.29.1.linux-armv5.tar.gz
+	sha256sums_arm = a7a3e58749566353e0f8cd49490a58e3c7ad2df234056d3cd938b2883f65634c
+	source_armv6h = https://github.com/prometheus/prometheus/releases/download/v2.29.1/prometheus-2.29.1.linux-armv6.tar.gz
+	sha256sums_armv6h = e6ed199a11462d4088ad55d08f6978f63cb9d7f36d0a2ffb050ed6f6475521f6
+	source_armv7h = https://github.com/prometheus/prometheus/releases/download/v2.29.1/prometheus-2.29.1.linux-armv7.tar.gz
+	sha256sums_armv7h = 121e272755f8e32a813c85c546be404b8fea89ae21ad4bb1b2c5dd23d118cb2f
+	source_aarch64 = https://github.com/prometheus/prometheus/releases/download/v2.29.1/prometheus-2.29.1.linux-arm64.tar.gz
+	sha256sums_aarch64 = 073dc2d374b13a58a111b609144214946d8bddc0abe91b4b369e4bdb4781d5b8
 
 pkgname = prometheus-bin
-
