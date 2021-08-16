@@ -10,6 +10,13 @@ arch=('i686' 'x86_64')
 url="https://vpn.mozilla.org/"
 license=('GPL')
 depends=('polkit'
+         'libxcb'
+         'libxmu'
+         'libxrender'
+         'libtiff'
+         'libxdmcp'
+         'dbus'
+         'freetype2'
          'qt5-charts'
          'qt5-declarative'
          'qt5-graphicaleffects'
@@ -21,7 +28,7 @@ depends=('polkit'
          'wireguard-tools'
          'WIREGUARD-MODULE'
          'openresolv')
-makedepends=('qt5-tools')
+makedepends=('qt5-tools' 'go' 'flex')
 # https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+packages
 source=(
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
