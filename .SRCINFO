@@ -51,6 +51,7 @@ pkgbase = linux-cacule-rdb-llvm
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/zstd-patches-v5/0001-zstd-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/clearlinux-patches-v2/0001-clearlinux-patches.patch
 	source = https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.13/v4l2loopback-patches-v2/0001-v4l2loopback-patches.patch
+	source = auto-cpu-optimization.sh
 	md5sums = 89020a90124a6798054a03c7a2ead059
 	md5sums = 8523a8d066c08f037621ec101a6b87fd
 	md5sums = 9f9b916ed39dc125db45d0bff672f4c0
@@ -78,6 +79,7 @@ pkgbase = linux-cacule-rdb-llvm
 	md5sums = 2aa4d3664fc16dac2f18fe8c22ba1df1
 	md5sums = 7dd37a74d7926f4c5ae3b3f76d7172a2
 	md5sums = 08590776013d05bc7a96ef5557c54200
+	md5sums = 7cf0b5c39d16da18451d1e7e7523d992
 
 pkgname = linux-cacule-rdb-llvm
 	pkgdesc = The Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization and modules
