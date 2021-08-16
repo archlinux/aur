@@ -4,7 +4,7 @@
 
 _pkgname=betterlockscreen
 pkgname=${_pkgname}-git
-pkgver=r125.1c36673
+pkgver=r167.9260018
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
@@ -13,6 +13,8 @@ license=('MIT')
 depends=('i3lock-color>=2.13.c.3-1' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: Allows setting wallpaper')
 conflicts=("betterlockscreen")
+#source=("${_pkgname}::git+${url}.git#commit=926001") # tag: v4.0.1
+#source=("${_pkgname}::git+${url}.git#branch=next")
 source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 install=${_pkgname}.install
@@ -24,7 +26,7 @@ pkgver() {
 
 package() {
 	_srcdir="$srcdir/$_pkgname"
-	install -Dm 755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm 755 "$_srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	if [[ $(pidof systemd) ]]; then
 		_serviceloc="$pkgdir/usr/lib/systemd/system"
 		_servicename="$_pkgname@.service"
