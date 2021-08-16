@@ -5,7 +5,7 @@
 pkgname=libmesh-petsc
 pkgbase=libmesh
 pkgrel=1
-pkgver=cpp03_final.r6057.gd18d49ad7
+pkgver=cpp03_final.r6253.g27ad98c5a
 pkgdesc="A C++ Finite Element Library"
 arch=("x86_64")
 url="http://libmesh.github.io/"
@@ -134,9 +134,16 @@ build() {
   # Out of source build (recommended by Roy Stogner)
   buildir="${srcdir}"/build
   cd "${buildir}"
+  # Remove unneeded files in-between compilations
+  #   It could be that config.status and Makefile are the
+  #   only things to remove in-between compilations (just to
+  #   be safe, remove all files; keep directories to avoid
+  #   recompiling)
+  rm * || printf ""
 
   CONFOPTS=(
     --quiet
+    --enable-silent-rules
     --srcdir="${srcdir}/${pkgbase}"
     # target directory
     --prefix=/usr
