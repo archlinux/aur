@@ -3,8 +3,8 @@
 
 
 pkgname=libarchive-qt
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 pkgdesc="A Qt based archiving solution with libarchive backend"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/marcusbritanicus/$pkgname"
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('libarchive' 'qt5-base' 'zlib' 'bzip2' 'xz')
 makedepends=('cmake' 'ninja')
 source=("https://gitlab.com/marcusbritanicus/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('a13db50c765a2f71746fce809883fb93')
+md5sums=('b3bcabc86e8697ecdc8e968bebe7c519')
 
 prepare() {
   mkdir -p build

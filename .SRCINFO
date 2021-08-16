@@ -1,7 +1,7 @@
 pkgbase = libarchive-qt
 	pkgdesc = A Qt based archiving solution with libarchive backend
-	pkgver = 2.0.5
-	pkgrel = 2
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://gitlab.com/marcusbritanicus/libarchive-qt
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = libarchive-qt
 	depends = zlib
 	depends = bzip2
 	depends = xz
-	source = https://gitlab.com/marcusbritanicus/libarchive-qt/-/archive/v2.0.5/libarchive-qt-v2.0.5.tar.gz
-	md5sums = a13db50c765a2f71746fce809883fb93
+	source = https://gitlab.com/marcusbritanicus/libarchive-qt/-/archive/v2.0.6/libarchive-qt-v2.0.6.tar.gz
+	md5sums = b3bcabc86e8697ecdc8e968bebe7c519
 
 pkgname = libarchive-qt
