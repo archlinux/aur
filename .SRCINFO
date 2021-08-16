@@ -1,0 +1,12 @@
+pkgbase = cargo-make
+	pkgdesc = Rust task runner and build tool
+	pkgver = 0.35.0
+	pkgrel = 1
+	url = https://github.com/sagiegurari/cargo-make
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	source = cargo-make-0.35.0.tar.gz::https://github.com/sagiegurari/cargo-make/archive/0.35.0.tar.gz
+	b2sums = a5323e144fd44f6045ac9431b9ade4ea5ddd508fa9ff27b2b92a657a008804e612ffdb8502fdcfeec4fc0df45b4d6684c93e572fcb0381f81bc21095e9e4bc83
+
+pkgname = cargo-make
