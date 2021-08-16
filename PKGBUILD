@@ -2,7 +2,7 @@
 # Contributor: Rye Mutt
 
 pkgname=alchemy-next-viewer
-pkgver=6.4.17.45975
+pkgver=6.4.22.47251
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer!"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
   'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'gcc' 'python-virtualenv' 'python2-pip' 'git' 'boost' 'xz')
+makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 conflicts=('alchemy')
 provides=('alchemy-next')
 
@@ -31,24 +31,23 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	virtualenv ".venv" -p python2
+	virtualenv ".venv" -p python3
 	source .venv/bin/activate
-	pip install autobuild -i https://pkg.alchemyviewer.org/repository/autobuild/simple --extra-index-url https://pypi.org/simple
+	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
 
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DUNIX_DISABLE_FATAL_WARNINGS=ON -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
 }
 
 build() {
 	cd "$pkgname/build-linux-64"
-	make
+	autobuild build -A 64 -c ReleaseOS --no-configure
 }
 
 package() {
 	mkdir -p "$pkgdir/opt"
 	mkdir -p "$pkgdir/usr/share/applications"
-    
+
 	mv "$pkgname/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next"
 
 	install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
-

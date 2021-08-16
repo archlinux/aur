@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer
 	pkgdesc = This is the next generation of Alchemy Viewer!
-	pkgver = 6.4.17.45975
+	pkgver = 6.4.22.47251
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = alchemy-next-viewer
 	license = LGPL
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = python2-virtualenv
-	makedepends = python2-pip
+	makedepends = python-virtualenv
+	makedepends = python-pip
 	makedepends = git
 	makedepends = boost
 	makedepends = xz
+	makedepends = ninja
 	depends = dbus-glib
 	depends = glu
 	depends = gtk3
@@ -48,4 +49,3 @@ pkgbase = alchemy-next-viewer
 	md5sums = 6d65e849f37a05b8684d99185feaa07c
 
 pkgname = alchemy-next-viewer
-
