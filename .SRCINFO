@@ -1,6 +1,6 @@
 pkgbase = searx-git
 	pkgdesc = A privacy-respecting, hackable metasearch engine (python(3) based)
-	pkgver = 0.18.0+r116+gf310305c
+	pkgver = 1.0.0+r200+g313a9847
 	pkgrel = 1
 	url = https://asciimoo.github.io/searx/
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = searx-git
 	depends = python-flask
 	depends = python-flask-babel
 	depends = python-lxml
-	depends = python-idna
 	depends = python-pygments
 	depends = python-dateutil
 	depends = python-yaml
-	depends = python-requests
+	depends = python-httpx-socks
+	depends = python-h2
 	depends = python-pysocks
 	depends = python-langdetect
 	conflicts = searx
@@ -30,4 +30,3 @@ pkgbase = searx-git
 	sha512sums = 6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e
 
 pkgname = searx-git
-
