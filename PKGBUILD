@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=zoxide
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ajeetdsouza/${pkgname}"
 license=('MIT')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ajeetdsouza/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('5739dc7e1ef9374a0277c7a0ccf0bfd4de2754bd67de265b6a3798704ebed26a4fa015a7eb63754aeb493278d77a30494665c15c0fa5d7f76ff34685dd5ba6d5')
+sha512sums=('ef97f6735e6ad3ff3da2bd2057ecff1945d2dd67655633827e60a701b630882707bdcd12a30e2621830cf9385338cd053ff9f699a5410e0dd53dacb5b336ce2d')
 
 build() {
     cd "${pkgname}-${pkgver}"
