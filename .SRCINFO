@@ -9,11 +9,9 @@ pkgbase = nvs-git
 	makedepends = git
 	depends = openssl
 	depends = zlib
-	source = https://nodejs.org/dist/v12.22.2/node-v12.22.2-linux-x64.tar.xz
 	source = nvs.sh
 	source = nvs::git+https://github.com/jasongin/nvs.git
-	sha256sums = c17f838cec2eb111048342543d23a74bcab7459a4374615ff4124940a717377a
-	sha256sums = 1603479565d3e85c3db26c6dcdecd73b31c702a606e5913368b8b1ae2979ddcb
+	sha256sums = 654b7b6da107f901f360465d2083845b7be3462f4a46b6f55f8eaa50c669abbc
 	sha256sums = SKIP
 
 pkgname = nvs-git
