@@ -4,13 +4,13 @@ _repo_name=whitelist
 _pkgname=pi-hole-whitelist
 
 pkgname=$_pkgname-git
-pkgver=r246.7badf17
+pkgver=r308.46289a5
 pkgrel=1
 pkgdesc='A simple tool to add commonly white listed domains to your Pi-Hole setup.'
 arch=('any')
 url="https://github.com/anudeepND/${_repo_name}"
 license=('MIT')
-depends=('curl')
+depends=('curl' 'python')
 makedepends=('git')
 optdepends=(
   'pi-hole-server'
@@ -23,7 +23,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  'cfb38a2b5ddde4ae218d393e59041a68'
+  'e9ebc56632d64b8f0f01aa531dd95c7d'
   'b42a22ac0cea2fc7c9713eaaf3e794d7'
 )
 
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 package() {
-  install -Dm744 "$_repo_name/scripts/whitelist.sh" "$pkgdir/opt/$_pkgname/whitelist.sh"
+  install -Dm744 "$_repo_name/scripts/whitelist.py" "$pkgdir/opt/$_pkgname/whitelist.py"
   install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 "$_pkgname.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname.timer"
   install -Dm644 "$_repo_name/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

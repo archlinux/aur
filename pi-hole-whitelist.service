@@ -3,4 +3,4 @@ Description=Update whitelist of pi-hole
 
 [Service]
 Type=oneshot
-ExecStart=/opt/pi-hole-whitelist/whitelist.sh
+ExecStart=/opt/pi-hole-whitelist/whitelist.py
