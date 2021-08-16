@@ -2,7 +2,7 @@
 
 pkgname=share-preview-git
 _pkgname=share-preview
-pkgver=0.1.2
+pkgver=0.1.2.r10.gedc6058
 pkgrel=1
 pkgdesc="Preview and debug websites metadata tags for social media share."
 arch=('any')
@@ -11,11 +11,21 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'glib2')
 makedepends=('meson' 'rust' 'git')
 checkdepends=('appstream-glib')
+provides=("${pkgname%-git}" "${pkgname%-bin}")
+conflicts=("${pkgname%-git}" "${pkgname%-bin}")
 source=(git+$url.git)
-md5sums=('SKIP') #autofill using updpkgsums
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 build() {
-	arch-meson "$_pkgname" build
+	arch-meson "${pkgname%-git}" build
 	meson compile -C build
 }
 
