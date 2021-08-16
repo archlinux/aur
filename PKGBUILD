@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=joplin-appimage
-pkgver=2.2.7
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -15,9 +15,10 @@ source=(
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
-  ef0967107a2f88717ab0524f14111872c2cab6feb7d72572e28637fb19664bcd485aac1b91382d7b43222066fdc0e540d416d4f2c7fd458277faad2ddbb2e1a2
+  9d4c28afa1f11be91dd9c33926eb29b0b0baa4aa6038c2163e34505cb7ab551a125d74dbadd86afe30fbfbe330bb15955cd35f600415a4dae627616a387bcfba
   SKIP
 )
+install="${pkgname}.install"
 
 package() {
     chmod +x $_filename
@@ -37,6 +38,9 @@ package() {
     # install .desktop file and image file
     install -Dm644 "squashfs-root/@joplinapp-desktop.desktop" "$pkgdir/usr/share/applications/joplin.desktop"
     install -Dm755 "$_filename" "$pkgdir$INSTALL_PATH"
+
+    # install license file
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/joplin-appimage/LICENSE"
 
     # disable AppImage integration prompt
     # https://github.com/electron-userland/electron-builder/issues/1962
