@@ -1,0 +1,31 @@
+From 32bf86868c32ddbb94d3c337005d3ac7fb41ecdf Mon Sep 17 00:00:00 2001
+From: a821 <a821@mail.de>
+Date: Mon, 16 Aug 2021 12:02:14 +0200
+Subject: [PATCH] Fix configure.ac since libesmtp-config was removed
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 64b19b4..696d861 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -30,11 +30,11 @@ then
+ 	AC_CHECK_HEADER(libesmtp.h, ,[AC_MSG_ERROR([libesmtp.h not found in $with_libesmtp])])
+ fi    
+ AC_MSG_CHECKING(for libESMTP)
+-if libesmtp-config --version > /dev/null 2>&1
++if pkg-config libesmtp-1.0 > /dev/null 2>&1
+ then
+ 	AC_MSG_RESULT(yes)
+-	CFLAGS="$CFLAGS `libesmtp-config --cflags`"
+-	LIBS="$LIBS `libesmtp-config --libs`"
++	CFLAGS="$CFLAGS `pkg-config libesmtp-1.0 --cflags`"
++	LIBS="$LIBS `pkg-config libesmtp-1.0 --libs`"
+ else
+ 	AC_MSG_RESULT(no)
+ 	AC_MSG_ERROR(libESMTP library not found)
+-- 
+2.32.0
+

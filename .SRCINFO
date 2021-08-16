@@ -1,7 +1,7 @@
 pkgbase = esmtp
 	pkgdesc = An easy SMTP forwarder.
 	pkgver = 1.2
-	pkgrel = 7
+	pkgrel = 8
 	url = http://esmtp.sourceforge.net
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,10 @@ pkgbase = esmtp
 	provides = smtp-forwarder
 	conflicts = smtp-forwarder
 	source = https://downloads.sourceforge.net/esmtp/esmtp-1.2.tar.bz2
-	md5sums = 79a9c1f9023d53f35bb82bf446150a72
+	source = 0001-Fix-configure.ac-since-libesmtp-config-was-removed.patch
+	source = fix-segfault-on-empty-to-in-headers.patch
+	sha256sums = a0d26931bf731f97514da266d079d8bc7d73c65b3499ed080576ab606b21c0ce
+	sha256sums = 28ea9cfc2c17810be5fbf3847d041ec2112ed6b4f8ba66854d48529443d36009
+	sha256sums = 656e5223dc832f0f1fa02616f0d18e2df8a27838e593fc5c916f7e7606e632d7
 
 pkgname = esmtp
-

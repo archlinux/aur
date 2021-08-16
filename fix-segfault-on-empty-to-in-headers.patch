@@ -1,0 +1,24 @@
+Description: Don't segfault if recipient header is empty
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/636346
+Forwarded: no
+Author: Salvatore Bonaccorso <carnil@debian.org>
+Last-Update: 2011-08-02
+
+--- a/local.c
++++ b/local.c
+@@ -106,7 +106,13 @@
+ 				}
+ 				p += written;
+ 			}
+-			names[--nameslen] = '\0';		/* chop trailing space */
++			if(nameslen > 0)
++			{
++				names[--nameslen] = '\0';		/* chop trailing space */
++			} else {
++				fprintf(stderr, "Failed to parse recipient header\n");
++				exit(EX_DATAERR);
++			}
+ 		} else {
+ 			nameslen = (strlen(force_mda) + 3);	// 'force_mda'
+ 			names = (char *)xmalloc(nameslen + 1);	// 'force_mda'\0
