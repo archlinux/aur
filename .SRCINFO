@@ -1,12 +1,12 @@
 pkgbase = yell
 	pkgdesc = A TCP message broadcaster
-	pkgver = 1
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/42LoCo42/yell
 	arch = x86_64
 	license = AGPL3
 	makedepends = zig
-	source = https://github.com/42LoCo42/yell/archive/refs/tags/v1.tar.gz
-	sha256sums = 75389e6c03135c54a9a0df4fcd70a9df59f62b6f01f823f56764c74a059ce182
+	source = https://github.com/42LoCo42/yell/archive/refs/tags/v2.tar.gz
+	sha256sums = 232912afaa46c0306e395cba587d2514db85c8b15a348da5a094c445ef21a73b
 
 pkgname = yell
