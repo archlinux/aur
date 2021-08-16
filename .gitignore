@@ -4,4 +4,4 @@
 pkg/
 src/
 artifact*.zip
-config.sample.json
+config*.sample.json
