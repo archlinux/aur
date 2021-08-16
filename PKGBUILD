@@ -5,7 +5,8 @@
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.8.0
-pkgrel=1
+_stlink_updater_ver=2.38.27
+pkgrel=2
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -29,22 +30,36 @@ makedepends=('xdotool'
              'icoutils')
 provides=("${pkgname}rammer")
 options=('!strip')
-_pkg_file_name="en.${pkgname//prog/prg}-lin_v${pkgver//./-}_v${pkgver}.zip"
-source=("local://${_pkg_file_name}"
+_pkg_main_archive="en.${pkgname//prog/prg}-lin_v${pkgver//./-}_v${pkgver}.zip"
+_stlink_updater_archive="en.stsw-link007_V${_stlink_updater_ver//./-}_v${_stlink_updater_ver}.zip"
+source=("local://${_pkg_main_archive}"
+        "local://${_stlink_updater_archive}"
         "${pkgname}.xdotool")
 sha256sums=('c896a9e2cd6c43c9d98a7271c52934eb7151c22117afdf6e8175e7c6a83fdc40'
+            'bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
       
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
-		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
+if [ ! -f ${PWD}/${_pkg_main_archive} ]; then
+	if [ -f $_DOWNLOADS_DIR/${_pkg_main_archive} ]; then
+		ln -sfn $_DOWNLOADS_DIR/${_pkg_main_archive} ${PWD}
 	else
 		echo ""
-		echo "The package can be downloaded here: "
-		echo "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
+		echo "Main archive not found. The package can be downloaded here: https://www.st.com/en/development-tools/stm32cubeprog.html"
+		echo "Please remember to put a downloaded package ${_pkg_main_archive} into the build directory ${PWD} or $_DOWNLOADS_DIR"
 		echo ""
 	fi
+fi
+
+if [ ! -f ${PWD}/${_stlink_updater_archive} ]; then
+  if [ -f $_DOWNLOADS_DIR/${_stlink_updater_archive} ]; then
+    ln -sfn $_DOWNLOADS_DIR/${_stlink_updater_archive} ${PWD}
+  else
+    echo ""
+    echo "St-link updater archive not found. The package can be downloaded here: https://www.st.com/en/development-tools/stsw-link007.html"
+    echo "Please remember to put a downloaded package ${_stlink_updater_archive} into the build directory ${PWD} or $_DOWNLOADS_DIR"
+    echo ""
+  fi
 fi
 
 prepare() {
@@ -108,5 +123,9 @@ END
   do
     ln -sf /opt/${pkgname}/bin/${cmd} ${pkgdir}/usr/bin/${cmd}
   done
+
+  # ST-link updater
+  install -Dm644 stsw-link007/AllPlatforms/STLinkUpgrade.jar ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/STLinkUpgrade.jar
+  install -Dm644 stsw-link007/AllPlatforms/native/linux_x64/libSTLinkUSBDriver.so ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/native/linux_x64/libSTLinkUSBDriver.so
 }
 # vim: set sw=2 ts=2 et:
