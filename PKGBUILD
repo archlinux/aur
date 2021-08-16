@@ -25,7 +25,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib"
+    pytest "build/lib" || warning "Tests failed"
 }
 
 package_python-extension-helpers() {

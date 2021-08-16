@@ -19,4 +19,3 @@ pkgname = python-extension-helpers
 
 pkgname = python-extension-helpers-doc
 	pkgdesc = Documentation for Python Extension helpers
-
