@@ -1,6 +1,7 @@
 # source files
 *.jar
 *.pkg.tar.xz
+*.pkg.tar.zst
 *.tar.gz
 pkg/**
 src/**

@@ -2,7 +2,7 @@
 
 pkgname=rgain3
 _pkgbase=rgain
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Modules to read, write and calculate Replay Gain - Python3 fork"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-docutils' 'python-setuptools')
 optdepends=('gst-plugins-bad' 'gst-plugins-ugly')
 options=(!emptydirs)
 source=(${_pkgbase}-${pkgver}.tar.gz::https://github.com/chaudum/rgain/archive/${pkgver}.tar.gz)
-md5sums=('7a5eadf6dafb905f827bb967a75d897b')
+md5sums=('6e397399de74043ba632992b765e5aaf')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
