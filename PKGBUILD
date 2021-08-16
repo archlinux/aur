@@ -3,7 +3,7 @@
 
 pkgname=mcpelauncher-linux-git
 pkgver=v0.1.beta.2.r135.g8cae128
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft: Pocket Edition launcher for Linux"
 arch=('x86_64')
 url="https://github.com/minecraft-linux/mcpelauncher-manifest"
