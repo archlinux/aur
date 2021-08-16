@@ -1,0 +1,16 @@
+pkgbase = stm8cubemx
+	pkgdesc = STM8CubeMX: a user-friendly software tool that uses graphical wizards to configure STM8 microcontrollers
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/stm8cubemx.html
+	arch = any
+	license = custom
+	makedepends = imagemagick
+	makedepends = xdg-user-dirs
+	depends = java-runtime
+	depends = bash
+	options = !strip
+	source = local://en.stm8cubemx_v1.5.0.zip
+	sha256sums = bb2a967d78787535554e4f7a1256aea8a957e011a926539e4d89bac20101f561
+
+pkgname = stm8cubemx
