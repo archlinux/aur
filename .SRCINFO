@@ -1,0 +1,14 @@
+pkgbase = txikijs-git
+	pkgdesc = The tiny JavaScript runtime built with QuickJS, libuv and heart
+	pkgver = r406.0a53344
+	pkgrel = 1
+	url = https://github.com/saghul/txiki.js
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	source = txikijs-git::git+https://github.com/saghul/txiki.js.git
+	sha256sums = SKIP
+
+pkgname = txikijs-git
