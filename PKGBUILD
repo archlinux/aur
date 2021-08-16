@@ -9,7 +9,7 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.2.16
+pkgver=2.2.18
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
@@ -22,8 +22,8 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=e350c4d")
-md5sums=('ed1759e52633f63e05015f5f03db53a6'
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=5c78aa2")
+md5sums=('7f20db673b939507d06dd2c18a7f0bb5'
          'SKIP')
 
 prepare() {
@@ -54,10 +54,7 @@ package() {
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
-  install -d "$EMBEDDED_DIR"/rgloader
   install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
-  install -Dm644 "$INSTALLERS_DIR"/{common,linux}/rgloader/* \
-    "$EMBEDDED_DIR"/rgloader/
 
   echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
 
