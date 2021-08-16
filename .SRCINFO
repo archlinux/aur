@@ -1,0 +1,23 @@
+pkgbase = libcutefish-git
+	pkgdesc = System library for Cutefish applications
+	pkgver = 0.2.r4.g4caad74
+	pkgrel = 1
+	url = https://github.com/cutefishos/libcutefish
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kscreen
+	depends = modemmanager-qt
+	depends = networkmanager-qt
+	depends = qt5-quickcontrols2
+	depends = accountsservice
+	depends = bluez
+	provides = libcutefish
+	conflicts = libcutefish
+	source = git+https://github.com/cutefishos/libcutefish.git
+	sha512sums = SKIP
+
+pkgname = libcutefish-git
