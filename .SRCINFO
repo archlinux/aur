@@ -1,11 +1,10 @@
 pkgbase = python-iosbackup
 	pkgdesc = Library for reading and extracting files from password-encrypted iOS backups
 	pkgver = 0.9.912
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/avibrazil/iOSbackup
 	arch = any
 	license = LGPL
-	makedepends = python-pip
 	makedepends = python-setuptools
 	depends = python
 	depends = python-biplist
