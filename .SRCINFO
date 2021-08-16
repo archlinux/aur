@@ -1,0 +1,20 @@
+pkgbase = python-ctap-keyring-device
+	pkgdesc = CTAP (client-to-authenticator-protocol) device backed by python's keyring library
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/dany74q/ctap-keyring-device
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-black
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-flake8
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python-cryptography
+	depends = python-fido2
+	depends = python-keyring
+	source = git+https://github.com/dany74q/ctap-keyring-device#tag=v1.0.6
+	sha512sums = SKIP
+
+pkgname = python-ctap-keyring-device
