@@ -10,12 +10,17 @@
 
 pkgname=praat
 pkgver=6.1.51
-pkgrel=1
+pkgrel=2
 pkgdesc='A speech analysis tool used for doing phonetics by computer'
-arch=('x86_64' 'i686')
-url='https://www.praat.org'
-license=('GPL')
-depends=('alsa-lib' 'gtk3' 'jack' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
+arch=(x86_64 i686 aarch64)
+url=https://www.praat.org
+license=(GPL)
+depends=(alsa-lib
+         gtk3
+         jack
+         libpulse
+         ttf-charis-sil
+         ttf-sil-doulos)
 optdepends=('ttf-sil-fonts')
 _url="https://github.com/$pkgname/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
@@ -30,20 +35,20 @@ sha256sums=('f39b7f1dc4ab01f6cd63c102573597d7c30f6961de2db0c0b5c164d9d87640b3'
             '07abf61475f22f83f0514a8fba1ec7bd3821d2b7f35b1215c1f3e1feb947d74b')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    cp makefiles/makefile.defs.linux.pulse makefile.defs
+	cd "$pkgname-$pkgver"
+	cp makefiles/makefile.defs.linux.pulse makefile.defs
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    make
+	cd "$pkgname-$pkgver"
+	make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 -t "$pkgdir/usr/bin" "$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "../$pkgname.desktop"
-    install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "../$pkgname.svg"
-    install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "../$pkgname.xpm"
-    install -Dm644 -t "$pkgdir/usr/share/man/man1/" "../$pkgname.1"
+	cd "$pkgname-$pkgver"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "../$pkgname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "../$pkgname.svg"
+	install -Dm0644 -t "$pkgdir/usr/share/pixmaps/" "../$pkgname.xpm"
+	install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "../$pkgname.1"
 }

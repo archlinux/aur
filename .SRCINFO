@@ -1,10 +1,11 @@
 pkgbase = praat
 	pkgdesc = A speech analysis tool used for doing phonetics by computer
 	pkgver = 6.1.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.praat.org
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL
 	depends = alsa-lib
 	depends = gtk3
