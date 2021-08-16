@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=tezos-bin
-pkgver=9.5_1
+pkgver=9.7_1
 pkgrel=1
 pkgdesc='Tezos static binaries by Serokell'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 depends=()
 source=("https://github.com/serokell/tezos-packaging/releases/download/v${pkgver//_/-}/binaries-${pkgver//_/-}.tar.gz"
         "https://github.com/serokell/tezos-packaging/releases/download/v${pkgver//_/-}/binaries-${pkgver//_/-}.tar.gz.asc")
-sha512sums=('337e99aac4966df4a19f9b44746cf27b5adc7a844ccb46757778df2d724ff4d04a768030bb65f9a21c6983b81a2b8eef1b43ab27fa21133e6b14e3e19a9590f9'
+sha512sums=('a188ab24be92521fcf098771cb2779207cf31faa8929fefd94ef5e3bec3fa63ec4573ec2a20d6435564b33f76d13e34d99805bb015cc7dc47b61747ff7629d9b'
             'SKIP')
 
 package() {

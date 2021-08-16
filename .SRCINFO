@@ -1,6 +1,6 @@
 pkgbase = tezos-bin
 	pkgdesc = Tezos static binaries by Serokell
-	pkgver = 9.5_1
+	pkgver = 9.7_1
 	pkgrel = 1
 	url = https://github.com/serokell/tezos-packaging
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tezos-bin
 	provides = tezos
 	conflicts = tezos
 	options = !strip
-	source = https://github.com/serokell/tezos-packaging/releases/download/v9.5-1/binaries-9.5-1.tar.gz
-	source = https://github.com/serokell/tezos-packaging/releases/download/v9.5-1/binaries-9.5-1.tar.gz.asc
-	sha512sums = 337e99aac4966df4a19f9b44746cf27b5adc7a844ccb46757778df2d724ff4d04a768030bb65f9a21c6983b81a2b8eef1b43ab27fa21133e6b14e3e19a9590f9
+	source = https://github.com/serokell/tezos-packaging/releases/download/v9.7-1/binaries-9.7-1.tar.gz
+	source = https://github.com/serokell/tezos-packaging/releases/download/v9.7-1/binaries-9.7-1.tar.gz.asc
+	sha512sums = a188ab24be92521fcf098771cb2779207cf31faa8929fefd94ef5e3bec3fa63ec4573ec2a20d6435564b33f76d13e34d99805bb015cc7dc47b61747ff7629d9b
 	sha512sums = SKIP
 
 pkgname = tezos-bin
