@@ -1,0 +1,12 @@
+pkgbase = rusty-hook
+	pkgdesc = Git hook manager
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/swellaby/rusty-hook
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = rusty-hook-0.11.2.tar.gz::https://static.crates.io/crates/rusty-hook/rusty-hook-0.11.2.crate
+	b2sums = f531ce50a7eee3e7a6fe2bc1700438e1dfd52aa16b2deb6099666435178d44bc8f2281bcd8eb59a90ac9da551ae4e6cdda61759dbd1b8f8339ccdc2e33b0d783
+
+pkgname = rusty-hook
