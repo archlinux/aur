@@ -1,0 +1,16 @@
+pkgbase = zauth-git
+	pkgdesc = 2FA CLI application with andOTP support
+	pkgver = r4.d8fc712
+	pkgrel = 1
+	url = https://github.com/grijul/zauth
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = zauth
+	conflicts = zauth
+	source = zauth-git::git+https://github.com/grijul/zauth
+	sha256sums = SKIP
+
+pkgname = zauth-git
