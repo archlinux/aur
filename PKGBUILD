@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.41.3
+pkgver=2.42.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=9ca00fada9c740e93bb9ca21fbbad90d94e365d3") # tag: 2.41.3
+source=("git+$url#commit=c71e23799b8ab656d08b44a00b4cf82e99a164bb") # tag: 2.42.0
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
@@ -49,7 +49,7 @@ package() {
   cd $pkgname
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/light"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/ro"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   DESTDIR="$pkgdir" make gui-install
