@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=mopidy-advanced-scrobbler
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Mopidy extension for comprehensive management of Last.fm scrobbles"
 arch=("any")
@@ -18,9 +18,15 @@ depends=(
     "python-marshmallow-enum"
 )
 source=("https://pypi.io/packages/source/M/Mopidy-Advanced-Scrobbler/Mopidy-Advanced-Scrobbler-${pkgver}.tar.gz")
-sha256sums=("4ea72e3146091039c3e70f0c206daf1167209c386059a013ec346209fd86323b")
+sha256sums=("e4ea5cb51082fe51c6d67a5018e18ce8251e68803a7e65eda794f2222a3ece45")
+
+build() {
+    cd "Mopidy-Advanced-Scrobbler-${pkgver}"
+    python setup.py build
+}
 
 package() {
     cd "Mopidy-Advanced-Scrobbler-${pkgver}"
+    export PYTHONHASHSEED=0
     python setup.py install --root="${pkgdir}" --optimize=1
 }
