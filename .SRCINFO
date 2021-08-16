@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.14.0.rc5
+	pkgver = 5.14.0.rc6
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = linux-clear-current
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/torvalds/t/linux-5.14-rc5.tar.gz
+	source = https://git.kernel.org/torvalds/t/linux-5.14-rc6.tar.gz
 	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.14.0.rc4-45
 	source = more-uarches-20210616.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210616.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 6c491268e3a941bfb5618c19960fd9797d7c5ff81187c0b2440be92c85293601
+	sha256sums = d8f0bfe8d595445a20352de9f6a0de370f6699ca1342861fcbd975c2184158f8
 	sha256sums = SKIP
 	sha256sums = e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d
 

@@ -75,7 +75,7 @@ _use_current=
 
 _major=5.14
 _minor=0
-_rc=5
+_rc=6
 _srcname=linux-${_major}-rc${_rc}
 _clr=${_major}.0.rc4-45
 pkgbase=linux-clear-current
@@ -329,7 +329,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('6c491268e3a941bfb5618c19960fd9797d7c5ff81187c0b2440be92c85293601'
+sha256sums=('d8f0bfe8d595445a20352de9f6a0de370f6699ca1342861fcbd975c2184158f8'
             'SKIP'
             'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
 
