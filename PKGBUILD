@@ -2,8 +2,8 @@
 
 _pkgbase=hysteria
 pkgname=$_pkgbase
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments'
 arch=('x86_64')
 url="https://github.com/HyNetwork/hysteria"
@@ -29,15 +29,18 @@ prepare(){
 build() {
   cd "$srcdir/$_pkgbase"
   export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_CFLAGS="${CFLAGS} -DLWIP_NOASSERT"
+  export CGO_CXXFLAGS="${CXXFLAGS} -DLWIP_NOASSERT"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  export GOLDFLAGS="-w -s"
-  export GOLDFLAGS="$GOLDFLAGS -X 'main.appVersion=$(git describe --tags)'"
-  export GOLDFLAGS="$GOLDFLAGS -X 'main.appCommit=$(git rev-parse HEAD)'"
-  export GOLDFLAGS="$GOLDFLAGS -X 'main.appDate=$(date "+%F %T")'"
-  go build -o build/$_pkgbase -ldflags "$GOLDFLAGS" ./cmd/...
+  local _goldflags="-w -s -linkmode=external"
+  local _goldflags="$GOLDFLAGS -X 'main.appVersion=$(git describe --tags)'"
+  local _goldflags="$GOLDFLAGS -X 'main.appCommit=$(git rev-parse HEAD)'"
+  local _goldflags="$GOLDFLAGS -X 'main.appDate=$(date "+%F %T")'"
+  go build \
+    -buildmode=pie -trimpath -mod=readonly -modcacherw \
+    -o build/$_pkgbase \
+    -ldflags "$_goldflags" \
+    ./cmd/...
 }
 
 #check() {
