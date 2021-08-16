@@ -12,7 +12,7 @@ url='http://ne.di.unimi.it'
 license=(GPL3)
 depends=(ncurses texinfo)
 source=("https://github.com/vigna/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('277fe1779015b232fb638cc83901996f512687d838d03826f9f1033eca897283d052bf3d7a963cab4c27e040ca33fe166142bf49734b77a56053f54e46912147')
+sha512sums=('4adce440c1d941e51cc688ab55f215013c30366e555dfe67f62494ade5ccf90ef4e3062b4bff023f3dcc8dda7f2bd89ad3f62632d51393d154b197eaf4856297')
 
 build() {
   cd ${pkgname}-${pkgver}
