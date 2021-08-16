@@ -3,7 +3,7 @@
 
 pkgname=rephrase
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 _debianrel=4
 pkgdesc='A specialized passphrase recovery tool for GnuPG.'
 arch=('i686' 'x86_64')
