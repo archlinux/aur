@@ -5,7 +5,7 @@
 
 pkgname=evince-no-gnome
 _pkgname=evince
-pkgver=40.1
+pkgver=40.4
 pkgrel=1
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -19,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-light")
 options=('!emptydirs')
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver:0:2}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('7a666363c350af2e3bbba7f14b3c1befc5012f9ed3d9d073447f4c59f33dcf2d')
+sha256sums=('33420500e0e060f178a435063197d42dae7b67e39cc437a96510a33ddf7e95fb')
 
 build() {
 	arch-meson "$_pkgname-${pkgver}" build \
