@@ -1,6 +1,6 @@
 # Maintainer: Boris Timofeev <btimofeev@emunix.org>
 pkgname=insteadman
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Manager for INSTEAD interpreter."
 arch=('i686' 'x86_64')
@@ -9,11 +9,11 @@ license=('MIT')
 depends=('instead')
 makedepends=('go')
 source=("https://github.com/jhekasoft/insteadman/archive/v$pkgver.tar.gz")
-sha256sums=('5869a582cd29639c3142c9dad880466bf351594011dbd51d0f82af4ee7cd88fa')
+sha256sums=('e07c033275ddd241686b2fcca5eee95b409636d7ddff88c5111459b425a2c954')
 
 build() {
   cd "$srcdir/insteadman-$pkgver"
-  GOPATH=`pwd`/.. make
+  make
 }
 
 package() {
