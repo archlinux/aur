@@ -1,7 +1,7 @@
 pkgbase = wakatime-cli-bin
 	pkgdesc = Command line interface used by all WakaTime text editor plugins.
 	pkgver = 1.18.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wakatime/wakatime-cli
 	arch = x86_64
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = wakatime-cli-bin
 	provides = wakatime-cli
 	conflicts = wakatime
 	conflicts = wakatime-cli
-	source = https://github.com/wakatime/wakatime-cli/releases/download/v1.18.10/wakatime-cli-linux-amd64.zip
-	source = https://raw.githubusercontent.com/wakatime/wakatime-cli/v1.18.10/LICENSE
+	source = wakatime-1.18.10-2.zip::https://github.com/wakatime/wakatime-cli/releases/download/v1.18.10/wakatime-cli-linux-amd64.zip
+	source = LICENSE-1.18.10-2::https://raw.githubusercontent.com/wakatime/wakatime-cli/v1.18.10/LICENSE
 	sha256sums = 1a098dcca06374009474e44b97270a7a9c44ddd10db56e3e87dbf15ec29d2b17
 	sha256sums = 4aafe64159ef6372aba2de60ba7de1b92cb37c9adc63f904ae1a0e4e7b1292d2
 
