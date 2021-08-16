@@ -1,15 +1,15 @@
 pkgbase = bao
 	pkgdesc = A verified streaming tool
-	pkgver = 0.10.1
-	pkgrel = 3
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/oconnor663/bao
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = apache
+	license = custom
 	makedepends = rust
 	depends = gcc-libs
-	source = bao-0.10.1.tar.gz::https://github.com/oconnor663/bao/archive/0.10.1.tar.gz
-	sha256sums = 07ce6ea6d82448ca3bff34f64b1ba5c3c49fb138dab316f5cadee1c8895a7579
+	source = bao-0.11.0.tar.gz::https://github.com/oconnor663/bao/archive/0.11.0.tar.gz
+	sha256sums = 03c8a37ea55dd04447226f75205851db594d4e8f054dea95ccebf0d8824725df
 
 pkgname = bao
-
