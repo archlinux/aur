@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=91.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -91,7 +91,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf/megabar.patch
 
   # Debian patch to enable global menubar - Breaking building v91, needs investigation
-  # patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
@@ -111,6 +111,9 @@ prepare() {
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+
+  # Needed patch to have build working
+  patch -Np1 -i ${_patches_dir}/misc-patches/fix-wayland.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
