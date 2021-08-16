@@ -2,7 +2,7 @@
 
 pkgname=freenitori
 pkgver=2.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Open source, general purpose Discord utility."
 arch=("x86_64")
 url="https://${pkgname}.jp/"
