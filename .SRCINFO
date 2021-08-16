@@ -1,7 +1,7 @@
 pkgbase = wofi-emoji-git
 	pkgdesc = Emoji picker for Wayland using wofi and wl-clipboard
 	pkgver = 0.r6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dln/wofi-emoji
 	arch = any
 	license = MIT

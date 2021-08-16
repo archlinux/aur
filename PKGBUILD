@@ -2,17 +2,17 @@
 _pkgname=wofi-emoji
 pkgname=${_pkgname}-git
 pkgver=0.r6
-pkgrel=2
+pkgrel=3
 pkgdesc="Emoji picker for Wayland using wofi and wl-clipboard"
-arch=('any')
+arch=("any")
 url="https://github.com/dln/wofi-emoji"
-license=(MIT)
-depends=(wofi wl-clipboard)
-makedepends=(git)
+license=("MIT")
+depends=("wofi" "wl-clipboard")
+makedepends=("git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}")
-sha512sums=(SKIP)
+sha512sums=("SKIP")
 
 pkgver() {
 	cd "${pkgname}"
@@ -27,5 +27,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-	install -Dm755 wofi-emoji "${pkgdir}/usr/bin/wofi-emoji"
+	install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
