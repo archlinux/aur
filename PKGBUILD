@@ -1,7 +1,7 @@
 # Maintainer: Andrea Corsini <andrea dot corsini at outlook dot com>
 pkgname=devour
 pkgver=12
-pkgrel=1
+pkgrel=2
 pkgdesc="Window Manager agnostic swallowing feature for terminal emulators"
 arch=('x86_64')
 url="https://github.com/salman-abedin/devour"
@@ -25,5 +25,5 @@ build() {
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"
-        make BIN_DIR="$pkgdir/usr/local/bin" install
+        make BIN_DIR="$pkgdir/usr/bin" install
 }
