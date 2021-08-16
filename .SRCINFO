@@ -1,0 +1,41 @@
+pkgbase = pleroma-bin
+	pkgdesc = A microblogging server software that can federate (= exchange messages with) other servers that support ActivityPub.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://git.pleroma.social/pleroma/pleroma
+	install = pleroma.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7l
+	license = AGPL
+	license = custom:CC-BY-4.0
+	license = custom:CC-BY-SA-4.0
+	makedepends = coreutils
+	makedepends = unzip
+	makedepends = curl
+	depends = ncurses
+	depends = file
+	optdepends = postgresql: local postgresql database support
+	optdepends = imagemagick: Pleroma.Upload.Filters.Mogrify, Pleroma.Upload.Filters.Mogrifun support
+	optdepends = ffmpeg: media preview proxy support for videos
+	optdepends = perl-image-exiftool: supporting stripping location (GPS) data from uploaded images with Pleroma.Upload.Filters.Exiftool
+	provides = pleroma
+	backup = etc/pleroma/config.exs
+	source = pleroma.zip::https://git.pleroma.social/pleroma/pleroma/-/jobs/193204/artifacts/download?file_type=archive
+	source = pleroma.sysusers
+	source = pleroma.tmpfiles
+	source = pleroma.service
+	source = COPYING
+	source = AGPL-3
+	source = CC-BY-4.0
+	source = CC-BY-SA-4.0
+	sha256sums = 335857f4568c3fa911b7a9a1d5340b0e9ea7fde32f18af2a0cf645081ec0a5df
+	sha256sums = 4df8a0099dada9bf652fb07677a9c6a66cad1f26498f08a55d8acb0186b78979
+	sha256sums = b5e844fab22dc4fafdec09c1f14437a06d3a12fae753fc0be968d22eaddfd6dc
+	sha256sums = 268952ef036ef65ab146a38ff20bbba35759c0f33510fe6ca15d6765285938ed
+	sha256sums = e299229268576c559d0155baccccf682c97b51bebab40a0b7ff3ab562ec62104
+	sha256sums = feff6860d5eab6f5be325078520a79fa6311c73d1e5eeb8b454b90585a0dbfef
+	sha256sums = 9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94
+	sha256sums = 564562d7729efb311556e4b5b9e32eeb0e5025b6c88125ab769fb537cd365c92
+
+pkgname = pleroma-bin
