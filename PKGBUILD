@@ -3,7 +3,7 @@
 pkgname=dput-ng-git
 _gitname=dput-ng
 _foldername=${_gitname}
-pkgver=1.29
+pkgver=1.33
 pkgrel=1
 pkgdesc='like dput, but better'
 url='http://dput-ng.debian.net/'

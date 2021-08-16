@@ -1,6 +1,6 @@
 pkgbase = dput-ng-git
 	pkgdesc = like dput, but better
-	pkgver = 1.29
+	pkgver = 1.33
 	pkgrel = 1
 	url = http://dput-ng.debian.net/
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = dput-ng-git
 	sha1sums = SKIP
 
 pkgname = dput-ng-git
-
