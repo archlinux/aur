@@ -1,11 +1,14 @@
 pkgbase = refinery_cli
-	pkgdesc = Run Refinery migrations via cli.
+	pkgdesc = Provides the CLI for the Refinery crate
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/refinery_cli
+	arch = aarch64
+	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = gcc-libs
 	depends = openssl
 	depends = sqlite
 	source = refinery_cli-0.6.0.tar.gz::https://crates.io/api/v1/crates/refinery_cli/0.6.0/download
