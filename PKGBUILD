@@ -1,6 +1,6 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.6.3.1.r263.gb8ec4f4
+pkgver=0.6.3.1.r294.g22267fd
 pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio/FIFO'
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
 build() {
   mkdir -p $_pkgname/build
   cd $_pkgname/build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir"/usr ..
+  cmake -DXAVA_LINK_TO_INSTALL_DIR=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir"/usr ..
   make
 }
 
