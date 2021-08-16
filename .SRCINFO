@@ -1,12 +1,16 @@
 pkgbase = dnsperf-git
 	pkgdesc = Tools that measure performance of authoritative Domain Name services
-	pkgver = 2.4.1.r1.903088a
+	pkgver = 2.7.0.r1.8360e80
 	pkgrel = 1
 	url = https://www.dns-oarc.net/tools/dnsperf
 	arch = x86_64
 	license = GPL
+	depends = ldns
+	depends = libck
+	depends = nghttp2
+	provides = dnsperf
+	conflicts = dnsperf
 	source = git+https://github.com/DNS-OARC/dnsperf.git
 	sha512sums = SKIP
 
 pkgname = dnsperf-git
-
