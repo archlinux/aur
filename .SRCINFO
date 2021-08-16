@@ -1,0 +1,12 @@
+pkgbase = aws-iam-authenticator-bin
+    pkgdesc = Sync public ssh keys to ~/.ssh/authorized_keys, based on Github/Gitlab organization membership.
+    pkgver = 0.5.0
+    pkgrel = 1
+    url = https://github.com/samber/sync-ssh-keys
+    arch = x86_64
+    license = MIT
+    provides = sync-ssh-keys
+    source = https://github.com/samber/sync-ssh-keys/releases/download/v0.5.0/sync-ssh-keys_0.5.0_linux-amd64
+    sha256sums = e1017e362d742153bc4d1e5e8fe5b7448e9d4e45b2f35cf5abd97dee571314d2
+
+pkgname = sync-ssh-keys-bin
