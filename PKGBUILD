@@ -2,7 +2,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=luacheck
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A tool for linting and static analysis of Lua code."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lua' 'lua-filesystem' 'lua-argparse')
 optdepends=('lua-lanes: for parallel checking')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luarocks/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('845ca600d6c48cdb898d46da7844a2b5e102999d0d600e7621feae490b064749')
+sha256sums=('4507648bee9e67b2d30058f7befbbb58cd387a2503f4f348c2aae6e93417aaa1')
 
 package() {
   cd "$pkgname-$pkgver"
