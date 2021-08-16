@@ -1,8 +1,7 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
 # Contributor: aimileus < $(echo YWltaWxpdXNAcHJvdG9ubWFpbC5jb20K | base64 -d)
-_pkgname=vita3k
-pkgname="${_pkgname}-git"
-pkgver=r2257.de68b346
+pkgname="vita3k-git"
+pkgver=r2260.c88796dd
 pkgrel=1
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
@@ -12,38 +11,35 @@ makedepends=(
 	'boost'
 	'cmake'
 	'git'
-	'python2'
 	'vulkan-headers'
 	'clang'
 	'ninja'
 )
 depends=(
-	'boost-libs'
 	'gtk3'
 	'sdl2'
-	'vulkan-icd-loader'
 )
 provides=('vita3k')
 conflicts=('vita3k')
 source=(
-	"git+https://github.com/vita3k/vita3k.git"
+	"${pkgname}::git+https://github.com/vita3k/vita3k.git"
 )
 md5sums=(
 	'SKIP'
 )
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 	git submodule update --init --recursive
 }
 
 build() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 
 	export CC="/usr/bin/clang"
 	export CXX="/usr/bin/clang++"
@@ -53,7 +49,7 @@ build() {
 }
 
 package() {
-	cd "${_pkgname}"
+	cd "${pkgname}"
 
 	mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/opt/vita3k/"
 
