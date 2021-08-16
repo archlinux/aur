@@ -10,13 +10,13 @@
 _ubuntuver=18.04
 pkgname=acestream-engine
 pkgver=3.1.49
-pkgrel=1
+pkgrel=2
 pkgdesc="ACE Stream engine"
 arch=("x86_64")
 url="http://acestream.org"
 license=("unknown")
-depends=("openssl-1.0" "net-tools" "python2-setuptools" "python2-xlib" "python2-apsw")
-optdepends=("python2-libappindicator: GTK+ gui support")
+depends=("net-tools" "python2-setuptools" "python2-apsw")
+optdepends=("pygtk: GTK+ gui support" "python2-libappindicator: GTK+ gui support")
 install="acestream-engine.install"
 source=(
   "acestream-engine.service"
