@@ -1,0 +1,15 @@
+pkgbase = rtsp-simple-server
+	pkgdesc = Ready-to-use and zero-dependency RTSP / RTMP / HLS server and proxy.
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/aler9/rtsp-simple-server/
+	arch = x86_64
+	license = MIT
+	provides = rtsp-simple-server
+	conflicts = rtsp-simple-server
+	source_x86_64 = https://github.com/aler9/rtsp-simple-server/releases/download/v0.17.2/rtsp-simple-server_v0.17.2_linux_amd64.tar.gz
+	source_x86_64 = rtsp-simple-server.service
+	sha256sums_x86_64 = c2d2ff94eeea9098a5c18e8cf5d4747f06bd946599d3c7e2b5a2f5a25ceb22c0
+	sha256sums_x86_64 = a6e8d22224fc76b28a7daeec4d0eb604224e136748ec760403ba1446a24f532f
+
+pkgname = rtsp-simple-server
