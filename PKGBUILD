@@ -1,7 +1,7 @@
 # Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
 _pkgname=zap
 pkgname="${_pkgname}-git"
-pkgver=v1.3.0.r1.g7eeedaa
+pkgver=1.3.0.r1.g7eeedaa
 pkgrel=1
 pkgdesc="Blazing fast web shortcuts."
 arch=('x86_64')
@@ -12,19 +12,18 @@ depends=()
 makedepends=('go')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-epoch=1
 source=(
 	"${_pkgname}::git+https://github.com/issmirnov/zap.git"
 	"${_pkgname}.service"
 )
-md5sums=(
+sha256sums=(
 	'SKIP'
 	'5ea62889f6649d308a3fe8b733258e781e59a07044dc282f7c082776db25a3e3'
 )
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
