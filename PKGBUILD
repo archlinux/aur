@@ -38,7 +38,7 @@ source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('76c60fb304510a7bbd9c838790bc5fe4'
          '32254701dbf13f058008217a62d713bb'
-         '941f941b489d1ea90c19b0bc5b2cd6a3'
+         'de7aa40a90055140708ee9ced2d5baa3'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
