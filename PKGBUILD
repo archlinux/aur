@@ -1,9 +1,10 @@
-# Maintainer: Sergey A. <murlakatamenka@disroot.org>
+# Maintainer: Tommy Hudson <thomhuds@protonmail.com>
+# Contributor: Sergey A. <murlakatamenka@disroot.org>
 # based off `corectrl` PKGBUILD by Sergey Kostyuchenko <derfenix@gmail.com>
 
 _pkgname=corectrl
-pkgname=${_pkgname}-git
-pkgver=1.0.3.r128.g2aacf49
+pkgname=${_pkgname}-git-nofan
+pkgver=1.0.3.r174.g5ab63d3
 pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
@@ -18,12 +19,17 @@ optdepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git" "dont-mess-with-fans.patch")
+md5sums=('SKIP' '990ff598ac4d837c4cd2f4213d164730')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    patch --forward --strip=1 --input="${srcdir}/dont-mess-with-fans.patch"
 }
 
 build() {

@@ -1,0 +1,13 @@
+diff --git a/src/core/components/controls/amd/fan/auto/fanauto.cpp b/src/core/components/controls/amd/fan/auto/fanauto.cpp
+index 021d6aa..7ea6062 100644
+--- a/src/core/components/controls/amd/fan/auto/fanauto.cpp
++++ b/src/core/components/controls/amd/fan/auto/fanauto.cpp
+@@ -59,8 +59,4 @@ void AMD::FanAuto::cleanControl(ICommandQueue &)
+ 
+ void AMD::FanAuto::syncControl(ICommandQueue &ctlCmds)
+ {
+-  if (dataSource_->read(pwmEnable_)) {
+-    if (pwmEnable_ != 2)
+-      ctlCmds.add({dataSource_->source(), "2"});
+-  }
+ }
