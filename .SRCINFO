@@ -1,10 +1,11 @@
 pkgbase = gmail-desktop
 	pkgdesc = Unofficial Gmail desktop app
 	pkgver = 2.25.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/timche/gmail-desktop
 	arch = x86_64
 	license = MIT
+	makedepends = nvm
 	makedepends = yarn
 	depends = electron
 	optdepends = libnotify: desktop notifications
@@ -17,4 +18,3 @@ pkgbase = gmail-desktop
 	sha256sums = 8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4
 
 pkgname = gmail-desktop
-
