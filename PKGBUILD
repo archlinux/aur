@@ -12,7 +12,7 @@ license=('GPL')
 depends=('bzip2' 'gpm' 'libevent' 'pcre' 'xz')
 makedepends=('libtiff' 'libxt')
 source=("http://links.twibright.com/download/links-${pkgver}.tar.bz2")
-sha256sums=('285eed8591c7781ec26213df82786665aaa1b9286782e8a7a1a7e2a6e1630d63')
+sha256sums=('6660d202f521fd18bf5184c3f1732d1fa7426a103374277ad1cdb8e57ce6ac45')
 
 configure_options=(
   --prefix=/usr
