@@ -1,0 +1,20 @@
+pkgbase = cutefish-calculator-git
+	pkgdesc = CutefishOS Calculator
+	pkgver = 0.3.r2.g1f3d222
+	pkgrel = 1
+	url = https://github.com/cutefishos/calculator
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = fishui-git
+	depends = libcutefish-git
+	provides = cutefish-calculator
+	conflicts = cutefish-calculator
+	source = git+https://github.com/cutefishos/calculator.git
+	sha512sums = SKIP
+
+pkgname = cutefish-calculator-git
