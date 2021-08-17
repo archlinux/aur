@@ -1,18 +1,19 @@
 pkgbase = picgo-appimage
 	pkgdesc = A simple & beautiful tool for pictures uploading built by electron-vue
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://molunerfinn.com/PicGo/
 	arch = x86_64
 	license = MIT
-	noextract = PicGo-2.2.2.AppImage
+	noextract = PicGo-2.3.0.AppImage
 	options = !strip
-	source = https://github.com/Molunerfinn/PicGo/releases/download/v2.2.2/PicGo-2.2.2.AppImage
+	source = https://github.com/Molunerfinn/PicGo/releases/download/v2.3.0-beta.8/PicGo-2.3.0-beta.8.AppImage
+	source = https://raw.githubusercontent.com/Molunerfinn/PicGo/dev/LICENSE
 	source = picgo.png
 	source = picgo.desktop
-	sha256sums = 7fcfd94cbc1209d76387671b92693c815cfb8fac2132e0ca37e3a55aeb932133
+	sha256sums = 2b9d2bf616a785afc329dfcf3949be21fffc41a460a6cb4d6350acc8914abb7f
+	sha256sums = 9cf46faad2b6b431e2fb8cc9ece7c4f2638fc04bff1089679686b7c53c8fc31e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = picgo-appimage
-
