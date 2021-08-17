@@ -5,7 +5,7 @@ _pkgname=electrum-ravencoin
 pkgname="${_pkgname}"-appimage
 pkgver=0.4.0
 _pkgver=v"${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Electrum Ravencoin Wallet Client. Forked from the Electrum Bitcoin base client"
 arch=('x86_64')
 url="https://github.com/Electrum-RVN-SIG/electrum-ravencoin"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
+    sed -i -E "s|Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum|Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; ${_pkgname}|"\
         "squashfs-root/${_pkgname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr

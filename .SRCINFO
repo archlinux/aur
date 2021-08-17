@@ -1,7 +1,7 @@
 pkgbase = electrum-ravencoin-appimage
 	pkgdesc = Electrum Ravencoin Wallet Client. Forked from the Electrum Bitcoin base client
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Electrum-RVN-SIG/electrum-ravencoin
 	arch = x86_64
 	license = MIT
