@@ -1,0 +1,20 @@
+pkgbase = geph4-client
+	pkgdesc = A command-line Geph4 toolset
+	pkgver = 4.4.10
+	pkgrel = 1
+	url = https://github.com/geph-official/geph4
+	arch = x86_64
+	groups = geph4
+	license = GPL3
+	makedepends = rust
+	depends = gcc-libs
+	conflicts = geph4-client-git
+	backup = etc/default/geph4-client
+	source = geph4-client-4.4.10.tar.gz::https://github.com/geph-official/geph4/archive/geph4-client-v4.4.10.tar.gz
+	source = geph4-client.default
+	source = geph4-client.service
+	sha256sums = 4e23e8c121e7f72cebfc8953883a1b2c7c2313329c32070e91220d3aa0e0c38d
+	sha256sums = fe10aa9e8ecc58e3b01487cb60c6fe970dd80343d1b715744e734077b1e14f66
+	sha256sums = 2aef927e466ce22796bbaec6d618f6178d0251e6d0ba1df3c526d3374dd903da
+
+pkgname = geph4-client
