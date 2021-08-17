@@ -3,7 +3,7 @@
 
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
-pkgver=20210806.095157.40bb5ddb
+pkgver=20210806.214445.e9ad4376
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
@@ -38,6 +38,7 @@ prepare() {
   git config -f .gitmodules "submodule.deps/freetype/zlib.url" $srcdir/zlib
   git config -f .gitmodules "submodule.freetype2.url" $srcdir/freetype2
   git submodule update
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
@@ -47,7 +48,7 @@ pkgver() {
 
 build() {
   cd $srcdir/wezterm
-  cargo build --release
+  cargo build --frozen --release --all-features
 }
 
 package() {
