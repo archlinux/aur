@@ -2,7 +2,7 @@
 pkgdesc='Terminfo files for the foot terminal emulator'
 pkgname=foot-terminfo-git
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 conflicts=('foot-terminfo')
 provides=('foot-terminfo')
 arch=('any')
@@ -25,6 +25,6 @@ build() {
 
 package() {
   cd foot
-  install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
-  cp build/f/* "${pkgdir}/usr/share/terminfo/f/"
+  install -dm 755 "${pkgdir}/usr/share/foot/terminfo/f/"
+  cp build/f/* "${pkgdir}/usr/share/foot/terminfo/f/"
 }
