@@ -1,0 +1,26 @@
+pkgbase = memento
+	pkgdesc = An mpv-based video player for studying Japanese.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://ripose-jp.github.io/Memento/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	depends = mpv
+	depends = qt5-base
+	depends = qt5-svg
+	depends = sqlite
+	depends = json-c
+	depends = libzip
+	depends = mecab
+	depends = mecab-ipadic
+	optdepends = youtube-dl: streaming support
+	optdepends = mpv-git: additional secondary subtitle support
+	optdepends = noto-fonts-cjk: optimal font support
+	source = memento.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v0.5.0-1-beta.tar.gz
+	sha256sums = cd7c56c72af0cb0b429496cf83f6fda77260c9758922aa46aff66ad991ddf790
+
+pkgname = memento
