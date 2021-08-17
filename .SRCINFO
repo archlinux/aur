@@ -1,6 +1,6 @@
 pkgbase = pass-notify-git
 	pkgdesc = password-store extension for output via desktop notifications
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/emlun/pass-notify/
 	arch = any

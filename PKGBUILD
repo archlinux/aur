@@ -1,7 +1,7 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname='pass-notify-git'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='password-store extension for output via desktop notifications'
 arch=('any')
