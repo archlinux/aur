@@ -1,0 +1,17 @@
+pkgbase = neovim-neoclip-git
+	pkgdesc = Clipboard manager Neovim plugin with Telescope integration
+	pkgver = r9.d8faa88
+	pkgrel = 1
+	url = https://github.com/acksld/nvim-neoclip.lua
+	install = neoclip.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim-telescope
+	provides = neovim-neoclip
+	conflicts = neovim-neoclip
+	source = neovim-neoclip-git::git+https://github.com/acksld/nvim-neoclip.lua
+	md5sums = SKIP
+
+pkgname = neovim-neoclip-git
