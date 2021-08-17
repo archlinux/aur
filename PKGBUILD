@@ -21,19 +21,8 @@ conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
 options=(!emptydirs !libtool)
-source=('git+https://github.com/darktable-org/darktable.git'
-	"rawspeed.git::git+https://github.com/cytrinox/rawspeed.git"
-	"OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
-	"libxcf.git::git+https://github.com/houz/libxcf.git"
-	"whereami::git+https://github.com/gpakosz/whereami"
-	"darktable-tests.git::git+https://github.com/darktable-org/darktable-tests.git"
-)
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=('git+https://github.com/darktable-org/darktable.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -42,15 +31,16 @@ pkgver() {
 
 prepare() {
   cd $_gitname 
-  git fetch --tags
-  git checkout tags/release-3.6.0  
-  git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
+  git checkout release-3.6.0
+  git submodule init
+  git submodule update
+  cd src/external/rawspeed
+  git config remote.origin.url https://github.com/cytrinox/rawspeed.git
+  git fetch
+  cd ../../..
+  git config submodule.src/external/rawspeed.url "https://github.com/cytrinox/rawspeed.git"
   git config submodule.src/external/rawspeed.branch "canon_cr3"
-  git config submodule.src/external/OpenCL.url "$srcdir/OpenCL-Headers.git"
-  git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
-  git config submodule.src/external/whereami.url "$srcdir/whereami"
-  git config submodule.src/tests/integration.url "$srcdir/darktable-tests.git"  
-  git submodule update --init --recursive --remote
+  git submodule update --remote
 }
 
 build() {

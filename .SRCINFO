@@ -1,5 +1,5 @@
 pkgbase = darktable-cr3
-	pkgdesc = A virtual lighttable and darkroom for photographers with CR3 support.
+	pkgdesc = A virtual lighttable and darkroom for photographers with CR3 support
 	pkgver = 3.6.0
 	pkgrel = 1
 	url = http://www.darktable.org/
