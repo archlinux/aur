@@ -3,13 +3,13 @@
 _gemname=bump
 pkgname=ruby-$_gemname
 pkgver=0.10.0
-pkgrel=1
-pkgdesc="A gem to simplify the way you build gems"
+pkgrel=2
+pkgdesc="Bump your gem version file"
 arch=(any)
 url=https://github.com/gregorym/bump
 license=(MIT)
 depends=(ruby)
-makedepends=(ruby-rdoc rubygems)
+makedepends=(git ruby-rdoc rubygems)
 options=(!emptydirs)
 source=(git+https://github.com/gregorym/bump.git?tag=v$pkgver)
 sha256sums=('SKIP')
