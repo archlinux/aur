@@ -10,10 +10,10 @@
 
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
-_tag='e6809e10a27865fbd6d67980a348946a2867182d' # git rev-parse v${pkgver//./_}
-pkgver=2.03.12
+_tag='91a82455813bebce0949cb681369f370ce3105d5' # git rev-parse v${pkgver//./_}
+pkgver=2.03.13
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
 makedepends=('git' 'thin-provisioning-tools')
