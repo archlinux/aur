@@ -6,7 +6,7 @@
 
 _pkgname=dpkt
 pkgname="python-${_pkgname}"
-pkgver=1.9.6
+pkgver=1.9.7.1
 pkgrel=1
 pkgdesc='Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols'
 arch=('any')
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b5737010fd420d142e02ed04fa616edd1fc05e414980baef594f72287c875eef')
+sha256sums=('74899d557ec4e337db29cecc80548b23a1205384d30ee407397cfb9ab178e3d4')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dvm644 'README.rst' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
