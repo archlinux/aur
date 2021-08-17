@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://keepassxc.org/"
 license=('GPL')
 # depends=('')
-makedepends=('qt5-base' 'qt5-tools' 'zlib' 'argon2' 'qt5-x11extras' 'qrencode' 'libsodium' 'yubico-c' 'asciidoctor')
+makedepends=('qt5-base' 'qt5-tools' 'zlib' 'argon2' 'qt5-x11extras' 'qrencode' 'libsodium' 'yubico-c' 'asciidoctor' 'qt5-svg')
 source=("https://github.com/keepassxreboot/keepassxc/releases/download/${pkgver}/keepassxc-${pkgver}-src.tar.xz")
 sha256sums=('3603b11ac39b289c47fac77fa150e05fd64b393d8cfdf5732dc3ef106650a4e2')
 
