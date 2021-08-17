@@ -4,7 +4,7 @@
 
 pkgname=ros2-foxy
 pkgver=2020.12.11
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/foxy/"
 arch=('any')
@@ -50,6 +50,8 @@ prepare() {
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
     ## google_benchmark_vendor
     git -C $srcdir/ros2/src/ament/google_benchmark_vendor checkout main
+    ## rcl_logging
+    git -C $srcdir/ros2/src/ros2/rcl_logging cherry-pick 77b5b2a6c948a6db1986501edc83f12ceadedba3
 }
 
 build() {
