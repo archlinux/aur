@@ -7,7 +7,7 @@ pkgrel=1
 epoch=1
 arch=('x86_64')
 url="https://purplehorrorrus.github.io/meridius"
-license=('MIT')
+license=('proprietary')
 source=(https://github.com/PurpleHorrorRus/Meridius/releases/download/v${pkgver}/meridius-${pkgver}.deb)
 sha512sums=('bc4d9a8dc411b2bebce65eef58fe9ac698eb2c18a7a85b515c6956bc496485472bbf9f01c10970fc925f75bbf666ef501cf1dc73ef57bfe881ca773c2821e623')
 
