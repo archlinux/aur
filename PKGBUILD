@@ -25,7 +25,7 @@ sha256sums=("SKIP")
 
 prepare() {
       cd "$srcdir/Rare-$pkgver"
-      cp $srcdir/Rare-$pkgver/rare/styles/Logo.png $srcdir/Rare-$pkgver/$pkgname.png
+      cp $srcdir/Rare-$pkgver/rare/resources/images/Rare.png $srcdir/Rare-$pkgver/$pkgname.png
       sed -i 's/mdi.view-grid-outline/mdi.view-grid/' $srcdir/Rare-$pkgver/rare/utils/extra_widgets.py
       gendesk -f -n \
         --pkgname "$pkgname" \
