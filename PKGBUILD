@@ -57,13 +57,13 @@ prepare() {
 
 build() {
 	cd "$_name-$pkgver"
-	export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH"
+	export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 	python setup.py build
 }
 
 check() {
 	cd "$_name-$pkgver"
-	export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH"
+	export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 	pytest
 }
 
