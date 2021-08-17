@@ -1,6 +1,6 @@
 pkgbase = mongodb-tools-bin
 	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities.
-	pkgver = 100.4.1
+	pkgver = 100.5.0
 	pkgrel = 1
 	url = https://github.com/mongodb/mongo-tools
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = mongodb-tools-bin
 	license = Apache
 	depends = openssl
 	optdepends = mongodb-compass: The MongoDB GUI
-	provides = mongodb-tools=100.4.1
+	provides = mongodb-tools=100.5.0
 	conflicts = mongodb-tools
-	source_x86_64 = mongodb-org-tools_100.4.1_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-amd64/mongodb-database-tools_100.4.1_amd64.deb
-	sha256sums_x86_64 = ab5c5be5ff95c44b5b6c2a00d524ed352c8794eb236f852cc0c6e3d8fbfca0b1
-	source_aarch64 = mongodb-org-tools_100.4.1_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/4.4/multiverse/binary-arm64/mongodb-database-tools_100.4.1_arm64.deb
-	sha256sums_aarch64 = cab6ac48b558c4e2b7ff84261a08aada8c3460df1a2b8def3c6b0e3ac4bf2cd8
+	source_x86_64 = mongodb-org-tools_100.5.0_x86_64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/5.0/multiverse/binary-amd64/mongodb-database-tools_100.5.0_amd64.deb
+	sha256sums_x86_64 = dfb857f94ee162351780e25c970359b2d2840f16a4cd7ccb044ebbdf3572b6ab
+	source_aarch64 = mongodb-org-tools_100.5.0_aarch64.deb::https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/5.0/multiverse/binary-arm64/mongodb-database-tools_100.5.0_arm64.deb
+	sha256sums_aarch64 = d9137112cdf4352b018b458d3e31156883783635b501cdb9db6ec1aec54d2f21
 
 pkgname = mongodb-tools-bin
