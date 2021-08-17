@@ -1,0 +1,4 @@
+post_install() {
+    echo ">> If you're migrating from hd-idle, notice that the config file is"
+    echo ">> now located in /etc/default directory."
+}
