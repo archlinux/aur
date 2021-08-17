@@ -4,7 +4,7 @@
 
 _pkgname=jasper
 pkgname=lib32-${_pkgname}
-pkgver=2.0.32
+pkgver=2.0.33
 pkgrel=1
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (32-bit)"
 arch=('x86_64')
@@ -18,9 +18,9 @@ makedepends=('lib32-freeglut' 'lib32-libxmu' 'lib32-glu' 'cmake')
 options=('staticlibs')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/mdadams/jasper/archive/version-${pkgver}.tar.gz
         jasper-1.900.1-fix-filename-buffer-overflow.patch)
-sha512sums=('e85e62788652d9113fb694f29a978d61e1b79f4cd1e0e7db1247e0648cab2fced22dac0360ed722ca587834eb8ca5a86eb0161b169276a9810520d0b03df81ad'
+sha512sums=('ff88c4b55d52803786520e4f0db10f7cb7cd7642694c866ea7859bc79e409590469fc2c63afe522c7f8b0c00062c155c0fe3b83b8928e319173a3ec9fea3e09e'
             'b8d798bf75523c5db263783e42c653dd0cb03deee90be32eddf878bb6893cca02abadd94de6a8c737a5b7fe76f7fb245979f010765e6a95fc520b215e3a2a7f0')
-b2sums=('912667ff523ef6ca56bec339c06c14299b9ad59723d7a340b12e0a16ac057bdcc499ae7f35fe894d18ed2297f10600e89ed0a056e9de8df9105e796434d690e7'
+b2sums=('29cd29cf1af285f6054a969991674b12c968b42d70970a1a460fe43e25047b56d2b96a614d0723d9def6c09c9c6b1bdb04289bdcd8cf348449271e5c975074db'
         '9b1927a437ed9b32491f07a210600b5a7d10711ec954dadc030a8238b67e9c6d1a8e67956fd7a5515e7060f0a1651fa86763e21d6d20592f8f00e9d3260722a1')
 
 prepare() {
