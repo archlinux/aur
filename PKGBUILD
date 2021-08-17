@@ -7,16 +7,18 @@
 pkgname=papirus-paleorange-icon-theme
 pkgver=20210802
 pkgrel=1
-pkgdesc="Papirus-PaleOrange icon theme"
+pkgdesc="Papirus-Paleorange icon theme"
 arch=('any')
 url="https://www.pling.com/p/1549558"
 license=('Unknown')
 makedepends=('gtk-update-icon-cache')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
-options=('strip')
-source=("https://tsbarnes-111646473473.s3-accesspoint.us-east-1.amazonaws.com/Papirus-Paleorange_20210802.tar.gz")
+options=('!strip')
+source=("https://www.dropbox.com/s/eyv26chd3qew1ir/Papirus-Paleorange_20210802.tar.gz")
+md5sums=("cc11c414778ee2e798c20a23c223ff7c")
 
 package() {
-	cp -r Papirus-PaleOrange "$pkgdir/usr/share/icons/"
+	mkdir -p "$pkgdir/usr/share/icons"
+	cp -r Papirus-Paleorange "$pkgdir/usr/share/icons/"
 }
