@@ -1,0 +1,14 @@
+pkgbase = wine-stable-mono
+	pkgdesc = Wine's built-in replacement for Microsoft's .NET Framework (for wine-stable)
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://wiki.winehq.org/Mono
+	arch = any
+	license = GPL
+	license = LGPL2.1
+	license = MPL
+	depends = wine-stable
+	source = https://dl.winehq.org/wine/wine-mono/5.1.1/wine-mono-5.1.1-x86.tar.xz
+	b2sums = 162e5c8b12a0384d218ae049c8a948d48fe50ca51212e1c00f11a207f26a759c749d1b8cd416990856358af3d9899670a363d568eda83b66f5e94efc72eea1ff
+
+pkgname = wine-stable-mono
