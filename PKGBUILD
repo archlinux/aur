@@ -2,7 +2,7 @@
 
 # Maintainer: Luke Briggs <lukebriggs02@gmail.com>
 pkgname=pepys
-pkgver=1.0.9
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="A straightforward markdown editor"
@@ -21,9 +21,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/LukeBriggsDev/Pepys/archive/refs/tags/v1.0.9.tar.gz" "https://files.pythonhosted.org/packages/33/db/76f1151a1b0cfad532d41021b77cd231495bf72c47618166f92dcdff2ebe/num2words-0.5.10.tar.gz" "https://files.pythonhosted.org/packages/b4/01/68fcc0d43daf4c6bdbc6b33cc3f77bda531c86b174cac56ef0ffdb96faab/PyPDF2-1.26.0.tar.gz")
+source=("https://github.com/LukeBriggsDev/Pepys/archive/refs/tags/v1.1.1.tar.gz" "https://files.pythonhosted.org/packages/33/db/76f1151a1b0cfad532d41021b77cd231495bf72c47618166f92dcdff2ebe/num2words-0.5.10.tar.gz" "https://files.pythonhosted.org/packages/b4/01/68fcc0d43daf4c6bdbc6b33cc3f77bda531c86b174cac56ef0ffdb96faab/PyPDF2-1.26.0.tar.gz")
 noextract=()
-md5sums=('50faf06697e4f862b11a91cb42581a02' '1d0c24b6b789ad6bf91952d92cb6285f' '2301acc0ecbab0633d4c9b883d50ee5e')
+md5sums=('4bd2968cb4024cf485a12b2462ffa2ca' '1d0c24b6b789ad6bf91952d92cb6285f' '2301acc0ecbab0633d4c9b883d50ee5e')
 validpgpkeys=()
 
 
@@ -43,7 +43,7 @@ package() {
 	mkdir -p $pkgdir/usr/share/pepys
 	mkdir -p $pkgdir/usr/local/share/applications
 	mkdir -p $pkgdir/usr/bin
-	mv Pepys-1.0.9/src $pkgdir/usr/share/pepys
+	mv Pepys-1.1.1/src $pkgdir/usr/share/pepys
 	# Create desktop entry
 	echo "[Desktop Entry]
     Type=Application
