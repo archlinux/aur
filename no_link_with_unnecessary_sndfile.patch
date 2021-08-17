@@ -1,13 +1,13 @@
 diff --git a/premake5.lua b/premake5.lua
-index 7fc21907..74a90813 100644
+index a33623fc..175655e2 100644
 --- a/premake5.lua
 +++ b/premake5.lua
-@@ -359,7 +359,7 @@ project "re3"
+@@ -396,7 +396,7 @@ project "re3"
  		libdirs { "vendor/openal-soft/libs/Win64" }
  
  	filter "platforms:linux*oal"
--		links { "openal", "mpg123", "sndfile", "pthread", "X11" }
-+		links { "openal", "mpg123", "pthread", "X11" }
- 
+-		links { "openal", "mpg123", "sndfile", "pthread" }
++		links { "openal", "mpg123", "pthread" }
+ 		
  	filter "platforms:bsd*oal"
- 		links { "openal", "mpg123", "sndfile", "pthread", "X11" }
+ 		links { "openal", "mpg123", "sndfile", "pthread" }

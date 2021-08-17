@@ -1,7 +1,7 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=r2981.a3964dfd
+pkgver=r3117.e0ecbeee
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '932e29385f9e478a0a86c0dfa529c95b5b6bd430e1b364232955d5ea574ea491'
+            '1d079928163893daa219a14cd3fa50de86b916ecbbeccb9587173d4b35d8e532'
             '850d6e3ff7b92fcaadfcb52a3a8bd384122bcc1a2ee9e917f2b64991dd37ee3c'
             'c61871a66844996f8bc03514278db277bbdcf3cbb91393fb7390d04cbffa1ff3')
 
