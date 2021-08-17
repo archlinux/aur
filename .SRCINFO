@@ -14,4 +14,3 @@ pkgbase = gnome-shell-extension-windowoverlay-icons-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-windowoverlay-icons-git
-
