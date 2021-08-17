@@ -1,7 +1,7 @@
 # Maintainer: hazelnot <scrabcrab@gmail.com>
 _pkgbase=re3
 pkgname=re3-git
-pkgver=r3117.e0ecbeee
+pkgver=r3120.6b4b11d8
 pkgrel=1
 pkgdesc="An open-source project reverse-engineering Grand Theft Auto III"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'SKIP'
             '1d079928163893daa219a14cd3fa50de86b916ecbbeccb9587173d4b35d8e532'
             '850d6e3ff7b92fcaadfcb52a3a8bd384122bcc1a2ee9e917f2b64991dd37ee3c'
-            'c61871a66844996f8bc03514278db277bbdcf3cbb91393fb7390d04cbffa1ff3')
+            '7d19322282de244decac39a1b3aa54196b5f9ba3e3762dbde931c75710bf9931')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
@@ -59,7 +59,7 @@ package() {
     "bin/linux-amd64-librw_gl3_glfw-oal/Release/re3" \
     ../re3-launcher
   install -D -m644 -t "$pkgdir/usr/share/applications" ../re3.desktop
-  install -D -m644 logo.png "$pkgdir/usr/share/pixmaps/re3.png"
+  install -D -m644 res/images/logo.svg "$pkgdir/usr/share/pixmaps/re3.svg"
   mkdir -p "$pkgdir/usr/share/games/re3"
   cp -a gamefiles "$pkgdir/usr/share/games/re3/"
   chmod og=rX -R "$pkgdir/usr/share/games/re3"
