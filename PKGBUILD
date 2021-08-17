@@ -1,7 +1,7 @@
 # Maintainer: artemtech <sofyanartem@gmail.com>
 
 pkgname=citramanik-qt-git
-pkgver=1.1.0.r13.981129c
+pkgver=1.3.0.r13.981129c
 pkgrel=1
 pkgdesc="Your next way to export your Inkscape work for all purpose quickly"
 arch=("x86_64")
