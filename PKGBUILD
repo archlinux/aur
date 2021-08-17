@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xbyak
 pkgname=$_pkgname-git
-pkgver=5.993.r2.g2fb843c
-pkgrel=2
+pkgver=5.995.r3.gc313a87
+pkgrel=1
 pkgdesc="C++ header-only JIT assembler library"
 arch=('any')
 url="https://github.com/herumi/$_pkgname"
