@@ -1,13 +1,13 @@
 pkgbase = meilisearch-latest
-	pkgdesc = Lightning Fast, Ultra Relevant, and Typo-Tolerant Search Engine. Release Candidate.
-	pkgver = 0.21.0rc3
+	pkgdesc = Lightning Fast, Ultra Relevant, and Typo-Tolerant Seacch Engine. Release Candidate.
+	pkgver = 0.21.0rc5
 	pkgrel = 1
 	url = https://docs.meilisearch.com/
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = meilisearch-0.21.0rc3.tar.gz::https://github.com/meilisearch/MeiliSearch/archive/v0.21.0rc3.tar.gz
+	source = meilisearch-0.21.0rc5.tar.gz::https://github.com/meilisearch/MeiliSearch/archive/v0.21.0rc5.tar.gz
 	sha256sums = 5953471536e0283314e6f23e427d505e30d9eb5def9977da007a9f39c0b79add
 
 pkgname = meilisearch-latest

@@ -3,9 +3,9 @@
 _stdname=MeiliSearch
 pkgname=meilisearch-latest
 _pkgname=meilisearch
-pkgver=0.21.0rc3
+pkgver=0.21.0rc5
 pkgrel=1
-pkgdesc="Lightning Fast, Ultra Relevant, and Typo-Tolerant Search Engine. Release Candidate."
+pkgdesc="Lightning Fast, Ultra Relevant, and Typo-Tolerant Seacch Engine. Release Candidate."
 arch=(x86_64)
 url="https://docs.meilisearch.com/"
 license=('MIT')
