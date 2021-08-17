@@ -1,7 +1,7 @@
 pkgname=youtube-git
 _pkgname=Youtube-git
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('any')
 url="https://gitlab.com/youtube-desktop/application"
