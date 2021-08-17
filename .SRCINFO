@@ -1,7 +1,7 @@
 pkgbase = weighted-choice
 	pkgdesc = A simple tool that selects from a weighted set of indices
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/42LoCo42/weighted-choice
 	arch = x86_64
 	license = GPL3
