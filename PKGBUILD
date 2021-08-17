@@ -1,8 +1,9 @@
+# Maintainer: BlueDrink9 <bluedrink9+aur@gmail.com>
 # Maintainer: Arnaud Dovi <mr.dovi@gmail.com>
 
 pkgname=('autokey-git')
-pkgver=0.96.0.beta.5.r0.30e0f9a
-pkgrel=2
+pkgver=0.96.0.beta.8.r0.3978116
+pkgrel=1
 pkgdesc='A desktop automation utility for Linux and X11 - GTK & Qt frontends'
 arch=('x86_64')
 url='https://github.com/autokey/autokey'
@@ -31,8 +32,10 @@ depends=(
   'python-qscintilla-qt5'
   'python-xlib'
   'qt5ct'
+  'wmctrl'
   'xapp'
   'xfconf'
+  'zenity'
 )
 makedepends=(
   'coreutils'
