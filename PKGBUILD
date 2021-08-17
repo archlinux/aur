@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r14885.g35c64d1f57'
+pkgver='5.0.r14899.ga36855c983'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -20,14 +20,10 @@ depends=(
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
 	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
-makedepends=('cmake' 'git' 'python')
+makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=(
-	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
-	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
-)
-sha256sums=('SKIP'
-            'SKIP')
+source=("$pkgname::git+https://github.com/$_mainpkgname/$_projectname")
+sha256sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
@@ -35,13 +31,6 @@ prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
-
-	# Provide git submodule
-	_submodule='mgba'
-	_submodulepath="Externals/mGBA/$_submodule"
-	git submodule init "$_submodulepath"
-	git config "submodule.$_submodulepath.url" "$srcdir/$pkgname-$_submodule/"
-	git submodule update "$_submodulepath"
 }
 
 pkgver() {
@@ -51,12 +40,13 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	cmake -S '.' -B 'build/' \
+	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DUSE_SHARED_ENET=ON \
-		-DDISTRIBUTOR=archlinux.org
-	make -C 'build/'
+		-DDISTRIBUTOR=archlinux.org \
+		-DUSE_MGBA=OFF \
+		-DUSE_SHARED_ENET=ON
+	cmake --build 'build/'
 }
 
 package_dolphin-emu-git() {
@@ -65,7 +55,7 @@ package_dolphin-emu-git() {
 	conflicts=("$_mainpkgname")
 
 	cd "$srcdir/$_sourcedirectory/"
-	make DESTDIR="$pkgdir" -C 'build/' install
+	DESTDIR="$pkgdir" cmake --install 'build/'
 	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/51-usb-device.rules"
 
 	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
