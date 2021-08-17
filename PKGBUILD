@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=985.1k
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -48,7 +48,7 @@ build() {
   BUNDLED_JRE_LOCATION=$(echo ${BUNDLED_JRE_LOCATION}*)
   echo "java.home JRE location expanded to ${BUNDLED_JRE_LOCATION}"
 
-  if [ ! -f ${BUNDLED_JRE_LOCATION}/bin/java ]; then
+  if [ ! -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
     echo "java.home JRE location did not contain java; finding log entry which installed java"
     BUNDLED_JRE_LOCATION=$(grep -e "Install file.*\/java\;" ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d ';' -f 1|sed -e 's/ .*Install file\: //g'|sed 's/\/bin\/java//')
     if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
@@ -56,7 +56,7 @@ build() {
       exit 1
     fi
   fi
-  if [ -f ${BUNDLED_JRE_LOCATION}/bin/java  ]; then
+  if [ -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
     echo "Confirmed java in ${BUNDLED_JRE_LOCATION}"
   else
     echo "Cannot find java; last tried ${BUNDLED_JRE_LOCATION}"
@@ -64,7 +64,7 @@ build() {
   fi
 
   # copy the bundled JRE (do not move it as other install4j applications may be sharing it)
-  cp -r ${BUNDLED_JRE_LOCATION}/* ${srcdir}/jre
+  cp -r "${BUNDLED_JRE_LOCATION}"/* ${srcdir}/jre
   mv ${srcdir}/target/jars/*.jar ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
