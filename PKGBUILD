@@ -10,7 +10,7 @@ url="https://github.com/cutefishos/libcutefish"
 license=('GPL')
 depends=('kscreen' 'modemmanager-qt' 'networkmanager-qt' 'qt5-quickcontrols2'
          # via dbus:
-         'accountsservice' 'bluez')
+         'accountsservice' 'bluez' 'bluez-qt')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
