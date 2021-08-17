@@ -1,0 +1,27 @@
+pkgbase = cutefish-kwin-plugins-git
+	pkgdesc = CutefishOS KWin Plugins
+	pkgver = 0.3.r8.gc4dee7c
+	pkgrel = 1
+	url = https://github.com/cutefishos/kwin-plugins
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = kconfig
+	depends = kdecoration
+	depends = kguiaddons
+	depends = kcoreaddons
+	depends = kconfigwidgets
+	depends = kwindowsystem
+	depends = kwayland
+	depends = kwin
+	provides = cutefish-kwin-plugins
+	conflicts = cutefish-kwin-plugins
+	conflicts = deepin-kwin
+	source = git+https://github.com/cutefishos/kwin-plugins.git
+	sha512sums = SKIP
+
+pkgname = cutefish-kwin-plugins-git
