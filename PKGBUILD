@@ -1,7 +1,7 @@
 # Maintainer: Astroncia <kestraly+gmail+com>
 
 pkgname=astronciaiptv
-pkgver=0.0.70
+pkgver=0.0.71
 pkgrel=1
 pkgdesc="IPTV player with EPG support"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://gitlab.com/astroncia/iptv"
 license=('GPL3')
 depends=('python' 'qt6-base' 'mpv' 'pyside6' 'python-pillow' 'python-pandas' 'python-gobject' 'python-pydbus' 'python-unidecode' 'python-requests' 'ffmpeg')
 source=(${url}/-/archive/${pkgver}/iptv-${pkgver}.tar.gz)
-b2sums=('aa3f352e0720c14cb485a1ffe2c680d8719061c82fad2b2b8e4059dd212a4c438a8a2abcba696519208a10498bceb52a09af1e0ecdf8a7a387005bb2265d3dcc')
+b2sums=('36f26f836acdd65f993aafbd50dfbf9df0f26489b1a6b36e2a3e1615be3773fc405fd79cb4d7ec803a4f011712bc69c7b31df6cea3dfcdebb22c1bbc72296dde')
 
 build() {
         cd iptv-${pkgver}
