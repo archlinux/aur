@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=91.0
-pkgrel=2
+pkgver=91.0.1
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -38,7 +38,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('2a4d1f788ab77f68380d4e6ab0b36bd1efd1a4ac9e9c6d10e39377894c077901'
+sha256sums=('b95854ec9cb3e4409e5a1cf203c2b228146c6e3f9f3240d304cecec6b256f962'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
