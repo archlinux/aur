@@ -4,12 +4,12 @@ _extname=MagicNoCache
 _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
-_mediawiki_mainver=1.35
+_mediawiki_mainver=1.36
 _mediawiki_mainver_succ=${_mediawiki_mainver%.*}.$((${_mediawiki_mainver##*.}+1))
 _branch="REL${_mediawiki_mainver/./_}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=1.4.0.r28.gcf368d1
+pkgver=1.4.0.r40.ga1b0a88
 pkgrel=1
 pkgdesc="MediaWiki extension for selective cache disabling"
 arch=('any')
