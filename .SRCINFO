@@ -15,6 +15,7 @@ pkgbase = libcutefish-git
 	depends = qt5-quickcontrols2
 	depends = accountsservice
 	depends = bluez
+	depends = bluez-qt
 	provides = libcutefish
 	conflicts = libcutefish
 	source = git+https://github.com/cutefishos/libcutefish.git
