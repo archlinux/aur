@@ -42,7 +42,8 @@ pkgver() {
 
 prepare() {
   cd $_gitname 
-  git checkout release-3.6.0  
+  git fetch --tags
+  git checkout tags/release-3.6.0  
   git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
   git config submodule.src/external/rawspeed.branch "canon_cr3"
   git config submodule.src/external/OpenCL.url "$srcdir/OpenCL-Headers.git"
