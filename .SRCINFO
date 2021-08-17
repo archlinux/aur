@@ -6,6 +6,7 @@ pkgbase = moodyrain-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = gendesk
 	depends = yad
 	depends = sox
 	depends = vorbis-tools
@@ -14,4 +15,3 @@ pkgbase = moodyrain-git
 	sha256sums = SKIP
 
 pkgname = moodyrain-git
-

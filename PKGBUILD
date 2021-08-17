@@ -10,7 +10,7 @@ url='https://github.com/glutanimate/MoodyRain'
 license=('GPL3')
 provides=('moodyrain')
 depends=('yad' 'sox' 'vorbis-tools')
-makedepends=('git')
+makedepends=('git' 'gendesk')
 source=("moodyrain::git+${url}")
 sha256sums=('SKIP')
 
