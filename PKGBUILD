@@ -2,7 +2,7 @@
 pkgname=python-minerl
 _name=${pkgname#python-}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Environment for RL from human demonstration in Minecraft"
 arch=('x86_64')
 url="https://github.com/minerllabs/minerl"
