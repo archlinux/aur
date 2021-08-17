@@ -7,7 +7,8 @@ pkgdesc='An Ada binding to the libfswatch library in the fswatch project'
 url='https://github.com/AdaCore/ada_libfswatch'
 arch=('x86_64')
 license=('GPL3' 'custom')
-depends=('gcc-libs' 'fswatch')
+
+depends=('fswatch' 'gnatcoll-core')
 makedepends=('git' 'gcc-ada' 'gprbuild')
 source=('git+https://github.com/AdaCore/ada_libfswatch.git#commit=94c0a5f137b88113a791a148b60e5e7d019d6fa1'
         'ada-libfswatch.patch')
