@@ -5,7 +5,7 @@
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=291
+_minor=301
 
 pkgver=${_major}u${_minor}
 pkgrel=1
@@ -56,17 +56,17 @@ md5sums=('a3e1ae256538e8b4162ee8cb0642cb5d'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('634fb4eadec01de329958f06b71c16cf')
+md5sums_armv6h=('16bb29821a512791429613d090c97812')
 md5sums_armv7h=("$md5sums_armv6h")
-md5sums_aarch64=('a5dcabba1906fd6bac66a51d9972d476')
+md5sums_aarch64=('fbd490940c1b6932426cb23475473a31')
 sha256sums=('9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             '105bac73e3b028a3502379e8f51e6c3ecf21e520d85b2b10d4a1103a0dd4cf4b'
             '3c790fd076f5877a4a4604ef4860ee5fe63a75f1c33bde1e9505f7fe246bf8a5'
             '142adba64bba9cafeca2a5e3622a09646fa8b285bb57d63d9f03096580044a61'
             'ef9ecbb758a7fd7755ad1aa0d36cee02bd795e7d54489b92641541198d071f45')
-sha256sums_armv6h=('9a28e6dd42786c50c1ecb71194dafd65aaa148fcf6a620e6da54495f42e3ff2c')
+sha256sums_armv6h=('999615cd642d18f3cf04383c9f2a87d1acc85d598850742ef8d9ed5c6647d07a')
 sha256sums_armv7h=("$sha256sums_armv6h")
-sha256sums_aarch64=('bb5b6c64183aa6bbf96d80fcd43fd01f259754f9ca2906546e1e3c4773999187')
+sha256sums_aarch64=('96950c3b71146e6615c7f73e35af10349465ae958b85b107d8cd2fd1889542bc')
 
 package() {
     cd "${_pkgname}1.${_major}.0_${_minor}" || exit 1
