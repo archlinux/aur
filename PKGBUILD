@@ -7,8 +7,8 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.0.8'
-_binver=1
+_srcver='8.0.9'
+_binver=0
 pkgrel=1
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
@@ -48,14 +48,14 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             'd72750c1dba2f754e6ea4eec22770f8a9c3858f270a91e7b1da4129e053a9d68'
             '90a0003840fc9310f22b26e909845d5909a515dbf3f5aff39f730b190e808597'
             '72dffe1ee4ae96a966a301dd1486832ce823cf3132f3ab1cd4ddb75ef9816d08'
-            '3236b8e4b397ab9081038450efa7e0d0cfcc744ba942118d67ada2e36a60dd61'
+            '087ce2c9adffcd88f4a67c881215a451e35e02a6a4a155d76321e05453d80f5d'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
             '1447876c2d2dcf48c8e94c3bffbb09f1b4005621a55f78fb7d9faecebdb26264'
             '80de3facade04b394a501f13dd1c16d66381715c42c1f597fc1142cdcbe5f3de'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('9d00880ada4fbff0d58423e58933e4274728929dd2e531c670a104c76b0ad92c')
+sha256sums_x86_64=('7d740a4963eb9e6dd224cc1101b7c42f887cb12aa02df8271bef047c27b938e8')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
