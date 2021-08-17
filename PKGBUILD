@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-drawer')
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Application drawer for sway and other wlroots-based compositors"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('alacritty: to open .desktop files with Terminal=true'
             'thunar: to open files and directories')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-drawer/archive/v"$pkgver".tar.gz")
 
-md5sums=('0b19e60bf512179ae4cc196f543f79e1')
+md5sums=('9fadf18062078032ef0eb5c114243677')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
