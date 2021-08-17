@@ -2,25 +2,18 @@
 # Contributor: xRemaLx <anton.komolov@gmail.com>
 
 pkgname=python-klein
-pkgver=20.6.0
-pkgrel=3
+pkgver=21.8.0
+pkgrel=1
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'
 license=(MIT)
-depends=(python python-attrs python-hyperlink python-incremental python-six
+depends=(python python-attrs python-hyperlink python-incremental
          python-tubes python-twisted python-werkzeug python-zope-interface)
 makedepends=(python-setuptools)
 checkdepends=(python-hypothesis python-treq python-pytest)
-source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz"
-        "fix-tests.diff")
-sha512sums=('1cba04a365fd9c7185e2f2472f617f875ee9cec41ac97940dda4a145811cefcbbe34f11e1f306656dc43d88b49e66bfcb5efb72d25283bbc8a0729b2fc5e2fca'
-            'bbe07e6c9f067265cb962654930632707d61b046709907711ceeaea8b1e691b6cee54b75b1602e2f636251e4a82dd662524dc12e6fb877ef12b7474b9e6e6874')
-
-prepare() {
-  cd klein-$pkgver
-  patch -Np1 -i ../fix-tests.diff
-}
+source=("https://github.com/twisted/klein/archive/$pkgver/klein-$pkgver.tar.gz")
+sha512sums=('f0e10e3b92f19dc6b42f071d836b4179af033955fb6a1feb05918c85901741577f8dddc335ead1a4c1181690709abd73bca755c6a7a402d79d7a4bfb196bca58')
 
 build() {
   cd klein-$pkgver
