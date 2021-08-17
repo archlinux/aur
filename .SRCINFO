@@ -1,7 +1,7 @@
 pkgbase = moodyrain-git
 	pkgdesc = Generate custom ambient soundscapes on Linux
 	pkgver = r11.9eded08
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/glutanimate/MoodyRain
 	arch = any
 	license = GPL3

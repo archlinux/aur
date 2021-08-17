@@ -1,9 +1,9 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Achmad Fathoni <fathoni DOT id AT gmail DOT com>
 
 pkgname=moodyrain-git
 _pkgname=moodyrain
 pkgver=r11.9eded08
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate custom ambient soundscapes on Linux"
 arch=('any')
 url='https://github.com/glutanimate/MoodyRain'
