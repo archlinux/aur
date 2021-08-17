@@ -1,7 +1,7 @@
 pkgbase = nodejs-nps
 	pkgdesc = All the benefits of npm scripts without the cost of a bloated package.json and limits of json
 	pkgver = 5.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sezna/nps
 	arch = any
 	license = MIT

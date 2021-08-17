@@ -3,7 +3,7 @@
 _pkgname=nps
 pkgname=nodejs-nps
 pkgver=5.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="All the benefits of npm scripts without the cost of a bloated package.json and limits of json"
 url="https://github.com/sezna/$_pkgname"
 license=("MIT")
@@ -21,5 +21,5 @@ prepare() {
 package() {
   npm i -g --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$_pkgname-$pkgver.tgz"
   install -Dm644 package/LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 <(nps completion) "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 }
-
