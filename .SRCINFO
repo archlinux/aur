@@ -1,0 +1,15 @@
+pkgbase = papirus-paleorange-icon-theme
+	pkgdesc = Papirus-PaleOrange icon theme
+	pkgver = 20210802
+	pkgrel = 1
+	url = https://www.pling.com/p/1549558
+	arch = any
+	license = Unknown
+	makedepends = gtk-update-icon-cache
+	provides = papirus-paleorange-icon-theme
+	conflicts = papirus-paleorange-icon-theme
+	conflicts = papirus-paleorange-icon-theme-git
+	options = strip
+	source = https://tsbarnes-111646473473.s3-accesspoint.us-east-1.amazonaws.com/Papirus-Paleorange_20210802.tar.gz
+
+pkgname = papirus-paleorange-icon-theme
