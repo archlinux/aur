@@ -1,0 +1,15 @@
+pkgbase = fish-prompt-nai-dusan-git
+	pkgdesc = A minimalist fish theme which displays git branch and status information
+	pkgver = r8.0319c8e
+	pkgrel = 1
+	url = https://github.com/dusansimic/theme-nai
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	depends = fish>=3
+	provides = fish-prompt
+	conflicts = fish-prompt
+	source = git+https://github.com/dusansimic/theme-nai.git
+	md5sums = SKIP
+
+pkgname = fish-prompt-nai-dusan-git
