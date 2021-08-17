@@ -11,6 +11,7 @@ pkgdesc="ArchYellow theme for KDE"
 arch=('any')
 url="https://www.pling.com/p/1575095"
 license=('LGPL3')
+depends=("arch-kde-theme" "papirus-paleorange-icon-theme")
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 options=('!strip')
