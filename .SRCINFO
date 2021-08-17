@@ -1,0 +1,13 @@
+pkgbase = pluralnotes-bin
+	pkgdesc = A terminal-based notebook utility designed for plural people.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/candlebrae/pluralnotes
+	arch = x86_64
+	license = GPL
+	depends = zlib
+	provides = pluralnotes
+	source = https://github.com/candlebrae/pluralnotes/releases/download/v1.0/pluralnotes.tar.gz
+	sha256sums = 07adfffc04a7ffc89f694127cd823d48d799a827e261fac192535b93eeb4f682
+
+pkgname = pluralnotes-bin
