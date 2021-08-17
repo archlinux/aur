@@ -1,0 +1,22 @@
+pkgbase = cutefish-core-git
+	pkgdesc = System components and backend of CutefishOS
+	pkgver = 0.3.r42.g9c18511
+	pkgrel = 1
+	url = https://github.com/cutefishos/core
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = fishui-git
+	depends = libpulse
+	depends = libxtst
+	depends = polkit-qt5
+	provides = cutefish-core
+	conflicts = cutefish-core
+	source = git+https://github.com/cutefishos/core.git
+	sha512sums = SKIP
+
+pkgname = cutefish-core-git
