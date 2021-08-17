@@ -1,41 +1,31 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Submitter: kpcyrd <git@rxv.cc>
+# Maintainer: Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
 
 pkgbase=open-cobol
-pkgname=('open-cobol' 'libcob')
-pkgver=1.1
-pkgrel=2
+pkgname=('open-cobol')
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="COBOL compiler"
-url="http://www.opencobol.org/"
-arch=('i686' 'x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/open-cobol/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz/download")
-md5sums=('e38c898e01d50a7ca6bb3e41cfcb0c64')
-sha256sums=('6ae7c02eb8622c4ad55097990e9b1688a151254407943f246631d02655aec320')
+url="https://sourceforge.net/projects/gnucobol/files/gnucobol/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+source=("$pkgname-$pkgver.tar.gz::https://sourceforge.net/projects/gnucobol/files/gnucobol/3.1/gnucobol-${pkgver}.tar.xz/download")
+license=("GPL")
+depends=("db" "gmp" "json-c" "libxml2")
+makedepends=("gcc")
+md5sums=('720d8425e4ac30b83b84f43ef08f9558')
+sha256sums=('597005d71fd7d65b90cbe42bbfecd5a9ec0445388639404662e70d53ddf22574')
+
 
 build() {
-  cd "$pkgbase-$pkgver"
-  ./configure --prefix=/usr --infodir=/usr/share/info
-  make
+	cd gnucobol-${pkgver}
+	./configure --prefix=/usr --infodir=/usr/share/info
+	make
 }
 
-package_open-cobol() {
-  depends=('bash' 'libcob')
-  license=('GPL2')
 
-  cd "$pkgbase-$pkgver"
-  make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/include" "$pkgdir/usr/lib"
-  install -Dm644 COPYING.LIB "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+package() {
+	cd gnucobol-"$pkgver"
+	make DESTDIR="$pkgdir" install
 }
 
-package_libcob() {
-  pkgdesc+=" (runtime library)"
-  depends=('gmp' 'db')
-  license=('LGPL2.1')
 
-  cd "$pkgbase-$pkgver"
-  make DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-}
-
-# vim:set ts=2 sw=2 et:

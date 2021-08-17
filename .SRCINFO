@@ -1,22 +1,21 @@
 pkgbase = open-cobol
 	pkgdesc = COBOL compiler
-	pkgver = 1.1
-	pkgrel = 2
-	url = http://www.opencobol.org/
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/gnucobol/files/gnucobol/
 	arch = i686
 	arch = x86_64
-	source = open-cobol-1.1.tar.gz::https://sourceforge.net/projects/open-cobol/files/open-cobol/1.1/open-cobol-1.1.tar.gz/download
-	md5sums = e38c898e01d50a7ca6bb3e41cfcb0c64
-	sha256sums = 6ae7c02eb8622c4ad55097990e9b1688a151254407943f246631d02655aec320
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = gcc
+	depends = db
+	depends = gmp
+	depends = json-c
+	depends = libxml2
+	source = open-cobol-3.1.2.tar.gz::https://sourceforge.net/projects/gnucobol/files/gnucobol/3.1/gnucobol-3.1.2.tar.xz/download
+	md5sums = 720d8425e4ac30b83b84f43ef08f9558
+	sha256sums = 597005d71fd7d65b90cbe42bbfecd5a9ec0445388639404662e70d53ddf22574
 
 pkgname = open-cobol
-	license = GPL2
-	depends = bash
-	depends = libcob
-
-pkgname = libcob
-	pkgdesc = COBOL compiler (runtime library)
-	license = LGPL2.1
-	depends = gmp
-	depends = db
-
