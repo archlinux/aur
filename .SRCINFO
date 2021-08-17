@@ -1,6 +1,6 @@
-pkgbase = corectrl-git
+pkgbase = corectrl-nofan-git
 	pkgdesc = Application to control your hardware with ease using application profiles
-	pkgver = 1.0.3.r128.g2aacf49
+	pkgver = 1.0.3.r174.g5ab63d3
 	pkgrel = 1
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
@@ -27,7 +27,8 @@ pkgbase = corectrl-git
 	provides = corectrl
 	conflicts = corectrl
 	source = git+https://gitlab.com/corectrl/corectrl.git
+	source = dont-mess-with-fans.patch
 	md5sums = SKIP
+	md5sums = 990ff598ac4d837c4cd2f4213d164730
 
-pkgname = corectrl-git
-
+pkgname = corectrl-nofan-git
