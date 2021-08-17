@@ -1,7 +1,7 @@
 pkgbase = xcolor-git
 	pkgdesc = Lightweight color picker for X11
-	pkgver = 0.5.0.100.g0e99e67
-	pkgrel = 2
+	pkgver = 0.5.0.101.gf23338a
+	pkgrel = 1
 	url = https://github.com/Soft/xcolor
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,6 @@ pkgbase = xcolor-git
 	makedepends = python
 	depends = libxcb
 	source = xcolor-git::git+https://github.com/Soft/xcolor.git
-	source = cargo_fix.patch
 	sha256sums = SKIP
-	sha256sums = 58575b5e08ded6af6331f9fd1e22023b7479905f9a7781d99507d33559ee25c9
 
 pkgname = xcolor-git
