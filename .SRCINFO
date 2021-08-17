@@ -1,6 +1,6 @@
 pkgbase = pepys
 	pkgdesc = A straightforward markdown editor
-	pkgver = 1.0.9
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://www.lukebriggs.dev/pepys
 	arch = any
