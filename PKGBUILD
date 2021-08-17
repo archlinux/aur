@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=firecracker-bin
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,10 @@ package() {
   _srcdir="${srcdir}/release-v${pkgver}"
   install -Dm755 "${_srcdir}/firecracker-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/firecracker"
   install -Dm755 "${_srcdir}/jailer-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/jailer"
+  install -Dm755 "${_srcdir}/seccompiler-bin-v${pkgver}-${CARCH}" "${pkgdir}/usr/bin/seccompiler-bin"
   install -Dm644 -t "${pkgdir}/usr/share/licenses/firecracker" \
     "${_srcdir}/LICENSE" "${_srcdir}/NOTICE" "${_srcdir}/THIRD-PARTY"
   install -Dm644 -t "${pkgdir}/usr/share/doc/firecracker" \
-    "${_srcdir}/firecracker_spec-v${pkgver}.yaml"
+    "${_srcdir}/firecracker_spec-v${pkgver}.yaml" \
+    "${_srcdir}/seccomp-filter-v${pkgver}-${CARCH}.json"
 }
