@@ -3,23 +3,28 @@
 
 pkgname=python-plotly
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, interactive graphing library"
 url="https://github.com/plotly/plotly.py"
 depends=(python
-jupyterlab
-python-matplotlib
-python-numpy
 python-six
-python-retrying)
-optdepends=('ipython' 'python-ipywidgets')
+python-tenacity)
+# optdepends based on optional_requirements.txt
+optdepends=(
+'ipython'
+'jupyterlab'
+'python-ipywidgets'
+'python-numpy'
+'python-matplotlib'
+'python-pillow'
+'python-scipy')
 makedepends=(python-setuptools
 python-jupyter_core
 python-tornado
 jupyterlab
 npm)
 license=('MIT')
-arch=('x86_64')
+arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plotly/plotly.py/archive/v${pkgver}.tar.gz")
 sha256sums=('5c3251dcbf5de2170038dac24ba6afd379b497d93f18576247ffffe439808da5')
 
