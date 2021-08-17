@@ -14,7 +14,6 @@ provides=('electrum-ravencoin')
 conflicts=('electrum-ravencoin' 'electrum-ravencoin-git')
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}.AppImage"
-validpgpkeys=('6694D8DE7BE8EE5631BED9502BD5824B7F9470E6')
 
 source=("https://github.com/Electrum-RVN-SIG/electrum-ravencoin/releases/download/${_pkgver}/${_appimage}"
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/Electrum-RVN-SIG/${_pkgname}/${_pkgver}/LICENCE"
