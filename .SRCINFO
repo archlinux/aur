@@ -14,7 +14,7 @@ pkgbase = firefox-esr-bin
 	depends = libxt
 	depends = dbus-glib
 	depends = nss
-	provides = firefox=78
+	provides = firefox=91
 	source = https://ftp.mozilla.org/pub/firefox/releases/91.0.1esr/linux-x86_64/en-US/firefox-91.0.1esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
