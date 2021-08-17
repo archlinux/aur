@@ -2,7 +2,7 @@
 
 pkgname=homepager
 pkgver=1.2beta
-pkgrel=0
+pkgrel=1
 pkgdesc='A simple homepage generator.'
 url='https://github.com/NewAwkwardTools/homepager'
 arch=('any')
@@ -17,6 +17,6 @@ package(){
     install -Dm644 "config/config.toml" -t "$pkgdir/etc/homepager"   
     install -Dm644 "resources/style.css" -t "$pkgdir/usr/share/homepager"
     install -Dm644 "resources/index.js" -t "$pkgdir/usr/share/homepager"
-    install -Dm644 "resources/searchbar.html" -t "$pkgdir/usr/share/homepger"
+    install -Dm644 "resources/searchbar.html" -t "$pkgdir/usr/share/homepager"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/homepager"
 }

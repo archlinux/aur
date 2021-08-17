@@ -1,7 +1,7 @@
 pkgbase = homepager
 	pkgdesc = A simple homepage generator.
 	pkgver = 1.2beta
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/NewAwkwardTools/homepager
 	arch = any
 	license = MIT
