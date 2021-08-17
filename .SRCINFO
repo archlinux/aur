@@ -1,12 +1,12 @@
 pkgbase = tangram-bin
 	pkgdesc = Tangram is an all-in-one automated machine learning framework.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://www.tangram.dev
 	arch = x86_64
 	license = MIT
 	provides = tangram
 	source_x86_64 = https://github.com/tangramdotdev/tangram/releases/download/v0.5.0/tangram_cli_0.5.0_x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 14cfd651fbfa80fdb436e56d6fba27106d08a9d9765f8302f85c7105daa0ee78
+	sha256sums_x86_64 = 4e2b86675a879e218b92e18d9fe3092ba3dba0cfb06cf8a77dc09910130a68ca
 
 pkgname = tangram-bin
