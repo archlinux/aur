@@ -1,20 +1,44 @@
-# Maintainer: portaloffreedom
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: portaloffreedom
 
-_pkgsrcname=pyjokes
-pkgname=python-pyjokes
+pkgbase=python-pyjokes
+pkgname=(python-pyjokes python2-pyjokes)
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="One line jokes for programmers (jokes as a service)"
 url="https://github.com/pyjokes/pyjokes"
-license=("custom:BSD")
+license=("BSD")
 arch=("any")
-depends=('python')
-source=("https://files.pythonhosted.org/packages/c2/82/faa0a9676ba148de181793a81f193f4a5a9eb344b4faf80fa28d8b1c8f3f/$_pkgsrcname-$pkgver.tar.gz")
-sha256sums=('08860eedb78cbfa4618243c8db088f21c39823ece1fdaf0133e52d9c56e981a5')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a6d06a5428dd8f316a3f8784cac0180067b6530121d9cf3976d5f903db264c86')
 
-package() {
-  cd $srcdir/${_pkgsrcname}-$pkgver
-  python3 setup.py install --root $pkgdir
+prepare() {
+	cp -a "pyjokes-$pkgver" "pyjokes-$pkgver-py2"
 }
 
+build() {
+	pushd "pyjokes-$pkgver"
+	python setup.py build
+	popd
 
+	pushd "pyjokes-$pkgver-py2"
+	python2 setup.py build
+}
+
+package_python-pyjokes() {
+	depends=('python')
+
+	cd "pyjokes-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENCE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_python2-pyjokes() {
+	depends=('python2')
+	conflicts=('python-pyjokes')
+
+	cd "pyjokes-$pkgver-py2"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENCE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
