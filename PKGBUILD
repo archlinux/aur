@@ -11,7 +11,7 @@ pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-gi
 pkgver=12.0.0_r187385.gb48d4e68186
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
@@ -137,7 +137,7 @@ package_gcc-libs-git() {
   options+=(!strip)
   provides=(gcc-libs $pkgbase-multilib{,git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
-  replaces=($pkgbase-multilib-git)
+  replaces=($pkgbase-multilib-git libgphobos-git)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
