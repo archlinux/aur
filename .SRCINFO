@@ -1,0 +1,15 @@
+pkgbase = arch-yellow-kde-theme-git
+	pkgdesc = ArchYellow theme for KDE
+	pkgver = r5.9b76e97
+	pkgrel = 1
+	url = https://www.pling.com/p/1575095
+	arch = any
+	license = LGPL3
+	provides = arch-yellow-kde-theme-git
+	conflicts = arch-yellow-kde-theme-git
+	conflicts = arch-yellow-kde-theme-git-git
+	options = !strip
+	source = ArchYellow::git+https://github.com/tsbarnes/ArchYellow.git
+	sha256sums = SKIP
+
+pkgname = arch-yellow-kde-theme-git
