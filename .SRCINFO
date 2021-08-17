@@ -1,0 +1,14 @@
+pkgbase = python-freiner
+	pkgdesc = Generic rate limiting solution for python applications, supporting various strategies and storage backends.
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/djmattyg007/freiner/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typing_extensions
+	source = https://pypi.io/packages/source/f/freiner/freiner-3.0.4.tar.gz
+	sha256sums = b9e660460c9b194b160233d0a59ce1b1968ea43d7b5798972c84bb17594f205f
+
+pkgname = python-freiner
