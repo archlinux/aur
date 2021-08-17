@@ -43,11 +43,23 @@ checkdepends=(
 	'python-pytest'
 	'python-filelock'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('388b708b96a7ca2628ce436b6aa5f80e74dcdf663ca34c291b8857f8c31f8c81')
+source=(
+	"https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+	"$_name.patch"
+)
+sha256sums=(
+	'388b708b96a7ca2628ce436b6aa5f80e74dcdf663ca34c291b8857f8c31f8c81'
+	'SKIP'
+)
 
 prepare() {
 	cd "$_name-$pkgver"
+
+	# Apply patch
+	# The patch sets the default Java path to Arch Linux's Java 8
+	# Otherwise, if multiple java versions are installed,
+	# the wrong one might be associated with the `java` command.
+	patch --forward --strip=1 --input="${srcdir}/$_name.patch"
 
 	# A few scripts have #!/usr/bin/python3.5
 	# Change to #!/usr/bin/python
@@ -57,13 +69,11 @@ prepare() {
 
 build() {
 	cd "$_name-$pkgver"
-	export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 	python setup.py build
 }
 
 check() {
 	cd "$_name-$pkgver"
-	export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
 	pytest
 }
 

@@ -30,6 +30,8 @@ pkgbase = python-minerl
 	depends = python-tqdm
 	depends = python-xmltodict
 	source = https://files.pythonhosted.org/packages/source/m/minerl/minerl-0.4.1.tar.gz
+	source = minerl.patch
 	sha256sums = 388b708b96a7ca2628ce436b6aa5f80e74dcdf663ca34c291b8857f8c31f8c81
+	sha256sums = SKIP
 
 pkgname = python-minerl

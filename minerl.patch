@@ -1,0 +1,24 @@
+diff '--color=auto' --unified --recursive --text --color minerl-0.4.1/minerl/Malmo/Minecraft/gradlew minerl-0.4.1.new/minerl/Malmo/Minecraft/gradlew
+--- minerl-0.4.1/minerl/Malmo/Minecraft/gradlew	2021-04-08 20:23:59.000000000 -0400
++++ minerl-0.4.1.new/minerl/Malmo/Minecraft/gradlew	2021-08-17 18:00:48.053430728 -0400
+@@ -81,6 +81,8 @@
+ Please set the JAVA_HOME variable in your environment to match the
+ location of your Java installation."
+     fi
++elif [ -f "/usr/lib/jvm/java-8-openjdk/jre/bin/java" ]; then # Arch linux
++	JAVACMD="/usr/lib/jvm/java-8-openjdk/jre/bin/java"
+ else
+     JAVACMD="java"
+     which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+diff '--color=auto' --unified --recursive --text --color minerl-0.4.1/minerl/Malmo/Minecraft/launchClient.sh minerl-0.4.1.new/minerl/Malmo/Minecraft/launchClient.sh
+--- minerl-0.4.1/minerl/Malmo/Minecraft/launchClient.sh	2021-07-12 23:11:33.000000000 -0400
++++ minerl-0.4.1.new/minerl/Malmo/Minecraft/launchClient.sh	2021-08-17 17:56:42.810864739 -0400
+@@ -117,6 +117,8 @@
+ # If build/libs/MalmoMod-0.37.0-fat.jar does not exist change command to 'test'
+ echo $MINERL_FORCE_BUILD 
+ 
++export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH" # Use Java 8 (Arch Linux)
++
+ if [ ! -e build/libs/MalmoMod-0.37.0-fat.jar ] || [ "$MINERL_FORCE_BUILD" == "1" ]; then
+     echo "HELLO"
+     cmd="./gradlew runClient --stacktrace -Pjvm_debug_port=$jvm_debug_port -PrunDir=$runDir"
