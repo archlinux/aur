@@ -1,7 +1,9 @@
-# Maintainer: Gaspard d'Hautefeuille <gaspard@dhautefeuille.eu>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
+# Contributor: Schnouki <schnouki@schnouki.net>
+
 pkgname=hash-slinger
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA, OPENPGPKEY, IPSECKEY)"
 arch=(any)
 url="https://github.com/letoams/hash-slinger"
