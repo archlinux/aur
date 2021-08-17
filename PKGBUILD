@@ -4,7 +4,7 @@
 
 pkgname="mkdocs"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -13,6 +13,7 @@ provides=("mkdocs")
 conflicts=("python-mkdocs")
 depends=("python-babel"
          "python-click"
+         "python-dateutil"
          "python-ghp-import"
          "python-jinja"
          "python-importlib-metadata"
