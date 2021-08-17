@@ -6,6 +6,7 @@ pkgbase = arch-yellow-kde-theme-git
 	arch = any
 	license = LGPL3
 	depends = arch-kde-theme-git
+	depends = sierrabreeze-kwin-decoration-git
 	depends = papirus-paleorange-icon-theme
 	provides = arch-yellow-kde-theme-git
 	conflicts = arch-yellow-kde-theme-git
