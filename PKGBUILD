@@ -33,7 +33,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum|Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; ${_pkgname}|"\
+    sed -i -E "s|Exec=sh -c \"PATH=\\"\\\\$HOME/.local/bin:\\\\$PATH\\"; electrum|Exec=sh -c \"PATH=\\"\\\\$HOME/.local/bin:\\\\$PATH\\"; ${_pkgname}|"\
         "squashfs-root/${_pkgname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
