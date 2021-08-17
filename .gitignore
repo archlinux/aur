@@ -1,5 +1,2 @@
-*
-!/PKGBUILD
-!/.SRCINFO
-!/.gitignore
-!/bump.sh
+*.zst
+konsole-dracula-git/
