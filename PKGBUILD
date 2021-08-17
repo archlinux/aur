@@ -57,3 +57,4 @@ post_upgrade() {
 	echo "Make sure to upgrade wlroots-eglstream-git and sway-git together."
 	echo "Upgrading one but not the other is unsupported."
 }
+# vim:set ts=4 sw=4 noet:
