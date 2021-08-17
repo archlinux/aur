@@ -1,7 +1,7 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=paper2remarkable
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily download an academic paper and send it to a reMarkable."
 arch=(any)
 url="https://github.com/GjjvdBurg/paper2remarkable"
@@ -12,7 +12,7 @@ depends=('python>=3.6.0' 'qpdf' 'ghostscript' 'poppler' 'rmapi' 'python-pikepdf>
 'python-beautifulsoup4>=4.8' 'python-html2text>=2020.1.16' 'python-markdown>=3.1.1'
 'python-pdfplumber>=0.5' 'python-yaml>=5.1' 'python-readability-lxml>=0.7.1'
 'python-regex>=2018.11' 'python-requests>=2.21' 'python-titlecase>=0.12' 
-'python-unidecode>=1.1' 'python-weasyprint>=51')
+'python-unidecode>=1.1' 'python-weasyprint>=51' 'python-weasyprint<53')
 makedepends=('python-setuptools')
 optdepends=('python-readabilipy: Improves output of web articles')
 changelog=$pkgname.changelog.md
