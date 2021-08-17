@@ -1,4 +1,6 @@
 # Maintainer: kXuan <kxuanobj at gmail dot com>
+# Contribuor: Peter Cai <peter at typeblog dot net>
+
 pkgname=netease-cloud-music
 pkgver=1.2.1
 _pkgdate=20190428
