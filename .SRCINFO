@@ -1,7 +1,7 @@
 pkgbase = netease-cloud-music
 	pkgdesc = Netease Cloud Music, converted from .deb package
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.163.com/
 	arch = x86_64
 	license = custom
