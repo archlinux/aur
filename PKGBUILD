@@ -1,7 +1,7 @@
 # Maintainer: Malacology <guoyizhang at malacology dot com>
 # Contributor: FabioLolix
 
-pkgname=free-delta-bin
+pkgname=free-delta
 pkgver=2.8.2
 pkgrel=1
 pkgdesc="An Open Source System for Processing Taxonomic Descriptions"
