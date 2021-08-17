@@ -6,20 +6,17 @@ pkgbase = pyinstaller
 	arch = x86_64
 	arch = i686
 	arch = aarch64
-	arch = ppc64le
-	arch = s390x
 	license = custom:PyInstaller
-	makedepends = cmocka
-	makedepends = python>=3.6
-	makedepends = python-setuptools
-	makedepends = git
-	makedepends = python-wheel
+	makedepends = python-pip
 	depends = python-altgraph
 	depends = pyinstaller-hooks-contrib
 	optdepends = python-pycrypto: bytecode encryption support
 	optdepends = upx: executable compression support
-	source = git+https://github.com/pyinstaller/pyinstaller
-	sha256sums = SKIP
-	depends_i686 = lib32-zlib
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-4.5.1-py3-none-manylinux2014_x86_64.whl
+	sha512sums_x86_64 = 29454c824829a82e85ef14debdcb8e95a0d1b74e32f100509d9d71919c424ce63a8e5e92fc6fe80a2b57fcc410294a24d1addfcb322a662675ed04f65166c29b
+	source_i686 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-4.5.1-py3-none-manylinux2014_i686.whl
+	sha512sums_i686 = a81c0d7df9b639e2936eb73e7abbac07e2e1f116c8a259370904551ed86e74d0fa7c1c98c2e3fbc8262564dcf4f6da4dcdbd3c1c1e62e47784ef98eb12aabc53
+	source_aarch64 = https://files.pythonhosted.org/packages/py3/p/pyinstaller/pyinstaller-4.5.1-py3-none-manylinux2014_aarch64.whl
+	sha512sums_aarch64 = 4f1fd8da1f3bea146b7f2ea352821465d9f08d70f3aeff4c11845bce4cfe2a590230e5561eb55d1dc97b6c5ce75c0d9a9b6b74ad4b6e899ad63ba7ba8bc6f98e
 
 pkgname = pyinstaller
