@@ -1,0 +1,22 @@
+pkgbase = cutefish-launcher-git
+	pkgdesc = CutefishOS's full-screen application launcher
+	pkgver = 0.3.r11.gb6fa3ac
+	pkgrel = 1
+	url = https://github.com/cutefishos/launcher
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = qt5-tools
+	makedepends = git
+	depends = fishui-git
+	depends = kwindowsystem
+	depends = libcutefish-git
+	provides = cutefish-launcher
+	conflicts = cutefish-launcher
+	conflicts = deepin-kwin
+	source = git+https://github.com/cutefishos/launcher.git
+	sha512sums = SKIP
+
+pkgname = cutefish-launcher-git
