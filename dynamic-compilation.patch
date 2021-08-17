@@ -1,11 +1,11 @@
-diff -ura xmonad-0.13.orig/src/XMonad/Core.hs xmonad-0.13/src/XMonad/Core.hs
---- xmonad-0.13.orig/src/XMonad/Core.hs	2017-06-23 17:13:06.154600231 +0300
-+++ xmonad-0.13/src/XMonad/Core.hs	2017-06-23 17:13:51.021867441 +0300
-@@ -626,6 +626,7 @@
-                           , "-ilib"
-                           , "-fforce-recomp"
-                           , "-main-is", "main"
-+                          , "-dynamic"
-                           , "-v0"
-                           , "-o", bin
-                           ] (Just dir) Nothing Nothing Nothing (Just errHandle)
+diff '--color=auto' --unified --recursive --text xmonad.orig/src/XMonad/Core.hs xmonad.new/src/XMonad/Core.hs
+--- xmonad.orig/src/XMonad/Core.hs	2021-08-17 11:23:26.576949545 +0100
++++ xmonad.new/src/XMonad/Core.hs	2021-08-17 11:25:17.806937587 +0100
+@@ -670,6 +670,7 @@
+               , "-ilib"
+               , "-fforce-recomp"
+               , "-main-is", "main"
++              , "-dynamic"
+               , "-v0"
+               , "-outputdir", buildDirName dirs
+               , "-o", binFileName dirs

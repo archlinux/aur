@@ -4,7 +4,7 @@
 # Contributor: shild <shildv@gmail.com>
 
 pkgname=xmonad-git
-pkgver=v0.15.r117.gbbb4a0e
+pkgver=v0.15.r161.gbe1d226
 pkgrel=1
 pkgdesc="Lightweight X11 tiled window manager written in Haskell"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=('git://github.com/xmonad/xmonad.git'
         'dynamic-compilation.patch'
         'xmonad.svg')
 md5sums=('SKIP'
-         'b2e645bb5aa91c64f85004806e049b8d'
+         '0a67c65162c618abaf496c877c5d07b9'
          '72bfa5e62e4e44fe7fa59b6a7593d993')
 options=('staticlibs')
 
