@@ -26,7 +26,7 @@ source=(
 md5sums=(
 	'SKIP'
 	'c181439b9cd1c7905c37dcaa8c53580f'
-	'113449dd0ba48054b4c3300442e71775'
+	'3f9c5710d25ed2e7b613c498ba7fa12a'
 )
 
 backup=(
