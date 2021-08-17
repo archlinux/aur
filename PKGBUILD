@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=92.0.4515.131
+pkgver=92.0.4515.159
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=7
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-freetype-2.11.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('b6ac840ed5390de69f962e922649bf1df895ff0f5db8e5f656b5191e0cf4ce3a'
+sha256sums=('d97d337d0d70e959a75f1f510f5d78d2b57b5bf24573b7ade9fff9f26a7cfd11'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '53a2cbb1b58d652d5424ff9040b6a51b9dc6348ce3edc68344cd0d25f1f4beb2'
             '66db9132d6f5e06aa26e5de0924f814224a76a9bdf4b61afce161fb1d7643b22'
