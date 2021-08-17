@@ -2,7 +2,7 @@
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-git
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
@@ -56,7 +56,7 @@ build() {
     --prefix=/usr \
     --buildtype=release \
     -Db_lto=true \
-    -Dterminfo-install-location=disabled \
+    -Dterminfo=disabled \
     . build
 
   if [[ ${do_pgo} == yes ]]; then
