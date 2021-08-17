@@ -1,0 +1,16 @@
+pkgbase = robonomics-git
+	pkgdesc = Robonomics platform includes a set of open-source packages and infrastructure for Robotics, Smart Cities and Industry 4.0 developers
+	pkgver = 1.1.0.r1.gf82d78ee
+	pkgrel = 1
+	url = https://github.com/airalab/robonomics
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = cargo
+	makedepends = git
+	provides = robonomics
+	conflicts = robonomics
+	source = git+https://github.com/airalab/robonomics.git
+	md5sums = SKIP
+
+pkgname = robonomics-git
