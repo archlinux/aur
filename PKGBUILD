@@ -1,7 +1,7 @@
 # Maintainer: Chris Lane <aur at chrislane dot com>
-_npmver=0.2.0-rc.2
+_npmver=0.2.0
 pkgname=instant-markdown-d
-pkgver=0.2.0_rc.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Instantly-updating Markdown Server'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${_npmver}.tgz")
 noextract=("${pkgname}-${_npmver}.tgz")
-sha512sums=('f452204931e66760ed311223f01c05b9fdada09f3f51650007ef54e36bf0d2d88b9b5e85062a2763bbcd2b9c6abb3bbcd0e82461309cc56e2533651113638138')
+sha512sums=('f1e55c5b261f943eec1b5999384b9e4b047032c9a615e0b2d617328e427ea0bb64fc929c3205163c6b34a5fe5d997157c512623cfc70a9085a900abb45596df5')
 
 package() {
   npm install -g --user root --prefix "${pkgdir}/usr" "$srcdir/${pkgname}-${_npmver}.tgz"
