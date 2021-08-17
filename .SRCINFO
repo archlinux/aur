@@ -1,0 +1,17 @@
+pkgbase = purism-stream
+	pkgdesc = YouTube client for GNOME, built for the Librem 5
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://source.puri.sm/todd/Stream
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = python
+	depends = gtk3
+	depends = libhandy
+	depends = pulseaudio
+	source = https://source.puri.sm/todd/Stream/-/archive/0.1.6/Stream-0.1.6.tar.gz
+	sha256sums = 5d29c482fb006e1bfd05410b92aa4f12b473c9a9651a1da7dbccfa60fecb6bcd
+
+pkgname = purism-stream
