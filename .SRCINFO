@@ -1,0 +1,16 @@
+pkgbase = brother-dcpj1200w
+	pkgdesc = Driver for the Brother DCP-J1200W
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=dcpj1200w_eu_as
+	install = brother-dcpj1200w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = cups
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf105286/dcpj1200wpdrv-3.5.0-1.i386.rpm
+	sha256sums = a20b4dcd385b1a8bc1a46e5e648020cb201a9c9b29903dd5b62c371f116c3ca6
+	sha256sums = b39ab6013520ed5d909992c8b6d9263c49126b34a5285e7bf94d40160c8a7cbd
+
+pkgname = brother-dcpj1200w
