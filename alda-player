@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec java -jar /usr/share/java/alda-player.jar "$@"
