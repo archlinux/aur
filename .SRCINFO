@@ -1,0 +1,14 @@
+pkgbase = free-delta
+	pkgdesc = An Open Source System for Processing Taxonomic Descriptions
+	pkgver = 2.8.2
+	pkgrel = 1
+	url = http://freedelta.sourceforge.net/
+	arch = x86_64
+	arch = i386
+	license = unknown
+	source_x86_64 = https://pilotfiber.dl.sourceforge.net/project/freedelta/freedelta/freedelta_2.8.2_amd64.deb
+	sha256sums_x86_64 = 90f9ce3bb0cedeb9ddb44a8e17bfedda38615fe16b7743b76332109443c32a29
+	source_i386 = https://pilotfiber.dl.sourceforge.net/project/freedelta/freedelta/freedelta_2.8.2_i386.deb
+	sha256sums_i386 = 96f0919dfd324737fc66f0b1fb78ec11a6aefe35de2441baa97f2e4de0050af8
+
+pkgname = free-delta
