@@ -1,6 +1,6 @@
 pkgbase = citramanik-qt-git
 	pkgdesc = Your next way to export your Inkscape work for all purpose quickly
-	pkgver = 1.1.0.r11.59771f5
+	pkgver = 1.1.0.r13.981129c
 	pkgrel = 1
 	url = https://citramanik.dev-is.my.id
 	arch = x86_64
