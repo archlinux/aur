@@ -1,6 +1,6 @@
 pkgbase = getextensions-git
 	pkgdesc = Python GTK app to install extensions from extensions.gnome.org
-	pkgver = 1.0.r1.f110d02
+	pkgver = 1.0.r2.g544653d
 	pkgrel = 1
 	url = https://github.com/ekistece/GetExtensions
 	arch = any
@@ -18,4 +18,3 @@ pkgbase = getextensions-git
 	sha256sums = 8e3755f25c9b2726385349609959bf0fa994b27b1a60cd301c7a735fd198d49b
 
 pkgname = getextensions-git
-
