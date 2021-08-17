@@ -1,14 +1,14 @@
 pkgbase = blade-formatter
 	pkgdesc = An opinionated blade template formatter for Laravel that respects readability
-	pkgver = 1.11.12
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/shufo/blade-formatter
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = blade-formatter-1.11.12.tgz
-	source = https://registry.npmjs.org/blade-formatter/-/blade-formatter-1.11.12.tgz
-	md5sums = 0481f36c84bac15480a0d9a0270fe0df
+	noextract = blade-formatter-1.12.1.tgz
+	source = https://registry.npmjs.org/blade-formatter/-/blade-formatter-1.12.1.tgz
+	md5sums = 46168bd2e249f2d4faba0e49680a64d0
 
 pkgname = blade-formatter
