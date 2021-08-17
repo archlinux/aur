@@ -1,13 +1,8 @@
 # Maintainer: Dct Mei <dctxmei@yandex.com>
 
-pkgbase=geph4
-pkgname=('geph4-binder'
-         'geph4-bridge'
-         'geph4-client'
-         'geph4-exit'
-         'geph4-vpn-helper')
+pkgname=geph4
 pkgver=4.4.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A command-line Geph4 toolset"
 arch=('x86_64')
 url="https://github.com/geph-official/geph4"
@@ -45,7 +40,7 @@ build() {
     cargo build --release --manifest-path=geph4-vpn-helper/Cargo.toml
 }
 
-package_geph4-binder() {
+_package_geph4-binder() {
     conflicts=('geph4-binder-git')
     backup=('etc/default/geph4-binder')
     cd "${srcdir}"/"${pkgbase}-${pkgver}"/
@@ -55,7 +50,7 @@ package_geph4-binder() {
     install -Dm 644 "${srcdir}"/geph4-binder.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
-package_geph4-bridge() {
+_package_geph4-bridge() {
     conflicts=('geph4-bridge-git')
     backup=('etc/default/geph4-bridge')
     cd "${srcdir}"/"${pkgbase}-${pkgver}"/
@@ -65,7 +60,7 @@ package_geph4-bridge() {
     install -Dm 644 "${srcdir}"/geph4-bridge.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
-package_geph4-client() {
+_package_geph4-client() {
     conflicts=('geph4-client-git')
     backup=('etc/default/geph4-client')
     cd "${srcdir}"/"${pkgbase}-${pkgver}"/
@@ -75,7 +70,7 @@ package_geph4-client() {
     install -Dm 644 "${srcdir}"/geph4-client.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
-package_geph4-exit() {
+_package_geph4-exit() {
     conflicts=('geph4-exit-git')
     backup=('etc/default/geph4-exit')
     cd "${srcdir}"/"${pkgbase}-${pkgver}"/
@@ -85,11 +80,15 @@ package_geph4-exit() {
     install -Dm 644 "${srcdir}"/geph4-exit.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 
-package_geph4-vpn-helper() {
+_package_geph4-vpn-helper() {
     depends+=('geph4-client')
     conflicts=('geph4-vpn-helper-git')
     cd "${srcdir}"/"${pkgbase}-${pkgver}"/
     install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-vpn-helper/LICENSE
     install -Dm 755 target/release/geph4-vpn-helper -t "${pkgdir}"/usr/bin/
     install -Dm 644 "${srcdir}"/geph4-vpn-helper.service -t "${pkgdir}"/usr/lib/systemd/system/
+}
+
+package() {
+    ls
 }

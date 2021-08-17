@@ -1,14 +1,14 @@
 pkgbase = geph4
 	pkgdesc = A command-line Geph4 toolset
 	pkgver = 4.4.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/geph-official/geph4
 	arch = x86_64
 	groups = geph4
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = geph4-4.4.7.tar.gz::https://github.com/geph-official/geph4/archive/v4.4.7.tar.gz
+	source = -4.4.7.tar.gz::https://github.com/geph-official/geph4/archive/v4.4.7.tar.gz
 	source = geph4-binder.default
 	source = geph4-bridge.default
 	source = geph4-client.default
@@ -29,23 +29,4 @@ pkgbase = geph4
 	sha256sums = 04b096c9e99f655c7f7e9e13082be2a487e255c2366471ad9c9e3216be389774
 	sha256sums = ae990333a1eebd5d5bb57ebd4a930db84d08a2c7db541d349de119280473e043
 
-pkgname = geph4-binder
-	conflicts = geph4-binder-git
-	backup = etc/default/geph4-binder
-
-pkgname = geph4-bridge
-	conflicts = geph4-bridge-git
-	backup = etc/default/geph4-bridge
-
-pkgname = geph4-client
-	conflicts = geph4-client-git
-	backup = etc/default/geph4-client
-
-pkgname = geph4-exit
-	conflicts = geph4-exit-git
-	backup = etc/default/geph4-exit
-
-pkgname = geph4-vpn-helper
-	depends = gcc-libs
-	depends = geph4-client
-	conflicts = geph4-vpn-helper-git
+pkgname = geph4
