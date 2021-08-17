@@ -1,7 +1,7 @@
 # Maintainer: nitsky
 arch=("x86_64")
 license=("MIT")
-pkgdesc="Tangram is an all-in-one automated machine learning framework."
+pkgdesc="Tangram makes it easy for programmers to train, deploy, and monitor machine learning models."
 pkgname=tangram-bin
 pkgrel=1
 pkgver=0.7.0
