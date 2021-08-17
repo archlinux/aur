@@ -1,0 +1,11 @@
+pkgbase = ttf-forsvarsmakten-sans-stencil
+	pkgdesc = Swedish Armed Forces stencil font
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.forsvarsmakten.se/sv/aktuellt/press/heraldiskt-vapen-och-logotyp/
+	arch = any
+	license = unknown
+	source = https://github.com/Gallienus/ForsvarsmaktenSansStencil/releases/download/v1/ForsvarsmaktenSansStencil.ttf
+	md5sums = 4d5456c66a4fe8db08d09b7800a5e206
+
+pkgname = ttf-forsvarsmakten-sans-stencil
