@@ -21,7 +21,6 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver" \
-    -tags zip117 \
     -o $pkgname \
     github.com/pgaskin/kepubify/v4/cmd/kepubify/
 
