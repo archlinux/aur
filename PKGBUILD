@@ -23,7 +23,6 @@ package_meridius-electron-bin() {
         mkdir -p ${pkgdir}/usr/share/applications
 
             bsdtar -xvf data.tar.xz ./opt/Meridius/resources/app.asar ./usr/share/applications/meridiusreborn.desktop ./usr/share/icons/hicolor/256x256/apps/meridiusreborn.png
-            bsdtar -xf data.tar.xz -C "$pkgdir"
 
         sed -i 's!/opt/Meridius/meridiusreborn!electron /usr/share/Meridius/app.asar!' usr/share/applications/meridiusreborn.desktop
         sed -i 's!Audio;!Audio;Music;Player;AudioVideo;!' usr/share/applications/meridiusreborn.desktop
