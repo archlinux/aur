@@ -4,10 +4,10 @@
 
 pkgname=bup-git
 epoch=1
-pkgver=0.32.r0.g3b052c6
-pkgrel=2
+pkgver=0.32.r174.g45d1fd23
+pkgrel=1
 pkgdesc='Efficient file backup system based on the git packfile format'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://bup.github.io/'
 license=('GPL')
 depends=('python-fuse' 'par2cmdline' 'python-pyxattr' 'acl' 'readline' 'attr' 'git')
