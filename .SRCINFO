@@ -1,6 +1,6 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 12.0.0_r187312.gfb85d6eb6c3
+	pkgver = 12.0.0_r187385.gb48d4e68186
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -47,10 +47,11 @@ pkgbase = gcc-git
 pkgname = gcc-git
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends
 	groups = base-devel-git
-	depends = gcc-libs-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-libs-git=12.0.0_r187385.gb48d4e68186-1
 	depends = binutils>=2.28
 	depends = libmpc
 	optdepends = lib32-gcc-libs-git: for generating code for 32-bit ABI
+	provides = gcc
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc
@@ -61,7 +62,9 @@ pkgname = gcc-git
 pkgname = gcc-libs-git
 	pkgdesc = Runtime libraries shipped by GCC
 	depends = glibc
+	provides = gcc-libs
 	provides = gcc-git-multilib
+	provides = gcc-git-multilibgit
 	provides = libgo.so
 	provides = libgfortran.so
 	provides = libgphobos.so
@@ -69,14 +72,14 @@ pkgname = gcc-libs-git
 	provides = libasan.so
 	provides = libtsan.so
 	provides = liblsan.so
-	replaces = gcc-git-multilib
-	replaces = libgphobos
+	replaces = gcc-git-multilib-git
 	options = !emptydirs
 	options = !strip
 
 pkgname = gcc-fortran-git
 	pkgdesc = Fortran front-end for GCC
-	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-git=12.0.0_r187385.gb48d4e68186-1
+	provides = gcc-fortran
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-fortran
@@ -84,7 +87,7 @@ pkgname = gcc-fortran-git
 
 pkgname = gcc-objc-git
 	pkgdesc = Objective-C front-end for GCC
-	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-git=12.0.0_r187385.gb48d4e68186-1
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-objc
@@ -92,7 +95,8 @@ pkgname = gcc-objc-git
 
 pkgname = gcc-ada-git
 	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-git=12.0.0_r187385.gb48d4e68186-1
+	provides = gcc-ada
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
 	conflicts = gcc-ada
@@ -102,7 +106,7 @@ pkgname = gcc-ada-git
 
 pkgname = gcc-go-git
 	pkgdesc = Go front-end for GCC
-	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-git=12.0.0_r187385.gb48d4e68186-1
 	provides = go=1.12.2
 	provides = gcc-git-multilib
 	provides = gcc-git-multilib-git
@@ -113,7 +117,8 @@ pkgname = gcc-go-git
 
 pkgname = gcc-d-git
 	pkgdesc = D frontend for GCC
-	depends = gcc-git=12.0.0_r187312.gfb85d6eb6c3-1
+	depends = gcc-git=12.0.0_r187385.gb48d4e68186-1
+	provides = gcc-d
 	provides = gdc
 	provides = gdc-git
 	conflicts = gcc-d

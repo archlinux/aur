@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git)
-pkgver=12.0.0_r187312.gfb85d6eb6c3
+pkgver=12.0.0_r187385.gb48d4e68186
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=1
@@ -21,7 +21,7 @@ conflicts=(${pkgbase%-git})
 provides=(${pkgbase%-git})
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%_*}
+_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 
 source=(git://gcc.gnu.org/git/gcc.git
         http://isl.gforge.inria.fr/$_isl
@@ -135,9 +135,9 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=(glibc)
   options+=(!strip)
-  provides=($pkgbase-multilib libgo.so libgfortran.so libgphobos.so
+  provides=(gcc-libs $pkgbase-multilib{,git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
-  replaces=($pkgbase-multilib libgphobos)
+  replaces=($pkgbase-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -181,7 +181,7 @@ package_gcc-git() {
   depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
-  provides=($pkgbase-multilib{,-git})
+  provides=(gcc $pkgbase-multilib{,-git})
   conflicts=(gcc)
   replaces=($pkgbase-multilib-git)
   options+=(staticlibs)
@@ -268,7 +268,7 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=($pkgbase-multilib{,-git})
+  provides=(gcc-fortran $pkgbase-multilib{,-git})
   conflicts=(gcc-fortran)
   replaces=($pkgbase-multilib-git)
 
@@ -310,7 +310,7 @@ package_gcc-objc-git() {
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT)'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=($pkgbase-multilib{,-git})
+  provides=(gcc-ada $pkgbase-multilib{,-git})
   conflicts=(gcc-ada)
   replaces=($pkgbase-multilib-git)
   options+=(staticlibs)
@@ -373,7 +373,7 @@ package_gcc-go-git() {
 # package_lib32-gcc-libs-git() {
 #   pkgdesc='32-bit runtime libraries shipped by GCC'
 #   depends=("lib32-glibc>=2.27")
-#   provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+#   provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
 #   conflicts=(lib32-gcc-libs)
 #   groups=(multilib-devel-git)
 #   options=(!emptydirs !strip)
@@ -411,7 +411,7 @@ package_gcc-go-git() {
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC"
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gdc{,-git})
+  provides=(gcc-d gdc{,-git})
   conflicts=(gcc-d)
   replaces=(gdc-git)
   options=(staticlibs)
