@@ -1,0 +1,17 @@
+pkgbase = cutefish-icons-git
+	pkgdesc = System default icon theme of CutefishOS
+	pkgver = 0.3.r2.gf49004ea
+	pkgrel = 1
+	url = https://github.com/cutefishos/icons
+	arch = any
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = git
+	provides = cutefish-icons
+	conflicts = cutefish-icons
+	source = git+https://github.com/cutefishos/icons.git
+	sha512sums = SKIP
+
+pkgname = cutefish-icons-git
