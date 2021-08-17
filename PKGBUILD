@@ -1,7 +1,7 @@
 
 # Maintaner: Dummerle
 pkgname=rare
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A GUI for legendary, an open source replacement for Epic Games Launcher"
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
 sha256sums=("SKIP")
 
