@@ -1,36 +1,29 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 # Maintainer: redtide <redtid3 at gmail dot com>
-# PKGBUILD based on the one from https://aur.archlinux.org/packages/lite
 
 pkgname=lite-xl
-_pkgname=lite
-pkgver=1.16.12
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
-url="https://github.com/${pkgname}/${pkgname}"
+url="https://lite-xl.github.io"
 license=('MIT')
-depends=('agg' 'lua52' 'sdl2')
+depends=('agg' 'lua52' 'reproc' 'sdl2')
 makedepends=('meson')
-conflicts=("$_pkgname")
-provides=("$_pkgname")
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('33303fb91e2c10b10f9f16656f032591d65d3bc22fe9b2ab1d622cd97b79015d61c7a5ef28b4320e6f7ad8cec73f8855351765f4a4984c29a516ba80edb72491')
-b2sums=('044f24d792c98e0a5d01cec4d1c61b224eb0b7b45bac034df9d6415b5a4bd2a7ea0d6e4f48adf0f6cfe06da402b6c9884624ad92f997f27ebbe1ce332d8b99d0')
+conflicts=("lite")
+provides=("lite")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('171bf949f791265943d9f184423677cfda5ca807fa24c6bbd461dfcf1d09f297f32652add4703b8ccdce17e7e6ce0083cf4a1193f99e4e4e49ad11589c51cbfe')
+b2sums=('2e0afcee68138277e0e3ca57395071ad1de2de66257d152ba5465f8a930343af00c6f2db5ffe86809fb53917f88c81e35f45316951a67719ec53e87d7906374e')
 
 build() {
     cd "$pkgname-$pkgver"
-    arch-meson build
+    arch-meson build --wrap-mode=default
     meson compile -C build
 }
 
 package() {
     cd "$pkgname-$pkgver"
-
-    DESTDIR="$pkgdir" meson install -C build
-
-    install -Dm 644 "dev-utils/$_pkgname.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-    install -Dm 644 "dev-utils/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+    DESTDIR="$pkgdir" meson install --skip-subprojects -C build
     install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
