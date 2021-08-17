@@ -1,7 +1,7 @@
 pkgbase = neovim-remote
 	pkgdesc = Support --remote and friends for Neovim
 	pkgver = 2.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mhinz/neovim-remote
 	arch = any
 	license = MIT
@@ -13,4 +13,3 @@ pkgbase = neovim-remote
 	sha256sums = 4213b6eaad638aa20d8687362764843beb626e6e1a03bc3c8b3399bbfc11fbf7
 
 pkgname = neovim-remote
-
