@@ -13,7 +13,7 @@ sha512sums=('bc4d9a8dc411b2bebce65eef58fe9ac698eb2c18a7a85b515c6956bc496485472bb
 
 package_meridius-electron-bin() {
 
-    depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libappindicator-gtk3' 'libsecret')
+    depends=('electron' 'libnotify' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret')
     arch=('x86_64')
     pkgdesc="Music Player for vk.com based on Electron, NuxtJS, Vue. (System Electron)"
     provides=('meridius')
