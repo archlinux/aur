@@ -12,16 +12,16 @@ makedepends=('git')
 optdepends=('pymdown-extensions: for extra utility')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/aliva/gedit-markdownpreview')
+source=('git+https://github.com/aliva/gedit-markdownpreview.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	install -Dm644 "$_pkgname.plugin" "$_pkgname.py" style.css template.html -t \
-		"$pkgdir/usr/lib/gedit/plugins/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm644 "$_pkgname.plugin" "$_pkgname.py" style.css template.html -t \
+    "$pkgdir/usr/lib/gedit/plugins/$_pkgname"
 }

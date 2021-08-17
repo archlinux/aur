@@ -11,8 +11,7 @@ pkgbase = gedit-markdownpreview-git
 	optdepends = pymdown-extensions: for extra utility
 	provides = gedit-markdownpreview
 	conflicts = gedit-markdownpreview
-	source = git+https://github.com/aliva/gedit-markdownpreview
+	source = git+https://github.com/aliva/gedit-markdownpreview.git
 	sha256sums = SKIP
 
 pkgname = gedit-markdownpreview-git
-
