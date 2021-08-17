@@ -1,4 +1,5 @@
-# Maintainer: Øyvind 'Mr.Elendig' Heggstad <mrelendig@har-ikkje.net>
+# Maintainer: Sam Kirby <sam.kirby94@hotmail.co.uk>
+# Contributor: Øyvind 'Mr.Elendig' Heggstad <mrelendig@har-ikkje.net>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
 # Contributor: shild <shildv@gmail.com>
