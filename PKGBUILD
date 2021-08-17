@@ -1,11 +1,11 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 
 pkgname=mopidy-autoplay
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Mopidy extension to automatically pick up where you left off and start playing the last track from the position before Mopidy was shut down."
 arch=('any')
-url="https://github.com/sphh/mopidy-autoplay"
+url="https://codeberg.org/sph/mopidy-autoplay/"
 license=('APACHE')
 depends=(
   'mopidy>=3'
@@ -13,9 +13,9 @@ depends=(
   python-setuptools
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/sphh/$pkgname/archive/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://codeberg.org/sph/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('fc49aca41ff5ae77559dabac4219b6d9dfa32962bcabef73c4933548d6d1182b')
+sha256sums=('a85f2d2937dd6b64f51aa940ee23d665f07f925159c98384a532f4cfbad236f7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
