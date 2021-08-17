@@ -4,7 +4,7 @@
 pkgname=("wezterm-git")
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
 pkgver=20210806.214445.e9ad4376
-pkgrel=2
+pkgrel=3
 arch=("x86_64" "i686")
 url="https://github.com/wez/wezterm"
 license=("MIT")
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=("rust" "cargo" "cmake" "git" "pkgconf" "python")
 provides=("wezterm" "wezterm-gui" "wezterm-mux-server")
-conflicts=("wezterm")
+conflicts=("wezterm" "wezterm-bin" "wezterm-nightly-bin")
 source=(
   "wezterm::git+https://github.com/wez/wezterm.git"
   "harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git"
@@ -30,7 +30,6 @@ source=(
   "freetype2::git+https://github.com/wez/freetype2.git"
 )
 sha256sums=("SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
-conflicts=("wezterm-bin" "wezterm-nightly-bin")
 
 prepare() {
   cd $srcdir/wezterm
