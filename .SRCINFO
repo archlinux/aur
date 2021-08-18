@@ -1,6 +1,6 @@
 pkgbase = goenvtemplator
 	pkgdesc = Tool to template configuration files by environment variables and optionally replace itself with the target binary.
-	pkgver = v2.0.0.rc3.r0.g5875fda
+	pkgver = v2.1.0.r1.g172ef96
 	pkgrel = 1
 	url = https://github.com/seznam/goenvtemplator
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = goenvtemplator
 	license = LGPL3
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/seznam/goenvtemplator.git#tag=v2.0.0-rc3
+	source = git+https://github.com/seznam/goenvtemplator.git#tag=master
 	sha256sums = SKIP
 
 pkgname = goenvtemplator-git
-
