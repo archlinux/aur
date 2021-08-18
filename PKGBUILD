@@ -20,11 +20,11 @@ build() {
   cd $_pkgname-$pkgver
   mkdir -p builddir
   cd builddir
-  meson setup --prefix=/usr --sysconfdir=/etc -Denable-snap=true -Denable-flatpak=true --buildtype=release
+  meson setup --prefix=/usr --sysconfdir=/etc -Denable-flatpak=true --buildtype=release
   ninja
 }
 
-package() {
+package() {https://github.com/tommytran732/libpamac-flatpak
   backup=('etc/pamac.conf')
   cd $_pkgname-$pkgver
   cd builddir
