@@ -1,6 +1,6 @@
 # Maintainer: George Dietrich <george@dietrich.app>
 pkgname=oq
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A performant, and portable jq wrapper to facilitate the consumption and output of formats other than JSON; using jq filters to transform the data.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('jq' 'libyaml' 'libxml2' 'libevent' 'gc' 'pcre')
 makedepends=('crystal' 'shards')
 checkdepends=('jq' 'crystal')
 source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dc71c2662aa67a74add7331b5275dbce2c52adcab88767d356bcdd96f4e73b46')
+sha256sums=('5bfb23b0c527f45eacd40485779c708b1a05dd36015b50b84df29c2ac3f6cdac')
 
 build() {
   cd "$pkgname-$pkgver"
