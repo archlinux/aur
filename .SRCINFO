@@ -4,6 +4,7 @@ pkgbase = flatpak-builder-tools-git
 	pkgrel = 1
 	url = https://github.com/flatpak/flatpak-builder-tools
 	arch = any
+	license = MIT
 	license = unknown
 	makedepends = git
 	depends = flatpak-builder

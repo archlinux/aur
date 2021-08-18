@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Various helper tools for flatpak-builder"
 arch=(any)
 url=https://github.com/flatpak/flatpak-builder-tools
-license=(unknown)
+license=(MIT unknown)
 depends=('flatpak-builder'
          'python>=3.6'
          'python-toml'
@@ -43,22 +43,14 @@ package() {
 
 	# Find all tools
 	for _toolname in $(find -type d -regex '^\.\/\w*$' | sed 's,\.\/,,'); do
-		# Find python scripts
-		for _scriptname in $(find "$_toolname" -type f -regex '.*\.py$' | sed "s,$_toolname/flatpak-\\(.*\\)\.py,\1,"); do
-			install -Dm755 "$_toolname/flatpak-$_scriptname.py" "$_binprefix-$_scriptname"
+		# Find and install scripts
+		for _scriptname in $(find "$_toolname" -type f -regex "^$_toolname/flatpak.*" | sed "s,$_toolname/flatpak\\(.*\\),\1,"); do
+			# Crop extension from scriptname
+			_destname=$(echo "$_scriptname" | sed 's,\(\.py\|\.pl\|\.rb\),,')
+			install -Dm755 "$_toolname/flatpak$_scriptname" "$_binprefix$_destname"
 		done
 
-		# Find perl scripts
-		for _scriptname in $(find "$_toolname" -type f -regex '.*\.pl$' | sed "s,$_toolname/flatpak-\\(.*\\)\.pl,\1,"); do
-			install -Dm755 "$_toolname/flatpak-$_scriptname.pl" "$_binprefix-$_scriptname"
-		done
-
-		# Find ruby scripts
-		for _scriptname in $(find "$_toolname" -type f -regex '.*\.rb$' | sed "s,$_toolname/flatpak_\\(.*\\)\.rb,\1,"); do
-			install -Dm755 "$_toolname/flatpak_$_scriptname.rb" "$_binprefix-$_scriptname"
-		done
-
-		# Find all documentation files for tool
+		# Find all documentation files and install them
 		for _docname in $(find "$_toolname" -type f -regex '.*\.md$'); do
 			install -Dm644 "$_docname" -t "$_docdir/$_toolname"
 		done
