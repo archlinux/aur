@@ -30,4 +30,3 @@ pkgname = python-astropy-healpix
 
 pkgname = python-astropy-healpix-doc
 	pkgdesc = Documentation for AstroPy-HEALPix
-
