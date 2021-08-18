@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762')
 
 prepare() {
-    patch -p1 < ../${_pkgbase}.patch
+    patch -p1 < ${srcdir}/${_pkgbase}.patch
 }
 
 package() {
