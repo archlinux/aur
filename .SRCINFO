@@ -1,0 +1,18 @@
+pkgbase = ruby-fuubar
+	pkgdesc = The instafailing RSpec progress bar formatter
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/thekompanee/fuubar
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-ruby-progressbar
+	depends = ruby-rspec-core
+	options = !emptydirs
+	source = https://github.com/thekompanee/fuubar/archive/releases/v2.5.1/fuubar-2.5.1.tar.gz
+	sha256sums = 0188e92c6b8582c3bad9de2d8584d46c47b3ed3550648e9b591149605b6d4b06
+
+pkgname = ruby-fuubar
