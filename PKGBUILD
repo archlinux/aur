@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=spyder-git
-pkgver=5.0.5.r360.gd829e6db6
+pkgver=5.1.1.r252.g0a86dcdc5
 pkgrel=1
 pkgdesc="The Scientific Python Development Environment"
 arch=('any')
@@ -18,6 +18,8 @@ depends=('jupyter-nbconvert'
          'python-jedi'
          'python-keyring'
          'python-language-server'
+         'python-lsp-black'
+         'python-lsp-server'
          'python-numpydoc'
          'python-paramiko'
          'python-parso'
@@ -32,11 +34,15 @@ depends=('jupyter-nbconvert'
          'python-pyqt5'
          'python-pyzmq'
          'python-qdarkstyle'
+         'python-qstylizer'
          'python-qtawesome'
          'python-qtconsole'
          'python-rope'
+         'python-rtree'
          'python-sphinx'
          'python-spyder-kernels'
+         'python-textdistance'
+         'python-three-merge'
          'python-watchdog'
          'python-xdg'
 
