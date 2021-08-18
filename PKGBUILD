@@ -3,12 +3,15 @@
 pkgname=mpv-autosub-git
 _pkgname=${pkgname%-git}
 pkgver=r52.3511535
-pkgrel=2
+pkgrel=3
 pkgdesc="Fully automatic subtitle downloading for the MPV media player"
 arch=(any)
 url="https://github.com/davidde/mpv-autosub"
 license=("MIT")
-depends=("mpv")
+depends=(
+  "mpv"
+  "subliminal"
+)
 makedepends=("git")
 provides=("mpv-autosub")
 source=("$_pkgname::git+$url")
