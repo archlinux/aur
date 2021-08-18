@@ -6,21 +6,26 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('GPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
-depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl' 'libsodium'
-	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson' 'zbar')
-makedepends=('gettext' 'pkgconfig' 'autoconf' 'gst-plugins-base-libs'
-	     'bluez-libs' 'python' 'glpk' 'libpulse' 'git' 'opus')
-optdepends=('python'
-	    'glpk'
-	    'libpulse'
-	    'opus'
-            'gst-plugins-base-libs: for gnunet-helper-audio-record')
+depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
+	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
+	'openssl' 'libextractor' 'brotli')
+makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
+             'opus')
+optdepends=('bluez: for bluetooth transport'
+            'libzbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
+            'texlive-core: for generating GNS business cards via gnunet-bcd'
+            'miniupnpc: for NAT uPnP support'
+	    'libpulse: for conversation service'
+	    'opus: for conversation service'
+            'pbc: for Attribute-Based Encryption (experimental)'
+            'libgabe: for Attribute-Based Encryption (experimental)'
+            'libpabc: for re:claimID zero-knowledge privacy credentials')
 backup=('etc/gnunetd.conf')
 options=('!makeflags')
 source=("http://ftpmirror.gnu.org/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
@@ -28,6 +33,7 @@ source=("http://ftpmirror.gnu.org/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         'gnunetd.conf')
+install="${pkgname}.install"
 validpgpkeys=('19647543F7861D3BF4E64FF7BF60708B48426C7E'
               '3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
@@ -42,6 +48,7 @@ prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	sed -i 's|contrib doc|doc|' Makefile.*
+	export GNUNET_PREFIX='/usr/lib'
 
 }
 
@@ -49,7 +56,7 @@ build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	test -f Makefile || ./configure --prefix=/usr --without-mysql
+	test -f Makefile || ./configure --prefix='/usr' --without-mysql
 	make
 	make -C contrib
 
