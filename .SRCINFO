@@ -1,0 +1,14 @@
+pkgbase = minetest-qiskitblocks
+	pkgdesc = Teaching Quantum Computing using Qiskit in a block world
+	pkgver = 2020.09.25
+	pkgrel = 1
+	url = https://content.minetest.net/packages/JavaFXpert/qiskitblocks/
+	arch = any
+	license = Apache-2.0
+	depends = minetest-common
+	noextract = qiskitblocks-2020.09.25.zip
+	options = !strip
+	source = qiskitblocks-2020.09.25.zip::https://content.minetest.net/packages/JavaFXpert/qiskitblocks/releases/5212/download/
+	sha256sums = fdb94d062f1a227c77596079b5d078495b8e6f26e89c45b56be3ee7b8d1daa0f
+
+pkgname = minetest-qiskitblocks
