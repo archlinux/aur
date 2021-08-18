@@ -4,9 +4,9 @@
 readonly REPO="github.com/seznam/goenvtemplator"
 
 pkgname=goenvtemplator-git
-pkgver=v2.0.0.rc3.r0.g5875fda
+pkgver=v2.1.0.r1.g172ef96
 pkgbase=goenvtemplator
-_tag="v2.0.0-rc3"
+_tag="master"
 pkgrel=1
 pkgdesc='Tool to template configuration files by environment variables and optionally replace itself with the target binary.'
 arch=('i686' 'x86_64')
@@ -22,18 +22,8 @@ pkgver() {
 }
 
 
-prepare() {
-    rm -rf "${srcdir}/src"
-    mkdir -p "${srcdir}/src/$(dirname "${REPO}")"
-    mv "${srcdir}/${pkgbase}" "${srcdir}/src/${REPO}"
-    ln -s "src/${REPO}" "${srcdir}/${pkgbase}"
-}
-
 build() {
-    cd "${srcdir}/src/${REPO}"
-    export GOPATH="${srcdir}"
-    which glide >/dev/null 2>&1 ||  go get github.com/Masterminds/glide
-    $GOPATH/bin/glide i
+    cd "${srcdir}/${pkgbase}"
     make build
 }
 
