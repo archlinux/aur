@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.7.0.6170.r2924.89f187d6
+pkgver=2.7.0.7000.r3037.a35ce6fb
 pkgrel=1
 pkgdesc="Cross-platform V2Ray Client written in Qt (Development Release)"
 arch=('x86_64')
