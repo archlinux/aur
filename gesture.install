@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: This plugin requires extensive manual setup.'
+	echo ':: Please consult the README installed into /usr/share/doc/neovim-gesture-git/README.md for information.'
+}
