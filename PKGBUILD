@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.13
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,9 +71,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0003-drm-amdgpu-handle-VCN-instances-when-harvesting.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
          # the main kernel config files
         'config')
 
@@ -312,13 +311,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('3918f81128a312d4bc469a7dda7cc7b5cf74d3469428425c41840e729f5f1720bf79d764e7e751a00ccd5917b29da7d6575fc5fcfdd5bba118b10d94919d0b9a'
+sha512sums=('b01fc715197b1d00647d1602e5d965c788575ed0fc2c641fb237c4bf1c68b252e427fdffeda941b62fed2b78f57b9984d1f57a729f64feabe2469b959143236c'
             'SKIP'
             'df0cc22801c81c24fa6202799518fb363ae6e2bf44c88bfd1ea83fa3d2be3730cfada04a3a2b7845f44d0ca8c48cdaf50be79be250c351a1485c3b557a579515'
             'c70ed7f971548c32080bf610f0e0d99c5489bea5262945a486df9b4f0c9bde915078a1b4acd15aed0dc6d2ecee511b5a76f5d47ea88977de17e0c6ceb3cde21c'
-            'bc191829371a9210772c987ce31a33a64a228268a0319ba123353d40b41e1428870ffc814f2b03453e5e4d69fb79b9afe55dcfcd30009029cd51e1b6f4b09d78'
-            '07c09eb8eeb2fa9d84c8f38ea4789a050baea5b8b5617bca9824ba009688555a3511d82e27c8799a503328b0e3684166fb3b1417b92e986e564e90a994931610'
-            '0a5f7334690ebd8552f97f19e715b6408b3cc6e9477fe40142ac36bf1e51f4d37e525fc31cc719a5b1b9d62884010c0c5f06ea2e10d22704efa169594d475d56'
+            '7e224b2cc546f965625e5de38ac8158d2107e2ea78130843f3c0ef3b28e5342d57e6cd44062ce2db1c322708d847bb38ef11d19ce8f45cc3bb82d078b3a3fa19'
+            'f29f44e363f663244e3713481ec1386a12f91ffc3988d82c7f206f7782611410333a55af2d9efa9db33d5a45a0fe29a92e6310032efe90cc11d55a037a368747'
             '8b8c0013548f74ca10b7d770690891cbe52f1d67520b39f7377213190952d1ca0dd65b73ba714067619f6d7baa34ddd39813f52bdd962588d435c1d01a16ba5a')
 
 validpgpkeys=(
