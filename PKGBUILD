@@ -5,7 +5,7 @@
 pkgname='dashcore'
 _pkgname='dash'
 pkgver=0.17.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 arch=('x86_64')
 url="https://www.dash.org/"
@@ -32,12 +32,12 @@ prepare () {
  #deque patch 2020-02-12 == http: add missing header bootlegged by boost < 1.72
  #inlcude deque library in src/httpserver.cpp found in https://github.com/bitcoin/bitcoin/commit/a5929130223973636f3fd25fbfaf2953f2ec96a9 and #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this.
-  patch --forward --strip=1 --input="../../deque.patch"
+  patch --forward --strip=1 --input="${srcdir}/deque.patch"
 
  #QPainterPath 2020-10-12 == Add missing QPainterPath include
  #include QPainterPath library in src/qt/trafficgraphwidget.cpp found in https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690
  #will delete when dash fixes/commits this. This happens because dash is compiling against older versions of qt5-base
-  patch --forward --strip=1 --input="../../qpainterpath.patch"
+  patch --forward --strip=1 --input="${srcdir}/qpainterpath.patch"
 }
 
 build() {
