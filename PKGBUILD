@@ -6,24 +6,23 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r13667.g4e877b8ae
-pkgrel=1
+pkgver=r13686.gdb0954787
+pkgrel=2
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(gtk2 gtk3 qt5-base libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
+depends=(gtk3 wxgtk3-dev-opt libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+         soundtouch portaudio portmidi lame jack2)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg jack nasm conan scdoc)
-# can't find system lame portmidi
+             ffmpeg nasm chrpath)
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
-source=("git+https://git.sr.ht/~tenacity/tenacity"
-        "tenacity.patch")
-sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
+source=("git+https://git.sr.ht/~tenacity/tenacity")
+sha256sums=('SKIP')
 
 pkgver() {
   cd tenacity
@@ -39,17 +38,17 @@ prepare() {
     cd ..
   done
   cd ../..
-  patch --forward --strip=1 --input="${srcdir}/tenacity.patch"
   mkdir -p build
 }
 
 build() {
   cd tenacity/build
   CC=clang CXX=clang++ cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Daudacity_use_wxwidgets=local \
+    -DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config-gtk3 \
+    -DwxWidgets_INCLUDE_DIRS=/opt/wxgtk-dev/include/wx-3.1 \
+    -DwxWidgets_LIBRARIES=/opt/wxgtk-dev/lib \
     audacity_use_ffmpeg:STRING=loaded \
     ..
   cmake --build .
@@ -59,4 +58,9 @@ build() {
 package() {
   cd tenacity/build
   make DESTDIR="${pkgdir}" install
+
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-strings.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-string-utils.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/lib-utility.so"
+  chrpath --delete "${pkgdir}/usr/lib/tenacity/modules/mod-script-pipe.so"
 }
