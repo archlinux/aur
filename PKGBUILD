@@ -46,6 +46,7 @@ sha256sums=('SKIP'
 pkgver() {
 
 	cd "${_appname}"
+
 	printf "'%s.r%s.%s'" \
 		"$(grep 'AC_INIT' configure.ac | grep -o '[0-9]\(\.[0-9]\+\)\+')" \
 		"$(git rev-list --count HEAD)" \
