@@ -1,5 +1,0 @@
-post_remove() {
-	getent passwd gnunet > /dev/null && userdel gnunet
-	getent group gnunet > /dev/null && groupdel gnunet
-	getent group gnunetdns > /dev/null && groupdel gnunetdns
-}

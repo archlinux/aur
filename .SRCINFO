@@ -1,9 +1,8 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
-	pkgver = 0.13.3.r29153.87467c4aa
+	pkgver = 0.15.0.r29762.48b633f2a
 	pkgrel = 1
 	url = http://gnunet.org
-	install = gnunet.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -28,7 +27,6 @@ pkgbase = gnunet-git
 	depends = libidn
 	depends = jansson
 	depends = zbar
-	optdepends = bluez-libs
 	optdepends = python
 	optdepends = glpk
 	optdepends = libpulse
@@ -36,6 +34,7 @@ pkgbase = gnunet-git
 	optdepends = gst-plugins-base-libs: for gnunet-helper-audio-record
 	provides = gnunet
 	conflicts = gnunet
+	conflicts = gnunet-bin
 	options = !makeflags
 	backup = etc/gnunetd.conf
 	source = git+https://gnunet.org/git/gnunet.git
@@ -47,7 +46,6 @@ pkgbase = gnunet-git
 	sha256sums = 2fb156b5bda51ef7c0659ca19113e7c8cd651637ffb379264e2b61f65be367d1
 	sha256sums = 65daa9fb07bdc8b8a11ca06f320b94ce6cfcc9681c6693ac655ca54881645a39
 	sha256sums = 4832e45c02ad768a713ca7f2a04b58794e268a49130b5b8ab6b91917e3d4f945
-	sha256sums = 52185d9f89eab7cdf10b8de4e5b651a854b05cc9d22e0c8139056a945b01f4cc
+	sha256sums = 582c617cfcb0b28e28c8ab42925307f79cf147f3231a9782c46893383c31b19e
 
 pkgname = gnunet-git
-
