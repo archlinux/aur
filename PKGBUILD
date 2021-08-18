@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="modern PHP webmail client"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-b2sums=('1b3f3dfcef22448c360cf0249a8a00eda89c39db80414ac2ca5ef3c2bcc3701cb0ad9408e43276e60c027912befbc6eea6fe54bb6bb730b4846595a266e686fb'
+b2sums=('f9df25b1bf4259e72a6886008a38540969020857a5b1a77986a6941599a472bae39b2db17d8d18eaf7f7f81056800bb42845acc6adec47326b900ee7a6eae2fa'
         'e020b2d4bc694ca056f5c15b148c69553ab610b5e1789f52543aa65e098f8097a41709b5b0fc22a6a01088a9d3f14d623b1b6e9ae2570acd4f380f429301c003'
         'be25b05d775ac4e88065e8018a1026b4c41a073639e59e6520818b7ca578cc93ac2120bd090caf1d255fade69a6680ca764b14cb32f6dd61c80b521d1b16f205')
 
