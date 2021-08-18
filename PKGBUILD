@@ -1,7 +1,7 @@
 # Maintainer: Den Ivanov <securityxiii@gmail.com>
 
 pkgname=telegram-desktop-wide
-pkgver=2.6.1
+pkgver=2.9.3
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -9,21 +9,32 @@ pkgdesc='Official Telegram Desktop client, with wide message bubbles'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'rlottie-tdesktop' 'kwayland' 'libtg_owt')
+#depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
+
+depends=(
+    desktop-file-utils
+    glib2
+    hicolor-icon-theme
+    libdbus
+    libx11
+    ffmpeg
+    minizip
+    qt5-imageformats
+)
+makedepends=('chrpath' 'cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'kwayland' 'libtg_owt' 'microsoft-gsl' 'extra-cmake-modules')
+#makedepends=('cmake' 'ninja' 'git' 'chrpath' 'kwayland' 'rlottie-tdesktop' 'microsoft-gsl')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch
         fix-qt-build.patch)
-sha512sums=('92506477ee1778f7528d8b914406cbf04abf1941d4f1a5d61b75dbf393df2184da1f4f83bbc343e221a539c7a01d3e3b3fe5286453d2bf1863b75ea922b70d5a'
+sha512sums=('810cfac5d7e6ce9413b1b2406927e89c1383ea5b725233a68b2cb29dd374b4c3386c22186640afde4492c844516c88889a5db8e5b167a09d6d6c1270ac965ac4'
             'd350450a1e3b950a6df34a24caa340c848c83e0aa93acf95d80b1e5a5c39fe7e2ab122025a718861751541a0d8bfee35482cc13f261ea0fbce874e214213ddae'
             '850421cd5700df1c33af7b7f8aaf57b60a51e9694250068149c3221e750214f860665987e0f6aadd077c13e9c04c2f0662f0a58dce9d3085d96d7fdcd42ca81b')
 
 prepare() {
     cd tdesktop-$pkgver-full
     patch -p0 < ../wide-messages.patch
-    patch -p0 < ../fix-qt-build.patch
+#    patch -p0 < ../fix-qt-build.patch
     cd cmake
     echo "target_link_libraries(external_webrtc INTERFACE jpeg)" | tee -a external/webrtc/CMakeLists.txt
 }
