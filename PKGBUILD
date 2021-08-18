@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
