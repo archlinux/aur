@@ -15,16 +15,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Adapta-Projects/Papirus-Lin
 sha256sums=('2e8764a1eee5aaba97471d85c320238659f7cb74577454eb20c91dcca18b038a')
 
 package() {
-	cd Papirus-Linux-Universe-$pkgver
-	install -Dm755 papirus-folders "$pkgdir/usr/bin/papirus-folders"
-	install -Dm755 papirus-folders1 "$pkgdir/usr/bin/papirus-folders-nord"
+  cd Papirus-Linux-Universe-$pkgver
+  install -Dm755 papirus-folders "$pkgdir/usr/bin/papirus-folders"
+  install -Dm755 papirus-folders1 "$pkgdir/usr/bin/papirus-folders-nord"
 
-	for i in 22x22 24x24 32x32 48x48 64x64; do
+  for i in 22 24 32 48 64; do
 
-		# Remove conflicting icons provided by papirus-icon-theme
-		rm Icons/${i}/*breeze*
+    # Remove conflicting icons provided by papirus-icon-theme
+    rm Icons/${i}x${i}/*breeze*
 
-		install -d "$pkgdir/usr/share/icons/Papirus/${i}/places"
-		cp -r Icons/${i}/* "$pkgdir/usr/share/icons/Papirus/${i}/places"
-	done
+    install -d "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
+    cp -r Icons/${i}x${i}/* "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
+  done
 }
