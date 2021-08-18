@@ -7,7 +7,7 @@ pkgver=2.0.4
 pkgrel=1
 pkgdesc='A free and open source, cross-platform, libmpv based multimedia player. Qt5 build. Development version.'
 arch=('i686' 'x86_64')
-url='http://bakamplayer.u8sand.net/'
+url='https://u8sand.github.io/Baka-MPlayer/'
 license=('GPL')
 
 depends=('mpv' 'qt5-declarative' 'qt5-svg' 'qt5-x11extras')
