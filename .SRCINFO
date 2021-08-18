@@ -1,0 +1,14 @@
+pkgbase = minetest-box-world-3d
+	pkgdesc = A puzzle game where you push boxes into marbles, whilst avoiding obstacles
+	pkgver = 1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Hume2/boxworld3d/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = boxworld3d-1.zip
+	options = !strip
+	source = boxworld3d-1.zip::https://content.minetest.net/packages/Hume2/boxworld3d/releases/7435/download/
+	sha256sums = 14443f0b859a93825144dd0c2db1ee1c5eb441d6d92e5aa8cccee63677e0a180
+
+pkgname = minetest-box-world-3d
