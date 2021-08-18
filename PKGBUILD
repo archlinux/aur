@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-noetic-rviz'
 pkgver='1.14.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -64,6 +64,10 @@ depends=(
 _dir="rviz-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rviz/archive/${pkgver}.tar.gz")
 sha256sums=('ef889654426936f9d67e1c15aa78a64e52a2e51044d1284c9f2c0beda9f399e9')
+
+prepare(){
+    sed -i '11s/14/17/' ./${_dir}/CMakeLists.txt
+}
 
 build() {
     # Use ROS environment variables.
