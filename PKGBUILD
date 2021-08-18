@@ -1,7 +1,7 @@
 # Maintainer: Michael Del Rosario <m@delrosariomichael.com>
 pkgname='infracost'
-pkgver=0.9.4
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 pkgdesc='Infracost shows cloud cost estimates for Terraform projects. It helps developers, devops and others to quickly see the cost breakdown and compare different options upfront.'
 url='https://github.com/infracost/infracost'
 arch=('x86_64')
