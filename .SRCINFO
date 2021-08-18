@@ -1,7 +1,7 @@
 pkgbase = spyder-git
 	pkgdesc = The Scientific Python Development Environment
 	pkgver = 5.1.1.r252.g0a86dcdc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spyder-ide.org/
 	arch = any
 	license = MIT
@@ -29,6 +29,7 @@ pkgbase = spyder-git
 	depends = python-pyflakes
 	depends = python-pygments
 	depends = python-pylint
+	depends = python-pyls-spyder
 	depends = python-pympler
 	depends = python-pyqt5
 	depends = python-pyzmq

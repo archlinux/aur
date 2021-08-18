@@ -2,7 +2,7 @@
 
 pkgname=spyder-git
 pkgver=5.1.1.r252.g0a86dcdc5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Scientific Python Development Environment"
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -30,6 +30,7 @@ depends=('jupyter-nbconvert'
          'python-pyflakes'
          'python-pygments'
          'python-pylint'
+         'python-pyls-spyder'
          'python-pympler'
          'python-pyqt5'
          'python-pyzmq'
