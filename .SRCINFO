@@ -1,0 +1,14 @@
+pkgbase = minetest-openblox
+	pkgdesc = Roblox-inspired game. (Work in progress!)
+	pkgver = 2021.08.17
+	pkgrel = 1
+	url = https://content.minetest.net/packages/ROllerozxa/openblox/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = openblox-2021.08.17.zip
+	options = !strip
+	source = openblox-2021.08.17.zip::https://content.minetest.net/packages/ROllerozxa/openblox/releases/8955/download/
+	sha256sums = a0a7048d454ccf05f03af5ae3937a0d9893706aa87a26a7f80b1b3d45730de82
+
+pkgname = minetest-openblox
