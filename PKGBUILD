@@ -1,6 +1,6 @@
 # Maintainer: danieltetraquark
 pkgname=scanservjs
-pkgver=2.16.2
+pkgver=2.17.0
 pkgrel=1
 pkgdesc="SANE scanner nodejs web ui"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
 "https://github.com/sbs20/scanservjs/archive/refs/tags/v${pkgver}.tar.gz"
 "scanservjs.sysusersd"
 )
-sha512sums=('9ca3b445aa603cbad721fa339137c9e9208270021f0c6372f1bae800c1edf95ae5e1ae956485cac6e8fa6c8aab53fbcec94bee9dd50078410315eccfcf69d3a2'
+sha512sums=('1a0c6533ee2213d71cea22355bcf0383a67f717124701b13faedba32be12bb32602ea652c2c3eb4bcd4f348f7a7d722d859dcac14696fc08e1328e49dc628184'
             '48cfc5f2ec0fb1428d6d745cfe9e63f1a020d8bdd94225058b9ab16e077ad83492a68b2b974a4c55f071bddf90202a8b3a7b25fdabdb20ac7a94cef8acd7e6d6')
 
 build() {
