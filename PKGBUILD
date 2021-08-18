@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cobang
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A QR code scanner desktop app for Linux"
 arch=('any')
@@ -11,31 +11,18 @@ depends=('gst-python' 'python-gobject' 'gst-plugin-gtk' 'gst-plugins-good' 'libn
          'python-kiss-headers')
 makedepends=('git' 'meson' 'gobject-introspection')
 checkdepends=('appstream-glib')
-_commit=ca5e48a5aba8f842d2026479d40f59c3919fa501
-source=("$pkgname::git+https://github.com/hongquan/CoBang.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --tags | sed 's/^v//;s/-/+/g'
-}
-
-prepare() {
-	cd "$srcdir/$pkgname"
-
-	# Fix version in About dialog
-	sed -i "s/version: '0.8.0'/version: '0.8.1'/g" meson.build
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6e6c432e18b090b83d060bb46e7bc980bae57a942d9e6b80dedea4b6931fae32')
 
 build() {
-	arch-meson "$pkgname" build
-	meson compile -C build
+  arch-meson CoBang-$pkgver build
+  meson compile -C build
 }
 
 check() {
-	meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
-	DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" meson install -C build
 }
