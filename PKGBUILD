@@ -1,19 +1,22 @@
-# Maintainer: ROllerozxa (temporaryemail4meh [gee mail])
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 pkgname=minetest-infinite-ikea
-pkgver=0.0.3
+_pkgname=ikea
+_pkgauthor=benrob0329
+pkgver=0.0.4
+_cdbrel=8184
 pkgrel=1
 pkgdesc="Survival horror game based on SCP-3008."
-arch=("any")
-url="https://content.minetest.net/packages/benrob0329/ikea/"
 license=("MIT")
+sha256sums=('809152f2009c13803ad968096e2814c0f0d495ffd8439985e9e7acce7aa2b4d6')
+
+arch=("any")
+url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
 depends=("minetest-common")
-source=("ikea-${pkgver}.zip::https://gitlab.com/benrob0329/ikea/-/archive/${pkgver}/ikea-${pkgver}.zip")
-sha256sums=('6d022a44ba2cd7bfabd035d5ebb813e152b27207b58afef0cbde1f3bcbeb520e')
+source=("${_pkgname}-${pkgver}.zip::https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/releases/${_cdbrel}/download/")
 options=(!strip)
+noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
-	cd "ikea-${pkgver}"
-	for f in $(find . -type f); do
-		install -Dm644 "$f" "$pkgdir/usr/share/minetest/games/ikea/$f"
-	done
+	install -d "${pkgdir}/usr/share/minetest/games/"
+	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/"
 }
