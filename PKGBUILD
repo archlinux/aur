@@ -48,13 +48,13 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=50
+_minor=59
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux-CacULE Kernel LTS 5.10 by Hamad Marri and with some other patchsets'
-arch=('x86_64')
+arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
@@ -70,7 +70,7 @@ source=(
   "${_caculepatches}/v5.10/cacule-5.10.patch"
   "${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
   "${_patchsource}/futex-trunk-patches-v2/0001-futex-resync-from-gitlab.collabora.com.patch"
-  "${_patchsource}/futex2/futex2-5.10.patch"
+  "${_patchsource}/futex2-trunk-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
   "${_patchsource}/zen-patches/0001-zen-patches.patch"
   "${_patchsource}/lqx-patches-v4/0001-lqx-patches.patch"
  # "${_patchsource}/fixes-miscellaneous-v11/0001-fixes-miscellaneous.patch"
@@ -210,17 +210,6 @@ prepare() {
           scripts/config --enable CONFIG_CACULE_SCHED
           scripts/config --enable CONFIG_FAIR_GROUP_SCHED
           scripts/config --enable CONFIG_SCHED_AUTOGROUP
-          scripts/config --disable CONFIG_EXPERT
-          scripts/config --disable CONFIG_SCHED_DEBUG
-          scripts/config --disable CONFIG_SCHED_INFO
-          scripts/config --disable CONFIG_SCHEDSTATS
-          scripts/config --disable CONFIG_DEBUG_KERNEL
-          echo "Enabling Full Tickless"
-          scripts/config --disable CONFIG_HZ_PERIODIC
-          scripts/config --disable CONFIG_NO_HZ_IDLE
-          scripts/config --enable CONFIG_NO_HZ_FULL
-          scripts/config --enable CONFIG_NO_HZ
-          scripts/config --enable CONFIG_NO_HZ_COMMON
           scripts/config --enable CONFIG_CONTEXT_TRACKING
           scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
           echo "Enabling KBUILD_CFLAGS -O3..."
@@ -257,67 +246,7 @@ prepare() {
           scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
           echo "Enable VHBA-Module"
           scripts/config --module CONFIG_VHBA
-          scripts/config --disable CONFIG_GCC_PLUGINS
-          # General Setup
-          scripts/config --disable CONFIG_BSD_PROCESS_ACCT
-          scripts/config --disable CONFIG_TASK_XACCT
-          scripts/config --enable CONFIG_PSI
-          scripts/config --disable CONFIG_MEMCG
-          scripts/config --enable CONFIG_CGROUP_CPUACCT
-          scripts/config --disable CONFIG_CGROUP_DEBUG
-          scripts/config --disable CONFIG_CHECKPOINT_RESTORE
-          scripts/config --disable CONFIG_SLAB_MERGE_DEFAULT
-          scripts/config --disable CONFIG_SLAB_FREELIST_HARDENED
-          scripts/config --disable CONFIG_SLUB_CPU_PARTIAL
-          scripts/config --disable CONFIG_PROFILING
 
-      # Processor type and features
-      scripts/config --disable CONFIG_RETPOLINE
-      scripts/config --disable CONFIG_X86_5LEVEL
-      scripts/config --disable CONFIG_KEXEC
-      scripts/config --disable CONFIG_KEXEC_FILE
-      scripts/config --disable CONFIG_CRASH_DUMPs
-      scripts/config --disable CONFIG_KPROBES
-      # Kernel hacking
-      scripts/config --disable CONFIG_FTRACE
-      scripts/config --disable CONFIG_DEBUG_KERNEL
-      scripts/config --disable CONFIG_PAGE_EXTENSION
-      scripts/config --set-val CONFIG_RCU_CPU_STALL_TIMEOUT 4
-      scripts/config --disable CONFIG_PRINTK_TIME
-      scripts/config --disable CONFIG_DEBUG_INFO
-      scripts/config --disable CONFIG_ENABLE_MUST_CHECK
-      scripts/config --disable CONFIG_STRIP_ASM_SYMS
-      scripts/config --disable CONFIG_UNUSED_SYMBOLS
-      scripts/config --disable CONFIG_DEBUG_FS
-      scripts/config --disable CONFIG_OPTIMIZE_INLINING
-      scripts/config --disable CONFIG_DEBUG_SECTION_MISMATCH
-      scripts/config --disable CONFIG_SECTION_MISMATCH_WARN_ONLY
-      scripts/config --disable CONFIG_STACK_VALIDATION
-      scripts/config --disable CONFIG_DEBUG_FORCE_WEAK_PER_CPU
-      scripts/config --disable CONFIG_MAGIC_SYSRQ
-      scripts/config --disable CONFIG_MAGIC_SYSRQ_SERIAL
-      scripts/config --disable CONFIG_PAGE_EXTENSION
-      scripts/config --disable CONFIG_DEBUG_PAGEALLOC
-      scripts/config --disable CONFIG_PAGE_OWNER
-      scripts/config --disable CONFIG_DEBUG_MEMORY_INIT
-      scripts/config --disable CONFIG_HARDLOCKUP_DETECTOR
-      scripts/config --disable CONFIG_SOFTLOCKUP_DETECTOR
-      scripts/config --disable CONFIG_DETECT_HUNG_TASK
-      scripts/config --disable CONFIG_WQ_WATCHDOG
-      scripts/config --set-val CONFIG_PANIC_TIMEOUT 10
-      scripts/config --disable CONFIG_SCHEDSTATS
-      scripts/config --disable CONFIG_SCHED_STACK_END_CHECK
-      scripts/config --disable CONFIG_STACKTRACE
-      scripts/config --disable CONFIG_DEBUG_BUGVERBOSE
-      scripts/config --disable CONFIG_RCU_TRACE
-      scripts/config --disable CONFIG_FAULT_INJECTION
-      scripts/config --disable CONFIG_LATENCYTOP
-      scripts/config --disable CONFIG_PROVIDE_OHCI1394_DMA_INIT
-      scripts/config --disable RUNTIME_TESTING_MENU
-      scripts/config --disable CONFIG_MEMTEST
-      scripts/config --disable CONFIG_KGDB
-      scripts/config --disable CONFIG_EARLY_PRINTK
-      scripts/config --disable CONFIG_DOUBLEFAULT
 
 
 
@@ -474,19 +403,19 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('753adc474bf799d569dec4f165ed92c3'
-         'ae52d0c5a79d57bdc0f40ff9c60ff1f7'
+         '545c24f70bb81dd2006bb0ecaa75a157'
          '7d8c2aaaed142867c014f44b439f8694'
          '74798df2eba8d58326c73606b03786b7'
-         '2239bc24251cb3810f0785ad5e907285'
+         'f7540ed8e2fd397cf647029419091e17'
          '1ddeca3dfe8d2dfbf722a6e19ab500cd'
          '6c1ebf661101e7cecb82b93ea09725ce'
-         '96391d559184627f238c477e84be2121'
+         '0fabe82284ef611e30d9d4e1e5529215'
          '33d41d27d87a9cd6f4c93052d5b9bff3'
          'db72f9fe09be3f11db7e1e268a5ac3eb'
          '45704a71e1cb971e337700c52da739f0'
          'f2ffcac0e7673f862c98c6c258ddd3ca'
          'f912dd337230972d950afd420bbc2c69'
-         '7aeb2c86091b9432d1fc9172d418d486'
+         '8ffe3243a9df5928d0e03e1aa1b60d9a'
          '3c3909f11d89c35d4109c5e9f88aa5e5'
          '0575ffbb96ab5e5b1b2e378667e276ca'
          '3ad540c659e5653032cf33beca21ab0b'
