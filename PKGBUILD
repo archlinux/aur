@@ -17,6 +17,7 @@ options=(!strip)
 noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
-	install -d "${pkgdir}/usr/share/minetest/games/"
-	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/"
+	# the release zip has the files in the root of the archive
+	install -d "${pkgdir}/usr/share/minetest/games/${_pkgname}"
+	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/${_pkgname}/"
 }
