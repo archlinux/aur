@@ -3,7 +3,7 @@
 pkgname=mpv-autosubsync-git
 _pkgname=${pkgname%-git}
 pkgver=r100.ea6d616
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatic subtitle synchronization script for mpv media player'
 arch=('any')
 url='https://github.com/joaquintorres/autosubsync-mpv'
