@@ -5,26 +5,28 @@
 
 pkgname=xflr5
 _revision=1309
+_pkgver=6.49
 pkgver=6.49.r$_revision
-pkgrel=2
+pkgrel=3
 pkgdesc="An analysis tool for airfoils, wings and planes operating at low Reynolds Numbers."
 arch=('i686' 'x86_64')
 url="http://www.xflr5.com/xflr5.htm"
 license=('GPL')
 depends=('qt5-base')
+makedepends=('subversion')
 source=("$pkgname::svn+https://svn.code.sf.net/p/xflr5/code/#revision=$_revision")
 sha256sums=('SKIP')
 
 
 build() {
-  cd $pkgname/$pkgname
+  cd $pkgname/tags/v$_pkgver/xflr5
   
   qmake-qt5 PREFIX=/usr
   make
 }
 
 package() {
-  cd $pkgname/$pkgname
+ cd $pkgname/tags/v$_pkgver/xflr5
 
   make INSTALL_ROOT="$pkgdir" install
 }
