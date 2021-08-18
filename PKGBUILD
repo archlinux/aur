@@ -3,7 +3,7 @@
 
 pkgname=ib-tws
 pkgver=985.1k
-pkgrel=2
+pkgrel=3
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
 url="http://interactivebrokers.com/"
@@ -66,6 +66,7 @@ build() {
   # copy the bundled JRE (do not move it as other install4j applications may be sharing it)
   cp -r "${BUNDLED_JRE_LOCATION}"/* ${srcdir}/jre
   mv ${srcdir}/target/jars/*.jar ${srcdir}
+  rm -f "${HOME}"/Desktop/Trader\ Workstation*.desktop
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
