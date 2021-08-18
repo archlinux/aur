@@ -7,7 +7,17 @@ pkgdesc="Various helper tools for flatpak-builder"
 arch=(any)
 url=https://github.com/flatpak/flatpak-builder-tools
 license=(unknown)
-depends=(flatpak-builder python3)
+depends=('flatpak-builder'
+         'python>=3.6'
+         'python-toml'
+         'python-aiohttp'
+         'python-requirements-parser'
+         'perl'
+         'cpanminus'
+         'perl-json-maybexs'
+         'perl-lwp-protocol-https'
+         'perl-capture-tiny'
+         'ruby')
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,9 +43,19 @@ package() {
 
 	# Find all tools
 	for _toolname in $(find -type d -regex '^\.\/\w*$' | sed 's,\.\/,,'); do
-		# Find scripts for tool
+		# Find python scripts
 		for _scriptname in $(find "$_toolname" -type f -regex '.*\.py$' | sed "s,$_toolname/flatpak-\\(.*\\)\.py,\1,"); do
 			install -Dm755 "$_toolname/flatpak-$_scriptname.py" "$_binprefix-$_scriptname"
+		done
+
+		# Find perl scripts
+		for _scriptname in $(find "$_toolname" -type f -regex '.*\.pl$' | sed "s,$_toolname/flatpak-\\(.*\\)\.pl,\1,"); do
+			install -Dm755 "$_toolname/flatpak-$_scriptname.pl" "$_binprefix-$_scriptname"
+		done
+
+		# Find ruby scripts
+		for _scriptname in $(find "$_toolname" -type f -regex '.*\.rb$' | sed "s,$_toolname/flatpak_\\(.*\\)\.rb,\1,"); do
+			install -Dm755 "$_toolname/flatpak_$_scriptname.rb" "$_binprefix-$_scriptname"
 		done
 
 		# Find all documentation files for tool

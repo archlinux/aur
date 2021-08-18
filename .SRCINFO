@@ -7,7 +7,16 @@ pkgbase = flatpak-builder-tools-git
 	license = unknown
 	makedepends = git
 	depends = flatpak-builder
-	depends = python3
+	depends = python>=3.6
+	depends = python-toml
+	depends = python-aiohttp
+	depends = python-requirements-parser
+	depends = perl
+	depends = cpanminus
+	depends = perl-json-maybexs
+	depends = perl-lwp-protocol-https
+	depends = perl-capture-tiny
+	depends = ruby
 	provides = flatpak-builder-tools
 	conflicts = flatpak-builder-tools
 	source = flatpak-builder-tools::git+https://github.com/flatpak/flatpak-builder-tools.git
