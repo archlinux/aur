@@ -5,7 +5,7 @@ _srcname=linux
 gitver=v5.13.12
 patchver=20210817
 pkgver=5.13.v.12
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -24,7 +24,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '45a5bc583dff38eb4ea27fea6e31aefc8715854477f8f499a09ebb969f532120'
+            '0b1154abe839708bd11195e5287e45326524d7317545e1819232cce040dfcc75'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
