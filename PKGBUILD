@@ -2,13 +2,13 @@
 # Contributor: Marco Carrozzo <ozeta86@gmail.com>
 pkgname=samsung-ml1710
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Samsung ML-1710 CUPS driver"
 arch=('i686' 'x86_64')
 depends=('cups' 'ghostscript')
-license='custom:samsung'
+license=('custom:samsung')
 url="http://www.samsung.com"
-source=("http://downloadcenter.samsung.com/content/DR/200707/20070720165436796_UnifiedLinuxDriver.tar.gz")
+source=("https://downloadcenter.samsung.com/content/DR/200707/20070720165436796_UnifiedLinuxDriver.tar.gz")
 sha256sums=('16eeb8ffd482289222b0defc9159a47db1402e5022233070d28fd27f07750754')
 
 package() {
