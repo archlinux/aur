@@ -2,7 +2,7 @@
 
 pkgname=python-oci
 _pyname=oci-python-sdk
-pkgver=2.43.2
+pkgver=2.44.0
 pkgrel=1
 pkgdesc='Python SDK for Oracle Cloud Infrastructure'
 arch=('x86_64')
@@ -10,15 +10,14 @@ url='https://github.com/oracle/oci-python-sdk'
 license=('Apache')
 depends=('python' 'python-dateutil' 'python-certifi' 'python-cryptography' 'python-pyopenssl' 'python-pytz')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "${pkgname}.patch")
-sha256sums=('f4af61c87b8f68f0a110c1a5bd34e0f1e1b2408c3fae7eefa8015f08088067d1'
-            'aa96b8ce632c19442ee9b279e2a463867cdeeb0f6854d39cdd13a7785c78a88c')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('576ebf0fe780e2626600459b218c01717e3562e1672a6c1b448a11a3d3b8cd3f')
 
 prepare() {
   cd "${_pyname}-${pkgver}"
 
-  patch -p1 -i ../${pkgname}.patch
+  sed -i -r 's/(==|>|<).*"/"/g' setup.py
+  sed -i '/configparser/d' setup.py
 }
 
 build() {
