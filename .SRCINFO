@@ -1,6 +1,6 @@
 pkgbase = golangci-lint
 	pkgdesc = Linters Runner for Go. 5x faster than gometalinter.
-	pkgver = 1.41.1
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://github.com/golangci/golangci-lint
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = golangci-lint
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/golangci/golangci-lint/archive/v1.41.1/golangci-lint-1.41.1.tar.gz
-	sha256sums = 0a9138c5e5ab0916990e573d5669fd4500c73a9e6613f5f91d097a11956e88bb
+	source = https://github.com/golangci/golangci-lint/archive/v1.42.0/golangci-lint-1.42.0.tar.gz
+	sha256sums = 17894ae5f2d8d80ddf3e50827ddee35fb5066085d2e5aecd60eb0a4ab2b1582e
 
 pkgname = golangci-lint
