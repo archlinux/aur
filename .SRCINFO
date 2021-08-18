@@ -1,0 +1,14 @@
+pkgbase = minetest-loria
+	pkgdesc = Survival in hardcore acid-alien sci-fi themed world
+	pkgver = 21w30h
+	pkgrel = 1
+	url = https://content.minetest.net/packages/siegment/loria/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = loria-21w30h.zip
+	options = !strip
+	source = loria-21w30h.zip::https://content.minetest.net/packages/siegment/loria/releases/8599/download/
+	sha256sums = e984047236d08289c62eb9ca2deac53ba2ead60b2af05773cf4f9381e22efc8d
+
+pkgname = minetest-loria
