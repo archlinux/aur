@@ -1,0 +1,4 @@
+pkg
+src
+flatpak-builder-tools
+*.pkg.tar.zst

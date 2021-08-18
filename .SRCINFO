@@ -1,0 +1,16 @@
+pkgbase = flatpak-builder-tools-git
+	pkgdesc = Various helper tools for flatpak-builder
+	pkgver = r269.38be01a
+	pkgrel = 1
+	url = https://github.com/flatpak/flatpak-builder-tools
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = flatpak-builder
+	depends = python3
+	provides = flatpak-builder-tools
+	conflicts = flatpak-builder-tools
+	source = flatpak-builder-tools::git+https://github.com/flatpak/flatpak-builder-tools.git
+	md5sums = SKIP
+
+pkgname = flatpak-builder-tools-git
