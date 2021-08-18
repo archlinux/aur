@@ -9,7 +9,7 @@ url="https://github.com/Nike-Inc/gimme-aws-creds"
 license=('Apache')
 depends=('python-botocore' 'python-dateutil' 'python-beautifulsoup4'
          'python-keyring' 'python-requests' 'python-fido2' 'python-okta-legacy'
-         'python-boto3')
+         'python-boto3' 'python-ctap-keyring-device')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
 sha512sums=('740f3460b535346342177dd3139a139440358ab186f38d9129214176a446c7628f7a02ac4dd7e1e7315352a60c6d329168cbc066b6d35c8fa9f097593f230a13')
