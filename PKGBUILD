@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.13.9.zen1
+pkgver=5.13.10.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches and Modifications'
 _srctag=v${pkgver%.*}-${pkgver##*.}
