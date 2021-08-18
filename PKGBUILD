@@ -22,7 +22,7 @@ source=(
 install="$pkgname.install"
 sha256sums=(
   'SKIP'
-  '7703a53e75719afd51a98f3ba1eaaeef6243ce433ffba8be89dce401064d6161'
+  '9b060797d6c96a1af50a83da1e5f68b6d80307cc06dcb7a963cb2e513d567b68'
 )
 
 pkgver() {
