@@ -1,0 +1,28 @@
+pkgbase = python-openfermion-0.11
+	pkgdesc = The electronic structure package for quantum computers.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/quantumlib/OpenFermion
+	arch = any
+	groups = python-hiq
+	license = Apache
+	checkdepends = python-numpy
+	checkdepends = python-scipy
+	checkdepends = python-networkx
+	checkdepends = python-requests
+	checkdepends = python-pytest
+	checkdepends = jupyter-nbformat
+	checkdepends = python-pubchempy
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://github.com/quantumlib/OpenFermion/archive/v0.11.0.tar.gz
+	sha256sums = 339dd51e738a2ea72f86d71b5a9214ca202ace130fadb013835a142647e0a5c4
+
+pkgname = python-openfermion-0.11
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-networkx
+	depends = python-requests
+	depends = python-pubchempy
+	conflicts = python-openfermion
+
