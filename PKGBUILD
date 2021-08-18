@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab3
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="openhab3 open source home automation software"
 arch=("any")
 url="http://www.openhab.org/"
@@ -32,7 +32,7 @@ sha256sums=('b06a96cb3ffb1c232391f8aa890aee87653505a0ec4261f325cc50bc93a7acc8'
             '9f5185d7f301d7abf5bd362710c89af43fb8391e13010226d43677ba2fc79762')
 
 prepare() {
-    patch -p1 < ../${pkgname}.patch
+    patch -p1 < ${srcdir}/${pkgname}.patch
 }
 
 package() {
