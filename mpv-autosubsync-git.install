@@ -1,0 +1,25 @@
+post_install() {
+  cat << EOF
+    >>> To use this user script, please copy the 
+    >>> sample configuration file to user's home directory:
+    >>>
+    >>>     cp /usr/share/doc/mpv/script-opts/mpv-autosubsync-git.conf \\
+    >>>         ~/.config/mpv/script-opts/autosubsync.conf
+    >>>
+    >>> And configure it as required.
+EOF
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  cat << EOF
+    >>> Please remember to remove configuration file
+    >>> from your ~/.config/mpv/script-opts/ directory:
+    >>>
+    >>>     rm ~/.config/mpv/script-opts/autosubsync.conf
+    >>>
+EOF
+}

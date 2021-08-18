@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!autosubsync.conf
+!mpv-autosubsync-git.install

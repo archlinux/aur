@@ -1,0 +1,19 @@
+pkgbase = mpv-autosubsync-git
+	pkgdesc = Automatic subtitle synchronization script for mpv media player
+	pkgver = r100.ea6d616
+	pkgrel = 1
+	url = https://github.com/joaquintorres/autosubsync-mpv
+	install = mpv-autosubsync-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mpv>=0.33
+	depends = alass
+	optdepends = python-ffsubsync: yet another backend
+	provides = mpv-autosubsync
+	source = mpv-autosubsync::git+https://github.com/joaquintorres/autosubsync-mpv
+	source = autosubsync.conf
+	sha256sums = SKIP
+	sha256sums = 7703a53e75719afd51a98f3ba1eaaeef6243ce433ffba8be89dce401064d6161
+
+pkgname = mpv-autosubsync-git
