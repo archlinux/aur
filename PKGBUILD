@@ -2,8 +2,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=quadpy
 pkgname=python-${_base}
-pkgver=0.16.8
-pkgrel=7
+pkgver=0.16.9
+pkgrel=1
 pkgdesc="Numerical integration (quadrature, cubature) in Python"
 arch=('any')
 url="https://github.com/nschloe/${_base}"
