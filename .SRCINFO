@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-tf
 	pkgdesc = ROS - tf is a package that lets the user keep track of multiple coordinate frames over time.
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/tf
 	arch = i686
 	arch = x86_64
@@ -36,4 +36,3 @@ pkgbase = ros-noetic-tf
 	sha256sums = 6b653d4e10503d3da56bc4000e39ce58d6a85547a37837da576edccecc0c6ae2
 
 pkgname = ros-noetic-tf
-
