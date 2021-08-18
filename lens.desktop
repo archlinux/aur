@@ -7,3 +7,5 @@ Icon=open-lens
 Exec=open-lens %U
 Categories=System;
 StartupNotify=true
+StartupWMClass=Lens
+MimeType=x-scheme-handler/lens;

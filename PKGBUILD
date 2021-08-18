@@ -6,7 +6,7 @@ _pkgname=lens
 _pkgdate=20210722.1
 pkgname=lens-bin
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The Kubernetes IDE'
 arch=('x86_64')
 license=('MIT')
@@ -17,7 +17,7 @@ conflicts=('lens')
 source=(${_pkgname}-${pkgver}.${arch}.AppImage::"https://api.k8slens.dev/binaries/Lens-${pkgver}-latest.${_pkgdate}.${arch}.AppImage"
         "${_pkgname}.desktop")
 sha256sums=('091fde00a9b6de45e149a6ff7c492c26b3c520b53a2527844535f4602ff69cc7'
-            '7acac010857d0afc5717e87e651bd875dab9771685648e3908da538709de2346')
+            '09d155a8f8697dba7e718c22123c08af8b2b22605a9a1998d97ac72a9dacbe54')
 
 prepare() {
   chmod +x "${_pkgname}-${pkgver}.${arch}.AppImage"
