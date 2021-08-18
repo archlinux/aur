@@ -8,7 +8,7 @@
 
 pkgname=gallery-dl-bin
 _pkgname=gallery-dl
-pkgver=1.18.2
+pkgver=1.18.3
 pkgrel=1
 url='https://github.com/mikf/gallery-dl'
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (bin)'
@@ -17,21 +17,13 @@ depends=('zlib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 license=(GPL2)
-source=("${url}"/releases/download/v"${pkgver}"/gallery-dl.bin{,.sig}
-  "https://api.github.com/repos/mikf/${_pkgname}/releases/latest")
+source=("$_pkgname-$pkgver.bin::${url}"/releases/download/v"${pkgver}"/gallery-dl.bin
+"$_pkgname-$pkgver.bin.sig::${url}"/releases/download/v"${pkgver}"/gallery-dl.bin.sig)
 validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88')
-sha256sums=('SKIP'
-  'SKIP'
-  'SKIP')
-
-pkgver() {
-  cd "${srcdir}" || exit
-  grep -oP "https://.*${_pkgname}.bin" latest |
-    head -n1 |
-    sed -re "s|.*/v(.*)/${_pkgname}.bin|\1|g"
-}
+sha512sums=('f6940db72532765f58448808578f26a219be2e9866954956f48e26e51574802fd8674cd5982a4e753107a288c3acff84f15aeec8817389c0c997cca29d73b201'
+            'SKIP')
 
 package() {
   cd "${srcdir}" || exit
-  install -Dm0755 "${_pkgname}.bin" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm0755 "${_pkgname}-${pkgver}.bin" "${pkgdir}/usr/bin/${_pkgname}"
 }
