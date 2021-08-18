@@ -3,7 +3,7 @@
 
 pkgname=python-klein
 pkgver=21.8.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc='A web micro-framework built on werkzeug and twisted.web'
 url='https://github.com/twisted/klein'
@@ -27,6 +27,7 @@ check() {
 
 package() {
   cd klein-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  # use PYTHONHASHSEED=0 work around https://bugs.python.org/issue34033 (?)
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
