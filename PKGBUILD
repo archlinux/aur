@@ -3,12 +3,15 @@
 pkgname=mpv-autosub-zh
 _pkgname=${pkgname%-zh}
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fully automatic subtitle (Chinese) downloading for the MPV media player"
 arch=("any")
 url="https://github.com/davidde/mpv-autosub"
 license=("MIT")
-depends=("mpv")
+depends=(
+  "mpv"
+  "subliminal"
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(

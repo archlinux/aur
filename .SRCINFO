@@ -1,11 +1,12 @@
 pkgbase = mpv-autosub-zh
 	pkgdesc = Fully automatic subtitle (Chinese) downloading for the MPV media player
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davidde/mpv-autosub
 	arch = any
 	license = MIT
 	depends = mpv
+	depends = subliminal
 	provides = mpv-autosub
 	conflicts = mpv-autosub
 	source = autosub.lua
