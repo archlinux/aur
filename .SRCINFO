@@ -1,0 +1,11 @@
+pkgbase = plank-theme-old-style-indark
+	pkgdesc = Collections of Old-Style-InDark Plank Themes
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1345008/
+	arch = any
+	license = CC-BY-SA
+	source = https://github.com/MMcQueenGNU/plank-theme-old-style-indark/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = af0092305cf3d1f07b9065706e3e5126dea0cd3c3e99a9d4f6b280d8d8394f75
+
+pkgname = plank-theme-old-style-indark
