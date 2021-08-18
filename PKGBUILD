@@ -14,7 +14,7 @@ optdepends=('faust' 'lilv' 'suil' 'sdl2' 'libfreenect2' 'qt5-shadertools-git')
 provides=("$pkgname=$pkgver")
 conflicts=('ossia-score-git')
 replaces=('i-score')
-source=("https://github.com/ossia/score/releases/download/v${_pkgver}/Score-v${_pkgver}-src.tar.xz")
+source=("https://github.com/ossia/score/releases/download/v${_pkgver}/ossia.score-${_pkgver}-src.tar.xz")
 sha512sums=("85d50e98d8b34922f82762c619268ab73480d382d8708e5aeab136c430a306eb547fd9aef37b6952611d469b9bb5ddfcd625812a06a66b132edc1a1ebe3d5cd3")
 
 build() {
