@@ -1,0 +1,17 @@
+info() {
+    zinit_dir="\033[1m/usr/share/zinit\033[0m"
+    load_code="\033[0;33msource /usr/share/zinit/zinit.zsh\033[0m"
+    echo -e "\033[0;36m============================提示/INFO===============================\033[0m"
+    echo -e "Zinit 已安装在 $zinit_dir。"
+    echo -e "现在你可以在你的 zshrc 中用 $load_code 加载 zinit。"
+    echo
+    echo -e "Zinit has been installed in $zinit_dir."
+    echo -e "Now you can use $load_code to load zinit in your zshrc."
+    echo -e "\033[0;36m====================================================================\033[0m"
+}
+post_install() {
+    info
+}
+post_remove() {
+    find /home -maxdepth 2 -name ".zinit" -exec rm -rf \{\} \;
+}
