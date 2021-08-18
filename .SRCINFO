@@ -1,0 +1,41 @@
+pkgbase = advene
+	pkgdesc = Video annotation and hypervideo authoring
+	pkgver = 3.13.1
+	pkgrel = 1
+	url = https://github.com/oaubert/advene
+	arch = any
+	license = GPL2
+	depends = frei0r-plugins
+	depends = gst-editing-services
+	depends = gst-libav
+	depends = gst-plugin-opencv
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-python
+	depends = gtksourceview3
+	depends = librsvg
+	depends = pulseaudio
+	depends = python-cairo
+	depends = python-cherrypy
+	depends = python-nltk
+	depends = python-opencv
+	depends = python-objgraph
+	depends = python-pillow
+	depends = python-rdflib
+	depends = python-regex
+	depends = python-requests
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-simplejson
+	depends = webkit2gtk
+	optdepends = espeak: TTS support
+	optdepends = festival: TTS support
+	optdepends = alsa-utils: TTS support - with festival
+	optdepends = brltty: Braille support
+	optdepends = pocketsphinx: Speech recognition
+	provides = python-simpletal=5.2
+	conflicts = python-simpletal=5.2
+	source = advene-3.13.1.tar.gz::https://github.com/oaubert/advene/archive/refs/tags/release/3.13.1.tar.gz
+	sha256sums = fbe98802f1c6dce44b554177855ef354bc4fa04d258486ee8b2aedeb8086d829
+
+pkgname = advene
