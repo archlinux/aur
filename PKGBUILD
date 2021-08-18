@@ -5,7 +5,7 @@ pkgver=2.0.4
 pkgrel=1
 pkgdesc="Cross-platform user-space file systems for Python"
 arch=('any')
-url="https://github.com/rianhunter/userspacefs"
+url="https://thelig.ht/code/userspacefs"
 license=('GPL3')
 depends=('python-fusepyng')
 makedepends=('python-setuptools')
@@ -15,12 +15,12 @@ sha256sums=('33ec27c67b0f88791864dfd47b12b8725e2a3927394a872d3842abeba37ec219'
 validpgpkeys=('584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C') # Rian Hunter <rian@thelig.ht>
 
 build() {
-	cd "$_name-$pkgver"
-    python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

@@ -2,7 +2,7 @@ pkgbase = python-userspacefs
 	pkgdesc = Cross-platform user-space file systems for Python
 	pkgver = 2.0.4
 	pkgrel = 1
-	url = https://github.com/rianhunter/userspacefs
+	url = https://thelig.ht/code/userspacefs
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -14,4 +14,3 @@ pkgbase = python-userspacefs
 	sha256sums = SKIP
 
 pkgname = python-userspacefs
-
