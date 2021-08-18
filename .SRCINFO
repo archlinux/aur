@@ -5,7 +5,6 @@ pkgbase = otf-operator-mono-nerd
 	url = https://www.typography.com/fonts/operator/overview/
 	arch = any
 	license = custom:HCo
-	makedepends = fontforge
 	depends = otf-operator-mono
 	depends = ttf-nerd-fonts-symbols-mono
 	source = 80-operator-mono-nerd-fonts.conf

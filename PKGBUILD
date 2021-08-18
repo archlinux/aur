@@ -13,7 +13,6 @@ pkgrel=2
 arch=('any')
 license=('custom:HCo')
 url='https://www.typography.com/fonts/operator/overview/'
-makedepends=('fontforge')
 depends=('otf-operator-mono' 'ttf-nerd-fonts-symbols-mono')
 source=("80-operator-mono-nerd-fonts.conf")
 sha256sums=('e3b8e79ad1a0fff7bc9a921640df4e7e4172cd7e8e7c185352b5d1e9e1528a38')
