@@ -1,0 +1,17 @@
+pkgbase = stringsext
+	pkgdesc = Find multi-byte-encoded strings in binary data
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://blog.getreu.net/projects/stringsext/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pandoc
+	makedepends = rust
+	depends = gcc-libs
+	source = git+https://gitlab.com/getreu/stringsext.git#commit=6796189e59e43e6d26e239dc38b4a4f59f9e3b93
+	sha256sums = SKIP
+
+pkgname = stringsext
