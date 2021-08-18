@@ -8,7 +8,6 @@ arch=('x86_64')
 url="http://www.jp-minerals.org/vesta/en/"
 license=('VESTA LICENSE')
 conflicts=(vesta)
-pkgbase=vesta
 depends=(
 	'gtk3' 'glu' 'desktop-file-utils' 'libxtst'
 )
