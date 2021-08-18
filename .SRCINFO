@@ -1,0 +1,14 @@
+pkgbase = alass
+	pkgdesc = Automatic Language-Agnostic Subtitle Synchronization
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kaegi/alass
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = ffmpeg
+	provides = alass
+	source = https://github.com/kaegi/alass/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = ce88f92c7a427b623edcabb1b64e80be70cca2777f3da4b96702820a6cdf1e26
+
+pkgname = alass
