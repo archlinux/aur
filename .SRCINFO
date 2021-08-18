@@ -1,0 +1,12 @@
+pkgbase = viddy
+	pkgdesc = A modern watch command
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/sachaos/viddy
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = viddy-0.1.4.tar.gz::https://github.com/sachaos/viddy/archive/v0.1.4.tar.gz
+	md5sums = c8173bd520f4068cf4cf684e310c77b6
+
+pkgname = viddy
