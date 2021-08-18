@@ -1,21 +1,21 @@
 pkgbase = lunar-magic
 	pkgdesc = Level editor for Super Mario World
-	pkgver = 3.11
-	pkgrel = 7
+	pkgver = 3.30
+	pkgrel = 2
 	url = https://fusoya.eludevisibility.org/lm/index.html
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = custom
 	makedepends = unzip
 	depends = wine
-	noextract = lm311.zip
-	source = https://fusoya.eludevisibility.org/lm/download/lm311.zip
+	noextract = lm330.zip
+	source = https://fusoya.eludevisibility.org/lm/download/lm330.zip
 	source = lunar-magic
 	source = lunar-magic.desktop
 	source = lunar-magic.png
-	md5sums = 697a178456a25bdb0a4416639d3ef7cd
-	md5sums = b962597de58d7341a7b5fbacc264f933
-	md5sums = 21524585562254d81b837b13e2012e2e
-	md5sums = 2d08cd1860ee8cc1bf82bcc0dca4ba70
+	sha256sums = ac27a9cd61946d6ec4cd7414cd8a1de057bfca3de3e06fc9b3be194445050dc2
+	sha256sums = c1f2ef084107f4947b008bc6fbd6da820b48568a20229ebaaaf5834e31b4ce89
+	sha256sums = 33fa325303281102f1fa875053ea84ef50d2adff510d7a17efc9c2df72975efa
+	sha256sums = 91317fb39eb5f92dbc11e74bb2179832e8f254c40ecabb16c11cbf0fddd45fad
 
 pkgname = lunar-magic
-
