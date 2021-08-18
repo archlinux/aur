@@ -3,7 +3,7 @@
 _stdname=MeiliSearch
 pkgname=meilisearch-latest
 _pkgname=meilisearch
-pkgver=0.21.0rc5
+pkgver=0.21.0rc6
 pkgrel=1
 pkgdesc="Lightning Fast, Ultra Relevant, and Typo-Tolerant Seacch Engine. Release Candidate."
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/meilisearch/MeiliSearch/archive/v${pkgver}.tar.gz)
-sha256sums=('38034976fac84a43da37584db8c9330e0c0d4c3280e0fef1584cf367ec8dd481')
+sha256sums=('81f5da505a9ba6cf5fcc33f7d17ec46d9f076b10d3cc1fa51919d2169e99bf4d')
 
 validpgpkeys=()
 
