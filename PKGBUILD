@@ -74,9 +74,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=59
+_minor=60
 _srcname=linux-${_major}
-_clr=${_major}.56-7
+_clr=${_major}.59-10
 pkgbase=linux-clear-lts2020
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -86,7 +86,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2020"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210616'
+_gcc_more_v='20210817'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -344,9 +344,9 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'dc2e23cb99ada617c357d7d73eb988605d948b2f2588a1e736e8df3ebeb4bd17'
+            '279c077e7e1f175f7490ba46b621cb9964fd4e7573953f2ad96f89b70e18f102'
             'SKIP'
-            'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
+            '75f9b3e8b35562ade9f8d4c82771e1b7ecdf2264a80ac1a3fdba34d87864dc77')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
