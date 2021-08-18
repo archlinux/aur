@@ -1,7 +1,7 @@
 pkgbase = mpv-assrt-git
 	pkgdesc = Automatically download subtitles from assrt.net for mpv player.
 	pkgver = r22.e12edf5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AssrtOSS/mpv-assrt
 	arch = any
 	license = unknown
