@@ -1,0 +1,14 @@
+pkgbase = minetest-realtest
+	pkgdesc = Open-ended sandbox survival game focused on realism
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Wuzzy/realtest_mt5/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = realtest_mt5-1.2.2.zip
+	options = !strip
+	source = realtest_mt5-1.2.2.zip::https://content.minetest.net/packages/Wuzzy/realtest_mt5/releases/7919/download/
+	sha256sums = cf7d2b70bca81a34dab022ec052cca323d217952a182dc54e4712406f6a18f11
+
+pkgname = minetest-realtest
