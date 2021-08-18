@@ -1,0 +1,14 @@
+pkgbase = minetest-xaenvironment
+	pkgdesc = A game that aims to contain lots of environments and things.
+	pkgver = 2021.04.02
+	pkgrel = 1
+	url = https://content.minetest.net/packages/AiTechEye/xaenvironment/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = xaenvironment-2021.04.02.zip
+	options = !strip
+	source = xaenvironment-2021.04.02.zip::https://content.minetest.net/packages/AiTechEye/xaenvironment/releases/7314/download/
+	sha256sums = 0c1b19016e43e65f73513b4912eca301fa2aca343d662909e6e9ef9188eaa6e8
+
+pkgname = minetest-xaenvironment
