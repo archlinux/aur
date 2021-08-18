@@ -5,7 +5,7 @@ pkgbase=python-${_name}
 pkgname=(${pkgbase} python-${_name}-hiq)
 
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin allowing OpenFermion to interaface with ProjectQ."
 arch=('any')
 url="https://github.com/quantumlib/OpenFermion-ProjectQ/"

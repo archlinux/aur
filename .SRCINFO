@@ -1,7 +1,7 @@
 pkgbase = python-openfermionprojectq
 	pkgdesc = A plugin allowing OpenFermion to interaface with ProjectQ.
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quantumlib/OpenFermion-ProjectQ/
 	arch = any
 	license = Apache
