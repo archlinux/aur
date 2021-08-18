@@ -1,15 +1,12 @@
 pkgbase = zinnia
 	pkgdesc = Simple, customizable and portable online hand recognition system based on Support Vector Machines
-	pkgver = 0.06
-	pkgrel = 6
-	url = http://zinnia.sourceforge.net/
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://github.com/silverhikari/zinnia
 	arch = x86_64
 	license = BSD
 	depends = gcc-libs
-	source = https://downloads.sourceforge.net/project/zinnia/zinnia/0.06/zinnia-0.06.tar.gz
-	source = zinnia-gcc6.patch
-	sha256sums = ece3af93f937282971634fd81d3e997f848e8cfa958220e26a4564ca064ac20b
-	sha256sums = f27cc4bd687d4c66525f744315c53caa537f1998dd546ffba9ef337e033854e6
+	source = https://github.com/silverhikari/zinnia/releases/download/0.07/zinnia-0.07.tar.gz
+	sha256sums = a1f537b67ac37319740d747a5eb101f0a327b0c483aecf8030c32eb3a133b07f
 
 pkgname = zinnia
-

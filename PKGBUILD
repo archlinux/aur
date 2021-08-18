@@ -1,34 +1,25 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer : silverhikari
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Humbert Julien <julroy67 [AT] gmail.com>
 
 pkgname=zinnia
-pkgver=0.06
-pkgrel=6
+pkgver=0.07
+pkgrel=1
 pkgdesc="Simple, customizable and portable online hand recognition system based on Support Vector Machines"
 arch=('x86_64')
-url="http://zinnia.sourceforge.net/"
+url="https://github.com/silverhikari/zinnia"
 license=('BSD')
 depends=('gcc-libs')
-source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz"
-        zinnia-gcc6.patch)
-sha256sums=('ece3af93f937282971634fd81d3e997f848e8cfa958220e26a4564ca064ac20b'
-            'f27cc4bd687d4c66525f744315c53caa537f1998dd546ffba9ef337e033854e6')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i ../zinnia-gcc6.patch # Fix build with GCC 6 (Debian)
-}
-
+source=("https://github.com/silverhikari/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('a1f537b67ac37319740d747a5eb101f0a327b0c483aecf8030c32eb3a133b07f')
 build() {
   cd $pkgname-$pkgver
-
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-
   make DESTDIR="$pkgdir" install
   install -Dm644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
