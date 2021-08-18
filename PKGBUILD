@@ -4,7 +4,7 @@ _Name=OpenFermion
 _name=${_Name,,}
 pkgname=python-$_name
 
-pkgver=0.11.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The electronic structure package for quantum computers."
 arch=('any')
@@ -14,8 +14,10 @@ makedepends=('python'
 	     'python-setuptools')
 checkdepends=('python-numpy'
 	      'python-scipy'
+              'python-sympy'
 	      'python-networkx'
 	      'python-requests'
+              'python-h5py'
 	      'python-pytest'
 	      'jupyter-nbformat'
 	      # AUR dependencies
@@ -24,7 +26,6 @@ source=("https://github.com/quantumlib/OpenFermion/archive/v$pkgver.tar.gz")
 sha256sums=('339dd51e738a2ea72f86d71b5a9214ca202ace130fadb013835a142647e0a5c4')
 # source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 # sha256sums=('2aede7cf2e5f7be4c0016c9b542c27505644f8ecb9411c653dc89a5cd746f84c')
-groups=(python-hiq)
 
 prepare() {
   cd "$srcdir/$_Name-$pkgver"
@@ -43,11 +44,15 @@ check() {
 
 package() {
   cd "$srcdir/$_Name-$pkgver"
-  depends=('python-numpy'
+  conflicts=('python-openfermion-0.11')
+  depends=('python-h5py'
+           'python-networkx'
+           'python-numpy'
 	   'python-scipy'
-	   'python-networkx'
+	   'python-sympy'
 	   'python-requests'
 	   # AUR dependencies
+           # missing CirQ...
 	   'python-pubchempy')
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
