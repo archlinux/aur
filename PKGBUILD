@@ -67,9 +67,9 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=52
-_rtpatchver=47
-_clr=${_major}.${_minor}-80
+_minor=56
+_rtpatchver=49
+_clr=${_major}.${_minor}-81
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -80,7 +80,7 @@ url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210616'
+_gcc_more_v='20210817'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
@@ -121,7 +121,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG_PROC
+    scripts/config --enable IKCONFIG \
+                   --enable IKCONFIG_PROC
 
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
@@ -129,6 +130,7 @@ prepare() {
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
+                   --enable MODULE_COMPRESS \
                    --enable MODULE_COMPRESS_XZ
 
     # Networking support
@@ -149,7 +151,9 @@ prepare() {
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
 
     # Security options
-    scripts/config --enable SECURITY_SELINUX_BOOTPARAM \
+    scripts/config --enable SECURITY_SELINUX \
+                   --enable SECURITY_SELINUX_BOOTPARAM \
+                   --enable SECURITY_SMACK \
                    --enable SECURITY_SMACK_BRINGUP \
                    --enable SECURITY_SMACK_NETFILTER \
                    --enable SECURITY_SMACK_APPEND_SIGNALS \
@@ -316,11 +320,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('769e57a0fa218589fa2f8460b8682eb784a72718c7a3d95295f382a77902ae79'
+sha256sums=('4d6a0d5f9c50fa44890e0b61e1fb63f6efe6be448ceddfe1ad7c0cbd2890ec6b'
             'SKIP'
-            '53cca2fb11f5ffc601ab0a0820e90538c4c841cbd57b17b3ef0fa80af5b2e1d8'
+            '7bf025bc0cdf9006bd04fcbe9b74348e4a5c0f422a4bef820cf0da223b6a279f'
             'SKIP'
-            'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
+            '75f9b3e8b35562ade9f8d4c82771e1b7ecdf2264a80ac1a3fdba34d87864dc77')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
