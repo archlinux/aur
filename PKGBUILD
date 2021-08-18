@@ -13,7 +13,7 @@ license=('Apache')
 makedepends=('python-pip'
 	     'python-setuptools')
 checkdepends=(# AUR dependencies
-              'python-openfermion'
+              'python-openfermion-0.11'
 	      'python-h5py'
 	      'jupyter-nbformat')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
@@ -52,8 +52,8 @@ check() {
 }
 
 package_python-openfermionprojectq() {
-  conflicts=(python-openfermionprojectq-hiq)
-  depends+=('python-openfermion'
+  conflicts=('python-openfermionprojectq-hiq')
+  depends+=('python-openfermion-0.11'
 	    'python-projectq')
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -61,9 +61,9 @@ package_python-openfermionprojectq() {
 
 package_python-openfermionprojectq-hiq() {
   pkgdesc="A plugin allowing OpenFermion to interaface with HiQ-ProjectQ."
-  conflicts=(python-openfermionprojectq)
+  conflicts=('python-openfermionprojectq')
   groups=(python-hiq)
-  depends+=('python-openfermion'
+  depends+=('python-openfermion-0.11'
 	    'python-hiq-projectq')
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build

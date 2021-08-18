@@ -5,7 +5,7 @@ pkgbase = python-openfermionprojectq
 	url = https://github.com/quantumlib/OpenFermion-ProjectQ/
 	arch = any
 	license = Apache
-	checkdepends = python-openfermion
+	checkdepends = python-openfermion-0.11
 	checkdepends = python-h5py
 	checkdepends = jupyter-nbformat
 	makedepends = python-pip
@@ -18,14 +18,16 @@ pkgbase = python-openfermionprojectq
 	sha256sums = b20875b96e7eaed9db2871986043677fa8243c3dad6e10fb4302a03c22dace38
 
 pkgname = python-openfermionprojectq
-	depends = python-openfermion
+	depends = 
+	depends = python-openfermion-0.11
 	depends = python-projectq
 	conflicts = python-openfermionprojectq-hiq
 
 pkgname = python-openfermionprojectq-hiq
 	pkgdesc = A plugin allowing OpenFermion to interaface with HiQ-ProjectQ.
 	groups = python-hiq
-	depends = python-openfermion
+	depends = 
+	depends = python-openfermion-0.11
 	depends = python-hiq-projectq
 	conflicts = python-openfermionprojectq
 
