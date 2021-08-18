@@ -1,9 +1,9 @@
 pkgbase = litmusctl
 	pkgdesc = The Litmuschaos command-line tool, litmusctl, allows you to manage litmuschaos agent plane. You can use litmusctl to create agents, project, and manage multiple litmuschaos accounts.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/litmuschaos/litmusctl
-	arch = amd64
+	arch = x86_64
 	license = APACHE
 	depends = kubectl
 	source = https://litmusctl-bucket.s3-eu-west-1.amazonaws.com/litmusctl-linux-amd64-v0.3.0.tar.gz
