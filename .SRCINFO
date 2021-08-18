@@ -1,6 +1,6 @@
 pkgbase = coreboot-configurator-git
 	pkgdesc = Graphical user interface to configure Starlabs Systems Labtop series
-	pkgver = 6
+	pkgver = 6.f
 	pkgrel = 2
 	url = https://github.com/StarLabsLtd/coreboot-configurator
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = coreboot-configurator-git
 	depends = hicolor-icon-theme
 	provides = coreboot-configurator
 	conflicts = coreboot-configurator
-	source = https://github.com/StarLabsLtd/coreboot-configurator/archive/refs/tags/6.tar.gz
-	sha256sums = 38145c73595dc86ae7a0d56abf0f3c86f51eaec2174af0df396371ef0494b21f
+	source = https://github.com/StarLabsLtd/coreboot-configurator/archive/refs/tags/6.f.tar.gz
+	sha256sums = c82d282d45d120421e7045f68afd596679a610f07aaf72f473a80216d01f7a6b
 
 pkgname = coreboot-configurator-git
