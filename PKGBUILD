@@ -10,44 +10,44 @@ license=('GPL3' 'custom')
 
 depends=('fswatch' 'gnatcoll-core')
 makedepends=('git' 'gcc-ada' 'gprbuild')
-source=('git+https://github.com/AdaCore/ada_libfswatch.git#commit=94c0a5f137b88113a791a148b60e5e7d019d6fa1'
+
+_git_hash=94c0a5f137b88113a791a148b60e5e7d019d6fa1
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_git_hash.tar.gz"
         'ada-libfswatch.patch')
 sha1sums=('SKIP'
           'cb3ddf5c8e8c5988c2f60111dfc18e132db00617')
 
-pkgver() {
-    cd "$srcdir/ada_libfswatch"
-    printf "r%s.%s"                     \
-        "$(git rev-list  --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+
+prepare()
+{
+   cd "$srcdir/ada_libfswatch-$_git_hash"
+   git apply $srcdir/ada-libfswatch.patch
 }
 
-prepare() {
-	cd "$srcdir/ada_libfswatch"
-	git apply $srcdir/ada-libfswatch.patch
+build()
+{
+   cd "$srcdir/ada_libfswatch-$_git_hash"
+   OS=unix make
 }
 
-build() {
-    cd "$srcdir/ada_libfswatch"
-	make
-}
+package()
+{
+   cd "$srcdir/ada_libfswatch-$_git_hash"
 
-package() {
-    cd "$srcdir/ada_libfswatch"
+   OS=unix make install DESTDIR="$pkgdir/usr"
 
-	make install DESTDIR="$pkgdir/usr"
+   # 'gprinstall' installs a soft link for '/usr/lib/libfswatch.so' 
+   # which is already owned by fswatch, so remove it.
+   rm "$pkgdir/usr/lib/libfswatch.so"
 
-    # 'gprinstall' installs a soft link for '/usr/lib/libfswatch.so' 
-    # which is already owned by fswatch, so remove it.
-    rm "$pkgdir/usr/lib/libfswatch.so"
+   # Install the license.
+   install -D -m644     \
+      "COPYING3"        \
+      "$pkgdir/usr/share/licenses/ada-libfswatch/COPYING3"
 
-    # Install the license.
-    install -D -m644     \
-       "COPYING3"        \
-       "$pkgdir/usr/share/licenses/ada-libfswatch/COPYING3"
-
-    # Install the custom license.
-    install -D -m644     \
-       "COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/ada-libfswatch/COPYING.RUNTIME"
+   # Install the custom license.
+   install -D -m644     \
+      "COPYING.RUNTIME" \
+      "$pkgdir/usr/share/licenses/ada-libfswatch/COPYING.RUNTIME"
 }
