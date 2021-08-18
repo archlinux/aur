@@ -1,16 +1,16 @@
 # Maintainer: opale95
 # Contributor: yochananmarqos
 pkgname=lebiniou
-pkgver=3.60.1
-pkgrel=2
+pkgver=3.61.0
+pkgrel=1
 pkgdesc="User-friendly, powerful music visualization / VJing tool"
 arch=('x86_64')
 url="https://biniou.net"
 license=('GPL')
-depends=('libmagick6' 'fftw' 'sdl2_ttf' 'libcaca' 'ffmpeg' 'lebiniou-data>=3.60.0' 'ulfius')
+depends=('libmagick6' 'fftw' 'sdl2' 'libcaca' 'ffmpeg' 'lebiniou-data>=3.61.0' 'ulfius')
 makedepends=('uglify-js' 'nodejs-clean-css-cli' 'htmlmin')
 source=("https://gitlab.com/lebiniou/lebiniou/-/archive/version-$pkgver/lebiniou-version-$pkgver.tar.gz")
-sha256sums=('e65088774aae0cdf91e7d4104a6fcf72428ecf0825aa9cbd82ce8e3c03f52156')
+sha256sums=('04af1e1780841ae07688b3610e86159744e835060cbd0b3a44f325e96d2fc6a5')
 
 build() {
 	cd "$pkgname-version-$pkgver"
