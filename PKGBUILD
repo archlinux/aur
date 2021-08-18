@@ -7,7 +7,7 @@ pkgname='ros-noetic-urdf'
 pkgver='1.13.2'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -47,6 +47,10 @@ depends=(
 _dir="urdf-${pkgver}/urdf"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/urdf/archive/${pkgver}.tar.gz")
 sha256sums=('6643846ea63504463ec0f2c5ba4c73d965455b5ecc7aed81b860b8b4c8fa7133')
+
+prepare(){
+    sed -i '25s/14/17/' ./${_dir}/CMakeLists.txt
+}
 
 build() {
 	# Use ROS environment variables.

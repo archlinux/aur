@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-urdf
 	pkgdesc = ROS - This package contains a C++ parser for the Unified Robot Description Format (URDF), which is an XML format for representing a robot model.
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/urdf
 	arch = i686
 	arch = x86_64
@@ -33,4 +33,3 @@ pkgbase = ros-noetic-urdf
 	sha256sums = 6643846ea63504463ec0f2c5ba4c73d965455b5ecc7aed81b860b8b4c8fa7133
 
 pkgname = ros-noetic-urdf
-
