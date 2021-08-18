@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.0.r29762.48b633f2a'
+pkgver='0.15.0.r29763.71a70133a'
 pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
@@ -14,15 +14,20 @@ url="http://${_appname}.org"
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
-depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl' 'libsodium'
-	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson' 'zbar')
-makedepends=('gettext' 'pkgconfig' 'autoconf' 'gst-plugins-base-libs'
-	     'bluez-libs' 'python' 'glpk' 'libpulse' 'git' 'opus')
-optdepends=('python'
-	    'glpk'
-	    'libpulse'
-	    'opus'
-            'gst-plugins-base-libs: for gnunet-helper-audio-record')
+depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
+	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
+	'openssl' 'libextractor' 'brotli')
+makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
+             'git' 'opus')
+optdepends=('bluez: for bluetooth transport'
+            'libzbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
+            'texlive-core: for generating GNS business cards via gnunet-bcd'
+            'miniupnpc: for NAT uPnP support'
+	    'libpulse: for conversation service'
+	    'opus: for conversation service'
+            'pbc: for Attribute-Based Encryption (experimental)'
+            'libgabe: for Attribute-Based Encryption (experimental)'
+            'libpabc: for re:claimID zero-knowledge privacy credentials')
 backup=('etc/gnunetd.conf')
 options=('!makeflags')
 source=("git+https://${_appname}.org/git/${_appname}.git"
@@ -30,6 +35,7 @@ source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
         'gnunetd.conf')
+install="${pkgname}.install"
 
 sha256sums=('SKIP'
             '2fb156b5bda51ef7c0659ca19113e7c8cd651637ffb379264e2b61f65be367d1'
@@ -50,8 +56,10 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_appname}"
+
 	./bootstrap
 	sed -i 's|contrib doc|doc|' Makefile.*
+	export GNUNET_PREFIX='/usr/lib'
 
 }
 
@@ -59,7 +67,7 @@ build() {
 
 	cd "${srcdir}/${_appname}"
 
-	test -f Makefile || ./configure --prefix=/usr --without-mysql
+	test -f Makefile || ./configure --prefix='/usr' --without-mysql
 	make
 	make -C contrib
 
