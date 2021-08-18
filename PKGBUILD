@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/Raymo111/iPetitions-Bot"
 license=('GPL3')
 source=("https://github.com/Raymo111/iPetitions-Bot/archive/v$pkgver.tar.gz")
-sha256sums=('0d514100cc00be31c0420e042c92a6933cc4021dcc6391f2880a0989fcceeba3')
+sha256sums=('384dcded7c870551f89d3bd99818a4f0fddbe27ca9f3d03f8803c08d84b583e3')
 
 package() {
 	cd "iPetitions-Bot-$pkgver"
