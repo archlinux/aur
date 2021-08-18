@@ -1,12 +1,14 @@
 pkgbase = otf-operator-mono-nerd
-	pkgdesc = Operator: the non-typewriter typewriter face. Patched with nerd-fonts.
+	pkgdesc = Operator: the non-typewriter typewriter face. Configured with nerd-fonts.
 	pkgver = 1.200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.typography.com/fonts/operator/overview/
 	arch = any
 	license = custom:HCo
-	source = git+https://github.com/piq9117/operator-mono-nerdfont.git
-	md5sums = SKIP
+	makedepends = fontforge
+	depends = otf-operator-mono
+	depends = ttf-nerd-fonts-symbols-mono
+	source = 80-operator-mono-nerd-fonts.conf
+	sha256sums = e3b8e79ad1a0fff7bc9a921640df4e7e4172cd7e8e7c185352b5d1e9e1528a38
 
 pkgname = otf-operator-mono-nerd
-

@@ -1,22 +1,24 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 #
-# WARNING: THIS FONT IS PROPIETARY AND NOT FREE! YOU NEED TO PURCHASE THE FONT
-# AND HAVE A LICENCE FOR IT IN ORDER TO USE THIS PACKAGE!
+# Note: This font is propietary. You need to purchase it from the official
+# website, and place it in the same directory as this PKGBUILD for it to work.
+#
+# This PKGBUILD exists merely for tracking installed font files and running any
+# relevant hooks during installation.
 
 pkgname=otf-operator-mono-nerd
 pkgver=1.200
-pkgdesc="Operator: the non-typewriter typewriter face. Patched with nerd-fonts."
-pkgrel=1
+pkgdesc="Operator: the non-typewriter typewriter face. Configured with nerd-fonts."
+pkgrel=2
 arch=('any')
 license=('custom:HCo')
 url='https://www.typography.com/fonts/operator/overview/'
-source=("git+https://github.com/piq9117/operator-mono-nerdfont.git")
-md5sums=("SKIP")
+makedepends=('fontforge')
+depends=('otf-operator-mono' 'ttf-nerd-fonts-symbols-mono')
+source=("80-operator-mono-nerd-fonts.conf")
+sha256sums=('e3b8e79ad1a0fff7bc9a921640df4e7e4172cd7e8e7c185352b5d1e9e1528a38')
 
 package() {
-    cd "$srcdir/operator-mono-nerdfont"
-
-    for font in *.otf; do
-      install -Dm 644 "$font" "$pkgdir/usr/share/fonts/OTF/$font"
-    done;
+  install -Dm644 "$srcdir"/80-operator-mono-nerd-fonts.conf \
+    "$pkgdir"/usr/share/fontconfig/conf.default/80-operator-mono-nerd-fonts.conf
 }
