@@ -14,9 +14,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Adapta-Projects/Papirus-Nor
 sha256sums=('e0b902f84c951df16265be0322b3c5b391f5c52e3a566e9eb1b347a68067377a')
 
 package() {
-	cd Papirus-Nord-$pkgver
-	for i in 22x22 24x24 32x32 48x48 64x64; do
-		install -d "$pkgdir/usr/share/icons/Papirus/${i}/places"
-		cp -r Icons/${i}/* "$pkgdir/usr/share/icons/Papirus/${i}/places"
-	done
+  cd Papirus-Nord-$pkgver
+  for i in 22 24 32 48 64; do
+    install -d "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
+    cp -r Icons/${i}x${i}/* "$pkgdir/usr/share/icons/Papirus/${i}x${i}/places"
+  done
 }
