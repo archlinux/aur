@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r108.g72f8abe1
-pkgrel=2
+pkgver=5.r113.g517e35f8
+pkgrel=1
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
 url="https://github.com/MerryMage/$_pkgname"
@@ -13,7 +13,7 @@ makedepends=(
 	'fmt>=8'
 	'git'
 	'robin-map>=0.6.2'
-	'xbyak>=5.991'
+	'xbyak>=5.995.r3'
 	'zydis>=3.1'
 )
 checkdepends=('catch2>=2.13.1')
@@ -21,7 +21,7 @@ provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"0001-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
+	"0002-dynarmic-add-cmake-install-rules.patch::$url/pull/636.patch"
 	'unbundle-catch2.patch'
 	'unbundle-fmt.patch'
 	'unbundle-robin-map.patch'
@@ -30,7 +30,7 @@ source=(
 )
 b2sums=(
 	'SKIP'
-	'dba51c0f58050dcbd0cb2409a6231ba7de708a3d9ea608900cff662e83327bce2985dd1c189e7aed7555c7b572288b4e7ab79738007799020f7e1d14eb8ce12c'
+	'bb8bfeccd4a944a36df33ce77bc15a8680bd06c80aeabac17ff052fc651468f559625ca0b1db52bd3badd228270f0e5dd0958d65710f8f3be67ed91be7464948'
 	'd5adb75e25b1f3cb297f781d4c00d978d234912ca7fcb4e206e7f7779ccbe9a9d747c652a6fc2d8af55442b457dc8d496f3708b67fa0072aba8cdf5aba15bdde'
 	'4bcf176ce2a82cbaf54f9eb0b463844e77c099e5824fb9d994817dd8a5b75ea1abebf17da4c01be14042ce36564d8df5836e9a02a5cbe92bb95d7232263123b4'
 	'd474ec20f085832c73de96b19a06b5d8018d6fb429ea054a9e026c1d56f12035b83bc3b980487825ecb473b674a7b22f2b92733bdb53d71dcb1528318f2a5d80'
@@ -45,7 +45,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	patch -Np1 < ../0001-dynarmic-add-cmake-install-rules.patch
+	patch -Np1 < ../0002-dynarmic-add-cmake-install-rules.patch
 	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-fmt.patch
 	patch -Np1 < ../unbundle-robin-map.patch
@@ -58,7 +58,7 @@ build() {
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDYNARMIC_ENABLE_CPU_FEATURE_DETECTION=OFF \
+		-DDYNARMIC_IGNORE_ASSERTS=ON \
 		-DDYNARMIC_NO_BUNDLED_FMT=ON \
 		-DDYNARMIC_TESTS="$CHECKFUNC" \
 		-Wno-dev
