@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-resource-retriever
 	pkgdesc = ROS - This package retrieves data from url-format files such as http://, ftp://, package:// file://, etc., and loads the data into memory.
 	pkgver = 1.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/resource_retriever
 	arch = i686
 	arch = x86_64
@@ -25,4 +25,3 @@ pkgbase = ros-noetic-resource-retriever
 	sha256sums = dd44ffa5838b47d34485c66332727989f087ddf025da7ef3f66a2935c71fcab3
 
 pkgname = ros-noetic-resource-retriever
-
