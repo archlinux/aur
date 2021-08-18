@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=drawio
-pkgver=14.9.3
+pkgver=14.9.7
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
@@ -12,7 +12,7 @@ source=(
     "draw-${pkgver}.war::https://github.com/jgraph/drawio/releases/download/v${pkgver}/draw.war"
 )
 sha256sums=(
-    "23db4634e623f27958e5fca57c5963e15d6f0aa5731704e2c9f1aa41e3c67dab"
+    "1e11dacb531ee52e46d85adacf9c679054cc787010d93e5783db3ebf38bcc156"
 )
 
 prepare() {
