@@ -1,20 +1,22 @@
-# Maintainer: ROllerozxa (temporaryemail4meh [gee mail])
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 pkgname=minetest-hades-revisited
-pkgver=0.9.2
+_pkgname=hades_revisited
+_pkgauthor=Wuzzy
+pkgver=0.11.0
+_cdbrel=8720
 pkgrel=1
 pkgdesc="Use your limited supplies to survive and use terraforming to create a beautiful habitable place."
-arch=("any")
-url="https://content.minetest.net/packages/Wuzzy/hades_revisited/"
 license=("LGPL3")
+sha256sums=('d7b744263938b45cd4ea990d87eac0aacb1dfd3087e81d1c309fbc25975624d0')
+
+arch=("any")
+url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
 depends=("minetest-common")
-source=("hades_revisited-$pkgver.zip::https://repo.or.cz/minetest_hades/hades_revisited.git/snapshot/${pkgver}.zip")
-sha256sums=('899141b3718f6fc2fa8f3c2eb8f444ac8b7eef9468f5afb62dbd105b6d89e206')
+source=("${_pkgname}-${pkgver}.zip::https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/releases/${_cdbrel}/download/")
 options=(!strip)
+noextract=("${_pkgname}-${pkgver}.zip")
 
 package() {
-	cd "hades_revisited-$pkgver-"*
-
-	for f in $(find . -type f); do
-		install -Dm644 "$f" "$pkgdir/usr/share/minetest/games/hades_revisited/$f"
-	done
+	install -d "${pkgdir}/usr/share/minetest/games/"
+	unzip "${_pkgname}-${pkgver}.zip" -d "${pkgdir}/usr/share/minetest/games/"
 }
