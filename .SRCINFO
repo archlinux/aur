@@ -1,0 +1,14 @@
+pkgbase = minetest-juanchi-game
+	pkgdesc = A game just for fun with blocks, animals and a lot of more.
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://content.minetest.net/packages/runs/juanchi/
+	arch = any
+	license = AGPLv3
+	depends = minetest-common
+	noextract = juanchi-4.3.zip
+	options = !strip
+	source = juanchi-4.3.zip::https://content.minetest.net/packages/runs/juanchi/releases/8967/download/
+	sha256sums = 4d44122fdf3a39a11699fcc8bf13c440e47a1e5c8542d049f4782b0d5eaeb65a
+
+pkgname = minetest-juanchi-game
