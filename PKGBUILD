@@ -9,8 +9,6 @@ pkgdesc='Official Telegram Desktop client, with wide message bubbles'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-#depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-
 depends=(
     desktop-file-utils
     glib2
@@ -21,8 +19,7 @@ depends=(
     minizip
     qt5-imageformats
 )
-makedepends=('chrpath' 'cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'kwayland' 'libtg_owt' 'microsoft-gsl' 'extra-cmake-modules')
-#makedepends=('cmake' 'ninja' 'git' 'chrpath' 'kwayland' 'rlottie-tdesktop' 'microsoft-gsl')
+makedepends=('chrpath' 'cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'libtg_owt' 'microsoft-gsl' 'extra-cmake-modules')
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch
