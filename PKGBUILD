@@ -1,5 +1,5 @@
 pkgname=chromono
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A very circular color puzzle game"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('sdl2' 'zlib' 'libvorbis' 'libglvnd')
 makedepends=('cmake' 'python3')
 source=("https://thp.io/2013/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('9a15fa795e4f14ef8683c5ddaf1b6c115fda306957c97604fc4f117599c9f2ae')
+sha256sums=('3ed741e4bdc8ae7fa0019bd9643241856e5b49f6364048c6b3913f5948693afc')
 
 build() {
   cd ${pkgname}-${pkgver}
