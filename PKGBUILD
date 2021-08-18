@@ -3,10 +3,10 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2020.11.1.r351.ge34cdd5c8
-pkgrel=2
+pkgver=2021.05.12.r575.g6b24f0fa76
+pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
-depends=()
+depends=('curl' 'zip' 'unzip')
 makedepends=('git' 'cmake>=3.3.0' 'ninja')
 optdepends=()
 arch=('x86_64')
