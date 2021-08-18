@@ -1,0 +1,18 @@
+pkgbase = ruby-rspectacular
+	pkgdesc = We rock some RSpec configurations and matchers like it ain't nobody's bidnezz
+	pkgver = 0.70.8
+	pkgrel = 1
+	url = https://rubygems.org/gems/rspectacular
+	arch = any
+	license = MIT
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-rspec
+	depends = ruby-fuubar
+	noextract = rspectacular-0.70.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rspectacular-0.70.8.gem
+	sha256sums = 83b51f13bfb955399771c123379119d3c9362c5c140531c520324335025af144
+
+pkgname = ruby-rspectacular
