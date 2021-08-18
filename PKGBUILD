@@ -29,7 +29,7 @@ use_apparmor=
 ## Apply Kernel automatic Optimization
 _use_optimization=y
 ## Apply Kernel Optimization selecting
-_use_optimizatio_select=
+_use_optimization_select=
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
