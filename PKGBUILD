@@ -1,13 +1,13 @@
 # Maintainer: ninni <soelder@hotmail.com>
-pkgname=awakened-poe-trade-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname=awakened-poe-trade-git
 pkgver=v2.13.1.r1.fc69988
-pkgrel=1
+pkgrel=2
 pkgdesc='Path of Exile trading app for price checking'
 arch=('any')
 url='https://github.com/SnosMe/awakened-poe-trade'
 license=('MIT')
 depends=()
-makedepends=('git' 'yarn') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'yarn' 'node-gyp')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
