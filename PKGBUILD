@@ -6,7 +6,7 @@ pkgver=0.11.0
 _cdbrel=8720
 pkgrel=1
 pkgdesc="Use your limited supplies to survive and use terraforming to create a beautiful habitable place."
-license=("LGPL3")
+license=("LGPL2.1")
 sha256sums=('d7b744263938b45cd4ea990d87eac0aacb1dfd3087e81d1c309fbc25975624d0')
 
 arch=("any")
