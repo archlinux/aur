@@ -1,0 +1,14 @@
+pkgbase = minetest-formspec-editor
+	pkgdesc = A Realtime in-game formspec viewer/editor
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Just_Visiting/formspec_editor/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = formspec_editor-1.1.zip
+	options = !strip
+	source = formspec_editor-1.1.zip::https://content.minetest.net/packages/Just_Visiting/formspec_editor/releases/8551/download/
+	sha256sums = 4df0b8d041218ed0bb6a02f59be82d1e1bbdadc96eeedf0f4f329e44ac9b6751
+
+pkgname = minetest-formspec-editor
