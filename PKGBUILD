@@ -5,7 +5,7 @@
 pkgname=coreboot-configurator-git
 _pkgname=coreboot-configurator
 pkgver=6.f
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical user interface to configure Starlabs Systems Labtop series"
 arch=('i686' 'x86_64')
 url="https://github.com/StarLabsLtd/coreboot-configurator"
