@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-merge3
 _name=${pkgname#python-}
 pkgver=0.0.8
@@ -15,17 +16,17 @@ sha256sums=('4ef90eda29fb6f291e5d5ee1103ae97e295e15826ef17abee3098f5ce46fe18b'
 validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk>
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 check() {
-	cd "$_name-$pkgver"
-	python setup.py test
+  cd "$_name-$pkgver"
+  python setup.py test
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

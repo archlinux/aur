@@ -14,4 +14,3 @@ pkgbase = python-merge3
 	sha256sums = SKIP
 
 pkgname = python-merge3
-
