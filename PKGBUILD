@@ -2,7 +2,7 @@
 
 pkgname=ciel-arch-plugins-git
 _pkgname=ciel-arch-plugins
-pkgver=r9.829a824
+pkgver=r10.ed5d2ff
 pkgrel=1
 pkgdesc="Arch Linux integration plugins for the Ciel container manager."
 arch=('x86_64')
