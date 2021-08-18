@@ -1,0 +1,18 @@
+pkgbase = minecraft-c
+	pkgdesc = Minecraft Classic 0.0.30a reimplemented in C.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/johnpayne-dev/MinecraftC
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	depends = sdl2
+	source = minecraft-c::git+https://github.com/johnpayne-dev/MinecraftC
+	source = minecraft-c.desktop
+	source = minecraft-c.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = minecraft-c

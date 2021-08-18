@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MinecraftC
+Comment=Minecraft Classic 0.0.30a reimplemented in C.
+Exec=MinecraftC
+Icon=minecraft-c
+Terminal=false
+StartupNotify=false
+Categories=Games;
