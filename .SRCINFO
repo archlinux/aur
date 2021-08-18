@@ -2,7 +2,7 @@ pkgbase = dbxfs
 	pkgdesc = User-space file system for Dropbox
 	pkgver = 1.0.51
 	pkgrel = 3
-	url = https://github.com/rianhunter/dbxfs
+	url = https://thelig.ht/code/dbxfs
 	arch = x86_64
 	license = GPL3
 	makedepends = python-setuptools
@@ -23,4 +23,3 @@ pkgbase = dbxfs
 	sha256sums = cc238c6562ec327efeba4f48e4523808338658b2b1f38b1fb6a901ba938c4868
 
 pkgname = dbxfs
-
