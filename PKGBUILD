@@ -2,12 +2,13 @@
 
 pkgname=systemd-autoreload
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically reload systemd --user unit files"
 url="https://git.sr.ht/~whynothugo/systemd-autoreload"
 license=("ISC")
 arch=("x86_64" "aarch64")
 makedepends=("git" "rust")
+depends=("systemd")
 source=("git+https://git.sr.ht/~whynothugo/systemd-autoreload")
 sha256sums=('SKIP')
 
