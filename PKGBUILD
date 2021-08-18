@@ -1,7 +1,7 @@
 # Maintainer: TommyTran732
 # https://gitlab.manjaro.org/packages/extra/pamac
 
-pkgname=pamac-flatpak
+pkgname=pamac-flatpak-gnome
 pkgver=10.1.3
 pkgrel=3
 _pkgfixver=$pkgver
