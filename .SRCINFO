@@ -6,7 +6,7 @@ pkgbase = wezterm-git
 	arch = x86_64
 	arch = i686
 	license = MIT
-	makedepends = rust
+	makedepends = rust>=1.51
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = git
