@@ -1,0 +1,18 @@
+pkgbase = neovim-nebulous-git
+	pkgdesc = Minimalist collection of colorschemes
+	pkgver = r38.b15c938
+	pkgrel = 1
+	url = https://github.com/yagua/nebulous.nvim
+	install = nebulous.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim>=0.5
+	optdepends = tree-sitter
+	provides = neovim-nebulous
+	conflicts = neovim-nebulous
+	source = neovim-nebulous-git::git+https://github.com/yagua/nebulous.nvim
+	md5sums = SKIP
+
+pkgname = neovim-nebulous-git

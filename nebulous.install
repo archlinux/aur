@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: This plugin requires manual setup.'
+	echo ':: Please refer to the installed README under /usr/share/doc/neovim-nebulous-git/README.md for more information.'
+}
