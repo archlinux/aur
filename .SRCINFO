@@ -1,0 +1,14 @@
+pkgbase = minetest-newplanet
+	pkgdesc = You're on a strange planet, with 8 exciting biomes and a perpetual night, but beware, there are monsters ready to hunt you!
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Hi_World/newplanet/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = newplanet-1.2.1.zip
+	options = !strip
+	source = newplanet-1.2.1.zip::https://content.minetest.net/packages/Hi_World/newplanet/releases/4041/download/
+	sha256sums = 5d3415a8cfc5b314db602056d2f79353d35b50a136a705fc0a0297bee9333db1
+
+pkgname = minetest-newplanet
