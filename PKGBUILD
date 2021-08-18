@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.9.0
 _pkgver=1.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -58,6 +58,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         benchmark-gcc11.patch
         xnnpack-gcc11.patch
         https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
+        fix_c10.patch
         disable_non_x86_64.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -99,7 +100,8 @@ sha256sums=('SKIP'
             '689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738'
             '278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40'
             '64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a'
-            '3d5b9d3bbba3238d8f165e582039ec07798bccc1d1f44bd91e8b1892236cb70f'
+            'b106af479ef78803b39868fa1458c22c6e7fdbd13a15ebca20893e1c81c75463'
+            'ba801238afcfc58a35410e54d4ca6a638c447865c0c6b38ed16917fd6d507954'
             'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
@@ -160,6 +162,8 @@ prepare() {
 
   # cuda 11.4 fix
   patch -Np1 <../c74c0c571880df886474be297c556562e95c00e0.patch
+  # cuda 11.4.1 fix
+  patch -Np1 -i "${srcdir}/fix_c10.patch"
 
   # remove local nccl
   rm -rf third_party/nccl/nccl
@@ -196,7 +200,7 @@ prepare() {
   # export BUILD_SPLIT_CUDA=ON  # modern preferred build, but splits libs and symbols, ABI break
   # export USE_FAST_NVCC=ON  # parallel build with nvcc, spawns too many processes
   export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
-  export CUDAHOSTCXX=/usr/bin/g++-10
+  export CUDAHOSTCXX=/usr/bin/g++
   export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
   export CUDA_HOME=/opt/cuda
   export CUDNN_LIB_DIR=/usr/lib
