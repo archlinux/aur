@@ -2,20 +2,29 @@
 
 pkgbase=mgba-git
 pkgname=('libmgba-git' 'mgba-sdl-git' 'mgba-qt-git')
-pkgver=0.8.0.r6752.ca3050d76
+pkgver=0.10.0.r7087.9355def31
 pkgrel=1
 arch=('x86_64')
 url='http://mgba.io/'
 license=('custom:MPL2')
 makedepends=('cmake' 'qt5-multimedia' 'sdl2' 'zlib' 'libpng' 'libzip' 'libedit'
-             'ffmpeg' 'imagemagick' 'desktop-file-utils' 'qt5-tools' 'git' 'ninja')
+             'ffmpeg' 'desktop-file-utils' 'qt5-tools' 'git' 'ninja')
 source=("git+https://github.com/mgba-emu/mgba.git")
 sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"/mgba
-    printf "%s.r%s.%s" \
-        "$(git describe --abbrev=0 --tags)" \
+    for v in LIB_VERSION_MAJOR \
+    		 LIB_VERSION_MINOR \
+    		 LIB_VERSION_PATCH; do
+    	ver=$(grep -m 1 $v version.cmake | grep -o '[0-9]' | tr -d '\n')
+    	printf -v "$v" "%s" "$ver"
+    done
+
+    printf "%s.%s.%s.r%s.%s" \
+        $LIB_VERSION_MAJOR \
+        $LIB_VERSION_MINOR \
+        $LIB_VERSION_PATCH \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
@@ -34,12 +43,16 @@ build() {
 
 package_libmgba-git() {
     pkgdesc='Shared library of mGBA'
-    depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'imagemagick')
+    depends=('zlib' 'libpng' 'libzip' 'libedit' 'ffmpeg' 'sqlite' )
     conflicts=('libmgba')
     provides=('libmgba')
 
     cmake -DCOMPONENT=libmgba mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -P build/cmake_install.cmake
+
+    cmake -DCOMPONENT=mgba-dev mgba -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+    	-P build/cmake_install.cmake
+
     install -Dm644 mgba/LICENSE "$pkgdir"/usr/share/licenses/${pkgname%-git}/LICENSE
 }
 

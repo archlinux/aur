@@ -1,5 +1,5 @@
 pkgbase = mgba-git
-	pkgver = 0.8.0.r6752.ca3050d76
+	pkgver = 0.10.0.r7087.9355def31
 	pkgrel = 1
 	url = http://mgba.io/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = mgba-git
 	makedepends = libzip
 	makedepends = libedit
 	makedepends = ffmpeg
-	makedepends = imagemagick
 	makedepends = desktop-file-utils
 	makedepends = qt5-tools
 	makedepends = git
@@ -27,7 +26,7 @@ pkgname = libmgba-git
 	depends = libzip
 	depends = libedit
 	depends = ffmpeg
-	depends = imagemagick
+	depends = sqlite
 	provides = libmgba
 	conflicts = libmgba
 
@@ -45,4 +44,3 @@ pkgname = mgba-qt-git
 	depends = sdl2
 	provides = mgba-qt
 	conflicts = mgba-qt
-
