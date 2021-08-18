@@ -24,7 +24,7 @@ build() {
   ninja
 }
 
-package() {https://github.com/tommytran732/libpamac-flatpak
+package() {
   backup=('etc/pamac.conf')
   cd $_pkgname-$pkgver
   cd builddir
