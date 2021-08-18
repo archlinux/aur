@@ -1,8 +1,8 @@
 pkgbase = pacmanlogviewer-git
 	pkgdesc = Inspect pacman log files
-	pkgver = 1.4.2.r0.g4271be3
+	pkgver = 1.4.3.r0.g542e5e0
 	pkgrel = 1
-	url = https://opendesktop.org/content/show.php?content=150484
+	url = https://www.opendesktop.org/p/1131723
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -16,4 +16,3 @@ pkgbase = pacmanlogviewer-git
 	sha256sums = SKIP
 
 pkgname = pacmanlogviewer-git
-
