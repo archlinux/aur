@@ -1,6 +1,6 @@
 pkgbase = slippi-online-appimage
 	pkgdesc = Slippi fork of Faster Melee, which allows you to play rollback netplay on Super Smash Bros Melee, (automatically gets latest version)
-	pkgver = 2.2.6
+	pkgver = 2.3.2
 	pkgrel = 0
 	url = https://slippi.gg/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = slippi-online-appimage
 	optdepends = pulseaudio: PulseAudio backend
 	provides = slippi-online
 	options = !strip
+	source = launch_script.sh
+	sha1sums = afcaa99c1e8a3c6c55a2e9666d8baf7dd4dd21f8
 
 pkgname = slippi-online-appimage
-

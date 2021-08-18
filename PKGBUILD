@@ -1,7 +1,7 @@
 # Maintainer: klanc <lewis at ledgedash dot com>
 
 pkgname=slippi-online-appimage
-pkgver=2.2.6
+pkgver=2.3.2
 pkgrel=0
 pkgdesc='Slippi fork of Faster Melee, which allows you to play rollback netplay on Super Smash Bros Melee, (automatically gets latest version)'
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
 makedepends=('wget')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
+source=('launch_script.sh')
+sha1sums=('afcaa99c1e8a3c6c55a2e9666d8baf7dd4dd21f8')
 
 prepare() {
   slippiver=$(curl --silent "https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//')
@@ -34,5 +36,6 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 Slippi_Online-x86_64.AppImage "$pkgdir/usr/bin/slippi-online"
+  install -Dm755 Slippi_Online-x86_64.AppImage "$pkgdir/usr/lib/slippi-online/slippi-online"
+  install -Dm755 launch_script.sh "$pkgdir/usr/bin/slippi-online"
 }
