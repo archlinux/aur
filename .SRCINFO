@@ -1,0 +1,18 @@
+pkgbase = cadet-gtk
+	pkgdesc = A GTK based GUI for the CADET subsystem of GNUnet.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://gitlab.com/gnunet-messenger/cadet-gtk
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = libhandy
+	depends = gnunet
+	depends = jansson
+	depends = libnotify
+	conflicts = cadet-gtk-git
+	source = https://gitlab.com/gnunet-messenger/cadet-gtk/-/archive/v0.6.1/cadet-gtk-v0.6.1.tar.gz
+	sha256sums = d30adf5fc3ee7a8a1536e0358e16a201b688cb31eb78e62f84e94e30092e7f22
+
+pkgname = cadet-gtk
