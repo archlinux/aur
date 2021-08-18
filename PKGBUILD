@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=oreo-cursors-git
-pkgver=20200826.r61.df37556
+pkgver=20210528.r62.549ce7b1
 pkgrel=1
 pkgdesc="Color material cursors with cute animations."
 arch=('any')
@@ -14,25 +14,27 @@ source=('git+https://github.com/varlesh/oreo-cursors.git')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "%s.r%s.%s" "$(git show -s --format=%cd --date=format:%Y%m%d HEAD)" \
-		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  printf "%s.r%s.%s" "$(git show -s --format=%cd --date=format:%Y%m%d HEAD)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	make clean
+  cd "$srcdir/${pkgname%-git}"
+  make clean
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}/generator"
-	ruby convert.rb
+  cd "$srcdir/${pkgname%-git}"
 
-	cd "$srcdir/${pkgname%-git}"
-	make build
+  pushd generator
+  ruby convert.rb
+  popd
+
+  make build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/${pkgname%-git}"
+  make DESTDIR="$pkgdir" install
 }
