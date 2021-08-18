@@ -1,0 +1,14 @@
+pkgbase = minetest-planet-alive
+	pkgdesc = Living World full of mobs / Work in Progress (WIP)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://content.minetest.net/packages/daret/a_planet_alive/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = a_planet_alive-0.8.1.zip
+	options = !strip
+	source = a_planet_alive-0.8.1.zip::https://content.minetest.net/packages/daret/a_planet_alive/releases/7402/download/
+	sha256sums = 692f4035234a7b9cb7fac5d63dea9486075fa449ff00063ae7b9f593fbe15b8f
+
+pkgname = minetest-planet-alive
