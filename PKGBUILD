@@ -26,9 +26,10 @@ use_selinux=n
 use_tomoyo=n
 use_yama=n
 use_apparmor=
-## Apply Kernel Optimization
+## Apply Kernel automatic Optimization
 _use_optimization=y
-
+## Apply Kernel Optimization selecting
+_use_optimizatio_select=
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
 #
@@ -50,8 +51,8 @@ _use_current=
 
 pkgbase=linux-cacule-rdb
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.11
-pkgrel=4
+pkgver=5.13.12
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -126,7 +127,13 @@ prepare() {
       if [ -n "$_use_optimization" ]; then
        sh "${srcdir}"/auto-cpu-optimization.sh
       fi
-      
+
+      if [ -n "$_use_optimization_select" ]; then
+        source "${startdir}"/configure
+
+        cpu_arch
+      fi
+
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
           echo "Setting tick rate to 2k..."
@@ -429,7 +436,7 @@ package_linux-cacule-rdb-headers() {
 
 }
 
-md5sums=('89020a90124a6798054a03c7a2ead059'
+md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
          'fc5268d6d49ea366e09631ac8d68972f'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
