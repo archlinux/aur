@@ -1,18 +1,15 @@
-## v0.26.0 (Jun 10, 2021)
+## v0.27.0 (Aug 16, 2021)
+
+BREAKING CHANGES:
+* All command execution calls are now made (on *nix systems) using a shell command call ('/bin/sh -c ...') with [process group](https://man7.org/linux/man-pages/man2/setpgid.2.html) set to ensure all signals are propagated to the called commands. This was done to eliminate the need for parsing the shell command as it was a continual source of bugs. Windows systems currently only support single command calls because of no (known) 'sh -c' equivalent on Windows. [[GH-1496](https://github.com/hashicorp/consul-template/pull/1496), [GH-1494](https://github.com/hashicorp/consul-template/pull/1494)]
 
 IMPROVEMENTS:
-* Arm CPUs no longer need special builds [[GH-1471](https://github.com/hashicorp/consul-template/pull/1471), [GH-1404](https://github.com/hashicorp/consul-template/issues/1404)]
-* add 'md5sum' template function [[GH-1464](https://github.com/hashicorp/consul-template/pull/1464)]
-* add 'envOrDefault' template function [[GH-1461](https://github.com/hashicorp/consul-template/pull/1461), [GH-829](https://github.com/hashicorp/consul-template/issues/829)]
-* configurable Vault default lease duration [[GH-1446](https://github.com/hashicorp/consul-template/pull/1446), [GH-1445](https://github.com/hashicorp/consul-template/issues/1445)]
-* unescaped JSON template filter functions [[GH-1432](https://github.com/hashicorp/consul-template/pull/1432), [GH-1430](https://github.com/hashicorp/consul-template/issues/1430)]
-* go spew debugging template functions [[GH-1406](https://github.com/hashicorp/consul-template/pull/1406)]
-* add service tagged addresses to health service data [[GH-1400](https://github.com/hashicorp/consul-template/pull/1400), [GH-1398](https://github.com/hashicorp/consul-template/issues/1398)]
-* allow running via Windows Service Control [[GH-1382](https://github.com/hashicorp/consul-template/pull/1382)]
+* New Docker Image. Similar to old Alpine image but modernized and simplified [[GH-1481](https://github.com/hashicorp/consul-template/issues/1481), [GH-1484](https://github.com/hashicorp/consul-template/pull/1484)]
+* New, more obvious, log level environment variable [[GH-1383](https://github.com/hashicorp/consul-template/pull/1383)]
+* New 'writeToFile' template function [[GH-1495](https://github.com/hashicorp/consul-template/pull/1495), [GH-1077](https://github.com/hashicorp/consul-template/issues/1077)]
+* New mergeMap and mergeMapWithOverride template functions [[GH-1500](https://github.com/hashicorp/consul-template/pull/1500), [GH-1499](https://github.com/hashicorp/consul-template/issues/1499)].
 
 BUG FIXES:
-* fix command shell quoting issue [[GH-1477](https://github.com/hashicorp/consul-template/pull/1477), [GH-1456](https://github.com/hashicorp/consul-template/issues/1456), [GH-1463](https://github.com/hashicorp/consul-template/issues/1463)]
-* rework logging, add tests and fix missing timestamp issue [[GH-1476](https://github.com/hashicorp/consul-template/pull/1476), [GH-1475](https://github.com/hashicorp/consul-template/issues/1475)]
-* fix issue with connect/health services using same cache entry [[GH-1474](https://github.com/hashicorp/consul-template/pull/1474), [GH-1458](https://github.com/hashicorp/consul-template/issues/1458)]
-* fix issue with ownership when perms option is set [[GH-1473](https://github.com/hashicorp/consul-template/pull/1473), [GH-1379](https://github.com/hashicorp/consul-template/issues/1379)]
-* fixes issue with 'secrets' and Vault kv-v2 [[GH-1468](https://github.com/hashicorp/consul-template/pull/1468), [GH-1274](https://github.com/hashicorp/consul-template/issues/1274), [GH-1275](https://github.com/hashicorp/consul-template/issues/1275),  [GH-1462](https://github.com/hashicorp/consul-template/issues/1462)]
+* Ignore SIGURG signals by default [[GH-1486](https://github.com/hashicorp/consul-template/issues/1486), [GH-1487](https://github.com/hashicorp/consul-template/pull/1487)]
+* Fix issue with command argument parsing when using sub-shell calls [[GH-1482](https://github.com/hashicorp/consul-template/issues/1482)]
+
