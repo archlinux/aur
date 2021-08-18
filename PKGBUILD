@@ -1,4 +1,5 @@
 # Maintainer: TommyTran732
+# Contributor: Frederic Bezies <fredbezies@gmail.com> 
 
 pkgname=libpamac-flatpak
 _pkgname=libpamac
