@@ -1,8 +1,8 @@
 # Maintainer: Roman Perepelitsa <roman.perepelitsa@gmail.com>
 
 pkgname=zsh-theme-powerlevel10k-git
-pkgver=r3896.4bcc519
-pkgrel=5
+pkgver=r3918.25e5f59
+pkgrel=1
 pkgdesc='Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience.'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/romkatv/powerlevel10k"
