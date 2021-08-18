@@ -26,8 +26,11 @@ use_selinux=n
 use_tomoyo=n
 use_yama=n
 use_apparmor=
-## Apply Kernel Optimization
+## Apply Kernel automatic Optimization
 _use_optimization=y
+## Apply Kernel Optimization selecting
+_use_optimizatio_select=
+
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -50,8 +53,8 @@ _use_current=
 
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.11
-pkgrel=3
+pkgver=5.13.12
+pkgrel=1
 _gittag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization'
 arch=('x86_64' 'x86_64_v3')
@@ -127,6 +130,11 @@ prepare() {
     ### Microarchitecture Optimization (GCC/CLANG)
       if [ -n "$_use_optimization" ]; then
        sh "${srcdir}"/auto-cpu-optimization.sh
+      fi
+      if [ -n "$_use_optimization_select" ]; then
+        source "${startdir}"/configure
+
+        cpu_arch
       fi
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
@@ -430,7 +438,7 @@ package_linux-cacule-llvm-headers() {
 
 }
 
-md5sums=('89020a90124a6798054a03c7a2ead059'
+md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
          '5fef4ec9c05a8c360f84da843e90c0f3'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
