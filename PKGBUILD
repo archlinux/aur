@@ -22,16 +22,16 @@ source=("local://OperatorMono-Bold.otf"
         "local://OperatorMono-MediumItalic.otf"
         "local://OperatorMono-XLight.otf"
         "local://OperatorMono-XLightItalic.otf")
-md5sums=('4e3ca64b09ee0ed95df7f9c834356dd7'
-         '79a2c130549d00fb2b1b5fa60233f60d'
-         'd49e36f086d6ae880be8ada17f273882'
-         '6e2eb8409e2ea9b4552d75c605f81963'
-         '0d2e116a74f03ae40bd2d6e5378fe2cf'
-         '8223460c7d740a987343efc3399835a5'
-         '4694537a06d77cf9e31e295347915121'
-         '8419f477f7e0cd6649381ffd776bf07c'
-         'a6dc0c1dee9aa75d03d164c6ca9faa4d'
-         '1b30b3ad5304495676bdf319d5c5bf49')
+sha256sums=('4f9ddd7a257ee78d7f482544f85923ebc9b64bbd9c2146e02bc7f1a9f6603a06'
+            '1803bdfdef39a3e9ae515797ef384ba0ecbc8cfd3757b94f622ceae1edb4badc'
+            'a5e8f4ef2788ac9962510fd3749e5cb3cb08d3815cc6958033d4cb79e7decc2a'
+            'f5fce9bf538c53d60e984d1d7de8e7ef1dc0f1cb9ba6bc79604493512b09af9d'
+            'eab5b7922f5615ab4482a81e877b306f9bd88c3a2d80a3ced5f89dbdb012b93b'
+            '1b035d3c70b69f50d8f0041a3638c928e5f55f10063cf2383f3f74dbbc103604'
+            'b9a63f79d44cd64059a52aeada26ba115709c5c20ede41a858a40ade7b6e745f'
+            '52927ae517e283ac1a8405411057079b02e64580710ccad601fb014461c62c86'
+            '79393090324ee46ce0df417824ee20d66bbd80fba568faa7ba1b0de4c5524bb4'
+            '5c24de6db2fd2b86fba270e3129d539091906bec4704e84927a0220042afe81b')
 
 package() {
     # Prepare destination directory
