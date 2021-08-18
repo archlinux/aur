@@ -1,7 +1,7 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=openlitespeed-bin
 _pkgname=openlitespeed
-pkgver=1.7.9
+pkgver=1.7.11
 pkgrel=1
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('pcre' 'rcs' 'geoip' 'expat' 'openssl' 'libzip')
 provides=('openlitespeed')
 options=()
 source=("https://openlitespeed.org/packages/openlitespeed-$pkgver.tgz")
-md5sums=('0592a969dff52b5cd34f9ae348acf410')
+md5sums=('d462e52cbeae4faa22828205e2919167')
 build() {
 	cd "$_pkgname"
 	echo "SERVERROOT=$pkgdir/usr/local/lsws" >> ols.conf
