@@ -2,7 +2,7 @@
 
 pkgbase=esphomeyaml
 pkgname=esphome
-pkgver=1.20.4
+pkgver=2021.8.0
 pkgrel=1
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
@@ -24,8 +24,8 @@ optdepends=('python-esphome-dashboard: esphome dashboard addition')
 license=('MIT')
 arch=('any')
 replaces=('esphomeyaml')
-source=("https://github.com/esphome/ESPHome/archive/v${pkgver}.tar.gz")
-sha256sums=('0cf4c4a7d2c77b8dac2f7311290c053267f7ce22c0e387f4c5704721865744f4')
+source=("https://github.com/esphome/ESPHome/archive/${pkgver}.tar.gz")
+sha256sums=('333633e0cb7deb6113d5b8854396868e0237aef27d93893925096de3eb4dd6ae')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
