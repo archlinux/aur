@@ -14,9 +14,8 @@ pkgbase = openbrf
 	depends = glew
 	depends = glu
 	source = git+https://github.com/cfcohen/openbrf
-	source = git+https://github.com/cnr-isti-vclab/vcglib
+	source = git+https://github.com/cnr-isti-vclab/vcglib#tag=v1.0.1
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = openbrf
-

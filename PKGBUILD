@@ -14,7 +14,7 @@ license=('GPL')
 depends=('qt5-base' 'glew' 'glu')
 makedepends=('icoutils' 'git' 'coreutils') # add coreutils for nproc
 install=openbrf.install
-source=('git+https://github.com/cfcohen/openbrf' 'git+https://github.com/cnr-isti-vclab/vcglib')
+source=('git+https://github.com/cfcohen/openbrf' 'git+https://github.com/cnr-isti-vclab/vcglib#tag=v1.0.1')
 md5sums=('SKIP' 'SKIP')
 
 pkgver()
