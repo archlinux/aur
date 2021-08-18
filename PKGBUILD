@@ -2,7 +2,7 @@
 
 pkgname=macchina-git
 _pkgname=macchina
-pkgver=0.8.2.f73b057
+pkgver=0.9.3.cf1f360
 pkgrel=1
 pkgdesc="Basic system information fetcher, written in Rust"
 
@@ -37,12 +37,12 @@ build() {
 package() {
     cd "$pkgname"
     targetdir=${CARGO_TARGET_DIR:-target}
-    outdir=$(find "$targetdir" -name macchina-stamp -print0 \
-        | xargs -0 ls -t \
-        | head -n1 \
-        | xargs dirname)
-    install -Dm644 "$outdir/macchina.fish" "$pkgdir/usr/share/fish/vendor_completions.d/macchina.fish"
-    install -Dm644 "$outdir/macchina.bash" "$pkgdir/usr/share/bash-completion/completions/macchina"
+    # outdir=$(find "$targetdir" -name macchina-stamp -print0 \
+    #     | xargs -0 ls -t \
+    #     | head -n1 \
+    #     | xargs dirname)
+    # install -Dm644 "$outdir/macchina.fish" "$pkgdir/usr/share/fish/vendor_completions.d/macchina.fish"
+    # install -Dm644 "$outdir/macchina.bash" "$pkgdir/usr/share/bash-completion/completions/macchina"
     install -Dm755 "$targetdir/release/macchina" "$pkgdir/usr/bin/$_pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
