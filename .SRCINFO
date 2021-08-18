@@ -1,0 +1,14 @@
+pkgbase = minetest-voxel-knights
+	pkgdesc = WIP Medival Fantasy Open World PvE game
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Lone_Wolf/voxel_knights/
+	arch = any
+	license = MIT
+	depends = minetest-common
+	noextract = voxel_knights-0.1.5.zip
+	options = !strip
+	source = voxel_knights-0.1.5.zip::https://content.minetest.net/packages/Lone_Wolf/voxel_knights/releases/5110/download/
+	sha256sums = 58a13c3e6a570064a0e4fac50dfc0f20c9ca922556b0214c61945967ffcb383b
+
+pkgname = minetest-voxel-knights
