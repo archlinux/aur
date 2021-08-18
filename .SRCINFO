@@ -1,6 +1,6 @@
 pkgbase = mutter-oldstable
 	pkgdesc = A window manager for GNOME (oldstable version)
-	pkgver = 3.38.5
+	pkgver = 3.38.6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
@@ -34,7 +34,7 @@ pkgbase = mutter-oldstable
 	provides = libmutter-7.so
 	conflicts = mutter
 	replaces = mutter
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=6fd13704c70fe92c2195bb92efd38e172082de55
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=8bf8474372ea66ee7cccf369a95f6be83109681e
 	sha256sums = SKIP
 
 pkgname = mutter-oldstable
