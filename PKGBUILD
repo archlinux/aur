@@ -1,8 +1,8 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=wakatime-cli-bin
-pkgver=1.18.10
-pkgrel=2
+pkgver=1.18.11
+pkgrel=1
 provides=('wakatime' 'wakatime-cli')
 conflicts=('wakatime' 'wakatime-cli')
 pkgdesc='Command line interface used by all WakaTime text editor plugins.'
@@ -11,7 +11,7 @@ url='https://github.com/wakatime/wakatime-cli'
 license=('BSD')
 source=("wakatime-${pkgver}-${pkgrel}.zip::https://github.com/wakatime/wakatime-cli/releases/download/v$pkgver/wakatime-cli-linux-amd64.zip"
         "LICENSE-${pkgver}-${pkgrel}::https://raw.githubusercontent.com/wakatime/wakatime-cli/v$pkgver/LICENSE")
-sha256sums=('1a098dcca06374009474e44b97270a7a9c44ddd10db56e3e87dbf15ec29d2b17'
+sha256sums=('ed52629979295ee145ab21056073883714793444a8488941782b2b3373c86589'
             '4aafe64159ef6372aba2de60ba7de1b92cb37c9adc63f904ae1a0e4e7b1292d2')
 
 package() {
