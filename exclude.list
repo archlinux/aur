@@ -1,3 +1,6 @@
+# replace netease-cloud-music.bash with this AUR package
+./opt/netease/netease-cloud-music/netease-cloud-music.bash
+
 # Fix unable to use fcitx
 # gtk or gdk and its dependencies
 ./opt/netease/netease-cloud-music/libs/libgtk-3.so.0
