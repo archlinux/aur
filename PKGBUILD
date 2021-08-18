@@ -1,9 +1,10 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=ada-libfswatch
-pkgver=r16.94c0a5f
+pkgver=20210818
 pkgrel=1
 pkgdesc='An Ada binding to the libfswatch library in the fswatch project'
+
 url='https://github.com/AdaCore/ada_libfswatch'
 arch=('x86_64')
 license=('GPL3' 'custom')
