@@ -1,18 +1,25 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=nanopb
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc='Protocol Buffers with small code size'
 arch=(any)
 url='https://jpa.kapsi.fi/nanopb/'
 license=(zlib)
 depends=(python-protobuf)
-makedepends=(python-docutils)
+makedepends=(pandoc)
 checkdepends=(scons)
 source=("https://jpa.kapsi.fi/$pkgname/download/$pkgname-$pkgver.tar.gz"
-        'protoc-gen-nanopb')
-sha256sums=('3fae3a8efb61cf06124732fc775088389f259f0c8d85f1ca3330da295282f912'
-            'cd1ff902034d8deabf2d8ad3fadcdc4860d0b5d3be746e2b4b7427b9a7aca9c0')
+        'protoc-gen-nanopb'
+        'scons-4.2.x.patch')
+sha256sums=('7efc553d3d861bceb1221f79d29b03e4353f0df2db690cbced0f4a81882d95fd'
+            'cd1ff902034d8deabf2d8ad3fadcdc4860d0b5d3be746e2b4b7427b9a7aca9c0'
+            '18c02afa90b6ad077b4944e2a6006d24a909a8fab1a322acddd4a4ad61011ff5')
+
+prepare() {
+	cd "$pkgname"
+	patch --forward --strip=1 --input="${srcdir}/scons-4.2.x.patch"
+}
 
 build() {
 	cd $pkgname
