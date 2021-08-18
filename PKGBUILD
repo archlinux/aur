@@ -13,25 +13,25 @@ source=(
     'navicat15.desktop'
 )
 sha256sums=(
-    'e08dcea78524bda32b52909f7257a5ef5466977c9b01613c86eb9e6ffe73be82'
-    '6477d39b5c6247a6e5769fb65ac99504ba602170794f5610a1e301cd0832032e'
+    'd1a9f95cfe93ecbfc8681fa9738c5438cd08d33d8d1988459d44b99cfbbf4b43'
+    '2c69105cc3ceda6075e36ebfd2931f1a023929045c18087a0a4504c0e5c4a4a1'
 )
 
 package() {
     _root_na_dir=opt/$pkgname
     _na_dir=$pkgdir/$_root_na_dir
-    install -d $_na_dir
+    install -d $_na_dir/usr
 
     cd $srcdir
-    cp -r usr $_na_dir
+    cp -r usr/{bin,lib,plugins} $_na_dir/usr
     install AppRun $_na_dir
     cp manual.pdf $_na_dir
     cp cacert.pem $_na_dir
 
     install -d $pkgdir/usr/share/applications
-    cp $srcdir/navicat15.desktop $pkgdir/usr/share/applications
+    cp navicat15.desktop $pkgdir/usr/share/applications
 
     _icon_dir=usr/share/icons/hicolor/256x256/apps
     install -d $pkgdir/$_icon_dir
-    ln -s /$_root_na_dir/$_icon_dir/navicat-icon.png $pkgdir/$_icon_dir/navicat15.png
+    cp $_icon_dir/navicat-icon.png $pkgdir/$_icon_dir/navicat15.png
 }
