@@ -26,6 +26,8 @@ use_selinux=n
 use_tomoyo=n
 use_yama=n
 use_apparmor=
+## Apply Kernel Optimization
+_use_optimization=y
 
 # Only compile active modules to VASTLY reduce the number of modules built and
 # the build time.
@@ -49,7 +51,7 @@ _use_current=
 pkgbase=linux-cacule-rdb
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.11
-pkgrel=3
+pkgrel=4
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -66,7 +68,7 @@ source=(
 "config"
 "${_patchsource}/arch-patches-v5/0001-arch-patches.patch"
 "${_caculepatches}/v5.13/cacule-5.13.patch"
-"${_patchsource}/cpu-patches/0001-cpu-patches.patch"
+"${_patchsource}/cpu-patches-v2/0001-cpu-patches.patch"
 "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
 "${_patchsource}/futex2-xanmod-patches-v3/0001-futex2-resync-from-gitlab.collabora.com.patch"
 "${_patchsource}/winesync/5.13-winesync.patch"
@@ -120,9 +122,11 @@ prepare() {
     echo "Setting config..."
     cp ../config .config
 
-    # Let's user choose microarchitecture optimization in GCC
-    sh "${srcdir}"/auto-cpu-optimization.sh
-
+    ### Microarchitecture Optimization (GCC/CLANG)
+      if [ -n "$_use_optimization" ]; then
+       sh "${srcdir}"/auto-cpu-optimization.sh
+      fi
+      
       ### Optionally set tickrate to 2000HZ
         if [ -n "$_2k_HZ_ticks" ]; then
           echo "Setting tick rate to 2k..."
@@ -429,7 +433,7 @@ md5sums=('89020a90124a6798054a03c7a2ead059'
          'fc5268d6d49ea366e09631ac8d68972f'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
-         '7640a753a7803248543675a6edc75e08'
+         '8d5925f0d8f42fd4c5ed46acfbf86492'
          '85f4be6562ee033b83814353a12b61bd'
          '3ec9a8784a9e73462def2e9c33de9a1e'
          '9573b92353399343db8a691c9b208300'
