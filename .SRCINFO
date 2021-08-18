@@ -1,7 +1,7 @@
 pkgbase = jdsp4linux-gui-git
 	pkgdesc = User Interface for JamesDSP on Linux
-	pkgver = 1.1.r2.3abfc92
-	pkgrel = 2
+	pkgver = 1.1.r5.gc03eecb
+	pkgrel = 1
 	url = https://github.com/ThePBone/JDSP4Linux-GUI
 	arch = x86_64
 	license = GPL3
@@ -17,4 +17,3 @@ pkgbase = jdsp4linux-gui-git
 	sha256sums = fa8ed0bee321c7fed6d2368d0bdf6fd12a3318e324bbda50ec6dbe7e3b784794
 
 pkgname = jdsp4linux-gui-git
-
