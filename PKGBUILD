@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.715
+pkgver=mainline.0.719
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
 	'sdl2>=2.0.16'
 	'sirit>=r184'
 	'vulkan-headers>=1.2.145'
-	'xbyak>=5.96'
+	'xbyak>=5.995.r3'
 	'zstd>=1.5'
 )
 checkdepends=('catch2>=2.13')
@@ -57,7 +57,7 @@ b2sums=(
 	'7508b5e6ca43f44eeecd8b91ca8bdfe3350a37601d8c626ce300435d0e3976ae48068ed014c7b4e1712359ef025fff59fef3a0a3adf5f5bf499129492f840df5'
 	'f9df47354efda0ef25685e4dc13426a0f8ee2ba61a7af5af18eaaa00de142d0a60208a3f8c7002ea85922cda666288e156ff81449c0e4d74c0931de481b84092'
 	'50eece7824e59195ac9906eb142e10328607bb002fbfd6d9b262abb3fa29b1a0425fc5c33d4ca9ab5a88608ddd72891a592eaa669213db76bdde6142485bc1f6'
-	'a960a8976783b49e88cde7aae5c1b16b20200241f74f0375075c26f997f05cf4071b9c9bc48d7e1da8b3e85c2eae512e2659286580a4d8873f7525845d46bd55'
+	'c3139235f6ddc5e9ddd3fe9fb7d129674b26930a4aa5eeb4ec822585ee3817f3e043610d2facd058c40eff3ec482a3b82782eb9559cd87c335748a0426243da5'
 )
 
 prepare() {

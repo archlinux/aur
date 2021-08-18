@@ -1,13 +1,12 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -786,6 +786,12 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+@@ -786,6 +786,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
      -DBOOST_REGEX_NO_LIB
  )
  
 +if (ARCHITECTURE_x86 OR ARCHITECTURE_x86_64)
-+    find_path(XBYAK_INCLUDE_DIR xbyak.h PATH_SUFFIXES xbyak REQUIRED)
-+    add_library(xbyak INTERFACE IMPORTED)
-+    target_include_directories(xbyak SYSTEM INTERFACE "${XBYAK_INCLUDE_DIR}")
++    find_package(xbyak REQUIRED)
++    add_library(xbyak ALIAS xbyak::xbyak)
 +endif()
 +
  enable_testing()
