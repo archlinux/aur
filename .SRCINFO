@@ -1,0 +1,14 @@
+pkgbase = minetest-water-game
+	pkgdesc = A WIP game of underwater exploration and survival.
+	pkgver = 8455
+	pkgrel = 1
+	url = https://content.minetest.net/packages/Lefty/water_game/
+	arch = any
+	license = GPLv3
+	depends = minetest-common
+	noextract = water_game-8455.zip
+	options = !strip
+	source = water_game-8455.zip::https://content.minetest.net/packages/Lefty/water_game/releases/8455/download/
+	sha256sums = c8dd8b7aaa79166e18cac5e527533f5a7fef6adcfc22b45e4dca66f1980eb135
+
+pkgname = minetest-water-game
