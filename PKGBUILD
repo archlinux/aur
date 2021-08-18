@@ -7,7 +7,7 @@ pkgname='ros-noetic-laser-geometry'
 pkgver='1.6.7'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -44,6 +44,10 @@ depends=(
 _dir="laser_geometry-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_geometry/archive/${pkgver}.tar.gz")
 sha256sums=('334a1cb1e8846a80a9980f06e4ab01dedd15f85016ea9d7c6fa4f2a29b075760')
+
+prepare(){
+    sed -i '4s/11/17/' ./${_dir}/CMakeLists.txt
+}
 
 build() {
 	# Use ROS environment variables.
