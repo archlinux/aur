@@ -2,17 +2,18 @@
 
 pkgname=neovim-nebulous-git
 pkgver=r38.b15c938
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist collection of colorschemes"
 arch=('any')
 url="https://github.com/yagua/nebulous.nvim"
 license=('MIT')
 groups=('neovim-plugins')
 depends=('neovim>=0.5')
-optdepends=('tree-sitter')
+optdepends=('neovim-tree-sitter: improved highlighting'
+            'neovim-lualine: built-in support')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'lualine-nebulous')
+conflicts=("${pkgname%-git}" 'lualine-nebulous')
 install=nebulous.install
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
