@@ -1,0 +1,14 @@
+pkgbase = minetest-driftgame
+	pkgdesc = Drive a car around procedurally generated roads
+	pkgver = 2020.09.15
+	pkgrel = 1
+	url = https://content.minetest.net/packages/paramat/driftgame/
+	arch = any
+	license = LGPLv2.1
+	depends = minetest-common
+	noextract = driftgame-2020.09.15.zip
+	options = !strip
+	source = driftgame-2020.09.15.zip::https://content.minetest.net/packages/paramat/driftgame/releases/6455/download/
+	sha256sums = 8c9b63c8cd4030b305467ec9cd2a1240e5e9cfa4eba0576a0be81a903ddc53ed
+
+pkgname = minetest-driftgame
