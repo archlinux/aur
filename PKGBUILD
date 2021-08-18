@@ -35,7 +35,7 @@ build()
 
 	# build it as fast as possible, but leaving a free CPU core for other stuff!
 	qmake -makefile openBrf.pro
-	make -j $[`nproc` - 1]
+	make -j $[ (n = `nproc` - 1) < 1 ? 1 : n ] # swy: don't make the thread count zero (-j 0) when there's only one available core (due to the system-threads - 1 thing)
 }
 
 package()
