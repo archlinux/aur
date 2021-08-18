@@ -1,28 +1,28 @@
 # Maintainer: German Lashevich <german.lashevich@gmail.com>
 
 pkgname=kubectl-gke-regular-bin
-pkgver=v1.18.20
+pkgver=v1.19.14
 pkgrel=1
 pkgdesc='Kubernetes.io client binary, compatible with the GKE version from the regular channel'
-provides=("kubectl=v1.18.20")
+provides=("kubectl=v1.19.14")
 conflicts=(kubectl kubectl-bin)
 arch=(i686 x86_64 armv5 armv6h armv7h aarch64 )
 url="https://github.com/kubernetes/kubectl"
 license=('Apache-2.0')
 
 package() {
-  install -Dm755 "$srcdir/kubectl-v1.18.20" "$pkgdir/usr/bin/kubectl"
+  install -Dm755 "$srcdir/kubectl-v1.19.14" "$pkgdir/usr/bin/kubectl"
 }
 
-source_i686=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/386/kubectl')
-sha256sums_i686=('aeda69896636a31df0f8dfe9b83ae3e41fcbbba239297632ecaec6d446f48851')
-source_x86_64=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/amd64/kubectl')
-sha256sums_x86_64=('66a9bb8e9843050340844ca6e72e67632b75b9ebb651559c49db22f35450ed2f')
-source_armv5=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/arm/kubectl')
-sha256sums_armv5=('952692df5533e88f1aa8cff254c1bb9f50f45c425fbd5c75f8049218fb93d009')
-source_armv6h=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/arm/kubectl')
-sha256sums_armv6h=('952692df5533e88f1aa8cff254c1bb9f50f45c425fbd5c75f8049218fb93d009')
-source_armv7h=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/arm/kubectl')
-sha256sums_armv7h=('952692df5533e88f1aa8cff254c1bb9f50f45c425fbd5c75f8049218fb93d009')
-source_aarch64=('kubectl-v1.18.20::https://storage.googleapis.com/kubernetes-release/release/v1.18.20/bin/linux/arm64/kubectl')
-sha256sums_aarch64=('31e6bbc657b13ce1b932bf7589bca41a25b0612b4d897b1f363dc9c5a8080a22')
+source_i686=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/386/kubectl')
+sha256sums_i686=('f485590dac9e0e7fa183b190044dfac934a3dc6d9dbdbe66d07eb44a3b8a8cf9')
+source_x86_64=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/amd64/kubectl')
+sha256sums_x86_64=('de2279c5a369f16fe6226e0358c5f8627a2dbee904f5c9b6c894158279df277d')
+source_armv5=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/arm/kubectl')
+sha256sums_armv5=('6e08274423ff534310779ffc3f2bdfafaca88d56dba95adc7a75a87e109f3989')
+source_armv6h=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/arm/kubectl')
+sha256sums_armv6h=('6e08274423ff534310779ffc3f2bdfafaca88d56dba95adc7a75a87e109f3989')
+source_armv7h=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/arm/kubectl')
+sha256sums_armv7h=('6e08274423ff534310779ffc3f2bdfafaca88d56dba95adc7a75a87e109f3989')
+source_aarch64=('kubectl-v1.19.14::https://storage.googleapis.com/kubernetes-release/release/v1.19.14/bin/linux/arm64/kubectl')
+sha256sums_aarch64=('75de4de6d3bb3c16c5ef2c4505fd1d8009fcd2f3bfa7f69e23acd547d92eda49')
