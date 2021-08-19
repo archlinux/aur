@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-shuzhi
 	pkgdesc = A wallpaper generation extension for gnome shell, inspired by Jizhi.
 	pkgver = 40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuberry/shuzhi
 	arch = any
 	license = GPL3
