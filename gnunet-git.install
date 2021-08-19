@@ -1,6 +1,6 @@
 _gnunet_setuid() {
 	getent group gnunetdns > /dev/null || groupadd -r gnunetdns
-	getent passwd gnunet > /dev/null || useradd -r -l -d /var/lib/gnunet -s /bin/sh gnunet
+	getent passwd gnunet > /dev/null || useradd -r -U -l -d /var/lib/gnunet -s /bin/sh -c "GNUnet" gnunet
 	local GNUNETDNS_GROUP="$(getent group gnunetdns | cut -d: -f3)"
 	chown root:root /usr/lib/gnunet/libexec/gnunet-helper-vpn
 	chmod u+s /usr/lib/gnunet/libexec/gnunet-helper-vpn
