@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-ndt-omp-git
 	pkgdesc = OpenMP boosted NDT and GICP algorithms
-	pkgver = r24.6887cf4
-	pkgrel = 1
+	pkgver = r41.399d613
+	pkgrel = 2
 	url = https://github.com/koide3/ndt_omp
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = ros-noetic-ndt-omp-git
 	sha256sums = SKIP
 
 pkgname = ros-noetic-ndt-omp-git
-

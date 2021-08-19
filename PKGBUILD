@@ -4,9 +4,9 @@ pkgdesc="OpenMP boosted NDT and GICP algorithms"
 url='https://github.com/koide3/ndt_omp'
 
 pkgname='ros-noetic-ndt-omp-git'
-pkgver=r24.6887cf4
+pkgver=r41.399d613
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 provides=(${pkgname::-4})
 
@@ -62,7 +62,7 @@ build() {
             -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
             -DPYTHON_EXECUTABLE=/usr/bin/python3 \
             -DSETUPTOOLS_DEB_LAYOUT=OFF \
-            -DCMAKE_CXX_STANDARD=14
+            -DCMAKE_CXX_STANDARD=17
 }
 
 package() {
