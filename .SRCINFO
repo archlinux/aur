@@ -1,6 +1,6 @@
 pkgbase = simutrans-svn
 	pkgdesc = Transportation simulation game - Nightly build from SVN
-	pkgver = r10017
+	pkgver = r10029
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = simutrans-svn
 	depends = gcc-libs
 	depends = zstd
 	depends = zlib
-	depends = sdl2_mixer
+	depends = sdl2
 	depends = hicolor-icon-theme
 	depends = freetype2
 	depends = miniupnpc
