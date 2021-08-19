@@ -1,7 +1,7 @@
 pkgbase = dracut-uefi-hook
 	pkgdesc = Install/update/removal hooks for dracut unifed uefi image generation
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	arch = x86_64
 	license = MIT
 	depends = dracut
@@ -16,4 +16,3 @@ pkgbase = dracut-uefi-hook
 	sha256sums = f8afca50be5505d32717233c58f58b439a34731559bc699bffefe9f98271e556
 
 pkgname = dracut-uefi-hook
-

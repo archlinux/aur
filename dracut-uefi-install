@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-ESP_PATH=$(bootctl --print-esp-path)
-MACHINE_ID=$(cat /etc/machine-id)
-source <(grep '^BUILD_ID=' /etc/os-release)
-
 kernels=()
 dracut_update=0
 
