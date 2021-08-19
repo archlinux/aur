@@ -5,7 +5,6 @@ pkgbase = webapp-manager
 	url = https://github.com/linuxmint/webapp-manager
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = python-beautifulsoup4
 	depends = python-configobj
 	depends = python-gobject
