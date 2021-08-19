@@ -1,0 +1,27 @@
+pkgbase = dtee
+	pkgdesc = Run a program with standard output and standard error copied to files
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://dtee.readthedocs.io/
+	arch = x86_64
+	license = GPL3
+	checkdepends = bash
+	checkdepends = coreutils
+	checkdepends = diffutils
+	checkdepends = findutils
+	makedepends = boost
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python-sphinx
+	depends = boost-libs
+	depends = libboost_program_options.so
+	depends = libboost_filesystem.so
+	options = zipman
+	options = lto
+	source = dtee-1.1.0.tar.gz::https://github.com/nomis/dtee/archive/refs/tags/1.1.0.tar.gz
+	source = https://dtee.bin.uuid.uk/source/dtee-1.1.0.tar.gz.asc
+	validpgpkeys = 47849A12DAF9BD2AF5505FBB4FF886F318206BD9
+	sha256sums = 7ed65431e51493fbdb16e6d1d89cd852d4d265e69b1414c42ed23e6852e6b51f
+	sha256sums = SKIP
+
+pkgname = dtee

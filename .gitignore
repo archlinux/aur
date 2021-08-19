@@ -1,0 +1,5 @@
+/dtee-*.tar.gz
+/dtee-*.tar.gz.asc
+/src/
+/pkg/
+*.zst
