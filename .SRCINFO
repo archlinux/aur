@@ -1,7 +1,7 @@
 pkgbase = pantheon-qq-common
 	pkgdesc = Common dependencies of Pantheon 3D and Pantheon Lite
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quequotion/pantheon-qq
 	arch = any
 	groups = pantheon-qq
@@ -37,7 +37,7 @@ pkgbase = pantheon-qq-common
 	optdepends = pantheon-terminal: The Pantheon Terminal Emulator
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
 	optdepends = wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)
-	replaces = pantheon-workarounds
+	conflicts = pantheon-workarounds
 	source = pantheon-session-qq
 	source = numlockx-pantheon.desktop
 	sha256sums = f208ab4c523df5eb7716fa37d300f568ab84259ca82aefb06f7a064bcb190174

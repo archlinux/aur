@@ -4,7 +4,7 @@
 
 pkgname=pantheon-qq-common
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Common dependencies of Pantheon 3D and Pantheon Lite'
 arch=('any')
 url='https://github.com/quequotion/pantheon-qq'
@@ -35,7 +35,7 @@ optdepends=("contractor: A desktop-wide extension service"
             "pantheon-terminal: The Pantheon Terminal Emulator"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
             "wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)")
-replaces=("pantheon-workarounds")
+conflicts=('pantheon-workarounds')
 source=('pantheon-session-qq'
         'numlockx-pantheon.desktop')
 sha256sums=('f208ab4c523df5eb7716fa37d300f568ab84259ca82aefb06f7a064bcb190174'
