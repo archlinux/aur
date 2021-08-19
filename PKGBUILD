@@ -4,7 +4,7 @@
 
 _name=libcap
 pkgname=lib32-libcap
-pkgver=2.52
+pkgver=2.53
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=('x86_64')
@@ -14,17 +14,17 @@ depends=("libcap=${pkgver}" 'lib32-glibc' 'lib32-pam')
 makedepends=('linux-api-headers')
 provides=('libcap.so' 'libpsx.so')
 source=("https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/${_name}-$pkgver.tar."{xz,sign}
-        "${_name}-2.45-makefile.patch"
-        "${_name}-2.52-link_pam_cap.patch"
+        "${_name}-2.53-makefile.patch"
+        "${_name}-2.53-progs_ldflags.patch"
 )
-sha512sums=('95d9e0f81fd955c42a0f299163a4402f00e9e7a2b392dfbabe613abea4babba2730576e76c9b612665a0bb8bd88aa98bf28ea3eb5582b5c06cd1137594a59893'
+sha512sums=('d83ed9460658fa75a5c118d831534388ba92ddad59944088b0d81a64c86b67ed562c7be4c5a499065ec26b1baab34298da80c8d034b61759c7dd295c2455417c'
             'SKIP'
-            '4f613f83198dfccb8b79e1b2c8764657a85300cb166d633d86b87f46567d51fa9395387caf33e82a8718f19e9a1fc65c11e7b6f63c3c4cde1b2a27f70671ec07'
-            '52256a9d79a7beb8f82312e94032426201b45e105dc04274f4589c39003546e0b41c2d8b0a7c1a9a44a7560e25e1f1455ad0a89527fca172f97478935afeb1f3')
-b2sums=('0696ae00a485df019f5441efe1d71676ddf294f1116e7fc3f352ad0595f9d4830f2e4fac1f98353016de36a4866f9d018f53419970ccd114c6df0faa556bcea3'
+            '0df64fd6dcd50fbbb13fea962b169e7946079e58a8f5adf61cf664b08d29832a2d0b39f50441e4cf4adbb5f4f2925df7364eefff16dcb35b71726fb8324413e7'
+            'eee1fa58b85f1a33b85dfcd6d6d3c56b5a1978d10d0af665a34163bfdefc448857d7eeaf41b06aa36d3dc9d1ef124edc653c0a55b477a820c274b96a890a19d2')
+b2sums=('10ebecc930d8491c65c7fcaa3f9ee6a45b6722d1d5be327a891e8bf4532ee8aa0ae664672c15e88bf0f328b4cd8f2e7ea685da44e903781ca7048dbe88c388c6'
         'SKIP'
-        '6f50d5a03c3532e6e50506cd878b1c9ca5cee5f1758f9318d4cb5d1e319cbe5f31210ba46a81b1af30730e2329aed7921c11f1a468a596a3f210972ca0da9d64'
-        'b734ffa08cc91b69d3af7700b094c8803db65d6d72d9d0ff6e736e9b8cea8f65f63d452ddf4500e7d538b72bafee16d9f43b6231d316f914af724fdbb987a081')
+        '3105cd035b6b76727e6a634515b8cfa12051f9a78c9d9eba57203928cd52bafd29fd86f7a2234b686c21967952357ba54699e868fb8c1ad8dd4c489b914359d8'
+        '6383899d6fac08e00ce6a4234e3a35eb4adc3c64b64070785397c228c01201eec10dd5ad96d8c12e5a5ceeadab9e65ae516d60f9652a10894894848a5e70b7d7')
 validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
 prepare() {
@@ -32,15 +32,14 @@ prepare() {
   cd "$pkgname-$pkgver"
   # SBINDIR is hardcoded to sbin. set to bin
   # add CPPFLAGS
-  patch -Np1 -i ../"${_name}-2.45-makefile.patch"
-  # fix issue with pam_cap.so not linking against libpam.so:
-  # https://bugzilla.kernel.org/show_bug.cgi?id=214023
-  patch -Np1 -i ../"${_name}-2.52-link_pam_cap.patch"
+  patch -Np1 -i ../"${_name}-2.53-makefile.patch"
+  # add back LDFLAGS, so that executables are built with them
+  patch -Np1 -i ../"${_name}-2.53-progs_ldflags.patch"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  make KERNEL_HEADERS='/usr/include' CC="gcc -m32" lib='lib32' prefix='/usr'
+  make KERNEL_HEADERS='/usr/include' CC="gcc -m32" lib='lib32' prefix='/usr' sbindir='bin'
 }
 
 check() {
@@ -50,7 +49,7 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" RAISE_SETFCAP='no' lib='lib32' prefix='/usr' install
+  make DESTDIR="$pkgdir" RAISE_SETFCAP='no' lib='lib32' prefix='/usr' sbindir='bin' install
 
   # docs
   install -vDm 644 {CHANGELOG,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
