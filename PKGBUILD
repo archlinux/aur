@@ -8,8 +8,8 @@
 
 pkgname=i3blocks-contrib-git
 _pkgname=i3blocks-contrib
-pkgver=1.4.0.r246.154001e
-pkgrel=3.1
+pkgver=2.0.0.r5.g7f601f8
+pkgrel=1
 pkgdesc='Official repository of community contributed blocklets'
 arch=('armv7h' 'i686' 'x86_64')
 groups=('i3')
@@ -73,21 +73,22 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    VAR=$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')
-    VAR=${VAR#?}
-    printf "%s" "$VAR"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package () {
+build() {
   cd "${pkgname}"
-  install -d "${pkgdir}"/usr/lib/i3blocks
-
   for tobuild in $(find . -mindepth 2 -type f -name 'Makefile');
   do
     pushd $(dirname $tobuild)
     make
     popd
   done
+}
+
+package () {
+  cd "${pkgname}"
+  install -d "${pkgdir}"/usr/lib/i3blocks
 
   find . -type f -executable -not -path './.git/*' -exec install {} "${pkgdir}"/usr/lib/i3blocks/ \;
 }
