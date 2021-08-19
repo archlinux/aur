@@ -6,14 +6,13 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=21.6.0.28
+pkgver=21.8.0.40
 pkgrel=1
 pkgdesc="Citrix Workspace App for x86_64 (64bit) Linux (ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/'
 license=('custom:Citrix')
 depends=('alsa-lib' 'libvorbis' 'curl' 'gtk2' 'libpng12' 'libxaw' 'libxp' 'speex' 'libjpeg6-turbo' 'libsoup' 'gst-plugins-base-libs' 'libidn11')
-makedepends=('automake' 'autoconf' 'wget')
 optdepends=('xerces-c: gtk2 configuration manager'
             'webkit2gtk: gtk2 selfservice/storefront ui'
             'libc++: for HDXTeams')
@@ -34,9 +33,9 @@ sha256sums=('38e0de641fd374c65c84cb2e82a976595380c32d5f89cff8a25843bdd000d637'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
             'a3da4a2cdc6f8ef7f3f26fe3344f7e6b6ee5cbe1cded77aadd616adc7771adb8'
             'a5b03c48f359cdb3667ca0721c6b4091b97300605d5c9ca959ce072580483c81')
-sha256sums_x86_64=('f3f98c60b0aaac31eb44dc98f22ee7ae7df229c960d5d29785eb5e9554f85f68')
-sha256sums_i686=('c2d9652ad9488a9ff171e62df8455ebe6890bcfade1cc289893ee35322d9d812')
-sha256sums_armv7h=('acbc71dcf8d39c1a9e5e20e8a230c58660e3cfcfa67dd965beb2f19ebdefedf4')
+sha256sums_x86_64=('69ddae29cc8b4b68341c3d9503a54ee70ab58a5795fd83e79573f013eda5518c')
+sha256sums_i686=('b6d1bde5a8533f22374e1f5bbb3f5949e5b89773d0703e021fbe784b455aad3f')
+sha256sums_armv7h=('ba9c4003cc1b32e8469c3fdf53bc1f17fc380071a3e7e189562fb131ba95652a')
 install=citrix-client.install
 
 package() {
