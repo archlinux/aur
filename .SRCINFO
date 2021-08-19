@@ -9,6 +9,6 @@ pkgbase = tmpcleaner
 	source = tmpcleaner.sh
 	source = tmpcleaner.cron
 	sha256sums = cf3147daee19e205a55255dceba3a83ed4d5cb64a35d88bf0097a45e02e9bd50
-	sha256sums = cc1d51f6762e639d5dc2191cfd70d70e4ea77e026f523c26a53b8387ef251607
+	sha256sums = 18cac20919ae33e46e8d25c6e9a6305504a5cf2d41059750fe3cd0205a1d2fa1
 
 pkgname = tmpcleaner
