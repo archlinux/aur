@@ -12,6 +12,7 @@ pkgbase = armagetronad-git
 	depends = ftgl
 	depends = boost-libs
 	depends = protobuf
+	depends = hicolor-icon-theme
 	optdepends = python: language updater
 	optdepends = glew: Graphics on X11
 	optdepends = glew-wayland: Graphics on Wayland
@@ -21,4 +22,3 @@ pkgbase = armagetronad-git
 	sha1sums = SKIP
 
 pkgname = armagetronad-git
-

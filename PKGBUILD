@@ -12,7 +12,7 @@ pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
 license=('GPL')
-depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf')
+depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf' 'hicolor-icon-theme')
 optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Graphics on Wayland')
 makedepends=('boost')
 provides=('armagetronad')
@@ -32,9 +32,9 @@ prepare(){
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    
+
     ./bootstrap.sh
-    
+
     ./configure --prefix=/usr \
        --sysconfdir=/etc \
        --mandir=/usr/share/man \
@@ -48,9 +48,9 @@ package() {
     cd "${srcdir}/${_pkgname}"
     make DESTDIR="${pkgdir}" install
     install -D -m 644 "desktop/${_pkgname}-armagetronad.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-armagetronad.desktop"
-    install -d "${pkgdir}/usr/share/pixmaps/"
-    ln -s /usr/share/armagetronad/desktop/icons/large/armagetronad.png \
-          "${pkgdir}/usr/share/pixmaps/${_pkgname}-armagetronad.png"
+    for directory in 16x16 32x32 48x48; do
+       ln -s /usr/share/armagetronad/desktop/icons/${directory}/armagetronad.png "$pkgdir/usr/share/icons/hicolor/${directory}/apps/armagetronad.png"
+    done
     mv "${pkgdir}/usr/bin/armagetronad" "${pkgdir}/usr/bin/armagetronad_bin"
     printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "${pkgdir}/usr/bin/armagetronad"
     chmod +x "${pkgdir}/usr/bin/armagetronad"
