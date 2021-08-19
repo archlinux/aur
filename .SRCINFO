@@ -1,0 +1,10 @@
+pkgbase = wlbox
+	pkgdesc = A compositor for Wayland, like Openbox
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/Tsingv/wlbox
+	arch = x86_64
+	license = GPL
+	source = wlbox::git+https://github.com/Tsingv/wlbox
+
+pkgname = wlbox
