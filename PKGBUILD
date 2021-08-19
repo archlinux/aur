@@ -2,7 +2,7 @@
 
 pkgname=mpdviz
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone console MPD visualizer'
 arch=('x86_64' 'i686' 'ARM')
 url='https://github.com/lucy/mpdviz'
@@ -17,7 +17,8 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$srcdir/$pkgname"
 	export GOPATH="$srcdir"
-	go get -d
+	go mod init "${url#https://}"
+        go mod tidy
 }
 
 build() {
