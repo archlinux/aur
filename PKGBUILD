@@ -3,7 +3,7 @@
 
 pkgname=nowater
 pkgver=21.07
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI tool that helps you set wallpaper or live wallpaper easily."
 arch=(any)
 url="https://github.com/justanoobcoder/nowater"
