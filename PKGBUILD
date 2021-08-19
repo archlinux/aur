@@ -1,6 +1,6 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
 pkgname=tmpcleaner
-pkgver=r8
+pkgver=r9
 pkgrel=1
 pkgdesc='simple script and cron.daily entry for cleaning old /tmp files.'
 arch=(any)
