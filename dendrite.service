@@ -1,5 +1,5 @@
 [Unit]
-Description=Dendrite (Matrix Homeserver)
+Description=Dendrite Matrix Homeserver
 After=network.target
 After=postgresql.service
 Wants=postgresql.service

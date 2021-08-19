@@ -1,55 +1,60 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=dendrite
-pkgver=0.3.11
-pkgrel=2
+pkgname="dendrite"
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
-arch=('x86_64')
-url='https://github.com/matrix-org/dendrite'
-license=('Apache')
-makedepends=('go')
-source=("https://github.com/matrix-org/dendrite/archive/v$pkgver/dendrite-v$pkgver.tar.gz"
-        "config-sample.yaml"
-        "dendrite.sysusers"
-        "tmpfiles-dendrite.conf"
-        "dendrite.service")
-sha256sums=('e473fa629af175ff0dda29ad93c9d7c1a3f35d216b2df6b19aab978856e58e4a'
-            '6a322c0fe6accc645b51dc0e7ebff1f7fae263b420a7dcd9eec0ddb936155b76'
+url="https://github.com/matrix-org/dendrite"
+license=("Apache")
+arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
+makedepends=("go")
+source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles"
+        "$pkgname.service")
+sha256sums=('61379663300f399dc9bc0ca404778a7e828121c6d50372a2f331f80e49ba01a3'
             'aba328d7a7244e82f866f9d0ead0a53e79e1590b9c449ad6d18ff2659cb5e035'
-            '7d3b8e046581c70857d452eb6569ea239989c7a47f818c184773b52df8a712dc'
-            '562a89c61d4f54a2558024f755497a3a59b1c85e236924131fdf58724ed25f3f')
+            '83fa60ac51eb307aa1c96dbb088aa1ce69a91694b3bbaac210bf37408f33d837'
+            'b0d5da62858969bed01fa6d8154cf43867dba48e86821e51cda8dc6eecba5cc7')
 
-build() {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build ./cmd/dendrite-monolith-server
-  go build ./cmd/generate-config
-  go build ./cmd/generate-keys
-  go build ./cmd/create-account
+prepare(){
+ cd "$pkgname-$pkgver"
+ sed -i "$pkgname-config.yaml" \
+     -e "s|# This is the Dendrite configuration file.|# This is an example configuration file for Dendrite.|"
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go test ./cmd/dendrite-monolith-server
+build(){
+ cd "$pkgname-$pkgver"
+ export CGO_CPPFLAGS="${CPPFLAGS}"
+ export CGO_CFLAGS="${CFLAGS}"
+ export CGO_CXXFLAGS="${CXXFLAGS}"
+ export CGO_LDFLAGS="${LDFLAGS}"
+ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+ go build ./cmd/dendrite-monolith-server
+ go build ./cmd/generate-config
+ go build ./cmd/generate-keys
+ go build ./cmd/create-account
 }
 
-package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 ./dendrite-monolith-server           "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 ./generate-config                    "${pkgdir}/usr/bin/${pkgname}-generate-config"
-  install -Dm755 ./generate-keys                      "${pkgdir}/usr/bin/${pkgname}-generate-keys"
-  install -Dm755 ./create-account                      "${pkgdir}/usr/bin/${pkgname}-create-account"
-  install -Dm644 "${srcdir}/config-sample.yaml"       "${pkgdir}/etc/dendrite/config-sample.yaml"
-  install -Dm644 "${srcdir}/dendrite.service"         "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "${srcdir}/${pkgname}.sysusers"      "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -Dm644 "${srcdir}/tmpfiles-${pkgname}.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+check(){
+ cd "$pkgname-$pkgver"
+ export CGO_CPPFLAGS="${CPPFLAGS}"
+ export CGO_CFLAGS="${CFLAGS}"
+ export CGO_CXXFLAGS="${CXXFLAGS}"
+ export CGO_LDFLAGS="${LDFLAGS}"
+ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+ go test ./cmd/dendrite-monolith-server
+}
+
+package(){
+cd "$pkgname-$pkgver"
+install -D -m 755 "$pkgname-monolith-server"   "$pkgdir/usr/bin/$pkgname"
+install -D -m 755 "generate-config"            "$pkgdir/usr/bin/$pkgname-generate-config"
+install -D -m 755 "generate-keys"              "$pkgdir/usr/bin/$pkgname-generate-keys"
+install -D -m 755 "create-account"             "$pkgdir/usr/bin/$pkgname-create-account"
+install -D -m 644 "$pkgname-config.yaml"       "$pkgdir/etc/$pkgname/config-sample.yaml"
+install -D -m 644 "$srcdir/$pkgname.service"   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+install -D -m 644 "$srcdir/$pkgname.sysusers"  "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+install -D -m 644 "$srcdir/$pkgname.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }
