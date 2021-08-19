@@ -5,8 +5,8 @@
 
 # Maintainer: Tsingv <tsingv@outlook.com>
 pkgname=wlbox
-pkgver=0.0.0
-pkgrel=0
+pkgver=r1.7b4a66a
+pkgrel=1
 epoch=
 pkgdesc="A compositor for Wayland, like Openbox"
 arch=('x86_64')
@@ -25,8 +25,14 @@ options=()
 install=
 changelog=
 source=("$pkgname::git+$url")
+md5sums=('SKIP')
 noextract=()
 validpgpkeys=()
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
     echo "Yes!!"
