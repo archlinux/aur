@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=4
+pkgrel=5
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -47,7 +47,6 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	sed -i 's|contrib doc|doc|' Makefile.*
 	export GNUNET_PREFIX='/usr/lib'
 
 }
@@ -56,7 +55,7 @@ build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	test -f Makefile || ./configure --prefix='/usr' --without-mysql
+	test -f Makefile || ./configure --prefix='/usr'
 	make
 	make -C contrib
 

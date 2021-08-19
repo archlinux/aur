@@ -1,7 +1,7 @@
 pkgbase = gnunet
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://gnunet.org
 	install = gnunet.install
 	arch = i686
