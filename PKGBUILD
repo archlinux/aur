@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -11,6 +11,7 @@ makedepends=('imagemagick')
 optdepends=('glu: mesa OpenGL lib'
             'nvidia-utils: nvidia proprietary OpenGL lib'
             'opencl-mesa: mesa OpenCL runtime for GPU acceleration'
+            'opencl-amd: AMDGPU PRO OpenCL runtime for GPU acceleration'
             'cuda: nvidia CUDA runtime for GPU acceleration'
             'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration')
 provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
