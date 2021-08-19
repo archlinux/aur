@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-flucoma-git
-pkgver=r1179.5956e97
+pkgver=r1186.e14309b
 pkgrel=2
 pkgdesc='Fluid Corpus Manipulation plugins for Supercollider'
 arch=('any')
@@ -12,14 +12,14 @@ makedepends=('git' 'cmake' 'supercollider-headers-git')
 conflicts=("supercollider-flucoma")
 optdepends=()
 source=(
-	"$pkgname-$pkgver"::git+$url.git
+	"$pkgname"::git+$url.git
 	"flucoma-core"::git+https://github.com/flucoma/flucoma-core.git
 	)
 md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -29,7 +29,7 @@ build() {
 		SC_SRC="/usr/share/supercollider-headers"
 		FLUCOMA_CORE=$srcdir/flucoma-core
 
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 		mkdir build; cd build
 
 		git submodule update --init --recursive
@@ -51,7 +51,7 @@ build() {
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname/build"
 	cmake --build . --config Release --target install
 }
 
