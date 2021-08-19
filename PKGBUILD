@@ -2,7 +2,7 @@
 # Contributor: Peter Lewis <plewis@aur.archlinux.org>
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
-pkgver=v2.7.0.r0.g49a142789
+pkgver=v2.8.3.r1.g279fb3cd6
 pkgrel=1
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
@@ -33,8 +33,8 @@ build() {
   sed -i 's/APPDIR\ games/APPDIR\ bin/' ./src/install.cmake
   cd "$srcdir/$_pkgname-build"
   
-  [ $CARCH == 'x86_64' ] && cmake -S "$srcdir/$_pkgname" -B "$srcdir/$_pkgname-build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr 
-  [ $CARCH == 'i686' ] && cmake -S "$srcdir/$_pkgname" -B "$srcdir/$_pkgname-build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  [ $CARCH == 'x86_64' ] && cmake -S "$srcdir/$_pkgname" -B "$srcdir/$_pkgname-build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_BOOST=no
+  [ $CARCH == 'i686' ] && cmake -S "$srcdir/$_pkgname" -B "$srcdir/$_pkgname-build" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_BOOST=no
 
   make
 }
@@ -42,4 +42,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-build"
   make DESTDIR="$pkgdir/" install
+  mv /usr/games/CGeniusExe /usr/bin/CGeniusExe
 }
