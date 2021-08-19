@@ -2,7 +2,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=magic-wormhole-git
-pkgver=0.12.0.r19.679434a
+pkgver=0.12.0.r21.e522a39
 pkgrel=1
 pkgdesc='Securely transfer data between computers (development version)'
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python-click' 'python-cffi' 'python-autobahn' 'python-tqdm'
          'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize'
          'python-idna' 'python-service-identity' 'python-txtorcon'
-         'python-pyopenssl')
-makedepends=('python-setuptools' 'git')
+         'python-pyopenssl' 'python-setuptools')
+makedepends=('git')
 checkdepends=('python-mock' 'python-magic-wormhole-transit-relay'
               'python-magic-wormhole-mailbox-server')
 provides=('magic-wormhole' 'wormhole' 'wormhole-server' 'python-wormhole')
@@ -38,8 +38,9 @@ check() {
 
 package() {
 	cd "${pkgname%-git}"
+	export PYTHONHASHSEED=0
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-	install -vDm 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+	install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
 	install -vDm 644 docs/wormhole.1 -t "${pkgdir}/usr/share/man/man1"
 }
