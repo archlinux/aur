@@ -7,12 +7,13 @@
 
 pkgname=sendmail
 pkgver=8.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose internetwork email routing MTA"
 url="http://www.sendmail.org"
 arch=('x86_64')
 license=('custom:sendmail')
-provides=('sendmail=8.16' 'smtp-server' 'smtp-forwarder')
+_pkgversplit=( ${pkgver//./ } )
+provides=("sendmail=${_pkgversplit[0]}.${_pkgversplit[1]}" 'smtp-server' 'smtp-forwarder')
 conflicts=('msmtp-mta' 'postfix' 'exim' 'opensmtpd')
 backup=('etc/conf.d/sendmail'
         'etc/mail/aliases'
