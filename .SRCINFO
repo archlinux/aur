@@ -1,0 +1,18 @@
+pkgbase = tree-sitter-supercollider-git
+	pkgdesc = SuperCollider grammar for tree-sitter
+	pkgver = r142.67ecede
+	pkgrel = 1
+	url = https://github.com/madskjeldgaard/tree-sitter-supercollider
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = glibc
+	provides = tree-sitter-supercollider
+	conflicts = tree-sitter-supercollider
+	source = tree-sitter-supercollider-git::git+https://github.com/madskjeldgaard/tree-sitter-supercollider
+	sha256sums = SKIP
+
+pkgname = tree-sitter-supercollider-git
