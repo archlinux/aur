@@ -23,7 +23,7 @@ source=(
 md5sums=(
 	'2f08268f47bbdd231fc28d51ab46a521'
 	'b2e30a17b522ee265fd57fe7c45592fc'
-	'aca22ab459484bfd21d91d5ddc1989c8'
+	'7d7ae1650e3a87ce807283a7ae830333'
 )
 
 prepare() {
@@ -62,6 +62,6 @@ package() {
 	mkdir -p $pkgdir/etc/security/limits.d/
 	cp $srcdir/pharo.conf $pkgdir/etc/security/limits.d/pharo.conf
 
-	$pkgdir/usr/share/pharo-vm/pharo $pkgdir/usr/share/pharo-launcher/PharoLauncher.image st $srcdir/launcher-patch.st
+	$pkgdir/usr/share/pharo-vm/pharo --headless $pkgdir/usr/share/pharo-launcher/PharoLauncher.image st $srcdir/launcher-patch.st
 
 }
