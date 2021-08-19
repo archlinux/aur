@@ -1,13 +1,13 @@
 # Maintainer: David Rodriguez <dissonant.tech@gmail.com>
 
 pkgname=argo-bin
-pkgver=3.0.6
+pkgver=3.1.8
 pkgrel=1
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64')
-url="https://github.com/argoproj/argo"
+url="https://github.com/argoproj/argo-workflows"
 license=('Apache')
-source=("argo_$pkgver.gz::https://github.com/argoproj/argo/releases/download/v$pkgver/argo-linux-amd64.gz")
+source=("argo_$pkgver.gz::https://github.com/argoproj/argo-workflows/releases/download/v$pkgver/argo-linux-amd64.gz")
 
 package() {
   install -Dm755 "argo_$pkgver" "$pkgdir/usr/bin/argo"
@@ -17,4 +17,4 @@ package() {
   install -Dm644 argo.bash "$pkgdir/usr/share/bash-completion/completions/argo"
 }
 
-md5sums=('a3e8f4e322da19d10beffdb2d9ac4c09')
+md5sums=('6add407e3603a6b986ccca2a8716c31b')
