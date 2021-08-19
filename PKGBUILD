@@ -6,7 +6,7 @@ url='https://wiki.ros.org/stereo_image_proc'
 pkgname='ros-noetic-stereo-image-proc'
 pkgver='1.15.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -62,6 +62,7 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DCMAKE_CXX_STANDARD=17 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
