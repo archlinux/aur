@@ -3,8 +3,8 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -40,17 +40,17 @@ optdepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
-  "skip-tests-requiring-optional-deps.patch"
+  "skip-test-requiring-rpmdb.patch"
 )
 sha512sums=(
-  'f8f65ec90306bf59c0e31a8a3434477c38b8fb08aa2798b805afd57a506b00110797d514431e69dcb8dde5a54afad8606d8e1c973b8584c47cebed1420d6d61c'
-  'f2f9b1b8e5bd9d644cf7d597b95f3ee4df94379a167a25640fc708e22cc3774bfa3748f9f8ee31f943094d607f94c205dfdfc3ea2824a279fe9809e5c1c155e0'
+  '75df896259b5c340c528357309b2e5e1ce574b7e5e55dff573a1a7808faa3617da799df37e7e65064952a16549225beb16c1e12ba22f2fe4976a69696ed66f46'
+  '56dbea9ec9465d749d095819352fbfea570b1452aad523bb8a2d1a8ea8878489fdbc8190cbb6d8c2e82d60290d238edd502f879239124aadb81d7cdbac846365'
 )
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  patch --forward --strip=1 --input="${srcdir}/skip-tests-requiring-optional-deps.patch"
+  patch --forward --strip=1 --input="${srcdir}/skip-test-requiring-rpmdb.patch"
 }
 
 build() {
