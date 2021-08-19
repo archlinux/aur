@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A tool to monitor network traffic based on processes. GIT version"
 arch=("x86_64")
 url="https://github.com/berghetti/netproc"
-license=("GPL")
+license=("GPL3")
 depends=("ncurses" "glibc")
 makedepends=("git")
 provides=("netproc")
@@ -27,7 +27,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -D -m755 "bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "doc/$_pkgname.8" "$pkgdir/usr/share/man/man8"; \
     gzip -9 -f "doc/$_pkgname.8"
 }
