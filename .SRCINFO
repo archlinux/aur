@@ -1,0 +1,27 @@
+pkgbase = ruby-rubocop-rails
+	pkgdesc = Automatic Rails code style checking tool
+	pkgver = 2.11.3
+	pkgrel = 1
+	url = https://docs.rubocop.org/rubocop-rails/
+	arch = any
+	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-yard
+	checkdepends = ruby-bump
+	checkdepends = ruby-rubocop-performance
+	checkdepends = ruby-rubocop-rspec
+	checkdepends = ruby-test-queue
+	makedepends = git
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-rubocop
+	depends = ruby-activesupport
+	depends = ruby-rack
+	options = !emptydirs
+	source = git+https://github.com/rubocop/rubocop-rails.git?tag=v2.11.3
+	sha256sums = SKIP
+
+pkgname = ruby-rubocop-rails
