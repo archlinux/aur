@@ -9,6 +9,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('xmenu' 'librsvg' 'imagemagick')
 source=("git+$url")
+install="${pkgname}.install"
 sha256sums=("SKIP")
 makedepends=('git')
 

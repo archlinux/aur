@@ -1,0 +1,9 @@
+post_install() {
+  echo "------------------------------------------------"
+  echo ""
+  echo "You should checkout the xmenu-apps script"
+  echo "located in /usr/share/doc/xdg-xmenu/xmenu-apps"
+  echo ""
+  echo "------------------------------------------------"
+}
+
