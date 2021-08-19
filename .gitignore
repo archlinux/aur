@@ -1,0 +1,8 @@
+80-docker.rules
+buildx*
+Dockerfile.nanorc
+docker.service
+docker.socket
+*.deb
+*.tgz
+*.zst

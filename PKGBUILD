@@ -6,8 +6,9 @@ pkgver=20.10.8
 
 # must use commit sha as currently not tagged with 20.10+ versions
 _packaging_version=1c1cb918d8cf84f321bab7cb9739c221fe4f3ed7
+_buildx_version=v0.6.1
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
 url='https://www.docker.com/'
@@ -23,6 +24,7 @@ source=(
   "https://download.docker.com/linux/static/stable/x86_64/docker-${pkgver}.tgz"
   "https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-${pkgver}.tgz"
   "https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/docker-ce-cli_${pkgver}~3-0~debian-buster_amd64.deb"
+  "https://github.com/docker/buildx/releases/download/${_buildx_version}/buildx-${_buildx_version}.linux-amd64"
   "https://raw.githubusercontent.com/docker/docker-ce-packaging/${_packaging_version}/systemd/docker.socket"
   "https://raw.githubusercontent.com/docker/docker-ce-packaging/${_packaging_version}/systemd/docker.service"
   "https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/syntax/nano/Dockerfile.nanorc"
@@ -32,6 +34,7 @@ source=(
 sha256sums=('7ea11ecb100fdc085dbfd9ab1ff380e7f99733c890ed815510a5952e5d6dd7e0'
             '3d6ea2a389f47b173161a6a7e788cee14fee5d0ce7f4d16477f63ed4e5ab04ef'
             'f9c60f454909346e405562b8acc3456bf1e3f7a6f3e3a1d26a4addb159b5b970'
+            'de31f5dc997c31d7eb891f64493dcf3fddaada8fb95981a5f4c1e598a392c3ce'
             'caf98bf39fb8621fb955476567a38b8a6b35bab2dccd8a29a16da23d4bb99450'
             'ed2ebb93d4bb3a30b5ad214d2ea5d467e714928d4fbf077e2a77dce758c0fa60'
             '3b1bd816a4a029ac048be7703a72a69ff44c531ead443d573e04f29d812594f1'
@@ -72,6 +75,9 @@ package() {
   cp -r man/man* "$pkgdir/usr/share/man"
 
   cd $srcdir/
+  # buildx plugin
+  install -Dm755 "buildx-${_buildx_version}.linux-amd64" "$pkgdir/usr/lib/docker/cli-plugins/docker-buildx"
+
   # systemd
   install -Dm644 "docker.socket" "$pkgdir/usr/lib/systemd/system/docker.socket"
   install -Dm644 "docker.service" "$pkgdir/usr/lib/systemd/system/docker.service"
