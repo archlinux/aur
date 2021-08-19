@@ -1,0 +1,15 @@
+pkgbase = opendoas-bin
+	pkgdesc = A portable fork of the OpenBSD doas command
+	pkgver = 6.9
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/OpenDoas
+	arch = x86_64
+	license = custom:ISC
+	depends = pam
+	provides = doas
+	replaces = doas
+	backup = etc/pam.d/doas
+	source = doas-6.9.tar::https://github.com/justanoobcoder/OpenDoas/releases/download/v6.9/doas-6.9.tar
+	md5sums = SKIP
+
+pkgname = opendoas-bin
