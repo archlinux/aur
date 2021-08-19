@@ -52,7 +52,7 @@ _use_current=
 pkgbase=linux-cacule-rdb-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.12
-pkgrel=1
+pkgrel=2
 _gittag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization'
 arch=('x86_64' 'x86_64_v3')
@@ -442,7 +442,7 @@ md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
          '8523a8d066c08f037621ec101a6b87fd'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
-         '8d5925f0d8f42fd4c5ed46acfbf86492'
+         '1082374b0727f24c4a96fc94f28de24c'
          '85f4be6562ee033b83814353a12b61bd'
          '3ec9a8784a9e73462def2e9c33de9a1e'
          '9573b92353399343db8a691c9b208300'
