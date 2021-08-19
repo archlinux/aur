@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-mkplugins-git
 pkgver=r235.fa9bd99
-pkgrel=2
+pkgrel=3
 pkgdesc="Mads Kjeldgaard's plugins for SuperCollider"
 arch=('any')
 url='https://github.com/madskjeldgaard/mkplugins'
@@ -11,18 +11,18 @@ depends=('supercollider')
 makedepends=('git' 'cmake' 'supercollider-headers-git')
 optdepends=()
 conflicts=("supercollider-mkplugins")
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 		SC_SRC="/usr/share/supercollider-headers"
 
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 		git submodule update --init --recursive
 
 		mkdir build; cd build
@@ -33,7 +33,7 @@ build() {
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname/build"
 	cmake --build . --config Release --target install
 }
 
