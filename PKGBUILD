@@ -3,7 +3,7 @@
 
 _pkgname="lua-language-server"
 pkgname="$_pkgname-git"
-pkgver=2.2.3.r1.g28d67699
+pkgver=2.3.6.r56.g666d25e2
 pkgrel=1
 license=('MIT')
 pkgdesc='Lua Language Server coded by Lua'
