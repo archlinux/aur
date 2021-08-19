@@ -4,9 +4,9 @@
 # Contributor: Carl George < carl at george dot computer >
 
 pkgname=pop-gtk-theme
-_basever=5.3.3
-_timestamp=1611615513
-_commit=5ab6f1e
+_basever=5.4.3
+_timestamp=1629313952
+_commit=489dbc8
 # There are no recent releases on Github. So this package follows the official PPA's releases
 # http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme
 #pkgver="${_basever}~${_timestamp}~${_commit}" # Not needed until _basever keeps the same between new releases
@@ -17,8 +17,8 @@ arch=('any')
 url='https://github.com/pop-os/gtk-theme'
 license=('LGPL2.1' 'CCPL' 'GPL3')
 makedepends=('sassc' 'meson')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pop-os/gtk-theme/archive/${_commit}.tar.gz")
-sha512sums=('2433fc9d1e354c3cf36a5dfe311819ab6cb9e801a420709b048e51dea1d8e1d95decb5fa5760d51e82a4de2f06b8674e0cb1ab0c5b906b4ef525e03ea40e4b54')
+source=("${pkgname}-${_commit}.tar.gz::https://github.com/pop-os/gtk-theme/archive/${_commit}.tar.gz")
+sha512sums=('1e4e3b6a3896b91f068278e5a77d778ace7239a5bd81b7cc667dfe8dc4276abc46fb736aaefbca97a5a3f1cff7540697bbaa3d1125455373e473a0895a144728')
 
 build() {
   cd "gtk-theme-${_commit}"*

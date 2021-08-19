@@ -1,6 +1,6 @@
 pkgbase = pop-gtk-theme
 	pkgdesc = System76 Pop GTK+ Theme
-	pkgver = 5.3.3
+	pkgver = 5.4.3
 	pkgrel = 1
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pop-gtk-theme
 	license = GPL3
 	makedepends = sassc
 	makedepends = meson
-	source = pop-gtk-theme-5.3.3.tar.gz::https://github.com/pop-os/gtk-theme/archive/5ab6f1e.tar.gz
-	sha512sums = 2433fc9d1e354c3cf36a5dfe311819ab6cb9e801a420709b048e51dea1d8e1d95decb5fa5760d51e82a4de2f06b8674e0cb1ab0c5b906b4ef525e03ea40e4b54
+	source = pop-gtk-theme-489dbc8.tar.gz::https://github.com/pop-os/gtk-theme/archive/489dbc8.tar.gz
+	sha512sums = 1e4e3b6a3896b91f068278e5a77d778ace7239a5bd81b7cc667dfe8dc4276abc46fb736aaefbca97a5a3f1cff7540697bbaa3d1125455373e473a0895a144728
 
 pkgname = pop-gtk-theme
