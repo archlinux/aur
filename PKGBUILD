@@ -1,67 +1,50 @@
 pkgname=litecoin-bin
-pkgver=0.17.1
+pkgver=0.18.1
 pkgrel=1
 arch=(i686 x86_64)
 url="http://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency, official binary release (includes litecoin-qt and litecoind)"
-install=litecoin-bin.install
-
-if [ ${CARCH} == 'x86_64' ]; then
-  _pkg_arch=x86_64
-  sha256sums=(9cab11ba75ea4fb64474d4fea5c5b6851f9a25fe9b1d4f7fc9c12b9f190fed07)
-else
-  _pkg_arch=i686-pc
-  sha256sums=(575f5e6614868f148b3ca3064ff7f494db84cde49669cd18be2d8275da88ebce)
-fi
-
 source=(
-  https://download.litecoin.org/litecoin-$pkgver/linux/litecoin-$pkgver-$_pkg_arch-linux-gnu.tar.gz
   litecoin-bin.desktop
   litecoin128.png
 )
-
-sha256sums+=(
-  addc85926f530590de2e3b2611503a9a8ba0d0614977ce8559ef115d5750e320
-  fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94
+sha256sums=(
+  '512d0d7de9be2736e4a2d7bf948d16b61319b2c402c032be7c4d3acc06febe16'
+  'fc2fa6b980a34762a8135168a4446887223ae60b24da54253893ff517992ad94'
 )
-
+source_i686=("https://download.litecoin.org/litecoin-${pkgver}/linux/litecoin-${pkgver}-i686-pc-linux-gnu.tar.gz"{,.asc})
+source_x86_64=("https://download.litecoin.org/litecoin-${pkgver}/linux/litecoin-${pkgver}-x86_64-linux-gnu.tar.gz"{,.asc})
+sha256sums_i686=('0a2788d58bd22c3754927e216bf18c64145b9fdc0d709f3f49ba3040b876a066' 'SKIP')
+sha256sums_x86_64=('ca50936299e2c5a66b954c266dcaaeef9e91b2f5307069b9894048acf3eb5751' 'SKIP')
+validpgpkeys=(
+  '59CAF0E96F23F53747945FD4FE3348877809386C'  # Adrian Gallagher (thrasher)
+)
 options=('!strip')
 depends=(
   bzip2
   expat
   fontconfig
   freetype2
+  gcc-libs
   glib2
-  libffi
-  libice
+  glibc
+  graphite
+  harfbuzz
   libpng
-  libsm
   libx11
   libxau
   libxcb
   libxdmcp
-  libxext
-  libxrender
-  openssl
   pcre
-  qt4
-  util-linux
   zlib
 )
+provides=(${pkgname%-bin})
+conflicts=(${pkgname%-bin})
 
 package() {
-  cd "$srcdir/litecoin-$pkgver/bin"
-
-  destdir="$pkgdir/opt/$pkgname"
-
-  mkdir -p "$destdir"
-  cp * "$destdir"
-
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/litecoin-qt" "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/litecoind" "$pkgdir/usr/bin"
-
-  install -Dm644 "$srcdir"/litecoin-bin.desktop "$pkgdir"/usr/share/applications/litecoin-bin.desktop
-  install -Dm644 "$srcdir"/litecoin128.png "$destdir"/litecoin128.png
+  install -Dm755 litecoin-$pkgver/bin/*litecoin* -t "$pkgdir/usr/bin"
+  install -Dm644 litecoin-$pkgver/share/man/man1/litecoin* -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 litecoin-bin.desktop "$pkgdir"/usr/share/applications/litecoin-bin.desktop
+  install -Dm644 litecoin128.png "$pkgdir"/usr/share/pixmaps/litecoin128.png
 }

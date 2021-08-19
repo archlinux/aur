@@ -8,6 +8,6 @@ Comment[tr]=Litecoin, eşten eşe kriptografik sanal para birimi
 Exec=/usr/bin/litecoin-qt
 Terminal=false
 Type=Application
-Icon=/opt/litecoin-bin/litecoin128.png
+Icon=litecoin128
 MimeType=x-scheme-handler/litecoin;
 Categories=Office;Finance;
