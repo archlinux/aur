@@ -22,7 +22,7 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make PREFIX=/usr DESTDIR="$pkgdir" install
   install -m644 -D README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
-  install -m644 -D LICENSE "$pkgdir/usr/share/doc/${pkgname%-git}/LICENSE"
   install -m755 -D xmenu-apps "$pkgdir/usr/share/doc/${pkgname%-git}/xmenu-apps"
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
 
