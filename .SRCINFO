@@ -1,4 +1,4 @@
-pkgbase = krankerl
+pkgbase = krankerl-bin
 	pkgdesc = A CLI helper to manage, package and publish Nextcloud apps
 	pkgver = 0.13.1
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = krankerl
 	source = krankerl-0.13.1::https://github.com/ChristophWurst/krankerl/releases/download/v0.13.1/krankerl
 	sha256sums = eeb9bf382622390693bf05bf62a479effdd791a0e2c429c6cdae427b032e64a9
 
-pkgname = krankerl
+pkgname = krankerl-bin
 

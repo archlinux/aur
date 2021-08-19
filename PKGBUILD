@@ -1,6 +1,6 @@
 #Maintainer: Julius Härtl <jus@bitgrid.net>
 
-pkgname=krankerl
+pkgname=krankerl-bin
 pkgver=0.13.1
 pkgrel=1
 pkgdesc=" A CLI helper to manage, package and publish Nextcloud apps"
