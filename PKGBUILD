@@ -4,9 +4,9 @@
 
 _name=libnsl
 pkgname=lib32-libnsl
-pkgver=1.3.0
-pkgrel=2
-pkgdesc='Public client interface library for NIS(YP) and NIS+'
+pkgver=2.0.0
+pkgrel=1
+pkgdesc='Public client interface library for NIS(YP)'
 arch=(x86_64)
 url=https://github.com/thkukuk/libnsl
 license=(LGPL2.1)
@@ -17,8 +17,8 @@ depends=(
 )
 provides=('libnsl.so')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/thkukuk/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('ce75ee9e54f1bdd2b31886e8157ff5f654511c3da017e0d9f8d0da6a2a9f9a78ff2e5f72cfb7ce3a23065f57337db51e3c8842a7e990350a62612018f4960342')
-b2sums=('d5116c2837a7ed5d5916d571d2e5deaf733b2e3e4401c2ebb0ec253d2755c2dc169139ea64756bd4ab28e3107f9ff1dcdd5ef6657828862a95ca18f2f145e3b3')
+sha512sums=('86a7738707a3e4e56b60c8de0445fb576e66148bc12fa2a6aab422ea81eb4b42be3287a12f78384acd2b8bfb3885e9a0ce4f7328f078da3a5099acb66a35a935')
+b2sums=('e16bba0d64afa3c1473be831fa9fa743e88323091a4ee62436383169d282b1ad6deab3ff1f9462828c88e443a4b9b913ac18b36c68664593a6a80dae25988b7d')
 
 prepare() {
   cd "$_name-$pkgver"
