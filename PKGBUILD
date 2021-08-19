@@ -4,12 +4,12 @@
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
-_pkgver=1.0.0-beta1
+_pkgver=1.0.0-beta2
 _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools-beta
 pkgver=${_pkgver//-/_}
-pkgrel=4
+pkgrel=1
 provides=("mdbtools=$pkgver")
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('unixodbc')
 optdepends=('gmdb2: graphical viewer for MDB files')
 source=("${_srcname}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
 
-md5sums=('47b39818b1f8042351c93cb3e45e0d0d')
+md5sums=('877413a4482478b17a7daa41a0e8b2ea')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
