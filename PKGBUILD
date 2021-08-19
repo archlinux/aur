@@ -4,7 +4,7 @@
 _gemname=rubocop
 pkgname=ruby-${_gemname}
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby static code analyzer and formatter"
 arch=(any)
 depends=(
@@ -18,21 +18,58 @@ depends=(
   ruby-ruby-progressbar
   ruby-unicode-display_width
 )
+checkdepends=(
+  ruby-bundler
+  ruby-rake
+  ruby-rspec
+  ruby-webmock
+  ruby-rubocop-rspec
+  ruby-rubocop-performance
+  ruby-rubocop-rake
+  ruby-test-queue
+  ruby-yard
+  ruby-bump
+  ruby-rubocop-rails
+)
 makedepends=(rubygems ruby-rdoc)
 url=https://rubocop.org
 license=(MIT)
 options=(!emptydirs)
-source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('c736a97e6793393844660309c9755e4824da8af0d67c4b7c8c5e1a56e46df70e')
+source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz
+        https://github.com/rubocop/rubocop/commit/4a5261591abe7d2f09a02add0b4e825291f35ae7.patch)
+sha256sums=('c736a97e6793393844660309c9755e4824da8af0d67c4b7c8c5e1a56e46df70e'
+            '9f00206230ce01b2a428f8090fea054dcefbe213902e34f0868a7da147887c78')
 
 prepare() {
   cd $_gemname-$pkgver
+
+  # https://github.com/rubocop/rubocop/pull/10022
+  patch -p1 -N -i "$srcdir/4a5261591abe7d2f09a02add0b4e825291f35ae7.patch"
+
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
+
+  sed -i '/memory_profiler/d' Gemfile
+  sed -i '/simplecov/d' Gemfile
+  sed -i '/stackprof/d' Gemfile
+  sed -i 's|~>|>=|g' Gemfile
+
+  sed -i '/group/d' Gemfile
+  sed -i '/end/d' Gemfile
+
+  # rubocop-rspec on the aur is _old_
+  sed -i '/rubocop-rspec/d' Gemfile
+  echo "gem 'rubocop-rspec'" >> Gemfile
 }
 
 build() {
   cd $_gemname-$pkgver
   gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd $_gemname-$pkgver
+  rake spec
+  rake ascii_spec
 }
 
 package() {
