@@ -1,0 +1,16 @@
+pkgbase = dracula-xresources-git
+	pkgdesc = Dracula theme for X11 applications
+	pkgver = r10.8de1197
+	pkgrel = 1
+	url = https://draculatheme.com/xresources
+	arch = any
+	groups = dracula-theme
+	license = MIT
+	makedepends = git
+	optdepends = xorg-xrdb
+	provides = dracula-xresources
+	conflicts = dracula-xresources
+	source = dracula-xresources::git+https://github.com/dracula/xresources.git
+	b2sums = SKIP
+
+pkgname = dracula-xresources-git
