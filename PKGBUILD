@@ -3,14 +3,17 @@
 
 pkgname=magic-wormhole
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Securely transfer data between computers"
 arch=('any')
 url="https://github.com/magic-wormhole/magic-wormhole"
 license=('MIT')
-depends=('python-click' 'python-cffi' 'python-autobahn' 'python-tqdm' 'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize' 'python-idna' 'python-service-identity' 'python-txtorcon' 'python-pyopenssl')
-makedepends=('python-setuptools')
-checkdepends=('python-mock' 'python-magic-wormhole-transit-relay' 'python-magic-wormhole-mailbox-server')
+depends=('python-click' 'python-cffi' 'python-autobahn' 'python-tqdm'
+         'python-hkdf' 'python-pynacl' 'python-spake2' 'python-humanize'
+         'python-idna' 'python-service-identity' 'python-txtorcon'
+         'python-pyopenssl' 'python-setuptools')
+checkdepends=('python-mock' 'python-magic-wormhole-transit-relay'
+              'python-magic-wormhole-mailbox-server')
 provides=('wormhole' 'wormhole-server' 'python-wormhole')
 conflicts=('wormhole' 'wormhole-server' 'python-wormhole')
 replaces=('wormhole' 'wormhole-server' 'python-wormhole')
@@ -29,6 +32,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+  export PYTHONHASHSEED=0
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -vDm 644 docs/*.md -t "${pkgdir}/usr/share/docs/${pkgname}"
