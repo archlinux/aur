@@ -1,9 +1,8 @@
 pkgbase = nextcloud-upgrade-hook
-	pkgdesc = Automatically run ‘occ upgrade’ and ‘occ maintenance:update:htaccess’ after updates
+	pkgdesc = Trigger ‘occ upgrade’ and ‘occ maintenance:update:htaccess’ after Nextcloud updates
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
-	depends = pacman-contrib
 	depends = nextcloud
 	source = nextcloud-post.hook
 	source = nextcloud-post.sh
