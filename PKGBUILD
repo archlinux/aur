@@ -1,4 +1,5 @@
-# Maintainer: matoro <matoro@airmail.cc>
+# Maintainer: Shakil Shaikh <sshaikh@hotmail.com>
+# Original Maintainer: matoro <matoro@airmail.cc>
 # Contributor: Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
@@ -6,12 +7,13 @@
 # Contributor: hashworks <mail@hashworks.net>
 
 pkgname=i3blocks-contrib-git
-pkgver=v1.4.0.r157.21708ed
-pkgrel=3
+_pkgname=i3blocks-contrib
+pkgver=1.4.0.r246.154001e
+pkgrel=3.1
 pkgdesc='Official repository of community contributed blocklets'
 arch=('armv7h' 'i686' 'x86_64')
 groups=('i3')
-url="https://github.com/vivien/i3blocks-contrib"
+url="https://github.com/vivien/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
 # Please keep those ordered by script-name. Packages for more than 2 scripts go on top
@@ -64,18 +66,28 @@ optdepends=('coreutils: For some scripts'
             'mpv: For ytdl-mpv script'
             'xclip: For ytdl-mpv script'
             'youtube-dl: For ytdl-mpv script')
-provides=("i3blocks-contrib")
-conflicts=("i3blocks-contrib")
-source=("git+https://github.com/vivien/i3blocks-contrib")
+provides=("${_pkgname}=${pkgver%%.r*}")
+conflicts=("${_pkgname}")
+source=("$pkgname::git+https://github.com/vivien/${_pkgname}")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}"/i3blocks-contrib
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "${pkgname}"
+    VAR=$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')
+    VAR=${VAR#?}
+    printf "%s" "$VAR"
 }
 
 package () {
-  cd "${srcdir}"/i3blocks-contrib
-  mkdir -p "${pkgdir}"/usr/lib/i3blocks
-  find . -mindepth 1 -maxdepth 1 -type d -not -path '*/\.*' -exec cp -r {} "${pkgdir}"/usr/lib/i3blocks/ \;
+  cd "${pkgname}"
+  install -d "${pkgdir}"/usr/lib/i3blocks
+
+  for tobuild in $(find . -mindepth 2 -type f -name 'Makefile');
+  do
+    pushd $(dirname $tobuild)
+    make
+    popd
+  done
+
+  find . -type f -executable -not -path './.git/*' -exec install {} "${pkgdir}"/usr/lib/i3blocks/ \;
 }
