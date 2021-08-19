@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-calculator
-pkgver=0.1
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="CutefishOS Calculator"
 arch=('x86_64')
 url="https://github.com/cutefishos/calculator"
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=('fishui' 'libcutefish')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/calculator/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('30f54a2a62e1da5c41cb4a8b79cf9fad014cf59206c8f13d148ec7544754c042ce08126fde628b5ead0b1c4e6fee7e83c8154b45cc9be7a53ae258f726eb0aed')
+sha512sums=('2c9bf5b7cf749066a87440c101658b33e4cc99f4510f0efd44a91ba0cd25a1c39414d3c8f4a4dbfa1204d4856a195f16e746985463950b93f87790fece74a0ec')
 
 build() {
   cd calculator-$pkgver
