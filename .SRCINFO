@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop-performance
 	pkgdesc = An extension of RuboCop focused on code performance checks
-	pkgver = 1.11.4
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://docs.rubocop.org/rubocop-performance
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = ruby-rubocop-performance
 	checkdepends = ruby-rspec
 	makedepends = rubygems
 	makedepends = ruby-rdoc
-	makedepends = git
 	depends = ruby
 	depends = ruby-rubocop
 	depends = ruby-rubocop-ast
 	options = !emptydirs
-	source = git+https://github.com/rubocop/rubocop-performance.git?tag=v1.11.4
-	sha256sums = SKIP
+	source = https://github.com/rubocop/rubocop-performance/archive/v1.11.5/rubocop-performance-1.11.5.tar.gz
+	sha256sums = bc0fbba6e195dddafb8ee7fb8e2adea4d727a3c08e790a8ab2acafbdb6dad629
 
 pkgname = ruby-rubocop-performance

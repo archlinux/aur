@@ -2,31 +2,39 @@
 
 _gemname=rubocop-performance
 pkgname=ruby-${_gemname}
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc="An extension of RuboCop focused on code performance checks"
 arch=(any)
 depends=(ruby ruby-rubocop ruby-rubocop-ast)
 checkdepends=(ruby-rspec)
-makedepends=(rubygems ruby-rdoc git)
+makedepends=(rubygems ruby-rdoc)
 url=https://docs.rubocop.org/rubocop-performance
 license=(MIT)
 options=(!emptydirs)
-source=(git+https://github.com/rubocop/${_gemname}.git?tag=v${pkgver})
-sha256sums=('SKIP')
+source=(https://github.com/rubocop/${_gemname}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('bc0fbba6e195dddafb8ee7fb8e2adea4d727a3c08e790a8ab2acafbdb6dad629')
+
+prepare() {
+  cd $_gemname-$pkgver
+  local _files="$(grep s.files rubocop-performance.gemspec | \
+    sed -r 's/^.*git ls-files -z (.*)`.*$/\1/')"
+  sed -i "s|git ls-files -z ${_files}|find ${_files} -print0|" \
+    ${_gemname}.gemspec
+}
 
 build() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   rspec
 }
 
 package() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
 
   gem install \
