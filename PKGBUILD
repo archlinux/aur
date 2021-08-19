@@ -77,17 +77,17 @@ _major=5.14
 _minor=0
 _rc=6
 _srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc4-45
+_clr=${_major}.0.rc6-47
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux current'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-current"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_gcc_more_v='20210616'
+_gcc_more_v='20210818'
 source=(
   "https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
   "clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=${_clr}"
@@ -331,7 +331,7 @@ done
 
 sha256sums=('d8f0bfe8d595445a20352de9f6a0de370f6699ca1342861fcbd975c2184158f8'
             'SKIP'
-            'e5b449ef1cd5fef9f24f55250afc2fad85df4fd7371db666f7c7f20eff91c33d')
+            'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
