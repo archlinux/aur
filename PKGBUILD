@@ -1,7 +1,7 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=v2.13.1.r1.fc69988
-pkgrel=3
+pkgver=2.13.1.r1.gfc69988
+pkgrel=4
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
 url='https://github.com/SnosMe/awakened-poe-trade'
@@ -27,7 +27,7 @@ _ensure_local_nvm() {
 
 pkgver() {
 	cd "${srcdir}/awakened-poe-trade"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
