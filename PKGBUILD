@@ -4,7 +4,7 @@
 
 pkgname='chronograf-bin'
 _pkgname='chronograf'
-pkgver=1.8.10
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Time-series data visualization tool for InfluxDB'
 _github_url="https://github.com/influxdata/chronograf"
@@ -22,10 +22,10 @@ source_armv7h=("https://dl.influxdata.com/chronograf/releases/chronograf-${pkgve
 source=("${_pkgname}.install" "${_pkgname}.tmpfiles")
 sha256sums=('1252f86f1e249be19eec4f7fe388300fb5f8d1cad5603b2ea87ea07362dc8768'
             'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
-sha256sums_x86_64=('3ce7f317d4f131c21977d8d4c44170c8e9bb5180605fbe8d11bc7b0bc4bd18b1')
-sha256sums_i686=('88f7a100a4ed96b49f93781a3d23ea62c616c5e2a7b0f183e729e8870811f40d')
-sha256sums_armv7h=('ec03c0295ea497d5c4ad9a2a8e474e98a099431db3499f8f7fa160743f520dcb')
-sha256sums_aarch64=('2150dff91e216f0a97bde1e3a57e92213bd25de9b09af87b63f6fe9bff682b12')
+sha256sums_x86_64=('24bc17b0fe93344da8cb49a7fd0f5b6a62f50ddcc8cb13fe60734a33ee3804b9')
+sha256sums_i686=('a7e697647743c12a71dbe5439e4474627d76c8748d9330945271a693c1912885')
+sha256sums_armv7h=('246df493ac806bd5b70cc76f6a47271ab48903e9698b1595add0630ea413ced9')
+sha256sums_aarch64=('bab4c1e5aef91ecf0962b1a780a2935037e393ff5eabf0b669297cbd89a385a2')
 
 package() {
 	# binary
