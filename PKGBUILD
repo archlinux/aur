@@ -2,15 +2,15 @@
 
 pkgname=droopy-git
 _pkgname=droopy
-pkgver=137.a1204ca
+pkgver=143.c8b2534
 pkgrel=1
 pkgdesc="Mini Web server that let others upload files to your computer"
-url='https://github.com/stackp/Droopy'
+url='https://github.com/Brli/Droopy'
 arch=('any')
-license=('New BSD')
+license=('BSD')
 depends=('python')
 conflicts=('droopy')
-source=("${_pkgname}::git+https://github.com/stackp/Droopy.git")
+source=("${_pkgname}::git+https://github.com/Brli/Droopy.git")
 sha512sums=('SKIP')
 
 pkgver() {
