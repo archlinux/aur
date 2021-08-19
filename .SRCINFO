@@ -9,6 +9,6 @@ pkgbase = pridecat
 	source = pridecat::git+https://github.com/lunasorcery/pridecat.git
 	source = 0001-Add-DESTDIR-variable.patch
 	sha256sums = SKIP
-	sha256sums = 09708f1fcd0a1f146b0029656c6014bf97e3d6cb8f6bd5951bcc9bf5a3b1e604
+	sha256sums = 1eb42c7651aafe9c27d54ba21c73f01e6c83a1b28bc6e9dcdc0729092a45bd6b
 
 pkgname = pridecat
