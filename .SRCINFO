@@ -23,7 +23,6 @@ pkgbase = pamac-flatpak-gnome
 	depends = libpamac-flatpak
 	depends = libhandy
 	depends = libappindicator-gtk3
-	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	provides = pamac
 	provides = gnome-software
 	conflicts = pamac
