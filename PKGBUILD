@@ -7,7 +7,7 @@
 _appname='gnunet'
 pkgname="${_appname}-git"
 pkgver='0.15.0.r29763.71a70133a'
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
@@ -16,7 +16,7 @@ provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
-	'openssl' 'libextractor' 'brotli')
+	'openssl' 'libextractor' 'brotli' 'gettext')
 makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
              'git' 'opus')
 optdepends=('bluez: for bluetooth transport'
@@ -28,20 +28,20 @@ optdepends=('bluez: for bluetooth transport'
             'pbc: for Attribute-Based Encryption (experimental)'
             'libgabe: for Attribute-Based Encryption (experimental)'
             'libpabc: for re:claimID zero-knowledge privacy credentials')
-backup=('etc/gnunetd.conf')
+backup=("etc/${_appname}.conf")
 options=('!makeflags')
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles"
-        'gnunetd.conf')
+        "${_appname}.conf")
 install="${pkgname}.install"
 
 sha256sums=('SKIP'
             '2fb156b5bda51ef7c0659ca19113e7c8cd651637ffb379264e2b61f65be367d1'
             '65daa9fb07bdc8b8a11ca06f320b94ce6cfcc9681c6693ac655ca54881645a39'
             '4832e45c02ad768a713ca7f2a04b58794e268a49130b5b8ab6b91917e3d4f945'
-            '582c617cfcb0b28e28c8ab42925307f79cf147f3231a9782c46893383c31b19e')
+            '6453b443ff660e5dd1bdcb6afcd4fc781ca128263faeda9cb50101911a0779d2')
 
 pkgver() {
 
@@ -84,7 +84,7 @@ package() {
 	# rm -rf "${pkgdir}/usr/include/libltdl" "${pkgdir}"/usr/lib/libltdl.* "${pkgdir}/usr/include/ltdl.h"
 
 	install -dm755 "${pkgdir}/etc"
-	install -Dm644 "${srcdir}/gnunetd.conf" "${pkgdir}/etc/gnunetd.conf"
+	install -Dm644 "${srcdir}/${_appname}.conf" "${pkgdir}/etc/${_appname}.conf"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -Dm644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
