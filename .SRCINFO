@@ -1,6 +1,6 @@
 pkgbase = simplyfile-git
 	pkgdesc = C++ wrappers around linux file descriptors
-	pkgver = 1.1
+	pkgver = 1.1.r0.cb18301
 	pkgrel = 1
 	url = https://github.com/gottliebtfreitag/simplyfile
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = simplyfile-git
 	sha256sums = SKIP
 
 pkgname = simplyfile-git
-

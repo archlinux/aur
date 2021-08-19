@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=simplyfile-git
-pkgver=1.1
+pkgver=1.1.r0.cb18301
 pkgrel=1
 pkgdesc='C++ wrappers around linux file descriptors'
 url='https://github.com/gottliebtfreitag/simplyfile'
