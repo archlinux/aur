@@ -1,2 +1,4 @@
 awakened-poe-trade
 *.zst
+pkg/
+src/
