@@ -1,6 +1,6 @@
 pkgbase = rconc-git
 	pkgdesc = a simple RCON client
-	pkgver = 0.2.3.r2.1901bf7
+	pkgver = 0.2.3.r5.72822ab
 	pkgrel = 1
 	url = https://git.kasad.com/rconc
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = rconc-git
 	depends = readline
 	provides = rconc
 	conflicts = rconc
-	source = git+https://git.kasad.com/rconc
+	source = git+https://git.kasad.com/rconc.git
 	sha256sums = SKIP
 
 pkgname = rconc-git
-
