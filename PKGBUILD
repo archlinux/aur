@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.13
-pkgver=${_major}.11
+pkgver=${_major}.12
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -121,7 +121,7 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        'aac274ce88309a84c1cb647f3d1d4320fdf18e8e45d6f7d97b5cfafc3287b33f87a203190f133392437cd6a1bea63d6f9592586ccb1bee5b7e5b0dc8229cc8b6'
+        'c969a102efc1a52647b5d0f22f5c109ffc422bf30b965d602410915b94e1f814b1547b9b7c708492f0bb926606ec15d38a6fb6b9f0b6aa1287e26854c8aeaba1'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
@@ -214,8 +214,8 @@ prepare() {
   scripts/config --module CONFIG_EXT4_FS
   scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 13
   scripts/config --enable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
   msg2 "Change cpu freq into schedutil"
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
