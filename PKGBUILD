@@ -4,7 +4,7 @@ url='https://wiki.ros.org/laser_filters'
 pkgname='ros-noetic-laser-filters'
 pkgver='1.8.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -46,6 +46,9 @@ _dir="laser_filters-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/laser_filters/archive/${pkgver}.tar.gz")
 sha256sums=('8c81c29f6e48daa6c120ddc72088b7a84d9753f91cb5027e745b0a94f9fd41fb')
 
+prepare() {
+    sed -i '4s/11/17/' ${_dir}/CMakeLists.txt
+}
 build() {
     # Use ROS environment variables.
     source /usr/share/ros-build-tools/clear-ros-env.sh
