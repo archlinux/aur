@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>x-tile.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>X-tile</name>
+  <summary>A GTK application to tile windows in different ways</summary>
+  <description>
+    <p>
+      X-tile is a GTK application that allows you to select a number of windows
+      and tile them in different ways. This is especially useful for comparing
+      products in separate web pages, or for programmers referring to
+      documentation as they are programming.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.giuspen.com/images/x-tile_main_window.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.giuspen.com/images/x-tile_custom_window.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://www.giuspen.com/images/x-tile_config_window.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://www.giuspen.com/x-tile/</url>
+  <update_contact>melmorabity_at_fedoraproject.org</update_contact>
+</component>
