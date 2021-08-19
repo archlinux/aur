@@ -5,7 +5,7 @@
 pkgname=podman-dnsname-git
 _pkgname=podman-dnsname
 _gitpkgname=dnsname
-pkgver=1.3.0.r4.g404c2d9
+pkgver=1.3.1.r2.g820a3ca
 pkgrel=1
 pkgdesc="name resolution for containers"
 arch=('any')
