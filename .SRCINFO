@@ -1,0 +1,13 @@
+pkgbase = fonts-clarity-city
+	pkgdesc = A modern, geometric sans-serif font. Successor to Metropolis.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vmware/clarity-city
+	arch = any
+	license = custom:OFL
+	source = clarity-city-1.0.0.tar.gz::https://github.com/vmware/clarity-city/archive/v1.0.0.tar.gz
+	sha256sums = 9617b71c3f0bdd47cc4d054243cc2147d0b9a36ac7fd3606273bc7975f2af4b3
+
+pkgname = otf-clarity-city
+
+pkgname = ttf-clarity-city
