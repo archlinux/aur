@@ -1,6 +1,6 @@
 pkgbase = librw-git
 	pkgdesc = A re-implementation of the RenderWare Graphics engine
-	pkgver = r520.4c4b199
+	pkgver = r535.5501c4f
 	pkgrel = 1
 	url = https://github.com/aap/librw
 	arch = i686
@@ -9,9 +9,8 @@ pkgbase = librw-git
 	makedepends = cmake
 	makedepends = git
 	depends = glfw
-	provides = librw=r520.4c4b199
+	provides = librw=r535.5501c4f
 	provides = librw.so
-	provides = librw_skeleton.so
 	conflicts = librw
 	source = git+https://github.com/aap/librw.git
 	b2sums = SKIP

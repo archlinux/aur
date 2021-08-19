@@ -2,7 +2,7 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 _pkgname=librw
 pkgname=$_pkgname-git
-pkgver=r520.4c4b199
+pkgver=r535.5501c4f
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/aap/$_pkgname"
 license=('MIT')
 depends=('glfw')
 makedepends=('cmake' 'git')
-provides=("$_pkgname=$pkgver" 'librw.so' 'librw_skeleton.so')
+provides=("$_pkgname=$pkgver" 'librw.so')
 conflicts=("$_pkgname")
 source=("git+$url.git")
 b2sums=('SKIP')
@@ -26,8 +26,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBRW_GL3_GFXLIB=GLFW \
-		-DLIBRW_INSTALL=ON \
 		-DLIBRW_PLATFORM=GL3 \
+		-DLIBRW_TOOLS=OFF \
 		-Wno-dev
 	cmake --build build
 }
