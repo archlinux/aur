@@ -1,0 +1,21 @@
+# Maintainer: Nicolas Villafan <pegromdev@gmail.com>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+
+pkgname=aptl
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="Creates installed lists of pkgs with Names & Descriptions for backup proposes."
+arch=('x86_64')
+url="https://github.com/The-Repo-Club/$pkgname"
+license=('MIT')
+makedepends=('git')
+source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
+#source=("aptl-1.0.4.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+
