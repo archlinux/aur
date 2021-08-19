@@ -1,0 +1,5 @@
+src
+pkg
+pridecat
+pridecat*.tar.zst
+clean.sh

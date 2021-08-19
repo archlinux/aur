@@ -1,0 +1,36 @@
+From f636b71cecf2e6e6c74532602d979464113bd9fb Mon Sep 17 00:00:00 2001
+From: NyCode <nico@nycode.de>
+Date: Thu, 19 Aug 2021 15:15:40 +0200
+Subject: [PATCH] Add DESTDIR variable
+
+---
+ Makefile | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 815c27e..cd8706a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,17 @@
+ CXX ?= clang
+ 
++DESTDIR = /usr/bin
++
+ all: pridecat
+ 
+ pridecat: main.cpp
+ 	$(CXX) main.cpp -o pridecat -std=c++11 -lstdc++ -Wall -Wextra -O3
+ 
+ install: pridecat
+-	cp pridecat /usr/local/bin/pridecat
++	cp pridecat ${DESTDIR}/pridecat
+ 
+ uninstall:
+-	rm -f /usr/local/bin/pridecat
++	rm -f ${DESTDIR}/pridecat
+ 
+ clean:
+ 	rm -f pridecat
+-- 
+2.32.0
+
