@@ -2,7 +2,7 @@
 pkgname=topcat
 pkgver=4.8.1
 _pkgver=4.8-1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for OPerations on Catalogues And Tables"
 arch=('any')
 url="http://www.star.bris.ac.uk/~mbt/topcat/"

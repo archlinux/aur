@@ -1,7 +1,7 @@
 pkgbase = topcat
 	pkgdesc = Tool for OPerations on Catalogues And Tables
 	pkgver = 4.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.star.bris.ac.uk/~mbt/topcat/
 	arch = any
 	license = GPL
