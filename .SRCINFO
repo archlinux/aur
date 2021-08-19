@@ -1,7 +1,7 @@
 pkgbase = supercollider-bytebeat-git
 	pkgdesc = A bytebeat interpreter
 	pkgver = r27.e3ecb6d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/midouest/bytebeat
 	arch = any
 	groups = pro-audio
@@ -12,8 +12,7 @@ pkgbase = supercollider-bytebeat-git
 	makedepends = catch2
 	makedepends = supercollider-headers-git
 	depends = supercollider
-	source = supercollider-bytebeat-git-r27.e3ecb6d::git+https://github.com/midouest/bytebeat.git
+	source = supercollider-bytebeat-git::git+https://github.com/midouest/bytebeat.git
 	md5sums = SKIP
 
 pkgname = supercollider-bytebeat-git
-
