@@ -6,7 +6,7 @@ pkgver=1.0.4
 pkgrel=1
 pkgdesc="Creates installed lists of pkgs with Names & Descriptions for backup proposes."
 arch=('x86_64')
-url="https://github.com/The-Repo-Club/$pkgname"
+url="https://github.com/pegromdev/$pkgname"
 license=('MIT')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
@@ -18,4 +18,3 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
-
