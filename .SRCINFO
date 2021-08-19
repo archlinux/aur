@@ -1,6 +1,6 @@
 pkgbase = supercollider-sonoro1234-ugens-git
 	pkgdesc = sonoro1234's SuperCollider UGens
-	pkgver = r52.373594f
+	pkgver = r55.33f352e
 	pkgrel = 1
 	url = https://github.com/sonoro1234/MyUGens
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = supercollider-sonoro1234-ugens-git
 	makedepends = cmake
 	makedepends = supercollider-headers-git
 	depends = supercollider
-	source = supercollider-sonoro1234-ugens-git-r52.373594f::git+https://github.com/sonoro1234/MyUGens.git
+	source = supercollider-sonoro1234-ugens-git::git+https://github.com/sonoro1234/MyUGens.git
 	md5sums = SKIP
 
 pkgname = supercollider-sonoro1234-ugens-git
-
