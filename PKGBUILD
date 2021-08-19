@@ -2,8 +2,9 @@
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.1.0beta
+pkgver=11.0.1
 pkgrel=2
+epoch=1
 pkgdesc="Library for Pamac package manager based on libalpm - flatpak and snap support enabled"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/libpamac"
@@ -13,7 +14,7 @@ makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 
 options=(!emptydirs)
 conflicts=('libpamac-aur' 'libpamac-flatpak' 'libpamac')
 source=(https://gitlab.manjaro.org/applications/libpamac/-/archive/$pkgver/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('e7701b15c8de6497c132836bfb79b2b70d5f4bb75c2958760723ea160ff9aab7')
+sha256sums=('b204d921ca17cbe79b8e46f829f1364c56d9c98cba42372d98c7a8d7f0a7bd6b')
 
 build() {
   cd $_pkgname-$pkgver
