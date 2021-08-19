@@ -9,7 +9,7 @@ url="http://www.star.bris.ac.uk/~mbt/topcat/"
 depends=('java-runtime' 'sh')
 license=('GPL')
 noextract=('topcat-full.jar')
-source=("ftp://andromeda.star.bris.ac.uk/pub/star/topcat/v${_pkgver}/topcat-full.jar"
+source=("http://www.star.bris.ac.uk/~mbt/topcat/topcat-full.jar"
         "topcat" "topcat.png" "topcat.desktop")
 md5sums=('27fd20a4f11cf3e6dfd022e636892b94'
          '5f2df6a05c72b5641bf6a2b1c29173ed'
