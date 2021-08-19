@@ -7,7 +7,7 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B4.r249.gbae19cb1
+pkgver=B4.r479.gc246b4a7
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
@@ -50,9 +50,10 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	for b in {client,host,obs}; do
+	for b in {client,host,obs}/build; do
+		mkdir "${b}"
 		pushd "${b}"
-		cmake -DCMAKE_INSTALL_PREFIX=/usr .
+		cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 		make
 		popd
 	done
@@ -61,16 +62,12 @@ build() {
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
 	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi'
-	         'libxinerama' 'libxcursor' 'libxpresent')
+	         'libxinerama' 'libxcursor' 'libxpresent' 'libxkbcommon')
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
 
-	cd "${srcdir}/${_pkgname}/client"
+	cd "${srcdir}/${_pkgname}/client/build"
 	make DESTDIR="${pkgdir}" install
-
-	# cimgui is build and linked as a static library.
-	# As such, it had no business getting installed. Delete it.
-	rm "${pkgdir}/usr/cimgui.a"
 }
 
 package_looking-glass-module-dkms-git() {
@@ -92,7 +89,7 @@ package_looking-glass-host-git() {
 	provides=("${_pkgname}-host")
 	conflicts=("${_pkgname}-host")
 
-	cd "${srcdir}/${_pkgname}/host"
+	cd "${srcdir}/${_pkgname}/host/build"
 	make DESTDIR="${pkgdir}" install
 }
 
@@ -103,5 +100,5 @@ package_obs-plugin-looking-glass-git() {
 	conflicts=("obs-plugin-${_pkgname}")
 
 	install -Dm644 -t "${pkgdir}/usr/lib/obs-plugins" \
-		"${srcdir}/${_pkgname}/obs/liblooking-glass-obs.so"
+		"${srcdir}/${_pkgname}/obs/build/liblooking-glass-obs.so"
 }
