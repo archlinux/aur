@@ -1,7 +1,7 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
 	pkgver = 5.10.56.49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
 	license = GPL2
@@ -16,14 +16,14 @@ pkgbase = linux-clear-preempt-rt
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.56.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.10/patch-5.10.56-rt49.patch.xz
 	source = clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=5.10.56-81
-	source = more-uarches-20210817.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210817.tar.gz
+	source = more-uarches-20210818.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20210818.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 4d6a0d5f9c50fa44890e0b61e1fb63f6efe6be448ceddfe1ad7c0cbd2890ec6b
 	sha256sums = SKIP
 	sha256sums = 7bf025bc0cdf9006bd04fcbe9b74348e4a5c0f422a4bef820cf0da223b6a279f
 	sha256sums = SKIP
-	sha256sums = 75f9b3e8b35562ade9f8d4c82771e1b7ecdf2264a80ac1a3fdba34d87864dc77
+	sha256sums = d361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf
 
 pkgname = linux-clear-preempt-rt
 	pkgdesc = The Clear Linux Preempt-RT kernel and modules
