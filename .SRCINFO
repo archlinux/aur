@@ -1,15 +1,13 @@
 pkgbase = otf-aileron
 	pkgdesc = A grotesque sans-serif font by dot colon.
 	pkgver = 0.102
-	pkgrel = 3
-	url = http://dotcolon.net/font/aileron/
+	pkgrel = 4
+	url = https://dotcolon.net/font/aileron/
 	arch = any
 	license = custom:CC0
-	provides = otf-aileron
-	source = http://dotcolon.net/DL/font/aileron.zip
-	source = http://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	source = otf-aileron-0.102.zip::https://dotcolon.net/download/fonts/aileron_0102.zip
+	source = LICENSE.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
 	sha256sums = a93a1327f44912a7b1410ad0056fec3e904074413b0bd9da550f6175587cf958
 	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
 pkgname = otf-aileron
-
