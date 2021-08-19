@@ -7,7 +7,7 @@ pkgname='ros-noetic-position-controllers'
 pkgver='0.19.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -49,6 +49,7 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DCMAKE_CXX_STANDARD=17 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
