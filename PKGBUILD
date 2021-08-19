@@ -1,7 +1,7 @@
 # Maintainer: so1ar <674630130@qq.com>
 
 pkgname=v2ray-geoip-custom
-pkgver=202108152209
+pkgver=202108182209
 pkgrel=1
 pkgdesc="Custom GeoIP List for V2Ray"
 arch=('any')
