@@ -7,7 +7,7 @@
 _appname='gnunet'
 pkgname="${_appname}-git"
 pkgver='0.15.0.r29763.71a70133a'
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
@@ -58,9 +58,8 @@ prepare() {
 
 	cd "${srcdir}/${_appname}"
 
-	./bootstrap
-	sed -i 's|contrib doc|doc|' Makefile.*
 	export GNUNET_PREFIX='/usr/lib'
+	./bootstrap
 
 }
 
@@ -68,7 +67,7 @@ build() {
 
 	cd "${srcdir}/${_appname}"
 
-	test -f Makefile || ./configure --prefix='/usr' --without-mysql
+	test -f Makefile || ./configure --prefix='/usr'
 	make
 	make -C contrib
 
