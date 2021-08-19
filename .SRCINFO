@@ -17,4 +17,3 @@ pkgbase = kube-score-bin
 	sha256sums_armv6h = f487da46892a9da715fc02bfc1fd0d5deee77a22ee5fca7cf5bc6054aebdb402
 
 pkgname = kube-score-bin
-
