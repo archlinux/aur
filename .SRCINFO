@@ -1,0 +1,16 @@
+pkgbase = galleryman
+	pkgdesc = Gallery written in Python for managing your photos
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xsapphir3/galleryman
+	arch = any
+	license = MIT
+	depends = python>=3.6
+	depends = python-setuptools
+	depends = wget
+	provides = galleryman
+	conflicts = galleryman
+	source = git+https://github.com/0xsapphir3/galleryman.git
+	md5sums = SKIP
+
+pkgname = galleryman
