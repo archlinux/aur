@@ -2,7 +2,7 @@
 
 pkgname=libcutefish-git
 _pkgname=libcutefish
-pkgver=0.2.r4.g4caad74
+pkgver=0.4.r0.g4caad74
 pkgrel=1
 pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
