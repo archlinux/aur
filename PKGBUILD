@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-simplexnoise-git
 pkgver=r6.6fb3235
-pkgrel=1
+pkgrel=2
 pkgdesc='SuperCollider implementation of Simplex noise'
 arch=('any')
 url='https://github.com/esluyter/simplexsynth'
@@ -10,18 +10,18 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 makedepends=('git' 'cmake' 'supercollider-headers-git')
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 		SC_SRC="/usr/share/supercollider-headers"
 
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 		git submodule update --init --recursive
 
 		mkdir build; cd build
@@ -32,7 +32,7 @@ build() {
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname/build"
 	cmake --build . --config Release --target install
 }
 
