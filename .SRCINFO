@@ -1,0 +1,16 @@
+pkgbase = dracula-alacritty-git
+	pkgdesc = Dracula theme for Alacritty
+	pkgver = r8.50afeef
+	pkgrel = 1
+	url = https://draculatheme.com/alacritty
+	arch = any
+	groups = dracula-theme
+	license = MIT
+	makedepends = git
+	optdepends = alacritty
+	provides = dracula-alacritty
+	conflicts = dracula-alacritty
+	source = dracula-alacritty::git+https://github.com/dracula/alacritty.git
+	b2sums = SKIP
+
+pkgname = dracula-alacritty-git
