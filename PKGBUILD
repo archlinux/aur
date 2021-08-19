@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Pacman hook to setcap xray after xray install/upgrade."
 arch=("any")
 license=("GPL")
-depends=('coreutils')
+depends=('coreutils','pacman')
 source=(xray-setcap.hook)
 sha256sums=("e827fb27b0acef24b6bf25ba9c29caeebedf91985164819b4b8ac578a70e302b")
 
