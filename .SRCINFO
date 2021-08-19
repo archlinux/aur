@@ -1,6 +1,6 @@
 pkgbase = cndl-git
 	pkgdesc = A flask-like webserver for C++
-	pkgver = 1.1.2
+	pkgver = 1.1.r1.64882b5
 	pkgrel = 1
 	url = https://github.com/gottliebtfreitag/cndl
 	arch = any
