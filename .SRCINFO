@@ -1,0 +1,14 @@
+pkgbase = librnd
+	pkgdesc = General-purpose data structure library in pure C89
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Randoragon/librnd
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = GPL2
+	makedepends = git
+	source = git+https://github.com/Randoragon/librnd
+	md5sums = SKIP
+
+pkgname = librnd
