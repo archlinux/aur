@@ -3,7 +3,7 @@
 pkgname=xdg-xmenu-git
 pkgver=r12.07a4193
 pkgrel=1
-pkgdesc="Runs a command every time a given mouse button is pressed on the root window."
+pkgdesc="Small shell script to generate xdg desktop menu file for xmenu."
 url="https://github.com/OliverLew/xdg-xmenu"
 arch=('x86_64')
 license=('MIT')
