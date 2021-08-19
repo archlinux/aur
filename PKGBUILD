@@ -42,21 +42,4 @@ provides=(
     'cutefish-terminal-git'
     'cutefish-wallpapers-git'
 )
-conflicts=(
-    'fishui-git'
-    'libcutefish-git'
-    'cutefish-calculator-git'
-    'cutefish-core-git'
-    'cutefish-dock-git'
-    'cutefish-filemanager-git'
-    'cutefish-icons-git'
-    'cutefish-kwin-plugins-git'
-    'cutefish-launcher-git'
-    'cutefish-qt-plugins-git'
-    'cutefish-screenlocker-git'
-    'cutefish-settings-git'
-    'cutefish-statusbar-git'
-    'cutefish-terminal-git'
-    'cutefish-wallpapers-git'
-)
 sha512sums=('SKIP')
