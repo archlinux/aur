@@ -1,0 +1,15 @@
+pkgbase = pdf2htmlex-appimage
+	pkgdesc = Convert PDF to HTML without losing text or format.
+	pkgver = 0.18.8.rc1
+	pkgrel = 1
+	url = https://github.com/pdf2htmlEX/pdf2htmlEX
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	provides = pdf2htmlex
+	conflicts = pdf2htmlex
+	options = !strip
+	source = https://github.com/pdf2htmlEX/pdf2htmlEX/releases/download/v0.18.8.rc1/pdf2htmlEX-0.18.8.rc1-master-20200630-Ubuntu-focal-x86_64.AppImage
+	sha256sums = 11de2583a3abce5f141fd7fafb1fea2c67b15886e546d6b7675c600012e6ab8c
+
+pkgname = pdf2htmlex-appimage
