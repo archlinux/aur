@@ -1,6 +1,6 @@
 pkgbase = dcraddrgen-git
-	pkgdesc = Simple offline address generator for Decred
-	pkgver = 20171011
+	pkgdesc = Simple offline address generator for Decred.
+	pkgver = 20201101
 	pkgrel = 1
 	url = https://github.com/decred/dcraddrgen
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = dcraddrgen-git
 	arch = x86_64
 	groups = decred
 	license = ISC
-	makedepends = dep
 	makedepends = git
 	makedepends = go
 	provides = dcraddrgen
@@ -21,4 +20,3 @@ pkgbase = dcraddrgen-git
 	sha256sums = SKIP
 
 pkgname = dcraddrgen-git
-
