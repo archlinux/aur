@@ -1,0 +1,26 @@
+pkgbase = kde-auto-rotate-git
+	pkgdesc = Autorotate the display & pointers on a convertible laptop
+	pkgver = r17.f2436fa
+	pkgrel = 1
+	url = https://github.com/donbowman/kde-auto-rotate
+	arch = any
+	license = APACHE
+	makedepends = git
+	depends = gawk
+	depends = iio-sensor-proxy
+	depends = bash
+	depends = dbus
+	depends = plasma-desktop
+	depends = xorg-xinput
+	depends = xorg-xrandr
+	depends = grep
+	depends = coreutils
+	depends = mawk
+	provides = kde-auto-rotate
+	conflicts = kde-auto-rotate
+	source = git+https://github.com/donbowman/kde-auto-rotate.git
+	source = change-service-execstart-path.patch
+	sha256sums = SKIP
+	sha256sums = c5405a522506eb1d825ba6a793e026e5bd0bd512b6ef51b6c74ac0ef732aeb2d
+
+pkgname = kde-auto-rotate-git

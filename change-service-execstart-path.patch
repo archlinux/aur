@@ -1,0 +1,11 @@
+--- a/auto-rotate.service
++++ b/auto-rotate.service
+@@ -12,7 +12,7 @@ BindsTo=graphical-session.target
+ [Service]
+ Environment=DISPLAY=:0
+ ExecStartPre=/bin/sleep 10
+-ExecStart=/usr/local/bin/auto-rotate
++ExecStart=/usr/bin/auto-rotate
+ Restart=on-failure
+ SuccessExitStatus=3 4
+ RestartForceExitStatus=3 4
