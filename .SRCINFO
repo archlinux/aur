@@ -1,6 +1,6 @@
 pkgbase = pop-icon-theme
 	pkgdesc = System76 Pop Icon Theme
-	pkgver = 2.1.0~1610392112~ef2be60
+	pkgver = 2.1.0~1626456130~8e5d8ca
 	pkgrel = 1
 	url = https://github.com/pop-os/icon-theme
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pop-icon-theme
 	license = GPL3
 	makedepends = meson
 	depends = gnome-icon-theme
-	source = pop-icon-theme-2.1.0~1610392112~ef2be60.tar.gz::https://github.com/pop-os/icon-theme/archive/ef2be60.tar.gz
-	sha512sums = e8bfa301a4c0743eb3d0f52ed4066af9985a1783219ca815ff4a17fef888436f124e1d27d564094dce809343aed98a59e273f832093fd0f09164f7c6387531cc
+	source = pop-icon-theme-8e5d8ca.tar.gz::https://github.com/pop-os/icon-theme/archive/8e5d8ca.tar.gz
+	sha512sums = 3676e0f3ddf138991125750109431fb309b9c0f3e8a7530905a74a90d29e8a8f454cd683da1e3ac0b610a8b60625a82ae63220dac61cec0449721f4d48575129
 
 pkgname = pop-icon-theme
