@@ -4,8 +4,8 @@ Description=A framework for secure peer-to-peer networking
 [Service]
 User=gnunet
 Type=forking
-ExecStart=/usr/bin/gnunet-arm -s -c /etc/gnunetd.conf
-ExecStop=/usr/bin/gnunet-arm -e -c /etc/gnunetd.conf
+ExecStart=/usr/bin/gnunet-arm -s -c /etc/gnunet.conf
+ExecStop=/usr/bin/gnunet-arm -e -c /etc/gnunet.conf
 GuessMainPID=no
 
 [Install]
