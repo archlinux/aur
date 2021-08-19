@@ -3,13 +3,13 @@
 _gemname=minitest-reporters
 pkgname=ruby-$_gemname
 pkgver=1.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Extend Minitest through simple hooks"
 arch=(any)
 url=https://github.com/minitest-reporters/minitest-reporters
 license=(MIT)
 depends=(ruby ruby-ansi ruby-builder ruby-minitest ruby-ruby-progressbar)
-checkdepends=(ruby-bundler ruby-rake ruby-rubocop ruby-maruku)
+checkdepends=(ruby-bundler ruby-rake)
 makedepends=(git rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(git+https://github.com/minitest-reporters/minitest-reporters.git?tag=v$pkgver)
@@ -18,6 +18,11 @@ sha256sums=('SKIP')
 prepare() {
   cd ${_gemname}
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
+
+  sed -i '/maruku/d' ${_gemname}.gemspec
+  sed -i '/rubocop/d' ${_gemname}.gemspec
+  sed -i '/RuboCop/,+8d' Rakefile
+  sed -i '/rubocop/d' Rakefile
 }
 
 build() {
