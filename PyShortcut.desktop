@@ -3,5 +3,5 @@ Name=PyShortcuts Creator
 Type=Application
 Comment=PyShortcuts Creator
 Terminal=false
-Icon=/usr/lib/python3.8/site-packages/pyshortcuts/icons/py.ico
+Icon=pyshortcuts
 Exec=pyshortcut --wxgui
