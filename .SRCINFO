@@ -1,6 +1,6 @@
 pkgbase = cutefish-settings-git
 	pkgdesc = System Settings application for Cutefish Desktop
-	pkgver = 0.3.r42.ga7815d1
+	pkgver = 0.4.r0.gcaee106
 	pkgrel = 1
 	url = https://github.com/cutefishos/settings
 	arch = x86_64
