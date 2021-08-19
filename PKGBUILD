@@ -29,6 +29,7 @@ build() {
 }
 
 package() {
+  install -Dm644 $pkgname/LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   make -C build DESTDIR="$pkgdir/" install
 }
 
