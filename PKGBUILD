@@ -8,20 +8,19 @@ pkgdesc="A portable fork of the OpenBSD doas command "
 url="https://github.com/justanoobcoder/OpenDoas"
 license=(custom:ISC)
 arch=(x86_64)
-
 depends=(pam)
 provides=(doas)
 replaces=(doas)
 
 source=(
-    "${_pkgname}-${pkgver}.tar::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar"
+    "${pkgname}-${pkgver}.tar::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar"
 )
 md5sums=('SKIP')
 
 backup=(etc/pam.d/doas)
 
 package() {
-    cd "${_pkgname}-$pkgver"
+    cd "${pkgname}-$pkgver"
     install -Dm4755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
     install -Dm0755 vidoas "$pkgdir/usr/bin/vidoas"
     install -Dm0644 doas.1 "$pkgdir/usr/local/man/man1/doas.1"

@@ -9,7 +9,7 @@ pkgbase = opendoas-bin
 	provides = doas
 	replaces = doas
 	backup = etc/pam.d/doas
-	source = doas-6.9.tar::https://github.com/justanoobcoder/OpenDoas/releases/download/v6.9/doas-6.9.tar
+	source = opendoas-bin-6.9.tar::https://github.com/justanoobcoder/OpenDoas/releases/download/v6.9/opendoas-bin-6.9.tar
 	md5sums = SKIP
 
 pkgname = opendoas-bin
