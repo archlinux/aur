@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-maths-git
-pkgver=r14.36daf84
+pkgver=r19.639b619
 pkgrel=1
 pkgdesc='SuperCollider emulation of the Maths eurorack module'
 arch=('any')
@@ -10,23 +10,23 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 makedepends=('git' 'cmake' 'faust' 'ruby-rexml')
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 
 		faust2supercollider -noprefix -d FaustSource/*.dsp
 }
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname"
 
 	# Prepare install directories
