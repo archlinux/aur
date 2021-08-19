@@ -2,7 +2,7 @@
 pkgname=python-poetry-dynamic-versioning
 _name=${pkgname#python-}
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Poetry to enable dynamic versioning based on VCS tags"
 arch=(any)
 url="https://github.com/mtkennerly/poetry-dynamic-versioning"
@@ -23,6 +23,6 @@ check() {
 package() {
   cd "$_name"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
-  PYTHONHASHSEED=0 python -O -m compileall "$pkgdir"/usr/lib/python*/site-packages/$_name
+  PIP_CONFIG_FILE=/dev/null pip install --ignore-installed --isolated --no-deps --no-warn-script-location --root="$pkgdir" .
+  PYTHONHASHSEED=0 python -O -m compileall -o0 -o1 "$pkgdir"/usr/lib/python*/site-packages/${_name//-/_}
 }
