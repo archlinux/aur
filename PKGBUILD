@@ -11,6 +11,7 @@ pkgname=pamac-all-git
 pkgver=10.2.0beta.r0.gefeee38
 pkgrel=2
 _pkgfixver=10.2.0
+epoch=1
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
