@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-depth-image-proc
 	pkgdesc = ROS - Contains nodelets for processing depth images such as those produced by OpenNI camera.
 	pkgver = 1.15.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/depth_image_proc
 	arch = i686
 	arch = x86_64
@@ -36,4 +36,3 @@ pkgbase = ros-noetic-depth-image-proc
 	sha256sums = 66ad6365b6f5c29a38ccde889381f50709ff273a1725e813843655f198d4b48b
 
 pkgname = ros-noetic-depth-image-proc
-
