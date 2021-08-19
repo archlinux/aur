@@ -1,17 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-core
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="System components and backend of CutefishOS"
 arch=('x86_64')
 url="https://github.com/cutefishos/core"
 license=('GPL')
 groups=('cutefish')
-depends=('fishui' 'libpulse' 'libxtst' 'polkit-qt5')
+depends=('fishui' 'libpulse' 'libxcursor' 'libxtst' 'polkit-qt5' 'xf86-input-libinput')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/core/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('86100d08db3f5c52561d2361228396a69f8d7621d039e125da349fa10f8b7716f38d090a936df8b2aa1d4797d6a40aa06147d40b51b5859b75de7f4bb9ea2dc1')
+sha512sums=('60259469fb1c697ee46c17508ebc508dd40e24d4772a58c52e8cb9a2ccf6debed9dce13296ea3d6f51d612cfc980f46717424216db051d43611a148912bee709')
 
 build() {
   cd core-$pkgver
