@@ -2,7 +2,7 @@
 
 pkgname=cutefish-core-git
 _pkgname=cutefish-core
-pkgver=0.3.r42.g9c18511
+pkgver=0.4.r0.ga6ec0e1
 pkgrel=1
 pkgdesc="System components and backend of CutefishOS"
 arch=('x86_64')
