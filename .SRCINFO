@@ -1,7 +1,7 @@
 pkgbase = opendoas-bin
 	pkgdesc = A portable fork of the OpenBSD doas command
 	pkgver = 6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justanoobcoder/OpenDoas
 	arch = x86_64
 	license = custom:ISC
