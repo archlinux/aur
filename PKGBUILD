@@ -3,7 +3,7 @@ pkgbase=python-sphinx-changelog
 _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A changelog renderer for sphinx"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm'
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/OpenAstronomy/sphinx-changelog/main/changelog/template.rst")
-md5sums=('31d0d07a2a3c398480753bf048f42ebd'
+md5sums=('cb876007a8ec3450509fdd09a56ee34c'
          'SKIP')
 
 prepare() {
