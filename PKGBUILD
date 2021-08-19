@@ -3,7 +3,7 @@
 pkgname=boost-stacktrace-backtrace
 pkgver=1.76.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Boost.stacktrace backtrace variant'
 url='https://www.boost.org/'
 arch=('x86_64')
@@ -12,11 +12,12 @@ depends=('boost' 'libbacktrace-git')
 makedepends=('gcc')
 options=('staticlibs')
 provides=(libboost_stacktrace_backtrace.so)
-source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
-sha256sums=('f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41')
+
+source=("https://boostorg.jfrog.io/artifactory/main/release/$pkgver/source/boost_$_boostver.tar.gz")
+sha256sums=('7bd7ddceec1a1dfdcbdb3e609b60d01739c38390a5f956385a12f3122049f0ca')
 
 build() {
-  cd boost_${_boostver}
+  cd boost_$_boostver
   ./bootstrap.sh --with-toolset=gcc
   ./b2 \
     variant=release \
@@ -33,7 +34,7 @@ build() {
 }
 
 package() {
-  cd boost_${_boostver}
+  cd boost_$_boostver
   install -d "${pkgdir}"/usr/lib
   cp -P stage/lib/libboost_stacktrace_backtrace.* "${pkgdir}"/usr/lib
 }
