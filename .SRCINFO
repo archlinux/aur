@@ -1,7 +1,7 @@
 pkgbase = supercollider-graphloopgrain-git
 	pkgdesc = Graph-based audio looping and granulation in Flucoma
 	pkgver = r3.db9bbc6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flucoma/graph_loop_grain
 	arch = any
 	groups = pro-audio
@@ -13,8 +13,7 @@ pkgbase = supercollider-graphloopgrain-git
 	depends = supercollider
 	optdepends = supercollider-flucoma
 	optdepends = supercollider-flucoma-git
-	source = supercollider-graphloopgrain-git-r3.db9bbc6::git+https://github.com/flucoma/graph_loop_grain.git
+	source = supercollider-graphloopgrain-git::git+https://github.com/flucoma/graph_loop_grain.git
 	md5sums = SKIP
 
 pkgname = supercollider-graphloopgrain-git
-
