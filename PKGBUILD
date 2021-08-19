@@ -2,7 +2,7 @@
 
 pkgname=dracut-sb
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='dracut secure boot setup using efistub'
 arch=('any')
 depends=('dracut' 'efitools' 'efibootmgr' 'sbsigntools')
@@ -39,5 +39,5 @@ package() {
     install -Dm755 "${srcdir}"/efi-key "${pkgdir}"/usr/local/share/libalpm/scripts/efi-key
     install -Dm644 "${srcdir}"/efi-key.conf "${pkgdir}"/etc/pacman.d/hooks/efi-key.conf
 
-    install -Dm755 "${srcdir}"/linuxx64.efi.stub "${pkgdir}"/usr/bin/gummiboot/linuxx64.efi.stub
+    install -Dm755 "${srcdir}"/linuxx64.efi.stub "${pkgdir}"/usr/lib/gummiboot/linuxx64.efi.stub
 }
