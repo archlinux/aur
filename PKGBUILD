@@ -1,31 +1,31 @@
 # Maintainer: 0xsapphir3 <0xsapphir3@gmail.com>
-pkgname="galleryman"
-pkgbase="galleryman"
-pkgver=1.0.0
-pkgrel=1
-provides=("galleryman")
-conflicts=("galleryman")
-pkgdesc="Gallery written in Python for managing your photos"
-url="https://github.com/0xsapphir3/galleryman"
-arch=("any")
-license=("MIT")
-depends=("python>=3.6" "python-setuptools" "wget")
-source=("git+https://github.com/0xsapphir3/galleryman.git")
-md5sums=("SKIP")
 
-_gitname="galleryman"
+pkgname=galleryman-git
+pkgver=r73.4c220b9
+pkgrel=1
+pkgdesc="Gallery written in Python for managing your photos"
+arch=(any)
+url="https://github.com/0xsapphir3/galleryman"
+license=(MIT)
+depends=(python)
+makedepends=(git python-setuptools)
+provides=(galleryman)
+conflicts=(galleryman)
+source=("galleryman::git+https://github.com/0xsapphir3/galleryman.git")
+sha256sums=("SKIP")
 
 pkgver() {
-  wget https://raw.githubusercontent.com/0xsapphir3/galleryman/main/GalleryMan/__version__.txt
-  cat __version__.txt
+  cd "${srcdir}/galleryman"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/galleryman"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  python3 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  cd "${srcdir}/galleryman"
+  python setup.py install --skip-build --optimize=1 --prefix=/usr --root="${pkgdir}"
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
