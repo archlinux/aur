@@ -2,7 +2,7 @@
 
 pkgname=cutefish-calculator-git
 _pkgname=cutefish-calculator
-pkgver=0.3.r2.g1f3d222
+pkgver=0.4.r0.gcc40ade
 pkgrel=1
 pkgdesc="CutefishOS Calculator"
 arch=('x86_64')
