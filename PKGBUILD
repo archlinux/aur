@@ -1,16 +1,16 @@
-# Maintainer: Chris Snell <chris.snell@gmail.com>
+# Contributor: Chris Snell <chris.snell@gmail.com>
 
 pkgname=aws-iam-authenticator-git
 _pkgname=aws-iam-authenticator
-_githubpath=github.com/kubernetes-sigs/aws-iam-authenticator
-pkgver=v0.4.0.r5.gc2d2884d
+pkgver=v0.5.3.r16.g375e2c90
 pkgrel=1
-pkgdesc="A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster"
-arch=('x86_64' 'i686' 'arm')
-url="https://github.com/kubernetes-sigs/aws-iam-authenticator"
-options=('!strip')
+pkgdesc='A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster'
+arch=('x86_64' 'aarch64')
+url='https://github.com/kubernetes-sigs/aws-iam-authenticator'
 license=('Apache')
-makedepends=('go' 'git' 'dep')
+makedepends=('go')
+conflicts=('aws-iam-authenticator')
+provides=('aws-iam-authenticator')
 source=('git+https://github.com/kubernetes-sigs/aws-iam-authenticator.git')
 sha512sums=('SKIP')
 
@@ -23,21 +23,13 @@ pkgver() {
 }
 
 build() {
-  mkdir -p ${srcdir}/src/$_githubpath
   cd "$srcdir/$_pkgname"
-  git --work-tree=${srcdir}/src/$_githubpath checkout -f master
-  cd "$srcdir/src/$_githubpath"
-  export GOPATH=${srcdir}
-  echo "Fetching dependencies with dep... (this will take a while)"
-  dep ensure
-  cd cmd/aws-iam-authenticator
-  go build
+  go build \
+    --trimpath \
+    --ldflags "-X main.version=$pkgver" \
+    ./cmd/aws-iam-authenticator
 }
 
 package() {
-  cd "$srcdir/src/$_githubpath"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  cd "cmd/$_pkgname"
-  install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm 755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
-
