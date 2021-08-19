@@ -10,7 +10,6 @@ url="https://github.com/pegromdev/$pkgname"
 license=('MIT')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-#source=("aptl-1.0.4.tar.gz")
 sha256sums=('SKIP')
 
 package() {
