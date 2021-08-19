@@ -1,7 +1,7 @@
 pkgbase = hunspell-ko
 	pkgdesc = Korean dictionary for hunspell
 	pkgver = 0.7.92
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/spellcheck-ko/hunspell-dict-ko
 	arch = any
 	license = GPL3

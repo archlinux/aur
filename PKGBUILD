@@ -2,7 +2,7 @@
 
 pkgname=hunspell-ko
 pkgver=0.7.92
-pkgrel=2
+pkgrel=3
 pkgdesc="Korean dictionary for hunspell"
 arch=('any')
 url='https://github.com/spellcheck-ko/hunspell-dict-ko'
@@ -24,7 +24,7 @@ package() {
 	install -m644 ko.aff "${pkgdir}"/usr/share/hunspell
 	pushd "$pkgdir"/usr/share/hunspell
 	for file in ko.*; do
-		ln -s ko_KR."${file#*.}"
+		ln -s ${file} ko_KR."${file#*.}"
 	done
 	popd
 
