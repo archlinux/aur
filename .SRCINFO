@@ -1,0 +1,13 @@
+pkgbase = noblenote
+	pkgdesc = A cross-platform note taking application
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/hakaishi/nobleNote
+	arch = x86_64
+	license = MIT
+	makedepends = qt5-tools
+	depends = qt5-base
+	source = https://github.com/hakaishi/nobleNote/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 17c42dec89eafcfd9b3fa0c104fbfed46a5e1ef110159292199621cd33e54813
+
+pkgname = noblenote
