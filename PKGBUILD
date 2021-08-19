@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-vbugens-git
 pkgver=r36.141e306
-pkgrel=1
+pkgrel=2
 pkgdesc="Volker Böhm's UGen collection"
 arch=('any')
 url='https://github.com/v7b1/vb_UGens'

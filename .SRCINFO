@@ -1,7 +1,7 @@
 pkgbase = supercollider-vbugens-git
 	pkgdesc = Volker Böhm's UGen collection
 	pkgver = r36.141e306
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v7b1/vb_UGens
 	arch = any
 	groups = pro-audio
