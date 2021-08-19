@@ -10,6 +10,6 @@ pkgbase = nowater
 	depends = jq
 	depends = ffmpeg
 	source = nowater-21.07.tar.gz::https://github.com/justanoobcoder/nowater/archive/v21.07.tar.gz
-	md5sums = SKIP
+	md5sums = 27eee9be668cbde727c2cf9343e98bb8
 
 pkgname = nowater

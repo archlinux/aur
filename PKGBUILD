@@ -10,7 +10,7 @@ url="https://github.com/justanoobcoder/nowater"
 license=('GPL3')
 depends=('feh' 'wget' 'jq' 'ffmpeg')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=(27eee9be668cbde727c2cf9343e98bb8)
 
 pkgver() {
     cd "$pkgname-$pkgver"
