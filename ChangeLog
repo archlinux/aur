@@ -1,0 +1,20 @@
+2011-04-15 NiteHogg <keith.b.elliott [at] gmail [dot] com>
+
+	* ut2003 3369.2-1 :
+	Overhauled this package build,
+        fixed sound and permissions.
+        Tested with UT2004 ECE DVD 
+        on x86_64.
+
+2011-04-25 NiteHogg <keith.b.elliott [at] gmail [dot] com>
+
+	* ut2003 3369.2-3 :
+	Updated the PKGBUILD to remove
+        the 64-bit launch bins if ran
+        on a 32-bit system. 32-bit strip
+        doesn't like the 64-bit compiled
+        bins. Thanks node357.
+
+2014-06-04 demon012 <alan.james.jenkins [at] gmail [dot] com>
+
+	First Steam version of the package.

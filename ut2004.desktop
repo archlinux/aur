@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=UT2004
+Comment=Unreal Tournament 2004
+Exec=/opt/ut2004/Scripts/ut2004
+Icon=ut2004
+Terminal=false
+Type=Application
+Categories=Application;Game;
