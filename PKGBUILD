@@ -1,7 +1,7 @@
 # Maintainer: Lutz Freitag <aur.lutz@gottliebtfreitag.de>
 
 pkgname=cndl-git
-pkgver=1.1.1
+pkgver=1.1.r1.64882b5
 pkgrel=1
 pkgdesc='A flask-like webserver for C++'
 url='https://github.com/gottliebtfreitag/cndl'
