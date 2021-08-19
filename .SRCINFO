@@ -1,5 +1,5 @@
 pkgbase = ruby-jekyll-relative-links
-	pkgdesc = The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
+	pkgdesc = A Jekyll plugin to convert relative links to markdown files to their rendered equivalents.
 	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://rubygems.org/gems/jekyll-relative-links
@@ -15,4 +15,3 @@ pkgbase = ruby-jekyll-relative-links
 	sha256sums = abb5c27df270e4bb12ce4570dd6c84e8ec64318184da1cac01ddfd47ce443bb9
 
 pkgname = ruby-jekyll-relative-links
-
