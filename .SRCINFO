@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
-	pkgver = 91.0
-	pkgrel = 3
+	pkgver = 91.0.1
+	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -42,18 +42,18 @@ pkgbase = firefox-esr
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=91.0
+	provides = firefox=91.0.1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/91.0esr/source/firefox-91.0esr.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/91.0esr/source/firefox-91.0esr.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/91.0.1esr/source/firefox-91.0.1esr.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/91.0.1esr/source/firefox-91.0.1esr.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox-esr.desktop
 	source = identity-icons-brand.svg
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = fa1bae287ef55416ae4ee3fbd22f923f9d1fec066c91766d60633d53db6a9959
+	sha256sums = c185dc9791ed8f4ea204cdf244a72388b3b5e5d7c2bbb5db8051c903908473c7
 	sha256sums = SKIP
 	sha256sums = 138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d
 	sha256sums = 39c4c2d1f465e3fb08e20e3036c2284ee3e8dfbd539abe4ffea3c46b4058f16d
