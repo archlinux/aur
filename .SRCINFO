@@ -6,8 +6,9 @@ pkgbase = krankerl-bin
 	arch = x86_64
 	license = GPL-3.0
 	depends = libcurl-gnutls
-	source = krankerl-0.13.1::https://github.com/ChristophWurst/krankerl/releases/download/v0.13.1/krankerl
+	provides = krankerl=0.13.1
+	conflicts = krankerl
+	source = krankerl-bin-0.13.1::https://github.com/ChristophWurst/krankerl/releases/download/v0.13.1/krankerl
 	sha256sums = eeb9bf382622390693bf05bf62a479effdd791a0e2c429c6cdae427b032e64a9
 
 pkgname = krankerl-bin
-
