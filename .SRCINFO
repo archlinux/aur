@@ -35,6 +35,5 @@ pkgbase = cutefish-git
 	provides = cutefish-statusbar-git
 	provides = cutefish-terminal-git
 	provides = cutefish-wallpapers-git
-	sha512sums = SKIP
 
 pkgname = cutefish-git

@@ -42,4 +42,3 @@ provides=(
     'cutefish-terminal-git'
     'cutefish-wallpapers-git'
 )
-sha512sums=('SKIP')
