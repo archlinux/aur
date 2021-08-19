@@ -9,7 +9,7 @@ license=('cc-by-nc-4.0')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/lunasorcery/pridecat.git" '0001-Add-DESTDIR-variable.patch')
 noextract=()
-sha256sums=('SKIP' '09708f1fcd0a1f146b0029656c6014bf97e3d6cb8f6bd5951bcc9bf5a3b1e604')
+sha256sums=('SKIP' '1eb42c7651aafe9c27d54ba21c73f01e6c83a1b28bc6e9dcdc0729092a45bd6b')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -29,5 +29,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname}"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }

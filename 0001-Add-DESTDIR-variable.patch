@@ -1,20 +1,20 @@
-From f636b71cecf2e6e6c74532602d979464113bd9fb Mon Sep 17 00:00:00 2001
+From deec944b599648b1e806a7db7f37821ca43fcba0 Mon Sep 17 00:00:00 2001
 From: NyCode <nico@nycode.de>
 Date: Thu, 19 Aug 2021 15:15:40 +0200
 Subject: [PATCH] Add DESTDIR variable
 
 ---
- Makefile | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ Makefile | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 815c27e..cd8706a 100644
+index 815c27e..438ed74 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,15 +1,17 @@
+@@ -1,15 +1,18 @@
  CXX ?= clang
  
-+DESTDIR = /usr/bin
++DESTDIR =
 +
  all: pridecat
  
@@ -23,11 +23,12 @@ index 815c27e..cd8706a 100644
  
  install: pridecat
 -	cp pridecat /usr/local/bin/pridecat
-+	cp pridecat ${DESTDIR}/pridecat
++	mkdir -p ${DESTDIR}/usr/bin
++	cp pridecat ${DESTDIR}/usr/bin/pridecat
  
  uninstall:
 -	rm -f /usr/local/bin/pridecat
-+	rm -f ${DESTDIR}/pridecat
++	rm -f ${DESTDIR}/usr/bin/pridecat
  
  clean:
  	rm -f pridecat
