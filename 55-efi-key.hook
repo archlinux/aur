@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/pkgbase
+Target = usr/lib/dracut/*
+
+[Action]
+Description = Waiting for EFI signing key...
+When = PreTransaction
+Exec = /usr/local/share/libalpm/scripts/efi-key
+NeedsTargets

@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+. /etc/pacman.d/hooks/efi-key.conf
+
+mkdir -p "${efikey_dir}"
+echo "To skip signing run \"touch ${skip_file}\""
+while [ ! -b "${efikey}" -a ! -e "${skip_file}" ]; do sleep 5; done
+if [ -e "${skip_file}" ]; then rm "${skip_file}"; fi

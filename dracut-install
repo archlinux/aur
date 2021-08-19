@@ -1,0 +1,51 @@
+#!/bin/bash -e
+
+. /etc/pacman.d/hooks/efi-key.conf
+
+kernels=()
+dracut_update=0
+
+while read -r line; do
+    if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
+		dracut_update=1 # Dracut files have been updated
+        continue
+    fi
+
+    read -r pkgbase < "/${line}"
+	kernels+=("${pkgbase}")
+done
+
+if (( dracut_update )); then
+	kernels=()
+	for file in /lib/modules/*/pkgbase; do
+		if read -r pkgbase &> /dev/null < "$file"; then
+			kernels+=("${pkgbase}")
+		fi
+	done
+fi
+
+if [ -b "${efikey}" ]; then
+    mount ${efikey_opt} "${efikey}" "${efikey_dir}"
+fi
+
+for kernel in "${kernels[@]}"; do
+	path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
+	version=$(basename "${path%/pkgbase}")
+	read -r pkgbase < "$path"
+
+	echo ":: Building initramfs for $kernel-$version"
+	dracut -fMqH --uefi "/boot/${kernel}.efi" "${version}"
+	echo ":: Building fallback initramfs for $kernel-$version"
+	dracut -fMq --uefi "/boot/${kernel}-fallback.efi" "${version}"
+	if [ ! -b "${efikey}" ]; then
+	    echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+	    echo '!!!!                       WE DID NOT SIGN THE KERNEL                       !!!!'
+	    echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+	    echo 'sign manually with:'
+	    echo "sbsign --key \"${efikey_dir}/db.key\" --cert \"${efikey_dir}/db.crt\" --output \"${args[2]}\" \"${args[2]}\""
+	fi
+done
+
+if [ -b "${efikey}" ]; then
+    umount "${efikey_dir}"
+fi

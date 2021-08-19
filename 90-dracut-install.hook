@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/pkgbase
+Target = usr/lib/dracut/*
+
+[Action]
+Description = Updating dracut modules...
+When = PostTransaction
+Exec = /usr/local/share/libalpm/scripts/dracut-install
+NeedsTargets
