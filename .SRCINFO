@@ -1,7 +1,7 @@
 pkgbase = pharo-launcher
 	pkgdesc = Pharo Launcher helps you manage your Pharo images
 	pkgver = 2.3
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 1
 	url = http://www.pharo-project.org/
 	arch = x86_64
@@ -11,7 +11,9 @@ pkgbase = pharo-launcher
 	depends = glibc
 	source = http://files.pharo.org/pharo-launcher/2.3/PharoLauncher-linux-2.3-x64.zip
 	source = local://pharo.conf
+	source = local://launcher-patch.st
 	md5sums = 2f08268f47bbdd231fc28d51ab46a521
 	md5sums = b2e30a17b522ee265fd57fe7c45592fc
+	md5sums = 7d7ae1650e3a87ce807283a7ae830333
 
 pkgname = pharo-launcher
