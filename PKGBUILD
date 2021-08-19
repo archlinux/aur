@@ -2,7 +2,7 @@
 
 pkgname=dracut-sb
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='dracut secure boot setup using efistub'
 arch=('any')
 depends=('dracut' 'efitools' 'efibootmgr' 'sbsigntools')
