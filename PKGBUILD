@@ -15,7 +15,7 @@ replaces=(doas)
 source=(
     "${pkgname}-${pkgver}.tar::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar"
 )
-md5sums=('SKIP')
+md5sums=(5d97f3112a37558dd7bb69ebca43ccb8)
 
 backup=(etc/pam.d/doas)
 
@@ -23,6 +23,7 @@ package() {
     cd "${pkgname}-$pkgver"
     install -Dm4755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
     install -Dm0755 vidoas "$pkgdir/usr/bin/vidoas"
-    install -Dm0644 doas.1 "$pkgdir/usr/local/man/man1/doas.1"
-    install -Dm0644 doas.conf.5 "$pkgdir/usr/local/man/man5/doas.conf.5"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 doas.1 "$pkgdir/usr/share/man/man1/doas.1"
+    install -Dm0644 doas.conf.5 "$pkgdir/usr/share/man/man5/doas.conf.5"
 }
