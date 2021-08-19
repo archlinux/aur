@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-ibufwr-git
 pkgver=r30.96f9a23
-pkgrel=2
+pkgrel=3
 pkgdesc='An Interpolating Buffer Writer UGen for SuperCollider'
 arch=('any')
 url='https://github.com/tremblap/IBufWr'
@@ -10,18 +10,18 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 makedepends=('git' 'cmake' 'supercollider-headers-git' )
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 		SC_SRC="/usr/share/supercollider-headers"
 
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 		mkdir build 
 		cd build
 
@@ -33,7 +33,7 @@ build() {
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname"
 
 	# Prepare install directories
