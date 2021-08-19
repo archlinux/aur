@@ -1,7 +1,7 @@
 pkgbase = supercollider-xplaybuf-git
 	pkgdesc = A buffer player for SuperCollider that loops, fades and doesnt glitch
 	pkgver = r10.f0af995
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elgiano/xplaybuf
 	arch = any
 	groups = pro-audio
@@ -11,8 +11,7 @@ pkgbase = supercollider-xplaybuf-git
 	makedepends = cmake
 	makedepends = supercollider-headers-git
 	depends = supercollider
-	source = supercollider-xplaybuf-git-r10.f0af995::git+https://github.com/elgiano/xplaybuf.git
+	source = supercollider-xplaybuf-git::git+https://github.com/elgiano/xplaybuf.git
 	md5sums = SKIP
 
 pkgname = supercollider-xplaybuf-git
-
