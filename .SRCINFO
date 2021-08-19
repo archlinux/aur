@@ -1,7 +1,7 @@
 pkgbase = supercollider-super-bufrd-git
 	pkgdesc = SuperCollider plugins for accessing long buffers with subsample accuracy
 	pkgver = r84.a785981
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esluyter/super-bufrd
 	arch = any
 	groups = pro-audio
@@ -11,8 +11,7 @@ pkgbase = supercollider-super-bufrd-git
 	makedepends = cmake
 	makedepends = supercollider-headers-git
 	depends = supercollider
-	source = supercollider-super-bufrd-git-r84.a785981::git+https://github.com/esluyter/super-bufrd.git
+	source = supercollider-super-bufrd-git::git+https://github.com/esluyter/super-bufrd.git
 	md5sums = SKIP
 
 pkgname = supercollider-super-bufrd-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-super-bufrd-git
 pkgver=r84.a785981
-pkgrel=1
+pkgrel=2
 pkgdesc="SuperCollider plugins for accessing long buffers with subsample accuracy"
 arch=('any')
 url="https://github.com/esluyter/super-bufrd"
@@ -10,18 +10,18 @@ groups=('pro-audio' 'supercollider-plugins')
 depends=('supercollider')
 makedepends=("git" "cmake" "supercollider-headers-git")
 optdepends=()
-source=("$pkgname-$pkgver"::git+$url.git)
+source=("$pkgname"::git+$url.git)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 		SC_SRC="/usr/share/supercollider-headers"
 
-		cd "$srcdir/$pkgname-$pkgver"
+		cd "$srcdir/$pkgname"
 
 		mkdir build 
 		cd build
@@ -33,7 +33,7 @@ build() {
 
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	DEST="$pkgdir/usr/share/SuperCollider/Extensions/$pkgname"
 
 
