@@ -2,7 +2,7 @@
 Name=Unreal Tournament 2004
 Comment=popular first person shooter
 Exec=/opt/ut2004/Scripts/ut2004
-Icon=/usr/share/pixmaps/Unreal.ico
+Icon=ut2004
 Terminal=false
 Type=Application
 Categories=Application;Game;
