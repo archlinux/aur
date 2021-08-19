@@ -1,7 +1,7 @@
 pkgbase = netease-cloud-music-gtk-bin
 	pkgdesc = Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gmg137/netease-cloud-music-gtk
 	arch = x86_64
 	license = GPL
@@ -24,4 +24,3 @@ pkgbase = netease-cloud-music-gtk-bin
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = netease-cloud-music-gtk-bin
-

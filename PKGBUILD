@@ -4,7 +4,7 @@ _pkgname=netease-cloud-music-gtk
 
 pkgname=netease-cloud-music-gtk-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux 平台下基于 Rust + GTK 开发的网易云音乐播放器"
 arch=('x86_64')
 url="https://github.com/gmg137/netease-cloud-music-gtk"
@@ -33,4 +33,6 @@ package() {
   bsdtar -xf "${_pkgname}-${pkgver}-1.x86_64.rpm" -C "${pkgdir}/"
   install -D -m644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -m644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  ln -s /usr/share/pixmaps/netease-cloud-music-gtk.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/netease-cloud-music-gtk.svg"
 }
