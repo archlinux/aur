@@ -1,10 +1,12 @@
 pkgbase = x-tile-git
 	pkgdesc = Allows you to select a number of windows and tile them in different ways
-	pkgver = 3.3.r0.gb1b372f
-	pkgrel = 1
+	pkgver = 3.3.r1.gfd9e917
+	pkgrel = 2
 	url = https://www.giuspen.com/x-tile
 	arch = any
 	license = GPL2
+	checkdepends = desktop-file-utils
+	checkdepends = appstream-glib
 	makedepends = git
 	depends = gtk3
 	depends = python-gobject
@@ -12,7 +14,8 @@ pkgbase = x-tile-git
 	provides = x-tile
 	conflicts = x-tile
 	source = git+https://github.com/giuspen/x-tile.git
+	source = x-tile.appdata.xml
 	sha256sums = SKIP
+	sha256sums = a9c22562ba580ed58f2a88925cf1032c4beea9236a499a75545709a2695f15f1
 
 pkgname = x-tile-git
-
