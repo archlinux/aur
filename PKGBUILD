@@ -9,7 +9,7 @@ _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools-beta
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 provides=("mdbtools=$pkgver")
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
