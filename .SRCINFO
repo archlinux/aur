@@ -1,0 +1,20 @@
+pkgbase = cutefish-terminal-git
+	pkgdesc = A terminal emulator for Cutefish
+	pkgver = 0.4.r0.g7d8a60a
+	pkgrel = 1
+	url = https://github.com/cutefishos/terminal
+	arch = x86_64
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = git
+	depends = fishui-git
+	depends = libcutefish-git
+	depends = qt5-svg
+	provides = cutefish-terminal
+	conflicts = cutefish-terminal
+	source = git+https://github.com/cutefishos/terminal.git
+	sha512sums = SKIP
+
+pkgname = cutefish-terminal-git
