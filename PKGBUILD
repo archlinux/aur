@@ -1,6 +1,6 @@
 pkgname=songrec-git
 _pkgname=songrec
-pkgver=r92.b9695dc
+pkgver=r118.0362f71
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec')
@@ -32,5 +32,7 @@ package() {
                     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.marinm.songrec.svg"
   install -Dm755 "packaging/rootfs/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml" \
                     "$pkgdir/usr/share/metainfo/com.github.marinm.songrec.metainfo.xml"
+  mkdir -p "$pkgdir/usr/share/songrec"
+  cp -ra "translations" "$pkgdir/usr/share/songrec/translations"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
