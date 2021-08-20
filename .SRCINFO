@@ -1,7 +1,7 @@
 pkgbase = gnunet
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64
@@ -39,6 +39,8 @@ pkgbase = gnunet
 	optdepends = pbc: for Attribute-Based Encryption (experimental)
 	optdepends = libgabe: for Attribute-Based Encryption (experimental)
 	optdepends = libpabc: for re:claimID zero-knowledge privacy credentials
+	conflicts = gnunet-git
+	conflicts = gnunet-bin
 	options = !makeflags
 	backup = etc/gnunet.conf
 	source = http://ftpmirror.gnu.org/gnunet/gnunet-0.15.0.tar.gz
