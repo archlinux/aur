@@ -8,6 +8,7 @@ url='https://github.com/gottliebtfreitag/cndl'
 arch=('any')
 license=('MIT')
 makedepends=('git' 'cmake')
+conflicts=('cndl')
 provides=('cndl')
 depends=('simplyfile')
 source=('git+https://github.com/nerdmaennchen/cndl.git#tag=1.1.1')
