@@ -7,11 +7,12 @@
 _appname='gnunet'
 pkgname="${_appname}-git"
 pkgver='0.15.0.r29763.71a70133a'
-pkgrel=5
+pkgrel=6
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
 license=('GPL')
+conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'

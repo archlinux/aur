@@ -1,7 +1,7 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.0.r29763.71a70133a
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64
@@ -42,6 +42,8 @@ pkgbase = gnunet-git
 	optdepends = libgabe: for Attribute-Based Encryption (experimental)
 	optdepends = libpabc: for re:claimID zero-knowledge privacy credentials
 	provides = gnunet
+	conflicts = gnunet
+	conflicts = gnunet-bin
 	options = !makeflags
 	backup = etc/gnunet.conf
 	source = git+https://gnunet.org/git/gnunet.git
