@@ -1,15 +1,16 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 _pipname=flask-autoindex
 pkgname=python-flask-autoindex
 pkgver=0.6.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Flask-AutoIndex generates an index page for your Flask application automatically"
 arch=(any)
 url="https://pypi.org/project/Flask-AutoIndex/"
-license=(BSD)
+license=(MIT)
 depends=(python-flask-silk python-future)
 makedepends=(python-setuptools)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/general03/flask-autoindex/archive/v$pkgver.tar.gz")
