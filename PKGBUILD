@@ -2,7 +2,7 @@
 
 pkgname=inertial-sense-sdk
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick integration for communication with the Inertial Sense product line."
 arch=('any')
 url="https://github.com/inertialsense/inertial-sense-sdk"
@@ -28,6 +28,6 @@ package() {
     mkdir -p "${pkgdir}/usr/include/inertial-sense-sdk/"
     install -Dm644 src/*.h "${pkgdir}/usr/include/inertial-sense-sdk/"
     install -Dm644 build/libInertialSense.a "${pkgdir}/usr/lib/libInertialSense.a"
-    install -Dm755 build/cltool/cltool "${pkgdir}/usr/bin/inertialsense-cltool"
+    install -Dm755 build/cltool/cltool "${pkgdir}/usr/bin/inertial-sense-cltool"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
