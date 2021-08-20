@@ -1,7 +1,7 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=gita
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool to manage multiple git repos"
 arch=('any')
 url="https://github.com/nosarthur/gita"
@@ -19,5 +19,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
