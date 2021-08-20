@@ -1,7 +1,8 @@
 pkgbase = toru
 	pkgdesc = Pacman wrapper with AUR support.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
+	url = https://github.com/PryosCode/toru
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
@@ -30,7 +31,7 @@ pkgbase = toru
 	depends = texinfo
 	depends = which
 	depends = git
-	source = https://github.com/PryosCode/toru/archive/refs/tags/v0.1.0.tar.gz
+	source = https://github.com/PryosCode/toru/archive/refs/tags/v0.1.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = toru

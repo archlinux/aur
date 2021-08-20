@@ -1,9 +1,10 @@
 # Maintainer: PryosCode <info@pryoscode.net>
 pkgname="toru"
-pkgver="0.1.0"
+pkgver="0.1.1"
 pkgrel="1"
 pkgdesc="Pacman wrapper with AUR support."
 arch=("x86_64")
+url="https://github.com/PryosCode/toru"
 license=("Apache-2.0")
 depends=(
     "autoconf"
