@@ -1,7 +1,7 @@
 pkgbase = libdispatch
 	pkgdesc = Comprehensive support for concurrent code execution on multicore hardware
 	pkgver = 5.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apple.github.io/swift-corelibs-libdispatch
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = libdispatch
 	conflicts = libdispatch-git
 	conflicts = swift
 	conflicts = swift-development
-	conflicts = swift-bin
 	conflicts = libblocksruntime
 	source = libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git#tag=swift-5.4.2-RELEASE
 	source = remove-werror.patch
