@@ -7,13 +7,12 @@
 
 pkgname=lib32-pam
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
 url=http://linux-pam.org
 license=(GPL2)
 depends=(
-  lib32-libnsl
   lib32-libtirpc
   lib32-libxcrypt
   pam
