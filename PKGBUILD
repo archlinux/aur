@@ -3,7 +3,7 @@
 # Contributor: der_fenix <derfenix@gmail.com>
 
 pkgname=rhvoice-git
-pkgver=1.4.2.r1.8edead19
+pkgver=1.4.2.r8.159f2372
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages. (development version)"
 arch=('x86_64')
@@ -24,8 +24,10 @@ source=(${pkgname%-git}::'git+https://github.com/RHVoice/RHVoice.git'
           'git+https://github.com/RHVoice/evgeniy-eng.git'
           'git+https://github.com/rhvoice/aleksandr-hq-rus.git'
           'git+https://github.com/rhvoice/yuriy-rus.git'
-          'git+https://github.com/rhvoice/volodymyr-ukr.git')
+          'git+https://github.com/rhvoice/volodymyr-ukr.git'
+          'git+https://github.com/rhvoice/tatiana-rus.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -47,6 +49,7 @@ prepare() {
 	git config submodule.data/voices/aleksandr-hq.url "$srcdir/aleksandr-hq-rus"
 	git config submodule.data/voices/yuriy.url "$srcdir/yuriy-rus"
 	git config submodule.data/voices/volodymyr.url "$srcdir/volodymyr-ukr"
+	git config submodule.data/voices/tatiana.url "$srcdir/tatiana-rus"
 	git config submodule.external/libs/sonic.active false
 	git config submodule.src/third-party/cldr.active false
 	git config submodule.cmake/thirdparty/sanitizers.active false
