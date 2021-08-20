@@ -1,7 +1,7 @@
 # Maintainer: Jeff Wright <jeff@teamjk.page>
 pkgname=diskonaut
 pkgver=0.11.0
-pkgrel=0
+pkgrel=1
 pkgdesc="TUI disk space navigator written in rust"
 arch=('x86_64')
 url="https://github.com/imsnif/diskonaut"
@@ -11,14 +11,22 @@ makedepends=('cargo')
 checkdepends=('cargo')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 
+prepare() {
+	cd $pkgname-$pkgver
+    	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release --locked --all-features
+	export RUSTUP_TOOLCHAIN=stable
+    	export CARGO_TARGET_DIR=target
+	cargo build --release --locked --all-features --frozen
 }
 
 check() {
 	cd $pkgname-$pkgver
-	cargo test --release --locked
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen --locked
 }
 
 package() {
