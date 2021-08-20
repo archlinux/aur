@@ -1,5 +1,5 @@
 pkgname=bricscad-fr_fr
-pkgver=21.2.02
+pkgver=21.2.06
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=(python-requests python-beautifulsoup4)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=6813
+_version=7021
 
 
 # To download you must be logged in. The official website has no permanent link.
@@ -61,5 +61,5 @@ post_remove(){
 }
 md5sums=(
     '8252c41b4e228c18898e34c52e8e14a3'
-    '1c3e4fee634bf5de6655c00157c3b9bb'
+    '0b190e5a07ea1e6de7cad948e0305cb8'
 )
