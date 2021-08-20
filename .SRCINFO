@@ -1,6 +1,6 @@
 pkgbase = ruby-activerecord
 	pkgdesc = Object-relational mapper framework (part of Rails).
-	pkgver = 6.1.4
+	pkgver = 6.1.4.1
 	pkgrel = 1
 	url = http://www.rubyonrails.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ruby-activerecord
 	depends = ruby-activemodel
 	depends = ruby-activesupport
 	options = !emptydirs
-	source = rails-6.1.4.tar.gz::https://github.com/rails/rails/archive/v6.1.4.tar.gz
-	sha512sums = e88781c690b00441fda0d50514b3ce1dde2ba4c5b93c775a6f77d50bd9aa736631c4d8b1ca6f5d0e270b8ebe902f7945823df7d0d7513881fa6b35c03bcf388f
+	source = rails-6.1.4.1.tar.gz::https://github.com/rails/rails/archive/v6.1.4.1.tar.gz
+	sha512sums = 411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520
 
 pkgname = ruby-activerecord
