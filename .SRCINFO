@@ -1,6 +1,6 @@
 pkgbase = check50
 	pkgdesc = This is check50, with which you can check solutions to problems for CS50.
-	pkgver = 3.1.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/cs50/check50
 	arch = any
@@ -8,17 +8,14 @@ pkgbase = check50
 	license = GPL
 	makedepends = python-setuptools
 	depends = lib50
-	depends = python
-	depends = python-bs4
+	depends = python-beautifulsoup4
 	depends = python-pyaml
-	depends = submit50
-	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.1.2.tar.gz
-	sha256sums = e34d39c9a230e80dc2105737f64f9d93bcecb150e184fc70bff2ac849c5f9bd4
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.3.3.tar.gz
+	sha256sums = 61995f43be54d6c90ad60fb81196dab9a1f2d283b6470bf1fac6e5cd43ba002d
 
 pkgname = check50
 	depends = lib50
-	depends = python
-	depends = python-bs4
+	depends = python-beautifulsoup4
 	depends = python-pyaml
-	depends = submit50
-
+	depends = python-jinja

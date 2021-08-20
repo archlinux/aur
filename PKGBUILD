@@ -4,20 +4,20 @@
 
 pkgname=check50
 _module='check50' # PyPI specific
-pkgver=3.1.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="This is check50, with which you can check solutions to problems for CS50."
 arch=('any')
 url="https://github.com/cs50/check50"
 license=('GPL')
 groups=('cs50');
-depends=('lib50' 'python' 'python-bs4' 'python-pyaml' 'submit50')
+depends=('lib50' 'python-beautifulsoup4' 'python-pyaml' 'python-jinja')
 makedepends=('python-setuptools')
 source=(
 	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
 )
 sha256sums=(
-	'e34d39c9a230e80dc2105737f64f9d93bcecb150e184fc70bff2ac849c5f9bd4'
+	'61995f43be54d6c90ad60fb81196dab9a1f2d283b6470bf1fac6e5cd43ba002d'
 )
 
 build() {
