@@ -1,0 +1,15 @@
+pkgbase = ade
+	pkgdesc = ADE creates a Docker container from a base image and mounts additional read-only volumes.
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://gitlab.com/ApexAI/ade-cli
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = docker
+	optdepends = nvidia-container-toolkit
+	source = ade+x86_64::https://gitlab.com/ApexAI/ade-cli/-/jobs/1341322851/artifacts/raw/dist/ade+x86_64
+	sha256sums = 723dc8b1f2f37a591195e846cd2a1b0e7713f63de1fcb72aa1d88a9ac34adb33
+
+pkgname = ade
+
