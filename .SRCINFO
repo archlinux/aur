@@ -1,14 +1,18 @@
 pkgbase = dhcp_probe
 	pkgdesc = Discover DHCP and BootP servers on a directly-attached Ethernet network
-	pkgver = 1.3.0
-	pkgrel = 6
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://www.net.princeton.edu/software/dhcp_probe/
 	arch = x86_64
 	license = GPL2
+	makedepends = libpcap
+	depends = glibc
 	depends = libnet
-	depends = libpcap
-	source = https://www.net.princeton.edu/software/dhcp_probe/dhcp_probe-1.3.0.tar.gz
-	sha512sums = d643012529ee5149adbc0c1f19f8e579c55201e86de2aec9b3313be9412db4e973162f864d1baaf79fa340b7bd9a7385f0f1406d1b616e801ced3c7bb387c854
+	source = https://www.net.princeton.edu/software/dhcp_probe/dhcp_probe-1.3.1.tar.gz
+	sha512sums = 1002683e6ceb3806289fa9e4879be3d957a9ddc42656d7114942708560f8efba0db058137e04cad092e5a083900987aa1f76c5a7c20db4b57c104dd6a6fcabb6
+	b2sums = 86c079c4c7951f3a70ced20dbea5d4f0d716335d2f9a18b1b9986965ca0446b5a7b673c7e652405deceeef336218016418a86be1a76d452c7802061403a66e82
 
 pkgname = dhcp_probe
-
+	depends = glibc
+	depends = libnet
+	depends = libpcap.so

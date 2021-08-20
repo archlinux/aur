@@ -1,18 +1,21 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+
 pkgname=dhcp_probe
-pkgver=1.3.0
-pkgrel=6
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Discover DHCP and BootP servers on a directly-attached Ethernet network"
 arch=('x86_64')
 url="https://www.net.princeton.edu/software/dhcp_probe/"
 license=('GPL2')
-depends=('libnet' 'libpcap')
+depends=('glibc' 'libnet')
+makedepends=('libpcap')
 source=("https://www.net.princeton.edu/software/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('d643012529ee5149adbc0c1f19f8e579c55201e86de2aec9b3313be9412db4e973162f864d1baaf79fa340b7bd9a7385f0f1406d1b616e801ced3c7bb387c854')
+sha512sums=('1002683e6ceb3806289fa9e4879be3d957a9ddc42656d7114942708560f8efba0db058137e04cad092e5a083900987aa1f76c5a7c20db4b57c104dd6a6fcabb6')
+b2sums=('86c079c4c7951f3a70ced20dbea5d4f0d716335d2f9a18b1b9986965ca0446b5a7b673c7e652405deceeef336218016418a86be1a76d452c7802061403a66e82')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  autoreconf -vfi
+  autoreconf -fiv
 }
 
 build() {
@@ -22,10 +25,12 @@ build() {
 }
 
 package() {
+  depends+=('libpcap.so')
+
   cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" install
-  install -t "${pkgdir}/usr/share/doc/${pkgname}/" \
-    -vDm 644 {AUTHORS,ChangeLog,NEWS,PLATFORMS,README,TODO}
+  install -vDm 644 {AUTHORS,ChangeLog,NEWS,PLATFORMS,README,TODO} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
 # vim:set ts=2 sw=2 et:
