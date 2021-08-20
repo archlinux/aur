@@ -1,6 +1,6 @@
 pkgbase = krita-beta
 	pkgdesc = Edit and paint images - beta release
-	pkgver = 4.4.2.beta2
+	pkgver = 5.0.0.beta1
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -26,12 +26,7 @@ pkgbase = krita-beta
 	depends = giflib
 	provides = krita
 	conflicts = krita
-	source = https://download.kde.org/unstable/krita/4.4.2-beta2/krita-4.4.2-beta2.tar.xz
-	source = avif.patch
-	source = krita-c++14.patch
-	sha256sums = 382b681e1b14ed3589e2cfac4ef7cb5b5d2d05d154eb0075433d088f2da3912d
-	sha256sums = 9a1cd95721ff342de87fe68c894455a0151a8f5115a5b9cda0ab9c683157e94e
-	sha256sums = de84c3c1685e48392d4fb07daab56068cacfc2a846a52a9915b5f3e08357abd1
+	source = https://download.kde.org/unstable/krita/5.0.0-beta1/krita-5.0.0-beta1.tar.xz
+	sha256sums = 49295a814dba12d3026954a7f50ab80a110611941cd30469cf27e310252edd6e
 
 pkgname = krita-beta
-
