@@ -1,6 +1,6 @@
 pkgbase = knxd-git
 	pkgdesc = A server which provides an interface to a KNX/EIB installation
-	pkgver = 1844.r9929ed6
+	pkgver = 1877.re667b25
 	pkgrel = 1
 	url = https://github.com/knxd/knxd
 	arch = i686
@@ -14,18 +14,15 @@ pkgbase = knxd-git
 	makedepends = libtool
 	makedepends = autoconf
 	makedepends = automake
-	makedepends = pkgconfig
 	depends = gcc-libs
-	depends = libev
 	optdepends = libsystemd
 	optdepends = libusb
 	provides = knxd
 	conflicts = knxd
 	conflicts = eibd
 	replaces = eibd
-	source = git://github.com/knxd/knxd.git
+	source = git://github.com/knxd/knxd.git#branch=main
 	sha512sums = SKIP
 
 pkgname = knxd-git
 	backup = etc/knxd.conf
-
