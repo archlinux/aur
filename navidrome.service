@@ -9,6 +9,8 @@ WantedBy=multi-user.target
 [Service]
 User=navidrome
 Group=navidrome
+DynamicUser=true
+Environment=PATH=/usr/bin:/usr/bin/navidrome
 Type=simple
 ExecStart=/usr/bin/navidrome --configfile "/var/lib/navidrome/navidrome.toml"
 WorkingDirectory=/var/lib/navidrome
