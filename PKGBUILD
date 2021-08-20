@@ -2,44 +2,40 @@
 
 pkgname=pulseaudio-module-xrdp
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio modules for xrdp"
 arch=('i686' 'x86_64')
 url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
-license=('Apache')
+license=('LGPL')
 depends=('pulseaudio' 'xrdp')
-makedepends=('git')
+makedepends=('meson' 'check' 'doxygen' 'perl-xml-parser')
+install="${pkgname}.install"
 
+_pulseaudio_ver=$(pulseaudio --version | awk '{print $NF}')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neutrinolabs/${pkgname}/archive/v${pkgver}.tar.gz"
-        "git+https://github.com/pulseaudio/pulseaudio.git"
-        "xrdp-script.conf")
+        "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz")
 sha256sums=('2fdda7b21293941dd671ee2a3557b904e3137eec062f4655a247fe60a4f7b0d1'
-            'SKIP'
-            '4c6e9c0b1eaf66ea6b8574570d89b292b8554d318ad324f3763f837013b9f44f')
+            $(curl -fs "https://freedesktop.org/software/pulseaudio/releases/pulseaudio-${_pulseaudio_ver}.tar.xz.sha256sum" | awk '{print $1}'))
 
 prepare() {
-    cd "$srcdir/pulseaudio"
-    git checkout v`pkg-config libpulse --modversion|sed 's/[^0-9.]*\([0-9.]*\).*/\1/'`
-    NOCONFIGURE=1 ./bootstrap.sh
-    ./configure
+    cd "$srcdir/pulseaudio-${_pulseaudio_ver}"
+
+    meson build
+    meson compile -C build
 }
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
+
+    sed -i '\#-I $(PULSE_DIR)/src#a -I $(PULSE_DIR)/build \\' src/Makefile.am
+
     ./bootstrap
-    ./configure "PULSE_DIR=$srcdir/pulseaudio"
+    ./configure "PULSE_DIR=$srcdir/pulseaudio-${_pulseaudio_ver}"
     make
 }
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    make DESTDIR="$pkgdir" install
 
-    # This package installs a global drop-in conf for pulseaudio.service to use the xrdp default.pa script instead of
-    # the script from the pulseaudio package. If your only desktop sessions will be via xrdp, this should be fine. But
-    # if you want to start local sessions too, this will prevent the real audio devices from being detected. If this is
-    # a problem for you, delete the drop-in conf file and roll your own solution for loading the xrdp modules for xrdp
-    # sessions only (maybe add PULSE_SCRIPT to the user systemd's environment in startwm.sh and create a drop-in for
-    # pulseaudio.service that adds PassEnvironment=PULSE_SCRIPT).
-    install -Dm644 "$srcdir"/xrdp-script.conf "$pkgdir"/usr/lib/systemd/user/pulseaudio.service.d/xrdp-script.conf
+    make DESTDIR="$pkgdir" install
 }
