@@ -1,0 +1,17 @@
+pkgbase = fp-build-git
+	pkgdesc = Script to make flatpak packaging easier
+	pkgver = r5.c0560be
+	pkgrel = 1
+	url = https://github.com/lionirdeadman/fp-build
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	depends = flatpak-builder
+	depends = python
+	depends = gzip
+	provides = fp-build
+	conflicts = fp-build
+	source = fp-build::git+https://github.com/lionirdeadman/fp-build.git
+	md5sums = SKIP
+
+pkgname = fp-build-git

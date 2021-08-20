@@ -1,0 +1,4 @@
+pkg
+src
+fp-build
+*.pkg.tar.zst
