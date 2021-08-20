@@ -4,16 +4,25 @@
 # Notes:
 # MUMPS need some work to be able to link corectly with deps of mumps (scotch,mpi)
 
+#Configuration:
+#Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
+#Use: {yay,paru} --mflags=VAR1=0,VAR2=1
+#Use: aurutils --margs=VAR1=0,VAR2=1
+#Use: VAR1=0 VAR2=1 pamac
+
+((ENABLE_OPENCRG)) && _opencrg=ON || _opencrg=OFF
+
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=6.0.0.r307.gd57118d43
+pkgver=6.0.0.r552.gda17fe570
 #_fragment="#tag=${pkgver}"
 pkgrel=1
 pkgdesc="An Open Source Multi-physics Simulation Engine"
 license=('custom')
 arch=('i686' 'x86_64')
 url="https://projectchrono.org/"
-depends=(openmpi blas boost-libs hdf5 opencrg)
+depends=(openmpi blas boost-libs hdf5)
+((ENABLE_OPENCRG)) && depends+=(opencrg)
 makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
 makedepends+=(python swig) # MODULE_PYTHON
 makedepends+=('cuda')        # MODULE_GRANULAR
@@ -50,7 +59,7 @@ sha256sums=('SKIP'
             'bf9717a2a1d569e376623d40e9b83fb766629a9ef9acc16e4af5358132202526')
 
 CMAKE_FLAGS=(	-DENABLE_MODULE_POSTPROCESS=ON
-		-DENABLE_OPENCRG=ON
+		-DENABLE_OPENCRG="$_opencrg"
 		-DENABLE_HDF5=ON
 		-DENABLE_MODULE_VEHICLE=ON
 		-DENABLE_MODULE_PYTHON=ON

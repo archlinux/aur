@@ -1,6 +1,6 @@
 pkgbase = chronoengine-git
 	pkgdesc = An Open Source Multi-physics Simulation Engine
-	pkgver = 6.0.0.r307.gd57118d43
+	pkgver = 6.0.0.r332.g7adfee571
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
@@ -29,7 +29,6 @@ pkgbase = chronoengine-git
 	depends = blas
 	depends = boost-libs
 	depends = hdf5
-	depends = opencrg
 	optdepends = irrlicht: Runtime visualization with Irrlicht.
 	optdepends = glew: Runtime visualization with OpenGL.
 	optdepends = glfw: Runtime visualization with OpenGL.
