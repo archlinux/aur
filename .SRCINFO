@@ -1,6 +1,6 @@
 pkgbase = persepolis-git
 	pkgdesc = A graphical front-end for aria2 download manager with lots of features (Github version).
-	pkgver = 3.2.0.r50.gee8c781
+	pkgver = 3.2.0.r58.g59513cd
 	pkgrel = 1
 	url = https://persepolisdm.github.io/
 	arch = any
@@ -12,18 +12,16 @@ pkgbase = persepolis-git
 	depends = libpulse
 	depends = python
 	depends = python-psutil
-	depends = python-pyqt5
+	depends = pyside6
 	depends = python-requests
 	depends = python-setproctitle
-	depends = qt5-svg
+	depends = qt6-svg
 	depends = sound-theme-freedesktop
 	depends = youtube-dl
 	depends = ffmpeg
-	optdepends = adwaita-qt: for using adwaita style in GTK based Desktops.
 	provides = persepolis
 	conflicts = persepolis
 	source = persepolis::git+https://github.com/persepolisdm/persepolis.git
 	sha256sums = SKIP
 
 pkgname = persepolis-git
-

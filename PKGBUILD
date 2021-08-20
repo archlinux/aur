@@ -1,16 +1,15 @@
-# Maintainer: AliReza AmirSamimi <alireza.amirsamimi at gmail dot com>
-# Co-Maintainer: M A <morealaz at gmail dot com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Co-Maintainer: AliReza AmirSamimi <alireza.amirsamimi at gmail dot com>
 
 pkgname='persepolis-git'
-pkgver=3.2.0.r50.gee8c781
+pkgver=3.2.0.r58.g59513cd
 pkgrel=1
 pkgdesc="A graphical front-end for aria2 download manager with lots of features (Github version)."
 arch=('any')
 url="https://persepolisdm.github.io/"
 license=('GPL3')
-depends=('aria2' 'libnotify' 'libpulse' 'python' 'python-psutil' 'python-pyqt5' 'python-requests' 'python-setproctitle' 'qt5-svg' 'sound-theme-freedesktop' 'youtube-dl' 'ffmpeg')
+depends=('aria2' 'libnotify' 'libpulse' 'python' 'python-psutil' 'pyside6' 'python-requests' 'python-setproctitle' 'qt6-svg' 'sound-theme-freedesktop' 'youtube-dl' 'ffmpeg')
 makedepends=('git' 'python-setuptools')
-optdepends=('adwaita-qt: for using adwaita style in GTK based Desktops.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/persepolisdm/persepolis.git")
