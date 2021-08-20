@@ -5,7 +5,7 @@
 _gemname='actionview'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, battle-tested conventions and helpers for building web pages.'
 arch=('any')
 url='http://www.rubyonrails.org'
@@ -13,7 +13,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-activesupport' 'ruby-builder' 'ruby-erubi' 'ruby-rails-dom-testing' 'ruby-rails-html-sanitizer')
 makedepends=('ruby-rake')
-#checkdepends=('ruby-activemodel' 'ruby-actionpack' 'ruby-railties' 'ruby-sqlite3')
+checkdepends=('ruby-activemodel' 'ruby-actionpack' 'ruby-railties' 'ruby-sqlite3')
 source=("rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz")
 sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520')
 
@@ -30,12 +30,11 @@ build() {
   gem build "${_gemname}.gemspec"
 }
 
-# disable check() for package update
-#check() {
-#  cd "rails-${pkgver}/${_gemname}"
-#
-#  rake test
-#}
+check() {
+  cd "rails-${pkgver}/${_gemname}"
+
+  rake test
+}
 
 package() {
   cd "rails-${pkgver}/${_gemname}"
