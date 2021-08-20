@@ -2,11 +2,12 @@
 
 pkgname=dracut-sb
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='dracut secure boot setup using efistub'
 arch=('x86_64')
 depends=('dracut' 'efitools' 'efibootmgr' 'sbsigntools')
 backup=('etc/dracut-sb/efi-key.conf')
+install="${pkgname}.install"
 source=('55-efi-key.hook'
 '60-dracut-remove.hook'
 '90-dracut-install.hook'

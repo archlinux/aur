@@ -1,7 +1,8 @@
 pkgbase = dracut-sb
 	pkgdesc = dracut secure boot setup using efistub
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
+	install = dracut-sb.install
 	arch = x86_64
 	depends = dracut
 	depends = efitools

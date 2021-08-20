@@ -1,0 +1,16 @@
+post_install() {
+	echo "Edit the config at /etc/dracut-sb/efi-key.conf to contain the correct info,"
+	echo "plug in the drive with the keys, then Press Enter"
+	read
+	/usr/local/share/libalpm/scripts/efi-key
+	echo "" | /usr/local/share/libalpm/scripts/dracut-install
+}
+
+post_upgrade() {
+	/usr/local/share/libalpm/scripts/efi-key
+	echo "" | /usr/local/share/libalpm/scripts/dracut-install
+}
+
+post_remove() {
+	echo "" | /usr/local/share/libalpm/scripts/dracut-install
+}
