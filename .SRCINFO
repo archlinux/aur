@@ -1,11 +1,11 @@
 pkgbase = plank-theme-platus
 	pkgdesc = Collection of Platus Edition Themes for Plank
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1301106
 	arch = any
 	license = MIT
-	source = https://github.com/MMcQueenGNU/plank-theme-platus/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 820a5b76e7da2f03829b1a492368501d7a8451016e422e89090319f58251ec6d
+	source = https://github.com/MMcQueenGNU/plank-theme-platus/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = c060045618b246f4802226364614b87cd26184064c6c6cffcbbf701e4fd09a9f
 
 pkgname = plank-theme-platus

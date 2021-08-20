@@ -7,7 +7,7 @@ _pkgname5=platus-trend
 _pkgname6=platus-uppercase
 _pkgname7=platus-prime
 pkgname=plank-theme-platus
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Collection of Platus Edition Themes for Plank'
 arch=(any)
@@ -16,7 +16,7 @@ _url="https://github.com/MMcQueenGNU"
 license=('MIT')
 source=("$_url/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('820a5b76e7da2f03829b1a492368501d7a8451016e422e89090319f58251ec6d')
+sha256sums=('c060045618b246f4802226364614b87cd26184064c6c6cffcbbf701e4fd09a9f')
 
 build() {
 	true
@@ -32,7 +32,7 @@ package() {
 	mkdir -p $pkgdir/usr/share/plank/themes/$_pkgname6
 	mkdir -p $pkgdir/usr/share/plank/themes/$_pkgname7
 	cd "$srcdir/$pkgname-$pkgver/$_pkgname1"
-	install -m 755 dock.theme $pkgdir/usr/share/plank/themes/$_pkgname/
+	install -m 755 dock.theme $pkgdir/usr/share/plank/themes/$_pkgname1/
 	cd "$srcdir/$pkgname-$pkgver/$_pkgname2"
 	install -m 755 dock.theme $pkgdir/usr/share/plank/themes/$_pkgname2/
 	cd "$srcdir/$pkgname-$pkgver/$_pkgname3"	
