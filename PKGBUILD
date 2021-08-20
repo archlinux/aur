@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=goverlay
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('mangohud: Configure MangoHUD'
             'replay-sorcery: Instant replay solution')
 conflicts=("${pkgname%-git}" "${pkgname%-bin}")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('f162dccd9054eaaaeea61f91501f6cadd31f9fd30fd869e39ac9c4068db9118e46d371e310bf27861ce10f42e864194389acb6b568514c0c3188481aa0d5fba9')
+sha512sums=('1f22dbf534b1a8c178d4497da2cd9bfb5d7c84948c1cfed539b67139ca96592d333960923910a6b14aa49fd27f4981dec695f335a08dfcce6e612b37a2553540')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
