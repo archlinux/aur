@@ -1,0 +1,16 @@
+pkgbase = solitty-git
+	pkgdesc = Play solitaire in the console
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/flyingpeakock/solitty
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = ncurses
+	depends = git
+	provides = solitty
+	noextract = solitty.git
+	source = git+https://github.com/flyingpeakock/solitty.git
+	md5sums = SKIP
+
+pkgname = solitty-git
