@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=1.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -153,6 +153,12 @@ package() {
     install -Dm755 "$srcdir/agisoft-metashape-pro" "$pkgdir/usr/bin/agisoft-metashape-pro"
     install -Dm755 "$srcdir/agisoft-network-monitor" "$pkgdir/usr/bin/agisoft-network-monitor"
     install -Dm755 "$srcdir/agisoft-viewer" "$pkgdir/usr/bin/agisoft-viewer"
+
+    # Set the rehostable directory and environment variables in executables for activation
+    mkdir -p "${pkgdir}/opt/agisoft/${_pkgname}/rehostable"
+    sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_REHOST_PATH=\$dirname/rehostable\nexport AGISOFT_REHOST_PATH' "${pkgdir}/opt/agisoft/${_pkgname}/metashape.sh"
+    sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_REHOST_PATH=\$dirname/rehostable\nexport AGISOFT_REHOST_PATH' "${pkgdir}/opt/agisoft/${_pkgname}/viewer.sh"
+    sed -i '/export LD_LIBRARY_PATH/a\\nAGISOFT_REHOST_PATH=\$dirname/rehostable\nexport AGISOFT_REHOST_PATH' "${pkgdir}/opt/agisoft/${_pkgname}/monitor.sh"
 
     # Set correct permission
     chmod -R g=u "$pkgdir/opt/agisoft/${_pkgname}"
