@@ -1,6 +1,6 @@
 pkgbase = python2-simplejson
 	pkgdesc = Simple, fast, extensible JSON encoder/decoder for python2
-	pkgver = 3.17.3
+	pkgver = 3.17.4
 	pkgrel = 1
 	url = https://github.com/simplejson/simplejson
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = python2-simplejson
 	checkdepends = python2-pytest-runner
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-simplejson-3.17.3.tar.gz::https://github.com/simplejson/simplejson/archive/v3.17.3.tar.gz
-	sha512sums = eb8bae7cb14b9f3cdcc0fe8ce7fc9edde09099c054d6335d0afc26cfaa16657d580b095fd8879bb48856be82050824015e9636942dafe95c888ee2db43adfb97
+	source = python2-simplejson-3.17.4.tar.gz::https://github.com/simplejson/simplejson/archive/v3.17.4.tar.gz
+	sha512sums = 16c16aea5e591cecd272e27d731fbb27f6f31c135e43c201daf476da38df384cfa60422b11eac1cb305ff62ad23e4c7da117803b5f2590046f0f74c7bbc7332d
 
 pkgname = python2-simplejson
