@@ -1,14 +1,14 @@
 # Maintainer: Ales Katona <almindor@gmail.com>
 pkgname=rx
-pkgver=0.4.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='A modern and extensible pixel editor implemented in rust.'
 arch=(i686 x86_64)
 url='http://cloudhead.io/rx/'
 license=('GPL3')
-makedepends=('clang' 'rust' 'cmake')
+makedepends=('clang' 'rust' 'cmake' 'libx11')
 source=("https://github.com/cloudhead/rx/archive/v${pkgver}.tar.gz")
-sha256sums=('aa7786b000d10d9e3675c9d6505541fbf310c090f3b7215998e1208beda6df55')
+sha256sums=('1a2a28afd7ea8a0cde030a12cb5d0d8543a68829edd789215cc4f1eaa5cc4d12')
 
 build() {
   cd "${pkgname}-${pkgver}"
