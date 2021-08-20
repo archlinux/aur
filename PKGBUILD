@@ -19,7 +19,7 @@ optdepends=(
   # AUR helpers
   'aurman: aurman integration'
   'pacaur: pacaur integration'
-  'yaourt: yaourt integration'
+  'paru: paru integration'
   'yay: yay integration'
   # used for building AUR packages
   'git: for fetching AUR packages'

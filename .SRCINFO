@@ -14,7 +14,7 @@ pkgbase = aconfmgr-git
 	depends = pacutils
 	optdepends = aurman: aurman integration
 	optdepends = pacaur: pacaur integration
-	optdepends = yaourt: yaourt integration
+	optdepends = paru: paru integration
 	optdepends = yay: yay integration
 	optdepends = git: for fetching AUR packages
 	optdepends = augeas: configuration file editing
@@ -24,4 +24,3 @@ pkgbase = aconfmgr-git
 	md5sums = 2c153a787e3a0974a4d4c5a005c53d99
 
 pkgname = aconfmgr-git
-
