@@ -1,25 +1,26 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-nox-git
-pkgver=release.2.0.14.r447.g84c44e01d
+pkgver=2.0.16.r106.ge426bb80c
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('MIT')
-depends=('mesa')
-makedepends=('git')
+depends=('libgl' 'libibus' )
+makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
+             'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'jack' 'git' )
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
 source=("git+https://github.com/libsdl-org/SDL")
-provides=(sdl2)
+provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
 sha512sums=('SKIP')
 
 pkgver() {
   cd SDL
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -30,11 +31,9 @@ prepare() {
 build() {
 	cd build
 	../SDL/configure --prefix=/usr \
-			--disable-arts --disable-esd --disable-nas \
 			--disable-video-rpi \
 			--enable-video-kmsdrm \
-			--without-x --disable-video-opengl \
-			--disable-video-wayland
+			--without-x
 	make
 }
 
