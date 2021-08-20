@@ -179,10 +179,19 @@
       },
       "algo": "bcrypt"
     },
+    "password_validation": {
+      "admins": {
+        "min_entropy": 0
+      },
+      "users": {
+        "min_entropy": 0
+      }
+    },
     "password_caching": true,
     "update_mode": 0,
     "skip_natural_keys_validation": false,
-    "create_default_admin": false
+    "create_default_admin": false,
+    "is_shared": 0
   },
   "httpd": {
     "bindings": [
