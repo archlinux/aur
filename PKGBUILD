@@ -3,7 +3,7 @@
 _pkgname=iv
 pkgname="${_pkgname}-git"
 pkgver=r84.625b9ff
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple yet powerful image viewer"
 arch=('any')
 url="https://github.com/unknown989/iv.git"
@@ -26,5 +26,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname2}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
