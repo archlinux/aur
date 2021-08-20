@@ -5,6 +5,7 @@ pkgbase = kfiredragonhelper
 	url = https://github.com/openSUSE/kmozillahelper
 	arch = i686
 	arch = x86_64
+	arch = x86_64_v3
 	license = MIT
 	makedepends = cmake
 	makedepends = extra-cmake-modules
