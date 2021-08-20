@@ -1,7 +1,7 @@
 pkgbase = arch-nemesis
 	pkgdesc = AUR Package Automatic Maintainer
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trickeydan/arch-nemesis
 	arch = any
 	license = MIT
@@ -21,4 +21,3 @@ pkgbase = arch-nemesis
 	sha512sums = dbe82e667711cf06b52db5d80840ddb1e285ba1ad9cdcf12a1f0930e1fa017aa2db0677a2764188c675176a0ab3ddbc954ac1a7acbeff73d2d425ef713fa6c19
 
 pkgname = arch-nemesis
-
