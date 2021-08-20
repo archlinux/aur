@@ -29,7 +29,6 @@ pkgbase = chronoengine
 	depends = blas
 	depends = boost-libs
 	depends = hdf5
-	depends = opencrg
 	optdepends = irrlicht: Runtime visualization with Irrlicht.
 	optdepends = glew: Runtime visualization with OpenGL.
 	optdepends = glfw: Runtime visualization with OpenGL.
