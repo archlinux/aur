@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer
-pkgver=6.4.22.47251
+pkgver=6.4.22.47257
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer!"
 arch=('i686' 'x86_64')
@@ -34,10 +34,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	virtualenv ".venv" -p python3
-	source .venv/bin/activate
+	source ".venv/bin/activate"
 	pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-
-	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DUNIX_DISABLE_FATAL_WARNINGS=ON -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
+	autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=FALSE -DDISABLE_FATAL_WARNINGS=ON -DREVISION_FROM_VCS=ON -DUSE_FMODSTUDIO=OFF
 }
 
 build() {
