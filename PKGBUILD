@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
 pkgname=v2raya-git
-pkgver=20210807.r793.3414a0c
+pkgver=20210820.r827.a2b542a
 pkgrel=1
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
@@ -29,13 +29,12 @@ build() {
     yarn config set registry https://registry.npm.taobao.org
     yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
     yarn --check-files
-    yarn build
-    mv "$srcdir/v2raya-git/web" "$srcdir/v2raya-git/service/server/router/"
+    OUTPUT_DIR="$srcdir/$pkgname/service/server/router/web" yarn build
 
     cd "$srcdir/$pkgname/service"
     export GO111MODULE=on
     export GOPROXY=https://goproxy.io
-    CGO_ENABLED=0 go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version=unstable -s -w -extldflags "-static"' -o v2raya
+    go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version=unstable -s -w' -o v2raya
 }
 
 package() {
@@ -44,5 +43,6 @@ package() {
     install -dm 750 "${pkgdir}"/etc/v2raya/
     install -Dm 644 install/universal/v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 install/universal/v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 install/universal/v2raya@.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm 644 gui/public/img/icons/android-chrome-512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
