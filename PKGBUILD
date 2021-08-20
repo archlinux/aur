@@ -1,4 +1,4 @@
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=brltty-git
 pkgver=6.3.r412.gf23bc3295
