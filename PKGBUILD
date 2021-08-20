@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=git-cliff
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A highly customizable changelog generator"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'zlib')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('72d418b4159d9e3d7d5a8ee83d6973a16cd097c7ab57de3ef7dff80abf09584287244a2b79d7992b73fbe2b83638d5554bd2659f01dbebaff87debdd793b2692')
+sha512sums=('a9ebd7d299d3fe3b938fa4ad1fdd388f9f6b902d03ba5cb0445e1c49b220c9339b84b89a2fb14567da1b7d2d429d158f9761bd105851f81c7ef47baa5c72ffe6')
 
 prepare() {
   cd "$pkgname-$pkgver"
