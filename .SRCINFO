@@ -1,0 +1,22 @@
+pkgbase = gasket-dkms
+	pkgdesc = Google Coral driver for PCIe-based Edge TPU devices, such as the M.2 and Mini PCIe Accelerator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://coral.withgoogle.com/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = sed
+	makedepends = binutils
+	depends = dkms
+	noextract = gasket-dkms_1.0-17.deb
+	options = !strip
+	source_x86_64 = gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-17_all_7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c.deb
+	sha256sums_x86_64 = 7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c
+	source_armv7h = gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-17_all_7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c.deb
+	sha256sums_armv7h = 7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c
+	source_aarch64 = gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_16.0_arm64_0b4fb43e4f7b44a0ce1f13b0736b3b7f03b09a24fca7e81bdb40185e98527325.deb
+	sha256sums_aarch64 = 7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c
+
+pkgname = gasket-dkms
