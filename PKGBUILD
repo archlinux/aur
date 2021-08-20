@@ -3,7 +3,7 @@
 pkgname=opendoas-bin
 _pkgname=doas
 pkgver=6.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A portable fork of the OpenBSD doas command "
 url="https://github.com/justanoobcoder/OpenDoas"
 license=(custom:ISC)
@@ -17,7 +17,6 @@ source=(
 )
 md5sums=(98a66bbb6ca5df0e6eeb91a09a2e2508)
 
-install=opendoas.install
 backup=(etc/pam.d/doas)
 
 package() {
