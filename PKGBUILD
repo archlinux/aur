@@ -1,7 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xdroid-bin
-pkgver=6.3016
+pkgver=7.1002
+_pkgver=${pkgver}-20210820092942
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -20,9 +21,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://d3.injdk.cn/xDroid/xDroidInstall-${arch}-v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://d3.injdk.cn/xDroid/xDroidInstall-${arch}-v${_pkgver}.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('7f04300962974b9d8263bd4af16ea6dddc45336443eed2c3c1fdc3bdd7a11e33')
+sha256sums=('771ae4b8cacb7bd2d6952665832257e2e16fcbff613f03727597508dd25d7920')
 #validpgpkeys=()
 
 package() {
