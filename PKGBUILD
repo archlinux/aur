@@ -14,17 +14,21 @@ sha512sums=('300e574c7221841801f0d4b114abaa3b15196b69cb25f98ed784c820d125bd60e6f
 
 package() {
 	cd "$srcdir/ko-aff-dic-$pkgver" 
-	install -vDm 644 ko.dic ko.aff -t "$pkgdir/usr/share/hunspell"
 
-	pushd "$pkgdir/usr/share/hunspell/"
-		ko_KR_aliases="ko_KR"
-		for lang in $ko_KR_aliases; do
-			ln -s ko.aff $lang.aff
-			ln -s ko.dic $lang.dic
+	# Remove easter egg for convert to qt webengine dictionary (very long word)
+	# It's temp, because this line is ugly
+	sed -i '14265d' ko.dic
+
+	install -dm755 "$pkgdir"/usr/share/hunspell
+	install -m644 ko.dic "$pkgdir"/usr/share/hunspell/ko_KR.dic
+	install -m644 ko.aff "$pkgdir"/usr/share/hunspell/ko_KR.aff
+
+	# myspell symlinks
+	install -dm755 "${pkgdir}"/usr/share/myspell/dicts
+	pushd "$pkgdir"/usr/share/myspell/dicts
+		for dict in "${pkgdir}"/usr/share/hunspell/*; do
+			ln -sv /usr/share/hunspell/$(basename $dict) .
 		done
-		# Remove easter egg for convert to qt webengine dictionary
-		# It's temp, because this line is ugly
-		sed -i '14265d' ko.dic
 	popd
 
 	# Install webengine dictionaries
@@ -34,14 +38,6 @@ package() {
 		qwebengine_convert_dict "$_file" "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
 	done
 	
-	# myspell symlinks
-	install -dm755 "${pkgdir}"/usr/share/myspell/dicts
-	pushd "$pkgdir"/usr/share/myspell/dicts
-		for dict in "${pkgdir}"/usr/share/hunspell/*; do
-			ln -sv /usr/share/hunspell/$(basename $dict) .
-		done
-	popd
-
 	# licenses
 	install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	#install -Dm644 LICENSE.GPL-3 $pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL-3
