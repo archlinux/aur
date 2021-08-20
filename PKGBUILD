@@ -2,7 +2,7 @@
 # Maintainer: Michael Lohr <michael at lohr dot dev>
 
 pkgname=punktf
-pkgver=1.0.0_alpha
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A cross-platform multi-target dotfiles manager'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 # Version required for `strip`: '1.45.0-nightly' (https://github.com/rust-lang/rust/issues/72110)
 makedepends=(cargo)
 source=($pkgname-${pkgver//_/-}.tar.gz::$url/archive/v${pkgver//_/-}.tar.gz)
-sha512sums=('f07fcf4e15c8ff6a529e67a091ad892e909e1469f0e8e8f50316661de40ebe39f6d6234a8ad7a842f55d981eeb07ecc57b770407bc96a789f463b958ec9fe97a')
+sha512sums=('8f3767f1d9fd36c6c4aeba6e3ba36200ae397ca60d80e21fad605b500707e72415f3276eb5928233db5d09855dc3e8cb8207af1b21904a3b49eae80a7552a76f')
 provides=('punktf')
 conflicts=('punktf')
 
