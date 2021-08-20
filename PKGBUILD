@@ -1,7 +1,7 @@
 # Maintainer: Glennie Vignarajah <glennie@glennie.fr>
 
 pkgname=file-rename
-pkgver=1.20
+pkgver=1.30
 pkgrel=1
 pkgdesc="Renames multiple files using regular expressions."
 arch=(any)
@@ -29,4 +29,4 @@ package() {
     ln -s vendor_perl/file-rename "$pkgdir/usr/bin/file-rename"
     ln -s /usr/share/man/man1/file-rename.1p.gz "$pkgdir/usr/share/man/man1/file-rename.1p.gz"
 }
-sha256sums=('518fa23f2b00b009f9a6e30db72a3b344f29dae6eaf3edbb5302bf128a9ea8b0')
+sha256sums=('70f61bdd263448e40facafa31fafba6815a25ff7007e504f06bc9d58eb0459e0')
