@@ -9,7 +9,7 @@ ENABLE_GNOME=0
 _pkgname=pamac
 pkgname=pamac-all-git
 pkgver=10.2.0beta.r0.gefeee38
-pkgrel=2
+pkgrel=3
 _pkgfixver=10.2.0
 epoch=1
 
@@ -69,7 +69,7 @@ build() {
   cd "$srcdir/$_pkgname"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release $define_meson
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release $define_meson
   # build
   ninja
 }
