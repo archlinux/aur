@@ -8,6 +8,7 @@ url='https://github.com/nerdmaennchen/qrqma'
 arch=('any')
 license=('ISC')
 makedepends=('git' 'cmake')
+conflicts=('qrqma')
 provides=('qrqma')
 source=('git+https://github.com/nerdmaennchen/qrqma.git#tag=0.9.5')
 sha256sums=('SKIP')
