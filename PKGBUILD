@@ -2,12 +2,13 @@
 
 pkgname=gwcd-git
 pkgdesc="Whereigo files (.gwc) decompiler (git)"
-pkgver=r6.2481325
+pkgver=r8.c139886
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/driquet/gwcd"
 license=('custom')
 depends=('python')
+makedepends=('git')
 source=("${pkgname}"::'git+https://github.com/driquet/gwcd.git' 'gwcd')
 md5sums=('SKIP'
          'e21172d23a5cc196684fda686b8679ee')
