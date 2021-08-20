@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-. /etc/pacman.d/hooks/efi-key.conf
+. /etc/dracut-sb/efi-key.conf
 
 mkdir -p "${efikey_dir}"
 echo "To skip signing run \"touch ${skip_file}\""

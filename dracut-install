@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-. /etc/pacman.d/hooks/efi-key.conf
+. /etc/dracut-sb/efi-key.conf
 
 kernels=()
 dracut_update=0

@@ -5,6 +5,13 @@ Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/dracut/*
 
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = dracut-sb
+
 [Action]
 Description = Updating dracut modules...
 When = PostTransaction

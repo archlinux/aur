@@ -1,13 +1,13 @@
 pkgbase = dracut-sb
 	pkgdesc = dracut secure boot setup using efistub
-	pkgver = 1.0.0
-	pkgrel = 3
-	arch = any
+	pkgver = 1.0.1
+	pkgrel = 1
+	arch = x86_64
 	depends = dracut
 	depends = efitools
 	depends = efibootmgr
 	depends = sbsigntools
-	backup = etc/pacman.d/hooks/efi-key.conf
+	backup = etc/dracut-sb/efi-key.conf
 	source = 55-efi-key.hook
 	source = 60-dracut-remove.hook
 	source = 90-dracut-install.hook

@@ -1,12 +1,12 @@
 # Maintainer: tleydxdy <shironeko(at)waifu(dot)club>
 
 pkgname=dracut-sb
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='dracut secure boot setup using efistub'
-arch=('any')
+arch=('x86_64')
 depends=('dracut' 'efitools' 'efibootmgr' 'sbsigntools')
-backup=('etc/pacman.d/hooks/efi-key.conf')
+backup=('etc/dracut-sb/efi-key.conf')
 source=('55-efi-key.hook'
 '60-dracut-remove.hook'
 '90-dracut-install.hook'
@@ -37,7 +37,7 @@ package() {
     install -Dm755 "${srcdir}"/dracut-remove "${pkgdir}"/usr/local/share/libalpm/scripts/dracut-remove
 
     install -Dm755 "${srcdir}"/efi-key "${pkgdir}"/usr/local/share/libalpm/scripts/efi-key
-    install -Dm644 "${srcdir}"/efi-key.conf "${pkgdir}"/etc/pacman.d/hooks/efi-key.conf
+    install -Dm644 "${srcdir}"/efi-key.conf "${pkgdir}"/etc/dracut-sb/efi-key.conf
 
-    install -Dm755 "${srcdir}"/linuxx64.efi.stub "${pkgdir}"/usr/lib/gummiboot/linuxx64.efi.stub
+    install -Dm755 "${srcdir}"/linuxx64.efi.stub "${pkgdir}"/etc/dracut-sb/linuxx64.efi.stub
 }
