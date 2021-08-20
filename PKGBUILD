@@ -10,7 +10,7 @@ depends=('boost-libs' 'libboost_program_options.so' 'libboost_filesystem.so')
 makedepends=('boost' 'meson' 'ninja' 'python-sphinx')
 checkdepends=('bash' 'coreutils' 'diffutils' 'findutils')
 options=('zipman' 'lto')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nomis/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
+source=("https://dtee.bin.uuid.uk/source/${pkgname}-${pkgver}.tar.gz"
 	"https://dtee.bin.uuid.uk/source/${pkgname}-${pkgver}.tar.gz.asc")
 noextract=()
 sha256sums=('7ed65431e51493fbdb16e6d1d89cd852d4d265e69b1414c42ed23e6852e6b51f'
