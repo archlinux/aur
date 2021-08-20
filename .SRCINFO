@@ -1,13 +1,14 @@
 pkgbase = droopy-git
 	pkgdesc = Mini Web server that let others upload files to your computer
 	pkgver = r143.c8b2534
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Brli/Droopy
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = python
+	provides = droopy
 	conflicts = droopy
 	source = droopy::git+https://github.com/Brli/Droopy.git
 	sha512sums = SKIP
