@@ -7,11 +7,11 @@ arch=('any')
 url="https://github.com/KikyTokamuro/fetch.scm"
 license=('MIT')
 depends=('guile')
-provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('7c8eeb6618fc144b7e18eccded0df766d5949e09e505cce0930c441f04563821')
 
 package() {
   cd "fetch.scm-$pkgver"
   install -Dm755 "fetch.scm" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
