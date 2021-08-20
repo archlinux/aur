@@ -1,7 +1,12 @@
-.PHONY: all
+.PHONY: aur metadata pkg
 
-all:
+pkg:
+	makepkg
+
+metadata:
 	mkdir -p src
 	cd src && updpkgsums ../PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
-	makepkg
+
+aur:
+	git push aur arch:master
