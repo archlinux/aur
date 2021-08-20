@@ -1,12 +1,12 @@
 pkgbase = aptl
 	pkgdesc = Creates installed lists of pkgs with Names & Descriptions for backup proposes.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/pegromdev/aptl
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	source = aptl-1.0.5.tar.gz::https://github.com/pegromdev/aptl/archive/1.0.5.tar.gz
+	source = aptl-1.0.6.tar.gz::https://github.com/pegromdev/aptl/archive/1.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = aptl
