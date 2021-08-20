@@ -1,5 +1,5 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 # Contributor: Kyle <kyle@free2.ml>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
