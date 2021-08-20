@@ -14,7 +14,7 @@ pkgdesc="Running Android in a container"
 depends=('lxc-git' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs' 'sdbus-cpp')
 replaces=('anbox-launchers')
 conflicts=('anbox-launchers')
-makedepends=('cmake' 'git' 'glm' 'boost' 'properties-cpp' 'gtest' 'python')
+makedepends=('cmake' 'git' 'glm' 'boost' 'properties-cpp' 'gtest' 'python' 'systemd' 'dbus')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/google/cpu_features.git"
 	"no-bundled-sdbus.patch"
