@@ -1,7 +1,7 @@
 pkgbase = python-pyquaternion
 	pkgdesc = A fully featured, pythonic library for representing and using quaternions
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/
 	arch = any
 	license = MIT
@@ -12,4 +12,3 @@ pkgbase = python-pyquaternion
 	sha512sums = 9bd478dad5d70dce857083b2d289e7f7babd25f4fdb6e15601aa4ec1b560ee188fc14829a7f1b9060d062d04ab21afc86001b496bfe3aa688200a09c7e98cf9f
 
 pkgname = python-pyquaternion
-
