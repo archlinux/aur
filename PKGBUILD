@@ -1,20 +1,19 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com?>
+# Maintainer: CuVoodoo <pcb-rnd@cuvoodoo.info>
+# Contributor: Kyle Keen <keenerd@gmail.com?>
 pkgname=pcb-rnd-svn
-_pkgname=pcb-rnd-svn
-pkgver=r13074
+pkgver=r35263
 pkgrel=1
-pkgdesc="Fork of Geda-PCB with embedded scripting and other improvements."
-url="http://repo.hu/projects/pcb-rnd/"
+pkgdesc="free/open source, flexible, modular Printed Circuit Board editor"
+url="http://www.repo.hu/projects/pcb-rnd/"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('gd' 'libjpeg' 'openmotif' 'gtk2')
-# - glib and gtk if you are using the gtk frontend
-# - openmotif or lesstif if you are using the lesstif frontend
-# - gdlib if you are using the png HID
-makedepends=('svn')
+license=('GPL2')
+depends=('librnd3' 'libxml2')
+optdepends=('gd: gd based exports and pixmap imports (png, gif, jpeg)'
+            'freetype2: import_ttf plugin'
+            'fungw')
+makedepends=('subversion')
 provides=('pcb-rnd')
-conflicts=('pcb-rnd')
-source=("svn://repo.hu/pcb-rnd/trunk")
+source=("svn://svn.repo.hu/pcb-rnd/trunk")
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,13 +24,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/trunk/"
-  # many knobs under ./configure --help
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "$srcdir/trunk/"
-  # prefix?  DESTDIR? install_root?
-  make -j1 install_root="$pkgdir" install
+  make DESTDIR="$pkgdir/" install
 }
