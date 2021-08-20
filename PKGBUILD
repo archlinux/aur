@@ -11,7 +11,6 @@ depends=('vulkan-icd-loader' 'qt5-x11extras')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 replaces=("${pkgname%-*-*}-bin")
-options=('!strip')
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
 sha256sums=('90ed7c0851607c2b39daf5b0982d54314e67ccb95a5028a61fc05ab51f6057a8')
 
