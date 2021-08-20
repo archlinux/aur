@@ -1,7 +1,7 @@
 pkgbase = cppadcodegen
 	pkgdesc = A C++ Algorithmic Differentiation Package
 	pkgver = 2.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joaoleal/CppADCodeGen
 	arch = any
 	license = GPL3
@@ -15,4 +15,3 @@ pkgbase = cppadcodegen
 	sha256sums = 3d3fee920f67b70566fa09ba62203323d4a8100d1ab210c6e7b34f7cb23349fb
 
 pkgname = cppadcodegen
-
