@@ -3,7 +3,7 @@
 pkgname=bitwarden-cli
 pkgver=1.18.0
 _jslibcommit='0a2ff12bedd55f5982fb8fe9102c4f20522f72e1'
-_nodeversion='14.17.1'
+_nodeversion='14.17.5'
 pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64' 'aarch64')
