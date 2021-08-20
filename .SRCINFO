@@ -1,0 +1,21 @@
+pkgbase = dxgkrnl-dkms-git
+	pkgdesc = DirectX linux drivers for GPU-PV (dkms)
+	pkgver = v5.6.rc2.r73841.gbb562a9d7106
+	pkgrel = 1
+	url = https://github.com/microsoft/WSL2-Linux-Kernel/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	provides = dxgkrnl
+	conflicts = dxgkrnl
+	source = git+https://github.com/microsoft/WSL2-Linux-Kernel.git#branch=linux-msft-wsl-5.10.y
+	source = dkms.conf
+	source = extra-defines.h
+	sha256sums = SKIP
+	sha256sums = a6b89d054a3d0cc9d18b3ed1c0efd6acde4b22b3fad9cc6a378073af1e585f7b
+	sha256sums = 0c4199aa1e66226e9d7cdab21c4f794cc5692c8ce5568bdb29c12cfcea357aae
+
+pkgname = dxgkrnl-dkms-git

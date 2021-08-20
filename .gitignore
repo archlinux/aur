@@ -1,0 +1,6 @@
+*
+!/PKGBUILD
+!/dkms.conf
+!/extra-defines.h
+!/.gitignore
+!/.SRCINFO
