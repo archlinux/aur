@@ -7,11 +7,11 @@ arch=('any')
 url="https://github.com/llathasa-veleth/$pkgname"
 license=('MIT')
 depends=('bash>=4.0.0')
-provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('617a3c0682c2be6f36ed95f9aadfbf6ba681bbf10997d3c662a7d2a662a43aaa')
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
