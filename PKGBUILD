@@ -2,7 +2,7 @@
 
 pkgname=mpv-shim-default-shaders
 pkgver='1.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Preconfigured set of MPV shaders and configurations for MPV Shim media clients."
 arch=('any')
 url='https://github.com/iwalton3/default-shader-pack'
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/default-shader-pac
 	"StaticGrain-LICENSE::https://raw.githubusercontent.com/wopian/mpv-config/master/LICENSE"
 	"NNEDI3-LICENSE::https://raw.githubusercontent.com/bjin/mpv-prescalers/master/LICENSE")
 sha256sums=('9251e5233d7ab2b798a6c50d5f8c2928c616fe9b8d273a8a6e30c736c9c8da38'
-	'a3877cc78b2f5819135bc419775a4afa98ce0c70d72360ed78fe3895fa1df2b5'
+	'3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 	'5bad448b737378e3d0c977ad0d0521fa37ad279a7e76ea9a31d9257eeb6953f5'
 	'88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd'
 	'da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768')
