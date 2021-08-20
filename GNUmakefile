@@ -4,8 +4,7 @@ pkg:
 	makepkg
 
 metadata:
-	mkdir -p src
-	cd src && updpkgsums ../PKGBUILD
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
 
 aur:
