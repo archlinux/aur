@@ -2,11 +2,11 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.10.52.47.realtime1
+pkgver=5.10.56.49.realtime1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=('x86_64')
-url="https://wiki.linuxfoundation.org/realtime/start"
+url="https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v${pkgver}"
 license=('GPL2')
 makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'pahole'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
@@ -16,9 +16,9 @@ source=(
   'config'
 )
 sha512sums=('SKIP'
-            'e3de4c34af76a699289bd4e85a0c5fd61003a8216b87368e5e3fee08c1edcbc676ff92bc979faa35b97e450d3e931f4db50ec178a5df9059e5bfd4360a6ea457')
+            '31c30758582df4a3e7bf1f8fc130a06eda0ae958885961f838b3f28cdceb593671fce4147393b5524f49c3f5f0c807d42acad2a969a6e65c78020585a378ce23')
 b2sums=('SKIP'
-        'f2716dd7baacd367636214a2665d24e037a8a33c046d74910870776cc5daa344439d3b5ea870383c4927b2f9cb2a40d096aafff73d19cdaa9d735f8eeb1f1aba')
+        '2f07ccbdb7e715ac597c000ed8dad35a508f5a48f56ee1811daa134d636375a595774cef2f121eea8c5ac9f36b6ec1fcc59b99f504f2ea3ceed4a7e529446f93')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
@@ -91,6 +91,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd "${pkgbase}"
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
