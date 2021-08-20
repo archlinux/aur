@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-earth-view-wallpaper
 	pkgdesc = A beautiful satellite image from Google Earth as your GNOME desktop wallpaper.
 	pkgver = 12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neffo/earth-view-wallpaper-gnome-extension
 	arch = any
 	license = GPL
