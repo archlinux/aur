@@ -1,0 +1,17 @@
+pkgbase = bibcal-bin
+	pkgdesc = CLI tool to calculating dates based on the Bible and the 1st Book of Enoch.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/johanthoren/bibcal
+	arch = x86_64
+	license = ISC
+	provides = bibcal
+	conflicts = bibcal
+	source = bibcal-2e1862e0ab01862436a89d97f3b2e8fdb5264c2ce871e6db66e66a08761615cd::https://github.com/johanthoren/bibcal/releases/download/0.1.0/bibcal-linux-x86_64
+	source = https://raw.githubusercontent.com/johanthoren/bibcal/master/README.md
+	source = https://raw.githubusercontent.com/johanthoren/bibcal/master/LICENSE
+	sha256sums = 2e1862e0ab01862436a89d97f3b2e8fdb5264c2ce871e6db66e66a08761615cd
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bibcal-bin
