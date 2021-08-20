@@ -1,34 +1,30 @@
-# Maintainer: Brian Polier <unknown989@protonmail.com>
-pkgname=iv-git
-pkgver=1
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Brian Polier <unknown989@protonmail.com>
+_pkgname=iv
+pkgname="${_pkgname}-git"
+pkgver=r84.625b9ff
 pkgrel=1
 pkgdesc="A simple yet powerful image viewer"
 arch=('any')
 url="https://github.com/unknown989/iv.git"
 license=('GPL')
-groups=()
-depends=(sfml zenity)
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+depends=('sfml' 'zenity')
+makedepends=('git')
 source=("git+$url")
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd iv
-	make
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-	cd iv
-	sudo make install
+  cd "${srcdir}/${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname2}/LICENSE"
 }
