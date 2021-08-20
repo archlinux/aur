@@ -1,4 +1,4 @@
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
