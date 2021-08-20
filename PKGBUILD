@@ -5,7 +5,7 @@
 
 _gemname='railties'
 pkgname="ruby-${_gemname}"
-pkgver=6.1.4
+pkgver=6.1.4.1
 pkgrel=1
 pkgdesc='Tools for creating, working with, and running Rails applications.'
 arch=('any')
@@ -15,7 +15,7 @@ options=(!emptydirs)
 depends=('ruby' 'ruby-actionpack' 'ruby-activesupport' 'ruby-method_source' 'ruby-rake' 'ruby-thor')
 #checkdepends=('ruby-bundler' 'ruby-mysql2')
 source=("rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz")
-sha512sums=('e88781c690b00441fda0d50514b3ce1dde2ba4c5b93c775a6f77d50bd9aa736631c4d8b1ca6f5d0e270b8ebe902f7945823df7d0d7513881fa6b35c03bcf388f')
+sha512sums=('411d3fe21c7500e884edb86cc6728c4d3b7125d2e6ea913191437716f2be0d522252c55c25cb4c5221cc112b3ca5eeba690b0b0e59572fcc54ea42ba05ec4520')
 
 prepare() {
   cd "rails-${pkgver}/${_gemname}"
