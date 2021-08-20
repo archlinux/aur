@@ -13,7 +13,7 @@ __pkgname=firedragon
 pkgver=92.0a1.r654890
 pkgrel=1
 pkgdesc="Librewolf fork build using Nightly sources with custom branding, Proton UI rework & Fission enabled."
-arch=(x86_64 aarch64)
+arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
