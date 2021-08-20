@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-dynamic-buffering
-pkgver=40.3
+pkgver=40.4
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -20,7 +20,7 @@ provides=(mutter libmutter-8.so)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
-_commit=3f2c8f5f3b8f05bb09daeb7f12217394c9d8dd1c  # tags/40.3^0
+_commit=2bfef7dbdc6f432a5433c93c1fcdbf00099367c8  # tags/40.4^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 sha256sums=('SKIP'
