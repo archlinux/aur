@@ -3,6 +3,7 @@ pkgbase = opendoas-bin
 	pkgver = 6.9
 	pkgrel = 4
 	url = https://github.com/justanoobcoder/OpenDoas
+	install = opendoas.install
 	arch = x86_64
 	license = custom:ISC
 	depends = pam

@@ -17,6 +17,7 @@ source=(
 )
 md5sums=(98a66bbb6ca5df0e6eeb91a09a2e2508)
 
+install=opendoas.install
 backup=(etc/pam.d/doas)
 
 package() {
