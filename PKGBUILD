@@ -16,6 +16,7 @@ depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss'
 optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
             'zenity: Adds support for importing local files'
             'libnotify: Desktop notifications')
+makedepends=('zip' 'unzip')
 options=('!strip')
 
 # NOTE: We switched from stable to testing on 18th march, as the spotify
@@ -82,4 +83,9 @@ package() {
 
     # Fix permissions
     chmod -R go-w "${pkgdir}"
+
+    # Patch to remove shows from homepage
+    unzip -qo "${pkgdir}/opt/spotify/Apps/xpui.spa" xpui.js
+    sed -i 's/,show,/,/' xpui.js
+    zip -qf "${pkgdir}/opt/spotify/Apps/xpui.spa" xpui.js
 }

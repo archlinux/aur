@@ -6,6 +6,8 @@ pkgbase = spotify-noshows
 	url = https://www.spotify.com
 	arch = x86_64
 	license = custom
+	makedepends = zip
+	makedepends = unzip
 	depends = alsa-lib>=1.0.14
 	depends = gtk3
 	depends = libxss
