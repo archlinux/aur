@@ -8,6 +8,7 @@ url='https://github.com/gottliebtfreitag/simplyfile'
 arch=('any')
 license=('MIT')
 makedepends=('git' 'cmake')
+conflicts=('simplyfile')
 provides=('simplyfile')
 source=("git+https://github.com/gottliebtfreitag/simplyfile.git#tag=1.1")
 sha256sums=('SKIP')
@@ -25,6 +26,6 @@ build() {
 }
 
 package() {
-	cmake --build simplyfile/build --target install DESTDIR="$pkgdir"
+    cmake --build simplyfile/build --target install DESTDIR="$pkgdir"
     install -D -m644 simplyfile/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
