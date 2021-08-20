@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 14.6.13
+	pkgver = 14.9.6
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = drawio-desktop-bin
 	depends = nss
 	provides = drawio-desktop
 	conflicts = drawio-desktop
-	source = drawio-desktop-bin-14.6.13.deb::https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
-	sha256sums = ebcbf92f592998597aff4ff7dd04a1e9b99c11f9c7f70f59ee5020d2497cf910
+	source = drawio-desktop-bin-14.9.6.deb::https://github.com/jgraph/drawio-desktop/releases/download/v14.9.6/drawio-amd64-14.9.6.deb
+	sha256sums = bf04065bcd9df7c07d35c487720e2389dab7e2c7b216c189db8687aac70fbe05
 
 pkgname = drawio-desktop-bin
-
