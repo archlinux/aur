@@ -1,7 +1,7 @@
 # Maintainer: AkinoKaede <autmaple@protonmail.com>
 
 pkgname=sagerconnect
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Connect to SagerNet in the LAN"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2e58835440d2c3908fb88bbaf6e264f25fe72c7bc4b5be6e7e8a1fe64451572401bd8dbf976bf52b8f45838946aa4b1e9f96b6d071b879179b605ae824c0abcb')
+sha512sums=('57af2c7e980083e404bf2f3bb2b1ca8772b8acc81595e70d549535e680deea71cbd216e380e88812473ad618ebad8e81a2fa6b2fd6c82f6d80875536bccffa82')
 build() {
     cd "${srcdir}"/"SagerConnect-${pkgver}"/
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
