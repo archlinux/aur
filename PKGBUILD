@@ -13,7 +13,7 @@
 _GUI=1
 
 pkgname=netextender
-pkgver=10.2.817
+pkgver=10.2.826
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
