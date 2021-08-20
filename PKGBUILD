@@ -6,12 +6,11 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=6
+pkgrel=7
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('GPL')
-conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
 	'openssl' 'libextractor' 'brotli' 'gettext')
@@ -33,14 +32,13 @@ source=("http://ftpmirror.gnu.org/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.conf")
-install="${pkgname}.install"
 validpgpkeys=('19647543F7861D3BF4E64FF7BF60708B48426C7E'
               '3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
             'SKIP'
             '577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042'
             '65daa9fb07bdc8b8a11ca06f320b94ce6cfcc9681c6693ac655ca54881645a39'
-            '4832e45c02ad768a713ca7f2a04b58794e268a49130b5b8ab6b91917e3d4f945'
+            'aa82707160c57e77ab3c426d16177283eb8d0bc018c04dcba3db689e6bea835f'
             '434d2389264ffdb524147679d5b8a27a568521be4945fb08455c8fcdb8dac0ae')
 
 prepare() {
