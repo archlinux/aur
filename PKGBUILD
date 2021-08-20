@@ -1,30 +1,31 @@
-# Maintainer: Tinxy <arch ät tinx døt eu>
+# Maintainer:
+#Contributor: FabioLolix
+#Contributor: Brli
+#Contributor: Tinxy <arch ät tinx døt eu>
 
 pkgname=droopy-git
-_pkgname=droopy
-pkgver=143.c8b2534
+pkgver=r143.c8b2534
 pkgrel=1
+epoch=1
 pkgdesc="Mini Web server that let others upload files to your computer"
 url='https://github.com/Brli/Droopy'
-arch=('any')
-license=('BSD')
-depends=('python')
-conflicts=('droopy')
-source=("${_pkgname}::git+https://github.com/Brli/Droopy.git")
+arch=(any)
+license=(BSD)
+depends=(python)
+makedepends=(git)
+conflicts=(droopy)
+conflicts=(droopy)
+source=("${pkgname/-git}::git+https://github.com/Brli/Droopy.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-build() {
-  cd "${srcdir}/${_pkgname}"
-  gzip --best man/droopy.1
+  cd "${srcdir}/${pkgname/-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "man/${_pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${_pkgname}.1.gz"
+  cd "${srcdir}/${pkgname/-git}"
+  install -Dm755 droopy "${pkgdir}/usr/bin/droopy"
+  install -Dm644 man/droopy.1.gz "${pkgdir}/usr/share/man/man1/droopy.1.gz"
+  install -D Readme.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
