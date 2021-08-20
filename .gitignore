@@ -1,4 +1,6 @@
-*.tar.xz
+*.pkg.tar.*
 service.html
 *.deb
-tmp
+/tmp
+/pkg
+/src
