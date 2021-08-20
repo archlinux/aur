@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=libdispatch
-pkgver=5.4.0
-pkgrel=3
+pkgver=5.4.2
+pkgrel=1
 pkgdesc='Comprehensive support for concurrent code execution on multicore hardware'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url=https://apple.github.io/swift-corelibs-libdispatch
 license=(Apache)
 depends=(glibc)
 makedepends=(git clang cmake)
-conflicts=(libdispatch-git swift swift-development libblocksruntime)
+conflicts=(libdispatch-git swift swift-development swift-bin libblocksruntime)
 provides=(libblocksruntime)
 source=("${pkgname}::git+https://github.com/apple/swift-corelibs-libdispatch.git#tag=swift-${pkgver%.0}-RELEASE"
         remove-werror.patch
@@ -29,11 +29,11 @@ build () {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBlocksRuntime_INCLUDE_DIR=/usr/include \
 		-DBlocksRuntime_LIBRARIES=/usr/lib/libBlocksRuntime.so
-	cmake --build build -j $(nproc)
+	cmake --build build
 }
 
 check () {
-	cmake --build build --target test
+	cmake --build build -j 1 --target test
 }
 
 package () {
