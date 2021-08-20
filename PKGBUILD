@@ -1,13 +1,13 @@
 # Maintainer: Milan Šťastný <milan@statnej.ch>
 
 pkgname=eam-git
-pkgver=2.0.1
+pkgver=2.0.1.r1.g49c3c6c
 pkgrel=1
 pkgdesc='Epic Asset Manager used to manage assets from Epic Games Store'
 url='https://github.com/AchetaGames/Epic-Asset-Manager'
 license=(MIT)
 arch=(x86_64)
-makedepends=(cargo rust gtk4 libadwaita meson)
+makedepends=(git cargo rust gtk4 libadwaita meson)
 conflicts=(eam)
 provides=(eam)
 source=("git+${url}.git")
@@ -18,6 +18,12 @@ build() {
     meson compile -C build
 }
 
+pkgver() {
+    cd "Epic-Asset-Manager"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
+
 package() {
     DESTDIR="$pkgdir" meson install -C build
+    install -Dm644 "Epic-Asset-Manager"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
