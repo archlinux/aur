@@ -1,0 +1,6 @@
+radio-garden-*.pkg.tar.zst
+radio-garden-*.pkg.tar.xz
+radio-garden-*.log
+PKGBUILD-namcap.log
+pkg/
+src/

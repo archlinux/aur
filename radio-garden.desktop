@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=RadioGarden
+Comment=Radio Garden desktop built with nativefier (electron)
+Exec=radio-garden
+Icon=radio-garden
+Encoding=UTF-8
+StartupWMClass=radiogarden-nativefier-d3aa00
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Internet;Multimedia;Application;

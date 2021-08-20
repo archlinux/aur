@@ -1,0 +1,22 @@
+pkgbase = radio-garden
+	pkgdesc = Thousands of live radio stations across the globe. Built with nativefier (electron)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://radio.garden
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = radio-garden.png
+	source = radio-garden.desktop
+	sha256sums = e7b04bc6e758274ed1751664bb448deec4e99cb36c228946656539131a15aeb4
+	sha256sums = 547f4d2a9aed560ea3b9e8181b2007a2b03fba23e6e647bb18bfee567ab18e9a
+
+pkgname = radio-garden
