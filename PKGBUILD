@@ -2,7 +2,7 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2
-pkgver=0.5.4
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 install='onivim2.install'
 source=("https://github.com/onivim/oni2/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         onivim2.install)
-b2sums=('58a7e256f54bb15e099b371785e970ff85d22cb14cea03380cef230c393bf06b953c7f03c1f3cd4e28572cd8a9b2a268f332fc0ea41f98e454b818de61b6b986'
+b2sums=('658ad0b24e557a338121c606734065abf0d78c16128cb6b19fe9085ff881d41b0b195089d84e385daf23eef6e33da8c533a917a68485d0acf6861e8fb19c5069'
         'd6e0ad8b9755f1e809d5ffc0a23a5f53455468cfed80a2946f9a1901cc3b31b79250b1b418f6cfffe6f14a521f0eaef3370f06e1babeafb84358e7906becbc44')
 
 # set ESY__PREFIX to avoid 5G of dependency cache ending up in ~/.esy
