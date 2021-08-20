@@ -1,14 +1,14 @@
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
-# Co-Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
+# Maintainer: Hailey Somerville <aur@hailey.lol>
 # PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
-# Contributor: Eothred <yngve.levinsen@gmail.com>
+#
+# Forked from https://aur.archlinux.org/packages/spotify/
 
-pkgname=spotify
+pkgname=spotify-noshows
 pkgver=1.1.56.595
 epoch=1
 _commit=g2d2da0de
 pkgrel=1
-pkgdesc='A proprietary music streaming service'
+pkgdesc='Patched version of spotify AUR package excluding podcast recommendations from the home page'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
