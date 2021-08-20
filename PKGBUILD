@@ -1,4 +1,4 @@
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Contributor: Steve Holmes <steve.holmes88@gmail.com>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
 
