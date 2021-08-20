@@ -3,7 +3,7 @@
 
 _pkgname=hypseus-singe
 pkgname=$_pkgname-git
-pkgver=322.0865e65
+pkgver=v2.6.12.r1.g0865e65
 pkgrel=1
 pkgdesc="A drop-in replacement for daphne."
 arch=(x86_64)
@@ -16,10 +16,9 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
-pkgver() 
-{
-	cd $_pkgname
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() { 
+	cd "$_pkgname"
+	git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build()
