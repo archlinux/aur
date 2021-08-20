@@ -1,12 +1,13 @@
 pkgbase = aws-iam-authenticator-git
 	pkgdesc = A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster
-	pkgver = v0.5.3.r16.g375e2c90
+	pkgver = 0.5.3.r16.g375e2c90
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/aws-iam-authenticator
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	makedepends = go
+	makedepends = git
 	provides = aws-iam-authenticator
 	conflicts = aws-iam-authenticator
 	source = git+https://github.com/kubernetes-sigs/aws-iam-authenticator.git
