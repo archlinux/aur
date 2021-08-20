@@ -1,0 +1,16 @@
+pkgbase = bytehound
+	pkgdesc = A memory profiler for Linux
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/koute/bytehound
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rustup
+	makedepends = yarn
+	makedepends = node-gyp
+	depends = gcc-libs
+	source = bytehound-0.7.0.tar.gz::https://github.com/koute/bytehound/archive/0.7.0.tar.gz
+	b2sums = 3f29bc27c082eab503a2c36566a4da56dde9bbcd61df365f8632e7d5b3d9151f419a2f80bea74df4c409910e2f725a85a6fa56c39b43810ffe7510bebc3d6372
+
+pkgname = bytehound
