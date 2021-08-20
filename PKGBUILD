@@ -1,5 +1,5 @@
 # Maintainer: Kyle <kyle@free2.ml>
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=('espeak-ng-git' 'espeak-ng-espeak-git')
 pkgbase=espeak-ng-git
