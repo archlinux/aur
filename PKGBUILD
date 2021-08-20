@@ -1,13 +1,13 @@
 # Maintainer: Brandon Mulcahy <brandon@jangler.info>
 pkgname=mariopants
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Music editor based on SNES Mario Paint.'
 arch=('i686' 'x86_64')
-url="http://rainwarrior.ca/projects/nes/mariopants.html"
+url="http://web.archive.org/web/20181023105624/http://rainwarrior.ca/projects/nes/mariopants.html"
 license=('unknown')
 depends=('sdl' 'tk')
-source=("http://rainwarrior.ca/projects/nes/mariopants11src.tar.gz")
+source=("http://web.archive.org/web/20181023105624/http://rainwarrior.ca/projects/nes/mariopants11src.tar.gz")
 sha256sums=('6c9772b71e421c4860232111fb84c6ef4fac03899df5c080d658a5dd516d987b')
 
 build() {
