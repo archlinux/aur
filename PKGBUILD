@@ -3,8 +3,8 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-_pkgver=91.0
-_beta=6
+_pkgver=92.0
+_beta=2
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
@@ -74,7 +74,6 @@ build() {
 }
 
 package() {
-
   cd $_pkgname-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
@@ -105,7 +104,7 @@ END
     "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
 }
 
-sha256sums=('aaeb039e4beaf6f3481772e4274e420d3e00be67713a5755a88faf604ed585ed'
+sha256sums=('32abc979a5289b5e5d902566ba0022899bfd4e2bdef3caf6e227b8bec8625c8f'
             'SKIP'
             '4c8cc465953be36639a2bff7544c42cc45cc56c460a1a350d0656b43cc7b2eea'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
