@@ -6,7 +6,7 @@
 _gemname='actionpack'
 pkgname="ruby-${_gemname}"
 pkgver=6.1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web apps on Rails. Simple, battle-tested conventions for building and testing MVC web applications. Works with any Rack-compatible server.'
 arch=('any')
 url='http://www.rubyonrails.org'
@@ -14,7 +14,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-actionview' 'ruby-activesupport' 'ruby-rack' 'ruby-rack-test' 'ruby-rails-dom-testing' 'ruby-rails-html-sanitizer')
 makedepends=('ruby-activemodel' 'ruby-rake')
-#checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-rexml' 'ruby-selenium-webdriver')
+checkdepends=('ruby-capybara' 'ruby-rack-cache' 'ruby-railties' 'ruby-rexml' 'ruby-selenium-webdriver')
 source=(
     "rails-${pkgver}.tar.gz::https://github.com/rails/rails/archive/v${pkgver}.tar.gz"
     'fix_tests.patch'
@@ -37,12 +37,11 @@ build() {
   gem build "${_gemname}.gemspec"
 }
 
-# disable check() for package update
-#check() {
-#  cd "rails-${pkgver}/${_gemname}"
-#
-#  rake test
-#}
+check() {
+  cd "rails-${pkgver}/${_gemname}"
+
+  rake test
+}
 
 package() {
   cd "rails-${pkgver}/${_gemname}"
