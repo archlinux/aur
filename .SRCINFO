@@ -5,6 +5,7 @@ pkgbase = firedragon
 	url = https://gitlab.com/dr460nf1r3/settings/
 	install = firedragon.install
 	arch = x86_64
+	arch = x86_64_v3
 	arch = aarch64
 	license = MPL
 	license = GPL
