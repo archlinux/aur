@@ -1,4 +1,4 @@
-# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 # Maintainer: vantu5z <vantu5z@mail.ru>
 # Contributor: der_fenix <derfenix@gmail.com>
 
