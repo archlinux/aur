@@ -9,7 +9,7 @@ ENABLE_GNOME=0
 
 pkgname=pamac-all
 pkgver=10.1.3
-pkgrel=4
+pkgrel=5
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
@@ -61,7 +61,7 @@ build() {
   cd "$srcdir/pamac-v$pkgver"
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release $define_meson
+  meson --prefix=/usr --sysconfdir=/etc --buildtype=release $define_meson
   # build
   ninja
 }
