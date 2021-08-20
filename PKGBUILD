@@ -1,122 +1,254 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 
 pkgname=python-pytorch-cuda-kepler
-_pkgname="pytorch"
-pkgver=1.6.0
-_pkgver=1.6.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="PyTorch with Kepler GPU (e.g., K20, K40, K80, etc.) support (only)."
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=(
-  'google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python'
-  'python-yaml' 'libuv' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future'
-  'qt5-base' 'onednn' 'intel-mkl'
+    'google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python'
+    'python-yaml' 'libuv' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future'
+    'qt5-base' 'onednn' 'intel-mkl' 'cuda' 'cudnn' 'magma'
+    'python-typing_extensions'
 )
 makedepends=(
-  'python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-  'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen'
+    'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'git' 'ninja'
+    'pkgconfig' 'doxygen'
 )
 source=(
-  "${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
-  "https://github.com/archlinux/svntogit-community/raw/packages/python-pytorch/trunk/fix_include_system.patch"
-  "https://github.com/archlinux/svntogit-community/raw/packages/python-pytorch/trunk/use-system-libuv.patch"
-  "https://github.com/archlinux/svntogit-community/raw/packages/python-pytorch/trunk/use-system-libuv2.patch"
-  "https://github.com/archlinux/svntogit-community/raw/packages/python-pytorch/trunk/nccl_version.patch"
-  "https://github.com/archlinux/svntogit-community/raw/packages/python-pytorch/trunk/disable_non_x86_64.patch"
+    "pytorch-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
+    "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+    "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
+    "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
+    "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
+    "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+    "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
+    "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
+    "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
+    "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
+    "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
+    "${pkgname}-ideep::git+https://github.com/intel/ideep"
+    "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
+    "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+    "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
+    "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+    "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+    "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
+    "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
+    "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
+    "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+    "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
+    "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
+    "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+    "${pkgname}-tbb::git+https://github.com/01org/tbb"
+    "${pkgname}-XNNPACK::git+https://github.com/malfet/XNNPACK.git"
+    "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+    "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+    "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
+    "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
+    "${pkgname}-googletest::git+https://github.com/google/googletest.git"
+    "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+    "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
+    "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
+    "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/fix_include_system.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/use-system-libuv.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/fix-building-for-torchvision.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/benchmark-gcc11.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/xnnpack-gcc11.patch
+    https://github.com/pytorch/pytorch/commit/c74c0c571880df886474be297c556562e95c00e0.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/fix_c10.patch
+    https://raw.githubusercontent.com/archlinux/svntogit-community/eed5f22503121309118457f324f949bb6a4c8f46/trunk/disable_non_x86_64.patch
 )
 sha256sums=(
-  'SKIP'
-  '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
-  '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
-  '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
-  '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b'
-  'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
+    'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
+    '689c76e89bcf403df1b4cf7ca784381967b6a6527ed6eb6d0ad6681cf789b738'
+    '278fecdb45df065343f51688cc7a1665153b5189f3341a741d546b0b518eac40'
+    '64833e96e47a22f88336381f25fcd73127208dc79e2074398295d88c4596c06a'
+    'b106af479ef78803b39868fa1458c22c6e7fdbd13a15ebca20893e1c81c75463'
+    'ba801238afcfc58a35410e54d4ca6a638c447865c0c6b38ed16917fd6d507954'
+    'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680'
 )
 conflicts=(python-pytorch)
 provides=(python-pytorch python-pytorch-cuda)
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
-  git submodule update --init --recursive
+    cd "pytorch-${pkgver}"
 
-  # https://bugs.archlinux.org/task/64981
-  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
+    # generated using parse-submodules
+    git submodule init
+    git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
+    git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
+    git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen-git-mirror
+    git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
+    git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
+    git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
+    git config submodule."third_party/ios-cmake".url "${srcdir}/${pkgname}"-ios-cmake
+    git config submodule."third_party/NNPACK".url "${srcdir}/${pkgname}"-NNPACK
+    git config submodule."third_party/gloo".url "${srcdir}/${pkgname}"-gloo
+    git config submodule."third_party/NNPACK_deps/pthreadpool".url "${srcdir}/${pkgname}"-pthreadpool
+    git config submodule."third_party/NNPACK_deps/FXdiv".url "${srcdir}/${pkgname}"-FXdiv
+    git config submodule."third_party/NNPACK_deps/FP16".url "${srcdir}/${pkgname}"-FP16
+    git config submodule."third_party/NNPACK_deps/psimd".url "${srcdir}/${pkgname}"-psimd
+    git config submodule."third_party/zstd".url "${srcdir}/${pkgname}"-zstd
+    git config submodule."third-party/cpuinfo".url "${srcdir}/${pkgname}"-cpuinfo
+    git config submodule."third_party/python-enum".url "${srcdir}/${pkgname}"-enum34
+    git config submodule."third_party/python-peachpy".url "${srcdir}/${pkgname}"-PeachPy
+    git config submodule."third_party/python-six".url "${srcdir}/${pkgname}"-six
+    git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
+    git config submodule."third_party/onnx-tensorrt".url "${srcdir}/${pkgname}"-onnx-tensorrt
+    git config submodule."third_party/sleef".url "${srcdir}/${pkgname}"-sleef
+    git config submodule."third_party/ideep".url "${srcdir}/${pkgname}"-ideep
+    git config submodule."third_party/nccl/nccl".url "${srcdir}/${pkgname}"-nccl
+    git config submodule."third_party/gemmlowp/gemmlowp".url "${srcdir}/${pkgname}"-gemmlowp
+    git config submodule."third_party/QNNPACK".url "${srcdir}/${pkgname}"-QNNPACK
+    git config submodule."third_party/neon2sse".url "${srcdir}/${pkgname}"-ARM_NEON_2_x86_SSE
+    git config submodule."third_party/fbgemm".url "${srcdir}/${pkgname}"-fbgemm
+    git config submodule."third_party/foxi".url "${srcdir}/${pkgname}"-foxi
+    git config submodule."third_party/tbb".url "${srcdir}/${pkgname}"-tbb
+    git config submodule."android/libs/fbjni".url "${srcdir}/${pkgname}"-fbjni
+    git config submodule."third_party/XNNPACK".url "${srcdir}/${pkgname}"-XNNPACK
+    git config submodule."third_party/fmt".url "${srcdir}/${pkgname}"-fmt
+    git config submodule."third_party/tensorpipe".url "${srcdir}/${pkgname}"-tensorpipe
+    git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
+    git submodule update --init --recursive
 
-  # Use system libuv
-  patch -Np1 -i "${srcdir}"/use-system-libuv.patch
-  patch -Np1 -i "${srcdir}"/use-system-libuv2.patch -d third_party/tensorpipe
+    # https://bugs.archlinux.org/task/64981
+    patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
-  # FindNCCL patch to export correct nccl version
-  patch -Np1 -i "${srcdir}"/nccl_version.patch
+    # Use system libuv
+    patch -Np1 -i "${srcdir}"/use-system-libuv.patch
 
-  # remove local nccl
-  rm -rf third_party/nccl/nccl
-  cd ..
+    # fix https://github.com/pytorch/vision/issues/3695
+    patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
-  export VERBOSE=1
-  export PYTORCH_BUILD_VERSION="${pkgver}"
-  export PYTORCH_BUILD_NUMBER=1
-  export USE_MKLDNN=ON
-  export BUILD_CUSTOM_PROTOBUF=OFF
-  export USE_FFMPEG=ON
-  export USE_GFLAGS=ON
-  export USE_GLOG=ON
-  export BUILD_BINARY=ON
-  export USE_OPENCV=ON
-  export USE_SYSTEM_NCCL=ON
-  export NCCL_VERSION=$(pkg-config nccl --modversion)
-  export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
-  export CUDAHOSTCXX=g++-9
-  export CUDA_HOME=/opt/cuda
-  export USE_CUDA=1
-  export USE_CUDNN=1
-  export CUDNN_LIB_DIR=/usr/lib
-  export CUDNN_INCLUDE_DIR=/usr/include
-  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="3.5;3.7;"
+    # GCC 11 fixes
+    patch -Np1 -d third_party/benchmark <../benchmark-gcc11.patch
+    patch -Np1 -d third_party/XNNPACK <../xnnpack-gcc11.patch
+
+    # cuda 11.4 fix
+    patch -Np1 <../c74c0c571880df886474be297c556562e95c00e0.patch
+
+    # cuda 11.4.1 fix
+    patch -Np1 -i "${srcdir}/fix_c10.patch"
+
+    # remove local nccl
+    rm -rf third_party/nccl/nccl
+
+    # also remove path from nccl module, so it's not checked
+    sed -e '/path = third_party\/nccl\/nccl/d' -i ./.gitmodules
+
+    # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
+    sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
+
+    cd ..
+
+    export VERBOSE=1
+    export PYTORCH_BUILD_VERSION="${pkgver}"
+    export PYTORCH_BUILD_NUMBER=1
+
+    # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
+    export ATEN_NO_TEST=ON  # do not build ATen tests
+    export USE_MKLDNN=ON
+    export BUILD_CUSTOM_PROTOBUF=OFF
+    export USE_FFMPEG=ON
+    export USE_GFLAGS=ON
+    export USE_GLOG=ON
+    export BUILD_BINARY=ON
+    export USE_OPENCV=ON
+    export USE_SYSTEM_NCCL=ON
+    export NCCL_VERSION=$(pkg-config nccl --modversion)
+    export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
+    export USE_CUPTI_SO=ON  # make sure cupti.so is used as shared lib
+    export CUDAHOSTCXX=/usr/bin/g++
+    export CUDA_HOST_COMPILER="${CUDAHOSTCXX}"
+    export CUDA_HOME=/opt/cuda
+    export USE_CUDA=1
+    export USE_CUDNN=1
+    export CUDNN_LIB_DIR=/usr/lib
+    export CUDNN_INCLUDE_DIR=/usr/include
+    export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+    export TORCH_CUDA_ARCH_LIST="3.5;3.7;"
+    export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
-  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
-  python setup.py build
+    cd "${srcdir}/pytorch-${pkgver}"
+    patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
+    echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+    python setup.py build
 }
 
 package() {
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/pytorch-${pkgver}"
 
-  # Prevent setup.py from re-running CMake and rebuilding
-  sed -e 's/RUN_BUILD_DEPS = True/RUN_BUILD_DEPS = False/g' -i setup.py
+    # Prevent setup.py from re-running CMake and rebuilding
+    sed -e 's/RUN_BUILD_DEPS = True/RUN_BUILD_DEPS = False/g' -i setup.py
 
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+    python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python3.8/site-packages/torch"
-  install -d "${pkgdir}/usr/lib"
+    pytorchpath="usr/lib/python3.9/site-packages/torch"
+    install -d "${pkgdir}/usr/lib"
 
-  # put CMake files in correct place
-  mv "${pkgdir}/${pytorchpath}/share/cmake" "${pkgdir}/usr/lib/cmake"
+    # put CMake files in correct place
+    mv "${pkgdir}/${pytorchpath}/share/cmake" "${pkgdir}/usr/lib/cmake"
 
-  # put C++ API in correct place
-  mv "${pkgdir}/${pytorchpath}/include" "${pkgdir}/usr/include"
-  mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/"
+    # put C++ API in correct place
+    mv "${pkgdir}/${pytorchpath}/include" "${pkgdir}/usr/include"
+    mv "${pkgdir}/${pytorchpath}/lib"/*.so* "${pkgdir}/usr/lib/"
 
-  # clean up duplicates
-  # TODO: move towards direct shared library dependecy of:
-  #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
-  #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
-  rm -rf "${pkgdir}/usr/include/pybind11"
+    # clean up duplicates
+    # TODO: move towards direct shared library dependecy of:
+    #   c10, caffe2, libcpuinfo, CUDA RT, gloo, GTest, Intel MKL,
+    #   NVRTC, ONNX, protobuf, libthreadpool, QNNPACK
+    rm -rf "${pkgdir}/usr/include/pybind11"
 
-  # python module is hardcoded to look there at runtime
-  ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
-  find "${pkgdir}"/usr/lib -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
-    ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
-  done
+    # python module is hardcoded to look there at runtime
+    ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
+    find "${pkgdir}"/usr/lib -type f -name "*.so*" -print0 | while read -rd $'\0' _lib; do
+        ln -s ${_lib#"$pkgdir"} "${pkgdir}/${pytorchpath}/lib/"
+    done
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
