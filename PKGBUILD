@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20210514
+pkgver=20210820
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -19,8 +19,8 @@ depends=('adobe-source-code-pro-fonts'
 	'adobe-source-han-serif-kr-fonts'
 	'adobe-source-han-serif-otc-fonts'
 	'adobe-source-han-serif-tw-fonts'
-	'adobe-source-sans-pro-fonts'
-	'adobe-source-serif-pro-fonts'
+	'adobe-source-sans-fonts'
+	'adobe-source-serif-fonts'
 	'awesome-terminal-fonts'
 	'bdf-unifont'
 	'cantarell-fonts'
