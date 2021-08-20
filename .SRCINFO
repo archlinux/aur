@@ -1,0 +1,15 @@
+pkgbase = fp-stats-git
+	pkgdesc = Scripts for making statistics around Flathub
+	pkgver = r48.42bae6c
+	pkgrel = 1
+	url = https://github.com/lionirdeadman/fp-stats
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	depends = python
+	provides = fp-stats
+	conflicts = fp-stats
+	source = fp-stats::git+https://github.com/lionirdeadman/fp-stats.git
+	md5sums = SKIP
+
+pkgname = fp-stats-git
