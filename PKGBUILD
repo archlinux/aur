@@ -2,7 +2,7 @@
 # Contributor: Edison Ibañez <edison@opmbx.org>
 
 pkgname=sqlectron-gui
-pkgver=1.36.0
+pkgver=1.37.1
 pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ source=(
 	"${pkgname}-${pkgver}.pacman::https://github.com/sqlectron/sqlectron-gui/releases/download/v${pkgver}/sqlectron-${pkgver}${_arch}.pacman"
 )
 
-sha256sums=('13c91f0ab6e72217be221d5f61f5e277f0c3d01c2cc23011c46426c898593c24')
+sha256sums=('c5c650e8de1d14a8ecc7e9af80f9f0fe32c1b33c40c7aa65dac693c3bfb6e00a')
 package() {
 	cd "${srcdir}"
 	tar -xvf ${pkgname}-${pkgver}.pacman -C ${pkgdir}
