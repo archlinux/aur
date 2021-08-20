@@ -2,7 +2,7 @@
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 
 pkgname=aptl
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Creates installed lists of pkgs with Names & Descriptions for backup proposes."
 arch=('x86_64')
