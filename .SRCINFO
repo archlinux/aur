@@ -1,0 +1,20 @@
+pkgbase = random-gnome-git
+	pkgdesc = A randomization app for GNOME
+	pkgver = r63.9bbab76
+	pkgrel = 1
+	url = https://codeberg.org/foreverxml/random
+	arch = x86_64
+	license = AGPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	provides = random-gnome
+	conflicts = random-gnome
+	source = git+https://codeberg.org/foreverxml/random.git
+	sha256sums = SKIP
+
+pkgname = random-gnome-git
