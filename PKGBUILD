@@ -12,11 +12,26 @@ depends=()
 makedepends=(cmake ninja)
 optdepends=()
 options=()
-source=("${pkgname}_${pkgver}.zip::https://www.asam.net/standard_downloads/standard_download60bf5172732e7_13439.zip"
+source=("${pkgname}_${pkgver}.zip::manual://www.asam.net/standard_downloads/standard_download611f5bda8ef95_14847.zip"
         "CMakeLists.txt"
         )
 sha256sums=('8a55243c1f3f1d13b3fc8542137105647bd6d5d6782d9f7ca18be0e2639309a2'
             'bed2ba22e267fe3200614e6e61829c9d3dc04fc7a046d6899869c3a018ae608c')
+
+# You need to download the opencrg source package manually.
+download_manual() {
+# Original implementation: `/usr/share/makepkg/source/file.sh:download_file()`
+# shellcheck disable=SC2155
+  local filepath=$(get_filepath "$1")
+  if [[ -n "$filepath" ]]; then
+    msg2 "$(gettext "Found %s")" "${filepath##*/}"
+    return
+  else
+    echo "The source file for \"$pkgname\" package needs to be downloaded manually, since it requires a login and is not redistributable."
+    echo "Please visit \"$url\" to download the source file to \"$PWD\" as \"${pkgname}_${pkgver}.zip\""
+    exit 1
+  fi
+}
 
 prepare() {
   cp "${srcdir}"/CMakeLists.txt "${srcdir}"/ASAM_OpenCRG_BS_V${pkgver}/c-api/
