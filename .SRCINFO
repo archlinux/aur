@@ -1,5 +1,5 @@
 pkgbase = paper-wl
-	pkgdesc = Serifed Iosevka build
+	pkgdesc = A wallpaper daemon for Wayland compositors implementing the layer-shell protocol.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://gitlab.com/snakedye/paper
