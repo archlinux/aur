@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qrouter-git
-pkgver=1.4.r257.3c74097
-pkgrel=3
+pkgver=1.4.r264.fc39175
+pkgrel=1
 epoch=
 pkgdesc='Multi-level, over-the-cell maze router'
 arch=('i686' 'x86_64')
