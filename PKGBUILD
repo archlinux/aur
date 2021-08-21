@@ -3,7 +3,7 @@
 
 pkgname=lzdoom-git
 pkgver=3.4.1v+2588+g43865c1947
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of legacy versions of the GZDoom source port for older hardware; cutting edge Git version'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
