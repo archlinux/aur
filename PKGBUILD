@@ -7,11 +7,11 @@ pkgname=('python-pocketsphinx-git' 'python2-pocketsphinx-git' 'sphinxbase-git' '
 pkgver=r185.769492d
 pkgrel=2
 pkgdesc='Python interface to CMU SphinxBase and PocketSphinx libraries'
-arch=('i686' 'x86_64')
+arch=('i386' 'i686' 'pentium4' 'core2' 'x86_64')
 url='https://github.com/bambocher/pocketsphinx-python'
 license=('BSD')
-depends=('python' 'swig')
-makedepends=('git' 'python' 'python2')
+depends=('python' 'swig' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python' 'python2' 'bison')
 # The Python bindings to pocketsphinx are made by bambocher. Dependencies are
 # stored as git submodules and are maintained by the CMU Sphinx project.
 source=(
@@ -33,7 +33,7 @@ prepare() {
     git submodule init
     git config submodule.deps/pocketsphinx.url ${srcdir}/pocketsphinx
     git config submodule.deps/sphinxbase.url ${srcdir}/sphinxbase
-    git submodule update
+    git submodule update --remote
 
     # We want a python2 package as well. Let's copy the sources.
     cd "${srcdir}"
