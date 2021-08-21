@@ -1,0 +1,8 @@
+post_install() {
+  setcap cap_net_admin,cap_net_raw=eip /usr/bin/kaiengine
+}
+
+post_upgrade() {
+  setcap cap_net_admin,cap_net_raw=eip /usr/bin/kaiengine
+}
+
