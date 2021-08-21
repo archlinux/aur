@@ -1,42 +1,17 @@
 pkgbase = mdbtools
 	pkgdesc = Utilities for viewing data and exporting schema from Microsoft Access database files
-	pkgver = 0.7.1
+	pkgver = 0.9.4
 	pkgrel = 1
-	url = https://github.com/brianb/mdbtools
+	url = https://github.com/mdbtools/mdbtools
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	license = GPL
-	makedepends = bison
-	makedepends = flex
-	makedepends = txt2man
-	makedepends = autoconf
-	makedepends = rarian
 	makedepends = unixodbc
-	makedepends = libgnomeui
-	options = !libtool
-	options = !emptydirs
-	source = mdbtools-0.7.1.tar.gz::https://github.com/brianb/mdbtools/archive/0.7.1.tar.gz
-	source = 0001-Fix-parallel-builds-make-jN-in-SQL-lexer-parser.patch::https://github.com/brianb/mdbtools/commit/2892d519f3323cd3aa2b33690fe6f68504f0e516.patch
-	source = 0002-Fixes-build-error-introduced-by-previous-commit.patch::https://github.com/brianb/mdbtools/commit/2f4b2d12fece5a046ccece256f73728604516326.patch
-	source = 0004-Added-.desktop-file-for-gmdb.patch::https://github.com/brianb/mdbtools/commit/b449ed159d5acdca636066a4a6ba360f66174fc4.patch
-	source = 9999-autoconf-summary.patch
-	md5sums = 477c7af98e75f8e6c987b020d6a822d8
-	md5sums = ee06850e2dcb517d5dbf421acdb7f647
-	md5sums = cc45c73cf9151deeb7e6ce03d2f95eff
-	md5sums = 2f593a039d0d546e37b63b7c2c6c4b77
-	md5sums = 1c570d626e092e5870ef704d1d1e0ca1
+	depends = unixodbc
+	optdepends = gmdb2: graphical viewer for MDB files
+	provides = mdbtools=0.9.4
+	source = mdbtools-0.9.4.tar.gz::https://github.com/mdbtools/mdbtools/archive/v0.9.4.tar.gz
+	md5sums = a848ecd30287499f38bc2f3642c20eed
 
 pkgname = mdbtools
-	depends = unixodbc
-	depends = glib2
-	optdepends = gmdb2: graphical viewer for MDB files
-
-pkgname = gmdb2
-	pkgdesc = Graphical viewer for Microsoft Access database files
-	install = gmdb2.install
-	license = GPL
-	depends = mdbtools=0.7.1
-	depends = libgnomeui
-	depends = desktop-file-utils
-
