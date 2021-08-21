@@ -1,3 +1,8 @@
+## 0.8.0
+
+* Various small improvements
+
+
 ## 0.7.0
 
 * added ignore command
