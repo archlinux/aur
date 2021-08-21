@@ -1,0 +1,15 @@
+pkgbase = journal-watch-git
+	pkgdesc = Like journalctl -f but with username prefixed
+	pkgver = 7.91f43f4
+	pkgrel = 1
+	url = https://github.com/sandsmark/journal-watch
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = gcc
+	makedepends = git
+	depends = systemd-libs
+	source = git+https://github.com/sandsmark/journal-watch.git
+	md5sums = SKIP
+
+pkgname = journal-watch-git
