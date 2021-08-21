@@ -1,0 +1,26 @@
+pkgbase = youtube-dlp-git
+	pkgdesc = Fork of youtube-dlc - download videos from youtube.com or other video platforms
+	pkgver = 2021.08.10.32.gf79ec47d7
+	pkgrel = 1
+	url = https://github.com/yt-dlp/yt-dlp
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = glibc
+	makedepends = pandoc-bin
+	makedepends = python-setuptools
+	makedepends = make
+	depends = python
+	depends = python-mutagen
+	depends = python-pycryptodome
+	depends = python-websockets
+	optdepends = ffmpeg: for video post-processing
+	optdepends = rtmpdump: for rtmp streams support
+	optdepends = atomicparsley: for embedding thumbnails into m4a files
+	optdepends = aria2: for using aria2 as external downloader
+	provides = youtube-dlp
+	conflicts = youtube-dlp
+	source = git+https://github.com/yt-dlp/yt-dlp.git
+	sha256sums = SKIP
+
+pkgname = youtube-dlp-git
