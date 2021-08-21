@@ -11,7 +11,8 @@ pkgbase = sway-dynamic-names-git
 	depends = python-yaml
 	depends = python-i3ipc
 	depends = python-fontawesome
-	depends = python-xdg
+	depends = python-pyxdg
+	provides = sway-dynamic-names
 	source = sway-dynamic-names::git+https://github.com/j-waters/sway-dynamic-names.git
 	md5sums = SKIP
 

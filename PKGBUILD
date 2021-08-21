@@ -8,10 +8,10 @@ depends=('python-click'
          'python-yaml'
          'python-i3ipc'
          'python-fontawesome'
-         'python-xdg')
+         'python-pyxdg')
 makedepends=('git' 'python-setuptools')
 conflicts=()
-provides=()
+provides=('sway-dynamic-names')
 license=('MIT')
 arch=('any')
 source=("${_pkgname}::git+${url}.git")
