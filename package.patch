@@ -1,6 +1,6 @@
-diff --unified --recursive --text src/mulle-bashfunctions-3.3.0/mulle-bashfunctions-env src.mod/mulle-bashfunctions-3.3.0/mulle-bashfunctions-env
---- src/mulle-bashfunctions-3.3.0/mulle-bashfunctions-env	2020-12-27 14:46:52.000000000 +0000
-+++ src.mod/mulle-bashfunctions-3.3.0/mulle-bashfunctions-env	2021-02-14 00:35:29.913983702 +0000
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env src.mod/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env
+--- src/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env	2021-07-23 10:46:00.000000000 +0100
++++ src.mod/mulle-bashfunctions-3.4.0/mulle-bashfunctions-env	2021-08-21 17:38:55.233157095 +0100
 @@ -349,7 +349,7 @@
  
     # now setup the global variable
@@ -10,9 +10,9 @@ diff --unified --recursive --text src/mulle-bashfunctions-3.3.0/mulle-bashfuncti
     if [ ! -f "${RVAL}/${matchfile}" ]
     then
        RVAL="${exedirpath}/src"
-diff --unified --recursive --text src/mulle-bashfunctions-3.3.0/src/mulle-init.sh src.mod/mulle-bashfunctions-3.3.0/src/mulle-init.sh
---- src/mulle-bashfunctions-3.3.0/src/mulle-init.sh	2020-12-27 14:46:52.000000000 +0000
-+++ src.mod/mulle-bashfunctions-3.3.0/src/mulle-init.sh	2021-02-14 00:47:56.592575743 +0000
+diff '--color=auto' --unified --recursive --text src/mulle-bashfunctions-3.4.0/src/mulle-init.sh src.mod/mulle-bashfunctions-3.4.0/src/mulle-init.sh
+--- src/mulle-bashfunctions-3.4.0/src/mulle-init.sh	2021-07-23 10:46:00.000000000 +0100
++++ src.mod/mulle-bashfunctions-3.4.0/src/mulle-init.sh	2021-08-21 17:39:17.348482106 +0100
 @@ -155,7 +155,7 @@
  
     # now setup the global variable
@@ -22,4 +22,3 @@ diff --unified --recursive --text src/mulle-bashfunctions-3.3.0/src/mulle-init.s
     if [ ! -f "${RVAL}/${matchfile}" ]
     then
        RVAL="${exedirpath}/src"
-Only in src: package.patch
