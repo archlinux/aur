@@ -8,7 +8,6 @@ url="https://github.com/kraflab/dsda-doom"
 license=('GPL')
 depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb')
 makedepends=('cmake' 'imagemagick')
-conflicts=('prboom-plus')
 source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('a552258459478b0ef24b65b8f1e3b027098a9d050106d51c9996a30f76e630df')
 
