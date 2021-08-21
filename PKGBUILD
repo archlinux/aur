@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=magic-git
-pkgver=8.3.r610.669ae1d
+pkgver=8.3.r1023.56d1d93
 pkgrel=1
 pkgdesc="A VLSI layout system"
 url="http://opencircuitdesign.com/magic/"
