@@ -3,7 +3,7 @@
 
 pkgname=zotero-beta
 _pkgname=zotero-beta
-pkgver=5.0.97beta.37%ddc7be75c
+pkgver=5.0.97beta.38
 pkgrel=1
 pkgdesc="Zotero is a free, easy-to-use tool to help you collect, organize, cite, and share research."
 arch=('x86_64' 'i686')
@@ -42,8 +42,8 @@ source=('zotero.desktop')
 source_i686=("https://www.zotero.org/download/standalone/dl?platform=linux-i686&channel=beta")
 source_x86_64=("https://www.zotero.org/download/standalone/dl?platform=linux-x86_64&channel=beta")
 sha256sums=('17d1a0892d7a516e4f9d732de21ee595d9168d7554ca34b11cdd255795b22eaa')
-sha256sums_x86_64=('ad3c5c8e38bea19187a772d90d965497306f5f8dc1d379834936f4756f3366cd')
-sha256sums_i686=('ddf4944d380c4c46be0c7a5538cd4c71416e77e8672236bd8ebb7168c9a9101f')
+sha256sums_x86_64=('SKIP')
+sha256sums_i686=('SKIP')
 
 package() {
   install -dDm755 "$pkgdir"/usr/{bin,share/zotero,share/applications}
