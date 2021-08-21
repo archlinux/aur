@@ -1,13 +1,13 @@
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
 
 pkgname=libstaple
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="General-purpose data structure library in pure C89"
 arch=('x86_64' 'i686' 'pentium4')
 url="https://github.com/Randoragon/libstaple"
-license=('GPL2')
+license=('LGPL2.1')
 depends=()
 makedepends=(git)
 source=("git+$url")
