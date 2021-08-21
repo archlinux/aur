@@ -1,0 +1,22 @@
+pkgbase = ottomatic
+	pkgdesc = Save Earth from the clutches of The Giant Brain from Planet X
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/jorio/ottomatic
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = glu
+	depends = hicolor-icon-theme
+	source = ottomatic::git+https://github.com/jorio/ottomatic.git#tag=4.0.0
+	source = git+https://github.com/jorio/Pomme.git
+	source = ottomatic.desktop
+	source = ottomatic.sh
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = b3452a8f143877ab688212ca9bfe4cdcd174667298fedd7cdcba4d7b4a1c49bf86bca0e456bcd2c64039cc322c540a583f9ff2e820e3ef38c0ef15984c348ae8
+	b2sums = c8f7a247ba04156ee8b07ddcdcadcd75946f24347cbdc82363a02f8267a64db1f5b2a1326a1019d8d31c6697a7e5da409bdc52d6c28a0ecca7f9b8372933050c
+
+pkgname = ottomatic

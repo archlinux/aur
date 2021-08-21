@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Otto Matic
+Comment=Save Earth from the clutches of The Giant Brain from Planet X
+Icon=ottomatic
+Exec=/usr/lib/ottomatic/OttoMatic
+Path=/usr/lib/ottomatic
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
