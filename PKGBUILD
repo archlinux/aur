@@ -12,7 +12,8 @@ makedepends=('cmake' 'gcc10' 'perl' 'python' 'git')
 provides=("$_pkgname" "$pkgname")
 conflicts=("$_pkgname" "$pkgname" "$_pkgname-git" "$pkgname-git")
 source=($_pkgname.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+md5sums=('935ccbc1ba5f9113cc005b4aad8f068b')
+sha256sums=('2cd202e2596cf0e6492fe1d866d537ae41bff62107f577d8d793d5e858173149')
 options=(!ccache)
 
 prepare() {
