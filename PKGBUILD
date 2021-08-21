@@ -2,27 +2,30 @@
 
 pkgname=ethash-lib
 _pkgname=ethash
-pkgver=r506.e4a15c3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm"
 arch=('any')
 url="https://github.com/chfast/ethash"
 license=('GPL3')
-makedepends=('cmake' 'gcc' 'perl' 'python' 'git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=($_pkgname::"git+${url}.git")
+makedepends=('cmake' 'gcc10' 'perl' 'python' 'git')
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname" "$pkgname" "$_pkgname-git" "$pkgname-git")
+source=($_pkgname.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 options=(!ccache)
 
-pkgver() {
-        cd "$srcdir/${_pkgname}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+prepare() {
+	cd "$srcdir"
+	if [ -e "$_pkgname"-"$pkgver" ]; then
+	     if [ ! -e "$_pkgname" ]; then
+                    mv "$_pkgname"-"$pkgver" "$_pkgname"
+	     fi
+	fi
 }
 
 build () {
   cd "$srcdir/${_pkgname}"
-  git submodule update --init --recursive
 
   if [ -d build ]; then
   rm -r build
@@ -33,6 +36,7 @@ build () {
   -DCMAKE_INSTALL_PREFIX="/usr" \
   -DCMAKE_INSTALL_SBINDIR="bin" \
   -DETHASH_NATIVE=ON \
+  -DETHASH_BUILD_TESTS=OFF \
   -DNATIVE=ON ..
   #  cmake --build .. # BUGGED!
   make
