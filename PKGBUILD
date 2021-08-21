@@ -3,7 +3,7 @@
 
 pkgname=wlcs
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations."
 url='https://github.com/MirServer/wlcs'
 arch=(x86_64 i686 aarch64)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 BUILD_DIR=build
 
 build() {
-  cd "${pkgname}}"
+  cd "${pkgname}"
   mkdir -p "${BUILD_DIR}"
   cd "${BUILD_DIR}"
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR="lib/" ..

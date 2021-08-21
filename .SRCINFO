@@ -1,7 +1,7 @@
 pkgbase = wlcs
 	pkgdesc = Canonical's protocol-conformance-verifying test suite for Wayland compositor implementations.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MirServer/wlcs
 	arch = x86_64
 	arch = i686
