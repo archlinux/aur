@@ -2,8 +2,8 @@
 
 pkgname=3dslicer
 pkgver=4.11.20210226
-pkgrel=3
-pkgdesc='A multi-platform, free and open source software package for visualization and medical image computing'
+pkgrel=5
+pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
 license=('BSD')
@@ -66,6 +66,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSlicer_BUILD_DOCUMENTATION=OFF \
     -DSlicer_BUILD_I18N_SUPPORT=ON \
+    -DSlicer_STORE_SETTINGS_IN_APPLICATION_HOME_DIR=OFF \
     -DSlicer_USE_SimpleITK_SHARED=ON \
     -DSlicer_USE_SYSTEM_bzip2=ON \
     -DSlicer_USE_SYSTEM_curl=ON \
