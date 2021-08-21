@@ -5,7 +5,7 @@
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 pkgname=cycles-standalone
-pkgver=v1.11.0.r582.gaab1ad98
+pkgver=v2.93.0.r6.gb48e9556
 pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
@@ -34,6 +34,7 @@ prepare() {
       git -C "$srcdir/$pkgname" apply -v "${srcdir}"/SelectCudaComputeArch.patch
     fi
     git -C "$srcdir/$pkgname" apply -v "${srcdir}"/OpenEXR3.patch
+    rm "$srcdir/$pkgname"/src/cmake/Modules/FindClang.cmake  # Rely on system FindClang
 }
 
 build() {
