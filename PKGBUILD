@@ -8,7 +8,7 @@
 # Contributor: Marco Crosio <marco.crosio@gmail.com>
 
 # Toggle this if you're building outside of the AUR, for a repo.
-AUR_BUILD=false
+AUR_BUILD=true
 
 # Edit to enable/disable packages to build
 pkgname=(eclipse-{java,jee,cpp,php})
@@ -134,15 +134,8 @@ Categories=Development;IDE;Java;
 StartupNotify=true
 END
 
-  if [ "$AUR_BUILD" = false ]; then
-  for i in 16 22 24 32 48 64 128 256 512 1024; do
-    install -Dm644 eclipse-common/plugins/org.eclipse.platform_*/eclipse$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
-  done
-  else
   for i in 16 22 24 32 48 64 128 256 512 1024; do
     install -Dm644 $1/plugins/org.eclipse.platform_*/eclipse$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
   done
-  fi
 }
