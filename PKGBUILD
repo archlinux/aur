@@ -1,42 +1,52 @@
-# Maintainer : JSkier <jskier at gmail dot com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer : JSkier <jskier at gmail dot com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=hyperscan-git
-pkgver=4.4.1.r536.gaff7242
+pkgver=5.4.0.r0.g64a995b
 pkgrel=1
-epoch=1
-pkgdesc='A high-performance multiple regex matching library, commonly used with suricata or snort'
+pkgdesc="High-performance multiple regex matching library"
 arch=('i686' 'x86_64')
-url="https://01.org/hyperscan/"
+url="https://www.hyperscan.io/"
 license=('BSD')
+depends=('gcc-libs')
+makedepends=('git' 'boost' 'cmake' 'ragel')
 provides=('hyperscan')
-makedepends=('boost' 'ragel' 'cmake')
-source=("git+https://github.com/01org/hyperscan")
-sha512sums=('SKIP')
+conflicts=('hyperscan')
+options=('staticlibs')
+source=("git+https://github.com/intel/hyperscan.git")
+sha256sums=('SKIP')
 
-function pkgver() {
-    cd hyperscan
-    git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
+
+prepare() {
+  cd "hyperscan"
+
+  # https://github.com/intel/hyperscan/issues/292#issuecomment-762635447
+  sed -i -e 's|\[^ \]|\[^ @\]|g' "cmake/build_wrapper.sh"
+}
+
+pkgver() {
+  cd "hyperscan"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd hyperscan
-    mkdir -p build
-    cd build
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_STATIC_AND_SHARED=1
-    make
+  cd "hyperscan"
+
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBUILD_STATIC_AND_SHARED=ON \
+    ./
+  make -C "_build"
 }
 
-package()
-{
-    cd hyperscan
-    install -Dm644 \
-        COPYING \
-        "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+package() {
+  cd "hyperscan"
 
-    cd build
-    make install DESTDIR="$pkgdir"
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/hyperscan"
 }

@@ -1,18 +1,20 @@
 pkgbase = hyperscan-git
-	pkgdesc = A high-performance multiple regex matching library, commonly used with suricata or snort
-	pkgver = 4.4.1.r536.gaff7242
+	pkgdesc = High-performance multiple regex matching library
+	pkgver = 5.4.0.r0.g64a995b
 	pkgrel = 1
-	epoch = 1
-	url = https://01.org/hyperscan/
+	url = https://www.hyperscan.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	makedepends = boost
-	makedepends = ragel
 	makedepends = cmake
+	makedepends = ragel
+	depends = gcc-libs
 	provides = hyperscan
-	source = git+https://github.com/01org/hyperscan
-	sha512sums = SKIP
+	conflicts = hyperscan
+	options = staticlibs
+	source = git+https://github.com/intel/hyperscan.git
+	sha256sums = SKIP
 
 pkgname = hyperscan-git
-
