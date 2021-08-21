@@ -1,0 +1,15 @@
+pkgbase = brpaste
+	pkgdesc = A pastebin so fast, it burns rubber
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/CosmicToast/brpaste
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	makedepends = asciidoctor
+	optdepends = redis: for local instance
+	source = brpaste-2.1.0.tar.gz::https://github.com/CosmicToast/brpaste/archive/v2.1.0.tar.gz
+	b2sums = b9f7ee0e7a9358782ba2a46b9f4bf7cfe5b74ea33e1785cddf038dcd26c6c0720b69a6924128800a81ad28e57b6496822437bd0286c664e1ef4e527f0a9f3b1e
+
+pkgname = brpaste
