@@ -1,30 +1,37 @@
-# Maintainer: Dmitry <dmitry@ykkz.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dmitry <dmitry@ykkz.de>
 
 pkgname=ttf-cuprum
 pkgver=2.000
-pkgrel=2
-pkgdesc='Cuprum is a narrow grotesque font. It is quite versatile.'
+pkgrel=3
+pkgdesc='A narrow grotesque font'
 arch=('any')
 url='https://fonts.google.com/specimen/Cuprum'
-license=('Open Font License')
-depends=('fontconfig' 'xorg-fonts-encodings')
+license=('OFL')
+provides=('ttf-font')
 
-_commit='8c86543d1ef0a348ad471a3443a3ab0a2a0162c8'
-_raw="https://github.com/alexeiva/cuprum/raw/${_commit}/fonts/ttf"
+_commit='98adc59dc00ca00dbde9eb42a23ace5f924b4f90'
+_raw="https://github.com/alexeiva/cuprum/raw/${_commit}"
 
 source=(
-        "${_raw}/Cuprum-Bold.ttf"
-        "${_raw}/Cuprum-BoldItalic.ttf"
-        "${_raw}/Cuprum-Italic.ttf"
-        "${_raw}/Cuprum-Regular.ttf"
-        )
+	"${_raw}/fonts/ttf/Cuprum-Bold.ttf"
+	"${_raw}/fonts/ttf/Cuprum-BoldItalic.ttf"
+	"${_raw}/fonts/ttf/Cuprum-Italic.ttf"
+	"${_raw}/fonts/ttf/Cuprum-Regular.ttf"
+	"$_raw/OFL.txt"
+	"$_raw/AUTHORS.txt"
+	"$_raw/TRADEMARKS.txt")
 
-sha512sums=('b4c0aba89b7e3292705dfb7e59c9f10e6057fbb187e3a85a9b8113ef1e28c4cbd1497dca59a1183d87a2b0d88e82274f621dcb90cc0a37b6c013404bf5f11924'
-            'c8521653afd769bbb9ec8628741c2e3df062aa9271481f2fd110bf8ce1d88eb234d0ceaab76b2d3683d22f63849d99b9ecfbf105d4a9ebc0ca89c18a90add9b3'
-            '345a678a141303b5ee164249881ba52df4db0722571a61202d9d95a98fb727df575da9169ffdde1c1a8951e072e75483b07afa80d5dc9e0d8d2a36982a3f673c'
-            'd9d661d2733f82373d9dc86fab718801d96e2c3e6a2c655a5bfc55b6a36334a39f5d42812d9b12fd0549951b14176e670e92b5f6dfeeb90f2b054bf9964f87a0')
+sha512sums=('4fafa7211387b009aaca9dea1a24a521be36257343e3e076d6dedb5793de92846ad4bb67e505a96695b8acb69e77821fb700c7483dd76eb8956a1df8da731557'
+            '5e3aa97dfb53fb8f10d1b9d2437e67be1feb8b6e06d4cf6c49381ed1ee20fa29773ff7a547a5a51d0767d2388ef9a9263424b62ec8daa86192280333882770fc'
+            'd3ce71af76a0dd7f6c8d2806482abdf798869a854b3e50d3f442e42594936412bb45ef84ee10be520320e201939ca49030edd3ce2e89175abe34ab28395fb9ee'
+            '9aed3145b6fa1d3d1574b8037f6f71d7e5ce16077cb9f6cd50ffef56572cc0a2b5baf7ba0383552a55d1e74225b4d64f8dd5cab2549559f5ef7b1c9190c6abe6'
+            '26d4cb4b13fcfecfe9bf75a83bc3e00f96e08c9b68fcd8d2bfa689359923c0d7580b8be08e687cdc7305d5d8ce1d228941f62a330240f01a6d6f2bd5f664f5c2'
+            'b721bad0cc0af7d5b080e84de0e03a1b0921326100cb98ab827a2f01391e7ec7a1ca68600ac0951db37ef121376597cef928a9b40352e60f3eab6d565cbed7e5'
+            '3a5dacd7c89bfc418e458598be40334cb532e4a06bc917728e18e038b3be97b0142bd9ddc5a49d51ede3a1241d47b12f05b1ce7e1a70db02776a8143fb32b347')
 
 package() {
-  install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
-  install -m 644 *.ttf "${pkgdir}/usr/share/fonts/TTF/"
+	install -Dm 644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+	install -Dm 644 OFL.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 AUTHORS.txt TRADEMARKS.txt -t "$pkgdir/usr/share/doc/$pkgname/"
 }
