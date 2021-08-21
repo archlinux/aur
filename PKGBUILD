@@ -1,7 +1,7 @@
-# Maintainer: JoseDR120 <josedrgerena720@gmail.com>
+# Maintainer: Posi <posi1981@gmail.com>
  
 pkgname=atom-editor-bin
-pkgver=1.57.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc="Hackable text editor built on Electron (official precompiled binary)"
 arch=('x86_64')
