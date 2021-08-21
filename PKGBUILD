@@ -5,7 +5,7 @@ pkgver=r18534.34f77453d # Obsidian Beta 19? Clearly a later commit than that.
 pkgrel=1
 pkgdesc="Random level generator for classic Doom, also a fork of OBLIGE. Stable branch."
 arch=('any')
-url=""
+url="https://forum.zdoom.org/viewtopic.php?t=71457"
 license=('GPL')
 groups=()
 depends=('libx11' 'fltk')
