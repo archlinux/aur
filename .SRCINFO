@@ -1,6 +1,6 @@
 pkgbase = avdl
 	pkgdesc = Abstract video-game development language compiler
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://darkdimension.org/avdl.html
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = avdl
 	depends = sdl2_mixer
 	depends = freeglut
 	depends = glew
-	source = avdl-0.0.6.tar.gz::https://github.com/tomtsagk/avdl/archive/refs/tags/v0.0.6.tar.gz
-	md5sums = 6056721982fc1e5cd9e39a317434fe5d
+	source = avdl-0.0.7.tar.gz::https://github.com/tomtsagk/avdl/archive/refs/tags/v0.0.7.tar.gz
+	md5sums = 46902384b6be620992bd14bf22d7e719
 
 pkgname = avdl
