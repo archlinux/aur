@@ -1,0 +1,13 @@
+pkgbase = pam-tmpdir
+	pkgdesc = PAM module for creating safe per-user temporary directories
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/pam-tmpdir
+	install = install.sh
+	arch = x86_64
+	license = GPL2
+	depends = pam
+	source = http://deb.debian.org/debian/pool/main/p/pam-tmpdir/pam-tmpdir_0.09.tar.gz
+	sha256sums = 3176b5098e9a943f3713f43e3099acbfc35a22659dd293c929977fee76dee09f
+
+pkgname = pam-tmpdir
