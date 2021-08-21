@@ -1,0 +1,13 @@
+pkgbase = wiiu-vc-extractor-bin
+	pkgdesc = Extracts Wii U Virtual Console roms from dumps created via DDD or dumped from the SNES Mini (release)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/wheatevo/wiiu-vc-extractor
+	arch = x86_64
+	license = GPL3
+	provides = wiiu-vc-extractor
+	options = !strip
+	source = https://github.com/wheatevo/wiiu-vc-extractor/releases/download/2.0.1/wiiu-vc-extractor-linux-x64.zip
+	md5sums = 80ef1279d11f06bee5d87faeea47a334
+
+pkgname = wiiu-vc-extractor-bin
