@@ -95,9 +95,14 @@ _package() {
     java      ) variant=Java; replaces=(eclipse) ;;
     jee       ) variant=JEE ;;
     cpp       ) variant=C++; replaces=(eclipse-cdt) ;;
+    committers) variant=Committers ;;
     php       ) variant=PHP ;;
-    javascript) variant=JavaScript ;;
-    rust      ) variant=Rust ;;
+    dsl       ) variant=DSL ;;
+    embedcpp  ) variant="Embedded C++" ;;
+    rcp       ) variant="RCP" ;;
+    modeling  ) variant="Modeling" ;;
+    parallel  ) variant="Parallel" ;;
+    scout     ) variant="Scout" ;;
     *         ) return 1 ;;
   esac
 
