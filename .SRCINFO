@@ -1,6 +1,6 @@
 pkgbase = qflow-git
 	pkgdesc = Opensource physical implementation flow
-	pkgver = 1.4.r306.7746623
+	pkgver = 1.4.r353.7148c77
 	pkgrel = 1
 	url = http://opencircuitdesign.com/qflow/
 	arch = i686
@@ -20,4 +20,3 @@ pkgbase = qflow-git
 	sha512sums = SKIP
 
 pkgname = qflow-git
-

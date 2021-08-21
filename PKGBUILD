@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qflow-git
-pkgver=1.4.r306.7746623
+pkgver=1.4.r353.7148c77
 pkgrel=1
 epoch=
 pkgdesc='Opensource physical implementation flow'
