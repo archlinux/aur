@@ -2,9 +2,9 @@
 
 pkgname=grocy
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
-depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
+depends=('php' 'php-sqlite' 'php-gd' 'php-intl' 'php-iconv')
 makedepends=('composer' 'yarn')
 license=('MIT')
 arch=('any')
