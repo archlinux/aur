@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=netgen-lvs-git
-pkgver=1.5.r368.27f2ab8
+pkgver=1.5.r549.168e550
 pkgrel=1
 pkgdesc="A netlist comparison (LVS) and format manipulation"
 url="http://opencircuitdesign.com/netgen/"
@@ -22,7 +22,13 @@ pkgver() {
 
 build() {
    cd "$srcdir/${pkgname%-lvs-git}"
-   ./configure --prefix=/usr
+
+   # 2021-08-21: /etc/makepkg.conf add the flag "-Werror=format-security" to
+   # CFLAGS, which break the build because netgen do some dangerous things like
+   # verilog.c:1360:29: error: format not a string literal and no format arguments [-Werror=format-security]                                     
+   # 1360 |                             sprintf(nodename, lhs->name);
+   #
+   CFLAGS=$(filter-out -Werror=format-security,$(CFLAGS)) ./configure --prefix=/usr
    make
 }
 
