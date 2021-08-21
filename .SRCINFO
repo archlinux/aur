@@ -1,0 +1,15 @@
+pkgbase = python-markdownify
+	pkgdesc = Python software for USB Wireless WeatherStations
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://github.com/matthewwithanm/python-markdownify
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-beautifulsoup4
+	depends = python-six
+	options = !emptydirs
+	source = https://pypi.io/packages/source/m/markdownify/markdownify-0.9.2.tar.gz
+	sha512sums = 6ee76aa0eedcec1e25a61197d8913a543f9d7ac0a0ca8454d8a0927999d18a6fb77db32589b6bb76976fec69dd523081df339cd512c9881bbe8d69cedd893a02
+
+pkgname = python-markdownify
