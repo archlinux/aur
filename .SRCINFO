@@ -1,0 +1,13 @@
+pkgbase = flowerss-bot
+	pkgdesc = A telegram bot for rss reader. 一个支持应用内阅读的 Telegram RSS Bot。
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/indes/flowerss-bot
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	source = https://github.com/indes/flowerss-bot/archive/refs/tags/v0.8.3.zip
+	sha256sums = 4993cd20fc71a5515e5900fc440dbe7664e6a0bbbf421398f023b7ab0e26ab8c
+
+pkgname = flowerss-bot
