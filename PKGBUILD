@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=2.14.1
-pkgver=2.14.1.r8.g9bf7463
+_pkgver=2.14.2
+pkgver=2.14.2.r8.gd53fe3e
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -16,9 +16,8 @@ makedepends=(git stack)
 optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
             'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
-conflicts=(haskell-pandoc "$_pkgname")
-replaces=(haskell-pandoc)
 provides=("$_pkgname=$_pkgver")
+conflicts=("$_pkgname")
 source=("git://github.com/alerque/$_pkgname.git#branch=sile-$_pkgver")
 sha512sums=('SKIP')
 
