@@ -6,14 +6,14 @@
 
 _pkgname='dtrx'
 pkgname='dtrx-python3-git'
-pkgver='8.1'
-pkgrel='1'
+pkgver=9.0.830399c
+pkgrel=1
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
 url='http://github.com/verhovsky/dtrx'
 license=('GPL3')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
@@ -44,5 +44,5 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

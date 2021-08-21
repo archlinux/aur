@@ -1,10 +1,11 @@
 pkgbase = dtrx-python3-git
 	pkgdesc = An intelligent archive extraction tool
-	pkgver = 8.1
+	pkgver = 9.0.830399c
 	pkgrel = 1
 	url = http://github.com/verhovsky/dtrx
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	optdepends = tar: to extract tar, deb, and gem archives
@@ -26,4 +27,3 @@ pkgbase = dtrx-python3-git
 	md5sums = SKIP
 
 pkgname = dtrx-python3-git
-
