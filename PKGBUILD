@@ -2,7 +2,7 @@
 
 pkgname=courier-pythonfilter
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="pythonfilter is a collection of useful filters for the Courier MTA, and a framework for developing new filters in Python."
 arch=(any)
 url="https://pypi.org/project/courier-pythonfilter"
@@ -20,8 +20,6 @@ sha1sums=('c885c66ce0e5876873da6575419d116ca1d7bdda')
 
 package() {
   cd "$srcdir/gordonmessmer-courier-pythonfilter-fdf2f466e757"
-
-  RPM_BUILD_ROOT="$srcdir"
 
   python3 setup.py install --root="$pkgdir/"
 }

@@ -1,7 +1,7 @@
 pkgbase = courier-pythonfilter
 	pkgdesc = pythonfilter is a collection of useful filters for the Courier MTA, and a framework for developing new filters in Python.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/courier-pythonfilter
 	arch = any
 	license = GPL
