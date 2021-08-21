@@ -1,9 +1,9 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 _npmname=btc-rpc-explorer
-_npmver=3.1.0
+_npmver=3.2.0
 pkgname=${_npmname}
 pkgver=${_npmver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple, database-free Bitcoin blockchain explorer, via RPC to Bitcoin Core"
 arch=(any)
 url="https://github.com/janoside/btc-rpc-explorer"
@@ -14,9 +14,10 @@ optdepends=()
 backup=("etc/default/${pkgname}")
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz" ${pkgname}.service ${pkgname}.default )
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('639f655f3f2e8dd230faa8807d4903c6f7d6c0425d1d9dbe8ae0559977dd95ea'
+sha256sums=('442f9d9526de94800f7b207bbba521289ab1339bc5e0a6a330a906806e4920bd'
             'f19d942b6b6789c7deeb076e70eaf140e65a18d9cfe9ceab30cf2c33120e25f3'
 	    '98a6cdcf741807d2cc98825b074a882e520563b7b6528c24d2abd090bc007d0a')
+options=('!strip')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/$_npmname-$_npmver.tgz"
