@@ -1,15 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libsndfile-git
-pkgver=1.0.28.r74.gbeee21e5
-pkgrel=2
+pkgver=1.1.0beta1.r11.g110e26d9
+pkgrel=1
 pkgdesc="C library for reading and writing files containing sampled sound"
 arch=('i686' 'x86_64')
-url="http://www.mega-nerd.com/libsndfile/"
+url="https://libsndfile.github.io/libsndfile/"
 license=('LGPL')
-depends=('glibc' 'alsa-lib' 'flac' 'libogg' 'libvorbis')
+depends=('glibc' 'alsa-lib' 'flac' 'sqlite' 'libogg' 'libvorbis')
 makedepends=('git' 'autogen')
-provides=('libsndfile')
+optdepends=('alsa-lib: for sndfile-play')
+provides=('libsndfile' 'libsndfile.so')
 conflicts=('libsndfile')
 options=('staticlibs')
 source=("git+https://github.com/erikd/libsndfile.git")
@@ -26,7 +27,8 @@ build() {
   cd "libsndfile"
 
   ./autogen.sh
-  ./configure --prefix="/usr" --disable-sqlite
+  ./configure \
+    --prefix="/usr"
   make
 }
 

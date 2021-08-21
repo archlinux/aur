@@ -1,8 +1,8 @@
 pkgbase = libsndfile-git
 	pkgdesc = C library for reading and writing files containing sampled sound
-	pkgver = 1.0.28.r74.gbeee21e5
-	pkgrel = 2
-	url = http://www.mega-nerd.com/libsndfile/
+	pkgver = 1.1.0beta1.r11.g110e26d9
+	pkgrel = 1
+	url = https://libsndfile.github.io/libsndfile/
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -11,13 +11,15 @@ pkgbase = libsndfile-git
 	depends = glibc
 	depends = alsa-lib
 	depends = flac
+	depends = sqlite
 	depends = libogg
 	depends = libvorbis
+	optdepends = alsa-lib: for sndfile-play
 	provides = libsndfile
+	provides = libsndfile.so
 	conflicts = libsndfile
 	options = staticlibs
 	source = git+https://github.com/erikd/libsndfile.git
 	sha256sums = SKIP
 
 pkgname = libsndfile-git
-
