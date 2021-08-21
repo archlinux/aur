@@ -1,3 +1,14 @@
+## 0.19.0
+
+* new commands style and donefiles, for improved introspection
+* uses craft-configuration, craft-platform, craft-sdk marks now
+* support for the addiction directory being a symbolic link to the dependency directory of another related project and sharing the donefile to skip compilation of shareable projects
+* more elaborate no-require marks
+* use `TARBALLS` instead of `DEPENDENCY_TARBALL_PATH` now
+* improved **qualifier** command and gave it a new option `--no-lf`
+* added qualifier command to get the sourcetree qualifier used to match entries for the craftorder
+* allow --craftorder-file NONE
+
 ### 0.18.3
 
 * Fix phases overwriting each others logfiles
