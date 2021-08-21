@@ -69,7 +69,8 @@ build() {
     --enable-shared 
     #--libdir="${_libdir}" \
     #--includedir="${_includedir}"
-  make "-j$(nproc)" || return 1
+  #make "-j$(nproc)" || return 1
+  make
 }
 
 package() {
