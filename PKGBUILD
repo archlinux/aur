@@ -2,8 +2,8 @@
 _base=perfplot
 pkgname=python-${_base}
 pkgdesc="Performance plots for Python code"
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.10
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -11,7 +11,7 @@ depends=(python-dufte python-rich)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('a355ece1ffa562b7419e49c98f29b7926419c4b731e65a7be7cbba73a49fe8ff70d35994bbfa125fd2406c5b663ba5888516338f8ea667e108c389bdfcea5a61')
+sha512sums=('bfceecc651235be976294ffba0f4a49d2924d5fddf04e4563b80837f6965e9169f5eb907f3757fdbb607a61edcc221eaa7518792642afca3e86764ba08ab55d8')
 
 export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
