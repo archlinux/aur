@@ -1,6 +1,6 @@
 pkgbase = raze-git
 	pkgdesc = Build engine port backed by GZDoom tech (git version)
-	pkgver = 0.8.0_beta+142+ga0be30fac
+	pkgver = 1.1.0pre+380+g24b567313
 	pkgrel = 1
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = raze-git
 	depends = libvpx
 	depends = openal
 	depends = sdl2
-	depends = zmusic>=1.1.1
+	depends = zmusic>=1.1.8
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = kdialog: crash dialog (KDE)
 	optdepends = xorg-xmessage: crash dialog (other)

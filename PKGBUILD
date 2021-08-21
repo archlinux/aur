@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze-git
-pkgver=0.8.0_beta+142+ga0be30fac
+pkgver=1.1.0pre+380+g24b567313
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libvpx'
          'openal'
          'sdl2'
-         'zmusic>=1.1.1')
+         'zmusic>=1.1.8')
 makedepends=('cmake'
              'desktop-file-utils'
              'git')
