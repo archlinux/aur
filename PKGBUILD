@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-samplerate
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="OCaml bindings for libsamplerate"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('2c5cdfc490770ae77d383a6ccb3cee153b8303aab41da42882b175a0850f49a3')
+sha256sums=('6bf052fa50cb5a46332a64c773790dfa40cbb8b2ab0fd41bf1659bedc31a48ec')
