@@ -1,16 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=goverlay
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
-depends=('qt5pas' 'qt5-base')
+depends=('qt5pas' 'qt5-base' 'mangohud')
 makedepends=('git' 'lazarus' 'qt5-base')
 checkdepends=('appstream' 'desktop-file-utils')
-optdepends=('mangohud: Configure MangoHUD'
-            'vkbasalt: Configure vkBasalt'
+optdepends=('vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
             'vulkan-tools: Vulkan preview'
             'git: Clone reshade repository'

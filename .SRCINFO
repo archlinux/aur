@@ -1,7 +1,7 @@
 pkgbase = goverlay
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = goverlay
 	makedepends = qt5-base
 	depends = qt5pas
 	depends = qt5-base
-	optdepends = mangohud: Configure MangoHUD
+	depends = mangohud
 	optdepends = vkbasalt: Configure vkBasalt
 	optdepends = mesa-demos: OpenGL preview
 	optdepends = vulkan-tools: Vulkan preview
