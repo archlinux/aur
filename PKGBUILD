@@ -1,6 +1,6 @@
 # Maintanier: graysky <graysky AT archlinux dot us>
 pkgname=kodi-logger
-pkgver=1.9
+pkgver=2.0
 pkgrel=1
 pkgdesc='Keeps track of every video you watch on kodi.'
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 url="https://github.com/graysky2/kodi-logger"
 depends=('diffutils')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5d191ee06ce15ec86361d333326db5300bc9b675659919d9c89cb0185673cd04')
+sha256sums=('f876fa9d666a2b37b82c367622c2380819914a80e418044c2a47e7fe52d72848')
 
 build() {
   cd "$pkgname-$pkgver"
