@@ -1,7 +1,7 @@
 # Maintainer: Philip Johansson <philipphuket at gmail dotcom>
 pkgname=solitty-git
 _pkgname=solitty
-pkgver=r29.0e64904
+pkgver=r32.39c72b3
 pkgrel=1
 pkgdesc="Play solitaire in the console"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = solitty-git
 	pkgdesc = Play solitaire in the console
-	pkgver = 0
+	pkgver = r32.39c72b3
 	pkgrel = 1
 	url = https://github.com/flyingpeakock/solitty
 	arch = x86_64
