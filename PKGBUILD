@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -14,7 +14,7 @@ depends=('gtk3'
          'libjpeg'
          'openal'
          'sdl2'
-         'zmusic>=1.1.1')
+         'zmusic>=1.1.8')
 makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
