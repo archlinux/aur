@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-rdb-llvm
 	pkgdesc = Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization
 	pkgver = 5.13.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
 	arch = x86_64_v3
