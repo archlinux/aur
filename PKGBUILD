@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Use graph theory to reveal the hidden and often unintended relationships within an Active Directory"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/BloodHoundAD/BloodHound"
-license=('GPLv3')
+license=('GPL3')
 depends=('neo4j-community' 'java-runtime>=11')
 makedepends=('electron' 'npm' 'python-sphinx' )
 optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
