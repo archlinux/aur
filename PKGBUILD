@@ -2,7 +2,7 @@
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname='dhall-bin'
-pkgver=1.39.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="Dhall typechecker and formatter"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('dhall')
 source=("dhall-$pkgver.tar.bz2::$url/releases/download/$pkgver/dhall-$pkgver-x86_64-linux.tar.bz2"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/$_repo/$pkgver/dhall/LICENSE"
         "dhall.1-$pkgver::https://raw.githubusercontent.com/$_repo/$pkgver/dhall/man/dhall.1")
-sha256sums=('1cc528c0754e94799c818d5b748b224d634f14d5f0e46e46ba165cb7de337f85'
+sha256sums=('a38cf885b520d3089a78ac64f9ef8fae0c44056db9440292378a52ed5dcf47fe'
             '91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9'
             'a41e5df44d67d9ea3dd4a64c85457f156d5266875046ea5de40adf1b3fc2a29f')
 
