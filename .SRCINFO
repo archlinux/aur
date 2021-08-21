@@ -1,6 +1,6 @@
 pkgbase = iortcw-git
 	pkgdesc = Merge of ioquake3 features and fixes into Return to Castle Wolfenstein
-	pkgver = 1.51c.r33.gefd26577
+	pkgver = 1.51c.r58.g7a33e455
 	pkgrel = 1
 	url = https://github.com/iortcw/iortcw
 	install = iortcw-git.install
@@ -32,12 +32,11 @@ pkgbase = iortcw-git
 	source = iortcw-mp.launcher
 	source = iortcw-sp.desktop
 	source = iortcw-mp.desktop
-	md5sums = SKIP
-	md5sums = 1cb1d7fda29d223a57003d097a1a4a31
-	md5sums = e400094c42766cb2b130d4d95bbe1caf
-	md5sums = bbc343567fa9a2f0101bdbd07cc9d32a
-	md5sums = dec8be9edbe233c8e69320a35acf9b01
-	md5sums = 37889e4c81f20b1dd0b6cf25e1dd6b2c
+	sha256sums = SKIP
+	sha256sums = 4af024d025009cb3c39fb6137d10a417167c6b026f82e162aaea583d0b4934d2
+	sha256sums = ab55a395fa2e164f655cba91dd197d98697621d5cdd2cfb30e8f06f49fc2b5d2
+	sha256sums = 13dacae097c252609e2931eb799d79e07da31403fb2b0b6cde16fa7237d8d3d7
+	sha256sums = 43c7450c9c2c25051ae74b28a0b81ce17d1e9e6e33949954460a186ba6605257
+	sha256sums = f2beab09c7972625098c9166957cafe35b9ac1cc9ce8e59bd8c8bd2b173d851b
 
 pkgname = iortcw-git
-
