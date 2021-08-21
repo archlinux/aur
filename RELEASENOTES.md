@@ -1,3 +1,17 @@
+## 3.4.0
+
+* make remaining static log strings configurable
+* fix accidental clobber in `inplace_sed` if sed failed
+* new function `dirs_contain_same_files`
+* new debug flags -lX -lS -lD, you can specify the debug depth now with -lDDD (3) for example, which means the flag affects the current command and those called nested twice
+* added logging tee exekutor functions from mulle-make for use in build scripts
+* Avoid prompt in `remove_file_if_present`
+* Added `r_remove_line_once` function
+* Added `r_url_remove_file_compression_extension` function
+* `r_expanded_string` is now a proper interpreter and not just an eval for safety
+* added `r_unescaped_doublequotes` and `r_lines_in_range`
+* New URL parser "mulle-url.sh".
+
 ## 3.3.0
 
 * r_resolve_all_path_symlinks added
