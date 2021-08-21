@@ -1,6 +1,6 @@
 pkgbase = kcm-polkit-kde-git
 	pkgdesc = Configuration for Policy Kit
-	pkgver = 215.4aca751
+	pkgver = 5.9.0.r215.g4aca751
 	pkgrel = 1
 	epoch = 1
 	url = https://projects.kde.org/projects/extragear/base/polkit-kde-kcmodules-1
@@ -8,12 +8,13 @@ pkgbase = kcm-polkit-kde-git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = kcmutils-git
+	makedepends = dbus
 	makedepends = git
+	depends = kcmutils
 	provides = polkit-kde-kcmodules
 	provides = kcm-polkit-kde
 	conflicts = polkit-kde-kcmodules
-	source = git+https://anongit.kde.org/polkit-kde-kcmodules-1
+	source = kcm-polkit-kde-git::git+https://invent.kde.org/system/polkit-kde-kcmodules-1.git
 	md5sums = SKIP
 
 pkgname = kcm-polkit-kde-git
