@@ -1,13 +1,23 @@
 pkgbase = openra-git
 	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. -GIT VERSION
-	pkgver = BLEED.20201224.73bba97aaa
+	pkgver = 20210821.gd509d3f5f9
 	pkgrel = 1
 	url = http://www.openra.net
 	install = openra.install
-	arch = any
+	arch = x86_64
+	arch = i386
+	arch = i686
+	arch = pentium4
+	arch = core2
+	arch = armv6h
+	arch = armv7h
+	arch = armv8h
+	arch = armv9h
+	arch = arm64
 	license = GPL3
 	makedepends = git
 	makedepends = unzip
+	makedepends = mono-msbuild
 	depends = mono
 	depends = msbuild
 	depends = ttf-dejavu
@@ -24,8 +34,7 @@ pkgbase = openra-git
 	provides = openra
 	conflicts = openra
 	options = !strip
-	source = OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed
+	source = openra-git::git+https://github.com/OpenRA/OpenRA.git#branch=bleed
 	md5sums = SKIP
 
 pkgname = openra-git
-

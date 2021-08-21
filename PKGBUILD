@@ -1,123 +1,51 @@
-# $Id$
-# Maintainer: Eden Rose(endlesseden) <eenov1988 "at"  gmail.com >
+# Maintainer: Eden Rose(endlesseden) <eden "at" rose.place >
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20201224.73bba97aaa
+pkgver=20210821.gd509d3f5f9
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. -GIT VERSION"
-arch=('any')
+arch=('x86_64' 'i386' 'i686' 'pentium4' 'core2' 'armv6h' 'armv7h' 'armv8h' 'armv9h' 'arm64')
 url="http://www.openra.net"
 license=('GPL3')
 install=openra.install
 depends=('mono' 'msbuild' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-optionaldepends=('openra-ra2-git' 'openra-d2-git')
-makedepends=('git' 'unzip')
+optionaldepends=('openra-ra2-git: An OpenRA mod inspired by Command and Conquer: Red Alert 2' 'openra-d2-git: A Dune II-inspired mod of OpenRA' 'openra-yr-git:A Command and Conquer: Yuri's Revenge-inspired mod of OpenRA' 'openra-ca-git: A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods' 'openra-dr-git: A Dark Reign-inspired mod of OpenRA' 'openra-gen-git: A mod of OpenRA based on Command and Conquer: Generals' 'openra-kknd-git: A Krush, Kill n' Destroy-inspired mod of OpenRA' 'openra-mw-git: An mod of OpenRA depicting medieval warfare' 'openra-raclassic-git: A mod of OpenRA that more faithfully recreates the Command and Conquer: Red Alert game' 'openra-radot5-git: OpenRA mod that tell the storyline between 1936 to Red Alert 1' 'openra-raplus-git: A Command and Conquer: Red Alert-inspired mod of OpenRA' 'openra-rv-git: A Command and Conquer: Red Alert 2-inspired mod of OpenRA' 'openra-sp-git: A Tiberian Sun-inspired mod of OpenRA' 'openra-ss-git: A Sole Survivor-inspired mod of OpenRA, warning you will need the original game assets to play this game' 'openra-ura-git: A Command and Conquer: Red Alert-inspired mod of OpenRA' 'dotnet-sdk: Proprietary Microsoft dot.net(mono) SDK. Used in place of mono-msbuild' 'dotnet-runtime: Proprietary Microsoft dot.net(mono) Runtime. Replaces Mono Runtime')
+makedepends=('git' 'unzip' 'mono-msbuild')
 provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed')
-        #'RA2::git://github.com/OpenRA/ra2.git')
-        #'D2::git://github.com/OpenRA/d2.git')
+source=($pkgname::'git+https://github.com/OpenRA/OpenRA.git#branch=bleed')
 md5sums=('SKIP')
-         #'SKIP')
-         #'SKIP')
+
 
 
 pkgver() {
-  cd "$srcdir/OpenRA"
+  cd "$srcdir"/"$pkgname"
   
   DATE="$(date +%Y%m%d)"
   PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD`) ### get GIT version
-  echo "BLEED."$DATE""$PV | sed -e 's/git-/./g' 
+  echo "$DATE"$PV | sed -e 's/git-/.g/g' 
 }
 
-
-
-#prepare() {    ### No Longer Required
-#  cd OpenRA    ###
-#               ###
-#  make version ###
-#}              ###
-
 build() {
-  cd OpenRA
-    #make dependencies DEBUG=false TARGETPLATFORM=unix-generic   ### Build Dependencies...
-    #make core DEBUG=false TARGETPLATFORM=unix-generic   ### Build core...
-    make all DEBUG=false TARGETPLATFORM=unix-generic   ### Build application and tools...
-    #make test DEBUG=false  ### Checking the build, for erroneous yaml files...
-    #make check DEBUG=false ### Checking the build, for StyleCop violations...
-    #make docs DEBUG=false ### This exists in the Makefile, but is unused? (Make Documentation, mainly aimed at modders)
-  cd ../
-
-#  cd RA2
-#  if [ -e engine ]; then
-#  	rm -r engine
-#  fi
-#  ln -s ../OpenRA engine
-#  #patch -p1 mod.config < $srcdir/RA2-mod.config.patch
-#  SPEC_VER="$(cat mod.config | grep ENGINE_VERSION | sed -e 's/=/\n/g' | head -2 | tail -1)"
-#  cat mod.config | sed -e s/"$SPEC_VER"/'"{DEV_VERSION}"'/g > mod.config.1
-#  mv mod.config.1 mod.config
-#  echo '"AUTOMATIC_ENGINE_MANAGEMENT"="False"' > "user.config"
-#  make 
-  
+  cd "$srcdir"/"$pkgname"
+    make all DEBUG=false TARGETPLATFORM=unix-generic  
 }
 
 package() {
-  cd OpenRA
-  mkdir -p $pkgdir/usr/bin $pkgdir/usr/share $pkgdir/usr/lib
+  cd "$srcdir"/"$pkgname"
+  mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/share "$pkgdir"/usr/lib/openra # Those pesky directories... That install cant create? why...
 
   make prefix=/usr DESTDIR="$pkgdir" install DEBUG=false
   make prefix=/usr DESTDIR="$pkgdir" install-linux-shortcuts DEBUG=false
   make prefix=/usr DESTDIR="$pkgdir" install-linux-appdata DEBUG=false
   
-  if [ -e $srcdir/RA2 ]; then
-  ### adding RA2 to OpenRA
-  #if [ ! -d $pkgdir/usr/lib/openra/mods/ra2 ]; then
-  #mkdir -p $pkgdir/usr/lib/openra/mods/
-  #fi
-  cp -rf $srcdir/RA2/mods/ra2 $pkgdir/usr/lib/openra/mods/ra2
-  cp -rf $srcdir/RA2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/*.png  $pkgdir/usr/lib/openra/mods/ra2
-   
-  #cp -rf $srcdir/RA2/mods/ra2/audio $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/chrome $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/bits $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/installer $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/languages $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/maps $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/rules $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/sequences $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/tilesets $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/uibits $pkgdir/usr/lib/openra/mods/ra2 
-  #cp -rf $srcdir/RA2/mods/ra2/weapons $pkgdir/usr/lib/openra/mods/ra2 
-  #########################################################
-  fi
-
-  if [ -e $srcdir/D2 ]; then
-  ### adding DuneII to OpenRA
-  if [ ! -d $pkgdir/usr/lib/openra/mods/d2 ]; then
-  mkdir $pkgdir/usr/lib/openra/mods/d2
-  fi
-  cp -rf $srcdir/D2/OpenRA.Mods*  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/*.yaml  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/*.png   $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/audio  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/chrome  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/bits  $pkgdir/usr/lib/openra/mods/d2 
-  ##cp -rf $srcdir/D2/installer  $pkgdir/usr/lib/openra/mods/d2  ### installer hasnt been made yet.
-  cp -rf $srcdir/D2/languages  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/maps  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/rules  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/sequences  $pkgdir/usr/lib/openra/mods/d2 
-  cp -rf $srcdir/D2/tilesets  $pkgdir/usr/lib/openra/mods/d2 
-  ##cp -rf $srcdir/D2/uibits  $pkgdir/usr/lib/openra/mods/d2    ### Missing atm.
-  cp -rf $srcdir/D2/weapons  $pkgdir/usr/lib/openra/mods/d2 
-  #########################################################
-  fi
+ make clean 
+ mkdir -p $pkgdir/usr/lib/openra/src
+ cp -r "$srcdir"/"$pkgname" "$pkgdir"/usr/lib/openra/src/ #Source for building OpenRA mods against ^_^
 
 }
