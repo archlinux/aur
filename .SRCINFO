@@ -1,16 +1,15 @@
 pkgbase = find-the-command-git
-	pkgdesc = Advanced command-not-found hook for bash , fish and zsh using the power of pacman
+	pkgdesc = Advanced command-not-found hook for bash, fish and zsh using the power of pacman
 	pkgver = 1.4.2.r2.g0fc7e85
 	pkgrel = 1
-	url = https://github.com/agura-lex/find-the-command.git
+	url = https://github.com/agura-lex/find-the-command
 	install = find-the-command.install
 	arch = any
-	license = custom:WTFPL
+	license = WTFPL
 	depends = pacman
-	optdepends = bash: for bash support
-	optdepends = fish: for fish support
-	optdepends = zsh: for zsh support
-	options = docs
+	depends = systemd
+	provides = find-the-command
+	conflicts = find-the-command
 	source = git+https://github.com/agura-lex/find-the-command.git
 	sha256sums = SKIP
 
