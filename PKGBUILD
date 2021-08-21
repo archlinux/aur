@@ -1,33 +1,38 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Maintainer: EndlessEden <eden (at) rose.place>
+# Original Maintainer: Ivy Foster <ivy.foster@gmail.com>
 
 pkgname='sndio-git'
-pkgver=1.0.1.r123.f8436a7
+pkgver=1.8.1.r537.d7019ee
 pkgrel=1
 pkgdesc='A small audio and MIDI framework part of the OpenBSD project'
 arch=('i686' 'x86_64')
 url='http://www.sndio.org'
 license=('MIT')
-provides=('sndio')
-source=('git+http://caoua.org/git/sndio' '0001-put-cookie-somewhere-better.patch')
-md5sums=('SKIP' 'SKIP')
+depends=(alsa-lib libbsd)
+replaces=('sndio')
+conflicts=('sndio' "$pkgname")
+provides=("$pkgname" 'sndio' 'libsndio.so')
+source=("$pkgname"::'git+http://caoua.org/git/sndio')
+md5sums=('SKIP')
 
 pkgver() {
-	cd sndio
-	git describe | sed 's,release_,,; s,_,.,g; s,-\(.*\)-.,.r\1.,'
-}
-
-prepare() {
-	cd sndio
-	git apply ../0001-put-cookie-somewhere-better.patch
+	cd "$srcdir"/"$pkgname"
+	git describe | sed "s,release_1_0_1,$(git tag | tail -1 | sed 's,release_,,; s,_,.,g'),; s,_,.,g; s,-\(.*\)-.,.r\1.,"
 }
 
 build() {
-	cd sndio
-	./configure --prefix=/usr --enable-alsa
+	cd "$srcdir"/"$pkgname"
+	./configure --prefix=/usr --enable-alsa --with-libbsd
 	make
-	make -C libsndio libsndio.so
 }
 
 package() {
-	make -C sndio DESTDIR="$pkgdir/" install
+	cd "$srcdir"/"$pkgname"
+
+	make DESTDIR="$pkgdir/" install
+
+	install -D -m 644 contrib/sndiod.service \
+		"$pkgdir/usr/lib/systemd/system/sndiod.service"
+	install -D -m 644 contrib/default.sndiod \
+		"$pkgdir/etc/default/sndiod"
 }
