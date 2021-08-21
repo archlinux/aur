@@ -1,3 +1,9 @@
+## 0.47.0
+
+* add "test fetch" sub-command
+* add freshen sub-command to extension to update extra extension content
+
+
 ## 0.45.0
 
 * allow mulle-sde init without giving a type
