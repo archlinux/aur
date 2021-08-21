@@ -3,7 +3,7 @@
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-bin"
 _pkgname="gdlauncher"
-pkgver="1.1.13"
+pkgver="1.1.14"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -15,7 +15,7 @@ provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-classic')
 source_x86_64=("GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip"
                "https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png")
-md5sums_x86_64=('c9d2662bd969a9a5f9d56578413e6f5d'
+md5sums_x86_64=('332fd5cc4172a5eeb1c849781f6b38e7'
                 'af0ce1364e34f49af3793bf8193c5369')
 icon_sizes=(48 128 256 1024)
 
