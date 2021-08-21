@@ -1,7 +1,7 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
-# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/354130806
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/357211463
 pkgname=opentodolist
-pkgver=3.37.1
+pkgver=3.37.2
 pkgrel=1
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
@@ -50,6 +50,9 @@ build() {
                 -DQLMDB_WITH_STATIC_LIBS=ON \
                 -DOPENTODOLIST_USE_SYSTEM_QTKEYCHAIN=ON \
                 -DOPENTODOLIST_USE_SYSTEM_KF_SYNTAX_HIGHLIGHTING=ON \
+                -DOPENTODOLIST_QT_VERSIONS=Qt5 \
+                -DQLMDB_QT_VERSIONS=Qt5 \
+                -DSYNQCLIENT_QT_VERSIONS=Qt5 \
                 ..
         cmake --build .
 }
