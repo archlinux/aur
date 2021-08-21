@@ -1,0 +1,19 @@
+pkgbase = firefox-extension-tab-stash
+	pkgdesc = Firefox extension to save and restore tabs as bookmarks
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/josh-berry/tab-stash
+	arch = any
+	license = MPL2
+	makedepends = git
+	makedepends = inkscape
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = p7zip
+	makedepends = rsync
+	makedepends = strip-nondeterminism
+	depends = firefox
+	source = git+https://github.com/josh-berry/tab-stash.git#tag=v2.9
+	sha256sums = SKIP
+
+pkgname = firefox-extension-tab-stash
