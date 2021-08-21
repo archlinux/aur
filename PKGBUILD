@@ -58,7 +58,7 @@ _use_current=
 pkgbase=linux-cacule-llvm
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.12
-pkgrel=4
+pkgrel=5
 _gittag=v${pkgver%.*}-${pkgver##*.}
 pkgdesc='Linux-CacULE Kernel by Hamad Marri and with some other patchsets with FULL LTO optimization'
 arch=('x86_64' 'x86_64_v3')
@@ -485,7 +485,7 @@ package_linux-cacule-llvm-headers() {
 }
 
 md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
-         'b8aa4c0a0f8c5e57dd00e7f2977bf57b'
+         'a505dad2030b3df37ae83c4943fe19b0'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
          '1082374b0727f24c4a96fc94f28de24c'
