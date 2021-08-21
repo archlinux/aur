@@ -1,3 +1,7 @@
+### 2.0.2
+
+* Various small improvements
+
 ### 2.0.1
 
 * installer verbose toggle

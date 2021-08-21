@@ -1,7 +1,7 @@
 pkgbase = mulle-dispense
 	pkgdesc = Copy build products and reorganize them
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-dispense
 	changelog = RELEASENOTES.md
@@ -9,9 +9,8 @@ pkgbase = mulle-dispense
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=3.3.0
-	source = https://github.com/mulle-sde/mulle-dispense/archive/2.0.1.tar.gz
-	md5sums = fedbd94f28dcb4542393493d9dbc5446
+	depends = mulle-bashfunctions>=3.4.0
+	source = https://github.com/mulle-sde/mulle-dispense/archive/2.0.2.tar.gz
+	md5sums = 1fd1bb75b615cde3fa1c4747b1443ab2
 
 pkgname = mulle-dispense
-
