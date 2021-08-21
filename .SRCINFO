@@ -1,0 +1,12 @@
+pkgbase = fission-bin
+	pkgdesc = Fast and Simple Serverless Functions for Kubernetes
+	pkgver = 1.14.1
+	pkgrel = 1
+	url = https://github.com/fission/fission
+	arch = x86_64
+	license = Apache
+	depends = kubectl
+	source = fission::https://github.com/fission/fission/releases/download/1.14.1/fission-1.14.1-linux-amd64
+	sha256sums = 2b738091d25d64bbcab1fa2d08253a25587f8480296bec751646cea4d7099f71
+
+pkgname = fission-bin
