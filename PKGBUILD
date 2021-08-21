@@ -6,7 +6,7 @@
 pkgname=imageenlarger
 pkgver=0.9.1
 pkgrel=2
-pkgdesc="SmillaEnlarger is a graphical tool to resize, especially magnify bitmaps in high quality (previously called SmillaEnlarger)"
+pkgdesc="SmillaEnlarger is a graphical tool to resize, especially magnify bitmaps in high quality"
 arch=('x86_64')
 license=('GPL3')
 #url="https://github.com/lupoDharkael/smilla-enlarger"
