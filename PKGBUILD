@@ -1,7 +1,8 @@
 # Maintainer: Ckat <ckat@teknik.io>
 
+_commithash='53bf1f7173cf3fd741d50bd5a76244e3c0175cf2'
 pkgname=ybacklight
-pkgver=r7.94e7493
+pkgver=r9.53bf1f7
 pkgrel=1
 pkgdesc='an xbacklight compatible replacement using sysfs'
 arch=('any')
@@ -10,8 +11,8 @@ depends=('perl')
 conflicts=('ybacklight')
 provides=('ybacklight')
 url='https://github.com/yath/ybacklight'
-source=("$pkgname::https://raw.githubusercontent.com/yath/ybacklight/94e7493f435820ea04716b16a35e497c77357b06/ybacklight"
-	"90-ybacklight.rules")
+source=("$pkgname::https://raw.githubusercontent.com/yath/ybacklight/$_commithash/ybacklight"
+	"90-ybacklight.rules::https://raw.githubusercontent.com/yath/ybacklight/$_commithash/90-ybacklight.rules")
 md5sums=('2ed37a04024ee93694d75aea5edccd10'
          '82bc12b4e112ad12e12ca0a8dfbd3d36')
 
