@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-mcode-git
-pkgver=2.0.0dev.r6231.g82665d421
+pkgver=2.0.0dev.r6542.gbbdff59e4
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4')
 pkgdesc='VHDL simulator - mcode back-end'
@@ -12,7 +12,10 @@ provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
 makedepends=('git')
 depends=('gcc-ada')
-checkdepends=('python-pytest' 'python-pydecor' 'python-pyvhdlmodel')
+checkdepends=(
+	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel'
+	'python-pymetaclasses' 'python-pyattributes' 'python-pyterminalui'
+)
 optdepends=(
 	'python-pydecor: for pyGHDL'
 	'python-pyvhdlmodel: for pyGHDL.dom'
