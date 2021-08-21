@@ -6,7 +6,7 @@ pkgver=1.29.0
 pkgrel=1
 pkgdesc='CLI tool to build, test, debug, and deploy Serverless applications using AWS SAM'
 arch=('any')
-url='https://github.com/awslabs/aws-sam-cli'
+url='https://github.com/aws/aws-sam-cli'
 license=('Apache')
 depends=('docker' 'python-chevron' 'python-click' 'python-flask' 'python-boto3' 'python-jmespath' 'python-yaml'
          'python-cookiecutter' 'python-aws-sam-translator' 'python-docker' 'python-dateparser'
