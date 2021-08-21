@@ -60,7 +60,8 @@ build() {
     --with-piddir=/run/courier \
     --with-trashquota \
     --with-db=gdbm \
-    --with-mailuser=courier --with-mailgroup=courier
+    --with-mailuser=courier --with-mailgroup=courier \
+    --with-notice=unicode
   make
 }
 
