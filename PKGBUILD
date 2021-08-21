@@ -11,7 +11,7 @@
 AUR_BUILD=true
 
 # Edit to enable/disable packages to build
-pkgname=(eclipse-{java,jee,cpp,php})
+pkgname=(eclipse-{jee,cpp,php})
 
 pkgbase=eclipse
 if [ "$AUR_BUILD" = false ]; then
@@ -60,7 +60,6 @@ for _pkg in ${pkgname[@]}; do
   noextract+=($_src)
   eval "package_$_pkg() { _package $_pkg; }"
 done
-
 
 prepare() {
   local pkg src

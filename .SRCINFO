@@ -7,22 +7,17 @@ pkgbase = eclipse
 	arch = x86_64
 	license = EPL
 	makedepends = python3
-	noextract = eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz
 	noextract = eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz
 	noextract = eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz
 	noextract = eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz
 	source = commonify
 	sha256sums = a68cccdf182449dfb4aef595ab26fe6542902421aef42a79672483865cbbd0ea
-	source_x86_64 = eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source_x86_64 = eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source_x86_64 = eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source_x86_64 = eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
-	sha512sums_x86_64 = 4047a3b89d577689ad5e78959d85843638d04145af4c24173d0567cbf7642d2e5faf4d919b8457203fedd68827b6ad3ddacfe1eba6cc997755b0ab5e05bd7179
 	sha512sums_x86_64 = 89b8d359e7a0e5891b4adce63b464a84520c7aff7fde8f47689b2414dc7fdb1247d74f8651986d7fe8699561368c10133c9633b0d39fc7cc76b6206d574eb4cb
 	sha512sums_x86_64 = ff3038cdc15cc6a43b9d374f2035cea59209ee0b46a3f45ff99af22899240ff5f8898eb3b77eb0ee122f10307602ee3963d3417f1af86f1fb7af9d0d8a47fcde
 	sha512sums_x86_64 = 0e5251f74222deda86a5340c10c4d7c9b56efa3fe19ef82f1aa7515ca6721a8c70b8aa704ea6d1a22f04af5076549ef163c1d37c6b6fc15a5374b85aa15bd950
-
-pkgname = eclipse-java
 
 pkgname = eclipse-jee
 
