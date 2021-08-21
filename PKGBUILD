@@ -16,13 +16,16 @@ depends=('python-flask' 'python-flask-wtf' 'python-wtforms'
          'python-click-plugins' 'python-html2text' 'python-flask-compress')
 optdepends=('elasticsearch')
 source=("git+https://github.com/archivy/archivy#tag=v$pkgver"
-        "00-do-not-pin-requirements.patch")
+        "00-do-not-pin-requirements.patch"
+        "01-flask-v2.patch")
 sha256sums=('SKIP'
-            '538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4')
+            '538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4'
+            'f385bd52038f102653a5def0488db28003baaeb52170180d03d5276e6d8fc6cc')
 
 prepare() {
     cd "$srcdir/$pkgname"
     git apply "$srcdir/00-do-not-pin-requirements.patch"
+    git apply "$srcdir/01-flask-v2.patch"
 }
 
 build() {

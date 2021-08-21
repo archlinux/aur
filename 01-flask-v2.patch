@@ -1,0 +1,13 @@
+diff --git a/archivy/__init__.py b/archivy/__init__.py
+index a1a297b..612b4d9 100644
+--- a/archivy/__init__.py
++++ b/archivy/__init__.py
+@@ -86,7 +86,7 @@ def load_user(user_id):
+     return None
+ 
+ 
+-app.jinja_options["extensions"].append("jinja2.ext.do")
++app.jinja_env.add_extension('jinja2.ext.do')
+ 
+ 
+ @app.template_filter("pluralize")

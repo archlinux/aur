@@ -27,7 +27,9 @@ pkgbase = archivy
 	optdepends = elasticsearch
 	source = git+https://github.com/archivy/archivy#tag=v1.4.0
 	source = 00-do-not-pin-requirements.patch
+	source = 01-flask-v2.patch
 	sha256sums = SKIP
 	sha256sums = 538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4
+	sha256sums = f385bd52038f102653a5def0488db28003baaeb52170180d03d5276e6d8fc6cc
 
 pkgname = archivy
