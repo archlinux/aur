@@ -2,8 +2,8 @@
 # Contributor: Sergey Zolotorev <sergey.zolotorev@gmail.com>
 
 pkgname=pacman-hook-kernel-install
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Pacman hooks for kernel-install."
 url='https://man.archlinux.org/man/kernel-install.8'
 arch=('any')
@@ -21,5 +21,5 @@ package() {
 
 
 # sums
-sha256sums=('a2b5181c48d0891094e1aff85057de48cf4e7db619a9d073cf20b3e20a35785c'
-            '9e5c1141acc66205d358b50328266e47f180e16f09f11d411a8bc2382865809d')
+sha256sums=('ca9d66fb7dad75087cd127232fe9d050ede2db9e8c0f988c80a78a31c495c115'
+            '13a265c01a0c45026a9793b92288b8e7248f8d849863e44bdb1c8300cc0bb64c')
