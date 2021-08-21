@@ -1,6 +1,6 @@
 # Maintainer: Youngjae Lee <ls4154.lee@gmail.com>
 pkgname=libzbd
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Zoned block device manipulation library and tools"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=("glibc")
 makedepends=("autoconf" "automake" "libtool" "m4" "autoconf-archive")
 optdepends=("gtk3")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/westerndigitalcorporation/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=("533b4c11533fff445f98af11add943e1")
+md5sums=("205d4b893a76da5a6604ccb5f9afee46")
 
 build() {
 	cd "$pkgname-$pkgver"
