@@ -1,7 +1,7 @@
 pkgbase = mulle-sourcetree
 	pkgdesc = Project composition and maintenance with build support
-	pkgver = 0.23.1
-	pkgrel = 2
+	pkgver = 0.25.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-sourcetree
 	changelog = RELEASENOTES.md
@@ -9,9 +9,8 @@ pkgbase = mulle-sourcetree
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=3.3.0
-	source = https://github.com/mulle-sde/mulle-sourcetree/archive/0.23.1.tar.gz
-	md5sums = b3d7027643c95b5abb7bcabd237637e6
+	depends = mulle-bashfunctions>=3.4.0
+	source = https://github.com/mulle-sde/mulle-sourcetree/archive/0.25.0.tar.gz
+	md5sums = 549a2ab9c90ac9b722e8e6be9691a155
 
 pkgname = mulle-sourcetree
-

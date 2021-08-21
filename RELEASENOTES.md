@@ -1,3 +1,9 @@
+## 0.25.0
+
+* change/fix --no-bequeath --bequeath flags so it does what it promises to do and not the opposite
+* make column command optional
+
+
 ### 0.23.1
 
 * fix indent for includes
