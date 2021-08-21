@@ -7,4 +7,4 @@ StandardOutput=journal
 ExecStart=/usr/bin/tpm-fido
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target
