@@ -3,8 +3,8 @@
 # Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname='osu'
-pkgver='20210809.1'
-pkgrel=3
+pkgver='20210821'
+pkgrel=1
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='b9f12f580514eaf0da2ad7d5a07a8fa71d816e0b'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-sha256sums=('d9d573cf291aca97f02d28168f172bb52efa14ebb9250f15f0ca2fb63223cb87'
+sha256sums=('21bcecdc9b0396f075aad4fe12f4ac9d937a62291ee6f633757a31000490716b'
             'b843e4c7750cd324d8b52440dfead07b77b347ba1fada81c782ddc5fa8554cf3'
             '5765f6c08e946170806fa89de1a71351b4c48cd8cf61e1779f00ca71c4c7490f'
             '926b567b0a280dc36dc27e6435fe03329a655255627d423b64bb641ff071fb2b'
