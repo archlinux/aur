@@ -1,7 +1,7 @@
 pkgbase = netgen-lvs-git
 	pkgdesc = A netlist comparison (LVS) and format manipulation
 	pkgver = 1.5.r549.168e550
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opencircuitdesign.com/netgen/
 	arch = i686
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=netgen-lvs-git
 pkgver=1.5.r549.168e550
-pkgrel=1
+pkgrel=2
 pkgdesc="A netlist comparison (LVS) and format manipulation"
 url="http://opencircuitdesign.com/netgen/"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ build() {
    # verilog.c:1360:29: error: format not a string literal and no format arguments [-Werror=format-security]                                     
    # 1360 |                             sprintf(nodename, lhs->name);
    #
-   CFLAGS=$(filter-out -Werror=format-security,$(CFLAGS)) ./configure --prefix=/usr
+   CFLAGS=$($CFLAGS | sed 's/-Werror=format-security//') ./configure --prefix=/usr
    make
 }
 
