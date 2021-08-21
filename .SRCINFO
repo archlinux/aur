@@ -1,6 +1,6 @@
 pkgbase = lzdoom-git
 	pkgdesc = Fork of legacy versions of the GZDoom source port for older hardware; cutting edge Git version
-	pkgver = 4.3pre+2375+g7a244367fb
+	pkgver = 3.4.1v+2588+g43865c1947
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = lzdoom-git
 	provides = lzdoom
 	conflicts = lzdoom
 	conflicts = lzdoom-bin
-	source = gzdoom::git://github.com/drfrag666/gzdoom.git
+	source = gzdoom::git://github.com/drfrag666/gzdoom.git#branch=g3.3mgw
 	source = lzdoom.desktop
 	sha256sums = SKIP
 	sha256sums = d65aabafadf1d466cc6cc635b4765b069dce2cef628d4d1c33878297af509d60

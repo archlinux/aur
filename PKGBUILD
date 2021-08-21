@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber dot cz>
 
 pkgname=lzdoom-git
-pkgver=4.3pre+2375+g7a244367fb
+pkgver=3.4.1v+2588+g43865c1947
 pkgrel=1
 pkgdesc='Fork of legacy versions of the GZDoom source port for older hardware; cutting edge Git version'
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
 provides=('lzdoom')
 conflicts=('lzdoom' 'lzdoom-bin')
-source=('gzdoom::git://github.com/drfrag666/gzdoom.git'
+# WIP: set back to 'master' once g3.3mgw is merged
+source=('gzdoom::git://github.com/drfrag666/gzdoom.git#branch=g3.3mgw'
         'lzdoom.desktop')
 sha256sums=('SKIP'
             'd65aabafadf1d466cc6cc635b4765b069dce2cef628d4d1c33878297af509d60')
