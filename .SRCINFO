@@ -25,14 +25,33 @@ pkgbase = python-pocketsphinx-git
 	sha512sums = SKIP
 
 pkgname = python-pocketsphinx-git
+	depends = pocketsphinx
+	provides = python-pocketsphinx
+	provides = python-pocketsphinx-git
+	provides = python3-pocketsphinx
+	provides = python3-pocketsphinx-git
+	conflicts = python-pocketsphinx
+	conflicts = python-pocketsphinx-git
+	conflicts = python3-pocketsphinx
+	conflicts = python3-pocketsphinx-git
 
 pkgname = python2-pocketsphinx-git
+	depends = pocketsphinx
+	provides = python2-pocketsphinx
+	provides = python2-pocketsphinx-git
+	conflicts = python2-pocketsphinx
+	conflicts = python2-pocketsphinx-git
 
 pkgname = sphinxbase-git
 	provides = sphinxbase
+	provides = sphinxbase-git
 	conflicts = sphinxbase
+	conflicts = sphinxbase-git
 
 pkgname = pocketsphinx-git
+	depends = sphinxbase-git
 	depends = sphinxbase
 	provides = pocketsphinx
-	conflicts = procketsphinx
+	provides = pocketsphinx-git
+	conflicts = pocketsphinx
+	conflicts = pocketsphinx-git

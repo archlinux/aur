@@ -67,8 +67,8 @@ build() {
 }
 
 package_sphinxbase-git() {
-    provides=('sphinxbase')
-    conflicts=('sphinxbase')
+    provides=('sphinxbase' 'sphinxbase-git')
+    conflicts=('sphinxbase' 'sphinxbase-git')
 
     cd "${srcdir}/${_gitname}/deps/sphinxbase"
     export PYTHON=/usr/bin/python
@@ -81,9 +81,9 @@ package_sphinxbase-git() {
 }
 
 package_pocketsphinx-git() {
-    provides=('pocketsphinx')
-    conflicts=('procketsphinx')
-    depends=('sphinxbase')
+    provides=('pocketsphinx' 'pocketsphinx-git')
+    conflicts=('pocketsphinx' 'pocketsphinx-git')
+    depends=('sphinxbase-git' 'sphinxbase')
 
     # Pocketsphinx needs libpocketsphinx which is located in the other package
     # (sphinxbase). Copy the libs temporarily just to allow linking. Then
@@ -111,6 +111,10 @@ package_pocketsphinx-git() {
 }
 
 package_python-pocketsphinx-git() {
+    provides=('python-pocketsphinx' 'python-pocketsphinx-git' 'python3-pocketsphinx' 'python3-pocketsphinx-git')
+    conflicts=('python-pocketsphinx' 'python-pocketsphinx-git' 'python3-pocketsphinx' 'python3-pocketsphinx-git')
+    depends=('pocketsphinx')
+
     cd "${srcdir}/${_gitname}"
 
     export PYTHON=/usr/bin/python
@@ -118,6 +122,10 @@ package_python-pocketsphinx-git() {
 }
 
 package_python2-pocketsphinx-git() {
+    provides=('python2-pocketsphinx' 'python2-pocketsphinx-git')
+    conflicts=('python2-pocketsphinx' 'python2-pocketsphinx-git')
+    depends=('pocketsphinx')    
+
     export PYTHON=/usr/bin/python2
 
     cd "${srcdir}/python2-pocketsphinx-git/deps/sphinxbase"
