@@ -4,12 +4,13 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=x265-hg
-pkgver=3.4.r11.244186fe0ab6
+pkgver=3.4.r25404.e31211b2f00c
 pkgrel=1
-pkgdesc='Open source H.265/HEVC video encoder (hg version)'
+pkgdesc='Open source H.265/HEVC video encoder (mercurial version)'
 arch=('x86_64')
 url='https://www.videolan.org/developers/x265.html'
 license=('GPL')
+depends=('gcc-libs')
 makedepends=('mercurial' 'cmake' 'nasm')
 provides=('x265' 'libx265.so')
 conflicts=('x265')
@@ -17,8 +18,8 @@ source=('hg+http://hg.videolan.org/x265')
 sha256sums=('SKIP')
 
 pkgver() {
-    printf '%s.r%s.%s' "$(hg -R x265 log -r. --template '{latesttag}')" \
-                       "$(hg -R x265 log -r. --template '{latesttagdistance}')" \
+    printf '%s.r%s.%s' "$(hg -R x265 tags | sed '/_RC/d;/tip/d' | sort -rV | awk 'NR==1 { print $1 }')" \
+                       "$(hg -R x265 identify -n)" \
                        "$(hg -R x265 log -r. --template '{node|short}')"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = x265-hg
-	pkgdesc = Open source H.265/HEVC video encoder (hg version)
-	pkgver = 3.4.r11.244186fe0ab6
+	pkgdesc = Open source H.265/HEVC video encoder (mercurial version)
+	pkgver = 3.4.r25404.e31211b2f00c
 	pkgrel = 1
 	url = https://www.videolan.org/developers/x265.html
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = x265-hg
 	makedepends = mercurial
 	makedepends = cmake
 	makedepends = nasm
+	depends = gcc-libs
 	provides = x265
 	provides = libx265.so
 	conflicts = x265
@@ -15,4 +16,3 @@ pkgbase = x265-hg
 	sha256sums = SKIP
 
 pkgname = x265-hg
-
