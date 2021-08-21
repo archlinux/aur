@@ -4,13 +4,13 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-pkgver=1.5.1
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
-depends=('wxgtk3' 'webkit2gtk')
+depends=('wxgtk3>=1.5.0' 'webkit2gtk')
 makedepends=('awk' 'curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
