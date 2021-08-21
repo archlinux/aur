@@ -8,6 +8,7 @@ pkgbase = noip
 	arch = i686
 	arch = armv7h
 	arch = armv6h
+	arch = aarch64
 	license = GPL
 	depends = glibc
 	source = http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz
