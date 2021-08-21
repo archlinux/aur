@@ -8,6 +8,7 @@ pkgbase = sworkstyle
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	depends = otf-font-awesome
 	source = git+https://github.com/Lyr-7D1h/swayest_workstyle.git#tag=1.1.0
 	source = sworkstyle.man
 	sha256sums = SKIP

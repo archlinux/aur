@@ -7,6 +7,7 @@ pkgdesc="Swayest Workstyle - This tool will rename workspaces to the icons confi
 arch=("x86_64")
 url="https://github.com/Lyr-7D1h/swayest_workstyle"
 license=("MIT")
+depends=("otf-font-awesome")
 makedepends=("rust" "cargo" "git")
 source=("git+${url}.git#tag=${pkgver}" 
         "sworkstyle.man") 
