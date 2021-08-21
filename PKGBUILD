@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-monitor
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 epoch=1
 pkgdesc="‍ Extensible filesystem observation with callbacks"
 arch=('any')
 url="https://github.com/mulle-sde/mulle-monitor"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.3.0')
+depends=('bash' 'mulle-bashfunctions>=3.4.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-monitor/archive/0.9.1.tar.gz")
+source=("https://github.com/mulle-sde/mulle-monitor/archive/0.9.2.tar.gz")
 noextract=()
-md5sums=('83fc6a7193e542801fc7fb177d77f22d')
+md5sums=('f79fdaab70c8197b53270dc4c0bb142c')
 validpgpkeys=()
 
 package() {

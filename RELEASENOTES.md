@@ -1,3 +1,7 @@
+### 0.9.2
+
+* Various small improvements
+
 ### 0.9.1
 
 * installer verbose toggle
