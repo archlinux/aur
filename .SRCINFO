@@ -1,0 +1,22 @@
+pkgbase = tpm-fido-git
+	pkgdesc = A WebAuthn/U2F token protected by a TPM (Go/Linux)
+	pkgver = r19.80e50c7
+	pkgrel = 1
+	url = https://github.com/psanford/tpm-fido
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = tpm-fido
+	conflicts = tpm-fido
+	source = git+https://github.com/psanford/tpm-fido.git
+	source = 99-tpm-fido.rules
+	source = tpm-fido.service
+	source = tpm-fido.sysusers
+	md5sums = SKIP
+	md5sums = 3a45c015af2f681c2d5820f034826ec9
+	md5sums = 12769495a5f3bcb251f85f5d2d8aafe8
+	md5sums = bb2e749c3da23a02ed3e63d65f09b309
+
+pkgname = tpm-fido-git
