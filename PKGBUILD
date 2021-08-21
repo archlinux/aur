@@ -6,7 +6,7 @@
 
 pkgname=courier-imap
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
@@ -30,8 +30,7 @@ sha512sums=('33e54e3b369335f5bc234c638c9bf4f68bc39dc9cb6cc5e3e3ba200f72a7b2fcdca
             'f1bd578c7fa8af060252aea84dacbe629cf6f76895c0499d84b26e17526965d9b27584b8c0240670fd0294506ac426c99f6af1d1e1c062a82e420105b65d7433')
 
 prepare() {
-while [ "$option" != 2 ]
-do
+echo ""
 echo "**************************************************************************"
 echo "This message is only meant to make sure you've read the instructions in"
 echo "INSTALL file about updating from earlier versions; specifically the need"
@@ -39,23 +38,7 @@ echo "to convert any existing maildirs to a Unicode naming scheme manually using
 echo "maildirmake, more info in http://www.courier-mta.org/maildirmake.html."
 echo "**************************************************************************"
 echo ""
-echo "Choose an option:"
-echo ""
-echo "1) Install package anyway"
-echo "2) Abort"
-echo ""
-read -rp "Choose an option [1 - 2] " option
-case $option in
-1)
-break;;
-2)
-exit 0;;
-*)
-echo "'$option' I don't recognize this option."
-echo "Press enter to continue..."
-read -r;;
-esac
-done
+sleep 5s
 }
 
 build() {
@@ -77,8 +60,7 @@ build() {
     --with-piddir=/run/courier \
     --with-trashquota \
     --with-db=gdbm \
-    --with-mailuser=courier --with-mailgroup=courier \
-    --with-notice=unicode
+    --with-mailuser=courier --with-mailgroup=courier
   make
 }
 
@@ -88,8 +70,9 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # cleanup - provided by courier-maildrop
-  rm "${pkgdir}/usr/bin/"{deliverquota,maildirmake,makedat}
+  rm "${pkgdir}/usr/bin/"{deliverquota,maildirmake,makedat,maildirkw}
   rm "${pkgdir}/usr/share/man/man1/"maildirmake*
+  rm "${pkgdir}/usr/share/man/man1/"maildirkw*
   rm "${pkgdir}/usr/share/man/man8/"deliverquota*
   ###############################################################################
   # this is what usually "make install-configure" does
