@@ -1,6 +1,6 @@
 pkgbase = btrfs-progs-git
 	pkgdesc = Btrfs filesystem utilities
-	pkgver = 5390_5.12_r0_gb16b0a76
+	pkgver = 5454_5.13.1_r0_ge4ac7d4f
 	pkgrel = 1
 	url = https://btrfs.wiki.kernel.org/index.php/Main_Page
 	install = btrfs-progs-git.install
@@ -20,10 +20,10 @@ pkgbase = btrfs-progs-git
 	provides = btrfs-progs
 	conflicts = btrfs-progs
 	source = git+https://github.com/kdave/btrfs-progs.git
-	source = initcpio-hook-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
-	source = initcpio-install-btrfs::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
-	source = btrfs-scrub@.service::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/btrfs-scrub@.service?h=packages/btrfs-progs
-	source = btrfs-scrub@.timer::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/btrfs-scrub@.timer?h=packages/btrfs-progs
+	source = initcpio-hook-btrfs::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/initcpio-hook-btrfs?h=packages/btrfs-progs
+	source = initcpio-install-btrfs::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/initcpio-install-btrfs?h=packages/btrfs-progs
+	source = btrfs-scrub@.service::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/btrfs-scrub@.service?h=packages/btrfs-progs
+	source = btrfs-scrub@.timer::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/btrfs-scrub@.timer?h=packages/btrfs-progs
 	md5sums = SKIP
 	md5sums = b09688a915a0ec8f40e2f5aacbabc9ad
 	md5sums = 7241ba3a4286d08da0d50b7176941112
@@ -36,4 +36,3 @@ pkgbase = btrfs-progs-git
 	sha1sums = f75f76ff1a760f6c710cf0d5ab1c52874fc5625c
 
 pkgname = btrfs-progs-git
-

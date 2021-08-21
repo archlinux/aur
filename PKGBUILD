@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=5390_5.12_r0_gb16b0a76
+pkgver=5454_5.13.1_r0_ge4ac7d4f
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=('glibc' 'e2fsprogs' 'lzo' 'zlib' 'zstd')
 makedepends=('git' 'asciidoc' 'xmlto' 'python' 'python-setuptools')
 provides=('btrfs-progs')
 conflicts=('btrfs-progs')
-_url=https://projects.archlinux.org/svntogit/packages.git/plain/trunk/
+_url=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/btrfs-progs/trunk/
 install="${pkgname}.install"
 source=(git+"https://github.com/kdave/btrfs-progs.git"
         "initcpio-hook-btrfs::${_url}initcpio-hook-btrfs?h=packages/btrfs-progs"
