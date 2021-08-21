@@ -1,3 +1,8 @@
+# 2.0.0
+
+* Various small improvements
+
+
 ### 1.8.3
 
 * up to 3000 github tags can be fetched now, instead of 30 as before

@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-fetch
-pkgver=1.8.3
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 epoch=1
 pkgdesc="Download and unpack repositories or archives"
 arch=('any')
 url="https://github.com/mulle-sde/mulle-fetch"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.3.0')
+depends=('bash' 'mulle-bashfunctions>=3.4.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-fetch/archive/1.8.3.tar.gz")
+source=("https://github.com/mulle-sde/mulle-fetch/archive/2.0.0.tar.gz")
 noextract=()
-md5sums=('bcf931cbce81d56976a59839fa28afa8')
+md5sums=('fbe29ba68091bf57be3723699d23df86')
 validpgpkeys=()
 
 package() {

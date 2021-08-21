@@ -1,7 +1,7 @@
 pkgbase = mulle-fetch
 	pkgdesc = Download and unpack repositories or archives
-	pkgver = 1.8.3
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mulle-sde/mulle-fetch
 	changelog = RELEASENOTES.md
@@ -9,9 +9,8 @@ pkgbase = mulle-fetch
 	groups = mulle-sde-all
 	license = BSD3
 	depends = bash
-	depends = mulle-bashfunctions>=3.3.0
-	source = https://github.com/mulle-sde/mulle-fetch/archive/1.8.3.tar.gz
-	md5sums = bcf931cbce81d56976a59839fa28afa8
+	depends = mulle-bashfunctions>=3.4.0
+	source = https://github.com/mulle-sde/mulle-fetch/archive/2.0.0.tar.gz
+	md5sums = fbe29ba68091bf57be3723699d23df86
 
 pkgname = mulle-fetch
-
