@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-platform
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 epoch=1
 pkgdesc="Query platform specifica and search for libraries"
 arch=('any')
 url="https://github.com/mulle-sde/mulle-platform"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.3.0')
+depends=('bash' 'mulle-bashfunctions>=3.4.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-platform/archive/0.4.2.tar.gz")
+source=("https://github.com/mulle-sde/mulle-platform/archive/0.5.0.tar.gz")
 noextract=()
-md5sums=('88a5fda939aa70f6dc39abc62c3ea747')
+md5sums=('999243e1b136e023d7a93d76ce37af63')
 validpgpkeys=()
 
 package() {
