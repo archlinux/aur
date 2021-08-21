@@ -58,7 +58,7 @@ _use_current=
 pkgbase=linux-cacule
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.12
-pkgrel=4
+pkgrel=5
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -483,7 +483,7 @@ package_linux-cacule-headers() {
 }
 
 md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
-         'e1d6b506440e91b699b6de7b86f00475'
+         'd2f272859bedf0c122de0a5088f69eeb'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
          '1082374b0727f24c4a96fc94f28de24c'
