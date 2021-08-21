@@ -1,20 +1,26 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=twolame-git
-pkgver=0.3.13.r100.gfb60b2e
+pkgver=0.4.0.r3.g8c47401
 pkgrel=1
 pkgdesc="An optimised MPEG Audio Layer 2 (MP2) encoder"
 arch=('i686' 'x86_64')
 url="https://www.twolame.org/"
 license=('LGPL2')
 depends=('glibc' 'libsndfile')
-makedepends=('git')
+makedepends=('git' 'asciidoc' 'doxygen' 'xmlto')
 provides=('twolame')
 conflicts=('twolame')
 options=('staticlibs')
 source=("git+https://github.com/njh/twolame.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "twolame"
+
+  sed -i -e 's|doxygen.png|doxygen.svg|g' "doc/html/Makefile.am"
+}
 
 pkgver() {
   cd "twolame"
@@ -26,7 +32,9 @@ build() {
   cd "twolame"
 
   NOCONFIGURE=1 ./autogen.sh
-  ./configure --prefix="/usr" --disable-maintainer-mode
+  ./configure \
+    --prefix="/usr" \
+    --enable-maintainer-mode
   make
 }
 
