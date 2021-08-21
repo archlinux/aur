@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=pam-tmpdir
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM module for creating safe per-user temporary directories"
 arch=(x86_64)
 url="https://tracker.debian.org/pkg/pam-tmpdir"
