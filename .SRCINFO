@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
 	pkgver = 7.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = powershell
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 01c81d8a14caca7c4d5af1ff60afaac5e86f5ba5f1b8bf1254e2760580bdb266
+	sha256sums = SKIP
 
 pkgname = powershell

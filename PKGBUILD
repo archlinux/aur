@@ -7,7 +7,7 @@ _binaryname=pwsh
 _pkgver=7.1.4
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform automation and configuration tool/framework (latest release)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
@@ -19,7 +19,7 @@ source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgve
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
 sha256sums=('SKIP'
             'SKIP'
-            '01c81d8a14caca7c4d5af1ff60afaac5e86f5ba5f1b8bf1254e2760580bdb266')
+            'SKIP')
 install=powershell.install
 options=(staticlibs !strip)
 
