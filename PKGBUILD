@@ -3,7 +3,8 @@
 
 pkgname=('tailwindcss-language-server')
 pkgbase=tailwindcss-intellisense
-pkgver=0.6.8
+pkgver=0.6.14
+_serverver=0.0.3
 pkgrel=1
 pkgdesc='Intelligent Tailwind CSS tooling'
 url=https://github.com/tailwindlabs/tailwindcss-intellisense
@@ -12,21 +13,22 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$url/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
-b2sums=('376c47a6ff4d1fa4e228146cddc8e3cb17fc180ba8f47463dd5c9988772a4d65424506d4100341ef6c8b9bace7da05fe6f24b35ed67c3494324855f09acc23f4')
+b2sums=('2329dc94d90a7d06bf6ce81c9ce943694eb731880595fe8286f5244ab54fbdf5807135887bf857f99ed4790e95509808b30d10621ced7f4cbe337edeaeff50f7')
 
 build() {
   cd $pkgbase-$pkgver
   npm ci
   npm run bootstrap
-  cd packages/${pkgname[0]}
+  cd packages/"${pkgname[0]}"
   npm run build
 }
 
 package_tailwindcss-language-server() {
+  provides=("tailwindcss-language-server=$_serverver")
   pkgdesc='Tailwind CSS Language Server'
   conflicts=("$pkgbase")
-  cd $pkgbase-$pkgver/packages/${pkgname[0]}
-  install -Dt "$pkgdir"/usr/bin bin/${pkgname[0]}
+  cd $pkgbase-$pkgver/packages/"${pkgname[0]}"
+  install -Dt "$pkgdir"/usr/bin bin/"${pkgname[0]}"
 }
 
 #package_vscode-tailwindcss() {

@@ -1,15 +1,16 @@
 pkgbase = tailwindcss-intellisense
 	pkgdesc = Intelligent Tailwind CSS tooling
-	pkgver = 0.6.8
+	pkgver = 0.6.14
 	pkgrel = 1
 	url = https://github.com/tailwindlabs/tailwindcss-intellisense
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/tailwindlabs/tailwindcss-intellisense/archive/v0.6.8/tailwindcss-intellisense-0.6.8.tar.gz
-	b2sums = 376c47a6ff4d1fa4e228146cddc8e3cb17fc180ba8f47463dd5c9988772a4d65424506d4100341ef6c8b9bace7da05fe6f24b35ed67c3494324855f09acc23f4
+	source = https://github.com/tailwindlabs/tailwindcss-intellisense/archive/v0.6.14/tailwindcss-intellisense-0.6.14.tar.gz
+	b2sums = 2329dc94d90a7d06bf6ce81c9ce943694eb731880595fe8286f5244ab54fbdf5807135887bf857f99ed4790e95509808b30d10621ced7f4cbe337edeaeff50f7
 
 pkgname = tailwindcss-language-server
 	pkgdesc = Tailwind CSS Language Server
+	provides = tailwindcss-language-server=0.0.3
 	conflicts = tailwindcss-intellisense
