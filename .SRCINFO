@@ -1,16 +1,22 @@
 pkgbase = fuse-overlayfs-git
 	pkgdesc = FUSE implementation for overlayfs
-	pkgver = 467
+	pkgver = 1.7.1.r2.gb47bccf
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/containers/fuse-overlayfs
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	depends = fuse3
 	provides = fuse-overlayfs
 	conflicts = fuse-overlayfs
-	source = fuse-overlayfs::git+https://github.com/containers/fuse-overlayfs.git
+	source = git+https://github.com/containers/fuse-overlayfs.git
 	sha256sums = SKIP
 
 pkgname = fuse-overlayfs-git
-
