@@ -1,18 +1,18 @@
 # Maintainer: Jonathan Boyle <programmerfalcon@gmail.com>
 pkgname=mulle-make
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.16.0
+pkgrel=1
 epoch=1
 pkgdesc="Build projects with tools like cmake, meson, autoconf"
 arch=('any')
 url="https://github.com/mulle-sde/mulle-make"
 license=('BSD3')
 groups=('mulle-sde-all')
-depends=('bash' 'mulle-bashfunctions>=3.3.0')
+depends=('bash' 'mulle-bashfunctions>=3.4.0')
 changelog="RELEASENOTES.md"
-source=("https://github.com/mulle-sde/mulle-make/archive/0.15.0.tar.gz")
+source=("https://github.com/mulle-sde/mulle-make/archive/0.16.0.tar.gz")
 noextract=()
-md5sums=('aa1a04ba21acab2ae3717003f19aba21')
+md5sums=('05d09aa487f8a992b786077e0091ab86')
 validpgpkeys=()
 
 package() {

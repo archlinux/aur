@@ -1,3 +1,8 @@
+## 0.16.0
+
+* Various small improvements
+
+
 ## 0.15.0
 
 * "project" is now the 'official' default command name and not the synonymous make/build
