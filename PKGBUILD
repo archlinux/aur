@@ -1,7 +1,7 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.13"
+pkgver="1.1.14"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -13,7 +13,7 @@ conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-a
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('1ae7053e07a808d35a9b2e5161896125'
+md5sums=('d4dc9fd5c8f1f900c29008001edba440'
          '0ccba0e195278ab1de3fec6ea0445afa')
 icon_sizes=(48 128 256 1024)
 
