@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=googletest-git
-pkgver=1.10.0.r433.g1fb1bb23
+pkgver=1.11.0.r45.g2f80c2ba
 pkgrel=1
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
@@ -44,7 +44,5 @@ package() {
   cd "googletest"
 
   make -C "_build" DESTDIR="$pkgdir" install
-  install -Dm755 "googletest/scripts/gtest-config.in" -t "$pkgdir/usr/bin"
-
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gtest"
 }
