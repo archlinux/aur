@@ -12,7 +12,7 @@ depends=(
   # "Optional" in the sense that without these, `aconfmgr --help` will
   # run but they will be needed to actually save/restore
   # configurations
-  'pacman' 'grep' 'gawk' 'diffutils' 'pacutils'
+  'pacman' 'grep' 'gawk' 'diffutils' 'pacutils' 'expect'
 )
 makedepends=('git')
 optdepends=(

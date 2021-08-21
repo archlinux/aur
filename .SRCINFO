@@ -12,6 +12,7 @@ pkgbase = aconfmgr-git
 	depends = gawk
 	depends = diffutils
 	depends = pacutils
+	depends = expect
 	optdepends = aurman: aurman integration
 	optdepends = pacaur: pacaur integration
 	optdepends = paru: paru integration
