@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=91.0
+pkgver=91.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -26,14 +26,14 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='1.5'
+_settings_tag='1.6'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}")
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('2a4d1f788ab77f68380d4e6ab0b36bd1efd1a4ac9e9c6d10e39377894c077901'
+sha256sums=('b95854ec9cb3e4409e5a1cf203c2b228146c6e3f9f3240d304cecec6b256f962'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP')
@@ -68,6 +68,7 @@ ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
+export MOZ_REQUIRE_SIGNING
 
 # System libraries
 ac_add_options --with-system-nspr
@@ -164,7 +165,7 @@ fi
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
 
-  # patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
+  patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
