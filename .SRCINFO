@@ -1,0 +1,16 @@
+pkgbase = oblige-obsidian-stable-git
+	pkgdesc = Random level generator for classic Doom, also a fork of OBLIGE. Stable branch.
+	pkgver = r18534.34f77453d
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libx11
+	depends = fltk
+	provides = oblige-obsidian
+	conflicts = oblige-obsidian
+	source = obsidian::git+https://github.com/dashodanger/Obsidian#branch=obsidian
+	md5sums = SKIP
+
+pkgname = oblige-obsidian-stable-git

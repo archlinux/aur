@@ -1,0 +1,11 @@
+/src/
+*/src/
+*/pkg/
+*.pkg.tar.xz
+*.tar.bz2
+*.tar.gz
+*.tar.zst
+*/**
+!*/PKGBUILD
+!*/*.patch
+!*/*.install
