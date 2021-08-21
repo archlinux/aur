@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: Posi <posi1981@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: LinArcx <linarcx at gmail.com>
 pkgname=kindd
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Kindful dd GUI written in Qt Quick"
 arch=('any')
 url="https://github.com/LinArcX/Kindd"

@@ -1,7 +1,7 @@
 pkgbase = kindd
 	pkgdesc = A Kindful dd GUI written in Qt Quick
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LinArcX/Kindd
 	arch = any
 	license = GPL3
@@ -17,4 +17,3 @@ pkgbase = kindd
 	sha256sums = e596f1b1577ff3e83a779e6181252ae2f09731f513d17dd6b95cbc2cf204654f
 
 pkgname = kindd
-
