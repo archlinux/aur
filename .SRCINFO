@@ -1,6 +1,6 @@
 pkgbase = ansible-gpg-key-git
 	pkgdesc = Module to manage GPG keys from files and keyservers
-	pkgver = r3.af34631
+	pkgver = r8.435f8e6
 	pkgrel = 1
 	url = https://github.com/netson/ansible-gpg-key
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = ansible-gpg-key-git
 	md5sums = SKIP
 
 pkgname = ansible-gpg-key-git
-

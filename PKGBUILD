@@ -2,7 +2,7 @@
 
 _pkgname=ansible-gpg-key
 pkgname=${_pkgname}-git
-pkgver=r3.af34631
+pkgver=r8.435f8e6
 pkgrel=1
 pkgdesc="Module to manage GPG keys from files and keyservers"
 arch=(any)
