@@ -6,7 +6,6 @@ pkgbase = dsda-doom-git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = deutex
 	makedepends = imagemagick
 	makedepends = git
 	depends = fluidsynth
@@ -19,11 +18,7 @@ pkgbase = dsda-doom-git
 	depends = dumb
 	provides = dsda-doom
 	conflicts = dsda-doom
-	conflicts = prboom-plus
 	source = git+https://github.com/kraflab/dsda-doom.git
-	source = dsda-doom.desktop
 	sha256sums = SKIP
-	sha256sums = 31944f60e6cf45db60d63dd6538e0d21bade193646f28b000fa8c2f1d9672dbf
 
 pkgname = dsda-doom-git
-
