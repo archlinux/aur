@@ -4,7 +4,7 @@
 
 pkgname=powershell
 _binaryname=pwsh
-_pkgver=7.1.3
+_pkgver=7.1.4
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,14 +12,14 @@ pkgdesc='A cross-platform automation and configuration tool/framework (latest re
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=5.0.3')
+makedepends=('git' 'cmake' 'dotnet-sdk>=5.0.9')
 depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
 sha256sums=('SKIP'
             'SKIP'
-            '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696')
+            '01c81d8a14caca7c4d5af1ff60afaac5e86f5ba5f1b8bf1254e2760580bdb266')
 install=powershell.install
 options=(staticlibs !strip)
 
