@@ -1,0 +1,20 @@
+pkgbase = gmdb2
+	pkgdesc = Graphical viewer for Microsoft Access database files
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/mdbtools/gmdb2
+	install = gmdb2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = desktop-file-utils
+	makedepends = gawk
+	depends = mdbtools>=0.9.0
+	depends = gtk3>=3.22
+	optdepends = yelp: for documentation
+	provides = gmdb2=0.9.0
+	source = gmdb2-0.9.0.tar.gz::https://github.com/mdbtools/gmdb2/archive/v0.9.0.tar.gz
+	md5sums = 213340eb34607845887c2ce39303f6c1
+
+pkgname = gmdb2
