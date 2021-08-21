@@ -1,6 +1,6 @@
 pkgbase = index-fm-git
 	pkgdesc = Index is a file manager that works on desktops, Android and Plasma Mobile
-	pkgver = 2.0.0.r6.g6006b4a
+	pkgver = 2.0.0.r7.g5db75df
 	pkgrel = 1
 	url = https://invent.kde.org/maui/index-fm
 	arch = x86_64

@@ -1,9 +1,9 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Maintainer: TheCynicalLiger
+# Contributor: TheCynicalLiger
 # Contributor: Lerentis <lerentis@burntbunch.org>
 
 pkgname=index-fm-git
-pkgver=2.0.0.r6.g6006b4a
+pkgver=2.0.0.r7.g5db75df
 pkgrel=1
 pkgdesc="Index is a file manager that works on desktops, Android and Plasma Mobile"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
