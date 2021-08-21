@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=89.0.2
+pkgver=91.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ depends=('libxt' 'mime-types'
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13'
              'cargo' 'mercurial' 'llvm' 'clang' 'rust' 'jack'
-             'gtk2' 'nodejs' 'cbindgen' 'nasm' 'xz'
+             'nodejs' 'cbindgen' 'nasm' 'xz'
              'python' 'python-psutil' 'python-zstandard' 'dump_syms')
 
 
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=bf580bacd132687dc0135959fbc9eeb8d8ba3ea9
+_patchrev=8bdd012e04c6e6c3f01d937faf16f3474685b9cb
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -99,6 +99,8 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         # end
         # Fix CSD when globalmenu is active #8
         fix_csd_window_buttons.patch
+        # Workaround #14
+        fix-wayland-build.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -156,6 +158,8 @@ prepare() {
   # Fix CSD when globalmenu is active #8
   patch -Np1 -i "$srcdir"/fix_csd_window_buttons.patch
 
+  # Workaround #14
+  patch -Np1 -i "$srcdir"/fix-wayland-build.patch
 
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
@@ -266,15 +270,15 @@ END
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('SKIP'
-         '1fd86cc439737c90a5854aab7f85080f'
+         '72724b401217f1d0b380b4ee2872ad82'
          'a26a061efb4def6572d5b319d657f1d6'
          '4c23d9c0a691d70919beb1dafbbecbd3'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'c0f68250d27f208efcdee710207cd3e4'
          '43c65f6513fbc28aaa8238ad3bdb4e26'
-         '7a97237384119556880ab5393c9091a3'
+         '14ada9ebd479223d5f95a615caa50bcd'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         'e81dfd1207442ccef8afd8bb5fecb3b5'
+         '0d7f0fe667c3e9e54f95fa51e9560eed'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '6a1ed12b8dbac57722436a2987e3ea33'
@@ -283,9 +287,10 @@ md5sums=('SKIP'
          'e7994b3b78b780ebe610ba3d87247e40'
          '00abc3976f028f8fe07111b9e687b574'
          'c7b492df4fbf42ffe8aea4c0afb89921'
-         '5f3d8a91f73b319310cddbf596bb1850'
+         '04d226e7e748141d447ea28535890631'
          'c2ccbfca8c29fb6d960206af335c1d8e'
          'b21033ca08953e7ce8304a208869eed1'
-         '5634ebb84f82d0d14d59715172219b27'
-         '11ea83f4953e77509505054d97a60af5'
-         'f49ac3b9f5146e33ce587e6b23eb1a86')
+         'd928ecb61da7628d4e7981ebf7e4c879'
+         '5cf84ebbd3c787b56198c32a91b4df16'
+         'f49ac3b9f5146e33ce587e6b23eb1a86'
+         'eb9fd90a3b18bfeebbed7e0e6056079c')
