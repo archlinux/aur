@@ -1,7 +1,7 @@
 pkgbase = dogecoin-qt
 	pkgdesc = Cryptocurrency
-	pkgver = 1.14.3
-	pkgrel = 2
+	pkgver = 1.14.4
+	pkgrel = 1
 	url = http://dogecoin.com/
 	install = dogecoin.install
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = dogecoin-qt
 	provides = dogecoin-daemon
 	provides = dogecoin-tx
 	provides = dogecoin-cli
-	options = !lto
-	source = https://github.com/dogecoin/dogecoin/archive/v1.14.3.tar.gz
+	options = lto
+	source = https://github.com/dogecoin/dogecoin/archive/v1.14.4.tar.gz
 	source = dogecoin.desktop
-	sha256sums = 01039ad91adf7d2815ab07b45f751426e1c8e230f868dc878d4f5ff8aefeee47
+	sha256sums = 6b3a7579861d03b69b0f149e10d1396b713f4f8921eab935c7f7608a7b9cb6fb
 	sha256sums = 04d41773462ad6609658e291d22b15cd8d58b8eb5e4391a80cd1dae75e7df0e6
 
 pkgname = dogecoin-qt
