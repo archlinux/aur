@@ -1,18 +1,17 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: feufochmar <feufochmar.gd@beleth.fr>
+
 pkgname=ttf-caracteres
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A family of typefaces used on roadsigns in France."
 arch=('any')
-url="http://fonts.simplythebest.net/font/367/caracteres-font.font"
+url="https://fonts.simplythebest.net/font/367/caracteres-font.font"
 license=('custom')
-depends=()
-source=("http://fonts.simplythebest.net/fonts/download=367")
+source=("$pkgname-$pkgver.zip::https://fonts.simplythebest.net/fonts/download=367")
+sha256sums=('fc757e4429f1b4f469ef63f33c04f990064bfa7fb6e37a81946ff42c44f3ed32')
 
 package() {
-  cd "$srcdir/"
-  mkdir -p  "$pkgdir"/usr/share/fonts/TTF
-  install -m644 *.ttf "$pkgdir"/usr/share/fonts/TTF/
+	install -Dm 644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
+	install -Dm 644 Caracteres.txt -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
-md5sums=('22d9ae4cb9e04680e879e4c2850e471f')
