@@ -1,8 +1,8 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 
 pkgname=graywolf-git
-pkgver=0.1.6.r184.6c5e24f
-pkgrel=5
+pkgver=0.1.6.r185.f47937b
+pkgrel=1
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
