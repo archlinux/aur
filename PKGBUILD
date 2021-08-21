@@ -1,4 +1,4 @@
-# Maintainer: Fox Kiester <noct[at]openmailbox[dot]org>
+# Maintainer: Fox Kiester <noct[at]posteo[dot]net>
 _pkgname=zscroll
 pkgname=zscroll-git
 pkgver=0.1.r5.gd42dc2c
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A text scroller for use with panels"
 arch=('any')
 url="https://github.com/noctuid/zscroll"
-license=('Simplified BSD')
+license=('GPL3')
 depends=('python')
 makedepends=('git')
 provides=("${_pkgname}")
