@@ -1,0 +1,16 @@
+pkgbase = suraj-snappy-git
+	pkgdesc = A all in one command line utility for screenshots and screenrecords
+	pkgver = 1.0.r2.52815b4
+	pkgrel = 1
+	url = https://github.com/real4suraj/snappy.git
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = ffmpeg
+	depends = scrot
+	provides = snappy
+	conflicts = snappy
+	source = git+https://github.com/real4suraj/snappy.git
+	md5sums = SKIP
+
+pkgname = suraj-snappy-git
