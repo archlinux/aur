@@ -1,6 +1,6 @@
 pkgbase = sway-dynamic-names-git
 	pkgdesc = Dynamically update the name of each Sway WM workspace using font-awesome icons
-	pkgver = 0.0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/j-waters/sway-dynamic-names
 	arch = any
