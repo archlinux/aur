@@ -1,3 +1,13 @@
+## 3.4.0
+
+* clarify distinction between os (host) and plaform (target) a bit
+* allow environment set FOO=1 along with set FOO 1
+* protect and unprotect files a bit more cleverly
+* there is now a hardcoded scope, so we can list hardcoded values
+* the "project" and "extension" scopes are now known to mulle-env
+* new option --protect-flag to speed up mulle-sde init
+
+
 ### 3.3.2
 
 * preserve leading whitespace on -C arguments
