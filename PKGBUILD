@@ -2,10 +2,9 @@
 
 pkgname=ethash-lib-git
 _pkgname=ethash
-
 pkgver=0.7.0.r11.gb784418
 pkgrel=1
-pkgdesc="C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm"
+pkgdesc="C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm. - Git"
 arch=('any')
 url="https://github.com/chfast/ethash"
 license=('GPL3')
@@ -15,6 +14,16 @@ conflicts=("$_pkgname" "$_pkgname-lib" "$_pkgname-git" "$pkgname")
 source=($_pkgname-git::"git+$url.git")
 sha256sums=('SKIP')
 options=(!ccache)
+export cuda=0 # change this to cuda=1 if you want to build with cuda.
+
+if [ "$cuda" -gt "0" ]; then
+     export cudaopts="-DCMAKE_C_COMPILER=/opt/cuda/bin/gcc -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++"
+     echo "Cuda Superpowers Enabled."
+     makedepends+=('cuda')
+else
+     export cudaopts='-DETHASH_BUILD_TESTS=OFF'
+fi
+
 
 pkgver() {
         cd "$srcdir/"$_pkgname-git""
@@ -35,12 +44,18 @@ build () {
   fi
   mkdir build && cd build
   
-  cmake \
+
+  if [ $cuda -gt "0" ]; then
+  	echo "Building with Cuda"
+  fi
+
+  cmake .. \
   -DCMAKE_INSTALL_PREFIX="/usr" \
   -DCMAKE_INSTALL_SBINDIR="bin" \
   -DETHASH_NATIVE=ON \
-  -DETHASH_BUILD_TESTS=OFF \
-  -DNATIVE=ON ..
+  -DNATIVE=ON \
+  $cudaopts
+
   #  cmake --build .. # BUGGED!
   make
 }

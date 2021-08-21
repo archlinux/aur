@@ -1,5 +1,5 @@
 pkgbase = ethash-lib-git
-	pkgdesc = C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
+	pkgdesc = C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm. - Git
 	pkgver = 0.7.0.r11.gb784418
 	pkgrel = 1
 	url = https://github.com/chfast/ethash
