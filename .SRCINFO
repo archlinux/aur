@@ -1,6 +1,6 @@
 pkgbase = joplin-beta
 	pkgdesc = The latest pre-release - open source note taking and to-do application
-	pkgver = 2.3.3
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://joplinapp.org
 	arch = x86_64
@@ -25,7 +25,6 @@ pkgbase = joplin-beta
 	sha256sums = 18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557
 	sha256sums = b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438
 	sha256sums = b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e
-	sha256sums = ba75967f99eb5881267a0c80e572b5c93fc94060eb3519912005f9a084274cf3
+	sha256sums = c381248bd68456b0ed71be4b2293f780cef59f346f55dadfe124b0bfa008449e
 
 pkgname = joplin-beta
-
