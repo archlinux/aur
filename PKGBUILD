@@ -1,9 +1,9 @@
 # Maintainer: Simon Marcher <marchersimon@zohomail.eu>
 pkgname=tldr-cpp-git
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="The all-in-one tldr client for users and contributors"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/marchersimon/tldr-cpp.git"
 license=('GPL3')
 makedepends=(git make gcc curl libzip)
