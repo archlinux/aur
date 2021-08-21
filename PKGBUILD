@@ -2,10 +2,10 @@
 
 pkgname=googletest-git
 pkgver=1.11.0.r45.g2f80c2ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
-url="https://github.com/google/googletest"
+url="https://google.github.io/googletest/"
 license=('BSD')
 depends=('gcc-libs' 'sh')
 makedepends=('git' 'cmake')
