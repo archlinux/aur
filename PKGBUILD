@@ -3,7 +3,7 @@
 
 pkgname=dex2jar-git
 pkgver=2.1.nightly.28.r13.gd7a8611
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools to work with android .dex and java .class files, git version'
 arch=('i686' 'x86_64')
 url='https://github.com/pxb1988/dex2jar'
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=$pkgver")
 license=('Apache-2.0')
 depends=('java-runtime')
-makedepends=('java-environment>=7' 'git' 'gradle')
+makedepends=('jdk8-openjdk' 'git' 'gradle')
 source=("${pkgname%-git}"::'git+https://github.com/pxb1988/dex2jar')
 md5sums=('SKIP')
 
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  gradle clean installDist
+  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+  ./gradlew clean installDist
 }
 
 package() {
