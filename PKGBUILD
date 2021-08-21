@@ -1,8 +1,8 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.1.11"
-pkgrel=2
+pkgver="1.1.13"
+pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -13,14 +13,13 @@ conflicts=('gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-a
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('59a3149bd07acdc6ae4f4f9d7823034a'
+md5sums=('1ae7053e07a808d35a9b2e5161896125'
          '0ccba0e195278ab1de3fec6ea0445afa')
 icon_sizes=(48 128 256 1024)
 
 prepare() {
     # Generate .desktop
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" --categories "Application;Game" -n -f
-    mv "GDLauncher.desktop" "${pkgname}.desktop"
 
     cd "${srcdir}/GDLauncher-${pkgver}/"
 
@@ -62,11 +61,11 @@ package() {
 
     # Desktop entry
     install -d -m755 "${pkgdir}/usr/share/applications/"
-    install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -D -m644 "${srcdir}/GDLauncher.desktop" "${pkgdir}/usr/share/applications/GDLauncher.desktop"
 
     # Install icons
     for size in "${icon_sizes[@]}"; do
         install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
-        convert "${srcdir}/GDLauncher-${pkgver}/public/icon.png" -size "${size}/${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+        convert "${srcdir}/GDLauncher-${pkgver}/public/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
     done
 }
