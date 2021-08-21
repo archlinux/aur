@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=r29.f5d0c04
+pkgver=1.1.1.r2.dd1f6e5
 pkgrel=1
 arch=(x86_64)
 pkgdesc="A key remapping daemon for linux. "
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed -E 's/([^-]*-)g/r\1/; s/-/./g; s/^v//'
 }
 
 build() {
