@@ -1,6 +1,6 @@
 # Maintainer: Mike Cuche <cuche@gmx.com>
 pkgname=dsda-doom
-pkgver=0.20.1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Fork of PrBoom+ with extra tooling for demo recording and playback, with a focus on speedrunning"
 arch=('x86_64')
@@ -9,10 +9,8 @@ license=('GPL')
 depends=('fluidsynth' 'glu' 'libmad' 'portmidi' 'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'dumb')
 makedepends=('cmake' 'imagemagick')
 conflicts=('prboom-plus')
-source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz"
-'dsda-doom.desktop')
-sha256sums=('fe5715f2ded951bf61f67f7e148c5ef86049a0ba08ed4833e45b21b39fc169fe'
-'31944f60e6cf45db60d63dd6538e0d21bade193646f28b000fa8c2f1d9672dbf')
+source=("https://github.com/kraflab/dsda-doom/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a552258459478b0ef24b65b8f1e3b027098a9d050106d51c9996a30f76e630df')
 
 build() {
 	cd "${srcdir}/dsda-doom-${pkgver}/prboom2"  
@@ -25,5 +23,5 @@ package() {
   cd "${srcdir}/dsda-doom-${pkgver}/prboom2"
   make DESTDIR="${pkgdir}" install
   install -Dm644 ICONS/dsda-doom.png "${pkgdir}"/usr/share/pixmaps/dsda-doom.png
-  install -Dm644 ${srcdir}/dsda-doom.desktop "${pkgdir}"/usr/share/applications/dsda-doom.desktop
+  install -Dm644 ICONS/dsda-doom.desktop "${pkgdir}"/usr/share/applications/dsda-doom.desktop
 }
