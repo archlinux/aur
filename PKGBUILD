@@ -1,31 +1,52 @@
 # Maintainer: steeltitanium <steeltitanium1 at gmail dot com>
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
+# Variables which can be customized at build time. Use env or export to set
+
+## Discord Rich Presence integration
+## Required for game invites.
+if [ -z ${_use_discordrpc+x} ]; then
+  _use_discordrpc=n
+fi
+
+# Don't compress with UPX, don't dump symbols to speed up compiling
+_buildflags="NOUPX=1 NOOBJDUMP=1 "
+
 pkgname=srb2kart
 pkgver=1.3
 _dataver=1.3
-pkgrel=1
-pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.'
+pkgrel=2
+pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://mb.srb2.org/showthread.php?t=43708'
 depends=('sdl2' 'sdl2_mixer' 'libpng' 'libgme' "srb2kart-data>=$_dataver")
 makedepends=('mesa' 'glu' 'git')
 makedepends_i686=('nasm')
-options=(!buildflags) 
+
+if [ "${_use_discordrpc}" = "y" ]; then
+  depends+=('discord-rpc-api')
+fi
+
+options=(!buildflags)
 source=("git+https://github.com/STJr/Kart-Public.git#tag=v$pkgver"
         "srb2kart.desktop"
         "srb2kart-opengl.desktop")
 sha256sums=('SKIP'
-            'fe154805cea950fc792faa266ef7d303cbccab893f802c2a85a2afdd0af51bc6'
-            '8082c8bad5bdf102d111d4e4d2eb8c73e9f30c1e54935091cd83f4928b3fc3dd')
+            '4ccc9d2d2379722416c351dd8c34105dc8d7ec595ec37d75089c4a990536585b'
+            'dea04abae8639a7bbf081ea40ff0c7c5ffa34c95e8295d37613b632d5452df73')
 
 build() {
   cd "$srcdir"/Kart-Public/src
 
-  [ "$CARCH" == "x86_64" ] && IS64BIT="64" || IS64BIT=""
-  # Don't compress with UPX
-  make NOUPX=1 LINUX$IS64BIT=1
+  [ "$CARCH" == "x86_64" ] && _buildflags+="LINUX64=1 " || _buildflags+="LINUX=1 "
+  
+  if [ "${_use_discordrpc}" = "y" ]; then
+    _buildflags+="HAVE_DISCORDRPC=1"
+  fi
+  
+  echo "Build options: $_buildflags"
+  make $_buildflags
 }
 
 package() {
