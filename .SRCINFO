@@ -1,7 +1,7 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
 	arch = i686
@@ -36,7 +36,6 @@ pkgbase = deadbeef
 	depends = gtk3
 	depends = alsa-lib
 	depends = jansson
-	depends = libblocksruntime
 	depends = libdispatch
 	optdepends = alsa-oss: for OSS output plugin
 	optdepends = cdparanoia: for cd audio plugin
