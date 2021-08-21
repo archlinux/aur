@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Mighty Mike
+Comment=
+Icon=mightymike
+Exec=/usr/lib/mightymike/MightyMike
+Path=/usr/lib/mightymike
+Terminal=false
+Categories=Game;
+Encoding=UTF-8
