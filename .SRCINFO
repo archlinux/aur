@@ -29,3 +29,9 @@ pkgname = eclipse-jee
 pkgname = eclipse-cpp
 
 pkgname = eclipse-php
+
+pkgname = eclipse-common
+	pkgdesc = Highly extensible IDE (common files)
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip

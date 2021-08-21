@@ -8,7 +8,7 @@
 # Contributor: Marco Crosio <marco.crosio@gmail.com>
 
 # Toggle this if you're building outside of the AUR, for a repo.
-AUR_BUILD=true
+AUR_BUILD=false
 
 # Edit to enable/disable packages to build
 pkgname=(eclipse-{java,jee,cpp,php})
@@ -55,7 +55,6 @@ noextract=()
 
 for _pkg in ${pkgname[@]}; do
   _src=$(_sourcename $_pkg) || continue
-  #source_x86_64+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/$_release/$_src)
   source_x86_64+=("$_src::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_src&r=1")
   sha512sums_x86_64+=("${_sha512sums_x86_64["$_pkg"]}")
   noextract+=($_src)
@@ -74,7 +73,7 @@ prepare() {
 
 build() {
   if [ "$AUR_BUILD" = false ]; then
-  mkdir eclipse-common/dropins
+  mkdir -p eclipse-common/dropins
   touch eclipse-common/dropins/.keep
   ./commonify --identical ${pkgname[@]}
   fi
@@ -103,7 +102,7 @@ _package() {
     modeling  ) variant="Modeling" ;;
     parallel  ) variant="Parallel" ;;
     scout     ) variant="Scout" ;;
-    *         ) return 1 ;;
+    *         ) return ${1#eclipse-} ;;
   esac
 
   pkgdesc+=" for $variant"
