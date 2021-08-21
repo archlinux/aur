@@ -1,6 +1,6 @@
 pkgbase = gzdoom-git
 	pkgdesc = Feature centric port for all Doom engine games (git version)
-	pkgver = 4.7.0pre+91+gf89e6950c
+	pkgver = 4.7.0pre+138+gff497996a
 	pkgrel = 1
 	url = http://www.zdoom.org/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = gzdoom-git
 	depends = libjpeg
 	depends = openal
 	depends = sdl2
-	depends = zmusic>=1.1.1
+	depends = zmusic>=1.1.8
 	optdepends = blasphemer-wad: Blasphemer (free Heretic) game data
 	optdepends = chexquest3-wad: Chex Quest 3 game data
 	optdepends = doom1-wad: Doom shareware game data
