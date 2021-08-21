@@ -1,3 +1,7 @@
+### 0.0.4
+
+* Various small improvements
+
 ### 0.0.3
 
 * improve README.md with an example
