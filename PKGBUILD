@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20210819.r0.g33e65b1f975c
+pkgver=20210820.r0.g86ed57fd8c93
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -165,7 +165,7 @@ build() {
   cd $_srcname
 
   make all
-  make htmldocs
+  #vmake htmldocs
 }
 
 _package() {
