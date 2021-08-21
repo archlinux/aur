@@ -1,4 +1,5 @@
-# Maintainer: Carson Black <uhhadd@gmail.com>
+# Maintainer: Mattia Moffa <mattia@moffa.xyz>
+# Previous maintainer: Carson Black <uhhadd@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Paul Mattal <paul@archlinux.org>
@@ -9,15 +10,17 @@
 # Toggle this if you're building outside of the AUR, for a repo.
 AUR_BUILD=true
 
+# Edit to enable/disable packages to build
+pkgname=(eclipse-{java,jee,cpp,php})
+
 pkgbase=eclipse
-pkgname=(eclipse-{java,jee,cpp,php,javascript,rust})
 if [ "$AUR_BUILD" = false ]; then
-pkgname+=(eclipse-common)
+  pkgname+=(eclipse-common)
 fi
-pkgver=4.18
-pkgrel=2
+pkgver=4.20
+pkgrel=1
 epoch=2
-_release=2020-12/R
+_release=2021-06/R
 pkgdesc="Highly extensible IDE"
 license=(EPL)
 arch=(x86_64)
@@ -25,12 +28,12 @@ url="https://eclipse.org"
 makedepends=(python3)
 source=(commonify)
 sha256sums=('a68cccdf182449dfb4aef595ab26fe6542902421aef42a79672483865cbbd0ea')
-sha256sums_x86_64=('2193208753cae8505b4926386dc7bb71cb665929180bf8c1a63dda0251dbaaf1'  # Java
-                   '7349e3051925c6ec88f03036f40b3f493e62e252d050e86493a9ceea5d1ab1b2'  # Jee
-                   'b5678a117da21912178d4188b8b6976b578dc03a38669eb4c8e16dd71c74747a'  # C++
-                   'a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9'  # PHP
-                   'e1152efe94be5c00d8abf1ed135234404c9affb309336600e7ef3d1dd9dfa3e4'  # JS
-                   '797ac2190c110d556a1a9b7e4fa327a5f0ca1814006397f89158d59109943a6e') # Rust
+declare -A _sha256sums_x86_64=(
+    ['eclipse-java']='3a2355fa605019920a9c35eb0770d8fb9c5fd123069bc05149a847b1965a9b2b'
+    ['eclipse-jee']='76fb917a474fa7c9f40afba907d696557c1d97784eec9abff0b169ee17c393e7'
+    ['eclipse-cpp']='07b757bba49303efdd3f93269522558e64edf8d08f404c3a71a96415b7268b0d'
+    ['eclipse-php']='d42e3f8795e322565662fdaffa37f452628c49bbcf7bdb5cb5bd7807137db995'
+)
 
 _sourcename() {
   case $1 in
@@ -40,11 +43,13 @@ _sourcename() {
 }
 
 source_x86_64=()
+sha256sums_x86_64=()
 noextract=()
 
 for _pkg in ${pkgname[@]}; do
   _src=$(_sourcename $_pkg) || continue
   source_x86_64+=(http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/$_release/$_src)
+  sha256sums_x86_64+=("${_sha256sums_x86_64["$_pkg"]}")
   noextract+=($_src)
   eval "package_$_pkg() { _package $_pkg; }"
 done

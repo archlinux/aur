@@ -1,60 +1,31 @@
 pkgbase = eclipse
 	pkgdesc = Highly extensible IDE
-	pkgver = 4.18
-	pkgrel = 2
+	pkgver = 4.20
+	pkgrel = 1
 	epoch = 2
 	url = https://eclipse.org
 	arch = x86_64
 	license = EPL
 	makedepends = python3
-	noextract = eclipse-java-2020-12-R-linux-gtk-x86_64.tar.gz
-	noextract = eclipse-jee-2020-12-R-linux-gtk-x86_64.tar.gz
-	noextract = eclipse-cpp-2020-12-R-linux-gtk-x86_64.tar.gz
-	noextract = eclipse-php-2020-12-R-linux-gtk-x86_64.tar.gz
-	noextract = eclipse-javascript-2020-12-R-linux-gtk-x86_64.tar.gz
-	noextract = eclipse-rust-2020-12-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz
+	noextract = eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz
 	source = commonify
 	sha256sums = a68cccdf182449dfb4aef595ab26fe6542902421aef42a79672483865cbbd0ea
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-linux-gtk-x86_64.tar.gz
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-jee-2020-12-R-linux-gtk-x86_64.tar.gz
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-cpp-2020-12-R-linux-gtk-x86_64.tar.gz
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-php-2020-12-R-linux-gtk-x86_64.tar.gz
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-javascript-2020-12-R-linux-gtk-x86_64.tar.gz
-	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2020-12/R/eclipse-rust-2020-12-R-linux-gtk-x86_64.tar.gz
-	sha256sums_x86_64 = 2193208753cae8505b4926386dc7bb71cb665929180bf8c1a63dda0251dbaaf1
-	sha256sums_x86_64 = 7349e3051925c6ec88f03036f40b3f493e62e252d050e86493a9ceea5d1ab1b2
-	sha256sums_x86_64 = b5678a117da21912178d4188b8b6976b578dc03a38669eb4c8e16dd71c74747a
-	sha256sums_x86_64 = a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9
-	sha256sums_x86_64 = a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9
-	sha256sums_x86_64 = a681e8e65835f75ad8b9a7da8e11ded90ea4d8bda82b8133a8debd1852ec37b9
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2021-06/R/eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2021-06/R/eclipse-jee-2021-06-R-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2021-06/R/eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz
+	source_x86_64 = http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/2021-06/R/eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz
+	sha256sums_x86_64 = 3a2355fa605019920a9c35eb0770d8fb9c5fd123069bc05149a847b1965a9b2b
+	sha256sums_x86_64 = 76fb917a474fa7c9f40afba907d696557c1d97784eec9abff0b169ee17c393e7
+	sha256sums_x86_64 = 07b757bba49303efdd3f93269522558e64edf8d08f404c3a71a96415b7268b0d
+	sha256sums_x86_64 = d42e3f8795e322565662fdaffa37f452628c49bbcf7bdb5cb5bd7807137db995
 
 pkgname = eclipse-java
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
 
 pkgname = eclipse-jee
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
 
 pkgname = eclipse-cpp
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
 
 pkgname = eclipse-php
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
-
-pkgname = eclipse-javascript
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
-
-pkgname = eclipse-rust
-	depends = java-environment>=8
-	depends = webkit2gtk
-	depends = unzip
-
