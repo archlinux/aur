@@ -2,11 +2,11 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eshelper
-pkgver=12.5.3
-_date=2021-04-16
+pkgver=12.6.5
+_date=2021-08-19
 _lang=es
 _flang=Spanish
-pkgrel=2
+pkgrel=1
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -18,7 +18,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha256sums=('345d3e0a5323275551e2f0313b590e63268ddc7d36517eedb870213d5e9bbbcf')
+sha256sums=('03dfeacebd4fa9b741528aded5be3381754080add1d62e17339f72c8f06ac132')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
@@ -52,6 +52,6 @@ package() {
          ${pkgdir}/usr/share/${_dirname}/qt.conf
   
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins} 
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*} 
 }
 # vim: ts=2 sw=2 et:
