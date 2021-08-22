@@ -2,7 +2,7 @@
 
 _pkgluaname=lpugl
 pkgname=lua-$_pkgluaname
-pkgver=0.0.1
+pkgver=0.0.2
 _luacmd="lua"
 pkgrel=1
 _rockrel=1
@@ -24,4 +24,4 @@ package() {
 	install -D -t "$pkgdir/usr/share/licenses/$pkgname/" -m "u=rw,go=r"  LICENSE
 }
 
-md5sums=('7d9408f67a69790262b22e5618f45448')
+md5sums=('429a4e5e2a015e2a4ae5aabfffe4108b')
