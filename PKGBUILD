@@ -2,7 +2,7 @@
 
 pkgname=nfs2iso2nfs-git
 _gitname="nfs2iso2nfs"
-pkgver=v0.5.6
+pkgver=v0.5.6.0.gb47a6bb
 pkgrel=1
 pkgdesc="convert nfs files to iso and back (git version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  git describe --tags
+  git describe --long --tags | sed 's/([^-]*-g)/r1/;s/-/./g'
 }
 
 build() {
