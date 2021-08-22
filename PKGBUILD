@@ -2,11 +2,11 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=eudic
-pkgver=12.5.3
-_date=2021-04-14
+pkgver=12.6.5
+_date=2021-08-19
 _lang=en
 _flang=English
-pkgrel=2
+pkgrel=1
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -17,7 +17,7 @@ depends=(
          'qt5-webkit'
          )
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('839973fae3758c76948ecfd63c6140e1f8d30ef6719770e82012e077880d49682dacc1cf204474b6fc996ef5fa7d6c33eda5ae5c826fcc1b1e7da27f0bd9b987')
+sha512sums=('de477031bb575638c475f70cd058910eb9a2bf02592ede333e3b00cb6cb876370dde76dce00524ee9bded414c9487bc8863835253435b7f97f578aeb6296330c')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
@@ -51,6 +51,6 @@ package() {
          ${pkgdir}/usr/share/${_dirname}/qt.conf
   
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins} 
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*} 
 }
 # vim: ts=2 sw=2 et:
