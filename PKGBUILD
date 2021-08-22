@@ -89,7 +89,7 @@ package() {
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
-	# that this configuration file is the one backuped with each update,
+	# that this configuration file is the one backed up with each update,
 	# while `/usr/share/gnunet/config.d/` is kept as immutable default
 	# configuration.
 	{
