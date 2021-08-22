@@ -1,58 +1,35 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
-# Contributor: Giuliano Schneider <gs93@gmx.net>
-# Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
+# Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 
-_eclipse_name=mars
-_eclipse_release=2
 pkgname=eclipse-jee
-pkgver=4.5.2
+epoch=2
+pkgver=4.20
 pkgrel=1
-pkgdesc="Eclipse IDE for Java EE Developers"
-arch=('i686' 'x86_64')
-url="http://www.eclipse.org"
+_release=2021-06/R
+pkgdesc="Highly extensible IDE (Enterprise Java and Web version)"
+arch=(x86_64)
+url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-environment' 'gtk2' 'webkitgtk2')
-install="${pkgname}.install"
-source=("${pkgname}.sh"
-        "${pkgname}.desktop"
-        "${pkgname}.ini.patch"
-        "${pkgname}.svg")
-source_i686=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz&r=1")
-source_x86_64=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz&r=1")
-sha256sums=('d20cff0ecbcdd2d180b02d646293e5adbad926fd7183f49cc8f4f5789899db38'
-            '462c1b703a35e99995dd8531d184dce7a723389bd89e4e721b5708b0e8e438bf'
-            '854557110c6ea3b7c79fb92dc070ac39fc4c897385601c11779cd62ce6e00a03'
-            'da103fe3b9d8c6cc1316b2b45347697bf6561230e81286b78cf142b64b1d89a5')
-sha256sums_i686=('1d3f5cf7da41f549e94777367417a3b1cfcd749ab054f9ae92cf252c7e5ebbef')
-sha256sums_x86_64=('5155460d2b279ddcbf791b4286f289de7b3b938ebf46947e6e87258dc748e23a')
-# prevent package compression
-PKGEXT=".pkg.tar"
+depends=('java-environment>=8' webkit2gtk unzip)
+makedepends=()
+provides=(eclipse=$pkgver-$pkgrel)
+conflicts=(eclipse)
 
-build() {
-  patch -p0 -i "${pkgname}.ini.patch"
-}
+_srcfilename="$pkgname-${_release//\//-}-linux-gtk-$CARCH.tar.gz"
+source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename&r=1"
+        "eclipse.desktop")
+sha512sums=('89b8d359e7a0e5891b4adce63b464a84520c7aff7fde8f47689b2414dc7fdb1247d74f8651986d7fe8699561368c10133c9633b0d39fc7cc76b6206d574eb4cb'
+            '9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3')
 
 package() {
-  # Copy application files
-  install -m 755 -d "${pkgdir}/usr/lib"
-  cp -a "eclipse" "${pkgdir}/usr/lib/${pkgname}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/eclipse/eclipse" "${pkgdir}/usr/bin/eclipse"
 
-  # Copy executable file
-  install -m 755 -d "${pkgdir}/usr/bin"
-  install -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
 
-  # Copy icons
-  install -m 755 -d "${pkgdir}/usr/share/icons"
-  for _size in 16 32 48 256
-  do
-    install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps"
-    install -m 644 eclipse/plugins/org.eclipse.platform_4.*.v*/eclipse${_size}.png \
-      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
-  done
-  install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m 644 "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-
-  # Copy desktop file
-  install -m 755 -d "${pkgdir}/usr/share/applications"
-  install -m 755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    for i in 16 22 24 32 48 64 128 256 512 1024 ; do
+        install -Dm644 eclipse/plugins/org.eclipse.platform_*/eclipse$i.png \
+            "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/eclipse.png"
+    done
 }
