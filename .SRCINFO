@@ -1,7 +1,7 @@
 pkgbase = gitlab-ci-local-git
 	pkgdesc = Run gitlab pipelines locally as shell executor or docker executor
 	pkgver = 4.23.0.r0.g2195c19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/firecow/gitlab-ci-local
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gitlab-ci-local-git
 	makedepends = sed
 	makedepends = npm
 	makedepends = typescript
-	depends = ts-node
+	options = !strip
 	source = gitlab-ci-local-git::git+https://github.com/firecow/gitlab-ci-local.git
 	md5sums = SKIP
 
