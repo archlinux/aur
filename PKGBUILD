@@ -1,10 +1,10 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=qv2ray-static-bin-nightly
-pkgver=20210802
+pkgver=20210822
 pkgrel=1
 pkgdesc="A cross platform connection manager for V2Ray and other backends"
 arch=(x86_64)
-url="https://github.com/moodyhunter/QvPersonal"
+url="https://github.com/Shadowsocks-NET/Qv2ray"
 license=('GPL3')
 depends=('brotli' 'double-conversion' 'fontconfig' 'glibc' 'libb2' 'libcups' 'libgl' 'libinput'
          'libjpeg-turbo' 'libproxy' 'libxi' 'libxkbcommon-x11' 'libxrender' 'mesa' 'shared-mime-info'
