@@ -1,0 +1,11 @@
+pkgbase = plank-theme-glossient
+	pkgdesc = Collection of Glossient Edition Themes for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1297011/
+	arch = any
+	license = MIT
+	source = https://github.com/MMcQueenGNU/plank-theme-glossient/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 00ca6f02fc0cc51ef52eafbea7be2d864efc7363cd7de72aef609afc0a720bb0
+
+pkgname = plank-theme-glossient
