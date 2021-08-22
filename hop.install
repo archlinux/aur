@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: Please consult upstream documentation for information on how to set up this plugin.'
+	echo ':: A copy has been installed for your reference under /usr/share/doc/neovim-hop-git/README.md'
+}
+
+post_remove() {
+	echo ":: Don't forget to remove all references to this plugin from your init scripts."
+}
