@@ -1,0 +1,2 @@
+d /var/lib/vxray-rules-dat 0755 vxray-rules-dat vxray-rules-dat
+Z /var/lib/vxray-rules-dat - vxray-rules-dat vxray-rules-dat

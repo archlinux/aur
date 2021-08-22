@@ -1,0 +1,11 @@
+[Unit]
+Description = Service for update vxray-dat-rules files
+After = network.target
+
+[Service]
+Type = oneshot
+User = vxray-rules-dat
+Group = vxray-rules-dat
+
+WorkingDirectory = /var/lib/vxray-rules-dat
+ExecStart = /usr/bin/vxray-rules-dat-updater github

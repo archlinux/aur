@@ -1,0 +1,4 @@
+post_install() {
+  printf $(tput bold)'Enable vxray-rules-dat-updater.timer to update rules automatically everyday.\n'
+  printf 'The most up-to-date geoip.dat and geosite.dat can be found under /var/lib/vxray-rules-dat'$(tput sgr0)'\n'
+}
