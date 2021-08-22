@@ -1,7 +1,7 @@
-# Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+# Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=menutray
-pkgver=0.53
+pkgver=0.54
 pkgrel=1
 
 pkgdesc="An application menu through a GTK+ tray status icon."
@@ -10,11 +10,10 @@ url="https://github.com/trizen/$pkgname"
 arch=('any')
 license=('GPL3')
 
-depends=('perl>=5.14.0' 'gtk2-perl' 'perl-data-dump' 'perl-linux-desktopfiles>=0.25')
-optdepends=('perl-gtk3: for Gtk3 support (--gtk3)'
-            'perl-file-desktopentry: locale support')
+depends=('perl>=5.14.0' 'perl-gtk3' 'perl-data-dump' 'perl-linux-desktopfiles>=0.25')
+optdepends=('perl-file-desktopentry: locale support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5d3da38bf626f0969221ef5db1cbd7d49ab1c1506aa423967b6d59780ee3b360')
+sha512sums=('132494fc2ae633e802ec4e81642a99cd673371a22ad027a4024f46df1b428cef1cc9abf3f015776f511ee40c858fbc5e09813fd857ed79ae2f61d7c7a55e9af2')
 install='readme.install'
 
 package() {
