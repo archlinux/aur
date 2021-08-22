@@ -1,14 +1,15 @@
-# Maintainer: DuckSoft <realducksoft at gmail dot com>
+# Maintainer: Neboer <rubinposter at gmail dot com>
+# Contributor: DuckSoft <realducksoft at gmail dot com>
 # Contributor: ArielAxionL <i at axionl dot me>
 # Contributor: Leroy.H.Y <me at lhy0403 dot top>
 pkgname=qv2ray
-pkgver=2.6.3
-pkgrel=3.1
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0')
+depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0' 'qt5-svg')
 optdepends=('v2ray: use system v2ray core.')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative'
              'grpc-cli>=1.27.0' 'cmake' 'ninja')
@@ -25,9 +26,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/Qv2ray"
-    git submodule init
-    git config submodule."3rdparty/zxing-cpp".active true 
-    git submodule update
+    git submodule update --recursive --init
 }
 
 build() {
