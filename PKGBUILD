@@ -2,7 +2,7 @@
 pkgname=spotblock-rs
 pkgver=0.2.0
 pkgdesc="Spotify Advertisment blocker for linux"
-pkgrel=1
+pkgrel=2
 depends=('playerctl')
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
