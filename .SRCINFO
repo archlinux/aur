@@ -15,6 +15,7 @@ pkgbase = brave
 	makedepends = gperf
 	makedepends = java-runtime-headless
 	makedepends = clang
+	makedepends = llvm
 	makedepends = pipewire
 	makedepends = ncurses5-compat-libs
 	depends = gtk3

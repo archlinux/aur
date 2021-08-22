@@ -34,7 +34,7 @@ arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'json-glib')
-makedepends=('git' 'npm' 'python' 'python2' 'python-protobuf' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'pipewire')
+makedepends=('git' 'npm' 'python' 'python2' 'python-protobuf' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'llvm' 'pipewire')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
@@ -109,12 +109,12 @@ _unwanted_bundled_libs=(
 
 # Add depends if user wants a release with custom cflags and system libs
 if [ "$COMPONENT" = "4" ]; then
-  echo "Build with system libs is disabled for now" && exit 1
+#  echo "Build with system libs is disabled for now" && exit 1
   brave_base_ver="$(echo $pkgver | cut -d . -f 1-2)"
   brave_patchset="1"
   brave_patchset_name="brave-${brave_base_ver}-patches-${brave_patchset}"
   source+=("https://gitlab.com/hadogenes/brave-patches/-/archive/${brave_patchset_name}/brave-patches-${brave_patchset_name}.zip")
-  sha256sums+=("04a4f1e3c54b5f76873e9d178124a016028fae10374abb2b35bac822337d5dde")
+  sha256sums+=("c63c8eeac709293991418a09ac7d8c0adde10c151495876794e025bd2b0fb8fe")
 
   depends+=('libpulse' 'pciutils')
   depends+=(${_system_libs[@]})
@@ -218,8 +218,8 @@ build() {
 
   export CC=clang
   export CXX=clang++
-  export AR=ar
-  export NM=nm
+  export AR=llvm-ar
+  export NM=llvm-nm
 
   # Hack to prioritize python2 in PATH
   mkdir -p "${srcdir}/bin"
@@ -239,6 +239,10 @@ build() {
   echo "uphold_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
   echo "uphold_staging_client_id = 4c2b665ca060d912fec5c735c734859a06118cc8" >> .npmrc
   echo "uphold_staging_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
+  echo "gemini_api_url = https://api.gemini.com/v1" >> .npmrc
+  echo "gemini_oauth_url = https://api.gemini.com/v1/oauth" >> .npmrc
+  echo "gemini_wallet_client_id = 6d8d9473ed20be627f71ed46e207f40c004c5b1a" >> .npmrc
+  echo "gemini_wallet_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
 
   npm_args=()
   if [ "$COMPONENT" = "4" ]; then
@@ -255,6 +259,7 @@ build() {
       'use_sysroot=false'
       'use_custom_libcxx=false'
       'use_vaapi=true'
+      'is_clang=true'
     )
 
     if [[ -n ${_system_libs[icu]+set} ]]; then
