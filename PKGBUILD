@@ -1,14 +1,15 @@
 # Maintainer: Hurstel Alexandre <alexandre at hurstel dot eu>
-# thanks to Tobias Manske <aur@rad4day.de> for versions 20210623, 20210804
+# Co-Maintainer: Tobias Manske <aur at rad4day dot de>
 pkgname=xp-pen-tablet
-pkgver=20210804
+pkgver=3.2.0.210804
+epoch=1
 pkgrel=1
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
-license=('GPL')
+license=('LGPL3')
 conflicts=(xp-pen)
-source=("https://download01.xp-pen.com/file/2021/08/XP-PEN-pentablet-3.2.0.210804-1.x86_64.tar.gz"
+source=("https://download01.xp-pen.com/file/20${pkgver: -6:2}/${pkgver: -4:2}/XP-PEN-pentablet-${pkgver}-1.${CARCH}.tar.gz"
         "install.sh.patch"
 )
 sha256sums=('210d5686de9d789d996b20de8cad01eaa7b591a244c6aaa9f7158a2390771ccf'
@@ -16,14 +17,14 @@ sha256sums=('210d5686de9d789d996b20de8cad01eaa7b591a244c6aaa9f7158a2390771ccf'
 )
 
 prepare() {
-    cd "$srcdir"
+    cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
 
-    patch -p0 < "$srcdir/install.sh.patch"
+    patch < "$srcdir/install.sh.patch"
 }
 
 
 package() {
-	cd "$srcdir/xp-pen-pentablet-3.2.0.210804-1.x86_64"
+    cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
 
 	mkdir -p "${pkgdir}/usr/lib/pentablet"
 	mkdir -p "${pkgdir}/usr/share/applications"
