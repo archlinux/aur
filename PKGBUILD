@@ -9,14 +9,15 @@ pkgdesc="MrBayes is a program for Bayesian inference and model choice across a w
 arch=('i686' 'x86_64')
 url="nbisweden.github.io/mrbayes/"
 license=('GPL3')
-depends=('openmpi')
-# conflicts=(mrbayes)
-# provides=(mrbayes)
-source=("git+https://github.com/NBISweden/MrBayes.git")
-sha256sums=('SKIP')
+depends=('openmpi' 'readline''gcc')
+optdepends=('beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep')
+conflicts=(mrbayes)
+provides=(mrbayes)
+source=("https://github.com/NBISweden/MrBayes/archive/v${pkgver}.tar.gz")
+sha256sums=('64da39c01f606d0413ce90a1dd3c1ce2cbdef4cbad99aee8a4b2391a2e8db244')
 
 build() {
-  cd ${srcdir}/MrBayes
+  cd ${srcdir}/MrBayes-$pkgver
   #Build with beagle-lib support if available:
   if [ -f /usr/lib/libhmsbeagle.so ]
   then
@@ -29,7 +30,7 @@ build() {
   make
 }
 package() {
-  cd ${srcdir}/MrBayes
+  cd ${srcdir}/MrBayes-$pkgver
   make install
   install ${pkgdir}/usr/bin/mb ${pkgdir}/usr/bin/mb-mpi
 }
