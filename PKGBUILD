@@ -6,11 +6,11 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=10
+pkgrel=11
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
-license=('GPL')
+license=('AGPL3')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
@@ -36,9 +36,9 @@ validpgpkeys=('19647543F7861D3BF4E64FF7BF60708B48426C7E'
               '3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
             'SKIP'
-            '577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042'
+            '81310f5df1790d9e4d806ac2ed9fe761b13eeafdae584eb59ec2e8a52b088485'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            '0f43c979053e0ea974d70ba9c5ad65ac0ed8f36455f9cfd7a1f525ec6f1d7fca')
+            '4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b')
 
 prepare() {
 
