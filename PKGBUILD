@@ -28,9 +28,9 @@ makedepends=()
 provides=('notion-app')
 conflicts=('notion-app')
 
-notion_repackaged_ver="2.0.16-1"
+notion_repackaged_ver="2.0.16-2"
 source=("https://github.com/notion-enhancer/notion-repackaged/releases/download/v${notion_repackaged_ver}/notion-app-${notion_repackaged_ver}.pacman")
-md5sums=('425831ab1296ff7e47f66d2cf3e1dd48')
+md5sums=('e6e4e560305466095722eacb7f9caa1b')
 
 install=${pkgname}.install
 

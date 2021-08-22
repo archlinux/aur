@@ -23,8 +23,7 @@ pkgbase = notion-app
 	depends = libappindicator-gtk3
 	provides = notion-app
 	conflicts = notion-app
-	source = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-1/notion-app-2.0.16-1.pacman
-	md5sums = 425831ab1296ff7e47f66d2cf3e1dd48
+	source = https://github.com/notion-enhancer/notion-repackaged/releases/download/v2.0.16-2/notion-app-2.0.16-2.pacman
+	md5sums = e6e4e560305466095722eacb7f9caa1b
 
 pkgname = notion-app
-
