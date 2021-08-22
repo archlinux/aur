@@ -1,6 +1,6 @@
 pkgbase = librearp-git
 	pkgdesc = A pattern-based arpeggio generator plugin
-	pkgver = r151.b3bdb83
+	pkgver = r198.466a72a
 	pkgrel = 1
 	url = https://gitlab.com/LibreArp/LibreArp.git
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = librearp-git
 	makedepends = git
 	makedepends = libxrandr
 	makedepends = libxcomposite
+	makedepends = cmake
+	makedepends = ninja
 	depends = freetype2
 	depends = alsa-lib
 	depends = gcc-libs
@@ -20,14 +22,9 @@ pkgbase = librearp-git
 	depends = curl
 	provides = librearp
 	conflicts = librearp
-	source = git+https://gitlab.com/LibreArp/LibreArp.git
-	source = git+https://github.com/steinbergmedia/vst3sdk.git
-	source = git+https://gitlab.com/LibreArp/JUCE.git
-	source = git+https://git.iem.at/zmoelnig/FST.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://gitlab.com/LibreArp/LibreArp.git#branch=develop
+	source = git+https://github.com/juce-framework/JUCE.git
 	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = librearp-git
-

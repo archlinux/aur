@@ -1,23 +1,19 @@
 # Maintainer: Patrick Desaulniers <patrick dot desaulniers36 at gmail dot com>
 
 pkgname=librearp-git
-pkgver=r151.b3bdb83
+pkgver=r198.466a72a
 pkgrel=1
 pkgdesc="A pattern-based arpeggio generator plugin"
 arch=('x86_64')
 url="https://gitlab.com/LibreArp/LibreArp.git"
 license=('GPL')
 depends=('freetype2' 'alsa-lib' 'gcc-libs' 'glibc' 'libx11' 'libxext' 'libxinerama' 'curl')
-makedepends=('jack' 'libxcursor' 'git' 'libxrandr' 'libxcomposite')
+makedepends=('jack' 'libxcursor' 'git' 'libxrandr' 'libxcomposite' 'cmake' 'ninja')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("git+https://gitlab.com/LibreArp/LibreArp.git"
-	"git+https://github.com/steinbergmedia/vst3sdk.git"
-	"git+https://gitlab.com/LibreArp/JUCE.git"
-	"git+https://git.iem.at/zmoelnig/FST.git")
+source=("git+https://gitlab.com/LibreArp/LibreArp.git#branch=develop"
+	"git+https://github.com/juce-framework/JUCE.git")
 md5sums=('SKIP'
-	'SKIP'
-	'SKIP'
 	'SKIP')
 
 pkgver() {
@@ -30,26 +26,23 @@ prepare() {
     cd LibreArp
 
     git submodule init
-    git config submodule.Vendor/fst.url $srcdir/FST
     git config submodule.Vendor/juce.url $srcdir/JUCE
-    git config submodule.Vendor/vst3sdk.url $srcdir/vst3sdk
-    git submodule update -f
-
-    git apply --ignore-whitespace JUCE_GPL_patch.patch
+    git submodule update
 }
 
 build() {
     cd LibreArp
 
-    make -C ./Vendor/juce/extras/Projucer/Builds/LinuxMakefile
-    ./Vendor/juce/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave LibreArp.jucer
-
-    CONFIG="Release_64" make -C Builds/LinuxMakefile
+    mkdir -p build && cd build
+    cmake -G Ninja ..
+    ninja
 }
 
 package() {
     cd LibreArp
 
-    install -vDm 755 "Builds/LinuxMakefile/build/LibreArp.so" -t "${pkgdir}/usr/lib/vst"
-    install -vDm 755 "Builds/LinuxMakefile/build/LibreArp" -t "${pkgdir}/usr/bin/"
+    install -d "$pkgdir/usr/lib/vst3"
+    cp -rfd "build/LibreArp_artefacts/VST3/LibreArp.vst3/" -t "${pkgdir}/usr/lib/vst3/"
+
+    install -vDm 755 "build/LibreArp_artefacts/Standalone/LibreArp" -t "${pkgdir}/usr/bin/"
 }
