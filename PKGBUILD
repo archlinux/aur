@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
-_mozcver=2.26.4444.102
-_utdicver=20210725
+_commit=fed70bc909ef2a67d907d1ac89bbcd042d277da5
+_mozcver=2.26.4472.102
+_utdicver=20210822
 
 pkgname='ibus-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/google/mozc'
 license=('custom')
 depends=('ibus>=1.4.1' 'mozc-ut-common')
-makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base' 'unzip')
+makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 conflicts=('ibus-mozc' 'ibus-mozc-ut2' 'ibus-mozc-ut-united')
 provides=("ibus-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}")
