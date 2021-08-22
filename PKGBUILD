@@ -8,9 +8,12 @@ pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
 url="http://ugene.net"
 license=('GPL')
-depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
+depends=('libxtst' 'glu' 'qt5-webkit' 'qt5-websockets' 'qt5-svg' 'qt5-script' 'desktop-file-utils' 'qspec-git')
+optdepends=('cufflinks' 'bowtie' 'clustalw' 'phyml' 'blast+' 'clustal-omega' 'vcftools' 'mrbayes' 'bwa' 'bedtools'
+	'tcoffee' 'hmmer' 'snpeff' 'samtools' 'mafft' 'trimmomatic' 'stringtie' 'kraken' 'diamond-aligner'
+	'python2-cutadapt' 'python' 'java-runtime' 'bowtie2' 'tophat' 'fastqc')
 provides=('ugene')
-conflicts=('ugene')
+conflicts=('ugene-git')
 source=("https://github.com/ugeneunipro/ugene/releases/download/${pkgver}/ugene-${pkgver}-linux-x86-64.tar.gz" "ugene.desktop" "ugene.svg")
 sha256sums=('f04fcfdf62703e9feba2fd6fd3b74b19cf676c65d312d0d3b08f5622dc2081cf'
             '58aeee982faa07913c016323cdded0a4022695c4e313954fdc09c36742013896'
