@@ -1,7 +1,7 @@
 # Maintainer: Simon Marcher <marchersimon@zohomail.eu>
 pkgname=tldr-cpp-git
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The all-in-one tldr client for users and contributors"
 arch=('any')
 url="https://github.com/marchersimon/tldr-cpp.git"
@@ -21,5 +21,5 @@ build() {
 package() {
 	cd tldr-cpp
 	mkdir -p ${pkgdir}/usr/bin
-	sudo make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install
 }
