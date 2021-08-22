@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-fnmt
-pkgver=20210803
+pkgver=20210822
 pkgrel=1
 pkgdesc='Spanish Fabrica Nacional de Moneda y Timbre (FNMT) certificates'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://www.sede.fnmt.gob.es'
 license=('unknown')
 depends=('ca-certificates-utils')
 source=('https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-RCM_SHA256.cer'
+
         'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_FNMT_Usuarios.cer'
         'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Representacion.cer'
         'https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Administracion_Publica_SHA256.cer'
@@ -25,8 +26,10 @@ source=('https://www.sede.fnmt.gob.es/documents/10445900/10526749/AC_Raiz_FNMT-R
         'OCSP_AC_Representacion.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Representacion'
         'OCSP_AP.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AP'
         'OCSP_AC_Componentes_Informaticos.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_AC_Componentes_Informaticos'
+        'OSCP_SP.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_SP'
         'OCSP_ACRAIZ_FNMTRCM.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532302/OCSP_ACRAIZ_FNMTRCM'
 
+        'qets.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qets'
         'qtsa.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/qtsa'
         'tsa.cer::https://www.sede.fnmt.gob.es/documents/10445900/10532275/tsa'
 
@@ -46,7 +49,9 @@ sha256sums=('ebc5570c29018c4d67b1aa127baf12f703b4611ebc17b7dab5573894179b93fa'
             '49552f5fd0f67be27c62a00980576b594d15058c88be37451b55d7911b7dbecd'
             'd6d1a026461ddb4c25849affe0881f1eea2e67e33e30636b5e0c68bcc3972690'
             'd74ee6a47cb2dae6003288857a2d7d135ba1e21e7eac8d145d8cc96b5a7b280f'
+            'b37a9a61aa20e28b0c3a9d37fe1c7261da14e622800076aef3fe9c9622f9d716'
             '01e8ba844ff4c70d8dff2601b5cd80a63bf32dee8f94876c8c216bbf6c0f8b84'
+            'b03f7cc682d2f0a7c1d195692cc0de4c35ad017294955d35f6eb743fe78595f3'
             '5d93e19f26bcdcc9744f3f342a7d09b3d4d11f3e2dfd4c6079821625878be10a'
             'baf597d97d16bc697f8eb2a1e20ce68c08ad11024f9b1f5264271c1525eeb500'
 
@@ -70,8 +75,10 @@ package() {
   install -Dm644 OCSP_AC_Representacion.cer             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Representacion.cer"
   install -Dm644 OCSP_AP.cer                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AP.cer"
   install -Dm644 OCSP_AC_Componentes_Informaticos.cer   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_AC_Componentes_Informaticos.cer"
+  install -Dm644 OSCP_SP.cer                            "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_SP.cer"
   install -Dm644 OCSP_ACRAIZ_FNMTRCM.cer                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_ACRAIZ_FNMTRCM.cer"
 
+  install -Dm644 qets.cer                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qets.cer"
   install -Dm644 qtsa.cer                               "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/qtsa.cer"
   install -Dm644 tsa.cer                                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/tsa.cer"
 
