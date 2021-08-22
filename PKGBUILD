@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi
-_rpmversion=4.1.2369.16-1
-pkgver=4.1.2369.16
+_rpmversion=4.1.2369.21-1
+pkgver=4.1.2369.21
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
@@ -17,7 +17,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm"
         'eula.txt')
-sha512sums=('60ec3820cecea62ae4bee8b49f6e4a9d1ef3c062edd1a09f09624782cf614f39364341f29461c1c3265106a00aec92994929bfaabd6340e21527a2fd3ada8b9c'
+sha512sums=('522718b256b35e73b125514dbfd57823af436e55565eddc9b6a4b7f53ebeca1b0b72a916d8822ba98cbaa16768d1d19e5f3958ffe6084c188525f90ab07261d7'
             '7cbfc3258a92ee05eeb67c5b65a92aab27f34146fd097007de5eb8e2703610c03bfa52f7ee1d6055735f927b4dcc919a79b7caf6fb5a5a9596cac11cc083e874')
 
 package() {
