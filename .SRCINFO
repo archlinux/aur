@@ -1,7 +1,7 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 0.37.0
-	pkgrel = 2
+	pkgver = 0.38.0
+	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
 	arch = aarch64
@@ -11,11 +11,12 @@ pkgbase = fluffychat-bin
 	depends = xdg-user-dirs
 	depends = gtk3
 	depends = jsoncpp
+	depends = libsecret
 	provides = fluffychat
 	conflicts = fluffychat
-	source_x86_64 = fluffychat-v0.37.0_x86_64.tar.zst::https://git.entr0py.de/attachments/a560623a-b6f1-459b-bbd0-6a4f84037160
-	sha256sums_x86_64 = b62f8de866aaa3d6136b6b0f9f2d69e4f9c824f7957a4f741e85833a62c66d9b
-	source_aarch64 = fluffychat-v0.37.0_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/0.37.0/fluffychat-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1c05436172a5ab749e68ef77f145b80b3467b5e6b3001fbf42357ef552634b26
+	source_x86_64 = fluffychat-v0.38.0_x86_64.tar.zst::https://git.entr0py.de/attachments/76089b4e-ce69-461d-b893-8d5f22f57912
+	sha256sums_x86_64 = 3a499094647299b537fb736b5e718be2de2fe60bfac41a9b3bda41712655a386
+	source_aarch64 = fluffychat-v0.38.0_aarch64.tar.gz::https://gitlab.com/api/v4/projects/16112282/packages/generic/fluffychat/0.38.0/fluffychat-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b1f2202ca5bc59940a197ac80264c42f14ede29d35f0c5f23a406765334653c
 
 pkgname = fluffychat-bin
