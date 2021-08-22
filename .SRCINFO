@@ -1,0 +1,16 @@
+pkgbase = sqriptor-git
+	pkgdesc = Greatest and best TextEditor in the World. Tribute.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/luebking/sqriptor
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = sqriptor
+	conflicts = sqriptor
+	source = git+https://github.com/luebking/sqriptor
+	md5sums = SKIP
+
+pkgname = sqriptor-git
