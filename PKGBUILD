@@ -15,11 +15,7 @@ sha256sums=('4f80e2920eb9d87f3e9f64433119774dc67aca390fbd13dd480f852e3f8701a4'
             'c2057c6ac656e13dcfbdf580a696bc79cb22c3d5270d546eac3e2fb42d620f20'
             '960a2d9030105156e178fe8fd5a8329cf10af1e16141623da47f649f059906b0')
 depends=(
-	'jre-openjdk-headless'
-	'jre-openjdk'
-	'jdk-openjdk'
-	'openjdk-doc'
-	'openjdk-src'
+	'java-runtime'
 )
 package() {
     install -dm755 "$pkgdir"/usr/{bin,share/{beast2,applications}}

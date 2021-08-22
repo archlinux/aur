@@ -5,11 +5,7 @@ pkgbase = beast2
 	url = http://www.beast2.org/
 	arch = x86_64
 	license = LGPL-2.1 License
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
+	depends = java-runtime
 	source = https://github.com/CompEvol/beast2/releases/download/v2.6.4/BEAST.v2.6.4.Linux.tgz
 	source = beauti.desktop
 	source = densitree.desktop
@@ -22,4 +18,3 @@ pkgbase = beast2
 	sha256sums = 960a2d9030105156e178fe8fd5a8329cf10af1e16141623da47f649f059906b0
 
 pkgname = beast2
-
