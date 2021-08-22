@@ -1,14 +1,14 @@
 pkgbase = waypoint-bin
 	pkgdesc = Consistent developer workflow tool
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://www.waypointproject.io/
 	arch = x86_64
 	license = MPL2
 	makedepends = unzip
-	provides = waypoint=0.5.0
+	provides = waypoint=0.5.1
 	options = !strip
-	source_x86_64 = waypoint-0.5.0.zip::https://releases.hashicorp.com/waypoint/0.5.0/waypoint_0.5.0_linux_amd64.zip
-	sha256sums_x86_64 = 2a5a353bd772be54466f0ab81361b383a2bc2d75266ca871197b54756e964ff5
+	source_x86_64 = waypoint-0.5.1.zip::https://releases.hashicorp.com/waypoint/0.5.1/waypoint_0.5.1_linux_amd64.zip
+	sha256sums_x86_64 = da710d48b29b033ba7d26268eac3f604bd88284ffe0355e9c3fb88ca59562124
 
 pkgname = waypoint-bin
