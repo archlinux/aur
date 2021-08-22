@@ -1,7 +1,12 @@
 [Desktop Entry]
-Name=grig
-Comment=Rig control (cat) program
+Name=GRig
+Name[en_US]=GRig
+Comment=Rig Control (CAT) Program
+Comment[en_US]=Rig Control (CAT) Program
 Exec=grig
+Icon=grig-logo
 StartupNotify=true
 Type=Application
-Categories=HamRadio;
+Categories=Application;HamRadio;
+X-DCOP-ServiceType=none
+X-KDE-SubstituteUID=false
