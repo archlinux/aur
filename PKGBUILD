@@ -1,8 +1,8 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=switchhosts-appimage
-pkgver=4.0.2
-_subpkgver="6057"
-pkgrel=5
+pkgver=4.0.3
+_subpkgver="6070"
+pkgrel=1
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -13,8 +13,12 @@ conflicts=(
 )
 options=(!strip)
 depends=("fuse2")
-source=("SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage")
-md5sums=("e8828538fb28f95ef3df8f630ef50f70")
+source=(
+    "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage"
+    )
+sha256sums=(
+    'e2034188ee48bbd0ac6dd98ee4e17b57450dbebaedf31e5016619cf8baf4f82d'
+    )
 
 prepare() {
     mv -f "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage" "SwitchHosts.AppImage"
@@ -35,8 +39,8 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/switchhosts.desktop" "${pkgdir}/usr/share/applications/switchhosts.desktop"
 
     # Install Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    cp -a "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/switchhosts.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
 }
 
 post_install() {
