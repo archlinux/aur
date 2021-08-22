@@ -1,0 +1,7 @@
+*/*.tar
+*/*.gz
+*/*.part
+*/pkg
+*/src
+*/*.pkg.*
+.SRCINFO
