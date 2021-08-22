@@ -4,7 +4,8 @@ After = network.target
 
 [Service]
 Type = oneshot
-User = root
+User = v2ray-rules-dat-for-xray
+Group = v2ray-rules-dat-for-xray
 
 WorkingDirectory = /var/lib/v2ray-rules-dat-for-xray
 ExecStart = /usr/bin/v2ray-rules-dat-updater-for-xray github
