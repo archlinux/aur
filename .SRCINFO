@@ -1,8 +1,8 @@
 pkgbase = openra-kang
-	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL
-  pkgver = kang.7bbfe86
+	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL, Kang Version. (Warning: Upstream Unmaintained since 2017)
+	pkgver = 20210822.g7bbfe86d7kang
 	pkgrel = 1
-	url = http://www.openra.net
+	url = https://github.com/BangL/OpenRA
 	install = openra.install
 	arch = any
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = openra-kang
 	provides = openra
 	conflicts = openra
 	options = !strip
-	source = OpenRA::git://github.com/BangL/OpenRA.git#branch=bleed
+	source = openra-kang::git+https://github.com/BangL/OpenRA.git#branch=bleed
 	md5sums = SKIP
 
 pkgname = openra-kang
