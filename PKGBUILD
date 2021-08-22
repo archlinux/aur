@@ -10,7 +10,7 @@ pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, a
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-flatpak' 'libhandy' 'libappindicator-gtk3')
+depends=('libnotify' 'libpamac-flatpak' 'libhandy' 'libappindicator-gtk3' 'git' 'fakeroot' 'pkgconf')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
 conflicts=('pamac' 'pamac-cli' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak' 'gnome-software' 'pamac-tray-appindicator')
 provides=('pamac' 'gnome-software')
