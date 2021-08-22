@@ -1,4 +1,4 @@
-pkgname=arduino-ide
+pkgname=arduino-ide-bin
 pkgver=2.0.0
 pkgrel=10
 _betaver=beta.10
@@ -7,11 +7,13 @@ arch=('x86_64')
 options=("!strip")
 depends=('libxkbfile' 'libxss' 'nss')
 makedepends=('gendesk')
-url="https://github.com/arduino/$pkgname"
+provides=('arduino-ide')
+conflicts=('arduino-ide')
+url="https://github.com/arduino/arduino-ide"
 license=('AGPL3')
-install=$pkgname.install
+install=arduino-ide.install
 source=(
-       "https://downloads.arduino.cc/$pkgname/${pkgname}_${pkgver}-${_betaver}_Linux_64bit.zip"
+       "https://downloads.arduino.cc/arduino-ide/arduino-ide_${pkgver}-${_betaver}_Linux_64bit.zip"
        "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png"
 )
 sha256sums=(
@@ -25,11 +27,11 @@ prepare() {
 
 package() {
 	install -dm755 "$pkgdir/opt/"
-	mv "${pkgname}_${pkgver}-${_betaver}_Linux_64bit" "${pkgname}"
-	chmod -R 755 "${pkgname}"
-	cp -r "${pkgname}" "$pkgdir/opt/$pkgname"
+	mv "arduino-ide_${pkgver}-${_betaver}_Linux_64bit" "arduino-ide"
+	chmod -R 755 "arduino-ide"
+	cp -r "arduino-ide" "$pkgdir/opt/arduino-ide"
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm644 "ArduinoCommunityLogo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	ln -s "/opt/arduino-ide/arduino-ide" "$pkgdir/usr/bin/arduino-ide"
+	install -Dm644 "arduino-ide.desktop" "$pkgdir/usr/share/applications/arduino-ide.desktop"
+	install -Dm644 "ArduinoCommunityLogo.png" "$pkgdir/usr/share/pixmaps/arduino-ide.png"
 }
