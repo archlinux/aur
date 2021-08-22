@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-bouncehandler
-pkgver=1.36+r412+gb411d48
+pkgver=1.36+r413+g6e452e3
 pkgrel=1
 _mw='1.36'
-_commit='b411d4823599887cf64fb406d2dd1155e86250a7' # git rev-parse "REL${_mw/./_}"
+_commit='6e452e3861ffb0925b7f12d3cffb5bb386c1eebc' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that allows a wiki to handle bounce emails efficiently'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:BounceHandler'
