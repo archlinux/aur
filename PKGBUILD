@@ -1,6 +1,7 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 
 pkgname=eclipse-java
+epoch=2
 pkgver=4.20
 pkgrel=1
 _release=2021-06/R
