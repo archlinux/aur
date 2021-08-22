@@ -3,7 +3,7 @@
 pkgname=v2ray-rules-dat-git
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go."
-pkgver=r202107172209
+pkgver=r202108212209
 pkgrel=1
 arch=( 'any' )
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
@@ -13,6 +13,7 @@ provides=( 'v2ray-domain-list-community' 'v2ray-geoip' )
 conflicts=( 'v2ray-domain-list-community' 'v2ray-geoip' )
 
 makedepends=( 'git' )
+depends=( 'curl' )
 
 install="v2ray-rules-dat-git.install"
 
@@ -48,6 +49,9 @@ package() {
 
   install -Dm644 "./geoip.dat"   "${pkgdir}/usr/share/v2ray/geoip.dat"
   install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/v2ray/geosite.dat"
+
+  install -Dm644 "./geoip.dat"   "${pkgdir}/usr/share/xray/geoip.dat"
+  install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/xray/geosite.dat"
 
   popd
   install -Dm755 "./${_pkgname}-updater"          "${pkgdir}/usr/bin/${_pkgname}-updater"
