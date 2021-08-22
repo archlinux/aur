@@ -3,16 +3,16 @@
 # Contributor: Peter Cai <peter at typeblog dot net>
 
 pkgname=udp2raw-tunnel-git
-pkgver=r682.5cc304a
+pkgver=r709.b98a467
 pkgrel=1
 pkgdesc='An Encrypted, Anti-Replay, Multiplexed UdP Tunnel, tunnels udp traffic through fake-tcp or icmp by using raw socket'
 url='https://github.com/wangyu-/udp2raw-tunnel'
 arch=('x86_64')
-depends=('iptables')
+depends=('iptables' 'libpcap')
 conflicts=('udp2raw-tunnel')
 license=('MIT')
 install=udp2raw-tunnel.install
-source=("${pkgname%-*}::git://github.com/wangyu-/udp2raw-tunnel.git"
+source=("${pkgname%-*}::git://github.com/wangyu-/udp2raw-tunnel.git#branch=unified"
         "udp2raw_script.sh"
         "udp2raw@.service")
 sha512sums=('SKIP'
@@ -26,12 +26,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname%-*}"
-	make amd64_hw_aes
+	echo "const char *gitversion = \"`(git rev-parse HEAD)`\";" > git_version.h
+	g++ -o udp2raw_linux -I. main.cpp lib/md5.cpp lib/pbkdf2-sha1.cpp lib/pbkdf2-sha256.cpp encrypt.cpp log.cpp network.cpp common.cpp  connection.cpp misc.cpp fd_manager.cpp client.cpp server.cpp -lpthread lib/aes_faster_c/aes.cpp lib/aes_faster_c/wrapper.cpp my_ev.cpp -isystem libev -lpcap -std=c++11 -Wall -Wextra -Wno-unused-variable -Wno-unused-parameter -Wno-missing-field-initializers -lrt -O2 -DUDP2RAW_MP
 }
 
 package() {
   cd "${srcdir}/${pkgname%-*}"
-  install -Dm755 udp2raw_amd64_hw_aes "$pkgdir"/usr/bin/udp2raw
+  install -Dm755 udp2raw_linux "$pkgdir"/usr/bin/udp2raw
   install -Dm644 example.conf "$pkgdir"/etc/udp2raw/example.conf
   install -Dm755 "$srcdir"/udp2raw_script.sh "$pkgdir"/usr/lib/udp2raw/udp2raw_script.sh
   install -Dm644 "$srcdir"/udp2raw@.service "$pkgdir"/usr/lib/systemd/system/udp2raw@.service

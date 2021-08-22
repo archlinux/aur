@@ -1,14 +1,15 @@
 pkgbase = udp2raw-tunnel-git
 	pkgdesc = An Encrypted, Anti-Replay, Multiplexed UdP Tunnel, tunnels udp traffic through fake-tcp or icmp by using raw socket
-	pkgver = r682.5cc304a
+	pkgver = r709.b98a467
 	pkgrel = 1
 	url = https://github.com/wangyu-/udp2raw-tunnel
 	install = udp2raw-tunnel.install
 	arch = x86_64
 	license = MIT
 	depends = iptables
+	depends = libpcap
 	conflicts = udp2raw-tunnel
-	source = udp2raw-tunnel::git://github.com/wangyu-/udp2raw-tunnel.git
+	source = udp2raw-tunnel::git://github.com/wangyu-/udp2raw-tunnel.git#branch=unified
 	source = udp2raw_script.sh
 	source = udp2raw@.service
 	sha512sums = SKIP
@@ -16,4 +17,3 @@ pkgbase = udp2raw-tunnel-git
 	sha512sums = f1e2831c02163646c26601896a617e07704dc1b6324fc73f4ea576959bd33d70425472d42333ad8b7f210bd8761a83bf08db40987b016067f01590703982ae42
 
 pkgname = udp2raw-tunnel-git
-
