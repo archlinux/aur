@@ -1,0 +1,14 @@
+pkgbase = extremecooling4linux
+	pkgdesc = Extreme cooling fan mode on Linux for Lenovo Legion laptops.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://gitlab.com/OdinTdh/extremecooling4linux
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-gobject
+	depends = python-portio
+	source = extremecooling4linux-0.3.1.tar.gz::https://gitlab.com/OdinTdh/extremecooling4linux/-/archive/0.3.1/extremecooling4linux-0.3.1.tar.gz
+	sha256sums = e14f1ac29ef05a25e3748cb164ba62b8f9be08a9a83f1a6e9b4f7ae47c3455a4
+
+pkgname = extremecooling4linux
