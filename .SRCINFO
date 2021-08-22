@@ -1,7 +1,7 @@
 pkgbase = gnunet
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64
@@ -54,6 +54,6 @@ pkgbase = gnunet
 	sha256sums = SKIP
 	sha256sums = 577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042
 	sha256sums = 66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755
-	sha256sums = aa82707160c57e77ab3c426d16177283eb8d0bc018c04dcba3db689e6bea835f
+	sha256sums = 0f43c979053e0ea974d70ba9c5ad65ac0ed8f36455f9cfd7a1f525ec6f1d7fca
 
 pkgname = gnunet

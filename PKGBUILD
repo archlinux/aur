@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.0'
-pkgrel=9
+pkgrel=10
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -38,7 +38,7 @@ sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
             'SKIP'
             '577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            'aa82707160c57e77ab3c426d16177283eb8d0bc018c04dcba3db689e6bea835f')
+            '0f43c979053e0ea974d70ba9c5ad65ac0ed8f36455f9cfd7a1f525ec6f1d7fca')
 
 prepare() {
 

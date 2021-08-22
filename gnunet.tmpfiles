@@ -1,4 +1,13 @@
 Z /var/lib/gnunet 0700 gnunet gnunet - -
+z /usr/lib/gnunet/libexec/gnunet-helper-vpn 4750 root root - -
+
+# The current Arch Linux package cannot ship `gnunet-helper-transport-wlan` and
+# `gnunet-helper-transport-bluetooth`, as these require root privileges during
+# the build process. If these are built, uncomment the following lines:
+#
+# z /usr/lib/gnunet/libexec/gnunet-helper-transport-wlan 4750 root root - -
+# z /usr/lib/gnunet/libexec/gnunet-helper-transport-bluetooth 4750 root root - -
+
 z /usr/lib/gnunet/gnunet-helper-dns 2750 gnunet gnunetdns - -
 z /usr/lib/gnunet/libexec/gnunet-helper-exit 4750 root root - -
 z /usr/lib/gnunet/libexec/gnunet-helper-nat-server 4750 root root - -
