@@ -7,6 +7,7 @@ arch=("x86_64")
 url="https://gitlab.com/OdinTdh/extremecooling4linux"
 license=('GPL3')
 depends=("python" "python-gobject" "python-portio")
+optdepends=('indicator-extremecooling4linux: desktop indicator for ExtremeCooling4Linux')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/OdinTdh/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e14f1ac29ef05a25e3748cb164ba62b8f9be08a9a83f1a6e9b4f7ae47c3455a4')
 
