@@ -1,6 +1,7 @@
 pkgbase = ttf-gowun-dodum
+	pkgdesc = A humanist sans-serif typeface with a touch of hand movement.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yangheeryu/Gowun-Dodum
 	arch = any
 	license = OFL
