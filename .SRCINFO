@@ -1,0 +1,16 @@
+pkgbase = fonts-impallari-miltonian
+	pkgdesc = Two playful fonts for all your informal needs, from Pablo Impallari
+	pkgver = 1.7
+	pkgrel = 2
+	url = https://github.com/impallari/Miltonian
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	source = ttf-impallari-miltonian-1.7.tar.gz::https://github.com/impallari/Miltonian/archive/master.tar.gz
+	sha256sums = 8f7f9464918a75741baa4cbd551d86ea464b75238548e1774e819c9b20c397ae
+
+pkgname = ttf-impallari-miltonian
+	provides = ttf-font
+
+pkgname = otf-impallari-miltonian
+	provides = otf-font
