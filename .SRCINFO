@@ -5,6 +5,7 @@ pkgbase = popart
 	url = http://popart.otago.ac.nz/index.shtml
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = marble
 	depends = lpsolve
 	depends = qt5-base
@@ -14,4 +15,3 @@ pkgbase = popart
 	md5sums = 44802b43fa5dba142dbb20cc32e15f45
 
 pkgname = popart
-
