@@ -15,7 +15,7 @@ url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
 depends=('libnotify' 'libpamac-flatpak' 'libhandy' 'git' 'fakeroot' 'pkgconf')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
-conflicts=('pamac' 'pamac-cli' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak-gnome')
+conflicts=('pamac' 'pamac-cli' 'pamac-gtk' 'pamac-qt' 'pamac-classic' 'pamac-aur' 'pamac-aur-git' 'pamac-all' 'pamac-all-git' 'pamac-flatpak-gnome')
 provides=('pamac')
 options=(!emptydirs)
 install=pamac.install
