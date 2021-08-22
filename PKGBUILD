@@ -1,6 +1,6 @@
 # Maintainer: Dakeryas <mrdakeryas at gmail dot com>
 pkgname=deadbeef-dr-meter-gtk3-git
-pkgver=r241.04c9b3b
+pkgver=r245.2b6d99f
 pkgrel=1
 epoch=
 pkgdesc="Dynamic Range meter plugin for the GTK3 DeaDBeeF audio player (devel)"
