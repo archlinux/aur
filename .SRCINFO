@@ -1,0 +1,19 @@
+pkgbase = eclipse-php
+	pkgdesc = Highly extensible IDE (PHP version)
+	pkgver = 4.20
+	pkgrel = 1
+	epoch = 2
+	url = https://www.eclipse.org/
+	arch = x86_64
+	license = EPL
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
+	provides = eclipse=4.20-1
+	conflicts = eclipse
+	source = eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
+	source = eclipse.desktop
+	sha512sums = 0e5251f74222deda86a5340c10c4d7c9b56efa3fe19ef82f1aa7515ca6721a8c70b8aa704ea6d1a22f04af5076549ef163c1d37c6b6fc15a5374b85aa15bd950
+	sha512sums = 910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78
+
+pkgname = eclipse-php
