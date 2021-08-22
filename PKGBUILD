@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutantota dot com>
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms."
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('geoclue: to retrieve user location through geoclue.'
 backup=("etc/default/$pkgname.conf")
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4b5b8d7716ce150d8956f3e741bd56c876eedba41bf391fe484d97de239b76a7')
+sha256sums=('a4fc09f118eaa79d5fe9d5f19a2adc323b6401ece7f074e34cb577eec2121833')
 
 build() {
   cmake -B build -S Clight-$pkgver \
