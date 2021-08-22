@@ -8,11 +8,11 @@
 
 
 ## Helpful internal stuff
-_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
-_mozcver=2.26.4444.102
-_utdicver=20210725
+_commit=fed70bc909ef2a67d907d1ac89bbcd042d277da5
+_mozcver=2.26.4472.102
+_utdicver=20210822
 _utuserlink=32
-_utfilelink=32748
+_utfilelink=32837
 
 pkgname='mozc-ut-common'
 pkgver=${_mozcver}.${_utdicver}
@@ -28,7 +28,7 @@ provides=("mozc=${_mozcver}" "mozc-ut=${_mozcver}.${_utdicver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
         "https://osdn.net/downloads/users/${_utuserlink}/${_utfilelink}/mozcdic-ut-${_utdicver}.tar.bz2")
 sha256sums=('SKIP'
-            'ff431c6da2344d400f3e1eb875cf5f870429f8febb24db63814a4a92dcc618c6')
+            '17bc94f0aef77fd15de156fa63226c8ee5e01c65d6b7b6dca98d912f7cabf32d')
 
 prepare() {
     cd ${pkgname}-git
