@@ -15,16 +15,16 @@ source=("git+https://github.com/dakeryas/deadbeef-dr-meter.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/deadbeef-dr-meter"
+    cd "$srcdir/deadbeef-dr-meter"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/deadbeef-dr-meter"
-	make
+    cd "$srcdir/deadbeef-dr-meter"
+    make
 }
 
 package() {
-	cd "$srcdir/deadbeef-dr-meter"
-	make DESTDIR="$pkgdir/" PREFIX=/usr/lib/deadbeef install
+    cd "$srcdir/deadbeef-dr-meter"
+    make DESTDIR="$pkgdir/" PREFIX=/usr/lib/deadbeef install
 }
