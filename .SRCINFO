@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended-git
 	pkgdesc = Transportation simulation game - Extended Version - Nightly build from git
-	pkgver = r19610.8c526d9ac
+	pkgver = r19621.773da609d
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = simutrans-extended-git
 	depends = gcc-libs
 	depends = zstd
 	depends = zlib
-	depends = sdl2_mixer
+	depends = sdl2
 	depends = hicolor-icon-theme
 	depends = freetype2
 	depends = miniupnpc
