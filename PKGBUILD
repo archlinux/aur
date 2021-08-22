@@ -3,8 +3,8 @@
 # flashback_data_files.7z if from http://gtamp.com/PSP/reminiscencepsp.php
 
 pkgname=reminiscence
-pkgver=0.4.6
-pkgrel=2
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="A rewrite of the flashback engine"
 arch=('i686' 'x86_64')
 url="http://cyxdown.free.fr/reminiscence/"
@@ -14,7 +14,7 @@ makedepends=('p7zip')
 source=(http://cyxdown.free.fr/reminiscence/REminiscence-${pkgver}.tar.bz2
         http://gtamp.com/PSP/flashback_data_files.7z
         reminiscence.sh)
-md5sums=('959af798014751c86c69a85f28d54c15'
+md5sums=('4297fb6e94297f70e5bdf4e5596abb48'
          'f994412ad4246c587896dab7d2eb9627'
          '4ed0350e4b81e9ba305f90e157c75371')
 noextract=('flashback_data_files.7z')
