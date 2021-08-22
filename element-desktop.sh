@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-exec electron /usr/lib/element/app.asar "$@"
+exec @ELECTRON@ /usr/lib/element/app.asar --disable-dev-mode "$@"

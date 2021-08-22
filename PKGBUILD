@@ -1,29 +1,32 @@
-# Maintainer: teutat3s <teutates@mailbox.org>
+# Maintainer: ta180m <ta180m@pm.me>
+# Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
+
 pkgbase=element-desktop-git
-pkgver=1.7.25.r21.ge4c9444fe
+pkgname=(element-web-git element-desktop-git)
+pkgver=1.8.1.r41.gc6e6ac18a
 pkgrel=1
-pkgname=("element-web-git" "element-desktop-git")
-pkgdesc="A glossy Matrix collaboration client for desktop."
-arch=("x86_64")
+pkgdesc="Glossy Matrix collaboration client — "
+replaces=(element-desktop-git)
+arch=(x86_64)
 url="https://element.io"
-license=("Apache")
-depends=("electron")
-makedepends=("git" "nodejs<16" "jq" "yarn" "npm" "python" "rust" "sqlcipher" "electron")
-provides=("${pkgbase%-git}")
-conflicts=("${pkgbase%-git}")
-backup=("etc/element/config.json")
+license=(Apache)
+makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 _giturl="git+https://github.com/vector-im"
 source=("element-web::${_giturl}/element-web.git"
         "element-desktop::${_giturl}/element-desktop.git"
-        "element-desktop.desktop"
-        "element-desktop.sh")
-sha256sums=("SKIP"
-            "SKIP"
-            "81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d"
-            "e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f")
-
+        autolaunch.patch
+        io.element.Element.desktop
+        element-desktop.sh)
+sha256sums=('SKIP'
+            'SKIP'
+            'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
+            '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
+            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
+_electron=electron
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -36,28 +39,23 @@ pkgver() {
 }
 
 prepare() {
-  cd element-desktop
-  # Switch target to output to directory rather than .deb package
-  sed -i 's/"target": "deb"/"target": "dir"/g' package.json
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
-  yarn install
-  
-  cd ../element-web
-  # Disable auto updating
-  sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/app/config.json
+  # Specify electron version in launcher
+  sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
-  yarn install
+  cd element-web
+  yarn install --no-fund
 
-  # Workaround for resolve './component-index' in matrix-react-sdk\src error:
-  # https://github.com/vector-im/element-web/issues/16555#issuecomment-805456702
-  yarn upgrade matrix-react-sdk
-  cd node_modules/matrix-react-sdk
-  yarn reskindex
+  cd ../element-desktop
+  patch -p1 < ../autolaunch.patch
+  sed -i 's|"target": "deb"|"target": "dir"|' package.json
+  sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
+  sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
+  yarn install --no-fund
 }
 
 build() {
   cd element-web
-  yarn build
+  yarn build --offline
 
   cd ../element-desktop
   yarn run build:native
@@ -65,10 +63,11 @@ build() {
 }
 
 package_element-web-git() {
-  pkgdesc="Glossy Matrix collaboration client for the web."
+  pkgdesc+="web version."
+  replaces=(riot-web vector-web)
   provides=(element-web)
   conflicts=(element-web)
-
+  
   cd element-web
 
   install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/element
@@ -80,15 +79,16 @@ package_element-web-git() {
 }
 
 package_element-desktop-git() {
-  pkgdesc="Glossy Matrix collaboration client for the desktop."
-  depends=("element-web-git=${pkgver}" electron sqlcipher)
+  pkgdesc+="desktop version."
+  replaces=(riot-desktop)
+  depends=("element-web-git=${pkgver}" ${_electron} sqlcipher)
   provides=(element-desktop)
   conflicts=(element-desktop)
   backup=("etc/element/config.json")
 
   cd element-desktop
 
-  install -d "${pkgdir}"{/usr/lib/element,/etc/webapps/element}
+  install -d "${pkgdir}"{/usr/lib/element/,/etc/webapps/element}
 
   # Install the app content, replace the webapp with a symlink to the system package
   cp -r dist/linux-unpacked/resources/* "${pkgdir}"/usr/lib/element/
@@ -96,16 +96,15 @@ package_element-desktop-git() {
 
   # Config file
   ln -s /etc/element/config.json "${pkgdir}"/etc/webapps/element/config.json
-  install -Dm644 element.io/release/config.json -t "${pkgdir}"/etc/element/
+  install -Dm644 element.io/release/config.json -t "${pkgdir}"/etc/element
 
   # Required extras
-  install -Dm644 ../element-desktop.desktop "${pkgdir}"/usr/share/applications/element-desktop.desktop
-  install -Dm755 ../element-desktop.sh "${pkgdir}"/usr/bin/element-desktop
+  install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
+  install -Dm755 ../${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
 
   # Icons
-  install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/element.svg
-
+  install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
   for i in 16 24 48 64 96 128 256 512; do
-    install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/element.png
+    install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/io.element.Element.png
   done
 }
