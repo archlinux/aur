@@ -2,8 +2,8 @@
 # Contributor: LaFr4nc3 <lafr4nc3 at gmail dot com>
 pkgname=ttf-hackgen
 pkgver=2.5.1
-pkgrel=1
-pkgdesc="HackGen is a composite font of Hack and GenJyuu-Gothic."
+pkgrel=2
+pkgdesc="Composite font of Hack and GenJyuu-Gothic. This package includes HackGen-Nerd."
 arch=("any")
 url="https://github.com/yuru7/HackGen"
 license=("custom")
