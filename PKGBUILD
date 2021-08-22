@@ -16,14 +16,13 @@ makedepends=('unzip' 'zip')
 depends=(
 	'fontconfig'
 	'freetype2'
-	'lib32-bzip2'
-	'lib32-gcc-libs'
-	'lib32-zlib'
 	'libxrender'
 	'libxtst'
 	'which'
 )
 optdepends=(
+	'lib32-gcc-libs: for aapt and mksdcard'
+	'lib32-zlib: for aapt'
 	'alsa-lib: emulator support'
 	'dbus: emulator support'
 	'expat: emulator support'
@@ -44,6 +43,7 @@ optdepends=(
 	'nss: emulator support'
 	'systemd: emulator support'
 	'xorg-setxkbmap: emulator support'
+	'ncurses5-compat-libs: native gdb support'
 )
 options=('!strip')
 source=("https://redirector.gvt1.com/edgedl/android/studio/ide-zips/${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
