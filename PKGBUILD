@@ -6,8 +6,8 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.0.r29763.71a70133a'
-pkgrel=6
+pkgver='0.15.0.r29764.9ef7f0704'
+pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
@@ -33,14 +33,11 @@ options=('!makeflags')
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}.service"
         "${_appname}.sysusers"
-        "${_appname}.tmpfiles"
-        "${_appname}.conf")
-
+        "${_appname}.tmpfiles")
 sha256sums=('SKIP'
             '577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042'
-            '65daa9fb07bdc8b8a11ca06f320b94ce6cfcc9681c6693ac655ca54881645a39'
-            'aa82707160c57e77ab3c426d16177283eb8d0bc018c04dcba3db689e6bea835f'
-            '434d2389264ffdb524147679d5b8a27a568521be4945fb08455c8fcdb8dac0ae')
+            '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
+            'aa82707160c57e77ab3c426d16177283eb8d0bc018c04dcba3db689e6bea835f')
 
 pkgver() {
 
@@ -79,11 +76,6 @@ package() {
 	make DESTDIR="${pkgdir}" install
 	make DESTDIR="${pkgdir}" -C contrib install
 
-	# rm -rf "${pkgdir}/usr/include/libltdl" "${pkgdir}"/usr/lib/libltdl.* "${pkgdir}/usr/include/ltdl.h"
-
-	install -dm755 "${pkgdir}/etc"
-	install -Dm644 "${srcdir}/${_appname}.conf" "${pkgdir}/etc/${_appname}.conf"
-
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -Dm644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
 
@@ -92,6 +84,20 @@ package() {
 
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
+
+	install -dm755 "${pkgdir}/etc"
+
+	# Automatically generate a configuration file using the content of
+	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
+	# that this configuration file is the one backuped with each update,
+	# while `/usr/share/gnunet/config.d/` is kept as immutable default
+	# configuration.
+	{
+		echo "# /etc/${_appname}.conf"
+		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${_appname}/config.d" -type f -name '*.conf' \
+			-printf '\n\n# The following lines have been copied from /%p\n\n' \
+			-exec cat '{}' ';')
+	} > "${pkgdir}/etc/${_appname}.conf"
 
 }
 
