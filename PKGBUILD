@@ -21,6 +21,6 @@ build() {
 package(){
 	tar -xJv -C "${pkgdir}" -f "${srcdir}/jelly-desktop/dist/${_filename}" usr opt
 	mkdir "$pkgdir/usr/bin"
-	ln -s "/opt/Jelly\ Desktop/jelly-desktop" "$pkgdir/usr/bin/jelly-desktop"
+	ln -s "/opt/Jelly Desktop/jelly-desktop" "$pkgdir/usr/bin/jelly-desktop"
 	
 }
