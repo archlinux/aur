@@ -11,8 +11,7 @@ options=('!emptydirs')
 depends=('perl>=5.8.0')
 makedepends=()
 url='https://metacpan.org/release/Bytes-Random-Secure-Tiny'
-source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAVIDO/Bytes-Random-Secure-Tiny-$pkgver.tar.gz")
-md5sums=('e8ef537ed481669444358c612cfcc678')
+source=("https://cpan.metacpan.org/authors/id/D/DA/DAVIDO/Bytes-Random-Secure-Tiny-$pkgver.tar.gz")
 sha512sums=('b04b765af3d4ecd337571b53ff02d9efc54a08a598ece5df82357c8e364fbeff0f2a97561916a0e362f5e89e83939cdd10c3a3b3288e2952324fa57490d640be')
 _distdir="Bytes-Random-Secure-Tiny-$pkgver"
 
