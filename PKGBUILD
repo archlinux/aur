@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=quake2rtx
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ray-traced version of Quake II."
 arch=(x86_64)
 url="https://github.com/NVIDIA/Q2RTX"
@@ -19,7 +19,9 @@ md5sums=('a064940abc6dbd8f092424987c810b1a')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/${pkgname}/bin"
-  cp -r "q2rtx/"* "${pkgdir}/usr/share/${pkgname}/bin/"
+  cp -r "q2rtx/"* "${pkgdir}/usr/share/${pkgname}/"
+  rm "${pkgdir}/usr/share/${pkgname}"/q2rtx.{sh,desktop,png}
+  mv "${pkgdir}/usr/share/${pkgname}"/{q2rtx,find-retail-paks.sh,q2rtxded} "${pkgdir}/usr/share/${pkgname}/bin/"
   install -Dm755 "q2rtx/q2rtx.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "q2rtx/q2rtx.sh" "${pkgdir}/usr/bin/q2rtx"
   install -Dm755 "q2rtx/find-retail-paks.sh" "${pkgdir}/usr/bin/${pkgname}-find-retail-paks"
