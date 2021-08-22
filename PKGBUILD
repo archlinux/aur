@@ -19,6 +19,7 @@ depends=(
 makedepends=('git' 'python-docutils')
 source=("$pkgname::git+https://github.com/Arkq/bluez-alsa.git"
 	50-migration.conf)
+backup=("etc/default/bluealsa")
 md5sums=('SKIP'
          '03c52b1709e491bf8e90f284075c392e')
 install=bluealsa.install
