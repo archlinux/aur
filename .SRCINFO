@@ -5,6 +5,7 @@ pkgbase = flare-engine
 	url = http://www.flarerpg.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	depends = sdl2_image
@@ -13,7 +14,6 @@ pkgbase = flare-engine
 	depends = hicolor-icon-theme
 	depends = python
 	source = flare-engine-1.12::https://github.com/flareteam/flare-engine/archive/v1.12.tar.gz
-	sha1sums = a9574ba080462116820e7cf9f5a68548b2f0d521
+	sha256sums = a9574ba080462116820e7cf9f5a68548b2f0d521
 
 pkgname = flare-engine
-
