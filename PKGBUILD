@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=3.1.0.r22.gdab0fad
+pkgver=3.1.0.r47.gaac8742
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64' 'armv6h')
@@ -18,12 +18,9 @@ depends=(
 )
 makedepends=('git' 'python-docutils')
 source=("$pkgname::git+https://github.com/Arkq/bluez-alsa.git"
-	"https://github.com/Arkq/bluez-alsa/wiki/files/Systemd-integration/bluealsa.service"
-	bluealsa.conf)
+	50-migration.conf)
 md5sums=('SKIP'
-         'e9f0e82a8a8a4893ad26bc7013b18b2e'
-         '2413afa4e59dfdb288955d0436d6d22d')
-backup=('etc/default/bluealsa')
+         '03c52b1709e491bf8e90f284075c392e')
 install=bluealsa.install
 
 pkgver() {
@@ -32,7 +29,7 @@ pkgver() {
 }
 
 prepare() {
-	sed "s:dbus-org.bluez.service:bluetooth.service:" -i bluealsa.service
+	sed "s:bluez.service:bluetooth.service:" -i $pkgname/misc/systemd/bluealsa.service.in
 }
 
 build() {
@@ -49,6 +46,7 @@ build() {
 	#	--enable-msbc
 	#	--enable-ofono
 		--enable-manpages
+		--enable-systemd
 	#	--enable-a2dpconf
 	#	--enable-cli
 	#	--enable-rfcomm
@@ -66,6 +64,5 @@ package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 	install -Dm0644 $srcdir/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-	install -Dm0644 $srcdir/bluealsa.service $pkgdir/usr/lib/systemd/system/bluealsa.service
-	install -Dm0644 $srcdir/bluealsa.conf $pkgdir/etc/default/bluealsa
+	install -Dm0644 $srcdir/50-migration.conf $pkgdir/usr/lib/systemd/system/bluealsa.service.d/50-migration.conf
 }
