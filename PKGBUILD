@@ -1,13 +1,13 @@
 # Maintainer: dorkster <jajdorkster@gmail.com>
-# Maintainer: Fabio Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=flare-engine-git
-pkgver=1.12
+pkgver=1.12.r0.gaaa2bd64
 pkgrel=1
 pkgdesc="Free/Libre Action Roleplaying Engine - Git version"
 url="http://www.flarerpg.org/"
 license=(GPL3)
-arch=(i686 x86_64)
+arch=(i686 x86_64 aarch64)
 makedepends=(git cmake)
 depends=(sdl2_image sdl2_mixer sdl2_ttf hicolor-icon-theme python)
 provides=(flare-engine)

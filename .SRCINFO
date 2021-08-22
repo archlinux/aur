@@ -1,10 +1,11 @@
 pkgbase = flare-engine-git
 	pkgdesc = Free/Libre Action Roleplaying Engine - Git version
-	pkgver = 1.12
+	pkgver = 1.12.r0.gaaa2bd64
 	pkgrel = 1
 	url = http://www.flarerpg.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
@@ -19,4 +20,3 @@ pkgbase = flare-engine-git
 	sha1sums = SKIP
 
 pkgname = flare-engine-git
-
