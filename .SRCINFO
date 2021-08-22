@@ -5,11 +5,9 @@ pkgbase = jelly-desktop
 	url = https://github.com/imLinguin/jelly-desktop
 	arch = x86_64
 	license = GPL3
-	conflicts = jelly-appimage
-	conflicts = jelly-electron
-	noextract = jelly-desktop-1.0.0.pacman
-	options = !strip
-	source = https://github.com/imLinguin/jelly-desktop/releases/download/v1.0.0/jelly-desktop-1.0.0.pacman
-	md5sums = e49d7c7457191ab09f67dd0bce9fc139
+	makedepends = nodejs
+	makedepends = npm
+	source = jelly-desktop::git+https://github.com/imLinguin/jelly-desktop.git
+	md5sums = SKIP
 
 pkgname = jelly-desktop
