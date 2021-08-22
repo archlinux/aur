@@ -1,4 +1,4 @@
-Z /var/lib/gnunet 0700 gnunet gnunet - -
+d /var/lib/gnunet 0700 gnunet gnunet - -
 z /usr/lib/gnunet/libexec/gnunet-helper-vpn 4750 root root - -
 
 # The current Arch Linux package cannot ship `gnunet-helper-transport-wlan` and

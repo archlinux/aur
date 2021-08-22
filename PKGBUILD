@@ -7,11 +7,11 @@
 _appname='gnunet'
 pkgname="${_appname}-git"
 pkgver='0.15.0.r29764.9ef7f0704'
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
-license=('GPL')
+license=('AGPL3')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
@@ -35,9 +35,9 @@ source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles")
 sha256sums=('SKIP'
-            '577a6fd803d7f2a00380a200778dc0515efb26011e5b8ea4888554e7216a9042'
+            '81310f5df1790d9e4d806ac2ed9fe761b13eeafdae584eb59ec2e8a52b088485'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            '0f43c979053e0ea974d70ba9c5ad65ac0ed8f36455f9cfd7a1f525ec6f1d7fca')
+            '4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b')
 
 pkgver() {
 

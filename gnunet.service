@@ -6,6 +6,7 @@ User=gnunet
 Type=forking
 ExecStart=/usr/bin/gnunet-arm -s -c /etc/gnunet.conf
 ExecStop=/usr/bin/gnunet-arm -e -c /etc/gnunet.conf
+StateDirectory=gnunet
 GuessMainPID=no
 
 [Install]
