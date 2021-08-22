@@ -1,0 +1,14 @@
+pkgbase = php7-scoutapm
+	pkgdesc = scoutapm module for extra/php7 package
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://pecl.php.net/package/scoutapm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = autoconf
+	depends = php7
+	source = http://pecl.php.net/get/scoutapm-1.4.2.tgz
+	md5sums = 2f27de9cbc519090fff57fc716bc52d7
+
+pkgname = php7-scoutapm
