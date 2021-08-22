@@ -1,16 +1,16 @@
 # Maintainer: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 pkgname=libthesky
-pkgver=0.3.3
-pkgrel=4
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Fortran library to compute the positions of celestial bodies and events with great accuracy"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libthesky.sourceforge.net/"
 license=('GPL3')
 depends=('libsufr' 'libthesky-data')
-makedepends=('cmake' 'gcc-fortran' 'libsufr')
+makedepends=('cmake' 'gcc-fortran')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/libthesky/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('f7180fdce4a28f6b09393c7b4676a293b145cea8f9993c309c4105dd2928c42fe842985cc905033c9f1b7626b50417005250bce11b1c60d3d6c91f03d7c79bcb')
+sha512sums=('70bcc525d54f1645cff65fc0ac702fb0a19445d74fa3c567aa07fed027b966c4753146becb9efc46e81521d1788846c460c47ec88d6611cec0524c2dad7cb646')
 
 build() {
     mkdir -p "$pkgname-$pkgver"/build

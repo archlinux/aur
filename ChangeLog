@@ -2,6 +2,10 @@
 ChangeLog for libTheSky PKGBUILD
 http://libthesky.sourceforge.net/
 
+* libthesky-0.4.2-1 (2021-08-22 - AstroFloyd)
+	Version bump to v0.4.2-1:
+	remove libsufr from makedepends.
+
 * libthesky-0.3.3-3 (2016-04-17 - AstroFloyd)
 	Revision bump to v0.3.3-3:
 	remove unwanted man pages
