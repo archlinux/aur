@@ -1,7 +1,7 @@
 # Maintainer: Den Ivanov <securityxiii@gmail.com>
 
 pkgname=telegram-desktop-wide
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -24,7 +24,7 @@ optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         wide-messages.patch
         fix-qt-build.patch)
-sha512sums=('b55ddf8ed3736ddf973b68541348da32988e1d27c39515f34513b7a963f691c7ac696a75aef0c4205359e2c7706ff892fb8ca14ad198220e5da25f98590d430f'
+sha512sums=('a98004f3cd8b2d1ec180e64f68c10dfe25b06cc3b89f98990c6c732c17a0fe8984798dcf1319ab8605e00b395251292057909a7733bc48da7d003dcb772f022f'
             'd350450a1e3b950a6df34a24caa340c848c83e0aa93acf95d80b1e5a5c39fe7e2ab122025a718861751541a0d8bfee35482cc13f261ea0fbce874e214213ddae'
             '850421cd5700df1c33af7b7f8aaf57b60a51e9694250068149c3221e750214f860665987e0f6aadd077c13e9c04c2f0662f0a58dce9d3085d96d7fdcd42ca81b')
 
