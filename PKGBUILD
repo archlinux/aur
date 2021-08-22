@@ -10,7 +10,6 @@ url='https://github.com/loiccoyle/cuff'
 license=('MIT')
 depends=('curl' 'jq')
 optdepends=('jackett: Use many torrent trackers with software that supports torznab/potato feeds.')
-provides=('cuff')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/loiccoyle/cuff.git")
 md5sums=('SKIP')
