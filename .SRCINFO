@@ -15,4 +15,3 @@ pkgbase = spotblock-rs
 	md5sums = SKIP
 
 pkgname = spotblock-rs
-
