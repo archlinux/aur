@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Nicolas FORMICHELLA <stigpro@outlook.fr>
-pkgname=python-requests-docs
+pkgname=python-requests-docs-html
 pkgver=3.0.0
 _pkgname="docs-python-requests-org-en-v${pkgver}.zip"
 _pkgname2="requests-v${pkgver}"
