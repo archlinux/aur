@@ -3,18 +3,17 @@
 
 pkgname=v2ray-rules-dat-git-for-xray
 _pkgname=v2ray-rules-dat
-pkgdesc="Enhanced edition of Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
+pkgdesc="Enhanced edition of V2Ray/Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
 pkgver=r202108212209
-pkgrel=3
+pkgrel=4
 arch=( 'any' )
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=( 'GPL3' )
 
-provides=( 'xray-domain-list-community' 'xray-geoip' )
-conflicts=( 'xray-domain-list-community' 'xray-geoip' )
+provides=( 'xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' )
+conflicts=( 'xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' )
 
 makedepends=( 'git' )
-depends=( 'xray' )
 
 install="v2ray-rules-dat-git-for-xray.install"
 
@@ -49,7 +48,9 @@ package() {
   sha256sum --check "./geosite.dat.sha256sum"
 
   install -Dm644 "./geoip.dat"   "${pkgdir}/usr/share/xray/geoip.dat"
+  install -Dm644 "./geoip.dat"   "${pkgdir}/usr/share/v2ray/geoip.dat"
   install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/xray/geosite.dat"
+  install -Dm644 "./geosite.dat"   "${pkgdir}/usr/share/v2ray/geosite.dat"
 
   popd
   install -Dm755 "./${_pkgname}-updater-for-xray"          "${pkgdir}/usr/bin/${_pkgname}-updater-for-xray"
