@@ -9,7 +9,6 @@ pkgbase = libsignal-client
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = rustup
 	makedepends = cargo
 	makedepends = gradle
 	makedepends = git
