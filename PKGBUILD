@@ -21,6 +21,7 @@ install="v2ray-rules-dat-git-for-xray.install"
 source=(
   "$pkgname::git+$url.git"
   v2ray-rules-dat-updater-for-xray
+  v2ray-rules-dat-updater-for-xray.sysusers
   v2ray-rules-dat-updater-for-xray.tmpfiles
   v2ray-rules-dat-updater-for-xray.service
   v2ray-rules-dat-updater-for-xray.timer
@@ -28,6 +29,7 @@ source=(
 sha256sums=(
   'SKIP'
   '60c755cd6d467f123c0d6cbac58a781d34dbfa352641daa8116d822141999256'
+  'f5d515d435a6bccfdeeb73821313cddabddd15a9b90735551ff404c4f7c2415a'
   'e89a361fb9512af967dd6bc1590c621a002486264b049d5d6285d7adf3ea977e'
   'b3cb9bf9a605777a38a156c2b64a7f3005490db12ce4c578642af9a8f572d3d4'
   '5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c'
@@ -51,6 +53,7 @@ package() {
 
   popd
   install -Dm755 "./${_pkgname}-updater-for-xray"          "${pkgdir}/usr/bin/${_pkgname}-updater-for-xray"
+  install -Dm644 "./${_pkgname}-updater-for-xray.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}-updater-for-xray.conf"
   install -Dm644 "./${_pkgname}-updater-for-xray.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}-updater-for-xray.conf"
   install -Dm644 "./${_pkgname}-updater-for-xray.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}-updater-for-xray.service"
   install -Dm644 "./${_pkgname}-updater-for-xray.timer"    "${pkgdir}/usr/lib/systemd/system/${_pkgname}-updater-for-xray.timer"
