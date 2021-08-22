@@ -1,8 +1,8 @@
 ## Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=librewolf-extension-bitwarden
-pkgver=1.51.0
-pkgrel=2
+pkgver=1.52.0
+pkgrel=1
 pkgdesc='Bitwarden addon for Librewolf'
 arch=('any')
 url='https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/'
