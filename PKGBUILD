@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
-_mozcver=2.26.4444.102
-_utdicver=20210725
+_commit=fed70bc909ef2a67d907d1ac89bbcd042d277da5
+_mozcver=2.26.4472.102
+_utdicver=20210822
 
 pkgname='emacs-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
