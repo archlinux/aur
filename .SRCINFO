@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-primehack-git
 	pkgdesc = Dolphin fork intended to give Metroid Prime Trilogy mouselook controls
-	pkgver = 1.0.4.r403.gbeb17c2792
+	pkgver = 1.0.4.r951.ge353752b6d
 	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64

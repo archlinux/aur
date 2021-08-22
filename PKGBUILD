@@ -6,7 +6,7 @@
 
 _mainpkgname="dolphin-emu"
 pkgname=("$_mainpkgname-primehack-git")
-pkgver=1.0.4.r403.gbeb17c2792
+pkgver=1.0.4.r951.ge353752b6d
 pkgrel=1
 pkgdesc='Dolphin fork intended to give Metroid Prime Trilogy mouselook controls'
 arch=('x86_64')
@@ -28,6 +28,7 @@ _sourcedirectory="dolphin"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
+	git submodule update --init
 	if [ -d 'build/' ]; then rm -rf 'build/'; fi
 	mkdir 'build/'
 }
