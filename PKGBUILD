@@ -1,5 +1,5 @@
 pkgname=diylc
-pkgver=4.18.0
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
     "diylc.desktop"
 )
 sha256sums=(
-    '0d90dcabfc9ab3aafeb0a9cfbeab915bda55a023d2972feda3cc2060dbb8d725'
+    '5ccf9969da57c1d6f35ec2d56018966c2de2b9a9aea94ad642d70ec646048311'
     'a4a3c6059cb8cd3e129deb9ccb826025830e3914fa948df977fc73d7a20245c7'
     '6d586133cba43fae2871038ff717fc78d748a5097eec3f9a0dbf136451b88528'
     '66b616f47f907354fc1f7aaf3f077af5640475b025e692bfad0e22cf1af8b319'
@@ -28,7 +28,8 @@ noextract=("diylc-$pkgver.zip")
 
 package() {
     install -d "$pkgdir/usr/share/diylc"
-    unzip "$srcdir/diylc-${pkgver/a/}.zip" -d "$pkgdir/usr/share/diylc"
+    unzip "$srcdir/diylc-${pkgver}.zip" -d "$pkgdir/usr/share/diylc"
+    rm "$pkgdir/usr/share/diylc/diylc.exe"
 
     install -Dm755 "$srcdir/diylc" "$pkgdir/usr/bin/diylc"
     install -Dm644 "$srcdir/diylc.desktop" "$pkgdir/usr/share/applications/diylc.desktop"
