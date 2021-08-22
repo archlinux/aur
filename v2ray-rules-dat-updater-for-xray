@@ -9,15 +9,9 @@ JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
 download_files() {
   echo "Fetching geoip.dat"
   curl -LO "${1}/geoip.dat"
-  curl -LO "${1}/geoip.dat.sha256sum"
-  sha256sum --check "geoip.dat.sha256sum"
 
   echo "Fetching geosite.dat"
   curl -LO "${1}/geosite.dat"
-  curl -LO "${1}/geosite.dat.sha256sum"
-  sha256sum --check "geosite.dat.sha256sum"
-
-  rm -v "geosite.dat.sha256sum" "geoip.dat.sha256sum"
 }
 
 case "${1}" in
