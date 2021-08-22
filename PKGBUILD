@@ -51,7 +51,7 @@ package() {
 
   popd
   install -Dm755 "./${_pkgname}-updater-for-xray"          "${pkgdir}/usr/bin/${_pkgname}-updater-for-xray"
-  install -Dm644 "./${_pkgname}-update-for-xray.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}-updater-for-xray.conf"
+  install -Dm644 "./${_pkgname}-updater-for-xray.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}-updater-for-xray.conf"
   install -Dm644 "./${_pkgname}-updater-for-xray.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}-updater-for-xray.service"
   install -Dm644 "./${_pkgname}-updater-for-xray.timer"    "${pkgdir}/usr/lib/systemd/system/${_pkgname}-updater-for-xray.timer"
 }
