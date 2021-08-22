@@ -1,13 +1,12 @@
 pkgbase = ttf-autour-one
-	pkgdesc = Autour One is inspired by handwritten letters on Ludwig Hohlwein posters.
+	pkgdesc = A font inspired by handwritten letters on Ludwig Hohlwein posters.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Autour+One
 	arch = any
 	license = OFL
-	depends = fontconfig
-	source = https://fonts.google.com/download?family=Autour%20One
-	md5sums = 038165a26c5a19e84bf7877fd746f279
+	provides = ttf-font
+	source = ttf-autour-one-1.zip::https://fonts.google.com/download?family=Autour%20One
+	sha256sums = 2284dc6172dc70edf6185354757a405677bc9d27581e6991eaaed5ae09050c78
 
 pkgname = ttf-autour-one
-
