@@ -1,4 +1,5 @@
-# Maintainer: Bruno Pagani <bruno.n.pagani@gmail.com>
+# Maintainer: Anthony Wang <ta180m@pm.me>
+# Contributor: Bruno Pagani <bruno.n.pagani@gmail.com>
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
@@ -14,7 +15,7 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-_tag='d5ae9f70ea1f21c1d3794df5345a6a9366188660' # git rev-parse v${pkgver}
+_tag='4c9d3669a0f672e6754ac456acd324db570964d3' # git rev-parse v${pkgver}
 source=(git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed)
 sha256sums=(SKIP)
 validpgpkeys=(145077D82501AA20152CACCE8D769208D5E31419) # sfan5 <sfan5@live.de>
