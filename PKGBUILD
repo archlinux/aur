@@ -25,7 +25,7 @@ source=(
   vxray-rules-dat-updater.timer
 )
 sha256sums=(
-  'eb1d2175b8be7f9779639b2b24d8260f83116c9a743f1fb0052f056518ccfd11'
+  'SKIP'
   'a9de745de1166a4011dabe23dc726658c28fab774fac90f9e4e2ef178171e0cc'
   'c855bae9e8a9e3fb7b5be4271bf6e05ad441eacd8272d505ee55a407b6bd263e'
   '1c3c0b854bbfd96b0d84383bfff84eb70e69ac5193b7a535f75183ca28634fc2'
