@@ -2,11 +2,11 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=dehelper
-pkgver=12.5.3
-_date=2021-04-14
+pkgver=12.6.5
+_date=2021-08-19
 _lang=de
 _flang=German
-pkgrel=2
+pkgrel=1
 pkgdesc="Proprietary  ${_flang} dictionary software for linux"
 arch=('x86_64')
 url="https://www.eudic.net/v4/${_lang}/app/${pkgname}"
@@ -18,7 +18,7 @@ depends=(
          )
 provides=("eudic-${_lang}")
 source=("${pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/${pkgname}.deb?v=${_date}")
-sha512sums=('a8bc1f04975dee9242f17bca9db57db735d9b29655418b17d8a3e52ecf72baf2d004f40ad9c41c8a1c1ed2d044cdd403005d947d992cd70e471ecf5c16ba20a6')
+sha512sums=('72ba6314067c0ba47e754de3e1153ae233174c0f217231e55fbc0623e2dd7093c5b4ace816fb8420117df847da2baa500c168421970926e62a2c39725b0254f8')
 
 # sometime use curl to download source deb, throws 404 not found. 
 # user other UA instead of origion one fixed it.
@@ -52,6 +52,6 @@ package() {
          ${pkgdir}/usr/share/${_dirname}/qt.conf
   
   # remove unused files.
-  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins} 
+  rm -rf ${pkgdir}/usr/share/${_dirname}/{gstreamer-1.0,lib,libcrypto.so.1.0.0,libssl.so.1.0.0,AppRun,plugins,lib*} 
 }
 # vim: ts=2 sw=2 et:
