@@ -1,7 +1,7 @@
 pkgbase = ttfautohint
 	pkgdesc = Provides automated hinting process for web fonts
-	pkgver = 1.8.3
-	pkgrel = 2
+	pkgver = 1.8.4
+	pkgrel = 1
 	url = http://www.freetype.org/ttfautohint
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,10 @@ pkgbase = ttfautohint
 	depends = freetype2
 	depends = harfbuzz
 	depends = qt5-base
-	source = https://download.savannah.gnu.org/releases/freetype/ttfautohint-1.8.3.tar.gz
-	source = https://download.savannah.gnu.org/releases/freetype/ttfautohint-1.8.3.tar.gz.sig
+	source = https://download.savannah.gnu.org/releases/freetype/ttfautohint-1.8.4.tar.gz
+	source = https://download.savannah.gnu.org/releases/freetype/ttfautohint-1.8.4.tar.gz.sig
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
-	sha256sums = 87bb4932571ad57536a7cc20b31fd15bc68cb5429977eb43d903fa61617cf87e
+	sha256sums = 8a876117fa6ebfd2ffe1b3682a9a98c802c0f47189f57d3db4b99774206832e1
 	sha256sums = SKIP
 
 pkgname = ttfautohint
-
