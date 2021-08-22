@@ -1,0 +1,24 @@
+pkgbase = itd-git
+	pkgdesc = Daemon that interfaces with InfiniTime firmware on the PineTime smartwatch
+	pkgver = r14.81fe634
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPLv3
+	makedepends = go
+	depends = bluez
+	depends = dbus
+	depends = playerctl
+	provides = itd
+	provides = itctl
+	conflicts = itd
+	conflicts = itctl
+	backup = etc/itd.toml
+	source = git+https://gitea.arsenm.dev/Arsen6331/itd.git
+	md5sums = SKIP
+
+pkgname = itd-git
