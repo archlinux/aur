@@ -6,7 +6,7 @@ ENABLE_APPINDICATOR=1
 
 pkgname=pamac-flatpak
 pkgver=10.1.3
-pkgrel=3
+pkgrel=4
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak and AppIndicator support)"
