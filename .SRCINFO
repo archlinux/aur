@@ -1,5 +1,5 @@
 pkgbase = libstaple
-	pkgdesc = General-purpose data structure library in pure C89
+	pkgdesc = A general-purpose data structure library in pure C89
 	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/Randoragon/libstaple
