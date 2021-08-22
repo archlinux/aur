@@ -3,7 +3,7 @@
 
 pkgname=pamac-flatpak-gnome
 pkgver=10.1.3
-pkgrel=3
+pkgrel=4
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (with AUR, Flatpak, AppIndicator support, and GNOME integration)"
