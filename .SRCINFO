@@ -18,6 +18,7 @@ pkgbase = bluez-alsa-git
 	depends = sbc
 	depends = bluez-libs
 	depends = libfdk-aac
+	backup = etc/default/bluealsa
 	source = bluez-alsa-git::git+https://github.com/Arkq/bluez-alsa.git
 	source = 50-migration.conf
 	md5sums = SKIP
