@@ -8,7 +8,6 @@ pkgbase = mrbayes-mpi
 	license = GPL3
 	depends = openmpi
 	depends = readline
-	depends = gcc
 	optdepends = beagle-lib: for using GPU calculations among other enhancements - rebuild package after installing this dep
 	provides = mrbayes
 	conflicts = mrbayes
