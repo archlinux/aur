@@ -3,8 +3,8 @@
 
 pkgname=v2ray-rules-dat-git-for-xray
 _pkgname=v2ray-rules-dat
-pkgdesc="Enhanced edition of V2Ray/Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
-pkgver=r202108212209
+pkgdesc="Enhanced edition of V2Ray/Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated."
+pkgver=1
 pkgrel=4
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
