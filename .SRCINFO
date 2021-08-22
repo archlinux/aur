@@ -1,0 +1,18 @@
+pkgbase = libadwaita-health
+	pkgdesc = Building blocks for modern GNOME applications (version required by health)
+	pkgver = r1547.660d529
+	pkgrel = 1
+	url = https://gitlab.gnome.org/exalm/libadwaita
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk4
+	provides = libadwaita
+	conflicts = libadwaita
+	source = libadwaita::git+https://gitlab.gnome.org/exalm/libadwaita.git#commit=660d529a6abb571fb592353f67d56915cb5abe54
+	md5sums = SKIP
+
+pkgname = libadwaita-health

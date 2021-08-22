@@ -1,0 +1,4 @@
+pkg
+src
+libadwaita
+*.pkg.tar.zst
