@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: desbma
 pkgname=bat-extras-git
-pkgver=2021.04.06.r6.g75d66fa
-pkgrel=2
+pkgver=2021.08.21.r0.g7803eca
+pkgrel=1
 pkgdesc="Bash scripts that integrate bat with various command line tools."
 arch=('any')
 url="https://github.com/eth-p/bat-extras"
@@ -15,6 +15,7 @@ optdepends=('git: required for batdiff script'
             'man-db: required for batman script'
             'ncurses: optional for batdiff script'
             'git-delta: optional for batdiff script'
+            'fzf: optional for batman script'
             'exa: optional for batpipe script'
             'entr: optional for batwatch script'
             'prettier: various code formatting for prettybat script'
@@ -32,36 +33,36 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	git submodule init .test-framework
-	git config submodule.best.url "$srcdir/best"
-	git submodule update
+  cd "$srcdir/${pkgname%-git}"
+  git submodule init .test-framework
+  git config submodule.best.url "$srcdir/best"
+  git submodule update
 
-	cd .test-framework
-	git submodule init tests
-	git config submodule.best-tests.url "$srcdir/best-tests"
-	git submodule update
+  cd .test-framework
+  git submodule init tests
+  git config submodule.best-tests.url "$srcdir/best-tests"
+  git submodule update
 }
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    ./build.sh --minify=none --no-verify
+  cd "$srcdir/${pkgname%-git}"
+  ./build.sh --minify=none --no-verify
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
-	./test.sh
+  cd "$srcdir/${pkgname%-git}"
+  ./test.sh
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    install -Dm755 bin/* -t "$pkgdir/usr/bin"
-    install -Dm644 doc/* -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-    install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    install -Dm644 man/* -t "$pkgdir/usr/share/man/man1"
+  cd "$srcdir/${pkgname%-git}"
+  install -Dm755 bin/* -t "$pkgdir/usr/bin"
+  install -Dm644 doc/* -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  install -Dm644 man/* -t "$pkgdir/usr/share/man/man1"
 }
