@@ -1,12 +1,12 @@
 pkgbase = aretext-git
-	pkgdesc = Minimalist text editor that never slows you down.
-	pkgver = 0.r685
-	pkgrel = 2
+	pkgdesc = [BETA] Minimalist text editor that never slows you down.
+	pkgver = 0.r739
+	pkgrel = 1
 	url = https://github.com/aretext/aretext
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = go
+	makedepends = go
 	provides = aretext
 	conflicts = aretext
 	source = aretext-git::git+https://github.com/aretext/aretext
