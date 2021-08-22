@@ -6,7 +6,7 @@
 
 pkgname=grig
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Ham Radio - Rig control (cat) program"
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 url="http://groundstation.sourceforge.net/grig/"

@@ -1,7 +1,7 @@
 pkgbase = grig
 	pkgdesc = Ham Radio - Rig control (cat) program
 	pkgver = 0.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://groundstation.sourceforge.net/grig/
 	arch = i686
 	arch = x86_64
