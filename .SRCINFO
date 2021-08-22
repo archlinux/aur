@@ -1,0 +1,26 @@
+pkgbase = v2ray-rules-dat-git-for-xray
+	pkgdesc = Enhanced edition of Xray rules dat files, compatible with Trojan-Go. Automaitcally update.
+	pkgver = r202108212209
+	pkgrel = 1
+	url = https://github.com/Loyalsoldier/v2ray-rules-dat
+	install = v2ray-rules-dat-git-for-xray.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = xray
+	provides = xray-domain-list-community
+	provides = xray-geoip
+	conflicts = xray-domain-list-community
+	conflicts = xray-geoip
+	source = v2ray-rules-dat-git-for-xray::git+https://github.com/Loyalsoldier/v2ray-rules-dat.git
+	source = v2ray-rules-dat-updater-for-xray
+	source = v2ray-rules-dat-updater-for-xray.tmpfiles
+	source = v2ray-rules-dat-updater-for-xray.service
+	source = v2ray-rules-dat-updater-for-xray.timer
+	sha256sums = SKIP
+	sha256sums = 60c755cd6d467f123c0d6cbac58a781d34dbfa352641daa8116d822141999256
+	sha256sums = e89a361fb9512af967dd6bc1590c621a002486264b049d5d6285d7adf3ea977e
+	sha256sums = b3cb9bf9a605777a38a156c2b64a7f3005490db12ce4c578642af9a8f572d3d4
+	sha256sums = 5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c
+
+pkgname = v2ray-rules-dat-git-for-xray
