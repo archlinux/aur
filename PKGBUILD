@@ -1,10 +1,11 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: Hanna Rose <imhxnna@gmail.com>
 
 _srcname=odin
 
 pkgname=odin-bin
 pkgver=2021
 pkgrel=08
+epoch=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
@@ -16,7 +17,7 @@ conflicts=('odin')
 options=('!strip')
 
 source=(
-  "https://github.com/odin-lang/Odin/releases/download/dev-2021-08/odin-ubuntu-amd64-dev-2021-08.zip"
+  "https://github.com/odin-lang/Odin/releases/download/dev-$pkgver-$pkgrel/odin-ubuntu-amd64-dev-$pkgver-$pkgrel.zip"
 )
 sha256sums=(
   '6413900482bc4dcc1edc330462da62434dcca7e775994920c10f8280ad14b211'
