@@ -1,0 +1,18 @@
+pkgbase = deadbeef-dr-meter-gtk3-git
+	pkgdesc = Dynamic Range meter plugin for the GTK3 DeaDBeeF audio player (devel)
+	pkgver = r241.04c9b3b
+	pkgrel = 1
+	url = https://github.com/dakeryas/deadbeef-dr-meter
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = pkg-config
+	depends = deadbeef
+	depends = gtk3
+	provides = deadbeef-dr-meter
+	conflicts = deadbeef-dr-meter
+	source = git+https://github.com/dakeryas/deadbeef-dr-meter.git
+	md5sums = SKIP
+
+pkgname = deadbeef-dr-meter-gtk3-git
