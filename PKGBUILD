@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-just-perfection-desktop-git
 pkgdesc="Just Perfection GNOME Shell Desktop"
-pkgver=r271.3b04e6f
+pkgver=r397.4e84537
 pkgrel=1
 arch=(any)
 url='https://gitlab.gnome.org/jrahmatzadeh/just-perfection'
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir"/just-perfection
-    echo r$(git rev-list --count master).$(git rev-parse --short master)
+    echo r$(git rev-list --count main).$(git rev-parse --short main)
 }
 
 package() {
