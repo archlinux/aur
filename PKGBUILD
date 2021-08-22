@@ -3,14 +3,15 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver=0.1.22.r0.gf0cb968
+pkgver=0.1.22.r23.g0413d22
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
 license=('GPL3+')
 groups=()
-depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket' 'gtksourceview3')
+depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket')
+#depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket' 'gtksourceview3')
 makedepends=('git' 'rust' 'xorg-server-devel' 'libxrandr' 'gtk3')
 checkdepends=()
 optdepends=()
@@ -21,7 +22,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=f0cb968a8b12df55e733a491c6e4869183dd9eb9')
+source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=0413d22f87582a6f41ed73adc9af187f227c84b5')
 noextract=()
 sha512sums=('SKIP')
 
