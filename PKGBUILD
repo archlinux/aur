@@ -8,9 +8,9 @@
 
 
 ## Helpful internal stuff
-_commit=87f9ce226a32225cd3dfedde47a21fa16541ae88
-_mozcver=2.26.4444.102
-_utdicver=20210725
+_commit=fed70bc909ef2a67d907d1ac89bbcd042d277da5
+_mozcver=2.26.4472.102
+_utdicver=20210822
 
 pkgname='fcitx5-mozc-ut'
 pkgver=${_mozcver}.${_utdicver}
@@ -20,7 +20,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/fcitx/fcitx5'
 license=('custom')
 depends=('fcitx5' 'mozc-ut-common')
-makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base' 'unzip')
+makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 optdepends=('fcitx5-configtool')
 conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
            'fcitx-mozc-ut' 'fcitx5-mozc' 'fcitx5-mozc-git')
@@ -28,7 +28,7 @@ provides=("fcitx5-mozc=${_mozcver}")
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=${_commit}"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            'e0f38bcb2cbcba1c7e37200312d5006f68d48083e9d6ede5049e25e033b1b6c6')
+            '93259ab0218296776bd308837c2a733c56676a59dd95115afa6f23d7198e1973')
 
 prepare() {
     cd ${pkgname}-git
