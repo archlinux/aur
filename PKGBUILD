@@ -3,7 +3,7 @@
 
 pkgname=v2ray-rules-dat-git-for-xray
 _pkgname=v2ray-rules-dat
-pkgdesc="Enhanced edition of V2Ray/Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated."
+pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated."
 pkgver=2
 pkgrel=1
 arch=('any')
@@ -27,7 +27,7 @@ source=(
   v2ray-rules-dat-updater-for-xray.timer
 )
 sha256sums=(
-  'SKIP'
+  '27cb374c14a2fcac6ec30ebb4e14214cab727bf82a6b86cccbd0b8ff6b6e4e5d'
   'ab64a3386b2e8321b19108f825001ce08e7279901e7ff3429744fc4a9c97f0e2'
   'f5d515d435a6bccfdeeb73821313cddabddd15a9b90735551ff404c4f7c2415a'
   'e89a361fb9512af967dd6bc1590c621a002486264b049d5d6285d7adf3ea977e'
@@ -44,10 +44,6 @@ pkgver() {
 package() {
   pushd "${srcdir}/${pkgname}"
   git switch release >/dev/null 2>&1
-
-  sha256sum --check "./geoip.dat.sha256sum"
-  sha256sum --check "./geosite.dat.sha256sum"
-
   install -Dm644 "./geoip.dat" "${pkgdir}/usr/share/xray/geoip.dat"
   install -Dm644 "./geoip.dat" "${pkgdir}/usr/share/v2ray/geoip.dat"
   install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/xray/geosite.dat"
