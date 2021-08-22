@@ -1,0 +1,13 @@
+pkgbase = python-requests-docs
+	pkgdesc = HTML documentation for the python-requests module
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://docs.python-requests.org/en/master/index.html
+	arch = any
+	license = Apache
+	makedepends = unzip
+	noextract = docs-python-requests-org-en-v3.0.0.zip
+	source = docs-python-requests-org-en-v3.0.0.zip::https://docs.python-requests.org/_/downloads/en/v3.0.0/htmlzip/
+	sha256sums = b281f41b4dbfa21d3d2574c270abba7bc661a8d456893ca63634402333a1ef15
+
+pkgname = python-requests-docs
