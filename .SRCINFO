@@ -1,0 +1,10 @@
+pkgbase = ttf-gowun-batang
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/yangheeryu/Gowun-Batang
+	arch = any
+	license = OFL
+	source = Gowun_Batang.zip::https://fonts.google.com/download?family=Gowun+Batang
+	sha256sums = 63b53ed24bb538b55893e08a1cd21d2c93c8d439758d8da9a02d5454f06fb789
+
+pkgname = ttf-gowun-batang
