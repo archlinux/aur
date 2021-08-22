@@ -1,5 +1,5 @@
 # Maintainer: dorkster <jajdorkster@gmail.com>
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=flare-engine-git
 pkgver=1.12.r0.gaaa2bd64
