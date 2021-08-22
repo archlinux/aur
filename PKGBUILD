@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$srcdir/${pkgname%-git}"
-  desktop-file-validate "linux/$pkgname.desktop"
+  desktop-file-validate "linux/${pkgname%-git}.desktop"
   appstream-util validate-relax --nonet "$srcdir/${pkgname%-git}.appdata.xml"
 }
 
