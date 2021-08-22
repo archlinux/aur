@@ -2,11 +2,12 @@
 pkgname=switchhosts-appimage
 pkgver=4.0.3
 _subpkgver="6070"
-pkgrel=1
+pkgrel=2
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
 license=('Apache')
+provides=('switchhosts')
 conflicts=(
     'switchhosts-bin'
     'switchhosts'
