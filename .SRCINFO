@@ -14,7 +14,6 @@ pkgbase = mechvibes
 	depends = cairo
 	depends = dbus
 	depends = desktop-file-utils
-	depends = discord
 	depends = expat
 	depends = gdk-pixbuf2
 	depends = glib2
