@@ -1,6 +1,6 @@
 pkgbase = surface-dtx-daemon-git
 	pkgdesc = Surface Detachment System (DTX) Daemon
-	pkgver = 0.3.0.1.r0.gb570ed2
+	pkgver = 0.3.1.1.r1.g38164eb
 	pkgrel = 1
 	url = https://github.com/linux-surface/surface-dtx-daemon
 	install = surface-dtx-daemon.install
@@ -20,4 +20,3 @@ pkgbase = surface-dtx-daemon-git
 	sha256sums = SKIP
 
 pkgname = surface-dtx-daemon-git
-
