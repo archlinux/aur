@@ -1,0 +1,15 @@
+pkgbase = libgabe
+	pkgdesc = Fork of libbswabe that replaces openssl with libgcrypt and fixes some bugs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/schanzen/libgabe
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = pbc
+	conflicts = libgabe-git
+	conflicts = libgabe-bin
+	source = https://github.com/schanzen/libgabe/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2a8c151a90c9ad8eaad073c8ad1482d66875e3433b0b4fd1e08424c0fc89e877
+
+pkgname = libgabe
