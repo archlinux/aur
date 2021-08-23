@@ -2,9 +2,8 @@
 
 _pkgname=odin
 pkgname=odin-src
-pkgver=master
 pkgrel=2021
-epoch=1
+pkgver=51ba2d6
 pkgdesc="Standalone master build of the Odin programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
