@@ -1,25 +1,28 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributer: Bernhard Landauer <oberon@manjaro.org>
 
-pkgname=xfce4-calculator-plugin
+pkgname="xfce4-calculator-plugin"
 _maj=0.7
-pkgver=$_maj.0
+pkgver="${_maj}.1"
 pkgrel=1
 pkgdesc="Calculator plugin for the Xfce4 panel."
 arch=('i686' 'x86_64')
-url="http://goodies.xfce.org/projects/panel-plugins/$pkgname"
+url="http://goodies.xfce.org/projects/panel-plugins/${pkgname}"
 license=('GPL')
 depends=('intltool' 'xfce4-panel')
-install=$pkgname.install
-source=(http://archive.xfce.org/src/panel-plugins/$pkgname/$_maj/$pkgname-$pkgver.tar.bz2)
-sha256sums=('7b50ab947ab058e1c079113e7f0f8b38ef242fec36ec9f31bb4e3c19cb3f9de9')
+install="${pkgname}.install"
+source=("https://archive.xfce.org/src/panel-plugins/xfce4-calculator-plugin/${_maj}/xfce4-calculator-plugin-${pkgver}.tar.bz2")
+sha256sums=('e4016a03c3ef4ebddd97e4135f5e304f80677033c98e19644b9989ec6f5ada81')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-static
-  make
+    cd "${pkgname}-${pkgver}"
+    [[ -f "./Makefile" ]] && make distclean
+    "./configure" --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-static
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
+
