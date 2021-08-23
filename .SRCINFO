@@ -1,18 +1,19 @@
 pkgbase = haruna
 	pkgdesc = Video player built with Qt/QML on top of libmpv.
-	pkgver = 0.6.3.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/haruna/
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
+	makedepends = kdoctools
 	depends = kfilemetadata
 	depends = kio
 	depends = mpv
 	depends = qt5-quickcontrols2
 	depends = kirigami2
 	depends = breeze-icons
-	source = haruna-0.6.3.1.tar.gz::https://invent.kde.org/multimedia/haruna//-/archive/v0.6.3.1/0.6.3.1.tar.gz
-	md5sums = 3985cc45f395d5ab5e88a386bb45ca23
+	source = haruna-0.7.0.tar.gz::https://invent.kde.org/multimedia/haruna//-/archive/v0.7.0/0.7.0.tar.gz
+	sha256sums = 42f81ae732bef54d3c4c38b3e02d88bb586411d615b3c3bb8701305b72096e7f
 
 pkgname = haruna
