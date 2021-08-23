@@ -3,10 +3,9 @@
 
 pkgname=gdu
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
-conflicts=(gdu-git gdu-bin)
 depends=('glibc')
 makedepends=('go' 'pandoc')
 arch=('x86_64')
