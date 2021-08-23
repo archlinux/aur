@@ -1,14 +1,12 @@
 pkgbase = masalla-icon-theme
 	pkgdesc = A flat design icon theme by Hayder Majid
-	pkgver = 0.9
+	pkgver = 1.5
 	pkgrel = 1
-	url = https://github.com/hayderctee/masalla-icon-theme
+	url = https://notabug.org/masalla-art/masalla-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	conflicts = masalla-icon-theme-git
-	source = git+https://github.com/hayderctee/masalla-icon-theme.git
-	sha256sums = SKIP
+	source = https://notabug.org/masalla-art/masalla-icon-theme/archive/1.5.tar.gz
+	md5sums = 84cf3938200bfeeef272df34d221e9ad
 
 pkgname = masalla-icon-theme
-

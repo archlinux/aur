@@ -1,25 +1,20 @@
-# Maintainer: Michael Tiebesl <email@tiebesl.com>
+# Maintainer: Hayder Majid <hayder@riseup.net>
 
 pkgname=masalla-icon-theme
-pkgver=0.9
+pkgver=1.5
 pkgrel=1
 pkgdesc="A flat design icon theme by Hayder Majid"
 arch=('any')
-url="https://github.com/hayderctee/masalla-icon-theme"
+url="https://notabug.org/masalla-art/$pkgname"
 license=('GPL3')
-depends=()
 makedepends=('git')
-optdepends=()
-conflicts=('masalla-icon-theme-git')
-source=('git+https://github.com/hayderctee/masalla-icon-theme.git')
-sha256sums=('SKIP')
+source=("$url/archive/$pkgver.tar.gz")
+md5sums=('84cf3938200bfeeef272df34d221e9ad')
 
 package() {
-  # create theme dirs
-  install -d -m 755 "$pkgdir"/usr/share/icons/Masalla
-
- # install theme
-  cd $srcdir/$_pkgname/masalla-icon-theme
-  cp -r . "$pkgdir"/usr/share/icons/Masalla
+  cd $pkgname
+  install -dm 755 $pkgdir/usr/share/icons
+  cp -r masalla $pkgdir/usr/share/icons
+  cp -r masalla-dark $pkgdir/usr/share/icons
 }
 
