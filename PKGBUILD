@@ -2,14 +2,14 @@
 pkgname=vxray-rules-dat-git
 _pkgname=vxray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated."
-pkgver=r202108212209
+pkgver=r202108222209
 pkgrel=1
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 license=('GPL')
 
-provides=('xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' 'v2ray-rules-dat-git' 'v2ray-rules-dat-git-for-xray')
-conflicts=('xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' 'v2ray-rules-dat-git''v2ray-rules-dat-git-for-xray')
+provides=('xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' 'v2ray-rules-dat-git')
+conflicts=('xray-domain-list-community' 'xray-geoip' 'v2ray-domain-list-community' 'v2ray-geoip' 'v2ray-rules-dat-git')
 
 makedepends=('git')
 depends=('curl')
@@ -28,7 +28,7 @@ source=(
 sha256sums=(
   'SKIP'
   'eb1d2175b8be7f9779639b2b24d8260f83116c9a743f1fb0052f056518ccfd11'
-  'a9de745de1166a4011dabe23dc726658c28fab774fac90f9e4e2ef178171e0cc'
+  '339962eedc9875a1533a67434cc240be8d728cb921be3f8ce82a8151c8e4c8ed'
   'c855bae9e8a9e3fb7b5be4271bf6e05ad441eacd8272d505ee55a407b6bd263e'
   '1c3c0b854bbfd96b0d84383bfff84eb70e69ac5193b7a535f75183ca28634fc2'
   'e282e023e2f4fbffabedc19a01c33e03cc5049c7cb2cd6e36398233a16bd2b84'
@@ -36,14 +36,15 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git switch release >/dev/null 2>&1
-  printf "r%s" "$(git log --pretty=\"format:%B\" HEAD | tr -dc '[:digit:]')"
+  cd "$pkgname"
+  git describe --long --tags | sed 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
   pushd "${srcdir}/${pkgname}"
   git switch release >/dev/null 2>&1
+  sha256sum --check "./geoip.dat.sha256sum"
+  sha256sum --check "./geosite.dat.sha256sum"
   install -Dm644 "./geoip.dat" "${pkgdir}/usr/share/xray/geoip.dat"
   install -Dm644 "./geoip.dat" "${pkgdir}/usr/share/v2ray/geoip.dat"
   install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/xray/geosite.dat"
