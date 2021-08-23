@@ -1,0 +1,22 @@
+pkgbase = ytui-git
+	pkgdesc = A bad youtube TUI client written in bash
+	pkgver = 0.r5.195de04
+	pkgrel = 1
+	url = https://notabug.org/mybeansarebaked/ytui.git
+	arch = any
+	license = GPL
+	depends = mpv
+	depends = youtube-dl
+	depends = fzf
+	depends = wget
+	depends = bash
+	depends = sed
+	depends = awk
+	depends = jq
+	depends = util-linux
+	optdepends = sfeed: RSS subscription feeds
+	provides = ytui
+	source = git+https://notabug.org/mybeansarebaked/ytui.git
+	md5sums = SKIP
+
+pkgname = ytui-git
