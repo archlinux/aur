@@ -3,10 +3,9 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=libreoffice-online
-pkgver=6.4.4
-_rel=3
+pkgver=6.4.10
+_rel=10
 pkgrel=1
-epoch=1
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=('aarch64' 'x86_64')
 url="https://www.libreoffice.org/download/libreoffice-online/"
@@ -37,8 +36,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/online-cp-${pkgver}-${_rel}"
-  ./autogen.sh
   
+  # Disable unit-tests, will be removed or reformulated
+  sed -i "s/all-local/#all-local/" test/Makefile.am
+
+  ./autogen.sh
+
   ./configure \
   --prefix=/usr \
   --mandir=/usr/share/man \
@@ -47,6 +50,7 @@ build() {
   --sysconfdir=/etc \
   --localstatedir=/var/lib \
   --disable-dependency-tracking \
+  --disable-freemium \
   --disable-silent-rules \
   --docdir=/usr/share/doc/loolwsd \
   --htmldir=/usr/share/doc/loolwsd/html \
@@ -58,7 +62,7 @@ build() {
   --with-lo-path=/usr/lib/libreoffice \
   --disable-debug \
   --enable-ssl
-  
+
   make build-nocheck -j"$(nproc)"
 }
 
@@ -86,7 +90,7 @@ package() {
   rm -rf "${pkgdir}/etc/apache2"
 }
 
-sha512sums=('0b940660d9fa10609f968bfaf8e888142a861dd8e608ce334bb924da399ffb8ae0e5c9d14dba30c869242bed026bc5478ee655200c25a8b3f0c24109ff6736d0'
+sha512sums=('20cf3d95ca62ef5f3b14b919b14a53af145206dc637169cd46232df7e85d382f4fc65cf84faaeb1e89d3c97e8e5239b6abc7e4fe289d5d982add4c63e37f6506'
             'df03ce4ef23948e7fbb3cef7f6ea7c0b692cb0816370995051b7256a0b94ef288ca28157c3418ba235459902d2be2998e3742ef0e872a97952a9e380490d8d10'
             '61870a3fe597f37bbf0d8713f9a8c5af4ea9392a56afb065db6cda475755fca5c601922f03fe83443b49edf9d5eaebc7d7cf3bef499cda21e62dbbc5f6a768f7'
             '4292f1e750a0a1466a8b8cdd0ad03d0edc6c6c14e91c785880713b99d256ca779c4a63ad3c1a7439d21af3dae6fd79dc38e079316d3ba5caff454016b0aed759'

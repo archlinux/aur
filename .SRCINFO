@@ -1,8 +1,7 @@
 pkgbase = libreoffice-online
 	pkgdesc = HTML5-based/cloud-based version of the office suite
-	pkgver = 6.4.4
+	pkgver = 6.4.10
 	pkgrel = 1
-	epoch = 1
 	url = https://www.libreoffice.org/download/libreoffice-online/
 	install = libreoffice-online.install
 	arch = aarch64
@@ -29,14 +28,14 @@ pkgbase = libreoffice-online
 	backup = etc/loolwsd/loolwsd.xml
 	backup = etc/nginx/snippets/loolwsd.conf
 	backup = etc/pam.d/loolwsd
-	source = https://github.com/CollaboraOnline/online/archive/cp-6.4.4-3.tar.gz
+	source = https://github.com/CollaboraOnline/online/archive/cp-6.4.10-10.tar.gz
 	source = loolwsd.pam.d
 	source = loolwsd-config.patch
 	source = loolwsd.service
 	source = libreoffice-online.install
 	source = libreoffice-online.sysusers
 	source = libreoffice-online.tmpfiles
-	sha512sums = 0b940660d9fa10609f968bfaf8e888142a861dd8e608ce334bb924da399ffb8ae0e5c9d14dba30c869242bed026bc5478ee655200c25a8b3f0c24109ff6736d0
+	sha512sums = 20cf3d95ca62ef5f3b14b919b14a53af145206dc637169cd46232df7e85d382f4fc65cf84faaeb1e89d3c97e8e5239b6abc7e4fe289d5d982add4c63e37f6506
 	sha512sums = df03ce4ef23948e7fbb3cef7f6ea7c0b692cb0816370995051b7256a0b94ef288ca28157c3418ba235459902d2be2998e3742ef0e872a97952a9e380490d8d10
 	sha512sums = 61870a3fe597f37bbf0d8713f9a8c5af4ea9392a56afb065db6cda475755fca5c601922f03fe83443b49edf9d5eaebc7d7cf3bef499cda21e62dbbc5f6a768f7
 	sha512sums = 4292f1e750a0a1466a8b8cdd0ad03d0edc6c6c14e91c785880713b99d256ca779c4a63ad3c1a7439d21af3dae6fd79dc38e079316d3ba5caff454016b0aed759
@@ -45,4 +44,3 @@ pkgbase = libreoffice-online
 	sha512sums = 0dd767e95435f6c501e913d3cfc866f3f4f7160fe08cb406b7d5d7a07bc2a524a475828a34c5d68692ae954dd4f1affb689dacc95ede6d3561ef977553b0c3fc
 
 pkgname = libreoffice-online
-
