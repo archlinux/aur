@@ -12,10 +12,11 @@ _jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
 _openj9ver=0.27.0
 _buildvershort=7
 _buildver=${_buildvershort}_openj9-${_openj9ver}
+_baseurl=https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
-arch=('x86_64')
+arch=('x86_64' 's390x' 'ppc64le' 'aarch64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
@@ -29,9 +30,15 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source_x86_64=("${_baseurl}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source_s390x=("${_baseurl}/ibm-semeru-open-jdk_s390x_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source_ppc64le=("${_baseurl}/ibm-semeru-open-jdk_ppc64le_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source_aarch64=("${_baseurl}/ibm-semeru-open-jdk_aarch64_linux_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('4c2d776f69e3ff7d01cd57c0938b7a7f058264425faf18e3708b905e93f915c4')
+sha256sums_x86_64=('4c2d776f69e3ff7d01cd57c0938b7a7f058264425faf18e3708b905e93f915c4')
+sha256sums_s390x=('991f8df53079378782b9de3bbfd4c52a19920ea9ba90e9a54c871ce47b599cdb')
+sha256sums_ppc64le=('7d49a5b29a84831526f7bffaaee399ac9a26d05712ac4b9cb7ca0a370ed3f020')
+sha256sums_aarch64=('f025af94a65872653baeb6f889ec6d592ce9d92391fa04e82fb68a50b96178a7')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
