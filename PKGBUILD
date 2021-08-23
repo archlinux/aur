@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-git
 _pkgname=dotter
-pkgver=0.12.5.r0.gaf19c1e
+pkgver=0.12.6.r0.g04a2e17
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust (git)"
 arch=('x86_64')
@@ -21,14 +21,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$_pkgname"
+  cargo fetch --locked
+}
+
 build() {
   cd "$_pkgname"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
