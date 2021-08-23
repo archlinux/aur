@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text package.orig/jproperties-2.1.1/setup.py package.new/jproperties-2.1.1/setup.py
+--- package.orig/jproperties-2.1.1/setup.py	2021-08-01 03:51:46.000000000 +0200
++++ package.new/jproperties-2.1.1/setup.py	2021-08-23 11:29:21.491477918 +0200
+@@ -26,7 +26,7 @@
+     py_modules=["jproperties"],
+     install_requires=["six ~= 1.13"],
+     setup_requires=[
+-        "setuptools_scm ~= 3.3"
++        "setuptools_scm >= 3.3"
+     ],
+     classifiers=[
+         "Development Status :: 5 - Production/Stable",

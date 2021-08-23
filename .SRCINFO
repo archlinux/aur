@@ -1,16 +1,19 @@
 pkgbase = python-jproperties
 	pkgdesc = Java Property file parser and writer for Python
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Tblue/python-jproperties
 	arch = any
 	license = BSD
 	license = Python
-	makedepends = python3
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-pytest
 	depends = python3
-	source = https://files.pythonhosted.org/packages/source/j/jproperties/jproperties-2.1.0.tar.gz
-	sha256sums = 504d7b8d3b2f5f0f52c22c1f72bd50576dca17b01b4cd00d4359c6b0607a59ce
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/j/jproperties/jproperties-2.1.1.tar.gz
+	source = setuptools_scm-version.patch
+	sha256sums = 40b71124e8d257e8954899a91cd2d5c0f72e0f67f1b72048a5ba264567604f29
+	sha256sums = 901c1b8861c700dcdbf8f462ab21e8039061f87216c0b73872c8e4e2982f4f48
 
 pkgname = python-jproperties
-
