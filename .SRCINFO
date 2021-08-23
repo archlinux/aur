@@ -1,0 +1,18 @@
+pkgbase = chirurgien-git
+	pkgdesc = Chirurgien helps understand and manipulate file formats
+	pkgver = 1.0.r7.g10da91c
+	pkgrel = 1
+	url = https://github.com/leonardschardijn/Chirurgien
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = glib2
+	provides = chirurgien
+	conflicts = chirurgien
+	source = git+https://github.com/leonardschardijn/Chirurgien.git
+	sha256sums = SKIP
+
+pkgname = chirurgien-git
