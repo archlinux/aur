@@ -2,9 +2,9 @@
 
 set -e
 
-FastGit="https://download.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/download/"
-GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/"
-JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
+FastGit="https://hub.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
+GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release"
+JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release"
 
 download_files() {
   echo "Fetching geoip.dat"
