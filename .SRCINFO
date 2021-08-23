@@ -1,6 +1,6 @@
 pkgbase = chnroutes-alike-git
 	pkgdesc = Collection of IP ranges not in China but works good enough
-	pkgver = 0.2.066149b
+	pkgver = 0.101.9253c48
 	pkgrel = 1
 	url = https://github.com/felixonmars/chnroutes-alike
 	arch = any
@@ -10,4 +10,3 @@ pkgbase = chnroutes-alike-git
 	md5sums = SKIP
 
 pkgname = chnroutes-alike-git
-
