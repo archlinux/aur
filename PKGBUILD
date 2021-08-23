@@ -1,6 +1,6 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
-pkgname=ratt-git
+pkgname=ratt-src
 pkgver=r54.25a2b56
 pkgrel=2
 pkgdesc="A tool for converting websites to RSS/Atom feeds"
