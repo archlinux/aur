@@ -1,7 +1,7 @@
 # Maintainer: Rihards Skuja <rhssk@posteo.eu>
 
 pkgname=netinstall-dev
-pkgver=7.1beta6
+pkgver=7.1rc1
 pkgrel=1
 pkgdesc="Install and reinstall MikroTik devices running RouterOS (dev channel)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 provides=('netinstall')
 conflicts=('netinstall')
 source=("https://download.mikrotik.com/routeros/$pkgver/netinstall-$pkgver.tar.gz")
-sha256sums=('7c2cfc825a90263969e337f6e3f522ed5aa175853f5d49c4d10a31912e27beea')
+sha256sums=('0a36c8551224363cf97c24c4d09f4a195c9ee0faca5f2565ee8c27ba35e3ef87')
 
 package() {
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"

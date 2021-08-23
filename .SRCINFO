@@ -1,6 +1,6 @@
 pkgbase = netinstall-dev
 	pkgdesc = Install and reinstall MikroTik devices running RouterOS (dev channel)
-	pkgver = 7.1beta6
+	pkgver = 7.1rc1
 	pkgrel = 1
 	url = https://www.mikrotik.com/download
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = netinstall-dev
 	license = custom
 	provides = netinstall
 	conflicts = netinstall
-	source = https://download.mikrotik.com/routeros/7.1beta6/netinstall-7.1beta6.tar.gz
-	sha256sums = 7c2cfc825a90263969e337f6e3f522ed5aa175853f5d49c4d10a31912e27beea
+	source = https://download.mikrotik.com/routeros/7.1rc1/netinstall-7.1rc1.tar.gz
+	sha256sums = 0a36c8551224363cf97c24c4d09f4a195c9ee0faca5f2565ee8c27ba35e3ef87
 
 pkgname = netinstall-dev
-
