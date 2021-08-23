@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=pycppad
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="CppAD python bindings"
 arch=('i686' 'x86_64')
