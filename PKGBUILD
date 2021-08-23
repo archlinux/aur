@@ -9,18 +9,17 @@ _pkgver=0.9.0
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=gmdb2
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 provides=("gmdb2=$pkgver")
 pkgdesc="Graphical viewer for Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/mdbtools/gmdb2"
 license=('GPL')
 depends=('mdbtools>=0.9.0' 'gtk3>=3.22')
-makedepends=('yelp-tools' 'desktop-file-utils' 'gawk')
+makedepends=('yelp-tools')
 optdepends=('yelp: for documentation')
 source=("${_srcname}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
 md5sums=('213340eb34607845887c2ce39303f6c1')
-install=gmdb2.install
 
 prepare() {
   cd "${srcdir}/${_srcname}"
