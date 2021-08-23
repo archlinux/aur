@@ -1,7 +1,7 @@
 pkgbase = keepassxc-wordlists-hunspell
 	pkgdesc = Wordlists generated from system Hunspell dicts for keepassxc
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wooorm/dictionaries
 	arch = any
 	license = GPL

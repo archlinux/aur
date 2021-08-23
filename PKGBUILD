@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 pkgname=keepassxc-wordlists-hunspell
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wordlists generated from system Hunspell dicts for keepassxc"
 arch=('any')
 url="https://github.com/wooorm/dictionaries"
@@ -35,7 +35,7 @@ for ((i = 0; i < ${#_lang[@]}; ++i)); do
     
     if [ -f /usr/share/hunspell/$file ]; then
         #Strip everything but the words and convert to UTF-8
-        tail -n +${_front[$i]} /usr/share/hunspell/$file |iconv -f ISO-8859-15 -t UTF-8 | sed -r 's/\/.+//g' > $srcdir/$file.txt
+        tail -n +${_front[$i]} /usr/share/hunspell/$file | sed -r 's/\/.+//g' > $srcdir/$file.txt
         echo "Converted "$file"!"
     else
         echo "("$file" not found)"
