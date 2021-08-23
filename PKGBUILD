@@ -6,9 +6,9 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.0.r29764.9ef7f0704'
-pkgrel=3
-pkgdesc="A framework for secure peer-to-peer networking"
+pkgver='0.15.0.r29765.ea901fb49'
+pkgrel=1
+pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
 license=('AGPL3')
