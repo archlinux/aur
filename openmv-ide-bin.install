@@ -1,0 +1,4 @@
+post_upgrade() {
+    # set correct correct permission after upgrading.
+    find /opt/openmv-ide/ -type d -exec chmod 755 {} \;
+}
