@@ -9,7 +9,7 @@ url="http://www.jp-minerals.org/vesta/en/"
 license=('VESTA LICENSE')
 conflicts=(vesta)
 depends=(
-	'gtk3' 'glu' 'desktop-file-utils' 'libxtst' 'java-runtime'
+	'gtk3' 'glu' 'desktop-file-utils' 'libxtst'  'java-environment-common'
 )
 makedepends=(
 	'tar'
