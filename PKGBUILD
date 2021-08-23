@@ -9,17 +9,16 @@ _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 provides=("mdbtools=$pkgver")
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/mdbtools/mdbtools"
 license=('LGPL' 'GPL')
 makedepends=('unixodbc')
-depends=('unixodbc')
+depends=('unixodbc' 'glib2')
 optdepends=('gmdb2: graphical viewer for MDB files')
 source=("${_srcname}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
-
 md5sums=('a848ecd30287499f38bc2f3642c20eed')
 
 prepare() {
