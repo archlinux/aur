@@ -1,0 +1,14 @@
+pkgbase = pysensors-git
+	pkgdesc = Easy hardware health monitoring in Python for Linux systems
+	pkgver = r48.c8976ab
+	pkgrel = 1
+	url = https://github.com/bastienleonard/pysensors
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = lm_sensors
+	depends = python
+	source = pysensors-git::git+https://github.com/bastienleonard/pysensors
+	md5sums = SKIP
+
+pkgname = pysensors-git
