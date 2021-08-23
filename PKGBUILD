@@ -1,25 +1,39 @@
 #!/hint/bash
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
+# shellcheck disable=SC2015
+((DISABLE_BUNDLED_RIZIN)) && {
+	depends+=('rizin=0.3.0')
+	_CMAKE_FLAGS+=(-DCUTTER_USE_BUNDLED_RIZIN=OFF)
+} || {
+	source+=("rizin::git+https://github.com/rizinorg/rizin")
+	sha512sums+=('SKIP')
+	b2sums+=('SKIP')
+	_CMAKE_FLAGS+=(-DCUTTER_USE_BUNDLED_RIZIN=ON)
+	conflicts+=('rizin')
+	provides+=("rizin=0.3.0")
+}
+
+
 _name=cutter
 pkgname=rz-${_name}-git
-pkgver=2.0.2.r3.gbc571675
+pkgver=2.0.2.r13.g2d05ae25
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('rizin>=0.3.0' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'jupyter'
+depends+=('capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'jupyter'
          'pyside2' 'python-shiboken2' 'graphviz' 'gcc-libs' 'syntax-highlighting')
 makedepends=('git' 'cmake' 'ninja' 'shiboken2' 'qt5-tools' 'meson')
-provides=('rz-cutter')
-conflicts=('rz-cutter')
+provides+=('rz-cutter')
+conflicts+=('rz-cutter')
 optdepends=('rz-ghidra: ghidra decompiler plugin')
-source=("${_name}::git://github.com/rizinorg/cutter.git"
+source+=("${_name}::git://github.com/rizinorg/cutter.git"
         "git://github.com/rizinorg/cutter-translations.git")
-sha512sums=('SKIP'
+sha512sums+=('SKIP'
             'SKIP')
-b2sums=('SKIP'
+b2sums+=('SKIP'
         'SKIP')
 
 pkgver() {
@@ -29,16 +43,19 @@ pkgver() {
 prepare() {
   git -C ${_name} config 'submodule.src/translations.url' "${srcdir}/${_name}-translations"
   git -C ${_name} submodule update --init src/translations
+  ((DISABLE_BUNDLED_RIZIN)) || {
+    git -C ${_name} config submodule.rizin.url "$srcdir/rizin"
+    git -C ${_name} submodule update --init rizin
+  }
 }
 
 
 build() {
-  _CMAKE_FLAGS=(
+  _CMAKE_FLAGS+=(
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCUTTER_ENABLE_PYTHON:BOOL=ON \
     -DCUTTER_ENABLE_PYTHON_BINDINGS:BOOL=ON \
-    -DCUTTER_USE_BUNDLED_RIZIN:BOOL=OFF \
     -DCUTTER_USE_ADDITIONAL_RIZIN_PATHS:BOOL=OFF \
     -DCUTTER_ENABLE_CRASH_REPORTS:BOOL=OFF \
     -DCUTTER_ENABLE_GRAPHVIZ:BOOL=ON
