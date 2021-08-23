@@ -1,27 +1,24 @@
-# Maintainer: Jan Oliver Oelerich <janoliver@oelerich.org> 
+# Contributor: Jan Oliver Oelerich <janoliver@oelerich.org> 
 
 pkgname=i3pystatus-git
 pkgdesc="i3status replacement written in python for the i3 window manager"
-pkgver=3.1.r175.g7c82053
+pkgver=3.35.r370.gac71437
 pkgrel=1
 conflicts=('i3pystatus')
 provides=('i3pystatus')
 arch=('i686' 'x86_64')
-license=('mit')
+license=('MIT')
 depends=('python')
-optdepends=(
-    'python-netifaces: network'
-    'python-colour: network'
-    'basiciw-git: wireless network'
-    'python-dbus: now-playing, thunderbird'
-    'python-gobject: thunderbird'
-    'python-gobject2: thunderbird'
-    'python-beautifulsoup4: parcel'
-    'python-cssselect: parcel',
-    'python-lxml: parcel',
-    'python-pywapi: weather'
-    'python-pyalsaaudio: ALSA'
-    'python-psutil: memory') 
+optdepends=('python-pyalsaaudio: For the alsa module.',
+            'python-dbus: For the thunderbird or now_playing modules.',
+            'python-psutil: For the mem, membar or network_traffic modules.',
+            'python-netifaces: For the network or wireless modules.',
+            'python-beautifulsoup4: For the parcel module.',
+            'python-cssselect: For the parcel module.',
+            'python-lxml: For the parcel module.',
+            'python-pywapi: For the weather module.',
+            'python-basiciw: For the wireless module.'
+            'python-colour: For the pulseaudio module.')
 makedepends=('git' 'python-setuptools')
 url="https://github.com/enkore/i3pystatus.git"
 source=('git+https://github.com/enkore/i3pystatus.git')
@@ -34,10 +31,11 @@ pkgver() {
 }
 
 build() {
-  :
+  cd "$srcdir/$_gitname"
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/$_gitname"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  python setup.py install --root="$pkgdir" --optimize=1
 } 
