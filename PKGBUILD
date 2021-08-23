@@ -19,6 +19,7 @@ depends=('python>=3.7'
 	 'python-ipywidgets'
 	 'python-numba'
 	 'python-orix>=0.3'
+	 'python-silx'
          )
 
 makedepends=('python-setuptools' )
