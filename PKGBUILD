@@ -2,7 +2,7 @@
 
 pkgname=python-pycapnp
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=('BSD')
