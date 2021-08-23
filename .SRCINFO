@@ -1,12 +1,20 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = await
+	pkgdesc = 32kb small memory footprint single binary that run list of commands in parallel and waits for their termination
+	pkgver = 2021.07.29.add.site.link
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://await-cli.app/
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = await
+	conflicts = await
+	source = git+https://github.com/slavaGanzin/await
+	sha256sums = SKIP
 
-pkgname = yarxi
-
+pkgname = await
