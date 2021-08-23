@@ -2,11 +2,12 @@
 
 pkgname=gdu-git
 _gitname=gdu
-pkgver=v4.11.2
+pkgver=v5.6.0.r2.gb6f6584
 pkgrel=1
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
-conflicts=(gdu gdu-bin)
+provides=(gdu)
+conflicts=(gdu)
 depends=('glibc')
 makedepends=('go' 'pandoc')
 arch=('x86_64')
@@ -26,9 +27,9 @@ prepare(){
 
 build() {
   cd "$_gitname"
-  local _BUILDINFO="-X 'github.com/dundee/gdu/v4/build.Version=${pkgver}' \
-                    -X 'github.com/dundee/gdu/v4/build.User=${PACKAGER}' \
-                    -X 'github.com/dundee/gdu/v4/build.Time=$(date)'"
+  local _BUILDINFO="-X 'github.com/dundee/gdu/v5/build.Version=${pkgver}' \
+                    -X 'github.com/dundee/gdu/v5/build.User=${PACKAGER}' \
+                    -X 'github.com/dundee/gdu/v5/build.Time=$(date)'"
   go build \
     -trimpath \
     -buildmode=pie \
@@ -36,7 +37,7 @@ build() {
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${_BUILDINFO}" \
     -o dist/gdu \
-    github.com/dundee/gdu/v4/cmd/gdu
+    github.com/dundee/gdu/v5/cmd/gdu
   pandoc gdu.1.md -s -t man > dist/gdu.1
 }
 
