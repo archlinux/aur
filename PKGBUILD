@@ -6,7 +6,7 @@
 pkgbase=termite
 pkgname=('termite' 'termite-terminfo')
 pkgver=15
-pkgrel=7
+pkgrel=8
 _vtever='0.64.2a'
 _commit='409b8449ab51fccf51057621168c9c15c54d4807'
 pkgdesc='A simple VTE-based terminal'
@@ -17,10 +17,11 @@ arch=('x86_64')
 depends=('gtk3' 'pcre2' 'gnutls' 'vte-common')
 makedepends=('git' 'ncurses' 'intltool' 'gperf' 'gtk-doc' 'meson')
 source=("git+https://github.com/thestinger/termite.git#tag=v${pkgver}?signed"
-        "git+https://github.com/BarbUk/vte-ng.git#tag=${_vtever}"
+        "git+https://github.com/BarbUk/vte-ng.git#tag=${_vtever}?signed"
         "termite-util::git+https://github.com/thestinger/util.git#tag=${_commit}")
 validpgpkeys=('E499C79F53C96A54E572FEE1C06086337C50773E'  # Jelle van der Waa
-              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A') # Daniel Micay
+              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A'  # Daniel Micay
+              '9F59A49568EE372AF17E5452B6D01F84A7519939') # Julien Virey
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
