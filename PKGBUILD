@@ -2,7 +2,7 @@
 
 _pkgname=odin
 pkgname=odin-src
-epoch=1
+epoch=2
 pkgrel=2021
 pkgver=b014879
 pkgdesc="Standalone master build of the Odin programming language."
@@ -47,7 +47,6 @@ package() {
   cp -r core "${pkgdir}/usr/lib/${_pkgname}/core"
   ln -s "/usr/lib/${_pkgname}/odin" "${pkgdir}/usr/bin/odin"
 
-  cp -r examples "${pkgdir}/usr/share/doc/${_srcname}/examples"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_srcname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
 }
