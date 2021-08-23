@@ -5,7 +5,7 @@
 # https://www.experts-exchange.com/questions/22609218/Canon-ImageRUNNER-3570-not-printing.html
 # http://www.copytechnet.com/forums/canon/82370-canon-ir-2530-driver-problem.html
 
-# models.4.0.7.txt
+# models.4.0.8.txt
 # ModelName: "Canon CLC4040-H1 Ver1.1 PCL"
 # ModelName: "Canon CLC4040-H1 PS Ver1.1"
 # ModelName: "Canon CLC5151-H1 Ver1.1 PCL"
@@ -19,6 +19,9 @@
 # ModelName: "Canon iPR C165 PCL"
 # ModelName: "Canon iPR C165 PS"
 # ModelName: "Canon iPR C165 PXL"
+# ModelName: "Canon iPR C170 PCL"
+# ModelName: "Canon iPR C170 PS"
+# ModelName: "Canon iPR C170 PXL"
 # ModelName: "Canon iPR C1 PCL"
 # ModelName: "Canon iPR C1 PS"
 # ModelName: "Canon iPR C1 PXL"
@@ -79,6 +82,9 @@
 # ModelName: "Canon iR1600-2000 PCL"
 # ModelName: "Canon iR1600-2000 PXL"
 # ModelName: "Canon iR1643 Series PCL"
+# ModelName: "Canon iR1643P PCL"
+# ModelName: "Canon iR1643P PS"
+# ModelName: "Canon iR1643P PXL"
 # ModelName: "Canon iR1643 Series PS"
 # ModelName: "Canon iR1643 Series PXL"
 # ModelName: "Canon iR1730i PCL"
@@ -536,6 +542,27 @@
 # ModelName: "Canon iR-ADV C9270/9280 PCL"
 # ModelName: "Canon iR-ADV C9270/9280 PS"
 # ModelName: "Canon iR-ADV C9270/9280 PXL"
+# ModelName: "Canon iR-ADV DX 527 PCL"
+# ModelName: "Canon iR-ADV DX 527 PS"
+# ModelName: "Canon iR-ADV DX 527 PXL"
+# ModelName: "Canon iR-ADV DX 617 PCL"
+# ModelName: "Canon iR-ADV DX 617 PS"
+# ModelName: "Canon iR-ADV DX 617 PXL"
+# ModelName: "Canon iR-ADV DX 717 PCL"
+# ModelName: "Canon iR-ADV DX 717 PS"
+# ModelName: "Canon iR-ADV DX 717 PXL"
+# ModelName: "Canon iR-ADV DX C257/357 PCL"
+# ModelName: "Canon iR-ADV DX C257/357 PS"
+# ModelName: "Canon iR-ADV DX C257/357 PXL"
+# ModelName: "Canon iR-ADV DX C477 PCL"
+# ModelName: "Canon iR-ADV DX C477 PS"
+# ModelName: "Canon iR-ADV DX C477 PXL"
+# ModelName: "Canon iR-ADV DX C5840/5850 PCL"
+# ModelName: "Canon iR-ADV DX C5840/5850 PS"
+# ModelName: "Canon iR-ADV DX C5840/5850 PXL"
+# ModelName: "Canon iR-ADV DX C5860/5870 PCL"
+# ModelName: "Canon iR-ADV DX C5860/5870 PS"
+# ModelName: "Canon iR-ADV DX C5860/5870 PXL"
 # ModelName: "Canon iR C1021i PCL"
 # ModelName: "Canon iR C1021i PXL"
 # ModelName: "Canon iR C1028/C1030 PCL"
@@ -546,6 +573,15 @@
 # ModelName: "Canon iR C1225 PXL"
 # ModelName: "Canon iR C1325/1335 PS"
 # ModelName: "Canon iR C1325/1335 PXL"
+# ModelName: "Canon iR C1533iF PCL"
+# ModelName: "Canon iR C1533iF PS"
+# ModelName: "Canon iR C1533iF PXL"
+# ModelName: "Canon iR C1533i PCL"
+# ModelName: "Canon iR C1533i PS"
+# ModelName: "Canon iR C1533i PXL"
+# ModelName: "Canon iR C1538iF PCL"
+# ModelName: "Canon iR C1538iF PS"
+# ModelName: "Canon iR C1538iF PXL"
 # ModelName: "Canon iR C2380/2550 PCL"
 # ModelName: "Canon iR C2380/2550 PS"
 # ModelName: "Canon iR C2380/2550 PXL"
@@ -605,6 +641,12 @@
 # ModelName: "Canon Fax L2000IP PXL"
 # ModelName: "Canon Fax L3000IP PCL"
 # ModelName: "Canon Fax L3000IP PXL"
+# ModelName: "Canon LBP1127C / C1127P PCL"
+# ModelName: "Canon LBP1127C / C1127P PS"
+# ModelName: "Canon LBP1127C / C1127P PXL"
+# ModelName: "Canon LBP1238 / 1238P/Pr PCL"
+# ModelName: "Canon LBP1238 / 1238P/Pr PS"
+# ModelName: "Canon LBP1238 / 1238P/Pr PXL"
 # ModelName: "Canon LBP151 PCL"
 # ModelName: "Canon LBP151 PXL"
 # ModelName: "Canon LBP212dw PCL"
@@ -701,6 +743,12 @@
 # ModelName: "Canon LBP852C PCL"
 # ModelName: "Canon LBP852C PS"
 # ModelName: "Canon LBP852C PXL"
+# ModelName: "Canon MF1127C / C1127iF/i PCL"
+# ModelName: "Canon MF1127C / C1127iF/i PS"
+# ModelName: "Canon MF1127C / C1127iF/i PXL"
+# ModelName: "Canon MF1238 / 1238iF/i PCL"
+# ModelName: "Canon MF1238 / 1238iF/i PS"
+# ModelName: "Canon MF1238 / 1238iF/i PXL"
 # ModelName: "Canon MF249dw PCL"
 # ModelName: "Canon MF249dw PXL"
 # ModelName: "Canon MF411dw/416dw PCL"
@@ -777,6 +825,9 @@
 # ModelName: "Canon MF746C PCL"
 # ModelName: "Canon MF746C PS"
 # ModelName: "Canon MF746C PXL"
+# ModelName: "Canon MF832C PCL"
+# ModelName: "Canon MF832C PS"
+# ModelName: "Canon MF832C PXL"
 # ModelName: "Canon MF9100-9300 PCL"
 # ModelName: "Canon MF9100-9300 PXL"
 # ModelName: "Canon MF9130-9170 PCL"
@@ -795,7 +846,8 @@ pkgname='canon-cque'
 #https://files.canon-europe.com/files/soft01-48570/Driver/CQue_v4.0.3_Linux_64_EN.tar.gz
 #_cnver='4.0-3'; _dl64t='48570'; _dl32t=$((_dl64-1))
 #_cnver='4.0-5'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
-_cnver='4.0-7'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
+#_cnver='4.0-7'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
+_cnver='4.0-8'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 pkgver="${_cnver//-/.}"
 pkgrel='1'
 pkgdesc='CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license'
@@ -806,7 +858,7 @@ depends=('cups' 'cups-filters')
 options=('!strip')
 source=('LICENSE')
 _srcdir="cque-en-${_cnver}"
-_fl="CQue_v${pkgver}_Linux_64_EN"
+_fl="CQue_Linux_v${pkgver}_64_EN"
 #source_x86_64=("https://files.canon-europe.com/files/soft01-${_dl64t}/Driver/${_fl}.tar.gz")
 source_x86_64=("https://files.canon-europe.com/files/soft${_dl64r}/Software/${_fl}.rpm")
 #source_x86_64=("https://files.canon-europe.com/files/soft${_dl64d}/Driver/${_fl}.deb")
@@ -816,11 +868,11 @@ source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_fl}
 #source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fl}.deb")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('26979c977d891448d59c5dde12aa4c33')
-md5sums_x86_64=('c590a625be8ce417f59f04466b36d59a')
+md5sums_i686=('e7dd071966288ffb33d40fef053f120a')
+md5sums_x86_64=('a15d260a855099eec0c314d2f853e305')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('3dae7a478e2b99b70d882f7a395043ce8dba812310a774e85e171c4bb411c01a')
-sha256sums_x86_64=('0c289ecccbe5067efa62fc96b2662fc8ee6b0b4eac511299a564a553dbf7f208')
+sha256sums_i686=('67066e58a7aac0a962fa6790f8fc7ae634fa19d08b4ca90be2a9718162e11dc0')
+sha256sums_x86_64=('7970db9d070aef2e8620a3a626cd98dc08b3d6bdc83153f9dec981085b635744')
 
 prepare() {
   set -u

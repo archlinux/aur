@@ -1,6 +1,6 @@
 pkgbase = canon-cque
 	pkgdesc = CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://www.canon-europe.com/support/products/imagerunner/imagerunner-1730i.aspx
 	arch = i686
@@ -13,12 +13,11 @@ pkgbase = canon-cque
 	source = LICENSE
 	md5sums = 4df9593c184cd39bb9d9df6195c4d390
 	sha256sums = 343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333
-	source_i686 = https://files.canon-europe.com/files/soft45511/Software/CQue_v4.0.7_Linux_32_EN.rpm
-	md5sums_i686 = 26979c977d891448d59c5dde12aa4c33
-	sha256sums_i686 = 3dae7a478e2b99b70d882f7a395043ce8dba812310a774e85e171c4bb411c01a
-	source_x86_64 = https://files.canon-europe.com/files/soft45517/Software/CQue_v4.0.7_Linux_64_EN.rpm
-	md5sums_x86_64 = c590a625be8ce417f59f04466b36d59a
-	sha256sums_x86_64 = 0c289ecccbe5067efa62fc96b2662fc8ee6b0b4eac511299a564a553dbf7f208
+	source_i686 = https://files.canon-europe.com/files/soft45511/Software/CQue_Linux_v4.0.8_32_EN.rpm
+	md5sums_i686 = e7dd071966288ffb33d40fef053f120a
+	sha256sums_i686 = 67066e58a7aac0a962fa6790f8fc7ae634fa19d08b4ca90be2a9718162e11dc0
+	source_x86_64 = https://files.canon-europe.com/files/soft45517/Software/CQue_Linux_v4.0.8_64_EN.rpm
+	md5sums_x86_64 = a15d260a855099eec0c314d2f853e305
+	sha256sums_x86_64 = 7970db9d070aef2e8620a3a626cd98dc08b3d6bdc83153f9dec981085b635744
 
 pkgname = canon-cque
-
