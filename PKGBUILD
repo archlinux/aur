@@ -2,9 +2,8 @@
 
 _pkgname=odin
 pkgname=odin-src
-epoch=2
 pkgrel=2021
-pkgver=b014879
+pkgver=fe2ad54
 pkgdesc="Standalone master build of the Odin programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
@@ -49,4 +48,5 @@ package() {
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_srcname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_srcname}/LICENSE"
+  cp -r examples "${pkgdir}/usr/share/doc/${_pkgname}/"
 }
