@@ -1,0 +1,17 @@
+pkgbase = switchhosts
+	pkgdesc = An App for hosts management & switching.
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/oldj/SwitchHosts
+	arch = any
+	license = Apache
+	makedepends = nodejs
+	makedepends = electron
+	makedepends = npm
+	provides = switchhosts
+	conflicts = switchhosts-bin
+	conflicts = switchhosts-appimage
+	source = switchhosts-4.0.3.tar.gz::https://github.com/oldj/SwitchHosts/archive/v4.0.3/SwitchHosts-v4.0.3.tar.gz
+	sha256sums = 4a3ad76fa95103c4ba041a6220987d658fc57cb697cbbd0bdd43a66cd1b7cbff
+
+pkgname = switchhosts
