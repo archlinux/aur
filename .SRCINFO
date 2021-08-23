@@ -1,0 +1,12 @@
+pkgbase = masalla-cursor
+	pkgdesc = Masalla Cursor Theme with variant colors, sizes and shapes by Hayder Majid
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://notabug.org/masalla-art/masalla-cursor
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = https://notabug.org/masalla-art/masalla-cursor/archive/Version2.0.tar.gz
+	md5sums = e420c38ebfa9d7bcd937c30175dec255
+
+pkgname = masalla-cursor
