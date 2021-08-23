@@ -16,7 +16,7 @@ options=('!strip')
 source=("git+https://github.com/odin-lang/odin.git"
         '0001-patch-makefile-for-aur.patch')
 sha256sums=('SKIP'
-            '2fe8dc71165f99b3fbafa566ed90510106077a2be4ac137056321f5ec8f55d8c')
+            '5c418cd5b348ac1348767e76c7e08b7ab39359fadc8cd792133bcff4410aa78b')
 
 pkgver() {
   cd "${_pkgname}"
