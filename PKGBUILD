@@ -1,7 +1,7 @@
 # Maintainer: amiga23 <t.scheller@email.de>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.19-bin
-pkgver=1.19.12+k3s1
+pkgver=1.19.14+k3s1
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -31,9 +31,9 @@ source_aarch64=(
 sha256sums=('f4ae496b69b3dd376a28298df50297728a47761b041be522adf2537aa8a8c3d8'
             '667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0'
             'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
-sha256sums_x86_64=('5feabb325c6b7b46823014980e832ede872f741b6df6f8def0138f9ff39b278e')
-sha256sums_armv7h=('5975d3e2d8b6052aa717fb5f2ba41ade3fb21f19b01a4f837d89249413829c87')
-sha256sums_aarch64=('8ebcadf0c57e955e002b1ffc9e61243299994574cb9421b43bb56f00b79c1b62')
+sha256sums_x86_64=('687bf9bd026be369b78868b46204cc67f9696bfaa502b90580edd243908484bb')
+sha256sums_armv7h=('c80da11956972c99b1b846038553a5cfd0e1b36bb413c7f1466819f860043c97')
+sha256sums_aarch64=('73ae15467f0bcfe4e3e2eae7569bde1be24a0c27a7d63f50e797de48a38c46c8')
 
 
 package() {
