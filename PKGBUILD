@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="API for communicating with an openLCA IPC server"
 arch=('x86_64')
 url="https://github.com/GreenDelta/olca-ipc.py"
-license=('MPL')
+license=('MPL2')
 groups=()
 depends=()
-makedepends=('python-pip')
+makedepends=('python-setuptools')
 optdepends=()
 provides=('python-olca-ipc')
 conflicts=()
@@ -30,4 +30,5 @@ build() {
 package() {
 	cd ${_name}-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
