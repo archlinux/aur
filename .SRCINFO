@@ -7,6 +7,7 @@ pkgbase = jelly-desktop
 	license = GPL3
 	makedepends = nodejs
 	makedepends = npm
+	optdepends = vlc: Launch stream when direct URL is copied
 	source = jelly-desktop::git+https://github.com/imLinguin/jelly-desktop.git
 	md5sums = SKIP
 

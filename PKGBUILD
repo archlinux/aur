@@ -4,13 +4,14 @@ pkgname=jelly-desktop
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Simple community made desktop client for Jellyfin"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/imLinguin/jelly-desktop"
-license=('GPL3')
+license=("GPL3")
 _filename=jelly-desktop-${pkgver}.pacman
 source=("${pkgname}::git+${url}.git")
-md5sums=('SKIP')
+md5sums=("SKIP")
 makedepends=("nodejs" "npm")
+optdepends=("vlc: Launch stream when direct URL is copied")
 build() {
 	cd "jelly-desktop"
 	npm install
