@@ -2,8 +2,8 @@
 
 pkgname=sirius
 _PkgName=SIRIUS
-pkgver=7.2.4
-pkgrel=2
+pkgver=7.2.6
+pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('x86_64')
 license=('BSD')
@@ -12,14 +12,14 @@ depends=('libvdwxc' 'libxc' 'spglib' 'elpa' 'spfft' 'spla' 'gsl' 'hdf5')
 makedepends=('cmake')
 optdepends=('magma: Linear algebra on GPU')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aeed0e83b80c3a79a9469e7f3fe10d80ad331795e38dbc3c49cb0308e2bd084d')
+sha256sums=('e751fd46cdc7c481ab23b0839d3f27fb00b75dc61dc22a650c92fe8e35336e3a')
 options=(!emptydirs)
 
 prepare() {
   mkdir "$srcdir/build"
   
   # Checking if nvcc is in PATH
-  if [[ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]]
+  if command -v nvcc &> /dev/null
   then
       export _ACC=ON
       export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
@@ -31,8 +31,6 @@ prepare() {
   
   # Finding ELPA version
   _ELPAVER=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
-  
-  sed -i 's/&vxc.at/vxc.at/' "$srcdir/$_PkgName-$pkgver/src/potential/xc.cpp"
 }
 
 build() {
