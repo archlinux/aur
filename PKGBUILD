@@ -6,18 +6,18 @@
 pkgbase=mp-5
 #pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
 pkgname=(mp-5-gtk mp-5-nc)
-pkgver=5.52
+pkgver=5.53
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
 license=('Unlicense')
 #'mp_doccer' 'perl-grutatxt'
-#makedepends=('gtk3' 'ncurses' 'qt5-base')
-makedepends=('gtk3' 'ncurses')
+#makedepends=('gtk3' 'qt5-base')
+makedepends=('gtk3')
 options=(!makeflags)
 #source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp/mp-$pkgver.tar.gz")
 source=("$pkgbase-$pkgver.tar.gz::https://triptico.com/download/mp-5.tar.gz")
-md5sums=('7e4d64e4324115e60473391b49baa76c')
+sha256sums=('b390b9dee05553e105dfe58635cfb14b6c46216a714e075d17fa05344ac473e8')
 
 prepare() {
   # Patch hard-coded install paths
@@ -68,7 +68,6 @@ package_mp-5-gtk() {
 
 package_mp-5-nc() {
   pkgdesc="Text editor for programmers (ncurses front-end)"
-  depends=('ncurses')
   _pkgname='mp-5'
   provides=($_pkgname)
   conflicts=($_pkgname)
