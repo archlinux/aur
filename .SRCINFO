@@ -1,6 +1,6 @@
 pkgbase = pokemon-colorscripts-git
 	pkgdesc = CLI utility that prints unicode sprites of pokemon to the terminal
-	pkgver = r72.10310f1
+	pkgver = r78.05d6999
 	pkgrel = 1
 	url = https://gitlab.com/phoneybadger/pokemon-colorscripts.git
 	arch = any
