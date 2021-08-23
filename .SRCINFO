@@ -1,7 +1,7 @@
 pkgbase = cqrlog-source
 	pkgdesc = An advanced ham radio logger using MariaDB - SOURCE version.
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cqrlog.com
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cqrlog-source
 	depends = xdg-utils
 	depends = gtk2
 	depends = mariadb
+	depends = hamradio-menus
 	optdepends = winkeydaemon: usb cw xmit
 	optdepends = cwdaemon: transmitting cw
 	optdepends = masterscp: supercheckpartial files
@@ -29,4 +30,3 @@ pkgbase = cqrlog-source
 	sha256sums = 82837455dc9f44f43dc7658d330c71cf09c38d794addacab1da936fdcdbefdca
 
 pkgname = cqrlog-source
-

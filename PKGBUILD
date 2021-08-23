@@ -4,14 +4,15 @@ pkgname=cqrlog-source
 _pkgname=cqrlog
 _authorname=ok2cqr
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced ham radio logger using MariaDB - SOURCE version."
 arch=('i686' 'x86_64')
 url="http://www.cqrlog.com"
 license=('GPL')
 depends=('xdg-utils'
 	 'gtk2'
-	 'mariadb')
+	 'mariadb'
+	 'hamradio-menus')
 makedepends=('lazarus')
 optdepends=('winkeydaemon: usb cw xmit'
 	    'cwdaemon: transmitting cw'
