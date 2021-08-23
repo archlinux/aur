@@ -1,0 +1,11 @@
+pre_upgrade() {
+  echo :: Removing runtime tmp files...
+  rm -f /var/tmp/batterycm-switcher.log
+  rm -f /tmp/batterycm*
+}
+
+post_remove() {
+  echo :: Removing runtime tmp files...
+  rm -f /var/tmp/batterycm-switcher.log
+  rm -f /tmp/batterycm*
+}
