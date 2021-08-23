@@ -1,32 +1,23 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: JFelix Golatofski <contact@xdfr.de>
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=clang+llvm-binaries
-pkgver=10.0.0
-_name="clang+llvm-${pkgver}-${CARCH}-linux-gnu-ubuntu-18.04"
+pkgver=11.1.0
 pkgrel=1
-pkgdesc='Clang and LLVM Pre-Built Binaries'
-arch=('x86_64')
-url='http://llvm.org'
-license=('custom:University of Illinois/NCSA Open Source License')
-options=('!strip' 'libtool' 'staticlibs')
-# conflicts=('clang' 'clang-analyze' 'clang-tools-extra' 'llvm')
-depends=('z3')
-install="${pkgname}".install
-source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/${_name}.tar.xz"
-        "clang+llvm-binaries.conf")
-sha256sums=('b25f592a0c00686f03e3b7db68ca6dc87418f681f4ead4df4745a01d9be63843'
-            'f283a326962a77447bcb562fe2c4a81ca556ae2ffaacc35375207fd378574ccd')
+pkgdesc="Official Clang and LLVM pre-built binaries"
+arch=(x86_64)
+url="https://llvm.org/"
+license=('custom:Apache 2.0 with LLVM Exception')
+options=(!strip)
+source=('clang+llvm-binaries.conf')
+source_x86_64=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/clang+llvm-${pkgver}-x86_64-linux-gnu-ubuntu-20.10.tar.xz")
+sha256sums=('357a947f26e11202ef8161d4fd8116177de8038f1df60845bb9b95c3c17dec03')
+sha256sums_x86_64=('29b07422da4bcea271a88f302e5f84bd34380af137df18e33251b42dd20c26d7')
 
 package() {
-  mkdir -p "${pkgdir}/etc/ld.so.conf.d/"
-  cp clang+llvm-binaries.conf "${pkgdir}/etc/ld.so.conf.d/"
-
-  cd "${srcdir}/${_name}"
-
-  mkdir -p "${pkgdir}/usr/local"
-  mv * "${pkgdir}/usr/local"
-  mv "${pkgdir}/usr/local/share/man" "${pkgdir}/usr/local/man"
+  cd "${srcdir}/clang+llvm-${pkgver}-x86_64-linux-gnu-ubuntu-20.10"
+  install -D ../clang+llvm-binaries.conf -t "${pkgdir}/etc/ld.so.conf.d/"
+  install -d "${pkgdir}/opt/clang+llvm11"
+  cp -r * "${pkgdir}/opt/clang+llvm11/"
 }
-
-# vim:set ts=2 sw=2 h et:
