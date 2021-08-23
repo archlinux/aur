@@ -2,10 +2,11 @@
 
 pkgname=gdu-bin
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="Fast disk usage analyzer"
-conflicts=(gdu gdu-git)
+provides=(gdu)
+conflicts=(gdu)
 arch=('x86_64')
 url="https://github.com/Dundee/gdu"
 source=("${pkgname}-${pkgver}.tgz::https://github.com/dundee/gdu/releases/download/v${pkgver}/gdu_linux_amd64.tgz"
