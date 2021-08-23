@@ -13,7 +13,7 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/hainguyents13/mechvibes/releases/download/v${pkgver}/mechvibes_${pkgver}_amd64.deb")
-sha512sums_x86_64=('1291cfc3742149a0d6a9defdbf6d7af89a5fe10949df5d49dd7123ee6594087de2af5758991a0e5a629c1e5a3c2303b161c963ccd24cb829cc81daa2c4b1a712')
+md5sums=('953bf957b816a0f1c140e1b6b0b57065')
 
 package(){
 
