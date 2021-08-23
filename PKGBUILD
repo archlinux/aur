@@ -2,10 +2,10 @@
 
 pkgname=wluma-git
 _pkgname=${pkgname%-git}
-pkgver=1.2.2.r15.g827629d
+pkgver=2.0.0.r0.g0b89a60
 pkgrel=1
 license=('ISC')
-pkgdesc='Automatic brightness adjustment based on screen contents'
+pkgdesc='Automatic brightness adjustment based on screen contents and ALS'
 url='https://github.com/maximbaz/wluma'
 arch=('x86_64')
 provides=('wluma')
