@@ -1,0 +1,12 @@
+pkgbase = h2c
+	pkgdesc = Provided a set of HTTP request headers, output the curl command for that set
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/curl/h2c
+	arch = any
+	license = MIT
+	depends = perl
+	source = h2c-1.0.tar.gz::https://github.com/curl/h2c/archive/1.0.tar.gz
+	b2sums = 78d68c323b194d165a49609819b7b4e937fa0779d96a0fbfb97244f8daef32a27c63f0dde4a7da720bb8f4507648f58b445961d0ef559421fcfc6d647a9f542b
+
+pkgname = h2c
