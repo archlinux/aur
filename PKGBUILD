@@ -13,7 +13,7 @@ license=('BSD-2-Clause')
 depends=('llvm11-libs')
 makedepends=('patchelf')
 provides=('odin')
-conflicts=('odin')
+conflicts=('odin' 'odin-git' 'odin-src')
 options=('!strip')
 
 source=(
