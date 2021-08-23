@@ -2,24 +2,25 @@
 
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.2.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
 url='https://github.com/NVIDIA/DALI'
 license=('Apache')
 depends=(
-  'cuda'
-  'lmdb'
-  'opencv'
-  'protobuf'
-  'python'
+  cuda
+  libtar
+  lmdb
+  opencv
+  protobuf
+  python
 )
 makedepends=(
-  'clang'
-  'cmake'
-  'git'
-  'python-setuptools'
+  clang
+  cmake
+  git
+  python-setuptools
 )
 source=("${pkgname}::git+https://github.com/NVIDIA/DALI.git#tag=v${pkgver}")
 sha512sums=('SKIP')
@@ -39,7 +40,6 @@ build() {
   cmake \
     -DBUILD_LMDB:BOOL=ON \
     -DCMAKE_BUILD_TYPE:String=Release \
-    -DCMAKE_CUDA_HOST_COMPILER=/opt/cuda/bin/g++ \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DProtobuf_USE_STATIC_LIBS:BOOL=OFF \
