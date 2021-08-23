@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.43.0
+pkgver=2.43.1
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=57d3a46edda1f44ff8bf8ad9499d05bb73f89b03") # tag: 2.43.0
+source=("git+$url#commit=f5d0db86c30ae5fb104bf6bc758d2575e0ad1364") # tag: 2.43.1
 optdepends=('asciidoctor: for writing man pages'
             'astyle: for formatting C#'
             'autopep8: for formatting Python'
