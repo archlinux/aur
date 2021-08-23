@@ -4,16 +4,18 @@
  
 _PkgName=SU2
 pkgname=su2
-pkgver=7.1.1
-pkgrel=2
+pkgver=7.2.0
+pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
 license=('LGPL2.1')
 depends=('python-mpi4py')
 makedepends=('gcc-fortran' 'swig')
 arch=('x86_64')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
-sha256sums=('6ed3d791209317d5916fd8bae54c288f02d6fe765062a4e3c73a1e1c7ea43542')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/su2code/SU2/archive/v$pkgver.tar.gz"
+        "su2.sh")
+sha256sums=('e929f25dcafc93684df2fe0827e456118d24b8b12b0fb74444bffa9b3d0baca8'
+            'ff2123f09f5be843dae935b355d92d39bb1c264cbc8dc5de08168f1c84fe3881')
 
 prepare() {
   cd "$srcdir/$_PkgName-$pkgver"
@@ -35,4 +37,5 @@ package() {
   install -dm755 "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages"
   cd "$pkgdir/usr/bin"
   mv SU2 -t "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages"
+  install -Dm755 "$srcdir/su2.sh" -t "$pkgdir/etc/profile.d"
 }
