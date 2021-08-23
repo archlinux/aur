@@ -1,25 +1,23 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=MatriX.103
+pkgver=MatriX.104
 pkgrel=1
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
 license=("GPL3")
 provides=("torrserver")
-conflicts=("torrserver-git")
+conflicts=("torrserver")
 depends=("glibc")
 install=torrserver.install
 
-source=("systemd.patch")
-sysemd_source="https://raw.githubusercontent.com/YouROK/TorrServer/master/torrserver.service"
-
-source_x86_64=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-amd64" $sysemd_source)
-source_i686=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-386" $sysemd_source)
-source_arm=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm5" $sysemd_source)
-source_armv7h=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm7" $sysemd_source)
-source_aarch64=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm64" $sysemd_source)
+source=("https://raw.githubusercontent.com/YouROK/TorrServer/master/torrserver.service" "systemd.patch")
+source_x86_64=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-amd64")
+source_i686=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-386")
+source_arm=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm5")
+source_armv7h=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm7")
+source_aarch64=("https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm64")
 
 case "$CARCH" in
   x86_64) _CARCH=amd64 ;;
@@ -39,14 +37,10 @@ package() {
     install -Dm755 "${srcdir}/TorrServer-linux-${_CARCH}" "${pkgdir}/usr/bin/torrserver"
 }
 
-b2sums=('20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
-b2sums_x86_64=('7e5a442830ab4786c42ed41484d39ca3cbadeb1c6e2ecbb8cd630348528c32a2ee3aacb01c5a646e861cf321f2a0a6577586548daa46ddb1317556510d63c770'
-               '7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad')
-b2sums_arm=('62670c957caf6be78be448eb8164d06a8c5a8811ff24a64d7ea99a8b426911ca708509c86355a3ad9f51d6321e398ef20997aa6387cd1d36091906364ab50478'
-            '7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad')
-b2sums_armv7h=('5dc49390c2f2b4336c2bd3d295c3875a158b2263eeb77bba8b460fb2e4689fce1004f9154aee9e244303ba0ac33d714327eeb3258f7cee34e7585beca3c2cabb'
-               '7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad')
-b2sums_aarch64=('839f89c3af364fa783a04ecc100a04b179607ca017c0ba76fc7dcbe3631217c23ac8f9f690b32f4a58846f1c6bc5d3f95e6f975e94e0bc8cc7055ecf7e8db939'
-                '7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad')
-b2sums_i686=('3eb289d4fcd28d69d33c124d820aa04b1d56f050bf5bb8273f3b39c086dd02d18315342b5335f6425fba193d0dbb9c243e912bccfbb79ae12f02c2e909fa2c5a'
-             '7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad')
+b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
+        '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
+b2sums_x86_64=('317014787256b5322a1fdbf0651f3624fc7f1ad3121b69119d4b077555b33cfcd9486aea05eb923ebac77f1e484e8df66dfdf2eace89a21f08ec4cc70a549f4d')
+b2sums_arm=('a0962e160a7ee98f4d0afaccbc6ee636195fcc230c6a126088d9ea8c5efe7c9f60c20603f8f0f43ff681642ca0d7b4c732e833aed952e634789b26597b2804a9')
+b2sums_armv7h=('882420d7f970a2fc86c05850beb7af6983bca5dc74df3507dcd181d8a7bc9827a002595e1aa8849a294fb2c51dab9b6a7348c4d33196b0eb29a2df30aaf64e81')
+b2sums_aarch64=('14cc4647f1d10c03279451858dbd665c5f1147f0562ce201661cf61eb3a1e9f9512eea556a33082fe49b4bbec6bcdefdabe59cf45f745e5f0243f22365c41ca7')
+b2sums_i686=('d460b94d3b5b0b7fb12624898ee11d660128928b6c6c3b758d97e5a59b6b906fe8e288bc6aa4d74d8d82c21d334168580381d6ec2f126b33eaf302742b067765')
