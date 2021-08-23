@@ -1,0 +1,18 @@
+pkgbase = neovim-gps-git
+	pkgdesc = A simple statusline component that shows context of the current cursor position in file
+	pkgver = r27.cffae25
+	pkgrel = 1
+	url = https://github.com/smiteshp/nvim-gps
+	install = gps.install
+	arch = any
+	groups = neovim-plugins
+	license = unknown
+	makedepends = git
+	depends = neovim>=0.5
+	depends = neovim-tree-sitter
+	provides = neovim-gps
+	conflicts = neovim-gps
+	source = neovim-gps-git::git+https://github.com/smiteshp/nvim-gps
+	md5sums = SKIP
+
+pkgname = neovim-gps-git

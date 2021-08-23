@@ -1,0 +1,8 @@
+post_install() {
+	echo ':: Please consult upstream documentation on how to use this plugin.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-gps-git/README.md for your reference.'
+}
+
+post_remove() {
+	echo ":: Remember to remove all references to this plugin from your init scripts."
+}
