@@ -14,6 +14,23 @@ conflicts=(
     'switchhosts-bin'
     'switchhosts-appimage'
 )
+depends=(
+    "gtk3"
+    "nss"
+)
+optdepends=(
+    'c-ares'
+    'ffmpeg'
+    'http-parser'
+    'libevent'
+    'libvpx'
+    'libxslt'
+    'minizip'
+    're2'
+    'snappy'
+    'libnotify'
+    'libappindicator-gtk3'
+)
 makedepends=(
     'nodejs'
     'electron'
