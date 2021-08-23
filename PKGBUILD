@@ -26,6 +26,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   patch --forward --strip=1 --input="${srcdir}/0001-patch-makefile-for-aur.patch"
+  ln -s "/opt/clang+llvm11" "llvm"
 }
 
 build() {
