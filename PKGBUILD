@@ -2,7 +2,7 @@
 pkgname=beslyric-for-x-git
 pkgver=v3.1.2.r177.g27a7e7d
 pkgrel=1
-pkgdesc="An easy and practical lyrics production software for Netease Cloud Music."
+pkgdesc="An simple but useful lyrics generator, mainly for Netease Cloud Music."
 arch=('i686' 'x86_64')
 url="https://github.com/Beslyric-for-X/Beslyric-for-X"
 license=('GPL')
