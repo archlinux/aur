@@ -1,0 +1,23 @@
+diff --unified --recursive --text Zotero_linux-x86_64.orig/zotero Zotero_linux-x86_64.new/zotero
+--- Zotero_linux-x86_64.orig/zotero	2021-08-21 01:09:56.000000000 -0500
++++ Zotero_linux-x86_64.new/zotero	2021-08-22 23:41:17.347839213 -0500
+@@ -9,5 +9,4 @@
+ # Current hard-limit on Ubuntu 16.10 is 4096
+ ulimit -n 4096
+ 
+-CALLDIR="$(dirname "$(readlink -f "$0")")"
+-"$CALLDIR/zotero-bin" -app "$CALLDIR/application.ini" "$@"
++exec "/usr/lib/zotero/zotero-bin" -app "/usr/lib/zotero/application.ini" "$@"
+diff --unified --recursive --text Zotero_linux-x86_64.orig/zotero.desktop Zotero_linux-x86_64.new/zotero.desktop
+--- Zotero_linux-x86_64.orig/zotero.desktop	2021-08-21 01:09:56.000000000 -0500
++++ Zotero_linux-x86_64.new/zotero.desktop	2021-08-22 23:39:50.502252665 -0500
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Zotero
+-Exec=bash -c "$(dirname $(realpath $(echo %k | sed -e 's/^file:\/\///')))/zotero -url %U"
+-Icon=zotero.ico
++Exec=/usr/lib/zotero/zotero -url %U
++Icon=zotero
+ Type=Application
+ Terminal=false
+ Categories=Office;
