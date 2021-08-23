@@ -1,7 +1,7 @@
 pkgbase = linux-cacule-lts
 	pkgdesc = Linux-CacULE Kernel LTS 5.10 by Hamad Marri and with some other patchsets
 	pkgver = 5.10.60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hamadmarri/cacule-cpu-scheduler
 	arch = x86_64
 	arch = x86_64_v3
