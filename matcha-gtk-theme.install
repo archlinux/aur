@@ -1,0 +1,13 @@
+post_install() {
+  echo ""
+  echo "Firefox theme"
+  echo "See /usr/share/doc/matcha-gtk-theme/firefox/README.md"
+  echo ""
+  echo "Gedit theme"
+  echo "See /usr/share/doc/matcha-gtk-theme/gedit/README.md"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
