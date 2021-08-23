@@ -1,0 +1,4 @@
+post_install() {
+    printf "\nYou can install the addon from: https://addons.mozilla.org/en-US/firefox/addon/ff2mpv/\n"
+    printf "\n"
+}

@@ -1,0 +1,18 @@
+pkgbase = ff2mpv-native-messaging-host-git
+	pkgdesc = Native Messaging Host for ff2mpv firefox addon.
+	pkgver = r19.4af1028
+	pkgrel = 1
+	url = https://github.com/woodruffw/ff2mpv
+	install = ff2mpv.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = mpv
+	source = ff2mpv::git://github.com/woodruffw/ff2mpv.git
+	source = point-ff2mpv-config-to-python-location.patch
+	sha256sums = SKIP
+	sha256sums = 781abb58bf62138ad603bc67e3227fb8d421091daf9e7475c45d971730b34090
+
+pkgname = ff2mpv-native-messaging-host-git
+
