@@ -1,0 +1,16 @@
+pkgbase = cutepeaks-git
+	pkgdesc = A simple viewer for Sanger sequencing files
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/labsquare/CutePeaks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = qt5-charts
+	makedepends = make
+	optdepends = qt5-svg: ouput svg support
+	source = git+https://github.com/labsquare/CutePeaks
+	sha256sums = SKIP
+
+pkgname = cutepeaks-git
