@@ -1,17 +1,17 @@
  pkgname=kodi-addon-pvr-vuplus-git
 _gitname=pvr.vuplus
-pkgver=r155.c1e6a22
-pkgrel=3
+pkgver=r737.0334601
+pkgrel=1
 pkgdesc='VU+ addon for Kodi'
 arch=('i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
 groups=('kodi')
-makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev' )
+makedepends=('cmake' 'git' 'kodi-dev')
 provides=('kodi-addon-pvr-vuplus');
 conflicts=('kodi-addon-pvr-vuplus');
 depends=('kodi' 'nlohmann-json' 'p8-platform')
-source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Leia")
+source=("git+https://github.com/kodi-pvr/${_gitname}.git#branch=Matrix")
 md5sums=('SKIP')
 
 pkgver() {
