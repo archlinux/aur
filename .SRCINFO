@@ -1,5 +1,5 @@
 pkgbase = gnunet-python-git
-	pkgdesc = Python bindings for GNUnet
+	pkgdesc = GNUnet Python bindings
 	pkgver = r44.a3707a2
 	pkgrel = 1
 	url = http://gnunet.org
