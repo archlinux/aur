@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib
-pkgver=0.1.66
+pkgver=0.1.70
 pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
