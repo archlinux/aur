@@ -2,34 +2,30 @@
 
 _pkgname=odin
 pkgname=odin-src
-epoch=1
-pkgrel=2021
-pkgver=fe2ad54
+pkgver=r4301.fe2ad54f
+pkgrel=1
+epoch=2
 pkgdesc="Standalone master build of the Odin programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
-license=('BSD-2-Clause')
+license=(BSD)
+makedepends=(git clang+llvm-binaries)
 provides=('odin')
-makedepends=('git' 'make')
-conflicts=('odin' 'odin-bin' 'odin-git')
+conflicts=('odin')
 options=('!strip')
+source=("git+https://github.com/odin-lang/odin.git"
+        '0001-patch-makefile-for-aur.patch')
+sha256sums=('SKIP'
+            '2fe8dc71165f99b3fbafa566ed90510106077a2be4ac137056321f5ec8f55d8c')
 
-sha256sums=(
-  'SKIP'
-  '29b07422da4bcea271a88f302e5f84bd34380af137df18e33251b42dd20c26d7'
-  '5c418cd5b348ac1348767e76c7e08b7ab39359fadc8cd792133bcff4410aa78b'
-)
-
-source=(
-  'git+https://github.com/odin-lang/odin'
-  'https://github.com/llvm/llvm-project/releases/download/llvmorg-11.1.0/clang+llvm-11.1.0-x86_64-linux-gnu-ubuntu-20.10.tar.xz'
-  '0001-patch-makefile-for-aur.patch'
-)
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${_pkgname}"
   patch --forward --strip=1 --input="${srcdir}/0001-patch-makefile-for-aur.patch"
-  ln -s "${srcdir}/clang+llvm-11.1.0-x86_64-linux-gnu-ubuntu-20.10" "llvm"
 }
 
 build() {
