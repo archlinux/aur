@@ -58,7 +58,7 @@ _use_current=
 pkgbase=linux-cacule
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.13.12
-pkgrel=5
+pkgrel=6
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -89,7 +89,7 @@ source=(
 "${_patchsource}/btrfs-patches-v2/0001-btrfs-patches.patch"
 "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
 "${_patchsource}/pf-patches-v10/0001-pf-patches.patch"
-"${_patchsource}/lru-patches-v7/0001-lru-patches.patch"
+"${_patchsource}/lru-patches-v8/0001-lru-patches.patch"
 "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
 "${_patchsource}/lrng-patches/0001-lrng-patches-v2.patch"
 "${_patchsource}/security-patches/0001-security-patches.patch"
@@ -500,7 +500,7 @@ md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
          '65a4399a10b2abd0f327145d479db12d'
          '81f27f12e20971c7d7fc3a53ffb6842c'
          '8db3691e8a450f8736ed1d58ba4d6298'
-         'e84f0dadb9e7487fac39541c5bd85d7a'
+         'd66899682420ea8ce0c9df9c9bde4427'
          'b6623f818462d08b03fdc1b573c90e9f'
          '2b2be59407dd342f1cea80602a93b6c0'
          '9977ba0e159416108217a45438ebebb4'
