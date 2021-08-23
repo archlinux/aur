@@ -12,7 +12,7 @@ pkgbase = keepassxc-wordlists-hunspell
 	optdepends = hunspell-en_CA
 	optdepends = hunspell-en_AU
 	optdepends = hunspell-el
-	optdepends = hunspell-es
+	optdepends = hunspell-es_es
 	optdepends = hunspell-fr
 	optdepends = hunspell-he
 	optdepends = hunspell-hu
@@ -22,4 +22,3 @@ pkgbase = keepassxc-wordlists-hunspell
 	optdepends = hunspell-ro
 
 pkgname = keepassxc-wordlists-hunspell
-
