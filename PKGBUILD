@@ -3,21 +3,21 @@
 
 pkgname=unyaffs
 pkgver=0.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A program to extract files from a yaffs image"
 arch=("i686" "x86_64")
 url="https://bernhard-ehlers.de/projects/unyaffs.html"
 license=('GPL')
 depends=('glibc')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://git.bernhard-ehlers.de/ehlers/unyaffs/archive/${pkgver}.tar.gz")
-sha256sums=('17489fb07051d228ede6ed35c9138e25f81085492804104a8f52c51a1bd6750d')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://deb.debian.org/debian/pool/main/u/unyaffs/unyaffs_${pkgver}.orig.tar.gz")
+sha256sums=('099ee9e51046b83fe8555d7a6284f6fe4fbae96be91404f770443d8129bd8775')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make unyaffs
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -Dm755 unyaffs "${pkgdir}"/usr/bin/unyaffs
 }
