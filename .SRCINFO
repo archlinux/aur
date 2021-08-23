@@ -1,4 +1,4 @@
-pkgbase = ratt-git
+pkgbase = ratt-src
 	pkgdesc = A tool for converting websites to RSS/Atom feeds
 	pkgver = r54.25a2b56
 	pkgrel = 2
@@ -8,9 +8,9 @@ pkgbase = ratt-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	provides = ratt
-	conflicts = ratt
-	source = ratt-git::git+https://git.sr.ht/~ghost08/ratt
+	provides = ratt-src
+	conflicts = ratt-src
+	source = ratt-src::git+https://git.sr.ht/~ghost08/ratt
 	sha256sums = SKIP
 
-pkgname = ratt-git
+pkgname = ratt-src
