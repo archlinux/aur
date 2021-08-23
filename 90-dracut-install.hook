@@ -5,6 +5,7 @@ Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/dracut/*
 Target = usr/lib/systemd/systemd
+Target = usr/lib/systemd/boot/efi/*.efi.stub
 
 [Action]
 Description = Generating unified EFI kernel images...
