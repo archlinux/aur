@@ -1,0 +1,18 @@
+pkgbase = gpufetch-git
+	pkgdesc = Simple yet fancy GPU architecture fetching tool
+	pkgver = 0.10.r0.gf4a96ce
+	pkgrel = 1
+	url = https://github.com/Dr-Noob/gpufetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = cuda-tools
+	depends = glibc
+	depends = cuda
+	provides = gpufetch=0.10.r0.gf4a96ce
+	conflicts = gpufetch
+	source = git+https://github.com/Dr-Noob/gpufetch
+	md5sums = SKIP
+
+pkgname = gpufetch-git
