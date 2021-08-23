@@ -21,7 +21,7 @@
 
 _basename=clapper
 pkgname="${_basename}-git"
-pkgver=r745.4738673
+pkgver=r777.c50df5f
 pkgrel=1
 pkgdesc="A GNOME media player built using GJS with GTK4 toolkit and powered by GStreamer with OpenGL rendering."
 arch=(any)
@@ -36,7 +36,8 @@ depends=(
 	"gstreamer>=1.18.0" # gstreamer-1.0, gstreamer-base-1.0
 	"gst-plugins-base>=1.18.0"
 	"gst-plugins-good>=1.18.0"
-	"gst-plugins-bad>=1.18.0"
+	"gst-plugins-bad>=1.18.0",
+	"libadwaita"
 )
 makedepends=(
 	"meson>=0.50"
