@@ -1,24 +1,28 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=wluma
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
-license=('MIT')
-pkgdesc='Automatic brightness adjustment based on screen contents'
+license=('ISC')
+pkgdesc='Automatic brightness adjustment based on screen contents and ALS'
 url='https://github.com/maximbaz/wluma'
 arch=('x86_64')
 depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland')
-makedepends=('meson' 'ninja' 'vulkan-headers')
+makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('dabd6cdf0b9c644af52ad6fad40861829f43c534d42123af2f1f4465b31d5bed'
+sha256sums=('edb497a433b27a72023cb5f1a81246c3b6f88a07ceb08e8deb3b8ac433df1984'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    meson build --prefix=/usr --buildtype=plain
-    ninja -C build
+    make build
+}
+
+check() {
+    cd "${pkgname}-${pkgver}"
+    make test
 }
 
 package() {
