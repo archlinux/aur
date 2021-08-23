@@ -40,10 +40,9 @@ pkgbase = emulationstation
 	source = emulationstation.desktop
 	source = emulationstation.png
 	sha256sums = 79452f6c1e8aaebe98c19708b3587a0a45330bf20b3301d556285d5cd756fa4a
-	sha256sums = 3c13d66479d4f900e65a53232034943fe44a9861e5fefec1cfd8bbd69dde20c3
+	sha256sums = 0dcb7fbaf2d17ac109f2e4de1fb9dbd4226278dba9351be90df26c5c931de284
 	sha256sums = ca468dcfc59c4c56d84da1823fdcaa33277debb91195d7feffbf74650996233e
 	sha256sums = 5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c
 	sha256sums = ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c
 
 pkgname = emulationstation
-
