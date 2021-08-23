@@ -1,6 +1,6 @@
 pkgbase = libopenmpt
 	pkgdesc = A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.
-	pkgver = 0.5.10
+	pkgver = 0.5.11
 	pkgrel = 1
 	url = http://lib.openmpt.org/
 	arch = i686
@@ -15,14 +15,14 @@ pkgbase = libopenmpt
 	depends = gcc-libs
 	depends = libvorbis
 	depends = mpg123
-	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.5.10+release.autotools.tar.gz
-	sha256sums = 59a8fa28d8b8df69cb7fa5972bdf931081dab4e1e1156c69a1a53b65c2be9ffa
+	source = https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-0.5.11+release.autotools.tar.gz
+	sha256sums = 4469e095948d976cff4d7eb1936a27e9947624e49b160c29fcb246911ba5a4b0
 
 pkgname = libopenmpt
 
 pkgname = openmpt123
 	pkgdesc = A cross-platform command-line or terminal based module file player.
-	depends = libopenmpt=0.5.10
+	depends = libopenmpt=0.5.11
 	depends = portaudio
 	depends = libsndfile
 	depends = flac
