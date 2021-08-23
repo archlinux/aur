@@ -9,9 +9,7 @@ pkgbase = cuff-git
 	depends = curl
 	depends = jq
 	optdepends = jackett: Use many torrent trackers with software that supports torznab/potato feeds.
-	provides = cuff
 	source = cuff::git+https://github.com/loiccoyle/cuff.git
 	md5sums = SKIP
 
 pkgname = cuff-git
-
