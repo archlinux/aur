@@ -1,12 +1,11 @@
 pkgbase = dell-command-configure
 	pkgdesc = Configure various BIOS features on Dell laptops
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://www.dell.com/support/article/us/en/19/sln311302/dell-command-configure
 	arch = x86_64
 	license = unknown
-	source = dell-command-configure-4.4.0.tar.gz::https://dl.dell.com/FOLDER06874350M/1/command-configure_4.4.0-86.ubuntu18_amd64.tar.gz
-	sha256sums = 618c6c4fecc62020f326aceb3c6b564cb5329d6085988472abed1deffaaae4a9
+	source = dell-command-configure-4.5.0.tar.gz::https://dl.dell.com/FOLDER07309008M/1/command-configure_4.5.0-205.ubuntu18_amd64.tar.gz
+	sha256sums = 3f2d11311e6a0da618df9fbe5456087e52f678d9a47e2ae5ed9e79f321033404
 
 pkgname = dell-command-configure
-

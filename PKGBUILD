@@ -1,14 +1,14 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=dell-command-configure
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Configure various BIOS features on Dell laptops'
 arch=('x86_64')
 url='https://www.dell.com/support/article/us/en/19/sln311302/dell-command-configure'
 license=('unknown')
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER06874350M/1/command-configure_${pkgver}-86.ubuntu18_amd64.tar.gz")
-sha256sums=('618c6c4fecc62020f326aceb3c6b564cb5329d6085988472abed1deffaaae4a9')
+source=("${pkgname}-${pkgver}.tar.gz::https://dl.dell.com/FOLDER07309008M/1/command-configure_${pkgver}-205.ubuntu18_amd64.tar.gz")
+sha256sums=('3f2d11311e6a0da618df9fbe5456087e52f678d9a47e2ae5ed9e79f321033404')
 
 prepare() {
     ar xf srvadmin-hapi_*.deb
