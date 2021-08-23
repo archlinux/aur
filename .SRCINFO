@@ -1,0 +1,31 @@
+pkgbase = fonts-c-fonts-git
+	pkgdesc = c-base fonts
+	pkgver = r3.3de073b
+	pkgrel = 1
+	url = https://github.com/c-base/c-fonts
+	arch = any
+	groups = c-fonts
+	license = unknown
+	makedepends = git
+	source = fonts-c-fonts-git::git+https://github.com/c-base/c-fonts
+	md5sums = SKIP
+
+pkgname = ttf-ceva-c2-git
+	provides = ttf-ceva-c2
+	conflicts = ttf-ceva-c2
+
+pkgname = otf-ceva-c2-git
+	provides = otf-ceva-c2
+	conflicts = otf-ceva-c2
+
+pkgname = ttf-ceva-cm-git
+	provides = ttf-ceva-cm
+	conflicts = ttf-ceva-cm
+
+pkgname = ttf-linek-git
+	provides = ttf-linek
+	conflicts = ttf-linek
+
+pkgname = ttf-x-scale-git
+	provides = ttf-x-scale
+	conflicts = ttf-x-scale
