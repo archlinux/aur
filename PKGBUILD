@@ -5,7 +5,7 @@
 _pyname=booleanOperations
 pkgname=python-${_pyname,,}
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Boolean operations on paths'
 arch=(any)
 url="https://github.com/typemytype/$_pyname"
@@ -14,9 +14,9 @@ _pydeps=(pyclipper
          fonttools)
 depends=(python
          "${_pydeps[@]/#/python-}")
-checkdepends=(python-defcon
-              python-fontpens
-              python-pytest)
+# checkdepends=(python-defcon
+#               python-fontpens
+#               python-pytest)
 makedepends=(python-setuptools-scm)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
@@ -34,10 +34,12 @@ build() {
 	python setup.py build
 }
 
-check() {
-	cd "$_archive"
-	PYTHONPATH=Lib pytest tests
-}
+# Upstream (still/again) has circular dependencies in the test suite
+# https://github.com/typemytype/booleanOperations/issues/64
+# check() {
+#     cd "$_archive"
+#     PYTHONPATH=Lib pytest tests
+# }
 
 package() {
 	cd "$_archive"

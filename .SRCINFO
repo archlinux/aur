@@ -1,13 +1,10 @@
 pkgbase = python-booleanoperations
 	pkgdesc = Boolean operations on paths
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/typemytype/booleanOperations
 	arch = any
 	license = MIT
-	checkdepends = python-defcon
-	checkdepends = python-fontpens
-	checkdepends = python-pytest
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pyclipper
