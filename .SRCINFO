@@ -1,0 +1,17 @@
+pkgbase = gnunet-python-git
+	pkgdesc = Python bindings for GNUnet
+	pkgver = r44.a3707a2
+	pkgrel = 1
+	url = http://gnunet.org
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	depends = gnunet
+	depends = python
+	provides = gnunet-python
+	conflicts = gnunet-python
+	conflicts = gnunet-python-bin
+	source = git+https://gnunet.org/git/gnunet-python.git
+	sha256sums = SKIP
+
+pkgname = gnunet-python-git
