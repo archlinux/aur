@@ -3,7 +3,7 @@
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r3668.528ca22a
+pkgver=r3815.fc1f0451
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
@@ -40,5 +40,5 @@ build() {
 }
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
