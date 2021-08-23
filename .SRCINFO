@@ -2,7 +2,7 @@ pkgbase = octomap
 	pkgdesc = Efficient probabilistic 3D mapping framework based on octrees
 	pkgver = 1.9.7
 	pkgrel = 1
-	url = http://octomap.github.com/
+	url = https://octomap.github.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -15,4 +15,3 @@ pkgbase = octomap
 	sha256sums = 3e9ac020686ceb4e17e161bffc5a0dafd9cccab33adeb9adee59a61c418ea1c1
 
 pkgname = octomap
-
