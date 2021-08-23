@@ -1,5 +1,5 @@
 pkgname=watchman-bin
-pkgver=2021.08.02.00
+pkgver=2021.08.23.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -14,7 +14,7 @@ install=watchman.install
 
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('ee618e2b125f3c3a691b437783cd9cc59912455d7ffbf072b53a076fdb0d8674')
+sha256sums=('a15bd0779725d2f2f511e50539ffd0b8a7a61ed793ca93f6300c10ef97b6091f')
 
 prepare() {
   cd watchman-v$pkgver-linux
