@@ -1,10 +1,10 @@
-# Maintainer: johnnybash <jb at wachenzell dot org> PGP D126E2910543DE2D
+# Maintainer: johnnybash <georg at grgw dot de> PGP D126E2910543DE2D
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: fnord0 <fnord0 AT riseup DOT net>
 
 pkgname=zaproxy-weekly
-pkgver=2021_08_17
+pkgver=2021_08_23
 pkgrel=1
 pkgdesc='Integrated penetration testing tool for finding vulnerabilities in web applications, weekly Pre-release'
 conflicts=('zaproxy')
@@ -13,7 +13,7 @@ arch=('any')
 license=('Apache')
 depends=('java-runtime' 'ttf-font')
 source=(ZAP_WEEKLY_D-${pkgver//_/-}.zip::https://github.com/zaproxy/zaproxy/releases/download/w${pkgver//_/-}/ZAP_WEEKLY_D-${pkgver//_/-}.zip)
-sha256sums=('537db5538c528521822711ef9ce9953c7776e9a02a05167e9dcd134789a0c699')
+sha256sums=('b530c86ac30c578d1aea36af3fa011dbfced3c43107437e2a63bfbdcdb4b1cf2')
 
 prepare() {
   cd ZAP_D-${pkgver//_/-}
