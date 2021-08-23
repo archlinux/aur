@@ -1,7 +1,7 @@
 # Contributor: Jonas Lähnemann <jonas at pdi-berlin dot de>
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
-pkgname=python-kikuchypy
-pkgshort=kikuchypy
+pkgname=python-kikuchipy
+pkgshort=kikuchipy
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Processing and analysis of electron backscatter diffraction (EBSD) patterns."
