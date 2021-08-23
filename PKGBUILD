@@ -14,8 +14,8 @@ provides=(zivid-telicam-sdk)
 
 groups=(zivid-all)
 
-source=(https://www.zivid.com/hubfs/softwarefiles/releases/2.4.0+a330c1a6-1/u18/zivid-telicam-driver_3.0.1.1-3_amd64.deb)
-sha256sums=(a7e3a50de39a9337259ffa3834099481c3f0dc653268ac38371a060176b7c7cb)
+source=(https://www.zivid.com/hubfs/softwarefiles/releases/2.4.1+55718627-1/u18/zivid-telicam-driver_3.0.1.1-3_amd64.deb)
+sha256sums=(e2db7a88436ef5e9b62936104565aa6e8414da3aeb0a76fa880f46562d100f13)
 
 options=(!strip)
 
