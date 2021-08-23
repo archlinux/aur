@@ -8,7 +8,7 @@ pkgbase = menjar
 	depends = awk
 	optdepends = bemenu
 	optdepends = dmenu
-	source = https://github.com/somercet/menjar/archive/refs/tags/v0.1.tar.gz
-	sha256sums = 7004ba98fa92fa0f16af32f0cbb05cdff30ce9b8858da396edbed753f4b07399
+	source = https://github.com/somercet/menjar/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 76872bb6068ad6f7cef26dbf2e5b248e8701188570eec09ff157788ef665ebfb
 
 pkgname = menjar
