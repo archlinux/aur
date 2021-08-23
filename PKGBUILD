@@ -5,7 +5,7 @@
 
 pkgname=jurism
 pkgver=5.0.93m18
-pkgrel=1
+pkgrel=2
 pkgdesc="Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support."
 arch=('x86_64')
 url="https://juris-m.github.io/downloads"
@@ -18,7 +18,8 @@ sha256sums_x86_64=('0bd8a76cfbe776afb41ba12627a57cd99d06aa7843282137cff73710c885
 install='jurism.install'
 
 source=("jurism.desktop")
-source_x86_64=("Jurism-${pkgver}_linux_$CARCH.tar.bz2::https://our.law.nagoya-u.ac.jp/jurism/dl?channel=release&platform=linux-$CARCH&version=${pkgver}")
+#source_x86_64=("Jurism-${pkgver}_linux_$CARCH.tar.bz2::https://our.law.nagoya-u.ac.jp/jurism/dl?channel=release&platform=linux-$CARCH&version=${pkgver}")
+source_x86_64=("Jurism-${pkgver}_linux_$CARCH.tar.bz2::https://jurism.blob.core.windows.net/aur/Jurism-5.0.93m18_linux_x86_64.tar.bz2")
 
 package() {
   install -dDm755 "$pkgdir"/usr/{bin,lib/jurism}
