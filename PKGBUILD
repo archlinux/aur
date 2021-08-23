@@ -1,8 +1,8 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname=fbmenugen
-pkgver=0.85
-pkgrel=2
+pkgver=0.86
+pkgrel=1
 pkgdesc="A simple menu generator for the Fluxbox Window Manager (with support for icons)."
 url="https://github.com/trizen/$pkgname"
 
@@ -11,13 +11,12 @@ license=('GPL3')
 
 depends=('perl>=5.14.0' 'fluxbox' 'perl-data-dump' 'perl-linux-desktopfiles>=0.25')
 optdepends=(
-    'gtk2-perl: support for icons'
-    'perl-gtk3: support for icons (with `use_gtk3 = 1`)'
+    'perl-gtk3: support for icons'
     'perl-file-desktopentry: locale support'
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('99ea3bf39a153c1c05bcd7881d7708fc575c485855e8d8b022520b43013ceb26')
+sha512sums=('0161cb078b93044a5baa9c4ad299cf09618a453dff12f044fef5a781aa07d0ad82ee25b806663950c5247f8ace25df26ad6101fc87530bc8947e64b5fe9c74d7')
 install='readme.install'
 
 package() {
