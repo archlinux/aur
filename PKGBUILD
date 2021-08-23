@@ -1,16 +1,12 @@
 # Maintainer: PryosCode <info@pryoscode.net>
 pkgname="toru"
-pkgver="0.4.4"
+pkgver="0.5.0"
 pkgrel="1"
 pkgdesc="Pacman wrapper with AUR support."
 arch=("x86_64")
 url="https://github.com/PryosCode/toru"
 license=("Apache-2.0")
 depends=(
-    "sudo"
-    "pacman"
-    "git"
-
     "autoconf"
     "automake"
     "binutils"
@@ -28,9 +24,11 @@ depends=(
     "libtool"
     "m4"
     "make"
+    "pacman"
     "patch"
     "pkgconfig"
     "sed"
+    "sudo"
     "texinfo"
     "which"
 )
