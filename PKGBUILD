@@ -3,7 +3,7 @@
 
 pkgname=python-pysynth-git
 _pkgname=PySynth
-pkgver=20170611.3441e61
+pkgver=20200225.938f80a
 pkgrel=1
 pkgdesc="A simple music synthesizer for Python 3"
 arch=(any)
@@ -11,7 +11,7 @@ url="http://mdoege.github.io/PySynth/"
 license=('GPL')
 depends=('python-numpy')
 makedepends=('git')
-source=("git://github.com/mdoege/PySynth.git")
+source=("git+https://github.com/mdoege/PySynth.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,8 +19,12 @@ pkgver() {
 	git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
-package() {
+build() {
 	cd "${srcdir}/${_pkgname}"
-	python setup.py install --root="$pkgdir"
+	python setup.py build
 }
 
+package() {
+	cd "${srcdir}/${_pkgname}"
+	python setup.py install --root="$pkgdir" --optimize=1
+}
