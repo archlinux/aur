@@ -6,11 +6,7 @@ _installname=SeqenceMatrix
 pkgver=1.9
 pkgrel=1
 depends=(
-	'jre-openjdk-headless'
-	'jre-openjdk'
-	'jdk-openjdk'
-	'openjdk-doc'
-	'openjdk-src'
+	'java-runtime'
 )
 pkgdesc="Taxonomy-aware DNA sequence processing toolkit"
 arch=('x86_64')
