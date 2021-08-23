@@ -1,0 +1,10 @@
+pkgbase = testlib-git
+	pkgver = r229.f28d528
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	source = testlib-git::git+https://github.com/MikeMirzayanov/testlib.git
+	md5sums = SKIP
+
+pkgname = testlib-git
