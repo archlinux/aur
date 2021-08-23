@@ -14,10 +14,10 @@ source=('subtube-git::git://github.com/nagy135/subtube.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
