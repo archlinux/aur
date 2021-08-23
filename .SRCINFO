@@ -1,6 +1,6 @@
 pkgbase = odin-src
 	pkgdesc = Standalone master build of the Odin programming language.
-	pkgver = ae0208b
+	pkgver = b014879
 	pkgrel = 2021
 	url = https://odin-lang.org/
 	arch = x86_64
