@@ -1,0 +1,26 @@
+pkgbase = master-key-git
+	pkgdesc = Master Key is a password manager application built with Python 3 and GTK that generates and manages passwords without the need to store them
+	pkgver = 1.2.0.r1.g345c41b
+	pkgrel = 1
+	url = https://gitlab.com/guillermop/master-key
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = glib2
+	depends = libadwaita
+	depends = sassc
+	depends = libsass
+	depends = python
+	depends = python-gobject
+	depends = libpwquality
+	depends = sqlcipher
+	depends = tcl
+	provides = master-key
+	conflicts = master-key
+	source = git+https://gitlab.com/guillermop/master-key.git
+	sha256sums = SKIP
+
+pkgname = master-key-git
