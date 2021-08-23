@@ -1,6 +1,6 @@
 pkgbase = cqrlog-git
 	pkgdesc = An advanced ham radio logger using MariaDB - GIT version.
-	pkgver = 2.0.4.r1.g7ffd237
+	pkgver = 2.5.2.r58.g5dd6ea9
 	pkgrel = 1
 	url = http://www.cqrlog.com
 	arch = i686
@@ -24,9 +24,9 @@ pkgbase = cqrlog-git
 	provides = cqrlog
 	conflicts = cqrlog
 	conflicts = cqrlog-source
+	conflicts = cqrlog-bin
 	source = cqrlog::git://github.com/ok2cqr/cqrlog.git#branch=master
 	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = cqrlog-git
-
