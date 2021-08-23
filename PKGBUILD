@@ -24,7 +24,7 @@ package() {
 
     # install symbolic link in /usr/bin
     install -d -m755 "${pkgdir}/usr/bin"
-    ln -s /opt/${_pkgname}/rambox "${pkgdir}/usr/bin"
+    ln -s "/opt/${_pkgname}/rambox" "${pkgdir}/usr/bin"
 
     # fix crash on some systems due to https://github.com/ramboxapp/community-edition/issues/2481
     chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
