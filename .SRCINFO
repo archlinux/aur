@@ -21,6 +21,7 @@ pkgbase = vdirsyncer-git
 	depends = python-atomicwrites
 	depends = python-aiohttp<4.0.0
 	depends = python-aiostream<0.5.0
+	optdepends = python-aiohttp-oauthlib: Google support
 	provides = vdirsyncer=0.18.1.dev44+g98fcd12
 	conflicts = vdirsyncer
 	source = git+https://github.com/pimutils/vdirsyncer.git

@@ -29,6 +29,9 @@ checkdepends=(
   "python-aioresponses"
   "python-pytest-cov"
 )
+optdepends=(
+  "python-aiohttp-oauthlib: Google support"
+)
 source=("git+https://github.com/pimutils/${_pkgname}.git")
 sha256sums=("SKIP")
 conflicts=("vdirsyncer")
