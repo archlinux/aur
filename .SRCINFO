@@ -1,6 +1,6 @@
 pkgbase = python-jax
 	pkgdesc = Differentiate, compile, and transform Numpy code.
-	pkgver = 0.2.13
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = python-jax
 	md5sums = SKIP
 
 pkgname = python-jax
-
