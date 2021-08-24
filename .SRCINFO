@@ -1,0 +1,18 @@
+pkgbase = fuse-zip-occhris-git
+	pkgdesc = Mount and modify zip files - a soft fork made by Chris Graham with zip encryption support
+	pkgver = 0.7.2.r482.cf0d889
+	pkgrel = 1
+	url = https://gitlab.com/occhris/fuse-zip
+	arch = x86_64
+	license = GPL3
+	makedepends = setconf
+	makedepends = git
+	depends = fuse
+	depends = libzip
+	provides = fuse-zip
+	conflicts = fuse-zip
+	conflicts = fuse-zip-git
+	source = fuse-zip-occhris::git+https://gitlab.com/occhris/fuse-zip.git
+	sha256sums = SKIP
+
+pkgname = fuse-zip-occhris-git
