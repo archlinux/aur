@@ -1,17 +1,18 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxt-git
-pkgver=v0.1.26.r0.g3dd63e0
+pkgver=0.1.27.r0.g47ff528
 pkgrel=1
 pkgdesc="simple tty api library, adds interactive terminal interface to your applications"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxt"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
 	'lib_amxp'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'lib_amxt'
@@ -27,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,4 +39,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
