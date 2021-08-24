@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Shane Stone <shanewstone at gmail>
 pkgname=python-spiceypy
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="A Python wrapper for the NAIF C SPICE Toolkit (N66) written using ctypes."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-numpy')
 depends=('python-numpy')
 optdepends=('python-pytest: testing' 'python-pandas: testing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/andrewannex/spiceypy/archive/v$pkgver.tar.gz")
-sha512sums=('43094b6cf922ce25ceea9b9a05299b7ac99d3d5a54f3a2d282d45cc6abac0907397d5ea6581817f86a11911c1e124183b17b28ce54be90db2da58797ee5c5844')
+sha512sums=('b77e04c5f717ad1b822ff5492863d1b37621af34c8333bf15973e40de2e147099d84a4fee4c125c5a5bd72046436333d79e4135c74ade24a8b3e0982914682d5')
 
 build() {
 
