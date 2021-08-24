@@ -1,0 +1,20 @@
+pkgbase = tracks-player
+	pkgdesc = A simple audio player
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://codeberg.org/som/Tracks
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = gtk4
+	depends = gdk-pixbuf2
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = glib2
+	depends = gjs
+	source = https://codeberg.org/som/Tracks/archive/v0.6.0.tar.gz
+	sha256sums = d1bc50ef25b0a48b2ee8488f2107e3d12f7ec7d33f6dc1a15e0de797dbf403b6
+
+pkgname = tracks-player
