@@ -1,0 +1,16 @@
+pkgbase = netassistant
+	pkgdesc = A network debugging assistant based on Qt GUI.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/busyluo/NetAssistant
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	depends = qt5-base
+	provides = NetAssistant
+	conflicts = netassistant-git
+	options = !strip
+	source = NetAssistant-1.0.0.tar.gz::https://download.fastgit.org/busyluo/NetAssistant/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 75b2397809fbde45dc6594073e7dcd2e9b00ea73a558f40b8912ca02e54b3dc4
+
+pkgname = netassistant
