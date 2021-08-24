@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxrt-git
-pkgver=v1.1.3.r0.gb36bc57
+pkgver=1.1.3.r0.gb36bc57
 pkgrel=1
 pkgdesc="Ambiorix application runtime"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amxrt.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'libevent'
@@ -16,6 +16,7 @@ depends=(
 	'lib_amxo'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amxrt'
@@ -31,7 +32,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,4 +43,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
