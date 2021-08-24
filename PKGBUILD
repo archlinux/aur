@@ -21,7 +21,7 @@ package(){
 	tar xf data.tar.xz -C "${pkgdir}"
 	# Install Icon
 	for i in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
-		install -Dm644 "$pkgdir"/usr/share/icons/hicolor/0x0/"$pkgname".png \
-		"$pkgdir"/usr/share/icons/hicolor/"$i"/"$pkgname".png 
+		install -Dm644 "$pkgdir"/usr/share/icons/hicolor/0x0/apps/"$pkgname".png \
+		"$pkgdir"/usr/share/icons/hicolor/"$i"/apps/"$pkgname".png 
 	done
 }
