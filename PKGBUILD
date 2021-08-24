@@ -1,16 +1,17 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxp-git
-pkgver=v0.9.3.r0.ga393e80
+pkgver=0.9.4.r0.ga250e09
 pkgrel=1
 pkgdesc="Generic C-API for common patterns"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxp"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'lib_amxp'
@@ -26,7 +27,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,4 +38,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
