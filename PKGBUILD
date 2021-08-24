@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb_pcb-git
-pkgver=v2.1.3.r0.g83c7d92
+pkgver=2.1.4.r0.g5c6b8a8
 pkgrel=1
 pkgdesc="PCB baapi back-end"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_pcb.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
@@ -14,14 +14,13 @@ depends=(
 	'libpcb'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amxb_pcb'
-	'amxb_pcb-git'
 )
 conflicts=(
 	'amxb_pcb'
-	'amxb_pcb-git'
 )
 
 gitbranch="main"
@@ -31,7 +30,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,4 +41,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
