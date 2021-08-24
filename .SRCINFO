@@ -1,0 +1,14 @@
+pkgbase = ukylin-wine
+	pkgdesc = Base ukylin-wine package. Full description can be found here: https://www.ubuntukylin.com/news/1682-cn.html . Issues and pull request please send to github: https://github.com/abcfy2/ukylin-wine-aur/
+	pkgver = 70.6.3.25
+	pkgrel = 1
+	url = https://www.kylinos.cn
+	install = ukylin-wine.install
+	arch = i686
+	arch = x86_64
+	license = proprietary
+	options = !strip
+	options = !emptydirs
+	source = http://archive.ubuntukylin.com/software/pool/partner/ukylin-wine_70.6.3.25_amd64.deb
+
+pkgname = ukylin-wine

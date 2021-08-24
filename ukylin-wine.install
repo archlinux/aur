@@ -1,0 +1,26 @@
+# From deb control script postinst
+post_install() {
+  systemctl enable /etc/systemd/system/run-wine.mount
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/run-wine.conf 2>/dev/null
+  # systemd-mount /etc/systemd/system/run-wine.mount
+  mount /usr/share/wine/wine.squashfs /run/wine
+
+  chmod a+x /usr/bin/ukylin-wine
+  chmod a+x /usr/bin/wine-mount
+}
+
+# From deb control scrip prerm
+pre_remove() {
+  # Remove all processes before uninstall
+  lsof /run/wine 2>/dev/null | cut -d ' ' -f 2 | uniq | xargs -i kill -9 {} | :
+  umount /run/wine | :
+  systemctl disable run-wine.mount | :
+}
+
+pre_upgrade() {
+  pre_remove
+}
+
+post_upgrade() {
+  post_install
+}
