@@ -4,7 +4,7 @@
 
 pkgname=pyradio-git
 pkgver=0.8.9.8.r0.gd878cd3
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
@@ -13,7 +13,7 @@ depends=('python-dnspython' 'python-requests')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%}"  "${pkgname%-git}")
 source=($pkgname::git+https://github.com/coderholic/pyradio.git)
 sha256sums=('SKIP')
 
@@ -21,7 +21,7 @@ prepare() {
   cd $pkgname
   _descr="$(git describe --long --tags)"
   sed -i "s/git_description = ''/git_description = '$_descr'/" pyradio/radio.py
-  sed -i 's/distro = None/distro = Arch Linux/' pyradio/config
+  sed -i 's/distro = None/distro = Arch Linux (AUR)/' pyradio/config
 }
 
 pkgver() {
@@ -32,10 +32,9 @@ pkgver() {
 package() {
   cd $pkgname
 
-  #install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/pyradio"
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/pyradio/LICENSE"
   install -Dm644 README.{html,md} build.{html,md} -t "$pkgdir/usr/share/doc/pyradio"
-  install -Dm644 pyradio.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
 
   python setup.py install --root="$pkgdir" --optimize=1
 }
