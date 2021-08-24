@@ -1,8 +1,8 @@
 # Maintainer: Kwrazi < kwrazi at gmail dot com >
 
 pkgname=emuflight-configurator
-pkgver=0.3.6
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Crossplatform configuration tool for the Emuflight flight control system"
 arch=('x86_64')
 url="https://github.com/emuflight/EmuConfigurator"
