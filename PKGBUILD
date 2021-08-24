@@ -8,8 +8,8 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r5745.f58eb80d9
-pkgrel=3
+pkgver=2.1.46
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -66,12 +66,6 @@ source=(
     #ankitects-anki-core-i18n-master.tar.gz::https://github.com/ankitects/anki-core-i18n/tarball/master
     #ankitects-anki-desktop-ftl-master.tar.gz::https://github.com/ankitects/anki-desktop-ftl/tarball/master
     #ankitects-anki-desktop-i18n-master.tar.gz::https://github.com/ankitects/anki-desktop-i18n/tarball/master
-
-    #0001-Move-aqt_data-to-sys.prefix-share.patch
-    #0002-Remove-bad-build-steps-from-makefiles.patch
-    #0003-Compile-.py-s-before-building-wheel.patch
-    #0004-Disable-auto-updates.patch
-    #0005-Make-pyenv-target-just-create-venv.patch
 )
 sha512sums=('SKIP')
 
@@ -86,12 +80,6 @@ prepare() {
     # Disable foring a specific bazel version to build with
     rm .bazelversion
 
-    #patch -p1 <"$srcdir"/0001-Move-aqt_data-to-sys.prefix-share.patch
-    #patch -p1 <"$srcdir"/0002-Remove-bad-build-steps-from-makefiles.patch
-    #patch -p1 <"$srcdir"/0003-Compile-.py-s-before-building-wheel.patch
-    #patch -p1 <"$srcdir"/0004-Disable-auto-updates.patch
-    #patch -p1 <"$srcdir"/0005-Make-pyenv-target-just-create-venv.patch
-
     # Put translations in place.
     #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
@@ -100,15 +88,6 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    # Built into the shared libraries so that the Python component can check
-    # that it has the same value.
-    #echo arch-linux-$pkgver-$pkgrel > meta/buildhash
-
-    # Installs development modules in venv, which is required by scripts used
-    # by various make targets.  The dependencies between targets are completely broken.
-    #make develop
-
-    #make build
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
