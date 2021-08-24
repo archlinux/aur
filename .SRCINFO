@@ -1,7 +1,7 @@
 pkgbase = projen
 	pkgdesc = Define and maintain complex project configuration through code
 	pkgver = 0.27.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projen/projen/
 	arch = any
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = projen
 	makedepends = jq
 	depends = nodejs
 	optdepends = bash-completion: Bash completion
+	optdepends = zsh: zsh completion
 	noextract = projen-0.27.32.tgz
 	source = https://registry.npmjs.org/projen/-/projen-0.27.32.tgz
 	sha256sums = 7021b484a710a0b99e1e4d1b46c1139cc2fd8553d36b445c988fc204842bae5b

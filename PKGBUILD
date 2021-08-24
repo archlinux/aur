@@ -2,14 +2,15 @@
 
 pkgname=projen
 pkgver=0.27.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Define and maintain complex project configuration through code"
 arch=('any')
 url="https://github.com/projen/projen/"
 license=('Apache')
 depends=('nodejs')
 makedepends=('npm' 'jq')
-optdepends=('bash-completion: Bash completion')
+optdepends=('bash-completion: Bash completion'
+            'zsh: zsh completion')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 sha256sums=('7021b484a710a0b99e1e4d1b46c1139cc2fd8553d36b445c988fc204842bae5b')
