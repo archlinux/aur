@@ -6,7 +6,7 @@ pkgbase = eclipse-cpp
 	url = https://www.eclipse.org/
 	arch = x86_64
 	license = EPL
-	depends = java-environment>=8
+	depends = java-environment>=11
 	depends = webkit2gtk
 	depends = unzip
 	provides = eclipse=4.20-1
