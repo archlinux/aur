@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amx_cli-git
-pkgver=v0.2.16.r0.g9b24f3f
+pkgver=0.2.17.r0.ga53f05b
 pkgrel=1
 pkgdesc="Ambiorix Interactive Command Line Interface"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amx-cli.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
@@ -16,6 +16,7 @@ depends=(
 	'lib_amxm'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amx_cli'
@@ -31,7 +32,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,4 +43,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
