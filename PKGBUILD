@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tartube
-pkgver=2.3.110
+pkgver=2.3.332
 pkgrel=1
 pkgdesc='A GUI front-end for youtube-dl, partly based on youtube-dl-gui and written in Python 3 / Gtk 3'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('ffmpeg: Video playback support'
             'atomicparsley')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/axcore/tartube/archive/v${pkgver}.tar.gz")
-sha256sums=('0f32930df0bd024f66d5348725ce04c57ee96e1aea7357b39b4b246bd71f2e20')
+sha256sums=('737c056095cf5bc9469a7be2b058681b05262b6d971940a203984fccd64087e9')
 
 build() {
   cd "${pkgname}-${pkgver}"
