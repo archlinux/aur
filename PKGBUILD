@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo_xml_to-git
-pkgver=v0.1.3.r1.g5536c0d
+pkgver=0.2.0.r0.g2bda573
 pkgrel=1
 pkgdesc="Ambiorix XML converter"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amxo-xml-to.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
@@ -13,6 +13,7 @@ depends=(
 	'libxslt'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amxo_xml_to'
@@ -28,7 +29,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -39,4 +40,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
