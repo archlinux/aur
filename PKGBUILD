@@ -1,13 +1,40 @@
 # Contributer: abcfy2 <abcfy2@163.com>
-pkgname='deepin-wine5-stable'
-pkgver=5.0.0.26
+
+pkgname=('deepin-wine5-stable' 'deepin-wine5-stable-i386' 'deepin-wine5-stable-amd64')
+pkgver=5.0.33
 pkgrel=1
 pkgdesc="Deepin Wine5 stable"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
-# The depenency list is copied from abcfy2/deepin-wine5-i386 package
-depends=(
+makedepends=('tar')
+source=(
+    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable_${pkgver}-${pkgrel}_amd64.deb"
+    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
+    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine5-stable/deepin-wine5-stable-i386_${pkgver}-${pkgrel}_i386.deb"
+)
+noextract=(
+    "deepin-wine5-stable_${pkgver}-${pkgrel}_amd64.deb"
+    "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
+    "deepin-wine5-stable-i386_${pkgver}-${pkgrel}_i386.deb"
+)
+sha256sums=('d6930a3def67f4d40eb22885bce13aed1e247f921f922a98f2902df45d139bb1'
+            'bd14d3756d2328759d6cd83f1177f0046d5d2d255b92b9faefbff5a25c0812d5'
+            '49cdaa65b237900b431c1c7b2c11bf1f6460d904bba42bf6697f638a69d054b5')
+
+package_deepin-wine5-stable() {
+    depends=("deepin-wine5-stable-i386=$pkgver" "deepin-wine5-stable-amd64=$pkgver")
+
+    mkdir -p "deepin-wine5-stable_${pkgver}-${pkgrel}"
+    ar -x "deepin-wine5-stable_${pkgver}-${pkgrel}_amd64.deb" data.tar.xz --output "deepin-wine5-stable_${pkgver}-${pkgrel}"
+    tar -xf "deepin-wine5-stable_${pkgver}-${pkgrel}/data.tar.xz" --directory="${pkgdir}"
+}
+
+package_deepin-wine5-stable-i386() {
+    # deepin-wine5-i386 deb dependencies (Note: i386):
+    # Depends: libasound2 (>= 1.0.16), libc6 (>= 2.28), libglib2.0-0 (>= 2.12.0), libgphoto2-6 (>= 2.5.10), libgphoto2-port12 (>= 2.5.10), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.4.0), liblcms2-2 (>= 2.2+git20110628), libldap-2.4-2 (>= 2.4.7), libmpg123-0 (>= 1.13.7), libopenal1 (>= 1.14), libpcap0.8 (>= 0.9.8), libpulse0 (>= 0.99.1), libudev1 (>= 183), libusb-1.0-0 (>= 2:1.0.16), libvkd3d1 (>= 1.0), libx11-6, libxext6, libxml2 (>= 2.9.0), ocl-icd-libopencl1 | libopencl1, udis86, zlib1g (>= 1:1.1.4), libasound2-plugins, libncurses6 | libncurses5 | libncurses
+    # Recommends: libcapi20-3, libcups2, libdbus-1-3, libfontconfig1, libfreetype6, libglu1-mesa | libglu1, libgnutls30 | libgnutls28 | libgnutls26, libgsm1, libgssapi-krb5-2, libjpeg62-turbo | libjpeg8, libkrb5-3, libodbc1, libosmesa6, libpng16-16 | libpng12-0, libsane | libsane1, libsdl2-2.0-0, libtiff5, libv4l-0, libxcomposite1, libxcursor1, libxfixes3, libxi6, libxinerama1, libxrandr2, libxrender1, libxslt1.1, libxxf86vm1
+    depends=(
         'lib32-alsa-plugins' 'lib32-glib2' 'lib32-glibc' 'libgphoto2'
         'lib32-gst-plugins-base-libs' 'lib32-lcms2' 'lib32-libldap' 'lib32-mpg123'
         'lib32-openal' 'lib32-libpcap' 'lib32-libcanberra-pulse' 'lib32-libudev0-shim'
@@ -16,15 +43,27 @@ depends=(
         'lib32-freetype2' 'lib32-gettext' 'lib32-libxcursor' 'lib32-mesa' 'lib32-libjpeg6'
         'lib32-libxrandr' 'lib32-libxi' 'lib32-glu'
     )
-makedepends=('tar' 'p7zip')
-source=(
-    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.wesing.deepin/com.wesing.deepin_2.21.170.0319deepin4_i386.deb"
-)
-sha256sums=('8c7010cf7498aee97bd153bbd0ac749c6d433e05382c6b48e5e207673f74e481')
 
-package() {
-	cd ${srcdir}
-	tar xpvf data.tar.xz --xattrs-include='*' --numeric-owner
-	install -d ${pkgdir}/usr/lib/deepin-wine5-stable
-    7z x -o${pkgdir}/usr/lib/deepin-wine5-stable opt/apps/com.wesing.deepin/files/wine_archive.7z
+    mkdir -p "deepin-wine5-stable-i386_${pkgver}-${pkgrel}"
+    ar -x "deepin-wine5-stable-i386_${pkgver}-${pkgrel}_i386.deb" data.tar.xz --output "deepin-wine5-stable-i386_${pkgver}-${pkgrel}"
+    tar -xf "deepin-wine5-stable-i386_${pkgver}-${pkgrel}/data.tar.xz" --directory="${pkgdir}"
+}
+
+package_deepin-wine5-stable-amd64() {
+    # deepin-wine5-i386 deb dependencies (Note: i386):
+    # Depends: libasound2 (>= 1.0.16), libc6 (>= 2.28), libglib2.0-0 (>= 2.12.0), libgphoto2-6 (>= 2.5.10), libgphoto2-port12 (>= 2.5.10), libgstreamer-plugins-base1.0-0 (>= 1.0.0), libgstreamer1.0-0 (>= 1.4.0), liblcms2-2 (>= 2.2+git20110628), libldap-2.4-2 (>= 2.4.7), libmpg123-0 (>= 1.13.7), libopenal1 (>= 1.14), libpcap0.8 (>= 0.9.8), libpulse0 (>= 0.99.1), libudev1 (>= 183), libusb-1.0-0 (>= 2:1.0.16), libvkd3d1 (>= 1.0), libx11-6, libxext6, libxml2 (>= 2.9.0), ocl-icd-libopencl1 | libopencl1, udis86, zlib1g (>= 1:1.1.4), libasound2-plugins, libncurses6 | libncurses5 | libncurses
+    # Recommends: libcapi20-3, libcups2, libdbus-1-3, libfontconfig1, libfreetype6, libglu1-mesa | libglu1, libgnutls30 | libgnutls28 | libgnutls26, libgsm1, libgssapi-krb5-2, libjpeg62-turbo | libjpeg8, libkrb5-3, libodbc1, libosmesa6, libpng16-16 | libpng12-0, libsane | libsane1, libsdl2-2.0-0, libtiff5, libv4l-0, libxcomposite1, libxcursor1, libxfixes3, libxi6, libxinerama1, libxrandr2, libxrender1, libxslt1.1, libxxf86vm1
+    depends=(
+        'alsa-plugins' 'glib2' 'glibc' 'libgphoto2'
+        'gst-plugins-base-libs' 'lcms2' 'libldap' 'mpg123'
+        'openal' 'libpcap' 'libcanberra-pulse' 'libudev0-shim'
+        'libusb' 'vkd3d' 'libx11' 'libxext' 'libxml2'
+        'ocl-icd' 'deepin-udis86' 'zlib' 'ncurses' 'fontconfig'
+        'freetype2' 'gettext' 'libxcursor' 'mesa' 'libjpeg6'
+        'libxrandr' 'libxi' 'glu'
+    )
+
+    mkdir -p "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}"
+    ar -x "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}_amd64.deb" data.tar.xz --output "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}"
+    tar -xf "deepin-wine5-stable-amd64_${pkgver}-${pkgrel}/data.tar.xz" --directory="${pkgdir}"
 }
