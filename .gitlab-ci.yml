@@ -41,9 +41,9 @@ test-klepto:
   image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
   needs: ["build-klepto"]
   script:
+    - sudo pacman -U --noconfirm klepto*.pkg.tar.zst
     - namcap -m PKGBUILD
     - namcap -m klepto*.pkg.tar.zst
-    - sudo pacman -U --noconfirm klepto*.pkg.tar.zst
 
 deploy-klepto:
   stage: deploy
