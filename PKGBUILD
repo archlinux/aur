@@ -9,7 +9,7 @@ pkgdesc="Highly extensible IDE (Enterprise Java and Web version)"
 arch=(x86_64)
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-environment>=8' webkit2gtk unzip)
+depends=('java-environment>=11' webkit2gtk unzip)
 makedepends=()
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
@@ -19,6 +19,8 @@ source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/tec
         "eclipse.desktop")
 sha512sums=('89b8d359e7a0e5891b4adce63b464a84520c7aff7fde8f47689b2414dc7fdb1247d74f8651986d7fe8699561368c10133c9633b0d39fc7cc76b6206d574eb4cb'
             '9da29da1fe9e4ac4b8f1a4faef158155399574752a317addf90f6a068019ad62906f8ce1db11e543c7fee7dbf3dd8273aa34fc86ff2354420371cdf9b017cdf3')
+
+backup=('usr/lib/eclipse/eclipse.ini')
 
 package() {
     install -d "${pkgdir}/usr/lib"
