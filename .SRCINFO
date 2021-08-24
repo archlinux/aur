@@ -1,8 +1,8 @@
 pkgbase = unclutter-patched
 	pkgdesc = A small program for hiding the mouse cursor. With patches applied.
 	pkgver = 8
-	pkgrel = 1
-	url = http://ftp.x.org/contrib/utilities/unclutter-8.README
+	pkgrel = 2
+	url = https://launchpad.net/ubuntu/+source/unclutter
 	arch = i686
 	arch = x86_64
 	license = Public Domain
@@ -22,4 +22,3 @@ pkgbase = unclutter-patched
 	md5sums = 4684c4f0af11b1088120d9ff42d158cd
 
 pkgname = unclutter-patched
-

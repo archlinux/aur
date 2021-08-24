@@ -2,9 +2,9 @@
 
 pkgname=unclutter-patched
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="A small program for hiding the mouse cursor. With patches applied."
-url="http://ftp.x.org/contrib/utilities/unclutter-8.README"
+url="https://launchpad.net/ubuntu/+source/unclutter"
 arch=('i686' 'x86_64')
 license=('Public Domain')
 depends=('libxext')
