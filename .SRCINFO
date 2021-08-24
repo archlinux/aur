@@ -1,0 +1,19 @@
+pkgbase = cryptocam-companion-cli-git
+	pkgdesc = Companion for Cryptocam, the encrypted android camera app – CLI version
+	pkgver = 0.1.0.f149dcb
+	pkgrel = 1
+	url = https://gitlab.com/cryptocam/cryptocam-companion-cli
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gcc
+	makedepends = clang
+	depends = ffmpeg
+	provides = cryptocam-companion-cli
+	conflicts = cryptocam-companion-cli
+	source = cryptocam-companion-cli-git::git+https://gitlab.com/cryptocam/cryptocam-companion-cli.git
+	sha512sums = SKIP
+
+pkgname = cryptocam-companion-cli-git
