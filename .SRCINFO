@@ -1,0 +1,17 @@
+pkgbase = dcch64-backend-c
+	pkgdesc = DCCH64 is an Pine H64 based DCC model railroad controlling station.
+	pkgver = v1.0.prerelease
+	pkgrel = 1
+	url = https://github.com/DCCH64/DCCH64
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = wiringpi-git
+	source = https+git://github.com/DCCH64/DCCH64-backend-c.git
+	md5sums = SKIP
+
+pkgname = dcch64-backend-c
