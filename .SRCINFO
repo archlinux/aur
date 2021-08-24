@@ -7,6 +7,7 @@ pkgbase = mpris-rp-git
 	arch = any
 	license = GPL
 	makedepends = rust
+	makedepends = git
 	depends = gcc-libs
 	provides = mpris-rp
 	source = mpris-rp::git+https://github.com/nickofolas/mpris-rp
