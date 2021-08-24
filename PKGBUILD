@@ -11,7 +11,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.16.9
+pkgver=3.16.10
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -29,7 +29,7 @@ conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
         'qgis-proj8.patch')
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('a4c036ef13428f08848b258d1123277eeb4908496c702ab9a448d4b597a55694'
+sha256sums=('d67c12217e0261d0335238b96eaf235427a34635aa2651b83ead7c006a3c03c2'
             '58f58b5e43cc9f13b55bf2a9742b3c7cb555eee3c4075611980f0496cfd24c89')
 
 prepare() {
