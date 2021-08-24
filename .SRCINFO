@@ -1,0 +1,16 @@
+pkgbase = kesboot-git
+	pkgdesc = Script for automating work with EFI Kernel Stub (linux)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/kesboot
+	arch = x86_64
+	license = MIT
+	depends = efibootmgr
+	depends = sed
+	depends = grep
+	depends = util-linux
+	depends = coreutils
+	source = kesboot-git::git+https://github.com/BiteDasher/kesboot.git
+	sha512sums = SKIP
+
+pkgname = kesboot-git
