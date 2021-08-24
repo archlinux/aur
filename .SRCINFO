@@ -1,0 +1,21 @@
+pkgbase = symbolic-preview-git
+	pkgdesc = Symbolics made easy
+	pkgver = r108.d6570c5
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/design/symbolic-preview
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = glib2
+	provides = symbolic-preview
+	conflicts = symbolic-preview
+	source = git+https://gitlab.gnome.org/World/design/symbolic-preview.git
+	sha256sums = SKIP
+
+pkgname = symbolic-preview-git
