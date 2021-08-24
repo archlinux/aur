@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=matrixStats
-_cranver=0.60.0
+_cranver=0.60.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Artistic-2.0)
 depends=('r>=2.12.0')
 optdepends=(r-base64enc r-ggplot2 r-knitr r-microbenchmark r-r.devices r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('0ee09303cfcc7e5577c56a19cc5aa35183165fb923bfdb06321af35b56945f21')
+sha256sums=('2f77f1dc3d157e85d91f468e4ec4c569537b17a156e016ed723bdc4dcf128f7f')
 
 build() {
   cd "${srcdir}"
