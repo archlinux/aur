@@ -1,6 +1,6 @@
 # Maintainer: Joshua Merrell <joshuamerrell@gmail.com>
 pkgname=minisphere
-pkgver=5.6.0
+pkgver=5.6.3
 pkgrel=1
 pkgdesc="A fast, lightweight implementation of the Sphere game engine"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/fatcerberus/sphere"
 license=('BSD')
 depends=('allegro' 'libmng' 'libChakraCore.so')
 source=(https://github.com/fatcerberus/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('6be076c02bd04e02872cee5275d56fd9539234bb11101b2144da32d375543a94')
+sha256sums=('09b573552ed7f1410e432043ed75f75aa6909486ed5cadc8d5799dc1dac9a85e')
 
 build() {
   cd sphere-$pkgver
