@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.0.r29765.ea901fb49'
+pkgver='0.15.1.r29771.1fe3ee789'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
              'git' 'opus')
 optdepends=('bluez: for bluetooth transport'
-            'libzbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
+            'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
             'miniupnpc: for NAT uPnP support'
 	    'libpulse: for conversation service'
@@ -31,20 +31,22 @@ optdepends=('bluez: for bluetooth transport'
 backup=("etc/${_appname}.conf")
 options=('!makeflags')
 source=("git+https://${_appname}.org/git/${_appname}.git"
-        "${_appname}.service"
+        "${_appname}-system.service"
+        "${_appname}-user.service"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles")
 sha256sums=('SKIP'
-            '81310f5df1790d9e4d806ac2ed9fe761b13eeafdae584eb59ec2e8a52b088485'
+            'ef221a4cbdc2270d7a1b1447e6e8a498653ec16d2f73fa57a7c6888980af4dfb'
+            '13760ecc1523a9acd030df34e6a90edcd2971271766c8e159c9e66341a9168c4'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b')
 
 pkgver() {
 
-	cd "${_appname}"
+	cd "${_appname}" > /dev/null 2>&1
 
 	printf "'%s.r%s.%s'" \
-		"$(grep 'AC_INIT' configure.ac | grep -o '[0-9]\(\.[0-9]\+\)\+')" \
+		"$(grep 'AC_INIT' 'configure.ac' | grep -o '[0-9]\(\.[0-9]\+\)\+')" \
 		"$(git rev-list --count HEAD)" \
 		"$(git rev-parse --short HEAD)"
 
@@ -77,7 +79,10 @@ package() {
 	make DESTDIR="${pkgdir}" -C contrib install
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
-	install -Dm644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}-system.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+
+	install -dm755 "${pkgdir}/usr/lib/systemd/user"
+	install -Dm0644 "${srcdir}/${_appname}-user.service" "${pkgdir}/usr/lib/systemd/user/${_appname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
