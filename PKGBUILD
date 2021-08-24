@@ -15,7 +15,7 @@ _sourcedir=(".")
 package() {
   local dataopts='--mode 0644 -D --target-directory'
   local binopts='--mode 0755 -D --target-directory'
-  local bindir="$pkgdir/usr/local/bin"
+  local bindir="$pkgdir/usr/bin"
   local shrdir="$pkgdir/usr/share"
   local licdir="$shrdir/licenses/$pkgname"
   local docdir="$shrdir/doc/$pkgname"
