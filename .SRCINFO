@@ -1,6 +1,6 @@
 pkgbase = gnudatalanguage
 	pkgdesc = An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)
-	pkgver = 1.0.0_rc.3
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/gnudatalanguage/gdl
 	arch = i686
@@ -20,13 +20,9 @@ pkgbase = gnudatalanguage
 	depends = shapelib
 	depends = udunits
 	depends = wxgtk2
-	source = gnudatalanguage-1.0.0_rc.3.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v1.0.0-rc.3.tar.gz
+	source = gnudatalanguage-1.0.0.tar.gz::https://github.com/gnudatalanguage/gdl/archive/v1.0.0.tar.gz
 	source = gdl.profile
-	source = gdl-mallinfo2.patch
-	source = gdl-tiff.patch
-	sha512sums = 3fde22c7e709b9cdc72a23d2317c043037379c7903418211a699c7e5caa2ed17e78e32e6d2f9b4aa89200e729fc21555821140dfdd58a5a636a858e2841f6335
+	sha512sums = 05de98725b63e553ad103d24e36994c5be948c9a05bfb092325d7fb049a852f10381445992ff4c158e98c07ace31e38ee78ba23b70f3b4e38f13e497dac330ce
 	sha512sums = b3a3589d2ce8eb5d49c902aa9bc43df0a0fcc369d17deb060026d34fa821881a212ce6aa02edc7ea6c0476b2faacc7455e467af7b5baf672e2653b71b162190f
-	sha512sums = e57a1d75039ac7c0654fb03bd0c95b6efb7beb605ea0a303af964fe7408f5d9497abd408fabb38fdb1d8b8dff86c2beefec0bb16df399b39284ddb4e22672f68
-	sha512sums = d55b2970c9ddfb0b78790e7fa876bf28ebef9e936d56c77105572b85095337cb65c7b564515b42afeafe5fa03d8faa562183ecb3c04fe592f6775cce5d4662bc
 
 pkgname = gnudatalanguage
