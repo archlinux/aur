@@ -1,0 +1,14 @@
+pkgbase = aq
+	pkgdesc = Like jq, but for JSON, TOML & YAML
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rossmacarthur/aq
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	depends = jq
+	source = aq-0.2.0.tar.gz::https://github.com/rossmacarthur/aq/archive/0.2.0.tar.gz
+	b2sums = 1a9b725fe9898a63c2f76bf416e2ed2e98974e402d70dff82d91453479c8dddcbf7697ef5bbdd614d7308b579e1cf1028b6dbb6ed5449fc4b76d05da9e073016
+
+pkgname = aq
