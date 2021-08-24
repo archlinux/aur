@@ -1,14 +1,14 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='shd'
 pkgname="$_pkgname-git"
-pkgver='r26.166aa73'
-pkgrel='3'
+pkgver='0.1.2.r0.g1df83d0'
+pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info - git version'
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'aarch64')
 url="https://github.com/alttch/$_pkgname"
 license=('MIT')
-depends=('python' 'python-neotermcolor' 'python-pysmart' 'python-rapidtables')
-makedepends=('git' 'python-setuptools')
+depends=('smartmontools')
+makedepends=('cargo' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
@@ -16,18 +16,32 @@ sha256sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	_cargotarget="$CARCH-unknown-linux-musl"
+
+	if [ "$CARCH" = 'arm' ]; then
+		_cargotarget="${_cargotarget}eabihf"
+	fi
+
+	cargo fetch --locked --target "$_cargotarget"
+}
+
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
 }
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py build
+	export RUSTUP_TOOLCHAIN='stable'
+	export CARGO_TARGET_DIR='build'
+	cargo build --frozen --release --all-features
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm755 "build/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
