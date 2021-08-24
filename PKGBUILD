@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxo-cg-git
-pkgver=v1.1.6.r1.g62ad083
+pkgver=1.2.0.r0.g8fb5e5f
 pkgrel=1
 pkgdesc="ODL (Object Definition Language) Compiler/Generator"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amxo-cg.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
@@ -13,6 +13,7 @@ depends=(
 	'lib_amxo'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amxo-cg'
@@ -30,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -41,4 +42,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
