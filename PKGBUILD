@@ -1,7 +1,7 @@
 pkgname=terminus-font-gq2-ll2-td1
 _pkgname=terminus-font
-pkgver=4.48
-pkgrel=2
+pkgver=4.49.1
+pkgrel=1
 pkgdesc="Terminus patched with gq2, ll2, and td1."
 arch=('any')
 url="http://terminus-font.sourceforge.net/"
@@ -9,10 +9,10 @@ license=('GPL2' 'custom:OFL')
 makedepends=('xorg-bdftopcf' 'python')
 conflicts=('terminus-font')
 provides=('terminus-font')
-source=("https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-${pkgver%.1}/$_pkgname-$pkgver.tar.gz"
         fix-75-yes-terminus.patch)
-sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af'
-            'ddd86485cf6d54e020e36f1c38c56e8b21b57c23a5d76250e15c1d16fed9caa5')
+sha512sums=('2e3a99960c459a453b5879bebbebeb653f0a22060177bf75c67bbeb7d32cfe1acce9e74a88fdc42e299b6dc402e0708552487abd26e80e985c7d6059b0d445a8'
+            '6cd68262e92ef227f5018c4f3ddc9dd1c95dd74ce04ad2b0c7d24562bf5f5ced3f9500116b2ac0beb0f54f7efef40441cf46db23113d8529ce6dacf2dcd4c5f5')
 
 prepare() {
 
