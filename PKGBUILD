@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-auth_pam
-pkgver=1.5.1
-pkgrel=41
+pkgver=1.5.3
+pkgrel=1
 
 _modname=ngx_http_auth_pam_module
 
@@ -18,7 +18,7 @@ source=(
 	$_modname-critlog.patch::https://patch-diff.githubusercontent.com/raw/sto/ngx_http_auth_pam_module/pull/11.patch
 )
 
-sha256sums=('77676842919134af88a7b4bfca4470223e3a00d287d17c0dbdc9a114a685b6e7'
+sha256sums=('882018fea8d6955ab3fe294aafa8ebb1fdff4eac313c29583fef02c6de76fae7'
             '1a59787672cf9c6768cb77c31f19a870eaf556c7b28c8c22a22cf8a7013b93af')
 
 prepare() {
