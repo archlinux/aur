@@ -18,7 +18,7 @@ build() {
 	cd "${pkgname}-${_ver}"
 	mkdir build
 	cd build
-    cmake -DCMAKE_BUILD_TYPE=None -Wno-dev ..
+    cmake -DCMAKE_BUILD_TYPE=None -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr ..
     make
 
 	cd ../
