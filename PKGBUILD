@@ -9,6 +9,7 @@ pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) ba
 arch=('x86_64')
 makedepends=('cmake')
 depends=('root' 'qt5-webengine' 'hdf5')
+conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
