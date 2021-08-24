@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=gog-factorio
-pkgver=1.1.37
+pkgver=1.1.38
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="A game in which you build and maintain factories"
@@ -14,7 +14,7 @@ makedepends=('lgogdownloader')
 depends=('libxinerama' 'libxrandr' 'libxcursor' 'alsa-lib' 'libpulse' 'libglvnd')
 source=("factorio_${pkgver//./_}_40478.sh::gogdownloader://1238653230/en3installer0"
         "Factorio.desktop")
-sha512sums=('8fb28eab0d8e968d9c6676345b2fa3e884b4b1411f637c1eb5e5f5b11fa9c5e3f2341a579fa03b2fa3efacd0390fe2f77411318984545e1b712b6ad926cd9f0a'
+sha512sums=('395e36e198042096733bbd333aa313b912122c95f0d676a0b1f8ba6cab46bc3096c1c89d06a71f23426e0dcb084bc788eb76425c4247ea2af90eb4f289cea936'
             '32df74d21fdd19b70b3b81beb5b5735e82602c002e55eb40b77a365472f68294bbefbdf44c2fb6e6bfa1ff454f87751094506009d754a20697789f610cadb71a')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
