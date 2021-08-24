@@ -1,8 +1,8 @@
 pkgbase = brother-dcp9055cdn
 	pkgdesc = Brother CUPS and LPD driver for DCP-9055CDN
 	pkgver = 1.1.1
-	pkgrel = 7
-	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-9055CDN
+	pkgrel = 8
+	url = https://support.brother.com
 	arch = i686
 	arch = x86_64
 	license = custom:Brother
@@ -11,12 +11,11 @@ pkgbase = brother-dcp9055cdn
 	depends = psutils
 	depends = ghostscript
 	depends = cups
-	source = http://download.brother.com/welcome/dlf005571/dcp9055cdnlpr-1.1.1-5.i386.deb
-	source = http://download.brother.com/welcome/dlf005573/dcp9055cdncupswrapper-1.1.1-5.i386.deb
+	source = https://download.brother.com/welcome/dlf005571/dcp9055cdnlpr-1.1.1-5.i386.deb
+	source = https://download.brother.com/welcome/dlf005573/dcp9055cdncupswrapper-1.1.1-5.i386.deb
 	source = brlpdwrapperdcp9055cdn
 	md5sums = f9ffc1a38fcc64e1d7f82d13652a1f57
 	md5sums = b08a49bee644dac18229c2843c5349b2
 	md5sums = 2d368a9cbaeffbc7c9e24bcafe45b71e
 
 pkgname = brother-dcp9055cdn
-

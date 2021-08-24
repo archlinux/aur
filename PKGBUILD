@@ -2,11 +2,11 @@
 
 pkgname=brother-dcp9055cdn
 pkgver=1.1.1
-pkgrel=7
+pkgrel=8
 _pkgrel=5
 pkgdesc="Brother CUPS and LPD driver for DCP-9055CDN"
 arch=('i686' 'x86_64')
-url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html#DCP-9055CDN"
+url="https://support.brother.com"
 license=('custom:Brother' 'GPL')
 
 if [ "$(uname -m)" = "x86_64" ]; then
@@ -15,8 +15,8 @@ else
  depends=('psutils' 'ghostscript' 'cups')
 fi
 
-source=(http://download.brother.com/welcome/dlf005571/dcp9055cdnlpr-$pkgver-$_pkgrel.i386.deb
-        http://download.brother.com/welcome/dlf005573/dcp9055cdncupswrapper-$pkgver-$_pkgrel.i386.deb
+source=(https://download.brother.com/welcome/dlf005571/dcp9055cdnlpr-$pkgver-$_pkgrel.i386.deb
+        https://download.brother.com/welcome/dlf005573/dcp9055cdncupswrapper-$pkgver-$_pkgrel.i386.deb
         brlpdwrapperdcp9055cdn)
 
 md5sums=('f9ffc1a38fcc64e1d7f82d13652a1f57'
