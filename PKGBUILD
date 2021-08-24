@@ -1,16 +1,17 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=amxb-inspect-git
-pkgver=v1.0.6.r0.g048460d
+pkgver=1.0.6.r0.g048460d
 pkgrel=1
 pkgdesc="Ambiorix Backend inspector/validation tool"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/applications/amxb-inspect.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxb'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'amxb-inspect'
@@ -26,7 +27,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -37,4 +38,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
