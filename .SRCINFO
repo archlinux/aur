@@ -1,7 +1,7 @@
 pkgbase = btrfs-snapshots
 	pkgdesc = Manage collections of btrfs snapshots
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/jmcantrell/btrfs-snapshots
 	arch = any
 	license = GPL3

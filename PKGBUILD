@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshots
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage collections of btrfs snapshots"
 arch=('any')
 url="https://gitlab.com/jmcantrell/$pkgname"
@@ -25,6 +25,6 @@ prepare() {
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/$pkgname-v$pkgver"
     INSTALL_ROOT=$pkgdir/usr make install
 }
