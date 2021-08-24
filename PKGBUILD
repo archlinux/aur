@@ -2,7 +2,7 @@
 
 pkgname=python-exchange_calendars
 _pkgname=${pkgname#python-}
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc="Calendars for various securities exchanges"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/gerrymanoim/$_pkgname"
 license=('APACHE')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c25f2209b1c14a101287a057afa0ea8ee5b92015abdd13d0a6b66dca2faa8dd5')
+sha256sums=('d5178a3c49b5778e2ebee554e9c0b4a73f126650f1313e881a682013b0d8beb7')
 
 build() {
   cd $_pkgname-$pkgver

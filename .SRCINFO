@@ -1,6 +1,6 @@
 pkgbase = python-exchange_calendars
 	pkgdesc = Calendars for various securities exchanges
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/gerrymanoim/exchange_calendars
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-exchange_calendars
 	depends = python-pytz
 	depends = python-pyluach
 	depends = python-toolz
-	source = https://files.pythonhosted.org/packages/source/e/exchange_calendars/exchange_calendars-3.2.tar.gz
-	sha256sums = c25f2209b1c14a101287a057afa0ea8ee5b92015abdd13d0a6b66dca2faa8dd5
+	source = https://files.pythonhosted.org/packages/source/e/exchange_calendars/exchange_calendars-3.3.tar.gz
+	sha256sums = d5178a3c49b5778e2ebee554e9c0b4a73f126650f1313e881a682013b0d8beb7
 
 pkgname = python-exchange_calendars
