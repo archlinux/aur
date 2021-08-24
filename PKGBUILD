@@ -1,17 +1,18 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxj-git
-pkgver=v0.3.23.r0.g6724cc7
+pkgver=0.3.24.r0.g5b82426
 pkgrel=1
 pkgdesc="JSON Reader/generation - JSON string variant"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxj.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
 	'yajl'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'lib_amxj'
@@ -27,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -38,4 +39,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
