@@ -1,10 +1,11 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Padraic Fanning < fanninpm AT miamioh DOT edu >
+# Contributor: Jake <aur@ja-ke.tech>
 # Contributor: Ian MacKay <immackay0@gmail.com>
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=2.9.0
-pkgrel=4
+pkgver=2.9.2
+pkgrel=1
 _pkgver="${pkgver}-linux${pkgrel}"
 gitname="release-${_pkgver}"
 pkgdesc="GUI for managing Git and GitHub."
@@ -19,7 +20,7 @@ source=(
     https://github.com/shiftkey/desktop/releases/download/${gitname}/GitHubDesktop-linux-${_pkgver}.deb
     ${_pkgname}.desktop
 )
-sha256sums=('932cefbf34827e8eae693034675caa0148ebe00e69dceb88a5a550bfae165bb3'
+sha256sums=('f21b62e9566ad89409e2e0e1aeccd438af584b4567b2989c62a51ffe19b935f2'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
