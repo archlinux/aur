@@ -1,4 +1,4 @@
-# Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
+# Maintainer: Hydral <hydraldev@gmail.com>
 # Co-maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
 
 _jobId=1450728401 
