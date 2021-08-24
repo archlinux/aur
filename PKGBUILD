@@ -2,7 +2,7 @@
 pkgname=nxengine-evo
 pkgver=2.6.5.1
 _ver=2.6.5-1
-pkgrel=1
+pkgrel=2
 pkgdesc="A somewhat upgraded/refactored version of nxengine"
 arch=('i686' 'x86_64')
 url="https://github.com/isage/nxengine-evo"
