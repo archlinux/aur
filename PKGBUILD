@@ -1,5 +1,5 @@
 pkgname=subtitleedit
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="A subtitle editor"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "subtitleedit.desktop"
 )
 sha256sums=(
-    '3874f0e2b866c63e65c5a9665a0307721dd15c9d952ee887b7b02730ac271fde'
+    'a337fcc34f7df3a1a4912b088cd9d2b3903edfb5a03996c4e731d17861e2f4c1'
     '7efc7a341ee949f5b3742741a1431c0af7ab14aa1d7f35a654f6ec2eb4fc9457'
     'f1e7b1ef8116afaaac61a6ddd871fb6ec349ab729d068f1c3195d0fbabafc2bc'
     '32977a0b82619f04e1ce904ac9c02ced410aa6cb563e86e90ce46225dc63adee'
@@ -29,6 +29,8 @@ noextract=("SE${pkgver//./}.zip")
 package() {
     install -d "$pkgdir/usr/share/subtitleedit"
     unzip "$srcdir/SE${pkgver//./}.zip" -d "$pkgdir/usr/share/subtitleedit"
+    rm -r "$pkgdir/usr/share/subtitleedit/Tesseract302"
+    rm "$pkgdir/usr/share/subtitleedit/Hunspell"{x86,x64}.dll
     touch "$pkgdir/usr/share/subtitleedit/.PACKAGE-MANAGER"
 
     install -Dm755 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
