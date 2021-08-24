@@ -10,6 +10,8 @@
 
 当前可以运行的程序参见**wine 专区**部分: https://www.ubuntukylin.com/applications/
 
+ukylin-wine 本身的问题以及希望支持更多的 windows 程序，请移步至官方论坛反馈： https://www.ubuntukylin.com/ukylin/forum.php?mod=viewthread&tid=194410
+
 ## 安装
 
 直接通过 AUR 仓库安装:

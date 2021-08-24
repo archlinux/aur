@@ -3,7 +3,8 @@ post_install() {
   systemctl enable /etc/systemd/system/run-wine.mount
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/run-wine.conf 2>/dev/null
   # systemd-mount /etc/systemd/system/run-wine.mount
-  mount /usr/share/wine/wine.squashfs /run/wine
+  # Resolve: fchmod() of /run/wine failed: Read-only file system
+  # mount /usr/share/wine/wine.squashfs /run/wine
 
   chmod a+x /usr/bin/ukylin-wine
   chmod a+x /usr/bin/wine-mount
