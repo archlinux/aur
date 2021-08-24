@@ -1,26 +1,39 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='shd'
-pkgver='0.0.12'
-_commit='166aa7346317a80e7cca6a35abb77d692a0f80d9'
-pkgrel='3'
+pkgver='0.1.2'
+pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info'
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'aarch64')
 url="https://github.com/alttch/$pkgname"
 license=('MIT')
-depends=('python' 'python-neotermcolor' 'python-pysmart' 'python-rapidtables')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('4321bb29f17c2d81a9f507da2575dac18ce5e8a02026e8c58c77e6c1e140e0e0')
+depends=('smartmontools')
+makedepends=('cargo')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('67e39ba1a1aff285bbd5d2eead8d15da7ab657a39231263eadaebc7423397d44')
 
-_sourcedirectory="$pkgname-$_commit"
+_sourcedirectory="$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	_cargotarget="$CARCH-unknown-linux-musl"
+
+	if [ "$CARCH" = 'arm' ]; then
+		_cargotarget="${_cargotarget}eabihf"
+	fi
+
+	cargo fetch --locked --target "$_cargotarget"
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py build
+	export RUSTUP_TOOLCHAIN='stable'
+	export CARGO_TARGET_DIR='build'
+	cargo build --frozen --release --all-features
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm755 "build/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
