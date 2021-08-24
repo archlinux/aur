@@ -1,0 +1,18 @@
+pkgbase = haskell-composition
+	pkgdesc = Combinators for unorthodox function composition
+	pkgver = 1.0.2.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/composition
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = custom:BSD-3-Clause
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/composition/1.0.2.2/composition-1.0.2.2.tar.gz
+	cksums = 807141460
+	sha256sums = b50bf7a96f1fb56b1598f98e448c37963e8f457e424afbb0fd562eacea44d42e
+	b2sums = 49cffc72401806ab91b49e989e9d7ba87ff2f893bacaa4138d8cb254b89b4a3eff6823bf12e221b8535b35deca18faa74654e1d3da748227c5ece7ace7809564
+
+pkgname = haskell-composition
