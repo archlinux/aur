@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=netscripts-atzlinux-git
-pkgver=1.0.5.r1.g1634b9f
+pkgver=1.0.6.r0.g57a2ee9
 pkgrel=1
 pkgdesc="some simple network scripts no need any parameter"
 arch=("any")
