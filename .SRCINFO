@@ -1,14 +1,15 @@
 pkgbase = i3pystatus-git
 	pkgdesc = i3status replacement written in python for the i3 window manager
 	pkgver = 3.35.r370.gac71437
-	pkgrel = 1
-	url = https://github.com/enkore/i3pystatus.git
-	arch = i686
-	arch = x86_64
+	pkgrel = 2
+	url = https://github.com/enkore/i3pystatus
+	arch = any
 	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-mock
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.6
 	optdepends = python-pyalsaaudio: For the alsa module.,
 	optdepends = python-dbus: For the thunderbird or now_playing modules.,
 	optdepends = python-psutil: For the mem, membar or network_traffic modules.,
@@ -21,7 +22,7 @@ pkgbase = i3pystatus-git
 	optdepends = python-colour: For the pulseaudio module.
 	provides = i3pystatus
 	conflicts = i3pystatus
-	source = git+https://github.com/enkore/i3pystatus.git
+	source = i3pystatus-git::git+https://github.com/enkore/i3pystatus
 	md5sums = SKIP
 
 pkgname = i3pystatus-git
