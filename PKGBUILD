@@ -13,12 +13,32 @@ conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-
-sha256sums=('12312bc346f911c27cfd3b13e7b66e6e4c5f596029d339b5a6a1e9cd7cc70775')
+md5sums=('c30e2d9e1108550e6a0330a81e9a3369')
 
 prepare() {
 
   unset GO4SYS
+
+  #
+  # Most files created at the end of CMakeLists.txt end up in weird locations.
+  #           for now it works... this will be fixed in a new release
+  #
+  # # ================== Copy files, create old support files ==========
+  #
+  # /usr/Go4License.txt --> /usr/share/licenses/go4/Go4License.txt
+  # /usr/README.txt     --> /usr/share/doc/{pkg}
+  # /usr/CHANGES.txt    --> /usr/share/doc/{pkg}
+  #
+  # /usr/go4login        --> /usr/bin/go4login
+  #
+  #
+  # /usr/etc/   -->   /etc/{pkg}
+  # /usr/docs/  -->   /usr/share/doc/{pkg}
+  # /usr/icons  -->   /usr/share/{pkg}/icons
+  # /usr/html   -->   /usr/share/doc/{pkg}/html
+  # /usr/macros -->   /usr/share/{pkg}/macros
+  # /usr/python -->   /usr/share/{pkg}/python
+  #
 
 }
 
@@ -67,7 +87,7 @@ package() {
 
   cat <<- EOF > ${srcdir}/go4.sh
   # source go4login script
-  source /usr/bin/go4login
+  source /usr/go4login
 
   # If ROOT_INCLUDE_PATH already exists, then add Go4 to it, otherwise do nothing
   export ROOT_INCLUDE_PATH=\${ROOT_INCLUDE_PATH:+\$ROOT_INCLUDE_PATH:/usr/include/go4}
