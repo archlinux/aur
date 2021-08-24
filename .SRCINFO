@@ -1,0 +1,19 @@
+pkgbase = lalezar
+	pkgdesc = A multi-script display typeface for popular culture.
+	pkgver = 1.003
+	pkgrel = 1
+	url = https://github.com/BornaIz/Lalezar
+	arch = any
+	license = OFL
+	source = lalezar-1.003.tar.gz::https://github.com/BornaIz/Lalezar/archive/refs/tags/1.003.tar.gz
+	sha256sums = 2499e68992cc1aa74dcc758031a9e5eced40d38a3af8ff3d0751c5863ec73371
+
+pkgname = eot-lalezar
+
+pkgname = ttf-lalezar
+
+pkgname = otf-lalezar
+
+pkgname = woff-lalezar
+
+pkgname = woff2-lalezar
