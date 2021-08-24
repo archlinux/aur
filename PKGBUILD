@@ -3,7 +3,7 @@ pkgname=mod_sahtrace-git
 pkgver=0.0.9.r0.g0656055
 pkgrel=1
 pkgdesc="Ambiorix module for sahtrace"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/modules/mod-sahtrace.git"
 license=(BSD)
 
