@@ -3,12 +3,14 @@
 _pkgname="dofi"
 pkgname="dofi-manager-git"
 pkgver=0.1.3.r0.gcce1d91
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dotfile manager"
 arch=("x86_64")
 makedepends=("cargo" "git")
 url="https://github.com/akiirui/dofi"
 license=("MIT")
+provides=("dofi-manager")
+conflicts=("dofi-manager")
 source=("git+https://github.com/akiirui/dofi")
 b2sums=("SKIP")
 
