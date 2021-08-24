@@ -4,6 +4,12 @@ pre_upgrade() {
   rm -f /tmp/batterycm*
 }
 
+pre_remove() {
+  echo :: Removing some systemd services...
+  batterycm-switcher noauto
+  batterycm-switcher disable
+}
+
 post_remove() {
   echo :: Removing runtime tmp files...
   rm -f /var/tmp/batterycm-switcher.log

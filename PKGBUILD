@@ -1,7 +1,7 @@
 # Maintainer: Supdrewin <https://github.com/supdrewin>
 
 pkgname=batterycm-switcher
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="An advanced Ideapad Laptops conservation mode adjustment tool"
 arch=('any')
@@ -14,11 +14,11 @@ makedepends=('git' 'gzip' 'make' 'xz')
 optdepends=(
   'acpid: For enable use function key to switch mode'
   'espeak: For enable show status using voice'
-  'systemd: For optional function key backend service'
+  'systemd: For enable running backend services'
 )
 
-provides=('batterycm' 'batterycm-switcher')
-conflicts=('batterycm' 'batterycm-switcher')
+provides=('batterycm' 'batterycm-switcher' 'batterycm-charger')
+conflicts=('batterycm' 'batterycm-switcher' 'batterycm-charger')
 
 install=batterycm.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
