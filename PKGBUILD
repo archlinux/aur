@@ -12,9 +12,9 @@ license=('GPL3')
 depends=('bash' 'coreutils' 'man-db' 'polkit' 'vim')
 makedepends=('git' 'gzip' 'make' 'xz')
 optdepends=(
-  'acpid: For enable use hotkey to switch mode'
-  'espeak: For enable show status with sound'
-  'systemd: For optional startup hotkey service'
+  'acpid: For enable use function key to switch mode'
+  'espeak: For enable show status using voice'
+  'systemd: For optional function key backend service'
 )
 
 provides=('batterycm' 'batterycm-switcher')
