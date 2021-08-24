@@ -1,15 +1,16 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxc-git
-pkgver=v1.2.1.r0.g6b6e7b0
+pkgver=1.2.2.r0.g97499e2
 pkgrel=1
 pkgdesc="Generic C-implementation of data containers"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/libraries/libamxc"
-license=('MIT')
+license=(BSD)
 
 depends=(
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'lib_amxc'
@@ -25,7 +26,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -36,4 +37,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
