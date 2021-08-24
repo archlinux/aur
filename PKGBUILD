@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=emcee
 pkgname=python-${_pyname}-doc
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Documentation for Python emcee"
 arch=('i686' 'x86_64')
@@ -9,15 +9,13 @@ url="http://emcee.readthedocs.io"
 license=('MIT')
 makedepends=("python-${_pyname}=${pkgver}" 'python-sphinx' 'python-sphinx_rtd_theme' 'jupyter-nbconvert' 'pandoc' 'texlive-core' 'texlive-science' 'python-myst-nb' 'python-sphinx-book-theme')
 source=("https://github.com/dfm/emcee/archive/v${pkgver}.tar.gz")
-#       'fix_testimonials_duplicate.patch')
-md5sums=('e023d2b76790f73d6c9c7f54b485a6ec')
-#        '5e88556560ab075f8331465012b8286a')
+md5sums=('8e3f039154fdca19c235970db1a316f7')
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    patch -Np1 -i "${srcdir}/fix_testimonials_duplicate.patch"
-#}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+
+    sed -i "/myst_nb/a \    \'IPython\.sphinxext\.ipython_console_highlighting\'," conf.py
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
