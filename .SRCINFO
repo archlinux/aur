@@ -11,6 +11,7 @@ pkgbase = eclipse-java
 	depends = unzip
 	provides = eclipse=4.20-1
 	conflicts = eclipse
+	backup = usr/lib/eclipse/eclipse.ini
 	source = eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-java-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	sha512sums = 4047a3b89d577689ad5e78959d85843638d04145af4c24173d0567cbf7642d2e5faf4d919b8457203fedd68827b6ad3ddacfe1eba6cc997755b0ab5e05bd7179
