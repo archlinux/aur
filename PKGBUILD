@@ -3,14 +3,14 @@
 _pkgname=cryptocam-companion
 pkgname=$_pkgname-appimage
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 _srcpkgname=Cryptocam%20Companion
 _srcjobid=1246114289
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='Companion for Cryptocam, the encrypted android camera app'
 arch=('x86_64')
-url='https://github.com/zaps166/QMPlay2'
-license=('LGPL')
+url='https://gitlab.com/cryptocam/cryptocam-companion'
+license=('GPL3')
 depends=('appimagelauncher')
 provides=("$_pkgname")
 source=($_appimage::https://gitlab.com/cryptocam/cryptocam-companion/-/jobs/$_srcjobid/artifacts/raw/$_srcpkgname-$pkgver-x86_64.AppImage?inline=false)

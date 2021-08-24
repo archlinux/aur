@@ -1,10 +1,10 @@
 pkgbase = cryptocam-companion-appimage
 	pkgdesc = Companion for Cryptocam, the encrypted android camera app
 	pkgver = 0.2.3
-	pkgrel = 1
-	url = https://github.com/zaps166/QMPlay2
+	pkgrel = 2
+	url = https://gitlab.com/cryptocam/cryptocam-companion
 	arch = x86_64
-	license = LGPL
+	license = GPL3
 	depends = appimagelauncher
 	provides = cryptocam-companion
 	noextract = cryptocam-companion-0.2.3.AppImage
