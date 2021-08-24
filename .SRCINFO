@@ -1,0 +1,16 @@
+pkgbase = cmdpxl-git
+	pkgdesc = A totally practical command-line image editor
+	pkgver = r53.a0dd828
+	pkgrel = 1
+	url = https://github.com/knosmos/cmdpxl
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = python-setuptools
+	depends = python-opencv
+	depends = python-numpy
+	depends = python-click
+	source = git+https://github.com/knosmos/cmdpxl.git
+	md5sums = SKIP
+
+pkgname = cmdpxl-git
