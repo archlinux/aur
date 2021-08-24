@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=elfcat
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Generates HTML files from ELF binaries"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/ruslashev/elfcat"
 license=('ZLIB')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('a91f8277d0333615704bca4ff163cabd527d2a7a669aff3da72ec54059f9c882a94e2b41c9b2759e25eac752b27074c98bccc351d3f402126b723a3d4e229ef7')
+b2sums=('b5328fa2a19f97b4d77eb42da6d9407318e8a5ff17cb1c6b34a5b4d3fb1bf3c673f5afec50579bb1b4acad15d58f2fe63bc08b1bd3d733100836c8bc684a020c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
@@ -25,11 +25,11 @@ package() {
 	cd "$pkgname-$pkgver"
 
   # binary
-  install -vDm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 
   # documentation
-  install -vDm644 readme.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
 
   # license
-  install -vDm644 license -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" license
 }
