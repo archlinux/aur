@@ -1,8 +1,9 @@
+# Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 # Contributor: SSF <punx69 at gmx dot net>
 
 pkgname=thinkfan-git
 pkgver=1.0_beta3.r35.1aa6ea0
-pkgrel=1
+pkgrel=2
 pkgdesc="The minimalist fan control program"
 arch=('i686' 'x86_64')
 url="https://github.com/vmatare/thinkfan/"
@@ -14,6 +15,8 @@ provides=("thinkfan=$pkgver")
 conflicts=("thinkfan")
 source=("git+https://github.com/vmatare/thinkfan.git")
 md5sums=('SKIP')
+
+backup=(etc/systemd/system/thinkfan.service.d/override.conf)
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
