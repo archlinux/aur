@@ -1,0 +1,20 @@
+pkgbase = emacs-flycheck-pycheckers
+	pkgdesc = Multiple syntax checker for Python in Emacs, using Flycheck.
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://github.com/msherry/flycheck-pycheckers
+	arch = any
+	license = GPL
+	depends = emacs
+	depends = flycheck
+	optdepends = python-pylint: pylint checker
+	optdepends = flake8: flake8 checker
+	optdepends = autopep8: pep8 checker
+	optdepends = python-pyflakes: pyflakes checker
+	optdepends = mypy: mypy checker
+	optdepends = bandit: bandit checker
+	source = emacs-flycheck-pycheckers-0.15.tar.gz::https://github.com/msherry/flycheck-pycheckers/archive/refs/tags/0.15.tar.gz
+	sha512sums = 74bf24f228167f7fafa4d3beacf7b7a226468029d8667b8b9a5fdb496cfb34587fc499a30b596c641b23adbb12ac1507be115eedc27b6b1e78a9c8609a3b33e4
+	b2sums = 7fc54c35bf71a63bcb9640f1e46303c9e070c1eb66c0644edf7f9183ad5f546df82ef2038a57c6a041ac0aa0d78cef432364e6223e3c57f8aa1935631b2b5cab
+
+pkgname = emacs-flycheck-pycheckers
