@@ -4,18 +4,18 @@
 _pkgname=todoist
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
 license=('custom:Commercial')
-depends=('zlib')
+depends=('zlib' 'fuse')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://electron-dl.todoist.com/linux/Todoist-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('8e3c853cf0bac9b2312e14e970e0f56ac700212a445a0995d542897d4e93c9d0')
+sha256sums_x86_64=('13f0767e89ffdbbbcb2fb18751ae7fbae80e035eb2cf55b41b1592e8bcab98b0')
 
 prepare() {
     chmod +x "${_appimage}"
