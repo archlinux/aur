@@ -11,6 +11,8 @@ pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
 license=(GPL2)
+provides=(linux-hardened)
+conflicts=(linux-hardened)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
