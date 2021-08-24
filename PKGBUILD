@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="http://datastax.github.io/cpp-driver/"
 license=('Apache')
 depends=('libuv' 'openssl' 'zlib')
-makedepends=('libuv' 'pkg-config')
+makedepends=('libuv' 'pkg-config' 'cmake')
 source=("https://codeload.github.com/datastax/${_pkgname}/tar.gz/${pkgver}")
 
 build() {
