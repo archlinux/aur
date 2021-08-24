@@ -1,6 +1,6 @@
 #Maintainer: james@stampatron.com
 pkgname=daggerfall-unity-aur-bin
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="The Elder Scrolls: Daggerfall rebuilt using the unity engine"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=(0b312ea87a391da827da5296a59f6c19412a408d497ce06bbe68b45be98c3bcb
   1015b75af1876313bf8727cc57dc3c033e82b0904ee623a6944c333d6e4de1ae
   f8c7e4de325a5a25add4b2404cfdaa59f490a7cc43c89f4b72ed12db66e52ff5
   a6a45d321dda7b98484dbe38099d8f697c3d25e570a7bfbcdd975c206cadef2f
-  8a5ca0659f8dca9ed6fdfec0b4b030eb777f07f5909522f62ca11f542e3204c6
+  d7347b88975a5332a9d7ce1a507ac9ea0373f936e1b618cd9e48d512486d9974
 )
 
 ###Package Variables###
