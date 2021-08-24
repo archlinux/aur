@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Tox poetry plugin"
 url="https://github.com/tkukushkin/tox-poetry"
 depends=('python-tox')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
