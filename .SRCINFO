@@ -1,0 +1,18 @@
+pkgbase = xgcom-git
+	pkgdesc = A gui tools to help guys develop series port, like minicom.
+	pkgver = v1.0.0.r4.ge6bca9a
+	pkgrel = 1
+	url = https://github.com/helight/xgcom
+	arch = any
+	license = GPL2
+	makedepends = make
+	makedepends = automake
+	depends = glib2
+	depends = vte3
+	depends = gtk2
+	conflicts = xgcom
+	options = !strip
+	source = xgcom::git+https://hub.fastgit.org/helight/xgcom.git
+	sha256sums = SKIP
+
+pkgname = xgcom-git
