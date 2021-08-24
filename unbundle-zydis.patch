@@ -1,12 +1,11 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -136,6 +136,10 @@ if (DYNARMIC_TESTS_USE_UNICORN)
+@@ -137,6 +137,9 @@ if (DYNARMIC_TESTS_USE_UNICORN)
      find_package(Unicorn REQUIRED)
  endif()
  
-+find_library(ZYDIS_LIBRARY Zydis REQUIRED)
-+add_library(Zydis UNKNOWN IMPORTED)
-+set_property(TARGET Zydis PROPERTY IMPORTED_LOCATION "${ZYDIS_LIBRARY}")
++find_package(Zydis REQUIRED)
++add_library(Zydis ALIAS Zydis::Zydis)
 +
  # Pull in externals CMakeLists for libs where available
  add_subdirectory(externals)

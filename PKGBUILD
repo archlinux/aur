@@ -2,7 +2,7 @@
 _pkgname=dynarmic
 pkgname=$_pkgname-git
 pkgver=5.r113.g517e35f8
-pkgrel=1
+pkgrel=2
 pkgdesc='An ARM dynamic recompiler'
 arch=('x86_64')
 url="https://github.com/MerryMage/$_pkgname"
@@ -14,7 +14,7 @@ makedepends=(
 	'git'
 	'robin-map>=0.6.2'
 	'xbyak>=5.995.r3'
-	'zydis>=3.1'
+	'zydis>=3.1.0.r78'
 )
 checkdepends=('catch2>=2.13.1')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
@@ -35,7 +35,7 @@ b2sums=(
 	'4bcf176ce2a82cbaf54f9eb0b463844e77c099e5824fb9d994817dd8a5b75ea1abebf17da4c01be14042ce36564d8df5836e9a02a5cbe92bb95d7232263123b4'
 	'd474ec20f085832c73de96b19a06b5d8018d6fb429ea054a9e026c1d56f12035b83bc3b980487825ecb473b674a7b22f2b92733bdb53d71dcb1528318f2a5d80'
 	'92d760e22bebe7d07bee8fdcc4d142ae8bc11e73c1d6e89e3964d07a1618c3ad4516eeaa262b6f7046a8b483c4b56d2e509b170fe9acf48eea7523210c0e9fa7'
-	'1e6ff855e427df6c7f618c9507af5a267b26da54c9f154daa000c1da2797b963a3604a7a9e6d7b32395fc9084b5c49f425814ae169e45d4c4b08f3f34d1cf597'
+	'df66b3be7d940ed9b6a9ab6e387e9b239bb49c958d2f255f68861c39a5eea48113c4a6faad10553876f44178678f188c7db97d2db390aaacbacd76ea1336ac7e'
 )
 
 pkgver() {
