@@ -1,13 +1,13 @@
 pkgbase = python-tox-poetry
 	pkgdesc = Tox poetry plugin
-	pkgver = 0.3.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/tkukushkin/tox-poetry
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-tox
-	source = https://files.pythonhosted.org/packages/source/t/tox-poetry/tox-poetry-0.3.0.tar.gz
-	md5sums = 1e892b124a4d16d0ab520c3336c7214f
+	source = https://files.pythonhosted.org/packages/source/t/tox-poetry/tox-poetry-0.4.1.tar.gz
+	md5sums = dc58c33a370264b825b1e7e6936cb43b
 
 pkgname = python-tox-poetry
