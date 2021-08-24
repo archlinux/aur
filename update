@@ -45,6 +45,7 @@ else
   makepkg -rs
   if ! ls *.zst &> /dev/null ; then
     echo "Package creation failure"
+    sed -i "s/pkgver=.*/pkgver=INVALID/" PKGBUILD
     exit 2
   fi
   makepkg --printsrcinfo > .SRCINFO

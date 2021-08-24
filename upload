@@ -14,10 +14,18 @@ done
 SCRIPT_HOME=`dirname "$PRG"`
 
 $SCRIPT_HOME/update
-if [ "$?" -eq 1 ]; then
+EXIT_CODE=$?
+if [ $EXIT_CODE -eq 0 ]; then
+  echo "Package is already up to date"
+  exit 0
+elif [ $EXIT_CODE -eq 1 ]; then
+  set -e
   echo "Updating Git"
   cd $SCRIPT_HOME
   ver="$(grep pkgver= PKGBUILD | sed 's/.*=//g')"
   git commit -a -m "Update to $ver"
   git push
+elif [ $EXIT_CODE -eq 2 ]; then
+  echo "update script failed with exit code 2"
+  exit 2
 fi
