@@ -4,11 +4,11 @@
 pkgbase=python-emcee
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Kick ass affine-invariant ensemble MCMC sampling"
 arch=('i686' 'x86_64')
-url="http://emcee.readthedocs.io/"
+url="http://emcee.readthedocs.io"
 depends=('python-numpy')
 optdepends=('python-tqdm: For progress bars'
             'python-h5py: For HDF5 backend'
@@ -17,7 +17,7 @@ license=('MIT')
 makedepends=('python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest' 'python-scipy' 'python-h5py')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('313d2be5d1dd59a56eacc069ff79a50a')
+md5sums=('028f3d90649e1b80f642f39a7ca943b5')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
