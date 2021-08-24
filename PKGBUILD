@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=zydis
 pkgname=$_pkgname-git
-pkgver=3.1.0.r75.g6a17c48
+pkgver=3.1.0.r78.g8080ae5
 pkgrel=1
 pkgdesc='Fast and lightweight x86/x86-64 disassembler library'
 arch=('x86_64')
@@ -48,6 +48,4 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	DESTDIR="$pkgdir" cmake --install build/zycore
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
-	# remove leftover files
-	rm -r "$pkgdir"/usr/{cmake,lib/libZycore.a}
 }
