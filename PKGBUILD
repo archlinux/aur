@@ -2,7 +2,7 @@
 # Maintainer: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
-pkgver=0.1.120
+pkgver=0.1.122
 pkgrel=1
 pkgdesc='Modern, native, and friendly GUI tool for relational databases (Alpha)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtksourceview3' 'libgee' 'gnome-keyring')
 source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb")
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            '6acf250740b2d83b8d7d43902fa65c9f8dc5897bfa15e59d754b3275440481d9')
+            '64fd0e146f391cbe48eb35ac05a1cbde83fd76b456b21c0414532e6959c081c2')
 
 prepare() {
     tar -xf "${srcdir}/data.tar.xz"
