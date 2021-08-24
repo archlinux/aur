@@ -23,6 +23,8 @@ build() {
 
   if [[ "$CARCH" == "armv7h" ]]; then
     _arch=armv7
+  elif [[ "$CARCH" == "aarch64" ]]; then
+    _arch=armv8
   elif [[ "$CARCH" == "i686" ]]; then
     _arch=x86-32
   elif grep -wq bmi2 /proc/cpuinfo; then
