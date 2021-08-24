@@ -1,16 +1,16 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=runiq
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="An efficient way to filter duplicate lines from input, à la uniq"
-url="https://github.com/whitfin/runiq"
+url="https://crates.io/crates/runiq"
 depends=('gcc-libs')
 makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a72c032e2e382f10764793996ce968022cb4ea3bc15229e92fc7394d2523f843')
+source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('9842e4a6356a5dc51ec902a16aa71f18a1c32f9de9e0c874efe16c88dcb86747')
 
 build() {
   cd "$pkgname-$pkgver"
