@@ -1,0 +1,16 @@
+pkgbase = sheldon
+	pkgdesc = A fast and configurable shell plugin manager
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://sheldon.cli.rs
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = mdbook-linkcheck
+	depends = curl
+	source = git+https://github.com/rossmacarthur/sheldon.git#commit=34a71135a1aa097da6fedde1b16a0ae222244a46
+	b2sums = SKIP
+
+pkgname = sheldon
