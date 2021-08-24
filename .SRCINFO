@@ -8,6 +8,7 @@ pkgbase = cassandra-cpp-driver
 	license = Apache
 	makedepends = libuv
 	makedepends = pkg-config
+	makedepends = cmake
 	depends = libuv
 	depends = openssl
 	depends = zlib
