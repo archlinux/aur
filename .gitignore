@@ -1,0 +1,4 @@
+UltraStar-Manager/
+pkg/
+src/
+*.pkg.tar.zst
