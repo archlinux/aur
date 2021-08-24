@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 91.0.1
+	pkgver = 91.0.2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -43,13 +43,13 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=91.0.1
+	provides = firefox=91.0.2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/91.0.1/source/firefox-91.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/91.0.1/source/firefox-91.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/91.0.2/source/firefox-91.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/91.0.2/source/firefox-91.0.2.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
 	source = identity-icons-brand.svg
@@ -57,7 +57,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = b95854ec9cb3e4409e5a1cf203c2b228146c6e3f9f3240d304cecec6b256f962
+	sha256sums = 23523af27631e24dd7dbab8429bcd0d828133e9d32b7ab343495c6e15912f6b5
 	sha256sums = SKIP
 	sha256sums = 138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
