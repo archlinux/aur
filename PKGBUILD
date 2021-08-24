@@ -1,7 +1,7 @@
 # Maintainer: Akatsuki Rui <akiirui@outlook.com>
 
 pkgname="mpv-handler"
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="Play website videos and songs with mpv & youtube-dl."
 arch=("x86_64")
@@ -10,7 +10,7 @@ makedepends=("cargo" "git")
 url="https://github.com/akiirui/mpv-handler/"
 license=("MIT")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akiirui/mpv-handler/archive/v$pkgver.tar.gz")
-b2sums=('a399b242d303de061ef34360aa772e80fb1b52efb33db6797dfbe3a2ec1d9b39649b457864cf7711a7a9567f296e484fb2a48848df738e848086ea5afce9fc04')
+b2sums=('f2757d97fefd09d8209a9aca8d0dd4c8d026a18adbad5050cee1b8cf161aad7e8e63e091591863ea95e6b0c9fd9c559d9a8e2b01e397397d353ffa583b875f72')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
