@@ -1,6 +1,6 @@
 pkgbase = animdl-git
 	pkgdesc = A highly efficient anime downloader and streamer
-	pkgver = 1.3.4+44+g04387e9
+	pkgver = 1.3.11.r6.aee5b25
 	pkgrel = 1
 	url = https://github.com/justfoolingaround/animdl
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = animdl-git
 	depends = python-click
 	depends = python-httpx
 	depends = python-lxml
+	depends = python-yarl
 	depends = python-tqdm
 	depends = python-pycryptodomex
 	optdepends = mpv: stream anime
