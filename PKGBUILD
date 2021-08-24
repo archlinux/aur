@@ -1,4 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Jonathon Fernyhough <jonathon + m2x + dev>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
@@ -6,11 +7,11 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 pkgname=(gcc8 gcc8-libs gcc8-fortran)
-pkgver=8.4.0
+pkgver=8.5.0
 _pkgver=8
 _majorver=${pkgver:0:1}
-_islver=0.21
-pkgrel=2
+_islver=0.24
+pkgrel=1
 pkgdesc='The GNU Compiler Collection (8.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -21,10 +22,10 @@ options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
 validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('e30a6e52d10e1f27ed55104ad233c30bd1e99cfb5ff98ab022dc941edd1b2dd4'
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
             'SKIP'
-            'd18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859')
+            'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95')
 
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 
