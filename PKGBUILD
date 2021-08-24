@@ -20,6 +20,8 @@ source=("$_srcfilename::https://www.eclipse.org/downloads/download.php?file=/tec
 sha512sums=('0e5251f74222deda86a5340c10c4d7c9b56efa3fe19ef82f1aa7515ca6721a8c70b8aa704ea6d1a22f04af5076549ef163c1d37c6b6fc15a5374b85aa15bd950'
             '910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78')
 
+backup=('usr/lib/eclipse/eclipse.ini')
+
 package() {
     install -d "${pkgdir}/usr/lib"
     cp -r "eclipse" "${pkgdir}/usr/lib/eclipse"

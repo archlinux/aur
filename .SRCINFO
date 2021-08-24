@@ -11,6 +11,7 @@ pkgbase = eclipse-php
 	depends = unzip
 	provides = eclipse=4.20-1
 	conflicts = eclipse
+	backup = usr/lib/eclipse/eclipse.ini
 	source = eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-php-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	sha512sums = 0e5251f74222deda86a5340c10c4d7c9b56efa3fe19ef82f1aa7515ca6721a8c70b8aa704ea6d1a22f04af5076549ef163c1d37c6b6fc15a5374b85aa15bd950
