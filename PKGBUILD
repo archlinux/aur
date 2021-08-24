@@ -9,7 +9,7 @@
 
 pkgname=anki-git
 pkgver=2.1.46
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -91,7 +91,7 @@ build() {
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
-    bazel build -c opt dist
+    ./scripts/build
 }
 
 package() {
