@@ -12,6 +12,8 @@ pkgbase = vignette-git
 	license = Non-Profit OSL
 	makedepends = git
 	makedepends = dotnet-sdk>=5
+	makedepends = dotnet-targeting-pack>=5
+	makedepends = netstandard-targeting-pack>=5
 	depends = dotnet-runtime>=5
 	depends = ffmpeg
 	depends = libgl

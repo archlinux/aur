@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/vignette-project/vignette'
 license=('Non-Profit OSL')
 depends=('dotnet-runtime>=5' 'ffmpeg' 'libgl')
-makedepends=('git' 'dotnet-sdk>=5')
+makedepends=('git' 'dotnet-sdk>=5' 'dotnet-targeting-pack>=5' 'netstandard-targeting-pack>=5')
 #provides=("${pkgname%-git}")
 #conflicts=("${pkgname%-git}")
 #options=('!strip')
