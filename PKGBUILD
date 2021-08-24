@@ -2,17 +2,17 @@
 
 pkgname='dhall-yaml-bin'
 pkgver=1.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Dhall to YAML compiler and a YAML to Dhall compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
 license=('GPL3')
 conflicts=('dhall-yaml')
 
-_dhall_ver=1.40.0
+_dhall_ver=1.40.1
 
 source=("dhall-yaml-$_dhall_ver-$pkgver.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-yaml-$pkgver-x86_64-linux.tar.bz2")
-sha256sums=('329b51b26fd93b8212822cba803fbc075db49c92c555f2e431fc5b8cf50aeccd')
+sha256sums=('d4d4856d51bda86ab8aca26bf225750fded9e5d12f298e34b91bfebc344061e3')
 
 package() {
   for f in dhall-to-yaml-ng yaml-to-dhall; do
