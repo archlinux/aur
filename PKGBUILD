@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.1.0.r3.fcc352a
+pkgver=0.1.0.r8.5b1a7ba
 pkgrel=1
 pkgdesc="Manage collections of btrfs snapshots"
 arch=('any')
@@ -24,7 +24,15 @@ check() {
     make -k check
 }
 
+prepare() {
+    local file
+    while read -r file; do
+        sed -i "\:/usr/local/etc:s:/usr/local::g" "$file"
+        sed -i "\:/usr/local:s:/usr/local:/usr:g" "$file"
+    done < <(find "$srcdir/${pkgname%-git}" -type f)
+}
+
 package() {
     cd "$srcdir/${pkgname%-git}"
-    PREFIX=$pkgdir make install
+    INSTALL_ROOT=$pkgdir/usr make install
 }
