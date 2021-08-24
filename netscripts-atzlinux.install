@@ -1,0 +1,20 @@
+post_install() {
+    echo -e "some simple network scripts no need any parameter"
+    echo -e "This package include the following simple network scirpts:"
+    echo -e "lip, lanip, localip - show LAN local IP of gateway device used by this machine"
+    echo -e "wip, wanip - show Internet public IP of this machine"
+    echo -e "gw - show gateway device name use by this machine"
+    echo -e "gwmac - show gateway device mac address"
+    echo -e "iftopg, iftopgw - display bandwidth usage on gateway device"
+    echo -e "iftopb, iftopbluetooth - display bandwidth usage on first bluetooth device"
+    echo -e "dns - show /etc/resolv.conf"
+    echo -e "This package is made by atzlinux."
+    echo -e "https://www.atzlinux.com"
+
+}
+
+post_upgrede() {
+    post_install
+
+}
+
