@@ -1,1 +1,3 @@
 au BufRead *access*.log setf httplog
+au BufRead *access*.log\(.1\|\) setf httplog
+au BufRead *access*.log.\(*.gz\|\) setf httplog
