@@ -8,8 +8,8 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.28
-pkgrel=2
+pkgver=1.2.29
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url='http://www.aseprite.org/'
@@ -25,7 +25,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v${pkgver}/Asepr
 'aseprite.desktop'
 )
 noextract=('Skia-Linux-Release-x64.zip')
-sha256sums=('dc26ae62d569f7f493ecb92a73b81a3687279edab62e2f9ac1c63b3deaafd36b'
+sha256sums=('ed37e12495bf81ad1126076ec2634b132976c40dd56d4f3924e6fddad4a1e2e4'
             '37cb146efbffb0571a541c48acd7926ed6571cd3aa50be67f8a9b97901e26769'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25')
 
