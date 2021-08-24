@@ -5,7 +5,7 @@
 # Contributor: DDoSolitary <DDoSolitary@gmail.com>
 
 pkgname=i2pd-git
-pkgver=2.38.0.r111.ga7175427
+pkgver=2.39.0.r5.gc762acd7
 pkgrel=1
 pkgdesc='A full-featured C++ implementation of the I2P router (git version)'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=('git+https://github.com/PurpleI2P/i2pd.git#branch=openssl'
         'i2pd.sysusers'
         'i2pd.tmpfiles')
 sha256sums=('SKIP'
-            '0064503a9124b764d01db862ba3c2ff97bc5961d41359970df2d6ce9842a5ab5'
+            '050f6b80eda4e59b9dff1e7bfe023fa2c525d469eda98a097eb59240e44a1319'
             '45dae1e2f798d23df92c996c233fccb07349d62992d0f625be7fd913719875af'
             'e98eaa783fcd8e1ab84980f68158e3bb9eb5ec101f26c748946a313152643f11'
             '2b84d85d4234eb3b640925d0dd244c8abe3b48bc69c8456629af923de17acf10'
@@ -83,7 +83,7 @@ package() {
     install -D -m644 contrib/tunnels.d/{*.conf,README} -t "${pkgdir}/usr/share/doc/i2pd/tunnels.d"
     
     # headers
-    install -D -m644 libi2pd{,_client}/*.h -t "${pkgdir}/usr/include/i2pd"
+    install -D -m644 {i18n,libi2pd{,_client}}/*.h -t "${pkgdir}/usr/include/i2pd"
     
     # man page
     install -D -m644 debian/i2pd.1 -t "${pkgdir}/usr/share/man/man1"
