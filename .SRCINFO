@@ -1,8 +1,8 @@
 pkgbase = poplog-git
 	pkgdesc = poplog development system
-	pkgver = r24.fc756e6
+	pkgver = v0.3.0.r136.gb4d3163
 	pkgrel = 2
-	url = http://www.cs.bham.ac.uk/research/projects/poplog/freepoplog.html
+	url = https://getpoplog.github.io/
 	arch = x86_64
 	license = custom:poplog
 	depends = tcsh
@@ -14,13 +14,7 @@ pkgbase = poplog-git
 	optdepends = espeak: for run-speaking-eliza demo
 	conflicts = poplog
 	source = git+https://github.com/GetPoplog/Seed
-	source = git+https://github.com/GetPoplog/Base
-	source = git+https://github.com/GetPoplog/Corepops
-	source = git+https://github.com/GetPoplog/Build
 	source = http://www.cs.bham.ac.uk/research/projects/poplog/V16/DL/packages-V16.tar.bz2
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
