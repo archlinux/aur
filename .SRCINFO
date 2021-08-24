@@ -1,22 +1,24 @@
 pkgbase = auale
-        pkgdesc = A free mancala game for the serious player
-        pkgver = 1.1.2
+        pkgdesc = Aualé — The Game of Mancala
+        pkgver = 2.1.0
         pkgrel = 1
-        url = http://www.joansala.com/auale
+        url = https://auale.joansala.com/
         install = auale.install
         arch = any
         license = GPL3
         makedepends = python-setuptools
-        depends = python>=2.6
+        depends = python>=3.6
+        depends = clutter>=1.2
+        depends = clutter-gtk>=1.8
         depends = gtk3>=3.10
-        depends = java-runtime=7
-        depends = java-environment=7
-        depends = python-gobject
+        depends = jre-openjdk-headless>=8
+        depends = libmanette>=0.2
+        depends = librsvg>=2.0
+        depends = python-gobject>=3.29
         depends = desktop-file-utils
-        depends = sdl2
         depends = sdl2_mixer
         replaces = python2-auale
-        source = http://www.joansala.com/auale/packages/auale-1.1.2.tar.xz
-        sha256sums = e74bf6dba321e35b3d2216b764f87825de3721911bc7124e8202153d5dee6aa4
+        source = https://github.com/joansalasoler/auale/releases/download/2.1.0/auale_2.1.0.tar.xz")
+        sha256sums = b4f8a1d324814cf8f816c4f4895704bea9cf446f6ffa9c501555a8fe85c5943e
 
 pkgname = auale
