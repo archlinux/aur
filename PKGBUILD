@@ -1,11 +1,11 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=python3_ambiorix_bindings-git
-pkgver=v0.2.3.r0.gaf7afab
+pkgver=0.2.3.r0.gaf7afab
 pkgrel=1
 pkgdesc="Python3 AMX Language Bindings"
-arch=('any')
+arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://gitlab.com/soft.at.home/ambiorix/bindings/python3.git"
-license=('MIT')
+license=(BSD)
 
 depends=(
 	'lib_amxc'
@@ -16,6 +16,7 @@ depends=(
 	'python'
 )
 makedepends=(
+	'git'
 )
 provides=(
 	'python3_ambiorix_bindings'
@@ -31,7 +32,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -43,4 +44,5 @@ build() {
 package() {
 	cd "${pkgname}"
 	make DEST="${pkgdir}/" LIBDIR="/usr/lib" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
