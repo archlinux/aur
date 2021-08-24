@@ -1,6 +1,6 @@
 pkgbase = sunshine-git
 	pkgdesc = Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield
-	pkgver = 0.9.0.541.5ff5942
+	pkgver = 0.10.1.635.7a920da
 	pkgrel = 1
 	url = https://github.com/loki-47-6F-64/sunshine
 	install = sunshine.install
@@ -25,10 +25,9 @@ pkgbase = sunshine-git
 	depends = udev
 	provides = sunshine
 	conflicts = sunshine
-	source = sunshine::git+https://github.com/loki-47-6F-64/sunshine.git
+	source = sunshine-git::git+https://github.com/loki-47-6F-64/sunshine.git
 	source = udev.rules
 	sha256sums = SKIP
 	sha256sums = 5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0
 
 pkgname = sunshine-git
-
