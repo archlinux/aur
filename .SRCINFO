@@ -1,0 +1,23 @@
+pkgbase = haskell-config-schema
+	pkgdesc = Schema definitions for the config-value package
+	pkgver = 1.2.2.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/config-schema
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = custom:ISC
+	makedepends = ghc
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-config-value
+	depends = haskell-free
+	depends = haskell-kan-extensions
+	depends = haskell-semigroupoids
+	source = https://hackage.haskell.org/packages/archive/config-schema/1.2.2.0/config-schema-1.2.2.0.tar.gz
+	cksums = 3713348347
+	sha256sums = dd8f979736389cefcd826f66c5dd6156b069876366d16250288bf527a439b782
+	b2sums = 464713a368537def66fcbbf764aa82438fba7b9baa6c35fcbb00c0824d8be96f0f3ec016493d1e4c942f4dbefacda8b99fbeaa13261b1cd46460d05e62cb70a3
+
+pkgname = haskell-config-schema
