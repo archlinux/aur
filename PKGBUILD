@@ -20,16 +20,17 @@ optdepends=(
 provides=('batterycm' 'batterycm-switcher' 'batterycm-charger')
 conflicts=('batterycm' 'batterycm-switcher' 'batterycm-charger')
 
+_srcname=batterycm-switcher
 install=batterycm.install
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$_srcname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_srcname-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_srcname-$pkgver"
   make DESTDIR="$pkgdir" install
 }

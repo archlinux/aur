@@ -24,7 +24,7 @@ pkgbase = batterycm-switcher-preview
 	conflicts = batterycm
 	conflicts = batterycm-switcher
 	conflicts = batterycm-charger
-	source = batterycm-switcher-preview-1.1.0.tar.gz::https://github.com/supdrewin/batterycm-switcher/archive/v1.1.0.tar.gz
+	source = batterycm-switcher-1.1.0.tar.gz::https://github.com/supdrewin/batterycm-switcher/archive/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = batterycm-switcher-preview
