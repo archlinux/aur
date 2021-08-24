@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=cloud-nuke
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An AWS account cleaning tool"
 url="https://github.com/gruntwork-io/cloud-nuke"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('18cc93a7245420ed86dedf5a604afea238e6bde953ea4e938b0c43939c59c5ab')
+sha256sums=('4b2f5bbdfe4f483b8a6998c08bbbdc3d03ce4afeea5c85bb3b1aa51cd9eefc32')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -32,7 +32,7 @@ build() {
 # 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 #
 # 	cd "$pkgname-$pkgver"
-# 	go test -v ./...
+# 	go test ./...
 # }
 
 package() {
