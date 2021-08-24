@@ -3,7 +3,7 @@
 
 _gemname=arr-pm
 pkgname=ruby-$_gemname
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='RPM reader and writer library'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-cabin)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('db1563686c82f9c5c7cd0a110a0c6402215d3bffa565f7cf1719c16e0d3e88c277f86b6bb184e1125f2a52d28ae6770151ffe3ea2394fdd14889ace1a081d67e')
+sha512sums=('a1a74d2a064efa450d0d50bb353480df7dbc087fe137d617403b70a0cd52ac124b464273c15a2f6791049af5de3891b0b93bec714e55eaf634524366d22ab2ea')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
