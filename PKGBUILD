@@ -2,12 +2,13 @@
 
 pkgname=mkmm
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Moviuro's Kernel Module Manager"
 arch=('any')
 license=('MIT')
 url="https://git.sr.ht/~moviuro/${pkgname}"
 install="${pkgname}.install"
+makedepends=('git')
 validpgpkeys=('2CD96FEE343C6799B9CEAFAD62009A2E0C22D9AB')
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x62009A2E0C22D9AB
 source=("git+${url}?signed#tag=${pkgver}"
