@@ -1,7 +1,7 @@
 pkgbase = supercollider-guttersynth-git
 	pkgdesc = Chaotic physical modelling in SuperCollider
-	pkgver = r60.700d03a
-	pkgrel = 1
+	pkgver = r61.06a2b7c
+	pkgrel = 2
 	url = https://github.com/madskjeldgaard/guttersynth-sc
 	arch = any
 	groups = pro-audio
@@ -11,7 +11,7 @@ pkgbase = supercollider-guttersynth-git
 	makedepends = cmake
 	makedepends = supercollider-headers-git
 	depends = supercollider
-	source = supercollider-guttersynth-git-r60.700d03a::git+https://github.com/madskjeldgaard/guttersynth-sc.git
+	source = supercollider-guttersynth-git::git+https://github.com/madskjeldgaard/guttersynth-sc.git
 	md5sums = SKIP
 
 pkgname = supercollider-guttersynth-git
