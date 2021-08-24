@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=tad
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Library and tools to handle data arrays in C++"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('exiv2' 'ffmpeg' 'gdal' 'hdf5' 'libjpeg' 'libmatio' 'libpng' 'libtiff'
          'openexr')
 makedepends=('cmake' 'doxygen' 'pandoc')
 source=("https://marlam.de/$pkgname/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('58e1107027166d43aa62a6a3159e1174b929d13d23f59318e59a2c81ad7ce0a9')
+sha256sums=('c22f26a0c79267dec323e710237db20b5698e1bafac65a4715986ab9fdc37f4d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
