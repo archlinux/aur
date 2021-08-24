@@ -11,6 +11,7 @@ pkgbase = eclipse-cpp
 	depends = unzip
 	provides = eclipse=4.20-1
 	conflicts = eclipse
+	backup = usr/lib/eclipse/eclipse.ini
 	source = eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2021-06/R/eclipse-cpp-2021-06-R-linux-gtk-x86_64.tar.gz&r=1
 	source = eclipse.desktop
 	sha512sums = ff3038cdc15cc6a43b9d374f2035cea59209ee0b46a3f45ff99af22899240ff5f8898eb3b77eb0ee122f10307602ee3963d3417f1af86f1fb7af9d0d8a47fcde
