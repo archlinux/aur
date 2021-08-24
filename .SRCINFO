@@ -1,0 +1,16 @@
+pkgbase = worldpossible-scriptlauncher-git
+	pkgdesc = A tool for running shell scripts with root privileges
+	pkgver = 1.0.1.r0.gbaa8c0a
+	pkgrel = 1
+	url = https://github.com/endlessm/worldpossible-scriptlauncher
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	provides = worldpossible-scriptlauncher
+	conflicts = worldpossible-scriptlauncher
+	source = git+https://github.com/endlessm/worldpossible-scriptlauncher.git
+	sha256sums = SKIP
+
+pkgname = worldpossible-scriptlauncher-git
