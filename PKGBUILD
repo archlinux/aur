@@ -1,6 +1,6 @@
 # Maintainer: Mads Kjeldgaard<mail@madskjeldgaard.dk>
 pkgname=supercollider-guttersynth-git
-pkgver=r60.700d03a
+pkgver=r61.06a2b7c
 pkgrel=2
 pkgdesc='Chaotic physical modelling in SuperCollider '
 arch=('any')
