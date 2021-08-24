@@ -1,6 +1,6 @@
 pkgname=cweather
 pkgbase=cweather
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Simple weather utility written in C - read the source code for more info"
 arch=('i686' 'x86_64')

@@ -1,6 +1,6 @@
 pkgbase = cweather
 	pkgdesc = Simple weather utility written in C - read the source code for more info
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = cweather
 	md5sums = SKIP
 
 pkgname = cweather
-
