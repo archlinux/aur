@@ -1,14 +1,15 @@
-# Maintainer:  Konstantin Gizdov <arch at kge dot pw>
+# Maintainer: Jonathon Fernyhough <jonathon + m2x + dev>
+# Contributor:  Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Daniel Kozak <kozzi11@gmail.com>
 
 pkgbase=gcc9
 pkgname=(${pkgbase} ${pkgbase}-libs ${pkgbase}-fortran)
-pkgver=9.3.0
+pkgver=9.4.0
 _majorver=${pkgver:0:1}
-_islver=0.21
-pkgrel=5
+_islver=0.24
+pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -26,13 +27,13 @@ source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
 validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
-sha256sums=('71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1'
+              D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
+sha512sums=('dfd3500bf21784b8351a522d53463cf362ede66b0bc302edf350bb44e94418497a8b4b797b6af8ca9b2eeb746b3b115d9c3698381b989546e9151b4496415624'
             'SKIP'
-            '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960'
-            'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            'f45160f699501568ae9e81127562395dd95b5b4a8e4d55a1615fbb00f9e4deb2')
+            'ff6bdcff839e1cd473f2a0c1e4dd4a3612ec6fee4544ccbc62b530a7248db2cf93b4b99bf493a86ddf2aba00e768927265d5d411f92061ea85fd7929073428e8'
+            '25f0e186388075e25c80c2322865e948f22678f6769886d30c09204eb0e7efd6653170b62e749ece674d0814843609be75a096fd54bb65a87fa4037cf2889d03'
+            'a0589368eb84611e2fd7397c619b7f13700bfac8018a45c35bd1c0c3d59a2782609cb9d8d090696586ea721c6d93dca6f7f6c689ac729341ee62e035b1d5af14'
+            '38a0fedeac3eebe4a6a957792ba520225cf42663c96a171cd168fdb6c91ffa9a56b80351f8238c5d03b78d3ae2a6539a54481fe4848b4a395e2c87f2ff7adc08')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
