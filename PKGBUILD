@@ -1,37 +1,34 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
+# Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
-_pkgver=5.6.1-nightly.33
 pkgname=ferdi-nightly-bin
-pkgver=${_pkgver/-/.}
+pkgver=5.6.1.nightly.37
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version'
 url='https://getferdi.com'
 license=('Apache')
 arch=('x86_64')
-depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser'
-         'libevent' 'libnghttp2' 'libsecret' 'libxkbfile'
-         'libxslt' 'libxss' 'libxtst'
-         'minizip' 'nss' 're2' 'snappy')
+makedepends=('curl' 'jq')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libnghttp2' 'libxkbfile' 'libxslt' 'minizip' 'nss' 're2' 'snappy')
 provides=('ferdi')
 conflicts=('ferdi' 'ferdi-bin')
-source=("${pkgname}-${_pkgver}.rpm::https://github.com/getferdi/nightlies/releases/download/v${_pkgver}/ferdi-${_pkgver}.x86_64.rpm")
-cksums=('3830008525')
-sha256sums=('89af6f0fa7fde8a7e8f850aa826e11b61d8a82329912f8e885dfc77e6969a17f')
-b2sums=('e9a02d548fc8e0aefaef5b43f75e77d43aceff83bb891074c3c2f5dd0d53e692ae015dc2f46091d9de960baf2abec97ea9e89f3d871d20e6d2ffb64deb9754d6')
+source=(git+https://github.com/getferdi/nightlies.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  newest_nightly_version=$(curl --silent https://api.github.com/repos/getferdi/nightlies/releases | jq -r '.[0].tag_name[1:]')
+  echo ${newest_nightly_version/-/.}
+}
 
 prepare() {
-  sed -E -i -e 's|Exec=/opt/Ferdi/ferdi|Exec=/usr/bin/ferdi|' usr/share/applications/ferdi.desktop
+  cd "${srcdir}"
+
+  newest_nightly_download_url=$(curl --silent https://api.github.com/repos/getferdi/nightlies/releases | jq -r '.[0].assets[] | select(.name | contains("rpm")).browser_download_url')
+  curl ${newest_nightly_download_url} -L --output ferdi.rpm
 }
 
 package() {
-  install -dm0755 "${pkgdir}"/{opt,usr}
-  cp -a --no-preserve=ownership opt/Ferdi "${pkgdir}/opt/ferdi"
-  cp -a --no-preserve=ownership usr/share "${pkgdir}/usr/share"
+  cd "${pkgdir}"
 
-  install -dm0755 "${pkgdir}/usr/bin"
-  ln -sf /opt/ferdi/ferdi "${pkgdir}/usr/bin/ferdi"
-
-  install -dm0755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -sf -t "${pkgdir}/usr/share/licenses/${pkgname}" \
-    /opt/ferdi/{LICENSE.electron.txt,LICENSES.chromium.html}
+  bsdtar -xf ${srcdir}/ferdi.rpm
 }
