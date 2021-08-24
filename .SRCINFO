@@ -1,5 +1,5 @@
 pkgbase = termite-barbuk
-	pkgdesc = A simple VTE-based terminal
+	pkgdesc = A simple VTE-based terminal - BarbUk fork
 	pkgver = 16.1
 	pkgrel = 1
 	url = https://github.com/thestinger/termite/
