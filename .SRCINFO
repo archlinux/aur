@@ -18,6 +18,8 @@ pkgbase = linux-hardened-beta
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	provides = linux-hardened
+	conflicts = linux-hardened
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.19.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.12.19.tar.sign
@@ -33,19 +35,8 @@ pkgbase = linux-hardened-beta
 	sha256sums = SKIP
 	sha256sums = 59bce15cfd81e539faa8c6fb8218a0e837a6d6cf1382de14134b1e115d96cb7c
 
-pkgname = linux-hardened
-	pkgdesc = The Security-Hardened Linux kernel and modules
-	depends = coreutils
-	depends = kmod
-	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
-	optdepends = linux-firmware: firmware images needed for some devices
-	optdepends = usbctl: deny_new_usb control
-	provides = VIRTUALBOX-GUEST-MODULES
-	provides = WIREGUARD-MODULE
+pkgname = linux-hardened-beta
 
-pkgname = linux-hardened-headers
-	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
+pkgname = linux-hardened-beta-headers
 
-pkgname = linux-hardened-docs
-	pkgdesc = Documentation for the Security-Hardened Linux kernel
+pkgname = linux-hardened-beta-docs
