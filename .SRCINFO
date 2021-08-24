@@ -1,0 +1,18 @@
+pkgbase = haskell-data-flags
+	pkgdesc = A package for working with bit masks and flags in general
+	pkgver = 0.0.3.4
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/data-flags
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = custom:BSD-3-Clause
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/data-flags/0.0.3.4/data-flags-0.0.3.4.tar.gz
+	cksums = 312574024
+	sha256sums = 48c2a1e2cc06e9f037eaecf0d74188ef168e219551a7f234a13cdd8c7f1370a0
+	b2sums = 3d871cd240c25cfe7b4121c0222f801640c73ab9d9f9b86d3d94975df24ed3c272ee6f31e4b058d560e593db2c5fa4534317a6551bf6c93c3e00da7cf7d0492c
+
+pkgname = haskell-data-flags
