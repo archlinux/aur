@@ -1,7 +1,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
+# Contributor: karu1 <.1me.io7@gmail.com>
+
 pkgname=rar2fs
-pkgver=1.29.1
-_unrarver=5.9.4
+pkgver=1.29.5
+_unrarver=6.0.7
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
 arch=("i686" "x86_64")
@@ -9,21 +11,21 @@ license=("GPL3")
 url="https://github.com/hasse69/rar2fs"
 url="https://hasse69.github.io/rar2fs/"
 depends=("fuse2" "libunrar")
-makedepends=("libunrar")
 source=("https://github.com/hasse69/rar2fs/releases/download/v$pkgver/rar2fs-$pkgver.tar.gz"
-        "http://www.rarlab.com/rar/unrarsrc-$_unrarver.tar.gz")
-md5sums=('084b65e49db239f6e210d08eb92da237'
-         'b4aa9106e8820b89f11a1c2143a2815b')
-sha1sums=('d900922ab217325cfc3bd57bb4b0a9fb833e1f48'
-          '7c907ede1aded10449bb5a766d268d909ea51845')
-sha256sums=('664d8b3893cb37fd0c46f7cf9d34623f8c8a23891d6a57408f40ec0fa3ac83b3'
-            '3d010d14223e0c7a385ed740e8f046edcbe885e5c22c5ad5733d009596865300')
-sha512sums=('c0cb4cca59e6adb450350a9730500bf9c569bb9ad835af0726ff05876a7a02c43e905293cc5582239b7a2564bf46bd02e6122934e0ad8c1785c326dbeff9c096'
-            '4c026bc12c38314c7df6e1b2f296be681fffa4ba525e378809063519cb5d51889fe8d3cbce16e802023354f02b45b1bcc672b79a6fa81b4baa13a374ce22c8f1')
+        "http://www.rarlab.com/rar/unrarsrc-${_unrarver}.tar.gz")
+md5sums=('b2dca33f6a963ac860e4e4921a4d574e'
+         'de5017a63a610cb82dba7d33bd826fb6')
+sha1sums=('9df539a72ad22b6333ffb9ff93f078069f86464a'
+          '041a36ea448c73555ab94070add7dfaa0ef62bb0')
+sha256sums=('a56e9f2fd3d5037087b8405cff85ce7ffb74a904176f33f55b7bd15117cff2be'
+            'a7029942006cbcced3f3b7322ec197683f8e7be408972ca08099b196c038f518')
+sha512sums=('78962d614d66eeb09c013212d8bd373907d8a55489d9bc544f43ba1f34989cd777bba38a6af5899fea0b01e4cfdc0ee18462776e2d4cc529e05d5c6d30a899bf'
+            '2c50d1f58f5189e59dad36eb25aa50a34572f583242e624846c9791c5609e83d4ee76314d785771fe514ec3378749dcb86e4c97a8d2a3ab7b469df49a5c5f412')
 
 build() {
   cd "$srcdir/unrar"
   make lib
+  echo "Starting Build $pkgname source"
   cd "$srcdir/$pkgname-$pkgver"
   ./configure --prefix=/usr --sbindir=/usr/bin --with-unrar=../unrar
   make
@@ -32,4 +34,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make install DESTDIR="$pkgdir"
+  install -Dm644 AUTHORS ChangeLog COPYING NEWS rarconfig.example README -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
