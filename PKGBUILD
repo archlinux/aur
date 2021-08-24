@@ -3,90 +3,46 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.1.2
+pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
-depends=('root' 'qt5-webengine')
+makedepends=('cmake')
+depends=('root' 'qt5-webengine' 'hdf5')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
-source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz"
-       "Makefile.config.patch")
-sha256sums=('28e3ecccbbde5a9168e85d6b6b5abaa147c0d65ea70332cdaaa80050ad61c55f'
-            '4f30aaffccd27ca206d5633a3b637736fbe9f34258435db6446a0c43e1f51abd')
+source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
+
+sha256sums=('12312bc346f911c27cfd3b13e7b66e6e4c5f596029d339b5a6a1e9cd7cc70775')
 
 prepare() {
 
   unset GO4SYS
 
-  cd go4-${pkgver}
-
-  # make it installation friendly
-  sed -i 's#\$(GO4EXEPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4INCPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4LIBPATH)#$(DESTDIR)/&#g' Makefile
-  sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)/&#g' Makefile
-
-  # something change and the libraries are not found now at compilation time
-  # works in combination to NOT having go4 already installed in the system
-  patch -Np2 < ${srcdir}/Makefile.config.patch
-
-  # gSystem not found
-  sed -i '1s;^;#include <TSystem.h>\n;' Go4ThreadManager/TGo4AppControlTimer.cxx
-
-  # something with time
-  sed -i '1s;^;#include <TDatime.h>\n;' Go4ConditionsBase/TGo4Condition.cxx
-  sed -i '1s;^;#include <TDatime.h>\n;' Go4AnalysisClient/TGo4AnalysisClientImp.cxx
-
-  # error: field ... has incomplete type ‘TString’
-  sed -i '1s;^;#include "TString.h"\n;' Go4ConditionsBase/TGo4Marker.h
-
-  # error: incomplete type ‘TF1’ used in nested name specifier
-  sed -i 's;#include "TLatex.h";&\n#include "TF1.h";g' Go4Proxies/TGo4BrowserProxy.cxx
-  sed -i 's;#include "TLatex.h";&\n#include "TF1.h";g' qt4/Go4GUI/TGo4ViewPanel.cpp
-
-  # multiple definition of `fLogFile'
-  sed -i 's;#include "rawapin.h";;g' MbsAPI/f_evt.c
-
-  # error: ‘gVirtualX’ was not declared in this scope
-  sed -i '1s;^;#include "TVirtualX.h"\n;' qt4/Go4QtRoot/QRootWindow.cpp
-
-  # error: invalid use of incomplete type ‘class TObjString’
-  sed -i '1s;^;#include "TObjString.h"\n;' qt4/Go4QtRoot/QRootCanvas.cpp
-
-  # error: invalid use of incomplete type ‘class TCanvasImp’
-  sed -i '1s;^;#include "TCanvasImp.h"\n;' qt4/Go4GUI/TGo4ViewPanel.cpp
-
 }
 
 build() {
 
-  cd go4-${pkgver}
-  make clean-bin
-  make clean
+  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+  cd ${srcdir}/build
 
-  make prefix=/usr \
-       withqt=5 \
-       GO4_OS=Linux \
-       rpath=true \
-       withdabc=yes \
-       debug=1 \
-       nodepend=1 \
-       all || return 1
+  ROOTSYS=/usr/lib/cmake/ROOT \
+         cmake \
+         -DCMAKE_INSTALL_PREFIX=/usr \
+         -DGO4_PLATFORM=Linux \
+         -DGO4_QTVERSION=Qt5 \
+         -Ddabc=ON \
+         -Dhdf5=ON \
+         ../go4-${pkgver}
 
-  ## options not explored
-  # noweb=1
-  # nox11=1
-
-  # options known not to work Nov/22/2019
-  # designer=1
+  make
 
 }
 
 package() {
 
   #install the package
-  cd go4-${pkgver}
+  cd ${srcdir}/build
   make DESTDIR="${pkgdir}" install
 
   #install the license
