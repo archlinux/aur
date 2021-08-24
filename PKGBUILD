@@ -3,7 +3,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=klog
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='A multiplatform free hamradio logger'
 arch=('x86_64')
@@ -12,11 +12,12 @@ license=('GPL3')
 makedepends=('qt5-tools' 'gendesk')
 depends=('qt5-base' 'qt5-charts' 'qt5-serialport' 'hamlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ea4k/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cad3b9b1543ac84a66be44a8022ace8c270b75586f383a5a388e253e2a654446')
+sha256sums=('ee0ded41bcf8372bd63876030fbcc5e34188a5f9f030c721f46822e71a6431a4')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
+  sed -i 's/ -Werror//g' tests/utilities/utilities.pro # shh look away
   gendesk --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/${pkgname}" -n
 }
 
