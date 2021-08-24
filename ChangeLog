@@ -1,3 +1,19 @@
+=== Morgen 2.2.1
+Improvements
+- The current time indicator is now updated immediately when the timezone is changed
+- The "first day of the week" is now a setting decoupled from the Regional date/time format. For example, you can now set Monday as the first day of the week, while keeping the English (United States) as the region
+- Morgen now notifies when an update is ready to install by displaying a badge next to the profile icon on Windows and Mac
+- The shortcuts Alt+A and Alt+S now behave like toggles, making it easier to turn on/off the task and the scheduler sidebar
+- You can now use CTRL+S or CTRL+Enter (resp. Cmd+S or Cmd+Enter on Mac) to save events being edited without touching the mouse
+- We reduced the throttle for manual calendar refresh and now Morgen shows a feedback message when CTRL+R is pressed while sync is already in progress
+
+Bug Fixes
+- Fixed the connection to Facebook Events calendar feed
+- Avoid mixed-language availability text (at the moment, English is enforced)
+- Fixed an issue making it impossible to update a single occurrence of an event series when some events in the series had been previously deleted
+- Minor improvements to the style of tasks in the calendar
+- Cancelled meetings from Exchange and Office 365 are not displayed anymore, consistently with other providers
+
 === Morgen 2.2.0
 With Morgen 2.2, we are excited to announce a new tool to help you schedule your meetings. Now you can create One-on-One and Permanent Scheduling Links right in your calendar 🥳. Forget about Calendly, Morgen has you covered for most of the scheduling scenarios!
 
