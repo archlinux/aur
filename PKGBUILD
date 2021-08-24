@@ -1,6 +1,6 @@
 
 pkgname=dosbox-ece
-_pkgver=4454
+_pkgver=4465
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
@@ -13,11 +13,11 @@ makedepends=('autoconf' 'automake' 'gcc' 'dos2unix')
 provides=("dosbox")
 conflicts=("dosbox")
 source=(
-  "https://dosboxece.yesterplay.net/download/DOSBox ECE r${_pkgver} (source).7z"
+  "https://yesterplay.net/dosboxece/download/DOSBox%20ECE%20r${_pkgver}%20(source).7z"
   "dosbox-ece.png"
   "dosbox-ece.desktop"
 )
-md5sums=('d46eeb3c98169119b35e42af2c7aa9c0'
+md5sums=('4031e8c36cbb6e1bf30891c71bb8c9e9'
          '19fbd9958c0a412000d5fe7362774df1'
          '7ab512ca7e6bdb3616e197271ffae928')
 
