@@ -1,18 +1,24 @@
 pkgbase = ruby-rubocop-rspec
 	pkgdesc = Code style checking for RSpec files
-	pkgver = 1.38.1
+	pkgver = 2.4.0
 	pkgrel = 1
-	url = https://rubocop.readthedocs.io
+	url = https://github.com/rubocop/rubocop-rspec
 	arch = any
 	license = MIT
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rack
+	checkdepends = ruby-rspec
+	checkdepends = ruby-rubocop-performance
+	checkdepends = ruby-rubocop-rake
+	checkdepends = ruby-yard
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-rubocop
-	noextract = rubocop-rspec-1.38.1.gem
+	depends = ruby-rubocop-ast
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rubocop-rspec-1.38.1.gem
-	sha256sums = b15e88e3d7e941ede3361629c6da664a912db594d9e63f1e7d43510d7be7b5fb
+	source = https://github.com/rubocop/rubocop-rspec/archive/v2.4.0/rubocop-rspec-2.4.0.tar.gz
+	sha256sums = f336c18125218e76a52f7b78d94dc0b9e4967563c76dc9d269e9ed6c1538ee0d
 
 pkgname = ruby-rubocop-rspec
-
