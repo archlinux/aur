@@ -5,7 +5,7 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.16.0.28.dev.r0.g53606c8
+pkgver=0.16.0.108.dev.r0.gee370d2
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -26,11 +26,13 @@ pkgver() {
 
 build() {
   cd "GameHub"
-  CFLAGS="$CFLAGS -O0" meson . build --prefix=/usr -Ddistro=arch --buildtype=debug
+  #CFLAGS="$CFLAGS -O0" meson . build --prefix=/usr -Ddistro=arch --buildtype=debug
+  meson . build --prefix=/usr -Ddistro=arch --buildtype=debug
   ninja -C build
 }
 
 package() {
   cd "GameHub"
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.tkashkin.gamehub "${pkgdir}/usr/bin/gamehub"
 }
