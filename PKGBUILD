@@ -1,29 +1,16 @@
-# Maintainer: Stephan Conrad <stephan@conrad.pics>
+# Maintainer: Marius Zukaitis <marius@shadownest.tk>
 pkgname=spice-html5
-pkgver=0.2.2
-pkgrel=2
-epoch=
-pkgdesc="a html5 client for the spice protocol "
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="html5 client for the spice protocol."
 arch=('any')
 url="https://gitlab.freedesktop.org/spice/spice-html5"
 license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=('https://gitlab.freedesktop.org/spice/spice-html5/-/archive/spice-html5-0.2.2/spice-html5-spice-html5-0.2.2.tar.gz')
-noextract=()
+makedepends=('make')
+source=("https://gitlab.freedesktop.org/spice/$pkgname/-/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.gz")
 
 package() {
-	cd "spice-html5-spice-html5-0.2.2/"
+	cd "$srcdir/$pkgname-$pkgname-$pkgver/"
 	make DESTDIR="$pkgdir/" install
 }
-sha256sums=('9f1d3feee10ed505fe2bcba88ab87d8e3a1366bfc01613f88e50e37b4c19b4df')
+sha256sums=('90fa3b30cda272471104af0b61ea08f2194048455133889a28a8bed0c00e3527')
