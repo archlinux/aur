@@ -1,0 +1,26 @@
+pkgbase = sbuild
+	pkgdesc = Tool for building Debian binary packages from Debian sources
+	pkgver = 0.81.2
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/sbuild
+	arch = any
+	license = GPL2
+	depends = apt
+	depends = dpkg>=1.20
+	depends = gnupg>=2.1
+	depends = perl-exception-class
+	depends = perl-filesys-df
+	depends = perl-mime-lite
+	depends = perl-yaml-tiny
+	depends = python
+	optdepends = adduser: sbuild-adduser support
+	optdepends = debootstrap: sbuild-createchroot support
+	optdepends = qemu: QEMU support
+	optdepends = python-pexpect: QEMU support
+	optdepends = python-psutil: QEMU support
+	optdepends = schroot>=1.6.0: alternate chroot backend; sbuild support
+	optdepends = smtp-forwarder: mail build logs support
+	source = https://salsa.debian.org/debian/sbuild/-/archive/debian/0.81.2/sbuild-debian-0.81.2.tar.gz
+	sha512sums = d9e5a0157ddfd7df10216f38cc80c99445fdcfec50cfb9428ab35459f0ce85be198f50c0ea0028365f31f5eadb91d6d696ed3f6194fa3c799464f2fd2602fda8
+
+pkgname = sbuild
