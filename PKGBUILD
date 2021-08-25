@@ -20,7 +20,6 @@ arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url="https://gcc.gnu.org/gcc-6/"
 makedepends=(binutils libmpc doxygen subversion java-environment-common zip jdk8-openjdk gtk2 libart-lgpl libxtst zlib java-runtime)
-options=(!emptydirs !makeflags)
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
         "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
@@ -39,8 +38,8 @@ _libdir="/usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
-  cd gcc
 
+  cd gcc
   # Apply patches.
   patch --forward --strip=2 --input="${srcdir}"/libsanitizer.patch
 
@@ -64,8 +63,6 @@ prepare() {
 }
 
 build() {
-  #export LD_PRELOAD=/usr/lib/libstdc++.so
-
   cd gcc-build
 
   # using -pipe causes spurious test-suite failures
@@ -134,8 +131,6 @@ package_gcc6-libs() {
   pkgdesc="Runtime libraries shipped by GCC (6.x.x)"
   depends=('glibc>=2.25' zlib)
   options+=(!strip)
-
-  #export LD_PRELOAD=/usr/lib/libstdc++.so
 
   cd gcc-build
   make -C "$CHOST"/libgcc DESTDIR="${pkgdir}" install-shared
@@ -263,8 +258,6 @@ package_gcc6-gcj() {
   pkgdesc="Java front-end for GCC"
   depends=("gcc6=$pkgver-$pkgrel" libmpc libxtst gtk2 java-runtime libsm)
   replaces=('gcc-gcj')
-
-  #export LD_PRELOAD=/usr/lib/libstdc++.so
 
   # Install libjava.
   cd gcc-build
