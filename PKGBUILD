@@ -29,7 +29,7 @@ prepare() {
     git clone https://github.com/gamax92/luaffifb/
     cd "luaffifb"
     sudo luarocks --lua-version $_lua_version make
-    sudo rm -rf "luaffifb"
+    sudo rm -rf .
 }
 
 build() {
