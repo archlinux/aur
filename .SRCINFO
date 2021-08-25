@@ -1,5 +1,5 @@
 pkgbase = tal-reverb3-vst3
-	pkgdesc = A Simple Algorithmic Reverb By TAL Software (VST3)
+	pkgdesc = A Simple Algorithmic Reverb V3 By TAL Software (VST3)
 	pkgver = 2.3.0
 	pkgrel = 2
 	url = https://tal-software.com
