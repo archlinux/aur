@@ -1,6 +1,6 @@
 pkgbase = btrfs-snapshots-git
 	pkgdesc = Manage collections of btrfs snapshots
-	pkgver = 0.2.0.r0.3694997
+	pkgver = 0.2.1.r0.0a79c02
 	pkgrel = 1
 	url = https://gitlab.com/jmcantrell/btrfs-snapshots
 	arch = any
