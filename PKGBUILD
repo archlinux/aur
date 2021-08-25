@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Manage collections of btrfs snapshots"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://gitlab.com/jmcantrell/$pkgname"
 license=('GPL3')
 depends=('btrfs-progs')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('8a88f00cc8a1d59596e5ff05d6d4ad954852cb331606bf6474c2c213c4e6fbce')
+sha256sums=('8be096b3c5d07f1fb22086b1da8b54cae8994c3219e7707c308067731855ef28')
 
 check() {
     cd "$srcdir/$pkgname-v$pkgver"
