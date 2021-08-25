@@ -1,5 +1,5 @@
 pkgname=tal-noisemaker-vst3
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="A Free Soft Synth By TAL Software (VST3)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 groups=('pro-audio' 'vst3-plugins')
 source=('https://tal-software.com/downloads/plugins/TAL-NoiseMaker_64_linux.zip')
-md5sums=('e276964d2a133e547c090a9f6155d843')
+md5sums=('e2ab5f4553642ceea796ce2895fd3c47')
 
 package() {
   mkdir -p $pkgdir/usr/lib/vst3
