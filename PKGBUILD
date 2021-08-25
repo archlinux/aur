@@ -2,7 +2,7 @@
 # Contributor: kXuan <kxuanobj@gmail.com>
 
 pkgname=envoyproxy
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ source=(
     use_bazelisk.patch
     fix_wee8_build.patch
 )
-sha512sums=('8a4dd06ce2cf3adc0f81800ff5a228b276686b70bbc41634d12602f22903aa5fd42f6443e1b0b8c9f12304ba7dcf45eea5452bbe8942daf33ba192ac59194327'
+sha512sums=('92f853db1f0b1193e8ec58e89bb8a45aeb67c775f5ff6e6301112202eed23477bea3daeee15a0a2fff62eb1049341ff1d4036015f49d90b40989f23a2e5e6f1b'
             '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017'
             'e16e4949c7b66797f85d4e9547f4e47be689c2e3eb320514ba83a2c54f22f860bfc5a729b3be56b89c31336f0e414880d373b5f4d1f8b859710f80da650e9c31')
 
