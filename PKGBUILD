@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=0.9.50.0
+pkgver=1.5.0.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
@@ -56,7 +56,7 @@ build_jbigi() {
 }
 
 build_jcpuid() {
-if [[ "$CARCH" != @(arm)* ]]; then
+if [[ "$CARCH" != @(arm*|aarch64) ]]; then
     msg "Building libjcpuid..."
     cd "$srcdir/$_gitname/core/c/jcpuid"
     INCLUDES="-I./include -I${JAVA_HOME}/include -I${JAVA_HOME}/include/linux"
