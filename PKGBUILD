@@ -1,26 +1,27 @@
-# Maintainer: Nicholas Boyd Isacsson <nicholas@isacsson.se>
+# maintainer: libele <libele@disroot.org>
+# contributor: Nicholas Boyd Isacsson <nicholas@isacsson.se>
 
-_pkgname='cbonsai'
-pkgname="${_pkgname}-git"
-pkgver=r40.afb6878
+pkgname=cbonsai-git
+_gitpkg=cbonsai
+pkgver=1.3.1.2.gb3ee97a
 pkgrel=1
-pkgdesc='A bonsai tree generator, written in C using ncurses'
-arch=('any')
-url="https://gitlab.com/jallbrit/${_pkgname}"
+pkgdesc='A bonsai tree generator, written in C using ncurses (git version)'
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
+url="https://gitlab.com/jallbrit/cbonsai"
 license=('GPL3')
-depends=('gcc')
-makedepends=('git')
+depends=('ncurses')
+makedepends=('scdoc')
 provides=('cbonsai')
-source=("${_pkgname}::git+${url}.git")
+conflicts=('cbonsai')
+source=('git+https://gitlab.com/jallbrit/cbonsai.git')
 md5sums=(SKIP)
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_gitpkg}"
+  printf "%s" "$(git describe --long --tags | sed 's/v//; s/-/./g')"
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    gcc cbonsai.c -Wall -Wpedantic -l panel -l ncurses -o cbonsai
-    install -vDm 755 cbonsai -t "${pkgdir}/usr/bin/"
+  cd "${srcdir}"/"${_gitpkg}"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
