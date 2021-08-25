@@ -3,7 +3,7 @@
 pkgname=bandwidthd
 _repouser=post-factum
 _reponame=bandwidthd
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 epoch=1
 pkgdesc="Daemon for graphing traffic of subnet machines"
@@ -14,7 +14,7 @@ depends=(sqlite libpcap libpng gd nginx)
 
 source=(${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/${_repouser}/${_reponame}/-/archive/v${pkgver}/${_reponame}-v${pkgver}.tar.bz2)
 
-sha256sums=('48ab79e81dcde5a5aeaab6ffe262c0d51c8739c7773d4dd9fa503d0f122e1e80')
+sha256sums=('94f01b4c887b831e0158ba2140d7fc6e287648fd7ddbf3ea5b51a2d71f9b315a')
 
 backup=('etc/bandwidthd/bandwidthd.conf'
 		'etc/bandwidthd/bandwidthd-webui.conf')
@@ -24,7 +24,7 @@ prepare () {
 
 	autoreconf
 
-	CFLAGS="-std=gnu89 -march=x86-64 -mtune=generic -O2 -pipe -fno-plt" ./configure \
+	CFLAGS="-std=gnu89 ${CFLAGS}" ./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc/bandwidthd \
 		--localstatedir=/var/lib \
@@ -33,6 +33,8 @@ prepare () {
 
 build() {
 	cd "${_reponame}-v${pkgver}"
+
+	make -j1
 }
 
 package() {
