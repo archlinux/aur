@@ -1,7 +1,7 @@
 pkgbase = python-pycoral
 	pkgdesc = Google Coral Python API
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google-coral/pycoral
 	arch = any
 	license = Apache
@@ -10,5 +10,6 @@ pkgbase = python-pycoral
 	depends = python
 	depends = python-pillow
 	depends = python-tflite-runtime
+	depends = libedgetpu-std
 
 pkgname = python-pycoral
