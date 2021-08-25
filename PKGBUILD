@@ -1,7 +1,7 @@
 # Maintainer: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=coil64
 _pkgname=Coil64
-pkgver=2.1.16
+pkgver=2.1.18
 pkgrel=1
 pkgdesc="Coil inductance calculator (formerly Coil32)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://coil32.net/"
 license=('GPL')
 depends=(qt5-base)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/radioacoustick/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('571e4a41608a7f114c4e817eef4106254da548e5b266a7063bdbfae7a6d92d4e552fa252fb074998b0712163d0fe81acc095a6f9c94169520a9faa3a7fa96158')
+sha512sums=('95aacc5414c43a85eb3b011d289779029a6173f8aaf6c3b49591ee07610ccc88216787aaf06cba192a224c8ece9483426bf11b12fb3119ed6a8ff00b15cb948b')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
