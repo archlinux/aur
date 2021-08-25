@@ -5,20 +5,19 @@
 
 pkgname=shantz-xwinwrap-bzr
 pkgver=20090421
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility to play Movies on your Desktop Or ElectricSheep"
 [ "$CARCH" = "i686"   ] && ARCH=x86
 [ "$CARCH" = "x86_64" ] && ARCH=x86_64
 arch=(i686 x86_64)
 url="https://shantanugoel.com/2008/09/03/shantz-xwinwrap/"
-license=(Other/Open Source)
+license=(MIT)
 depends=(libxext libxrender)
 provides=('xwinwrap')
 conflicts=('xwinwrap')
-makedepends=('bzr' 'make' 'python-dulwich')
-
-source=()
-md5sums=()
+makedepends=('bzr' 'python-dulwich')
+source=('LICENSE')
+sha512sums=('SKIP')
 
 _bzrroot="lp:xwinwrap"
 _bzrmod="xwinwrap"
@@ -29,16 +28,17 @@ build() {
   bzr branch $_bzrroot
   cd $_bzrmod
   if [ "$CARCH" == "i686" ]; then
-    make all32 || return 1
+    make all32
   else
-    make all64 || return 1
+    make all64
   fi
 }
 package() {
-  cd $_bzrmod
+	cd ${srcdir}
   if [ "$CARCH" == "i686" ]; then
-    install -D -m0755 ${srcdir}/xwinwrap/i386/xwinwrap ${pkgdir}/usr/bin/xwinwrap || return 1
+    install -D -m0755 xwinwrap/i386/xwinwrap ${pkgdir}/usr/bin/xwinwrap
   else
-    install -D -m0755 ${srcdir}/xwinwrap/x86_64/xwinwrap ${pkgdir}/usr/bin/xwinwrap || return 1
+    install -D -m0755 xwinwrap/x86_64/xwinwrap ${pkgdir}/usr/bin/xwinwrap
   fi
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
