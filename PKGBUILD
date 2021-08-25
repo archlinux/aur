@@ -1,6 +1,6 @@
 pkgname=amplex-vst
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Amplex Guitar Amp"
 arch=('x86_64')
 url="https://nalexsoft.blogspot.com/2020/07/amplex-multiamp.html"
