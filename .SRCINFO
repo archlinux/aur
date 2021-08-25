@@ -1,0 +1,18 @@
+pkgbase = python-django-hosts-git
+	pkgdesc = Dynamic and static host resolving for Django. Maps hostnames to URLconfs
+	pkgver = 4.0.r10.g55634e5
+	pkgrel = 1
+	url = http://django-hosts.rtfd.org/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-django
+	depends = python-django-debug-toolbar
+	provides = python-django-hosts
+	conflicts = python-django-hosts
+	source = git+https://github.com/jazzband/django-hosts
+	sha256sums = SKIP
+
+pkgname = python-django-hosts-git
