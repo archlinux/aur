@@ -1,0 +1,19 @@
+pkgbase = dehydrated-cloudflare-hook
+	pkgdesc = CloudFlare hook for dehydrated
+	pkgver = r80.de5af98
+	pkgrel = 1
+	url = https://github.com/walcony/letsencrypt-cloudflare-hook
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dehydrated
+	depends = python
+	depends = python-dnspython
+	depends = python-future
+	depends = python-requests
+	depends = python-six
+	depends = python-tld
+	source = git+https://github.com/walcony/letsencrypt-cloudflare-hook.git
+	sha256sums = SKIP
+
+pkgname = dehydrated-cloudflare-hook
