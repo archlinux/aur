@@ -1,0 +1,13 @@
+pkgbase = ynot-fossil
+	pkgdesc = Scriptable calendar for the cli and web
+	pkgver = 1.0r17.904ac4de19
+	pkgrel = 1
+	url = https://code.jessemcclure.org/ynot
+	arch = x86_64
+	license = MIT
+	makedepends = fossil
+	depends = glibc
+	source = fossil+https://code.jessemcclure.org/ynot
+	sha256sums = SKIP
+
+pkgname = ynot-fossil
