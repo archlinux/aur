@@ -20,6 +20,8 @@ source=(
 )
 sha256sums=("1b89eba72840c17fdc42899f2269a25a442c56baad6f13b44278f866806a475f")
 
+install=$pkgname.install
+
 prepare() {
     mkdir -p $pkgdir/usr/share/$_pkgname $pkgdir/usr/share/man/man1 $pkgdir/usr/share/licenses/$pkgname $pkgdir/usr/share/zsh/site-functions
 }
