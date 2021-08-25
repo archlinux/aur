@@ -1,5 +1,5 @@
 pkgname=bibcal-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgdesc="CLI tool to calculating dates based on the Bible and the 1st Book of Enoch."
 pkgrel=1
 arch=(x86_64)
@@ -8,13 +8,13 @@ url="https://github.com/johanthoren/bibcal"
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-$pkgver::$url/releases/download/$pkgver/${pkgname%-bin}-linux-x86_64"
-        "${pkgname%-bin}-$pkgver.sha256::$url/releases/download/$pkgver/${pkgname%-bin}-linux-x86_64.sha256"
-        "${pkgname%-bin}-$pkgver.sha256.asc::$url/releases/download/$pkgver/${pkgname%-bin}-linux-x86_64.sha256.asc"
+        "${pkgname%-bin}-$pkgver.SHA256SUMS::$url/releases/download/$pkgver/SHA256SUMS"
+        "${pkgname%-bin}-$pkgver.SHA256SUMS.asc::$url/releases/download/$pkgver/SHA256SUMS.asc"
         "${pkgname%-bin}-$pkgver.LICENSE::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/LICENSE"
         "${pkgname%-bin}-$pkgver.README.md::https://raw.githubusercontent.com/johanthoren/bibcal/$pkgver/README.md")
 sha256sums=(
-  "784d66c1b62e9e4ae5642dfbd3913cc89c197e41335a41c101ca1291a2fc0ab7"
-  "8c1ebea933a3af400bc61c58cb9520823dd93fb328d1deec8b5527d213443a02"
+  "39d34ff6623becc24cb7e85a362baf1f23acfd2add41f7b6058a7fe66d9efd55"
+  "7af84a15dc3fe53aec4c2ea63cc994097aabec60a7b922f1640976a24cfc0eea"
   SKIP
   "42ff7de4bd2675dff14a44fe4c2eb7d5b88f616f8206e72e9aa3a209f51365ba"
   "f0aec37543a52aa97469b9975f1bb32aad78abb9068a2c3e73fbff04d75d68ef"
