@@ -3,7 +3,7 @@ _pkgname=libretro-chailove
 pkgname=$_pkgname-git
 pkgver=1.1.0.r17.ge300ec2
 pkgrel=1
-pkgdesc="2D Game Framework with ChaiScript"
+pkgdesc='ChaiScript core'
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/libretro/$_pkgname"
 license=('MIT')
@@ -15,15 +15,15 @@ conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
 	'git+https://github.com/ChaiScript/ChaiScript_Extras.git'
-	'git+https://github.com/icculus/physfs.git'
 	'git+https://github.com/libretro/libretro-common.git'
-	'git+https://github.com/libretro/sdl-libretro.git'
+	'git+https://github.com/libretro/libretro-deps.git'
+	'git+https://github.com/icculus/physfs.git'
 	'git+https://github.com/effolkronium/random.git'
+	'git+https://github.com/libretro/sdl-libretro.git'
 	'git+https://github.com/Grumbel/SDL_tty.git'
-	'git+https://github.com/mohaps/TinySHA1.git'
 	'git+https://github.com/DanielGibson/Snippets.git'
 	'git+https://github.com/nothings/stb.git'
-	'git+https://github.com/libretro/libretro-deps.git'
+	'git+https://github.com/mohaps/TinySHA1.git'
 )
 b2sums=(
 	'SKIP'
