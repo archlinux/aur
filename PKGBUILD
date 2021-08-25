@@ -1,6 +1,6 @@
 pkgname=tal-reverb3-vst3
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Algorithmic Reverb By TAL Software (VST3)"
 arch=('x86_64')
 url="https://tal-software.com"
