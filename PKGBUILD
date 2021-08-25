@@ -1,10 +1,11 @@
-# Maintainer : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
-# Maintainer: Dany Martineau <dany.luc.martineau gmail.com>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
+# Contributor: Dany Martineau <dany.luc.martineau gmail.com>
 # Contributor:  Stefan Clarke <fm0nk3y@yahoo.co.uk>
 
 pkgname=shantz-xwinwrap-bzr
 pkgver=20090421
-pkgrel=3
+pkgrel=4
 pkgdesc="Utility to play Movies on your Desktop Or ElectricSheep"
 [ "$CARCH" = "i686"   ] && ARCH=x86
 [ "$CARCH" = "x86_64" ] && ARCH=x86_64
@@ -14,7 +15,7 @@ license=(Other/Open Source)
 depends=(libxext libxrender)
 provides=('xwinwrap')
 conflicts=('xwinwrap')
-makedepends=('bzr' 'make')
+makedepends=('bzr' 'make' 'python-dulwich')
 
 source=()
 md5sums=()
