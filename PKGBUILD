@@ -23,7 +23,7 @@ pkgver=2106
 _build1=8.3.0
 _build2=18251983
 _cart='CART22FQ2'
-pkgrel=1
+pkgrel=2
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
@@ -93,7 +93,7 @@ package_vmware-horizon-client() {
 	conflicts=('vmware-view-open-client' 'vmware-view-open-client-beta' 'vmware-view-client'
 		'vmware-horizon-pcoip')
 	replaces=('vmware-horizon-pcoip')
-	depends=('gnome-icon-theme' 'gtk3' 'libpng12' 'libudev0-shim' 'libxml2' 'libxss'
+	depends=('gnome-icon-theme' 'gtk3' 'libudev0-shim' 'libxml2' 'libxss'
 		'libxtst' 'openssl' 'binutils' 'glib2' 'expat' 'vmware-keymaps')
 	optdepends=('alsa-lib: audio support via alsa'
 		'freerdp: RDP remote desktop connections'
