@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Science;Math
+Comment=sail7 - Design and optimisation tool for sail performance
+Exec=/usr/bin/sail7
+Icon=/usr/share/sail7/sail7.png
+Name=sail7
+Terminal=false
+Type=Application

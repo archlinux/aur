@@ -1,0 +1,17 @@
+pkgbase = sail7-svn
+	pkgdesc = A design and optimisation tool for sail performance.
+	pkgver = v0.07.r47
+	pkgrel = 1
+	url = http://xflr5.tech/sail7/sail7.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = qt5-base
+	provides = sail7
+	source = sail7-svn::svn+https://svn.code.sf.net/p/sail7/code/trunk
+	source = sail7.desktop
+	sha256sums = SKIP
+	sha256sums = 3c75d5616c7733b92d4ff959885e29186a730c02ab85dbe2b03ac738f9fdd9d9
+
+pkgname = sail7-svn
