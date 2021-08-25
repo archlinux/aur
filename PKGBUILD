@@ -23,6 +23,7 @@ md5sums=(
 prepare() {
   cd "$srcdir/${_pkgname}"
   FLAGS="-Ofast"
+  git submodule update --init --recursive
   meson setup -Dbuildtype=release -Db_lto=true -Dc_args="$FLAGS" -Dcpp_args="$FLAGS" -Db_asneeded=true -Dstrip=true -Ddefault_library=static -Dfluidsynth:enable-floats=true -Dfluidsynth:try-static-deps=true release
 }
 
