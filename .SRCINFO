@@ -1,20 +1,19 @@
 pkgbase = android-google-apis-x86-64-system-image
 	pkgdesc = Android with Google APIs x86_64 Atom System Image, latest API
-	pkgver = 30_r10
+	pkgver = 31_r06
 	pkgrel = 1
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom
-	provides = android-google-apis-x86-64-system-image-30
-	conflicts = android-google-apis-x86-64-system-image-30
+	provides = android-google-apis-x86-64-system-image-31
+	conflicts = android-google-apis-x86-64-system-image-31
 	options = !strip
-	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-30_r10.zip
+	source = https://dl.google.com/android/repository/sys-img/google_apis/x86_64-31_r06.zip
 	source = package.xml
-	sha256sums = 18d3f28ba24805db39132541548af1bfb3fabe6249e6053a2501fa78b6e9bed9
-	sha256sums = 9083cecfe118a97f74ba65cc46893dd96d46da8cc472f1677fec5366c5150544
+	sha256sums = 225c268938f9f235adca3e3633e319ab97fd2dedb5c1a7bd2cc58b6fe94d54ca
+	sha256sums = ef7e3e9a66b74a4ac480229ac164ed097a9ce3e97956826867e7950f972a9c3f
 
 pkgname = android-google-apis-x86-64-system-image
 	depends = android-platform
 	optdepends = qemu
 	optdepends = libvirt
-
