@@ -1,0 +1,25 @@
+pkgbase = ctr-m4compressor
+	pkgver = 2.0.7
+	pkgrel = 1
+	url = https://www.cutthroughrecordings.com/downloads
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = ctr-m4compressor-lv2
+	pkgdesc = Cut Through Recordings M4Compressor - Multiband Compressor (LV2)
+	groups = lv2-plugins
+	groups = pro-audio
+
+pkgname = ctr-m4compressor-vst
+	pkgdesc = Cut Through Recordings M4Compressor - Multiband Compressor (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = ctr-m4compressor-vst3
+	pkgdesc = Cut Through Recordings M4Compressor - Multiband Compressor (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
