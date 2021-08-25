@@ -1,0 +1,15 @@
+pkgbase = simple-sso-git
+	pkgdesc = Simple Single Sign-On written in LUA and embedded into Nginx, using the OpenResty environment
+	pkgver = 0.alpha
+	pkgrel = 1
+	url = https://yalis.fr/git/yves/simple-sso
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = openresty
+	provides = simple-sso
+	conflicts = simple-sso
+	source = simple-sso::git+https://yalis.fr/git/yves/simple-sso.git#branch=feature/mvp
+	md5sums = SKIP
+
+pkgname = simple-sso-git
