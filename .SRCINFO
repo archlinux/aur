@@ -1,0 +1,22 @@
+pkgbase = milvus
+	pkgdesc = Agente Milvus Helpdesk para Linux.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://milvus.com.br
+	install = milvus.install
+	arch = x86_64
+	license = custom
+	makedepends = debtap
+	depends = python-netifaces
+	depends = python-dmidecode
+	depends = python-apt
+	depends = python-psutil
+	depends = python-requests
+	depends = python-daemon
+	depends = gconf
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = http://update.milvus.com.br/linux/x64/milvus.deb
+	sha512sums_x86_64 = f3eb28af52ef75c9934a66db39e0aded7bfd3ccdcd9539f35313f6b2a8c4b67bdccaa333b40506b2d86c743e3f7978e16a9697ee7a96c81b7a0d42e1c2c59cb0
+
+pkgname = milvus
