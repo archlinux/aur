@@ -1,0 +1,14 @@
+pkgbase = zoom-libkime
+	pkgdesc = Kime library for zoom which embeds qt itself
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = https://github.com/Riey/kime
+	arch = x86_64
+	license = GPL3
+	makedepends = docker
+	depends = kime
+	depends = zoom
+	source = kime-2.5.5.tar.gz::https://github.com/Riey/kime/archive/v2.5.5.tar.gz
+	md5sums = dea5c3079478d5ec33f272b372751a88
+
+pkgname = zoom-libkime
