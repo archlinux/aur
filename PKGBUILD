@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake>=3.13' 'python')
 checkdepends=('check' 'python-gpgme' 'python-pyxattr' 'python-requests')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7094d04bda52de315d9f3b12047c0347185059580fdbddc78b2849962ab3c0e2')
+sha256sums=('436ead59dd22f45e87b4c0a408e100e0a159f825128b875ad33ed672204023be')
 
 build() {
 	cd "$pkgname-$pkgver"
