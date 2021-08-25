@@ -2,8 +2,8 @@
 
 pkgname=lizzie-improve
 _pkgname=lizzie
-pkgver=20210803
-_pkgver=2.4.1
+pkgver=20210825
+_pkgver=2.4.2
 pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
@@ -14,16 +14,18 @@ makedepends=('git')
 provides=('lizzie')
 conflicts=('lizzie')
 source=("$_pkgname::git+https://gitee.com/noobspace/lizzieyzy"
+        "https://gitee.com/noobspace/lizzieyzy/attach_files/812306/download/lizzie-yzy"$_pkgver"-shaded-linux64.jar"
         "lizzie.sh"
         "lizzie.desktop"
         "config.txt")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 package() {
-  install -Dm644 "$srcdir"/$_pkgname/lizzie-yzy"$_pkgver"-shaded-linux64.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
+  install -Dm644 "$srcdir"/lizzie-yzy"$_pkgver"-shaded-linux64.jar "$pkgdir"/usr/share/java/"$_pkgname"/"$_pkgname".jar
   install -Dm644 config.txt "$pkgdir"/usr/share/"$_pkgname"/config.txt
   install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
   install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
