@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=6.15_r372.eb93522
+pkgver=6.15_r388.527e19e
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -50,7 +50,7 @@ package() {
 	install -Dm755 stl -t "$pkgdir/usr/bin"
 
   install -d "$pkgdir/usr/share/stl"
-  cp -r categories eval guicfgs lang misc regs reshadepresets "$pkgdir/usr/share/stl"
+  cp -r categories eval guicfgs lang misc reshadepresets "$pkgdir/usr/share/stl"
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
