@@ -8,7 +8,6 @@ pkgbase = lc0-blas-git
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
-	makedepends = clang
 	makedepends = openblas-cblas-git
 	depends = openblas
 	depends = protobuf
@@ -16,4 +15,3 @@ pkgbase = lc0-blas-git
 	md5sums = SKIP
 
 pkgname = lc0-blas-git
-

@@ -1,8 +1,8 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-blas-git
 _pkgname=lc0-blas
-pkgver=1
-pkgrel=2
+pkgver=v0.28.0.r0.g3982cc0e
+pkgrel=1
 pkgdesc="BLAS version of Leela Chess Zero."
 arch=('any')
 url="https://lczero.org/"
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git rev-list --count HEAD
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
