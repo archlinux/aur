@@ -1,19 +1,19 @@
-# Maintainer: Doommsatic <keniscoolu@gmail.com>
+# Maintainer: aquova <abrick912@gmail.com>
 pkgname=('sonic-1' 'sonic-2')
 pkgbase=sonic-2013
-pkgver=1.1.2
+pkgver=1.1.2.1
 pkgrel=1
 pkgdesc="Decompilation of the mobile ports by Taxman"
 arch=(x86_64)
 url="https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation"
 license=('unknown')
 depends=('sdl2' 'libvorbis' 'libogg')
-source=("https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation/archive/$pkgver.tar.gz"
+source=("https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompilation/archive/v$pkgver.tar.gz"
     "sonic1.install"
 	"sonic2.install"
 	"sonic1.sh"
 	"sonic2.sh")
-md5sums=('f4c91f0ec87edd67d508c9b88473c357'
+md5sums=('ef35eb8e198f60ecb3b42bf267baa01f'
          '604d9d9d8356e484afbe1171e342bbe1'
          '9ec41b899affd1aed9eda74ab1e7d308'
          'ceac785ff2832d5d2c4ee83c145cd4dd'
