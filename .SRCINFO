@@ -1,6 +1,6 @@
 pkgbase = f2
 	pkgdesc = Cross-platform command-line tool for batch renaming files and directories quickly and safely
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/ayoisaiah/f2
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = f2
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = f2-1.7.1.tar.gz::https://github.com/ayoisaiah/f2/archive/refs/tags/v1.7.1.tar.gz
-	b2sums = 403d330ac173f13628ba45f6f79af89dbfabee83d3af859702fbf874bdfb89e768200575ba9e5fbaa09b2a6001ef47faafedaf4fbdf949ebeabae82c313a5fce
+	source = f2-1.7.2.tar.gz::https://github.com/ayoisaiah/f2/archive/refs/tags/v1.7.2.tar.gz
+	b2sums = 72cf26d307e8a9f062a2a7d74884ee4a50b0143715e9b6aea4e31f84fff8c4ae9c962947f2cf4518f4e35f63f1b8d2de03481a91c763738012e7cac5c9f16c9f
 
 pkgname = f2
