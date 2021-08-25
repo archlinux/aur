@@ -3,9 +3,9 @@
 _pkgname=gst
 gopkgname=github.com/uetchy/gst
 pkgname=ghq-gst
-provides=("gst=5.0.3")
+provides=("gst=5.0.4")
 conflicts=("gst")
-pkgver=5.0.3
+pkgver=5.0.4
 pkgrel=1
 pkgdesc="a simple toolbox that offers additional commands over ghq enabled environment"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ source=(
   "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  "46aba69724f9f30c86eb5ecd465690d9463815be794154315838a31d0714f400"
+  "73b5d5053da30fa27add59dc6464722152832ab451d8ca207db8fc0370056beb"
 )
 _archive=${_pkgname}-${pkgver}
 
