@@ -1,7 +1,7 @@
 # Maintainer: Simon Marcher <marchersimon@zohomail.eu>
 pkgname=tldr-cpp-git
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="The all-in-one tldr client for users and contributors"
 arch=(x86_64)
 url="https://github.com/marchersimon/tldr-cpp.git"
