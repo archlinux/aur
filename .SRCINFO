@@ -1,0 +1,15 @@
+pkgbase = reamp-studio-vst
+	pkgdesc = Reamp Studio Guitar Amplifier (VST Plugin)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://audio-assault.com/reampstudio.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+
+pkgname = reamp-studio-vst
