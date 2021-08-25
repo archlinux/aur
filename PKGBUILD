@@ -4,22 +4,22 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='re'
 pkgname="ocaml-$_projectname"
-pkgver='1.9.0'
-pkgrel='5'
+pkgver='1.10.0'
+pkgrel='1'
 pkgdesc='Pure OCaml regular expressions, with support for Perl and POSIX-style strings'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml>=4.02.0' 'ocaml-seq')
-makedepends=('dune')
+makedepends=('dune>=2.0.0')
 checkdepends=('ocaml-ounit')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'fix-ounit-name.diff'
 )
-sha256sums=('4a2408bb270e0d1aef101d6b5edfeec6753874a6bcf54eb43d9fd3a7ddd777c1'
-            'cb9109cfb78cd0c57c521fe7be23a6edee0d1e3be29f313b37093ae2848eecdc')
+sha512sums=('be284912e5532284f00ba2d8ece5a6504976fa78b29e7bb230dc258f4fea8fe0b15ebdfe34ac3242b7265f78498142a5a2d2f2c35f9e653addb717e34bf21a09'
+            'cd665ef2d43a82f26a34480265db42031b8f9cd4b0b71890f3e7fc029c1e68c4f518f1ced2b78deedc522808df0037da83b5527f6442aaf65c5dfb1b7823166f')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -30,17 +30,17 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$_projectname" --verbose
+	dune build --release --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "$_projectname" --verbose
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
