@@ -3,8 +3,8 @@
 
 _gemname=parallel
 pkgname=ruby-$_gemname
-pkgver=1.20.1
-pkgrel=2
+pkgver=1.20.2
+pkgrel=1
 pkgdesc="Ruby: parallel processing made simple and fast"
 arch=(any)
 url=https://github.com/grosser/parallel

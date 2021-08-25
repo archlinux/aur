@@ -1,7 +1,7 @@
 pkgbase = ruby-parallel
 	pkgdesc = Ruby: parallel processing made simple and fast
-	pkgver = 1.20.1
-	pkgrel = 2
+	pkgver = 1.20.2
+	pkgrel = 1
 	url = https://github.com/grosser/parallel
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = ruby-parallel
 	makedepends = ruby-rdoc
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/grosser/parallel.git?tag=v1.20.1
+	source = git+https://github.com/grosser/parallel.git?tag=v1.20.2
 	sha256sums = SKIP
 
 pkgname = ruby-parallel
