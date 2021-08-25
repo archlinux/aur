@@ -1,7 +1,7 @@
 # Maintainer: Valeriy Huz <ghotrix@gmail.com>
 pkgname='xiphos-chess-git'
 _pkgname=xiphos-chess
-pkgver=1
+pkgver=v0.6.r5.g16e73a5
 pkgrel=1
 pkgdesc="Fairly strong UCI engine."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git rev-list --count HEAD
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

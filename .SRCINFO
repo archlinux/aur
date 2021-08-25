@@ -1,6 +1,6 @@
 pkgbase = xiphos-chess-git
 	pkgdesc = Fairly strong UCI engine.
-	pkgver = 1
+	pkgver = v0.6.r5.g16e73a5
 	pkgrel = 1
 	url = https://github.com/milostatarevic/xiphos
 	arch = i686
@@ -15,4 +15,3 @@ pkgbase = xiphos-chess-git
 	md5sums = SKIP
 
 pkgname = xiphos-chess-git
-
