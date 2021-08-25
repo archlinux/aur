@@ -1,0 +1,18 @@
+pkgbase = ocemu-zenith
+	pkgdesc = A package for the Zenith391's fork of the OCEmu
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zenith391/OCEmu
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = svn
+	makedepends = luarocks
+	depends = lua52
+	depends = lua52-filesystem
+	depends = lua52-sec
+	depends = lua52-socket
+	source = git://github.com/zenith391/OCEmu
+	sha1sums = SKIP
+
+pkgname = ocemu-zenith
