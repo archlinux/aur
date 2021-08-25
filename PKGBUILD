@@ -1,9 +1,9 @@
-# Co-Maintainer: AlphaJack <alphajack at tuta dot io>
-# Co-Maintainer: amo <https://aur.archlinux.org/account/amo>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ng"
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/jonaswinkler/paperless-ng"
 license=("GPL3")
@@ -21,6 +21,7 @@ depends=("file"
          "ttf-liberation"
          "uvicorn"
          "python-aiohttp"
+         "python-aioredis1" # until components have been updated
          "python-arrow"
          "python-asgiref"
          "python-async-timeout"
@@ -109,7 +110,7 @@ source=("$url/releases/download/ng-$pkgver/$pkgname-$pkgver.tar.xz"
         "paperless-consumer.service"
         "paperless-scheduler.service"
         "paperless-webserver.service")
-sha256sums=('d8f25bf23de88a695f889de0aa32bab937a6cc576d00fd8c966e511f4f5bc7f1'
+sha256sums=('a154aad005a4b2e582f35305e71899e996dd28ab6aaa98662fec48cc92da0ccc'
             '5496fb7258fe070450586180437d62eac51189228ae7ac75411630a9253336c5'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
