@@ -5,42 +5,44 @@
 
 pkgname=moneymanagerex-git
 pkgver=1.5.6
-pkgrel=4
+pkgrel=5
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
 license=('GPL')
 depends=('wxgtk3-dev' 'webkit2gtk')
-makedepends=('awk' 'curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
+makedepends=('curl' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex')
 source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
-sha256sums=('SKIP')
+sha512sums=('SKIP')
+_github_api_uri=https://api.github.com/repos/moneymanagerex/moneymanagerex/releases/latest
 
 pkgver() {
-  cd "${pkgname%-git}"
-  curl --silent https://api.github.com/repos/${pkgname%-git}/${pkgname%-git}/releases/latest | grep '"tag_name":' | awk -F[\"v] '{print $5}'
+  curl --silent ${_github_api_uri} | jq -r '.tag_name[1:]'
 }
 
 prepare() {
-  cd "${pkgname%-git}"
-  git checkout tags/$(curl --silent https://api.github.com/repos/${pkgname::14}/${pkgname::14}/releases/latest | grep '"tag_name":' | awk -F[\"] '{print $4}')
+  cd "${srcdir}"/moneymanagerex
+
+  git checkout tags/$(curl --silent ${_github_api_uri} | jq -r '.tag_name')
   git submodule update --init --recursive
-  mkdir -p build
+
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
   sed -i "s/luaL_checkint(/luaL_checkinteger(/g" ./3rd/LuaGlue/include/LuaGlue/LuaGlueApplyTuple.h
 }
 
 build() {
-  cd "${pkgname%-git}/build"
-  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
+  cd "${srcdir}"/moneymanagerex
+
+  cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 .
   cmake --build . --target package
 }
 
 package() {
-  cd "${pkgname%-git}/build"
+  cd "${srcdir}"/moneymanagerex
 
   make DESTDIR="${pkgdir}" install
 }
