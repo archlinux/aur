@@ -5,8 +5,8 @@
 # Contributor: Jan Kohnert <kohni.jk at gmail dot com>
 
 pkgname=python-gdl
-pkgver=1.0.0_rc.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Python interface for the GNU Data Language(GDL)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net"
@@ -15,43 +15,36 @@ depends=("gnudatalanguage=${pkgver}")
 makedepends=('cmake')
 #options=('!makeflags')
 conflicts=('python2-gdl')
-source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver/_/-}.tar.gz"
-        'gdl.profile'
-        'gdl-mallinfo2.patch'
-        'gdl-tiff.patch')
-md5sums=('a6dbcbf5eaf7bb27440fdb69b84d38d7'
-         '40aa5fd8278cd8e80425c62a577563cc'
-         'ae546f1cb8f775dfc8589f656bdaf40a'
-         'e3270e6d366670a10947e4199c7bc35a')
+source=("https://github.com/gnudatalanguage/gdl/archive/v${pkgver}.tar.gz"
+        'gdl.profile')
+md5sums=('08fd60b29a487445dea719790d51eb48'
+         '40aa5fd8278cd8e80425c62a577563cc')
 
 prepare() {
-    cd ${srcdir}/gdl-${pkgver/_/-}
+    cd ${srcdir}/gdl-${pkgver}
 
-#   patch -p1 < ../gdl-tirpc.patch
-#   patch -p1 < ../gdl-updates.patch
-    patch -p1 -l -N -i "${srcdir}"/gdl-mallinfo2.patch
-    patch -p1 -l -N -i "${srcdir}"/gdl-tiff.patch
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
-    cd ${srcdir}/gdl-${pkgver/_/-}
+    cd ${srcdir}/gdl-${pkgver}
     if [[ -d build ]]; then
         rm -r build
     fi
     mkdir build
     cd build
-    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=ON -DPYTHONVERSION=3 \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_MODULE=ON \
-        -DGRAPHICSMAGICK=ON -DMAGICK=OFF -DFFTW=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
-        -DHDF5=ON -DGRIB=ON -DUDUNITS2=ON -DEIGEN3=ON \
-        -DNETCDF=ON -DREADLINE=ON -DLIBPROJ4=OFF -DGLPK=ON -DSHAPELIB=ON ..
+    cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr -DEIGEN3=ON -DFFTW=ON -DGLPK=ON \
+        -DGRAPHICSMAGICK=ON -DGRIB=ON -DHDF5=ON -DHDF=ON -DHDFDIR=/opt/hdf4 \
+        -DLIBPROJ=ON -DMAGICK=OFF -DMPI=ON -DNETCDF=ON \
+        -DPYTHON_MODULE=ON -DREADLINE=ON -DSHAPELIB=ON -DUDUNITS2=ON \
+        -DPYTHON=ON -DPYTHONVERSION=3 ..
 
     make
 }
 
 package() {
-    cd ${srcdir}/gdl-${pkgver/_/-}/build
+    cd ${srcdir}/gdl-${pkgver}/build
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     if [[ -d ../pkginstall ]]; then
         rm -r ../pkginstall
     fi
