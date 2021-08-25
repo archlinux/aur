@@ -1,16 +1,15 @@
 pkgbase = python-haversine
 	pkgdesc = Calculate the distance (in various units) between two points on Earth using their latitude and longitude.
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/mapado/haversine
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/haversine/haversine-2.3.1.tar.gz
-	source = https://raw.githubusercontent.com/mapado/haversine/master/LICENSE
-	sha256sums = 75a7f859b3fb6df746564ca66ad1fd5b4052cdbab3d74ff16e8f1a7c3d4a26a5
-	sha256sums = 4a5b657ce0f6473ace15c292cd7f0d483b4eef1fd8f31c8a4d58c7a8c27eb20f
+	source = https://files.pythonhosted.org/packages/source/h/haversine/haversine-2.4.0.tar.gz
+	source = https://raw.githubusercontent.com/mapado//master/LICENSE
+	b2sums = 34e9ea402cac65851bd9f2a3c108d3fa32a6269b5a0704d785df0668902898ccad38b804a7f59abc4f22f3b10f1e34bd5dac75c36d00d157c439e263ca7f1e9c
+	b2sums = eca55616e1283ec9d4847cab8acb6c3fbf694544ec0ea439cb9d70077c81ed9ea154f0e3c0a71423d7aa9ba6b6ed5548976f534f8538a50313b6c7f51ce72527
 
 pkgname = python-haversine
-
