@@ -1,7 +1,7 @@
 # Maintainer: Ben 'silentnoodle' Lönnqvist <lonnqvistben at gmail dot com>
 pkgname=planarally-bin
-pkgver=0.27.0
-pkgrel=2
+pkgver=0.28.0
+pkgrel=1
 pkgdesc='A companion tool for when you travel into the planes.'
 arch=('x86_64')
 url='https://www.planarally.io'
@@ -25,7 +25,7 @@ makedepends=('npm')
 makedepends=()
 source=("https://github.com/Kruptein/PlanarAlly/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('9f88ffda587f4b02cfb19839b8aea602f02c6069ce055334371fb40b3a2884b9')
+sha256sums=('ddae926a91f05c74dfc442268ac37e9ac2b2e8471399514d790124ccc71afd06')
 
 prepare() {
   cd "$srcdir/server"
