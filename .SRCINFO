@@ -1,0 +1,12 @@
+pkgbase = create-react-native-app
+	pkgdesc = The fastest way to create universal React Native apps
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://github.com/expo/create-react-native-app
+	arch = any
+	license = BSD-3-Clause
+	makedepends = npm
+	depends = nodejs
+	options = !emptydirs
+
+pkgname = create-react-native-app
