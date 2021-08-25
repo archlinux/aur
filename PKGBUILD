@@ -8,7 +8,7 @@ license=('EULA')
 depends=('libcurl-gnutls' 'glibc')
 groups=('pro-audio' 'vst3-plugins')
 source=('https://tal-software.com/downloads/plugins/TAL-Filter_64_linux.zip')
-md5sums=('f69785a7eb9d1da31807621456f04ea2')
+md5sums=('5239a5518007008755ced72c4e83510c')
 
 package() {
   mkdir -p $pkgdir/usr/lib/vst3
