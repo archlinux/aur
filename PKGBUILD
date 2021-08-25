@@ -1,30 +1,32 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='shd'
 pkgname="$_pkgname-git"
-pkgver='0.1.2.r0.g1df83d0'
+pkgver='0.1.3.r2.g8c68335'
 pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info - git version'
 arch=('x86_64' 'i686' 'arm' 'aarch64')
 url="https://github.com/alttch/$_pkgname"
 license=('MIT')
 depends=('smartmontools')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'rust>=1.54.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	# Prepare correct target for our architecture
 	_cargotarget="$CARCH-unknown-linux-musl"
 
 	if [ "$CARCH" = 'arm' ]; then
 		_cargotarget="${_cargotarget}eabihf"
 	fi
 
+	cargo update
 	cargo fetch --locked --target "$_cargotarget"
 }
 
