@@ -1,0 +1,15 @@
+pkgbase = perl-text-unaccent-pureperl
+	pkgdesc = Perl module for “unaccenting” characters. Pure Perl equivalent to the Text::Unaccent module.
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://metacpan.org/pod/Text::Unaccent::PurePerl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	depends = perl-io-all
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PJ/PJACKLAM/Text-Unaccent-PurePerl-0.05.tar.gz
+	sha512sums = 94664b333fa808ea226247a62267d546ae45ce2349abaf7a3e6f6ee2280f27ad950f5e9a42c65281e179966381a2eab166109e9039fc142568a50ac97d4aef74
+
+pkgname = perl-text-unaccent-pureperl
