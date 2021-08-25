@@ -5,7 +5,7 @@ pkgver=r376.8d114dd5
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
-url="https://github.com/libretro/retroarch-assets"
+url="https://github.com/libretro/$_pkgname"
 license=('CCPL:by')
 groups=('libretro')
 makedepends=('git')
@@ -13,8 +13,8 @@ optdepends=('retroarch')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
