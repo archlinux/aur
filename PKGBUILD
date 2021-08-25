@@ -1,6 +1,6 @@
 pkgname=tal-vocoder-vst3
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Phase Vocoder By TAL Software (VST3)"
 arch=('x86_64')
 url="https://tal-software.com"
