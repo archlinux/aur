@@ -10,8 +10,8 @@ license=("GPL3")
 _filename=jelly-desktop-${pkgver}.pacman
 source=("${pkgname}::git+${url}.git")
 md5sums=("SKIP")
+provides=("jelly-desktop")
 makedepends=("nodejs" "npm")
-optdepends=("vlc: Launch stream when direct URL is copied")
 build() {
 	cd "jelly-desktop"
 	npm install
