@@ -14,7 +14,7 @@ makedepends=('git')
 provides=('lizzie')
 conflicts=('lizzie')
 source=("$_pkgname::git+https://gitee.com/noobspace/lizzieyzy"
-        "https://gitee.com/noobspace/lizzieyzy/attach_files/812306/download/lizzie-yzy"$_pkgver"-shaded-linux64.jar"
+        "https://gitee.com/noobspace/lizzieyzy/attach_files/812346/download/lizzie-yzy"$_pkgver"-shaded-linux64.jar"
         "lizzie.sh"
         "lizzie.desktop"
         "config.txt")
