@@ -1,7 +1,7 @@
 # Maintainer: Matthias Fulz <mfulz [dot] olznet [dot] de>
 
 pkgbase=linux-ath-dfs
-pkgver=5.13.1.arch1
+pkgver=5.13.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -25,7 +25,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '769c00ae3a7dbf1b1d55d09b2fc929381fa87f42aad1a8d942186664e60faec7')
+            '034ed7a963eedde959ee03c34b0dfc2c6aa87c154bfb0509d00c5e9bfe830299')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
