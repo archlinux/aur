@@ -6,12 +6,12 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.1.r29771.1fe3ee789'
+pkgver='0.15.2.r29783.45532e7bc'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
-license=('AGPL3')
+license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
@@ -25,8 +25,8 @@ optdepends=('bluez: for bluetooth transport'
             'miniupnpc: for NAT uPnP support'
 	    'libpulse: for conversation service'
 	    'opus: for conversation service'
-            'pbc: for Attribute-Based Encryption (experimental)'
-            'libgabe: for Attribute-Based Encryption (experimental)'
+            'pbc: for Attribute-Based Encryption'
+            'libgabe: for Attribute-Based Encryption'
             'libpabc: for re:claimID zero-knowledge privacy credentials')
 backup=("etc/${_appname}.conf")
 options=('!makeflags')
@@ -82,7 +82,7 @@ package() {
 	install -Dm644 "${srcdir}/${_appname}-system.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/user"
-	install -Dm0644 "${srcdir}/${_appname}-user.service" "${pkgdir}/usr/lib/systemd/user/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}-user.service" "${pkgdir}/usr/lib/systemd/user/${_appname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
@@ -90,13 +90,12 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
-	install -dm755 "${pkgdir}/etc"
-
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
 	# that this configuration file is the one backed up with each update,
 	# while `/usr/share/gnunet/config.d/` is kept as immutable default
 	# configuration.
+	install -dm755 "${pkgdir}/etc"
 	{
 		echo "# /etc/${_appname}.conf"
 		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${_appname}/config.d" -type f -name '*.conf' \
