@@ -2,7 +2,7 @@
 # Contributor: Bruce Zhang <zttt183525594@gmail.com>
 
 pkgname=dingtalk-bin
-pkgver=1.0.0.260
+pkgver=1.0.0.265
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=("https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linu
 
 # DebSource & pkgvere can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-md5sums=('5436d499bf8869cbc480ade071a55358'
+md5sums=('75b576daa76dc0bbbae256ec06b5afd7'
          'e1b984a024700a9ef5f77a1018a41f8e'
          '0e255cd61852162548db96e46f1dda00')
 
