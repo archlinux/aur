@@ -1,7 +1,7 @@
 # Maintainer: Nicholas Boyd Isacsson <nicholas@isacsson.se>
 
 pkgname=cbonsai
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A bonsai tree generator, written in C using ncurses'
 arch=('any')
@@ -11,10 +11,10 @@ depends=('gcc' 'ncurses')
 provides=('cbonsai')
 conflicts=('cbonsai')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.zip")
-sha256sums=('206eb5225d63999c413201f0a7fecc552289727ce40094bd503922b7affe80ec')
+sha256sums=('c8ccc509c3cd73983b42b518bb99f9668155aebaa51a46977666b6b58e21cc18')
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" PREFIX="/usr" MANDIR="/usr/share/man" install
 }
 
