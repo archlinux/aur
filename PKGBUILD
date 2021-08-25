@@ -2,7 +2,7 @@
 # Original Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=nsq
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A realtime distributed messaging platform"
 arch=( 'i686' 'x86_64' )
@@ -10,13 +10,13 @@ url="http://nsq.io/"
 makedepends=( "go" "git" )
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nsqio/nsq/archive/v$pkgver.tar.gz")
-sha256sums=('98e24d748550f01dd8775e5e40f3ae657f5b513f875a15081cdcdc567b745480')
+sha256sums=('5fd252be4e9bf5bc0962e5b67ef5ec840895e73b1748fd0c1610fa4950cb9ee1')
 options=( '!strip' )
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  GO111MODULE=on make BLDFLAGS="-ldflags='-s -w'"
+  make -j1 BLDFLAGS="-ldflags='-s -w' -trimpath"
 }
 
 package() {
