@@ -3,12 +3,13 @@
 pkgname=sentinel-appimage
 _pkgname=sentinel-linux
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source decentralized VPN network application'
 arch=('x86_64')
 url='https://github.com/sentinel-official/desktop-client'
 license=('Apache')
 depends=('fuse2' 'zlib' 'hicolor-icon-theme')
+optdepends=('org.freedesktop.secrets')
 options=(!strip)
 _shortname='sentinel'
 _appimage="${_pkgname}-${pkgver}.AppImage"
