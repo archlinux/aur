@@ -1,8 +1,8 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.1.1.r0.5b1a7ba
-pkgrel=2
+pkgver=0.1.1.r2.2c46e83
+pkgrel=1
 pkgdesc="Manage collections of btrfs snapshots"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
@@ -21,7 +21,7 @@ pkgver() {
 
 check() {
     cd "$srcdir/${pkgname%-git}"
-    make -k check
+    ./test.sh
 }
 
 prepare() {
@@ -34,5 +34,5 @@ prepare() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    INSTALL_ROOT=$pkgdir/usr make install
+    INSTALL_ROOT=$pkgdir/usr ./install.sh
 }
