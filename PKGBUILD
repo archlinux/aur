@@ -87,6 +87,11 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
 
+	# The current package cannot ship `gnunet-helper-transport-wlan` and
+	# `gnunet-helper-transport-bluetooth`, as these require root privileges
+	# during the build process. If these are built, please update the
+	# "${_appname}.tmpfiles" file accordingly
+
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
@@ -95,7 +100,9 @@ package() {
 	# that this configuration file is the one backed up with each update,
 	# while `/usr/share/gnunet/config.d/` is kept as immutable default
 	# configuration.
+
 	install -dm755 "${pkgdir}/etc"
+
 	{
 		echo "# /etc/${_appname}.conf"
 		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${_appname}/config.d" -type f -name '*.conf' \
