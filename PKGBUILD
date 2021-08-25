@@ -2,14 +2,14 @@
 # Maintainer: Underports Software
 # Contributor: Aleksey Sh aur <at> pivko.codes
 pkgname=meridius-electron-bin
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 epoch=1
 arch=('x86_64')
 url="https://purplehorrorrus.github.io/meridius"
 license=('custom')
 source=(https://github.com/PurpleHorrorRus/Meridius/releases/download/v${pkgver}/meridius-${pkgver}.deb)
-sha512sums=('5e7b21ab6a070280a038090a2a4f41590d3593eb8d0382db1ba8b80786507c52b6ec4615df3b4658db8d318864281a01cabf2b3867a989edbc9a2b9782348572')
+sha512sums=('75739cb3ae27f01cacff227be3306054c2dae7a7e895dc18d2a797823d74d3ccb348c73e9a9c01a1dac4e74083060ff090c78a1a975ba5cfddf44d07e4a1ca91')
 
 package_meridius-electron-bin() {
 
