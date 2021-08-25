@@ -17,6 +17,6 @@ pkgbase = libretro-beetle-saturn-git
 	provides = libretro-beetle-saturn
 	conflicts = libretro-beetle-saturn
 	source = libretro-beetle-saturn::git+https://github.com/libretro/beetle-saturn-libretro.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = libretro-beetle-saturn-git

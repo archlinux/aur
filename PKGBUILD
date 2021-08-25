@@ -1,5 +1,4 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-# shellcheck shell=bash disable=SC2034,SC2164
 _pkgname=libretro-beetle-saturn
 pkgname=$_pkgname-git
 pkgver=r590.ee5b214
@@ -15,7 +14,7 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
