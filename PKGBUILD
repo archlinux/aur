@@ -5,12 +5,12 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.15.0'
-pkgrel=12
+pkgver='0.15.2'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
-license=('AGPL3')
+license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
 	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
@@ -23,19 +23,18 @@ optdepends=('bluez: for bluetooth transport'
             'miniupnpc: for NAT uPnP support'
 	    'libpulse: for conversation service'
 	    'opus: for conversation service'
-            'pbc: for Attribute-Based Encryption (experimental)'
-            'libgabe: for Attribute-Based Encryption (experimental)'
+            'pbc: for Attribute-Based Encryption'
+            'libgabe: for Attribute-Based Encryption'
             'libpabc: for re:claimID zero-knowledge privacy credentials')
 backup=("etc/${pkgname}.conf")
 options=('!makeflags')
-source=("http://ftpmirror.gnu.org/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
+source=("ftp://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
         "${pkgname}-user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-validpgpkeys=('19647543F7861D3BF4E64FF7BF60708B48426C7E'
-              '3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('cca23d6fb40890a5eb2ccae4b8f7e74c8e4e84d3fca2f419d775cb4a58dd9a67'
+validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
+sha256sums=('23e6af170bb47aacb15d27bbe244d871dbc4d0523b1139bd2f12f4b42b65102e'
             'SKIP'
             'ef221a4cbdc2270d7a1b1447e6e8a498653ec16d2f73fa57a7c6888980af4dfb'
             '13760ecc1523a9acd030df34e6a90edcd2971271766c8e159c9e66341a9168c4'
@@ -71,7 +70,7 @@ package() {
 	install -Dm644 "${srcdir}/${pkgname}-system.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/user"
-	install -Dm0644 "${srcdir}/${pkgname}-user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+	install -Dm644 "${srcdir}/${pkgname}-user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
@@ -79,13 +78,12 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-	install -dm755 "${pkgdir}/etc"
-
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
 	# that this configuration file is the one backed up with each update,
 	# while `/usr/share/gnunet/config.d/` is kept as immutable default
 	# configuration.
+	install -dm755 "${pkgdir}/etc"
 	{
 		echo "# /etc/${pkgname}.conf"
 		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${pkgname}/config.d" -type f -name '*.conf' \
