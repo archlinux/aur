@@ -47,7 +47,7 @@ package() {
     cp -r ./OCEmu ${pkgdir}${_path_to_emulator}
 
     # Generating a running script
-    rm ocemu
+    rm -f ocemu
     echo "#!/bin/bash" >> ocemu
     echo "cd ${_path_to_emulator}/OCEmu/src/" >> ocemu
     echo "lua5.2 boot.lua \$@" >> ocemu
