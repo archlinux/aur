@@ -3,7 +3,7 @@
 
 pkgname=ferdi-nightly-bin
 pkgver=5.6.1.nightly.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version'
 url='https://getferdi.com'
 license=('Apache')
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   newest_nightly_version=$(curl --silent https://api.github.com/repos/getferdi/nightlies/releases | jq -r '.[0].tag_name[1:]')
-  echo ${newest_nightly_version/-/.}
+  printf ${newest_nightly_version/-/.}
 }
 
 prepare() {
