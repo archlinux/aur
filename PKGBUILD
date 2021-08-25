@@ -9,8 +9,8 @@
 # TODO: Build and package praat-nogui and sendpraat, as in Debian.
 
 pkgname=praat
-pkgver=6.1.51
-pkgrel=2
+pkgver=6.1.52
+pkgrel=1
 pkgdesc='A speech analysis tool used for doing phonetics by computer'
 arch=(x86_64 i686 aarch64)
 url=https://www.praat.org
@@ -23,29 +23,30 @@ depends=(alsa-lib
          ttf-sil-doulos)
 optdepends=('ttf-sil-fonts')
 _url="https://github.com/$pkgname/$pkgname"
-source=("$pkgname-$pkgver.tar.gz::$_url/archive/v$pkgver.tar.gz"
+_archive="$pkgname-$pkgver"
+source=("$_archive.tar.gz::$_url/archive/v$pkgver.tar.gz"
         "$pkgname.1"
         "$pkgname.desktop"
         "$pkgname.svg"
         "$pkgname.xpm")
-sha256sums=('f39b7f1dc4ab01f6cd63c102573597d7c30f6961de2db0c0b5c164d9d87640b3'
+sha256sums=('1ae52206fa06cb46320f3f07494b11385682bb7a53acf63e6d68f5482d01242a'
             '21ee03cae45be634c57c167c2dfbdfd9d9b7feadb98e0124413d9426c199e81c'
             '94720aedc8e9c9e9d53b3230d79ccaae551b5bc5e6986528664311d55f3cce5a'
             'db6c7568f6e13b4ce7c37bd9fcf289832867f79ba7d7fc48c4f13f0045ad98f1'
             '07abf61475f22f83f0514a8fba1ec7bd3821d2b7f35b1215c1f3e1feb947d74b')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	cp makefiles/makefile.defs.linux.pulse makefile.defs
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "../$pkgname.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "../$pkgname.svg"
