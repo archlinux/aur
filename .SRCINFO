@@ -1,7 +1,7 @@
 pkgbase = carla-bridges-win32
 	pkgdesc = Carla win32 bridge (Stable)
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kxstudio.sf.net/carla
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = carla-bridges-win32
 	makedepends = gcc-multilib
 	depends = mingw-w64-crt
 	depends = mingw-w64-winpthreads
-	depends = mingw-w64-pkg-config
 	depends = wine
 	depends = carla
 	provides = carla-bridges-win32
