@@ -1,0 +1,16 @@
+pkgbase = split-run-git
+	pkgdesc = Launches programs from the terminal and the closes the terminal automatically
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Xenose/split-run.git
+	arch = any
+	license = GPL3
+	makedepends = clang
+	makedepends = git
+	makedepends = make
+	provides = srun
+	conflicts = srun
+	source = git+https://gitlab.com/Xenose/split-run.git
+	md5sums = SKIP
+
+pkgname = split-run-git
