@@ -1,0 +1,14 @@
+pkgbase = template
+	pkgdesc = A script to genrate template files.
+	pkgver = r5.1e9b22a
+	pkgrel = 1
+	url = https://github.com/ASHWIN990/template
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python3
+	provides = template
+	source = git+https://github.com/ASHWIN990/template.git
+	md5sums = SKIP
+
+pkgname = template
