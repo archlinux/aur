@@ -1,7 +1,7 @@
 # Maintainer: Paweł Lidwin <linguin@tutanota.com>
 
 pkgname=jelly-desktop
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple community made desktop client for Jellyfin"
 arch=("x86_64")
