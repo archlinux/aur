@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=dosfstools-git
-pkgver=4.1.r86.gfc55b63
+pkgver=4.2.r15.g77ffb87
 pkgrel=1
 pkgdesc="DOS filesystem utilities"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "dosfstools"
 
-  autoreconf -fi
+  ./autogen.sh
   ./configure \
     --prefix="/usr" \
     --sbindir="/usr/bin" \

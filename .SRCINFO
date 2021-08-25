@@ -1,6 +1,6 @@
 pkgbase = dosfstools-git
 	pkgdesc = DOS filesystem utilities
-	pkgver = 4.1.r86.gfc55b63
+	pkgver = 4.2.r15.g77ffb87
 	pkgrel = 1
 	url = https://github.com/dosfstools/dosfstools
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = dosfstools-git
 	sha256sums = SKIP
 
 pkgname = dosfstools-git
-
