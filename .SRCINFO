@@ -1,0 +1,36 @@
+pkgbase = harrison-ava
+	pkgver = 20210825
+	pkgrel = 1
+	url = https://www.harrisonconsoles.com/site/ava-plugins.html
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = harrison-ava-bf-vst
+	pkgdesc = AVA Bass Flow (VST)
+
+pkgname = harrison-ava-ds-vst
+	pkgdesc = AVA De-Esser (VST)
+
+pkgname = harrison-ava-legacyq-vst
+	pkgdesc = AVA LegacyQ (VST)
+
+pkgname = harrison-ava-mc-vst
+	pkgdesc = AVA Multiband Compressor (VST)
+
+pkgname = harrison-ava-me-vst
+	pkgdesc = AVA Multiband Equalizer (VST)
+
+pkgname = harrison-ava-sc-vst
+	pkgdesc = AVA Spectral Compressor (VST)
+
+pkgname = harrison-ava-df-vst
+	pkgdesc = AVA Drum Flow (VST)
+
+pkgname = harrison-ava-vf-vst
+	pkgdesc = AVA Vocal Flow (VST)
