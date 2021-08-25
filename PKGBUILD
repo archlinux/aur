@@ -1,5 +1,5 @@
 pkgname=tal-noisemaker-vst3
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="A Free Soft Synth By TAL Software (VST3)"
 arch=('x86_64')
