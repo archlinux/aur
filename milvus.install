@@ -8,24 +8,12 @@ post_install() {
 	chmod 755 /usr/share/milvus/resources/scripts/service.sh
 	rm -rf /usr/share/milvus/resources/scripts/milvus.deb
 
-	{
-	    sudo -u "$USER" /usr/share/milvus/milvus &
-	} || {
-	    echo "Erro ao iniciar servico"
-	}
-
 	if [ -f "$TOKEN" ]; then
 	    {
-	        sudo cp /usr/share/milvus/resources/scripts/milvus.service /etc/systemd/system/
-	        sudo systemctl daemon-reload
-	    } || {
-	        echo "Erro ao iniciar servico"
-	    }
-	fi
-
-	if [ -f "$TOKEN" ]; then
-	    {
-	        sudo service milvus start
+	        cp /usr/share/milvus/resources/scripts/milvus.service /etc/systemd/system/
+	        systemctl daemon-reload
+		systemctl enable milvus
+		systemctl start milvus
 	    } || {
 	        echo "Erro ao iniciar servico"
 	    }
@@ -38,20 +26,8 @@ post_upgrade() {
 }
 
 pre_remove() {
-
-	{
-	    AGENTDID=`(ps ax | grep 'agentd.py' | grep 'start' | grep -v grep | awk '{ print $1 }')`
-	    sudo kill $AGENTDID
-	    echo "Servico parado"
-	} || {
-	    echo "Erro ao parar servico"
-	}
-
-	{
-	    sudo killall milvus
-	    echo "Agente parado"
-	} || {
-	    echo "Erro ao parar agente"
-	}
-
+	systemctl stop milvus
+	systemctl disable milvus
+	rm /etc/systemd/system/milvus.service
+	killall -15 milvus
 }
