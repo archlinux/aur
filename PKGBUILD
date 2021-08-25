@@ -2,8 +2,8 @@
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color models"
-pkgver=0.7.7
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=('GPL3')
