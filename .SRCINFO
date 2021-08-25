@@ -1,13 +1,12 @@
 pkgbase = dehydrated-pdns-hook
 	pkgdesc = PowerDNS api hook for dehydrated
-	pkgver = 0.4.2
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/silkeh/pdns_api.sh
 	arch = any
 	license = EUPL v1.2
 	depends = dehydrated
-	source = https://github.com/silkeh/pdns_api.sh/archive/v0.4.2.tar.gz
-	sha256sums = 2eb5736ce216984ce8c77bf91138a57fa2c54da2fe6fd7d1b5f034e49d88747c
+	source = https://github.com/silkeh/pdns_api.sh/archive/v0.5.1.tar.gz
+	sha256sums = 683532d4a20bd0558f386d46aa319320bb82740fd40435701b37219252102764
 
 pkgname = dehydrated-pdns-hook
-
