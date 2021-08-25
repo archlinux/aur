@@ -1,7 +1,7 @@
 # Maintainer: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: The-Repo-Club <The-Repo-Club@github.com>
 
-pkgname=('dracula-gtk-theme' 'dracula-qt5-theme' 'dracula-icons')
+pkgname=('dracula-gtk-theme-bin' 'dracula-qt5-theme-bin' 'dracula-icons-bin')
 pkgbase=dracula-themes
 _pkgname=Dracula
 pkgver=2021.08.25
@@ -13,21 +13,21 @@ license=('GPL')
 source=("${_pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
 sha256sums=('7c7047054fc8946a92f706c0a5e5804680c2b9d46e1ecae6e9ad9349d861739e')
 
-package_dracula-gtk-theme() {
+package_dracula-gtk-theme-bin() {
     cd "$_pkgname-$pkgver"
 
     mkdir -p "${pkgdir}/usr/share/themes/"
     cp -a ".themes/"* "${pkgdir}/usr/share/themes/"
 }
 
-package_dracula-qt5-theme() {
+package_dracula-qt5-theme-bin() {
     cd "$_pkgname-$pkgver"
 
     mkdir -p "${pkgdir}/usr/share/qt5ct/colors"
     cp -a ".qt5ct/colors/"* "${pkgdir}/usr/share/qt5ct/colors"
 }
 
-package_dracula-icons() {
+package_dracula-icons-bin() {
     cd "$_pkgname-$pkgver"
 
     mkdir -p "${pkgdir}/usr/share/icons/"

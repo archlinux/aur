@@ -8,8 +8,8 @@ pkgbase = dracula-themes
 	source = Dracula-2021.08.25.tar.gz::https://github.com/The-Repo-Club/Dracula/archive/2021.08.25.tar.gz
 	sha256sums = 7c7047054fc8946a92f706c0a5e5804680c2b9d46e1ecae6e9ad9349d861739e
 
-pkgname = dracula-gtk-theme
+pkgname = dracula-gtk-theme-bin
 
-pkgname = dracula-qt5-theme
+pkgname = dracula-qt5-theme-bin
 
-pkgname = dracula-icons
+pkgname = dracula-icons-bin
