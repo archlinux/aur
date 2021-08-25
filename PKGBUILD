@@ -29,11 +29,9 @@ pkgver() {
 
 package() {
     cd ${srcdir}/$_repo
-
-    # Copy dkms.conf
-    install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+    sed -i "s/PACKAGE_VERSION=[0-9\"-]*/PACKAGE_VERSION=\"$pkgver\"/" dkms.conf
 
     # Copy sources (including Makefile)
+    install -d "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
     cp -r * "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
-
 }
