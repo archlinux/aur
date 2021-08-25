@@ -1,0 +1,25 @@
+pkgbase = ctr-epicpress
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://www.cutthroughrecordings.com/downloads
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = ctr-epicpress-lv2
+	pkgdesc = Cut Through Recordings Epicpress - Enhanced Dynamic Compressor (LV2)
+	groups = lv2-plugins
+	groups = pro-audio
+
+pkgname = ctr-epicpress-vst
+	pkgdesc = Cut Through Recordings Epicpress - Enhanced Dynamic Compressor (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = ctr-epicpress-vst3
+	pkgdesc = Cut Through Recordings Epicpress - Enhanced Dynamic Compressor (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
