@@ -1,0 +1,25 @@
+pkgbase = ctr-faradelay
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://www.cutthroughrecordings.com/downloads
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = ctr-faradelay-lv2
+	pkgdesc = Cut Through Recordings Faradelay - Dynamic Filter/Delay (LV2)
+	groups = lv2-plugins
+	groups = pro-audio
+
+pkgname = ctr-faradelay-vst
+	pkgdesc = Cut Through Recordings Faradelay - Dynamic Filter/Delay (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = ctr-faradelay-vst3
+	pkgdesc = Cut Through Recordings Faradelay - Dynamic Filter/Delay (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
