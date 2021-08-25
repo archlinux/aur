@@ -1,7 +1,7 @@
 pkgbase = dmidiplayer
 	pkgdesc = MIDI file player based on Drumstick
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/dmidiplayer/
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = dmidiplayer
 	makedepends = qt5-tools
 	makedepends = pandoc
 	depends = drumstick
-	depends = qt5-base
 	depends = uchardet
 	source = https://downloads.sourceforge.net/dmidiplayer/dmidiplayer-1.5.0.tar.gz
 	sha512sums = eb54e3a95627223b58cff0c328240315f10eae20d56147dcaa412906182232aeb3067f630c5e722d94b7c7e1bbeff182468b647a676c16fb918134f90337c323
