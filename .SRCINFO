@@ -1,0 +1,15 @@
+pkgbase = perl-pdf-tk
+	pkgdesc = Perl integration for the pdf toolkit (pdftk)
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/pod/PDF::Tk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.6.0
+	depends = perl-io-all
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/M/MR/MRAMBERG/PDF-Tk-0.02.tar.gz
+	sha512sums = d1a235a5f62e5abbfbb912788f4fd7990595682f9c3b75114c23de07d4d84d563535c5df10054b6250839fa8b80043f93ae9790dd586797b36485f11007f13cc
+
+pkgname = perl-pdf-tk
