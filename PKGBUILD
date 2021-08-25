@@ -15,7 +15,7 @@ conflicts=(
     "papirus-icon-theme-gtk-git"
     "papirus-icon-theme-kde"
     "papirus-icon-theme-kde-git")
-
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreaxMATE/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('fcc3d0f1ac0087a8752a77fa2970171b9ca9655e2c46e3ee44484e621ea3b8721b21930ce385c643abe6738a53f3ec398469a7e119f7fb346a845fa1af0513a1')
 
