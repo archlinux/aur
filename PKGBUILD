@@ -210,6 +210,7 @@ _get_mirror() {
 			echo -n "${url_item}"
 			return 0
 		fi
+		echo "Mirror ${url_item} not available" 1>&2;
 	done
 	return 1
 }
