@@ -1,0 +1,19 @@
+pkgbase = apparatus-git
+	pkgdesc = A hybrid graphics editor / programming environment for creating interactive diagrams.
+	pkgver = v0.4.1.r117.g18446e9
+	pkgrel = 1
+	url = http://aprt.us/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = bash
+	provides = apparatus
+	source = apparatus-git::git+https://github.com/cdglabs/apparatus
+	source = apparatus.desktop
+	source = apparatus
+	sha256sums = SKIP
+	sha256sums = 923ac5106ef028602a618f92bab1b31a57e34456658767d507acf10fbe02249a
+	sha256sums = 00c72c51b1c81492cb23a55cab958d7c052e18ced77aee7b36da5fd849008db6
+
+pkgname = apparatus-git

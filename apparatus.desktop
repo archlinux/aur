@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Graphics
+Comment=Apparatus - Hybrid graphics editor / programming environment for creating interactive diagrams
+Exec=/usr/bin/apparatus
+Name=Apparatus
+Terminal=false
+Type=Application

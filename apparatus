@@ -1,0 +1,2 @@
+#!/bin/sh
+exec xdg-open /usr/share/apparatus/index.html
