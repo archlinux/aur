@@ -1,4 +1,4 @@
-# Maintainer: Tobias Kunze <r@rixx.de>
+# Maintainer: Bernat Gabor <gaborjbernat@gmail.com>
 
 pkgname=python-launcher
 pkgver=1.0.0
