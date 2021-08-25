@@ -1,0 +1,20 @@
+pkgbase = papirus-mate-icon-theme
+	pkgdesc = A MATE green version of the Papirus icon theme
+	pkgver = 20210802
+	pkgrel = 1
+	url = https://github.com/FreaxMATE/papirus-mate-icon-theme
+	arch = any
+	license = LGPL3
+	depends = gtk-update-icon-cache
+	depends = papirus-icon-theme
+	conflicts = papirus-mate-icon-theme-git
+	conflicts = papirus-gtk-icon-theme
+	conflicts = papirus-gtk-icon-theme-git
+	conflicts = papirus-icon-theme-gtk
+	conflicts = papirus-icon-theme-gtk-git
+	conflicts = papirus-icon-theme-kde
+	conflicts = papirus-icon-theme-kde-git
+	source = papirus-mate-icon-theme-20210802.tar.gz::https://github.com/FreaxMATE/papirus-mate-icon-theme/archive/refs/tags/20210802.tar.gz
+	sha512sums = fcc3d0f1ac0087a8752a77fa2970171b9ca9655e2c46e3ee44484e621ea3b8721b21930ce385c643abe6738a53f3ec398469a7e119f7fb346a845fa1af0513a1
+
+pkgname = papirus-mate-icon-theme
