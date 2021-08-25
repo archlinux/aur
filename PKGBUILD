@@ -45,21 +45,20 @@ sha256sums=(
 
 prepare() {
     cd SwitchHosts-${pkgver}
-    sed -i "/mirror:/d" scripts/make.js 
     # use system electron version
     # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-    #electronDist=$(dirname $(realpath $(which electron13)))
-    #electronVer=$(electron13 --version | tail -c +2)
-    #sed -i "/electronDownload/,/}/d" scripts/make.js
-    #sed -i "/directories/i\  electronVersion: \`$electronVer\`," scripts/make.js
-    #sed -i "/directories/i\  electronDist: \`/usr/lib/electron\`," scripts/make.js
+    electronVer=$(electron --version | tail -c +2)
+    sed -i "/electronDownload/,/}/d" scripts/make.js
+    sed -i "/directories/i\  electronVersion: \`$electronVer\`," scripts/make.js
+    sed -i "/directories/i\  electronDist: \`/usr/lib/electron\`," scripts/make.js
+    sed -i "s/.*\"electron\":.*$/    \"electron\": \"^$electronVer\",/"  package.json
     # Set arch and target
     local i686=ia32 x86_64=x64 armv7h=armv7l aarch64=arm64
     sed -i "s/.*AppImage:x64.*$/    linux: ['pacman:build_arch'],/" scripts/make.js
     sed -i "s#build_arch#${!CARCH}#g" scripts/make.js
     sed -i "/await makeMacArm/d" scripts/make.js
-    sed -i "/win: \[/d" scripts/make.js
-    sed -i "/mac: \[/d" scripts/make.js
+    sed -i "/await sign/d" scripts/make.js
+    sed -i "s/TARGET_PLATFORMS_configs.all/TARGET_PLATFORMS_configs.all.linux/g" scripts/make.js 
 }
 
 build() {
