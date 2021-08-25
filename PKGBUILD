@@ -3,7 +3,7 @@
 
 pkgname=ferdi-nightly-bin
 pkgver=5.6.1.nightly.38
-pkgrel=3
+pkgrel=4
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version'
 url='https://getferdi.com'
 license=('Apache')
@@ -33,6 +33,6 @@ package() {
 
   bsdtar -xf ${srcdir}/ferdi.rpm
 
-  mkdir -p usr/local/bin/
-  ln -sf opt/Ferdi/ferdi usr/local/bin/ferdi
+  install -dm0755 usr/local/bin
+  ln -sf /opt/Ferdi/ferdi usr/local/bin/ferdi
 }
