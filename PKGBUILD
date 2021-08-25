@@ -28,7 +28,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	go build -o build ./...
+	go build -o build -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\"" ./...
 }
 
 check() {
