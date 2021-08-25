@@ -2,38 +2,38 @@
 
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="RuboCop's AST extensions and NodePattern functionality"
 arch=(any)
 depends=(ruby ruby-parser)
 checkdepends=(ruby-bundler ruby-rspec)
-makedepends=(git rubygems ruby-rake ruby-rdoc ruby-racc ruby-oedipus_lex ruby-bump)
+makedepends=(rubygems ruby-rake ruby-rdoc ruby-racc ruby-oedipus_lex ruby-bump)
 url=https://github.com/rubocop/rubocop-ast
 license=(MIT)
 options=(!emptydirs)
-source=(git+https://github.com/rubocop/rubocop-ast.git?tag=v${pkgver})
-sha256sums=('SKIP')
+source=(https://github.com/rubocop/${_gemname}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('afc5bcf386cbdbc81202ed92d88fa4f8bab2f03cfe8df92c6568798b51e51bac')
 
 prepare() {
-  cd $_gemname
+  cd $_gemname-$pkgver
+  sed -i 's|git ls-files|find|' ${_gemname}.gemspec
   sed -i '/simplecov/d' Gemfile
 }
 
 build() {
-  cd $_gemname
+  cd $_gemname-$pkgver
   RUBOCOP_VERSION=none rake generate
   gem build ${_gemname}.gemspec
 }
 
 check() {
-  cd $_gemname
-  # rm Gemfile
+  cd $_gemname-$pkgver
   RUBOCOP_VERSION=none rake spec
 }
 
 package() {
-  cd ${_gemname}
+  cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
 
   gem install \
