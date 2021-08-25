@@ -1,12 +1,13 @@
 pkgbase = python-sqlmodel
 	pkgdesc = SQL databases in Python, designed for simplicity, compatibility, and robustness
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sqlmodel.tiangolo.com
 	arch = any
 	license = MIT
-	makedepends = python-poetry
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-setuptools
 	depends = python
 	depends = python-sqlalchemy
 	depends = python-pydantic
