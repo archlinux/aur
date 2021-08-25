@@ -1,35 +1,51 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=subsurface
-_pkgname=Subsurface
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc='Divelog program'
-url='https://subsurface-divelog.org/'
+url='https://github.com/subsurface/subsurface'
 license=('GPL2')
 arch=('x86_64')
-makedepends=('asciidoc' 'cmake' 'libgit2' 'libusb' 'qt5-tools')
-depends=('googlemaps' 'grantlee' 'hicolor-icon-theme' 'libzip' 'libxml2'
-         'libxslt' 'subsurface-libdc' 'qt5-svg' 'qt5-location' 'qt5-connectivity'
-         'qt5-webkit' 'sqlite')
-source=("$url/downloads/${_pkgname}-${pkgver}.tgz")
-sha512sums=('c76ea45487a6935a10290e96a5d73c0ff8f73c896025a2b81e2dffb09edc7418937baef88acaac655c80848a30af4ce8c2ed710b01111edfbff89736c203d587')
-b2sums=('089c4fd147babdbec2b84d5b007d474487a27150e1dda2ea1b02c2f26c334a8631c4a75f4459ecfcf516886b7372de58f6c11ffb55f58070eb3525c45c0e57d8')
+depends=(
+	'googlemaps' ## AUR
+	'grantlee'
+	'hicolor-icon-theme'
+	'libgit2.so'
+	'libzip'
+	'libxml2'
+	'libxslt'
+	'subsurface-libdc' ## AUR
+	'qt5-svg'
+	'qt5-location'
+	'qt5-connectivity'
+	'qt5-webkit'
+	'sqlite')
+makedepends=(
+	'asciidoc'
+	'cmake'
+	'libgit2'
+	'libusb'
+	'qt5-tools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('79049d2bb31ec6ebf4580a51bf249a97f57c2a1e340804fabeb7a453e14d18594d8938b7eab349fb0bdb194caf6c207315edcd1128085591d6a7d05d0bbcd20b')
+b2sums=('a3fc4be21e5055db68d6969781a8592bd461f8aa02130c9c29276d8046dac272616e8f19e298eeb24911f338bdce03e06eb0ea1d7b0cabb3948f30f8c28e51da')
 
 # qt5-webkit still used for: printing, manual
 
 build() {
-  cmake -B build -S Subsurface-$pkgver \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
-        -Wno-dev
-  cmake --build build
+	cmake \
+		-B build \
+		-S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  depends+=('libgit2.so')
-  DESTDIR="${pkgdir}" cmake --install build
+	DESTDIR="${pkgdir}" cmake --install build
 }
