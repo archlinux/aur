@@ -1,0 +1,22 @@
+pkgbase = portfolio-file-manager-git
+	pkgdesc = A minimalist file manager for those who want to use Linux mobile devices.
+	pkgver = r331.52d58e5
+	pkgrel = 1
+	url = https://github.com/tchx84/Portfolio
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	checkdepends = appstream-glib
+	checkdepends = python-black
+	checkdepends = python-pyflakes
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = libhandy
+	depends = python-gobject
+	provides = portfolio-file-manager
+	conflicts = portfolio-file-manager
+	source = git+https://github.com/tchx84/Portfolio.git
+	sha256sums = SKIP
+
+pkgname = portfolio-file-manager-git
