@@ -1,0 +1,25 @@
+pkgbase = ctr-popsoundshaper
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://www.cutthroughrecordings.com/downloads
+	arch = x86_64
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = ctr-popsoundshaper-lv2
+	pkgdesc = Cut Through Recordings Pop Sound Filter - Dynamic Filter (LV2)
+	groups = lv2-plugins
+	groups = pro-audio
+
+pkgname = ctr-popsoundshaper-vst
+	pkgdesc = Cut Through Recordings Pop Sound Filter - Dynamic Filter (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = ctr-popsoundshaper-vst3
+	pkgdesc = Cut Through Recordings Pop Sound Filter - Dynamic Filter (VST3)
+	groups = pro-audio
+	groups = vst3-plugins
