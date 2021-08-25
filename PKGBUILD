@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rseichter/fangfrisch/ar
         "${_name}.tmpfiles")
 sha512sums=('5fca7b7e8d24daadfb450851c70391fce94943a718bbed4fc76efe08a730cce313d92e7d9a6a8324a0b0039871f8c77f1fcd3744c569826cc0d2e7a7fd4e9b32'
             '0f0325ef5e3ef0ffb9376372d9757529838fc54ba3f9bab96d7f0b3dce5f4f77dff3ab3a70b5ae22fe9d63c6f3461f0baf635fe6139341b77711eb023c7f74e8'
-            '810fd48296fdac2b141ac8a9da02a9c133f3ae0b62177c62e72b03aab0c86b2c062f53ab070d4c5e8cbb7a6bfa6f9879225c46f604d9a0914deb0f0798a86f03'
+            '15bf171bb2f05a97ae41d18f6155b3b9459867404402d199062e431df56d3ac4e3bfaba5382c751cf8ae4f6c932fcbfb90082792c7c49fd9fbc4f599b88e8ced'
             '5f17b94c2a86ed468ac12f84bd258b915cfaa1858cada3e59293489447c634c6401921d654000d87f8eca970bfba8a9506aced100902771d98efc7d4cdb27cb5'
             'f421c4f2618422957cd203bf8f50bae1e5656d6208774244092987c07427ca86bf587884510c9180a0cb554200fdc996b0fad382671c913e6729b215b6f8e651')
 backup=('etc/fangfrisch/fangfrisch.conf')

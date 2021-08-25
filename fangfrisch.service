@@ -1,6 +1,8 @@
 [Unit]
 Description=Download unofficial clamav virus definition files
 ConditionPathExists=/var/lib/fangfrisch/db.sqlite
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
