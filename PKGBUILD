@@ -53,6 +53,7 @@ package() {
     install -Dm755 wechat-uos -t $pkgdir/usr/bin/
     
     msg2 "Creating Desktops and Hacks..."
-    install -Dm644 uos-lsb uos-release uos-lsblk -t $pkgdir/opt/wechat-uos/crap/
+    install -Dm644 uos-lsb uos-release -t $pkgdir/opt/wechat-uos/crap/
+    install -Dm755 uos-lsblk -t $pkgdir/opt/wechat-uos/crap/
     install -Dm644 wechat-uos.desktop -t $pkgdir/usr/share/applications/
 }
