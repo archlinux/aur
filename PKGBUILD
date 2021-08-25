@@ -11,7 +11,7 @@ depends=('vlc>3.0.0' 'fluidsynth')
 optdepends=("soundfont-fluid: FluidR3_GM soundfont")
 
 deb_pkgver="3.0.16"
-deb_pkgrel="1"
+deb_pkgrel="1+b2"
 pkgver="${deb_pkgver}.${deb_pkgrel}"
 pkgrel="1"
 
@@ -27,14 +27,14 @@ source_i386=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pk
 source_i686=("${source_i386[@]}")
 source_aarch64=("https://ftp.debian.org/debian/pool/main/v/vlc/${_pkgname}_${deb_pkgver}-${deb_pkgrel}_arm64.deb")
 
-md5sums_x86_64=('bb58f688bb26b7453d011855a635225c')
-md5sums_i386=('643e656315a20ffee3859dacba287fba')
-md5sums_aarch64=('10fd133fd00be8f0941a1aaaceae407d')
-md5sums_i686=('643e656315a20ffee3859dacba287fba')
-sha512sums_x86_64=('12b96bacf58a5fb2412f3a3c8727a427cf99e71b386b870ec5cc117077094a965ad6d47ce1d967324cce2a6258f734236a9f2bcbcc6db0c2473747fc161c9a63')
-sha512sums_i386=('0e5f8c7c8fcf7759408cecf68b964cb1d51c895b151fc762460c3a26cb0aed840876151306e55f130635e7986de2f99a65963f1657bfd57068e1b0dae1130f09')
-sha512sums_aarch64=('c514aa25b705e430a224f55304d36d07fc49c7dfa31c28b95e61819509f7f3e5888ba0a6d2612f20c0a6b9cf3418666707edc21202e9924c05f107d8567e1519')
-sha512sums_i686=('0e5f8c7c8fcf7759408cecf68b964cb1d51c895b151fc762460c3a26cb0aed840876151306e55f130635e7986de2f99a65963f1657bfd57068e1b0dae1130f09')
+md5sums_x86_64=('8ecf7212615f3d153df76e93e650f860')
+md5sums_i386=('6c925c71abf946ba8a4ad2ba1a9bd9ba')
+md5sums_aarch64=('d66c25744ec4056a5f04c4860048b19c')
+md5sums_i686=('6c925c71abf946ba8a4ad2ba1a9bd9ba')
+sha512sums_x86_64=('87910a60e20d5731d96ee57620763e7109df958117d23ca90dca481c09048e0a5874b57af771633059cc7d8593b504968ee5c4b2bc0510f2ec5b772c00b567e2')
+sha512sums_i386=('3cc9fa4b34cc365c1fb298712250c501fd43852746151c93d06dfeea756386d3dc16062adae4edc303c00a968b2fbdd842330f302f4e5f7426cd69b5bda5b232')
+sha512sums_aarch64=('b6b2fc93202adbb324fdb32dec630688bbe62e867b066c0045f1a3b2c6ebc3e30968406f5e0a74d1ac128b256987f17242d72a8f67ef7ba6f5fd29fe43f6675b')
+sha512sums_i686=('3cc9fa4b34cc365c1fb298712250c501fd43852746151c93d06dfeea756386d3dc16062adae4edc303c00a968b2fbdd842330f302f4e5f7426cd69b5bda5b232')
 
 prepare() {
     tar -xvf "${srcdir}/data.tar.xz"
