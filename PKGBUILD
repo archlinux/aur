@@ -9,7 +9,7 @@ pkgrel=1
 epoch=1
 pkgdesc="PrBoom (Doom/Doom II/Final Doom) core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
-url="https://github.com/libretro/libretro-prboom"
+url="https://github.com/libretro/$_pkgname"
 license=('GPL2')
 groups=('libretro')
 depends=('glibc' 'libretro-core-info')
@@ -17,8 +17,8 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
