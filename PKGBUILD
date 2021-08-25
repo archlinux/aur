@@ -5,7 +5,7 @@
 pkgname=commander-genius-git
 _pkgname=Commander-Genius
 pkgver=2.8.3.r1.g279fb3cd6
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern implementation of the classic Commander Keen game series"
 arch=('i686' 'x86_64')
 url="https://clonekeenplus.sourceforge.io/"
@@ -40,4 +40,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-build"
   make DESTDIR="$pkgdir/" install
+
+  # Icon needed for .desktop file
+  mkdir -p "$pkgdir/usr/share/icons"
+  ln -s /usr/share/commandergenius/CGLogo.svg "$pkgdir/usr/share/icons/cg.svg"
 }
