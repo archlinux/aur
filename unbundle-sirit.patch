@@ -1,19 +1,18 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -786,6 +786,10 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
+@@ -786,6 +786,9 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
      -DBOOST_REGEX_NO_LIB
  )
  
-+find_library(SIRIT_LIBRARY sirit REQUIRED)
-+add_library(sirit UNKNOWN IMPORTED)
-+set_property(TARGET sirit PROPERTY IMPORTED_LOCATION "${SIRIT_LIBRARY}")
++find_package(sirit REQUIRED)
++add_library(sirit ALIAS sirit::sirit)
 +
  enable_testing()
  add_subdirectory(externals)
  add_subdirectory(src)
 --- a/externals/CMakeLists.txt
 +++ b/externals/CMakeLists.txt
-@@ -87,9 +87,6 @@ if (USE_DISCORD_PRESENCE)
+@@ -90,9 +90,6 @@ if (USE_DISCORD_PRESENCE)
      target_include_directories(discord-rpc INTERFACE ./discord-rpc/include)
  endif()
  
