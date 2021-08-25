@@ -1,7 +1,7 @@
 # Maintainer: Supdrewin <https://github.com/supdrewin>
 
 pkgname=batterycm-switcher-preview
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="An advanced Ideapad Laptops conservation mode adjustment tool"
 arch=('any')
@@ -20,17 +20,16 @@ optdepends=(
 provides=('batterycm' 'batterycm-switcher' 'batterycm-charger')
 conflicts=('batterycm' 'batterycm-switcher' 'batterycm-charger')
 
-_srcname=batterycm-switcher
 install=batterycm.install
-source=("$_srcname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+_srcname=batterycm-switcher
 
 build() {
-  cd "$_srcname-$pkgver"
+  git clone -b testing $url.git
+  cd "$_srcname"
   make
 }
 
 package() {
-  cd "$_srcname-$pkgver"
+  cd "$_srcname"
   make DESTDIR="$pkgdir" install
 }
