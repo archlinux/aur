@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.6.3.r3.gf6a319c
+pkgver=0.6.4.r10.g223c289
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -11,6 +11,7 @@ depends=(bc
          bcprov # pdftk optdepend is required
          entr
          epubcheck
+         fontconfig
          ghostscript
          git
          git-warp-time
@@ -80,22 +81,22 @@ prepare() {
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
 	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
-	local YARN_CACHE_FOLDER="$srcdir/node_modules"
+	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
 }
 
 build() {
 	cd "$pkgname"
-	local RUSTUP_TOOLCHAIN=stable
-	local CARGO_TARGET_DIR=target
-	local YARN_CACHE_FOLDER="$srcdir/node_modules"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	./configure --prefix "/usr"
 	make
 }
 
 check() {
 	cd "$pkgname"
-	local RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=stable
 	make check
 }
 
