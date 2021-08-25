@@ -4,7 +4,8 @@
 # Contributor: Nick Cao <nickcao at nichi dot co>
 
 pkgname=wechat-uos
-pkgver=2.0.0
+pkgver=2.0.0+lsblk
+_pkgver=2.0.0
 epoch=2
 pkgrel=1145141919
 pkgdesc="UOS专业版微信 (迫真魔改版)"
@@ -14,13 +15,14 @@ depends=(gtk2 gtk3 libxss gconf nss lsb-release bubblewrap)
 makedepends=(imagemagick)
 license=(MIT)
 source=(
-    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.weixin/com.qq.weixin_${pkgver}-${epoch}_amd64.deb"
-    'uos-lsb' 'uos-release' 'wechat-uos' 'wechat-uos.desktop'
+    "https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.weixin/com.qq.weixin_${_pkgver}-${epoch}_amd64.deb"
+    'uos-lsb' 'uos-lsblk' 'uos-release' 'wechat-uos' 'wechat-uos.desktop'
 )
 b2sums=('2162919d00fcf133eb17ce4098c6c4a067424727adf06b1558eaeec79a68b3ab638860a30b1363b0102a5457d761c56552ce9710f66604f1a0418bec7513628d'
         '3cd62350b8b12d857e7a6b7d14ddc0fde9617f1e927371962f95ce633f7686c12ff3d8bc0e4048c85ef5a7414885ed03aecd8f7fbb6ca6f5e6d52d68273d4c43'
+        '063c8860dfa4304d80bd1a9c4e439064af0f8b2e35af282ba91a56c7c74cf0c54b62982e13a08c85cd643872d4bbdc18cb19035cabff55dae58e9c466c2c1d45'
         '49de7f51a7d43acbdb5d6e54aa77e56476d79ff3bb950a99bfe6023c4eb067737fcfcdf51ea7d2428e7923659267bce8477bde71df00c4def1f8e16999d84a49'
-        'f7cab48a63bc28fdcf0be582a1671981bfd50e3c82d717392306ce82d19e501c3596139f43ade2f63bb1ca7d8b1b54317bc76b3f72c86b8a8a2531ffec67902e'
+        'd09df77e0bbf43a2820e0e8d91363e02a814764d5930627b6d329e0028e9fcf472e12d288590f6c1d388fe25f790a062aa152dd2d41199b40df4c461ed1858cb'
         '13f84de388ff2c20f9e7c42b773e8dbd63da473851690ce37cb80966e2fac0843933d0d561c7c5f8918e456f56db9a66b82cbd5952b056a954b519ef76826ed2')
 
 prepare() {
@@ -51,6 +53,6 @@ package() {
     install -Dm755 wechat-uos -t $pkgdir/usr/bin/
     
     msg2 "Creating Desktops and Hacks..."
-    install -Dm644 uos-lsb uos-release -t $pkgdir/opt/wechat-uos/crap/
+    install -Dm644 uos-lsb uos-release uos-lsblk -t $pkgdir/opt/wechat-uos/crap/
     install -Dm644 wechat-uos.desktop -t $pkgdir/usr/share/applications/
 }
