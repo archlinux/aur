@@ -5,7 +5,7 @@
 pkgbase=python-scikit-image
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="Image processing routines for SciPy"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ optdepends=('python-pyqt5: for imshow[x, fancy=True] and skivi'
             'python-cloudpickle: necessary to provide the 'processes' scheduler for dask')
 options=('!emptydirs')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('32ff472355fbf8ab40a8e9ed685906c6c51a863f1ea8737882d26be9221631f3')
+sha256sums=('ecae99f93f4c5e9b1bf34959f4dc596c41f2f6b2fc407d9d9ddf85aebd3137ca')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
