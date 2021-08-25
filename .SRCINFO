@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-system76
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with System76 patches)
 	pkgver = 40.0
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL2
@@ -52,6 +52,8 @@ pkgbase = gnome-control-center-system76
 	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=49d71c07b5b3ce59e035b785310cba4fcf903868
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = git+https://gitlab.gnome.org/GNOME/libhandy.git
+	source = 0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch
+	source = pop-mouse-accel.patch
 	source = system76-firmware.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,4 +61,3 @@ pkgbase = gnome-control-center-system76
 	sha256sums = 33fc2be90935fa9b913cccde12677d7234763821d47d71edf3586034d7eece2d
 
 pkgname = gnome-control-center-system76
-

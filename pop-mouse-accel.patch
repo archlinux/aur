@@ -1,0 +1,127 @@
+Index: gnome-control-center/panels/mouse/cc-mouse-panel.c
+===================================================================
+--- gnome-control-center.orig/panels/mouse/cc-mouse-panel.c
++++ gnome-control-center/panels/mouse/cc-mouse-panel.c
+@@ -76,10 +76,33 @@ struct _CcMousePanel
+   gboolean           left_handed;
+   GtkGesture        *left_gesture;
+   GtkGesture        *right_gesture;
++
++  // Mouse acceleration patch
++  GtkSwitch *mouse_acceleration_enable_switch;
+ };
+ 
+ CC_PANEL_REGISTER (CcMousePanel, cc_mouse_panel)
+ 
++static gboolean mouse_acceleration_enabled_get_mapping (
++  GValue    *value,
++  GVariant  *variant,
++  gpointer   user_data
++) {
++  gboolean enabled = g_strcmp0 (g_variant_get_string (variant, NULL), "flat") != 0;
++  g_value_set_boolean (value, enabled);
++
++  return TRUE;
++}
++
++static GVariant *mouse_acceleration_enabled_set_mapping (
++  const GValue        *value,
++  const GVariantType  *type,
++  gpointer             user_data
++) {
++  gboolean enabled = g_value_get_boolean (value);
++  return g_variant_new_string (enabled ? "adaptive" : "flat");
++}
++
+ static void
+ setup_touchpad_options (CcMousePanel *self)
+ {
+@@ -242,6 +265,15 @@ setup_dialog (CcMousePanel *self)
+                    gtk_range_get_adjustment (GTK_RANGE (self->mouse_speed_scale)), "value",
+                    G_SETTINGS_BIND_DEFAULT);
+ 
++  g_settings_bind_with_mapping (
++    self->mouse_settings, "accel-profile",
++	  self->mouse_acceleration_enable_switch, "active",
++	  G_SETTINGS_BIND_DEFAULT,
++	  mouse_acceleration_enabled_get_mapping,
++	  mouse_acceleration_enabled_set_mapping,
++	  NULL, NULL
++  );
++
+   gtk_list_box_set_header_func (self->mouse_listbox, cc_list_box_update_header_func, NULL, NULL);
+ 
+   /* Touchpad section */
+@@ -439,6 +471,7 @@ cc_mouse_panel_class_init (CcMousePanelC
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, general_listbox);
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_frame);
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_listbox);
++  gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_acceleration_enable_switch);
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_natural_scrolling_switch);
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_speed_scale);
+   gtk_widget_class_bind_template_child (widget_class, CcMousePanel, mouse_test);
+Index: gnome-control-center/panels/mouse/cc-mouse-panel.ui
+===================================================================
+--- gnome-control-center.orig/panels/mouse/cc-mouse-panel.ui
++++ gnome-control-center/panels/mouse/cc-mouse-panel.ui
+@@ -242,6 +242,60 @@
+                                 </child>
+                               </object>
+                             </child>
++                            <!-- Pop Accel -->
++                            <child>
++                              <object class="GtkListBoxRow" id="mouse_acceleration_enable_row">
++                                <property name="visible">True</property>
++                                <property name="can_focus">True</property>
++                                <property name="activatable">false</property>
++                                <child>
++                                  <object class="GtkGrid" id="mouse_acceleration_enable_grid">
++                                  <property name="visible">True</property>
++                                  <property name="can_focus">False</property>
++                                  <property name="row_spacing">0</property>
++                                  <property name="column_spacing">32</property>
++                                  <property name="margin_start">20</property>
++                                  <property name="margin_end">20</property>
++                                  <property name="margin_top">12</property>
++                                  <property name="margin_bottom">12</property>
++                                  <property name="valign">center</property>
++                                    <child>
++                                      <object class="GtkLabel" id="mouse_acceleration_enable_label">
++                                        <property name="visible">True</property>
++                                        <property name="can_focus">False</property>
++                                        <property name="hexpand">True</property>
++                                        <property name="xalign">0</property>
++                                        <property name="valign">end</property>
++                                        <property name="label" translatable="yes">Mouse Acceleration</property>
++                                        <property name="use_underline">True</property>
++                                        <property name="mnemonic_widget">mouse_acceleration_enable_switch</property>
++                                      </object>
++                                      <packing>
++                                        <property name="left_attach">0</property>
++                                        <property name="top_attach">0</property>
++                                        <property name="width">1</property>
++                                        <property name="height">1</property>
++                                      </packing>
++                                    </child>
++                                    <child>
++                                      <object class="GtkSwitch" id="mouse_acceleration_enable_switch">
++                                        <property name="visible">True</property>
++                                        <property name="can_focus">True</property>
++                                        <property name="halign">end</property>
++                                        <property name="valign">center</property>
++                                      </object>
++                                      <packing>
++                                        <property name="left_attach">1</property>
++                                        <property name="top_attach">0</property>
++                                        <property name="width">1</property>
++                                        <property name="height">2</property>
++                                      </packing>
++                                    </child>
++                                  </object>
++                                </child>
++                              </object>
++                            </child>
++                            <!-- Pop Accel -->
+                             <child>
+                               <object class="GtkListBoxRow" id="mouse_natural_scrolling_row">
+                                 <property name="visible">True</property>
