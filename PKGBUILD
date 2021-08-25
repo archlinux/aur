@@ -1,5 +1,5 @@
 # Maintainer: André Kugland <kugland@gmail.com>
-pkgname=create-react-native-app
+pkgname=expo-create-react-native-app
 pkgver=3.6.0
 pkgrel=1
 pkgdesc="The fastest way to create universal React Native apps"

@@ -1,4 +1,4 @@
-pkgbase = create-react-native-app
+pkgbase = expo-create-react-native-app
 	pkgdesc = The fastest way to create universal React Native apps
 	pkgver = 3.6.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = create-react-native-app
 	depends = nodejs
 	options = !emptydirs
 
-pkgname = create-react-native-app
+pkgname = expo-create-react-native-app
