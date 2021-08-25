@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <manolollr at riseup dot net>
 
 pkgname=tickr
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="GTK-based highly graphically-customizable Feed Ticker"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.open-tickr.net/"
 license=('gpl')
 depends=('gtk2')
 source=("http://www.open-tickr.net/src/$pkgname-$pkgver.tar.gz")
-sha256sums=('eba72793cd81aaaf21696d20a086706e426204506dc596c2a935e600b7eb8e41')
+sha256sums=('391529a115b820d5c2cac7b466facc4722b7f90e02ab0acd7350a8e97adcee58')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
