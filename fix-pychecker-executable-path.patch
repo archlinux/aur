@@ -1,0 +1,12 @@
+--- src/flycheck-pycheckers-0.15/flycheck-pycheckers.el		2020-07-04 00:33:57.000000000 -0400
++++ src/flycheck-pycheckers-0.15/flycheck-pycheckers.el.new	2021-08-24 23:30:30.133148284 -0400
+@@ -163,8 +163,7 @@
+ (require 'flycheck)
+ 
+ (defvar flycheck-pycheckers-command
+-  (executable-find (concat (file-name-directory (or load-file-name buffer-file-name))
+-                           "bin/pycheckers.py")))
++  (executable-find "/usr/bin/pycheckers"))
+ 
+ (flycheck-def-args-var flycheck-pycheckers-args python-pycheckers
+   )

@@ -7,6 +7,7 @@ pkgbase = emacs-flycheck-pycheckers
 	license = GPL
 	depends = emacs
 	depends = flycheck
+	depends = python<3.12
 	optdepends = python-pylint: pylint checker
 	optdepends = flake8: flake8 checker
 	optdepends = autopep8: pep8 checker
