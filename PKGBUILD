@@ -1,24 +1,23 @@
 # Maintainer: Peter blackman <peter at pblackman dot plus dot com>
 # Make Arch package using OBS binaries 
-# See https://app.zdechov.net/c-evo
-# See https://svn.zdechov.net/c-evo
+# See http://www.c-evo.org/
 
 pkgname=c-evo-bin
-pkgver=285.6.3
+pkgver=400.1.1
 pkgrel=1
-pkgdesc="Empire Building Game"
+pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
-url="http://www.c-evo.org/"
+url="https://app.zdechov.net/c-evo"
 license=('GPL2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo')
-source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_10/all/c-evo-data_285+dfsg.6-3_all.deb"
-       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_10/amd64/c-evo-stdai_285+dfsg.6-3_amd64.deb"
-        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_10/amd64/c-evo-gtk2_285+dfsg.6-3_amd64.deb")
-sha256sums=('afc232b8e80c94ef2c4986ce391f7bdd0c07b4f2a764b68e84491e0fb63add23'
-            'bbf143d72286bd98a7f9c966e9874638fd9fc3f87666d4533f428b197dcd8839'
-            '196c340b63e19907fc8c7818b8556955d11b4bb08ebec79b5e8dfbaeca74ba27')
+source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_400+dfsg.1-1_all.deb"
+       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_400+dfsg.1-1_amd64.deb"
+        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_400+dfsg.1-1_amd64.deb")
+sha256sums=('4e9bad355f379ece2244a140b7e26c05bcd059e45422b657c9f6127705df87f5'
+            'cba2df6adadc057a5f6092433edf785b7c4978b6eb086a998c0e82a94c5a31d8'
+            'be746e637defb6586130917f89952c828e90e30dce62cb53f7e16d13b357039c')
 
 noextract=("$pkgname-$pkgver.data.deb"
 	  "$pkgname-$pkgver.stdai.deb"
@@ -37,13 +36,13 @@ prepare() {
    tar -xf c-data.tar.xz
    tar -xf c-gtk2.tar.xz
    
-   # Remove Debian stuff not needed here
+   # Remove unwanted
    rm -fr usr/share/doc-base
    rm -fr usr/share/lintian
    rm -fr usr/share/doc/c-evo-gtk2
    rm -fr usr/share/doc/c-evo-stdai
    
-   # Arch does not use a games folder
+   # Arch does not use a games subfolder
    rm -fr usr/bin
    mv -T usr/games usr/bin
    rm -fr usr/share/c-evo
