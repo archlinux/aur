@@ -7,15 +7,26 @@ pkgbase = repoos
 	arch = x86_64
 	groups = therepoclub
 	license = MIT
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
 	options = zipman
 	source = repowm-2021.08.21.tar.gz::https://github.com/The-Repo-Club/repowm/archive/2021.08.21.tar.gz
+	source = repowm-schemas-2021.08.21.tar.gz::https://github.com/The-Repo-Club/repowm-schemas/archive/2021.08.21.tar.gz
 	source = repomenu-2021.08.25.tar.gz::https://github.com/The-Repo-Club/repomenu/archive/2021.08.25.tar.gz
+	source = repomenu-extra-2021.08.24.tar.gz::https://github.com/The-Repo-Club/repomenu-extra/archive/2021.08.24.tar.gz
+	source = repomenu-schemas-2021.08.21.tar.gz::https://github.com/The-Repo-Club/repomenu-schemas/archive/2021.08.21.tar.gz
 	sha256sums = cebe216df810b553c0a51420cc4fa9f61a550ab2fa35523e7ae096b48968a95c
+	sha256sums = 9e0072255c06e9db089fc9de8741aac08f4014636ea7bf202ac0b914b23972ec
 	sha256sums = 29716d9d96a62fe2bd60d5f0459238ed9d4835d2efa7836dd2f07ce64ea01746
+	sha256sums = e7fbe5b79377c8cc20b1640fbcb37319529f74f7eb7c44728c5d573c096d56b6
+	sha256sums = d94d80452a44659db397f80b5a4964a05ee1718981ab7f2e80be782858c959cc
 
 pkgname = repowm
 	pkgdesc = A dynamic window manager for X
 	install = repowm.install
+	license = MIT
 	depends = libx11
 	depends = libxinerama
 	depends = libxft
@@ -28,8 +39,16 @@ pkgname = repowm
 	optdepends = ttf-material-design-icons: font used by default
 	optdepends = ttf-remixicon: font used by default
 
+pkgname = repowm-schemas
+	pkgdesc = schemas for instawm
+	license = GPL3
+	depends = glib2
+	depends = dconf
+	provides = repowm-schemas=2021.08.21
+
 pkgname = repomenu
 	pkgdesc = dmenu like menu with the Dracula theme
+	license = MIT
 	depends = python
 	depends = libxinerama
 	depends = libxft
@@ -44,3 +63,24 @@ pkgname = repomenu
 	provides = dmenu
 	conflicts = dmenu
 	replaces = dmenu
+
+pkgname = repomenu-extra
+	pkgdesc = addons for repomenu
+	license = GPL3
+	depends = bash
+	depends = glib2
+	depends = autorandr
+	depends = repomenu
+	depends = repomenu-schemas
+	depends = networkmanager
+	optdepends = cutycapt: Taking screenshots with bm command.
+	optdepends = instaaur: Using the aur with pacman script.
+	optdepends = ffmpeg: music script depends on this.
+	provides = repomenu-extra
+
+pkgname = repomenu-schemas
+	pkgdesc = schemas for repomenu
+	license = GPL3
+	depends = glib2
+	depends = dconf
+	provides = repomenu-schemas=2021.08.21
