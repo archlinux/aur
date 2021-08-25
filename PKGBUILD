@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
-pkgver=1.2.4.r0.g3a524da
-pkgrel=2
+pkgver=1.2.4.r2.g90efc18
+pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
 url="https://github.com/linuxmint/warpinator"
 license=('GPL3')
-depends=('gtk3' 'libnm' 'python-cryptography' 'python-gobject' 'python-grpcio'
+depends=('gtk3' 'python-cryptography' 'python-gobject' 'python-grpcio'
          'python-netaddr' 'python-netifaces' 'python-protobuf' 'python-pynacl'
          'python-setproctitle' 'python-setuptools' 'python-zeroconf' 'python-xapp' 'xapps')
 makedepends=('git' 'meson' 'polkit')
