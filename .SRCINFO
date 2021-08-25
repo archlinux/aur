@@ -1,0 +1,18 @@
+pkgbase = python-adafruit-circuitpython-bme280
+	pkgdesc = CircuitPython library for the Bosch BME280 temperature/humidity/pressure sensor
+	pkgver = 2.6.6
+	pkgrel = 0
+	url = https://github.com/adafruit/Adafruit_CircuitPython_BME280
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	depends = python-adafruit-circuitpython-busdevice
+	optdepends = python-raspberry-gpio
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-bme280/adafruit-circuitpython-bme280-2.6.6.tar.gz
+	sha256sums = 67e484756fb8725efec903cbc9fc3d1748dd205b25c6598df8bd69faa234aa3f
+
+pkgname = python-adafruit-circuitpython-bme280
