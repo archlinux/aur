@@ -1,6 +1,6 @@
 # Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
 pkgname=xcolor-git
-pkgver=0.5.0.101.gf23338a
+pkgver=0.5.0.102.geb7a57e
 pkgrel=1
 pkgdesc="Lightweight color picker for X11"
 arch=(x86_64)
