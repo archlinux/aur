@@ -1,10 +1,10 @@
-# Maintainer: Aaron Abbott <aabmass@gmail.com>
+# Maintainer: aureolebigben <aureolebigben@gmail.com>
 # Contributer: fleischie
 # Contributer: auk
 # Contributer: blind
 
 pkgname=hyper
-pkgver=3.0.2
+pkgver=3.1.2
 pkgrel=1
 epoch=
 pkgdesc="A terminal built on web technologies"
@@ -12,8 +12,8 @@ arch=('any')
 url="https://hyper.is/"
 license=('MIT')
 groups=()
-depends=('nodejs' 'electron' 'gconf')
-makedepends=('npm' 'yarn' 'python2')
+depends=('gconf')
+makedepends=('nodejs' 'electron' 'yarn' 'python2')
 checkdepends=()
 optdepends=()
 provides=()
@@ -28,18 +28,21 @@ changelog=
 _pkgver_project=${pkgver/\.canary/-canary}
 
 source=(
-    "https://github.com/zeit/$pkgname/archive/${_pkgver_project}.tar.gz"
+    "https://github.com/zeit/$pkgname/archive/v${_pkgver_project}.tar.gz"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('065b64a0a8846b2fb04755a66c418d5a'
+md5sums=('4ffd934e32aa986e4ddced0acca2fcd1'
          'f3481e14cba331160339b3b5ab78872b'
          '74cb7ba38e37332aa8300e4b6ba9c61c')
 validpgpkeys=()
 
 prepare() {
     cd "$pkgname-$_pkgver_project"
+
+    # delete husky install from postinstall
+    sed -i 's/\ \&\& husky install//g' package.json
 
     # yarn is a build-dep according to the README
     yarn install
@@ -56,13 +59,12 @@ build() {
     oldpath=$PATH
     PATH=$(pwd)/node_modules/.bin:$PATH
 
-    npm run build &&
-    cross-env BABEL_ENV=production babel \
-        --out-file app/renderer/bundle.js \
+    yarn run build &&
+    cross-env BABEL_ENV=production babel target/renderer/bundle.js \
+        --out-file target/renderer/bundle.js \
         --no-comments \
-        --minified app/renderer/bundle.js &&
-    command build --linux --dir             # need to use command because the
-                                            # function name is build
+        --minified target/renderer/bundle.js && 
+    electron-builder --linux --dir
 
     PATH=$oldpath
 }

@@ -1,22 +1,21 @@
 pkgbase = hyper
 	pkgdesc = A terminal built on web technologies
-	pkgver = 3.0.2
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
 	license = MIT
-	makedepends = npm
+	makedepends = nodejs
+	makedepends = electron
 	makedepends = yarn
 	makedepends = python2
-	depends = nodejs
-	depends = electron
 	depends = gconf
 	conflicts = hyperterm
 	replaces = hyperterm
-	source = https://github.com/zeit/hyper/archive/3.0.2.tar.gz
+	source = https://github.com/zeit/hyper/archive/v3.1.2.tar.gz
 	source = https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png
 	source = Hyper.desktop
-	md5sums = 065b64a0a8846b2fb04755a66c418d5a
+	md5sums = 4ffd934e32aa986e4ddced0acca2fcd1
 	md5sums = f3481e14cba331160339b3b5ab78872b
 	md5sums = 74cb7ba38e37332aa8300e4b6ba9c61c
 
