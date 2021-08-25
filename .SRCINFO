@@ -1,0 +1,15 @@
+pkgbase = zsh-plugin-wd
+	pkgdesc = Jump to custom directories in zsh
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/mfaerevaag/wd
+	arch = x86_64
+	license = MIT
+	depends = zsh
+	provides = zsh-plugin-wd
+	conflicts = zsh-plugin-wd
+	conflicts = zsh-plugin-wd
+	source = wd::https://github.com/mfaerevaag/wd/archive/refs/tags/v0.5.1.zip
+	sha256sums = 1b89eba72840c17fdc42899f2269a25a442c56baad6f13b44278f866806a475f
+
+pkgname = zsh-plugin-wd
