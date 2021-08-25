@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=zauth-git
-pkgver=r4.d8fc712
+pkgver=r9.817e552
 pkgrel=1
 pkgdesc="2FA CLI application with andOTP support"
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	go build -o zauth
+	go build -o zauth -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
 }
 
 check() {

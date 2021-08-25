@@ -1,6 +1,6 @@
 pkgbase = zauth-git
 	pkgdesc = 2FA CLI application with andOTP support
-	pkgver = r4.d8fc712
+	pkgver = r9.817e552
 	pkgrel = 1
 	url = https://github.com/grijul/zauth
 	arch = x86_64
