@@ -48,11 +48,11 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=60
+_minor=61
 _srcname=linux-${_major}
 pkgbase=linux-cacule-lts
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux-CacULE Kernel LTS 5.10 by Hamad Marri and with some other patchsets'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
@@ -403,10 +403,10 @@ for _p in "${pkgname[@]}"; do
 done
 
 md5sums=('753adc474bf799d569dec4f165ed92c3'
-         'b978cda447914bfe06936bbc1c789312'
+         '68ad57545f86a06590332537362dd7f3'
          '7d8c2aaaed142867c014f44b439f8694'
          '74798df2eba8d58326c73606b03786b7'
-         'f7540ed8e2fd397cf647029419091e17'
+         '41f27359b0c2f1ffc810b4a7667d98b4'
          '1ddeca3dfe8d2dfbf722a6e19ab500cd'
          '6c1ebf661101e7cecb82b93ea09725ce'
          '0fabe82284ef611e30d9d4e1e5529215'
