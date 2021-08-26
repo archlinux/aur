@@ -1,37 +1,36 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=libdivecomputer-git
-_pkgname=libdivecomputer
-pkgver=20160919.03c2523
+pkgver=0.7.0.r23.g75f260a
 pkgrel=1
+epoch=1
 pkgdesc='Library for communication with dive computers'
-url='http://www.libdivecomputer.org/'
+url='https://www.libdivecomputer.org/'
 license=('LGPL')
 arch=('i686' 'x86_64')
+depends=('glibc')
 makedepends=('git')
-source=('git://git.libdivecomputer.org/libdivecomputer.git')
+provides=('libdivecomputer.so=0-64')
+conflicts=('libdivecomputer')
+source=("$pkgname::git+https://github.com/libdivecomputer/libdivecomputer")
 sha1sums=('SKIP')
 
-provides=('libdivecomputer')
-conflicts=('libdivecomputer')
-
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$pkgname"
 	autoreconf -i
 	./configure \
 		--prefix=/usr \
-		--program-prefix="${_pkgname}-" \
-
+		--program-prefix="libdivecomputer-"
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+	cd "$pkgname"
 	make DESTDIR="${pkgdir}" install
 }
