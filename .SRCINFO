@@ -1,0 +1,20 @@
+pkgbase = globjects-git
+	pkgdesc = globjects is a cross-platform C++ wrapper for OpenGL API objects.
+	pkgver = v1.1.0.r147.g1b0ec7be
+	pkgrel = 1
+	url = https://github.com/cginternals/globjects
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = glfw
+	depends = glm
+	depends = glbinding
+	provides = globjects
+	conflicts = globjects
+	source = git+https://github.com/cginternals/globjects#commit=1b0ec7bedbc7e49cada7d49af401ecf7eff11bb4
+	source = globjects.patch
+	sha256sums = SKIP
+	sha256sums = a87527ed097239d3fa0a7e533b63a4b642a39d6434fe977d2ed8f1cbafc14bb8
+
+pkgname = globjects-git
