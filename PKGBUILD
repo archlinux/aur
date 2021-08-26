@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc-git
-pkgver=2.0.0dev.r6542.gbbdff59e4
+pkgver=2.0.0dev.r6625.g243bb15ef
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -15,8 +15,7 @@ depends=('gcc-ada')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-# Note: With gcc 11.2 we get the following error: ghdl1: error: unrecognized command-line option ‘-auxbase’
-_gccver=10.3.0
+_gccver=11.2.0
 _islver=0.24
 
 source=(
@@ -26,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'64f404c1a650f27fc33da242e1f2df54952e3963a49e06e73f6940f3223ac344'
+	'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
 	'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
 )
 
