@@ -15,8 +15,9 @@ license=('custom:AVASYS')
 install=gt-s600.install
 provides=("iscan" "iscan-for-epson-v500-photo" "iscan-plugin-gt-s600")
 conflicts=("iscan" "iscan-for-epson-v500-photo" "iscan-plugin-gt-s600")
-source=("https://download2.ebz.epson.net/iscan/plugin/gt-s600/rpm/x64/iscan-gt-s600-bundle-${pkgver}.x64.rpm.tar.gz")
-sha256sums=('fe1356b1d5c40bc5ac985a5693166efb9e5049a78b412f49c385eb503eadf2c6')
+source=("https://download2.ebz.epson.net/iscan/plugin/gt-s600/rpm/x64/iscan-gt-s600-bundle-${pkgver}.x64.rpm.tar.gz" epkowa.conf)
+sha256sums=('fe1356b1d5c40bc5ac985a5693166efb9e5049a78b412f49c385eb503eadf2c6'
+            'bdf3a9cf12f3f5c1ab2daceb801a4e334490a645a95eb5b7ec69cdc59e55a0e0')
 
 package() {
   cd "$srcdir"
@@ -29,6 +30,8 @@ package() {
   rmdir "$pkgdir"/usr/lib64
   mv -v "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin
   rmdir "$pkgdir"/usr/sbin
+
+  install -m 644 -D ../epkowa.conf "$pkgdir"/etc/sane.d/epkowa.conf
 
   install -m 644 -D \
     "$pkgdir"/usr/share/doc/iscan-plugin-gt-s600-${_plugin%-*}/COPYING.EPSON.en.txt \

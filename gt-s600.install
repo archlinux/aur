@@ -2,6 +2,11 @@ post_install() {
 	echo "Running iscan-registry to register plugins and firmware with iscan"
 	iscan-registry -a interpreter usb 0x04b8 0x012d \
 		/usr/lib/iscan/libesint66 /usr/share/iscan/esfw66.bin
+    echo -e "\nIf your device is not detected, ensure you have 'epkowa' in /etc/sane.d/dll.conf and check udevadm permissions"
+}
+
+post_upgrade() {
+    echo "If your device is not detected, ensure you have 'epkowa' in /etc/sane.d/dll.conf and check udevadm permissions"
 }
 
 pre_remove() {
