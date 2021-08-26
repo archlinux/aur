@@ -2,7 +2,7 @@
 pkgname=zoom-libnimf
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="Nimf library for zoom multilingual input.NOTE:This is currently incompatible with nimf-git!"
+pkgdesc="Nimf library for zoom multilingual input."
 arch=('x86_64')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
