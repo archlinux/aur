@@ -1,7 +1,7 @@
 pkgbase = flatpak-builder-tools-git
 	pkgdesc = Various helper tools for flatpak-builder
-	pkgver = r269.38be01a
-	pkgrel = 1
+	pkgver = r275.1cc5c30
+	pkgrel = 2
 	url = https://github.com/flatpak/flatpak-builder-tools
 	arch = any
 	license = MIT
