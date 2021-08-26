@@ -42,7 +42,6 @@ md5sums=('SKIP' )
 pkgver() {
 	cd "$srcdir/nimf"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-	rm -rf ../../nimf
 }
 
 post_install() {
