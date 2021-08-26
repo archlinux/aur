@@ -14,7 +14,7 @@ conflicts=("${pkgname}-${pkgver/_*/}")
 options=('!strip')
 source=("https://dl.google.com/android/repository/sys-img/google_apis/${_arch}-${pkgver}.zip"
         "package.xml")
-sha256sums=('225c268938f9f235adca3e3633e319ab97fd2dedb5c1a7bd2cc58b6fe94d54ca'
+sha256sums=('632769bfebd6bbdb2092d750bd8790049566ff1d1ab56bdb57c2fb58915e0921'
             'ef7e3e9a66b74a4ac480229ac164ed097a9ce3e97956826867e7950f972a9c3f')
 
 prepare() {
