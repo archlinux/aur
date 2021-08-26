@@ -1,7 +1,7 @@
 pkgbase = qtcreator-prerelease
 	pkgdesc = Qt Creator prerelease/latest
-	pkgver = 5.0.0rc1
-	pkgrel = 1
+	pkgver = 5.0.0
+	pkgrel = 2
 	url = http://qt.io/ide
 	install = qtcreator-prerelease.install
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = qtcreator-prerelease
 	optdepends = valgrind: analyze support
 	provides = qtcreator
 	conflicts = qtcreator
-	source = https://download.qt.io/development_releases/qtcreator/5.0/5.0.0-rc1/qt-creator-opensource-src-5.0.0-rc1.tar.xz
-	sha512sums = d8da514deac0afa35f3bbf782c8d92637d24f5c77ca85c7f710853f4ea73243741cc1863787c26dfb4452ead14886a07718c3aed48ccaf54a12f4e56d9146300
+	source = https://download.qt.io/official_releases/qtcreator/5.0/5.0.0/qt-creator-opensource-src-5.0.0.tar.xz
+	sha512sums = 4153155fd6bed0aa5b120d8cdee970d34e25bd6b8951a158b6be381c5f6e7a9b90944c31d8282177b6016b66da6eee16c93de983ced7b6e413a879701b9d2d3c
 
 pkgname = qtcreator-prerelease
