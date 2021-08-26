@@ -1,13 +1,13 @@
 pkgbase = ddi
 	pkgdesc = A safer dd
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tralph3/ddi
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = ddi-1.0.tar.gz::https://github.com/tralph3/ddi/archive/refs/tags/v1.0.tar.gz
+	depends = gcc-libs
+	source = ddi-1.0.tar.gz::https://github.com/tralph3/ddi/archive/v1.0.tar.gz
 	sha256sums = 8853fc563d905074a7fa79ccc984398dce99ed3ce7556c6f44dbb0ace3176256
 
 pkgname = ddi
-
