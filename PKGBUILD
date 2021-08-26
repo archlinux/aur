@@ -1,35 +1,37 @@
-# Contributor: Caleb Cushing <xenoterracide@gmail.com>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Frane Bandov <frane@offbyte.com>
 # Contributor: Thijs Vermeir <thijsvermeir@gmail.com>
 
 pkgname=log4net
-pkgver=2.0.12
-pkgrel=1
+pkgver=2.0.8
+pkgrel=2
 pkgdesc="A tool to help the programmer output log statements to a variety of output targets"
 arch=('any')
 url="https://logging.apache.org/log4net/"
 license=('Apache')
 depends=('mono')
-source=(
-  https://downloads.apache.org/logging/$pkgname/binaries/apache-$pkgname-binaries-$pkgver.zip
-  $pkgname.pc
-)
-sha512sums=(
-  '7c98c96272f1627c6db171554731c1624d138f3d1de9013031a96b91a7a7be03d657e21a25dadd9139c134c6d55d1f1c3277d89b4dc1fc75c68603b70c1c1e3c'
-  '1f8068d6373fdedc47e624583b6b36879ee4722b27f38938c36e3d82a6bfd1f07c1f164700fc4bef8a23e506b2a1bfa63c1e8e0c85118ef3cb14b6aa3ed0b2f7'
-)
+source=(https://archive.apache.org/dist/logging/$pkgname/source/$pkgname-$pkgver-src.zip{,.asc}
+        $pkgname.pc)
+validpgpkeys=('CE8075A251547BEE249BC151A2115AE15F6B8B72') # Stefan Bodewig
+sha256sums=('5b4ab2c7753f64fd8d2ca82b553e367c3b5accbed5103ce6a455ab156f7fa08e'
+            'SKIP'
+            '6ce4f40252e0716fb098149e99d1763d7290cc55cc2ccd1420456b1a3b33bb2d')
 
 prepare() {
-  sed -i "s/@VERSION@/$pkgver/"  "$srcdir/$pkgname.pc"
+  cd $pkgname-$pkgver
+  sed -i "s/@VERSION@/$pkgver/" "$srcdir/$pkgname.pc"
+}
+
+build() {
+  cd $pkgname-$pkgver
+  mkdir bin
+  mcs -t:library -out:bin/$pkgname.dll -keyfile:$pkgname.snk -d:NET_2_0 \
+      -r:System,System.Data,System.Xml,System.Web,System.Net,System.Configuration \
+      $(find src -name "*.cs")
 }
 
 package() {
-  for ABSDIR in $srcdir/*; do
-    if [ -d $ABSDIR ]; then
-      DIRNAME=$(echo $ABSDIR | awk -F'/' '{ print $NF }')
-      gacutil -i $DIRNAME/$pkgname.dll -package $pkgname/$DIRNAME -root "$pkgdir/usr/lib/mono/${pkgname}/$DIRNAME/"
-    fi
-  done
-  install -Dm644 "$srcdir/$pkgname.pc" "$pkgdir/usr/share/pkgconfig/$pkgname.pc"
+  cd $pkgname-$pkgver
+  gacutil -i bin/$pkgname.dll -package $pkgname -root "$pkgdir/usr/lib/"
+  install -Dm644 "$srcdir/$pkgname.pc" "$pkgdir/usr/lib/pkgconfig/$pkgname.pc"
 }
