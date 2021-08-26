@@ -1,7 +1,7 @@
 # Maintainer: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=libcwtch-go
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ depends=('tor')
 makedepends=('go')
 source=("libcwtch-go-${pkgver}.tar.gz::https://git.openprivacy.ca/cwtch.im/libcwtch-go/archive/v${pkgver}.tar.gz"
         'cwtch.sysusers' 'cwtch.tmpfiles')
-sha256sums=('a0b68ed2587c9e1f7f5b5ddb8c285891c308a1895bf559864cb7b0f6104a906d'
+sha256sums=('0116e6ba5afb35a7d2f4bb22e3d042f355195026cb3bbc06abc627404f005d5d'
             'beab74c0441b6532c1f4b7365038f595372f7e7a3a4b3587d36a3cb9dc8605fb'
             '399bacb458e108df49dda328258ba0653506393cef465dd794efa3b371fba902')
 
