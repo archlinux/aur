@@ -1,11 +1,13 @@
 pkgbase = blis
 	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flame/blis
 	arch = x86_64
 	license = custom:BSD
 	depends = glibc
+	provides = blas
+	conflicts = blas
 	options = !makeflags
 	options = !emptydirs
 	source = blis-0.8.1.tar.gz::https://github.com/flame/blis/archive/0.8.1.tar.gz
@@ -16,4 +18,3 @@ pkgbase = blis
 	sha512sums = cb53fa1f8c540062d4d55b4b91c787a821c563ea0bdb4e37f1db08869c320132a493e6b55f5d876418d56ad5b4f1dc5553f871862418393614e160dd1329ec9e
 
 pkgname = blis
-
