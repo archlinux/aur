@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-simple-term-menu"
-pkgver="1.3.0"
+pkgver="1.4.0"
 pkgrel="1"
 pkgdesc="A Python package which creates simple interactive menus on the command line."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://github.com/IngoMeyer441/simple-term-menu/archive/v${pkgver}.tar.gz")
-sha256sums=("696bb2d2b447ee2fff178039de34d456e7ceb2e200f1d2aaa46b944dfb313b5d")
+sha256sums=("f0a5f0c0ec0e1e9156d0aee649a28e9a3503e4e5141585f9c8f1ee9cad93d8c0")
 
 build() {
     cd "${srcdir}/${pkgname#*-}-${pkgver}" || return

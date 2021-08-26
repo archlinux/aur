@@ -1,13 +1,13 @@
 pkgbase = python-simple-term-menu
 	pkgdesc = A Python package which creates simple interactive menus on the command line.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/simple-term-menu
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/IngoMeyer441/simple-term-menu/archive/v1.3.0.tar.gz
-	sha256sums = 696bb2d2b447ee2fff178039de34d456e7ceb2e200f1d2aaa46b944dfb313b5d
+	source = https://github.com/IngoMeyer441/simple-term-menu/archive/v1.4.0.tar.gz
+	sha256sums = f0a5f0c0ec0e1e9156d0aee649a28e9a3503e4e5141585f9c8f1ee9cad93d8c0
 
 pkgname = python-simple-term-menu
