@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
-# Contributor: halflife <pigoig_at_gmail_com>
+# Contributor: xlwz <xlwzforever@outlook.com>
 
 pkgname=keepass-zh-cn
-pkgver=2.40
+pkgver=2.46
 pkgrel=1
 pkgdesc="Chinese Simplified locale for keepass"
 license=('GPL2')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Chinese_Simplified.zip)
 arch=(any)
-sha256sums=('a861f92867fef1df31eea003061ba18d65d2f505fd2200e19bb64e64d40353af')
+sha256sums=('3db8169b35d2565453f0fb942666d1ca28db6f263f2e9dbd9fbada126a252adf')
 
 package(){
   install -d "${pkgdir}/usr/share/keepass/Languages"
