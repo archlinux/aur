@@ -1,0 +1,353 @@
+From 0f8fde42d09b199d02cf5d9d79fe76ebf1d260ef Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 6 May 2021 12:13:40 +0200
+Subject: [PATCH 1/7] Fix NumPy 1.20 error with np.prod()
+
+Reference: #47691, https://stackoverflow.com/questions/66373169
+---
+ tensorflow/python/ops/array_ops.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tensorflow/python/ops/array_ops.py b/tensorflow/python/ops/array_ops.py
+index 519f2ef26fcef..d143ee96a2fc9 100644
+--- a/tensorflow/python/ops/array_ops.py
++++ b/tensorflow/python/ops/array_ops.py
+@@ -36,6 +36,7 @@
+ from tensorflow.python.framework.constant_op import constant
+ from tensorflow.python.ops import gen_array_ops
+ from tensorflow.python.ops import gen_math_ops
++from tensorflow.python.ops import math_ops
+ # go/tf-wildcard-import
+ # pylint: disable=wildcard-import
+ from tensorflow.python.ops.gen_array_ops import *
+@@ -2894,7 +2895,7 @@ def matrix_set_diag(
+ 
+ def _constant_if_small(value, shape, dtype, name):
+   try:
+-    if np.prod(shape) < 1000:
++    if math_ops.reduce_prod(shape) < 1000:
+       return constant(value, shape=shape, dtype=dtype, name=name)
+   except TypeError:
+     # Happens when shape is a Tensor, list with Tensor elements, etc.
+
+From 86cbf87703876330b5818b7f170489356d9d2c86 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 6 May 2021 12:34:12 +0200
+Subject: [PATCH 2/7] relax upper bounds for NumPy and SciPy in pip installs
+
+---
+ .../tools/pip_package/setup_with_binary.py     |  2 +-
+ .../install/install_centos_pip_packages.sh     |  6 +++---
+ .../ci_build/install/install_pip_packages.sh   |  4 ++--
+ .../install/install_pip_packages_by_version.sh |  2 +-
+ .../install/install_python3.6_pip_packages.sh  |  2 +-
+ tensorflow/tools/pip_package/setup.py          |  2 +-
+ 7 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/tensorflow/lite/tools/pip_package/setup_with_binary.py b/tensorflow/lite/tools/pip_package/setup_with_binary.py
+index 6b9fe534bb2b1..ae06df8245521 100644
+--- a/tensorflow/lite/tools/pip_package/setup_with_binary.py
++++ b/tensorflow/lite/tools/pip_package/setup_with_binary.py
+@@ -67,5 +67,5 @@
+     package_dir={'': '.'},
+     package_data={'': ['*.so', '*.pyd']},
+     install_requires=[
+-        'numpy ~= 1.19.2',  # Higher versions have a compatibility issue.
++        'numpy >= 1.19.2 , <1.21',
+     ])
+diff --git a/tensorflow/tools/ci_build/install/install_centos_pip_packages.sh b/tensorflow/tools/ci_build/install/install_centos_pip_packages.sh
+index b9906b9378c79..ab0a766bf22b0 100755
+--- a/tensorflow/tools/ci_build/install/install_centos_pip_packages.sh
++++ b/tensorflow/tools/ci_build/install/install_centos_pip_packages.sh
+@@ -55,17 +55,17 @@ pip2 install --upgrade protobuf==3.6.1
+ pip3 install --upgrade protobuf==3.16.0
+ 
+ pip2 install --upgrade numpy==1.14.5
+-pip3 install --upgrade numpy~=1.19.2
++pip3 install --upgrade numpy>=1.19.2
+ 
+ pip2 install scipy==1.2.2
+-pip3 install scipy==1.4.1
++pip3 install scipy>=1.4.1
+ 
+ pip2 install scikit-learn==0.18.1
+ pip3 install scikit-learn==0.18.1
+ 
+ # pandas required by `inflow`
+ pip2 install pandas==0.19.2
+-pip3 install pandas==0.19.2
++pip3 install pandas>=0.19.2
+ 
+ # Benchmark tests require the following:
+ pip2 install psutil
+diff --git a/tensorflow/tools/ci_build/install/install_pip_packages.sh b/tensorflow/tools/ci_build/install/install_pip_packages.sh
+index f9aa818c57038..6f0bf612e51ec 100755
+--- a/tensorflow/tools/ci_build/install/install_pip_packages.sh
++++ b/tensorflow/tools/ci_build/install/install_pip_packages.sh
+@@ -60,9 +60,9 @@ rm -rf /usr/lib/python3/dist-packages/six*
+ # https://github.com/tensorflow/tensorflow/issues/6968
+ # This workaround isn't needed for Ubuntu 16.04 or later.
+ if $(cat /etc/*-release | grep -q 14.04); then
+-  pip3 install --upgrade numpy==1.14.5
++  pip3 install --upgrade numpy>=1.14.5
+ else
+-  pip3 install --upgrade numpy~=1.19.2
++  pip3 install --upgrade numpy>=1.19.2
+ fi
+ 
+ pip3 install scipy==1.4.1
+diff --git a/tensorflow/tools/ci_build/install/install_pip_packages_by_version.sh b/tensorflow/tools/ci_build/install/install_pip_packages_by_version.sh
+index 110928f3b3de5..b536bf20b8992 100755
+--- a/tensorflow/tools/ci_build/install/install_pip_packages_by_version.sh
++++ b/tensorflow/tools/ci_build/install/install_pip_packages_by_version.sh
+@@ -29,7 +29,7 @@ PACKAGES=(
+   # NOTE: As numpy has releases that break semver guarantees and several other
+   # deps depend on numpy without an upper bound, we must install numpy before
+   # everything else.
+-  "numpy~=1.19.2"
++  "numpy>=1.19.2,<1.21"
+   "auditwheel"
+   "wheel"
+   "setuptools"
+diff --git a/tensorflow/tools/ci_build/install/install_python3.6_pip_packages.sh b/tensorflow/tools/ci_build/install/install_python3.6_pip_packages.sh
+index 761973deb28cb..3b49679031c29 100755
+--- a/tensorflow/tools/ci_build/install/install_python3.6_pip_packages.sh
++++ b/tensorflow/tools/ci_build/install/install_python3.6_pip_packages.sh
+@@ -72,7 +72,7 @@ rm -rf /usr/lib/python3/dist-packages/six*
+ # numpy needs to be installed from source to fix segfaults. See:
+ # https://github.com/tensorflow/tensorflow/issues/6968
+ # This workaround isn't needed for Ubuntu 16.04 or later.
+-pip3 install --upgrade numpy~=1.19.2
++pip3 install --upgrade numpy>=1.19.2
+ 
+ pip3 install scipy==1.4.1
+ 
+diff --git a/tensorflow/tools/pip_package/setup.py b/tensorflow/tools/pip_package/setup.py
+index 5fe345ed7ed9f..453c930700139 100644
+--- a/tensorflow/tools/pip_package/setup.py
++++ b/tensorflow/tools/pip_package/setup.py
+@@ -78,7 +78,7 @@
+     # NOTE: As numpy has releases that break semver guarantees and several other
+     # deps depend on numpy without an upper bound, we must install numpy before
+     # everything else.
+-    'numpy ~= 1.19.2',
++    'numpy >= 1.19.2, < 1.21',
+     # Install other dependencies
+     'absl-py ~= 0.10',
+     'astunparse ~= 1.6.3',
+
+From 7d2b0cff4e4df1b2b706daaa003f274777b85aa4 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 6 May 2021 12:38:22 +0200
+Subject: [PATCH 3/7] relax upper numpy bound in dockerfiles
+
+---
+ .../dockerfiles/arm64v8/devel-cpu-arm64v8-jupyter.Dockerfile    | 2 +-
+ .../dockerfiles/arm64v8/devel-cpu-arm64v8.Dockerfile            | 2 +-
+ .../tools/dockerfiles/dockerfiles/devel-cpu-jupyter.Dockerfile  | 2 +-
+ tensorflow/tools/dockerfiles/dockerfiles/devel-cpu.Dockerfile   | 2 +-
+ .../tools/dockerfiles/dockerfiles/devel-gpu-jupyter.Dockerfile  | 2 +-
+ tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile   | 2 +-
+ .../dockerfiles/ppc64le/devel-cpu-ppc64le-jupyter.Dockerfile    | 2 +-
+ .../dockerfiles/ppc64le/devel-cpu-ppc64le.Dockerfile            | 2 +-
+ .../dockerfiles/ppc64le/devel-gpu-ppc64le-jupyter.Dockerfile    | 2 +-
+ .../dockerfiles/ppc64le/devel-gpu-ppc64le.Dockerfile            | 2 +-
+ .../tools/dockerfiles/partials/ubuntu/bazel.partial.Dockerfile  | 2 +-
+ .../partials/ubuntu/bazelbuild-arm64v8.partial.Dockerfile       | 2 +-
+ .../dockerfiles/partials/ubuntu/bazelbuild.partial.Dockerfile   | 2 +-
+ 13 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8-jupyter.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8-jupyter.Dockerfile
+index e8a5026d7eddc..5fcca1b4a0d58 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8-jupyter.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8-jupyter.Dockerfile
+@@ -88,7 +88,7 @@ RUN python3 -m pip --no-cache-dir install \
+     h5py \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8.Dockerfile
+index 5efeed2796c5c..381b4084f3e0a 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/arm64v8/devel-cpu-arm64v8.Dockerfile
+@@ -88,7 +88,7 @@ RUN python3 -m pip --no-cache-dir install \
+     h5py \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu-jupyter.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu-jupyter.Dockerfile
+index 88c941704aee6..d9062086b184a 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu-jupyter.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu-jupyter.Dockerfile
+@@ -84,7 +84,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu.Dockerfile
+index 618d3d211d9df..2d310dec012cf 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/devel-cpu.Dockerfile
+@@ -84,7 +84,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu-jupyter.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu-jupyter.Dockerfile
+index 4be850f5fae3b..6c100cc9d8e05 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu-jupyter.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu-jupyter.Dockerfile
+@@ -125,7 +125,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile
+index feba442ec1c26..a8e9b8d9088fb 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/devel-gpu.Dockerfile
+@@ -125,7 +125,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le-jupyter.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le-jupyter.Dockerfile
+index 129f983eb319e..a1a5cfbc03040 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le-jupyter.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le-jupyter.Dockerfile
+@@ -83,7 +83,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le.Dockerfile
+index aa2b9f88702e2..118de55a138de 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-cpu-ppc64le.Dockerfile
+@@ -83,7 +83,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le-jupyter.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le-jupyter.Dockerfile
+index 0f6a9ae5e5e27..4f94ba1edb119 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le-jupyter.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le-jupyter.Dockerfile
+@@ -124,7 +124,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le.Dockerfile b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le.Dockerfile
+index 7086a0cd5d6d7..0eefc0737d5a8 100644
+--- a/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le.Dockerfile
++++ b/tensorflow/tools/dockerfiles/dockerfiles/ppc64le/devel-gpu-ppc64le.Dockerfile
+@@ -124,7 +124,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/partials/ubuntu/bazel.partial.Dockerfile b/tensorflow/tools/dockerfiles/partials/ubuntu/bazel.partial.Dockerfile
+index ac3d23c3747e8..620660f0b28a4 100644
+--- a/tensorflow/tools/dockerfiles/partials/ubuntu/bazel.partial.Dockerfile
++++ b/tensorflow/tools/dockerfiles/partials/ubuntu/bazel.partial.Dockerfile
+@@ -14,7 +14,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild-arm64v8.partial.Dockerfile b/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild-arm64v8.partial.Dockerfile
+index 969445c627465..87497f60ae3f9 100644
+--- a/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild-arm64v8.partial.Dockerfile
++++ b/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild-arm64v8.partial.Dockerfile
+@@ -18,7 +18,7 @@ RUN python3 -m pip --no-cache-dir install \
+     h5py \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+diff --git a/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild.partial.Dockerfile b/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild.partial.Dockerfile
+index 0cf475d9deb13..22d2104db7a28 100644
+--- a/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild.partial.Dockerfile
++++ b/tensorflow/tools/dockerfiles/partials/ubuntu/bazelbuild.partial.Dockerfile
+@@ -13,7 +13,7 @@ RUN python3 -m pip --no-cache-dir install \
+     keras_preprocessing \
+     matplotlib \
+     mock \
+-    'numpy<1.19.0' \
++    'numpy<1.21' \
+     scipy \
+     sklearn \
+     pandas \
+
+From 444840954cab9fda8be108e83af74d6a79e395b9 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Thu, 17 Jun 2021 11:44:08 +0200
+Subject: [PATCH 7/7] shape must be integer tuple
+
+---
+ tensorflow/python/eager/function_test.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tensorflow/python/eager/function_test.py b/tensorflow/python/eager/function_test.py
+index ccf3f117e3970..69985f6557c17 100644
+--- a/tensorflow/python/eager/function_test.py
++++ b/tensorflow/python/eager/function_test.py
+@@ -279,8 +279,8 @@ def testImplementsAttributeAssertsOnSideInput(self):
+       z = array_ops.zeros(0)
+       v = def_function.function(
+           experimental_implements='func')(lambda x, y: x + y + z)
+-      a = array_ops.ones((1.0,))
+-      b = array_ops.ones((1.0,))
++      a = array_ops.ones((1,))
++      b = array_ops.ones((1,))
+       with self.assertRaisesRegex(AssertionError,
+                                   'variables are always captured'):
+         v(a, b)

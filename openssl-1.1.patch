@@ -1,0 +1,24 @@
+diff --git a/tensorflow/core/platform/s3/aws_crypto.cc b/tensorflow/core/platform/s3/aws_crypto.cc
+index 6a473027..2fe87675 100644
+--- a/tensorflow/core/platform/s3/aws_crypto.cc
++++ b/tensorflow/core/platform/s3/aws_crypto.cc
+@@ -35,14 +35,13 @@ class AWSSha256HMACOpenSSLImpl : public Aws::Utils::Crypto::HMAC {
+     Aws::Utils::ByteBuffer digest(length);
+     memset(digest.GetUnderlyingData(), 0, length);
+ 
+-    HMAC_CTX ctx;
+-    HMAC_CTX_init(&ctx);
++    HMAC_CTX * ctx = HMAC_CTX_new();
+ 
+-    HMAC_Init_ex(&ctx, secret.GetUnderlyingData(),
++    HMAC_Init_ex(ctx, secret.GetUnderlyingData(),
+                  static_cast<int>(secret.GetLength()), EVP_sha256(), NULL);
+-    HMAC_Update(&ctx, toSign.GetUnderlyingData(), toSign.GetLength());
+-    HMAC_Final(&ctx, digest.GetUnderlyingData(), &length);
+-    HMAC_CTX_cleanup(&ctx);
++    HMAC_Update(ctx, toSign.GetUnderlyingData(), toSign.GetLength());
++    HMAC_Final(ctx, digest.GetUnderlyingData(), &length);
++    HMAC_CTX_free(ctx);
+ 
+     return Aws::Utils::Crypto::HashResult(std::move(digest));
+   }
