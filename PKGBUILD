@@ -13,7 +13,9 @@ pkgdesc="Nimf is a lightweight, fast and extensible input method framework."
 arch=('any')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
-depends=(gtk3
+depends=(
+         'glibc'
+         'gtk3'
          'glib2'
          'libhangul-git'
          'libappindicator-gtk3'
@@ -43,7 +45,21 @@ pkgver() {
 	rm -rf ../../nimf
 }
 
+post_install() {
+	echo "Compiling schemas..."
+	/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+	echo "Running ldconfig..."
+	ldconfig
+	echo "Updating GTK icon cache..."
+	gtk-update-icon-cache
+	echo "Updating immodules cache..."
+	gtk-query-immodules-3.0 --update-cache
+	gtk-query-immodules-2.0 --update-cache
+}
 
+post_upgrade() {
+	post_install $1
+}
 build() {
 	cd "$srcdir/nimf"
 	./autogen.sh --prefix=/usr
