@@ -1,5 +1,5 @@
 pkgname=duality-bass-studio-vst
-pkgver=1.2.5.1
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Duality Bass Studio Bass Amplifier (VST Plugin)"
 arch=('x86_64')
