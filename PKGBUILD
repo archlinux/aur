@@ -17,10 +17,12 @@ depends=(
   "python-aiohttp<4.0.0"
   "python-aiostream<0.5.0"
 )
-makedepends=("git"
-             "python-setuptools-scm"
-             "python-sphinx"
-             "python-sphinx_rtd_theme")
+makedepends=(
+  "git"
+  "python-setuptools-scm"
+  "python-sphinx"
+  "python-sphinx_rtd_theme"
+)
 checkdepends=(
   "python-hypothesis<7.0.0"
   "python-pytest-httpserver"
