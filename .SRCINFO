@@ -1,7 +1,7 @@
 pkgbase = wps-office-cn
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 11.1.0.10702
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.wps.cn
 	arch = x86_64
 	arch = aarch64
@@ -29,6 +29,7 @@ pkgname = wps-office-cn
 	depends = libxss
 	depends = sqlite
 	depends = libtool
+	depends = libxslt
 	optdepends = cups: for printing support
 	optdepends = libjpeg-turbo: JPEG image codec support
 	optdepends = pango: for complex (right-to-left) text support
