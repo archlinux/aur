@@ -1,5 +1,5 @@
 pkgname=air-impulse-loader-vst
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="AIR Impulse Response Loader (VST Plugin)"
 arch=('x86_64')
