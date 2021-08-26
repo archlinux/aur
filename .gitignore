@@ -1,0 +1,5 @@
+gdlauncher-*.pkg.tar.zst
+.directory
+v*.tar.gz
+pkg
+src
