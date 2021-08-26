@@ -1,11 +1,10 @@
 [Unit]
-Description=A framework for secure peer-to-peer networking
+Description=GNUnet user service
+After=network.target
 
 [Service]
-Type=forking
-ExecStart=gnunet-arm -c ~/.config/gnunet.conf -s
-ExecStop=gnunet-arm -c ~/.config/gnunet.conf -e
-GuessMainPID=no
+Type=simple
+ExecStart=/usr/lib/gnunet/libexec/gnunet-service-arm -c ~/.config/gnunet.conf
 
 [Install]
 WantedBy=multi-user.target
