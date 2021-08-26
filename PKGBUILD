@@ -7,10 +7,12 @@ arch=('x86_64')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
 depends=('nimf' 'zoom')
+source=("libqt5im-nimf.so")
+sha256sums=('d246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c')
 
 package() {
   mkdir ${pkgdir}/opt
   mkdir ${pkgdir}/opt/zoom
   mkdir ${pkgdir}/opt/zoom/platforminputcontexts
-   ln -s /usr/lib/x86_64-linux-gnu/libnimf.so.1.0.0 ${pkgdir}/opt/zoom/platforminputcontexts/libnimfplatforminputcontextplugin.so
+   cp libqt5im-nimf.so ${pkgdir}/opt/zoom/platforminputcontexts/libqt5im-nimf.so
 }

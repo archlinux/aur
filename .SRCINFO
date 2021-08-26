@@ -7,5 +7,7 @@ pkgbase = zoom-libnimf
 	license = LGPL3
 	depends = nimf
 	depends = zoom
+	source = libqt5im-nimf.so
+	sha256sums = d246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c
 
 pkgname = zoom-libnimf
