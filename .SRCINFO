@@ -1,6 +1,6 @@
 pkgbase = lc0-blas-git
 	pkgdesc = BLAS version of Leela Chess Zero.
-	pkgver = v0.28.0.r0.g3982cc0e
+	pkgver = 0.28.0.r0.g3982cc0e
 	pkgrel = 1
 	url = https://lczero.org/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = lc0-blas-git
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
-	makedepends = openblas-cblas-git
-	depends = openblas
+	depends = openblas-cblas-git
 	depends = protobuf
 	source = lc0-blas::git+https://github.com/LeelaChessZero/lc0.git#branch=master
 	md5sums = SKIP

@@ -1,20 +1,20 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 pkgname=lc0-blas-git
 _pkgname=lc0-blas
-pkgver=v0.28.0.r0.g3982cc0e
+pkgver=0.28.0.r0.g3982cc0e
 pkgrel=1
 pkgdesc="BLAS version of Leela Chess Zero."
 arch=('any')
 url="https://lczero.org/"
 license=('GPL3')
-depends=('openblas' 'protobuf')
-makedepends=('git' 'meson>=0.46' 'ninja' 'openblas-cblas-git')
+depends=('openblas-cblas-git' 'protobuf')
+makedepends=('git' 'meson>=0.46' 'ninja')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
