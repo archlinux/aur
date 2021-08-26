@@ -4,7 +4,7 @@
 # Contributor: Simonas Racinas <racinas at icloud.com>
 pkgname=visual-paradigm-community
 pkgver=16.3
-pkgrel=20210701
+pkgrel=20210821
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
 arch=('x86_64')
@@ -16,14 +16,14 @@ license=('custom')
 _server=eu6
 _version="${pkgver//./_}"
 # https://eu6.visual-paradigm.com/visual-paradigm/vpce14.2/20180101/Visual_Paradigm_CE_14_2_20180101_Linux64.sh
-source=("https://$_server.visual-paradigm.com/visual-paradigm/vpce$pkgver/$pkgrel/Visual_Paradigm_CE_${_version}_${pkgrel}_Linux64_InstallFree.tar.gz"
+source=("https://$_server.dl.visual-paradigm.com/visual-paradigm/vpce$pkgver/$pkgrel/Visual_Paradigm_CE_${_version}_${pkgrel}_Linux64_InstallFree.tar.gz"
   'visual-paradigm-community.install'
   'visual-paradigm.desktop'
   'visual-paradigm.png'
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('a0b00f590516b3cbc0281b7387775379dabda642652a6267d4b84db012570968'
+sha256sums=('6cb92a4573391209a319e513e5243f43237277529d20e69d5913470adc51808b'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
