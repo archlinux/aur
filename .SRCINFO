@@ -5,6 +5,7 @@ pkgbase = neovim-zenbones-git
 	url = https://github.com/mcchrish/zenbones.nvim
 	arch = any
 	groups = neovim-plugins
+	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime

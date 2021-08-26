@@ -7,13 +7,12 @@ pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
 url="https://github.com/mcchrish/zenbones.nvim"
 license=('MIT')
-groups=('neovim-plugins')
+groups=('neovim-plugins' 'vim-plugins')
 depends=('vim-plugin-runtime')
 optdepends=('neovim-lush: for zenbones-lua colorscheme')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
@@ -23,7 +22,7 @@ pkgver() {
 }
 package() {
 	cd "$pkgname"
-	find colors lua -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	find colors lua -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/vim/vimfiles/{}" \;
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
