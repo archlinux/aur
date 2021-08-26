@@ -1,5 +1,6 @@
-# Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
-# Contributor: xlwz <xlwzforever@outlook.com>
+# Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Contributor: halflife <pigoig_at_gmail_com>
+# Maintainer: xlwz <xlwzforever@outlook.com>
 
 pkgname=keepass-zh-cn
 pkgver=2.46
