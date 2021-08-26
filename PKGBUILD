@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=cointop-bin
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="Cointop is a fast and lightweight interactive terminal based UI application for tracking and monitoring cryptocurrency coin stats in real-time"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("Apache License 2.0")
 provides=("cointop")
 conflicts=("cointop" "cointop-git")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/cointop_${pkgver}_linux_amd64.tar.gz")
-sha256sums=("1d181644053720d5bc4314e30ba6a168ed4d32dd7bfa78c3c02ab49054dc9c50")
+sha256sums=("da338b3a87f2b5c7300221b707e628f8acd1ca2b2aa57b13f12d46139a5e14dc")
 
 package() {
   mkdir -p "$pkgdir/usr/local/bin"
