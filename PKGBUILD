@@ -1,9 +1,10 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 # Based on the PKGBUILD for gdlauncher.
 pkgname="gdlauncher-beta"
+_pkgname="gdlauncher"
 pkgver="1.1.15.beta.2"
 _pkgver="1.1.15-beta.2"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -20,7 +21,7 @@ icon_sizes=(48 128 256 1024)
 
 prepare() {
     # Generate .desktop
-    gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" --categories "Application;Game" -n -f
+    gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${_pkgname} --exec "/usr/bin/${_pkgname}" --categories "Application;Game" -n -f
 
     cd "${srcdir}/GDLauncher-${_pkgver}/"
 
@@ -67,6 +68,6 @@ package() {
     # Install icons
     for size in "${icon_sizes[@]}"; do
         install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/"
-        convert "${srcdir}/GDLauncher-${_pkgver}/public/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+        convert "${srcdir}/GDLauncher-${_pkgver}/public/icon.png" -resize "${size}x${size}" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
     done
 }
