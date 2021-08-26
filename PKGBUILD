@@ -1,7 +1,7 @@
 # Maintainer: so1ar <674630130@qq.com>
 
 pkgname=v2ray-domain-list-custom
-pkgver=202108182209
+pkgver=202108252209
 pkgrel=1
 pkgdesc="A list of domains to be used as geosites for routing purpose in Project V"
 arch=('any')
