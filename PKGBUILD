@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=g64drive
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Portable Linux/Mac tool for Retroactive 64drive'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/rasky/g64drive'
 makedepends=('go')
 depends=('libftdi')
 source=("https://github.com/rasky/g64drive/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('402d1e2b9c39a6d21345a4e076b802520ab01d7db1d4dc1b2552bd0004d320df')
+sha256sums=('4cac4075ebe44d5a620ce57d52f039e650e33bdb490f4148d255445409d8fdf4')
 
 prepare() {
   cd g64drive-${pkgver}
