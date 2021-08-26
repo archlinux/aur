@@ -5,11 +5,11 @@
 # Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
 _pkgname=gmdb2
-_pkgver=0.9.0
+_pkgver=0.9.1
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=gmdb2
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 provides=("gmdb2=$pkgver")
 pkgdesc="Graphical viewer for Microsoft Access database files"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('mdbtools>=0.9.0' 'gtk3>=3.22')
 makedepends=('yelp-tools')
 optdepends=('yelp: for documentation')
 source=("${_srcname}.tar.gz::$url/archive/v${_pkgver}.tar.gz")
-md5sums=('213340eb34607845887c2ce39303f6c1')
+md5sums=('65afb8b2be0afe389cd85c687223bb09')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
