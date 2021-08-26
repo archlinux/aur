@@ -1,6 +1,6 @@
 pkgbase = yash-git
 	pkgdesc = Yet Another SHell is a POSIX-compliant command line shell
-	pkgver = 2.51
+	pkgver = r3637.e0e50112
 	pkgrel = 1
 	url = http://sourceforge.jp/projects/yash/
 	install = yash.install
@@ -17,4 +17,3 @@ pkgbase = yash-git
 	sha256sums = SKIP
 
 pkgname = yash-git
-

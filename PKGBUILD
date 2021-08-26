@@ -3,7 +3,7 @@
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=yash-git
-pkgver=2.51
+pkgver=r3637.e0e50112
 pkgrel=1
 pkgdesc='Yet Another SHell is a POSIX-compliant command line shell'
 arch=('x86_64' 'armv7h')
@@ -20,12 +20,10 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd yash
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "yash"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
 
 build() {
   cd yash
