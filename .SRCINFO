@@ -1,12 +1,12 @@
 pkgbase = dylint-link
 	pkgdesc = A wrapper around Rust's default linker to help create Dylint libraries
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 0
 	url = https://github.com/trailofbits/dylint
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = https://github.com/trailofbits/dylint/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = f7bb9c7d687db520cb07910afdab056173a7bb9e6bf98e3de4265817a8bff80c
+	source = https://github.com/trailofbits/dylint/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 46bd07eb4975713bd9004ead592e139a62f1fa6b6b9b46999e2695c20278feb3
 
 pkgname = dylint-link
