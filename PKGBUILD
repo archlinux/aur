@@ -74,12 +74,12 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=204
+_minor=205
 _srcname=linux-${_major}
-_clr=${_major}.201-214
+_clr=${_major}.204-217
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
@@ -345,7 +345,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '08231a94e8b932e4d95e428443ef202f1d3ec53136efffbdb10bdf81f5fb8a02'
+            'e504b7e44346ab301f4073958f726535080fc644fb30978bcb73f783228bcbf2'
             'SKIP'
             'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf')
 
