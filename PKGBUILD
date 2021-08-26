@@ -48,7 +48,7 @@ package_smuxi-server-git() {
   depends=('log4net' 'nini')
   optdepends=('sqlite: alternative for persistent message storing')
   conflicts=('smuxi-server')
-  provides=('smuxi-server=1.0')
+  provides=('smuxi-server=1.1')
 
 
   cd "$srcdir/$_pkgbase"
@@ -70,7 +70,7 @@ package_smuxi-git() {
   pkgdesc+=" (frontends)"
   depends=('smuxi-server' 'gtk-sharp-2-git' 'notify-sharp' 'gtkspell' 'stfl' 'desktop-file-utils' 'gtk-update-icon-cache' 'xdg-utils')
   conflicts=('smuxi')
-  provides=('smuxi=1.0')
+  provides=('smuxi=1.1')
 
 
   cd "$srcdir/frontend"

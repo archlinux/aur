@@ -22,7 +22,7 @@ pkgname = smuxi-server-git
 	depends = log4net
 	depends = nini
 	optdepends = sqlite: alternative for persistent message storing
-	provides = smuxi-server=1.0
+	provides = smuxi-server=1.1
 	conflicts = smuxi-server
 
 pkgname = smuxi-git
@@ -35,5 +35,5 @@ pkgname = smuxi-git
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	depends = xdg-utils
-	provides = smuxi=1.0
+	provides = smuxi=1.1
 	conflicts = smuxi
