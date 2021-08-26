@@ -1,4 +1,4 @@
-pkgbase = poryscript
+pkgbase = poryscript-git
 	pkgdesc = High-level scripting language for gen 3 pokemon decompilation projects
 	pkgver = 2.1.0
 	pkgrel = 1
