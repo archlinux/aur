@@ -3,7 +3,7 @@
 _name=google-cloud-vision
 
 pkgname=python-google-cloud-vision
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Google Cloud Vision API client library'
 arch=('any')
@@ -25,7 +25,7 @@ options=('!emptydirs')
 source=(
   "https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
-sha256sums=('bfe5eb6f01015a6eeda2e0744a6834f690379a3cdc946fbae0ec60427118aa29')
+sha256sums=('059881487da7676b671e2e8ad7e222e62fd9ac6272c87d7eea1bab9aa55f61c3')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_name}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
