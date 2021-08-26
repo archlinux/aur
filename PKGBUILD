@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git)
-pkgver=12.0.0_r187467.ga5416bf3694
+pkgver=12.0.0_r187580.g5a6c626710a
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=1
@@ -78,8 +78,11 @@ build() {
 
   # using -pipe causes spurious test-suite failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe/}
-  CXXFLAGS=${CXXFLAGS/-pipe/}
+  CFLAGS=${CFLAGS/-pipe}
+  CXXFLAGS=${CXXFLAGS/-pipe}
+
+  # See https://aur.archlinux.org/pkgbase/gcc-git/#comment-822240
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security}
 
   "$srcdir/gcc/configure" --prefix=/usr \
       --libdir=/usr/lib \
