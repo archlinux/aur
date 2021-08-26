@@ -1,6 +1,6 @@
 pkgbase = libretro-pcsx2-git
 	pkgdesc = Sony PlayStation 2 core
-	pkgver = r11900.373fca4dc
+	pkgver = r12086.f83cd9467
 	pkgrel = 1
 	url = https://github.com/libretro/pcsx2
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = libretro-pcsx2-git
 	makedepends = libglvnd
 	makedepends = systemd
 	makedepends = vim
-	depends = glib2
 	depends = libaio
 	depends = libgl
 	depends = libretro-core-info
