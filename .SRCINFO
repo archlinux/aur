@@ -1,11 +1,11 @@
 pkgbase = kubectl-node-shell
 	pkgdesc = Exec into node via kubectl
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 0
 	url = https://github.com/kvaps/kubectl-node-shell
 	arch = x86_64
 	license = APACHE
-	source = kubectl-node-shell-1.5.1.tar.gz::https://github.com/kvaps/kubectl-node-shell/archive/refs/tags/v1.5.1.tar.gz
-	sha512sums = 05d4efb03253bd1a0be460c0b33a3f8ed25316e7434ff89013a2a2d2803bdbc1fe58c4eba2a34da932c099902edae7d27dc23125348b773f67476222866efadb
+	source = kubectl-node-shell-1.5.3.tar.gz::https://github.com/kvaps/kubectl-node-shell/archive/refs/tags/v1.5.3.tar.gz
+	sha512sums = 87c2f4570fb961c9583b54a53a044992e1a35ff40fe187f250fb82607e6fcf70c30a284cbf976ad7f2769965832fa94b501051edafd3c090bda4ca29eba5b963
 
 pkgname = kubectl-node-shell
