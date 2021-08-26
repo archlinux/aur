@@ -5,6 +5,7 @@ pkgbase = wshowkeys-git
 	url = https://github.com/ammgws/wshowkeys
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = meson
 	makedepends = wayland-protocols
 	depends = cairo
