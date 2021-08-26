@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-git
-pkgver=0.4.1.r2.g095ea05
+pkgver=0.5.0.r0.g4e3be66
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -13,6 +13,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
+changelog='CHANGELOG.md'
 
 pkgver() {
     cd ${pkgname%-git}
