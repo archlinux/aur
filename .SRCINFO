@@ -1,0 +1,14 @@
+pkgbase = ttf-mplus-git
+	pkgdesc = A little nifty font family for everyday usage
+	pkgver = r215.977baab
+	pkgrel = 1
+	url = https://mplusfonts.github.io/
+	arch = any
+	license = custom
+	makedepends = git
+	conflicts = ttf-mplus
+	conflicts = mplus-font
+	source = git+https://github.com/coz-m/MPLUS_FONTS.git
+	md5sums = SKIP
+
+pkgname = ttf-mplus-git
