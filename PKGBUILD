@@ -6,17 +6,16 @@
 
 pkgname='gnunet'
 pkgver='0.15.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
 license=('AGPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
-	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
-	'openssl' 'libextractor' 'brotli' 'gettext')
-makedepends=('pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
-             'opus')
+         'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
+         'openssl' 'libextractor' 'brotli' 'gettext')
+makedepends=('pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse' 'opus')
 optdepends=('bluez: for bluetooth transport'
             'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
@@ -39,7 +38,7 @@ sha256sums=('23e6af170bb47aacb15d27bbe244d871dbc4d0523b1139bd2f12f4b42b65102e'
             'ef221a4cbdc2270d7a1b1447e6e8a498653ec16d2f73fa57a7c6888980af4dfb'
             '13760ecc1523a9acd030df34e6a90edcd2971271766c8e159c9e66341a9168c4'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            '4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b')
+            'e6db3d48757ee4a95970cc63606e5da86a01776a2c6ffddb8a099dde8bf20f63')
 
 prepare() {
 
@@ -53,7 +52,7 @@ build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	test -f Makefile || ./configure --prefix='/usr'
+	./configure --prefix='/usr' --enable-experimental
 	make
 	make -C contrib
 
@@ -75,11 +74,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
-	# The current package cannot ship `gnunet-helper-transport-wlan` and
-	# `gnunet-helper-transport-bluetooth`, as these require root privileges
-	# during the build process. If these are built, please update the
-	# "${pkgname}.tmpfiles" file accordingly
-
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
@@ -94,7 +88,7 @@ package() {
 	{
 		echo "# /etc/${pkgname}.conf"
 		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${pkgname}/config.d" -type f -name '*.conf' \
-			-printf '\n\n# The following lines have been copied from /%p\n\n' \
+			-printf '\n\n# For the default values of the the following lines please refer to\n# /%p\n\n' \
 			-exec cat '{}' ';')
 	} > "${pkgdir}/etc/${pkgname}.conf"
 
