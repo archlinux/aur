@@ -1,65 +1,56 @@
-# Maintainer: Whemoon Jang <palindrom615@gmail.com>
+# Maintainer: 7k5x <7k5xlp0onfire@gmail.com>
+# Contributor: Whemoon Jang <palindrom615@gmail.com>
 # Contributor: Hodong Kim <nimfsoft@gmail.com>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Changjoo Lee <icj7061@gmail.com>
 # Contributor: ywen407 <ywen407@naver.com>
+
+#The current git revision of nimf on GitHub uses a new function of libhangul that's not implemented in the current *release* version of it. Thus, we have to install libhangul-git. Install it from the AUR.
 pkgname=nimf-git
-pkgver=1.2.0.r22.01ae33c
+pkgver=1.3.0.r9.799dfcd
 pkgrel=1
-epoch=1
-pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
-arch=('i386' 'x86_64')
+pkgdesc="Nimf is a lightweight, fast and extensible input method framework."
+arch=('any')
 url="https://github.com/hamonikr/nimf"
 license=('LGPL3')
-groups=()
-depends=(
-	'glib2'
-	'gtk3'
-	'libxklavier'
-	'libxkbcommon>=0.5.0'
-	'libappindicator-gtk3'
-)
+depends=(gtk3
+         'glib2'
+         'libhangul-git'
+         'libappindicator-gtk3'
+         'libxkbcommon>=0.5.0'
+         'libxklavier'
+         'qt5-base'
+         'wayland')
 makedepends=(
-	'git'
-	'meson'
-	'ninja'
+    'git'
 	'gcc'
-	'gtk2'
+	'intltool'
 	'gtk-doc'
+	'gtk2'
 	'gtk-update-icon-cache'
 	'librsvg'
-	'anthy'
-	'libhangul>=0.0.12'
-	'm17n-db>=1.7.0'
-	'm17n-lib>=1.7.0'
-	'librime>=1.2.9'
 	'libx11'
 	'wayland-protocols'
-	'wayland'
-	'qt5-base'
 )
-optdepends=('qt4: qt4 support')
 provides=("nimf")
 conflicts=("nimf")
-options=()
-install=
-source=("${pkgname%-git}::git+$url.git#branch=meson-build")
-noextract=()
-md5sums=('SKIP')
+source=( "nimf::git+${url}.git" )
+md5sums=('SKIP' )
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-# Git, tags available
+	cd "$srcdir/nimf"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	rm -rf ../../nimf
 }
 
+
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	meson setup build --buildtype=release --prefix="/usr"  -Dwith_nimf_qt4=false
-	ninja -C build
+	cd "$srcdir/nimf"
+	./autogen.sh --prefix=/usr
+	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	DESTDIR="$pkgdir/" ninja -C build install
+	cd "$srcdir/nimf"
+	make DESTDIR="${pkgdir}/" install
 }
