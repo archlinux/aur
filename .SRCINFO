@@ -1,14 +1,13 @@
 pkgbase = kubectl-access-matrix-bin
 	pkgdesc = Review Access - kubectl plugin to show an access matrix for k8s server resources
-	pkgver = 0.4.7
+	pkgver = 0.5.0
 	pkgrel = 0
 	url = https://github.com/corneliusweig/access-matrix
 	arch = x86_64
 	license = APACHE
 	conflicts = access-matrix
 	conflicts = access-matrix-git
-	source = access-matrix-0.4.7.tar.gz::https://github.com/corneliusweig/rakkess/releases/download/v0.4.7/access-matrix-amd64-linux.tar.gz
-	sha512sums = 663bf8014f4d446a3850c7a254aa62554795c9c6a9f03c0ac09f2c916df1cbe0a458df256b9a04f16a30170fc564b45cd9d0daea2a8120ddfb6d8716f9f3cdb7
+	source = access-matrix-0.5.0.tar.gz::https://github.com/corneliusweig/rakkess/releases/download/v0.5.0/access-matrix-amd64-linux.tar.gz
+	sha512sums = 9f30e6998fcacecb13b4847722a845dad4f3d565b1b5a6de777b9e16937a796d44561611f272a2829f1aaceb5e47c5ad8dce3ec48296ee7d64559658d2f90663
 
 pkgname = kubectl-access-matrix-bin
-

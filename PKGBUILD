@@ -2,14 +2,14 @@
 
 _pkgname=access-matrix
 pkgname=kubectl-$_pkgname-bin
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=0
 pkgdesc="Review Access - kubectl plugin to show an access matrix for k8s server resources"
 url="https://github.com/corneliusweig/$_pkgname"
 license=('APACHE')
 arch=('x86_64')
 source=("$_pkgname-$pkgver.tar.gz::${url/$_pkgname/rakkess}/releases/download/v$pkgver/${_pkgname}-amd64-linux.tar.gz")
-sha512sums=('663bf8014f4d446a3850c7a254aa62554795c9c6a9f03c0ac09f2c916df1cbe0a458df256b9a04f16a30170fc564b45cd9d0daea2a8120ddfb6d8716f9f3cdb7')
+sha512sums=('9f30e6998fcacecb13b4847722a845dad4f3d565b1b5a6de777b9e16937a796d44561611f272a2829f1aaceb5e47c5ad8dce3ec48296ee7d64559658d2f90663')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
