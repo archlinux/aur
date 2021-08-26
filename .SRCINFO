@@ -1,14 +1,13 @@
 pkgbase = wordpress-plugin-wp-gdpr-compliance
 	pkgdesc = Assists website and webshop owners with European Privacy Regulations
-	pkgver = 1.5.6
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://www.wpgdprc.com
 	arch = any
 	license = GPL2
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-wp-gdpr-compliance-1.5.6.tar.gz::https://downloads.wordpress.org/plugin/wp-gdpr-compliance.1.5.6.zip
-	sha512sums = 2ed6dd6212a0bee421fc7ca29239bb18901bb1c4e8ea551bcf4189647b4e73e8a3cfa52cc1b0a66bc250933ad57556483cdc24b3bebb0126d58f9a14effdc70e
+	source = wordpress-plugin-wp-gdpr-compliance-1.5.9.tar.gz::https://downloads.wordpress.org/plugin/wp-gdpr-compliance.1.5.9.zip
+	sha512sums = 746f1b569354a7083b6d9ae4daf3127cc85b4946d98370c82911436de82b6a4a9b325e7b9e2a1cae4199f95501dcb169740f98f0520162501dc78989cd89fc4d
 
 pkgname = wordpress-plugin-wp-gdpr-compliance
-

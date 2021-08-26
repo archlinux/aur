@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-wp-gdpr-compliance
-pkgver=1.5.6
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Assists website and webshop owners with European Privacy Regulations"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/wp-gdpr-compliance.${pkgver}.zip")
-sha512sums=('2ed6dd6212a0bee421fc7ca29239bb18901bb1c4e8ea551bcf4189647b4e73e8a3cfa52cc1b0a66bc250933ad57556483cdc24b3bebb0126d58f9a14effdc70e')
+sha512sums=('746f1b569354a7083b6d9ae4daf3127cc85b4946d98370c82911436de82b6a4a9b325e7b9e2a1cae4199f95501dcb169740f98f0520162501dc78989cd89fc4d')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
