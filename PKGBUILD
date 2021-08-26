@@ -2,7 +2,7 @@
 
 pkgname=python-minidump
 _pkgname=minidump
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="Python library to parse and read Microsoft minidump file format"
 url="https://pypi.org/project/minidump"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9e53d6f374ebdda79cd6d4981e07194f077ec9d375d92e963702bb81dc1d6ad6')
+sha256sums=('b9fe0a65cf42d60591807bb8b6d9357e92f6a46f2851befdbaf08894722d07ff')
 
 package() {
   cd ${_pkgname}-${pkgver}
