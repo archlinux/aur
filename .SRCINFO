@@ -1,6 +1,6 @@
 pkgbase = vorta
 	pkgdesc = A GUI for BorgBackup
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/borgbase/vorta
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = vorta
 	depends = python-llfuse
 	depends = python-setuptools
 	options = !emptydirs
-	source = vorta-0.7.7.tar.gz::https://github.com/borgbase/vorta/archive/v0.7.7.tar.gz
-	sha256sums = e7c9edf1cdd233bef5a327bf3bb729be91850c4a7136af1dcff2e8056a7e30e0
+	source = vorta-0.7.8.tar.gz::https://github.com/borgbase/vorta/archive/v0.7.8.tar.gz
+	sha256sums = 2f6cdf37de434841726eb9548af3d66c909cc5af8cf74e19b4a5a941c851b19f
 
 pkgname = vorta
