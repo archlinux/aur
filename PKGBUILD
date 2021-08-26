@@ -3,8 +3,8 @@
 pkgname=python-secure
 _pypiname=secure
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="secure.py is a lightweight package that adds optional security headers and cookie attributes for Python web frameworks."
+pkgrel=2
+pkgdesc="secure.py is a lightweight package that adds optional security headers for Python web frameworks."
 url="https://github.com/TypeError/secure.py/releases"
 arch=('any')
 license=('MIT')
