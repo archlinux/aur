@@ -50,19 +50,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    'b1382b4937779c70a7c706142e37221f4cc5f1ce'
+    '3e77a6e849ea64c00b8ca5453a87f4f95755a2cd'
 )
 sha1sums_x86_64=(
-    '45995e530cf5bbc7a79719e5bfb28f95c51ec59e'
+    'bbc212308ec10c5b430534ba2999dc3a151db31e'
 )
 sha1sums_aarch64=(
-    'b181d165c3b77a7eb802235f9bc25ff9efbdbcff'
+    'e5907eb423ee5959855c1c5439b750637469fe47'
 )
 sha1sums_armv6h=(
-    '327237b05067c0bbb48ab78685a1fe0c022e5b4b'
+    '470875616ef5c60370a3f9890bd46836fbd80b71'
 )
 sha1sums_armv7h=(
-    '327237b05067c0bbb48ab78685a1fe0c022e5b4b'
+    '470875616ef5c60370a3f9890bd46836fbd80b71'
 )
 
 package() {
