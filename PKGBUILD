@@ -2,17 +2,17 @@
 # Contributor: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="SSH server and client configuration auditing"
 arch=('any')
 url="https://github.com/jtesta/ssh-audit"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('6eb7cd3a482cc89e81f462ca1f0c50543ca9ae8db38fcd333cf7a2f7ade3a982268b3cc94d73ce9930d118f390ff3fc525daa955ce47ef8b371b6e20c1dcdee8')
+b2sums=('902c29c3eb6dc1ac894d8a75a28f74a43a2e172e513db97d70358d7e6737115e5308fef33541baf0f272a2dce4bb29355eb8809274cfffa64c16a02cb19ce75b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -21,7 +21,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  python setup.py pytest
+  PYTHONPATH="$(pwd)/src:$PYTHONPATH" pytest
 }
 
 package() {
