@@ -12,7 +12,7 @@ conflicts=('v2ray-domain-list-community')
 
 source=("geosite-$pkgver.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$pkgver/geosite.dat")
 
-sha256sums=('0dc097c8a9ee80aedc224249a2d110966a978eff67b46324a29c779edfb3871a')
+sha256sums=('a4cc53e35c54b60a107faf51933123c5e23ebe8e5935ec1759cb239989bc2812')
 
 package() {
   install -Dm644 geosite-$pkgver.dat "$pkgdir"/usr/share/v2ray/geosite.dat
