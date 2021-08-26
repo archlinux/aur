@@ -1,0 +1,30 @@
+pkgbase = libxfce4ui-nocsd
+	pkgdesc = A fork of libxfce4ui with the explicit goal of removing Client-Side Decorations (CSD) (devel release)
+	pkgver = 4.17.0
+	pkgrel = 1
+	url = https://github.com/Xfce-Classic/libxfce4ui-nocsd
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = glade
+	makedepends = xfce4-dev-tools
+	depends = libxfce4util>=4.15.6
+	depends = xfconf
+	depends = libsm
+	depends = startup-notification
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libgtop
+	optdepends = glade: Glade designer plugin
+	provides = libxfce4ui=4.17.0
+	conflicts = libxfce4ui
+	source = https://github.com/Xfce-Classic/libxfce4ui-nocsd/releases/download/4.17.0/libxfce4ui-4.17.0.tar.bz2
+	sha256sums = ca0095d41b0c02d768191e1a1db68e721e5afb48f29ff299e06ad53bb5f5ecfa
+
+pkgname = libxfce4ui-nocsd
