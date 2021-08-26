@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.9.arch1
-pkgrel=1
+pkgver=5.13.12.arch1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -16,7 +16,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=archlinux-linux
-_fedora_kernel_commit_id=91f97d88231152006764d3c50cc52ddbb508529f
+_fedora_kernel_commit_id=e087e6d70c49c685b4d7cc7364496ade3aed3609
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
@@ -24,18 +24,22 @@ source=(
 
   "sys-kernel_arch-sources-g14_files-0004-5.8+--more-uarches-for-kernel.patch"::"https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/a8d200f422f4b2abeaa6cfcfa37136b308e6e33e/more-uarches-for-kernel-5.8%2B.patch"
   "sys-kernel_arch-sources-g14_files-0005-lru-multi-generational.patch"
-  "sys-kernel_arch-sources-g14_files-0006-fix-tigerlake-pin-mapping.patch"
+  # mainlined
+  #"sys-kernel_arch-sources-g14_files-0006-fix-tigerlake-pin-mapping.patch"
   
-  #"https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/archive/$_fedora_kernel_commit_id/fedora-kernel-$_fedora_kernel_commit_id.zip"
   "sys-kernel_arch-sources-g14_files-0034-btusb-mediatek.patch"
 
   # for now let's just pull the 5 asus-linux patches we need directly and skip all of the git filtering
   "sys-kernel_arch-sources-g14_files-0039-asus-wmi-Add-panel-overdrive-functionality.patch"
-  "sys-kernel_arch-sources-g14_files-0040-asus-wmi-Add-dgpu-disable-method.patch"
-  "sys-kernel_arch-sources-g14_files-0041-asus-wmi-Add-egpu-enable-method.patch"
+  # pull newer version from fedora repo
+  #"sys-kernel_arch-sources-g14_files-0040-asus-wmi-Add-dgpu-disable-method.patch"
+  #"sys-kernel_arch-sources-g14_files-0041-asus-wmi-Add-egpu-enable-method.patch"
   "sys-kernel_arch-sources-g14_files-0042-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
   "sys-kernel_arch-sources-g14_files-0043-ALSA-hda-realtek-Fix-speakers-not-working-on-Asus-Fl.patch"
   "sys-kernel_arch-sources-g14_files-0044-claymore.patch"
+  "sys-kernel_arch-sources-g14_files-0045-v5-asus-wmi-Add-support-for-platform_profile.patch"
+  "sys-kernel_arch-sources-g14_files-0046-fan-curvers.patch"
 
 
   # k10temp support for Zen3 APUs
@@ -58,6 +62,8 @@ source=(
   
   "sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch"
   "sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch"
+  
+  "sys-kernel_arch-sources-g14_files-9006-amd-c3-entry.patch"
 )
 
 validpgpkeys=(
@@ -72,14 +78,14 @@ sha256sums=('SKIP'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
             'fa6cee9527d8e963d3398085d1862edc509a52e4540baec463edb8a9dd95bee0'
             '9327ac3edacbc60a023928147f9439789527fad62cef66945f35a9165108e30d'
-            '1e2777841f0ed2957cb9e869a150caa014fff3c32e2744fda9c950260997dcdc'
+            '6806c034b7480245a0b9eec448bd79042ff5ff3f9f5efbf2af78227bc56004a8'
             '0c515951db1c3dfc847e9b4777249c09be520ac140feb015a39c29e0531a89e6'
             '1ab75535772c63567384eb2ac74753e4d5db2f3317cb265aedf6151b9f18c6c2'
-            '8cc771f37ee08ad5796e6db64f180c1415a5f6e03eb3045272dade30ca754b53'
-            'f3461e7cc759fd4cef2ec5c4fa15b80fa6d37e16008db223f77ed88a65aa938e'
             '96bf4c0fb920a876d7ec1ed25123bab8a0a43db5f363823e83e14707083d8501'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
             'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
+            '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
+            'd7243b89a21cdca61e753526b82cea24af0bd28bfa0158843c31226037f39d97'
             'ed28a8051514f8c228717a5cdd13191b1c58181e0228d972fbe2af5ee1d013d7'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             '67ebf477b2ecbf367ea3fee1568eeb3de59de7185ef5ed66b81ae73108f6693c'
@@ -89,7 +95,8 @@ sha256sums=('SKIP'
             '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b'
             '5b7b8f450282a15d0832b171e82fc5639de1cb7aa495efe6e6c7989ebeb8ca36'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
-            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90')
+            'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
+            'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399')
 
 # notable microarch levels:
 #
@@ -113,36 +120,12 @@ _fedora_kernel_patch_skip_list=(
   
   "linux-kernel-test.patch"           # test patch, please ignore
   patch-*-redhat.patch                # wildcard match any redhat patch version
-  # 00{01..12}-drm-amdgpu*.patch        # upstreamed in 5.12
-
-  # upstreamed
-  "0001-HID-asus-Filter-keyboard-EC-for-old-ROG-keyboard.patch"
-  "0001-ALSA-hda-realtek-GA503-use-same-quirks-as-GA401.patch"
-  "0001-Add-jack-toggle-support-for-headphones-on-Asus-ROG-Z.patch"
-  "0001-HID-asus-filter-G713-G733-key-event-to-prevent-shutd.patch"
-  "0001-ACPI-video-use-native-backlight-for-GA401-GA502-GA50.patch"
-  "0002-Revert-platform-x86-asus-nb-wmi-Drop-duplicate-DMI-q.patch"
-  "0003-Revert-platform-x86-asus-nb-wmi-add-support-for-ASUS.patch"
-
-
-  # filter out suspend patches, we'll use upstream directly
-  "0001-ACPI-processor-idle-Fix-up-C-state-latency-if-not-ordered.patch"
-  "0002-v5-usb-pci-quirks-disable-D3cold-on-xhci-suspend-for-s2idle-on-AMD-Renoir.diff"
-  "0003-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.diff"
-  "0004-nvme-pci_look_for_StorageD3Enable_on_companion_ACPI_device_instead.patch"
-  "0005-v5-1-2-acpi-PM-Move-check-for-_DSD-StorageD3Enable-property-to-acpi.diff"
-  "0006-v5-2-2-acpi-PM-Add-quirks-for-AMD-Renoir-Lucienne-CPUs-to-force-the-D3-hint.diff"
-  "0007-ACPI_PM_s2idle_Add_missing_LPS0_functions_for_AMD.patch"
-  "0008-2-2-V2-platform-x86-force-LPS0-functions-for-AMD.diff"
-
-  # filter suspend patches from 'rog' branch
-  "0002-drm-amdgpu-drop-extraneous-hw_status-update.patch"
-  "0013-ACPI-idle-override-and-update-c-state-latency-when-n.patch"
-  "0014-usb-pci-quirks-disable-D3cold-on-AMD-xhci-suspend-fo.patch"
-  "0015-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.patch"
-  "0016-nvme-put-some-AMD-PCIE-downstream-NVME-device-to-sim.patch"
-  "0017-platform-x86-Add-missing-LPS0-functions-for-AMD.patch"
-  "0018-platform-x86-force-LPS0-functions-for-AMD.patch"
+  
+  0001-asus-wmi-Add-support-for-platform_profile.patch
+  0001-asus-wmi-Add-panel-overdrive-functionality.patch
+  0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch
+  0001-HID-asus-Prevent-Claymore-sending-suspend-event.patch
+  0015-PCI-quirks-Quirk-PCI-d3hot-delay-for-AMD-xhci.patch
 )
 
 export KBUILD_BUILD_HOST=archlinux
