@@ -1,4 +1,4 @@
-pkgbase = zoom
+pkgbase = zoom-hangul
 	pkgdesc = Zoom desktop client with Korean input patches
 	pkgver = 5.7.6a
 	pkgrel = 1
@@ -33,10 +33,12 @@ pkgbase = zoom
 	optdepends = qt5-webengine: SSO login support
 	optdepends = picom: extra compositor needed by some window managers for screen sharing
 	optdepends = xcompmgr: extra compositor needed by some window managers for screen sharing
+	provides = zoom
+	conflicts = zoom
 	options = !strip
-	source = zoom-5.7.6a_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.7.31792.0820/zoom_x86_64.pkg.tar.xz
+	source = zoom-hangul-5.7.6a_orig_x86_64.pkg.tar.xz::https://zoom.us/client/5.7.31792.0820/zoom_x86_64.pkg.tar.xz
 	source = libqt5im-nimf.so
 	sha512sums = 7c34f2f1951a22391ced31960fedba4f1058abf55f1e530b1069bc9b2946f54cd3a12713135ab7ea0ae57131e2ce30521315ce4a67673f7f024cd23f6e03c4be
 	sha512sums = d79cdff1c43dc62c66f4a928d07ceae5d00533915df4ce2a44b3e3308f0d2a8a4d403933a2ef4edd455ee4ae840a67ae218a582690693bb5ae3ebe97f1a1441c
 
-pkgname = zoom
+pkgname = zoom-hangul
