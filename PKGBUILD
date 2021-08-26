@@ -57,8 +57,8 @@ _use_current=
 
 pkgbase=linux-cacule
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.13.12
-pkgrel=6
+pkgver=5.13.13
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux Kernel with cacule scheduler and lto compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -82,7 +82,7 @@ source=(
 "${_patchsource}/xanmod-patches-v2/0001-xanmod-patches.patch"
 "${_patchsource}/zen-patches/0001-zen-patches.patch"
 "${_patchsource}/lqx-patches-v3/0001-lqx-patches.patch"
-"${_patchsource}/bfq-patches-v6/0001-bfq-patches.patch"
+"${_patchsource}/bfq-patches-v7/0001-bfq-patches.patch"
 "${_patchsource}/block-patches-v2/0001-block-patches.patch"
 "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
 "${_patchsource}/bbr2-patches-v2/0001-bbr2-patches.patch"
@@ -482,7 +482,7 @@ package_linux-cacule-headers() {
 
 }
 
-md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
+md5sums=('392cd7526637b3cbdf9de748d9a9008e'
          'd2f272859bedf0c122de0a5088f69eeb'
          '9f9b916ed39dc125db45d0bff672f4c0'
          '078da517ec2d54283af81d7da3af671a'
@@ -493,7 +493,7 @@ md5sums=('6e1728b2021ca19cc9273f080e6c44c7'
          'e15a64663e6221ea40b02aeb8517e70a'
          '1217799f33d6ba822152a0e2fb6f2e34'
          '31c897f53b91f98532321cd24928c0d7'
-         '698d661fa23611933146b83e0fa9cade'
+         '715e663535d063ac0b1f07b86e884eb1'
          '4f9e72e7edb909da5cd650afe13aadb6'
          '9bbbd88f0303ccd59064648eaaf80edd'
          '1bd37d8e71b2a7aae8ebd2853a08f445'
