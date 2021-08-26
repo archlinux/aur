@@ -1,0 +1,18 @@
+pkgbase = arch-wiki-docs-ja
+	pkgdesc = Pages from Arch Wiki jp optimized for offline browsing
+	pkgver = 20210825
+	pkgrel = 1
+	url = https://github.com/lahwaacz/arch-wiki-docs
+	arch = any
+	license = FDL
+	makedepends = git
+	makedepends = python
+	makedepends = python-simplemediawiki
+	makedepends = python-lxml
+	makedepends = python-cssselect
+	makedepends = python-requests
+	options = !strip
+	source = git://github.com/lahwaacz/arch-wiki-docs.git#commit=b06d5b6e6ab0c95cd3e6dc8ba02b9b2a85bee34d
+	md5sums = SKIP
+
+pkgname = arch-wiki-docs-ja

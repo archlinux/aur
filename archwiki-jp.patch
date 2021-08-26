@@ -1,0 +1,28 @@
+diff --git a/ArchWiki/ArchWiki.py b/ArchWiki/ArchWiki.py
+index aeeffab..49ebb75 100644
+--- a/ArchWiki/ArchWiki.py
++++ b/ArchWiki/ArchWiki.py
+@@ -12,8 +12,8 @@ from simplemediawiki import MediaWiki
+ 
+ __all__ = ["ArchWiki"]
+ 
+-url = "https://wiki.archlinux.org/api.php"
+-local_language = "English"
++url = "https://wiki.archlinux.jp/api.php"
++local_language = "日本語"
+ language_names = {
+     "العربية": {"subtag": "ar", "english": "Arabic"},
+     "Български": {"subtag": "bg", "english": "Bulgarian"},
+diff --git a/ArchWiki/downloader.py b/ArchWiki/downloader.py
+index df42c4a..0bf29f3 100644
+--- a/ArchWiki/downloader.py
++++ b/ArchWiki/downloader.py
+@@ -28,7 +28,7 @@ class Downloader:
+     }
+ 
+     css_links = {
+-        "https://wiki.archlinux.org/load.php?debug=false&lang=en&modules=mediawiki.legacy.commonPrint,shared|mediawiki.sectionAnchor|mediawiki.skinning.interface|skins.vector.styles|skins.vector.styles.responsive|zzz.ext.archLinux.styles&only=styles&skin=vector": "ArchWikiOffline.css",
++        "https://wiki.archlinux.jp/load.php?debug=false&lang=en&modules=mediawiki.legacy.commonPrint,shared|mediawiki.sectionAnchor|mediawiki.skinning.interface|skins.vector.styles|skins.vector.styles.responsive|zzz.ext.archLinux.styles&only=styles&skin=vector": "ArchWikiOffline.css",
+     }
+ 
+     def __init__(self, wiki, output_directory, epoch, *, optimizer=None):
