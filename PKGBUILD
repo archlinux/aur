@@ -1,6 +1,6 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=python-rf24
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=0
 pkgdesc='Python bindings for RF24 radio modules'
 arch=(any)
@@ -9,8 +9,8 @@ license=('GPL2')
 depends=('boost-libs' 'python' 'rf24')
 makedepends=('boost' 'python-setuptools')
 source=("https://github.com/nRF24/RF24/archive/v${pkgver}.tar.gz" "boost-include.patch")
-sha256sums=('2c20edc08c6089bcfa1d97ac105fca9ac2b51d8fdf6201c616fd144ec3311317'
-            'deaa26d965708ed35ad0c31485a3a3e4d4c2ebb09f3a5243e264b5721b698fab')
+sha256sums=('14b822d7f984dbdba96c4715172b33eade054aaefbc72f1153c0fe9243ddd22a'
+            '08f2893ce8e866a94fc6ab672ec28944f5b94cfe77ac5380dfe5e88d1a04a05a')
 
 prepare() {
     cd "$srcdir"
