@@ -2,17 +2,18 @@
 # Contributor: Alkindi42
 pkgname=joplin-beta
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
-depends=('nodejs>10' 'nss' 'gtk3' 'libxss' 'libsecret' 'rsync' 'libgsf' 'libexif' 'libcroco')
+depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+         'nss' 'orc' 'rsync' )
+makedepends=('git' 'npm' 'python2' 'rsync' 'jq' 'electron')
+optdepends=('libappindicator-gtk3: for tray icon')
 source=(
   "${pkgname%-*}-desktop.sh" "${pkgname%-*}.sh" "${pkgname%-*}.desktop"
   "${pkgname}-${pkgver}.tar.gz::https://github.com/laurent22/${pkgname%-*}/archive/v${pkgver}.tar.gz"
 )
-makedepends=('npm' 'git')
-optdepends=('libappindicator-gtk3: for tray icon')
-conflicts=('joplin')
+conflicts=('joplin' 'joplin-desktop')
 url="https://joplinapp.org"
 license=('MIT')
 sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
@@ -23,16 +24,14 @@ sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
   rm -rf packages/app-mobile
-
   npm install
-
   # Install app-cli
   cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-cli"
   npm run build
 
   # Install app-desktop
   cd "${srcdir}/${pkgname%-*}-${pkgver}/packages/app-desktop"
-  npm run dist
+  npm run dist --linux --64
 }
 
 package() {
@@ -44,9 +43,7 @@ package() {
   # App-cli
   cp -R app-cli/build "${pkgdir}/usr/share/${app_name}-cli/app-cli"
   cp -R app-cli/node_modules "${pkgdir}/usr/share/${app_name}-cli/app-cli"
-  cp -R fork-htmlparser2 "${pkgdir}/usr/share/${app_name}-cli"
   cp -R renderer "${pkgdir}/usr/share/${app_name}-cli"
-  cp -R lib "${pkgdir}/usr/share/${app_name}-cli"
 
 
   # App-desktop
