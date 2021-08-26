@@ -1,9 +1,9 @@
 # Maintainer: Bernat Gabor <gaborjbernat@gmail.com>
 
-pkgname=("python-git-quick-build")
+pkgname=("python-quick-build-git")
 pkgdesc="Next generation of the python high-level scripting language"
 pkgver=3.11.0a0.r110743.806e25fd317
-pkgrel=2
+pkgrel=3
 _pymajver=3
 _pybasever=3.11
 arch=("x86_64")
@@ -30,18 +30,18 @@ makedepends=(
   "gdb"
 )
 checkdepends=("ttf-font")
-source=("cpython::git+https://github.com/python/cpython#branch=main")
+source=("cpython-git::git+https://github.com/python/cpython#branch=main")
 sha512sums=("SKIP")
 conflicts=("python-git")
 provides=("python${_pybasever}")
 
 pkgver() {
-  cd cpython
+  cd cpython-git
   printf "%s.r%s.%s" "$_pybasever.0a0" "$(git rev-list --count HEAD)"  "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd cpython
+  cd cpython-git
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
   rm -rf Modules/expat
   rm -rf Modules/zlib
@@ -50,7 +50,7 @@ prepare() {
 }
 
 build() {
-  cd cpython  
+  cd cpython-git
   CFLAGS=-DOPENSSL_NO_SSL2 ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
@@ -71,14 +71,14 @@ package() {
     "xz: for lzma"
     "tk: for tkinter"
   )
-  cd cpython
+  cd cpython-git
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
   make DESTDIR="${pkgdir}" altinstall maninstall
 
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
   rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
-  rm -f "${pkgdir}/usr/lib/python${_pybasever}/test"
+  rm -rf "${pkgdir}/usr/lib/python${_pybasever}/test"
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \

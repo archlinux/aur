@@ -1,7 +1,7 @@
-pkgbase = python-git-quick-build
+pkgbase = python-quick-build-git
 	pkgdesc = Next generation of the python high-level scripting language
 	pkgver = 3.11.0a0.r110743.806e25fd317
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -24,10 +24,10 @@ pkgbase = python-git-quick-build
 	depends = libnsl
 	provides = python3.11
 	conflicts = python-git
-	source = cpython::git+https://github.com/python/cpython#branch=main
+	source = cpython-git::git+https://github.com/python/cpython#branch=main
 	sha512sums = SKIP
 
-pkgname = python-git-quick-build
+pkgname = python-quick-build-git
 	optdepends = sqlite
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
