@@ -1,10 +1,10 @@
-# Maintainer: Brendan Szymanski <bscubed@pm.me>
+# Maintainer: Brendan Szymanski <hello@bscubed.dev>
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r18479.7b86a68ee
+pkgver=r19501.f81aa7a17
 pkgrel=1
-pkgdesc='An experimental open-source Nintendo Switch emulator/debugger'
+pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
 url='https://github.com/yuzu-emu/yuzu-mainline'
 license=('GPL2')
@@ -12,10 +12,13 @@ provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git')
 depends=('desktop-file-utils'
          'glslang'
-         'libxkbcommon-x11'
          'libfdk-aac'
+         'libxkbcommon-x11'
+         'libzip'
          'lz4'
+         'mbedtls'
          'openssl'
+         'opus'
          'qt5-base'
          'qt5-multimedia'
          'qt5-tools'
@@ -25,7 +28,14 @@ depends=('desktop-file-utils'
          'shared-mime-info'
          'zlib'
          'zstd')
-makedepends=('catch2' 'cmake' 'fmt' 'git' 'nlohmann-json')
+makedepends=('boost'
+             'catch2'
+             'cmake'
+             'fmt'
+             'ffmpeg'
+             'git'
+             'ninja'
+             'nlohmann-json')
 source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
@@ -101,13 +111,6 @@ prepare() {
 build() {
     cd "$srcdir/$_pkgname"
     
-    # Trick the compiler into thinking we're building from a continuous
-    # integration tool so the build number is correctly shown in the title
-    export CI=true
-    export TRAVIS=true
-    export TRAVIS_REPO_SLUG=yuzu-emu/yuzu-mainline
-    export TRAVIS_TAG=$(git describe --tags)
-    
     if [[ -d build ]]; then
         rm -rf build
     fi
@@ -116,9 +119,9 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_BUILD_TYPE=Release \
       -DENABLE_QT_TRANSLATION=ON \
-      -DYUZU_USE_BUNDLED_BOOST=ON \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
-      -DUSE_DISCORD_PRESENCE=ON
+      -DUSE_DISCORD_PRESENCE=ON \
+      -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
     make
 }
 
