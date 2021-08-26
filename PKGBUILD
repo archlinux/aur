@@ -1,4 +1,5 @@
 # Maintainer: TwoTXH <twotxh at gmail dot com>
+pkgbase=poryscript-git
 pkgname=poryscript
 pkgver=2.1.0
 pkgrel=1
