@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -19,21 +19,20 @@ build() {
     yarn config set registry https://registry.npm.taobao.org
     yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
     yarn --check-files
-    yarn build
+    OUTPUT_DIR="$srcdir/v2rayA-$pkgver/service/server/router/web" yarn build
 
     cd "$srcdir/v2rayA-$pkgver/service"
     export GO111MODULE=on
     export GOPROXY=https://goproxy.io
-    CGO_ENABLED=0 go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version='$pkgver' -s -w -extldflags "-static"' -o v2raya
+    go build -ldflags '-X github.com/v2rayA/v2rayA/global.Version='$pkgver' -s -w' -o v2raya
 }
 
 package() {
     cd "${srcdir}"/"v2rayA-${pkgver}"/
     install -Dm 755 service/v2raya -t "${pkgdir}"/usr/bin/
-    find web -type d -exec install -vd "${pkgdir}"/etc/v2raya/{} \;
-    find web -type f -exec install -vm 644 {} "${pkgdir}"/etc/v2raya/{} \;
     install -dm 750 "${pkgdir}"/etc/v2raya/
     install -Dm 644 install/universal/v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 install/universal/v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 install/universal/v2raya@.service -t "${pkgdir}"/usr/lib/systemd/system/
     install -Dm 644 gui/public/img/icons/android-chrome-512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
