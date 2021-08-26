@@ -13,7 +13,7 @@
 # Building: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=thunderbird-appmenu-bin
-pkgver=91.0
+pkgver=91.0.3
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Thunderbird-appmenu, binary version"
