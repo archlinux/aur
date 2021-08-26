@@ -13,7 +13,6 @@ pkgbase = steamguard-cli-git
 	options = !strip
 	source = git+https://github.com/dyc3/steamguard-cli.git
 	source = git+https://github.com/geel9/SteamAuth.git
-	source = steamguard
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = c2589e487f84f100c62910cc2d43fc2e
