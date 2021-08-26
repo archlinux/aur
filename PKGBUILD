@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides-bin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('6c44c4ac40514aaa8ddc3adb4b55c13fb01e5ed0498d9f7e83e65a89d427a5e4')
+sha256sums=('ba7950a1ca6dac7a2f137e943c1371b173baaa5bfeb385c58e9df4f3bffdbf8d')
 changelog='CHANGELOG.md'
 
 package() {
