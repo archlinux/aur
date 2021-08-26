@@ -1,7 +1,7 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
 	pkgver = 2021.08
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL

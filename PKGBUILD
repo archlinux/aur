@@ -3,7 +3,7 @@
 
 pkgname=waterfox-classic-kpe
 pkgver=2021.08
-pkgrel=0
+pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
