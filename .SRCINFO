@@ -1,15 +1,16 @@
 pkgbase = ufw-icon-bar
 	pkgdesc = System tray icon for ufw
-	pkgver = 1
-	pkgrel = 6
+	pkgver = r15.gbf67a93
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/juanmafont/ufwIconbar
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = yad
 	depends = ufw
 	optdepends = gufw: Enables gufw to open when icon is clicked
-	source = ufw-icon-bar-1::git+https://github.com/juanmafont/ufwIconbar.git
-	md5sums = SKIP
+	source = git+https://github.com/juanmafont/ufwIconbar.git#commit=bf67a93ce02543d4d4472eabd822da495a0de9b1
+	sha256sums = SKIP
 
 pkgname = ufw-icon-bar
-
