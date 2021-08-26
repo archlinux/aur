@@ -4,10 +4,10 @@
 # Contributor: Derek Hawker <derekhawker+aur@gmail.com>
 _srcname=crawl
 pkgname=crawl-tiles
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Dungeon Crawl Stone Soup with graphical tiles and sound support"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://crawl.develz.org/"
 license=('GPL')
 depends=(
@@ -28,7 +28,7 @@ conflicts=('crawl' 'stone-soup')
 backup=()
 options=()
 source=("https://github.com/crawl/$_srcname/archive/$pkgver.tar.gz")
-sha256sums=('c8c6abbefa7f21383ea77cd017033050471e06c60ea4deebd033f5198bc39596')
+sha256sums=('94b1a42bf5814b508e40358b0ba54eda18932b00192d77a802e07cdd939cb545')
 
 getCRAWLOPT() {
 	CRAWLOPT=(
