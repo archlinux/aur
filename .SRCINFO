@@ -1,7 +1,7 @@
 pkgbase = python-git-quick-build
 	pkgdesc = Next generation of the python high-level scripting language
 	pkgver = 3.11.0a0.r110743.806e25fd317
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -28,3 +28,7 @@ pkgbase = python-git-quick-build
 	sha512sums = SKIP
 
 pkgname = python-git-quick-build
+	optdepends = sqlite
+	optdepends = mpdecimal: for decimal
+	optdepends = xz: for lzma
+	optdepends = tk: for tkinter

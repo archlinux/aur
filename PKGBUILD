@@ -3,7 +3,8 @@
 pkgname=("python-git-quick-build")
 pkgdesc="Next generation of the python high-level scripting language"
 pkgver=3.11.0a0.r110743.806e25fd317
-pkgrel=1
+pkgrel=2
+_pymajver=3
 _pybasever=3.11
 arch=("x86_64")
 url="https://www.python.org/"
@@ -64,6 +65,12 @@ build() {
 }
 
 package() {
+  optdepends=(
+    "sqlite"
+    "mpdecimal: for decimal"
+    "xz: for lzma"
+    "tk: for tkinter"
+  )
   cd cpython
   # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
   make DESTDIR="${pkgdir}" altinstall maninstall
@@ -71,7 +78,7 @@ package() {
   # Avoid conflicts with the main 'python' package.
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
   rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
-  rm -f "${pkgdir}/usr/lib/python${_pymajver}/test"
+  rm -f "${pkgdir}/usr/lib/python${_pybasever}/test"
 
   # Fix FS#22552
   ln -sf ../../libpython${_pybasever}m.so \
