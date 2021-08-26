@@ -21,7 +21,7 @@ sha256sums=('0116e6ba5afb35a7d2f4bb22e3d042f355195026cb3bbc06abc627404f005d5d'
 #  ./quality.sh
 #}
 
-prepate() {
+prepare() {
   export GOPATH="${srcdir}/go"
   cd "${srcdir}/${pkgname}"
   make clean
