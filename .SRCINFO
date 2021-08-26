@@ -1,11 +1,11 @@
 pkgbase = pulumi-bin
 	pkgdesc = Modern Infrastructure as Code
-	pkgver = 3.10.3
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi
 	arch = x86_64
 	license = Apache-2.0
-	source = https://get.pulumi.com/releases/sdk/pulumi-v3.10.3-linux-x64.tar.gz
-	sha256sums = 31313a534f9b1c402c36c9d0753122575ac19744ccd78fc5bdc8acd04a6cc798
+	source = https://get.pulumi.com/releases/sdk/pulumi-v3.11.0-linux-x64.tar.gz
+	sha256sums = eeb37dbd25378707521d19a322e4b907c6dc20d3fb08827bb02ec30e0e4f74d6
 
 pkgname = pulumi-bin
