@@ -3,13 +3,13 @@
 pkgname=bloodhound
 _pkgname=BloodHound
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Use graph theory to reveal the hidden and often unintended relationships within an Active Directory"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/BloodHoundAD/BloodHound"
 license=('GPL3')
 depends=('neo4j-community' 'java-runtime>=11')
-makedepends=('electron' 'npm' 'python-sphinx' )
+makedepends=('electron' 'npm' 'python-sphinx' 'python-sphinx_rtd_theme')
 optdepends=('python-bloodhound: Python injest tool that runs on natively on Linux')
 source=("https://github.com/BloodHoundAD/BloodHound/archive/${pkgver}.tar.gz"
 	"bloodhound.desktop")
