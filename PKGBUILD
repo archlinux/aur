@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="BLAS version of Leela Chess Zero."
 arch=('any')
 url="https://lczero.org/"
-license=('GPLv3')
+license=('GPL3')
 depends=('openblas' 'protobuf')
 makedepends=('git' 'meson>=0.46' 'ninja' 'openblas-cblas-git')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
