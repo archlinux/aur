@@ -1,6 +1,6 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.28.0
+pkgver=1.29.0
 pkgrel=1
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
@@ -13,7 +13,11 @@ _ghc_version="`ghc --numeric-version`"
 # This is probably configurable but I'm not experienced in Haskell. Suggestions are welcome.
 makedepends=('git' 'cabal-install-bin' 'ghc>=8.10.4')
 depends=('libsodium')
-_config_build="7191656"
+#
+# The latest build is reachable via the following redirection link:
+# https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html
+_config_build="7370192"
+#
 backup=("etc/conf.d/cardano-node"
         "var/lib/cardano-node/config/mainnet-config.json"
         "var/lib/cardano-node/config/mainnet-topology.json"
@@ -36,16 +40,16 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.confd"
         "cardano-node-testnet.service"
         "cardano-node-testnet.confd")
-sha256sums=('77150c6f3fae3c9219fb7b93943398dbc1f5e7924cc4b8266e53d10438d3b6f1'
-            'efc3154be5814a8ed8426f3a54e0e066cf827020d36293dc22572583ad3f1351'
+sha256sums=('b1506ac16cd83aa95f04b690b7a887d571c7b0eb81a8071fa1b1b0d3fd7310d2'
+            '0f792ea782fb82e0842a97075aa9cd5d504cd60cd778bef34b5ca0689e57ff56'
             '4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa'
             '59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961'
-            'f298107663e1eb13fa0a2cf1919bb45a6956de780c27f850189dbb63357f8c4b'
+            '7333bfafe311589fa09e8bf59a47ec0d85a1959f00748cc0800591d2c7646408'
             '7ac2184ff55d1272e87d579550501b7e4fc61b9cf016179ca026516fff365730'
-            'e01f858e19b5975fc77cf6bd4403ed7d69ecabb77e3ce8b75eeeb89c6786454e'
+            '3611607371f70d2eb18ec8ee43212d326bbcdf52b0cfcffbc4b415555487f0e3'
             'dca3139e907bb943bfeff5f186f3fc71217ff12cabde93a926277c6ddd647d87'
             '4e309ad1f7b19d5c442b9250326ef55a70581c5d1bc0f7a056d18ebff31bcfa6'
-            'f298107663e1eb13fa0a2cf1919bb45a6956de780c27f850189dbb63357f8c4b'
+            '7333bfafe311589fa09e8bf59a47ec0d85a1959f00748cc0800591d2c7646408'
             'cbcf919b1d2d656ea7512f8ecb12e3c3e3a8db137925abff52d647427f2b154f'
             '703f9b033c299b652b2d3228ee6ef4a9c09b7e846ff4b366a2aca68960370234'
             '3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542'
