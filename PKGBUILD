@@ -7,7 +7,7 @@
 _appname='gnunet'
 pkgname="${_appname}-git"
 pkgver='0.15.2.r29783.45532e7bc'
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
@@ -15,8 +15,8 @@ license=('AGPL')
 conflicts=("${_appname}" "${_appname}-bin")
 provides=("${_appname}")
 depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
-	'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
-	'openssl' 'libextractor' 'brotli' 'gettext')
+         'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
+         'openssl' 'libextractor' 'brotli' 'gettext')
 makedepends=('gettext' 'pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse'
              'git' 'opus')
 optdepends=('bluez: for bluetooth transport'
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
             'ef221a4cbdc2270d7a1b1447e6e8a498653ec16d2f73fa57a7c6888980af4dfb'
             '13760ecc1523a9acd030df34e6a90edcd2971271766c8e159c9e66341a9168c4'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
-            '4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b')
+            'e6db3d48757ee4a95970cc63606e5da86a01776a2c6ffddb8a099dde8bf20f63')
 
 pkgver() {
 
@@ -65,7 +65,7 @@ build() {
 
 	cd "${srcdir}/${_appname}"
 
-	test -f Makefile || ./configure --prefix='/usr'
+	./configure --prefix='/usr' --enable-experimental
 	make
 	make -C contrib
 
@@ -87,11 +87,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
 	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
 
-	# The current package cannot ship `gnunet-helper-transport-wlan` and
-	# `gnunet-helper-transport-bluetooth`, as these require root privileges
-	# during the build process. If these are built, please update the
-	# "${_appname}.tmpfiles" file accordingly
-
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
 	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
@@ -106,7 +101,7 @@ package() {
 	{
 		echo "# /etc/${_appname}.conf"
 		(cd "${pkgdir}" > /dev/null 2>&1 && find "usr/share/${_appname}/config.d" -type f -name '*.conf' \
-			-printf '\n\n# The following lines have been copied from /%p\n\n' \
+			-printf '\n\n# For the default values of the the following lines please refer to\n# /%p\n\n' \
 			-exec cat '{}' ';')
 	} > "${pkgdir}/etc/${_appname}.conf"
 

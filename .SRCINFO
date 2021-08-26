@@ -1,7 +1,7 @@
 pkgbase = gnunet-git
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.2.r29783.45532e7bc
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gnunet.org
 	arch = i686
 	arch = x86_64
@@ -55,6 +55,6 @@ pkgbase = gnunet-git
 	sha256sums = ef221a4cbdc2270d7a1b1447e6e8a498653ec16d2f73fa57a7c6888980af4dfb
 	sha256sums = 13760ecc1523a9acd030df34e6a90edcd2971271766c8e159c9e66341a9168c4
 	sha256sums = 66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755
-	sha256sums = 4e3f8015dcc83ea4efb913abb9eb7d8d15ba3a5834218634ee2f350b903ef77b
+	sha256sums = e6db3d48757ee4a95970cc63606e5da86a01776a2c6ffddb8a099dde8bf20f63
 
 pkgname = gnunet-git
