@@ -1,6 +1,6 @@
 pkgbase = python-django-celery-results
 	pkgdesc = Celery Result Backends using the Django ORM/Cache framework
-	pkgver = 2.0.1
+	pkgver = 2.2.0
 	pkgrel = 0
 	url = http://github.com/celery/django-celery-results
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python-django-celery-results
 	makedepends = python-django
 	makedepends = python-celery
 	provides = python-django-celery-results
-	source = https://pypi.io/packages/source/d/django_celery_results/django_celery_results-2.0.1.tar.gz
-	sha256sums = d625e324138e5b2ef46ffa9e89fa353c16d619420066ac8b240ef9247b293a84
+	source = https://pypi.io/packages/source/d/django_celery_results/django_celery_results-2.2.0.tar.gz
+	sha256sums = cc0285090a306f97f1d4b7929ed98af0475bf6db2568976b3387de4fbe812edc
 
 pkgname = python-django-celery-results
-
