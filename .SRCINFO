@@ -1,7 +1,7 @@
 pkgbase = android-google-apis-x86-64-system-image
 	pkgdesc = Android with Google APIs x86_64 Atom System Image, latest API
 	pkgver = 31_r06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.intel.com/en-us/android/tools
 	arch = any
 	license = custom

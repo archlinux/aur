@@ -4,7 +4,7 @@
 _arch=x86_64
 pkgname=android-google-apis-${_arch/_/-}-system-image
 pkgver=31_r06
-pkgrel=1
+pkgrel=2
 pkgdesc="Android with Google APIs ${_arch} Atom System Image, latest API"
 arch=('any')
 url='https://software.intel.com/en-us/android/tools'
