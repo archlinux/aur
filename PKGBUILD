@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 
 pkgname=ecal
-pkgver=5.8.9
+pkgver=5.9.0
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
@@ -10,12 +10,8 @@ license=('Apache')
 depends=('curl' 'protobuf' 'qt5-base' 'hdf5')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz')
 optdepends=()
-source=('git+https://github.com/continental/ecal.git'
-        'Support_GCC_11.patch'
-        'Support_Protobuf_3_15_6.patch')
-sha256sums=('SKIP'
-            '794f88435e6251b25664f9b1eda0928394d8265983eadc3dbc9106d316a7895f'
-            '6346bafc67654da0714a93c72e09530959fd7fc83716ba5d7a638dbd82d75b38')
+source=('git+https://github.com/continental/ecal.git')
+sha256sums=('SKIP')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {
@@ -23,8 +19,8 @@ prepare() {
     git checkout v"${pkgver}"
     git submodule init
     git submodule update
-    patch --forward --strip=1 --input="../Support_GCC_11.patch"
-    patch --forward --strip=1 --input="../Support_Protobuf_3_15_6.patch"
+    #patch --forward --strip=1 --input="../Support_GCC_11.patch"
+    #patch --forward --strip=1 --input="../Support_Protobuf_3_15_6.patch"
 }
 
 build() {
