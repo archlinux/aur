@@ -1,6 +1,6 @@
 pkgbase = ossia-score
 	pkgdesc = ossia score, an interactive sequencer for the intermedia arts
-	pkgver = 3.0.0.b2
+	pkgver = 3.0.0.b4
 	pkgrel = 1
 	url = https://ossia.io
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = ossia-score
 	optdepends = sdl2
 	optdepends = libfreenect2
 	optdepends = qt5-shadertools-git
-	provides = ossia-score=3.0.0.b2
+	provides = ossia-score=3.0.0.b4
 	conflicts = ossia-score-git
 	replaces = i-score
-	source = https://github.com/ossia/score/releases/download/v3.0.0-b2/Score-v3.0.0-b2-src.tar.xz
-	sha512sums = 85d50e98d8b34922f82762c619268ab73480d382d8708e5aeab136c430a306eb547fd9aef37b6952611d469b9bb5ddfcd625812a06a66b132edc1a1ebe3d5cd3
+	source = https://github.com/ossia/score/releases/download/v3.0.0-b4/ossia.score-3.0.0-b4-src.tar.xz
+	sha512sums = fe1f41baf52ba608f2d22c87d72b77a357d913fbab3459558bece6afdc0828a8b93505981aaf70ceecb561488bdac1f37d64ccb0055a07cfa78fef4fd110d5b3
 
 pkgname = ossia-score
