@@ -3,8 +3,8 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
 
-_majorver=17
-_buildver=35
+_majorver=18
+_buildver=12
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -33,14 +33,12 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-#source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
 
 if [[ $_JARCH == "x64" ]]; then
-source=("https://download.java.net/java/GA/jdk17/0d483333a00540d886896bac774ff48b/35/GPL/openjdk-17_linux-x64_bin.tar.gz")
-sha256sums=('aef49cc7aa606de2044302e757fa94c8e144818e93487081c4fd319ca858134b')
+sha256sums=('a9bc316abb2e03378f35fc574685b8bbdd15cd6803df70c02e71ff8f19ad292b')
 else
-source=("https://download.java.net/java/GA/jdk17/0d483333a00540d886896bac774ff48b/35/GPL/openjdk-17_linux-aarch64_bin.tar.gz")
-sha256sums=('b8108a6b6c2579bd585281937cf09d401a5a971c59b9624e18abcf596b9caa22')
+sha256sums=('08129b3c4ef9956a14a7112565a185ac9ea7e3b327875089114ce6fe2563f585')
 fi
 
 
