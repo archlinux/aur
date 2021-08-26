@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwagner@rw-net.de>
 # Contributor: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=crawl
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Crawl stonesoup, curses version"
 url="http://crawl.develz.org/"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/crawl/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c8c6abbefa7f21383ea77cd017033050471e06c60ea4deebd033f5198bc39596')
+sha256sums=('94b1a42bf5814b508e40358b0ba54eda18932b00192d77a802e07cdd939cb545')
 
 prepare() {
 
