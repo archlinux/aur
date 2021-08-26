@@ -5,8 +5,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver-bin
-pkgver=6.3.2
-pkgrel=2
+pkgver=6.4.0
+pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -15,14 +15,12 @@ conflicts=('onlyoffice-documentserver')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgver}/onlyoffice-documentserver.x86_64.rpm"
         "onlyoffice-fileconverter.service"
-        "onlyoffice-spellchecker.service"
         "onlyoffice-docservice.service"
         "onlyoffice-documentserver.hook"
         "onlyoffice-documentserver.sysusers"
         "onlyoffice-documentserver.tmpfiles")
-sha512sums=('25323dfb79be54688e29583c497fcd02d2b4593bca5b5c7eacaf8cf367e097e8e580394d312e501dfcb28512359fdbd63b05dccecc236ecc55c982f4e59da2d7'
+sha512sums=('b4dd5a3ea2a2920ddb12fa1655129f912c0da9770b81054b36405d29ce388747708b3e78f8d09fbebccf234fb55f00d2c35261d91869ddaefcd479bbb42d8f89'
             '848074ce03328915d251db45a5475f6a2dff3b15f53b3b1dfbd702a9dc184d53aea78da1310db9c60d85a35062ce9986f37843c000f269dcaf8d624ed29e0a60'
-            '71cf274868452cef92eb4729d3bfe04ce7b3dd863aee8e7395cf166296206b07abb60756e09911395badbea1965eea4a9fa7595dba7f9bc1c7ad4b8158ac1263'
             '3df1f5339b394eef1b27317f5d0e7786d2cb8dbbd13cddb22047567c3703f384d95f092fc34ce3031aeb895f013d7c0686ce968e1fae7f1f24473c1a6615f7ad'
             '707da287c3db6907fcdbf91cfe2ef057c77033713a1b4299a89a684b37fe3c74644e2c0b1fcec2afcd81c6511bb02ac3221d56c8caadb5d0c711d1842f78e780'
             'c7c23c5a7014e3251dfd86312d1d1e5c2d88f26ddc5aa967285202fd3ebf62c0a10c009b1cc5ad1b78e13fa0bc2eda515616d8af02325db434c0b2113c5b1ecb'
@@ -49,7 +47,6 @@ package() {
   install -Dm 777 ${srcdir}/usr/lib64/* "${pkgdir}/usr/lib/"
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
-  install -Dm 644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
   install -D "${srcdir}/onlyoffice-documentserver.hook" "${pkgdir}/usr/share/libalpm/hooks/onlyoffice-documentserver.hook"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.sysusers" "${pkgdir}/usr/lib/sysusers.d/onlyoffice-documentserver.conf"
   install -Dm 644 "${srcdir}/onlyoffice-documentserver.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/onlyoffice-documentserver.conf"
