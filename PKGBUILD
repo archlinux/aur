@@ -4,7 +4,7 @@
 
 _pkgname=libg15
 pkgname=$_pkgname-git
-pkgver=3.1.0.r1
+pkgver=3.0.7.r4.g96abe69
 pkgrel=1
 pkgdesc="Provides low-level access to the Logitech G15 and G11 keyboards and Z10 speakers"
 arch=('x86_64')
@@ -15,6 +15,11 @@ conflicts=('libg15')
 provides=('libg15')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "${pkgname}"
