@@ -66,6 +66,7 @@ build() {
 }
 
 package() {
+    rm -rf nimf
 	cd "$srcdir/nimf"
 	make DESTDIR="${pkgdir}/" install
 }
