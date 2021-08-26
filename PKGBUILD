@@ -1,7 +1,7 @@
 # Maintainer:  twa022 <twa022 at gmail dot com>
 
 _pkgname=libxfce4ui
-pkgname=${_pkgname}-nocsd
+pkgname=${_pkgname}-nocsd-devel
 pkgver=4.17.0
 pkgrel=1
 pkgdesc="A fork of libxfce4ui with the explicit goal of removing Client-Side Decorations (CSD) (devel release)"

@@ -1,4 +1,4 @@
-pkgbase = libxfce4ui-nocsd
+pkgbase = libxfce4ui-nocsd-devel
 	pkgdesc = A fork of libxfce4ui with the explicit goal of removing Client-Side Decorations (CSD) (devel release)
 	pkgver = 4.17.0
 	pkgrel = 1
@@ -27,4 +27,4 @@ pkgbase = libxfce4ui-nocsd
 	source = https://github.com/Xfce-Classic/libxfce4ui-nocsd/releases/download/4.17.0/libxfce4ui-4.17.0.tar.bz2
 	sha256sums = ca0095d41b0c02d768191e1a1db68e721e5afb48f29ff299e06ad53bb5f5ecfa
 
-pkgname = libxfce4ui-nocsd
+pkgname = libxfce4ui-nocsd-devel
