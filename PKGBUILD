@@ -20,6 +20,9 @@ package() {
   # See https://github.com/npm/npm/issues/9359 for details.
   chmod -R u=rwX,go=rX "$pkgdir"
 
+  # Drop strange dirs
+  rm -rf "$pkgdir/usr/lib/node_modules/root"
+
   install -d "$pkgdir"/usr/share/licenses/$pkgname
   ln -s ../../../lib/node_modules/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
