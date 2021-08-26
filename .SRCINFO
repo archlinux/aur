@@ -1,0 +1,24 @@
+pkgbase = plasma-settings-git
+	pkgdesc = Settings application for Plasma Mobile
+	pkgver = v21.07.r9.ge9abd2c
+	pkgrel = 1
+	url = https://www.plasma-mobile.org/
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kio
+	depends = ki18n
+	depends = plasma-workspace
+	depends = kdeclarative
+	depends = plasma-framework
+	depends = kcmutils
+	depends = knotifications
+	depends = kwindowsystem
+	provides = plasma-settings
+	conflicts = plasma-settings
+	source = git+https://invent.kde.org/plasma-mobile/plasma-settings.git
+	md5sums = SKIP
+
+pkgname = plasma-settings-git
