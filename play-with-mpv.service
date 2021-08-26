@@ -7,4 +7,4 @@ Type=simple
 ExecStart=/usr/bin/play-with-mpv
 
 [Install]
-WantedBy=graphical.target
+WantedBy=graphical-session.target

@@ -15,7 +15,7 @@ makedepends=('git' 'python-setuptools')
 provides=('play-with-mpv')
 conflicts=('play-with-mpv')
 source=("$pkgname::git+https://github.com/Thann/play-with-mpv.git" "play-with-mpv.service")
-sha256sums=('SKIP' '3015d2a2d1c3274096879360ed2f521efc1b233c48fe1a8c836924736d378f50')
+sha256sums=('SKIP' 'b273cd8ac9c48e04ac3c7fbcdd5657ed7eefa384212060341c138fd39d44c0d9')
 
 pkgver() {
   cd $pkgname
