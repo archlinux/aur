@@ -4,23 +4,22 @@
 pkgname=gtk4-without-subpixel-hinting
 provides=(gtk4 libgtk-4.so)
 conflicts=(gtk4)
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (without subpixel hinting)"
 arch=(x86_64)
 url="https://www.gtk.org/"
 depends=(glib2 cairo pango fribidi gdk-pixbuf2 libepoxy libgl libegl harfbuzz
          libxkbcommon graphene iso-codes tracker3 libcolord wayland
          wayland-protocols libxrandr libx11 libxrender libxi libxext libxcursor
-         libxdamage libxfixes libxcomposite fontconfig libxinerama
-         vulkan-icd-loader vulkan-headers libcloudproviders libcups rest
-         json-glib ffmpeg gst-plugins-bad-libs librsvg dconf shared-mime-info
+         libxdamage libxfixes fontconfig libxinerama libcloudproviders libcups
+         rest json-glib gst-plugins-bad-libs librsvg dconf shared-mime-info
          desktop-file-utils adwaita-icon-theme cantarell-fonts
          gtk-update-icon-cache)
 makedepends=(git meson gi-docgen shaderc sassc gobject-introspection
              docbook-xsl)
 license=(LGPL)
-_commit=ba44668478b7184bec02609f292691b85a2c6cdd  # tags/4.2.1^0
+_commit=f1f197e3b94a55d5cbfaae2498f991a0ae733b32  # tags/4.4.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         '0001-Re-enable-non-subpixel-hinting.patch'
         gtk4-querymodules.hook)
@@ -57,7 +56,7 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" <<END
 [Settings]

@@ -1,7 +1,7 @@
 pkgbase = gtk4-without-subpixel-hinting
 	pkgdesc = GObject-based multi-platform GUI toolkit (without subpixel hinting)
-	pkgver = 4.2.1
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://www.gtk.org/
 	arch = x86_64
 	license = LGPL
@@ -36,16 +36,12 @@ pkgbase = gtk4-without-subpixel-hinting
 	depends = libxcursor
 	depends = libxdamage
 	depends = libxfixes
-	depends = libxcomposite
 	depends = fontconfig
 	depends = libxinerama
-	depends = vulkan-icd-loader
-	depends = vulkan-headers
 	depends = libcloudproviders
 	depends = libcups
 	depends = rest
 	depends = json-glib
-	depends = ffmpeg
 	depends = gst-plugins-bad-libs
 	depends = librsvg
 	depends = dconf
@@ -57,7 +53,7 @@ pkgbase = gtk4-without-subpixel-hinting
 	provides = gtk4
 	provides = libgtk-4.so
 	conflicts = gtk4
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=ba44668478b7184bec02609f292691b85a2c6cdd
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=f1f197e3b94a55d5cbfaae2498f991a0ae733b32
 	source = 0001-Re-enable-non-subpixel-hinting.patch
 	source = gtk4-querymodules.hook
 	sha256sums = SKIP
