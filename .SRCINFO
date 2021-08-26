@@ -1,7 +1,7 @@
 pkgbase = globjects-git
-	pkgdesc = globjects is a cross-platform C++ wrapper for OpenGL API objects.
+	pkgdesc = a cross-platform C++ wrapper for OpenGL API objects.
 	pkgver = v1.1.0.r147.g1b0ec7be
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cginternals/globjects
 	arch = x86_64
 	license = MIT
