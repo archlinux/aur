@@ -8,7 +8,8 @@ pkgbase = lc0-blas-git
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
-	depends = openblas-cblas-git
+	makedepends = openblas-cblas-git
+	depends = openblas
 	depends = protobuf
 	source = lc0-blas::git+https://github.com/LeelaChessZero/lc0.git#branch=master
 	md5sums = SKIP
