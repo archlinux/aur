@@ -33,7 +33,7 @@ pkgbase = pulseaudio-hsphfpd
 	makedepends = meson
 	makedepends = xmltoman
 	makedepends = gst-plugins-base-libs
-	makedepends = libopenaptx
+	makedepends = libfreeaptx
 	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=d1e0594e939e3309435c966d994b0207b10f5175
 	source = pa_hsphfpd::git+https://gitlab.freedesktop.org/kapiwko/pulseaudio.git#branch=hsphfpd
 	sha256sums = SKIP
@@ -51,7 +51,7 @@ pkgname = pulseaudio-hsphfpd
 	depends = libsoxr
 	depends = webrtc-audio-processing
 	depends = libxtst
-	depends = libopenaptx
+	depends = libfreeaptx
 	depends = hsphfpd-git
 	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
 	optdepends = pulseaudio-zeroconf-hsphfpd: Zeroconf support

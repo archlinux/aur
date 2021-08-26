@@ -12,7 +12,7 @@ license=(GPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
-             xmltoman gst-plugins-base-libs libopenaptx)
+             xmltoman gst-plugins-base-libs libfreeaptx)
 _commit=d1e0594e939e3309435c966d994b0207b10f5175  # tags/v14.0^0
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=$_commit"
         "pa_hsphfpd::git+https://gitlab.freedesktop.org/kapiwko/pulseaudio.git#branch=hsphfpd")
@@ -59,7 +59,7 @@ _pick() {
 
 package_pulseaudio-hsphfpd() {
   depends=("libpulse-hsphfpd=$pkgver-$pkgrel" alsa-card-profiles rtkit libltdl speexdsp
-           tdb orc libsoxr webrtc-audio-processing libxtst libopenaptx hsphfpd-git)
+           tdb orc libsoxr webrtc-audio-processing libxtst libfreeaptx hsphfpd-git)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)'
               'pulseaudio-zeroconf-hsphfpd: Zeroconf support'
               'pulseaudio-lirc-hsphfpd: IR (lirc) support'
