@@ -5,11 +5,7 @@ pkgbase = easycodeml
 	url = https://github.com/BioEasy/EasyCodeML
 	arch = x86_64
 	license = unknow
-	depends = jre-openjdk-headless
-	depends = jre-openjdk
-	depends = jdk-openjdk
-	depends = openjdk-doc
-	depends = openjdk-src
+	depends = java-runtime
 	source = https://github.com/starsareintherose/easycodeml/releases/download/1.21/EasyCodeML.zip
 	source = easycodeml.desktop
 	source = EasyCodeML.png
@@ -18,4 +14,3 @@ pkgbase = easycodeml
 	sha256sums = 5393db9477bd071511788ea6255c49005274b4aebe792a7631eaa296ada14987
 
 pkgname = easycodeml
-

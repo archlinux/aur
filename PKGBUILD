@@ -13,11 +13,7 @@ sha256sums=('45ef18a896818643908dc3ad637da7773f6d984e75f8a6faa61992a7d8e48776'
             'e20af3e0e14be4f95d634bf5c34cb35dc37edfada7d97f9c0e9dd10afa7cbf6f'
             '5393db9477bd071511788ea6255c49005274b4aebe792a7631eaa296ada14987')
 depends=(
-	'jre-openjdk-headless'
-	'jre-openjdk'
-	'jdk-openjdk'
-	'openjdk-doc'
-	'openjdk-src'
+	'java-runtime'
 )
 package() {
     install -dm755 "$pkgdir"/usr/share/{EasyCodeML,applications}
