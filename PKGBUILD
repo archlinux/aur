@@ -2,17 +2,17 @@
 
 pkgname=wshowkeys-git
 _pkgname=wshowkeys
-pkgver=r2.a9bf6bc
+pkgver=r5.e8bfc78
 pkgrel=1
 pkgdesc='Displays keys being pressed on a Wayland session'
 arch=('x86_64')
-url='https://git.sr.ht/~sircmpwn/wshowkeys'
+url='https://github.com/ammgws/wshowkeys'
 license=('GPL')
 depends=('cairo' 'pango' 'libinput' 'libxkbcommon')
 makedepends=('meson' 'wayland-protocols')
 provides=('wshowkeys')
 conflicts=('wshowkeys')
-source=("$_pkgname::git+https://git.sr.ht/~sircmpwn/wshowkeys")
+source=("$_pkgname::git+https://github.com/ammgws/wshowkeys")
 sha512sums=('SKIP')
 
 pkgver() {

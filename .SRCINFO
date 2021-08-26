@@ -1,8 +1,8 @@
 pkgbase = wshowkeys-git
 	pkgdesc = Displays keys being pressed on a Wayland session
-	pkgver = r2.a9bf6bc
+	pkgver = r5.e8bfc78
 	pkgrel = 1
-	url = https://git.sr.ht/~sircmpwn/wshowkeys
+	url = https://github.com/ammgws/wshowkeys
 	arch = x86_64
 	license = GPL
 	makedepends = meson
@@ -13,8 +13,7 @@ pkgbase = wshowkeys-git
 	depends = libxkbcommon
 	provides = wshowkeys
 	conflicts = wshowkeys
-	source = wshowkeys::git+https://git.sr.ht/~sircmpwn/wshowkeys
+	source = wshowkeys::git+https://github.com/ammgws/wshowkeys
 	sha512sums = SKIP
 
 pkgname = wshowkeys-git
-
