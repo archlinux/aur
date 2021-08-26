@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -53,7 +53,8 @@ package() {
 
   cd $srcdir
   
-  cp -dpr --no-preserve=ownership * "$pkgdir"
+  # cp -dpr --no-preserve=ownership * "$pkgdir"
+  cp -dpr --no-preserve=ownership etc usr "$pkgdir"
   
   # ln -sf $srcdir/usr/share/$pkgname/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
 
