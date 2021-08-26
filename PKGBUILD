@@ -3,7 +3,7 @@
 _pkgname=xorgxrdp
 pkgname=xorgxrdp-nvidia
 pkgver=0.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg drivers for xrdp, with NVIDIA GPU support."
 arch=('i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
@@ -35,6 +35,7 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
 
+  ./bootstrap
   ./configure --prefix="/usr"
   make
 }
