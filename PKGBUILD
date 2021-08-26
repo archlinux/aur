@@ -1,7 +1,7 @@
 # Maintainer: Premysl Srubar <premysl.srubar at gmail com>
 pkgname=python-mediapipe-git
-pkgver=v0.8.6.r0.g374f5e2e
-pkgrel=2
+pkgver=v0.8.7.r0.g710fb3de
+pkgrel=1
 pkgdesc="MediaPipe offers cross-platform, customizable ML solutions for live and streaming media."
 arch=('any')
 url="https://github.com/google/mediapipe"
@@ -12,11 +12,9 @@ makedepends=('git' 'python-setuptools' 'bazel' 'gcc10')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("${pkgname}::git+${url}.git" 
-        "BUILD-opencvStatic.patch")
+source=("${pkgname}::git+${url}.git")
 
-sha256sums=('SKIP'
-            'e78d6ab853a78ce47d16346856b3a46562023c205ccd57927203e046cd431841')
+sha256sums=('SKIP')
 
 # To compile with GPU support, replace
 # --define MEDIAPIPE_DISABLE_GPU=1
@@ -34,11 +32,11 @@ prepare() {
     # upstream requires 3.7.0 currently. But using 4.0.0 seems to build just fine. Use whatever bazel version is installed
     bazel --version | sed 's/bazel //' >.bazelversion
     #Patch old abseil lib?: https://github.com/grpc/grpc/issues/25114  (seems ok with gcc10)
-
-    # Remove  'x86_64-linux-gnu' folder for opencv and ffmpeg
+    
+    #Uncommend opencv4 includes
     #https://google.github.io/mediapipe/getting_started/install.html
-    sed -i "s!/x86_64-linux-gnu!!g" third_party/ffmpeg_linux.BUILD
-    patch --forward --strip=1 --input="${srcdir}/BUILD-opencvStatic.patch"
+    sed -i 's!#"include/opencv4/!"include/opencv4/!g' third_party/opencv_linux.BUILD
+
     python setup.py gen_protos #Without this the cleanup after the build would fail on non-existing files
 }
 
