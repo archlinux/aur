@@ -3,18 +3,17 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.21.1
+pkgver=3.21.2
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
 license=('custom')
 depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
-makedepends=('qt6-base' 'python-sphinx' 'emacs')
-optdepends=('qt6-base: cmake-gui')
+makedepends=('python-sphinx')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
          cmake-cppflags.patch)
-sha512sums=('1453b1f5139950f501c570c305257e4e5dacb8224944de8ed1489aae162c6dd75fe1cd5188d619c47e4e53ca5b846f07318ffb3ab004a0547f2c8b13f60083b4'
+sha512sums=('75649404564aaa6175a8c66ab19a10318066dbb667806c287e3cb125ac4c16c1629c160e355bcc50864a38d5488b1f7d1bc77acc602f5f3edd5f68691ae5080d'
             '407c5c63a31266e44641ada8229dbc33df44df98e5bb575db3a33590e8ffdff9aea3f2ee5cb0cb855858facf1e46c63886dea9f948a0cad2da042e7f7f258cac')
 
 prepare() {
@@ -30,7 +29,6 @@ build() {
     --docdir=/share/doc/cmake \
     --sphinx-man \
     --system-libs \
-    --qt-gui \
     --parallel=$(/usr/bin/getconf _NPROCESSORS_ONLN)
   make
 }
@@ -38,9 +36,6 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-
-  emacs -batch -f batch-byte-compile \
-    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
 
   install -Dm644 Copyright.txt \
     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
