@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="CudNN version of Leela Chess Zero."
 arch=('i686' 'x86_64')
 url="https://lczero.org/"
-license=('GPLv3')
+license=('GPL3')
 depends=('cuda' 'cudnn' 'protobuf')
 makedepends=('git' 'meson>=0.46' 'ninja')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")

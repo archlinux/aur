@@ -5,7 +5,7 @@ pkgbase = lc0-cudnn-git
 	url = https://lczero.org/
 	arch = i686
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	makedepends = meson>=0.46
 	makedepends = ninja
