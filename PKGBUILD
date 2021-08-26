@@ -3,20 +3,23 @@
 _npmname=concurrently
 
 pkgname=nodejs-concurrently
-pkgver=5.3.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc="Run multiple commands concurrently"
 arch=(any)
-url="https://github.com/kimmobrunfeldt/concurrently#readme"
+url="https://github.com/open-cli-tools/concurrently"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('a3fbfc34a972da1dfbceb17615d2f2a7472b8d25e9c1cbf66e4039f5303f7ac3')
+sha256sums=('93ed2d394c3f3f35ae069074899498416fe21d0eab9a6205ca823ef72a7923c1')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+
+	# Drop strange dirs
+	rm -rf "$pkgdir/usr/lib/node_modules/root"
 
 	# Fix permissions
 	find "$pkgdir/usr" -type d -exec chmod 755 {} \;
