@@ -2,7 +2,7 @@
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=v1.3.0.r81.gc6dd0f9
+pkgver=v1.3.0.r86.g57ae628
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
