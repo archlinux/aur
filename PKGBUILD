@@ -7,17 +7,14 @@ pkgdesc="Quake 4 Engine. You need the retail .pk4 files to play."
 url="https://web.archive.org/web/20061205073314/http://www.idsoftware.com/games/quake/quake4/"
 license=('custom:"Quake 4"' \
          'custom:"PunkBuster"')
-if [ "$CARCH" = "x86_64" ]; then
-    depends=('lib32-glibc' 'lib32-sdl' 'lib32-libx11' 'lib32-libxext' 'lib32-zlib')
-    optdepends=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver'
-                'lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver')
-else
-    depends=('gcc-libs' 'libgl' 'sdl' 'zlib')
-fi
+depends_x86_64=('lib32-glibc' 'lib32-sdl' 'lib32-libx11' 'lib32-libxext' 'lib32-zlib')
+optdepends_x86_64=('lib32-nvidia-utils: Accelerated 3D with the NVIDIA binary blob video driver'
+                   'lib32-catalyst-utils: Accelerated 3D with the AMD/ATI binary blob video driver')
+depends_i686=('gcc-libs' 'libgl' 'sdl' 'zlib')
 arch=('i686' 'x86_64')
 install=quake4.install
 source=('quake4.desktop' 'quake4.launcher' 'quake4-dedicated.launcher' 'quake4-smp.launcher' \
-"http://www.slashbunny.com/aur/quake4/quake4-linux-${pkgver}.x86.run")
+        "http://www.slashbunny.com/aur/quake4/quake4-linux-${pkgver}.x86.run")
 sha256sums=('8d2ff5eb71ebf7ffef321097bc74e97755e5e510985df75863dd22cdf5a3ec2e'
             '667992139f08d3496c96ac02d15b830370ae14bcc15cc8e65ded4c58036d3f23'
             'cfb3353c8c9d8be8a9a32ba05a48dca7c2125cef20159b85de7135c78a950e73'
