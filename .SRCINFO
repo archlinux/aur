@@ -1,7 +1,7 @@
 pkgbase = gmdb2-beta
 	pkgdesc = Graphical viewer for Microsoft Access database files
-	pkgver = 0.9.1_beta1
-	pkgrel = 2
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://github.com/mdbtools/gmdb2
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = gmdb2-beta
 	depends = mdbtools>=0.9.0
 	depends = gtk3>=3.22
 	optdepends = yelp: for documentation
-	provides = gmdb2=0.9.1_beta1
+	provides = gmdb2=0.9.1
 	conflicts = gmdb2
-	source = gmdb2-0.9.1-beta1.tar.gz::https://github.com/mdbtools/gmdb2/archive/v0.9.1-beta1.tar.gz
-	md5sums = 12803e3ba8da83760645cbd466e027bf
+	source = gmdb2-0.9.1.tar.gz::https://github.com/mdbtools/gmdb2/archive/v0.9.1.tar.gz
+	md5sums = 65afb8b2be0afe389cd85c687223bb09
 
 pkgname = gmdb2-beta
