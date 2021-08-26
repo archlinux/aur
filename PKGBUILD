@@ -33,9 +33,6 @@ post_install() {
 
   if [[ -f "./$NIMFLIB" ]]; then
     cp -f "./$NIMFLIB" "$HNCCONTEXT/$NIMFLIB"
-  else
-    echo "Can't find $NIMFLIB"
-    echo "Your download is corrupted."
   fi
 
   update-desktop-database -q
