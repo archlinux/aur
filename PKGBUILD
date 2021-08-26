@@ -1,23 +1,24 @@
 # Maintainer: rustemb <rustemb@systemli.org>
 pkgname=profetch
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="System Information Fetcher Written in GNU/Prolog "
 arch=(any)
 url="https://github.com/RustemB/profetch"
 license=('GPL3')
 depends=(glibc)
-makedepends=(gprolog)
+makedepends=(gprolog make)
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('60860feaac5702e6677d51ed6662490c')
+md5sums=('04a956f878c0bc052e93a2d6d360651c')
 
 build() {
     cd "$pkgname-$pkgver"
-    ./build.sh
+    make
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+    make install DESTDIR="$pkgdir" TARGET="./$pkgname"
+    #install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 }

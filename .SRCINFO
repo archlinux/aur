@@ -1,13 +1,14 @@
 pkgbase = profetch
 	pkgdesc = System Information Fetcher Written in GNU/Prolog
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/RustemB/profetch
 	arch = any
 	license = GPL3
 	makedepends = gprolog
+	makedepends = make
 	depends = glibc
-	source = profetch-0.1.6.tar.gz::https://github.com/RustemB/profetch/archive/v0.1.6.tar.gz
-	md5sums = 60860feaac5702e6677d51ed6662490c
+	source = profetch-0.1.7.tar.gz::https://github.com/RustemB/profetch/archive/v0.1.7.tar.gz
+	md5sums = 04a956f878c0bc052e93a2d6d360651c
 
 pkgname = profetch
