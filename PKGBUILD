@@ -1,7 +1,12 @@
+# Maintainer:
+# Contributor: FabioLolix
+# Contributor: Daniel Albers
+
 _reponame=dvb-firmware
 pkgname=libreelec-dvb-firmware-git
-pkgver=147.82f1b52
+pkgver=1.4.2.r1.g0eaf5b3
 pkgrel=1
+epoch=1
 pkgdesc="DVB firmware from LibreELEC project (git)"
 arch=('any')
 url="https://github.com/LibreELEC/${_reponame}"
@@ -15,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_reponame}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
