@@ -1,17 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Shatur95 <genaloner@gmail.com>
 
 pkgname=vim-language-server
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="VimScript language server"
 arch=('any')
 url="https://github.com/iamcco/vim-language-server"
-license=('unknown')
+license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('1915b18f06903ec4e5d0eeb98933d8ed2287f562fe4369ed9a82a8f91dd3eb68')
+source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+sha256sums=('d06531cd5ca2036eec50860e4b05ae9653ff69ea2cb283861d5a17d8c65c1ffc')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
