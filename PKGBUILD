@@ -1,8 +1,8 @@
 # Maintainer: Daniel Liland <danielsen2000 at gmail dot com>
 pkgname=globjects-git
 pkgver=v1.1.0.r147.g1b0ec7be
-pkgrel=1
-pkgdesc="globjects is  a cross-platform C++ wrapper for OpenGL API objects."
+pkgrel=2
+pkgdesc="a cross-platform C++ wrapper for OpenGL API objects."
 license=('MIT')
 arch=('x86_64')
 url="https://github.com/cginternals/globjects"
@@ -29,7 +29,7 @@ package() {
   mkdir -p build
   cd build
 
-  cmake -Who-dev -DOPTION_BUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
+  cmake -Wno-dev -DOPTION_BUILD_EXAMPLES=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
   make DESTDIR="$pkgdir" install
 }
 
