@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.33.0.86.g09d7c75bfe
+pkgver=v0.33.0.324.g7314253180
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -136,6 +136,7 @@ fi
     '--enable-sdl2'
     '--enable-shaderc'
     '--enable-vulkan'
+    '--enable-ffmpeg-strict-abi'
     )
 
   echo ${_ffmpeg_options[@]} > ffmpeg_options
