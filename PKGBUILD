@@ -12,5 +12,5 @@ package() {
   mkdir ${pkgdir}/opt
   mkdir ${pkgdir}/opt/zoom
   mkdir ${pkgdir}/opt/zoom/platforminputcontexts
-   ln -s /usr/lib/x86_64-linux-gnu/libnimf.so.1.0.0 ${pkgdir}/opt/zoom/platforminputcontexts/libnimfplatforminputcontexts.so
+   ln -s /usr/lib/x86_64-linux-gnu/libnimf.so.1.0.0 ${pkgdir}/opt/zoom/platforminputcontexts/libnimfplatforminputcontextplugin.so
 }
