@@ -1,15 +1,15 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gdl
-pkgver=3.34.0
-pkgrel=2
+pkgver=3.40.0
+pkgrel=1
 pkgdesc="GNOME Docking Library"
 url="https://gitlab.gnome.org/GNOME/gdl"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3)
-makedepends=(gtk-doc intltool gobject-introspection gnome-common git)
-_commit=8f8435bac99f3fdfde4e877a70ec98bfe1e83433  # tags/GDL_3_34_0^0
+makedepends=(gtk-doc intltool gobject-introspection git)
+_commit=bc1f6e9deba012fd81c6c378cd67942a955b0bee  # tags/GDL_3_40_0^0
 source=("git+https://gitlab.gnome.org/GNOME/gdl.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
+  autoreconf -fvi
 }
 
 build() {
