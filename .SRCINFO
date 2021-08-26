@@ -1,0 +1,13 @@
+pkgbase = python-sdepy
+	pkgdesc = Numerical Integration of Ito Stochastic Differential Equations
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/sdepy/sdepy
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-scipy
+	source = python-sdepy-1.2.0.tar.gz::https://github.com/sdepy/sdepy/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 55ce3985184ed6bc66a7d6a9e902320b70bcf18ecf329f27371109d47a1886d2
+
+pkgname = python-sdepy
