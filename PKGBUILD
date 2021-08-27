@@ -4,29 +4,30 @@
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
 pkgver=2.6
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url="http://www.kryoflux.com"
 license=('custom')
 provides=('capsimage')
 conflicts=('capsimage')
 depends=('libusb')
-makedepends=('gendesk')
+makedepends=('gendesk' 'imagemagick')
 optdepends=('jre7-openjdk: for the Kryoflux GUI' 'archlinux-java-run: for the Kryoflux GUI')
 source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
         '80-kryoflux.rules'
         'kryoflux.conf'
         'kryoflux.sh'
-        'kryoflux.png')
+        'https://webstore.kryoflux.com/catalog/images/kf_logo_big.png')
 md5sums=('12d57dcc9657a90c583dded553b8a2e1'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb'
          '0c9d40001d3ebed40dd3032cbdc7ba54'
-         '510bdad5af6d032a9543a80ae680295e')
+         'ede9a2b77643af8bf9d166c30827c170')
 
 prepare() {
   cd "${srcdir}"
   gendesk -f -n --pkgname "${pkgname}" --pkgdesc "Control program for KryoFlux" --exec "kryoflux" --categories "Utility;Archiving"
+  convert kf_logo_big.png -background None -gravity center -extent 400x400 kryoflux.png
 }
 
 package() {
