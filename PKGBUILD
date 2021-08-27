@@ -1,8 +1,8 @@
 # Maintainer: devvick <root@devvick.eu>
 
 pkgname=zerotier-systemd-manager-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Get ZeroTier playing nice with systemd-networkd and -resolved"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/zerotier/zerotier-systemd-manager"
@@ -16,10 +16,10 @@ source_aarch64=("https://github.com/zerotier/zerotier-systemd-manager/releases/d
 source_armv6h=("https://github.com/zerotier/zerotier-systemd-manager/releases/download/v${pkgver}/zerotier-systemd-manager_${pkgver}_linux_armv6.tar.gz")
 source_armv7h=("https://github.com/zerotier/zerotier-systemd-manager/releases/download/v${pkgver}/zerotier-systemd-manager_${pkgver}_linux_armv7.tar.gz")
 
-sha256sums_x86_64=('69b994d95f7e2a80788b34ce3863b7073e54e72b44fcc24488d3271623996984')
-sha256sums_aarch64=('5aae69d1ee0725cc4201ad4fb4f377badd7c8ace303d248b951ca9a877422a74')
-sha256sums_armv6h=('1d1e6bce77e50be2805b519c2d769b5c11b0f853d5067268ff828b72fb7d85d9')
-sha256sums_armv7h=('fbb35c1bdfde08bc292726dbb1c22606ffb2030094e5fb5da79a8f5e030ed9e3')
+sha256sums_x86_64=('a21da3b154dcc15a0e9be515561383f7fbc3fb55d32e2e018e51b6db6935622e')
+sha256sums_aarch64=('3e2b29977b91ec0240105cdd1e1749f538547bcf30f96c06d2fac971be7a368a')
+sha256sums_armv6h=('8032a3485774ba96174648d218793cf6c23fe382c016969d36f26405395b4028')
+sha256sums_armv7h=('ea196e46fcded69b6e2c1b708b5254dcfdda59371b8619327f3a788e1b4b1e15')
 
 prepare() {
   cd ${srcdir}
