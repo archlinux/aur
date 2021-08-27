@@ -6,7 +6,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
 # source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-source=("https://github.com/opencreek/creekey-cli")
+source=("git+https://github.com/opencreek/creekey-cli.git")
 
 url="https://creekey.io"
 license=('UNLICENSED')
@@ -33,4 +33,4 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
-sha256sums=('3ee0403c5d7cce503cdeb9e9e709c3909ebc84dde80d379e7401bdf6b5f63733')
+sha256sums=('SKIP')
