@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pcre
-pkgver=8.44
-pkgrel=2
+pkgver=8.45
+pkgrel=1
 pkgdesc="A library that implements Perl 5-style regular expressions (mingw-w64)"
 arch=(any)
 url="http://www.pcre.org/"
@@ -12,7 +12,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=(mingw-w64-readline mingw-w64-bzip2 mingw-w64-zlib)
 source=("https://ftp.pcre.org/pub/pcre/pcre-$pkgver.tar.bz2"{,.sig})
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
-sha512sums=('f26d850aab5228799e58ac8c2306fb313889332c39e29b118ef1de57677c5c90f970d68d3f475cabc64f8b982a77f04eca990ff1057f3ccf5e19bd137997c4ac'
+sha512sums=('91bff52eed4a2dfc3f3bfdc9c672b88e7e2ffcf3c4b121540af8a4ae8c1ce05178430aa6b8000658b9bb7b4252239357250890e20ceb84b79cdfcde05154061a'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
