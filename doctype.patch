@@ -1,0 +1,12 @@
+diff -ur --text man2html-upstream-1.6g/man2html/man2html.c patching/man2html/man2html.c
+--- a/man2html/man2html.c	2011-01-09 02:04:04.000000000 -0800
++++ b/man2html/man2html.c	2021-08-27 14:06:29.561333729 -0700
+@@ -3095,7 +3095,7 @@
+     extern char *optarg;
+ #endif
+ 
+-    printf("Content-type: text/html\n\n");
++/*     printf("Content-type: text/html\n\n"); */
+ 
+     opterr = 0;			/* no stderr error messages */
+     while ((c = getopt (argc, argv, "D:E:hH:lL:M:pqr?vVf")) != -1) {
