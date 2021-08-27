@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=63e15eac4f443fa53565d1e4fb9611cdd7814f28  # tags/2.8.2
+_commit=9aa6f8a93f035dd0a1e3978da495d830049480c8  # tags/2.9.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
@@ -16,11 +16,10 @@ depends=('mingw-w64-crt'
          'mingw-w64-glib2'
          'mingw-w64-graphite'
          'mingw-w64-freetype2')
-makedepends=('mingw-w64-configure'
+makedepends=('mingw-w64-meson'
              'mingw-w64-cairo'
              'mingw-w64-icu'
              'python'
-             'gtk-doc'
              'ragel'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
@@ -32,54 +31,28 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
-  cd harfbuzz
-  # disable tests (thanks to chenxiaolong)
-  sed -i '/SUBDIRS/s/test//' Makefile.am
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
   cd harfbuzz
   for _arch in ${_architectures}; do
-    # Build static and shared libs separately due to necessity of defining DGRAPHITE2_STATIC
-    # manually when building static version
-
-    # static build
-    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    CFLAGS=-DGRAPHITE2_STATIC CXXFLAGS=-DGRAPHITE2_STATIC ${_arch}-configure \
-      --with-glib \
-      --with-freetype \
-      --with-cairo \
-      --with-icu \
-      --with-gobject \
-      --with-graphite2 \
-      --enable-static=yes \
-      --enable-shared=no
-    make
-    popd
-    # shared build
-    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
-    LDFLAGS=-lssp ${_arch}-configure \
-      --with-glib \
-      --with-freetype \
-      --with-cairo \
-      --with-icu \
-      --with-gobject \
-      --with-graphite2 \
-      --enable-static=no \
-      --enable-shared=yes
-    make
+    mkdir -p build-${_arch} && pushd build-${_arch}
+    ${_arch}-meson \
+      --default-library both \
+      -D b_lto=false \
+      -D graphite=enabled \
+      -D tests=disabled \
+      -D docs=disabled \
+      ..
+    # fix linker selection error
+    sed -i 's|: c_LINKER|: cpp_LINKER|g' build.ninja
+    ninja
     popd
   done
 }
 
 package_mingw-w64-harfbuzz() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}-static"
-    make DESTDIR="${pkgdir}" install
-    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/harfbuzz/build-${_arch}"
+    DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
@@ -97,7 +70,7 @@ package_mingw-w64-harfbuzz-icu() {
   depends=('mingw-w64-harfbuzz'
            'mingw-w64-icu')
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
+    cd "${srcdir}/harfbuzz/build-${_arch}"
     mkdir -p "${pkgdir}/usr/${_arch}"
     mv hb-icu/usr/${_arch}/* "${pkgdir}/usr/${_arch}"
   done
