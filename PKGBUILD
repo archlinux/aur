@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-jasper
-pkgver=2.0.32
+pkgver=2.0.33
 pkgrel=1
 pkgdesc="A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (mingw-w64)"
 arch=(any)
@@ -9,13 +9,13 @@ license=("custom:JasPer2.0")
 makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-libjpeg-turbo')
 options=(staticlibs !strip !buildflags)
-source=("https://github.com/jasper-software/jasper/releases/download/version-${pkgver}/jasper.tar.gz"
+source=("https://github.com/jasper-software/jasper/releases/download/version-${pkgver}/jasper-${pkgver}.tar.gz"
         "jasper-1.900.1-fix-filename-buffer-overflow.patch"
         "001-mingw-cmake.patch"
         "004-jasper-exports.patch"
         "jasper-static-fix.patch")
 
-sha256sums=('19ece30c1f94a44b3deda62f0ffbc7f8e81458b709640b80365234979c538068'
+sha256sums=('28d28290cc2eaf70c8756d391ed8bcc8ab809a895b9a67ea6e89da23a611801a'
             'f51377e9b3e4faaa6b17b2d5fcf6f6d94fe2916a65dc9c78b5a99b891f5726dc'
             '2b261c9b40b973d0d11f7b2b6842b36aee45657cbd5e0780fa73cb184f570b65'
             'aef39fbaf65c0453a785eb563253f2bb66806ddbebcd836b8bd8dce67c7059eb'
