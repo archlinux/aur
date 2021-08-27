@@ -1,6 +1,6 @@
 pkgbase = fd-git
 	pkgdesc = A simple, fast and user-friendly alternative to find.
-	pkgver = 8.1.1.r20.g24402dd
+	pkgver = 8.2.0.r92.g3ba90dd
 	pkgrel = 1
 	url = https://github.com/sharkdp/fd
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = fd-git
 	license = APACHE
 	license = MIT
 	makedepends = git
-	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
 	provides = fd
 	conflicts = fd
-	source = fd-git::git+https://github.com/sharkdp/fd.git
+	source = fd-git::git+https://github.com/sharkdp/fd
 	sha256sums = SKIP
 
 pkgname = fd-git
-
