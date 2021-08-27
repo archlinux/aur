@@ -1,0 +1,35 @@
+From d7f649f283763af099256eb2d5e326df601c3e76 Mon Sep 17 00:00:00 2001
+From: Anuj Verma <anujv@iitbhilai.ac.in>
+Date: Mon, 16 Aug 2021 07:48:09 +0530
+Subject: [PATCH] [sdf] Return `FT_Err_Ok` while trying to render bitmap.
+
+  * src/sdf/ftsdfrend.c (ft_bsdf_render): Return OK if the slot is
+  a bitmap and the render mode is anything other than `FT_RENDER_MODE_SDF`.
+  This is for compatibility reasons.
+
+  Fixes issue #1076
+---
+ src/sdf/ftsdfrend.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/sdf/ftsdfrend.c b/src/sdf/ftsdfrend.c
+index 30f2e62a4..5686c0bf5 100644
+--- a/src/sdf/ftsdfrend.c
++++ b/src/sdf/ftsdfrend.c
+@@ -502,8 +502,11 @@
+     /* check whether render mode is correct */
+     if ( mode != FT_RENDER_MODE_SDF )
+     {
+-      error = FT_THROW( Cannot_Render_Glyph );
+-      goto Exit;
++      FT_TRACE0(( "ft_bsdf_render: trying to render bitmap\n" ));
++
++      /* return OK since the slot is already a bitmap */
++      error = FT_Err_Ok;
++      return error;
+     }
+ 
+     if ( origin )
+-- 
+GitLab
+

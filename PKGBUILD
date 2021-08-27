@@ -4,14 +4,14 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.10.4
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
 url='https://www.freetype.org/'
 license=('GPL')
-depends=(mingw-w64-crt mingw-w64-zlib mingw-w64-bzip2)
-makedepends=(mingw-w64-gcc mingw-w64-configure)
+depends=(mingw-w64-crt mingw-w64-zlib mingw-w64-bzip2 mingw-w64-brotli)
+makedepends=(mingw-w64-gcc mingw-w64-meson)
 provides=(mingw-w64-freetype)
 replaces=(mingw-w64-freetype)
 conflicts=(mingw-w64-freetype)
@@ -20,13 +20,17 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkg
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch)
-sha256sums=('86a854d8905b19698bbc8f23b860bc104246ce4854dcea8e3b0fb21284f75784'
+        0004-Enable-long-PCF-family-names.patch
+        0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
+        0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch)
+sha256sums=('8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
             'SKIP'
-            'f41df4f336d5e82e58733c7a4594476c9216cfc85c096327745a7e1b559e17e1'
-            'dc77c1cfee4bf8e7e0690628c95d211df09e0d0750e4c8f075b78b5f105514f7'
-            '21a62bc12b848320c686d602d8d4e3bcd51294a9def4dc9c301736e077b59f3f'
-            '266384222f87a02fb02b2179828f6c26fe6d7b1fd09d1f7e3734e7fcb09cda2e')
+            'e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c'
+            '17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468'
+            '561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a'
+            '9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6'
+            '2b13b8cc9acc3e56be6b0f8102d648864227bf93637bc956d5052c77c8509782'
+            '21a2d243bc6b44d1cdb88ef29af2bd5ceda8d0faaf928bdc2c078a474ddc61f1')
 validpgpkeys=(58E0C111E39F5408C5D3EC76C1A60EACE707FDA5) # Werner Lemberg <wl@gnu.org>
 
 if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
@@ -50,23 +54,27 @@ prepare() {
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
+  # https://gitlab.freedesktop.org/freetype/freetype/-/issues/1076
+  patch -Np1 -i ../0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
+  patch -Np1 -i ../0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch
 }
 
 build() {
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/freetype-${pkgver}/build-${_arch}"
     cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    ${_arch}-configure --with-zlib=/usr/${_arch} --without-png
-    make
+    ${_arch}-meson --default-library both -D zlib=enabled -D bzip2=enabled -D png=disabled -D brotli=enabled
+    ninja
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
     rm -rf "${pkgdir}/usr/${_arch}/share/"
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+    ${_arch}-ranlib "${pkgdir}/usr/${_arch}/lib/"*.a
   done
 }
