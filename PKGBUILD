@@ -2,7 +2,7 @@ _base=cplot
 pkgname=python-${_base}
 pkgdesc="Color maps for complex-valued functions"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -22,7 +22,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
 }
 
 package() {
