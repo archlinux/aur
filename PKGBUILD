@@ -3,7 +3,7 @@
 pkgname=sysit-bin
 pkgver=0.6.0
 pkgrel=1
-pkgdesc='A Clojure babashka for the grey areas of Bash.'
+pkgdesc=' System Sit! Check on the system with a quick glance.'
 arch=('x86_64' 'aarch64' 'armv7')
 url='https://github.com/crodjer/sysit'
 license=('GPL-3.0-or-later')
