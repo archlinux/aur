@@ -1,14 +1,15 @@
 # Maintainer: Paweł Lidwin <linguin@tutanota.com>
 
 pkgname=jelly-desktop
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple community made desktop client for Jellyfin"
 arch=(x86_64)
+_filename="jelly-desktop-${pkgver}.pacman"
 url="https://github.com/imLinguin/jelly-desktop"
 license=(GPL3)
 makedepends=(nodejs npm)
-source=("git+https://github.com/imLinguin/jelly-desktop.git#tag=${pkgver}")
+source=("git+https://github.com/imLinguin/jelly-desktop.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 
 build() {
