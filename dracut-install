@@ -28,5 +28,5 @@ for kernel in "${kernels[@]}"; do
     read -r pkgbase <"$path"
 
     echo ":: Building unified kernel image for $kernel-$version"
-    dracut -f --uefi --kver "${version}"
+    dracut -q -f --uefi --kver "${version}"
 done
