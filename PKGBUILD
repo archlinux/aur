@@ -2,7 +2,7 @@
 
 pkgname=image-roll
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple and fast GTK image viewer with basic image manipulation tools"
 arch=('x86_64')
 url="https://github.com/weclaw1/image-roll"
@@ -12,14 +12,22 @@ makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('789d30ea79cd5812eca7d0ed458d59140512ce9090cde2a566784c685bb00805')
 
-build() {
+prepare() {
 	cd "$pkgname-$pkgver"
-	cargo build --release --locked --all-features --target-dir=target
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$pkgname-$pkgver"
+	cargo build --release --frozen --all-features
 }
 
 check() {
+	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname-$pkgver"
-	cargo test --release --locked --target-dir=target
+	cargo test --frozen --all-features
 }
 
 package() {
