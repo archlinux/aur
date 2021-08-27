@@ -2,7 +2,7 @@
 
 pkgname=inform-git
 _gitpkg=inform6unix
-pkgver=6.35.r2.4.ga648628
+pkgver=6.35.r3.0.gfeb21c4
 pkgrel=1
 pkgdesc="Interactive fiction compiler (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
