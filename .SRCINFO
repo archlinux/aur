@@ -1,0 +1,16 @@
+pkgbase = remainduck
+	pkgdesc = Remember your stuff in an adorably annoying way.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://appcenter.elementary.io/com.github.matfantinel.reminduck/
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = com.github.matfantinel.reminduck
+	conflicts = com.github.matfantinel.reminduck
+	source = v1.6.1.tar.gz::https://github.com/matfantinel/reminduck/archive/refs/tags/v1.6.1.tar.gz
+	sha256sums = 4e481bfef1fb8988ee1757dd85d0a84b85ad9527dd53ee8de76f9891504f4af7
+
+pkgname = remainduck
