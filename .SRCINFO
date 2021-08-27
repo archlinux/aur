@@ -1,6 +1,6 @@
 pkgbase = oci-cli
 	pkgdesc = Command line interface for Oracle Cloud Infrastructure
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/oracle/oci-cli
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = oci-cli
 	depends = python-retrying
 	depends = python-yaml
 	optdepends = python-cx_oracle-git: Used by the database service
-	source = oci-cli-3.0.1.tar.gz::https://github.com/oracle/oci-cli/archive/v3.0.1.tar.gz
-	sha256sums = f6187b065aaf765b772f8905f2483d5dcc36206bed6d3d68ebb908196679d59c
+	source = oci-cli-3.0.2.tar.gz::https://github.com/oracle/oci-cli/archive/v3.0.2.tar.gz
+	sha256sums = 91819d514315aed984c1c5ff3fde1413c9d4c62f9d5a5b2f35e0997114d9f1a1
 
 pkgname = oci-cli
