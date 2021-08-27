@@ -1,40 +1,34 @@
-# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
 
 pkgname=ldoc-git
-_pkgname=ldoc
-pkgver=1.4.6.3.gf91c318
+_pkgname=${pkgname%-git}
+pkgver=1.4.6.r52.gbbd498a
 pkgrel=1
 pkgdesc='LuaDoc-compatible documentation generation system'
-url='https://github.com/stevedonovan/ldoc'
-arch=('any')
-license=('custom')
-depends=('lua' 'lua-penlight')
-makedepends=('git')
-source=("${_pkgname}::git+${url}.git")
-md5sums=('SKIP')
-provides=('ldoc')
-conflicts=('ldoc')
-md5sum=('SKIP')
+arch=(any)
+url=https://github.com/lunarmodules/LDoc
+license=(MIT)
+depends=(lua
+         lua-penlight)
+makedepends=(git)
+provides=("$_pkgname=$pkgver")
+conflicts=($_pkgname)
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --tags | sed 's/-/./g'
+	cd "${_pkgname}"
+	git describe --long --abbrev=7 --tags |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd ${_pkgname}
-
-  # install library
-  install -dm 755 "${pkgdir}/usr/share/lua/5.3"
-  cp -a ldoc "${pkgdir}/usr/share/lua/5.3"
-
-  # install binaries
-  install -Dm 755 ldoc.lua "${pkgdir}/usr/bin/ldoc.lua"
-  ln -s ldoc.lua "${pkgdir}/usr/bin/ldoc"
-
-  # copy docs
-  install -Dm 644 readme.md doc/doc.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm 644 COPYRIGHT "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	cd "${_pkgname}"
+	install -dm0755 "$pkgdir/usr/share/lua/5.4"
+	cp -a ldoc "$pkgdir/usr/share/lua/5.4"
+	install -Dm0755 -t "$pkgdir/usr/bin/" ldoc.lua
+	ln -s ldoc.lua "$pkgdir/usr/bin/ldoc"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md doc/doc.md
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYRIGHT
 }
-
-# vim: ts=2 sw=2 et:
