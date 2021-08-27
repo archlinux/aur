@@ -1,0 +1,12 @@
+pkgbase = matrixbrandy
+	pkgdesc = BBC BASIC VI interpreter with optional SDL graphics support.
+	pkgver = 1.22.11
+	pkgrel = 1
+	url = https://rakubrew.org/perl/rakubrew
+	arch = any
+	license = GPL2
+	depends = sdl
+	source = https://github.com/stardot/MatrixBrandy/archive/refs/tags/V1.22.11.tar.gz
+	sha1sums = ca41a42be3b7473d28bdc2f64c481f4ede2e8d62
+
+pkgname = matrixbrandy
