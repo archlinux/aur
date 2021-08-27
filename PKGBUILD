@@ -3,7 +3,7 @@
 
 pkgname=darkplaces-git
 _gitname=darkplaces
-pkgver=r10267.bfd44193
+pkgver=r10280.727c2cbe
 pkgrel=1
 pkgdesc="An advanced Quake 1 game engine (git-latest)"
 arch=('i686' 'x86_64')
