@@ -4,7 +4,7 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=2.21.69365
+pkgver=2.22.69367
 pkgrel=1
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/bionic/a/ac/activins
         "inspire.sh"
 	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
-md5sums=('1b91d697622c2a89861a63ecd90ab625'
+md5sums=('3d5a313e202a256684e6ec6e9545924e'
          'd3096ede6c2cd388469f4e12a8286ee8'
          '14f618ed07ed2d267b2578818d253200'
          'e0f2c4078eadd00de8f28159b273e576')
