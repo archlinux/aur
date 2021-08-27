@@ -1,7 +1,7 @@
-From 7c9a1d941889ec1236bc664321db7b2c755d63b4 Mon Sep 17 00:00:00 2001
+From 94179eefc9975b63ce7501d37cc67772e5a1ad19 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/33] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -15,13 +15,13 @@ Also see the following issues:
 
 Change-Id: I127bb0516bd4acfea588a5d48c46811525a8fca8
 ---
- mkspecs/common/g++-win32.conf      | 50 ++++++++++++++++++++----------
+ mkspecs/common/g++-win32.conf      | 51 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
  mkspecs/win32-g++/qmake.conf       |  4 +--
- 3 files changed, 37 insertions(+), 21 deletions(-)
+ 3 files changed, 38 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index c3a1f3a373..d852ccc2ad 100644
+index c3a1f3a373..793ff540a1 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -60,7 +60,7 @@ index c3a1f3a373..d852ccc2ad 100644
  
  QMAKE_INCDIR            =
  
-@@ -41,40 +48,49 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
+@@ -41,40 +48,50 @@ QMAKE_RUN_CXX           = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $obj $src
  QMAKE_RUN_CXX_IMP       = $(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
  
  QMAKE_LFLAGS_EXCEPTIONS_ON = -mthreads
@@ -95,7 +95,8 @@ index c3a1f3a373..d852ccc2ad 100644
 +QMAKE_LIBS_CORE         = -lz -lpcre2-16 -liconv -lversion -lnetapi32 -luserenv -lole32 -luuid -lwinmm -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 +QMAKE_LIBS_GUI          = $$system($${QMAKE_PKG_CONFIG} --libs harfbuzz) $$system($${QMAKE_PKG_CONFIG} --libs freetype2) \
 +                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
-+QMAKE_LIBS_GUI_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz) $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2) \
++QMAKE_LIBS_GUI_STATIC   = $$system($${QMAKE_PKG_CONFIG} --static --libs harfbuzz | sed -e "'s/\\([^ ]*\\)brotli\\([^ ]*\\)/\\1brotli\\2-static/g'" ) \
++                          $$system($${QMAKE_PKG_CONFIG} --static --libs freetype2 | sed -e "'s/\\([^ ]*\\)brotli\\([^ ]*\\)/\\1brotli\\2-static/g'" ) \
 +                          -ljpeg -lpng -lopengl32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ldxgi -ld3d11
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
 +QMAKE_LIBS_NETWORK_STATIC = $$system($${QMAKE_PKG_CONFIG} --static --libs openssl) -lws2_32 -lcrypt32 -ldnsapi -liphlpapi
@@ -161,5 +162,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.32.0
+2.33.0
 

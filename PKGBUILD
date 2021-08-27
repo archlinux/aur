@@ -17,9 +17,9 @@
 
 _qt_module=qtbase
 pkgname=mingw-w64-qt5-base
-pkgver=5.15.2+kde+r203
+pkgver=5.15.2+kde+r222
 pkgrel=1
-_commit=d23de39db3b84c8c9a80da36d8d0de8da4321566
+_commit=d2bd04d9fe03912097d3246b7d03ef14f425256b
 pkgdesc='A cross-platform application and UI framework, native OpenGL backend (mingw-w64)'
 arch=('i686' 'x86_64')
 url='https://www.qt.io/'
@@ -67,42 +67,40 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch'
-        '0032-Add-missing-include-limits-in-QOffsetStringArray-hea.patch'
-        '0033-Fix-crashes-in-rasterization-code-using-setjmp.patch')
+        '0032-Fix-crashes-in-rasterization-code-using-setjmp.patch')
 sha256sums=('SKIP'
-            '8613f8d23c5440a46d4a0f9c4539381005e2818b90ea496193eed92786edb16f'
-            '679799aa865366497d7475bab40464a5957328cc3c0e5da28a0db878c8f8573b'
-            'b56fdf550506c9d44838c5fda6652193cf592106779fb54ebe4a45ef320a6af9'
-            '30a32bfc481ba0c314d2767cc4a064fbc07802469a641f271629cebd2ac9a761'
-            '3144ef696efd1364a24de1badf9bb80b4101c77edb7939fb8718a903d7bf26c2'
-            '13c2e0c1af4ef8465c7f342c7a5eff418a276de750dc7fabb5c203332ec9e64c'
-            '369919f5b9ceb7cceafc05bd5c65e3c81c35e93a44c735ce3aba7deeb8f424ff'
-            '46bbcc0ff97daba70cda9f2e80b56f929f3e601ad3350ae00c78c68aabed1570'
-            '8fafbc2c0b124ab8489a99860062d96f98305b81e9dd91d32b500710ef4ed0af'
-            '5bbce61594fd594cbef497689ffb11df5ef9fdfb1ac568b0e111c1aaf8f4c665'
-            '97bfd341b18a0c22085ed451351a9709d536b7a93fdf4b994bd171ec5f913ca2'
-            '0dcba5a7d147fc84cf4e2744a03c268aadbaffba0f2e2958a3fa75d4fa958f1b'
-            'a545af810eab032617aabef87dbd951c2f73019f223180c4b771e3e020dc9edb'
-            '9f850469676a4b8ba4fc1ee6eefb321ad09a5cd1395e999cb1f765aeb774e1a4'
-            '493bfc5d6db5199648656525780183c6f52f4afb7695b2aa22d2e96cf6d70507'
-            'ca0888582955a0ccf92b68829c8f0441aa5ece9d0bfec496c3b8d3f8c88bd5ea'
-            'da49b774077d4759bbbc5d5c2a5d1ec52b9a3c53621da996d870945d4e393b1c'
-            '4242302b53bd487faf399d4fad193dc312e377a9583ea5ebefa5c0368bf77117'
-            '3fed7f019a61ca0ed1df4cb9456c78e75bacf3daa75ac1ab2206d2c8cfce1199'
-            'eede73419d13d66b093e005f455a657505f6d6063b38de691c8cdb56358f3cb8'
-            'ea60c37493ec14d9048cefead9dc8dbc7acafb1dca5543b3d480b1ea84280a04'
-            '39ce306ab1d3b264ed567f72f5c3e397c4a9d6c562741ff0df1a1d97a21cc92a'
-            '5ae44f415817a53106ff9a9a3c64aabdb44d8f200bda302bdd51491597b83951'
-            '1e95190e1cfc9ab7692ad796c0217144a770f3f644697939f2bcb93a0c8aa569'
-            'dec83c48a3d337d47e480e75fbb853a6f2563d0901f39cbb76b84e8c5483f069'
-            '680854dabbfa446dc9d50c270be1eeff01faf8fc83594e0cea08f9df6602553a'
-            'fa8d9f78d4a6b329303a20d6511b4ee46722536f8621fc77721bf45185244251'
-            '3e834ad4bc6f4e28fcb9afba31531d91e8ec962775e21014bce977b2467c5054'
-            '0e3fb673f45ededf99c6b13c922cc8873202f4ba066b9ba05e8c47b529fe027f'
-            '8eb6a0e9cd837263728148ed00785a4f98bc524eeb7bdd658880757eeda3250e'
-            '2aa935715d8415686aaa812e8cea57b0e5e5391bead12219aee424d2aeef17c1'
-            'e1526e6e1ddcccbdf06de55ccc411fb1983c58abfa776fd0112545392e0e9d6e'
-            'b0a1d82dc22dc02d993224f4391ad297fdd7e992e8d2bcaabb106f28a9f243e6')
+            '673d95d4fff53ef4ebfa1313d5cf5f853ef5eb0b38b357fb3c976f09d2bd7136'
+            'a668123b178ff8ef787a9f727faea8ef61fc3eff4495cb24117001a8516f3b2f'
+            '1fa09d3de43f5bd59322b2215a772bd1e2f5cf417c59280e430b78fdaad0fa59'
+            'ee1f130f1de5726918820c02e8aecc735b4586854e1974373e8fc81eb9db5acf'
+            '85685c1d3b919f1d99f8c270afc649a3440032a498068ab79e1fb18fd61c0557'
+            '71e75d9cdb87ff24bb26a56ddf27d059b48b16089b3b90a8d5d2d50075503c7e'
+            '1a602b36ab940ab4e36f1392e80f084847f04bdd0505b66d0534ac9f1cf7a0d2'
+            '8a4f74e1e072cc768300c97e9ae98ea4843003e6800acc4abd190277c3bc9567'
+            'f23ed6dd3092ad25edf75a60cf5874192d258521fa2202d727b8dcecc7d619af'
+            '01ed0f661eae93bae0b389bfd7e371848944a34884c64a89956f80c66cdf7aad'
+            '40d9e763f1bb9e64e3ad061c24fddfd4f1f4380ae082cf41cd4cd02c3a9c1e74'
+            '2b4bf3f6f81aff4a69fb458e0ff20d9ae3bce86f0f5a92ff0f3fdba6f6776d98'
+            '7eda33569fdcc02c2af234b3195de5a48d9160b67ea855e41dd4ffed09b2fef1'
+            '8f3584e0c42ada309b8cdbb0925e301b60ce1d7a00e1425e954c8459fec6d0fc'
+            '7597b1e72c1ac6c04b7f9e7a6f05820ad4f00709542b790981362001aef1eeb7'
+            '2cb69a4efcb771ccf1a6877eecb56dc934317091cd569c3a6398057a8b279d64'
+            '382f89931578c6ddf1330dbbc0c1a688d58a6dcaa4308fdf8dffc759dc4323eb'
+            'c0517268f755f2c2a35f184e79c62e09ba4c0b29d30f7c510ada2cd974adcc47'
+            'efd822a8aed39f243d34e1d0087dc429b03e43351b2dbffdcb765904c8226869'
+            '43952eed3a78b13e22761bb2b777f2b76a499678bc483d4f0bafc6a42434db74'
+            'b09327ffc2ee055a87f577f8523051eb4cfc9d583d99a5e9b394bf20ca1260f6'
+            '4466cde0c17e5b5406a59dc12f27c57c22d1ce90b03635c20ef3f451e7cbc9be'
+            '6fc8cc928c9530a5816e37e9a4f433693d047e99a11060778d6693128c3bba7a'
+            '5d5a473d2020ec13ba100755543fe32bbeca2f328f3a44cf79869b0658fb22a2'
+            'eb795b524330baa0bc633ba435ff12a854339035b758427c8cb0811b14591ca5'
+            'e934e64bd17db6f2baa21494de77f5a28dfb13b191fbc3160fcc354eb36cba6a'
+            '1ebb0893fac53610a54e2f38c88e4771b334ea59f79f7af4230fe0049b960513'
+            '5984d1bf12316884bd26ec19153361ff48b0dc0e1d2c021ac22ae84188306985'
+            '005a89333608ba1b491f35d877f41590a11cd40813c74227d601fb91c61b3f3d'
+            '4bd0ef4e5db033a6652e31f68d35ef505a9944e7cc974705bc2322f087d95cd7'
+            '2d16a3ca82c47ccc3a0b82f9f33b8536bd0159e40410c158ec85936bba7bacd9'
+            '7880b548f9d3e87aa93a50ef1d411b682cf70d97420969f854db5ce43ee7e1d8')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

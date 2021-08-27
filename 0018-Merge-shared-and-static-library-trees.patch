@@ -1,7 +1,7 @@
-From 1362122e2ccf7f66461ac7eb3e57f401a1520da5 Mon Sep 17 00:00:00 2001
+From 7fc83ce1124e927403992ab7f3b715f4f57fc22f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
-Subject: [PATCH 18/33] Merge shared and static library trees
+Subject: [PATCH 18/32] Merge shared and static library trees
 
 Allow installation of shared and static build in the same prefix
 
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.32.0
+2.33.0
 
