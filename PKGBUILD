@@ -34,7 +34,7 @@ prepare() {
     asar extract app.asar app
 
     cd "$srcdir/resources/app"
-	mkdir -p resources/linux/
+    mkdir -p resources/linux/
     install -Dm644 "$srcdir/resources/win/systray.png" resources/linux/
 
     prettier --write "build/*.js"
