@@ -1,6 +1,6 @@
 pkgbase = gr-osmosdr-nonfree-git
 	pkgdesc = GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay, enabled.
-	pkgver = 0.1.4.91.gcf95494
+	pkgver = 0.2.1.19.ga100eb0
 	pkgrel = 1
 	url = http://sdr.osmocom.org/trac/
 	install = gr-osmosdr-nonfree-git.install
@@ -10,7 +10,7 @@ pkgbase = gr-osmosdr-nonfree-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	makedepends = python2-cheetah
+	makedepends = python-cheetah3
 	depends = gnuradio
 	depends = swig
 	depends = rtl-sdr
@@ -32,4 +32,3 @@ pkgbase = gr-osmosdr-nonfree-git
 	md5sums = SKIP
 
 pkgname = gr-osmosdr-nonfree-git
-

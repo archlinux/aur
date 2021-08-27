@@ -1,10 +1,12 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: EndlessEden <eden [at] rose.place>
+# Contributor: deadite66 <lee295012@gmail.com>
+# Previous-Maintainer: Dan McCurry <dan.mccurry at linux dot com>
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 # Contributor: 0xfc <sfc_0@yahoo.com.cn>
 # Modified from gr-osmosdr-git PKGBUILD
 
 pkgname=gr-osmosdr-nonfree-git
-pkgver=0.1.4.91.gcf95494
+pkgver=0.2.1.19.ga100eb0
 pkgrel=1
 pkgdesc="GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay, enabled."
 arch=('i686' 'x86_64')
@@ -23,7 +25,7 @@ makedepends=(
     'git'
     'cmake'
     'boost'
-    'python2-cheetah'
+    'python-cheetah3'
     )
 optdepends=(
     'gnuradio-iqbal: Osmocom IQ imbalance correction support'
@@ -64,9 +66,9 @@ build() {
   cd "$srcdir/$_gitname"
   mkdir -p build
   cd build
-  cmake -DPYTHON_EXECUTABLE=$(which python2) \
-        -DPYTHON_INCLUDE_DIR=$(echo /usr/include/python2*) \
-        -DPYTHON_LIBRARY=$(echo /usr/lib/libpython2.*.so) \
+  cmake -DPYTHON_EXECUTABLE=$(which python) \
+        -DPYTHON_INCLUDE_DIR=$(echo /usr/include/python*) \
+        -DPYTHON_LIBRARY=$(echo /usr/lib/libpython.*.so) \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DENABLE_NONFREE=TRUE ../
   make
