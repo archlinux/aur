@@ -26,7 +26,8 @@ depends=(
          'gsm'
          'glslang'
          'hicolor-icon-theme'
-         'jack2'
+         'jack'
+         'kvazaar'
          'ladspa'
          'lame'
          'lcms2'
@@ -47,12 +48,14 @@ depends=(
          'libglvnd'
          'libgme'
          'libiec61883'
+         'libilbc'
          'libmodplug'
          'libmysofa'
          'libomxil-bellagio'
          'libplacebo'
          'libpng'
          'libpulse'
+         'librabbitmq-c'
          'librsvg'
          'libsoxr'
          'libssh'
@@ -81,6 +84,7 @@ depends=(
          'openjpeg2'
          'opus'
          'pulseaudio'
+         'rav1e'
          'rtmpdump'
          'rubberband'
          'sdl2'
@@ -134,11 +138,9 @@ optdepends=(
             'cuda: mpv ffmpeg nvcc and libnpp support'
             'davs2: Additional libdavs2 support for ffmpeg'
             'intel-media-sdk: Intel QuickSync support for ffmpeg'
-            'libilbc: Additional libilbc support for ffmpeg'
             'libklvanc-git: Additional libklvanc support for ffmpeg'
             'libopenmpt: Additional libopenmpt support for ffmpeg'
             'libsixel: Allow mpv to implement sixel as a output device'
-            'kvazaar: Additional libkvazaar support for ffmpeg'
             'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'openh264: Additional libopenh264 support for ffmpeg'
@@ -181,12 +183,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/libklvanc.so ]; then
     depends+=('libklvanc')
-  fi
-  if [ -f /usr/lib/libkvazaar.so ]; then
-    depends+=('kvazaar')
-  fi
-  if [ -f /usr/lib/libilbc.so ]; then
-    depends+=('libilbc')
   fi
   if [ -f /usr/lib/libopenmpt.so ]; then
     depends+=('libopenmpt')
@@ -276,7 +272,9 @@ prepare() {
     '--enable-libgme'
     '--enable-libgsm'
     '--enable-libiec61883'
+    '--enable-libilbc'
     '--enable-libjack'
+    '--enable-libkvazaar'
     '--disable-liblensfun'
     '--enable-libmfx'
     '--enable-libmodplug'
@@ -287,6 +285,8 @@ prepare() {
     '--enable-libopenjpeg'
     '--enable-libopus'
     '--enable-libpulse'
+    '--enable-librabbitmq'
+    '--enable-librav1e'
     '--enable-librsvg'
     '--enable-librtmp'
     '--enable-librubberband'
@@ -406,12 +406,6 @@ prepare() {
     if [ -f /usr/lib/libklvanc.so ]; then
       _ffmpeg_options+=('--enable-libklvanc')
     fi
-    if [ -f /usr/lib/libkvazaar.so ]; then
-      _ffmpeg_options+=('--enable-libkvazaar')
-    fi
-    if [ -f /usr/lib/libilbc.so ]; then
-      _ffmpeg_options+=('--enable-libilbc')
-    fi
     if [ -f /usr/lib/libopenmpt.so ]; then
       _ffmpeg_options+=('--enable-libopenmpt')
     fi
@@ -425,7 +419,7 @@ prepare() {
       _mpv_options+=('--enable-spirv-cross')
     fi
     if [ -f /usr/lib/libshine.so ]; then
-      _ffmpeg_options+=('--enable-libvo-amrwbenc')
+      _ffmpeg_options+=('--enable-libshine')
     fi
     if [ -f /usr/lib/libsixel.so ]; then
       _mpv_options+=('--enable-sixel')
@@ -459,9 +453,14 @@ prepare() {
   echo ${_ffmpeg_options[@]} > ffmpeg_options
   echo ${_mpv_options[@]} > mpv_options
 
+  pushd ffmpeg > /dev/null
+  sed -i 's|/usr/local/share/|/usr/share/|' libavfilter/vf_libvmaf.c
+  popd > /dev/null
+
   cd mpv
 
   ./bootstrap.py
+  
 }
 
 build() {
