@@ -1,6 +1,6 @@
 pkgbase = freetuxtv-git
 	pkgdesc = WebTV vlc player to watch tv/radio playlists on the internet
-	pkgver = 0.6.8.r43.g0bf28e8
+	pkgver = 0.6.8.r45.gc5781e5
 	pkgrel = 1
 	url = https://github.com/freetuxtv/freetuxtv
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = freetuxtv-git
 	sha256sums = SKIP
 
 pkgname = freetuxtv-git
-

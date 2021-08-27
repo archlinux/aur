@@ -1,7 +1,7 @@
 # Maintainer: 
 # Based on freetuxtv-svn by Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 pkgname=freetuxtv-git
-pkgver=0.6.8.r43.g0bf28e8
+pkgver=0.6.8.r45.gc5781e5
 pkgrel=1
 pkgdesc="WebTV vlc player to watch tv/radio playlists on the internet"
 arch=('x86_64')
