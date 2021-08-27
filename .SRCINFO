@@ -1,0 +1,20 @@
+pkgbase = libxpm-git
+	pkgdesc = X pixmap (XPM) image file format library
+	pkgver = 3.5.13.r2.g83e5427
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/wiki/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	depends = glibc
+	depends = libxext
+	depends = libxt
+	provides = libxpm
+	conflicts = libxpm
+	options = staticlibs
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libxpm.git
+	sha256sums = SKIP
+
+pkgname = libxpm-git
