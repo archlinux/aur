@@ -22,8 +22,10 @@ pkgbase = hoffice
 	source = https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb
 	source = LICENSE
 	source = libqt5im-nimf.so
+	source = https://github.com/Riey/kime/releases/latest/download/libkime-qt-5.11.3.so
 	sha256sums = 1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730
 	sha256sums = 09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583
 	sha256sums = d246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c
+	sha256sums = 3a1e55170e350ab23907fd5e98edd3b46f1872c6546a29d186238ff22354bbae
 
 pkgname = hoffice
