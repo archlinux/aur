@@ -12,6 +12,7 @@ pkgbase = cambalache-git
 	depends = gtk3
 	depends = gtk4
 	depends = python-lxml
+	depends = webkit2gtk
 	provides = cambalache=0.7.0.r3.g33f3c44
 	conflicts = cambalache
 	source = git+https://gitlab.gnome.org/jpu/cambalache.git
