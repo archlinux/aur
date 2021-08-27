@@ -78,7 +78,7 @@ _makenconfig=
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
 _major=5.13
-pkgver=${_major}.12
+pkgver=${_major}.13
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -121,7 +121,7 @@ done
 
 b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
         'SKIP'
-        'c969a102efc1a52647b5d0f22f5c109ffc422bf30b965d602410915b94e1f814b1547b9b7c708492f0bb926606ec15d38a6fb6b9f0b6aa1287e26854c8aeaba1'
+        'bc16a683b8ee7daddbd09461df8a7325c7eed6c7931305e87778d8ea457da4ac2162e2fcf71e8a274ff9393d00450bbeff53d56b4c11deec180996a93115ceaf'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
         '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
@@ -212,7 +212,7 @@ prepare() {
   scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
   scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   scripts/config --module CONFIG_EXT4_FS
-  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 13
+  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 3
   scripts/config --enable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
@@ -241,6 +241,7 @@ prepare() {
   scripts/config --disable CONFIG_MODULE_COMPRESS_NONE
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+  scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 3
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
