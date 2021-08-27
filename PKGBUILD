@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.13
-_minor=12
+_minor=13
 _srcname=linux-${_major}
 
 pkgbase=linux-mini
@@ -107,9 +107,9 @@ validpgpkeys=(
 )
 sha256sums=('3f6baa97f37518439f51df2e4f3d65a822ca5ff016aa8e60d2cc53b95a6c89d9'
             'SKIP'
-            '5e70a8b3c5fc6bc7eb0bc55b455d373b031b4ed6c73a961fa84378b6baabfde9'
+            'db626e41d43e74f5c26901dc71e19c6792eed902f44abf0a509ca4a9a2617cb8'
             'd361171032ec9fce11c53bfbd667d0c3f0cb4004a17329ab195d6dcc5aa88caf'
-            '06ad99b810943f7ce4650fe656156f4b40d11fabd9b89e2b1beff06c46836efc')
+            'e6e80f91b16dc639679fe1d5dfae5097e1e4e91b11ea4539790719511921ccc0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
