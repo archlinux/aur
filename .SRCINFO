@@ -1,6 +1,6 @@
 pkgbase = python-typedload
 	pkgdesc = Load and dump data from json-like format into typed data structures
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = https://ltworf.github.io/typedload/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-typedload
 	checkdepends = mypy
 	makedepends = python-setuptools
 	depends = python
-	source = typedload-2.8.tar.gz::https://github.com/ltworf/typedload/archive/2.8.tar.gz
-	sha256sums = b61f02e18fbea8416373a983cadd803eb3244dd50e92ed2955a86d639bb0003a
+	source = typedload-2.9.tar.gz::https://github.com/ltworf/typedload/archive/2.9.tar.gz
+	sha256sums = bee2272828af072608279f01dfc3bebfb397bf5241469b81c26d842f35c404cc
 
 pkgname = python-typedload
