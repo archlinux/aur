@@ -1,6 +1,7 @@
 # Maintainer: Vasiliy Stelmachenok <cabopust@yandex.ru>
 # Contributor: Pavel Priluckiy <gerallitluis2@gmail.com>
 # Contributor: Avinash Reddy <cassilasreddythemostwanted3108@gmail.com>
+# Contributor: solonovamax <solonovamax@12oclockpoint.com>
 
 # Integration of the nvidia-patch from keylase.
 #
@@ -70,7 +71,7 @@ pkgbase=nvidia-dkms-performance
 pkgname=(nvidia-dkms-performance nvidia-settings-performance nvidia-utils-performance opencl-nvidia-performance
 	 lib32-nvidia-utils-performance lib32-opencl-nvidia-performance)
 pkgver=470.63.01
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.nvidia.com/'
 license=('custom')
@@ -96,13 +97,29 @@ sha256sums=('6f1a44cc4a2ce27dce749ccd1e403c1db0f4791e2d22c05ec966842101d3ed14'
             '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
 
 create_links() {
+    _orig_dir="$(pwd)"
+
     # create soname links
     for _lib in $(find "${pkgdir}" -name '*.so*' | grep -v 'xorg/'); do
-        _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
-        _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
-        [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
-        [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
+        _dirname="$(dirname "${_lib}")"
+        _original="$(basename "${_lib}")"
+        _soname="$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)"
+        _base="$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')"
+
+        cd "${_dirname}"
+
+        if ! [[ -z "${_soname}" ]]; then # if not empty
+            if ! [[ -e "./${_soname}" ]]; then
+                ln -s $(basename "${_lib}") "./${_soname}"
+            fi
+        fi
+        if ! [[ -z "${_base}" ]]; then # if not empty (if _soname is empty, _base should be too)
+            if ! [[ -e "./${_base}" ]]; then
+                ln -s "./${_soname}" "./${_base}"
+            fi
+        fi
     done
+    cd "${_orig_dir}"
 }
 
 prepare() {
