@@ -1,0 +1,26 @@
+pkgbase = taler-merchant
+	pkgdesc = Merchant logic implementation(s) and support code
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://taler.net/
+	arch = i686
+	arch = x86_64
+	groups = taler
+	license = AGPL
+	license = GPL
+	license = LGPL
+	depends = jansson
+	depends = libgcrypt
+	depends = postgresql
+	depends = gnunet
+	depends = qrencode
+	depends = taler-exchange
+	conflicts = taler-merchant-git
+	conflicts = taler-merchant-bin
+	source = http://ftp.gnu.org/gnu/taler/taler-merchant-0.8.3.tar.gz
+	source = http://ftp.gnu.org/gnu/taler/taler-merchant-0.8.3.tar.gz.sig
+	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
+	sha256sums = 9fb62325f63c1d97af93da385db5ecea2b061472e6bac8c27c46fef666802b45
+	sha256sums = SKIP
+
+pkgname = taler-merchant
