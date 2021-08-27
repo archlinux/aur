@@ -1,5 +1,6 @@
 # Changelog
 
+* [1.9.0](#1-9-0)
 * [1.8.2](#1-8-2)
 * [1.8.1](#1-8-1)
 * [1.8.0](#1-8-0)
@@ -26,6 +27,87 @@
 * [1.2.2](#1-2-2)
 * [1.2.1](#1-2-1)
 * [1.2.0](#1-2-0)
+
+
+## 1.9.0
+
+### Added
+
+* Window title in the CSDs
+  (https://codeberg.org/dnkl/foot/issues/638).
+* `-Ddocs=disabled|enabled|auto` meson command line option.
+* Support for `~`-expansion in the `include` directive
+  (https://codeberg.org/dnkl/foot/issues/659).
+* Unicode 13 characters U+1FB3C - U+1FB6F, U+1FB9A and U+1FB9B to list
+  of box drawing characters rendered by foot itself (rather than using
+  font glyphs) (https://codeberg.org/dnkl/foot/issues/474).
+* `XM`+`xm` to terminfo.
+* Mouse buttons 6/7 (mouse wheel left/right).
+* `url.uri-characters` option to `foot.ini`
+  (https://codeberg.org/dnkl/foot/issues/654).
+
+
+### Changed
+
+* Terminfo files can now co-exist with the foot terminfo files from
+  ncurses. See `INSTALL.md` for more information
+  (https://codeberg.org/dnkl/foot/issues/671).
+* `bold-text-in-bright=palette-based` now only brightens colors from palette
+* Raised grace period between closing the PTY and sending `SIGKILL` (when
+  terminating the client application) from 4 to 60 seconds.
+* When terminating the client application, foot now sends `SIGTERM` immediately
+  after closing the PTY, instead of waiting 2 seconds.
+* Foot now sends `SIGTERM`/`SIGKILL` to the client application’s process group,
+  instead of just to the client application’s process.
+* `kmous` terminfo capability from `\E[M` to `\E[<`.
+* pt-or-px values (`letter-spacing`, etc) and the line thickness
+  (`tweak.box-drawing-base-thickness`) in box drawing characters are
+  now translated to pixel values using the monitor’s scaling factor
+  when `dpi-aware=no`, or `dpi-aware=auto` and the scaling factor is
+  larger than 1 (https://codeberg.org/dnkl/foot/issues/680).
+
+
+### Removed
+
+* `km`/`smm`/`rmm` from terminfo; foot prefixes Alt-key combinations
+  with `ESC`, and not by setting the 8:th “meta” bit, regardless of
+  `smm`/`rmm`. While this _can_ be disabled by, resetting private mode
+  1036, the terminfo should reflect the **default** behavior
+  (https://codeberg.org/dnkl/foot/issues/670).
+* Keypad application mode keys from terminfo; enabling the keypad
+  application mode is not enough to make foot emit these sequences -
+  you also need to disable private mode 1035
+  (https://codeberg.org/dnkl/foot/issues/670).
+
+
+### Fixed
+
+* Rendering into the right margin area with `tweak.overflowing-glyphs`
+  enabled.
+* PGO builds with clang (https://codeberg.org/dnkl/foot/issues/642).
+* Crash in scrollback search mode when selection has been canceled due
+  to terminal content updates
+  (https://codeberg.org/dnkl/foot/issues/644).
+* Foot process not terminating when the Wayland connection is broken
+  (https://codeberg.org/dnkl/foot/issues/651).
+* Output scale being zero on compositors that does not advertise a
+  scaling factor.
+* Slow-to-terminate client applications causing other footclient instances to
+  freeze when closing a footclient window.
+* Underlying cell content showing through in the left-most column of
+  sixels.
+* `cursor.blink` not working in GNOME
+  (https://codeberg.org/dnkl/foot/issues/686).
+* Blinking cursor stops blinking, or becoming invisible, when
+  switching focus from, and then back to a terminal window on GNOME
+  (https://codeberg.org/dnkl/foot/issues/686).
+
+
+### Contributors
+
+* Nihal Jere
+* [nowrep](https://codeberg.org/nowrep)
+* [clktmr](https://codeberg.org/clktmr)
 
 
 ## 1.8.2

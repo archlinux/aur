@@ -1,7 +1,7 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
-pkgver=1.8.2  # Don’t forget to update CHANGELOG.md
+pkgver=1.9.0  # Don’t forget to update CHANGELOG.md
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
@@ -14,7 +14,7 @@ optdepends=('libnotify: desktop notifications'
             'xdg-utils: URI launching'
             'bash-completion: bash completions for foot itself')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('50cf5b9f3cc1ebaafa62255eea22395e8267cce21e119bc6f7ecacf11f15dada')
+sha256sums=('ddc3f90185ae75badcb2d6abe772d54fd6defebf1ed4111861a9c4afa1c73a4d')
 
 build() {
   cd foot
@@ -51,7 +51,7 @@ build() {
     --buildtype=release \
     --wrap-mode=nodownload \
     -Db_lto=true \
-    -Dterminfo-install-location=disabled \
+    -Dterminfo=disabled \
     . build
 
   if [[ ${do_pgo} == yes ]]; then
@@ -64,13 +64,11 @@ build() {
     local tmp_file=$(mktemp)
 
     if [[ -v WAYLAND_DISPLAY ]]; then
-      # TODO: remove the sleep in the next release (with SIGWINCH
-      # fixes in generate-alt-random-writes.py)
       build/footclient --version
       build/foot \
         --config /dev/null \
         --term=xterm \
-        sh -c "sleep 2 && ./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
+        sh -c "./scripts/generate-alt-random-writes.py ${script_options} ${tmp_file} && cat ${tmp_file}"
     else
       build/footclient --version
       build/foot --version
