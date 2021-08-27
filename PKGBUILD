@@ -35,17 +35,17 @@ check() {
   _appdata_id=org.nicotine_plus.Nicotine
 
   # Some tests require an X server
-  display=":70"
-  Xvfb $display -screen 0 1024x768x24 -ac -noreset & xpid=$!
+  _display=":70"
+  Xvfb ${_display} -screen 0 1024x768x24 -ac -noreset & xpid=$!
   trap "kill -TERM $xpid || :" EXIT
   sleep 3
-  export DISPLAY=$display
+  export DISPLAY=${_display}
 
   # Tests requiring an Internet connection are disabled
   pytest --deselect=test/unit/test_version.py
 
-  desktop-file-validate data/$_appdata_id.desktop
-  appstream-util validate-relax --nonet data/$_appdata_id.metainfo.xml
+  desktop-file-validate data/${_appdata_id}.desktop
+  appstream-util validate-relax --nonet data/${_appdata_id}.metainfo.xml
 }
 
 package() {
