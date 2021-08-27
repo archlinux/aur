@@ -20,10 +20,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	export DESTDIR="$pkgdir"
-    mkdir -p $pkgdir/usr/bin
-    mkdir -p $pkgdir/usr/lib
-    mkdir -p $pkgdir/usr/share/man/man1/
-    make install
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
 }
