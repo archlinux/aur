@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.2'
-pkgrel=3
+pkgrel=4
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -16,15 +16,19 @@ depends=('bash' 'which' 'gnutls' 'gnurl' 'libgcrypt' 'libunistring' 'libidn2'
          'libmicrohttpd' 'jansson' 'nss' 'libtool' 'sqlite' 'zlib' 'libsodium'
          'openssl' 'libextractor' 'brotli' 'gettext')
 makedepends=('pkgconfig' 'libtool' 'bluez-libs' 'python' 'libpulse' 'opus')
-optdepends=('bluez: for bluetooth transport'
+optdepends=('postgresql: for an alternative to sqlite in the database plugin'
+            'mysql: for an alternative to sqlite in the database plugin'
+            'bluez: for bluetooth transport'
             'zbar: for reading/writing GNUnet URIs from/to QR codes using gnunet-qr'
             'texlive-core: for generating GNS business cards via gnunet-bcd'
             'miniupnpc: for NAT uPnP support'
 	    'libpulse: for conversation service'
+	    'libogg: for conversation service'
 	    'opus: for conversation service'
             'pbc: for Attribute-Based Encryption'
             'libgabe: for Attribute-Based Encryption'
-            'libpabc: for re:claimID zero-knowledge privacy credentials')
+            'libpabc: for re:claimID zero-knowledge privacy credentials'
+            'texi2mdoc: for automatic mdoc generation')
 backup=("etc/${pkgname}.conf")
 options=('!makeflags')
 source=("ftp://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
