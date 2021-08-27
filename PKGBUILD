@@ -16,7 +16,6 @@ source=(
 	'https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb'
 	'LICENSE'
 	'libqt5im-nimf.so'
-	'https://github.com/Riey/kime/releases/download/v2.5.5/libkime-qt-5.11.3.so'
 )
 url='https://www.hancom.com/'
 license=('custom:hoffice')
@@ -25,7 +24,6 @@ sha256sums=(
 	'1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730'
 	'09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
 	'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c'
-	'3a1e55170e350ab23907fd5e98edd3b46f1872c6546a29d186238ff22354bbae'
 )
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
@@ -48,6 +46,8 @@ post_remove() {
   update-desktop-database -q
 }
 package() {
+    cd ${srcdir}/..
+    curl -fLO https://github.com/Riey/kime/releases/download/v2.5.5/libkime-qt-5.11.3.so
 	msg2 "Extracting package binaries(data.tar.xz)..."
 	bsdtar -xf ${srcdir}/data.tar.xz -C "${pkgdir}/"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/hoffice/LICENSE" ${srcdir}/LICENSE
