@@ -10,7 +10,7 @@ pkgname='cnrdrvcups-lb'
 _pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
 
 pkgver="${_pkgver}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -19,7 +19,8 @@ license=('GPL2' 'MIT' 'custom')
 # parts of the code are GPL or MIT licensed, some parts have a custom license
 makedepends=('jbigkit' 'gzip' 'gtk2')
 depends=('gcc-libs' 'libxml2' 'libglade')
-optdepends=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-SENSYS LBP devices'
+optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
+                       'llibjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
                         'gtk2: for cnsetuputil2')
 
 
@@ -111,7 +112,8 @@ prepare() {
 _setvars() {
     # variables used by the (generated) make.Arch &  make.install.Arch files
     # relative paths start at ${srcdir}/${_srcdir} 
-  
+    # _libsarch is architecture dependent
+
     _vars=(
         _builddir="${srcdir}/${_srcdir}"
         common_dir="${_common_dir}"
@@ -120,7 +122,7 @@ _setvars() {
         RPM_BUILD_DIR="${srcdir}/${_srcdir}"
         _prefix='/usr'
         _machine_type="MACHINETYPE="$CARCH
-        _cflags="CFLAGS=-march=x86-64 -O2 -pipe -fno-plt"
+        _cflags="CFLAGS=""$CFLAGS"
         _libdir='/usr/lib'
         _bindir='/usr/bin'
         locallibs='/usr/lib/'
@@ -130,11 +132,6 @@ _setvars() {
         _libsarch='libs64/intel'
         nobuild=0
   )
-
-# -fcommon is needed to compile succesfully with gcc10 , see https://gcc.gnu.org/gcc-10/porting_to.html
-# -O2 -pipe -fno-plt are taken from makepkg.conf default for archlinux
-# _libsarch is architecture dependent
-
 }
 
 build() {
