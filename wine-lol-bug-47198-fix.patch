@@ -1,11 +1,12 @@
 diff --git a/dlls/ntdll/thread.c b/dlls/ntdll/thread.c
-index c5b2008e44..96ca266921 100644
+index 97626cec929..9db4619da69 100644
 --- a/dlls/ntdll/thread.c
 +++ b/dlls/ntdll/thread.c
-@@ -268,6 +268,77 @@ static void set_process_name( int argc, char *argv[] )
+@@ -348,6 +348,78 @@ HANDLE user_shared_data_init_done(void)
+     return section;
  }
- 
- 
+
++
 +#ifdef __i386__
 +#include <asm/ldt.h>
 +#include <linux/audit.h>
@@ -80,14 +81,14 @@ index c5b2008e44..96ca266921 100644
  /***********************************************************************
   *           thread_init
   *
-@@ -370,6 +441,10 @@ TEB *thread_init(void)
-     __wine_user_shared_data();
+@@ -432,6 +504,11 @@ TEB *thread_init(void)
+     unix_funcs->dbg_init();
+     unix_funcs->get_paths( &build_dir, &data_dir, &config_dir );
      fill_cpu_info();
- 
++
 +#ifdef __i386__
 +   seccomp_init();
 +#endif
 +
      return teb;
  }
- 
