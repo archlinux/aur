@@ -1,5 +1,5 @@
 pkgbase = ybacklight
-	pkgdesc = an xbacklight compatible replacement using sysfs
+	pkgdesc = an xbacklight compatable replacement using sysfs
 	pkgver = r9.53bf1f7
 	pkgrel = 1
 	url = https://github.com/yath/ybacklight
