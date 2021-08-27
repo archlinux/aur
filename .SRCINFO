@@ -1,0 +1,20 @@
+pkgbase = taler-twister
+	pkgdesc = Fault injector for HTTP traffic
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://taler.net/
+	arch = i686
+	arch = x86_64
+	groups = taler
+	license = AGPL
+	depends = curl
+	depends = gnunet
+	conflicts = taler-twister-git
+	conflicts = taler-twister-bin
+	source = http://ftp.gnu.org/gnu/taler/taler-twister-0.8.2.tar.gz
+	source = http://ftp.gnu.org/gnu/taler/taler-twister-0.8.2.tar.gz.sig
+	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
+	sha256sums = 065c3564029ac6e8e16be5676bb7b69c4ad8efd65c491acefaa22834b6a0f207
+	sha256sums = SKIP
+
+pkgname = taler-twister
