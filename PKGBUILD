@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.13.12.zen1
+pkgver=5.13.13.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with patches for Zephyrus G14'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,14 +18,15 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/4cf5eb877883568e02c4fd4a8ec00702b4aa6755/trunk/config"
+  "config-$pkgver::https://github.com/archlinux/svntogit-packages/raw/795a1fd364a702928d0d956550c082fd6e8a2b50/trunk/config"
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.13.patch"
 
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/c858e6a818df17cfe6c6e3a6c1859bb6f0577f94/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/c858e6a818df17cfe6c6e3a6c1859bb6f0577f94/0001-asus-wmi-Add-support-for-platform_profile.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/c858e6a818df17cfe6c6e3a6c1859bb6f0577f94/0002-asus-wmi-Add-dgpu-disable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/c858e6a818df17cfe6c6e3a6c1859bb6f0577f94/0003-asus-wmi-Add-egpu-enable-method.patch"
-  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/c858e6a818df17cfe6c6e3a6c1859bb6f0577f94/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-panel-overdrive-functionality.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-platform_profile.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0001-asus-wmi-Add-support-for-custom-fan-curves.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0002-asus-wmi-Add-dgpu-disable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0003-asus-wmi-Add-egpu-enable-method.patch"
+  "https://gitlab.com/asus-linux/fedora-kernel/-/raw/227368d5645b139cfb00ac999a8d0a2b18638edb/0004-HID-asus-Remove-check-for-same-LED-brightness-on-set.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,10 +35,11 @@ validpgpkeys=(
   'C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D'  # Steven Barrett <steven@liquorix.net>
 )
 sha256sums=('SKIP'
-            '4a1b95c736dddd069f1a1d8397ba2fdf573cab3fa164fb5146982ee7aa24511e'
+            'a02dd97aa3ec17ab38c4698f7ca6596da5ef0410e2da3577afded678911ea880'
             'd38e2ee1f43bd6ca18845c80f5e68c0e597db01780004ff47607dd605e9aa086'
             'b398326e3177b65ff47c78a787e3a54794a83243db640a322f8f3edf51780582'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
+            '235cd11e8cad02ca19d3bca4b6a112d878110c3f66e24437810c11d3fd2f0b8d'
             'f11b31d5ffa04a846c2d8f13890f41e99941279b06b3ec3a169d82cb795502a9'
             '859bfbfee7731c8dd3bded9247d44fd57d924e6f5f518bf8467772e8e44fa03b'
             '0f35ea4573333c1bb44680de7b1ae5ba6dc98f5151d5686560bccfbcfd1e8541')
