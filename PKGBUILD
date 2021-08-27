@@ -1,8 +1,8 @@
 # Maintainer: Fanch
 # Co-Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=x-tile-git
-pkgver=3.3.r1.gfd9e917
-pkgrel=2
+pkgver=3.3.r4.g76faafc
+pkgrel=1
 pkgdesc="Allows you to select a number of windows and tile them in different ways"
 arch=('any')
 url="https://www.giuspen.com/x-tile"
@@ -10,7 +10,8 @@ license=('GPL2')
 depends=('gtk3' 'python-gobject')
 makedepends=('git')
 checkdepends=('desktop-file-utils' 'appstream-glib')
-optdepends=('libappindicator-gtk3: Tray icon support')
+optdepends=('libappindicator-gtk3: AppIndicator3 support'
+            'libayatana-appindicator: AyatanaAppIndicator3 support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/giuspen/x-tile.git'
