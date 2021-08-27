@@ -1,7 +1,7 @@
 # Maintainer: Opencreek Technogoly UG <hannes@opencreek.tech>
 pkgname=creekey-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
