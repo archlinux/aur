@@ -1,0 +1,13 @@
+pkgbase = python-krylov
+	pkgdesc = Krylov subspace methods for Python
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/nschloe/krylov
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-scipy
+	source = https://github.com/nschloe/krylov/archive/v0.0.3.tar.gz
+	sha512sums = 4f82df8f9e3c66505cb4fdc9c3e5ae97da4d07cb62f734bda1a7d4f84efecf6a32e69fd3c2d6b056c6889b371b067cac159d4d2ec6138c706b9d49d6cd2f3202
+
+pkgname = python-krylov
