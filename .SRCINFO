@@ -1,6 +1,6 @@
 pkgbase = etherlab-ethercat
 	pkgver = 1.5.r209
-	pkgrel = 1
+	pkgrel = 2
 	url = https://etherlab.org/en/ethercat/
 	arch = i686
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = etherlab-ethercat
 	makedepends = linux-headers
 	source = https://gitlab.com/etherlab.org/ethercat/-/archive/b68abbfb04f4e66e89d6e57af18166bd523cdcec/ethercat-b68abbfb04f4e66e89d6e57af18166bd523cdcec.tar.bz2
 	source = 99-EtherCAT.rules
-	md5sums = 3ea4816d2fdbb54453595dfa34bd65ab
-	md5sums = bd1c6d039d8fd947a727c8db0548cee9
+	sha512sums = 88dabc2018329a4da59906c82479fbd1bf63ab15fbc891a8f10c8b9fec0f6e3fda656465f83e3914e8955a1104df5a5be81143d162f84e9cd7df4526771b20d9
+	sha512sums = b3baca5c546af8d57fe59e30d3acd63310a128fc938436b4a151e12fe2fde75029cf0f47b0ac2edc676e762a4cf7ac308b8229594a5d2c8301a02c0e8f623569
 
 pkgname = etherlab-ethercat
 	pkgdesc = Kernel modules for IgH EtherCAT(R) Master component
