@@ -2,13 +2,13 @@
 
 pkgname=animdl-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.11.r6.aee5b25
+pkgver=1.3.12.r2.f5dfb84
 pkgrel=1
 pkgdesc="A highly efficient anime downloader and streamer"
 arch=('any')
 url="https://github.com/justfoolingaround/animdl"
 license=('custom:Unlicensed')
-depends=('python' 'python-click' 'python-httpx' 'python-lxml' 'python-yarl' 'python-tqdm' 'python-pycryptodomex')
+depends=('python' 'python-click' 'python-cssselect' 'python-httpx' 'python-lxml' 'python-pycryptodomex' 'python-tqdm' 'python-yarl')
 makedepends=('git')
 optdepends=(
 	'mpv: stream anime'
@@ -25,7 +25,6 @@ pkgver() {
 		"$(grep -o '[0-9.]\+' __version__.py)" \
 		"$(git log --oneline HEAD ^$(git rev-list -1 HEAD __version__.py) | wc -l)" \
 		"$(git rev-parse --short HEAD)"
-	# All this for a pkgver... :sigh:
 }
 
 package() {
