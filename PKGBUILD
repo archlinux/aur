@@ -7,7 +7,7 @@
 pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
 pkgdesc="A featureful, general-purpose sound server"
 pkgver=14.99.2+14+gd6dc500b7
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
@@ -144,7 +144,7 @@ package_libpulse-airplay() {
   pkgdesc="$pkgdesc (client library)"
   depends=(dbus libasyncns libcap libxcb libsm libsndfile systemd)
   optdepends=('glib2: mainloop integration')
-  provides=(libpulse{,-simple,-mainloop-glib}.so)
+  provides+=(libpulse{,-simple,-mainloop-glib}.so)
   license=(LGPL)
   backup=(etc/pulse/client.conf)
 

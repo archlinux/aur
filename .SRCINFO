@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-airplay
 	pkgdesc = A featureful, general-purpose sound server
 	pkgver = 14.99.2+14+gd6dc500b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = x86_64
 	license = GPL
@@ -39,7 +39,7 @@ pkgbase = pulseaudio-airplay
 
 pkgname = pulseaudio-airplay
 	install = pulseaudio.install
-	depends = libpulse-airplay=14.99.2+14+gd6dc500b7-1
+	depends = libpulse-airplay=14.99.2+14+gd6dc500b7-2
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp
@@ -74,6 +74,7 @@ pkgname = libpulse-airplay
 	depends = libsndfile
 	depends = systemd
 	optdepends = glib2: mainloop integration
+	provides = libpulse
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
@@ -82,7 +83,7 @@ pkgname = libpulse-airplay
 
 pkgname = pulseaudio-airplay-zeroconf
 	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
 	depends = avahi
 	depends = openssl
 	provides = pulseaudio-zeroconf
@@ -90,21 +91,21 @@ pkgname = pulseaudio-airplay-zeroconf
 
 pkgname = pulseaudio-airplay-lirc
 	pkgdesc = IR (lirc) support for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
 	depends = lirc
 	provides = pulseaudio-lirc
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-airplay-jack
 	pkgdesc = Jack support for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
 	depends = jack
 	provides = pulseaudio-jack
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-airplay-bluetooth
 	pkgdesc = Bluetooth support for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
@@ -113,7 +114,7 @@ pkgname = pulseaudio-airplay-bluetooth
 
 pkgname = pulseaudio-airplay-equalizer
 	pkgdesc = Equalizer for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = python-sip
@@ -123,4 +124,4 @@ pkgname = pulseaudio-airplay-equalizer
 
 pkgname = pulseaudio-airplay-rtp
 	pkgdesc = RTP and RAOP support for PulseAudio
-	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-1
+	depends = pulseaudio-airplay=14.99.2+14+gd6dc500b7-2
