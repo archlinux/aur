@@ -1,18 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=canu-bin
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="A fork of the Celera Assembler designed for high-noise single-molecule sequencing"
 arch=('x86_64')
 url="https://canu.readthedocs.io/"
 license=('custom')
 depends=('glibc' 'java-runtime' 'perl')
+optdepends=('gnuplot')
 provides=('canu')
 conflicts=('canu')
 options=('staticlibs')
 source_x86_64=("https://github.com/marbl/canu/releases/download/v$pkgver/canu-$pkgver.Linux-amd64.tar.xz")
-sha256sums_x86_64=('b6aa11c00b8b4114d32dd12107b0134c5f01cbc3c7751b07e603bb51f23d6766')
+sha256sums_x86_64=('0e98d10d8216e99091d999d0b4c6b11a045515932e6cc48fcb2c8435aa688bdf')
 
 
 package() {
