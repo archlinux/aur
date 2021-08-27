@@ -4,7 +4,7 @@
 # - jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=r-mkl
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
@@ -51,7 +51,7 @@ source=("http://cran.r-project.org/src/base/R-${pkgver%%.*}/R-${pkgver}.tar.gz"
         'R.conf'
         'mklvars.sh')
 
-sha1sums=('c84697f2a0a5b89ff75dfe10fcb87656cc68144c'
+sha1sums=('a7c40a9bd7cb050a4fad6b7dba53e991e37e0fd1'
           'dd214eee232b7aced7366722ad416b6b39be8e1b'
           'af80774f5a8d0e669e8ff90662638a0f4e1105d7'
           '43668da6cfd1b4455a99f23e79e2059294dddac9'
@@ -90,6 +90,10 @@ build() {
   _gfortran_lib=mkl_gf_lp64
 
   # Set up the environment for MKL
+  if [ -z ${MKLROOT+x} ]; then
+    echo -e "\nError: MKLROOT is unset\n"
+    exit
+  fi
   if [ -f /opt/intel/mkl/bin/mklvars.sh ]; then
     echo "Sourcing /opt/intel/mkl/bin/mklvars.sh"
     source /opt/intel/mkl/bin/mklvars.sh ${_intel_arch}
