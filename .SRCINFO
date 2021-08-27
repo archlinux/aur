@@ -1,6 +1,6 @@
 pkgbase = canu-git
 	pkgdesc = A fork of the Celera Assembler designed for high-noise single-molecule sequencing
-	pkgver = r10255.g6d274143e
+	pkgver = r10451.g6c4193847
 	pkgrel = 1
 	url = https://canu.readthedocs.io/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = canu-git
 	depends = glibc
 	depends = java-runtime
 	depends = perl
+	optdepends = gnuplot
 	provides = canu
 	conflicts = canu
 	options = staticlibs
@@ -17,4 +18,3 @@ pkgbase = canu-git
 	sha256sums = SKIP
 
 pkgname = canu-git
-
