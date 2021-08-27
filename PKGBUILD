@@ -1,15 +1,16 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Nick Johnson <nick@yonson.dev>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=alps-mail-git
 _pkgname=alps
 pkgver=r249.62910a9
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A simple Webmail in Go"
-makedepends=('go')
+makedepends=('git' 'go')
 arch=('x86_64')
-url="https://git.sr.ht/~emersion/alps"
-source=("$pkgname::git+https://git.sr.ht/~emersion/alps")
+url="https://git.sr.ht/~migadu/alps"
+source=("$pkgname::git+https://git.sr.ht/~migadu/alps")
 sha256sums=('SKIP')
 
 pkgver() {

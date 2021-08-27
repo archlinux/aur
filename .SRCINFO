@@ -1,13 +1,13 @@
 pkgbase = alps-mail-git
 	pkgdesc = A simple Webmail in Go
 	pkgver = r249.62910a9
-	pkgrel = 1
-	url = https://git.sr.ht/~emersion/alps
+	pkgrel = 2
+	url = https://git.sr.ht/~migadu/alps
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
-	source = alps-mail-git::git+https://git.sr.ht/~emersion/alps
+	source = alps-mail-git::git+https://git.sr.ht/~migadu/alps
 	sha256sums = SKIP
 
 pkgname = alps-mail-git
-
