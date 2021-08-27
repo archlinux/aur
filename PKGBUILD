@@ -1,7 +1,7 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=("gcc" "pandoc")
 optdepends=("viu: Display distro logos as images"
 		"lshw: Better GPU detection")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheDarkBug/uwufetch/archive/$pkgver.tar.gz")
-sha256sums=("1a77da7f2af313f0d87bd8ce958fd41767e6ed6126e487ba4e55cdb05c70e2fa")
+sha256sums=("3cdbfc12dc08e6b36b1844644c72e78a95d331ec2f50dfc7b00c7b6a73803034")
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
