@@ -4,7 +4,7 @@
 
 pkgname=quakespasm-git
 _pkgname=quakespasm
-pkgver=0.93.2.r53.gbd8615c
+pkgver=0.93.2.r64.g9f8b569
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music. - Development version"
 arch=('i686' 'x86_64')
