@@ -8,7 +8,7 @@ DLAGENTS=("https::/usr/bin/curl -o %o -H ${_referer// /\\ } -H ${_host// /\\} %u
 
 pkgname='hoffice'
 pkgver=11.20.0.1520
-pkgrel=1
+pkgrel=2
 pkgdesc='Office document editor for Linux. Hancom Office Editor is an application to allow you to edit office documents that is developed and distributed by Hancom Inc.'
 arch=('x86_64')
 source=(
@@ -27,13 +27,6 @@ sha256sums=(
 post_install() {
   xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 
-  if [[ ! -d "$HNCCONTEXT" ]]; then
-    mkdir -p "$HNCCONTEXT"
-  fi
-
-  if [[ -f "./$NIMFLIB" ]]; then
-    cp -f "./$NIMFLIB" "$HNCCONTEXT/$NIMFLIB"
-  fi
 
   update-desktop-database -q
 }
@@ -55,5 +48,8 @@ package() {
 	msg2 "Extracting package binaries(data.tar.xz)..."
 	bsdtar -xf ${srcdir}/data.tar.xz -C "${pkgdir}/"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/hoffice/LICENSE" ${srcdir}/LICENSE
-	msg2 "The error messages are from UTF-8 limitations. Please ignore it, as it does no harm."
+	if [[ -f "${srcdir}/../$NIMFLIB" ]]; then
+    cp -f "${srcdir}/../$NIMFLIB" "${pkgdir}/$HNCCONTEXT/$NIMFLIB"
+   fi
+	msg "The error messages are from UTF-8 limitations. Please ignore it, as it does no harm."
 }
