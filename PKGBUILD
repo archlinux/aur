@@ -1,4 +1,4 @@
-# Maintainer: grufo <madmurphy333@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='texi2mdoc'
 pkgver='0.1.2'
