@@ -1,7 +1,7 @@
 pkgbase = hotwire-rs
 	pkgdesc = A GTK application that leverages Wireshark and tshark to capture traffic for analysis
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emmanueltouzery/hotwire
 	arch = x86_64
 	license = MIT
