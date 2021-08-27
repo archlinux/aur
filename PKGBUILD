@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=pizarra-git
-pkgver=1.3.1.r1.2e5da7d
+pkgver=1.3.1.r18.9b63476
 pkgrel=1
 pkgdesc="Simple Gtk drawing application"
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ package() {
 	cd "$pkgname"
 	install -Dm755 target/release/pizarra "$pkgdir"/usr/bin/pizarra
 	install -Dm644 res/pizarra.desktop "$pkgdir"/usr/share/applications/pizarra.desktop
-	install -Dm644 res/icons/scalable/apps/tk.categulario.pizarra.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/pizarra.svg
+	install -Dm644 res/icons/tk.categulario.pizarra.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/pizarra.svg
 }
