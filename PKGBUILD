@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.23
+pkgver=2.2.24
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('0ed75a0d4438ef5cc07cccbccb79a60e6982f615981a58a2dde5082773203575'
+sha256sums=('ed47d1dde360805bf97b5269fcb361017e20c975a54c904ebbb9de47a1a58556'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
@@ -48,9 +48,9 @@ prepare() {
         -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
         -e 's|^aiofiles==0\.7\.0$|aiofiles>=0.7.0|' \
         -e 's|^Jinja2==3\.0\.1$|Jinja2>=3.0.1|' \
-        -e 's|^sentry-sdk==1\.1\.0$|sentry-sdk>=1.1.0|' \
+        -e 's|^sentry-sdk==1\.3\.1$|sentry-sdk>=1.3.1|' \
         -e 's|^psutil==5\.8\.0$|psutil>=5.8.0|' \
-        -e 's|^distro==1\.5\.0$|distro>=1.5.0|' \
+        -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
         -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         requirements.txt
 }
