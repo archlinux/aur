@@ -8,7 +8,7 @@ pkgname=(
 )
 _pkgname=SQLiteStudio
 pkgver=3.3.3
-pkgrel=2
+pkgrel=3
 _pkgver=3
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
@@ -18,7 +18,7 @@ license=('GPL3')
 depends=(
   # termcap
   # sqlite2
-  # tcl
+  tcl
   qt5-script
 )
 makedepends=(
