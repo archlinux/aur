@@ -1,0 +1,31 @@
+pkgbase = red-nightly-bin
+	pkgdesc = Red is a next-generation programming language strongly inspired by Rebol
+	pkgver = 0.6.4.nightly
+	pkgrel = 1
+	url = https://www.red-lang.org
+	arch = x86_64
+	license = custom:BSD-3-Clause
+	license = custom:BSL-1.0
+	makedepends = wget
+	depends = lib32-curl
+	depends = lib32-gtk3
+	depends = lib32-gdk-pixbuf2
+	optdepends = openssh: for X11 forwarding on headless machines
+	optdepends = xorg-xhost: for X11 forwarding on headless machines
+	optdepends = xorg-xauth: for X11 forwarding on headless machines
+	provides = red
+	provides = red-nightly
+	conflicts = red
+	conflicts = red-nightly
+	conflicts = red-bin
+	conflicts = ed
+	options = !strip
+	source = https://static.red-lang.org/dl/auto/linux/red-latest
+	source = https://raw.githubusercontent.com/red/red/master/BSL-License.txt
+	source = https://raw.githubusercontent.com/red/red/master/BSD-3-License.txt
+	md5sums = SKIP
+	md5sums = e4224ccaecb14d942c71d31bef20d78c
+	md5sums = 8a643e34f08f7b9c9b480ad58fb4db3d
+
+
+pkgname = red-nightly-bin
