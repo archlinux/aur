@@ -8,8 +8,9 @@ pkgbase = creekey-git
 	arch = armv6h
 	arch = armv7h
 	license = UNLICENSED
+	makedepends = git
 	makedepends = cargo
-	source = git+https://github.com/opencreek/creekey-cli.git
+	source = git+https://github.com/opencreek/creekey-cli.git#branch=main
 	sha256sums = SKIP
 
 pkgname = creekey-git

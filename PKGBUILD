@@ -2,11 +2,11 @@
 pkgname=creekey-git
 pkgver=0.1.0
 pkgrel=1
-makedepends=('cargo')
+makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
 # source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-source=("git+https://github.com/opencreek/creekey-cli.git")
+source=("git+https://github.com/opencreek/creekey-cli.git#branch=main")
 
 url="https://creekey.io"
 license=('UNLICENSED')
