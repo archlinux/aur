@@ -6,7 +6,7 @@ pkgver=1.1.2
 pkgrel=1
 arch=('any')
 pkgdesc="Assinador fornecido pela Justiça do Trabalho para realizar assinaturas digitais no PJe"
-url="https://pje.csjt.jus.br/manual/index.php/Shod%C5%8D"
+url="https://pje.csjt.jus.br/manual/index.php/Shodo"
 license=('custom')
 makedepends=('imagemagick')
 depends=('java-runtime=8')
