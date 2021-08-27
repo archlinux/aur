@@ -1,12 +1,19 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = sysit-bin
+	pkgdesc = A Clojure babashka for the grey areas of Bash.
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/crodjer/sysit
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	arch = aarch64
+	arch = armv7
+	license = GPL-3.0-or-later
+	provides = sysit
+	conflicts = sysit
+	source_x86_64 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 835f74d8d5802f73b6dededf75a52cc3a9fed665b7dfece10b46e7bf0ad7795c
+	source_aarch64 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9b17e7146fcda389e4422844d77bbb01dc3540ad0fa8d99ece682ed74c6c6b2b
+	source_armv7 = https://github.com/crodjer/sysit/releases/download/v0.6.0/sysit-v0.6.0-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7 = 2c69afb59f0362587716652510250c294e361a9d4b09db0cb203ff0cd79f8fc2
 
-pkgname = yarxi
-
+pkgname = sysit-bin
