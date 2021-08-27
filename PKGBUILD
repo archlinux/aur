@@ -3,13 +3,14 @@
 
 _gitname=fs-uae
 pkgname=fs-uae-git
-pkgver=r2694.3fe323fa
+pkgver=r2703.80f74628
 pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (GIT version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
 license=("GPL2")
-depends=('sdl2_ttf' 'portmidi' 'libmpeg2' 'hicolor-icon-theme')
+depends=('sdl2_ttf' 'portmidi' 'libmpeg2' 'hicolor-icon-theme' 'openal' 'libxi')
+makedepends=('zip')
 source=("git+https://github.com/FrodeSolheim/fs-uae.git")
 provides=("fs-uae" "fs-uae-devel")
 conflicts=("fs-uae" "fs-uae-devel")
