@@ -2,8 +2,8 @@
 
 pkgname=projen
 pkgver=0.27.35
-pkgrel=1
-pkgdesc="Define and maintain complex project configuration through code"
+pkgrel=2
+pkgdesc="Define and maintain complex project configuration through code. projen synthesizes project configuration files from a well-typed definition written in JavaScript."
 arch=('any')
 url="https://github.com/projen/projen/"
 license=('Apache')
