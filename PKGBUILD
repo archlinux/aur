@@ -1,6 +1,6 @@
 # Maintainer : djnk8 <djnk8@mailinator.com>
 set -e
-HNCCONTEXT=/opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
+HNCCONTEXT=opt/hnc/hoffice11/Bin/qt/plugins/platforminputcontexts
 NIMFLIB=libqt5im-nimf.so
 _host='Host: cdn.hancom.com'
 _referer='Referer: https://www.hancom.com/cs_center'
@@ -20,6 +20,7 @@ url='https://www.hancom.com/'
 license=('custom:hoffice')
 depends=('cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'glu' 'harfbuzz' 'harfbuzz-icu' 'libcups' 'libcurl-gnutls' 'libxcb' 'qt5-base' 'qt5-x11extras' 'zlib')
 sha256sums=(
+
 	'1ecb2f82e915b49706d1f5f6d206f8bd4a9384fda2bd56798c94046865fe5730'
 	'09b74399a45cde2b28e672784dbd1eb6397454a025e05a51fb3367eadb834583'
 	'd246c02a20a1e4ea123f9c2275dfc4a2ea091a65032ddbbe8a59bfc71418f60c'
