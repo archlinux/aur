@@ -1,0 +1,15 @@
+pkgbase = creekey-git
+	pkgdesc = Story your Private Keys on your Phone!
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://creekey.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = UNLICENSED
+	makedepends = cargo
+	source = https://github.com/opencreek/creekey-cli
+	sha256sums = 9741628a1b164e9ec16170ae8b4f43b3e7473158b3bf12e49472c907d35d4731
+
+pkgname = creekey-git
