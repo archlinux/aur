@@ -1,3 +1,20 @@
+2021-08-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.2.4-1:
+    [!] Fixed ASF incorrectly removing IPCPassword when updating global config as part of POST /Api/ASF ASF API request. We strongly recommend everybody using IPC with remote access to read our security advisory and verify their IPCPassword (#GHSA-wxx4-66c2-vj2v).
+    ASF will no longer allow other machines than localhost to access ASF API in IPC interface without IPCPassword set by default, as an extra security measure. You can either set up IPCPassword or override that in IPC.config if absolutely required (#2371).
+    ASF plugins can now re-use existing ASF API controllers (#2343).
+    Greatly improved logic responsible for fetching owned games, e.g. as part of owns command. Third-party plugins using previous AWH endpoints are advised to update, as we intend to remove the obsolete endpoints in the next version (#2370).
+    Further improved our Steam message splitting logic to attempt splitting with more sense if possible (#2348).
+    Added SRI and caching support to our IPC interface.
+    Our swagger.json schema now includes more information about various limits on bot and global config properties, for optional interpretation by third-parties.
+    Fixed GET /Api/NLog ASF API endpoint closing the websocket incorrectly upon Close opcode of 0x8.
+    Fixed POST /Api/ASF/Update unnecessarily taking 15 seconds to complete when user was running newer version than latest available on his update channel (#2344).
+    Fixed reset command not returning back to GamesPlayedWhileIdle, if specified.
+    Fixed ICrossProcessSemaphoreProvider ASF plugins not initialized correctly (#2342).
+    Fixed unwanted automatic reload of custom IPC.config when using --no-config-watch.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-07-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.1.1-1:
     Added Steam Summer Sale 2021 with ID of 1658760 to SalesBlacklist.
