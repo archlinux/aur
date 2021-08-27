@@ -1,6 +1,6 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2021.07.27.r42.g8651607
+pkgver=2021.07.27.r45.g8750654
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
@@ -22,12 +22,12 @@ source=(git+$url.git)
 b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd WhiteSur-gtk-theme
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd WhiteSur-gtk-theme
   install -d "$pkgdir/usr/share/themes"
 
   # See for more customization options:
