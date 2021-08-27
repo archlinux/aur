@@ -2,7 +2,7 @@
 # Previous Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=rtlsdr-airband-git
-pkgver=r526.a472673
+pkgver=3.2.1.r526.a472673
 pkgrel=1
 pkgdesc="RTLSDR AM demodulator, support multiple channels per dongle"
 arch=('i686' 'x86_64')
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   
+    echo "$(git describe| sed 's,-,\n,g' | head -1 | sed 's,v,,g')"'.'$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
 }
 
 prepare() {
