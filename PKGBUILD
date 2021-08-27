@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=pycppad
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CppAD python bindings"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ build() {
     cd "$pkgname-$pkgver"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib . \
-        -DBUILD_CODEGEN_BINDINGS=ON
+        -DBUILD_WITH_CPPAD_CODEGEN_BINDINGS=ON
     make
 }
 
