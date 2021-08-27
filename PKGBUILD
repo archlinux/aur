@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=gokart
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Static analysis tool for Go"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/praetorian-inc/gokart"
 license=('Apache')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('ad54d8693e95c7ae8c67ca5ac534cd1a13d3cc4663a84904ebeef61524091e2b95424d3088be4d2ac58475988a88c96c6f76d9efa0a4635e0357e97264534e4d')
+b2sums=('9e99a459f8ad75fcb432e3e254f949d1d8c96bca469b390172facea2e6357c61ce2e81538093a5543f80d26187f87b2fdc4f91801181d72df417fc8830629ac9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,7 +30,7 @@ build() {
   go build -v \
     -trimpath \
     -buildmode=pie \
-    -mod=readonly \
+    -mod=vendor \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
     -o build .
