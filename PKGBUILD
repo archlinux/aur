@@ -1,14 +1,14 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgdesc="Terminfo files for the foot terminal emulator"
 pkgname=foot-terminfo
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 arch=('any')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('ncurses')
 source=(foot-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('50cf5b9f3cc1ebaafa62255eea22395e8267cce21e119bc6f7ecacf11f15dada')
+sha256sums=('ddc3f90185ae75badcb2d6abe772d54fd6defebf1ed4111861a9c4afa1c73a4d')
 
 build() {
   cd foot
@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd foot
-  install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
-  cp build/f/* "${pkgdir}/usr/share/terminfo/f/"
+  install -dm 755 "${pkgdir}/usr/share/foot/terminfo/f/"
+  cp build/f/* "${pkgdir}/usr/share/foot/terminfo/f/"
 }
