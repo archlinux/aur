@@ -3,7 +3,7 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook-uefi
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut unified kernel images for systemd-boot"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
