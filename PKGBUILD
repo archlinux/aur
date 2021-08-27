@@ -12,21 +12,25 @@ url="https://creekey.io"
 license=('UNLICENSED')
 
 prepare() {
+    cd "creekey-cli"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+    cd "creekey-cli"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check () {
+    cd "creekey-cli"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
+    cd "creekey-cli"
     find target/release \
         -maxdepth 1 \
         -executable \
