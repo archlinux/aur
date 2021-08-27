@@ -1,12 +1,12 @@
 # Maintainer: Björn Feber <bfeber@protonmail.com>
 pkgname=ross-applicationlauncher-git
-pkgver=r35.172eee2
+pkgver=r51.8ed4191
 pkgrel=1
 pkgdesc="Application Launcher for the ROSS Shell"
 arch=('x86_64')
 url="https://github.com/rosssoftware/Shell/tree/master/ApplicationLauncher"
 license=('GPL3')
-depends=('libqtxdg' 'qt5-x11extras' 'libx11')
+depends=('libqtxdg')
 optdepends=()
 makedepends=('cmake' 'qt5-tools' 'git')
 provides=("${pkgname%-git}")
