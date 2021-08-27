@@ -1,0 +1,14 @@
+pkgbase = texi2mdoc
+	pkgdesc = Convert Texinfo data to mdoc input
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://mandoc.bsd.lv/texi2mdoc/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = texi2mdoc-git
+	conflicts = texi2mdoc-bin
+	source = https://mandoc.bsd.lv/texi2mdoc/snapshots/texi2mdoc-0.1.2.tgz
+	sha256sums = 7a45fd87c27cc8970a18db9ddddb2f09f18b8dd5152bf0ca377c3a5e7d304bfe
+
+pkgname = texi2mdoc
