@@ -9,7 +9,7 @@
 
 _pkgname=xfce4-sensors-plugin
 pkgname=xfce4-sensors-plugin-nvidia
-pkgver=1.3.95
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia gpu support"
 arch=('i686' 'x86_64')
@@ -22,14 +22,8 @@ optdepends=('hddtemp: for monitoring the temperature of hard drives')
 conflicts=('xfce4-sensors-plugin')
 source=(
 	https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
-	nvidia.c.patch
 )
-sha256sums=('83c64ae4618dd592971cfa0bc285a9b47af801a3ed856835cdb2a4c533c7846c'
-            '5ed9142eb3b213f7b9b354ba3e967994a9046c78579256567ebda7e462237d8a')
-
-prepare() {
-  patch ./"$_pkgname-$pkgver"/lib/nvidia.c -i ./nvidia.c.patch
-}
+sha256sums=('37d0dc569e735e482a18545c24eb1ce0229d6910e3a4d4c1dee0680999234be2')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -40,6 +34,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib \
+    --enable-xnvctrl \
     --localstatedir=/var \
     --datadir=/usr/share \
     --datarootdir=/usr/share \
