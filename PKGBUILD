@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('f6ddfaf59f2c25f3401e1244c1e02733dc2079420d40452e5b2cbe45849c31d3')
 
 build() {
-  cmake -B build -S "$pkgname" \
+  cmake -B build -S "$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev
