@@ -8,6 +8,7 @@ pkgbase = taler-exchange
 	groups = taler
 	license = AGPL
 	makedepends = python-jinja
+	depends = python
 	depends = gnunet
 	depends = libmicrohttpd
 	depends = postgresql
