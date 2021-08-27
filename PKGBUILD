@@ -2,8 +2,8 @@
 
 pkgname=btrfs-snapshots-git
 pkgver=0.2.2.r2.7c16258
-pkgrel=1
-pkgdesc="Manage collections of btrfs snapshots"
+pkgrel=2
+pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
 url="https://gitlab.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
