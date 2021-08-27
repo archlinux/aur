@@ -1,17 +1,17 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_srctag=6.3-5
+_srctag=6.3-6c
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=6.1.2
-pkgrel=2
+_monover=6.3.0
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 url="https://github.com/ValveSoftware/Proton"
-arch=(x86_64)
-options=(staticlibs !lto)
+arch=(x86_64 x86_64_v3)
+options=(!staticlibs !lto)
 license=('custom')
 
 depends=(
@@ -29,6 +29,7 @@ depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
+  'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
   steam-native-runtime
@@ -59,7 +60,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sdl2                  lib32-sdl2
+  'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
   libcups               lib32-libcups
   rust                  lib32-rust-libs
   sane
@@ -91,7 +92,6 @@ optdepends=(
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sdl2                  lib32-sdl2
   sane
   libgphoto2
   gsm
@@ -105,8 +105,9 @@ makedepends=(${makedepends[@]} ${depends[@]})
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
+    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
@@ -147,7 +148,7 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton
-    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton; do
+    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton dxvk-nvapi; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -178,6 +179,13 @@ prepare() {
     popd
     popd
 
+    pushd dxvk-nvapi
+    for submodule in external/Vulkan-Headers; do
+        git submodule init "${submodule}"
+        git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
+        git submodule update "${submodule}"
+    done
+    popd
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -220,8 +228,8 @@ build() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx"
-    export CXXFLAGS+=" -mno-avx"
+    export CFLAGS+=" -mno-avx -mno-avx2"
+    export CXXFLAGS+=" -mno-avx -mno-avx2"
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
@@ -242,7 +250,7 @@ build() {
 
     export WINEESYNC=0
     export WINEFSYNC=0
-    SUBJOBS="${MAKEFLAGS/-j/}" \
+    SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
 }
 
@@ -295,9 +303,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182'
+            'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
             '812b2b73bc7b6a88de480f6410970c2454866bb123c3baefd990679c9dd3ef98'
             '8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'

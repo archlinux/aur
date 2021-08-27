@@ -1,10 +1,11 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
-	pkgver = 6.3.5
-	pkgrel = 2
+	pkgver = 6.3.6c
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
+	arch = x86_64_v3
 	license = custom
 	makedepends = autoconf
 	makedepends = ncurses
@@ -69,8 +70,8 @@ pkgbase = proton-native
 	makedepends = lib32-gst-plugins-base-libs
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-vulkan-icd-loader
-	makedepends = sdl2
-	makedepends = lib32-sdl2
+	makedepends = sdl2>=2.0.16
+	makedepends = lib32-sdl2>=2.0.16
 	makedepends = libcups
 	makedepends = lib32-libcups
 	makedepends = rust
@@ -109,6 +110,8 @@ pkgbase = proton-native
 	makedepends = lib32-gcc-libs
 	makedepends = libpcap
 	makedepends = lib32-libpcap
+	makedepends = sdl2>=2.0.16
+	makedepends = lib32-sdl2>=2.0.16
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
@@ -140,6 +143,8 @@ pkgbase = proton-native
 	depends = lib32-gcc-libs
 	depends = libpcap
 	depends = lib32-libpcap
+	depends = sdl2>=2.0.16
+	depends = lib32-sdl2>=2.0.16
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
@@ -183,8 +188,6 @@ pkgbase = proton-native
 	optdepends = lib32-gst-plugins-base-libs
 	optdepends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader
-	optdepends = sdl2
-	optdepends = lib32-sdl2
 	optdepends = sane
 	optdepends = libgphoto2
 	optdepends = gsm
@@ -194,13 +197,14 @@ pkgbase = proton-native
 	optdepends = dosbox
 	noextract = wine-gecko-2.47.2-x86.tar.xz
 	noextract = wine-gecko-2.47.2-x86_64.tar.xz
-	noextract = wine-mono-6.1.2-x86.tar.xz
-	options = staticlibs
+	noextract = wine-mono-6.3.0-x86.tar.xz
+	options = !staticlibs
 	options = !lto
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-6.3-5
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-6.3-6c
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
-	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
 	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
+	source = dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+	source = vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
 	source = OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
 	source = liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
@@ -214,7 +218,7 @@ pkgbase = proton-native
 	source = gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.tar.xz
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-6.1.2/wine-mono-6.1.2-x86.tar.xz
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-6.3.0/wine-mono-6.3.0-x86.tar.xz
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
 	source = proton-user_compat_data.patch
@@ -234,9 +238,10 @@ pkgbase = proton-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94
 	sha256sums = b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014
-	sha256sums = 463efcae9aec82e2ae51adbafe542f2a0674e1a1d0899d732077211f5c62d182
+	sha256sums = eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2
 	sha256sums = 812b2b73bc7b6a88de480f6410970c2454866bb123c3baefd990679c9dd3ef98
 	sha256sums = 8263a3ffb7f8e7a5d81bfbffe1843d6f84502d3443fe40f065bcae02b36ba954
 	sha256sums = 20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3
