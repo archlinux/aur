@@ -3,7 +3,7 @@ _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
 pkgver=0.7.5
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -24,7 +24,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
 }
 
 package() {
