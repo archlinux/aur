@@ -1,7 +1,7 @@
-From 1d3c12ff5e8198df944cb9698edffbaab592679e Mon Sep 17 00:00:00 2001
+From 87e93f22eb181ef34e5a655ccdb112152174b118 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
-Subject: [PATCH 28/33] Prevent qmake from messing static lib dependencies
+Subject: [PATCH 28/32] Prevent qmake from messing static lib dependencies
 
 In particular, it messes resolving cyclic dependency between
 static freetype2 and harfbuzz
@@ -41,5 +41,5 @@ index 03732df4a8..602f7609f5 100644
      int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 -- 
-2.32.0
+2.33.0
 
