@@ -2,7 +2,7 @@
 
 pkgname=python-sqlalchemy2-stubs
 _pkgname="${pkgname#python-}"
-pkgver=0.0.2a13
+pkgver=0.0.2a14
 pkgrel=1
 pkgdesc="PEP-484 typing stubs for SQLAlchemy 1.4 and SQLAlchemy 2.0"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-pip' 'python-typing_extensions')
 provides=('python-sqlalchemy-stubs')
 conflicts=('python-sqlalchemy-stubs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('978ba1fa6b9acf3ef62816a63e99b742261da0c302c504547c6137df8a961a59b55ddaaa26ce2a8fe6ae758ad5c8f3f81a2ede0111433060875d506d40e8dd51')
+b2sums=('90820897a6a3e612684e79185337cddffc4ff02a00c4d352318f5bae3046ecbb8fe8b1687dee5e0f0e6ae661e7c9e80951d87cff21f275c72858796310afa876')
 
 build() {
   cd "$_pkgname-$pkgver"
