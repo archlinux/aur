@@ -6,8 +6,8 @@
 pkgname='cnrdrvcups-lb'
 
 # The download link changes with every version, try to keep changes in one place
-# https://gdlp01.c-wss.com/gds/8/0100007658/20/linux-UFRII-drv-v530-uken-12.tar.gz
-_pkgver='5.30';  _dl='8/0100007658/20';_suffix='12'
+#https://gdlp01.c-wss.com/gds/8/0100007658/25/linux-UFRII-drv-v540-uken-08.tar.gz
+_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
 
 pkgver="${_pkgver}"
 pkgrel='1'
@@ -27,8 +27,8 @@ conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
 source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz")
-md5sums=('965e60cffa5f3e7872a344c9adbeca5b')
-sha512sums=('61f060a742c9e6cc7439f26fac63fbac33c96722ec80c604eca40716255920a65eab4cd6f592deee627a8c803776df2c0b8c3dbce9727e53862fa7551a172ebe')
+md5sums=('79d4f933795528dc217c344d5aff079d')
+sha512sums=('c488fbaee081b3cd601282e737af0ce1d141a9ae940daa2335ef4da833cdb9fbdda3cc378f4e49b26700b36911dc7b142ef0665e1cacef505f91a666736e62dc')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -192,7 +192,7 @@ package() {
     
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-uken/Documents"
-    install -Dpm644 "README-ufr2-5.3xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
+    install -Dpm644 "README-ufr2-5.4xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
     install -Dpm644 "UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
     install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
     popd
