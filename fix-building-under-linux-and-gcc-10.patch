@@ -1,0 +1,21 @@
+commit 7013522c51a6937433c8579170a1836efdb5033d
+Author: Irdis <algts@inbox.ru>
+Date:   Wed Apr 21 22:10:08 2021 +0300
+
+    Fix compiling under Linux and gcc 10.
+
+diff --git a/Horde3D/Source/Shared/utPlatform.h b/Horde3D/Source/Shared/utPlatform.h
+index 3dc852d..a54d9fc 100644
+--- a/Horde3D/Source/Shared/utPlatform.h
++++ b/Horde3D/Source/Shared/utPlatform.h
+@@ -184,7 +184,10 @@ namespace StaticAssert
+ // Locale independent version of atof (taking always dot as decimal separator)
+ #if defined( PLATFORM_MAC ) || defined ( PLATFORM_IOS )
+ 	#include <xlocale.h>
++#elif defined( PLATFORM_LINUX )
++    #include <cstdlib>
+ #endif
++
+ inline float toFloat(const char* str)
+ {
+ #ifdef PLATFORM_WIN
