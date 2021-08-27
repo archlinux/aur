@@ -4,9 +4,9 @@ _gitname=wpgtk
 pkgname="${_gitname}-git"
 _gitbranch=master
 _gitauthor=deviantfero # deviantfero
-pkgver=r841.70226b4
+pkgver=r871.4854f42
 pkgrel=1
-pkgdesc="A gui wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme"
+pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPLv2')
 source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
