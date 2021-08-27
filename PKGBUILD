@@ -2,14 +2,14 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
+pkgver=5.14.rc7.r68.gc7ff2a0fbb6d
+pkgrel=1
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.14.rc4.r67.gdac5122a273b
 _kernel_rel=5.14
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
-pkgrel=1
-arch=(x86_64)
 url=https://pf.natalenko.name/
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '42902610f309ee5ae380bac45ff120f7dc2d0a007ae75d2d206c907ecb2b1d03')
+            '38ef921da68f6242c05a87d29d4951c2eb1dab4fb3e6264565947f7053cfd2b0')
 
 pkgver() {
   cd "${_srcname}"
@@ -71,8 +71,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  provides=(linux-pf KSMBD-MODULE NTFS3-MODULE UKSMD-BUILTIN V4L2LOOPBACK-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(linux-pf ksmbd-dkms ntfs3-dkms v4l2loopback-dkms virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
