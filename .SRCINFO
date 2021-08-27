@@ -1,0 +1,13 @@
+pkgbase = cargo-nono
+	pkgdesc = A cargo subcommand to detect (possible) no_std compatibility of your crate and dependencies
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/hobofan/cargo-nono
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	source = cargo-nono-0.1.9.tar.gz::https://static.crates.io/crates/cargo-nono/cargo-nono-0.1.9.crate
+	sha256sums = d197cd6cea7c40ae9ad969d7bd1cc79573c3cbe9619cfd201fcba7bfaf29dc0a
+
+pkgname = cargo-nono
