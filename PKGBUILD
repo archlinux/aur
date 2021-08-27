@@ -2,13 +2,13 @@
 
 pkgname=olive-git
 _pkgname=${pkgname%-*}
-pkgver=continuous.r1090.g5254be3fb
-pkgrel=2
+pkgver=continuous.r1181.g16aac5ba2
+pkgrel=1
 arch=('pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'openimageio' 'qt5-multimedia')
+depends=('ffmpeg' 'openimageio' 'opentimelineio-git' 'qt5-multimedia')
 makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
@@ -32,14 +32,14 @@ prepare() {
   # The build completes normally when this warning is disabled.
 
   cd $_pkgname
-  sed -i "/Wshadow/a \ \ \ \ -Wno-stringop-overflow" CMakeLists.txt
+  sed -i "/Wshadow/a \    -Wno-stringop-overflow" CMakeLists.txt
 }
 
 build() {
   cd $_pkgname
   cmake -GNinja \
         -Bbuild \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr
   ninja -C build/
 }
