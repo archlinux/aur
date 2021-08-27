@@ -1,6 +1,6 @@
 # Maintainer: Beyley Thomas <ep1cm1n10n123@gmail.com>
 pkgname=lib32-libbass
-pkgver=2.4.16.3
+pkgver=1.4.16.3
 pkgrel=1
 pkgdesc="BASS audio library (32-bit)"
 arch=(x86_64)
