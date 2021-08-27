@@ -1,0 +1,17 @@
+pkgbase = libcerf-git
+	pkgdesc = A self-contained numeric library
+	pkgver = 1.17.r0.g4f2c638
+	pkgrel = 1
+	url = https://jugit.fz-juelich.de/mlz/libcerf/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libcerf
+	conflicts = libcerf
+	source = git+https://jugit.fz-juelich.de/mlz/libcerf.git
+	sha256sums = SKIP
+
+pkgname = libcerf-git
