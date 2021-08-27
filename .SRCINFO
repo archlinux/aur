@@ -1,7 +1,7 @@
 pkgbase = kesboot-git
 	pkgdesc = Script for automating work with EFI Kernel Stub (linux)
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BiteDasher/kesboot
 	arch = any
 	license = MIT
