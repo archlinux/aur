@@ -28,10 +28,10 @@ package() {
   optdepends=('qemu' 'libvirt')
 
   # Install files
-  install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/google_apis"
-  cp -r "${_arch}" "${pkgdir}/opt/android-sdk/system-images/android-${pkgver/_*/}/google_apis/"
+  install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-30/google_apis"
+  cp -r "${_arch}" "${pkgdir}/opt/android-sdk/system-images/android-30/google_apis/"
   # Install license
   install -D -m 644 "package.xml" "${pkgdir}/usr/share/licenses/${pkgname}/package.xml"
   ln -s "/usr/share/licenses/${pkgname}/package.xml" \
-    "${pkgdir}/opt/android-sdk/system-images/android-30_${pkgver/_*/}/google_apis/${_arch}/"
+    "${pkgdir}/opt/android-sdk/system-images/android-30/google_apis/${_arch}/"
 }
