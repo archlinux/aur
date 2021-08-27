@@ -20,7 +20,7 @@ license=('GPL2' 'MIT' 'custom')
 makedepends=('jbigkit' 'gzip' 'gtk2')
 depends=('gcc-libs' 'libxml2' 'libglade')
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
-                       'llibjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
+                       'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
                         'gtk2: for cnsetuputil2')
 
 
