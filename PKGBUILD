@@ -1,12 +1,12 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=2021.07.27.r41.gd89e6e2
+pkgver=2021.07.27.r42.g8651607
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
 license=('GPL')
-makedepends=('git' 'sassc' 'setconf')
+makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'gtk-engines: GTK2 theme support'
             'whitesur-icon-theme-git: matching icon theme'
@@ -18,21 +18,13 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 options=('!strip')
-source=("${pkgname%-git}::git+https://github.com/vinceliuice/WhiteSur-gtk-theme.git"
-        'wallpapers::git+https://github.com/vinceliuice/WhiteSur-gtk-theme.git#branch=wallpapers')
+source=(git+$url.git)
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/wallpapers"
-  setconf install-gnome-backgrounds.sh BACKGROUND_DIR "$pkgdir/usr/share/backgrounds"
-  setconf install-gnome-backgrounds.sh PROPERTIES_DIR "$pkgdir/usr/share/gnome-background-properties"
-  setconf install-wallpapers.sh WALLPAPER_DIR "$pkgdir/usr/share/backgrounds"
 }
 
 package() {
@@ -42,6 +34,7 @@ package() {
   # See for more customization options:
   # https://github.com/vinceliuice/WhiteSur-gtk-theme#theres-so-many-customizations-you-can-do
   ./install.sh \
+    --icon arch \
     --alt all \
     --theme all \
     --dest "$pkgdir/usr/share/themes"
@@ -55,10 +48,4 @@ package() {
   # Firefox theme
   install -d "$pkgdir/usr/share/docs/$pkgname"
   cp -r src/other/firefox "$pkgdir/usr/share/docs/$pkgname"
-
-  # Wallpapers
-  cd "$srcdir/wallpapers"
-  install -d "$pkgdir"/usr/share/{backgrounds,gnome-background-properties}
-  ./install-gnome-backgrounds.sh
-  ./install-wallpapers.sh
 }
