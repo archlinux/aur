@@ -1,6 +1,6 @@
 pkgbase = python-bitarray
 	pkgdesc = Efficient arrays of booleans for Python
-	pkgver = 2.2.3
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/ilanschnell/bitarray
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = python-bitarray
 	license = PSF
 	makedepends = python-distribute
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/bitarray/bitarray-2.2.3.tar.gz
-	sha256sums = b5d707d9c4aa75e684e21ff1848b234f3d2ff41d5038db89e2465e5527f90c68
+	source = https://files.pythonhosted.org/packages/source/b/bitarray/bitarray-2.3.2.tar.gz
+	sha256sums = 4bee3ba9164b66cef64f1099e9a3b88e99ddcd0c943807e99443613e184b48b4
 
 pkgname = python-bitarray
