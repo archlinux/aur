@@ -1,14 +1,14 @@
 pkgbase = axolotl-bin
 	pkgdesc = Axolotl binary from deb.
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/nanu-c/axolotl/
 	arch = aarch64
 	license = GPL3
 	provides = axolotl
-	noextract = axolotl_1.0.1-2_arm64.deb
-	source = https://github.com/nuehm-arno/axolotl-mobian-package/raw/main/axolotl_1.0.1-2_arm64.deb
+	noextract = axolotl_1.0.2-1_arm64.deb
+	source = https://github.com/nuehm-arno/axolotl-mobian-package/raw/v1.0.2-1/axolotl_1.0.2-1_arm64.deb
 	validpgpkeys = 0F93160A4198CE8993FE7F53D91B90C8A18672B5
-	md5sums = 76d142a82aa6d101d11101163a4d2df2
+	md5sums = c0467e05a1e1a89281fea30bfccb4e47
 
 pkgname = axolotl-bin
