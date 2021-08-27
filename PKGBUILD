@@ -36,8 +36,8 @@ post_upgrade() {
 }
 
 pre_remove() {
-  if [[ -f "$HNCCONTEXT/$NIMFLIB" ]]; then
-    rm -vf "$HNCCONTEXT/$NIMFLIB"
+  if [[ -f "/$HNCCONTEXT/$NIMFLIB" ]]; then
+    rm -vf "/$HNCCONTEXT/$NIMFLIB"
   fi
 }
 
