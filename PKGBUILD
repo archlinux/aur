@@ -2,7 +2,7 @@
 
 pkgname="mymonero"
 pkgver=1.1.24
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
 arch=('x86_64')
@@ -20,8 +20,8 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v${pkgver}/MyMonero-${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/mymonero/mymonero-app-js/master/LICENSE.txt")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52'
-	'fc839324f7e8fd7c15b0aae8a0e335feebdf9fb712f7b63e73f3e04e5ce0aaa639e816b41b84534102734671990182b33f7b605cabd1515b73bca0e0a0aeb086')
+b2sums=('fc839324f7e8fd7c15b0aae8a0e335feebdf9fb712f7b63e73f3e04e5ce0aaa639e816b41b84534102734671990182b33f7b605cabd1515b73bca0e0a0aeb086'
+	'e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52')
 
 log() {
 	echo -e "    $1...\c"
@@ -31,7 +31,7 @@ log_status() {
 	BRed='\033[1;31m'   # Bold Red
 	Reset='\033[0m'     # Reset
 
-	if [ $1 == 0 ]; then
+	if [ "$1" == 0 ]; then
 		echo -e "$BGreen\c"
 		echo -e "done.$Reset"
 	else
@@ -71,12 +71,6 @@ package() {
 	log_status $?
 
 	#
-	# Remove unused files
-	log "removing unused files"
-	rm -rf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${pkgname}.{desktop,png}}
-	log_status $?
-
-	#
 	# Fix permissions
 	log "fixing permissions"
 	for d in locales resources; do
@@ -87,9 +81,11 @@ package() {
 
 	#
 	# Link entry point
-	log "linking /usr/bin/${pkgname} with /opt/${pkgname}/${pkgname}.bin"
+	log "linking /usr/bin/${pkgname} with /opt/${pkgname}/${pkgname}"
 	install -dm0755 "${pkgdir}/usr/bin"
-	ln -sf "/opt/${pkgname}/${pkgname}.bin" "${pkgdir}/usr/bin/${pkgname}"
+	rm "${pkgdir}/opt/${pkgname}/${pkgname}"
+	mv "${pkgdir}/opt/${pkgname}/${pkgname}.bin" "${pkgdir}/opt/${pkgname}/${pkgname}"
+	ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	log_status $?
 
 	#
@@ -110,5 +106,13 @@ package() {
 	# Install LICENSE file
 	log "copying LICENSE file to /usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	log_status $?
+
+	#
+	# Remove unused files
+	log "removing unused files"
+	rm -rf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${pkgname}.{desktop,png}}
+	rm -rf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so}
+	rm -rf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
 	log_status $?
 }

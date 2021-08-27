@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 
 BPurple='\033[1;35m' # Bold purple
 Cyan='\033[0;36m'    # Cyan
