@@ -32,6 +32,7 @@ package() {
   cd $pkgname
   install -Dm755 $_pkgname "${pkgdir}"/usr/bin/$_pkgname
 
-  mkdir -p "${pkgdir}"/usr/share/$_pkgname/
-  cp -ra themes "${pkgdir}"/usr/share/$_pkgname/
+  mkdir -p "${pkgdir}"/usr/lib/$_pkgname/
+  cp -ra themes "${pkgdir}"/usr/lib/$_pkgname/
+  cp -ra plugins "${pkgdir}"/usr/lib/$_pkgname/
 }
