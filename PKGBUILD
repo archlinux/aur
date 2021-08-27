@@ -2,12 +2,11 @@
 
 pkgname=cloudflared
 pkgver=2021.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Argo Tunnel client"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cloudflare/cloudflared"
 license=('custom:cloudflared')
-depends=('glibc')
 makedepends=('go')
 conflicts=('cloudflared-bin')
 backup=("etc/$pkgname/config.yml")
@@ -29,12 +28,6 @@ prepare() {
 
   # create directory for build output
   mkdir build
-
-  # download dependencies
-  rm -rf vendor go.sum
-  sed "s/go 1.15/go 1.17/" -i go.mod
-  go mod tidy
-  go mod vendor
 }
 
 build() {

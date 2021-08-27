@@ -1,14 +1,13 @@
 pkgbase = cloudflared
 	pkgdesc = Argo Tunnel client
 	pkgver = 2021.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudflare/cloudflared
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = custom:cloudflared
 	makedepends = go
-	depends = glibc
 	conflicts = cloudflared-bin
 	backup = etc/cloudflared/config.yml
 	source = cloudflared-2021.8.5.tar.gz::https://github.com/cloudflare/cloudflared/archive/2021.8.5.tar.gz
