@@ -21,9 +21,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	export DESTDIR="$pkgdir"
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/lib
-	mkdir -p $pkgdir/usr/share/man/man1/
-	make install
+	make DESTDIR="$pkgdir" install
 }
