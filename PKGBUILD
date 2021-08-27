@@ -1,16 +1,16 @@
 # Maintainer: Michael Yeatts <mwyeatts at gmail dot com>
 
 pkgname=python-mnemonic
-pkgver=0.19
-pkgrel=2
+pkgver=0.20
+pkgrel=1
 pkgdesc="Implementation of Bitcoin BIP-0039"
 arch=('any')
-depends=('python' 'python-pbkdf2')
+depends=('python')
 makedepends=('python-setuptools')
 url="https://github.com/trezor/python-mnemonic"
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/80/0d/63de5efd5585fd6eb79eb35d3feb91deee8003e60997d61e3759eaf1ea66/mnemonic-0.19.tar.gz")
-sha256sums=('4e37eb02b2cbd56a0079cabe58a6da93e60e3e4d6e757a586d9f23d96abea931')
+source=("https://files.pythonhosted.org/packages/f8/8d/d4dc2b2bddfeb57cab4404a41749b577f578f71140ab754da9afa8f5c599/mnemonic-0.20.tar.gz")
+sha256sums=('7c6fb5639d779388027a77944680aee4870f0fcd09b1e42a5525ee2ce4c625f6')
 
 build() {
     cd "$srcdir/${pkgname#python-}-$pkgver"
