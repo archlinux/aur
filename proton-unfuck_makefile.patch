@@ -1,10 +1,10 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index f9a677c..56fb367 100755
+index e1d01ac..a2e1852 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
  	export CCACHE_DIR := $(if $(CCACHE_DIR),$(CCACHE_DIR),$(HOME)/.ccache)
- 	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
+ 	DOCKER_OPTS := -v $(CCACHE_DIR):$(CCACHE_DIR)$(CONTAINER_MOUNT_OPTS) $(CCACHE_ENV) -e CCACHE_DIR=$(CCACHE_DIR) $(DOCKER_OPTS)
  else
 -	export CCACHE_DISABLE := 1
  	DOCKER_OPTS := $(CCACHE_ENV) -e CCACHE_DISABLE=1 $(DOCKER_OPTS)
@@ -20,7 +20,7 @@ index f9a677c..56fb367 100755
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
-@@ -359,8 +359,8 @@ ALL_TARGETS += dist
+@@ -360,8 +360,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
  dist_prefix: wine gst_good
@@ -31,7 +31,7 @@ index f9a677c..56fb367 100755
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -412,6 +412,9 @@ endif # ifeq ($(CONTAINER),)
+@@ -413,6 +413,9 @@ endif # ifeq ($(CONTAINER),)
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -41,7 +41,7 @@ index f9a677c..56fb367 100755
  	-Dexamples=disabled \
  	-Dtests=disabled \
  	-Dgtk_doc=disabled \
-@@ -424,6 +427,7 @@ GST_COMMON_MESON_ARGS := \
+@@ -425,6 +428,7 @@ GST_COMMON_MESON_ARGS := \
  
  GST_ORC_MESON_ARGS := \
  	-Dorc-test=disabled \
@@ -49,7 +49,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  $(eval $(call rules-source,gst_orc,$(SRCDIR)/gst-orc))
-@@ -440,6 +444,9 @@ GSTREAMER_MESON_ARGS := \
+@@ -441,6 +445,9 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -59,7 +59,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -476,6 +483,8 @@ GST_BASE_MESON_ARGS := \
+@@ -477,6 +484,8 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -68,7 +68,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -539,7 +548,8 @@ GST_GOOD_MESON_ARGS := \
+@@ -540,7 +549,8 @@ GST_GOOD_MESON_ARGS := \
  	-Dwavenc=disabled \
  	-Dximagesrc=disabled \
  	-Dy4m=enabled \
@@ -78,7 +78,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -574,6 +584,9 @@ GST_BAD_MESON_ARGS := \
+@@ -575,6 +585,9 @@ GST_BAD_MESON_ARGS := \
  	-Dopencv=disabled \
  	-Dvoamrwbenc=disabled \
  	-Dx265=disabled \
@@ -88,7 +88,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_DEPENDS = gst_orc gstreamer gst_base
-@@ -589,6 +602,8 @@ $(eval $(call rules-meson,gst_bad,64))
+@@ -590,6 +603,8 @@ $(eval $(call rules-meson,gst_bad,64))
  
  GST_UGLY_MESON_ARGS := \
          -Ddoc='disabled' \
@@ -97,7 +97,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_DEPENDS = gst_orc gstreamer gst_base
-@@ -604,6 +619,8 @@ $(eval $(call rules-meson,gst_ugly,64))
+@@ -605,6 +620,8 @@ $(eval $(call rules-meson,gst_ugly,64))
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
@@ -106,7 +106,7 @@ index f9a677c..56fb367 100755
  	$(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_DEPENDS = gst_orc gstreamer gst_base
-@@ -729,7 +746,14 @@ WINE_SOURCE_ARGS = \
+@@ -730,7 +747,14 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -114,14 +114,14 @@ index f9a677c..56fb367 100755
 +  --with-gstreamer \
 +  --with-faudio \
    --with-mingw \
-+  --without-xpresent \
++  --with-xpresent \
 +  --without-vkd3d \
 +  --without-oss \
 +  --disable-win16 \
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -788,16 +812,6 @@ $(OBJ)/.vrclient-post-source:
+@@ -789,16 +813,6 @@ $(OBJ)/.vrclient-post-source:
  	mkdir -p $(VRCLIENT_OBJ64) && cp -a $(VRCLIENT_SRC)/vrclient_x64/vrclient_x64.spec $(VRCLIENT_OBJ64)/vrclient_x64.spec
  	touch $@
  
@@ -138,7 +138,7 @@ index f9a677c..56fb367 100755
  
  
  ##
-@@ -860,7 +874,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -861,7 +875,7 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  

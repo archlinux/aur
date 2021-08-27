@@ -1,17 +1,17 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.14-GE-2
-_commit=db818a32be2b10462f3e37489f6bc88ab03d8955
+_srctag=6.15-GE-2
+_commit=f0ab74112aefeaf372a7d280e7aaa84c9e43107a
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
-pkgrel=3
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64 x86_64_v3)
-options=(staticlibs !lto)
+options=(!staticlibs !lto)
 license=('custom')
 
 depends=(
@@ -31,6 +31,7 @@ depends=(
   libpcap          lib32-libpcap
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
+  'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
   steam-native-runtime
@@ -38,7 +39,7 @@ depends=(
 )
 
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
-  git wget rsync mingw-w64-tools lld nasm meson=0.58.1 cmake python-virtualenv python-pip
+  git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
   libpng                lib32-libpng
@@ -62,7 +63,7 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sdl2                  lib32-sdl2
+  'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
   libcups               lib32-libcups
   sane
   libgphoto2
@@ -92,7 +93,6 @@ optdepends=(
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sdl2                  lib32-sdl2
   sane
   libgphoto2
   gsm
@@ -107,12 +107,11 @@ source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
-    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
@@ -121,6 +120,7 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
     vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
+    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
@@ -133,6 +133,8 @@ source=(
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     proton-user_compat_data.patch
+    proton-more_8x5_res.patch
+    proton-remove_broken_patch_segments.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -156,7 +158,7 @@ prepare() {
 
     [ ! -d build ] && mkdir build
     cd proton-ge-custom
-    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton; do
+    for submodule in openvr OpenXR-SDK fonts/liberation-fonts FAudio vkd3d-proton dxvk-nvapi; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -165,7 +167,7 @@ prepare() {
     git config submodule.ffmpeg.url "$srcdir"/ffmpeg-meson
     git submodule update ffmpeg
 
-    for submodule in wine wine-staging dxvk dxvk-nvapi; do
+    for submodule in wine wine-staging dxvk; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url "$srcdir"/"${submodule#*/}"
         git submodule update "${submodule}"
@@ -204,11 +206,13 @@ prepare() {
         git submodule update "${submodule}"
     done
 
+    patch -p1 -i "$srcdir"/proton-remove_broken_patch_segments.patch
     ./patches/protonprep.sh
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
+    patch -p1 -i "$srcdir"/proton-more_8x5_res.patch
 }
 
 build() {
@@ -241,8 +245,8 @@ build() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx"
-    export CXXFLAGS+=" -mno-avx"
+    export CFLAGS+=" -mno-avx -mno-avx2"
+    export CXXFLAGS+=" -mno-avx -mno-avx2"
     # Filter known bad flags before applying optimizations
     # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
@@ -328,7 +332,9 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'eb67426ff60ed6395b70437e838883ee08b6189cad84faf036b1a4d7366a34e2'
-            'c4a388aab3a886bb6295e1ccb1986fa25755f0bc639905abb9f18642d747a46d'
+            'b674fa7904620362970a60d52902b303b08590080bdac86cb8b676e665041759'
             '61dbdb4d14e22c2c34b136e5ddb800eac54023b5b23c19acd13a82862f94738c'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
+            '9071f1432b136071e58a7be9f40c8c7daf4147e75f455c194593e9cdf3872fa2'
+            'e8cb8d0517822be7ce80782c2c7b1fea5b34467e87a4b2cd23c320007eba909a'
 )
