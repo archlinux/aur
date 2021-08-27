@@ -1,0 +1,23 @@
+pkgbase = nimf-bin
+	pkgdesc = Nimf is a lightweight, fast and extensible input method framework.
+	pkgver = 1.3.0
+	pkgrel = 1
+	epoch = 1
+	arch = x86_64
+	arch = aarch64
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libxkbcommon
+	depends = libxklavier
+	depends = qt5-base
+	depends = wayland
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
+	provides = nimf
+	conflicts = nimf
+	replaces = nimf
+	source_x86_64 = https://github.com/hamonikr/nimf/releases/download/1.3.0/nimf_1.3.0hamonikr40.4_amd64.deb
+	sha256sums_x86_64 = b109fd7613e1014bc9f5750a47474ff6b0023fc9a5da0b603ad421bb96c1f11d
+	source_aarch64 = https://github.com/hamonikr/nimf/releases/download/1.3.0/nimf_1.3.0hamonikr40.4_arm64.deb
+	sha256sums_aarch64 = 5735e74a338b7e7c46fb1a40687d9510f0472d125a5b4a93818eef9b10b8346f
+
+pkgname = nimf-bin
