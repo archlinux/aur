@@ -54,7 +54,7 @@ package() {
 	if [[ -f "${srcdir}/../$NIMFLIB" ]]; then
     cp -f "${srcdir}/../$NIMFLIB" "${pkgdir}/$HNCCONTEXT/$NIMFLIB"
    fi
-   if [[ -f "${srcdir}/../$KIMEFLIB" ]]; then
+   if [[ -f "${srcdir}/../$KIMELIB" ]]; then
     cp -f "${srcdir}/../$KIMELIB" "${pkgdir}/$HNCCONTEXT/$KIMELIB"
    fi
 	msg "The error messages are from UTF-8 limitations. Please ignore it, as it does no harm."
