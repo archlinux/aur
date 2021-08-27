@@ -19,7 +19,6 @@ pkgbase = whitesur-gtk-theme-git
 	conflicts = whitesur-gtk-theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/WhiteSur-gtk-theme.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = whitesur-gtk-theme-git

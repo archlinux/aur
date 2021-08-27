@@ -19,8 +19,7 @@ conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 options=('!strip')
 source=(git+$url.git)
-sha256sums=('SKIP'
-            'SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
