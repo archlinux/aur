@@ -1,6 +1,6 @@
 pkgbase = pmm-git
 	pkgdesc = Emulating Gentoo’s world files and sets for other package managers.
-	pkgver = r25.2e5316f
+	pkgver = r27.17ada43
 	pkgrel = 1
 	url = https://github.com/kdb424/pmm
 	arch = i686
