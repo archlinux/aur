@@ -2,3 +2,4 @@ pkg
 src
 *.deb
 *.zst
+libkime-qt-5.11.3.so
