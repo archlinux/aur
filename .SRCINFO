@@ -28,12 +28,9 @@ pkgname = kanidm-server-git
 	provides = kanidm-server
 	conflicts = kanidm-server-bin
 	backup = etc/kanidm/server.toml
-	backup = usr/lib/systemd/system/kanidmd.service
 
 pkgname = kanidm-unixd-clients-git
 	pkgdesc = kanidm localhost resolver to resolve posix identities to a kanidm instance.
 	provides = kanidm-unixd-clients
 	conflicts = kanidm-unixd-clients-bin
 	backup = etc/kanidm/unixd
-	backup = usr/lib/systemd/system/kanidm-unixd.service
-	backup = usr/lib/systemd/system/kanidm-unixd-tasks.service

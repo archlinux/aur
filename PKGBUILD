@@ -17,7 +17,7 @@ pkgname=(
 	$_basename-server-git
 	$_basename-unixd-clients-git
 )
-pkgver=v1.1.0.alpha.5.r0.g4be329e
+pkgver=v1.1.0.alpha.5.r40.g1080e5d0
 pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
@@ -78,7 +78,6 @@ package_kanidm-server-git () {
   pkgdesc='kanidm server for idendity management, supports RADIUS, ssh key management.'
   backup=(
     "etc/kanidm/server.toml"
-    "usr/lib/systemd/system/kanidmd.service"
   )
 
   cd "$pkgbase"
@@ -106,8 +105,6 @@ package_kanidm-unixd-clients-git () {
   pkgdesc='kanidm localhost resolver to resolve posix identities to a kanidm instance.'
   backup=(
     "etc/kanidm/unixd"
-    "usr/lib/systemd/system/kanidm-unixd.service"
-    "usr/lib/systemd/system/kanidm-unixd-tasks.service"
   )
 
   cd "$pkgbase"
