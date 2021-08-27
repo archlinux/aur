@@ -7,7 +7,6 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
 # source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 source=("https://github.com/opencreek/creekey-cli")
-sha256sums=('9741628a1b164e9ec16170ae8b4f43b3e7473158b3bf12e49472c907d35d4731')
 
 url="https://creekey.io"
 license=('UNLICENSED')
@@ -34,3 +33,4 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 }
+sha256sums=('3ee0403c5d7cce503cdeb9e9e709c3909ebc84dde80d379e7401bdf6b5f63733')
