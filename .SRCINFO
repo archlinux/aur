@@ -10,6 +10,6 @@ pkgbase = creekey-git
 	license = UNLICENSED
 	makedepends = cargo
 	source = https://github.com/opencreek/creekey-cli
-	sha256sums = 9741628a1b164e9ec16170ae8b4f43b3e7473158b3bf12e49472c907d35d4731
+	sha256sums = 3ee0403c5d7cce503cdeb9e9e709c3909ebc84dde80d379e7401bdf6b5f63733
 
 pkgname = creekey-git
