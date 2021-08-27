@@ -1,16 +1,16 @@
 # Maintainer: Astroncia <kestraly+gmail+com>
 
 pkgname=astronciaiptv
-pkgver=0.0.76
-pkgrel=2
+pkgver=0.0.77
+pkgrel=1
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://gitlab.com/astroncia/iptv"
 license=('GPL3')
-depends=('python' 'qt6-base' 'mpv' 'pyside6' 'python-pillow' 'python-pandas' 'python-gobject' 'python-pydbus' 'python-unidecode' 'python-requests' 'python-chardet' 'ffmpeg')
+depends=('python' 'qt6-base' 'mpv' 'pyside6' 'python-pillow' 'python-pandas' 'python-gobject' 'python-pydbus' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'ffmpeg')
 optdepends=('youtube-dl: YouTube channel support')
 source=(${url}/-/archive/${pkgver}/iptv-${pkgver}.tar.gz)
-b2sums=('bb19cbdc5bb5cfaf024dcdcb62e888afeb16e83d900e75d04388a4639a23f2aff08c0365bc2dc8127450a2722571093bcd6eb539e061496f73d61d4dfbd98021')
+b2sums=('a3a77f8d98a78b58ce741e48427f52fd6f82c77b285b84796dadc640558cafd2116dcb5d4a5df3d315e44fa3ae8650a39e6821087a39075a928b7039e478988f')
 
 prepare() {
         cd iptv-${pkgver}
@@ -30,7 +30,8 @@ package() {
         install -Dm644  -t "${pkgdir}"/usr/share/astronciaiptv/icons usr/share/astronciaiptv/icons/*.{gif,png}
         install -Dm644  -t "${pkgdir}"/usr/share/astronciaiptv/icons_dark usr/share/astronciaiptv/icons_dark/*.{gif,png}
         install -Dm644  -t "${pkgdir}"/usr/share/icons/hicolor/scalable/apps usr/share/icons/hicolor/scalable/apps/astronciaiptv.svg
-        cp -a usr/lib/astronciaiptv/data "${pkgdir}"/usr/lib/astronciaiptv/data
+        cp -a usr/lib/astronciaiptv/astroncia "${pkgdir}"/usr/lib/astronciaiptv/astroncia
+        cp -a usr/lib/astronciaiptv/thirdparty "${pkgdir}"/usr/lib/astronciaiptv/thirdparty
  
         # Translations
         cp -a usr/share/locale "${pkgdir}"/usr/share/locale
