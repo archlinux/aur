@@ -16,7 +16,7 @@ source=(
 	'https://cdn.hancom.com/pds/hnc/DOWN/gooroom/hoffice_11.20.0.1520_amd64.deb'
 	'LICENSE'
 	'libqt5im-nimf.so'
-	'https://github.com/Riey/kime/releases/latest/download/libkime-qt-5.11.3.so'
+	'https://github.com/Riey/kime/releases/download/v2.5.5/libkime-qt-5.11.3.so'
 )
 url='https://www.hancom.com/'
 license=('custom:hoffice')
