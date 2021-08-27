@@ -4,17 +4,19 @@
 pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
-pkgver=0.0.0.r15.42f4ff8
-pkgrel=3
+_product="${_reponame}"
+pkgver=0.0.0.r19.b6af35c
+pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=(procps-ng)
-source=(${_reponame}::git+https://gitlab.com/post-factum/uksmd.git)
+depends=(UKSMD-BUILTIN procps-ng libcap-ng)
+makedepends=(git)
+source=(${_product}::git+https://gitlab.com/${_repouser}/${_reponame}.git)
 sha256sums=('SKIP')
-conflicts=("${_reponame}")
-provides=("${_reponame}")
+conflicts=("${_product}")
+provides=("${_product}")
 
 pkgver() {
   cd "${_reponame}"
@@ -33,5 +35,5 @@ package() {
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
 	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "distro/${_reponame}.service" "${pkgdir}/usr/lib/systemd/system/${_reponame}.service"
+	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${_product}.service
 }

@@ -1,15 +1,17 @@
 pkgbase = uksmd-git
 	pkgdesc = Userspace KSM helper daemon
-	pkgver = 0.0.0.r15.42f4ff8
-	pkgrel = 3
+	pkgver = 0.0.0.r19.b6af35c
+	pkgrel = 1
 	url = https://gitlab.com/post-factum/uksmd
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	depends = UKSMD-BUILTIN
 	depends = procps-ng
+	depends = libcap-ng
 	provides = uksmd
 	conflicts = uksmd
 	source = uksmd::git+https://gitlab.com/post-factum/uksmd.git
 	sha256sums = SKIP
 
 pkgname = uksmd-git
-
