@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libsrtp
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Library for SRTP (Secure Realtime Transport Protocol) (mingw-w64)"
 arch=('any')
 url="https://github.com/cisco/libsrtp"
@@ -10,14 +10,12 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('94093a5d04c5f4743e8d81182b76938374df6d393b45322f24960d250b0110e8')
+sha256sums=('713c5c1dc740707422307f39834c0b0fbb76769168d87e92c438a3cca8233d3d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   export ac_cv_lib_pcap_pcap_create=no
-  # workaround to fix build with gcc 10
-  export CFLAGS="-fcommon"
   cd "${srcdir}/libsrtp-$pkgver/"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
