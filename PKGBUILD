@@ -1,7 +1,7 @@
 # Maintainer: Opencreek Technogoly UG <hannes@opencreek.tech>
 pkgname=creekey-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
@@ -21,12 +21,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
-}
-
-check () {
-    cd "creekey-cli"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 package() {
