@@ -1,6 +1,6 @@
 pkgname=songrec
 _pkgname=SongRec
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 provides=('songrec')
 conflicts=('songrec-git')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'rust' 'git')
 depends=('gtk3' 'alsa-lib' 'openssl' 'ffmpeg')
 optdepends=('libpulse')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marin-m/songrec/archive/${pkgver}.tar.gz")
-sha256sums=('00462d50ef0ccef8064cc7030d2843bbbbf0eb378bc88e65fdcaf0750f9e94ad')
+sha256sums=('46bba562dde437c623a3a7f7296ef852507cf7a1b0872bddd1398f68506781f6')
 
 build() {
   cd "$_pkgname-$pkgver"
