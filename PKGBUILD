@@ -19,7 +19,7 @@ source=("https://github.com/Electrum-RVN-SIG/electrum-ravencoin/releases/downloa
         "${_pkgname}-${pkgver}-LICENCE::https://raw.githubusercontent.com/Electrum-RVN-SIG/${_pkgname}/${_pkgver}/LICENCE"
         )
 
-b2sums=('e8b210959fe2bf784349ea0db118da62fd84e1784998ecfe8b50be285b949dcacfe164c407bf3d19e98c45dbdce10a3d256cedda8f4f2866de6a0964b5ac091c'
+b2sums=('d20d84b3ebf69da448dc276885cea68d0e464bfd563acb62779af9a6e1cff4807ded73388a850aea6884b829d8d8e3d99f3b0636670c7ae873375d214d9be235'
         'a70dea849f4af001369ba2d35bc79c86d8212f0511f86d6f86f88ba0372ba72ef2ef9e2cee176ca5c85cd8c7fd65a95ed388d11cfb8314252d9c8a7ab66c6110')
 
 noextract=("${_appimage}")
