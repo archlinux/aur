@@ -14,6 +14,7 @@ pkgbase = nimf-git
 	makedepends = librsvg
 	makedepends = libx11
 	makedepends = wayland-protocols
+	depends = glibc
 	depends = gtk3
 	depends = glib2
 	depends = libhangul-git
@@ -22,6 +23,8 @@ pkgbase = nimf-git
 	depends = libxklavier
 	depends = qt5-base
 	depends = wayland
+	provides = nimf
+	conflicts = nimf
 	source = nimf::git+https://github.com/hamonikr/nimf.git
 	md5sums = SKIP
 

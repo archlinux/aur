@@ -34,8 +34,8 @@ makedepends=(
 	'libx11'
 	'wayland-protocols'
 )
-provides=("nimf")
 conflicts=("nimf")
+provides=("nimf")
 source=( "nimf::git+${url}.git" )
 md5sums=('SKIP' )
 
