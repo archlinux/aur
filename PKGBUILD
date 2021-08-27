@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=pacdiff-pacman-hook-git
 pkgver=r67.ecd7d38
-pkgrel=1
+pkgrel=2
 pkgdesc='Pacman hook to run pacdiff automatically'
 arch=('any')
 _gitname='pacman-hooks'
@@ -21,5 +21,4 @@ pkgver() {
 package() {
     cd "${srcdir}/${_gitname}"
     install -Dm 644 -t "${pkgdir}/usr/share/libalpm/hooks" pacdiff/pacdiff.hook
-    install -Dm 755 -t "${pkgdir}/usr/share/libalpm/scripts" pacdiff/pacdiff_diffprog
 }
