@@ -1,7 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2021.2
+pkgver=2021.2.1
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('2f6d8bcf4e11701664c6acc62e465f31619893d8c7fdcb746b9d7cec385203d1'
+sha256sums=('828798b73eda6df7ab081dfbbf896ef4e311d9d695a61b4ec010b651729b096a'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '43d05c8bebe48eaa0489f739387c58ad919b2f07a2d9003c8e6fb1cc309e3af2')
@@ -36,7 +36,7 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             
 build() {
     # compile PyDev debugger used by PyCharm to speedup debugging
-    find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.c -o -name *.so -o -name *.pyd \) -delete
+    find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
     sed -i '1s/^/# cython: language_level=3\n/' pycharm-${pkgver}/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_cython.pxd
     python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
