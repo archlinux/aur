@@ -1,6 +1,6 @@
 pkgbase = macast-git
 	pkgdesc = DLNA Media Renderer
-	pkgver = r105.4815a2c
+	pkgver = r115.a5d4a9c
 	pkgrel = 1
 	url = https://github.com/xfangfang/Macast
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = macast-git
 	depends = python-cherrypy
 	depends = mpv
 	conflicts = macast
-	source = git+https://github.com/xfangfang/Macast.git
+	source = git+https://github.com/xfangfang/Macast.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = macast-git
