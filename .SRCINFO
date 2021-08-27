@@ -6,6 +6,7 @@ pkgbase = hxl-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
+	depends = glibc
 	provides = hxl
 	conflicts = hxl
 	source = hxl-git::git+https://github.com/sjmulder/hxl
