@@ -2,7 +2,7 @@
 
 pkgname=batterycm-switcher-preview
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Ideapad Laptops conservation mode adjustment tool"
 arch=('any')
 
