@@ -1,16 +1,18 @@
 pkgbase = power-profiles-daemon
 	pkgdesc = Makes power profiles handling available over D-Bus
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-dbusmock
+	checkdepends = python-isort
+	checkdepends = python-mccabe
 	checkdepends = python-pylint
 	checkdepends = umockdev
 	makedepends = git
 	makedepends = meson
-	depends = systemd
+	depends = python
 	depends = upower
 	source = git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git#commit=30d85f1e9e274e75add4ecaa46795126acafb29d
 	b2sums = SKIP

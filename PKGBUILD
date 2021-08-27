@@ -2,14 +2,14 @@
 
 pkgname=power-profiles-daemon
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Makes power profiles handling available over D-Bus"
 url="https://gitlab.freedesktop.org/hadess/power-profiles-daemon"
 license=(GPL3)
 arch=(x86_64)
-depends=('systemd' 'upower')
+depends=('python' 'upower')
 makedepends=('git' 'meson')
-checkdepends=('python-dbusmock' 'python-pylint' 'umockdev')
+checkdepends=('python-dbusmock' 'python-isort' 'python-mccabe' 'python-pylint' 'umockdev')
 _commit=30d85f1e9e274e75add4ecaa46795126acafb29d # tags/0.9.0
 source=("git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git#commit=$_commit")
 b2sums=('SKIP')
