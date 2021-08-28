@@ -1,0 +1,13 @@
+pkgbase = refind-theme-nord
+	pkgdesc = Simple theme inspired to the nord palette
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jaltuna/refind-theme-nord
+	install = refind-theme-nord.install
+	arch = any
+	license = MIT
+	depends = refind
+	source = https://github.com/jaltuna/refind-theme-nord/releases/download/1.0.0/refind-theme-nord-1.0.0.tar.gz
+	sha256sums = 7dd33482adc9372fe10e4e549f48e9b31e934580ba29e88e20ab96de3374fb54
+
+pkgname = refind-theme-nord

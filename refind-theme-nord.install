@@ -1,0 +1,14 @@
+post_install() {
+  local install_dir='/usr/share/refind/themes/nord'
+
+  cd "$install_dir" || exit 1
+
+  echo "Setup refind-theme-nord-$1"
+  echo "Executing ${install_dir}/setup.sh..."
+  
+  if ! bash setup.sh; then
+    echo "###########################################################"
+    echo "A problem occurred when running 'setup.sh', run it manually 
+    echo "###########################################################"    
+  fi
+}
