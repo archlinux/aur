@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=20.11.8.1
+pkgver=21.08.0.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -29,16 +29,14 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"ncurses: adds the smap command "
 	"gtk2: enables the sview command, a simple graphical frontend"
 	"pmix: support Open MPI applications using PMIx")
-makedepends=('python' 'gtk2')
-backup=('etc/default/slurm-llnl')
+makedepends=('python' 'gtk2' 'hwloc' 'rrdtool' 'hdf5')
+backup=('etc/sysconfig/slurmd' 'etc/sysconfig/slurmctld', 'etc/sysconfig/slurmdbd')
 source=("slurm-llnl.sysusers"
 	"slurm-llnl.tmpfiles"
-	"slurm-llnl-default-conf"
 	"https://github.com/SchedMD/slurm/archive/slurm-${pkgver//./-}.tar.gz")
-sha512sums=('40aa91b02d8839ee94ae106de1ea675b0a79ba533f218afc87e909b5bbd38ce1135f54716094bf9384edc51409bfaeb0b7904cb387cbcbc8ad16befdafb8a5ab'
-            '0f1c477be4a06fd6050afd7e4fd7d3524ce4dc9bec4e3f9bbfb0087660a29f76442139b659bc906029757646ac107e521a6b2ba120b5b2db49bc815f501fb581'
-            'f74dacaaffa35fa11a62bb9efa492bb4ef9b197748f28c15210f362382da27ec1dd88a57a48fc6807029c93c9033c82e11545ea36622c683ae7bd09970ef8710'
-            '7a717fe853c4e851c4ba98f5f8f5575bc94dac0e058a76615370f85e6736a909213314b0b94054dd6cd6c5e273870dcc81279f5b6616c8a7e6c9c7df7003d4f4')
+sha512sums=('8373ef791d68a7e0b2114f5ce670da1936bd8d96fd51fa7319d4feb85f16a673f89abcb823a114455d32d8fd9eee3e121c313a0aa986542540f120e6d35686e6'
+            '4f7d1e36abc2ca5aa38b40403292b68f769238766ecdd44ea5d29f8106bd9b7c3e0d2236208f92e00818e37dd24c9520b6e9fe06e01b6e552ac485a1df682edd'
+            'e0312e69411647bfaf511399b330fcb5d3bb61ff14793b21327cef5e1ad62dfdcf293dafd6e945f39215175807cef35ecf0820427eb2715f37ee5a0e0b8b9122')
 
 
 build() {
@@ -66,7 +64,6 @@ build() {
 		--sysconfdir=/etc/slurm-llnl \
 		--localstatedir=/var \
 		--enable-pam \
-		--with-pmix=/usr \
 		--with-hdf5 \
 		--with-hwloc \
 		--with-rrdtool \
@@ -86,7 +83,11 @@ package() {
 	install -D -m644 LICENSE.OpenSSL           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.OpenSSL"
 	install -D -m644 COPYING                   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-	install -D -m644 ../slurm-llnl-default-conf "${pkgdir}/etc/default/slurm-llnl"
+	install -d -m755 "${pkgdir}/etc/sysconfig"
+	echo '#SLURMD_OPTIONS=""' > "${pkgdir}/etc/sysconfig/slurmd"
+	echo '#SLURMCTLD_OPTIONS=""' > "${pkgdir}/etc/sysconfig/slurmctld"
+	echo '#SLURMDBD_OPTIONS=""' > "${pkgdir}/etc/sysconfig/slurmdbd"
+	chmod 644 "${pkgdir}/etc/sysconfig/"{slurmd,slurmctld,slurmdbd}
 
 	# Install init related files
 	install -D -m755 etc/init.d.slurm      "${pkgdir}/etc/rc.d/slurm"
