@@ -1,0 +1,23 @@
+pkgbase = stsw-link007
+	pkgdesc = The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port
+	pkgver = 2.38.27
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/stsw-link007.html
+	arch = any
+	license = SLA0048
+	makedepends = xdg-user-dirs
+	depends = stlink
+	depends = libusb
+	depends = java-runtime>=7
+	provides = stlink-upgrade
+	provides = stlinkupgrade
+	source = local://en.stsw-link007_V2-38-27_v2.38.27.zip
+	source = stsw-link007.sh
+	source = stsw-link007.png
+	source = SLA0048.pdf::https://www.st.com/resource/en/license_agreement/dm00218346.pdf
+	sha256sums = bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e
+	sha256sums = ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3
+	sha256sums = dd7795c45a38b8bb652f37fced82f6d5ce6cbf5dffd7b29b784a89496757e991
+	sha256sums = 2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b
+
+pkgname = stsw-link007

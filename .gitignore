@@ -1,0 +1,5 @@
+*.pdf
+pkg/
+src/
+*.zst
+*.zip
