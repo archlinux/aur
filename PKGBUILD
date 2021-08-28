@@ -1,8 +1,8 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=ddns-watchdog
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.3.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,9 +14,9 @@ conflicts=('watchdog-ddns' "${pkgname}-git")
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('5f19bf90143d060cc65fe82fd86c5f0721401d83abdc8f3123e479eff670d0df'
-            'e5d1cd8822d45ed8586ca23f8f893fda6636171c9109341e05816355089237bc'
-            '245e4aa6bb204ca0cecef5d3e22643935d187dca068bb23562f604f3277ae5ed')
+sha256sums=('ffe8dbc6b3cf0448eb8cc27edd08a5f2b8c6aff438d2da1e137769e3b99d331c'
+            '38e7b3966fb0d407914828c4ca8f16afdbb29c3a749aa401b7cf5ac6c739a730'
+            'ae7dd38e08b539300812c77ca526ed930b54ff35fa0b10b9b587c79678639e2a')
 
 prepare(){
   cd "$pkgbase-$pkgver"
@@ -33,15 +33,17 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
+  # server
   go build \
     -ldflags "-w -s" \
-    -o build  \
-    ./main-code/client/${pkgname[1]}.go
+    -o build/${pkgname[1]}  \
+    ./cmd/${pkgname[1]}/main.go
 
+  # client
   go build \
     -ldflags "-w -s" \
-    -o  build  \
-    ./main-code/server/${pkgname[0]}.go
+    -o  build/${pkgname[0]}  \
+    ./cmd/${pkgname[0]}/main.go
 }
 
 packaging() {
@@ -50,7 +52,7 @@ packaging() {
 
   # config 
   install -dm 755 ${pkgdir}/etc/${pkgbase}
-  ${pkgdir}/usr/bin/${pkgname} -init ${2} -conf_path ${pkgdir}/etc/${pkgbase}/
+  ${pkgdir}/usr/bin/${pkgname} -i ${2} -c ${pkgdir}/etc/${pkgbase}/
   
   # systemd service
   install -Dm644 ${srcdir}/${1}.service ${pkgdir}/usr/lib/systemd/system/${1}.service
