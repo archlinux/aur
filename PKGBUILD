@@ -1,8 +1,8 @@
-# Maintainer: Yjun <jerrysteve@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=moonfm-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.17
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts."
 arch=('x86_64')
@@ -11,11 +11,10 @@ license=('unknown')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('electron')
-makedepends=('asar')
 source=("https://moon.fm/dist/MoonFM-${pkgver}-${arch}.AppImage"
         "${_pkgname}.sh")
-sha256sums=('d8738d9009f628f2d4d48313d09ca486b5ad19c45fcae46e67d5b127ba29894f'
-            'b1cab348b5f39d870b9325dfe3363c43e272e92c3c7192758a6092ba97b92229')
+sha256sums=('b7af76ee6431a683fafbe14cacda062344bc90f9d73033bc2d7e331f9fa00cca'
+            '8a3276444b8e479a1860c8a7b7ae16a68f7cf4eb6d101eb3212cd660531c375e')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 _filename=./MoonFM-${pkgver}-${arch}.AppImage
@@ -33,7 +32,9 @@ package() {
   install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
   # asar extract
-  asar extract "${srcdir}/squashfs-root/resources/app.asar" ${pkgdir}/usr/lib/${_pkgname}
+  install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t ${pkgdir}/usr/lib/${_pkgname}
+  cd "${srcdir}/squashfs-root/resources/"
+  find app.asar.unpacked -type f -exec install -Dm644 {} ${pkgdir}/usr/lib/${_pkgname}/{} \;
 
   # icons
   cd ${srcdir}/squashfs-root/
