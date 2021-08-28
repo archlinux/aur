@@ -19,5 +19,5 @@ package() {
   cd "$pkgname/"
   make
   mkdir -p "${pkgdir}/usr/bin"
-  install -m=775 fuckmem "${pkgdir}/usr/bin"
+  install -m=775 fuckmemory "${pkgdir}/usr/bin"
 }
