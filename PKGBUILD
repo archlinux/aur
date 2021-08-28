@@ -3,7 +3,7 @@
 # Contributor: KiteAB <kiteabpl@outlook.com>
 pkgname=fuckmemory
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A great program to fill up your memory or swap."
 arch=('any')
 url="https://github.com/FuckComputer/FuckMemory"
