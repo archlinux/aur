@@ -1,0 +1,17 @@
+pkgbase = autologin
+	pkgdesc = No-fuzz automatic login
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~kennylevinsen/autologin
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = pam
+	backup = etc/pam.d/autologin
+	source = autologin-1.0.0.tar.gz::https://git.sr.ht/~kennylevinsen/autologin/archive/1.0.0.tar.gz
+	source = autologin.pam
+	sha256sums = eb084620e660c3d1708beb58cd3520220ad05b5f628378c3118c36379b33221a
+	sha256sums = 99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f
+
+pkgname = autologin
