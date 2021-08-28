@@ -25,6 +25,7 @@ fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "nvm-export.patch"
         "gcc9.patch"
+        "cuda11_gcc11.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
@@ -32,6 +33,7 @@ source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
 sha256sums=('SKIP'
             'd8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36'
             '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
+            '4b76da280b2c81ddb760e813d2c27c6b932790cc9aabaadbd0a917a6b57cfdfd'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
@@ -46,7 +48,6 @@ build() {
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
-                      -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
                       -DCUDA_ARCHS="$_CUDA_ARCH"
                     )

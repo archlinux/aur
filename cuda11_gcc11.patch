@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3c60c055..bd76a7f7 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -43,7 +43,7 @@ elseif(IS_GNU OR IS_CLANG)
+        IS_GNU AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 6)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+     else()
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+     endif()
+ endif()
+ 
