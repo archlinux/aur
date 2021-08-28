@@ -2,8 +2,12 @@
 # shellcheck disable=SC2034,2154,2148
 
 pkgbase=docspell
-pkgname=('docspell-joex' 'docspell-restserver' 'docspell-tools')
-pkgver=0.25.1
+pkgname=(
+    'docspell-joex'
+    'docspell-restserver'
+    # 'firefox-extension-docspell'
+)
+pkgver=0.26.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
@@ -13,16 +17,16 @@ license=('GPL3')
 groups=('docspell')
 source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-restserver-$pkgver.zip"
         "$pkgbase-$pkgver-joex.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-joex-$pkgver.zip"
-        "$pkgbase-$pkgver-tools.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-tools-$pkgver.zip"
+        # "$pkgbase-$pkgver-tools.zip::https://github.com/eikek/$pkgbase/releases/download/v$pkgver/$pkgbase-tools-$pkgver.zip"
         "${pkgname[0]}.sh"
         "${pkgname[1]}.sh"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('7300038077244dde9ddf5a8702112ae9e8fef4604a19d088193206a30987b9085542ff8de0fd14583a15520bb3577a984b8e84a3e0a545ee9acbcd173cf3aeb3'
-            'bc7bb401c9abca4180e3ae8febdcb8d9f90d9a2e5b30df08396d8c950224886a289202448deb352252239131f5ab608f4b832977cf7558489efb5005451e3868'
-            'fbcbc0e2a3d4cafd00357257f6bb7c5fe80154defad883d37ec08c59deee1a125bf653eac5ccd020b8db6d8a1296da86c197d7f160da1a709121ad728d56502f'
+sha512sums=('4f0a60030e3e0866f86df18b412c3fa1ba82881d206b7d342c0773a1c8e065e67345b666961428ffe8539d92f69aeb6be5be880e761c257855fbec3e56c982b1'
+            'c0cff7fbce104c8c4f2ebc301b8b65e185b41d2b7b4112169354bba113fea4b3b4971918ff0c346c44d741b51a72fbef61593a2ea54be1263fe6657f6a854db2'
+            # '5b71747e2f7758df8dff5a4abfe57ff8e1d302ad5b70fb576696b44d2ef358ebc34f797793a868441d6c8c1990294dc97b42697a37c16f1fc784c3196205b7f4'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
@@ -36,11 +40,11 @@ prepare() {
         "${pkgname[0]}-$pkgver/conf/${pkgname[0]}.conf" \
         "${pkgname[1]}-$pkgver/conf/$pkgbase-server.conf"
 
-    sed -i -e 's@/usr/local/share/docspell/native.py@/usr/share/docspell-tools/native.py@' \
-        "${pkgname[2]}-$pkgver/firefox/native/app_manifest.json"
+    # sed -i -e 's@/usr/local/share/docspell/native.py@/usr/share/docspell-tools/native.py@' \
+    #     "${pkgname[2]}-$pkgver/firefox/native/app_manifest.json"
 
-    sed -i -e 's@DS_SH_CMD="ds.sh"@DS_SH_CMD="docspell-ds"@' \
-        "${pkgname[2]}-$pkgver/firefox/native/native.py"
+    # sed -i -e 's@DS_SH_CMD="ds.sh"@DS_SH_CMD="docspell-dsc"@' \
+    #     "${pkgname[2]}-$pkgver/firefox/native/native.py"
 }
 
 # You do not need to compile Java applications from source.
@@ -110,24 +114,23 @@ package_docspell-restserver() {
             "$pkgdir/usr/share/java/${pkgname[1]}/"
 }
 
-makedepends+=('python')
-package_docspell-tools() {
-    pkgdesc="Collection of tools to interact with Docspell"
-    depends=('curl' 'inotify-tools' 'jq' 'python')
+# makedepends+=('python')
+# package_firefox-extension-docspell() {
+#     pkgdesc="Send documents from the context menu in Firefox to Docspell"
+#     depends=('python')
+#     conflicts=('docspell-tools')
+#     # optdepends=('docspell-dsc')
 
-    cd "${pkgname[2]}-$pkgver" || return
+#     cd "${pkgname[2]}-$pkgver" || return
 
-    # Firefox extension and native messaging host
-    mkdir -p "$pkgdir/usr/share/${pkgname[2]}"
-    mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
-    install -Dm 644 "firefox/$pkgbase-extension.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/docspell@eikek.github.io.xpi"
-    install -Dm 755 "firefox/native/native.py" "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
-    ln -s "/usr/share/${pkgname[2]}/firefox/native/app_manifest.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/$pkgbase.json"
+#     # Firefox extension and native messaging host
+#     mkdir -p "$pkgdir/usr/share/${pkgname[2]}"
+#     mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+#     install -Dm 644 "firefox/$pkgbase-extension.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/docspell@eikek.github.io.xpi"
+#     install -Dm 755 "firefox/native/native.py" "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
+#     ln -s "/usr/share/${pkgname[2]}/firefox/native/app_manifest.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/$pkgbase.json"
 
-    # https://wiki.archlinux.org/index.php/Python_package_guidelines#Reproducible_bytecode
-    export PYTHONHASHSEED=0
-    python -O -m compileall "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
-
-    # Scripts
-    find . -type f -name "*.sh" -exec sh -c 'install -Dm 755 "$3" "$1/usr/bin/$2-$(basename "$3" .sh)"' _ "$pkgdir" "$pkgbase" {} \;
-}
+#     # https://wiki.archlinux.org/index.php/Python_package_guidelines#Reproducible_bytecode
+#     export PYTHONHASHSEED=0
+#     python -O -m compileall "$pkgdir/usr/share/${pkgname[2]}/firefox/native/native.py"
+# }
