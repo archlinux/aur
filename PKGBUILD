@@ -1,4 +1,4 @@
-# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot con>
+# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot com>
 # Contributor: Jack Chen <redchenjs@live.com>
 
 pkgname=motrix-bin
