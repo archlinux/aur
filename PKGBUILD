@@ -1,7 +1,7 @@
 # Maintainer: Supdrewin <https://github.com/supdrewin>
 
 pkgname=batterycm-switcher
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An advanced Ideapad Laptops conservation mode adjustment tool"
 arch=('any')
