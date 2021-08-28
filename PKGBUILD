@@ -1,14 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xfsprogs-git
-pkgver=5.11.0.rc1.r0.g533034dc
+pkgver=5.13.0.r0.gb4203330
 pkgrel=1
 pkgdesc="Utilities for managing the XFS filesystem"
 arch=('i686' 'x86_64')
 url="https://xfs.org"
 license=('GPL2' 'LGPL')
-depends=('glibc' 'sh' 'libutil-linux' 'readline')
+depends=('glibc' 'device-mapper' 'icu' 'libinih' 'libutil-linux' 'readline' 'sh')
 makedepends=('git')
+optdepends=('python: for xfs_scrub_all script'
+            'smtp-forwarder: for xfs_scrub_fail script')
 provides=('xfsprogs')
 conflicts=('xfsprogs')
 options=('staticlibs')
@@ -19,7 +21,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "xfsprogs-dev"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
