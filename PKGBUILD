@@ -5,7 +5,7 @@
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgname=vcsh-git
-pkgver=2.0.0.r7.gbcdf7bf
+pkgver=2.0.1.r0.gfb4d506
 pkgrel=1
 epoch=1
 pkgdesc='Version Control System for $HOME that manages multiple Git repositories'
@@ -48,5 +48,5 @@ check() {
 
 package() {
 	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir" install
 }
