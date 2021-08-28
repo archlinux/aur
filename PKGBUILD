@@ -1,11 +1,11 @@
-# Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
+# Maintainer: carstene1ns <arch carsten-teibes de> - https://git.io/ctPKG
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: dale <dale@archlinux.org>
 
 pkgname=prboom
 pkgver=2.5.0
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 pkgdesc='A game engine which provides a program to play Doom levels.'
 url='http://prboom.sourceforge.net/'
@@ -29,7 +29,9 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  ./configure --prefix=/usr --disable-i386-asm
+  # gcc 10 work-around
+  CFLAGS="$CFLAGS -fcommon" \
+  ./configure --prefix=/usr --disable-i386-asm --disable-cpu-opt
   make
 }
 

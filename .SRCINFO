@@ -1,7 +1,7 @@
 pkgbase = prboom
 	pkgdesc = A game engine which provides a program to play Doom levels.
 	pkgver = 2.5.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://prboom.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = prboom
 	sha256sums = eb3b41139b8269f9223b084f8444e306dac60dc6fc190d7fabf41b162adca385
 
 pkgname = prboom
-
