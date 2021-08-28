@@ -13,6 +13,7 @@ depends=('electron8')
 makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+replaces=("neeto-vue")
 # strip takes too long time, so skip it.
 # options=('!strip')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/TankNee/Memocast/releases/download/v${pkgver}/${_filename}-${pkgver}-amd64-linux.deb"

@@ -9,6 +9,7 @@ pkgbase = memocast-bin
 	depends = electron8
 	provides = memocast
 	conflicts = memocast
+	replaces = neeto-vue
 	source = memocast-2.1.8.deb::https://github.com/TankNee/Memocast/releases/download/v2.1.8/Memocast-2.1.8-amd64-linux.deb
 	source = https://raw.githubusercontent.com/TankNee/Memocast/master/LICENSE
 	source = memocast.sh
