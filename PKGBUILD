@@ -2,7 +2,7 @@
 
 _gitname=complete-alias
 pkgname=bash-${_gitname}
-pkgver=1.14.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='automagical bash shell alias completion'
 arch=(any)
@@ -10,10 +10,10 @@ url='https://repo.cykerway.com/complete-alias'
 license=('GPL3')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cykerway/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=('ceb722af6c571421bc5edd604dd78913c888bf107283c9591d6cf46e5418e0c7')
+sha256sums=('c34b85c2729650415d97280afeeed6aa29a9e318a8a39061722493cacb927445')
 
 package() {
-  depends=('bash-completion' 'findutils' 'sed')
+depends=('bash-completion' 'findutils')
 
   cd ${_gitname}-${pkgver}
   install -Dm644 complete_alias "${pkgdir}"/usr/share/${pkgname}/complete_alias
