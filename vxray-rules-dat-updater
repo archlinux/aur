@@ -3,8 +3,9 @@
 set -e
 
 FastGit="https://hub.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/"
-GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/releases"
+GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
 JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
+CfCDN="https://cfgit.cern.ga/Loyalsoldier/v2ray-rules-dat/releases/latest/download"
 
 download_files() {
   echo "Fetching geoip.dat"
@@ -27,6 +28,8 @@ case "${1}" in
 "jsdelivr" | "js")
   download_files $JsDelivr
   ;;
+"cfcdn" | "cf"
+  download_files $CfCDN
 *)
   download_files $GitHub
   ;;

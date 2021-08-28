@@ -1,6 +1,6 @@
 pkgbase = vxray-rules-dat-git
 	pkgdesc = Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated.
-	pkgver = r202108282209
+	pkgver = r202108281135
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	install = vxray-rules-dat-git.install
@@ -27,10 +27,10 @@ pkgbase = vxray-rules-dat-git
 	source = vxray-rules-dat-updater.timer
 	sha256sums = SKIP
 	sha256sums = eb1d2175b8be7f9779639b2b24d8260f83116c9a743f1fb0052f056518ccfd11
-	sha256sums = ef9498a1e5bd99cece2d43cb24e4ce7afcf274171e33159e90f210a31c064004
+	sha256sums = 1e3cc96020718f5c022b8b5b2cbb0b3b8236583817ce313cc35709b2d3cc1f99
 	sha256sums = c855bae9e8a9e3fb7b5be4271bf6e05ad441eacd8272d505ee55a407b6bd263e
 	sha256sums = 1c3c0b854bbfd96b0d84383bfff84eb70e69ac5193b7a535f75183ca28634fc2
-	sha256sums = e282e023e2f4fbffabedc19a01c33e03cc5049c7cb2cd6e36398233a16bd2b84
+	sha256sums = 9742ad89797cdcba3d2f1068807a884e09f3797419c19d61125c7c93cec9212b
 	sha256sums = 5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c
 
 pkgname = vxray-rules-dat-git

@@ -8,4 +8,4 @@ User = vxray-rules-dat
 Group = vxray-rules-dat
 
 WorkingDirectory = /var/lib/vxray-rules-dat
-ExecStart = /usr/bin/vxray-rules-dat-updater github
+ExecStart = /usr/bin/vxray-rules-dat-updater github && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/v2ray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/xray/geoip.dat && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/v2ray/geosite.dat && cp -f /var/lib/vxray-rules-dat/geoip.dat /usr/share/xray/geosite.dat 
