@@ -9,12 +9,12 @@ name=cloudcompare
 _fragment="#tag=v2.11.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=3
+pkgrel=4
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl')
+depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'vxl' 'gdal')
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
@@ -86,6 +86,7 @@ build() {
         -DPLUGIN_STANDARD_QCSF:BOOL=ON
         -DPLUGIN_STANDARD_QFACETS:BOOL=ON # requires shapelib
         -DOPTION_USE_SHAPE_LIB:BOOL=ON
+        -DOPTION_USE_GDAL=ON
         -DPLUGIN_STANDARD_QHOUGH_NORMALS:BOOL=ON
         -DPLUGIN_STANDARD_QHPR:BOOL=ON
         -DPLUGIN_STANDARD_QM3C2:BOOL=ON
