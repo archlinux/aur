@@ -122,7 +122,10 @@ idle_server_daemon() {
 		if socket_has_session "${SESSION_NAME}"; then
 			# Game server is up and running
 			# Check for active player
-			if SUDO_CMD="" is_player_online; then
+			if [[ -n "$(tmux -L "${SESSION_NAME}" list-clients -t "${SESSION_NAME}":0.0 2> /dev/null)" ]]; then
+				# An administrator is connected to the console, pause player checking
+				echo "An admin is connected to the console. Pause player checking."
+			elif SUDO_CMD="" is_player_online; then
 				# No player was seen on the server through list
 				no_player=$(( no_player + CHECK_PLAYER_TIME ))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -417,9 +420,7 @@ server_command() {
 # Enter the tmux game session
 server_console() {
 	if socket_has_session "${SESSION_NAME}"; then
-		${SUDO_CMD} tmux -L "${SESSION_NAME}" wait-for -L "command_lock"
 		${SUDO_CMD} tmux -L "${SESSION_NAME}" attach -t "${SESSION_NAME}":0.0
-		${SUDO_CMD} tmux -L "${SESSION_NAME}" wait-for -U "command_lock"
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi
