@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: git poetry
 pkgname=trakt-scrobbler-git
-pkgver=1.3.0.beta.2.r7.g876b90c
+pkgver=1.3.1.r2.ge2e7add
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -24,6 +24,8 @@ depends=(
 	'python-pysocks>=1.7.1' #auto-deps
 	'python-requests<3.0.0' #auto-deps
 	'python-requests>=2.25.1' #auto-deps
+	'python-urllib3<2.0.0' #auto-deps
+	'python-urllib3>=1.26.0' #auto-deps
 	'python-urlmatch<2.0.0' #auto-deps
 	'python-urlmatch>=1.0.1' #auto-deps
 )
