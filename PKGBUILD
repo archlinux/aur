@@ -5,6 +5,9 @@
 # Build Options
 _build_stubdom=${build_stubdom:-false}
 _build_qemu=${build_qemu:-true}
+_boot_dir=${boot_dir:-/boot}
+_efi_dir=${efi_dir:-/boot}
+_efi_mountpoint=${efi_mountpoint:-/boot}
 
 # Check http://xenbits.xen.org/xen-extfiles/ for updates
 _gmp=4.3.2
@@ -19,7 +22,7 @@ _zlib=1.2.3
 pkgbase=xen
 pkgname=("xen" "xen-docs")
 pkgver=4.15.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -30,10 +33,10 @@ options=(!buildflags)
 makedepends=(
 	'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf'
 	'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
-	'vde2' 'lzo' 'pciutils' 'sdl2'
+	'vde2' 'lzo' 'pciutils' 'sdl2' 'systemd-libs'
 ) # last line from namcap, these depends are the xen depends
 # Actual makedepends.
-makedepends+=('wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'ocaml' 'fig2dev')
+makedepends+=('systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'ocaml' 'fig2dev')
 
 _source=(
 	"https://downloads.xenproject.org/release/xen/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig}
@@ -44,6 +47,7 @@ _source=(
 	"xen-intel-ucode.hook"
 	"xen-amd-ucode.hook"
 	"no-ld-no-pie.patch"
+	"gcc-11.patch"
 )
 
 validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree code signing (signatures on the xen hypervisor and tools) <pgp@xen.org>
@@ -52,6 +56,11 @@ validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree cod
 # Follow the Xen securite mailing lists, and if a patch is applicable to our package
 # add the URL here.
 _patches=(
+	"aur-xsa379.patch"
+	"https://xenbits.xen.org/xsa/xsa380/xsa380-1.patch"
+	"https://xenbits.xen.org/xsa/xsa380/xsa380-2.patch"
+	"https://xenbits.xen.org/xsa/xsa382.patch"
+	"https://xenbits.xen.org/xsa/xsa383.patch"
 )
 
 
@@ -79,9 +88,16 @@ _sha512sums=(
 	"7a832de9b35f4b77ee80d33310b23886f4d48d1d42c3d6ef6f8e2b428bec7332a285336864b61cfa01d9a14c2023674015beb7527bd5849b069f2be88e6500cd" # xen-intel-ucode.hook
 	"99921b94a29fa7988c7fb5c17da8e598e777c972d6cae8c8643c991e5ff911a25525345ea8913945313d5c49fecf9da8cc3b83d47ab03928341e917b304370a9" # xen-amd-ucode.hook
 	"72edbacdb2b3b4449448e1bf7a6b31b58234eed1abe010db6dcf4033158edf095b081bc6eb89cde3156432dd35c449e1954aeefb2c4bc785a5d3f93de7b0fa76" # no-ld-no-pie.patch
+	"68d468b0a811bd8882992a605d16ab1e0e95dd5e4644bdcf1287ffb0db046dddcbdf740df7d7f32665cbb50088e9e4a7c7d69fbfbf42e460ebdc097caccdd7b2" # gcc-11.patch
 )
 
+
 _patch_sums=(
+	"03d1250ae52098bc7ba46ec3cfb5d7bd699a3c5c66dbd231dcc6776fb2d71b3c0f801fb3f1e6cdc102cf06b2b73b86734f61b0fc8ab2d88a54c2371eba31828a" # aur-xsa379.patch
+	"9c65e5860aa4cea90224ebf9340d314ba1cf4f687fb5ccc8489dbc3465a03a467411639c00e31b6090f09813e0102a94a833a47da4427b673369b9e4b977b4bd" # xsa380-1.patch
+	"61a87c2baff2b84af14d53556c918a1ff4ca1a6189b05cd2fcf8a1366c5af5dc1dbf7168d8f79c821c0e6ee629d72145514087844f0469a5f96668171157b393" # xsa380-2.patch
+	"6c5e3388fcfb0dcae30d5f315bf95d263c82519d2cbf2a8a88d280b5b0b1c1ed4cce7a1a85fabbf57c785ad9dc23e8e5e4773c631c00e036aada604ff8e7fa03" # xsa382.patch
+	"d5106df26e6c4512d88ea6748c403117a2b61cb40f6d6c08a76f160352b79f94dd67cbb3419a33f2c6cfc7bbd644baed0498e366a6bf00d8031df728a47f36ea" # xsa383.patch
 )
 
 
@@ -96,8 +112,6 @@ _stub_sums=(
 	"021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
 )
 
-
-
 # Simplify things for makepkg
 source=( "${_source[@]}" "${_patches[@]}" )
 sha512sums=( "${_sha512sums[@]}" "${_patch_sums[@]}" )
@@ -108,7 +122,7 @@ done
 
 
 
-# stubdum handling
+# stubdom handling
 if [ "${_build_stubdom}" == "true" ]; then
 	source=("${source[@]}" "${_stubdom_source[@]}")
 	sha512sums=("${sha512sums[@]}" "${_stub_sums[@]}")
@@ -131,8 +145,12 @@ else
 	_config_qemu="--with-system-qemu=/usr/bin/qemu-system-x86_64"
 fi
 
-
-
+_common_make_flags=(
+  "BOOT_DIR=${_boot_dir}"
+  "EFI_DIR=${_efi_dir}"
+  "EFI_MOUNTPOINT=${_efi_mountpoint}"
+  'XEN_VENDORVERSION=arch'
+)
 
 # TODO: Setup users, dirs, etc.
 
@@ -141,6 +159,7 @@ prepare() {
 	cd "${pkgbase}-${pkgver}"
 
 	patch -p1 < ../no-ld-no-pie.patch
+	patch -p1 < ../gcc-11.patch
 
 	if [ "${_build_stubdom}" == "true" ]; then
 
@@ -190,7 +209,7 @@ build() {
 		--with-system-ovmf=/usr/share/ovmf/x64/OVMF.fd \
 		--with-system-seabios=/usr/share/qemu/bios-256k.bin
 
-	make XEN_VENDORVERSION=arch
+	make "${_common_make_flags[@]}"
 }
 
 package_xen() {
@@ -200,6 +219,7 @@ package_xen() {
 		'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf'
 		'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 		'vde2' 'lzo' 'pciutils' 'sdl2'
+		'pixman' 'libseccomp' 'libpng' 'libjpeg-turbo' # inhereted depends because of build environment
 	)
 
 	optdepends=(
@@ -228,24 +248,26 @@ package_xen() {
 
 	cd "${pkgbase}-${pkgver}"
 
+	make "${_common_make_flags[@]}" DESTDIR="$pkgdir" install
 
-	make DESTDIR="$pkgdir" install
+	rm -rf "$pkgdir"/var/run
 
-	mv "$pkgdir"/usr/lib64/efi "$pkgdir"/usr/lib/efi
-	rm -rf "$pkgdir"{/var/run,/usr/lib64}
-	#  This feels like The Arch Way, really.
-	find "${pkgdir}/usr/lib/efi" -type l -delete
-	mv "${pkgdir}/usr/lib/efi/xen-${pkgver}.efi" "${pkgdir}/usr/lib/efi/xen.efi"
-
+	#  Symlinks to prior installed versions are not The Arch Way, leave only the bare EFI binary
+	(cd "${pkgdir}/${_efi_dir}" && mv "$(realpath xen.efi)" xen.efi)
 
 	[ -d "$pkgdir"/etc/xen/scripts ] && backup+=($(find "$pkgdir"/etc/xen/scripts/ -type f | sed "s|^$pkgdir/||g"))
 
 	mkdir -p "${pkgdir}/var/log/xen/console"
 
-	# Remove hypervisor symlinks.
-	find "${pkgdir}/boot" -type l -delete
-	# Continued: This feels like The Arch Way, really.
-	mv "${pkgdir}/boot/xen-${pkgver}.gz" "${pkgdir}/boot/xen.gz"
+	# Continued: Trim hypervisor symlinks.
+	(cd "${pkgdir}/${_boot_dir}" && mv "$(realpath xen.gz)" xen.gz)
+
+	# Do all symlink removals after the directories have had the real
+	# binaries moved overtop any symlinks. Note that dependening on
+	# configuratation _efi_dir and _boot_dir may be the same directory, so
+	# don't clean any of them until they've all been processed.
+	find "${pkgdir}/${_efi_dir}" -type l -delete
+	find "${pkgdir}/${_boot_dir}" -type l -delete
 
 	# Remove syms.
 	find "${pkgdir}/usr/lib/debug" -type f \( -name '*-syms*' -or -name '*\.map' \) -delete
@@ -279,5 +301,5 @@ package_xen-docs() {
 	pkgdesc="Xen hypervisor documentation and man pages"
 	arch=("any")
 	cd "${pkgbase}-${pkgver}"
-	make DESTDIR="${pkgdir}" install-docs
+	make "${_common_make_flags[@]}" DESTDIR="$pkgdir" install-docs
 }
