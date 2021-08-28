@@ -1,8 +1,9 @@
+# Maintainer: Platon Ryzhikov <ihummer63@yandex.ru>
+
 pkgname=libudev-zero-git
 _pkgname=libudev-zero
-pkgver=187
+pkgver=202
 pkgrel=1
-udev_version=243
 libudev_ver=1-64
 so_ver=1.6.3
 pkgdesc="Daemonless replacement for libudev "
@@ -12,7 +13,6 @@ license=('GPL')
 makedepends=('glibc' 'make' 'git')
 provides=('libudev-zero' 'libeudev' 'libudev' "libudev.so=$libudev_ver")
 conflicts=('libudev')
-#source=("git+https://github.com/illiliti/libudev-zero#commit=496291c8ddda031c9e30c78edb11a786b17de6c6"
 source=("git+https://github.com/illiliti/libudev-zero"
         artix-install.patch)
 md5sums=('SKIP'
@@ -32,7 +32,7 @@ prepare() {
 build() {
 	cd ${_pkgname}
 
-	LIBUDEV_VER="${so_ver}" CFLAGS="${CFLAGS} -DUDEV_VERSION=$udev_version -DUDEV_MONITOR_DIR=\\\"/run/libudev-zero\\\"" make
+	LIBUDEV_VER="${so_ver}" make
 
 	msg "Compiling helper"
 	cd contrib

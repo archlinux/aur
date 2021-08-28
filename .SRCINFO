@@ -1,6 +1,6 @@
 pkgbase = libudev-zero-git
 	pkgdesc = Daemonless replacement for libudev
-	pkgver = 187
+	pkgver = 202
 	pkgrel = 1
 	url = https://github.com/illiliti/libudev-zero
 	arch = x86_64
