@@ -1,7 +1,7 @@
 # Maintainer: FuzzyCheese
 pkgname=wfview-git
 pkgver=r1249.54d6850
-pkgrel=2
+pkgrel=3
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
@@ -9,6 +9,7 @@ license=('GPL3')
 depends=('qt5-serialport' 'qt5-multimedia' 'qcustomplot')
 makedepends=('git')
 provides=('wfview')
+conflicts=('wfview')
 source=('git+https://gitlab.com/eliggett/wfview.git')
 md5sums=(SKIP)
 
