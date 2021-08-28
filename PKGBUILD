@@ -1,7 +1,7 @@
 # Maintainer: Chiwan Park <chiwanpark@hotmail.com>
 
 pkgname=pulse-secure
-pkgver=9.1r11.4_b8575
+pkgver=9.1r12.0_b10247
 pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
@@ -10,9 +10,9 @@ url='https://www.pulsesecure.net/'
 depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd)
 install=${pkgname}.install
 source=(EULA.txt)
-source_x86_64=("http://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R11.4/ps-pulse-linux-9.1r11.4-b8575-64-bit-installer.rpm")
+source_x86_64=("http://ccnet.ntu.edu.tw/vpn/Download/ps-pulse-linux-9.1r12.0-b10247-64-bit-installer.rpm")
 md5sums=('261848a28201e5386ec4bf587473a48b')
-md5sums_x86_64=('3183cb1216d74a21ea564b0588bf0dfc')
+md5sums_x86_64=('74f180159f742e138e166b3b8d7eb4d5')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
 
