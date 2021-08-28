@@ -1,0 +1,11 @@
+[Unit]
+Description=Dcompass DNS server Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dcompass -c /etc/dcompass/%i.yaml
+User=dcompass
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
