@@ -3,7 +3,7 @@
 set -e
 
 FastGit="https://hub.fastgit.org/Loyalsoldier/v2ray-rules-dat/releases/latest/"
-GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/"
+GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/releases"
 JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/"
 
 download_files() {
