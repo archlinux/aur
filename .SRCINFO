@@ -13,6 +13,7 @@ pkgbase = chowtapemodel.lv2-git
 	depends = libxrandr
 	depends = freeglut
 	depends = jack
+	depends = xsimd
 	provides = chowtapemodel.lv2
 	provides = chowtapemodel.lv2-bin
 	conflicts = chowtapemodel.lv2
@@ -25,4 +26,3 @@ pkgbase = chowtapemodel.lv2-git
 	md5sums = SKIP
 
 pkgname = chowtapemodel.lv2-git
-

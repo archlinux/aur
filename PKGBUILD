@@ -10,7 +10,7 @@ license=(GPL)
 groups=(lv2plugins)
 conflicts=('chowtapemodel.lv2' 'chowtapemodel.lv2-bin')
 provides=('chowtapemodel.lv2' 'chowtapemodel.lv2-bin')
-depends=('git' 'alsa-lib' 'libxcursor' 'libxinerama' 'libxrandr' 'freeglut' 'jack')
+depends=('git' 'alsa-lib' 'libxcursor' 'libxinerama' 'libxrandr' 'freeglut' 'jack' 'xsimd')
 makedepends=()
 source=("$pkgname::git+https://github.com/jatinchowdhury18/AnalogTapeModel"
         "git+https://github.com/jatinchowdhury18/JUCE.git"
