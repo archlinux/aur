@@ -6,8 +6,8 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.2.r29784.7a978b060'
-pkgrel=2
+pkgver='0.15.3.r29799.38902729b'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${_appname}.org"
