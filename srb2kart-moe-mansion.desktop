@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Sonic Robo Blast 2 Kart - Moe Mansion
+Comment=Classic styled kart racer
+GenericName=A 3D open-source kart racing game
+Exec=srb2kart-moe-mansion
+Icon=srb2kart-moe-mansion
+Terminal=false
+Categories=Game;ArcadeGame
