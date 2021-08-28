@@ -1,4 +1,6 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Posi <posi1981@gmail.com>
+
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=bir
 pkgver=2.0
