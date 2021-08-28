@@ -28,8 +28,9 @@ case "${1}" in
 "jsdelivr" | "js")
   download_files $JsDelivr
   ;;
-"cfcdn" | "cf"
+"cfcdn" | "cf")
   download_files $CfCDN
+  ;;
 *)
   download_files $GitHub
   ;;
