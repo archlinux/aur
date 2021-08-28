@@ -1,9 +1,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
-
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
-pkgver=5.2.5
+pkgver=5.4.2
 pkgrel=1
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
@@ -14,7 +13,7 @@ makedepends=('tar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.deb::https://www.apipost.cn/dl.php?client=Linux&arch=x64")
-sha256sums=('9031753589dda5ea645f34ed5892713b65e9b16f3174cedb5d6af8958274beb4')
+sha256sums=('bb70ce005027e73322371358fe503a18511856c98c4658b2d872c6d594c029e1')
 
 package() {
   tar -xf data.tar.xz -C ${pkgdir}
