@@ -18,7 +18,7 @@ options=(!strip staticlibs)
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/([^-]*-g)/r1/;s/-/./g'
 }
 
 build() {
