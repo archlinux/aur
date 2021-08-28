@@ -1,4 +1,6 @@
 # Maintainer: Posi <posi1981@gmail.com>
+
+# Contributor: JoseDR120 <josedrgerena720@gmail.com>
  
 pkgname=atom-editor-bin
 pkgver=1.58.0
