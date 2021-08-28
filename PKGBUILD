@@ -9,7 +9,7 @@ _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 _fragment="#branch=dev"
 pkgname=${_name}-git
-pkgver=3.6.r88.g866af287
+pkgver=3.6.r93.gda8311b0
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -23,11 +23,13 @@ if [ "$_BUILD_CUDA" == "ON" ] ; then
   optdepends+=('libcudart.so: for cuda sfm/mvs acceleration')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
+        "cuda11_gcc11.patch"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
 sha256sums=('SKIP'
+            '4b76da280b2c81ddb760e813d2c27c6b932790cc9aabaadbd0a917a6b57cfdfd'
             'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
             'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
@@ -36,12 +38,15 @@ pkgver() {
   git -C "$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C "$pkgname" apply -v "$srcdir"/*.patch
+}
+
 build() {
   # determine whether we can precompile CUDA kernels
     _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
     if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "ON" ]]; then
       _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
-                      -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
                       -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
                       -DCUDA_ARCHS="$_CUDA_ARCH"
                     )
