@@ -2,7 +2,7 @@
 
 _plug=pvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.1.2.r46.8f21075
+pkgver=4.0.3.1.g8bc78a0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -11,9 +11,10 @@ license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-pyd2v-git'
          'python-pymediainfo'
+         'python-more-itertools'
          )
 makedepends=('git'
-             'python-setuptools'
+             'python-poetry'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -22,13 +23,15 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  _ver="$(cat setup.py | grep -m1 version | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "v${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
+}
+
+build() {
+  cd "${_plug}"
+  poetry build -f wheel
 }
 
 package() {
   cd "${_plug}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 }

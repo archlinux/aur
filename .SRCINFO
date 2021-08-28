@@ -1,19 +1,19 @@
 pkgbase = vapoursynth-plugin-pvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: pvsfunc (GIT version)
-	pkgver = v2.1.2.r46.8f21075
+	pkgver = 4.0.3.1.g8bc78a0
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=180426
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-poetry
 	depends = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-pyd2v-git
 	depends = python-pymediainfo
+	depends = python-more-itertools
 	provides = vapoursynth-plugin-pvsfunc
 	conflicts = vapoursynth-plugin-pvsfunc
 	source = pvsfunc::git+https://github.com/rlaPHOENiX/pvsfunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-pvsfunc-git
-
