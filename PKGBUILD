@@ -1,5 +1,6 @@
-# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
-# Maintainer: adambot <adambot@gmail.com>
+# Maintainer: Posi <posi1981@gmail.com>
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: adambot <adambot@gmail.com>
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 _pkgname=coreutils
