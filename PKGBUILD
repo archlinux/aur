@@ -3,7 +3,7 @@
 # Contributor: Simon Thorpe <simon@hivetechnology.com.au>
 
 pkgname=pianoteq-standard-trial-bin
-pkgver=7.4.0
+pkgver=7.4.2
 pkgrel=1
 pkgdesc="Physical modelling piano instrument as a standalone program and VST2 and LV2 plugins. STANDARD trial version"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" 'pianoteq-standard-bin')
 source=("local://pianoteq_linux_trial_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha256sums=('15cdaf00fd271a7c83ef7ef784960098bc3c6abf72a82d830b956e81738f651a'
+sha256sums=('8bfc1091cc9d1cc6f1290ee553cedb55cc0d2d8f66254688adaca063cb9aca3a'
             '94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 prepare() {
