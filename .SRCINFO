@@ -1,0 +1,17 @@
+pkgbase = mcserv-git
+	pkgdesc = CLI utility to manage MC server installations.
+	pkgver = r36.39aa575
+	pkgrel = 1
+	url = https://github.com/DRSchlaubi/mcserv
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = java-runtime
+	makedepends = dart
+	provides = mcserv
+	conflicts = mcserv
+	options = !strip
+	source = git+https://github.com/DRSchlaubi/mcserv
+	md5sums = SKIP
+
+pkgname = mcserv-git
