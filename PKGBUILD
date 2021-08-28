@@ -1,6 +1,6 @@
 # Maintainer: William Franco Abdul Hai <williamhai at hotmail dot com>
 pkgname='koi'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Switch between light and dark themes on KDE Plasma"
 arch=('x86_64')
