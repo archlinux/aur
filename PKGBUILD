@@ -1,10 +1,10 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: Posi <posi1981@gmail.com>
 # Contributor: Ben Reedy <thebenj88 *AT* gmail *DOT* com>
 # Contributor: Tony Dodd <arch@recalcitrance.net>
 # Contributor: Mark Taylor <skymt0@gmail.com>
 
 pkgname=clex
-pkgver=4.6.patch9
+pkgver=4.6.patch10
 pkgrel=1
 pkgdesc="File manager with a full-screen user interface"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://www.clex.sk"
 license=('GPL2')
 depends=('ncurses')
 source=($url/download/$pkgname-$pkgver.tar.gz)
-md5sums=('424a2dfd01889f7cde3511ea1f9ea20f')
+sha256sums=('1c3aa2a37e858359636fa8e82229e2bb5459548e9820266a3efd9e32318cd10e')
 
 build() {
   cd "$pkgname-$pkgver"
