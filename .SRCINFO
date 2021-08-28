@@ -1,0 +1,18 @@
+pkgbase = neovim-diffview-git
+	pkgdesc = Single tabpage interface for cycling through diffs for all modified files
+	pkgver = r44.e0ffb1c
+	pkgrel = 1
+	url = https://github.com/sindrets/diffview.nvim
+	install = diffview.install
+	arch = any
+	groups = neovim-plugins
+	license = GPL3
+	depends = neovim>=0.5
+	depends = git
+	optdepends = neovim-web-devicons
+	provides = neovim-diffview
+	conflicts = neovim-diffview
+	source = neovim-diffview-git::git+https://github.com/sindrets/diffview.nvim
+	md5sums = SKIP
+
+pkgname = neovim-diffview-git
