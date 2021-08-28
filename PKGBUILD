@@ -1,26 +1,19 @@
-# Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
-pkgname=lolminer
-pkgver=1.0
-pkgrel=5
-pkgdesc="Unofficial installer for lolMiner: https://github.com/Lolliedieb/lolMiner-releases"
-arch=("x86_64")
-url="https://github.com/Lolliedieb/lolMiner-releases"
-license=("GPL")
-depends=("curl" "tar" ) 
-options=('!strip')
+# Maintainer: Saurabh Kumar Sharma <imesskayesss@protonmail.com>
 
-prepare(){
-    # Getting latest package version
-    latver=$(curl --silent 'https://api.github.com/repos/Lolliedieb/lolMiner-releases/releases/latest' | grep ".*tag_name.*" | sed -E 's/.*"([^"]+)".*/\1/')
-    mkdir -p lolminer 
-    downloadlink=$(curl --silent 'https://api.github.com/repos/Lolliedieb/lolMiner-releases/releases/latest' | grep ".*browser_download_url.*Lin64.*" | sed -E 's/.*"([^"]+)".*/\1/')
-    echo "Downloading lolMiner v$latver"
-    echo "    using link: $downloadlink" 
-    curl -L "$downloadlink" | tar xzf - --directory "lolminer" --strip-components=1
-}
+pkgname=lolminer
+pkgver=1.31
+pkgrel=1
+pkgdesc="Unofficial installer for lolMiner"
+arch=("x86_64")
+url='https://github.com/Lolliedieb/lolMiner-releases'
+license=('custom: lolMiner License Agreement')
+options=('!strip')
+source=("https://github.com/Lolliedieb/lolMiner-releases/releases/download/${pkgver}/lolMiner_v${pkgver}_Lin64.tar.gz")
+sha256sums=('SKIP')
 
 package(){
     install -dm755 "${pkgdir}/"{opt,usr/bin/}
-    cp -rL "${srcdir}/${pkgname}" "${pkgdir}/opt/${pkgname}"
+    cp -rL "${srcdir}/${pkgver}" "${pkgdir}/opt/${pkgname}"
     ln -s "/opt/${pkgname}/lolMiner" "${pkgdir}/usr/bin/lolminer"
+    install -D "${srcdir}/${pkgver}/license.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
