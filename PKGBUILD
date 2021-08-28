@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r20.0.g394a360
+pkgver=r24.18.g9681b3e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -21,18 +21,17 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  cd "${_plug}"
+#  rm -fr src/VapourSynth.h
 
-  rm -fr "${_plug}/src/VapourSynth.h"
-
-  cd "${_plug}/build/unix"
+  cd build/unix
   ./autogen.sh
 }
 
 build() {
-  cd build
-  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
-  ../"${_plug}"/build/unix/configure \
+  cd "${_plug}/build/unix"
+#   CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
+  ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
@@ -40,7 +39,7 @@ build() {
 }
 
 package(){
-  make -C build DESTDIR="${pkgdir}" install
+  make -C "${_plug}/build/unix" DESTDIR="${pkgdir}" install
 
   (cd "${_plug}/doc"; for i in *.{html,png,css}; do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
   install -Dm644 "${_plug}/doc/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
