@@ -11,7 +11,7 @@ arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
-depends=(curl libevent libsystemd miniupnpc)
+depends=(curl libevent libsystemd miniupnpc opendht libb64 libutp libnatpmp)
 makedepends=(cmake git)
 conflicts=(transmission-cli)
 replaces=(transmission-cli)
@@ -39,13 +39,19 @@ build() {
   mkdir -p build
   cd build
 
-  cmake \
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DENABLE_CLI=ON \
     -DENABLE_GTK=OFF \
     -DENABLE_QT=OFF \
-    ..
+    -DENABLE_WEB=OFF \
+    -DINSTALL_LIB=ON \
+    -DUSE_SYSTEM_DHT=ON \
+    -DUSE_SYSTEM_B64=ON \
+    -DUSE_SYSTEM_NATPMP=ON \
+    -DUSE_SYSTEM_UTP=ON
+
   make
 }
 
