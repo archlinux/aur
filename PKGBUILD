@@ -3,7 +3,7 @@
 _pyname=pymemcache
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
-pkgver=3.4.3
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A comprehensive, fast, pure Python memcached client"
 arch=(any)
@@ -17,10 +17,19 @@ makedepends=(
 	python2-six
 	python2-setuptools
 )
+checkdepends=(
+	python-future
+	python-mock
+	python-pytest
+	python-pytest-cov
+	python-gevent
+	python-pylibmc
+	python-memcached
+)
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('ba3840b67f7586f492a60453b8c087a9')
-sha256sums=('1d628659f8d88c88832448f3917a2b68468ec8f1515108726c26efc968c413af')
-sha512sums=('433f5652b2293140df265dd92a33b6c6bcded53ab8a4e12ee6b2bed2937117ba687ee9e9ed8cca04d1c26f88e8bfb35c93a33d87539e4ff53042bf7eb9c6abdd')
+md5sums=('717cab2068070a62af7d9c30cc842c40')
+sha256sums=('5bf9c94a6bc9ad081dc9b5808284e027d755a0518f6375a57405552938c74d91')
+sha512sums=('0244e40ae5060ad3df96ab60d239e92fe0c21d26d560ed380bed06722fd229e40d3d26e3256ff469daaf682019e05b171b11b47a1bc328e35a3d18c87d45a3fc')
 
 prepare(){
 	cp -a $_pyname-$pkgver{,-py2}
@@ -41,9 +50,6 @@ check(){
 	pushd $_pyname-$pkgver
 	python -m pytest
 	popd
-	#pushd $_pyname-$pkgver-py2
-	#python2 -m pytest
-	#popd
 }
 
 _package_python(){
