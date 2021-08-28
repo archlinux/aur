@@ -2,13 +2,13 @@
 
 pkgname=cbonsai
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A bonsai tree generator, written in C using ncurses'
 arch=('any')
 url="https://gitlab.com/jallbrit/$pkgname"
 license=('GPL3')
+makedepends=('scdoc')
 depends=('gcc' 'ncurses')
-optdepends=('scdoc: Build manpage')
 provides=('cbonsai')
 conflicts=('cbonsai')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.zip")
