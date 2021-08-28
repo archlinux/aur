@@ -1,11 +1,11 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-pot
 _pkgname=POT
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python Optimal Transport"
 _github="rflamary/POT"
-url="https://github.com/rflamary/POT/"
+url="https://github.com/PythonOT/POT/"
 arch=('x86_64')
 license=('MIT')
 depends=('python-numpy' 'python-scipy' 'python-matplotlib')
@@ -15,8 +15,8 @@ optdepends=(
   'python-pymanopt: necessary to use `ot.dr`'
 )
 makedepends=('python' 'python-setuptools' 'cython')
-source=("https://github.com/rflamary/POT/archive/$pkgver.tar.gz")
-md5sums=('8af56ddc9b6ef9eb887a013160652cb5')
+source=("https://github.com/PythonOT/POT/archive/$pkgver.tar.gz")
+md5sums=('8dce09b95da25ca7069b89734a6b8728')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
