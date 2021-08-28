@@ -1,6 +1,6 @@
 pkgbase = i3ass
 	pkgdesc = A bash-script collection to assist the use of i3-wm.
-	pkgver = 2021.08.28.0
+	pkgver = 2021.08.28.1
 	pkgrel = 1
 	url = https://github.com/budlabs/i3ass
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = i3ass
 	depends = sed
 	optdepends = rofi
 	optdepends = xdotool
-	source = https://github.com/budlabs/i3ass/archive/2021.08.28.0/i3ass-2021.08.28.0.tar.gz
-	sha256sums = 431beae7983bbb18d6b14484eb899a67249b99ba4381128049a3bce5e3530260
+	source = https://github.com/budlabs/i3ass/archive/2021.08.28.1/i3ass-2021.08.28.1.tar.gz
+	sha256sums = 6d0437d1be4688b95a8e8f3fa8d8653ace99389c46720aec9a4bede22a343f73
 
 pkgname = i3ass
