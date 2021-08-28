@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r6.6.g94cb6a4
+pkgver=r7.0.ga72cf3d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git'
              'cmake'
              'avisynthplus'
              'vapoursynth'
+             'tbb'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git")
 sha256sums=('SKIP')
@@ -32,17 +33,17 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags vapoursynth) $(pkg-config --cflags avisynth)"
 
   make
 }
 
 package_avisynth-plugin-neo_f3kdb-git() {
   pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
-  depends=('avisynthplus'
-           'intel-tbb'
-           )
+  depends=('avisynthplus')
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
@@ -54,9 +55,7 @@ package_avisynth-plugin-neo_f3kdb-git() {
 
 package_vapoursynth-plugin-neo_f3kdb-git() {
   pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-  depends=('vapoursynth'
-           'intel-tbb'
-           )
+  depends=('vapoursynth')
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
