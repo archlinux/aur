@@ -3,7 +3,7 @@
 pkgname=zekr
 pkgver=1.1.0
 pkgrel=2
-pkgdesc="Quran Research Tool"
+pkgdesc="Quranic Research Tool"
 url="https://sourceforge.net/projects/zekr-linux"
 license=("GPL")
 arch=('x86_64')

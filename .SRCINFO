@@ -1,5 +1,5 @@
 pkgbase = zekr
-	pkgdesc = Quran Research Tool
+	pkgdesc = Quranic Research Tool
 	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://sourceforge.net/projects/zekr-linux
