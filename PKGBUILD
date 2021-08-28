@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aspell-git
-pkgver=0.60.7.rc1.r3.gb2e2b25
+pkgver=0.60.8.20190921.r37.gcef82a8
 pkgrel=1
 pkgdesc="Free and Open Source spell checker"
 arch=('i686' 'x86_64')
 url="http://aspell.net/"
 license=('LGPL')
-depends=('ncurses')
+depends=('gcc-libs' 'ncurses')
 makedepends=('git')
 optdepends=('perl: to import old dictionaries')
 provides=('aspell')
@@ -20,10 +20,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "aspell"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/rel-//p}')
-  _rev=$(git rev-list --count rel-$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/./g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^rel-//;s/-/./g'
 }
 
 build() {
@@ -31,7 +31,8 @@ build() {
 
   PERL_USE_UNSAFE_INC=1 ./autogen
   ./configure \
-    --prefix="/usr" --sysconfdir="/etc" \
+    --prefix="/usr" \
+    --sysconfdir="/etc" \
     --enable-static
   make
 }
