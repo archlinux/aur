@@ -8,7 +8,6 @@ pkgbase = lv2-plugins-aur-meta
 	depends = bg-plugins.lv2-git
 	depends = bjumblr.lv2-git
 	depends = caps-lv2-git
-	depends = distrho-extra-lv2-git
 	depends = drmr-falktx-git
 	depends = fluidplug-git
 	depends = fogpad.lv2-git
@@ -74,4 +73,3 @@ pkgbase = lv2-plugins-aur-meta
 	depends = psi-plugins.lv2-git
 
 pkgname = lv2-plugins-aur-meta
-
