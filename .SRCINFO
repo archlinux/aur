@@ -1,6 +1,6 @@
 pkgbase = kernel-modules-hook-reflink
 	pkgdesc = Keeps your system fully functional after a kernel upgrade (forked version using `cp --reflink`, maybe better for btrfs)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/lideming/kernel-modules-hook
 	install = kernel-modules-hook.install
