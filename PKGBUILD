@@ -3,10 +3,10 @@
 pkgname="stsw-link007"
 _pkgname="STLinkUpgrade"
 pkgver=2.38.27
-pkgrel=1
+pkgrel=2
 _stlink_upgrade_ver=3.3.6
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
-arch=('any')
+arch=('x86_64')
 url="https://www.st.com/en/development-tools/stsw-link007.html"
 license=('SLA0048')
 # depends comments
@@ -31,7 +31,7 @@ source=("local://${_pkg_file_archive}"
         "SLA0048.pdf::https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
 sha256sums=('bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
-            'dd7795c45a38b8bb652f37fced82f6d5ce6cbf5dffd7b29b784a89496757e991'
+            'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
             '2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b')
       
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
