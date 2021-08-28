@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/usr/lib/armorpaint/Krom /usr/share/armorpaint/krom
+/usr/lib/armorpaint/ArmorPaint /usr/share/armorpaint/krom

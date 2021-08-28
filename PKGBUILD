@@ -3,7 +3,7 @@
 
 pkgname=('armorpaint-git')
 _pkgname='armorpaint'
-pkgver=0.8.r1974.g5cab715
+pkgver=0.8.r2591.gf4080ede
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="ArmorPaint is a software for 3D PBR texture painting"
@@ -18,7 +18,7 @@ source=("git+https://github.com/armory3d/armorpaint"
         "armorpaint.desktop"
         "armorpaint.png")
 md5sums=(SKIP
-         "728cc52bfa9e7b16390459e7a80fad16"
+         "74001d6c572fc79c96d0bee24427f7ba"
          "dd5d97aadd39966ff7d9dda68b5ae29a"
          "67cf4a0cb08c66c4a68c677885e8ac99")
 
@@ -39,7 +39,7 @@ build() {
     cd armorcore
     node Kinc/make -g opengl --compiler clang --compile
     cd Deployment
-    strip Krom
+    strip ArmorPaint
 }
 
 package() {
@@ -48,7 +48,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib/armorpaint
 	install -Dm755 ${srcdir}/armorpaint.sh ${pkgdir}/usr/bin/armorpaint
 	install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-	install -Dm755 armorcore/Deployment/Krom ${pkgdir}/usr/lib/armorpaint/
+	install -Dm755 armorcore/Deployment/ArmorPaint ${pkgdir}/usr/lib/armorpaint/
 	install -Dm644 ${srcdir}/armorpaint.desktop ${pkgdir}/usr/share/applications/armorpaint.desktop
 	mkdir -p ${pkgdir}/usr/share/armorpaint
 	cp -r build/krom ${pkgdir}/usr/share/armorpaint/krom
