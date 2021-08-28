@@ -1,6 +1,6 @@
 pkgbase = mendeley-reference-manager
 	pkgdesc = Mendeley Reference Manager
-	pkgver = 2.52.0
+	pkgver = 2.55.0
 	pkgrel = 1
 	url = https://www.mendeley.com/download-reference-manager
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mendeley-reference-manager
 	depends = libgl
 	depends = libxss
 	options = !strip
-	source = https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.52.0-x86_64.AppImage
-	sha256sums = 6d2614b5218cb02c9428f69ac712ad82993a7714e8dbe070b0aee282ec64d4f8
+	source = https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.55.0-x86_64.AppImage
+	sha256sums = ba37ce142d913250bcd698b9ea7ea2281f7237c03d58c50dd62773c9b17064aa
 
 pkgname = mendeley-reference-manager
