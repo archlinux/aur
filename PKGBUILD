@@ -1,4 +1,5 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: Maik93 <michael.mugnai@gmail.com>
 
 # fork from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=stm32cubeide
 
@@ -125,6 +126,7 @@ END
   done
 
   # ST-link updater
+  # https://community.st.com/s/question/0D53W00000mlLP9/how-to-install-stlinkupgradejar-from-stswlink007-so-it-can-be-found-by-stm32cubeprogrammer
   install -Dm644 stsw-link007/AllPlatforms/STLinkUpgrade.jar ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/STLinkUpgrade.jar
   install -Dm644 stsw-link007/AllPlatforms/native/linux_x64/libSTLinkUSBDriver.so ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/native/linux_x64/libSTLinkUSBDriver.so
 }
