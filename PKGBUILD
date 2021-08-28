@@ -4,19 +4,19 @@
 _pkgname=guarda
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.0.12
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="a secure, easy-to-use open source multi-platform cryptocurrency wallet"
 arch=('x86_64')
 url="https://guarda.com/"
 license=('GPLv3')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://guarda.com/apps/Guarda-${pkgver}.AppImage"
+source_x86_64=("${_appimage}::https://github.com/guardaco/guarda-desktop-releases/releases/download/v${pkgver}/Guarda-${pkgver}.AppImage"
                "https://raw.githubusercontent.com/guardaco/guarda-android-wallets/master/LICENSE")
 noextract=("${_appimage}")
-sha256sums_x86_64=('fe8da8d1316a63b469c92ab588fe9e6324173247ff9772e67d9a5ba3ac9edc55'
+sha256sums_x86_64=('fade97d4c5873bf2c1c565e398f829b87bac20108edf885ac130c5592482a5e0'
                    '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 
 prepare() {
