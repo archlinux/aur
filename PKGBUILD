@@ -32,8 +32,8 @@ build() {
 
 package() {
   install -D "${srcdir}/build/wfview" "$pkgdir/usr/bin/wfview"
-  install -D "${srcdir}/build/wfview.desktop" "$pkgdir/usr/share/applications/wfview.desktop"
-  install -D "${srcdir}/build/wfview.png" "$pkgdir/usr/share/pixmaps/wfview.png"
+  install -D "${srcdir}/wfview/resources/wfview.desktop" "$pkgdir/usr/share/applications/wfview.desktop"
+  install -D "${srcdir}/wfview/resources/wfview.png" "$pkgdir/usr/share/pixmaps/wfview.png"
   mkdir -p "$pkgdir/usr/share/wfview/stylesheets/qdarkstyle"
   cp -rv "${srcdir}/build/qdarkstyle" -t "$pkgdir/usr/share/wfview/stylesheets"
 }
