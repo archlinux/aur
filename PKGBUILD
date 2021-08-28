@@ -1,8 +1,8 @@
 # Maintainer: Tosh (tosh <at> t0x0sh <dot> org)
 
 pkgname=landeseternelles
-pkgver=1.9.4
-pkgrel=2
+pkgver=1.9.5
+pkgrel=1
 pkgdesc="Landes Eternelles is a french role playing game (mmorpg), forked from Eternal Lands."
 arch=('i686' 'x86_64')
 url="https://www.landes-eternelles.com"
@@ -10,7 +10,7 @@ license=(custom:'eternal_lands_license')
 depends=('gtk2' 'glu' 'cal3d' 'sdl_image' 'sdl_net' 'openal' 'libvorbis' 'libxslt')
 
 source=(
-    https://landes-eternelles.com/client/1940/linux/LandesEternellesLinux.tar.gz
+    https://landes-eternelles.com/client/1950/linux/LandesEternellesLinux.tar.gz
     landeseternelles.desktop
     landeseternelles.png
     landeseternelles
@@ -35,7 +35,7 @@ package() {
     find $pkgdir/usr/share/$pkgname/ -type d -exec chmod 0755 {} \;
 }
 
-sha256sums=('f5e249cf518914978e1e97aa49ca1f58d236c6984acb6771e248f2d482db3f2b'
+sha256sums=('7b775dc1fac9568291f8bebae8d78e56c609a38fbdb639bc648f4eea6187a8c8'
             '1357259d4232d8533d3acdf22c63a9b650472f0ca2cf9841eb03ebd6a514e3f7'
             'f42bb2fdd8b981ca2ed5552110831e349852439b3ea0ead13f7fa328f3a30b72'
             '8c4450e426a6d290e32b30d5dfe345689ae80d871088300a5a047567d05fe4a5'
