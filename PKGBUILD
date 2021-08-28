@@ -5,8 +5,8 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.15.2'
-pkgrel=4
+pkgver='0.15.3'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -31,13 +31,13 @@ optdepends=('postgresql: for an alternative to sqlite in the database plugin'
             'texi2mdoc: for automatic mdoc generation')
 backup=("etc/${pkgname}.conf")
 options=('!makeflags')
-source=("ftp://ftp.gnu.org/gnu/gnunet/${pkgname}-${pkgver}.tar.gz"{,.sig}
+source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-system.service"
         "${pkgname}-user.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
-sha256sums=('23e6af170bb47aacb15d27bbe244d871dbc4d0523b1139bd2f12f4b42b65102e'
+sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
             'SKIP'
             'ada52dea6cbade99f671ca006ffdb27a8094884eb273ebc492c533b499dc0f2c'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
