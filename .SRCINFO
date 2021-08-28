@@ -1,0 +1,15 @@
+pkgbase = idris2-api-git
+	pkgdesc = API for Developing Support Tools for Idris 2
+	pkgver = 0.4.0.r304.g1e002772
+	pkgrel = 1
+	url = https://www.idris-lang.org/
+	arch = any
+	license = custom
+	makedepends = git
+	depends = idris2
+	provides = idris2-api
+	conflicts = idris2-api
+	source = git+https://github.com/idris-lang/Idris2.git
+	md5sums = SKIP
+
+pkgname = idris2-api-git
