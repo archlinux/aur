@@ -1,0 +1,19 @@
+pkgbase = rime-pure-git-direct
+	pkgdesc = 一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Direct-A/rime-pure
+	install = rime-pure-git-direct.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	optdepends = rime-prelude
+	optdepends = rime-emoji
+	optdepends = rime-symbols
+	conflicts = rime-cloverpinyin
+	source = git+https://github.com/Direct-A/rime-pure
+	source = rime-pure-git-direct.install
+	sha256sums = SKIP
+	sha256sums = 514677f8bf84b762ec246763fd1f22264a2be35465556b31395a656c3a1eb694
+
+pkgname = rime-pure-git-direct
