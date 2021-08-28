@@ -8,7 +8,7 @@
 pkgname=ttf-defenestration
 pkgver=1
 pkgrel=1
-pkgdesc="A simple shim that replaces 'ttf-liberation' with 'ttf-ms-win10' to satisfy other packages; see README.md for details"
+pkgdesc="Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win10'; see README.md for details"
 arch=(any)
 url="https://gitlab.com/arglebargle-arch/ttf-defenestration-PKGBUILD"
 license=('BSD')
