@@ -1,0 +1,11 @@
+--- messaging.main.ts.orig	2021-08-27 23:56:00.283768564 -0700
++++ messaging.main.ts	2021-08-27 23:56:04.442513446 -0700
+@@ -110,7 +110,7 @@
+ Version=${app.getVersion()}
+ Name=Bitwarden
+ Comment=Bitwarden startup script
+-Exec=${app.getPath('exe')}
++Exec=bitwarden-desktop
+ StartupNotify=false
+ Terminal=false`;
+ 

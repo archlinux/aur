@@ -2,9 +2,9 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
-_jslibcommit='61618d5e4c15db49f5d8dee2c2acc4e8c0f14b65'
+_jslibcommit='5ab045499f8a6a26ee10115f458136546a54bc22'
 _nodeversion='14.17.5'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64' 'aarch64')
@@ -17,11 +17,13 @@ options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz"
         "package.json.patch"
+        "messaging.main.ts.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('3faf37602a7261d5a92aee69b94c99e13c3182b207699520204afe69bc52d4637e88d0f88e8ce699596adab8c0dcb06405ea7a8363a391f90b62d562bee42230'
-            '7d9818e6cd1c8379439051912c52206436e8cd6a709415b08c222fc4b5ca125771b2157a943cd4ff12285a036a21bdfe495225162630fba9a626c01037d1caed'
+sha512sums=('e950423968043480dcf9c93dafe0acad042baa93d04261292ce2e7d223c78f444d59d8f382e1a390ac942431c5b67f6950de4c6bba7e7deed685b3d9b11748c5'
+            'c3705b257c080b72f15c62462bf8713cfc24a044395415d8884b31e7bdf5f4d7d04f56cdb1ac4ec3a7b92dc4eb2373f6135203925882357c886a4359908f210f'
             'd884221c615db95d6fd0da2d3470fb7514b6a5d2a2b3b20c8353ebb4a938dc39f93783fe7ef2b9f69f034db8f26abfa479616f9fd1c1b241af605da837fba20e'
+            '822d97be407c2ac2a6926f5c925b0fd188c541014a623dd3815fdbf5ef67c0542f43aaf8d11535571a83a265f620e330f5326244f42c3902fddab442128fda95'
             '32c29a7baed80351acf5753d35df404a818d5c88cc85f3bbed2daa5351aaf0dba20fd03cbedbcb407324f305d4556adb476ecc9ccd07bac0511ca4a943020ea4'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
@@ -31,8 +33,13 @@ prepare() {
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/desktop-${pkgver}/jslib"
   cd "${srcdir}/desktop-${pkgver}"
 
-  # Apply package.json patches
-  patch --strip=1 "${srcdir}/desktop-${pkgver}/package.json" ${srcdir}/package.json.patch
+  # Remove pre and postinstall routines from package.json.
+  # This is required to build without a git repo and to make the builds more reproducible
+  patch --strip=1 "${srcdir}/desktop-${pkgver}/package.json" \
+    "${srcdir}/package.json.patch"
+  # This patch is required to make "Start automatically on login" work
+  patch --strip=1 "${srcdir}/desktop-${pkgver}/src/main/messaging.main.ts" \
+    "${srcdir}/messaging.main.ts.patch"
 
   # Patch build to make it work with system electron
   local system_electron_version=$(pacman -Q electron11 | cut -d' ' -f2 | cut -d'-' -f1)
