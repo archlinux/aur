@@ -6,7 +6,7 @@ pkgbase = vapoursynth-plugin-vshelpers-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = vapoursynth-plugin-ffms2-git
+	depends = ffms2
 	depends = vapoursynth-plugin-lsmashsource-git
 	depends = vapoursynth-plugin-fmtconv-git
 	depends = vapoursynth-plugin-removedirtvs-git
@@ -16,4 +16,3 @@ pkgbase = vapoursynth-plugin-vshelpers-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vshelpers-git
-

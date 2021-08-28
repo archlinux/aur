@@ -8,7 +8,7 @@ pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth-plugin-ffms2-git'
+depends=('ffms2'
          'vapoursynth-plugin-lsmashsource-git'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-removedirtvs-git'
