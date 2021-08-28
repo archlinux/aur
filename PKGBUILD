@@ -1,4 +1,5 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: PolpOnline <aur at t0mmy dot anonaddy dot com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='stagit-gopher'
 pkgver=0.9.6
