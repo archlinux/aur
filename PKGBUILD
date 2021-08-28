@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=traefik-git
-pkgver=2.5.0.rc2.r2.gca2ff214c
+pkgver=2.5.1.r5.g817ac8f25
 pkgrel=1
 pkgdesc="The cloud native edge router"
 arch=('i686' 'x86_64')
@@ -31,7 +31,10 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readon
 pkgver() {
   cd "traefik"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
