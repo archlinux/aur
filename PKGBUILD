@@ -2,18 +2,18 @@
 
 _plug=xvs
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.75877c8
+pkgver=r9.49eee27
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/xyx98/my-vapoursynth-script'
 license=('GPL')
-depends=('vapoursynth-plugin-muvsfunc-git'
+depends=('ffms2'
+         'vapoursynth-plugin-muvsfunc-git'
          # vsfiltermod not work in linux :( https://github.com/sorayuki/VSFilterMod
          'vapoursynth-plugin-tdeintmod-git'
          'vapoursynth-plugin-dpid-git'
          'vapoursynth-plugin-tonemap-git'
-         'vapoursynth-plugin-ffms2-git'
          'vapoursynth-plugin-lsmashsource-git'
          )
 makedepends=('git')
