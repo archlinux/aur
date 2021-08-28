@@ -1,8 +1,8 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
-pkgver=1.5.r0.79ad589
-pkgrel=2
+pkgver=1.5.r10.g7215bd8
+pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/${pkgname/-git/}"
@@ -13,6 +13,11 @@ optdepends=("viu: Display distro logos as images"
 conflicts=('uwufetch')
 source=("$pkgname"::'git+https://github.com/TheDarkBug/uwufetch.git')
 sha256sums=("SKIP")
+
+build() {
+	cd "$srcdir/$pkgname"
+	make build
+}
 
 pkgver() {
 	cd "$srcdir/$pkgname"
