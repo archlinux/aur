@@ -1,6 +1,6 @@
 pkgbase = vcsh-git
 	pkgdesc = Version Control System for $HOME that manages multiple Git repositories
-	pkgver = 2.0.0beta1.r0.g216ae35
+	pkgver = 2.0.0.r7.gbcdf7bf
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/RichiH/vcsh
@@ -11,7 +11,8 @@ pkgbase = vcsh-git
 	checkdepends = perl-test-most
 	makedepends = ruby-ronn
 	depends = git
-	provides = vcsh=2.0.0beta1.r0.g216ae35
+	optdepends = myrepos: manage multiple vcsh repos through mr
+	provides = vcsh=2.0.0.r7.gbcdf7bf
 	conflicts = vcsh
 	source = vcsh-git::git+https://github.com/RichiH/vcsh.git
 	sha256sums = SKIP
