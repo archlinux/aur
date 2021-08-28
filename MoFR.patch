@@ -1,0 +1,10 @@
+--- mo.cpp.old	2009-12-19 21:52:36.557051222 -0800
++++ mo.cpp	2009-12-19 21:52:48.137051013 -0800
+@@ -32,6 +32,7 @@
+  */
+ #include "../include/moFileReader.h"
+ #include <iostream>
++#include <cstdlib>
+ 
+ #if defined(_MSC_VER) && defined(_DEBUG)
+ #   include <crtdbg.h>   
