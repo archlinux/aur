@@ -1,6 +1,6 @@
 pkgbase = hip-rocclr
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = hip-rocclr
 	depends = libelf
 	provides = hip
 	conflicts = hip
-	source = hip-rocclr-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.3.0.tar.gz
-	source = hip-rocclr-roctracer-4.3.0.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.3.0.tar.gz
-	source = hip-rocclr-opencl-4.3.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-4.3.0.tar.gz
-	sha256sums = 293b5025b5e153f2f25e465a2e0006a2b4606db7b7ec2ae449f8a4c0b52d491b
-	sha256sums = c3d9f408df8d4dc0e9c0026217b8c684f68e775da80b215fecb3cd24419ee6d3
-	sha256sums = d37bddcc6835b6c0fecdf4d02c204ac1d312076f3eef2b1faded1c4c1bc651e9
+	source = hip-rocclr-4.3.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-4.3.1.tar.gz
+	source = hip-rocclr-roctracer-4.3.1.tar.gz::https://github.com/ROCm-Developer-Tools/roctracer/archive/rocm-4.3.1.tar.gz
+	source = hip-rocclr-opencl-4.3.1.tar.gz::https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime/archive/rocm-4.3.1.tar.gz
+	sha256sums = 955311193819f487f9a2d64bffe07c4b8c3a0dc644dc3ad984f7c66a325bdd6f
+	sha256sums = 88ada5f256a570792d1326a305663e94cf2c3b0cbd99f7e745326923882dafd2
+	sha256sums = 7f98f7d4707b4392f8aa7017aaca9e27cb20263428a1a81fb7ec7c552e60c4ca
 
 pkgname = hip-rocclr

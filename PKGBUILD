@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -17,9 +17,9 @@ _opencl='https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "$pkgname-roctracer-$pkgver.tar.gz::$_roctracer/archive/rocm-$pkgver.tar.gz"
         "$pkgname-opencl-$pkgver.tar.gz::$_opencl/archive/rocm-$pkgver.tar.gz")
-sha256sums=('293b5025b5e153f2f25e465a2e0006a2b4606db7b7ec2ae449f8a4c0b52d491b'
-            'c3d9f408df8d4dc0e9c0026217b8c684f68e775da80b215fecb3cd24419ee6d3'
-            'd37bddcc6835b6c0fecdf4d02c204ac1d312076f3eef2b1faded1c4c1bc651e9')
+sha256sums=('955311193819f487f9a2d64bffe07c4b8c3a0dc644dc3ad984f7c66a325bdd6f'
+            '88ada5f256a570792d1326a305663e94cf2c3b0cbd99f7e745326923882dafd2'
+            '7f98f7d4707b4392f8aa7017aaca9e27cb20263428a1a81fb7ec7c552e60c4ca')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 _dirtracer="$(basename "$_roctracer")-$(basename "${source[1]}" ".tar.gz")"
 
