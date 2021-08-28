@@ -10,12 +10,13 @@ pkgbase = janet-lang
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	provides = janet
 	provides = jpm
 	conflicts = janet-lang-git
 	options = staticlibs
 	source = janet-lang-1.17.0.tar.gz::https://github.com/janet-lang/janet/archive/v1.17.0.tar.gz
-	source = git+https://github.com/janet-lang/jpm
+	source = git+https://github.com/janet-lang/jpm#commit=6141bccd05b2de8a7dca1f79ddc39d79daaa86e1
 	sha256sums = 45126be7274e0a298dcbe356b5310bd9328c94eb3a562316813fa9774ca34bcc
 	sha256sums = SKIP
 
