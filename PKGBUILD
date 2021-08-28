@@ -22,5 +22,4 @@ package() {
   mkdir -p $pkgdir/usr/share/pixmaps
   install -D -m644 $srcdir/$pkgname/res/image/icon/open-book-128.png $pkgdir/usr/share/pixmaps/$pkgname.png
   mkdir -p $pkgdir/usr/share/applications
-  install -D -m755 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
