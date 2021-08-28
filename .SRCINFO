@@ -1,4 +1,4 @@
-pkgbase = amogu.sh
+pkgbase = amogu.sh-git
 	pkgdesc = The sussiest script ever.
 	pkgver = r3.fad5425
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = amogu.sh
 	source = amogu.sh::git+https://codeberg.org/thepogsupreme/amogu.sh.git
 	md5sums = SKIP
 
-pkgname = amogu.sh
+pkgname = amogu.sh-git

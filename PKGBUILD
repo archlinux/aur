@@ -1,5 +1,7 @@
 # Maintainer: Mattheus Roxas <thepogsupreme@tuta.io>
-pkgname='amogu.sh'
+# Contributer: Dawid Potocki
+_pkgname="amogu.sh" # Thanks,
+pkgname="$_pkgname-git" # David.
 pkgver=r3.fad5425
 pkgrel=1
 pkgdesc="The sussiest script ever."
@@ -14,12 +16,12 @@ source=('amogu.sh::git+https://codeberg.org/thepogsupreme/amogu.sh.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	install -Dm755 ./amogu.sh "$pkgdir/usr/bin/amogu.sh"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
