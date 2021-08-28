@@ -1,6 +1,6 @@
 pkgbase = python-pydicom
 	pkgdesc = Pure python package for working with DICOM files
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://pydicom.github.io/pydicom/stable/index.html
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pydicom
 	optdepends = python-pylibjpeg: for working with compressed JPEG images
 	optdepends = python-pylibjpeg-openjpeg: for working with compressed JPEG-LS or JPEG 2000 images
 	optdepends = python-pylibjpeg-rle: for working with compressed RLE images
-	source = python-pydicom-2.2.0.tar.gz::https://github.com/pydicom/pydicom/archive/v2.2.0.tar.gz
-	md5sums = b08d86a3eb637515c9e851f254d11612
+	source = python-pydicom-2.2.1.tar.gz::https://github.com/pydicom/pydicom/archive/v2.2.1.tar.gz
+	md5sums = a824ae16e9d2f6b96b2e012ce47c90c8
 
 pkgname = python-pydicom

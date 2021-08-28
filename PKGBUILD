@@ -2,7 +2,7 @@
 # Contributor: wedjat <wedjat@protonmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 pkgname=python-pydicom
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Pure python package for working with DICOM files"
 arch=("any")
@@ -19,7 +19,7 @@ optdepends=('python-numpy: for working with pixel data'
             )
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydicom/pydicom/archive/v$pkgver.tar.gz")
-md5sums=('b08d86a3eb637515c9e851f254d11612')
+md5sums=('a824ae16e9d2f6b96b2e012ce47c90c8')
 
 build()
 {
