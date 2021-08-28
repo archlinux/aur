@@ -34,8 +34,8 @@ source=("git+https://gitlab.com/himie/kart-public.git"
         "srb2kart-moe-mansion.desktop"
         "srb2kart-moe-mansion-opengl.desktop")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+            '751f8fb2695f75efcd13c94769a01a3cfba3d3e97b029180d0c4e26214bf1280'
+            '1772173d005de0502ded847316456104561e5a8e22934b0f5a5b9c91ae44ca79')
 
 pkgver() {
   cd $srcdir/kart-public
