@@ -2,7 +2,7 @@
 
 pkgname=txr-git
 _pkgname=txr
-pkgver=260.r0.b4305c16
+pkgver=268.r36.0efaa0c6
 pkgrel=1
 pkgdesc="A programming language for convenient data munging"
 arch=('i686' 'x86_64')
