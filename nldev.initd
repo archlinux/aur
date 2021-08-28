@@ -4,7 +4,7 @@ description="nldev is a simple netlink device manager"
 
 depend()
 {
-	need sysfs dev-mount smdev
+	need sysfs dev-mount
 	before checkfs fsck nltrigger
 	provide dev
 }
@@ -12,7 +12,6 @@ depend()
 start()
 {
 	ebegin "Starting nldev device manager"
-	mkdir /run/libudev-zero
 	nldev -b -r "${runpath}" "${nldev_opts}"
 	eend $?
 }
