@@ -1,21 +1,17 @@
-# Maintainer: Muhammad Usman <usman@gmail.com>
-# Contributor: Mohsen Saboorian <saboorian@gmail.com>
+# Maintainer: Usama <usama.cit@gmail.com>
 
 pkgname=zekr
 pkgver=1.1.0
 pkgrel=2
-pkgdesc="An opensource Quranic research platform."
-url="https://sourceforge.net/projects/zekr"
+pkgdesc="Quran Research Tool"
+url="https://sourceforge.net/projects/zekr-linux"
 license=("GPL")
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('java-runtime' 'webkitgtk2')
 
-# Sources and md5sums for i686
-[ "$CARCH" = "i686" ] && source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-linux.tar.gz $pkgname.desktop)
-[ "$CARCH" = "i686" ] && md5sums=('a6e7178d9ce2ccbe04c8b1b3acd64d01' 'c82122b0b8766412fc152dd7cb5f176e')
-# Sources and md5sums for x86_64
-[ "$CARCH" = "x86_64" ] && source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-linux_64.tar.gz $pkgname.desktop)
-[ "$CARCH" = "x86_64" ] && md5sums=('33b16a90cad76c6cf3dbea83e9fb1fe7' 'c82122b0b8766412fc152dd7cb5f176e')
+source=(http://downloads.sourceforge.net/$pkgname-linux/$pkgname-$pkgver-linux_64.tar.gz $pkgname.desktop)
+sha256sums=('b37482c511697b4bfa3e13a3b63346463ee1dae8db7ac1867a8b91daed9cca27'
+'a412ea8e639c8a2a7ca753e914e08e13756ae2672d033068c92d2cac3304a01e')
 
 package() {
   cd $srcdir/

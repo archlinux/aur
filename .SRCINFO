@@ -1,16 +1,15 @@
 pkgbase = zekr
-	pkgdesc = An opensource Quranic research platform.
+	pkgdesc = Quran Research Tool
 	pkgver = 1.1.0
 	pkgrel = 2
-	url = https://sourceforge.net/projects/zekr
-	arch = i686
+	url = https://sourceforge.net/projects/zekr-linux
 	arch = x86_64
 	license = GPL
 	depends = java-runtime
 	depends = webkitgtk2
-	source = http://downloads.sourceforge.net/zekr/zekr-1.1.0-linux_64.tar.gz
+	source = http://downloads.sourceforge.net/zekr-linux/zekr-1.1.0-linux_64.tar.gz
 	source = zekr.desktop
-	md5sums = 33b16a90cad76c6cf3dbea83e9fb1fe7
-	md5sums = c82122b0b8766412fc152dd7cb5f176e
+	sha256sums = b37482c511697b4bfa3e13a3b63346463ee1dae8db7ac1867a8b91daed9cca27
+	sha256sums = a412ea8e639c8a2a7ca753e914e08e13756ae2672d033068c92d2cac3304a01e
 
 pkgname = zekr
