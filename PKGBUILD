@@ -1,11 +1,8 @@
 # Maintainer: Posi <posi1981@gmail.com>
-# Contributor: Ben Reedy <thebenj88 *AT* gmail *DOT* com>
-# Contributor: Tony Dodd <arch@recalcitrance.net>
-# Contributor: Mark Taylor <skymt0@gmail.com>
 
 pkgname=clex
 pkgver=4.6.patch10
-pkgrel=1
+pkgrel=2
 pkgdesc="File manager with a full-screen user interface"
 arch=('i686' 'x86_64')
 url="http://www.clex.sk"
