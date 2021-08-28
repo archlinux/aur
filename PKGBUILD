@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libisofs-git
-pkgver=1.5.4.rc1.r7.g1c4c04d
+pkgver=1.5.4.r7.g1c4c04d
 pkgrel=1
 pkgdesc="Library to create an ISO-9660 filesystem"
 arch=('i686' 'x86_64')
@@ -19,7 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libisofs"
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d;/^v/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^release-//;s/-/./g'
 }
 
 build() {
