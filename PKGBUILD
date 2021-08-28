@@ -2,16 +2,19 @@
 
 _plug=bilateralgpu
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.4.gc861ec6
+pkgver=r6.3.g69af543
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BilateralGPU'
 license=('GPL')
 depends=('vapoursynth'
-         'opencv-cuda'
+         'cuda'
          )
-makedepends=('git')
+makedepends=('git'
+             'cmake'
+             'gcc10'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-BilateralGPU.git")
@@ -23,21 +26,26 @@ pkgver() {
 }
 prepare() {
   cd "${_plug}"
-
-  sed 's|<vapoursynth/|<|g' -i bilateralGPU/bilateral.cpp
-
-  echo "all:
-	  g++ -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) $(pkg-config --cflags opencv4) -o bilateral.o bilateralGPU/bilateral.cpp
-	  g++ -shared -lopencv_core -lopencv_cudaarithm -lopencv_cudafilters -lopencv_cudaimgproc -lopencv_cudev -lopencv_imgproc -fPIC ${LDFLAGS} -o lib${_plug}.so bilateral.o" > Makefile
+  mkdir -p build
 }
 
 build() {
-  make -C "${_plug}"
+  cd "${_plug}/build"
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CUDA_FLAGS="--threads 0 --use_fast_math -Wno-deprecated-gpu-targets" \
+    -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/gcc-10 \
+    -DVAPOURSYNTH_INCLUDE_DIRECTORY=/usr/include/vapoursynth \
+    -DCMAKE_SKIP_RPATH=ON
+
+  make
 }
 
 package() {
   cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 "build/source/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+  install -Dm755 "build/rtc_source/lib${_plug}_rtc.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}_rtc.so"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
