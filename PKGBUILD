@@ -9,7 +9,7 @@ license=('LGPL3')
 depends=('plasma-desktop' 'kconfig' 'kcoreaddons' 'kwidgetsaddons')
 makedepends=('qt5-base')
 source=("https://github.com/baduhai/Koi/archive/$pkgver.tar.gz")
-md5sums=('4a676a406b0cd22707befe6701556825')
+md5sums=('8a93eec44ebc385714458815277f0ceb')
 
 build() {
 	cd "Koi-$pkgver"
