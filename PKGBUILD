@@ -2,24 +2,21 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r620.6437f0d
-pkgrel=2
+pkgver=r635.8840516
+pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=(lib{gee,granite.so,wnck3} 'cogl')
+depends=(glib2 gtk3 lib{gee,granite.so,wnck3} pantheon-notifications)
 makedepends=('meson' 'libgranite.so' 'git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
-            wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"
-            "indicator-powersave: On the fly power savings and performance toggles"
-            "glippy-indicator: Excellent clipboard manager applet"
-            "ubuntu-indicator-weather: Simple weather applet")
-provides=(wingpanel{,{,-standalone}-bzr,-git} libwingpanel{,-3.0}.so)
+            wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"})
+provides=(wingpanel{,-git} libwingpanel{,-2.0}.so)
 #provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
-conflicts=(wingpanel{,{,-standalone}-bzr,-git} libwingpanel{,-3.0}.so)
+conflicts=(wingpanel{,-git} libwingpanel{,-2.0}.so)
 #conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
