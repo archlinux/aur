@@ -1,17 +1,15 @@
 # Maintainer: Mattheus Roxas <thepogsupreme@tuta.io>
-# Contributer: Dawid Potocki
 _pkgname="amogu.sh" # Thanks,
-pkgname="$_pkgname-git" # David.
+pkgname="$_pkgname-git" # Dawid.
 pkgver=r3.fad5425
 pkgrel=1
 pkgdesc="The sussiest script ever."
-arch=('x86_64')
+arch=('Any')
 url="https://codeberg.org/thepogsupreme/amogu.sh"
-license=('EUPL')
+license=('EUPL 1.2')
 depends=('fzf' 'ueberzug')
 makedepends=('git')
 optdepends=('xclip: Clipboard support' 'dragon-drag-and-drop: Drag and drop support')
-# source=('https://codeberg.org/thepogsupreme/amogu.sh')
 source=('amogu.sh::git+https://codeberg.org/thepogsupreme/amogu.sh.git')
 md5sums=('SKIP')
 
