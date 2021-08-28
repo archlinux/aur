@@ -2,7 +2,7 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.14.1.r4990.9e3a62e1
+pkgver=0.14.1.r5023.509ee5fd
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
@@ -26,7 +26,6 @@ depends=(
 makedepends=(
 	git
 	meson
-	ninja
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}")
@@ -40,8 +39,6 @@ pkgver () {
 build () {
 	arch-meson \
 		--buildtype=release \
-		-Dlogind-provider=systemd \
-		-Dlibseat=enabled \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
