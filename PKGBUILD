@@ -28,15 +28,15 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   mkdir -p build
+
+  rm -fr include/{vapour,avi}synth
 }
 
 build() {
   cd "${_plug}/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags vapoursynth) $(pkg-config --cflags avisynth)"
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 }
