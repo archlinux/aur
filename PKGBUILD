@@ -1,7 +1,7 @@
 # Maintainer : Yamada hayao <hayao@fascode.net>
 # Contributer: nsz32 <nszabo2 at gmail dot com>
 
-pkgname=xfce4-docklike-plugin-git
+pkgname=xfce4-docklike-plugin-ng-git
 pkgver=20210828
 pkgrel=1
 pkgdesc='A modern, docklike, minimalist taskbar for XFCE (Forked version)'
