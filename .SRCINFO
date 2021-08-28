@@ -1,0 +1,16 @@
+pkgbase = amogu.sh
+	pkgdesc = The sussiest script ever.
+	pkgver = r2.8146f7b
+	pkgrel = 1
+	url = https://codeberg.org/thepogsupreme/amogu.sh
+	arch = x86_64
+	license = EUPL
+	makedepends = git
+	depends = fzf
+	depends = ueberzug
+	optdepends = xclip: Clipboard support
+	optdepends = dragon-drag-and-drop: Drag and drop support
+	source = amogu.sh::git+https://codeberg.org/thepogsupreme/amogu.sh.git
+	md5sums = SKIP
+
+pkgname = amogu.sh
