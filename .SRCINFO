@@ -1,12 +1,13 @@
 pkgbase = libxml2-git
 	pkgdesc = The XML C parser and toolkit of Gnome
-	pkgver = 2.9.9.rc2.r1.g6fc04d71
+	pkgver = 2.9.12.r14.gdea91c97
 	pkgrel = 1
 	url = http://xmlsoft.org/
 	arch = i686
 	arch = x86_64
-	license = MIT
+	license = custom
 	makedepends = git
+	makedepends = python
 	depends = glibc
 	depends = icu
 	depends = sh
@@ -19,4 +20,3 @@ pkgbase = libxml2-git
 	sha256sums = SKIP
 
 pkgname = libxml2-git
-

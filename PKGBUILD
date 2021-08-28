@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libxml2-git
-pkgver=2.9.9.rc2.r1.g6fc04d71
+pkgver=2.9.12.r14.gdea91c97
 pkgrel=1
 pkgdesc="The XML C parser and toolkit of Gnome"
 arch=('i686' 'x86_64')
 url="http://xmlsoft.org/"
-license=('MIT')
+license=('custom')
 depends=('glibc' 'icu' 'sh' 'xz' 'zlib')
-makedepends=('git')
+makedepends=('git' 'python')
 provides=('libxml2')
 conflicts=('libxml2')
 options=('staticlibs')
@@ -19,7 +19,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "libxml2"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
@@ -43,5 +46,5 @@ package() {
   cd "libxml2"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "Copyright" "$pkgdir/usr/share/licenses/libxml2/Copyright"
+  install -Dm644 "Copyright" -t "$pkgdir/usr/share/licenses/libxml2"
 }
