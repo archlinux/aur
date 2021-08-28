@@ -1,4 +1,3 @@
-d /var/spool/slurm 0755 slurm slurm -
-d /var/spool/slurm/slurmctld 0755 slurm slurm -
-d /var/spool/slurm/slurmd 0755 root root -
+d /var/spool/slurmctld 0755 slurm slurm -
+d /var/spool/slurmd 0755 root root -
 Z /var/log/slurm-llnl - slurm slurm - -
