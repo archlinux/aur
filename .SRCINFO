@@ -1,11 +1,12 @@
 pkgbase = python-enmerkar
 	pkgdesc = Utilities for using Babel in Django
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zegocover/enmerkar
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	checkdepends = python-pytest-django
 	makedepends = python-setuptools
 	depends = python
 	depends = python-django
@@ -16,4 +17,3 @@ pkgbase = python-enmerkar
 	sha512sums = 6d0d0d85fc4057dbc8536220538572000f2816e87874e21a3008f5a05edff46af4b2f09b23acff5813a8174402b3bc4ec8864851f9cc8de50b4386d024b3aeda
 
 pkgname = python-enmerkar
-

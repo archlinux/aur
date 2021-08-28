@@ -3,7 +3,7 @@
 _pyname=enmerkar
 pkgname=python-$_pyname
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for using Babel in Django"
 arch=(any)
 url="https://github.com/Zegocover/enmerkar"
@@ -14,7 +14,10 @@ depends=(
 	python-babel
 )
 makedepends=(python-setuptools)
-checkdepends=(python-pytest)
+checkdepends=(
+	python-pytest
+	python-pytest-django
+)
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
 md5sums=('a4967fc49a2f6cdaf0f4cf6273508ba8')
 sha256sums=('a4a6c859b4ed293deee40ff61d6695b3ff7bc153770a1799f2be872181282e00')
