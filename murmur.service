@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/murmurd -ini /etc/murmur.ini -fg
+ExecStart=/usr/bin/mumble-server -ini /etc/murmur.ini -fg
 Restart=always
 
 [Install]
