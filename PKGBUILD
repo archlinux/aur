@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: pypi trakt-scrobbler poetry
 pkgname=trakt-scrobbler
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -12,6 +12,8 @@ depends=(
     "systemd"
 	'python-requests<3.0.0' #auto-deps
 	'python-requests>=2.25.1' #auto-deps
+	'python-urllib3<2.0.0' #auto-deps
+	'python-urllib3>=1.26.0' #auto-deps
 	'python-guessit<4.0.0' #auto-deps
 	'python-guessit>=3.3.1' #auto-deps
 	'python-appdirs<2.0.0' #auto-deps
@@ -37,7 +39,7 @@ source=(
     "trakts-man.md"
     "trakts.zsh"
 )
-sha256sums=('565c5291f44d9cf90818e96e65ab021ece751174efed2923affac7ad18b6233f'
+sha256sums=('d623a1abf22ea653df89f4fcd8d217acfefe7a2202acc342f66afcde61fc6438'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
             '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
 
