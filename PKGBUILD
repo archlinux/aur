@@ -4,7 +4,7 @@
 _pyname=agate-sql
 pkgname=python-$_pyname
 pkgver=0.5.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Adds SQL read/write support to agate'
 arch=(any)
 url="https://$_pyname.readthedocs.org"
@@ -28,15 +28,16 @@ build() {
 	export PYTHONHASHSEED=0
 	python setup.py build
 	python setup.py build_sphinx
-	_rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 	rm -rvf build/sphinx/html/_static
-	ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" build/sphinx/html/_static
+	ln -svf "$site_packages/sphinx_rtd_theme/static" build/sphinx/html/_static
 }
 
 check() {
 	cd "$_archive"
 	# Upstream Issue: https://github.com/wireservice/agate-sql/issues/35
-	pytest tests ||:
+	pytest tests \
+		--deselect tests/test_agatesql.py::TestSQL::test_to_sql_create_statement_with_schema
 }
 
 package() {
