@@ -3,7 +3,7 @@
 # Contributor: Francois Menning <f.menning@pm.me>
 
 pkgname=gerbera
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h aarch64)
@@ -17,7 +17,7 @@ options=('emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gerbera/gerbera/archive/v$pkgver.tar.gz"
 	gerbera.sysusers
 	gerbera.tmpfiles)
-sha256sums=('7d3af525a6c37e10869961b2fedc2cfb54d8acf30256a2d5a10394c6a97ed25b'
+sha256sums=('5d323c6cb4150e3454b8c6e0012f41648441799ba44cb59436b124b54d3fc82b'
             '0b55a4e1886f7aad0528446658433327815fd3f4d06e260518423f86dbe32dcc'
             '452f5d4b5661e0262cb4a48d62a54f5f26d53c6d3aebf502cde072214a8b30d8')
 
