@@ -5,7 +5,8 @@ pkgbase = mingw-w64-serd
 	url = https://drobilla.net/software/serd/
 	arch = any
 	license = custom:ISC
-	makedepends = mingw-w64-python
+	makedepends = mingw-w64-gcc
+	makedepends = python
 	options = !libtool
 	options = !strip
 	options = !buildflags
@@ -17,4 +18,3 @@ pkgbase = mingw-w64-serd
 	sha512sums = SKIP
 
 pkgname = mingw-w64-serd
-
