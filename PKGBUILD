@@ -4,7 +4,7 @@
 pkgname=exifcleaner-bin
 _pkgname=ExifCleaner
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop app to clean metadata from images, videos, PDFs, and other files."
 arch=('x86_64')
 url="https://exifcleaner.com"

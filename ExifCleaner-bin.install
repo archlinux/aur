@@ -1,5 +1,5 @@
 post_install() {
-  _pkgname=Exifcleaner
+  _pkgname=ExifCleaner
   pkgname=exifcleaner
 
   # Link to the binary
