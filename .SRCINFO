@@ -1,6 +1,6 @@
 pkgbase = rocminfo
 	pkgdesc = ROCm info tools - rocm_agent_enumerator
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocminfo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rocminfo
 	depends = pciutils
 	depends = python
 	depends = hsa-rocr
-	source = rocminfo-4.3.0.tar.gz::https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-4.3.0.tar.gz
-	sha256sums = 2cc1f251c0ed9c3ea413cc15cb5ce11559e4497540eebbf5e8dcfd52b03e53d1
+	source = rocminfo-4.3.1.tar.gz::https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-4.3.1.tar.gz
+	sha256sums = d042947d3f29e943a2e3294a2a2d759ca436cebe31151ce048e49bc4f02d6993
 
 pkgname = rocminfo
