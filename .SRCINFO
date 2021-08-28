@@ -1,7 +1,7 @@
 pkgbase = anbox-git
 	pkgdesc = Running Android in a container
 	pkgver = r1350.04ac697
-	pkgrel = 10
+	pkgrel = 17
 	epoch = 1
 	url = http://anbox.io/
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = anbox-git
 	makedepends = properties-cpp
 	makedepends = gtest
 	makedepends = python
+	makedepends = systemd
+	makedepends = dbus
 	depends = lxc-git
 	depends = sdl2_image
 	depends = protobuf
