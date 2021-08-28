@@ -1,7 +1,7 @@
 pkgbase = wfview-git
 	pkgdesc = Interface for Icom transceivers
 	pkgver = r1249.54d6850
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wfview.org/
 	arch = i686
 	arch = x86_64

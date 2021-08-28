@@ -1,7 +1,7 @@
 # Maintainer: FuzzyCheese
 pkgname=wfview-git
 pkgver=r1249.54d6850
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface for Icom transceivers"
 arch=('i686' 'x86_64')
 url="https://wfview.org/"
