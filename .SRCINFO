@@ -12,6 +12,7 @@ pkgbase = kakoune-git
 	optdepends = ctags-git: complete and describe a symbol, jump to its definition
 	optdepends = editorconfig-core-c: set formatting options project-wide
 	optdepends = git: display and cycle through hunks, blame lines, handle file status
+	optdepends = kak-lsp: Language Server Protocol (LSP) client
 	optdepends = tmux: split windows, spawn tabs
 	optdepends = xdotool: X11 window management
 	optdepends = xorg-xmessage: print detailed crash information in a separate window

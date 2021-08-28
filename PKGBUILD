@@ -11,6 +11,7 @@ optdepends=(
     "ctags-git: complete and describe a symbol, jump to its definition"
     "editorconfig-core-c: set formatting options project-wide"
     "git: display and cycle through hunks, blame lines, handle file status"
+    "kak-lsp: Language Server Protocol (LSP) client"
     "tmux: split windows, spawn tabs"
     "xdotool: X11 window management"
     "xorg-xmessage: print detailed crash information in a separate window"
