@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.9.3.r46.ga951f417
+pkgver=6.9.3.r48.g326420d9
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -10,58 +10,59 @@ url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=(
-	"cmake"
-	"git"
-	"ninja"
-	"python3"
-	"qt5-tools"
+    "cmake"
+    "git"
+    "ninja"
+    "python3"
+    "qt5-tools"
 )
 optdepends=(
-	'cf-tool: submit to Codeforces'
-	'clang: C++ format and language server'
-	'java-environment: compile Java'
-	'java-runtime: execute Java'
-	'python: execute Python'
+    'cf-tool: submit to Codeforces'
+    'clang: C++ format and language server'
+    'java-environment: compile Java'
+    'java-runtime: execute Java'
+    'python: execute Python'
+    'wakatime: track coding stats'
 )
 provides=('cpeditor')
 conflicts=("cpeditor")
 
 source=('git://github.com/cpeditor/cpeditor.git'
-	'git://github.com/cpeditor/QCodeEditor.git'
-	'git://github.com/cpeditor/QtFindReplaceDialog.git'
-	'git://github.com/cpeditor/lsp-cpp.git'
-	'git://github.com/itay-grudev/singleapplication.git'
-	'git://github.com/MikeMirzayanov/testlib.git'
-	'git://github.com/cpeditor/qhttp.git')
+    'git://github.com/cpeditor/QCodeEditor.git'
+    'git://github.com/cpeditor/QtFindReplaceDialog.git'
+    'git://github.com/cpeditor/lsp-cpp.git'
+    'git://github.com/itay-grudev/singleapplication.git'
+    'git://github.com/MikeMirzayanov/testlib.git'
+    'git://github.com/cpeditor/qhttp.git')
 
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$_pkgname"
-	git submodule init
+    cd "$_pkgname"
+    git submodule init
 
-	git config submodule.third_party/QCodeEditor.url "$srcdir/QCodeEditor"
-	git config submodule.third_party/QtFindReplaceDialog.url "$srcdir/QtFindReplaceDialog"
-	git config submodule.third_party/lsp-cpp.url "$srcdir/lsp-cpp"
-	git config submodule.third_party/singleapplication.url "$srcdir/singleapplication"
-	git config submodule.third_party/testlib.url "$srcdir/testlib"
-	git config submodule.third_party/qhttp.url "$srcdir/qhttp"
+    git config submodule.third_party/QCodeEditor.url "$srcdir/QCodeEditor"
+    git config submodule.third_party/QtFindReplaceDialog.url "$srcdir/QtFindReplaceDialog"
+    git config submodule.third_party/lsp-cpp.url "$srcdir/lsp-cpp"
+    git config submodule.third_party/singleapplication.url "$srcdir/singleapplication"
+    git config submodule.third_party/testlib.url "$srcdir/testlib"
+    git config submodule.third_party/qhttp.url "$srcdir/qhttp"
 
-	git submodule update
+    git submodule update
 }
 
 build() {
-	cd "$_pkgname"
-	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPORTABLE_VERSION=Off -DCMAKE_BUILD_TYPE=Release -GNinja
-	cmake --build build
+    cd "$_pkgname"
+    cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPORTABLE_VERSION=Off -DCMAKE_BUILD_TYPE=Release -GNinja
+    cmake --build build
 }
 
 package() {
-	cd "$_pkgname/build"
-	DESTDIR="$pkgdir/" ninja install
+    cd "$_pkgname/build"
+    DESTDIR="$pkgdir/" ninja install
 }
