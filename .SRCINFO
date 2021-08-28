@@ -1,6 +1,6 @@
 pkgbase = grcompiler
 	pkgdesc = The SIL Graphite compiler
-	pkgver = 5.2
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/silnrsi/grcompiler
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = grcompiler
 	makedepends = docbook-utils
 	makedepends = perl-sgmls
 	depends = icu
-	source = grcompiler-grcompiler.tar.gz::https://github.com/silnrsi/grcompiler/archive/v5.2.tar.gz
-	sha256sums = f3e2a0610fc309fc1ff03e5584420ec3e77ec1b4b7f9b108c7508e451a3498d7
+	source = grcompiler-5.2.1.tar.gz::https://github.com/silnrsi/grcompiler/archive/v5.2.1.tar.gz
+	sha256sums = a125e9d2746638a538e59af8ece2268fda078572f50e82f82d6f95ccb08ed890
 
 pkgname = grcompiler
-
