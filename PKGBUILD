@@ -1,7 +1,7 @@
 # Maintainer: Speykious <speykious@gmail.com>
 
 pkgname=vignette-git
-pkgver='2021.730.0.r4.447e85a'
+pkgver='2021.828.0'
 pkgrel=1
 pkgdesc='The open source VTuber software toolkit. ❤'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
