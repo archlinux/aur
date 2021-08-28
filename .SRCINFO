@@ -39,6 +39,7 @@ pkgbase = lv2-plugins-aur-meta
 	depends = shiru.lv2-git
 	depends = sooperlooper.lv2-git
 	depends = so-synth-lv2-git
+	depends = ssr.lv2-git
 	depends = stepseq_s16n8.lv2
 	depends = string-machine-git
 	depends = swh-lv2-git
