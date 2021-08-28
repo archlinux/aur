@@ -1,6 +1,6 @@
 pkgbase = amogu.sh
 	pkgdesc = The sussiest script ever.
-	pkgver = r2.8146f7b
+	pkgver = r3.fad5425
 	pkgrel = 1
 	url = https://codeberg.org/thepogsupreme/amogu.sh
 	arch = x86_64

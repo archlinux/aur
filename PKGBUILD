@@ -1,6 +1,6 @@
 # Maintainer: Mattheus Roxas <thepogsupreme@tuta.io>
 pkgname='amogu.sh'
-pkgver=r2.8146f7b
+pkgver=r3.fad5425
 pkgrel=1
 pkgdesc="The sussiest script ever."
 arch=('x86_64')
