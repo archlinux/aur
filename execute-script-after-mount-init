@@ -1,0 +1,37 @@
+#!/bin/bash
+
+SCRIPTFILE=/usr/local/lib/script-after-mount.sh
+SERVICEFILE=/etc/systemd/system/exec-script-after-mount.service
+
+echo "There is a timlog at /var/log/execute-script-after-mount-time.log"
+read -p "Insert your drive. If it is inserted press enter."
+MOUNTUNITS=( $(systemctl list-units -t mount | grep -o ".*\.mount") )
+
+PS3="Please enter your MOUNTUNIT: "
+select MOUNTUNIT in ${MOUNTUNITS[@]}
+do 
+	echo "You selected ${MOUNTUNIT}"
+break
+done
+
+
+cat > $SERVICEFILE << ENDOFFILE
+[Unit]
+Description=Service to execute script after mount of a specific drive
+Requires=$MOUNTUNIT
+After=$MOUNTUNIT
+
+[Service]
+ExecStart=bash "$SCRIPTFILE"
+
+[Install]
+WantedBy=$MOUNTUNIT
+ENDOFFILE
+
+cat > $SCRIPTFILE << ENDOFFILE
+#!/bin/bash
+rsync -Icr  "$(zenity --file-selection --directory --title="select folder to copy")" "$(zenity --file-selection --directory --title="select folder on drive where the file should be copied")"
+echo \$(date) >> /var/log/execute-script-after-mount-time.log
+ENDOFFILE
+
+systemctl enable exec-script-after-mount.service
