@@ -1,12 +1,16 @@
 pkgbase = makedeb
 	pkgdesc = Create Debian archives from PKGBUILDs (stable release)
-	pkgver = 5.9.5
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
 	license = GPL3
-	depends = dpkg
-	source = https://github.com/makedeb/makedeb/archive/refs/tags/v5.9.5-stable.tar.gz
+	depends = tar
+	depends = binutils
+	depends = makedeb-makepkg
+	conflicts = makedeb-beta
+	conflicts = makedeb-alpha
+	source = https://github.com/makedeb/makedeb/archive/refs/tags/v6.3.1-stable.tar.gz
 	sha256sums = SKIP
 
 pkgname = makedeb
