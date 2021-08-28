@@ -1,0 +1,15 @@
+pkgbase = python-dnc
+	pkgdesc = A tool to check domain names configuration
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fcambus/dnc
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-pyopenssl
+	depends = python-prettytable
+	depends = python-dnspython>=2.0.0
+	source = python-dnc-0.2.0.tar.gz::https://github.com/fcambus/dnc/archive/0.2.0.tar.gz
+	b2sums = ff12ae9061076ace604ee0ef201ba3fe4f338204267e0d724bf3d026952599ea784b4c4bd35cf40a8b134cd84f13354c4a332da5e3d662efba361f0af09a9ee8
+
+pkgname = python-dnc
