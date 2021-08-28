@@ -17,23 +17,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-  sed -i '/^linux:QMAKE_POST_LINK += echo; echo; echo "Run install.sh as root from the build directory to install."; echo; echo;$/s/^/#/' ${srcdir}/wfview/wfview.pro
-}
-
 build() {
   cd "${srcdir}"
   mkdir -p build
   cd build
-  qmake ../wfview/wfview.pro
+  qmake ../wfview/wfview.pro PREFIX=/usr
   make 
 }
-
 
 package() {
   install -D "${srcdir}/build/wfview" "$pkgdir/usr/bin/wfview"
   install -D "${srcdir}/wfview/resources/wfview.desktop" "$pkgdir/usr/share/applications/wfview.desktop"
   install -D "${srcdir}/wfview/resources/wfview.png" "$pkgdir/usr/share/pixmaps/wfview.png"
-  mkdir -p "$pkgdir/usr/share/wfview/stylesheets/qdarkstyle"
-  cp -rv "${srcdir}/wfview/qdarkstyle" -t "$pkgdir/usr/share/wfview/stylesheets"
+  mkdir -p "$pkgdir/usr/share/wfview/qdarkstyle"
+  cp -rv "${srcdir}/wfview/qdarkstyle" -t "$pkgdir/usr/share/wfview"
 }
