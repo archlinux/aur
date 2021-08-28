@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  poetry build
+  poetry build -f wheel
 }
 
 package() {
