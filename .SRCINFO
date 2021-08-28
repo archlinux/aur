@@ -1,6 +1,6 @@
 pkgbase = libusb-git
 	pkgdesc = A cross-platform library to access USB devices
-	pkgver = 1.0.24.rc1.r0.g42ad1d1d
+	pkgver = 1.0.24.r66.g1a906274
 	pkgrel = 1
 	url = https://libusb.info/
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = libusb-git
 	sha256sums = SKIP
 
 pkgname = libusb-git
-
