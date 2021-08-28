@@ -2,7 +2,7 @@
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
 url="https://github.com/TheDarkBug/$pkgname"
@@ -20,5 +20,8 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    mkdir -p "$pkgdir/usr/lib/$pkgname"
+    cp -r "res"/* "$pkgdir/usr/lib/$pkgname" 
+    install -Dm644 "$pkgname.1.gz" "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
 }
