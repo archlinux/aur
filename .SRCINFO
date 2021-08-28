@@ -1,7 +1,7 @@
 pkgbase = python-atari-py
 	pkgdesc = A python interface for the Arcade Learning Environment (Modified by OpenAI)
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.2.9
+	pkgrel = 1
 	url = https://github.com/openai/atari-py
 	arch = any
 	license = GPL
@@ -12,8 +12,7 @@ pkgbase = python-atari-py
 	depends = python-numpy
 	depends = python-six
 	depends = zlib
-	source = atari-py-0.2.6.tar.gz::https://github.com/openai/atari-py/archive/0.2.6.tar.gz
-	md5sums = 34c28ceac0813e74f5146c8e8333bf54
+	source = atari-py-0.2.9.tar.gz::https://github.com/openai/atari-py/archive/0.2.9.tar.gz
+	md5sums = 0ccc01f27d5331a1156b18dea315edc1
 
 pkgname = python-atari-py
-
