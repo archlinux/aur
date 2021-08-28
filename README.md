@@ -1,19 +1,18 @@
 # zekr
 * OVERVIEW
 
-Zekr is an Open Source Qur'an study project. This project is planned to be a
+NOTE: http://zekr.org is DOWN. The new home of the Project is (https://sourceforge.net/projects/zekr-linux/)
+
+Zekr is an Open Source Quran study project. This project is planned to be a
 universal, Open Source, and cross-platform application to ease most of
-the usual refers to the holy Qur'an. The main idea is to build an as generic
-as possible platform to accept different Qur'anic resources.
+the usual refers to the holy Quran. The main idea is to build an as generic
+as possible platform to accept different Quranic resources.
 
 Copyright (c) 2004-2012 zekr.org, and other contributors.
 
-Website: http://zekr.org.
-Translations, recitations and other resources: http://zekr.org/resources.html.
-
-Join Zekr Google group (and mailing list) by sending a message to:
-	zekr-subscribe@googlegroups.com
-
+Website: http://zekr.org (DOWN)
+Website: https://sourceforge.net/projects/zekr-linux/ (BACKUP)
+Translations, recitations and other resources: http://zekr.org/resources.html (DOWN)
 
 * LICENSE
 

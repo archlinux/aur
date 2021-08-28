@@ -2,7 +2,7 @@
 Version=1.0
 Encoding=UTF-8
 Name=Zekr
-Comment=Zekr open Quranic platform
+Comment=Quranic Research Tool
 Categories=GNOME;Application;Office;
 Type=Application
 StartupNotify=true
