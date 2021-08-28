@@ -12,7 +12,7 @@ depends=('java-runtime' 'webkitgtk2')
 source=(http://downloads.sourceforge.net/$pkgname-linux/$pkgname-$pkgver-linux_64.tar.gz $pkgname.desktop)
 sha256sums=(
   "b37482c511697b4bfa3e13a3b63346463ee1dae8db7ac1867a8b91daed9cca27"
-  "a412ea8e639c8a2a7ca753e914e08e13756ae2672d033068c92d2cac3304a01e"
+  "59ed0e24bc4d2ee7005b2c24c6fe81202c2388e489da9db2851d2cdb6052095a"
 )
 
 package() {
