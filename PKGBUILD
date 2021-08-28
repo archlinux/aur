@@ -1,7 +1,7 @@
-# Maintainer: metscoin <mets_coin@outlook.com>
+# Maintainer: Posi <posi1981@gmail.com>
 
 pkgname=actinium-qt
-pkgver=0.18.5.0
+pkgver=0.19.0.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://actinium.org/"
@@ -13,8 +13,7 @@ conflicts=(actinium)
 install=actinium-qt.install
 source=("${pkgname%-git}::git+https://github.com/Actinium-project/Actinium#tag=v${pkgver}"
         "$pkgname.desktop")
-sha256sums=('SKIP'
-            '20fe70ed4c00da0affc763f3f914dee9e061c8673d598a0d49f6b782aa2d1a70')
+sha256sums=('6ff14218a4a7f1cd5167c4fa944fb3f8ce69437f3fbe80302a4b6836013240c9')
 
 build() {
   cd "$srcdir/$pkgname"
