@@ -36,8 +36,9 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname}"
+  git switch release >/dev/null 2>&1
+  printf "r%s" "$(git log --pretty=\"format:%B\" HEAD | tr -dc '[:digit:]')"
 }
 
 package() {
