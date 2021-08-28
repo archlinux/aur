@@ -10,7 +10,7 @@ url='https://github.com/compassd/dcompass'
 license=('GPL3')
 provides=('dcompass')
 conflicts=('dcompass')
-source=("$_pkgbase::https://github.com/compassd/$_pkgbase/releases/download/build-$pkgver/dcompass-x86_64-unknown-linux-musl-full"
+source=("$_pkgbase::https://github.com/compassd/$_pkgbase/releases/download/build-$pkgver/dcompass-$CARCH-unknown-linux-musl-full"
         'dcompass@.service'
         'sysusers.conf')
 
