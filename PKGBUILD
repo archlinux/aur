@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r2.0.gce598cb
+pkgver=r2.2.g784b43c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git'
              'cmake'
              'avisynthplus'
              'vapoursynth'
+             'tbb'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Vague_Denoiser.git")
 sha256sums=('SKIP')
@@ -32,7 +33,7 @@ prepare() {
 build() {
   cd "${_plug}/build"
   cmake .. \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
@@ -40,9 +41,7 @@ build() {
 
 package_avisynth-plugin-neo_vague_denoiser-git() {
   pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
-  depends=('avisynthplus'
-           'intel-tbb'
-           )
+  depends=('avisynthplus')
   provides=("avisynth-plugin-${_plug}")
   conflicts=("avisynth-plugin-${_plug}")
 
@@ -54,9 +53,7 @@ package_avisynth-plugin-neo_vague_denoiser-git() {
 
 package_vapoursynth-plugin-neo_vague_denoiser-git() {
   pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-  depends=('vapoursynth'
-           'intel-tbb'
-           )
+  depends=('vapoursynth')
   provides=("vapoursynth-plugin-${_plug}")
   conflicts=("vapoursynth-plugin-${_plug}")
 
