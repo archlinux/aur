@@ -35,7 +35,7 @@ source=(https://ranger.github.io/${_pkgname}-${pkgver}.tar.gz{,.sig}
         'ranger_sixel.patch::https://github.com/3ap/ranger/compare/cd17ea8c1d2cd89754f625df25134f00c7227b65...c7dab8c8dba2ed54821f5b016475fa196f887d0f.patch')
 sha512sums=('5cd7bea714a6542d0a5445f5f0cf929b2df4377df3ef710f3786c6c46dd58b017a8060cde3969076637bfaac03c13297d3020fd82f4574dc49546ca223c0e8d3'
             'SKIP'
-            '28f05be4fa5be00ff8ed2a079ec5d0537c96cf3e829e1368fdc793d54e764bccca4a4e3d8e4156d02877276f455b6868abe0fca21c52a96516667afa87f54661')
+            '2c61b4e4b3951072a32afea78524e1e17611f689aa76b9b3da99cb0c376acfffe08d8e18d66c69c8eeefae3fd4c7d30bc8d24decba2ead181b8abdd444cd05b8')
 validpgpkeys=('1E9B36EC051FF6F7FFC969A7F08CE1E200FB5CDF'
               '66FA95C0F1619BDA520A41F60D63346A5D15D055') # huterich
 
