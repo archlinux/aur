@@ -1,0 +1,19 @@
+pkgbase = memocast-bin
+	pkgdesc = Yet another elegant Wiz Note Client, which was built with Quasar UI Framework and based on Electron.
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://github.com/TankNee/Memocast
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = electron8
+	provides = memocast
+	conflicts = memocast
+	source = memocast-2.1.8.deb::https://github.com/TankNee/Memocast/releases/download/v2.1.8/Memocast-2.1.8-amd64-linux.deb
+	source = https://raw.githubusercontent.com/TankNee/Memocast/master/LICENSE
+	source = memocast.sh
+	sha256sums = 1bc958998a5ecdce85c0d91f0247a1ad5444e0dab735a9dc30a0f1f583029db3
+	sha256sums = 09141f28d3723a64b16c54cbecd3b239301c879fc2f229dd70528cf75878b812
+	sha256sums = 907104b1a2cb10f13def27a871147399c6d06ecaa81505d533ab5b2388e13569
+
+pkgname = memocast-bin
