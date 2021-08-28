@@ -1,13 +1,13 @@
 pkgbase = qmltermwidget-git
 	pkgdesc = QML port of qtermwidget - development version
-	pkgver = 0.2.0.r185.g5c47d1f
+	pkgver = 0.2.0.r186.g65e75bc
 	pkgrel = 1
 	url = https://github.com/Swordfish90/qmltermwidget
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = qt5-declarative
-	provides = qmltermwidget=0.2.0.r185.g5c47d1f
+	provides = qmltermwidget=0.2.0.r186.g65e75bc
 	conflicts = qmltermwidget
 	source = git+https://github.com/Swordfish90/qmltermwidget.git
 	sha512sums = SKIP

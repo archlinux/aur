@@ -3,7 +3,7 @@
 _pkgname=qmltermwidget
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=0.2.0.r185.g5c47d1f
+pkgver=0.2.0.r186.g65e75bc
 pkgdesc='QML port of qtermwidget - development version'
 arch=('x86_64')
 url='https://github.com/Swordfish90/qmltermwidget'
