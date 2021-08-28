@@ -2,7 +2,7 @@
 
 pkgname=python-pywhat
 _pkgname=pyWhat
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Identify emails, IP addresses and more"
 arch=("any")
@@ -19,9 +19,9 @@ optdepends=(
     "python-orjson: faster JSON serialization and deserialization"
 )
 url="https://github.com/bee-san/pyWhat"
-license=("GPL-3.0")
+license=("MIT")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("bff050c5e3e982e7ae0ac7068b4d0af1db175acceda56d333ac5734aab5975eb")
+sha256sums=("f5182a20371e7bb3889bb5129c95e0e28ac7caf88eaf0e973fb32f30e54a8856")
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
