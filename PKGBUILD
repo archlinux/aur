@@ -1,6 +1,6 @@
 # Maintainer: GuiltyCat <guiltycat.icloud AT icloud DOT com>
 pkgname=salt-viewer
-pkgver=0.1.12
+pkgver=0.1.13
 pkgdesc="Very simple (archived) image viewer"
 pkgrel=1
 arch=("any")
