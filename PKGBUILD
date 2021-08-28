@@ -4,9 +4,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r215
+pkgver=5.15.2+kde+r222
 pkgrel=1
-_commit=2583b4f9397d60c4dd8403ca18c9df5bdf1c5583
+_commit=d2bd04d9fe03912097d3246b7d03ef14f425256b
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -25,12 +25,10 @@ options=(!lto)
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-base-cflags.patch
-        qt5-base-nostrip.patch
-        qtbug-95639.patch)
+        qt5-base-nostrip.patch)
 sha256sums=('SKIP'
             'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
-            '562e4ff501d52326658af751a596b948113271774cfa6692f1db0c7cf6609fa4')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 pkgver() {
   cd $_pkgfqn
@@ -44,7 +42,6 @@ prepare() {
 
   patch -p1 < ../qt5-base-cflags.patch # Use system CFLAGS in qmake
   patch -p1 < ../qt5-base-nostrip.patch # Don't strip binaries with qmake
-  patch -p1 < ../qtbug-95639.patch # Fix issues with MariaDB 10.6
 }
 
 build() {
