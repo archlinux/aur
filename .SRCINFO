@@ -1,0 +1,14 @@
+pkgbase = xpytile-git
+	pkgdesc = Tiling and simultaneous resizing of side-by-side windows (not only) for Xfce.
+	pkgver = r22.6c202df
+	pkgrel = 1
+	url = https://github.com/jaywilkas/xpytile/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-xlib
+	depends = libnotify
+	source = xpytile-git::git+https://github.com/jaywilkas/xpytile/
+	sha256sums = SKIP
+
+pkgname = xpytile-git
