@@ -1,7 +1,7 @@
 pkgbase = libvirt-xen
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
 	pkgver = 7.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libvirt.org/
 	install = libvirt.install
 	arch = x86_64

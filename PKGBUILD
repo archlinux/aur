@@ -5,7 +5,7 @@
 
 pkgname=libvirt-xen
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
