@@ -1,6 +1,6 @@
 pkgbase = netsoc
 	pkgdesc = Netsoc CLI
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://netsoc.ie
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = netsoc
 	makedepends = rsync
 	makedepends = git
 	depends = glibc
-	source = https://github.com/netsoc/cli/archive/v0.4.1/v0.4.1.tar.gz
-	sha512sums = 8ef557b25ff9fbdd6ba0e175ea4c69e64c8600820d6bca0d6fe2a9e680b8a3067fe60dabe4f5cb0c6d91878bbf0c57850dbf9644b030369322ef1e16623e7f12
+	source = https://github.com/netsoc/cli/archive/v0.4.2/v0.4.2.tar.gz
+	sha512sums = f392e1caabdc78779099b7978b3737da2805b0313c0cd4dd038ed7268bebd058fc160ec32c611d4b029029691787bd340f0f745486b9a6086a35943ec7208316
 
 pkgname = netsoc
-
