@@ -2,7 +2,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=telescope
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('telescope')
 conflicts=('telescope-git' 'telescope-bin')
 depends=('libretls')
 source=("https://github.com/omar-polo/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('748132e4cfaa7300819e46857e2a7d6edc7d74ddafacc09d8e65536d89bedf20')
+sha256sums=('47662ed53c1b27724d4b59920ed901ff87dc123de7c1090eb372c34cd4b9efd9')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
