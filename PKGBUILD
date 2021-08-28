@@ -14,10 +14,10 @@ source=("nldev.run"
         "nltrigger.run"
         "nldev.early"
         "nltrigger.early")
-sha256sums=('811ac122ce19056b4d87588f3aed9a490cc5590dd13d4004760534108479b8a0'
+sha256sums=('8eaf5bdca799ceff81dc556d5769bd3af234a8e8dec0a123d86abfe77d2d343a'
             '970bc31081ea9a46f6b03d5f593a18920b830da5d7dc8e625566dffbb05362e2'
             '08e171df7501cbd7dbd5ef820bed5f4e572fb28cc64daa05bc83144d77aa1a5e'
-            '538804d8f2d042d6a1dde2dd657711328baeddfdca80b68ea9583580033ee060'
+            'a811aec4f9e5f490d25c206510e5a9b8a453f91c0d00938449c3408075b9b0db'
             '079b80e78135ad0097f83a52b321262fe8c3f3f37a4526ba9b256512ea86bf97')
 
 _inst_sv() {

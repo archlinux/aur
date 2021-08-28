@@ -1,6 +1,5 @@
 #!/bin/sh
 [ -r conf ] && . ./conf
-mkdir /run/libudev-zero
 [ -f /run/nldev.pid ] && {
     kill $(cat /run/nldev.pid)
     rm /run/nldev.pid

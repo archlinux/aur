@@ -6,9 +6,6 @@
 case "$1" in
     start)
         stat_busy "Starting nldev daemon"
-        mkdir /run/libudev-zero
-        bus create /run/udev-bus
-        bus chmod 644 /run/udev-bus
         nldev -r /usr/bin/smdev &
         echo $! > /run/nldev.pid
         # Note: This is only needed for initialization, nldev will
