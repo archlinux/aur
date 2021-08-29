@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-log-any
-pkgver=1.709
-pkgrel=2
+pkgver=1.710
+pkgrel=1
 pkgdesc='Bringing loggers and listeners together'
 arch=(any)
 license=(PerlArtistic GPL)
@@ -10,8 +10,8 @@ options=(!emptydirs)
 depends=(perl)
 url=https://metacpan.org/release/Log-Any
 source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-$pkgver.tar.gz")
-md5sums=(38e7295e16c28cf49c385994b2aeecf9)
-sha512sums=(55beff3b56185e80aa4515d9e924356ffa2430fdbfe035f9d33cb6254bd8a23382055931939d4927befcc577486fb62f86b0362725fad60e571fbf0d669775c4)
+md5sums=(f0a9c5b9b81cc5fb842298d9b4b11779)
+sha512sums=(1aff56c1c4c51d4e9aae43add704dd2da86ea320ee095a613bd569c2f0ea546c98d27a1e0854f9b88cc1772bf438ee3be80ba2f61e8c15f39497035993f122e3)
 _ddir="Log-Any-$pkgver"
 
 build()
