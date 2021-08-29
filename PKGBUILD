@@ -1,8 +1,8 @@
 #Maintainer: Arnaud Joset <info [AT] agayon [DOT] be>
 
-pkgname=('sat-templates-hg')
-_realname=sat_templates
-pkgver=0.7.r279.a35ddf972ad2
+pkgname=('libervia-templates-hg')
+_realname=libervia-templates
+pkgver=0.7.r338.a90baa4d3ed1
 _version=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
@@ -11,10 +11,10 @@ pkgdesc="sat-templates is a collection of templates for Salut à Toi, the multi-
 arch=('any')
 depends=('python' 'python-jinja')
 makedepends=('mercurial')
-conflicts=('sat-templates')
-provides=('sat-templates')
+conflicts=('sat-templates' 'sat-templates-hg')
+provides=('libervia-templates')
 license=('AGPL3')
-source=("hg+https://repos.goffi.org/sat_templates")
+source=("hg+https://repos.goffi.org/libervia-templates")
 md5sums=('SKIP')
 options=('!strip')
 
