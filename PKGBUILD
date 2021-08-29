@@ -57,7 +57,7 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
 )
-sha256sums=('4b3113510804475020196071271e2c19984506c5c8a5e86049eac19feb2827cf'
+sha256sums=('e7cf87a11b7e3e6577a5d1e30d366546e8b161f8ae3e34e3dcd132ec99119103'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 )
 
