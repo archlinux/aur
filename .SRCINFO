@@ -1,7 +1,7 @@
 pkgbase = cargo-clone
 	pkgdesc = A cargo subcommand to fetch the source code of a Rust crate
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JanLikar/cargo-clone
 	arch = x86_64
 	license = APACHE
