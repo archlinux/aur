@@ -1,26 +1,23 @@
 pkgbase = kruler-git
-	pkgdesc = A pixel measuring tool for KDE. (GIT version)
-	pkgver = 5.0.r513.b24d9f2
+	pkgdesc = Screen Ruler
+	pkgver = 21.11.70_r698.g91ab1d1
 	pkgrel = 1
-	url = https://www.kde.org/applications/graphics/kruler
-	install = kruler-git.install
-	arch = i686
+	url = https://apps.kde.org/kruler/
 	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-graphics-git
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
 	makedepends = git
-	makedepends = python
-	depends = kxmlgui
-	depends = knotifications
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = knotifications-git
+	depends = kxmlgui-git
 	depends = hicolor-icon-theme
 	provides = kruler
-	conflicts = kdegraphics-kruler
 	conflicts = kruler
-	source = git://anongit.kde.org/kruler.git
-	sha1sums = SKIP
+	source = git+https://github.com/KDE/kruler.git
+	sha256sums = SKIP
 
 pkgname = kruler-git
-
