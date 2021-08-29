@@ -2,7 +2,7 @@
 
 _pyname=neutron-lib
 pkgname=python-$_pyname
-pkgver=2.11.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Neutron shared routines and utilities"
 arch=(any)
@@ -59,9 +59,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('17ebfe300b7aef78f03b09b821fe7d84')
-sha256sums=('af47a5c1f84f05a281038625064b7f0e6c6856d56c3ec3fb06184789acef4685')
-sha512sums=('3488a5904c972e55ba1b47742caa4ccb99eacfc1a4962fad9d1e89d99ef85e51fbd17a5f9b75004d3237fa5adcf00babe43c47b6505b745c167f0b33296402fa')
+md5sums=('b15f9a00836bf4f403468aaf9c58c371')
+sha256sums=('88a25675fedc6760443fbc4180357e6437160bf5237eae132f05f7114eba0508')
+sha512sums=('8d8ddf708f43c183f6a3a91c296ee6eaf9c70e562da4e16522b85a6484ffc44183d07ab82de389b0a4e7e5305386fdd9e707e853815ef79951028b6ae7c1930e')
 
 export PBR_VERSION=$pkgver
 
