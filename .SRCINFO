@@ -1,0 +1,22 @@
+pkgbase = ksnakeduel-git
+	pkgdesc = A simple snake duel game
+	pkgver = 21.11.70_r804.g9519f69
+	pkgrel = 1
+	url = https://apps.kde.org/ksnakeduel/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	provides = ksnakeduel
+	conflicts = ksnakeduel
+	source = git+https://github.com/KDE/ksnakeduel.git
+	sha256sums = SKIP
+
+pkgname = ksnakeduel-git
