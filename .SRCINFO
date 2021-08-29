@@ -1,7 +1,7 @@
 pkgbase = firejail-git
 	pkgdesc = Linux namespaces sandbox program (GIT version)
-	pkgver = r6849.34cec53a
-	pkgrel = 2
+	pkgver = r7648.7c6584fe0
+	pkgrel = 1
 	url = https://github.com/netblue30/firejail
 	install = firejail.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = firejail-git
 	license = GPL2
 	makedepends = git
 	depends = apparmor
-	depends = xdg-dbus-proxy
+	optdepends = xdg-dbus-proxy
 	provides = firejail
 	conflicts = firejail
 	backup = etc/firejail/login.users
@@ -19,4 +19,3 @@ pkgbase = firejail-git
 	sha512sums = SKIP
 
 pkgname = firejail-git
-

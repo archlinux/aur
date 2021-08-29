@@ -1,8 +1,8 @@
 # Maintainer: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=firejail-git
-pkgver=r6849.34cec53a
-pkgrel=2
+pkgver=r7648.7c6584fe0
+pkgrel=1
 pkgdesc="Linux namespaces sandbox program (GIT version)"
 arch=(i686 x86_64)
 license=(GPL2)
@@ -12,7 +12,8 @@ install=firejail.install
 sha512sums=('SKIP')
 conflicts=('firejail')
 provides=('firejail')
-depends=('apparmor' 'xdg-dbus-proxy')
+depends=('apparmor')
+optdepends=('xdg-dbus-proxy')
 makedepends=('git')
 backup=('etc/firejail/login.users'
         'etc/apparmor.d/local/firejail-default'
