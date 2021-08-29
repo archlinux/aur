@@ -2,14 +2,14 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.62.0
+pkgver=0.63.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
 license=(LGPL2.1)
 makedepends=('python-setuptools' 'python-wheel')
-depends=('python' 'python-attrs' 'python-colorama' 'python-junit-xml' 'python-requests' 'python-ruamel-yaml' 'python-tqdm' 'python-packaging' 'python-jsonschema')
+depends=('python' 'python-attrs' 'python-colorama' 'python-requests' 'python-ruamel-yaml' 'python-tqdm' 'python-packaging' 'python-jsonschema' 'python-wcmatch' 'python-peewee')
 provides=('semgrep')
 options=('!strip')
 source=(
@@ -17,8 +17,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'ea48f88f4a45c8e32e9f4eec3b5a8f07c011ec4f082ad96d4f8d87c109156839'
-  '5b04fde7fdc880b541200c071ad00d26192494448cea812899b89a32e31518db'
+  '14f29fe824f9fa288e5e6c0f6e48f0a11dcacd1878073c699873b62df3827e50'
+  '777322ce3bbe07a43cc5e8d9ad23691441d3af9785e942134ceb5bdad1eb4902'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
@@ -34,6 +34,6 @@ package() {
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 
-  # solve conflict with python-hypothesis
-  rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
+  # solve conflict with other packages
+  rm -rf ${pkgdir}/usr/lib/python*/site-packages/tests
 }
