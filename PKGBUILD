@@ -4,7 +4,7 @@
 pkgname=python-mecab
 _pkgname=mecab-python3
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Morphological Analysis Tool - Python3 interface"
 arch=('x86_64' 'i686')
 url="http://taku910.github.io/mecab/"
