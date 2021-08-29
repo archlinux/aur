@@ -1,0 +1,9 @@
+post_install() {
+ ln -s /usr/bin/pythonfilter /usr/lib/filters/pythonfilter
+ mkdir /var/lib/pythonfilter
+ chown courier:courier /var/lib/pythonfilter
+}
+
+post_remove() {
+ rm -rf /usr/lib/filters/pythonfilter /var/lib/pythonfilter
+}
