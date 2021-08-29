@@ -1,0 +1,14 @@
+pkgbase = sysz
+	pkgdesc = A fzf interface for systemctl
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/joehillen/sysz
+	arch = any
+	license = UNLICENSE
+	depends = bash
+	depends = coreutils
+	depends = tar
+	source = sysz-1.0.0.tar.gz::https://github.com/joehillen/sysz/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 79d4d8679e8f7c5f1c0ea0bb9409a411fad77fb88946e9bad23e7b6b80f9ac87
+
+pkgname = sysz
