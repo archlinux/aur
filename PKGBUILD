@@ -17,6 +17,8 @@ depends=(
 	'qt5-webkit'
 	'qt5-x11extras'
 	'qt5-quickcontrols' # Doesn't appear in namcap, won't display UI without it.
+	'qt5-webengine'
+	'qt5-svg'
 )
 #depends_x86_64=(
 # libdepends:
