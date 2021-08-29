@@ -1,6 +1,5 @@
 # Maintainer: Cooky.12 cooky.12@qq.com
 
-pkgbase=bluez
 pkgname=('bluez-plugins-fix')
 pkgver=5.61
 pkgrel=1
@@ -49,7 +48,7 @@ package_bluez-plugins-fix() {
   depends=('systemd')
   conflicts=('bluez-plugins')
 
-  cd "${pkgbase}"-${pkgver}
+  cd bluez-${pkgver}
   make DESTDIR="${pkgdir}" \
        install-pluginLTLIBRARIES
 }
