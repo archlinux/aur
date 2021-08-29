@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 pkgname=python-spython
 _pkgname=spython
-pkgver=0.0.80
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Singularity Python a Python API to work with the Singularity open source software"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('python')
 optdepends=('singularity-container: to use and manipulate Singularity Containers')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e4eddd6f439fe9a9a0f6566e13d89ff096397f86043c50a8d8dcfc87e7b4d686')
+sha256sums=('7674b8b9b3b2e723e5754849985bd668c8056f9d79ff019ba6f4237c70e15367')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
