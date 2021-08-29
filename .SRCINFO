@@ -1,0 +1,15 @@
+pkgbase = storj-uplink-git
+	pkgdesc = Storj Tardigrade Uplink
+	pkgver = 1.37.2
+	pkgrel = 1
+	url = https://github.com/storj/storj
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = go
+	provides = storj-uplink
+	conflicts = storj-uplink
+	source = git+https://github.com/storj/storj
+	sha512sums = SKIP
+
+pkgname = storj-uplink-git
