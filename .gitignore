@@ -1,9 +1,12 @@
 src
 pkg
 *.src.tar.gz
-*.tar.gz
+*.gz
 *.tar.bz2
 *.part
 *.pkg.tar*
 *.log
 LICENSE*
+*fit*
+*txt
+*pha

@@ -1,24 +1,104 @@
 pkgbase = python-sunpy
 	pkgdesc = Python library for solar physics
-	pkgver = 0.8.2
+	pkgver = 3.0.1
 	pkgrel = 1
-	url = http://www.sunpy.org/
+	url = https://sunpy.org
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = python
-	depends = python-astropy
-	depends = python-matplotlib
-	depends = python-scipy
-	depends = python-pandas
-	depends = python-requests
-	depends = python-suds-jurko
-	depends = python-beautifulsoup4
-	optdepends = python-sqlalchemy: for the database package
-	optdepends = python-pytest: for running tests
-	options = !emptydirs
-	source = https://pypi.io/packages/source/s/sunpy/sunpy-0.8.2.tar.gz
-	md5sums = ef0235f1eeb0554957c4a282bd4d627a5cab25b4
+	checkdepends = python-pytest-doctestplus
+	checkdepends = python-pytest-mock
+	checkdepends = python-astropy
+	checkdepends = python-aiohttp
+	checkdepends = python-parfive
+	checkdepends = python-matplotlib
+	checkdepends = python-scipy
+	checkdepends = python-beautifulsoup4
+	checkdepends = python-lxml
+	checkdepends = python-requests
+	checkdepends = python-zeep
+	checkdepends = python-drms
+	checkdepends = python-sqlalchemy
+	checkdepends = python-hypothesis
+	checkdepends = python-scikit-image
+	checkdepends = python-h5netcdf
+	makedepends = python-setuptools-scm
+	makedepends = python-extension-helpers
+	makedepends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-3.0.1.tar.gz
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063301_0131_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0171_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063302_0211_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063303_0335_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063305_0094_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063305_1600_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_cutout.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063307_0193_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_063931_0193_cutout.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_064555_0193_cutout.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_065219_0193_cutout.fits
+	source = http://data.sunpy.org/sunpy/v1/AIA20110607_065843_0193_cutout.fits
+	source = http://data.sunpy.org/sunpy/v1/BIR_20110607_062400_10.fit
+	source = http://data.sunpy.org/sunpy/v1/HMI20110607_063211_los_lowres.fits
+	source = http://data.sunpy.org/sunpy/v1/LOFAR_70MHZ_20190409_131136.fits
+	source = http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz
+	source = http://data.sunpy.org/sunpy/v1/eit_l1_20110607_203753.fits
+	source = http://data.sunpy.org/sunpy/v1/go1520110607.fits
+	source = http://data.sunpy.org/sunpy/v1/hsi_image_20110607_063300.fits
+	source = http://data.sunpy.org/sunpy/v1/hsi_obssumm_20110607_025.fits
+	source = http://data.sunpy.org/sunpy/v1/lyra_20110607-000000_lev3_std.fits
+	source = http://data.sunpy.org/sunpy/v1/swap_lv1_20110607_063329.fits
+	source = http://data.sunpy.org/sunpy/v1/tca110607.fits
+	source = http://data.sunpy.org/sunpy/v1/20110607_EVE_L0CS_DIODES_1m.txt
+	source = http://data.sunpy.org/sunpy/v1/20110607SRS.txt
+	source = http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz
+	source = http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha
+	md5sums = 2ea12ca662e987cf7e0ff8846fc85c6e
+	md5sums = bde3bd7a691b38e2e4c4e1d17b143b24
+	md5sums = 01efaf052d81efc32a92050a249aa557
+	md5sums = ead6d3ce4c183c471d76bf1bc3be44a3
+	md5sums = f4cd5c25bbd1809a683d0f5ec19ce92a
+	md5sums = 3d3e003b2da7e79134b28323bd8f4204
+	md5sums = 651f43e3623ab76189b7130ca40decb6
+	md5sums = 5f850633b03243fc465031d2cd4d0c9e
+	md5sums = fb7ffd090d572492654474e13e0785a6
+	md5sums = cc14e401e0142766095a12afd7cd9697
+	md5sums = ae40a715c140700f2f98b47340727fea
+	md5sums = fb8381aeb3f62e500f53275c314de97f
+	md5sums = b33f2e9c909dee5e30c5742ceb2fbbc4
+	md5sums = e0979dcbf4a794f97cae3314a4e815ea
+	md5sums = 0df5b0cf427798e8ee646c114ef21e78
+	md5sums = ad292afb23c4995da34a0e11cd52641a
+	md5sums = 4dda208f27f5632a810b063160d8f300
+	md5sums = e74eaba34d16f912f43cdf9fc52da969
+	md5sums = 93180b3b0b1062e1c2036810dbe70372
+	md5sums = 207638019e7f1bf68a91edc2a52cf63e
+	md5sums = 5ff9c24279256a1fd1c7df3424984190
+	md5sums = 62645078df18e245bfd7b42eda9285b2
+	md5sums = 2a05632e58ac56bcd927835e5cbe487f
+	md5sums = d9536b9b25d9f15cd2b20a16acfe11a7
+	md5sums = 06ce74d25cfdb3d19667d5682562745c
+	md5sums = 83341ef73b722cb250cfd7755f32f2b8
+	md5sums = 4dda208f27f5632a810b063160d8f300
+	md5sums = b1255ddcf10d91ae81439aadfe8cbccd
 
 pkgname = python-sunpy
-
+	depends = python>=3.7
+	depends = python-astropy>=4.1
+	depends = python-parfive>=1.2.0
+	optdepends = python-asdf>=2.6.0: asdf
+	optdepends = python-dask>=2.0.0: dask
+	optdepends = python-sqlalchemy>=1.3.4: database
+	optdepends = python-scikit-image>=0.16.0: image
+	optdepends = python-scipy>=1.3.0: image, map
+	optdepends = python-matplotlib>=3.1.0: map, timeseries, visualization
+	optdepends = python-glymur>0.9.0: jpeg2000
+	optdepends = python-beautifulsoup4>=4.8.0: net
+	optdepends = python-drms>=0.6.1: net
+	optdepends = python-dateutil>=2.8.0: net
+	optdepends = python-tqdm>=4.32.1: net
+	optdepends = python-zeep>=3.4.0: net
+	optdepends = python-cdflib>=0.3.19: timeseries
+	optdepends = python-h5netcdf>=0.8.1: timeseries
+	optdepends = python-h5py>=3.1.0: timeseries
+	optdepends = python-pandas>=0.24.0: timeseries
