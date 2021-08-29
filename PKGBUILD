@@ -16,7 +16,7 @@ options=(!strip) # for some reason, checkra1n segfaults if the binary is strippe
 
 package() {
     ar x ${_debname}
-    tar -xvf data.tar.xz
+    tar -xf data.tar.xz
     mkdir -p ${pkgdir}/usr/bin
     install -m 0755 usr/bin/checkra1n ${pkgdir}/usr/bin/checkra1n-gui
 }
