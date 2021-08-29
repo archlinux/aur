@@ -1,0 +1,22 @@
+pkgbase = kbreakout-git
+	pkgdesc = A Breakout-like game
+	pkgver = 21.11.70_r863.g33eb537
+	pkgrel = 1
+	url = https://apps.kde.org/kbreakout/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	provides = kbreakout
+	conflicts = kbreakout
+	source = git+https://github.com/KDE/kbreakout.git
+	sha256sums = SKIP
+
+pkgname = kbreakout-git
