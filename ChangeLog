@@ -1,3 +1,6 @@
+=== Morgen 2.2.2
+Ouch! While improving the stability of Google accounts already connected to Morgen, we have broken the possibility to connect additional Google accounts! This release is only about fixing this issue. Apologies to all affected users 🙏
+
 === Morgen 2.2.1
 Improvements
 - The current time indicator is now updated immediately when the timezone is changed
