@@ -2,25 +2,23 @@
 pkgname=mb-git
 pkgver=r27.0f5ecfa
 pkgrel=1
-pkgdesc=""
+pkgdesc="a simple mailbox utility"
 arch=(any)
-url=""
+url="https://github.com/Benjamin-Davies/${pkgname%-git}"
 license=('GPL')
 groups=()
 depends=('boost-libs')
 makedepends=('boost' 'cmake' 'git')
+optdepends=('mbsync: synchonize mail')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
 install=
-source=('mb::git+https://github.com/Benjamin-Davies/mb.git')
+source=("mb::git+$url.git")
 noextract=()
 md5sums=('SKIP')
-
-# Please refer to the 'USING git SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -47,7 +45,7 @@ check() {
 	cd "$srcdir/${pkgname%-git}"
 
 	cd build/
-	test -f mb
+	test -x mb
 }
 
 package() {

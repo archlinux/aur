@@ -1,12 +1,15 @@
 pkgbase = mb-git
+	pkgdesc = a simple mailbox utility
 	pkgver = r27.0f5ecfa
 	pkgrel = 1
+	url = https://github.com/Benjamin-Davies/mb
 	arch = any
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
 	depends = boost-libs
+	optdepends = mbsync: synchonize mail
 	provides = mb
 	conflicts = mb
 	source = mb::git+https://github.com/Benjamin-Davies/mb.git
