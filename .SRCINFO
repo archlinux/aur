@@ -23,10 +23,9 @@ pkgbase = dfhack-bin
 	source = dfhack-run.sh
 	md5sums = 81f5909c1a32391679f968e40f24d5ca
 	md5sums = 3853c6f890d3541f710f2c4833a9e696
-	source_x86_64 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r1/dfhack-0.47.05-r1-Linux-64bit-gcc-7.tar.bz2
-	md5sums_x86_64 = 8dabfca61ff02821ed0be0a885ad17f2
-	source_i686 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r1/dfhack-0.47.05-r1-Linux-32bit-gcc-7.tar.bz2
-	md5sums_i686 = 4506603e14458a951347850578f6770a
+	source_x86_64 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r2/dfhack-0.47.05-r2-Linux-64bit-gcc-7.tar.bz2
+	md5sums_x86_64 = 3150275dc28fed413cfc42728423f28f
+	source_i686 = https://github.com/DFHack/dfhack/releases/download/0.47.05-r2/dfhack-0.47.05-r2-Linux-32bit-gcc-7.tar.bz2
+	md5sums_i686 = 6dba40d5b94649566eabbd3b312b0002
 
 pkgname = dfhack-bin
-
