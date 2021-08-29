@@ -8,7 +8,7 @@ provides=('purple-hue')
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/apechimp/purple-hue"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/apechimp/purple-hue/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mike-zorn/purple-hue/archive/v$pkgver.tar.gz")
 license=('GPL')
 sha512sums=('d46d5ffd5dd94652fcb1da21e36ae3c88b3601f4a4943ba99fef4e75721f82f171222716d6b65c4f8724d305fa65b4664a51cfc07dfc2c0fbabbce480e3ca0d1')
 
