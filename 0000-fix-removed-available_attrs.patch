@@ -1,7 +1,7 @@
-diff --git a/horizon-19.2.0/horizon/decorators.py b/horizon-19.2.0/horizon/decorators.py
+diff --git a/horizon-20.0.0/horizon/decorators.py b/horizon-20.0.0/horizon/decorators.py
 index fa67761..38cca3f 100644
---- a/horizon-19.2.0/horizon/decorators.py
-+++ b/horizon-19.2.0/horizon/decorators.py
+--- a/horizon-20.0.0/horizon/decorators.py
++++ b/horizon-20.0.0/horizon/decorators.py
 @@ -21,13 +21,12 @@ General-purpose decorators for use with Horizon.
  """
  import functools
@@ -44,10 +44,10 @@ index fa67761..38cca3f 100644
      def dec(request, *args, **kwargs):
          if not component.can_access({'request': request}):
              raise NotAuthorized(_("You are not authorized to access %s")
-diff --git a/horizon-19.2.0/openstack_dashboard/api/rest/utils.py b/horizon-19.2.0/openstack_dashboard/api/rest/utils.py
+diff --git a/horizon-20.0.0/openstack_dashboard/api/rest/utils.py b/horizon-20.0.0/openstack_dashboard/api/rest/utils.py
 index a9bc3ea..8073ffa 100644
---- a/horizon-19.2.0/openstack_dashboard/api/rest/utils.py
-+++ b/horizon-19.2.0/openstack_dashboard/api/rest/utils.py
+--- a/horizon-20.0.0/openstack_dashboard/api/rest/utils.py
++++ b/horizon-20.0.0/openstack_dashboard/api/rest/utils.py
 @@ -17,7 +17,6 @@ import logging
  
  from django.conf import settings

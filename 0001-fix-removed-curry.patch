@@ -1,7 +1,7 @@
-diff --git a/horizon-19.2.0/openstack_auth/views.py b/horizon-19.2.0/openstack_auth/views.py
+diff --git a/horizon-20.0.0/openstack_auth/views.py b/horizon-20.0.0/openstack_auth/views.py
 index 353dc99..b7e5b7c 100644
---- a/horizon-19.2.0/openstack_auth/views.py
-+++ b/horizon-19.2.0/openstack_auth/views.py
+--- a/horizon-20.0.0/openstack_auth/views.py
++++ b/horizon-20.0.0/openstack_auth/views.py
 @@ -12,6 +12,7 @@
  # limitations under the License.
  import datetime
