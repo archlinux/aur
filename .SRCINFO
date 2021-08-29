@@ -1,7 +1,7 @@
 pkgbase = python2-markdown
 	pkgdesc = Python implementation of John Gruber's Markdown.
 	pkgver = 3.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://python-markdown.github.io/
 	arch = any
 	license = BSD
@@ -12,4 +12,3 @@ pkgbase = python2-markdown
 	sha256sums = 2e50876bcdd74517e7b71f3e7a76102050edec255b3983403f1a63e7c8a41e7a
 
 pkgname = python2-markdown
-
