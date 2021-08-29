@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=clean-chroot-manager
-pkgver=2.218
+pkgver=2.220
 pkgrel=1
 pkgdesc='Wrapper for managing clean chroot builds with local repo therein.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('devtools>=20190821-1' 'rsync' 'libarchive>=3.3.3' 'pacman>=5.2')
 conflicts=('clean_chroot_manager')
 replaces=('clean_chroot_manager')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/clean-chroot-manager/archive/v$pkgver.tar.gz")
-b2sums=('bacaf4e2248668a95fa301e5ba44a5d68a89e6f42adb1086dac3dd9ec14bba951a941cb5bf88001c24e4cc517e4a7c1bddc985544f1c9b2d7709e406a19c8de7')
+b2sums=('f598bc5939466cefee0a1c4d97b0cd74a07607433fd861c34abc0ab02dc57cac751d6df9ead4dc8f75de9cf72bdc7316f4a51da0a0ae27d9a9f9174a5ceafa58')
 install=ccm.install
 
 build() {
