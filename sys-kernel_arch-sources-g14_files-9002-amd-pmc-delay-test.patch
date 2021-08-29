@@ -1,0 +1,44 @@
+From 47e5da763d58a3b6657e2a716130a470e1deee2f Mon Sep 17 00:00:00 2001
+From: Scott B <28817345+foundObjects@users.noreply.github.com>
+Date: Wed, 25 Aug 2021 07:35:52 -0700
+Subject: [PATCH] amd-pmc delay test
+
+---
+ drivers/platform/x86/amd-pmc.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index 52a88c9bc0ab..336303e963c5 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -71,7 +71,7 @@
+ #define AMD_CPU_ID_YC			0x14B5
+ 
+ #define PMC_MSG_DELAY_MIN_US		100
+-#define RESPONSE_REGISTER_LOOP_MAX	200
++#define RESPONSE_REGISTER_LOOP_MAX     2000
+ 
+ #define SOC_SUBSYSTEM_IP_MAX	12
+ #define DELAY_MIN_US		2000
+@@ -283,12 +283,18 @@ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, bool set, u32 *data, u8 msg
+ 	/* Write zero to response register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_RESPONSE, 0);
+ 
++	udelay(500);
++
+ 	/* Write argument into response register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_ARGUMENT, set);
+ 
++	udelay(500);
++
+ 	/* Write message ID to message ID register */
+ 	amd_pmc_reg_write(dev, AMD_PMC_REGISTER_MESSAGE, msg);
+ 
++	udelay(500);
++
+ 	/* Wait until we get a valid response */
+ 	rc = readx_poll_timeout(ioread32, dev->regbase + AMD_PMC_REGISTER_RESPONSE,
+ 				val, val != 0, PMC_MSG_DELAY_MIN_US,
+-- 
+2.33.0
+

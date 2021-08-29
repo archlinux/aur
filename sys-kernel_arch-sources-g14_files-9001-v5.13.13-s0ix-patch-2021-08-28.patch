@@ -1,11 +1,32 @@
-From 6c661da8add5168cee3b745594d66173189bc8a2 Mon Sep 17 00:00:00 2001
+From e0bda89bd4057c851932c59ddb5bd3890005214f Mon Sep 17 00:00:00 2001
 From: Scott B <28817345+foundObjects@users.noreply.github.com>
-Date: Thu, 5 Aug 2021 02:39:45 -0700
-Subject: [PATCH] v5.13.8 s0ix patch 2021-08-05
+Date: Tue, 24 Aug 2021 21:21:09 -0700
+Subject: [PATCH] v5.13.13-s0ix patch 2021-08-24
 
 Squashed commit of the following:
 
-commit 8f506eaa976e148acdc856704a655659cadd279e
+commit 3ba8d2ed7f58ddf970dfe2bc1bfb93b9b3d66190
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Mon Aug 9 20:40:04 2021 -0500
+
+    ACPI: PM: s2idle: Invert Microsoft UUID entry and exit
+
+    It was reported by a user with a Dell m15 R5 (5800H) that
+    the keyboard backlight was turning on when entering suspend
+    and turning off when exiting (the opposite of how it should be).
+
+    The user bisected it back to commit 5dbf50997578 ("ACPI: PM:
+    s2idle: Add support for new Microsoft UUID").  Previous to that
+    commit the LEDs didn't turn off at all.  Confirming in the spec,
+    these were reversed when introduced.
+
+    Fix them to match the spec.
+
+    BugLink: https://gitlab.freedesktop.org/drm/amd/-/issues/1230#note_1021836
+    Fixes: 5dbf50997578 ("ACPI: PM: s2idle: Add support for new Microsoft UUID")
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+
+commit 606229f0125a3af622a407797ca94fade1ea1993
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jul 7 09:16:47 2021 -0500
 
@@ -19,7 +40,7 @@ Date:   Wed Jul 7 09:16:47 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit fd065a1e8ee224a0c550662f3812e987c6d21fa6
+commit a1c785973ae351de6448f88b7c19dd26b8f70540
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 30 14:46:06 2021 -0500
 
@@ -60,7 +81,7 @@ Date:   Wed Jun 30 14:46:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Acked-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit cd38229157b4ed96831763fed09a2ef1d67466b2
+commit 0f7dadec802150229cc8e6c74e0e7b3b2e53a9fd
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:03 2021 +0530
 
@@ -72,7 +93,7 @@ Date:   Tue Jun 29 14:18:03 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit 6cbf4ca877f9a7763eb7ceaec82884f7542b8584
+commit e787353c8c9ff51b8cf23cb68f31aa44fea6a4b8
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:02 2021 +0530
 
@@ -84,7 +105,7 @@ Date:   Tue Jun 29 14:18:02 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit b08043dc2dc982e77f2a620f6ac64dcc77085796
+commit 7e46535ba2b3eb3a91ada3241208429f01b5811c
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:01 2021 +0530
 
@@ -104,7 +125,7 @@ Date:   Tue Jun 29 14:18:01 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit abfb68f228563b457a9f7f2c8db8f9946f1c082d
+commit d9ddd835b8c990895bad75cdc46bf376b0e5a96d
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:18:00 2021 +0530
 
@@ -123,7 +144,7 @@ Date:   Tue Jun 29 14:18:00 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 
-commit df0f8a8e29ae2d10f34d0f1ba879cd6df0004871
+commit b5849744bf0f7fba2b498511681447b9a0eb1d1b
 Author: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 Date:   Tue Jun 29 14:17:59 2021 +0530
 
@@ -135,18 +156,7 @@ Date:   Tue Jun 29 14:17:59 2021 +0530
 
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
 
-commit 0dd5c53f0d5b1a07b0473562a6be34005eb852a2
-Author: Marcin Bachry <hegel666@gmail.com>
-Date:   Tue Mar 16 15:28:51 2021 -0400
-
-    PCI: quirks: Quirk PCI d3hot delay for AMD xhci
-
-    Renoir needs a similar delay.
-
-    Signed-off-by: Marcin Bachry <hegel666@gmail.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit df67da22f52dcde4ca3bba9609f9605565b3cfaf
+commit 58fdac16c271d4695a627751a4dbea899101d0ea
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jun 17 11:42:12 2021 -0500
 
@@ -162,7 +172,7 @@ Date:   Thu Jun 17 11:42:12 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit c53aff424e31bcb6706d6c7b8a6c06f0bca05a19
+commit 36b57e1cf35997a22cb01f1832729a8f833ad6c8
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:11 2021 -0500
 
@@ -176,7 +186,7 @@ Date:   Thu Jun 17 11:42:11 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 2019bfd57b6fe44cae0d356f54b948bfd707fa97
+commit c4d632cf2df5bc7e2d8dccd8de8d3984e59f8e40
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:10 2021 -0500
 
@@ -187,7 +197,7 @@ Date:   Thu Jun 17 11:42:10 2021 -0500
 
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit d9c8d6d7d178fbfedddc1d1a9f27d189cb8a4df9
+commit 8ab790396d0bd01b73755cedb3873ea60f7327dd
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:09 2021 -0500
 
@@ -205,7 +215,7 @@ Date:   Thu Jun 17 11:42:09 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 9f339765df127c0973766c4c282aab07999292a8
+commit 18da9bb5a1742a867963541c171e55d290c86868
 Author: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 Date:   Thu Jun 17 11:42:08 2021 -0500
 
@@ -216,7 +226,7 @@ Date:   Thu Jun 17 11:42:08 2021 -0500
 
     Signed-off-by: Pratik Vishwakarma <Pratik.Vishwakarma@amd.com>
 
-commit 6e853c597c7786939ea18e03e161d4b098a5201c
+commit 4e4c8f117e567a8c97d4d94c7f813285beb38d53
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 9 13:40:18 2021 -0500
 
@@ -263,7 +273,7 @@ Date:   Wed Jun 9 13:40:18 2021 -0500
     Tested-by: Julian Sikorski <belegdol@gmail.com>
     Signed-off-by: Christoph Hellwig <hch@lst.de>
 
-commit fd82413988169aa648d1507298b925f73e5b0ce4
+commit b8914e70b7a47a61430a6372f41912991f71e2eb
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Wed Jun 9 13:40:17 2021 -0500
 
@@ -290,10 +300,9 @@ Date:   Wed Jun 9 13:40:17 2021 -0500
  drivers/acpi/x86/s2idle.c      | 157 +++++++++++++++++--------
  drivers/acpi/x86/utils.c       |  25 ++++
  drivers/nvme/host/pci.c        |  28 +----
- drivers/pci/quirks.c           |   3 +
  drivers/platform/x86/amd-pmc.c | 204 ++++++++++++++++++++++++++++++---
  include/linux/acpi.h           |   5 +
- 8 files changed, 372 insertions(+), 91 deletions(-)
+ 7 files changed, 369 insertions(+), 91 deletions(-)
 
 diff --git a/drivers/acpi/device_pm.c b/drivers/acpi/device_pm.c
 index 9d2d3b9bb8b5..0cfdef2fc3ad 100644
@@ -357,7 +366,7 @@ index e21611c9a170..7ac01b03ba67 100644
  				Device properties
    -------------------------------------------------------------------------- */
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index 2d7ddb8a8cb6..1c507804fb10 100644
+index 2d7ddb8a8cb6..b16c245bbe5b 100644
 --- a/drivers/acpi/x86/s2idle.c
 +++ b/drivers/acpi/x86/s2idle.c
 @@ -32,6 +32,9 @@ static const struct acpi_device_id lps0_device_ids[] = {
@@ -567,7 +576,7 @@ index 2d7ddb8a8cb6..1c507804fb10 100644
 +	if (lps0_dsm_func_mask_microsoft > 0) {
 +		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_OFF,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_EXIT,
++		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_ENTRY,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
 +		acpi_sleep_run_lps0_dsm(ACPI_LPS0_ENTRY,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
@@ -596,7 +605,7 @@ index 2d7ddb8a8cb6..1c507804fb10 100644
 +	if (lps0_dsm_func_mask_microsoft > 0) {
 +		acpi_sleep_run_lps0_dsm(ACPI_LPS0_EXIT,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
-+		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_ENTRY,
++		acpi_sleep_run_lps0_dsm(ACPI_LPS0_MS_EXIT,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
 +		acpi_sleep_run_lps0_dsm(ACPI_LPS0_SCREEN_ON,
 +				lps0_dsm_func_mask_microsoft, lps0_dsm_guid_microsoft);
@@ -694,20 +703,6 @@ index d963f25fc7ae..66455e2261d0 100644
  		/*
  		 * Some systems use a bios work around to ask for D3 on
  		 * platforms that support kernel managed suspend.
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 6d74386eadc2..446f8f7b0ee4 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -1900,6 +1900,9 @@ static void quirk_ryzen_xhci_d3hot(struct pci_dev *dev)
- }
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, 0x15e0, quirk_ryzen_xhci_d3hot);
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, 0x15e1, quirk_ryzen_xhci_d3hot);
-+/* Renoir XHCI requires longer delay when transitioning from D0 to
-+ * D3hot */
-+DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, 0x1639, quirk_ryzen_xhci_d3hot);
- 
- #ifdef CONFIG_X86_IO_APIC
- static int dmi_disable_ioapicreroute(const struct dmi_system_id *d)
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
 index ca95c2a52e26..663a4ca0580d 100644
 --- a/drivers/platform/x86/amd-pmc.c
@@ -1082,4 +1077,5 @@ index c60745f657e9..dd0dafd21e33 100644
  
  #if defined(CONFIG_ACPI) && defined(CONFIG_PM_SLEEP)
 -- 
-2.32.0
+2.33.0
+

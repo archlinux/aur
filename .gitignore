@@ -5,3 +5,5 @@ archlinux-linux
 .vscode
 xanmod-rog-PKGBUILD
 linux
+test
+fedora-kernel-*.zip

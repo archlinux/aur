@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.13.12.arch1
-pkgrel=2
+pkgver=5.13.13.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -53,12 +53,13 @@ source=(
   "sys-kernel_arch-sources-g14_files-8013-mt76-mt7921-Fix-out-of-order-process-by-invalid-even.patch"
   "sys-kernel_arch-sources-g14_files-8014-mt76-mt7921-Add-mt7922-support.patch"
 
-  # squashed s0ix enablement through 2021-08-05
-  "sys-kernel_arch-sources-g14_files-9001-v5.13.2-s0ix-patch-2021-08-05.patch"
+  # squashed s0ix enablement through 2021-08-28
+  "sys-kernel_arch-sources-g14_files-9001-v5.13.13-s0ix-patch-2021-08-28.patch"
+  "sys-kernel_arch-sources-g14_files-9002-amd-pmc-delay-test.patch"
   # a small amd_pmc SMU debugging patch per Mario Limonciello @AMD
   "sys-kernel_arch-sources-g14_files-9002-amd-pmc-smu-register-dump-for-diagnostics.patch"
   
-  "sys-kernel_arch-sources-g14_files-9003-ACPI-PM-s2idle-Invert-Microsoft-UUID-entry-and-exit.patch"
+  #"sys-kernel_arch-sources-g14_files-9003-ACPI-PM-s2idle-Invert-Microsoft-UUID-entry-and-exit.patch"
   
   "sys-kernel_arch-sources-g14_files-9004-HID-asus-Reduce-object-size-by-consolidating-calls.patch"
   "sys-kernel_arch-sources-g14_files-9005-acpi-battery-Always-read-fresh-battery-state-on-update.patch"
@@ -85,15 +86,15 @@ sha256sums=('SKIP'
             '32bbcde83406810f41c9ed61206a7596eb43707a912ec9d870fd94f160d247c1'
             'e2d312ea95d18e91801d131a2b5d03cf2175d3088cac6f84a19410078a5b6b14'
             '4ef12029ea73ca924b6397e1de4911e84d9e77ddaccdab1ef579823d848524e8'
-            'd7243b89a21cdca61e753526b82cea24af0bd28bfa0158843c31226037f39d97'
+            '6fe5fe83e06d552f541bdca55d0d9e2cd6e70dd3047c01da749a0ff57fe706cc'
             'ed28a8051514f8c228717a5cdd13191b1c58181e0228d972fbe2af5ee1d013d7'
             'de8c9747637768c4356c06aa65c3f157c526aa420f21fdd5edd0ed06f720a62e'
             '67ebf477b2ecbf367ea3fee1568eeb3de59de7185ef5ed66b81ae73108f6693c'
             '2163cb2e394a013042a40cd3b00dae788603284b20d71e262995366c5534e480'
             'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
-            'c097278b0421bcfd80f24b37bd58d7c9b3e809eaf3c391c73def1451fa366c8b'
+            '41d7a48f113b3924595d327ea3031d1b14c611835e111c46438b9d85219cd76c'
+            'd8dd84c26a44af618c6d1b68723e3bf0f8f50165af04fe090256afb0f931713e'
             '6e629d4a032165f39202a702ad518a050c9305f911595a43bc34ce0c1d45d36b'
-            '5b7b8f450282a15d0832b171e82fc5639de1cb7aa495efe6e6c7989ebeb8ca36'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             'ee8794a551e33226900654d5c806183bf3b9b2e06f64fdc322987215d233d399')
