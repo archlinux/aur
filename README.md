@@ -1,6 +1,6 @@
 # biblesay
 
-Print out one out of 100 verses in a speech bubble coming from an ASCII-Art dove. Inspired by [buddhasay](https://github.com/luisonthekeyboard/buddhasay).
+Print out one out of 100 verses in a speech bubble coming from an ASCII-Art dove in your UNIX-Terminal. Inspired by [buddhasay](https://github.com/luisonthekeyboard/buddhasay).
 
 ## Install
 
