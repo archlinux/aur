@@ -2,13 +2,13 @@
 
 pkgname=bloom-defender
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fun Strategy Green Trees Tower Defense Shooting Game"
 arch=('x86_64')
 url="https://www.kongregate.com/games/ninjakiwi/zombie-trailer-park"
 license=('custom')
 depends=('flashplayer-standalone')
-source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/bloom-defender.tar.gz')
+source=('https://aya1.top/https://github.com/Brx86/yun/releases/download/2/bloom-defender.tar.gz')
 md5sums=('46272103e44f61ea36482dd90d73fe01')
 noextract=()
 
