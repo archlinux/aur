@@ -1,0 +1,27 @@
+pkgbase = libervia-web-hg
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)
+	pkgver = 0.7.0.r1451.526318c48953
+	pkgrel = 1
+	url = http://salut-a-toi.org/
+	install = libervia-web-hg.install
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	makedepends = mercurial
+	depends = python
+	depends = python-jinja
+	depends = python-shortuuid-git
+	depends = libervia-media-hg
+	depends = libervia-backend-hg
+	depends = libervia-templates-hg
+	depends = python-zope-interface
+	depends = python-pyopenssl
+	depends = python-autobahn
+	depends = dbus
+	depends = python-brython
+	provides = libervia-web
+	options = !strip
+	source = hg+https://repos.goffi.org/libervia
+	md5sums = SKIP
+
+pkgname = libervia-web-hg
