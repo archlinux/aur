@@ -22,4 +22,3 @@ package() {
   cp $srcdir/svdtools/bin/svd $pkgdir/usr/bin/svd
 }
 
-
