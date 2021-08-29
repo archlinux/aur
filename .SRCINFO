@@ -1,6 +1,6 @@
 pkgbase = breaktimer-appimage
 	pkgdesc = Save yourself from RSI and eye-strain.
-	pkgver = ver.auto.update
+	pkgver = 0.9.0
 	pkgrel = 0
 	url = https://breaktimer.app/
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = breaktimer-appimage
 	sha512sums = fd3c93d78d7e33119a81bbf8cdf74ca7f4ca95efce35a4e01e844c3196a6d3ce2617ed86a9fdf10c0fd60047f1b6ac9470a20489101467995196adcc40d93dc1
 
 pkgname = breaktimer-appimage
-

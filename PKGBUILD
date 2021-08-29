@@ -1,7 +1,7 @@
 # Maintainer: hotfloppy <hotfloppy . 6866 at gmail dot com>
 
 pkgname=breaktimer-appimage
-pkgver=ver.auto.update
+pkgver=0.9.0
 pkgrel=0
 pkgdesc="Save yourself from RSI and eye-strain."
 arch=('x86_64')
