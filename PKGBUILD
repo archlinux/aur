@@ -2,7 +2,7 @@
 
 pkgname="rime-pure-git-direct"
 pkgver="1.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="一站式配置【四叶草拼音\小鹤双拼】，更新搜狗词库"
 arch=("x86_64")
 url="https://github.com/Direct-A/rime-pure"
@@ -13,7 +13,7 @@ conflicts=("rime-cloverpinyin")
 source=("git+${url}"
         "$pkgname.install")
 sha256sums=('SKIP'
-            '514677f8bf84b762ec246763fd1f22264a2be35465556b31395a656c3a1eb694')
+            'a7e53540a127f571f5085e4676fbd2d6f25154fe381f2075891e95035887bb94')
 
 install=${pkgname}.install
 
@@ -33,4 +33,6 @@ package() {
   install -Dm644 {sogou_new_words.dict,customize.recipe,numbers.schema}.yaml -t "$pkgdir"/usr/share/rime-data
   install -Dm644 rime.lua -t "$pkgdir"/usr/share/rime-data
   install -Dm644 {user,essay}.txt -t "$pkgdir"/usr/share/rime-data
+
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/rime-pure-git-direct
 }
