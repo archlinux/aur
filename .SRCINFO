@@ -1,0 +1,18 @@
+pkgbase = cargo-nono-bin
+	pkgdesc = A cargo subcommand to detect (possible) no_std compatibility of your crate and dependencies
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/hobofan/cargo-nono
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	provides = cargo-nono
+	conflicts = cargo-nono
+	noextract = cargo-nono-bin-0.1.9.tar.gz
+	source = cargo-nono-bin-0.1.9.tar.gz::https://github.com/hobofan/cargo-nono/releases/download/0.1.9/cargo-nono-0.1.9-x86_64-unknown-linux-gnu.tar.gz
+	source = cargo-nono-bin-0.1.9-LICENSE-MIT::https://raw.githubusercontent.com/hobofan/cargo-nono/0.1.9/LICENSE-MIT
+	sha256sums = 83a5985c85a7096afb3db17dce0b8ca0d41d146a26060aeba053900d8ed252be
+	sha256sums = 563ddd25bbd22b8ecf5b28391050fb0ffc8e71ab82a377346784dea80bbbe327
+
+pkgname = cargo-nono-bin
