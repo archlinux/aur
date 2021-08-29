@@ -1,4 +1,4 @@
-5.8.14.arch1-1 - no audio patches
-5.8.14.arch1-2 - v1 audio patch
-5.8.14.arch1-3 - v2 audio patch
-Remeber to always make a full system shutdown with unplug power and all cables, then boot clean without connecting anything expect of power.
+This kernel contains miscellaneous patches for ASUS ROG Laptops (not only for G14)
+
+More information and recommend way to install this kernel can be found here https://asus-linux.org/wiki/arch-guide/
+AUR: https://aur.archlinux.org/packages/linux-g14/ (but recommend way is to use repo in the link above)
