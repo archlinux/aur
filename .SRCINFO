@@ -1,0 +1,23 @@
+pkgbase = kdegraphics-thumbnailers-git
+	pkgdesc = Thumbnailers for various graphics file formats
+	pkgver = 21.07.90_r236.g918502e
+	pkgrel = 1
+	url = https://apps.kde.org/kdegraphics_thumbnailers/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-graphics-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = libkexiv2-git
+	depends = libkdcraw-git
+	depends = kio-git
+	depends = ghostscript
+	provides = kdegraphics-thumbnailers
+	conflicts = kdegraphics-thumbnailers
+	source = git+https://github.com/KDE/kdegraphics-thumbnailers.git
+	sha256sums = SKIP
+
+pkgname = kdegraphics-thumbnailers-git
