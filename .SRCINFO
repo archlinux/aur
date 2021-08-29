@@ -1,10 +1,9 @@
 pkgbase = vim-code-minimap-git
 	pkgdesc = Blazing fast minimap for Vim, powered by code-minimap
-	pkgver = r122.8ff6541
-	pkgrel = 2
+	pkgver = r146.45a8eab
+	pkgrel = 1
 	url = https://github.com/wfxr/minimap.vim
 	arch = any
-	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = code-minimap
@@ -12,6 +11,7 @@ pkgbase = vim-code-minimap-git
 	sha256sums = SKIP
 
 pkgname = vim-code-minimap-git
+	groups = vim-plugins
 	depends = code-minimap
 	depends = vim>=8.2
 	provides = vim-code-minimap
@@ -20,6 +20,7 @@ pkgname = vim-code-minimap-git
 	conflicts = vim-minimap
 
 pkgname = neovim-code-minimap-git
+	groups = neovim-plugins
 	depends = code-minimap
 	depends = neovim>=0.5.0
 	provides = neovim-code-minimap
