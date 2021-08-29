@@ -13,7 +13,7 @@ conflicts=('ghdl' 'ghdl-gcc-git' 'ghdl-llvm-git')
 makedepends=('git')
 depends=('gcc-ada')
 checkdepends=(
-	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel'
+	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel>=0.12'
 	'python-pymetaclasses' 'python-pyattributes' 'python-pyterminalui'
 )
 optdepends=(
