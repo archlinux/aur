@@ -1,9 +1,9 @@
 PREFIX = /usr
 
-run: $(EXE)
+run:
 	./biblesay
 
-install: $(EXE)
+install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f biblesay $(DESTDIR)$(PREFIX)/bin
 	mkdir -p $(DESTDIR)$(PREFIX)/share/biblesay
