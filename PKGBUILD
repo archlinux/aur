@@ -33,12 +33,16 @@ source=("${pkgname}-${pkgver}-treviso-2.tar.gz::https://github.com/bottlesdevs/B
 sha256sums=('5115f9d5a61a3088f0ce38e9abe3a3ae1ee0244dd2653ad731758a844d49c45d')
 
 build() {
-  cd "Bottles-${pkgver}-treviso"
+  if [[ -d Bottles ]]; then 
+        rm -rf Bottles
+  fi;
+  mv Bottles*/ Bottles/
+  cd "Bottles"
   meson --prefix='/usr' build
   ninja -C build
 }
 
 package() {
-  cd "Bottles-${pkgver}-treviso"
+  cd "Bottles"
   DESTDIR="${pkgdir}" ninja -C build install
 }
