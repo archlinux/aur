@@ -6,7 +6,8 @@ _pkgname=wqy-microhei
 pkgname=$_pkgname-kr-patched
 pkgver=0.2.0_beta
 pkgrel=3
-pkgdesc="A Sans-Serif style high quality CJK outline font"
+pkgdesc="A Sans-Serif style high quality CJK outline font \
+(Fix incorrect advanceWidths in hmtx for composite glyphs, which had caused Korean Hangul glyphs to stack on top of each other)"
 arch=('any')
 license=('GPL3' 'APACHE' 'custom:"font embedding exception"')
 url="https://wenq.org"

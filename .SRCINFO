@@ -1,5 +1,5 @@
 pkgbase = wqy-microhei-kr-patched
-	pkgdesc = A Sans-Serif style high quality CJK outline font
+	pkgdesc = A Sans-Serif style high quality CJK outline font (Fix incorrect advanceWidths in hmtx for composite glyphs, which had caused Korean Hangul glyphs to stack on top of each other)
 	pkgver = 0.2.0_beta
 	pkgrel = 3
 	url = https://wenq.org
