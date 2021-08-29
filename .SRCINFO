@@ -11,4 +11,3 @@ pkgbase = mseed2ascii
 	sha256sums = c0e0d8561567079171f6066c56256b67c43b544a78fc00f7b2cde5d3d490bea1
 
 pkgname = mseed2ascii
-
