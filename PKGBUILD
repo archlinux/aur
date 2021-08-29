@@ -7,72 +7,54 @@ pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.8.0
 _stlink_updater_ver=2.38.27
-pkgrel=2
+pkgrel=3
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
 license=('SLA0048')
 # libusb1.0.12 version or higher is required to run STM32CubeProgrammer.
 
+#
 # There is no need to install any Java™ SE Run Time Environment since version 2.6.0. The
 # STM32CubeProgrammer runs with a bundled JRE available inside the downloaded
 # package and no longer with the one installed on your machine.
 
 # -------------------------------------------------->
 # https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-software-description-stmicroelectronics.pdf
+#
+# stlink provides stlink udev rules
 depends=('stlink'
-         'libusb'
-         'libnet'
-         'qt5-serialport'
-         'openssl-1.0')
+         'libusb')
 makedepends=('xdotool'
              'xorg-server-xvfb'
-             'xdg-user-dirs'
              'icoutils')
 provides=("${pkgname}rammer")
 options=('!strip')
-_pkg_main_archive="en.${pkgname//prog/prg}-lin_v${pkgver//./-}_v${pkgver}.zip"
-_stlink_updater_archive="en.stsw-link007_V${_stlink_updater_ver//./-}_v${_stlink_updater_ver}.zip"
-source=("local://${_pkg_main_archive}"
-        "local://${_stlink_updater_archive}"
+_pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
+_stlink_updater_name="stsw-link007_V${_stlink_updater_ver//./-}"
+# stm32cubeprog
+## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
+# stsw-link007
+## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
+source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/0a/02/5f/ff/fb/27/4d/84/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
+        "en.${_stlink_updater_name}.zip::https://st.com/content/ccc/resource/technical/software/firmware/group1/4e/80/8d/29/e0/c7/4e/13/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
         "${pkgname}.xdotool")
 sha256sums=('c896a9e2cd6c43c9d98a7271c52934eb7151c22117afdf6e8175e7c6a83fdc40'
             'bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
-      
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_main_archive} ]; then
-	if [ -f $_DOWNLOADS_DIR/${_pkg_main_archive} ]; then
-		ln -sfn $_DOWNLOADS_DIR/${_pkg_main_archive} ${PWD}
-	else
-		echo ""
-		echo "Main archive not found. The package can be downloaded here: https://www.st.com/en/development-tools/stm32cubeprog.html"
-		echo "Please remember to put a downloaded package ${_pkg_main_archive} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-		echo ""
-	fi
-fi
-
-if [ ! -f ${PWD}/${_stlink_updater_archive} ]; then
-  if [ -f $_DOWNLOADS_DIR/${_stlink_updater_archive} ]; then
-    ln -sfn $_DOWNLOADS_DIR/${_stlink_updater_archive} ${PWD}
-  else
-    echo ""
-    echo "St-link updater archive not found. The package can be downloaded here: https://www.st.com/en/development-tools/stsw-link007.html"
-    echo "Please remember to put a downloaded package ${_stlink_updater_archive} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-    echo ""
-  fi
-fi
 
 prepare() {
-  cat > ${pkgname}.xvfb <<'END'
+  cat > ${pkgname}.xvfb <<END
 #!/usr/bin/sh
 
 echo ' '
 echo 'please wait for minutes ......'
 echo ' '
 
-./SetupSTM32CubeProgrammer-2.8.0.linux &
-xdotool stm32cubeprog.xdotool ${1}
+./SetupSTM32CubeProgrammer-${pkgver}.linux &
+
+# specify $srcdir/build as temporary dir
+xdotool stm32cubeprog.xdotool ${srcdir}/build
 END
 
   chmod u+x Setup${_pkgname}-${pkgver}.linux ${pkgname}.xvfb
@@ -82,7 +64,7 @@ build() {
   mkdir -p build
 
   # use xvfb-run and xdotool to cheat the Installer
-  xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 0 ./${pkgname}.xvfb ${srcdir}/build
+  xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" -w 0 ./${pkgname}.xvfb
 
   # convert ico to icon
   mkdir -p icon
@@ -98,9 +80,16 @@ package() {
   for size in 256 128 64 48 32 24 16
   do
     index=$((index+1))
-    install -Dm 644 ${srcdir}/icon/Programmer_${index}_${size}x${size}x32.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png
+    install -Dm 644 ${srcdir}/icon/Programmer_${index}_${size}x${size}x32.png \
+                    ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png
   done
   
+  # doc
+  for _doc in CLI_TREE.txt Readme.txt
+  do
+    install -Dm644 ${pkgdir}/opt/${pkgname}/doc/${_doc} -t ${pkgdir}/usr/share/doc/${pkgname}
+  done
+
   # license
   install -Dm644 ${pkgdir}/opt/${pkgname}/doc/license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}
 
@@ -120,9 +109,9 @@ END
 
   # soft link
   install -dm 755 ${pkgdir}/usr/bin
-  for cmd in STM32_Programmer_CLI STM32MP_SigningTool_CLI STM32MP_KeyGen_CLI      
+  for _cmd in STM32_Programmer_CLI STM32_Programmer.sh STM32MP_SigningTool_CLI STM32MP_KeyGen_CLI
   do
-    ln -sf /opt/${pkgname}/bin/${cmd} ${pkgdir}/usr/bin/${cmd}
+    ln -sf /opt/${pkgname}/bin/${_cmd} ${pkgdir}/usr/bin/${_cmd}
   done
 
   # ST-link updater
