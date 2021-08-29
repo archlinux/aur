@@ -13,11 +13,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/open-policy-agent/opa/archi
 sha256sums=('b2faf2b4bdf011569c27774167e8910d94dbb041f42456b5f1c5ce060958065b')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
 
   go build \
-  --trimpath \
-  --ldflags "-X github.com/open-policy-agent/opa/version.Version=$pkgver" \
+  -ldflags "-X github.com/open-policy-agent/opa/version.Version=$pkgver" \
   -o opa \
   .
 }
