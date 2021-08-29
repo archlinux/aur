@@ -1,22 +1,21 @@
 pkgbase = kcharselect-git
-	pkgdesc = Character Selector. (GIT version)
-	pkgver = 1.12.r295.276f21d
+	pkgdesc = Character Selector
+	pkgver = 21.11.70_r475.g714122d
 	pkgrel = 1
-	url = https://www.kde.org/applications/utilities/kcharselect
-	install = kcharselect-git.install
+	url = https://apps.kde.org/kcharselect/
 	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-utilities-git
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
 	makedepends = git
-	depends = kxmlgui
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kbookmarks-git
 	provides = kcharselect
 	conflicts = kcharselect
-	conflicts = kdeutils-kcharselect
-	source = git://anongit.kde.org/kcharselect.git
-	sha1sums = SKIP
+	source = git+https://github.com/KDE/kcharselect.git
+	sha256sums = SKIP
 
 pkgname = kcharselect-git
-
