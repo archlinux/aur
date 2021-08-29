@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkgs@roshless.com>
 
 pkgname='netbox'
-pkgver=2.11.6
+pkgver=2.11.12
 pkgrel=1
 pkgdesc='IP address management (IPAM) and data center infrastructure management (DCIM) tool.'
 arch=('any')
@@ -60,7 +60,7 @@ package() {
 	ln -s "/etc/netbox/configuration.py" "$pkgdir/var/lib/netbox/netbox/configuration.py"
 }
 
-md5sums=('7db419a8000a0f3d6a084f441e508a76'
+md5sums=('e54908987615ff7e99f06ea853cf78a9'
          '55dcba60ed4cb66b350d3d8f2946aef9'
          'ad07c0c741a231b8d8012221bee2c167'
          'b653f7da646e78ad5c69d3960bbafd9c'
