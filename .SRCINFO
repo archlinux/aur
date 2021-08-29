@@ -1,6 +1,6 @@
 pkgbase = python-glance-store
 	pkgdesc = OpenStack Image Service Store library
-	pkgver = 2.5.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://docs.openstack.org/glance_store/latest/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = python-glance-store
 	checkdepends = python-fixtures
 	checkdepends = python-subunit
 	checkdepends = python-requests-mock
+	checkdepends = python-retrying
 	checkdepends = python-stestr
 	checkdepends = python-testscenarios
 	checkdepends = python-testtools
@@ -41,10 +42,9 @@ pkgbase = python-glance-store
 	depends = python-keystoneauth1
 	depends = python-keystoneclient
 	depends = python-requests
-	source = https://pypi.io/packages/source/g/glance_store/glance_store-2.5.0.tar.gz
-	md5sums = 5f22383d27958bdd17e2fe4608e89f97
-	sha256sums = 4dd8e1c41d45cf32345ab17388a72e4beaa1c87523530635292722562306bd76
-	sha512sums = 75a6dfc9dabe8bf2053639d3da1a8c7b0f145015331277f99e70a6be31915cb972c1876713e6cf93ff390239bcd9e3dee5ae031fbf99299953eaa44301daf359
+	source = https://pypi.io/packages/source/g/glance_store/glance_store-2.7.0.tar.gz
+	md5sums = 264a478c9fb01372e7d88baa99e280ba
+	sha256sums = 8f7faf76e76f2170ea124f9e5e71752da71d1db25053e73581a6291330f687b3
+	sha512sums = fc5b06dbd197d99b36e2f744f10dff77d268e1dfe13ebb85b1945f28d3b27607d7023735868e6f4bfcd63735c917a2bc21aa7772ed35a4710f9df557d4cd5a99
 
 pkgname = python-glance-store
-
