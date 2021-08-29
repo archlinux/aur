@@ -1,0 +1,20 @@
+pkgbase = ktimetracker-git
+	pkgdesc = Todo management and time tracker
+	pkgver = 5.0.1_r3705.gb2c67c3
+	pkgrel = 1
+	url = https://userbase.kde.org/KTimeTracker
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kio-git
+	depends = kcalendarcore-git
+	depends = kidletime-git
+	depends = hicolor-icon-theme
+	provides = ktimetracker
+	conflicts = ktimetracker
+	source = git+https://github.com/KDE/ktimetracker.git
+	sha256sums = SKIP
+
+pkgname = ktimetracker-git
