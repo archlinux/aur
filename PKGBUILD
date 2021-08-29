@@ -1,9 +1,9 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
 java_=11
-pkgname="jdk${java_}-graalvm-bin"
-pkgver=21.2.0
-pkgrel=2
+pkgname="jdk${java_}-graalvm-ee-bin"
+pkgver=21.2.0.1
+pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
       'aarch64')
@@ -19,13 +19,14 @@ options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-amd64-${pkgver}.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('bbd3e03025168172a76c2a29e6a14c1c37e3476b30774259c3ef5952fb86f470')
-sha256sums_aarch64=('bbdf38d5e6871f7e3b2470ab9b9bb760667d4524ee2a20eadfaf13636a2d018c')
+# Oracle requires login to download. Downloaded from https://www.oracle.com/tools/graalvm-enterprise-edition.html
+source_x86_64=("https://web.archive.org/web/20210829041745if_/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-linux-amd64-21.2.0.1.tar.gz?AuthParam=1630210751_ee6afcb9eadd190c7710ceb4a92e5f59")
+source_aarch64=("https://web.archive.org/web/20210829042334if_/https://download.oracle.com/otn/utilities_drivers/oracle-labs/graalvm-ee-java11-linux-aarch64-21.2.0.1.tar.gz?AuthParam=1630211125_e853928e0878bc3a4573f291ce0ab5ec")
+sha256sums_x86_64=('6ae0571a23e69405b369444d469fedc4ed98a52a50089b158492d23467696fcf')
+sha256sums_aarch64=('c9ab81a2027e3754770497f6a7d593a25928b8723038bc4b31b74e0dae24e6ec')
 
 package() {
-    cd "graalvm-ce-java${java_}-${pkgver}"
+    cd "graalvm-ee-java${java_}-${pkgver}"
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" *
     install -DTm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
