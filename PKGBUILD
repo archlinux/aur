@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/apechimp/purple-hue"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apechimp/purple-hue/archive/$pkgver.tar.gz")
 license=('GPL')
-sha512sums=('b0d5026b4562458b83b138600fd4d9da7749a70b1dd814cdcc5ee1228a02fddeee43b51b76cc88107a8210bf49bf78249aba3fe34cf3d198c9a4c13789e72405')
+sha512sums=('d46d5ffd5dd94652fcb1da21e36ae3c88b3601f4a4943ba99fef4e75721f82f171222716d6b65c4f8724d305fa65b4664a51cfc07dfc2c0fbabbce480e3ca0d1')
 
 build() {
     cd $pkgname-$pkgver
