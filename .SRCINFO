@@ -1,0 +1,22 @@
+pkgbase = kblackbox-git
+	pkgdesc = A game of hide and seek played on a grid of boxes
+	pkgver = 21.11.70_r725.g4682f86
+	pkgrel = 1
+	url = https://apps.kde.org/kblackbox/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	provides = kblackbox
+	conflicts = kblackbox
+	source = git+https://github.com/KDE/kblackbox.git
+	sha256sums = SKIP
+
+pkgname = kblackbox-git
