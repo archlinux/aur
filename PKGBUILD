@@ -11,7 +11,7 @@ arch=('x86_64' 'i686')
 url="http://taku910.github.io/mecab/"
 license=('BSD' 'LGPL2.1' 'GPL2')
 depends=('python' 'mecab' 'mecab-ipadic')
-makedepends=('python-setuptools' 'git' 'swig')
+makedepends=('python-setuptools' 'python-wheel' 'python-pip' 'git' 'swig')
 source=("git+https://github.com/SamuraiT/mecab-python3.git")
 sha1sums=('SKIP')
 
