@@ -28,12 +28,13 @@ pkgbase = binaryninja-personal
 	depends = libxdmcp
 	depends = libcurl-compat
 	depends = openssl-1.0
+	depends = qt5-base
+	optdepends = gtk-update-icon-cache: icon support
 	provides = binaryninja
 	conflicts = binaryninja
 	source = file://BinaryNinja-personal.zip
 	source = binaryninja.png
-	sha256sums = 7b1a8a7af61e7add060082033e4d20307e9c8278e9c1a4c2d2657afed09d625b
+	sha256sums = b519e371af2e5162fdb12f3426a2e007cab357e6e93aed8132144aea33af246c
 	sha256sums = ac2e652f617d5ef8aaa34a5113164f51f3f673c872a635d29c93878a00650bf8
 
 pkgname = binaryninja-personal
-

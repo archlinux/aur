@@ -65,7 +65,7 @@ prepare() {
 	echo "[Desktop Entry]
 Name=Binary Ninja ${_edition}
 Exec=/usr/bin/${_pkgname}
-Icon=${pkgname}
+Icon=/opt/binaryninja/docs/img/logo.png
 Type=Application
 Categories=Development;Debugger;Profiling;" > "${srcdir}/binaryninja.desktop"
 }
