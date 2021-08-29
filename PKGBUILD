@@ -4,9 +4,9 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=2.9.0
-_gitname="release-$pkgver-linux4"
-pkgrel=3
+pkgver=2.9.2
+_gitname="release-$pkgver-linux1"
+pkgrel=1
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -35,6 +35,7 @@ sha256sums=('SKIP'
 
 build() {
     cd "$pkgname"
+    git submodule update --recursive --init
     export DISPLAY=':99.0'
     Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
     yarn install
