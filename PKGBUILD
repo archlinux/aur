@@ -2,7 +2,7 @@
 
 pkgname=libzkgroup
 _pkgname=zkgroup
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Library for the Signal Private Group System."
 url="https://github.com/signalapp/${_pkgname}"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('fdd03bbf584533963d1be40ab238d4e6199b379e8112f6aaf5cd9493b7f1fb47')
+sha256sums=('b0fdf42c35ea08dec063b903967bef2a461ac1717dc38ee0b8757557b07cb204')
 
 prepare() {
   tar xf ${pkgname}-$pkgver.tar.gz
