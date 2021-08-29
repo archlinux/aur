@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cargo-pgx
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="Build PostgreSQL extensions with Rust"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
   "https://raw.githubusercontent.com/zombodb/pgx/v$pkgver/LICENSE"
 )
-b2sums=('49b9546bb269ed233518fffa5ec0590ababc166e619ac6ede08cb7ca37a34a07478043a6f19b9ce9d1db31e070bf847a7e218204841a4533f1ed2ca823e517f4'
+b2sums=('86b1de062bbc3258e6c64b0b965eb842c6be3cc92a6d9d062119a804fc6665cc4fd9bed7343cf9004aa494032eadd6bc8b1f9f4536d5ea12b281db9e651f6b07'
         '2cab3447814cebb834e21e3db43ac2dd42bd0ca064d304120ecf5d4f831b90dcd7fe5f9ddc10983e5f362689258d5af0ee4abedfcbf87f52ff31fe697511f165')
 
 prepare() {
