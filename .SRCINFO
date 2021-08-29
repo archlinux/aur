@@ -1,6 +1,6 @@
 pkgbase = thonkbar-git
 	pkgdesc = minimalist block based lemonbar wrapper
-	pkgver = r20.207d3cb
+	pkgver = r21.92d3c81
 	pkgrel = 1
 	url = https://github.com/JoseFilipeFerreira/thonkbar
 	arch = any
@@ -8,11 +8,9 @@ pkgbase = thonkbar-git
 	makedepends = git
 	makedepends = gcc
 	depends = lemonbar-xft-git
-	optdepends = killall: send signals to blocks
 	provides = thonkbar-git
 	conflicts = thonkbar-git
 	source = git+https://github.com/JoseFilipeFerreira/thonkbar
 	md5sums = SKIP
 
 pkgname = thonkbar-git
-
