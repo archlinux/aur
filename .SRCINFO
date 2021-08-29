@@ -1,0 +1,15 @@
+pkgbase = nginx-mainline-mod-ipscrub
+	pkgdesc = ipscrub module for nginx mainline
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/masonicboom/ipscrub
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = nginx-mainline-src
+	depends = nginx-mainline
+	depends = libbsd
+	source = https://github.com/masonicboom/ipscrub/archive/v1.0.1.tar.gz
+	sha256sums = c4ae6733434f2c98f0bf6a8e3af88be6a6cc81cd7ee823eb90d124ecb9cca9ed
+
+pkgname = nginx-mainline-mod-ipscrub
