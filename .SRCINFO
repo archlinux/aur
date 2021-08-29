@@ -1,0 +1,23 @@
+pkgbase = katomic-git
+	pkgdesc = A fun and educational game built around molecular geometry
+	pkgver = 21.11.70_r917.g47ca0e1
+	pkgrel = 1
+	url = https://apps.kde.org/katomic/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	depends = perl
+	provides = katomic
+	conflicts = katomic
+	source = git+https://github.com/KDE/katomic.git
+	sha256sums = SKIP
+
+pkgname = katomic-git
