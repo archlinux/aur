@@ -1,12 +1,12 @@
 pkgbase = vapoursynth-plugin-vsgan-git
 	pkgdesc = Plugin for Vapoursynth: vsgan (GIT version)
-	pkgver = v1.0.8.r25.8b166f9
+	pkgver = 1.1.0.77.gb92cb6b
 	pkgrel = 1
 	url = https://github.com/rlaPHOENiX/VSGAN
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-build
 	depends = vapoursynth-plugin-mvsfunc-git
 	depends = python-numpy
 	depends = python-pytorch
@@ -16,4 +16,3 @@ pkgbase = vapoursynth-plugin-vsgan-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vsgan-git
-
