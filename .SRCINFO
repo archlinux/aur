@@ -14,6 +14,7 @@ pkgbase = maunium-sticker-picker-git
 	depends = python-telethon
 	depends = python-cryptg
 	depends = python-magic
+	provides = maunium-sticker-picker
 	source = stickerpicker::git+https://github.com/maunium/stickerpicker.git
 	sha512sums = SKIP
 

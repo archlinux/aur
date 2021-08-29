@@ -10,6 +10,7 @@ url="https://github.com/maunium/stickerpicker"
 license=('AGPL3')
 depends=('python>=3.6' 'python-aiohttp' 'python-yarl' 'python-pillow' 'python-telethon' 'python-cryptg' 'python-magic')
 makedepends=('python-setuptools')
+provides=("maunium-sticker-picker")
 _source_path="stickerpicker"
 source=("$_source_path::git+https://github.com/maunium/stickerpicker.git")
 sha512sums=('SKIP')
