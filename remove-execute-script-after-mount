@@ -1,4 +1,0 @@
-rm /usr/local/lib/script-after-mount.sh
-rm /etc/systemd/system/exec-script-after-mount.service
-systemctl disable exec-script-after-mount.service
-rm /var/log/execute-script-after-mount-time.log

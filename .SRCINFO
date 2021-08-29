@@ -1,10 +1,11 @@
 pkgbase = execute-script-after-mount
 	pkgdesc = This is a program to execute a command after a drive was mounted.
-	pkgver = 1.0.0
+	pkgver = 1.0
 	pkgrel = 1
+	url = https://github.com/FernandAdam/execute-script-after-mount.git
 	arch = x86_64
 	license = custom
-	source = execute-script-after-mount-init
+	source = git+https://github.com/FernandAdam/execute-script-after-mount.git
 	sha512sums = SKIP
 
 pkgname = execute-script-after-mount
