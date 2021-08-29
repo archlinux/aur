@@ -3,7 +3,8 @@
 
 pkgname='libcanlock'
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
+pkgdesc='A standalone RFC 8315 Netnews Cancel-Lock implementation for Unix'
 arch=('x86_64' 'armv7h')
 url='https://micha.freeshell.org/libcanlock/'
 license=('custom')

@@ -1,6 +1,7 @@
 pkgbase = libcanlock
+	pkgdesc = A standalone RFC 8315 Netnews Cancel-Lock implementation for Unix
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://micha.freeshell.org/libcanlock/
 	arch = x86_64
 	arch = armv7h
