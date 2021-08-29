@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=rustdesk-git
-pkgver=1.1.6.r47.g25ffaa7
-pkgrel=2
+pkgver=1.1.8.r1.gb0dfd77
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk! "
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
-license=('GPLv3')
+license=('GPL3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git} ${pkgname/git/bin})
 #replaces=(${pkgname})
@@ -14,13 +14,15 @@ depends=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'pulseaudio')
 makedepends=('unzip' 'yasm' 'nasm' 'clang' 'zip' 'pkg-config' 'make' 'git' 'cmake' 'gcc' 'curl' 'wget' 'rust' 'python')
 backup=()
 options=('!strip')
-#install=${pkgname}.install
-source=("${pkgname%-git}::git+${url}.git"
-        "vcpkg::git+https://github.com/microsoft/vcpkg#commit=ec6fe06e8da05a8157dc8581fa96b36b571c1bd5"
-        "libsciter-gtk.so::https://github.com/c-smile/sciter-sdk/raw/dc65744b66389cd5a0ff6bdb7c63a8b7b05a708b/bin.lnx/x64/libsciter-gtk.so")
+install=${pkgname}.install
+source=("${pkgname%-git}::git+https://hub.fastgit.org/rustdesk/rustdesk.git"
+        "vcpkg::git+https://hub.fastgit.org/microsoft/vcpkg#commit=ec6fe06e8da05a8157dc8581fa96b36b571c1bd5"
+        "libsciter-gtk.so::https://raw.fastgit.org/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so"
+        "${pkgname}.install")
 sha256sums=('SKIP'
             'SKIP'
-            '933402087be7fe14988b43345597158c602fc2adbc7e7631ec82511af5d27698')
+            'fcf388fc2f1ea41546f5a01104c8764f2467a3c55a3acbbc9b6e4f9807eedc72'
+            'b6cf25e231687a6caf178a87113b74482354aea2f8a3f6b8b5800169ce55fb10')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
