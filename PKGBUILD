@@ -2,14 +2,14 @@
 
 _plug=vmaf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.0.gf1b7159
+pkgver=r7.0.gad429e7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=175862'
 license=('GPL')
 depends=('vapoursynth'
-         'vmaf'
+         'vmaf-git'
          )
 makedepends=('git'
              'meson'
@@ -41,8 +41,6 @@ build() {
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
-
-  mv "${pkgdir}/usr/lib/vapoursynth/model" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vmaf-git
 	pkgdesc = Plugin for Vapoursynth: vmaf (GIT version)
-	pkgver = r6.0.gf1b7159
+	pkgver = r7.0.gad429e7
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=175862
 	arch = x86_64
@@ -8,11 +8,10 @@ pkgbase = vapoursynth-plugin-vmaf-git
 	makedepends = git
 	makedepends = meson
 	depends = vapoursynth
-	depends = vmaf
+	depends = vmaf-git
 	provides = vapoursynth-plugin-vmaf
 	conflicts = vapoursynth-plugin-vmaf
 	source = vmaf::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-VMAF.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vmaf-git
-
