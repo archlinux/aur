@@ -1,0 +1,14 @@
+pkgbase = ringserver
+	pkgdesc = A generic packet ring buffer with network interfaces.
+	pkgver = 2020.075
+	pkgrel = 1
+	url = https://github.com/iris-edu/ringserver
+	arch = x86_64
+	license = Apache-2.0
+	depends = libmseed
+	depends = mxml
+	depends = pcre
+	source = ringserver-2020.075.tar.gz::https://github.com/iris-edu/ringserver/archive/v2020.075.tar.gz
+	sha256sums = 06a3d9c9a5d870cb8f4e0070f0c6238a96fbad0174960c743163fac76d8ee12b
+
+pkgname = ringserver
