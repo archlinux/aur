@@ -2,7 +2,7 @@
 pkgdesc="Terminfo files for the foot terminal emulator"
 pkgname=foot-terminfo
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -18,6 +18,6 @@ build() {
 
 package() {
   cd foot
-  install -dm 755 "${pkgdir}/usr/share/foot/terminfo/f/"
-  cp build/f/* "${pkgdir}/usr/share/foot/terminfo/f/"
+  install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
+  cp build/f/* "${pkgdir}/usr/share/terminfo/f/"
 }
