@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MSHV
+GenericName=Ham radio software for digital modes
+Comment=Amateur radio software by LZ2HV for modes MSK, JTMS, FSK, ISCAT, JT6M, FT8/4, JT65, PI4, Q65.
+Exec=mshv
+Icon=mshv
+Terminal=false
+Type=Application
+Categories=HamRadio;
