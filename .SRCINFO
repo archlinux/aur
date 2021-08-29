@@ -1,8 +1,8 @@
 pkgbase = python-taskflow
 	pkgdesc = Taskflow structured state management library.
 	pkgver = 4.6.1
-	pkgrel = 1
-	url = https://opendev.org/openstack/castellan
+	pkgrel = 2
+	url = https://docs.openstack.org/taskflow/latest/
 	arch = any
 	license = Apache
 	checkdepends = python-kazoo
