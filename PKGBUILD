@@ -2,7 +2,7 @@
 
 pkgname=mshv
 pkgver=258
-pkgrel=1
+pkgrel=2
 pkgdesc="Amateur radio software by LZ2HV for digital modes MSK, JTMS, FSK, ISCAT, JT6M, FT8/4, JT65, PI4, Q65."
 arch=('any')
 url="http://lz2hv.org/mshv"
@@ -34,6 +34,7 @@ build() {
 package() {
 	cd "$srcdir"
 	install -D -m755 mshv_launcher.sh "$pkgdir/usr/bin/mshv"
+	install -D -m644 mshv.desktop "$pkgdir/usr/share/applications/mshv.desktop"
 
 	cd "$srcdir/MSHV_$pkgver/bin"
 	install -D -m755 MSHV_x86_64 "$pkgdir/usr/bin/mshv_bin"
