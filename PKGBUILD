@@ -3,35 +3,30 @@
 
 pkgname=terminalpp
 pkgver=0.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist, fast, cross-platform terminal emulator"
 arch=('x86_64')
 url="https://terminalpp.com"
 license=('MIT')
 conflicts=('terminalpp-git' 'terminalpp-bin')
-depends=('libxft' 'libxcursor' 'libxext' 'gcc-libs')
-makedepends=('cmake' 'gcc10' 'imagemagick' 'cloc' 'doxygen' 'graphviz')
-source=(https://github.com/terminalpp/terminalpp/archive/v$pkgver.tar.gz)
+depends=('libxft' 'libxcursor' 'hicolor-icon-theme')
+makedepends=('cmake' 'gcc10' 'imagemagick' 'cloc' 'doxygen' 'graphviz' 'libxext')
+source=($pkgname-$pkgver.tar.gz::https://github.com/terminalpp/terminalpp/archive/v$pkgver.tar.gz)
 sha512sums=('498755b11e7e14d9aec4450e4f5a9446cb591fd73672ad306d2b292814b3bdbb10b0e6d6248f849b30f531a92f419881c7e59dcfa85117155c0e45aabb8943ad')
 
-prepare() {
-	mkdir -p "$pkgname-$pkgver"/build
-}
-
 build() {
-	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=None \
+	cmake -B "$pkgname-$pkgver/build" \
+	      -S "$pkgname-$pkgver" \
+	      -DCMAKE_BUILD_TYPE=None \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_C_COMPILER=gcc-10 \
 	      -DCMAKE_CXX_COMPILER=g++-10 \
-	      -DINSTALL=terminalpp \
-	      ..
-	make
+	      -DRENDERER=NATIVE \
+	      -DINSTALL=terminalpp
+	make -C "$pkgname-$pkgver/build"
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
-	DESTDIR="$pkgdir" make install
-
-	install -Dm644 ../LICENSE.md "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	make DESTDIR="$pkgdir" -C "$pkgname-$pkgver/build" install
+	install -Dm644 "$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
