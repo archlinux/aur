@@ -1,0 +1,22 @@
+pkgbase = knetwalk-git
+	pkgdesc = Connect all the terminals to the server, in as few turns as possible
+	pkgver = 21.11.70_r657.g893d1df
+	pkgrel = 1
+	url = https://apps.kde.org/knetwalk/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	provides = knetwalk
+	conflicts = knetwalk
+	source = git+https://github.com/KDE/knetwalk.git
+	sha256sums = SKIP
+
+pkgname = knetwalk-git
