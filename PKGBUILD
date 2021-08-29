@@ -4,13 +4,17 @@ _pyname=suds-jurko
 pkgbase=python-$_pyname
 pkgname=(python{,2}-$_pyname)
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight SOAP client (Jurko's fork)"
 arch=(any)
 url="http://bitbucket.org/jurko/suds"
 license=(LGPL)
-makedepends=(python)
-checkdepends=(python-pytest)
+makedepends=(
+	python
+	python-setuptools
+	python2
+	python2-setuptools
+)
 conflicts=(python{,2}-suds)
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.zip)
 md5sums=('eddc4fa468d86244310c12a56f663e65')
@@ -34,6 +38,7 @@ _package_python(){
 	depends=(python)
 	cd $_pyname-$pkgver
 	python setup.py install --root "$pkgdir" --optimize=1
+	rm -r $pkgdir/usr/lib/python*/site-packages/tests
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
@@ -41,6 +46,7 @@ _package_python2(){
 	depends=(python2)
 	cd $_pyname-$pkgver-py2
 	python2 setup.py install --root "$pkgdir" --optimize=1
+	rm -r $pkgdir/usr/lib/python*/site-packages/tests
 	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
