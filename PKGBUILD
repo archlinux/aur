@@ -26,9 +26,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  # rename models path
-  sed "s|model/|${_plug}-models/|g" -i "${_plug}/VMAF/VMAF.cpp"
 }
 
 build() {
