@@ -1,0 +1,15 @@
+pkgbase = libervia-media-hg
+	pkgver = 0.8.r82.d31fac1efcee
+	pkgrel = 1
+	url = https://salut-a-toi.org/
+	arch = any
+	license = AGPL3
+	provides = libervia-media
+	conflicts = sat-media
+	conflicts = sat-media-hg
+	options = !strip
+	source = hg+https://repos.goffi.org/libervia-media
+	md5sums = SKIP
+
+pkgname = libervia-media-hg
+	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (media files)
