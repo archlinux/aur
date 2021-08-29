@@ -52,8 +52,7 @@ prepare() {
       -e 's|vsscript|vapoursynth-script|g' \
       -i "${_plug}/CMakeLists.txt"
 
-  patch -d "${_plug}" -p1 -i "${srcdir}/esee.patch"
-
+  git apply --directory "${_plug}" -p1 "${srcdir}/esee.patch" --ignore-whitespace
 }
 
 build() {
