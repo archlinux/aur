@@ -3,15 +3,15 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=lando-bin
-pkgver=3.1.4
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev/"
 license=('GPL')
 depends=('docker' 'docker-compose')
-source_x86_64=("$pkgname-$pkgver.deb::https://github.com/lando/lando/releases/download/v$pkgver/lando-v$pkgver.deb")
-sha256sums_x86_64=('632583d5ada314136582c042157cb0192c1b461662ab93616b81684a0ebd461c')
+source_x86_64=("$pkgname-$pkgver.deb::https://github.com/lando/lando/releases/download/v$pkgver/lando-x64-v$pkgver.deb")
+sha256sums_x86_64=('1837196ada3f320f8639ce06a1f1cb9cd942ec66ac0bc1a1d700f91f6f7e60df')
 conflicts=("lando")
 provides=("lando")
 
