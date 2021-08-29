@@ -1,0 +1,18 @@
+pkgbase = kronometer-git
+	pkgdesc = A simple chronometer application
+	pkgver = 2.2.70_r737.g2fc743b
+	pkgrel = 1
+	url = https://userbase.kde.org/Kronometer
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kxmlgui-git
+	depends = hicolor-icon-theme
+	provides = kronometer
+	conflicts = kronometer
+	source = git+https://github.com/KDE/kronometer.git
+	sha256sums = SKIP
+
+pkgname = kronometer-git
