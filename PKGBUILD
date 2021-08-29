@@ -1,50 +1,38 @@
-# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Merged with official ABS kfind PKGBUILD by João, 2021/08/25 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Antonio Rojas <arojas@archlinux,org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kfind-git
-pkgver=2.0.0.2355.af2bf52
+pkgver=21.11.70_r2644.gd3be9a828
 pkgrel=1
-pkgdesc="KDE file find utility. (GIT version)"
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/applications/kfind'
-license=('LGPL')
-depends=('kdelibs4support'
-         'hicolor-icon-theme'
-         )
-makedepends=('extra-cmake-modules'
-             'kdoctools'
-             'karchive'
-             'git'
-             'python'
-             )
-conflicts=('kdebase-kfind'
-           'kfind'
-           )
-provides=('kfind')
-source=('git://anongit.kde.org/kfind')
+pkgdesc='Find Files/Folders'
+arch=($CARCH)
+url='https://apps.kde.org/kfind/'
+license=(LGPL)
+depends=(kio-git kfilemetadata-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+optdepends=('mlocate: search using mlocate index')
+groups=(kde-applications-git kde-utilities-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd kfind
-  _ver="$(cat CMakeLists.txt | grep -m1 'KFIND_VERSION' | cut -d '"' -f2)"
-  echo "${_ver}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../kfind \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
