@@ -1,6 +1,6 @@
 pkgbase = python-sqlalchemy2-stubs
 	pkgdesc = PEP-484 typing stubs for SQLAlchemy 1.4 and SQLAlchemy 2.0
-	pkgver = 0.0.2a14
+	pkgver = 0.0.2a15
 	pkgrel = 1
 	url = https://github.com/sqlalchemy/sqlalchemy2-stubs
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-sqlalchemy2-stubs
 	depends = python
 	provides = python-sqlalchemy-stubs
 	conflicts = python-sqlalchemy-stubs
-	source = python-sqlalchemy2-stubs-0.0.2a14.tar.gz::https://github.com/sqlalchemy/sqlalchemy2-stubs/archive/v0.0.2a14.tar.gz
-	b2sums = 90820897a6a3e612684e79185337cddffc4ff02a00c4d352318f5bae3046ecbb8fe8b1687dee5e0f0e6ae661e7c9e80951d87cff21f275c72858796310afa876
+	source = python-sqlalchemy2-stubs-0.0.2a15.tar.gz::https://github.com/sqlalchemy/sqlalchemy2-stubs/archive/v0.0.2a15.tar.gz
+	b2sums = 7531d858d81fac4d9adb8fff518b5beffe124a2eadba58f35532b7efccc35dd58922a102901225d62febf6d5fd46a4bbc2b747e9f7f93c871d73bc5c6bdd0e25
 
 pkgname = python-sqlalchemy2-stubs
