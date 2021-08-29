@@ -1,0 +1,22 @@
+pkgbase = analitza-git
+	pkgdesc = A library to add mathematical features to your program
+	pkgver = 21.08.0_r2330.g7072e346
+	pkgrel = 1
+	url = https://www.kde.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = eigen
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = qt5-declarative
+	provides = analitza
+	conflicts = analitza
+	source = git+https://github.com/KDE/analitza.git
+	sha256sums = SKIP
+
+pkgname = analitza-git
