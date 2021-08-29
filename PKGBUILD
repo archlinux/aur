@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname='emborg'
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 pkgdesc="Front-end to Borg backup"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 url="https://github.com/KenKundert/${pkgname}"
 license=('GPL3')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('02c4332a932ef7a97a60dc4e622e65a612e95bb468c47c24f349a5d2e1b792a5')
+sha256sums=('2e03455c701c6d2d60744fc67ac92904cbd2a9140af3f9cf265b3ff4da1f1c15')
 
 build() {
   cd "${pkgname}-${pkgver}"
