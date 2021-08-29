@@ -9,6 +9,7 @@ pkgbase = olive-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = qt5-svg
 	makedepends = qt5-tools
 	depends = ffmpeg
 	depends = openimageio

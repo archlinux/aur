@@ -9,7 +9,7 @@ pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
 depends=('ffmpeg' 'openimageio' 'opentimelineio-git' 'qt5-multimedia')
-makedepends=('cmake' 'git' 'ninja' 'qt5-tools')
+makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
 # with the dependency "olive-community-effects-git".
