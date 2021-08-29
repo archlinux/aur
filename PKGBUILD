@@ -3,7 +3,7 @@
 pkgname='python-urwid-satext-hg'
 _realname=urwid_satext
 _hgname=urwid-satext
-pkgver=.r144.bfab04d0a745
+pkgver=.r146.4d6a29358f32
 pkgrel=1
 pkgdesc="Urwid satext is a curses-based user interface library for sat (salut à toi)."
 license=('LGPL3+')

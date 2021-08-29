@@ -1,6 +1,6 @@
 pkgbase = python-urwid-satext-hg
 	pkgdesc = Urwid satext is a curses-based user interface library for sat (salut à toi).
-	pkgver = .r144.bfab04d0a745
+	pkgver = .r146.4d6a29358f32
 	pkgrel = 1
 	url = https://www.goffi.org/
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = python-urwid-satext-hg
 	sha512sums = SKIP
 
 pkgname = python-urwid-satext-hg
-
