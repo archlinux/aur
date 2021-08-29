@@ -8,8 +8,8 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=2.1.46
-pkgrel=2
+pkgver=2.1.47
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
 license=('AGPL3')
@@ -28,6 +28,7 @@ depends=(
     'python-protobuf'
     'python-orjson'
     'python-distro'
+    'python-stringcase'
 
     # aqt
     'python-send2trash'
