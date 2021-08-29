@@ -3,7 +3,7 @@
 
 pkgname=muffet
 pkgdesc="Fast website link checker"
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/raviqqe/muffet"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('fbe002fb3091899b7e2c9b5ac19b1b8d31873ff2fcc49ca6e9aaccf571817ec1ec9a91e924bf4eb52ad3405376933917d59f9112e4c74c9a3cd2f98fb16e9e80')
+sha512sums=('c0e5114612ba797b6d3b6523cd2910a2484937b8cb0a75d90508f19a51f62ba3c8404378971d1d4695efd9dea47f60d230fead82585693d575d338f0b42aeaf5')
 
 build() {
   cd "$pkgname-$pkgver"
