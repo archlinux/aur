@@ -1,0 +1,35 @@
+diff --git a/config.py b/config.py
+index 9c05becb..83ee71e2 100644
+--- a/config.py
++++ b/config.py
+@@ -257,7 +257,7 @@ class Config:
+                 env.ParseConfig( 'pkg-config zlib --cflags --libs' )
+ 
+         env.Append( CCFLAGS = baseflags )
+-        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden' ] )
++        env.Append( CXXFLAGS = baseflags + [ '-fpermissive', '-fvisibility-inlines-hidden', '-std=c++14' ] )
+         env.Append( CPPPATH = [ 'include', 'libs' ] )
+         env.Append( CPPDEFINES = [ 'Q_NO_STLPORT' ] )
+         if ( config == 'debug' ):
+diff --git a/libs/bytebool.h b/libs/bytebool.h
+index 01c98747..0987f551 100644
+--- a/libs/bytebool.h
++++ b/libs/bytebool.h
+@@ -28,14 +28,12 @@
+ // this header is not really meant for direct inclusion,
+ // it is used by mathlib and cmdlib
+ 
+-#ifdef __cplusplus
++#ifndef __cplusplus
++#include <stdbool.h>
++#endif
+ typedef bool qboolean;
+ #define qtrue true
+ #define qfalse false
+-#else
+-typedef enum { qfalse, qtrue } qboolean;
+-typedef qboolean bool; // some code uses bool directly ..
+-#endif
+ 
+ typedef unsigned char byte;
+ 

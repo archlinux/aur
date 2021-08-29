@@ -1,7 +1,8 @@
-# Maintainer: Cosku Bas <cosku.bas@gmail.com>
+# Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
+# Contributor: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=gtkradiant-git
-pkgver=r850.8557f18
+pkgver=r1409.a1ae7779
 pkgrel=1
 pkgdesc="GtkRadiant is the official level design toolchain for games powered by id Tech engines."
 arch=('i686' 'x86_64')
@@ -12,20 +13,27 @@ makedepends=('git' 'svn' 'scons')
 depends=('gtkglext' 'libgl' 'gtk2' 'libjpeg' 'libpng' 'zlib' 'libxml2')
 
 source=(git://github.com/TTimo/GtkRadiant.git
-		gtkradiant.desktop
-		gtkradiant.png)
+        fix-gcc-11.patch
+        gtkradiant.desktop
+        gtkradiant.png)
 sha1sums=('SKIP'
-		'5a876097bcba753c22ea3b9771619ea737cccabf'
-		'6ea35c575cc8036201ea62c51a77091ae51ba1d5')
-
-build() {
-	cd GtkRadiant
-	scons BUILD=release
-}
+          '5b70010c2f58de2a6898ccf309948620db707758'
+          '5a876097bcba753c22ea3b9771619ea737cccabf'
+          '6ea35c575cc8036201ea62c51a77091ae51ba1d5')
 
 pkgver() {
 	cd GtkRadiant
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd GtkRadiant
+	patch -p1 -i "$srcdir/fix-gcc-11.patch"
+}
+
+build() {
+	cd GtkRadiant
+	scons BUILD=release
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = gtkradiant-git
 	pkgdesc = GtkRadiant is the official level design toolchain for games powered by id Tech engines.
-	pkgver = r850.8557f18
+	pkgver = r1409.a1ae7779
 	pkgrel = 1
 	url = http://icculus.org/gtkradiant/
 	arch = i686
@@ -17,11 +17,12 @@ pkgbase = gtkradiant-git
 	depends = zlib
 	depends = libxml2
 	source = git://github.com/TTimo/GtkRadiant.git
+	source = fix-gcc-11.patch
 	source = gtkradiant.desktop
 	source = gtkradiant.png
 	sha1sums = SKIP
+	sha1sums = 5b70010c2f58de2a6898ccf309948620db707758
 	sha1sums = 5a876097bcba753c22ea3b9771619ea737cccabf
 	sha1sums = 6ea35c575cc8036201ea62c51a77091ae51ba1d5
 
 pkgname = gtkradiant-git
-
