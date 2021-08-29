@@ -1,7 +1,7 @@
 # Maintainer: xsmile <>
 
 pkgname=ryzen-ppd
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Power profile daemon for AMD Ryzen CPUs'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(ryzen-ppd.conf
         defaults.conf)
 sha256sums=('8e9e91938bd0dbeb9cacc92a564b46181c0b6f1d58d0e8bfca77f3f66238e621'
             'c7e437568b255b819663b060b1f850dc3adb87b2f422da27b3ba3996d374234b'
-            '8da2a034c3304815638dad20fc247cd226a9eca35ee83ddaeae3a3ddee921cfb'
+            'e76736e8bda94fa040ef856add84ac1a7cd1cf8f903477abb978b984cbf3b7c2'
             '0fa8e1dd822d0910055d675f5f7b93ddbba0f1303cb3eb7ce899c6799a1c62eb'
             '8c6ca20ab6dd18429e12d9ff04026cd120a09f627a0057319c14ea9a9d6a483d'
             'e25b2a02f7032e8580798007fab867eca557e2e937cfd9f445c52f7bd1af06df')

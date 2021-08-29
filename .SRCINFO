@@ -1,6 +1,6 @@
 pkgbase = ryzen-ppd
 	pkgdesc = Power profile daemon for AMD Ryzen CPUs
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/ryzen-ppd
 	install = ryzen-ppd.install

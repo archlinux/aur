@@ -13,4 +13,4 @@ case "$4" in
   00000001) profile="$PROFILE_AC"  ;;  # AC adapter plugged in
 esac
 
-echo "$profile" > "$PIPE"
+timeout 1 /bin/sh -c "echo \"$profile\" > \"$PIPE\""
