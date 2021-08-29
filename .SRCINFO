@@ -9,6 +9,6 @@ pkgbase = skpr
 	provides = skpr
 	provides = skpr-rsh
 	source = skpr_v0.12.0::https://github.com/skpr/cli/releases/download/v0.12.0/skpr_0.12.0_linux_amd64.tar.gz
-	sha512sums = 0d40eae79f7a0570f45b83a04b4f6e25759123d1edbb0ac77050e6fd8400589eea56b8ad31f560f23ae3ce419145c09d450006dffe2aef7a75fafdc9b3f7a73e
+	sha512sums = cfc40f22b359fa6b799b69e8ffc7504dde30a32aec50d3aa63318eb0fadabefd0d76f77a084d228300e66bc0e023a2e27ca69747bdd366bd1c9476b8b042e773
 
 pkgname = skpr
