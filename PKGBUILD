@@ -3,7 +3,7 @@
 pkgname="stsw-link007"
 _pkgname="STLinkUpgrade"
 pkgver=2.38.27
-pkgrel=2
+pkgrel=3
 _stlink_upgrade_ver=3.3.6
 pkgdesc="The firmware upgrade application for ST-LINK, ST-LINK/V2, ST-LINK/V2-1, and STLINK-V3 boards through the USB port"
 arch=('x86_64')
@@ -22,10 +22,9 @@ license=('SLA0048')
 depends=('stlink'
          'libusb'
          'java-runtime>=7')
-makedepends=('xdg-user-dirs')
 provides=("stlink-upgrade" "stlinkupgrade")
-_pkg_file_archive="en.${pkgname}_V${pkgver//./-}_v${pkgver}.zip"
-source=("local://${_pkg_file_archive}"
+# https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
+source=("https://st.com/content/ccc/resource/technical/software/firmware/group1/4e/80/8d/29/e0/c7/4e/13/${pkgname}_V${pkgver//./-}/files/${pkgname}_V${pkgver//./-}.zip/jcr:content/translations/en.${pkgname}_V${pkgver//./-}.zip"
         "${pkgname}.sh"
         "${pkgname}.png"
         "SLA0048.pdf::https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
@@ -33,18 +32,6 @@ sha256sums=('bb0c1849aa26fac956618c07cb81e29c68676d28ae630ce7a2498968dcfef33e'
             'ccf814ca4b768285e611c809be147be2b0df10d39ceedfafa7f901a56bd4fcd3'
             'a692a0956462419ba10a149c06e8be0f2e1a3e16dfb4b1ce06f9c612bf852d3c'
             '2ceecf9925b8f55418fe75068976125d8b45cf24aecd7e87b8b05d03e4a4c50b')
-      
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_file_archive} ]; then
-  if [ -f $_DOWNLOADS_DIR/${_pkg_file_archive} ]; then
-    ln -sfn $_DOWNLOADS_DIR/${_pkg_file_archive} ${PWD}
-  else
-    echo ""
-    echo "STSW-LINK007 archive not found. The package can be downloaded here: https://www.st.com/en/development-tools/stsw-link007.html"
-    echo "Please remember to put a downloaded package ${_pkg_file_archive} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-    echo ""
-  fi
-fi
 
 package() {
 
