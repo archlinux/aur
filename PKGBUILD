@@ -75,10 +75,15 @@ export PETSC_DIR=${petsc_incl##-I}
 # | Info pages for gcc (controlling c dialect)
 # Enable handling of OpenMP directives
 
-# I used these for PETSc (from MOOSE)
+# I used these for PETSc
 # safe_flags="-D-FORTIFY-SOURCE=2 -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
-safe_flags="-Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS -fcf-protection -fno-plt -fstack-clash-protection -Wformat -Werror=format-security"
-generic_flags="-pipe -fno-plt -fPIC -fopenmp -march=x86-64 -mtune=generic ${safe_flags}"
+safe_flags="-Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS"
+safe_flags+=" -fcf-protection -fno-plt"
+safe_flags+=" -fstack-clash-protection -Wformat"
+safe_flags+=" -Werror=format-security"
+generic_flags="-pipe -fno-plt -fPIC -fopenmp"
+generic_flags+=" -march=native"
+generic_flags+=" -mtune=native ${safe_flags}"
 opt_flags="${generic_flags} -O3"
 generic_flags="${generic_flags} -O2"
 
