@@ -1,6 +1,6 @@
 # Maintainer: Lorenzo Debertolis <as3ii@gmail.com>
 pkgname=emptty-git
-pkgver=0.6.0.r0.f0ff64c
+pkgver=0.6.0.r3.f06f974
 pkgrel=1
 pkgdesc="Dead simple CLI Display Manager on TTY"
 arch=('x86_64')
