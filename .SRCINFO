@@ -1,24 +1,22 @@
 pkgbase = ktimer-git
-	pkgdesc = A little tool to execute programs after some time. (GIT version)
-	pkgver = 0.10.r264.a3d42f7
+	pkgdesc = Countdown Launcher
+	pkgver = 21.11.70_r468.g08ad6e6
 	pkgrel = 1
-	url = https://www.kde.org/applications/utilities/ktimer
-	install = ktimer-git.install
+	url = https://apps.kde.org/ktimer/
 	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-utilities-git
 	license = GPL
 	license = LGPL
 	license = FDL
-	makedepends = extra-cmake-modules
-	makedepends = kdoctools
 	makedepends = git
-	makedepends = python
-	depends = kio
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = kio-git
 	depends = hicolor-icon-theme
 	provides = ktimer
-	conflicts = kdeutils-ktimer
 	conflicts = ktimer
-	source = git://anongit.kde.org/ktimer.git
-	sha1sums = SKIP
+	source = git+https://github.com/KDE/ktimer.git
+	sha256sums = SKIP
 
 pkgname = ktimer-git
-

@@ -1,41 +1,36 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Merged with official ABS ktimer PKGBUILD by João, 2021/08/25 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktimer-git
-pkgver=0.10.r264.a3d42f7
+pkgver=21.11.70_r468.g08ad6e6
 pkgrel=1
-pkgdesc="A little tool to execute programs after some time. (GIT version)"
-url='https://www.kde.org/applications/utilities/ktimer'
-arch=('x86_64')
-license=('GPL' 'LGPL' 'FDL')
-depends=('kio' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python')
-conflicts=('kdeutils-ktimer' 'ktimer')
-provides=('ktimer')
-source=('git://anongit.kde.org/ktimer.git')
-sha1sums=('SKIP')
-install=ktimer-git.install
+pkgdesc='Countdown Launcher'
+url='https://apps.kde.org/ktimer/'
+arch=($CARCH)
+license=(GPL LGPL FDL)
+depends=(kio-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+groups=(kde-applications-git kde-utilities-git)
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ktimer
-  _ver="$(cat main.cpp | grep -m1 'version\[\]' | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd ${pkgname%-git}
+  _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+  _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+  _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+  echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd build
-  cmake ../ktimer \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+  cmake -B build -S ${pkgname%-git} \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
