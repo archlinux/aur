@@ -1,7 +1,7 @@
 pkgbase = pkgtools
 	pkgdesc = A collection of scripts for Arch Linux packages
 	pkgver = 25
-	pkgrel = 8
+	pkgrel = 9
 	url = https://bbs.archlinux.org/viewtopic.php?pid=384196
 	install = pkgtools.install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = pkgtools
 	depends = libarchive
 	depends = python
 	optdepends = gem2arch: Create PKGBUILD from Ruby Gem Package
+	optdepends = pacman-contrib: whoneeds require pactree
 	optdepends = pkgfile: Required to use pkgconflict
 	optdepends = namcap: Package analyzer
 	provides = newpkg
@@ -26,4 +27,3 @@ pkgbase = pkgtools
 	md5sums = ec05d3bd65bb492dfb7a528b3d42fbf5
 
 pkgname = pkgtools
-
