@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pyproject-build -n  -w
+  pyproject-build -x -w
 }
 
 package() {
