@@ -1,7 +1,7 @@
 pkgbase = jdk17-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 21.2.0
-	pkgrel = 2
+	pkgver = 21.3.0.20210827.1945
+	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk17-graalvm-bin.install
 	arch = x86_64
