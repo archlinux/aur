@@ -1,4 +1,4 @@
-pkgbase = bluez
+pkgbase = bluez-plugins-fix
 	pkgver = 5.61
 	pkgrel = 1
 	url = http://www.bluez.org/
