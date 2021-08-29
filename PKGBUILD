@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Davies <bentendavies at gmail dot com>
 pkgname=mb-git
-pkgver=r27.0f5ecfa
+pkgver=r28.46a1c9d
 pkgrel=1
 pkgdesc="a simple mailbox utility"
 arch=(any)
