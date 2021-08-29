@@ -1,15 +1,15 @@
 # Maintainer: fubarhouse
 pkgname=skpr
 provides=(skpr skpr-rsh)
-pkgver=0.11.5
-pkgrel=2
+pkgver=0.12.0
+pkgrel=3
 pkgdesc="The skpr cli tool"
 arch=('x86_64')
 url="https://github.com/skpr/cli"
 license=('MIT')
 makedepends=('tar')
 source=("skpr_v${pkgver}::${url}/releases/download/v${pkgver}/skpr_${pkgver}_linux_amd64.tar.gz")
-sha512sums=('0d40eae79f7a0570f45b83a04b4f6e25759123d1edbb0ac77050e6fd8400589eea56b8ad31f560f23ae3ce419145c09d450006dffe2aef7a75fafdc9b3f7a73e')
+sha512sums=('cfc40f22b359fa6b799b69e8ffc7504dde30a32aec50d3aa63318eb0fadabefd0d76f77a084d228300e66bc0e023a2e27ca69747bdd366bd1c9476b8b042e773')
 
 package() {
   cd ${pkgname}_${pkgver}_linux_amd64
