@@ -18,7 +18,8 @@ package() {
   cd "$srcdir/RF24-$pkgver"
   make -j1 install
   cd "$pkgdir/usr/lib"
-  rm librf24.so librf24-bcm.so
+  rm librf24.so librf24-bcm.so librf24.so.1.4
+  ln -s librf24.so.1 librf24.so.1.4
   ln -s librf24.so.1 librf24.so
   ln -s librf24.so librf24-bcm.so  
 }
