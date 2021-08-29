@@ -1,10 +1,10 @@
 # Maintainer: Davorin Učakar <davorin.ucakar@gmail.com>
 
 pkgname=openzone
-pkgver=0.3.95+112+g076003a0
-pkgrel=3
+pkgver=0.3.95+113+g36520a50
+pkgrel=1
 pkgdesc='Simple cross-platform FPS/RTS game engine'
-url="http://ducakar.github.com/openzone/"
+url="https://ducakar.github.io/openzone-web/"
 license=(GPL3)
 arch=(i686 x86_64)
 provides=(openzone-data)
@@ -13,11 +13,11 @@ depends=(assimp freeimage libnoise libsquish libvorbis luajit openal opusfile
          physfs sdl2_ttf)
 optdepends=('espeak: for speech synthesis'
             'zip: for building ZIP game data archives'
-            'p7zip: for building 7zip game data archives')
+            'p7zip: for building 7-Zip game data archives')
 makedepends=(cmake git zip)
-source=("git://github.com/ducakar/openzone.git#commit=076003a0a0b78a8588ab4b76f4120740f4af4c6f"
-        "git://github.com/ducakar/openzone-data.git"
-        "git://github.com/FeralInteractive/gamemode.git")
+source=("git+https://github.com/ducakar/openzone.git#commit=36520a502dec3b57ae8b879107f5a4ce8c747331"
+        "git+https://github.com/ducakar/openzone-data.git"
+        "git+https://github.com/FeralInteractive/gamemode.git")
 sha512sums=(SKIP
             SKIP
             SKIP)
