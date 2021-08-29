@@ -1,6 +1,6 @@
 pkgbase = vxray-rules-dat-git
 	pkgdesc = Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update. DO NOT flag out-dated.
-	pkgver = r202108281137
+	pkgver = r202108282209
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	install = vxray-rules-dat-git.install
