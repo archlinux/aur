@@ -1,0 +1,15 @@
+pkgbase = mb-git
+	pkgver = r27.0f5ecfa
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	provides = mb
+	conflicts = mb
+	source = mb::git+https://github.com/Benjamin-Davies/mb.git
+	md5sums = SKIP
+
+pkgname = mb-git
