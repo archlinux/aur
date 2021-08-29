@@ -9,12 +9,11 @@ pkgbase = python-mecab
 	license = LGPL2.1
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = git
 	makedepends = swig
 	depends = python
 	depends = mecab
 	depends = mecab-ipadic
-	source = git+https://github.com/SamuraiT/mecab-python3.git
-	sha1sums = SKIP
+	source = https://github.com/SamuraiT/mecab-python3/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 920a09b4ee14dca1d38161f2f7a643069d3ced3633996901d24386a908100b8e
 
 pkgname = python-mecab
