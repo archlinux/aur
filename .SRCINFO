@@ -1,0 +1,22 @@
+pkgbase = kollision-git
+	pkgdesc = A simple ball dodging game
+	pkgver = 21.11.70_r490.ge5fde57
+	pkgrel = 1
+	url = https://apps.kde.org/kollision/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-games-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = libkdegames-git
+	depends = hicolor-icon-theme
+	provides = kollision
+	conflicts = kollision
+	source = git+https://github.com/KDE/kollision.git
+	sha256sums = SKIP
+
+pkgname = kollision-git
