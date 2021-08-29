@@ -1,11 +1,11 @@
 pkgbase = pplink-bin
 	pkgdesc = 帮助电脑、手机、平板等设备建立点到点的安全直连
-	pkgver = 6.2
-	pkgrel = 1
+	pkgver = 6.5
+	pkgrel = 2
 	url = https://www.ppzhilian.com/
 	arch = x86_64
 	license = custom
-	depends = electron11
+	depends = electron
 	provides = pplink
 	options = !strip
 	options = emptydirs
@@ -14,9 +14,8 @@ pkgbase = pplink-bin
 	source = pplink.png
 	source = pplink.desktop
 	md5sums = SKIP
-	md5sums = a347318935478069d3d4eb82b1267386
+	md5sums = 400124e147dd8f37cf4f27a0aa9f2805
 	md5sums = 42cdee25421b4a84c117228e3f1d868d
 	md5sums = fb027a0085e615613be9617d533938b9
 
 pkgname = pplink-bin
-

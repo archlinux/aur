@@ -1,13 +1,13 @@
 # Maintainer: Ayatale  <ayatale@qq.com>
 
 pkgname=pplink-bin
-pkgver=6.2
-pkgrel=1
+pkgver=6.5
+pkgrel=2
 pkgdesc="帮助电脑、手机、平板等设备建立点到点的安全直连"
 arch=('x86_64')
 url="https://www.ppzhilian.com/"
 license=('custom')
-depends=('electron11')
+depends=('electron')
 provides=("pplink")
 options=('!strip' 'emptydirs')
 
@@ -17,7 +17,7 @@ source=('https://relay.ppzhilian.com/download/PPZhilian_amd64.deb'
         'pplink.desktop')
 
 md5sums=('SKIP'
-         'a347318935478069d3d4eb82b1267386'
+         '400124e147dd8f37cf4f27a0aa9f2805'
          '42cdee25421b4a84c117228e3f1d868d'
          'fb027a0085e615613be9617d533938b9')
 
