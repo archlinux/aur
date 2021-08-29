@@ -1,0 +1,19 @@
+pkgbase = sway-audio-idle-inhibit-git
+	pkgdesc = Prevents swayidle from sleeping while any application is outputting or receiving audio
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/ErikReider/SwayAudioIdleInhibit
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = meson
+	makedepends = git
+	depends = wayland>=1.14.91
+	depends = wayland-protocols
+	depends = libpulse
+	optdepends = swaync-git
+	optdepends = swaysettings-git
+	source = git+https://github.com/ErikReider/SwayAudioIdleInhibit
+	sha256sums = SKIP
+
+pkgname = sway-audio-idle-inhibit-git
