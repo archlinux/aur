@@ -1,52 +1,34 @@
+# Merged with official ABS rsibreak PKGBUILD by João, 2021/08/25 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: Dmytro Kostiuchenko <edio@archlinux.us>
-# Maintainer: Dmytro Kostiuchenko <edio@archlinux.us>
+# Contributor: Dmytro Kostiuchenko <edio@archlinux.us>
 
 pkgname=rsibreak-git
-pkgver=20120611
-pkgrel=2
-pkgdesc="RSIBreak takes care of your health and regularly breaks your work to avoid repetitive strain injury (RSI)"
-arch=(i686 x86_64)
-url="http://userbase.kde.org/RSIBreak"
-license=('GPL')
-depends=('libxss' 'kdelibs' 'oxygen-icons')
-makedepends=('automoc4' 'git')
-options=('libtool')
-provides=('rsibreak')
-conflicts=('rsibreak')
+pkgver=0.12.14_r936.g8b4b9e4
+pkgrel=1
+pkgdesc='Takes care of your health and regularly breaks your work to avoid repetitive strain injury (RSI)'
+url='https://apps.kde.org/rsibreak/'
+arch=($CARCH)
+license=(GPL)
+depends=(knotifyconfig-git kidletime-git hicolor-icon-theme)
+makedepends=(git extra-cmake-modules-git kdoctools-git)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+source=("git+https://github.com/KDE/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
-source=()
-md5sums=()
-
-_gitroot=git://anongit.kde.org/rsibreak.git
-_gitname=rsibreak
+pkgver() {
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd ${srcdir}
-
-  msg "Conneckint to GIT server"
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-    msg "The local files are updated."
-  else
-    git clone --depth=1 $_gitroot $_gitname
-  fi
-  msg "GIT checkout done or server timeout"
-
-  rm -rf "$srcdir/$_gitname-build"
-  mkdir $srcdir/$_gitname-build
-  cd "$srcdir/$_gitname" && ls -A | grep -v .git | xargs -d '\n' cp -r -t ../$_gitname-build 
-  cd "$srcdir/$_gitname-build"
- 
-  cmake ../${_gitname} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake -B build -S ${pkgname%-git} \
+    -DBUILD_TESTING=OFF 
+  cmake --build build
 }
 
-package(){
-  cd ${srcdir}/$_gitname-build
-  make DESTDIR=${pkgdir} install
+package() {
+  DESTDIR="$pkgdir" cmake --install build
 }
-# vim:syntax=sh
-
