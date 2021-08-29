@@ -1,0 +1,13 @@
+pkgbase = wicky-monads
+	pkgdesc = Pain-reliever for build systems
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/b1f6c1c4/wicky-monads
+	arch = any
+	license = MIT
+	makedepends = cmake>=3.17
+	makedepends = git
+	source = https://github.com/b1f6c1c4/wicky-monads/archive/v0.1/wicky-monads-0.1.tar.gz
+	sha256sums = ec51e64e0ed022347e447a535679c26f1a54f4836eefa87254500676448312fc
+
+pkgname = wicky-monads
