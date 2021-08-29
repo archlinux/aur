@@ -1,23 +1,23 @@
-pkgbase = jdk11-graalvm-bin
-	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 11 version
+pkgbase = jdk17-graalvm-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
 	pkgver = 21.2.0
 	pkgrel = 2
 	url = https://www.graalvm.org/
-	install = jdk11-graalvm-bin.install
+	install = jdk17-graalvm-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = java-runtime-common
 	depends = java-environment-common
-	optdepends = graal-nodejs-jdk11-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
-	provides = java-runtime=11
-	provides = java-environment=11
+	optdepends = graal-nodejs-jdk17-bin: Node.js component (used to be bundled with this package before the 21.1.0 release)
+	provides = java-runtime=17
+	provides = java-environment=17
 	options = staticlibs
 	source = graalvm-rebuild-libpolyglot.hook
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.2.0/graalvm-ce-java11-linux-amd64-21.2.0.tar.gz
-	sha256sums_x86_64 = bbd3e03025168172a76c2a29e6a14c1c37e3476b30774259c3ef5952fb86f470
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.2.0/graalvm-ce-java11-linux-aarch64-21.2.0.tar.gz
-	sha256sums_aarch64 = bbdf38d5e6871f7e3b2470ab9b9bb760667d4524ee2a20eadfaf13636a2d018c
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/21.3.0-dev-20210827_1945/graalvm-ce-java17-linux-amd64-dev.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/21.3.0-dev-20210827_1945/graalvm-ce-java17-linux-aarch64-dev.tar.gz
+	sha256sums_aarch64 = SKIP
 
-pkgname = jdk11-graalvm-bin
+pkgname = jdk17-graalvm-bin
