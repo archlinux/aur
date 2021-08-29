@@ -1,0 +1,22 @@
+pkgbase = amdvlk-2021q2.5
+	pkgdesc = AMD's standalone Vulkan driver for pre-Raven (GCN 5.0) and pre-Polaris (GCN 4.0) GPUs.
+	pkgver = 2021.Q2.5
+	pkgrel = 1
+	url = https://github.com/GPUOpen-Drivers
+	arch = x86_64
+	license = MIT
+	makedepends = perl-xml-xpath
+	makedepends = python
+	makedepends = wayland
+	makedepends = libxrandr
+	makedepends = xorg-server-devel
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = python2
+	provides = vulkan-driver
+	conflicts = amdvlk
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/archive/v-2021.Q2.5.tar.gz
+	sha256sums = e115011f99356b41aa60381b4cde0519e25c6d2b369316a390367b224fe9eef7
+
+pkgname = amdvlk-2021q2.5
