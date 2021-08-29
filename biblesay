@@ -37,23 +37,35 @@ ascii_dove = """
                                                                           """
 
 if __name__ == '__main__':
-    with open("verses.txt") as verses_file:
-        verses = verses_file.readlines();
+    # Read verse file
+    try:
+        verses_file = open("verses.txt")
+    except FileNotFoundError:
+        verses_file = open("/usr/share/biblesay/verses.txt")
 
+    verses = verses_file.readlines();
+
+    # Choose a verse
     verse = verses[random.randint(0, len(verses) - 1)]
+
+    # Wrap the text
     verse = textwrap.wrap(verse, width=50)
 
+    # This int is for generating the speech bubble around the text later
     longest_line = 0
 
+    # Get the longest line
     for i in range(len(verse)):
         if len(verse[i]) > longest_line:
             longest_line = len(verse[i])
 
+    # Print the top speech bubble line
     print('/', end='');
     for i in range(longest_line + 2): 
         print('‾', end='');
     print('\\', end='\n');
 
+    # Print the lines with vertical lines
     for i in range(len(verse)):
         for j in range(len(verse[i]), longest_line + 1):
             verse[i] += ' '
@@ -61,9 +73,11 @@ if __name__ == '__main__':
         verse[i] = '| ' + verse[i]
         print(verse[i])
 
+    # Print the bottom speech bubble line
     print('\\', end='');
     for i in range(longest_line + 2): 
         print('_', end='');
     print('/', end='');
 
+    # Print the dove
     print(ascii_dove)
