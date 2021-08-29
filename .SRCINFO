@@ -9,6 +9,7 @@ pkgbase = cctag
 	makedepends = boost
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = gcc10
 	makedepends = ninja
 	makedepends = opencv
 	depends = boost-libs
