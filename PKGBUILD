@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.727
+pkgver=mainline.0.732
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -35,6 +35,7 @@ makedepends=(
 checkdepends=('catch2>=2.13')
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
+	"gamedb-$(date -I).json::https://api.yuzu-emu.org/gamedb/"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'unbundle-catch2.patch'
@@ -47,6 +48,7 @@ source=(
 	'unbundle-xbyak.patch'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -66,6 +68,7 @@ prepare() {
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
+	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
 	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-cubeb.patch
 	patch -Np1 < ../unbundle-discord-rpc.patch
@@ -84,7 +87,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDISPLAY_VERSION=${pkgver##*.} \
-		-DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
+		-DENABLE_COMPATIBILITY_LIST_DOWNLOAD=OFF \
 		-DENABLE_QT_TRANSLATION=ON \
 		-DTITLE_BAR_FORMAT_IDLE="yuzu {}" \
 		-DTITLE_BAR_FORMAT_RUNNING="yuzu {} | {}" \
