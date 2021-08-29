@@ -29,8 +29,8 @@ optdepends=(
   'vulkan-icd-loader'
   'gamemode')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}-treviso-1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso-1.tar.gz")
-sha256sums=('2671ee07a32cc801937c055b73b5c1c8ac26eb6be99649e9c27454ce974f7e53')
+source=("${pkgname}-${pkgver}-treviso-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso-2.tar.gz")
+sha256sums=('5115f9d5a61a3088f0ce38e9abe3a3ae1ee0244dd2653ad731758a844d49c45d')
 
 build() {
   cd "Bottles-${pkgver}-treviso"

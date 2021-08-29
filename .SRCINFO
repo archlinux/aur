@@ -25,8 +25,8 @@ pkgbase = bottles
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = vulkan-icd-loader
 	optdepends = gamemode
-	source = bottles-2021.8.28-treviso-1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.8.28-1-treviso.tar.gz
-	sha256sums = 2671ee07a32cc801937c055b73b5c1c8ac26eb6be99649e9c27454ce974f7e53
+	source = bottles-2021.8.28-treviso-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2021.8.28-2-treviso.tar.gz
+	sha256sums = 5115f9d5a61a3088f0ce38e9abe3a3ae1ee0244dd2653ad731758a844d49c45d
 
 pkgname = bottles
 
