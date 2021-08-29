@@ -2,7 +2,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.18.g9681b3e
+pkgver=r24.19.g67dab4a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
-#  rm -fr src/VapourSynth.h
+  rm -fr src/VapourSynth.h
 
   cd build/unix
   ./autogen.sh
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "${_plug}/build/unix"
-#   CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
+  CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
