@@ -1,61 +1,43 @@
+# Maintainer: EndlessEden <eden [at] rose.place>
 # Maintainer: Juri Grabowski <arch-dablin-maint@jugra.de>
-pkgbase=dablin
+_pkgname=dablin
 pkgname=dablin-git
-pkgver=1.5.0.r0.g6c576a8
+pkgver=1.13.0.r364.c20b4c6
 pkgrel=1
 pkgdesc="plays a DAB/DAB+ audio service – either from a received live transmission or from ETI files."
 arch=('x86_64')
 url="https://github.com/Opendigitalradio/dablin"
 license=('GPL')
-groups=()
 depends=('sdl2' 'mpg123' 'gtkmm3' 'faad2' 'fdkaac' 'libfdk-aac')
 makedepends=('pkg-config' 'git' 'cmake')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=()
-noextract=()
+provides=("$_pkgname" "$pkgname")
+conflicts=("$_pkgname")
+source=($_pkgname::git+"$url.git")
+md5sums=('SKIP')
 
-_gitroot=https://github.com/Opendigitalradio/dablin
-_gitname=dablin
+pkgver() {
+    cd "$srcdir"/"$_pkgname"
+   
+    echo "$(git describe| sed 's,-,\n,g' | head -1 | sed 's,v,,g')"'.'$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir"/"$_pkgname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
+  if [ -d "$srcdir"/"$_pkgname"/build ]; then
+  rm -rf "$srcdir"/"$_pkgname"/build
   fi
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  mkdir ./build
-  cd ./build
+  mkdir build
+  cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/build"
-  make DESTDIR="$pkgdir/" install
-}
+  cd "$srcdir"/"$_pkgname"/build
 
-pkgver() {
-  cd "$srcdir/$_gitname-build"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
