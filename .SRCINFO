@@ -1,0 +1,29 @@
+pkgbase = python-ndcube
+	pkgdesc = Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://docs.sunpy.org/projects/ndcube
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-aioftp
+	checkdepends = python-scipy
+	makedepends = python-setuptools-scm
+	makedepends = python-astropy-helpers
+	makedepends = python-sphinx-astropy
+	makedepends = python-astropy
+	makedepends = python-sunpy
+	makedepends = graphviz
+	makedepends = python-sunpy-sphinx-theme
+	source = https://files.pythonhosted.org/packages/source/n/ndcube/ndcube-1.4.2.tar.gz
+	md5sums = 2da40bc378bc33899021f62d8dadea0b
+
+pkgname = python-ndcube
+	depends = python>=3.6
+	depends = python-sunpy>=1.0.3
+	depends = python-astropy>=3.1
+	depends = python-matplotlib>=2
+	optdepends = python-ndcube-doc: Documentation for ndcube
+
+pkgname = python-ndcube-doc
+	pkgdesc = Documentation for Python ndcube module
