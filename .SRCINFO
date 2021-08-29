@@ -1,0 +1,35 @@
+pkgbase = libsolv-conda-forge
+	pkgdesc = Library for solving packages and reading repositories
+	pkgver = 0.7.19
+	pkgrel = 1
+	url = https://github.com/openSUSE/libsolv
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	makedepends = cmake>=3.13
+	makedepends = perl
+	makedepends = python
+	makedepends = ruby
+	makedepends = swig
+	depends = bzip2
+	depends = expat
+	depends = rpm-tools
+	depends = xz
+	depends = zchunk
+	depends = zlib
+	depends = zstd
+	optdepends = perl: for perl bindings
+	optdepends = python: for python bindings
+	optdepends = ruby: for ruby bindings
+	provides = libsolv
+	conflicts = libsolv
+	source = libsolv-0.7.19.tar.gz::https://github.com/openSUSE/libsolv/archive/0.7.19/libsolv-0.7.19.tar.gz
+	source = https://raw.githubusercontent.com/conda-forge/libsolv-feedstock/master/recipe/conda_variant_priorization.patch
+	source = https://raw.githubusercontent.com/conda-forge/libsolv-feedstock/master/recipe/add_strict_repo_prio_rule.patch
+	source = https://raw.githubusercontent.com/conda-forge/libsolv-feedstock/master/recipe/memcpy_to_memmove.patch
+	sha256sums = 67e6a46e9e03410d3d27c963c0382881b064c50d2e7ca25860c515df3ca4dae1
+	sha256sums = 9864c23404c0ab75880b8784b1b34fdb61416de7319371702e4ef0f886ea6c3c
+	sha256sums = 040a9cd68a59ed30cf637d57fa579eaf809a8bf7c3eb685544a42442898bfaf9
+	sha256sums = ab1ccbb61b9239d98ee7848d84d2533d50c7d30f2d856c93ad504846981a894d
+
+pkgname = libsolv-conda-forge

@@ -1,0 +1,6 @@
+/src
+/pkg
+/add_strict_repo_prio_rule.patch
+/conda_variant_priorization.patch
+/memcpy_to_memmove.patch
+/libsolv-*.tar.gz
