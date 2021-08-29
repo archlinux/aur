@@ -1,6 +1,6 @@
 pkgbase = mb-git
 	pkgdesc = a simple mailbox utility
-	pkgver = r28.46a1c9d
+	pkgver = r29.a8f0e14
 	pkgrel = 1
 	url = https://github.com/Benjamin-Davies/mb
 	arch = any
