@@ -2,7 +2,7 @@
 
 _pyname=keystonemiddleware
 pkgname=python-$_pyname
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Middleware for OpenStack Identity"
 arch=(any)
@@ -45,9 +45,9 @@ checkdepends=(
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('b0f2273005bf9c771d9ac3399b46dc4d')
-sha256sums=('b6f967c3a3edc6e2ed6109368a862396df87a9ea50bd710bac21758258c2f860')
-sha512sums=('b2b8bd5fe07c8f6821abbcb4ba9ef26c5e60f9e4cb6eb6f938273cbe0fe84c53819a1b86b7e2d1e1b66419adcb9eb51e14e6f0e3419518cb2ba81cb751e0ded2')
+md5sums=('5f71a675a68a8ea88d75e3669931a8d1')
+sha256sums=('02b951ce96da6348a63216cf4e2e781ac3f15af5fa4023c12e53f8cb22e23583')
+sha512sums=('4d892003555adabfc7c7c4a71aa550263955c081369ac6c55e66f7441e9bb5716a2b346f9c13aab53cdace01958370142e7c662b456d55d9cd50409ee08b82d0')
 
 export PBR_VERSION=$pkgver
 
