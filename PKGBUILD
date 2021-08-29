@@ -13,11 +13,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/open-policy-agent/conftest/
 sha512sums=('234510105e5e2cc135ebd635e1bd34950430c270cc49d8c360033727dcc7dd2e6ae3dd7bfd7b8a913d5e513dc893a1b87f4c04f5758d2d0419e3176da7f615cb')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw"
 
   go build \
-  --trimpath \
-  --ldflags "-X github.com/open-policy-agent/conftest/internal/commands.version=$pkgver" \
+  -ldflags "-X github.com/open-policy-agent/conftest/internal/commands.version=$pkgver" \
   -o conftest \
   .
 }
