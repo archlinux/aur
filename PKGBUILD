@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=6.15-GE-2
-_commit=f0ab74112aefeaf372a7d280e7aaa84c9e43107a
+_srctag=6.16-GE-1
+_commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=6.3.0
@@ -104,7 +104,7 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 #install=${pkgname}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
