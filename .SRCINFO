@@ -1,5 +1,5 @@
 pkgbase = amogu.sh-git
-	pkgdesc = The sussiest script ever.
+	pkgdesc = A posix shell image viewer utilizing fzf, with Überzug for previews. Copies your selection to the clipboard..
 	pkgver = r3.fad5425
 	pkgrel = 1
 	url = https://codeberg.org/thepogsupreme/amogu.sh
