@@ -1,6 +1,6 @@
 pkgbase = vice-svn
 	pkgdesc = The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version
-	pkgver = r40486
+	pkgver = r40593
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
@@ -16,8 +16,6 @@ pkgbase = vice-svn
 	makedepends = xorg-bdftopcf
 	makedepends = xorg-mkfontdir
 	makedepends = python
-	makedepends = clang
-	makedepends = llvm
 	depends = glew
 	depends = gtk3
 	depends = portaudio
