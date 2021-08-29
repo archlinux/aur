@@ -3,7 +3,7 @@
 _pyname=tempest
 pkgbase=openstack-$_pyname
 pkgname=(openstack-$_pyname{,-doc})
-pkgver=27.0.0
+pkgver=28.0.0
 pkgrel=1
 pkgdesc="OpenStack Integration Testing"
 arch=(any)
@@ -23,7 +23,6 @@ depends=(
 	python-stestr
 	python-oslo-serialization
 	python-oslo-utils
-	python-six
 	python-fixtures
 	python-pyaml
 	python-subunit
@@ -47,14 +46,15 @@ checkdepends=(
 	python-flake8-import-order
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('1f1d4e5dcf1fc333c4f15bc44812ed73')
-sha256sums=('8dc8b629cc15a578f25b79a517fa9bfe1630f59a0f07268c911724722e0b0c80')
-sha512sums=('2a484be6b8715c981c59576dab2fca1720c995321ff1b6f9fbe710bbb66848d918bd99f10ee14d1ec1e1c54ea6ba871a165e3ecc13f093667f4503c5a318df9e')
+md5sums=('b7359d5e8d7ecd3725167fd468bd9c50')
+sha256sums=('24fcc0baa2044454b17b6b4aa2b1b19682cf95eb92ca38a2f289d3cbc488b170')
+sha512sums=('e6cb5c2938660ccf066f61e461d397bcc8b107cf474cc063a0f1be9fb3a521c561ff4bc57593257a00728928a96e7b0bb93b1ffcbe3de800cdcf5543fc64d8bf')
 
 export PBR_VERSION=$pkgver
 
 build(){
 	cd "$_pyname-$pkgver"
+	export PYTHONPATH="${PWD}"
 	python setup.py build
 	sphinx-apidoc -f -o doc/source/tests/compute tempest/api/compute
 	sphinx-apidoc -f -o doc/source/tests/identity tempest/api/identity
@@ -69,6 +69,11 @@ build(){
 
 check(){
 	cd "$_pyname-$pkgver"
+	mkdir -p bin
+	export PATH="${PWD}/bin:${PATH}"
+	printf '#!/bin/sh\nexec python -m tempest.cmd.main "$@"\n' > bin/tempest
+	printf '#!/bin/sh\nexec python -m tempest.cmd.subunit_describe_calls "$@"\n' > bin/subunit-describe-calls
+	chmod +x bin/*
 	stestr --test-path tempest/tests run
 }
 

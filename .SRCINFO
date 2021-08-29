@@ -1,6 +1,6 @@
 pkgbase = openstack-tempest
 	pkgdesc = OpenStack Integration Testing
-	pkgver = 27.0.0
+	pkgver = 28.0.0
 	pkgrel = 1
 	url = https://docs.openstack.org/tempest/latest/
 	arch = any
@@ -28,7 +28,6 @@ pkgbase = openstack-tempest
 	depends = python-stestr
 	depends = python-oslo-serialization
 	depends = python-oslo-utils
-	depends = python-six
 	depends = python-fixtures
 	depends = python-pyaml
 	depends = python-subunit
@@ -36,12 +35,11 @@ pkgbase = openstack-tempest
 	depends = python-prettytable
 	depends = python-urllib3
 	depends = python-debtcollector
-	source = https://pypi.io/packages/source/t/tempest/tempest-27.0.0.tar.gz
-	md5sums = 1f1d4e5dcf1fc333c4f15bc44812ed73
-	sha256sums = 8dc8b629cc15a578f25b79a517fa9bfe1630f59a0f07268c911724722e0b0c80
-	sha512sums = 2a484be6b8715c981c59576dab2fca1720c995321ff1b6f9fbe710bbb66848d918bd99f10ee14d1ec1e1c54ea6ba871a165e3ecc13f093667f4503c5a318df9e
+	source = https://pypi.io/packages/source/t/tempest/tempest-28.0.0.tar.gz
+	md5sums = b7359d5e8d7ecd3725167fd468bd9c50
+	sha256sums = 24fcc0baa2044454b17b6b4aa2b1b19682cf95eb92ca38a2f289d3cbc488b170
+	sha512sums = e6cb5c2938660ccf066f61e461d397bcc8b107cf474cc063a0f1be9fb3a521c561ff4bc57593257a00728928a96e7b0bb93b1ffcbe3de800cdcf5543fc64d8bf
 
 pkgname = openstack-tempest
 
 pkgname = openstack-tempest-doc
-
