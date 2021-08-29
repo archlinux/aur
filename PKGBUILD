@@ -2,7 +2,7 @@
 
 pkgname=uam
 pkgver=1.0.7481
-pkgrel=1
+pkgrel=2
 pkgdesc='Utopia Alternative Miner'
 arch=('x86_64')
 url='https://u.is'
@@ -20,5 +20,5 @@ package() {
     install -d ${pkgdir}/opt
     install -d -m755 ${pkgdir}/usr/bin
     cp -R ${srcdir}/opt/${pkgname} ${pkgdir}/opt/
-    ln -s ${pkgdir}/opt/uam/uam ${pkgdir}/usr/bin/uam
+    ln -s /opt/uam/uam ${pkgdir}/usr/bin/uam
 }
