@@ -3,7 +3,7 @@
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
 pkgver=5.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
@@ -22,5 +22,8 @@ package() {
 
   install -dm755 ${pkgdir}/usr/bin/
   ln -sf /opt/${_pkgname}/${_pkgname}  ${pkgdir}/usr/bin/${_pkgname}
+
+  # desktop entry
+  sed -i "s|/opt/ApiPost|/opt/${_pkgname}|g" ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 }
 # vim: set sw=2 ts=2 et:
