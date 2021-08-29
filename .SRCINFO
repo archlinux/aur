@@ -1,6 +1,6 @@
 pkgbase = code-nautilus-git
 	pkgdesc = VSCode extension for Nautilus
-	pkgver = r13.40b6d31
+	pkgver = r15.2550ce6
 	pkgrel = 1
 	url = https://github.com/cra0zy/code-nautilus
 	install = code-nautilus-git.install
