@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=transmission-trackers-git
-pkgver=r27.313b66d
+pkgver=r29.fca828a
 pkgrel=1
 pkgdesc="Automatically add trackers from a list to all torrents in Transmission"
 arch=('any')
