@@ -1,6 +1,6 @@
 pkgbase = mbuffer
 	pkgdesc = A tool for buffering data streams.
-	pkgver = 20210328
+	pkgver = 20210829
 	pkgrel = 1
 	url = http://www.maier-komor.de/mbuffer.html
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = mbuffer
 	license = GPL3
 	depends = openssl
 	backup = etc/mbuffer.rc
-	source = http://www.maier-komor.de/software/mbuffer/mbuffer-20210328.tgz
-	md5sums = 4e4712db5fbd4e71bfbfa2c145c6c646
+	source = http://www.maier-komor.de/software/mbuffer/mbuffer-20210829.tgz
+	md5sums = 249566ef7904b47300a5def9bba3962e
 
 pkgname = mbuffer
-
