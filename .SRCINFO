@@ -1,5 +1,5 @@
 pkgbase = amdvlk-2021q2.5
-	pkgdesc = AMD's standalone Vulkan driver for pre-Raven (GCN 5.0) and pre-Polaris (GCN 4.0) GPUs.
+	pkgdesc = AMD's standalone Vulkan driver for pre-Raven (GCN 5.0 APU) and pre-Polaris (GCN 4.0) GPUs.
 	pkgver = 2021.Q2.5
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
