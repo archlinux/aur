@@ -1,13 +1,14 @@
 pkgbase = openzone
 	pkgdesc = Simple cross-platform FPS/RTS game engine
 	pkgver = 0.3.95+112+g076003a0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ducakar.github.com/openzone/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
+	makedepends = zip
 	depends = assimp
 	depends = freeimage
 	depends = libnoise
@@ -24,6 +25,10 @@ pkgbase = openzone
 	provides = openzone-data
 	conflicts = openzone-data
 	source = git://github.com/ducakar/openzone.git#commit=076003a0a0b78a8588ab4b76f4120740f4af4c6f
+	source = git://github.com/ducakar/openzone-data.git
+	source = git://github.com/FeralInteractive/gamemode.git
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = openzone

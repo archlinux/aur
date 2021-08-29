@@ -2,7 +2,7 @@
 
 pkgname=openzone
 pkgver=0.3.95+112+g076003a0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple cross-platform FPS/RTS game engine'
 url="http://ducakar.github.com/openzone/"
 license=(GPL3)
@@ -14,9 +14,13 @@ depends=(assimp freeimage libnoise libsquish libvorbis luajit openal opusfile
 optdepends=('espeak: for speech synthesis'
             'zip: for building ZIP game data archives'
             'p7zip: for building 7zip game data archives')
-makedepends=(cmake git)
-source=("git://github.com/ducakar/openzone.git#commit=076003a0a0b78a8588ab4b76f4120740f4af4c6f")
-sha512sums=(SKIP)
+makedepends=(cmake git zip)
+source=("git://github.com/ducakar/openzone.git#commit=076003a0a0b78a8588ab4b76f4120740f4af4c6f"
+        "git://github.com/ducakar/openzone-data.git"
+        "git://github.com/FeralInteractive/gamemode.git")
+sha512sums=(SKIP
+            SKIP
+            SKIP)
 
 pkgver() {
   cd "$pkgname"
@@ -25,7 +29,9 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  git submodule update --init --recursive
+  git config submodule.data.url "$srcdir/openzone-data"
+  git config submodule.ext/gamemode.url "$srcdir/gamemode"
+  git submodule update --init
 }
 
 build() {
