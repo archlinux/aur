@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Utopia Alternative Miner'
 arch=('x86_64')
 url='https://u.is'
-license=('')
+license=('Unknown')
 source=("https://update.u.is/downloads/uam/linux/uam-latest_amd64.deb")
 sha256sums=('94b5c8e383e801d38a5519e58fc98fdfbcdf899fa642eb0595c517bd3e1af969')
 
