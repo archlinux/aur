@@ -1,7 +1,7 @@
 pkgbase = foot
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	changelog = CHANGELOG.md
 	arch = x86_64

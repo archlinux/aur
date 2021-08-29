@@ -2,7 +2,7 @@
 pkgdesc="Wayland terminal emulator - fast, lightweight and minimalistic"
 pkgname=foot
 pkgver=1.9.0  # Don’t forget to update CHANGELOG.md
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
@@ -52,6 +52,7 @@ build() {
     --wrap-mode=nodownload \
     -Db_lto=true \
     -Dterminfo=disabled \
+    -Dcustom-terminfo-install-location=no \
     . build
 
   if [[ ${do_pgo} == yes ]]; then
