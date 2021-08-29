@@ -1,8 +1,8 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-software-license
-pkgver=0.103014
-pkgrel=4
+pkgver=0.104001
+pkgrel=1
 pkgdesc='packages that provide templated software licenses'
 arch=(any)
 license=(PerlArtistic GPL)
@@ -10,9 +10,9 @@ options=(!emptydirs)
 depends=('perl>=5.6' perl-data-section perl-text-template)
 checkdepends=(perl-try-tiny)
 url=https://metacpan.org/release/Software-License
-source=("https://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Software-License-$pkgver.tar.gz")
-md5sums=(24bab4d2b3a8f3cb8533e118f5498de2)
-sha512sums=(8012f9d3e8671bdcbaf52f6790f6cd2f6a0510883bb40115c222c8c685aed6697ba33b3f9df8d853841cd2eef0806d919c9038b6ba7b1057f475b3b63457069d)
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Software-License-$pkgver.tar.gz")
+md5sums=(6d50e36d80cccc84d5c946fab4bf921b)
+sha512sums=(4ba5e11e8aa34a4f59ad4028e8e4547e22d5d56e04836cf280a0fb52a2fb64c8cf5347f6f6e2c368506c35eeb7e189527e4339d11541aac34c2c28737717e34e)
 _ddir="Software-License-$pkgver"
 
 build()
