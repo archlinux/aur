@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=mrcode
-pkgver=1.59.0
+pkgver=1.59.1+21241
 pkgrel=1
 pkgdesc="A custom build of VSCodium / VSCode (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -107,6 +107,8 @@ build() {
     export OS_NAME="linux"
     export VSCODE_ARCH="${_vscode_arch}"
     export SKIP_LINUX_PACKAGES="True"
+    export RELEASE_VERSION="${pkgver}"
+    export VSCODIUM_LATEST="1"
     
     if [ -d vscodium ]; then
         . reset.sh
@@ -115,6 +117,8 @@ build() {
     . get_repo.sh
 
     . prepare.sh
+    
+    . version.sh
 
     . build.sh
 }
