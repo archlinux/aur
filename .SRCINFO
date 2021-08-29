@@ -1,0 +1,22 @@
+pkgbase = kup-git
+	pkgdesc = A backup software for helping people to keep up-to-date backups
+	pkgver = 0.9.1_r439.g96c0bc8
+	pkgrel = 1
+	url = https://apps.kde.org/kup/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = plasma-framework-git
+	depends = kidletime-git
+	depends = kinit-git
+	depends = libgit2
+	depends = hicolor-icon-theme
+	optdepends = rsync: support for synced backups
+	optdepends = bup: bup backend
+	provides = kup
+	conflicts = kup
+	source = git+https://github.com/KDE/kup.git
+	sha256sums = SKIP
+
+pkgname = kup-git
