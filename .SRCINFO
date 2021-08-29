@@ -1,0 +1,21 @@
+pkgbase = ksystemstats-git
+	pkgdesc = A plugin based system monitoring daemon
+	pkgver = 5.22.80_r184.gbbfce43
+	pkgrel = 1
+	url = https://kde.org/plasma-desktop/
+	arch = x86_64
+	groups = plasma-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = networkmanager-qt-git
+	depends = libksysguard-git
+	optdepends = networkmanager-qt-git: network usage monitor
+	provides = ksystemstats
+	conflicts = ksystemstats
+	conflicts = ksysguard<5.21.90
+	conflicts = ksysguard-git<5.21.90
+	source = git+https://github.com/KDE/ksystemstats.git
+	sha256sums = SKIP
+
+pkgname = ksystemstats-git
