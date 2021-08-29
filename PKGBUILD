@@ -5,7 +5,7 @@
 pkgname=lib32-amdvlk-2021q2.5
 pkgver=2021.Q2.5
 pkgrel=1
-pkgdesc="AMD's standalone Vulkan driver for pre-Raven (GCN 5.0) and pre-Polaris (GCN 4.0) GPUs."
+pkgdesc="AMD's standalone Vulkan driver for pre-Raven (GCN 5.0 APU) and pre-Polaris (GCN 4.0) GPUs. lib32 version."
 arch=(x86_64)
 url="https://github.com/GPUOpen-Drivers"
 license=('MIT')
