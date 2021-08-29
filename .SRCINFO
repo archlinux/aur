@@ -1,0 +1,24 @@
+pkgbase = kalgebra-git
+	pkgdesc = Graph Calculator
+	pkgver = 21.11.70_r2040.g3738f5b
+	pkgrel = 1
+	url = https://apps.kde.org/kalgebramobile/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-education-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	depends = analitza-git
+	depends = kio-git
+	depends = qt5-webengine
+	optdepends = kirigami2-git: for KAlgebra Mobile
+	provides = kalgebra
+	conflicts = kalgebra
+	source = git+https://github.com/KDE/kalgebra.git
+	sha256sums = SKIP
+
+pkgname = kalgebra-git
