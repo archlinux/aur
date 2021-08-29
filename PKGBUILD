@@ -10,7 +10,7 @@ arch=(any)
 url="https://docs.openstack.org/cinder/latest/"
 license=(Apache)
 depends=(
-	qemu
+	qemu-headless
 	lvm2
 	python
 	python-pbr
