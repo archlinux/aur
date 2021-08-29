@@ -6,7 +6,7 @@ import textwrap
 ascii_dove = """                                                                      
              \                                                                          
               \                                                                         
-               \                                                    Ol                  
+               \                                                    O,                  
                 \                                                   o.'                 
                  \                                                 0, l,                
                   \                                                l,  o'               
@@ -16,24 +16,24 @@ ascii_dove = """
                       \              l;0   Oold                 l;        'd            
                        \             O;       dl               d;          c            
                         \             :l       0lo            d:           :            
-                         \            o:          d          d:O           c            
-                          \           d:           d        lc0            l            
+                         \            o:          d          d:            c            
+                          \           d:           d        lc             l            
                            \           c            O     0co             ,d            
                             \         Oc            O0    c               ;             
                              \        0l             d  oo               :o             
-                              \      ;o             0 l                oc              
-                                   000             Oold                 :O              
-                                0O d OO o 0     0 dd0                  c                
-                               OO -O-    0OOOO   O                    lO                
-                             Odo;   00                             ,dd                  
-                                OO 00O  0                       ;00                     
-                                 0 O     dO                   0m                        
-                                  0;       d                    00000O0M^               
+                              \      ;o             0 l;                 ;              
+                                  ;000             Ool                  :;              
+                                0O   OO o ,     0 dd0                  c,               
+                               OO -O-    0OOO:-/ O                    lO                
+                             <do;   ,0_                            ,dd                  
+                                O   0  ;0                       ;00                     
+                                 0 O'    dO                   0m                        
+                                  0;       d                    -0000O0M^;              
                                              d 0;                        l              
                                               0  ;;0                    o               
                                                     ;00OO;,,0000l;     d                
                                                                   l0; d                 
-                                                                     0                  
+                                                                    '0                  
                                                                           """
 
 if __name__ == '__main__':
