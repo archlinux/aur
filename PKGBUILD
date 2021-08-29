@@ -13,7 +13,6 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'cmake'
-             'gcc10'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -35,7 +34,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CUDA_FLAGS="--threads 0 --use_fast_math -Wno-deprecated-gpu-targets" \
-    -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/gcc-10 \
     -DVAPOURSYNTH_INCLUDE_DIRECTORY=/usr/include/vapoursynth \
     -DCMAKE_SKIP_RPATH=ON
 

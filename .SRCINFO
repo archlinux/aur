@@ -7,7 +7,6 @@ pkgbase = vapoursynth-plugin-bilateralgpu-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc10
 	depends = vapoursynth
 	depends = cuda
 	provides = vapoursynth-plugin-bilateralgpu
