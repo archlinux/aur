@@ -1,0 +1,27 @@
+pkgbase = step-git
+	pkgdesc = Interactive Physical Simulator
+	pkgver = 21.11.70_r1155.g2b2c1cc
+	pkgrel = 1
+	url = https://apps.kde.org/step/
+	arch = x86_64
+	groups = kde-applications-git
+	groups = kde-education-git
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	makedepends = kdoctools-git
+	makedepends = eigen
+	makedepends = qt5-tools
+	depends = libqalculate
+	depends = gsl
+	depends = knewstuff-git
+	depends = kplotting-git
+	depends = hicolor-icon-theme
+	provides = step
+	conflicts = step
+	source = git+https://github.com/KDE/step.git
+	sha256sums = SKIP
+
+pkgname = step-git
