@@ -8,7 +8,7 @@ pkgdesc="Small commandline tool to configure devices"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
-depends=('libx11' 'libxi>=1.5.99.2' 'xorg-xrandr' 'libxinerama')
+depends=('libx11' 'xorg-xrandr' 'libxinerama')
 makedepends=('xorg-util-macros' 'xorgproto' 'libxfixes')
 provides=(xorg-xinput)
 conflicts=(xorg-xinput)
