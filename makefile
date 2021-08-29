@@ -5,7 +5,7 @@ run:
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f biblesay $(DESTDIR)$(PREFIX)/bin
+	cp -f biblesay.py $(DESTDIR)$(PREFIX)/bin/biblesay
 	mkdir -p $(DESTDIR)$(PREFIX)/share/biblesay
 	cp -f verses.txt $(DESTDIR)$(PREFIX)/share/biblesay
 
