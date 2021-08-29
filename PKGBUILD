@@ -3,7 +3,7 @@
 
 _pyname=automaton
 pkgname=python-$_pyname
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Friendly state machines for python."
 arch=(any)
@@ -26,9 +26,9 @@ makedepends=(
 	python-setuptools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('6d627a428a84ba03b0b4146dede1d45b')
-sha256sums=('3173a5fdbbb14ab4c6c53ea5c8f82c337fe4b3dc5a3dcd7d1804fd685868cf2e')
-sha512sums=('3e832f2cbaa147b57bcef024873454dbcb4e800d3873f4f6e533b137e49fee3cfe39efdacbfd700819c8c5f09e61f14d2862efc0daa78f79ad0e6f9c75161f8e')
+md5sums=('37826e9151ec9a4b4fabead3d5745006')
+sha256sums=('650c9b9e1155924dba7655fb4a303911e30a2606ea9303a9ebf95152d2ddcf19')
+sha512sums=('e399fd12fd883112d49aff0d092fbc2b51952a24e3b40eae47d0bd7f5e2648689ab76413a2d404ef686ce5622e4661db1beb3e44a690c5c0279b85f69d267ecd')
 
 export PBR_VERSION=$pkgver
 
