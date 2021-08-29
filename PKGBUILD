@@ -2,7 +2,7 @@
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=foot-git
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
@@ -53,10 +53,12 @@ build() {
   esac
 
   meson \
+    --reconfigure \
     --prefix=/usr \
     --buildtype=release \
     -Db_lto=true \
     -Dterminfo=disabled \
+    -Dcustom-terminfo-install-location=no \
     . build
 
   if [[ ${do_pgo} == yes ]]; then
