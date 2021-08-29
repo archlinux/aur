@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.stickwar.com/"
 license=('custom')
 depends=('flashplayer-standalone')
-source=('https://aya1.xyz/https://github.com/Brx86/yun/releases/download/2/stickwar2.tar.gz')
+source=('https://aya1.top/https://github.com/Brx86/yun/releases/download/2/stickwar2.tar.gz')
 md5sums=('1709fbbcec5918680b87f3504a1db917')
 noextract=()
 
