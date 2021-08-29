@@ -1,7 +1,7 @@
 # Maintainer: Alexander Bocken <alexander@bocken.org>
 
 pkgname=anki-release-source
-pkgver=2.1.46
+pkgver=2.1.47
 pkgrel=1
 pkgdesc="The latest release building from source locally"
 url="https://apps.ankiweb.net/"
