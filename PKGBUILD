@@ -14,7 +14,7 @@ sha256sums=('5331213ce3fe73d5fe2887cf3aabcd8ffde2fafd0e5f09928d412dc8306f3992')
 _architectures="x86_64-w64-mingw32"
 
 build() {
-  cd "$srcdir/svt-hevc"
+  cd "$srcdir/SVT-HEVC-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DCMAKE_BUILD_TYPE='Release' ..
@@ -25,7 +25,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir/svt-hevc/build-${_arch}"
+    cd "$srcdir/SVT-HEVC-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
