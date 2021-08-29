@@ -7,9 +7,10 @@ pkgbase = ajnin
 	license = AGPL3
 	makedepends = antlr4>=4.9.2
 	makedepends = cmake>=3.17
+	makedepends = git
 	depends = boost>=1.75.0
 	depends = ninja
 	source = https://github.com/b1f6c1c4/ajnin/archive/v0.1/ajnin-0.1.tar.gz
-	sha256sums = 1fbeafea1971cddf08b2b335ea785a5fa63f42124d2e255370eb710720846947
+	sha256sums = b18515046b76c4a377edcb79ee87330c76304c57db392e23767ac46e216e3bdc
 
 pkgname = ajnin
