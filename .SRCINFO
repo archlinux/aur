@@ -1,7 +1,7 @@
 pkgbase = batterycm-switcher-preview
 	pkgdesc = An advanced Ideapad Laptops conservation mode adjustment tool
-	pkgver = 1.1.2
-	pkgrel = 2
+	pkgver = null
+	pkgrel = 1
 	url = https://github.com/supdrewin/batterycm-switcher
 	install = batterycm.install
 	arch = any
