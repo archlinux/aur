@@ -1,8 +1,9 @@
 pkgbase = eww-wayland-git
 	pkgdesc = ElKowar's wacky widgets (Wayland Only)
 	pkgver = 0.1.0.r164.g70285e0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elkowar/eww
+	install = eww.install
 	arch = any
 	license = MIT
 	makedepends = rustup
