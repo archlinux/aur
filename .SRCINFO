@@ -1,7 +1,7 @@
 pkgbase = fbcat
 	pkgdesc = A framebuffer screenshot grabber
-	pkgver = 0.5.1
-	pkgrel = 3
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/jwilk/fbcat
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = fbcat
 	optdepends = netpbm: for fbgrab
 	optdepends = graphicsmagick: for fbgrab
 	conflicts = fbgrab
-	source = https://github.com/jwilk/fbcat/releases/download/0.5.1/fbcat-0.5.1.tar.gz
-	md5sums = 944fd3854bfe00971bfcd830f6c94497
+	source = https://github.com/jwilk/fbcat/releases/download/0.5.2/fbcat-0.5.2.tar.gz
+	md5sums = b54912af77a865f550cab9f54f840f54
 
 pkgname = fbcat
-
