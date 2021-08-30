@@ -1,5 +1,5 @@
 pkgname=cerebro-elasticsearch
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="cerebro is an open source elasticsearch web admin tool built using Scala, Play Framework, AngularJS and Bootstrap."
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ license=('MIT')
 depends=("java-runtime-headless>=8")
 source=(https://github.com/lmenezes/cerebro/releases/download/v$pkgver/cerebro-$pkgver.tgz
        cerebro.service)
-md5sums=('b8979b2af5d2ce501d5d55a0f38a7e39'
-         'af61c73dfa96d57c509c8a3a2c3bef97')
+sha256sums=('c17f4abaaa7eb7d32c71ba17effc9995f3a96ee7cf10f4bfc929537df6430710'
+            'c5064fcfc495a08d538e4b2fc041389ab711f7e68f65bac5f5481f211cdc6fb8')
 noextract=()
 
 package() {
