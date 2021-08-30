@@ -52,6 +52,7 @@ build() {
       -DPARAVIEW_BUILD_WITH_EXTERNAL=ON \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF \
+      -DVTK_MODULE_USE_EXTERNAL_VTK_fmt=OFF \
       -DVTK_MODULE_USE_EXTERNAL_ParaView_vtkcatalyst=OFF \
       -DVTK_QT_VERSION=5 \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
