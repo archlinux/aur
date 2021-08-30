@@ -1,0 +1,13 @@
+pkgbase = clicker-git
+	pkgdesc = a simple desktop automation tool (autoclicker)
+	pkgver = r45.9ef5eeb
+	pkgrel = 1
+	url = https://codeberg.org/nycex/clicker
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = cargo
+	source = git+https://codeberg.org/nycex/clicker
+	sha256sums = SKIP
+
+pkgname = clicker-git
