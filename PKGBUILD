@@ -6,7 +6,7 @@ pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=5.1.1dev
 _pkgver=5.1.1.dev0
-pkgrel=3
+pkgrel=4
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
@@ -26,7 +26,7 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-soupsieve' 'python-termcolor' 'python-terminaltables'
 	 'python-tqdm' 'python-urllib3' 'python-wcwidth' 'python-werkzeug'
 	 'python-winacl' 'python-winsspi' 'python-xmltodict' 'python-zope-event'
-	 'python-zope-interface' 'python-pywerview-git' 'python-gevent' 'python-neo4j')
+	 'python-zope-interface' 'python-pywerview' 'python-gevent' 'python-neo4j')
 
 makedepends=('python-setuptools' 'python-poetry')
 source=("${url}/archive/v${pkgver}.tar.gz")
