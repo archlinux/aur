@@ -2,8 +2,8 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2021.2
-pkgrel=3
+pkgver=2021.3
+pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -17,14 +17,14 @@ optdepends=('cuda: Nvidia GPU support'
 makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('d940d865ea91e78318043e71f229ce80d32b0dc578d64ee5aa2b1a4be801aadb')
+sha256sums=('e109856ec444768dfbde41f3059e3123abdb8fe56ca33b1a83f31ed4575a1cc6')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-#For cuda support gcc10 is required, if you do not need cuda support comment the next two lines
+#For cuda support gcc10 is required, if you do not need cuda support comment the next two lines and install cuda
 #export CC=gcc-10
 #export CXX=g++-10 
 
