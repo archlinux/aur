@@ -1,6 +1,6 @@
 pkgname=openmm
-pkgver=7.4.2
-pkgrel=2
+pkgver=7.6.0
+pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('x86_64')
 url="http://openmm.org/"
@@ -9,11 +9,11 @@ depends=('fftw')
 optdepends=('cuda: prrovides cuda support')
 makedepends=('cmake' 'swig' 'doxygen' 'cython')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha256sums=('2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc')
+sha256sums=('5a99c491ded9ba83ecc3fb1d8d22fca550f45da92e14f64f25378fda0048a89d')
 
-export CC=gcc-9
-export CXX=g++-9
-export FC=gfortran-9
+#export CC=gcc-10
+#export CXX=g++-10
+#export FC=gfortran-10
 
 build() {
   cd "${srcdir}"
@@ -29,7 +29,7 @@ build() {
 check () {
   msg2 "Testing openmm"
   cd "${srcdir}"/build
-#  make test
+  make test
 }
 
 
