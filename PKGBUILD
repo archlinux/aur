@@ -1,7 +1,7 @@
 # Maintainer: Opencreek Technogoly UG <hannes@opencreek.tech>
 pkgname=creekey-git
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.0_r108.82b4efe
+pkgrel=1
 makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Story your Private Keys on your Phone!"
@@ -10,6 +10,11 @@ source=("git+https://github.com/opencreek/creekey-cli.git#branch=main")
 
 url="https://creekey.io"
 license=('UNLICENSED')
+pkgver() {
+    cd "creekey-cli"
+
+    printf "0.1.0_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "creekey-cli"
