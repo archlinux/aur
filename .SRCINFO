@@ -1,15 +1,15 @@
 pkgbase = python-cmapy
 	pkgdesc = Use Matplotlib colormaps with OpenCV in Python
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cvejarano-oss/cmapy
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = python-setuptools
 	depends = opencv
 	depends = python-matplotlib
 	source = https://gitlab.com/cvejarano-oss/cmapy/-/archive/v0.6.6/cmapy-v0.6.6.tar.bz2
 	sha256sums = be72b1dd1916b64aa1d5c4f0022bc212e9f316f02e097e5c595639260b8c7d66
 
 pkgname = python-cmapy
-
