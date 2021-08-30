@@ -2,59 +2,29 @@
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Julien Virey <julien.virey@gmail.com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
-pkgbase=termite
-pkgname=('termite' 'termite-terminfo')
-pkgver=15
-pkgrel=8
-_vtever='0.64.2a'
-_commit='409b8449ab51fccf51057621168c9c15c54d4807'
 pkgdesc='A simple VTE-based terminal'
-url='https://github.com/thestinger/termite/'
-install=termite.install
-license=('LGPL')
-arch=('x86_64')
-depends=('gtk3' 'pcre2' 'gnutls' 'vte-common')
-makedepends=('git' 'ncurses' 'intltool' 'gperf' 'gtk-doc' 'meson')
-source=("git+https://github.com/thestinger/termite.git#tag=v${pkgver}?signed"
-        "git+https://github.com/BarbUk/vte-ng.git#tag=${_vtever}?signed"
-        "termite-util::git+https://github.com/thestinger/util.git#tag=${_commit}")
-validpgpkeys=('E499C79F53C96A54E572FEE1C06086337C50773E'  # Jelle van der Waa
-              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A'  # Daniel Micay
-              '9F59A49568EE372AF17E5452B6D01F84A7519939') # Julien Virey
-sha256sums=('SKIP'
-            'SKIP'
+pkgname=termite
+pkgver=16.0
+pkgrel=1
+url=https://github.com/aperezdc/termite
+license=(LGPL)
+depends=(gtk3 pcre2 gnutls vte-common)
+makedepends=(gperf 'meson>=0.58' ninja)
+arch=(x86_64)
+backup=(etc/xdg/termite/config)
+validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
+source=("${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.xz"{,.asc})
+sha256sums=('426f4633d1ded371599278555167c8cafb87236bb021d9ea45025179b29d186e'
             'SKIP')
 
-prepare() {
-  cd termite
-  git submodule init
-  git config --local submodule.util.url "${srcdir}"/termite-util
-  git submodule update
+build () {
+	rm -rf _build
+	arch-meson _build "termite-${pkgver}"
+	meson compile -C _build
 }
 
-build() {
-  arch-meson vte-ng build --prefix="${srcdir}"/vte-static --default-library=static -D b_lto=false -D static=true -D gir=false -D vapi=false -D docs=false
-  meson compile -C build
-  meson install -C build
-
-  cd termite
-  export PKG_CONFIG_PATH="${srcdir}"/vte-static/lib/pkgconfig
-  make
-}
-
-package_termite() {
-  depends+=('termite-terminfo')
-  backup=(etc/xdg/termite/config)
-
-  make -C termite DESTDIR="${pkgdir}" PREFIX=/usr install
-  rm -r "${pkgdir}"/usr/share/terminfo
-}
-
-package_termite-terminfo() {
-  pkgdesc='Terminfo for Termite, a simple VTE-based terminal'
-  depends=('ncurses')
-
-  mkdir -p "${pkgdir}"/usr/share/terminfo
-  tic -x -o "${pkgdir}"/usr/share/terminfo termite/termite.terminfo
+package () {
+	meson install -C _build --skip-subprojects vte --destdir "${pkgdir}"
 }
