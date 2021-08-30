@@ -1,8 +1,8 @@
 # Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 pkgname=pulseeffects
-pkgver=4.3.4
+pkgver=5.0.4
 pkgrel=1
-pkgdesc="Audio Effects for Pulseaudio Applications"
+pkgdesc="Audio Effects for Pipewire Applications"
 arch=(any)
 url="https://github.com/wwmm/pulseeffects"
 license=('GPL3')
@@ -16,17 +16,17 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
 makedepends=('meson' 'boost' 'itstool')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
-sha256sums=('0d39282b5d07ab645b893fba5efbd625a46471ecb1bbbe093a334c92495e3cb6')
+sha256sums=('8c8e2f4c41ca690305e7ea6132eef1d529d0463c4146dd3ffa16616ad7d53005')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/easyeffects-$pkgver"
   # Remove any potential residual build files
   rm -rf _build
   meson _build --prefix=/usr --buildtype=release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/_build"
+  cd "$srcdir/easyeffects-$pkgver/_build"
   env DESTDIR="$pkgdir" ninja install
 }
 
