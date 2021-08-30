@@ -9,7 +9,9 @@ pkgbase = xcolor-git
 	makedepends = cargo
 	makedepends = python
 	depends = libxcb
-	source = xcolor-git::git+https://github.com/Soft/xcolor.git
+	provides = xcolor
+	conflicts = xcolor
+	source = git+https://github.com/Soft/xcolor.git
 	sha256sums = SKIP
 
 pkgname = xcolor-git
