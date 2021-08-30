@@ -6,7 +6,6 @@ pkgbase = pstoedit-emf
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = ghostscript
 	depends = libzip
 	depends = plotutils
 	depends = gd

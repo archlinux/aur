@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.pstoedit.net/"
 license=('GPL')
 depends=('libzip' 'plotutils' 'gd' 'imagemagick' 'libemf')
-makedepends=('ghostscript')
+#makedepends=('ghostscript')
 options=('!makeflags')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
@@ -20,7 +20,7 @@ sha256sums=('8cfd97eae18f138ef255b88b3d8a405734d20ea1b6acaa7706980b8fd8e4ce41')
 
 build() {
   cd ${_pkgname}-$pkgver
-  ./configure --prefix=/usr --with-emf --disable-docs
+  ./configure --prefix=/usr --with-emf --disable-docs 
   make
 }
 
