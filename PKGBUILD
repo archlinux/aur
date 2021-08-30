@@ -45,7 +45,7 @@ _hpn_ver=hpn15v4
 #_pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 _pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -74,7 +74,7 @@ backup=('etc/ssh/ssh_config'
         'etc/pam.d/sshd')
 
 sha512sums=(
-  '064d06d6afa70247d2cd122de37b9b98342fe13493a91df6dd69cb5c4f66faa0c603a67537022c2f89ba7ab47eea08a9fa28beeca9fa8af22a19d6d731ec1120'
+  '9c1c2246b9ba75bcc0d346a1bd694293b581d2173d3c1e6d5b9e12bbe3dcf4466c4977e93529f8ae299515a87b13c22ac7dc533081e4e1e8ce898be5ebba6e59'
   '62e2d60fdd39243e6245d90a0940b67ac4e72d042d8146203d50cdaa2df51611d91831d3b152d42302490afd677ae3433a3eba975dee68dbf7c06728167bb6d4'
   #'5d96a288ae925584cdcde0305c511b18e3cfaed6cae49f5fc6f062f62100d10a087144e8263380d19a14dca71c745065ddaa0062542c2e2cfa1db04811d40dc7'
   #'a9ee92fd135c47a27ac260ab40c057f0e35c118efcb281e98e235158ffd8599acede67dcce6da4c2589b2a0bd794c587af80d4ce4f85c1b9823cb9acfbbe9050'
@@ -88,7 +88,7 @@ sha512sums=(
 )
 
 b2sums=(
-  '0cdc286e1587ee93f669935e90561bde0499a12855e4bfcbdb6bfb57222c6ec7f4dfe061b1138624dfb50d1bf25d26a59e999bebe8e116e56ce5741839cacf47'
+  'c661dfcaf87aba6d053bbb5c9cefdf083f6ae20ebfb9c678d6dd6bad31bd40ff5a437a4355a6d5f583596288ddd0b66b8ec9c0622b5fbfa17dac1db9af4512df'
   '1e6c8d39052bdc268c584488341e260a2695d4b9afabca41919710bb34833dd580ff1813c01b8ba91f2629273c8101ce0ed3b2749dabce054137b4ef37b2a548'
   #'051b7c350333ce57a4a5e57ba0f693aed4491a241fd9e65cf2a861773571b44b8d4ffa06506a0c4a05399a46108ec05321e69f210637f32e25c76e683b224505'
   #'b46019363a19e2a0c397d66b6f1dc24d1c1219372b7fd699d92a9c382b24b02437b37cb12b3bba7e3ca97cfe98170ad21fff5871daf2070bc3d175fe0b31680b'
