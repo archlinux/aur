@@ -1,0 +1,15 @@
+pkgbase = netbsd-curses
+	pkgdesc = Port of NetBSD's curses library for usage on all POSIX systems
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/sabotage-linux/netbsd-curses
+	arch = x86_64
+	license = BSD
+	depends = bash
+	provides = libcurses
+	provides = libterminfo
+	conflicts = ncurses
+	source = http://ftp.barfooze.de/pub/sabotage/tarballs/netbsd-curses-0.3.2.tar.xz
+	sha512sums = 2f5604782599f07ee8c54bbf98fa7f8b1c13a26b3e194a4b4ac756f8b23448d1d3cb65223f39de304f34322b73deec6ccfa93cd4a606b2ed56308de730d6593e
+
+pkgname = netbsd-curses
