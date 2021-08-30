@@ -1,5 +1,5 @@
 pkgname=tess-nightly
-pkgver=1.2r282.43e472a
+pkgver=1.2r283.4bcb05d
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
