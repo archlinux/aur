@@ -1,6 +1,6 @@
 # Maintainer: Opencreek Technogoly UG <hannes@opencreek.tech>
 pkgname=creekey-git
-pkgver=0.1.0_r108.82b4efe
+pkgver=0.1.0_r111.f83ebaf
 pkgrel=1
 makedepends=('git' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -36,6 +36,6 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
-  install -Dm644 "src/unix/creekey.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm644 "src/unix/creekey.service" "${pkgdir}/usr/lib/systemd/system/creekey.service"
 }
 sha256sums=('SKIP')
