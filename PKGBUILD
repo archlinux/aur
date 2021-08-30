@@ -1,9 +1,10 @@
 # Maintainer: LeSnake04 <dev.lesnake@posteo.de>
 
 _pkgname=qmplay2
+_pkgname2=QMPlay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=6
+pkgrel=7
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -19,28 +20,25 @@ sha256sums=(e877bd20a2bf417a3f6e0e38f099c8ba8fbef7be9d05a8f5187769ea1201f05b)
 noextract=("${_appimage}")
 options=("!strip")
 _desktopfile=QMPlay2.desktop
-_desktopfilesrc=squashfs-root/$_desktopfile
 _installdir=/opt/$pkgname
 _bintarget=$_installdir/$_appimage
-_iconssrc=squashfs-root/usr/share/icons/
+_iconssrc=usr/share/icons
 
 prepare() {
+	cd $srcdir
 	echo Making AppImage executable...
-  chmod +x $srcdir/$_appimage
+  chmod +x $_appimage
 
   echo Extracting AppImage...
-  ./$_appimage --appimage-extract $_desktopfilesrc
-	./$_appimage --appimage-extract $_iconssrc
-
-  echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=$_exec+" $srcdir/$_desktopfilesrc
+  ./$_appimage --appimage-extract $_desktopfile
+	./$_appimage --appimage-extract "$_iconssrc"
 }
 
 package() {
   echo Setting variables...
   _installdir=$pkgdir/opt/${pkgname}
-  _desktopfilesrc=$srcdir/$_desktopfilesrc
-  _iconssrc=$srcdir/squashfs-root/usr/share/icons/*
+  _desktopfilesrc=$srcdir/squashfs-root/$_desktopfile
+  _iconssrc=$srcdir/squashfs-root/$_iconssrc
   _iconstarget=$pkgdir/usr/share/icons
   _binfulltarget=$pkgdir$_bintarget
   _binsrc=$(realpath $srcdir/$_appimage)
@@ -63,6 +61,5 @@ package() {
   mkdir -vp $pkgdir/usr/bin
 	printf "#!/usr/bin/env bash\nAPPIMAGELAUNCHER_DISABLE=true %s \$@" $_bintarget > $_binlinktarget
 	chmod 755 $_binlinktarget
-  #ln -vsf $_bintarget $pkgdir/usr/bin/$_binlinkname
 }
 
