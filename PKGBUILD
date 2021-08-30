@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=3
+pkgrel=4
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
