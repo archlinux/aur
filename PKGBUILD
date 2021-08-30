@@ -3,7 +3,7 @@
 pkgname=fenics-basix-git
 _realname=basix
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
-pkgver=0.1.0.25.g970087e
+pkgver=0.1.0.26.gca5876e
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -11,6 +11,7 @@ license=('GPL3')
 groups=('fenics-git')
 depends=('xtensor' 'xtensor-blas' 'pybind11' 'petsc')
 makedepends=('git' 'boost')
+optdepends=('python-numba')
 options=(!emptydirs)
 source=("git+${url}")
 md5sums=('SKIP')
@@ -98,34 +99,31 @@ export LC_ALL=en_IE.UTF-8
 
 pkgver() {
   cd "${srcdir}/${_realname}"
-  pkgrel=$(git describe --tags --match '*.*' | awk -F'-' '{print $2"."$3}')
   git describe --tags --match '*.*' | tr '-' '.'
 }
 
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
-  cmake -DCMAKE_BUILD_TYPE=Release \
+  cd "${srcdir}"/"${_realname}"/cpp
+  # Add CBLAS to linking libraries
+  # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
+  sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_realname}"/cpp/CMakeLists.txt
+  cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
-        -S "${srcdir}"/"${_realname}" \
+        -S . \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_PREFIX_PATH="${srcdir}"/build \
-        -DXTENSOR_OPTIMIZE=TRUE \
-        -DCMAKE_SKIP_BUILD_RPATH=TRUE \
-        -DCMAKE_SKIP_RPATH=TRUE \
-        -DCMAKE_BUILD_TYPE="Release" \
-        -Dxtensor_DIR=\
-        "$(pacman -Ql xtensor |
-                   awk '/xtensorConfig\.cmake/{print $NF}')"
+        -DXTENSOR_OPTIMIZE=TRUE
   cmake --build "${srcdir}"/build
 }
 
 package() {
-  cd "${pkgdir}"
-  make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
+  cd "${srcdir}"/"${_realname}"/cpp
+  cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
+  # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
 
   cd "${srcdir}"/"${_realname}"/python
-  sed -i "s%\(find_package(Basix.*\)%set(CMAKE_PREFIX_PATH \"${pkgdir}/usr/lib/cmake/basix\")\n\1%" "${srcdir}"/"${_realname}"/python/CMakeLists.txt
   python setup.py build
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
 }

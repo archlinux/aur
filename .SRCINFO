@@ -1,6 +1,6 @@
 pkgbase = fenics-basix-git
 	pkgdesc = C++ interface of FEniCS for ordinary and partial differential equations.
-	pkgver = 0.1.0.25.g970087e
+	pkgver = 0.1.0.26.gca5876e
 	pkgrel = 1
 	url = https://github.com/FEniCS/basix
 	arch = i686
