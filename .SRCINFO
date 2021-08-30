@@ -1,6 +1,6 @@
 pkgbase = nelua
 	pkgdesc = The Nelua programming language
-	pkgver = 0.2.0.r816.8341b61
+	pkgver = 0.2.0.r1276.dc245ba
 	pkgrel = 1
 	url = https://nelua.io/
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = nelua
 	sha1sums = SKIP
 
 pkgname = nelua
-

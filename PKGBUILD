@@ -1,6 +1,6 @@
 # Maintainer: Eduardo Bart <edub4rt@gmail.com>
 pkgname=nelua
-pkgver=0.2.0.r816.8341b61
+pkgver=0.2.0.r1276.dc245ba
 pkgrel=1
 pkgdesc='The Nelua programming language'
 arch=('any')
@@ -24,11 +24,6 @@ pkgver() {
 build() {
   cd nelua-lang
   make MYCFLAGS="$CFLAGS" MYLDFLAGS="$LDFLAGS" PREFIX=/usr
-}
-
-check() {
-  cd nelua-lang
-  ./nelua.sh tests/all_test.nelua
 }
 
 package() {
