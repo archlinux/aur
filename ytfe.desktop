@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Categories=AudioVideo;Network;
+Comment=YouTube frontend
+Exec=/usr/bin/ytfe
+Name=YTFE
+Icon=/usr/share/icons/hicolor/16x16/apps/ytfe.png
