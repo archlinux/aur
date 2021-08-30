@@ -1,6 +1,6 @@
 pkgbase = athens-git
 	pkgdesc = Athens is an open-source and local-first alternative to Roam Research. Athens lets you take notes... Master branch
-	pkgver = v1.0.0.beta.64.r3.g98a1fca
+	pkgver = v1.0.0.beta.68.r3.g2d3c0862
 	pkgrel = 1
 	url = https://github.com/athensresearch/athens
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = athens-git
 	md5sums = dc18f4e2bdea985fff72911e868dfce9
 
 pkgname = athens-git
-

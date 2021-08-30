@@ -2,12 +2,12 @@
 # Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v1.0.0.beta.64.r3.g98a1fca
+pkgver=v1.0.0.beta.68.r3.g2d3c0862
 pkgrel=1
 pkgdesc="Athens is an open-source and local-first alternative to Roam Research. Athens lets you take notes... Master branch "
 arch=('i686' 'x86_64')
 url="https://github.com/athensresearch/athens"
-license=('Eclipse Public License - v 1.0') #TODO
+license=('Eclipse Public License - v 1.0')
 groups=()
 depends=("electron")
 makedepends=("git" "nodejs" "leiningen" "yarn" "jq")
