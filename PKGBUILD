@@ -1,7 +1,7 @@
 # Maintainer: EndlessEden <eden [at] rose.place>
 # Maintainer: Juri Grabowski <arch-dablin-maint@jugra.de>
 _pkgname=dablin
-pkgname=dablin-git
+pkgname=dablin
 pkgver=1.13.0.r364.c20b4c6
 pkgrel=1
 pkgdesc="plays a DAB/DAB+ audio service – either from a received live transmission or from ETI files."
