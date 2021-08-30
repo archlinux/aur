@@ -1,5 +1,5 @@
 pkgname=tess-nightly
-pkgver=1.2r279.cabf74f
+pkgver=1.2r280.97cba59
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
@@ -23,6 +23,7 @@ package() {
 
 	mkdir -p "${pkgdir}/usr/share/kservices5/ServiceMenus/"
 	cp -r -f tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
+	cp -r -f appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
 
 	if type "$kbuildsycoca5" > /dev/null; then
 		kbuildsycoca5
