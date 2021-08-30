@@ -163,8 +163,8 @@ package() {
     cp *.1 ${pkgdir}/usr/share/man/man1
 
     msg2 "Copying license"
-    mkdir -p ${pkgdir}/usr/share/license/Mathematica/
-    cp ${pkgdir}/opt/Mathematica/LICENSE.txt ${pkgdir}/usr/share/license/Mathematica/license.txt
+    mkdir -p ${pkgdir}/usr/share/licenses/Mathematica/
+    cp ${pkgdir}/opt/Mathematica/LICENSE.txt ${pkgdir}/usr/share/licenses/Mathematica/license.txt
 
     msg2 "Fixing file permissions"
     chmod go-w -R ${pkgdir}/*
