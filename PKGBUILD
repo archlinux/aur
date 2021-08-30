@@ -2,7 +2,7 @@
 pkgname=eww-git
 _pkgname=eww
 pkgver=0.1.0.r164.g70285e0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ElKowar's wacky widgets"
 arch=('any')
@@ -18,7 +18,7 @@ conflicts=("eww")
 replaces=()
 backup=()
 options=()
-install=
+install="${_pkgname}.install"
 changelog=
 source=("git+https://github.com/elkowar/eww")
 noextract=()
@@ -39,19 +39,9 @@ build() {
 package() {
     cd "$_pkgname"
 
-    install -Dm755 target/release/eww "${pkgdir}/usr/bin"
+    install -Dm755 target/release/eww "${pkgdir}/usr/bin/${_pkgname}"
     mkdir -p "${pkgdir}/etc/xdg/${_pkgname}"
     cp -r examples/eww-bar "${pkgdir}/etc/xdg/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-    echo "\
-_____________________________________________________________________
-|                                                                   |
-| The example config can be found in /etc/xdg/eww                   |
-|                                                                   |
-| For better experience, please write your own config.              |
-| WIKI: https://elkowar.github.io/eww/configuration.html            |
-|                                                                   |
-|___________________________________________________________________|"
 }
 
