@@ -19,7 +19,7 @@ provides=("$_bpn")
 # libwrap can be disabled, if desired
 makedepends=('git')
 depends=('lua' 'libwrap' 'libcap' 'bash')
-#optdepends=('munge')
+optdepends=('munge')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
 pkgver=1.0.24.r11.g0ea3fe3
@@ -33,13 +33,6 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_bpn"
-
-	# disable munge
-	sed -i configure.ac \
-		-e 's/X_AC_CHECK_COND_LIB(munge, munge_ctx_create)/#/'
-
-	#	-e 's/X_AC_CHECK_COND_LIB(cap, cap_get_proc)/#/'
-
 	./autogen.sh
 }
 
