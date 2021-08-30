@@ -21,5 +21,7 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 	install -Dm755 ./amogu.sh "$pkgdir/usr/bin/amogu.sh"
+	install -g 0 -o 0 -m 0644 "$_pkgname".1 /usr/local/man/man1/
+	gzip /usr/local/man/man1/"$_pkgname".1
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
