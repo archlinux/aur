@@ -4,13 +4,14 @@
 pkgname=kryoflux
 pkgdesc="USB Floppy Controller for Software Preservation"
 pkgver=2.6
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url="http://www.kryoflux.com"
 license=('custom')
 provides=('capsimage')
 conflicts=('capsimage')
 depends=('libusb')
+install=kryoflux.install
 makedepends=('gendesk' 'imagemagick')
 optdepends=('jre7-openjdk: for the Kryoflux GUI' 'archlinux-java-run: for the Kryoflux GUI')
 source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
@@ -21,7 +22,7 @@ source=("http://www.kryoflux.com/download/kryoflux_${pkgver}_linux.tar.bz2"
 md5sums=('12d57dcc9657a90c583dded553b8a2e1'
          '43ec7eb49fbdab703cafe146145fe0de'
          'ede10c48b2b1edc5c346e8814f07bcdb'
-         '0c9d40001d3ebed40dd3032cbdc7ba54'
+         'e5f6e87858ba2172a1530f3826539caa'
          'ede9a2b77643af8bf9d166c30827c170')
 
 prepare() {
@@ -43,6 +44,7 @@ package() {
   install -d ${pkgroot}/{bin,lib}
   # rename dtc binary to kdtc to avoid clash with dtc package (suggested by @frankspace)
   install dtc/${CARCH}/static/dtc ${pkgroot}/bin/kdtc
+  install -Dm755 dtc/${CARCH}/static/dtc ${pkgroot}/share/java/kryoflux/dtc
   install -Dm644 dtc/kryoflux-ui.jar ${pkgroot}/share/java/kryoflux/kryoflux-ui.jar
   cp -P dtc/${CARCH}/lib* ${pkgroot}/lib
 

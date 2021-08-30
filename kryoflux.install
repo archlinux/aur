@@ -1,0 +1,6 @@
+post_install() {
+  echo "=== PLEASE NOTE ==="
+  echo "dtc has been renamed to kdtc to avoid clashing with device-tree-compiler"
+  /bin/true
+}
+
