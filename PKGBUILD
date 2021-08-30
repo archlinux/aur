@@ -66,7 +66,7 @@ package_upp-nightly() {
   #copy source files
   mkdir -p "$pkgdir/usr/share/upp"
   msg2 "Moving the source codes..."
-  cp -r "$srcdir/upp/"{bazaar,examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
+  cp -r "$srcdir/upp/"{examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
   echo "#define IDE_VERSION \"$pkgver-Arch\"" > "$pkgdir/usr/share/upp/uppsrc/ide/version.h"
   #fix permissions
   msg2 "Setting permissions..."
