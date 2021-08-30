@@ -1,0 +1,13 @@
+pkgbase = python-kodi-json
+	pkgdesc = Python module for controlling kodi over HTTP Json API
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jcsaaddupuy/python-kodijson
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/k/kodi-json/kodi-json-1.0.0.tar.gz
+	sha512sums = de34ad3ba6984e81c416e427ca092b0fdfd4108df6a0f907df20303d1de4a8ae12f1b9bdd5cbe56e7d3654c9fb3b5f2e0666bdee49881cd8a024a6e066a59b39
+
+pkgname = python-kodi-json
