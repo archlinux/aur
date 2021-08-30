@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=2
+pkgrel=3
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -13,8 +13,7 @@ license=('LGPL')
 depends=('appimagelauncher')
 conflicts=('qmplay2' 'qmplay2-git')
 provides=('qmplay2')
-optdepends=('pulseaudio: PulseAudio support'
-            'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
+optdepends=('pulseaudio: PulseAudio support')
 source=($_appimage::https://github.com/zaps166/QMPlay2/releases/download/$pkgver/QMPlay2-$_srcpkgver-x86_64.AppImage)
 sha256sums=(e877bd20a2bf417a3f6e0e38f099c8ba8fbef7be9d05a8f5187769ea1201f05b)
 noextract=("${_appimage}")
@@ -34,7 +33,7 @@ prepare() {
 	./$_appimage --appimage-extract $_iconssrc
 
   echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=APPIMAGELAUNCHER_DISABLE=true $_bintarget+" "$_desktopfilesrc"
+  sed -i "s+Exec=AppRun+Exec=$_exec+" "$_desktopfilesrc"
 }
 
 package() {
@@ -46,6 +45,7 @@ package() {
   _binfulltarget=$pkgdir$_bintarget
   _binsrc=$(realpath $srcdir/$_appimage)
 	_binlinkname=QMPlay2
+	_binlinktarget=$pkgdir/usr/bin/$_binlinkname
 
   echo Installing desktop file...
   install -vDm644 $_desktopfilesrc "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -61,6 +61,8 @@ package() {
 
   echo Creating symlinks
   mkdir -vp $pkgdir/usr/bin
-  ln -vsf $_bintarget $pkgdir/usr/bin/$_binlinkname
+	printf "#!/usr/bin/env bash\nAPPIMAGELAUNCHER_DISABLE=true %s \$@" $_bintarget > $_binlinktarget
+	chmod 755 $_binlinktarget
+  #ln -vsf $_bintarget $pkgdir/usr/bin/$_binlinkname
 }
 
