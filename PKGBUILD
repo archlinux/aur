@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libodiosacd"
-pkgver="21.4.23"
+pkgver="21.8.30"
 pkgrel="1"
 pkgdesc="SACD decoder (shared library)"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ license=("GPL3")
 makedepends=("glibc")
 depends=("glibc")
 source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("2ef2bdc280be8b2d45f7e6a04c0ee465")
+md5sums=("b899678721030146a7d35520fe7bc047")
 options=("!emptydirs")
 
 build()
