@@ -8,9 +8,9 @@ url=https://github.com/antiprism/mpd_oled
 arch=(i686 x86_64 arm armv7h armv6h aarch64)
 license=(MIT)
 depends=(alsa-lib fftw i2c-tools)
-makedepends=(gcc glibc libtool)
+makedepends=(glibc)
 source=(https://github.com/rern/mpd_oled/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=(b512e9b2fca467699ebb6c868bc63d4770c78bc779b3d7be9eafc8194f5bd2ea)
+sha256sums=(SKIP)
 
 build() {
 	export CPPFLAGS="$CPPFLAGS -W -Wall -Wno-psabi"

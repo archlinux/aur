@@ -10,13 +10,11 @@ pkgbase = mpd_oled
 	arch = armv6h
 	arch = aarch64
 	license = MIT
-	makedepends = gcc
 	makedepends = glibc
-	makedepends = libtool
 	depends = alsa-lib
 	depends = fftw
 	depends = i2c-tools
 	source = https://github.com/rern/mpd_oled/archive/refs/tags/0.02.tar.gz
-	sha256sums = b512e9b2fca467699ebb6c868bc63d4770c78bc779b3d7be9eafc8194f5bd2ea
+	sha256sums = SKIP
 
 pkgname = mpd_oled
