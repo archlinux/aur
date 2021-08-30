@@ -1,6 +1,6 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = 1.5.8.r5303
+	pkgver = 1.7.0.r5558
 	pkgrel = 1
 	epoch = 1
 	url = http://www.djcbsoftware.nl/code/mu
@@ -8,6 +8,7 @@ pkgbase = mu-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = meson
 	depends = xapian-core
 	depends = guile
 	depends = gmime3
@@ -18,4 +19,3 @@ pkgbase = mu-git
 	md5sums = SKIP
 
 pkgname = mu-git
-
