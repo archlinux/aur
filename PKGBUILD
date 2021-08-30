@@ -1,11 +1,12 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 # Maintainer: redtide <redtid3 at gmail dot com>
+# Maintainer: jgmdev <jgmdev at gmail dot com>
 
 pkgname=lite-xl
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://lite-xl.github.io"
 license=('MIT')
 depends=('agg' 'lua52' 'reproc' 'sdl2')
@@ -13,8 +14,8 @@ makedepends=('meson')
 conflicts=("lite")
 provides=("lite")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('171bf949f791265943d9f184423677cfda5ca807fa24c6bbd461dfcf1d09f297f32652add4703b8ccdce17e7e6ce0083cf4a1193f99e4e4e49ad11589c51cbfe')
-b2sums=('2e0afcee68138277e0e3ca57395071ad1de2de66257d152ba5465f8a930343af00c6f2db5ffe86809fb53917f88c81e35f45316951a67719ec53e87d7906374e')
+sha512sums=('40dd2af16db8ff2cee3242fb89ba3d4d3da654b8b5692329f3d09573b441e0c980717a26d3249afa31e87f0adfb318542861af478dfcabb1426fc88e82291946')
+b2sums=('e273da452e1300411cb113bb01bb6499b86c97a67ceb9382304faa6a01070a622c96505c4879f8c82bba7f155ab6a21017f56310a477b8c3331133d9b3f3b56b')
 
 build() {
     cd "$pkgname-$pkgver"
