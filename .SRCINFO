@@ -1,11 +1,14 @@
 pkgbase = phoenixminer-bin
 	pkgdesc = The fastest Ethereum/Ethash miner with lowest devfee.
-	pkgver = 5.6d
+	pkgver = 5.7b
 	pkgrel = 1
 	url = https://bitcointalk.org/index.php?topic=2647654.0
 	arch = x86_64
 	options = !strip
-	source = https://phoenixminer.info/downloads/PhoenixMiner_5.6d_Linux.tar.gz
-	sha256sums = 9040a1fdc1ba4e5f2387a2d5304f467b2dc2cb5c90595bc4c42d07d015f84e59
+	source = https://phoenixminer.info/downloads/PhoenixMiner_5.7b_Linux.tar.gz
+	source = https://phoenixminer.info/downloads/PhoenixMiner_5.7b_Linux.tar.gz.asc
+	validpgpkeys = F9403D7EAE2AC5F4C361015E654C5927EE163067
+	sha256sums = b56da6d413b6c91716c8d97ddf75dab1b1bbd2ca3183486286097e8349019917
+	sha256sums = SKIP
 
 pkgname = phoenixminer-bin
