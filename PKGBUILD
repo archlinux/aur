@@ -5,7 +5,7 @@ _bpn=diod
 pkgname=$_bpn-git
 pkgdesc="A multi-threaded, user space file server that speeks 9P2000.L"
 license=('GPL2')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/chaos/diod.git"
 
 source=("git+https://github.com/chaos/diod.git")
