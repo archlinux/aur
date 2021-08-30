@@ -1,27 +1,26 @@
 _pkgname=ericw-tools
 pkgname=${_pkgname}-git
-pkgver=v0.18.2.rc1.r149.g968a840
+pkgver=0.18.2.rc1.r149.g968a840
 pkgrel=1
 pkgdesc="Quake/Hexen 2 Map compiling tools"
 arch=('x86_64')
-url="http://ericwa.github.io/ericw-tools"
+url="https://ericwa.github.io/ericw-tools"
 _giturl="https://github.com/ericwa/ericw-tools"
 license=('GPL3')
 depends=('embree' 'groff')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
+provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::git+${_giturl}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd ${_pkgname}
-    # HACK fixes cmake not able to find embree license
-    touch light/EMBREE_LICENSE-NOTFOUND
     git submodule update --init --recursive --force
 }
 
