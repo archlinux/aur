@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 92.0b3
+	pkgver = 92.0b4
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta-bin.install
@@ -15,9 +15,9 @@ pkgbase = thunderbird-beta-bin
 	depends = hunspell
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=92.0b3
+	provides = thunderbird=92.0b4
 	conflicts = thunderbird-beta
-	source = https://ftp.mozilla.org/pub/thunderbird/releases/92.0b3/linux-x86_64/en-US/thunderbird-92.0b3.tar.bz2
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/92.0b4/linux-x86_64/en-US/thunderbird-92.0b4.tar.bz2
 	source = thunderbird-beta-bin.desktop
 	source = vendor.js
 	sha512sums = 780957ad1549c2a36ec63ea629c2a2d38d12c056fabc8c1735168859d899921dbcc871afb475aa13081699fa289b8cd71205b80bc2fb111f0737cfdf4d6ffa4e

@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta-bin
 _pkgname=thunderbird-beta
-pkgver=92.0b3
+pkgver=92.0b4
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
