@@ -1,8 +1,8 @@
 # Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
 pkgname=eww-git
 _pkgname=eww
-pkgver=70285e0_2021.08.27
-pkgrel=2
+pkgver=0.1.0.r164.g70285e0
+pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
 arch=('any')
@@ -27,9 +27,7 @@ validpgpkeys=()
 
 pkgver() {
     cd ${_pkgname}
-    _commit=$(git rev-parse HEAD | cut -c1-7)
-    _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s\n" "${_commit}" "${_date}" | sed 's/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
