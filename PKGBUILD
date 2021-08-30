@@ -1,7 +1,7 @@
 # Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
 # Contributor: William Turner <willtur.will@gmail.com>
 pkgname=buf-bin
-pkgver=0.54.0
+pkgver=0.54.1
 pkgrel=1
 pkgdesc="A new way of working with Protocol Buffers."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 provides=('buf')
 conflicts=('buf')
 source=("https://github.com/bufbuild/buf/releases/download/v$pkgver/buf-Linux-x86_64.tar.gz")
-sha256sums=('39b2ecf5ef0f027ef14d30699bde76ee6947438d62d087c0718ec0601fc8cf48')
+sha256sums=('f6fb0e472a6f16682aeab83c1f6ee993cadcbf510d973883be452790203a6656')
 
 package() {
   install -D -m755 "$srcdir/buf/bin/buf" "$pkgdir/usr/bin/buf"
