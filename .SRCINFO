@@ -1,7 +1,7 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
 	pkgver = 0.1.0.r164.g70285e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elkowar/eww
 	install = eww.install
 	arch = any
