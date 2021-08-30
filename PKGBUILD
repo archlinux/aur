@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=r62.777fe78
+pkgver=1.0.0.r0.g777fe78
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/launcher"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
