@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa at archlinux dot org>
 
 pkgname=lib32-pciutils
-pkgver=3.6.4
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
