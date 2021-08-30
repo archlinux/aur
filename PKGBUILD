@@ -1,6 +1,6 @@
 _pkgname=wl-delicolour-picker
 pkgname=$_pkgname-git
-pkgver=2.0.0
+pkgver=2.0.1.r2.g74282c8
 pkgrel=1
 pkgdesc="A color picker for delicolour that works on wayland"
 arch=('any')
@@ -23,4 +23,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   make -j1 DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

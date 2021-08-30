@@ -1,6 +1,6 @@
 pkgbase = wl-delicolour-picker-git
 	pkgdesc = A color picker for delicolour that works on wayland
-	pkgver = 2.0.0
+	pkgver = 2.0.1.r2.g74282c8
 	pkgrel = 1
 	url = https://github.com/j-waters/wl-delicolour-picker
 	arch = any
