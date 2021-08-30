@@ -3,7 +3,7 @@
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A Ruby static code analyzer and formatter"
 arch=(any)
@@ -36,7 +36,7 @@ url=https://rubocop.org
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('1035ea6cedcfce4d12c82fa36c21990e1bd2d4eacf4d03b8d38200b5800b3a2f')
+sha256sums=('4da9b0bcda8682b93be5f7e6064423c9c86b2c6de34f277eeb631f32cf26d940')
 
 prepare() {
   cd $_gemname-$pkgver
@@ -50,10 +50,6 @@ prepare() {
 
   sed -i '/group/d' Gemfile
   sed -i '/end/d' Gemfile
-
-  # rubocop-rspec on the aur is _old_
-  sed -i '/rubocop-rspec/d' Gemfile
-  echo "gem 'rubocop-rspec'" >> Gemfile
 }
 
 build() {
