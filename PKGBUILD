@@ -2,25 +2,30 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=t-rec
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Blazingly fast terminal recorder"
 arch=('x86_64')
 url="https://github.com/sassman/t-rec-rs"
 license=('GPL3')
-depends=('libx11' 'imagemagick')
+depends=('imagemagick')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d952125e1690aaf6812b8bb633aa8cf0a7e4fb261f23e7c00da77a9e82ff9340cc42e8fe3ebbdc0917e0feb49238078b4bb5cac7e2c4ff2a24a4e46fbb8f613c')
+sha512sums=('ce6e5cb3fad77d529aa600e0e36459ef4b513a70083fcc29f12a065af5ca4d9ec67e3d097a3180306c8e59f9f68741ba15b5f86e9777a8ad14a97dbe4e60f89f')
+
+prepare() {
+  cd "$pkgname-rs-$pkgver"
+  cargo fetch --locked
+}
 
 build() {
   cd "$pkgname-rs-$pkgver"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-rs-$pkgver"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {

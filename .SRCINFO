@@ -1,14 +1,13 @@
 pkgbase = t-rec
 	pkgdesc = Blazingly fast terminal recorder
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/sassman/t-rec-rs
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
-	depends = libx11
 	depends = imagemagick
-	source = t-rec-0.6.0.tar.gz::https://github.com/sassman/t-rec-rs/archive/v0.6.0.tar.gz
-	sha512sums = d952125e1690aaf6812b8bb633aa8cf0a7e4fb261f23e7c00da77a9e82ff9340cc42e8fe3ebbdc0917e0feb49238078b4bb5cac7e2c4ff2a24a4e46fbb8f613c
+	source = t-rec-0.6.1.tar.gz::https://github.com/sassman/t-rec-rs/archive/v0.6.1.tar.gz
+	sha512sums = ce6e5cb3fad77d529aa600e0e36459ef4b513a70083fcc29f12a065af5ca4d9ec67e3d097a3180306c8e59f9f68741ba15b5f86e9777a8ad14a97dbe4e60f89f
 
 pkgname = t-rec
