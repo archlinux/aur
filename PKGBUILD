@@ -1,10 +1,10 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: lily wilson <hotaru@thinkindifferent.net>
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 _pkgname=pstoedit
 pkgname=$_pkgname-emf
-pkgver=3.75
+pkgver=3.76
 pkgrel=1
 pkgdesc="Translates PostScript and PDF graphics into other vector formats, with EMF support"
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ options=('!makeflags')
 conflicts=("$_pkgname")
 provides=("$_pkgname=$pkgver")
 source=("${pkgname}-${pkgver}.tar.gz::http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-${pkgver}.tar.gz")
-sha256sums=('b7b5d8510b40a5b148f7751268712fcfd0c1ed2bb46f359f655b6fcdc53364cf')
+sha256sums=('8cfd97eae18f138ef255b88b3d8a405734d20ea1b6acaa7706980b8fd8e4ce41')
 
 build() {
   cd ${_pkgname}-$pkgver
-  ./configure --prefix=/usr --with-emf
+  ./configure --prefix=/usr --with-emf --disable-docs
   make
 }
 
