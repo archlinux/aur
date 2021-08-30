@@ -1,4 +1,4 @@
-pkgbase = ristate-git
+pkgbase = ristate
 	pkgdesc = A river-status client
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -8,11 +8,12 @@ pkgbase = ristate-git
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
+	license = MIT
 	makedepends = git
 	makedepends = rustup
 	provides = ristate
 	conflicts = ristate
-	source = ristate-git::git+https://gitlab.com/snakedye/ristate
+	source = ristate::git+https://gitlab.com/snakedye/ristate
 	sha256sums = SKIP
 
-pkgname = ristate-git
+pkgname = ristate

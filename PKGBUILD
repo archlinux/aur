@@ -1,6 +1,6 @@
 # Maintainer: Soc Virnyl S. Estela <renegan.ronin@gmail.com>
 
-pkgname=ristate-git
+pkgname=ristate
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A river-status client"
@@ -44,5 +44,5 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname}"
 }
