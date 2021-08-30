@@ -66,7 +66,7 @@ package_upp() {
   #copy source files
   mkdir -p "$pkgdir/usr/share/upp"
   msg2 "Moving the source codes..."
-  cp -r "$srcdir/upp/"{bazaar,examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
+  cp -r "$srcdir/upp/"{examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
   echo "#define IDE_VERSION \"$pkgver-Arch\"" > "$pkgdir/usr/share/upp/uppsrc/ide/version.h"
   #fix permissions
   msg2 "Setting permissions..."
@@ -74,5 +74,4 @@ package_upp() {
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644
   find "$pkgdir/usr/" -type d -print0 | xargs -0 chmod 755
 }
-
-md5sums=('c13823b454abe5084244ea86bdf0eb30')
+sha256sums=('dab76164bb34d5244f176ea5be735b71a32f3b2baf90db6766cbdd303107da84')
