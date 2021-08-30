@@ -1,6 +1,6 @@
 pkgbase = pyg600-git
 	pkgdesc = Utility program for binding actions to keys on the Logitech G600 gaming mouse
-	pkgver = 1.0.2.r9.gc43750b
+	pkgver = 1.0.2.r3.g6e26b7e
 	pkgrel = 1
 	url = https://github.com/j-waters/pyg600
 	arch = any
