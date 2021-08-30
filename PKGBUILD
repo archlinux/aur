@@ -1,4 +1,5 @@
 # Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _pkgname='Chuck_Norris'
 pkgname='chucknorris'
