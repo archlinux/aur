@@ -2,7 +2,7 @@
 
 _gemname=librarianp
 pkgname=ruby-$_gemname
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A Framework for Bundlers, used by librarian-puppet"
 arch=(any)
