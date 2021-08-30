@@ -1,0 +1,13 @@
+pkgbase = paruz
+	pkgdesc = A fzf interface terminal UI for paru or pacman
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/joehillen/paruz
+	arch = any
+	license = UNLICENSE
+	depends = bash
+	depends = fzf
+	source = paruz-1.0.0.tar.gz::https://github.com/joehillen/paruz/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = cd7b5dbe3cc70861822c6f2a5f156b3fb7505436cf4a2374439a59cfad5cf14b
+
+pkgname = paruz
