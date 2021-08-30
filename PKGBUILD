@@ -1,22 +1,25 @@
 pkgname=ntfs3-dkms-git
-_pkgver=27.0.0
-pkgver=27.0.0
-pkgrel=2
+pkgver=r29.ge8b8e97
+pkgrel=1
 pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
 url='https://github.com/Paragon-Software-Group/linux-ntfs3'
 license=('GPL2')
 depends=('dkms')
-provides=('NTFS3-MODULE' "ntfs3=${_pkgver}" "ntfs3-dkms=${_pkgver}")
+provides=('NTFS3-MODULE' 'ntfs3' 'ntfs3-dkms')
 conflicts=('ntfs3')
 options=('!strip')
+
+local rev=$(curl "https://api.github.com/repos/torvalds/linux/compare/master...Paragon-Software-Group:master" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/commits/master")
+_pkgver="r${rev}.g${sha:0:7}"
 
 source=(
     Makefile.patch
     dkms.conf
     kernel-5.12-backport.patch
     kernel-5.14-backport.patch
-    "ntfs3-v${_pkgver}.patch::https://github.com/torvalds/linux/compare/master...Paragon-Software-Group:master.diff"
+    "ntfs3-${_pkgver}.patch::https://github.com/torvalds/linux/compare/master...Paragon-Software-Group:master.diff"
 )
 
 sha512sums=(
@@ -28,15 +31,14 @@ sha512sums=(
 )
 
 pkgver() {
-    local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/commits/master")
-    echo "${_pkgver}.${sha:0:7}"
+    echo "${_pkgver}"
 }
 
 prepare() {
     mkdir -p "${_pkgver}"
     cd "${_pkgver}"
 
-    patch -p3 -t -N -i "${srcdir}/ntfs3-v${_pkgver}.patch" || true
+    patch -p3 -t -N -i "${srcdir}/ntfs3-${_pkgver}.patch" || true
 
     patch -p0 -N -i "${srcdir}/Makefile.patch"
 
