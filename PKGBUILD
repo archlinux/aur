@@ -1,4 +1,4 @@
-# Maintainer: Wellington <wellingtonwallace@gmail.com>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 pkgname=pulseeffects
 pkgver=4.3.4
 pkgrel=1
