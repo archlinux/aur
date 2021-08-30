@@ -1,4 +1,5 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: 7k5x <7k5xlp0onfire@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=headset-bin
 pkgver=3.3.3
