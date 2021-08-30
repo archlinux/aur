@@ -1,0 +1,21 @@
+pkgbase = pop-launcher
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pop-os/launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = fd
+	depends = gtk3
+	depends = libqalculate
+	source = pop-launcher-1.0.0.tar.gz::https://github.com/pop-os/launcher/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = e02eb4fa0e174aa5169461af283786e8a972a4268b823bb9c509fa3d5a5f6515
+
+pkgname = pop-launcher
+	pkgdesc = Modular IPC-based desktop launcher service
+	optdepends = pop-launcher-system76-power
+
+pkgname = pop-launcher-system76-power
+	pkgdesc = System76 Power scripts for the launcher
+	depends = pop-launcher
+	depends = system76-power
