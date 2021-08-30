@@ -1,8 +1,8 @@
-# Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
+# Maintainer: Atif Chowdhury <iftakhar.awal@gmail.com>
 pkgname=eww-git
 _pkgname=eww
 pkgver=70285e0_2021.08.27
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ElKowar's wacky widgets"
 arch=('any')
@@ -41,5 +41,19 @@ build() {
 package() {
     cd "$_pkgname"
 
-    install -D target/release/eww --target-directory "${pkgdir}/usr/bin" --mode 755
+    install -Dm755 target/release/eww "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/etc/xdg/${_pkgname}"
+    cp -r examples/eww-bar "${pkgdir}/etc/xdg/${_pkgname}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+    echo "\
+_____________________________________________________________________
+|                                                                   |
+| The example config can be found in /etc/xdg/eww                   |
+|                                                                   |
+| For better experience, please write your own config.              |
+| WIKI: https://elkowar.github.io/eww/configuration.html            |
+|                                                                   |
+|___________________________________________________________________|"
 }
+
