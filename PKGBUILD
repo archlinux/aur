@@ -2,41 +2,44 @@
 # Contributor: Fenner Macrae <fmacrae.dev at gmail dot com>
 
 pkgname=flashfocus
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc="Simple Xorg window focus animations for tiling window managers"
 url="https://www.github.com/fennerm/flashfocus"
 license=('MIT')
 arch=('any')
-depends=('python-cffi>=1.11'
-         'python-cffi<2.0.0'
-         'python-xcffib>=0.6.0'
-         'python-xcffib<1.0.0'
-         'python-click>=6.7'
-         'python-click<9.0.0'
-         'python-xpybutil>=0.0.6'
-         'python-xpybutil<1.0.0'
-         'python-marshmallow>=2.15.0'
-         'python-marshmallow<4.0.0'
-         'python-yaml>=5.1'
-         'python-yaml<6.0.0'
-         'python-i3ipc>=2.1.1'
-         'python-i3ipc<3.0.0')
+depends=(
+	'python-cffi>=1.11'
+	'python-cffi<2.0.0'
+	'python-xcffib>=0.6.0'
+	'python-xcffib<1.0.0'
+	'python-click>=6.7'
+	'python-click<9.0.0'
+	'python-xpybutil>=0.0.6'
+	'python-xpybutil<1.0.0'
+	'python-marshmallow>=2.15.0'
+	'python-marshmallow<4.0.0'
+	'python-yaml>=5.1'
+	'python-yaml<6.0.0'
+	'python-i3ipc>=2.1.1'
+	'python-i3ipc<3.0.0')
 makedepends=('python-setuptools' 'python-pytest-runner')
-optdepends=('i3-wm: compatible window manager'
-            'sway: compatible window manager'
-            'bspwm: compatible window manager'
-            'awesome: compatible window manager'
-            'xmonad: compatible window manager'
-            'picom: recommended compositor if using X-based window managers')
-# checkdepends=('python-pytest'
-#               'python-pytest-cov'
-#               'python-pytest-factoryboy'
-#               'python-pytest-runner'
-#               'python-pytest-lazy-fixture')
+optdepends=(
+	'i3-wm: compatible window manager'
+	'sway: compatible window manager'
+	'bspwm: compatible window manager'
+	'awesome: compatible window manager'
+	'xmonad: compatible window manager'
+	'picom: recommended compositor if using X-based window managers')
+# checkdepends=(
+# 	'python-pytest'
+# 	'python-pytest-cov'
+# 	'python-pytest-factoryboy'
+# 	'python-pytest-runner'
+# 	'python-pytest-lazy-fixture')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6be9cfb11370212078f6ddc81222220f2b0ae73dff3b1aaf11410536f0ef27c3')
+sha256sums=('346efca50020f7a9b96e1658c8355f25d8b5e5bfb496a2a7048940813f5c8c16')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -44,8 +47,8 @@ build() {
 }
 
 # check() {
-#   cd "$pkgname-$pkgver"
-#   pytest -v tests
+# 	cd "$pkgname-$pkgver"
+# 	python setup.py pytest
 # }
 
 package() {
