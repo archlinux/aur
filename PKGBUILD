@@ -2,7 +2,7 @@
 pkgdesc='Terminfo files for the foot terminal emulator'
 pkgname=foot-terminfo-git
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 conflicts=('foot-terminfo')
 provides=('foot-terminfo')
 arch=('any')
@@ -20,7 +20,8 @@ pkgver() {
 build() {
   cd foot
   mkdir -p build
-  tic -x -o build -e foot,foot-direct foot.info
+  sed 's/@default_terminfo@/foot/g' foot.info > build/foot.info
+  tic -x -o build -e foot,foot-direct build/foot.info
 }
 
 package() {
