@@ -3,12 +3,12 @@
 
 pkgname=dingtalk-bin
 pkgver=1.0.0.265
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://gov.dingtalk.com"
 license=("custom")
-depends=()
+depends=("glu")
 options=()
 provides=('com.alibabainc.dingtalk' 'dingtalk')
 conflicts=('com.alibabainc.dingtalk')

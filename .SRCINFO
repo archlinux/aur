@@ -1,10 +1,11 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.0.0.265
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
+	depends = glu
 	provides = com.alibabainc.dingtalk
 	provides = dingtalk
 	conflicts = com.alibabainc.dingtalk
