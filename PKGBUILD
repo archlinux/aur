@@ -1,7 +1,7 @@
 # Maintainer: Fronkles McFranko <mrelfranko@disroot.org>
 pkgname=eww-git
 _pkgname=eww
-pkgver=4f59424_2021.07.15_
+pkgver=70285e0_2021.08.27
 pkgrel=1
 epoch=
 pkgdesc="ElKowar's wacky widgets"
@@ -29,7 +29,7 @@ pkgver() {
     cd ${_pkgname}
     _commit=$(git rev-parse HEAD | cut -c1-7)
     _date=$(git log -1 --date=short --pretty=format:%cd)
-    printf "%s_%s_%s\n" "${_commit}" "${_date}" | sed 's/-/./g'
+    printf "%s_%s\n" "${_commit}" "${_date}" | sed 's/-/./g'
 }
 
 build() {
