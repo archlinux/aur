@@ -6,6 +6,7 @@ pkgbase = mingw-w64-json-glib
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-configure
+	makedepends = python
 	depends = mingw-w64-glib2>=2.38
 	options = !strip
 	options = !buildflags
@@ -14,4 +15,3 @@ pkgbase = mingw-w64-json-glib
 	sha256sums = 80f3593cb6bd13f1465828e46a9f740e2e9bd3cd2257889442b3e62bd6de05cd
 
 pkgname = mingw-w64-json-glib
-

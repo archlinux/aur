@@ -5,7 +5,7 @@ pkgdesc="JSON library built on GLib (mingw-w64)"
 arch=('any')
 url="http://live.gnome.org/JsonGlib"
 license=("GPL")
-makedepends=('mingw-w64-configure')
+makedepends=('mingw-w64-configure' 'python')
 depends=('mingw-w64-glib2>=2.38')
 options=(!strip !buildflags staticlibs)
 source=("http://ftp.gnome.org/pub/gnome/sources/json-glib/${pkgver%.*}/json-glib-${pkgver}.tar.xz")
