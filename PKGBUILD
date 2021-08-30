@@ -1,19 +1,22 @@
-# Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>,
+# Maintainer: Luís Ferreira <net dot lsferreira at contact, backwards>
+# Contributor: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
+# Contributor: GI Jack <GI_Jack@hackermail.com>
+
 pkgname=sleuthkit-java
-pkgver=4.10.2
+pkgver=4.11.0
 pkgrel=1
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
 license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
-depends=(java-environment=8 java8-openjfx sleuthkit)
+depends=(java-environment=11 java11-openjfx sleuthkit)
 makedepends=(ant)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz")
-sha512sums=('71fe5dc2311ffea50d3dcb2524fee65fe49051c1ea021b0b33c003d7c9d6fffc28db2b3258c642571c51ce79089c99e835207df8f463b6ec2a06e041e487c960')
+sha512sums=('fabaf0e7815145f82cf7d8c342d403939511afa36f29318a89212a8aa1a3465e2050629ff9e308b34cfeb3c2c98efa94f9546737cba749c075c4e583b8808580')
 
 build() {
 	cd "sleuthkit-${pkgver}"
-	
+
 	# build main program
 	aclocal
 	automake
