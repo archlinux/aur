@@ -5,14 +5,14 @@
 
 pkgname=mu-git
 pkgver=1.7.0.r5558
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
 url="http://www.djcbsoftware.nl/code/mu"
-depends=('xapian-core' 'guile' 'gmime3')
+depends=('xapian-core' 'gmime3')
 makedepends=('git' 'meson')
-optdepends=('emacs: mu4e support')
+optdepends=('emacs: mu4e support' 'guile: to script in guile')
 license=('GPL')
 provides=('mu')
 conflicts=('mu')
@@ -26,11 +26,11 @@ pkgver() {
 
 build() {
   cd mu
-  meson build
+  meson --prefix=/usr --buildtype=plain build 
   ninja -C build
 }
 
 package() {
   cd mu
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
