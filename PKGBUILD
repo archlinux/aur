@@ -1,6 +1,6 @@
 # Maintainer: Yakumo Saki <yakumo at ziomatrix dot org>
 pkgname=lambroll-bin
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=1
 epoch=
 pkgdesc="Minimal deployment tool for AWS Lambda."
@@ -21,9 +21,14 @@ install=
 changelog=
 source=("https://github.com/fujiwara/lambroll/releases/download/v${pkgver}/lambroll_v${pkgver}_linux_amd64.tar.gz")
 noextract=()
-md5sums=("e78d065124eb3ea208f0239e5f6509b0")
+md5sums=("24a608d71a880496c765fb98325bae54")
 validpgpkeys=()
-
+# TO VERSION UP 
+# 1. Edit PKGBUILD(this file) pkgver and md5sums
+#    md5sum can calculate by `md5sum target-filename.tar.gz`
+# 2. build by `makepkg -s`
+# 3. create .SRCINFO by `makepkg --printsrcinfo > .SRCINFO`
+# 4. git commit and git push
 package() {
 	_real_pkgname=lambroll
 	cd $srcdir/${_real_pkgname}_v${pkgver}_linux_amd64
