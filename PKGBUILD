@@ -9,10 +9,18 @@ url="https://github.com/FEniCS/basix"
 license=('GPL3')
 groups=('fenics-git')
 depends=('eigen' 'pybind11')
-makedepends=('python-setuptools' 'python-wheel' 'python-scikit-build' 'git' 'ninja')
+makedepends=('python-setuptools' 'python-wheel'
+'python-scikit-build' 'xtensor' 'xtensor-blas' 'git'
+'ninja')
 options=(!emptydirs)
 source=("basix::git+https://github.com/FEniCS/basix.git")
 md5sums=('SKIP')
+
+
+prepare() {
+  cd basix
+  git checkout $(git rev-list -1 --before="${pkgver:0:4}-${pkgver:4:2}-${pkgver:6:2}" main)
+}
 
 pkgver() {
     cd basix

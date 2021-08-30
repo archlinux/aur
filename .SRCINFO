@@ -10,6 +10,8 @@ pkgbase = python-basix-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-scikit-build
+	makedepends = xtensor
+	makedepends = xtensor-blas
 	makedepends = git
 	makedepends = ninja
 	depends = eigen
@@ -19,4 +21,3 @@ pkgbase = python-basix-git
 	md5sums = SKIP
 
 pkgname = python-basix-git
-
