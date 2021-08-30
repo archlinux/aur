@@ -32,7 +32,6 @@ build() {
   cd "oneTBB-${pkgver}"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cmake -G Ninja \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
     -DCMAKE_C_FLAGS=-m32 \
