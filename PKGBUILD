@@ -4,7 +4,7 @@ pkgver=5.0.4
 pkgrel=1
 pkgdesc="Audio Effects for Pipewire Applications"
 arch=(any)
-url="https://github.com/wwmm/pulseeffects"
+url="https://github.com/wwmm/easyeffects/tree/b4649e32ce0203ded66c957a05eba9150bd9b945"
 license=('GPL3')
 depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
         lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver
@@ -15,7 +15,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'mda.lv2: loudness')
 makedepends=('meson' 'boost' 'itstool')
 options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wwmm/pulseeffects/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wwmm/easyeffects/archive/v$pkgver.tar.gz")
 sha256sums=('8c8e2f4c41ca690305e7ea6132eef1d529d0463c4146dd3ffa16616ad7d53005')
 
 build() {
