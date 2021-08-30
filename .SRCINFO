@@ -1,0 +1,13 @@
+pkgbase = mint-translations-git
+	pkgdesc = Translation file for Linux Mint applications
+	pkgver = 2021.06.25
+	pkgrel = 1
+	url = https://github.com/linuxmint/mint-translations
+	arch = x86_64
+	license = GPL
+	makedepends = bash
+	makedepends = gettext
+	source = git+https://github.com/linuxmint/mint-translations.git
+	sha256sums = SKIP
+
+pkgname = mint-translations-git
