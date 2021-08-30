@@ -4,7 +4,7 @@ _pkgname=dooble
 _repourl="https://github.com/textbrowser/dooble"
 
 pkgname=dooble-bin
-pkgver=2021.08.05
+pkgver=2021.08.30
 pkgrel=1
 pkgdesc="Dooble is the scientific browser"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("Dooble-${pkgver}_amd64.deb")
 sha256sums=(
-  'afa11baecc2504ae63f9c8cd62c8a6bfbb994ff03db6e2cf0d9f2562b7163641'
+  '3d38489e51bc3e8a7690b5bd21302e0b320194479e62496e3f0c597366806557'
   'c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
 )
 

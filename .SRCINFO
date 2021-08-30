@@ -1,6 +1,6 @@
 pkgbase = dooble-bin
 	pkgdesc = Dooble is the scientific browser
-	pkgver = 2021.08.05
+	pkgver = 2021.08.30
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = dooble-bin
 	depends = libxrandr
 	depends = nss
 	conflicts = dooble
-	noextract = Dooble-2021.08.05_amd64.deb
+	noextract = Dooble-2021.08.30_amd64.deb
 	options = !strip
-	source = https://github.com/textbrowser/dooble/releases/download/2021.08.05/Dooble-2021.08.05_amd64.deb
-	source = LICENSE-2021.08.05::https://github.com/textbrowser/dooble/raw/2021.08.05/LICENSE
-	sha256sums = afa11baecc2504ae63f9c8cd62c8a6bfbb994ff03db6e2cf0d9f2562b7163641
+	source = https://github.com/textbrowser/dooble/releases/download/2021.08.30/Dooble-2021.08.30_amd64.deb
+	source = LICENSE-2021.08.30::https://github.com/textbrowser/dooble/raw/2021.08.30/LICENSE
+	sha256sums = 3d38489e51bc3e8a7690b5bd21302e0b320194479e62496e3f0c597366806557
 	sha256sums = c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd
 
 pkgname = dooble-bin
