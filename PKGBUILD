@@ -1,15 +1,15 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs-charmm36
-pkgver=202007
+pkgver=202102
 pkgrel=1
 pkgdesc='CHARMM36 force field in GROMACS format.'
 url='http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs'
 license=("GPL")
 arch=('any')
 depends=("gromacs")
-source=(http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-jul2020.ff.tgz)
-sha256sums=('58a9fccc1ebecac09d8f38a87c737212381c3b421bdc1281e882a692b4022364')
+source=(http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-feb2021.ff.tgz)
+sha256sums=('480637fddcf47d900d7dcf8240cc8fbcde4178e988913c95126cbfed99775ce9')
 
 
 package() {
