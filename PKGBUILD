@@ -11,7 +11,7 @@ url="https://github.com/ldc-developers/ldc"
 license=('BSD')
 groups=('dlang' 'dlang-ldc')
 depends=('ldc' 'lib32-curl' 'lib32-gcc-libs')
-makedepends=('git' 'llvm' 'libconfig' 'cmake' 'ninja')
+makedepends=('cmake' 'git' 'llvm' 'libconfig' 'ninja')
 provides=("d-runtime" "d-stdlib")
 replaces=("lib32-liblphobos-devel")
 source=("${url}/releases/download/v${pkgver}/ldc-${pkgver}-src.tar.gz")
@@ -21,7 +21,7 @@ build() {
   mkdir -p ldc-$pkgver-src/build
   cd ldc-$pkgver-src/build
 
-  cmake -GNinja\
+  cmake -GNinja \
     -DMULTILIB=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
