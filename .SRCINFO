@@ -1,0 +1,22 @@
+pkgbase = tkp-git
+	pkgdesc = Simple titlebar color changer for KDE
+	pkgver = r18.ec425c8
+	pkgrel = 1
+	url = https://github.com/siggsy/Tkp
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = xorg-xprop
+	depends = kcolorchooser
+	depends = bc
+	depends = xorg-server
+	depends = breeze
+	depends = kwin
+	depends = kconfig
+	depends = qt5-tools
+	provides = tkp
+	conflicts = tkp
+	source = tkp::git+https://github.com/siggsy/Tkp
+	md5sums = SKIP
+
+pkgname = tkp-git
