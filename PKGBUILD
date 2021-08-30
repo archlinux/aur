@@ -36,6 +36,6 @@ package() {
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
-    install -Dm644 "src/unix/creekey.service" "${pkgdir}/usr/lib/systemd/system/creekey.service"
+    install -Dm644 "src/unix/creekey.service" "${pkgdir}/usr/lib/systemd/user/creekey.service"
 }
 sha256sums=('SKIP')
