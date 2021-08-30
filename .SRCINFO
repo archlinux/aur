@@ -1,7 +1,7 @@
 pkgbase = timetrace
 	pkgdesc = A simple time-tracking CLI tool
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dominikbraun/timetrace
 	install = timetrace.install
 	changelog = CHANGELOG.md

@@ -2,7 +2,7 @@
 
 pkgname=timetrace
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple time-tracking CLI tool"
 arch=('x86_64')
 url="https://github.com/dominikbraun/timetrace"
@@ -23,7 +23,10 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	go build -o "$pkgname"
+	go build -o "$pkgname" -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X main.version=$pkgver"
+	"./$pkgname" completion bash > "$pkgname.sh"
+	"./$pkgname" completion zsh > "_$pkgname"
+	"./$pkgname" completion fish > "$pkgname.fish"
 }
 
 check() {
@@ -40,7 +43,9 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm 644 completion/bash/timetrace.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm 644 "$pkgname.sh" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm 644 "_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -Dm 644 "$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
