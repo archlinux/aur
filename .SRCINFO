@@ -1,9 +1,10 @@
 pkgbase = wayward-git
 	pkgdesc = Fast GTK shell and compositor for wayland and weston.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/varmd/wayward
-	arch = any
+	arch = x86_64
+	license = GPL
 	makedepends = wayland
 	makedepends = gcc
 	depends = weston
