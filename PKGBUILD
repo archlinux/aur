@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=4
+pkgrel=5
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -25,8 +25,9 @@ _bintarget=$_installdir/$_appimage
 _iconssrc=squashfs-root/usr/share/icons/
 
 prepare() {
-  echo Making AppImage executable...
-  chmod +x "$_appimage"
+  cd $srcdir
+	echo Making AppImage executable...
+  chmod +x $_appimage
 
   echo Extracting AppImage...
   ./$_appimage --appimage-extract $_desktopfilesrc
