@@ -1,0 +1,16 @@
+pkgbase = eww-wayland-git
+	pkgdesc = ElKowar's wacky widgets (Wayland Only)
+	pkgver = 70285e0_2021.08.27
+	pkgrel = 1
+	url = https://github.com/elkowar/eww
+	arch = any
+	license = MIT
+	makedepends = rustup
+	makedepends = git
+	depends = gtk3
+	provides = eww
+	conflicts = eww
+	source = git+https://github.com/elkowar/eww
+	md5sums = SKIP
+
+pkgname = eww-wayland-git
