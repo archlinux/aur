@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libssh
 	pkgdesc = Library for accessing ssh client services through C libraries (mingw-w64)
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://www.libssh.org/
 	arch = any
@@ -17,15 +17,14 @@ pkgbase = mingw-w64-libssh
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz
-	source = https://www.libssh.org/files/0.9/libssh-0.9.5.tar.xz.asc
+	source = https://www.libssh.org/files/0.9/libssh-0.9.6.tar.xz
+	source = https://www.libssh.org/files/0.9/libssh-0.9.6.tar.xz.asc
 	source = mingw-pkgconfig.patch
 	source = staticlibfix.patch
 	validpgpkeys = 8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D
-	sha256sums = acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718
+	sha256sums = 86bcf885bd9b80466fe0e05453c58b877df61afa8ba947a58c356d7f0fab829b
 	sha256sums = SKIP
 	sha256sums = 10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1
 	sha256sums = befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8
 
 pkgname = mingw-w64-libssh
-
