@@ -1,7 +1,7 @@
 _pkgname=pyg600
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=1.0.2.r3.g6e26b7e
+pkgver=1.0.2.r5.g235b2d5
 pkgdesc="Utility program for binding actions to keys on the Logitech G600 gaming mouse"
 url="https://github.com/j-waters/pyg600"
 depends=('python-click'
@@ -9,7 +9,7 @@ depends=('python-click'
          'python-evdev'
          'python-pyxdg')
 makedepends=('git' 'python-setuptools')
-conflicts=()
+conflicts=('pyg600')
 provides=('pyg600')
 license=('MIT')
 arch=('any')
