@@ -2,6 +2,7 @@
 
 docker run \
     --rm \
+    --platform linux/amd64 \
     -v $(pwd):/srv \
     --entrypoint /usr/bin/bash \
     --workdir /srv \
