@@ -2,11 +2,12 @@
 
 _pkgname=rivercarro
 pkgname=$_pkgname-git
-pkgver=r9.62d158a
+pkgver=r17.4f714a5
 pkgrel=1
 pkgdesc="A slightly modified version of rivertile layout generator for river."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://git.sr.ht/~novakane/rivercarro"
+license=('GPL3')
 makedepends=('git' 'zig')
 source=(
     "${pkgname}::git+https://git.sr.ht/~novakane/rivercarro"
