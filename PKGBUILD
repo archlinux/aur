@@ -33,7 +33,7 @@ prepare() {
 	./$_appimage --appimage-extract $_iconssrc
 
   echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=$_exec+" "$_desktopfilesrc"
+  sed -i "s+Exec=AppRun+Exec=$_exec+" $_desktopfilesrc
 }
 
 package() {
