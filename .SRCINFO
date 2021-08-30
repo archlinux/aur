@@ -5,6 +5,7 @@ pkgbase = zorin-desktop-themes
 	url = https://github.com/ZorinOS/zorin-desktop-themes
 	arch = any
 	license = GPL2
+    depends = gtk-engine-murrine
 	provides = zorin-desktop-themes
 	conflicts = zorin-desktop-themes-git
 	source = zorin-desktop-themes-3.3.3.tar.gz::https://github.com/ZorinOS/zorin-desktop-themes/archive/3.3.3.tar.gz
