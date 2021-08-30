@@ -21,6 +21,7 @@ pkgver() {
 }
 
 package() {
-    cd "${pkgname}"
-    DESTDIR="$pkgdir" PREFIX=/usr ./install.sh
+  cd "${pkgname}"
+  DESTDIR="$pkgdir" PREFIX=/usr ./install.sh
+  cp -r ./libalpm /usr/share/
 }
