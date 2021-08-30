@@ -5,7 +5,7 @@
 pkgname=python-ansi
 _pkgname=ansi
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
 url='https://github.com/tehmaze/ansi'
@@ -39,6 +39,8 @@ package() {
   cd "$srcdir/$_pkgname-$_pkgname-$pkgver" || exit 1
 
   python setup.py install --root="$pkgdir/" --optimize=1
+
+  install -Dm0644 README.md  "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
