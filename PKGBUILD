@@ -1,8 +1,9 @@
-# Maintainer: Wouter Wijsman <wwijsman@live.nl>
+# Maintainer: Malcolm Mallardi <mdmallardi at gmail dot com>
+# Contributor: Wouter Wijsman <wwijsman at live dot nl>
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.77.0.alpha.689.g76375c2d
+pkgver=0.78.0.alpha.258.gf8fecfda
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
