@@ -1,9 +1,8 @@
 pkgbase = python-cvxcanon
 	pkgdesc = C++ library to convert high-level optimization problems into canonical form.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/cvxgrp/CVXcanon
-	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = python-setuptools
@@ -12,10 +11,9 @@ pkgbase = python-cvxcanon
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = https://github.com/cvxgrp/CVXcanon/archive/v0.1.1.tar.gz
+	source = https://github.com/cvxgrp/CVXcanon/archive/v0.1.2.tar.gz
 	source = use_system_eigen.patch
-	md5sums = ea900f44c30596d96999aa61eab89f08
-	md5sums = ee7c698d9fb8bdd767c96015850a6869
+	sha256sums = cf5a506258d9acadfec83529d175027bd9b7c821702c6f28b1eea7cbd61d842b
+	sha256sums = 9bf618a0634bbe855ec67dd0e2b9c1f32528297a5316ec7b0b302932f4de544f
 
 pkgname = python-cvxcanon
-

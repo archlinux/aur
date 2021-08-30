@@ -1,7 +1,6 @@
-pkgbase=('python-cvxcanon')
-pkgname=('python-cvxcanon')
+pkgname='python-cvxcanon'
 _module='CVXcanon'
-pkgver='0.1.1'
+pkgver='0.1.2'
 pkgrel=1
 pkgdesc="C++ library to convert high-level optimization problems into canonical form."
 url="https://github.com/cvxgrp/CVXcanon"
@@ -12,11 +11,11 @@ makedepends=('python-setuptools'
     'swig'
     'eigen')
 license=('unknown')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 source=("https://github.com/cvxgrp/CVXcanon/archive/v${pkgver}.tar.gz"
     "use_system_eigen.patch")
-md5sums=('ea900f44c30596d96999aa61eab89f08'
-         'ee7c698d9fb8bdd767c96015850a6869')
+sha256sums=('cf5a506258d9acadfec83529d175027bd9b7c821702c6f28b1eea7cbd61d842b'
+            '9bf618a0634bbe855ec67dd0e2b9c1f32528297a5316ec7b0b302932f4de544f')
 
 prepare() {
     cd "${srcdir}/${_module}-${pkgver}"
