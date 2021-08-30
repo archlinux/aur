@@ -3,13 +3,12 @@
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms"
 pkgver=v4.3.0.8_13968
-pkgrel=15
+pkgrel=16
 pkgdesc='Driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
 url='http://www.realtek.com.tw/'
 license=('GPL')
 depends=('dkms')
-install="${pkgname}.install"
 source=("https://www.dropbox.com/s/afs5d2yfgwurqm2/${_pkgname}-${pkgver}.tar.xz?dl=1"
         blacklist-r8188eu.conf
         date_time_macro.patch
