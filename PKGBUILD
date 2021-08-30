@@ -7,32 +7,49 @@
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
+
 # Enable fsync
 _fsync=y
+
 #enable futex2
 _futex2=
+
 #enable winesync
 _winesync=y
+
 ### Set performance governor as default
 _per_gov=y
+
+### Disable MQ-Deadline I/O scheduler
+_mq_deadline_disable=y
+
+### Disable Kyber I/O scheduler
+_kyber_disable=y
+
 ### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
 _2k_HZ_ticks=
 _1k_HZ_ticks=y
 _500_HZ_ticks=
+
 ### Enable protect file mappings under memory pressure
 _mm_protect=y
 _lru_enable=y
+
 ### Enable Linux Random Number Generator
 _lrng_enable=y
+
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
+
 ## Setting some security options
 use_selinux=n
 use_tomoyo=n
 use_yama=n
 use_apparmor=
+
 ## Apply Kernel automatic Optimization
-_use_optimization=y
+_use_auto_optimization=y
+
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
 
@@ -58,40 +75,50 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets'
+pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/hamadmarri/cacule-cpu-scheduler"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'llvm' 'llvm-libs' 'lld')
 _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/CacULE"
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.14"
-source=(#"https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
-        "https://github.com/torvalds/linux/archive/refs/tags/v5.14.tar.gz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
+        "${_patchsource}/arch-patches/0001-arch-patches.patch"
         "${_caculepatches}/v5.14/cacule-5.14.patch"
-        "${_patchsource}/0001-bbr2.patch"
-        "${_patchsource}/0001-lrng.patch"
         "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0009-compiler-remove-stale-cc-option-checks.patch"
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
+        "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+        "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
+        "${_patchsource}/block-patches/0001-block-patches.patch"
+     #   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+ #       "${_patchsource}/futex2-trunk-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}//lqx-patches/0001-lqx-patches.patch"
+        "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
+        "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure.patch"
+        "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
+        "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
+        "${_patchsource}/zen-patches/0001-zen-patches.patch"
+        "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
+        "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
+        "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
-        "${_patchsource}/0001-misc.patch"
-        "${_patchsource}/0001-zstd.patch"
-        "${_patchsource}/0001-mm.patch"
         "${_patchsource}/0001-ksm.patch"
-        "${_patchsource}/0001-ntfs3.patch"
-        "${_patchsource}/0001-clearlinux-patches.patch"
 	      "auto-cpu-optimization.sh"
-      )
+        )
 BUILD_FLAGS=(
+  LLVM=1
+  LLVM_IAS=1
             )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -124,7 +151,7 @@ prepare() {
           cp ../config .config
 
       ### Microarchitecture Optimization (GCC/CLANG)
-            if [ -n "$_use_optimization" ]; then
+            if [ -n "$_use_auto_optimization" ]; then
               sh "${srcdir}"/auto-cpu-optimization.sh
             fi
             if [ -n "$_use_optimization_select" ]; then
@@ -189,6 +216,17 @@ prepare() {
               scripts/config --disable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
             fi
 
+            ### Disable MQ-Deadline I/O scheduler
+        	   if [ -n "$_mq_deadline_disable" ]; then
+        		   echo "Disabling MQ-Deadline I/O scheduler..."
+        		   scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
+        	   fi
+
+            ### Disable Kyber I/O scheduler
+        	   if [ -n "$_kyber_disable" ]; then
+        		   echo "Disabling Kyber I/O scheduler..."
+        		   scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
+        	   fi
 
             ### Enable protect file mappings under memory pressure
             if [ -n "$_mm_protect" ]; then
@@ -281,7 +319,7 @@ prepare() {
               scripts/config --enable CONFIG_DEFAULT_BBR2
               scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
               echo "Enable VHBA-Module"
-#              scripts/config --module CONFIG_VHBA
+              scripts/config --module CONFIG_VHBA
               ### Enabling ZSTD COMPRESSION ##
               echo "Set module compression to ZSTD"
               scripts/config --enable CONFIG_MODULE_COMPRESS
@@ -360,7 +398,6 @@ package_linux-cacule-rdb() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=()
 
   cd "${srcdir:?}/linux-${pkgver}" || (
     echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Package linux kernel failed! \E[0m"
@@ -474,22 +511,29 @@ package_linux-cacule-rdb-headers() {
 
 }
 
-md5sums=('e336de8258a23bbe3f116d43a9dacc55'
-         'b1c809a73de8624151ccdf0c7cd81918'
+md5sums=('a082ef5748b813abca0649dab8be5f52'
+         '083ccda341dc8ae299b2e75ef3f2195a'
+         'b961add2e3ea53ade755148169c00e6e'
          'd92c43182698243cd13d32376cec0f23'
-         '422fe01f2e2b1ba1c2b9174fa1a75e40'
-         '0e4c45e8449717a7a9324c1fe00d55a8'
          'a804260e2f301ffe2a17d6e3625a9711'
          '50868332310ae198428861fb7e743d5e'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
+         'a0285c065b902ca625119e4ad43cbab4'
+         '196d6ac961497aa880264b83160eb140'
+         'a3f2cbf318dd2a63af9673f9e34e7125'
+         '232e0f8b6083fad96413552fb5af2d15'
+         '6787c78ba3e7b0a34fbba9c50da7e3b4'
+         '3cf036429a7c962005a344e10a568d7b'
+         '8edec54f500ecb2ff705c2a9f32e0560'
+         '30a7be161ab863c46e5ad55796d06a29'
+         'd8dabbce9beb2278ecb7d2c349135949'
+         'e10e4abeba2d16db591846337589ac31'
+         'fe00e09708cbbeb15e348e36ab881696'
+         '0553f660f2399549ed17b6d2ca4e930e'
+         'f2fc75c542ca63e5ee1f0bb48e7e47f9'
          'bb22330e270bf36ccf53cb04d6b496d2'
-         '9573b92353399343db8a691c9b208300'
+         '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
-         '8d74bee9dc3bbd0bed98180fcd09b4d5'
-         '52d324bcca2b2c41c739e257d5c6fd6e'
-         '49e7e05cc842b1bb2fb79c568a7b649c'
          '566435a0444ee45816599f2e0e362c7a'
-         'dfdf6c73b4f498b348fa16f10a3bcd09'
-         '54f750c0e08b4e5b51a49c494a6891d6'
          '7cf0b5c39d16da18451d1e7e7523d992')
