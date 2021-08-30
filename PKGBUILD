@@ -8,8 +8,12 @@ url="http://oscomp.hu"
 license=('unknown')
 depends=('gtk2')
 makedepends=('xz')
-source=("http://oscomp.hu/depot/${pkgname}_linux_${arch}.xz" 'http://oscomp.hu/depot/ytfe.png' 'local://ytfe.desktop')
-sha256sums=('a23d79298bee389742c2a433251db57951413568452198f53c0d9a4edb39826d' '29220d99cb0e33675e2d349a023eea0877a3befefc61b19f4d901db29f7d1698' '44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae')
+source=('http://oscomp.hu/depot/ytfe.png' 'local://ytfe.desktop')
+source_x86_64=('http://oscomp.hu/depot/ytfe_linux_x86_64.xz')
+source_i686=('http://oscomp.hu/depot/ytfe_linux_i686.xz')
+sha256sums=( '29220d99cb0e33675e2d349a023eea0877a3befefc61b19f4d901db29f7d1698' '44bc1c569ae7829e65bc5ec3525ad260a2dc64d340da0f9912c4395552134eae')
+sha256sums_x86_64=('a23d79298bee389742c2a433251db57951413568452198f53c0d9a4edb39826d')
+sha256sums_i686=('2ed9acd0c57a7e713245695311c846d5377fc1fc91e620c87b5aa29c43c0f700')
 optdepends=('youtube-dl: default downloader' 
 	'mpv: default player'
 	'vlc: compatible video player')
