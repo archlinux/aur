@@ -3,7 +3,7 @@
 # Contributor: angelsl
 _pkgbase=r8168
 pkgname=${_pkgbase}-dkms
-pkgver=8.048.03
+pkgver=8.049.02
 pkgrel=1
 pkgdesc="A kernel module for Realtek 8168 network cards (DKMS version)"
 url="https://github.com/simonbcn/r8168-dkms"
@@ -12,8 +12,8 @@ arch=('i686' 'x86_64')
 depends=('glibc' 'dkms')
 makedepends=('git')
 conflicts=("${pkgname}")
-source=("r8168-dkms::git+https://github.com/simonbcn/r8168-dkms.git"
-        dkms.conf)
+source=("r8168-dkms::git+https://github.com/mtorromeo/r8168.git"
+        "dkms.conf")
 install=r8168-dkms.install
 
 package() {
