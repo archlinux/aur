@@ -3,7 +3,7 @@
 pkgname=gplates-deb
 pkgver=2.2
 pkgrel=1
-pkgdesc="GPlates AppImage (from the Ubuntu Xenial .deb)"
+pkgdesc="GPlates - a plate tectonics program. Built as an AppImage from the Xenial deb"
 arch=('x86_64')
 url="https://www.gplates.org"
 license=('GPL2')

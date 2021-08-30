@@ -1,5 +1,5 @@
 pkgbase = gplates-deb
-	pkgdesc = GPlates AppImage (from the Ubuntu Xenial .deb)
+	pkgdesc = GPlates - a plate tectonics program. Built as an AppImage from the Xenial deb
 	pkgver = 2.2
 	pkgrel = 1
 	url = https://www.gplates.org
