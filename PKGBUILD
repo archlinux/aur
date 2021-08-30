@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=1
+pkgrel=2
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -23,16 +23,18 @@ _desktopfile=QMPlay2.desktop
 _desktopfilesrc=squashfs-root/$_desktopfile
 _installdir=/opt/$pkgname
 _bintarget=$_installdir/$_appimage
+_iconssrc=squashfs-root/usr/share/icons/
 
 prepare() {
   echo Making AppImage executable...
   chmod +x "$_appimage"
 
   echo Extracting AppImage...
-  ./$_appimage --appimage-extract
+  ./$_appimage --appimage-extract $_desktopfilesrc
+	./$_appimage --appimage-extract $_iconssrc
 
   echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=$_bintarget+" "$_desktopfilesrc"
+  sed -i "s+Exec=AppRun+Exec=APPIMAGELAUNCHER_DISABLE=true $_bintarget+" "$_desktopfilesrc"
 }
 
 package() {
