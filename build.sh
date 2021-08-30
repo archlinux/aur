@@ -3,6 +3,7 @@
 docker run \
     --rm \
     -v $(pwd):/srv \
+    --platform linux/amd64 \
     --entrypoint /usr/bin/bash \
     --workdir /srv \
     docker.io/archlinux -c '\
