@@ -1,0 +1,15 @@
+pkgbase = nelua-git
+	pkgdesc = The Nelua programming language
+	pkgver = 0.2.0.r1276.dc245ba
+	pkgrel = 1
+	url = https://nelua.io/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	provides = nelua
+	conflicts = nelua
+	source = git+https://github.com/edubart/nelua-lang.git
+	sha1sums = SKIP
+
+pkgname = nelua-git
