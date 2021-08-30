@@ -3,7 +3,7 @@
 
 pkgname=upower-nocritical
 _pkgname=upower
-pkgver=0.99.11
+pkgver=0.99.12
 pkgrel=1
 pkgdesc="Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)"
 arch=('i686' 'x86_64')
@@ -14,16 +14,11 @@ makedepends=('intltool' 'docbook-xsl' 'gobject-introspection' 'python2' 'git' 'g
 provides=('upower')
 conflicts=('upower')
 backup=('etc/UPower/UPower.conf')
-_commit=e1548bba61206a05bbc318b3d49ae24571755ac6  # tags/UPOWER_0_99_11^0
-source=("git+https://gitlab.freedesktop.org/upower/upower.git#commit=$_commit"
+_tag=$(echo "UPOWER_$pkgver" | sed -e "s/\./_/g")
+source=("git+https://gitlab.freedesktop.org/upower/upower.git#tag=$_tag"
         0001-Add-a-critical-action-Ignore.patch)
 md5sums=('SKIP'
          '69fbeb7e5906a59fd39f702d01f83815')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed -e 's/UPOWER_//' -e 's/_/\./g' -e 's/-/+/g'
-}
 
 prepare() {
   cd $_pkgname
