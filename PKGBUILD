@@ -1,52 +1,62 @@
-# Maintainer: peterix@gmail.com
+# Maintainer: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=multimc-git
-pkgver=0.6.12.r148.g7921f47e
+pkgver=0.4.7.r1347.g23442442
 pkgrel=1
-pkgdesc="Free, open source launcher and instance manager for Minecraft."
+pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
-url="http://multimc.org/"
+url="https://multimc.org/"
 license=('Apache')
-depends=('zlib' 'libgl' 'qt5-base' 'qt5-x11extras' 'java-runtime' 'qt5-svg' 'xorg-xrandr')
-makedepends=('git' 'cmake' 'qt5-tools' 'qt5-x11extras' 'jdk8-openjdk')
-conflicts=('multimc' 'multimc5' 'multimc5-git')
-provides=('multimc' 'multimc5' 'multimc5-git')
-replaces=('multimc5-git')
-source=("$pkgname"::"git://github.com/MultiMC/MultiMC5.git")
-sha512sums=('SKIP')
+depends=('zlib' 'libgl' 'qt5-base' 'java-runtime')
+provides=('multimc')
+conflicts=('multimc' 'multimc5' 'multimc5-bin')
+makedepends=('cmake' 'java-environment')
+optdepends=('mcedit: Allows editing of minecraft worlds'
+            'visualvm: Profiling support'
+            'xorg-xrandr: for older minecraft versions'
+            'openal: to use system OpenAL libraries'
+            'glfw: to use system GLFW libraries'
+)
+source=("git+https://github.com/MultiMC/MultiMC5"
+"git+https://github.com/MultiMC/libnbtplusplus"
+"git+https://github.com/MultiMC/quazip"
+)
+
+sha512sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd MultiMC5
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
-  git submodule update --init
+cd "${srcdir}/MultiMC5"
+git submodule init
+git config submodule.libnbtplusplus.url "${srcdir}/libnbtplusplus"
+git config submodule.quazip.url "${srcdir}/quazip"
+git submodule update
 }
 
 build() {
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
-  cd "$srcdir/$pkgname"
-
+  cd "${srcdir}/MultiMC5"
   mkdir -p build
+
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DMultiMC_LAYOUT=lin-system \
-        -DMultiMC_NOTIFICATION_URL:STRING=https://files.multimc.org/notifications.json \
-        ..
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DMultiMC_LAYOUT=lin-system ..
   make
 }
 
 check() {
-  cd "$srcdir/$pkgname/build"
+  cd "${srcdir}/MultiMC5/build"
   make test
 }
 
 package() {
- cd "$srcdir/$pkgname/build"
- make install DESTDIR="$pkgdir"
- install -D $srcdir/$pkgname/launcher/resources/multimc/scalable/multimc.svg $pkgdir/usr/share/pixmaps/multimc.svg
- install -D $srcdir/$pkgname/launcher/package/linux/multimc.desktop $pkgdir/usr/share/applications/multimc.desktop
+  cd "${srcdir}/MultiMC5/build"
+  make install DESTDIR="${pkgdir}"
+  install -D "${srcdir}/MultiMC5/launcher/resources/multimc/scalable/multimc.svg" "${pkgdir}/usr/share/pixmaps/multimc.svg"
+  install -D "${srcdir}/MultiMC5/launcher/package/linux/multimc.desktop" "${pkgdir}/usr/share/applications/multimc.desktop"
+  install -D "${srcdir}/MultiMC5/build/libMultiMC_quazip.so" "${pkgdir}/usr/lib/libMultiMC_quazip.so"
+  install -D "${srcdir}/MultiMC5/build/libMultiMC_nbt++.so" "${pkgdir}/usr/lib/libMultiMC_nbt++.so"
 }
+
