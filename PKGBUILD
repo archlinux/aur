@@ -45,11 +45,4 @@ build () {
 package () {
 	cd "$srcdir/$_bpn"
 	make "DESTDIR=$pkgdir" install
-
-	# Fix incorrect location for systemd file
-	mkdir -p "$pkgdir/usr/lib/systemd/system"
-	mv "$pkgdir"/etc/systemd/system/diod.service "$pkgdir"/usr/lib/systemd/system
-	rmdir "$pkgdir/etc/systemd/system"
-	rmdir "$pkgdir/etc/systemd"
-
 }
