@@ -1,0 +1,12 @@
+pkgbase = editasroot
+	pkgdesc = Edit a file that requires root access
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/maandree/editasroot
+	arch = x86_64
+	license = custom:ISC
+	depends = asroot
+	source = editasroot-1.0.tar.gz::https://github.com/maandree/editasroot/archive/1.0.tar.gz
+	sha256sums = 6d1a2c1ab44dd0c545c64b61ddea3224023132c3dcf1f3e11c61e297b9bab86c
+
+pkgname = editasroot
