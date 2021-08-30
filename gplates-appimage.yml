@@ -1,0 +1,17 @@
+app: gplates
+ingredients:
+  dist: xenial
+  sources:
+    - deb http://archive.ubuntu.com/ubuntu/ xenial main universe
+script:
+  - # create desktop and image files
+  - cat > gplates.desktop <<EOF
+  - [Desktop Entry]
+  - Type=Application
+  - Name=GPlates
+  - Icon=gplates
+  - Exec=gplates
+  - Categories=Science;DataVisualization;Geography;Geoscience;Qt;
+  - StartupNotify=true
+  - EOF
+  - cp $(realpath ../gplates.png) .

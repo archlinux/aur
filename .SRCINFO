@@ -1,0 +1,24 @@
+pkgbase = gplates-deb
+	pkgdesc = GPlates AppImage (from the Ubuntu Xenial .deb)
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://www.gplates.org
+	arch = x86_64
+	license = GPL2
+	makedepends = dpkg
+	makedepends = imagemagick
+	makedepends = wget
+	makedepends = desktop-file-utils
+	options = !strip
+	source = gplates.sh
+	source = gplates-appimage.yml
+	source = gplates.png
+	source = https://raw.githubusercontent.com/AppImage/pkg2appimage/master/pkg2appimage
+	source = https://sourceforge.net/projects/gplates/files/gplates/2.2/gplates-ubuntu-xenial_2.2_1_amd64.deb
+	md5sums = 5f40760e7d3448a413354bbdcb72e529
+	md5sums = 2ec83c32d7c3ac889097e2835188ad58
+	md5sums = 4476faf94d5d8c919aeaa34aa0b2ed04
+	md5sums = 29b5588e48f5705029ab3e954d16e40b
+	md5sums = 6ab1bd1d080e3a5815e2a282b33909a9
+
+pkgname = gplates-deb
