@@ -1,5 +1,6 @@
 # Maintainer:linlinger <linyx@stp.net.cn>
 
+pkgbase=mint-translations-git
 pkgname=mint-translations-git
 _pkgname=mint-translations
 pkgver=2021.06.25
