@@ -3,7 +3,7 @@
 _pkgname=qmplay2
 pkgname=$_pkgname-appimage
 pkgver=21.06.07
-pkgrel=5
+pkgrel=6
 _srcpkgver=$pkgver-1
 _appimage=${_pkgname}-${pkgver}.AppImage
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -25,16 +25,15 @@ _bintarget=$_installdir/$_appimage
 _iconssrc=squashfs-root/usr/share/icons/
 
 prepare() {
-  cd $srcdir
 	echo Making AppImage executable...
-  chmod +x $_appimage
+  chmod +x $srcdir/$_appimage
 
   echo Extracting AppImage...
   ./$_appimage --appimage-extract $_desktopfilesrc
 	./$_appimage --appimage-extract $_iconssrc
 
   echo Fixing desktop file
-  sed -i "s+Exec=AppRun+Exec=$_exec+" $_desktopfilesrc
+  sed -i "s+Exec=AppRun+Exec=$_exec+" $srcdir/$_desktopfilesrc
 }
 
 package() {
