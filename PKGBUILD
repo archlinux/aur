@@ -5,14 +5,14 @@ pkgdesc='Go implementation of a Telegram <=> IRC bridge for use with any IRC cha
 arch=(any)
 url='https://github.com/RITlug/teleirc'
 _branch='master'
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 license=('GPL3')
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('37a1a70e8d9dfcd296382647aac882ee24517f1d084b05877713cff226c0c299')
-sha512sums=('ef9877f39f9e5ec8acbdc37783d8e459b49f8c477606ef14d6ead27af321e7e8bb2dff5bf27b14312b1cb30ee8f77a5272026f301ea1c46519dca73d83950367')
-b2sums=('1f34d181f32eebecde22830e0c988b9777014ed53f2b84ef3604cf1a5be320df36ecb652d9f7f714926594a1e6fdfd3a4e2a201410052125c8294638067a0591')
+sha256sums=('63c870e4a1f1c0625ee7afa0f4bac084429d58da73c106a32ffd74ef609e1310')
+sha512sums=('161c7f7b19a0d4e21f5aaf33d3f99eb1bfdbf9c2a591dfda456d932825408b2cbddd630f762512eb8a27a3b8c6ed676d608afa2a8e0817cf80ad684dc080eaa9')
+b2sums=('8fd9c0aa66c94eabc919093df2bc5f4d2ef1ed4b16bba5c283f2d5de22e25f9d642219ef84216bb2ba016e0145728664c15b3522452f85d7a775731df6e861c6')
 provides=($pkgname)
 conflicts=($pkgname)
 
