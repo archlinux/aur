@@ -1,6 +1,6 @@
 pkgbase = river-tag-overlay-git
 	pkgdesc = A tool for the river Wayland compositor that will show a pop-up with symbolic information about the currently focused and occupied tags whenever the tag focus changes.
-	pkgver = r19.4944740
+	pkgver = r20.0f430b4
 	pkgrel = 1
 	url = https://git.sr.ht/~leon_plickat/river-tag-overlay
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = river-tag-overlay-git
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
+	license = GPL3
 	makedepends = make
 	makedepends = git
 	makedepends = pkgconf
