@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
 arch=('any')
@@ -23,7 +23,7 @@ backup=("etc/conf.d/cardano-node"
         "var/lib/cardano-node/config/mainnet-topology.json"
         "var/lib/cardano-node/config/testnet-config.json"
         "var/lib/cardano-node/config/testnet-topology.json")
-source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
+source=("git+https://github.com/input-output-hk/${pkgname}.git#tag=${pkgver}"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-config.json"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-byron-genesis.json"
         "https://hydra.iohk.io/build/${_config_build}/download/1/mainnet-shelley-genesis.json"
@@ -40,7 +40,7 @@ source=("https://github.com/input-output-hk/${pkgname}/archive/${pkgver}.zip"
         "cardano-node.confd"
         "cardano-node-testnet.service"
         "cardano-node-testnet.confd")
-sha256sums=('b1506ac16cd83aa95f04b690b7a887d571c7b0eb81a8071fa1b1b0d3fd7310d2'
+sha256sums=('SKIP'
             '0f792ea782fb82e0842a97075aa9cd5d504cd60cd778bef34b5ca0689e57ff56'
             '4f28b3b437b2c4f6ee26cc70964b3a5f1a274b0b3909c31535091c00316c13aa'
             '59cd3932c6dd792bc5020ca3336064a8faabde4e4a8dc7d143ff4df6eec36961'
@@ -59,16 +59,16 @@ sha256sums=('b1506ac16cd83aa95f04b690b7a887d571c7b0eb81a8071fa1b1b0d3fd7310d2'
             '07a3dde7fb51f3f84bb51e7c15993dfefa337571ed509cc3588e73c54f606282')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   cabal configure
-  echo "package cardano-crypto-praos" >> ${srcdir}/${pkgname}-${pkgver}/cabal.project.local
-  echo "  flags: -external-libsodium-vrf" >> ${srcdir}/${pkgname}-${pkgver}/cabal.project.local
+  echo "package cardano-crypto-praos" >> ${srcdir}/${pkgname}/cabal.project.local
+  echo "  flags: -external-libsodium-vrf" >> ${srcdir}/${pkgname}/cabal.project.local
   cabal clean
   cabal update
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   cabal build all
 }
 
@@ -92,7 +92,7 @@ package() {
   install -D -m0644 "${srcdir}/${pkgname}-testnet.service" "${pkgdir}/usr/share/${pkgname}/${pkgname}-testnet-example.service"
   install -D -m0644 "${srcdir}/${pkgname}-testnet.confd" "${pkgdir}/usr/share/${pkgname}/${pkgname}-testnet-example.confd"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   install -D -m0755 "dist-newstyle/build/x86_64-linux/ghc-${_ghc_version}/cardano-cli-${pkgver}/x/cardano-cli/build/cardano-cli/cardano-cli" "${pkgdir}/usr/bin/cardano-cli"
   install -D -m0755 "dist-newstyle/build/x86_64-linux/ghc-${_ghc_version}/cardano-node-${pkgver}/x/cardano-node/build/cardano-node/cardano-node" "${pkgdir}/usr/bin/cardano-node"
 }
