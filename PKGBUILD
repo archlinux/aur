@@ -2,7 +2,7 @@
 # Contributor: Sergi Jimenez <sjr@redhat.com>
 
 pkgname=minishift-bin
-_minishift_version=1.26.1
+_minishift_version=1.34.3
 pkgver=${_minishift_version//-/_}
 pkgrel=1
 pkgdesc="Tool that makes it easy to run OpenShift locally."
@@ -18,7 +18,7 @@ optdepends=(
 )
 
 source=(https://github.com/minishift/minishift/releases/download/v${_minishift_version}/minishift-${_minishift_version}-linux-amd64.tgz)
-sha256sums=('0e2cd654d8ccc1db8e75593edd4b630ab7861d1db1321387af9c854b7f8a3ee7')
+sha256sums=('626a8d904c578b9bbe7c72b3252dc151f805df42f0cbb18aa8204a3e382961de')
 
 
 prepare() {
