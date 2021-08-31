@@ -1,6 +1,6 @@
 pkgbase = wsid-git
 	pkgdesc = web show image directory
-	pkgver = 0.1.r3.43c968c
+	pkgver = 0.3.r0.313eb8d
 	pkgrel = 1
 	url = https://github.com/matheuz1210/wsid
 	arch = any
