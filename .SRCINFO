@@ -1,0 +1,21 @@
+pkgbase = broforce-gog
+	pkgdesc = GOG version of Broforce
+	pkgver = 1130_20201008
+	pkgrel = 1
+	url = http://www.gog.com/game/torchlight_ii
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = broforce_1130_20201008_41824.sh::gogdownloader://broforce/en3installer0
+	source = broforce-gog
+	source = broforce-gog.desktop
+	sha256sums = 405793776eda4d2fb54dcf20652021bc994070be60db2964395b79b61fbdae7f
+	sha256sums = e3f5fd7d180e2db767d288befbb0c1b23e724d5b7fced1b0c98680277ea21219
+	sha256sums = d0a43b39be7b3160f3e199554a7f97d0dbe75666d55a8c479128dce935f5d3e4
+
+pkgname = broforce-gog

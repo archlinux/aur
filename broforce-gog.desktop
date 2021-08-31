@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Broforce
+Comment=GOG version of Broforce
+Exec=/usr/bin/broforce-gog
+Icon=broforce-gog
+Terminal=false
+Type=Application
+Categories=Game;
