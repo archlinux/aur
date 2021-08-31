@@ -1,0 +1,25 @@
+pkgbase = libgphoto2-git
+	pkgdesc = Digital camera access library
+	pkgver = 2.5.27+125+g590698165
+	pkgrel = 1
+	url = http://www.gphoto.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = autoconf-archive
+	makedepends = git
+	depends = libexif
+	depends = libjpeg
+	depends = gd
+	depends = libltdl
+	depends = libusb
+	depends = libxml2
+	depends = curl
+	provides = libgphoto2.so
+	provides = libgphoto2-git
+	provides = libgphoto2
+	conflicts = libgphoto2
+	replaces = libgphoto2
+	source = libgphoto2-git::git+https://github.com/gphoto/libgphoto2
+	sha256sums = SKIP
+
+pkgname = libgphoto2-git
