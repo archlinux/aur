@@ -1,7 +1,7 @@
 pkgbase = vivarium-git
 	pkgdesc = A dynamic tiling Wayland compositor inspired by xmonad
-	pkgver = 0.0.3.r15.g460fd72
-	pkgrel = 2
+	pkgver = 0.0.4.r3.gd7074de
+	pkgrel = 1
 	url = https://github.com/inclement/vivarium
 	install = vivarium-git.install
 	arch = x86_64
@@ -16,8 +16,9 @@ pkgbase = vivarium-git
 	optdepends = waybar: Bar program for Wayland; the only tested one
 	provides = vivarium
 	conflicts = vivarium
-	source = git+https://github.com/inclement/vivarium
-	validpgpkeys = 4AEE18F83AFDEB23
+	backup = etc/vivarium/config.toml
+	source = git+https://github.com/inclement/vivarium?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	md5sums = SKIP
 
 pkgname = vivarium-git
