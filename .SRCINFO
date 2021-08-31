@@ -1,0 +1,14 @@
+pkgbase = shadowsocks-helper
+	pkgdesc = Shadowsocks helper utility
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/honwen/shadowsocks-helper
+	arch = any
+	license = Apache
+	makedepends = go
+	provides = shadowsocks-helper
+	conflicts = shadowsocks-helper-git
+	source = shadowsocks-helper-0.10.0.tar.gz::https://github.com/honwen/shadowsocks-helper/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 0ecd90fffe785a67725c8ec1d7102abee3fcf028dffe1daf53cd3a09791733ce
+
+pkgname = shadowsocks-helper
