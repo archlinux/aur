@@ -1,0 +1,13 @@
+[Unit]
+Description=NextDNS CLI client (DoH Proxy)
+After=network.target
+Before=nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+Environment=SERVICE_RUN_MODE=1
+ExecStart=/usr/bin/nextdns run
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
