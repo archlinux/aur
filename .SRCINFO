@@ -1,6 +1,6 @@
 pkgbase = perl-zabbix2-api
 	pkgdesc = Access the JSON-RPC API of a Zabbix server
-	pkgver = 0.013
+	pkgver = 0.014
 	pkgrel = 1
 	url = https://metacpan.org/release/Zabbix2-API
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = perl-zabbix2-api
 	depends = perl-params-validate
 	depends = perl-uri
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/F/FG/FGA/Zabbix2-API-0.013.tar.gz
-	md5sums = 92a983f611847af6487e2fea161c6606
+	source = https://cpan.metacpan.org/authors/id/S/SU/SUJITSALI/Zabbix2-API-0.014.tar.gz
+	sha256sums = 72dd8b8c5bd268800db939c4ab13a6f3487351a840335c468f72f5a23b19b74c
 
 pkgname = perl-zabbix2-api
-

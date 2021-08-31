@@ -1,8 +1,8 @@
-# Maintainer: Cedric Girard <girard.cedric@gmail.com>
-_author=FGA
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+_author=SUJITSALI
 _perlmod=Zabbix2-API
 pkgname=perl-zabbix2-api
-pkgver=0.013
+pkgver=0.014
 pkgrel=1
 pkgdesc="Access the JSON-RPC API of a Zabbix server"
 arch=('any')
@@ -18,8 +18,8 @@ depends=(
   'perl-uri'
   )
 options=(!emptydirs)
-source=(http://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('92a983f611847af6487e2fea161c6606')
+source=(https://cpan.metacpan.org/authors/id/${_author:0:1}/${_author:0:2}/$_author/$_perlmod-$pkgver.tar.gz)
+sha256sums=('72dd8b8c5bd268800db939c4ab13a6f3487351a840335c468f72f5a23b19b74c')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
