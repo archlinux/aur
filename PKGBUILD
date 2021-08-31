@@ -1,7 +1,7 @@
 # Maintainer: JinguTech <xiuluo.android at gmail dot com>
 # Contributor: Alkindi42
 pkgname=joplin-beta
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="The latest pre-release - open source note taking and to-do application"
 arch=('x86_64')
@@ -19,7 +19,7 @@ license=('MIT')
 sha256sums=('18cca699f52f884980646359631bb59a77d190b9f91e9e3e71efa62166772557'
             'b5c621c425cdf0b5bb07bf0353939f6991a18db81955294a47ec42d0c5593438'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            '6e53ecf2ff4bea7ce2976ed07a2f6b9880f6d4acd00a6d1cab33839f5b434a76')
+            '385a1139ff20047dd758ea46a04e6d4d768717d42bc9048c8a712fc251368524')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
