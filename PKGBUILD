@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=python-slack-sdk
-pkgver=3.9.1
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Slack Python SDK"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-wheel')
 replaces=('python-slackclient')
 conflicts=('python-slackclient')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slackapi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('173f882b605d3812767f04205a524be6fb41d9eece6374476e92eac8ab757dc0')
+sha256sums=('6c47e01bd1fc688d63f761b071960a887589ba00c3dfc81dfc2cfc1dbb215722')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
