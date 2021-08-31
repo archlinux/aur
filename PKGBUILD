@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -39,7 +39,7 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
 validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
 sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
             'SKIP'
-            'ada52dea6cbade99f671ca006ffdb27a8094884eb273ebc492c533b499dc0f2c'
+            '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '842d800e06bf4e32398f7edf429d3e078c7fdee231f646df5209cfe0a1caacf9')
