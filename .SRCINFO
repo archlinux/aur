@@ -1,6 +1,6 @@
 pkgbase = apple-music-electron-git
 	pkgdesc = Electron wrapper for Apple Music based on Electron 14.0.0
-	pkgver = 2.5.0.574.de285c2
+	pkgver = 2.5.0.575.00c30cb
 	pkgrel = 1
 	url = https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
 	arch = aarch64
@@ -10,12 +10,13 @@ pkgbase = apple-music-electron-git
 	license = MIT
 	makedepends = yarn
 	makedepends = git
+	makedepends = npm
 	depends = libxss
 	provides = apple-music-electron
 	conflicts = apple-music-electron
 	source = Apple-Music-Electron::git+https://github.com/Apple-Music-Electron/Apple-Music-Electron.git
 	source = Apple-Music-Electron.desktop
 	sha256sums = SKIP
-	sha256sums = 8281db32e062460e68b1c7652c13e77e5268049e1aeec1eeb59992623da53d94
+	sha256sums = bf9903e86cfa849dadf18b34e82d364d12edda9db851d97a66518d5999d8a95d
 
 pkgname = apple-music-electron-git
