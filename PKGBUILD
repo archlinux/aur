@@ -2,7 +2,7 @@
 
 _pkgname=lombok
 pkgname=java-${_pkgname}
-pkgver=1.18.12
+pkgver=1.18.20
 pkgrel=1
 pkgdesc="Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java."
 arch=("any")
@@ -15,9 +15,9 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 _filename=${_pkgname}-${pkgver}.jar
-source=("${_filename}::https://projectlombok.org/downloads/lombok.jar")
+source=("${_filename}::https://projectlombok.org/downloads/lombok-${pkgver}.jar")
 
-sha256sums=('49381508ecb02b3c173368436ef71b24c0d4418ad260e6cc98becbcf4b345406')
+sha256sums=('ce947be6c2fbe759fbbe8ef3b42b6825f814c98c8853f1013f2d9630cedf74b0')
 
 build() {
     cd "${srcdir}"
