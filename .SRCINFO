@@ -4,14 +4,15 @@ pkgbase = japokwm-git
 	pkgrel = 1
 	arch = x86_64
 	license = BSD 2-Clause
+	makedepends = git
 	makedepends = meson
 	makedepends = wlroots
 	makedepends = lua
 	makedepends = wayland
 	makedepends = wayland-protocols
+	makedepends = libnotify
 	makedepends = scdoc
 	source = japokwm::git+https://github.com/werererer/japokwm
 	sha512sums = SKIP
 
 pkgname = japokwm-git
-
