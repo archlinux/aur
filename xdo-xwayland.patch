@@ -1,0 +1,17 @@
+--- a/xdo.c	2021-08-03 17:24:49.000000000 -0700
++++ b/xdo.c	2021-08-30 18:37:42.334321832 -0700
+@@ -119,10 +119,10 @@
+
+   // This library and xdotool do not work correctly on Wayland/XWayland.
+   // Try to detect XWayland and warn the user about problems.
+-  if (appears_to_be_wayland(xdpy)) {
+-    fprintf(stderr, "The X server at %s appears to be XWayland. Unfortunately, XWayland does not correctly support the features used by libxdo and xdotool.\n", display);
+-    return NULL;
+-  }
++  /* if (appears_to_be_wayland(xdpy)) { */
++  /*   fprintf(stderr, "The X server at %s appears to be XWayland. Unfortunately, XWayland does not correctly support the features used by libxdo and xdotool.\n", display); */
++  /*   return NULL; */
++  /* } */
+
+
+   /* XXX: Check for NULL here */

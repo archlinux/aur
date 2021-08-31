@@ -1,0 +1,18 @@
+pkgbase = xdotool-xwayland
+	pkgdesc = Command-line X11 automation tool
+	pkgver = 3.20210804.2
+	pkgrel = 1
+	url = https://www.semicomplete.com/projects/xdotool/
+	arch = x86_64
+	license = BSD
+	depends = libxtst
+	depends = libxinerama
+	depends = libxkbcommon
+	provides = xdotool=3.20210804.2
+	conflicts = xdotool
+	source = https://github.com/jordansissel/xdotool/releases/download/v3.20210804.2/xdotool-3.20210804.2.tar.gz
+	source = xdo-xwayland.patch
+	sha256sums = fde6b15b5978c91e0ecb78cc541a9987752e724820722e479dcc2efc17466c89
+	sha256sums = bac917cabe9d4b95b03ecccafafc49da999e8c04588ec8fb2f9de5b8fbfd62fe
+
+pkgname = xdotool-xwayland
