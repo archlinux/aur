@@ -11,7 +11,7 @@ conflicts=()
 arch=('any')
 url='https://github.com/signalapp/Signal-Desktop'
 source=("signal-tray.desktop")
-sha512sums=('ced228d19303abe951c55f7874004cb9e4cd062dbda48c7ea80b0a6fb9adf5716a37164c01c9921a91f00653b0737fed80e3c5e684b0f3bcec375c265d6d8e5c')
+sha512sums=('d7b95a741ad1f347e3c22c884e4e78a7a1e6830e5f748a49e5f49d03a3e78faeb61894ff9c41f4d8f3822f8e8bd3430fddda6bf22f103316bdb2faf6dad8c237')
 
 package() {
   install -Dm 644 "${srcdir}"/signal-tray.desktop "${pkgdir}"/usr/share/applications/signal-tray.desktop
