@@ -14,8 +14,9 @@ makedepends=(
 optdepends=(
     'python-pyqt5: for gui' )
 source=(
-    "${pkgname}::git+${url}#tag=${pkgver}" )
-b2sums=(SKIP)
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz" )
+b2sums=(
+    ac11eb4e81b96b85b2fcc9d859edaf8f7165ffed02f87e817193db328968136df3357170be2c3bc8d5ef60248eb7c12a6753b9d498b1026aeb3360d1329f4db1 )
 
 build(){
     cd "${srcdir}/${pkgname}"
