@@ -4,15 +4,15 @@
 
 pkgname=mcpkg-bin
 pkgver=2.2
-source=(mcpkg-919ece51edad09494d9a31c0e04d23d281ed3155::https://github.com/CRISPYrice/mcpkg/releases/download/2.2/mcpkg-2.2.jar https://raw.githubusercontent.com/CRISPYrice/mcpkg/2.2/README.md https://raw.githubusercontent.com/CRISPYrice/mcpkg/2.2/LICENSE.md)
-_checksum=919ece51edad09494d9a31c0e04d23d281ed3155
+source=(mcpkg-a5a10bea5820f64c96ba7c99b923b8c1e8556924::https://github.com/CRISPYricePC/mcpkg/releases/download/2.2/mcpkg-2.2.jar https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.2/README.md https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.2/LICENSE.md)
+_checksum=a5a10bea5820f64c96ba7c99b923b8c1e8556924
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
 pkgdesc='Package manager for Minecraft resource packs, datapacks and crafting tweaks, wrapped around vanillatweaks.net '
 pkgrel=1
 arch=("any")
 license=("GPL-3.0")
-url='https://github.com/CRISPYrice/mcpkg'
+url='https://github.com/CRISPYricePC/mcpkg'
 provides=(mcpkg)
 conflicts=()
 sha1sums=(
