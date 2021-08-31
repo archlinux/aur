@@ -1,6 +1,6 @@
 # Maintainer: Nico Ramlow <nico@nycode.de>
 pkgname=mcserv-git
-pkgver=r50.3eae166
+pkgver=r54.644c37c
 pkgrel=1
 pkgdesc="CLI utility to manage MC server installations."
 arch=('x86_64')
@@ -19,6 +19,13 @@ pkgver() {
 
     # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+	dartSdk=$(readlink -f $(which dart))
+	echo "dart.sdk=${dartSdk%/bin/dart}" > local.properties
+	./gradlew dartPubGet
 }
 
 build() {
