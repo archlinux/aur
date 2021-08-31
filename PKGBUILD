@@ -5,31 +5,35 @@
 
 pkgname=pyinstaller-hooks-contrib
 _pkgname=pyinstaller-hooks-contrib
-pkgver=2021.2
+pkgver=2021.3
 pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
 url="https://github.com/pyinstaller/pyinstaller-hooks-contrib"
-license=('GPL' 'APACHE')
-depends=('towncrier' 'python-setuptools' 'python-wheel' 'twine' 'git')
-source=("git+https://github.com/pyinstaller/$_pkgname")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${_pkgname}" || exit
-  ver=$(curl -fSsL "https://api.github.com/repos/pyinstaller/$_pkgname/releases/latest" | grep -oP "tag_name.*$" |
-    head -n1 |
-    sed -re 's|^tag_name": "(.*)",$|\1|g')
-  echo "${ver#v}"
-}
-
-build() {
-  cd "$srcdir/$_pkgname" || exit
-  git checkout "v$pkgver"
-  python setup.py build
-}
+license=('custom:PyInstaller')
+makedepends=("python-pip")
+_pkgname_prefix="${_pkgname:0:1}"
+_pkgname_underscored="${_pkgname//-/_}"
+_py="py2.py3"
+_py_hosted_url="https://files.pythonhosted.org/packages/$_py"
+_pkg_whlname="$_pkgname_underscored-$pkgver-$_py-none-any.whl"
+source=("$_py_hosted_url/$_pkgname_prefix/$_pkgname/$_pkg_whlname")
+sha512sums=('fe31fea7da76f56508fd250f366e44de351a9847405c899c276f6de724c5b239b511c77b8bee024b6e834f4a052a6c0ddf0c58b946dbec3deefffd806a5acb0f')
 
 package() {
-  cd "$_pkgname" || exit
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir" || exit
+  PIP_CONFIG_FILE=/dev/null pip install \
+    --root="$pkgdir" \
+    --isolated \
+    --ignore-installed \
+    --no-deps \
+    --no-compile \
+    --no-warn-script-location \
+    "${_pkg_whlname}"
+  python -O -m compileall -j "$(nproc)" -s "$pkgdir" "$pkgdir/usr/lib/"
+  mapfile -t direct_url_file < <(find "$pkgdir"/usr/lib -type f -name 'direct_url.json')
+  rm -rvf "${direct_url_file[@]}" || true
+  install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE.GPL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL.txt"
+  install -Dm644 "${_pkgname//-/_}-$pkgver.dist-info/LICENSE.APL.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.APL.txt"
 }
