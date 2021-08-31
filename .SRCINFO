@@ -1,6 +1,6 @@
 pkgbase = kasts
 	pkgdesc = Kirigami-based podcast player
-	pkgver = 21.07
+	pkgver = 21.08
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/kasts
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = kasts
 	depends = kcoreaddons
 	depends = ki18n
 	depends = syndication
-	source = https://download.kde.org/stable/plasma-mobile/21.07/kasts-21.07.tar.xz
-	sha256sums = 9910ff2f07b64c31155579820c7978c34071fd273e8c922f505c8d9f32dc6dc7
+	source = https://download.kde.org/stable/plasma-mobile/21.08/kasts-21.08.tar.xz
+	sha256sums = 762bfc029455b87d564e4e9e6f4ca0e7e9150e1716c4b63e8cd690cd3b8b6683
 
 pkgname = kasts
