@@ -1,9 +1,9 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
-pkgdesc='Cross platform mod manager for DOOM Eternal.'
+pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager'
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('electron')
 makedepends=('npm')
 source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
         eternalmodmanager)
-sha256sums=('a2649edc7e37938e774084eb5a1102bd52d0c4f1d1d5114d9e6da1ef5bc06743'
+sha256sums=('db67c781990fe45786dd62878ef661839f345a0167cb7b6fbaa6d82f0d783fb5'
             'd500abdf9bb20e4221679abe0d85e687c371590f409b378ce30a909838db99e8')
 
 build() {
