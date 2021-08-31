@@ -1,0 +1,17 @@
+pkgbase = audio_spectrum_oled
+	pkgdesc = Audio spectrum OLED for Raspberry Pi
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://github.com/rern/audio_spectrum_oled
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = glibc
+	depends = alsa-lib
+	depends = fftw
+	depends = i2c-tools
+	source = https://github.com/rern/audio_spectrum_oled/archive/refs/tags/0.02.tar.gz
+	sha256sums = SKIP
+
+pkgname = audio_spectrum_oled
