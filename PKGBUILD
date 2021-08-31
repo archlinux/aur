@@ -3,12 +3,12 @@
 
 pkgname=mosquitto-git
 _pkgname=mosquitto
-pkgver=r527.ee1fd17
+pkgver=r2713.8589f082
 pkgrel=1
 pkgdesc="An Open Source MQTT v3.1 Broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://mosquitto.org/"
-depends=('openssl' 'libutil-linux')
+depends=('openssl' 'cjson')
 makedepends=('mercurial' 'python' 'docbook-xsl')
 conflicts=('mosquitto')
 provides=('mosquitto')
@@ -28,11 +28,6 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  # docbook
-  XSL="$(/usr/bin/ls /usr/share/xml/docbook/xsl-stylesheets-*/manpages/docbook.xsl)"
-  XSL="<xsl:import href=\"$XSL\"/>"
-  sed -i "s|.*import.*|$XSL|" man/manpage.xsl
-
   make
 }
 
@@ -46,8 +41,8 @@ package() {
   rm -r "$pkgdir/usr/sbin/"
 
   # systemd service file
-  install -Dm644 "$srcdir/mosquitto.service" "$pkgdir/usr/lib/systemd/system/mosquitto.service"
-  echo 'pid_file /run/mosquitto.pid' >> "$pkgdir/etc/mosquitto/mosquitto.conf"
+  install -Dm644 "$srcdir/mosquitto/service/systemd/mosquitto.service.simple" "$pkgdir/usr/lib/systemd/system/mosquitto.service"
+  mv "$pkgdir/etc/mosquitto/mosquitto.conf.example" "$pkgdir/etc/mosquitto/mosquitto.conf"
 }
 
 # vim:set ts=2 sw=2 et:
