@@ -11,6 +11,7 @@ makedepends=(
     "lua"
     "wayland"
     "wayland-protocols"
+    "libnotify"
     "scdoc"
         )
 
