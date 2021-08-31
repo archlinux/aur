@@ -1,40 +1,29 @@
 # Maintainer: Christian Brassat <christian.brassat@gmail.com>
+# Contributor: Mark Wagie <mark.wagie@tutanota.com>
 
 pkgname=skeuos-gtk-theme-git
 _pkgname=skeuos-gtk
 pkgrel=1
-pkgver=fc81bbe
+pkgver=20210813.r0.g46ed276
 pkgdesc="Light and dark colorful Gtk3.20+ theme"
 url='https://github.com/daniruiz/skeuos-gtk'
 arch=('any')
-license=('unknown')
+license=('GPL3')
+makedepends=('git')
 source=(git+https://github.com/daniruiz/${_pkgname}.git)
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-  mkdir -p "${pkgdir}/usr/share/themes/"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Black-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Black-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Blue-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Blue-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Brown-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Brown-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Cyan-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Cyan-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Green-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Green-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Grey-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Grey-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Magenta-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Magenta-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Orange-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Orange-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Red-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Red-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Teal-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Teal-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Violet-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Violet-Light" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Yellow-Dark" "${pkgdir}/usr/share/themes"
-  cp -r "${srcdir}/${_pkgname}/Skeuos-Yellow-Light" "${pkgdir}/usr/share/themes"
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="$pkgdir/" install
+
+	for color in Black Blue Brown Cyan Green Grey Magenta Orange Red Teal Violet White Yellow; do
+		cp -r Skeuos-${color}-Dark-GNOME_40/gnome-shell "$pkgdir"/usr/share/themes/Skeuos-${color}-Dark
+		cp -r Skeuos-${color}-Light-GNOME_40/gnome-shell "$pkgdir"/usr/share/themes/Skeuos-${color}-Light
+	done
 }
