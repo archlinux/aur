@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.5rc.r16.g2f643141b
+pkgver=1.5rc.r105.g16c2a76fe
 pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
@@ -53,8 +53,8 @@ build(){
 
   bin/updatecss.sh
   bin/cssshrink.sh
-  #rm transifexpull.sh package2composer.sh importgettext.sh exportgettext.sh README.md INSTALL UPGRADING, LICENSE, CHANGELOG
-  rm -rf tests/ public_html/ installer/ .tx*
+
+  rm -rf tests/ .tx/ .github/
 
 }
 
