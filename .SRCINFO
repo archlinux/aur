@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 91.0.1
+	pkgver = 91.0.2
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-bin.install
@@ -29,13 +29,13 @@ pkgbase = librewolf-bin
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
 	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1518077404/artifacts/raw/librewolf-91.0.1-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/6c16502b18682fd8ac8905b52c9392de/librewolf-91.0.1-1-x86_64.pkg.tar.zst.sig
-	sha256sums_x86_64 = 2152dac1e9c0f538ffb4545c78485fa206cb78986b172dea879eda2bc3e2cb4f
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1545275517/artifacts/raw/librewolf-91.0.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://gitlab.com/librewolf-community/browser/arch/uploads/c44cc2a4e218701c801455290e3486e0/librewolf-91.0.2-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 1aca659cc3f00a074c0d251f66839d6a9f8f317f7fa8b160426d735ff43b7443
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1518077405/artifacts/raw/librewolf-91.0.1-1-aarch64.pkg.tar.zst
-	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/0e8fd06f56946850793065ef5692267e/librewolf-91.0.1-1-aarch64.pkg.tar.zst.sig
-	sha256sums_aarch64 = 8b568338285adb4679bb6dee87dfec744e8e4e47d0205a15133c90bee105795c
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/-/jobs/1545275520/artifacts/raw/librewolf-91.0.2-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://gitlab.com/librewolf-community/browser/arch/uploads/5fa7621a902c1550bbee9a414210617c/librewolf-91.0.2-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = 93510481ea8fcf54d0f523c57ad1a32844c59186d7faad61946248c693accf61
 	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
