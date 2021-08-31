@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=rinstall-git
-pkgver=r10.9beec7f
+pkgver=r32.fb8348f
 pkgrel=1
 pkgdesc="Declarative install for programs"
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git' 'cargo')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=()
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
@@ -22,18 +21,22 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	sed -i 's|/usr/local|/usr|' rinstall_root.yml
 	sed -i '/LICENSE/d' install.yml
+	cargo update
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	cd "$pkgname"
-	cargo build --release --locked --all-features --target-dir=target
+	cargo build --release --frozen --all-features
 }
 
 check() {
+	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname"
-	cargo test --release --locked --target-dir=target
+	cargo test --frozen --all-features
 }
 
 package() {

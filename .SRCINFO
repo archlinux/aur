@@ -1,6 +1,6 @@
 pkgbase = rinstall-git
 	pkgdesc = Declarative install for programs
-	pkgver = r10.9beec7f
+	pkgver = r32.fb8348f
 	pkgrel = 1
 	url = https://git.sr.ht/~danyspin97/rinstall
 	arch = x86_64
