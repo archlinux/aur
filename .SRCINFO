@@ -1,0 +1,13 @@
+pkgbase = git-update-agent
+	pkgdesc = A script for updating code hand off with git
+	pkgver = 0.0.5.r2.gc04e2d0
+	pkgrel = 1
+	url = https://www.git.flu0r1ne.net//about
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://www.git.flu0r1ne.net/git-update-agent
+	sha256sums = SKIP
+
+pkgname = git-update-agent
