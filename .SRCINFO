@@ -1,17 +1,18 @@
 pkgbase = qt5-base-git
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 5.15.0.beta1.r69.gfbebc93617
+	pkgver = 5.15.2+kde_r43967.gd2bd04d9fe
 	pkgrel = 1
-	url = https://qt-project.org/
-	arch = i686
+	url = https://www.qt.io
 	arch = x86_64
+	groups = qt-git
+	groups = qt5-git
 	license = GPL3
 	license = LGPL3
 	license = FDL
 	license = custom
+	makedepends = git
 	makedepends = libfbclient
 	makedepends = mariadb-libs
-	makedepends = sqlite
 	makedepends = unixodbc
 	makedepends = postgresql-libs
 	makedepends = alsa-lib
@@ -21,7 +22,6 @@ pkgbase = qt5-base-git
 	makedepends = cups
 	makedepends = freetds
 	makedepends = vulkan-headers
-	makedepends = git
 	depends = libjpeg-turbo
 	depends = xcb-util-keysyms
 	depends = xcb-util-renderutil
@@ -52,11 +52,22 @@ pkgbase = qt5-base-git
 	optdepends = freetds: MS SQL driver
 	optdepends = gtk3: GTK platform plugin
 	optdepends = perl: for fixqt4headers and syncqt
-	provides = qt5-base
-	conflicts = qt5-base
 	conflicts = qtchooser
-	source = qt5-base::git://code.qt.io/qt/qtbase.git#branch=5.15
+	conflicts = qtchooser-git
+	source = git+https://invent.kde.org/qt/qt/qtbase.git
+	source = qt5-base-cflags.patch
+	source = qt5-base-nostrip.patch
 	sha256sums = SKIP
+	sha256sums = cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c
+	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
 pkgname = qt5-base-git
+	pkgdesc = A cross-platform application and UI framework
+	provides = qt5-base
+	conflicts = qt5-base
 
+pkgname = qt5-xcb-private-headers-git
+	pkgdesc = Private headers for Qt5 Xcb
+	depends = qt5-base-git=5.15.2+kde_r43967.gd2bd04d9fe
+	provides = qt5-xcb-private-headers
+	conflicts = qt5-xcb-private-headers

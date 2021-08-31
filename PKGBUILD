@@ -8,7 +8,7 @@
 
 pkgbase=qt5-base-git
 pkgname=(qt5-base-git qt5-xcb-private-headers-git)
-pkgver=5.15.2_r43754.g40143c189b
+pkgver=5.15.2+kde_r43967.gd2bd04d9fe
 pkgrel=1
 arch=($CARCH)
 url='https://www.qt.io'
@@ -31,32 +31,22 @@ optdepends=('qt5-svg: to use SVG icon themes'
             'gtk3: GTK platform plugin'
             'perl: for fixqt4headers and syncqt')
 groups=(qt-git qt5-git)
-source=("git+https://github.com/qt/qtbase.git" qt5-base-cflags.patch qt5-base-nostrip.patch qt5-qtbase-gcc11.patch qtbase-QTBUG-89977.patch qtbase-QTBUG-90395.patch qtbase-QTBUG-91909.patch)
+source=("git+https://invent.kde.org/qt/qt/qtbase.git" qt5-base-cflags.patch qt5-base-nostrip.patch)
 sha256sums=('SKIP'
             'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094'
-            'b848bafd4eb3585cab5480196afdfdcaa251f4c56f6a93c765f7668cf48471d1'
-            '435e44c35273e1f7f72e525996b0b93b08602fe9f83c751cb4270d8b67fbfec4'
-            '1651229105d419937784d1b3b04955a5504142f48de3b4f96da051a76b6833f8'
-            '726eccdddf6fbac3822fc6530a14d3fe3b83e671ca35563b4c2fa4f6644214a3')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 pkgver() {
   cd qtbase
-  echo "5.15.2_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  echo "5.15.2+kde_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd qtbase
-  git checkout ${pkgver%%_*}
+  git checkout kde/5.15
 
   patch -p1 < ../qt5-base-cflags.patch # Use system CFLAGS in qmake
   patch -p1 < ../qt5-base-nostrip.patch # Don't strip binaries with qmake
-  
-  ## Fedora patches for gcc11 support
-  patch -p1 < ../qt5-qtbase-gcc11.patch
-  patch -p1 < ../qtbase-QTBUG-89977.patch
-  patch -p1 < ../qtbase-QTBUG-90395.patch
-  patch -p1 < ../qtbase-QTBUG-91909.patch
 }
 
 build() {
