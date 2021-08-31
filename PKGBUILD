@@ -16,8 +16,8 @@ source=("$pkgname"::'git+https://gitlab.com/spherebeaker/vgtranslate.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
