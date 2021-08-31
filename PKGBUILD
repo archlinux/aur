@@ -4,7 +4,7 @@
 pkgname=julia-beta-bin
 _pkgver=1.7.0-beta4
 pkgver=$(echo $_pkgver | sed 's/-/./g')
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='High-level, high-performance, dynamic programming language - official pre-release binaries'
 provides=(julia)
@@ -27,8 +27,7 @@ sha256sums=('4ae6cbd9378d63bdf75c74c8785068a18926638de4913d32cfab8ef0409f1e6e'
 options=(!strip)
 
 package() {
-  # cd $srcdir/julia-${_pkgver}
-  cd $srcdir/julia-e76c9dad42
+  cd $srcdir/julia-${_pkgver}
   mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
   install -Dm644 LICENSE.md \
       ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
