@@ -1,20 +1,17 @@
 pkgbase = mpd_oled
 	pkgdesc = OLED Spectrum Display for Raspberry Pi
-	pkgver = 0.02
+	pkgver = 0.01
 	pkgrel = 1
 	url = https://github.com/antiprism/mpd_oled
-	arch = i686
-	arch = x86_64
-	arch = arm
-	arch = armv7h
 	arch = armv6h
+	arch = armv7h
 	arch = aarch64
 	license = MIT
 	makedepends = glibc
 	depends = alsa-lib
 	depends = fftw
 	depends = i2c-tools
-	source = https://github.com/rern/mpd_oled/archive/refs/tags/0.02.tar.gz
+	source = https://github.com/antiprism/mpd_oled/archive/refs/tags/v0.01.tar.gz
 	sha256sums = SKIP
 
 pkgname = mpd_oled
