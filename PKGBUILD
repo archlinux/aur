@@ -2,7 +2,7 @@
 pkgname=feishu
 pkgver=4.8.0_24
 pkgrel=1
-pkgdesc="Empowering teams by messenger, Meetings, calendar, docs, and emails. It's all in one place."
+pkgdesc="飞书官网Linux客户端(视频会议分享屏幕可用)"
 arch=('x86_64')
 url="https://www.feishu.cn"
 license=('unknown')
