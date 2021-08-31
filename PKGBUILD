@@ -1,10 +1,9 @@
-# Maintainer: S Stewart <tda@null.net>
-# Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
-# Special thanks to RyanTheAllmighty for making hyper-appimage
+# Maintainer: David Li <davidtianli@gmail.com>
+# Based on the PKGBUILD gdlauncher-bin
 pkgname="gdlauncher-beta-bin"
 _pkgname="gdlauncher"
-pkgver="1.1.15.beta.2"
-_pkgver="1.1.15-beta.2"
+pkgver="1.1.15.beta.3"
+_pkgver="1.1.15-beta.3"  # Used for getting the download url.
 pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -16,7 +15,7 @@ provides=('gdlauncher')
 conflicts=('gdlauncher' 'gdlauncher-beta' 'gdlauncher-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-classic')
 source_x86_64=("GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${_pkgver}/GDLauncher-linux-setup.zip"
                "https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png")
-md5sums_x86_64=('45da86262167cbb2769a3b22ea94a22b'
+md5sums_x86_64=('f91b90233497019718e6309d2c220a0d'
                 'af0ce1364e34f49af3793bf8193c5369')
 icon_sizes=(48 128 256 1024)
 
