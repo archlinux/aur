@@ -23,6 +23,7 @@ anyreadperm=${fileperms:3:1} # With sticky bit
 
 cp "$1" /tmp/doasediting &&
     $EDITOR /tmp/doasediting &&
+    cmp -s /tmp/doasediting "$1" ||
     doas cp /tmp/doasediting "$1" &&
     exit 0
 
