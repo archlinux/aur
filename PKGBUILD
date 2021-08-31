@@ -4,7 +4,7 @@ pkgname=dolfin-git
 _realname=dolfin
 pkgdesc="C++ interface of FEniCS for ordinary and partial differential equations."
 pkgver=0.1.0.98.g80461056a6
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/dolfinx"
 license=('GPL3')
@@ -14,6 +14,14 @@ makedepends=('git' 'boost')
 options=(!emptydirs)
 source=("${_realname}::git+https://github.com/FEniCS/dolfinx.git")
 md5sums=('SKIP')
+_mainver=$(printf ${pkgver} | cut -d'.' -f1,2,3)
+provides=("${_realname}=$_mainver" "python-${_realname}=$_mainver"
+          "python-${_realname}-git=$_mainver")
+replaces=("${_realname}" "python-${_realname}"
+          "python-${_realname}-git")
+conflicts=("${_realname}" "python-${_realname}"
+           "python-${_realname}-git")
+
 
 [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
