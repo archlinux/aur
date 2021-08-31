@@ -1,7 +1,7 @@
 pkgbase = ytfe
 	pkgdesc = YouTube frontend
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://oscomp.hu
 	arch = x86_64
 	arch = i686

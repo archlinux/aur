@@ -1,7 +1,7 @@
 # Maintainer: OrkenWhite <orkenwhite@disroot.org>
 pkgname=ytfe
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube frontend"
 arch=('x86_64' 'i686')
 url="http://oscomp.hu"
