@@ -1,16 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributer: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=darktile
-pkgver=0.0.10
+pkgname=shox
+pkgver=0.0.19
 pkgrel=1
-pkgdesc="A GPU-rendered terminal emulator designed for tiling window managers"
+pkgdesc="A customisable, universally compatible terminal status bar"
 arch=('x86_64')
-url="https://github.com/liamg/darktile"
+url="https://github.com/liamg/shox"
 license=('MIT')
-depends=('libgl' 'libx11' 'libxcursor' 'libxinerama' 'xorg-xinput')
+depends=('libx11' 'libxcursor' 'libxinerama' 'xorg-xinput')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('781aef00959abc0047df0eb627c73f012a709f23c2642c34b7a282f485d6e19c')
+sha256sums=('SKIP')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -25,7 +26,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-$pkgver"
-	go build -o build -ldflags="-linkmode=external -X github.com/liamg/darktile/internal/app/darktile/version.Version=$pkgver" ./cmd/darktile
+	go build -o build -ldflags="-linkmode=external" ./cmd/shox
 }
 
 check() {
@@ -35,7 +36,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm 755 build/darktile -t "$pkgdir/usr/bin/"
+	install -Dm 755 build/shox -t "$pkgdir/usr/bin/"
 	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

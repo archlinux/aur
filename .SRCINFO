@@ -1,17 +1,16 @@
-pkgbase = darktile
-	pkgdesc = A GPU-rendered terminal emulator designed for tiling window managers
-	pkgver = 0.0.10
+pkgbase = shox
+	pkgdesc = A customisable, universally compatible terminal status bar
+	pkgver = 0.0.19
 	pkgrel = 1
-	url = https://github.com/liamg/darktile
+	url = https://github.com/liamg/shox
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = libgl
 	depends = libx11
 	depends = libxcursor
 	depends = libxinerama
 	depends = xorg-xinput
-	source = darktile-0.0.10.tar.gz::https://github.com/liamg/darktile/archive/v0.0.10.tar.gz
-	sha256sums = 781aef00959abc0047df0eb627c73f012a709f23c2642c34b7a282f485d6e19c
+	source = shox-0.0.19.tar.gz::https://github.com/liamg/shox/archive/v0.0.19.tar.gz
+	sha256sums = SKIP
 
-pkgname = darktile
+pkgname = shox
