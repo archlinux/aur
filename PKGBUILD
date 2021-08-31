@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.13.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -33,7 +33,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
-  nvm install 12.22.5
+  nvm install 12.22.6
 }
 
 build() {
