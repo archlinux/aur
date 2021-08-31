@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron /usr/lib/gmail-desktop/resources/app.asar "$@"
+exec electron12 /usr/lib/gmail-desktop/resources/app.asar "$@"

@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('0720125a9fcd15f7892bc498de85684f3bc48e89e9c59fd9dc4e1a8c96cb990f'
-            'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
+            '9e7336fab6cd1d4bce6fd4046737fa8e502bf6ae6a8c18d83a3a2847deba7505'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
 _ensure_local_nvm() {
