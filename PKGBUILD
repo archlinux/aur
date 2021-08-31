@@ -1,6 +1,7 @@
 # Maintainer: Jakob Schlanstedt <schlanstedtjakob@gmail.com>
 pkgname=japokwm-git
 _pkgname=japokwm
+url=https://github.com/werererer/japokwm
 pkgver=r647.cea881d
 pkgrel=1
 license=("BSD 2-Clause")
@@ -27,7 +28,7 @@ pkgver() {
 
 build() {
     arch-meson "$_pkgname" build
-    meson compile -C build
+    arch-meson compile -C build
 }
 
 package() {
