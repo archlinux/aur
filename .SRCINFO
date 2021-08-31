@@ -1,6 +1,6 @@
-pkgbase = nanocurrency-node-git
+pkgbase = nanocurrency-node
 	pkgdesc = Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies.
-	pkgver = 23.0.0.pre99.68936b470
+	pkgver = 22.1
 	pkgrel = 1
 	url = https://nano.org/
 	install = install
@@ -22,7 +22,7 @@ pkgbase = nanocurrency-node-git
 	source = nano-node.service
 	source = fix-build-for-gcc11.patch
 	source = fix-build-for-boost-1.76.patch
-	source = git+https://github.com/nanocurrency/nano-node.git#branch=develop
+	source = git+https://github.com/nanocurrency/nano-node.git#tag=V22.1
 	source = git+https://github.com/weidai11/cryptopp.git
 	source = git+https://github.com/nanocurrency/lmdb.git
 	source = git+https://github.com/miniupnp/miniupnp.git
@@ -32,7 +32,6 @@ pkgbase = nanocurrency-node-git
 	source = git+https://github.com/cryptocode/cpptoml.git
 	source = git+https://github.com/google/googletest.git
 	source = git+https://github.com/nanocurrency/nano-pow-server.git
-	source = git+https://github.com/nanocurrency/diskhash.git
 	sha256sums = 6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91
 	sha256sums = 27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e
 	sha256sums = c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35
@@ -48,6 +47,5 @@ pkgbase = nanocurrency-node-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
 
-pkgname = nanocurrency-node-git
+pkgname = nanocurrency-node

@@ -1,5 +1,5 @@
-pkgname=nanocurrency-node-git
-pkgver=23.0.0.pre99.68936b470
+pkgname=nanocurrency-node
+pkgver=22.1
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
@@ -11,28 +11,12 @@ provides=(raiblocks nanocurrency nanocurrency-node)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-cli-git" "nanocurrency-git")
 install=install
 
-_ver_part() {
-  grep -e "PACKAGE_VERSION_$1\s\+\"\?[0-9]\+" ./CMakeLists.txt | sed -e 's/.*[^0-9]\([0-9]\+\)[^0-9]*/\1/'
-}
-
-pkgver() {
-  cd "$srcdir/nano-node"
-  _pre_release=$(_ver_part PRE_RELEASE)
-  if [[ $_pre_release = 0 ]]; then
-    _pre_release=""
-  else
-    _pre_release=".pre${_pre_release}"
-  fi
-  echo "$(_ver_part MAJOR).$(_ver_part MINOR).$(_ver_part PATCH)${_pre_release}.$(git rev-parse --short HEAD)"
-}
-
-
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
   fix-build-for-gcc11.patch
   fix-build-for-boost-1.76.patch
-  "git+https://github.com/nanocurrency/nano-node.git#branch=develop"
+  "git+https://github.com/nanocurrency/nano-node.git#tag=V${pkgver}"
   git+https://github.com/weidai11/cryptopp.git
   git+https://github.com/nanocurrency/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
@@ -42,7 +26,6 @@ source=(nanowallet.desktop
   git+https://github.com/cryptocode/cpptoml.git
   git+https://github.com/google/googletest.git
   git+https://github.com/nanocurrency/nano-pow-server.git
-  git+https://github.com/nanocurrency/diskhash.git
   )
 
 sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
@@ -50,7 +33,6 @@ sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             'c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35'
             'fff6e6ab537c33e522a6c91d1d917c8298c3c2a92e291b343663793bcf60336f'
             '98ec1f48ecdcf5c6270ead3f50eae427b33a68eebcdf2c7432d91fabd12f1b81'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
