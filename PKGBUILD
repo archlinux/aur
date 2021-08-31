@@ -2,25 +2,26 @@
 # Contributor: James Barnett < james at wbarnett dot us >
 
 pkgname=avogadroapp
-pkgver=1.93.0
-pkgrel=3
+pkgver=1.95.1
+pkgrel=1
 pkgdesc="An advanced molecular editor"
 arch=('x86_64')
-url="http://www.openchemistry.org/projects/avogadro2/"
+url="https://two.avogadro.cc"
 license=('BSD')
 depends=('avogadrolibs' 'python-cclib' 'vtk')
 optdepends=('openbabel: Open Babel plugin actions')
 makedepends=('cmake' 'eigen')
 provides=('avogadro2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenChemistry/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8cf913058aff58fe588531618a680d82401fbfe3f21e4783a44979f4a2dd5586')
+sha256sums=('d59694a6b32bb95317c66f4c806fe05d46e7e3ca4e594aa214bf9dd7e179b317')
 
 build() {
   mkdir -p "$srcdir/build"
   cd $srcdir/build
   cmake "$srcdir/$pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_VTK=ON
   make
 }
 
