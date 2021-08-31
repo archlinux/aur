@@ -1,4 +1,5 @@
-# Maintainer: Félix Saparelli <aur@passcod.name>
+# Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
+# Original contributor: Félix Saparelli <aur@passcod.name>
 
 pkgname=talon-bin
 pkgver=0.1.4
