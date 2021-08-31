@@ -9,6 +9,7 @@ url="https://gitlab.com/jmcantrell/${pkgname%-git}"
 license=('GPL3')
 depends=('btrfs-progs')
 makedepends=('git')
+checkdepends=('parallel' 'diffutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
