@@ -2,14 +2,14 @@
 pkgname=('pop-launcher' 'pop-launcher-system76-power')
 pkgbase=pop-launcher
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
 depends=('fd' 'gtk3' 'libqalculate')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e02eb4fa0e174aa5169461af283786e8a972a4268b823bb9c509fa3d5a5f6515')
+sha256sums=('0f025d2b79af57e19c1447a446f35dc5c972edd45f6efd2a7d1918930773bd27')
 
 prepare() {
   cd "launcher-$pkgver"
