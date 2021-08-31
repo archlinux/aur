@@ -14,7 +14,7 @@ package() {
   cd "$srcdir/"
   install -d $pkgdir/usr/share/fonts/oldschool/
 
-  install -Dm644 ttf\ -\ Mx\ \(mixed\ outline+bitmap\)/* "$pkgdir/usr/share/fonts/oldschool/"
+  install -D ttf\ -\ Mx\ \(mixed\ outline+bitmap\)/* "$pkgdir/usr/share/fonts/oldschool/"
 }
 
 # vim:set ts=2 sw=2 et:
