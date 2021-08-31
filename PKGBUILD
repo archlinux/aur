@@ -2,12 +2,11 @@
 pkgname=japokwm-git
 _pkgname=japokwm
 url=https://github.com/werererer/japokwm
-pkgver=r647.cea881d
+pkgver=v0.3.0
 pkgrel=1
 license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
 makedepends=(
-    "git"
     "meson"
     "wlroots"
     "lua"
