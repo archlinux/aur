@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.3.r29799.38902729b'
+pkgver='0.15.4.r29810.a2b5de8e0'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}.sysusers"
         "${_appname}.tmpfiles")
 sha256sums=('SKIP'
-            'ada52dea6cbade99f671ca006ffdb27a8094884eb273ebc492c533b499dc0f2c'
+            '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '842d800e06bf4e32398f7edf429d3e078c7fdee231f646df5209cfe0a1caacf9')
