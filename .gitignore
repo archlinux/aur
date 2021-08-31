@@ -1,0 +1,8 @@
+*.pkg.tar.xz
+pkg
+src
+*\~
+*.bak
+*.tar.gz
+
+dolfin
