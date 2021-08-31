@@ -2,18 +2,16 @@
 # Co-Maintainer: eldios
 
 pkgname=seadrive-daemon
-pkgver=2.0.10
+pkgver=2.0.15
 pkgrel=1
 pkgdesc="Daemon part of seadrive"
 arch=('x86_64')
-url="https://download.seafile.com/published/seafile-user-manual/drive_client/drive_client_for_linux.md"
+url="https://www.seafile.com/en/download/"
 license=('Apache')
 depends=('libsearpc' 'libcurl-compat' 'libevent-compat'
          'openssl-1.0' 'fuse2')
-source=('seadrive'
-        "http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('25770d58f6e262a29e54a065ccf5e2d138ec5ec2aecaafa12fe2f6fe4ca256fb'
-            '21136593bbf5074b708fe296ad30d27a8363b2c8d3ff3fdf91c77c5f4013bef7')
+source=("http://linux-clients.seafile.com/seadrive-deb/focal/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+sha256sums=('ae1bcb14dd2e85cdaa32d14140e87e81ec3915cb356b1a32e89e97fe282e0ba3')
 
 prepare() {
   cd "${srcdir}"
@@ -24,6 +22,5 @@ prepare() {
 package () {
   cd "${srcdir}"
 
-  install -Dm 755 "${srcdir}/seadrive" "${pkgdir}/usr/bin/seadrive"
-  install -Dm 755 "${srcdir}/usr/bin/seadrive" "${pkgdir}/usr/share/seadrive/seadrive"
+  install -Dm 755 "${srcdir}/usr/bin/seadrive" "${pkgdir}/usr/bin/seadrive"
 }
