@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.6.2.r44.gdfc025468
+pkgver=1.6.2.r81.g566f8e27c
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=(
     'polkit' 'shared-mime-info' 'tpm2-tss' 'flashrom'
     'libjcat' 'fwupd-efi' 'gcab' 'libarchive.so'
     'libjson-glib-1.0.so' 'libgudev-1.0.so' 'libmm-glib.so'
-    'libqmi-glib.so')
+    'libqmi-glib.so' 'libprotobuf-c.so')
 optdepends=(
     'udisks2: UEFI firmware upgrade support'
 )

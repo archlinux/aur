@@ -1,6 +1,6 @@
 pkgbase = fwupd-git
 	pkgdesc = Simple daemon to allow session software to update firmware
-	pkgver = 1.6.2.r44.gdfc025468
+	pkgver = 1.6.2.r81.g566f8e27c
 	pkgrel = 1
 	url = https://github.com/fwupd/fwupd
 	arch = i686
@@ -41,6 +41,7 @@ pkgbase = fwupd-git
 	depends = libgudev-1.0.so
 	depends = libmm-glib.so
 	depends = libqmi-glib.so
+	depends = libprotobuf-c.so
 	optdepends = udisks2: UEFI firmware upgrade support
 	provides = libfwupd.so
 	provides = libfwupdplugin.so
