@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
 
 pkgname=serverless
-pkgver=2.56.0
+pkgver=2.57.0
 pkgrel=1
 pkgdesc='Serverless Framework - Build web, mobile and IoT applications with serverless architectures'
 url='https://github.com/serverless/serverless'
@@ -11,8 +11,8 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=('fe7983d5a2defab5d9a539a7c731e8802b79a86181ac4fb071eecb70b575c8d9def9aca6c8270bf2f70b8f621bdae9135f0796a6bf0cc4081d5d5b5bc18e0418')
-b2sums=('db98726a10f998d7248d937ac29691164e3e0e56f2622439e5b2da3439c938c49f062966954796c6d64a1389069b86ff35f152bc9d3c9c0b9938af864c75255c')
+sha512sums=('fe02f36aa762b0d97298c89024c905a000b2ecd5e439dec4ebbb1b70eac4357b956f8f10012e0f4d3f153e430dbba790a279698466a06ca869a9598acc724399')
+b2sums=('0c6bcf55c5db0d28a35653b97bd2a75886530fb44353b2b4506e73d6ddb9eb5db38ed0071cec8737ebe615f0e327fd5075279b190dbf85b80b7c71a2a473e346')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
