@@ -4,14 +4,13 @@ pkgbase=ddns-watchdog
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
 pkgver=1.4.1
 pkgrel=1
-pkgdesc='开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
+pkgdesc='简单快速的可常驻的 Dynamic DNS 客户端，自动更新域名解析记录值'
 arch=('x86_64' 'armv7h' 'aarch64')
-url="https://github.com/yzy613/${pkgbase}"
+url="https://github.com/yzy613/ddns-watchdog"
 license=('Apache')
 makedepends=('go')
-provides=('watchdog-ddns' "${pkgname}-git")
-conflicts=('watchdog-ddns' "${pkgname}-git")
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
+replaces=('watchdog-ddns')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
 sha256sums=('ffe8dbc6b3cf0448eb8cc27edd08a5f2b8c6aff438d2da1e137769e3b99d331c'
