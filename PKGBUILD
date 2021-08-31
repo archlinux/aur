@@ -32,6 +32,6 @@ package() {
 	cd opt/apps/${pkgname}/files
 	sed -i "/extract_archive \"/d" run.sh
 	sed -i "s|\$HOME/.deepinwine/deepin-wine-helper|/opt/deepinwine/tools|" run.sh
-	sed -i "s|\$HOME/.deepinwine/deepin-wine6-stable/bin/wine|/usr/lib/deepin-wine6-stable|" run.sh
+	sed -i "s|\$HOME/.deepinwine/deepin-wine6-stable/bin/wine|/usr/bin/deepin-wine6-stable|" run.sh
 	rm wine_archive.* helper_archive.*
 }
