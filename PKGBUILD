@@ -3,7 +3,7 @@
 _name=networkx
 
 pkgname=python-networkx-git
-pkgver=2.6.2.r2.ge605a13c0
+pkgver=2.6.2.r25.ga8b907df3
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 
@@ -29,7 +29,7 @@ makedepends=('git')
 pkgver ()
 {
 	cd "$srcdir/$_name"
-	git describe --long | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build ()
