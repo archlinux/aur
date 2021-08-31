@@ -4,6 +4,6 @@ Encoding=UTF-8
 Name=Apple Music
 Comment=Apple Music Electron
 Exec=apple-music-electron
-Icon=apple-music-electron
+Icon=/usr/share/icons/hicolor/256x256/apps/apple-music-electron.png
 Terminal=False
 Categories=AudioVideo
