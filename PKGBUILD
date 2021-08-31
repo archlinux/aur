@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	echo "2.5.0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	echo "$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
