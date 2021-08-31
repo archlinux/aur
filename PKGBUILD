@@ -1,27 +1,51 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kevin Brubeck Unhammer <unhammer@gmail.com>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@gmail.com>
-pkgname=justext  
-pkgver=1.1
+
+pkgbase=justext
+pkgname=(python-justext python2-justext)
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="jusText removes boilerplate content (such as navigation links, headers, and footers) from HTML pages. Designed to preserve text with full sentences, it is suited for creating linguistic resources like Web corpora."
-url="https://code.google.com/p/justext/"
-arch=('i686' 'x86_64')
-license=('New BSD License')
-depends=('python2>=2.2.4')
-makedepends=()
-conflicts=()
-replaces=()
-backup=()
-install=
-source=("http://justext.googlecode.com/files/justext-1.1.tar.gz")
-md5sums=('120d33a917a6362c88dd546d4f354c47')
+pkgdesc="Heuristic based boilerplate removal tool"
+url="https://github.com/miso-bellica/justext"
+arch=('any')
+license=('BSD')
+changelog=CHANGELOG.rst
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("$pkgbase-$pkgver.zip::https://files.pythonhosted.org/packages/source/j/jusText/jusText-$pkgver.zip")
+sha256sums=('330035dfaaa960465276afa1836dfb6e63791011a8dfc6da2757142cc4d14d54')
+
+prepare() {
+	cp -a "jusText-$pkgver" "jusText-$pkgver-py2"
+}
+
 build() {
-  cd $startdir/src/$pkgname-$pkgver
+	pushd "jusText-$pkgver"
+	python setup.py build
 
-  # From http://allanmcrae.com/2010/10/big-python-transition-in-arch-linux/
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-    -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-    $(find . -name '*.py')
+	popd
 
-  python2 setup.py install --prefix=/usr --root="$pkgdir" || return 1
+	pushd "jusText-$pkgver-py2"
+	python2 setup.py build
+}
+
+package_python-justext() {
+	depends=('python-lxml>=4.4.2')
+	provides=('justext')
+	replaces=('justext')
+
+	cd "jusText-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+}
+
+package_python2-justext() {
+	depends=('python2-lxml>=4.4.2')
+	provides=('justext')
+	replaces=('justext')
+
+	cd "jusText-$pkgver-py2"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm 644 LICENSE.rst -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
