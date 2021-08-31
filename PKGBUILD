@@ -1,30 +1,44 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=rm-improved-git
-_pkgname=rip
-pkgver=0.13.1.r8.gc528ce9
+pkgver=0.13.1.r13.g11f0b8d
 pkgrel=1
 pkgdesc='A safe and ergonomic alternative to rm'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nivekuil/rip'
-license=('GPL-3.0')
+license=('GPL3')
 depends=('gcc-libs')
-makedepends=('git' 'rust')
+makedepends=('cargo' 'git')
 provides=('rm-improved')
 conflicts=('rm-improved')
-source=("${_pkgname}::git+${url}")
+source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$pkgname"
+	cargo update
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "${_pkgname}"
-  cargo build --release --locked
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$pkgname"
+	cargo build --release --frozen --all-features
+}
+
+check() {
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$pkgname"
+	cargo test --frozen --all-features
 }
 
 package() {
-  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/target/release/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" "${_pkgname}/LICENSE"
+	cd "$pkgname"
+	install -Dm 755 target/release/rip -t "$pkgdir/usr/bin/"
+	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

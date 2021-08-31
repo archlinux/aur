@@ -1,18 +1,17 @@
 pkgbase = rm-improved-git
 	pkgdesc = A safe and ergonomic alternative to rm
-	pkgver = 0.13.1.r8.gc528ce9
+	pkgver = 0.13.1.r13.g11f0b8d
 	pkgrel = 1
 	url = https://github.com/nivekuil/rip
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0
+	license = GPL3
+	makedepends = cargo
 	makedepends = git
-	makedepends = rust
 	depends = gcc-libs
 	provides = rm-improved
 	conflicts = rm-improved
-	source = rip::git+https://github.com/nivekuil/rip
+	source = rm-improved-git::git+https://github.com/nivekuil/rip
 	sha512sums = SKIP
 
 pkgname = rm-improved-git
-
