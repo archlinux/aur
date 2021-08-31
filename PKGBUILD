@@ -13,7 +13,6 @@ url="http://www.gphoto.org"
 license=('GPL' 'LGPL')
 provides=("$pkgname" "$_pkgname")
 conflicts=("$_pkgname")
-replaces=("$_pkgname")
 depends=('libgphoto2' 'popt')
 makedepends=(git)
 
