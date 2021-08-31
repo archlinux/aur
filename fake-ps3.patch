@@ -5,9 +5,9 @@ diff --unified --recursive --text --color bluez-5.61.org/profiles/input/sixaxis.
  		return &devices[i];
  	}
  
-+	if ( vid == 0x054c && pid == 0x0268 && name && strcmp( name, "Sony PLAYSTATION(R)3 Controller" ) )
++	if ( vid == 0x054c && pid == 0x0268 )
 +
-+	return &devices[1];
++		return &devices[1];
 +
  	return NULL;
  }
