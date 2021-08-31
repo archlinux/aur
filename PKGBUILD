@@ -8,7 +8,7 @@ pkgdesc='Powerful hands-free voice and gaze input scriptable with Python'
 url='https://talonvoice.com/'
 arch=('x86_64')
 license=('custom')
-depends=('python37' 'talon-wav2letter-bin')
+depends=('python' 'talon-wav2letter-bin')
 
 source=(
   "talon.tar.xz::https://talonvoice.com/dl/latest/talon-linux.tar.xz"
@@ -42,9 +42,6 @@ package() {
 
   mkdir -p "$pkgdir/usr/share"
   cp -r resources "$pkgdir/usr/share/talon"
-
-  # fix talon's python by using our python37
-  ln -snf /usr/bin/python3.7 "$pkgdir/usr/share/talon/resources/python/bin/python3"
 
   install -Dm644 resources/EULA.txt "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
   install -Dm644 resources/LICENSES.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSES.txt"
