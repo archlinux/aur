@@ -1,12 +1,12 @@
 pkgbase = japokwm-git
 	pkgdesc = A wlroots and dwl based tiling-windowmanager based around creating layouts
-	pkgver = r647.cea881d
+	pkgver = v0.3.0
 	pkgrel = 1
 	url = https://github.com/werererer/japokwm
 	arch = x86_64
 	license = BSD 2-Clause
-	makedepends = git
 	makedepends = meson
+	makedepends = git
 	makedepends = wlroots
 	makedepends = lua
 	makedepends = wayland
