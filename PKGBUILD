@@ -2,9 +2,9 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=13
+_major=14
 _pkgname=${_projectname}
-_pkgver=${_major}.3.0
+_pkgver=${_major}.0.0
 pkgver="${_pkgver/-/.}"
 pkgname=${_pkgname}-bin
 pkgrel=1
@@ -37,14 +37,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('092f744a4e42d23e7d5953ed4670476ff98bd5e35bf6466b2164d48fa5a7d8b4'
-                   'dae470d4685c1e18ea399cb4607d598a325d1a5143d1fabc15e3ec112a65b65b')
-sha256sums_i686=('a7ff7d736131fe14202396e498879b9fb67a27ddadd3c73a380463e8d99cd946'
-                 '1569e39548493d4cc6a4feed1386ab18238705d20ed98078567db5439b9cafa5')
-sha256sums_armv7h=('8200f949eeffb801019d3362000ffdde8ddc13a60f85d5fabe74c76a7a11f544'
-                   '91e6dec7be053a599cf4b6ab13e577ddb68fb35bd7a786c4f7e31a73b663aa59')
-sha256sums_aarch64=('aadb6b0492a413153f496f631731a61f28cc03c3edde01e39631c3d64cded0e6'
-                    '147a43797e3aac97845a87f744cceacdfbed19b8017eea25f2e48cf519e20cfe')
+sha256sums_x86_64=('37481bb3946df0db54a30d0c6cc5ec08f3d53890f7b2641c426186a198e8e8d2'
+                   '0a40533a50a42e6668e5265a84e2983979eededbb61f9e201d569d8b1b37ce0f')
+sha256sums_i686=('94b4c5332cc2bf00656f11c444efe28af77b5bcde314f691bdfa5d3dfaad5e03'
+                 '955280a0eb862eef913f9f394c7c7574138a5a48ffa85c59e84cc0163564fbfa')
+sha256sums_armv7h=('34927fd478180a5ecff07c13687900ff5f6107103dcd41d267de18458435de0d'
+                   '825684b3f759bc6c5d2e5be7c6a7679b7a1b8e0d9091f7d2f9904d0c24f6c978')
+sha256sums_aarch64=('d724b31982675de3543f5472a42c4259fdeba7c09a95a9c9b2cd0ac346e42d9f'
+                    '367e76b34dcc58371232c87f540dd227c51de94ce8a916761379c3c4b890dd80')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
