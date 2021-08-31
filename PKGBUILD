@@ -1,11 +1,11 @@
 # Maintainer: François Grabenstaetter <francoisgrabenstaetter@gmail.com>
 
 pkgname=digital-assets
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cryptocurrencies prices and statistics"
 arch=('any')
-url="https://gitlab.gnome.org/fgrabenstaetter/digital-assets"
+url="https://gitlab.gnome.org/fgrabenstaetter/$pkgname"
 license=('GPL3')
 
 depends=(
@@ -19,7 +19,7 @@ makedepends=(
     'git'
     'meson>=0.50'
 )
-source=('git+https://gitlab.gnome.org/fgrabenstaetter/digital-assets.git#tag=7a70f071caa3ac45c82f596f5f1a73ffd67c43ca')
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
