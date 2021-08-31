@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=rustbuster
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A comprehensive web fuzzer and content discovery tool'
 arch=('x86_64')
 url="https://github.com/phra/rustbuster"
@@ -12,16 +12,23 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('e7bc808b88e42d77b13e4b91cf64a3e9cd99a38702a1bf925aabe3ec1d7fa27f')
-validpgpkeys=('91FF93D1B85D76B5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features --target-dir=target
+  cargo build --release --frozen --all-features
 }
 
 check() {
+  export RUSTUP_TOOLCHAIN=stable
   cd "$pkgname-$pkgver"
-  cargo test --release --locked --target-dir=target
+  cargo test --frozen --all-features
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = rustbuster
 	pkgdesc = A comprehensive web fuzzer and content discovery tool
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phra/rustbuster
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = rustbuster
 	depends = gcc-libs
 	depends = openssl
 	source = rustbuster-3.0.3.tar.gz::https://github.com/phra/rustbuster/archive/v3.0.3.tar.gz
-	validpgpkeys = 91FF93D1B85D76B5
 	sha256sums = e7bc808b88e42d77b13e4b91cf64a3e9cd99a38702a1bf925aabe3ec1d7fa27f
 
 pkgname = rustbuster
