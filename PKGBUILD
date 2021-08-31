@@ -2,7 +2,7 @@
 
 pkgname=signal-in-tray
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc='Start signal in background via desktop files'
 depends=('signal-desktop' 'xdg-utils')
