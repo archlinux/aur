@@ -2,7 +2,7 @@
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
 pkgver=1.14.0.r97.g45ed2e7
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
@@ -41,7 +41,7 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
-  nvm install 12.22.5
+  nvm install 12.22.6
 }
 
 build() {
