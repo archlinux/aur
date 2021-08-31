@@ -1,6 +1,6 @@
 pkgbase = xmrig-proxy
 	pkgdesc = Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.
-	pkgver = 6.14.0
+	pkgver = 6.15.0
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig-proxy
 	install = xmrig-proxy.install
@@ -11,7 +11,7 @@ pkgbase = xmrig-proxy
 	depends = libuv
 	optdepends = monero: XMR wallet
 	optdepends = xmrig: XMR CPU miner
-	source = https://github.com/xmrig/xmrig-proxy/archive/v6.14.0.tar.gz
-	sha256sums = 4f74a885f96a9a35d3bdd0710777c0227501842e931082b698fbc18d38bbb270
+	source = https://github.com/xmrig/xmrig-proxy/archive/v6.15.0.tar.gz
+	sha256sums = 30d731cda40fa0339d46da52947d6a3eaab35d104c6f43e0f6d01d56151b0f5e
 
 pkgname = xmrig-proxy
