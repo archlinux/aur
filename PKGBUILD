@@ -2,7 +2,7 @@
 
 _pkgname=vgtranslate
 pkgname=vgtranslate-git
-pkgver=r66.1b68c26
+pkgver=66.1b68c26
 pkgrel=1
 pkgdesc="VgTranslate service for retroarch"
 arch=('any')
@@ -15,13 +15,14 @@ makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("$pkgname"::'git+https://gitlab.com/spherebeaker/vgtranslate.git')
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname"
-	git describe --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+pkgver()
+{
+	cd $pkgname
+	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     python2 setup.py build
 }
 

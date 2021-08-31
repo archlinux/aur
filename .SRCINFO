@@ -1,6 +1,6 @@
 pkgbase = vgtranslate-git
 	pkgdesc = VgTranslate service for retroarch
-	pkgver = r66.1b68c26
+	pkgver = 66.1b68c26
 	pkgrel = 1
 	url = http://gitlab.com/spherebeaker/vgtranslate
 	arch = any
