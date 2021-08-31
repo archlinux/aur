@@ -4,7 +4,7 @@
 pkgname=rot8-git
 _pkgname="rot8"
 pkgver=0.1.3.35.g8043166
-pkgrel=1
+pkgrel=2
 pkgdesc="A screen rotation daemon "
 arch=("x86_64")
 url="https://github.com/efernau/rot8"
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 

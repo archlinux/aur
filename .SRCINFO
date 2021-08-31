@@ -1,7 +1,7 @@
 pkgbase = rot8-git
 	pkgdesc = A screen rotation daemon
 	pkgver = 0.1.3.35.g8043166
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/efernau/rot8
 	arch = x86_64
 	license = MIT
