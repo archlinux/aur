@@ -12,7 +12,7 @@ _transparency=
 pkgbase=corefreq
 pkgname=(corefreq-client corefreq-server corefreq-dkms)
 _gitname=CoreFreq
-pkgver=1.86.7
+pkgver=1.87.1
 pkgrel=1
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
@@ -21,7 +21,7 @@ license=('GPL2')
 depends=('dkms')
 source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz"
         'dkms.conf')
-b2sums=('fa861cbf607a628eb769391986923a1a120ac4e2ca036279043303f7bfe429c0b92bf4245d90c89f151c6411d1bf9a8f7894b51f070ba72794c7dfc357003c98'
+b2sums=('00ef1d20e43e98f45320445216b4d6fd4141cbc925da75c9d7d1f917ee5e4494b496beade2c08973dd707752c413388a005a038b668f9b7246bd86b90664ff05'
         'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c')
 
 build() {
