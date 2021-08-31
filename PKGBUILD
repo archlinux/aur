@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.0.0.r0.g777fe78
-pkgrel=1
+pkgver=1.0.0.r0.g8b7c835
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
