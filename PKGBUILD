@@ -1,7 +1,7 @@
 # Maintainer: Till Faelligen <tfaelligen at gmail dot com>
 pkgname='matrix-conduit-git'
 _pkgname='conduit'
-pkgver=0.1.0.525.gabe9122
+pkgver=0.1.0.1005.g49dd356
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://conduit.rs'
@@ -14,8 +14,11 @@ source=(
   "$_pkgname::git+https://gitlab.com/famedly/conduit"
   "conduit-archlinux::git+https://github.com/S7evinK/conduit-archlinux"
 )
+backup=(
+  'etc/conduit/config.toml'
+  'etc/conduit/config'
+)
 install=install-script.install
-backup=('etc/conduit/config')
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
