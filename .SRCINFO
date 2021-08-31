@@ -1,0 +1,11 @@
+pkgbase = oldschool-pc-font-ttf
+	pkgdesc = Classic fonts from oldschool pc fonts
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://int10h.org/oldschool-pc-fonts/
+	arch = any
+	license = Attribution-ShareAlike 4.0
+	source = https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.2_linux.zip
+	md5sums = e4e114151d7d9d4baf7b0f69b6645043
+
+pkgname = oldschool-pc-font-ttf
