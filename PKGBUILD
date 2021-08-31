@@ -1,7 +1,7 @@
 # Maintainer: matheuz1210 <matheuz1210 at gmail dot com>
 
 pkgname=wsid-git
-pkgver=0.1.r3.43c968c
+pkgver=0.3.r0.313eb8d
 pkgrel=1
 pkgdesc='web show image directory'
 arch=(any)
@@ -22,7 +22,12 @@ pkgver(){
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+build(){
+    cd "${srcdir}/${pkgname%-git}"
+    python - build <<<"from setuptools import setup; setup()"
+}
+
 package(){
     cd "${srcdir}/${pkgname%-git}"
-    install -Dm755 wsid -t "${pkgdir}/usr/bin"
+    python - install --root="${pkgdir}" --optimize=1 --skip-build <<<"from setuptools import setup; setup()"
 }
