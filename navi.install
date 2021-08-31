@@ -1,7 +1,0 @@
-post_install() {
-	echo "
-
-Source shell plugins using 'navi widget [shell]' in your dotfile. This enables proper populating of shell history and editting commands before executing them.
-	
-"
-}

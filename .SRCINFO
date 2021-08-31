@@ -1,21 +1,19 @@
 pkgbase = navi-git
 	pkgdesc = An interactive cheatsheet tool for the command-line.
-	pkgver = 2.16.0.r23.gad46a3a
+	pkgver = 2.17.0.r10.g5860498
 	pkgrel = 1
 	url = https://github.com/denisidoro/navi
-	install = navi.install
 	arch = x86_64
 	license = Apache
-	makedepends = git
-	makedepends = make
 	makedepends = cargo
+	makedepends = git
 	depends = fzf
+	optdepends = bash-completion
 	optdepends = skim: drop-in replacement for fzf
 	provides = navi
 	conflicts = navi
-	source = navi-git::git+https://github.com/denisidoro/navi
-	source = navi.install
+	source = navi-git::git+https://github.com/denisidoro/navi?signed
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
-	sha256sums = 524d552a47da4f16c0608522dc72cd9be292aabfcb4f0a302259ac13a1a16105
 
 pkgname = navi-git
