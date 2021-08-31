@@ -1,7 +1,7 @@
 pkgbase = mopidy-autoplay
 	pkgdesc = Mopidy extension to automatically pick up where you left off and start playing the last track from the position before Mopidy was shut down.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sph/mopidy-autoplay/
 	arch = any
 	license = APACHE
