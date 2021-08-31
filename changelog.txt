@@ -1,5 +1,12 @@
                 History (newest first)
 
+20210830 v2.0.6
+
+- update share/domains.csv
+- \Cr fix to mark read
+- skip getmail oldmail- files
+- fix: {cur,new,tmp} folder created
+
 20200720 v2.0.5
 
 - in case of symlink getmail rc files, don't overwrite them.

@@ -1,14 +1,13 @@
 # Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author :  Roland Puntaier <roland [dot] puntaier [at] gmail [dot] com>
-# Upstream author :  Luke Smith <luke [at] lukesmith [dot] xyz>
 
 
 pkgname=mailwizard-git
 _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --long | sed 's/^v//;s/-/.r/;s/-/./'; }
-pkgver=2.0.5.r3.gdc66cf4
-pkgrel=2
+pkgver=2.0.6.r0.g1a5962e
+pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords (POP3/SMTP)'
 arch=('x86_64')
