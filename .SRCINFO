@@ -1,0 +1,16 @@
+pkgbase = planr
+	pkgdesc = An open-source, distributed code grading tool for the classroom
+	pkgver = 0.0.3.r0.g582f484
+	pkgrel = 1
+	url = https://www.git.flu0r1ne.net//about
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = go>=1.60
+	depends = make
+	depends = cmake
+	depends = gcc
+	source = git+https://www.git.flu0r1ne.net/planr
+	sha256sums = SKIP
+
+pkgname = planr
