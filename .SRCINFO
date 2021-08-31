@@ -1,12 +1,13 @@
 pkgbase = nextdns-bin
 	pkgdesc = NextDNS CLI client (DoH Proxy)
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextdns/nextdns
 	arch = x86_64
 	license = MIT
 	provides = nextdns
 	conflicts = nextdns
+	backup = etc/nextdns.conf
 	source = https://github.com/nextdns/nextdns/releases/download/v1.36.0/nextdns_1.36.0_linux_amd64.tar.gz
 	source = nextdns.conf
 	source = nextdns.service

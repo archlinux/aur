@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=nextdns-bin
 pkgver="1.36.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="NextDNS CLI client (DoH Proxy)"
 url="https://github.com/nextdns/nextdns"
 arch=(x86_64)
@@ -9,6 +9,7 @@ license=(MIT)
 depends=()
 provides=(nextdns)
 conflicts=(nextdns)
+backup=(etc/nextdns.conf)
 
 source=(
   https://github.com/nextdns/nextdns/releases/download/v${pkgver}/nextdns_${pkgver}_linux_amd64.tar.gz
