@@ -1,8 +1,9 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
-pkgname=python-ufl-git
+_base=ufl
+pkgname=python-${_base}-git
 pkgdesc="Unified form language."
-pkgver=20210525
+pkgver=2021.1.0.9.gcf8d177c
 pkgrel=1
 arch=('any')
 url="https://github.com/FEniCS/ufl"
@@ -11,12 +12,12 @@ groups=('fenics-git')
 depends=('python-numpy')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("ufl::git+https://github.com/FEniCS/ufl.git")
+source=("${_base}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ufl
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
+  cd "${srcdir}/${_base}"
+  git describe --tags --match '*.*' | tr '-' '.'
 }
 
 build() {

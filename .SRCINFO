@@ -1,6 +1,6 @@
 pkgbase = python-ufl-git
 	pkgdesc = Unified form language.
-	pkgver = 20210525
+	pkgver = 2021.1.0.9.gcf8d177c
 	pkgrel = 1
 	url = https://github.com/FEniCS/ufl
 	arch = any
