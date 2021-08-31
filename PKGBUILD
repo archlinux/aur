@@ -18,7 +18,7 @@ makedepends=(
         )
 
 arch=("x86_64")
-source=("${pkgname%-*}::git+https://github.com/werererer/japokwm")
+source=("${_pkgname}::git+https://github.com/werererer/japokwm")
 sha512sums=('SKIP')
 
 pkgver() {
