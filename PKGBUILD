@@ -3,7 +3,7 @@
 
 pkgname=labnote2-git
 _pkgname=labnote2
-pkgver=r10.f5ce05b
+pkgver=r11.0317634
 pkgrel=1
 pkgdesc='rst based desktop wiki'
 arch=('any')
@@ -25,14 +25,7 @@ pkgver() {
 package() {
   cd "$_pkgname"
 
-	mkdir -p "$pkgdir/etc/labnote2/"
-	mkdir -p "$pkgdir/opt/labnote2/"
-  mkdir -p "$pkgdir/usr/share/applications/"
-	cp -r src/* "$pkgdir/opt/labnote2/"
-	cp -r config/* "$pkgdir/etc/labnote2/"
-	cp config/config_desktop.ini "$pkgdir/etc/labnote2/default.ini"
-	install -Dm755 labnote2.sh "$pkgdir/usr/bin/labnote2"
-	cp labnote2.desktop "$pkgdir/usr/share/applications/labnote2.desktop"
+  make DESTDIR="$pkgdir" install_desktop
 }
 
 # vim:set ts=2 sw=2 et:
