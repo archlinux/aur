@@ -1,0 +1,19 @@
+pkgbase = headset-git
+	pkgdesc = Discover and collect music on YouTube
+	pkgver = 3.3.3.g981a492
+	pkgrel = 1
+	url = https://headsetapp.co
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	provides = headset
+	conflicts = headset
+	source = headset.desktop
+	sha256sums = SKIP
+
+pkgname = headset-git
