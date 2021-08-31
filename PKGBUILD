@@ -3,7 +3,7 @@
 
 pkgname=mrcode
 pkgver=1.59.1+21241
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom build of VSCodium / VSCode (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/zokugun/MrCode.git'
@@ -40,10 +40,8 @@ source=(
     "git+${url}#tag=${pkgver}"
     'mrcode.desktop'
 )
-sha256sums=(
-    'SKIP'
-    '362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92'
-)
+sha256sums=('SKIP'
+            '362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92')
 provides=('mrcode')
 conflicts=(
     'mrcode-git'
