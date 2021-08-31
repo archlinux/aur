@@ -8,6 +8,7 @@ license=("BSD 2-Clause")
 pkgdesc="A wlroots and dwl based tiling-windowmanager based around creating layouts"
 makedepends=(
     "meson"
+    "git"
     "wlroots"
     "lua"
     "wayland"
