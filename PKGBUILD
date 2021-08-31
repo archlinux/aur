@@ -12,7 +12,7 @@ md5sums=('e4e114151d7d9d4baf7b0f69b6645043')
 
 package() {
   cd "$srcdir/"
-  install -dm644 $pkgdir/usr/share/fonts/oldschool/
+  install -d $pkgdir/usr/share/fonts/oldschool/
 
   install -Dm644 ttf\ -\ Mx\ \(mixed\ outline+bitmap\)/* "$pkgdir/usr/share/fonts/oldschool/"
 }
