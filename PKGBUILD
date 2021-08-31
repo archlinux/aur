@@ -64,7 +64,7 @@ package() {
     echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Cloning Themes | Done"
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}README.md"
+    install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
 
     echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Cloning Themes] | Done"
