@@ -1,14 +1,13 @@
 pkgbase = sniprun
 	pkgdesc = A neovim plugin to independently run snippets of code
 	pkgver = 0.5.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/michaelb/sniprun
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = gcc-libs
 	source = sniprun-0.5.9.tar.gz::https://github.com/michaelb/sniprun/archive/v0.5.9.tar.gz
-	validpgpkeys = B2A33E69182E98DA
 	sha256sums = bd4b9c00de5b05fcdf9ed0e73e33680f6bef22ca9a120bee7edea612f7231386
 
 pkgname = sniprun
