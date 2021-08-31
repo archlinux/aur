@@ -1,5 +1,5 @@
 pkgbase = xdotool-xwayland
-	pkgdesc = Command-line X11 automation tool
+	pkgdesc = Command-line X11 automation tool (actually tries to run if on xwayland)
 	pkgver = 3.20210804.2
 	pkgrel = 1
 	url = https://www.semicomplete.com/projects/xdotool/
