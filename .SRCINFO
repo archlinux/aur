@@ -1,7 +1,7 @@
 pkgbase = github-desktop
 	pkgdesc = GUI for managing Git and GitHub
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.github.com
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,13 @@ pkgbase = github-desktop
 	optdepends = github-cli: CLI interface for GitHub
 	optdepends = hub: CLI interface for GitHub
 	source = github-desktop::git+https://github.com/shiftkey/desktop.git#tag=release-2.9.2-linux1
+	source = git+https://github.com/github/gemoji.git
+	source = git+https://github.com/github/gitignore.git
+	source = git+https://github.com/github/choosealicense.com.git
 	source = github-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c
 

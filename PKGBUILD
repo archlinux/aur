@@ -6,7 +6,7 @@
 pkgname=github-desktop
 pkgver=2.9.2
 _gitname="release-$pkgver-linux1"
-pkgrel=1
+pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
 url='https://desktop.github.com'
@@ -29,13 +29,27 @@ makedepends=('nodejs>=10.16.0'
              yarn)
 DLAGENTS=("http::/usr/bin/git clone --branch $_gitname --single-branch %u")
 source=("$pkgname::git+https://github.com/shiftkey/desktop.git#tag=$_gitname"
+        'git+https://github.com/github/gemoji.git'
+        'git+https://github.com/github/gitignore.git'
+        'git+https://github.com/github/choosealicense.com.git'
         "$pkgname.desktop")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
+
+prepare() {
+    cd "$pkgname"
+    git submodule init
+    git config submodule."gemoji".url "$srcdir/gemoji"
+    git config submodule."app/static/common/gitignore".url "$srcdir/gitignore"
+    git config submodule."app/static/common/choosealicense.com".url "$srcdir/choosealicense.com"
+    git submodule update
+}
 
 build() {
     cd "$pkgname"
-    git submodule update --recursive --init
     export DISPLAY=':99.0'
     Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
     yarn install
