@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.0.2.r317.g3ebd8d401
+pkgver=3.0.4.r239.g6d3dd0c62
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ license=(GPL2 CCPL)
 groups=(pro-audio)
 depends=(alsa-lib libx11 gtk3 expat libid3tag libogg libsndfile
          libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
-makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
+makedepends=(git cmake gcc sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg jack nasm conan)
 # can't find system lame portmidi
 optdepends=('ffmpeg: additional import/export capabilities')
@@ -21,31 +21,22 @@ provides=(audacity)
 conflicts=(audacity)
 source=(
   "git+https://github.com/audacity/audacity.git"
-  "audacity.patch"
 )
-sha256sums=('SKIP' 'c06c60a9ae17b9265840fcd619d2c7a5668f26a94cec80c8785c7997afd4bc96')
+sha256sums=('SKIP')
 
 pkgver() {
   cd audacity
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
 }
 
-prepare() {
-  cd audacity
-  patch --forward --strip=1 --input="${srcdir}/audacity.patch"
-}
-
 build() {
   mkdir audacity/build
   cd audacity/build
-  CC=clang cmake \
+  CC=gcc cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Daudacity_use_wxwidgets=local \
     audacity_use_ffmpeg:STRING=loaded \
     ..
-  cmake --build .
   make .
 }
 
