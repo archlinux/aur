@@ -14,7 +14,6 @@ url="http://www.gphoto.org/"
 arch=(x86_64)
 license=(LGPL)
 conflicts=("$_pkgname")
-replaces=("$_pkgname")
 depends=(libexif libjpeg gd libltdl libusb libxml2 curl)
 makedepends=(autoconf-archive git)
 provides=('libgphoto2.so' "$pkgname" "$_pkgname")
