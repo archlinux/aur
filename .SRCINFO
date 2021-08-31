@@ -1,6 +1,6 @@
 pkgbase = provok-git
 	pkgdesc = A text renderer written in Rust
-	pkgver = 0.1.0.r5.g93ed61e
+	pkgver = 0.1.0.r41.gdc46e19
 	pkgrel = 1
 	url = https://github.com/o2sh/provok
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = provok-git
 	md5sums = SKIP
 
 pkgname = provok-git
-
