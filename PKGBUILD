@@ -1,12 +1,11 @@
 # Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author :  Roland Puntaier <roland [dot] puntaier [at] gmail [dot] com>
-# Upstream author :  Luke Smith <luke [at] lukesmith [dot] xyz>
 
 
 pkgname=mailwizard
 
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.6
+pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords (POP3/SMTP)'
 arch=('x86_64')
@@ -35,7 +34,7 @@ changelog=changelog.txt
 install=wizard.install
 source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz"
         'migrationhelper')
-sha256sums=('12be55296d4e6ada7acdc75b26d5b64bdfb15ed984b47bbee5be9633781f57bf'
+sha256sums=('13e247ca0700e5a53b8297598edc953b2fe2278d48fcfbc0cddb10f0f3747b44'
             '96471dc5a53af342cf14f5ec119df81509617f960c707d732781a24d9e2ed3c6')
 
 
