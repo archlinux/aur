@@ -28,9 +28,9 @@ pkgver() {
 
 build() {
     arch-meson "$_pkgname" build
-    arch-meson compile -C build
+    meson compile -C build
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+    meson install -C build --destdir "$pkgdir"
 }
