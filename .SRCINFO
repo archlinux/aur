@@ -1,0 +1,21 @@
+pkgbase = torchlight2-gog
+	pkgdesc = GOG version of Torchlight 2
+	pkgver = 1.25.9.7
+	pkgrel = 1
+	url = http://www.gog.com/game/torchlight_ii
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = desktop-file-utils
+	source = gog_torchlight_2_2.0.0.2.sh::gogdownloader://torchlight_ii/en3installer2
+	source = torchlight2-gog
+	source = torchlight2-gog.desktop
+	sha256sums = ae50c7f6d423f59242cb7d6bf0b525880e94061a554fc3c37561db7a5568c998
+	sha256sums = a0df2d18749b3cc37d6fc659f84c1e5bbabe16f1698f0d4ee9a557284fc9e37e
+	sha256sums = 00bb69d20618fd9ba0466b49d0c3e6208a65e745acf8ae8e0f66efad7adb65a6
+
+pkgname = torchlight2-gog
