@@ -1,0 +1,7 @@
+*.gz
+*.xz
+*.deb
+/pkg
+/src
+*.log*
+*.zst
