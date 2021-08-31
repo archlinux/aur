@@ -46,13 +46,13 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Cloning Themes | Done"
+    echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Cloning Themes | Done"
+    echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
 
 
-    echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Cloning Themes | Done"
+    echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Done"
     install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
     cd ${srcdir}/${_pkgname}/dist/linux-unpacked
@@ -61,26 +61,12 @@ package() {
     ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 
 
-    echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Cloning Themes | Done"
+    echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Done"
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 
 
-    echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Cloning Themes] | Done"
-    if [[ -d /home/$USER/.cache/Apple\ Music/themes ]]; then
-        if [[ ! -f /home/$USER/.cache/Apple\ Music/themes/blurple.css ]]; then
-            cd /home/$USER/.cache/Apple\ Music/themes
-            echo Cloning Themes Repo
-            git clone https://github.com/Apple-Music-Electron/Apple-Music-Electron-Themes.git .
-        fi
-    else
-        mkdir -p /home/$USER/.cache/Apple\ Music/
-        cd /home/$USER/.cache/Apple\ Music/
-        echo Cloning Themes Repository
-        git clone https://github.com/Apple-Music-Electron/Apple-Music-Electron-Themes.git themes
-    fi
-
-    echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | Cloning Themes | [Done]"
+    echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Done]"
 }
 
