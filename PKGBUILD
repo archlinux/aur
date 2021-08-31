@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=gdlauncher-git
-pkgver=1.1.10.r0.g228bd46d
+pkgver=1.1.15.beta.3.r1.ga7f1cb35
 pkgrel=2
 pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/gorilla-devs/GDLauncher.git'
         'use-system-7za-and-disable-updater.patch')
 sha256sums=('SKIP'
             'f4cbb8a47e80c498972e548897a01190ac1975fbed0879565ff8fc57b8e9dbf0'
-            '454865b85333877d38bcf13ca706a8b7bf9c95d377d5a7818839c49dbafb05d0')
+            'd7baeeefa2f37c68fdef8b6f52a72f8d508f4d685df8701e3d68feb1735fb222')
 
 pkgver() {
   cd "$srcdir"/GDLauncher

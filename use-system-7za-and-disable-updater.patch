@@ -1,5 +1,5 @@
 diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
-index 343d5ad8..45d5a927 100644
+index 57399c69..3447920f 100644
 --- i/src/app/desktop/utils/index.js
 +++ w/src/app/desktop/utils/index.js
 @@ -5,7 +5,6 @@ import { extractFull } from 'node-7z';
@@ -10,24 +10,86 @@ index 343d5ad8..45d5a927 100644
  import path from 'path';
  import crypto from 'crypto';
  import { exec, spawn } from 'child_process';
-@@ -301,14 +300,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
-   return isValid;
+@@ -313,34 +312,13 @@ export const isLatestJavaDownloaded = async (
+   return { isValid, log: log?.stderr };
  };
  
 -export const get7zPath = async () => {
 -  // Get userData from ipc because we can't always get this from redux
--  const baseDir = await ipcRenderer.invoke('getUserData');
+-  let baseDir = await ipcRenderer.invoke('getExecutablePath');
+-  if (process.env.NODE_ENV === 'development') {
+-    baseDir = path.resolve(baseDir, '../../');
+-    if (process.platform === 'win32') {
+-      baseDir = path.join(baseDir, '7zip-bin/win/x64');
+-    } else if (process.platform === 'linux') {
+-      baseDir = path.join(baseDir, '7zip-bin/linux/x64');
+-    } else if (process.platform === 'darwin') {
+-      baseDir = path.join(baseDir, '7zip-bin/mac/x64');
+-    }
+-  }
 -  if (process.platform === 'darwin' || process.platform === 'linux') {
 -    return path.join(baseDir, '7za');
 -  }
 -  return path.join(baseDir, '7za.exe');
 -};
-+export const get7zPath = async () => '/usr/bin/7za';
+-
+-get7zPath();
+-
+ export const extractAll = async (
+   source,
+   destination,
+   args = {},
+   funcs = {}
+ ) => {
+-  const sevenZipPath = await get7zPath();
++  const sevenZipPath = '/usr/bin/7za';
+   const extraction = extractFull(source, destination, {
+     ...args,
+     yes: true,
+diff --git i/src/common/reducers/actions.js w/src/common/reducers/actions.js
+index 040414d8..8ec014e4 100644
+--- i/src/common/reducers/actions.js
++++ w/src/common/reducers/actions.js
+@@ -83,7 +83,6 @@ import {
+ } from '../utils/selectors';
+ import {
+   librariesMapper,
+-  get7zPath,
+   extractNatives,
+   getJVMArguments112,
+   copyAssetsToResources,
+@@ -1193,7 +1192,7 @@ export function downloadForge(instanceName) {
+       `${loader?.mcVersion}.json`
+     );
  
- export const extractNatives = async (libraries, instancePath) => {
-   const extractLocation = path.join(instancePath, 'natives');
+-    const sevenZipPath = await get7zPath();
++    const sevenZipPath = '/usr/bin/7za';
+     const pre152 = lte(coerce(loader?.mcVersion), coerce('1.5.2'));
+     const pre132 = lte(coerce(loader?.mcVersion), coerce('1.3.2'));
+     const baseUrl = 'https://maven.minecraftforge.net/net/minecraftforge/forge';
+diff --git i/src/common/modals/InstanceExport/CurseForge/ThirdStep.js w/src/common/modals/InstanceExport/CurseForge/ThirdStep.js
+index fef48aab..553c6c84 100644
+--- i/src/common/modals/InstanceExport/CurseForge/ThirdStep.js
++++ w/src/common/modals/InstanceExport/CurseForge/ThirdStep.js
+@@ -10,7 +10,6 @@ import makeDir from 'make-dir';
+ import { Transition } from 'react-transition-group';
+ import styled from 'styled-components';
+ import pMap from 'p-map';
+-import { get7zPath } from '../../../../app/desktop/utils';
+ import { FABRIC, VANILLA, FORGE } from '../../../utils/constants';
+ import { getAddon } from '../../../api';
+ 
+@@ -21,7 +20,7 @@ import { getAddon } from '../../../api';
+  * @param {Array} filesArray Array of files to include. Relative to current working directory unless full path is passed for each file.
+  */
+ const createZip = async (archiveName, zipDestPath, filesArray) => {
+-  const sevenZipPath = await get7zPath();
++  const sevenZipPath = '/usr/bin/7za';
+   const zipCreation = add7z(
+     path.join(zipDestPath, `${archiveName}.zip`),
+     filesArray,
 diff --git i/public/electron.js w/public/electron.js
-index 800a66f8..58bfb998 100644
+index d9d436fd..45801af6 100644
 --- i/public/electron.js
 +++ w/public/electron.js
 @@ -12,7 +12,6 @@ const {
@@ -38,51 +100,35 @@ index 800a66f8..58bfb998 100644
  const log = require('electron-log');
  const fss = require('fs');
  const { promisify } = require('util');
-@@ -179,43 +178,6 @@ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
+@@ -199,27 +198,6 @@ if (
  
- const isDev = process.env.NODE_ENV === 'development';
+ log.log(process.env.REACT_APP_RELEASE_TYPE, app.getVersion());
  
--async function extract7z() {
--  const baseDir = path.join(app.getAppPath(), 'node_modules', '7zip-bin');
+-async function patchSevenZip() {
+-  let sevenZipPath = null;
+-  const baseDir = path.dirname(app.getPath('exe'));
+-  if (process.platform === 'darwin' || process.platform === 'linux') {
+-    sevenZipPath = path.join(baseDir, '7za');
+-  } else {
+-    sevenZipPath = path.join(baseDir, '7za.exe');
+-  }
 -
--  let zipLocationAsar = path.join(baseDir, 'linux', 'x64', '7za');
--  if (process.platform === 'darwin') {
--    zipLocationAsar = path.join(baseDir, 'mac', 'x64', '7za');
--  }
--  if (process.platform === 'win32') {
--    zipLocationAsar = path.join(baseDir, 'win', 'x64', '7za.exe');
--  }
 -  try {
--    await fs.copyFile(
--      zipLocationAsar,
--      path.join(app.getPath('userData'), path.basename(zipLocationAsar))
--    );
--
 -    if (process.platform === 'linux' || process.platform === 'darwin') {
--      await promisify(exec)(
--        `chmod +x "${path.join(
--          app.getPath('userData'),
--          path.basename(zipLocationAsar)
--        )}"`
--      );
--      await promisify(exec)(
--        `chmod 755 "${path.join(
--          app.getPath('userData'),
--          path.basename(zipLocationAsar)
--        )}"`
--      );
+-      await promisify(exec)(`chmod +x "${sevenZipPath}"`);
+-      await promisify(exec)(`chmod 755 "${sevenZipPath}"`);
 -    }
 -  } catch (e) {
 -    log.error(e);
 -  }
 -}
 -
--extract7z();
+-if (!isDev) patchSevenZip();
 -
  function createWindow() {
    mainWindow = new BrowserWindow({
      width: 1100,
-@@ -609,79 +571,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -617,79 +595,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
