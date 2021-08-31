@@ -1,33 +1,45 @@
-# Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
+# Maintainer: Groctel <aur@taxorubio.com>
+
+_name=moderngl
 
 pkgname=python-moderngl-git
-pkgdesc="Modern OpenGL binding for python."
-pkgver=20210522
+pkgver=5.6.4.r85.gd219778e
 pkgrel=1
-arch=('i686' 'x86_64')
-url="https://github.com/cprogrammer1994/ModernGL"
-license=('MIT')
-groups=()
-depends=('python' 'libgl')
-makedepends=('git' 'python-setuptools')
-options=(!emptydirs)
-source=("git+https://github.com/cprogrammer1994/ModernGL.git")
-md5sums=('SKIP')
+pkgdesc="Modern OpenGL binding for python."
 
-pkgver() {
-	cd ModernGL
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
+arch=('any')
+license=('MIT')
+url="https://github.com/moderngl/moderngl"
+
+source=("git+$url.git")
+sha512sums=('SKIP')
+
+options=(!emptydirs)
+
+depends=(
+	'libgl'
+	'python'
+)
+makedepends=(
+	'git'
+	'python-setuptools'
+)
+
+pkgver ()
+{
+	cd "$srcdir/$_name"
+	git describe --long --tags | sed 's/^networkx-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd ModernGL
+build ()
+{
+	cd "$srcdir/$_name"
 	python setup.py build
 }
 
-package() {
-	cd ModernGL
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package ()
+{
+	cd "$srcdir/$_name"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
