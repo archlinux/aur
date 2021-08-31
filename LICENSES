@@ -1,0 +1,42 @@
+This document generated from https://www.giss.nasa.gov/tools/gprojector/help/credits.html
+
+G.Projector 3 — Map Projection Explorer
+Credits and Acknowledgments
+
+G.Projector was developed at the
+
+NASA Goddard Institute for Space Studies
+2880 Broadway, New York, NY 10025 USA
+
+Please send bug reports, feature requests, etc., to Dr. Robert Schmunk at robert.b.schmunk@nasa.gov.
+Java Code Libraries
+
+G.Projector uses the following third-party, open-source Java libraries. You may view the licenses and download source code for these libraries at the URLs provided.
+
+Apache Commons logging, version 1.2.
+Copyright © 2003-2014 the Apache Software Foundation. Available at commons.apache.org/proper/commons-logging/. Used under terms of the Apache License, Version 2.0.
+
+Apache pdfbox and fontbox, version 2.0.21.
+Copyright © 2009-2020 the Apache Software Foundation. Available at pdfbox.apache.org. Used under terms of the Apache License, Version 2.0.
+
+JDOM, version 2.0.6.
+Copyright © 2000-2015 Jason Hunter and Brett McLaughlin.
+Available at www.jdom.org.
+Used under terms of a modified Apache License.
+
+JH Labs Image Filters.
+Copyright © 1998-2006 Jerry Huxtable.
+Available at www.jhlabs.com/ip/filters.
+Used under terms of the Apache License, Version 2.0.
+
+pdfbox-graphics2d, version 0.31.
+Copyright © 2017-2021 Emmeran Seehuber. Available at github.com/rototor/pdfbox-graphics2d. Used under terms of the Apache License, Version 2.0.
+
+Simple Logging Facade for Java (SLF4J), version 1.7.30.
+Copyright © 2004-2019 QOS.ch. Available at www.slf4j.org. Used under terms of the MIT license.
+Map Overlays
+
+Most outline map overlays included in G.Projector are based on the Micro World Data Bank II (MWDB II) dataset, originally created by Fred Pospeschil and Antonio Rivera. Note that G.Projector uses outline data dated 2011 as available for download from Pospeschil's website with minor modifications. Although some national borders have since changed, the border outlines included in G.Projector may not reflect all such changes.
+References
+
+Cartography texts useful in the development of G.Projector are listed separately.

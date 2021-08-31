@@ -1,16 +1,33 @@
 pkgbase = gprojector
-	pkgdesc = Transforms an equirectangular map image into many global and regional map projections
-	pkgver = 2.4.2
+	pkgdesc = Interactive tool for exploring map projections
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = http://www.giss.nasa.gov/tools/gprojector/
+	url = https://www.giss.nasa.gov/tools/gprojector/
 	install = gprojector.install
 	arch = any
-	license = unknown
-	depends = java-runtime
-	source = https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-2.4.2.tgz
-	source = gprojector
-	md5sums = 3857403e02a216c20992b4a0619aa7a7
-	md5sums = e59cbbefe3fe464b6fc8d11e087c7a8f
+	groups = nasa-tools
+	license = custom
+	makedepends = unzip
+	depends = java-runtime>=8
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	source = https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-3.0.0.zip
+	source = LICENSES
+	source = gprojector-script.patch
+	source = gprojector16.png
+	source = gprojector32.png
+	source = gprojector48.png
+	source = gprojector64.png
+	source = gprojector128.png
+	source = gprojector.desktop
+	sha1sums = 1604ae67489312d79cee4fd90205d7a20e262769
+	sha1sums = 01c11fd7393d5043e7444743cbbc343b1904c729
+	sha1sums = 35633c41c1c97ad6b708e2075637590dc5c401d7
+	sha1sums = d33941fd5b6d9baab4af8a83539a599eff7046b3
+	sha1sums = 02089612edc7e9d1c3f616f6dc6c91df8cf33261
+	sha1sums = 6cbcd85a343a071f5713ac7646f269b88d8f0086
+	sha1sums = e877f1f2a877fb7e146e32fe8684c61eba1ffd07
+	sha1sums = 52d228bc9e26c66521bf96c3468c22773786aeea
+	sha1sums = 31c6bb7f7946ca55723d66d543cab625dc3c9709
 
 pkgname = gprojector
-

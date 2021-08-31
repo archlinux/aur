@@ -1,0 +1,14 @@
+--- gprojector.sh	2021-08-04 17:11:28.000000000 +0800
++++ gprojector.sh.new	2021-08-27 17:46:29.601964681 +0800
+@@ -1,8 +1,8 @@
+ #!/bin/sh
+ #
+ 
+-SCRIPT=`readlink -f $0`
+-SCRIPTDIR=`dirname $SCRIPT`
++CLASSPATH='/usr/share/java/gprojector/*'
++MAIN_CLASS='gov.nasa.giss.projector.GProjector'
+ 
+-java -Xms512m -Xmx2000m -jar $SCRIPTDIR/jars/G.Projector.jar "$@"
++java -Xms512m -cp "${CLASSPATH}" "${MAIN_CLASS}" "$@"
+ 

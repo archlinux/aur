@@ -1,11 +1,13 @@
 post_install() {
-	echo ">>> If G.Projector won't open a file because it's too large,"
-	echo ">>> run it with the -m option to increase memory size, e.g.:"
-	echo ">>>        gprojector -m 4096"
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+    update-desktop-database -q
 }
 
 post_upgrade() {
-	echo ">>> If G.Projector won't open a file because it's too large,"
-	echo ">>> run it with the -m option to increase memory size, e.g.:"
-	echo ">>>        gprojector -m 4096"
+  post_install
 }
+
+post_remove() {
+  post_install
+}
+
