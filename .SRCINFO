@@ -8,28 +8,17 @@ pkgbase = python-stsci.sphinxext
 	license = BSD
 	license = LPPL
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = python-d2to1
-	makedepends = python2-d2to1
 	makedepends = python-stsci.distutils
-	makedepends = python2-stsci.distutils
 	source = https://files.pythonhosted.org/packages/source/s/stsci.sphinxext/stsci.sphinxext-1.2.1.tar.gz
 	source = fix_new_sphinx.patch
 	md5sums = d23f6ad057a4af86a6ce3771bddb1754
 	md5sums = fafd43af38820f2c7ea301287909e16e
 
 pkgname = python-stsci.sphinxext
-	depends = python
 	depends = python-sphinx>=0.6.3
 	depends = python-numpydoc
 	depends = python-matplotlib
 	optdepends = python-sphinx>=0.6.3
 	optdepends = python-numpydoc: Provides support for Numpy-style docstring syntax
 	optdepends = python-matplotlib: Provides matplotlib extensions for inline plotting
-
-pkgname = python2-stsci.sphinxext
-	depends = python2
-	depends = python2-sphinx>=0.6.3
-	depends = python2-numpydoc
-	depends = python2-matplotlib
-
