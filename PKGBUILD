@@ -5,7 +5,7 @@
 # module.
 
 pkgname=blender-as-py-module
-pkgver=2.93.1
+pkgver=2.93.3
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite, to be used as Python module. Useful for programmatic/batch rendering."
 arch=('x86_64')
