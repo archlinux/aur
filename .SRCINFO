@@ -1,6 +1,6 @@
 pkgbase = wsid
 	pkgdesc = web show image directory
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/matheuz1210/wsid
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = wsid
 	makedepends = git
 	depends = python>=3.9
 	optdepends = python-pyqt5: for gui
-	source = wsid::git+https://github.com/matheuz1210/wsid#tag=0.2
+	source = wsid::git+https://github.com/matheuz1210/wsid#tag=0.3
 	b2sums = SKIP
 
 pkgname = wsid
