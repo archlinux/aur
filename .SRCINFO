@@ -9,9 +9,10 @@ pkgbase = python-osqp
 	makedepends = python-pytest
 	depends = python-numpy
 	depends = python-scipy
+	depends = python-qdldl
 	provides = python-osqp
 	conflicts = python-osqp-git
-	source = git://github.com/oxfordcontrol/osqp-python.git#tag=v0.6.1
+	source = git://github.com/oxfordcontrol/osqp-python.git#tag=v0.6.2.post0
 	source = git://github.com/oxfordcontrol/osqp.git
 	source = git://github.com/oxfordcontrol/qdldl.git
 	sha256sums = SKIP
@@ -19,4 +20,3 @@ pkgbase = python-osqp
 	sha256sums = SKIP
 
 pkgname = python-osqp
-

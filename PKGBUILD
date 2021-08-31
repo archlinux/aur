@@ -8,6 +8,7 @@ url="http://github.com/oxfordcontrol/osqp-python"
 depends=(
     'python-numpy'
     'python-scipy'
+    'python-qdldl'
     ) 
 makedepends=('python-setuptools'
 	     'python-pytest')
