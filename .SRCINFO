@@ -1,6 +1,6 @@
 pkgbase = python-fiat-git
 	pkgdesc = Generation of arbitrary order Lagrange elements on lines, triangles, and tetrahedra.
-	pkgver = 20200113
+	pkgver = 2019.1.0.70.g2f19f48
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/fiat
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = python-fiat-git
 	md5sums = SKIP
 
 pkgname = python-fiat-git
-
