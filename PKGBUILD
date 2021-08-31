@@ -12,7 +12,7 @@ depends=('coreutils' 'util-linux' 'bash' 'wget' 'tar' 'zstd')
 makedepends=('git')
 optdepends=('debootstrap: debian support'
             'qemu-user-static: foreign architectures support'
-            'rpm2cpio: rpm-bootstrap support')
+            'rpmextract: rpm-bootstrap support')
 source=("git+https://github.com/alealexpro100/linux_install.git")
 md5sums=('SKIP')
 

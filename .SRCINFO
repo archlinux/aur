@@ -14,7 +14,7 @@ pkgbase = linux_install-git
 	depends = zstd
 	optdepends = debootstrap: debian support
 	optdepends = qemu-user-static: foreign architectures support
-	optdepends = rpm2cpio: rpm-bootstrap support
+	optdepends = rpmextract: rpm-bootstrap support
 	source = git+https://github.com/alealexpro100/linux_install.git
 	md5sums = SKIP
 
