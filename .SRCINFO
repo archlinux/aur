@@ -1,0 +1,26 @@
+pkgbase = lib32-mozjpeg-git
+	pkgdesc = Improved JPEG encoder
+	pkgver = v4.0.3.r197.g512a7c3a
+	pkgrel = 1
+	url = https://github.com/mozilla/mozjpeg
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = nasm
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-libpng
+	depends = lib32-glibc
+	depends = mozjpeg-git
+	provides = lib32-libjpeg
+	provides = libjpeg.so
+	provides = libturbojpeg.so
+	provides = lib32-libjpeg-turbo
+	provides = lib32-mozjpeg
+	conflicts = lib32-libjpeg
+	conflicts = lib32-mozjpeg
+	conflicts = lib32-libjpeg-turbo
+	source = git+https://github.com/mozilla/mozjpeg.git
+	sha512sums = SKIP
+
+pkgname = lib32-mozjpeg-git
