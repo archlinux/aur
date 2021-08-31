@@ -1,6 +1,6 @@
 # Maintainer: Erik Reider <erik.reider@protonmail.com>
 pkgname=sway-audio-idle-inhibit-git
-pkgver=0.1
+pkgver=0.1.r18.c582197
 pkgrel=1
 pkgdesc="Prevents swayidle from sleeping while any application is outputting or receiving audio"
 _pkgfoldername=SwayAudioIdleInhibit
