@@ -1,10 +1,11 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: xginn8 <mamcgi@gmail.com>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Dan Beste <Dan.Ray.Beste@gmail.com>
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 _pkgname='python-black'
 pkgname="${_pkgname}-git"
-pkgver=20.8b1.r24.g6dddbd7
+pkgver=21.8b0.r2.g77d11bb
 pkgrel=1
 pkgdesc='Uncompromising Python code formatter'
 arch=('any')

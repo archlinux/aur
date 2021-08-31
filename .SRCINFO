@@ -1,6 +1,6 @@
 pkgbase = python-black-git
 	pkgdesc = Uncompromising Python code formatter
-	pkgver = 20.8b1.r24.g6dddbd7
+	pkgver = 21.8b0.r2.g77d11bb
 	pkgrel = 1
 	url = https://github.com/psf/black
 	arch = any
@@ -25,4 +25,3 @@ pkgbase = python-black-git
 	sha256sums = SKIP
 
 pkgname = python-black-git
-
