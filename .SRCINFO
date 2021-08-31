@@ -1,0 +1,19 @@
+pkgbase = gphoto2-git
+	pkgdesc = A digital camera download and access program.
+	pkgver = gphoto2+2.5.27+27+g35af480
+	pkgrel = 1
+	url = http://www.gphoto.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = libgphoto2
+	depends = popt
+	provides = gphoto2-git
+	provides = gphoto2
+	conflicts = gphoto2
+	replaces = gphoto2
+	source = gphoto2-git::git+https://github.com/gphoto/gphoto2
+	sha256sums = SKIP
+
+pkgname = gphoto2-git
