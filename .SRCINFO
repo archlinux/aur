@@ -1,6 +1,6 @@
 pkgbase = linux_install-git
 	pkgdesc = Install various distros from Linux to any architecture.
-	pkgver = 0.5.3.r0.g62bf965
+	pkgver = 0.5.4.r0.g65f53b0
 	pkgrel = 1
 	url = https://github.com/alealexpro100/linux_install
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = linux_install-git
 	depends = zstd
 	optdepends = debootstrap: debian support
 	optdepends = qemu-user-static: foreign architectures support
+	optdepends = rpm2cpio: rpm-bootstrap support
 	source = git+https://github.com/alealexpro100/linux_install.git
 	md5sums = SKIP
 
