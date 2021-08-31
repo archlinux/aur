@@ -1,0 +1,24 @@
+From 1b2bbf7b5f2ff585796a8a9644d04fe7beb5777a Mon Sep 17 00:00:00 2001
+From: Leo P <junk@slact.net>
+Date: Mon, 30 Aug 2021 21:56:30 -0400
+Subject: [PATCH] fix failure to build with GCC11
+
+---
+ nano/lib/threading.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/nano/lib/threading.hpp b/nano/lib/threading.hpp
+index f6ab4e18..5f09666f 100644
+--- a/nano/lib/threading.hpp
++++ b/nano/lib/threading.hpp
+@@ -5,6 +5,7 @@
+ #include <nano/lib/utility.hpp>
+ 
+ #include <boost/thread/thread.hpp>
++#include <thread>
+ 
+ namespace nano
+ {
+-- 
+2.33.0
+
