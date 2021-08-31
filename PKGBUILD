@@ -2,7 +2,7 @@
 
 pkgname=apple-music-electron-git
 _pkgname=Apple-Music-Electron
-pkgver=2.5.0.574.de285c2
+pkgver=2.5.0.575.00c30cb
 pkgrel=1
 pkgdesc="Electron wrapper for Apple Music based on Electron 14.0.0"
 arch=("aarch64" "armv7h" "i686" "x86_64")
