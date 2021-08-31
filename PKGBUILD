@@ -1,6 +1,6 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=fetch-scm
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='System information fetcher written in GNU Guile Scheme'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/KikyTokamuro/fetch.scm"
 license=('MIT')
 depends=('guile')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7c8eeb6618fc144b7e18eccded0df766d5949e09e505cce0930c441f04563821')
+sha256sums=('9379d17badf0d01207880a5cb3af84dbe00b05e524aefc6fdec3734f3185fb53')
 
 package() {
   cd "fetch.scm-$pkgver"
