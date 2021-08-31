@@ -1,6 +1,6 @@
 --- a/file.c
 +++ b/file.c
-@@ -78,7 +78,7 @@
+@@ -70,7 +70,7 @@
  /*
   * ntfs_getattr - inode_operations::getattr
   */
@@ -9,7 +9,7 @@
  		 struct kstat *stat, u32 request_mask, u32 flags)
  {
  	struct inode *inode = d_inode(path->dentry);
-@@ -92,7 +92,7 @@
+@@ -84,7 +84,7 @@
  
  	stat->attributes_mask |= STATX_ATTR_COMPRESSED | STATX_ATTR_ENCRYPTED;
  
@@ -18,7 +18,7 @@
  
  	stat->result_mask |= STATX_BTIME;
  	stat->btime = ni->i_crtime;
-@@ -734,7 +734,7 @@
+@@ -726,7 +726,7 @@
  /*
   * ntfs3_setattr - inode_operations::setattr
   */
@@ -27,7 +27,7 @@
  		  struct iattr *attr)
  {
  	struct super_block *sb = dentry->d_sb;
-@@ -753,7 +753,7 @@
+@@ -745,7 +745,7 @@
  		ia_valid = attr->ia_valid;
  	}
  
@@ -36,7 +36,7 @@
  	if (err)
  		goto out;
  
-@@ -778,10 +778,10 @@
+@@ -770,10 +770,10 @@
  		ni->ni_flags |= NI_FLAG_UPDATE_PARENT;
  	}
  
@@ -52,7 +52,7 @@
 
 --- a/fsntfs.c
 +++ b/fsntfs.c
-@@ -1619,7 +1619,7 @@
+@@ -1602,7 +1602,7 @@
  		lbo = (u64)lcn << cluster_bits;
  		len = (u64)clen << cluster_bits;
  new_bio:
@@ -64,7 +64,7 @@
 
 --- a/inode.c
 +++ b/inode.c
-@@ -1165,7 +1165,7 @@
+@@ -1171,7 +1171,7 @@
  	return ERR_PTR(err);
  }
  
@@ -73,16 +73,16 @@
  				struct inode *dir, struct dentry *dentry,
  				const struct cpu_str *uni, umode_t mode,
  				dev_t dev, const char *symname, u32 size,
-@@ -1278,7 +1278,7 @@
+@@ -1284,7 +1284,7 @@
  		goto out3;
  	}
  	inode = &ni->vfs_inode;
 -	inode_init_owner(mnt_userns, inode, dir, mode);
 +	inode_init_owner(inode, dir, mode);
+ 	mode = inode->i_mode;
  
  	inode->i_atime = inode->i_mtime = inode->i_ctime = ni->i_crtime =
- 		current_time(inode);
-@@ -1578,7 +1578,7 @@
+@@ -1575,7 +1575,7 @@
  
  #ifdef CONFIG_NTFS3_FS_POSIX_ACL
  	if (!S_ISLNK(mode) && (sb->s_flags & SB_POSIXACL)) {
@@ -130,7 +130,7 @@
  				  NULL, 0, NULL);
  
  	ni_unlock(ni);
-@@ -193,7 +193,7 @@
+@@ -195,7 +195,7 @@
  /*
   * ntfs_symlink - inode_operations::symlink
   */
@@ -139,7 +139,7 @@
  			struct dentry *dentry, const char *symname)
  {
  	u32 size = strlen(symname);
-@@ -202,7 +202,7 @@
+@@ -204,7 +204,7 @@
  
  	ni_lock_dir(ni);
  
@@ -148,7 +148,7 @@
  				  0, symname, size, NULL);
  
  	ni_unlock(ni);
-@@ -213,7 +213,7 @@
+@@ -215,7 +215,7 @@
  /*
   * ntfs_mkdir- inode_operations::mkdir
   */
@@ -157,7 +157,7 @@
  		      struct dentry *dentry, umode_t mode)
  {
  	struct inode *inode;
-@@ -221,7 +221,7 @@
+@@ -223,7 +223,7 @@
  
  	ni_lock_dir(ni);
  
@@ -166,13 +166,13 @@
  				  0, NULL, 0, NULL);
  
  	ni_unlock(ni);
-@@ -249,7 +249,7 @@
+@@ -251,7 +251,7 @@
  /*
   * ntfs_rename - inode_operations::rename
   */
--static int ntfs_rename(struct user_namespace *mnt_userns, struct inode *old_dir,
-+static int ntfs_rename(struct inode *old_dir,
- 		       struct dentry *old_dentry, struct inode *new_dir,
+-static int ntfs_rename(struct user_namespace *mnt_userns, struct inode *dir,
++static int ntfs_rename(struct inode *dir,
+ 		       struct dentry *dentry, struct inode *new_dir,
  		       struct dentry *new_dentry, u32 flags)
  {
 
@@ -192,7 +192,7 @@
  		  struct iattr *attr);
  int ntfs_file_open(struct inode *inode, struct file *file);
  int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
-@@ -650,7 +650,7 @@
+@@ -668,7 +668,7 @@
  int ntfs_flush_inodes(struct super_block *sb, struct inode *i1,
  		      struct inode *i2);
  int inode_write_data(struct inode *inode, const void *data, size_t bytes);
@@ -201,7 +201,7 @@
  				struct inode *dir, struct dentry *dentry,
  				const struct cpu_str *uni, umode_t mode,
  				dev_t dev, const char *symname, u32 size,
-@@ -791,17 +791,17 @@
+@@ -810,17 +810,17 @@
  /* globals from xattr.c */
  #ifdef CONFIG_NTFS3_FS_POSIX_ACL
  struct posix_acl *ntfs_get_acl(struct inode *inode, int type);
@@ -251,7 +251,7 @@
 
 --- a/xattr.c
 +++ b/xattr.c
-@@ -485,7 +485,7 @@
+@@ -484,7 +484,7 @@
  		kfree(acl);
  }
  
@@ -260,7 +260,7 @@
  					 struct inode *inode, int type,
  					 int locked)
  {
-@@ -521,7 +521,7 @@
+@@ -520,7 +520,7 @@
  
  	/* Translate extended attribute to acl. */
  	if (err >= 0) {
@@ -269,7 +269,7 @@
  		if (!IS_ERR(acl))
  			set_cached_acl(inode, type, acl);
  	} else {
-@@ -539,10 +539,10 @@
+@@ -538,10 +538,10 @@
  struct posix_acl *ntfs_get_acl(struct inode *inode, int type)
  {
  	/* TODO: init_user_ns? */
@@ -282,7 +282,7 @@
  				    struct inode *inode, struct posix_acl *acl,
  				    int type, int locked)
  {
-@@ -600,7 +600,7 @@
+@@ -599,7 +599,7 @@
  		if (!value)
  			return -ENOMEM;
  
@@ -291,7 +291,7 @@
  		if (err < 0)
  			goto out;
  	}
-@@ -619,13 +619,13 @@
+@@ -617,13 +617,13 @@
  /*
   * ntfs_set_acl - inode_operations::set_acl
   */
@@ -324,9 +324,9 @@
  			      struct inode *inode, int type, const void *value,
  			      size_t size)
  {
-@@ -658,24 +658,24 @@
- 	if (!(inode->i_sb->s_flags & SB_POSIXACL))
+@@ -660,24 +660,24 @@
  		return -EOPNOTSUPP;
+ 	}
  
 -	if (!inode_owner_or_capable(mnt_userns, inode))
 +	if (!inode_owner_or_capable(inode))
@@ -353,7 +353,7 @@
  
  release_and_out:
  	ntfs_posix_acl_release(acl);
-@@ -687,7 +687,7 @@
+@@ -689,7 +689,7 @@
   *
   * Called from ntfs_create_inode().
   */
@@ -362,7 +362,7 @@
  		  struct inode *dir)
  {
  	struct posix_acl *default_acl, *acl;
-@@ -699,7 +699,7 @@
+@@ -701,7 +701,7 @@
  	 */
  	inode->i_default_acl = NULL;
  
@@ -371,7 +371,7 @@
  
  	if (!default_acl || default_acl == ERR_PTR(-EOPNOTSUPP)) {
  		inode->i_mode &= ~current_umask();
-@@ -727,13 +727,13 @@
+@@ -729,13 +729,13 @@
  	}
  
  	if (default_acl)
@@ -387,7 +387,7 @@
  				      1);
  
  	posix_acl_release(acl);
-@@ -748,7 +748,7 @@
+@@ -750,7 +750,7 @@
  /*
   * ntfs_acl_chmod - Helper for ntfs3_setattr().
   */
@@ -396,7 +396,7 @@
  {
  	struct super_block *sb = inode->i_sb;
  
-@@ -758,7 +758,7 @@
+@@ -760,7 +760,7 @@
  	if (S_ISLNK(inode->i_mode))
  		return -EOPNOTSUPP;
  
@@ -405,7 +405,7 @@
  }
  
  /*
-@@ -764,7 +764,7 @@
+@@ -766,7 +766,7 @@
  /*
   * ntfs_permission - inode_operations::permission
   */
@@ -414,7 +414,7 @@
  		    int mask)
  {
  	if (ntfs_sb(inode->i_sb)->options.no_acs_rules) {
-@@ -772,7 +772,7 @@
+@@ -774,7 +774,7 @@
  		return 0;
  	}
  
@@ -423,7 +423,7 @@
  }
  
  /*
-@@ -884,7 +884,7 @@
+@@ -886,7 +886,7 @@
  		     sizeof(XATTR_NAME_POSIX_ACL_DEFAULT)))) {
  		/* TODO: init_user_ns? */
  		err = ntfs_xattr_get_acl(
@@ -432,7 +432,7 @@
  			name_len == sizeof(XATTR_NAME_POSIX_ACL_ACCESS) - 1
  				? ACL_TYPE_ACCESS
  				: ACL_TYPE_DEFAULT,
-@@ -903,7 +903,7 @@
+@@ -905,7 +905,7 @@
   * ntfs_setxattr - inode_operations::setxattr
   */
  static noinline int ntfs_setxattr(const struct xattr_handler *handler,
@@ -441,7 +441,7 @@
  				  struct dentry *de, struct inode *inode,
  				  const char *name, const void *value,
  				  size_t size, int flags)
-@@ -1013,6 +1013,6 @@
+@@ -1015,6 +1015,6 @@
  		     sizeof(XATTR_NAME_POSIX_ACL_DEFAULT)))) {
  		err = ntfs_xattr_set_acl(
 -			mnt_userns, inode,
