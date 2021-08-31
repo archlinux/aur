@@ -2,9 +2,9 @@
 # Based on the PKGBUILD for gdlauncher.
 pkgname="gdlauncher-beta"
 _pkgname="gdlauncher"
-pkgver="1.1.15.beta.2"
-_pkgver="1.1.15-beta.2"
-pkgrel=2
+pkgver="1.1.15.beta.3"
+_pkgver="1.1.15-beta.3"
+pkgrel=1
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -15,8 +15,8 @@ conflicts=('gdlauncher' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${_pkgver}.tar.gz"
         "use-system-7za-and-disable-updater.patch")
-md5sums=('06eff5e281d3f4c3896be2119c373711'
-         '0ccba0e195278ab1de3fec6ea0445afa')
+md5sums=('0d8ff9bdcd1cc5df2be4962adfaa71cf'
+         '82fbdbfac2a7c41d1209734e1f5633b7')
 icon_sizes=(48 128 256 1024)
 
 prepare() {
@@ -38,7 +38,6 @@ build() {
     cd "${srcdir}/GDLauncher-${_pkgver}/"
 
     # Install required npm packages
-    export CARGO_HOME="${srcdir}/cargo-cache"
     npm install --cache="${srcdir}"/npm-cache
 
     # Build the program
