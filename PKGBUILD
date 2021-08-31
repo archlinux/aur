@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=bbcli
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="inoffical Bitbucket.org command line tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -45,3 +45,4 @@ package() {
 }
 
 # vim:set ts=4 sw=4 et:
+sha256sums=('3da96c4c80fa21ad91e8100225e4a7a2a27690ec688c4f065c9befe6fea8ae9b')
