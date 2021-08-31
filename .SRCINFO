@@ -1,6 +1,6 @@
 pkgbase = reason
 	pkgdesc = A shell for research papers
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/jaywonchung/reason
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = reason
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = reason-0.3.2.tar.gz::https://github.com/jaywonchung/reason/archive/v0.3.2.tar.gz
-	b2sums = 4c4f66afabf6ef7ca5f61988f620a413590a2778e4a201b05f5acea02d2aff5e8c3d578b18ed4a064872f76cf5bf7c83744b7917c0dcd8135d432f1fadaf3d43
+	source = reason-0.3.3.tar.gz::https://github.com/jaywonchung/reason/archive/v0.3.3.tar.gz
+	b2sums = 4548cb96618310661271a4132754817e4be15ae5073a3ba8e30b8e9bc52b1ca5e98dd519c49a3e80ebf805d779dd421cea6f5133ee5a40ee42a53e377952c3e9
 
 pkgname = reason

@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=reason
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A shell for research papers"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('4c4f66afabf6ef7ca5f61988f620a413590a2778e4a201b05f5acea02d2aff5e8c3d578b18ed4a064872f76cf5bf7c83744b7917c0dcd8135d432f1fadaf3d43')
+b2sums=('4548cb96618310661271a4132754817e4be15ae5073a3ba8e30b8e9bc52b1ca5e98dd519c49a3e80ebf805d779dd421cea6f5133ee5a40ee42a53e377952c3e9')
 
 prepare() {
   cd "$pkgname-$pkgver"
