@@ -12,11 +12,10 @@ pkgbase = python-dolfin-git
 	depends = dolfin-git
 	depends = python-pkgconfig
 	depends = python-ply
-	depends = slepc4py
 	optdepends = python-matplotlib: plotting support
+	optdepends = slepc4py
 	options = !emptydirs
 	source = dolfin::git+https://github.com/FEniCS/dolfinx.git
 	md5sums = SKIP
 
 pkgname = python-dolfin-git
-
