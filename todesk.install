@@ -15,7 +15,7 @@ post_install() {
   $ECHO "\033[36m**************************************************************\033[0m"
   $ECHO "\033[36m*  todeskd daemon service must be running for todesk to work *\033[0m"
   $ECHO "\033[36m*  Type: systemctl start todeskd.service                     *\033[0m"
-  $ECHO "\033[36m*  Todesk Remote Control doesn't support Wayland, Xorg ONLY!  *\033[0m"
+  $ECHO "\033[36m*  Todesk Remote Control doesn't support Wayland, Xorg ONLY! *\033[0m"
   $ECHO "\033[36m**************************************************************\033[0m"
 }
 
