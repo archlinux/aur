@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
 pkgver=2.25.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
 license=('MIT')
-depends=('electron')
+depends=('electron12')
 makedepends=('nvm' 'yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
@@ -35,7 +35,7 @@ prepare() {
   sed -i '/husky/d' package.json
 
   _ensure_local_nvm
-  nvm install 14.17.5
+  nvm install 14.17.6
 }
 
 build() {
