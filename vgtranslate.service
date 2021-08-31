@@ -1,0 +1,13 @@
+[Unit]
+Description=Vgtranslate service for retroarch
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python2 /usr/share/vgtranslate/serve.py
+WorkingDirectory=/usr/share/vgtranslate/
+PIDFile=/run/vgranslate.pid
+
+[Install]
+WantedBy=multi-user.target

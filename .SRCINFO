@@ -1,0 +1,17 @@
+pkgbase = vgtranslate-git
+	pkgdesc = VgTranslate service for retroarch
+	pkgver = r66.1b68c26
+	pkgrel = 1
+	url = http://gitlab.com/spherebeaker/vgtranslate
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python2
+	provides = vgtranslate
+	conflicts = vgtranslate
+	source = vgtranslate-git::git+https://gitlab.com/spherebeaker/vgtranslate.git
+	md5sums = SKIP
+
+pkgname = vgtranslate-git
