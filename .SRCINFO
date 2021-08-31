@@ -1,6 +1,6 @@
 pkgbase = python-pygmsh
 	pkgdesc = Gmsh for Python
-	pkgver = 7.1.11
+	pkgver = 7.1.12
 	pkgrel = 1
 	url = https://github.com/nschloe/pygmsh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-pygmsh
 	makedepends = python-pip
 	depends = python-meshio
 	depends = gmsh
-	source = https://github.com/nschloe/pygmsh/archive/7.1.11.tar.gz
-	sha512sums = ee08578a9198e1725baaba55f13e052ef6ddf523bde5040c052837df72d57ab9ef9aa6b3fbba2ba649a222175f2504edf21427a6b6707ad3e28e8bca113976ce
+	source = https://github.com/nschloe/pygmsh/archive/7.1.12.tar.gz
+	sha512sums = 54aecba8c32cedc5517b99b931378a27e0aadcbca99698ff357707bbbd62d91358c728eb396064443c93a9e1bc4de166e4adce76f99bd63f4afc698d6e5b4bb7
 
 pkgname = python-pygmsh
