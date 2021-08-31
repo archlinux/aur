@@ -2,7 +2,7 @@
 
 pkgname=linux_install-git
 _reponame=linux_install
-pkgver=0.5.3.r0.g62bf965
+pkgver=0.5.4.r0.g65f53b0
 pkgrel=1
 pkgdesc="Install various distros from Linux to any architecture."
 arch=('any')
@@ -11,7 +11,8 @@ license=('GPL3')
 depends=('coreutils' 'util-linux' 'bash' 'wget' 'tar' 'zstd')
 makedepends=('git')
 optdepends=('debootstrap: debian support'
-            'qemu-user-static: foreign architectures support')
+            'qemu-user-static: foreign architectures support'
+            'rpm2cpio: rpm-bootstrap support')
 source=("git+https://github.com/alealexpro100/linux_install.git")
 md5sums=('SKIP')
 
