@@ -8,6 +8,7 @@ pkgbase = meilisearch-git
 	makedepends = rust
 	depends = gcc-libs
 	provides = meilisearch
+	conflicts = meilisearch
 	source = meilisearch::git+https://github.com/meilisearch/MeiliSearch.git
 	source = meilisearch.service
 	source = meilisearch.tmpfiles

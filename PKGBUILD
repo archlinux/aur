@@ -12,8 +12,11 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
 provides=('meilisearch')
-source=(${_pkgname}::git+https://github.com/meilisearch/MeiliSearch.git
-        ${_pkgname}.service ${_pkgname}.tmpfiles ${_pkgname}.sysusers ${_pkgname}.conf)
+conflicts=('meilisearch')
+source=(
+  ${_pkgname}::git+https://github.com/meilisearch/MeiliSearch.git
+  ${_pkgname}.service ${_pkgname}.tmpfiles ${_pkgname}.sysusers ${_pkgname}.conf
+)
 sha512sums=('SKIP'
             '9531963580e1d20cc87c7062d727367b628a02b3e599311df7272e59cc14b0b7d16218b793436587b4a64d7fe009f877a86f5b18bdd42783afd8f42af9be0af8'
             '76284bf4c436a6b3365edd6bd12ffcb186b721d284b29933e77ddc841d333be9eeb2701c89fba1567a8eedda52787be8d3c5f55809a051488b7295fbb6842bce'
