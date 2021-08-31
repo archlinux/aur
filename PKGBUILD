@@ -1,5 +1,5 @@
 pkgname=nanocurrency-node-git
-pkgver=16.0RC1.r343.g555f421c
+pkgver=23.0.0.pre99.68936b470
 pkgrel=1
 pkgdesc="Nano (formerly RaiBlocks) is a cryptocurrency designed from the ground up for scalable instant transactions and zero transaction fees. Command-line version without wallet GUI or Qt dependencies."
 arch=('i686' 'x86_64')
@@ -10,82 +10,131 @@ depends=('boost>=1.69.0' 'boost-libs>=1.69.0')
 provides=(raiblocks nanocurrency nanocurrency-node)
 conflicts=("raiblocks" "raiblocks-git" "raiblocks-cli-git" "nanocurrency-git")
 install=install
-pkgver() {
-  cd "nano-node"
-  git describe --long --tags | sed 's/^[vV]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+_ver_part() {
+  grep -e "PACKAGE_VERSION_$1\s\+\"\?[0-9]\+" ./CMakeLists.txt | sed -e 's/.*[^0-9]\([0-9]\+\)[^0-9]*/\1/'
 }
+
+pkgver() {
+  cd "$srcdir/nano-node"
+  _pre_release=$(_ver_part PRE_RELEASE)
+  if [[ $_pre_release = 0 ]]; then
+    _pre_release=""
+  else
+    _pre_release=".pre${_pre_release}"
+  fi
+  echo "$(_ver_part MAJOR).$(_ver_part MINOR).$(_ver_part PATCH)${_pre_release}.$(git rev-parse --short HEAD)"
+}
+
 
 source=(nanowallet.desktop
   nanowallet128.png
   nano-node.service
-  boost-1.69.patch
-  git+https://github.com/nanocurrency/nano-node.git
+  fix-build-for-gcc11.patch
+  fix-build-for-boost-1.76.patch
+  "git+https://github.com/nanocurrency/nano-node.git#branch=develop"
   git+https://github.com/weidai11/cryptopp.git
-  "git+https://github.com/nanocurrency/lmdb.git#branch=lmdb_0_9_21"
+  git+https://github.com/nanocurrency/lmdb.git
   git+https://github.com/miniupnp/miniupnp.git
-  git+https://github.com/clemahieu/phc-winner-argon2.git)
+  git+https://github.com/nanocurrency/phc-winner-argon2.git
+  git+https://github.com/google/flatbuffers.git
+  git+https://github.com/nanocurrency/rocksdb.git
+  git+https://github.com/cryptocode/cpptoml.git
+  git+https://github.com/google/googletest.git
+  git+https://github.com/nanocurrency/nano-pow-server.git
+  git+https://github.com/nanocurrency/diskhash.git
+  )
 
 sha256sums=('6b824bfd5a9f2c1cd8d6a30f858a7bdc7813a448f4894a151da035dac5af2f91'
             '27179351dbc3e000d54b5b13f0c2326b4c4bd06e93b1d0b2ea1849609aeadc2e'
             'c219c91db98f33097e7d96ef0f0c95e4b9d6226ac2ab90e30be7f955c43bfa35'
-            '6c9df073c30df4669b4cdcbf02e8008d7c5749b06b2288cab19a578f0cdc67ff'
+            'fff6e6ab537c33e522a6c91d1d917c8298c3c2a92e291b343663793bcf60336f'
+            '98ec1f48ecdcf5c6270ead3f50eae427b33a68eebcdf2c7432d91fabd12f1b81'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
 
+_submodule_config() {
+  submodule_name=$1
+  submodule_path=$2
+  if [[ -z "$submodule_path" ]]; then
+    submodule_path=$1
+  fi
+  
+  git config --file=.gitmodules "submodule.${submodule_name}.url" "$srcdir/${submodule_path}"
+  #git submodule init "${submodule_name}"
+  #git submodule update "${submodule_name}"
+}
+
 prepare() {
   cd "$srcdir/nano-node"
 
-  
-  if `grep Boost::system ./nano/node/CMakeLists.txt -q`; then
-    echo "patching for Boost 1.69 compatibility"
-    patch -p1 < $srcdir/boost-1.69.patch
-  fi
+  _submodule_config crypto/cryptopp cryptopp
+  _submodule_config lmdb
+  _submodule_config miniupnp
+  _submodule_config crypto/phc-winner-argon2 phc-winner-argon2
+  _submodule_config flatbuffers
+  _submodule_config rocksdb
+  _submodule_config cpptoml
+  _submodule_config googletest
+  _submodule_config nano-pow-server
+  _submodule_config diskhash
   
   git submodule init
+  git submodule update --recursive
 
-  git config submodule.cryptopp.url $srcdir/cryptopp
-  git config submodule.lmdb.url $srcdir/lmdb
-  git config submodule.miniupnp.url $srcdir/miniupnp
-  git config submodule.phc-winner-argon2.url $srcdir/phc-winner-argon2
+  patch --forward -p1 -i $srcdir/fix-build-for-gcc11.patch
+  patch --forward -p1 -i $srcdir/fix-build-for-boost-1.76.patch
+}
+build() {
 
-  git submodule update --init --recursive
-
-  _flags=( "-D NANO_GUI=OFF" )
+  cd "${srcdir}/nano-node"
+  # remove /bin from $PATH so that boost can be built
+  # see https://bugs.archlinux.org/task/64132
+  tmp_path=:$PATH:
+  remove_from_PATH='/bin'
+  tmp_path=${tmp_path/:$remove_from_PATH:/:}
+  tmp_path=${tmp_path%:}
+  tmp_path=${tmp_path#:}
+  PATH=$tmp_path
+  
+  _flags="-DNANO_GUI=OFF -DFAIL_ON_WARNINGS=OFF"
   
   if grep -q avx2 /proc/cpuinfo; then
     echo "using AVX2 optimizations"
-    _flags+=( "-D ENABLE_AVX2=ON" "-D PERMUTE_WITH_GATHER=ON" "-D PERMUTE_WITH_SHUFFLES=ON" )
+    _flags="${_flags} -DENABLE_AVX2=ON -DPERMUTE_WITH_GATHER=ON -DPERMUTE_WITH_SHUFFLES=ON"
   else
     echo "excluding unsupported AVX2 optimizations"
   fi
   if grep -q sse4 /proc/cpuinfo; then
     echo "build with SIMD optimizations"
-    _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=ON" )
+    _flags="${_flags} -DNANO_SIMD_OPTIMIZATIONS=ON"
   else
     echo "excluding unsupported SIMD optimizations"
-    _flags+=( "-D RAIBLOCKS_SIMD_OPTIMIZATIONS=OFF" )
+    _flag+="${_flags} -DNANO_SIMD_OPTIMIZATIONS=OFF"
   fi
-  cmake $_flags ./
-}
-
-build() {
-  cd "$srcdir/nano-node"
-  make nano_node
-  #make nano_lib #this only gets us a static lib now, which we don't want
+  
+  _cores=$(grep processor /proc/cpuinfo | wc -l)
+  #_cores=1
+  PATH=$PATH cmake $_flags ./
+  make -j${_cores} nano_node
 }
 
 package() {
   cd "$srcdir/nano-node"
 
   install -Dm755 nano_node "$pkgdir"/usr/bin/nano_node
-  ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
-  #install -Dm644 librai_lib.so "$pkgdir"/usr/lib/librai_lib.so
-  #ln -s /usr/lib/librai_lib.so "$pkgdir"/usr/lib/libnano_lib.so
+  #ln -s /usr/bin/nano_node "$pkgdir"/usr/bin/rai_node
 
   install -Dm644 "$srcdir"/nano-node.service "$pkgdir"/usr/lib/systemd/system/nano-node.service
-  ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
+  #ln -s /usr/lib/systemd/system/nano-node.service "$pkgdir"/usr/lib/systemd/system/raiblocks-node.service
 }
 # vim:set ts=2 sw=2 et:

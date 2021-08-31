@@ -1,0 +1,32 @@
+From cb8abd16b5e65f5b6410d146e38949823118867a Mon Sep 17 00:00:00 2001
+From: Leo P <junk@slact.net>
+Date: Mon, 30 Aug 2021 22:04:06 -0400
+Subject: [PATCH] fix failing build with boost >= 1.76
+
+---
+ nano/node/common.hpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/nano/node/common.hpp b/nano/node/common.hpp
+index 4672b778..d7e77e4f 100644
+--- a/nano/node/common.hpp
++++ b/nano/node/common.hpp
+@@ -112,6 +112,7 @@ struct hash<::nano::tcp_endpoint>
+ 		return ehash (endpoint_a);
+ 	}
+ };
++#ifndef BOOST_ASIO_HAS_STD_HASH
+ template <>
+ struct hash<boost::asio::ip::address>
+ {
+@@ -121,6 +122,7 @@ struct hash<boost::asio::ip::address>
+ 		return ihash (ip_a);
+ 	}
+ };
++#endif
+ }
+ namespace boost
+ {
+-- 
+2.33.0
+
