@@ -6,10 +6,10 @@ pkgbase = mcpkg-bin
 	arch = any
 	license = GPL-3.0
 	provides = mcpkg
-	source = mcpkg-a5a10bea5820f64c96ba7c99b923b8c1e8556924::https://github.com/CRISPYricePC/mcpkg/releases/download/2.2/mcpkg-2.2.jar
+	source = mcpkg-1617f2f8534c878c0f19881666b2c9153a788cab::https://github.com/CRISPYricePC/mcpkg/releases/download/2.2/mcpkg-2.2.jar
 	source = https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.2/README.md
-	source = https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.2/LICENSE.md
-	sha1sums = a5a10bea5820f64c96ba7c99b923b8c1e8556924
+	source = https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.2/LICENSE
+	sha1sums = 1617f2f8534c878c0f19881666b2c9153a788cab
 	sha1sums = SKIP
 	sha1sums = SKIP
 
