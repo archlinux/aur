@@ -1,4 +1,5 @@
 # Maintainer: Jakob Schlanstedt <schlanstedtjakob@gmail.com>
+# Contributor: Jakob Schlanstedt <schlanstedtjakob@gmail.com>
 pkgname=japokwm-git
 _pkgname=japokwm
 url=https://github.com/werererer/japokwm
@@ -18,7 +19,7 @@ makedepends=(
         )
 
 arch=("x86_64")
-source=("${_pkgname}::git+https://github.com/werererer/japokwm")
+source=("$_pkgname::git+https://github.com/werererer/japokwm")
 sha512sums=('SKIP')
 
 pkgver() {
