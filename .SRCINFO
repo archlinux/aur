@@ -1,5 +1,5 @@
 pkgbase = libdragon-git
-	pkgver = r241.d310a6b
+	pkgver = r296.b627161
 	pkgrel = 1
 	url = http://www.dragonminded.com/n64dev/libdragon
 	arch = x86_64
@@ -30,4 +30,3 @@ pkgname = libdragon-tools-git
 	provides = libdragon-tools
 	conflicts = libdragon-tools
 	options = 
-
