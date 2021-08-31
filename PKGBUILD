@@ -17,7 +17,7 @@ source=(
   "Apple-Music-Electron.desktop"
 )
 sha256sums=('SKIP'
-            '8281db32e062460e68b1c7652c13e77e5268049e1aeec1eeb59992623da53d94')
+            'bf9903e86cfa849dadf18b34e82d364d12edda9db851d97a66518d5999d8a95d')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
