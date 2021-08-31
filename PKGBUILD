@@ -75,6 +75,7 @@ package() {
             git clone https://github.com/Apple-Music-Electron/Apple-Music-Electron-Themes.git .
         fi
     else
+        mkdir -p /home/$USER/.cache/Apple\ Music/
         cd /home/$USER/.cache/Apple\ Music/
         echo Cloning Themes Repository
         git clone https://github.com/Apple-Music-Electron/Apple-Music-Electron-Themes.git themes
