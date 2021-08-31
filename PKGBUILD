@@ -1,6 +1,6 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='declarative manager of Arch packages'
 url='https://github.com/steven-omaha/pacdef'
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('python')
 checkdepends=('python-pytest' 'python-mock')
-sha256sums=('51f838b8b41da87a0c28677491030146b0941f049afdcf57e1ad42e27c718cbf')
+sha256sums=('d63f7d3bcae638e5458dd3acc8ee040dbbe13a15da3e6c1c5b9cb543844e4b45')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
