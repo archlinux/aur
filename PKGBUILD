@@ -30,11 +30,14 @@ optdepends=(
     'libdbusmenu-glib: For KDE global menu'
 )
 makedepends=(
-    'jq'
-    'libxdmcp'
     'bash'
     'git'
+    'jq'
+    'libxdmcp'
+    'nodejs-lts-fermium'
+    'npm6'
     'python'
+    'yarn'
 )
 source=(
     "git+${url}#tag=${pkgver}"
@@ -65,20 +68,11 @@ case "$CARCH" in
 esac
 
 install_node() {
-    if command -v "asdf" >/dev/null 2>&1; then
-        echo "installing node-v${_nodejs} with asdf"
-        
-        asdf install nodejs ${_nodejs}
-        asdf local nodejs ${_nodejs}
-    elif command -v "nvm" >/dev/null 2>&1; then
-        echo "installing node-v${_nodejs} with nvm"
-        
-        source /usr/share/nvm/init-nvm.sh
-        nvm install ${_nodejs}
-    else
-        echo "node-v${_nodejs} is required"
-        return 1
-    fi
+    mkdir ~/.npm-global
+
+    npm config set prefix '~/.npm-global'
+
+    export PATH=~/.npm-global/bin:$PATH
 }
 
 version() {
@@ -86,15 +80,7 @@ version() {
 }
 
 prepare() {
-    if ! command -v "node" >/dev/null 2>&1; then
-        install_node
-    elif [ $(version $( node --version )) -lt $(version ${_nodejs}) ]; then
-        install_node
-    fi
-    
-    if ! command -v "yarn" >/dev/null 2>&1; then
-        npm install -g yarn
-    fi
+    install_node
 }
 
 build() {
