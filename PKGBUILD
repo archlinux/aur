@@ -1,7 +1,8 @@
 # Maintainer: Klaus Alexander Seistrup <klaus@seistrup.dk>
 # -*- sh -*-
 
-pkgname=slrn
+pkgname=slrn-snapshot
+_pkgname=slrn
 pkgver=1.0.4.5
 _prever='pre1.0.4-5'
 pkgrel=1
@@ -15,7 +16,7 @@ provides=('slrn')
 conflicts=('slrn')
 backup=(etc/slrnrc)
 options=('!makeflags' 'docs' 'zipman')
-source=("https://jedsoft.org/snapshots/slrn-${_prever}.tar.gz")
+source=("https://jedsoft.org/snapshots/${_pkgname}-${_prever}.tar.gz")
 md5sums=(
   '953d88617e47a80693e6e48d07c7507e'
 )
@@ -33,7 +34,7 @@ b2sums=(
 )
 
 build() {
-  cd "$pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever" || exit 1
 
   ./configure \
     --prefix=/usr \
@@ -50,7 +51,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$_prever" || exit 1
+  cd "$_pkgname-$_prever" || exit 1
 
   make DESTDIR="$pkgdir" install
 
