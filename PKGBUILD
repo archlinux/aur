@@ -5,7 +5,7 @@ pkgbase=python-glymur
 _pyname=Glymur
 pkgname=('python-glymur')
 #'python-glymur-doc')
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 arch=('any')
@@ -13,9 +13,9 @@ url="https://glymur.readthedocs.org"
 license=('MIT')
 makedepends=('python-setuptools')
 #'python-sphinx')
-checkdepends=('python-pytest' 'python-lxml' 'python-numpy' 'subversion' 'openjpeg2' 'python-gdal' 'python-scikit-image')
+checkdepends=('python-pytest' 'subversion' 'python-lxml' 'python-numpy' 'openjpeg2' 'python-gdal' 'python-scikit-image')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3b1b133572ef83fbd13afac48dbf0c55')
+md5sums=('c5143e78cfd67d05aa7b2af04fb571ef')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
