@@ -1,31 +1,34 @@
-# Maintainer: "UnCO Lin" <trash__box <at> 163.com>
+# Maintainer: bartus
+# Contributor: "UnCO Lin" <trash__box <at> 163.com>
 # Contributor: PLum <plum.michalski <at> gmail.com>
+
 pkgname=pcompress-git
 _pkgname=pcompress
-pkgver=434
+pkgver=3.1Bugfix.r75.gc6e779c
 _wavpack_ver=4.70.0
 pkgrel=1
+epoch=1
 arch=(x86_64)
-pkgdesc="Pcompress is a utility to do compression/decompression and deduplication in parallel by splitting input data into chunks."
-url="http://moinakg.github.io/pcompress/"
-license=('LGPL v3')
-options=('!makeflags')
-depends=('glibc' 'gcc-libs-multilib' 'bzip2' 'zlib' 'openssl-1.0')
-makedepends=('git' 'yasm')
+pkgdesc="Utility to do compression/decompression and deduplication in parallel by splitting input data into chunks."
+url="https://moinakg.github.io/pcompress/"
+license=(LGPL3)
+depends=(bzip2 zlib openssl-1.0)
+makedepends=(git yasm)
+options=(!makeflags)
 source=("git+https://github.com/moinakg/${_pkgname}.git"
         "http://wavpack.com/wavpack-${_wavpack_ver}.tar.bz2"
         "openssl.patch::https://github.com/moinakg/pcompress/pull/55.patch"
         "gcc11.patch::https://github.com/moinakg/pcompress/pull/56.patch"
         "advance_opts.patch")
-md5sums=('SKIP'
-         '4c0186ef0dc8367ce5cd7cc0f398b714'
-         '22f1a4e1bf373c6f6b86c49f70ee3be3'
-         '16a91b9f94f56a4981d18aa6c7bfdfdd'
-         'a0ef3e2d8cbcab5582aaa23b433339fc')
+sha256sums=('SKIP'
+            '2cade379b0aba99fbc4e442ccc6dac6c609f6212e46516a083e24c8c364430a4'
+            '6138cd04fe61ebfbe8f43ecf81a0f9e986a8ef4d2bffc474ee3622a33088699e'
+            '4e246ab296ccdab436d66dc356b2e41700f334f4ccbe04c914eafd9c2dbaade6'
+            '0dfbad3cb21260e90196ab6bda653480ae38cb01c35eef834242b5cff73eaccb')
 
 pkgver() {
   cd "$_pkgname"
-  git rev-list --count HEAD
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
