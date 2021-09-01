@@ -1,6 +1,6 @@
 # Maintainer: SoMuchForSubtlety <s0muchfrsubtlety@gmail.com>
 pkgname=f1viewer
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="TUI client for F1TV"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('mpv: play videos using mpv'
             'kwallet: secret store backend')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SoMuchForSubtlety/f1viewer/archive/v${pkgver}.tar.gz")
-sha256sums=('d6a512af83572939e62125b90a9d72ae12a1672c4e6c5760cb924f921abef053')
+sha256sums=('dcde509c4a3a35a3eca882e4e632feaceaf4a15e5db64a3a2e9eb0f5489764ab')
 
 build() {
   cd "${pkgname}-${pkgver}"
