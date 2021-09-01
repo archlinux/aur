@@ -1,0 +1,30 @@
+--- a/Makefile	2021-08-04 09:14:19.000000000 -0700
++++ b/Makefile	2021-08-31 17:20:25.154911394 -0700
+@@ -71,19 +71,19 @@
+ 	$(CC) -o xdotool.static xdotool.o xdo.o xdo_search.o $(CMDOBJS) $(LDFLAGS)  -lm $(XDOTOOL_LIBS) $(LIBXDO_LIBS)
+
+ .PHONY: install
+-install: pre-install installlib installprog installman installheader installpc post-install
++install: pre-install installlib installprog installman installheader installpc # post-install
+
+ .PHONY: pre-install
+ pre-install:
+ 	install -d $(DPREFIX)
+
+-.PHONY: post-install
+-post-install:
+-	@if [ "$$(uname)" = "Linux" ] ; then \
+-		echo "Running ldconfig to update library cache"; \
+-		$(LDCONFIG) \
+-		  || echo "Failed running 'ldconfig'. Maybe you need to be root?"; \
+-	fi
++# .PHONY: post-install
++# post-install:
++# 	@if [ "$$(uname)" = "Linux" ] ; then \
++# 		echo "Running ldconfig to update library cache"; \
++# 		$(LDCONFIG) \
++# 		  || echo "Failed running 'ldconfig'. Maybe you need to be root?"; \
++# 	fi
+
+ .PHONY: installprog
+ installprog: xdotool

@@ -12,13 +12,15 @@ license=('BSD')
 provides=(xdotool=$pkgver)
 conflicts=(xdotool)
 depends=('libxtst' 'libxinerama' 'libxkbcommon')
-source=(https://github.com/jordansissel/xdotool/releases/download/v$pkgver/xdotool-$pkgver.tar.gz xdo-xwayland.patch)
+source=(https://github.com/jordansissel/xdotool/releases/download/v$pkgver/xdotool-$pkgver.tar.gz xdo-xwayland.patch no-post-install.patch)
 sha256sums=('fde6b15b5978c91e0ecb78cc541a9987752e724820722e479dcc2efc17466c89'
-            'bac917cabe9d4b95b03ecccafafc49da999e8c04588ec8fb2f9de5b8fbfd62fe')
+            'bac917cabe9d4b95b03ecccafafc49da999e8c04588ec8fb2f9de5b8fbfd62fe'
+            '656c4768d10073a56a5e76d529ee4c9d58db30e15aec6c3b1940fa8918792e76')
 
 prepare() {
   cd xdotool-$pkgver
   patch -p1 < "$srcdir/xdo-xwayland.patch"
+  patch -p1 < "$srcdir/no-post-install.patch"
 }
 
 build() {

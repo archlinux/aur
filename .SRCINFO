@@ -12,7 +12,9 @@ pkgbase = xdotool-xwayland
 	conflicts = xdotool
 	source = https://github.com/jordansissel/xdotool/releases/download/v3.20210804.2/xdotool-3.20210804.2.tar.gz
 	source = xdo-xwayland.patch
+	source = no-post-install.patch
 	sha256sums = fde6b15b5978c91e0ecb78cc541a9987752e724820722e479dcc2efc17466c89
 	sha256sums = bac917cabe9d4b95b03ecccafafc49da999e8c04588ec8fb2f9de5b8fbfd62fe
+	sha256sums = 656c4768d10073a56a5e76d529ee4c9d58db30e15aec6c3b1940fa8918792e76
 
 pkgname = xdotool-xwayland
