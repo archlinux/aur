@@ -1,0 +1,16 @@
+pkgbase = python-pybfd3-git
+	pkgdesc = A Python (3.x compatible) interface to the GNU Binary File Descriptor (BFD) and opcodes library
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/b-2-r/pybfd3
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = binutils
+	source = pybfd3::git+https://github.com/b-2-r/pybfd3
+	sha256sums = SKIP
+
+pkgname = python-pybfd3-git
