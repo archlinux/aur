@@ -13,17 +13,6 @@
  // PHP minimum requirement
  if (!defined('GRAV_PHP_MIN')) {
      define('GRAV_PHP_MIN', '7.3.6');
---- a/system/src/Grav/Common/GPM/GPM.php        2021-07-19 20:17:55.000000000 +0200
-+++ b/system/src/Grav/Common/GPM/GPM.php        2021-07-21 21:38:55.442615622 +0200
-@@ -60,7 +60,7 @@
-     {
-         parent::__construct();
-
--        Folder::create(GRAV_ROOT . '/cache/gpm');
-+        Folder::create(CACHE_DIR . '/gpm');
-
-         $this->cache = [];
-         $this->installed = new Local\Packages();
 --- a/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2021-04-15 20:04:58.000000000 +0200
 +++ b/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2021-04-21 21:14:16.576531405 +0200
 @@ -94,6 +94,10 @@
