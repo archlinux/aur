@@ -13,7 +13,8 @@ depends=(electron
 provides=(ezra-project)
 conflicts=(ezra-project)
 replaces=(ezra-project)
-makedepends=(jq
+makedepends=(git # Upstream Issue: https://github.com/ezra-bible-app/ezra-bible-app/issues/388
+             jq
              moreutils
              node-gyp
              node-prune
@@ -30,7 +31,9 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
 		sponge package.json
+    # Upstream Issue: https://github.com/ezra-bible-app/ezra-bible-app/issues/436
 	rm -rf node_modules/{node-addon-api,node-sword-interface}
+	sed -i -e '/sqlite3/s/\^//' package.json
 	npm install --cache "$srcdir/npm-cache" --no-audit --no-fund --ignore-scripts
 }
 

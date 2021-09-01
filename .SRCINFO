@@ -5,6 +5,7 @@ pkgbase = ezra-bible-app
 	url = https://github.com/ezra-bible-app/ezra-bible-app
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = jq
 	makedepends = moreutils
 	makedepends = node-gyp
