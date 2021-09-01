@@ -1,0 +1,14 @@
+pkgbase = vvo-departures-cli
+	pkgdesc = A command line interface to query real time departure data from stops within the Verkehrsverbund Oberelbe (VVO).
+	pkgver = 20210901+01
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = util-linux
+	depends = curl
+	depends = jq
+	source = vvo-departures
+	sha256sums = 17eb29ccfe5dacb7977f3af41bb736ddcb4ecda453385ba1ef5ef132d72e8616
+
+pkgname = vvo-departures-cli

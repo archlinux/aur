@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# VERSION: 20210901+01
+# LICENSE: GNU General Public License v3 or later.
+# Based on the information provided at https://github.com/kiliankoe/vvo/blob/main/documentation/widgets.md.
+
+### Depends on (Executable and package name in Arch Linux):
+#   * bash (bash)
+#   * curl (curl)
+#   * jq (jq)
+#   * column (util-linux)
+
+
+## The URL to do the queries against:
+_query_baseurl='http://widgets.vvo-online.de/abfahrtsmonitor/Abfahrten.do'
+
+## A wrapper to URL-encode a string:
+_urlencode() {
+  # urlencode
+  jq -Rr '@uri'
+}
+
+## A wrapper to right-align output:
+_align_right() {
+  column --table --table-right 1 --separator '' --output-separator ''
+}
+
+## If an argument is specified, use it as a stop, otherwise set a default:
+if [ $# -ge 1 ]; then
+  _stop="$1"
+else
+  _stop='Dresden, Hauptbahnhof'
+fi
+
+## Timestamp when we are run:
+_timestring="$(TZ=Europe/Berlin date +%H:%M:%S)"
+
+## URL-encode the input:
+_stop_query="$(_urlencode <<< "${_stop}")"
+
+## Construct the query:
+_query="${_query_baseurl}?hst=${_stop_query}"
+
+## Do the query and save the result:
+_result="$(curl -s -L -X 'GET' "${_query}")"
+
+## Parse the result -- extract the information from the JSON-output, add an explicit zero for 'in zero minutes' (nothing is returned in that case), and put it into a pretty table:
+_result_parsed="$(jq -rc '.[] | .[0]+"|"+.[1]+"|"+(if (.[2] | length) == 0 then "0" else .[2] end)' <<< "${_result}" 2>/dev/null | column --table --table-name "${_stop}" --table-wrap 2 --output-width 96 --table-right 3 --separator '|' --output-separator ' | ')"
+#  --table-columns 'L.,-> Ziel,Min' --table-noheadings
+
+## Print the result if it is non-empty, otherwise inform about no result:
+if [ -n "${_result_parsed}" ]; then
+  # # Right-align iff the header is shorter than the table
+  if [ "$(head -n1 <<< "${_result_parsed}" | wc -c)" -gt "$(wc -c <<< "${_stop}: ${_timestring}")" ]; then
+    {
+      printf '%s\n' "${_stop}: ${_timestring}"
+      printf '%s\n' "${_result_parsed}"
+    } | _align_right
+  else
+    printf '%s\n' "${_stop}: ${_timestring}"
+    printf '%s\n' "${_result_parsed}"
+  fi
+else
+  printf '%s\n' "Query for '${_stop}' at ${_timestring} failed".
+  printf '%s\n' "The server returned:"
+  printf '%s\n' "${_result}"
+fi
