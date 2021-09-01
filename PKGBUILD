@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=0.3.r162.g8c666d0
+pkgver=1.0.r4.g52a03a8
 pkgrel=1
 epoch=
 pkgdesc="GTK app for Reddit"
@@ -12,7 +12,7 @@ groups=()
 depends=(
 	'gtk4'
 	'gtksourceview5'
-	'libadwaita-git'
+	'libadwaita'
 	'python-beautifulsoup4'
 	'python-dateutil'
 	'python-gobject'
