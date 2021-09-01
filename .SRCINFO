@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-sc
 	pkgdesc = Noto CJK-SC fonts for Simplified Chinese
 	pkgver = 20210430
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://www.google.com/get/noto/help/cjk/
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = noto-fonts-sc
 	source = https://github.com/googlefonts/noto-cjk/raw/cee7438f5f8e66397090d483c15275d1af3d87c7/Sans/Mono/NotoSansMonoCJKsc-Regular.otf
 	source = https://github.com/googlefonts/noto-cjk/raw/cee7438f5f8e66397090d483c15275d1af3d87c7/Sans/Mono/NotoSansMonoCJKsc-Bold.otf
 	source = https://github.com/googlefonts/noto-cjk/raw/cee7438f5f8e66397090d483c15275d1af3d87c7/LICENSE
-	sha256sums = 6895d254d27ea7ac0c022b255d49f82508a52e18a635279d6dcf6702e3d5c68e
+	sha256sums = 2c76254f6fc379fddfce0a7e84fb5385bb135d3e399294f6eeb6680d0365b74b
 	sha256sums = b5f0d1a190a7f9b43c310a8850630af12553df32c4c050543f9059732d9b4c0a
 	sha256sums = 4600700d1b10c8e82074de7c91fa60d2ff5d0a7b9588edea6ab0929424b1699f
 	sha256sums = e78bbbe1573bbb006156c1198f5c8cd6329470cb6e0b6702c7a3c83913db4abf
@@ -35,7 +35,7 @@ pkgbase = noto-fonts-sc
 	sha256sums = e5880b655a78ab15ef0ebd807b6d0f049d5668674c11f49ca3473aedb3e0cadc
 	sha256sums = 3405a99c1fc545672b919d55acc61ff749dd54e577a893b43a4dc99d11b4c6cf
 	sha256sums = 2cc0582da264c9038c75a766a78bf645567c8c552f36b98901b3c43b11bd8fa5
-	sha256sums = a310c9f8cc8e58f90601b2581809fbcf5728799aebb5cce70c8d1255dc968d66
+	sha256sums = ec04cc376b34887cedbdf84074e2e226ed2761eeabdcb9173fc1dd7bfd153ef7
 	sha256sums = a452fedfc0619e43e080b7b861ce34cbd3ec4fbcea495bf8c402a5a02a5dcbdc
 	sha256sums = 6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2
 
