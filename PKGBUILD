@@ -33,7 +33,7 @@ prepare() {
     unzip resources/linux-icons.zip -d icons
     make -C craftos2-lua -j$(nproc) linux
     # NOTICE!!! Remove before v2.6.2!
-    if [ "$pkgver" == "2.6.1" -and "$(pacman -Q craftos-pc-data | awk '${print $2;}')" != "2.6.1-1" ]; then
+    if [ "$pkgver" == "2.6.1" -a "$(pacman -Q craftos-pc-data | awk '${print $2;}')" != "2.6.1-1" ]; then
         patch -p1 <<EOF
 --- a/resources/CraftOSTest.lua
 +++ b/resources/CraftOSTest.lua
