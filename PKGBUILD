@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
-pkgver=2.6
+pkgver=2.6.1
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
@@ -22,7 +22,7 @@ changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
         "craftos2-luajit.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.5.4.tar.gz")
 noextract=()
-sha256sums=('c90ba3cbb12a381b0994e2751626df5668a5a29d679a6452f9b56f096fd61f78'
+sha256sums=('b1735518b070619b0c9e6d4b5d07f5dbf0324c34caaa49321ab01d8440cedf9a'
             'd65736d71a54bdf393f657ae0ecd7d333a07143b9842f759f09749ca5b7b6003')
 validpgpkeys=()
 
@@ -31,6 +31,21 @@ prepare() {
     cd "craftos2-$pkgver-luajit"
     mkdir icons
     unzip resources/linux-icons.zip -d icons
+    # NOTICE!!! Remove before v2.6.2!
+    if [ "$pkgver" == "2.6.1" -a "$(pacman -Q craftos-pc-data | awk '${print $2;}')" != "2.6.1-1" ]; then
+        patch -p1 <<EOF
+--- a/resources/CraftOSTest.lua
++++ b/resources/CraftOSTest.lua
+@@ -490,6 +490,7 @@
+ 		"shell.allow_disk_startup",
+ 		"shell.allow_startup",
+ 		"shell.autocomplete",
++		"shell.mobile_resize_with_keyboard",
+ 		"shell.report_plugin_errors",
+ 		"test",
+ 		"test2"
+EOF
+    fi
 }
 
 build() {
