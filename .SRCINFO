@@ -1,6 +1,6 @@
 pkgbase = milcheck
-	pkgdesc = A small binary that displays the status of your pacman mirrorlist in your terminal and optionally the lastest news
-	pkgver = 0.2.5
+	pkgdesc = A simple program that displays the status of your pacman mirrorlist and the Arch Linux lastest news right in your terminal
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/doums/milcheck
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = milcheck
 	makedepends = cmake
 	depends = openssl
 	depends = gcc-libs
-	source = milcheck-0.2.5.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v0.2.5.tar.gz
-	md5sums = 810b00a8b23eea2ef0a36989ff37aef2
+	source = milcheck-0.2.6.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v0.2.6.tar.gz
+	md5sums = 9b8d627e803067a0a7aeddbd5a77428c
 
 pkgname = milcheck
