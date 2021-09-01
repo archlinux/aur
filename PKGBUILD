@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-stem' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/GIJack/tor-util/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8d06c550ce2c2755a1832325eedfab13a1bc4fab9ff02ab459dad603849931be')
+sha256sums=('801e1d5d489652d3c8b1de8d513e79f2e54ff7a636f73cb4d8c6765f796dfb57')
 
 package() {
   cd ${pkgname}-${pkgver}
