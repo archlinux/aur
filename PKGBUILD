@@ -1,28 +1,30 @@
+# Maintainer:
+# Contributor: FabioLolix
+# COntributor: squitch
+
 pkgname=tess-git
-pkgver=1.2r234.c480fcf
+pkgver=0.4.2.r1.g12ee207
 pkgrel=1
-pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
+epoch=1
+pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
-url="https://github.com/SquitchYT/Tess.git"
-license=('unknown')
-depends=('glib2' 'glibc')
-makedepends=('git' 'npm')
-source=("git+$url")
-md5sums=('SKIP')
+url="https://github.com/SquitchYT/Tess"
+license=(MPL2)
+depends=(gtk3 nss)
+makedepends=(git npm)
+source=("git+https://github.com/SquitchYT/Tess.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "Tess"
-  printf "1.2r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
 	cd "Tess"
 
-	mkdir -p "${pkgdir}/usr/share/applications"
-	cp -r -f Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
-
-	mkdir -p "${pkgdir}/usr/share/kservices5/ServiceMenus/"
-	cp -r -f tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
+	install -D Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
+	install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
 
 	if type "$kbuildsycoca5" > /dev/null; then
 		kbuildsycoca5
