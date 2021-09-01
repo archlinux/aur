@@ -1,7 +1,7 @@
 pkgbase = gamescope-git
 	pkgdesc = Micro-compositor formerly known as steamcompmgr
-	pkgver = 3.8.4.r85.g802d86c
-	pkgrel = 3
+	pkgver = 3.8.4.r135.gb267983
+	pkgrel = 1
 	url = https://github.com/Plagman/gamescope
 	arch = x86_64
 	license = custom:BSD-2-Clause
@@ -17,6 +17,7 @@ pkgbase = gamescope-git
 	depends = libxtst
 	depends = libxres
 	depends = sdl2
+	depends = pipewire
 	depends = libdrm
 	depends = libxkbcommon
 	depends = libinput
