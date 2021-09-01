@@ -12,12 +12,13 @@ _microarchitecture=0
 ## --- PKGBUILD
 
 ## Major kernel version
-_major=5.13
+_major=5.14
 ## Minor kernel version
-_minor=12
+_minor=0
 
 pkgbase=linux-multimedia
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -41,7 +42,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('28b15d248f7a926e47b7218a503b9b20b6ef9ec51232603aa2163fc17ee08824'
+sha256sums=('7e068b5e0d26a62b10e5320b25dce57588cbbc6f781c090442138c9c9c3271b2'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -68,12 +69,11 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-bmq.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-ondemand-bmq.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
   
   msg2 "Apply GCC Optimization Patch..."
@@ -188,8 +188,8 @@ prepare() {
   scripts/config --disable CONFIG_STACK_TRACER
   
   ### Use Nconfig to customize compile options
-  msg2 "Enabling Ncurses Config Menu..."
-  make nconfig
+  #msg2 "Enabling Ncurses Config Menu..."
+  #make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
