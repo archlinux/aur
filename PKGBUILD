@@ -1,8 +1,8 @@
 # Maintainer: Toqoz <https://github.com/Toqozz/wired-notify>
 
-pkgname=wired
+pkgname=wired-git
 _pkgname=wired-notify
-pkgver=0.9.2
+pkgver=r163.4460e60
 pkgrel=1
 pkgdesc="Lightweight notification daemon with highly customizable layout blocks, written in Rust."
 arch=('x86_64' 'i686')
@@ -12,20 +12,29 @@ depends=('dbus' 'cairo' 'pango' 'glib2' 'libx11')
 makedepends=('rust' 'cargo')
 provides=('wired')
 conflicts=('wired')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Toqozz/wired-notify/archive/${pkgver}.tar.gz")
-sha256sums=('60aa9cee8d098d7dd5fcf04dfee130ca469f60850265a47a2b83cc55f2964750')
+source=("git://github.com/Toqozz/wired-notify/#branch=master")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    (
+        set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
 
 build() {
-    cd  "${srcdir}/${_pkgname}-${pkgver}"
+    cd  "${srcdir}/${_pkgname}"
     cargo build --release --target-dir "./target"
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}"
 
     # Install binary.
-    install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 "target/release/wired" "${pkgdir}/usr/bin/wired"
 
     # Install MIT license
-    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/wired/LICENSE-MIT"
 }
