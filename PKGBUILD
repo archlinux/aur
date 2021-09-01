@@ -8,7 +8,7 @@ arch=('any')
 url='https://jena.apache.org/'
 license=('Apache')
 depends=('java-runtime')
-source=("http://www-us.apache.org/dist/${pkgname/apache-/}/binaries/${pkgname}-${pkgver}.tar.gz")
+source=("https://downloads.apache.org/${pkgname/apache-/}/binaries/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('afac69902e526f7844e3116ec6e13f944a725be10375669c8db982789bbb34606a11b3655e4fb01fff9aef6b5fcbd1d738f76fa508589b798ca4e4f049b3b530')
 
 package() {
