@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.979
+pkgver=1.981
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -138,7 +138,8 @@ prepare() {
     rm webmin-gentoo-init webmin-init webmin-daemon
 
     # dont allow webmin to update itself, must update via pacman
-    rm {webmin,usermin}/{update.cgi,update.pl,update_sched.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
+    rm {webmin,usermin}/{update.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
+    rm usermin/{update.pl,update_sched.cgi}
 
     # remove config files for other distros, make Arch linux related additions
     find . ! -name 'config-generic-linux' ! -name 'config-ALL-linux' ! -name 'config-lib.pl' -name 'config-*' -exec rm '{}' \+
@@ -181,7 +182,7 @@ package() {
 }
 
 
-sha256sums=('ed536f2056a5ba85102523de6182ff56d946a0a619f0d9a2c06fb84495acd197'
+sha256sums=('cbf3cbc0644b3d94c0e56d364c3f57d6264498534e69273d37f7e48a8f0c81a4'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
