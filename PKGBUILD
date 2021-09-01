@@ -10,7 +10,7 @@
 
 _pkgname=angband
 pkgname=angband-ncurses
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=0
 pkgdesc="A roguelike dungeon exploration game based on the writings of JRR Tolkien (ncurses-only)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,12 +22,13 @@ makedepends=('python-docutils'
 			'autoconf' 'automake')
 conflicts=('angband' 'angband-git')
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}/${_pkgname^}-${pkgver}.tar.gz"
 #  "http://rephial.org/downloads/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.gz"
 )
 install=angband-ncurses.install
 
 prepare() {
+  mv "${srcdir}/${_pkgname^}-${pkgver}" "${srcdir}/${_pkgname}-${pkgver}"
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Fix detection of ncurses config script for ncurses 6.0
@@ -37,7 +38,6 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
@@ -59,4 +59,4 @@ package() {
   install -Dm644 docs/copying.rst "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
 
-sha256sums=('433efe76a4a2741439542235316c098740aa4a72e4245523eb4781345a112d70')
+sha256sums=('833c4f8cff2aee61ad015f9346fceaa4a8c739fe2dbe5bd1acd580c91818e6bb')
