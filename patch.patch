@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 32e63ca..52a9ef9 100644
+--- a/package.json
++++ b/package.json
+@@ -11,7 +11,7 @@
+     "compileTsAndStart": "npx tsc && electron .",
+     "compileAndStart": "npx tsc && sass styles/:styles/ && electron .",
+     "buildWindows": "electron-builder build --win --x64 --ia32 --publish never",
+-    "buildLinux": "electron-builder build --linux AppImage deb tar.gz --publish never"
++    "buildLinux": "electron-builder build --linux deb --publish never"
+   },
+   "keywords": [
+     "TF2",
