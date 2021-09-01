@@ -34,4 +34,3 @@ pkgbase = piglit-git
 	sha256sums = SKIP
 
 pkgname = piglit-git
-
