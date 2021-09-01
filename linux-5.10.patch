@@ -1,0 +1,77 @@
+diff --git a/eset_rtp/ertp_handlers.c b/eset_rtp/ertp_handlers.c
+index 7410bbe..12cb688 100755
+--- a/eset_rtp/ertp_handlers.c
++++ b/eset_rtp/ertp_handlers.c
+@@ -178,14 +178,71 @@ ERTP_SYSCALL_HANDLER3(dup3, unsigned int, oldfd, unsigned int, newfd, int, flags
+ }
+ 
+ /***************************** sys_unlink*() handlers ************************/
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,10,0))
++/**
++ * vfs_statx - Get basic and extra attributes by filename
++ * @dfd: A file descriptor representing the base dir for a relative filename
++ * @filename: The name of the file of interest
++ * @flags: Flags to control the query
++ * @stat: The result structure to fill in.
++ * @request_mask: STATX_xxx flags indicating what the caller wants
++ *
++ * This function is a wrapper around vfs_getattr().  The main difference is
++ * that it uses a filename and base directory to determine the file location.
++ * Additionally, the use of AT_SYMLINK_NOFOLLOW in flags will prevent a symlink
++ * at the given name from being referenced.
++ *
++ * 0 will be returned on success, and a -ve error code if unsuccessful.
++ */
++static inline int ertp_vfs_statx(int dfd, const char __user *filename, int flags,
++				 struct kstat *stat, u32 request_mask)
++{
++	struct path path;
++	unsigned lookup_flags = 0;
++	int error;
++
++	if (flags & ~(AT_SYMLINK_NOFOLLOW | AT_NO_AUTOMOUNT | AT_EMPTY_PATH |
++		      AT_STATX_SYNC_TYPE))
++		return -EINVAL;
++
++	if (!(flags & AT_SYMLINK_NOFOLLOW))
++		lookup_flags |= LOOKUP_FOLLOW;
++	if (!(flags & AT_NO_AUTOMOUNT))
++		lookup_flags |= LOOKUP_AUTOMOUNT;
++	if (flags & AT_EMPTY_PATH)
++		lookup_flags |= LOOKUP_EMPTY;
++
++retry:
++	error = user_path_at(dfd, filename, lookup_flags, &path);
++	if (error)
++		goto out;
++
++	error = vfs_getattr(&path, stat, request_mask, flags);
++//	stat->mnt_id = real_mount(path.mnt)->mnt_id;
++	stat->result_mask |= STATX_MNT_ID;
++	if (path.mnt->mnt_root == path.dentry)
++		stat->attributes |= STATX_ATTR_MOUNT_ROOT;
++	stat->attributes_mask |= STATX_ATTR_MOUNT_ROOT;
++	path_put(&path);
++	if (retry_estale(error, lookup_flags)) {
++		lookup_flags |= LOOKUP_REVAL;
++		goto retry;
++	}
++out:
++	return error;
++}
++#endif
++
+ static inline int ertp_vfs_fstatat(int dfd, const char __user *filename,
+ 	struct kstat *stat, int flag)
+ {
+ // mute warnings on older kernels, where filename was (char __user *)
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36))
+ 	return vfs_fstatat(dfd, (char __user *)filename, stat, flag);
+-#else
++#elif (LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0))
+ 	return vfs_fstatat(dfd, filename, stat, flag);
++#else
++	return ertp_vfs_statx(dfd, filename, flag | AT_NO_AUTOMOUNT, stat, STATX_BASIC_STATS);
+ #endif
+ }
+ 

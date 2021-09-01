@@ -1,0 +1,283 @@
+pre_install() {
+
+	# Script to be run before package is installed / upgraded
+
+	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	print_error() {
+		errorstr="ESET Endpoint Antivirus error: $1"
+		if [ -n "$SYSTEMD_CAT" ]; then
+			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+		else
+			echo "$errorstr" 1>&2
+		fi
+	}
+
+	# Check for previous product
+	if [ -d "/opt/eset/esets/" ] || [ -f "/opt/eset/efs/etc/pkgid" ] || [ -f "/etc/opt/eset/esets/info/pkgid" ] || [ -f "/etc/opt/eset/esets/esets.cfg" ]; then
+		print_error 'Previous ESET Security product must be uninstalled first, package won'\''t be installed.'
+		exit 1
+	fi
+
+}
+
+pre_upgrade() {
+
+	# Script to be run before package is installed / upgraded
+
+	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	print_error() {
+		errorstr="ESET Endpoint Antivirus error: $1"
+		if [ -n "$SYSTEMD_CAT" ]; then
+			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+		else
+			echo "$errorstr" 1>&2
+		fi
+	}
+
+	# Check for previous product
+	if [ -d "/opt/eset/esets/" ] || [ -f "/opt/eset/efs/etc/pkgid" ] || [ -f "/etc/opt/eset/esets/info/pkgid" ] || [ -f "/etc/opt/eset/esets/esets.cfg" ]; then
+		print_error 'Previous ESET Security product must be uninstalled first, package won'\''t be installed.'
+		exit 1
+	fi
+
+	#################################### Upgrade ####################################
+	if true; then
+		# stop and unregister old product
+		/opt/eset/eea/lib/install_scripts/unregister_service.sh
+		# export configuration from old product to xml
+		# this path must be into old product
+		/opt/eset/eea/lib/cfg-upgrade --export-xml /var/opt/eset/eea/confd/exported.xml
+	fi
+}
+
+post_install() {
+
+	# Script to be run after package is installed
+
+
+	# import config engine configuration from old product
+	import_configuration() {
+		# import only if we have exported xml from old product
+		if [ -f /var/opt/eset/eea/confd/exported.xml ]; then
+			# we don't want to leave old settings.json, all information is
+			# in exported xml
+			rm -f /var/opt/eset/eea/confd/settings.json
+			confd_ug='eset-eea-confd:eset-eea-daemons'
+			sudo -u ${confd_ug%:*} /opt/eset/eea/lib/cfg-upgrade --import-xml /var/opt/eset/eea/confd/exported.xml
+			rm /var/opt/eset/eea/confd/exported.xml
+		fi
+	}
+
+
+	if true; then
+		# first install and upgrade (deb only)
+		# check if users have been already created
+		if ! grep eset-eea-daemons /etc/group >/dev/null; then
+			# create users and groups
+			for g in eset-eea-daemons; do
+				groupadd -r $g
+			done
+
+			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
+			done
+		fi
+	fi
+
+	#################################### Upgrade & Install ####################################
+	# change directory permissions
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea'
+	chmod -R 775 '/var/opt/eset/eea'
+
+	logd_ug='eset-eea-logd:eset-eea-daemons'
+	chown -R ${logd_ug%:*} '/var/log/eset/eea'
+	chmod -R 700 '/var/log/eset/eea'
+	mkdir -p '/var/opt/eset/eea/cache/data/Logs'
+
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice'
+	for dir in /var/opt/eset/eea/cache /var/opt/eset/eea/cache/data; do
+		chmod -R 770 "$dir"
+		chmod 1770 "$dir"
+	done
+	chmod 1770 '/var/opt/eset/eea/cache/data/Logs'
+
+	scand_ug='eset-eea-scand:eset-eea-daemons'
+	chown -R ${scand_ug%:*} /var/opt/eset/eea/cache
+
+	# extract modules from tar
+	tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
+	# compile modules
+	/opt/eset/eea/bin/upd --compile-nups
+	# set correct user to compiled modules
+	updated_ug='eset-eea-updated:eset-eea-daemons'
+	chown -R ${updated_ug} /var/opt/eset/eea/lib
+
+	if false; then
+		# rpm upgrade only
+		import_configuration
+	fi
+
+	if true; then
+		# deb upgrade only
+		import_configuration
+	fi
+
+	# register and start service
+	/opt/eset/eea/lib/install_scripts/register_service.sh
+}
+
+post_upgrade() {
+
+	# Script to be run after package is installed
+
+
+	# import config engine configuration from old product
+	import_configuration() {
+		# import only if we have exported xml from old product
+		if [ -f /var/opt/eset/eea/confd/exported.xml ]; then
+			# we don't want to leave old settings.json, all information is
+			# in exported xml
+			rm -f /var/opt/eset/eea/confd/settings.json
+			confd_ug='eset-eea-confd:eset-eea-daemons'
+			sudo -u ${confd_ug%:*} /opt/eset/eea/lib/cfg-upgrade --import-xml /var/opt/eset/eea/confd/exported.xml
+			rm /var/opt/eset/eea/confd/exported.xml
+		fi
+	}
+
+
+	if true; then
+		# first install and upgrade (deb only)
+		# check if users have been already created
+		if ! grep eset-eea-daemons /etc/group >/dev/null; then
+			# create users and groups
+			for g in eset-eea-daemons; do
+				groupadd -r $g
+			done
+
+			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
+			done
+		fi
+	fi
+
+	#################################### Upgrade & Install ####################################
+	# change directory permissions
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea'
+	chmod -R 775 '/var/opt/eset/eea'
+
+	logd_ug='eset-eea-logd:eset-eea-daemons'
+	chown -R ${logd_ug%:*} '/var/log/eset/eea'
+	chmod -R 700 '/var/log/eset/eea'
+	mkdir -p '/var/opt/eset/eea/cache/data/Logs'
+
+	chgrp -R 'eset-eea-daemons' '/var/opt/eset/eea/cache' '/var/opt/eset/eea/cache/data' '/var/opt/eset/eea/modules_notice'
+	for dir in /var/opt/eset/eea/cache /var/opt/eset/eea/cache/data; do
+		chmod -R 770 "$dir"
+		chmod 1770 "$dir"
+	done
+	chmod 1770 '/var/opt/eset/eea/cache/data/Logs'
+
+	scand_ug='eset-eea-scand:eset-eea-daemons'
+	chown -R ${scand_ug%:*} /var/opt/eset/eea/cache
+
+	# extract modules from tar
+	tar -xf /var/opt/eset/eea/lib/modules.tar -C /var/opt/eset/eea/lib
+	# compile modules
+	/opt/eset/eea/bin/upd --compile-nups
+	# set correct user to compiled modules
+	updated_ug='eset-eea-updated:eset-eea-daemons'
+	chown -R ${updated_ug} /var/opt/eset/eea/lib
+
+	if false; then
+		# rpm upgrade only
+		import_configuration
+	fi
+
+	if true; then
+		# deb upgrade only
+		import_configuration
+	fi
+
+	# register and start service
+	/opt/eset/eea/lib/install_scripts/register_service.sh
+}
+
+pre_remove() {
+
+	# Script to be run before package is uninstalled
+
+	SYSTEMD_CAT="`which systemd-cat 2>/dev/null || true`"
+	print_error() {
+		errorstr="ESET Endpoint Antivirus error: $1"
+		if [ -n "$SYSTEMD_CAT" ]; then
+			echo -n "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
+		else
+			echo "$errorstr" 1>&2
+		fi
+	}
+
+	if false; then
+		# upgrade exits here
+		exit
+	fi
+
+	#################################### Uninstall ####################################
+	# dissociate product
+	if ! /opt/eset/eea/sbin/lic -d >/dev/null 2>/dev/null; then
+		print_error 'License was not dissociated. Please use ESET License Administrator to dissociate license manually.'
+	fi
+
+	# stop product, unregister from systemd/init.d
+	/opt/eset/eea/lib/install_scripts/unregister_service.sh
+
+	# clean notice dir
+	rm -rf /var/opt/eset/eea/modules_notice/*
+
+	# remove devctld file with udev rules
+	rm /etc/udev/rules.d/00-eset.eea.rules 2>/dev/null || true
+
+	### NOTE: All directories created by ApplicationBase::CreateAppDir() must be explicitly deleted bellow.
+
+	# remove licensed folder
+	rm -rf /var/opt/eset/eea/licensed
+
+	# remove confd folder
+	rm -rf /var/opt/eset/eea/confd
+}
+
+post_remove() {
+
+	# Script to be run after package is uninstalled
+
+	if false; then
+		# only on debian package, we don't have any configuration file
+		exit
+	fi
+
+	if false; then
+		# upgrade exits here
+		exit
+	fi
+
+	#################################### Uninstall ####################################
+	# remove users and groups
+	for ug in eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-confd:eset-eea-daemons; do
+		usr=${ug%:*}
+		userdel $usr 2>/dev/null || true
+	done
+
+	for g in eset-eea-daemons; do
+		groupdel $g 2>/dev/null || true
+	done
+
+	# clean files generated on runtime
+	# there may be other our product(s) installed
+	rm -rf /var/log/eset/eea
+	rmdir /var/log/eset 2>/dev/null || true
+
+	rm -rf /var/run/eset/eea
+	rmdir /var/run/eset 2>/dev/null || true
+
+	rm -rf /var/opt/eset/eea
+	rmdir /var/opt/eset 2>/dev/null || true
+}

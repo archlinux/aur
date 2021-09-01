@@ -1,0 +1,21 @@
+#!/bin/sh
+source ./dkms.conf
+
+compressor=xz
+ko_ext=xz
+
+kernel_ver=(${kernelver//./ })
+
+if [ ${kernel_ver[0]} -gt 5 ] || [ ${kernel_ver[0]} -eq 5 -a ${kernel_ver[1]} -ge 13 ]
+then
+  compressor=zstd
+  ko_ext=zst
+fi
+
+# DKMS only provides $kernelver, so using the default module dir
+module_dir=/lib/modules/${kernelver}
+module=${module_dir}/${DEST_MODULE_LOCATION[0]}/${BUILT_MODULE_NAME[0]}.ko
+
+${compressor} -kd ${module}.${ko_ext}
+mkdir -p ${module_dir}/eset/eea
+mv ${module} ${module_dir}/eset/eea
