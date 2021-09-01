@@ -1,11 +1,12 @@
 pkgbase = scream-git
 	pkgdesc = A Scream audio receiver using Pulseaudio, ALSA, JACK or stdout as audio output (git version)
-	pkgver = 3.6.r138.c1d5aef
+	pkgver = 3.8.r151.b3ca1ad
 	pkgrel = 1
 	url = https://github.com/duncanthrax/scream
 	arch = x86_64
 	license = custom:MS-PL
 	makedepends = cmake
+	makedepends = git
 	depends = jack
 	depends = libpulse
 	depends = libsoxr
@@ -22,4 +23,3 @@ pkgbase = scream-git
 	sha256sums = SKIP
 
 pkgname = scream-git
-

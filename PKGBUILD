@@ -3,13 +3,13 @@
 
 pkgname=scream-git
 _pkgname=scream
-pkgver=3.6.r138.c1d5aef
+pkgver=3.8.r151.b3ca1ad
 pkgrel=1
 pkgdesc='A Scream audio receiver using Pulseaudio, ALSA, JACK or stdout as audio output (git version)'
 arch=('x86_64')
 provides=('scream' 'scream-pulse' 'scream-ivshmem-pulse' 'scream-alsa' 'scream-ivshmem-alsa')
 depends=('jack' 'libpulse' 'libsoxr' 'alsa-lib')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 conflicts=('scream' 'scream-pulse' 'scream-alsa')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
