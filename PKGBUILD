@@ -3,7 +3,7 @@
 
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
-pkgver=r253.2b3eb35
+pkgver=r282.d8d5921
 pkgrel=1
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
@@ -22,11 +22,13 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$_pkgname"
+
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
     cd "$_pkgname"
+
     git submodule init
     git config submodule."dep/libbacktrace".url ../libbacktrace
     git submodule update
@@ -34,6 +36,7 @@ prepare() {
 
 build() {
     cd "$_pkgname"
+
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
@@ -41,11 +44,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$_pkgname/build"
-
-    install -Dm 6755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
-
-    install -Dm 644 $_pkgname.service -t "$pkgdir/usr/lib/systemd/user/"
-
-    install -Dm 644 "../sys/$_pkgname.conf" "$pkgdir/usr/etc/$_pkgname.conf"
+    cd "$_pkgname"
+    
+    DESTDIR=${pkgdir} make -C build install
 }
