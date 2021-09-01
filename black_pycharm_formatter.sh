@@ -7,7 +7,8 @@ case $ext in
 	black -l 88 -S -C $file_path
 	;;
 "ipynb")
-	jupytext $file_path --pipe "black -l 88 -S -C {}"
+	black -l 88 -S -C $file_path
+	# jupytext $file_path --pipe "black -l 88 -S -C {}"
 	;;
 "sh")
 	shfmt -w $file_path

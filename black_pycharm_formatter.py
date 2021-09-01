@@ -9,7 +9,8 @@ if __name__ == "__main__":
     if file_ext == 'py':
         cmd = 'black -l 88 -S -C' + file_path
     elif file_ext == 'ipynb':
-        cmd = 'jupytext ' + file_path + ' --pipe "black -l 88 -S -C {}"'
+        cmd = 'black -l 88 -S -C' + file_path
+        # cmd = 'jupytext ' + file_path + ' --pipe "black -l 88 -S -C {}"'
     elif file_ext == 'sh':
         cmd = 'shfmt -w ' + file_path
     else:

@@ -5,13 +5,13 @@ pkgver=1.0
 pkgrel=1
 arch=('any')
 source=(
-		'black_pycharm_formatter.sh'
-		'black_pycharm_formatter.py')
+	'black_pycharm_formatter.sh'
+	'black_pycharm_formatter.py')
 sha512sums=(
-		'6af3a8080908ab6dd19077c2870b0eb39fd4ad8d325d9805b40a86224bb2b81f3b37dfe25ca8d7188a29e7d50e07363196bae2b69115e02b62434396fc4ea586'
-		'74244976ef65d4bc904771db6e4e87da527633be90bdeee91d1d02423ee5f16aecbd0cc0ca7bda99720ffb1a4c703ffd942b96872ef56ee0d1ed56bd355f79f0')
+	'f7e43a09d0a5063ccac25b53e780d647d3e35524ec56af20ba2dd9d11f758549908628d0ba91d074c92d7d2e7928d658f81f3d875a3fd1f285db9b6f1eeb717a'
+	'ff148e708a3d00ac01f4164a18312480c9f7ced3ba4408f7c08f8ba75c3eedd2d644cdf4dc3802657d80cfffc10849483152d8bef59629f23ce4940f80104742')
 
 package() {
-    install -Dm755 $srcdir/black_pycharm_formatter.sh $pkgdir/usr/bin/black_pycharm_formatter.sh
-    install -Dm755 $srcdir/black_pycharm_formatter.py $pkgdir/usr/bin/black_pycharm_formatter.py
+	install -Dm755 $srcdir/black_pycharm_formatter.sh $pkgdir/usr/bin/black_pycharm_formatter.sh
+	install -Dm755 $srcdir/black_pycharm_formatter.py $pkgdir/usr/bin/black_pycharm_formatter.py
 }
