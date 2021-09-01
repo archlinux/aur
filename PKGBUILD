@@ -1,34 +1,50 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
-# Contributor: juantascon <juantascon.aur@horlux.org>
-# Contributor: Jaroslaw Swierczynski <swiergot@aur.archlinux.org>
-# Contributor: arjan <arjan@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+# Maintainer: dreieck
+# Contributor: Felix Golatofski <contact (at) xdfr.de>
+# Contributor: juantascon <juantascon.aur (at) horlux.org>
+# Contributor: Jaroslaw Swierczynski <swiergot (at) aur.archlinux.org>
+# Contributor: arjan <arjan (at) archlinux.org>
+# Contributor: Tom Newsom <Jeepster (at) gmx.co.uk>
 
-pkgname=libtrash
-pkgver=3.5
+_pkgname=libtrash
+pkgname="${_pkgname}"
+pkgver=3.7
 pkgrel=1
 pkgdesc="A shared, preloaded library that implements a trash can under Linux"
 arch=('i686' 'x86_64')
 url="http://pages.stern.nyu.edu/~marriaga/software/libtrash/"
 license=('GPL')
 depends=('glibc')
-makedepends=('python2')
-install=$pkgname.install
-source=(http://pages.stern.nyu.edu/~marriaga/software/libtrash/$pkgname-${pkgver}.tgz)
-sha256sums=('13f40dcade8392ec6a1b095b387c91c1edf7c4e5d79e2b8d0076349a48b57cf9')
+makedepends=('autoconf')
+install="${_pkgname}.install"
+source=(
+  "http://pages.stern.nyu.edu/~marriaga/software/libtrash/${_pkgname}-${pkgver}.tgz"
+  "${install}"
+)
+sha256sums=(
+  'e8396a2781e9febc14634df36e1cd6eced4bd5d220d5638d0b20a96108136642'
+  'a99eb9d5f761e2f26185ed2057ce2ff06b670af260e05857b0f64ee9ae6d64db'
+)
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  ./autogen.sh
+}
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  sed -i -e s/ldconfig// ./src/Makefile
-  sed -i -e s/python/python2/ ./src/Makefile
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --disable-static \
+    --enable-shared
 
-  make INSTLIBDIR=${pkgdir}/usr/lib SYSCONFFILE=${pkgdir}/etc
+  make
 }
 
 package() {
-  install -d ${pkgdir}/usr/lib ${pkgdir}/etc/
-  cd ${srcdir}/$pkgname-$pkgver
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  make INSTLIBDIR=${pkgdir}/usr/lib SYSCONFFILE=${pkgdir}/etc install
+  make DESTDIR="${pkgdir}" install
 }
