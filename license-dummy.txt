@@ -1,0 +1,5 @@
+Upstream has not specified any license.
+
+So assume all rights reserved to the author.
+
+See https://github.com/meepoSenpai/catch-my-bus-python for all matters.
