@@ -5,14 +5,13 @@ pkgbase = python-pynput
 	url = https://github.com/moses-palmer/pynput
 	arch = any
 	license = LGPL3
-	makedepends = python-setuptools-lint
-	makedepends = python-sphinx
-	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-xlib
 	depends = python-six
 	depends = python-evdev
 	source = https://pypi.org/packages/source/p/pynput/pynput-1.7.3.tar.gz
+	source = setup.patch
 	sha256sums = 4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828
+	sha256sums = c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c
 
 pkgname = python-pynput
-

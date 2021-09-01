@@ -5,4 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!python-pynput.patch
+!setup.patch

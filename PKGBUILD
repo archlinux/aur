@@ -9,21 +9,28 @@ arch=('any')
 url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
 depends=('python-xlib' 'python-six' 'python-evdev')
-makedepends=('python-setuptools-lint' 'python-sphinx' 'python-wheel')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828')
+makedepends=('python-setuptools')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+        'setup.patch')
+sha256sums=('4e50b1a0ab86847e87e58f6d1993688b9a44f9f4c88d4712315ea8eb552ef828'
+            'c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c')
+
+prepare() {
+  cd "$_name-$pkgver"
+  patch -Np1 -i $srcdir/setup.patch
+}
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	# Fix permissions
-	find "$pkgdir" -type d -exec chmod -v 0755 {} \;
-	find "$pkgdir" -type f -exec chmod -v 0644 {} \;
+  # Fix permissions
+  find "$pkgdir" -type d -exec chmod -v 0755 {} \;
+  find "$pkgdir" -type f -exec chmod -v 0644 {} \;
 }
