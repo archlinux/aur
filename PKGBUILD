@@ -1,6 +1,12 @@
 # Maintainer: johnpyp <johnpyp.dev@gmail.com>
+
+# To increment version/make changes:
+# update pkgver
+# `updpkgsums` to update checksums
+# `makepkg --printsrcinfo > .SRCINFO` to update the srcinfo
+# `makepkg -si` to install the package locally and test it out
 pkgname=audiobookconverter-bin
-pkgver=5.5.18
+pkgver=5.5.26
 pkgrel=1
 epoch=
 pkgdesc="Improved AudioBookConverter based on freeipodsoftware release (mp3 to m4b converter)"
@@ -65,7 +71,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/yermak/AudioBookConverter/releases/download/version_${pkgver}/audiobookconverter_${pkgver}-${pkgrel}_amd64.deb"
         "audiobookconverter-bin.install")
-sha512sums=('f5bca205e4357711e930978759ae475fe201c65d74301083cb9d8ec6db59037e77e45b3970aedbead646fa8a914c02390e648f2e239cd44e395d1517893a2055'
+sha512sums=('2dc341621ef5acc1e998cec4b70039511de7ad500796483c3bc4c27842529ab719bc5a219555dec248f56a2e2f498df6179dd7558d9605398dcf6735966e6642'
             '620d4d55985dfca088918e0daede656b158fa199c64f03f365c9305fef239e2d2eb82cd15e9de3ad63fb891efdeb4c1faf6487b6e88f73f97b1b6de97b8471f3')
 
 package() {
