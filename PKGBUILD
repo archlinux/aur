@@ -32,8 +32,10 @@ package() {
   cd $pkgname-$pkgver
 
   # Emulate `npm prune --production`
-  yarn remove --frozen-lockfile $(jq -r '.devDependencies | keys | join(" ")' \
-    package.json)
+  cp package.json{,.bak}
+  yarn remove --frozen-lockfile "$(jq -r '.devDependencies | keys | join(" ")' \
+    package.json)"
+  mv package.json{.bak,}
 
   install -d "$pkgdir"/usr/{bin,lib/node_modules/$pkgname}
   ln -s ../lib/node_modules/$pkgname/lib/cli.js "$pkgdir"/usr/bin/$pkgname
