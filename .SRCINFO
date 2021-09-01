@@ -5,7 +5,6 @@ pkgbase = python-dash-core-components
 	url = https://plot.ly/products/dash
 	arch = any
 	license = MIT
-	checkdepends = python-dash
 	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.org/packages/source/d/dash_core_components/dash_core_components-1.17.1.tar.gz
