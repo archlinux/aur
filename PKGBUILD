@@ -14,7 +14,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.10
 ## Minor kernel version
-_minor=60
+_minor=61
 
 pkgbase=linux-multimedia-lts
 pkgver=${_major}.${_minor}
@@ -41,7 +41,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('696ff7753f6c7c5123dbcb0a22d693cb358c760c61a76649531b6a207155f78d'
+sha256sums=('82eae38cc5cd11dd6aaac91c02ff0d006c7bafd6d4cf5c6a791930820a3a91d1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -66,11 +66,11 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-bmq.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-ondemand-bmq.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
@@ -183,8 +183,8 @@ prepare() {
   scripts/config --disable CONFIG_STACK_TRACER
 
   ### Use Nconfig to customize compile options
-  msg2 "Enabling Ncurses Config Menu..."
-  make nconfig
+  #msg2 "Enabling Ncurses Config Menu..."
+  #make nconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
