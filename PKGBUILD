@@ -2,30 +2,36 @@
 
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
-pkgver=0.232.0
+pkgver=0.235.0
 pkgrel=1
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=(x86_64)
 url="https://github.com/tobias-klein/$_npmname"
 license=(GPL3)
-depends=(nodejs nodejs-addon-api)
-makedepends=(jq node-gyp moreutils npm sword)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c32666864890b981ab76cc1ce84664a8b7300f164f8f4872b31fd547d50b0b99')
+depends=(nodejs
+         nodejs-addon-api)
+makedepends=(jq
+             moreutils
+             node-gyp
+             npm
+             sword)
+_archive="$_npmname-$pkgver"
+source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('117cdebb7de90c8a0edbe30ea53163653b098b0fc434021c68a85a6c7121969f')
 
 prepare() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	# Suppress install or link against this package triggering a build!
 	jq 'del(.scripts[])' package.json | sponge package.json
 }
 
 build() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	npm pack
 }
 
 package() {
-	cd "$_npmname-$pkgver"
+	cd "$_archive"
 	export LINK_SYSTEM_SWORD=1
 	npm install \
 		--production \
@@ -35,7 +41,7 @@ package() {
 		--no-update-notifier \
 		--cache "$srcdir/npm-cache" \
 		--prefix "$pkgdir/usr" \
-		$_npmname-$pkgver.tgz
+		$_archive.tgz
 	rm -rf "$pkgdir/usr/lib/node_modules/$_npmname/"{node_modules,src,patch,scripts,sword_build,*.tgz,*.sh,*.txt,*.md,.git*,COPYING}
 
 	# Use system provided deps
