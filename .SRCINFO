@@ -1,6 +1,6 @@
 pkgbase = nuclear-git
 	pkgdesc = NUClear is a C++ software framework designed to aid in the development of real time modular systems.
-	pkgver = r890.f4a60c7
+	pkgver = r876.42d9b0d
 	pkgrel = 1
 	url = https://github.com/Fastcode/NUClear
 	arch = x86_64
@@ -19,3 +19,4 @@ pkgbase = nuclear-git
 	md5sums = SKIP
 
 pkgname = nuclear-git
+
