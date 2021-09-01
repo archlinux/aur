@@ -7,14 +7,14 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.17.14.48540.5ddbf6fd11
+pkgver=6.1.2.61779.50ace3f7bc
 pkgrel=1
 epoch=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 url='https://www.metasploit.com/'
 arch=('x86_64')
 license=('BSD')
-depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'libxml2' 'git')
+depends=('ruby2.7' 'libpcap' 'postgresql-libs' 'sqlite' 'libxslt' 'libxml2' 'inetutils' 'git')
 optdepends=('ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
@@ -32,14 +32,18 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  bundle config build.nokogiri --use-system-libraries
+
+  # https://github.com/bundler/bundler/issues/6882
+  sed -e '/BUNDLED WITH/,+1d' -i Gemfile.lock
+
+  bundle-2.7 config build.nokogiri --use-system-libraries
   sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
 }
 
 build() {
   cd ${pkgname}
   CFLAGS+=" -I/usr/include/libxml2"
-  bundle install -j"$(nproc)" --no-cache --deployment
+  bundle-2.7 install -j"$(nproc)" --no-cache --deployment
   find vendor/bundle/ruby -exec chmod o+r '{}' \;
   find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
 }
@@ -52,14 +56,14 @@ package() {
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
     local _msffile="${pkgdir}/usr/bin/`basename "${f}"`"
-    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/`basename "${f}"` \"\$@\"" > "${_msffile}"
+    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle-2.7 exec ruby-2.7 /opt/${pkgname}/`basename "${f}"` \"\$@\"" > "${_msffile}"
     chmod 755 "${_msffile}"
   done
 
   (cd "${pkgdir}/opt/${pkgname}"
     for f in tools/*/*.rb; do
       install -Dm 755 "${f}" ".${f}"
-      echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/."${f}" \"\$@\"" > "${f}"
+      echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle-2.7 exec ruby-2.7 /opt/${pkgname}/."${f}" \"\$@\"" > "${f}"
       chmod 755 "${f}"
     done
   )
@@ -69,6 +73,7 @@ package() {
   install -d "${pkgdir}/usr/share/doc"
   mv "${pkgdir}/opt/${pkgname}/documentation" "${pkgdir}/usr/share/doc/${pkgname}"
   rm "${pkgdir}/usr/bin/msfupdate"
+  rm -r "${pkgdir}"/opt/metasploit-git/vendor/bundle/ruby/*/cache
 }
 
 # vim: ts=2 sw=2 et:
