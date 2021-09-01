@@ -4,10 +4,10 @@
 
 pkgname=python-optimesh
 _name=optimesh
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=2
 pkgdesc='Mesh optimization, mesh smoothing.'
-url='https://github.com/nschloe/optimesh'
+url="https://github.com/nschloe/$_name"
 arch=('any')
 license=('GPL')
 depends=(
@@ -22,15 +22,13 @@ depends=(
 optdepends=('python-matplotlib')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('9682f240b91352bfe9d8e647f7ff1520227a54300bd8d2f95742aa8ccccfd5ea0aba5db9c8e3201516dba9f7fd15ad0b1800952406ae6b664b2d7d888f02197f')
+b2sums=('9c20c3425e84a0ee0cb2ce56a1b9ff1af7bc5cde3878d3c33eaf219008fe9d8d45f3b99f97635d09480cea3e956fa6c8b4f045a4006a62f25e043ada3089bb77')
 
-# prepare() {
-# 	cd "$srcdir/$_name-$pkgver"
-#     dephell deps convert --from pyproject.toml --to setup.py
-# }
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
+	export PYTHONHASHSEED=0
 	python -c 'from setuptools import setup; setup()' build
 }
 
