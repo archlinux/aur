@@ -2,7 +2,7 @@
 
 pkgbase=dataspell
 pkgname=(dataspell dataspell-jre)
-pkgver=213.1558.17
+pkgver=213.1558.18
 pkgrel=1
 pkgdesc='Python IDE for data scientists'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/python/jetbrains-data-spell-${pkgver}.tar.gz"
         jetbrains-dataspell.desktop
         LICENSE)
-b2sums=('1a1f35594a84025d70d9a552e9eb77c87bc37a13e4f72448240686488863a1da881d612bfe0c0b46748abc5ae1216641b8ac6056b24b8a1e61663f8031b82dd3'
+b2sums=('91727a9a3eb853b762289a2440b85ae7ee10415e9ac4eededba89a694127375e1270ac2f226ff82a12f8f2ae23b892752643aa01a2cfd797df75facdd5dad4f0'
         '6bd52dffc824f7ece9255b36321915e9d488ee910969f317e0e8c1e1aa7d58e4c2cb2588941670d84c4226c8133f7435f3fdc8d65fd8b2cab84a0022b1c7f5e9'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
