@@ -2,11 +2,10 @@
 
 pkgname=rpass
 pkgver=2021.09.01.pr1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An rsync-based password manager and alternative to GNU pass"
 arch=('x86_64')
 options=('!emptydirs')
-url="https://watergateserver.xyz"
 license=('GPL3')
 depends=( bash gnupg python )
 

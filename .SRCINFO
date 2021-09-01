@@ -1,8 +1,7 @@
 pkgbase = rpass
 	pkgdesc = An rsync-based password manager and alternative to GNU pass
 	pkgver = 2021.09.01.pr1.1
-	pkgrel = 1
-	url = https://watergateserver.xyz
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	depends = bash
