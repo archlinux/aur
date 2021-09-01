@@ -13,6 +13,10 @@ depends=('qt5-declarative' 'qt5-x11extras' 'mpv')
 source=("$pkgname-$pkgver.deb::https://flavio.tordini.org/files/$pkgname/$pkgname.deb")
 sha256sums=('f7e171614c1031e4b0fa04e15601bfafe46f3e10fe94dadf5d29a32fa8384076')
 
+pkgver() {
+  echo $(curl -s https://flavio.tordini.org/musictube-ws/release.xml | tr -dc 0-9.)
+}
+
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir"
 
