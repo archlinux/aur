@@ -1,6 +1,6 @@
-pkgbase = python-flake8-formatter-abspath
-	pkgdesc = A flake8 formatter plugin that shows the absolute path of files with warnings.
-	pkgver = 1.0.1
+pkgbase = python-flake8-formatter-junit-xml
+	pkgdesc = JUnit XML Formatter for flake8
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/jarshwah/flake8_formatter_abspath
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = python-flake8-formatter-abspath
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	makedepends = git
-	source = git+https://github.com/jarshwah/flake8_formatter_abspath.git#tag=v1.0.1
+	source = git+https://github.com/astj/flake8-formatter-junit-xml.git#tag=v0.0.6
 	md5sums = SKIP
 
-pkgname = python-flake8-formatter-abspath
+pkgname = python-flake8-formatter-junit-xml
 	depends = python-setuptools
+	depends = python-junit-xml
 
-pkgname = python2-flake8-formatter-abspath
+pkgname = python2-flake8-formatter-junit-xml
 	depends = python2-setuptools
-
+	depends = python2-junit-xml
