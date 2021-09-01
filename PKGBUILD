@@ -35,7 +35,7 @@ makedepends=(
     'jq'
     'libxdmcp'
     'nodejs-lts-fermium'
-    'npm'
+    'npm6'
     'python'
     'yarn'
 )
@@ -67,7 +67,7 @@ case "$CARCH" in
     ;;
 esac
 
-install_npm() {
+install_node() {
     mkdir ~/.npm-global
     
     npm config set prefix '~/.npm-global'
@@ -80,7 +80,7 @@ version() {
 }
 
 prepare() {
-    install_npm
+    install_node
     
     cd "MrCode"
     
