@@ -3,7 +3,7 @@
 _rockname=cassowary
 _project=$_rockname.lua
 pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=2.3.1.r0.gc022a12
+pkgver=2.3.1.r4.gfa4d058
 _rockrel=0
 pkgrel=1
 pkgdesc='The cassowary constraint solver'
@@ -11,7 +11,12 @@ arch=(any)
 url="https://github.com/sile-typesetter/$_project"
 license=(MIT)
 _lua_deps=(penlight)
-makedepends=(git lua lua53 lua52 lua51 luarocks)
+makedepends=(git
+             lua
+             lua51
+             lua52
+             lua53
+             luarocks)
 source=("$_project.git::git+$url.git")
 sha256sums=('SKIP')
 
