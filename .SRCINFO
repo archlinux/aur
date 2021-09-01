@@ -1,6 +1,6 @@
 pkgbase = libguestfs-dev
 	pkgdesc = Library and tools for accessing and modifying virtual machine disk images, development version
-	pkgver = 1.45.6
+	pkgver = 1.45.7
 	pkgrel = 1
 	url = https://libguestfs.org/
 	install = appliance.install
@@ -48,7 +48,7 @@ pkgbase = libguestfs-dev
 	backup = etc/libguestfs-tools.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.conf
 	backup = etc/xdg/virt-builder/repos.d/libguestfs.gpg
-	source = git+https://github.com/libguestfs/libguestfs.git#tag=v1.45.6
+	source = git+https://github.com/libguestfs/libguestfs.git#tag=v1.45.7
 	source = git+https://git.savannah.gnu.org/git/gnulib.git
 	source = git+https://github.com/libguestfs/libguestfs-common.git
 	sha512sums = SKIP

@@ -7,7 +7,7 @@
 
 pkgname=libguestfs-dev
 _pkgname=libguestfs
-pkgver=1.45.6
+pkgver=1.45.7
 pkgrel=1
 pkgdesc="Library and tools for accessing and modifying virtual machine disk images, development version"
 arch=(i686 x86_64)
