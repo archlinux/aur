@@ -1,0 +1,15 @@
+[Unit]
+Description=Cwtch Server
+Requires=tor.service
+After=tor.service
+
+[Service]
+Type=simple
+User=cwtch
+Group=cwtch
+Restart=always
+WorkingDirectory=/var/lib/cwtch/
+ExecStart=/usr/bin/cwtch-server
+
+[Install]
+WantedBy=multi-user.target
