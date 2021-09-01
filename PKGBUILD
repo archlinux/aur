@@ -1,7 +1,7 @@
 # Maintainer: Vincenzo Maffione <v.maffione at gmail dot com>
 
 pkgname=openucx
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Unified Communication X (http://www.openucx.org)"
 arch=('any')
