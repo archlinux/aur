@@ -1,20 +1,24 @@
+#!/bin/bash
+
 # Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 
 pkgname=python-viztracer
 _name=viztracer
-pkgver=0.13.4
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
-url='https://github.com/gaogaotiantian/viztracer'
+url="https://github.com/gaogaotiantian/$_name"
 license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
-optdepends=('python-rich: Full function support'
+optdepends=(
+  'python-rich: Full function support'
   'python-orjson: Full function support'
-  'chromium: browser to open html results')
+  'chromium: browser to open html results'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('944723e1e6a7f85249fd99c9d013b5d3899103ff80b191b2c926aba8c2769ba2d1c9bb9e0dbd82ea387e4351389d5f706fac4424be171dfc69ae9fa71fc243d3')
+b2sums=('553302d9e6a4fa7411ab4a6ab4086e818341a66c1918ffc80e2939d2dc7e66f0d9c7b42dcc6927781edba7342d3bac1f8c8a22c479257c5787f55c631b746ba9')
 
 build() {
   cd "$_name-$pkgver"
