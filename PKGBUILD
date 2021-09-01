@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara
-pkgver=0.3
-pkgrel=4
+pkgver=1.0
+pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -10,25 +10,24 @@ url="https://gitlab.gnome.org/World/giara"
 license=('GPL3')
 groups=()
 depends=(
-	'gtksourceview4'
-	'libhandy>=1'
+	'gtk4'
+	'gtksourceview5'
+	'libadwaita'
 	'python-beautifulsoup4'
-	'python-cairo'
 	'python-dateutil'
 	'python-gobject'
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
-	'webkit2gtk'
 )
 makedepends=('meson' 'gobject-introspection')
-checkdepends=()
+checkdepends=('appstream')
 optdepends=('ffmpeg: For video')
 provides=(redditgtk)
 conflicts=(redditgtk)
 replaces=(redditgtk)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('111d9f2aa46c58cf5cfe3e677988a2726701ca7ba1cc94948176d2345d80ff7f')
+sha256sums=('ec8a7c7cba8ae6b79cf36db7cefe1ee58f8818d04a7ff305773ba5a317fba88f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/$pkgname"
