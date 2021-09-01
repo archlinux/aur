@@ -1,24 +1,44 @@
 #Maintainer: Trevor Bergeron <mal@sec.gd>
 
 _pkgname=libcwtch-go
-pkgname=$_pkgname
+pkgname=$_pkgname-git
 
-_pkgver=1.0.0
-pkgver="${_pkgver//-/_}"
+pkgver=1.2.1.r0.gf6fec40
 pkgrel=1
 
 pkgdesc="C bindings for the Go Cwtch library"
-conflicts=('libcwtch-go-bin')
+provides=('libcwtch-go')
+conflicts=('libcwtch-go' 'libcwtch-go-bin')
 # Likely works on others, please report your success
 arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
-source=("https://git.openprivacy.ca/cwtch.im/$_pkgname/archive/v$_pkgver.tar.gz")
-sha512sums=('92f4e6fdb42bbd8003e3def82ab7c21383136eb941da85f2cae4fd05df2e975543ca475ac228d28dcd2de8ce3a1d9e8132ceef38e4969870af7fe262ae0bf4c1')
+makedepends=('git')
+source=("git+https://git.openprivacy.ca/cwtch.im/libcwtch-go.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    ( set -o pipefail
+        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+prepare() {
+    cd "$srcdir/$_pkgname"
+    make clean
+}
 
 build() {
     cd "$srcdir/$_pkgname"
-    GOPATH="$srcdir/go" make linux
+
+    export GOPATH="$srcdir/go"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-trimpath"
+
+    make linux
 }
 
 package() {
