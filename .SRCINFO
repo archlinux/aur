@@ -1,0 +1,17 @@
+pkgbase = zsh-fish
+	pkgdesc = Configure zsh to be like fish
+	pkgver = 1
+	pkgrel = 1
+	install = zsh-fish.install
+	arch = x86_64
+	license = GPL
+	depends = zsh
+	depends = zsh-completions
+	depends = zsh-autosuggestions
+	depends = zsh-syntax-highlighting
+	optdepends = grml-zsh-config: nice defaults
+	noextract = zsh-fish.zsh
+	source = zsh-fish.zsh
+	sha256sums = c4e88f2aeca90b20b66e48c7548d85186b707685feeffcf1c11cbb8cba493152
+
+pkgname = zsh-fish

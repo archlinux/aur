@@ -1,0 +1,11 @@
+post_install() {
+	echo "Enable by adding"
+	echo "    source /usr/share/zsh/plugins/zsh-fish.zsh"
+	echo "to ~/.zshrc"
+}
+
+post_remove() {
+	echo "Remove"
+	echo "    source /usr/share/zsh/plugins/zsh-fish.zsh"
+	echo "from all .zshrc files"
+}
