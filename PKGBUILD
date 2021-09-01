@@ -40,10 +40,8 @@ source=(
     "git+${url}"
     'mrcode.desktop'
 )
-sha256sums=(
-    'SKIP'
-    '362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92'
-)
+sha256sums=('SKIP'
+            '362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92')
 provides=('mrcode')
 conflicts=(
     'mrcode'
@@ -65,8 +63,6 @@ case "$CARCH" in
     _vscode_arch=DUMMY
     ;;
 esac
-
-set -e
 
 install_node() {
     if command -v "asdf" >/dev/null 2>&1; then
