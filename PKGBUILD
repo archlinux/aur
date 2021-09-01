@@ -109,6 +109,8 @@ prepare() {
 }
 
 build() {
+    set -e
+    
     cd "MrCode"
 
     export CI_BUILD="no"
