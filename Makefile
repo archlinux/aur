@@ -22,7 +22,7 @@ update:
 
 # This will list the versions available in the Ubuntu repository
 versions:
-	curl -s https://www.typora.io/linux/Packages | perl -n -e '/^Version: (.*)-[0-9]+$$/ && print "$$1\n"' | sort -V | uniq
+	curl -s https://www.typora.io/linux/Packages | grep Version | cut -f 2 -d ' ' | sort -V | cut -f 1 -d '-' | uniq
 
 # This will remove the files downloaded and created in the build process
 clean:

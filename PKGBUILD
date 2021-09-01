@@ -1,10 +1,11 @@
-# Maintainer: Jonathan Duck <duckbrain30@gmail.com>
+# Maintainer: Jonas Bögle <aur@iwr.sh>
+# Contributor: Jonathan Duck <duckbrain30@gmail.com>
 
 # Expiremental System electron package, set ELECTRON env to electron
 pkgname=typora
 pkgver=0.11.8
 pkgrel=1
-pkgdesc="Typora will give you a seamless experience as both a reader and a writer."
+pkgdesc="A minimal markdown editor and reader."
 arch=('x86_64')
 filename="${pkgname}_${pkgver}_amd64.deb"
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')

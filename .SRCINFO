@@ -1,5 +1,5 @@
 pkgbase = typora
-	pkgdesc = Typora will give you a seamless experience as both a reader and a writer.
+	pkgdesc = A minimal markdown editor and reader.
 	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://typora.io/
