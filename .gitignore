@@ -1,0 +1,5 @@
+*.zst
+*.tar.gz
+src/
+pkg/
+cwtch-server/
