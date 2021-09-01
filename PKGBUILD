@@ -3,7 +3,7 @@
 
 pkgname=labnote2-git
 _pkgname=labnote2
-pkgver=r11.0317634
+pkgver=r12.af6a5a3
 pkgrel=1
 pkgdesc='rst based desktop wiki'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 package() {
   cd "$_pkgname"
 
-  make DESTDIR="$pkgdir" install_desktop
+  make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
