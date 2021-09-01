@@ -9,7 +9,7 @@ url='https://jena.apache.org/'
 license=('Apache')
 depends=('java-runtime') # does not depend on apache-jena – included in the fat jar
 source=(
-    "http://www-us.apache.org/dist/jena/binaries/${pkgname}-${pkgver}.tar.gz"
+    "https://downloads.apache.org/jena/binaries/${pkgname}-${pkgver}.tar.gz"
     'fuseki-server'
 )
 sha512sums=(
