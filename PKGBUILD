@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.4.beta5.r0.gf5efe4883f
+pkgver=9.5.beta0.r0.ga3bd57282c
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -44,11 +44,11 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-lrcalc2.patch
         sagemath-lcalc2.patch)
 sha256sums=('SKIP'
-            'c100a61c8dfade43bebc622a363abcb3d935a2f40958371ad87a9eb00689f8b0'
+            'b2308f25c5e6ad330342fc365056d7aebfbba09b833e3be6fb6283061709b6a0'
             '88e944f23c3b2391dc2e9f9be8e1131152d837dc8c829dfc714663869a272e81'
             'af984186f852d2847d770a18fb6822296c50a652dbf55a1ed59d27517c3d3ee4'
             '240ac4c29d96d56407a20e1b7f9846e342a7eb2bb4edd6e5c86b3b5a8ff462f9'
-            '0e019b77c0db815fdef04f66178a5fa74575fc98f485ad7ac1597c795b8a024e')
+            '791b3f2c6e5529b09c3abf2f9703b6cf754d633a7a4177645b70b72ea014135a')
 
 pkgver() {
   cd sage

@@ -1,14 +1,14 @@
-diff --git a/build/pkgs/sagelib/src/setup.py b/build/pkgs/sagelib/src/setup.py
+diff --git a/pkgs/sagemath-standard/setup.py b/pkgs/sagemath-standard/setup.py
 index 0d7c29d746..fb34cbfd5e 100755
---- a/build/pkgs/sagelib/src/setup.py
-+++ b/build/pkgs/sagelib/src/setup.py
-@@ -69,10 +69,9 @@ if sdist:
+--- a/pkgs/sagemath-standard/setup.py
++++ b/pkgs/sagemath-standard/setup.py
+@@ -75,10 +75,9 @@ if sdist:
  else:
      distributions = ['']
      optional_packages_with_extensions = ['mcqd', 'bliss', 'tdlib', 'primecount',
 -                                         'coxeter3', 'fes', 'sirocco', 'meataxe']
 +                                         'coxeter3', 'sirocco', 'meataxe']
-     distributions += ['sage-{}'.format(pkg)
+     distributions += ['sagemath-{}'.format(pkg)
 -                      for pkg in optional_packages_with_extensions
 -                      if is_package_installed_and_updated(pkg)]
 +                      for pkg in optional_packages_with_extensions]

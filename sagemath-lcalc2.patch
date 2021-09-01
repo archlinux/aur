@@ -466,7 +466,7 @@ diff --git a/src/sage/schemes/elliptic_curves/ell_rational_field.py b/src/sage/s
 index bda999e..1736ce4 100644
 --- a/src/sage/schemes/elliptic_curves/ell_rational_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_rational_field.py
-@@ -1529,7 +1529,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
+@@ -1516,7 +1516,7 @@ class EllipticCurve_rational_field(EllipticCurve_number_field):
              sage: EllipticCurve([1234567,89101112]).analytic_rank(algorithm='rubinstein')
              Traceback (most recent call last):
              ...
