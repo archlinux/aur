@@ -2,7 +2,7 @@
 Name=Headset
 Comment=Discover and collect music on YouTube
 GenericName=Music Player
-Exec=/opt/headset/headset %U
+Exec=headset %U
 Icon=headset
 Type=Application
 StartupNotify=true

@@ -63,7 +63,7 @@ package() {
 	cp -r build/Headset-linux-x64/* "$pkgdir/opt/headset"
 
 	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/headset/headset" "$pkgdir/usr/bin/$pkgname"
+	ln -s "/opt/headset/headset" "$pkgdir/usr/bin/headset"
 
 	install -Dm644 "$srcdir/headset.desktop" -t "$pkgdir/usr/share/applications"
 
