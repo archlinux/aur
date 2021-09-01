@@ -11,20 +11,33 @@ ERR() {
     exit $2;
 }
 
-[[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!" 7;
-[[ "$(/sbin/doas -C /etc/doas.conf doasedit \"$1\")" == "permit" ]] || ERR "You are not a doer" 1; # To allow doasedit, you must be allowed to run `doas doasedit`
-[[ -f "$1" ]] || ERR "'$1' is not a file" 2; # File exists, seems to work on symlinks
-fileperms=$(stat -L -c "%a" "$1")
-anyreadperm=${fileperms:3:1} # With sticky bit
-[[ ${#fileperms} == "3" ]] && anyreadperm=${fileperms:2:1} # without sticky bit
-[[ $anyreadperm -ge "4" ]] || ERR "file '$1' is not world-readable (since security is hard, this is a sacrifice doasedit makes for ease of implementation)" 3;
-[[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?" 4;
-[[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner" 5;
+# Ensure this script is run as a user who has doas priviledges, editing a regular or nonexistent file
+[[ "$(id -u)" == "0" ]] && ERR "Do not run doasedit as root!" 1
+[[ "$(/sbin/doas -C /etc/doas.conf doasedit \"$1\")" == "permit" ]] || ERR "You are not a doer" 2 # To allow doasedit, you must be allowed to run `doas doasedit`
+[[ -d "$1" ]] && ERR "'$1' is a directory" 3; # File is a directory
 
-cp "$1" /tmp/doasediting &&
-    $EDITOR /tmp/doasediting &&
-    cmp -s /tmp/doasediting "$1" ||
-    doas cp /tmp/doasediting "$1" &&
-    exit 0
+# In the positive case, the file exists, and we check that anyone can read it and that it is owned by root. In the negative case, the file does not exist
+if [[ -e "$1" ]] ; then
+    fileperms=$(stat -L -c "%a" "$1")
+    anyreadperm=${fileperms:3:1} # With sticky bit
+    [[ ${#fileperms} == "3" ]] && anyreadperm=${fileperms:2:1} # without sticky bit
+    [[ $anyreadperm -ge "4" ]] || ERR "file '$1' is not world-readable (since security is hard, this is a sacrifice doasedit makes for ease of implementation)" 4
+    [[ -r "$1" ]] || ERR "file '$1' is world-readable but is not readable by your user, what are you doing?" 5
+    [[ "$(stat -L -c "%u" "$1")" == "0" ]] || ERR "Can only edit root-owned files with this script, as copying the file back will make root the owner" 6
 
-ERR "You put your password in wrong. Manually run 'doas cp /tmp/doasediting $1'" 6;
+    # Preserves file permissions, amazingly
+    cp "$1" /tmp/doasediting || ERR "Cannot copy to /tmp/doasediting" 7
+else
+    # Permissions are 0544
+    rm -f /tmp/doasediting || ERR "Cannot remove /tmp/doasediting" 8
+    touch /tmp/doasediting || ERR "Cannot touch /tmp/doasediting" 9
+fi
+
+$EDITOR /tmp/doasediting || ERR "The editor failed to exit successfully" 10
+
+# If the original file existed, don't update it if we did not make any modification to the temporary copy
+[[ -e "$1" ]] && cmp -s /tmp/doasediting "$1" && exit 0
+# If the original file did not exist, print a warning
+[[ -e "$1" ]] || echo "doasedit: File '$1' will be created, if this is not desireable press ctrl+C"
+
+doas cp /tmp/doasediting "$1" || ERR "You put your password in wrong. Manually run 'doas cp /tmp/doasediting $1'" 6;
