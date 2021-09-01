@@ -21,14 +21,14 @@ optdepends=(
   'bzr: supporting for Bazaar cloning'
   'cmake: support for CMake package management'
   'cvs: supporting for CVS checkouts'
+  'dropbear-scp: support for secure-copy fetching of sources'
   'fish: shell completion for fish'
   'git: support for Git cloning'
-  'gpg: support for GPG verification of downloaded packages'
-  'hg: support for Mercurial cloning'
+  'gnupg: support for GPG verification of downloaded packages'
   'make: support for building make-dependent packages'
+  'mercurial: support for Mercurial cloning'
   'patch: support for patching package sources'
-  'scp: support for secure-copy fetching of sources'
-  'svn: supporting for Subversion checkouts'
+  'subversion: supporting for Subversion checkouts'
   'zsh-completions: shell completion for zsh'
 )
 source=($pkgname-$pkgver::git+https://github.com/releng-tool/releng-tool.git#$_pkgtarget)
