@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=2.3.17
+pkgver=2.3.18
 pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -11,13 +11,13 @@ arch=('x86_64')
 # dynamic library. Should the .so be shipped in the future, promote qrcodegen
 # from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg' 'libunistring')
-makedepends=('cmake' 'pandoc' 'python-pip' 'python-pypandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen' 'readline' 'ninja' 'zlib')
+makedepends=('cmake' 'pandoc' 'python-pip' 'python-pypandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen' 'readline' 'ninja' 'zlib' 'gpm')
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_QRCODEGEN=on
+  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_QRCODEGEN=on -DUSE_GPM=on
 }
 
 build() {
@@ -37,4 +37,4 @@ package() {
   env CFLAGS="-I$pkgdir/usr/include -L../build" python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=('81db9d13b515d01b134619f3e69cc1efe9f326030c4e49128131d3288ee68e33')
+sha256sums=('3748e095893e6f4f9c5d84cb66a5950ac65b11236789ebe1bc21a459beab4d72')
