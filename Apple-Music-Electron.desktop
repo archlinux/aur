@@ -1,9 +1,11 @@
 [Desktop Entry]
-Type=Application
-Encoding=UTF-8
 Name=Apple Music
-Comment=Apple Music Electron
-Exec=apple-music-electron
-Icon=/usr/share/icons/hicolor/256x256/apps/apple-music-electron.png
+Exec="/opt/apple-music-electron/apple-music-electron" %U
 Terminal=False
-Categories=AudioVideo
+Type=Application
+Icon=apple-music-electron
+StartupWMClass=Apple Music
+Encoding=UTF-8
+Comment=Electron wrapper for the Apple Music Web Application using Electron 14.0.0 and several other modules to expand the usability.
+MimeType=x-scheme-handler/ame;x-scheme-handler/itms;x-scheme-handler/itmss;x-scheme-handler/musics;x-scheme-handler/music;
+Categories=AudioVideo;
