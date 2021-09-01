@@ -1,0 +1,27 @@
+pkgbase = libusbpp-git
+	pkgdesc = A simple C++ wrapper around libusb providing some additional convenience functions.
+	pkgver = date20170116_r25.a91a5ef
+	pkgrel = 1
+	url = http://bitbucket.org/stativ/libusbpp
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	provides = libusbpp
+	provides = libusbpp-hg=date20170116_r25.a91a5ef
+	provides = testhid
+	provides = testhid-hg=date20170116_r25.a91a5ef
+	conflicts = libusbpp
+	conflicts = libusbpp-hg
+	conflicts = testhid-hg
+	conflicts = testhid
+	replaces = libusbpp-hg
+	source = libusbpp::git+https://bitbucket.org/stativ/libusbpp.git
+	source = libusbpp.pc.in
+	sha256sums = SKIP
+	sha256sums = 47167c82b3fdbbc942465d7f23d07ddf88df34411ad0c245ac61f94735a178f4
+
+pkgname = libusbpp-git
