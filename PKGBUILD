@@ -2,7 +2,7 @@
 
 _pkgname=shtab
 pkgname=python-${_pkgname}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Automagic shell tab completion for Python CLI applications"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 	)
 
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname/-/_}/${_pkgname/-/_}-${pkgver}.tar.gz")
-sha256sums=('bf2193e4e017572bcd577dc6ad6280a2920d9fe9aa30fe2ac5b3e34d4465d045')
+sha256sums=('84454cb20caa0fd322c20715ae0b2410d48ea0b64f4aa470ba45c993cadbd91a')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
