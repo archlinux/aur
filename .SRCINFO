@@ -1,7 +1,7 @@
 pkgbase = dingtalk-bin
 	pkgdesc = 钉钉
 	pkgver = 1.0.0.278
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gov.dingtalk.com
 	arch = x86_64
 	license = custom
@@ -11,9 +11,11 @@ pkgbase = dingtalk-bin
 	conflicts = com.alibabainc.dingtalk
 	replaces = com.alibabainc.dingtalk
 	source = https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_1.0.0.278_amd64.deb
+	source = service-terms-zh-1.0.0.278::https://tms.dingtalk.com/markets/dingtalk/service-terms-zh
 	source = com.alibabainc.dingtalk.desktop
 	source = dingtalk.sh
 	md5sums = 0c4c02b9dad7de43d089454086a4af36
+	md5sums = 06f004ab10031adc090c19821d9aee3d
 	md5sums = e1b984a024700a9ef5f77a1018a41f8e
 	md5sums = 0e255cd61852162548db96e46f1dda00
 
