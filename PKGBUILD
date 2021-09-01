@@ -53,7 +53,7 @@ build() {
 # --limit-key128          Limit key length to 128-bit encryption keys.
 
   if check_option "debug" "y"; then
-    _config_flags+=('--enable-debug')
+    _config_flags+=( --enable-debug{,-stats} )
   fi
   ./config --prefix=/usr \
     --wavpack-dir="$srcdir"/wavpack-${_wavpack_ver} \
