@@ -34,8 +34,10 @@ makedepends=(
     'git'
     'jq'
     'libxdmcp'
-    'nvm'
+    'nodejs-lts-fermium'
+    'npm'
     'python'
+    'yarn'
 )
 source=(
     "git+${url}"
@@ -65,12 +67,12 @@ case "$CARCH" in
     ;;
 esac
 
-install_node() {
-    source /usr/share/nvm/init-nvm.sh
+install_npm() {
+    mkdir ~/.npm-global
     
-    nvm install ${_nodejs}
+    npm config set prefix '~/.npm-global'
     
-    npm install -g yarn
+    export PATH=~/.npm-global/bin:$PATH
 }
 
 version() {
@@ -78,7 +80,7 @@ version() {
 }
 
 prepare() {
-    install_node
+    install_npm
     
     cd "MrCode"
     
