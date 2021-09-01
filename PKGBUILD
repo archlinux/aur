@@ -2,9 +2,9 @@
 
 _pkgname=cwtch
 pkgname=$_pkgname-git
-pkgver=r481.ca507f7
+pkgver=v1.2.0.r0.g7737085
 pkgrel=1
-pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
+pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
 url="https://cwtch.im/"
 license=('MIT')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
     ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }

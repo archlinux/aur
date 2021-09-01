@@ -1,6 +1,6 @@
 pkgbase = cwtch-git
-	pkgdesc = Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
-	pkgver = r481.ca507f7
+	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)
+	pkgver = v1.2.0.r0.g7737085
 	pkgrel = 1
 	url = https://cwtch.im/
 	arch = x86_64
