@@ -13,15 +13,15 @@
 
 pkgname=mirrorbrain
 pkgver=2.18.1
-pkgrel=2
+pkgrel=3
 pkgdesc="an open source framework to run a content delivery network using mirror servers."
 arch=('i686' 'x86_64')
 url="http://mirrorbrain.org"
 license=('GPL')
-depends=('apache>=2.2.6' 'apache-mod_form' 'apache-mod_geoip2' 'geoip'
+depends=('apache>=2.4.48' 'apache-mod_form' 'apache-mod_geoip2' 'geoip'
          'perl' 'perl-config-inifiles' 'perl-libwww' 'perl-dbd-pg' 'perl-digest-md4' 'perl-timedate'
-         'python2' 'python2-psycopg2' 'python2-sqlobject' 'python2-cmdln')
-makedepends=('apache>=2.2.6' 'apache-mod_form' 'python')
+         'python' 'python-psycopg2' 'python-sqlobject' 'python-cmdln')
+makedepends=('apache>=2.4.48' 'apache-mod_form' 'python')
 optdepends=('postgresql: recommended database, but can use any database the Apache DBD API supports'
             'mod_asn: refined mirror selection and full exploitation of network locality')
 provides=('mod_mirrorbrain')
@@ -43,9 +43,9 @@ prepare() {
   gcc -Wall -o geoiplookup_continent geoiplookup_continent.c -lGeoIP
   gcc -Wall -o geoiplookup_city geoiplookup_city.c -lGeoIP
 
-  # fixes to use python2 instead of python
+  # fixes to use python3 instead of python
   cd $srcdir/$pkgname-$pkgver
-  sed -e 's|/usr/bin/python|/usr/bin/python2|g' \
+  sed -e 's|/usr/bin/python|/usr/bin/python3|g' \
       -i tools/rsyncusers \
       -i tools/rsyncinfo \
       -i tools/null-rsync \
@@ -84,7 +84,7 @@ package() {
 
   # Install the mb script
   cd "$srcdir/$pkgname-$pkgver/mb/"
-  python2 setup.py install --root="$pkgdir"
+  python3 setup.py install --root="$pkgdir"
 
   # Install SQL templates
   cd "$srcdir/$pkgname-$pkgver/sql/"
