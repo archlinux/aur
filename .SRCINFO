@@ -11,6 +11,6 @@ pkgbase = evcxr_repl
 	depends = gcc-libs
 	provides = evcxr_repl
 	source = https://github.com/google/evcxr/archive/v0.10.0.tar.gz
-	sha256sums = 7adb9907197da2b7d5cd48ca8361fb1c3c95bea8af871b50bf72cae4daff7000
+	sha256sums = a97af8120708f83c5b7d8908601bd47d5c6dc876c47044fd87efc180f746f289
 
 pkgname = evcxr_repl
