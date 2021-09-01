@@ -1,11 +1,12 @@
 pkgbase = yt-dlg-git
 	pkgdesc = A cross platform front-end GUI of the popular youtube-dl written in wxPython (maintained fork of youtube-dl-gui)
 	pkgver = 1.2.0.r127.g9789d97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oleksis/youtube-dl-gui
 	arch = any
 	license = custom:UNLICENSE
 	makedepends = git
+	makedepends = python-polib
 	depends = python-pypubsub
 	depends = python-wxpython
 	depends = xdg-utils
