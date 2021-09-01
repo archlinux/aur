@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
 pkgver=21+r24821_20200828_7f72ddf
-pkgrel=2
+pkgrel=3
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
 arch=('i686' 'x86_64')
@@ -172,7 +172,7 @@ build() {
     -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
     -DCMAKE_STATIC_LINKER_FLAGS="" \
     -DGETTEXT_MSGFMT_EXECUTABLE=/usr/bin/msgfmt \
-    -DGETTEXT_MSGMERGE_EXECUTABLE=/usr/bib/msgmerge \
+    -DGETTEXT_MSGMERGE_EXECUTABLE=/usr/bin/msgmerge \
     -DICU_CONFIG_EXECUTABLE=/usr/bin/icu-config \
     -DOPTION_ASAN=OFF \
     -DOPTION_BUILD_CODECHECK=OFF \
