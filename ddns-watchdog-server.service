@@ -1,10 +1,10 @@
 [Unit]
-Description=watchdog-ddns-server Service
+Description=ddns-watchdog-server Service
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=watchdog-ddns-server -c /etc/watchdog-ddns/
+ExecStart=ddns-watchdog-server -c /etc/ddns-watchdog/
 Restart=on-failure
 RestartSec=2
 
