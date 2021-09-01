@@ -34,10 +34,8 @@ makedepends=(
     'git'
     'jq'
     'libxdmcp'
-    'nodejs-lts-fermium'
-    'npm'
+    'nvm'
     'python'
-    'yarn'
 )
 source=(
     "git+${url}"
@@ -67,11 +65,21 @@ case "$CARCH" in
     ;;
 esac
 
+install_node() {
+    source /usr/share/nvm/init-nvm.sh
+    
+    nvm install ${_nodejs}
+    
+    npm install -g yarn
+}
+
 version() {
     echo "$@" | tr 'v' ' ' | awk -F. '{ printf("%03d%03d%03d%03d\n", $1,$2,$3,$4); }'
 }
 
 prepare() {
+    install_node
+    
     cd "MrCode"
     
     git checkout $( echo $pkgver | sed 's/\.r\([0-9]\+\)\./-r\1-/' )
