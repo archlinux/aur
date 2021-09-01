@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
-pkgver=40.alpha+78+g09cd4815
+pkgver=40.0+105+g42f58337
 pkgrel=1
 pkgdesc="GNOME application for managing encryption keys and passwords in the
 GNOME Keyring."
@@ -18,7 +18,7 @@ conflicts=('seahorse')
 provides=('seahorse')
 makedepends=(libldap yelp-tools gobject-introspection vala git meson)
 provides=(x11-ssh-askpass)
-
+_pkgname=seahorse
 # Tag: 3.30.0: 7e0535880a2010df356d9c468c68cdcb77b45431
 #_commit=7e0535880a2010df356d9c468c68cdcb77b45431
 #source=("git+https://gitlab.gnome.org/GNOME/seahorse.git#commit=$_commit")
@@ -27,12 +27,12 @@ source=("git+https://gitlab.gnome.org/GNOME/seahorse.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd seahorse/
+  cd ${_pkgname}
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd seahorse/
+  cd ${_pkgname}
 }
 
 build() {
