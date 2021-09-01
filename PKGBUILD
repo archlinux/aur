@@ -28,7 +28,7 @@ package_kata-runtime-bin() {
     'kata-containers-image: Disk and initrd images for booting Kata VMs'
     'linux-kata: Kernel images for booting Kata VMs'
     'qemu-headless: QEMU-hypervised Kata VMs'
-    'cloud-hypervisor<16.0: Cloud-Hypervisor-based Kata VMs'
+    'cloud-hypervisor: Cloud-Hypervisor-based Kata VMs'
     'firecracker<0.24.0: Firecracker-based Kata VMs'
   )
   conflicts=('kata-runtime' 'kata1-runtime' 'kata2-runtime')
