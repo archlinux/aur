@@ -1,7 +1,7 @@
 pkgbase = ezra-bible-app
 	pkgdesc = A user-friendly Bible study tool focussing on topical study based on keywords/tags
-	pkgver = 1.0.0
-	pkgrel = 4
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/ezra-bible-app/ezra-bible-app
 	arch = x86_64
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = ezra-bible-app
 	makedepends = moreutils
 	makedepends = node-gyp
 	makedepends = node-prune
-	makedepends = nodejs-addon-api>=3.2.0-2
+	makedepends = nodejs-addon-api
 	makedepends = nodejs-pug-cli
-	makedepends = nodejs-sword-interface>=0.225.0
+	makedepends = nodejs-sword-interface
 	makedepends = npm
 	depends = electron
 	depends = icu
@@ -19,10 +19,9 @@ pkgbase = ezra-bible-app
 	provides = ezra-project
 	conflicts = ezra-project
 	replaces = ezra-project
-	source = ezra-bible-app-1.0.0.tar.gz::https://github.com/ezra-bible-app/ezra-bible-app/archive/1.0.0.tar.gz
+	source = ezra-bible-app-1.2.0.tar.gz::https://github.com/ezra-bible-app/ezra-bible-app/archive/1.2.0.tar.gz
 	source = ezra-bible-app.sh
-	sha256sums = b2adcf8ad9f60832b5f773ea138242eee6942162a04a8381d33b8a3d5f477c02
+	sha256sums = 11fede4cdc9654904efc8f3f515a9dc8eec86178c1eb29fddf38738081a6e348
 	sha256sums = e135a382166ce27cf1348750767e157b2d292d4a189940f0fa874af29bc6540b
 
 pkgname = ezra-bible-app
-
