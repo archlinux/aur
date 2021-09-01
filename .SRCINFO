@@ -1,0 +1,15 @@
+pkgbase = perl-class-role
+	pkgdesc = Support for the role object model
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/release/Class-Role
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl>=5.006
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NE/NEILB/Class-Role-0.04.tar.gz
+	md5sums = 171c58f2d584f8d80097df26359c070c
+	sha512sums = 354ffe10d68ece47ca743a6603f02e82b72a8b78ea25f1125502561ca379ab25985e00dad72a3bb02d199a942e409c78c4450cffdf3d17c7bbe2a2c83db036b0
+
+pkgname = perl-class-role
