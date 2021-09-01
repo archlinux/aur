@@ -24,6 +24,7 @@ optdepends=('unixodbc:     for using the odbc4pl library'
             'jdk-openjdk:  for using Prolog from Java'
             'java-runtime: for using Prolog from Java')
 source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
+sha256sums=('4e15d8bde2d9da4fd504e17e10cbd7a7c3a77104972f10772396bad5015a9ee0')
 provides=('swi-prolog')
 conflicts=('swi-prolog')
 
