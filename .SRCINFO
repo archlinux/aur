@@ -1,6 +1,6 @@
 pkgbase = digital-assets
 	pkgdesc = Cryptocurrencies prices and statistics
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/fgrabenstaetter/digital-assets
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = digital-assets
 	depends = gtk3>=3.20
 	depends = gobject-introspection>=1.56
 	depends = python-cairo
-	source = git+https://gitlab.gnome.org/fgrabenstaetter/digital-assets.git#tag=7a70f071caa3ac45c82f596f5f1a73ffd67c43ca
+	source = git+https://gitlab.gnome.org/fgrabenstaetter/digital-assets.git#tag=1.2.0
 	sha256sums = SKIP
 
 pkgname = digital-assets
-
