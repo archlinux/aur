@@ -1,10 +1,11 @@
 pkgbase = astronciaiptv
         pkgdesc = IPTV player with EPG support
-        pkgver = 0.0.78
+        pkgver = 0.0.79
         pkgrel = 1
         url = https://gitlab.com/astroncia/iptv
         arch = any
         license = GPL3
+        makedepends = make
         depends = python
         depends = qt6-base
         depends = mpv
@@ -19,7 +20,7 @@ pkgbase = astronciaiptv
         depends = python-setproctitle
         depends = ffmpeg
         optdepends = youtube-dl: YouTube channel support
-        source = https://gitlab.com/astroncia/iptv/-/archive/0.0.78/iptv-0.0.78.tar.gz
-        b2sums = 10df74f52ee0f5684d121c81857ebc2cd30bfd81c9a294d5916d86421846e122f14bcf32c9983a65c4be748bcbceadf95300fae434d85667f4ee5df15b65ff3f
+        source = https://gitlab.com/astroncia/iptv/-/archive/0.0.79/iptv-0.0.79.tar.gz
+        b2sums = 02e588b92b7ecc414067165cc21388ce6e67d94025bb90c33f2c57abb7032650ee31fea7db7ef89f73f7c08b164de7d7d85f2c89a86f8893fb903de8bc391b45
 
 pkgname = astronciaiptv
