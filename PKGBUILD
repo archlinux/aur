@@ -5,7 +5,7 @@
 # wine -> vkd3d-valve -> wine-valve -> proton
 pkgname=legendary
 pkgver=0.20.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open-source replacement for the Epic Games Launcher "
 arch=('any')
 url="https://github.com/derrod/legendary"
@@ -25,6 +25,12 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
 sha256sums=('0406e2786a5ab527ab9fb1af092e5cd2bfc4fe2a9b6483b1a8e9afc7de145799')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	sed -i "s/'legendary.downloader',/& 'legendary.downloader.mp',/" setup.py
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
