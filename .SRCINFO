@@ -28,6 +28,7 @@ pkgbase = chataigne-stable-bin
 	depends = nss
 	depends = ttf-bitstream-vera
 	depends = libcurl-gnutls
+	conflicts = chataigne-beta-bin
 	noextract = Chataigne-linux-x64-1.8.0.AppImage
 	options = !strip
 	source_x86_64 = Chataigne-linux-x64-1.8.0.AppImage::https://benjamin.kuperberg.fr/chataigne/user/data/Chataigne-linux-x64-1.8.0.AppImage
