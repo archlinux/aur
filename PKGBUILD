@@ -2,16 +2,13 @@
 
 pkgname=bat-extras
 pkgver=2021.08.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash scripts that integrate bat with various command line tools"
 arch=('any')
 url="https://github.com/eth-p/bat-extras"
 license=('MIT')
-depends=('bat' 'bash')
+depends=('bat' 'bash' 'git' 'ripgrep' 'man-db')
 optdepends=(
-  'git: required for batdiff script'
-  'ripgrep: required for batgrep script'
-  'man-db: required for batman script'
   'ncurses: optional for batdiff script'
   'git-delta: optional for batdiff script'
   'fzf: optional for batman script'
@@ -23,11 +20,28 @@ optdepends=(
   'clang: C / C++ / Objective-C formatting for prettybat script'
   'python-black: Python formatting for prettybat script'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('6df434fb800f1c0c56731237801348d97d6fbb5652b2315b64f9c172533de01e59a1ec37f11d5d6d9ac91aaf389185b275554deb8ae598c203a5c1419c462d27')
+checkdepends=('fish')
+_commit='7803ecaba1e78adacc277e82b2568cca007b1ba0'
+source=("git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+}
+
+prepare(){
+  cd "$pkgname"
+  git submodule update --init --recursive
+}
+
+check() {
+  cd "$pkgname"
+  ./test.sh --verbose --strict --snapshot:show
+}
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   ./build.sh \
     --minify=none \
     --no-verify \

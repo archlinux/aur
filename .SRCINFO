@@ -1,15 +1,16 @@
 pkgbase = bat-extras
 	pkgdesc = Bash scripts that integrate bat with various command line tools
 	pkgver = 2021.08.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eth-p/bat-extras
 	arch = any
 	license = MIT
+	checkdepends = fish
 	depends = bat
 	depends = bash
-	optdepends = git: required for batdiff script
-	optdepends = ripgrep: required for batgrep script
-	optdepends = man-db: required for batman script
+	depends = git
+	depends = ripgrep
+	depends = man-db
 	optdepends = ncurses: optional for batdiff script
 	optdepends = git-delta: optional for batdiff script
 	optdepends = fzf: optional for batman script
@@ -20,7 +21,7 @@ pkgbase = bat-extras
 	optdepends = rustfmt: Rust formatting for prettybat script
 	optdepends = clang: C / C++ / Objective-C formatting for prettybat script
 	optdepends = python-black: Python formatting for prettybat script
-	source = bat-extras-2021.08.21.tar.gz::https://github.com/eth-p/bat-extras/archive/v2021.08.21.tar.gz
-	b2sums = 6df434fb800f1c0c56731237801348d97d6fbb5652b2315b64f9c172533de01e59a1ec37f11d5d6d9ac91aaf389185b275554deb8ae598c203a5c1419c462d27
+	source = git+https://github.com/eth-p/bat-extras.git#commit=7803ecaba1e78adacc277e82b2568cca007b1ba0
+	b2sums = SKIP
 
 pkgname = bat-extras
