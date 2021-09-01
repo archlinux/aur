@@ -1,7 +1,7 @@
 pkgbase = inform
 	pkgdesc = Interactive fiction compiler
-	pkgver = 6.35.r2
-	pkgrel = 2
+	pkgver = 6.35.r3
+	pkgrel = 1
 	url = http://www.inform-fiction.org/
 	arch = aarch64
 	arch = arm
@@ -14,7 +14,7 @@ pkgbase = inform
 	license = Artistic2.0
 	license = MIT
 	depends = glibc
-	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.35-r2.tar.gz
-	md5sums = 9035fb1469ae9a39c077b5b55f05aebc
+	source = http://ifarchive.org/if-archive/infocom/compilers/inform6/source/inform-6.35-r3.tar.gz
+	md5sums = 8866a5511b1a3c0bc8c0a8f92ade94bb
 
 pkgname = inform

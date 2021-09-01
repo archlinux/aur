@@ -4,9 +4,9 @@
 # contributor: Alessandro Schillaci < http://slade.altervista.org >
 
 pkgname=inform
-pkgver=6.35.r2
-_ifrel="6.35-r2"
-pkgrel=2
+pkgver=6.35.r3
+_ifrel="6.35-r3"
+pkgrel=1
 pkgdesc="Interactive fiction compiler"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="http://www.inform-fiction.org/"
@@ -15,7 +15,7 @@ depends=('glibc')
 groups=(inform)
 source=("http://ifarchive.org/if-archive/infocom/compilers/inform6/source/${pkgname}-${_ifrel}.tar.gz")
 
-md5sums=('9035fb1469ae9a39c077b5b55f05aebc')
+md5sums=('8866a5511b1a3c0bc8c0a8f92ade94bb')
 
 build() {
   cd "${srcdir}"/"${pkgname}-${_ifrel}"
@@ -24,9 +24,9 @@ build() {
 
 package() {
   cd "${srcdir}"/"${pkgname}-${_ifrel}"
-  make PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
+  make REAL_PREFIX=/usr PREFIX="${pkgdir}"/usr MAN_PREFIX="${pkgdir}"/usr/share install
 
-  rm "${pkgdir}"/usr/bin/punyinform*
-  sed 's,^LIBPATH.*,LIBPATH=/usr/share/inform,g' "${srcdir}"/"${pkgname}-${_ifrel}"/punyinform.sh > "${pkgdir}"/usr/bin/punyinform
-  chmod +x "${pkgdir}"/usr/bin/punyinform
+  cd "${pkgdir}"/usr/bin
+  rm pblorb punyinform scanblorb
+  mv punyinform.sh punyinform
 }
