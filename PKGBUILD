@@ -9,9 +9,10 @@ _contrib=default
 _cracklib=default
 _ldap=default
 
+_pkgname=atheme-services
 pkgname=atheme
-_pkgver="7.2.10-r2"
-pkgrel=2
+_pkgver="7.2.11"
+pkgrel=1
 pkgver="${_pkgver//-/_}"
 pkgdesc="IRC services"
 arch=("i686" "x86_64")
@@ -32,14 +33,14 @@ backup=(
     'etc/atheme/atheme.motd'
 )
 install=atheme.install
-source=("https://github.com/atheme/atheme/releases/download/v${_pkgver}/${pkgname}-v${_pkgver}.tar.xz"
+source=("https://github.com/atheme/atheme/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.xz"
         "atheme.service"
 )
-sha256sums=('cceceb285283509c9f6dcb20eeb9b816db373a81b55fe49bc11a774b501d687d'
+sha256sums=('f6b346a4328778f8236f492fa23fdc96cd2acebad4cfd30d6d7b04c583b49b32'
             'ee9ad7658434451184872c21c7fd38196d22d1dfb6b1f37bcfaf8c363d50296f')
 
 build() {
-    cd "$srcdir/$pkgname-v$_pkgver"
+    cd "$srcdir/$_pkgname-v$_pkgver"
 
     _configure="./configure --prefix=/usr --enable-fhs-paths"
     _configure+=" --sysconfdir=/etc/atheme --localstatedir=/var"
@@ -62,7 +63,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-v$_pkgver"
+    cd "$srcdir/$_pkgname-v$_pkgver"
 
     make DESTDIR="$pkgdir/" install
     install -Dm0644 "$srcdir/atheme.service" "$pkgdir/usr/lib/systemd/system/atheme.service"
