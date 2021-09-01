@@ -12,6 +12,7 @@ source=("https://github.com/ampersoftware/Creators.TF-Community-Launcher/archive
 	'patch.patch')
 sha512sums=('afbf3dc0fbbb1c70a808944640c05fd5a8cd0cac6ff6ac0e6d14e748ebf45b18bcf57b4184beb36b7640a9049c373a7ac90c6a964a9174fad701c1598ebecdf2'
             'e2de8060533296ee716c508e11cb46baa2e2657449e6aa0db5bdda3296ced63cfee04d1a7e63b1f2b26feb636af16f93bbbbd2e12acc9a81d86ac4e7e06e887d')
+replaces=('creators-tf-launcher-bin')
 
 prepare(){
 	cd "$srcdir/Creators.TF-Community-Launcher-$pkgver"
