@@ -1,7 +1,7 @@
 pkgname=("pivx-daemon" "pivx-cli" "pivx-qt" "pivx-sapling-params")
 pkgbase=pivx
 _pkgbase=${pkgbase^^}
-pkgver=5.2.0.1
+pkgver=5.3.0
 pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="https://pivx.org/"
@@ -12,10 +12,10 @@ source=("https://github.com/PIVX-Project/PIVX/archive/v$pkgver.tar.gz")
 source_i686=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-i686-linux-gnu.tar.gz")
 source_x86_64=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-x86_64-linux-gnu.tar.gz")
 source_armv7h=("https://github.com/PIVX-Project/PIVX/releases/download/v$pkgver/pivx-$pkgver-arm-linux-gnueabihf.tar.gz")
-sha256sums=("4bcc2147fe8a72df9a50afb3b5becb4066b8e46b3a48ad51971eabf85a8b656b")
-sha256sums_i686=("0e279c9f36af355fffc6d37fdea635927dae12a70075f9a7f82e0b250b5aafa2")
-sha256sums_x86_64=("45e1ca4b9637f0d4834619c09cb5dc8c81ab49d688e69f4d2f36e2d8211f58a5")
-sha256sums_armv7h=("c7c92ede72b008c10e6e2d65e08112c8a48a37d24e803dd4d74d39999292b361")
+sha256sums=("3284724231e520e6759cbca2b29ac859221638a51ea71639f6e1f7305828fa8b")
+sha256sums_i686=("9dd26faa648216394c94664b50b304ce235cde4d13f8b3a2a9c0bbb27cc51e06")
+sha256sums_x86_64=("9112f788d83f739532eb2597730ea016d445cef329b6d3228906a0f40c2c2907")
+sha256sums_armv7h=("2ac097f3d77ade38e883c96ad45e5d065d5625938bf9d545c92c3eb5ca0cb62b")
 
 package_pivx-daemon() {
   pkgdesc+="(daemon)"
