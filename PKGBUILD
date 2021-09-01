@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libayatana-common"
-pkgver="0.9.2"
+pkgver="0.9.4"
 pkgrel="1"
 pkgdesc="Ayatana System Indicators' common API functions"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("cmake" "cmake-extras" "glib2" "vala" "gobject-introspection")
 depends=("dconf")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
-md5sums=("f0eb7e4fe2d0d18d4c94bb4ff2490f5f")
+md5sums=("322d65b615f0894cb3684895695801b3")
 
 build()
 {
