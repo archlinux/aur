@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-mcfgthread-git
+	pkgdesc = An efficient Gthread implementation for GCC (mingw-w64)
+	pkgver = r528.6af5465
+	pkgrel = 1
+	url = https://github.com/lhmouse/mcfgthread
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-configure
+	makedepends = git
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/lhmouse/mcfgthread.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-mcfgthread-git
