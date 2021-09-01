@@ -18,6 +18,7 @@ depends=(
     ffmpeg
     minizip
     qt5-imageformats
+    rnnoise
 )
 makedepends=('chrpath' 'cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'kwayland' 'libtg_owt' 'microsoft-gsl' 'extra-cmake-modules')
 optdepends=('ttf-opensans: default Open Sans font family')

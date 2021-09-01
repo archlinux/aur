@@ -32,6 +32,7 @@ pkgbase = telegram-desktop-wide
 	depends = glib2
 	depends = libdbus
 	depends = libx11
+	depends = rnnoise
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
