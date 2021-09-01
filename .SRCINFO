@@ -1,17 +1,17 @@
 pkgbase = zwcad-bin
 	pkgdesc = ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要
-	pkgver = 2021.1.4523
+	pkgver = 22.0.2.4
 	pkgrel = 1
+	epoch = 1
 	url = https://www.zwcad.com
 	arch = x86_64
 	arch = aarch64
 	license = unknown
 	provides = zwcad
 	options = !strip
-	source_x86_64 = zwcad-bin-2021.1.4523-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/2021/4523/zwcad_2021.1.4523-1_zh-cn_amd64.deb
-	sha512sums_x86_64 = 1b7a70252c2718bc0d3f93ddc2fda561d8c593c64c9375ef5f20ad6cc2cd36370c9740c60d9715e0df0c37160a12a4ecdc7717ca51d71a058ce48521800a3cfa
-	source_aarch64 = zwcad-bin-2021.1.4523-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/2021/4523/zwcad_2021.1.4523-1_zh-cn_arm64.deb
-	sha512sums_aarch64 = 9845fcc430883a7586c04c68ab929ca1e71cd68a7e616ae24c1cd269f5231023efb3750a49c5d90739daca53f3d80a950f25057b9512246e32f8868d075d9c65
+	source_x86_64 = zwcad-bin-22.0.2.4-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/2022/zwcad_22.0.2.4_zh-cn_amd64.deb
+	sha512sums_x86_64 = a78335be694f9a2efd82319356e8e480fd10ee90dd032ad266318697505e54cf88ce1acdd4f71dd0ba7d1b6a26971a164344d90c4b711fbde03e6127e708995a
+	source_aarch64 = zwcad-bin-22.0.2.4-x86_64.deb::https://download.zwcad.com/zwcad/cad_linux/2022/zwcad_22.0.2.4_zh-cn_arm64.deb
+	sha512sums_aarch64 = aeb74a0426497ae8ce176f7c239b9163bb5d997cecffe19b7093bcfde902e471c42c3b79b933ff85eff42c1b9e162ba304ee0d052fc41d3ec336f1c87733cde1
 
 pkgname = zwcad-bin
-
