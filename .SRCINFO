@@ -1,10 +1,10 @@
 pkgbase = stm32cubeprog
 	pkgdesc = An all-in-one multi-OS software tool for programming STM32 products.
 	pkgver = 2.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.st.com/en/development-tools/stm32cubeprog.html
 	arch = x86_64
-	license = SLA0048
+	license = custom:SLA0048
 	makedepends = xdotool
 	makedepends = xorg-server-xvfb
 	makedepends = icoutils

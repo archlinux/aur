@@ -7,11 +7,11 @@ pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
 pkgver=2.8.0
 _stlink_updater_ver=2.38.27
-pkgrel=3
+pkgrel=4
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
-license=('SLA0048')
+license=('custom:SLA0048')
 # libusb1.0.12 version or higher is required to run STM32CubeProgrammer.
 
 #
@@ -99,7 +99,7 @@ package() {
 Comment=${_pkgname}-Cube ${pkgver}
 Comment[en]=${_pkgname}-Cube ${pkgver}
 Encoding=UTF-8
-Exec=/opt/${pkgname}/bin/${_pkgname}
+Exec=env GDK_BACKEND=x11 /opt/${pkgname}/bin/${_pkgname}
 Icon=${pkgname}
 Name=${_pkgname}
 Name[en]=${_pkgname}
