@@ -1,0 +1,5 @@
+*.zst
+*.tar.gz
+cwtch/
+src/
+pkg/

@@ -1,47 +1,22 @@
 # Maintainer: Trevor Bergeron <aur@sec.gd>
 
 _pkgname=cwtch
-_gourl=cwtch.im/$_pkgname
 pkgname=$_pkgname-git
-pkgver=r384.b959bfa
+pkgver=r481.ca507f7
 pkgrel=1
 pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
+# Probably works on others - Please let me know!
 arch=('x86_64' 'i686')
 url="https://cwtch.im/"
 license=('MIT')
-depends=('tor')
-makedepends=('go' 'git')
+depends=('libcwtch-go')
+# flutter-beta until 2.5
+makedepends=('flutter-beta' 'go' 'git')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
-#options=('!strip' '!emptydirs')
-source=("cwtch-server.service" "cwtch.sysusers" "cwtch.tmpfiles")
-sha256sums=('b1c4ad9738f517317e1b5a373590469575dcc10044ece1ce551e483498d66caa'
-            'beab74c0441b6532c1f4b7365038f595372f7e7a3a4b3587d36a3cb9dc8605fb'
-            '399bacb458e108df49dda328258ba0653506393cef465dd794efa3b371fba902')
-
-prepare() {
-    export GOPATH="$srcdir/go"
-    mkdir -p "$GOPATH"
-
-    # "Fails" because no $project/main.go exists
-    # https://go-review.googlesource.com/c/vgo/+/120995
-    go get -u -v -d "$_gourl" || true
-
-    project="$GOPATH/src/$_gourl"
-
-    cd "$project/app/cli"
-    go fix
-    go get -fix -u -v
-
-    cd "$project/server/app"
-    go fix
-    go get -fix -u -v
-}
+source=("$_pkgname::git+https://git.openprivacy.ca/cwtch.im/cwtch-ui")
 
 pkgver() {
-    export GOPATH="$srcdir/go"
-    project="$GOPATH/src/$_gourl"
-    cd "$project"
+    cd "$srcdir/$_pkgname"
     ( set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -49,36 +24,46 @@ pkgver() {
 }
 
 build() {
-    export GOPATH="$srcdir/go"
-    project="$GOPATH/src/$_gourl"
+    cd "$srcdir/$_pkgname"
 
-    cd "$project/app/cli"
-    go build -v -ldflags "-s -w"
+    # If using the AUR 'flutter'/'flutter-beta' packages, we need a group.
+    if ! id -nG | grep -qw flutterusers ; then
+        if [ "`which flutter`" == "/usr/bin/flutter" ] ; then
+            warning "You are not in the 'flutterusers' group. The build will probably fail."
+            warning "Run 'sudo usermod -a -G flutterusers $USER' and reboot to fix."
+        fi
+    fi
 
-    cd "$project/server/app"
-    go build -v -ldflags "-s -w"
-}
+    set -eux
 
-check() {
-    export GOPATH="$srcdir/go"
-    project="$GOPATH/src/$_gourl"
+    flutter="flutter --suppress-analytics"
+    # no way to local-enable this... let's try to clean up after ourselves
+    $flutter config | grep -qE '^\s*enable-linux-desktop: true\b' || flutter_set_linux=y
+    flutter_set_linux="$?"
+    [ "$flutter_set_linux" == "y" ] || $flutter config --enable-linux-desktop
 
-    cd "$project"
-    bash "testing/tests.sh"
+
+    # See https://git.openprivacy.ca/cwtch.im/cwtch-ui/src/branch/trunk/.drone.yml
+    $flutter pub get
+    $flutter build linux \
+        --dart-define BUILD_VER="${pkgver}-${pkgrel}-ARCH" \
+        --dart-define BUILD_DATE="`date +%G-%m-%d-%H-%M`"
+
+    [ "$flutter_set_linux" == "y" ] || $flutter config --no-enable-linux-desktop
 }
 
 package() {
-    export GOPATH="$srcdir/go"
-    project="$GOPATH/src/$_gourl"
+    cd "$srcdir/$_pkgname"
+    builddir="$srcdir/$_pkgname/build/linux/x64/release/bundle"
 
-    install -Dm0755 "$GOPATH/bin/cli" "$pkgdir/usr/bin/$_pkgname-cli"
-    install -Dm0755 "$GOPATH/bin/app" "$pkgdir/usr/bin/$_pkgname-server"
-    install -Dm0644 "$srcdir/$_pkgname-server.service" \
-                    "$pkgdir/usr/lib/systemd/system/$_pkgname-server.service"
-    install -Dm0644 "$srcdir/$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-    # Create /var/lib/cwtch/ owned by cwtch user
-    install -Dm0644 "$srcdir/$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-    install -Dm0644 "$project/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    # See linux/ package-release.sh and install-sys.sh
+    install -Dm0755 "linux/cwtch.sys.sh" "$pkgdir/usr/bin/cwtch"
+    install -Dm0644 "linux/cwtch.png" -t "$pkgdir/usr/share/icons/"
+    install -dm0755 "$pkgdir/usr/share/cwtch/"
+    cp -r "$builddir/data" "$pkgdir/usr/share/cwtch/"
+    install -dm0755 "$pkgdir/usr/lib/cwtch/"
+    install -Dm0755 "$builddir/cwtch" -t "$pkgdir/usr/lib/cwtch/"
+    cp -r "$builddir/lib/"* "$pkgdir/usr/lib/cwtch/"
+    install -Dm0644 "linux/cwtch.sys.desktop" "$pkgdir/usr/share/applications/cwtch.desktop"
 }
-
-# vim: set ts=4 sw=4 tw=79 et :
+sha256sums=('SKIP')
