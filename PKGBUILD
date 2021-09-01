@@ -5,8 +5,7 @@ pkgname=$_pkgname-git
 pkgver=r481.ca507f7
 pkgrel=1
 pkgdesc="Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
-# Probably works on others - Please let me know!
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://cwtch.im/"
 license=('MIT')
 depends=('libcwtch-go')
@@ -14,6 +13,7 @@ depends=('libcwtch-go')
 makedepends=('flutter-beta' 'go' 'git')
 provides=("$_pkgname")
 source=("$_pkgname::git+https://git.openprivacy.ca/cwtch.im/cwtch-ui")
+sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -33,8 +33,6 @@ build() {
             warning "Run 'sudo usermod -a -G flutterusers $USER' and reboot to fix."
         fi
     fi
-
-    set -eux
 
     flutter="flutter --suppress-analytics"
     # no way to local-enable this... let's try to clean up after ourselves
@@ -66,4 +64,3 @@ package() {
     cp -r "$builddir/lib/"* "$pkgdir/usr/lib/cwtch/"
     install -Dm0644 "linux/cwtch.sys.desktop" "$pkgdir/usr/share/applications/cwtch.desktop"
 }
-sha256sums=('SKIP')

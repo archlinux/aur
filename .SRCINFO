@@ -4,7 +4,6 @@ pkgbase = cwtch-git
 	pkgrel = 1
 	url = https://cwtch.im/
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = flutter-beta
 	makedepends = go
@@ -12,6 +11,6 @@ pkgbase = cwtch-git
 	depends = libcwtch-go
 	provides = cwtch
 	source = cwtch::git+https://git.openprivacy.ca/cwtch.im/cwtch-ui
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = cwtch-git
