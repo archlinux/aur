@@ -1,0 +1,8 @@
+#!/bin/sh
+sel=$(slop -f "-i %i -g %g")
+if [ $# -eq 0 ] ; then
+    shotgun $sel -f png - | xclip -t image/png -selection clipboard
+else
+    [ -e "$1"'.png' ] && echo "File '$1.png' already exists" && exit 1;
+    shotgun $sel -f png "$1"'.png'
+fi
