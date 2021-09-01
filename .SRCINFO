@@ -7,11 +7,15 @@ pkgbase = python-botoy
 	license = MIT
 	depends = python-httpx
 	depends = python-socketio4
+	depends = python-engineio3
 	depends = python-websocket-client
-	depends = python-prettytable
 	depends = python-loguru
 	depends = python-click
 	depends = python-aiohttp
+	depends = python-prettytable
+	depends = python-apscheduler
+	depends = python-pydantic
+	depends = python-colorama
 	source = python-botoy-7.0.tar.gz::https://github.com/xiyaowong/botoy/archive/v7.0.tar.gz
 	sha256sums = de802acb1196ad02c1221ee17bb3ceb392975bc31f6ef1deec37612a9fc2b36b
 
