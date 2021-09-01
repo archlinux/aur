@@ -2,7 +2,7 @@
 pkgname=rpcs3-bin
 pkgver=0.0.18
 _pkgbuild='12699-9c0c8f2b'
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -33,7 +33,7 @@ package()
     install -D -m644 'usr/share/applications/rpcs3.desktop' "$pkgdir/usr/share/applications/rpcs3.desktop"
     install -D -m644 'usr/share/icons/hicolor/48x48/apps/rpcs3.png' "$pkgdir/usr/share/icons/hicolor/48x48/apps/rpcs3.png"
     install -D -m644 'usr/share/icons/hicolor/scalable/apps/rpcs3.svg' "$pkgdir/usr/share/icons/hicolor/scalable/apps/rpcs3.svg"
-    install -D -m644 'usr/share/metainfo/rpcs3.appdata.xml' "$pkgdir/usr/share/memetainfo/rpcs3.appdata.xml"
+    install -D -m644 'usr/share/metainfo/rpcs3.metainfo.xml' "$pkgdir/usr/share/memetainfo/rpcs3.metainfo.xml"
     install -D -m644 'usr/share/rpcs3/Icons/ui/circle.png' "$pkgdir/usr/share/rpcs3/Icons/ui/circle.png"
     install -D -m644 'usr/share/rpcs3/Icons/ui/cross.png' "$pkgdir/usr/share/rpcs3/Icons/ui/cross.png"
     install -D -m644 'usr/share/rpcs3/Icons/ui/dpad_down.png' "$pkgdir/usr/share/rpcs3/Icons/ui/dpad_down.png"
