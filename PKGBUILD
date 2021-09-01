@@ -3,12 +3,12 @@
 
 pkgname=lib32-gconf
 pkgver=3.2.6+11+g07808097
-pkgrel=6
+pkgrel=7
 pkgdesc="An obsolete configuration database system"
 url="https://projects-old.gnome.org/gconf/"
 arch=(x86_64)
 license=(LGPL)
-depends=(gconf lib32-dbus-glib lib32-gtk3)
+depends=(gconf lib32-dbus-glib lib32-gtk3 lib32-polkit)
 makedepends=(intltool gtk-doc gobject-introspection git gnome-common gcc-multilib)
 install=gconf.install
 _commit=0780809731c8ab1c364202b1900d3df106b28626  # master

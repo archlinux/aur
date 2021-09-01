@@ -1,7 +1,7 @@
 pkgbase = lib32-gconf
 	pkgdesc = An obsolete configuration database system
 	pkgver = 3.2.6+11+g07808097
-	pkgrel = 6
+	pkgrel = 7
 	url = https://projects-old.gnome.org/gconf/
 	install = gconf.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = lib32-gconf
 	depends = gconf
 	depends = lib32-dbus-glib
 	depends = lib32-gtk3
+	depends = lib32-polkit
 	source = lib32-gconf::git+https://gitlab.gnome.org/Archive/gconf.git#commit=0780809731c8ab1c364202b1900d3df106b28626
 	source = 01_xml-gettext-domain.patch
 	source = gconf-reload.patch
@@ -23,4 +24,3 @@ pkgbase = lib32-gconf
 	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694
 
 pkgname = lib32-gconf
-
