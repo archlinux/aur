@@ -4,7 +4,7 @@ _pkgorigname=carto
 _pkgname="${_pkgorigname}"
 pkgname="nodejs-${_pkgname}-git"
 pkgdesc="Mapbox carto: Translates Carto MML/ CartoCSS to Mapnik XML or a JSON variant of Mapnik XML."
-pkgver=1.2.0+2+r1945.20190213.13a3962
+pkgver=1.2.0+28+r1971.20201014.3051072
 pkgrel=2
 arch=('any')
 license=('apache')
@@ -20,6 +20,7 @@ makedepends=(
   'python-sphinx_rtd_theme' # For making documentation.
   'texinfo' # For making documentation.
   'texlive-bin' # For making documentation.
+  'texlive-latexextra' # For making documentation.
 )
 provides=(
   "${_pkgname}=${pkgver}"
