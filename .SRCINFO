@@ -1,0 +1,11 @@
+pkgbase = ttf-kepatihanpro
+	pkgdesc = A font for symbols frequently used in the notation of gamelan music
+	pkgver = 20000217
+	pkgrel = 1
+	url = http://www.gamelan.org/library/
+	arch = any
+	license = custom
+	source = ttf-kepatihanpro-20000217.zip::http://www.gamelan.org/library/fonts/kepatprowin.zip
+	sha256sums = 642377944e34730b3afd28b9a87bd0da631634853d2aa83205606c1eaebe2e52
+
+pkgname = ttf-kepatihanpro
