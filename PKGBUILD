@@ -1,0 +1,35 @@
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+
+_pkgbase=WolkenWelten
+_pkgname=${_pkgbase,,}
+pkgname=${_pkgname}-git
+pkgver=r1771.8a725805
+pkgrel=1
+pkgdesc='Gamemix between Minecraft, Quake ]I[ and Emacs in C99'
+arch=('i686' 'x86_64' 'aarch64')
+url="https://wolkenwelten.net/"
+license=('GNU')
+depends=('ffmpeg' 'sdl2' 'sdl2_mixer')
+makedepends=('clang')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+source=(${_pkgname}::"git+https://git.sr.ht/~melchizedek6809/${_pkgbase}")
+md5sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd ${_pkgname}
+  make
+}
+
+package() {
+  cd ${_pkgname}
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}-server" "${pkgdir}/usr/bin/${_pkgname}-server"
+  install -Dm755 "nujel" "${pkgdir}/usr/bin/nujel"
+	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}

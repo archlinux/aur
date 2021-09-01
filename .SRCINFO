@@ -1,0 +1,19 @@
+pkgbase = wolkenwelten-git
+	pkgdesc = Gamemix between Minecraft, Quake ]I[ and Emacs in C99
+	pkgver = r1771.8a725805
+	pkgrel = 1
+	url = https://wolkenwelten.net/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GNU
+	makedepends = clang
+	depends = ffmpeg
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = wolkenwelten
+	conflicts = wolkenwelten
+	source = wolkenwelten::git+https://git.sr.ht/~melchizedek6809/WolkenWelten
+	md5sums = SKIP
+
+pkgname = wolkenwelten-git
