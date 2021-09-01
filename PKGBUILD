@@ -3,7 +3,7 @@
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 
 pkgname=linux-enable-ir-emitter
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box."
@@ -24,7 +24,7 @@ optdepends=(
     'python-pyshark: full configuration setup support'
 )
 source=("https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3f4e7f59daa9f8ad72f9141577a481e225137710daff5feeba153c21ef8f2b15')
+sha256sums=('f37df1dd55d56b0b0f0c029fe16756b5e8c2294d2240ace59925d1a9fbbd0b5c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/sources"
