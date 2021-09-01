@@ -1,13 +1,13 @@
 post_install() {
-  _installdir="/opt/catch-my-bus-python"
+  _installdir="/etc/catch-my-bus-python"
   _configfiles=('stop_list' 'standard_config')
   printf '%s\n' "Please Note!:"
-  printf '%s\n' "Configuration is only possible via global configuration files."
-  printf '%s\n' "Please edit the following files to your needs:"
+  printf '%s\n' "  Configuration is only possible via global configuration files."
+  printf '%s\n' "  Please edit the following files to your needs:"
   for _config_file in "${_configfiles[@]}"; do
-    printf '%s\n' "  ${_installdir}/${_config_file}"
+    printf '%s\n' "    ${_installdir}/${_config_file}"
   done
-  printf '%s\n' "See also https://github.com/meepoSenpai/catch-my-bus-python."
+  printf '%s\n' "  See also https://github.com/meepoSenpai/catch-my-bus-python."
 }
 
 post_upgrade() {
