@@ -1,0 +1,18 @@
+--- resources/app/lib/main.js	2021-08-31 22:42:35.963792143 -0500
++++ resources/app/lib/main.js	2021-08-31 22:47:31.039531540 -0500
+@@ -53,6 +53,15 @@
+ let mainWindow;
+ const appArgs = JSON.parse(fs_1.default.readFileSync(mainWindow_1.APP_ARGS_FILE_PATH, 'utf8'));
+ log.debug('appArgs', appArgs);
++let index_cmd_session = process.argv.indexOf('--session');
++if (index_cmd_session > -1) {
++  let rawName = process.argv[index_cmd_session + 1];
++  let name = electron_1.app.getName() + '-' + rawName;
++  appArgs.name += ' ' + rawName;
++  let newDataPath = path.join(electron_1.app.getPath('appData'), name);
++  electron_1.app.setPath('userData', newDataPath);
++  process.argv.splice(index_cmd_session, 2);
++}
+ // Do this relatively early so that we can start storing appData with the app
+ if (appArgs.portable) {
+     log.debug('App was built as portable; setting appData and userData to the app folder: ', path.resolve(path.join(__dirname, '..', 'appData')));

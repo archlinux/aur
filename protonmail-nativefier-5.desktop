@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ProtonMail Session 5
+Comment=ProtonMail desktop built with nativefier (electron)
+Exec=protonmail-nativefier --session "Session 5"
+Icon=protonmail-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Office;Nativefier;Application;
