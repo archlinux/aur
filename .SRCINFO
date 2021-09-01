@@ -1,0 +1,17 @@
+pkgbase = ezra-bible-app-bin
+	pkgdesc = A user-friendly Bible study tool focussing on topical study based on keywords/tags
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ezra-bible-app/ezra-bible-app
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	depends = expat
+	depends = glib2
+	depends = perl
+	provides = ezra-bible-app
+	conflicts = ezra-bible-app
+	source = https://github.com/ezra-bible-app/ezra-bible-app/releases/download/1.2.0/ezra-bible-app_fedora33-1.2.0.rpm
+	sha256sums = a95d1d1c93ffb3d326671e07896028c807c3164a48da9397ed16bf6fed4f8481
+
+pkgname = ezra-bible-app-bin
