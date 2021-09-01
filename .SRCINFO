@@ -1,6 +1,6 @@
 pkgbase = tableplus
 	pkgdesc = Modern, native, and friendly GUI tool for relational databases (Alpha)
-	pkgver = 0.1.132
+	pkgver = 0.1.136
 	pkgrel = 1
 	url = https://tableplus.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = tableplus
 	depends = libgee
 	depends = gnome-keyring
 	source = LICENSE
-	source = https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_0.1.132_amd64.deb
+	source = https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_0.1.136_amd64.deb
 	sha256sums = 76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb
-	sha256sums = e3b7e2a1a2fca43c80e76fcd1dfc6f79c0fc258761f06f9a7e2affce45457ead
+	sha256sums = 17d82f1fe92dd88c9608ecb3a6260c380acdc494971aec03fcc92648f2ccd66f
 
 pkgname = tableplus
