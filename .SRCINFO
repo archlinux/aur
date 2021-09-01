@@ -1,0 +1,15 @@
+pkgbase = stylesheet-gtk-theme
+	pkgdesc = The GTK Stylesheet (them) from elementary OS
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/elementary/stylesheet/tags
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = sassc
+	makedepends = git
+	source = git+https://github.com/elementary/stylesheet.git#tag=6.0.0
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha512sums = SKIP
+
+pkgname = stylesheet-gtk-theme
