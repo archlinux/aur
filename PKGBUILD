@@ -5,7 +5,7 @@ pkgver=0.7
 pkgrel=1
 pkgdesc='Metapackage to pull all dependencies required to build modern Android'
 arch=('x86_64')
-url='https://wiki.archlinux.org/index.php/Android#Building_Android'
+url='https://wiki.archlinux.org/title/Android#Building'
 license=('None')
 depends=('gcc-multilib' 'repo' 'git' 'gnupg' 'flex' 'bison' 'gperf' 'sdl'
          'squashfs-tools' 'curl' 'ncurses' 'zlib' 'schedtool' 'perl-switch'

@@ -2,7 +2,7 @@ pkgbase = aosp-devel
 	pkgdesc = Metapackage to pull all dependencies required to build modern Android
 	pkgver = 0.7
 	pkgrel = 1
-	url = https://wiki.archlinux.org/index.php/Android#Building_Android
+	url = https://wiki.archlinux.org/title/Android#Building
 	arch = x86_64
 	license = None
 	depends = gcc-multilib
@@ -37,4 +37,3 @@ pkgbase = aosp-devel
 	optdepends = wxgtk2: may be required on older versions
 
 pkgname = aosp-devel
-
