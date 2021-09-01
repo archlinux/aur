@@ -11,13 +11,13 @@ pkgver=2.5.27+125+g590698165
 pkgrel=1
 pkgdesc="Digital camera access library"
 url="http://www.gphoto.org/"
-arch=(x86_64)
+arch=("x86_64")
 license=(LGPL)
 conflicts=("$_pkgname")
-depends=(libexif libjpeg gd libltdl libusb libxml2 curl)
-makedepends=(autoconf-archive git)
+depends=('libexif' 'libjpeg' 'gd' 'libltdl' 'libusb' 'libxml2' 'curl')
+makedepends=('autoconf-archive' 'git')
 provides=('libgphoto2.so' "$pkgname" "$_pkgname")
-
+replaces=("$_pkgname")
 source=("$pkgname"::"git+https://github.com/gphoto/libgphoto2")
 sha256sums=('SKIP')
 

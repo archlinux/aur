@@ -18,6 +18,7 @@ pkgbase = libgphoto2-git
 	provides = libgphoto2-git
 	provides = libgphoto2
 	conflicts = libgphoto2
+	replaces = libgphoto2
 	source = libgphoto2-git::git+https://github.com/gphoto/libgphoto2
 	sha256sums = SKIP
 
