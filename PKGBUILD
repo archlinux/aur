@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
-pkgver=2.6
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=()
 depends=('craftos-pc-data>=2.5' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
 makedepends=('unzip' 'patchelf')
-optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support')
+optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support' 'libwebp: WebP screenshot/recording support')
 checkdepends=()
 provides=()
 conflicts=()
@@ -20,18 +20,33 @@ options=()
 install=
 changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
-        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.6.tar.gz")
+        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.6.1.tar.gz")
 noextract=()
-sha256sums=('8e46e62894bf5ac7e990ffc83f3a357c0a24e817dc039a32bc3493179dfc949f'
-            '079a4f6d8595b4f313925558376dd72f2902e6cec6d15d118bd9a19b7021bbe0')
+sha256sums=('b13575d3982c0d09e5218157f5fb7e70e6847eaad7e65bafb23d15e949605947'
+            '39c589c64e4bc1206411bac712a9ffb3af67740a3849349e2a188806d692d391')
 validpgpkeys=()
 
 prepare() {
-    cp -R "craftos2-lua-2.6"/* "craftos2-$pkgver/craftos2-lua/"
+    cp -R "craftos2-lua-2.6.1"/* "craftos2-$pkgver/craftos2-lua/"
     cd "craftos2-$pkgver"
     mkdir icons
     unzip resources/linux-icons.zip -d icons
     make -C craftos2-lua -j$(nproc) linux
+    # NOTICE!!! Remove before v2.6.2!
+    if [ "$pkgver" == "2.6.1" ]; then
+        patch -p1 <<EOF
+--- a/resources/CraftOSTest.lua
++++ b/resources/CraftOSTest.lua
+@@ -490,6 +490,7 @@
+ 		"shell.allow_disk_startup",
+ 		"shell.allow_startup",
+ 		"shell.autocomplete",
++		"shell.mobile_resize_with_keyboard",
+ 		"shell.report_plugin_errors",
+ 		"test",
+ 		"test2"
+EOF
+    fi
 }
 
 build() {
