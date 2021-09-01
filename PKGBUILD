@@ -11,7 +11,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=openssh-selinux
-pkgver=8.6p1
+pkgver=8.7p1
 pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
@@ -35,7 +35,7 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux
         'sshd.conf'
         'sshd.pam'
         'glibc-2.31.patch')
-sha256sums=('c3e6e4da1621762c850d03b47eed1e48dff4cc9608ddeb547202a234df8ed7ae'
+sha256sums=('7ca34b8bb24ae9e50f33792b7091b3841d7e1b440ff57bc9fabddf01e2ed1e24'
             'SKIP'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
