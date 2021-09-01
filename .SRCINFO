@@ -1,7 +1,7 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiyaowong/botoy
 	arch = any
 	license = MIT
