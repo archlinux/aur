@@ -34,5 +34,4 @@ build() {
 package() {
   cd "GameHub"
   DESTDIR="${pkgdir}" ninja -C build install
-  ln -s /usr/bin/com.github.tkashkin.gamehub "${pkgdir}/usr/bin/gamehub"
 }
