@@ -5,7 +5,7 @@
 
 pkgname=ezra-bible-app-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=(x86_64)
 url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
@@ -16,8 +16,8 @@ depends=(curl
          perl)
 provides=("${pkgname%-bin}")
 conflicts=("${provides[@]}")
-source=("$url/releases/download/$pkgver/${pkgname%-bin}_fedora33-$pkgver.rpm")
-sha256sums=('a95d1d1c93ffb3d326671e07896028c807c3164a48da9397ed16bf6fed4f8481')
+source=("$url/releases/download/$pkgver/${pkgname%-bin}_opensuse_leap-$pkgver.rpm")
+sha256sums=('f56627bfbd8f3c25783a4b6f47540b4c9c95ad07404ad6776fcc2d2dca59f022')
 
 prepare() {
 	rm -rf usr/lib/.build-id
