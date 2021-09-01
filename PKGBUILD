@@ -5,7 +5,7 @@ _static_liftoff=0
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.8.4.r135.gb267983
+pkgver=3.8.4.r150.gffa970e
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -50,6 +50,10 @@ prepare() {
 
     [ $_static_wlroots -gt 0 ] || rm -rf "subprojects/wlroots"
     [ $_static_liftoff -gt 0 ] || rm -rf "subprojects/libliftoff"
+
+    # STB code is included from the submodule.
+    # TODO: fix this upstream
+    git submodule update --init subprojects/stb/
 }
 
 build() {
