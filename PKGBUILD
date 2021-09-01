@@ -3,7 +3,7 @@
 # Contributor: Christian Cornelssen <email@address.invalid>
 
 pkgname=theia-electron
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
@@ -25,7 +25,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         'e9c89a762e4636e4c9139786c65ef271'
+         '2786093ccdb116b58e2bab80e4585c5c'
          '649efce73ff4a2a697d071cf83f20e5c'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'

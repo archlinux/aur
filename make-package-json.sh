@@ -296,7 +296,7 @@ diff=$(diff -U0 <(jq -S <<<"$electron_package_json" \
 '.dependencies|map_values("'"$theia_version"'")') \
 - <<<"$theia_deps" | tail +3) \
 || warn "Dependency discrepancy:
---- from electron/package.json
+--- from examples/electron/package.json
 +++ from packages/* (plus @theia/electron)
 $diff
 Notes:
