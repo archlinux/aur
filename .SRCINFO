@@ -1,7 +1,7 @@
 pkgbase = zoxide-git
 	pkgdesc = A fast cd command that learns your habits
-	pkgver = 0.6.0.r4.g1828414
-	pkgrel = 3
+	pkgver = 0.7.4.r9.g9ff8993
+	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	arch = armv7h
@@ -16,4 +16,3 @@ pkgbase = zoxide-git
 	sha512sums = SKIP
 
 pkgname = zoxide-git
-
