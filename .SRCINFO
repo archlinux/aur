@@ -4,7 +4,7 @@ pkgbase = finetune
 	pkgrel = 3
 	url = https://flavio.tordini.org/finetune
 	arch = x86_64
-	license = custom
+	license = unknown
 	depends = taglib
 	depends = qt5-declarative
 	depends = chromaprint
@@ -13,4 +13,3 @@ pkgbase = finetune
 	sha256sums = 253c5ab3db74f0c0e9286f4d05c271e9995f1cdd6f28132b015318f893de20c9
 
 pkgname = finetune
-
