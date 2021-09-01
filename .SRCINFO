@@ -1,0 +1,13 @@
+pkgbase = ttf-kridhamardawa
+	pkgdesc = A font based on KepatihanPro for the notation of gamelan music
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.kratonjogja.id/peristiwa/110/keraton-yogyakarta-luncurkan-font-baru-untuk-notasi-gendhing-gamelan
+	arch = any
+	license = custom
+	source = ttf-kridhamardawa-1.0.zip::https://www.kratonjogja.id/upload/files/kridhamardawa-font.zip
+	source = https://www.kratonjogja.id/upload/files/Petunjuk_Teknis_Font_Kridhamardawa.pdf
+	sha256sums = b2e599009eed75159c05f255124c5d54ca3af4a3865c2f4732630ecd725cba59
+	sha256sums = b7771b6330b39480279d263a396a6da9bbf1e566116038a2fb86a38a0580079a
+
+pkgname = ttf-kridhamardawa
