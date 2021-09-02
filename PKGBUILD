@@ -1,7 +1,7 @@
 # Maintainer: Ronald van Engelen <ronalde+gitlab@lacocina.nl>
 
 pkgname=alsa-capabilities
-pkgver=v2.0.7
+pkgver=v2.0.8
 pkgrel=1
 pkgdesc="List alsa output interfaces and their capabilities and properties"
 arch=(any)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(bash alsa-utils)
 options=(!emptydirs !makeflags zipman)
 source=($url/-/archive/$pkgver/alsa-capabilities-$pkgver.tar.gz)
-sha256sums=('227042506698949771352094992af5a6832f9ed376080966d8675e9fa9a56037')
+sha256sums=('9c6bd2a0f23149818f43e25cab2793a89db22d8db9b8d7c8fc4815cb383c7c39')
 validpgpkeys=(4888EA1E1DD158ED3BC39838FBF05DDFC04DF16B)
 
 build() {
