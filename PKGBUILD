@@ -3,13 +3,12 @@
 
 _pkgname='bitcanna-wallet'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.2
-pkgrel=4
-_srcdir='unix_13_03_20'
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Full node BitCanna (BCNA) versions of bitcannad, bitcanna-cli, bitcanna-qt, and bitcanna-tx, w/GUI and wallet'
 arch=('x86_64')
 url='https://www.bitcanna.io/'
-_url='https://github.com/BitCannaGlobal/BCNA'
+_url='https://github.com/BitCannaGlobal/BCNA_bitcore_old'
 _rawurl='https://raw.githubusercontent.com/BitCannaGlobal/BCNA'
 license=('AGPL3')
 depends=(
@@ -27,32 +26,32 @@ conflicts=(
   'bitcanna-wallet'
 )
 source=(
-  "$url/releases/download/$pkgver/bcna-${pkgver}-unix.zip"
+  "$_url/releases/download/$pkgver/bcna-${pkgver}-unix.zip"
   "README.md::$_rawurl/master/README.md"
   "CONTRIBUTING.md::$_rawurl/master/CONTRIBUTING.md"
 )
 md5sums=(
-  '8cfe5fa2b780e7d9ea291712261f09a2'
+  '39a3176eeef8491710b18b66a6eb469c'
   'SKIP'
   'SKIP'
 )
 sha1sums=(
-  '2d008317bada3f9c3d2a97b48a63d95d3e40476a'
+  'd4ba64f8c77b1aa28e761ae9a4c8497d9a8fdfd7'
   'SKIP'
   'SKIP'
 )
 sha256sums=(
-  '05ef8255219d3636c6f333be70fc66d2926322f3d07529803377f47eafe056be'
+  '443369065c4ab9af67e64387228fca9d24cb7eedc8828ea243e3bf07bd08872c'
   'SKIP'
   'SKIP'
 )
 sha512sums=(
-  'd827d4c160c0f8b5511464ba2712d360783561a55929314c79ae09d2a4409a229823ebd00fe12025fa10bbe88eeaf3a50698f2ad228a099113ce01ba8108225d'
+  '3352a219f16abf59d865780a6c210a004663d11807c4dcfde5939514c55aa461f3289c3555fcb98efff260a64b7c068aefa188d827a344474ac868ca327ab160'
   'SKIP'
   'SKIP'
 )
 b2sums=(
-  'fe023fe3ab7620a763bb13b01fcf725f78ebf40c9e443c023803a20c15816549c5d0cf468c82b0dfee1daa7cd57020b9e4e8783b68c8c3e8c809acd08128e508'
+  'e4eddc3db4360671ca59b73a6b589625294a0b582c6db219bd6c9feebd576e1ba4b6fbcbaea2741b963d364b4f262ee92c2861b6161f6da39481e7b2416bdb2c'
   'SKIP'
   'SKIP'
 )
@@ -64,11 +63,25 @@ package() {
     install -Dm0644 "$fname" "$pkgdir/usr/share/doc/$pkgname/$fname"
   done
 
-  cd "$srcdir/$_srcdir" || exit 1
+  cd "$srcdir" || exit 1
 
   for fname in bitcannad bitcanna-cli bitcanna-qt bitcanna-tx; do
     install -Dm0755 "$fname" "$pkgdir/usr/bin/$fname"
   done
+}
+
+post_install() {
+  cat <<__EOT__ >&2
+This new wallet build (v$1) will hard fork the chain at block
+2286271 (September 24th 12:00 UTC).
+
+Please see https://www.bitcanna.io/hard-fork-announcement-v1-0-3/
+for details.
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$1"
 }
 
 # eof
