@@ -1,0 +1,26 @@
+--- tauri.conf.json	2021-09-02 21:27:12.054544100 +0200
++++ tauri.conf.json.l	2021-09-02 21:29:25.839898693 +0200
+@@ -2,7 +2,7 @@
+   "tauri": {
+     "bundle": {
+       "active": true,
+-      "targets": ["deb", "msi", "appimage", "dmg"],
++      "targets": ["deb"],
+       "identifier": "com.lights0123.n-link",
+       "icon": [
+         "icons/32x32.png",
+@@ -17,14 +17,6 @@
+       "category": "Utility",
+       "shortDescription": "Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire",
+       "longDescription": "Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire",
+-      "macOS": {
+-        "frameworks": [],
+-        "minimumSystemVersion": "",
+-        "useBootstrapper": false,
+-        "exceptionDomain": "",
+-        "signingIdentity": null,
+-        "entitlements": null
+-      },
+       "windows": {
+         "certificateThumbprint": null,
+         "digestAlgorithm": "sha256",
