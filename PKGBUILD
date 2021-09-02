@@ -2,7 +2,7 @@
 
 _pkgname=onnxruntime
 pkgname=onnxruntime-git
-pkgver=0
+pkgver=orttraining_rc2.r2552.g5f30be3e92
 pkgrel=1
 pkgdesc="cross-platform inference and training machine-learning accelerator."
 arch=('x86_64')
@@ -24,6 +24,11 @@ md5sums=('SKIP')
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
+}
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
