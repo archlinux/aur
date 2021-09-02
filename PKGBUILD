@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=libwbxml
-pkgver=0.11.6
+pkgver=0.11.7
 pkgrel=1
 pkgdesc="Library and Tools to parse, encode and handle WBXML documents"
 arch=('x86_64')
@@ -11,23 +11,23 @@ url="https://sourceforge.net/projects/libwbxml/"
 license=('LGPL')
 depends=('expat')
 makedepends=('cmake' 'check')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('2f5ffe6f59986b34f9032bfbf013e32cabf426e654c160d208a99dc1b6284d29')
+source=(https://github.com/libwbxml/libwbxml/archive/refs/tags/$pkgname-$pkgver.tar.gz)
+sha256sums=('35e2cf033066edebc0d96543c0bdde87273359e4f4e59291299d41e103bd6338')
 
 prepare() {
-  cd ${srcdir}/libwbxml-${pkgver}
-    sed '/AUTHORS/d' -i CMakeLists.txt
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cd libwbxml-libwbxml-$pkgver
+  sed '/AUTHORS/d' -i CMakeLists.txt
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-  cd ${srcdir}/libwbxml-${pkgver}/build
+  cd libwbxml-libwbxml-$pkgver/build
   make
 }
 
 package() {
-  cd ${srcdir}/libwbxml-${pkgver}/build
+  cd libwbxml-libwbxml-$pkgver/build
   make DESTDIR=${pkgdir} install
 }
