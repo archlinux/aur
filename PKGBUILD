@@ -1,17 +1,20 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: PumpkinCheshire <me at pumpkincheshire dot top>
 _base=scipyx
 pkgname=python-${_base}
 pkgdesc="SciPy fixes and extensions"
-pkgver=0.0.15
-pkgrel=2
+pkgver=0.0.16
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(BSD)
 depends=(python-scipy)
 makedepends=(python-setuptools)
-checkdepends=(python-tox)
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1527c6b4fb0c7e17e085d9d6907549053559241cad5608ac9df80ade8e26def4bba917fa91addabd479eaf58ee97df6d2214526e01f1fdd803c201c37a4a3bf3')
+checkdepends=(python-pytest-codeblocks)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('f4177a6449c51ba752a51d0c8d21b2fa35a614fabda0199da74f074078a775fb2db29f29d69a3f13b07f2b287e6746f600cd4f4fb36f21174f8d8f7d8b1c1970')
+
+export PYTHONPYCACHEPREFIX="${BUILDDIR}/${pkgname}/.cache/cpython/"
 
 build() {
   cd "${_base}-${pkgver}"
@@ -20,13 +23,13 @@ build() {
 
 check() {
   cd "${_base}-${pkgver}"
-  tox -e py$(python -c "import sys; print(sys.version[:3].replace('.', ''))")
+  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
 }
 
 package() {
   cd "${_base}-${pkgver}"
   export PYTHONHASHSEED=0
-  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1
-  rm -r "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base}/__pycache__"
+  python -c "from setuptools import setup; setup();" install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
