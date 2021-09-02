@@ -1,7 +1,7 @@
 pkgbase = vertcoin-qt-bin
 	pkgdesc = A digital currency with mining decentralisation and ASIC resistance as a key focus.
 	pkgver = 0.17.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/vertcoin-project/vertcoin-core
 	arch = x86_64
 	license = MIT

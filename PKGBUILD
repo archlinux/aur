@@ -1,7 +1,7 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=vertcoin-qt-bin
 pkgver=0.17.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A digital currency with mining decentralisation and ASIC resistance as a key focus."
 arch=('x86_64')
 url="https://github.com/vertcoin-project/vertcoin-core"
@@ -15,7 +15,6 @@ provides=('vertcoin-qt')
 conflicts=('vertcoin-qt')
 
 package() {
-  set -eu
-  cmake .
-  install vertcoin "$pkgdir/usr/bin/vertcoin"
+	set -eu
+	install -Dm755 vertcoin-qt "$pkgdir/usr/bin/vertcoin-qt"
 }
