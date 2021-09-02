@@ -1,13 +1,12 @@
 pkgbase = fortran-fpm-bin
 	pkgdesc = A package manager and build system for Fortran.
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://fpm.fortran-lang.org/
 	arch = x86_64
 	license = MIT
 	conflicts = fpm
-	source = https://github.com/fortran-lang/fpm/releases/download/v0.2.0/fpm-0.2.0-linux-x86_64
-	sha256sums = c4282998c83bb91a7949d23723a06dc4769a75f8d2c3dcc761794a1b65e8004f
+	source = https://github.com/fortran-lang/fpm/releases/download/v0.4.0/fpm-0.4.0-linux-x86_64
+	sha256sums = 50feb77df2ec98c70d5eb244ed66c3708bd123684c1c75b0e35666457df5f5c9
 
 pkgname = fortran-fpm-bin
-
