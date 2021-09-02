@@ -75,7 +75,7 @@ pkgbase=linux-cacule-rdb-llvm
 pkgname=('linux-cacule-rdb-llvm' 'linux-cacule-rdb-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14
-pkgrel=3
+pkgrel=4
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE Kernel-RDB by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -100,7 +100,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
     #   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-    #    "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
+        "${_patchsource}/0007-v5.14-fsync.patch"
         "${_patchsource}/0007-v5.14-futex2_interface.patch"
         "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
@@ -120,8 +120,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 BUILD_FLAGS=(
   LLVM=1
   LLVM_IAS=1
-  CONFIG_DEBUG_FS=y
-  CONFIG_PGO_CLANG=y
+#  CONFIG_DEBUG_FS=y
+#  CONFIG_PGO_CLANG=y
             )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -527,13 +527,14 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         'ce4b07c219f4c7739616549ff51a232c'
+         '77148eba8e77fc41a44f5f6d3b440573'
+         'c1dfe3a0b5c31e9a97d1827642f0bc5b'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '3cf036429a7c962005a344e10a568d7b'
          '8edec54f500ecb2ff705c2a9f32e0560'
          '30a7be161ab863c46e5ad55796d06a29'
-         'd8dabbce9beb2278ecb7d2c349135949'
-         'e10e4abeba2d16db591846337589ac31'
+         '28864f14bf33bad92e57bc48bc5c2c78'
+         '381bc4f0ff885e9b67e5899476a30416'
          'fe00e09708cbbeb15e348e36ab881696'
          '0553f660f2399549ed17b6d2ca4e930e'
          '99ab82a0ffab06f8fe0a2674da1b3ffe'
