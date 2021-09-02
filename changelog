@@ -1,3 +1,17 @@
+2021-09-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.1.3.6-1:
+    We've reverted our change introduced as part of V5.1.3.2 in which the builds are built on the corresponding OSes due to issue dotnet/msbuild#3897 which caused missing Chinese translation (among some other) on non-Windows builds of ASF. Fortunately, this doesn't affect the chmod +x improvement which stays with us as part of this feature release (ref: #2411).
+    We've extracted our .NET Framework compatibility layer to standalone JustArchiNET.Madness library. If you're a plugin developer and using our ArchiSteamFarm.Compatibility namespace for generic-netf, then this is a breaking change for you as you'll need to reference our compatibility library instead. For everybody else, this changes nothing.
+    Every release on GitHub now includes two additional files: SHA512SUMS and SHA512SUMS.sign, those can be used for verification purposes as explained in our extended FAQ.
+    GitHub assets included in our releases are now built on the corresponding OSes, for increased compatibility and independence. This enhancement also improves flow for our Linux and OS X users, as they no longer need to chmod +x the executable files after extraction (assuming your unpacking tool understands permissions set in the zip file, that is).
+    Official ASF assemblies are now private signed. Custom ASF builds are publicly signed instead for the same compatibility factor.
+    ASF command-line arguments are now case-insensitive, for increased compatibility and convenience (ead2d46).
+    Fixed mabadd and mabrm commands not working correctly, as they were modifying idling blacklist instead (#2390).
+    Fixed our STD plugin not being initialized correctly in generic-netf ASF variant (13ea9df).
+    Fixed IPC issue that could result in an error when the response was generated as part of ApiAuthenticationMiddleware (#2400).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
 2021-08-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.1.2.4-1:
     [!] Fixed ASF incorrectly removing IPCPassword when updating global config as part of POST /Api/ASF ASF API request. We strongly recommend everybody using IPC with remote access to read our security advisory and verify their IPCPassword (#GHSA-wxx4-66c2-vj2v).
