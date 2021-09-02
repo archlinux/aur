@@ -1,6 +1,6 @@
 pkgbase = python-speechbrain-git
 	pkgdesc = All-in-one speech toolkit in pure Python and Pytorch
-	pkgver = 0.5.9.r5145
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/speechbrain/speechbrain
 	arch = any
@@ -20,7 +20,6 @@ pkgbase = python-speechbrain-git
 	depends = python-huggingface-hub-git
 	provides = python-speechbrain-git
 	conflicts = python-speechbrain
-	conflicts = python-speechbrain-git
 	source = python-speechbrain-git::git+https://github.com/speechbrain/speechbrain
 	md5sums = SKIP
 

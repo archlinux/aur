@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-speechbrain-git
-pkgver=0.5.9.r5145
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='All-in-one speech toolkit in pure Python and Pytorch'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache 2.0')
 depends=('python>=3.7' 'python-hyperpyyaml-git' 'python-joblib' 'python-numpy' 'python-packaging' 'python-scipy' 'python-sentencepiece' 'python-pytorch' 'python-torchaudio' 'python-tqdm' 'python-huggingface-hub-git')
 makedepends=('git' 'python-setuptools')
 provides=('python-speechbrain-git')
-conflicts=("python-speechbrain" "${pkgname}")
+conflicts=("python-speechbrain")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
