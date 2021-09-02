@@ -1,20 +1,19 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=kops
-pkgver=1.20.2
-pkgrel=2
+pkgver=1.21.1
+pkgrel=1
 pkgdesc='Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)'
 arch=('x86_64')
 url='https://github.com/kubernetes/kops'
 license=('Apache')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kubernetes/kops/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d79f23c5f978904f0fb1679ab693985c2c017e986612b531a79ed1a127d1a7a')
-makedepends=('go1.15')
+sha256sums=('4b1f5dcc5bc8909a7f68698c356144dc63264c4af723aecfa18a0e31ed521009')
+makedepends=('go')
 
 build() {
   cd $pkgname-$pkgver
   export VERSION=$pkgver
-  sed -i 's/go build/go1.15 build/g' Makefile
   make kops
 }
 
