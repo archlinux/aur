@@ -1,7 +1,7 @@
 pkgbase = salad
-	pkgdesc = Salad allows gamers to mine crypto in their downtime.
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgdesc = Allows gamers to mine crypto in their downtime.
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://salad.com/
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,7 @@ pkgbase = salad
 	makedepends = tar
 	makedepends = yarn
 	depends = nodejs
-	provides = salad
-	conflicts = salad
-	source = https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/0.5.5.zip
-	md5sums = SKIP
+	source = https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/0.5.6.zip
+	md5sums = c65d065fddcf602cc747e298d462adca
 
 pkgname = salad

@@ -1,29 +1,18 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 # Contributor: SuchBlue
 pkgname=salad
-pkgver=0.5.5
-pkgrel=2
+pkgver=0.5.6
+pkgrel=1
 epoch=
-pkgdesc="Salad allows gamers to mine crypto in their downtime."
+pkgdesc="Allows gamers to mine crypto in their downtime."
 arch=(x86_64)
 url="https://salad.com/"
 license=('MIT')
-groups=()
 depends=(nodejs)
 makedepends=(unzip wget sed tar yarn)
-checkdepends=()
 optdepends=()
-provides=(salad)
-conflicts=(salad)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/${pkgver}.zip")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+md5sums=('c65d065fddcf602cc747e298d462adca')
 
 prepare() {
 	cd "salad-applications-${pkgver}/packages/desktop-app"
