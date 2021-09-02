@@ -1,0 +1,14 @@
+pkgbase = latex-sourcesanspro-font
+	pkgdesc = Adobe's Source Sans Pro for TEX(-alike) systems
+	pkgver = 2.8
+	pkgrel = 1
+	url = https://www.ctan.org/tex-archive/fonts/sourcesanspro
+	install = latex-sourcesanspro-font.install
+	arch = any
+	license = custom:OFL-1.1
+	depends = texlive-core
+	conflicts = texlive-fontsextra
+	source = http://mirrors.ctan.org/fonts/sourcesanspro.zip
+	md5sums = e8e0d29e13fc46daee2c756d8e0c13af
+
+pkgname = latex-sourcesanspro-font
