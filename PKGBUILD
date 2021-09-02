@@ -1,4 +1,5 @@
 # Maintainer: Daniel Reibl <janos.daniel.reibl@pm.me>
+# You can download firecapture at http://www.firecapture.de/download.php?file=FireCapture_v2.6.tar.gz
 pkgname=firecapture
 pkgver=2.6
 pkgrel=1
