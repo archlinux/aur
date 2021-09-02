@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python>=3.6' 'python-numpy' 'python-scipy' 'cython')
 makedepends=('git' 'python-setuptools')
 provides=('python-dtw-python')
-conflicts=("python-dtw-python" "${pkgname}")
+conflicts=("python-dtw-python")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
