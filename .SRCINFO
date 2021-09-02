@@ -1,6 +1,6 @@
 pkgbase = single-file
 	pkgdesc = Command line tool to download a web page into a single HTML file
-	pkgver = 0.3.28
+	pkgver = 0.3.29
 	pkgrel = 1
 	url = https://github.com/gildas-lormeau/SingleFile
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = single-file
 	depends = nodejs
 	optdepends = chromium: for webdriver-chromium backend
 	optdepends = playwright: for playwright-{firefox,chromium} backend
-	noextract = single-file-0.3.28.tar.gz
-	source = single-file-0.3.28.tar.gz::https://github.com/gildas-lormeau/SingleFile/archive/v0.3.28.tar.gz
-	b2sums = 9fbc74fed7c2b249a9f91e3c7c833dbaee1f76dd3c9b3cfb512c13e06de9c391e86777e97b7ef1a6ec76fc8fe0c8f446387dbaa12b184435cfbf74c9582e2aff
+	noextract = single-file-0.3.29.tar.gz
+	source = single-file-0.3.29.tar.gz::https://github.com/gildas-lormeau/SingleFile/archive/v0.3.29.tar.gz
+	b2sums = cc120150883d89900a85771ab6e4d69718b62179889b1dc5d2f1520cd55477dfe917d9e8a899d253cfd571ca21047ddb41c651f14e9327c2e80361f3fb884c76
 
 pkgname = single-file

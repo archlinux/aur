@@ -1,7 +1,7 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file
-pkgver=0.3.28
+pkgver=0.3.29
 pkgrel=1
 pkgdesc="Command line tool to download a web page into a single HTML file"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('9fbc74fed7c2b249a9f91e3c7c833dbaee1f76dd3c9b3cfb512c13e06de9c391e86777e97b7ef1a6ec76fc8fe0c8f446387dbaa12b184435cfbf74c9582e2aff')
+b2sums=('cc120150883d89900a85771ab6e4d69718b62179889b1dc5d2f1520cd55477dfe917d9e8a899d253cfd571ca21047ddb41c651f14e9327c2e80361f3fb884c76')
 
 package() {
   local NPM_FLAGS=(--no-audit --no-fund --no-update-notifier)
