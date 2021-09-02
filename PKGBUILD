@@ -2,7 +2,7 @@
 
 pkgname=glewlwyd
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
@@ -47,6 +47,7 @@ pkgver() {
 }
 
 build() {
+ export CFLAGS+=" -Wno-implicit-function-declaration"
   cmake -S glewlwyd -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
