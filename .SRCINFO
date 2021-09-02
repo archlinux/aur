@@ -11,7 +11,6 @@ pkgbase = python-espnet-tts-frontend-git
 	depends = python-unidecode
 	provides = python-espnet-tts-frontend
 	conflicts = python-espnet-tts-frontend
-	conflicts = python-espnet-tts-frontend-git
 	source = python-espnet-tts-frontend-git::git+https://github.com/espnet/espnet_tts_frontend
 	md5sums = SKIP
 
