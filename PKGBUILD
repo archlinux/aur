@@ -1,12 +1,12 @@
 pkgname=qnetwalk
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect all the terminals to the server, in as few turns as possible"
 arch=('x86_64')
 url="https://github.com/AMDmi3/qnetwalk"
 license=('GPL')
 depends=('qt5-base' 'sdl_mixer')
-makedepends=('cmake')
+makedepends=('cmake' 'qt5-tools')
 source=("https://github.com/AMDmi3/qnetwalk/archive/$pkgver.tar.gz")
 
 build() {
