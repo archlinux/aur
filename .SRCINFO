@@ -1,8 +1,9 @@
 pkgbase = n-link
 	pkgdesc = Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lights0123.com/n-link/
+	install = n-link.install
 	arch = x86_64
 	license = GPL3
 	depends = nodejs-lts-fermium

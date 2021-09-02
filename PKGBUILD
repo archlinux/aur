@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Nicolas FORMICHELLA <stigpro@outlook.fr>
 pkgname=n-link
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire."
 arch=("x86_64")
@@ -22,7 +17,7 @@ conflicts=("n-link-git")
 replaces=()
 backup=()
 options=()
-install=
+install="${pkgname}.install"
 changelog=
 source=("https://github.com/lights0123/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
         "69-${pkgname}.rules")
