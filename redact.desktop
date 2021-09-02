@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Redact
-StartupWMClass=Redact
-Exec=/usr/bin/redact
+Exec=/usr/bin/redact %U
+Terminal=false
 Type=Application
 Icon=redact
-Comment=Redact your history
+StartupWMClass=Redact
+Comment=Mass delete your social media history
 Categories=Utility;
 Path=/usr/bin
