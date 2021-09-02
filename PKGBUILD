@@ -1,3 +1,4 @@
+# -*- mode: pkgbuild -*-
 # Maintainer  : Jeremy Borgman <borgman.jeremy@pm.me>
 # Maintainer  : Mehrad Mahmoudian <m.mahmoudian@gmail.com>
 # Contributor : Feresey <p.milko1999@yandex.ru>
