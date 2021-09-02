@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('btrfs-progs')
 checkdepends=('parallel' 'diffutils')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6345d03601ced8009db278cc47fe87eb9cc5fb307fd4ab5787fafe9622b18435')
+sha256sums=('919205b4fd319061e78be10b61b378df631a7fb4358892a04f1644c1ba2f3164')
 
 check() {
     cd "$srcdir/$pkgname-v$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = btrfs-snapshots
 	pkgdesc = Manage timestamped collections of btrfs snapshots
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://gitlab.com/jmcantrell/btrfs-snapshots
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = btrfs-snapshots
 	checkdepends = parallel
 	checkdepends = diffutils
 	depends = btrfs-progs
-	source = https://gitlab.com/jmcantrell/btrfs-snapshots/-/archive/v0.5.1/btrfs-snapshots-v0.5.1.tar.gz
-	sha256sums = 6345d03601ced8009db278cc47fe87eb9cc5fb307fd4ab5787fafe9622b18435
+	source = https://gitlab.com/jmcantrell/btrfs-snapshots/-/archive/v0.5.2/btrfs-snapshots-v0.5.2.tar.gz
+	sha256sums = 919205b4fd319061e78be10b61b378df631a7fb4358892a04f1644c1ba2f3164
 
 pkgname = btrfs-snapshots
