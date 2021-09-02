@@ -1,6 +1,6 @@
 pkgbase = gamehub
 	pkgdesc = Games manager, downloader, library that supports GOG, Steam and Humble Bundle
-	pkgver = 0.16.0.1
+	pkgver = 0.16.1.2
 	pkgrel = 1
 	url = https://tkashkin.tk/projects/gamehub/
 	arch = i686
@@ -23,8 +23,7 @@ pkgbase = gamehub
 	depends = libxtst
 	options = !strip
 	options = debug
-	source = GameHub-0.16.0.1.tar.gz::https://github.com/tkashkin/GameHub/archive/0.16.0-1-master.tar.gz
-	sha256sums = 4244c914d7427933727ec0611886720b9325c4d4a852e0e8c283f6331ebd30e2
+	source = GameHub-0.16.1.2.tar.gz::https://github.com/tkashkin/GameHub/archive/0.16.1-2-master.tar.gz
+	sha256sums = bbbf2f5216ce6f0d6a57179f388a714aec52188f4e67a9deb6478061441a30b5
 
 pkgname = gamehub
-

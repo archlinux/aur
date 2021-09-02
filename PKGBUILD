@@ -5,7 +5,7 @@
 # Contributor: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-_pkgver=0.16.0-1
+_pkgver=0.16.1-2
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
@@ -16,7 +16,7 @@ depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxts
 makedepends=(meson ninja vala)
 options=(!strip debug)
 source=("GameHub-$pkgver.tar.gz::https://github.com/tkashkin/GameHub/archive/${_pkgver}-master.tar.gz")
-sha256sums=('4244c914d7427933727ec0611886720b9325c4d4a852e0e8c283f6331ebd30e2')
+sha256sums=('bbbf2f5216ce6f0d6a57179f388a714aec52188f4e67a9deb6478061441a30b5')
 
 build() {
   cd "GameHub-$_pkgver-master"
