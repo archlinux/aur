@@ -17,6 +17,6 @@ package() {
 
   mkdir -p "$pkgdir"/usr/share/texmf/tex/latex/NewTeX
 
-  install -m444 "$srcdir"/$pkgname-$pkgver/NewTeX.cls "$pkgdir"/usr/share/texmf/tex/latex/NewTeX/
+  install -m444 "$srcdir"/NewTeX-$pkgver/NewTeX.cls "$pkgdir"/usr/share/texmf/tex/latex/NewTeX/
 }
 
