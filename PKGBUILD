@@ -1,4 +1,4 @@
-# Maintainer: u0_a266 <cagf2emv@anonaddy.me>
+# Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=ttf-hackgen-nerd
 pkgver=2.5.1
 pkgrel=1
