@@ -10,7 +10,7 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.1.0.canary.5.r0.gfc29ce58
+pkgver=3.1.2.r54.g7f01b064
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
