@@ -2,7 +2,7 @@
 
 pkgbase=libssh-gnutls
 pkgname=(${pkgbase} ${pkgbase}-docs)
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries - compiled with gnutls (libgcrypt), documentation for ${pkgbase%-gnutls}"
 arch=("x86_64")
@@ -10,7 +10,10 @@ url="http://www.${pkgbase%-gnutls}.org/"
 license=("LGPL")
 makedepends=("cmake" "cmocka" "doxygen" "openssh" "python")
 source=("https://www.${pkgbase%-gnutls}.org/files/${pkgver%.*}/${pkgbase%-gnutls}-${pkgver}.tar.xz"{,.asc})
-sha256sums=("acffef2da98e761fc1fd9c4fddde0f3af60ab44c4f5af05cd1b2d60a3fa08718" "SKIP")
+sha256sums=(
+  "86bcf885bd9b80466fe0e05453c58b877df61afa8ba947a58c356d7f0fab829b"
+  "SKIP"
+)
 validpgpkeys=("8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D") # Andreas Schneider <asn@cryptomilk.org>
 
 prepare() {
