@@ -1,6 +1,6 @@
 pkgbase = palletizer
 	pkgdesc = simple self hosted Cargo registry
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/de-vri-es/palletizer-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = palletizer
 	makedepends = rust
 	depends = openssl
 	depends = zlib
-	source = palletizer-v0.1.3.tar.gz::https://github.com/de-vri-es/palletizer-rs/archive/v0.1.3.tar.gz
-	sha512sums = 7b634328a5ebd4e69f35facfa3180c17cf342dc93af7d693a64704513f8006523dd3e4378a0357554923a38480a8118a3bff2cf88176ebf6b231b2de72b04aaf
+	source = palletizer-v0.2.0.tar.gz::https://github.com/de-vri-es/palletizer-rs/archive/v0.2.0.tar.gz
+	sha512sums = 7862beac3a2474f9c00e99b2eeaed82d3430c46c8e4d7727c38e1cd8f0d54d6be3bb5bed4ad58729e6f104aec2ca89f4ff38183bbd881d65053f6872d57ee719
 
 pkgname = palletizer
