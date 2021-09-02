@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-wandb-git
-pkgver=0.12.1.dev1.r4121
+pkgver=0.12.2.dev1
 pkgrel=1
 pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.7' 'python-gitpython' 'python-dateutil' 'python-requests' 'python-click' 'python-promise' 'python-shortuuid' 'python-six' 'python-watchdog' 'python-psutil' 'python-sentry_sdk' 'python-protobuf' 'python-pyaml' 'python-configparser' 'python-docker-pycreds' 'python-subprocess32')
 makedepends=('git' 'python-setuptools')
 provides=('python-wandb')
-conflicts=("python-wandb-git" "${pkgname}")
+conflicts=("python-wandb-git")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -19,7 +19,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 

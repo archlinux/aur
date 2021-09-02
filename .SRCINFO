@@ -1,6 +1,6 @@
 pkgbase = python-wandb-git
 	pkgdesc = Weights and Biases - organize and analyze machine learning experiments
-	pkgver = 0.12.1.dev1.r4121
+	pkgver = 0.12.2.dev1
 	pkgrel = 1
 	url = https://github.com/wandb/client
 	arch = any
@@ -24,7 +24,6 @@ pkgbase = python-wandb-git
 	depends = python-docker-pycreds
 	depends = python-subprocess32
 	provides = python-wandb
-	conflicts = python-wandb-git
 	conflicts = python-wandb-git
 	source = python-wandb-git::git+https://github.com/wandb/client
 	md5sums = SKIP
