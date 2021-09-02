@@ -1,4 +1,4 @@
-# Maintainer: u0_a266 <cagf2emv@anonaddy.me>
+# Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=fzpac-git
 _pkgname=fzpac
 pkgver=r134.7723f7b
