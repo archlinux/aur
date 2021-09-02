@@ -5,7 +5,7 @@
 
 pkgname=lib32-sqlite2
 pkgver=2.8.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library that implements an SQL database engine"
 arch=('x86_64')
 url="http://www.sqlite.org/"
@@ -13,10 +13,12 @@ depends=('readline>=6.0.00')
 license=('custom')
 source=("https://www.sqlite.org/sqlite-$pkgver.tar.gz"
         'LICENSE'
-        'fix-libtool-directiories.patch')
+        'fix-libtool-directiories.patch'
+        'fix-error-format-security.patch')
 sha256sums=('3f35ebfb67867fb5b583a03e480f900206af637efe7179b32294a6a0cf806f37'
             'f5c6d91e17fd798af2ab9106a067ac80331eb96a182859630d211e94f9164d10'
-            '9123f098d2b45d0f894d007aea0fdfea9123fdc1ec26f7e1045c15aa117a2a10')
+            '9123f098d2b45d0f894d007aea0fdfea9123fdc1ec26f7e1045c15aa117a2a10'
+            'fd6cbcd8459e8056ea246f6415d32f2b627a2e4f83e5a82104206412da81e1f4')
 
 build() {
     cd "${srcdir}/sqlite-${pkgver}" || exit 1
@@ -29,6 +31,7 @@ build() {
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
     patch -p0 -i ../fix-libtool-directiories.patch
+    patch -p0 -i ../fix-error-format-security.patch
 
     ./configure \
         --prefix=/usr \
