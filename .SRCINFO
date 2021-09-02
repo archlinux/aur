@@ -1,6 +1,6 @@
 pkgbase = mcserv-git
 	pkgdesc = CLI utility to manage MC server installations.
-	pkgver = r54.644c37c
+	pkgver = r78.62306b0
 	pkgrel = 1
 	url = https://github.com/DRSchlaubi/mcserv
 	arch = x86_64

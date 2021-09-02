@@ -1,6 +1,6 @@
 # Maintainer: Nico Ramlow <nico@nycode.de>
 pkgname=mcserv-git
-pkgver=r54.644c37c
+pkgver=r78.62306b0
 pkgrel=1
 pkgdesc="CLI utility to manage MC server installations."
 arch=('x86_64')
@@ -29,13 +29,16 @@ prepare() {
 }
 
 build() {
+	cd "${pkgname%-git}"
+	gitsha=$(git rev-parse --short HEAD)
 	cd "$srcdir/${pkgname%-git}"
-	./gradlew clean copyReleasePackage
+	GITHUB_SHA="$gitsha" ./gradlew clean copyReleasePackage
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-	install --mode=755 -D -- $srcdir/${pkgname%-git}/build/package/release/mcserv ${pkgdir}/usr/bin/mcserv
-	install --mode=655 -D -- $srcdir/${pkgname%-git}/build/package/release/liblibmcserv.so ${pkgdir}/usr/lib/liblibmcserv.so
+	mkdir -p "${pkgdir}/opt/${pkgname%-git}" "${pkgdir}/usr/bin"
+	cp $srcdir/${pkgname%-git}/build/package/release/* ${pkgdir}/opt/${pkgname%-git}/
+	chmod 755 "${pkgdir}/opt/${pkgname%-git}/mcserv"
+	ln -s "/opt/${pkgname%-git}/mcserv" "${pkgdir}/usr/bin/${pkgname%-git}"
 }
