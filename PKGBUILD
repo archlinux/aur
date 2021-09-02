@@ -28,7 +28,6 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-)
 
 pkgver() {
   cd "${pkgname}"
