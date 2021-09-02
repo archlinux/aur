@@ -1,11 +1,14 @@
 pkgbase = ko-bin
 	pkgdesc = Simple and fast container image builder for Go applications
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/ko
 	arch = x86_64
 	license = Apache
+	depends = go
 	optdepends = bash-completion: for tab completion
+	optdepends = docker: for Docker authentication support
+	optdepends = kubectl: for Kubernetes support
 	provides = ko
 	conflicts = ko
 	conflicts = ko-git

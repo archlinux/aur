@@ -3,13 +3,18 @@
 pkgname=ko-bin
 _pkgname="${pkgname%-bin}"
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and fast container image builder for Go applications'
 arch=('x86_64')
 _goos='Linux'
 url='https://github.com/google/ko'
 license=('Apache')
-optdepends=('bash-completion: for tab completion')
+depends=('go')
+optdepends=(
+	'bash-completion: for tab completion'
+	'docker: for Docker authentication support'
+	'kubectl: for Kubernetes support'
+)
 provides=("$_pkgname")
 conflicts=(
 	"$_pkgname"
