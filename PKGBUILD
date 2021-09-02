@@ -1,4 +1,4 @@
-# Maintainer: u0_a266 <cagf2emv@anonaddy.me>
+# Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=mpris-rp-git
 _pkgname=mpris-rp
 pkgver=r16.7fb6525
