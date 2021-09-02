@@ -1,7 +1,7 @@
 # Maintainer: Corwin <corwin@kuiper.dev>
 
 pkgname=melonds
-pkgver=0.9.2
+pkgver=0.9.3
 pkgdesc='DS emulator, sorta'
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'pkg-config')
 depends=('sdl2' 'libslirp' 'qt5-base' 'libepoxy')
 source=("https://github.com/Arisotura/melonDS/archive/$pkgver.tar.gz")
 
-sha256sums=('e9f408efa996dda4236a17340f024fea11fd98054148d37cf5b17fea8a2f63ad')
+sha256sums=('c50a3855c1f77f58a2b15045687dc399b845224a970fe68ff95919c939ac634f')
 
 build() {
   if [[ -d build ]]; then
