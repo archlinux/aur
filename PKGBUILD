@@ -2,7 +2,7 @@
 # Contributor: Christoph Drexler <chrdr at gmx dot at>
 # Contributor: me at oguzkaganeren dot com dot tr
 pkgname=grisbi
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Shared files for the finance management program Grisbi."
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('grisbi-git')
 replaces=('grisbi')
 options=(!libtool)
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e32906df5d077b5685694368e5f0a568cdd05850732844468a161fa9ac51d55a')
+sha256sums=('bd3adbabfc4b4dfc05eff62d2b36458a24b0f00d07cf35a29f6af2f203c77a3f')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
