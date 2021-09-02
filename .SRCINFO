@@ -1,13 +1,14 @@
 pkgbase = python-xdoctest
 	pkgdesc = A rewrite of Python's doctest module
-	pkgver = 0.15.6
+	pkgver = 0.15.8
 	pkgrel = 1
 	url = https://github.com/Erotemic/xdoctest
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = python-xdoctest-0.15.6.tar.gz::https://github.com/Erotemic/xdoctest/archive/0.15.6.tar.gz
-	b2sums = 39af1bdc381e6b6044321ca1dae8ae893d4af9ba8d595ce5dad0fea7e805420635bc9f9a2c04726cb03a7fa0311eb1df1f93aa59e682790e15a3e119356d7b9a
+	source = python-xdoctest-0.15.8.tar.gz::https://github.com/Erotemic/xdoctest/archive/0.15.8.tar.gz
+	b2sums = a16578e6d50398ac80d950bcc9a05131880816e2ff3a15bd1489474e532f9b495d099dcea204d8375c884c6957aaaba9b276fbcb65b5717b2850314453f787f7
 
 pkgname = python-xdoctest
