@@ -1,9 +1,9 @@
 # Maintainer:  Christopher Reimer <mail at c-reimer dot de>
 
 pkgname=spotify-edge-snap
-pkgver=1.1.56.595.g2d2da0de
+pkgver=1.1.67.586.gbb5ef64e
 _snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
-_revision=47
+_revision=50
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=('spotify.protocol'
 source_x86_64=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_revision}.snap")
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
-sha512sums_x86_64=('576e471a709dcb210b6d8415fc469db035b3f0ced69ed6df77dc2e0673dcd22743b0b8b53892877bdb68cd68d7b29bdedc79abfa19f054ea8172d765cb4f01c4')
+sha512sums_x86_64=('f29aa4a3f3d6a72f108f350905789f12ab3ae50cf4f4828f021d3be7759b192506c9a397e45309a5ee659578b6e85de80d7d78f994af9ab631c9fb2dc527c242')
 
 prepare() {
     cd "${srcdir}"
