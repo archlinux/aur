@@ -1,0 +1,12 @@
+pkgbase = gnome-shell-extension-net-speed
+	pkgdesc = Show current net speed on panel.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/AlynxZhou/gnome-shell-extension-net-speed
+	arch = any
+	license = GPL
+	depends = gnome-shell
+	source = gnome-shell-extension-net-speed-1.tar.gz::https://github.com/AlynxZhou/gnome-shell-extension-net-speed/archive/v1.tar.gz
+	sha512sums = dc0563051914ab93ddfcc9d8d80321392e52b0603247cbe3690f98c160098f2f3d28a6fc74fe1af1c09344b57d11b0e8b81a2c336ae44a753b9ce1d5bcd113c4
+
+pkgname = gnome-shell-extension-net-speed
