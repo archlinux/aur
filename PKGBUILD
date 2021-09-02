@@ -8,8 +8,7 @@ license=('GPL3')
 url='https://gitlab.freedesktop.org/Gabby/rollback'
 depends=('coreutils' 'python' 'btrfs-progs')
 optdepends=('doas: Automatic priv escalation'
-            'sudo: Automatic priv escalation'
-)
+            'sudo: Automatic priv escalation')
 makedepends=('git')
 provides=('rollback')
 conflicts=('rollback')
