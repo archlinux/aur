@@ -1,7 +1,7 @@
 # Maintainer: Timo Wilken <timo.21.wilken+aur@gmail.com>
 pkgname=alibuild
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple build tool for ALICE software at CERN'
 arch=(i686 x86_64)
 url='https://alisw.github.io/alibuild/'
@@ -22,7 +22,7 @@ sha256sums=('86b92c29a50ab0e5b19a80d1ffa2161ae8863c2b7b890ddb9495839a34761411')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i "s/LAST_TAG/$pkgver/g" setup.py
+  sed -i "s/LAST_TAG/$pkgver/g" alibuild_helpers/__init__.py
 }
 
 check() {
