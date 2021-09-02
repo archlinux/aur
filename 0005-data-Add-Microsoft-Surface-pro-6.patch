@@ -1,4 +1,4 @@
-From eb91fe238e9ff06a7c5eebfe1b1c9d6b2cc82978 Mon Sep 17 00:00:00 2001
+From 38c0df07ddb39d0d6d4116c0c789e2b10dbb790a Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:07 +0200
 Subject: [PATCH 05/11] data: Add Microsoft Surface pro 6
@@ -29,5 +29,5 @@ index 0000000..e97fad8
 +Touch=true
 +Buttons=0
 -- 
-2.32.0
+2.33.0
 

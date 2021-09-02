@@ -1,4 +1,4 @@
-From caf3690c0258119900c91d9595ad7c71896a580c Mon Sep 17 00:00:00 2001
+From 0e7b62459bdebcb5aec97e13babcbd792d25f0fd Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/11] Add support for Intel Management Engine bus
@@ -60,10 +60,10 @@ index 88d0777..09e289f 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index 24e99cd..0eee2fd 100644
+index a4cbb23..034a894 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
-@@ -118,6 +118,7 @@ typedef enum {
+@@ -150,6 +150,7 @@ typedef enum {
  	WBUSTYPE_BLUETOOTH,	/**< Bluetooth tablet */
  	WBUSTYPE_I2C,		/**< I2C tablet */
  	WBUSTYPE_VIRTUAL,	/**< Virtual (uinput) tablet */
@@ -97,5 +97,5 @@ index 734463f..c9c6312 100755
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
  
 -- 
-2.32.0
+2.33.0
 

@@ -1,4 +1,4 @@
-From 9c3f0916ffea701532f3512651792d5f87833330 Mon Sep 17 00:00:00 2001
+From 846cc328cfe536ba49c00d907ca4b737d980a5f8 Mon Sep 17 00:00:00 2001
 From: Dorian Stoll <dorian.stoll@tmsp.io>
 Date: Sat, 27 Jun 2020 18:21:11 +0200
 Subject: [PATCH 01/11] Add support for BUS_VIRTUAL
@@ -65,10 +65,10 @@ index 935344c..88d0777 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index 1b9bc2c..24e99cd 100644
+index d611c9d..a4cbb23 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
-@@ -117,6 +117,7 @@ typedef enum {
+@@ -149,6 +149,7 @@ typedef enum {
  	WBUSTYPE_SERIAL,	/**< Serial tablet */
  	WBUSTYPE_BLUETOOTH,	/**< Bluetooth tablet */
  	WBUSTYPE_I2C,		/**< I2C tablet */
@@ -102,5 +102,5 @@ index 3953b1e..734463f 100755
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
  
 -- 
-2.32.0
+2.33.0
 
