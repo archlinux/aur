@@ -1,0 +1,12 @@
+pkgbase = dumphive
+	pkgdesc = A tool extracts keys and values from Windows registry files and dump to a text file
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://launchpad.net/dumphive
+	arch = x86_64
+	license = BSD
+	makedepends = fpc
+	source = https://sourceforge.net/projects/ekeyfinder/files/dumphive/dumphive_0.0.3-1.tar.gz
+	sha256sums = 25f7b07466153f9e74a432c178214b881edb09948fd8bcbd2ec30787bdd347a2
+
+pkgname = dumphive
