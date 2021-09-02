@@ -1,12 +1,15 @@
+# Contributor Squitch
+# Contributor FabioLolix
+
 pkgname=tess-git
-pkgver=0.4.2.r58.g1ebfce0
+pkgver=0.4.3.r0.g993d986
 pkgrel=1
 pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
 url="https://github.com/SquitchYT/Tess.git"
 license=('unknown')
 depends=("glib2" "glibc" "gtk3")
-makedepends=("git" "npm")
+makedepends=("git" "npm" "cmake")
 source=("git+$url")
 md5sums=("SKIP")
 
@@ -29,15 +32,16 @@ package() {
 	mkdir -p "${pkgdir}/opt/tess-cli"
 	mkdir -p "${pkgdir}/usr/bin"
 
-    	cp "./src/img/Tess.png" "${pkgdir}/usr/bin/Tess.png"
+    cp "./src/img/Tess.png" "${pkgdir}/usr/bin/Tess.png"
 
 	cd "cli"
-	g++ main.cpp Class/*.cpp Utils/*.cpp Lib/*.cpp Lib/external/cpr/cpr/*.cpp -lpthread -lcurl -std=c++17 -o tess-cli
+
+	mkdir build && cd build && cmake -S .. -B . && make
 
 	cp -r -f tess-cli "${pkgdir}/opt/tess-cli/tess-cli" 
 	ln -s "/opt/tess-cli/tess-cli" "${pkgdir}/usr/bin/tess-cli"
 
-	cd ../
+	cd ../../
 
 	mkdir -p "${pkgdir}/opt/tess"
 
