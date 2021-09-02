@@ -2,7 +2,7 @@
 pkgname=('pop-launcher' 'pop-launcher-system76-power')
 pkgbase=pop-launcher
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
@@ -29,6 +29,11 @@ package_pop-launcher() {
 
   cd "launcher-$pkgver"
   make DESTDIR="$pkgdir/" install
+
+  # Fix symlink
+  rm "$pkgdir/usr/lib/$pkgbase/plugins/pop_shell/pop-shell"
+  ln -s "/usr/bin/$pkgbase" \
+    "$pkgdir/usr/lib/$pkgbase/plugins/pop_shell/pop-shell"
 
   rm -rf "$pkgdir/usr/lib/$pkgbase/scripts/system76-power"
 }

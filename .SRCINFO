@@ -1,6 +1,6 @@
 pkgbase = pop-launcher
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	license = GPL3
