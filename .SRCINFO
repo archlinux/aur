@@ -1,0 +1,13 @@
+pkgbase = ibm-tpm2-tss
+	pkgdesc = International Business Machines Trusted Platform Module 2.0 Software Stack
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/ibmtpm20tss/
+	arch = x86_64
+	license = BSD
+	depends = efivar
+	depends = openssl
+	source = https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss1.6.0.tar.gz
+	sha256sums = 83bebb0d36ef9ced6cf3be2be9f0b4463a692d67254df31216271a916aaba851
+
+pkgname = ibm-tpm2-tss
