@@ -1,5 +1,5 @@
 pkgbase = sensuctl-bin
-	pkgdesc = Compiler and tools for the Go programming language from Google
+	pkgdesc = Sensu CLI
 	pkgver = 6.4.3
 	pkgrel = 1
 	url = https://sensu.io
