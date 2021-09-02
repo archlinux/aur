@@ -117,7 +117,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/0001-ksm.patch"
 	      "auto-cpu-optimization.sh"
         )
-(
+BUILD_FLAGS=(
   LLVM=1
   LLVM_IAS=1
             )
