@@ -1,14 +1,13 @@
 pkgbase = flips
 	pkgdesc = Floating IPS - Applies and creates IPS and BPS patches
-	pkgver = 123
+	pkgver = 126
 	pkgrel = 1
 	url = https://github.com/Alcaro/Flips
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = gtk3
-	source = flips::git+https://github.com/Alcaro/Flips.git#commit=5a3d2012b8ea53ae777c24b8ac4edb9a6bdb9761
+	source = flips::git+https://github.com/Alcaro/Flips.git#commit=3476e5e46fc6f10df475f0cad1714358ba04c756
 	sha256sums = SKIP
 
 pkgname = flips
-
