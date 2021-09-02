@@ -9,7 +9,7 @@ license=('unknown')
 depends=('python>=3.7' 'python-pytorch')
 makedepends=('git' 'python-setuptools' 'python-pytorch' 'python-pytest' 'python-pip')
 provides=('python-pytorch-complex')
-conflicts=("python-pytorch-complex" "${pkgname}")
+conflicts=("python-pytorch-complex")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(

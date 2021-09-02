@@ -14,7 +14,6 @@ pkgbase = python-pytorch-complex-git
 	depends = python-pytorch
 	provides = python-pytorch-complex
 	conflicts = python-pytorch-complex
-	conflicts = python-pytorch-complex-git
 	source = python-pytorch-complex-git::git+https://github.com/kamo-naoyuki/pytorch_complex
 	md5sums = SKIP
 
