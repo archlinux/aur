@@ -2,7 +2,7 @@
 
 pkgname="image-optimizer"
 _gitname=Image-Optimizer
-pkgver=0.1.20
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="Simple losless image optimizer build for Elementary OS"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('!libtool')
 conflicts=('image-optimizer' 'image-optimizer-bzr')
 provides=('image-optimizer')
 source=("${pkgname}-${pkgver}::https://github.com/GijsGoudzwaard/Image-Optimizer/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('61104b78824f5554113ce964896a9a310e338f362357d507826c01edbc91015a007f4bbf6a6dfdc3f277a95bc8d78c31caa87bb6f1093fc11b291116446829f1')
+b2sums=('90d95c64e6372df46cc5154b094fc8c8791aa49eb76df109ff566c50dabbfb7d4370e4c2d1326c32a0012ebe4488ec7f05ea8a7c1d41cda19607f576f38d22a2')
 
 build() {
     cd "${srcdir}/${_gitname}-${pkgver}/"
