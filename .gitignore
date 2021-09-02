@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!fix_lp.patch
+!brother-dcp365cn.install

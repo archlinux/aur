@@ -9,7 +9,7 @@ optdepends=('brscan3: scanner support.')
 install="brother-dcp365cn.install"
 arch=('i686' 'x86_64')
 
-md5sums=('bea93ac27ae27cbd0916414e5a7f630b'
+md5sums=('597168d50cc1a39618b71b5233c7e196'
          '951f04eaa29ce2a95c0b46582cf09411'
          '0c62592b0c185bc6c2610b5407aaafb2')
 
