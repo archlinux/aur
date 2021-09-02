@@ -2,7 +2,7 @@
 
 _pkgname='jc'
 pkgname="${_pkgname}-git"
-pkgver=v1.13.4.r24.g439871e
+pkgver=v1.16.2.r0.gab482e5
 pkgrel=1
 pkgdesc='Converts the output of popular command-line tools and file-types to JSON'
 arch=('any')
