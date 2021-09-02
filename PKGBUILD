@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
-pkgrel=1
+pkgrel=2
 _bpn=diod
 pkgname=$_bpn-git
 pkgdesc="A multi-threaded, user space file server that speeks 9P2000.L"
@@ -22,7 +22,7 @@ depends=('lua' 'libwrap' 'libcap' 'bash')
 optdepends=('munge')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
-pkgver=1.0.24.r11.g0ea3fe3
+pkgver=1.0.24.r89.g3da6e52
 pkgver() {
 	cd "$srcdir/$_bpn"
 	( set -o pipefail
