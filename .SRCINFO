@@ -1,13 +1,14 @@
 pkgbase = headscale-git
 	pkgdesc = An open source, self-hosted implementation of the Tailscale coordination server.
 	pkgver = 0.7.1.r2.g39c661d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juanfont/headscale
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = tailscale
 	optdepends = wireguard-tools: CLI tools for generating keys
+	optdepends = postgresql: alternative database provider
 	provides = headscale
 	conflicts = headscale
 	source = headscale::git+https://github.com/juanfont/headscale.git
