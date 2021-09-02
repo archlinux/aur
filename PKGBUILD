@@ -1,6 +1,6 @@
 pkgname=mingw-w64-cmake-static
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='CMake wrapper for MinGW (mingw-w64, static)'
 depends=('mingw-w64-cmake')
