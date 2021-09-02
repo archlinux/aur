@@ -1,7 +1,7 @@
 pkgbase = qt3
 	pkgdesc = A cross-platform application and UI framework
 	pkgver = 3.3.8b
-	pkgrel = 19
+	pkgrel = 20
 	epoch = 1
 	url = http://qt.io
 	arch = i686
@@ -36,4 +36,3 @@ pkgbase = qt3
 	sha256sums = 673b10f3652d72d65515f5a0c21c27d39d0c3b7fade30ae77ebd7facca6acacb
 
 pkgname = qt3
-

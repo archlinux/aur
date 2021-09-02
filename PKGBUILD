@@ -5,7 +5,7 @@
 
 pkgname=qt3
 pkgver=3.3.8b
-pkgrel=19
+pkgrel=20
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -178,6 +178,7 @@ prepare() {
   sed -i "s|-O2|$CXXFLAGS -fno-strict-aliasing|" mkspecs/linux-g++{,-32,-64}/qmake.conf
   sed -i "s|-I. |$CXXFLAGS -I. |" qmake/Makefile.unix
   sed -i "s|read acceptance|acceptance=yes|" configure
+  sed -i "s|-Werror=format-security||" qmake/Makefile.unix
 }
 
 build() {
