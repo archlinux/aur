@@ -1,6 +1,6 @@
 pkgbase = python-k2-git
 	pkgdesc = FSA/FST algorithms, differentiable, with PyTorch compatibility
-	pkgver = 1.3.r697
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://github.com/k2-fsa/k2
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = python-k2-git
 	optdepends = hip: build with HIP
 	provides = python-k2
 	conflicts = python-k2
-	conflicts = python-k2-git
 	source = python-k2-git::git+https://github.com/k2-fsa/k2
 	md5sums = SKIP
 

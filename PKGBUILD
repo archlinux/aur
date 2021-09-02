@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-k2-git
-pkgver=1.3.r697
+pkgver=1.6
 pkgrel=1
 pkgdesc='FSA/FST algorithms, differentiable, with PyTorch compatibility'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.7' 'python-pytorch' 'python-graphviz' 'cuda')
 optdepends=('hip: build with HIP')
 makedepends=('git' 'python-setuptools' 'cmake' 'chrpath')
 provides=('python-k2')
-conflicts=("python-k2" "${pkgname}")
+conflicts=("python-k2")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -21,7 +21,7 @@ pkgver() {
     cd "${pkgname}"
     # To obtain a version number compatible with PEP 440
     export K2_IS_STABLE=1
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
