@@ -1,0 +1,64 @@
+pkgbase = bluez-noudev
+	pkgver = 5.61
+	pkgrel = 1
+	url = http://www.bluez.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = dbus
+	makedepends = libical
+	makedepends = udev
+	makedepends = alsa-lib
+	makedepends = json-c
+	makedepends = ell
+	makedepends = python-docutils
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.61.tar.xz
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.61.tar.sign
+	source = https://gitea.artixlinux.org/packagesB/bluez/raw/commit/166e66178bfb669f9dd0d94ba0202208b441dff5/x86_64/extra/bluetooth.modprobe
+	validpgpkeys = E932D120BC2AEC444E558F0106CA9F5D1DCF2659
+	sha256sums = 83afd6c52179554bfeabbcb538fec2eb6be90a8ac3c40871b49d7ad8b49c423b
+	sha256sums = SKIP
+	sha256sums = 46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4
+
+pkgname = bluez-noudev
+	pkgdesc = Daemons for the bluetooth protocol stack
+	depends = libical
+	depends = dbus
+	depends = glib2
+	depends = alsa-lib
+	depends = json-c
+	provides = bluez
+	conflicts = obexd-client
+	conflicts = obexd-server
+	conflicts = bluez
+	backup = etc/bluetooth/main.conf
+
+pkgname = bluez-utils-noudev
+	pkgdesc = Development and debugging utilities for the bluetooth protocol stack
+	depends = dbus
+	depends = glib2
+	optdepends = ell: for btpclient
+	provides = bluez-hcidump
+	provides = bluez-utils
+	conflicts = bluez-hcidump
+	conflicts = bluez-utils
+	replaces = bluez-hcidump
+	replaces = bluez<=4.101
+
+pkgname = bluez-libs-noudev
+	pkgdesc = Deprecated libraries for the bluetooth protocol stack
+	license = LGPL2.1
+	depends = glibc
+	provides = libbluetooth.so
+	provides = bluez-libs
+	conflicts = bluez-libs
+
+pkgname = bluez-cups-noudev
+	pkgdesc = CUPS printer backend for Bluetooth printers
+	depends = cups
+	provides = bluez-cups
+	conflicts = bluez-cups
+
+pkgname = bluez-plugins-noudev
+	pkgdesc = bluez plugins (PS3 Sixaxis controller)
+	provides = bluez-plugins
+	conflicts = bluez-plugins
