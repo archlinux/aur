@@ -12,7 +12,6 @@ pkgbase = python-pytorch-wpe-git
 	depends = python-numpy
 	provides = python-pytorch-wpe
 	conflicts = python-pytorch-wpe
-	conflicts = python-pytorch-wpe-git
 	source = python-pytorch-wpe-git::git+https://github.com/kamo-naoyuki/dnn_wpe
 	md5sums = SKIP
 

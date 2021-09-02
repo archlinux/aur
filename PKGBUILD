@@ -9,7 +9,7 @@ license=('custom:NTT')
 depends=('python>=3.7' 'python-pytorch-complex-git' 'python-numpy')
 makedepends=('git' 'python-setuptools')
 provides=('python-pytorch-wpe')
-conflicts=("python-pytorch-wpe" "${pkgname}")
+conflicts=("python-pytorch-wpe")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
