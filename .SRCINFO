@@ -1,0 +1,19 @@
+pkgbase = n-link
+	pkgdesc = Free, cross-platform, CX-II compatible computer linking program for the TI-Nspire.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://lights0123.com/n-link/
+	arch = x86_64
+	license = GPL3
+	depends = nodejs-lts-fermium
+	depends = webkit2gtk
+	depends = squashfs-tools
+	provides = n-link
+	conflicts = n-link-git
+	noextract = n-link_0.1.6_amd64.deb
+	source = https://github.com/lights0123/n-link/releases/download/v0.1.6/n-link_0.1.6_amd64.deb
+	source = 69-n-link.rules
+	sha256sums = 85afe0a52ee8f1bd0c7d61f3cbac5d24db89963d11e942c330a968125f8051e2
+	sha256sums = 08274e4c02e4321f352412af6d539a33151c6136cace924b29150520ccd79e7d
+
+pkgname = n-link
