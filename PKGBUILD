@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python>=3.7' 'python-nltk' 'python-roman' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
 provides=('python-normalise')
-conflicts=("python-normalise" "${pkgname}")
+conflicts=("python-normalise")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(

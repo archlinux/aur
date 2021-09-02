@@ -13,7 +13,6 @@ pkgbase = python-normalise-git
 	depends = python-scikit-learn
 	provides = python-normalise
 	conflicts = python-normalise
-	conflicts = python-normalise-git
 	source = python-normalise-git::git+https://github.com/EFord36/normalise
 	md5sums = SKIP
 
