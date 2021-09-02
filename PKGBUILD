@@ -1,4 +1,4 @@
-# Maintainer: u0_a266 <cagf2emv@anonaddy.me>
+# Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=ttf-firge
 pkgver=0.1.0
 pkgrel=3
