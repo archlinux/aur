@@ -12,7 +12,7 @@ _NUMAdisable=y
 _fsync=y
 
 #enable futex2
-_futex2=
+_futex2=y
 
 #enable winesync
 _winesync=y
@@ -75,7 +75,7 @@ pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14
-pkgrel=2
+pkgrel=4
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -96,12 +96,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
+        "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
         "${_patchsource}/block-patches/0001-block-patches.patch"
-     #   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
-        "${_patchsource}/futex-patches/0001-futex-resync-from-gitlab.collabora.com.patch"
- #       "${_patchsource}/futex2-trunk-patches/0001-futex2-resync-from-gitlab.collabora.com.patch"
-        "${_patchsource}//lqx-patches/0001-lqx-patches.patch"
+    #   "${_patchsource}/fixes-miscellaneous/0001-fixes-miscellaneous.patch"
+        "${_patchsource}/0007-v5.14-fsync.patch"
+        "${_patchsource}/0007-v5.14-futex2_interface.patch"
+        "${_patchsource}/lqx-patches/0001-lqx-patches.patch"
         "${_patchsource}/lrng-patches/0001-lrng-patches.patch"
         "${_patchsource}/mm-patches/0001-mm-5.14-protect-mappings-under-memory-pressure.patch"
         "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
@@ -109,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v2/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v3/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -117,8 +118,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
 	      "auto-cpu-optimization.sh"
         )
 BUILD_FLAGS=(
-  LLVM=1
-  LLVM_IAS=1
+
             )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -305,12 +305,12 @@ prepare() {
           	fi
 
               echo "Enable Anbox"
-#              scripts/config --module  CONFIG_ASHMEM
-#              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
-#              scripts/config --enable  CONFIG_ANDROID
-#              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
-#              scripts/config --enable  CONFIG_ANDROID_BINDERFS
-#              scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
+              scripts/config --module  CONFIG_ASHMEM
+              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC_SELFTEST
+              scripts/config --enable  CONFIG_ANDROID
+              scripts/config --enable  CONFIG_ANDROID_BINDER_IPC
+              scripts/config --enable  CONFIG_ANDROID_BINDERFS
+              scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES binder,hwbinder,vndbinder
               echo "Disabling TCP_CONG_CUBIC..."
               scripts/config --module CONFIG_TCP_CONG_CUBIC
               scripts/config --disable CONFIG_DEFAULT_CUBIC
@@ -512,7 +512,7 @@ package_linux-cacule-rdb-headers() {
 }
 
 md5sums=('a082ef5748b813abca0649dab8be5f52'
-         '083ccda341dc8ae299b2e75ef3f2195a'
+         '3a623863ef1d4a63d8f172c738dc1236'
          'b961add2e3ea53ade755148169c00e6e'
          'd92c43182698243cd13d32376cec0f23'
          'a804260e2f301ffe2a17d6e3625a9711'
@@ -520,18 +520,20 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
          'a0285c065b902ca625119e4ad43cbab4'
+         'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
          'a3f2cbf318dd2a63af9673f9e34e7125'
-         '232e0f8b6083fad96413552fb5af2d15'
+         '77148eba8e77fc41a44f5f6d3b440573'
+         'c1dfe3a0b5c31e9a97d1827642f0bc5b'
          '6787c78ba3e7b0a34fbba9c50da7e3b4'
          '3cf036429a7c962005a344e10a568d7b'
          '8edec54f500ecb2ff705c2a9f32e0560'
          '30a7be161ab863c46e5ad55796d06a29'
-         'd8dabbce9beb2278ecb7d2c349135949'
-         'e10e4abeba2d16db591846337589ac31'
+         '28864f14bf33bad92e57bc48bc5c2c78'
+         '381bc4f0ff885e9b67e5899476a30416'
          'fe00e09708cbbeb15e348e36ab881696'
          '0553f660f2399549ed17b6d2ca4e930e'
-         'f2fc75c542ca63e5ee1f0bb48e7e47f9'
+         '99ab82a0ffab06f8fe0a2674da1b3ffe'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
