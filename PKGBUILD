@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
-pkgver=2.2121.6
+pkgver=2.2134.10
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -41,8 +41,8 @@ build() {
 package() {
   install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
 
-  _folder=$(ls -l "${srcdir}" | grep "[Ww]hats[-]*[Aa]pp-linux-" | awk '{print $9}')
-  _binary=$(ls -l "${srcdir}/${_folder}" | grep "[Ww]hats[-]*[Aa]pp" | awk '{print $9}')
+  _folder=$(ls "${srcdir}" | grep "[Ww]hats[-]*[Aa]pp-linux-")
+  _binary=$(ls "${srcdir}/${_folder}" | grep "[Ww]hats[-]*[Aa]pp")
 
   sed -i -e "/loglevel/d" "${srcdir}/${_folder}/resources/app/lib/preload.js"
   cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
