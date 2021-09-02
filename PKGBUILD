@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-model-zoo-git
-pkgver=0.0.0a30.r196
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Manage pretrained models created by ESPnet toolkit'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache 2.0')
 depends=('python>=3.7' 'python-numpy' 'python-tqdm' 'python-requests' 'python-pandas' 'python-espnet')
 makedepends=('git' 'python-setuptools')
 provides=('python-espnet-model-zoo')
-conflicts=("python-espnet-model-zoo" "${pkgname}")
+conflicts=("python-espnet-model-zoo")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
