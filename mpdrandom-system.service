@@ -1,0 +1,10 @@
+[Unit]
+Description=Play a random album in mpd
+After=mpd.service
+
+[Service]
+User=mpd
+ExecStart=/usr/bin/mpdrandom -d -l
+
+[Install]
+WantedBy=multi-user.target

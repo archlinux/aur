@@ -1,7 +1,7 @@
 pkgbase = mpdrandom-git
 	pkgdesc = mpd albums randomizing script
-	pkgver = 1.3.0.r2.gf96680a
-	pkgrel = 1
+	pkgver = 1.3.0.r4.gacc37ed
+	pkgrel = 2
 	url = https://github.com/axujen/mpdrandom
 	arch = any
 	license = GPL3
@@ -9,10 +9,13 @@ pkgbase = mpdrandom-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-mpd2
+	optdepends = mpd: provides mpd user for system unit
 	provides = mpdrandom
 	source = git+https://github.com/axujen/mpdrandom
-	source = mpdrandom.service
+	source = mpdrandom-user.service
+	source = mpdrandom-system.service
 	sha1sums = SKIP
 	sha1sums = 155133e127d3d935d339cff2265a5f728a4ef0b1
+	sha1sums = 2728b8b70264c98b763050953d46ce3680d7791d
 
 pkgname = mpdrandom-git
