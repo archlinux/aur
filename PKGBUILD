@@ -2,7 +2,7 @@
 
 _pkgname=sidef
 pkgname=sidef-git
-pkgver=3.98.r0.g18996c9a
+pkgver=3.99.r0.g36120f34
 pkgrel=1
 pkgdesc="A modern object-oriented programming language (-git version)."
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
 )
 optdepends=('perl-math-prime-util: for better performance in several functions')
 source=('git://github.com/trizen/sidef.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
