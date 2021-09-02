@@ -4,12 +4,12 @@
 _pkgname='bitcanna-wallet'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Full node BitCanna (BCNA) versions of bitcannad, bitcanna-cli, bitcanna-qt, and bitcanna-tx, w/GUI and wallet'
 arch=('x86_64')
 url='https://www.bitcanna.io/'
 _url='https://github.com/BitCannaGlobal/BCNA_bitcore_old'
-_rawurl='https://raw.githubusercontent.com/BitCannaGlobal/BCNA'
+_rawurl='https://raw.githubusercontent.com/BitCannaGlobal/BCNA_bitcore_old'
 license=('AGPL3')
 depends=(
   'fontconfig'
