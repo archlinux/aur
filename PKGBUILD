@@ -23,7 +23,7 @@ source=(https://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
         qt3-other-patches.tar.bz2
         qt3-fedora-patches.tar.bz2)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
-            'd8a7c622b0a5054d85d465f7b1b6db03233fbcf9fd132f7f0bd7c6848ff906ce'
+            '7e51f87792db4e2ffa557a7fe7614a9ac9ebc54328b2e998363bd102f78d2185'
             '673b10f3652d72d65515f5a0c21c27d39d0c3b7fade30ae77ebd7facca6acacb')
 
 prepare() {
@@ -161,6 +161,9 @@ prepare() {
   # Fix CJK font/chars select error (FS#11245)
   patch -p1 -i ../qt3-other-patches/eastern_asian_languagues.diff
 
+  # Fix compilation error
+  patch -p0 -i ../qt3-other-patches/fix-error-format-security.patch
+
   # For immodule
   sh ./make-symlinks.sh
 
@@ -178,7 +181,6 @@ prepare() {
   sed -i "s|-O2|$CXXFLAGS -fno-strict-aliasing|" mkspecs/linux-g++{,-32,-64}/qmake.conf
   sed -i "s|-I. |$CXXFLAGS -I. |" qmake/Makefile.unix
   sed -i "s|read acceptance|acceptance=yes|" configure
-  sed -i "s|-Werror=format-security||" qmake/Makefile.unix
 }
 
 build() {

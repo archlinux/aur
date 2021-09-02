@@ -32,7 +32,7 @@ pkgbase = qt3
 	source = qt3-other-patches.tar.bz2
 	source = qt3-fedora-patches.tar.bz2
 	sha256sums = 1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e
-	sha256sums = d8a7c622b0a5054d85d465f7b1b6db03233fbcf9fd132f7f0bd7c6848ff906ce
+	sha256sums = 7e51f87792db4e2ffa557a7fe7614a9ac9ebc54328b2e998363bd102f78d2185
 	sha256sums = 673b10f3652d72d65515f5a0c21c27d39d0c3b7fade30ae77ebd7facca6acacb
 
 pkgname = qt3
