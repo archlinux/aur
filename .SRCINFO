@@ -1,6 +1,6 @@
 pkgbase = python-miio
 	pkgdesc = Python library & console tool for controlling Xiaomi smart appliances
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/rytilahti/python-miio
 	install = miio.install
@@ -8,19 +8,20 @@ pkgbase = python-miio
 	license = GPL3
 	makedepends = python-dephell
 	depends = python>=3.6
-	depends = python-appdirs
+	depends = python-appdirs>=1
 	depends = python-attrs
 	depends = python-click>=7
-	depends = python-construct
+	depends = python-construct>=2.10.56
 	depends = python-croniter
-	depends = python-cryptography
+	depends = python-cryptography>=3
+	depends = python-defusedxml
 	depends = python-netifaces
 	depends = python-pytz
-	depends = python-tqdm
+	depends = python-tqdm>=4
 	depends = python-yaml
 	depends = python-zeroconf
 	optdepends = python-android-backup-tools: Android backup extraction support
-	source = https://files.pythonhosted.org/packages/source/p/python-miio/python-miio-0.5.7.tar.gz
-	sha512sums = d44f48875c72fc85f99859293528c140b9ded80c39c53d4181f499159e75fc95d6625a51d43c1fb1c32f29787346d5e8cc7c12d35103177aaefbcee0aebe5f43
+	source = python-miio-0.5.8.tar.gz::https://files.pythonhosted.org/packages/source/p/python-miio/python-miio-0.5.8.tar.gz
+	sha512sums = c2dec86e952e8fd2ea1bbd2db43b2b009e06cc58cfc9611c5655c23105655f12a5e95ae02a018b48531a2d93465bcaf369d48c61e3d8325cfa0982259a2bd79b
 
 pkgname = python-miio
