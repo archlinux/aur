@@ -2,7 +2,7 @@
 
 pkgname=alsa-capabilities
 pkgver=v2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="List alsa output interfaces and their capabilities and properties"
 arch=(any)
 url="https://gitlab.com/sonida/alsa-capabilities"
