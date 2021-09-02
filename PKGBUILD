@@ -5,14 +5,14 @@
 
 pkgname=liblinphone-git
 _pkgname=linphone
-pkgver=5.0.0.alpha.r141.g005c77a4f
+pkgver=5.1.0.alpha.r55.g59940f045
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
-depends=('belcard>=4.4' 'belle-sip>=4.5' 'bzrtp>=4.4' 'ffmpeg' 'lime>=4.4'
-    'mediastreamer>=4.4.0' 'ortp>=4.5' 'xerces-c')
+depends=('belcard>=5.0' 'belle-sip>=5.0' 'bzrtp>=5.0' 'ffmpeg' 'lime>=5.0'
+    'mediastreamer>=5.1' 'ortp>=5.1' 'xerces-c')
 makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'python-pystache' 'xsd')
 optdepends=('pulseaudio')
 options=('!emptydirs')
