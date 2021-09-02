@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
-pkgver=7.6.1
+pkgver=7.6.2
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
@@ -36,8 +36,8 @@ build() {
     mkdir -p "$srcdir/build"
     cd "$srcdir/build"
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-    "$srcdir/${pkgname%}/src" \
+    cmake "$srcdir/${pkgname%}/src" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QSCINTILLA=0 \
     -DUSE_BREAKPAD=O \
     -DCMAKE_C_COMPILER=/usr/bin/clang \
