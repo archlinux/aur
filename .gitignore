@@ -1,0 +1,4 @@
+*.zst
+battctl-git
+pkg
+src

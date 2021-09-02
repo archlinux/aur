@@ -1,0 +1,13 @@
+pkgbase = battctl-git
+	pkgdesc = Battery charging thresold control and deamon. Mostly for Librem 14 laptops
+	pkgver = 0.0.1.r0.g92cbbf6
+	pkgrel = 2
+	url = https://github.com/primalmotion/battctl
+	arch = any
+	license = GPL3
+	makedepends = go
+	depends = systemd
+	source = battctl-git::git+https://github.com/primalmotion/battctl
+	sha1sums = SKIP
+
+pkgname = battctl-git
