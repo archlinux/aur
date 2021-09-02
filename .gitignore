@@ -1,0 +1,8 @@
+*.rar
+*.txt
+*.rest
+*.html
+src/**
+pkg/**
+*.xz
+
