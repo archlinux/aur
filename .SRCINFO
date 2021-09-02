@@ -1,14 +1,13 @@
 pkgbase = nemo-mediainfo-tab
 	pkgdesc = View media information from the properties tab
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/linux-man/nemo-mediainfo-tab
 	arch = any
 	license = GPL3
 	depends = python-mediainfodll
 	depends = nemo-python
-	source = nemo-mediainfo-tab-1.0.3.tar.gz::https://github.com/linux-man/nemo-mediainfo-tab/archive/v1.0.3.tar.gz
-	sha256sums = f5b6c1ba85296c1e2eada26578bc130d951c32e3839c516d2e379caba7a48abc
+	source = nemo-mediainfo-tab-1.0.4.tar.gz::https://github.com/linux-man/nemo-mediainfo-tab/archive/v1.0.4.tar.gz
+	sha256sums = 3518eb1a1caae4ca2fb58d9ceb65a3363a17839ab5cb1ae2ee5b6b05abe7ec56
 
 pkgname = nemo-mediainfo-tab
-
