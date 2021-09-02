@@ -1,0 +1,28 @@
+pkgbase = amule-gtk3
+	pkgdesc = An eMule-like client for ed2k p2p network (GTK3)
+	pkgver = 2.3.3
+	pkgrel = 1
+	epoch = 1
+	url = http://www.amule.org
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = wxgtk3
+	depends = gd
+	depends = geoip
+	depends = libupnp
+	depends = crypto++
+	provides = amule=2.3.3
+	conflicts = amule
+	source = https://download.sourceforge.net/project/amule/aMule/2.3.3/aMule-2.3.3.tar.gz
+	source = amuled.systemd
+	source = amuleweb.systemd
+	source = amule.sysusers
+	source = amule.tmpfiles
+	sha256sums = fa85a054153c9787fce2d35a5c5590a3d390429b8fa0c5d8f9ea69e9904c7b72
+	sha256sums = 20ac6b60c5f3bf49c0b080dfc02409da3c9d01b154344188008c6a75ca69681e
+	sha256sums = f4f43b1154ddccc9036a4291a58c6715f097b171fec62ea7aead0c9d9fa654f2
+	sha256sums = c4ca658ab4105b3b90e0bb3efcc8121eca1c4d873787db1ed4f637925c16d502
+	sha256sums = e9d1b7019c7075b0f8616c6507a767b87de8f899936680e9ff5829d8cbba224d
+
+pkgname = amule-gtk3

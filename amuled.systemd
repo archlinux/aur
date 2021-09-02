@@ -1,0 +1,12 @@
+[Unit]
+Description=aMule Daemon
+After=network.target
+
+# This assumes that a user 'amule' exists, with a writeable home directory
+[Service]
+User=amule
+ExecStart=/usr/bin/amuled
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
