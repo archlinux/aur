@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-kaldiio-git
-pkgver=2.17.2.r257
+pkgver=2.17.2
 pkgrel=1
 pkgdesc='Pure Python module for reading and writing kaldi ark files'
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom:NTT')
 depends=('python>=3.7' 'python-pytorch-complex-git' 'python-numpy')
 makedepends=('git' 'python-setuptools')
 provides=('python-kaldiio')
-conflicts=("python-kaldiio-git" "${pkgname}" "python-kaldi-io")
+conflicts=("python-kaldi-io")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
