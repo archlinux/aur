@@ -4,12 +4,12 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.15.r65.g7e77f89
+pkgver=0.11.0.r0.g6fea282
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 license=(MIT)
-_lua_deps=(bit32
+_lua_deps=(bit32 # Upstream Issue: https://github.com/sile-typesetter/sile/issues/1189
            cassowary
            cosmo
            cliargs
