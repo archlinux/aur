@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.0.0.r0.g8b7c835
+pkgver=1.0.0.r1.gbbd513a
 pkgrel=2
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
@@ -36,6 +36,11 @@ package_pop-launcher-git() {
 
   cd "$srcdir/launcher"
   make DESTDIR="$pkgdir/" install
+
+  # Fix symlink
+  rm "$pkgdir/usr/lib/${pkgbase%-git}/plugins/pop_shell/pop-shell"
+  ln -s "/usr/bin/${pkgbase%-git}" \
+    "$pkgdir/usr/lib/${pkgbase%-git}/plugins/pop_shell/pop-shell"
 
   rm -rf "$pkgdir/usr/lib/${pkgbase%-git}/scripts/system76-power"
 }

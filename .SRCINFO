@@ -1,5 +1,5 @@
 pkgbase = pop-launcher-git
-	pkgver = 1.0.0.r0.g8b7c835
+	pkgver = 1.0.0.r1.gbbd513a
 	pkgrel = 2
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
