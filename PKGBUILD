@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-espnet-git
-pkgver=0.10.2a1.r11970
+pkgver=0.10.3a1
 pkgrel=1
 pkgdesc='End-to-End Speech Processing Toolkit Python Package'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.7' 'python-numpy' 'python-pytorch' 'python-soundfile' 'pytho
 optdepends=('sox: convert audio files' 'python-espnet-model-zoo-git: pretrained models')
 makedepends=('git' 'python-setuptools')
 provides=('python-espnet')
-conflicts=("python-espnet" "${pkgname}")
+conflicts=("python-espnet")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -19,7 +19,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
