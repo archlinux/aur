@@ -7,7 +7,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -34,9 +34,21 @@ pkgver() {
 build() {
   cd harfbuzz
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
+    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
     ${_arch}-meson \
-      --default-library both \
+      -D graphite=enabled \
+      -D tests=disabled \
+      -D docs=disabled \
+      ..
+    # fix linker selection error
+    sed -i 's|: c_LINKER|: cpp_LINKER|g' build.ninja
+    ninja
+    popd
+    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
+    ${_arch}-meson \
+      --default-library static \
+      -D c_args=-DGRAPHITE2_STATIC \
+      -D cpp_args=-DGRAPHITE2_STATIC \
       -D b_lto=false \
       -D graphite=enabled \
       -D tests=disabled \
@@ -51,11 +63,13 @@ build() {
 
 package_mingw-w64-harfbuzz() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}"
+    cd "${srcdir}/harfbuzz/build-${_arch}-static"
+    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    find "${pkgdir}/usr/${_arch}" -name '*.a' -and -not -name '*.dll.a' | xargs ${_arch}-strip -g
 
     mkdir -p hb-icu/usr/${_arch}/{bin,include/harfbuzz,lib/pkgconfig}; cd hb-icu
     mv "${pkgdir}"/usr/${_arch}/bin/libharfbuzz-icu* ./usr/${_arch}/bin
@@ -70,7 +84,7 @@ package_mingw-w64-harfbuzz-icu() {
   depends=('mingw-w64-harfbuzz'
            'mingw-w64-icu')
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}"
+    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     mkdir -p "${pkgdir}/usr/${_arch}"
     mv hb-icu/usr/${_arch}/* "${pkgdir}/usr/${_arch}"
   done
