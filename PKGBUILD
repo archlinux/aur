@@ -4,7 +4,7 @@
 _pkgname='bitcanna-wallet'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Full node BitCanna (BCNA) versions of bitcannad, bitcanna-cli, bitcanna-qt, and bitcanna-tx, w/GUI and wallet'
 arch=('x86_64')
 url='https://www.bitcanna.io/'
@@ -30,6 +30,7 @@ source=(
   "README.md::$_rawurl/master/README.md"
   "CONTRIBUTING.md::$_rawurl/master/CONTRIBUTING.md"
 )
+install='bitcanna-wallet-bin.install'
 md5sums=(
   '39a3176eeef8491710b18b66a6eb469c'
   'SKIP'
@@ -68,20 +69,6 @@ package() {
   for fname in bitcannad bitcanna-cli bitcanna-qt bitcanna-tx; do
     install -Dm0755 "$fname" "$pkgdir/usr/bin/$fname"
   done
-}
-
-post_install() {
-  cat <<__EOT__ >&2
-This new wallet build (v$1) will hard fork the chain at block
-2286271 (September 24th 12:00 UTC).
-
-Please see https://www.bitcanna.io/hard-fork-announcement-v1-0-3/
-for details.
-__EOT__
-}
-
-post_upgrade() {
-  post_install "$1"
 }
 
 # eof
