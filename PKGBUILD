@@ -9,7 +9,7 @@ license=('Apache 2.0')
 depends=('python>=3.7' 'python-pyaml' 'python-ruamel-yaml')
 makedepends=('git' 'python-setuptools')
 provides=('python-hyperpyyaml')
-conflicts=("python-hyperpyyaml" "${pkgname}")
+conflicts=("python-hyperpyyaml")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(

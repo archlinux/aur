@@ -12,7 +12,6 @@ pkgbase = python-hyperpyyaml-git
 	depends = python-ruamel-yaml
 	provides = python-hyperpyyaml
 	conflicts = python-hyperpyyaml
-	conflicts = python-hyperpyyaml-git
 	source = python-hyperpyyaml-git::git+https://github.com/speechbrain/HyperPyYAML
 	md5sums = SKIP
 
