@@ -1,0 +1,14 @@
+pkgbase = latex-sourcecodepro-font
+	pkgdesc = Adobe's Source Code Pro for TEX(-alike) systems
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://www.ctan.org/tex-archive/fonts/sourcecodepro
+	install = latex-sourcecodepro-font.install
+	arch = any
+	license = custom:OFL-1.1
+	depends = texlive-core
+	conflicts = texlive-fontsextra
+	source = http://mirrors.ctan.org/fonts/sourcecodepro.zip
+	md5sums = 9f62b26e7d9295474ef5a6c5f9d5a620
+
+pkgname = latex-sourcecodepro-font
