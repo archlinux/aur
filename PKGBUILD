@@ -7,7 +7,7 @@ pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine an
 license=('BSD')
 arch=('x86_64')
 url="https://wownero.org/"
-depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so')
+depends=('boost-libs' 'libunwind' 'openssl' 'readline' 'zeromq' 'pcsclite' 'hidapi' 'protobuf' 'libusb' 'libudev.so' 'tor')
 makedepends=('git' 'cmake' 'boost')
 source=(
     "${pkgname}"::"git+https://git.wownero.com/wownero/wownero.git"
@@ -24,8 +24,8 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP')
+            '29f050d4063b6309885f1d675c96f2e45cbe8565c74240e5db4e3ac2cecbc7ebf643f948a05e4273607fae528302d525398fdb9e6bf330dcd88890e55a7a482f'
+            'a7c8170462e7578eced13908a27955128cc0c002c4bcff0d8c42719f1d7ee0dd33fa793c86c7ded52215cd22ba884569d69043c4d008d2597e33eb7ca1df9972')
 
 pkgver() {
   cd "${pkgname}"
