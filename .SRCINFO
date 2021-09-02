@@ -1,0 +1,12 @@
+pkgbase = opensearch-cli-bin
+	pkgdesc = The OpenSearch command line interface (opensearch-cli) lets you manage your cluster from the command line and automate tasks.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://opensearch.org/
+	arch = x86_64
+	license = Apache License 2.0
+	provides = opensearch-cli
+	source = https://artifacts.opensearch.org/opensearch-clients/opensearch-cli/opensearch-cli-1.0.0-linux-x64.zip
+	sha256sums = 83b4ff062318c5ee4334d575b98d10c368da2552572860140f4289d19fcf99b1
+
+pkgname = opensearch-cli-bin
