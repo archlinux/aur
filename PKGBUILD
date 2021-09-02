@@ -1,3 +1,4 @@
+# Maintainer: Takumi <takuoh@tutanota.com>
 pkgname=fonts-seto
 pkgver=6.20
 pkgrel=8
