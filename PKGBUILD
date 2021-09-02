@@ -1,7 +1,7 @@
 # Maintainer: wowario <wowario[at]protonmail[dot]com>
 
 pkgname=wownero-git
-pkgver=0.10.1.0
+pkgver=0.10.1.0.8ab87421d9
 pkgrel=1
 pkgdesc="Wownero: a fairly launched privacy-centric meme coin with no premine and a finite supply"
 license=('BSD')
@@ -29,6 +29,11 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 )
+
+pkgver() {
+  cd "${pkgname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${pkgname}"
