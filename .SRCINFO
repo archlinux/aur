@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-quickcontrols2-static
 	pkgdesc = Next generation user interface controls based on Qt Quick (mingw-w64)
-	pkgver = 6.1.2
+	pkgver = 6.1.3
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mingw-w64-qt6-quickcontrols2-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.1/6.1.2/submodules/qtquickcontrols2-everywhere-src-6.1.2.tar.xz
-	sha256sums = 808f30c3308654ff3c1be6c8e304a59060c5ea7ff6afe7b21fb55be7d5442f28
+	source = https://download.qt.io/official_releases/qt/6.1/6.1.3/submodules/qtquickcontrols2-everywhere-src-6.1.3.tar.xz
+	sha256sums = 799e408eb9dac724695b0f0d6afd40a28af3f3d5dc606a59b6570a126f2a6b06
 
 pkgname = mingw-w64-qt6-quickcontrols2-static
