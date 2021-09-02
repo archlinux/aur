@@ -1,6 +1,6 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = http://www.sogo.nu/
 	install = sogo.install
@@ -8,7 +8,7 @@ pkgbase = sogo
 	license = GPL
 	makedepends = gcc-objc
 	makedepends = gnustep-make
-	depends = sope>=5.1.0
+	depends = sope>=5.2.0
 	depends = gnustep-base
 	depends = libmemcached
 	depends = memcached
@@ -16,6 +16,7 @@ pkgbase = sogo
 	depends = mariadb-libs
 	depends = inetutils
 	depends = libsodium
+	depends = libytnef
 	depends = libzip
 	optdepends = postgresql: run database server for sogo locally
 	optdepends = mariadb: run database server for sogo locally
@@ -31,14 +32,11 @@ pkgbase = sogo
 	backup = etc/sogo/sogo.conf
 	backup = etc/httpd/conf/extra/SOGo.conf
 	backup = etc/conf.d/sogo
-	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-5.1.0.tar.gz
+	source = http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-5.2.0.tar.gz
 	source = sogo.service
 	source = sogo.confd
-	source = sogo_configure.patch
-	sha256sums = dd4780be9aaa4c197e4c489c7a13280401c11fc4483b0a5da505cb6c8f1f5ca3
+	sha256sums = 6f738f7f55ec24eba838cd2fee8f3b136d67cd56afd660113c863daa0fb2333a
 	sha256sums = 0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c
 	sha256sums = 8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7
-	sha256sums = e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1
 
 pkgname = sogo
-

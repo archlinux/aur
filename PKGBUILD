@@ -4,7 +4,7 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.sogo.nu/"
@@ -22,6 +22,7 @@ depends=("sope>=${pkgver}"
          'mariadb-libs'
          'inetutils'
          'libsodium'
+         'libytnef'
          'libzip')
 optdepends=('postgresql: run database server for sogo locally'
             'mariadb: run database server for sogo locally'
@@ -37,27 +38,19 @@ backup=('etc/sogo/sogo.conf'
         'etc/conf.d/sogo')
 source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
         "sogo.service"
-        "sogo.confd"
-        "sogo_configure.patch")
-sha256sums=('dd4780be9aaa4c197e4c489c7a13280401c11fc4483b0a5da505cb6c8f1f5ca3'
+        "sogo.confd")
+sha256sums=('6f738f7f55ec24eba838cd2fee8f3b136d67cd56afd660113c863daa0fb2333a'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
-            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7'
-            'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1')
-
-prepare() {
-  cd "$srcdir/SOGo-${pkgver}"
-
-  patch configure ../sogo_configure.patch
-}
+            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
 
 build() {
-  cd "$srcdir/SOGo-${pkgver}"
+  cd "SOGo-${pkgver}"
   ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) --disable-debug
   make
 }
 
 package() {
-  cd "${srcdir}/SOGo-${pkgver}"
+  cd "SOGo-${pkgver}"
   make install DESTDIR="${pkgdir}"
   install -D -m 0644 "${srcdir}"/sogo.service \
                      "${pkgdir}"/usr/lib/systemd/system/sogo.service
