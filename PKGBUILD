@@ -4,8 +4,8 @@
 # TODO: look for more hidden dependencies
 
 pkgname=python-pyface
-pkgver=7.0.0
-pkgrel=3
+pkgver=7.3.0
+pkgrel=1
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -21,7 +21,7 @@ optdepends=('python-pyqt5: for Qt backend (or pyside2)'
             'python-wxpython: for wx backend')
 options=(!emptydirs)
 source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz")
-sha256sums=('594c24d58fd65c3981a095ea256912cfab1f15d314bc58f3d2e88da9ca7cb3d4')
+sha256sums=('434aa47f11946fa0294e451aeedc083002b7113cb69dce0f59884279ea38c19c')
 
 build() {
   cd "$srcdir"/pyface-$pkgver
