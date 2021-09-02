@@ -5,15 +5,15 @@
 
 pkgname=python-pyface
 pkgver=7.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
 license=('BSD')
-depends=('python-traits')
+depends=('python-traits' 'python-importlib_resources')
 makedepends=('python-setuptools')
 optdepends=('python-pyqt5: for Qt backend (or pyside2)'
-            'python-pyqtwebengine: for Qt backend'
+            'python-pyqt5-webengine: for Qt backend'
             'pyside2: for Qt backend (or python-pyqt5)'
             'python-pygments: for syntax coloring in Qt backend'
             'python-setuptools: to locate resources inside zip and egg files'
