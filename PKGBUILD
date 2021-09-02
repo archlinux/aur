@@ -8,8 +8,8 @@ pkgname=${_pkgname}-bin
 
 _ghrepo=andydecleyre/archbuilder_${_pkgname}
 
-pkgver=2.9.0   # match telegram-desktop-userfonts:pkgver
-_pkgrel=2      # match telegram-desktop-userfonts:pkgrel
+pkgver=3.0.0   # match telegram-desktop-userfonts:pkgver
+_pkgrel=1      # match telegram-desktop-userfonts:pkgrel
 
 pkgrel=1
 conflicts=('telegram-desktop')
@@ -21,7 +21,7 @@ license=('GPL3')
 
 # depends match telegram-desktop-userfonts:depends
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
+         'qt5-imageformats' 'qt5-svg' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'libtg_owt')
 
 # optdepends match telegram-desktop-userfonts:optdepends
@@ -32,7 +32,7 @@ optdepends=('gtk3: GTK environment integration'
 source=("https://github.com/${_ghrepo}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
 
 # sha512sums match latest successful build at releases URL
-sha512sums=('5e7d509d2620bf38c69e91e054cc4aac9f14040815fe1ac6e2c195768b420d1de744325d0912b341e16606ce92976f980d03a84cfde21a5724699643ef857512')
+sha512sums=('e6f507a7eb9071e9a5e2c68b9dc983f17281f2ae291a2ab69e322a09d7544e35c6835ce3e96c220de564aaef630a39eae2996d16b9d116835f63c80ec0079768')
 
 package() {
   cp -a usr $pkgdir/
