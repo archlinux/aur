@@ -9,7 +9,7 @@ url='https://github.com/leGmask/NewTeX'
 license=('MIT')
 depends=('texlive-core')
 source=(https://github.com/leGmask/NewTex/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('b3e3c74e921c4bf6f9db3405f8bbac47fbdd815ee715b4a4d735b5b095ffc35e')
+sha256sums=('af48523588f49e49c08de30c8e935ca7bd31daa86191cdc92c91ee89ee02b32e')
 
 package() {
 
