@@ -2,7 +2,7 @@
 
 _name='git-prompt.zsh'
 pkgname="${_name}-git"
-pkgver=2.0.0.r0.g8a65337
+pkgver=2.3.0.r4.g1016089
 pkgrel=1
 pkgdesc='A fast, pure-shell, single-file Git prompt for Zsh.'
 arch=('any')
@@ -28,4 +28,6 @@ package() {
   install -m 0644 "${_name}" "${pkgdir}/usr/share/zsh/scripts/"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/${pkgname}"
+  cp -r examples "${pkgdir}/usr/share/${pkgname}"
 }
