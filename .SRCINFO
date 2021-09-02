@@ -1,6 +1,6 @@
 pkgbase = ruby-asciidoctor-diagram
 	pkgdesc = Asciidoctor diagramming extension
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/asciidoctor/asciidoctor-diagram
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = ruby-asciidoctor-diagram
 	optdepends = graphviz: for graphviz diagrams
 	optdepends = meme: meme extension
 	optdepends = mermaid-cli: for mermaid diagrams
-	noextract = asciidoctor-diagram-2.2.0.gem
+	noextract = asciidoctor-diagram-2.2.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/asciidoctor-diagram-2.2.0.gem
-	sha1sums = 74edbcf4dbc8268354cd7c9cd515c0a4709e59c6
+	source = https://rubygems.org/downloads/asciidoctor-diagram-2.2.1.gem
+	sha1sums = 86c662d17e7099e660763e57d68becd09f6cf786
 
 pkgname = ruby-asciidoctor-diagram
