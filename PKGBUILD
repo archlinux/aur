@@ -1,8 +1,8 @@
-# Maintainer: Ronald van Engelen <ronalde+gitlab@lacocina.nl>
+# Maintainer: Ronald van Engelen <r.v.engelen+aur@gmail.com>
 
 pkgname=alsa-capabilities
 pkgver=v2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="List alsa output interfaces and their capabilities and properties"
 arch=(any)
 url="https://gitlab.com/sonida/alsa-capabilities"

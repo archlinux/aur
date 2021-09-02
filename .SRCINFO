@@ -1,7 +1,7 @@
 pkgbase = alsa-capabilities
 	pkgdesc = List alsa output interfaces and their capabilities and properties
 	pkgver = v2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sonida/alsa-capabilities
 	arch = any
 	license = GPL3
