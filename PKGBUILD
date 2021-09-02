@@ -1,16 +1,16 @@
 # Maintainer: Matthew Treinish <mtreinish@kortar.org>
 _name=retworkx
 pkgname=python-retworkx
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
-pkgdesc="A python graph library implemented in Rust."
+pkgdesc="A high performance Python graph library implemented in Rust."
 url="https://github.com/Qiskit/retworkx"
 license=('Apache')
 arch=('x86_64')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools-rust' 'rust')
 source=("https://pypi.io/packages/source/r/retworkx/retworkx-$pkgver.tar.gz")
-sha512sums=('6506da030f4f1f30fc41725dfdebdfd2b0a9f4276f0075c0b72b62f688cb788c223099efe8b6b8f4ccd70eee2ec3792cb5234e93327402ea4ce7b76a57caf8b1')
+sha512sums=('ad966eb547665a98ad86f4f0e7d8dbbf12078aceb61e905788e119830b23b5d64847a6f46c13b580eccaa6583acff56a5ac542d80eaf2b11e9ea3177cca4da1d')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
