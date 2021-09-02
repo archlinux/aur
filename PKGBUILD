@@ -4,6 +4,47 @@
 # Contributor : Feresey <p.milko1999@yandex.ru>
 # Contributor : j1simon <stemp@ono.com>
 # Contributor : Feresey <p.milko1999@yandex.ru>
+# 
+# Contribution Instructions:
+#  0. Use this as the guide:
+#       https://wiki.archlinux.org/title/PKGBUILD
+#  
+#  1. clone the git:
+#     ```sh
+#     git clone https://aur.archlinux.org/flameshot-git.git
+#     ```
+#  
+#  2. Apply the changes you think are necessary to the following:
+#       pkgrel=
+#       depends=
+#       makedepends=
+#       optdepends=
+#       build()
+#  
+#  3. In terminal, naviagate to the folder you have the PKGBUILD in
+#  
+#  4. Test the modified PKGBUILD file with all of the following commands
+#       ```sh
+#       # read this for more info about namcap: https://wiki.archlinux.org/title/Namcap
+#       namcap -i PKGBUILD
+#       
+#       # read this for more info about makepkg: https://wiki.archlinux.org/title/Makepkg
+#       makepkg
+#       
+#       pacman -U flameshot-git-r*.zst
+#       ```
+#  
+#  5. Fix any possible errors
+#  
+#  6. create a patch with your modifications:
+#       ```sh
+#       git diff --oneline --graph > my.patch
+#       ```
+#  
+#  7. copy the content of the my.patch file and post it in the discussion of
+#     the AUR: https://aur.archlinux.org/packages/flameshot-git/
+
+
 
 pkgname=flameshot-git
 _pkgname=flameshot
