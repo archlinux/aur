@@ -1,13 +1,13 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.0.4.r89.g9e6b1173
+pkgver=4.1.1.r82.ge22d7d2f
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
 url='https://dupeguru.voltaicideas.net/'
 license=('GPL3')
-depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-hsaudiotag3k'
+depends=('python' 'python-pyqt5' 'python-polib' 'python-send2trash' 'python-mutagen'
          'libxkbcommon-x11')
 makedepends=('git' 'python-distro' 'python-sphinx')
 checkdepends=('python-tox')

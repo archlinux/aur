@@ -1,6 +1,6 @@
 pkgbase = dupeguru-git
 	pkgdesc = Find duplicate files on your system
-	pkgver = 4.0.4.r89.g9e6b1173
+	pkgver = 4.1.1.r82.ge22d7d2f
 	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dupeguru-git
 	depends = python-pyqt5
 	depends = python-polib
 	depends = python-send2trash
-	depends = python-hsaudiotag3k
+	depends = python-mutagen
 	depends = libxkbcommon-x11
 	provides = dupeguru
 	conflicts = dupeguru
@@ -24,4 +24,3 @@ pkgbase = dupeguru-git
 	sha256sums = SKIP
 
 pkgname = dupeguru-git
-
