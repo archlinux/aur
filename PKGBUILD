@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-bible-app-git
-pkgver=1.2.0.r4.gba4b665
+pkgver=1.2.0.r6.gb940285
 pkgrel=1
 pkgdesc='A user-friendly Bible study tool focussing on topical study based on keywords/tags'
 arch=(x86_64)
@@ -28,17 +28,17 @@ source=("git+$url.git"
 sha256sums=('SKIP'
             'e135a382166ce27cf1348750767e157b2d292d4a189940f0fa874af29bc6540b')
 
-pkgver() {
-	cd "${pkgname%-git}"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
 	cd "${pkgname%-git}"
 	jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
 		sponge package.json
 	rm -rf node_modules/{node-addon-api,node-sword-interface}
 	npm install --cache "$srcdir/npm-cache" --no-audit --no-fund --ignore-scripts
+}
+
+pkgver() {
+	cd "${pkgname%-git}"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

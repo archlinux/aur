@@ -1,6 +1,6 @@
 pkgbase = ezra-bible-app-git
 	pkgdesc = A user-friendly Bible study tool focussing on topical study based on keywords/tags
-	pkgver = 1.2.0.r4.gba4b665
+	pkgver = 1.2.0.r6.gb940285
 	pkgrel = 1
 	url = https://github.com/ezra-bible-app/ezra-bible-app
 	arch = x86_64
