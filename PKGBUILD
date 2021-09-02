@@ -17,10 +17,8 @@ source=(
     "git+https://github.com/Tencent/rapidjson.git"
     "git+https://git.wownero.com/wownero/RandomWOW.git"
     "wownero.sysusers"
-    "wownero.tmpfiles"
-    monero-boost1.76.patch::https://github.com/selsta/monero/commit/c28d2f7c.patch)
+    "wownero.tmpfiles")
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -43,8 +41,6 @@ prepare() {
   git config submodule.external/rapidjson.url "$srcdir/rapidjson"
   git config submodule.external/RandomWOW.url "$srcdir/RandomWOW"
   git submodule update
-
-  patch -p1 < ../monero-boost1.76.patch # Fix build with boost 1.76
 }
 
 build() {
