@@ -1,0 +1,23 @@
+pkgbase = sxiv-grfreire
+	pkgdesc = GRFreire's Simple X Image Viewer fork
+	pkgver = 27
+	pkgrel = 1
+	url = https://github.com/GRFreire/sxiv
+	arch = x86_64
+	license = GPL2
+	depends = imlib2
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = libexif
+	depends = libxft
+	depends = librsvg
+	depends = cairo
+	depends = curl
+	depends = libwebp
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv-27.tar.gz::https://github.com/GRFreire/sxiv/archive/v27.tar.gz
+	md5sums = 016f7d5cd431b1372bf9c12a55c96887
+
+pkgname = sxiv-grfreire
