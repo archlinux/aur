@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-g2p-git
-pkgver=2.0.0.r47
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='English grapheme to phoneme conversion'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache 2.0')
 depends=('python>=3.7' 'python-numpy' 'python-nltk' 'python-inflect')
 makedepends=('git' 'python-setuptools')
 provides=('python-g2p')
-conflicts=("python-g2p" "${pkgname}")
+conflicts=("python-g2p")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python setup.py --version)"
 }
 
 
