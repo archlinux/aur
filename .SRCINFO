@@ -1,11 +1,12 @@
 pkgbase = lib32-sqlite2
 	pkgdesc = A C library that implements an SQL database engine
 	pkgver = 2.8.17
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.sqlite.org/
 	arch = x86_64
 	license = custom
 	depends = readline>=6.0.00
+	replaces = sqlite2
 	source = https://www.sqlite.org/sqlite-2.8.17.tar.gz
 	source = LICENSE
 	source = fix-libtool-directiories.patch
