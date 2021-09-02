@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-virtualkeyboard
-_qtver=6.1.2
+_qtver=6.1.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -16,22 +16,10 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-linking-against-imm32-with-mingw-w64.patch')
-sha256sums=('25cbdf595f5c82d8bc8aea4c95c5adfc08555d540451afac4a1bc0194db3eae0'
-            '8d643061931023d8f307b09d4522eb3aea18c7f5964373cde6dbf6e499d93eed')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('4dc46a443e4680205eda0e9f44a92a7557cc60b1439c1d75da838230ec53be90')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-
-prepare () {
-  cd $_pkgfqn
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   for _arch in ${_architectures}; do
