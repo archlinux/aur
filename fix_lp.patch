@@ -8,4 +8,3 @@
 +	chown root $SPOOLER_NAME
  	chgrp lp $SPOOLER_NAME
  	chmod 700 $SPOOLER_NAME
-

@@ -14,24 +14,23 @@ md5sums=('bea93ac27ae27cbd0916414e5a7f630b'
          '0c62592b0c185bc6c2610b5407aaafb2')
 
 source=(
-	"fix_lp.patch" \
+    "fix_lp.patch" \
     "https://download.brother.com/welcome/dlf005418/dcp365cnlpr-1.1.3-1.i386.rpm" \
-	"https://download.brother.com/welcome/dlf005420/dcp365cncupswrapper-1.1.3-1.i386.rpm"
+    "https://download.brother.com/welcome/dlf005420/dcp365cncupswrapper-1.1.3-1.i386.rpm"
 )
 
 build() {
     cd "$srcdir"
-	patch -Np0 < fix_lp.patch
+    patch -Np0 < fix_lp.patch
 }
 
 post_install() {
-	/opt/brother/Printers/dcp365cn/cupswrapper/cupswrapperdcp365cn
+    /opt/brother/Printers/dcp365cn/cupswrapper/cupswrapperdcp365cn
 }
 
 package() {
     install -d $pkgdir/usr/bin
-	install -d $pkgdir/var/spool/lpd
+    install -d $pkgdir/var/spool/lpd
     install -Dm755 "$srcdir"/usr/bin/brprintconf_dcp365cn "$pkgdir"/usr/bin/
-	cp -R $srcdir/opt $pkgdir/opt
+    cp -R $srcdir/opt $pkgdir/opt
 }
-
