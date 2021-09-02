@@ -6,7 +6,7 @@
 _pkgsourcename=qt3
 pkgname=lib32-$_pkgsourcename
 pkgver=3.3.8b
-pkgrel=16
+pkgrel=18
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=(https://download.qt.io/archive/qt/3/qt-x11-free-${pkgver}.tar.gz
         qt3-other-patches.tar.bz2
         qt3-fedora-patches.tar.bz2)
 sha256sums=('1b7a1ff62ec5a9cb7a388e2ba28fda6f960b27f27999482ebeceeadb72ac9f6e'
-            'd8a7c622b0a5054d85d465f7b1b6db03233fbcf9fd132f7f0bd7c6848ff906ce'
+            'ff2c11b6974b18234c8e36948f5c0fc4e74d9e98e41cb4eb4fa20e11fd216b66'
             '673b10f3652d72d65515f5a0c21c27d39d0c3b7fade30ae77ebd7facca6acacb')
 
 prepare() {
@@ -161,6 +161,9 @@ prepare() {
   # Fix CJK font/chars select error (FS#11245)
   patch -p1 -i ../qt3-other-patches/eastern_asian_languagues.diff
 
+  # Fix compilation error
+  patch -p0 -i ../qt3-other-patches/fix-error-format-security.patch
+
   # For immodule
   sh ./make-symlinks.sh
 
@@ -190,6 +193,8 @@ build() {
   export PATH=${QTDIR}/bin:${PATH}
   export LD_LIBRARY_PATH=${QTDIR}/lib:${LD_LIBRARY_PATH}
   export QMAKESPEC=$QTDIR/mkspecs/linux-g++
+
+  export CXXFLAGS="-Werror=format-security $CXXFLAGS"
 
   ./configure \
     -prefix /usr \
