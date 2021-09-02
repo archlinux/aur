@@ -7,7 +7,7 @@
 
 pkgname=dolphin-meld
 _pkgname=dolphin
-pkgver=21.04.3
+pkgver=21.08.1
 pkgrel=1
 pkgdesc='KDE File Manager, using Meld rather than Kompare'
 arch=(x86_64)
@@ -15,21 +15,25 @@ url='https://apps.kde.org/dolphin/'
 license=(LGPL)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname=$pkgver")
-depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit kactivities kuserfeedback)
-makedepends=(extra-cmake-modules kdoctools packagekit-qt5)
+depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kactivities kuserfeedback)
+makedepends=(extra-cmake-modules kdoctools)
 optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
-            'konsole: terminal panel' 'purpose: share context menu' 'packagekit-qt5: service menu installer')
+            'konsole: terminal panel' 'purpose: share context menu')
 groups=(kde-applications kde-system)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig}
-        "dolphin-meld.patch")
-sha256sums=('e3a1560c216efaa80c3ec99138c4657e9602e17aea250a418b18c2fc85295264'
+        "dolphin-meld.patch"
+        27bfcde4.patch)
+sha256sums=('6e5dce2629f8333b426074d0f35dc96d40b528948db101443f8270ea554cb3ee'
             'SKIP'
-            '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a')
+            '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a'
+            '9c17ce284b0623982b152fa76418ca3005e31c3977120f1f6bb5be351918e318')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
 prepare() {
+  patch -d $_pkgname-$pkgver -p1 < 27bfcde4.patch # Fix opening terminal without kinit
+
   mkdir -p build
   cd $_pkgname-$pkgver
   patch -p1 -i ../$pkgname.patch
