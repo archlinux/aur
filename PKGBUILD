@@ -1,8 +1,8 @@
 # Maintainer: Chuang Zhu <genelocated at yandex dot com>
 
 pkgname=tunasync
-pkgver=0.7.1
-_githash=a54c969081b3b3089d18419c5364b0d8f270f9ab
+pkgver=0.8.0
+_githash=c07aaffe65da65217665d7c5df46ea2d857fdfa9
 pkgrel=1
 pkgdesc='Mirror job management tool.'
 url='https://github.com/tuna/tunasync'
@@ -14,7 +14,7 @@ replaces=('tunasync-git' 'tunasync-bin')
 conflicts=('tunasync-git' 'tunasync-bin')
 provides=('tunasync' 'tunasynctl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bbf30ab4f241bdb68d2c090d15feeeeb5aa2146d0ed2823bcd910f1650bc5146')
+sha256sums=('c14c588cda22e280a6c264f7e6351e9648f2099f48bbc110ec51e135e0e2eeef')
 
 prepare(){
   cd "$pkgname-$pkgver"
