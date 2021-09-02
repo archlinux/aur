@@ -1,0 +1,11 @@
+--- opt/brother/Printers/dcp365cn/inf/setupPrintcapij.old	2011-10-12 09:08:53.000000000 +0200
++++ opt/brother/Printers/dcp365cn/inf/setupPrintcapij	2021-09-02 21:00:03.689999775 +0200
+@@ -34,7 +34,7 @@
+ 	if [ ! -d $SPOOLER_NAME ]; then
+ 	        mkdir $SPOOLER_NAME
+ 	fi
+-	chown lp $SPOOLER_NAME
++	chown root $SPOOLER_NAME
+ 	chgrp lp $SPOOLER_NAME
+ 	chmod 700 $SPOOLER_NAME
+

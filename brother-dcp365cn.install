@@ -1,0 +1,27 @@
+post_install() {
+	# lpr
+	/opt/brother/Printers/dcp365cn/inf/setupPrintcapij dcp365cn -i
+	
+	# cupswrapper
+	/opt/brother/Printers/dcp365cn/cupswrapper/cupswrapperdcp365cn
+	
+	systemctl restart cups.service
+}
+
+post_upgrade() {
+	/bin/true
+}
+
+pre_remove() {
+	# lpr
+	/opt/brother/Printers/dcp365cn/inf/setupPrintcapij dcp365cn -e
+	
+	# cupswrapper
+	/opt/brother/Printers/dcp365cn/cupswrapper/cupswrapperdcp365cn -e
+}
+
+op=$1
+shift
+
+$op "$@"
+

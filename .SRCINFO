@@ -1,0 +1,22 @@
+pkgbase = brother-dcp365cn
+	pkgdesc = Driver for Brother DCP-365CN printer
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=de&lang=de&prod=dcp365cn_eu_as
+	install = brother-dcp365cn.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = lib32-gcc-libs
+	depends = lib32-glibc
+	optdepends = brscan3: scanner support.
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf005418/dcp365cnlpr-1.1.3-1.i386.rpm
+	source = https://download.brother.com/welcome/dlf005420/dcp365cncupswrapper-1.1.3-1.i386.rpm
+	md5sums = bea93ac27ae27cbd0916414e5a7f630b
+	md5sums = 951f04eaa29ce2a95c0b46582cf09411
+	md5sums = 0c62592b0c185bc6c2610b5407aaafb2
+
+pkgname = brother-dcp365cn
