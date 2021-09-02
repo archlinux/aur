@@ -3,7 +3,7 @@
 
 _gemname=papertrail
 pkgname=papertrail-cli
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='Command-line client for Papertrail hosted log management service.'
 arch=(any)
@@ -13,9 +13,10 @@ depends=(ruby ruby-chronic ruby-ansi)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('481e470537162ac55bfc2e05661b01de7eb7b139')
+sha256sums=('ecd8cc91da744c7d2f8916cec79f3c5472cb43a0632a5fc11c7059645fa2cecf')
 
 package() {
+  set -x
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
