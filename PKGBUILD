@@ -1,4 +1,4 @@
-# Maintainer: bartus
+# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: "UnCO Lin" <trash__box <at> 163.com>
 # Contributor: PLum <plum.michalski <at> gmail.com>
 
