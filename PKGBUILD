@@ -1,17 +1,18 @@
-# Contributor Squitch
-# Contributor FabioLolix
+# Maintainer: FabioLolix
+# Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.4.3.r0.g993d986
+pkgver=0.4.3.r1.g4911a38
 pkgrel=1
-pkgdesc="Tess hackable, simple, rapid and beautiful terminal for the new era"
+epoch=1
+pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
 arch=(x86_64)
-url="https://github.com/SquitchYT/Tess.git"
-license=('unknown')
-depends=("glib2" "glibc" "gtk3")
-makedepends=("git" "npm" "cmake")
-source=("git+$url")
-md5sums=("SKIP")
+url="https://github.com/SquitchYT/Tess"
+license=(MPL2)
+depends=(gtk3 nss)
+makedepends=(git npm cmake)
+source=("git+https://github.com/SquitchYT/Tess.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "Tess"
@@ -20,36 +21,27 @@ pkgver() {
 
 package() {
 	cd "Tess"
-	
+
 	install -D Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
 	install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
 	install -D appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
+    install -D src/img/Tess.png "${pkgdir}/usr/share/pixmaps/tess.png"
 
 	if type "$kbuildsycoca5" > /dev/null; then
 		kbuildsycoca5
 	fi
 
-	mkdir -p "${pkgdir}/opt/tess-cli"
-	mkdir -p "${pkgdir}/usr/bin"
-
-    cp "./src/img/Tess.png" "${pkgdir}/usr/bin/Tess.png"
-
-	cd "cli"
-
-	mkdir build && cd build && cmake -S .. -B . && make
-
-	cp -r -f tess-cli "${pkgdir}/opt/tess-cli/tess-cli" 
-	ln -s "/opt/tess-cli/tess-cli" "${pkgdir}/usr/bin/tess-cli"
-
-	cd ../../
-
-	mkdir -p "${pkgdir}/opt/tess"
+    cd cli
+	mkdir -p build
+    cmake -S . -B build
+    make -C build
+    install -Dm755 build/tess-cli -t "${pkgdir}/usr/bin/"
 
 	npm install
 	npm run build
 
-	cd "dist/linux-unpacked"
-
+	mkdir -p "${pkgdir}/opt/tess"
+    cd ../dist/linux-unpacked
 	cp -r -f * "${pkgdir}/opt/tess/"
 	ln -s "/opt/tess/tess" "${pkgdir}/usr/bin/tess"
 }
