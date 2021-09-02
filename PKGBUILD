@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archiv
 sha256sums=('cdbb0b325331d89a787637c234dcb39db1933170e8f0b03dc5cb03ec28abffeb')
 
 prepare() {
-  cd $pkgname-$pkgver/2.x
+  cd $pkgname-$pkgver
   sed -i 's|Categories=Web|Categories=Network;Qt;WebBrowser;|
           s|Exec=.*|Exec=dooble|
           s|Icon=.*|Icon=dooble|' dooble.desktop
@@ -20,13 +20,13 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver/2.x
+  cd $pkgname-$pkgver
   qmake dooble.pro
   make
 }
 
 package() {
-  cd $pkgname-$pkgver/2.x
+  cd $pkgname-$pkgver
   install -Dm755 Dooble "$pkgdir/usr/bin/dooble"
   install -Dm644 Icons/Logo/dooble.png "$pkgdir/usr/share/pixmaps/dooble.png"
   install -Dm644 dooble.desktop "$pkgdir/usr/share/applications/dooble.desktop"
