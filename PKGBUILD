@@ -19,9 +19,12 @@ options=()
 install=cn.189.cloud.spark.install
 changelog=
 source=(
+${pkgname}.desktop
 "https://sucdn.jerrywang.top//store/network/cn.189.cloud.spark/cn.189.cloud.spark_6.3.8spark2_i386.deb"
 )
-md5sums=('de94be4eaaefc485d82949bf873ff23c')
+md5sums=(
+'16859ff00ffb8b81af1b09da62c75a50'
+'de94be4eaaefc485d82949bf873ff23c')
 
 build() {
   msg "Extracting DPKG package ..."
@@ -34,6 +37,7 @@ package() {
 	cd ${pkgdir}
 	tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
     install -m644 "${srcdir}/dpkgdir/opt/apps/${pkgname}/files/files.7z" "${pkgdir}/opt/apps/${pkgname}/files"
+    install -m644 "${srcdir}/${pkgname}.desktop" $pkgdir/opt/apps/cn.189.cloud.spark/entries/applications/
     msg "Preparing icons ..."
 	install -d usr/share
 	chmod -Rf 755 opt
