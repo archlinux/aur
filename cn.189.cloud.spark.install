@@ -1,10 +1,10 @@
 post_upgrade() {
     echo 
-    echo "Remove ~/.deepinwine/Spark-eCloud to generate a new bottle."
+    echo "Remove ~/.deepinwine/Deepin-ecloud to generate a new bottle."
     echo 
 }
 
 post_remove() {
-    echo "Deleting existing OfficeBox bottles..."
-    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Spark-eCloud/ \;
+    echo "Deleting existing cn.189.cloud.spark bottles..."
+    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-ecloud/ \;
 }
