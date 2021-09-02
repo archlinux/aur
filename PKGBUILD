@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=timer
-pkgver=9.a677cff
+pkgver=10.6d03419
 pkgrel=1
 pkgdesc='Simple CLI timer'
 arch=('any')
