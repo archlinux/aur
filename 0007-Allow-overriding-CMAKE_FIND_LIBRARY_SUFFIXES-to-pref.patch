@@ -1,4 +1,4 @@
-From c50929b8897f544eb9f232c9119f997530c20d26 Mon Sep 17 00:00:00 2001
+From 8507a185bd7614aa5250495904348ac25ad1b8ac Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
 Subject: [PATCH 7/8] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
@@ -25,5 +25,5 @@ index af8c3d18c4..eb1f47c6e1 100644
  #
  # Macros and functions for building Qt modules
 -- 
-2.32.0
+2.33.0
 
