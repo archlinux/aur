@@ -10,7 +10,7 @@ depends=('python>=3.7' 'python-numpy' 'cython')
 optdepends=('sox: listen to audio segments')
 makedepends=('git' 'cython' 'python-setuptools')
 provides=('python-ctc-segmentation')
-conflicts=("python-ctc-segmentation" "${pkgname}")
+conflicts=("python-ctc-segmentation")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(

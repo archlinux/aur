@@ -14,7 +14,6 @@ pkgbase = python-ctc-segmentation-git
 	optdepends = sox: listen to audio segments
 	provides = python-ctc-segmentation
 	conflicts = python-ctc-segmentation
-	conflicts = python-ctc-segmentation-git
 	source = python-ctc-segmentation-git::git+https://github.com/lumaku/ctc-segmentation
 	md5sums = SKIP
 
