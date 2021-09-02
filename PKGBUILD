@@ -1,6 +1,6 @@
 # Maintainer: Alexander Thaller <aur+histdb-rs@alexander.thaller.ws>
 pkgname=histdb-rs
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Better history management for zsh."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexanderThaller/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('f7153eba42c0e2e91e885e810953d60357cf205fdde808711968e05257e9c5b25ad9a3bec440e1ed460fdb0fdb3b28adbe3dbaa56610f3aa29ad2195ffdfb3a3')
+sha512sums=('7d9dbefb008a11a0907dff3d703cd848f92272d3a8ec4b4924b2ef077be2e60121f0535f15b9084c374255734810398f8c377a2b937ffa1ca2be73d7a53193fe')
 
 build() {
   cd "$pkgname-$pkgver"

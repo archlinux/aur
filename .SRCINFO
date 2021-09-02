@@ -1,6 +1,6 @@
 pkgbase = histdb-rs
 	pkgdesc = Better history management for zsh.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/AlexanderThaller/histdb-rs
 	arch = i686
