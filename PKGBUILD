@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-sentencepiece-git
-pkgver=0.1.96.r697
+pkgver=0.1.96
 pkgrel=1
 pkgdesc='Sentencepiece text tokenizer (Python version)'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache 2.0')
 depends=('python>=3.7' 'python-protobuf')
 makedepends=('git' 'cmake' 'python-setuptools')
 provides=('python-sentencepiece')
-conflicts=("python-sentencepiece" "${pkgname}")
+conflicts=("python-sentencepiece")
 source=(
     "${pkgname}::git+${url}")
 md5sums=(
@@ -18,7 +18,7 @@ md5sums=(
 
 pkgver() {
     cd "${pkgname}"
-    printf "%s.r%s" "$(python python/setup.py --version)" "$(git rev-list --count HEAD)"
+    printf "%s" "$(python python/setup.py --version)"
 }
 
 

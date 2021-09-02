@@ -1,6 +1,6 @@
 pkgbase = python-sentencepiece-git
 	pkgdesc = Sentencepiece text tokenizer (Python version)
-	pkgver = 0.1.96.r697
+	pkgver = 0.1.96
 	pkgrel = 1
 	url = https://github.com/google/sentencepiece
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = python-sentencepiece-git
 	depends = python-protobuf
 	provides = python-sentencepiece
 	conflicts = python-sentencepiece
-	conflicts = python-sentencepiece-git
 	source = python-sentencepiece-git::git+https://github.com/google/sentencepiece
 	md5sums = SKIP
 
