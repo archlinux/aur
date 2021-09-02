@@ -1,3 +1,4 @@
+#!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # Contributor: "UnCO Lin" <trash__box <at> 163.com>
 # Contributor: PLum <plum.michalski <at> gmail.com>
@@ -33,7 +34,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git apply -v ${srcdir}/{openssl,gcc11,advance_opts}.patch
+  git apply -v "${srcdir}"/{openssl,gcc11,advance_opts}.patch
 }
 
 build() {
@@ -68,5 +69,5 @@ build() {
 
 package() {
   cd "$_pkgname"
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
 }
