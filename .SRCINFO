@@ -1,6 +1,6 @@
 pkgbase = youtube-viewer
 	pkgdesc = Command line utility for viewing YouTube videos
-	pkgver = 3.9.4
+	pkgver = 3.9.5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/trizen/youtube-viewer
@@ -23,10 +23,10 @@ pkgbase = youtube-viewer
 	optdepends = vlc: play videos with VLC
 	optdepends = wget: download videos with wget
 	optdepends = youtube-dl: play videos with encrypted signatures
-	source = youtube-viewer-3.9.4.tar.gz::https://github.com/trizen/youtube-viewer/archive/3.9.4.tar.gz
-	source = https://github.com/trizen/youtube-viewer/releases/download/3.9.4/youtube-viewer-3.9.4.tar.gz.asc
+	source = youtube-viewer-3.9.5.tar.gz::https://github.com/trizen/youtube-viewer/archive/3.9.5.tar.gz
+	source = https://github.com/trizen/youtube-viewer/releases/download/3.9.5/youtube-viewer-3.9.5.tar.gz.asc
 	validpgpkeys = ABB8BBAA2E279767774149B7D0A443C703A3A056
-	sha512sums = 7d296cdaf92f48317646bd899560d4b78195690c44d6c155822d20d06808d8c7e83d23d7feef99f1e7561ce021265a7f1922ab07e5dd15d96e6efd91cdaf4e81
+	sha512sums = 473732be9c403f6e0df587bef8931fb2f6d96d4c8996f8cb23860fc592208910ce3bb75514052c34f23aeab1ccefd07283f06330bfbc4742e3ca122db03db622
 	sha512sums = SKIP
 
 pkgname = youtube-viewer
