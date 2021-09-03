@@ -1,0 +1,16 @@
+pkgbase = r-listenv
+	pkgdesc = Environments Behaving (Almost) as Lists
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=listenv
+	arch = any
+	license = LGPL2.1
+	license = LPGL3
+	depends = r
+	optdepends = r-r.utils
+	optdepends = r-r.rsp
+	optdepends = r-markdown
+	source = https://cran.r-project.org/src/contrib/listenv_0.8.0.tar.gz
+	sha256sums = fd2aaf3ff2d8d546ce33d1cb38e68401613975117c1f9eb98a7b41facf5c485f
+
+pkgname = r-listenv
