@@ -30,6 +30,7 @@ depends=(fontconfig
          freetype2
          harfbuzz
          gentium-plus-font
+         git
          icu
          libpng # this goes with libtexpdf if ever split out to a library package
          lua
@@ -43,7 +44,6 @@ depends+=(libfreetype.so
           libicui18n.so
           libicuio.so
           libicuuc.so)
-makedepends=(git)
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
