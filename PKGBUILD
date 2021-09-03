@@ -2,7 +2,7 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-git
-pkgver=21.1.1.r134.g8274dd664
+pkgver=21.1.2.r232.g7c63c582a
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -10,7 +10,7 @@ groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="Run X clients under Wayland, with HiDPI (git version)"
 depends=('nettle' 'libegl' 'libepoxy' 'systemd-libs' 'libxfont2'
-         'pixman' 'xorg-server-common')
+         'pixman' 'xorg-server-common' 'libxcvt')
 makedepends=('meson' 'git'
              'xorgproto-git' 'xtrans'
              'pixman' 'libxkbfile' 'libxfont2' 'dbus'
