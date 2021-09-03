@@ -1,0 +1,12 @@
+diff --git a/src/tfio.c b/src/tfio.c
+index 151583e..31ca1ae 100644
+--- a/src/tfio.c
++++ b/src/tfio.c
+@@ -46,6 +46,7 @@ static const char RCSid[] = "$Id: tfio.c,v 35004.114 2007/01/13 23:12:39 kkeys E
+ #include "keyboard.h"	/* keyboard_pos */
+ #include "expand.h"	/* current_command */
+ #include "cmdlist.h"
++#include "socket.h"	/* main_loop() */
+ 
+ TFILE *loadfile = NULL; /* currently /load'ing file */
+ int loadline = 0;       /* line number in /load'ing file */

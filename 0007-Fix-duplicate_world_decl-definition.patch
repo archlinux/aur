@@ -1,0 +1,13 @@
+diff --git a/src/socket.h b/src/socket.h
+index 12cfd6f..36dd90a 100644
+--- a/src/socket.h
++++ b/src/socket.h
+@@ -21,7 +21,7 @@
+ #define CONN_BG		0x08
+ #define CONN_FG		0x10
+ 
+-struct World   *world_decl;	/* declares struct World */
++struct World;	/* declares struct World */
+ 
+ extern String *incoming_text;
+ extern int quit_flag;
