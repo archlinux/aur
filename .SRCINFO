@@ -1,6 +1,6 @@
 pkgbase = pyapplier
 	pkgdesc = .scrobbler.log (Rockbox offline last.fm scrobling format) submiter
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/ultraelephant/pyapplier
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = pyapplier
 	depends = python-pylast
 	depends = python-setuptools
 	depends = python-pyaml
-	source = git+https://github.com/ultraelephant/pyapplier#tag=0.0.4
+	source = git+https://github.com/ultraelephant/pyapplier#tag=0.0.5
 	md5sums = SKIP
 
 pkgname = pyapplier
-
