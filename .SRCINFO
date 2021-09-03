@@ -1,7 +1,7 @@
 pkgbase = vigil
 	pkgdesc = Microservices Status Page. Monitors a distributed infrastructure and sends alerts (Slack, SMS, etc.).
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valeriansaliou/vigil
 	arch = x86_64
 	arch = armv7h

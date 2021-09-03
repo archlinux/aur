@@ -3,7 +3,7 @@
 
 pkgname=vigil
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Microservices Status Page. Monitors a distributed infrastructure and sends alerts (Slack, SMS, etc.)."
 arch=("x86_64" "armv7h")
 url="https://github.com/valeriansaliou/vigil"
@@ -21,16 +21,20 @@ sha512sums=('a437e0a11d0b4fed3d1d2fe78180811e9dec1145bf0fb7920c666c167c5d956fbf4
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i 's|path = "./res/assets/"|path = "/usr/share/vigil/"|g' config.cfg
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked --all-features --target-dir=target
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked --all-features --target-dir=target
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 package() {
