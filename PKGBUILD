@@ -2,7 +2,7 @@
 # pkg: git
 pkgname=plots-git
 pkgver=0.5.1.r18.g2c6f8c3
-pkgrel=1
+pkgrel=2
 pkgdesc="A graph plotting app for GNOME"
 arch=('any')
 url="https://github.com/alexhuntley/Plots/"
@@ -15,6 +15,8 @@ depends=(
 	'python-numpy'
 	'python-lark-parser'
 	'otf-latinmodern-math'
+	'python-freetype-py'
+	'python-pyglm'
 )
 
 makedepends=('python-setuptools')
