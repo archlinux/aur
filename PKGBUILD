@@ -12,6 +12,8 @@ depends=("libogg" "libpng" "libvorbis" "libgl" "sdl2" "zlib" "glu" "libmikmod" "
 optdepends=(
   "uqm-megamod-addon-hd: For HD assets"
   "uqm-megamod-addon-3do: For 3DO content (voice, music and videos)"
+  "uqm-megamod-addon-sol-textures: For improved textures for the planets in the Sol System"
+  "uqm-megamod-addon-vols-remix: For a remix pack by Volasaurus"
 )
 
 source=(
