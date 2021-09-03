@@ -1,0 +1,26 @@
+pkgbase = gtkeddit
+	pkgdesc = GTK4 Reddit client
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://gitlab.com/caveman250/gtkeddit
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	depends = gtkmm-4.0
+	depends = libmicrohttpd
+	depends = jsoncpp
+	depends = libxml2
+	depends = ffmpeg
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = youtube-dl
+	depends = websocketpp
+	depends = libadwaita
+	depends = libsecret
+	source = gtkeddit-0.2.3.tar.gz::https://gitlab.com/caveman250/gtkeddit/-/archive/0.2.3/Gtkeddit-0.2.3.tar.gz
+	sha256sums = d2883451a02587c1ae98bd1d4bcfccd74ac058a61bb9eada1a8d82e4f71486c6
+
+pkgname = gtkeddit
