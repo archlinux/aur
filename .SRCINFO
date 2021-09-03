@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-hibernate
+	pkgdesc = A GNOME extension that adds the option to hibernate amongst other system actions
+	pkgver = 7
+	pkgrel = 1
+	url = https://codeberg.org/kiyui/gnome-shell-hibernate-extension
+	arch = any
+	license = GPL2
+	makedepends = meson
+	depends = gnome-shell
+	depends = gnome-shell-extensions
+	source = https://codeberg.org/kiyui/gnome-shell-hibernate-extension/archive/7.tar.gz
+	sha256sums = 4232980e25cf156c4425c48f696dbaae6f6998a2877a9c6bbf6215ad4db58c66
+
+pkgname = gnome-shell-extension-hibernate
