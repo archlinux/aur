@@ -12,7 +12,7 @@ url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-content.uqm"
+  "mm-${pkgver}-content.uqm:https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-content.uqm"
   LICENSE
   version
 )
