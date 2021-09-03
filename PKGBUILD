@@ -12,8 +12,8 @@ url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-vols-remix.uqm"
-  "https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/volasaurus-remix-pack/LICENSE.txt"
+  "mm-${pkgver}-vols-remix.uqm:https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-vols-remix.uqm"
+  "LICENSE.txt:https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/volasaurus-remix-pack/LICENSE.txt"
   LICENSE
 )
 
