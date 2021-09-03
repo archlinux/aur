@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.14.0-pf0 Kernel Configuration
+# Linux/x86 5.14.0-pf1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -9334,7 +9334,6 @@ CONFIG_IPACK_BUS=m
 CONFIG_BOARD_TPCI200=m
 CONFIG_SERIAL_IPOCTAL=m
 CONFIG_RESET_CONTROLLER=y
-CONFIG_RESET_MCHP_SPARX5=y
 CONFIG_RESET_TI_SYSCON=m
 
 #

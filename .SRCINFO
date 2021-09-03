@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.14.rc7.r68.gc7ff2a0fbb6d
+	pkgver = 5.14.1.r16.gc1331bd03a64
 	pkgrel = 1
 	url = https://pf.natalenko.name/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.14
 	source = config
 	sha256sums = SKIP
-	sha256sums = 38ef921da68f6242c05a87d29d4951c2eb1dab4fb3e6264565947f7053cfd2b0
+	sha256sums = d9a31f9ee029474de1064a78a3da31860cc1dbe000595e23776410188752ab26
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
