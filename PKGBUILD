@@ -1,14 +1,11 @@
-# Maintainer:  Giancarlo Razzolini <grazzolini@archlinux.org>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Sébastien Luttringer
-# Contributor: Drew DeVault
+# Maintainer: rern <rernrern@gmail.com>
 
 _pkgbase=nginx
 pkgname=nginx-mainline-pushstream
 pkgver=1.21.2
 pushstreamver=0.5.4
 pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
+pkgdesc='NGINX mainline with Push Stream module'
 arch=(x86_64 arm armv6h armv7h aarch64)
 url='https://nginx.org'
 license=('custom')

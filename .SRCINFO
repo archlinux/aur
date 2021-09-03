@@ -1,5 +1,5 @@
 pkgbase = nginx-mainline-pushstream
-	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
+	pkgdesc = NGINX mainline with Push Stream module
 	pkgver = 1.21.2
 	pkgrel = 1
 	url = https://nginx.org
