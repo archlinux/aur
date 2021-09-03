@@ -1,5 +1,5 @@
 pkgbase = uqm-megamod-addon-vols-remix
-	pkgdesc = Volasaurus' Complete Remix Pack for the Ur-Quan Masters MegaMod by Serosis.
+	pkgdesc = Volasaurus' complete remix Pack for the Ur-Quan Masters MegaMod by Serosis.
 	pkgver = 0.8.0.85
 	pkgrel = 1
 	url = https://github.com/yokai-shogun/UQM-MegaMod-Content
