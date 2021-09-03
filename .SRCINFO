@@ -1,7 +1,7 @@
 pkgbase = nootka
 	pkgdesc = A cross-platform tool for learning classical score notation. Sight reading and ear training.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nootka.sourceforge.io/
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = nootka
 	makedepends = qt5-quickcontrols
 	makedepends = qt5-quickcontrols2
 	makedepends = fftw
+	makedepends = qt5-tools
 	makedepends = libvorbis
 	makedepends = soundtouch
 	makedepends = alsa-lib

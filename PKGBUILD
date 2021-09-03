@@ -2,7 +2,7 @@
 pkgname=nootka
 pkgver=2.0.2
 _pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform tool for learning classical score notation. Sight reading and ear training."
 arch=('x86_64' 'i686')
 url="https://nootka.sourceforge.io/"
@@ -15,7 +15,7 @@ optdepends=(
 'qt5-translations: for other languages support'
 )
 conflicts=('nootka-hg' 'nootka-git')
-makedepends=('cmake' 'qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'fftw' 'libvorbis' 'soundtouch' 'alsa-lib')
+makedepends=('cmake' 'qt5-base' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'fftw' 'qt5-tools' 'libvorbis' 'soundtouch' 'alsa-lib')
 source=("https://sourceforge.net/projects/nootka/files/Nootka-$_pkgver/nootka-$_pkgver-source.tar.bz2")
 sha256sums=('6477722d9dfe4c2a50efbb5c36e0e5376d76e2a2c366ef43747e71ed12351c8b')
 
