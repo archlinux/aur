@@ -1,6 +1,6 @@
 pkgbase = retmux
 	pkgdesc = tmux sessions backup and restore tool
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/sk1418/retmux
 	arch = any
