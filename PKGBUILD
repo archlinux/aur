@@ -10,7 +10,7 @@ depends=('java-runtime' 'gtk3')
 install="$pkgname.install"
 
 pkgver=21.1.1
-pkgrel=1
+pkgrel=2
 _version_prefix="21.x"
 _build="57910"
 
@@ -21,7 +21,7 @@ source=("papercut-client"
 noextract=("pcng-setup-$pkgver.$_build.sh")
 
 sha256sums=('3096295e90a23594e34ee3ff394e070ebabe15df42740cd95b27cf04adbd7ba3'
-            '18d5df7d471c82242364dfc22e5540502063a754223e4569250eb11d5f73bfb1'
+            '55e2e1ea938d8a74846b29237f66ee97a80987f2a66ff54530f31bd84b727c00'
             '5cabf5a3936693a5f355fc4ec51d12c708703409346ced02a047a17ad3a2cac7')
 
 # App Configuration
