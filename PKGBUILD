@@ -57,7 +57,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./configure --prefix='/usr' --enable-experimental
-	make
+	make -j"$(nproc || echo -n 1)"
 	make -C contrib
 
 }
