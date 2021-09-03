@@ -2,14 +2,14 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at protonmail dot com>
 
 pkgname=tachidesk
-pkgver=0.4.7_r808
+pkgver=0.4.9_r874
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
 url="https://github.com/Suwayomi/Tachidesk-Server"
 license=("MPL2")
 depends=("java-runtime>=8")
-provides=("tachidesk")
+provides=("tachidesk" "tachidesk-server")
 conflicts=("tachidesk-preview")
 _semver="v${pkgver%_*}"
 _commit="${pkgver#*_}"
