@@ -1,6 +1,6 @@
 pkgname=ckan-bin
 _pkgname=ckan
-pkgver=1.30.2
+pkgver=1.30.4
 pkgrel=1
 pkgdesc='The Comprehensive Kerbal Archive Network'
 arch=('any')
@@ -11,7 +11,7 @@ provides=('ckan')
 conflicts=('ckan')
 
 source=("${_pkgname}_${pkgver}_all.deb::https://github.com/ksp-ckan/ckan/releases/download/v${pkgver}/${_pkgname}_${pkgver}_all.deb")
-sha256sums=('1c08a6f26e473f276e943eb9061d7ee3becaa84fb8ebd92ce8cf89fde6f25dda')
+sha256sums=('8f3de392c9911390241fd9bfa1c172cf8bcbe8b2fd1c71a633d70bac96beacb8')
 
 package() {
   mkdir -p "${pkgdir}"
