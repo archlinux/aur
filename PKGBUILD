@@ -2,8 +2,8 @@
 
 _pkgname='ansible-aur'
 pkgname="${_pkgname}-git"
-pkgver=0.25.r2.gde92aa8
-pkgrel=2
+pkgver=0.43.r7.gc64679b
+pkgrel=1
 pkgdesc='ansible module to install packages from AUR'
 arch=('any')
 url='https://github.com/kewlfft/ansible-aur'
@@ -24,6 +24,6 @@ pkgver() {
 
 package() {
 	cd "${_pkgname}"
-	install -Dm644 README.md	"$pkgdir/usr/share/doc/${_pkgname}/README.md"
-	install -Dm644 library/aur.py	"$pkgdir/usr/share/ansible/plugins/modules/aur.py"
+	install -Dm644 README.md		"$pkgdir/usr/share/doc/${_pkgname}/README.md"
+	install -Dm644 plugins/modules/aur.py	"$pkgdir/usr/share/ansible/plugins/modules/aur.py"
 }
