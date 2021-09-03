@@ -3,6 +3,7 @@ Description=Sogo Daemon
 After=network.target slapd.service memcached.service postfix.service dovecot.service postgresql.service
 
 [Service]
+Environment="LD_PRELOAD=/usr/lib/libytnef.so"
 User=sogo
 RuntimeDirectory=sogo
 EnvironmentFile=-/etc/conf.d/sogo

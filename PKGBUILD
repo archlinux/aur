@@ -5,7 +5,7 @@
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
@@ -40,7 +40,7 @@ source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
         "sogo.service"
         "sogo.confd")
 sha256sums=('6f738f7f55ec24eba838cd2fee8f3b136d67cd56afd660113c863daa0fb2333a'
-            '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
+            '7565a09d2b9daebaf2814a2bb55bf5bcae4cd3c72426f14a7ad6cd07e337c68b'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
 
 build() {
