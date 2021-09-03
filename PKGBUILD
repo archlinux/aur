@@ -1,7 +1,7 @@
 # Maintainer: Dimitri Merejkowsky <dimitri@dmerej.info>
 pkgname=ruplacer
 pkgver="0.6.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="Find and replace text in source files"
 url="http://github.com/dmerejkowsky/ruplacer"
 arch=('x86_64')
