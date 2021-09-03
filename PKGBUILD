@@ -26,9 +26,10 @@ _mq_deadline_disable=y
 ### Disable Kyber I/O scheduler
 _kyber_disable=y
 
-### Running with a 2000 HZ, 1000HZ or 500HZ tick rate
+### Running with a 2000 HZ, 1000HZ, 750Hz or  500HZ tick rate
 _2k_HZ_ticks=
-_1k_HZ_ticks=y
+_1k_HZ_ticks=
+_750_HZ_ticks=y
 _500_HZ_ticks=
 
 ### Enable protect file mappings under memory pressure
@@ -75,7 +76,7 @@ pkgbase=linux-cacule-llvm
 pkgname=('linux-cacule-llvm' 'linux-cacule-llvm-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 pkgver=5.14.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled with FULL-LTO'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -89,12 +90,13 @@ _caculepatches="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/maste
 _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/patches/5.14"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
-        "${_patchsource}/arch-patches/0001-arch-patches.patch"
-        "${_caculepatches}/v5.14/cacule-5.14.patch"
+        "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_caculepatches}/v5.14/cacule-5.14-full.patch"
         "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0009-compiler-remove-stale-cc-option-checks.patch"
         "${_patchsource}/misc/0007-string.patch"
         "${_patchsource}/misc/allpollingrate.patch"
+        "${_patchsource}/misc/0001-LL-kconfig-add-750Hz-timer-interrupt-kernel-config-o.patch"
         "${_patchsource}/bfq-patches/0001-bfq-patches.patch"
         "${_patchsource}/android-patches/0001-android-export-symbold-and-enable-building-ashmem-an.patch"
         "${_patchsource}/bbr2-patches/0001-bbr2-5.14-introduce-BBRv2.patch"
@@ -108,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/pf-patches-v3/0001-pf-patches.patch"
         "${_patchsource}/xanmod-patches/0001-xanmod-patches.patch"
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
-        "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
+        "${_patchsource}/zstd-patches-v2/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
         "${_patchsource}/ntfs3-patches-v4/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
@@ -174,7 +176,13 @@ prepare() {
               scripts/config --enable CONFIG_HZ_1000
               scripts/config --set-val CONFIG_HZ 1000
             fi
-
+            ### Optionally set tickrate to 500HZ
+          if [ -n "$_750_HZ_ticks" ]; then
+            echo "Setting tick rate to 500HZ..."
+            scripts/config --disable CONFIG_HZ_300
+            scripts/config --enable CONFIG_HZ_750
+            scripts/config --set-val CONFIG_HZ 750
+          fi
         ### Optionally set tickrate to 500HZ
             if [ -n "$_500_HZ_ticks" ]; then
               echo "Setting tick rate to 500HZ..."
@@ -513,13 +521,14 @@ package_linux-cacule-llvm-headers() {
 }
 
 md5sums=('be936a500fab39069e50b0bcfcc0c369'
-         '7254140f089f2c24facddc86e4138d46'
-         'b961add2e3ea53ade755148169c00e6e'
-         '40a9380b2884f5d417791f06389ba57e'
+         '9c01810a757239783691cda8083d3aab'
+         'cf26387aadf2a90428350ac246b070c9'
+         '024a0126cfcd18e000a2241f35c4d69e'
          'a804260e2f301ffe2a17d6e3625a9711'
          '50868332310ae198428861fb7e743d5e'
          'd6e5581b4fade267a28deb8e73d236f5'
          'f154315498da9bf593c11d88041bde48'
+         'f8e172e9ea554bbb1053eb122c3ace35'
          'a0285c065b902ca625119e4ad43cbab4'
          'e45c7962a78d6e82a0d3808868cd6ac0'
          '196d6ac961497aa880264b83160eb140'
@@ -532,7 +541,7 @@ md5sums=('be936a500fab39069e50b0bcfcc0c369'
          '30a7be161ab863c46e5ad55796d06a29'
          '28864f14bf33bad92e57bc48bc5c2c78'
          '381bc4f0ff885e9b67e5899476a30416'
-         'fe00e09708cbbeb15e348e36ab881696'
+         '808981a36c81165953017e5e432c1fa1'
          '0553f660f2399549ed17b6d2ca4e930e'
          'bb5234c6cd12276dbc4d231cc038f8f7'
          'bb22330e270bf36ccf53cb04d6b496d2'
