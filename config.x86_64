@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.143 Kernel Configuration
+# Linux/x86 5.4.144 Kernel Configuration
 #
 
 #
@@ -7353,7 +7353,7 @@ CONFIG_AMD_IOMMU_V2=m
 CONFIG_DMAR_TABLE=y
 # CONFIG_INTEL_IOMMU is not set
 CONFIG_IRQ_REMAP=y
-CONFIG_HYPERV_IOMMU=y
+# CONFIG_HYPERV_IOMMU is not set
 
 #
 # Remoteproc drivers
