@@ -1,6 +1,6 @@
 pkgbase = google-chat-linux
 	pkgdesc = Unofficial electron-based desktop client for Google Chat, electron not included
-	pkgver = 5.12.14+2
+	pkgver = 5.14.15+1
 	pkgrel = 1
 	url = https://github.com/squalou/google-chat-linux
 	arch = any
@@ -9,13 +9,14 @@ pkgbase = google-chat-linux
 	makedepends = npm
 	makedepends = nodejs-lts-fermium
 	depends = electron
-	source = https://github.com/squalou/google-chat-linux/archive/5.12.14-2/google-chat-linux-5.12.14-2.tar.gz
+	depends = xdg-desktop-portal-impl
+	source = https://github.com/squalou/google-chat-linux/archive/5.14.15-1/google-chat-linux-5.14.15-1.tar.gz
 	source = google-chat-linux.sh
 	source = google-chat-linux.desktop
 	source = sandbox.patch
-	sha256sums = 4464725b39f511f2cdf321b5e1e68a25cf0ae02755ae43f96632f89d169ed6e4
+	sha256sums = 89d5ec2cac2afb9003f47bbbdb722f56c2671104912998e392d51fd36ddbc2cb
 	sha256sums = 5a458e5d7193784383ceda44faf8852410296f310acb5495d53c16bd0ea50059
 	sha256sums = c7fdfa74422ce7900563fd1a0f5d76c4d4cd6d153ca3b28ab5a8912a33cba9c7
-	sha256sums = e4b63ca04f05b03de70fd7440981646ae7eb778fa749fd8ac26dd545833b0a43
+	sha256sums = 3f6513ded0c0da0d1b3ccd3fa08537cdd36a7f0281b66ec1021006565732b9c3
 
 pkgname = google-chat-linux

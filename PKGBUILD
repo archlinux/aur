@@ -1,22 +1,22 @@
 # Maintainer: ml <>
 pkgname=google-chat-linux
-_pkgver='5.12.14-2'
+_pkgver='5.14.15-1'
 pkgver=${_pkgver/-/+}
 pkgrel=1
 pkgdesc='Unofficial electron-based desktop client for Google Chat, electron not included'
 arch=('any')
 url='https://github.com/squalou/google-chat-linux'
 license=('custom:UNKNOWN')
-depends=('electron')
+depends=('electron' 'xdg-desktop-portal-impl')
 makedepends=('jq' 'npm' 'nodejs-lts-fermium')
 source=("$url/archive/$_pkgver/$pkgname-$_pkgver.tar.gz"
   google-chat-linux.sh
   google-chat-linux.desktop
   sandbox.patch)
-sha256sums=('4464725b39f511f2cdf321b5e1e68a25cf0ae02755ae43f96632f89d169ed6e4'
+sha256sums=('89d5ec2cac2afb9003f47bbbdb722f56c2671104912998e392d51fd36ddbc2cb'
             '5a458e5d7193784383ceda44faf8852410296f310acb5495d53c16bd0ea50059'
             'c7fdfa74422ce7900563fd1a0f5d76c4d4cd6d153ca3b28ab5a8912a33cba9c7'
-            'e4b63ca04f05b03de70fd7440981646ae7eb778fa749fd8ac26dd545833b0a43')
+            '3f6513ded0c0da0d1b3ccd3fa08537cdd36a7f0281b66ec1021006565732b9c3')
 
 
 _patch_package_json() {
