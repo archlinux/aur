@@ -10,7 +10,7 @@ license=("GPL")
 depends=('fox' 'lua' 'qt5-base' 'qt5-multimedia' 'openssl')
 makedepends=('cmake')
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('9e48935484bbc4333a79fc704e6c207e')
+md5sums=('e127ee21ab0af2453a0be4de04d83018')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
