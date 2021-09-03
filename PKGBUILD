@@ -31,5 +31,5 @@ package() {
   install -Dm644 Icons/Logo/dooble.png "$pkgdir/usr/share/pixmaps/dooble.png"
   install -Dm644 dooble.desktop "$pkgdir/usr/share/applications/dooble.desktop"
   install -Dm644 -t "$pkgdir/usr/share/dooble/Translations" Translations/dooble_*.qm
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/dooble/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/dooble/LICENSE"
 }
