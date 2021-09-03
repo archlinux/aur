@@ -1,0 +1,11 @@
+diff -aur src.orig/gtools.c src/gtools.c
+--- src.orig/gtools.c	2021-09-03 13:48:38.617189304 +0200
++++ src/gtools.c	2021-09-03 13:48:43.230556402 +0200
+@@ -13,6 +13,7 @@
+ #include <sys/fcntl.h>
+ #include <linux/fd.h>
+ #include <linux/fdreg.h>
++#include <errno.h>
+ 
+ #define bufmaxlen 1024*32
+ 

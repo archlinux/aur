@@ -1,0 +1,14 @@
+pkgbase = gtools
+	pkgdesc = Tool to read 2MGUI disks in Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = http://www.manty.net/www.geocities.com/SiliconValley/Lakes/1486/smanty.html
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://www.manty.net/www.geocities.com/SiliconValley/Lakes/1486/gtools-0_1_0.tgz
+	source = errno.patch
+	md5sums = 33c7806b35a99fb9dd95738f2017de83
+	md5sums = 5636003942f5c0de253b064c983f4f29
+
+pkgname = gtools
