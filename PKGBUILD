@@ -12,20 +12,23 @@ url='http://www.easy2boot.com/'
 arch=('any')
 license=('custom:easy2boot license')
 depends=()
-makedepends=('dos2unix' 'unrar')
+makedepends=('dos2unix' 'jq')
+_projectName='Easy2Boot'
+_fileName="${_projectName}_v${pkgver}_password_is_e2b.zip"
 source=(
-  "fosshub.html::https://www.fosshub.com/Easy2Boot.html/Easy2Boot_v2.09_password_is_e2b.zip"
+  "fosshub.html::https://www.fosshub.com/Easy2Boot.html/${fileName}"
   # "grub4dos.rar::http://dl.grub4dos.chenall.net/grub4dos-${_grub4dos_version}-2009-12-23.rar"
 )
-noextract=('grub4dos.rar', 'Easy2Boot_v2.09_password_is_e2b.zip', 'fosshub.html')
-
+noextract=('fosshub.html')
+md5sums=('f67be2fd311e92682574e1d28f22bbce')
 
 prepare() {
 
   json=$(cat fosshub.html | sed -n 's/.*var.*settings.*=//p' | jq)
-  projectId=$(echo $json | jq '{projectId: .projectId}')
-  tempJson=$(echo $json | jq '.pool.f[] | select(.n=="Easy2Boot_v2.09_password_is_e2b.zip") | {fileName: .n, releaseId: .r}')
-  postData=$(echo $projectId $tempJson '{"projectUri": "Easy2Boot.html","source":"CF"}' | jq -s 'add')
+  projectId=$(echo ${json} | jq '{projectId: .projectId}')
+  tempJson=$(echo ${json} | jq --arg _fileName ${_fileName} '.pool.f[] | select(.n==$_fileName) | {fileName: .n, releaseId: .r}')
+  # echo ${tempJson}
+  postData=$(echo ${projectId} ${tempJson} '{"projectUri": "${_projectName}.html","source":"CF"}' | jq -s 'add')
 
   # echo $postData | jq
 
@@ -34,9 +37,9 @@ prepare() {
   # _url=${_url:}
 
   # echo $_url
-  wget -O Easy2Boot_v2.09_password_is_e2b.zip $_url
+  wget -O ${_fileName} $_url
 
-  bsdtar -x --passphrase e2b -f Easy2Boot_v2.09_password_is_e2b.zip
+  bsdtar -x --passphrase e2b -f ${_fileName}
 
   # Use newer, working bootlace
   # unrar e grub4dos.rar grub4dos-${_grub4dos_version}/bootlace.com
@@ -45,7 +48,7 @@ prepare() {
 }
 
 package() {
-  rm "Easy2Boot_v${pkgver}_password_is_e2b.zip"
+  rm "${_fileName}"
   rm "fosshub.html"
 
   execs=(
@@ -85,4 +88,4 @@ exec "$1" "\$@"
 END
 	chmod +x "$2"
 }
-md5sums=('f67be2fd311e92682574e1d28f22bbce')
+
