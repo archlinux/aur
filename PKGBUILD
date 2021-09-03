@@ -2,7 +2,7 @@
 
 pkgname=paruz
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A fzf terminal UI for paru or pacman"
 arch=("any")
 url="https://github.com/joehillen/paruz"
