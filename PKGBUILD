@@ -15,9 +15,10 @@ makedepends=('bash>=5' 'curl' 'diffutils' 'jq'
 optdepends=('git: git support' 'libsecret: keytar support')
 options=(!strip) #to speed up build
 
+_tools_commit=241f289270ce6b060adf6ff3308bf6934b3f3971
 source=(
   "theia-electron.sh"
-  "make-package-json.sh"
+  "https://gitlab.com/ccorn/theia-packaging-tools/-/raw/$_tools_commit/make-package-json.sh"
   "extra-plugins.json"
   ".yarnclean"
   "theia-electron.desktop"
@@ -25,7 +26,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         '2786093ccdb116b58e2bab80e4585c5c'
+         '70c4d1f2a14f5fd81d13730f921f69ae'
          '649efce73ff4a2a697d071cf83f20e5c'
          '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
@@ -34,7 +35,7 @@ md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
 
 prepare() {
   cd "$srcdir"
-  ./make-package-json.sh "${pkgver/.next./-next.}" >package.json
+  bash make-package-json.sh "${pkgver/.next./-next.}" >package.json
 }
 
 build() {
