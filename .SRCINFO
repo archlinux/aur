@@ -1,22 +1,23 @@
 pkgbase = tifig-git
 	pkgdesc = A fast High Efficiency Image File Format (HEIF/HEIC) converter
-	pkgver = r73.7dea067
+	pkgver = r83.60b920c
 	pkgrel = 1
 	url = https://github.com/monostream/tifig
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
-	depends = ffmpeg
-	depends = vips
+	depends = ffmpeg>=3.1
+	depends = libvips>=8.6
 	provides = tifig
 	conflicts = tifig
+	source = 01-limits.patch
 	source = git+https://github.com/monostream/tifig.git
 	source = git+https://github.com/monostream/heif.git
 	source = git+https://github.com/jarro2783/cxxopts.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha1sums = 2e095817eca65e4957f15520ef2559481d552c8c
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = tifig-git
-

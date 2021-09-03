@@ -1,0 +1,12 @@
+diff --git a/include/cxxopts.hpp b/include/cxxopts.hpp
+index 17bb590..ecdb5b7 100644
+--- a/include/cxxopts.hpp
++++ b/include/cxxopts.hpp
+@@ -41,6 +41,7 @@ THE SOFTWARE.
+ #include <string>
+ #include <unordered_set>
+ #include <vector>
++#include <limits>
+
+ //when we ask cxxopts to use Unicode, help strings are processed using ICU,
+ //which results in the correct lengths being computed for strings when they
