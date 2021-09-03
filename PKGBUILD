@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.13
-_minor=13
+_minor=14
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -81,8 +81,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-btusb-check-conditions-before-enabling-USB.patch"
+        "${_lucjanpath}/arch-patches-v6/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -329,12 +328,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('67c3d0ef8fc378616a318a0d6796acf839dcda4accee3dc815c0f0697694cf178474fe15d98fa9bb7871dfa353aee416212430be5af85bf74647e3968b5c1b71'
+sha512sums=('1e35c9f9a62f873f12f642596290483e40193fd8926be83b2878b7b29527d19485596334cfef6ef901da5de817407767a5fdcde3a87e7b1178c0a21e7932f9f0'
             'SKIP'
             'f2b25c9950b39748f4b7f5102d6e4879901e4653b715ce3210fca813bf42f6c741e4a2b89a29e8b00fd15eb04e1050dece0e1b214bfe62c3c48a6cd0b369e772'
             'c70ed7f971548c32080bf610f0e0d99c5489bea5262945a486df9b4f0c9bde915078a1b4acd15aed0dc6d2ecee511b5a76f5d47ea88977de17e0c6ceb3cde21c'
-            '7e224b2cc546f965625e5de38ac8158d2107e2ea78130843f3c0ef3b28e5342d57e6cd44062ce2db1c322708d847bb38ef11d19ce8f45cc3bb82d078b3a3fa19'
-            'f29f44e363f663244e3713481ec1386a12f91ffc3988d82c7f206f7782611410333a55af2d9efa9db33d5a45a0fe29a92e6310032efe90cc11d55a037a368747'
+            '00969ec0b3478544a4d013c15c719f6109bf217dafb581e56fb54772fa7f974088eba0574a98d8eec449281f01414d179642651a2ff65556f3cd65b9abd1b7a6'
             '307291c477b1d70f0621c5012311ddd8c9aef1ff2b8229668ec6681f1290b11d861989adc83484563e2be05a1453907bf393cdd730a45760fadadd9ec3094d26')
 
 validpgpkeys=(
