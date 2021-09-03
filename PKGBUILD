@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.15.r65.g7e77f89
+pkgver=0.11.0.r0.g6fea282
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -31,6 +31,7 @@ depends=(fontconfig
          freetype2
          harfbuzz
          gentium-plus-font
+         git
          icu
          libpng # this goes with libtexpdf if ever split out to a library package
          luajit
@@ -44,7 +45,6 @@ depends+=(libfreetype.so
           libicui18n.so
           libicuio.so
           libicuuc.so)
-makedepends=(git)
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
