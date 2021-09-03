@@ -1,0 +1,5 @@
+if [[ "$SUBSYSTEM" == "sound" ]]; then
+    fifo=/tmp/pulse_fifo
+    [[ ! -e $fifo ]] && mkfifo $fifo && chmod 644 $fifo
+    echo update > $fifo
+fi
