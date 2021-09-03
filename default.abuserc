@@ -1,0 +1,37 @@
+; Abuse-SDL Configuration file
+
+; Startup fullscreen
+fullscreen=0
+
+; Use DoubleBuffering
+doublebuf=1
+
+; Use OpenGL
+gl=1
+
+; Location of the datafiles
+datadir=/usr/share/abuse/orig
+
+; Use mono audio only
+mono=0
+
+; Grab the mouse to the window
+grabmouse=0
+
+; Set the scale factor
+scale=2
+
+; Use anti-aliasing (with gl=1 only)
+antialias=0
+
+; Disable the SDL parachute in the case of a crash
+nosdlparachute=0
+
+; Key mappings
+left=a
+right=d
+up=w
+down=s
+fire=Space
+weapprev=q
+weapnext=e
