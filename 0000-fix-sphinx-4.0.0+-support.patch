@@ -1,7 +1,7 @@
-diff --git a/nova-23.0.1/doc/ext/feature_matrix.py b/nova-23.0.1.new/doc/ext/feature_matrix.py
+diff --git a/nova-23.0.2/doc/ext/feature_matrix.py b/nova-23.0.2/doc/ext/feature_matrix.py
 index caeaecf..74f5308 100644
---- a/nova-23.0.1/doc/ext/feature_matrix.py
-+++ b/nova-23.0.1.new/doc/ext/feature_matrix.py
+--- a/nova-23.0.2/doc/ext/feature_matrix.py
++++ b/nova-23.0.2/doc/ext/feature_matrix.py
 @@ -575,7 +575,8 @@ class FeatureMatrixDirective(rst.Directive):
  
  def setup(app):
