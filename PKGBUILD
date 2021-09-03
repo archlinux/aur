@@ -4,7 +4,7 @@ _nodeversion='12'
 
 pkgname=lightcord-git
 pkgver=0.1.7.r11.g3c4c7de
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple - customizable - Discord Client"
 arch=('x86_64')
 url="https://github.com/Lightcord/Lightcord"
