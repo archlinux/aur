@@ -6,10 +6,10 @@ _github_url="https://github.com/${_collection_namespace}/${_repo_name}"
 
 pkgname="ansible-collection-${_collection_namespace}-${_collection_name}"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ansible collection that contains an Ansible module to manage packages from the AUR"
 arch=("any")
-url="https://galaxy.ansible.com/${_collection_namespace}/{$_collection_name}"
+url="https://galaxy.ansible.com/${_collection_namespace}/${_collection_name}"
 license=("GPL3")
 depends=("ansible-core")
 source=("${_github_url}/archive/v${pkgver}/${_repo_name}-${pkgver}.tar.gz")
