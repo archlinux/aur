@@ -1,0 +1,14 @@
+pkgbase = python-grapheme
+	pkgdesc = Unicode grapheme helpers
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/alvinlindstam/grapheme
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/grapheme/grapheme-0.6.0.tar.gz
+	sha256sums = 44c2b9f21bbe77cfb05835fec230bd435954275267fea1858013b102f8603cca
+
+pkgname = python-grapheme
+	depends = python
