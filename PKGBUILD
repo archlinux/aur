@@ -2,7 +2,7 @@
 
 _pyname=gabbi
 pkgname=python-$_pyname
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Declarative HTTP testing library"
 arch=(any)
@@ -30,9 +30,9 @@ checkdepends=(
 	python-sphinx
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('a07d2575ba0bd3b52dbb358e3985546c')
-sha256sums=('a78bc2abe086951616d4edb630e8725d8418a70b33100e9d67571a50a80fffcb')
-sha512sums=('f0b3b9f1d4adb587aff6bfb3a83742daa3b82603458c0c7dd597d404aa0441b60e3612a14d34a7e32491e8550ef042bc754792c1d2c4379df0c411d93254e7e3')
+md5sums=('3757163c26dcf2ce59957d999f8f3854')
+sha256sums=('8766253b74e65e1a10317b7f3a3f1b7543be0962a714b0f9af9fb17020c385bd')
+sha512sums=('e383b90c8e3e647a2490a654227d241e04b68c6a7cd883f50c8f39ca44954676e4bf4e371f7273246c9c02df52a18d65760fe7b1d8e290fab694bf755573f82b')
 
 export PBR_VERSION=$pkgver
 
