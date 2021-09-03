@@ -3,7 +3,7 @@
 _gitname=spicetify-cli
 pkgname="${_gitname}-git"
 pkgver=2.6.1.r2.gc84c381
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to customize Spotify client - Git master branch'
 arch=('x86_64' 'i686')
 url="https://github.com/khanhas/${_gitname}"
@@ -37,7 +37,7 @@ package() {
 	cd "$srcdir/${_gitname}"
 
   install -Dm755 ./spicetify "$pkgdir"/usr/share/${_gitname}/spicetify
-  cp -r ./Themes ./Extensions ./CustomApps ./jsHelper ./globals.d.ts "$pkgdir"/usr/share/${_gitname}
+  cp -r ./Themes ./css-map.json ./Extensions ./CustomApps ./jsHelper ./globals.d.ts -t "$pkgdir"/usr/share/${_gitname}
 
   rm -f ./shortcut
   echo "#!/bin/sh
