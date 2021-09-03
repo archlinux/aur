@@ -3,7 +3,7 @@
 
 pkgname=oneshot
 
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 
 pkgdesc='First-come-first-serve single-fire HTTP/HTTPS server'
@@ -12,10 +12,10 @@ url="https://github.com/raphaelreyna/$pkgname"
 license=('MIT')
 
 makedepends=('go')
-depends=('hicolor-icon-theme')
+depends=('glibc' 'hicolor-icon-theme')
 
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('8cd2933df1c8c001b5a577dba028e22563174e4cb758556355a96f8ce35c48d6738414b84d23e8faa4176fe5c8cd9ba648eb424408677e2ff6e53b084f63f669')
+b2sums=('d4bba86763a5ac5c036323858a872ad2a5d704175657fe43a02b8cacf949e1f150f22003e63f29934e0056012551a432fae7ec6d22e1bbcab52bdbfb5199b9db')
 
 options=('zipman')
 
