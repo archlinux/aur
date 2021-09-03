@@ -1,8 +1,8 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak128.german
-pkgver=2.1.beta
-pkgrel=2
+pkgver=2.1.beta.422
+pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans, with a german theme"
 arch=('any')
 url="https://www.simutrans.com/"
