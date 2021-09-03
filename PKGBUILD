@@ -1,21 +1,20 @@
 # Maintainer: Randall Winkhart (Cuan) <idgr at tutanota dot com>
 
 pkgname=rpass
-pkgver=2021.09.01.pr1.1
-pkgrel=2
+pkgver=2021.09.02.pr2
+pkgrel=1
 pkgdesc="An rsync-based password manager and alternative to GNU pass"
 arch=('x86_64')
-options=('!emptydirs')
 license=('GPL3')
 depends=( bash gnupg python )
 
-source=('https://cloud.watergateserver.xyz/api/public/dl/KzymJs3t')
-sha512sums=('0e809a16825e22af9b30e904028195a2e12967e07c8785cdf498adc82e8df7b983b6ac886c4d8b6138791643e83fab5c516f87d74990eaa1cf02dab4bfd2f38d')
+source=('https://cloud.watergateserver.xyz/api/public/dl/Fe-Ugvov')
+sha512sums=('a4c6af4df11c6a3c68d162da2f5e9156ff4795709ef0fb02ff5a165c129d969c3d1f61bf996fbd455f01bf228f4f60ad477200596b6002672d2f9bdd9880c4ca')
 
 package() {
 
-    mv KzymJs3t rpass-2021.09.01.pr1.1.tar.xz
-	tar xf rpass-2021.09.01.pr1.1.tar.xz -C "${pkgdir}"
+    mv Fe-Ugvov rpass-2021.09.02.pr2.tar.xz
+	tar xf rpass-2021.09.02.pr2.tar.xz -C "${pkgdir}"
 	chown -R "$USER" ${pkgdir}/var/lib/rpass
 
 }
