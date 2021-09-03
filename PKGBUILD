@@ -2,8 +2,8 @@
 
 _gitname=spicetify-cli
 pkgname="${_gitname}-git"
-pkgver=2.1.0.r0.g294ba11
-pkgrel=2
+pkgver=2.6.1.r2.gc84c381
+pkgrel=1
 pkgdesc='Command-line tool to customize Spotify client - Git master branch'
 arch=('x86_64' 'i686')
 url="https://github.com/khanhas/${_gitname}"
@@ -17,7 +17,7 @@ conflicts=("${_gitname}")
 pkgver() {
 	cd "$srcdir/${_gitname}"
 
-  git describe --long --tags | sed 's/^v.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
