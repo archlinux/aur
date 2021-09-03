@@ -1,4 +1,6 @@
-# Maintainer: Adam S Levy <adam@aslevy.com>
+# Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
+# Previoius Maintainer: Adam S Levy <adam@aslevy.com>
+
 pkgname=modpoll-bin
 _pkgname=modpoll
 pkgver=3.10
@@ -16,3 +18,5 @@ package() {
         install -Dm755 x86_64-linux-gnu/$_pkgname "$pkgdir/usr/bin/$_pkgname"
         install -Dm644 LICENSE-FREE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
