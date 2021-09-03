@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='shd'
-pkgver='0.1.3'
+pkgver='0.1.4'
 pkgrel='1'
 pkgdesc='Console tool to display drive list with commonly checked smart info'
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -10,10 +10,10 @@ depends=('smartmontools')
 makedepends=('cargo' 'rust>=1.54.0')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff::$url/commit/e2328fa9131e403bd2105f532389f8daebcd1d7f.diff"
+	"$pkgname-$pkgver-$pkgrel-fix-cargo-lock.diff::$url/commit/f446dfed282c94c0f38cd01a81ce62e8fb3bfa38.diff"
 )
-sha512sums=('66522d2016a84cd83f03a7328cd9e94bf850780af6f0c305106d969e064512c8b602130e9d931a7a5ae4a43ef7cc6271bd63078b3bf2a102d82e8fa09f26fad3'
-            '6b75a7417642d1c99a198ad17ab6953e7f52e26e266f9a729409610ea64c9e9bdde742cbd6c1008c7b4dcffef4fcccb702941f4e4e1906429d18f9a427b6ee1b')
+sha512sums=('5a8ce04b2428c389dfef30a7010afacb27387463008c70c3d89db729f0b91bedda5819297b4cca35d3c0cb4dce55592d3451ed85bc99237c19cc79200a1fe640'
+            'da7a2259358f77dd93cad6a0705655349c734f93880d8ff4b65990a334713f42836ed78b95bda45d4baad66dbd4a53734ffd31351e475be8c50792e202131c6f')
 
 _sourcedirectory="$pkgname-$pkgver"
 
