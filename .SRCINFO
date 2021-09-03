@@ -1,7 +1,7 @@
 pkgbase = python-anyqt
 	pkgdesc = PyQt4/PyQt5 compatibility layer
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ales-erjavec/anyqt
 	arch = any
 	license = GPL
@@ -11,4 +11,3 @@ pkgbase = python-anyqt
 	sha256sums = 4ed02aa75264b714269dc32658e9dac74cc813f69859a3fe231d875b81f3f57c
 
 pkgname = python-anyqt
-
