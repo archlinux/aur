@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=slimbookamdcontroller
-pkgver=0.3.1
+pkgver=0.3.2beta
 pkgrel=1
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
@@ -9,11 +9,11 @@ license=('GPL')
 depends=('dbus-python' 'libappindicator-gtk3' 'libnotify' 'python-gobject'
          'python-pillow' 'ryzenadj' 'systemd-libs')
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('7c0d9ef43a0ba4b73f8cc21f20c83b8a904009610e03c6952324444191182f0f')
+sha256sums=('5de2a33459440fe2c06f51c48abe6cac2b9a9d640cfc937274837f6859fdefb1')
 
 package() {
-	bsdtar xf data.tar.xz -C "$pkgdir"
+  bsdtar xf data.tar.xz -C "$pkgdir"
 
-	ln -s /usr/bin/ryzenadj "$pkgdir/usr/share/$pkgname"
-	chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
+  ln -s /usr/bin/ryzenadj "$pkgdir/usr/share/$pkgname"
+  chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
 }
