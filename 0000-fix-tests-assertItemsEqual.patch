@@ -1,7 +1,7 @@
-diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
+diff --git a/cinder-18.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py b/cinder-18.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
 index 8db1f8d..e997d5b 100644
---- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
-+++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
+--- a/cinder-18.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
++++ b/cinder-18.1.0/cinder/tests/unit/volume/drivers/ibm/test_storwize_svc.py
 @@ -4262,7 +4262,7 @@ class StorwizeSVCFcDriverTestCase(test.TestCase):
                                }
                       }
@@ -31,10 +31,10 @@ index 8db1f8d..e997d5b 100644
  
      def test_storwize_svc_fc_host_maps(self):
          # Create two volumes to be used in mappings
-diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
+diff --git a/cinder-18.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py b/cinder-18.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
 index d4c732b..0d901e5 100644
---- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
-+++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
+--- a/cinder-18.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
++++ b/cinder-18.1.0/cinder/tests/unit/volume/drivers/inspur/instorage/test_fc_driver.py
 @@ -413,7 +413,7 @@ class InStorageMCSFcDriverTestCase(test.TestCase):
                                }
                       }
@@ -44,10 +44,10 @@ index d4c732b..0d901e5 100644
  
      def test_instorage_mcs_fc_host_maps(self):
          # Create two volumes to be used in mappings
-diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
+diff --git a/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py b/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
 index 14c6bd7..609b6ef 100644
---- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
-+++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
+--- a/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
++++ b/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/client/test_client_cmode.py
 @@ -2267,7 +2267,7 @@ class NetAppCmodeClientTestCase(test.TestCase):
          result = self.client.get_aggregate_disk_types(
              fake_client.VOLUME_AGGREGATE_NAME)
@@ -66,10 +66,10 @@ index 14c6bd7..609b6ef 100644
          mock_get_aggregate_disk_types.assert_has_calls([
              mock.call(fake_client.VOLUME_AGGREGATE_NAME),
              mock.call(fake_client.VOLUME_AGGREGATE_NAME, shared=True),
-diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
+diff --git a/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py b/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
 index 8181bf0..65ea43b 100644
---- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
-+++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
+--- a/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
++++ b/cinder-18.1.0/cinder/tests/unit/volume/drivers/netapp/dataontap/utils/test_capabilities.py
 @@ -96,7 +96,7 @@ class CapabilitiesLibraryTestCase(test.TestCase):
  
          result = self.ssc_library.get_ssc_flexvol_names()
@@ -79,10 +79,10 @@ index 8181bf0..65ea43b 100644
  
      def test_get_ssc_for_flexvol(self):
  
-diff --git a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py b/cinder-17.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
+diff --git a/cinder-18.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py b/cinder-18.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
 index 8824d70..403d3b7 100644
---- a/cinder-17.1.0-old/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
-+++ b/cinder-17.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
+--- a/cinder-18.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
++++ b/cinder-18.1.0/cinder/tests/unit/volume/drivers/vmware/test_vmware_datastore.py
 @@ -285,7 +285,7 @@ class DatastoreTest(test.TestCase):
              datastores, valid_host_refs=[host2, host3])
  
