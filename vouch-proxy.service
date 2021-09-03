@@ -1,0 +1,17 @@
+[Unit]
+Description=Vouch Proxy
+After=network.target
+
+[Service]
+Type=exec
+DynamicUser=yes
+StateDirectory=vouch-proxy
+Environment=VOUCH_ROOT=/var/lib/vouch-proxy
+ExecStart=/usr/bin/vouch-proxy -config /etc/vouch-proxy/config.yaml
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
+[Install]
+WantedBy=multi-user.target
