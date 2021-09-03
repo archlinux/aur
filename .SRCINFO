@@ -1,10 +1,10 @@
 pkgbase = wemeet-bin
 	pkgdesc = Tencent Video Conferencing, tencent meeting 腾讯会议
 	pkgver = 2.8.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://source.meeting.qq.com/download-center.html
 	arch = x86_64
-	license = unkown
+	license = unknown
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
 	depends = libbsd

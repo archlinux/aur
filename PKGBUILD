@@ -3,10 +3,10 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
-license=('unkown')
+license=('unknown')
 url="https://source.meeting.qq.com/download-center.html"
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://updatecdn.meeting.qq.com/ad878a99-76c4-4058-ae83-22ee948cce98/TencentMeeting_0300000000_${pkgver}_${arch}.publish.deb")
 depends=('qt5-x11extras' 'hicolor-icon-theme' 'libbsd'  'libxrandr' 'qt5-webkit' 'libxinerama' 'libpulse')
@@ -40,7 +40,7 @@ exec wemeetapp $*
     mkdir -p ${pkgdir}/usr/lib/${_pkgname}
     mv lib/{libwemeet*,libxcast.so,libxnn*,libtquic.so} ${pkgdir}/usr/lib/${_pkgname}
     
-    rm -rf plugins icons lib/libQt* lib
+    rm -rf plugins icons lib/libQt* lib wemeetapp.sh
     
     
 }
