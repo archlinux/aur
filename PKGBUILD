@@ -1,6 +1,6 @@
 pkgname='python-scs'
 _pkgname='scs'
-pkgver='2.1.3'
+pkgver='2.1.4'
 pkgrel=1
 pkgdesc="Convex cone solver via operator splitting."
 url="http://github.com/cvxgrp/scs/"
@@ -11,7 +11,7 @@ license=('MIT')
 arch=('x86_64')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
     "LICENSE.txt")
-sha256sums=('7c9ca6730638abcbd004909e7f4816b9e2c1486d3e864b1a26261ca84002cbf0'
+sha256sums=('ddd6614db7f0e63b69672cfd02ba2c8423dade33a58b0a341a5119091c501739'
             '47d0bba3f33546d08d9dea012d70b1362d2e917553bb751183fcf046519fd868')
 
 build() {
