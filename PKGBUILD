@@ -3,7 +3,7 @@
 
 pkgname=lightcord-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple - customizable - Discord Client"
 arch=("x86_64")
 url="https://github.com/Lightcord/Lightcord"

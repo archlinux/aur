@@ -2,6 +2,7 @@
 Name=Lightcord
 StartupWMClass=lightcord
 Comment[fr_FR]=Un client Discord simple et personalisable
+Comment[no]=En enkel - tilpassbar - Discord klient
 Comment=A simple - customizable - Discord Client
 Exec=/usr/bin/lightcord
 Icon=lightcord
