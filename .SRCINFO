@@ -1,7 +1,7 @@
 pkgbase = xorg-xwayland-git
 	pkgdesc = Run X clients under Wayland (git version)
-	pkgver = 21.1.1.r134.g8274dd664
-	pkgrel = 2
+	pkgver = 21.1.2.r232.g7c63c582a
+	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg
@@ -28,6 +28,7 @@ pkgbase = xorg-xwayland-git
 	depends = libxfont2
 	depends = pixman
 	depends = xorg-server-common
+	depends = libxcvt
 	provides = xorg-xwayland
 	provides = xorg-server-xwayland
 	provides = xorg-server-xwayland-git
