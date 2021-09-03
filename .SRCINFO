@@ -1,0 +1,19 @@
+pkgbase = gamesneeze-git
+	pkgdesc = An open source training utility for Counter-Strike: Global Offensive on Linux.
+	pkgver = 2021.09.03
+	pkgrel = 1
+	url = https://github.com/seksea/gamesneeze
+	arch = x86_64
+	license = MIT
+	depends = base-devel
+	depends = git
+	depends = cmake
+	depends = gdb
+	depends = sdl2
+	depends = clang
+	optdepends = steam: downloading csgo with steam
+	optdepends = steam-native-runtime: downloading csgo with steam from native library
+	source = git+https://github.com/seksea/gamesneeze.git
+	sha256sums = SKIP
+
+pkgname = gamesneeze-git
