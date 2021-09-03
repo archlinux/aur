@@ -1,6 +1,6 @@
 # Maintainer: Gagan Malvi <malvigagan@gmail.com>
 pkgname=vitable
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A simple command-line tool to view your VIT timetable, written in Nim."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   'nim'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CartelProject/vitable/archive/${pkgver}.tar.gz")
-md5sums=('d5f6c4b270a04ec3f041fa70d558478b')
+md5sums=('SKIP')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
