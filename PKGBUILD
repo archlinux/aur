@@ -47,13 +47,8 @@ check() {
 
 package() {
   cd ulauncher
-
-  install -Dm644 "build/share/applications/ulauncher.desktop" -t \
-        "$pkgdir/usr/share/applications"
-  
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 "ulauncher.service" -t "$pkgdir/usr/lib/systemd/user"
   rm -rf "$pkgdir"/usr/share/ulauncher/preferences/{no*,src,bow*,gul*,pack*}
   find $pkgdir -type d -name __pycache__ | xargs rm -rf
 }
