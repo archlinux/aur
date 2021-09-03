@@ -1,5 +1,5 @@
 # Maintainer: Barfin
-pkgname=paimon-launcher
+pkgname=paimon-launcher-appimage
 pkgver=1.3.1
 pkgrel=1
 pkgdesc="unoffical native launcher for genshin impact."
