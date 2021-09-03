@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.11.0
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
 url="https://github.com/kivikakk/$pkgname"
@@ -10,12 +10,10 @@ license=(BSD)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9da1388b719142780cff8c6dcf5e59d83ad88f23ed81c961361a986081fd2bfa')
+sha256sums=('fa5db841758fecd857ee501c672d74d38728a1a4a922f23ecbf5e46bbcb79c34')
 
 prepare() {
 	cd "$_archive"
-	# Upstream Issue: https://github.com/kivikakk/comrak/pull/193
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
