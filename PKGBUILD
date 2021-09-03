@@ -1,17 +1,19 @@
 # Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
+DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+
 pkgname=uqm-megamod-data
 _pkgname=uqm-megamod
 pkgver=0.8.0.85
 pkgrel=1
 pkgdesc="Base content for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
-url="https://github.com/yokai-shogun/UQM-MegaMod-Content"
+url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://github.com/yokai-shogun/UQM-MegaMod-Content/releases/download/${pkgver}/mm-${pkgver}-content.uqm"
-  "https://raw.githubusercontent.com/yokai-shogun/UQM-MegaMod-Content/master/LICENSE"
+  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-content.uqm"
+  LICENSE
   version
 )
 
