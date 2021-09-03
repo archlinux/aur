@@ -1,0 +1,14 @@
+pkgbase = paimon-launcher
+	pkgdesc = unoffical native launcher for genshin impact.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://notabug.org/loentar/paimon-launcher
+	arch = x86_64
+	license = https://notabug.org/loentar/paimon-launcher/raw/master/LICENSE
+	options = !strip
+	source = Paimon.AppImage::https://drive.google.com/uc?export=download&id=1GC-PFibSdo8Mwx2xG50gcfia3wSClN87
+	source = Paimon-Launcher.desktop
+	md5sums = 3fb587cd10b9dd85bd001224e5023dd7
+	md5sums = b8b58842fb72262aefcbcde709b871b3
+
+pkgname = paimon-launcher

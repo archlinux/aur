@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Paimon Launcher
+Exec=paimon-launcher
+Terminal=false
+Type=Application
+Categories=Games;
