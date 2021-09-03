@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.r29810.a2b5de8e0'
+pkgver='0.15.4.r29818.bb86d6483'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -70,7 +70,7 @@ build() {
 	cd "${srcdir}/${_appname}"
 
 	./configure --prefix='/usr' --enable-experimental
-	make
+	make -j"$(nproc || echo -n 1)"
 	make -C contrib
 
 }
