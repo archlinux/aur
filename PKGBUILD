@@ -1,4 +1,4 @@
-# Maintainer: so1ar <674630130@qq.com>
+# Maintainer: so1ar <so1ar114514@gmail.com>
 # Maintainer: fkxxyz <fkxxyz@163.com>
 
 pkgname=rime-solarpinyin
