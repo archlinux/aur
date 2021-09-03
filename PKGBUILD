@@ -6,11 +6,11 @@ arch=('x86_64')
 license=('custom')
 url="https://www.papercut.com/support/resources/manuals/ng-mf/clienttool/topics/user-client-install-linux.html"
 
-depends=('java-runtime' 'gtk3')
+depends=('java-runtime>=11' 'gtk3')
 install="$pkgname.install"
 
 pkgver=21.1.1
-pkgrel=2
+pkgrel=3
 _version_prefix="21.x"
 _build="57910"
 

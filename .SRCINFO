@@ -1,12 +1,12 @@
 pkgbase = papercut-client-bin
 	pkgdesc = Client software for PaperCut printers
 	pkgver = 21.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.papercut.com/support/resources/manuals/ng-mf/clienttool/topics/user-client-install-linux.html
 	install = papercut-client-bin.install
 	arch = x86_64
 	license = custom
-	depends = java-runtime
+	depends = java-runtime>=11
 	depends = gtk3
 	noextract = pcng-setup-21.1.1.57910.sh
 	source = papercut-client
