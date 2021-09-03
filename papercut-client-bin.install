@@ -1,0 +1,12 @@
+_print_msg() {
+    echo ":: After running 'papercut-client' configure the print server connection:"
+    echo '    $HOME/.config/papercut-client/config.properties'
+}
+
+post_install() {
+    _print_msg
+}
+
+post_upgrade() {
+    _print_msg
+}

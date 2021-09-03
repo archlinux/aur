@@ -1,0 +1,229 @@
+#Bootstrap configuration information
+#Tue Aug 31 18:19:52 EDT 2021
+server-name=arch-blade
+server-ip=127.0.1.1
+server-port=9191
+
+################################################################################
+# The optional settings below can be enabled by removing the # from the start  #
+# of the relevant line.  These options can also be specified on the command    #
+# line.  Any command line options set will override the values set here.       #
+################################################################################
+
+# When enabled, debugging information is written to user-client.log
+#
+#debug=Y
+
+# The silent option tells the client not to report errors if it has problems
+# connecting to the server.  If the server is unavailable at time of startup
+# (e.g. the client is not connected to the network), or if the user does not
+# currently exist in the database, the client will simply sleep waiting for the
+# condition to change.
+#
+#silent=Y
+
+# The minimized option tells the client to start minimized.  On Windows, the
+# client will be minimized to the task tray.
+#
+#minimized=Y
+
+# Configure the client to never display the "confirm identity" dialog if the
+# user account does not in the database.
+#
+#neverrequestidentity=Y
+
+# The noquit option stops the user from closing/quitting the client.
+# (Windows only)
+#
+# Apple Mac: Use a Login Hook to stop users exiting the client. See 'Services
+# for Users -> User Client Deployment' in the manual for more information.
+#
+#noquit=Y
+
+# The "disabletasktrayicon" option instructs the client to not use the system
+# task tray.  This has two effects:
+#     1. It prevents the client from minimizing to the tray.
+#     2. Messages are displayed as standard dialog boxes rather than as task
+#        tray notifications.
+
+# The "hide-balance" option instructs the client to hide the balance display. 
+#
+# On Windows the balance window is not displayed. On other platforms the 
+# the balance is hidden from the balance window.
+#
+#hide-balance=Y
+
+# Disabling task tray support may be useful if the task tray has been removed
+# for security reasons using Group Policy Editor.
+#
+# This is a Windows-only option.
+#
+#disabletasktrayicon=Y
+
+# Toast notifications are the default notification option in Windows 8+.
+# The "disable-toast-notifications" option instructs the client to stop using
+# toast notifications and use either balloon tips (if enabled) or dialog boxes.
+#
+# This is a (Windows 8+)-only option.
+#
+#disable-toast-notifications=Y
+
+# The "disable-balloon-tips" option instructs the client to display 
+# messages in dialog boxes rather than notification area balloon tips. 
+#
+# This may be required to display notifications successfully if balloon tips
+# have been disabled in Windows.
+#
+# This is a Windows-only option.
+#
+#disable-balloon-tips=Y
+
+# The user option allows the client to be run using a different username.
+#
+# This can be useful if the user is logged into a machine with a different
+# username than he or she is authenticated to the server/printers as.  For
+# example, if a user is using a laptop that is not a part of the domain.
+#
+#user=guest
+
+# Specify where the client window should appear. The valid options include
+# top-left, top-right, bottom-left or bottom-right.
+#
+# In addition to the above set of fixed positions, co-ordinates of the window
+# can also be specified by setting the <position> parameter to XY<x>,<y>. The
+# <x> value sets the x co-ordinate of the window (if negative the value
+# indicates the distance from the right of screen). The <y> value sets the y
+# co-ordinate of the window (if negative the value indicates the distance from
+# the bottom of screen). Some examples include:
+#
+# Position the window 100 pixels from the left and 100 pixels from the top of
+# the screen.
+#windowposition=XY100,100
+# Position the window 50 pixels from the right and 50 pixels from the top of the
+# screen.
+#windowposition=XY-50,100
+# Position the window 50 pixels from the left and 100 pixels from the bottom of
+# the screen.  
+#windowposition=XY50,-100
+# Position the window in the top left of screen.
+#windowposition=top-left
+
+# Allows the window title to be customized. If the title includes {0} then
+# this will be replaced by the user's username.
+#
+#windowtitle=Balance for {0}
+
+# Specify the colors used in the client. The colors are coded in standard
+# hexadecimal RGB ("web colors", see http://en.wikipedia.org/wiki/Web_colors
+# for an explanation).
+# 'link-color' and 'link-hover-color' modify the 'Details...' link
+# 'additional-link-color' modifies to the admin-defined link in the top right
+# of the client window
+#
+#background-color=FFFFC0
+#text-color=000000
+#link-color=808080
+#link-hover-color=19892B
+#additional-link-color=055D31
+#negative-balance-color=FF0000
+
+# Control which option is selected by default on the account selection popup.
+# This option can be used to save mouse clicks / keyboard presses by setting the
+# default selected option to the one that is most commonly used.
+#
+# Options include:
+#   charge-personal - The "Charge to my personal account" option is selected.
+#   charge-account-list - The "Charge to shared account" option is selected.
+#   charge-account-pin - The "Charge to shared account using PIN / Code"
+#       option is selected.
+#   print-as-user - The "Perform print as user" option is selected.
+#
+# Default (when option is disabled): charge-personal
+# Example: charge-account-list
+#
+#default-selection=charge-account-list
+
+# Specify the default selected account on the account selection popup.
+# Usually used in conjunction with default-selection=charge-account-list.
+# Use '\\' to separate parent and sub account.
+# 
+# Example: sales\\invoices
+#
+#default-account=
+
+# Specify the default account pin entered on the account selection popup.
+# Usually used in conjunction with default-selection=charge-account-pin.
+# - left blank it will ensure that the account pin field on the account
+#   selection popup will be blank on every popup 
+# - if not specified/commented out the account pin field will show the 
+#   account pin remembered from the previous popup
+# 
+# Example: default-account-pin=1122
+#
+#default-account-pin=
+
+# Authentication time-to-live options that override settings from server
+# Time-to-live values in minutes (Comma separated) 
+#auth-ttl-values=1,5,15,30,60,-1
+#
+#auth-ttl-default=5
+
+# The "disable-gui-effects" option instructs the client to turn off
+# some of the advanced GUI effects such as transparent windows and
+# fading images.  This may improve performance on very old systems.
+#
+#disable-gui-effects=Y
+
+# The "lockdir" option defines the directory where the client lock
+# file is created.  The lock file is used by the client to ensure that
+# each user only runs the client once.  The lock files are usually stored
+# in the user's home directory with file names matching the format:
+#      .uc-<hash>.<username>.<workstation>.tmp
+#
+# NOTE: User '\\' for path separators on Windows
+#
+# Example: lockdir=C:\\temp\\
+#
+#lockdir=
+
+# The "disable-auth-by-id-number" option may be specified to revert the
+# authentication method to user/password instead of ID Number.
+#
+#disable-auth-by-id-number=Y
+
+# The "use-strict-ssl-verification" is used to enable strict checking of SSL
+# certificates used to connect to the application server.  This includes both
+# hostname and certificate authority trusts.
+#
+# If enabling this option you MUST have an officially signed certificate
+# installed on the application server, and use the server's DNS name in both
+# the "server-ip" and "server-name" settings.
+#
+#use-strict-ssl-verification=Y
+
+# The following options define the text to display in client windows.  These
+# can be useful if you wish to customize the text to suit your environment.
+#
+#account-from-list-allocate-text=Allocate to shared account
+#account-from-list-text=Charge to shared account
+#account-pin-text=PIN / Code
+#account-with-pin-allocate-text=Allocate to shared account using PIN / Code
+#account-with-pin-text=Charge to shared account using PIN / Code
+#auth-description-text=Your login credentials are required for printer access.
+#auth-login-text=Login
+#auth-password-text=Password:
+#auth-username-text=Username:
+#auth-pin-text=PIN:
+#auth-id-number-text=ID Number:
+#identity-description-text=Your login credentials are required for printer access.
+#identity-detailed-text=Please log in using your network username and password to confirm your identity.
+#identity-login-text=Login
+#identity-password-text=Password:
+#identity-username-text=Username:
+#no-accounts-text=No shared accounts available
+#other-user-account-text=Perform print as user
+#personal-account-text=Charge to my personal account
+#select-account-text=Select the shared account to charge ...
+#user-balance-for-text=Balance for {0}
+#user-close-warning-text=The application cannot be closed, because it is required to perform printing on this network.
+#user-details-text=Details ...

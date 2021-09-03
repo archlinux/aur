@@ -1,0 +1,16 @@
+#!/bin/sh
+
+[ "$EUID" == 0 ] && echo "Please do not run $(basename $0) as root!" && exit
+
+APP_ROOT="/usr/share/papercut-client-bin"
+APP_HOME="$HOME/.config/papercut-client"
+CONFIG="config.properties"
+
+if [ ! -e "$APP_HOME/$CONFIG" ]; then
+    mkdir -p "$APP_HOME"
+    cp "$APP_ROOT/$CONFIG" "$APP_ROOT/$CONFIG.tmpl" "$APP_HOME"
+fi
+
+exec java -classpath "$(find $APP_ROOT/lib -name '*.jar' -printf '%p:')" \
+	-Djava.locale.providers=COMPAT,SPI \
+	-Dclient.home="$APP_HOME" biz.papercut.pcng.client.uit.UserClient "$@"

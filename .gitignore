@@ -1,0 +1,4 @@
+*.tar.zst
+pcng-setup-*.sh
+pkg/
+src/
