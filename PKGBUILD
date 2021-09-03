@@ -2,7 +2,7 @@
 
 _pyname=os-resource-classes
 pkgname=python-$_pyname
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Resource Classes for OpenStack"
 arch=(any)
@@ -26,9 +26,9 @@ checkdepends=(
 	python-testtools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('7f45566123c269a2336cda7b7cd08203')
-sha256sums=('a948458fc37828b5421758bd5a61c6981207d6b2373354c39ccf12f0ad742bf6')
-sha512sums=('a5daef5a53e7a164bbe863af9a27e2a5ce92b490099769e7e545a059e80bbd0c74f1ec28afe1622820686b0614e5bc6e748598454d6b380891eb8a0b20333e37')
+md5sums=('3d9a25ddcd68b5d1fdec0981271b896e')
+sha256sums=('e0bcbb8961a9fe33b7213734c51c001812890e2be62101c9279c88b72f75f9eb')
+sha512sums=('957bab6bd9fb4463401e207852382ecaa3179098faaa42eea84cbec0879560406db87a893f6c20868a200bfff54c6935a41d85c95081cf04dc6c33941f52f3d4')
 
 export PBR_VERSION=$pkgver
 
