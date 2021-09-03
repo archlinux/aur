@@ -8,6 +8,7 @@ license=('unknown')
 depends=('nss' 'libx11' 'desktop-file-utils' 'libpulse')
 makedepends=('tar')
 options=(!strip)
+provides=('wemeet')
 source=("https://updatecdn.meeting.qq.com/ad878a99-76c4-4058-ae83-22ee948cce98/TencentMeeting_0300000000_${pkgver}_x86_64.publish.deb")
 md5sums=('bd9afb4c22035c77afb7ac033eeebeee')
 
