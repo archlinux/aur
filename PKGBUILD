@@ -3,7 +3,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unknown')
@@ -33,6 +33,9 @@ package() {
 export PATH=$PATH:/opt/wemeet/bin
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/usr/lib/wemeet
 export QT_PLUGIN_PATH="/usr/lib/qt/plugins"
+export XDG_SESSION_TYPE=x11
+export QT_QPA_PLATFORM=xcb
+unset WAYLAND_DISPLAY
 exec wemeetapp $*
 ''' > ${pkgdir}/usr/bin/${_pkgname}
     chmod a+x ${pkgdir}/usr/bin/${_pkgname}
