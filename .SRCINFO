@@ -1,7 +1,7 @@
 pkgbase = python-jaxlib
 	pkgdesc = XLA library for JAX
-	pkgver = 0.1.70
-	pkgrel = 2
+	pkgver = 0.1.71
+	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = x86_64
 	license = Apache
