@@ -1,7 +1,7 @@
 pkgbase = comma-ide-community
 	pkgdesc = The Integrated Development Environment for Raku (formerly Perl 6).
-	pkgver = 202.6948.81
-	pkgrel = 2
+	pkgver = 202.6948.88
+	pkgrel = 1
 	url = https://commaide.com/
 	install = comma-ide.install
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = comma-ide-community
 	optdepends = rakudo
 	provides = comma-ide
 	source = https://commaide.com/download/community/linux
-	sha512sums = 103f7489d09a50397b9314869d55b4a6ccfb7a475b91a690357b4fed78dc0055b1dbe707ac1de344e272d6bb47961d359bf6943be942303eefc286583364105a
+	sha512sums = 25529f3a3d23f0eaafe631576ee33feaaa3c891508da932c4cad4898c8536a79673a9b1d86abb5bd6e28edf6916d2e7ed84b3d19851441f29323b70e1205ddca
 
 pkgname = comma-ide-community
-
