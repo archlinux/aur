@@ -3,7 +3,7 @@ pkgname=wemeet-bin
 _pkgname=wemeet
 provides=('wemeet' 'tencent-meeting')
 pkgver=2.8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tencent Video Conferencing, tencent meeting 腾讯会议"
 arch=('x86_64')
 license=('unkown')
@@ -17,14 +17,14 @@ sha512sums=('53a7c89f9018f923e847e70e71b4b97d1e6925bf060b9cc9af858b6d08574027d4f
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
     cd ${pkgdir}/usr/share/applications
-    sed -i '5c Exec=wemeet %u ' ${_pkgname}app.desktop 
+    sed -i '3c Exec=wemeet %u ' ${_pkgname}app.desktop 
     
     cd ${pkgdir}/opt/${_pkgname}
     
     for res in {16,32,64,128,256}
     do
-        mkdir -p ${pkgdir}/usr/share/icons/hicolor/${res}x{res}/apps;
-        mv icons/hicolor/${res}x${res}/mimetypes/${_pkgname}app.png ${pkgdir}/usr/share/icons/hicolor/${res}x{res}/apps/${_pkgname}app.png;
+        mkdir -p ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps;
+        mv icons/hicolor/${res}x${res}/mimetypes/${_pkgname}app.png ${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}app.png;
     done
     
     sed -i '4c Prefix = /usr/lib/qt' bin/qt.conf
