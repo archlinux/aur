@@ -62,7 +62,7 @@ _common_flags=(
   --with-stream_ssl_module
   --with-stream_ssl_preread_module
   --with-threads
-  --add-module=/home/alarm/nginx/src/nginx-push-stream-module-$pushstreamver
+  --add-module=/home/alarm/nginx-mainline-pushstream/src/nginx-push-stream-module-$pushstreamver
 )
 
 _mainline_flags=(
