@@ -1,6 +1,6 @@
 # Maintainer: Dimitri Merejkowsky <dimitri@dmerej.info>
 pkgname=ruplacer
-pkgver="0.6.0"
+pkgver="0.6.2"
 pkgrel=1
 pkgdesc="Find and replace text in source files"
 url="http://github.com/TankerHQ/ruplacer"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("ruplacer-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ebc53206d3042291137517cfc2729ed7c774b95fca0e2553427e70da6d73cbf0')
+sha256sums=('54533bb5ee33a5580f6d1160e92f4adf436350937dd2705de14ed9af185ee875')
 
 build() {
   cd ruplacer-$pkgver
