@@ -6,11 +6,9 @@ pkgbase = easy2boot
 	arch = any
 	license = custom:easy2boot license
 	makedepends = dos2unix
-	makedepends = unrar
-	noextract = grub4dos.rar,
-	noextract = Easy2Boot_v2.09_password_is_e2b.zip,
+	makedepends = jq
 	noextract = fosshub.html
-	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/Easy2Boot_v2.09_password_is_e2b.zip
+	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/
 	md5sums = f67be2fd311e92682574e1d28f22bbce
 
 pkgname = easy2boot
