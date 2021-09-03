@@ -1,4 +1,4 @@
-# Maintainer: so1ar <674630130@qq.com>
+# Maintainer: so1ar <so1ar114514@gmail.com>
 
 pkgname=v2ray-geoip-custom
 pkgver=202109012210
