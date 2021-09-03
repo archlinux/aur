@@ -11,7 +11,7 @@ pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
 pkgver=12.0.0_r187762.g2484f7a4b0f
 _majorver=${pkgver%%.*}
 _isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
@@ -136,7 +136,7 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=(glibc)
   options+=(!strip)
-  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,git} libgo.so libgfortran.so libgphobos.so
+  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   replaces=(gcc-multilib-git libgphobos-git)
 
