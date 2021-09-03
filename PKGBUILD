@@ -12,8 +12,8 @@ url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-hd.uqm"
-  "https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt"
+  "mm-${pkgver}-hd.uqm:https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-hd.uqm"
+  "ATTRIBUTION.txt:https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt"
   LICENSE
 )
 
