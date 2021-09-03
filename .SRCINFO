@@ -1,0 +1,18 @@
+pkgbase = serioussam2-steam
+	pkgdesc = Serious Sam 2 Linux using Steam game data
+	pkgver = 2.07
+	pkgrel = 1
+	url = https://store.steampowered.com/app/204340/Serious_Sam_2/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = steamcmd
+	makedepends = xf86miscproto
+	depends = lib32-openal
+	depends = lib32-libxxf86misc
+	source = flibitSam2_2070b.tar.gz::http://www.flibitijibibo.com/fedora/installers/flibitSam2_2070b.tar.gz
+	source = serioussam2.desktop
+	md5sums = 4ce30037da426e61465b667f75189cd0
+	md5sums = db1a519bd95d85014f72f98bfc505f7e
+
+pkgname = serioussam2-steam

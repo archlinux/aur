@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Serious Sam 2
+Comment=Serious Sam 2
+Exec=/opt/serioussam2/serioussam2
+Icon=/opt/serioussam2/serious.sam.2.xpm
+Terminal=false
+Type=Application
+Categories=Application;Game;
