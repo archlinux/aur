@@ -1,0 +1,14 @@
+pkgbase = python-turbojpeg
+	pkgdesc = A Python wrapper of libjpeg-turbo for decoding and encoding JPEG image
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/lilohuang/PyTurboJPEG
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = libjpeg-turbo
+	source = https://github.com/lilohuang/PyTurboJPEG/archive/refs/tags/v1.5.2.tar.gz
+	sha256sums = 96e0a8805fb5106fa49dc0d7ee1e9bbfe44a3479fa76c226552fac2d2704031e
+
+pkgname = python-turbojpeg
