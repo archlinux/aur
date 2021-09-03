@@ -5,7 +5,7 @@ _static_liftoff=0
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.8.4.r150.gffa970e
+pkgver=3.9.r0.g5d3a0eb
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -28,7 +28,7 @@ fi
 if [ $_static_liftoff -gt 0 ]; then
     depends+=("libdrm")
 else
-    depends+=("libliftoff")
+    depends+=("libliftoff<0.2.0")
 fi
 
 pkgver() {
