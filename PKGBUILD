@@ -6,7 +6,7 @@
 _grub4dos_version=0.4.5
 pkgname='easy2boot'
 pkgver='2.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Highly-configurable USB drive multiboot software with support for Secure UEFI booting'
 url='http://www.easy2boot.com/'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   # "grub4dos.rar::http://dl.grub4dos.chenall.net/grub4dos-${_grub4dos_version}-2009-12-23.rar"
 )
 noextract=('fosshub.html')
-md5sums=('f67be2fd311e92682574e1d28f22bbce')
+md5sums=('SKIP')
 
 prepare() {
 
