@@ -1,5 +1,5 @@
 pkgname=newrelic-infra
-pkgver=1.19.3
+pkgver=1.20.2
 pkgrel=1
 license=('Apache')
 arch=('x86_64')
@@ -8,7 +8,8 @@ source=(
 	"https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_${pkgver}_amd64.deb"
 	"https://raw.githubusercontent.com/newrelic/infrastructure-agent/1.19.3/assets/examples/infrastructure/newrelic-infra-template.yml.example"
 )
-sha256sums=('e7df2958f4bab64fe7acd3793c596e741b133ebb219c26e9e46709030b5b242a'
+
+sha256sums=('d7b04f488a8a0222d86b567aafb79a41b49333654cda1e20e605550429c6413d'
             'ac610105c621168903e4aa73d8eb53b5c9a6c0c88734bd4c922dc8f5d42d08e0')
 
 package() {
