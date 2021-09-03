@@ -1,6 +1,6 @@
 pkgbase = gpg-tui-git
 	pkgdesc = A terminal user interface for GnuPG (git)
-	pkgver = 0.7.4.r0.g148c99a
+	pkgver = 0.8.0.r0.g9d2e6c5
 	pkgrel = 1
 	url = https://github.com/orhun/gpg-tui
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gpg-tui-git
 	makedepends = python
 	makedepends = git
 	depends = libxcb
+	depends = libxkbcommon
 	depends = gpgme
 	optdepends = xplr: for file selection support
 	optdepends = xclip: for clipboard support on X11 (or xsel)
