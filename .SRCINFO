@@ -1,0 +1,17 @@
+pkgbase = wacom-settings-git
+	pkgdesc = GUI for calibrating the wacom tablet to a screen or window
+	pkgver = r4.7a95404
+	pkgrel = 1
+	url = https://github.com/avargas05/wacom-settings
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	depends = xf86-input-wacom
+	depends = gtk4
+	provides = wacom-settings
+	conflicts = wacom-settings
+	source = wacom-settings-git::git+https://github.com/avargas05/wacom-settings.git
+	sha256sums = SKIP
+
+pkgname = wacom-settings-git
