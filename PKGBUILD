@@ -1,10 +1,10 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-imath
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
-pkgdesc="A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)"
-url="https://github.com/AcademySoftwareFoundation/Imath"
+pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)'
+url='https://github.com/AcademySoftwareFoundation/Imath'
 arch=(any)
 license=('BSD')
 depends=('mingw-w64-crt')
@@ -15,16 +15,17 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'f21350efdcc763e23bffd4ded9bbf822e630c15ece6b0697e2fcb42737c08c2d'
+	'0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320'
 )
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" )
+_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' )
 _srcdir="Imath-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
 	sed -i -r 's/\$<TARGET_FILE:ImathTest>/\${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:ImathTest>/' 'src/ImathTest/CMakeLists.txt'
+	sed -i -r 's/#ifdef _MSC_VER/#ifdef _WIN32/' 'src/ImathTest/half_perf_test.cpp'
 }
 
 build() {
