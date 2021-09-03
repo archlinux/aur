@@ -1,7 +1,7 @@
 pkgbase = nextcloud-app-notify_push
 	pkgdesc = Update notifications for nextcloud clients
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nextcloud/notify_push
 	install = nextcloud-app-notify_push.install
 	arch = x86_64
