@@ -1,4 +1,4 @@
-pkgbase = nginx-mainline
+pkgbase = nginx-mainline-pushstream
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
 	pkgver = 1.21.2
 	pkgrel = 1

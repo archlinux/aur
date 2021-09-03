@@ -4,7 +4,6 @@
 # Contributor: Drew DeVault
 
 _pkgbase=nginx
-pkgbase=nginx-mainline
 pkgname=nginx-mainline-pushstream
 pkgver=1.21.2
 pushstreamver=0.5.4
