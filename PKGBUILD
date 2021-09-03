@@ -3,7 +3,7 @@
 _pyname=oslo.limit
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Limit enforcement library to assist with quota calculation."
 arch=(any)
@@ -24,6 +24,7 @@ makedepends=(
 	python-reno
 	python-sphinx
 	python-sphinxcontrib-apidoc
+	python-fixtures
 )
 checkdepends=(
 	python-stestr
@@ -32,12 +33,13 @@ checkdepends=(
 	python-stestr
 	bandit
 	python-pre-commit
+	python-fixtures
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('fd12e78328edf12aebfef069610d4564')
-sha256sums=('3063c53b5a1ab03b55e0feeb468c252d036711f37064f44a506647b379e6c453')
-sha512sums=('cc4d759be885d3c3fcf72ecc96f31a0746bc7e74eb2643d3017268728fb839d39b8d6f6732d75b4152dee73547888d3ba2d5adad52dce24db4afa7f76f6c2492')
+md5sums=('2d8a94f5358c7c4b502195f09cc01d8d')
+sha256sums=('ca11f5a19c092f8ecae9a5360584b6c0a3e6d1189eafa9dab2b6d6afb6f5507e')
+sha512sums=('6c52bf009ab5ecc186b2174a49cf2b5fac6320aa0170375733f6c78d75fb8ee1850dcac172a5b6689114b83625eb7e618c299f6127772152fc049cec2eae9f6a')
 
 export PBR_VERSION=$pkgver
 
