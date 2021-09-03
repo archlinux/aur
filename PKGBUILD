@@ -1,5 +1,7 @@
 # Maintainer : Victor Savcenco <victor dot sav at linux dot com>
 
+DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+
 pkgname=uqm-megamod-addon-3do
 _pkgname=uqm-megamod
 pkgver=0.8.0.85
@@ -7,14 +9,14 @@ _pkgver=0.7.0
 pkgrel=1
 pkgdesc="3do voice, video and music package for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
-url="https://github.com/yokai-shogun/UQM-MegaMod-Content"
+url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://github.com/yokai-shogun/UQM-MegaMod-Content/releases/download/${pkgver}/mm-${pkgver}-3dovoice.uqm"
-  "https://github.com/yokai-shogun/UQM-MegaMod-Content/releases/download/${_pkgver}/uqm-${_pkgver}-3dovideo.uqm"
-  "https://github.com/yokai-shogun/UQM-MegaMod-Content/releases/download/${_pkgver}/uqm-${_pkgver}-3DOMusicRemastered.uqm"
-  "https://raw.githubusercontent.com/yokai-shogun/UQM-MegaMod-Content/master/LICENSE"
+  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-3dovoice.uqm"
+  "https://files.serosis.net/MegaMod/uqm-${_pkgver}-3dovideo.uqm"
+  "https://files.serosis.net/MegaMod/uqm-${_pkgver}-3DOMusicRemastered.uqm"
+  LICENSE
 )
 
 md5sums=(
