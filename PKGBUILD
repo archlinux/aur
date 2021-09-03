@@ -1,8 +1,8 @@
 # Maintainer: Tim Meusel <tim@bastelfreak.de>
 
 pkgname=choria-io
-pkgver=0.22.0
-pkgrel=2
+pkgver=0.23.0
+pkgrel=1
 pkgdesc='Go based server to host Choria agents, networks, federations and discovery'
 arch=('x86_64')
 url='https://choria.io'
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/choria-io/go-choria/arc
         'broker.conf'
         'choria')
 backup=('etc/default/choria-server' 'etc/choria/server.conf' 'etc/choria/broker.conf')
-sha512sums=('e1d7c94a5bb2a2d1b5e206079f579654f8530a4da85bf50ad4a9aa7d0f7a02d227958d4fdf4b114ac23ba278b724a9b79e1c437b47745619d3d173a2441a5fd3'
+sha512sums=('4dd636d80ab3926fe63f6158fdf2fce5830638b34bf517596469912b76fab323004024a1be41ae2378c762fd41dfc26b8970f8b3ecf6432f4aee4a6829f0bd34'
             '78337d1cd28aa5f6206f85b0a5998c96a974e148149498183057f7e2d9b5adbe9ebe37ceb3add117d4229ca84312fd870ea541512dd29e57dade81f10efe3583'
             '7d889360b06fdd5e297cb781e898c8f3e87b17b3c7a33f952edd40a35f215032abfdee52e458b8f47678c06ff674e339d99c79fa435d3dd4841c96f28226a9ec'
             'fa1dbba2353051d9f9c6cd5f6ac8ef9daa179b87a6f12fd476e34a51d17568dfce5f35e92868b7eb277e6f6f114484816062e70cf1219a2ddedd3362d46aa6e2'
@@ -42,7 +42,8 @@ prepare() {
 build() {
   cd "${srcdir}/go-choria-${pkgver}"
 
-  go generate -v
+  #go generate -v
+  go generate -v -run plugin
 
   go build -o "binary/${pkgname}-${pkgver}" -ldflags "-X 'github.com/choria-io/go-choria/build.Version=${pkgver}' -X 'github.com/choria-io/go-choria/build.SHA=02bdef23185b843931d9c92e054de8dc534d157a' -X 'github.com/choria-io/go-choria/build.BuildDate=$(date -u '+%F %T %z' -d @$SOURCE_DATE_EPOCH)' -X 'github.com/choria-io/go-choria/build.ProvisionJWTFile=/etc/choria/provisioning.jwt' -s -w -buildid="
 }
@@ -54,7 +55,7 @@ check() {
   # https://github.com/choria-io/go-choria/blob/aa7901a99dd91cd247fdf07fe2d09e6961b5fed5/Rakefile#L3
   export MCOLLECTIVE_CERTNAME='rip.mcollective'
 
-  # advise GO to not require SAN certificates. choria has built-in certs as test fixtures. They don'y contain a SAN yet
+  # advise GO to not require SAN certificates. choria has built-in certs as test fixtures. They don't contain a SAN yet
   # because upstream choria builts on go 1.14 and also supports legacy puppet envs without SAN certs
   # https://golang.org/doc/go1.15#commonname
   export GODEBUG='x509ignoreCN=0'
@@ -65,7 +66,7 @@ package() {
   cd "${srcdir}/go-choria-${pkgver}"
   install -Dm755 "binary/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/choria"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 README.md CHANGELOG.md CONFIGURATION.md NOTICE -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README.md CHANGELOG.md CONFIGURATION.md NOTICE Dockerfile -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "${srcdir}/choria-server.service" "${srcdir}/choria-broker.service" -t "${pkgdir}/usr/lib/systemd/system/"
   install -Dm644 "${srcdir}/choria-server" -t "${pkgdir}/etc/default/"
   install -Dm644 "${srcdir}/choria" -t "${pkgdir}/etc/logrotate.d/"
