@@ -1,7 +1,7 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 
-pkgname='python-turbojpeg'
+pkgname='python-libjpeg-turbo'
 pkgdesc='A Python wrapper of libjpeg-turbo for decoding and encoding JPEG image'
 pkgver='1.5.2'
 pkgrel=1
