@@ -1,5 +1,5 @@
 pkgbase = uqm-megamod-addon-sol-textures
-	pkgdesc = Sol Textures for the Ur-Quan Masters MegaMod by Serosis.
+	pkgdesc = Improved textures for the planets in the Sol System for the Ur-Quan Masters MegaMod by Serosis.
 	pkgver = 0.8.0.85
 	pkgrel = 1
 	url = https://github.com/yokai-shogun/UQM-MegaMod-Content
