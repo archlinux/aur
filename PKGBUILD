@@ -3,8 +3,8 @@
 _pyname=oslo.metrics
 _pycname=${_pyname/./-}
 pkgname=python-${_pycname}
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Oslo Metrics API"
 arch=(any)
 url="https://docs.openstack.org/oslo.metrics/latest/"
@@ -28,14 +28,15 @@ makedepends=(
 checkdepends=(
 	python-hacking
 	python-oslotest
+	python-coverage
 	python-stestr
 	bandit
 )
 options=('!emptydirs')
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('6e43f355e9cc70bcd35462407c3dec9e')
-sha256sums=('684fa7efabae73e24efac9561bd52ed0792eab548aa2bb185b75a93737108d94')
-sha512sums=('0493683ba72205a365f3795876f63c17fd70dd1f64002c66a28d0aab4e7518a0db66454cfb29767ba625582f75943696b2ce2c2ba4a79f2ae0d2e7321ec2329f')
+md5sums=('4c28b7ff3701c7b489a65938fcf317ce')
+sha256sums=('9e25c21943e12df9b7390025b92b5112118d4b43bc96a5191eb0a112a0e4e84a')
+sha512sums=('f30370d2837ceca015b32d66dafb71d11bf1bfb01d47afa09bdf2e57d0fd65011e30b5e2de68c0f635d5710068b23944f4112f5a22260ed6350aaa7e3c64c4d7')
 
 export PBR_VERSION=$pkgver
 
