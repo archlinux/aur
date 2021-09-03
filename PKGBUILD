@@ -1,6 +1,6 @@
 pkgname=tencent-meeting
 pkgver=2.8.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tencent Meeting Linux Client 腾讯会议Linux客户端"
 arch=('x86_64')
 url="https://wemeet.qq.com"
@@ -16,5 +16,5 @@ package() {
     tar xf data.tar.xz -C "${pkgdir}"
     mv "${pkgdir}/opt/wemeet/icons" "${pkgdir}/usr/share"
     sed -i 'N;2aName[zh_CN]=腾讯会议\nComment=Tencent Meeting Linux Client\nComment[zh_CN]=腾讯会议Linux客户端' "${pkgdir}/usr/share/applications/wemeetapp.desktop"
-    find "${pkgdir}/opt/wemeet/lib" -type f ! -name 'libwemeet*' ! -name 'libxnn*' ! -name 'libxcast.so' ! -name 'libtquic.so' -delete
+    find "${pkgdir}/opt/wemeet/lib" -type f,l ! -name 'libwemeet*' ! -name 'libxnn*' ! -name 'libxcast.so' ! -name 'libtquic.so' -delete
 }
