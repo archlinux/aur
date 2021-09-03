@@ -3,13 +3,13 @@
 pkgname=grub-theme-cyberre
 _theme=CyberRe
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CyberRe Grub-theme."
 url="https://www.opendesktop.org/s/Gnome/p/1420727"
 arch=('any')
 license=('CC0')
 depends=('grub-common')
-source=("https://download1518.mediafire.com/8va901wkd1hg/nd3qlksb1pwkg3n/Grub2-theme+${_theme}+${pkgver}.tar.gz")
+source=("https://github.com/alealexpro100/various_files/raw/main/Grub2-theme%20${_theme}%20${pkgver}.tar.gz")
 
 package() {
 	cd ${srcdir}

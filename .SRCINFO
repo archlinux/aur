@@ -1,12 +1,12 @@
 pkgbase = grub-theme-cyberre
 	pkgdesc = CyberRe Grub-theme.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/s/Gnome/p/1420727
 	arch = any
 	license = CC0
 	depends = grub-common
-	source = https://download1518.mediafire.com/8va901wkd1hg/nd3qlksb1pwkg3n/Grub2-theme+CyberRe+1.0.0.tar.gz
+	source = https://github.com/alealexpro100/various_files/raw/main/Grub2-theme%20CyberRe%201.0.0.tar.gz
 	md5sums = 29202781294950eceb49865c88df01f9
 
 pkgname = grub-theme-cyberre
