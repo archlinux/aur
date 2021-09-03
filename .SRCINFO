@@ -1,7 +1,7 @@
 pkgbase = slimbookamdcontroller
 	pkgdesc = Application for the performance management of AMD processors
 	pkgver = 0.3.2beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slimbook.es
 	arch = any
 	license = GPL
