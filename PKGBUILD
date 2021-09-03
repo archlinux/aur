@@ -1,7 +1,7 @@
 # Maintainer: Aleksey Kurnosov <akkurnosov@gmail.com>
 
 pkgname=pyapplier
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc=".scrobbler.log (Rockbox offline last.fm scrobling format) submiter"
