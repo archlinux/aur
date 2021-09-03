@@ -3,14 +3,14 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilding with each new gcc version
 
-# You probably don't need support for all the languages, feel free to remove the ones you don't
-# Just edit the --enable-languages option as well as the pkgname array
+# You probably don't need support for all the languages, feel free to remove the ones you don't;
+# Just edit the --enable-languages option as well as the pkgname array :)
 
 pkgbase=gcc-git
-pkgname=(gcc-git gcc-libs-git gcc-fortran-git gcc-objc-git gcc-ada-git gcc-go-git gcc-d-git)
-pkgver=12.0.0_r187580.g5a6c626710a
+pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
+pkgver=12.0.0_r187762.g2484f7a4b0f
 _majorver=${pkgver%%.*}
-_isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep tar.xz | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
+_isl=$(curl -s "http://isl.gforge.inria.fr/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/">isl.*//')
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
@@ -124,8 +124,8 @@ build() {
 check() {
   cd gcc-build
 
-  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time  
-  sed -i '/maybe-check-target-libphobos \\/d' Makefile 
+  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
+  sed -i '/maybe-check-target-libphobos \\/d' Makefile
 
   # do not abort on error as some are "expected"
   make -k check || true
@@ -136,9 +136,9 @@ package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
   depends=(glibc)
   options+=(!strip)
-  provides=(gcc-libs $pkgbase-multilib{,git} libgo.so libgfortran.so libgphobos.so
+  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
-  replaces=($pkgbase-multilib-git libgphobos-git)
+  replaces=(gcc-multilib-git libgphobos-git)
 
   cd gcc-build
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
@@ -182,9 +182,9 @@ package_gcc-git() {
   depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
-  provides=(gcc $pkgbase-multilib{,-git})
+  provides=(gcc{,-multilib{,-git}})
   conflicts=(gcc)
-  replaces=($pkgbase-multilib-git)
+  replaces=(gcc-multilib-git)
   options+=(staticlibs)
 
   cd gcc-build
@@ -257,8 +257,8 @@ package_gcc-git() {
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
-  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
-  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
+  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
+  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -269,9 +269,9 @@ package_gcc-git() {
 package_gcc-fortran-git() {
   pkgdesc='Fortran front-end for GCC'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gcc-fortran $pkgbase-multilib{,-git})
+  provides=(gcc-fortran gcc-multilib{,-git})
   conflicts=(gcc-fortran)
-  replaces=($pkgbase-multilib-git)
+  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
@@ -293,9 +293,9 @@ package_gcc-fortran-git() {
 package_gcc-objc-git() {
   pkgdesc='Objective-C front-end for GCC'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=($pkgbase-multilib{,-git})
+  provides=(gcc-multilib{,-git})
   conflicts=(gcc-objc)
-  replaces=($pkgbase-multilib-git)
+  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make DESTDIR="$pkgdir" -C $CHOST/libobjc install-headers
@@ -311,9 +311,9 @@ package_gcc-objc-git() {
 package_gcc-ada-git() {
   pkgdesc='Ada front-end for GCC (GNAT)'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gcc-ada $pkgbase-multilib{,-git})
+  provides=(gcc-ada gcc-multilib{,-git})
   conflicts=(gcc-ada)
-  replaces=($pkgbase-multilib-git)
+  replaces=(gcc-multilib-git)
   options+=(staticlibs)
 
   cd gcc-build/gcc
@@ -351,9 +351,9 @@ package_gcc-ada-git() {
 package_gcc-go-git() {
   pkgdesc='Go front-end for GCC'
   depends=("gcc-git=$pkgver-$pkgrel")
-  provides=("go=1.12.2" $pkgbase-multilib{,-git})
+  provides=("go=1.12.2" gcc-multilib{,-git})
   conflicts=(gcc-go go{,-git})
-  replaces=($pkgbase-multilib-git)
+  replaces=(gcc-multilib-git)
 
   cd gcc-build
   make -C $CHOST/libgo DESTDIR="$pkgdir" install-exec-am
@@ -370,7 +370,7 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-## This package already exists on the AUR
+## This package already exists in the AUR
 # package_lib32-gcc-libs-git() {
 #   pkgdesc='32-bit runtime libraries shipped by GCC'
 #   depends=("lib32-glibc>=2.27")
