@@ -4,7 +4,6 @@ pkgrel=1
 pkgdesc='Upload data to hastebin via stdin'
 license=('GPL2')
 url='https://github.com/kevr/hastebin'
-
 arch=('any')
 depends=('python' 'python-requests')
 conflicts=("${pkgname%-git}")

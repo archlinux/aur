@@ -14,4 +14,3 @@ pkgbase = hastebin-git
 	sha256sums = SKIP
 
 pkgname = hastebin-git
-
