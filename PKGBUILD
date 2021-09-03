@@ -1,31 +1,23 @@
-# Maintainer: Michael Schubert <mschu.dev at gmail>
+# Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=autodock-vina
-pkgver=1.1.2
-_pkgver=${pkgver//./_}
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('Apache 2.0')
 pkgdesc="A tool for drug discovery, molecular docking and virtual screening"
-url="http://vina.scripps.edu/"
+url="https://github.com/ccsb-scripps/AutoDock-Vina"
 depends=('boost-libs')
 makedepends=('boost')
-source=("http://vina.scripps.edu/download/autodock_vina_$_pkgver.tgz")
-sha256sums=('b86412d316960b1e4e319401719daf57ff009229d91654d623c3cf09339f6776')
+source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v1.2.2.tar.gz)
+sha256sums=('b9c28df478f90d64dbbb5f4a53972bddffffb017b7bb58581a1a0034fff1b400')
 
 build() {
-  cd "$srcdir/autodock_vina_$_pkgver"
-  find src -name "*.cpp" -exec sed -i \
-    "s/.native_file_string()/.string()/g;s/, boost::filesystem::native//" {} \;
-  sed -i 's:${BOOST_LIB_VERSION}::g' build/makefile_common
-
-  cd "build/linux/release"
-  sed -i "s:/local::g;s:-static::g;s:C_OPTIONS=:& -std=gnu++11:g" Makefile
+  cd "$srcdir"/AutoDock-Vina-$pkgver/build/linux/release
   make
 }
 
 package() {
-  cd "$srcdir/autodock_vina_$_pkgver/build/linux/release"
-
-  install -Dm755 vina "$pkgdir/usr/bin/vina"
-  install -Dm755 vina_split "$pkgdir/usr/bin/vina_split"
+  cd "$srcdir"/AutoDock-Vina-$pkgver/build/linux/release
+  install -Dm755 vina "$pkgdir"/usr/bin/vina
+  install -Dm755 vina_split "$pkgdir"/usr/bin/vina_split
 }
