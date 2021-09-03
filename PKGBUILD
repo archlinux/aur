@@ -1,9 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 
 _pkgname=sile
 pkgname=$_pkgname-luajit
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -30,6 +31,7 @@ depends=(fontconfig
          freetype2
          harfbuzz
          gentium-plus-font
+         git
          icu
          libpng # this goes with libtexpdf if ever split out to a library package
          luajit
@@ -49,7 +51,7 @@ provides=(libtexpdf.so
 conflicts=("$_pkgname")
 _archive="$_pkgname-$pkgver"
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('7062e7ce8fbefcff19f83c76aab3fb35c4f77097fe351c4e5e5e369103f16091')
+sha256sums=('a3e627d543bf07ff43ff06cacdbceb8f37aa056a31af25e68f706ad33f497d19')
 
 build () {
 	cd "$_archive"
