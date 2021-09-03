@@ -1,0 +1,16 @@
+pkgbase = insync-emblem-icons
+	pkgdesc = File manager emblem icons for Insync file manager extensions
+	pkgver = 3.4.2.40983
+	pkgrel = 1
+	url = https://www.insynchq.com/downloads
+	arch = any
+	license = custom:insync
+	conflicts = insync-caja<=3.4.1
+	conflicts = insync-dolphin<=3.4.1
+	conflicts = insync-nautilus<=3.4.1
+	conflicts = insync-nemo<=3.4.1
+	options = !strip
+	source = insync-emblem-icons-3.4.2.40983.deb::http://s.insynchq.com/builds/insync-emblem-icons_3.4.2.40983_all.deb
+	sha256sums = c7630d573e44c41cd6da68fa94dcc35da7ab1f89b766478e77763e0eb18bf162
+
+pkgname = insync-emblem-icons
