@@ -19,11 +19,11 @@ pkgver() {
 
 build() {
 	cd tldr-cpp
-	make
+	make tldr-pkg
 }
 
 package() {
 	cd tldr-cpp
 	mkdir -p ${pkgdir}/usr/bin
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install-pkg
 }
