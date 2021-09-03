@@ -13,9 +13,9 @@ url="https://github.com/Serosis/UQM-MegaMod-Content"
 license=("custom:CC BY-NC-SA 2.5")
 
 source=(
-  "https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-3dovoice.uqm"
-  "https://files.serosis.net/MegaMod/uqm-${_pkgver}-3dovideo.uqm"
-  "https://files.serosis.net/MegaMod/uqm-${_pkgver}-3DOMusicRemastered.uqm"
+  "mm-${pkgver}-3dovoice.uqm:https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-3dovoice.uqm"
+  "uqm-${_pkgver}-3dovideo.uqm:https://files.serosis.net/MegaMod/uqm-${_pkgver}-3dovideo.uqm"
+  "uqm-${_pkgver}-3DOMusicRemastered.uqm:https://files.serosis.net/MegaMod/uqm-${_pkgver}-3DOMusicRemastered.uqm"
   LICENSE
 )
 
