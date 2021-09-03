@@ -1,10 +1,11 @@
 pkgbase = libxc
 	pkgdesc = A library of exchange-correlation functionals for density-functional theory
 	pkgver = 5.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tddft.org/programs/libxc
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MPL2
 	makedepends = gcc
 	makedepends = gcc-fortran

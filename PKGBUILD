@@ -2,9 +2,9 @@
 
 pkgname=libxc
 pkgver=5.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A library of exchange-correlation functionals for density-functional theory"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://www.tddft.org/programs/libxc"
 license=('MPL2')
 makedepends=('gcc' 'gcc-fortran')
