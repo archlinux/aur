@@ -8,12 +8,16 @@
 # replabrobin:
 #   added xserver_ready command to be executed synchronously
 #   after X is started e.g execute VBoxClient-all etc etc
+#   The sessiondir entries are sorted by filename so you can
+#   make your own sessiondir with numerically storted sessions;
+#   eg 01.desktop 02.desktop etc etc. The display names are
+#   taken from the desktop files.
 
 pkgname=slim-xserver-ready
 pkgver=1.3.6
-pkgrel=5
+pkgrel=6
 pkgdesc="graphical login manager for X11 with xserver_ready command"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://sourceforge.net/projects/slim.berlios/"
 license=('GPL2')
 conflicts=('slim')
@@ -27,17 +31,25 @@ source=(https://downloads.sourceforge.net/project/slim.berlios/slim-$pkgver.tar.
         slim-1.3.6-fix-libslim-libraries.patch
         slim-1.3.6-add-sessiondir.patch
         slim-1.3.6-systemd-session.patch
+        slim-1.3.6-default-path.patch
         slim.pam
+        slimlock.pam
         slim.logrotate
-        slim-1.3.6-xserver-ready.patch
+        slim-session-sort.patch
+        slim-type-fix.patch
+        slim-xserver-ready.patch
         )
 sha256sums=('21defeed175418c46d71af71fd493cd0cbffd693f9d43c2151529125859810df'
             '3dfa697f8c058390c7e02e7aba769475057ef8ddde945dc43b8cb7f9724dbda0'
             '0dffd53a69eb9033a67fad964df6fc150ee7a483e29d8eb8b559010fbd14e5fd'
             '900b7ffe723b741c05bcc0ca857f300a2131a0029c6532eb17be935451bf2c70'
+            '1e303eda65a06edc8c2d938ab0751ae7744effae48cc185fd27d3cc5b2561522'
             'b9a77a614c451287b574c33d41e28b5b149c6d2464bdb3a5274799842bca51a4'
+            'dfe35488b50f19fd96526374edc16850ed37dac919834dd579392b1a7518f2ab'
             '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def'
-            '209e769b7584c5ef26bc657103bc1b00a5892ab280d361f0117626df419b3f9f'
+            'a6d021e52661c74914dc1c4a08ffbd7fce63da41005bfe006e252a74c57c9b70'
+            '03149c9f5afb4679e9421d9965ecc126c0b159636212000aca98cb674b531ca7'
+            '96f09b5b60c37ca1955f870caa46c1b0d2f4581bf1d8610a48266d0404395876'
             )
 
 prepare() {
@@ -49,7 +61,10 @@ prepare() {
   patch -Np1 -i ../slim-1.3.6-fix-libslim-libraries.patch
   patch -Np1 -i ../slim-1.3.6-add-sessiondir.patch
   patch -Np1 -i ../slim-1.3.6-systemd-session.patch
-  patch -Np1 -i ../slim-1.3.6-xserver-ready.patch
+  patch -Np1 -i ../slim-1.3.6-default-path.patch
+  patch -Np1 -i ../slim-xserver-ready.patch
+  patch -Np1 -i ../slim-session-sort.patch
+  patch -Np1 -i ../slim-type-fix.patch
 }
 
 build() {
@@ -70,6 +85,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/slim.pam" "$pkgdir/etc/pam.d/slim"
+  install -Dm644 "$srcdir/slimlock.pam" "$pkgdir/etc/pam.d/slimlock"
   install -Dm644 "$srcdir/slim.logrotate" "$pkgdir/etc/logrotate.d/slim"
   install -Dm644 slimlock.conf "$pkgdir/etc/slimlock.conf"
 
