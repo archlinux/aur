@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib-compiled
 _pkgname='cpp-httplib'
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='A C++ HTTP/HTTPS server and client library (compiled version)'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ conflicts=('cpp-httplib')
 depends=('openssl>=1.1.1' 'zlib' 'brotli')
 makedepends=('cmake>=3.14' 'python>=3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('df6cd4513d8bd49b2140b5497623fe750e3976172fd0c6c702d33fdefb3fe094f3e847471be333a63d18821362cd53e3a72f3432382c9d2cafaa5795cba1a3c3')
+sha512sums=('472f4ce4ff5ba4b2e175120deb0a3ccc4c7b124e9349fd7709e1439fcdcfbc83ff0fb71d58367f38e042c4a64600936755432bd4de3e0065b2810dc5bc7d3c86')
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	# Quiets the "no git tag" warning
