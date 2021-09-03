@@ -10,7 +10,7 @@ pkgbase = r-future
 	depends = r-digest
 	depends = r-globals>=0.14.0
 	depends = r-listenv>=0.8.0
-	depends = r-parallely>=1.26.1
+	depends = r-parallelly>=1.26.1
 	optdepends = r-rhpcblasctl
 	optdepends = r-r.rsp
 	optdepends = r-markdown
