@@ -3,7 +3,7 @@
 _pkgname='ansible-aur'
 pkgname="${_pkgname}-git"
 pkgver=0.43.r7.gc64679b
-pkgrel=1
+pkgrel=2
 pkgdesc='ansible module to install packages from AUR'
 arch=('any')
 url='https://github.com/kewlfft/ansible-aur'

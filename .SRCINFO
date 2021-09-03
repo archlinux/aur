@@ -1,7 +1,7 @@
 pkgbase = ansible-aur-git
 	pkgdesc = ansible module to install packages from AUR
-	pkgver = 0.43.r2.gde92aa8
-	pkgrel = 1
+	pkgver = 0.43.r7.gc64679b
+	pkgrel = 2
 	url = https://github.com/kewlfft/ansible-aur
 	arch = any
 	license = GPL3
