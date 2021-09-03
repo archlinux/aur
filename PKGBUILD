@@ -1,10 +1,10 @@
-# Maintainer: Bertrand Bonnefoy-Claudet <bertrandbc@gmail.com>
+# Maintainer: Bertrand Bonnefoy-Claudet <bertrand@bertrandbc.com>
 # Contributor: Brice Waegeneire <brice dot wge at gmail dot com>
 
 _gemname=veewee
 pkgname=ruby-$_gemname
 pkgver=0.4.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for building custom Vagrant base boxes and virtual machine images."
 arch=(any)
 url="https://github.com/jedi4ever/veewee"
@@ -17,7 +17,7 @@ depends=('ruby' 'ruby-ansi-1.3' 'ruby-childprocess'
          'ruby-thor>=0.15' 'ruby-to_slug')
 provides=('veewee')
 conflicts=('veewee')
-source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
 sha512sums=('06e4bdca3d8efc92677662329a1efa047c6e0cf777721dcaaffe2a437f4b4ad523bca93cdbaf2f6f21fa95f56896e69d449b3ab86d1152b15efa517192564ac8')
 
