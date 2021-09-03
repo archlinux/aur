@@ -8,7 +8,7 @@ pkgbase = easy2boot
 	makedepends = dos2unix
 	makedepends = jq
 	noextract = fosshub.html
-	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/
+	source = fosshub.html::https://www.fosshub.com/Easy2Boot.html/Easy2Boot_v2.09_password_is_e2b.zip
 	md5sums = SKIP
 
 pkgname = easy2boot

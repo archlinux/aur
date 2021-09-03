@@ -16,7 +16,7 @@ makedepends=('dos2unix' 'jq')
 _projectName='Easy2Boot'
 _fileName="${_projectName}_v${pkgver}_password_is_e2b.zip"
 source=(
-  "fosshub.html::https://www.fosshub.com/Easy2Boot.html/${fileName}"
+  "fosshub.html::https://www.fosshub.com/Easy2Boot.html/${_fileName}"
   # "grub4dos.rar::http://dl.grub4dos.chenall.net/grub4dos-${_grub4dos_version}-2009-12-23.rar"
 )
 noextract=('fosshub.html')
