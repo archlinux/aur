@@ -74,8 +74,8 @@ _use_current=
 pkgbase=linux-cacule-rdb
 pkgname=('linux-cacule-rdb' 'linux-cacule-rdb-headers')
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-pkgver=5.14
-pkgrel=4
+pkgver=5.14.1
+pkgrel=1
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux-CacULE-RDB Kernel by Hamad Marri and with some other patchsets compiled'
 _gittag=v${pkgver%.*}-${pkgver##*.}
@@ -90,7 +90,7 @@ _patchsource="https://raw.githubusercontent.com/ptr1337/linux-cacule-aur/master/
 source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
         "config"
         "${_patchsource}/arch-patches/0001-arch-patches.patch"
-        "${_caculepatches}/v5.14/cacule-5.14.patch"
+        "${_caculepatches}/v5.14/cacule-5.14-full.patch"
         "${_patchsource}/misc/0004-folio-mm.patch"
         "${_patchsource}/misc/0009-compiler-remove-stale-cc-option-checks.patch"
         "${_patchsource}/misc/0007-string.patch"
@@ -110,7 +110,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver
         "${_patchsource}/zen-patches/0001-zen-patches.patch"
         "${_patchsource}/zstd-patches/0001-zstd-patches.patch"
         "${_patchsource}/zstd-upstream-patches/0001-zstd-upstream-patches.patch"
-        "${_patchsource}/ntfs3-patches-v3/0001-ntfs3-patches.patch"
+        "${_patchsource}/ntfs3-patches-v4/0001-ntfs3-patches.patch"
         "${_patchsource}/0001-cpu-patches.patch"
         "${_patchsource}/0001-winesync.patch"
         "${_patchsource}/0001-v4l2loopback.patch"
@@ -511,10 +511,10 @@ package_linux-cacule-rdb-headers() {
 
 }
 
-md5sums=('a082ef5748b813abca0649dab8be5f52'
+md5sums=('be936a500fab39069e50b0bcfcc0c369'
          '3a623863ef1d4a63d8f172c738dc1236'
          'b961add2e3ea53ade755148169c00e6e'
-         'd92c43182698243cd13d32376cec0f23'
+         '024a0126cfcd18e000a2241f35c4d69e'
          'a804260e2f301ffe2a17d6e3625a9711'
          '50868332310ae198428861fb7e743d5e'
          'd6e5581b4fade267a28deb8e73d236f5'
@@ -533,9 +533,9 @@ md5sums=('a082ef5748b813abca0649dab8be5f52'
          '381bc4f0ff885e9b67e5899476a30416'
          'fe00e09708cbbeb15e348e36ab881696'
          '0553f660f2399549ed17b6d2ca4e930e'
-         '99ab82a0ffab06f8fe0a2674da1b3ffe'
+         'bb5234c6cd12276dbc4d231cc038f8f7'
          'bb22330e270bf36ccf53cb04d6b496d2'
          '4c493a3e0f3486be8ad1b6c67c9c6917'
          '95eb4457f95f3f8dd153983612ee65c0'
          '566435a0444ee45816599f2e0e362c7a'
-         '7cf0b5c39d16da18451d1e7e7523d992')
+         '6bfbbe0bbb79379203889ed7df5e5288')
