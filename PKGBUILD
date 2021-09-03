@@ -6,14 +6,14 @@
 pkgname="opentsdb"
 _MAJOR=2
 _MINOR=4
-_PATCH=0
+_PATCH=1
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
 function _dl_url {
   echo "https://github.com/OpenTSDB/opentsdb/archive/v$1.$2.$3.zip"
 }
 
-pkgrel=5
+pkgrel=1
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://opentsdb.net/"
@@ -25,12 +25,10 @@ backup=(
   "etc/${pkgname}/opentsdb.conf"
 )
 install="${pkgname}.install"
-source=("$(_dl_url $_MAJOR $_MINOR $_PATCH)"
-        "${pkgname}.install"
+source=("opentsdb_$_MAJOR.$_MINOR.$_PATCH.zip::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "opentsdb.service")
-sha512sums=('bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9'
-            '558663fe8dabc02f779df2f8ae44656bc913706aafba33778627328460766f49ac7dac4a3c3d78e6f6b380d59d18258710455cdb70e6a780bd888bb880ea548f'
-            '29aa52c408323f0586e51c2e682ccaed5e7ac3c9dfff6e35b0185c180ec61d969fcdba8407878ee6a0d9d5fa6a15aa29ddf54d8baa3458e4075a0f97ba718ebd')
+sha512sums=('a535e2aea14658fd1eb26d1239091dbcb52aff8d03379999e03b5b7c089ca0866ec7fbe552a617c07e13074c9c3e27c12049c0144b23f0d18482615517502c05'
+            'SKIP')
 _watch="https://github.com/OpenTSDB/opentsdb/releases"
 
 prepare() {
