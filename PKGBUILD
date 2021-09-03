@@ -2,8 +2,8 @@
 
 _pyname=openstackdocstheme
 pkgname=python-$_pyname
-pkgver=2.2.7
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="OpenStack Docs Theme"
 arch=(any)
 url="https://docs.openstack.org/openstackdocstheme/latest/"
@@ -19,16 +19,10 @@ checkdepends=(
 	python-sphinx
 	python-pre-commit
 )
-source=(
-	https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz
-	0000-openstackdocstheme-sphinx-4.0.0.patch
-)
-md5sums=('ae3515ee8f0d46e60df950aa558b387b'
-         '746d48201c3dfead69c1b4afebd75965')
-sha256sums=('beacfc00277337c733c1e48ace1cdeb598faf5718609b638972d72fe04bf6372'
-            '64b4183f3f69f60b17da2220782169c7cc0ff6146163209d7cc78def5c9db581')
-sha512sums=('38ca434d48c04608a66d05a93a19d030bf9302f024d052f67af21e241365f046e9508359dfb62cd1b8897836f20a4983cdeb3c1a66ca4e3161fd722da6006332'
-            '2addf86f0d2365aa0ff8a94d5cb356041bb7c5bdc4b9921d0dc3d5fba52de005c7b95dc90224ec0c245e3cfd857ba9024d301ed4177d0c1f0f4dbf0f70c138f9')
+source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
+md5sums=('afa5e145d3a61bfdb168fd8b2357e744')
+sha256sums=('dbdd237e40f660c86a5fe8c3d16db99e2c8471db2d7575981d5a02ce1977cf77')
+sha512sums=('26cd9c6c36bf4f707c74556829dcf270eb7e064e4d35ad76931d79f9b0f2aeb0cde37b2ff07f97a010566fed53c55746cd413aa4a03d8718be92810f6afd29f0')
 
 export PBR_VERSION=$pkgver
 
