@@ -1,0 +1,16 @@
+diff '--color=auto' -Naur UQM-MegaMod-0.8.0.85/src/config_unix.h.in UQM-MegaMod-0.8.0.85_fix/src/config_unix.h.in
+--- UQM-MegaMod-0.8.0.85/src/config_unix.h.in	2020-11-05 20:46:36.000000000 -0500
++++ UQM-MegaMod-0.8.0.85_fix/src/config_unix.h.in	2021-09-01 23:10:32.505028630 -0400
+@@ -11,10 +11,10 @@
+ #define CONFIG_UNIX_H_
+ 
+ /* Directory where the UQM game data is located */
+-#define CONTENTDIR "@CONTENTDIR@"
++#define CONTENTDIR "/usr/share/uqm-megamod"
+ 
+ /* Directory where game data will be stored */
+-#define USERDIR "~/.uqm-megamod/"
++#define USERDIR "~/.local/share/uqm-megamod/"
+ 
+ /* Directory where config files will be stored */
+ #define CONFIGDIR USERDIR

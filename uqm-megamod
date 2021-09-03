@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+exec "/usr/lib/uqm/uqm-megamod" "--contentdir=/usr/share/uqm-megamod/content" "$@"
+
