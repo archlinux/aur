@@ -34,6 +34,31 @@ post_install() {
 	printf "Check https://docs-develop.pleroma.social/backend/installation/otp_en/#post-installation for post-installation steps.\n"
 }
 
+pre_upgrade() {
+    systemctl stop pleroma.service
+}
+
 post_upgrade() {
-    post_install $1
+    username="pleroma"
+    home_dir="/opt/${username}"
+    migration_needed="false"
+
+    printf "Procedures to upgrade from version $2 to version $1:\n\n"
+    case "$2" in
+    "2.4.0-1")
+        ;&
+    "2.4.0-2")
+        printf "Check https://pleroma.social/announcements/2021/08/29/pleroma-patch-release-2-4-1/ for upgrade notes.\n"
+        ;&
+    esac
+
+    if [ "$migration_needed" = "true" ]; then
+        printf "\nYou will need to migrate your database as the above upgrade notes state.\n"
+        printf "Ensure your postgresql database, whether local or remote, is up,  and run the following command:\n"
+        printf ">>> cd \"$home_dir\"\n"
+        printf ">>> sudo -Hu \"$username\" ./bin/pleroma_ctl migrate\n"
+    fi
+
+    printf "\nAfter all these, you may start pleroma with:\n"
+    printf ">>> sudo systemctl start pleroma\n"
 }
