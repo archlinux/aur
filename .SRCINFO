@@ -1,11 +1,12 @@
 pkgbase = gpg-tui-bin
 	pkgdesc = A terminal user interface for GnuPG
-	pkgver = 0.7.4
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/orhun/gpg-tui
 	arch = x86_64
 	license = MIT
 	depends = libxcb
+	depends = libxkbcommon
 	depends = gpgme
 	optdepends = xplr: for file selection support
 	optdepends = xclip: for clipboard support on X11 (or xsel)
@@ -14,9 +15,9 @@ pkgbase = gpg-tui-bin
 	provides = gpg-tui
 	conflicts = gpg-tui
 	validpgpkeys = 14D49A4073C6899425D5315C1BC755D9FBD24068
-	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.7.4/gpg-tui-0.7.4-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.7.4/gpg-tui-0.7.4-x86_64-unknown-linux-gnu.tar.gz.sig
-	sha512sums_x86_64 = 9bf1c448307e7ad0c2dffbe2e9b6978124bac14f3f27d113fe4c2020fc47a9bf80d90bb0f395b31613f97d5df07a2f50d389d5b2970c2d3e53f47ad73c43cb7d
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.0/gpg-tui-0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/orhun/gpg-tui/releases/download/v0.8.0/gpg-tui-0.8.0-x86_64-unknown-linux-gnu.tar.gz.sig
+	sha512sums_x86_64 = 8df203224e51e0fb9f02d402c67c5e48dc361cd591b972b818ccef4ce2661203eb068766fb6542447b1487df2ebe406145558b0b3dc3a682ff10c151c0ba5c0b
 	sha512sums_x86_64 = SKIP
 
 pkgname = gpg-tui-bin
