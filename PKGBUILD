@@ -2,30 +2,22 @@
 
 pkgname=xmrig-cuda
 pkgver=6.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
-depends=('xmrig>=6.15.0' 'cuda>=11.4.0-1')
+depends=('xmrig>=6.15.0' 'cuda>=8.0')
 optdepends=('monero: wallet')
-# We unfortunately need to be hard on which version of CUDA we use
-makedepends=('cmake' 'openssl' 'cuda>=11.4.0-1')
+makedepends=('cmake' 'openssl' 'cuda>=8.0')
 license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('64c440a4cb439f3cc8120f1883274158f95df988ab91eccb1d2d2abf0bedbbfe')
 
-prepare() {
+build() {
   cd "${pkgname}-${pkgver}"
 
-  # create build dir
-  [ -d build ] || mkdir build
-}
-
-build() {
-  cd "${pkgname}-${pkgver}/build"
-
-  cmake -DCMAKE_C_COMPILER=/opt/cuda/bin/gcc -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++ ..
-  make
+  cmake -DCMAKE_C_COMPILER=/opt/cuda/bin/gcc -DCMAKE_CXX_COMPILER=/opt/cuda/bin/g++ -S . -B build
+  cmake --build build
 }
 
 package() {

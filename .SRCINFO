@@ -1,15 +1,15 @@
 pkgbase = xmrig-cuda
 	pkgdesc = NVIDIA CUDA plugin for XMRig miner.
 	pkgver = 6.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmrig/xmrig-cuda
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = openssl
-	makedepends = cuda>=11.4.0-1
+	makedepends = cuda>=8.0
 	depends = xmrig>=6.15.0
-	depends = cuda>=11.4.0-1
+	depends = cuda>=8.0
 	optdepends = monero: wallet
 	source = https://github.com/xmrig/xmrig-cuda/archive/v6.15.0.tar.gz
 	sha256sums = 64c440a4cb439f3cc8120f1883274158f95df988ab91eccb1d2d2abf0bedbbfe
