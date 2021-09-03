@@ -2,7 +2,7 @@
 
 _pyname=os-traits
 pkgname=python-$_pyname
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A library containing standardized trait strings"
 arch=(any)
@@ -27,9 +27,9 @@ checkdepends=(
 	python-testtools
 )
 source=(https://pypi.io/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz)
-md5sums=('1f97fdf548f195c4ab8b8e8a7e0dd221')
-sha256sums=('6168dcda9e6f971432a46aca8e88712dcdb85aecaacc95a8bfe8777cd358da0b')
-sha512sums=('55fcebf4c9340e4c783c3a6e6636555d90950b172a51925b34119a17ebd3d880d031f60aa1fdf4183ba9d98c2782be01154868b3f1a6b75389728561c77ca5db')
+md5sums=('dcc26929cfcf86e7cc9bd50c2649567c')
+sha256sums=('1fa1a638f630c0b4a2c2a2aadae9f09948e5aced74840b647ab601a082226605')
+sha512sums=('57f46678c1859af09f0e13e491760bddd818b7779716d91197f9fa45c6b195bb023a4de5fface68a95a87bf66547b27d74addb66cde043bd571a0eca176ee53b')
 
 export PBR_VERSION=$pkgver
 
