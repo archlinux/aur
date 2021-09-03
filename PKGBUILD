@@ -4,7 +4,7 @@
 pkgname=thunderbird-beta
 _pkgname=thunderbird
 _pkgver=92.0
-_beta=4
+_beta=5
 pkgver="${_pkgver}b${_beta}"
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — Beta version'
@@ -77,36 +77,36 @@ package() {
   cd $_pkgname-$_pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/$pkgname/defaults/pref"
-  install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/$pkgname/distribution"
+  install -Dm 644 ../vendor-prefs.js -t "$pkgdir/usr/lib/${_pkgname}/defaults/pref"
+  install -Dm 644 ../distribution.ini -t "$pkgdir/usr/lib/${_pkgname}/distribution"
   install -Dm 644 ../thunderbird-beta.desktop -t "$pkgdir/usr/share/applications"
 
   for i in 16 22 24 32 48 64 128 256; do
     install -Dm644 comm/mail/branding/thunderbird/default${i}.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
   done
   install -Dm644 comm/mail/branding/thunderbird/TB-symbolic.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/thunderbird-symbolic.svg"
 
   # Use system-provided dictionaries
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/$pkgname/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/$pkgname/hyphenation"
+  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/${_pkgname}/dictionaries"
+  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/${_pkgname}/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/${_pkgname}" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/thunderbird "\$@"
+exec /usr/lib/${_pkgname}/thunderbird "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/thunderbird-bin"
+  ln -srf "$pkgdir/usr/bin/${_pkgname}" \
+    "$pkgdir/usr/lib/${_pkgname}/thunderbird-bin"
 }
 
-sha256sums=('1a75e49e0933be55b9f3033e75ff915be51fef573575d57fd63c7a4fdd3572fd'
+sha256sums=('5974ebb747eb47599e001425198e3079138a691f2c882196eee01a06159bb78c'
             'SKIP'
-            '4c8cc465953be36639a2bff7544c42cc45cc56c460a1a350d0656b43cc7b2eea'
+            '71251951e99d33c1bc56d8e1729270cb1c0bd026a86cd840b8ac9ac54a68d846'
             'fa11b4736bbf53ec015f71cd42b1040b22d1a855c562b76927b3f0eccb925c85'
             'bc3aae2cc00dc9806f54606f98d967366a2ba7223f6a3ad1c658a653ebff5569'
             '86874c98733a532e4956482ec3f9dfa5bdff2d06771e09e73be1ade712c07bd0')
