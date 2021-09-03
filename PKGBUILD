@@ -1,5 +1,5 @@
 # Maintainer: JustKidding <jk@vin.ovh>
-# Contributor: Yurii Kolesnykov <root@yurikoles.com>
+# Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r42.gf6f2f203b
+pkgver=21.0.99.1.r70.g7c63c582a
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -24,9 +24,10 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
+             'libxshmfence' 'libunwind' 'systemd' 'meson' 'git'
+             'wayland-protocols' 'egl-wayland' 'libxcvt')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
-        xvfb-run
+        xvfb-run # with updates from FC master
         xvfb-run.1)
 sha512sums=('SKIP'
             '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
@@ -79,7 +80,9 @@ _install() {
     f="${src#fakeinstall/}"
     dir="${pkgdir}/${f%/*}"
     install -m755 -d "${dir}"
-    mv -v "${src}" "${dir}/"
+    # use copy so a new file is created and fakeroot can track properties such as setuid
+    cp -av "${src}" "${dir}/"
+    rm -rf "${src}"
   done
 }
 
@@ -113,12 +116,12 @@ package_xorg-server-git() {
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
-  _install fakeinstall/usr/bin/{Xorg,cvt,gtf}
+  _install fakeinstall/usr/bin/{Xorg,gtf}
   ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
   _install fakeinstall/usr/lib/Xorg{,.wrap}
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
-  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,cvt,gtf}.1
+  _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,gtf}.1
   _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting,inputtestdrv}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 

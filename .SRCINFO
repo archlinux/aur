@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 21.0.99.1.r42.gf6f2f203b
+	pkgver = 21.0.99.1.r70.g7c63c582a
 	pkgrel = 1
 	url = https://xorg.freedesktop.org
 	arch = x86_64
@@ -35,6 +35,9 @@ pkgbase = xorg-server-git
 	makedepends = systemd
 	makedepends = meson
 	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = egl-wayland
+	makedepends = libxcvt
 	source = git+https://gitlab.freedesktop.org/xorg/xserver.git
 	source = xvfb-run
 	source = xvfb-run.1
