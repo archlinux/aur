@@ -9,7 +9,8 @@ url="https://aur.archlinux.org/packages/$pkgname"
 depends=('smdev' 'pulseaudio')
 license=('Apache')
 source=('40-pulse' 'pulseaudio-smdev-reload')
-md5sums=('SKIP' 'SKIP')
+md5sums=('35366b9041c3631fe2ca022a76b1666c'
+         'cf568f1c677cddf7c696cc80a16b25ee')
 
 
 package() {
