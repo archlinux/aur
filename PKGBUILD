@@ -1,13 +1,12 @@
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 # Contributor: Asterios Dimitriou <asterios@pci.gr>
 # Contributor: Benjamin Asbach <archlinux-aur.lxd@impl.it>
 # Contributer: nightuser <nightuser.android at gmail.com>
 
 pkgname=lxd
-_pkgname=lxd
-_lxd=github.com/lxc/lxd
-pkgver=4.17
+pkgver=4.18
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -31,26 +30,28 @@ source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.t
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('54524a25398e366d7ff20726e3bd59a3ac9a4da34b49a370e27ff0599e7ff5cf'
+sha256sums=('b60e09e4d349eebfedff8f1ca493533fb7353aceb43cbbcd7f4e340715a5f3a5'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
             'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4')
 
-
 prepare() {
-  mkdir -p "${srcdir}/go/src/github.com/lxc"
-  ln -rTsf "${_pkgname}" "${srcdir}/go/src/${_lxd}"
+  cd "$pkgname-$pkgver"
+
+  # create directory for build output
+  mkdir bin
+
+  # verify modules
+  go mod verify
 }
 
 build() {
-  export GOPATH="${srcdir}/${pkgname}-${pkgver}/_dist"
-  cd "${GOPATH}/src/${_lxd}"
+  cd "$pkgname-$pkgver"
+
   export GOFLAGS="-buildmode=pie -trimpath"
-  export GO111MODULE=off
   export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-  mkdir -p bin
 	go build -v -tags "netgo" -o bin/ ./lxd-p2c/...
 	CGO_LDFLAGS="$CGO_LDFLAGS -static" go build -v -tags "agent" -o bin/ ./lxd-agent/...
   for tool in fuidshift lxc lxc-to-lxd lxd lxd-benchmark; do
@@ -66,23 +67,21 @@ package() {
   done
 
   # Package license
-  install -Dm644 "COPYING"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE"
+  install -Dm644 "COPYING"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 
   # systemd files
-  install -Dm644 "${srcdir}/lxd.service" "${pkgdir}/usr/lib/systemd/system/lxd.service"
-  install -Dm644 "${srcdir}/lxd.socket" "${pkgdir}/usr/lib/systemd/system/lxd.socket"
+  install -Dm644 "${srcdir}/"lxd.{service,socket} -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm644 "${srcdir}/$pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
 
   # logs
   install -dm700 "${pkgdir}/var/log/lxd"
 
   # documentation
-  mkdir -p "${pkgdir}/usr/share/doc/lxd"
+  install -d "${pkgdir}/usr/share/doc/lxd"
   install -p -Dm644 "doc/"* "${pkgdir}/usr/share/doc/lxd/"
 
   # Bash completions
   install -p -Dm644 "scripts/bash/lxd-client" "${pkgdir}/usr/share/bash-completion/completions/lxd"
-
-  install -Dm644 "${srcdir}/$pkgname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
 }
 
 # vim:set ts=2 sw=2 et:
