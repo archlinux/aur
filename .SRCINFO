@@ -4,6 +4,7 @@ pkgbase = adwaita-qt
 	pkgrel = 1
 	url = https://github.com/FedoraQt/adwaita-qt
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = cmake
 	depends = qt5-x11extras
