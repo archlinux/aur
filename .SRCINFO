@@ -1,17 +1,20 @@
 pkgbase = leafish-git
 	pkgdesc = Multi-version Minecraft-compatible client written in Rust.
-	pkgver = r90.de2d569
+	pkgver = r107.bb537e8
 	pkgrel = 1
 	url = https://github.com/terrarier2111/leafish
 	arch = x86_64
 	license = APACHE
 	makedepends = cargo
 	makedepends = git
+	makedepends = desktop-file-utils
 	depends = libxcb
 	depends = openssl
 	provides = leafish
 	conflicts = leafish
 	source = leafish-git::git+https://github.com/terrarier2111/leafish.git
+	source = leafish.desktop
 	sha256sums = SKIP
+	sha256sums = c9de3b7a74ba7ec863809d23dc61f44e744eddb98ba66f2c0f946081215dfd91
 
 pkgname = leafish-git

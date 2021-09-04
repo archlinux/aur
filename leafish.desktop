@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Categories=Game
+Name=Leafish
+Exec=leafish
+Icon=leafish-logo
+Keywords=game;minecraft;

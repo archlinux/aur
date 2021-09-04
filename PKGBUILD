@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=leafish-git
-pkgver=r90.de2d569
+pkgver=r107.bb537e8
 pkgrel=1
 pkgdesc="Multi-version Minecraft-compatible client written in Rust."
 arch=('x86_64')
@@ -9,13 +9,16 @@ url="https://github.com/terrarier2111/leafish"
 license=('APACHE')
 groups=()
 depends=('libxcb' 'openssl')
-makedepends=('cargo' 'git')
+makedepends=('cargo' 'git' 'desktop-file-utils')
 checkdepends=()
 optdepends=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git" "leafish.desktop")
+sha256sums=(
+	'SKIP'
+	'c9de3b7a74ba7ec863809d23dc61f44e744eddb98ba66f2c0f946081215dfd91'
+)
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -41,7 +44,10 @@ build() {
 }
 
 package() {
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "leafish.desktop"
+
 	cd "$srcdir/$pkgname"
 
-	install -Dm0755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	install -Dm644 "resources/assets/leafish/logo/leafish-logo.svg" -t "$pkgdir/usr/share/pixmaps"
 }
