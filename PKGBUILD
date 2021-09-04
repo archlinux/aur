@@ -1,4 +1,4 @@
-# Maintainer: Leon Schumacher <youremail@domain.com>
+# Maintainer: Leon Schumacher <leonsch@protonmail.com>
 # vim: ft=sh:
 pkgname=kisslinux-init
 pkgver=1.0.3
