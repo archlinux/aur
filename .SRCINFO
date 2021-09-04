@@ -5,7 +5,6 @@ pkgbase = strace-with-colors
 	url = https://strace.io/
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	depends = perl
 	depends = libunwind
 	provides = strace

@@ -9,7 +9,6 @@ arch=(x86_64)
 url='https://strace.io/'
 license=(BSD)
 depends=(perl libunwind)
-makedepends=(git)
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=("https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz"
@@ -18,8 +17,7 @@ sha1sums=('6625b01b18c3940cd926c85e4d1feb10f162973d'
           'SKIP')
 
 prepare() {
-  cd $_pkgname-$pkgver
-  git apply "${srcdir}/$pkgname.patch"
+  patch -d "$_pkgname-$pkgver" -p1 -i ../$pkgname.patch
 }
 
 build() {
