@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=kisslinux-init
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Init framework of KISS Linux"
 arch=('any')
 url="https://github.com/kisslinux/init"
@@ -29,4 +29,5 @@ package() {
 	install -Dm755 "lib/init/rc.boot" "$pkgdir/usr/lib/init/rc.boot"
 	install -Dm755 "lib/init/rc.shutdown" "$pkgdir/usr/lib/init/rc.shutdown"
 	install -Dm644 "lib/init/rc.lib" "$pkgdir/usr/lib/init/rc.lib"
+	install -d "$pkgdir/usr/lib/init/rc.d"
 }

@@ -1,7 +1,7 @@
 pkgbase = kisslinux-init
 	pkgdesc = Init framework of KISS Linux
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kisslinux/init
 	arch = any
 	license = MIT
