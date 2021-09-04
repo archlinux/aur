@@ -6,7 +6,6 @@ pkgdesc="File previewer for lf, fzf and the terminal"
 arch=('x86_64')
 url="https://github.com/Naheel-Azawy/stpv"
 license=('GPL')
-groups=('')
 depends=('ueberzug')
 optdepends=(
 		'lf: file manager that works with this script'
