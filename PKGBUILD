@@ -1,6 +1,6 @@
 # Maintainer: Dominik Kummer <admin[at]arkades[dot]org>
 pkgname=somafm-qt-git
-pkgver=0.1
+pkgver=v0.1.r19.g0179f9c
 pkgrel=1
 pkgdesc="A player for somafm.com radio channels written in qt5/c++"
 url="http://www.github.com/josefbehr/somafm-qt"
