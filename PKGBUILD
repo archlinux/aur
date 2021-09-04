@@ -4,7 +4,7 @@ _pkgname=macast
 _gitname=Macast
 pkgname=${_pkgname}-git
 pkgver=r143.d1aa55b
-pkgrel=1
+pkgrel=2
 pkgdesc="DLNA Media Renderer"
 arch=('any')
 url="https://github.com/xfangfang/Macast"
@@ -30,17 +30,17 @@ sha256sums=(
 )
 
 build() {
-	cd "$_gitname"
+	cd "${_gitname}"
 	python setup.py build
 }
 
 package() {
-	cd "$_gitname"
+	cd "${_gitname}"
 	install -d "${pkgdir}/usr/share/icons"
-	cp "${_pkgname}"/assets/icon.png "${pkgdir}/usr/share/icons/Macast.png"
+	cp "${_pkgname}/assets/icon.png" "${pkgdir}/usr/share/icons/Macast.png"
 	install -d "${pkgdir}/usr/share/applications"
 	# Installa desktop file
-	mkdir -p $pkgdir/usr/share/applications
-	install -Dm644 ${srcdir}/$_pkgname.desktop ${pkgdir}/usr/share/applications/$_pkgname.desktop
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	mkdir -p "${pkgdir}/usr/share/applications"
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

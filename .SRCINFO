@@ -1,7 +1,7 @@
 pkgbase = macast-git
 	pkgdesc = DLNA Media Renderer
 	pkgver = r143.d1aa55b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xfangfang/Macast
 	arch = any
 	license = GPL3
