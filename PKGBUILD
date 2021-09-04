@@ -1,6 +1,6 @@
 # Maintainer: Hristos N. Triantafillou <me@hristos.co>
 pkgname=wem
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='A tool for managing wine "envs" or prefixes.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('wem')
 conflicts=('wem')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~hristoast/wem/archive/${pkgver}.tar.gz")
-sha512sums=('59dfab322345798252fe65e3cedcd07843f9c6099a371823986e9d9d19f005148b971a2b80b9d17dd1f940d19ee680f42d0909efc3a6e1d3da1af42290241103')
+sha512sums=('3320f94136e6dc9521d437e9c65635a65fafb696b7f22e3f47fa20c71e798d1d49f75189b1a5d347d21bd711a51413fce319d94e87382d73189e45cb4b7992c3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
