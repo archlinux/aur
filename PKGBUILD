@@ -1,7 +1,7 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=ascii-image-converter-git
-pkgver=1.8.0
-pkgrel=3
+pkgver=v1.8.0.r0.g202179d
+pkgrel=1
 pkgdesc="A cross-platform command-line tool to convert images into ascii art and print them on the console."
 arch=('x86_64')
 url="https://github.com/TheZoraiz/ascii-image-converter"
@@ -13,6 +13,10 @@ conflicts=('ascii-image-converter')
 source=("git+https://github.com/TheZoraiz/ascii-image-converter.git")
 md5sums=('SKIP')
 
+pkgver() {
+  cd "ascii-image-converter"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 build() {
   cd "ascii-image-converter"
   go build
