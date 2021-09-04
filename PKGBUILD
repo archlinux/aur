@@ -7,22 +7,27 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.0.9'
+_srcver='8.0.10'
 _binver=0
 pkgrel=1
+
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
 # makepkg-friendly format MAJOR.MINOR.REVISION[.BUILD]-RELEASE (where the only
 # hyphen is the one automatically added by makepkg before `$pkgrel`).
 pkgver="${_srcver}$(test "${_binver}" -eq 0 || echo ".${_binver}")"
+
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
 license=('GPL')
-# The PKGBUILD is configured for both 32-bit and 64-bit architectures, but
+
+# This PKGBUILD is configured for both 32-bit and 64-bit architectures, but
 # currently no binaries for 32-bit architectures are distributed. The last
 # versions where these were available are 5.6.23-0 and 7.0.8-0. If you want
-# to include a 32-bit release add 'i686' to the array below.
+# to include a 32-bit release add 'i686' to the array below and provide a
+# source file.
 arch=('x86_64')
+
 depends=('inetutils' 'net-tools')
 optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
             'pygtk: for using XAMPP Control Panel')
@@ -55,7 +60,7 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('7d740a4963eb9e6dd224cc1101b7c42f887cb12aa02df8271bef047c27b938e8')
+sha256sums_x86_64=('328fe6e3d6ede77298dde02f34d0a8968860fa59022b471446f56ead7e354912')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
@@ -63,7 +68,9 @@ _pkgstring="${pkgname}-${_platform}-${_srcver}-${_binver}"
 
 # Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
 _sed_escape() {
+
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
+
 }
 
 prepare() {
@@ -109,11 +116,13 @@ package() {
 	install -dm777 "${pkgdir}${_xampp_root}/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}${_xampp_root}/temp"
 
+	local _extension_dir="$(pcregrep -o1 -o2 -o3 '^\s*extension_dir='\''([^\'\'']+)'\''\s*$|^\s*extension_dir="([^\"]+)"\s*$|^\s*extension_dir=([^\s]+)\s*$' "${pkgdir}${_xampp_root}/bin/php-config")"
+
 	local _sed_subst="
 		s/@XAMPP_VERSION@/$(_sed_escape "${_srcver}-${_binver}")/g
 		s/@XAMPP_PLATFORM@/$(_sed_escape "${_platform}")/g
 		s/@XAMPP_ROOT@/$(_sed_escape "${_xampp_root}")/g
-		s/@XAMPP_EXTENSIONDIR@/$(_sed_escape "$(pcregrep -o1 -o2 -o3 '^\s*extension_dir='\''([^\'\'']+)'\''\s*$|^\s*extension_dir="([^\"]+)"\s*$|^\s*extension_dir=([^\s]+)\s*$' "${pkgdir}${_xampp_root}/bin/php-config")")/g
+		s/@XAMPP_EXTENSIONDIR@/$(_sed_escape "${_extension_dir}")/g
 	"
 
 	# Links and missing files
