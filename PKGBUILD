@@ -52,11 +52,6 @@ prepare() {
   git submodule init src/writegood
   git config submodule.libwritegood-vala.url $srcdir/libwritegood-vala
 
-#  git submodule init
-#  for _submodule in ; do
-#    git config submodule.src/${_submodule}.url $srcdir/${_submodule}
-#  done
-
   git submodule init data/language-specs
   git config submodule.custom-gtksourceview-languages.url $srcdir/custom-gtksourceview-languages
 
