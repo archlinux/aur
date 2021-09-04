@@ -4,7 +4,7 @@
 # Contributor: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=libdart
-pkgver=6.11.0
+pkgver=6.11.1
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -12,13 +12,20 @@ url="https://dartsim.github.io"
 license=('BSD')
 depends=('assimp' 'boost' 'eigen' 'fcl' 'libccd' 'bullet' 'coin-or-ipopt'
          'flann' 'nlopt' 'octomap' 'ode' 'openscenegraph' 'tinyxml2' 'urdfdom'
-         'glu' 'freeglut' 'libxi' 'libxmu')
+         'glu' 'freeglut' 'libxi' 'libxmu' 'pagmo')
 optdepends=('pagmo: pagmo optimizer support')
 makedepends=('cmake')
 provides=('dartsim')
 _pkgname=dart
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dartsim/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('41d783d7f99d7b5ad1874336646f1bdfa33e146e0652a6c32d12eaa21505bd51')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dartsim/${_pkgname}/archive/v${pkgver}.tar.gz"
+        "bracket.patch")
+sha256sums=('1a59b9d8f55433ad111089431826cd8abbec71f61c72a8558b655d92164f8de4'
+            'a6608b7f86aa412ed2e2395010fdb6fb47d34efbdb37b767427c8f02cb8eca65')
+
+prepare(){
+    cd "dart-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/bracket.patch"
+}
 
 build() {
     mkdir -p "${srcdir}/${_pkgname}-${pkgver}/build"
