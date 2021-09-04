@@ -15,13 +15,13 @@ pkgname=(pipewire-full-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
          )
-pkgver=0.3.32.r60.g6773ea7e
+pkgver=0.3.34.r59.gf85d3907
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
 license=(MIT)
 arch=(x86_64)
-makedepends=(git meson doxygen xmltoman ncurses
+makedepends=(git meson doxygen python-docutils ncurses
              libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
