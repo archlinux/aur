@@ -1,7 +1,7 @@
 # Maintainer: fsyy <fossy2001 at web.de>
 pkgname=streamdeck-ui-git
 _pkgname=streamdeck-ui
-pkgver=r239.3837e44
+pkgver=r243.c8dffc7
 pkgrel=1
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
