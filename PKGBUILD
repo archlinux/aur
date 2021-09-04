@@ -10,7 +10,7 @@ provides=('NTFS3-MODULE' 'ntfs3' 'ntfs3-dkms')
 conflicts=('ntfs3')
 options=('!strip')
 
-local rev=$(curl "https://api.github.com/repos/torvalds/linux/compare/master...Paragon-Software-Group:master" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
+local rev=$(curl "https://api.github.com/repos/torvalds/linux/compare/6abaa83c7352b31450d7e8c173f674324c16b02b...Paragon-Software-Group:master" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
 local sha=$(curl -H "Accept: text/vnd.github.VERSION.sha" "https://api.github.com/repos/Paragon-Software-Group/linux-ntfs3/commits/master")
 _pkgver="r${rev}.g${sha:0:7}"
 
@@ -19,7 +19,7 @@ source=(
     dkms.conf
     kernel-5.12-backport.patch
     kernel-5.14-backport.patch
-    "ntfs3-${_pkgver}.patch::https://github.com/torvalds/linux/compare/master...Paragon-Software-Group:master.diff"
+    "ntfs3-${_pkgver}.patch::https://github.com/torvalds/linux/compare/6abaa83c7352b31450d7e8c173f674324c16b02b...Paragon-Software-Group:master.diff"
 )
 
 sha512sums=(
