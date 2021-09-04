@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=iproute2-selinux
-pkgver=5.13.0
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
         '0001-make-iproute2-fhs-compliant.patch')
-sha256sums=('72a2e53774cac9e65f7b617deebb2059f87e8960d6e9713e4d788cea966f1b36'
+sha256sums=('210fa785a52f3763c4287fd5ae63e246f6311bfaa48c424baab6d383bb7591d4'
             'SKIP'
             'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3')
 
@@ -49,7 +49,9 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
-  ./configure --with-selinux
+  # ./configure auto-detects SELinux as a build dependency for "ss":
+  # https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/tree/configure?h=v5.14.0#n373
+  ./configure
   make
 }
 
