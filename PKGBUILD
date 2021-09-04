@@ -2,15 +2,15 @@
 
 pkgname=pulseaudio-smdev-reload
 pkgdesc="Reload pulseaudio devices on smdev systems"
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 arch=('any')
 url="https://aur.archlinux.org/packages/$pkgname"
 depends=('smdev' 'pulseaudio')
 license=('Apache')
 source=('40-pulse' 'pulseaudio-smdev-reload')
 md5sums=('33f4fb31e32e8c3a49ac964f76709a47'
-         'cf568f1c677cddf7c696cc80a16b25ee')
+         'dbca69cd991f2de7e826b5ae1a9afd07')
 
 
 package() {

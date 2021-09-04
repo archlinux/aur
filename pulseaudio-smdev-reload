@@ -1,4 +1,7 @@
 #!/usr/bin/bash
 while true; do
-    cat /tmp/pulse_fifo > /dev/null && pacmd load-module module-detect
+    cat /tmp/pulse_fifo > /dev/null
+    pacmd unload-module module-alsa-sink
+    pacmd unload-module module-alsa-source
+    pacmd load-module module-detect
 done
