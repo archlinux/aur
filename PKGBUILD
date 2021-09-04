@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=icon-library-git
-pkgver=0.0.8.r64.g022a372
+pkgver=0.0.8.r73.g58d0a7f
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
@@ -12,11 +12,11 @@ depends=(
 	libadwaita
 )
 makedepends=(
-	cmake
 	git
 	meson
 	rust
 )
+checkdepends=(appstream-glib)
 provides=(icon-library)
 conflicts=(icon-library)
 source=("git+${url}.git")
