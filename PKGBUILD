@@ -1,8 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer  : Anthony Wang <ta180m@pm.me>
+# Contributor : Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-shaders-slang-git
 pkgver=r370.b91c670
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of shaders for libretro'
 arch=(any)
 url=https://www.libretro.com/
@@ -12,6 +13,7 @@ provides=(
   libretro-shaders
   libretro-shaders-slang
 )
+conflicts=(libretro-shaders-slang)
 makedepends=(git)
 source=(libretro-shaders-slang::git+https://github.com/libretro/slang-shaders.git)
 sha256sums=(SKIP)
