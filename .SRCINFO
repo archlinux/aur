@@ -1,0 +1,12 @@
+pkgbase = rtcw-data-steam
+	pkgdesc = Return to Castle Wolfenstein data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/9010/Return_to_Castle_Wolfenstein/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = rtcw-data
+	conflicts = rtcw-data-gog
+
+pkgname = rtcw-data-steam
