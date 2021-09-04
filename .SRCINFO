@@ -1,0 +1,11 @@
+pkgbase = etqw-data-steam
+	pkgdesc = Enemy Territory Quake Wars data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://steamdb.info/app/10000/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = etqw-data
+
+pkgname = etqw-data-steam
