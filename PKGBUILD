@@ -1,4 +1,5 @@
 # Maintainer: Zitro <u4595650016@protonmail.com>
+# Contributor: Adam Fontenot <adam.m.fontenot+AUR1@gmail.com>
 # Contributor: Faheem Pervez < trippin1 gmail >
 
 pkgname=colord-kde-git
