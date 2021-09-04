@@ -1,5 +1,7 @@
 # Maintainer: Donald Carr <d at chaos-reins dot com>
 
+# Cross compilation is currently broken due to Qt 6 changes
+
 #set -x
 
 # Documentation
@@ -17,7 +19,7 @@
 # NB: Mandatory edit: set this variable to point to your raspberry pi's sysroot
 
 # Arch: build dependencies for the target device documented in PKGBUILD.libs
-# Fedora: systemd-devel mesa-*-devel wayland*-devel fontconfig-devel libinput-devel freetype-devel qt5-qtdeclarative-devel
+# Fedora: systemd-devel mesa-*-devel wayland*-devel fontconfig-devel libinput-devel freetype-devel qt-qtdeclarative-devel
 
 pkgname="qt-sdk"
 
@@ -34,8 +36,7 @@ _float=false
 _shadow_build=true
 # automatically disabled if you are building webengine
 _debug=true
-_skip_qtscript=false
-_skip_qtwebengine=false
+_skip_qtwebengine=true
 _skip_qtwidgets=false
 _static_build=false
 _build_from_local_src_tree=false
@@ -116,9 +117,9 @@ if $_building && [[ -n $LOCAL_PI_VER ]]; then
 fi
 
 # vars
-_local_qt5_repo="${local_qt5_repo}"
+_local_qt_repo="${local_qt_repo}"
 #_pkgvermajmin="5.15"
-_pkgvermajmin="6.1"
+_pkgvermajmin="6.2"
 _pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
 _dev_suffix="beta3"
@@ -160,13 +161,7 @@ if [[ -f debug ]]; then
   _debug=true
 fi
 
-if $_building && $_minimal; then
-  _skip_qtscript=true
-  _skip_qtwebengine=true
-fi
-
 $_skip_qtwebengine && _additional_configure_flags="$_additional_configure_flags -skip qtwebengine -no-icu"
-$_skip_qtscript && _additional_configure_flags="$_additional_configure_flags -skip qtscript"
 $_skip_qtwidgets && _additional_configure_flags="$_additional_configure_flags -no-widgets"
 $_static_build && _additional_configure_flags="$_additional_configure_flags -static -ltcg"
 $_float && _additional_configure_flags="$_additional_configure_flags -qreal float"
@@ -192,17 +187,6 @@ makedepends=("git" "pkgconfig" "gcc" "gperf" "python" "clang" "cmake" "ninja")
 #_provider=http://qt.mirror.constant.com/
 _provider=https://download.qt.io
 _tmpfs_dir=/vortex/build
-
-_arch_specific_configure_options="\
-    -prefix /usr \
-    -docdir /usr/share/doc/qt \
-    -headerdir /usr/include/qt \
-    -archdatadir /usr/lib/qt \
-    -datadir /usr/share/qt \
-    -sysconfdir /etc/xdg \
-    -examplesdir /usr/share/doc/qt/examples \
-    -no-rpath \
-"
 
 retired_exhaustive_uber_minimal_specific_configure_options="\
     -no-linuxfb \
@@ -233,8 +217,12 @@ if $_uber_minimal; then
     "
 fi
 
+  # Too bleeding big
+  # -developer-build \
+
 #-journald \
 _core_configure_options=" \
+                 -separate-debug-info \
                  -qt-harfbuzz \
                  -qt-pcre \
                  -pkg-config \
@@ -301,8 +289,8 @@ adjust_bin_dir() {
 
 adjust_src_dir() {
   if $_build_from_local_src_tree; then
-     if [[ -z $_local_qt5_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
-    _srcdir=$_local_qt5_repo
+     if [[ -z $_local_qt_repo ]]; then echo "Need to set a repo dir to build from head"; exit 1; fi
+    _srcdir=$_local_qt_repo
   fi
 }
 
@@ -336,9 +324,6 @@ if $_uber_minimal; then
   cat $_tmp_qtpro >> $_qtpro
 fi
 
-  # enable reduce relocations
-  sed -i '/error Symbolic function binding/d' ${_srcdir}/qtbase/configure.json
-
 if ! $_target_host && $_overwrite_mkspec; then
   # Get our mkspec
   mkdir -p $_mkspec_dir
@@ -349,13 +334,6 @@ fi
   mkdir -p ${_bindir}
   cd ${_bindir}
 
-  # Too bleeding big
-  # -developer-build \
-  # -separate-debug-info \
-
-  # Chromium requires python2 to be the system python on your build host
-  # I literally symlink /usr/bin/python to /usr/bin/python2 on arch
-
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
   #-qtnamespace "Pi${_piver}" \
@@ -365,7 +343,6 @@ if $_target_host; then
                  -platform linux-clang-libc++ \
                  ${_core_configure_options} \
                  ${_additional_configure_flags}"
-# ${_arch_specific_configure_options} \
 else
   # Fuck debian multi-arch dead
   export PKG_CONFIG_LIBDIR=${_sysroot}/usr/lib/$(${_toolchain}gcc -dumpmachine)/pkgconfig/:${_sysroot}/usr/lib/pkgconfig/
