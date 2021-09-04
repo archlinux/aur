@@ -1,0 +1,50 @@
+8.0.4:
+ * Feat: OpenWrt package support, thanks to @tmn505, #547
+ * Fix: lyrics display in playback card #546
+ * Fix: ignore zero bytes albumart #550
+ * Fix: add null pointer check to converting server ip
+8.0.3:
+ * Feat: add color selection to home icon edit dialog #541
+ * Fix: light theme issues #540
+ * Fix: reset scrollpos #539
+8.0.2:
+ * Upd: bgcolor select for transparent home icons #535
+ * Upd: some code enhancements
+ * Fix: respect configured loglevel #532
+ * Fix: missing translation phrases #536
+ * Fix: html escaping issues
+ * Fix: set keepalive also for mpd_worker connection
+ * Fix: replace album grid elements only if changed
+8.0.1:
+ * Feat: add mpd keepalive support
+ * Upd: korean translation #525
+ * Fix: parse integer environment variables correctly #529
+ * Fix: MYMPD_LOGLEVEL environment always overrides configuration option as documented #529
+ * Fix: correct return code for mympd -c #529
+ * Fix: hard limit results to 1000 to keep webui responsive #528
+ * Fix: set interesting tags for mpd worker thread #524
+ * Fix: set libmpdclient buffer to 8192 bytes #524
+8.0.0:
+ * Removed features:
+   * System commands
+   * Bookmarks
+   * Chroot and readonly support
+   * Option to disable coverimages
+   * Mixrampdb settings
+   * Scrobbler integration - would be replaced by a script in a future version
+   * Smart playlists for MPD < 0.21.0
+ * Changes:
+   * Feat: improve startup time
+   * Feat: improved backend #304
+   * Feat: rework settings dialog
+   * Feat: rework connection dialog
+   * Feat: some performance improvements
+   * Upd: remove deprecated features
+   * Upd: mongoose to current master
+   * Fix: do not use libmpdclient deprecated api functions
+   * Fix: Bad homescreen link for filesystem browse #512
+   * Fix: pretty print duration after song has played in queue view #511
+   * Fix: respect command meta tag for keyboard shortcuts (mac) #507
+   * Fix: support pathnames with #-character #501
+   * Fix: reordering of songs in playlists #487
+   * Fix: mime type detection for png images #521

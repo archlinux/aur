@@ -4,21 +4,7 @@
 # https://github.com/jcorporation/mympd
 #
 
-post_install() {
-  post_upgrade;
-}
-
 post_upgrade() {
-  echo "Checking status of mympd system user and group"
-  getent group mympd > /dev/null || groupadd -r mympd
-  getent passwd mympd > /dev/null || useradd -r -g mympd -s /bin/false -d /var/lib/mympd mympd
-
-  # installation complete
-  echo "Edit /etc/webapps/mympd/mympd.conf or run \"mympd-config -m/etc/webapps/mympd/mympd.conf\" before starting myMPD"
+  echo "The configuration of myMPD has been changed. See  https://jcorporation.github.io/myMPD/configuration/ for details."
   exit 0
 }
-
-post_remove() {
-  echo "WARNING: Please purge /var/lib/mympd manually"
-}
-
