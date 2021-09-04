@@ -1,0 +1,13 @@
+pkgbase = talon-wav2letter-bin
+	pkgdesc = Voice recognition model for Talon
+	pkgver = 0.1.r1
+	pkgrel = 1
+	url = https://talonvoice.com/
+	arch = x86_64
+	license = custom
+	provides = talon-wav2letter
+	conflicts = talon-wav2letter
+	source = https://talonvoice.com/dl/talon-w2l-small3-dslm-en_US.zip
+	b2sums = 34608eb13260ad88baa65faa875e29808ff30be56ae90298ca2d081181cd90a26d2c1f126dd605467f18245136b962ee0e2db17139392a37a44c6a9bc46301ec
+
+pkgname = talon-wav2letter-bin
