@@ -77,8 +77,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-cacule-uksm-cjktty
-_major=5.13
-pkgver=${_major}.13
+_major=5.14
+pkgver=${_major}.0
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -94,6 +94,7 @@ makedepends=(
 
 if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm lld python)
+  _LLVM=1
 fi
 
 options=('!strip')
@@ -102,10 +103,11 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}-cacule/patch-${pkgver}-xanmod${xanmod}-cacule.xz"
         choose-gcc-optimization.sh
-        "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
-        "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        "0003-zstd.patch::${_patches_url}/zstd-patches-v5/0001-zstd-patches.patch"
-        "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
+        # "0001-cjktty.patch::${_patches_url}/cjktty-patches/0001-cjktty-${_major}-initial-import-from-https-github.com-zhm.patch"
+        "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
+        "0002-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
+        "0003-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
+        # "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
         )
 
 validpgpkeys=(
@@ -119,14 +121,14 @@ for _patch in $_commits; do
     source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
 done
 
-b2sums=('9c4c12e2394dec064adff51f7ccdf389192eb27ba7906db5eda543afe3d04afca6b9ea0848a057571bf2534eeb98e1e3a67734deff82c0d3731be205ad995668'
+b2sums=('0047f5aaa3940dff97f4055ef544faafbbb5282128e6afe21d2f47d8dc8c395806a17016febfa050117d16f59e74b882cb8b9c5011d68f119c230d0a4d120524'
         'SKIP'
-        'bc16a683b8ee7daddbd09461df8a7325c7eed6c7931305e87778d8ea457da4ac2162e2fcf71e8a274ff9393d00450bbeff53d56b4c11deec180996a93115ceaf'
+        '86529e6e07dd673a29361639dd92e77bd81c000c0d96a1927ba035b201539d4c2eb4daa4ea6ce3a697c6df0c5f4fec30cfc64a8d68ce0c204b2b1605f6027bf3'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
-        'cb72248c2226b5c1a39422d9d9a79a4f9331c965a888185f421619185231a290d74e273c2323ab2c9340adfb269259825da781af423674abfbc9be909db0cc35'
-        '066e1d2cf209eed973957b00eebe3cbcce37b77e9ab0ef115da0aa6984ac6dea1b5d43fedd6e87dbda042b620a7684eae6c36a739f7a49e0f96ebd41867947f4'
-        'c88d3053e0e1d1145ec7d487df7ed1c18b8a4e8cf62f8fc9e05baa5f1b270aa64177f33b13c1d409e63a83691cc530e5f848ab73bfd2b10f60cdb681b9e310c1'
-        'f0baa68af63ae61284584ef474273657cfb132e8b6e129dfe0ef89df3b4468a4324a4b61cccdcf35339b6023cfdc64e6a77a3555df5802689dbeeb411ca369d9'
+        '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
+        'ff4f7d2696cfb48310ebd2cbee0b7ba69845c900652590fc4d67247b1cdca8a60994d20033c09ed2b0427573a8765f9aa40409548aec1b049ee968f65d7d2ad9'
+        '90b8306ff5b0207fe2c7bf068a03da36ba3f38d68b7ea5ae227000f3d44ef9093541655fe32412686ae23a3c75f795e0b0a4fb24976867ac3c93e4de53145d48'
+        # 'f0baa68af63ae61284584ef474273657cfb132e8b6e129dfe0ef89df3b4468a4324a4b61cccdcf35339b6023cfdc64e6a77a3555df5802689dbeeb411ca369d9'
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
