@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=4.3.2
+pkgver=4.4
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -32,6 +32,7 @@ depends=(
   libpulse
   librav1e.so
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -59,13 +60,13 @@ depends=(
   sdl2
   speex
   srt
+  svt-av1
   v4l-utils
   vmaf
   xz
   zlib
 )
 makedepends=(
-# official repositories:
   amf-headers
   avisynthplus
   clang
@@ -73,13 +74,14 @@ makedepends=(
   git
   ladspa
   nasm
-# AUR:
   decklink-sdk
 )
-optdepends=('avisynthplus: for reading AviSynth scripts as input'
-            'intel-media-sdk: for Intel Quick Sync Video'
-            'ladspa: for LADSPA filters'
-            'nvidia-utils: Nvidia NVDEC/NVENC support')
+optdepends=(
+  'avisynthplus: AviSynthPlus support'
+  'intel-media-sdk: Intel QuickSync support'
+  'ladspa: LADSPA filters'
+  'nvidia-utils: Nvidia NVDEC/NVENC support'
+)
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -87,9 +89,9 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-fix-vmaf-model-path.patch'
         'LICENSE')
-sha256sums=('46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb'
+sha256sums=('06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
             'SKIP'
-            'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
+            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -99,7 +101,6 @@ prepare() {
 
 build() {
     cd "ffmpeg-${pkgver}"
-    
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
@@ -135,10 +136,12 @@ build() {
         --enable-libopus \
         --enable-libpulse \
         --enable-librav1e \
+        --enable-librsvg \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
