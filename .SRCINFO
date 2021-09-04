@@ -1,0 +1,15 @@
+pkgbase = payload-dumper-go-bin
+	pkgdesc = an android OTA payload dumper written in Go
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ssut/payload-dumper-go
+	arch = x86_64
+	license = Apache
+	provides = payload-dumper-go
+	conflicts = payload-dumper-go
+	source = https://github.com/ssut/payload-dumper-go/releases/download/1.2.0/payload-dumper-go_1.2.0_linux_amd64.tar.gz
+	source = https://github.com/ssut/payload-dumper-go/raw/1.2.0/LICENSE
+	sha256sums = 9c2d3e23f73651b31ea6b8b3ba30aaedd5f89558a5a9dc8987f85dd80f4b918a
+	sha256sums = 4a26a47cfc98fcad333c3e1ccda022cdeb0e19cde4f1fe4aef4a51f621769922
+
+pkgname = payload-dumper-go-bin
