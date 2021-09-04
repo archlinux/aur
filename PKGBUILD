@@ -2,7 +2,7 @@
 pkgname=('pop-launcher-git' 'pop-launcher-system76-power-git')
 pkgbase=pop-launcher-git
 pkgver=1.0.0.r1.gbbd513a
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/pop-os/launcher"
 license=('GPL3')
@@ -35,12 +35,9 @@ package_pop-launcher-git() {
   conflicts=("${pkgname%-git}")
 
   cd "$srcdir/launcher"
-  make DESTDIR="$pkgdir/" install
+  sed -i "s|${pkgbase%-git}-bin \$(BIN)|${pkgbase%-git}-bin $pkgdir/usr/bin/${pkgbase%-git}|g" Makefile
 
-  # Fix symlink
-  rm "$pkgdir/usr/lib/${pkgbase%-git}/plugins/pop_shell/pop-shell"
-  ln -s "/usr/bin/${pkgbase%-git}" \
-    "$pkgdir/usr/lib/${pkgbase%-git}/plugins/pop_shell/pop-shell"
+  make BIN="/usr/bin/${pkgbase%-git}" DESTDIR="$pkgdir/" install
 
   rm -rf "$pkgdir/usr/lib/${pkgbase%-git}/scripts/system76-power"
 }
