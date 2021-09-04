@@ -1,7 +1,7 @@
 # Maintainer: Dominik Kummer <devel@arkades.org>
 
 pkgname=kwalletcli-git
-pkgver=0
+pkgver=r104.9b1f130
 pkgrel=1
 pkgdesc="Command-Line Interface for the KDE Wallet"
 url="https://www.mirbsd.org/kwalletcli.htm"
