@@ -1,7 +1,7 @@
 # Maintainer: Serene-Arc
 pkgname=qmk-git
 pkgver=1.0.0.r0.g710dc3e
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -17,6 +17,8 @@ depends=(
     'python-appdirs'
 	'python-argcomplete'
 	'python-colorama'
+	'python-dotty-dict'
+	'python-hidapi'
     'flake8'
     'avr-gcc'
     'clang'
