@@ -1,0 +1,21 @@
+pkgbase = spy
+	pkgdesc = Linux kernel mode debugfs keylogger
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/jarun/spy
+	changelog = CHANGELOG
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	source = spy-1.8.tar.gz::https://github.com/jarun/spy/archive/v1.8.tar.gz
+	source = dkms.conf
+	sha256sums = d9c31d3df9a1b7974327796b505d77d04045a72a5d40a52ba24a065fdeb9c11a
+	sha256sums = e38cea0298e505875e2f9049ae7bbdfbff0e897f4e1f767bdf3f7a5675c77a75
+
+pkgname = spy
+
+pkgname = spy-dkms
+	pkgdesc = Linux kernel mode debugfs keylogger -- DKMS version
+	depends = dkms
+	provides = spy
+	conflicts = spy
