@@ -4,7 +4,7 @@ _pkgname="FirefoxPWA"
 pkgname="firefox-pwa-bin"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/filips123/FirefoxPWA"
 arch=("x86_64" "i686")
 license=("MPL2")
@@ -43,5 +43,5 @@ check() {
 }
 
 package() {
-    cp -r $srcdir/data/ $pkgdir
+    cp -r $srcdir/data/* $pkgdir
 }
