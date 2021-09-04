@@ -1,0 +1,17 @@
+pkgbase = palanteer
+	pkgdesc = High performance visual profiler, debugger, tests enabler for C++ and Python
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/dfeneyrou/palanteer
+	arch = x86_64
+	license = AGPL-3.0
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = python-pip
+	depends = python
+	source = https://github.com/dfeneyrou/palanteer/archive/refs/tags/v0.3.tar.gz
+	sha256sums = 5ded8fc3587736f8288cedb024b3db5cd14c6e9bea04215eeae2d89abe24ed6a
+
+pkgname = palanteer
