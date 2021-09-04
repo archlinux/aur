@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/mfs/rust-df"
 license=('MIT')
 depends=()
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 provides=('rdf')
 conflicts=()
 source=("git://github.com/mfs/rust-df/#branch=master")

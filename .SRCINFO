@@ -8,6 +8,7 @@ pkgbase = rust-df-git
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	provides = rdf
 	source = git://github.com/mfs/rust-df/#branch=master
 	sha256sums = SKIP
