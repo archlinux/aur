@@ -6,7 +6,7 @@
 
 _appname='gnunet'
 pkgname="${_appname}-git"
-pkgver='0.15.4.r29818.bb86d6483'
+pkgver='0.15.4.r29820.00c03c7bb'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -33,7 +33,6 @@ optdepends=('postgresql: for an alternative to sqlite in the database plugin'
             'libpabc: for re:claimID zero-knowledge privacy credentials'
             'texi2mdoc: for automatic mdoc generation')
 backup=("etc/${_appname}.conf")
-options=('!makeflags')
 source=("git+https://${_appname}.org/git/${_appname}.git"
         "${_appname}-system.service"
         "${_appname}-user.service"
@@ -70,7 +69,7 @@ build() {
 	cd "${srcdir}/${_appname}"
 
 	./configure --prefix='/usr' --enable-experimental
-	make -j"$(nproc || echo -n 1)"
+	make
 	make -C contrib
 
 }
@@ -83,16 +82,20 @@ package() {
 	make DESTDIR="${pkgdir}" -C contrib install
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
-	install -Dm644 "${srcdir}/${_appname}-system.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}-system.service" \
+		"${pkgdir}/usr/lib/systemd/system/${_appname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/user"
-	install -Dm644 "${srcdir}/${_appname}-user.service" "${pkgdir}/usr/lib/systemd/user/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}-user.service" \
+		"${pkgdir}/usr/lib/systemd/user/${_appname}.service"
 
 	install -dm755 "${pkgdir}/usr/lib/sysusers.d"
-	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
+	install -Dm644 "${srcdir}/${_appname}.sysusers" \
+		"${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
 
 	install -dm755 "${pkgdir}/usr/lib/tmpfiles.d"
-	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
+	install -Dm644 "${srcdir}/${_appname}.tmpfiles" \
+		"${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
 	# Automatically generate a configuration file using the content of
 	# `/usr/share/gnunet/config.d/` as model; in this way we can ensure
