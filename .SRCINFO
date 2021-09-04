@@ -1,6 +1,6 @@
-pkgbase = wingpanel-indicator-session-git
+pkgbase = wingpanel-indicator-session-standalone-git
 	pkgdesc = Session indicator for Wingpanel
-	pkgver = 2.2.8.r42.g5477639
+	pkgver = 2.3.0.r42.gb83ff2b
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-session
 	arch = x86_64
@@ -18,12 +18,13 @@ pkgbase = wingpanel-indicator-session-git
 	depends = glibc
 	depends = gtk3
 	depends = libgranite.so
-	depends = libwingpanel-2.0.so
+	depends = libwingpanel.so
 	depends = libhandy
 	provides = wingpanel-indicator-session
 	conflicts = wingpanel-indicator-session
 	source = git+https://github.com/elementary/wingpanel-indicator-session.git
+	source = wingpanel-indicator-session-standalone-01-shutdown.patch
 	sha256sums = SKIP
+	sha256sums = ca09d91061c301a12cae9e33f958cced8c6e4ee1d14dca4c239c8015191f73eb
 
-pkgname = wingpanel-indicator-session-git
-
+pkgname = wingpanel-indicator-session-standalone-git

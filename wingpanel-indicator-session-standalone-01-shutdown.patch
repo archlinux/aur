@@ -1,0 +1,125 @@
+diff --git a/src/Indicator.vala b/src/Indicator.vala
+index bd130cf..8dde95d 100644
+--- a/src/Indicator.vala
++++ b/src/Indicator.vala
+@@ -49,9 +49,6 @@ public class Session.Indicator : Wingpanel.Indicator {
+         this.server_type = server_type;
+         this.visible = true;
+ 
+-        EndSessionDialogServer.init ();
+-        EndSessionDialogServer.get_default ().show_dialog.connect ((type) => show_dialog ((Widgets.EndSessionDialogType)type));
+-
+         manager = new Session.Services.UserManager ();
+     }
+ 
+@@ -74,10 +71,10 @@ public class Session.Indicator : Wingpanel.Indicator {
+                     if (session_interface == null) {
+                         init_interfaces.begin ((obj, res) => {
+                             init_interfaces.end (res);
+-                            show_shutdown_dialog ();
++                            system_interface.power_off (true);
+                         });
+                     } else {
+-                        show_shutdown_dialog ();
++                        system_interface.power_off (true);
+                     }
+ 
+                     return Gdk.EVENT_STOP;
+@@ -198,7 +195,7 @@ public class Session.Indicator : Wingpanel.Indicator {
+             });
+ 
+             shutdown.clicked.connect (() => {
+-                show_shutdown_dialog ();
++                system_interface.power_off (true);
+             });
+ 
+             suspend.clicked.connect (() => {
+@@ -237,26 +234,6 @@ public class Session.Indicator : Wingpanel.Indicator {
+         return main_grid;
+     }
+ 
+-    private void show_shutdown_dialog () {
+-        close ();
+-
+-        if (server_type == Wingpanel.IndicatorManager.ServerType.SESSION) {
+-            // Ask gnome-session to "reboot" which throws the EndSessionDialog
+-            // Our "reboot" dialog also has a shutdown button to give the choice between reboot/shutdown
+-            session_interface.reboot.begin ((obj, res) => {
+-                try {
+-                    session_interface.reboot.end (res);
+-                } catch (Error e) {
+-                    if (!(e is GLib.IOError.CANCELLED)) {
+-                        critical ("Unable to open shutdown dialog: %s", e.message);
+-                    }
+-                }
+-            });
+-        } else {
+-            show_dialog (Widgets.EndSessionDialogType.RESTART);
+-        }
+-    }
+-
+     private async void init_interfaces () {
+         try {
+             system_interface = yield Bus.get_proxy (BusType.SYSTEM, "org.freedesktop.login1", "/org/freedesktop/login1");
+@@ -294,61 +271,6 @@ public class Session.Indicator : Wingpanel.Indicator {
+ 
+     public override void closed () {}
+ 
+-    private void show_dialog (Widgets.EndSessionDialogType type) {
+-        close ();
+-
+-        if (current_dialog != null) {
+-            if (current_dialog.dialog_type != type) {
+-                current_dialog.destroy ();
+-            } else {
+-                return;
+-            }
+-        }
+-
+-        unowned EndSessionDialogServer server = EndSessionDialogServer.get_default ();
+-
+-        current_dialog = new Widgets.EndSessionDialog (type);
+-        current_dialog.destroy.connect (() => {
+-            server.closed ();
+-            current_dialog = null;
+-        });
+-
+-        current_dialog.cancelled.connect (() => {
+-            server.canceled ();
+-        });
+-
+-        current_dialog.logout.connect (() => {
+-            server.confirmed_logout ();
+-        });
+-
+-        current_dialog.shutdown.connect (() => {
+-            if (server_type == Wingpanel.IndicatorManager.ServerType.SESSION) {
+-                server.confirmed_shutdown ();
+-            } else {
+-                try {
+-                    system_interface.power_off (false);
+-                } catch (Error e) {
+-                    warning ("Unable to shutdown: %s", e.message);
+-                }
+-            }
+-        });
+-
+-        current_dialog.reboot.connect (() => {
+-            if (server_type == Wingpanel.IndicatorManager.ServerType.SESSION) {
+-                server.confirmed_reboot ();
+-            } else {
+-                try {
+-                    system_interface.reboot (false);
+-                } catch (Error e) {
+-                    warning ("Unable to reboot: %s", e.message);
+-                }
+-            }
+-        });
+-
+-        current_dialog.set_transient_for (indicator_icon.get_toplevel () as Gtk.Window);
+-        current_dialog.show_all ();
+-    }
+-
+     private async void update_tooltip () {
+         string description;
+ 
