@@ -1,4 +1,4 @@
-# Maintainer: Adam Fontenot <adam.m.fontenot+AUR1@gmail.com>
+# Maintainer: Zitro <u4595650016@protonmail.com>
 # Contributor: Faheem Pervez < trippin1 gmail >
 
 pkgname=colord-kde-git
@@ -14,7 +14,7 @@ optdepends=('gnome-color-manager: manual calibration')
 provides=('colord-kde')
 conflicts=('colord-kde')
 install="$pkgname.install"
-source=("$pkgname::git+git://anongit.kde.org/colord-kde.git")
+source=("$pkgname::git+https://anongit.kde.org/colord-kde.git")
 md5sums=('SKIP')
 
 pkgver() {
