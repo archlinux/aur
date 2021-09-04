@@ -16,18 +16,18 @@ source=("git://github.com/josefbehr/somafm-qt.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/${pkgname%-git}"
   git describe --tags | sed 's/ver_//;s/_/./g;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
   qmake
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname%-git}"
   install -D somafm-qt "$pkgdir/usr/bin/somafm-qt"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/COPYING"
 }
