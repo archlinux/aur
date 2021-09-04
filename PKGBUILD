@@ -1,7 +1,7 @@
 # Maintainer: Parham Alvani <parham.alvani@gmail.com>
 
 pkgname=actionlint-bin
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=('actionlint')
 
 source=("https://github.com/rhysd/actionlint/releases/download/v${pkgver}/actionlint_${pkgver}_linux_amd64.tar.gz")
 
-sha256sums=('6b27de7416d28507f1572f715f57acfaf5c68f2d84ea0f3a70a5f5f25cae68e0')
+sha256sums=('523ce55f96476e3d6d7ab8250b9dd5f5bf00d4ff0fd9c9fb2889cd2839b7e1f1')
 
 package() {
 	# package
