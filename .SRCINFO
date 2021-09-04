@@ -1,0 +1,13 @@
+pkgbase = runit-services
+	pkgdesc = A collection of services for runit - stolen from Artix Linux
+	pkgver = feb30bc458
+	pkgrel = 1
+	url = https://gitea.artixlinux.org/artix/runit-services
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = runit
+	source = git+https://gitea.artixlinux.org/artix/runit-services#commit=feb30bc458
+	sha256sums = SKIP
+
+pkgname = runit-services
