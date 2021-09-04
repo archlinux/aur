@@ -43,6 +43,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}/src"
-    make install-strip DESTDIR="${pkgdir}" PREFIX=/usr
+    make install-strip DESTDIR="${pkgdir}" PREFIX=/usr libexecdir="${pkgdir}"/usr/lib/kak
     install -D ../UNLICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
