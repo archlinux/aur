@@ -1,0 +1,19 @@
+pkgbase = mkdocs-material-extensions
+	pkgdesc = Markdown extension resources for MkDocs Material
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/facelessuser/mkdocs-material-extensions
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = mkdocs
+	depends = pymdown-extensions
+	provides = mkdocs-material-extensions
+	conflicts = python-mkdocs-material-extensions-git
+	conflicts = mkdocs-material-extensions-git
+	replaces = python-mkdocs-material-extensions-git
+	replaces = mkdocs-material-extensions-git
+	source = https://github.com/facelessuser/mkdocs-material-extensions/archive/refs/tags/1.0.3.tar.gz
+	sha256sums = 4ed429c0311e099827ead1371eb0eee8ca3c9689d34f4f1c52c9a0876a86a536
+
+pkgname = mkdocs-material-extensions
