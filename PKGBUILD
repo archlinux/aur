@@ -1,6 +1,6 @@
 # Maintainer: Ali Najafian <AliNajafian81@gmail.com>
 pkgname=circuitjs-bin
-pkgver=2.5.4
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="Falstad Circuit Simulator for Linux. (Real and offline version)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=(!strip)
 source=("https://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz"
 		  	https://i.postimg.cc/Y0ZkBmDV/circuitjs.png	  
 		  	circuitjs.desktop)
-md5sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'b3ed46fb30478e7207a557658226be18ae1edacd1ee784cb2089e6eaa9a13716' 'e9cb7b4b74ff97f4a5da500bb7217d2796bbe21f2ed62508b391275adb1e3a14')
 
 
 package() 
