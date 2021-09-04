@@ -14,15 +14,15 @@ source=("git+https://github.com/TheZoraiz/ascii-image-converter.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "ascii-image-converter"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build() {
-  cd "ascii-image-converter"
+  cd "${pkgname%-git}"
   go build
 }
 package() {
-  cd "ascii-image-converter"
+  cd "${pkgname%-git}"
   install -Dm 755 ./ascii-image-converter -t "$pkgdir/usr/bin/"
   install -Dm 644 ./LICENSE.txt -t "$pkgdir/usr/share/licenses/ascii-image-converter/"
 }
