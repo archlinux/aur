@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r635.8840516
+pkgver=r637.15c0ad1
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -41,27 +41,22 @@ pkgver() {
 prepare() {
   cd wingpanel
 
-  #Lie
-  #msg2 "FAKE 2.0 API"
+  #Fake 2.0 API
   #git revert -n c6313641f56fd12d14ad4d064dd64422f1140ff3
 
   #Autohide
-  msg2 "Autohide"
   patch -Np1 < ../autohide.patch
   #patch -Np2 < ../autohide-testing.patch
 
   #Fixes
-  msg2 "Fix multiple-monitor strut method for openbox"
   patch -Np1 < ../fix-for-openbox.patch
 
   #Standalone patches
-  msg2 "Remove Gala dependecies"
   rm -rf wingpanel-interface
   rm src/Services/BackgroundManager.vala
   patch -Np2 < ../minus-backgroundmanager.patch
   patch -Np2 < ../minus-galaplugin.patch
   patch -Np2 < ../no-mutter-typelib.patch
-  #rm vapi/meson.build
 
   [ ! -d build ] || rm -rf build
 }
