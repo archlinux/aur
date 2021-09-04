@@ -8,7 +8,7 @@ pkgdesc='The Fast Cross-Platform Package Manager'
 arch=(any)
 url=https://github.com/mamba-org/mamba
 license=(BSD)
-depends=(python)
+depends=(python reproc)
 makedepends=(
   'python-setuptools>=49.2.1'
   'pybind11>=2.2'
@@ -18,7 +18,6 @@ makedepends=(
   libsolv-conda-forge
   cpp-ghc-filesystem
   nlohmann-json
-  reproc
   python-conda)
 conflicts=(python-mamba)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/0.15.3.tar.gz)
