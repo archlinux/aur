@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.13.12.arch1
+pkgver=5.14.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -98,18 +98,19 @@ source=(
     "${_reponame}::git+${_repo_url}?signed#tag=$_srcver_tag"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
-    0009-prjc_v5.13-r3.patch
+    0009-prjc_v5.14-r0.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
-    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens ~ heftig
+    "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens (heftig)
+    "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
 )
 sha512sums=('SKIP'
             'SKIP'
-            '38f087c0339381014bed08a2120b2365490b4dc23c66120a366fa3a9186dc334d79f81d85f8b4551b30c5fde75d97199e907f35a0a539310d9919a8aa4c94903'
-            'd7dc67a9913d0d7723a616a11db2ab0798e65a6c2dfb99990bc2a4287c0c2e2eab72d17cdc3f93b884f006844f576379a9d8617b7e491dad278f3880d372bb17'
+            '3cc449ef086f5e51ef1cae9c3fe0a4c4dc0c665eb88e72e3799af156e0bffb5462b2453860274c97e1ce4c6e0b1fb8b35e9b1977b56c1804c01acb46f913b496'
+            'a232b90e38db683aca55bfa29e6d9ef529c1999bcf8f8e58d36b8877cfd2b83c3d8e7447860fa29ca50b67bef73262e4e46df8220d204e579e97ae79caa3867d'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -126,7 +127,7 @@ prepare() {
 
     PatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
-        0009-prjc_v5.13-r3.patch
+        0009-prjc_v5.14-r0.patch
         0005-glitched-pds.patch
     )
 
