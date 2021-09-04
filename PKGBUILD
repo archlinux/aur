@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=decoder
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Scan and Generate QR Codes'
 url='https://gitlab.gnome.org/World/decoder'
@@ -9,6 +9,7 @@ license=('LGPL')
 arch=(x86_64 aarch64)
 depends=(
 	libadwaita
+	pipewire
 	zbar
 )
 makedepends=(
@@ -16,7 +17,7 @@ makedepends=(
 	meson
 )
 source=("${url}/-/archive/${pkgver}/decoder-${pkgver}.tar.gz")
-sha256sums=('0c44273ba830799221df1e021f98ec6b1da55a878e150aec01d4d604ad74c2cc')
+sha256sums=('eb38e5e727831e80a177f9d375b201920352c0b2009cbac92fdf7db0965e3bb6')
 
 build() {
 	arch-meson decoder-${pkgver} build
