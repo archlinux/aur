@@ -4,7 +4,7 @@
 
 pkgname=icon-library
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/design/icon-library'
@@ -14,10 +14,10 @@ depends=(
 	libhandy
 )
 makedepends=(
-	cmake
 	meson
 	rust
 )
+checkdepends=(appstream-glib)
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('7aaebac60d615138971327a064f7a39ca19ea69e78c27b5fee04de0be76d135c')
 
