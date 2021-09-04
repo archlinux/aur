@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Cantrell <jmcantrell at gmail dot com>
 
 pkgname=btrfs-snapshots-git
-pkgver=0.6.0.r0.8bc87ce
+pkgver=0.6.1.r0.132159e
 pkgrel=1
 pkgdesc="Manage timestamped collections of btrfs snapshots"
 arch=('any')
