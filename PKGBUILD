@@ -5,7 +5,7 @@ _pkgname=sile
 pkgname=$_pkgname-luajit
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url=https://www.sile-typesetter.org
 license=(MIT)
@@ -69,4 +69,5 @@ check () {
 package () {
 	cd "$_archive"
 	make install DESTDIR="$pkgdir"
+	mv "$pkgdir/usr/share/licenses/"{$_pkgname,$pkgname}
 }
