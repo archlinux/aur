@@ -11,33 +11,59 @@ dracut_update=0
 
 while read -r line; do
     if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-		dracut_update=1 # Dracut files have been updated
+        dracut_update=1 # Dracut files have been updated
         continue 
     fi
 
     read -r pkgbase < "/${line}"
-	kernels+=("${pkgbase}")
+    kernels+=("${pkgbase}")
 done
 
 if (( dracut_update )); then
-	kernels=()
-	for file in /lib/modules/*/pkgbase; do
-		if read -r pkgbase &> /dev/null < "$file"; then
-			kernels+=("${pkgbase}")
-		fi
-	done
+    kernels=()
+    for file in /lib/modules/*/pkgbase; do
+        if read -r pkgbase &> /dev/null < "$file"; then
+            kernels+=("${pkgbase}")
+        fi
+    done
+fi
+
+os_release_mounted=0
+function unmount_os_release() {
+    if [ "$os_release_mounted" -ne 0 ]; then
+        umount /etc/os-release
+        os_release_mounted=0
+    fi
+}
+
+if [[ "$hook_for_pretty_name" == "true" ]]; then
+    trap unmount_os_release EXIT
 fi
 
 for kernel in "${kernels[@]}"; do
-	path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
-	version=$(basename "${path%/pkgbase}")
+    path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
+    version=$(basename "${path%/pkgbase}")
     read -r pkgbase < "$path"
 
-	echo "==> Building linux image $kernel ($version)"
-	dracut -q -f --uefi --kver "${version}"
-	
-	if [[ "$pkgbase" == "$default_kernel_package" ]]; then
-		echo "===> Mark linux image $kernel ($version) as default"
-		bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
-	fi
+    echo "==> Building linux image $kernel ($version)"
+    
+    if [[ "$hook_for_pretty_name" == "true" ]]; then
+        tmp_file=$(mktemp)
+        cat /etc/os-release > "$tmp_file"
+        echo "VERSION_ID=\"$pkgbase $version\"" >> "$tmp_file"
+        mount --bind "$tmp_file" /etc/os-release
+        os_release_mounted=1
+        rm "$tmp_file"
+    fi
+    
+    dracut -q -f --uefi --kver "${version}"
+
+    if [[ "$hook_for_pretty_name" == "true" ]]; then
+        unmount_os_release
+    fi
+
+    if [[ "$pkgbase" == "$default_kernel_package" ]]; then
+        echo "===> Mark linux image $kernel ($version) as default"
+        bootctl set-default "linux-${version}-${MACHINE_ID}-${BUILD_ID}.efi"
+    fi
 done

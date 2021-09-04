@@ -2,7 +2,7 @@
 
 pkgname=dracut-uefi-hook
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Install/update/removal hooks for dracut unifed uefi image generation"
 arch=(any)
 license=('MIT')
@@ -14,9 +14,9 @@ source=('90-dracut-uefi-install.hook'
         'dracut-uefi-hook.conf')
 sha256sums=('2429d3a7bd79fbb6f7a736f1beb88eaaa2a3a0585d9321fa18459c4f92085b15'
             '0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832'
-            '0ca3c3763727b9630793eeb43b0d758587831ada83c609ba55c1c29704fb7bae'
-            '7029dba277981c1f66f514a003f423a4e65b847d25d749affa37056a2ab922d2'
-            '36de95c42cf6d64e352ebd559b0f06630d7d27d3b29ee7c9ac6ccddee6cb6826')
+            '95844731cc3afc774eb99d558ab3d1f875016911017eaec06745394f622dce5a'
+            '8af469ab5647cd15c9370b4c44af422df99887105aca30531c0d4c7b92889f9d'
+            '86a65fe822bff87a51e7fece85159a62a77a8f71f015d6400f6693d44dba9464')
 backup=(etc/dracut-uefi-hook.conf)
 
 package() {
