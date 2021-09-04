@@ -1,0 +1,11 @@
+pkgbase = quake4-data-steam
+	pkgdesc = Quake 4 data via Steam
+	pkgver = 1
+	pkgrel = 1
+	url = https://store.steampowered.com/app/2210/Quake_IV/
+	arch = any
+	license = custom
+	makedepends = steamcmd
+	provides = quake4-data
+
+pkgname = quake4-data-steam
