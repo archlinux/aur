@@ -1,0 +1,22 @@
+pkgbase = xlap
+	pkgdesc = Window snap assistant for Xfce and the X Window System
+	pkgver = 0.9.2
+	pkgrel = 0
+	url = https://gitlab.com/sri-at-gitlab/projects/xlap
+	changelog = CHANGELOG
+	arch = any
+	license = GPL
+	depends = xdotool
+	depends = xorg-xprop
+	depends = xdg-utils
+	depends = python
+	depends = python-gobject
+	depends = libappindicator-gtk3
+	depends = python-pynput
+	depends = libnotify
+	source = https://gitlab.com/sri-at-gitlab/projects/xlap/-/raw/v0.9.2/xlap
+	source = https://gitlab.com/sri-at-gitlab/projects/xlap/-/raw/v0.9.2/xlap.desktop
+	md5sums = ae7231629598edbc21adc59722e65a87
+	md5sums = 08a752f95cf9a89273e1df8e5ad84739
+
+pkgname = xlap

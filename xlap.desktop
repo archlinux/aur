@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=0.8.2
+Name=Xlap
+Comment=Window snap tool
+Exec=/usr/bin/xlap
+Icon=face-monkey
+Terminal=false
+Categories=Utility;System;DesktopSettings;

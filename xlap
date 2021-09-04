@@ -1,0 +1,715 @@
+#!/usr/bin/env python3
+
+from json import JSONDecodeError
+from pathlib import Path
+from pynput import keyboard
+from threading import Thread
+
+import json
+import os
+import signal
+import subprocess
+
+import gi
+
+gi.require_version('Gtk', '3.0')
+
+from gi.repository import Gtk
+
+def gtk_module_exists(module_name):
+    try:
+        gi.require_version(module_name, '0.1')
+    except:
+        return False
+    else:
+        return True
+
+
+if gtk_module_exists('AppIndicator3'):
+    from gi.repository import AppIndicator3
+elif gtk_module_exists('AyatanaAppIndicator3'):
+    from gi.repository import AyatanaAppIndicator3 as AppIndicator3
+else:
+    print('Requires either AppIndicator3 or AyatanaAppIndicator3')
+    exit(1)
+
+
+# ------------
+# ------------ Debug
+
+
+XLAP_DEBUG = os.environ.get('XLAP_DEBUG', None)
+
+
+# ------------
+# ------------ Config
+
+
+class Config:
+    window_margin_top = 30
+    window_margin_left = 30
+    screen_margin_bottom = 30
+    screen_margin_right = 30
+    notify_on_apply_layout = False
+    notify_on_launch = True
+
+    @staticmethod
+    def path():
+        return Path.home().joinpath(Path('.xlap-conf.json'))
+
+    @staticmethod
+    def apply():
+        if XLAP_DEBUG:
+            print('\tapply')
+        conf_path = Config.path()
+        if not conf_path.exists():
+            with open(conf_path, 'w') as fp:
+                json.dump(conf_default, fp, indent=4)
+        with open(conf_path, 'r') as fp:
+            try:
+                data = json.load(fp)
+                if 'window_margin_top' in data:
+                    Config.window_margin_top = data['window_margin_top']
+                if 'window_margin_left' in data:
+                    Config.window_margin_left = data['window_margin_left']
+                if 'screen_margin_bottom' in data:
+                    Config.screen_margin_bottom = data['screen_margin_bottom']
+                if 'screen_margin_right' in data:
+                    Config.screen_margin_right = data['screen_margin_right']
+                if 'notify_on_apply_layout' in data:
+                    Config.notify_on_apply_layout = data['notify_on_apply_layout']
+                if 'notify_on_launch' in data:
+                    Config.notify_on_launch = data['notify_on_launch']
+            except JSONDecodeError:
+                Notify.notify(summary='Config not valid',
+                              description='Using default config instead\n'
+                                          'Check {conf_path} for errors'.format(conf_path=conf_path),
+                              expire_time=10000)
+        if XLAP_DEBUG:
+            print('\t\t', 'notify_on_apply_layout', Config.notify_on_apply_layout)
+
+
+conf_default = {
+    'window_margin_top': Config.window_margin_top,
+    'window_margin_left': Config.window_margin_left,
+    'screen_margin_bottom': Config.screen_margin_bottom,
+    'screen_margin_right': Config.screen_margin_right,
+    'notify_on_apply_layout': Config.notify_on_apply_layout,
+    'notify_on_launch': Config.notify_on_launch,
+    }
+
+
+class Layouts:
+    FULL_SCREEN = 'Full Screen'
+    MAXIMIZED = 'Maximized'
+    ALMOST_MAXIMIZED = 'Almost Maximized'
+
+    COL_50_LEFT = '50% Left'
+    COL_50_RIGHT = '50% Right'
+
+    COL_66_LEFT = '66% Left'
+    COL_66_RIGHT = '66% Right'
+
+    COL_33_LEFT = '33% Left'
+    COL_33_CENTER = '33% Center'
+    COL_33_RIGHT = '33% Right'
+
+    ROW_50_TOP = '50% Top'
+    ROW_50_BOTTOM = '50% Bottom'
+
+    ROW_66_TOP = '66% Top'
+    ROW_66_BOTTOM = '66% Bottom'
+
+    ROW_33_TOP = '33% Top'
+    ROW_33_CENTER = '33% Middle'
+    ROW_33_BOTTOM = '33% Bottom'
+
+    CELL_50_LEFT_TOP = '50% Top Left'
+    CELL_50_LEFT_BOTTOM = '50% Bottom Left'
+
+    CELL_50_RIGHT_TOP = '50% Top Right'
+    CELL_50_RIGHT_BOTTOM = '50% Bottom Right'
+
+    CELL_33_LEFT_TOP = '33% Top Left'
+    CELL_33_LEFT_CENTER = '33% Middle Left'
+    CELL_33_LEFT_BOTTOM = '33% Bottom Left'
+
+    CELL_33_CENTER_TOP = '33% Top Center'
+    CELL_33_CENTER_CENTER = '33% Middle Center'
+    CELL_33_CENTER_BOTTOM = '33% Bottom Center'
+
+    CELL_33_RIGHT_TOP = '33% Top Right'
+    CELL_33_RIGHT_CENTER = '33% Center Right'
+    CELL_33_RIGHT_BOTTOM = '33% Bottom Right'
+
+
+# ------------
+# ------------ Core
+
+
+def get_display_resolution():
+    """
+    get current display resolution
+    @return: width: int, height: int
+    """
+    if XLAP_DEBUG:
+        print('\tget_display_resolution')
+    output = subprocess.getoutput('xdotool getdisplaygeometry')
+    output = output.split(' ')
+    width = output[0]
+    height = output[1]
+    if XLAP_DEBUG:
+        print('\t\t', width, height)
+    return int(width), int(height)
+
+
+def get_active_window_id():
+    """
+    get id of focused window
+    @return: window_id: str
+    """
+    if XLAP_DEBUG:
+        print('\tget_active_window_id')
+    output = subprocess.getoutput('xdotool getwindowfocus')
+    if XLAP_DEBUG:
+        print('\t\t', output)
+    return output
+
+
+def get_window_position(window_id):
+    """
+    get window position by window id
+    @params: window_id: Str
+    @return: left: int, top: int
+    """
+    if XLAP_DEBUG:
+        print('\tget_window_position', window_id)
+    output = subprocess.getoutput('xdotool getwindowgeometry {window_id} | grep Position'.format(window_id=window_id))
+    output = output.split(' ')
+    output = output[3].split(',')
+    left, top = output
+    if XLAP_DEBUG:
+        print('\t\t', left, top)
+    return int(left), int(top)
+
+
+def get_connected_displays():
+    """
+    Get lsit of connected displays, their x and y start and ends
+    and offset if any based on display arrangement
+    @return: [{'x_start': int, 'x_end': int,
+               'y_start': int, 'y_end': int,
+               'offset_left': int, 'offset_top': int},
+               ...]
+    """
+    if XLAP_DEBUG:
+        print('\tget_connected_displays')
+    lines = subprocess.getoutput('xrandr | grep " connected" | grep "x" | grep "+"').split('\n')
+    displays = []
+    for line in lines:
+        split = line.replace('primary ', '').split(' ')[2].split('+')
+        offset_left = int(split[1])
+        offset_top = int(split[2])
+        split = split[0].split('x')
+        width = int(split[0])
+        height = int(split[1])
+        x_start = offset_left
+        x_end = offset_left + width
+        y_start = offset_top
+        y_end = offset_top + height
+        displays.append({'x_start':     x_start,
+                         'x_end':       x_end,
+                         'y_start':     y_start,
+                         'y_end':       y_end,
+                         'offset_left': offset_left,
+                         'offset_top':  offset_top})
+    if XLAP_DEBUG:
+        print('\t\t', displays)
+    return displays
+
+
+def get_display_for_window(window_id):
+    """
+    Returns display for window_id
+    @param: window_id: str
+    @return: {'x_start': int, 'x_end': int,
+              'y_start': int, 'y_end': int,
+              'offset_left': int, 'offset_top': int}
+    """
+    if XLAP_DEBUG:
+        print('\tdisplay', window_id)
+    left, top = get_window_position(window_id=window_id)
+    offset_left = 0
+    offset_top = 0
+    for display in get_connected_displays():
+        x_in_range = display['x_start'] <= left < display['x_end']
+        y_in_range = display['y_start'] <= top < display['y_end']
+        display_contains_window = x_in_range and y_in_range
+        if display_contains_window:
+            if XLAP_DEBUG:
+                print('\t\t', display)
+            return display
+    if XLAP_DEBUG:
+        print('\t\t', None)
+    return None
+
+
+def window_full_screen(window_id):
+    subprocess.getstatusoutput('xdotool windowstate --remove MAXIMIZED_HORZ {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --remove MAXIMIZED_VERT {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --add FULLSCREEN {window_id}'.format(window_id=window_id))
+
+
+def window_maximized(window_id):
+    subprocess.getstatusoutput('xdotool windowstate --remove FULLSCREEN {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --add MAXIMIZED_HORZ {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --add MAXIMIZED_VERT {window_id}'.format(window_id=window_id))
+
+
+def window_adjust(window_id, top, left, width, height):
+    if XLAP_DEBUG:
+        print('\twindow_adjust', window_id, top, left, width, height)
+    # unmaximize
+    subprocess.getstatusoutput('xdotool windowstate --remove FULLSCREEN {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --remove MAXIMIZED_HORZ {window_id}'.format(window_id=window_id))
+    subprocess.getstatusoutput('xdotool windowstate --remove MAXIMIZED_VERT {window_id}'.format(window_id=window_id))
+    # resize
+    subprocess.getstatusoutput('xdotool windowsize {window_id} {width} {height}'.format(window_id=window_id, width=width, height=height))
+    # position
+    subprocess.getstatusoutput('xdotool windowmove {window_id} {left} {top}'.format(window_id=window_id, left=left, top=top))
+
+
+window_state = {}
+
+
+layout_sequence = [
+    Layouts.FULL_SCREEN,
+    Layouts.MAXIMIZED,
+    Layouts.ALMOST_MAXIMIZED,
+    Layouts.COL_50_LEFT,
+    Layouts.COL_50_RIGHT,
+    Layouts.COL_66_LEFT,
+    Layouts.COL_66_RIGHT,
+    Layouts.COL_33_LEFT,
+    Layouts.COL_33_CENTER,
+    Layouts.COL_33_RIGHT,
+    Layouts.ROW_50_TOP,
+    Layouts.ROW_50_BOTTOM,
+    Layouts.ROW_66_TOP,
+    Layouts.ROW_66_BOTTOM,
+    Layouts.ROW_33_TOP,
+    Layouts.ROW_33_CENTER,
+    Layouts.ROW_33_BOTTOM,
+    Layouts.CELL_50_LEFT_TOP,
+    Layouts.CELL_50_LEFT_BOTTOM,
+    Layouts.CELL_50_RIGHT_TOP,
+    Layouts.CELL_50_RIGHT_BOTTOM,
+    Layouts.CELL_33_LEFT_TOP,
+    Layouts.CELL_33_LEFT_CENTER,
+    Layouts.CELL_33_LEFT_BOTTOM,
+    Layouts.CELL_33_CENTER_TOP,
+    Layouts.CELL_33_CENTER_CENTER,
+    Layouts.CELL_33_CENTER_BOTTOM,
+    Layouts.CELL_33_RIGHT_TOP,
+    Layouts.CELL_33_RIGHT_CENTER,
+    Layouts.CELL_33_RIGHT_BOTTOM,
+    ]
+
+
+def apply_layout(layout, window_id):
+    Config.apply()
+
+    if XLAP_DEBUG:
+        print('\tapply_layout', layout, window_id)
+
+    display = get_display_for_window(window_id=window_id)
+    total_width = display['x_end'] - display['x_start'] - Config.screen_margin_right
+    total_height = display['y_end'] - display['y_start'] - Config.screen_margin_bottom
+    display_offset_left = display['offset_left']
+    display_offset_top = display['offset_top']
+
+    window_state[window_id] = layout_sequence.index(layout)
+
+    if layout == Layouts.FULL_SCREEN:
+        window_full_screen(window_id=window_id)
+    elif layout == Layouts.MAXIMIZED:
+        window_maximized(window_id=window_id)
+    else:
+        top = 0
+        left = 0
+        width = total_width
+        height = total_height
+        if layout == Layouts.ALMOST_MAXIMIZED:
+            pass
+        elif layout == Layouts.COL_50_LEFT:
+            top = 0
+            left = 0
+            width = int(total_width * 0.5)
+            height = total_height
+        elif layout == Layouts.COL_50_RIGHT:
+            top = 0
+            left = int(total_width * 0.5)
+            width = int(total_width * 0.5)
+            height = total_height
+        elif layout == Layouts.COL_66_LEFT:
+            top = 0
+            left = 0
+            width = int(total_width * 0.67)
+            height = total_height
+        elif layout == Layouts.COL_66_RIGHT:
+            top = 0
+            left = int(total_width * 0.34)
+            width = int(total_width * 0.66)
+            height = total_height
+        elif layout == Layouts.COL_33_LEFT:
+            top = 0
+            left = 0
+            width = int(total_width * 0.34)
+            height = total_height
+        elif layout == Layouts.COL_33_CENTER:
+            top = 0
+            left = int(total_width * 0.33)
+            width = int(total_width * 0.34)
+            height = total_height
+        elif layout == Layouts.COL_33_RIGHT:
+            top = 0
+            left = int(total_width * 0.67)
+            width = int(total_width * 0.33)
+            height = total_height
+        elif layout == Layouts.ROW_50_TOP:
+            top = 0
+            left = 0
+            width = total_width
+            height = int(total_height * 0.5)
+        elif layout == Layouts.ROW_50_BOTTOM:
+            top = int(total_height * 0.5)
+            left = 0
+            width = total_width
+            height = int(total_height * 0.5)
+        elif layout == Layouts.ROW_66_TOP:
+            top = 0
+            left = 0
+            width = total_width
+            height = int(total_height * 0.67)
+        elif layout == Layouts.ROW_66_BOTTOM:
+            top = int(total_height * 0.33)
+            left = 0
+            width = total_width
+            height = int(total_height * 0.67)
+        elif layout == Layouts.ROW_33_TOP:
+            top = 0
+            left = 0
+            width = total_width
+            height = int(total_height * 0.34)
+        elif layout == Layouts.ROW_33_CENTER:
+            top = int(total_height * 0.33)
+            left = 0
+            width = total_width
+            height = int(total_height * 0.34)
+        elif layout == Layouts.ROW_33_BOTTOM:
+            top = int(total_height * 0.66)
+            left = 0
+            width = total_width
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_50_LEFT_TOP:
+            top = 0
+            left = 0
+            width = int(total_width * 0.5)
+            height = int(total_height * 0.5)
+        elif layout == Layouts.CELL_50_LEFT_BOTTOM:
+            top = int(total_height * 0.5)
+            left = 0
+            width = int(total_width * 0.5)
+            height = int(total_height * 0.5)
+        elif layout == Layouts.CELL_50_RIGHT_TOP:
+            top = 0
+            left = int(total_width * 0.5)
+            width = int(total_width * 0.5)
+            height = int(total_height * 0.5)
+        elif layout == Layouts.CELL_50_RIGHT_BOTTOM:
+            top = int(total_height * 0.5)
+            left = int(total_width * 0.5)
+            width = int(total_width * 0.5)
+            height = int(total_height * 0.5)
+        elif layout == Layouts.CELL_33_LEFT_TOP:
+            top = 0
+            left = 0
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_LEFT_CENTER:
+            top = int(total_height * 0.33)
+            left = 0
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_LEFT_BOTTOM:
+            top = int(total_height * 0.66)
+            left = 0
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_CENTER_TOP:
+            top = 0
+            left = int(total_width * 0.33)
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_CENTER_CENTER:
+            top = int(total_height * 0.33)
+            left = int(total_width * 0.33)
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_CENTER_BOTTOM:
+            top = int(total_height * 0.66)
+            left = int(total_width * 0.33)
+            width = int(total_width * 0.34)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_RIGHT_TOP:
+            top = 0
+            left = int(total_width * 0.67)
+            width = int(total_width * 0.33)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_RIGHT_CENTER:
+            top = int(total_height * 0.33)
+            left = int(total_width * 0.67)
+            width = int(total_width * 0.33)
+            height = int(total_height * 0.34)
+        elif layout == Layouts.CELL_33_RIGHT_BOTTOM:
+            top = int(total_height * 0.66)
+            left = int(total_width * 0.67)
+            width = int(total_width * 0.33)
+            height = int(total_height * 0.34)
+
+        top = top + display_offset_top + Config.window_margin_top
+        left = left + display_offset_left + Config.window_margin_left
+        height = height - Config.window_margin_top
+        width = width - Config.window_margin_left
+
+        if XLAP_DEBUG:
+            print('\t\t', 'window_state', window_state)
+            print('\t\t', 'display_offset_left, display_offset_top', display_offset_left, display_offset_top)
+
+        window_adjust(window_id=window_id,
+                      top=top,
+                      left=left,
+                      width=width,
+                      height=height)
+
+    # notify
+    if Config.notify_on_apply_layout:
+        Notify.notify(summary=layout)
+
+
+def prev_layout():
+    if XLAP_DEBUG:
+        print('\nprev_layout')
+    active_window = get_active_window_id()
+    if active_window not in window_state:
+        window_state[active_window] = 1
+    else:
+        if window_state[active_window] == 0:
+            window_state[active_window] = len(layout_sequence) - 1
+        else:
+            window_state[active_window] = window_state[active_window] - 1
+    new_layout = layout_sequence[window_state[active_window]]
+    apply_layout(layout=new_layout, window_id=active_window)
+
+
+def next_layout():
+    if XLAP_DEBUG:
+        print('\nnext_layout')
+    active_window = get_active_window_id()
+
+    if active_window not in window_state:
+        window_state[active_window] = 0
+    else:
+        if window_state[active_window] == len(layout_sequence) - 1:
+            window_state[active_window] = 0
+        else:
+            window_state[active_window] = window_state[active_window] + 1
+    new_layout = layout_sequence[window_state[active_window]]
+    apply_layout(layout=new_layout, window_id=active_window)
+
+
+# ------------
+# ------------ Hotkeys
+
+
+def hotkeys():
+    with keyboard.GlobalHotKeys({'<cmd>+<alt>+<left>':  prev_layout,
+                                 '<cmd>+<alt>+<right>': next_layout, }) as h:
+        h.join()
+
+
+# ------------
+# ------------ Indicator
+
+
+menu_labels = [
+    {'label': 'Shuffle', 'type': 'MenuItem', 'disabled': True, },
+    {'label': 'Next layout (Super + Alt + →️)', 'type': 'MenuItem', },
+    {'label': 'Previous layout (Super + Alt + ←️)', 'type': 'MenuItem', },
+
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Single Window', 'type': 'MenuItem', 'disabled': True, },
+    {'label': Layouts.FULL_SCREEN, 'type': 'RadioMenuItem', },
+    {'label': Layouts.MAXIMIZED, 'type': 'RadioMenuItem', },
+    {'label': Layouts.ALMOST_MAXIMIZED, 'type': 'RadioMenuItem', },
+
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Columns', 'type': 'MenuItem', 'disabled': True, },
+    {'label': Layouts.COL_50_LEFT, 'type': 'RadioMenuItem', },
+    {'label': Layouts.COL_50_RIGHT, 'type': 'RadioMenuItem', },
+    {'label': 'More', 'sub_menu': [
+        {'label': Layouts.COL_66_LEFT, 'type': 'RadioMenuItem', },
+        {'label': Layouts.COL_66_RIGHT, 'type': 'RadioMenuItem', },
+        {'label': 'SEPARATOR', 'type': 'separator', },
+        {'label': Layouts.COL_33_LEFT, 'type': 'RadioMenuItem', },
+        {'label': Layouts.COL_33_CENTER, 'type': 'RadioMenuItem', },
+        {'label': Layouts.COL_33_RIGHT, 'type': 'RadioMenuItem', },
+        ]},
+
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Rows', 'type': 'MenuItem', 'disabled': True, },
+    {'label': Layouts.ROW_50_TOP, 'type': 'RadioMenuItem', },
+    {'label': Layouts.ROW_50_BOTTOM, 'type': 'RadioMenuItem', },
+    {'label': 'More', 'sub_menu': [
+        {'label': Layouts.ROW_66_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.ROW_66_BOTTOM, 'type': 'RadioMenuItem', },
+        {'label': 'SEPARATOR', 'type': 'separator', },
+        {'label': Layouts.ROW_33_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.ROW_33_CENTER, 'type': 'RadioMenuItem', },
+        {'label': Layouts.ROW_33_BOTTOM, 'type': 'RadioMenuItem', },
+        ]},
+
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Cells', 'type': 'MenuItem', 'disabled': True, },
+    {'label': '2x2', 'sub_menu': [
+        {'label': Layouts.CELL_50_LEFT_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_50_LEFT_BOTTOM, 'type': 'RadioMenuItem', },
+        {'label': 'SEPARATOR', 'type': 'separator', },
+        {'label': Layouts.CELL_50_RIGHT_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_50_RIGHT_BOTTOM, 'type': 'RadioMenuItem', },
+        ]},
+    {'label': '3x3', 'sub_menu': [
+        {'label': Layouts.CELL_33_LEFT_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_LEFT_CENTER, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_LEFT_BOTTOM, 'type': 'RadioMenuItem', },
+        {'label': 'SEPARATOR', 'type': 'separator', },
+        {'label': Layouts.CELL_33_CENTER_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_CENTER_CENTER, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_CENTER_BOTTOM, 'type': 'RadioMenuItem', },
+        {'label': 'SEPARATOR', 'type': 'separator', },
+        {'label': Layouts.CELL_33_RIGHT_TOP, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_RIGHT_CENTER, 'type': 'RadioMenuItem', },
+        {'label': Layouts.CELL_33_RIGHT_BOTTOM, 'type': 'RadioMenuItem', }, ]},
+
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Xlap', 'type': 'MenuItem', 'disabled': True, },
+    {'label': 'About', 'type': 'MenuItem', },
+    {'label': 'Settings', 'type': 'MenuItem', },
+    {'label': 'SEPARATOR', 'type': 'separator', },
+    {'label': 'Exit', 'type': 'MenuItem', },
+    ]
+
+
+def on_menu_item_activate(menu_item):
+    label = menu_item.get_label()
+    not_layouts = ['Next layout (Super + Alt + →️)',
+                   'Previous layout (Super + Alt + ←️)',
+                   'More',
+                   '2x2',
+                   '3x3',
+                   'About',
+                   'Settings',
+                   'Exit']
+    if label in not_layouts:
+        if label == 'Next layout (Super + Alt + →️)':
+            next_layout()
+        elif label == 'Previous layout (Super + Alt + ←️)':
+            prev_layout()
+        elif label == 'About':
+            subprocess.getoutput('xdg-open https://gitlab.com/sri-at-gitlab/projects/xlap/-/blob/main/README.md')
+        elif label == 'Settings':
+            subprocess.getoutput('xdg-open {conf_path}'.format(conf_path=Config.path()))
+        elif label == 'Exit':
+            os.kill(os.getpid(), signal.SIGTERM)
+    else:
+        layout = label
+        window_id = get_active_window_id()
+        apply_layout(layout=layout, window_id=window_id)
+
+
+def generate_menu_item(list):
+    menu_items = []
+    for item in list:
+        label = item['label']
+        if 'sub_menu' in item:
+            menu_item = Gtk.MenuItem(label=label)
+            menu_item.set_reserve_indicator(True)
+            sub_menu = Gtk.Menu()
+            sub_menu_items = generate_menu_item(item['sub_menu'])
+            for sub_menu_item in sub_menu_items:
+                sub_menu.append(sub_menu_item)
+            menu_item.set_submenu(sub_menu)
+        elif item['type'] == 'separator':
+            menu_item = Gtk.SeparatorMenuItem()
+        elif item['type'] == 'RadioMenuItem':
+            # menu_item = Gtk.RadioMenuItem(label=item['label'])
+            menu_item = Gtk.MenuItem(label=label)
+        else:
+            menu_item = Gtk.MenuItem(label=label)
+
+        if 'disabled' in item and item['disabled']:
+            Gtk.Widget.set_sensitive(menu_item, False)
+
+        menu_item.connect('activate', on_menu_item_activate)
+        menu_items.append(menu_item)
+    return menu_items
+
+
+def generate_menu():
+    menu = Gtk.Menu()
+    menu_items = generate_menu_item(menu_labels)
+    for menu_item in menu_items:
+        menu.append(menu_item)
+    menu.show_all()
+    return menu
+
+
+def indicator():
+    icon = 'face-monkey'
+    indicator = AppIndicator3.Indicator.new('xlap', icon, AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
+    indicator.set_icon_full(icon, 'Window snap assistant for Xfce and the X Window System')
+    indicator.set_title('Xlap')
+    indicator.set_menu(generate_menu())
+    indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
+    Gtk.main()
+
+
+# ------------
+# ------------ Notify
+
+
+class Notify:
+    @staticmethod
+    def notify(summary, description='', icon='face-monkey', app_name='Xlap', expire_time=1500):
+        subprocess.getstatusoutput('notify-send '
+                                   '--icon={icon} '
+                                   '--app-name={app_name} '
+                                   '--expire-time {expire_time} '
+                                   '"{summary}" '
+                                   '"{description}"'.format(description=description,
+                                                            summary=summary,
+                                                            icon=icon,
+                                                            app_name=app_name,
+                                                            expire_time=expire_time))
+
+
+# ------------
+# ------------ Main
+
+
+if __name__ == '__main__':
+    Thread(target=hotkeys).start()
+    Thread(target=indicator).start()
+    Config.apply()
+    if Config.notify_on_launch:
+        Notify.notify('Xlap launched', expire_time=2500)
