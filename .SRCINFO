@@ -1,0 +1,15 @@
+pkgbase = quake3-data-gog
+	pkgdesc = Quake 3 data via GOG
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/game/quake_iii_gold
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = quake3-data
+	conflicts = quake3-data-steam
+	source = setup_quake3_2.0.0.2.exe::gogdownloader://quake_iii_arena_and_team_arena/en1installer1
+	sha256sums = f5471b4b29ea9a10cf5d1a8af2bedeedd4a8cfe1c60b1d52878f80a13bf4d5d6
+
+pkgname = quake3-data-gog
