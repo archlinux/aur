@@ -1,4 +1,4 @@
-# Maintainer: Plague-doctor <plague at privacyrequired dot com >
+# Contributor: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=mullvad-tray
 pkgver=0.3
@@ -7,7 +7,7 @@ pkgdesc="Mullvad VPN connection status in system tray."
 arch=('any')
 depends=('python' 'python-pyqt5')
 url="https://gitlab.com/Plague_Doctor/mullvad-tray"
-license=('GPL')
+license=('GPL3')
 source=("https://gitlab.com/Plague_Doctor/mullvad-tray/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
 md5sums=('71a8620f85341ab737b29748f22a0c95')
 
