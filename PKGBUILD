@@ -1,15 +1,16 @@
 # Maintainer: icepie, icepie.dev@gmail.com
 
 _pkgname=macast
-__pkgname=Macast
+_gitname=Macast
 pkgname=${_pkgname}-git
-pkgver=r115.a5d4a9c
+pkgver=r143.d1aa55b
 pkgrel=1
 pkgdesc="DLNA Media Renderer"
 arch=('any')
 url="https://github.com/xfangfang/Macast"
 license=('GPL3')
 conflicts=('macast')
+makedepends=('python-setuptools')
 depends=(
 	'python'
 	'python-pillow'
@@ -18,34 +19,28 @@ depends=(
 	'python-pyperclip'
 	'python-cherrypy'
 	'mpv'
-	)
-source=(git+"${url}.git#branch=dev")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd "$__pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+)
+source=(
+	"git+${url}.git#branch=dev"
+	"${_pkgname}.desktop"
+)
+sha256sums=(
+	'SKIP'
+	'e55f7308c2620d0151d98f8f0e8bdd6fb5e80aa6f1464d5820a167e4b8c2ff14'
+)
 
 build() {
-	cd "${srcdir}/${__pkgname}"
-	echo -e '#! /bin/bash\ncd "/opt/Macast/" && python Macast.py || exit 1' > macast.sh
-	#python setup.py build
+	cd "$_gitname"
+	python setup.py build
 }
 
 package() {
-	install -d  "${pkgdir}/opt/${__pkgname}"
-	cp -r  "${__pkgname}/assets" "${pkgdir}/opt/${__pkgname}"
-	cp -r  "${__pkgname}/i18n" "${pkgdir}/opt/${__pkgname}"
-	cp -r  "${__pkgname}/LICENSE" "${pkgdir}/opt/${__pkgname}"
-	cp -r  "${__pkgname}/macast" "${pkgdir}/opt/${__pkgname}"
-	cp "${__pkgname}/Macast.py" "${pkgdir}/opt/${__pkgname}"
-	cp "${__pkgname}/.version" "${pkgdir}/opt/${__pkgname}"
-
+	cd "$_gitname"
 	install -d "${pkgdir}/usr/share/icons"
-	cp "${__pkgname}"/assets/icon.png "${pkgdir}/usr/share/icons/Macast.png"
- 	install -d "${pkgdir}/usr/share/applications"
-	echo -e "[Desktop Entry]\nName=Macast\nComment=DLNA Media Renderer\nExec=/usr/bin/macast\nIcon=/usr/share/icons/Macast.png\nTerminal=false\nType=Application\nCategories=Video" > "${pkgdir}/usr/share/applications/macast.desktop"
-	install -d "${pkgdir}/usr/bin"
-	install -m 755 "${__pkgname}"/macast.sh "${pkgdir}/usr/bin/macast"
+	cp "${_pkgname}"/assets/icon.png "${pkgdir}/usr/share/icons/Macast.png"
+	install -d "${pkgdir}/usr/share/applications"
+	# Installa desktop file
+	mkdir -p $pkgdir/usr/share/applications
+	install -Dm644 ${srcdir}/$_pkgname.desktop ${pkgdir}/usr/share/applications/$_pkgname.desktop
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
