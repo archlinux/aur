@@ -1,41 +1,99 @@
-# Maintainer: roger <roger@rogerpc.com.ar>
+# Maintainer: mcol <mcol@posteo.net>
+# Contributor: roger <roger@rogerpc.com.ar>
 
 pkgname=qtile-git
-pkgver=3444.458c4875
-pkgrel=2
+pkgver=v0.18.0.r111.g6009be07
+pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
-arch=('any')
+arch=('x86_64')
 url="http://www.qtile.org"
 license=('MIT')
-depends=('python' 'pango' 'python-xcffib' 'python-cairocffi')
-makedepends=('python-setuptools' 'git')
-optdepends=('python-setproctitle: change the process name to qtile')
+
+# Technically the X-related dependencies are *not* required, if the user only
+# wants to use the Wayland backend. However this would cause disruption, so
+# let's hold off on changing that for now.
+depends=(
+  'gdk-pixbuf2'
+  'glibc'
+  'pango'
+  'python-cairocffi'
+  'python-cffi'
+  'python-xcffib'
+)
+
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'libpulse')
+checkdepends=(
+  'dbus'
+  'graphviz'
+  'gtk3'
+  'imagemagick'
+  'libnotify'
+  'librsvg'
+  'mypy'
+  'python-bowler'
+  'python-dbus-next'
+  'python-gobject'
+  'python-pytest'
+  'python-pywlroots'
+  'python-xdg'
+  'python-xvfbwrapper'
+  'wlroots'
+  'xorg-server-xephyr'
+  'xorg-xrandr'
+)
+optdepends=(
+  'alsa-utils: volume widget'
+  'canto-daemon: canto widget'
+  'cmus: cmus widget'
+  'jupyter_console: interaction with qtile via Jupyter'
+  'khal: khal_calendar widget'
+  'libpulse: for pulse_volume and pulseaudio_ffi widget'
+  'librsvg: for SVG support in some widgets widgets or wallpapers'
+  'lm_sensors: sensors widget'
+  'moc: moc widget'
+  'python-dbus-next: for utils, notifications and several widgets'
+  'python-iwlib: wlan widget'
+  'python-keyring: imapwidget widget'
+  'python-mpd2: mpd2widget widget'
+  'python-psutil: graph, net and memory widget'
+  'python-pywlroots: Wayland backend'
+  'python-setproctitle: change process name to qtile'
+  'python-xdg: launchbar widget'
+)
 provides=('qtile')
 conflicts=('qtile')
 install=${pkgname}.install
-source=('git://github.com/qtile/qtile.git')
+source=('git+https://github.com/qtile/qtile')
 md5sums=('SKIP')
 
-_gitname="qtile"
-
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd qtile
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd qtile
+  python setup.py build
+  ./scripts/ffibuild
+}
+
+check() {
+  cd qtile
+  export LC_TYPE=en_US.UTF-8
+  # export MYPYPATH="$PWD:$PWD/stubs"
+  # mypy-based tests are ignored until I figure out how to fix them
+  # Plus they won't change from merge to package
+  pytest -vv --backend x11 --backend wayland \
+    --ignore test/test_check.py --ignore test/test_migrate.py test
 }
 
 package() {
-  cd $_gitname
-  # license
-  msg "Copying license..."
-  install -D -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-  msg "Copying default config..."
-  install -D -m 644 $srcdir/$_gitname/libqtile/resources/default_config.py $pkgdir/usr/share/doc/$pkgname/default_config.py
-
-  msg "Copying desktop file..."
-  install -D -m 644 $srcdir/$_gitname/resources/qtile.desktop $pkgdir/usr/share/xsessions/qtile.desktop
-
-  # install
-  msg "Running setup.py"
-  python setup.py install --root=${pkgdir} --prefix=/usr
+  cd qtile
+  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  install -vDm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -vDm 644 "$srcdir"/qtile/libqtile/resources/default_config.py \
+    "$pkgdir"/usr/share/doc/$pkgname/default_config.py
+  install -vDm 644 "$srcdir"/qtile/resources/qtile.desktop \
+    "$pkgdir"/usr/share/xsessions/qtile.desktop
+  install -vDm 644  CHANGELOG README.rst  -t "${pkgdir}/usr/share/doc/$pkgname/"
 }
