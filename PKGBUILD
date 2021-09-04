@@ -9,6 +9,7 @@ url='https://talonvoice.com/'
 arch=('x86_64')
 license=('custom')
 depends=('python' 'talon-wav2letter-bin')
+options=('!strip')
 
 source=(
   "talon.tar.xz::https://talonvoice.com/dl/latest/talon-linux.tar.xz"

@@ -8,6 +8,7 @@ pkgbase = talon-bin
 	license = custom
 	depends = python
 	depends = talon-wav2letter-bin
+	options = !strip
 	source = talon.tar.xz::https://talonvoice.com/dl/latest/talon-linux.tar.xz
 	source = start.sh
 	source = talon.desktop
