@@ -1,5 +1,5 @@
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
-# Maintainer: Caleb Maclennana <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=mod_auth_openidc
 pkgver=2.4.9.4
