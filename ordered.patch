@@ -1,0 +1,23 @@
+--- kdelibs-4.14.38/kio/kfile/kpropertiesdialog.cpp
++++ kdelibs-4.14.38/kio/kfile/kpropertiesdialog.cpp
+@@ -3306,7 +3306,7 @@
+ 
+     if (preferredTerminal == "konsole")
+     {
+-        terminalCloseBool = (d->m_terminalOptionStr.contains( "--noclose" ) > 0);
++        terminalCloseBool = (0 != d->m_terminalOptionStr.contains( "--noclose" ));
+         w.terminalCloseCheck->setChecked(terminalCloseBool);
+         d->m_terminalOptionStr.remove( "--noclose");
+     }
+
+--- kdelibs-4.14.38/kio/kfile/kopenwithdialog.cpp
++++ kdelibs-4.14.38/kio/kfile/kopenwithdialog.cpp
+@@ -713,7 +713,7 @@
+         // ### indicate that default value was restored
+         d->terminal->setChecked(d->curService->terminal());
+         QString terminalOptions = d->curService->terminalOptions();
+-        d->nocloseonexit->setChecked((terminalOptions.contains(QLatin1String("--noclose")) > 0));
++        d->nocloseonexit->setChecked((0 != terminalOptions.contains(QLatin1String("--noclose"))));
+         d->m_terminaldirty = false; // slotTerminalToggled changed it
+     }
+ }
