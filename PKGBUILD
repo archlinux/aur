@@ -1,9 +1,9 @@
 # Maintainer: Magnus Anderson <magnus@iastate.edu>
 pkgname=ascii-image-converter-git
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8.0
+pkgrel=3
 pkgdesc="A cross-platform command-line tool to convert images into ascii art and print them on the console."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/TheZoraiz/ascii-image-converter"
 license=('custom:ApacheV2')
 # I'm not sure if it depends on any other libraries, I think Go takes care of it
