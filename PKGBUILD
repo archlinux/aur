@@ -8,6 +8,7 @@ arch=(x86_64)
 url="https://github.com/wheatevo/$_name"
 license=('GPL3')
 provides=($_name)
+conflicts=($_name)
 options=(!strip)
 source=("$url/releases/download/$pkgver/wiiu-vc-extractor-linux-x64.zip")
 md5sums=('80ef1279d11f06bee5d87faeea47a334')

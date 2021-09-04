@@ -6,6 +6,7 @@ pkgbase = wiiu-vc-extractor-bin
 	arch = x86_64
 	license = GPL3
 	provides = wiiu-vc-extractor
+	conflicts = wiiu-vc-extractor
 	options = !strip
 	source = https://github.com/wheatevo/wiiu-vc-extractor/releases/download/2.0.1/wiiu-vc-extractor-linux-x64.zip
 	md5sums = 80ef1279d11f06bee5d87faeea47a334
