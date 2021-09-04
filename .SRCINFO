@@ -1,0 +1,13 @@
+pkgbase = kisslinux-init
+	pkgdesc = Init framework of KISS Linux
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/kisslinux/init
+	arch = any
+	license = MIT
+	source = https://github.com/kisslinux/init/archive/refs/tags/1.0.3.tar.gz
+	source = use-os-release.patch
+	sha256sums = 889d02e36c5808b1adadaa4e567df3fef97156e38a477579a20e7c53622018d6
+	sha256sums = SKIP
+
+pkgname = kisslinux-init

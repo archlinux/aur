@@ -1,0 +1,4 @@
+7c7
+< log "Welcome to KISS!"
+---
+> log "Welcome to $(sed -En 's|^PRETTY_NAME="(.*)"$|\1|p' "/etc/os-release")!"
