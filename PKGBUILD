@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=gitty
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A smart little CLI helper for git projects"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/muesli/${pkgname}"
 license=('MIT')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4f285b1b9ed4495cf02e848352729eec9069967079affe598ac96e311e99c5d6')
+sha256sums=('07edfdf237b2a7d62e8c0a2390c9cb9761d0428acc61c0514a31bc75d10e30ea')
 
 build() {
     local commit
