@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel at yahoo dot com>
 
 pkgname=miopen-opencl
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
         'add_limits_header.patch::https://patch-diff.githubusercontent.com/raw/ROCmSoftwarePlatform/MIOpen/pull/1084.patch')
-sha256sums=('034445470cfd44480a1d9854f9fdfe92cfb8efa3f002dee508eb9585e338486d'
+sha256sums=('1fb2fd8b24f984174ec5338a58b7964e128b74dafb101373a41c8ed33955251a'
             'ac5491425c13f9c1a98d49ba76d8552738a54477c7d303ee9ff29e27eebb0c8b')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
