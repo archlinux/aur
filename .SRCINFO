@@ -5,7 +5,6 @@ pkgbase = stpv-git
 	url = https://github.com/Naheel-Azawy/stpv
 	install = info.install
 	arch = x86_64
-	groups = 
 	license = GPL
 	depends = ueberzug
 	optdepends = lf: file manager that works with this script
