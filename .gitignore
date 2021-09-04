@@ -9,3 +9,7 @@ src
 pkg
 *.tar.gz
 *.zst
+
+## xlap
+xlap
+xlap.desktop
